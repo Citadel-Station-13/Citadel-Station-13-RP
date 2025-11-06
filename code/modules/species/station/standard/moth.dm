@@ -121,20 +121,6 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	primitive_form = null
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
-	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_APPENDIX  = /obj/item/organ/internal/appendix,
-		O_SPLEEN    = /obj/item/organ/internal/spleen,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
-	)
-
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/hide_horns,
@@ -165,15 +151,15 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	value = CATALOGUER_REWARD_TRIVIAL
 
 /datum/physiology_modifier/intrinsic/species/nepid/dark
-	carry_strength_add = CARRY_STRENGTH_ADD_MOTH_DARK
-	carry_strength_factor = CARRY_FACTOR_MOD_MOTH_DARK
+	g_carry_strength_add = CARRY_STRENGTH_ADD_MOTH_DARK
+	g_carry_strength_factor = CARRY_FACTOR_MOD_MOTH_DARK
 
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
 	id = SPECIES_ID_MOTH_DARK
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/dark
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/dark
 
 	// darksight, but weak to light
 	vision_innate = /datum/vision/baseline/species_tier_2
@@ -181,15 +167,15 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	flash_mod = 1.2
 
 /datum/physiology_modifier/intrinsic/species/nepid/light
-	carry_strength_add = CARRY_STRENGTH_ADD_MOTH_LIGHT
-	carry_strength_factor = CARRY_FACTOR_MOD_MOTH_LIGHT
+	g_carry_strength_add = CARRY_STRENGTH_ADD_MOTH_LIGHT
+	g_carry_strength_factor = CARRY_FACTOR_MOD_MOTH_LIGHT
 
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
 	id = SPECIES_ID_MOTH_LIGHT
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/light
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/light
 
 	// hardy, but no darksight
 	vision_innate = /datum/vision/baseline/species_tier_0

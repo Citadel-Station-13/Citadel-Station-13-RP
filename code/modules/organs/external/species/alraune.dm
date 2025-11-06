@@ -31,4 +31,3 @@
 /obj/item/organ/external/head/unbreakable/plant	//They don't need this anymore.
 	spread_dam = TRUE
 	cannot_gib = FALSE
-	vital = FALSE

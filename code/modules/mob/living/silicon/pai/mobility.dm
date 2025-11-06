@@ -69,7 +69,7 @@
 			return FALSE
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
-			for(var/obj/item/organ/external/affecting in H.organs)
+			for(var/obj/item/organ/external/affecting as anything in H.external_organs)
 				if(shell in affecting.implants)
 					affecting.inflict_bodypart_damage(
 						brute = rand(30, 50),

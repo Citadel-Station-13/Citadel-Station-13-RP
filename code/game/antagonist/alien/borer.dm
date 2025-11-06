@@ -45,12 +45,12 @@ var/datum/antagonist/borer/borers
 		var/mob/living/carbon/human/host
 		for(var/mob/living/carbon/human/H in GLOB.mob_list)
 			if(H.stat != DEAD && !H.has_brain_worms())
-				var/obj/item/organ/external/head = H.get_organ(BP_HEAD)
+				var/obj/item/organ/external/head = H.legacy_organ_by_zone(BP_HEAD)
 				if(head && !(head.robotic >= ORGAN_ROBOT))
 					host = H
 					break
 		if(istype(host))
-			var/obj/item/organ/external/head = host.get_organ(BP_HEAD)
+			var/obj/item/organ/external/head = host.legacy_organ_by_zone(BP_HEAD)
 			borer.host = host
 			head.implants += borer
 			borer.forceMove(head)

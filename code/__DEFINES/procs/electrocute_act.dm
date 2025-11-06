@@ -29,4 +29,7 @@
 #define ELECTROCUTE_ACT_ARG_FLAGS 5
 #define ELECTROCUTE_ACT_ARG_HIT_ZONE 6
 #define ELECTROCUTE_ACT_ARG_SHARED_BLACKBOARD 7
+/**
+ * This is **not** present on 'on_electrocute_act'.
+ */
 #define ELECTROCUTE_ACT_ARG_OUT_ENERGY_CONSUMED 8

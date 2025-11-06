@@ -83,7 +83,7 @@
 	mob.adjustBruteLoss(10*multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/obj/item/organ/external/O = pick(H.organs)
+		var/obj/item/organ/external/O = pick(H.get_external_organs())
 		if(prob(25))
 			to_chat(mob, "<span class='warning'>Your [O.name] feels as if it might burst!</span>")
 		if(prob(3))
@@ -186,7 +186,7 @@
 /datum/disease2/effect/organs/deactivate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E as anything in H.external_organs)
 			E.status &= ~ORGAN_DEAD
 			for (var/obj/item/organ/external/C in E.children)
 				C.status &= ~ORGAN_DEAD
@@ -201,8 +201,14 @@
 /datum/disease2/effect/internalorgan/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/organ = pick(list("heart","kidney","liver", "lungs"))
-		var/obj/item/organ/internal/O = H.organs_by_name[organ]
+		var/static/list/possible = list(
+			ORGAN_KEY_LUNGS,
+			O_HEART,
+			O_LIVER,
+			O_KIDNEYS,
+		)
+		var/organ = pick(possible)
+		var/obj/item/organ/internal/O = H.get_organ_by_key(picked)
 		if (O.robotic != ORGAN_ROBOT)
 			if(prob(15))
 				O.take_damage(5 * multiplier)
@@ -218,7 +224,7 @@
 /datum/disease2/effect/immortal/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E as anything in H.external_organs)
 			if (E.status & ORGAN_BROKEN && prob(30))
 				E.status ^= ORGAN_BROKEN
 	var/heal_amt = -5*multiplier
@@ -240,13 +246,13 @@
 /datum/disease2/effect/better_bones/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E as anything in H.external_organs)
 			E.min_broken_damage = max(5, E.min_broken_damage + 30)
 
 /datum/disease2/effect/better_bones/deactivate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E as anything in H.external_organs)
 			E.min_broken_damage = initial(E.min_broken_damage)
 
 /datum/disease2/effect/bones
@@ -257,13 +263,13 @@
 /datum/disease2/effect/bones/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E as anything in H.external_organs)
 			E.min_broken_damage = max(5, E.min_broken_damage - 30)
 
 /datum/disease2/effect/bones/deactivate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		for (var/obj/item/organ/external/E in H.organs)
+		for (var/obj/item/organ/external/E as anything in H.external_organs)
 			E.min_broken_damage = initial(E.min_broken_damage)
 
 /datum/disease2/effect/combustion
@@ -274,7 +280,8 @@
 /datum/disease2/effect/combustion/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/obj/item/organ/external/O = pick(H.organs)
+		// WARNING: unchecked pick()
+		var/obj/item/organ/external/O = pick(H.get_external_organs())
 		if(prob(25))
 			to_chat(mob, "<span class='warning'>It feels like your [O.name] is on fire and your blood is boiling!</span>")
 			H.adjust_fire_stacks(1)
@@ -355,7 +362,7 @@
 /datum/disease2/effect/mind/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/obj/item/organ/internal/brain/B = H.internal_organs_by_name["brain"]
+		var/obj/item/organ/internal/brain/B = H.keyed_organs[ORGAN_KEY_BRAIN]
 		if (B && B.damage < B.min_broken_damage)
 			B.take_damage(5)
 	else
@@ -440,8 +447,7 @@
 /datum/disease2/effect/nonrejection/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		var/obj/item/organ/internal/O = H.organs_by_name
-		for (var/organ in H.organs_by_name)
+		for(var/obj/item/organ/internal/O as anything in H.get_internal_organs())
 			if (O.robotic != ORGAN_ROBOT)
 				O.rejecting = 0
 

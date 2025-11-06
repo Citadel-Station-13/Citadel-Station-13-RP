@@ -689,7 +689,7 @@
 			H.shapeshifter_set_colour("#05FF9B") //They can still change their color.
 
 			if(backup_implants.len)
-				var/obj/item/organ/external/torso = H.get_organ(BP_TORSO)
+				var/obj/item/organ/external/torso = H.legacy_organ_by_zone(BP_TORSO)
 				for(var/obj/item/implant/backup/BI in backup_implants)
 					BI.forceMove(torso)
 					torso.implants += BI

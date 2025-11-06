@@ -12,18 +12,15 @@
 	if(!(zone in list("l_leg", "r_leg", "l_foot", "r_foot", BP_GROIN)))
 		return FALSE
 
-	var/obj/item/organ/external/E = user.organs_by_name["l_foot"]
-	if(E && !E.is_stump())
+	if ( \
+		user.get_non_stump_organ_for_zone(TARGET_ZONE_LEFT_FOOT) || \
+		user.get_non_stump_organ_for_zone(TARGET_ZONE_RIGHT_FOOT)
+	)
 		return TRUE
-
-	E = user.organs_by_name["r_foot"]
-	if(E && !E.is_stump())
-		return TRUE
-
 	return FALSE
 
 /datum/melee_attack/unarmed/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
-	var/obj/item/organ/external/affecting = target.get_organ(zone)
+	var/obj/item/organ/external/affecting = target.get_organ_for_zone(zone)
 	var/datum/gender/TT = GLOB.gender_datums[target.get_visible_gender()]
 	var/organ = affecting.name
 

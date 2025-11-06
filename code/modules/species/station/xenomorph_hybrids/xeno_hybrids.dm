@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/xenohybrid
-	carry_strength_add = CARRY_STRENGTH_ADD_XENOHYBRID
-	carry_strength_factor = CARRY_FACTOR_MOD_XENOHYBRID
+	g_carry_strength_add = CARRY_STRENGTH_ADD_XENOHYBRID
+	g_carry_strength_factor = CARRY_FACTOR_MOD_XENOHYBRID
 
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
@@ -8,7 +8,7 @@
 	uid = SPECIES_ID_XENOHYBRID
 	id = SPECIES_ID_XENOHYBRID
 	default_bodytype = BODYTYPE_XENOHYBRID
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenohybrid
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/xenohybrid
 
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
 	deform  = 'icons/mob/species/xenohybrid/deformed_body.dmi'
@@ -94,6 +94,13 @@
 	heat_level_2 = 400
 	heat_level_3 = 700
 
+	biology = /datum/biology/organic
+
+	use_internal_organs = list(
+		ORGAN_KEY_XENOMORPH_PLASMA_VESSEL = /obj/item/organ/internal/xenomorph/plasmavessel/hunter,
+		ORGAN_KEY_XENOMORPH_RESIN_SPINNER = /obj/item/organ/internal/xenomorph/resinspinner/hybrid,
+	)
+
 	//Organ-List to remove need to breath(?)
 	has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart,
@@ -101,11 +108,10 @@
 		O_LIVER =		/obj/item/organ/internal/liver,
 		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
 		O_BRAIN =		/obj/item/organ/internal/brain,
-		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/hunter,//Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine,
-		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner/hybrid,
 		)
+
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
 	reagent_tag = IS_XENOHYBRID

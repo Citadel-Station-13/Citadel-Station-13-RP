@@ -25,20 +25,6 @@
 
 	vision_organ = O_EYES
 
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest, "descriptor" = "torso"),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin, "descriptor" = "groin"),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head, "descriptor" = "head"),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm, "descriptor" = "left arm"),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right, "descriptor" = "right arm"),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg, "descriptor" = "left leg"),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right, "descriptor" = "right leg"),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand, "descriptor" = "left hand"),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right, "descriptor" = "right hand"),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot, "descriptor" = "left foot"),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right, "descriptor" = "right foot"),
-	)
-
 	unarmed_types = list(
 		/datum/melee_attack/unarmed/stomp,
 		/datum/melee_attack/unarmed/kick,
@@ -67,4 +53,3 @@
 /datum/species/custom/get_race_key(mob/living/carbon/human/H)
 	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	return real.real_race_key(H)
-

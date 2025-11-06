@@ -93,6 +93,6 @@
  *
  * * in mobs with no logical arm and only a hand, this returns the hand
  */
-/mob/living/carbon/proc/get_active_hand_organ(index)
+/mob/living/carbon/proc/get_active_hand_organ()
 	RETURN_TYPE(/obj/item/organ/external)
 	return get_hand_organ(active_hand)

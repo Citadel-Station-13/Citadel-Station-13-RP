@@ -64,7 +64,7 @@
 	M.r_skin = O.r_skin
 	M.g_skin = O.g_skin
 	M.b_skin = O.b_skin
-	for(var/obj/item/organ/external/Z in M.organs)
+	for(var/obj/item/organ/external/Z as anything in M.external_organs)
 		Z.sync_colour_to_human(M)
 	M.update_icons_body()
 	if(message)
@@ -217,7 +217,7 @@
 	remove_verb(M, M.species.inherent_verbs)	//Take away their unique stuff
 
 	var/list/backup_implants = list()
-	for(var/obj/item/organ/I in M.organs)
+	for(var/obj/item/organ/I in M.get_organs())
 		for(var/obj/item/implant/backup/BI in I.contents)
 			backup_implants += BI
 	if(backup_implants.len)
@@ -235,7 +235,7 @@
 	M.render_spriteacc_tail()
 
 	if(backup_implants.len)
-		var/obj/item/organ/external/torso = M.get_organ(BP_TORSO)
+		var/obj/item/organ/external/torso = M.legacy_organ_by_zone(BP_TORSO)
 		for(var/obj/item/implant/backup/BI in backup_implants)
 			BI.forceMove(torso)
 			torso.implants += BI

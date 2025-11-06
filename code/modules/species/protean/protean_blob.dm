@@ -137,7 +137,7 @@
 	if(humanform)
 		//Set the max
 		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
-		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
+		var/obj/item/organ/external/E = humanform.legacy_organ_by_zone(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
 		movement_base_speed = 10 / 0.5 + max(0, (maxHealth - health) - 100) / 50
@@ -807,7 +807,7 @@
 		return
 	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder
-	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/obj/item/organ/external/E = H.legacy_organ_by_zone(BP_TORSO)
 	var/heal = 5 * dt
 	var/brute_heal_left = max(0, heal - E.brute_dam)
 	var/burn_heal_left = max(0, heal - E.burn_dam)

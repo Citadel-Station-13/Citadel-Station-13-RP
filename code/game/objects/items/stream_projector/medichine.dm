@@ -698,8 +698,8 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	var/brute_loss_instances = 0
 	var/burn_loss_instances = 0
 	var/list/datum/wound/wounds_healing = list()
-	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
-		if(!ext.is_any_biology_type(biology_types))
+	for(var/obj/item/organ/external/ext as anything in humanlike.external_organs)
+		if(!(ext?.biology?.biology_type & biology_types))
 			continue
 		// only heal 15 wounds at a time thank you!
 		if(length(wounds_healing) > 15)
@@ -847,7 +847,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 		return 0
 	var/can_deal = (hard_limit + hard_overrun_allowed) - humanlike.halloss
 	var/will_deal = 0
-	for(var/obj/item/organ/external/ext as anything in humanlike.bad_external_organs)
+	for(var/obj/item/organ/external/ext as anything in humanlike.external_organs)
 		var/size_ratio = organ_rel_size[ext.organ_tag] / GLOB.organ_combined_size
 		if(!size_ratio)
 			continue

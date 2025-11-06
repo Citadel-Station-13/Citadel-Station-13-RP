@@ -1,4 +1,5 @@
 /obj/item/organ/external
+	abstract_type = /obj/item/organ/external
 	name = "external"
 	max_damage = 0
 	min_broken_damage = 30
@@ -172,14 +173,6 @@
 	if(splinted && splinted.loc == src)
 		qdel(splinted)
 	splinted = null
-
-	if(istype(owner))
-		owner.organs -= src
-		owner.organs_by_name[organ_tag] = null
-		owner.organs_by_name -= organ_tag
-		while(null in owner.organs)
-			owner.organs -= null
-
 	implants.Cut() // Remove these too!
 
 	return ..()
@@ -293,7 +286,7 @@
 		owner.shock_stage += 20
 
 		//check to see if we still need the verb
-		for(var/obj/item/organ/external/limb in owner.organs)
+		for(var/obj/item/organ/external/limb as anything in owner.external_organs)
 			if(limb.dislocated == 1)
 				return
 		remove_verb(owner, /mob/living/carbon/human/proc/relocate)
@@ -614,20 +607,6 @@
 				else
 					robotize()
 		owner.update_health()
-
-/obj/item/organ/external/remove_rejuv()
-	if(owner)
-		owner.organs -= src
-		owner.organs_by_name[organ_tag] = null
-		owner.organs_by_name -= organ_tag
-		while(null in owner.organs) owner.organs -= null
-	if(children && children.len)
-		for(var/obj/item/organ/external/E in children)
-			E.remove_rejuv()
-	children.Cut()
-	for(var/obj/item/organ/internal/I in internal_organs)
-		I.remove_rejuv()
-	..()
 
 /****************************************************
 			   PROCESSING & UPDATING
@@ -957,6 +936,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			LAZYDISTINCTADD(parent_organ.wounds, W)
 			parent_organ.update_damages()
 		else
+			#warn INSERT THIS PROPERLY
 			var/obj/item/organ/external/stump/stump = new (victim, 0, src)
 			if(robotic >= ORGAN_ROBOT)
 				stump.robotize()
@@ -1503,11 +1483,36 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!istype(I,/obj/item/implant) && !istype(I,/obj/item/nif))
 				return TRUE
 
+//* Contains *//
+
+/obj/item/organ/external/proc/get_internal_organs() as /list
+	. = list()
+#warn impl
+	
 //* Hand Integration *//
 
 // todo: some kind of API for querying what hands this organ provides
 //       this will require organs be composition instead of inheritance,
 //       as defining this on every left / right hand would be satanic.
+
+//* Insert / Remove *//
+
+/obj/item/organ/external/register(mob/living/carbon/target)
+	target.external_organs += src
+	if(organ_key)
+		target.keyed_organs[organ_key] = src
+		target.keyed_organs[organ_tag] = src
+	if(organ_tag)
+		target.legacy_organ_by_tag[organ_tag] = src
+
+/obj/item/organ/external/unregister(mob/living/carbon/target)
+	target.external_organs -= src
+	if(organ_key && target.keyed_organs[organ_key] == src)
+		target.keyed_organs -= organ_key
+	if(organ_key && target.legacy_organ_by_tag[organ_key] == src)
+		target.legacy_organ_by_tag -= organ_key
+	if(organ_tag && target.legacy_organ_by_tag[organ_tag] == src)
+		target.legacy_organ_by_tag -= organ_tag
 
 //* Environmentals *//
 

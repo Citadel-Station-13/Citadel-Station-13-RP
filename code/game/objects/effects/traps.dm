@@ -234,8 +234,8 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/pit/bone_breaker/proc/break_legs(mob/victim as mob)
 	var/broken_legs = 0
 	var/mob/living/carbon/human/target = victim
-	var/obj/item/organ/external/left_leg = target.get_organ(BP_L_LEG)
-	var/obj/item/organ/external/right_leg = target.get_organ(BP_R_LEG)
+	var/obj/item/organ/external/left_leg = target.legacy_organ_by_zone(BP_L_LEG)
+	var/obj/item/organ/external/right_leg = target.legacy_organ_by_zone(BP_R_LEG)
 	playsound(src, 'sound/effects/bang.ogg', 100, 1)
 	if(left_leg && left_leg.fracture())
 		broken_legs++
@@ -550,16 +550,17 @@ Add those other swinging traps you mentioned above!
 	if(!tripped)
 		return
 
-	else if(istype(AM, /mob/living))
-		var/mob/living/M = AM
+	else if(istype(AM, /mob/living/carbon))
+		var/mob/living/carbon/M = AM
 		var/damage = rand(min_damage, max_damage)
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
-		var/obj/item/organ/external/target = M.get_organ(selected)
-		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
-		target.droplimb()
-		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
-						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
+		var/obj/item/organ/external/target = M.legacy_organ_by_zone(selected)
+		if(target)
+			M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
+			target.droplimb()
+			M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
+							"<span class='userdanger'>You are slashed by the spinning blades!</span>")
 
 /* This is all per-tick processing stuff. It isn't working the way I want, so I'm reverting it.
 
@@ -606,16 +607,17 @@ if (istype(AM, /mob/living))
 	if(!tripped)
 		return
 
-	else if(istype(AM, /mob/living))
-		var/mob/living/M = AM
+	else if(istype(AM, /mob/living/carbon))
+		var/mob/living/carbon/M = AM
 		var/damage = rand(min_damage, max_damage)
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
-		var/obj/item/organ/external/target = M.get_organ(selected)
-		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
-		target.droplimb()
-		M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
-						"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
+		var/obj/item/organ/external/target = M.legacy_organ_by_zone(selected)
+		if(target)
+			M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
+			target.droplimb()
+			M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
+							"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
 
 //Flame Trap
 
@@ -790,16 +792,16 @@ if (istype(AM, /mob/living))
 	if(tripped)
 		return
 
-	if(istype(AM, /mob/living))
+	if(istype(AM, /mob/living/carbon))
 		fire()
 		update_icon()
-		var/mob/living/M = AM
+		var/mob/living/carbon/M = AM
 		var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 		var/turf/T2 = get_step(AM, pick(throw_dirs))
 		var/damage = rand(min_damage, max_damage)
 		var/list/bone_sites = list(BP_HEAD, BP_TORSO, BP_GROIN, BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND, BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT)
 		var/selected = pick(bone_sites)
-		var/obj/item/organ/external/target = M.get_organ(selected)
+		var/obj/item/organ/external/target = M.legacy_organ_by_zone(selected)
 		var/head_slot = SLOT_HEAD
 		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
 		target.fracture()

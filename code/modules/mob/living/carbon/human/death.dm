@@ -27,7 +27,7 @@
 		mirror.forceMove(drop_location())
 		mirror.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/mirror.w_class))
 
-	for(var/obj/item/organ/external/E in src.organs)
+	for(var/obj/item/organ/external/E as anything in src.external_organs)
 		E.droplimb(0,DROPLIMB_EDGE,1)
 
 	sleep(1)
@@ -82,7 +82,7 @@
 				forbid_seeing_deadchat = TRUE
 
 	//Handle brain slugs.
-	var/obj/item/organ/external/Hd = get_organ(BP_HEAD)
+	var/obj/item/organ/external/Hd = legacy_organ_by_zone(BP_HEAD)
 	var/mob/living/simple_mob/animal/borer/B
 
 	if(Hd)

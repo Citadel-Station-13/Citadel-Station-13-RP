@@ -28,7 +28,7 @@
 	var/mob/living/carbon/M = other
 	if(!istype(M))
 		return 1
-	if(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
+	if(M.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))
 		return 1
 
 	return 0

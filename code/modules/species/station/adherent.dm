@@ -10,15 +10,10 @@
 	built by an extinct culture. They are devoted to the memory of their long-dead creators, \
 	whose home system and burgeoning stellar empire was scoured to bedrock by a solar flare. \
 	Physically, they are large, floating squidlike machines made of a crystalline composite."
-//	hidden_from_codex = FALSE
-//	silent_steps      = TRUE
 
 	meat_type     = null
-	// bone_material = null
-	// skin_material = null
 
 	genders = list(PLURAL)
-//	cyborg_noun = null
 
 	icon_template   = 'icons/mob/species/adherent/template.dmi'
 	icobase         = 'icons/mob/species/adherent/body.dmi'
@@ -29,12 +24,9 @@
 	blood_mask      = 'icons/mob/species/adherent/blood_mask.dmi'
 
 	siemens_coefficient  = 0
-	//rarity_value         = 6
 	min_age              = 10000
 	max_age              = 12000
-	// antaghud_offset_y    = 14
 	mob_size             = MOB_LARGE
-	// strength             = STR_HIGH
 	has_glowing_eyes     = TRUE
 
 	warning_low_pressure = 50
@@ -76,39 +68,10 @@
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 
-/*
-	available_cultural_info = list(
-		TAG_CULTURE = list(
-			CULTURE_ADHERENT
-		),
-		TAG_HOMEWORLD = list(
-			HOME_SYSTEM_ADHERENT,
-			HOME_SYSTEM_ADHERENT_MOURNER
-		),
-		TAG_FACTION = list(
-			FACTION_ADHERENT_PRESERVERS,
-			FACTION_ADHERENT_LOYALISTS,
-			FACTION_ADHERENT_SEPARATISTS
-		),
-		TAG_RELIGION =  list(
-			RELIGION_OTHER
-		)
-	)
-*/
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest/crystal),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin/crystal),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/crystal),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/crystal),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/crystal),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/crystal),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/crystal),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/tendril),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/tendril/),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/tendril/),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/tendril),
-	)
+	biology = /datum/biology/crystalline/adherent
 
+	use_internal_organs = list(
+	)
 	has_organ = list(
 		O_BRAIN        = /obj/item/organ/internal/brain/adherent,
 		O_CELL         = /obj/item/organ/internal/cell/adherent,

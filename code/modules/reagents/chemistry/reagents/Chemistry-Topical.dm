@@ -84,7 +84,7 @@
 		M.ceiling_chemical_effect(CE_PAINKILLER, 40)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			for(var/obj/item/organ/external/O in H.bad_external_organs)
+			for(var/obj/item/organ/external/O in H.external_organs)
 				for(var/datum/wound/W as anything in O.wounds)
 					if(!W.bleeding())
 						continue
@@ -141,7 +141,7 @@
 /datum/reagent/topical/sterilaze/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		for(var/obj/item/organ/external/O in H.bad_external_organs)
+		for(var/obj/item/organ/external/O in H.external_organs)
 			for(var/datum/wound/W in O.wounds)
 				W.disinfected = 1
 

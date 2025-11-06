@@ -212,7 +212,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			continue
 		var/obj/item/organ/I = character.internal_organs_by_name[name]
 		if(istype(I, /obj/item/organ/internal/brain))
-			var/obj/item/organ/external/E = character.get_organ(I.parent_organ)
+			var/obj/item/organ/external/E = character.legacy_organ_by_zone(I.parent_organ)
 			if(E.robotic < ORGAN_ASSISTED)
 				continue
 		if(I)

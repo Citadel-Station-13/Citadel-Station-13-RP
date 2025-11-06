@@ -525,7 +525,7 @@
 
 /obj/item/grab/proc/inspect_organ(mob/living/carbon/human/H, mob/user, var/target_zone)
 
-	var/obj/item/organ/external/E = H.get_organ(target_zone)
+	var/obj/item/organ/external/E = H.legacy_organ_by_zone(target_zone)
 
 	if(!E || E.is_stump())
 		to_chat(user, "<span class='notice'>[H] is missing that bodypart.</span>")
@@ -570,7 +570,7 @@
 		to_chat(attacker, "<span class='warning'>You require a better grab to do this.</span>")
 		return
 
-	var/obj/item/organ/external/organ = target.get_organ(check_zone(target_zone))
+	var/obj/item/organ/external/organ = target.legacy_organ_by_zone(check_zone(target_zone))
 	if(!organ || organ.dislocated == -1)
 		return
 

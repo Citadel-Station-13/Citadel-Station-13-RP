@@ -8,19 +8,7 @@
 	icobase = 'icons/mob/species/human/body.dmi'
 	deform = 'icons/mob/species/human/deformed_body.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
-	)
+	biology = /datum/biology/organic
 
 /datum/species/shapeshifter/promethean/avatar/unathi
 	uid = SPECIES_ID_VIRTUAL_REALITY_UNATHI
@@ -60,19 +48,6 @@
 	)
 
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
-	)
 
 /datum/species/shapeshifter/promethean/avatar/skrell
 	uid = SPECIES_ID_VIRTUAL_REALITY_SKRELL
@@ -81,18 +56,10 @@
 	icobase = 'icons/mob/species/skrell/body_greyscale.dmi'
 	deform  = 'icons/mob/species/skrell/deformed_body_greyscale.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/skrell),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/skrell;
+		},
 	)
 
 /datum/species/shapeshifter/promethean/avatar/teshari
@@ -148,18 +115,10 @@
 	blood_mask      = 'icons/mob/species/monkey/blood_mask.dmi'
 	fire_icon_state = "monkey"
 	species_appearance_flags = NONE
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/no_eyes),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/no_eyes;
+		},
 	)
 
 /datum/species/shapeshifter/promethean/avatar/vox
@@ -169,18 +128,10 @@
 	icobase = 'icons/mob/species/vox/body.dmi'
 	deform  = 'icons/mob/species/vox/deformed_body.dmi'
 	species_appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/vox),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/vox;
+		},
 	)
 
 /datum/species/shapeshifter/promethean/avatar/skeleton
@@ -190,16 +141,3 @@
 	icobase = 'icons/mob/species/human/skeleton.dmi'
 	deform  = 'icons/mob/species/human/skeleton.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
-	)

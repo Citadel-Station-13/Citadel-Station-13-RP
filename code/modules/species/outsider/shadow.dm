@@ -16,7 +16,6 @@
 
 	light_dam = 2
 	vision_innate = /datum/vision/baseline/species_tier_3
-	has_organ = list()
 	siemens_coefficient = 0
 
 	vision_organ = O_EYES
@@ -33,6 +32,8 @@
 	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	genders = list(NEUTER)
+
+	biology = /datum/biology/simple/pretend_organic
 
 	unarmed_types = list(
 		/datum/melee_attack/unarmed/claws/strong,

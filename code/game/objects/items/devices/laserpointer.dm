@@ -108,7 +108,7 @@
 					eye_prot = 4
 				var/severity = (rand(0, 1) + diode.rating - eye_prot)
 				var/mob/living/carbon/human/H = C
-				var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
+				var/obj/item/organ/internal/eyes/E = H.keyed_organs[ORGAN_KEY_EYES]
 				if(!E)
 					outmsg = "<span class='notice'>You shine [src] at [C], but they don't seem to have eyes.</span>"
 					return

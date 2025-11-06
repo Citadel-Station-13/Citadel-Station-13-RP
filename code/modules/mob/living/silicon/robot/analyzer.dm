@@ -75,7 +75,7 @@
 			to_chat(user, "<span class='notice'>External prosthetics:</span>")
 			var/organ_found
 			if(H.internal_organs.len)
-				for(var/obj/item/organ/external/E in H.organs)
+				for(var/obj/item/organ/external/E as anything in H.external_organs)
 					if(!(E.robotic >= ORGAN_ROBOT))
 						continue
 					organ_found = 1

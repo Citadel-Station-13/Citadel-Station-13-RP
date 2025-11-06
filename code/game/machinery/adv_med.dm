@@ -323,7 +323,7 @@
 			occupantData["ingested"] = ingestedData
 
 			var/extOrganData[0]
-			for(var/obj/item/organ/external/E in H.organs)
+			for(var/obj/item/organ/external/E as anything in H.external_organs)
 				var/organData[0]
 				organData["name"] = E.name
 				organData["open"] = E.open
@@ -510,7 +510,7 @@
 			dat += "<th>Other Wounds</th>"
 			dat += "</tr>"
 
-			for(var/obj/item/organ/external/e in occupant.organs)
+			for(var/obj/item/organ/external/e as anything in occupant.external_organs)
 				dat += "<tr>"
 				var/AN = ""
 				var/open = ""

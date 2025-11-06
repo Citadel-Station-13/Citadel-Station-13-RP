@@ -53,9 +53,9 @@
 
 	//* Traits / Physiology *//
 	/// Intrinsic datum traits to apply to the mob
-	var/list/mob_traits
+	var/list/intrinsic_datum_traits
 	/// physiology modifier to add - path or instance
-	var/datum/physiology_modifier/mob_physiology_modifier
+	var/datum/physiology_modifier/intrinsic_physiology_modifier
 
 	//* Sprite Accessories *//
 	/// default sprite accessories for each slot; will render onto mobs if they don't have one specifically set.
@@ -122,6 +122,8 @@
 
 	//* Inventory *//
 
+	///  todo: make and have this use /datum/inventory_slot_tweak instead of an associated list
+	///
 	/// Available inventory slots IDs
 	///
 	/// * associate to list for remapping; use INVENTORY_SLOT_REMAP_* keys
@@ -163,33 +165,59 @@
 	var/list/base_skin_colours
 
 
-	//? Organs
-	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
-	var/list/has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_APPENDIX  = /obj/item/organ/internal/appendix,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
+	//* Biology & Organs *//
+
+	/// Our primary biology.
+	///
+	/// * Our organs default to this biology.
+	/// * This is a typepath or instance.
+	/// * This can be overridden in certain cases
+	var/datum/biology/biology
+	#warn impl
+	/// Our default limbs.
+	///
+	/// Accepts a list of:
+	/// * External bodypart organ keys without associations
+	/// * External bodypart organ keys associated to a typepath for a quick type override
+	/// * External bodypart organ keys associated to a /datum/species_organ_entry
+	var/list/has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD,
+		ORGAN_KEY_EXT_CHEST,
+		ORGAN_KEY_EXT_GROIN,
+		ORGAN_KEY_EXT_LEFT_ARM,
+		ORGAN_KEY_EXT_LEFT_HAND,
+		ORGAN_KEY_EXT_RIGHT_ARM,
+		ORGAN_KEY_EXT_RIGHT_HAND,
+		ORGAN_KEY_EXT_LEFT_LEG,
+		ORGAN_KEY_EXT_LEFT_FOOT,
+		ORGAN_KEY_EXT_RIGHT_LEG,
+		ORGAN_KEY_EXT_RIGHT_FOOT,
 	)
-	var/list/has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
-	)
+	/// Our internal organ overrides.
+	///
+	/// * `ORGAN_KEY_BRAIN` is implicit and can never be omitted.
+	///
+	/// Inherits:
+	/// * Our default biology's `default_internal_organ_keys`.
+	///
+	/// Accepts a list of:
+	/// * Organ key associated to an ORGAN_DEFAULT_* value.
+	/// * Organ key associated to an organ typepath for a quick type override
+	/// * Organ key without association to include something not included by default with the biology
+	/// * Organ key associated to a /datum/species_organ_entry value.
+	var/list/use_internal_organs = list()
+	/// Add certain unkeyed internal organs.
+	///
+	/// Accepts a list of:
+	/// * /datum/species_organ_entry values.
+	var/list/add_internal_organs = list()
+	/// Our resultant limbs.
+	///
+	/// * Automatically generated to be a list of /datum/species_organ_entry's
+	var/tmp/list/computed_external_organs
+	///
+	/// * Automatically generated to be a list of /datum/species_organ_entry's
+	var/tmp/list/computed_internal_organs
 
 	//? Speech
 	/// Part of icon_state to use for speech bubbles when talking.	See talk.dmi for available icons.
@@ -603,8 +631,8 @@
 	H.critHealth = crit_health
 	H.softCritHealth = soft_crit_health
 
-	if(!isnull(mob_physiology_modifier))
-		H.add_physiology_modifier(mob_physiology_modifier)
+	if(!isnull(intrinsic_physiology_modifier))
+		H.add_physiology_modifier(intrinsic_physiology_modifier)
 
 	add_inherent_verbs(H)
 
@@ -612,7 +640,7 @@
 		var/datum/trait/T = all_traits[name]
 		T.apply(src, H)
 
-	for(var/trait in mob_traits)
+	for(var/trait in intrinsic_datum_traits)
 		ADD_TRAIT(H, trait, SPECIES_TRAIT)
 
 	for(var/datum/ability/ability as anything in abilities)
@@ -640,14 +668,14 @@
 	remove_inherent_verbs(H)
 	H.holder_type = null
 
-	if(!isnull(mob_physiology_modifier))
-		H.remove_physiology_modifier(mob_physiology_modifier)
+	if(!isnull(intrinsic_physiology_modifier))
+		H.remove_physiology_modifier(intrinsic_physiology_modifier)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
 		T.remove(src, H)
 
-	for(var/trait in mob_traits)
+	for(var/trait in intrinsic_datum_traits)
 		REMOVE_TRAIT(H, trait, SPECIES_TRAIT)
 
 	for(var/datum/ability/ability as anything in abilities)
@@ -745,17 +773,54 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			else
 				stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
 
+#warn audit calls
+/**
+ * Creates default organs in a human.
+ *
+ * todo: target should be casted to carbon, not human
+ *
+ * @params
+ * * target - The carbon target.
+ * * patch_incompatible - Replace existing organs that aren't suitable.
+ * * reset_everything - Destroy all existing organs if they exist. Implies `patch_incompatible`
+ * * legacy_delete_nif - Deletes their NIF.
+ */
+/datum/species/proc/create_organs(mob/living/carbon/human/target, patch_incompatible = TRUE, reset_everything = FALSE, legacy_delete_nif)
+	//! LEGACY !//
+	target.mob_size = mob_size
+	var/obj/item/nif/our_nif = target.nif
+	if(target.nif)
+		target.nif.unimplant(H)
+	//! END !//
+
+	#warn replacement?
+
+	var/list/obj/item/organ/existing_organs = target.get_organs()
+	if(reset_everything)
+	else
+
+	//! LEGACY !//
+	if(our_nif)
+		if(legacy_delete_nif)
+			qdel(our_nif)
+		else
+			our_nif.quick_implant(target)
+	if(base_color)
+		target.r_skin = hex2num(copytext(base_color,2,4))
+		target.g_skin = hex2num(copytext(base_color,4,6))
+		target.b_skin = hex2num(copytext(base_color,6,8))
+	else
+		target.r_skin = 0
+		target.g_skin = 0
+		target.b_skin = 0
+	//! END !//
+
 /**
  * called to ensure organs are consistent with our species's
  * this is a destructive operation and will erase old organs!
  */
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H, var/delete_nif = FALSE) //Handles creation of mob organs.
 	H.mob_size = mob_size
-
-	// if we have a NIF, unimplant it before it gets wiped
-	var/obj/item/nif/our_nif = H.nif
-	if(H.nif)
-		H.nif.unimplant(H)
 
 	// store the markings for each limb we have so we can apply them to our new limbs
 	var/list/temporary_marking_store = list()
@@ -764,23 +829,10 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		if(existing_limb && istype(existing_limb))
 			temporary_marking_store[limb_type] = existing_limb.markings
 
-	for(var/obj/item/organ/organ in H.contents)
-		if((organ in H.organs) || (organ in H.internal_organs))
-			qdel(organ)
-
-	if(H.organs)									H.organs.Cut()
-	if(H.internal_organs)				 H.internal_organs.Cut()
-	if(H.organs_by_name)					H.organs_by_name.Cut()
-	if(H.internal_organs_by_name) H.internal_organs_by_name.Cut()
-
-	H.organs = list()
-	H.internal_organs = list()
-	H.organs_by_name = list()
-	H.internal_organs_by_name = list()
-
 	for(var/limb_type in has_limbs)
 		var/list/organ_data = has_limbs[limb_type]
 		var/limb_path = organ_data["path"]
+		#warn INSERT THIS PROPERLY
 		var/obj/item/organ/O = new limb_path(H)
 		organ_data["descriptor"] = O.name
 		if(O.parent_organ)
@@ -795,27 +847,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
+		#warn INSERT THIS PROPERLY
 		var/obj/item/organ/O = new organ_type(H,1)
 		if(organ_tag != O.organ_tag)
 			warning("[O.type] has a default organ tag \"[O.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
-
-	// if we had a NIF, decide if we want to delete it, or put it back
-	if(our_nif)
-		if(delete_nif)
-			QDEL_NULL(our_nif)
-		else
-			our_nif.quick_implant(H)
-
-	if(base_color)
-		H.r_skin = hex2num(copytext(base_color,2,4))
-		H.g_skin = hex2num(copytext(base_color,4,6))
-		H.b_skin = hex2num(copytext(base_color,6,8))
-	else
-		H.r_skin = 0
-		H.g_skin = 0
-		H.b_skin = 0
 
 /**
  * called to ensure blood is consistent
@@ -896,10 +933,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 // Used to update alien icons for aliens.
 /datum/species/proc/handle_login_special(var/mob/living/carbon/human/H)
-	return
-
-// As above.
-/datum/species/proc/handle_logout_special(var/mob/living/carbon/human/H)
 	return
 
 // Builds the HUD using species-specific icons and usable slots.

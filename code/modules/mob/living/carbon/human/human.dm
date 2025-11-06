@@ -62,8 +62,6 @@
 
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
-	for(var/organ in organs)
-		qdel(organ)
 	QDEL_NULL(nif)
 	QDEL_LIST_NULL(vore_organs)
 	return ..()
@@ -86,7 +84,7 @@
 				INJECT_STATPANEL_DATA_ENTRY(., "Tank Pressure", internal.air_contents.return_pressure())
 				INJECT_STATPANEL_DATA_ENTRY(., "Distribution Pressure", internal.distribute_pressure)
 
-		var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA] //Xenomorphs. Mech.
+		var/obj/item/organ/internal/xenomorph/plasmavessel/P = keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL] //Xenomorphs. Mech.
 		if(P)
 			INJECT_STATPANEL_DATA_LINE(., "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
@@ -154,7 +152,7 @@
 
 
 	// focus most of the blast on one organ
-	var/obj/item/organ/external/take_blast = pick(organs)
+	var/obj/item/organ/external/take_blast = pick(external_organs)
 	take_blast.inflict_bodypart_damage(
 		brute = b_loss * 0.9,
 		burn = f_loss * 0.9,
@@ -165,7 +163,7 @@
 	b_loss *= 0.1
 	f_loss *= 0.1
 
-	for(var/obj/item/organ/external/temp in organs)
+	for(var/obj/item/organ/external/temp in external_organs)
 		switch(temp.organ_tag)
 			if(BP_HEAD)
 				temp.inflict_bodypart_damage(
@@ -194,7 +192,7 @@
 /mob/living/carbon/human/proc/is_loyalty_implanted()
 	for(var/L in src.contents)
 		if(istype(L, /obj/item/implant/loyalty))
-			for(var/obj/item/organ/external/O in src.organs)
+			for(var/obj/item/organ/external/O as anything in src.external_organs)
 				if(L in O.implants)
 					return 1
 	return 0
@@ -279,7 +277,7 @@
 
 //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
-	var/obj/item/organ/external/head = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head = legacy_organ_by_zone(BP_HEAD)
 	if(!head || head.disfigured || head.is_stump() || !real_name || (MUTATION_HUSK in mutations) )	//disfigured. use id-name if possible
 		return "Unknown"
 	return real_name
@@ -614,8 +612,8 @@
 
 	var/obj/item/organ/internal/eyes/I
 
-	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
-		I = internal_organs_by_name[O_EYES]
+	if(keyed_organs[ORGAN_KEY_EYES]) // Eyes are fucked, not a 'weak point'.
+		I = keyed_organs[ORGAN_KEY_EYES]
 		if(I.is_broken())
 			return FLASH_PROTECTION_MAJOR
 	else if(!species.dispersed_eyes) // They can't be flashed if they don't have eyes, or widespread sensing surfaces.
@@ -628,8 +626,8 @@
 	return number
 
 /mob/living/carbon/human/flash_eyes(var/intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
-	if(internal_organs_by_name[O_EYES]) // Eyes are fucked, not a 'weak point'.
-		var/obj/item/organ/internal/eyes/I = internal_organs_by_name[O_EYES]
+	if(keyed_organs[ORGAN_KEY_EYES]) // Eyes are fucked, not a 'weak point'.
+		var/obj/item/organ/internal/eyes/I = keyed_organs[ORGAN_KEY_EYES]
 		I.additional_flash_effects(intensity)
 	return ..()
 
@@ -662,7 +660,7 @@
 		return 0
 
 	//if the parent organ is significantly larger than the brain organ, then hitting it is not guaranteed
-	var/obj/item/organ/parent = get_organ(target_zone)
+	var/obj/item/organ/parent = legacy_organ_by_zone(target_zone)
 	if(!parent)
 		return 0
 
@@ -725,7 +723,7 @@
 
 /mob/living/carbon/human/check_has_mouth()
 	// Todo, check stomach organ when implemented.
-	var/obj/item/organ/external/head/H = get_organ(BP_HEAD)
+	var/obj/item/organ/external/head/H = legacy_organ_by_zone(BP_HEAD)
 	if(!H || !H.can_intake_reagents)
 		return 0
 	return 1
@@ -878,59 +876,22 @@
 		germ_level += n
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
-	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+	var/obj/item/organ/internal/lungs/L = legacy_organ_by_type(/obj/item/organ/internal/lungs)
 	return L && L.is_bruised()
 
 /mob/living/carbon/human/proc/rupture_lung()
-	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
-
-	if(L)
-		L.rupture()
+	var/obj/item/organ/internal/lungs/L = legacy_organ_by_type(/obj/item/organ/internal/lungs)
+	L?.rupture()
 
 /mob/living/carbon/human/proc/asbestos_lung()
-	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
-
-	if(L)
-		L.damage_lung()
+	var/obj/item/organ/internal/lungs/L = legacy_organ_by_type(/obj/item/organ/internal/lungs)
+	L?.damage_lung()
 
 /mob/living/carbon/human/proc/heart_attack()
-	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+	var/obj/item/organ/internal/heart/H = legacy_organ_by_type(/obj/item/organ/internal/heart)
+	H?.heart_attack()
 
-	if(H)
-		H.heart_attack()
-
-/*
-/mob/living/carbon/human/verb/simulate()
-	set name = "sim"
-	set background = 1
-
-	var/damage = input("Wound damage","Wound damage") as num
-
-	var/germs = 0
-	var/tdamage = 0
-	var/ticks = 0
-	while (germs < 2501 && ticks < 100000 && round(damage/10)*20)
-		log_misc("VIRUS TESTING: [ticks] : germs [germs] tdamage [tdamage] prob [round(damage/10)*20]")
-		ticks++
-		if (prob(round(damage/10)*20))
-			germs++
-		if (germs == 100)
-			to_chat(world, "Reached stage 1 in [ticks] ticks")
-		if (germs > 100)
-			if (prob(10))
-				damage++
-				germs++
-		if (germs == 1000)
-			to_chat(world, "Reached stage 2 in [ticks] ticks")
-		if (germs > 1000)
-			damage++
-			germs++
-		if (germs == 2500)
-			to_chat(world, "Reached stage 3 in [ticks] ticks")
-	to_chat(world, "Mob took [tdamage] tox damage")
-*/
 //returns 1 if made bloody, returns 0 otherwise
-
 /mob/living/carbon/human/add_blood(mob/living/carbon/human/M as mob)
 	if (!..())
 		return 0
@@ -977,7 +938,7 @@
 /mob/living/carbon/human/get_visible_implants(var/class = 0)
 
 	var/list/visible_implants = list()
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ as anything in src.external_organs)
 		for(var/obj/item/O in organ.implants)
 			if(!istype(O,/obj/item/implant) && (O.w_class > class) && !istype(O,/obj/item/material/shard/shrapnel) && !istype(O, /obj/item/nif))
 				visible_implants += O
@@ -993,7 +954,7 @@
 
 /mob/living/carbon/human/proc/handle_embedded_objects()
 
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ as anything in src.external_organs)
 		if(organ.splinted) //Splints prevent movement.
 			continue
 		for(var/obj/item/O in organ.implants)
@@ -1298,7 +1259,7 @@
 		else
 			target_zone = user.zone_sel.selecting
 
-	var/obj/item/organ/external/affecting = get_organ(target_zone)
+	var/obj/item/organ/external/affecting = legacy_organ_by_zone(target_zone)
 	var/fail_msg
 	if(!affecting)
 		. = 0
@@ -1394,15 +1355,11 @@
 	..()
 
 /mob/living/carbon/human/has_brain()
-	if(internal_organs_by_name[O_BRAIN])
-		var/obj/item/organ/brain = internal_organs_by_name[O_BRAIN]
-		if(brain && istype(brain))
-			return 1
-	return 0
+	return !!keyed_organs[ORGAN_KEY_BRAIN]
 
 /mob/living/carbon/human/has_eyes()
-	if(internal_organs_by_name[O_EYES])
-		var/obj/item/organ/eyes = internal_organs_by_name[O_EYES]
+	if(keyed_organs[ORGAN_KEY_EYES])
+		var/obj/item/organ/eyes = keyed_organs[ORGAN_KEY_EYES]
 		if(eyes && istype(eyes) && !(eyes.status & ORGAN_CUT_AWAY))
 			return 1
 	return 0
@@ -1433,9 +1390,8 @@
 		self = 1 // Removing object from yourself.
 
 	var/list/limbs = list()
-	for(var/limb in organs_by_name)
-		var/obj/item/organ/external/current_limb = organs_by_name[limb]
-		if(current_limb && current_limb.dislocated > 0 && !current_limb.is_parent_dislocated()) //if the parent is also dislocated you will have to relocate that first
+	for(var/obj/item/organ/external/current_limb in external_organs)
+		if(current_limb.dislocated > 0 && !current_limb.is_parent_dislocated()) //if the parent is also dislocated you will have to relocate that first
 			limbs |= current_limb
 	var/obj/item/organ/external/current_limb = input(usr,"Which joint do you wish to relocate?") as null|anything in limbs
 

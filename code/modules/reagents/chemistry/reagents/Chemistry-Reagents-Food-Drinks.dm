@@ -503,7 +503,7 @@
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
 			return
-		if(!H.internal_organs_by_name[O_EYES])
+		if(!H.keyed_organs[ORGAN_KEY_EYES])
 			eyes_covered = TRUE
 			safe_thing = "Lack of eyes"
 		if(H.head)
@@ -3293,14 +3293,6 @@
 	..()
 	if(. > 30)
 		M.adjustToxLoss(2 * removed)
-	if(. > 60 && ishuman(M) && prob(5))
-		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/internal/heart/L = H.internal_organs_by_name[O_HEART]
-		if (L && istype(L))
-			if(. < 120)
-				L.take_damage(10 * removed)
-			else
-				L.take_damage(100)
 
 /datum/reagent/ethanol/red_mead
 	name = "Red Mead"

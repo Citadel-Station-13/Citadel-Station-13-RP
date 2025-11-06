@@ -18,9 +18,12 @@
 		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
 		return
 
-
-	var/choice = input(src,"Pick the bodypart to change:", "Refactor - One Bodypart") as null|anything in species.has_limbs
-	if(!choice)
+	var/list/datum/species_organ_entry/pick_entries_by_name = list()
+	for(var/datum/species_organ_entry/entry as anything in species.computed_external_organs)
+		pick_entries_by_name[entry.name] = entry
+	var/picked_choice = input(src,"Pick the bodypart to change:", "Refactor - One Bodypart") as null|anything in pick_entries_by_name
+	var/datum/species_organ_entry/picked_entry = pick_entries_by_name[picked_choice]
+	if(!picked_entry)
 		return
 
 	//Organ is missing, needs restoring
@@ -44,6 +47,7 @@
 				return
 			var/list/limblist = species.has_limbs[choice]
 			var/limbpath = limblist["path"]
+			#warn INSERT THIS PROPERLY
 			var/obj/item/organ/external/new_eo = new limbpath(src)
 			organs_by_name[choice] = new_eo
 			new_eo.robotize(synthetic ? synthetic.company : null) //Use the base we started with
@@ -80,9 +84,6 @@
 	visible_message("<B>[src]</B>'s [eo] subtly contorts.")
 	update_icons_body()
 
-////
-//  Full Refactor
-////
 /mob/living/carbon/human/proc/nano_regenerate() //fixed the proc, it used to leave active_regen true.
 	set name = "Ref - Whole Body"
 	set desc = "Allows you to regrow limbs and replace organs, given you have enough materials."
@@ -123,68 +124,66 @@
 			return
 		var/manu_choice = input(src, "Which manufacturer do you wish to mimic?", "Manufacturer") as null|anything in usable_manufacturers
 
-		if(!manu_choice)
-			return //Changed mind
-		if(!organs_by_name[BP_TORSO])
-			return //Ain't got a torso!
+			if(!manu_choice)
+				return //Changed mind
+			if(!organs_by_name[BP_TORSO])
+				return //Ain't got a torso!
 
-		var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
-		to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take 5 seconds.</span>")
-		visible_message("<B>[src]</B>'s form collapses into an amorphous blob of black ichor...")
+			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
+			to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take 5 seconds.</span>")
+			visible_message("<B>[src]</B>'s form collapses into an amorphous blob of black ichor...")
 
-		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
-		active_regen = TRUE
-		if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
-			synthetic = usable_manufacturers[manu_choice]
-			torso.robotize(manu_choice) //Will cascade to all other organs.
-			regenerate_icons()
-			visible_message("<B>[src]</B>'s form reshapes into a new one...")
-		active_regen = FALSE
-		nano_outofblob(blob)
-		return
-
-	//Not enough resources (AND spends the resources, should be the last check)
-	if(refactory.get_stored_material(MAT_STEEL) < min(10000, refactory.max_storage))
-		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
-		return
-
-	var/delay_length = round(active_regen_delay * species.active_regen_mult)
-	to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take [delay_length/10] seconds.</span>")
-	visible_message("<B>[src]</B>'s form begins to shift and ripple as if made of oil...")
-	active_regen = TRUE
-
-	var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
-	if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
-		if(stat != DEAD && refactory)
+			var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
+			active_regen = TRUE
+			if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
+				synthetic = usable_manufacturers[manu_choice]
+				torso.robotize(manu_choice) //Will cascade to all other organs.
+				regenerate_icons()
+				visible_message("<B>[src]</B>'s form reshapes into a new one...")
+			active_regen = FALSE
+			nano_outofblob(blob)
+		if("Rebuild")
 			//Not enough resources (AND spends the resources, should be the last check)
-			if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
+			if(refactory.get_stored_material(MAT_STEEL) < min(10000, refactory.max_storage))
 				to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 				return
-			var/list/holder = refactory.stored_materials
-			species.create_organs(src)
-			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
-			torso.robotize() //synthetic wasn't defined here.
-			LAZYCLEARLIST(blood_DNA)
-			LAZYCLEARLIST(feet_blood_DNA)
-			blood_color = null
-			feet_blood_color = null
-			regenerate_icons() //Probably worth it, yeah.
-			var/obj/item/organ/internal/nano/refactory/new_refactory = locate() in internal_organs
-			if(!new_refactory)
-				log_debug(SPAN_DEBUGWARNING("[src] protean-regen'd but lacked a refactory when done."))
-			else
-				new_refactory.stored_materials = holder
-			to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //Guarantees the message shows no matter how bad the timing.
-			to_chat(blob, "<span class='notice'>Your refactoring is complete!</span>")
-		else
-			to_chat(src,  "<span class='critical'>Your refactoring has failed.</span>")
-			to_chat(blob, "<span class='critical'>Your refactoring has failed!</span>")
-	else
-		to_chat(src,  "<span class='critical'>Your refactoring is interrupted.</span>")
-		to_chat(blob, "<span class='critical'>Your refactoring is interrupted!</span>")
-	active_regen = FALSE
-	nano_outofblob()
 
+			var/delay_length = round(active_regen_delay * species.active_regen_mult)
+			to_chat(src, "<span class='danger'>Remain still while the process takes place! It will take [delay_length/10] seconds.</span>")
+			visible_message("<B>[src]</B>'s form begins to shift and ripple as if made of oil...")
+			active_regen = TRUE
+
+			var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
+			if(do_self(blob, 5 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
+				if(stat != DEAD && refactory)
+					//Not enough resources (AND spends the resources, should be the last check)
+					if(!refactory.use_stored_material(MAT_STEEL,refactory.max_storage))
+						to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
+						return
+					var/list/holder = refactory.stored_materials
+					species.create_organs(src)
+					var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
+					torso.robotize() //synthetic wasn't defined here.
+					LAZYCLEARLIST(blood_DNA)
+					LAZYCLEARLIST(feet_blood_DNA)
+					blood_color = null
+					feet_blood_color = null
+					regenerate_icons() //Probably worth it, yeah.
+					var/obj/item/organ/internal/nano/refactory/new_refactory = locate() in internal_organs
+					if(!new_refactory)
+						log_debug(SPAN_DEBUGWARNING("[src] protean-regen'd but lacked a refactory when done."))
+					else
+						new_refactory.stored_materials = holder
+					to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //Guarantees the message shows no matter how bad the timing.
+					to_chat(blob, "<span class='notice'>Your refactoring is complete!</span>")
+				else
+					to_chat(src,  "<span class='critical'>Your refactoring has failed.</span>")
+					to_chat(blob, "<span class='critical'>Your refactoring has failed!</span>")
+			else
+				to_chat(src,  "<span class='critical'>Your refactoring is interrupted.</span>")
+				to_chat(blob, "<span class='critical'>Your refactoring is interrupted!</span>")
+			active_regen = FALSE
+			nano_outofblob()
 
 ////
 //  Storing metal
@@ -413,7 +412,7 @@
 	last_special = world.time + 20 SECONDS
 
 	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
-	
+
 	if(!do_after(src, 50)) //5 seconds
 		return FALSE
 
@@ -461,9 +460,7 @@
 		return humanform.nano_get_refactory()
 
 /mob/living/carbon/human/nano_get_refactory()
-	return ..(locate(/obj/item/organ/internal/nano/refactory) in internal_organs)
-
-
+	return ..(legacy_organ_by_type(/obj/item/organ/internal/nano/refactory))
 
 /// /// /// Ability objects for stat panel
 /obj/effect/protean_ability

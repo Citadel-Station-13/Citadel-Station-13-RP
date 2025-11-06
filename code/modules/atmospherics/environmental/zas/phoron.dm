@@ -102,7 +102,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			domutcheck(src,null)
 
 /mob/living/carbon/human/proc/burn_eyes()
-	var/obj/item/organ/internal/eyes/E = internal_organs_by_name[O_EYES]
+	var/obj/item/organ/internal/eyes/E = keyed_organs[ORGAN_KEY_EYES]
 	if(E)
 		if(isSynthetic())
 			return //robotic eyes are not affected

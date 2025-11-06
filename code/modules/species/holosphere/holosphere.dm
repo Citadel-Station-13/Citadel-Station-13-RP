@@ -31,29 +31,14 @@
 
 	hunger_factor = 0 // doesn't get hungry naturally, but instead when healing they use nutrition
 
-	has_organ = list(
-		O_BRAIN     = /obj/item/organ/internal/brain/holosphere
-	)
+	biology = /datum/biology/holographic
+
 	vision_organ = O_BRAIN
 
 	name_language    = LANGUAGE_ID_EAL
 	intrinsic_languages = LANGUAGE_ID_EAL
 
 	thirst_factor = 0
-
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest/indestructible/holosphere),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin/indestructible/holosphere),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/indestructible/holosphere),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm/indestructible/holosphere),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right/indestructible/holosphere),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg/indestructible/holosphere),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right/indestructible/holosphere),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand/indestructible/holosphere),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/indestructible/holosphere),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/indestructible/holosphere),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/indestructible/holosphere),
-	)
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair,

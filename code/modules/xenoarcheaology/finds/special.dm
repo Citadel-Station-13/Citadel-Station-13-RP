@@ -121,7 +121,7 @@
 		playsound(loc, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)
 		nearby_mobs.Add(M)
 
-		var/target = pick(M.organs_by_name)
+		var/target = pick(global.all_target_zones)
 		M.apply_damage(rand(5, 10), DAMAGE_TYPE_BRUTE, target)
 		to_chat(M, "<font color='red'>The skin on your [parse_zone(target)] feels like it's ripping apart, and a stream of blood flies out.</font>")
 		var/obj/effect/debris/cleanable/blood/splatter/animated/B = new(M.loc)

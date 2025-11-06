@@ -44,8 +44,6 @@
 	death_message    = "falls over and stops moving!"
 	knockout_message = "falls over and stops moving!"
 
-	has_organ = list()
-
 	warning_low_pressure = 50
 	hazard_low_pressure = -1
 
@@ -59,6 +57,8 @@
 
 	body_temperature = T20C
 
+	biology = /datum/biology/simple/pretend_organic
+	
 	unarmed_types = list( //Bones are pointy, fight me.
 		/datum/melee_attack/unarmed/claws/strong,
 		/datum/melee_attack/unarmed/bite/sharp,

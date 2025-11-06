@@ -692,7 +692,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if((casted_human.wear_suit?.inv_hide_flags | casted_human.w_uniform?.inv_hide_flags) & HIDESHOES)
 		return FALSE
 	for(var/bodypart in list(BP_L_FOOT, BP_R_FOOT))
-		var/obj/item/organ/external/foot/foot = casted_human.get_organ(bodypart)
+		var/obj/item/organ/external/foot/foot = casted_human.legacy_organ_by_zone(bodypart)
 		if(istype(foot) && foot.is_hidden_by_tail())
 			return FALSE
 	return ..()

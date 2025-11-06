@@ -769,7 +769,7 @@
 		to_chat(usr,"<span class='warning'>That mob type ([H.type]) doesn't support NIFs, sorry.</span>")
 		return
 
-	if(!H.get_organ(BP_HEAD))
+	if(!H.legacy_organ_by_zone(BP_HEAD))
 		to_chat(usr,"<span class='warning'>Target is unsuitable.</span>")
 		return
 

@@ -121,7 +121,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return
 
 	var/mob/living/carbon/C = M
-	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
+	if(istype(C) && C.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))
 		return
 
 
@@ -229,7 +229,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return 0
 
 	var/mob/living/carbon/C = M
-	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
+	if(istype(C) && C.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))
 		return 0
 
 	if(ishuman(C))
@@ -401,7 +401,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return
 
 	var/mob/living/carbon/C = M
-	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
+	if(istype(C) && C.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))
 		return
 
 
@@ -501,7 +501,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return 0
 
 	var/mob/living/carbon/C = M
-	if(istype(C) && locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
+	if(istype(C) && C.legacy_organ_by_type(/obj/item/organ/internal/xenomorph/hivenode))
 		return 0
 
 	if(ishuman(C))

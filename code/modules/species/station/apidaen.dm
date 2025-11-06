@@ -58,17 +58,10 @@
 	base_color 	= "#333333" // Blackish-gray
 	blood_color = "#D3C77C" // Internet says Bee haemolymph is a 'pale straw' color.
 
+	use_internal_organs = list(
+	)
 	has_organ = list(
-		O_HEART        = /obj/item/organ/internal/heart,
-		O_LUNGS        = /obj/item/organ/internal/lungs,
-		O_VOICE        = /obj/item/organ/internal/voicebox,
-		O_LIVER        = /obj/item/organ/internal/liver,
-		O_KIDNEYS      = /obj/item/organ/internal/kidneys,
 		O_SPLEEN       = /obj/item/organ/internal/spleen/minor,
-		O_BRAIN        = /obj/item/organ/internal/brain,
-		O_EYES         = /obj/item/organ/internal/eyes,
-		O_STOMACH      = /obj/item/organ/internal/stomach,
-		O_INTESTINE    = /obj/item/organ/internal/intestine,
 		O_HONEYSTOMACH = /obj/item/organ/internal/honey_stomach,
 	)
 

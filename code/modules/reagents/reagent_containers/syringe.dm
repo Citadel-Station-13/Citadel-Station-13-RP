@@ -156,7 +156,7 @@
 			var/mob/living/carbon/human/H = target
 			var/obj/item/organ/external/affected
 			if(istype(H))
-				affected = H.get_organ(user.zone_sel.selecting)
+				affected = H.legacy_organ_by_zone(user.zone_sel.selecting)
 				if(!affected)
 					to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
 					return
@@ -232,7 +232,7 @@
 		var/mob/living/carbon/human/H = target
 
 		var/target_zone = ran_zone(check_zone(user.zone_sel.selecting, target))
-		var/obj/item/organ/external/affecting = H.get_organ(target_zone)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(target_zone)
 
 		if (!affecting || affecting.is_stump())
 			to_chat(user, "<span class='danger'>They are missing that limb!</span>")

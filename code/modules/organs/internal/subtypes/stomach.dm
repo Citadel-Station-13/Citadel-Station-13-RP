@@ -57,9 +57,3 @@
 
 	acidtype = "sacid"
 
-/obj/item/organ/internal/stomach/machine/handle_organ_proc_special()
-	..()
-	if(owner && owner.stat != DEAD)
-		owner.bodytemperature += round(owner.robobody_count * 0.25, 0.1)
-
-	return

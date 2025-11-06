@@ -42,8 +42,6 @@
 	// actions
 	actions_controlled = new /datum/action_holder/mob_actor(src)
 	actions_innate = new /datum/action_holder/mob_actor(src)
-	// physiology
-	init_physiology()
 	// atom HUDs
 	prepare_huds()
 	set_key_focus(src)

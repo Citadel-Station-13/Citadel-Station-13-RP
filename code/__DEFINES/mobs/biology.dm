@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* biology flags
+//* biology flags *//
 
 /// humanlike, organic, normal biology
 #define BIOLOGY_TYPE_HUMAN (1<<0)
@@ -13,12 +13,14 @@
 #define BIOLOGY_TYPE_CHIMERA (1<<3)
 /// protean
 #define BIOLOGY_TYPE_NANITES (1<<4)
+/// diona (legally not plant)
+#define BIOLOGY_TYPE_DIONA (1<<5)
 /// plant
-#define BIOLOGY_TYPE_PLANT (1<<5)
+#define BIOLOGY_TYPE_PLANT (1<<6)
 /// crystalline (adherent)
-#define BIOLOGY_TYPE_CRYSTALLINE (1<<6)
+#define BIOLOGY_TYPE_CRYSTALLINE (1<<7)
 
-#define BIOLOGY_TYPES_FLESHY (BIOLOGY_TYPE_HUMAN | BIOLOGY_TYPE_CHIMERA | BIOLOGY_TYPE_PLANT | BIOLOGY_TYPE_SLIME)
+#define BIOLOGY_TYPES_FLESHY (BIOLOGY_TYPE_HUMAN | BIOLOGY_TYPE_CHIMERA | BIOLOGY_TYPE_PLANT | BIOLOGY_TYPE_DIONA| BIOLOGY_TYPE_SLIME)
 #define BIOLOGY_TYPES_SYNTHETIC (BIOLOGY_TYPE_SYNTH | BIOLOGY_TYPE_NANITES)
 #define BIOLOGY_TYPES_ALL (ALL)
 

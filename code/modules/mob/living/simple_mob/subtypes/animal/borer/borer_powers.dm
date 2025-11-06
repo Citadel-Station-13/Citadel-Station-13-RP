@@ -112,12 +112,12 @@
 
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
-			var/obj/item/organ/I = H.internal_organs_by_name["brain"]
+			var/obj/item/organ/I = H.keyed_organs[ORGAN_KEY_BRAIN]
 			if(!I) // No brain organ, so the borer moves in and replaces it permanently.
 				replace_brain()
 			else
 				// If they're in normally, implant removal can get them out.
-				var/obj/item/organ/external/head = H.get_organ(BP_HEAD)
+				var/obj/item/organ/external/head = H.legacy_organ_by_zone(BP_HEAD)
 				head.implants += src
 
 		return
@@ -180,11 +180,12 @@
 
 	H.ChangeToHusk()
 
+				#warn INSERT THIS PROPERLY
 	var/obj/item/organ/internal/borer/B = new(H)
 	H.internal_organs_by_name["brain"] = B
 	H.internal_organs |= B
 
-	var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
+	var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(BP_HEAD)
 	affecting.implants -= src
 
 	var/s2h_id = src.computer_id

@@ -1,5 +1,3 @@
-var/datum/species/shapeshifter/promethean/prometheans
-
 // Species definition follows.
 /datum/species/shapeshifter/promethean
 	name = SPECIES_PROMETHEAN
@@ -100,6 +98,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	dispersed_eyes = TRUE
 
+	biology = /datum/biology/organic/promethean
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unbreakable/slime),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unbreakable/slime),
@@ -150,9 +149,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 	heal_rate = 0.35
 	trashcan = TRUE //They have goopy bodies. They can just dissolve things within them.
 
-/datum/species/shapeshifter/promethean/New()
-	..()
-	prometheans = src
 
 /datum/species/shapeshifter/promethean/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	. = ..()

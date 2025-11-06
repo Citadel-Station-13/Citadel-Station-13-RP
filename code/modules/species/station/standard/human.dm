@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/human
-	carry_strength_add = CARRY_STRENGTH_ADD_HUMAN
-	carry_strength_factor = CARRY_FACTOR_MOD_HUMAN
+	g_carry_strength_add = CARRY_STRENGTH_ADD_HUMAN
+	g_carry_strength_factor = CARRY_FACTOR_MOD_HUMAN
 
 /datum/species/human
 	id = SPECIES_ID_HUMAN
@@ -19,7 +19,7 @@
 	interests, rampant cyber and bio-augmentation initiatives, and secretive factions make life on most human \
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/human
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/human
 
 	max_additional_languages = 3
 	intrinsic_languages = list(
@@ -39,19 +39,6 @@
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
-	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_LUNGS     = /obj/item/organ/internal/lungs,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain,
-		O_APPENDIX  = /obj/item/organ/internal/appendix,
-		O_SPLEEN    = /obj/item/organ/internal/spleen,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
-	)
 	vision_organ = O_EYES
 
 	unarmed_types = list(

@@ -13,7 +13,7 @@
 
 	if (!hasorgans(target))
 		return 0
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	if (!affected || (affected.robotic >= ORGAN_ROBOT) || !(affected.open >= 3))
 		return 0
 	return target_zone == BP_HEAD
@@ -49,7 +49,7 @@
 	target.op_stage.brainstem = 1
 
 /datum/surgery_step/brainstem/mend_vessels/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing at [target]'s brainstem with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, tearing at [target]'s brainstem with \the [tool]!</font>" )
 	affected.create_wound(WOUND_TYPE_PIERCE, 10)
@@ -83,7 +83,7 @@
 	..()
 
 /datum/surgery_step/brainstem/drill_vertebrae/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color=#4F49AF>[user] has drilled around [target]'s brainstem with \the [tool].</font>" , \
 	"<font color=#4F49AF> You have drilled around [target]'s brainstem with \the [tool].</font>",)
 	target.adjust_unconscious(20 * 10) //We're getting Invasive here. This only ticks down when the person is alive, so it's a good side-effect for this step. Rattling the braincase with a drill is not optimal.
@@ -91,7 +91,7 @@
 	affected.fracture() //Does not apply damage, simply breaks it if it wasn't already. Doesn't stop a defib on its own.
 
 /datum/surgery_step/brainstem/drill_vertebrae/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	//var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	//var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user] almost loses their grip on the [tool]!</font>" , \
 	"<font color='red'>Your hand slips and nearly shreds [target]'s brainstem with \the [tool]!</font>" )
 	/*affected.create_wound(WOUND_TYPE_PIERCE, 10)
@@ -133,7 +133,7 @@
 	target.op_stage.brainstem = 3
 
 /datum/surgery_step/brainstem/clean_chips/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	//var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	//var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, gouging [target]'s brainstem with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, gouging [target]'s brainstem with \the [tool]!</font>" )
 	/*affected.create_wound(WOUND_TYPE_CUT, 5)
@@ -175,7 +175,7 @@
 	target.add_modifier(/datum/modifier/franken_sickness, 20 MINUTES)
 
 /datum/surgery_step/brainstem/mend_cord/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing at [target]'s spinal cord with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, tearing at [target]'s spinal cord with \the [tool]!</font>" )
 	affected.create_wound(WOUND_TYPE_PIERCE, 5)
@@ -215,7 +215,7 @@
 	target.op_stage.brainstem = 5
 
 /datum/surgery_step/brainstem/mend_vertebrae/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing at [target]'s spinal cord with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, tearing at [target]'s spinal cord with \the [tool]!</font>" )
 	affected.create_wound(WOUND_TYPE_PIERCE, 5)
@@ -257,7 +257,7 @@
 	target.op_stage.brainstem = 0 //The cycle begins anew.
 
 /datum/surgery_step/brainstem/realign_tissue/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/organ/external/affected = target.get_organ(target_zone)
+	var/obj/item/organ/external/affected = target.legacy_organ_by_zone(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, gouging [target]'s brainstem with \the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, gouging [target]'s brainstem with \the [tool]!</font>" )
 	affected.create_wound(WOUND_TYPE_CUT, 5)

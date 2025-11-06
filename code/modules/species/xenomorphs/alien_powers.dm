@@ -11,8 +11,9 @@
 
 /mob/living/carbon/human/proc/gain_plasma(var/amount)
 
-	var/obj/item/organ/internal/xenos/plasmavessel/I = internal_organs_by_name[O_PLASMA]
-	if(!istype(I)) return
+	var/obj/item/organ/internal/xenomorph/plasmavessel/I = keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL]
+	if(!istype(I))
+		return
 
 	if(amount)
 		I.stored_plasma += amount
@@ -20,13 +21,13 @@
 
 /mob/living/carbon/human/proc/check_alien_ability(var/cost,var/needs_foundation,var/needs_organ)	//Returns 1 if the ability is clear for usage.
 
-	var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA]
+	var/obj/item/organ/internal/xenomorph/plasmavessel/P = keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL]
 	if(!istype(P))
 		to_chat(src, "<span class='danger'>Your plasma vessel has been removed!</span>")
 		return
 
 	if(needs_organ)
-		var/obj/item/organ/internal/I = internal_organs_by_name[needs_organ]
+		var/obj/item/organ/internal/I = legacy_organ_by_tag[needs_organ]
 		if(!I)
 			to_chat(src, "<span class='danger'>Your [needs_organ] has been removed!</span>")
 			return
@@ -62,7 +63,7 @@
 		to_chat(src, "<span class='green'>You need to be closer.</span>")
 		return
 
-	var/obj/item/organ/internal/xenos/plasmavessel/I = M.internal_organs_by_name[O_PLASMA]
+	var/obj/item/organ/internal/xenomorph/plasmavessel/I = M.keyed_organs[ORGAN_KEY_XENOMORPH_PLASMA_VESSEL]
 	if(!istype(I))
 		to_chat(src, "<span class='green'>Their plasma vessel is missing.</span>")
 		return
@@ -110,7 +111,7 @@
 
 	if(check_alien_ability(500))
 		visible_message("<span class='green'><B>[src] begins to twist and contort!</B></span>", "<span class='green'>You begin to evolve!</span>")
-		src.set_species(/datum/species/xenos/queen)
+		src.set_species(/datum/species/xenomorph/queen)
 
 	return
 

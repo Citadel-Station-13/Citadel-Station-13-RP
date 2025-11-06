@@ -94,6 +94,7 @@
 	handle_light()
 	handle_regular_hud_updates()
 	handle_vision()
+	handle_instability()
 
 /mob/living/silicon/handle_regular_hud_updates()
 	. = ..()

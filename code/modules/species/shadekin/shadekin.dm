@@ -93,29 +93,15 @@
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/paw
 
-	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart,
-		O_VOICE     = /obj/item/organ/internal/voicebox,
-		O_LIVER     = /obj/item/organ/internal/liver,
-		O_KIDNEYS   = /obj/item/organ/internal/kidneys,
-		O_BRAIN     = /obj/item/organ/internal/brain/shadekin,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach,
-		O_INTESTINE = /obj/item/organ/internal/intestine,
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/vr/shadekin;
+		},
 	)
-
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/vr/shadekin),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	use_internal_organs = list(
+		ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER = /datum/species_organ_entry{
+			override_type = /obj/item/organ/internal/shadekin/dimensional_cluster;
+		},
 	)
 
 	var/list/shadekin_abilities = list(
@@ -202,35 +188,35 @@
 	update_shadekin_hud(H)
 
 /datum/species/shadekin/proc/get_energy(mob/living/carbon/human/H)
-	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
+	var/obj/item/organ/internal/shadekin/dimensional_cluster/shade_organ = H.keyed_organs[ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER]
 	if(!istype(shade_organ))
 		return FALSE
 
 	return shade_organ.dark_energy
 
 /datum/species/shadekin/proc/get_max_energy(mob/living/carbon/human/H)
-	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
+	var/obj/item/organ/internal/shadekin/dimensional_cluster/shade_organ = H.keyed_organs[ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER]
 	if(!istype(shade_organ))
 		return FALSE
 
 	return shade_organ.max_dark_energy
 
 /datum/species/shadekin/proc/set_energy(mob/living/carbon/human/H, new_energy)
-	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
+	var/obj/item/organ/internal/shadekin/dimensional_cluster/shade_organ = H.keyed_organs[ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER]
 	if(!istype(shade_organ))
 		return
 
 	shade_organ.dark_energy = clamp(new_energy, 0, get_max_energy(H))
 
 /datum/species/shadekin/proc/set_max_energy(mob/living/carbon/human/H, new_max_energy)
-	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
+	var/obj/item/organ/internal/shadekin/dimensional_cluster/shade_organ = H.keyed_organs[ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER]
 	if(!istype(shade_organ))
 		return FALSE
 
 	shade_organ.max_dark_energy = new_max_energy
 
 /datum/species/shadekin/proc/check_infinite_energy(mob/living/carbon/human/H)
-	var/obj/item/organ/internal/brain/shadekin/shade_organ = H.internal_organs_by_name[O_BRAIN]
+	var/obj/item/organ/internal/shadekin/dimensional_cluster/shade_organ = H.keyed_organs[ORGAN_KEY_SHADEKIN_DIMENSIONAL_CLUSTER]
 	if(!istype(shade_organ))
 		return FALSE
 

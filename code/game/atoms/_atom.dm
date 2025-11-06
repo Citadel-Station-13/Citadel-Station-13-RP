@@ -208,7 +208,6 @@
  * Top level of the destroy chain for most atoms
  *
  * Cleans up the following:
- * * Removes alternate apperances from huds that see them
  * * qdels the reagent holder from atoms if it exists
  * * clears the orbiters list
  * * clears overlays and priority overlays

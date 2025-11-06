@@ -47,13 +47,6 @@
 
 	standard_pulse_level = PULSE_NONE
 
-/obj/item/organ/internal/stomach/machine/handle_organ_proc_special()
-	..()
-	if(owner && owner.stat != DEAD)
-		owner.bodytemperature += round(owner.robobody_count * 0.25, 0.1)
-
-	return
-
 /obj/item/organ/internal/heart/proc/heart_attack() //Do 10 damage the first time and 5 damage subsequent times.
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	if(istype(parent))

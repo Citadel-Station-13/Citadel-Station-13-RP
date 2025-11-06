@@ -253,8 +253,10 @@
 	/// legacy armor, applied on init
 	var/list/armor_legacy_mob
 
-	///Does the simple mob drop organs when butchered?
-	butchery_drops_organs = FALSE
+	//* Physiology *//
+	/// Our whole-body local physiology
+	var/datum/local_physiology/local_physiology
+	#warn hook
 
 /mob/living/simple_mob/Initialize(mapload)
 	if(armor_legacy_mob)

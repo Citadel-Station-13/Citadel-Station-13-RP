@@ -133,10 +133,6 @@
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
 	var/datum/effect_system/spark_spread/spark_system//So they can initialize sparks whenever/N
 	var/jeton = FALSE
-	var/killswitch = FALSE
-	var/killswitch_time = 60
-	var/weapon_lock = FALSE
-	var/weaponlock_time = 120
 	/// Cyborgs will sync their laws with their AI by default
 	var/lawupdate = TRUE
 	/// Used when looking to see if a borg is locked down.
@@ -989,10 +985,6 @@
 			add_overlay("wreck-overlay")
 
 /mob/living/silicon/robot/proc/installed_modules()
-	if(weapon_lock)
-		to_chat(src, "<font color='red'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</font>")
-		return
-
 	if(!module)
 		pick_module()
 		return

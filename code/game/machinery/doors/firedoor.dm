@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
-		if(istype(X.species, /datum/species/xenos))
+		if(istype(X.species, /datum/species/xenomorph))
 			src.attack_alien(user)
 			return
 
@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
 /obj/machinery/door/firedoor/attack_alien(var/mob/user) //Familiar, right? Doors.
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
-		if(istype(X.species, /datum/species/xenos))
+		if(istype(X.species, /datum/species/xenomorph))
 			if(src.blocked)
 				visible_message("<span class='green'>\The [user] begins digging into \the [src] internals!</span>")
 				if(do_after(user,5 SECONDS,src))

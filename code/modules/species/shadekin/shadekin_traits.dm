@@ -158,7 +158,7 @@
 	..()
 	if(user == target) //Prevent self attack to gain energy
 		return
-	var/obj/item/organ/internal/brain/shadekin/shade_organ = user.internal_organs_by_name[O_BRAIN]
+	var/obj/item/organ/internal/shadekin/dimensional_cluster/shade_organ = user.internal_organs_by_name[O_BRAIN]
 	if(!istype(shade_organ))
 		return
 	shade_organ.dark_energy = clamp(shade_organ.dark_energy + attack_damage,0,shade_organ.max_dark_energy) //Convert Damage done to Energy Gained

@@ -1,6 +1,6 @@
 /datum/physiology_modifier/intrinsic/species/unathi
-	carry_strength_add = CARRY_STRENGTH_ADD_UNATHI
-	carry_strength_factor = CARRY_FACTOR_MOD_UNATHI
+	g_carry_strength_add = CARRY_STRENGTH_ADD_UNATHI
+	g_carry_strength_factor = CARRY_FACTOR_MOD_UNATHI
 
 /datum/species/unathi
 	uid = SPECIES_ID_UNATHI
@@ -11,7 +11,7 @@
 	primitive_form = SPECIES_MONKEY_UNATHI
 	default_bodytype = BODYTYPE_UNATHI
 
-	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/unathi
+	intrinsic_physiology_modifier = /datum/physiology_modifier/intrinsic/species/unathi
 
 	// icon_template = 'icons/mob/species/template_tall.dmi' //TODO: Tall Unathi :D
 	icobase       = 'icons/mob/species/unathi/body_greyscale.dmi'
@@ -88,30 +88,30 @@
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 
-	has_limbs = list(
-		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unathi),
-		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unathi),
-		BP_HEAD   = list("path" = /obj/item/organ/external/head/unathi),
-		BP_L_ARM  = list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM  = list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG  = list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG  = list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
+	has_external_organs = list(
+		ORGAN_KEY_EXT_HEAD = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/head/unathi;
+		},
+		ORGAN_KEY_EXT_CHEST = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/chest/unathi;
+		},
+		ORGAN_KEY_EXT_GROIN = /datum/species_organ_entry{
+			override_type = /obj/item/organ/external/groin/unathi;
+		},
+		ORGAN_KEY_EXT_LEFT_ARM,
+		ORGAN_KEY_EXT_LEFT_HAND,
+		ORGAN_KEY_EXT_RIGHT_ARM,
+		ORGAN_KEY_EXT_RIGHT_HAND,
+		ORGAN_KEY_EXT_LEFT_LEG,
+		ORGAN_KEY_EXT_LEFT_FOOT,
+		ORGAN_KEY_EXT_RIGHT_LEG,
+		ORGAN_KEY_EXT_RIGHT_FOOT,
 	)
 
-	//No kidneys or appendix
-	has_organ = list(
-		O_HEART     = /obj/item/organ/internal/heart/unathi,
-		O_LUNGS     = /obj/item/organ/internal/lungs/unathi,
-		O_LIVER     = /obj/item/organ/internal/liver/unathi,
-		O_BRAIN     = /obj/item/organ/internal/brain/unathi,
-		O_EYES      = /obj/item/organ/internal/eyes,
-		O_STOMACH   = /obj/item/organ/internal/stomach/unathi,
-		O_INTESTINE = /obj/item/organ/internal/intestine/unathi,
+	#warn no kidneys, no appendix
+	use_internal_organs = list(
 	)
+
 	vision_organ = O_EYES
 
 	unarmed_types = list(

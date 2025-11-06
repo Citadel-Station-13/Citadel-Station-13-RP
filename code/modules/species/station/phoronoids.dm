@@ -55,15 +55,8 @@
 	death_message = "falls over and stops moving!"
 	knockout_message = "falls over!"
 
-	has_organ = list(
-		O_HEART   = /obj/item/organ/internal/heart,
-		O_LUNGS   = /obj/item/organ/internal/lungs,
-		O_VOICE   = /obj/item/organ/internal/voicebox,
-		O_LIVER   = /obj/item/organ/internal/liver,
-		O_KIDNEYS = /obj/item/organ/internal/kidneys,
-		O_BRAIN   = /obj/item/organ/internal/brain,
-		O_EYES    = /obj/item/organ/internal/eyes,
-	)
+	biology = /datum/biology/organic/phoronoid
+	
 	vision_organ = O_EYES
 
 	cold_level_1 = 200

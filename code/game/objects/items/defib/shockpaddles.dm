@@ -247,7 +247,7 @@
 
 
 /obj/item/shockpaddles/proc/do_electrocute(mob/living/carbon/human/H, mob/user, var/target_zone)
-	var/obj/item/organ/external/affecting = H.get_organ(target_zone)
+	var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(target_zone)
 	if(!affecting)
 		to_chat(user, "<span class='warning'>They are missing that body part!</span>")
 		return

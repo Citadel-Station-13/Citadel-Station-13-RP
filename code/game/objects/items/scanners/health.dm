@@ -228,7 +228,7 @@
 		var/fracture_dat = ""	// All the fractures
 		var/infection_dat = ""	// All the infections
 		var/ib_dat = ""			// All the IB
-		for(var/obj/item/organ/external/e in H.organs)
+		for(var/obj/item/organ/external/e as anything in H.external_organs)
 			if(!e)
 				continue
 			// Broken limbs

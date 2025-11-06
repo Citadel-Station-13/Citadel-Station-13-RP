@@ -245,7 +245,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 /obj/machinery/door/airlock/attack_alien(var/mob/user) //Familiar, right? Doors. -Mechoid
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
-		if(istype(X.species, /datum/species/xenos))
+		if(istype(X.species, /datum/species/xenomorph))
 			if(src.locked || src.welded)
 				visible_message("<span class='green'>\The [user] begins digging into \the [src] internals!</span>")
 				src.do_animate(DOOR_ANIMATION_DENY)
@@ -666,7 +666,7 @@ About the new airlock wires panel:
 
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
-		if(istype(X.species, /datum/species/xenos))
+		if(istype(X.species, /datum/species/xenomorph))
 			src.attack_alien(user)
 			return
 

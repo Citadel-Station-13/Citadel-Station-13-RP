@@ -248,6 +248,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	PROTECTED_PROC(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_ELECTROCUTE_ACT, args)
 	out_energy_consumed = on_electrocute_act(efficiency, energy, damage, stun_power, flags, hit_zone, source, shared_blackboard, out_energy_consumed)
 	return args.Copy()
 
@@ -283,6 +284,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	PROTECTED_PROC(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_ON_ELECTROCUTE_ACT, args)
 	return 0
 
 //* FX API *//

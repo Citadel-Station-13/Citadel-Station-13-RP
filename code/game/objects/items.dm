@@ -481,7 +481,7 @@
 	src.add_fingerprint(user)
 	if(istype(H))
 
-		var/obj/item/organ/internal/eyes/eyes = H.internal_organs_by_name[O_EYES]
+		var/obj/item/organ/internal/eyes/eyes = H.keyed_organs[ORGAN_KEY_EYES]
 
 		if(H != user)
 			for(var/mob/O in (viewers(M) - user - M))
@@ -509,7 +509,7 @@
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You go blind!</span>")
-		var/obj/item/organ/external/affecting = H.get_organ(BP_HEAD)
+		var/obj/item/organ/external/affecting = H.legacy_organ_by_zone(BP_HEAD)
 		affecting.inflict_bodypart_damage(
 			brute = 7,
 		)

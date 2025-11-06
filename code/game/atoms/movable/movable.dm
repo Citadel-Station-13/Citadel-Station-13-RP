@@ -204,10 +204,6 @@
 	unbuckle_all_mobs(BUCKLE_OP_FORCE)
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
-	/*
-	if(loc)
-		loc.handle_contents_del(src)
-	*/
 	var/turf/un_opaque
 	if(opacity && isturf(loc))
 		un_opaque = loc

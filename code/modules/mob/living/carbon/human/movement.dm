@@ -43,7 +43,7 @@
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
-			var/obj/item/organ/external/E = get_organ(organ_name)
+			var/obj/item/organ/external/E = legacy_organ_by_zone(organ_name)
 			if(!E || E.is_stump())
 				tally += 4
 			else if(E.splinted && E.splinted.loc != E)
@@ -52,7 +52,7 @@
 				tally += 1.5
 	else
 		for(var/organ_name in list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT))
-			var/obj/item/organ/external/E = get_organ(organ_name)
+			var/obj/item/organ/external/E = legacy_organ_by_zone(organ_name)
 			if(!E || E.is_stump())
 				tally += 4
 			else if(E.splinted && E.splinted.loc != E)

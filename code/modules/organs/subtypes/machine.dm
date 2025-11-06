@@ -4,7 +4,6 @@
 	icon_state = "scell"
 	organ_tag = O_CELL
 	parent_organ = BP_TORSO
-	vital = 1
 
 /obj/item/organ/internal/cell/Initialize(mapload)
 	. = ..()
@@ -27,12 +26,12 @@
 
 	return
 
+#warn this needs to be a /brain lol
 // Used for an MMI or posibrain being installed into a human.
 /obj/item/organ/internal/mmi_holder
 	name = "brain interface"
 	organ_tag = O_BRAIN
 	parent_organ = BP_HEAD
-	vital = 1
 	var/brain_type = /obj/item/mmi
 	var/obj/item/mmi/stored_mmi
 	robotic = ORGAN_ASSISTED
