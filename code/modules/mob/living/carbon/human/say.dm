@@ -1,5 +1,4 @@
 /mob/living/carbon/human/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
-	var/alt_name = ""
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
 
