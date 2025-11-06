@@ -14,6 +14,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	damage_force = 8
 	throw_force = 10
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/cooldown = 0
 	var/fieldsactive = 0
 	var/burst_time = 50

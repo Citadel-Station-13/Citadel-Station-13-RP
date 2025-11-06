@@ -246,7 +246,7 @@ SUBSYSTEM_DEF(materials)
 			built["tags"] = mat.material_tags
 
 			var/list/constraint_list = list()
-			var/datum/bitfield/single/constraint_bf = new /datum/bitfield/single/material_constraints
+			var/datum/bitfield_legacy/single/constraint_bf = new /datum/bitfield_legacy/single/material_constraints
 			constraint_list += mat.material_constraints //Add the unified constraint
 			for(var/key in constraint_bf.flags)
 				if(constraint_bf.flags[key] & mat.material_constraints)

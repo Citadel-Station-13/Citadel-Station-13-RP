@@ -15,8 +15,6 @@
 	icon_state = "void_explorer"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skrell_suit_black", SLOT_ID_LEFT_HAND = "skrell_suit_black")
 	armor_type = /datum/armor/exploration/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
-	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 	helmet_type = /obj/item/clothing/head/helmet/space/void/exploration
 	worth_intrinsic = 300
 
@@ -63,7 +61,5 @@
 	icon_state = "void_explorer_pf"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skrell_suit_black", SLOT_ID_LEFT_HAND = "skrell_suit_black")
 	armor_type = /datum/armor/exploration/space/pathfinder
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
-	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 	helmet_type = /obj/item/clothing/head/helmet/space/void/exploration/pathfinder
 	worth_intrinsic = 400

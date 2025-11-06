@@ -145,6 +145,7 @@
 	max_combined_volume = null
 	max_combined_weight_class = null
 	max_items = 300
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	storage_datum_path = /datum/object_system/storage/stack
 	ui_expand_when_needed = TRUE
 	insertion_whitelist = list(/obj/item/stack/ore)

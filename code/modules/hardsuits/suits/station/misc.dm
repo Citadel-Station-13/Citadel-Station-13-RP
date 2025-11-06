@@ -9,14 +9,6 @@
 	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	offline_vision_restriction = 0
 
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/storage/briefcase,
-		/obj/item/storage/secure/briefcase
-		)
-
 	glove_type = null
 	helm_type = null
 	boot_type = null

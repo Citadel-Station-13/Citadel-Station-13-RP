@@ -14,6 +14,7 @@
 	icon = 'icons/obj/surgery.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	var/helpforce = 0	//For help intent things
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
