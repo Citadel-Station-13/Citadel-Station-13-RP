@@ -125,6 +125,16 @@
 	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
 	var/cutscene_lockout = FALSE
 
+	//* Mouse *//
+	/// updated by MouseMove()
+	var/mouse_location_last
+	/// updated by MouseMove()
+	var/mouse_control_last
+	/// updated by MouseMove()
+	var/mouse_params_last
+	/// updated by MouseMove()
+	var/list/mouse_params_last_unpacked
+
 	//* UI - Client *//
 	/// our tooltips system
 	var/datum/tooltip/tooltips

@@ -176,8 +176,23 @@
 	var/obj/item/I = M.get_active_held_item()
 	if(!I)
 		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
-	else
-		M.drop_item_to_ground(I)
+		return FALSE
+	if(user.get_preference_toggle(/datum/game_preference_toggle/game/precise_dropping))
+		// they have ss14 dropping on
+		// attempt to resolve current mouse params
+		var/list/maybe_mouse_params
+		if(isturf(user.mouse_location_last) && (maybe_mouse_params = user.get_mouse_params()))
+			// we can attempt to resolve
+			// JUST DECODE IT FOR US WHEN, BYOND??????
+			var/list/decoded = splittext(maybe_mouse_params["screen-loc"], ",")
+			if(length(decoded) == 2)
+				var/list/dpx = splittext(decoded[1])
+				var/list/dpy = splittext(decoded[2])
+				var/px = text2num(dpx[2])
+				var/py = text2num(dpy[2])
+				M.drop_item_to_ground_precisely(I, target_loc = user.mouse_location, target_px = px, target_py = py)
+				return TRUE
+	M.drop_item_to_ground(I)
 	return TRUE
 
 /datum/keybinding/mob/toggle_gun_mode

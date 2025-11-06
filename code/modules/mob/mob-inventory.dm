@@ -384,6 +384,12 @@
 	return owner.drop_item_to_ground(I, inv_op_flags, actor?.performer)
 
 /**
+ * Like `drop_item_to_ground` but precise, like SS14's.
+ */
+/datum/inventory/proc/drop_item_to_ground_precisely(obj/item/dropping, inv_op_flags, datum/event_args/actor/actor, turf/target_loc, target_px, target_py)
+	return owner.drop_item_to_ground_precisely(dropping, inv_op_flags, actor?.performer, target_loc, target_px, target_py)
+
+/**
  * drops an item to ground
  *
  * semantically returns true if the thing is no longer in our inventory after our call, whether or not we dropped it
@@ -400,6 +406,33 @@
 	else if(!is_in_inventory(I))
 		return TRUE
 	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, drop_location(), user)
+
+/mob/proc/drop_item_to_ground_precisely(obj/item/I, flags, mob/user = src, turf/target_loc, target_px, target_py)
+	if(!drop_item_to_ground(I, flags, user))
+		return
+	// so this is complicated
+	// unlike ss14 our reachability systems are... kinda not up to par
+	// the best way to check if we can actually get in there without triggering side effects,
+	// is to literally simulate the move.
+	//
+	// if your shit explodes from the supermatter or something, blame whatever blew it up
+	// for not overriding CanPass properly.
+
+	// 1. must be turf-adjacent
+	if(!Adjacent(target_loc))
+		return
+	// 2. must be able to pass through target turf
+	if(!target_loc.CanPass(I, target_loc))
+		return
+	// 3. must be able to pass through everything on target turf
+	for(var/atom/movable/AM as anything in target_loc.contents)
+		if(!AM.CanPass(I, target_loc))
+			return
+	// 4. move
+	if(!I.Move(target_loc))
+		return
+	// 5. set offsets
+	I.set_pixel_offsets(target_px, target_py)
 
 /**
  * transfers an item somewhere

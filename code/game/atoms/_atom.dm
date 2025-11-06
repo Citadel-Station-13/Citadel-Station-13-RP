@@ -808,19 +808,31 @@
 // todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
 
 /atom/proc/set_pixel_x(val)
+	// if we ever need to override this, add an on_pixel_offsets_changed() or smth
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	pixel_x = val + get_managed_pixel_x()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/set_pixel_y(val)
+	// if we ever need to override this, add an on_pixel_offsets_changed() or smth
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	pixel_y = val + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/set_pixel_offsets(x, y)
+	// if we ever need to override this, add an on_pixel_offsets_changed() or smth
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	pixel_x = x + get_managed_pixel_x()
 	pixel_y = y + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()
+	// if we ever need to override this, add an on_pixel_offsets_changed() or smth
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
@@ -869,6 +881,9 @@
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)
+	// if we ever need to override this, add an on_pixel_offsets_changed() or smth
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(base_pixel_x == new_value)
 		return
 	. = base_pixel_x
@@ -878,6 +893,9 @@
 
 /// Setter for the `base_pixel_y` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_y(new_value)
+	// if we ever need to override this, add an on_pixel_offsets_changed() or smth
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(base_pixel_y == new_value)
 		return
 	. = base_pixel_y
