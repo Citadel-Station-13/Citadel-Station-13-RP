@@ -1120,6 +1120,7 @@
 #include "code\game\atoms\atom-examine.dm"
 #include "code\game\atoms\atom-logging.dm"
 #include "code\game\atoms\atom-materials.dm"
+#include "code\game\atoms\atom-mouse.dm"
 #include "code\game\atoms\atom-radiation.dm"
 #include "code\game\atoms\atom-tool_system-visuals.dm"
 #include "code\game\atoms\atom-tool_system-wrappers.dm"

@@ -181,7 +181,8 @@
 		// they have ss14 dropping on
 		// attempt to resolve current mouse params
 		var/list/maybe_mouse_params
-		if(isturf(user.mouse_predicted_last_turf) && (maybe_mouse_params = user.get_mouse_params()))
+		var/turf/maybe_last_turf
+		if((maybe_last_turf = get_turf(user.mouse_predicted_last_atom)) && (maybe_mouse_params = user.get_mouse_params()))
 			// we can attempt to resolve
 			// JUST DECODE IT FOR US WHEN, BYOND??????
 			var/list/decoded = splittext(maybe_mouse_params["screen-loc"], ",")
@@ -190,7 +191,7 @@
 				var/list/dpy = splittext(decoded[2], ":")
 				var/px = text2num(dpx[2]) - (WORLD_ICON_SIZE * 0.5)
 				var/py = text2num(dpy[2]) - (WORLD_ICON_SIZE * 0.5)
-				M.drop_item_to_ground_precisely(I, target_loc = user.mouse_predicted_last_turf, target_px = px, target_py = py)
+				M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
 				return TRUE
 	M.drop_item_to_ground(I)
 	return TRUE

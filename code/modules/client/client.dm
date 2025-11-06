@@ -132,6 +132,8 @@
 	var/mouse_params_last
 	/// updated by MouseMove()
 	var/list/mouse_params_last_unpacked
+	/// updated by atom/MouseEntered, atom/MouseExited
+	var/atom/mouse_predicted_last_atom
 
 	//* UI - Client *//
 	/// our tooltips system
