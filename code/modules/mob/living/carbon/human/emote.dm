@@ -18,6 +18,7 @@
 		act = copytext(act, 1, t1)
 
 	var/muzzled = is_muzzled()
+	var/dangerous_pass_through_without_sanitizing = FALSE
 
 	for(var/obj/item/organ/O in src.organs)
 		for (var/obj/item/implant/I in O)
@@ -575,6 +576,7 @@
 			if(!param)
 				to_chat(src, usage)
 				return
+			dangerous_pass_through_without_sanitizing = TRUE
 
 			var/t1 = findtext(param, "+", 1, null)
 			var/t2 = findtext(param, "-", 1, null)
@@ -626,7 +628,11 @@
 			return
 
 	if (message)
-		custom_emote(m_type,message)
+		// RAAAAGH I HATE YOU *ROLL
+		if(!dangerous_pass_through_without_sanitizing)
+			message = html_encode(message)
+		for(var/mob/nearby in saycode_view_query(world_view_max_number(), TRUE))
+			nearby.show_message("<b>[src]</b> [message]", SAYCODE_TYPE_ALWAYS)
 
 /mob/living/carbon/human/proc/set_pose(new_pose)
 	pose = sanitize(new_pose)
