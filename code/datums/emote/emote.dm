@@ -83,7 +83,7 @@ GLOBAL_LIST(emote_lookup)
  * to do the menu check.
  */
 /datum/emote/proc/can_potentially_use(datum/event_args/actor/actor, use_emote_class)
-	return emote_class & use_emote_class
+	return (emote_class & use_emote_class) == emote_class
 
 /**
  * @params
