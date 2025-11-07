@@ -107,7 +107,6 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/overmap/entity/visitable/ship/landable/tinycarrier,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/debrisfield_vr/tinyshuttle/crew)
 "an" = (

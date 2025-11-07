@@ -205,6 +205,14 @@
 		src,
 	)
 
+/obj/item/melee/baton/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	. = ..()
+	update_icon()
+
+/obj/item/melee/baton/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	. = ..()
+	update_icon()
+
 /obj/item/melee/baton/update_icon()
 	. = ..()
 	if(active)
@@ -246,6 +254,10 @@
 	charge_cost = 2500
 	attack_verb = list("poked")
 	slot_flags = SLOT_BACK
+
+/obj/item/melee/baton/cattleprod/Initialize(mapload)
+	. = ..()
+	obj_cell_slot.legacy_use_device_cells = FALSE
 
 /obj/item/melee/baton/cattleprod/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/bluespace_crystal))

@@ -50,7 +50,8 @@
 /datum/radiation_wave/proc/start()
 	cycles = 0
 	// we have to stagger a bit, so we preprocess *part* of a 3x3.
-	var/after_center = power * irradiate_turf(source, power)
+	SEND_SIGNAL(source, COMSIG_TURF_RAD_PULSE_ITERATE, power)
+	var/after_center = power * source.rad_insulation * source.rad_insulation_contents
 	if(after_center <= RAD_BACKGROUND_RADIATION)
 		qdel(src)
 		return
@@ -118,16 +119,6 @@
 	spreads_next = list()
 
 /**
- * irradiates a turf
- *
- * returns rad insulation
- */
-/datum/radiation_wave/proc/irradiate_turf(turf/T, power)
-	. = T.rad_insulation * T.rad_insulation_contents
-	T.rad_act(power, src)
-	SEND_SIGNAL(T, COMSIG_ATOM_RAD_PULSE_ITERATE, power, src)
-
-/**
  * returns TRUE / FALSE based on if we're completed.
  */
 /datum/radiation_wave/proc/iterate(ticklimit)
@@ -148,7 +139,8 @@
 		dir = dirs[i]
 		spread = spreads[i]
 
-		power_next = power * irradiate_turf(T, power * inverse_square_factor)
+		SEND_SIGNAL(T, COMSIG_TURF_RAD_PULSE_ITERATE, power * inverse_square_factor)
+		power_next = power * T.rad_insulation * T.rad_insulation_contents
 
 		if(power_next * inverse_square_factor < RAD_BACKGROUND_RADIATION)
 			continue

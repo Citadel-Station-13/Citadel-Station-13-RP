@@ -68,7 +68,6 @@
 	var/usealienwhitelist = 0
 	var/allow_extra_antags = 0
 	var/guests_allowed = 1
-	var/debugparanoid = 0
 	var/paranoia_logging = 0
 
 	var/serverurl
@@ -205,9 +204,6 @@
 
 				if ("multi_z_explosion_scalar")
 					multi_z_explosion_scalar = text2num(value)
-
-				if ("debug_paranoid")
-					config_legacy.debugparanoid = 1
 
 				if ("allow_vote_restart")
 					config_legacy.allow_vote_restart = 1

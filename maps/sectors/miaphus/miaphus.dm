@@ -26,7 +26,9 @@
 	display_name = "Miaphus - Beach"
 	path = "maps/sectors/miaphus/levels/miaphus_beach.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand
-	link_north = /datum/map_level/sector/miaphus/cave
+	struct_x = 0
+	struct_y = 0
+	struct_z = 0
 
 /datum/map_level/sector/miaphus/cave
 	id = "MiaphusCaves192"
@@ -34,12 +36,13 @@
 	display_name = "Miaphus - Caves"
 	path = "maps/sectors/miaphus/levels/miaphus_cave.dmm"
 	base_turf = /turf/simulated/floor/outdoors/rocks/caves
-	link_south = /datum/map_level/sector/miaphus/beach
-	link_west = /datum/map_level/sector/miaphus/desert
+	struct_x = 0
+	struct_y = 1
+	struct_z = 0
 
-/datum/map_level/sector/miaphus/cave/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/miaphus/cave/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
-	additional_generation?.Add(
+	out_generation_callbacks?.Add(
 		CALLBACK(
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
@@ -58,11 +61,13 @@
 	display_name = "Miaphus - Desert"
 	path = "maps/sectors/miaphus/levels/miaphus_desert.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
-	link_east = /datum/map_level/sector/miaphus/cave
+	struct_x = -1
+	struct_y = 1
+	struct_z = 0
 
-/datum/map_level/sector/miaphus/desert/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/miaphus/desert/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
-	additional_generation?.Add(
+	out_generation_callbacks?.Add(
 		CALLBACK(
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),

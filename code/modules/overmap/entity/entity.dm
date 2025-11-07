@@ -25,6 +25,10 @@
 	/// next id
 	var/static/id_next = 0
 
+	//* location *//
+	/// our location, if any
+	var/datum/overmap_location/location
+
 	//* overmap *//
 	/// if we're currently in an overmap; if so, which?
 	var/datum/overmap/overmap
@@ -55,8 +59,14 @@
 	id = "[GLOB.round_id? "[GLOB.round_id]_" : ""][num2text(++id_next, 999)]"
 	return ..()
 
-/obj/overmap/entity/Initialize(mapload)
+/obj/overmap/entity/Initialize(mapload, datum/overmap_location/location)
 	. = ..()
+	// bind location
+	if(location)
+		set_location(location)
+	// join overmap
+	if(isturf(loc) && !overmap && istype(loc.loc, /area/overmap))
+		loc.loc.Entered(src)
 	// init physics
 	initialize_physics()
 	update_velocity_ticking()
@@ -66,6 +76,8 @@
 /obj/overmap/entity/Destroy()
 	// stop physics
 	deactivate_physics()
+	// unbind location
+	QDEL_NULL(location)
 	return ..()
 
 /obj/overmap/entity/set_glide_size(new_glide_size, recursive)
@@ -88,15 +100,3 @@
 
 /obj/overmap/entity/get_bounds_overlay()
 	return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)
-
-/**
- * called when we join an overmap
- */
-/obj/overmap/entity/proc/on_overmap_join(datum/overmap/map)
-	src.overmap = map
-
-/**
- * called when we leave an overmap
- */
-/obj/overmap/entity/proc/on_overmap_leave(datum/overmap/map)
-	src.overmap = map
