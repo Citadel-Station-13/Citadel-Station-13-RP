@@ -11,16 +11,19 @@
 			var/div_slider = slidecolor
 			if(!i["allowed_edit"])
 				div_slider = "locked"
+			var/entry_name = html_encode(i["name"])
+			var/entry_checked = i["checked"]
 			output += {"<li>
 						<label class="switch">
-							<input type="[inputtype]" value="1" name="[i["name"]]"[i["checked"] ? " checked" : ""][i["allowed_edit"] ? "" : " onclick='return false' onkeydown='return false'"]>
+							<input type="[inputtype]" value="1" name="[entry_name]"[entry_checked ? " checked" : ""][i["allowed_edit"] ? "" : " onclick='return false' onkeydown='return false'"] />
 								<div class="slider [div_slider ? "[div_slider]" : ""]"></div>
 									<span>[i["name"]]</span>
 						</label>
 						</li>"}
 	else
 		for (var/i in values)
-			output += {"<li><input id="name="[i["name"]]"" style="width: 50px" type="[type]" name="[i["name"]]" value="[i["value"]]">
+			var/entry_name = html_encode(i["name"])
+			output += {"<li><input id="name="[i["name"]]"" style="width: 50px" type="[type]" name="[entry_name]" value="[i["value"]]" />
 			<label for="[i["name"]]">[i["name"]]</label></li>"}
 	output += {"</ul><div style="text-align:center">
 		<button type="submit" name="button" value="1" style="font-size:large;float:[( Button2 ? "left" : "right" )]">[Button1]</button>"}
