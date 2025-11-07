@@ -369,6 +369,19 @@
 		return
 	return ..()
 
+/obj/item/stack/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	.["split"] = create_context_menu_tuple("split", src, 1, MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP, TRUE)
+
+/obj/item/stack/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("split")
+			// TODO: e-args support
+			attempt_split_stack(e_args.initiator)
+
 /obj/item/stack/alt_clicked_on(mob/user, location, control, list/params)
 	. = ..()
 	if(.)
@@ -376,6 +389,10 @@
 	if(user.Reachability(src) && CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		attempt_split_stack(user)
 		return TRUE
+
+// TODO: THERE HAS TO BE A BETTER FUCKING WAY
+/obj/item/stack/should_list_turf_on_alt_click(mob/user)
+	return FALSE
 
 /obj/item/stack/proc/attempt_split_stack(mob/living/user)
 	if(uses_charge)

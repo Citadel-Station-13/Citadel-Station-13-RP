@@ -12,6 +12,7 @@
 	drill_sound = 'sound/weapons/thudswoosh.ogg'
 	drill_verb = "brushing"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/pickaxe/one_pick
 	name = "2cm pick"
@@ -25,6 +26,7 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/pickaxe/two_pick
 	name = "4cm pick"
@@ -38,6 +40,7 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/pickaxe/three_pick
 	name = "6cm pick"
@@ -51,6 +54,7 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/pickaxe/four_pick
 	name = "8cm pick"
@@ -64,6 +68,7 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/pickaxe/five_pick
 	name = "10cm pick"
@@ -77,6 +82,7 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/pickaxe/six_pick
 	name = "12cm pick"
@@ -90,6 +96,7 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/pickaxe/hand
 	name = "hand pickaxe"
@@ -103,6 +110,7 @@
 	drill_sound = 'sound/items/Crowbar.ogg'
 	drill_verb = "clearing"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pack for holding pickaxes

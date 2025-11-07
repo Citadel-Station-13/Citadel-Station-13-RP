@@ -2,6 +2,7 @@
 /obj/item/melee/baton
 	name = "stunbaton"
 	desc = "A stun baton for incapacitating people with."
+	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stunbaton"
 	item_state = "baton"
@@ -204,6 +205,14 @@
 		src,
 	)
 
+/obj/item/melee/baton/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	. = ..()
+	update_icon()
+
+/obj/item/melee/baton/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	. = ..()
+	update_icon()
+
 /obj/item/melee/baton/update_icon()
 	. = ..()
 	if(active)
@@ -245,6 +254,10 @@
 	charge_cost = 2500
 	attack_verb = list("poked")
 	slot_flags = SLOT_BACK
+
+/obj/item/melee/baton/cattleprod/Initialize(mapload)
+	. = ..()
+	obj_cell_slot.legacy_use_device_cells = FALSE
 
 /obj/item/melee/baton/cattleprod/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/bluespace_crystal))
@@ -330,3 +343,82 @@
 
 /obj/item/melee/baton/loaded/mini/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
 	return FALSE
+
+/obj/item/melee/baton/electrostaff
+	name = "riot suppression electrostaff"
+	desc = "A large quarterstaff with electrodes mounted at the end. Presumably for riot control. Presumably."
+	icon = 'icons/items/electrostaff.dmi'
+	icon_state = "electrostaff"
+	base_icon_state = "electrostaff"
+	slot_flags = SLOT_BACK
+	// TODO: get rid of legacy override for this.
+	item_icons = null
+	melee_click_cd_multiply = 0.75
+	worn_state = "electrostaff"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	stun_power = 40
+	stun_sound = 'sound/effects/lightningshock.ogg'
+	// TODO: either do active parry instead or rework this to not be
+	//       able to parry at 100% everything
+	// TODO: just add a small active parry frame as a test
+	passive_parry = /datum/passive_parry{
+		parry_chance_melee = 35;
+		parry_chance_touch = 40;
+		parry_frame_efficiency = 0.7
+	}
+
+	var/wielded_damage_force = 15
+	var/wielded_damage_tier = 3
+	var/unwielded_damage_force = 7.5
+	var/unwielded_damage_tier = 3
+
+	damage_force = 7.5
+	damage_tier = 3
+
+	// :trol:
+	cell_type = /obj/item/cell/infinite
+
+/obj/item/melee/baton/electrostaff/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/wielding)
+
+/obj/item/melee/baton/electrostaff/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	return FALSE
+
+/obj/item/melee/baton/electrostaff/update_icon()
+	. = ..()
+	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
+		icon_state = inhand_state = base_icon_state
+		return
+	var/use_state = "[base_icon_state]-wield"
+	if(active)
+		use_state = "[use_state]-blue"
+	icon_state = inhand_state = use_state
+	update_worn_icon()
+
+/obj/item/melee/baton/electrostaff/on_wield(mob/user, hands)
+	..()
+	damage_force = wielded_damage_force
+	damage_tier = wielded_damage_tier
+
+/obj/item/melee/baton/electrostaff/on_unwield(mob/user, hands)
+	// TODO: ..() updates icon. can we skip it?
+	..()
+	deactivate()
+	damage_force = unwielded_damage_force
+	damage_tier = unwielded_damage_tier
+
+/obj/item/melee/baton/electrostaff/user_clickchain_toggle_active(datum/event_args/actor/actor)
+	if(!active && !(item_flags & ITEM_MULTIHAND_WIELDED))
+		actor.chat_feedback(
+			SPAN_WARNING("[src] needs to be wielded with both hands to be activated."),
+			target = src,
+		)
+		return TRUE
+	return ..()
+
+/obj/item/melee/baton/electrostaff/activate(silent, force)
+	// we have no icon for it so don't allow it in literally any case
+	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
+		return FALSE
+	return ..()

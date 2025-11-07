@@ -13,6 +13,7 @@
 	colorable = TRUE
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/can_combine = TRUE
 
 	active_damage_force = 30
@@ -32,6 +33,7 @@
 		SPAN_WARNING("You energize \the [src]."),
 		target = src,
 	)
+	suit_storage_class = NONE
 
 /obj/item/melee/transforming/energy/sword/on_deactivate(datum/event_args/actor/actor, silent)
 	. = ..()
@@ -39,6 +41,7 @@
 		SPAN_WARNING("You de-energize \the [src]."),
 		target = src,
 	)
+	suit_storage_class = initial(suit_storage_class)
 
 /obj/item/melee/transforming/energy/sword/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	. = ..()

@@ -47,6 +47,8 @@
 /datum/species/shapeshifter/holosphere/proc/can_revive(mob/living/carbon/human/H, revive_cost)
 	if(H.stat != DEAD)
 		return FALSE
+	if(holosphere_shell.stat == DEAD)
+		return FALSE
 	var/time_passed = world.time - last_death_time
 	if(time_passed < hologram_death_duration)
 		return FALSE

@@ -20,7 +20,6 @@
 	weight = ITEM_WEIGHT_VOIDSUIT
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/merc/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/head/helmet/space/void/merc/fire
@@ -38,7 +37,6 @@
 	desc = "A blackened suit that has had many of its protective plates coated in or replaced with high-grade thermal insulation, to protect against incineration. Property of Gorlex Marauders."
 	armor_type = /datum/armor/merc/space/ghostrider
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs,/obj/item/material/twohanded/fireaxe,/obj/item/flamethrower)
 	siemens_coefficient = 0.7
 
 //Soviet Void Suit
@@ -91,7 +89,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/merc/space/clown
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 
 //Four below avalible through cargo
@@ -111,7 +108,6 @@
 	desc = "One of the few combat-grade suits avalible in the frontier, and the poster-child of Hephaestus Industries. Comes equipped with a wrist-bound oxygen timer."
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/station/secsuit
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
 	helmet_type = /obj/item/clothing/head/helmet/space/void/odst
@@ -131,7 +127,6 @@
 	desc = "A standard Icarus line suit that has been repourposed to protect from heavier biohazards."
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/exploration/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
 	helmet_type = /obj/item/clothing/head/helmet/space/void/odst_med
@@ -151,7 +146,6 @@
 	desc = "Favoured suit of deep-space engineers, comfortable and comparable to suits avalible to Nanotrasen Engineers. Comes equipped with a wrist-bound oxygen timer."
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/engineering/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
 	helmet_type = /obj/item/clothing/head/helmet/space/void/odst_eng
@@ -171,7 +165,6 @@
 	desc = "Cheaper version of the main Icarus line, often marketed to Frontier settlements. Perfect for Expeditions."
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/exploration/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
 	helmet_type = /obj/item/clothing/head/helmet/space/void/odst_exp
@@ -195,7 +188,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/merc/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null
 	helmet_type = /obj/item/clothing/head/helmet/space/void/odst_necro
@@ -207,6 +199,5 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/merc/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs)
 	siemens_coefficient = 0.6
 	species_restricted = null

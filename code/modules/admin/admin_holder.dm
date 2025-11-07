@@ -38,10 +38,12 @@
 /datum/admins/proc/register_admin_planes(client/user)
 	var/atom/movable/screen/plane_master/maybe_admin_plane = user.global_planes?.by_plane_type(/atom/movable/screen/plane_master/admin)
 	maybe_admin_plane?.alpha = 255
+	maybe_admin_plane?.mouse_opacity = MOUSE_OPACITY_ICON
 
 /datum/admins/proc/unregister_admin_planes(client/user)
 	var/atom/movable/screen/plane_master/maybe_admin_plane = user.global_planes?.by_plane_type(/atom/movable/screen/plane_master/admin)
 	maybe_admin_plane?.alpha = 0
+	maybe_admin_plane?.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /datum/admins/proc/add_admin_verbs()
 	if(!owner)

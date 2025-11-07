@@ -126,6 +126,7 @@
 	ASSERT(isnull(obj_cell_slot))
 	obj_cell_slot = new(src)
 	if(initial_cell_path)
+		// The first cell intentionally doesn't call wrappers.
 		obj_cell_slot.cell = new initial_cell_path
 	return obj_cell_slot
 

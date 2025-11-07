@@ -27,7 +27,7 @@
 	 * This line prevents that, and has never appeared to cause any ill effects, while saving us an extra
 	 * pain to think about
 	 *
-	 * This line is widely considered black fucking magic, and the fact it works is a puzzle to everyone
+	 * This line is widely considdered black fucking magic, and the fact it works is a puzzle to everyone
 	 * involved, including the current engine developer, lummox
 	 *
 	 * If you are a future developer and the engine source is now available and you can explain why this
@@ -130,6 +130,8 @@
 	var/datum/tooltip/tooltips
 	/// statpanel
 	var/datum/client_statpanel/tgui_stat
+	// todo: just have a client panel, don't make this separate
+	var/datum/client_view_playtime/legacy_playtime_viewer
 
 	//* UI - Map *//
 	/// Our action drawer
@@ -137,9 +139,11 @@
 	/// Our actor HUD holder
 	var/datum/actor_hud_holder/actor_huds
 
-	// todo: just have a client panel, don't make this separate
-	var/datum/client_view_playtime/legacy_playtime_viewer
-
+	//* Upload *//
+	/// currently prompting for upload
+	VAR_PRIVATE/upload_mutex = FALSE
+	/// current upload prompt's max file size
+	VAR_PRIVATE/upload_current_sizelimit
 
 		////////////////
 		//ADMIN THINGS//

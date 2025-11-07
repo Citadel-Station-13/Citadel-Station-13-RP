@@ -37,7 +37,7 @@ export const GasTemperatureSystem = (props) => {
                 maxValue={100}
                 stepPixelSize={1}
                 value={powerSetting}
-                onChange={(e, val) => act("setPower", { value: val })}
+                onChange={(val) => act("setPower", { value: val })}
               />
             </LabeledControls.Item>
             <LabeledControls.Item label="Gas Pressure">
@@ -64,7 +64,7 @@ export const GasTemperatureSystem = (props) => {
             format={value => (gasTemperature + " / " + round(value, 1))}
             unit="K"
             color={gasTemperatureClass}
-            onChange={(e, val) => act("setGasTemperature", { temp: val })} />
+            onChange={(val) => act("setGasTemperature", { temp: val })} />
         </Section>
       </Window.Content>
     </Window>

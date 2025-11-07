@@ -14,7 +14,6 @@
 	icon_state = "rig-engineering"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "eng_voidsuit", SLOT_ID_LEFT_HAND = "eng_voidsuit")
 	armor_type = /datum/armor/engineering/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/storage/bag/ore,/obj/item/t_scanner,/obj/item/pickaxe, /obj/item/rcd)
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
 	max_pressure_protection = 15 * ONE_ATMOSPHERE
 	helmet_type = /obj/item/clothing/head/helmet/space/void/engineering
@@ -75,7 +74,6 @@
 	desc = "A hand-me-down salvage voidsuit. It has obviously had a lot of repair work done to its radiation shielding."
 	icon_state = "rig-engineeringsav"
 	armor_type = /datum/armor/engineering/space/salvage
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/storage/toolbox,/obj/item/storage/briefcase/inflatable,/obj/item/t_scanner,/obj/item/rcd)
 	helmet_type = /obj/item/clothing/head/helmet/space/void/engineering/salvage
 
 //Atmospherics
