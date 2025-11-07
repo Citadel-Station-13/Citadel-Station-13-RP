@@ -7,7 +7,6 @@
 		/datum/species/xenos::id,
 		/datum/species/xenohybrid::id,
 	)
-	binding_prefix = "xeno"
 
 /datum/emote/standard/basic/species/promethean/check_species(mob/actor)
 	if(istype(actor, /mob/living/simple_mob/animal/space/xenomorph))

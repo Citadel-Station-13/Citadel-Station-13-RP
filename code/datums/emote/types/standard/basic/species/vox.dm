@@ -4,7 +4,6 @@
 /datum/emote/standard/basic/species/vox
 	abstract_type = /datum/emote/standard/basic/species/vox
 	required_species_id = /datum/species/vox::id
-	binding_prefix = "vox"
 
 /datum/emote/standard/basic/species/vox/shriek_loud
 	bindings = list(

@@ -3,7 +3,6 @@
 
 /datum/emote/standard/basic/species/promethean
 	abstract_type = /datum/emote/standard/basic/species/promethean
-	binding_prefix = "slime"
 	required_species_id = /datum/species/shapeshifter/promethean::id
 
 /datum/emote/standard/basic/species/promethean/check_species(mob/actor)
