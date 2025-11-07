@@ -100,7 +100,7 @@
 	var/our_emote_class = get_usable_emote_class()
 	var/datum/event_args/actor/actor = new(src)
 	for(var/datum/emote/emote as anything in GLOB.emotes)
-		if(!emote.can_potentially_use(src, our_emote_class))
+		if(!emote.can_potentially_use(actor, our_emote_class))
 			continue
 		. += emote
 

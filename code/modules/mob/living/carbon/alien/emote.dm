@@ -63,12 +63,6 @@
 		if("sulk")
 			message = "<B>The [src.name]</B> sulks down sadly."
 			m_type = 1
-		if("twitch")
-			message = "<B>The [src.name]</B> twitches."
-			m_type = 1
-		if("twitch_v")
-			message = "<B>The [src.name]</B> twitches violently."
-			m_type = 1
 		if("dance")
 			if (!src.restrained())
 				message = "<B>The [src.name]</B> dances around happily."
@@ -87,9 +81,6 @@
 		if("jump")
 			message = "<B>The [src.name]</B> jumps!"
 			m_type = 1
-		if("hiss_")
-			message = "<B>The [src.name]</B> hisses softly."
-			m_type = 1
 		if("collapse")
 			afflict_unconscious(20 * 2)
 			message = "<B>[src]</B> collapses!"
@@ -99,7 +90,7 @@
 			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
 			m_type = 2
 		if("help")
-			to_chat(src, "burp, chirp, choke, collapse, dance, drool, gasp, shiver, gnarl, jump, moan, nod, roll, scratch,\nscretch, shake, sign-#, sulk, sway, tail, twitch, whimper")
+			to_chat(src, "burp, chirp, choke, collapse, dance, drool, gasp, shiver, gnarl, jump, moan, nod, roll, scratch,\nscretch, shake, sign-#, sulk, sway, tail, whimper")
 		else
 			to_chat(src, "Invalid Emote: [act]")
 	if ((message && src.stat == 0))
