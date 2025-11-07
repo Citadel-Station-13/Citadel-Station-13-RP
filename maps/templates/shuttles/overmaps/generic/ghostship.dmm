@@ -50,7 +50,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/ghostship/atmospherics)
 "aj" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ak" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,

@@ -512,7 +512,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "abE" = (
 /obj/structure/table/marble,
@@ -668,7 +668,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
 "acd" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ace" = (
 /obj/structure/table/hardwoodtable,
@@ -3765,7 +3765,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ako" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -12791,7 +12791,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "aIU" = (
 /obj/machinery/light{
@@ -15938,7 +15938,7 @@
 /area/tradeport/safarizoo)
 "aRT" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "aRU" = (
 /obj/structure/window/reinforced/tinted{
@@ -17538,7 +17538,7 @@
 "aWt" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/structure/curtain/open/black,
-/turf/space/basic,
+/turf/space,
 /area/sector/nebula_tradeport/motel/vip)
 "aWu" = (
 /obj/structure/table/rack/shelf/steel,
@@ -18747,7 +18747,7 @@
 	landmark_tag = "nebula_dock_3sdf";
 	name = "Nebula Pad South Dock (SDF)"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "bbg" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -18891,7 +18891,7 @@
 "bkD" = (
 /obj/structure/transit_tube,
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/tradeport/spine)
 "blL" = (
 /turf/simulated/wall/wood,
@@ -19565,7 +19565,7 @@
 /area/tradeport/commons)
 "cTW" = (
 /obj/structure/catwalk,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "cUz" = (
 /obj/structure/shuttle/engine/heater{
@@ -19628,7 +19628,7 @@
 	dir = 4
 	},
 /obj/structure/railing/grey,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "cXp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -19658,7 +19658,7 @@
 	landmark_tag = "nebula_space_S2";
 	name = "Near Nebulous Gas (S2)"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "cZc" = (
 /obj/machinery/shipsensors,
@@ -19685,7 +19685,7 @@
 	landmark_tag = "nebula_space_S";
 	name = "Near Nebulous Gas (S)"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "dgm" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -20052,7 +20052,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "dOZ" = (
 /obj/machinery/light/small,
@@ -20313,7 +20313,7 @@
 /area/sector/nebula_tradeport/engineering)
 "eiW" = (
 /obj/structure/railing/grey,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ejy" = (
 /obj/effect/floor_decal/corner/blue/border{
@@ -20354,7 +20354,7 @@
 	dir = 8
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "eok" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -20503,7 +20503,7 @@
 /area/sector/nebula_tradeport/motel/room2)
 "eCM" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/space/basic,
+/turf/space,
 /area/sector/nebula_tradeport/motel/vip)
 "eDY" = (
 /obj/structure/bed/pod,
@@ -20695,7 +20695,7 @@
 	landmark_tag = "nebula_space_SE";
 	name = "Near Nebulous Gas (SE)"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "eXQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20989,7 +20989,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "fGM" = (
 /obj/effect/floor_decal/techfloor{
@@ -21811,7 +21811,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "hIR" = (
 /obj/structure/bed/chair/sofa/red/left{
@@ -22319,7 +22319,7 @@
 /area/tradeport/spine)
 "iKA" = (
 /obj/overmap/entity/visitable/sector/trade_post,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "iPg" = (
 /obj/structure/table/reinforced,
@@ -24402,7 +24402,7 @@
 	landmark_tag = "nebula_dock_3";
 	name = "Nebula Pad South Dock"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "nBl" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -25849,7 +25849,7 @@
 	dir = 4
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "rmx" = (
 /obj/machinery/light{
@@ -26083,7 +26083,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "rRx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -26102,7 +26102,7 @@
 /area/sector/nebula_tradeport/motel/arcade)
 "rSX" = (
 /obj/structure/transit_tube,
-/turf/space/basic,
+/turf/space,
 /area/tradeport/spine)
 "rVS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -26520,7 +26520,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "taf" = (
 /obj/structure/railing{
@@ -27138,7 +27138,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "uxR" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
@@ -27468,7 +27468,7 @@
 	landmark_tag = "nebula_space_SW2";
 	name = "Near Nebulous Gas (SW2)"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "vtL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27790,7 +27790,7 @@
 	landmark_tag = "nebula_space_SW";
 	name = "Near Nebulous Gas (SW)"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "wpW" = (
 /obj/machinery/light/flamp,
@@ -27901,7 +27901,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "wBy" = (
 /obj/structure/sink/kitchen{
@@ -28333,7 +28333,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xGT" = (
 /obj/structure/table/carbon/reinforced,
@@ -28419,7 +28419,7 @@
 /area/sector/nebula_tradeport/motel/room6)
 "xTU" = (
 /obj/structure/railing,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xUm" = (
 /obj/structure/cable/yellow{
@@ -28458,7 +28458,7 @@
 "xYE" = (
 /obj/structure/lattice,
 /obj/structure/railing/grey,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xYQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -28645,7 +28645,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "yjZ" = (
 /turf/simulated/floor/tiled/old_tile/beige,

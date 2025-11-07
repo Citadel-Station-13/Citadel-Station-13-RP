@@ -153,6 +153,7 @@
 	damage_force = 10
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	throw_force_multiplier = 1.5
 	throw_speed = 5
@@ -190,15 +191,13 @@
 
 /obj/item/material/twohanded/spear/AltClick(mob/user)
 	. = ..()
-	if(usr)
-		..()
-		if(!explosive)
-			return
-		if(istype(user) && loc == user)
-			var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
-			if(input)
-				src.war_cry = input
-		return TRUE
+	if(!explosive)
+		return
+	if(istype(user) && loc == user)
+		var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
+		if(input)
+			src.war_cry = input
+	return TRUE
 
 /obj/item/material/twohanded/spear/CheckParts(list/parts_list)
 	var/obj/item/material/twohanded/spear/S = locate() in parts_list

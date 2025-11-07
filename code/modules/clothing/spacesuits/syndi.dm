@@ -11,7 +11,6 @@
 	icon_state = "syndicate"
 	desc = "A crimson spacesuit sporting clean lines and durable plating. Robust, reliable, and slightly suspicious."
 	w_class = WEIGHT_CLASS_NORMAL
-	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/transforming/energy/sword,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen)
 	armor_type = /datum/armor/agent/space
 	siemens_coefficient = 0.6
 

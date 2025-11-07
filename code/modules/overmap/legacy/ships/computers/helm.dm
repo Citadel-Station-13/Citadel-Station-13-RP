@@ -293,3 +293,23 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		icon_state = "tele_nav"
 		set_light(light_range_on, light_power_on)
 	..()
+
+/obj/machinery/computer/ship/helm/verb/rename()
+	// ideally this would be a ui action but alas
+	set name = "Rename Vessel"
+	set category = VERB_CATEGORY_OBJECT
+	set src in oview(1)
+
+	if(!linked){
+		to_chat(usr, "<span class='warning'>No vessel associated to this console!</span>")
+		return
+	}
+
+	var/input_name = input(usr, "How would you like to label the vessel? NOTE: For faction characters and players, it is IMPERATIVE that you add your faction prefix to this i.e 'NEV' or 'FTU'.", "Vessel Labelling", null) as text|null
+	if(!input_name)
+		return
+	var/sanitized_name = sanitizeSafe(input_name, MAX_NAME_LEN)
+	to_chat(usr, SPAN_NOTICE("You rename the vessel from [linked.name] to [sanitized_name]."))
+	message_admins("[key_name_admin(usr)] has renamed vessel to [sanitized_name].")
+	log_world("[key_name(usr)] has renamed vessel to [sanitized_name].")
+	linked.name = sanitized_name

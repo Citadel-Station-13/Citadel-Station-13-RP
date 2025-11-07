@@ -1,36 +1,36 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "d" = (
 /obj/machinery/porta_turret/alien,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "f" = (
 /turf/simulated/shuttle/floor/alienplating,
 /area/space)
 "g" = (
 /obj/structure/prop/alien,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "n" = (
 /obj/structure/loot_pile/surface/alien,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "s" = (
 /obj/structure/bed/alien,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "x" = (
 /obj/machinery/door/airlock/alien,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "y" = (
 /turf/simulated/shuttle/wall/alien,
 /area/space)
 "D" = (
 /obj/structure/closet/alien,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "H" = (
 /turf/simulated/shuttle/wall/alien/no_join,
@@ -46,7 +46,7 @@
 /area/space)
 "V" = (
 /obj/machinery/porta_turret/alien/destroyed,
-/turf/space/basic,
+/turf/space,
 /area/space)
 
 (1,1,1) = {"

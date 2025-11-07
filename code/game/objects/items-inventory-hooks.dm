@@ -16,7 +16,7 @@
 	return ..()
 
 // todo: this is fucking awful
-/obj/item/Move(atom/newloc, direct, glide_size_override)
+/obj/item/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
 	if(!worn_slot)
 		return ..()
 	var/mob/M = get_worn_mob()

@@ -106,6 +106,7 @@
 	icon_state = "flintlock"
 	item_state = "sawnshotgun"
 	wielded_item_state = null
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	w_class = WEIGHT_CLASS_NORMAL

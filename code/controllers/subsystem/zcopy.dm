@@ -127,6 +127,7 @@ SUBSYSTEM_DEF(zcopy)
 		if (isturf(A))
 			T = A
 			if (T.mz_flags & MZ_MIMIC_BELOW)
+				flush_z_state(T)
 				T.update_mimic()
 				num_turfs += 1
 
@@ -374,7 +375,7 @@ SUBSYSTEM_DEF(zcopy)
 			var/atom/movable/openspace/turf_mimic/DC = T.below.mimic_above_copy
 			DC.appearance = T.below
 			DC.mouse_opacity = initial(DC.mouse_opacity)
-			DC.plane = OPENTURF_MAX_PLANE
+			DC.plane = OPENTURF_MAX_PLANE - 1	// virtual depth of 1
 
 		else if (T.below.mimic_above_copy)
 			QDEL_NULL(T.below.mimic_above_copy)
@@ -397,7 +398,8 @@ SUBSYSTEM_DEF(zcopy)
 
 			// Special case: these are merged into the shadower to reduce memory usage.
 			if (object.type == /atom/movable/lighting_overlay)
-				T.shadower.copy_lighting(object, !(T.below.mz_flags & MZ_NO_SHADOW))
+				shadower_set = TRUE
+				T.shadower.copy_lighting(object)
 				continue
 
 			// If an atom already has an overlay, we probably don't need to discover it again.

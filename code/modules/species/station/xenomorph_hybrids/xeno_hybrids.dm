@@ -165,6 +165,7 @@
 		/mob/living/carbon/human/proc/hide_horns,
 		/mob/living/carbon/human/proc/hide_wings,
 		/mob/living/carbon/human/proc/hide_tail,
+		/mob/living/carbon/human/proc/psychic_whisper,
 		)
 
 	abilities = list(

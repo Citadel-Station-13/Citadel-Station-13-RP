@@ -9,6 +9,7 @@
 	item_state = "welder"
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WELDER
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	//Amount of OUCH when it's thrown
 	damage_force = 3.0
