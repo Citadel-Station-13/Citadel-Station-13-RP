@@ -8,7 +8,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/gunpod)
 	wreckage = /obj/effect/decal/mecha_wreckage/gunpod
 
-	ground_capable = TRUE
+	flight_works_in_gravity = TRUE
 
 	// Paint colors! Null if not set.
 	var/stripe1_color

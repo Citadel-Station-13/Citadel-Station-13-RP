@@ -13,7 +13,7 @@
 	comp_armor_relative_thickness = 1.45 * /obj/vehicle/sealed/mecha/fighter::comp_armor_relative_thickness
 	comp_hull_relative_thickness = 1.45 * /obj/vehicle/sealed/mecha/fighter::comp_hull_relative_thickness
 
-	ground_capable = FALSE
+	flight_works_in_gravity = FALSE
 
 	integrity = 500
 	integrity_max = 500

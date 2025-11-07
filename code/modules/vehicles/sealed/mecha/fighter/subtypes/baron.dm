@@ -14,7 +14,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/baron)
 	wreckage = /obj/effect/decal/mecha_wreckage/baron
 
-	ground_capable = FALSE
+	flight_works_in_gravity = FALSE
 
 /obj/vehicle/sealed/mecha/fighter/baron/equipped
 	modules = list(

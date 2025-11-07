@@ -18,7 +18,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/cludge)
 	wreckage = /obj/effect/decal/mecha_wreckage/cludge
 
-	ground_capable = TRUE
+	flight_works_in_gravity = TRUE
 
 /obj/effect/decal/mecha_wreckage/cludge
 	name = "Cludge wreckage"

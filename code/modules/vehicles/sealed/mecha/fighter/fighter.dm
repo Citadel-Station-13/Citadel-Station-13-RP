@@ -15,12 +15,8 @@
 	name = "Delete me, nerd!!"
 	desc = "The base type of fightercraft. Don't spawn this one!"
 	opacity = FALSE
-
-	var/datum/effect_system/ion_trail_follow/ion_trail
-	var/landing_gear_raised = FALSE //If our anti-space-drift is on
-	var/ground_capable = FALSE //If we can fly over normal turfs and not just space
-
-	icon = 'icons/mecha/fighters64x64.dmi' //See ATTRIBUTIONS.md for details on license
+	//See ATTRIBUTIONS.md for details on license
+	icon = 'icons/mecha/fighters64x64.dmi'
 
 	icon_state = ""
 	initial_icon = ""
@@ -51,7 +47,15 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 	)
 
-	var/in_gravity_damage = 20
+	/// We're FLYYYYING
+	var/flight_mode = FALSE
+	/// Can fly in gravity
+	var/flight_works_in_gravity = TRUE
+	/// base speed on ground
+	var/ground_base_movement_Speed = 2
+
+	/// legacy: ion trail when flying
+	var/datum/effect_system/ion_trail_follow/ion_trail
 
 /obj/vehicle/sealed/mecha/fighter/Initialize(mapload)
 	. = ..()
@@ -83,17 +87,6 @@
 		landing_gear_raised = !landing_gear_raised
 		src.occupant_message("<span class='notice'>Landing gear [landing_gear_raised? "raised" : "lowered"].</span>")
 
-/obj/vehicle/sealed/mecha/fighter/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_landing_gear=1'><span id="landing_gear_command">[landing_gear_raised?"Raise":"Lower"] landing gear</span></a><br>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
-
 /obj/vehicle/sealed/mecha/fighter/can_ztravel()
 	return (landing_gear_raised && has_charge(step_energy_drain))
 
@@ -102,7 +95,6 @@
 /obj/vehicle/sealed/mecha/fighter/check_for_support()
 	if (landing_gear_raised)
 		return 1
-
 	return ..()
 
 // No falling if we've got our boosters on
@@ -111,7 +103,6 @@
 		return FALSE
 	else
 		return TRUE
-
 
 /obj/vehicle/sealed/mecha/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()

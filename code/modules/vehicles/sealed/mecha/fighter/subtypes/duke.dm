@@ -22,7 +22,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/duke)
 	wreckage = /obj/effect/decal/mecha_wreckage/duke
 
-	ground_capable = FALSE
+	flight_works_in_gravity = FALSE
 
 /obj/vehicle/sealed/mecha/fighter/duke/equipped
 	modules = list(
