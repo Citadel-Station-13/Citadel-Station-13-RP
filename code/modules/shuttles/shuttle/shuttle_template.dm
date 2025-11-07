@@ -83,14 +83,14 @@
 	var/height = parsed_map.height
 
 	// make reservation
-	var/datum/turf_reservation/reservation = SSmapping.request_block_reservation(
+	var/datum/map_reservation/reservation = SSmapping.request_block_reservation(
 		width + 2,
 		height + 2,
-		/datum/turf_reservation,
+		/datum/map_reservation,
 	)
 
 	// create context
-	var/datum/dmm_context/context = create_dmm_context()
+	var/datum/dmm_context/context = new
 	context.mangling_id = generate_mangling_id()
 	for(var/datum/map_injection/injection as anything in map_injections)
 		context.register_injection(injection)

@@ -4,7 +4,7 @@
 SUBSYSTEM_DEF(overmap_physics)
 	name = "Overmap Physics"
 	priority = FIRE_PRIORITY_OVERMAP_PHYSICS
-	subsystem_flags = SS_NO_INIT
+	subsystem_flags = NONE
 	wait = 0.25
 
 	/// processing
@@ -12,19 +12,40 @@ SUBSYSTEM_DEF(overmap_physics)
 	/// currentrun
 	var/list/obj/overmap/entity/running
 
+	//*                    Global Tuning                       *//
+	//* Sim tuning goes in here; not balance                   *//
+	//* Example: 'thrust mult' is balance, 'sim speed' is sim. *//
+
+	/// hard movement limit in pixels / tick
+	///
+	/// * should be at or below 4 to prevent clipping through
+	var/global_interpolate_limit = 4
+	var/tmp/global_interpolate_limit_as_per_second = INFINITY
+
 /datum/controller/subsystem/overmap_physics/fire(resumed)
 	if(!resumed)
 		src.running = src.moving.Copy()
 	var/list/obj/overmap/entity/running = src.running
-	// tick_lag is in deciseconds
-	// in ticker, our wait is that many ds
-	// in non-ticker, our wait is either wait in ds, or a minimum of tick_lag in ds
-	// we convert it to seconds with * 0.1
-	var/dt = (subsystem_flags & SS_TICKER? (wait * world.tick_lag) : max(world.tick_lag, wait)) * 0.1
 	var/index = 0
 	for(index in length(running) to 1 step -1)
 		var/obj/overmap/entity/to_run = running[index]
-		to_run.physics_tick(dt)
+		to_run.physics_tick(nominal_dt_s)
 		if(MC_TICK_CHECK)
 			break
 	running.len -= length(running) - index
+
+/datum/controller/subsystem/overmap_physics/proc/set_global_interpolate_limit(pixels_per_tick)
+	global_interpolate_limit = pixels_per_tick
+	global_interpolate_limit_as_per_second = pixels_per_tick * ((1 SECONDS) / nominal_dt_ds)
+
+	// go through all moving entities and make sure they're not speeding
+	// sorry no breaking the galactic speed limit (clearly not the speed of light anymore)
+	for(var/obj/overmap/entity/entity as anything in moving)
+		// this will run it through interpolate limit check again
+		// and preserve angle
+		entity.set_velocity(entity.vel_x, entity.vel_y)
+
+/datum/controller/subsystem/overmap_physics/recompute_wait_dt()
+	..()
+	// update interpolate limit
+	set_global_interpolate_limit(global_interpolate_limit)

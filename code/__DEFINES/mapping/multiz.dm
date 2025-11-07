@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-//* fall_Flags *//
+//* fall_flags *//
 
 /// Falling should ignore anchored status
 #define FALL_IGNORE_ANCHORED		(1<<0)
