@@ -57,7 +57,7 @@
 		else if(target!=locked)
 			if(locked in view(chassis))
 				next_fire = world.time + fire_delay
-				#warn log
+				vehicle_log_for_admins("threw [locked] ([COORD(locked)]) at [target] ([COORD(target)]) by [key_name(usr)]")
 				locked.throw_at_old(target, 14, 1.5, chassis)
 				locked_atom_weakref = null
 				chassis.use_power(energy_drain)
@@ -73,7 +73,7 @@
 		else
 			atoms = orange(target,3)
 		next_fire = world.time + fire_delay
-		#warn log
+		vehicle_log_for_admins("gravpulsed on [target] ([COORD(target)]) by [key_name(usr)]")
 		for(var/atom/movable/A in atoms)
 			if(A.anchored)
 				continue

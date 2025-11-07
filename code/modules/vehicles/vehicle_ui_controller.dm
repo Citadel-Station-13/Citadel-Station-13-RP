@@ -52,6 +52,9 @@
 				return TRUE
 			#warn impl
 			return TRUE
+		if("selectActiveClickModule")
+			#warn impl
+			return TRUE
 
 /datum/vehicle_ui_controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -58,11 +58,11 @@
 /**
  * @return TRUE for success, FALSE otherwise
  */
-/obj/vehicle/proc/set_active_click_module(obj/item/vehicle_module/module)
+/obj/vehicle/proc/set_active_click_module(obj/item/vehicle_module/module, silent)
 	#warn impl
 
 /**
  * @return new module or null or FALSE if none available
  */
-/obj/vehicle/proc/cycle_active_click_modules(allow_deselect = TRUE) as /obj/item/vehicle_module
+/obj/vehicle/proc/cycle_active_click_modules(allow_deselect = TRUE, silent) as /obj/item/vehicle_module
 	#warn impl

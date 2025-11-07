@@ -837,8 +837,8 @@
 
 /obj/vehicle/sealed/mecha/return_air()
 	RETURN_TYPE(/datum/gas_mixture)
-	var/obj/item/vehicle_component/mecha_gas/GC = internal_components[MECH_GAS]
-	if(use_internal_tank && GC && prob(GC.get_efficiency() * 100))
+	// TODO: penalize for life support being damaged. proper cabin air sim?
+	if(use_internal_tank)
 		return cabin_air
 	return loc?.return_air()
 
