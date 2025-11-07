@@ -247,6 +247,7 @@
 	plane = ADMIN_PLANE
 	default_invisible = TRUE
 	client_global = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/plane_master/observer
 	plane = OBSERVER_PLANE

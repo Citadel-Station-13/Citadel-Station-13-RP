@@ -1,7 +1,6 @@
-/obj/item/hardsuit/attackby(obj/item/W as obj, mob/living/user as mob)
-	if(!istype(user))
-		return 0
-
+/obj/item/hardsuit/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	var/obj/item/W = using
+	var/mob/user = clickchain.performer
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
@@ -166,15 +165,13 @@
 	for(var/obj/item/hardsuit_module/module in installed_modules)
 		if(module.accepts_item(W,user)) //Item is handled in this proc
 			return
-	..()
-
+	return ..()
 
 /obj/item/hardsuit/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
-	..()
+	return ..()
 
 /obj/item/hardsuit/emag_act(var/remaining_charges, var/mob/user)
 	if(!subverted)

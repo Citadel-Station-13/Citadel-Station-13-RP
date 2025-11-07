@@ -1,10 +1,13 @@
 /**
- * DO NOT MOVE THIS FILE. EVER. THIS ABSOLUTELY MUST GO RIGHT AFTER COMPLE OPTIONS, BECAUSE WE **NEED** THESE DATUMS TO INIT BEFORE **ANY** OTHER IMPLICIT INIT PROCS!
+ * Do not move this file. This must be the last file, because BYOND
+ * initializes global / static variables in reverse order.
+ *
+ * * GLOBAL_VAR defines will not work here, so they're done manually.
  */
 
-//! Log shunting - ENSURE shunt_redirected_log() IS CALLED IMMEDIATELY AFTER LOGGING IS SET UP!
-
 /**
+ * * this should be first (so last in this file to load by byond init as it works in reverse *
+ *
  * log shunter, CITRP SNOWFLAKE EDITION
  *
  * Now, WHY would you ignore /tg/'s magical nice init order for this?
@@ -19,29 +22,12 @@
  *
  * thanks oranges/MSO for hinting to me about using -verbose so we can end this fucking suffering.
  */
-var/datum/world_log_shunter/world_log_shunter = new
-var/world_log_redirected = FALSE
+var/global/datum/world_log_shunter/world_log_shunter = new
+var/world_log_shunter_active = FALSE
 
-/datum/world_log_shunter/New()
-	world.ensure_logging_active()
+//* configure init *//
+var/datum/world_init_options/world_init_options = new
 
-//! Debugging
+//* enable debugger - this should be last (so first in the file to load) *//
 var/datum/world_debug_enabler/world_debug_enabler = new
 
-/datum/world_debug_enabler/New()
-	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
-	if (debug_server)
-		LIBCALL(debug_server, "auxtools_init")()
-		enable_debugging()
-		debug_loop()
-
-/datum/world_debug_enabler/proc/debug_loop()
-	set waitfor = FALSE
-	debug_loop_impl()
-
-/**
- * the sole job of this is keep ticking so the debug server can still do stuff while no clients are conencted
- */
-/datum/world_debug_enabler/proc/debug_loop_impl()
-	while(TRUE)
-		sleep(world.tick_lag)

@@ -63,7 +63,7 @@
 	light_color = "#FF0000";
 	name = "THE SUN"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "bd" = (
 /obj/structure/cable{
@@ -136,7 +136,7 @@
 /turf/simulated/floor/plating/indoors,
 /area/sector/solar_station/deck1)
 "cP" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "di" = (
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1244,7 +1244,7 @@
 /area/sector/solar_station/deck1)
 "BF" = (
 /obj/overmap/entity/visitable/sector/solar_station,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "BU" = (
 /obj/structure/cable{
@@ -1640,11 +1640,11 @@
 /area/space)
 "Lq" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Ls" = (
 /obj/effect/meteor/dust,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "LC" = (
 /obj/structure/closet/crate/solar,
@@ -1705,7 +1705,7 @@
 /area/space)
 "MQ" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Ng" = (
 /obj/structure/table/rack/shelf,

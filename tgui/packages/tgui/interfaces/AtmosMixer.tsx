@@ -50,7 +50,7 @@ export const AtmosMixer = (props) => {
                 step={1}
                 maxValue={100}
                 stepPixelSize={2}
-                onDrag={(value) => act('node1', {
+                onChange={(value) => act('node1', {
                   concentration: value,
                 })} />
             </LabeledList.Item>
@@ -64,7 +64,7 @@ export const AtmosMixer = (props) => {
                 minValue={0}
                 maxValue={100}
                 stepPixelSize={2}
-                onDrag={(value) => act('node2', {
+                onChange={(value) => act('node2', {
                   concentration: value,
                 })} />
             </LabeledList.Item>

@@ -146,6 +146,8 @@
  * This is a proc so you can override yourself - very useful if you're doing your own module system
  * rather than copy-pasting module code.
  *
+ * TODO: get rid of this, we should use parent ui, not the weird modules system we have going on.
+ *
  * @params
  * * action - the action string of the ui_act
  * * params - list of string key-values; this is always strings, text2num your number args if needed!
@@ -172,9 +174,10 @@
  * @params
  * * user - when specified, only pushes this user. else, pushes to all windows.
  * * ui - when specified, only pushes this ui for a given user.
- * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ * * data - list(...) for data. the reducer on tgui-side will only overwrite provided data keys.
+ * * nested_data - list(id = list(data...), ...) for nested data. the reducer on tgui-side will only overwrite provided data keys.
  */
-/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
+/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data, list/nested_data)
 	// todo: the way this works is so jank; this should be COMSIG_DATUM_HOOK_UI_PUSH instead?
 	// todo: this is because user, ui, data needs to go to the signal before being auto-resolved, as modules
 	// todo: won't necessarily match the values!
@@ -183,13 +186,13 @@
 	SEND_SIGNAL(src, COMSIG_DATUM_PUSH_UI_DATA, user, ui, data)
 	if(!user)
 		for (var/datum/tgui/window as anything in open_uis)
-			window.push_data(data)
+			window.push_data(data, nested_data)
 		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
 		// todo: this is force because otherwise static data can be desynced. should static data be on another proc instead?
-		ui.push_data(data, TRUE)
+		ui.push_data(data, nested_data, TRUE)
 
 /**
  * immediately pushes module updates to user, an ui, or all users
@@ -250,9 +253,8 @@
  *
  * Forces an update to regular UI data.
  *
- * If no user is provided, every user will be updated.
- *
- * todo: this does not update embedders
+ * * If no user is provided, every user will be updated.
+ * * Ignores static and nested data.
  *
  * @params
  * * user - (optional) the mob to update
@@ -271,8 +273,6 @@
  * happens to change static data.
  *
  * If no user is provided, every user will be updated.
- *
- * todo: this does not update embedders
  *
  * optional user the mob currently interacting with the ui
  * optional ui tgui to be updated
