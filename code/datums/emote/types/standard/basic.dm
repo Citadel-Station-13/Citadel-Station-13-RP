@@ -148,7 +148,7 @@
 			if(length(tokenized) >= 1)
 				.[EMOTE_PARAMETER_KEY_TARGET] = tokenized[1]
 
-/datum/emote/standard/basic/run_emote(datum/event_args/actor/actor, list/arbitrary, silent)
+/datum/emote/standard/basic/run_emote(datum/event_args/actor/actor, list/arbitrary, silent, used_binding)
 	var/target_string = arbitrary[EMOTE_PARAMETER_KEY_TARGET]
 	if(target_string)
 		var/mob/resolved

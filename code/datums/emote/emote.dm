@@ -221,18 +221,22 @@ GLOBAL_LIST(emote_lookup)
 			. += last_token
 
 /**
- * Blocking proc.
- *
  * Tries to run an emote, if someone's allowed to.
+ * * Blocking proc.
+ * @params
+ * * actor - person doing it
+ * * arbitrary - parsed arbitrary params from tokenized parameter string
+ * * silent - don't emit errors to actor
+ * * used_binding - binding used by user, if any
  */
-/datum/emote/proc/try_run_emote(datum/event_args/actor/actor, list/arbitrary, silent)
+/datum/emote/proc/try_run_emote(datum/event_args/actor/actor, list/arbitrary, silent, used_binding)
 	var/list/why_not = list()
 	var/can_run = can_use(actor, arbitrary, why_not)
 	if(!can_run)
 		if(!silent)
-			actor?.chat_feedback(SPAN_WARNING("You can't '[name]' right now; ([english_list(why_not, "unknown reason")])"))
+			actor?.chat_feedback(SPAN_WARNING("You can't '[used_binding || name]' right now; ([english_list(why_not, "unknown reason")])"))
 		return FALSE
-	run_emote(actor, arbitrary)
+	run_emote(actor, arbitrary, silent, used_binding)
 	return TRUE
 
 /**
@@ -248,7 +252,7 @@ GLOBAL_LIST(emote_lookup)
  *
  * @return pass / fail
  */
-/datum/emote/proc/run_emote(datum/event_args/actor/actor, list/arbitrary, silent)
+/datum/emote/proc/run_emote(datum/event_args/actor/actor, list/arbitrary, silent, used_binding)
 	return TRUE
 
 /datum/emote/proc/get_mob_context(mob/invoking)

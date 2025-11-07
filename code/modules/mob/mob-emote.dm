@@ -33,7 +33,7 @@
 		return EMOTE_INVOKE_INVALID
 	if(HAS_TRAIT(src, TRAIT_EMOTE_COOLDOWN(resolved.type)))
 		return EMOTE_INVOKE_ERRORED
-	var/result = process_emote(resolved, parameter_string, actor)
+	var/result = process_emote(resolved, parameter_string, actor, used_binding = key)
 	if(result)
 		return EMOTE_INVOKE_FINISHED
 	else
@@ -53,14 +53,14 @@
  * * `raw_params` may be a list or a text string.
  * @return TRUE if successful
  */
-/mob/proc/process_emote(datum/emote/emote, parameter_string, datum/event_args/actor/actor)
+/mob/proc/process_emote(datum/emote/emote, parameter_string, datum/event_args/actor/actor, used_binding)
 	var/list/arbitrary = emote.process_parameters(parameter_string, actor)
 	// only continue if parameter parsing worked
 	if(arbitrary == null)
 		return
 	// apply specific emote cooldown but only after it's done executing; checked in invoke_emote()
 	ADD_TRAIT(src, TRAIT_EMOTE_COOLDOWN(emote.type), "__EMOTE__")
-	. = emote.try_run_emote(actor, arbitrary)
+	. = emote.try_run_emote(actor, arbitrary, used_binding = used_binding)
 	REMOVE_TRAIT_IN(src, TRAIT_EMOTE_COOLDOWN(emote.type), "__EMOTE__", emote.self_cooldown)
 
 /**
@@ -84,8 +84,11 @@
 			var/list/datum/emote/can_run_emotes = query_emote()
 			var/list/assembled_html = list()
 			for(var/datum/emote/emote as anything in can_run_emotes)
+				if((islist(emote.bindings) && !length(emote.bindings)) || !emote.bindings)
+					continue
 				var/rendered_bindings = islist(emote.bindings) ? jointext(emote.bindings, "/") : emote.bindings
-				assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[rendered_bindings][emote.parameter_description ? " [emote.parameter_description]" : ""]", rendered_bindings)
+				var/rendered_first_binding = islist(emote.bindings) ? emote.bindings[1] : emote.bindings
+				assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[rendered_bindings][emote.parameter_description ? " [emote.parameter_description]" : ""]", rendered_first_binding)
 			to_chat(src, "Usable emotes: [english_list(assembled_html)]")
 			// TODO: should be FINISHED but we need to route to legacy *help too!
 			return null

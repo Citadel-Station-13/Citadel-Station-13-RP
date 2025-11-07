@@ -21,6 +21,7 @@
 
 // todo; name
 /datum/emote/standard/basic/synth_sfx/gameover
+	name = "Machine - Game Over"
 	bindings = list(
 		"gameover",
 		"synth-gameover",
@@ -30,27 +31,30 @@
 
 // todo; name
 /datum/emote/standard/basic/synth_sfx/xp_startup
+	name = "Machine - Startup (XP)"
 	bindings = list(
-		"startup-xp",
-		"synth-startup-xp",
+		"startup",
+		"synth-startup",
 	)
 	feedback_default = "<b>%%USER%%</b> chimes to life."
 	sfx = 'sound/machines/synth_startup.ogg'
 
 // todo; name
 /datum/emote/standard/basic/synth_sfx/xp_shutdown
+	name = "Machine - Shutdown (XP)"
 	bindings = list(
-		"shutdown-xp",
-		"synth-shutdown-xp",
+		"shutdown",
+		"synth-shutdown",
 	)
 	feedback_default = "<b>%%USER%%</b> emits a nostalgic tone as they fall silent."
 	sfx = 'sound/machines/synth_shutdown.ogg'
 
 // todo; name, targeting
 /datum/emote/standard/basic/synth_sfx/xp_error
+	name = "Machine - Error (XP)"
 	bindings = list(
-		"error-xp",
-		"synth-error-xp",
+		"error",
+		"synth-error",
 	)
 	feedback_default = "<b>%%USER%%</b> experiences a system error."
 	sfx = 'sound/machines/synth_error.ogg'
