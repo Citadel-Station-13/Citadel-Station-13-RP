@@ -4,8 +4,6 @@
 /datum/emote/standard/basic/synth_sfx
 	abstract_type = /datum/emote/standard/basic/synth_sfx
 
-	binding_prefix = "synth"
-
 	emote_require = EMOTE_REQUIRE_SYNTHETIC_SPEAKER
 	required_mobility_flags = MOBILITY_IS_CONSCIOUS
 

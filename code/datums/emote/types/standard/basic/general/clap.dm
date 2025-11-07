@@ -21,7 +21,10 @@
 /datum/emote/standard/basic/general/golfclap
 	name = "Clap Slowly"
 	desc = "Clap slowly, perhaps sarcastically."
-	bindings = "clap-slow"
+	bindings = list(
+		"golfclap",
+		"clap-slow",
+	)
 	emote_class = EMOTE_CLASS_IS_HUMANOID
 	sfx = 'sound/voice/golfclap.ogg'
 	sfx_volume = 75

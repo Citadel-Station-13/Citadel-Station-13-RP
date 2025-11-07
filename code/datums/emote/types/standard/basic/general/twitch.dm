@@ -12,7 +12,10 @@
 /datum/emote/standard/basic/general/twitch/strong
 	name = "Twitch Violently"
 	desc = "Violently twitch."
-	bindings = "twitch-violently"
+	bindings = list(
+		"vtwitch",
+		"twitch-violently",
+	)
 	emote_class = EMOTE_CLASS_IS_HUMANOID
 	feedback_default = "<b>%%USER%%</b> twitches violently."
 	feedback_saycode_type = SAYCODE_TYPE_VISIBLE

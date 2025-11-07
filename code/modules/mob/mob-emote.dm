@@ -18,6 +18,12 @@
 		actor = new(src)
 	ASSERT(actor.performer == src)
 
+	// always apply anti-spam
+	if(HAS_TRAIT(src, TRAIT_EMOTE_GLOBAL_COOLDOWN))
+		return EMOTE_INVOKE_ERRORED
+	ADD_TRAIT(src, TRAIT_EMOTE_GLOBAL_COOLDOWN, "__EMOTE__")
+	REMOVE_TRAIT_IN(src, TRAIT_EMOTE_GLOBAL_COOLDOWN, "__EMOTE__", 0.25 SECONDS)
+
 	var/special_result = process_emote_special(key, parameter_string, actor)
 	if(!isnull(special_result))
 		return special_result
@@ -25,8 +31,6 @@
 	var/datum/emote/resolved = fetch_emote(key)
 	if(!resolved)
 		return EMOTE_INVOKE_INVALID
-	if(HAS_TRAIT(src, TRAIT_EMOTE_GLOBAL_COOLDOWN))
-		return EMOTE_INVOKE_ERRORED
 	if(HAS_TRAIT(src, TRAIT_EMOTE_COOLDOWN(resolved.type)))
 		return EMOTE_INVOKE_ERRORED
 	var/result = process_emote(resolved, parameter_string, actor)
@@ -51,13 +55,10 @@
  */
 /mob/proc/process_emote(datum/emote/emote, parameter_string, datum/event_args/actor/actor)
 	var/list/arbitrary = emote.process_parameters(parameter_string, actor)
-	// always apply anti-spam
-	ADD_TRAIT(src, TRAIT_EMOTE_GLOBAL_COOLDOWN, "__EMOTE__")
-	REMOVE_TRAIT_IN(src, TRAIT_EMOTE_GLOBAL_COOLDOWN, "__EMOTE__", 0.25 SECONDS)
 	// only continue if parameter parsing worked
 	if(arbitrary == null)
 		return
-	// apply specific emote cooldown but only after it's done executing
+	// apply specific emote cooldown but only after it's done executing; checked in invoke_emote()
 	ADD_TRAIT(src, TRAIT_EMOTE_COOLDOWN(emote.type), "__EMOTE__")
 	. = emote.try_run_emote(actor, arbitrary)
 	REMOVE_TRAIT_IN(src, TRAIT_EMOTE_COOLDOWN(emote.type), "__EMOTE__", emote.self_cooldown)

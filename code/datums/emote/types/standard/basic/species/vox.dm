@@ -7,13 +7,19 @@
 	binding_prefix = "vox"
 
 /datum/emote/standard/basic/species/vox/shriek_loud
-	bindings = "shriek-loud"
+	bindings = list(
+		"vshriek",
+		"vox-shriek-loud",
+	)
 	sfx = 'sound/voice/shrieksneeze.ogg'
 	sfx_volume = 50
 	feedback_default = "<b>%%USER%%</b> gives a short sharp shriek!"
 
 /datum/emote/standard/basic/species/vox/shriek_quiet
-	bindings = "shriek-soft"
+	bindings = list(
+		"vshrieks",
+		"vox-shriek-soft",
+	)
 	sfx = 'sound/voice/shriekcough.ogg'
 	sfx_volume = 50
 	feedback_default = "<b>%%USER%%</b> gives a short, quieter shriek!"

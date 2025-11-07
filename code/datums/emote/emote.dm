@@ -47,6 +47,7 @@ GLOBAL_LIST(emote_lookup)
 	/// * for now, emote bindings must be unique to a single emote. in the future, this may change.
 	var/bindings
 	/// a prefix to use before our binding
+	/// * applies to all bindings in bindings list if specified
 	var/binding_prefix
 	/// parameter help string rendered as "[binding] [parameter_description]"
 	var/parameter_description
@@ -76,6 +77,13 @@ GLOBAL_LIST(emote_lookup)
 			bindings = "[binding_prefix]-[bindings]"
 
 //* Checks *//
+
+/**
+ * Fast check. Emits no errors; can_use() should have all checks in here as this is only used
+ * to do the menu check.
+ */
+/datum/emote/proc/can_potentially_use(datum/event_args/actor/actor, use_emote_class)
+	return emote_class & use_emote_class
 
 /**
  * @params

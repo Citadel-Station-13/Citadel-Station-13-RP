@@ -38,7 +38,10 @@
 /datum/emote/standard/basic/animal_noise/squeak_mouse
 	name = "Squeak (Mouse)"
 	desc = "Squeak like a mouse."
-	bindings = "squeak-mouse"
+	bindings = list(
+		"squeak",
+		"squeak-mouse",
+	)
 	feedback_special_miming = "<b>%%USER%%</b> acts out a soft squeak."
 	feedback_default = "<b>%%USER%%</b> squeaks!"
 	feedback_default_audible = "You hear a squeak."

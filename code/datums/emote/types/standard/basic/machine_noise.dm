@@ -3,9 +3,6 @@
 
 /datum/emote/standard/basic/machine_noise
 	abstract_type = /datum/emote/standard/basic/machine_noise
-
-	binding_prefix = "synth"
-
 	emote_require = EMOTE_REQUIRE_SYNTHETIC_SPEAKER
 	target_allowed = TRUE
 

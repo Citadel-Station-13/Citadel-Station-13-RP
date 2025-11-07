@@ -13,6 +13,9 @@
 /datum/emote/standard/basic/general/blink_fast
 	name = "Blink Rapidly"
 	desc = "Rapidly blink your eyes."
-	bindings = "blink-fast"
+	bindings = list(
+		"rblink",
+		"blink-fast",
+	)
 	emote_class = EMOTE_CLASS_IS_HUMANOID
 	feedback_default = "<b>%%USER%%</b> blinks rapidly."

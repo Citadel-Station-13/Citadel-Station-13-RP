@@ -7,7 +7,10 @@
 	binding_prefix = "adherent"
 
 /datum/emote/standard/basic/species/adherent/chime
-	bindings = "chime"
+	bindings = list(
+		"achime",
+		"adherent-chime",
+	)
 	sfx = 'sound/machines/achime.ogg'
 	sfx_volume = 50
 	feedback_default = "<b>%%USER%%</b> chimes!"

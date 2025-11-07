@@ -9,12 +9,18 @@
 	/// * these are ids, not uids.
 	var/required_species_id
 
-/datum/emote/standard/basic/species/can_use_special(datum/event_args/actor/actor, list/arbitrary)
+/datum/emote/standard/basic/species/can_potentially_use(datum/event_args/actor/actor, use_emote_class)
+	if(!check_species(actor.performer))
+		return FALSE
+	return ..()
+
+/datum/emote/standard/basic/species/can_use_special(datum/event_args/actor/actor, list/arbitrary, list/out_reasons_fail)
 	if(!required_species_id)
 		return ..()
 	if(!actor?.performer)
 		return ..()
 	if(!check_species(actor.performer))
+		out_reasons_fail?.Add("incorrect species")
 		return FALSE
 	return ..()
 
