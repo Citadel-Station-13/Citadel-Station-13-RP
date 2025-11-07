@@ -171,7 +171,7 @@
  */
 /datum/stack_recipe/proc/make_preload_hook(atom/product)
 	SHOULD_NOT_SLEEP(TRUE)
-	product.preload_from_stack_recipe(src)
+	product.preloading_from_stack_recipe(src)
 
 /**
  * tgui stack recipe data

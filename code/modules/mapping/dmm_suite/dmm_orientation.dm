@@ -6,6 +6,7 @@ GLOBAL_LIST_INIT(dmm_orientations, list(
 	))
 
 /datum/dmm_orientation
+	var/orientation
 	var/invert_x
 	var/invert_y
 	var/swap_xy
@@ -13,7 +14,17 @@ GLOBAL_LIST_INIT(dmm_orientations, list(
 	var/yi
 	var/turn_angle
 
+/datum/dmm_orientation/proc/populate_context(datum/dmm_context/context)
+	context.loaded_orientation = orientation
+	context.loaded_orientation_invert_x = invert_x
+	context.loaded_orientation_invert_y = invert_y
+	context.loaded_orientation_swap_xy = swap_xy
+	context.loaded_orientation_xi = xi
+	context.loaded_orientation_yi = yi
+	context.loaded_orientation_turn_angle = round(SIMPLIFY_DEGREES(turn_angle), 90)
+
 /datum/dmm_orientation/north
+	orientation = NORTH
 	invert_y = TRUE
 	invert_x = TRUE
 	swap_xy = FALSE
@@ -22,6 +33,7 @@ GLOBAL_LIST_INIT(dmm_orientations, list(
 	turn_angle = 180
 
 /datum/dmm_orientation/south
+	orientation = SOUTH
 	invert_y = FALSE
 	invert_x = FALSE
 	swap_xy = FALSE
@@ -30,6 +42,7 @@ GLOBAL_LIST_INIT(dmm_orientations, list(
 	turn_angle = 0
 
 /datum/dmm_orientation/east
+	orientation = EAST
 	invert_y = TRUE
 	invert_x = FALSE
 	swap_xy = TRUE
@@ -38,6 +51,7 @@ GLOBAL_LIST_INIT(dmm_orientations, list(
 	turn_angle = 90
 
 /datum/dmm_orientation/west
+	orientation = WEST
 	invert_y = FALSE
 	invert_x = TRUE
 	swap_xy = TRUE
