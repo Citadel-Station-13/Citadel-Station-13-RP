@@ -698,7 +698,7 @@
 /turf/simulated/floor,
 /area/shuttle/osiris/battlestar)
 "Cv" = (
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/equipped,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4

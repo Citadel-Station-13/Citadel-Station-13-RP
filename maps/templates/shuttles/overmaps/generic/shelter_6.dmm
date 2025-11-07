@@ -1680,7 +1680,7 @@
 /area/shuttle/tabiranth)
 "bO" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron{
+/obj/vehicle/sealed/mecha/fighter/baron{
 	ground_capable = 1;
 	integrity = 800;
 	internal_damage_threshold = 100;

@@ -1,4 +1,4 @@
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod
+/obj/vehicle/sealed/mecha/fighter/gunpod
 	name = "\improper Gunpod"
 	desc = "Small mounted weapons platform capable of space and surface combat. More like a flying tank than a dedicated fightercraft."
 	icon = 'icons/mecha/fighters64x64.dmi'
@@ -16,7 +16,7 @@
 	var/image/stripe1_overlay
 	var/image/stripe2_overlay
 
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/update_icon()
+/obj/vehicle/sealed/mecha/fighter/gunpod/update_icon()
 	cut_overlays()
 	..()
 
@@ -29,7 +29,7 @@
 		stripe2_overlay.color = stripe2_color
 		add_overlay(stripe2_overlay)
 
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/attackby(obj/item/W as obj, mob/user as mob)
+/obj/vehicle/sealed/mecha/fighter/gunpod/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/multitool) && state == 1)
 		var/new_paint_location = input("Please select a target zone.", "Paint Zone", null) as null|anything in list("Fore Stripe", "Aft Stripe", "CANCEL")
 		if(new_paint_location && new_paint_location != "CANCEL")
@@ -44,17 +44,17 @@
 		update_icon()
 	else ..()
 
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/equipped
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
 	)
 
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon
+/obj/vehicle/sealed/mecha/fighter/gunpod/recon
 	name = "\improper Reconnaissance Gunpod"
 	desc = "Small mounted weapons platform capable of space and surface combat. More like a flying tank than a dedicated fightercraft. This stripped down model is used for long range reconnaissance ."
 
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/equipped
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/teleporter,
 		/obj/item/vehicle_module/toggled/energy_relay,

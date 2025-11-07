@@ -1,4 +1,4 @@
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace
+/obj/vehicle/sealed/mecha/fighter/pinnace
 	name = "\improper Pinnace"
 	desc = "A cramped ship's boat, capable of atmospheric and space flight. Not capable of mounting traditional weapons. Capable of fitting one pilot and one passenger."
 	icon = 'icons/mecha/fighters64x64.dmi'

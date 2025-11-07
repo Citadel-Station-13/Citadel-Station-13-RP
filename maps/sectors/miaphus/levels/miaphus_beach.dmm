@@ -2183,7 +2183,7 @@
 	dir = 4
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon,
+/obj/vehicle/sealed/mecha/fighter/gunpod/recon,
 /obj/effect/floor_decal/industrial/hatch,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
@@ -7109,7 +7109,7 @@
 /area/sector/miaphus/beach/resort/dorm4)
 "LA" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/duke/deep_blue/equipped,
+/obj/vehicle/sealed/mecha/fighter/duke/deep_blue/equipped,
 /obj/machinery/light{
 	dir = 8
 	},

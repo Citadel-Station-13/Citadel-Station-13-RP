@@ -1,4 +1,4 @@
-/obj/vehicle/sealed/mecha/combat/fighter/cludge
+/obj/vehicle/sealed/mecha/fighter/cludge
 	name = "\improper Cludge"
 	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it."
 	icon = 'icons/mecha/fighters64x64.dmi'

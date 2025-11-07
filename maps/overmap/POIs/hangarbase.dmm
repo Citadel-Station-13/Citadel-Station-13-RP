@@ -690,7 +690,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/listeningpost)
 "rc" = (
-/obj/vehicle/sealed/mecha/combat/fighter/duke/equipped,
+/obj/vehicle/sealed/mecha/fighter/duke/equipped,
 /turf/simulated/floor/tiled/techfloor,
 /area/awaymission/listeningpost)
 "ri" = (
