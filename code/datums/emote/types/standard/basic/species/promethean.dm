@@ -12,7 +12,10 @@
 	return ..()
 
 /datum/emote/standard/basic/species/promethean/squish
-	bindings = "squish"
+	bindings = list(
+		"squish",
+		"slime-squish",
+	)
 	feedback_saycode_type = SAYCODE_TYPE_VISIBLE
 	feedback_default = "<b>%%USER%%</b> squishes."
 	sfx = 'sound/effects/slime_squish.ogg'

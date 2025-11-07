@@ -84,11 +84,8 @@
 			var/list/datum/emote/can_run_emotes = query_emote()
 			var/list/assembled_html = list()
 			for(var/datum/emote/emote as anything in can_run_emotes)
-				if(islist(emote.bindings))
-					for(var/binding in emote.bindings)
-						assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[binding][emote.parameter_description ? " [emote.parameter_description]" : ""]", binding)
-				else
-					assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[emote.bindings][emote.parameter_description ? " [emote.parameter_description]" : ""]", emote.bindings)
+				var/rendered_bindings = islist(emote.bindings) ? jointext(emote.bindings, "/") : emote.bindings
+				assembled_html += SPAN_TOOLTIP_DANGEROUS_HTML("[rendered_bindings][emote.parameter_description ? " [emote.parameter_description]" : ""]", emote.bindings)
 			to_chat(src, "Usable emotes: [english_list(assembled_html)]")
 			// TODO: should be FINISHED but we need to route to legacy *help too!
 			return null
@@ -101,8 +98,9 @@
 	RETURN_TYPE(/list)
 	. = list()
 	var/our_emote_class = get_usable_emote_class()
+	var/datum/event_args/actor/actor = new(src)
 	for(var/datum/emote/emote as anything in GLOB.emotes)
-		if(!(our_emote_class & emote.emote_class))
+		if(!emote.can_potentially_use(src, our_emote_class))
 			continue
 		. += emote
 

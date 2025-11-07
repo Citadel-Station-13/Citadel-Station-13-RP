@@ -617,11 +617,11 @@
 				return
 
 		if ("help")
-			to_chat(src, "ara, awoo, bark, bleat, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, echoping, eyebrow, fastsway/qwag, \
-					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, growl, handshake, hiss, howl, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, nyaha, pale, peep, point-atom, prbt, \
-					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, uwu, vomit, weh, whimper, wink, yawn, ycackle. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: airhorn, beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
-					shutdown, startup, steam, warn, ye, yes. Vox: shriekshort, shriekloud")
+			to_chat(src, "bark, bleat, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, echoping, eyebrow, fastsway/qwag, \
+					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, growl, handshake, hiss, howl, hug-(none)/mob, laugh, look-(none)/mob, mar, merp, moan, mrrp, mumble, nod, nya, nyaha, pale, prbt, \
+					raise, roll, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, \
+					vomit, weh, whimper, wink, yawn, ycackle. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: airhorn, die, error, rcough, rsneeze, \
+					ye.")
 
 		else
 			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
@@ -758,10 +758,6 @@
 			var/list/laughs = list("laughs deviously.", "lets out a catty laugh.", "nya ha ha's.")
 			message = "[pick(laughs)]"
 			m_type = 2
-		if ("peep")
-			message = "peeps like a bird."
-			m_type = 2
-			playsound(loc, 'sound/voice/peep.ogg', 50, 1, -1)
 		if("chirp")
 			message = "chirps!"
 			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
@@ -852,14 +848,6 @@
 			message = "purrs softly."
 			m_type = 2
 			playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
-		if ("clak")
-			if(!spam_flag)
-				var/msg = list("<font color='grey' size='2'>CLAKS!</font>", "claks!")
-				message = "[pick(msg)]"
-				playsound(loc, 'sound/spooky/boneclak.ogg', 50, 1, 1)
-				spam_flag = TRUE
-				addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
-			m_type = 2
 		if ("ycackle")
 			message = "cackles maniacally!"
 			m_type = 2
@@ -888,16 +876,6 @@
 			message = "blares a horn!"
 			m_type = 2
 			playsound(loc, 'sound/items/airhorn2.ogg', 20, 1, 1)
-			spam_flag = TRUE
-			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
-		if ("steam")
-			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
-			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
-				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
-				return
-			message = "lets off some steam."
-			m_type = 2
-			playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 30, 1, 1)
 			spam_flag = TRUE
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 

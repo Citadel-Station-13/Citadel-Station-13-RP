@@ -13,7 +13,7 @@
 	name = "Twitch Violently"
 	desc = "Violently twitch."
 	bindings = list(
-		"vtwitch",
+		"twitch_v",
 		"twitch-violently",
 	)
 	emote_class = EMOTE_CLASS_IS_HUMANOID

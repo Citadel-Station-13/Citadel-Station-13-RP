@@ -14,7 +14,7 @@
 	name = "Blink Rapidly"
 	desc = "Rapidly blink your eyes."
 	bindings = list(
-		"rblink",
+		"blink_r",
 		"blink-fast",
 	)
 	emote_class = EMOTE_CLASS_IS_HUMANOID

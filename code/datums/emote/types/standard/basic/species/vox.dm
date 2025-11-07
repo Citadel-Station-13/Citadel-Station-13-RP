@@ -8,7 +8,7 @@
 
 /datum/emote/standard/basic/species/vox/shriek_loud
 	bindings = list(
-		"vshriek",
+		"shriekloud",
 		"vox-shriek-loud",
 	)
 	sfx = 'sound/voice/shrieksneeze.ogg'
@@ -17,7 +17,7 @@
 
 /datum/emote/standard/basic/species/vox/shriek_quiet
 	bindings = list(
-		"vshrieks",
+		"shrieksoft",
 		"vox-shriek-soft",
 	)
 	sfx = 'sound/voice/shriekcough.ogg'
