@@ -135,7 +135,7 @@
 		return
 	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
-	var/maybe_sender_name = skip_name ? "" : "<b>[sender_name]</b>"
+	var/maybe_sender_name = skip_name ? "" : "<b>[sender_name]</b> "
 
 	//AR Projecting
 	if(eyeobj)
@@ -143,9 +143,9 @@
 
 	//Not AR Projecting
 	else
-		to_chat(nif.human,"<span class='emote nif'><b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> [maybe_sender_name] [message]</span>")
+		to_chat(nif.human,"<span class='emote nif'><b>\[[icon2html(thing = nif.big_icon, target = nif.human)]NIF\]</b> [maybe_sender_name][message]</span>")
 		for(var/mob/living/carbon/brain/caught_soul/CS as anything in brainmobs)
-			to_chat(CS,"<span class='emote nif'><b>\[[icon2html(thing = nif.big_icon, target = CS)]NIF\]</b> [maybe_sender_name] [message]</span>")
+			to_chat(CS,"<span class='emote nif'><b>\[[icon2html(thing = nif.big_icon, target = CS)]NIF\]</b> [maybe_sender_name][message]</span>")
 
 	log_nme(message,nif.human.real_name,sender)
 
