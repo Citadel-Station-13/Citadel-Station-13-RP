@@ -1140,9 +1140,6 @@
 	},
 /turf/simulated/floor/wood/sif,
 /area/chapel/strelka)
-"eb" = (
-/turf/simulated/open,
-/area/turbolift/s_ship/level4)
 "ec" = (
 /obj/structure/bookcase/legal/sop,
 /obj/effect/floor_decal/spline/plain{
@@ -2706,7 +2703,7 @@
 /area/hallway/strelka/deck4)
 "jB" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/s_ship/level4)
+/area/hallway/strelka/deck4)
 "jC" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
@@ -2822,7 +2819,7 @@
 "jS" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/turbolift/s_ship/level4)
+/area/hallway/strelka/deck4)
 "jT" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/gloves/boxing/blue,
@@ -4005,9 +4002,6 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/crew_quarters/bar/strelka)
-"nX" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/s_ship/level4)
 "oa" = (
 /obj/machinery/computer/mecha{
 	dir = 1
@@ -6381,7 +6375,7 @@
 "wA" = (
 /obj/machinery/cryopod/robot/door/shuttle,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/turbolift/s_ship/level4)
+/area/hallway/strelka/deck4)
 "wB" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /obj/random/maintenance/clean,
@@ -10386,7 +10380,7 @@
 "Mp" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/s_ship/level4)
+/area/hallway/strelka/deck4)
 "Mr" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/strelka/dormhallway/pool/sauna/room2)
@@ -28052,11 +28046,11 @@ Qg
 Qg
 xf
 Ca
-nX
+Qg
 jS
 wA
 jS
-nX
+Qg
 Ca
 xf
 Qg
@@ -28247,9 +28241,9 @@ Qg
 Sr
 yn
 Mp
-eb
-eb
-eb
+zO
+zO
+zO
 jB
 yn
 Yb
@@ -28440,10 +28434,10 @@ Qg
 Qg
 gm
 yn
-nX
-eb
-eb
-eb
+Qg
+zO
+zO
+zO
 jB
 yn
 JY
@@ -28635,9 +28629,9 @@ zP
 lW
 yn
 Mp
-eb
-eb
-eb
+zO
+zO
+zO
 jB
 yn
 lW
@@ -28828,11 +28822,11 @@ zW
 FN
 lW
 yn
-nX
+Qg
 jS
 jS
 jS
-nX
+Qg
 yn
 lW
 Hx

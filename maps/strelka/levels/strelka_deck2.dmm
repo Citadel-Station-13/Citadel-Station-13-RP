@@ -7636,9 +7636,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/engineering/strelka/nacelle2)
-"tL" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/s_ship/level2)
 "tM" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -8426,7 +8423,7 @@
 /area/hallway/strelka/deck2)
 "vN" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/s_ship/level2)
+/area/engineering/hallway/strelka/engineering)
 "vP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -10419,7 +10416,7 @@
 "AO" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/dark,
-/area/turbolift/s_ship/level2)
+/area/engineering/hallway/strelka/engineering)
 "AP" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 4
@@ -11184,7 +11181,7 @@
 "CS" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/s_ship/level2)
+/area/engineering/hallway/strelka/engineering)
 "CU" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/light_switch{
@@ -15254,7 +15251,7 @@
 "OF" = (
 /obj/turbolift_map_holder/strelka,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/s_ship/level2)
+/area/engineering/hallway/strelka/engineering)
 "OG" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
@@ -15460,7 +15457,7 @@
 "Pj" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/turbolift/s_ship/level2)
+/area/engineering/hallway/strelka/engineering)
 "Pm" = (
 /obj/structure/sign/kiddieplaque{
 	pixel_y = -12;
@@ -34085,11 +34082,11 @@ jK
 is
 Am
 RO
-tL
+oF
 Pj
 Pj
 Pj
-tL
+oF
 rW
 aW
 kq
@@ -34473,7 +34470,7 @@ gv
 rk
 nn
 fh
-tL
+oF
 vN
 vN
 vN
@@ -34861,11 +34858,11 @@ gg
 nk
 IW
 Ay
-tL
+oF
 AO
 AO
 AO
-tL
+oF
 TJ
 TJ
 TJ

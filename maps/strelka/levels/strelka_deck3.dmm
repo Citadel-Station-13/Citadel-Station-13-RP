@@ -2590,7 +2590,7 @@
 /area/maintenance/strelka/cargo)
 "iS" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/s_ship/level3)
+/area/hallway/strelka/deck3)
 "iU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -4511,7 +4511,7 @@
 "oW" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/turbolift/s_ship/level3)
+/area/hallway/strelka/deck3)
 "oX" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/corner/brown/full,
@@ -4542,9 +4542,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/main)
-"pb" = (
-/turf/simulated/floor/tiled/dark,
-/area/turbolift/s_ship/level3)
 "pc" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -6373,7 +6370,7 @@
 "vc" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/s_ship/level3)
+/area/hallway/strelka/deck3)
 "vd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -6466,7 +6463,7 @@
 /area/rnd/strelka/robotics)
 "vy" = (
 /turf/simulated/open,
-/area/turbolift/s_ship/level3)
+/area/hallway/strelka/deck3)
 "vI" = (
 /obj/structure/morgue{
 	dir = 2
@@ -6567,9 +6564,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
-"vT" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/turbolift/s_ship/level3)
 "vU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -30564,11 +30558,11 @@ tl
 EC
 ko
 Qk
-vT
+FN
 oW
 oW
 oW
-vT
+FN
 Wt
 Vx
 sw
@@ -30762,7 +30756,7 @@ vc
 vy
 vy
 vy
-pb
+Wt
 Wt
 Wt
 qM
@@ -30952,11 +30946,11 @@ ip
 pE
 ko
 kF
-vT
+FN
 vy
 vy
 vy
-pb
+Wt
 Wt
 Wt
 gA
@@ -31340,11 +31334,11 @@ CO
 tI
 Jf
 Cs
-vT
+FN
 oW
 oW
 oW
-vT
+FN
 Wt
 Sx
 sw
