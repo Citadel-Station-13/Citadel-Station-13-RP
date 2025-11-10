@@ -14,6 +14,7 @@
 	integrity_flags = INTEGRITY_ACIDPROOF
 	rad_flags = RAD_NO_CONTAMINATE
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"

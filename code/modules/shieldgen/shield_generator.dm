@@ -3,7 +3,7 @@
 //
 /obj/machinery/power/shield_generator
 	name = "advanced shield generator"
-	desc = "A heavy-duty shield generator and capacitor, capable of generating energy shields at large distances."
+	desc = "A heavy-duty shield generator and capacitor, capable of generating energy shields at large distances.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/machines/shielding_vr.dmi'
 	icon_state = "generator0"
 	circuit = /obj/item/circuitboard/shield_generator
@@ -446,7 +446,7 @@
 		return min(..(), UI_DISABLED)
 	return ..()
 
-/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -672,7 +672,7 @@
 	if(!check_flag(MODEFLAG_MULTIZ))
 		return list(T)
 
-	return SSmapping.get_turfs_within_stack(T)
+	return SSmapping.spatial_get_turf_stack(T)
 
 // Starts fully charged
 /obj/machinery/power/shield_generator/charged/Initialize(mapload)

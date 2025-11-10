@@ -48,6 +48,9 @@
 /datum/object_system/cell_slot/proc/accepts_cell(obj/item/cell/cell)
 	return legacy_use_device_cells? istype(cell, /obj/item/cell/device) : TRUE
 
+// TODO: user_remove_cell && user_insert_cell
+// TODO: play sound please & visible message
+
 /**
  * removes cell from the system and drops it at new_loc
  */
@@ -123,6 +126,7 @@
 	ASSERT(isnull(obj_cell_slot))
 	obj_cell_slot = new(src)
 	if(initial_cell_path)
+		// The first cell intentionally doesn't call wrappers.
 		obj_cell_slot.cell = new initial_cell_path
 	return obj_cell_slot
 

@@ -9,6 +9,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 4
 	throw_range = 20
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/heal_brute = 0
 	var/heal_burn = 0
 	var/apply_sounds

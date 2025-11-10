@@ -32,15 +32,11 @@ var/list/lawchanges    = list() // Stores who uploaded laws to which silicon-bas
 
 var/mouse_respawn_time = 5 // Amount of time that must pass between a player dying as a mouse and repawning as a mouse. In minutes.
 
-var/list/prisonwarp         = list() // Prisoners go to these
-var/list/holdingfacility    = list() // Captured people go here
 var/list/xeno_spawn         = list() // Aliens spawn at at these.
 var/list/tdome1             = list()
 var/list/tdome2             = list()
 var/list/tdomeobserve       = list()
 var/list/tdomeadmin         = list()
-var/list/prisonsecuritywarp = list() // Prison security goes to these.
-var/list/prisonwarped       = list() // List of players already warped.
 var/list/blobstart          = list()
 var/list/ninjastart         = list()
 

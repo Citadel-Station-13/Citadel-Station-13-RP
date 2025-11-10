@@ -22,6 +22,8 @@
 			bindings_middleware.handle_reset(joining.preferences)
 			to_chat(joining, SPAN_BOLDANNOUNCE("BUG: Your keybindings were forcefully reset due to not being detected as initialized 5 seconds after connection. Report this to a coder."))
 			message_admins("[joining]'s keybindings were forcefully reset due to not being initialized 5 seconds after connection. Yell at coders.")
+		if(!QDELETED(joining))
+			joining.set_macros(joining.preferences)
 
 /**
  * Game preferences
@@ -538,6 +540,11 @@
 		var/datum/game_preference_entry/entry = SSpreferences.entries_by_key[key]
 		var/current_value = entries_by_key[key]
 		entries_by_key[key] = entry.filter_value(current_value)
+	for(var/key in SSpreferences.toggles_by_key)
+		var/datum/game_preference_toggle/toggle = SSpreferences.toggles_by_key[key]
+		if(isnull(toggles_by_key[key]))
+			toggles_by_key[key] = toggle.default_value
+	// TODO: maybe don't always mark dirty?
 	mark_dirty()
 
 //* UI *//
@@ -590,7 +597,7 @@
 		return UI_INTERACTIVE
 	return UI_CLOSE
 
-/datum/game_preferences/ui_act(action, list/params, datum/tgui/ui)
+/datum/game_preferences/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

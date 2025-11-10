@@ -1600,12 +1600,12 @@
 
 /mob/living/carbon/human/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
 	. = ..()
-	if(isSynthetic() || fast_is_species_type(src, /datum/species/holosphere)) // for code reasons holospheres are not 'synthetic'
+	if(isSynthetic() || fast_is_species_type(src, /datum/species/shapeshifter/holosphere)) // for code reasons holospheres are not 'synthetic'
 		things_to_induce += src
 
 /mob/living/carbon/human/inducer_act(obj/item/inducer/I, amount, inducer_flags)
 	. = ..()
-	if(!isSynthetic() && !fast_is_species_type(src, /datum/species/holosphere))
+	if(!isSynthetic() && !fast_is_species_type(src, /datum/species/shapeshifter/holosphere))
 		return
 	var/needed = (species.max_nutrition - nutrition)
 	if(needed <= 0)

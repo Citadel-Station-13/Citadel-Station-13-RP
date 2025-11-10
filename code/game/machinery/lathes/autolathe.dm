@@ -7,7 +7,7 @@
 
 /obj/machinery/lathe/autolathe
 	name = "autolathe"
-	desc = "A versatile lathe capable of printing many objects with the right loaded designs."
+	desc = "A versatile lathe capable of printing many objects with the right loaded designs.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/machinery/lathe/autolathe.dmi'
 	icon_state = "base"
 	circuit = /obj/item/circuitboard/machine/lathe/autolathe

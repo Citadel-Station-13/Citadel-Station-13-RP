@@ -32,7 +32,7 @@
 	. = ..()
 
 /datum/nano_module/uav/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, state = default_state)
-	var/list/data = host.initial_data()
+	var/list/data = host.initial_nano_data()
 
 	if(current_uav)
 		if(QDELETED(current_uav))

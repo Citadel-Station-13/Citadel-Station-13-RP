@@ -123,6 +123,8 @@
 				return FALSE
 		if(holder.IIsAlly(L))
 			return FALSE
+		if(HAS_TRAIT(L, TRAIT_MOB_IGNORED_BY_AI))
+			return FALSE
 		if(L.stat)
 			if(L.stat == DEAD && !handle_corpse) // Leave dead things alone
 				return FALSE

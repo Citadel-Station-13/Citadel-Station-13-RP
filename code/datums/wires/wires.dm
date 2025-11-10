@@ -10,29 +10,31 @@
 	var/proper_name = "Unknown"
 	/// The total number of wires that our holder atom has.
 	var/wire_count = NONE
-	/// A list of all wires. For a list of valid wires defines that can go here, see `code/__DEFINES/wires.dm`
-	var/list/wires
-	/// A list of all cut wires. The same values that can go into `wires` will get added and removed from this list.
-	var/list/cut_wires
-	/// An associative list with the wire color as the key, and the wire define as the value.
-	var/list/colors
-	/// An associative list of signalers attached to the wires. The wire color is the key, and the signaler object reference is the value.
-	var/list/assemblies
 
-/datum/wires/New(atom/_holder)
+	/// List of all wires.
+	var/list/wires = list()
+	/// A list of all cut wires. The same values that can go into `wires` will get added and removed from this list.
+	var/list/cut_wires = list()
+	/// Dictionary of colours to wire.
+	var/list/colors = list()
+	/// List of attached assemblies.
+	var/list/assemblies = list()
+
+/datum/wires/New(atom/holder)
 	..()
-	if(!istype(_holder, holder_type))
+	if(!istype(holder, holder_type))
 		CRASH("Our holder is null/the wrong type!")
 
-	holder = _holder
-	cut_wires = list()
-	colors = list()
-	assemblies = list()
+	src.holder = holder
 
 	// Add in the appropriate amount of dud wires.
 	var/wire_len = length(wires)
 	if(wire_len < wire_count) // If the amount of "real" wires is less than the total we're suppose to have...
 		add_duds(wire_count - wire_len) // Add in the appropriate amount of duds to reach `wire_count`.
+
+	// TODO: compile flag this, this is effectively a runtime sanity lint for gc. this shouldn't be needed, and should only be on when
+	//       debugging GC issues.
+	RegisterSignal(holder, COMSIG_PARENT_QDELETING, PROC_REF(on_holder_qdel))
 
 	// If the randomize is true, we need to generate a new set of wires and ignore any wire color directories.
 	if(randomize)
@@ -49,6 +51,19 @@
 	for(var/color in colors)
 		detach_assembly(color)
 	return ..()
+
+/datum/wires/proc/on_holder_qdel(atom/source, force)
+	SIGNAL_HANDLER
+
+	// don't just silently qdel self this isn't a catch-all it's supposed to yell at you if you forget to delete
+	addtimer(CALLBACK(src, PROC_REF(still_not_qdeled), REF(source), source.type), 0)
+
+/datum/wires/proc/still_not_qdeled(source_ref, source_type)
+	if(QDELETED(src))
+		CRASH("why is the qdel leak timer still firing after self-del?")
+	else
+		stack_trace("qdel leak timer fired on wire datum associated to [source_ref] ([source_type]). this means it didn't delete its wires immediately.")
+		qdel(src)
 
 /**
  * Randomly generates a new set of wires. and corresponding colors from the given pool. Assigns the information as an associative list, to `colors`.
@@ -89,7 +104,7 @@
 /datum/wires/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Wires", "[proper_name] wires")
+		ui = new(user, src, "Wires", "[holder.name] wires")
 		ui.open()
 
 /datum/wires/ui_state()
@@ -123,13 +138,13 @@
 			color_name = LIST_COLOR_RENAME[color]
 
 		wires_list += list(list(
-			"seen_color" = replaced_color, // The color of the wire that the mob will see. This will be the same as `color` if the user is NOT colorblind.
-			"color_name" = color_name, // The wire's name. This will be the same as `color` if the user is NOT colorblind.
 			"color" = color, // The "real" color of the wire. No replacements.
+			"shownColor" = color_name,
 			"wire" = can_see_wire_info(user) && !is_dud_color(color) ? get_wire(color) : null, // Wire define information like "Contraband" or "Door Bolts".
 			"cut" = is_color_cut(color), // Whether the wire is cut or not. Used to display "cut" or "mend".
 			"attached" = is_attached(color) // Whether or not a signaler is attached to this wire.
 		))
+
 	data["wires"] = wires_list
 
 	// Get the information shown at the bottom of wire TGUI window, such as "The red light is blinking", etc.
@@ -148,62 +163,55 @@
 					break
 
 	data["status"] = status
+	data["proper_name"] = (proper_name != "Unknown") ? proper_name : null
 	return data
 
-/datum/wires/ui_act(action, list/params, datum/tgui/ui)
+/datum/wires/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
-
-	var/mob/user = usr
-	if(!interactable(user))
+	if(. || !interactable(usr))
 		return
 
+	var/target_wire = params["wire"]
+	var/mob/user = usr
 	var/obj/item/I = user.get_active_held_item()
-	var/color = lowertext(params["wire"])
-	holder.add_hiddenprint(user)
 
 	switch(action)
-		 // Toggles the cut/mend status.
+		// Toggles the cut/mend status
 		if("cut")
-			// if(!I.is_wirecutter() && !user.can_admin_interact())
-			if(!istype(I) || !I.is_wirecutter())
-				to_chat(user, "<span class='error'>You need wirecutters!</span>")
-				return
-
-			playsound(holder, I.tool_sound, 20, 1)
-			cut_color(color)
-			return TRUE
-
+			if(I?.is_wirecutter() || isAdminGhostAI(usr))
+				cut_color(target_wire)
+				. = TRUE
+			else
+				to_chat(user, SPAN_WARNING("You need wirecutters!"))
 		// Pulse a wire.
 		if("pulse")
-			// if(!I.is_multitool() && !user.can_admin_interact())
-			if(!istype(I) || !I.is_multitool())
-				to_chat(user, "<span class='error'>You need a multitool!</span>")
-				return
+			if(I?.is_multitool() || isAdminGhostAI(usr))
+				if(I && holder)
+					playsound(holder, I.tool_sound, 20, 1)
+				pulse_color(target_wire)
 
-			playsound(holder, 'sound/weapons/empty.ogg', 20, 1)
-			pulse_color(color)
-
-			// If they pulse the electrify wire, call interactable() and try to shock them.
-			if(get_wire(color) == WIRE_ELECTRIFY)
-				interactable(user)
-
-			return TRUE
+				// If they pulse the electrify wire, call interactable() and try to shock them.
+				if(get_wire(target_wire) == WIRE_ELECTRIFY)
+					interactable(user)
+				. = TRUE
+			else
+				to_chat(user, SPAN_WARNING("You need a multitool!"))
 
 		 // Attach a signaler to a wire.
 		if("attach")
-			if(is_attached(color))
-				var/obj/item/O = detach_assembly(color)
-				if(O)
-					user.put_in_hands(O)
+			if(is_attached(target_wire))
+				I = detach_assembly(target_wire)
+				if(I)
+					user.put_in_hands(I)
 					return TRUE
 
-			if(!istype(I, /obj/item/assembly/signaler))
+			if(!isassembly(I))
 				to_chat(user, "<span class='error'>You need a remote signaller!</span>")
 				return
 
 			if(user.attempt_void_item_for_installation(I))
-				attach_assembly(color, I)
+				attach_assembly(target_wire, I)
 				return TRUE
 
 /**
@@ -215,11 +223,17 @@
  * * user - the mob who is interacting with the wires.
  */
 /datum/wires/proc/can_see_wire_info(mob/user)
- 	// TODO: Reimplement this if we ever get Advanced Admin Interaction.
-	// if(user.can_admin_interact())
-		// return TRUE
+	// Admin ghost can see a purpose of each wire.
+	if(isAdminGhostAI(user))
+		return TRUE
+
+	// Same for anyone with an abductor multitool or clockwork one.
 	var/obj/item/I = user.get_active_held_item()
 	if(istype(I, /obj/item/multitool/alien) || istype(I, /obj/item/multitool/clockwork))
+		return TRUE
+
+	// Station blueprints do that too, but only if the wires are not randomized.
+	if(!randomize && istype(I, /obj/item/blueprints))
 		return TRUE
 	return FALSE
 

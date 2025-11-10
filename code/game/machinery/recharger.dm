@@ -1,7 +1,7 @@
 // todo: dynamic recharger API on item for cell chargers, wall chargers, and device rechargers.
 /obj/machinery/recharger
 	name = "recharger"
-	desc = "A standard recharger for all devices that use power."
+	desc = "A standard recharger for all devices that use power.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "recharger0"
 	anchored = TRUE
@@ -232,7 +232,7 @@
 
 /obj/machinery/recharger/wallcharger
 	name = "wall recharger"
-	desc = "A more powerful recharger designed for energy weapons."
+	desc = "A more powerful recharger designed for energy weapons.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "wrecharger0"
 	plane = TURF_PLANE

@@ -91,7 +91,6 @@
 	icon_state = "taj_commoncloak"
 	item_state = "taj_commoncloak"
 	var/fire_resist = T0C+100
-	allowed = list(/obj/item/tank/emergency/oxygen)
 	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS

@@ -112,5 +112,5 @@
 	RETURN_TYPE(/datum/lore/character_background/faction)
 	return SScharacters.resolve_faction(get_character_data(CHARACTER_DATA_FACTION))
 
-/datum/preferences/proc/lore_faction_job_check(datum/role/job/J)
+/datum/preferences/proc/lore_faction_job_check(datum/prototype/role/job/J)
 	return lore_faction_datum()?.check_job_id(J.id)

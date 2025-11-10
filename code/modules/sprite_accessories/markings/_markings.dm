@@ -31,7 +31,6 @@
 	icon_state = "tigerhead"
 	body_parts = list(BP_HEAD)
 
-
 /datum/sprite_accessory/marking/backstripe
 	name = "Back Stripe"
 	id = "marking_back"
@@ -500,3 +499,33 @@
 	icon_state = "gradarml"
 	legacy_use_additive_color_matrix = FALSE
 	body_parts = list(BP_L_ARM,BP_L_HAND)
+
+/datum/sprite_accessory/marking/cryptid_ribs
+	name = "Cryptid Ribs (Male)"
+	id = "cryptid_ribs_male"
+	icon_state = "cryptid_ribs_male"
+	legacy_use_additive_color_matrix = FALSE
+	body_parts = list(BP_TORSO)
+
+/datum/sprite_accessory/marking/cryptid_ribs/female
+	name = "Cryptid Ribs (Female)"
+	id = "cryptid_ribs_female"
+	icon_state = "cryptid_ribs_female"
+
+/datum/sprite_accessory/marking/cryptid_fur
+	name = "Cryptid Fur (Male)"
+	id = "cryptid_fur_male"
+	icon_state = "cryptid_fur_male"
+	legacy_use_additive_color_matrix = FALSE
+	body_parts = list(BP_TORSO)
+
+/datum/sprite_accessory/marking/cryptid_fur/female
+	name = "Cryptid Fur (Female)"
+	id = "cryptid_fur_female"
+	icon_state = "cryptid_fur_female"
+
+/datum/sprite_accessory/marking/cryptid_fur/socks
+	name = "Cryptid Fur (Socks)"
+	id = "cryptid_fur_socks"
+	icon_state = "cryptid_fur_socks"
+	body_parts = list(BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND)

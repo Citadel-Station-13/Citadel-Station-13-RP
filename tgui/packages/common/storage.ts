@@ -6,35 +6,25 @@
  * @license MIT
  */
 
+const STORAGE_PREFIX = "citadel-rp-";
+
 export const IMPL_MEMORY = 0;
 export const IMPL_HUB_STORAGE = 1;
-export const IMPL_INDEXED_DB = 2;
 
-type StorageImplementation =
-  | typeof IMPL_MEMORY
-  | typeof IMPL_HUB_STORAGE
-  | typeof IMPL_INDEXED_DB;
-
-const INDEXED_DB_VERSION = 3;
-const INDEXED_DB_NAME = 'tgui-citadel-rp';
-const INDEXED_DB_STORE_NAME = 'tgui-storage';
-
-const READ_ONLY = 'readonly';
-const READ_WRITE = 'readwrite';
+type StorageImplementation = typeof IMPL_MEMORY | typeof IMPL_HUB_STORAGE;
 
 type StorageBackend = {
-  impl: StorageImplementation;
+  impl(): Promise<StorageImplementation>;
   get(key: string): Promise<any>;
   set(key: string, value: any): Promise<void>;
   remove(key: string): Promise<void>;
   clear(): Promise<void>;
 };
 
-const testGeneric = (testFn: () => boolean) => () => {
+const testGeneric = (testFn: () => boolean) => (): boolean => {
   try {
     return Boolean(testFn());
-  }
-  catch {
+  } catch {
     return false;
   }
 };
@@ -43,47 +33,41 @@ const testHubStorage = testGeneric(
   () => window.hubStorage && !!window.hubStorage.getItem,
 );
 
-// TODO: Remove with 516
-// prettier-ignore
-const testIndexedDb = testGeneric(() => (
-  (window.indexedDB || window.msIndexedDB)
-  && !!(window.IDBTransaction || window.msIDBTransaction)
-));
-
 class MemoryBackend implements StorageBackend {
   private store: Record<string, any>;
-  public impl: StorageImplementation;
 
   constructor() {
-    this.impl = IMPL_MEMORY;
     this.store = {};
   }
 
-  async get(key: string) {
+  async impl(): Promise<StorageImplementation> {
+    return IMPL_MEMORY;
+  }
+
+  async get(key: string): Promise<any> {
     return this.store[key];
   }
 
-  async set(key: string, value: any) {
+  async set(key: string, value: any): Promise<void> {
     this.store[key] = value;
   }
 
-  async remove(key: string) {
+  async remove(key: string): Promise<void> {
     this.store[key] = undefined;
   }
 
-  async clear() {
+  async clear(): Promise<void> {
     this.store = {};
   }
 }
 
 class HubStorageBackend implements StorageBackend {
-  public impl: StorageImplementation;
 
-  constructor() {
-    this.impl = IMPL_HUB_STORAGE;
+  async impl(): Promise<StorageImplementation> {
+    return IMPL_HUB_STORAGE;
   }
 
-  async get(key: string) {
+  async get(key: string): Promise<any> {
     const value = await window.hubStorage.getItem(key);
     if (typeof value === 'string') {
       return JSON.parse(value);
@@ -91,82 +75,18 @@ class HubStorageBackend implements StorageBackend {
     return undefined;
   }
 
-  async set(key: string, value: any) {
+  async set(key: string, value: any): Promise<void> {
     window.hubStorage.setItem(key, JSON.stringify(value));
   }
 
-  async remove(key: string) {
+  async remove(key: string): Promise<void> {
     window.hubStorage.removeItem(key);
   }
 
-  async clear() {
+  async clear(): Promise<void> {
     window.hubStorage.clear();
   }
 }
-
-class IndexedDbBackend implements StorageBackend {
-  public impl: StorageImplementation;
-  public dbPromise: Promise<IDBDatabase>;
-
-  constructor() {
-    this.impl = IMPL_INDEXED_DB;
-    this.dbPromise = new Promise((resolve, reject) => {
-      const indexedDB = window.indexedDB || window.msIndexedDB;
-      const req = indexedDB.open(INDEXED_DB_NAME, INDEXED_DB_VERSION);
-      req.onupgradeneeded = () => {
-        try {
-          req.result.createObjectStore(INDEXED_DB_STORE_NAME);
-        } catch (err) {
-          reject(
-            new Error(
-              'Failed to upgrade IDB: ' +
-                (err instanceof Error ? err.message : String(err)),
-            ),
-          );
-        }
-      };
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => {
-        reject(new Error('Failed to open IDB: ' + req.error));
-      };
-    });
-  }
-
-  private async getStore(mode: IDBTransactionMode) {
-    const db = await this.dbPromise;
-    return db
-      .transaction(INDEXED_DB_STORE_NAME, mode)
-      .objectStore(INDEXED_DB_STORE_NAME);
-  }
-
-  async get(key: string) {
-    const store = await this.getStore(READ_ONLY);
-    return new Promise((resolve, reject) => {
-      const req = store.get(key);
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error);
-    });
-  }
-
-  async set(key: string, value: any) {
-    // NOTE: We deliberately make this operation transactionless
-    const store = await this.getStore(READ_WRITE);
-    store.put(value, key);
-  }
-
-  async remove(key: string) {
-    // NOTE: We deliberately make this operation transactionless
-    const store = await this.getStore(READ_WRITE);
-    store.delete(key);
-  }
-
-  async clear() {
-    // NOTE: We deliberately make this operation transactionless
-    const store = await this.getStore(READ_WRITE);
-    store.clear();
-  }
-}
-
 
 /**
  * Web Storage Proxy object, which selects the best backend available
@@ -174,47 +94,70 @@ class IndexedDbBackend implements StorageBackend {
  */
 class StorageProxy implements StorageBackend {
   private backendPromise: Promise<StorageBackend>;
-  public impl: StorageImplementation = IMPL_MEMORY;
 
   constructor() {
     this.backendPromise = (async () => {
-      if (!Byond.TRIDENT && testHubStorage()) {
+      if (testHubStorage()) {
         return new HubStorageBackend();
       }
-      // TODO: Remove with 516
-      if (testIndexedDb()) {
-        try {
-          const backend = new IndexedDbBackend();
-          await backend.dbPromise;
-          return backend;
-        } catch {}
-      }
+
       console.warn(
         'No supported storage backend found. Using in-memory storage.',
       );
+
       return new MemoryBackend();
     })();
   }
 
-  async get(key: string) {
+  async impl(): Promise<StorageImplementation> {
+    const backend = await this.backendPromise;
+    return backend.impl();
+  }
+
+  async get(key: string): Promise<any> {
     const backend = await this.backendPromise;
     return backend.get(key);
   }
 
-  async set(key: string, value: any) {
+  async set(key: string, value: any): Promise<void> {
     const backend = await this.backendPromise;
     return backend.set(key, value);
   }
 
-  async remove(key: string) {
+  async remove(key: string): Promise<void> {
     const backend = await this.backendPromise;
     return backend.remove(key);
   }
 
-  async clear() {
+  async clear(): Promise<void> {
     const backend = await this.backendPromise;
     return backend.clear();
   }
 }
 
-export const storage = new StorageProxy();
+class StoragePrefixer implements StorageBackend {
+  private backend: StorageBackend;
+  private prefix: string;
+  constructor(backend: StorageBackend, prefix: string) {
+    this.backend = backend;
+    this.prefix = prefix;
+  }
+
+  impl(): Promise<StorageImplementation> {
+    return this.backend.impl();
+  }
+  get(key: string): Promise<any> {
+    return this.backend.get(`${this.prefix}${key}`);
+  }
+  set(key: string, value: any): Promise<void> {
+    return this.backend.set(`${this.prefix}${key}`, value);
+  }
+  remove(key: string): Promise<void> {
+    return this.backend.remove(`${this.prefix}${key}`);
+  }
+  clear(): Promise<void> {
+    return this.backend.clear();
+  }
+}
+
+export const storage = new StoragePrefixer(new StorageProxy, STORAGE_PREFIX);

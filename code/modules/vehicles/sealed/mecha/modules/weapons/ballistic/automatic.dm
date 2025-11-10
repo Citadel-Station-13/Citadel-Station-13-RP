@@ -35,6 +35,18 @@
 	projectiles_per_shot = 1
 	projectile_energy_cost = 100
 
+/obj/item/vehicle_module/weapon/ballistic/cannon/hag_30
+	name = "HAG 30"
+	desc = "The HAG30 is a weapon that is usually paired with the Quasimodo, a 155mm artillery cannon that travels in large, massive arc. Be careful where you're pointing."
+	icon_state = "mecha_uac2"
+	equip_cooldown = 50 // 5 seconds
+	projectile = /obj/projectile/arc/hag30
+	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
+	projectiles = 1
+	projectile_energy_cost = 2000
+	equip_type = EQUIP_HEAVY_WEAPON
+
+
 /obj/item/vehicle_module/weapon/ballistic/lmg/rigged
 	name = "jury-rigged machinegun"
 	desc = "The cross between a jackhammer and a whole lot of zipguns."

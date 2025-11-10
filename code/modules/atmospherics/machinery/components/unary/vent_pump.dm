@@ -317,7 +317,7 @@
 	.["state"] = ui_vent_data()
 	.["name"] = name
 
-/obj/machinery/atmospherics/component/unary/vent_pump/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/unary/vent_pump/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

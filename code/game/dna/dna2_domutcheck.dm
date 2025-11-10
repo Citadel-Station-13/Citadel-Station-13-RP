@@ -5,9 +5,14 @@
 // flags: See below, bitfield.
 #define MUTCHK_FORCED        1
 /proc/domutcheck(mob/living/M, connected=null, flags=0)
+	if(QDELETED(M) || !M.dna)
+		return
+	if(M.isSynthetic())
+		return // fuck off powergamers
 	for(var/datum/gene/gene in dna_genes)
-		if(!M || !M.dna)
-			return
+		// incase they get deleted by activation
+		if(QDELETED(M))
+			break
 		if(!gene.block)
 			continue
 

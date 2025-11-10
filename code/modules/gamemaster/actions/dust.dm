@@ -14,4 +14,4 @@
 
 /datum/gm_action/dust/start()
 	..()
-	dust_swarm("norm")
+	dust_swarm(EVENT_LEVEL_MODERATE)

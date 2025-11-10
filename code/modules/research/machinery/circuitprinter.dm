@@ -6,6 +6,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 
 /obj/machinery/lathe/r_n_d/circuit_imprinter
 	name = "Circuit Imprinter"
+	desc = "A versatile printer capable of producing a variety of circuitboards.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/machines/fabricators/imprinter.dmi'
 	icon_state = "imprinter"
 	base_icon_state = "imprinter"
