@@ -306,7 +306,6 @@
  * @return amount merged
  */
 /obj/item/stack/proc/merge_into_other(obj/item/stack/other)
-	#warn redo this proc
 	if(QDELETED(other) || QDELETED(src) || (other == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()

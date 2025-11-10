@@ -132,6 +132,10 @@
 	#warn impl picker
 	var/picked_resting_variation
 
+	//* Movement *//
+	/// Base movement speed in tiles / second
+	var/movement_base_speed = 4.5
+
 	//-* Legacy Below *-//
 
 	/// legacy: are we floor scrubbing?
@@ -212,10 +216,6 @@
 	var/shell = FALSE
 	var/deployed = FALSE
 	var/mob/living/silicon/ai/mainframe = null
-
-	//* Movement *//
-	/// Base movement speed in tiles / second
-	var/movement_base_speed = 4.5
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()

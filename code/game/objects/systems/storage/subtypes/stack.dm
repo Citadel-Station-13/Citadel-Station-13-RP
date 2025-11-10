@@ -67,7 +67,7 @@
 		return ..()
 	var/atom/indirection = real_contents_loc()
 	for(var/obj/item/stack/other in indirection)
-		if(!stack.can_merge(other))
+		if(!stack.can_merge_into(other))
 			continue
 		other.add(stack.amount, TRUE)
 		// this should delete the stack (?!)

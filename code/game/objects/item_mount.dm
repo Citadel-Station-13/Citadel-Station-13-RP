@@ -1,52 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
-
-/**
- * Arbitrary provider for resources, management, etc.
- *
- * Used to allow things like cyborgs to provide water to things
- * that would usually require internal tanks; this is just an example.
- */
-/datum/item_mount
-	/// mounted items; lazy list
-	var/list/obj/item/mounted_items
-	/// Stack provider, if any.
-	/// * Unreferenced on qdel; it is up to you to unreference it on your side if you're
-	///   referencing the mount from the provider.
-	var/datum/stack_provider/stack_provider
-
-/datum/item_mount/Destroy()
-	for(var/obj/item/mounted as anything in mounted_items)
-		unmount(mounted)
-	stack_provider = null
-	return ..()
-
-/datum/item_mount/proc/mount(obj/item/item)
-	if(item.item_mount)
-		if(item.item_mount == src)
-			return TRUE
-		item.item_mount.unmount(item)
-
-	LAZYADD(mounted_items, item)
-	item.item_mount = src
-	return TRUE
-
-/datum/item_mount/proc/unmount(obj/item/item)
-	if(item.item_mount != src)
-		return TRUE
-	LAZYREMOVE(mounted_items, item)
-	item.item_mount = null
-	return TRUE
-
-/datum/item_mount/proc/is_mounted(obj/item/item)
-	return item in mounted_items
-
-/**
- * Called when a mounted item is deleted.
- */
-/datum/item_mount/proc/on_item_del(obj/item/being_deleted)
-	unmount(being_deleted)
-
 //* Reagents *//
 
 /**
@@ -111,138 +62,6 @@
 /datum/item_mount/proc/push_reagent(id, amount, force)
 	return 0
 
-//* Materials *//
-
-/**
- * checks if the item mount has a material, and how much it has
- *
- * * Semantically, null means 'we can't store this'.
- *
- * @params
- * * id - material id
- *
- * @return amount the item mount has, or null
- */
-/datum/item_mount/proc/get_material(id)
-	return null
-
-/**
- * checks if the item mount has a given amount of a material
- *
- * @params
- * * id - material id
- * * amount - volume in cm3 required
- *
- * @return amount the item mount has
- */
-/datum/item_mount/proc/has_material(id, amount)
-	. = get_material(id) || 0
-	if(. < amount)
-		return 0
-
-/**
- * attempts to consume a material from the item mount
- *
- * @params
- * * id - material id
- * * amount - volume in cm3
- *
- * @return amount the item mount could give
- */
-/datum/item_mount/proc/pull_material(id, amount)
-	return 0
-
-/**
- * attempts to consume a material from the item mount
- *
- * @params
- * * id - material id
- * * amount - volume in cm3
- *
- * @return amount the item mount could give
- */
-/datum/item_mount/proc/pull_checked_material(id, amount)
-	return has_material(id, amount) ? pull_material(id, amount) : 0
-
-/**
- * attempts to give a material to the item mount
- *
- * @params
- * * id - material id
- * * amount - volume in cm3
- * * force - allow overfill
- *
- * @return amount the item mount could accept
- */
-/datum/item_mount/proc/push_material(id, amount, force)
-	return 0
-
-//* Stacks *//
-
-/**
- * checks if the item mount has a stack, and if it does, how much of it.
- *
- * * Semantically, null means 'we can't store this stack'.
- *
- * @params
- * * path - stack path
- *
- * @return amount in sheets the item mount has, or null
- */
-/datum/item_mount/proc/get_stack(path)
-	return null
-
-/**
- * checks if the item mount has a stack
- *
- * @params
- * * path - stack path
- * * amount - sheets required
- *
- * @return amount the item mount has
- */
-/datum/item_mount/proc/has_stack(path, amount)
-	. = get_stack(path) || 0
-	if(. < amount)
-		return 0
-
-/**
- * attempts to consume a stack from the item mount
- *
- * @params
- * * path - stack path
- * * amount - volume
- *
- * @return amount the item mount could give
- */
-/datum/item_mount/proc/pull_stack(path, amount)
-	return 0
-
-/**
- * attempts to consume a stack from the item mount
- *
- * @params
- * * path - stack path
- * * amount - volume
- *
- * @return amount the item mount could give
- */
-/datum/item_mount/proc/pull_checked_stack(path, amount)
-	return has_stack(path, amount) ? pull_stack(path, amount) : 0
-
-/**
- * attempts to give a stack to the item mount
- *
- * @params
- * * path - stack path
- * * amount - volume
- * * force - allow overfill
- *
- * @return amount the item mount could accept
- */
-/datum/item_mount/proc/push_stack(path, amount, force)
-	return 0
-
 //* Misc *//
 
 /**
@@ -288,10 +107,18 @@
 /datum/item_mount
 	/// mounted items; lazy list
 	var/list/obj/item/mounted_items
+	/// Stack provider, if any.
+	/// * Unreferenced on qdel; it is up to you to unreference it on your side if you're
+	///   referencing the mount from the provider.
+	/// * Material usage should be routed here; in the future, we may implement defaulted
+	///   stack / material usage procs on `/datum/item_mount`, by pushing `stack_provider`
+	///   down to this level if necessary.
+	var/datum/stack_provider/stack_provider
 
 /datum/item_mount/Destroy()
 	for(var/obj/item/mounted as anything in mounted_items)
 		unmount(mounted)
+	stack_provider = null
 	return ..()
 
 /datum/item_mount/proc/mount(obj/item/item)
