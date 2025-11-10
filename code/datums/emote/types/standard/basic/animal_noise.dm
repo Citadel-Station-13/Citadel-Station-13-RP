@@ -32,8 +32,8 @@
 	name = "Clak"
 	desc = "... Clak. What?."
 	bindings = "clak"
-	feedback_default = "<b>%%USER%%</b> <font color='grey' size='2>CLAKS!</font>!"
-	feedback_default_audible = "You hear a <font color='grey' size='2>CLAK</font>."
+	feedback_default = "<b>%%USER%%</b> <font color='grey' size='2'>CLAKS!</font>!"
+	feedback_default_audible = "You hear a <font color='grey' size='2'>CLAK</font>."
 	sfx = 'sound/spooky/boneclak.ogg'
 	sfx_volume = 50
 
