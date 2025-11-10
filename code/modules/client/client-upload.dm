@@ -23,7 +23,9 @@
 	upload_mutex = TRUE
 	upload_current_sizelimit = size_limit
 	var/size_render = FLOOR(size_limit / (1024 * 1024), 0.05)
+	log_world("UPLOAD: Prompting '[src]' for a file with maximum size [size_limit].")
 	. = input(src, message, "[title] (max [size_render]MiB)]") as file|null
+	log_world("UPLOAD: Got file '[.]' from '[src]'.")
 	upload_current_sizelimit = null
 	upload_mutex = FALSE
 
@@ -32,7 +34,9 @@
 	upload_mutex = TRUE
 	upload_current_sizelimit = size_limit
 	var/size_render = FLOOR(size_limit / (1024 * 1024), 0.05)
+	log_world("UPLOAD: Prompting '[src]' for a file with maximum size [size_limit].")
 	. = input(src, message, "[title] (max [size_render]MiB)]") as file|null
+	log_world("UPLOAD: Got file '[.]' from '[src]'.")
 	upload_current_sizelimit = null
 	upload_mutex = FALSE
 
@@ -42,7 +46,9 @@
 	upload_mutex = TRUE
 	upload_current_sizelimit = size_limit
 	var/size_render = FLOOR(size_limit / (1024 * 1024), 0.05)
+	log_world("UPLOAD: Prompting '[src]' for a file with maximum size [size_limit].")
 	. = input(src, message, "[title] (max [size_render]MiB)]") as sound|null
+	log_world("UPLOAD: Got file '[.]' from '[src]'.")
 	upload_current_sizelimit = null
 	upload_mutex = FALSE
 
@@ -51,6 +57,8 @@
 	upload_mutex = TRUE
 	upload_current_sizelimit = size_limit
 	var/size_render = FLOOR(size_limit / (1024 * 1024), 0.05)
+	log_world("UPLOAD: Prompting '[src]' for a file with maximum size [size_limit].")
 	. = input(src, message, "[title] (max [size_render]MiB)]") as sound|null
+	log_world("UPLOAD: Got file '[.]' from '[src]'.")
 	upload_current_sizelimit = null
 	upload_mutex = FALSE
