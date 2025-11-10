@@ -60,13 +60,11 @@
 	var/icon_state_count
 
 	/// Our effective stack type. Defaults to our type.
-	//  todo: evaluate this
 	/// * Used to determine our identity when calling into providers.
 	/// * Used to determine what can merge into what (so colored subtypes of cable can all be considered cable).
 	var/stack_type
 	/// What type we split into. Useful if you have an infinite stack you don't want to be split into another infinite stack.
-	//  todo: evaluate this
-	/// * Use `|| stack_type` to default to stack type if this is not set.
+	/// * Use `|| stack_type || type` to default to stack type if this is not set.
 	var/split_type
 
 	/// Current amount
@@ -74,11 +72,6 @@
 	/// Maximum amount
 	var/max_amount = 50
 
-	/// use a provider datum
-	/// * this is unreferenced on Destroy(). make sure the synthesizer doesn't reference us.
-	/// * this will either be a single `/datum/stack_provider`, or a list of
-	///   them with a multiplier for the amount to draw from each.
-	var/datum/stack_provider/stack_provider
 	/// this is admittedly shitcode but this allows for automatic
 	/// stack provider support for non /material stacks that are directly derived from
 	/// materials, like reinf glass and metal tiles
@@ -119,14 +112,9 @@
 	. = ..()
 	if(merge && !mapload)
 		for(var/obj/item/stack/S in loc)
-			if(can_merge(S))
+			if(can_merge_into(S))
 				merge_into_other(S)
 	update_icon()
-
-/obj/item/stack/Destroy()
-	if(stack_provider)
-		stack_provider = null
-	return ..()
 
 /obj/item/stack/update_icon_state()
 	if(!use_new_icon_update)
@@ -153,10 +141,10 @@
 
 /obj/item/stack/examine(mob/user, dist)
 	. = ..()
-	if(!stack_provider)
-		. += "There are [amount] [singular_name]\s in the stack."
+	if(!has_stack_provider())
+		. += "There are [get_amount()] [singular_name]\s in the stack."
 	else
-		. += "There are [amount] [singular_name]\s in \the [get_provider_name()]."
+		. += "There are [get_amount()] [singular_name]\s in \the [get_provider_name()]."
 
 /**
  * Get the explicit recipes of this stack type
@@ -233,12 +221,10 @@
 /**
  * Can we merge with this stack?
  */
-/obj/item/stack/proc/can_merge(obj/item/stack/other)
-	if(!istype(other))
-		return FALSE
+/obj/item/stack/proc/can_merge_into(obj/item/stack/other)
 	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
 		return FALSE
-	return other.stack_type == stack_type
+	return can_merge_into_type(other.type)
 
 // todo: deprecated
 /obj/item/stack/proc/can_use(used)
@@ -262,7 +248,7 @@
 /obj/item/stack/proc/transfer_to(obj/item/stack/S, tamount=null, type_verified)
 	if (!get_amount())
 		return 0
-	if (!can_merge(S) && !type_verified)
+	if (!can_merge_into(S) && !type_verified)
 		return 0
 
 	if (isnull(tamount))
@@ -309,7 +295,7 @@
 /obj/item/stack/Crossed(atom/movable/AM)
 	. = ..()
 	// if we're in a mob, do not automerge
-	if(!ismob(loc) && !AM.throwing && can_merge(AM))
+	if(!ismob(loc) && !AM.throwing && can_merge_into(AM))
 		merge_into_other(AM)
 
 /**
@@ -420,7 +406,7 @@
  * Gets how many sheets we have.
  */
 /obj/item/stack/proc/get_amount()
-	if(stack_provider)
+	if(item_mount?.stack_provider)
 		return check_provider_remaining()
 	return amount
 
@@ -428,7 +414,7 @@
  * Gets how many sheets we can carry.
  */
 /obj/item/stack/proc/get_max_amount()
-	if(stack_provider)
+	if(item_mount?.stack_provider)
 		return check_provider_capacity()
 	return max_amount
 
@@ -462,7 +448,7 @@
  * @return amount used
  */
 /obj/item/stack/proc/use_amount(amount)
-	if(stack_provider)
+	if(item_mount?.stack_provider)
 		return pull_from_provider(amount)
 	if(amount <= 0)
 		return 0
@@ -477,7 +463,7 @@
  * @return amount added
  */
 /obj/item/stack/proc/give_amount(amount, force)
-	if(stack_provider)
+	if(item_mount?.stack_provider)
 		return push_to_provider(amount, force)
 	if(!force)
 		amount = min(amount, max_amount - src.amount)
@@ -500,7 +486,7 @@
 		stack_trace("Tried to set a bad stack amount: [new_amount]")
 		return 0
 
-	if(stack_provider)
+	if(item_mount?.stack_provider)
 		var/current_amount = check_provider_remaining()
 		var/amount_to_push_or_pull = new_amount - current_amount
 
@@ -522,7 +508,7 @@
 /obj/item/stack/proc/update_amount()
 	if(QDELING(src))
 		return
-	if(stack_provider)
+	if(item_mount?.stack_provider)
 	else
 		if(amount <= 0)
 			qdel(src)
@@ -543,21 +529,18 @@
 
 //* Stack Providers *//
 
-/obj/item/stack/proc/has_provider()
-	return !!stack_provider
-
-/obj/item/stack/proc/set_provider(datum/stack_provider/provider)
-	stack_provider = provider
+/obj/item/stack/proc/has_stack_provider()
+	return !!item_mount?.stack_provider
 
 /**
  * Get the name of our stack provider.
- *
- * * You must check if provider is set.
+ * * You must check if stack provider exists.
  */
 /obj/item/stack/proc/get_provider_name()
-	return stack_provider.get_stack_provider_name(type)
+	return item_mount.stack_provider.get_stack_provider_name(type)
 
 /**
+ * * You must check if stack provider exists.
  * @return amount left
  */
 /obj/item/stack/proc/check_provider_remaining()
@@ -565,11 +548,12 @@
 	if(legacy_remap)
 		. = INFINITY
 		for(var/mat_id in legacy_remap)
-			. = min(., stack_provider.get_material(mat_id) / legacy_remap[mat_id])
+			. = min(., item_mount.stack_provider.get_material(mat_id) / legacy_remap[mat_id])
 	else
-		. = stack_provider.get_stack(stack_type)
+		. = item_mount.stack_provider.get_stack(stack_type)
 
 /**
+ * * You must check if stack provider exists.
  * @return max volume
  */
 /obj/item/stack/proc/check_provider_capacity()
@@ -577,11 +561,12 @@
 	if(legacy_remap)
 		. = INFINITY
 		for(var/mat_id in legacy_remap)
-			. = min(., stack_provider.get_material_capacity(mat_id) / legacy_remap[mat_id])
+			. = min(., item_mount.stack_provider.get_material_capacity(mat_id) / legacy_remap[mat_id])
 	else
-		. = stack_provider.get_stack_capacity(stack_type)
+		. = item_mount.stack_provider.get_stack_capacity(stack_type)
 
 /**
+ * * You must check if stack provider exists.
  * @return amount pushed
  */
 /obj/item/stack/proc/push_to_provider(amount, force)
@@ -595,11 +580,12 @@
 			amount = min(amount, has_remaining_capacity)
 		. = amount
 		for(var/mat_id in legacy_remap)
-			stack_provider.give_material(mat_id, amount * legacy_remap[mat_id])
+			item_mount.stack_provider.give_material(mat_id, amount * legacy_remap[mat_id])
 	else
-		. = stack_provider.give_stack(stack_type, amount, force)
+		. = item_mount.stack_provider.give_stack(stack_type, amount, force)
 
 /**
+ * * You must check if stack provider exists.
  * @return amount pulled
  */
 /obj/item/stack/proc/pull_from_provider(amount)
@@ -608,9 +594,9 @@
 		// we have to be atomic, so do an expensive check first
 		var/has_remaining = check_provider_remaining()
 		for(var/mat_id in legacy_remap)
-			stack_provider.use_material(mat_id, has_remaining * legacy_remap[mat_id])
+			item_mount.stack_provider.use_material(mat_id, has_remaining * legacy_remap[mat_id])
 	else
-		. = stack_provider.use_stack(stack_type, amount)
+		. = item_mount.stack_provider.use_stack(stack_type, amount)
 
 //* Types *//
 
@@ -628,8 +614,6 @@
 
 /**
  * Can merge into a type
- *
- * todo: use this instead of raw stacktype_legacy checks
  */
 /obj/item/stack/proc/can_merge_into_type(path)
-	CRASH("Not implemented.")
+	return path == (stack_type || type)

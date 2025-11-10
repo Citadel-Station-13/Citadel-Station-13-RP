@@ -920,7 +920,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	further study."
 	value = CATALOGUER_REWARD_EASY
 
-#warn find a way to stop this from getting merged into normal cable
 /obj/item/stack/cable_coil/alien
 	name = "alien spool"
 	desc = "A spool of cable. No matter how hard you try, you can never seem to get to the end."
@@ -957,3 +956,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
+
+/obj/item/stack/cable_coil/alien/can_merge_into(obj/item/stack/other)
+	return FALSE

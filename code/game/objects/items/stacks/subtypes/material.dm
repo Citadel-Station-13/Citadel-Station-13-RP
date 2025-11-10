@@ -129,6 +129,9 @@
 		return
 	return ..()
 
+/obj/item/stack/material/can_merge_into(obj/item/stack/other)
+	return material.id == other.material.id
+
 //* Stack Providers *//
 
 /obj/item/stack/material/get_provider_name()

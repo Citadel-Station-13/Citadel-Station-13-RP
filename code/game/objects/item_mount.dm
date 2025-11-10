@@ -10,10 +10,15 @@
 /datum/item_mount
 	/// mounted items; lazy list
 	var/list/obj/item/mounted_items
+	/// Stack provider, if any.
+	/// * Unreferenced on qdel; it is up to you to unreference it on your side if you're
+	///   referencing the mount from the provider.
+	var/datum/stack_provider/stack_provider
 
 /datum/item_mount/Destroy()
 	for(var/obj/item/mounted as anything in mounted_items)
 		unmount(mounted)
+	stack_provider = null
 	return ..()
 
 /datum/item_mount/proc/mount(obj/item/item)

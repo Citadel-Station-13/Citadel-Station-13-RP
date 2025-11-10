@@ -285,15 +285,15 @@
 		laws = new conf_default_lawset_type
 	else
 		laws = new /datum/ai_lawset
+	if(conf_auto_ai_link)
+		var/new_ai = select_active_ai_with_fewest_borgs()
+		if(new_ai)
+			lawupdate = 1
+			connect_to_ai(new_ai)
+		else
+			lawupdate = 0
 
-	#warn conf_auto_ai_link
 	additional_law_channels["Binary"] = "#b"
-	var/new_ai = select_active_ai_with_fewest_borgs()
-	if(new_ai)
-		lawupdate = 1
-		connect_to_ai(new_ai)
-	else
-		lawupdate = 0
 
 	if(conf_mmi_create_type && !mmi)
 		mmi = new /obj/item/mmi/digital/robot(src)

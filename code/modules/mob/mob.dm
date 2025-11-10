@@ -18,7 +18,6 @@
 	//* Inventory *//
 	/// our inventory datum, if any.
 	/// * Set to typepath to initialize.
-	#warn hook / impl
 	var/datum/inventory/inventory
 
 	//* Movespeed *//
