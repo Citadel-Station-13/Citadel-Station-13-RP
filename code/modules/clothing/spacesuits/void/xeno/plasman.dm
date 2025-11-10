@@ -55,7 +55,6 @@
 	analyzing = !analyzing
 	to_chat(user, SPAN_NOTICE("The atmospheric analysis suite has been <b>[analyzing ? "enabled" : "disabled"]</b>."))
 
-
 /obj/item/clothing/head/helmet/space/void/plasman/equipped(mob/user, slot, flags)
 	..()
 	if((slot == SLOT_ID_HEAD) && (user._item_by_slot(SLOT_ID_HEAD) == src))

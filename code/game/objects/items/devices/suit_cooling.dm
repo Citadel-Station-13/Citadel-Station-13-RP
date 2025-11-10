@@ -12,6 +12,7 @@
 	throw_speed = 1
 	throw_range = 4
 	item_action_name = "Toggle Heatsink"
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)

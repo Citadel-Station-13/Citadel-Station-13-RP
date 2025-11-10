@@ -27,6 +27,8 @@ This module **acts** for the world.
 
 ## World
 
+TODO: rename this something other than 'world' because 'world' is a BYOND concept.
+
 This module has the core definitions and relationship definitions of things like world factions, locations, associated lore, etc.
 
 Management is done by SSgame_world, but at some point, might be moved to a static repository.

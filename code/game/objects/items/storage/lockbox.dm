@@ -19,34 +19,35 @@
 	if(locked && !broken)
 		obj_storage.set_locked(TRUE)
 
-/obj/item/storage/lockbox/attackby(obj/item/W, mob/user)
+/obj/item/storage/lockbox/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	var/obj/item/W = using
+	var/mob/user = clickchain.performer
 	if (istype(W, /obj/item/card/id))
 		if(src.broken)
 			to_chat(user, "<span class='warning'>It appears to be broken.</span>")
-			return
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		if(src.allowed(user))
 			obj_storage.set_locked(!obj_storage.locked)
 			if(obj_storage.locked)
 				src.icon_state = src.icon_locked
 				to_chat(user, "<span class='notice'>You lock \the [src]!</span>")
-				return
+				return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 			else
 				src.icon_state = src.icon_closed
 				to_chat(user, "<span class='notice'>You unlock \the [src]!</span>")
-				return
+				return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		else
 			to_chat(user, "<span class='warning'>Access Denied</span>")
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(istype(W, /obj/item/melee/ninja_energy_blade))
-		if(emag_act(INFINITY, user, W, "The locker has been sliced open by [user] with an energy blade!", "You hear metal being sliced and sparks flying."))
+		if(emag_act(INFINITY, user, W, "The lockbox has been sliced open by [user] with an energy blade!", "You hear metal being sliced and sparks flying."))
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
 			spark_system.start()
 			playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
 			playsound(src.loc, /datum/soundbyte/sparks, 50, 1)
-	if(!locked)
-		..()
-	else
-		to_chat(user, "<span class='warning'>It's locked!</span>")
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/storage/lockbox/emag_act(remaining_charges, mob/user, emag_source, visual_feedback = "", audible_feedback = "")
 	if(!broken)

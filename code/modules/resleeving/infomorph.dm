@@ -432,7 +432,7 @@ var/list/infomorph_emotions = list(
 /////////////// SOFTWARE DOWNLOADS
 var/global/list/infomorph_software_by_key = list()
 var/global/list/default_infomorph_software = list()
-/hook/startup/proc/populate_infomorph_software_list()
+/legacy_hook/startup/proc/populate_infomorph_software_list()
 	var/r = 1 // I would use ., but it'd sacrifice runtime detection
 	for(var/type in typesof(/datum/infomorph_software) - /datum/infomorph_software)
 		var/datum/infomorph_software/P = new type()

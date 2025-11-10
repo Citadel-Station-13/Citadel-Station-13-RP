@@ -59,7 +59,7 @@
 			to_chat(M, SPAN_WARNING("You hear a quiet click."))
 			TIMER_COOLDOWN_START(M, CD_INDEX_SONAR_NOISE, 7.5 SECONDS)
 		// todo: M.provoke() for AI...
-	var/mutable_appearance/overlay = AM.make_sonar_image(resolution)
+	var/image/overlay = AM.make_sonar_image(resolution)
 	if(isnull(overlay))
 		return
 	// shift, and also add the see anywhere pixel shift to anchor it

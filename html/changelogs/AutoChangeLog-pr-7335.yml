@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes:
+  - bugfix: "fixed /obj/hitsound_throwhit() runtiming when src has marterial_primary set to \"DISABLED\""

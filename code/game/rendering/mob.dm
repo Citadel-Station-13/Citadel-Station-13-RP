@@ -27,6 +27,7 @@
 		client.actor_huds.reassert_onto_owner()
 		client.action_drawer.reassert_screen()
 		INVOKE_ASYNC(client, TYPE_PROC_REF(/client, init_viewport_blocking))
+		client.holder?.register_admin_planes(client)
 	reload_fullscreen()
 	hud_used?.reorganize_alerts()
 

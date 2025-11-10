@@ -26,9 +26,9 @@
 	if(!equip_preview_mob)
 		return
 
-	var/datum/role/job/previewJob = SSjob.job_by_id(preview_job_id())
+	var/datum/prototype/role/job/previewJob = RSroles.legacy_job_by_id(preview_job_id())
 
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/role/job/station/ai || previewJob.type == /datum/role/job/station/cyborg)))
+	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/prototype/role/job/station/ai || previewJob.type == /datum/prototype/role/job/station/cyborg)))
 		equip_loadout(mannequin, flags, previewJob)
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)

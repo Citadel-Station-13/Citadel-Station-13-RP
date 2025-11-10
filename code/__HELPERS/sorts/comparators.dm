@@ -45,6 +45,12 @@
 /proc/cmp_numeric_asc(a,b)
 	return a - b
 
+/proc/cmp_numeric_text_dsc(a,b)
+	return text2num(b) - text2num(a)
+
+/proc/cmp_numeric_text_asc(a,b)
+	return text2num(a) - text2num(b)
+
 //! Text
 /proc/cmp_text_asc(a,b)
 	return sorttext(b,a)
@@ -113,7 +119,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /**
  * Sorts jobs by department, and then by flag within department.
  */
-/proc/cmp_job_datums(datum/role/job/a, datum/role/job/b)
+/proc/cmp_job_datums(datum/prototype/role/job/a, datum/prototype/role/job/b)
 	. = 0
 	if( LAZYLEN(a.departments) && LAZYLEN(b.departments) )
 		// Makes a list that contains only departments that were in both.

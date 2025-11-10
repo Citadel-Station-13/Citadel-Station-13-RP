@@ -1,4 +1,5 @@
-import { useDispatch, useSelector } from 'common/redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'tgui/backend';
 import {
   Button,
   Collapsible,
@@ -8,25 +9,25 @@ import {
   Section,
   Slider,
   Stack,
-} from 'tgui/components';
-import { toFixed } from 'common/math';
-import { capitalize } from 'common/string';
+} from 'tgui-core/components';
+import { toFixed } from 'tgui-core/math';
+import { capitalize } from 'tgui-core/string';
 
-import { saveChatToDisk } from '../chat/actions';
+import { clearChat, saveChatToDisk } from '../chat/actions';
 import { THEMES } from '../themes';
 import { exportSettings, updateSettings } from './actions';
 import { FONTS } from './constants';
+import { resetPaneSplitters, setEditPaneSplitters } from './scaling';
 import { selectSettings } from './selectors';
 import { importChatSettings } from './settingsImExport';
-import { useLocalState } from 'tgui/backend';
 
-export const SettingsGeneral = (props, context) => {
+export function SettingsGeneral(props) {
   const { theme, fontFamily, fontSize, lineHeight } =
-    useSelector(context, selectSettings);
-  const dispatch = useDispatch(context);
-  const [freeFont, setFreeFont] = useLocalState(context, "freeFont", false);
+    useSelector(selectSettings);
+  const dispatch = useDispatch();
+  const [freeFont, setFreeFont] = useState(false);
 
-  const [editingPanes, setEditingPanes] = useLocalState(context, "editingPanes", false);
+  const [editingPanes, setEditingPanes] = useState(false);
 
   return (
     <Section>
@@ -49,12 +50,35 @@ export const SettingsGeneral = (props, context) => {
             </Button>
           ))}
         </LabeledList.Item>
+        <LabeledList.Item label="UI sizes">
+          <Stack>
+            <Stack.Item>
+              <Button
+                onClick={() =>
+                  setEditingPanes((val) => {
+                    setEditPaneSplitters(!val);
+                    return !val;
+                  })
+                }
+                color={editingPanes ? 'red' : undefined}
+                icon={editingPanes ? 'save' : undefined}
+              >
+                {editingPanes ? 'Save' : 'Adjust UI Sizes'}
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button onClick={resetPaneSplitters} icon="refresh" color="red">
+                Reset
+              </Button>
+            </Stack.Item>
+          </Stack>
+        </LabeledList.Item>
         <LabeledList.Item label="Font style">
           <Stack.Item>
             {!freeFont ? (
               <Collapsible
                 title={fontFamily}
-                // width={'100%'}
+                width={'100%'}
                 buttons={
                   <Button
                     icon={freeFont ? 'lock-open' : 'lock'}
@@ -88,9 +112,9 @@ export const SettingsGeneral = (props, context) => {
             ) : (
               <Stack>
                 <Input
-                  width={'100%'}
+                  fluid
                   value={fontFamily}
-                  onChange={(e, value) =>
+                  onBlur={(value) =>
                     dispatch(
                       updateSettings({
                         fontFamily: value,
@@ -139,7 +163,7 @@ export const SettingsGeneral = (props, context) => {
             maxValue={5}
             value={lineHeight}
             format={(value) => toFixed(value, 2)}
-            onDrag={(e, value) =>
+            onChange={(e, value) =>
               dispatch(
                 updateSettings({
                   lineHeight: value,
@@ -165,7 +189,7 @@ export const SettingsGeneral = (props, context) => {
             accept=".json"
             tooltip="Import chat settings"
             icon="arrow-up-from-bracket"
-            onSelectFiles={(files) => importChatSettings(context, files)}
+            onSelectFiles={(files) => importChatSettings(files)}
           >
             Import settings
           </Button.File>
@@ -179,7 +203,16 @@ export const SettingsGeneral = (props, context) => {
             Save chat log
           </Button>
         </Stack.Item>
+        <Stack.Item mt={0.15}>
+          <Button.Confirm
+            icon="trash"
+            tooltip="Erase current tab history"
+            onClick={() => dispatch(clearChat())}
+          >
+            Clear chat
+          </Button.Confirm>
+        </Stack.Item>
       </Stack>
     </Section>
   );
-};
+}

@@ -237,3 +237,28 @@
 
 		else
 			step_delay = initial(step_delay)
+
+/obj/item/vehicle_component/armor/heavy_duty //Should only be avaliable for 3x3 mechs.
+	name = "heavy duty mecha plating"
+
+	step_delay = 4
+
+	integrity_max = 3000
+
+	emp_resistance = 5
+
+	deflect_chance = 15
+
+	minimum_penetration = 0
+
+	//required_type = list(/obj/vehicle/sealed/mecha/combat/quasimodo) doesn't work for some reason.
+
+	damage_absorption = list(
+		"brute"=0.50,
+		"fire"=0.9,
+		"bullet"=0.65,
+		"laser"=0.8,
+		"energy"=0.85,
+		"bomb"=0.5
+		)
+

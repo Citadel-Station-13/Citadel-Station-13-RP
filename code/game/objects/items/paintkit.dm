@@ -52,9 +52,9 @@
 		use(1, user)
 
 // Generic use
-/obj/item/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/kit))
-		var/obj/item/kit/K = I
+/obj/item/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
+	if(istype(tool, /obj/item/kit))
+		var/obj/item/kit/K = tool
 		K.customize(src, user)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

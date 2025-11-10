@@ -117,6 +117,18 @@
 	var/obj/item/worn_inside
 	/// suppress auto inventory hooks in forceMove
 	var/worn_hook_suppressed = FALSE
+	/// Suit storage classes
+	var/suit_storage_class = NONE
+	/// Suit storage classes to allow
+	var/suit_storage_class_allow = NONE
+	/// Suit storage classes to disallow
+	var/suit_storage_class_disallow = NONE
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_allow_override
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_disallow_override
 
 	//* Environmentals *//
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
@@ -181,9 +193,6 @@
 	var/permeability_coefficient = 1
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
-	/// Suit storage stuff.
-	// todo: kill with fire
-	var/list/allowed = null
 	// todo: kill with fire
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
 	var/obj/item/uplink/hidden/hidden_uplink = null
@@ -381,11 +390,6 @@
 	. = ..()
 	if(QDELETED(A))
 		return
-/*
-		if(get_temperature() && isliving(hit_atom))
-			var/mob/living/L = hit_atom
-			L.IgniteMob()
-*/
 	if(isliving(A)) //Living mobs handle hit sounds differently.
 		var/volume = get_volume_by_throwforce_and_or_w_class()
 		if (throw_force > 0)
@@ -397,11 +401,12 @@
 				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else
 			playsound(A, 'sound/weapons/throwtap.ogg', 1, volume, -1)
-	else
-		playsound(src, drop_sound, 30)
 
 /obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
+	// if we're landing from the impact we don't play a sound as we already played hitsound
+	if(drop_sound && (A != TT.landing_from_impact))
+		playsound(src, drop_sound, 50, TRUE)
 	if(TT.throw_flags & THROW_AT_IS_NEAT)
 		return
 	var/matrix/M = matrix(transform)
@@ -843,19 +848,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(isturf(loc) && I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
 		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
-		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
-		if(!user.transfer_item_to_loc(I, src))
-			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		user.visible_action_feedback(
-			target = src,
-			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
-			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
-			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
-		)
-		obj_cell_slot.insert_cell(I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 

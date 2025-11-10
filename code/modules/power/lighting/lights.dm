@@ -28,11 +28,11 @@
 	var/brightness_color = LIGHT_COLOR_HALOGEN
 
 	/// range of light under nightshift; null for no change
-	var/nightshift_range = LIGHT_RANGE_NIGHTSHIFT
+	var/nightshift_range = LIGHT_RANGE_NIGHTSHIFT_DEFAULT
 	/// power of light under nightshift; null for no change
-	var/nightshift_power = LIGHT_POWER_NIGHTSHIFT
+	var/nightshift_power = LIGHT_POWER_NIGHTSHIFT_DEFAULT
 	/// color of light under nightshift; null for no change
-	var/nightshift_color = LIGHT_COLOR_NIGHTSHIFT
+	var/nightshift_color = LIGHT_COLOR_NIGHTSHIFT_DEFAULT
 
 /obj/item/light/tube
 	name = "light tube"
@@ -45,8 +45,9 @@
 	brightness_power = 0.8
 	brightness_color = LIGHT_COLOR_HALOGEN
 
-	nightshift_range = 6
-	nightshift_power = 0.5
+	nightshift_color = LIGHT_COLOR_NIGHTSHIFT_TUBE
+	nightshift_range = LIGHT_RANGE_NIGHTSHIFT_TUBE
+	nightshift_power = LIGHT_POWER_NIGHTSHIFT_TUBE
 
 	worth_intrinsic = 5
 
@@ -118,12 +119,9 @@
 	brightness_range = 4
 	brightness_power = 0.8
 
-	// todo: bulb nightshift stuff needs to be defines
-	// we basically disable it because bulbs are already pretty weak
-
-	nightshift_color = null
-	nightshift_range = null
-	nightshift_power = null
+	nightshift_color = LIGHT_COLOR_NIGHTSHIFT_SMALL
+	nightshift_range = LIGHT_RANGE_NIGHTSHIFT_SMALL
+	nightshift_power = LIGHT_POWER_NIGHTSHIFT_SMALL
 
 	worth_intrinsic = 2
 
@@ -207,6 +205,10 @@
 	base_icon_state = "fbulb"
 	materials_base = list(MAT_GLASS = 10)
 	brightness_range = 5
+
+	nightshift_color = LIGHT_COLOR_NIGHTSHIFT_FAIRY
+	nightshift_power = LIGHT_POWER_NIGHTSHIFT_FAIRY
+	nightshift_range = LIGHT_RANGE_NIGHTSHIFT_FAIRY
 
 // update the icon state and description of the light
 /obj/item/light/update_icon()

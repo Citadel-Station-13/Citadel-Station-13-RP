@@ -2,9 +2,10 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
+import { Button, LabeledList, NoticeBox, Section } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
 import { useBackend } from "../../backend";
-import { Button, LabeledList, NoticeBox, Section } from "../../components";
 import { Window } from "../../layouts";
 
 interface NaniteChamberControlData {
@@ -35,8 +36,8 @@ interface ProteanOrgans {
   cost: Record<string, number>;
 }
 
-export const NaniteChamberControl = (props, context) => {
-  const { act, data } = useBackend<NaniteChamberControlData>(context);
+export const NaniteChamberControl = (props) => {
+  const { act, data } = useBackend<NaniteChamberControlData>();
 
   return (
     <Window
@@ -50,28 +51,28 @@ export const NaniteChamberControl = (props, context) => {
   );
 };
 
-const NaniteChamberControlContent = (props, context) => {
-  const { act, data } = useBackend<NaniteChamberControlData>(context);
+const NaniteChamberControlContent = (props) => {
+  const { act, data } = useBackend<NaniteChamberControlData>();
 
-  return data.hasChamber? (
+  return data.hasChamber ? (
     <Section
       title={`Chamber`}
       fill
       buttons={
         <Button
           disabled={data.open}
-          icon={data.locked? "lock" : "lock-open"}
-          content={data.locked? "Locked" : "Unlocked"}
-          color={data.locked? "bad" : "default"}
+          icon={data.locked ? "lock" : "lock-open"}
+          content={data.locked ? "Locked" : "Unlocked"}
+          color={data.locked ? "bad" : "default"}
           onClick={() => act('lock')} />
       }>
       {
-        data.open? (
+        data.open ? (
           <NoticeBox>
             Chamber open
           </NoticeBox>
         ) : (
-          data.operating? (
+          data.operating ? (
             <NoticeBox textAlign="center" fontSize="1.75em">
               Operating...
             </NoticeBox>
@@ -83,7 +84,7 @@ const NaniteChamberControlContent = (props, context) => {
     </Section>
   ) : (
     <Section>
-      <NoticeBox warning>
+      <NoticeBox>
         Chamber disconnected.
       </NoticeBox>
     </Section>
@@ -91,8 +92,8 @@ const NaniteChamberControlContent = (props, context) => {
 };
 
 
-const NaniteChamberControlOccupant = (props, context) => {
-  const { act, data } = useBackend<NaniteChamberControlData>(context);
+const NaniteChamberControlOccupant = (props) => {
+  const { act, data } = useBackend<NaniteChamberControlData>();
 
   // mob occupant
   if (data.hasOccupant) {

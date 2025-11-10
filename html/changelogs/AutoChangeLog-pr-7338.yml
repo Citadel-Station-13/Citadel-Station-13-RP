@@ -1,0 +1,4 @@
+author: "Colfer1"
+delete-after: True
+changes:
+  - rscadd: "Adds Love, Menacing, Idea, Nervous to the flick-status-emoji verb"

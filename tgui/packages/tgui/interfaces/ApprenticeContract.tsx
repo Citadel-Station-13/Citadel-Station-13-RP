@@ -1,11 +1,12 @@
 import { multiline } from 'common/string';
+import { BlockQuote, Box, Button, Icon, Section, Stack } from 'tgui-core/components';
+
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { BlockQuote, Box, Button, Icon, Section, Stack } from '../components';
 import { Window } from '../layouts';
 import { WindowTheme } from '../styles/themes/typedef';
 
-export const ApprenticeContract = (props, context) => {
+export const ApprenticeContract = (props) => {
   return (
     <Window
       width={620}
@@ -65,8 +66,8 @@ export const ApprenticeContract = (props, context) => {
   );
 };
 
-const ApprenticeSelection = (props, context) => {
-  const { act } = useBackend(context);
+const ApprenticeSelection = (props) => {
+  const { act } = useBackend<any>();
   const {
     iconName,
     fluffName,
@@ -83,8 +84,8 @@ const ApprenticeSelection = (props, context) => {
               <img
                 src={resolveAsset(assetName)}
                 style={{
-                  "border-style": "solid",
-                  "border-color": "#7e90a7",
+                  borderStyle: "solid",
+                  borderColor: "#7e90a7",
                 }} />
             </Stack.Item>
             <Stack.Item>

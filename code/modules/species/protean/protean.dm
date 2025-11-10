@@ -171,6 +171,15 @@
 /datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
 	. = ..()
+	for(var/obj/item/organ/external/external_organ in H.get_external_organs())
+		if(external_organ.robotic < ORGAN_ROBOT)
+			external_organ.robotize()
+		if(!external_organ.model)
+			// let's not play this game
+			// :trol:
+			external_organ.model = GLOB.all_robolimbs[1]
+	// LEGACY: make sure their synthetic-ness is sticky by calling isSynthetic
+	H.isSynthetic()
 
 	// todo: this is utter shitcode and will break if we CHECK_TICK in SSticker, and should probably be part of postspawn or something
 	spawn(5) //Let their real nif load if they have one
@@ -338,6 +347,21 @@
 		prig.forceMove(src)
 		return
 
+	if(istype(loc, /obj/item/holder))
+		var/obj/item/holder/blobholder = loc
+		if(istype(blobholder.loc, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = blobholder.loc
+			var/back = FALSE
+			if(blobholder == H.item_by_slot_id(SLOT_ID_BACK))
+				back = TRUE
+			var/obj/item/hardsuit/protean/prig = locate() in contents
+			if(prig)
+				prig.forceMove(get_turf(src))
+				forceMove(prig)
+				blobholder.update_state()
+				if(back)
+					H.equip_to_slot_if_possible(prig,SLOT_ID_BACK, INV_OP_FORCE | INV_OP_DIRECTLY_EQUIPPING | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+				return
 	if(isturf(loc))
 		var/obj/item/hardsuit/protean/prig = locate() in contents
 		if(prig)

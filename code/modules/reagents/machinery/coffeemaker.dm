@@ -2,7 +2,7 @@
 
 /obj/machinery/coffeemaker
 	name = "coffeemaker"
-	desc = "A Modello 3 Coffeemaker that brews coffee and holds it at the perfect temperature of 176 fahrenheit. Made by Piccionaia Home Appliances."
+	desc = "A Modello 3 Coffeemaker that brews coffee and holds it at the perfect temperature of 176 fahrenheit. Made by Piccionaia Home Appliances.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "coffeemaker_nopot_nocart"
 	base_icon_state = "coffeemaker"
@@ -279,6 +279,8 @@
 /obj/machinery/coffeemaker/ui_interact(mob/user) // The microwave Menu //I am reasonably certain that this is not a microwave //I am positively certain that this is not a microwave
 	. = ..()
 
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user)))
+		return FALSE
 	if(brewing)
 		return
 

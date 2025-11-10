@@ -10,17 +10,12 @@
 	icon_state = "blue"
 	requires_power = 0
 	ambience = AMBIENCE_GENERIC
-	dynamic_lighting = 1
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET
-	luminosity = 1
 	ambience = list('sound/ambience/skyplanetsky.ogg')
 
 /area/sector/sky_planet/ground
 	name = "Lythios 43a ground"
 	requires_power = 0
-	luminosity = 1
-	ambience = AMBIENCE_GENERIC
-	dynamic_lighting = 1
 	icon_state = "unexplored"
 	initial_gas_mix = ATMOSPHERE_ID_SKYPLANET_GROUND
 
@@ -74,6 +69,7 @@
 	name = "Voidline racing club station"
 	icon_state = "blue"
 	ambience = AMBIENCE_HANGAR
+	requires_power = 1
 
 /area/sector/sky_planet/racing_station/dock
 	name = "Voidline racing club station racers"
@@ -94,6 +90,16 @@
 
 /area/sector/sky_planet/racing_station/lounge
 	name = "Voidline racing club lounge"
+	icon_state = "blue"
+	ambience = AMBIENCE_HANGAR
+
+/area/sector/sky_planet/occulum
+	name = "Occulum Safehouse"
+	icon_state = "blue"
+	requires_power = 1
+
+/area/sector/sky_planet/highway
+	name = "Sky Highway Stop"
 	icon_state = "blue"
 	ambience = AMBIENCE_HANGAR
 

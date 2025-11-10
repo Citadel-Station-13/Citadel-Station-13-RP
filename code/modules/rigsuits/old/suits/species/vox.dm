@@ -7,13 +7,6 @@
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	siemens_coefficient = 0.2
-	allowed = list(
-		/obj/item/gun,
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/bluespace_radio,
-	)
 	air_type = /obj/item/tank/vox
 
 /datum/armor/hardsuit/vox

@@ -46,6 +46,13 @@
 	 * This is not a flag because you probably should not be touching this at runtime!
 	 */
 	var/unique = TRUE
+	/**
+	 * If this is TRUE, this is a special area with functionality. This means it shouldn't be randomly instantiated by admins.
+	 *
+	 * If this is FALSE, this is instead just a regular area that groups turfs and any system can spawn any amount of it (if not unique)
+	 * for any reason.
+	 */
+	var/special = FALSE
 
 	//* Defaults - Turfs *//
 	/// outdoors by default?
@@ -175,6 +182,8 @@
 
 	if(requires_power)
 		luminosity = 0
+		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
+			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	else
 		power_light = TRUE
 		power_equip = TRUE
@@ -696,7 +705,7 @@ var/list/teleportlocs = list()
 
 var/list/ghostteleportlocs = list()
 
-/hook/startup/proc/setupGhostTeleportLocs()
+/legacy_hook/startup/proc/setupGhostTeleportLocs()
 	for(var/area/AR in GLOB.sortedAreas)
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))
@@ -769,11 +778,35 @@ var/list/ghostteleportlocs = list()
  */
 /area/proc/take_turfs(list/turf/turfs)
 	for(var/turf/T in turfs)
+		if(T.loc == src)
+			continue
 		ChangeArea(T, src)
+
+/**
+ * take turfs into ourselves
+ */
+/area/proc/take_turfs_checking_tick(list/turf/turfs)
+	for(var/turf/T in turfs)
+		if(T.loc == src)
+			continue
+		ChangeArea(T, src)
+		CHECK_TICK
 
 /**
  * give turfs to other area
  */
 /area/proc/give_turfs(list/turf/turfs, area/give_to)
 	for(var/turf/T in turfs)
+		if(T.loc != src)
+			stack_trace("give_turfs found a turf not in source area.")
 		ChangeArea(T, give_to)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs_checking_tick(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		if(T.loc != src)
+			stack_trace("give_turfs found a turf not in source area.")
+		ChangeArea(T, give_to)
+		CHECK_TICK

@@ -1599,7 +1599,7 @@
 
 		//! shitcode ahead
 		if(get_z(src))
-			if(SSmapping.level_trait(get_z(src), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
+			if(SSmapping.level_has_trait(get_z(src), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
 				RemoveSightSelf(SEE_OBJS | SEE_MOBS | SEE_TURFS)
 		//! end
 

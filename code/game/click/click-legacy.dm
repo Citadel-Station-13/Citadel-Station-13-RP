@@ -50,7 +50,7 @@
 	. = "keep-going"
 
 /atom/movable/CtrlClick(var/mob/user)
-	if(Adjacent(user))
+	if(user.Reachability(src) && isliving(user) && IS_CONSCIOUS(user))
 		user.start_pulling(src)
 	else
 		return ..()
@@ -69,12 +69,15 @@
 	client.list_turf(T)
 	return TRUE
 
+/atom/proc/should_list_turf_on_alt_click(mob/user)
+	return isturf(src) || isturf(loc)
+
 // LEGACY PROC, STOP USING THIS
 /atom/proc/AltClick(var/mob/user)
 	if(isAI(user) && !isitem(src) && !isturf(src))
 		return "keep-going"
-	if(!user.altclick_listed_turf(src))
-		return "keep-going"
+	if(should_list_turf_on_alt_click(user) && user.altclick_listed_turf(src))
+		return TRUE
 	return "keep-going"
 
 // todo: rework

@@ -28,6 +28,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "radio"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	///FALSE for off
 	var/on = TRUE
@@ -187,7 +188,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return data
 
-/obj/item/radio/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/radio/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

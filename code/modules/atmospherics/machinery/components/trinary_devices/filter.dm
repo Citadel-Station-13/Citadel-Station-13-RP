@@ -80,7 +80,7 @@
 	. = ..()
 	.["atmosContext"] = global.gas_data.tgui_gas_context()
 
-/obj/machinery/atmospherics/component/trinary/filter/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/atmospherics/component/trinary/filter/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

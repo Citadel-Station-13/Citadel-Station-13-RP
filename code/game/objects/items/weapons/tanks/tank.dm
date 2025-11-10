@@ -12,6 +12,7 @@ var/list/global/tank_gauge_cache = list()
 	icon = 'icons/obj/tank.dmi'
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 	var/gauge_icon = "indicator_tank"
 	var/last_gauge_pressure
@@ -275,7 +276,7 @@ var/list/global/tank_gauge_cache = list()
 
 	return .
 
-/obj/item/tank/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/tank/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	switch(action)

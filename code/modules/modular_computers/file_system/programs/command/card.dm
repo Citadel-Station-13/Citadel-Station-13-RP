@@ -27,7 +27,7 @@
 		return
 	switch(id)
 		if("modify")
-			return tgui_cardmod.ui_act(action, params, ui, new /datum/event_args/actor(usr))
+			return tgui_cardmod.ui_act(action, params, ui, ui.state, new /datum/event_args/actor(usr))
 
 /datum/computer_file/program/card_mod/ui_pre_open(datum/tgui/ui)
 	ui.register_module(tgui_cardmod, "modify")

@@ -66,6 +66,8 @@
 #define QDEL_LIST_NULL(x) if(x) { for(var/y in x) { qdel(y) } ; x = null }
 /// qdels the elements in a list and proceed to cut the list. in an asosciative list, this will qdelete the keys.
 #define QDEL_LIST(L) if(L) { for(var/I in L) qdel(I); L.Cut(); }
+/// Qdel every item in the list before setting the list to null. Can't cut it because the lazylist will already be nulled in some cases.
+#define QDEL_LAZYLIST(L) for(var/I in L) qdel(I); L = null;
 /// QDEL_LIST in a specific amount of time
 #define QDEL_LIST_IN(L, time) addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(______qdel_list_wrapper), L), time, TIMER_STOPPABLE)
 /// qdel's both the keys and the values of an associative list, and then cut the list.

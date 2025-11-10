@@ -4,44 +4,57 @@
  * @license MIT
  */
 
-import { classes } from 'common/react';
-import { BoxProps, computeBoxClassName, computeBoxProps } from '../components/Box';
-import { addScrollableNode, removeScrollableNode } from '../events';
-import { WindowTheme } from '../styles/themes/typedef';
+import { useEffect, useRef } from 'react';
+import { Box } from 'tgui-core/components';
+import { addScrollableNode, removeScrollableNode } from 'tgui-core/events';
+import { classes } from 'tgui-core/react';
+import { computeBoxClassName, computeBoxProps } from 'tgui-core/ui';
 
-export interface LayoutProps extends BoxProps {
-  readonly theme?: WindowTheme | null;
-}
+type BoxProps = React.ComponentProps<typeof Box>;
 
-export const Layout = (props: LayoutProps) => {
-  const {
-    className,
-    theme = 'nanotrasen',
-    children,
-    ...rest
-  } = props;
+type Props = Partial<{
+  theme: string;
+}> &
+  BoxProps;
+
+export function Layout(props: Props) {
+  const { className, theme = 'nanotrasen', children, ...rest } = props;
+  document.documentElement.className = `theme-${theme}`;
+
   return (
     <div className={'theme-' + theme}>
       <div
-        className={classes([
-          'Layout',
-          className,
-          computeBoxClassName(rest),
-        ])}
-        {...computeBoxProps(rest)}>
+        className={classes(['Layout', className, computeBoxClassName(rest)])}
+        {...computeBoxProps(rest)}
+      >
         {children}
       </div>
     </div>
   );
-};
+}
 
-const LayoutContent = props => {
-  const {
-    className,
-    scrollable,
-    children,
-    ...rest
-  } = props;
+type ContentProps = Partial<{
+  scrollable: boolean;
+}> &
+  BoxProps;
+
+function LayoutContent(props: ContentProps) {
+  const { className, scrollable, children, ...rest } = props;
+  const node = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const self = node.current;
+
+    if (self && scrollable) {
+      addScrollableNode(self);
+    }
+    return () => {
+      if (self && scrollable) {
+        removeScrollableNode(self);
+      }
+    };
+  }, []);
+
   return (
     <div
       className={classes([
@@ -50,15 +63,12 @@ const LayoutContent = props => {
         className,
         computeBoxClassName(rest),
       ])}
-      {...computeBoxProps(rest)}>
+      ref={node}
+      {...computeBoxProps(rest)}
+    >
       {children}
     </div>
   );
-};
-
-LayoutContent.defaultHooks = {
-  onComponentDidMount: node => addScrollableNode(node),
-  onComponentWillUnmount: node => removeScrollableNode(node),
-};
+}
 
 Layout.Content = LayoutContent;

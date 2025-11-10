@@ -48,7 +48,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "ai" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "aj" = (
 /obj/structure/window/reinforced{

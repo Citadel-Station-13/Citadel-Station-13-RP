@@ -97,6 +97,34 @@
 /// the bane of engineering (solargrubs)
 #define MOB_IFF_FACTION_GRUB "grubs"
 
+// odysseus may have been right... (monsters)
+#define MOB_IFF_FACTION_MONSTER "monsters"
+// snakes! why'd it have to be snakes?! (lamias)
+#define MOB_IFF_FACTION_MONSTER_LAMIA "lamias"
+// here kitty kitty... (bobcats)
+#define MOB_IFF_FACTION_MONSTER_BOBCAT "bobcats"
+// IS THAT A FUCKING BEAR?! (bears)
+#define MOB_IFF_FACTION_MONSTER_BEAR "bears"
+// burn it with fire! (skallax)
+#define MOB_IFF_FACTION_MONSTER_SKALLAX "skallax"
+// hope little red isn't around! (wolves)
+#define MOB_IFF_FACTION_MONSTER_WOLF "wolves"
+// water won't do anything this time.. (slimes)
+#define MOB_IFF_FACTION_MONSTER_SLIME "slimes"
+// giant. fucking. mosquitos. (komar)
+#define MOB_IFF_FACTION_MONSTER_KOMAR "komar"
+// maybe ask them if they need sunglasses? (moles)
+#define MOB_IFF_FACTION_MONSTER_MOLE "mole"
+// bugs, bug and more bugs! (bugs)
+#define MOB_IFF_FACTION_MONSTER_BUG "bugs"
+
+// some secrets were meant to never be uncovered (derelict)
+#define MOB_IFF_FACTION_DERELICT "derelict"
+// ancient automatons that still prowl the ruins of something once mighty... (automatons)
+#define MOB_IFF_FACTION_DERELICT_AUTOMATONS "derelict automatons"
+// they are many, and you are so.. so few (blight)
+#define MOB_IFF_FACTION_DERELICT_BLIGHT "blight"
+
 //? Human factions ?//
 
 #define MOB_IFF_FACTION_MERCENARY "mercenary"
@@ -108,6 +136,7 @@
 
 #define MOB_IFF_FACTION_CLOCKWORK_CULT "clock-cult"
 #define MOB_IFF_FACTION_SANGUINE_CULT "blood-cult"
+#define MOB_IFF_FACTION_ELDRITCH_CULT "eldritch-cult"
 
 //? Tajara Factions ?//
 
