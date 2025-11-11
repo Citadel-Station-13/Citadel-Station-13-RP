@@ -13,7 +13,6 @@
 	/// our backing store
 	var/datum/robot_resource_store/store
 
-
 /datum/stack_provider/robot_stack_provider/New(datum/robot_resource_store/store)
 	..()
 	src.store = store

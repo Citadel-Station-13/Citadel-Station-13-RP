@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 /obj/item/robot_upgrade
 	name = "robot upgrade module"
 	desc = "An upgrade module for a robot platform."
