@@ -14,7 +14,7 @@
 	projectile_type = /obj/projectile/mortar
 
 	/// sound to play pre-impact
-	var/pre_impact_sound
+	var/pre_impact_sound = 'sound/modules/sectors/air_support/mortar_travel.ogg'
 	/// volume to play pre-impact
 	/// * this will be modulated by impact distance
 	var/pre_impact_volume = 75
@@ -23,7 +23,10 @@
 	/// no volume range
 	var/pre_impact_volume_outer_radius = 16
 	/// pre-impact sound duration
-	var/pre_impact_sound_duration
+	var/pre_impact_sound_duration = 4 SECONDS
+	/// when to play pre impact
+	/// * will not lengthen pre impact sound too much; will stretch/squeeze as needed.
+	var/pre_impact_sound_telegraph = 5 SECONDS
 
 	/// standard stripe color, if any
 	var/apply_stripe_color

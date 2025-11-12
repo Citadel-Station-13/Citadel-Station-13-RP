@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+/**
+ * Makes standard wall-mount types. Things will point **away** from their wall.
+ */
 #define CREATE_WALL_MOUNTING_TYPES(TYPE) \
 ##TYPE/north_mount{ \
 	dir = SOUTH; \

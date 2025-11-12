@@ -44,6 +44,20 @@
 	/// apply standard error?
 	var/use_standard_error = TRUE
 
+	//* Sounds *//
+	var/pack_sound = 'sound/modules/sectors/air_support/mortar_unpack.ogg'
+	var/pack_sound_volume = 75
+	var/pack_sound_vary = FALSE
+	var/unpack_sound = 'sound/modules/sectors/air_support/mortar_unpack.ogg'
+	var/unpack_sound_volume = 75
+	var/unpack_sound_vary = FALSE
+	var/fire_sound = 'sound/modules/sectors/air_support/mortar_fire.ogg'
+	var/fire_sound_volume = 75
+	var/fire_sound_vary = FALSE
+	var/load_sound = 'sound/modules/sectors/air_support/mortar_load.ogg'
+	var/load_sound_volume = 75
+	var/load_sound_vary = FALSE
+
 	#warn time to dest, inaccuracy
 
 /obj/machinery/mortar/context_menu_query(datum/event_args/actor/e_args)
@@ -111,12 +125,30 @@
 		velocity += standard_velocity_error_static
 	return list(azimuth, altitude, velocity)
 
-/obj/machinery/mortar/proc/launch(obj/item/ammo_casing/mortar/shell, x_offset, y_offset, travel_time, silent)
-
+/**
+ * - Passing in a `shell` means losing ownership of its reference; please have unreferenced it before calling this proc.
+ * @return `/datum/mortar_flight` success, null failure
+ */
+/obj/machinery/mortar/proc/launch(obj/item/ammo_casing/mortar/shell, x_offset, y_offset, travel_time, silent, suppressed)
+	var/turf/where_at = get_turf(src)
+	if(!where_at)
+		qdel(shell)
+		return null
+	var/datum/map/where_map = SSmapping.ordered_levels[where_at.z].parent_map
+	if(!where_map)
+		qdel(shell)
+		return null
 	if(!silent)
-		#warn play sound
+		playsound(src, fire_sound, fire_sound_volume, fire_sound_vary, 3)
+	if(!suppressed)
+		// TODO: shake screen of those around
+		visible_message(SPAN_BOLDWARNING("[chat_html_embed_rendered()] [src] fires!"))
 
-#warn impl
+	var/datum/mortar_flight/flight = new(shell)
+	flight.set_duration(travel_time)
+	flight.set_target(where_map, where_at.x + x_offset, where_at.y + y_offset)
+	flight.run()
+	return flight
 
 /**
  * "but why is this not the base type"
@@ -157,6 +189,7 @@
 	#warn impl
 
 /obj/machinery/mortar/basic/proc/on_shell_loaded(obj/item/ammo_casing/mortar/shell)
+	playsound(src, load_sound, load_sound_volume, load_sound_vary, 2)
 	addtimer(CALLBACK(src, PROC_REF(fire_loaded_shell)), time_to_fire)
 
 /obj/machinery/mortar/basic/proc/fire_loaded_shell()
@@ -181,7 +214,7 @@
 		if("setTarget")
 			var/x = params["x"]
 			var/y = params["y"]
-			if(!attempt_user_adjust_doafter(actor, adjust_time_major, "a major adjustment"))
+			if(!attempt_user_adjust_doafter(actor, adjust_time_major, "making a major adjustment to"))
 				return TRUE
 			#warn log
 			src.target_x = x
@@ -190,7 +223,7 @@
 		if("setAdjust")
 			var/x = params["x"]
 			var/y = params["y"]
-			if(!attempt_user_adjust_doafter(actor, adjust_time_minor, "a minor adjustment"))
+			if(!attempt_user_adjust_doafter(actor, adjust_time_minor, "making a minor adjustment to"))
 				return TRUE
 			#warn log
 			src.target_adjust_x = x

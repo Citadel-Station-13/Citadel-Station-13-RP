@@ -7,6 +7,7 @@
 /turf/simulated/wall/orbital_deployment_superstructure
 	name = "orbital deployment superstructure"
 	desc = "A nigh-indestructible pylon able to withstand the immense stress of launching structures from orbit."
+	icon = 'icons/modules/sectors/air_support/orbital_deployment_superstructure.dmi'
+	icon_state = "superstructure"
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
-	#warn sprite
 	material_system = FALSE
