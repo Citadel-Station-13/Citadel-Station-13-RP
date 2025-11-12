@@ -689,7 +689,6 @@
 #include "code\controllers\subsystem\mapping\virtual\mapping-virtual-get_virtual_angle.dm"
 #include "code\controllers\subsystem\mapping\virtual\mapping-virtual-get_virtual_coords.dm"
 #include "code\controllers\subsystem\mapping\virtual\mapping-virtual-get_virtual_dir.dm"
-#include "code\controllers\subsystem\mapping\virtual\mapping-virtual-get_virtual_step.dm"
 #include "code\controllers\subsystem\mapping\virtual\mapping-virtual-get_virtual_turf.dm"
 #include "code\controllers\subsystem\persistence\bunker.dm"
 #include "code\controllers\subsystem\persistence\entity_operations.dm"

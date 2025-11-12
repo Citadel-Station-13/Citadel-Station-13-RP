@@ -78,7 +78,8 @@
 	#warn impl
 
 /obj/machinery/mortar/proc/collapse(atom/new_loc) as /obj/item/mortar_kit
-	var/obj/item/mortar_kit/creating = to_collapsed(new_loc)
+	var/obj/item/mortar_kit/creating = move_into_collapsed(new_loc)
+	return creating
 
 /**
  * Creates collapsed
@@ -146,7 +147,7 @@
 
 	var/datum/mortar_flight/flight = new(shell)
 	flight.set_duration(travel_time)
-	flight.set_target(where_map, where_at.x + x_offset, where_at.y + y_offset)
+	flight.set_target(where_map, where_at.x + x_offset, where_at.y + y_offset, where_at.z)
 	flight.run()
 	return flight
 

@@ -9,8 +9,8 @@
 	var/flight_x
 	/// as virtual y
 	var/flight_y
-	/// as virtual z
-	var/flight_z
+	/// as literal z
+	var/flight_z_literal
 	var/flight_duration
 
 	var/arrive_time
@@ -22,13 +22,14 @@
 
 /datum/mortar_flight/Destroy()
 	QDEL_NULL(shell)
-	flight_level = null
+	flight_map = null
 	return ..()
 
-/datum/mortar_flight/proc/set_target(datum/map_level/level, virtual_x, virtual_y)
-	src.flight_level = level
+/datum/mortar_flight/proc/set_target(datum/map/map, virtual_x, virtual_y, literal_z)
+	src.flight_map = map
 	src.flight_x = virtual_x
 	src.flight_y = virtual_y
+	src.flight_z_literal = literal_z
 
 /datum/mortar_flight/proc/set_duration(time)
 	src.flight_duration = time

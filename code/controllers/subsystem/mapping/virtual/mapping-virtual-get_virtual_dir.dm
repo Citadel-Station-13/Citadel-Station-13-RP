@@ -12,39 +12,39 @@
  * OR if hey both are and aren't in the same struct
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_dir(turf/A, turf/B)
-	// todo: impl
-	return get_dir(A, B)
-	#warn impl
-	// A = get_turf(A)
-	// B = get_turf(B)
-	// if(A.z == B.z)
-	// 	return get_dir(A, B)
-	// if(!level_is_virtualized(A) || !level_is_virtualized(B))
-	// 	// last ditch - check stacks
-	// 	var/list/stack = z_stack_lookup
-	// 	var/pos = stack.Find(B.z)
-	// 	if(!pos)
-	// 		return NONE		// couldn't find
-	// 	// found, old get_dir_multiz
-	// 	. = get_dir(A, B)
-	// 	if(stack.Find(A.z) < pos)
-	// 		. |= UP
-	// 	else
-	// 		. |= DOWN
-	// 	return
-	// if(struct_by_z[A.z] != struct_by_z[B.z])
-	// 	return NONE
-	// var/datum/space_level/S1 = ordered_levels[A.z]
-	// var/datum/space_level/S2 = ordered_levels[B.z]
-	// . = NONE
-	// if(S1.struct_z > S2.struct_z)
-	// 	. |= DOWN
-	// else if(S1.struct_z < S2.struct_z)
-	// 	. |= UP
-	// if(S1.struct_x == S2.struct_x)
-	// 	return . | (S1.struct_y > S2.struct_y? SOUTH : NORTH)
-	// else if(S1.struct_y == S2.struct_y)
-	// 	return . | (S1.struct_x > S2.struct_x? WEST : EAST)
-	// else
-	// 	. |= (S1.struct_y > S2.struct_y)? SOUTH : NORTH
-	// 	. |= (S1.struct_x > S2.struct_x)? WEST : EAST
+	var/datum/map_level/level_a = ordered_levels[A.z]
+	var/datum/map_level/level_b = ordered_levels[B.z]
+	if(level_a == level_b)
+		return get_dir(A, B)
+	if(level_a.parent_map != level_b.parent_map)
+		return null
+
+	. = NONE
+	var/a_sx = level_a.struct_x
+	var/a_sy = level_a.struct_y
+	var/a_sz = level_a.struct_z
+	var/b_sx = level_b.struct_x
+	var/b_sy = level_b.struct_y
+	var/b_sz = level_b.struct_z
+	if(a_sx > b_sx)
+		. |= WEST
+	else if(a_sx < b_sx)
+		. |= EAST
+	else
+		if(A.x > B.x)
+			. |= WEST
+		else if(A.x < B.x)
+			. |= EAST
+	if(a_sy > b_sy)
+		. |= SOUTH
+	else if(a_sy < b_sy)
+		. |= NORTH
+	else
+		if(A.y > B.y)
+			. |= SOUTH
+		else if(A.y < B.y)
+			. |= NORTH
+	if(a_sz > b_sz)
+		. |= DOWN
+	else if(a_sz < b_sz)
+		. |= UP

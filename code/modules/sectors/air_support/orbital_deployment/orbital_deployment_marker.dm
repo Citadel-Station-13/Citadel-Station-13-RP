@@ -37,16 +37,41 @@
 	build_zone_or_throw()
 
 /obj/orbital_deployment_marker/corner/lower_left/proc/build_zone_or_throw()
-	var/obj/orbital_deployment_marker/corner/lower_left/corner/lower_left = src
-	var/obj/orbital_deployment_marker/corner/lower_right/corner/lower_right
-	var/obj/orbital_deployment_marker/corner/upper_left/corner/upper_left
-	var/obj/orbital_deployment_marker/corner/upper_right/corner/upper_right
+	var/obj/orbital_deployment_marker/corner/lower_left/lower_left = src
+	var/obj/orbital_deployment_marker/corner/lower_right/lower_right
+	var/obj/orbital_deployment_marker/corner/upper_left/upper_left
+	var/obj/orbital_deployment_marker/corner/upper_right/upper_right
 
+	var/turf/scanning
+	var/const/scan_max = 15
 
-	#warn impl
+	scanning = lower_left.loc
+	for(var/i in 1 to scan_max)
+		scanning = get_step(scanning, NORTH)
+		var/obj/orbital_deployment_marker/corner/upper_left/found = locate() in scanning
+		if(found)
+			upper_left = found
+			break
+	if(upper_left)
+		for(var/i in 1 to scan_max)
+			scanning = get_step(scanning, EAST)
+			var/obj/orbital_deployment_marker/corner/upper_right/found = locate() in scanning
+			if(found)
+				upper_right = found
+				break
+		if(upper_right)
+			for(var/i in 1 to scan_max)
+				scanning = get_step(scanning, SOUTH)
+				var/obj/orbital_deployment_marker/corner/lower_right/found = locate() in scanning
+			if(found)
+				lower_right = found
+
 
 	if(!lower_left || !lower_right || !upper_left || !upper_right)
 		CRASH("failed to build zone; didn't find atleast one corner: [!!lower_left] [!!lower_right] [!!upper_left] [!!upper_right]")
+	if(lower_left.x != upper_left.x || lower_right.x != upper_right.x || lower_left.y != lower_right.y || upper_left.y != upper_right.y)
+		CRASH("zone near [COORD(lower_left)] had misaligned corners.")
+
 	new /datum/orbital_deployment_zone(lower_left, lower_right, upper_right, upper_left)
 
 /obj/orbital_deployment_marker/corner/upper_right
