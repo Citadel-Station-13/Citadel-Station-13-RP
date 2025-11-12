@@ -4387,7 +4387,7 @@
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/engine)
 "Nn" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Np" = (
 /obj/structure/table/rack/steel,

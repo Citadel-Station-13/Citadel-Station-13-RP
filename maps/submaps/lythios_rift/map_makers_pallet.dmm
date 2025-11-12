@@ -17,7 +17,7 @@
 /area/space)
 "gc" = (
 /obj/structure/sandbag,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "gw" = (
 /obj/random/triumph,
@@ -28,14 +28,14 @@
 /area/space)
 "jK" = (
 /obj/structure/girder,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "mC" = (
 /obj/machinery/crystal/lava,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
 "mX" = (
-/turf/space/basic,
+/turf/space,
 /area/rift/surfacebase/outside/west_base)
 "mZ" = (
 /obj/random/crystal/normal_ice,
@@ -45,7 +45,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/space)
 "nv" = (
-/turf/space/basic,
+/turf/space,
 /area/rift/surfacebase/outside/west_deep)
 "pm" = (
 /turf/simulated/floor/water/indoors/lythios43c,
@@ -71,7 +71,7 @@
 /area/space)
 "tV" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ug" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c,
@@ -96,12 +96,12 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
 "xu" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "xA" = (
 /obj/effect/overlay/snow/airlock,
 /obj/machinery/door/airlock/external,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "yQ" = (
 /turf/simulated/floor/tiled/techfloor/lythios43c,
@@ -139,7 +139,7 @@
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
 /area/space)
 "HG" = (
-/turf/space/basic,
+/turf/space,
 /area/rift/surfacebase/outside/west_caves)
 "HI" = (
 /turf/simulated/mineral/lythios43c,
@@ -154,14 +154,14 @@
 /obj/structure/window/wooden{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Mh" = (
 /turf/template_noop,
 /area/template_noop)
 "NF" = (
 /obj/effect/overlay/snow/airlock,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "NN" = (
 /obj/random/multiple/minevault,
@@ -171,7 +171,7 @@
 /obj/structure/window/wooden{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/space)
 "PK" = (
 /obj/machinery/crystal/ice,
@@ -217,15 +217,15 @@
 /turf/simulated/floor/carpet/bcarpet/lythios43c,
 /area/space)
 "XQ" = (
-/turf/space/basic,
+/turf/space,
 /area/rift/surfacebase/outside/west)
 "YH" = (
 /obj/structure/girder/displaced,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "YR" = (
 /obj/effect/overlay/snow/floor,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "ZZ" = (
 /obj/random/outcrop,

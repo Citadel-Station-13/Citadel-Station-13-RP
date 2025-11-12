@@ -27,6 +27,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_MAGNET = 1)
 	materials_base = list(MAT_STEEL = 500)
 	worth_intrinsic = 40
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"
@@ -107,14 +108,14 @@
 	. = ..()
 	. += SPAN_NOTICE("Alt-click to switch it [on? "off" : "on"].")
 
-// todo: better altclick system
-/obj/item/gps/AltClick(mob/user)
+/obj/item/gps/on_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(!user.Reachability(src))
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	toggle_power(user = user)
+	toggle_power(user = clickchain.performer)
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/gps/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
 	if(istype(I, /obj/item/gps))
@@ -240,7 +241,7 @@
 		return
 	var/angle
 	var/valid = TRUE
-	var/curr_l_id = SSmapping.level_id(get_z(src))
+	var/curr_l_id = SSmapping.level_get_id(get_z(src))
 	var/turf/T = get_turf(src)
 	if(!T)
 		hud_arrow?.set_disabled(TRUE)
@@ -255,7 +256,7 @@
 		var/datum/component/gps_signal/sig = tracking
 		var/atom/A = sig.parent
 		var/turf/AT = get_turf(A)
-		if(SSmapping.level_id(get_z(A)) != curr_l_id)
+		if(SSmapping.level_get_id(get_z(A)) != curr_l_id)
 			valid = FALSE
 		else
 			angle = arctan(AT.x - T.x, AT.y - T.y)
@@ -368,13 +369,13 @@
 	var/list/detecting_levels = (LEGACY_MAP_DATUM).get_map_levels(curr.z, long_range)
 	.["x"] = curr.x
 	.["y"] = curr.y
-	.["level"] = SSmapping.fluff_level_id(curr.z)
+	.["level"] = SSmapping.level_get_fluff_id(curr.z)
 	var/list/others = list()
 	.["signals"] = others
 	var/datum/component/gps_signal/our_sig = GetComponent(/datum/component/gps_signal)
 	for(var/other_z in detecting_levels)
 		var/list/gpses = GLOB.gps_transmitters[other_z]
-		var/l_id = SSmapping.fluff_level_id(other_z)
+		var/l_id = SSmapping.level_get_fluff_id(other_z)
 		for(var/datum/component/gps_signal/sig as anything in gpses)
 			if(sig == our_sig)
 				continue
@@ -414,7 +415,7 @@
 			if(!tag_as)
 				return FALSE
 			var/turf/T = get_turf(src)
-			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.fluff_level_id(T.z))
+			add_waypoint(tag_as, text2num(params["x"]) || T.x, text2num(params["y"]) || T.y, params["level_id"] || SSmapping.level_get_fluff_id(T.z))
 			return FALSE // add waypoint pushes data already
 		if("del_waypoint")
 			//* RAW LOCATE IN HREF WARNING: RECEIVING PROC WILL SANITY CHECK.

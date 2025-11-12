@@ -1035,8 +1035,9 @@
 /area/sector/sky_planet/ground)
 "Jv" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/projectile/magnetic/railgun/automatic,
 /obj/item/gun/projectile/energy/phasegun/cannon,
+/obj/item/gun/projectile/ballistic/ax99,
+/obj/item/gun/projectile/ballistic/automatic/tommygun,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/rock)
 "Jz" = (

@@ -50,7 +50,6 @@
 
 /obj/item/clothing/suit/space/hardsuit
 	name = "chestpiece"
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 
 	//Flags
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -133,7 +132,6 @@
 
 /obj/item/clothing/suit/lightrig
 	name = "suit"
-	allowed = list(/obj/item/flashlight)
 	inv_hide_flags = HIDEJUMPSUIT
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD

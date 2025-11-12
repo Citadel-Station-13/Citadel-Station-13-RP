@@ -538,7 +538,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "bC" = (
-/turf/space/basic,
+/turf/space,
 /area/shuttle/blue_fo)
 "La" = (
 /obj/machinery/light,

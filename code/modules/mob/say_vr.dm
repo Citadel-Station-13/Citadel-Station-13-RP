@@ -100,8 +100,9 @@
 	if (message)
 		message = say_emphasis(message)
 		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
+		var/turf_origin = get_turf(src)
 
-		var/list/vis = get_mobs_and_objs_in_view_fast(get_turf(src),1,2) //Turf, Range, and type 2 is emote
+		var/list/vis = get_mobs_and_objs_in_view_fast(turf_origin,1,2) //Turf, Range, and type 2 is emote
 		var/list/vis_mobs = vis["mobs"]
 		var/list/vis_objs = vis["objs"]
 
@@ -111,6 +112,8 @@
 				continue
 			if(M.stat == DEAD)
 				continue // get mobs and objs in view fast is shitty; say refactor will deal with that
+			if(M != src)
+				M.playsound_local(turf_origin, 'sound/effects/subtle_emote.ogg', 100)
 			M.show_message(message, SAYCODE_TYPE_ALWAYS)
 
 		for(var/visobj in vis_objs)

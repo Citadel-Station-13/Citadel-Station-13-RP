@@ -13,9 +13,6 @@
 	/// Icon_state prior to being scanned if !known
 	var/unknown_state = "unknown"
 
-	var/list/map_z = list()
-	var/list/extra_z_levels //if you need to manually insist that these z-levels are part of this sector, for things like edge-of-map step trigger transitions rather than multi-z complexes
-
 	var/list/initial_generic_waypoints //store landmark_tag of landmarks that should be added to the actual lists below on init.
 	var/list/initial_restricted_waypoints //For use with non-automatic landmarks (automatic ones add themselves).
 
@@ -26,10 +23,7 @@
 	var/start_x			//Coordinates for self placing
 	var/start_y			//will use random values if unset
 
-	var/base = 0		//starting sector, counts as station_levels
 	var/in_space = 1	//can be accessed via lucky EVA
-
-	var/hide_from_reports = FALSE
 
 	var/sensors
 
@@ -41,20 +35,37 @@
 	if(. == INITIALIZE_HINT_QDEL)
 		return
 
-	find_z_levels() // This populates map_z and assigns z levels to the ship.
-	register_z_levels() // This makes external calls to update global z level information.
-
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
+
+	//! legacy: make a 1-z sector if we spawned on a level without an entity, and without a struct. !//
+	if(!overmap)
+		if(!istype(loc.loc, /area/shuttle))
+			var/our_z = get_z(src)
+			if(our_z)
+				var/obj/overmap/entity/existing_entity = SSovermaps.get_overmap_entity(src)
+				if(!existing_entity)
+					var/datum/map/existing_map = SSmapping.level_get_map(our_z)
+					if(existing_map)
+						var/datum/overmap_location/map/new_location = new(existing_map)
+						set_location(new_location)
+					else
+						// technically you can init a single level to be an overmap location but this is
+						// disabled for now.
+						CRASH("legacy overmap object initialization attempted on a map-less level")
+				else
+					CRASH("level [our_z] ([SSmapping.level_get_id(our_z)]) had manually placed overmap entity despite having an initializer already loaded")
+		else
+			// do nothing, /visitable/ship/landable handles it
 
 	// todo: This is shitcode but sue me tbh we gotta refactor this shit anyways to be overmap_initializer's
 	spawn(-1)
-		var/datum/overmap/legacy_bind_overmap = SSovermaps.get_or_load_default_overmap()
-		var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
-		start_x = where_to_go.x
-		start_y = where_to_go.y
+		if(!overmap)
+			var/datum/overmap/legacy_bind_overmap = SSovermaps.get_or_load_default_overmap()
+			var/turf/where_to_go = free_overmap_space(legacy_bind_overmap)
+			start_x = where_to_go.x
+			start_y = where_to_go.y
 
-		forceMove(where_to_go)
-		testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
+			forceMove(where_to_go)
 
 		if(known)
 			plane = ABOVE_LIGHTING_PLANE
@@ -70,50 +81,8 @@
 		LAZYADD(SSshuttle.sectors_to_initialize, src) //Queued for further init. Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
 		SSshuttle.process_init_queues()
 
-// You generally shouldn't destroy these.
-/obj/overmap/entity/visitable/Destroy()
-	testing("Deleting [src] overmap sector at [x],[y]")
-	unregister_z_levels()
-	return ..()
-
 //This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
 /obj/overmap/entity/visitable/proc/populate_sector_objects()
-
-/obj/overmap/entity/visitable/proc/get_areas()
-	. = list()
-	for(var/area/A)
-		if (A.z in map_z)
-			. += A
-
-/obj/overmap/entity/visitable/proc/find_z_levels()
-	if(!LAZYLEN(map_z)) // If map_z is already populated use it as-is, otherwise start with connected z-levels.
-		map_z = GetConnectedZlevels(z)
-	if(LAZYLEN(extra_z_levels))
-		for(var/thing in extra_z_levels)
-			var/datum/map_level/level
-			if(ispath(thing))
-				level = SSmapping.typed_levels[thing]
-			else if(istext(thing))
-				level = SSmapping.keyed_levels[thing]
-			if(isnull(level))
-				STACK_TRACE("failed to find level [thing] during init")
-				continue
-			map_z |= level.z_index
-
-/obj/overmap/entity/visitable/proc/register_z_levels()
-	for(var/zlevel in map_z)
-		map_sectors["[zlevel]"] = src
-
-	(LEGACY_MAP_DATUM).player_levels |= map_z
-	if(!in_space)
-		(LEGACY_MAP_DATUM).sealed_levels |= map_z
-
-/obj/overmap/entity/visitable/proc/unregister_z_levels()
-	map_sectors -= map_z
-
-	(LEGACY_MAP_DATUM).player_levels -= map_z
-	if(!in_space)
-		(LEGACY_MAP_DATUM).sealed_levels -= map_z
 
 /obj/overmap/entity/visitable/get_scan_data()
 	if(!known)
@@ -125,20 +94,11 @@
 	return ..()
 
 /obj/overmap/entity/visitable/proc/get_space_zlevels()
-	if(in_space)
-		return map_z
-	else
-		return list()
+	return in_space ? get_z_indices() : list()
 
 //Helper for init.
 /obj/overmap/entity/visitable/proc/check_ownership(obj/object)
-	var/area/A = get_area(object)
-	if(A in SSshuttle.shuttle_areas)
-		return 0
-	if(is_type_in_list(A, unowned_areas))
-		return 0
-	if(get_z(object) in map_z)
-		return 1
+	return SSovermaps.get_overmap_entity(object) == src
 
 //If shuttle_name is false, will add to generic waypoints; otherwise will add to restricted. Does not do checks.
 /obj/overmap/entity/visitable/proc/add_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)
