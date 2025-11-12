@@ -67,7 +67,7 @@
 	set category = "Debug"
 	set name = "Map Template - Upload"
 
-	var/map = invoking.prompt_for_file_or_null("Choose a Map Template to upload to template storage", "Upload Map Template")
+	var/map = prompt_for_file_or_null("Choose a Map Template to upload to template storage", "Upload Map Template")
 	if(isnull(map))
 		return
 
