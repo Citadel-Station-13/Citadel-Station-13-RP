@@ -10954,7 +10954,7 @@
 /area/fitness/strelka)
 "PB" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/space/basic,
+/turf/space,
 /area/bridge/strelka)
 "PD" = (
 /obj/item/trash/cavemoss,

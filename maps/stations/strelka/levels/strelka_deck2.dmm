@@ -9623,7 +9623,7 @@
 /area/security/strelka/storage)
 "zK" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/space/basic,
+/turf/space,
 /area/engineering/strelka/gas)
 "zL" = (
 /obj/structure/cable/blue{
@@ -13740,9 +13740,6 @@
 /obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/explo/emt)
-"KT" = (
-/turf/space/basic,
-/area/space)
 "KV" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -33665,7 +33662,7 @@ KP
 KP
 KP
 KP
-KT
+KP
 Sx
 do
 Wf
@@ -33732,7 +33729,7 @@ JY
 JY
 Za
 fN
-KT
+KP
 KP
 KP
 KP
@@ -33859,7 +33856,7 @@ KP
 KP
 KP
 KP
-KT
+KP
 Sx
 do
 Wf
@@ -33926,7 +33923,7 @@ JY
 JY
 Za
 fN
-KT
+KP
 KP
 KP
 KP
@@ -34053,7 +34050,7 @@ KP
 KP
 KP
 KP
-KT
+KP
 Sx
 do
 Wf
@@ -34120,7 +34117,7 @@ JY
 JY
 Za
 fN
-KT
+KP
 KP
 KP
 KP

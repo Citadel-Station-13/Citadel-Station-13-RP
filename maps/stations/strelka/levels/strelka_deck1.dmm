@@ -269,13 +269,12 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory3)
 "bs" = (
-/obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/ship/sensors{
-	pixel_y = -25;
+	pixel_y = -17;
 	dir = 1;
 	density = 0
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/personalmicro2)
 "bv" = (
 /obj/effect/floor_decal/rust,
@@ -295,14 +294,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "bA" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/computer/shuttle_control/explore/personalmicro4{
 	pixel_y = 21;
 	density = 0
 	},
-/turf/simulated/floor/carpet/patterened/red,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/personalmicro4)
 "bE" = (
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -1053,13 +1049,15 @@
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbaysec)
 "ew" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/computer/ship/engines{
 	pixel_y = 21;
 	layer = 3.3;
 	density = 0
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8;
+	layer = 3.4;
+	pixel_y = 10
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/shuttle/personalmicro2)
@@ -1243,13 +1241,12 @@
 /turf/simulated/floor/airless,
 /area/strelka/fighterbay)
 "fp" = (
-/obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/shuttle_control/explore/personalmicro3{
 	dir = 1;
-	pixel_y = -25;
+	pixel_y = -17;
 	density = 0
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/personalmicro3)
 "fq" = (
 /obj/effect/floor_decal/borderfloorblack/full,
@@ -1433,15 +1430,16 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/fighterbaysec)
 "gi" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/ship/helm{
-	pixel_y = -25;
+	pixel_y = -17;
 	density = 0;
 	layer = 3.4;
 	dir = 1
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 10
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/shuttle/personalmicro4)
@@ -1456,6 +1454,9 @@
 	pixel_y = -31
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/personalmicro1)
 "gn" = (
@@ -1726,13 +1727,12 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "hD" = (
-/obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/shuttle_control/explore/personalmicro1{
 	dir = 1;
-	pixel_y = -25;
+	pixel_y = -17;
 	density = 0
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/personalmicro1)
 "hG" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -3349,14 +3349,11 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/fighterbaysec)
 "nP" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/computer/ship/sensors{
 	pixel_y = 17;
 	density = 0
 	},
-/turf/simulated/floor/carpet/turcarpet,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/personalmicro1)
 "nQ" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -3461,21 +3458,6 @@
 "on" = (
 /turf/simulated/wall/r_wall/prepainted/civilian,
 /area/shuttle/civvie/strelka)
-"oq" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/shuttle_landmark{
-	base_area = /area/strelka/hangardeck;
-	base_turf = /turf/space;
-	docking_controller = "strelka_trade_beruang_docking";
-	landmark_tag = "scoophead_strelka";
-	name = "Hangar Section 2f (scoophead)"
-	},
-/turf/simulated/floor/reinforced,
-/area/strelka/hangardeck)
 "os" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
@@ -3767,6 +3749,9 @@
 /obj/effect/floor_decal/techfloor,
 /obj/overmap/entity/visitable/ship/landable/trade/personalmicro2,
 /obj/effect/shuttle_landmark/strelka/deck1/personal2,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/shuttle/personalmicro2)
 "qb" = (
@@ -4517,6 +4502,9 @@
 	},
 /obj/overmap/entity/visitable/ship/landable/trade/personalmicro1,
 /obj/effect/shuttle_landmark/strelka/deck1/personal1,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/personalmicro1)
 "ts" = (
@@ -4560,9 +4548,6 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
 "tv" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/computer/ship/helm{
 	pixel_y = 16;
 	density = 0;
@@ -4570,7 +4555,8 @@
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8;
-	layer = 3.4
+	layer = 3.4;
+	pixel_y = 10
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/shuttle/personalmicro3)
@@ -5335,7 +5321,7 @@
 "xr" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
-	base_turf = /turf/space/basic;
+	base_turf = /turf/space;
 	docking_controller = "strelka_trade_beruang_docking";
 	landmark_tag = "beruang_strelka";
 	name = "Beruang Trading dock"
@@ -6146,6 +6132,9 @@
 	pixel_y = -31
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/shuttle/personalmicro3)
 "Bi" = (
@@ -6639,6 +6628,9 @@
 	},
 /obj/overmap/entity/visitable/ship/landable/trade/personalmicro3,
 /obj/effect/shuttle_landmark/strelka/deck1/personal3,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/shuttle/personalmicro3)
 "DB" = (
@@ -6885,21 +6877,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/strelka/armory2)
-"EA" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = "strelka_trade_beruang_docking";
-	landmark_tag = "beruang_strelka";
-	name = "Beruang Trading dock"
-	},
-/turf/space,
-/area/space)
 "EB" = (
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
@@ -7485,6 +7462,9 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/personalmicro4)
 "Hr" = (
@@ -7548,15 +7528,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/strelka/balista)
 "HI" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/ship/engines{
-	pixel_y = -25;
-	layer = 3.3;
+	pixel_y = -17;
+	layer = 3.4;
 	density = 0;
 	dir = 1
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 10
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/shuttle/personalmicro1)
@@ -8125,17 +8106,15 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/civvie/strelka)
 "JZ" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8;
-	layer = 3.4
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/computer/ship/engines{
 	pixel_y = 21;
 	layer = 3.3;
 	density = 0
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8;
+	layer = 3.4;
+	pixel_y = 10
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/shuttle/personalmicro4)
@@ -8439,6 +8418,9 @@
 /obj/effect/floor_decal/techfloor,
 /obj/overmap/entity/visitable/ship/landable/trade/personalmicro4,
 /obj/effect/shuttle_landmark/strelka/deck1/personal4,
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/personalmicro4)
 "Lw" = (
@@ -8569,15 +8551,16 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "Mi" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/ship/engines{
-	pixel_y = -25;
-	layer = 3.3;
+	pixel_y = -17;
+	layer = 3.4;
 	density = 0;
 	dir = 1
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 10
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/shuttle/personalmicro3)
@@ -8831,14 +8814,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
 "Nh" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/computer/ship/sensors{
 	pixel_y = 17;
 	density = 0
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/personalmicro3)
 "Nk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8897,12 +8877,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/strelka/fighterbaysec)
 "NJ" = (
-/obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/ship/sensors{
-	pixel_y = -25;
+	pixel_y = -17;
 	dir = 1
 	},
-/turf/simulated/floor/carpet/patterened/red,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/personalmicro4)
 "NK" = (
 /obj/structure/window/reinforced,
@@ -9830,14 +9809,11 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/pilot)
 "RU" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/computer/shuttle_control/explore/personalmicro2{
 	pixel_y = 21;
 	density = 0
 	},
-/turf/simulated/floor/carpet/oracarpet,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/personalmicro2)
 "RW" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -10314,15 +10290,16 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/fighterbaysec)
 "TV" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor,
 /obj/machinery/computer/ship/helm{
-	pixel_y = -25;
+	pixel_y = -17;
 	density = 0;
 	layer = 3.4;
 	dir = 1
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 10
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/shuttle/personalmicro2)
@@ -10933,10 +10910,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/hangardeck)
-"WM" = (
-/obj/structure/lattice,
-/turf/space/basic,
-/area/space)
 "WP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -11558,9 +11531,6 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
 "ZF" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
 /obj/machinery/computer/ship/helm{
 	pixel_y = 16;
 	density = 0;
@@ -11568,7 +11538,8 @@
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8;
-	layer = 3.4
+	layer = 3.4;
+	pixel_y = 10
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/shuttle/personalmicro1)
@@ -23583,7 +23554,7 @@ ky
 ky
 ky
 fY
-WM
+ky
 QE
 aN
 aN
@@ -23597,7 +23568,7 @@ UZ
 YR
 EI
 QE
-WM
+ky
 fY
 ky
 ky
@@ -27071,7 +27042,7 @@ gb
 Nv
 Nv
 Nv
-oq
+Nv
 Nv
 FR
 Nv
@@ -29827,7 +29798,7 @@ wY
 Sv
 Xv
 tB
-EA
+XR
 XR
 XR
 XR
