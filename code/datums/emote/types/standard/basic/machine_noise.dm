@@ -5,6 +5,8 @@
 	abstract_type = /datum/emote/standard/basic/machine_noise
 	emote_require = EMOTE_REQUIRE_SYNTHETIC_SPEAKER
 	target_allowed = TRUE
+	// TODO: parameter to enable this / set frequency
+	sfx_vary = FALSE
 
 /datum/emote/standard/basic/machine_noise/beep
 	name = "Machine - Beep"

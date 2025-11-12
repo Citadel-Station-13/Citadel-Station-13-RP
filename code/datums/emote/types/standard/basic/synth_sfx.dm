@@ -6,6 +6,8 @@
 
 	emote_require = EMOTE_REQUIRE_SYNTHETIC_SPEAKER
 	required_mobility_flags = MOBILITY_IS_CONSCIOUS
+	// TODO: parameter to enable this / set frequency
+	sfx_vary = FALSE
 
 /datum/emote/standard/basic/synth_sfx/honk
 	name = "Machine - Bike Horn"

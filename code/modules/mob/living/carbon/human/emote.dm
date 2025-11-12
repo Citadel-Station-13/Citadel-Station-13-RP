@@ -464,6 +464,7 @@
 
 		if("aslap", "aslaps")
 			m_type = 1
+			dangerous_pass_through_without_sanitizing = TRUE
 			var/mob/living/carbon/human/H = src
 			var/obj/item/organ/external/L = H.get_organ("l_hand")
 			var/obj/item/organ/external/R = H.get_organ("r_hand")

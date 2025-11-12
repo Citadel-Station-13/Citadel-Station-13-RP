@@ -4,6 +4,8 @@
 /datum/emote/standard/basic/animal_noise
 	abstract_type = /datum/emote/standard/basic/animal_noise
 	emote_require = EMOTE_REQUIRE_VOCALIZATION
+	// TODO: parameter to enable this / set frequency
+	sfx_vary = FALSE
 
 /datum/emote/standard/basic/animal_noise/awoo
 	name = "Awoo"
