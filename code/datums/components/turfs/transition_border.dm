@@ -53,7 +53,7 @@
 	if(AM.movable_flags & MOVABLE_IN_MOVED_YANK)
 		return // we're already in a yank
 	var/turf/our_turf = parent
-	var/z_index = SSmapping.level_index_in_dir(our_turf.z, dir)
+	var/z_index = SSmapping.level_get_index_in_dir(our_turf.z, dir)
 	if(isnull(z_index))
 		STACK_TRACE("no z index?! deleting self.")
 		qdel(src)
@@ -137,7 +137,7 @@
 	var/datum/map_level/our_level = SSmapping.ordered_levels[our_turf.z]
 	if(isnull(our_level))
 		return list()
-	var/datum/map_level/target_level = our_level.level_in_dir(dir)
+	var/datum/map_level/target_level = our_level.get_level_in_dir(dir)
 	if(isnull(target_level))
 		return list()
 	switch(dir)
@@ -169,7 +169,7 @@
 	var/datum/map_level/our_level = SSmapping.ordered_levels[our_turf.z]
 	if(isnull(our_level))
 		return list()
-	var/datum/map_level/target_level = our_level.level_in_dir(dir)
+	var/datum/map_level/target_level = our_level.get_level_in_dir(dir)
 	if(isnull(target_level))
 		return list()
 	switch(dir)
@@ -203,7 +203,7 @@
 	var/turf/T = src
 	if(!istype(T, /turf/level_border))
 		T = PlaceOnTop(/turf/level_border)
-	if(isnull(SSmapping.level_index_in_dir(z, dir)))
+	if(isnull(SSmapping.level_get_index_in_dir(z, dir)))
 		return
 	var/datum/component/transition_border/border = T.GetComponent(/datum/component/transition_border)
 	if(border)
@@ -231,6 +231,13 @@
 	atom_flags = ATOM_ABSTRACT
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = VIS_HIDE	// THIS IS VERY FUCKING IMPORTANT; WILL CRASH SERVER IF IT LOOPS.
+
+/atom/movable/mirage_border/Destroy()
+	. = ..()
+	if(. == QDEL_HINT_LETMELIVE)
+		return
+	// forcefully move, doMove is overridden
+	loc = null
 
 /atom/movable/mirage_border/doMove(atom/destination)
 	return FALSE

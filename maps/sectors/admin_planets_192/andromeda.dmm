@@ -794,7 +794,7 @@
 /area/admin_planet/andromeda/eastern_maints)
 "cA" = (
 /obj/overmap/entity/visitable/sector/admin/andromeda_haven,
-/turf/space/basic,
+/turf/space,
 /area/space)
 "cB" = (
 /obj/structure/table/rack/shelf,
@@ -1193,7 +1193,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "dP" = (
 /obj/machinery/power/apc/high/west_mount,
@@ -1653,7 +1653,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "fb" = (
 /obj/structure/table/steel_reinforced,
@@ -3146,7 +3146,7 @@
 /area/admin_planet/andromeda/eastern_maints)
 "jm" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction,
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "jn" = (
 /obj/machinery/artifact_harvester{
@@ -4327,7 +4327,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "nc" = (
 /turf/simulated/floor/tiled/steel_grid,
@@ -4622,7 +4622,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "oa" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -8676,7 +8676,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "AW" = (
 /obj/structure/bed/chair/office/dark{
@@ -8892,7 +8892,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "BA" = (
 /obj/structure/table/steel,
@@ -9160,7 +9160,7 @@
 /turf/simulated/floor/reinforced,
 /area/admin_planet/andromeda/rnd_xenobio)
 "Cr" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Cu" = (
 /obj/structure/table/borosilicate,
@@ -10447,7 +10447,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "GC" = (
 /obj/machinery/power/apc/high/north_mount,
@@ -11953,7 +11953,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "KS" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -13920,7 +13920,7 @@
 /area/admin_planet/andromeda/medward_chemistry)
 "Rs" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "Ru" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -14423,7 +14423,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/admin_planet/andromeda/engi_workroom)
 "Tb" = (
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "Td" = (
 /obj/machinery/camera/network/talon{
@@ -15985,7 +15985,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/space/basic,
+/turf/space,
 /area/admin_planet/andromeda/engi_workroom)
 "XI" = (
 /obj/machinery/artifact_analyser{

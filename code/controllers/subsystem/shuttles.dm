@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(shuttle)
 			try_add_landmark_tag(shuttle_landmark_tag, O)
 			landmarks_still_needed -= shuttle_landmark_tag
 		else if(istype(shuttle_landmark, /obj/effect/shuttle_landmark/automatic))	// These find their sector automatically
-			O = map_sectors["[shuttle_landmark.z]"]
+			O = SSovermaps.get_enclosing_overmap_entity(shuttle_landmark)
 			O ? O.add_landmark(shuttle_landmark, shuttle_landmark.shuttle_restricted) : (landmarks_awaiting_sector += shuttle_landmark)
 
 /datum/controller/subsystem/shuttle/proc/get_landmark(var/shuttle_landmark_tag)
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/landmarks_to_check = landmarks_awaiting_sector.Copy()
 	for(var/thing in landmarks_to_check)
 		var/obj/effect/shuttle_landmark/automatic/landmark = thing
-		if(landmark.z in given_sector.map_z)
+		if(landmark.z in given_sector.location?.get_z_indices())
 			given_sector.add_landmark(landmark, landmark.shuttle_restricted)
 			landmarks_awaiting_sector -= landmark
 
@@ -183,9 +183,8 @@ SUBSYSTEM_DEF(shuttle)
 		shuttle_types[shuttle.type] = shuttle
 		shuttle_areas |= shuttle.shuttle_area
 		log_debug(SPAN_DEBUG("Initialized shuttle [shuttle] ([shuttle.type])"))
+		GLOB.shuttle_added.raise_event(shuttle)
 		return shuttle
-		// Historical note:  No need to call shuttle.init_docking_controllers(), controllers register themselves
-		// and shuttles fetch refs in New().  Shuttles also dock() themselves in new if they want.
 
 // TODO - Leshana to hook up more of this when overmap is ported.
 /datum/controller/subsystem/shuttle/proc/hook_up_motherships(shuttles_list)

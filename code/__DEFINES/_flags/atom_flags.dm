@@ -1,4 +1,5 @@
-//? FLAG BITMASKS - Used in /atom/var/flags
+//* /atom 'atom_flags' variable *//
+
 /// The atom is initialized
 #define ATOM_INITIALIZED    (1<<0)
 /// Item has priority to check when entering or leaving.
