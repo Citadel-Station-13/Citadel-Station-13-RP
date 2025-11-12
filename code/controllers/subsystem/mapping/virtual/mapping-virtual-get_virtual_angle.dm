@@ -16,6 +16,7 @@
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_angle(atom/A, atom/B)
 	// todo: impl
+	#warn impl
 	return get_visual_angle(A, B)
 	// A = get_turf(A)
 	// B = get_turf(B)

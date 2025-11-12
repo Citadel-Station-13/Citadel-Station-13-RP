@@ -14,6 +14,7 @@
 /datum/controller/subsystem/mapping/proc/get_virtual_dir(turf/A, turf/B)
 	// todo: impl
 	return get_dir(A, B)
+	#warn impl
 	// A = get_turf(A)
 	// B = get_turf(B)
 	// if(A.z == B.z)

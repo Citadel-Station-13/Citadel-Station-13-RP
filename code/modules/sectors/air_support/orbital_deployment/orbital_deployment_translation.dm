@@ -8,6 +8,7 @@
 
 	var/turf/dest_lower_left
 	var/turf/dest_upper_right
+	var/list/atom/movable/falling_out_of_the_sky = list()
 	#warn hook these
 
 	var/c_impact_obj_dmg_base = 15

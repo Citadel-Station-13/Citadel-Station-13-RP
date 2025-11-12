@@ -9,6 +9,7 @@
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_coords(turf/A)
 	// todo: impl
+	#warn impl
 	return list(A.x, A.y, A.z)
 	// A = get_turf(A)
 	// if(!struct_by_z[A.z])

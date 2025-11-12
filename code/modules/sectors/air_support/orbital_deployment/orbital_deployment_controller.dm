@@ -80,13 +80,13 @@
 	if(our_overmap_entity)
 		var/list/obj/overmap/entity/overmap_query_results = SSovermaps.entity_pixel_dist_query(our_overmap_entity, conf_max_overmap_pixel_dist)
 		for(var/obj/overmap/entity/entity_in_range as anything in overmap_query_results)
-			if(!istype(entity_in_range, /obj/overmap/entity/visitable))
+			if(!isturf(entity_in_range.loc))
+				// if they're nested, skip; they're docked.
 				continue
-			var/obj/overmap/entity/visitable/visitable = entity_in_range
-			var/overmap_distance = visitable.entity_overmap_distance(our_overmap_entity)
+			var/overmap_distance = entity_in_range.entity_overmap_distance(our_overmap_entity)
 			// TODO: overmaps sensor update
-			var/overmap_name = visitable.name
-			for(var/z in visitable.map_z)
+			var/overmap_name = entity_in_range.name
+			for(var/z in entity_in_range.location?.get_z_indices())
 				var/list/atom/movable/laser_designator_target/lasers = SSmap_sectors.laser_designation_query(z)
 				var/list/obj/item/signal_flare/flares = SSmap_sectors.signal_flare_query(z)
 

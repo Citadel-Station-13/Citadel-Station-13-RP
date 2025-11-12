@@ -3,12 +3,14 @@
 
 /datum/mortar_flight
 	var/obj/item/ammo_casing/mortar/shell
-
-	// TODO: use sector backend when it's done, for now we target single levels
-	//       and cannot go across structs
-	var/datum/map_level/flight_level
+	/// target map struct
+	var/datum/map/flight_map
+	/// as virtual x
 	var/flight_x
+	/// as virtual y
 	var/flight_y
+	/// as virtual z
+	var/flight_z
 	var/flight_duration
 
 	var/arrive_time
