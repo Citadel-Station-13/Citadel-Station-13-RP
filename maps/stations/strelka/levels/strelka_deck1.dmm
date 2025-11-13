@@ -8939,7 +8939,7 @@
 "NX" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/strelka/hangardeck;
-	base_turf = /turf/space/basic;
+	base_turf = /turf/space;
 	docking_controller = "strelka_trade_beruang_docking";
 	landmark_tag = "scoophead_strelka";
 	name = "Hangar Section 2f (scoophead)"
