@@ -31,8 +31,8 @@
 			else if(M.stat == DEAD && M.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_ears))
 				to_chat(M, "The captive mind of [src] whispers, \"[message]\"")
 
-/mob/living/captive_brain/emote(var/message)
-	return
+/mob/living/captive_brain/process_emote(datum/emote/emote, raw_parameter_string, datum/event_args/actor/actor, used_binding)
+	return FALSE
 
 /mob/living/captive_brain/process_resist()
 	//Resisting control by an alien mind.
