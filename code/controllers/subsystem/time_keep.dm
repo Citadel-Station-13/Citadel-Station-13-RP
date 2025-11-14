@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(time_keep)
 		var/use_time = galactic_time_offset + world.time - (global.midnight_rollovers DAYS)
 		var/rollovers = floor(use_time / (1 DAY))
 		if(rollovers != cached_galactic_date_rollovers)
-			cached_galactic_date = "[num2text(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
+			cached_galactic_date = "[text2num(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
 		return cached_galactic_date
 
 /**
