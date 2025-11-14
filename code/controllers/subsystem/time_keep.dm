@@ -13,7 +13,7 @@
  * * Galactic time is a random hour, usually, plus time from server boot.
  * * Galactic time is affected by time dilation, unlike timeofday/realtimeofday.
  */
-/datum/controller/subsystem/time_keep
+SUBSYSTEM_DEF(time_keep)
 	var/galactic_year_offset = 544
 	var/static/galactic_time_offset = null
 
