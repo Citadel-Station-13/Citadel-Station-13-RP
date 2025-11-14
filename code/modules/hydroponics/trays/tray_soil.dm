@@ -67,3 +67,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil/ashlander
 	name = "ashen soil"
 	hostile_soil = 1
+
+/obj/machinery/portable_atmospherics/hydroponics/soil/grassy
+	waterlevel = 40 //Soil made out of grass isn't great, good for maybe 1 harvest
+	nutrilevel = 4
