@@ -1,3 +1,6 @@
+/**
+ * Base definition of mob.
+ */
 /mob
 	//* Actionspeed *//
 	/// List of action speed modifiers applying to this mob
@@ -11,6 +14,11 @@
 	/// active feign_impairment types
 	/// * lazy list
 	var/list/impairments_feigned
+
+	//* Inventory *//
+	/// our inventory datum, if any.
+	/// * Set to typepath to initialize.
+	var/datum/inventory/inventory
 
 	//* Movespeed *//
 	/// List of movement speed modifiers applying to this mob
@@ -32,7 +40,7 @@
  *
  * Other stuff:
  * * Sets the mob focus to itself
- * * Generates huds
+ * * Generates hudsInven
  * * If there are any global alternate apperances apply them to this mob
  * * Intialize the transform of the mob
  */

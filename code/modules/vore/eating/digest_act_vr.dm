@@ -4,7 +4,7 @@
 
 // Ye default implementation.
 /obj/item/proc/digest_act(var/atom/movable/item_storage = null)
-	if(istype(item_storage,/obj/item/dogborg/sleeper))
+	if(istype(item_storage,/obj/item/robot_builtin/dog_sleeper))
 		for(var/obj/item/O in contents)
 			if(item_storage)
 				O.forceMove(item_storage)
@@ -55,7 +55,7 @@
 //PDAs need to lose their ID to not take it with them, so we can get a digested ID
 /obj/item/pda/digest_act(var/atom/movable/item_storage = null)
 	if(id)
-		if(istype(item_storage,/obj/item/dogborg/sleeper) || (!isnull(digest_stage) && digest_stage <= 0))
+		if(istype(item_storage,/obj/item/robot_builtin/dog_sleeper) || (!isnull(digest_stage) && digest_stage <= 0))
 			id = null
 	. = ..()
 
