@@ -39,29 +39,10 @@ GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 	var/time_portion = time2text(world.timeofday, "hh:mm:ss")
 	return "[date_portion]T[time_portion]"
 
-/proc/get_timezone_offset()
-	var/midnight_gmt_here = text2num(time2text(0,"hh")) * 36000
-	if(midnight_gmt_here > 12 HOURS)
-		return 24 HOURS - midnight_gmt_here
-	else
-		return midnight_gmt_here
-
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
 	if(!wtime)
 		wtime = world.time
 	return time2text(wtime, format, 0)
-
-/**
- * This is used for displaying the "station time" equivelent of a world.time value
- * Calling it with no args will give you the current time, but you can specify a world.time-based value as an argument.
- * - You can use this, for example, to do "This will expire at [station_time_at(world.time + 500)]" to display a "station time" expiration date
- *   which is much more useful for a player).
- */
-/proc/station_time(time=world.time)
-	return ((((time - SSticker.round_start_time)) + GLOB.gametime_offset) % 864000)
-
-/proc/station_time_timestamp(format = "hh:mm:ss", time=world.time)
-	return time2text(station_time(time), format, 0)
 
 /**
  * Returns 1 if it is the selected month and day.
@@ -82,6 +63,7 @@ GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 /var/next_duration_update = 0
 /var/last_round_duration = 0
 
+// TODO: this is buggy, should use RTOD / walltime
 /proc/roundduration2text()
 	if(!SSticker.round_start_time)
 		return "00:00"

@@ -26,11 +26,22 @@
 
 	var/tmp/cached_galactic_date
 	var/tmp/cached_galactic_date_rollovers
-	var/tmp/cached_galactic_date_roundstart_instant
+
+	/// approximate REALTIMEOFDAY we booted at
+	/// * Set by PreInit, which is very close, but not precisely, at server boot.
+	var/static/cached_server_boot_rtod
+
+	/// world.time we started the round at
+	/// * Null until round starts.
+	var/static/cached_round_start_time
+	/// REALTIMEOFDAY we started the round at
+	/// * Null until round starts.
+	var/static/cached_round_start_rtod
 
 /datum/controller/subsystem/time_keep/PreInit(recovering)
 	if(isnull(galactic_time_offset))
 		galactic_time_offset = pick(possible_roundstart_offsets)
+	cached_server_boot_rtod = REALTIMEOFDAY
 	return ..()
 
 /**
@@ -49,7 +60,6 @@
 		if(rollovers != cached_galactic_date_rollovers)
 			cached_galactic_date = "[num2text(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
 		return cached_galactic_date
-
 
 /**
  * Returns time from start of current round. Default offset is current time.
