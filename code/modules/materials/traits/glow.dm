@@ -17,7 +17,7 @@
 
 /datum/prototype/material_trait/glow/on_add(atom/host, existing_data, our_data)
 	. = ..()
-	var/atom/movable/render/material_glow/renderer
+	var/atom/movable/graphics_render/material_glow/renderer
 	if(isnull(existing_data))
 		renderer = new
 		host.contents += renderer
@@ -27,11 +27,11 @@
 
 /datum/prototype/material_trait/glow/on_remove(atom/host, existing_data, our_data, destroying)
 	. = ..()
-	qdel(locate(/atom/movable/render/material_glow) in host.contents)
+	qdel(locate(/atom/movable/graphics_render/material_glow) in host.contents)
 
-/atom/movable/render/material_glow
+/atom/movable/graphics_render/material_glow
 
-/atom/movable/render/material_glow/doMove(atom/destination)
+/atom/movable/graphics_render/material_glow/doMove(atom/destination)
 	if(!QDESTROYING(src))
 		CRASH("something tried to move us")
 	return ..()

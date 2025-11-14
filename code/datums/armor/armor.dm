@@ -15,24 +15,51 @@
 	 */
 	var/randomization_percent = 25
 
+	// TODO: investigate separating into blunt/piercing/slashing
 	var/melee = 0
 	var/melee_tier = MELEE_TIER_DEFAULT
 	var/melee_soak = 0
 	var/melee_deflect = 0
+	// TODO: investigate separating into blunt/piercing/slashing
 	var/bullet = 0
 	var/bullet_tier = BULLET_TIER_DEFAULT
 	var/bullet_soak = 0
 	var/bullet_deflect = 0
+	/**
+	 * Deflection of 'normal' energy blasts.
+	 */
 	var/laser = 0
 	var/laser_tier = LASER_TIER_DEFAULT
 	var/laser_soak = 0
 	var/laser_deflect = 0
+	/**
+	 * Deflection of 'exotic' energy blasts.
+	 * * High values are not allowed, including for admin-spawn gear. Please
+	 *   ensure all values are below 0.8; this will be enforced via linter eventually.
+	 */
 	var/energy = 0
+	/**
+	 * Deflection of explosive power.
+	 * * High values nonlinearly increase protection. Please do not inflate armor values.
+	 * * Internally, this literally multiplies incoming bomb energy (which is just a number).
+	 */
 	var/bomb = 0
-	var/bio = 0
+	/**
+	 * Deflection of radiation.
+	 * * Please resist the urge to set this to 1.
+	 * * Internally, this literally multiplies incoming radiation (which is just a number),
+	 *   before mob health system handles it.
+	 */
 	var/rad = 0
+	// TODO: what is this for?? mobs don't take fire damage they take heat / exposure damage.
+	//       what does this actually protect?
 	var/fire = 0
+	// TODO: this works as a raw acid multiplier but we should still re-evaluate this along with [fire]
 	var/acid = 0
+	// TODO: should this be on armor? this should be a permeability ratio?
+	//       this is realistically only valid for clothing as normal entities don't care
+	//       about viruses, right?
+	var/bio = 0
 
 /datum/armor/New(list/from_values)
 	if(from_values)

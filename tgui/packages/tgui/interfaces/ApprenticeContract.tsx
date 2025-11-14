@@ -4,13 +4,14 @@ import { BlockQuote, Box, Button, Icon, Section, Stack } from 'tgui-core/compone
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import { WindowTheme } from '../styles/themes/typedef';
 
 export const ApprenticeContract = (props) => {
   return (
     <Window
       width={620}
       height={600}
-      theme="wizard">
+      theme={WindowTheme.Wizard}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>

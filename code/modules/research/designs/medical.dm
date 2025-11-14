@@ -91,6 +91,32 @@
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 750, MAT_SILVER = 1250, MAT_GOLD = 750, MAT_URANIUM = 250)
 	build_path = /obj/item/hypospray/advanced
 
+/*
+Not yet. ~silicons
+
+/datum/design/science/medical/medichine_cell
+	abstract_type = /datum/design/science/medical/medichine_cell
+
+/datum/design/science/medical/medichine_cell/generate_name(template)
+	return "Medichine Cell ([..()])"
+
+/datum/design/science/medical/medichine_cell/seal_wounds
+	id = "medichine-cell-woundseal"
+	build_path = /obj/item/medichine_cell/seal_wounds
+
+/datum/design/science/medical/medichine_cell/debride
+	id = "medichine-cell-debride"
+	build_path = /obj/item/medichine_cell/seal_wounds/violently
+
+/datum/design/science/medical/medichine_cell/deathmend
+	id = "medichine-cell-deathmend"
+	build_path = /obj/item/medichine_cell/deathmend
+
+/datum/design/science/medical/medichine_cell/synthfix
+	id = "medichine-cell-synthfix"
+	build_path = /obj/item/medichine_cell/synth_repair
+*/
+
 /datum/prototype/design/science/medical/cell_based
 	abstract_type = /datum/prototype/design/science/medical/cell_based
 

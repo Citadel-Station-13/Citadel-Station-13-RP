@@ -61,11 +61,6 @@
 			if(B.legacy_use_external_power)
 				to_chat(clickchain.performer, "<span class='notice'>\The [B] has no recharge port.</span>")
 				return
-		else if(istype(G, /obj/item/flash))
-			var/obj/item/flash/F = G
-			if(F.use_external_power)
-				to_chat(clickchain.performer, "<span class='notice'>\The [F] has no recharge port.</span>")
-				return
 		else if(istype(G, /obj/item/weldingtool/electric))
 			var/obj/item/weldingtool/electric/EW = G
 			if(EW.use_external_power)

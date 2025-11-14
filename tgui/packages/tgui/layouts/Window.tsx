@@ -36,7 +36,6 @@ export type WindowProps = Partial<{
   buttons: ReactNode;
   canClose: BooleanLike;
   height: number;
-  theme: string;
   title: string;
   width: number;
 }> &

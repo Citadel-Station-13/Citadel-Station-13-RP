@@ -16,6 +16,11 @@ interface SpriteProps extends BoxProps {
   readonly fill?: BooleanLike;
 }
 
+/**
+ *
+ * @param props
+ * @returns
+ */
 export const Sprite = (props: SpriteProps) => {
   return (
     <Box {...props}

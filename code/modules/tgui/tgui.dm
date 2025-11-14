@@ -579,7 +579,9 @@
 	SIGNAL_HANDLER
 	unregister_module(source)
 
-/datum/tgui/proc/module_send_data(datum/source, mob/user, datum/tgui/ui, list/data)
+/datum/tgui/proc/module_send_data(datum/source, mob/user, datum/tgui/ui, list/data, target_modules)
+	if(!isnull(target_modules) && target_modules == FALSE)
+		return
 	if(!isnull(user) && user != user)
 		return
 	if(!isnull(ui) && ui != src)

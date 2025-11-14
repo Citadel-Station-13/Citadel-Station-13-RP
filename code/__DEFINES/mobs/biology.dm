@@ -26,6 +26,9 @@ DEFINE_BITFIELD_NEW(biology_types, list(
 	/datum/medichine_effect/wound_healing = list(
 		"biology_types",
 	),
+	/obj/item/organ = list(
+		"biology_type",
+	),
 ), list(
 	BITFIELD_NEW("Human", BIOLOGY_TYPE_HUMAN),
 	BITFIELD_NEW("Synth", BIOLOGY_TYPE_SYNTH),

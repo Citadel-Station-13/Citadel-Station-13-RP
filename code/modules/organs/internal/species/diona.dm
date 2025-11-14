@@ -4,6 +4,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "nymph"
 	organ_tag = "special" // Turns into a nymph instantly, no transplanting possible.
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/diona/removed(var/mob/living/user, var/skip_nymph)
 	if(robotic >= ORGAN_ROBOT)
@@ -22,31 +23,37 @@
 	name = "neural strata"
 	parent_organ = BP_TORSO
 	organ_tag = O_STRATA
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/diona/bladder
 	name = "gas bladder"
 	parent_organ = BP_HEAD
 	organ_tag = O_GBLADDER
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/diona/polyp
 	name = "polyp segment"
 	parent_organ = BP_GROIN
 	organ_tag = O_POLYP
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/diona/ligament
 	name = "anchoring ligament"
 	parent_organ = BP_GROIN
 	organ_tag = O_ANCHOR
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/diona/node
 	name = "receptor node"
 	parent_organ = BP_HEAD
 	organ_tag = O_RESPONSE
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/diona/nutrients
 	name = O_NUTRIENT
 	parent_organ = BP_TORSO
 	organ_tag = O_NUTRIENT
+	biology_type = BIOLOGY_TYPE_PLANT
 
 // These are different to the standard diona organs as they have a purpose in other
 // species (absorbing radiation and light respectively)
@@ -55,6 +62,7 @@
 	organ_tag = O_NUTRIENT
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "claw"
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/diona/nutrients/removed(mob/user)
 	return ..(user, 1)
@@ -65,6 +73,7 @@
 	organ_tag = O_RESPONSE
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "claw"
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/diona/node/removed()
 	return
@@ -74,6 +83,7 @@
 	name = "cephalon mass"
 	parent_organ = BP_TORSO
 	vital = TRUE
+	biology_type = BIOLOGY_TYPE_PLANT
 
 /obj/item/organ/internal/brain/cephalon/Initialize(mapload)
 	. = ..()
