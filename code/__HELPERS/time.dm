@@ -21,17 +21,17 @@ GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 
 	return wtime + (time_offset + wusage) * world.tick_lag
 
-#define worldtime2stationtime(time) time2text((GLOB.roundstart_hour HOURS) - SSticker.round_start_time + time, "hh:mm")
+#define worldtime2stationtime(time) SStime_keep.render_galactic_time_short(time)
 #define round_duration_in_ds (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
-#define station_time_in_ds (GLOB.roundstart_hour HOURS + round_duration_in_ds)
+#define station_time_in_ds (world.time + SStime_keep.get_galactic_time_offset())
 
 // TODO: remove
 /proc/stationtime2text()
-	return SStime_keep.get_galactic_time()
+	return SStime_keep.render_galactic_time()
 
 // TODO: remove
 /proc/stationdate2text()
-	return SStime_keep.get_galactic_date()
+	return SStime_keep.render_galactic_date()
 
 /// ISO 8601
 /proc/time_stamp()

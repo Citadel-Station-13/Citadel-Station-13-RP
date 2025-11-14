@@ -56,6 +56,7 @@
 
 #define MIDNIGHT_ROLLOVER		864000
 #define MIDNIGHT_ROLLOVER_CHECK (global.midnight_rollover_last_timeofday != world.timeofday ? update_midnight_rollover() : global.midnight_rollovers)
+#define MIDNIGHT_ROLLOVER_CHECK_STANDALONE if(global.midnight_rollover_last_timeofday != world.timeofday) update_midnight_rollover()
 
 GLOBAL_REAL_VAR(midnight_rollovers) = 0
 GLOBAL_REAL_VAR(midnight_rollover_last_timeofday) = world.timeofday

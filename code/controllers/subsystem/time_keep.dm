@@ -26,6 +26,7 @@
 
 	var/tmp/cached_galactic_date
 	var/tmp/cached_galactic_date_rollovers
+	var/tmp/cached_galactic_date_roundstart_instant
 
 /datum/controller/subsystem/time_keep/PreInit(recovering)
 	if(isnull(galactic_time_offset))
@@ -35,45 +36,52 @@
 /**
  * @return as YYYY-MM-DD
  */
-/datum/controller/subsystem/time_keep/proc/get_galactic_date()
-	var/use_time = world.time + galactic_time_offset
-	var/rollovers = floor(use_time / DAYS)
-	if(rollovers != cached_galactic_date_rollovers)
-		cached_galactic_date = "[num2text(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
-	return cached_galactic_date
+/datum/controller/subsystem/time_keep/proc/render_galactic_date(manual_offset)
+	// Note: midnight rollovers have to be subtracted because we manually track midnight rollovers
+	//       in date rendering code.
+	MIDNIGHT_ROLLOVER_CHECK_STANDALONE
+	if(manual_offset)
+		var/use_time = galactic_time_offset + manual_offset - (global.midnight_rollovers DAYS)
+		return "[num2text(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
+	else
+		var/use_time = galactic_time_offset + world.time - (global.midnight_rollovers DAYS)
+		var/rollovers = floor(use_time / (1 DAY))
+		if(rollovers != cached_galactic_date_rollovers)
+			cached_galactic_date = "[num2text(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
+		return cached_galactic_date
+
 
 /**
- * @return as YYYY-MM-DD
- */
-/datum/controller/subsystem/time_keep/proc/get_galactic_date_offset(offset)
-	var/use_time = world.time + galactic_time_offset + offset
-	return "[num2text(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
-
-/**
+ * Returns time from start of current round. Default offset is current time.
  * @return as hh:mm:ss
  */
-/datum/controller/subsystem/time_keep/proc/get_galactic_time()
-	var/static/last_get
-	var/static/last_str
-
-	if(world.time != last_get)
-		last_str = time2text(world.time + galactic_time_offset, "hh:mm:ss", 0)
-	return last_str
-
-/**
- * @return as hh:mm:ss
- */
-/datum/controller/subsystem/time_keep/proc/get_galactic_time_offset(offset)
-	return time2text(world.time + galactic_time_offset + offset, "hh:mm:ss", 0)
+/datum/controller/subsystem/time_keep/proc/render_galactic_time(manual_offset)
+	if(manual_offset)
+		// TODO: slow path that doesn't cache
+		return time2text(galactic_time_offset + manual_offset, "hh:mm:ss", 0)
+	else
+		// TODO: cache fast path
+		return time2text(galactic_time_offset + world.time, "hh:mm:ss", 0)
 
 /**
+ * Returns time from start of current round. Default offset is current time.
  * @return as hh:mm
  */
-/datum/controller/subsystem/time_keep/proc/get_galactic_time_short()
-	return get_galactic_time_short_offset(0)
+/datum/controller/subsystem/time_keep/proc/render_galactic_time_short(manual_offset)
+	if(manual_offset)
+		// TODO: slow path that doesn't cache
+		return time2text(galactic_time_offset + manual_offset, "hh:mm", 0)
+	else
+		// TODO: cache fast path
+		return time2text(galactic_time_offset + world.time, "hh:mm", 0)
 
 /**
- * @return as hh:mm
+ * * **warning**: this proc return should never be used to render date. BYOND is weird.
+ * @return deciseconds into the current day we started the server at.
+ *         Value will only make sense when time2text'd to `hh`, `mm`, `ss` format.
+ *         Date formats will fail miserably due to us using `world.time` instead of `world.realtime` for floating
+ *         point accuracy reasons. Make sure you remember to set timezone to `0` in `time2text` if using this
+ *         for that.
  */
-/datum/controller/subsystem/time_keep/proc/get_galactic_time_short_offset(offset)
-	return time2text(world.time + galactic_time_offset + offset, "hh:mm", 0)
+/datum/controller/subsystem/time_keep/proc/get_galactic_time_offset()
+	return galactic_time_offset
