@@ -21,30 +21,17 @@ GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 
 	return wtime + (time_offset + wusage) * world.tick_lag
 
-GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
-/var/station_date = ""
-/var/next_station_date_change = 1 DAY
-
-// todo: better subsystem based way of tracking this, this is fucky.
-
-#define duration2stationtime(time) time2text(station_time_in_ds + time, "hh:mm")
 #define worldtime2stationtime(time) time2text((GLOB.roundstart_hour HOURS) - SSticker.round_start_time + time, "hh:mm")
 #define round_duration_in_ds (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
 #define station_time_in_ds (GLOB.roundstart_hour HOURS + round_duration_in_ds)
 
+// TODO: remove
 /proc/stationtime2text()
-	return time2text(station_time_in_ds, "hh:mm", 0)
+	return SStime_keep.get_galactic_time()
 
+// TODO: remove
 /proc/stationdate2text()
-	var/update_time = FALSE
-	if(station_time_in_ds > next_station_date_change)
-		next_station_date_change += 1 DAY
-		update_time = TRUE
-	if(!station_date || update_time)
-		var/extra_days = round(station_time_in_ds / (1 DAY)) DAYS
-		var/timeofday = world.timeofday + extra_days
-		station_date = num2text((text2num(time2text(timeofday, "YYYY"))+544)) + "-" + time2text(timeofday, "MM-DD")
-	return station_date
+	return SStime_keep.get_galactic_date()
 
 /// ISO 8601
 /proc/time_stamp()
@@ -114,14 +101,6 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	last_round_duration = "[hours]:[mins]"
 	next_duration_update = world.time + 1 MINUTES
 	return last_round_duration
-
-/var/midnight_rollovers = 0
-/var/rollovercheck_last_timeofday = 0
-
-/proc/update_midnight_rollover()
-	if (world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
-		return midnight_rollovers++
-	return midnight_rollovers
 
 /proc/weekdayofthemonth()
 	/// Get the current day.
