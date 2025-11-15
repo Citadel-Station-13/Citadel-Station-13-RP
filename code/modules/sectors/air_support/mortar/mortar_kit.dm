@@ -4,8 +4,9 @@
 /obj/item/mortar_kit
 	name = "mortar kit"
 	desc = "A collapsed kit that can be used to deploy a stationary mortar."
-
-	#warn sprite
+	icon = 'icons/modules/sectors/air_support/mortar'
+	icon_state = "mortar-jungle"
+	base_icon_state = "mortar-jungle"
 
 	/// mortar to create if empty
 	var/mortar_type = /obj/machinery/mortar
@@ -34,6 +35,12 @@
 	move_into_deployed(location)
 	qdel(src)
 	return TRUE
+
+/obj/item/mortar_kit/update_icon()
+	if(mortar)
+		icon_state = mortar.icon_state
+	return ..()
+
 
 /obj/item/mortar_kit/proc/user_deploy(turf/location, datum/event_args/actor/actor, delay_mod = 1)
 

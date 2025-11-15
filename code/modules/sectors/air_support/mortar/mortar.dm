@@ -4,8 +4,9 @@
 /obj/machinery/mortar
 	name = "mortar"
 	desc = "A mortar of some kind. What kind of insanity drove you to possess one?"
-
-	#warn sprite
+	icon = 'icons/modules/sectors/air_support/mortar'
+	icon_state = "mortar-jungle"
+	base_icon_state = "mortar-jungle"
 
 	use_power = USE_POWER_OFF
 	active_power_usage = 0
@@ -79,6 +80,7 @@
 
 /obj/machinery/mortar/proc/collapse(atom/new_loc) as /obj/item/mortar_kit
 	var/obj/item/mortar_kit/creating = move_into_collapsed(new_loc)
+	creating.update_icon()
 	return creating
 
 /**
