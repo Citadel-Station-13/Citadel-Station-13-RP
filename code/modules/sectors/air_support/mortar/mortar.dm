@@ -59,8 +59,6 @@
 	var/load_sound_volume = 75
 	var/load_sound_vary = FALSE
 
-	#warn time to dest, inaccuracy
-
 /obj/machinery/mortar/context_menu_query(datum/event_args/actor/e_args)
 	. = ..()
 	if(collapsible)
@@ -72,15 +70,43 @@
 		return
 	switch(key)
 		if("collapse")
-			try_collapse(e_args)
+			user_collapse(e_args)
 			return TRUE
 
-/obj/machinery/mortar/proc/try_collapse(datum/event_args/actor/actor)
-	#warn impl
+/obj/machinery/mortar/proc/user_collapse(datum/event_args/actor/actor, delay_mod = 1, put_in_hands = TRUE) as /obj/item/mortar_kit
+	var/delay = collapse_time * delay_mod
+	if(delay > 0)
+		if(delay > 0.5 SECONDS)
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_CONSTRUCTION,
+				visible = SPAN_WARNING("[actor.performer] collapsing [src]..."),
+				audible = SPAN_WARNING("You hear heavy machinery being taken apart."),
+				otherwise_self = SPAN_WARNING("You start deploying [src]!"),
+			)
+		if(!do_after(actor.performer, delay, src))
+			return null
+	actor.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[actor.performer] collapses [src]!"),
+		audible = SPAN_WARNING("You hear heavy machinery being packed."),
+		otherwise_self = SPAN_WARNING("You collapse [src]!"),
+	)
+	var/atom/drop_loc = drop_location()
+	var/obj/item/mortar_kit/drop_result
+	if(put_in_hands)
+		drop_result = collapse(actor.performer)
+		actor.performer.inventory.put_in_hands_or_drop(drop_result)
+	else if(drop_loc)
+		drop_result = collapse(drop_location())
+	else
+		return null
+	return drop_result
 
 /obj/machinery/mortar/proc/collapse(atom/new_loc) as /obj/item/mortar_kit
 	var/obj/item/mortar_kit/creating = move_into_collapsed(new_loc)
-	creating.update_icon
+	creating.update_icon()
 	return creating
 
 /**
@@ -148,8 +174,10 @@
 		visible_message(SPAN_BOLDWARNING("[chat_html_embed_rendered()] [src] fires!"))
 
 	var/datum/mortar_flight/flight = new(shell)
+	flight.set_origin(where_at)
 	flight.set_duration(travel_time)
-	flight.set_target(where_map, where_at.x + x_offset, where_at.y + y_offset, where_at.z)
+	var/list/where_at_coords = SSmapping.get_virtual_coords_x_y_z(where_at)
+	flight.set_target(where_map, where_at_coords[1] + x_offset, where_at_coords[2] + y_offset, where_at_coords[3])
 	flight.run()
 	return flight
 
@@ -208,7 +236,7 @@
 	var/y_offset = target_y - our_turf.y + target_adjust_y
 	return run_firing_cycle(firing, x_offset, y_offset)
 
-/obj/machinery/mortar/basic/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/mortar/basic/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -219,7 +247,7 @@
 			var/y = params["y"]
 			if(!attempt_user_adjust_doafter(actor, adjust_time_major, "making a major adjustment to"))
 				return TRUE
-			#warn log
+			log_mortar(actor, "set (major) to [x]/[y]")
 			src.target_x = x
 			src.target_y = y
 			return TRUE
@@ -228,7 +256,7 @@
 			var/y = params["y"]
 			if(!attempt_user_adjust_doafter(actor, adjust_time_minor, "making a minor adjustment to"))
 				return TRUE
-			#warn log
+			log_mortar(actor, "adjust (minor) to [x]/[y]")
 			src.target_adjust_x = x
 			src.target_adjust_y = y
 			return TRUE

@@ -36,16 +36,16 @@
  * * s_z - struct z
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_turf(datum/map/map, v_x, v_y, s_z)
-	var/list/plane = map.loaded_z_planes["[z]"]
+	var/list/plane = map.loaded_z_planes["[s_z]"]
 	if(!plane)
 		return
 	for(var/datum/map_level/level as anything in plane)
-		if(x <= level.virtual_alignment_x)
+		if(v_x <= level.virtual_alignment_x)
 			continue
-		if(y <= level.virtual_alignment_y)
+		if(v_y <= level.virtual_alignment_y)
 			continue
-		if(x > level.virtual_alignment_x + world.maxx)
+		if(v_x > level.virtual_alignment_x + world.maxx)
 			continue
-		if(y > level.virtual_alignment_y + world.maxx)
+		if(v_y > level.virtual_alignment_y + world.maxx)
 			continue
 		return locate(v_x - level.virtual_alignment_x, v_y - level.virtual_alignment_y, level.z_index)

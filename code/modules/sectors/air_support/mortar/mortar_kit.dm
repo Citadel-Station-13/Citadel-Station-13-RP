@@ -42,7 +42,29 @@
 	return ..()
 
 /obj/item/mortar_kit/proc/user_deploy(turf/location, datum/event_args/actor/actor, delay_mod = 1)
-	#warn impl
+	if(!istype(location))
+		return FALSE
+	var/delay = mortar.deploy_time * delay_mod
+	if(delay > 0)
+		if(delay > 0.5 SECONDS)
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_CONSTRUCTION,
+				visible = SPAN_WARNING("[actor.performer] starts deploying [mortar]..."),
+				audible = SPAN_WARNING("You hear heavy machinery being unpacked."),
+				otherwise_self = SPAN_WARNING("You start deploying [mortar]!"),
+			)
+		if(!do_after(actor.performer, delay, src))
+			return FALSE
+	actor.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[actor.performer] deploys [mortar]!"),
+		audible = SPAN_WARNING("You hear heavy machinery being deployed."),
+		otherwise_self = SPAN_WARNING("You deploy [mortar]!"),
+	)
+	deploy(location)
+	return TRUE
 
 /obj/item/mortar_kit/on_attack_self(datum/event_args/actor/actor)
 	user_deploy(get_turf(src), actor)

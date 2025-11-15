@@ -25,18 +25,19 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	/// when were we armed?
 	var/armed_time
 
-	var/c_impact_obj_dmg_base = 15
-	var/c_impact_obj_dmg_sides = 15
-	var/c_impact_obj_dmg_cnt = 5
+	var/c_impact_obj_dmg_base = 150
+	var/c_impact_obj_dmg_sides = 150
+	var/c_impact_obj_dmg_cnt = 3
 	var/c_impact_mob_dmg_base = 15
 	var/c_impact_mob_dmg_sides = 10
 	var/c_impact_mob_dmg_cnt = 10
+	var/c_impact_mob_dmg_sides_for_those_without_plot_armor = 200
 	var/c_landing_obj_dmg_base = 15
 	var/c_landing_obj_dmg_sides = 15
 	var/c_landing_obj_dmg_cnt = 5
 	var/c_landing_mob_dmg_base = 5
 	var/c_landing_mob_dmg_sides = 15
-	var/c_landing_mob_dmg_cnt = 10
+	var/c_landing_mob_dmg_cnt = 15
 
 	var/area/current_area
 
@@ -119,11 +120,24 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 /datum/orbital_deployment_zone/proc/cleanup_zone()
 	#warn impl
 
-/**
- * TODO: This shouldn't be instant, it should blast the pod out as an overmap entity, like a shuttle.
- */
-/datum/orbital_deployment_zone/proc/launch()
-	#warn params
+/datum/orbital_deployment_zone/proc/get_overmap_entity() as /obj/overmap/entity
+	return SSovermaps.get_enclosing_overmap_entity(lower_left)
+
+/datum/orbital_deployment_zone/proc/launch(turf/target_center, dir, dangerously_unsafe_ignore_checks) as /obj/overmap/entity/orbital_deployment_transit
+	if(!dangerously_unsafe_ignore_checks)
+		if(!check_zone(target_center, dir))
+			return null
+	var/obj/overmap/entity/our_entity = get_overmap_entity()
+	if(!our_entity)
+		return null
+	var/obj/overmap/entity/their_entity = SSovermaps.get_enclosing_overmap_entity(target_center)
+	if(!their_entity)
+		return null
+	var/datum/orbital_deployment_translation/translation = new(src)
+	#warn pack zone into translation
+	var/obj/overmap/entity/orbital_deployment_transit/transit_entity = new(our_entity, src, translation)
+	transit_entity.launch(their_entity)
+	return transit_entity
 
 /**
  * * input dir is with NORTH as 'do not rotate'
@@ -143,7 +157,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	var/width = measured[1]
 	var/height = measured[2]
 
-	if(target_lower_left.x <)
+	if(target_lower_left.x < 1)
 
 	#warn impl
 	calculate_entity_motion_with_respect_to_moving_point()
@@ -195,6 +209,13 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	return (upper_right.y - lower_left.y) - 1
 
 /datum/orbital_deployment_zone/proc/on_launch()
+	#warn shake screen tell everyone
+	var/obj/overmap/entity/our_entity = get_overmap_entity()
+	var/list/mob/witnesses = our_entity.get_all_players_in_location(TRUE)
+	// TODO: standardize this on /entity
+	for(var/mob/witness as anything in witnesses)
+		witness.show_message(SPAN_WARNING("The floor lurches beneath you as a shock plows through the installation. \
+		Creaking can be heard from the walls."), SAYCODE_TYPE_ALWAYS)
 
 /datum/orbital_deployment_zone/proc/contains_turf(turf/T)
-	#warn impl
+	return T.x >= lower_left.x && T.x <= upper_right.x && T.y >= lower_left.y && T.y <= upper_right.y

@@ -9,8 +9,8 @@ interface MortarBasicData {
   adjustMax: number;
 }
 
-export const MortarBasic = (props, context) => {
-  const { act, data } = useBackend<MortarBasicData>(context);
+export const MortarBasic = (props) => {
+  const { act, data } = useBackend<MortarBasicData>();
 
   return (
     <Window>

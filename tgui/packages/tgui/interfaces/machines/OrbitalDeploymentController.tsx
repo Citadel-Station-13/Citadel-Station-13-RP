@@ -1,4 +1,4 @@
-import { BooleanLike } from "common/react";
+import { BooleanLike } from "tgui-core/react";
 
 import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
@@ -32,8 +32,8 @@ interface OrbitalDeploymentZoneData {
   armedTime: number;
 }
 
-export const OrbitalDeploymentController = (props, context) => {
-  const { act, data } = useBackend<OrbitalDeploymentControllerData>(context);
+export const OrbitalDeploymentController = (props) => {
+  const { act, data } = useBackend<OrbitalDeploymentControllerData>();
 
   return (
     <Window>

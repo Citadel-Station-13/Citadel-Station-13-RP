@@ -63,7 +63,7 @@
 	// open
 	log_click_context(actor, src, "menu open")
 	. = TRUE
-	open_blocking_context_menu(actor, receiving, menu_options, actor.performer)
+	open_blocking_context_menu(actor, receiving, menu_options)
 
 /**
  * Opens a synchronous context menu for someone,
@@ -72,7 +72,7 @@
  * @params
  * * actor - the actor data
  */
-/atom/proc/open_blocking_context_menu(datum/event_args/actor/actor, client/receiving, list/menu_options, mob/actor)
+/atom/proc/open_blocking_context_menu(datum/event_args/actor/actor, client/receiving, list/menu_options)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	set waitfor = FALSE
 	// for now, we just filter without auto-updating/rebuilding when things change
@@ -80,9 +80,9 @@
 	var/list/inverse_lookup = list()
 	for(var/key as anything in menu_options)
 		var/list/data = menu_options[key]
-		if(!CHECK_ALL_MOBILITY(actor, data[4]))
+		if(!CHECK_ALL_MOBILITY(actor.performer, data[4]))
 			continue
-		if(isnull(data[3])? !actor.Adjacent(src) : get_dist(actor, src) > data[3])
+		if(isnull(data[3])? !actor.performer.Adjacent(src) : get_dist(actor.performer, src) > data[3])
 			continue
 		var/image/I = data[2]
 		// todo: why isn't radial menu doing this procesisng?

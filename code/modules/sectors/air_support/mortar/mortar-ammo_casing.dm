@@ -3,6 +3,8 @@
 
 /**
  * mortar rounds; uses ammo system
+ *
+ * TODO: indirect base mortar_effects list to `/datum/prototype/mortar_shell` instead for serialization
  */
 /obj/item/ammo_casing/mortar
 	name = "mortar shell"
@@ -34,18 +36,34 @@
 	var/apply_stripe_state
 
 	/// mortar effects list, set to typepaths to init
-	/// * THIS IS A TYPELIST, DO NOT MODIFY AT RUNTIME
+	/// * THIS IS A TYPELIST, DO NOT MODIFY IT OR CONTENTS AT RUNTIME WITHOUT COPYING FIRST
 	var/list/datum/mortar_effect/mortar_effects
+	/// will not auto-init; expected to be instance list already
 	var/list/datum/mortar_effect/mortar_effects_additional
 
 /obj/item/ammo_casing/mortar/Initialize(mapload)
-	. = ..()
-	#warn resolve mortar effects
+	if(islist(mortar_effects))
+		var/list/existing_typelist = get_typelist(NAMEOF(src, mortar_effects))
+		if(existing_typelist)
+			mortar_effects = existing_typelist
+		else
+			// generate, and process one
+			for(var/i in 1 to length(mortar_effects))
+				var/datum/mortar_effect/effectlike = mortar_effects[i]
+				if(ispath(effectlike))
+					effectlike = new effectlike
+				else if(IS_ANONYMOUS_TYPEPATH(effectlike))
+					effectlike = new effectlike
+				else if(istype(effectlike))
+				else
+					stack_trace("tried to make a projectile with an invalid effect in mortar_effects")
+				mortar_effects[i] = effectlike
+			mortar_effects = typelist(NAMEOF(src, mortar_effects), mortar_effects)
+	return ..()
 
 /obj/item/ammo_casing/mortar/update_icon()
 	cut_overlays()
 	. = ..()
-
 	if(apply_stripe_color)
 		var/image/stripe = image(icon, "[apply_stripe_state || base_icon_state || icon_state]-stripe")
 		stripe.color = apply_stripe_color
@@ -78,6 +96,16 @@
 		. = (mortar_effects?.Copy() || list()) + mortar_effects_additional
 	else
 		. = mortar_effects
+
+/obj/item/ammo_casing/mortar/proc/get_log_list()
+	var/list/effects = list()
+	for(var/datum/mortar_effect/effect as anything in resolve_mortar_effects())
+		effects += effect.get_log_list()
+	return list(
+		"name" = name,
+		"type" = type,
+		"effects" = effects,
+	)
 
 /obj/item/ammo_casing/mortar/standard
 	casing_caliber = /datum/ammo_caliber/mortar

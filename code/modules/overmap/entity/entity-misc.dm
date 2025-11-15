@@ -11,4 +11,9 @@
  *                    rather than only on the shuttle.
  */
 /obj/overmap/entity/proc/get_all_players_in_location(include_shared) as /list
-	#warn impl
+	. = list()
+	for(var/client/client in GLOB.clients)
+		var/mob/maybe_contained = client.mob
+		if((include_shared ? SSovermaps.get_enclosing_overmap_entity(maybe_contained) : SSovermaps.get_overmap_entity(maybe_contained)) == src)
+			. += maybe_contained
+

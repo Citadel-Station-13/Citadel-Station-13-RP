@@ -3462,6 +3462,7 @@
 #include "code\modules\logging\api\attack.dm"
 #include "code\modules\logging\api\clickchain.dm"
 #include "code\modules\logging\api\construction.dm"
+#include "code\modules\logging\api\mortar.dm"
 #include "code\modules\logging\api\projectile.dm"
 #include "code\modules\logging\api\reagents.dm"
 #include "code\modules\logging\event_logger\json_flatfile.dm"

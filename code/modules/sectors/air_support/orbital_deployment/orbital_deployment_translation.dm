@@ -11,18 +11,19 @@
 	var/list/atom/movable/falling_out_of_the_sky = list()
 	#warn hook these
 
-	var/c_impact_obj_dmg_base = 15
-	var/c_impact_obj_dmg_sides = 15
-	var/c_impact_obj_dmg_cnt = 5
-	var/c_impact_mob_dmg_base = 15
-	var/c_impact_mob_dmg_sides = 10
-	var/c_impact_mob_dmg_cnt = 10
-	var/c_landing_obj_dmg_base = 15
-	var/c_landing_obj_dmg_sides = 15
-	var/c_landing_obj_dmg_cnt = 5
-	var/c_landing_mob_dmg_base = 5
-	var/c_landing_mob_dmg_sides = 15
-	var/c_landing_mob_dmg_cnt = 10
+	var/c_impact_obj_dmg_base
+	var/c_impact_obj_dmg_sides
+	var/c_impact_obj_dmg_cnt
+	var/c_impact_mob_dmg_base
+	var/c_impact_mob_dmg_sides
+	var/c_impact_mob_dmg_cnt
+	var/c_impact_mob_dmg_sides_for_those_without_plot_armor
+	var/c_landing_obj_dmg_base
+	var/c_landing_obj_dmg_sides
+	var/c_landing_obj_dmg_cnt
+	var/c_landing_mob_dmg_base
+	var/c_landing_mob_dmg_sides
+	var/c_landing_mob_dmg_cnt
 
 /datum/orbital_deployment_translation/New(datum/orbital_deployment_zone/zone)
 	src.c_impact_obj_dmg_base = zone.c_impact_obj_dmg_base
@@ -74,12 +75,25 @@
 			continue
 		for(var/obj/O in T)
 			to_damage_objs += O
-			if(isvehicle(O))
-				var/obj/vehicle/no_cheating = O
-				for(var/mob/in_vehicle in no_cheating)
-					to_damage_mobs += in_vehicle
-		for(var/mob/M in T)
-			to_damage_mobs += M
+	// cheat this, explo
+	var/mob_query_dist = ceil(
+		max(
+			abs(dest_upper_right.x - dest_lower_left.x),
+			abs(dest_upper_right.y - dest_lower_left.y),
+		) * 0.5
+	)
+	var/turf/mob_query_center = locate(dest_lower_left.x + mob_query_dist, dest_lower_left.y + mob_query_dist, dest_lower_left.z)
+	for(var/mob/try_and_cheat_this_explo in SSspatial_grids.living.range_query(mob_query_center, mob_query_dist))
+		var/turf/where = get_turf(try_and_cheat_this_explo)
+		if(where.x < dest_lower_left.x)
+			continue
+		if(where.x > dest_upper_right.x)
+			continue
+		if(where.y < dest_lower_left.y)
+			continue
+		if(where.y > dest_upper_right.y)
+			continue
+		to_damage_mobs += try_and_cheat_this_explo
 
 	// turfs that shouldn't be there result in a small explosion
 	for(var/tuple_i in 1 to length(turf_overlap_coord_x))
@@ -91,22 +105,20 @@
 		explosion(impacted_turf, 0, rand(1, 2), 3)
 		CHECK_TICK
 
-	#warn use configured vars
 	// movables that shouldn't be there and weren't immediately deleted
 	// will be pushed out of the way and obliterated
 	// -- this is not 'as anything' as some movables can be obliterated by being moved to nullspace --
 	// TODO: if only this was ss14. is there a way to throw the components away from us if they are
 	//       destroyed in the process?
 	for(var/atom/movable/victim in crush_and_obliterate)
-		var/turf/where = get_random_outside_turf(5)
-		victim.forceMove(where)
 		if(ismob(victim))
 			var/mob/living/living_victim = victim
-			for(var/i in 1 to 15)
+			var/dmg_sides = living_victim.mind?.ckey ? c_impact_mob_dmg_sides : c_impact_mob_dmg_sides_for_those_without_plot_armor
+			for(var/i in 1 to c_impact_mob_dmg_cnt)
 				// TODO: it's probably faster to run damage instance all at once and apply it over 15 areas,
 				//       rather than treat it as 15 instances
 				living_victim.run_damage_instance(
-					500 / 15,
+					c_impact_mob_dmg_base + rand(1, dmg_sides),
 					DAMAGE_TYPE_BRUTE,
 					5,
 					ARMOR_MELEE,
@@ -114,12 +126,13 @@
 					hit_zone = pick(global.all_body_zones),
 				)
 		else
-			victim.run_damage_instance(
-				500,
-				DAMAGE_TYPE_BRUTE,
-				6,
-				ARMOR_MELEE,
-			)
+			for(var/i in 1 to c_impact_obj_dmg_cnt)
+				victim.run_damage_instance(
+					c_impact_obj_dmg_base + rand(1, c_impact_obj_dmg_sides),
+					DAMAGE_TYPE_BRUTE,
+					6,
+					ARMOR_MELEE,
+				)
 		CHECK_TICK
 
 	// surely you didn't ride an orbital drop.
@@ -127,15 +140,21 @@
 	// TODO: when this is done make sure you can't escape it by exiting vehicle during
 	//       the CHECK_TICK
 	for(var/obj/O as anything in to_damage_objs)
-		O.run_damage_instance(rand(15, 70), DAMAGE_TYPE_BRUTE, 4, ARMOR_BOMB)
+		for(var/i in 1 to c_landing_obj_dmg_cnt)
+			O.run_damage_instance(
+				c_landing_obj_dmg_base + rand(1, c_landing_obj_dmg_sides),
+				DAMAGE_TYPE_BRUTE,
+				4,
+				ARMOR_BOMB,
+			)
 		CHECK_TICK
 	for(var/mob/M as anything in to_damage_mobs)
 		if(isliving(M))
 			var/mob/living/L = M
-			for(var/i in 1 to 15)
+			for(var/i in 1 to c_landing)
 				// probably should've thought it through
 				L.run_damage_instance(
-					rand(10, 30),
+					c_landing_mob_dmg_base + rand(1, c_landing_mob_dmg_sides),
 					DAMAGE_TYPE_BRUTE,
 					5,
 					DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
