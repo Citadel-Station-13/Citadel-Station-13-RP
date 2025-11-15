@@ -125,8 +125,8 @@
 	//Hard del testing defines
 	#define REFERENCE_TRACKING
 	#define REFERENCE_TRACKING_DEBUG
-	#define FIND_REF_NO_CHECK_TICK
-	#define GC_FAILURE_HARD_LOOKUP
+	// #define FIND_REF_NO_CHECK_TICK
+	// #define GC_FAILURE_HARD_LOOKUP
 	// Test init.
 	#define CF_ATOM_TRACE_INIT_EARLY_QDEL
 	//Ensures all early assets can actually load early
