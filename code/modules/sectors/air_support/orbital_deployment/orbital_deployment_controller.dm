@@ -102,7 +102,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 					// TODO: better name identification
 					assembled_lasers[++assembled_lasers.len] = list(
 						"name" = "targeting laser",
-						"coords" = SSmapping.get_virtual_coords(get_turf(laser)),
+						"coords" = SSmapping.get_virtual_coords_x_y_elevation(get_turf(laser)),
 						"overmapDist" = overmap_distance,
 						"overmapName" = overmap_name,
 					)
@@ -110,7 +110,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 					// TODO: better name identification
 					assembled_flares[++assembled_flares.len] = list(
 						"name" = "signal flare",
-						"coords" = SSmapping.get_virtual_coords(get_turf(flare)),
+						"coords" = SSmapping.get_virtual_coords_x_y_elevation(get_turf(flare)),
 						"overmapDist" = overmap_distance,
 						"overmapName" = overmap_name,
 					)

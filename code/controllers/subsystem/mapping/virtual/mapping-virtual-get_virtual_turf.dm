@@ -5,8 +5,6 @@
  * Get turf on a map.
  * * `x_o` and `y_o` are in meters.
  * * Ignores up / down / vertical directions.
- *
- * TODO: support elevation maybe?
  * @return turf or null
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_turf_of_offset(turf/from_turf, x_o, y_o)
@@ -28,3 +26,26 @@
 		(y_o > 0 ? y_o : (world.maxy - y_o)) + 1,
 		offset_level.z_index,
 	);
+
+/**
+ * TODO: optimize
+ *
+ * @params
+ * * v_x - virtual x
+ * * v_y - virtual y
+ * * s_z - struct z
+ */
+/datum/controller/subsystem/mapping/proc/get_virtual_turf(datum/map/map, v_x, v_y, s_z)
+	var/list/plane = map.loaded_z_planes["[z]"]
+	if(!plane)
+		return
+	for(var/datum/map_level/level as anything in plane)
+		if(x <= level.virtual_alignment_x)
+			continue
+		if(y <= level.virtual_alignment_y)
+			continue
+		if(x > level.virtual_alignment_x + world.maxx)
+			continue
+		if(y > level.virtual_alignment_y + world.maxx)
+			continue
+		return locate(v_x - level.virtual_alignment_x, v_y - level.virtual_alignment_y, level.z_index)

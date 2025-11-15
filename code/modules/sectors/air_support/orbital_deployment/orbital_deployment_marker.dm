@@ -63,8 +63,9 @@
 			for(var/i in 1 to scan_max)
 				scanning = get_step(scanning, SOUTH)
 				var/obj/orbital_deployment_marker/corner/lower_right/found = locate() in scanning
-			if(found)
-				lower_right = found
+				if(found)
+					lower_right = found
+					break
 
 
 	if(!lower_left || !lower_right || !upper_left || !upper_right)

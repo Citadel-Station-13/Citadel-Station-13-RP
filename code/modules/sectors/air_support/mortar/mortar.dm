@@ -80,7 +80,7 @@
 
 /obj/machinery/mortar/proc/collapse(atom/new_loc) as /obj/item/mortar_kit
 	var/obj/item/mortar_kit/creating = move_into_collapsed(new_loc)
-	creating.update_icon()
+	creating.update_icon
 	return creating
 
 /**

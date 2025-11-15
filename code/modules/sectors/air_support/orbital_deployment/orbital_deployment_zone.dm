@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	else
 		GLOB.orbital_deployment_zones[id] = src
 
-	for(var/obj/orbital_deployment_marker/marker in list(
+	for(var/obj/orbital_deployment_marker/corner/marker as anything in list(
 		lower_left,
 		lower_right,
 		upper_right,
@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	for(var/obj/machinery/orbital_deployment_controller/controller in controllers)
 		controller.unlink_zone()
 	GLOB.orbital_deployment_zones -= id
-	for(var/obj/orbital_deployment_marker/marker in list(
+	for(var/obj/orbital_deployment_marker/corner/marker as anything in list(
 		lower_left,
 		lower_right,
 		upper_right,

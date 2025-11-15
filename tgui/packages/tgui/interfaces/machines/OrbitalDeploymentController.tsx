@@ -1,4 +1,5 @@
 import { BooleanLike } from "common/react";
+
 import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 
@@ -12,6 +13,7 @@ interface OrbitalDeploymentControllerData {
 
 interface OrbitalDeploymentTargetData {
   name: string;
+  // virtual x (m), virtual y (m), elevation (m)
   coords: [number, number, number];
   overmapDist: number;
   overmapName: string;

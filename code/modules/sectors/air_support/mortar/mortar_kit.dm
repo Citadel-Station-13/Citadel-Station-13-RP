@@ -41,18 +41,23 @@
 		icon_state = mortar.icon_state
 	return ..()
 
-
 /obj/item/mortar_kit/proc/user_deploy(turf/location, datum/event_args/actor/actor, delay_mod = 1)
+	#warn impl
 
-/obj/item/mortar_kit/on_attack_self(datum/event_args/actor/e_args)
+/obj/item/mortar_kit/on_attack_self(datum/event_args/actor/actor)
+	user_deploy(get_turf(src), actor)
+	return TRUE
+
+/obj/item/mortar_kit/context_menu_act(datum/event_args/actor/actor, key)
 	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("deploy")
+			user_deploy(actor)
+			return TRUE
 
-/obj/item/mortar_kit/context_menu_act(datum/event_args/actor/e_args, key)
-	. = ..()
-
-#warn impl all
-
-/obj/item/mortar_kit/context_menu_query(datum/event_args/actor/e_args)
+/obj/item/mortar_kit/context_menu_query(datum/event_args/actor/actor)
 	. = ..()
 	.["deploy"] = create_context_menu_tuple("Deploy", mortar || src, 1, MOBILITY_CAN_USE, FALSE)
 

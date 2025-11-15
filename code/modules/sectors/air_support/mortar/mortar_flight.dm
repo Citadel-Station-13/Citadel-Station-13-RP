@@ -9,8 +9,8 @@
 	var/flight_x
 	/// as virtual y
 	var/flight_y
-	/// as literal z
-	var/flight_z_literal
+	/// as struct z
+	var/flight_z
 	var/flight_duration
 
 	var/arrive_time
@@ -25,11 +25,11 @@
 	flight_map = null
 	return ..()
 
-/datum/mortar_flight/proc/set_target(datum/map/map, virtual_x, virtual_y, literal_z)
+/datum/mortar_flight/proc/set_target(datum/map/map, virtual_x, virtual_y, virtual_z)
 	src.flight_map = map
 	src.flight_x = virtual_x
 	src.flight_y = virtual_y
-	src.flight_z_literal = literal_z
+	src.flight_z = virtual_z
 
 /datum/mortar_flight/proc/set_duration(time)
 	src.flight_duration = time
@@ -44,7 +44,7 @@
 /datum/mortar_flight/proc/get_mobs_in_radius_of_target(radius) as /list
 
 /datum/mortar_flight/proc/get_target_turf() as /turf
-	return locate(flight_x, flight_y, flight_level.z_index)
+	return SSmapping.get_virtual_turf(flight_map, flight_x, flight_y, flight_z)
 
 /datum/mortar_flight/proc/impact_warning()
 	var/list/mob/send_to = get_mobs_in_radius_of_target(15)

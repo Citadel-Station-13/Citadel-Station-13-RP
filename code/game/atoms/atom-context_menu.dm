@@ -9,9 +9,9 @@
  *
  * @return list(key = value)
  */
-/atom/proc/context_menu_query(datum/event_args/actor/e_args)
+/atom/proc/context_menu_query(datum/event_args/actor/actor)
 	. = list()
-	SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_QUERY, ., e_args)
+	SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_QUERY, ., actor)
 
 /**
  * act on a context option
@@ -20,8 +20,8 @@
  *
  * @return TRUE / FALSE; TRUE if handled.
  */
-/atom/proc/context_menu_act(datum/event_args/actor/e_args, key)
-	if(SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_ACT, key, e_args) & RAISE_ATOM_CONTEXT_ACT_HANDLED)
+/atom/proc/context_menu_act(datum/event_args/actor/actor, key)
+	if(SEND_SIGNAL(src, COMSIG_ATOM_CONTEXT_ACT, key, actor) & RAISE_ATOM_CONTEXT_ACT_HANDLED)
 		return TRUE
 	return FALSE
 
@@ -30,23 +30,23 @@
  * This is the asynchronous version, and will not block or return anything.
  *
  * @params
- * * e_args - the actor data
+ * * actor - the actor data
  */
-/atom/proc/open_context_menu(datum/event_args/actor/e_args)
+/atom/proc/open_context_menu(datum/event_args/actor/actor)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	// todo: dynamically rebuild menu based on distance?
-	var/client/receiving = e_args.initiator.client
+	var/client/receiving = actor.initiator.client
 	if(isnull(receiving))
 		// well what the hell are we doing here?
 		// automated functions should be using context_menu_query and context_menu_act directly
 		return FALSE
 	if(context_menus?[receiving])
 		// close
-		log_click_context(e_args, src, "menu close")
+		log_click_context(actor, src, "menu close")
 		qdel(context_menus[receiving])
 		return TRUE
-	var/list/menu_options = context_menu_query(e_args)
+	var/list/menu_options = context_menu_query(actor)
 	if(!length(menu_options))
 		return FALSE
 	// check for defaulting
@@ -57,22 +57,22 @@
 		// make sure it's defaultable
 		if(length(first_option) >= 5 && first_option[5])
 			// it is, log and execute
-			log_click_context(e_args, src, "menu execute [key] (default)")
-			context_menu_act(e_args, key)
+			log_click_context(actor, src, "menu execute [key] (default)")
+			context_menu_act(actor, key)
 			return
 	// open
-	log_click_context(e_args, src, "menu open")
+	log_click_context(actor, src, "menu open")
 	. = TRUE
-	open_blocking_context_menu(e_args, receiving, menu_options, e_args.performer)
+	open_blocking_context_menu(actor, receiving, menu_options, actor.performer)
 
 /**
  * Opens a synchronous context menu for someone,
  * returning only when they pick something or the menu closes.
  *
  * @params
- * * e_args - the actor data
+ * * actor - the actor data
  */
-/atom/proc/open_blocking_context_menu(datum/event_args/actor/e_args, client/receiving, list/menu_options, mob/actor)
+/atom/proc/open_blocking_context_menu(datum/event_args/actor/actor, client/receiving, list/menu_options, mob/actor)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	set waitfor = FALSE
 	// for now, we just filter without auto-updating/rebuilding when things change
@@ -98,7 +98,7 @@
 		return null
 
 	var/datum/radial_menu/context_menu/menu = new
-	var/id = "context_[REF(e_args.initiator)]"
+	var/id = "context_[REF(actor.initiator)]"
 	GLOB.radial_menus[id] = menu
 	LAZYSET(context_menus, receiving, menu)
 
@@ -106,7 +106,7 @@
 
 	menu.radius = 32
 	menu.host = src
-	menu.anchor = (loc == e_args.performer) ? e_args.performer : loc
+	menu.anchor = (loc == actor.performer) ? actor.performer : loc
 	menu.check_screen_border(receiving.mob)
 	menu.set_choices(transformed, FALSE)
 	menu.show_to(receiving.mob)
@@ -123,8 +123,8 @@
 		return
 
 	var/key = inverse_lookup[chosen_name]
-	log_click_context(e_args, src, "menu execute [key]")
-	context_menu_act(e_args, key)
+	log_click_context(actor, src, "menu execute [key]")
+	context_menu_act(actor, key)
 
 /atom/proc/close_context_menus()
 	for(var/client/C as anything in context_menus)

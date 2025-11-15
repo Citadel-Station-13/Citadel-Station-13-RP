@@ -668,9 +668,9 @@
 
 //* Context *//
 
-/obj/context_menu_query(datum/event_args/actor/e_args)
+/obj/context_menu_query(datum/event_args/actor/actor)
 	. = ..()
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
+	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(actor.performer))
 		var/image/rendered = image(obj_cell_slot.cell)
 		.["obj_cell_slot"] = create_context_menu_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
 	if(obj_storage?.allow_open_via_context_click)
@@ -704,43 +704,43 @@
 				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
 			)
 
-/obj/context_menu_act(datum/event_args/actor/e_args, key)
+/obj/context_menu_act(datum/event_args/actor/actor, key)
 	switch(key)
 		if("obj_cell_slot")
-			var/reachability = e_args.performer.Reachability(src)
+			var/reachability = actor.performer.Reachability(src)
 			if(!reachability)
 				return TRUE
-			if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
-				e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+			if(!CHECK_MOBILITY(actor.performer, MOBILITY_CAN_USE))
+				actor.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
 				return TRUE
 			if(isnull(obj_cell_slot.cell))
-				e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+				actor.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
 				return TRUE
-			if(!obj_cell_slot.interaction_active(e_args.performer))
+			if(!obj_cell_slot.interaction_active(actor.performer))
 				return TRUE
-			e_args.visible_feedback(
+			actor.visible_feedback(
 				target = src,
 				range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+				visible = SPAN_NOTICE("[actor.performer] removes the cell from [src]."),
 				audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 				otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 			)
-			log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+			log_construction(actor, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 			var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
 			if(reachability == REACH_PHYSICAL)
-				e_args.performer.put_in_hands_or_drop(removed)
+				actor.performer.put_in_hands_or_drop(removed)
 			else
 				removed.forceMove(drop_location())
 			return TRUE
 		if("obj_storage")
-			var/reachability = e_args.performer.Reachability(src)
+			var/reachability = actor.performer.Reachability(src)
 			if(!reachability)
 				return TRUE
-			obj_storage?.auto_handle_interacted_open(e_args)
+			obj_storage?.auto_handle_interacted_open(actor)
 			return TRUE
 		if("rotate_cw", "rotate_ccw")
 			var/clockwise = key == "rotate_cw"
-			handle_rotation(e_args, clockwise)
+			handle_rotation(actor, clockwise)
 			return TRUE
 	return ..()
 

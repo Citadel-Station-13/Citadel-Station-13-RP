@@ -97,7 +97,7 @@
 	if(isturf(old_loc))
 		new /obj/effect/temporary_effect/item_pickup_ghost(old_loc, actually_picked_up, user)
 	user.trigger_aiming(TARGET_CAN_CLICK)
-	
+
 //* Drag / Drop *//
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
@@ -210,21 +210,21 @@
  *
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/on_attack_self(datum/event_args/actor/e_args)
+/obj/item/proc/on_attack_self(datum/event_args/actor/actor)
 	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_inhand && obj_cell_slot.interaction_active(src))
-		e_args.visible_feedback(
+		actor.visible_feedback(
 			target = src,
 			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
+			visible = SPAN_NOTICE("[actor.performer] removes the cell from [src]."),
 			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
 			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
-		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		e_args.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(e_args.performer))
+		log_construction(actor, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
+		actor.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(actor.performer))
 		return TRUE
 	if(!isnull(obj_storage) && obj_storage.allow_quick_empty && obj_storage.allow_quick_empty_via_attack_self)
-		var/turf/turf = get_turf(e_args.performer)
-		obj_storage.auto_handle_interacted_mass_dumping(e_args, turf)
+		var/turf/turf = get_turf(actor.performer)
+		obj_storage.auto_handle_interacted_mass_dumping(actor, turf)
 		return TRUE
 	return FALSE
 
@@ -253,7 +253,7 @@
  *
  * @return TRUE to signal to overrides to stop the chain and do nothing.
  */
-/obj/item/proc/on_unique_action(datum/event_args/actor/e_args)
+/obj/item/proc/on_unique_action(datum/event_args/actor/actor)
 	return FALSE
 
 //* Defensive Toggle *//
