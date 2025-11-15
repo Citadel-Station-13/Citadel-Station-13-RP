@@ -4,12 +4,9 @@
 /**
  * Gets virual direction between two turfs
  *
- * If the atoms aren't in managed space, acts like get_dir_multiz - works on zstacks only or same level.
+ * * Ignores up / down / vertical directions.
  *
- * Returns NONE for unreachable,
- * if A is in managed space and B isn't or vice versa,
- * OR if they both aren't and aren't in the same zlevel or zstack,
- * OR if hey both are and aren't in the same struct
+ * @return null if unreachable, or direction
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_dir(turf/A, turf/B)
 	var/datum/map_level/level_a = ordered_levels[A.z]
@@ -44,7 +41,3 @@
 			. |= SOUTH
 		else if(A.y < B.y)
 			. |= NORTH
-	if(a_sz > b_sz)
-		. |= DOWN
-	else if(a_sz < b_sz)
-		. |= UP

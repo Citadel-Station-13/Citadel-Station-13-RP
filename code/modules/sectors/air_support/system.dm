@@ -43,7 +43,7 @@
 /datum/controller/subsystem/map_sectors/proc/is_turf_visible_from_high_altitude(turf/origin)
 	if(origin.sector_always_visible_from_high_altitude())
 		return TRUE
-	var/list/z_stack = SSmapping.get_z_stack(origin.z)
+	var/list/z_stack = SSmapping.level_get_stack(origin.z)
 	var/something_is_granting_los
 	var/not_first
 	for(var/z in z_stack)

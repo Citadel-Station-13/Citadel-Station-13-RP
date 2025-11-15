@@ -3,8 +3,9 @@
 
 /**
  * Gets virtual horizontal compass angle between two turfs.
- * * undefined behavior if A / B are not rufs
+ * * undefined behavior if A / B are not turfs
  * * angle is clockwise from north.
+ * * Ignores up / down / vertical directions.
  *
  * @return null unreachable or angle
  */

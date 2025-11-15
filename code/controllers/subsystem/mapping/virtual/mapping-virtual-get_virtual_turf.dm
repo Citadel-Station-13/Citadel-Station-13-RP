@@ -4,8 +4,9 @@
 /**
  * Get turf on a map.
  * * `x_o` and `y_o` are in meters.
+ * * Ignores up / down / vertical directions.
  *
- * TODO: support elevation.
+ * TODO: support elevation maybe?
  * @return turf or null
  */
 /datum/controller/subsystem/mapping/proc/get_virtual_turf_of_offset(turf/from_turf, x_o, y_o)
