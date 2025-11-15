@@ -5,8 +5,6 @@
 	lift_size_y = 2
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	wall_type = null // Don't make walls
-	floor_type = /turf/simulated/floor/wood/indoors
-	door_type =  /obj/machinery/door/airlock/glass_external
 
 	areas_to_use = list(
 		/area/turbolift/s_ship/level2,
