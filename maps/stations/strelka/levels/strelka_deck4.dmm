@@ -702,6 +702,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
+"cl" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/space,
+/area/bridge/strelka/captain)
 "cp" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
@@ -775,6 +779,10 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
+"cy" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm/Room4)
 "cz" = (
 /obj/machinery/light/small/old{
 	dir = 8;
@@ -1113,7 +1121,10 @@
 "eh" = (
 /obj/structure/grille,
 /turf/simulated/floor/tiled/monodark,
-/area/space)
+/area/strelka/nanite)
+"ej" = (
+/turf/simulated/floor/tiled/monodark,
+/area/bridge/strelka)
 "em" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/strelka/janitor)
@@ -1675,7 +1686,7 @@
 "gr" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/wood,
-/area/space)
+/area/bridge/strelka/hop/room)
 "gu" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet"
@@ -1762,7 +1773,7 @@
 "gK" = (
 /obj/structure/grille,
 /turf/space,
-/area/space)
+/area/maintenance/strelka/library)
 "gN" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1812,7 +1823,7 @@
 /obj/structure/grille,
 /obj/structure/marker_beacon/yellow,
 /turf/simulated/shuttle/floor/glass,
-/area/space)
+/area/chapel/strelka)
 "gV" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1899,7 +1910,7 @@
 "hj" = (
 /obj/structure/grille,
 /turf/simulated/shuttle/floor/glass,
-/area/space)
+/area/fitness/strelka/clown)
 "hk" = (
 /mob/living/simple_mob/animal/passive/cow{
 	name = "Betsy"
@@ -1910,6 +1921,10 @@
 /obj/effect/mist,
 /turf/simulated/floor/water/deep/pool,
 /area/strelka/dormhallway/pool/sauna)
+"hm" = (
+/obj/structure/grille,
+/turf/space,
+/area/crew_quarters/bar/strelka/back)
 "hn" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -2020,6 +2035,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/strelka/morgue)
+"hA" = (
+/obj/structure/grille,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/dormhallway/pool/sauna)
 "hB" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/spline/fancy{
@@ -2046,6 +2065,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/dormhallway)
+"hG" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/monodark,
+/area/crew_quarters/bar/strelka/back)
 "hJ" = (
 /obj/machinery/computer/med_data,
 /obj/structure/table/carbon/reinforced,
@@ -2249,6 +2272,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/captain)
+"iK" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/pool)
 "iL" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -2257,6 +2285,10 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/wood/sif,
 /area/chapel/strelka)
+"iM" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/dormhallway/Dorm/Room2)
 "iN" = (
 /obj/structure/closet/syndicate/clownops/personal,
 /obj/item/clothing/under/rank/clown/yellow,
@@ -2419,6 +2451,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
+"jp" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/tiled/monodark,
+/area/bridge/strelka/hop/office)
 "jq" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 4
@@ -2600,6 +2637,11 @@
 /obj/machinery/light/fairy,
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
+"jT" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/shuttle/floor/glass,
+/area/crew_quarters/kitchen/strelka)
 "jU" = (
 /turf/simulated/floor/wood/indoors,
 /area/library/strelka/library)
@@ -2887,6 +2929,10 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
+"kR" = (
+/obj/structure/grille,
+/turf/simulated/floor/tiled/monodark,
+/area/bridge/strelka/captain)
 "kU" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 31
@@ -2925,6 +2971,10 @@
 "lb" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/chapel/strelka/morgue)
+"le" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm)
 "lf" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
@@ -3025,6 +3075,11 @@
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
+"lt" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm)
 "lu" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -3445,6 +3500,11 @@
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/dormhallway/Dorm/Room2)
+"mR" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/shuttle/floor/glass,
+/area/bridge/strelka/captain/room)
 "mS" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -3662,6 +3722,11 @@
 	},
 /turf/simulated/floor/wood/sif,
 /area/chapel/strelka)
+"nO" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/dormhallway/pool/sauna/room2)
 "nS" = (
 /obj/structure/loot_pile/maint/technical,
 /obj/machinery/camera/network/security,
@@ -3757,7 +3822,7 @@
 "on" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/space,
-/area/space)
+/area/chapel/strelka)
 "oq" = (
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/monodark,
@@ -4002,6 +4067,11 @@
 /obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
+"pe" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/shuttle/floor/glass,
+/area/crew_quarters/bar/strelka)
 "pf" = (
 /obj/effect/mist,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4052,7 +4122,7 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monodark,
-/area/space)
+/area/hallway/strelka/deck4)
 "pq" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -4828,7 +4898,7 @@
 	},
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/shuttle/floor/glass,
-/area/space)
+/area/crew_quarters/kitchen/strelka)
 "sf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -4993,7 +5063,7 @@
 	color = "#B95A00"
 	},
 /turf/simulated/wall/r_wall/prepainted,
-/area/space)
+/area/hallway/strelka/deck4)
 "sN" = (
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -5056,6 +5126,10 @@
 	},
 /turf/simulated/floor/bmarble,
 /area/crew_quarters/bar/strelka)
+"sY" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm/Room2)
 "ta" = (
 /obj/machinery/mass_driver{
 	id = "chapelgun"
@@ -5698,6 +5772,10 @@
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
+"vK" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/space,
+/area/bridge/strelka/hop/room)
 "vL" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#B95A00"
@@ -6041,6 +6119,10 @@
 	},
 /turf/simulated/floor/water/pool,
 /area/strelka/dormhallway/pool)
+"xb" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/chapel/strelka)
 "xc" = (
 /obj/structure/railing{
 	dir = 4
@@ -6188,7 +6270,11 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/tiled/monodark,
-/area/space)
+/area/hallway/strelka/deck4)
+"xH" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/fitness/strelka/mime)
 "xJ" = (
 /obj/landmark/spawnpoint/job/bartender,
 /turf/simulated/floor/lino,
@@ -6734,6 +6820,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
+"zn" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm/Room4)
 "zo" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green/on{
@@ -6846,6 +6937,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
+"zE" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/monodark,
+/area/crew_quarters/bar/strelka)
 "zJ" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -7184,7 +7279,7 @@
 "Bi" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/monodark,
-/area/space)
+/area/bridge/strelka/hop/office)
 "Bj" = (
 /obj/structure/lattice,
 /turf/simulated/floor/holofloor/reinforced,
@@ -7215,6 +7310,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/crew_quarters/kitchen/strelka)
+"Bl" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/space,
+/area/maintenance/strelka)
 "Bm" = (
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 4
@@ -7629,7 +7728,7 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/structure/disposalpipe/segment,
 /turf/space,
-/area/space)
+/area/maintenance/strelka)
 "CJ" = (
 /obj/map_helper/access_helper/airlock/station/service/botany,
 /obj/machinery/door/window{
@@ -7671,6 +7770,11 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/strelka/dormhallway/pool)
+"CR" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/tiled/monodark,
+/area/bridge/strelka/captain)
 "CS" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -7678,6 +7782,10 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/crew_quarters/kitchen/strelka)
+"CT" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/pool)
 "CV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -7784,7 +7892,12 @@
 "Dr" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/shuttle/floor/glass,
-/area/space)
+/area/bridge/strelka/captain/room)
+"Dt" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm/Room3)
 "Du" = (
 /obj/structure/closet/lasertag/blue,
 /obj/effect/floor_decal/spline/fancy{
@@ -7885,7 +7998,7 @@
 /obj/structure/grille,
 /obj/structure/marker_beacon/yellow,
 /turf/simulated/floor/tiled/monodark,
-/area/space)
+/area/hallway/strelka/deck4)
 "DK" = (
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/indoors,
@@ -7999,7 +8112,7 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/plating,
-/area/space)
+/area/chapel/strelka/morgue)
 "Ej" = (
 /obj/structure/bookcase{
 	name = "bookcase (Fiction)"
@@ -8031,6 +8144,10 @@
 "Es" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/crew_quarters/kitchen/strelka)
+"Ev" = (
+/obj/structure/grille,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/dormhallway/pool/sauna/room2)
 "Ez" = (
 /obj/structure/table/carbon/reinforced,
 /obj/item/flashlight/lamp/on,
@@ -8138,10 +8255,14 @@
 "EP" = (
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/strelka/dormhallway/pool)
+"ER" = (
+/obj/structure/grille,
+/turf/simulated/floor/tiled/monodark,
+/area/hallway/strelka/deck4)
 "ET" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/monowhite,
-/area/space)
+/area/bridge/strelka)
 "EU" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 8
@@ -8326,11 +8447,6 @@
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/library)
-"FH" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/obj/machinery/door/blast/strelka/blockade,
-/turf/simulated/shuttle/floor/glass,
-/area/space)
 "FJ" = (
 /obj/item/bedsheet/browndouble,
 /obj/structure/bed/double/padded,
@@ -8362,7 +8478,7 @@
 	},
 /obj/structure/sign/christmas/lights,
 /turf/simulated/floor/carpet/patterened,
-/area/strelka/dormhallway/pool)
+/area/hallway/strelka/dormhallway)
 "FT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8396,6 +8512,10 @@
 /obj/landmark/spawnpoint/job/mime,
 /turf/simulated/floor/wood/indoors,
 /area/fitness/strelka/mime)
+"FX" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/adherent)
 "FY" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -8755,7 +8875,7 @@
 /obj/structure/grille,
 /obj/structure/marker_beacon/yellow,
 /turf/space,
-/area/space)
+/area/bridge/strelka/hop/room)
 "HE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9594,6 +9714,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/crew_quarters/bar/strelka)
+"Ky" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/crew_quarters/kitchen/strelka)
 "KB" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -9923,6 +10047,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
+"LO" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm/Room3)
 "LQ" = (
 /obj/machinery/computer/HolodeckControl{
 	dir = 4
@@ -9983,6 +10111,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
+"Mb" = (
+/obj/structure/grille,
+/turf/simulated/floor/tiled/monodark,
+/area/bridge/strelka/hop/office)
 "Mc" = (
 /turf/simulated/wall/wood/hardwood{
 	opacity = 0;
@@ -10614,6 +10746,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/dormhallway)
+"Oo" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm/Room4)
 "Op" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -11224,6 +11360,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/fitness/strelka)
+"QS" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/floor/tiled/monodark,
+/area/crew_quarters/kitchen/strelka)
 "QT" = (
 /obj/machinery/door/airlock{
 	name = "Toilets";
@@ -11312,6 +11452,11 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/bridge/strelka/hop/office)
+"Rk" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm/Room2)
 "Rl" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 8
@@ -11368,6 +11513,10 @@
 "Rw" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/bridge/strelka/captain)
+"Rx" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/pool)
 "Ry" = (
 /obj/structure/sign/electricshock{
 	pixel_x = -30
@@ -11566,6 +11715,11 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/dormhallway/Dorm/Room4)
+"Sp" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/dormhallway/pool)
 "Sq" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -11586,7 +11740,7 @@
 /area/hallway/strelka/deck4)
 "Sy" = (
 /turf/simulated/wall/r_wall/prepainted/command,
-/area/space)
+/area/maintenance/strelka)
 "SB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4;
@@ -11848,6 +12002,10 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/lino,
 /area/chapel/strelka/office)
+"Tz" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm/Room3)
 "TA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12055,6 +12213,10 @@
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monowhite,
 /area/strelka/pointdefense)
+"Up" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/strelka/dormhallway/Dorm)
 "Uq" = (
 /obj/machinery/light{
 	dir = 4;
@@ -12138,6 +12300,11 @@
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/library)
+"UI" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/space,
+/area/crew_quarters/bar/strelka/back)
 "UJ" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/rust,
@@ -12278,9 +12445,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar/strelka)
-"Vl" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/space)
 "Vp" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -12492,6 +12656,11 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/library/strelka/library)
+"Wu" = (
+/obj/structure/grille,
+/obj/structure/marker_beacon/yellow,
+/turf/simulated/floor/tiled/monodark,
+/area/strelka/dormhallway/pool/sauna)
 "Wv" = (
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 8
@@ -12612,6 +12781,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
+"Xa" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/crew_quarters/bar/strelka)
 "Xc" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -13241,10 +13414,6 @@
 /obj/structure/bed/chair/comfy/brown,
 /turf/simulated/floor/carpet/turcarpet,
 /area/fitness/strelka)
-"YN" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/simulated/floor/plating,
-/area/space)
 "YO" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood/indoors,
@@ -13488,6 +13657,10 @@
 /obj/effect/floor_decal/spline/fancy/wood/three_quarters,
 /turf/simulated/floor/bmarble,
 /area/crew_quarters/bar/strelka)
+"ZD" = (
+/obj/structure/grille,
+/turf/simulated/shuttle/floor/glass,
+/area/bridge/strelka/captain/room)
 "ZE" = (
 /obj/structure/bed/chair/comfy/brown,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -24920,23 +25093,23 @@ PG
 PG
 PG
 PG
-gU
-Sy
-Sy
-Sy
-Sy
-Sy
-DH
-Sy
-DH
-eh
-Sy
-DH
-eh
-Sy
-Sy
-Sy
-Sy
+iK
+tC
+tC
+tC
+tC
+tC
+Sp
+HS
+nO
+Ev
+HS
+Wu
+hA
+so
+tC
+tC
+tC
 Zq
 UC
 cO
@@ -24952,16 +25125,16 @@ cO
 cO
 UC
 Zq
-Sy
+Mz
 DH
-eh
-eh
-eh
-eh
-eh
-eh
+ER
+ER
+ER
+ER
+ER
+ER
 DH
-Sy
+Mz
 CA
 Cq
 Cq
@@ -25113,14 +25286,14 @@ PG
 PG
 PG
 PG
-hj
-Dr
-Vl
-Vl
-Vl
-Vl
-Vl
-xC
+CT
+Rx
+iv
+iv
+iv
+iv
+iv
+lm
 VM
 BM
 BM
@@ -25128,9 +25301,9 @@ bi
 vL
 vL
 pZ
-sJ
-sJ
-Vl
+VQ
+VQ
+iv
 YJ
 Uo
 cO
@@ -25155,10 +25328,10 @@ po
 po
 po
 xC
-Vl
-Sy
-Vl
-Vl
+Qg
+Mz
+lB
+lB
 bU
 Cq
 Cq
@@ -25306,8 +25479,8 @@ PG
 PG
 PG
 PG
-gU
-Dr
+iK
+Rx
 yK
 iv
 iv
@@ -25322,10 +25495,10 @@ VM
 FB
 FB
 yF
-Vl
-Vl
-Vl
-Vl
+iv
+iv
+iv
+iv
 Bj
 cO
 cO
@@ -25499,8 +25672,8 @@ PG
 PG
 PG
 PG
-hj
-Dr
+CT
+Rx
 yK
 EG
 la
@@ -25692,8 +25865,8 @@ PG
 PG
 PG
 PG
-gU
-Dr
+iK
+Rx
 yK
 EG
 wz
@@ -25743,9 +25916,9 @@ rZ
 lB
 rZ
 lB
-Sy
+Tt
 eh
-Sy
+Tt
 Cq
 PG
 PG
@@ -25885,8 +26058,8 @@ PG
 PG
 PG
 PG
-hj
-Dr
+CT
+Rx
 yK
 EG
 wz
@@ -25940,9 +26113,9 @@ lB
 Pa
 Pa
 Tt
-hj
-hj
-Sy
+FX
+FX
+tD
 PG
 PG
 PG
@@ -26079,8 +26252,8 @@ PG
 PG
 PG
 PG
-hj
-FH
+CT
+yK
 ro
 wz
 wz
@@ -26273,8 +26446,8 @@ PG
 PG
 PG
 PG
-gU
-FH
+iK
+yK
 vU
 wz
 wz
@@ -26467,8 +26640,8 @@ PG
 PG
 PG
 PG
-hj
-FH
+CT
+yK
 vU
 Mp
 wz
@@ -26661,8 +26834,8 @@ PG
 PG
 PG
 Cq
-Sy
-Vl
+tC
+iv
 tC
 wS
 kK
@@ -26855,8 +27028,8 @@ PG
 PG
 PG
 Cq
-Sy
-Vl
+tC
+iv
 tC
 tL
 kK
@@ -27049,8 +27222,8 @@ PG
 PG
 PG
 mJ
-Sy
-Vl
+tC
+iv
 tC
 sq
 ya
@@ -27243,8 +27416,8 @@ PG
 PG
 PG
 Cq
-Sy
-Vl
+tC
+iv
 tC
 Fn
 Fn
@@ -27437,8 +27610,8 @@ PG
 PG
 PG
 Cq
-Sy
-Vl
+wM
+Wk
 wM
 ZI
 Xv
@@ -27631,8 +27804,8 @@ PG
 PG
 PG
 Cq
-gU
-Dr
+zn
+Oo
 DZ
 gi
 lN
@@ -27825,8 +27998,8 @@ PG
 PG
 PG
 Cq
-hj
-Dr
+cy
+Oo
 Yb
 FJ
 lN
@@ -28019,8 +28192,8 @@ PG
 PG
 PG
 PG
-gU
-Dr
+zn
+Oo
 Yb
 BZ
 KO
@@ -28213,8 +28386,8 @@ PG
 PG
 PG
 PG
-Vl
-Vl
+Wk
+Wk
 Wk
 uy
 gv
@@ -28407,8 +28580,8 @@ PG
 PG
 PG
 PG
-Vl
-Vl
+Wk
+Wk
 Wk
 uy
 TU
@@ -28602,8 +28775,8 @@ PG
 PG
 PG
 PG
-gU
-Dr
+Dt
+Tz
 NL
 VF
 GH
@@ -28658,7 +28831,7 @@ nf
 nf
 nf
 nf
-lB
+nf
 Cq
 PG
 PG
@@ -28796,8 +28969,8 @@ PG
 PG
 PG
 PG
-hj
-Dr
+LO
+Tz
 sa
 kL
 GH
@@ -28990,8 +29163,8 @@ PG
 PG
 PG
 PG
-gU
-Dr
+Dt
+Tz
 sa
 yn
 My
@@ -29184,8 +29357,8 @@ PG
 PG
 PG
 PG
-Vl
-Vl
+gP
+gP
 gP
 uy
 gv
@@ -29239,8 +29412,8 @@ Nc
 uv
 nf
 nf
-Vl
-Vl
+nf
+nf
 PG
 PG
 PG
@@ -29379,8 +29552,8 @@ PG
 PG
 PG
 PG
-gU
-Bi
+Rk
+iM
 Rc
 Hr
 Zu
@@ -29432,7 +29605,7 @@ Fy
 Jm
 Jm
 Jm
-Vl
+Jm
 Cq
 PG
 PG
@@ -29573,8 +29746,8 @@ PG
 PG
 PG
 PG
-hj
-Bi
+sY
+iM
 WQ
 hc
 Bx
@@ -29626,7 +29799,7 @@ Lg
 we
 Jm
 Jm
-Vl
+Jm
 Cq
 PG
 PG
@@ -29767,8 +29940,8 @@ PG
 PG
 PG
 PG
-gU
-Bi
+Rk
+iM
 WQ
 NZ
 uW
@@ -29820,7 +29993,7 @@ FV
 cI
 Am
 zX
-hj
+xH
 Cq
 PG
 PG
@@ -29961,8 +30134,8 @@ PG
 PG
 PG
 PG
-Vl
-Vl
+Ug
+Ug
 Ug
 aM
 zM
@@ -30014,7 +30187,7 @@ qB
 Zw
 Am
 zX
-hj
+xH
 Cq
 PG
 PG
@@ -30156,8 +30329,8 @@ PG
 PG
 PG
 PG
-gU
-Dr
+lt
+le
 DV
 XL
 FE
@@ -30207,8 +30380,8 @@ Jm
 Jm
 Jm
 Jm
-Vl
-Vl
+Jm
+Jm
 PG
 PG
 PG
@@ -30350,8 +30523,8 @@ PG
 PG
 PG
 PG
-hj
-Dr
+Up
+le
 DV
 pF
 bI
@@ -30401,8 +30574,8 @@ UH
 CL
 Wd
 QH
-Sy
-Sy
+No
+No
 PG
 PG
 PG
@@ -30544,8 +30717,8 @@ PG
 PG
 PG
 PG
-gU
-Dr
+lt
+le
 DV
 QC
 fR
@@ -30595,7 +30768,7 @@ HX
 HX
 HX
 jc
-YN
+jc
 gK
 PG
 PG
@@ -30738,8 +30911,8 @@ PG
 PG
 PG
 PG
-Vl
-Vl
+gj
+gj
 gj
 gj
 gj
@@ -30789,7 +30962,7 @@ HX
 mI
 QH
 QH
-Sy
+No
 PG
 PG
 PG
@@ -30937,8 +31110,8 @@ PG
 Cq
 Ys
 Cq
-gU
-Bi
+jT
+QS
 yB
 Bk
 aW
@@ -30981,8 +31154,8 @@ QH
 QH
 QH
 QH
-Sy
-Sy
+No
+No
 PG
 PG
 PG
@@ -31131,8 +31304,8 @@ PG
 Cq
 Cq
 Cq
-hj
-Bi
+Ky
+QS
 yB
 bq
 VA
@@ -31172,10 +31345,10 @@ aL
 IW
 QH
 QH
-Sy
-Sy
-Sy
-Sy
+No
+No
+No
+No
 PG
 PG
 PG
@@ -31325,8 +31498,8 @@ PG
 PG
 Cq
 Cq
-gU
-Bi
+jT
+QS
 yB
 yU
 Rp
@@ -31366,7 +31539,7 @@ Jk
 IW
 QH
 No
-Sy
+No
 Cq
 Cq
 PG
@@ -31519,8 +31692,8 @@ PG
 PG
 Cq
 Cq
-Sy
-Vl
+Es
+AU
 AU
 Ki
 Wm
@@ -31559,7 +31732,7 @@ Jf
 MR
 lb
 QH
-Vl
+QH
 Cq
 Cq
 Cq
@@ -31713,8 +31886,8 @@ PG
 PG
 PG
 Cq
-gU
-Bi
+jT
+QS
 yB
 Jl
 VA
@@ -31907,8 +32080,8 @@ PG
 PG
 PG
 Cq
-hj
-Bi
+Ky
+QS
 dR
 MJ
 VA
@@ -32101,8 +32274,8 @@ PG
 PG
 PG
 Cq
-gU
-Bi
+jT
+QS
 yB
 iX
 VA
@@ -32295,8 +32468,8 @@ PG
 PG
 PG
 PG
-Sy
-Vl
+Es
+AU
 AU
 Ox
 VA
@@ -32334,8 +32507,8 @@ XG
 bk
 kD
 lb
-Vl
-Vl
+lb
+lb
 Ld
 PG
 PG
@@ -32528,8 +32701,8 @@ rD
 rV
 HQ
 IW
-Vl
-Sy
+lb
+IW
 PG
 PG
 PG
@@ -32683,8 +32856,8 @@ PG
 PG
 PG
 va
-Sy
-Vl
+Es
+AU
 AU
 AU
 lR
@@ -32722,8 +32895,8 @@ IA
 Tl
 IA
 lb
-Vl
-Sy
+lb
+IW
 PG
 PG
 PG
@@ -32878,8 +33051,8 @@ PG
 PG
 PG
 PG
-gU
-Bi
+pe
+zE
 NW
 UP
 dP
@@ -32916,8 +33089,8 @@ gx
 DM
 Av
 Va
-Vl
-Sy
+DD
+Va
 PG
 PG
 PG
@@ -33072,8 +33245,8 @@ PG
 PG
 PG
 PG
-hj
-Bi
+Xa
+zE
 NW
 qW
 rN
@@ -33110,8 +33283,8 @@ Yr
 RI
 ZQ
 DD
-Vl
-Vl
+DD
+DD
 PG
 PG
 PG
@@ -33266,8 +33439,8 @@ PG
 PG
 PG
 PG
-hj
-Bi
+Xa
+zE
 NW
 Wv
 kf
@@ -33460,8 +33633,8 @@ PG
 PG
 PG
 PG
-hj
-Bi
+Xa
+zE
 NW
 BO
 lk
@@ -33499,7 +33672,7 @@ tk
 ma
 Zt
 on
-hj
+xb
 PG
 PG
 PG
@@ -33654,8 +33827,8 @@ PG
 PG
 PG
 PG
-hj
-Bi
+Xa
+zE
 NW
 VE
 rb
@@ -33848,8 +34021,8 @@ PG
 PG
 PG
 PG
-hj
-Bi
+Xa
+zE
 NW
 qW
 oR
@@ -33886,8 +34059,8 @@ WV
 tb
 vu
 DD
-Vl
-Vl
+DD
+DD
 PG
 PG
 PG
@@ -34042,8 +34215,8 @@ PG
 PG
 PG
 PG
-gU
-Bi
+pe
+zE
 NW
 EU
 rS
@@ -34080,8 +34253,8 @@ dW
 WV
 bV
 Va
-Vl
-Sy
+DD
+Va
 PG
 PG
 PG
@@ -34236,8 +34409,8 @@ PG
 PG
 PG
 va
-Sy
-Vl
+oE
+ph
 ph
 ph
 Mf
@@ -34274,8 +34447,8 @@ nJ
 nJ
 nJ
 DD
-Vl
-Sy
+DD
+Va
 PG
 PG
 PG
@@ -34430,8 +34603,8 @@ PG
 PG
 PG
 PG
-HD
-Vl
+UI
+ph
 ph
 Id
 ja
@@ -34468,7 +34641,7 @@ yV
 Fu
 eI
 eI
-Vl
+eI
 Sy
 Ld
 PG
@@ -34625,7 +34798,7 @@ PG
 PG
 PG
 PG
-HD
+UI
 ph
 KJ
 Dv
@@ -34662,7 +34835,7 @@ Di
 np
 AN
 eI
-Vl
+eI
 Sy
 PG
 PG
@@ -34819,7 +34992,7 @@ PG
 PG
 PG
 PG
-gK
+hm
 ph
 ph
 sn
@@ -34856,8 +35029,8 @@ PD
 nn
 eI
 eI
-Vl
-Vl
+eI
+eI
 PG
 PG
 PG
@@ -35014,7 +35187,7 @@ PG
 PG
 PG
 PG
-Bi
+hG
 jJ
 jJ
 Nh
@@ -35209,7 +35382,7 @@ PG
 PG
 PG
 PG
-Bi
+hG
 jJ
 ph
 ys
@@ -35404,7 +35577,7 @@ PG
 PG
 PG
 PG
-Bi
+hG
 oE
 ph
 ph
@@ -35436,7 +35609,7 @@ ST
 UB
 iE
 iE
-on
+Bl
 PG
 Aa
 PG
@@ -35599,7 +35772,7 @@ PG
 PG
 PG
 PG
-Bi
+hG
 oE
 ph
 ap
@@ -35629,7 +35802,7 @@ UB
 ip
 UB
 iE
-on
+Bl
 PG
 PG
 PG
@@ -35794,8 +35967,8 @@ PG
 PG
 PG
 PG
-Sy
-oE
+LX
+LX
 LX
 VV
 nK
@@ -35822,7 +35995,7 @@ jN
 IN
 ip
 ip
-Sy
+ip
 PG
 PG
 PG
@@ -35989,7 +36162,7 @@ PG
 PG
 PG
 HD
-on
+vK
 gr
 Cf
 pV
@@ -36016,7 +36189,7 @@ jN
 Hv
 Dr
 Dr
-gU
+mR
 PG
 PG
 PG
@@ -36183,7 +36356,7 @@ PG
 PG
 PG
 HD
-on
+vK
 gr
 Cf
 AT
@@ -36210,7 +36383,7 @@ jN
 Hv
 Dr
 Dr
-hj
+ZD
 PG
 PG
 PG
@@ -36376,8 +36549,8 @@ PG
 PG
 PG
 va
-Sy
-Sy
+LX
+LX
 LX
 VV
 gO
@@ -36403,8 +36576,8 @@ lJ
 rn
 IN
 ip
-Sy
-Sy
+ip
+ip
 Ld
 PG
 PG
@@ -36789,7 +36962,7 @@ wo
 kz
 vB
 vB
-on
+cl
 Zq
 JK
 PG
@@ -36983,7 +37156,7 @@ Aw
 BC
 sk
 sk
-on
+cl
 JK
 PG
 PG
@@ -37155,7 +37328,7 @@ PG
 PG
 PG
 PG
-eh
+Mb
 ON
 ON
 pu
@@ -37176,8 +37349,8 @@ zo
 OO
 IO
 sk
-on
-DH
+cl
+CR
 PG
 PG
 PG
@@ -37350,7 +37523,7 @@ PG
 PG
 PG
 PG
-DH
+jp
 ON
 ON
 nA
@@ -37370,7 +37543,7 @@ Xq
 pD
 vB
 vB
-eh
+kR
 PG
 PG
 PG
@@ -37545,7 +37718,7 @@ PG
 PG
 PG
 va
-Sy
+ON
 ON
 IV
 cU
@@ -37563,7 +37736,7 @@ Rw
 Rw
 oL
 vB
-Sy
+vB
 Ld
 PG
 PG
@@ -37740,7 +37913,7 @@ PG
 PG
 PG
 PG
-CA
+ej
 oq
 cU
 zs
@@ -37756,7 +37929,7 @@ ZW
 xU
 cU
 oq
-CA
+ej
 PG
 PG
 PG
@@ -37935,7 +38108,7 @@ PG
 PG
 PG
 PG
-Bi
+ha
 ab
 uq
 vP
@@ -37949,7 +38122,7 @@ iZ
 FM
 oa
 ab
-Bi
+ha
 PG
 PG
 PG
@@ -38129,7 +38302,7 @@ PG
 PG
 PG
 PG
-Vl
+cU
 cU
 hJ
 th
@@ -38143,7 +38316,7 @@ Dw
 um
 Gc
 cU
-Vl
+cU
 PG
 PG
 PG
@@ -38323,7 +38496,7 @@ PG
 PG
 PG
 va
-Vl
+cU
 cU
 cU
 zm
@@ -38337,7 +38510,7 @@ eR
 RL
 cU
 cU
-Vl
+cU
 Ld
 PG
 PG
@@ -38517,8 +38690,8 @@ PG
 PG
 PG
 PG
-Sy
-Sy
+ot
+ot
 cU
 iP
 SQ
@@ -38530,8 +38703,8 @@ MU
 WU
 yz
 cU
-Sy
-Sy
+ot
+ot
 PG
 PG
 PG
@@ -38711,7 +38884,7 @@ PG
 PG
 PG
 PG
-Bi
+ha
 ET
 ab
 Nm
@@ -38725,7 +38898,7 @@ WY
 jG
 ab
 ET
-Bi
+ha
 PG
 PG
 PG
@@ -38905,8 +39078,8 @@ PG
 PG
 PG
 PG
-Sy
-Sy
+ot
+ot
 ot
 Kl
 yd
@@ -38918,8 +39091,8 @@ MU
 vt
 Js
 ot
-Sy
-Sy
+ot
+ot
 PG
 PG
 PG
@@ -39100,7 +39273,7 @@ PG
 PG
 PG
 PG
-Bi
+ha
 ab
 eB
 BW
@@ -39112,7 +39285,7 @@ Da
 xX
 rg
 ab
-Bi
+ha
 PG
 PG
 PG
@@ -39294,7 +39467,7 @@ PG
 PG
 PG
 PG
-Bi
+ha
 ab
 ot
 nY
@@ -39306,7 +39479,7 @@ wI
 jE
 ot
 ab
-Bi
+ha
 PG
 PG
 PG
