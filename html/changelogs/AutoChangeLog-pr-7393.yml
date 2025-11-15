@@ -1,0 +1,4 @@
+author: "seekssss"
+delete-after: True
+changes:
+  - bugfix: "ghost shuttle renaming fix"
