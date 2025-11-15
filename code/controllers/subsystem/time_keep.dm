@@ -14,6 +14,7 @@
  * * Galactic time is affected by time dilation, unlike timeofday/realtimeofday.
  */
 SUBSYSTEM_DEF(time_keep)
+	subsystem_flags = SS_NO_FIRE
 	var/galactic_year_offset = 544
 	var/static/galactic_time_offset = null
 
