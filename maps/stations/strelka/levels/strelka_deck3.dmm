@@ -6562,9 +6562,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
-"vT" = (
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/hallway/strelka/deck3)
 "vU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -15554,6 +15551,9 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/bridge/strelka/deck3)
+"XQ" = (
+/turf/simulated/wall/wood/hardwood,
+/area/hallway/strelka/deck3)
 "XU" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -30662,11 +30662,11 @@ VB
 sL
 MI
 UO
-FN
+XQ
 rD
 rD
 rD
-FN
+XQ
 Wt
 Tj
 sw
@@ -30860,7 +30860,7 @@ oa
 uD
 uD
 uD
-Wt
+XQ
 Wt
 Wt
 qM
@@ -31050,7 +31050,7 @@ Ol
 iY
 MI
 kQ
-FN
+XQ
 uD
 uD
 uD
@@ -31248,7 +31248,7 @@ oa
 uD
 uD
 uD
-vT
+XQ
 Wt
 Wt
 sw
@@ -31438,11 +31438,11 @@ CO
 DJ
 ew
 Ub
-FN
+XQ
 rD
 rD
 rD
-FN
+XQ
 Wt
 jt
 sw

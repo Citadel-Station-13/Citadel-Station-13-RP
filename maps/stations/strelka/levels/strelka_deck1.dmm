@@ -2651,7 +2651,6 @@
 /area/hallway/strelka/deck1)
 "lo" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/machinery/power/apc/super/south_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -8664,7 +8663,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/strelka/pilot/eva)
 "MK" = (
-/obj/machinery/power/apc/super/south_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -9526,7 +9524,6 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/power/apc/super/north_mount,
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/carpet/oracarpet,
 /area/shuttle/personalmicro2)
