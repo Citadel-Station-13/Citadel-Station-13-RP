@@ -66,7 +66,7 @@
 
 /obj/item/clipboard/AltClick(mob/user)
 	. = ..()
-	if(.)
+	if(. != "keep-going")
 		return
 
 	if(isnull(pen))

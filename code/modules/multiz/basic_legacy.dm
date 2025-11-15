@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(connected_z_cache)
 
 // todo: legacy code
 /proc/GetConnectedZlevels(z)
-	return SSmapping.get_z_stack(z)
+	return SSmapping.level_get_stack(z)
 
 // todo: legacy code
 /proc/AreConnectedZLevels(zA, zB)
