@@ -98,6 +98,10 @@
 	/// temporary view active?
 	var/using_temporary_viewsize = FALSE
 
+	//* Mouse *//
+	/// unpacked params from last time we detected a mouse move
+	var/list/mouse_last_move_params
+
 	//? Datum Menus
 	/// menu button statuses
 	var/list/menu_buttons_checked = list()
@@ -124,6 +128,16 @@
 	/// cutscene lockout: set after a browser synchronization command to delay the next one
 	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
 	var/cutscene_lockout = FALSE
+
+	//* Mouse *//
+	/// updated by MouseMove()
+	var/mouse_control_last
+	/// updated by MouseMove()
+	var/mouse_params_last
+	/// updated by MouseMove()
+	var/list/mouse_params_last_unpacked
+	/// updated by atom/MouseEntered, atom/MouseExited
+	var/atom/mouse_predicted_last_atom
 
 	//* UI - Client *//
 	/// our tooltips system
