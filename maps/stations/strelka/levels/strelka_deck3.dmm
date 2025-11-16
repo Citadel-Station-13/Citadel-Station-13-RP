@@ -2701,6 +2701,7 @@
 /area/rnd/strelka/servers)
 "je" = (
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/window/northleft,
 /turf/simulated/open,
 /area/rnd/strelka/xenobio)
 "jf" = (
@@ -10165,6 +10166,7 @@
 	dir = 4;
 	pixel_x = 21
 	},
+/obj/machinery/door/window/southright,
 /turf/simulated/open,
 /area/medical/strelka/emtroom)
 "GB" = (
