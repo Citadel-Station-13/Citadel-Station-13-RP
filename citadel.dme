@@ -4562,6 +4562,7 @@
 #include "code\modules\overmap\entity\overmap_initializer\shuttle.dm"
 #include "code\modules\overmap\entity\overmap_location\map.dm"
 #include "code\modules\overmap\entity\overmap_location\shuttle.dm"
+#include "code\modules\overmap\entity\subtypes\orbital_deployment_transit.dm"
 #include "code\modules\overmap\events\event_handler.dm"
 #include "code\modules\overmap\events\fluff_planets.dm"
 #include "code\modules\overmap\events\generation.dm"
