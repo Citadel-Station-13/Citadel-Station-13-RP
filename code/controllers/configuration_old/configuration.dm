@@ -1,5 +1,7 @@
-/proc/load_configuration()
+/proc/create_legacy_configuration()
 	config_legacy = new /datum/configuration_legacy()
+
+/proc/load_legacy_configuration()
 	config_legacy.load("config/legacy/config.txt")
 	config_legacy.load("config/legacy/game_options.txt","game_options")
 

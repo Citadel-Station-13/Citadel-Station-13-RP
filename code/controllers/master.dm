@@ -115,14 +115,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// which results in all procs called by the MC inheriting that usr.
 	usr = null
 
-	//# 1. load configs
-	if(!config_legacy)
-		load_configuration()
+	//# 1. create configs
+	create_legacy_configuration()
 	if(!config)
 		config = new
 	if(!Configuration)
 		Configuration = new
-		Configuration.Initialize()
 
 	//# 2. set up random seed
 	if(!random_seed)
