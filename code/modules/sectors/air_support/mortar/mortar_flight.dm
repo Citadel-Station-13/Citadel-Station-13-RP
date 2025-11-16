@@ -41,23 +41,38 @@
 	src.flight_duration = time
 
 /datum/mortar_flight/proc/run(datum/event_args/actor/firer)
-	#warn impl? log?
+	log_mortar_shell(firer, "mortar flight started", shell.get_log_list())
 	src.fired = TRUE
 	src.fired_firer = firer
 	src.fired_arrive_time = world.time + flight_duration
 	var/flight_telegraph = min(shell.pre_impact_sound_duration * 2, shell.pre_impact_sound_telegraph)
-	var/flight_telegraph_stretch = flight_telegraph / shell.pre_impact_sound_duration
-	addtimer(CALLBACK(src, PROC_REF(impact_warning), flight_telegraph_stretch), flight_telegraph)
+	addtimer(CALLBACK(src, PROC_REF(impact_warning), flight_duration - flight_telegraph), flight_telegraph)
 	addtimer(CALLBACK(src, PROC_REF(impact)), flight_duration)
 
-/datum/mortar_flight/proc/get_mobs_in_radius_of_target(radius) as /list
-	#warn impl
+/datum/mortar_flight/proc/get_players_in_radius_of_target(radius) as /list
+	. = list()
+	for(var/client/player in GLOB.clients)
+		var/mob/their_mob = player.mob
+		var/their_z = their_mob.z
+		if(!their_z)
+			continue
+		var/datum/map/their_map = SSmapping.ordered_levels[their_z]?.map
+		if(their_map != flight_map)
+			continue
+		var/list/their_coords = SSmapping.get_virtual_coords_x_y_z(their_mob)
+		// TODO: multiz support because what if they're underneath the thing and get exploded?
+		if(their_coords[3] != flight_z)
+			continue
+		if(max(abs(their_coords[1] - flight_x), abs(their_coords[2] - flight_y)) > radius)
+			continue
+		. += their_mob
 
 /datum/mortar_flight/proc/get_target_turf() as /turf
 	return SSmapping.get_virtual_turf(flight_map, flight_x, flight_y, flight_z)
 
-/datum/mortar_flight/proc/impact_warning()
-	var/list/mob/send_to = get_mobs_in_radius_of_target(15)
+/datum/mortar_flight/proc/impact_warning(duration)
+	// this doesn't warn ais but they should use other ways of detection anyways
+	var/list/mob/send_to = get_players_in_radius_of_target(15)
 	var/dir_descriptor
 	if(flight_origin)
 		var/list/origin_vcoords = SSmapping.get_virtual_coords_x_y_z(flight_origin)
@@ -84,8 +99,7 @@
 
 /datum/mortar_flight/proc/impact()
 	var/turf/maybe_target_turf = get_target_turf()
-
-	#warn impl + log
+	log_mortar_shell(fired_firer, "mortar flight impacting", shell.get_log_list())
 	if(maybe_target_turf)
 		shell.on_detonate(maybe_target_turf)
 	qdel(src)

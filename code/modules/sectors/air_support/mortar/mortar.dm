@@ -28,6 +28,8 @@
 	/// launch velocity in m/s
 	/// * this should be on the shell but idgaf lol
 	var/launch_velocity = 73
+	/// hardcoded gravity constant for now
+	var/launch_gravity = 9.8
 
 	/// in degrees std-dev
 	var/standard_azimuth_error = 3.5
@@ -121,25 +123,30 @@
 	forceMove(creating)
 	return creating
 
-/obj/machinery/mortar/proc/run_firing_cycle(obj/item/ammo_casing/mortar/shell, x_offset, y_offset)
+/obj/machinery/mortar/proc/run_firing_cycle(obj/item/ammo_casing/mortar/shell, x_offset, y_offset) as /datum/mortar_flight
 	// clockwise from north
 	var/k_azimuth = arctan(y_offset, x_offset)
 
 	var/k_distance = sqrt(x_offset ** 2 + y_offset ** 2)
 	var/k_velocity = launch_velocity
 
-	var/gravity_on_target_planet = 9.8
+	// hardcoded for now
+	var/gravity_on_target_planet = launch_gravity
 
 	var/list/k_optimal = math__solve_kinematic_trajectory(null, k_velocity, k_distance, 0, gravity_on_target_planet)
+	if(k_optimal == null)
+		return null
 	var/list/k_inaccurate = run_firing_kinematics(k_azimuth, k_optimal[1], k_velocity)
 	var/list/k_final = math__solve_kinematic_trajectory(k_inaccurate[2], k_inaccurate[3], null, 0, gravity_on_target_planet)
+	if(k_final == null)
+		return null
 
 	var/final_distance = k_final[3]
 
 	var/final_dx = round(sin(k_azimuth) * final_distance, 1)
 	var/final_dy = round(cos(k_azimuth) * final_distance, 1)
 
-	launch(shell, final_dx, final_dy, k_final[4])
+	return launch(shell, final_dx, final_dy, k_final[4])
 
 /**
  * @return list(azimuth, altitude, velocity)
@@ -234,7 +241,11 @@
 
 	var/x_offset = target_x - our_turf.x + target_adjust_x
 	var/y_offset = target_y - our_turf.y + target_adjust_y
-	return run_firing_cycle(firing, x_offset, y_offset)
+	var/datum/mortar_flight/flight = run_firing_cycle(firing, x_offset, y_offset)
+	if(!flight)
+		if(firing.loc == src)
+			visible_message(SPAN_WARNING("A hiss is heard from [src] as [firing] falls out of it, having failed to fire."))
+			firing.forceMove(drop_location())
 
 /obj/machinery/mortar/basic/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -280,6 +291,9 @@
 	.["targetY"] = target_y
 	.["adjustX"] = target_adjust_x
 	.["adjustY"] = target_adjust_y
+	// TODO: proper vel / grav
+	.["kineVel"] = launch_velocity
+	.["kineGrav"] = launch_gravity
 
 /obj/machinery/mortar/basic/standard
 	caliber = /datum/ammo_caliber/mortar
