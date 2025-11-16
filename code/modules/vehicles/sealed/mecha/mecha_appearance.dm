@@ -59,7 +59,3 @@
 
 	if(face_overlay)
 		add_overlay(face_overlay)
-
-	for(var/obj/item/vehicle_module/ME in equipment)
-
-		ME.add_equip_overlay(src)

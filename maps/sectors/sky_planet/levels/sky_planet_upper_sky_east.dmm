@@ -1218,7 +1218,7 @@
 /area/sector/sky_planet/rock)
 "WF" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon,
+/obj/vehicle/sealed/mecha/fighter/gunpod/recon,
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
 "Xm" = (

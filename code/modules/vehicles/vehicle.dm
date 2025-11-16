@@ -1,20 +1,78 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/datum/armor/vehicle
+
 TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 /**
  * generic, multiseat-capable vehicles system
  *
- * ! Port of old vehicles underway. Maintain typepath if possible.
+ * ## Concepts
+ * * The 'chassis' is ourselves. Chassis armor / integrity are handled via atom integrity.
+ *   This may change in the future, so use wrappers in `vehicle-defense.dm`
  */
 /obj/vehicle
-	name = "generic vehicle"
-	desc = "Yell at coderbus."
-	icon = 'icons/obj/vehicles.dmi'
-	icon_state = "fuckyou"
-	// integrity_max = 300
-	// armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 0, BOMB = 30, BIO = 0, RAD = 0, FIRE = 60, ACID = 60)
-	density = TRUE
-	anchored = FALSE
-	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
-	COOLDOWN_DECLARE(cooldown_vehicle_move)
+	integrity = 300
+	integrity_max = 300
+	integrity_failure = 0
+	armor_type = /datum/armor/vehicle
+
+	//* Cargo Hold *//
+	/// Things in cargo hold
+	/// * Lazy list
+	/// * Should technically be a module but for better or worse this is an intrinsic of the /mecha
+	///   type. This allows all mechs to use hydraulic clamps to pick up cargo.
+	var/list/atom/movable/cargo_held
+	/// Cargo hold capacity
+	var/cargo_capacity = 1
+
+	//* Components *//
+	/// Installed components
+	/// * Lazy list.
+	var/list/obj/item/vehicle_component/components
+
+	//* Modules *//
+	/// Modules. Set to typepath list to init.
+	/// * Lazy list.
+	var/list/obj/item/vehicle_module/modules
+	/// Modules that should not be removable. They will be rendered unable to be destroyed
+	/// and also unable to be removed.
+	/// * Nulled after init
+	/// * Lazy list.
+	/// * These will never be salvageable off the loot.
+	/// * These won't count towards slot limits and class limits.
+	var/list/modules_intrinsic
+	#warn handle this shit
+	/// Module slot limits
+	/// * VEHICLE_MODULE_SLOT_* associated to a number.
+	var/list/module_slots = list()
+	/// Module classes to allow
+	var/module_classes_allowed = ~(VEHICLE_MODULE_CLASS_MACRO | VEHICLE_MODULE_CLASS_MICRO)
+	/// Active click module
+	/// * Someday this'll be changed to actor HUD system so multiple people can select different ones.
+	var/obj/item/module_active_click
+
+	//* Movement *//
+	/// Next move time
+	var/move_delay = 0
+	/// Base movement speed, in tile/seconds
+	var/base_movement_speed = 5
+
+	//*                          Movespeed                           *//
+	//* This will be removed once /obj/vehicle becomes /mob/vehicle! *//
+	//*             For now we use the same API mobs do!             *//
+	/// List of movement speed modifiers applying to this mob
+	/// * This is a lazy list.
+	var/list/movespeed_modifiers
+	/// List of movement speed modifiers ignored by this mob. List -> List (id) -> List (sources)
+	/// * This is a lazy list.
+	var/list/movespeed_modifier_immunities
+	/// The calculated mob speed slowdown based on the modifiers list
+	var/movespeed_hyperbolic
+	/// Are we in gravity right now? Used for movespeed.
+	var/in_gravity = TRUE
+	/// Last time we moved ourselves.
+	var/last_self_move
 
 	//* Occupants *//
 	/// list of mobs associated to their control flags
@@ -30,141 +88,62 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// list of typepaths or ids of /datum/atom_hud_providers that occupants with [VEHICLE_CONTROL_USE_HUDS] get added to their perspective
 	var/list/occupant_huds
 
-	var/max_occupants = 1
-	var/max_drivers = 1
-	var/movedelay = 2
-	var/lastmove = 0
-	var/key_type
-	var/obj/item/key/inserted_key
-	var/key_type_exact = TRUE		//can subtypes work
-	var/canmove = TRUE
-	// todo: emulate_door_bumps is shitcode please change it
-	var/emulate_door_bumps = TRUE	//when bumping a door try to make occupants bump them to open them.
-	var/default_driver_move = TRUE	//handle driver movement instead of letting something else do it like riding datums.
-	var/enclosed = FALSE	// is the rider protected from bullets? assume no
-	var/list/autogrant_actions_passenger	//plain list of typepaths
-	var/list/autogrant_actions_controller	//assoc list "[bitflag]" = list(typepaths)
-	var/list/mob/occupant_actions_legacy			//assoc list mob = list(type = action datum assigned to mob)
-	var/obj/vehicle/trailer
-	var/mouse_pointer //do we have a special mouse
+	//* Repairs *//
+	/// Repair droid efficiency
+	var/repair_droid_inbound_efficiency = 1.0
+	/// Repair droid max ratio to heal. Repair droids won't heal us above this of our max integrity minus failure integrity.
+	/// * This includes `integrity_failure`!
+	var/repair_droid_max_ratio = 1
+	/// Additional repair droid efficiency, as multiplier, if already broken.
+	var/repair_droid_recovery_efficiency = 2.5
+
+	//* UI *//
+	/// UI controller
+	#warn hook this during merging
+	var/datum/vehicle_ui_controller/ui_controller = /datum/vehicle_ui_controller
+
+	//* Weight *//
+	var/cached_component_weight = 0
+	var/cached_module_weight = 0
+	var/cached_cargo_weight = 0
+	var/cached_occupant_weight = 0
 
 /obj/vehicle/Initialize(mapload)
 	. = ..()
-	initialize_occupant_actions()
-	occupants = list()
-	autogrant_actions_passenger = list()
-	autogrant_actions_controller = list()
-	occupant_actions_legacy = list()
-	generate_actions()
+	create_initial_components()
+	update_gravity()
 
 /obj/vehicle/Destroy()
-	// remove all occupants if any are left
-	if(length(occupants))
-		stack_trace("still had occupants on Destroy. how?")
-		for(var/mob/occupant in occupants)
-			remove_occupant(occupant)
-	// null out hud providers
-	occupant_huds = null // null them out
-	// delete our key
-	QDEL_NULL(inserted_key)
-	// legacy: get rid of trailer
-	trailer = null
-	// get rid of occupant actions
+	QDEL_LAZYLIST(components)
+	QDEL_LAZYLIST(modules)
+	QDEL_NULL(ui_controller)
 	QDEL_LIST_NULL(occupant_actions)
 	return ..()
 
 /obj/vehicle/examine(mob/user, dist)
 	. = ..()
-	/*
-	if(resistance_flags & ON_FIRE)
-		. += "<span class='warning'>It's on fire!</span>"
-	var/healthpercent = obj_integrity/integrity_max * 100
-	switch(healthpercent)
-		if(50 to 99)
-			. += "It looks slightly damaged."
-		if(25 to 50)
-			. += "It appears heavily damaged."
-		if(0 to 25)
-			. += "<span class='warning'>It's falling apart!</span>"
-	*/
+	var/datum/event_args/examine/examine = new(user)
+	. += examine_render_components(examine)
+	for(var/obj/item/vehicle_module/module as anything in modules)
+		. += "It has a [icon2html(module, world)] [module] installed."
 
-/obj/vehicle/proc/is_key(obj/item/I)
-	return I? (key_type_exact? (I.type == key_type) : istype(I, key_type)) : FALSE
+/obj/vehicle/drop_products(method, atom/where)
+	..()
+	drop_vehicle_contents(where)
 
-/obj/vehicle/proc/return_occupants()
-	return occupants
+/**
+ * Called to drop everything in vehicle.
+ */
+/obj/vehicle/proc/drop_vehicle_contents(atom/where)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	on_drop_vehicle_contents(where || drop_location())
 
-/obj/vehicle/proc/occupant_amount()
-	return length(occupants)
-
-/obj/vehicle/proc/return_amount_of_controllers_with_flag(flag)
-	. = 0
-	for(var/i in occupants)
-		if(occupants[i] & flag)
-			.++
-
-/obj/vehicle/proc/return_controllers_with_flag(flag)
-	RETURN_TYPE(/list/mob)
-	. = list()
-	for(var/i in occupants)
-		if(occupants[i] & flag)
-			. += i
-
-/obj/vehicle/proc/return_drivers()
-	return return_controllers_with_flag(VEHICLE_CONTROL_DRIVE)
-
-/obj/vehicle/proc/driver_amount()
-	return return_amount_of_controllers_with_flag(VEHICLE_CONTROL_DRIVE)
-
-/obj/vehicle/proc/is_driver(mob/M)
-	return is_occupant(M) && occupants[M] & VEHICLE_CONTROL_DRIVE
-
-/obj/vehicle/proc/auto_assign_occupant_flags(mob/M) //override for each type that needs it. Default is assign driver if drivers is not at max.
-	if(driver_amount() < max_drivers)
-		add_control_flags(M, VEHICLE_CONTROL_DRIVE | VEHICLE_CONTROL_USE_HUDS | VEHICLE_CONTROL_EXIT)
-
-/obj/vehicle/relaymove(mob/user, direction)
-	if(is_driver(user))
-		return driver_move(user, direction)
-	return FALSE
-
-/obj/vehicle/proc/driver_move(mob/user, direction)
-	if(key_type && !is_key(inserted_key))
-		to_chat(user, "<span class='warning'>[src] has no key inserted!</span>")
-		return FALSE
-	if(!default_driver_move)
-		return
-	vehicle_move(direction)
-
-/obj/vehicle/proc/vehicle_move(direction)
-	if(!COOLDOWN_FINISHED(src, cooldown_vehicle_move))
-		return FALSE
-	COOLDOWN_START(src, cooldown_vehicle_move, movedelay)
-	if(trailer)
-		var/dir_to_move = get_dir(trailer.loc, loc)
-		var/did_move = step(src, direction)
-		if(did_move)
-			step(trailer, dir_to_move)
-		return did_move
-	else
-		after_move(direction)
-		return step(src, direction)
-
-/obj/vehicle/proc/after_move(direction)
+/**
+ * Drop vehicle stuff here.
+ */
+/obj/vehicle/proc/on_drop_vehicle_contents(atom/where)
 	return
-
-/obj/vehicle/Bump(atom/movable/M)
-	. = ..()
-	if(emulate_door_bumps)
-		if(istype(M, /obj/machinery/door))
-			for(var/m in occupants)
-				M.Bumped(m)
-
-/obj/vehicle/Move(newloc, dir)
-	. = ..()
-	if(trailer && .)
-		var/dir_to_move = get_dir(trailer.loc, newloc)
-		step(trailer, dir_to_move)
 
 //* Actions *//
 
@@ -191,12 +170,68 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	for(var/mob/occupant as anything in occupants)
 		occupant.actions_controlled.remove_action(action)
 
+//* Cargo *//
+
+/obj/vehicle/proc/cargo_add(atom/movable/entity)
+	if(entity in cargo_held)
+		return
+	cargo_held += entity
+	entity.forceMove(src)
+	on_cargo_add(entity)
+
+/obj/vehicle/proc/cargo_slots_used()
+	return length(cargo_held)
+
+/obj/vehicle/proc/cargo_slots_capacity()
+	return cargo_capacity
+
+/obj/vehicle/proc/cargo_slots_remaining()
+	return cargo_capacity - length(cargo_held)
+
+/obj/vehicle/proc/cargo_dump(atom/where = drop_location())
+	if(!where)
+		return 0
+	. = 0
+	for(var/atom/movable/entity in cargo_held)
+		entity.forceMove(where)
+		.++
+
+/obj/vehicle/proc/on_cargo_add(atom/movable/entity)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/vehicle/proc/on_cargo_remove(atom/movable/entity)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/vehicle/Exited(atom/movable/AM, atom/newLoc)
+	..()
+	if(AM in cargo_held)
+		cargo_held -= AM
+		on_cargo_remove(AM)
+
 //* HUDs *//
 
 // todo: clear_occupant_huds()
 // todo: add_occupant_hud(datum/atom_hud/hud_like)
 // todo: remove_occupant_hud(datum/atom_hud/hud_like)
 // todo: resolve_occupant_huds() - make sure list is instances, not ids; needed to dedupe and resolve for add/remove
+
+//* Logging *//
+
+/**
+ * * Anything fed in here is sent to game logs.
+ * * Includes ckeys.
+ */
+/obj/vehicle/proc/vehicle_log_for_admins(datum/event_args/actor/actor, action, list/params)
+	log_game("VEHICLE: [src] ([ref(src)]) ([type]) - [actor.actor_log_string()]: [action][params ? " - [json_encode(params)]" : ""]")
+
+/**
+ * * Eventually used to allow things like mechs to maintain internal logs.
+ * * Anything fed in here is IC. Don't leak ckeys.
+ */
+/obj/vehicle/proc/vehicle_log_for_fluff_ic()
+	CRASH("not implemented")
 
 //* Control Flags *//
 
@@ -327,3 +362,48 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
  */
 /obj/vehicle/proc/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
+
+//* Occupant Feedback *//
+
+// TODO: this proc needs more args, including "pretending" to be from another turf.
+/obj/vehicle/proc/occupant_playsound(sfx, vol, vary, freq)
+	for(var/mob/occu as anything in occupants)
+		occu.playsound_local(get_turf(src), sfx, vol, vary, freq)
+
+#warn does this work icon wise?
+/obj/vehicle/proc/occupant_send_chat(html)
+	to_chat(occupants, "<img src=\"\ref[src]\"> [html]")
+
+//* Weight Handling *//
+
+/obj/vehicle/on_contents_weight_change(atom/movable/entity, old_weight, new_weight)
+	..()
+	if(istype(entity, /obj/item/vehicle_component) && (entity in components))
+		cached_component_weight += (new_weight - old_weight)
+	if(istype(entity, /obj/item/vehicle_module) && (entity in modules))
+		cached_module_weight += (new_weight - old_weight)
+
+	// TODO: /atom/movable level weight
+	// if(entity in occupants)
+	// if(entity in cargo_held)
+
+	ui_controller?.queue_update_weight_data()
+
+/obj/vehicle/retally_containing_weight()
+	..()
+	cached_component_weight = 0
+	cached_module_weight = 0
+	cached_cargo_weight = 0
+	cached_occupant_weight = 0
+
+	// TODO: /atom/movable level weight
+	// for(var/mob/rider as anything in occupants)
+	// for(var/atom/movable/entity as anything in cargo_held)
+
+	for(var/obj/item/vehicle_component/comp as anything in components)
+		cached_component_weight += comp.get_weight()
+
+	for(var/obj/item/vehicle_module/mod as anything in modules)
+		cached_module_weight += mod.get_weight()
+
+	ui_controller?.queue_update_weight_data()

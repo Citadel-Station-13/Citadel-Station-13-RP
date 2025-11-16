@@ -34,8 +34,10 @@
 					target = src,
 				)
 			return FALSE
+	if(force)
+		return TRUE
 	var/is_full = (count_for_slot >= modular_component_slots?[component.component_slot])
-	return force || component.fits_on_gun(src, fits_modular_component(component), is_full, actor, silent)
+	return component.fits_on_gun(src, fits_modular_component(component), is_full, actor, silent)
 
 /**
  * checks if we can attach a component; component gets final say

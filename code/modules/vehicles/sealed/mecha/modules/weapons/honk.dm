@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/weapon/honker
+/obj/item/vehicle_module/lazy/legacy/weapon/honker
 	name = "sound emission device"
 	desc = "A perfectly normal bike-horn, for your exosuit."
 	icon_state = "mecha_honker"
@@ -6,9 +6,7 @@
 	equip_cooldown = 150
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 4, TECH_ILLEGAL = 1)
 
-	equip_type = EQUIP_SPECIAL
-
-/obj/item/vehicle_module/weapon/honker/action(target)
+/obj/item/vehicle_module/lazy/legacy/weapon/honker/action(target)
 	if(!chassis)
 		return 0
 	if(energy_drain && chassis.get_charge() < energy_drain)
@@ -32,11 +30,10 @@
 		M.afflict_paralyze(20 * 3)
 		M.afflict_stun(20 * 5)
 	chassis.use_power(energy_drain)
-	log_message("Used a sound emission device.")
 	do_after_cooldown()
 	return
 
-/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/banana
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/banana
 	name = "\improper Banana Peel launcher"
 	desc = "A pneumatic launcher designed for maximum hilarity; fires banana peels."
 	icon_state = "mecha_bananamrtr"
@@ -47,7 +44,7 @@
 	projectile_energy_cost = 600
 	equip_cooldown = 60
 
-/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/mousetrap
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/mousetrap
 	name = "\improper Mouse Trap launcher"
 	desc = "A pneumatic launcher designed for maximum hilarity; fires mouse traps."
 	icon_state = "mecha_mousetrapmrtr"
