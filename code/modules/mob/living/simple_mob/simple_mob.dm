@@ -324,17 +324,10 @@
 	update_icon()
 	..()
 
-
 //Client attached
 /mob/living/simple_mob/Login()
 	. = ..()
 	to_chat(src,"<b>You are \the [src].</b> [player_msg]")
-
-
-/mob/living/simple_mob/emote(var/act, var/type, var/desc)
-	if(act)
-		..(act, type, desc)
-
 
 /mob/living/simple_mob/SelfMove(turf/n, direct)
 	var/turf/old_turf = get_turf(src)

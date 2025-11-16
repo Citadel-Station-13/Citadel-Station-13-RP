@@ -130,6 +130,75 @@
 	desc = "A cluster of bushes and grass."
 	density = 0
 
+// Colfer change, these randomizations are for grass buildings in tile_types.dm
+/obj/structure/flora/grass/fey/bush/florarandom
+	icon_state = "busha1"
+
+/obj/structure/flora/grass/fey/bush/florarandom/Initialize(mapload)
+	. = ..()
+	icon_state = "busha[rand(1, 3)]"
+
+/obj/structure/flora/grass/fey/bush/bushrandom
+	icon_state = "bushb1"
+
+/obj/structure/flora/grass/fey/bush/bushrandom/Initialize(mapload)
+	. = ..()
+	icon_state = "bushb[rand(1, 3)]"
+
+/obj/structure/flora/grass/fey/bush/lowbushrandom
+	icon_state = "bushc1"
+
+/obj/structure/flora/grass/fey/bush/lowbushrandom/Initialize(mapload)
+	. = ..()
+	icon_state = "bushc[rand(1, 3)]"
+
+/obj/structure/flora/grass/fey/bush/grassrandom
+	icon_state = "grassa1"
+
+/obj/structure/flora/grass/fey/bush/grassrandom/Initialize(mapload)
+	. = ..()
+	icon_state = "grassa[rand(1, 5)]"
+
+/obj/structure/flora/grass/fey/bush/sparcegrassrandom
+	icon_state = "grassb1"
+
+/obj/structure/flora/grass/fey/bush/sparcegrassrandom/Initialize(mapload)
+	. = ..()
+	icon_state = "grassb[rand(1, 2)]"
+
+/obj/structure/flora/fey/large/randombush
+	icon_state = "bush1"
+	pixel_x = -16
+
+/obj/structure/flora/fey/large/randombush/Initialize(mapload)
+	. = ..()
+	icon_state = "bush[rand(1, 3)]"
+// This makes it so you can tear them apart
+/obj/structure/flora/grass/fey/bush/attackby(obj/item/W as obj, mob/user as mob)
+	// Dismantle
+	if(user.a_intent == INTENT_HARM) // who said you CAN'T touch grass (violently)?
+		return ..()
+	if(istype(W, /obj/item/shovel))
+		playsound(src.loc, W.tool_sound, 50, 1)
+		if(do_after(user, 10, src))
+			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
+			new /obj/item/stack/tile/grass(get_turf(usr), 1)
+			qdel(src)
+			return
+// Also have to do the large ones too, but seperately
+/obj/structure/flora/fey/large/attackby(obj/item/W as obj, mob/user as mob)
+	// Dismantle
+	if(user.a_intent == INTENT_HARM) // who said you CAN'T touch grass (violently)?
+		return ..()
+	if(istype(W, /obj/item/shovel))
+		playsound(src.loc, W.tool_sound, 50, 1)
+		if(do_after(user, 10, src))
+			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
+			new /obj/item/stack/tile/grass(get_turf(usr), 1)
+			qdel(src)
+			return
+
+// Still colfer here, I don't want to touch these down here because I don't know if maps use these
 /obj/structure/flora/grass/fey/bush/bush1
 	icon_state = "busha1"
 
@@ -195,6 +264,7 @@
 	name = "Large Flora"
 	desc = "Giganticism at its finest. This part of the endless forest has been alive for centuries, if not thousands of years."
 	density = 0
+	pixel_x = -16
 
 /obj/structure/flora/fey/large/bush1
 	icon_state = "bush1"
