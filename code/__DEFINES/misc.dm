@@ -265,9 +265,6 @@ var/list/economy_station_departments = list(
 #define TSC_XION	"Xion"
 #define TSC_ZH		"Zeng-Hu"
 
-///The number of deciseconds in a day
-#define MIDNIGHT_ROLLOVER		864000
-
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
 

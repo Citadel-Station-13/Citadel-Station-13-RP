@@ -4,5 +4,5 @@
 /mob/living/carbon/get_usable_emote_require()
 	. = ..()
 	var/obj/item/organ/internal/maybe_voicebox = organs_by_name[O_VOICE]
-	if(maybe_voicebox?.robotic >= ORGAN_ROBOT)
+	if(maybe_voicebox?.robotic >= ORGAN_ASSISTED)
 		. |= EMOTE_REQUIRE_SYNTHETIC_SPEAKER

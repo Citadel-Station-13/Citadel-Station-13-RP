@@ -448,14 +448,17 @@
 	drop_sound = 'sound/items/drop/matchbox.ogg'
 	pickup_sound =  'sound/items/pickup/matchbox.ogg'
 
-/obj/item/storage/box/matches/attackby(obj/item/flame/match/W as obj, mob/user as mob)
-	if(istype(W) && !W.lit && !W.burnt)
-		W.lit = 1
-		W.damage_type = "burn"
-		W.icon_state = "match_lit"
-		START_PROCESSING(SSobj, W)
-	W.update_icon()
-	return
+/obj/item/storage/box/matches/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(istype(using, /obj/item/flame/match))
+		var/obj/item/flame/match/W = using
+		if(istype(W) && !W.lit && !W.burnt)
+			W.lit = 1
+			W.damage_type = "burn"
+			W.icon_state = "match_lit"
+			START_PROCESSING(SSobj, W)
+		W.update_icon()
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/storage/box/autoinjectors
 	name = "box of injectors"

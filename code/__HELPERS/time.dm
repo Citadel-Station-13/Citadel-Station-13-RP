@@ -21,30 +21,17 @@ GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 
 	return wtime + (time_offset + wusage) * world.tick_lag
 
-GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
-/var/station_date = ""
-/var/next_station_date_change = 1 DAY
-
-// todo: better subsystem based way of tracking this, this is fucky.
-
-#define duration2stationtime(time) time2text(station_time_in_ds + time, "hh:mm")
-#define worldtime2stationtime(time) time2text((GLOB.roundstart_hour HOURS) - SSticker.round_start_time + time, "hh:mm")
+#define worldtime2stationtime(time) SStime_keep.render_galactic_time_short(time)
 #define round_duration_in_ds (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
-#define station_time_in_ds (GLOB.roundstart_hour HOURS + round_duration_in_ds)
+#define station_time_in_ds (world.time + SStime_keep.get_galactic_time_offset())
 
+// TODO: remove
 /proc/stationtime2text()
-	return time2text(station_time_in_ds, "hh:mm", 0)
+	return SStime_keep.render_galactic_time()
 
+// TODO: remove
 /proc/stationdate2text()
-	var/update_time = FALSE
-	if(station_time_in_ds > next_station_date_change)
-		next_station_date_change += 1 DAY
-		update_time = TRUE
-	if(!station_date || update_time)
-		var/extra_days = round(station_time_in_ds / (1 DAY)) DAYS
-		var/timeofday = world.timeofday + extra_days
-		station_date = num2text((text2num(time2text(timeofday, "YYYY"))+544)) + "-" + time2text(timeofday, "MM-DD")
-	return station_date
+	return SStime_keep.render_galactic_date()
 
 /// ISO 8601
 /proc/time_stamp()
@@ -52,29 +39,10 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	var/time_portion = time2text(world.timeofday, "hh:mm:ss")
 	return "[date_portion]T[time_portion]"
 
-/proc/get_timezone_offset()
-	var/midnight_gmt_here = text2num(time2text(0,"hh")) * 36000
-	if(midnight_gmt_here > 12 HOURS)
-		return 24 HOURS - midnight_gmt_here
-	else
-		return midnight_gmt_here
-
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
 	if(!wtime)
 		wtime = world.time
 	return time2text(wtime, format, 0)
-
-/**
- * This is used for displaying the "station time" equivelent of a world.time value
- * Calling it with no args will give you the current time, but you can specify a world.time-based value as an argument.
- * - You can use this, for example, to do "This will expire at [station_time_at(world.time + 500)]" to display a "station time" expiration date
- *   which is much more useful for a player).
- */
-/proc/station_time(time=world.time)
-	return ((((time - SSticker.round_start_time)) + GLOB.gametime_offset) % 864000)
-
-/proc/station_time_timestamp(format = "hh:mm:ss", time=world.time)
-	return time2text(station_time(time), format, 0)
 
 /**
  * Returns 1 if it is the selected month and day.
@@ -95,6 +63,7 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 /var/next_duration_update = 0
 /var/last_round_duration = 0
 
+// TODO: this is buggy, should use RTOD / walltime
 /proc/roundduration2text()
 	if(!SSticker.round_start_time)
 		return "00:00"
@@ -114,14 +83,6 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	last_round_duration = "[hours]:[mins]"
 	next_duration_update = world.time + 1 MINUTES
 	return last_round_duration
-
-/var/midnight_rollovers = 0
-/var/rollovercheck_last_timeofday = 0
-
-/proc/update_midnight_rollover()
-	if (world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
-		return midnight_rollovers++
-	return midnight_rollovers
 
 /proc/weekdayofthemonth()
 	/// Get the current day.
