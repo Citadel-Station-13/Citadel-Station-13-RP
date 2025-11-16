@@ -130,6 +130,11 @@
 	key = "legacy_name_mention"
 	legacy_key = "CHAT_MENTION"
 
+/datum/game_preference_toggle/game/precise_dropping
+	name = "Precise Dropping"
+	description = "Drop items where your cursor is rather when under your character, if it's in reach.."
+	key = "precise_dropping"
+
 /datum/game_preference_toggle/ambience
 	abstract_type = /datum/game_preference_toggle/ambience
 	category = "Sound - Ambience"

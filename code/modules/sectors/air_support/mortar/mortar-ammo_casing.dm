@@ -72,7 +72,7 @@
 /**
  * play pre-impact sound
  */
-/obj/item/ammo_casing/mortar/proc/whzhzhhzhh(turf/epicenter)
+/obj/item/ammo_casing/mortar/proc/whzhzhhzhh(turf/epicenter, duration)
 	if(!pre_impact_sound)
 		return
 	#warn impl
