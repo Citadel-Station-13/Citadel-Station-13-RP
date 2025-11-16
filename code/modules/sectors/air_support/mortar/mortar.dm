@@ -75,6 +75,12 @@
 			user_collapse(e_args)
 			return TRUE
 
+/obj/machinery/mortar/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+	// TODO: proper vel / grav
+	.["kineVel"] = launch_velocity
+	.["kineGrav"] = launch_gravity
+
 /obj/machinery/mortar/proc/user_collapse(datum/event_args/actor/actor, delay_mod = 1, put_in_hands = TRUE) as /obj/item/mortar_kit
 	var/delay = collapse_time * delay_mod
 	if(delay > 0)
@@ -256,7 +262,7 @@
 		if("setTarget")
 			var/x = params["x"]
 			var/y = params["y"]
-			if(!attempt_user_adjust_doafter(actor, adjust_time_major, "making a major adjustment to"))
+			if(!attempt_user_adjust_doafter(actor, adjust_time_major, "recalibrating", "recalibrates"))
 				return TRUE
 			log_mortar(actor, "set (major) to [x]/[y]")
 			src.target_x = x
@@ -265,15 +271,31 @@
 		if("setAdjust")
 			var/x = params["x"]
 			var/y = params["y"]
-			if(!attempt_user_adjust_doafter(actor, adjust_time_minor, "making a minor adjustment to"))
+			if(!attempt_user_adjust_doafter(actor, adjust_time_minor, "making a spot adjustment to", "makes a spot adjustment to"))
 				return TRUE
 			log_mortar(actor, "adjust (minor) to [x]/[y]")
 			src.target_adjust_x = x
 			src.target_adjust_y = y
 			return TRUE
 
-/obj/machinery/mortar/basic/proc/attempt_user_adjust_doafter(datum/event_args/actor/actor, delay, phrase = "adjusting")
-	#warn impl
+/obj/machinery/mortar/basic/proc/attempt_user_adjust_doafter(datum/event_args/actor/actor, delay, phrase = "adjusting", done_phrase = "adjusted")
+	if(delay > 0)
+		if(delay > 0.5 SECONDS)
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_CONSTRUCTION,
+				visible = SPAN_WARNING("[actor.performer] starts [phrase] [src]..."),
+				audible = SPAN_WARNING("You hear someone reconfiguring heavy machinery."),
+			)
+		if(!do_after(actor.performer, delay, src))
+			return FALSE
+	actor.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_WARNING("[actor.performer] [done_phrase] [src]!"),
+		audible = SPAN_WARNING("You hear heavy machinery being reconfigured."),
+	)
+	return TRUE
 
 /obj/machinery/mortar/basic/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -291,9 +313,6 @@
 	.["targetY"] = target_y
 	.["adjustX"] = target_adjust_x
 	.["adjustY"] = target_adjust_y
-	// TODO: proper vel / grav
-	.["kineVel"] = launch_velocity
-	.["kineGrav"] = launch_gravity
 
 /obj/machinery/mortar/basic/standard
 	caliber = /datum/ammo_caliber/mortar

@@ -88,14 +88,27 @@
 		dir_descriptor = "the [dir2text(origin_dir)]"
 	else
 		dir_descriptor = "somewhere"
-	for(var/mob/victim as anything in send_to)
-		victim.show_message(
-			SPAN_BOLDWARNING("You see something flying towards your position from [dir_descriptor]!"),
-			SAYCODE_TYPE_VISIBLE,
-			SPAN_WARNING("You hear something flying towards your position from [dir_descriptor]!"),
-			SAYCODE_TYPE_AUDIBLE,
-		)
-	#warn sound, msg
+	if(shell.pre_impact_sound)
+		var/frequency = shell.pre_impact_sound_duration / duration
+		for(var/mob/victim as anything in send_to)
+			victim.show_message(
+				SPAN_BOLDWARNING("You see something flying towards your position from [dir_descriptor]!"),
+				SAYCODE_TYPE_VISIBLE,
+				SPAN_WARNING("You hear something flying towards your position from [dir_descriptor]!"),
+				SAYCODE_TYPE_AUDIBLE,
+			)
+			var/datum/map_level/their_level = SSmapping.ordered_levels[victim.z]
+			var/x_o = flight_x - (their_level.virtual_alignment_x + victim.x)
+			var/y_o = flight_y - (their_level.virtual_alignment_y + victim.y)
+			victim.playsound_local(
+				null,
+				shell.pre_impact_sound,
+				shell.pre_impact_volume,
+				FALSE,
+				frequency,
+				manual_x = x_o,
+				manual_y = y_o,
+			)
 
 /datum/mortar_flight/proc/impact()
 	var/turf/maybe_target_turf = get_target_turf()

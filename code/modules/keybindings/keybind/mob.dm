@@ -177,40 +177,55 @@
 	if(!I)
 		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
 		return FALSE
-	if(user.get_preference_toggle(/datum/game_preference_toggle/game/precise_dropping))
-		// they have ss14 dropping on
-		// WELCOME TO THE IF PYRAMID OF DOOM
-		// check if they're over a valid object
-		if(!(user.mouse_predicted_last_atom?.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD)) && \
-			(user.mouse_predicted_last_atom != I))
-			// attempt to resolve current mouse params
-			var/list/maybe_mouse_params
-			var/turf/maybe_last_turf
-			if((maybe_last_turf = get_turf(user.mouse_predicted_last_atom)) && \
-				(maybe_mouse_params = user.get_mouse_params()))
-				// we can attempt to resolve
-				// JUST DECODE IT FOR US WHEN, BYOND??????
-				var/list/decoded = splittext(maybe_mouse_params["screen-loc"], ",")
-				if(length(decoded) == 2)
-					var/list/dpx = splittext(decoded[1], ":")
-					var/list/dpy = splittext(decoded[2], ":")
-					var/rpx = text2num(dpx[2])
-					var/rpy = text2num(dpy[2])
-					// if it's 1 or WORLD_ICON_SIZE, shit gets wacky
-					// don't ask why, it just does and i don't know why
-					if(rpx == 1)
-						maybe_last_turf = get_step(maybe_last_turf, EAST)
-					else if(rpx == WORLD_ICON_SIZE)
-						maybe_last_turf = get_step(maybe_last_turf, WEST)
-					if(rpy == 1)
-						maybe_last_turf = get_step(maybe_last_turf, NORTH)
-					else if(rpy == WORLD_ICON_SIZE)
-						maybe_last_turf = get_step(maybe_last_turf, SOUTH)
-					var/px = rpx - (WORLD_ICON_SIZE * 0.5)
-					var/py = rpy - (WORLD_ICON_SIZE * 0.5)
-					M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
-					return TRUE
 	M.drop_item_to_ground(I)
+	return TRUE
+
+/datum/keybinding/mob/drop_item_precisely
+	hotkey_keys = list("CtrlQ")
+	name = "drop_item_precisely"
+	full_name = "Drop Item Precisely"
+	description = "No description provided."
+
+/datum/keybinding/mob/drop_item_precisely/down(client/user)
+	if(isrobot(user.mob)) //cyborgs can't drop items
+		return FALSE
+	var/mob/M = user.mob
+	var/obj/item/I = M.get_active_held_item()
+	if(!I)
+		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
+		return FALSE
+	// WELCOME TO THE IF PYRAMID OF DOOM
+	// check if they're over a valid object
+	if(!(user.mouse_predicted_last_atom?.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD)) && \
+		(user.mouse_predicted_last_atom != I))
+		// attempt to resolve current mouse params
+		var/list/maybe_mouse_params
+		var/turf/maybe_last_turf
+		if((maybe_last_turf = get_turf(user.mouse_predicted_last_atom)) && \
+			(maybe_mouse_params = user.get_mouse_params()))
+			// we can attempt to resolve
+			// JUST DECODE IT FOR US WHEN, BYOND??????
+			var/list/decoded = splittext(maybe_mouse_params["screen-loc"], ",")
+			if(length(decoded) == 2)
+				var/list/dpx = splittext(decoded[1], ":")
+				var/list/dpy = splittext(decoded[2], ":")
+				var/rpx = text2num(dpx[2])
+				var/rpy = text2num(dpy[2])
+				// if it's 1 or WORLD_ICON_SIZE, shit gets wacky
+				// don't ask why, it just does and i don't know why
+				if(rpx == 1)
+					maybe_last_turf = get_step(maybe_last_turf, EAST)
+				else if(rpx == WORLD_ICON_SIZE)
+					maybe_last_turf = get_step(maybe_last_turf, WEST)
+				if(rpy == 1)
+					maybe_last_turf = get_step(maybe_last_turf, NORTH)
+				else if(rpy == WORLD_ICON_SIZE)
+					maybe_last_turf = get_step(maybe_last_turf, SOUTH)
+				var/px = rpx - (WORLD_ICON_SIZE * 0.5)
+				var/py = rpy - (WORLD_ICON_SIZE * 0.5)
+				M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
+				return TRUE
+	to_chat(user, SPAN_WARNING("Your mouse isn't hovering in a place [I] can be dropped to!"))
 	return TRUE
 
 /datum/keybinding/mob/toggle_gun_mode

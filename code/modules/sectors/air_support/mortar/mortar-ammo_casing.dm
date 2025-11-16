@@ -21,8 +21,10 @@
 	/// * this will be modulated by impact distance
 	var/pre_impact_volume = 75
 	/// full volume range
+	//  TODO: impl
 	var/pre_impact_volume_inner_radius = 4
 	/// no volume range
+	//  TODO: impl
 	var/pre_impact_volume_outer_radius = 16
 	/// pre-impact sound duration
 	var/pre_impact_sound_duration = 4 SECONDS
@@ -72,10 +74,10 @@
 /**
  * play pre-impact sound
  */
-/obj/item/ammo_casing/mortar/proc/whzhzhhzhh(turf/epicenter, duration)
+/obj/item/ammo_casing/mortar/proc/whzhzhhzhh(turf/epicenter, duration = pre_impact_sound_duration)
 	if(!pre_impact_sound)
 		return
-	#warn impl
+	playsound(epicenter, pre_impact_sound, pre_impact_volume, FALSE, 4, frequency = pre_impact_sound_duration / duration)
 
 /**
  * * This should never delete self.
