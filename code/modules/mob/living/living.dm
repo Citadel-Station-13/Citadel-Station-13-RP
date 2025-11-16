@@ -1,3 +1,6 @@
+/mob/living
+	emote_class = EMOTE_CLASS_IS_BODY
+
 TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 /mob/living/Initialize(mapload)
 	. = ..()

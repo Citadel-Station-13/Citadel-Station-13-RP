@@ -12,7 +12,7 @@
 
 /// NAME: must be a string
 /// VALUE: the actual enum value, whatever it is
-#define BITFIELD_NEW(NAME, VALUE) #NAME = ##VALUE
+#define BITFIELD_NEW(NAME, VALUE) NAME = ##VALUE
 
 /**
  * * `ID` the same in `DECLARE_BITFIELD`
