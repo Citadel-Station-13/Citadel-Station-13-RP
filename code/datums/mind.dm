@@ -61,13 +61,15 @@
 	var/list/learned_recipes
 
 	// todo: id, not title
-	var/assigned_role
+	//var/assigned_role
 	// todo: id, not title; also unify /datum/prototype/role/(job | antagonist | ghostrole)?
 	var/special_role
 
-	var/role_alt_title
+	//var/role_alt_title
 
+	//!SSroles prep - These two should replace assigned_role and role_alt_title entirely. SSroles!//
 	var/datum/prototype/role/job/assigned_job
+	var/datum/prototype/struct/alt_title/assigned_alt_title
 
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()

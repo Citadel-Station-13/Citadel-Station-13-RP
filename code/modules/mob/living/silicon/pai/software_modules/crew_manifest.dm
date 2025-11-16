@@ -5,7 +5,7 @@
 	toggle = 0
 
 /datum/pai_software/crew_manifest/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-	data_core.get_manifest_list()
+	data_core.update_manifest_list()
 
 	var/data[0]
 	// This is dumb, but NanoUI breaks if it has no data to send

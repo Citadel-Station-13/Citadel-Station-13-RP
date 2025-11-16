@@ -39,6 +39,7 @@
 #define INIT_ORDER_INPUT           170
 #define INIT_ORDER_PREFERENCES     150
 #define INIT_ORDER_JOBS            125
+#define INIT_ORDER_MANIFEST        124 //! may need to be after SSjobs
 #define INIT_ORDER_ASSETS          100
 #define INIT_ORDER_INSTRUMENTS     50
 #define INIT_ORDER_AI_SCHEDULING   25
