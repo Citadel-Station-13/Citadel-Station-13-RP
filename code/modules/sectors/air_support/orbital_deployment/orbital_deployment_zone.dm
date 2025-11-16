@@ -10,7 +10,6 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 /datum/orbital_deployment_zone
 	/// unique ID, if any
 	var/id
-	#warn impl id
 
 	var/obj/orbital_deployment_marker/lower_left
 	var/obj/orbital_deployment_marker/lower_right

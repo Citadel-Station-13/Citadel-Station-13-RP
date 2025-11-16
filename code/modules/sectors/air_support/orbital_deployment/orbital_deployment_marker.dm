@@ -106,4 +106,11 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/orbital_deployment_marker/zone_tagger/LateInitialize()
-	#warn impl
+	for(var/datum/orbital_deployment_zone/zone as anything in GLOB.orbital_deployment_zones)
+		if(!zone.contains_turf(loc))
+			continue
+		if(zone.id)
+			stack_trace("[src] [COORD(loc)] tried to tag a zone that already has id '[zone.id]'")
+			break
+		zone.id = src.id
+		break

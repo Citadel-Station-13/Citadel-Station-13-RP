@@ -229,11 +229,48 @@
 		try_load_shell(shell, clickchain)
 		return . | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/machinery/mortar/basic/proc/try_load_shell(obj/item/ammo_casing/mortar/shell, datum/event_args/actor/actor, silent, instant)
-	#warn impl
+/obj/machinery/mortar/basic/proc/try_load_shell(obj/item/ammo_casing/mortar/shell, datum/event_args/actor/actor, instant, silent, suppressed)
+	if(!actor.performer.can_unequip(shell))
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("[shell] is stuck to your hand!"),
+				target = src,
+			)
+		return FALSE
+	if(!instant)
+		if(!suppressed)
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_CONSTRUCTION,
+				visible = SPAN_WARNING("[actor.performer] starts loading [shell] into [src]..."),
+				audible = SPAN_WARNING("You hear someone loading something..."),
+			)
+		if(!do_after(actor.performer, time_to_load, src))
+			return FALSE
+	if(!suppressed)
+		actor.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_CONSTRUCTION,
+			visible = SPAN_WARNING("[actor.performer] loads [shell] into [src]!"),
+			audible = SPAN_WARNING("You hear someone load something into a machine!"),
+		)
+	if(!actor.performer.transfer_item_to_loc(shell, src))
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("[shell] is stuck to your hand!"),
+				target = src,
+			)
+		return FALSE
+	on_shell_loaded(firing_shell)
+	return TRUE
 
 /obj/machinery/mortar/basic/proc/on_shell_loaded(obj/item/ammo_casing/mortar/shell)
+	if(firing_shell)
+		if(shell.loc == src)
+			shell.forceMove(drop_location())
+		return
 	playsound(src, load_sound, load_sound_volume, load_sound_vary, 2)
+	firing_shell = shell
 	addtimer(CALLBACK(src, PROC_REF(fire_loaded_shell)), time_to_fire)
 
 /obj/machinery/mortar/basic/proc/fire_loaded_shell()
@@ -306,6 +343,9 @@
 /obj/machinery/mortar/basic/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["adjustMax"] = adjust_offset_max
+	var/list/our_coords = SSmapping.get_virtual_coords_x_y(get_turf(src))
+	.["ourX"] = our_coords[1]
+	.["ourY"] = our_coords[2]
 
 /obj/machinery/mortar/basic/ui_data(mob/user, datum/tgui/ui)
 	. = ..()

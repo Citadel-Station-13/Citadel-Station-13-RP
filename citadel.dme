@@ -5254,6 +5254,7 @@
 #include "code\modules\sectors\air_support\orbital_deployment\orbital_deployment_controller.dm"
 #include "code\modules\sectors\air_support\orbital_deployment\orbital_deployment_marker.dm"
 #include "code\modules\sectors\air_support\orbital_deployment\orbital_deployment_superstructure.dm"
+#include "code\modules\sectors\air_support\orbital_deployment\orbital_deployment_transit.dm"
 #include "code\modules\sectors\air_support\orbital_deployment\orbital_deployment_translation.dm"
 #include "code\modules\sectors\air_support\orbital_deployment\orbital_deployment_zone.dm"
 #include "code\modules\security levels\keycard authentication.dm"

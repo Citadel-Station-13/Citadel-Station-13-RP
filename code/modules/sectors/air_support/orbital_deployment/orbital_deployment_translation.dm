@@ -9,35 +9,20 @@
 	var/turf/dest_lower_left
 	var/turf/dest_upper_right
 	var/list/atom/movable/falling_out_of_the_sky = list()
-	#warn hook these
 
-	var/c_impact_obj_dmg_base
-	var/c_impact_obj_dmg_sides
-	var/c_impact_obj_dmg_cnt
-	var/c_impact_mob_dmg_base
-	var/c_impact_mob_dmg_sides
-	var/c_impact_mob_dmg_cnt
-	var/c_impact_mob_dmg_sides_for_those_without_plot_armor
-	var/c_landing_obj_dmg_base
-	var/c_landing_obj_dmg_sides
-	var/c_landing_obj_dmg_cnt
-	var/c_landing_mob_dmg_base
-	var/c_landing_mob_dmg_sides
-	var/c_landing_mob_dmg_cnt
+	var/datum/orbital_deployment_transit/transit
 
-/datum/orbital_deployment_translation/New(datum/orbital_deployment_zone/zone)
-	src.c_impact_obj_dmg_base = zone.c_impact_obj_dmg_base
-	src.c_impact_obj_dmg_sides = zone.c_impact_obj_dmg_sides
-	src.c_impact_obj_dmg_cnt = zone.c_impact_obj_dmg_cnt
-	src.c_impact_mob_dmg_base = zone.c_impact_mob_dmg_base
-	src.c_impact_mob_dmg_sides = zone.c_impact_mob_dmg_sides
-	src.c_impact_mob_dmg_cnt = zone.c_impact_mob_dmg_cnt
-	src.c_landing_obj_dmg_base = zone.c_landing_obj_dmg_base
-	src.c_landing_obj_dmg_sides = zone.c_landing_obj_dmg_sides
-	src.c_landing_obj_dmg_cnt = zone.c_landing_obj_dmg_cnt
-	src.c_landing_mob_dmg_base = zone.c_landing_mob_dmg_base
-	src.c_landing_mob_dmg_sides = zone.c_landing_mob_dmg_sides
-	src.c_landing_mob_dmg_cnt = zone.c_landing_mob_dmg_cnt
+/datum/orbital_deployment_translation/New(datum/orbital_deployment_transit/from_transit)
+	transit = from_transit
+
+/datum/orbital_deployment_translation/Destroy()
+	transit = null
+	turf_overlap_coord_x = turf_overlap_coord_y = null
+	crush_and_obliterate = null
+	dest_lower_left = dest_upper_right = null
+	falling_out_of_the_sky = null
+	QDEL_LIST(falling_out_of_the_sky)
+	return ..()
 
 /datum/orbital_deployment_translation/proc/on_turf_overlap(turf/from_turf, turf/to_turf)
 	if(to_turf.density)
@@ -113,12 +98,12 @@
 	for(var/atom/movable/victim in crush_and_obliterate)
 		if(ismob(victim))
 			var/mob/living/living_victim = victim
-			var/dmg_sides = living_victim.mind?.ckey ? c_impact_mob_dmg_sides : c_impact_mob_dmg_sides_for_those_without_plot_armor
-			for(var/i in 1 to c_impact_mob_dmg_cnt)
+			var/dmg_sides = living_victim.mind?.ckey ? transit.c_impact_mob_dmg_sides : transit.c_impact_mob_dmg_sides_for_those_without_plot_armor
+			for(var/i in 1 to transit.c_impact_mob_dmg_cnt)
 				// TODO: it's probably faster to run damage instance all at once and apply it over 15 areas,
 				//       rather than treat it as 15 instances
 				living_victim.run_damage_instance(
-					c_impact_mob_dmg_base + rand(1, dmg_sides),
+					transit.c_impact_mob_dmg_base + rand(1, dmg_sides),
 					DAMAGE_TYPE_BRUTE,
 					5,
 					ARMOR_MELEE,
@@ -126,23 +111,27 @@
 					hit_zone = pick(global.all_body_zones),
 				)
 		else
-			for(var/i in 1 to c_impact_obj_dmg_cnt)
+			for(var/i in 1 to transit.c_impact_obj_dmg_cnt)
 				victim.run_damage_instance(
-					c_impact_obj_dmg_base + rand(1, c_impact_obj_dmg_sides),
+					transit.c_impact_obj_dmg_base + rand(1, transit.c_impact_obj_dmg_sides),
 					DAMAGE_TYPE_BRUTE,
 					6,
 					ARMOR_MELEE,
 				)
 		CHECK_TICK
 
+	// people who were stupid and didn't keep their hands and feet in the vehicle
+	for(var/atom/movable/victim as anything in falling_out_of_the_sky)
+	#warn deal with falling_out_of_the_sky
+
 	// surely you didn't ride an orbital drop.
 	// TODO: these should be `/atom/movable/proc/on_orbital_drop()`, this is shitcode
 	// TODO: when this is done make sure you can't escape it by exiting vehicle during
 	//       the CHECK_TICK
 	for(var/obj/O as anything in to_damage_objs)
-		for(var/i in 1 to c_landing_obj_dmg_cnt)
+		for(var/i in 1 to transit.c_landing_obj_dmg_cnt)
 			O.run_damage_instance(
-				c_landing_obj_dmg_base + rand(1, c_landing_obj_dmg_sides),
+				transit.c_landing_obj_dmg_base + rand(1, transit.c_landing_obj_dmg_sides),
 				DAMAGE_TYPE_BRUTE,
 				4,
 				ARMOR_BOMB,
@@ -151,10 +140,10 @@
 	for(var/mob/M as anything in to_damage_mobs)
 		if(isliving(M))
 			var/mob/living/L = M
-			for(var/i in 1 to c_landing)
+			for(var/i in 1 to transit.c_landing_mob_dmg_cnt)
 				// probably should've thought it through
 				L.run_damage_instance(
-					c_landing_mob_dmg_base + rand(1, c_landing_mob_dmg_sides),
+					transit.c_landing_mob_dmg_base + rand(1, transit.c_landing_mob_dmg_sides),
 					DAMAGE_TYPE_BRUTE,
 					5,
 					DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,

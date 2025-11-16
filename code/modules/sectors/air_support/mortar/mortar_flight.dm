@@ -56,7 +56,7 @@
 		var/their_z = their_mob.z
 		if(!their_z)
 			continue
-		var/datum/map/their_map = SSmapping.ordered_levels[their_z]?.map
+		var/datum/map/their_map = SSmapping.ordered_levels[their_z]?.parent_map
 		if(their_map != flight_map)
 			continue
 		var/list/their_coords = SSmapping.get_virtual_coords_x_y_z(their_mob)
