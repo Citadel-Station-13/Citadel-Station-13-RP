@@ -16548,7 +16548,9 @@
 /area/engineering/atmos)
 "oQf" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/bioscan_antenna/permanent,
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "endeavour_bioscanners"
+	},
 /turf/simulated/floor/plating,
 /area/station/engineering/substation/deck4aft/endeavour)
 "oQh" = (

@@ -32696,6 +32696,13 @@
 /obj/structure/symbol/es,
 /turf/simulated/floor/plating,
 /area/hallway/d2amidportmaint/endeavour)
+"xdv" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "endeavour_bioscanners"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/medical_science)
 "xdJ" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -45577,7 +45584,7 @@ tEh
 kUs
 xvN
 seE
-seE
+xdv
 qea
 bOb
 gmM

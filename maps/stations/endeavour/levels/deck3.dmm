@@ -13331,6 +13331,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/d3aftmaint/endeavour)
+"jLj" = (
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "endeavour_bioscanners"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/security)
 "jLq" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -44571,7 +44577,7 @@ eWG
 eWG
 vsu
 vsu
-gLw
+jLj
 gLw
 boj
 vqE
