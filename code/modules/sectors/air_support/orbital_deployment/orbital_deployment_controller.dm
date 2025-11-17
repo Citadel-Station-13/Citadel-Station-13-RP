@@ -12,22 +12,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 
 	//* Init *//
 	/// search radius for orbital deployment markers (zones)
-	///
-	/// * we throw an error if multiple are found
 	var/linkage_search_radius = 10
 	/// search direction; only cardinals
 	var/linkage_search_dirs = NORTH | SOUTH | EAST | WEST
 	// TODO: `linkage_set_id` overrides all of the above for advanced uses, see /zone_tagger
 
-	//* Config *//
-	/// minimum armed time before launch
-	var/conf_minimum_arming_time = 10 SECONDS
-	/// max overmap bounds dist we can launch at
-	var/conf_max_overmap_pixel_dist = WORLD_ICON_SIZE * 3
-
 	//* Linkage *//
 	/// Our linked zone
 	var/datum/orbital_deployment_zone/linked_zone
+
+	//* UI *//
+	var/ui_last_signal_refresh
 
 /obj/machinery/orbital_deployment_controller/Initialize(mapload)
 	..()
@@ -38,6 +33,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	return ..()
 
 /obj/machinery/orbital_deployment_controller/LateInitialize()
+	#warn find zone
+
+/obj/machinery/orbital_deployment_controller/proc/find_zone()
 
 /obj/machinery/orbital_deployment_controller/proc/link_zone(datum/orbital_deployment_zone/zone)
 	if(linked_zone)
@@ -57,25 +55,21 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	update_static_data()
 	return TRUE
 
-#warn impl
-
 /obj/machinery/orbital_deployment_controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "machines/OrbitalDeploymentController.tsx")
 		ui.open()
 
-/obj/machinery/orbital_deployment_controller/ui_data(mob/user, datum/tgui/ui)
-	. = ..()
-
 /obj/machinery/orbital_deployment_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["zone"] = linked_zone ? list(
-		"armed" = linked_zone.armed,
-		"armedTime" = linked_zone.armed_time,
+		"arming" = linked_zone.arming,
+		"armingLast" = linked_zone.arming_last_toggle,
 	) : null
-	.["cMinArmingTime"] = conf_minimum_arming_time
-	.["cMaxOvermapsDist"] = OVERMAP_PIXEL_TO_DIST(conf_max_overmap_pixel_dist)
+	.["armingTime"] = linked_zone.arming_time
+	.["armingCooldown"] = linked_zone.arming_cooldown
+	.["maxOvermapPixelDist"] = OVERMAP_PIXEL_TO_DIST(conf_max_overmap_pixel_dist)
 	. += ui_signal_data()
 
 /obj/machinery/orbital_deployment_controller/proc/ui_signal_data()
@@ -86,7 +80,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	var/list/assembled_flares = list()
 
 	if(our_overmap_entity)
-		var/list/obj/overmap/entity/overmap_query_results = SSovermaps.entity_pixel_dist_query(our_overmap_entity, conf_max_overmap_pixel_dist)
+		var/list/obj/overmap/entity/overmap_query_results = SSovermaps.entity_pixel_dist_query(our_overmap_entity, linked_zone.max_overmap_pixel_dist)
 		for(var/obj/overmap/entity/entity_in_range as anything in overmap_query_results)
 			if(!isturf(entity_in_range.loc))
 				// if they're nested, skip; they're docked.
@@ -118,20 +112,48 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	.["lasers"] = assembled_lasers
 	.["flares"] = assembled_flares
 
-/obj/machinery/orbital_deployment_controller/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/orbital_deployment_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	switch(action)
 		if("refreshSignals")
-			#warn throttle
+			if(!linked_zone)
+				return TRUE
+			if(world.time < ui_last_signal_refresh + 5 SECONDS)
+				return TRUE
+			ui_last_signal_refresh = world.time
 			push_ui_data(data = ui_signal_data())
 			return TRUE
 		if("arm")
-			#warn impl
+			if(!linked_zone)
+				return TRUE
+			if(linked_zone.arming_cooldown > world.time - linked_zone.arming_last_toggle)
+				return TRUE
+			linked_zone.arm()
+			log_orbital_deployment(actor, "armed zone with controller at [COORD(src)]")
+			actor.visible_feedback(
+				target = src,
+				visible = SPAN_WARNING("[actor.performer] presses a button on [src]. Mechanical sounds permeate the air as hydraulics come to life."),
+				audible = SPAN_WARNING("You hear the mechanical sounds of hydraulics coming to life."),
+			)
+			return TRUE
 		if("disarm")
-			#warn impl
+			if(!linked_zone)
+				return TRUE
+			if(linked_zone.arming_cooldown > world.time - linked_zone.arming_last_toggle)
+				return TRUE
+			linked_zone.disarm()
+			actor.visible_feedback(
+				target = src,
+				visible = SPAN_WARNING("[actor.performer] presses a button on [src]. Nearby machinery slows to a stop as the system is disarmed."),
+				audible = SPAN_WARNING("You hear heavy hydraulics slow to a stop."),
+			)
+			log_orbital_deployment(actor, "armed zone with controller at [COORD(src)]")
+			return TRUE
 		if("launch")
+			if(!linked_zone)
+				return TRUE
 			var/atom/movable/target_ref
 			if(params["targetType"] == "laser")
 				var/atom/movable/laser_designator_target/dangerously_unchecked_target = locate(params["targetRef"])

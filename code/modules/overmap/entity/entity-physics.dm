@@ -86,6 +86,42 @@
 
 	update_icon() // legacy
 
+/obj/overmap/entity/proc/copy_physics_pos(obj/overmap/entity/other)
+	if(loc != other.loc)
+		forceMove(other.loc)
+	step_x = other.step_x
+	step_y = other.step_y
+	pos_x = other.pos_x
+	pos_y = other.pos_y
+
+/obj/overmap/entity/proc/copy_physics_vel(obj/overmap/entity/other)
+	vel_x = other.vel_x
+	vel_y = other.vel_y
+
+	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
+		activate_physics()
+	else
+		deactivate_physics()
+
+	update_icon() // legacy
+
+/obj/overmap/entity/proc/copy_physics_pos_vel(obj/overmap/entity/other)
+	if(loc != other.loc)
+		forceMove(other.loc)
+	step_x = other.step_x
+	step_y = other.step_y
+	pos_x = other.pos_x
+	pos_y = other.pos_y
+	vel_x = other.vel_x
+	vel_y = other.vel_y
+
+	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
+		activate_physics()
+	else
+		deactivate_physics()
+
+	update_icon() // legacy
+
 /obj/overmap/entity/proc/update_velocity_ticking()
 	var/should_be_moving = is_moving()
 	if(is_moving && !should_be_moving)

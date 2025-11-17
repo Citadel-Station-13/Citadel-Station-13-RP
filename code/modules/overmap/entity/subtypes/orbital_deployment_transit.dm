@@ -9,10 +9,15 @@
 	desc = "A base someone launched at a planet. Is this safe?"
 	#warn sprite
 
-	var/datum/orbital_deployment_translation/translation
+	var/datum/orbital_deployment_zone/zone
+	var/datum/orbital_deployment_transit/transit
 
-/obj/overmap/entity/orbital_deployment_transit/Initialize(mapload, datum/orbital_deployment_zone/zone, datum/orbital_deployment_translation/translation)
-	#warn impl
+/obj/overmap/entity/orbital_deployment_transit/Initialize(mapload, datum/orbital_deployment_zone/zone, datum/orbital_deployment_transit/transit)
+	src.zone = zone
+	src.transit = transit
+	if(istype(loc, /obj/overmap/entity))
+		copy_physics_pos_vel(loc)
+	return ..()
 
 /**
  * we don't actually need to hit target to land as of right now
@@ -23,6 +28,6 @@
 	addtimer(src, CALLBACK(PROC_REF(land)), predicted_time)
 
 /obj/overmap/entity/orbital_deployment_transit/proc/land()
-	translation.land()
+	transit.land()
 
 #warn impl

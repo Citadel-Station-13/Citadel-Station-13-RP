@@ -6,3 +6,6 @@
 
 /proc/log_mortar_shell(datum/event_args/actor/actor, what, list/log_list)
 	log_game("MORTAR: [actor ? actor.actor_log_string() : "--userless--"] - [what] on [json_encode(log_list)]")
+
+/proc/log_orbital_deployment(datum/event_args/actor/actor, what)
+	log_game("ORBITAL-DEPLOYMENT: [actor ? actor.actor_log_string() : "--userless--"] - [what]")

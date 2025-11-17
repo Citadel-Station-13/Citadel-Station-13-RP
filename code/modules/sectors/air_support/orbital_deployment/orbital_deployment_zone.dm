@@ -19,10 +19,17 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	/// linked consoles
 	var/list/obj/machinery/orbital_deployment_controller/controllers
 
-	/// are we armed?
-	var/armed = FALSE
+	/// are we arming or armed?
+	var/arming = FALSE
 	/// when were we armed?
-	var/armed_time
+	/// * also set when disarmed
+	var/arming_last_toggle
+	var/arming_cooldown = 3 SECONDS
+	/// arming requirement
+	var/arming_time = 10 SECONDS
+
+	/// max overmap bounds dist we can launch at
+	var/max_overmap_pixel_dist = WORLD_ICON_SIZE * 3
 
 	var/c_impact_obj_dmg_base = 150
 	var/c_impact_obj_dmg_sides = 150
@@ -72,6 +79,8 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 		marker.zone_built = TRUE
 		marker.zone = src
 
+	construct_initial()
+
 /datum/orbital_deployment_zone/Destroy()
 	for(var/obj/machinery/orbital_deployment_controller/controller in controllers)
 		controller.unlink_zone()
@@ -93,6 +102,9 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 
 	construct_zone()
 
+/**
+ * Construct or rebuild zone. Should be called after zone is yeeted.
+ */
 /datum/orbital_deployment_zone/proc/construct_zone()
 	if(lower_left.z != upper_right.z)
 		CRASH("LL/UR not on same z?")
@@ -113,18 +125,32 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 
 	#warn impl
 
-/**
- * Clears out whatever of the zone is still left.
- */
-/datum/orbital_deployment_zone/proc/cleanup_zone()
-	#warn impl
+/datum/orbital_deployment_zone/proc/arm()
+	if(arming)
+		return
+	arming = TRUE
+	arming_last_toggle = world.time
+
+/datum/orbital_deployment_zone/proc/disarm()
+	if(!arming)
+		return
+	arming = FALSE
+	arming_last_toggle = world.time
+
+#warn impl
+
+/datum/orbital_deployment_zone/proc/is_armed()
+	return arming && ((arming_last_toggle + arming_time) <= world.time)
+
+/datum/orbital_deployment_zone/proc/time_to_armed()
+	return max(0, world.time - (arming_last_toggle + arming_time))
 
 /datum/orbital_deployment_zone/proc/get_overmap_entity() as /obj/overmap/entity
 	return SSovermaps.get_enclosing_overmap_entity(lower_left)
 
-/datum/orbital_deployment_zone/proc/launch(turf/target_center, dir, dangerously_unsafe_ignore_checks) as /obj/overmap/entity/orbital_deployment_transit
+/datum/orbital_deployment_zone/proc/launch(turf/target_center, dir_from_north, dangerously_unsafe_ignore_checks) as /obj/overmap/entity/orbital_deployment_transit
 	if(!dangerously_unsafe_ignore_checks)
-		if(!check_zone(target_center, dir))
+		if(!check_zone(target_center, dir_from_north))
 			return null
 	var/obj/overmap/entity/our_entity = get_overmap_entity()
 	if(!our_entity)
@@ -132,9 +158,9 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	var/obj/overmap/entity/their_entity = SSovermaps.get_enclosing_overmap_entity(target_center)
 	if(!their_entity)
 		return null
-	var/datum/orbital_deployment_translation/translation = new(src)
-	#warn pack zone into translation
-	var/obj/overmap/entity/orbital_deployment_transit/transit_entity = new(our_entity, src, translation)
+	var/datum/orbital_deployment_transit/transit = new(src)
+	transit.allocate_and_package(locate(lower_left.x + 1, lower_left.y + 1, lower_left.z), locate(upper_right.x - 1, upper_right.y - 1, upper_right.z))
+	var/obj/overmap/entity/orbital_deployment_transit/transit_entity = new(our_entity, src, transit)
 	transit_entity.launch(their_entity)
 	return transit_entity
 
@@ -143,62 +169,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
  * * keep in mind this returns TRUE if it's physically possible to translate, even if the player shouldn't be allowed to.
  * @return TRUE if it's safe to translate, codewise, FALSE otherwise
  */
-/datum/orbital_deployment_zone/proc/check_zone(turf/target_center, dir, list/warnings_out, list/errors_out)
-
-/**
- * @return true / false
- */
-/datum/orbital_deployment_zone/proc/yeet_zone(turf/target_center, rotation_degrees)
-
-	var/wanted_dir = math__angle_to_dir_exact_or_throw(rotation_degrees)
-
-	var/list/measured = measure_current_dimensions()
-	var/width = measured[1]
-	var/height = measured[2]
-
-	if(target_lower_left.x < 1)
-
-	#warn impl
-	calculate_entity_motion_with_respect_to_moving_point()
-	var/list/destination_turfs = SSgrids.get_ordered_turfs(
-		target_lower_left.x,
-		target_lower_left.x + width - 1,
-		target_lower_left.y,
-		target_lower_left.y + height - 1,
-		target_lower_left.z,
-	)
-
-	var/list/out_motion_flags = list()
-	var/list/out_moved_atoms = list()
-
-	var/datum/orbital_deployment_translation/translation = new
-
-	var/datum/bound_proc/turf_overlap_handler = BOUND_PROC(translation, TYPE_PROC_REF(/datum/orbital_deployment_translation, on_turf_overlap))
-	var/datum/bound_proc/movable_overlap_handler = BOUND_PROC(translation, TYPE_PROC_REF(/datum/orbital_deployment_translation, on_movable_overlap))
-
-	SSgrids.translate(
-		from_turfs,
-		to_turfs,
-		NORTH,
-		wanted_dir,
-		GRID_MOVE_AREA | GRID_MOVE_MOVABLES | GRID_MOVE_TURF,
-		null,
-		base_area,
-		out_motion_flags,
-		out_moved_atoms,
-		turf_overlap_handler,
-		movable_overlap_handler,
-	)
-
-	translation.run_aftereffects(current_area)
-
-	cleanup_zone()
-	construct_zone()
-
-/**
- * @return width, height
- */
-/datum/orbital_deployment_zone/proc/measure_current_dimensions()
+/datum/orbital_deployment_zone/proc/check_zone(turf/target_center, dir_from_north, list/warnings_out, list/errors_out)
 	#warn impl
 
 /datum/orbital_deployment_zone/proc/get_frame_width()

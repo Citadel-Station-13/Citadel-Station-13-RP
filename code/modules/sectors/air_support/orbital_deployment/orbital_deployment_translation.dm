@@ -122,7 +122,15 @@
 
 	// people who were stupid and didn't keep their hands and feet in the vehicle
 	for(var/atom/movable/victim as anything in falling_out_of_the_sky)
-	#warn deal with falling_out_of_the_sky
+		var/turf/drop_at = get_random_outside_turf(7)
+		victim.forceMove(drop_at)
+		// fuck you take double damage
+		if(ismob(victim))
+			to_damage_mobs += victim
+			to_damage_mobs += victim
+		else if(isobj(victim))
+			to_damage_objs += victim
+			to_damage_objs += victim
 
 	// surely you didn't ride an orbital drop.
 	// TODO: these should be `/atom/movable/proc/on_orbital_drop()`, this is shitcode

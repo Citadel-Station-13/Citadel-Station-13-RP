@@ -93,7 +93,9 @@
 	d1 = SOUTH
 	d2 = EAST
 
-// TODO: set an ID
+/**
+ * - ID-tags a zone.
+ */
 /obj/orbital_deployment_marker/zone_tagger
 	name = "orbital deployment zone tagger"
 	icon_state = "zone_tagger"
