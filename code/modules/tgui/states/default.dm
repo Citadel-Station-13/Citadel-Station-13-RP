@@ -45,8 +45,8 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 	// Make sure it's in the same map
 	var/turf/src_turf = get_turf(src_object)
 	var/turf/our_turf = get_turf(src)
-	var/datum/map_level/src_level = src_turf && SSmapping.ordered_levels[src_turf]
-	var/datum/map_level/our_level = our_turf && SSmapping.ordered_levels[our_turf]
+	var/datum/map_level/src_level = src_turf && SSmapping.ordered_levels[src_turf.z]
+	var/datum/map_level/our_level = our_turf && SSmapping.ordered_levels[our_turf.z]
 	if(!src_level || (src_level.parent_map != our_level.parent_map))
 		return FALSE
 
