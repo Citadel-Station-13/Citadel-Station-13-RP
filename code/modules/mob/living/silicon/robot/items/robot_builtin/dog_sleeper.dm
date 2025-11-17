@@ -606,14 +606,14 @@
 								var/obj/item/stack/stack = T
 								total_material *= stack.get_amount()
 							if(material == MAT_STEEL)
-								item_mount?.push_material(/datum/prototype/material/steel::id, total_material)
+								item_mount?.material_give_amount(src, null, /datum/prototype/material/steel::id, total_material)
 							if(material == "glass")
-								item_mount?.push_material(/datum/prototype/material/glass::id, total_material)
+								item_mount?.material_give_amount(src, null, /datum/prototype/material/glass::id, total_material)
 							if(decompiler)
 								if(material == "plastic")
-									item_mount?.push_material(/datum/prototype/material/plastic::id, total_material)
+									item_mount?.material_give_amount(src, null, /datum/prototype/material/plastic::id, total_material)
 								if(material == "wood")
-									item_mount?.push_material(/datum/prototype/material/wood_plank::id, total_material)
+									item_mount?.material_give_amount(src, null, /datum/prototype/material/wood_plank::id, total_material)
 					else
 						drain(-50 * digested)
 			else if(istype(target,/obj/effect/decal/remains))

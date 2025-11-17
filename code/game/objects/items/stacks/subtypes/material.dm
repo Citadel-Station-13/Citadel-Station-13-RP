@@ -138,25 +138,25 @@
 //* Stack Providers *//
 
 /obj/item/stack/material/get_provider_name()
-	return item_mount.stack_provider.get_material_provider_name(material.id)
+	return item_mount.material_get_provider_name(material.id)
 
 /obj/item/stack/material/check_provider_remaining()
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
 	if(legacy_remap)
 		. = INFINITY
 		for(var/mat_id in legacy_remap)
-			. = min(., item_mount.stack_provider.get_material(mat_id) / legacy_remap[mat_id])
+			. = min(., (item_mount.material_get_amount(mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_provider.get_material(material.id)
+		. = item_mount.material_get_amount(material.id) / SHEET_MATERIAL_AMOUNT
 
 /obj/item/stack/material/check_provider_capacity()
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
 	if(legacy_remap)
 		. = INFINITY
 		for(var/mat_id in legacy_remap)
-			. = min(., item_mount.stack_provider.get_material_capacity(mat_id) / legacy_remap[mat_id])
+			. = min(., (item_mount.material_get_capacity(mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_provider.get_material_capacity(material.id)
+		. = item_mount.material_get_capacity(material.id) / SHEET_MATERIAL_AMOUNT
 
 /obj/item/stack/material/push_to_provider(amount, force)
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
@@ -169,9 +169,9 @@
 			amount = min(amount, has_remaining_capacity)
 		. = amount
 		for(var/mat_id in legacy_remap)
-			item_mount.stack_provider.give_material(mat_id, amount * legacy_remap[mat_id])
+			item_mount.material_give_amount(mat_id, amount * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_provider.give_material(material.id, amount, force)
+		. = item_mount.material_give_amount(material.id, amount * SHEET_MATERIAL_AMOUNT, force)
 
 /obj/item/stack/material/pull_from_provider(amount)
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
@@ -179,9 +179,9 @@
 		// we have to be atomic, so do an expensive check first
 		var/has_remaining = check_provider_remaining()
 		for(var/mat_id in legacy_remap)
-			item_mount.stack_provider.use_material(mat_id, has_remaining * legacy_remap[mat_id])
+			item_mount.material_use_amount(mat_id, has_remaining * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_provider.use_material(material.id, amount)
+		. = item_mount.material_use_amount(material.id, amount * SHEET_MATERIAL_AMOUNT)
 
 
 // todo: we need a better way of doing this, holy shit

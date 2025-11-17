@@ -172,6 +172,63 @@
  */
 /datum/item_mount/proc/gas_erase_volume(obj/item/item, key, liters)
 
+//* Materials *//
+
+/**
+ * * Material is any resolvable material, so ID, path, or instance.
+ * Get the name of the provider.
+ */
+/datum/stack_provider/proc/material_get_provider_name(obj/item/item, key, datum/prototype/material/material)
+	return "stack storage"
+
+/**
+ * * Material is any resolvable material, so ID, path, or instance.
+ * * Amount is in cm3
+ * @return amount remaining
+ */
+/datum/stack_provider/proc/material_get_amount(obj/item/item, key, datum/prototype/material/material)
+	return 0
+
+/**
+ * * Material is any resolvable material, so ID, path, or instance.
+ * * Amount is in cm3
+ * @return TRUE / FALSE.
+ */
+/datum/stack_provider/proc/material_has_amount(obj/item/item, key, datum/prototype/material/material, amount)
+	return FALSE
+
+/**
+ * * Material is any resolvable material, so ID, path, or instance.
+ * * Amount is in cm3.
+ * @return amount used.
+ */
+/datum/stack_provider/proc/material_use_amount(obj/item/item, key, datum/prototype/material/material, amount)
+	return 0
+
+/**
+ * * Material is any resolvable material, so ID, path, or instance.
+ * * Amount is in cm3.
+ * @return amount used.
+ */
+/datum/stack_provider/proc/material_use_checked_amount(obj/item/item, key, datum/prototype/material/material, amount)
+	return has_material(item, key, material, amount) ? use_material(item, key, material, amount) : 0
+
+/**
+ * * Material is any resolvable material, so ID, path, or instance.
+ * * Amount is in cm3.
+ * @return amount given.
+ */
+/datum/stack_provider/proc/material_give_amount(obj/item/item, key, datum/prototype/material/material, amount, force)
+	return 0
+
+/**
+ * * Material is any resolvable material, so ID, path, or instance.
+ * * Amount is in cm3.
+ * @return max amount.
+ */
+/datum/stack_provider/proc/material_get_capacity(obj/item/item, key, datum/prototype/material/material)
+	return 0
+
 //* Power *//
 
 /**
@@ -195,3 +252,61 @@
 	if(!lazy_power_check(joules + minimum_reserve))
 		return 0
 	return lazy_power_use(joules, minimum_reserve)
+
+//* Stacks *//
+
+/**
+ * Get the name of the provider.
+ */
+/datum/stack_provider/proc/stack_get_provider_name(obj/item/item, key, path)
+	return "stack storage"
+
+/**
+ * Material stacks are invalid here.
+ *
+ * * Amount is in stack amount.
+ *
+ * @return amount used.
+ */
+/datum/stack_provider/proc/stack_use_checked_amount(obj/item/item, key, path, amount)
+	return stack_has_amount(item, key, path, amount) ? stack_use_amount(item, key, path, amount) : 0
+
+/**
+ * Material stacks are invalid here.
+ * * Amount is in stack amount.
+ * @return amount given.
+ */
+/datum/stack_provider/proc/stack_give_amount(obj/item/item, key, path, amount, force)
+	return 0
+
+/**
+ * Material stacks are invalid here.
+ * @return max amount.
+ */
+/datum/stack_provider/proc/stack_get_capacity(obj/item/item, key, path)
+	return 0
+
+/**
+ * Material stacks are invalid here.
+ * * Amount is in stack amount.
+ * @return amount remaining.
+ */
+/datum/item_mount/proc/stack_get_amount(obj/item/item, key, path)
+	return 0
+
+/**
+ * Material stacks are invalid here.
+ * * Amount is in stack amount.
+ * @return TRUE / FALSE.
+ */
+/datum/item_mount/proc/stack_has_amount(obj/item/item, key, path, amount)
+	return FALSE
+
+/**
+ * Material stacks are invalid here.
+ * * Amount is in stack amount.
+ * @return amount used.
+ */
+/datum/item_mount/proc/stack_use_amount(obj/item/item, key, path, amount)
+	return 0
+

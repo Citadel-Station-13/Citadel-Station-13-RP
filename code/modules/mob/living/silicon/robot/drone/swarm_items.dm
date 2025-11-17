@@ -27,8 +27,8 @@
 			new/obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 			qdel(M)
 
-			item_mount?.push_material(/datum/prototype/material/wood_plank, 2000)
-			item_mount?.push_material(/datum/prototype/material/plastic, 2000)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/wood_plank, 2000)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/plastic, 2000)
 			return
 
 		else if(istype(M,/mob/living/silicon/robot/drone) && !M.client)
@@ -50,10 +50,10 @@
 			qdel(M)
 			new/obj/effect/debris/cleanable/blood/oil(get_turf(src))
 
-			item_mount?.push_material(/datum/prototype/material/steel::id, 15000)
-			item_mount?.push_material(/datum/prototype/material/glass::id, 15000)
-			item_mount?.push_material(/datum/prototype/material/wood_plank::id, 2000)
-			item_mount?.push_material(/datum/prototype/material/plastic::id, 1000)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/steel::id, 15000)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/glass::id, 15000)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/wood_plank::id, 2000)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/plastic::id, 1000)
 			return
 		else
 			continue
@@ -61,23 +61,23 @@
 	for(var/obj/W in T)
 		//Different classes of items give different commodities.
 		if(istype(W,/obj/structure/girder))
-			item_mount?.push_material(/datum/prototype/material/steel::id, 500)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/steel::id, 500)
 		else if(istype(W,/obj/machinery/power/emitter))
-			item_mount?.push_material(/datum/prototype/material/steel::id, 3000)
-			item_mount?.push_material(/datum/prototype/material/plastic::id, 1000)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/steel::id, 3000)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/plastic::id, 1000)
 		else if(istype(W,/obj/machinery/space_heater))
-			item_mount?.push_material(/datum/prototype/material/steel::id, 1500)
-			item_mount?.push_material(/datum/prototype/material/plastic::id, 750)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/steel::id, 1500)
+			item_mount?.material_give_amount(src, null, /datum/prototype/material/plastic::id, 750)
 		else if(istype(W,/obj/structure/closet))
 			var/obj/structure/closet/C = W
 			if(!C.opened)
 				continue
 			if(istype(W,/obj/structure/closet/coffin))
-				item_mount?.push_material(/datum/prototype/material/wood_plank::id, 1000)
+				item_mount?.material_give_amount(src, null, /datum/prototype/material/wood_plank::id, 1000)
 			else if(istype(W,/obj/structure/closet/crate/plastic))
-				item_mount?.push_material(/datum/prototype/material/plastic::id, 1000)
+				item_mount?.material_give_amount(src, null, /datum/prototype/material/plastic::id, 1000)
 			else
-				item_mount?.push_material(/datum/prototype/material/steel::id, 1000)
+				item_mount?.material_give_amount(src, null, /datum/prototype/material/steel::id, 1000)
 		else
 			continue
 
