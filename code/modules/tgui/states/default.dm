@@ -47,7 +47,7 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 	var/turf/our_turf = get_turf(src)
 	var/datum/map_level/src_level = src_turf && SSmapping.ordered_levels[src_turf]
 	var/datum/map_level/our_level = our_turf && SSmapping.ordered_levels[our_turf]
-	if(!src_level || (src_level .parent_map!= our_level.parent_map))
+	if(!src_level || (src_level.parent_map != our_level.parent_map))
 		return FALSE
 
 	// If an object is in view then we can interact with it
