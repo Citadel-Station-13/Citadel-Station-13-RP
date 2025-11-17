@@ -16,8 +16,6 @@
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
 	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
-	#warn item mount support! either that or /mounted subtype with said support for cybogs
-
 	var/spray_particles = 3
 	var/spray_amount = 10	//units of liquid per particle
 	var/max_water = 300
@@ -48,7 +46,7 @@
  */
 /obj/item/extinguisher/proc/available_spray_volume()
 	if(item_mount)
-		return item_mount.get_extinguisher_spray_volume(src)
+		return item_mount.extinguisher_get_volume(src)
 	if(reagents)
 		return reagents.total_volume
 	return 0
@@ -58,7 +56,7 @@
  */
 /obj/item/extinguisher/proc/pull_spray_volume(datum/reagent_holder/target, amount)
 	if(item_mount)
-		return item_mount.pull_extinguisher_spray_volume(src, amount, target)
+		return item_mount.extinguisher_pull_volume(src, null, amount, target)
 	if(reagents)
 		return reagents.transfer_to_holder(target, null, amount)
 	return 0

@@ -1,95 +1,3 @@
-//* Reagents *//
-
-/**
- * Gets if an item mount has a reagent, and if it does, its amount.
- *
- * * Semantically, null means 'we can't store this'.
- *
- * @params
- * * id - reagent id
- *
- * @return amount the item mount has, null if it doesn't have it
- */
-/datum/item_mount/proc/get_reagent(id)
-	return null
-
-/**
- * checks if the item mount has a given amount of a reagent
- *
- * @params
- * * id - reagent id
- * * amount - volume required
- *
- * @return amount the item mount has
- */
-/datum/item_mount/proc/has_reagent(id, amount)
-	. = get_reagent(id) || 0
-	if(. < amount)
-		return 0
-
-/**
- * todo: how to handle data pull?
- *
- * @params
- * * id - reagent id
- * * amount - volume
- *
- * @return amount the item mount could give
- */
-/datum/item_mount/proc/pull_reagent(id, amount)
-	return 0
-
-/**
- * todo: how to handle data pull?
- *
- * @params
- * * id - reagent id
- * * amount - volume
- *
- * @return amount the item mount could give
- */
-/datum/item_mount/proc/pull_checked_reagent(id, amount)
-	return has_reagent(id, amount) ? pull_reagent(id, amount) : 0
-
-/**
- * @params
- * * id - reagent id
- * * amount - volume
- * * force - allow overfill
- *
- * @return amount the item mount could accept
- */
-/datum/item_mount/proc/push_reagent(id, amount, force)
-	return 0
-
-//* Misc *//
-
-/**
- * Extinguisher get volume remaining
- *
- * @return volume remaining
- */
-/datum/item_mount/proc/get_extinguisher_spray_volume(obj/item/extinguisher/extinguisher)
-	return 0
-
-/**
- * Extinguisher has volume remaining
- *
- * @return TRUE / FALSE on if there's that much left
- */
-/datum/item_mount/proc/has_extinguisher_spray_volume(obj/item/extinguisher/extinguisher, requested)
-	return get_extinguisher_spray_volume(extinguisher) >= requested
-
-/**
- * Extinguisher pull volume into target reagents
- *
- * @return volume pulled
- */
-/datum/item_mount/proc/pull_extinguisher_spray_volume(obj/item/extinguisher/extinguisher, requested, datum/reagent_holder/target_reagent_holder)
-	return 0
-
-#warn above
-
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
@@ -113,7 +21,7 @@
 	/// * Material usage should be routed here; in the future, we may implement defaulted
 	///   stack / material usage procs on `/datum/item_mount`, by pushing `stack_provider`
 	///   down to this level if necessary.
-	var/datum/stack_provider/stack_provider
+	var/datum/item_mount/stack_provider
 
 /datum/item_mount/Destroy()
 	for(var/obj/item/mounted as anything in mounted_items)
@@ -178,7 +86,7 @@
  * * Material is any resolvable material, so ID, path, or instance.
  * Get the name of the provider.
  */
-/datum/stack_provider/proc/material_get_provider_name(obj/item/item, key, datum/prototype/material/material)
+/datum/item_mount/proc/material_get_provider_name(obj/item/item, key, datum/prototype/material/material)
 	return "stack storage"
 
 /**
@@ -186,7 +94,7 @@
  * * Amount is in cm3
  * @return amount remaining
  */
-/datum/stack_provider/proc/material_get_amount(obj/item/item, key, datum/prototype/material/material)
+/datum/item_mount/proc/material_get_amount(obj/item/item, key, datum/prototype/material/material)
 	return 0
 
 /**
@@ -194,7 +102,7 @@
  * * Amount is in cm3
  * @return TRUE / FALSE.
  */
-/datum/stack_provider/proc/material_has_amount(obj/item/item, key, datum/prototype/material/material, amount)
+/datum/item_mount/proc/material_has_amount(obj/item/item, key, datum/prototype/material/material, amount)
 	return FALSE
 
 /**
@@ -202,7 +110,7 @@
  * * Amount is in cm3.
  * @return amount used.
  */
-/datum/stack_provider/proc/material_use_amount(obj/item/item, key, datum/prototype/material/material, amount)
+/datum/item_mount/proc/material_use_amount(obj/item/item, key, datum/prototype/material/material, amount)
 	return 0
 
 /**
@@ -210,7 +118,7 @@
  * * Amount is in cm3.
  * @return amount used.
  */
-/datum/stack_provider/proc/material_use_checked_amount(obj/item/item, key, datum/prototype/material/material, amount)
+/datum/item_mount/proc/material_use_checked_amount(obj/item/item, key, datum/prototype/material/material, amount)
 	return has_material(item, key, material, amount) ? use_material(item, key, material, amount) : 0
 
 /**
@@ -218,7 +126,7 @@
  * * Amount is in cm3.
  * @return amount given.
  */
-/datum/stack_provider/proc/material_give_amount(obj/item/item, key, datum/prototype/material/material, amount, force)
+/datum/item_mount/proc/material_give_amount(obj/item/item, key, datum/prototype/material/material, amount, force)
 	return 0
 
 /**
@@ -226,7 +134,7 @@
  * * Amount is in cm3.
  * @return max amount.
  */
-/datum/stack_provider/proc/material_get_capacity(obj/item/item, key, datum/prototype/material/material)
+/datum/item_mount/proc/material_get_capacity(obj/item/item, key, datum/prototype/material/material)
 	return 0
 
 //* Power *//
@@ -253,12 +161,54 @@
 		return 0
 	return lazy_power_use(joules, minimum_reserve)
 
+//* Reagents - Direct *//
+
+// TODO: notice how 'erase' and 'spawn' exists, but not 'push', and 'pull'?
+//       this is because reagents have data; they are not just described by the ID alone.
+//       thus an optimized uniform API for push/pull doesn't actually necessarily make sense,
+//       and as such implementation of such is left for when we need it (ergo mechs / rigsuits reagent routing).
+
+/**
+ * Gets if an item mount has a reagent, and if it does, its amount.
+ * * Semantically, null means 'we can't store this'.
+ * @return amount the item mount has, null if it doesn't have it
+ */
+/datum/item_mount/proc/reagent_get_amount(obj/item/item, key, id)
+	return null
+
+/**
+ * Checks if the item mount has a given amount of a reagent
+ * @return amount the item mount has
+ */
+/datum/item_mount/proc/reagent_has_amount(obj/item/item, key, id, amount)
+	. = get_reagent(id) || 0
+	if(. < amount)
+		return 0
+
+/**
+ * @return amount the item mount could  to erase
+ */
+/datum/item_mount/proc/reagent_erase_amount(obj/item/item, key, id, amount)
+	return 0
+
+/**
+ * @return amount the item mount could give to erase
+ */
+/datum/item_mount/proc/reagent_erase_checked_amount(obj/item/item, key, id, amount)
+	return has_reagent(id, amount) ? pull_reagent(id, amount) : 0
+
+/**
+ * @return amount the item mount could accept
+ */
+/datum/item_mount/proc/reagent_spawn_amount(obj/item/item, key, id, amount, force)
+	return 0
+
 //* Stacks *//
 
 /**
  * Get the name of the provider.
  */
-/datum/stack_provider/proc/stack_get_provider_name(obj/item/item, key, path)
+/datum/item_mount/proc/stack_get_provider_name(obj/item/item, key, path)
 	return "stack storage"
 
 /**
@@ -268,7 +218,7 @@
  *
  * @return amount used.
  */
-/datum/stack_provider/proc/stack_use_checked_amount(obj/item/item, key, path, amount)
+/datum/item_mount/proc/stack_use_checked_amount(obj/item/item, key, path, amount)
 	return stack_has_amount(item, key, path, amount) ? stack_use_amount(item, key, path, amount) : 0
 
 /**
@@ -276,14 +226,14 @@
  * * Amount is in stack amount.
  * @return amount given.
  */
-/datum/stack_provider/proc/stack_give_amount(obj/item/item, key, path, amount, force)
+/datum/item_mount/proc/stack_give_amount(obj/item/item, key, path, amount, force)
 	return 0
 
 /**
  * Material stacks are invalid here.
  * @return max amount.
  */
-/datum/stack_provider/proc/stack_get_capacity(obj/item/item, key, path)
+/datum/item_mount/proc/stack_get_capacity(obj/item/item, key, path)
 	return 0
 
 /**
@@ -310,3 +260,24 @@
 /datum/item_mount/proc/stack_use_amount(obj/item/item, key, path, amount)
 	return 0
 
+//* ------ MISC BELOW HERE ------ *//
+
+//* Misc - Extinguisher *//
+
+/**
+ * @return volume remaining
+ */
+/datum/item_mount/proc/extinguisher_get_volume(obj/item/extinguisher/extinguisher, key)
+	return 0
+
+/**
+ * @return TRUE / FALSE on if there's that much left
+ */
+/datum/item_mount/proc/extinguisher_has_volume(obj/item/extinguisher/extinguisher, key, requested)
+	return get_extinguisher_spray_volume(extinguisher) >= requested
+
+/**
+ * @return volume pulled
+ */
+/datum/item_mount/proc/extinguisher_transfer_volume(obj/item/extinguisher/extinguisher, key, requested, datum/reagent_holder/into)
+	return 0

@@ -65,7 +65,7 @@
 	update_strings()
 
 /obj/item/stack/material/get_materials(respect_multiplier)
-	return list(material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
+	return list(src, null, material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
 
 /obj/item/stack/material/update_icon()
 	if(material.icon_stack_count)
@@ -138,7 +138,7 @@
 //* Stack Providers *//
 
 /obj/item/stack/material/get_provider_name()
-	return item_mount.material_get_provider_name(material.id)
+	return item_mount.material_get_provider_name(src, null, material.id)
 
 /obj/item/stack/material/check_provider_remaining()
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
@@ -147,7 +147,7 @@
 		for(var/mat_id in legacy_remap)
 			. = min(., (item_mount.material_get_amount(mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.material_get_amount(material.id) / SHEET_MATERIAL_AMOUNT
+		. = item_mount.material_get_amount(src, null, material.id) / SHEET_MATERIAL_AMOUNT
 
 /obj/item/stack/material/check_provider_capacity()
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
@@ -156,7 +156,7 @@
 		for(var/mat_id in legacy_remap)
 			. = min(., (item_mount.material_get_capacity(mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.material_get_capacity(material.id) / SHEET_MATERIAL_AMOUNT
+		. = item_mount.material_get_capacity(src, null, material.id) / SHEET_MATERIAL_AMOUNT
 
 /obj/item/stack/material/push_to_provider(amount, force)
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
@@ -171,7 +171,7 @@
 		for(var/mat_id in legacy_remap)
 			item_mount.material_give_amount(mat_id, amount * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.material_give_amount(material.id, amount * SHEET_MATERIAL_AMOUNT, force)
+		. = item_mount.material_give_amount(src, null, material.id, amount * SHEET_MATERIAL_AMOUNT, force)
 
 /obj/item/stack/material/pull_from_provider(amount)
 	var/list/legacy_remap = legacy_stack_provider_material_map[type]
@@ -181,7 +181,7 @@
 		for(var/mat_id in legacy_remap)
 			item_mount.material_use_amount(mat_id, has_remaining * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.material_use_amount(material.id, amount * SHEET_MATERIAL_AMOUNT)
+		. = item_mount.material_use_amount(src, null, material.id, amount * SHEET_MATERIAL_AMOUNT)
 
 
 // todo: we need a better way of doing this, holy shit

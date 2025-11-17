@@ -536,7 +536,7 @@
  * * You must check if stack provider exists.
  */
 /obj/item/stack/proc/get_provider_name()
-	return item_mount.stack_get_provider_name(type)
+	return item_mount.stack_get_provider_name(src, null, stack_type)
 
 /**
  * * You must check if stack provider exists.
@@ -547,9 +547,9 @@
 	if(legacy_remap)
 		. = INFINITY
 		for(var/mat_id in legacy_remap)
-			. = min(., (item_mount.material_get_amount(mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
+			. = min(., (item_mount.material_get_amount(src, null, mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_get_amount(stack_type) / SHEET_MATERIAL_AMOUNT
+		. = item_mount.stack_get_amount(src, null, stack_type) / SHEET_MATERIAL_AMOUNT
 
 /**
  * * You must check if stack provider exists.
@@ -560,9 +560,9 @@
 	if(legacy_remap)
 		. = INFINITY
 		for(var/mat_id in legacy_remap)
-			. = min(., (item_mount.material_get_amount_capacity(mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
+			. = min(., (item_mount.material_get_amount_capacity(src, null, mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_get_amount_capacity(stack_type) / SHEET_MATERIAL_AMOUNT
+		. = item_mount.stack_get_amount_capacity(src, nullstack_type) / SHEET_MATERIAL_AMOUNT
 
 /**
  * * You must check if stack provider exists.
@@ -579,9 +579,9 @@
 			amount = min(amount, has_remaining_capacity)
 		. = amount
 		for(var/mat_id in legacy_remap)
-			item_mount.material_give_amount(mat_id, amount * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
+			item_mount.material_give_amount(src, null, mat_id, amount * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_give_amount(stack_type, amount * SHEET_MATERIAL_AMOUNT, force)
+		. = item_mount.stack_give_amount(src, null, stack_type, amount * SHEET_MATERIAL_AMOUNT, force)
 
 /**
  * * You must check if stack provider exists.
@@ -593,9 +593,9 @@
 		// we have to be atomic, so do an expensive check first
 		var/has_remaining = check_provider_remaining()
 		for(var/mat_id in legacy_remap)
-			item_mount.material_use_amount(mat_id, has_remaining * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
+			item_mount.material_use_amount(src, null, mat_id, has_remaining * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_use_amount(stack_type, amount * SHEET_MATERIAL_AMOUNT)
+		. = item_mount.stack_use_amount(src, null, stack_type, amount * SHEET_MATERIAL_AMOUNT)
 
 //* Types *//
 

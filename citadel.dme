@@ -1896,7 +1896,6 @@
 #include "code\game\objects\items\shield_projector\shield_matrix.dm"
 #include "code\game\objects\items\shield_projector\shield_projector.dm"
 #include "code\game\objects\items\stacks\stack.dm"
-#include "code\game\objects\items\stacks\stack_provider.dm"
 #include "code\game\objects\items\stacks\legacy\fifty_spawner.dm"
 #include "code\game\objects\items\stacks\sheets\leather.dm"
 #include "code\game\objects\items\stacks\subtypes\arcadeticket.dm"
