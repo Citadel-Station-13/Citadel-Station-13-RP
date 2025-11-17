@@ -99,7 +99,17 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	return ..()
 
 /datum/orbital_deployment_zone/proc/construct_initial()
-
+	// install superstructure
+	var/turf/superstructure
+	for(var/obj/orbital_deployment_marker/corner/marker as anything in list(
+		lower_left,
+		lower_right,
+		upper_right,
+		upper_left,
+	))
+		superstructure = marker.loc
+		superstructure.ChangeTurf(/turf/simulated/wall/orbital_deployment_superstructure)
+	// construct zone
 	construct_zone()
 
 /**
@@ -115,15 +125,25 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	if((upper_right.x - lower_left.x) < 2 || (upper_right.y - lower_left.y) < 2)
 		CRASH("LL/UR markers swapped")
 
-	var/turf/test_turf = get_step(lower_left, NORTHEAST)
-	if(istype(test_turf.loc, /area/orbital_deployment_area))
-		CRASH("tried to write-over a zone (lower-left test failed)")
 	var/list/turf/inside_zone = block(get_step(lower_left, NORTHEAST), get_step(upper_right, SOUTHWEST))
 	var/area/orbital_deployment_area/deployment_area = new(null)
 	current_area = deployment_area
 
-
-	#warn impl
+	var/any_area_collision = FALSE
+	var/list/area/orbital_deployment_area/left_behind_areas = list()
+	for(var/turf/inside as anything in inside_zone)
+		if(inside.loc.type == /area/orbital_deployment_area)
+			any_area_collision = TRUE
+			left_behind_areas |= inside.loc
+	deployment_area.take_turfs(inside_zone)
+	if(any_area_collision)
+		stack_trace("[length(left_behind_areas)] areas left behind on zone construction. \
+		A launch probably bugged out or was somehow not done properly.")
+	for(var/area/orbital_deployment_area/other_area as anything in left_behind_areas)
+		// this is probably laggy but like you shouldn't be leaving areas behind!
+		if(!length(other_area.contents))
+			// this is DEFINITELY laggy but i don't care make sure it's GONE gone.
+			qdel(other_area)
 
 /datum/orbital_deployment_zone/proc/arm()
 	if(arming)

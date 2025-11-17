@@ -142,6 +142,7 @@ SUBSYSTEM_DEF(grids)
 
 /datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags, list/emit_moved_atoms, datum/bound_proc/turf_overlap_handler, datum/bound_proc/movable_overlap_handler)
 	PRIVATE_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	// While based on /tg/'s movement system, we do a few things differently.
 	// First, limitations:
 	// * base-areas aren't a thing. Areas are flat out trampled on move. On takeoff, areas are reset.
