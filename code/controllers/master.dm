@@ -372,17 +372,17 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	switch(initialize_result)
 		if(SS_INIT_FAILURE)
-			message_prefix = "Failed to initialize [subsystem.name] subsystem after"
+			message_prefix = "Failed to initialize [subsystem.name] ([subsystem.type]) subsystem after"
 			tell_everyone = TRUE
 			chat_warning = TRUE
 			// Since this is an explicit failure, shut its ticking off. We also will not set its initialized variable.
 			subsystem.subsystem_flags |= SS_NO_FIRE
 		if(SS_INIT_NONE)
-			message_prefix = "Initialized [subsystem.name] subsystem with errors within"
+			message_prefix = "Initialized [subsystem.name] ([subsystem.type]) subsystem with errors within"
 			tell_everyone = TRUE
 			chat_warning = TRUE
 			subsystem.initialized = TRUE
-			warning("[subsystem.name] subsystem does not implement Initialize() or it returns ..(). If the former is true, the SS_NO_INIT flag should be set for this subsystem.")
+			warning("[subsystem.name] ([subsystem.type]) subsystem does not implement Initialize() or it returns ..(). If the former is true, the SS_NO_INIT flag should be set for this subsystem.")
 		if(SS_INIT_SUCCESS)
 			message_prefix = "Initialized [subsystem.name] subsystem within"
 			tell_everyone = TRUE
