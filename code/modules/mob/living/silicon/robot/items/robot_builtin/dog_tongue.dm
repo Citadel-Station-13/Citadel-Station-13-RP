@@ -11,7 +11,7 @@
 
 /obj/item/robot_builtin/dog_tongue/examine(user)
 	. = ..()
-	if(item_mount.get_reagent(/datum/reagent/water::id) < 5)
+	if(item_mount.reagent_get_amount(src, null, /datum/reagent/water::id) < 5)
 		. += "<span class='notice'>[src] is wet.</span>"
 	else
 		. += "<span class='notice'>[src] is dry.</span>"
@@ -45,15 +45,15 @@
 	if(istype(target, /obj/structure/sink) || istype(target, /obj/structure/toilet)) //Dog vibes.
 		user.visible_message("[user] begins to lap up water from [target].", "<span class='notice'>You begin to lap up water from [target].</span>")
 		if(do_after(user, 50, target = target))
-			item_mount?.push_reagent(/datum/reagent/water, 50)
-	else if(item_mount?.get_reagent(/datum/reagent/water) < 1)
+			item_mount?.reagent_spawn_amount(src, null, /datum/reagent/water, 50)
+	else if(item_mount?.reagent_get_amount(src, null, /datum/reagent/water) < 1)
 		to_chat(user, "<span class='notice'>Your mouth feels dry. You should drink some water.</span>") //fixed annoying grammar and needless space
 		return
 	else if(istype(target,/obj/effect/debris/cleanable))
 		user.visible_message("[user] begins to lick off [target].", "<span class='notice'>You begin to lick off [target]...</span>")
 		if(do_after(user, 50, target = target))
 			to_chat(user, "<span class='notice'>You finish licking off [target].</span>")
-			item_mount?.pull_reagent(/datum/reagent/water, 1)
+			item_mount?.reagent_erase_amount(src, null, /datum/reagent/water, 1)
 			qdel(target)
 			var/mob/living/silicon/robot/R = user
 			R.cell.charge += 50
@@ -69,7 +69,7 @@
 					R.cell.charge += 1000
 				else
 					R.cell.charge += 250
-				item_mount?.pull_reagent(/datum/reagent/water, 1)
+				item_mount?.reagent_erase_amount(src, null, /datum/reagent/water, 1)
 			return
 		if(istype(target,/obj/item/cell))
 			user.visible_message("[user] begins cramming [target] down its throat.", "<span class='notice'>You begin cramming \the [target.name] down your throat...</span>")
@@ -79,13 +79,13 @@
 				var/mob/living/silicon/robot/R = user
 				var/obj/item/cell/C = target
 				R.cell.charge += C.maxcharge / 3
-				item_mount?.pull_reagent(/datum/reagent/water, 1)
+				item_mount?.reagent_erase_amount(src, null, /datum/reagent/water, 1)
 				qdel(target)
 			return
 		user.visible_message("[user] begins to lick [target] clean...", "<span class='notice'>You begin to lick [target] clean...</span>")
 		if(do_after(user, 50, target = target))
 			to_chat(user, "<span class='notice'>You clean [target].</span>")
-			item_mount?.pull_reagent(/datum/reagent/water, 1)
+			item_mount?.reagent_erase_amount(src, null, /datum/reagent/water, 1)
 			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
@@ -105,7 +105,7 @@
 		else
 			user.visible_message("<span class='notice'>\The [user] affectionally licks all over [target]'s face!</span>", "<span class='notice'>You affectionally lick all over [target]'s face!</span>")
 			playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
-			item_mount?.pull_reagent(/datum/reagent/water, 1)
+			item_mount?.reagent_erase_amount(src, null, /datum/reagent/water, 1)
 			var/mob/living/carbon/human/H = target
 			if(H.species.lightweight == 1)
 				H.afflict_paralyze(20 * 3)
@@ -116,7 +116,7 @@
 			var/obj/effect/debris/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()
-			item_mount?.pull_reagent(/datum/reagent/water, 1)
+			item_mount?.reagent_erase_amount(src, null, /datum/reagent/water, 1)
 			if(istype(target, /turf/simulated))
 				var/turf/simulated/T = target
 				T.dirt = 0

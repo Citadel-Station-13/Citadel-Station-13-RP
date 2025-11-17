@@ -5,8 +5,15 @@
  * Tracks what items / whatnot are given from what, so
  * partial state changes are doable without rebuilding the entire robot's
  * state.
+ *
+ * # Caveats
+ * * Internal state (items in us, as an example) should not be mutated without calling helpers,
+ *   or adding / removing.
+ * * Can only exist for one borg at a time.
  */
 /datum/robot_provisioning
+	/// Applied
+	var/mob/living/silicon/robot/applied_to_robot
 	/// provisioned items / modules
 	/// * lazy list
 	var/list/obj/item/items
@@ -16,8 +23,15 @@
 	///       should be handled literally any other way
 	var/list/obj/item/emag_items
 
-/datum/robot_provisioning/proc/apply(mob/living/silicon/robot/robot)
+/datum/robot_provisioning/Destroy()
+	if(applied_to_robot)
+		remove()
+	return ..()
 
-/datum/robot_provisioning/proc/remove(mob/living/silicon/robot/robot)
+/datum/robot_provisioning/proc/apply(mob/living/silicon/robot/robot)
+	if(applied_to_robot)
+		remove()
+
+/datum/robot_provisioning/proc/remove()
 
 #warn impl

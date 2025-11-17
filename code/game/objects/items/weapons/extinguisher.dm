@@ -56,7 +56,7 @@
  */
 /obj/item/extinguisher/proc/pull_spray_volume(datum/reagent_holder/target, amount)
 	if(item_mount)
-		return item_mount.extinguisher_pull_volume(src, null, amount, target)
+		return item_mount.extinguisher_transfer_volume(src, null, amount, target)
 	if(reagents)
 		return reagents.transfer_to_holder(target, null, amount)
 	return 0

@@ -37,6 +37,7 @@
 	can_repick_module = TRUE
 
 	//! legacy
+	module_legacy?.Reset(src)
 	lights_on = FALSE
 	radio.set_light(0)
 	if(perform_transform_animation)
@@ -64,6 +65,9 @@
 	src.chassis = chassis
 
 	#warn impl
+
+	if(!chassis)
+		return
 
 /**
  * Initialize to a iconset
@@ -101,6 +105,15 @@
 
 	#warn impl
 
+	if(module_legacy)
+		module_legacy.Reset()
+		QDEL_NULL(module_legacy)
+
+	if(!module)
+		return
+
+	module_legacy = new module.use_robot_module_path(src)
+
 /**
  * Set chassis / iconset from a frame.
  */
@@ -109,3 +122,15 @@
 	set_iconset(frame.robot_iconset, TRUE)
 
 	#warn impl
+
+/**
+ * Apply a provisioning set; this is one of the things orchestrating composition.
+ * * Should only be called by `/datum/robot_provisioning`.
+ */
+/mob/living/silicon/robot/proc/apply_provisioning(datum/robot_provisioning/provisioning)
+
+/**
+ * Remove a provisioning set; this is one of the things orchestrating composition.
+ * * Should only be called by `/datum/robot_provisioning`.
+ */
+/mob/living/silicon/robot/proc/remove_provisioning(datum/robot_provisioning/provisioning)

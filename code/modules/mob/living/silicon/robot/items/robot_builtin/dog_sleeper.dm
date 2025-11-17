@@ -531,7 +531,7 @@
 				var/actual_burn = T.getFireLoss() - old_burn
 				var/damage_gain = actual_brute + actual_burn
 				drain(-25 * damage_gain) //25*total loss as with voreorgan stats.
-				item_mount?.push_reagent(/datum/reagent/water, damage_gain)
+				item_mount?.reagent_spawn_amount(src, null, /datum/reagent/water, damage_gain)
 				if(T.stat == DEAD)
 					if(ishuman(T))
 						message_admins("[key_name(hound)] has digested [key_name(T)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
@@ -568,10 +568,10 @@
 					if(ishuman(T))
 						var/mob/living/carbon/human/Prey = T
 						volume = (Prey.bloodstr.total_volume + Prey.ingested.total_volume + Prey.touching.total_volume + Prey.weight) * Prey.size_multiplier
-						item_mount?.push_reagent(/datum/reagent/water, volume)
+						item_mount?.reagent_spawn_amount(src, null, /datum/reagent/water, volume)
 					if(T.reagents)
 						volume = T.reagents.total_volume
-						item_mount?.push_reagent(/datum/reagent/water, volume)
+						item_mount?.reagent_spawn_amount(src, null, /datum/reagent/water, volume)
 					if(patient == T)
 						patient_laststat = null
 						patient = null
@@ -597,7 +597,7 @@
 							synced = FALSE
 						drain(-50 * digested)
 					if(volume)
-						item_mount?.push_reagent(/datum/reagent/water, volume)
+						item_mount?.reagent_spawn_amount(src, null, /datum/reagent/water, volume)
 					var/list/mats = T.get_materials(TRUE)
 					if(recycles && mats)
 						for(var/material in mats)

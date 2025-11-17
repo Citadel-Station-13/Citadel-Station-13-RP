@@ -119,7 +119,7 @@
  * @return amount used.
  */
 /datum/item_mount/proc/material_use_checked_amount(obj/item/item, key, datum/prototype/material/material, amount)
-	return has_material(item, key, material, amount) ? use_material(item, key, material, amount) : 0
+	return material_has_amount(item, key, material, amount) ? material_use_amount(item, key, material, amount) : 0
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
@@ -181,7 +181,7 @@
  * @return amount the item mount has
  */
 /datum/item_mount/proc/reagent_has_amount(obj/item/item, key, id, amount)
-	. = get_reagent(id) || 0
+	. = reagent_get_amount(id) || 0
 	if(. < amount)
 		return 0
 
@@ -195,7 +195,7 @@
  * @return amount the item mount could give to erase
  */
 /datum/item_mount/proc/reagent_erase_checked_amount(obj/item/item, key, id, amount)
-	return has_reagent(id, amount) ? pull_reagent(id, amount) : 0
+	return reagent_has_amount(id, amount) ? reagent_erase_amount(id, amount) : 0
 
 /**
  * @return amount the item mount could accept
@@ -274,7 +274,7 @@
  * @return TRUE / FALSE on if there's that much left
  */
 /datum/item_mount/proc/extinguisher_has_volume(obj/item/extinguisher/extinguisher, key, requested)
-	return get_extinguisher_spray_volume(extinguisher) >= requested
+	return extinguisher_get_volume(extinguisher) >= requested
 
 /**
  * @return volume pulled
