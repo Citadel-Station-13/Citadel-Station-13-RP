@@ -15,7 +15,9 @@
  *
  * If all 3 are present, we will instead verify things are correct.
  *
- * In all cases, the travel time will be computed as well.
+ * * In all (valid) cases, the travel time will be computed as well.
+ * * If the elevation is higher than 0, we will calculate the second crossing point, not the first.
+ *   It's assumed the projectile successfully crosses into the elevation the first time.
  *
  * @params
  * * altitude - degrees upwards from horizon
@@ -34,22 +36,97 @@
 	// vx, vy = velocity
 	// t = time passed in seconds
 
+	var/t_final
+	var/x_vel_initial
+	var/y_vel_initial
+	var/x_pos_final
+	var/list/q_results
 	if(altitude)
 		if(velocity)
 			if(distance)
 				// verify
+				y_vel_initial = sin(altitude) * velocity
+				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, -elevation)
+				// failed to solve
+				if(length(q_results) != 2)
+					return null
+				t_final = q_results[1]
+				// invalid?
+				if(t_final <= 0)
+					return null
+				x_vel_initial = cos(altitude) * velocity
+				x_pos_final = t_final * x_vel_initial
+				if(abs(x_pos_final - distance) > 0.01)
+					return null
+				return list(altitude, velocity, x_pos_final, t_final)
 			else
 				// solve for dx (distance)
+				y_vel_initial = sin(altitude) * velocity
+				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, -elevation)
+				if(length(q_results) != 2)
+					return null
+				t_final = q_results[1]
+				if(t_final <= 0)
+					return null
+				x_vel_initial = cos(altitude) * velocity
+				x_pos_final = t_final * x_vel_initial
+				return list(altitude, velocity, x_pos_final, t_final)
 		else
 			if(distance)
 				// solve for v(0) (velocity)
+
+				// y'(0) = sin(altitude) * v0
+				// x' = cos(altitude) * v0
+				// t = distance / x'
+				// g * t^2 + y'(0) * t - elevation = 0
+
+				// find time to max height
+				// 0 = sin(alt) * v0 - g * t
+				// sin(alt) * v0 = g * t
+				// t = (sin(alt) * v0) / g
+				// dist = x' * t
+				// dist = cos(altitude) * v0 * t
+				// dist = cos(altitude) * v0 * ((sin(alt) * v0) / g)
+				// dist * g / cos(alt) = v0 * sin(alt) * v0
+				// dist * g = v0 ^ 2 * (sin / cos)
+				// dist * g = v0 ^ 2 * tan(alt)
+				// v0 ^ 2 = (dist * g) / tan(alt)
+				// v0 = sqrt(dist * g / tan(alt))
+				velocity = sqrt(distance * gravity / tan(altitude))
+				y_vel_initial = sin(altitude) * velocity
+				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, -elevation)
+				if(length(q_results) != 2)
+					return null
+				t_final = q_results[1]
+				if(t_final <= 0)
+					return null
+				return list(altitude, velocity, distance, t_final)
 			else
-				CRASH("kinematic trajectory requires azimuth/altitude/velocity, only got altitude")
+				CRASH("kinematic trajectory requires altitude/velocity/distance, only got altitude")
 
 	else
 		if(velocity)
 			if(distance)
-				// solve for angle up from horizon (elevation)
+				// solve for angle up from horizon (altitude)
+
+				// 0 = sin(alt) * v0 - g * t
+				// sin(alt) * v0 = g * t
+				// t = (sin(alt) * v0) / g
+
+				// dist = x' * t
+				// dist = cos(alt) * v0 * t
+				// dist / (cos(alt) * v0) = t
+				// dist / (cos(alt) * v0) = (sin(alt) * v0) / g
+				// dist * g = (sin(alt) * v0) * (cos(alt) * v0)
+				// dist * g = sin(alt) * cos(alt) * v0 ^ 2
+
+				// -g * t^2 + sin(alt) * v0 - elevation = 0
+				#warn impl
+
+				x_vel_initial = cos(altitude) * velocity
+				t_final = distance / x_vel_initial
+				angle_up =
+				return list(angle_up, velocity, distance, t_final)
 			else
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, only got velocity")
 		else
@@ -57,18 +134,3 @@
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, only got distance")
 			else
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, got none of the above")
-
-	// travel time is just when y = elevation
-
-	// vy(t) = vy(0) - g*t
-	// y(t) = F(vy(t)) = v(0) - g*t dt
-	// y(t) = (vy(0) * t)  - (g * (t^2 / 2))
-
-	// y(t) = elevation
-	// solve for t
-
-	// 0 = -(t^2 * g * 0.5) + (t * vy(0)) - elevation
-	var/velocity_y_initial = sin(velocity) * elevation
-	var/travel_time = SolveQuadratic(-gravity * 0.5, velocity_y_initial, -elevation)
-
-	return list(altitude, velocity, distance, travel_time)

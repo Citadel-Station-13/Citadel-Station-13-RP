@@ -11,6 +11,8 @@
 
 #warn impl
 
+/datum/component/freezoom
+
 /datum/component/freezoom/proc/update_zoom(mob/viewer, list/mouse_params)
 
 

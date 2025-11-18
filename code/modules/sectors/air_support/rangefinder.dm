@@ -86,6 +86,8 @@
 
 /obj/item/rangefinder/Destroy()
 	QDEL_NULL(active_laser_target)
+	stop_zooming()
+	STOP_PROCESSING(SSprocess_1s, src)
 	return ..()
 
 /obj/item/rangefinder/proc/update_icon()
@@ -108,41 +110,51 @@
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	#warn zoom mode
+	// listen no TK fuckery allowed
+	if(e_args.performer != inv_inside.owner)
+		return
+	start_zooming(inv_inside.owner)
+
+/obj/item/rangefinder/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
+	stop_zooming()
+	..()
 
 /obj/item/rangefinder/proc/create_laser_designator_target(atom/target)
 	if(active_laser_target)
 		destroy_laser_designator_target()
 	active_laser_target = new(target, laser_weapons_guidance, laser_visible)
+	START_PROCESSING(SSprocess_1s, src)
 
 /obj/item/rangefinder/proc/destroy_laser_designator_target()
 	if(!QDELETED(active_laser_target))
 		qdel(active_laser_target)
 	active_laser_target = null
+	STOP_PROCESSING(SSprocess_1s, src)
 
 /obj/item/rangefinder/proc/on_laser_designator_target_deleted(datum/source)
 	destroy_laser_designator_target()
 
-/obj/item/rangefinder/on_inv_equipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
-	..()
-	RegisterSignal(wearer, COMSIG_MOB_EXAMINATE, PROC_REF(on_user_examine))
-	#warn impl
-
-/obj/item/rangefinder/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
-	..()
-	UnregisterSignal(wearer, COMSIG_MOB_EXAMINATE)
-	#warn impl
+/obj/item/rangefinder/proc/reconsider_laser_designation()
+	#warn trace
 
 /obj/item/rangefinder/proc/start_zooming(mob/viewing)
+	if(currently_zoomed_in)
+		stop_zooming()
+	currently_zoomed_in = viewing
+	RegisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE, PROC_REF(on_user_examine))
 
 /obj/item/rangefinder/proc/stop_zooming()
+	UnregisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE)
 
 /obj/item/rangefinder/proc/on_user_examine(mob/source, atom/target, list/examine_list)
 	SIGNAL_HANDLER
 	if(!examine_list)
 		return
-	#warn impl
-	examine_list += SPAN_NOTICE("[icon2html(src, source)]: Its ")
+	var/turf/source_turf = get_turf(source)
+	var/turf/target_turf = get_turf(target)
+	var/list/coords = SSmapping.get_virtual_coords_x_y(target_turf)
+	var/dist = target.z == source.z ? get_turf_euclidean_dist(source_turf, target_turf) : SSmapping.get_virtual_horizontal_euclidean_dist(source_turf, target_turf)
+	examine_list += SPAN_NOTICE("[icon2html(src, source)]: Estimated coordinates [coords[1]]/[coords[2]], [dist] away.")
 
 /obj/item/rangefinder/item_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
@@ -157,6 +169,11 @@
  * this doesn't check if we're a laser designator!
  */
 /obj/item/rangefinder/proc/attempt_clickchain_laser_designate(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	#warn impl
+
+/obj/item/rangefinder/process(delta_time)
+	if(active_laser_target)
+		reconsider_laser_designation()
 
 /obj/item/rangefinder/laser_designator
 	name = "laser designator"

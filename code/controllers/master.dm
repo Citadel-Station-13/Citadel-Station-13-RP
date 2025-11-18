@@ -144,9 +144,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		else
 			var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
 			tim_sort(subsytem_types, GLOBAL_PROC_REF(cmp_subsystem_init))
-			for(var/I in subsytem_types)
-				var/datum/controller/subsystem/S = new I
-				_subsystems += S
+			for(var/datum/controller/subsystem/ss_path as anything in subsytem_types)
+				if(ss_path.abstract_type == ss_path)
+					continue
+				var/datum/controller/subsystem/ss_instance = new I
+				_subsystems += ss_instance
 		Master = src
 
 	/**

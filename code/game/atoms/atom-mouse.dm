@@ -3,10 +3,11 @@
 
 /atom/MouseEntered(location, control, params)
 	..()
-	usr.client.mouse_predicted_last_atom = src
+	var/client/usr_client = usr.client
+	usr_client.mouse_predicted_last_atom = src
 
 /atom/MouseExited(location, control, params)
 	..()
-	// tODO: is this check needed
+	// TODO: is this check needed
 	if(usr.client.mouse_predicted_last_atom == src)
 		usr.client.mouse_predicted_last_atom = null

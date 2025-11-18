@@ -9,6 +9,8 @@
 /datum/component/client_freezoom_handler
 	dupe_mode = COMPONENT_DUPE_HIGHLANDER
 
+	var/last_update
+
 	/// max zoom
 	var/max_zoom_x = WORLD_ICON_SIZE * 7
 	/// max zoom
@@ -52,6 +54,10 @@
 	client.pixel_x = client.pixel_y = 0
 
 /datum/component/client_freezoom_handler/proc/on_mouse_moved(client/source)
+	SIGNAL_HANDLER
+	if(world.time - last_update < GLOB.client_mouse_fast_update_backoff)
+		return
+	last_update = world.time
 	update_zoom(source.mouse_last_move_params)
 
 /datum/component/client_freezoom_handler/proc/update_zoom(list/mouse_params)
