@@ -160,9 +160,11 @@
 				)
 				CHECK_TICK
 
+#warn log the shit out of ... everything
 
 /**
  * get random turf outside of edge
  */
 /datum/orbital_deployment_translation/proc/get_random_outside_turf(radius = 1)
+
 	#warn impl

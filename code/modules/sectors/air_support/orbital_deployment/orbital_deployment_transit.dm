@@ -42,8 +42,50 @@
 	QDEL_NULL(reservation)
 	return ..()
 
-/datum/orbital_deployment_transit/proc/allocate_and_package(turf/lower_left, turf/upper_right)
+/**
+ * @return TRUE / FALSE
+ */
+/datum/orbital_deployment_transit/proc/allocate_and_package(turf/lower_left, turf/upper_right, area/zone_area)
+	// allocate package
+	ASSERT(upper_right.x >= lower_left.x && upper_right.y >= lower_left.y)
+	var/width = upper_right.x - lower_left.x + 1
+	var/height = upper_right.y - lower_left.y + 1
+	var/border = 2
+
+	var/datum/map_reservation/allocating = SSmapping.request_block_reservation(
+		width + border * 2,
+		height + border * 2,
+		/datum/map_reservation,
+		/turf/space,
+		/area/space,
+	)
+	if(!allocating)
+		. = FALSE
+		CRASH("failed to reserve map level")
+	reservation = allocating
+	structural_area = zone_area
+
+	// move into
+	var/list/src_ordered = SSgrids.get_ordered_turfs(
+		lower_left.x,
+		upper_right.x,
+		lower_left.y,
+		upper_right.y,
+		lower_left.z,
+		NORTH,
+	)
+	var/list/dst_ordered
 	#warn impl
+
+	SSgrids.translate(
+		src_ordered,
+		dst_ordered,
+		NORTH,
+		NORTH,
+		GRID_MOVE_AREA | GRID_MOVE_MOVABLES | GRID_MOVE_TURF,
+		/turf/baseturf_skipover/orbital_deployment_zone,
+		/area/space,
+	)
 
 /datum/orbital_deployment_transit/proc/land()
 	if(landing)
