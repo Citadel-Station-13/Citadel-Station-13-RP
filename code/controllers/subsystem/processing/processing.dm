@@ -1,7 +1,6 @@
 //Used to process objects.
 
 SUBSYSTEM_DEF(processing)
-	abstract_type = /datum/controller/subsystem/processing
 	priority = FIRE_PRIORITY_PROCESS
 	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING|SS_NO_INIT
 	wait = 1 SECONDS

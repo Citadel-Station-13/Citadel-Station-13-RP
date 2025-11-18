@@ -114,18 +114,7 @@
 				// t = (sin(alt) * v0) / g
 
 				// dist = x' * t
-				// dist = cos(alt) * v0 * t
-				// dist / (cos(alt) * v0) = t
-				// dist / (cos(alt) * v0) = (sin(alt) * v0) / g
-				// dist * g = (sin(alt) * v0) * (cos(alt) * v0)
-				// dist * g = sin(alt) * cos(alt) * v0 ^ 2
-
-				// -g * t^2 + sin(alt) * v0 - elevation = 0
 				#warn impl
-
-				x_vel_initial = cos(altitude) * velocity
-				t_final = distance / x_vel_initial
-				angle_up =
 				return list(angle_up, velocity, distance, t_final)
 			else
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, only got velocity")

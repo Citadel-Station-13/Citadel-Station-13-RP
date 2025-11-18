@@ -69,7 +69,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	) : null
 	.["armingTime"] = linked_zone.arming_time
 	.["armingCooldown"] = linked_zone.arming_cooldown
-	.["maxOvermapPixelDist"] = OVERMAP_PIXEL_TO_DIST(conf_max_overmap_pixel_dist)
+	.["maxOvermapPixelDist"] = OVERMAP_PIXEL_TO_DIST(linked_zone.conf_max_overmap_pixel_dist)
 	. += ui_signal_data()
 
 /obj/machinery/orbital_deployment_controller/proc/ui_signal_data()

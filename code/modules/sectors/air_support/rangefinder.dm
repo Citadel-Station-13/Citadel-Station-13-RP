@@ -87,7 +87,7 @@
 /obj/item/rangefinder/Destroy()
 	QDEL_NULL(active_laser_target)
 	stop_zooming()
-	STOP_PROCESSING(SSprocess_1s, src)
+	STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
 /obj/item/rangefinder/proc/update_icon()
@@ -123,13 +123,13 @@
 	if(active_laser_target)
 		destroy_laser_designator_target()
 	active_laser_target = new(target, laser_weapons_guidance, laser_visible)
-	START_PROCESSING(SSprocess_1s, src)
+	START_PROCESSING(SSprocessing, src)
 
 /obj/item/rangefinder/proc/destroy_laser_designator_target()
 	if(!QDELETED(active_laser_target))
 		qdel(active_laser_target)
 	active_laser_target = null
-	STOP_PROCESSING(SSprocess_1s, src)
+	STOP_PROCESSING(SSprocessing, src)
 
 /obj/item/rangefinder/proc/on_laser_designator_target_deleted(datum/source)
 	destroy_laser_designator_target()

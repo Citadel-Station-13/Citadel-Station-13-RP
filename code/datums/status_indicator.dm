@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(status_indicators, init_status_indicators())
 /**
  * A status indicator to be flicked by mobs, primarily.
  * * That said, this ideally contains alignment data that can be used to align it to any atom, so...
- * * Icon states are assumed to be aligned to top right of the icon size. Provide alignment offsets if needed.
+ * * Icon states are assumed to be aligned to bottom left of the icon size. Provide alignment offsets if needed.
  */
 /datum/status_indicator
 	abstract_type = /datum/status_indicator
@@ -25,5 +25,13 @@ GLOBAL_LIST_INIT(status_indicators, init_status_indicators())
 
 	var/icon_size_x = 32
 	var/icon_size_y = 32
+	var/indicator_size_x = 8
+	var/indicator_size_y = 8
+	/// pixels to shift to boost move the indicator's bounding box to 1, 1
+	/// * if your indicator is at 25, 25 to 32, 32 this is -24
+	var/alignment_offset_x = 0
+	/// pixels to shift to boost move the indicator's bounding box to 1, 1
+	/// * if your indicator is at 25, 25 to 32, 32 this is -24
+	var/alignment_offset_y = 0
 
 #warn impl
