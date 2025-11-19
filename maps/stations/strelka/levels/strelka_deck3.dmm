@@ -205,6 +205,10 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/secondary)
+"aQ" = (
+/obj/machinery/camera/network/security,
+/turf/space,
+/area/space)
 "aR" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -2822,6 +2826,9 @@
 /obj/machinery/lathe/mecha_part_fabricator{
 	dir = 8
 	},
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
 "jx" = (
@@ -2995,6 +3002,15 @@
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
+"kf" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "kh" = (
 /obj/structure/cable{
 	icon_state = "2-9"
@@ -3587,6 +3603,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/bridge/strelka/deck3)
+"lZ" = (
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "ma" = (
 /obj/machinery/disposal/deliveryChute,
 /obj/structure/disposalpipe/trunk{
@@ -4829,12 +4849,6 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/wall/r_wall/prepainted,
 /area/quartermaster/strelka/cargo/hangar)
-"pW" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/turf/simulated/wall/r_wall/prepainted/command,
-/area/bridge/strelka/borg)
 "pY" = (
 /obj/effect/floor_decal/corner/purple/full,
 /obj/machinery/light{
@@ -5968,6 +5982,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
+"tH" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/machinery/camera/network/security,
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "tL" = (
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/plating,
@@ -7551,6 +7572,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
+"yP" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "yQ" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -7898,7 +7925,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/camera/network/security,
 /obj/machinery/camera/network/security,
 /obj/structure/sign/deck/third{
 	pixel_y = 33
@@ -8287,6 +8313,12 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/strelka/medical)
+"Bh" = (
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/space)
 "Bi" = (
 /obj/structure/flora/grass/event/purple_flowers1,
 /obj/structure/table/bench/wooden,
@@ -12405,6 +12437,15 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/strelka/xenobio)
+"NJ" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#B95A00"
+	},
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "NK" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
@@ -13313,6 +13354,12 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/quartermaster/strelka/portal)
+"Qz" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "QC" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -13346,6 +13393,12 @@
 /area/quartermaster/strelka/cargo/mining)
 "QL" = (
 /obj/machinery/shield_diffuser,
+/turf/space,
+/area/space)
+"QO" = (
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
 /turf/space,
 /area/space)
 "QQ" = (
@@ -14879,6 +14932,12 @@
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
+"VC" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/space)
 "VD" = (
 /obj/machinery/light/small/old{
 	light_power = 1
@@ -15534,6 +15593,14 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
+"XM" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/camera/network/security{
+	network = list("Balista");
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/robotics)
 "XN" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable{
@@ -25815,7 +25882,7 @@ Ap
 Ap
 Ap
 Ap
-Ap
+QO
 Ap
 Ap
 Ap
@@ -26768,7 +26835,7 @@ Ap
 Ap
 EP
 EP
-EP
+Bh
 EP
 EP
 EP
@@ -26802,7 +26869,7 @@ zn
 zn
 EP
 EP
-EP
+Bh
 EP
 EP
 EP
@@ -28118,7 +28185,7 @@ Ap
 Ap
 Ap
 EP
-EP
+Bh
 mF
 mF
 ws
@@ -28170,7 +28237,7 @@ wZ
 ws
 mF
 mF
-EP
+Bh
 Ap
 Ap
 Ap
@@ -29532,7 +29599,7 @@ RA
 js
 Ib
 HI
-EP
+lZ
 EP
 Ap
 Ap
@@ -29665,7 +29732,7 @@ Ap
 Ap
 Ap
 EP
-lI
+kf
 mF
 mF
 Hn
@@ -31417,7 +31484,7 @@ EP
 EP
 EP
 EP
-EP
+yP
 mF
 mF
 KK
@@ -31466,7 +31533,7 @@ La
 DU
 VA
 VA
-EP
+lZ
 lI
 EP
 EP
@@ -32779,7 +32846,7 @@ EP
 lI
 EP
 lI
-SV
+NJ
 Mv
 Ab
 Fm
@@ -33787,7 +33854,7 @@ fR
 Gy
 Dw
 rS
-YN
+XM
 OG
 oz
 oz
@@ -35688,7 +35755,7 @@ Ap
 Ap
 Ap
 Ap
-EP
+yP
 AF
 no
 no
@@ -35730,7 +35797,7 @@ ZQ
 Ss
 Ss
 JO
-SV
+tH
 EP
 Ap
 Ap
@@ -37242,7 +37309,7 @@ Ap
 Ap
 Ap
 Ap
-zq
+VC
 Ph
 Ph
 AM
@@ -38055,7 +38122,7 @@ wc
 wc
 YO
 YO
-Ap
+aQ
 Ap
 Ap
 Ap
@@ -38800,7 +38867,7 @@ Ap
 Ap
 Ap
 Ap
-Ap
+Qz
 io
 io
 Vb
@@ -40163,7 +40230,7 @@ Ap
 Ap
 Ap
 Ap
-pW
+cL
 cL
 we
 we
@@ -40356,7 +40423,7 @@ Ap
 Ap
 Ap
 Ap
-Ap
+Qz
 cL
 we
 we
@@ -40376,7 +40443,7 @@ nI
 Od
 Od
 Od
-Ap
+aQ
 Ap
 Ap
 Ap
@@ -42495,7 +42562,7 @@ Ap
 Ap
 Ap
 Ap
-Ap
+Qz
 uM
 uM
 uM
@@ -42505,7 +42572,7 @@ uM
 uM
 uM
 uM
-Ap
+aQ
 Ap
 Ap
 Ap

@@ -763,6 +763,13 @@
 	ambience = AMBIENCE_HIGHSEC
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
 
+/area/strelka/secondarybridge
+	name = "\improper Deck 1 Emergency Bridge"
+	icon_state = "security_sub"
+	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_HIGHSEC
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
+
 //Deck 1 Civilian
 
 /area/strelka/pilot
