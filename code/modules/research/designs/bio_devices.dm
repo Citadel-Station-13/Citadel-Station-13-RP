@@ -46,9 +46,9 @@
 	id = "nanopaste"
 	category = DESIGN_CATEGORY_SYNTH
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
-	materials_base = list(MAT_STEEL = 1500, MAT_GLASS = 750)
+	materials_base = list(MAT_STEEL = 150, MAT_GLASS = 75)
 	build_path = /obj/item/stack/nanopaste
-	legacy_stack_amount = 10
+	work = 0.5 SECONDS
 
 /datum/prototype/design/science/biotech/plant_analyzer
 	desc = "A device capable of quickly scanning all relevant data about a plant."

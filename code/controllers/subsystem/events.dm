@@ -26,9 +26,9 @@ SUBSYSTEM_DEF(events)
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(HolidayRoundstart)))
 	allEvents = typesof(/datum/event) - /datum/event
 	event_containers = list(
-			EVENT_LEVEL_MUNDANE 	= new/datum/event_container/mundane,
-			EVENT_LEVEL_MODERATE	= new/datum/event_container/moderate,
-			EVENT_LEVEL_MAJOR 		= new/datum/event_container/major
+			new/datum/event_container/mundane,
+			new/datum/event_container/moderate,
+			new/datum/event_container/major
 		)
 	// unfortunately, character setup server startup hooks fire before /Initialize so :/
 	// SScharactersetup but not shit when :)
