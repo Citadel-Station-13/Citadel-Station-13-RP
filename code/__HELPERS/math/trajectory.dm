@@ -16,22 +16,16 @@
  * If all 3 are present, we will instead verify things are correct.
  *
  * * In all (valid) cases, the travel time will be computed as well.
- * * If the elevation is higher than 0, we will calculate the second crossing point, not the first.
- *   It's assumed the projectile successfully crosses into the elevation the first time.
  *
  * @params
  * * altitude - degrees upwards from horizon
  * * velocity - initial velocity in m/s
  * * distance - distance from source
- * * elevation - impact elevation, as meter offset up / down from starting position.
  * * gravity - acceleration from gravity in m/s^2
  *
  * @return list(altitude, velocity, distance, travel time), or null if failed
  */
-/proc/math__solve_kinematic_trajectory(altitude, velocity, distance, elevation, gravity)
-	#warn test the shit out of this proc
-	#warn impl
-
+/proc/math__solve_kinematic_trajectory(altitude, velocity, distance, gravity)
 	// g = gravity
 	// vx, vy = velocity
 	// t = time passed in seconds
@@ -46,7 +40,7 @@
 			if(distance)
 				// verify
 				y_vel_initial = sin(altitude) * velocity
-				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, -elevation)
+				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, 0)
 				// failed to solve
 				if(length(q_results) != 2)
 					return null
@@ -62,7 +56,7 @@
 			else
 				// solve for dx (distance)
 				y_vel_initial = sin(altitude) * velocity
-				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, -elevation)
+				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, 0)
 				if(length(q_results) != 2)
 					return null
 				t_final = q_results[1]
@@ -94,7 +88,7 @@
 				// v0 = sqrt(dist * g / tan(alt))
 				velocity = sqrt(distance * gravity / tan(altitude))
 				y_vel_initial = sin(altitude) * velocity
-				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, -elevation)
+				q_results = SolveQuadratic(-gravity * 0.5, y_vel_initial, 0)
 				if(length(q_results) != 2)
 					return null
 				t_final = q_results[1]

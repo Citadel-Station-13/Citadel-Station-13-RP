@@ -135,7 +135,15 @@
 	destroy_laser_designator_target()
 
 /obj/item/rangefinder/proc/reconsider_laser_designation()
+	var/turf/target_turf = get_turf(active_laser_target)
+	var/list/traced = trace_laser_designation(target_turf)
 	#warn trace
+
+/obj/item/rangefinder/proc/trace_laser_designation(turf/target) as /list
+	var/turf/our_turf = get_turf(src)
+	if(!our_turf)
+		return null
+	return getline(our_turf, target)
 
 /obj/item/rangefinder/proc/start_zooming(mob/viewing)
 	if(currently_zoomed_in)
@@ -169,6 +177,15 @@
  * this doesn't check if we're a laser designator!
  */
 /obj/item/rangefinder/proc/attempt_clickchain_laser_designate(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	if(active_laser_target)
+		destroy_laser_designator_target()
+
+	var/list/traced
+	var/turf/target_turf
+	var/atom/target = clickchain.target
+
+	target_turf = get_turf(target)
+	traced = trace_laser_designation(target_turf)
 	#warn impl
 
 /obj/item/rangefinder/process(delta_time)

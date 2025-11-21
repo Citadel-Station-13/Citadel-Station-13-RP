@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 /datum/orbital_deployment_zone/proc/get_overmap_entity() as /obj/overmap/entity
 	return SSovermaps.get_enclosing_overmap_entity(lower_left)
 
-/datum/orbital_deployment_zone/proc/launch(turf/target_center, dir_from_north, dangerously_unsafe_ignore_checks) as /obj/overmap/entity/orbital_deployment_transit
+/datum/orbital_deployment_zone/proc/launch(turf/target_center, dir_from_north, dangerously_unsafe_ignore_checks, datum/event_args/actor/actor) as /obj/overmap/entity/orbital_deployment_transit
 	if(!dangerously_unsafe_ignore_checks)
 		if(!check_zone(target_center, dir_from_north))
 			return null
@@ -179,9 +179,10 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	if(!their_entity)
 		return null
 	var/datum/orbital_deployment_transit/transit = new(src)
+	transit.launching_actor = actor
 	if(!transit.allocate_and_package(locate(lower_left.x + 1, lower_left.y + 1, lower_left.z), locate(upper_right.x - 1, upper_right.y - 1, upper_right.z), current_area))
 		qdel(transit)
-		CRAsH("failed to package transit; this shouldn't happen")
+		CRASH("failed to package transit; this shouldn't happen")
 	construct_zone()
 	var/obj/overmap/entity/orbital_deployment_transit/transit_entity = new(our_entity, src, transit)
 	transit_entity.launch(their_entity)

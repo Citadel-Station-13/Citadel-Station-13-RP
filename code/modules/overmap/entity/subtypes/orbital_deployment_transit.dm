@@ -24,7 +24,8 @@
  * in the future we might but it's actually just a timer
  */
 /obj/overmap/entity/orbital_deployment_transit/proc/launch(obj/overmap/entity/target, velocity = OVERMAP_PIXEL_TO_DIST(WORLD_ICON_SIZE * 0.5))
-
+	// TODO: entity names can change we should probably have a UID system
+	log_orbital_deployment(transit.launching_actor, "launched orbital transit at [target]")
 	addtimer(src, CALLBACK(PROC_REF(land)), predicted_time)
 
 /obj/overmap/entity/orbital_deployment_transit/proc/land()

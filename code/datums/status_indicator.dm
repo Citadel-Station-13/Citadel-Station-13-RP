@@ -33,5 +33,3 @@ GLOBAL_LIST_INIT(status_indicators, init_status_indicators())
 	/// pixels to shift to boost move the indicator's bounding box to 1, 1
 	/// * if your indicator is at 25, 25 to 32, 32 this is -24
 	var/alignment_offset_y = 0
-
-#warn impl

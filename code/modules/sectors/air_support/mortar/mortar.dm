@@ -139,11 +139,13 @@
 	// hardcoded for now
 	var/gravity_on_target_planet = launch_gravity
 
-	var/list/k_optimal = math__solve_kinematic_trajectory(null, k_velocity, k_distance, 0, gravity_on_target_planet)
+	// solve for altitude
+	var/list/k_optimal = math__solve_kinematic_trajectory(null, k_velocity, k_distance, gravity_on_target_planet)
 	if(k_optimal == null)
 		return null
 	var/list/k_inaccurate = run_firing_kinematics(k_azimuth, k_optimal[1], k_velocity)
-	var/list/k_final = math__solve_kinematic_trajectory(k_inaccurate[2], k_inaccurate[3], null, 0, gravity_on_target_planet)
+	// solve for distance
+	var/list/k_final = math__solve_kinematic_trajectory(k_inaccurate[2], k_inaccurate[3], null, gravity_on_target_planet)
 	if(k_final == null)
 		return null
 

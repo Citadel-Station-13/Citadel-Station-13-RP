@@ -8,6 +8,8 @@
 	var/datum/map_reservation/reservation
 	var/area/structural_area
 
+	var/datum/event_args/actor/launching_actor
+
 	var/c_impact_obj_dmg_base
 	var/c_impact_obj_dmg_sides
 	var/c_impact_obj_dmg_cnt
@@ -83,6 +85,8 @@
 		NORTH,
 	)
 	#warn impl
+
+	log_orbital_deployment(launching_actor, "allocating/packaging a [width]x[height] area")
 
 	SSgrids.translate(
 		src_ordered,
