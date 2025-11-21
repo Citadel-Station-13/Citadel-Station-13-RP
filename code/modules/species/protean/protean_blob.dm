@@ -70,6 +70,9 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_GROUND_HOIST //blobsurfing
 
+/mob/living/simple_mob/protean_blob/isSynthetic()
+	return TRUE
+
 /datum/say_list/protean_blob
 	speak = list("Blrb?","Sqrsh.","Glrsh!")
 	emote_hear = list("squishes softly","spluts quietly","makes wet noises")
@@ -432,7 +435,7 @@
 				if(back)
 					H.equip_to_slot_if_possible(prig,SLOT_ID_BACK, INV_OP_FORCE | INV_OP_DIRECTLY_EQUIPPING | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 				return
-				
+
 
 	if(isturf(loc))
 		var/obj/item/hardsuit/protean/prig

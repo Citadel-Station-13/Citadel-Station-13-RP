@@ -58,17 +58,6 @@
 	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.
 	var/datum/movement_intercept
 
-	//* Buckling *//
-	/// Atom we're buckled to
-	var/atom/movable/buckled
-	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
-	//  todo: can this be put in an existing bitfield somewhere else?
-	var/atom/movable/buckling
-
-	//* HUD (Atom) *//
-	/// HUDs to initialize, typepaths
-	var/list/atom_huds_to_initialize
-
 	//* HUD *//
 	/// active, opened storage
 	//  todo: doesn't clear from clients properly on logout, relies on login clearing screne.
@@ -201,8 +190,6 @@
 	 */
 	var/atom/movable/screen/zone_sel/zone_sel = null
 
-	/// Allows all mobs to use the me verb by default, will have to manually specify they cannot.
-	var/use_me = 1
 	var/damageoverlaytemp = 0
 	var/computer_id = null
 	var/obj/machinery/machine = null

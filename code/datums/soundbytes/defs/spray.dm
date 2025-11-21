@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 /datum/soundbyte/spray
 	abstract_type = /datum/soundbyte/spray
 	is_sfx = TRUE

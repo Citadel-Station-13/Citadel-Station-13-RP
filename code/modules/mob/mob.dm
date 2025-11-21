@@ -7,6 +7,23 @@
 	/// * Lazy list, see mob_movespeed.dm
 	var/list/actionspeed_modifier_immunities
 
+	//* HUD (Atom) *//
+	/// HUDs to initialize, typepaths
+	var/list/atom_huds_to_initialize
+
+	//* Buckling *//
+	/// Atom we're buckled to
+	var/atom/movable/buckled
+	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
+	//  todo: can this be put in an existing bitfield somewhere else?
+	var/atom/movable/buckling
+
+	//* Emotes *//
+	/// running emotes, associated to context the emote can set
+	var/list/datum/emote/emotes_running
+	/// our default emote classes
+	var/emote_class = EMOTE_CLASS_IS_BODY
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list

@@ -4,7 +4,7 @@
 SUBSYSTEM_DEF(overmap_physics)
 	name = "Overmap Physics"
 	priority = FIRE_PRIORITY_OVERMAP_PHYSICS
-	subsystem_flags = NONE
+	subsystem_flags = SS_NO_INIT
 	wait = 0.25
 
 	/// processing
