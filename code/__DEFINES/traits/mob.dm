@@ -59,8 +59,12 @@ DATUM_TRAIT(/mob, TRAIT_MOB_FORCED_STANDING)
 #warn ughh
 DATUM_TRAIT(/mob, TRAIT_MOB_ACTOR_MODAL_INITIATOR)
 
-//? misc
+//* Misc *//
 
+/// Emote cooldown trait
+#define TRAIT_EMOTE_COOLDOWN(KEY) "emote-cd-[KEY]"
+/// Emote cooldown trait
+#define TRAIT_EMOTE_GLOBAL_COOLDOWN "emote-cd"
 /// Tracks whether you're a mime or not.
 #define TRAIT_MIMING "miming"
 DATUM_TRAIT(/mob, TRAIT_MIMING)

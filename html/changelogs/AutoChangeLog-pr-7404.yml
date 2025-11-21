@@ -1,0 +1,8 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - bugfix: "fixed disposals break in Sci."
+  - rscdel: "deleted a random APC in Sec lobby."
+  - bugfix: "fixed a superfluous glass wall in Sec prep."
+  - bugfix: "fixed bad wall placements of buttons & equipment in Robotics."
+  - tweak: "adjusts areas on Deck 4 to break up some too-large hallways."
