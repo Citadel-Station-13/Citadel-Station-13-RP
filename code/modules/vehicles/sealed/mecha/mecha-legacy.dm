@@ -999,17 +999,6 @@
 			else//Everyone else gets the normal noise
 				who << sound('sound/mecha/nominal.ogg',volume=50)
 
-/obj/vehicle/sealed/mecha/verb/view_stats()
-	set name = "View Stats"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-	if(usr!=src.occupant_legacy)
-		return
-	//pr_update_stats.start()
-	src.occupant_legacy << browse(src.get_stats_html(), "window=exosuit")
-	return
-
 /obj/vehicle/sealed/mecha/proc/operation_allowed(mob/living/carbon/human/H)
 	for(var/ID in list(H.get_active_held_item(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.operation_req_access))

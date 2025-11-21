@@ -5852,7 +5852,7 @@
 /area/engineering/atmos)
 "rj" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped{
+/obj/vehicle/sealed/mecha/fighter/pinnace/equipped/equipped{
 	dir = 1
 	},
 /obj/machinery/atmospherics/portables_connector{
@@ -12910,7 +12910,7 @@
 /area/engineering/drone_fabrication)
 "NH" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped{
+/obj/vehicle/sealed/mecha/fighter/pinnace/equipped/equipped{
 	dir = 1
 	},
 /obj/machinery/camera/network/civilian{
@@ -13400,7 +13400,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "Pc" = (
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/equipped/equipped,
+/obj/vehicle/sealed/mecha/fighter/pinnace/equipped/equipped,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)

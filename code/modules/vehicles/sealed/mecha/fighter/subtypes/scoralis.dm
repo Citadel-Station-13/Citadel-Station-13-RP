@@ -1,4 +1,4 @@
-/obj/vehicle/sealed/mecha/combat/fighter/scoralis
+/obj/vehicle/sealed/mecha/fighter/scoralis
 	name = "\improper Scoralis"
 	desc = "An imported space fighter with integral cloaking device. Beware the power consumption, though. Not capable of ground operations."
 	icon = 'icons/mecha/fighters64x64.dmi'
@@ -8,9 +8,9 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/scoralis)
 	wreckage = /obj/effect/decal/mecha_wreckage/scoralis
 
-	ground_capable = FALSE
+	flight_works_in_gravity = FALSE
 
-/obj/vehicle/sealed/mecha/combat/fighter/scoralis/equipped
+/obj/vehicle/sealed/mecha/fighter/scoralis/equipped
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
 		/obj/item/vehicle_module/lazy/legacy/cloak,

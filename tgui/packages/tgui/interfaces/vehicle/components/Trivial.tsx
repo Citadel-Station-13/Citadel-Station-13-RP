@@ -3,11 +3,10 @@
  * @license MIT
  */
 
-import { VehicleComponentData } from "../types";
 import { ComponentBase } from "./ComponentBase";
 
-export const Trivial = (props: { data: VehicleComponentData }) => {
+export const Trivial = (props) => {
   return (
-    <ComponentBase data={props.data} />
+    <ComponentBase />
   );
 };

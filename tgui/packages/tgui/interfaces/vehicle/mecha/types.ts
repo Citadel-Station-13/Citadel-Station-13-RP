@@ -3,9 +3,7 @@
  * @license MIT
  */
 
-import { VehicleData } from "../types";
-
-export type VehicleModuleRef = string;
+import { VehicleData, VehicleModuleRef } from "../types";
 
 export interface MechaData extends VehicleData {
   mCompHullRef: VehicleModuleRef | null;

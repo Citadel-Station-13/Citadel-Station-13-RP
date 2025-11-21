@@ -1,4 +1,4 @@
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace
+/obj/vehicle/sealed/mecha/fighter/pinnace
 	name = "\improper Pinnace"
 	desc = "A cramped ship's boat, capable of atmospheric and space flight. Not capable of mounting traditional weapons. Capable of fitting one pilot and one passenger."
 	icon = 'icons/mecha/fighters64x64.dmi'
@@ -18,7 +18,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/pinnace)
 	wreckage = /obj/effect/decal/mecha_wreckage/pinnace
 
-	ground_capable = TRUE
+	flight_works_in_gravity = TRUE
 
 /obj/effect/decal/mecha_wreckage/pinnace
 	name = "pinnace wreckage"

@@ -42,8 +42,6 @@
 	/// * Unfortunately this doesn't work well with multi-tiles. We might have to re-evaluate.
 	opacity = TRUE
 
-	ui_path = "vehicle/mecha/MechaController"
-
 	//* Vehicle - Occupant Actions *//
 	occupant_actions = list(
 		/datum/action/vehicle/mecha/eject,
