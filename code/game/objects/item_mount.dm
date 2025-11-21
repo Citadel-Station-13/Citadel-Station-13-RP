@@ -15,19 +15,23 @@
 /datum/item_mount
 	/// mounted items; lazy list
 	var/list/obj/item/mounted_items
-	/// Stack provider, if any.
-	/// * Unreferenced on qdel; it is up to you to unreference it on your side if you're
-	///   referencing the mount from the provider.
-	/// * Material usage should be routed here; in the future, we may implement defaulted
-	///   stack / material usage procs on `/datum/item_mount`, by pushing `stack_provider`
-	///   down to this level if necessary.
-	var/datum/item_mount/stack_provider
+	/// relay to other item mount by default
+	var/datum/item_mount/relay_to_other
+	/// item mounts relaying to us
+	var/list/datum/item_mount/relay_to_self
 
 /datum/item_mount/Destroy()
 	for(var/obj/item/mounted as anything in mounted_items)
 		unmount(mounted)
 	stack_provider = null
+	relay_unlink_all()
 	return ..()
+
+/datum/item_mount/proc/relay_to(datum/item_mount/other)
+	#warn impl
+
+/datum/item_mount/proc/relay_unlink_all()
+	#warn impl
 
 /datum/item_mount/proc/mount(obj/item/item)
 	if(item.item_mount)
@@ -37,6 +41,7 @@
 
 	LAZYADD(mounted_items, item)
 	item.item_mount = src
+	on_item_mount(item)
 	return TRUE
 
 /datum/item_mount/proc/unmount(obj/item/item)
@@ -44,6 +49,7 @@
 		return TRUE
 	LAZYREMOVE(mounted_items, item)
 	item.item_mount = null
+	on_item_unmount(item)
 	return TRUE
 
 /datum/item_mount/proc/is_mounted(obj/item/item)
@@ -55,111 +61,139 @@
 /datum/item_mount/proc/on_item_del(obj/item/being_deleted)
 	unmount(being_deleted)
 
+/datum/item_mount/proc/on_item_mount(obj/item/item)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+/datum/item_mount/proc/on_item_unmount(obj/item/item)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
 //* Gas *//
 
 /**
  * Get estimated gas pressure.
+ *
+ * @return null, or number
  */
 /datum/item_mount/proc/gas_get_pressure(obj/item/item, key)
-	return 0
+	return relay_to_other?.gas_get_pressure(item, key)
 
 /**
  * Unsafe: Directly references a gas_mixture for a channel.
+ *
+ * @return null, or ref
  */
 /datum/item_mount/proc/gas_mixture_ref(obj/item/item, key)
-	return 0
+	return relay_to_other?.gas_mixture_ref(item, key)
 
 /**
  * Returns a gas mixture by pulling a given liter amount.
+ *
+ * @return null, or ref
  */
 /datum/item_mount/proc/gas_pull_volume(obj/item/item, key, liters)
+	return relay_to_other?.gas_pull_volume(item, key)
 
 /**
  * Fast: erases a given liter amount of gas. Usually used with [gas_mixture_ref]
  * being used to check first.
+ *
+ * @return null, or moles deleted
  */
 /datum/item_mount/proc/gas_erase_volume(obj/item/item, key, liters)
+	return relay_to_other?.gas_pull_volume(item, key)
 
 //* Materials *//
 
 /**
- * * Material is any resolvable material, so ID, path, or instance.
  * Get the name of the provider.
+ * * Material is any resolvable material, so ID, path, or instance.
+ *
+ * @return null, or name
  */
 /datum/item_mount/proc/material_get_provider_name(obj/item/item, key, datum/prototype/material/material)
-	return "stack storage"
+	return relay_to_other?.material_get_provider_name(item, key, material)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
  * * Amount is in cm3
- * @return amount remaining
+ *
+ * @return null, or amount in cm3
  */
 /datum/item_mount/proc/material_get_amount(obj/item/item, key, datum/prototype/material/material)
-	return 0
+	return relay_to_other?.material_get_amount(item, key, material)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
  * * Amount is in cm3
- * @return TRUE / FALSE.
+ *
+ * @return null, or TRUE / FALSE.
  */
 /datum/item_mount/proc/material_has_amount(obj/item/item, key, datum/prototype/material/material, amount)
-	return FALSE
+	return relay_to_other?.material_has_amount(item, key, material, amount)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
  * * Amount is in cm3.
- * @return amount used.
+ *
+ * @return null, or amount used in cm3.
  */
 /datum/item_mount/proc/material_use_amount(obj/item/item, key, datum/prototype/material/material, amount)
-	return 0
+	return relay_to_other?.material_use_amount(item, key, material, amount)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
  * * Amount is in cm3.
- * @return amount used.
+ *
+ * @return null, or amount used.
  */
 /datum/item_mount/proc/material_use_checked_amount(obj/item/item, key, datum/prototype/material/material, amount)
-	return material_has_amount(item, key, material, amount) ? material_use_amount(item, key, material, amount) : 0
+	return material_has_amount(item, key, material, amount) && material_use_amount(item, key, material, amount)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
  * * Amount is in cm3.
- * @return amount given.
+ *
+ * @return null, or amount given.
  */
 /datum/item_mount/proc/material_give_amount(obj/item/item, key, datum/prototype/material/material, amount, force)
-	return 0
+	return relay_to_other?.material_give_amount(item, key, material, amount, force)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
  * * Amount is in cm3.
- * @return max amount.
+ *
+ * @return null, or max amount.
  */
 /datum/item_mount/proc/material_get_capacity(obj/item/item, key, datum/prototype/material/material)
-	return 0
+	return relay_to_other?.material_get_capacity(item, key, material)
 
 //* Power *//
 
 /**
  * Lazy use-power-oneoff style thing
+ *
+ * @return null, or TRUE / FALSE for has that amount of energy
  */
-/datum/item_mount/proc/lazy_power_check(obj/item/item, key, joules)
-	return FALSE
+/datum/item_mount/proc/lazy_energy_check(obj/item/item, key, joules)
+	return relay_to_other?.lazy_power_check(item, key, joules)
 
 /**
  * Lazy use-power-oneoff style thing
- * @return joules supplied
+ *
+ * @return null, or joules supplied
  */
-/datum/item_mount/proc/lazy_power_use(obj/item/item, key, joules, minimum_reserve)
-	return 0
+/datum/item_mount/proc/lazy_energy_use(obj/item/item, key, joules, minimum_reserve)
+	return relay_to_other?.lazy_energy_use(item, key, joules, minimum_reserve)
 
 /**
  * Lazy use-power-oneoff style thing
- * @return joules supplied
+ *
+ * @return null, or joules supplied
  */
-/datum/item_mount/proc/lazy_power_use_checked(obj/item/item, key, joules, minimum_reserve)
-	if(!lazy_power_check(joules + minimum_reserve))
-		return 0
-	return lazy_power_use(joules, minimum_reserve)
+/datum/item_mount/proc/lazy_energy_checked_use(obj/item/item, key, joules, minimum_reserve)
+	return lazy_energy_check(joules + minimum_reserve) && lazy_energy_use(joules, minimum_reserve)
 
 //* Reagents - Direct *//
 

@@ -8,4 +8,10 @@
 	out_list += /obj/item/storage/bag/ore/bluespace
 	return ..()
 
+/obj/item/robot_upgrade/bluespaceorebag/on_install(mob/living/silicon/robot/target)
+	. = ..()
+
+/obj/item/robot_upgrade/bluespaceorebag/on_uninstall(mob/living/silicon/robot/target)
+	. = ..()
+
 #warn suppress regular ore bag; should only be applied if they have one!
