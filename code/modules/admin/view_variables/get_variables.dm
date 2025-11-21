@@ -185,13 +185,13 @@
 				return
 
 		if(VV_FILE)
-			.["value"] = input("Pick file:", "File") as null|file
+			.["value"] = prompt_for_file_or_null("Pick file", "File", 10 * 1024 * 1024)
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 		if(VV_ICON)
-			.["value"] = input("Pick icon:", "Icon") as null|icon
+			.["value"] = prompt_for_icon_or_null("Pick icon", "Icon", 10 * 1024 * 1024)
 			if(.["value"] == null)
 				.["class"] = null
 				return

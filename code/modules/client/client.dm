@@ -142,6 +142,8 @@
 	//* Upload *//
 	/// currently prompting for upload
 	VAR_PRIVATE/upload_mutex = FALSE
+	/// How many things are waiting for upload?
+	VAR_PRIVATE/upload_mutex_waiting = 0
 	/// current upload prompt's max file size
 	VAR_PRIVATE/upload_current_sizelimit
 
