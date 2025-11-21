@@ -184,19 +184,11 @@
 		if("module")
 			if(isrobot(usr))
 				var/mob/living/silicon/robot/R = usr
-//				if(R.module)
-//					R.hud_used.toggle_show_robot_modules()
-//					return 1
-				R.pick_module()
-
-		if("inventory")
-			if(isrobot(usr))
-				var/mob/living/silicon/robot/R = usr
-				if(R.module)
-					R.hud_used.toggle_show_robot_modules()
-					return 1
-				else
-					to_chat(R, "You haven't selected a module yet.")
+				open_tgui_actor_modal(
+					/datum/tgui_actor_modal,
+					new /datum/event_args/actor(R),
+					modal_target = R,
+				)
 
 		if("radio")
 			if(issilicon(usr))
@@ -204,15 +196,6 @@
 		if("panel")
 			if(issilicon(usr))
 				usr:installed_modules()
-
-		if("store")
-			if(isrobot(usr))
-				var/mob/living/silicon/robot/R = usr
-				if(R.module)
-					R.uneq_active()
-					R.hud_used.update_robot_modules_display()
-				else
-					to_chat(R, "You haven't selected a module yet.")
 
 		if("module1")
 			if(istype(usr, /mob/living/silicon/robot))

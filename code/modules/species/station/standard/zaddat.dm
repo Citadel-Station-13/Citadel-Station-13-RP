@@ -100,7 +100,7 @@
 	// ensure they have a valid mask
 	var/mask_type = /obj/item/clothing/mask/gas/zaddat
 	if(for_target)
-		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask)
+		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask::id)
 		if(for_target.temporarily_remove_from_inventory(existing_mask, INV_OP_FORCE | INV_OP_SILENT))
 			into_inv?.Add(existing_mask)
 			var/obj/item/creating_mask = new mask_type
@@ -114,7 +114,7 @@
 
 	var/suit_path = /obj/item/clothing/suit/space/void/zaddat
 	if(for_target)
-		var/obj/item/existing_suit_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/suit)
+		var/obj/item/existing_suit_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/suit::id)
 		var/obj/item/creating_suit_slot = new suit_path
 		if(existing_suit_slot)
 			if(for_target.temporarily_remove_from_inventory(existing_suit_slot, INV_OP_FORCE | INV_OP_SILENT))
