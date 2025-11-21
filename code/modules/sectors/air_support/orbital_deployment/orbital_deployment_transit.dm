@@ -74,7 +74,14 @@
 		lower_left.z,
 		NORTH,
 	)
-	var/list/dst_ordered
+	var/list/dst_ordered = SSgrids.get_ordered_turfs(
+		,
+		,
+		,
+		,
+		allocating.bottom_left_coords[3],
+		NORTH,
+	)
 	#warn impl
 
 	SSgrids.translate(

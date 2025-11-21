@@ -179,7 +179,10 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	if(!their_entity)
 		return null
 	var/datum/orbital_deployment_transit/transit = new(src)
-	transit.allocate_and_package(locate(lower_left.x + 1, lower_left.y + 1, lower_left.z), locate(upper_right.x - 1, upper_right.y - 1, upper_right.z))
+	if(!transit.allocate_and_package(locate(lower_left.x + 1, lower_left.y + 1, lower_left.z), locate(upper_right.x - 1, upper_right.y - 1, upper_right.z), current_area))
+		qdel(transit)
+		CRAsH("failed to package transit; this shouldn't happen")
+	construct_zone()
 	var/obj/overmap/entity/orbital_deployment_transit/transit_entity = new(our_entity, src, transit)
 	transit_entity.launch(their_entity)
 	return transit_entity
