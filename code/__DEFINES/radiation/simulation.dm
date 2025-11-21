@@ -95,7 +95,7 @@
 /// mecha nuclear generator rad per tick
 #define RAD_INTENSITY_MECH_REACTOR_TICK 50
 /// phasing being cancelled by damage
-#define RAD_INTENSITY_MECH_JANUS_FORCED_UNPHASE 350
+#define RAD_INTENSITY_MECH_JANUS_FORCED_UNPHASE 750
 
 //? misc
 /// manhole cover for POI
