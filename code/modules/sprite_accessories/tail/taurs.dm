@@ -158,6 +158,7 @@
 	icon_state = "altnaga"
 	extra_overlay = "altnaga_markings"
 	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	override_icon_sidedness_for_micros = TRUE
 
 /datum/sprite_accessory/tail/legacy_taur/naga/naga_tailmaw
 	name = "Naga Tailmaw (Taur)"
