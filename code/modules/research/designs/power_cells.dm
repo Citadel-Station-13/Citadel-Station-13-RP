@@ -3,12 +3,6 @@
 	category = DESIGN_CATEGORY_POWER
 	lathe_type = LATHE_TYPE_PROTOLATHE | LATHE_TYPE_MECHFAB
 
-/datum/prototype/design/science/powercell/print(atom/where)
-	var/obj/item/cell/C = ..()
-	C.charge = 0 //shouldn't produce power out of thin air.
-	C.update_icon()
-	return C
-
 /datum/prototype/design/science/powercell/basic
 	id = "basic_cell"
 	req_tech = list(TECH_POWER = 1)

@@ -141,7 +141,8 @@
 	set_weight_class(VALUE_OR_DEFAULT(active_weight_class, initial(w_class)))
 	set_weight_volume(VALUE_OR_DEFAULT(active_weight_volume, initial(weight_volume)))
 
-	attack_verb = active_attack_verb
+	if(active_attack_verb || inactive_attack_verb)
+		attack_verb = active_attack_verb
 
 	if(!silent && activation_sound)
 		playsound(src, activation_sound, toggle_sound_volume, TRUE)
@@ -165,7 +166,8 @@
 	set_weight_class(VALUE_OR_DEFAULT(inactive_weight_class, initial(w_class)))
 	set_weight_volume(VALUE_OR_DEFAULT(inactive_weight_volume, initial(weight_volume)))
 
-	attack_verb = inactive_attack_verb
+	if(active_attack_verb || inactive_attack_verb)
+		attack_verb = inactive_attack_verb
 
 	if(!silent && (activation_sound || deactivation_sound))
 		playsound(src, deactivation_sound || activation_sound, toggle_sound_volume, TRUE)

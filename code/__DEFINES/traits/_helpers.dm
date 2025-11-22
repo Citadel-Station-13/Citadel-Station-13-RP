@@ -16,6 +16,7 @@
 			} \
 		} \
 	} while (0)
+#define ADD_TRAIT_IN(target, trait, source, time) addtimer(CALLBACK(target, TYPE_PROC_REF(/datum, ___callbackaddtrait), trait, source), time);
 #define REMOVE_TRAIT(target, trait, sources) \
 	do { \
 		var/list/_L = target.status_traits; \
@@ -39,21 +40,7 @@
 			}; \
 		} \
 	} while (0)
-#define REMOVE_TRAITS_NOT_IN(target, sources) \
-	do { \
-		var/list/_L = target.status_traits; \
-		var/list/_S = sources; \
-		if (_L) { \
-			for (var/_T in _L) { \
-				_L[_T] &= _S;\
-				if (!length(_L[_T])) { \
-					_L -= _T } \
-				};\
-				if (!length(_L)) { \
-					target.status_traits = null\
-				};\
-		}\
-	} while (0)
+#define REMOVE_TRAIT_IN(target, trait, source, time) addtimer(CALLBACK(target, TYPE_PROC_REF(/datum, ___callbackdeltrait), trait, source), time);
 #define HAS_TRAIT(target, trait) (target.status_traits ? (target.status_traits[trait] ? TRUE : FALSE) : FALSE)
 #define HAS_TRAIT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (source in target.status_traits[trait]) : FALSE) : FALSE)
 #define HAS_TRAIT_FROM_ONLY(target, trait, source) (\
@@ -63,6 +50,12 @@
 			: FALSE)\
 		: FALSE)
 #define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
+
+/datum/proc/___callbackaddtrait(trait, source)
+	ADD_TRAIT(src, trait, source)
+
+/datum/proc/___callbackdeltrait(trait, source)
+	REMOVE_TRAIT(src, trait, source)
 
 /// trait registration defines
 /// due to how defines work, this goes AFTER the trait define!

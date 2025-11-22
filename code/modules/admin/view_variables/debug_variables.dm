@@ -71,7 +71,7 @@
 		else
 			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
 
-	else if ((maybe_bitfield = fetch_bitfield(D?.type, name)))
+	else if (istype(D) && (maybe_bitfield = fetch_bitfield(D.type, name)))
 		var/list/flags = list()
 		for(var/i in 1 to maybe_bitfield.get_declared_count())
 			var/bit = maybe_bitfield.bits[i]
