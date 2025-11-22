@@ -103,13 +103,26 @@
 			if(distance)
 				// solve for angle up from horizon (altitude)
 
-				// 0 = sin(alt) * v0 - g * t
-				// sin(alt) * v0 = g * t
-				// t = (sin(alt) * v0) / g
+				// t = xf / x'
+				// t = dist / cos(alt)
 
-				// dist = x' * t
-				#warn impl
-				return list(angle_up, velocity, distance, t_final)
+				// 0 = sin(alt) + grav * (t / 2)
+				// 0 = sin(alt) + grav * dist / (2 * cos(alt))
+				// -sin(alt) = grav * dist / (2 * cos(alt))
+				// 2 sin(alt) = -grav * dist / cos(alt)
+				// 2 sin(alt) cos(alt) = -(grav * dist)
+
+				// AAAAAAAAAAAAAA PUTNAM HELPIES
+				// jk
+				// (sin(2alt) * v^2 ) / (grav) = dist
+				// sin(2alt) * velocity^2 = dist * grav
+				// sin(2alt) = (dist * grav) / v^2
+				// 2alt = arcsin((dist*grav) / v^2)
+				// alt = arcsin((dist*grav) / v^2) / 2
+				altitude = arcsin((distance * gravity) / (velocity ** 2)) / 2
+				x_vel_initial = cos(altitude) * velocity
+				t_final = distance / x_vel_initial
+				return list(altitude, velocity, distance, t_final)
 			else
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, only got velocity")
 		else

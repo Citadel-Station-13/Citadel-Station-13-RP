@@ -11,9 +11,11 @@
 	var/list/atom/movable/falling_out_of_the_sky = list()
 
 	var/datum/orbital_deployment_transit/transit
+	var/datum/event_args/actor/launching_actor
 
 /datum/orbital_deployment_translation/New(datum/orbital_deployment_transit/from_transit)
 	transit = from_transit
+	launching_actor = transit.launching_actor
 
 /datum/orbital_deployment_translation/Destroy()
 	transit = null

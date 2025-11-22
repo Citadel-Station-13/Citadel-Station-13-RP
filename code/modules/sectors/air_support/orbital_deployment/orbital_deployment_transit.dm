@@ -8,6 +8,11 @@
 	var/datum/map_reservation/reservation
 	var/area/structural_area
 
+	// Person who initiated the launch.
+	// * This is only referenced like so because transit is short-lived.
+	//   If this becomes a long-lived entity, in the future we'll want to have
+	//   actor be able to return a snapshot with weakrefs and ckeys
+	//   as to not block GC.
 	var/datum/event_args/actor/launching_actor
 
 	var/c_impact_obj_dmg_base
@@ -76,6 +81,10 @@
 		lower_left.z,
 		NORTH,
 	)
+
+	var/target_x
+	var/target_y =
+	var/target_z = allocating.bottom_left_coords[3]
 	var/list/dst_ordered = SSgrids.get_ordered_turfs(
 		,
 		,

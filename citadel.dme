@@ -859,7 +859,6 @@
 #include "code\datums\components\clients\client_freezoom_handler.dm"
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\guncrafting.dm"
-#include "code\datums\components\items\freezoom.dm"
 #include "code\datums\components\items\passive_parry.dm"
 #include "code\datums\components\items\wielding.dm"
 #include "code\datums\components\mobs\block_frame.dm"
