@@ -22,7 +22,7 @@
 	// TODO: better dir prediction
 	var/dir_to_turn = get_dir(source.mob, source.mouse_predicted_last_atom)
 	// TODO: use self-turn
-	#warn turn
+	source.mob.self_turn(dir_to_turn)
 
 /datum/component/client_face_cursor/proc/add_source(source)
 	sources |= source

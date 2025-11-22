@@ -126,6 +126,8 @@
 	START_PROCESSING(SSprocessing, src)
 
 /obj/item/rangefinder/proc/destroy_laser_designator_target()
+	if(!active_laser_target)
+		return
 	if(!QDELETED(active_laser_target))
 		qdel(active_laser_target)
 	active_laser_target = null
@@ -136,8 +138,11 @@
 
 /obj/item/rangefinder/proc/reconsider_laser_designation()
 	var/turf/target_turf = get_turf(active_laser_target)
-	var/list/traced = trace_laser_designation(target_turf)
-	#warn trace
+	var/list/turf/traced = trace_laser_designation(target_turf)
+	for(var/turf/T as anything in traced)
+		if(T.has_opaque_atom)
+			destroy_laser_designator_target()
+			return
 
 /obj/item/rangefinder/proc/trace_laser_designation(turf/target) as /list
 	var/turf/our_turf = get_turf(src)
@@ -186,6 +191,20 @@
 
 	target_turf = get_turf(target)
 	traced = trace_laser_designation(target_turf)
+
+	var/no_los = FALSE
+	for(var/turf/T as anything in traced)
+		if(T.has_opaque_atom)
+			no_los = TRUE
+			break
+
+	if(no_los)
+		clickchain.chat_feedback(
+			SPAN_WARNING("Your line of sight to [target] is blocked by something."),
+			target = src,
+		)
+		return TRUE
+
 	#warn impl
 
 /obj/item/rangefinder/process(delta_time)

@@ -68,6 +68,8 @@
 	//? Movespeed
 	/// Next world.time we will be able to move.
 	var/move_delay = 0
+	/// Next world.time we should allow a self-turn
+	var/turn_delay = 2
 	/// Last world.time we finished a normal, non relay/intercepted move
 	var/last_self_move = 0
 	/// Last world.time we turned in our spot without moving (see: facing directions)

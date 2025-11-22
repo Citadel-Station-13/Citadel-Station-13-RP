@@ -5,7 +5,6 @@
  * Solves missing variables of a kinematic trajectory.
  *
  * These must be present:
- * * elevation (impact elevation)
  * * gravity
 
  * 2 of the 3 must be present:

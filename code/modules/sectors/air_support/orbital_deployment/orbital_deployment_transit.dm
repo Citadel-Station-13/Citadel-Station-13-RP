@@ -8,6 +8,10 @@
 	var/datum/map_reservation/reservation
 	var/area/structural_area
 
+	var/packaged_width
+	var/packaged_height
+	var/packaged_border
+
 	// Person who initiated the launch.
 	// * This is only referenced like so because transit is short-lived.
 	//   If this becomes a long-lived entity, in the future we'll want to have
@@ -69,8 +73,13 @@
 	if(!allocating)
 		. = FALSE
 		CRASH("failed to reserve map level")
+
 	reservation = allocating
 	structural_area = zone_area
+
+	packaged_width = width
+	packaged_height = height
+	packaged_border = border
 
 	// move into
 	var/list/src_ordered = SSgrids.get_ordered_turfs(
@@ -82,18 +91,19 @@
 		NORTH,
 	)
 
-	var/target_x
-	var/target_y =
+	var/target_x = allocating.bottom_left_coords[1] + border
+	var/target_y = allocating.bottom_left_coords[2] + border
 	var/target_z = allocating.bottom_left_coords[3]
 	var/list/dst_ordered = SSgrids.get_ordered_turfs(
-		,
-		,
-		,
-		,
+		target_x,
+		target_y,
+		target_x + width - 1,
+		target_y + height - 1,
 		allocating.bottom_left_coords[3],
 		NORTH,
 	)
-	#warn impl
+
+	var/turf/testing_turf = lower_left
 
 	log_orbital_deployment(launching_actor, "allocating/packaging a [width]x[height] area")
 
@@ -103,7 +113,7 @@
 		NORTH,
 		NORTH,
 		GRID_MOVE_AREA | GRID_MOVE_MOVABLES | GRID_MOVE_TURF,
-		/turf/baseturf_skipover/orbital_deployment_zone,
+		testing_turf.baseturf_core(),
 		/area/space,
 	)
 
@@ -131,30 +141,31 @@
 	qdel(src)
 
 /datum/orbital_deployment_transit/proc/perform_chunk_translation_to_landing(datum/orbital_deployment_translation/translation)
-	#warn impl
+	ASSERT(target_lower_left)
+	ASSERT(target_dir_from_north)
 
-	var/wanted_dir = math__angle_to_dir_exact_or_throw(rotation_degrees)
-
-	var/list/measured = measure_current_dimensions()
-	var/width = measured[1]
-	var/height = measured[2]
-
-	if(target_lower_left.x < 1)
-
-	#warn impl
-	calculate_entity_motion_with_respect_to_moving_point()
-	var/list/destination_turfs = SSgrids.get_ordered_turfs(
+	var/list/from_lower_left_coords = reservation.bottom_left_coords
+	var/list/from_turfs = SSgrids.get_ordered_turfs(
+		from_lower_left_coords[1],
+		from_lower_left_coords[1] + packaged_width - 1,
+		from_lower_left_coords[2],
+		from_lower_left_coords[2] + packaged_height - 1,
+		from_lower_left_coords[3],
+		NORTH,
+	)
+	var/list/to_turfs = SSgrids.get_ordered_turfs(
 		target_lower_left.x,
-		target_lower_left.x + width - 1,
+		target_lower_left.x + packaged_width - 1,
 		target_lower_left.y,
-		target_lower_left.y + height - 1,
+		target_lower_left.y + packaged_height - 1,
 		target_lower_left.z,
+		target_dir_from_north
 	)
 
 	var/list/out_motion_flags = list()
 	var/list/out_moved_atoms = list()
 
-	var/datum/orbital_deployment_translation/translation = new
+	var/datum/orbital_deployment_translation/translation = new(src)
 
 	var/datum/bound_proc/turf_overlap_handler = BOUND_PROC(translation, TYPE_PROC_REF(/datum/orbital_deployment_translation, on_turf_overlap))
 	var/datum/bound_proc/movable_overlap_handler = BOUND_PROC(translation, TYPE_PROC_REF(/datum/orbital_deployment_translation, on_movable_overlap))
@@ -163,15 +174,15 @@
 		from_turfs,
 		to_turfs,
 		NORTH,
-		wanted_dir,
+		target_dir_from_north,
 		GRID_MOVE_AREA | GRID_MOVE_MOVABLES | GRID_MOVE_TURF,
-		null,
-		base_area,
+		reservation.turf_type,
+		reservation.area_type,
 		out_motion_flags,
 		out_moved_atoms,
 		turf_overlap_handler,
 		movable_overlap_handler,
 	)
 
-	translation.run_aftereffects(current_area)
+	translation.run_aftereffects(structural_area)
 

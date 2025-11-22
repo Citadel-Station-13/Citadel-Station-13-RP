@@ -33,9 +33,18 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	return ..()
 
 /obj/machinery/orbital_deployment_controller/LateInitialize()
-	#warn find zone
+	find_zone()
 
 /obj/machinery/orbital_deployment_controller/proc/find_zone()
+	var/datum/orbital_deployment_zone/found
+	for(var/datum/orbital_deployment_zone/zone in GLOB.orbital_deployment_zones)
+		for(var/obj/orbital_deployment_marker/corner/corner as anything in zone.get_corners())
+			if(get_dist(corner, src) < linkage_search_radius)
+				found = zone
+				break
+	if(!found)
+		CRASH("[src] ([COORD(src)]) couldn't find an orbital deployment zone.")
+	link_zone(found)
 
 /obj/machinery/orbital_deployment_controller/proc/link_zone(datum/orbital_deployment_zone/zone)
 	if(linked_zone)
@@ -153,6 +162,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 			return TRUE
 		if("launch")
 			if(!linked_zone)
+				return TRUE
+			if(linked_zone.time_to_armed() > 0)
 				return TRUE
 			var/atom/movable/target_ref
 			if(params["targetType"] == "laser")

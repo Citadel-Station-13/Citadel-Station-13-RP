@@ -11,7 +11,3 @@
 	icon_state = "superstructure"
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	material_system = FALSE
-
-/turf/baseturf_skipover/orbital_deployment_zone
-	name = "Orbital drop baseturf skipover"
-	desc = "Acts like the bottom of an orbital deployment zone. This is how it knows what to move."

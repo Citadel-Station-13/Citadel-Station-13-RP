@@ -165,6 +165,9 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 /datum/orbital_deployment_zone/proc/time_to_armed()
 	return max(0, world.time - (arming_last_toggle + arming_time))
 
+/datum/orbital_deployment_zone/proc/get_corners()
+	return list(lower_left, lower_right, upper_left, upper_right)
+
 /datum/orbital_deployment_zone/proc/get_overmap_entity() as /obj/overmap/entity
 	return SSovermaps.get_enclosing_overmap_entity(lower_left)
 
