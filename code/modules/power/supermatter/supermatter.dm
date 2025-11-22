@@ -472,6 +472,8 @@
 	spawn(0)
 		if(their_loc != bumped_atom.loc)
 			return
+		if(bumped_atom.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
+			return
 		if(istype(bumped_atom, /obj/effect))
 			return
 		if(istype(bumped_atom, /mob/living))
@@ -492,6 +494,8 @@
 	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
 	// so we add a sanity check here
 	if(QDELETED(user))
+		return
+	if(user & (ATOM_ABSTRACT | ATOM_NONWORLD))
 		return
 	investigate_log("Consumed [user] ([ref(user)]) potentially last touched by [user.fingerprintslast], adding [istype(user)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
 	if(istype(user))

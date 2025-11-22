@@ -17,13 +17,19 @@ SUBSYSTEM_DEF(spatial_grids)
 	var/datum/spatial_grid/vehicles
 	/// /obj/overmap/entity's
 	var/datum/spatial_grid/overmap_entities
+	/// laser designator tracks
+	var/datum/spatial_grid/laser_designations
+	/// signal flares
+	var/datum/spatial_grid/signal_flares
 
 /datum/controller/subsystem/spatial_grids/Initialize()
 	make_grids()
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/spatial_grids/proc/make_grids()
-	living = new /datum/spatial_grid(/mob/living)
+	living = new /datum/spatial_grid(/mob/living, SPATIAL_GRID_INIT_OPTIMIZE_ALL_Z)
+	laser_designations = new /datum/spatial_grid(/atom, SPATIAL_GRID_INIT_OPTIMIZE_ALL_Z)
+	signal_flares = new /datum/spatial_grid(/obj/item/signal_flare, SPATIAL_GRID_INIT_OPTIMIZE_ALL_Z)
 	vehicles = new /datum/spatial_grid(/obj/vehicle)
 	overmap_entities = new /datum/spatial_grid(/obj/overmap/entity)
 
@@ -34,6 +40,7 @@ SUBSYSTEM_DEF(spatial_grids)
 	living?.sync_world_z(new_z_count)
 	vehicles?.sync_world_z(new_z_count)
 	overmap_entities?.sync_world_z(new_z_count)
+	signal_flares?.sync_world_z(new_z_count)
 
 /**
  * index = ceil(x / resolution) + width * (ceil(y / resolution) - 1)
@@ -163,8 +170,8 @@ SUBSYSTEM_DEF(spatial_grids)
 
 /**
  * gets all registered movables
- *
- * * somewhat inefficient, why are you doing this?
+ * * pretty slow unless `optimize_get_all_on_z` is enabled; please don't use this much if it isn't, or
+ *   enable it if it's needed.
  */
 /datum/spatial_grid/proc/all_atoms(z)
 	if(optimize_get_all_on_z)

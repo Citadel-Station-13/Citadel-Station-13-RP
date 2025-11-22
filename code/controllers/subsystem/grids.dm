@@ -103,7 +103,6 @@ SUBSYSTEM_DEF(grids)
  * * turfs can contain nulls
  * * input turf lists are edited
  * * area_cache must have truthy associations.
- * * the same index in from_turfs that are nulled are nulled in to_turfs
  */
 /datum/controller/subsystem/grids/proc/filter_ordered_turfs_via_area(list/area/area_cache, list/turf/ordered_turfs)
 	. = list()
@@ -143,6 +142,7 @@ SUBSYSTEM_DEF(grids)
 
 /datum/controller/subsystem/grids/proc/do_translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags, list/emit_moved_atoms, datum/bound_proc/turf_overlap_handler, datum/bound_proc/movable_overlap_handler)
 	PRIVATE_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	// While based on /tg/'s movement system, we do a few things differently.
 	// First, limitations:
 	// * base-areas aren't a thing. Areas are flat out trampled on move. On takeoff, areas are reset.
@@ -455,13 +455,12 @@ SUBSYSTEM_DEF(grids)
 	SHOULD_NOT_SLEEP(TRUE)
 	return FALSE
 
-//* grid area left behind if a grid move is not given an area to leave
+//* grid area left behind if a grid move is not given an area to leave *//
 
 /area/grid_orphaned
 	name = "orphaned grid area"
 	desc = "someone fucked up"
-	// it's on shuttle branch :>
-	// icon = 'icons/turf/area/debug.dmi'
-	// icon_state = "grid-orphan"
+	icon = 'icons/turf/area/debug.dmi'
+	icon_state = "grid-orphan"
 	plane = DEBUG_PLANE
 	layer = DEBUG_LAYER_AREA_OVERLAYS

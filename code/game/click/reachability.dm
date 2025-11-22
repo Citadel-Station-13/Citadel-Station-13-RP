@@ -179,6 +179,7 @@
 	return curr.TurfAdjacency(source)
 
 /atom/movable/reachability_delegate
+	atom_flags = ATOM_NONWORLD
 	pass_flags = ATOM_PASS_CLICK | ATOM_PASS_TABLE
 	invisibility = INVISIBILITY_ABSTRACT
 
