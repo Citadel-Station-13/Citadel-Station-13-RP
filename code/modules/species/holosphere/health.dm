@@ -8,19 +8,6 @@
 
 	handle_regen(H)
 
-/datum/species/shapeshifter/holosphere/proc/handle_transform_state()
-	var/current_transform_state = get_current_transform_state()
-	var/expected_transform_state = get_expected_transform_state(current_transform_state)
-	if(current_transform_state == expected_transform_state)
-		return
-
-	message_admins("CURRENT STATE: [current_transform_state] EXPECTED STATE: [expected_transform_state]")
-
-	if(expected_transform_state == STATE_TRANSFORMED)
-		try_transform(force = TRUE) // transform even if dead
-	else if(expected_transform_state == STATE_NOT_TRANSFORMED)
-		try_untransform(force = TRUE) // untransform even if dead
-
 /datum/species/shapeshifter/holosphere/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)
 		QDEL_NULL(holosphere_shell)

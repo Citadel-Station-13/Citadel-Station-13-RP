@@ -26,3 +26,16 @@
 		return STATE_TRANSFORMED
 	// otherwise we can be our current state
 	return current_transform_state
+
+// compares current and expected state
+// transforms/untransforms to move to the expected state
+/datum/species/shapeshifter/holosphere/proc/handle_transform_state()
+	var/current_transform_state = get_current_transform_state()
+	var/expected_transform_state = get_expected_transform_state(current_transform_state)
+	if(current_transform_state == expected_transform_state)
+		return
+
+	if(expected_transform_state == STATE_TRANSFORMED)
+		try_transform(force = TRUE) // transform even if dead
+	else if(expected_transform_state == STATE_NOT_TRANSFORMED)
+		try_untransform(force = TRUE) // untransform even if dead
