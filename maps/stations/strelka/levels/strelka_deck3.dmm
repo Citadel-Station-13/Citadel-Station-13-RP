@@ -5795,6 +5795,9 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/secondary)
+"sY" = (
+/turf/simulated/floor/wood/indoors,
+/area/medical/strelka/psy)
 "tb" = (
 /obj/structure/sign/department/operational,
 /turf/simulated/wall/r_wall/prepainted/medical,
@@ -6511,6 +6514,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)
@@ -7521,6 +7527,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck3)
+"yH" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/medical/strelka/psy)
 "yI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -13256,6 +13268,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/roomhallway)
 "Qh" = (
@@ -14823,13 +14838,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
-"Vh" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/wall/r_wall/prepainted/medical,
-/area/medical/strelka/psy)
 "Vk" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
 	name = "Research Testing Scrubber";
@@ -16239,10 +16247,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
 "ZX" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 4;
-	pixel_x = -30
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -32268,9 +32272,9 @@ SV
 Kw
 yM
 KD
-bZ
-Pd
-Vh
+yH
+sY
+ay
 cy
 Ft
 Sf
@@ -32462,8 +32466,8 @@ zq
 MH
 MH
 MH
-ay
-ay
+bZ
+Pd
 ay
 sQ
 GA
