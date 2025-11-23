@@ -2,6 +2,8 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /atom/movable/laser_designator_target
+	plane = ABOVE_LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER_MAIN
 	#warn sprite
 	/// allow weapons guidance
 	var/allow_weapons_guidance = FALSE
@@ -82,7 +84,14 @@
 	/// * THIS IS NOT NECESSARILY THE PERSON HOLDING US.
 	var/mob/currently_zoomed_in
 
-	// TODO: sound.
+	var/sfx_lasing_start
+	var/sfx_lasing_start_vol = 75
+	var/sfx_lasing_start_vary = FALSE
+
+	var/sfx_lasing_lock
+	var/sfx_lasing_lock_vol = 75
+	var/sfx_lasing_lock_vary = FALSE
+	#warn impl sound
 
 /obj/item/rangefinder/Destroy()
 	QDEL_NULL(active_laser_target)

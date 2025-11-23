@@ -9,9 +9,11 @@
 
 /atom/movable/render/orbital_deployment_telegraph/Initialize(mapload, packaged_width, packaged_height, landing_time)
 	. = ..()
-	QDEL_IN(src, landing)
-
-	#warn sprite
+	scale_to_packaged(packaged_width, packaged_height)
+	animation(landing_time)
+	QDEL_IN(src, landing_time)
 
 /atom/movable/render/orbital_deployment_telegraph/proc/scale_to_packaged(width, height)
-/atom/movable/render/orbital_deployment_telegraph/proc/animation(width, height)
+/atom/movable/render/orbital_deployment_telegraph/proc/animation()
+
+#warn impl

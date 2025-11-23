@@ -47,8 +47,6 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 
 	var/area/current_area
 
-#warn impl
-
 /datum/orbital_deployment_zone/New(
 	obj/orbital_deployment_marker/lower_left,
 	obj/orbital_deployment_marker/lower_right,

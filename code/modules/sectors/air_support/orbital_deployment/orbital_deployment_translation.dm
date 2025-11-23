@@ -72,13 +72,7 @@
 	var/turf/mob_query_center = locate(dest_lower_left.x + mob_query_dist, dest_lower_left.y + mob_query_dist, dest_lower_left.z)
 	for(var/mob/try_and_cheat_this_explo in SSspatial_grids.living.range_query(mob_query_center, mob_query_dist))
 		var/turf/where = get_turf(try_and_cheat_this_explo)
-		if(where.x < dest_lower_left.x)
-			continue
-		if(where.x > dest_upper_right.x)
-			continue
-		if(where.y < dest_lower_left.y)
-			continue
-		if(where.y > dest_upper_right.y)
+		if(where.loc != transported_area)
 			continue
 		to_damage_mobs += try_and_cheat_this_explo
 
@@ -119,6 +113,7 @@
 					DAMAGE_TYPE_BRUTE,
 					6,
 					ARMOR_MELEE,
+					DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
 				)
 		CHECK_TICK
 
@@ -145,6 +140,7 @@
 				DAMAGE_TYPE_BRUTE,
 				4,
 				ARMOR_BOMB,
+				DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
 			)
 		CHECK_TICK
 	for(var/mob/M as anything in to_damage_mobs)
@@ -156,8 +152,8 @@
 					transit.c_landing_mob_dmg_base + rand(1, transit.c_landing_mob_dmg_sides),
 					DAMAGE_TYPE_BRUTE,
 					5,
-					DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
 					ARMOR_BOMB,
+					DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
 					hit_zone = pick(global.all_body_zones),
 				)
 				CHECK_TICK
