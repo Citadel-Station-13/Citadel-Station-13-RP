@@ -1,5 +1,7 @@
-/proc/load_configuration()
+/proc/create_legacy_configuration()
 	config_legacy = new /datum/configuration_legacy()
+
+/proc/load_legacy_configuration()
 	config_legacy.load("config/legacy/config.txt")
 	config_legacy.load("config/legacy/game_options.txt","game_options")
 
@@ -113,13 +115,13 @@
 	var/expected_round_length = 3 * 60 * 60 * 10 // 3 hours
 	// If the first delay has a custom start time
 	// No custom time, no custom time, between 80 to 100 minutes respectively.
-	var/list/event_first_run   = list(EVENT_LEVEL_MUNDANE = null, 	EVENT_LEVEL_MODERATE = null,	EVENT_LEVEL_MAJOR = list("lower" = 48000, "upper" = 60000))
+	var/list/event_first_run   = list(null, null, list("lower" = 48000, "upper" = 60000))
 	// The lowest delay until next event
 	// 10, 30, 50 minutes respectively
-	var/list/event_delay_lower = list(EVENT_LEVEL_MUNDANE = 6000,	EVENT_LEVEL_MODERATE = 18000,	EVENT_LEVEL_MAJOR = 30000)
+	var/list/event_delay_lower = list(6000, 18000, 30000)
 	// The upper delay until next event
 	// 15, 45, 70 minutes respectively
-	var/list/event_delay_upper = list(EVENT_LEVEL_MUNDANE = 9000,	EVENT_LEVEL_MODERATE = 27000,	EVENT_LEVEL_MAJOR = 42000)
+	var/list/event_delay_upper = list(9000, 27000, 42000)
 
 	var/aliens_allowed = 0
 	var/ninjas_allowed = 0

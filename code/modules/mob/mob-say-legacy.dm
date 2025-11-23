@@ -1,48 +1,8 @@
 /mob/proc/say(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
-
-/mob/proc/whisper_wrapper()
-	var/message = input("","whisper (text)") as text|null
-	if(message)
-		whisper(message)
-
-/mob/proc/subtle_wrapper()
-	var/message = input("","subtle (text)") as message|null
-	if(message)
-		me_verb_subtle(message)
-
-/mob/proc/subtler_wrapper()
-	var/message = input("","subtler (text)") as message|null
-	if(message)
-		subtler_anti_ghost(message)
-
-/mob/verb/whisper(message as text)
-	set name = "Whisper"
-	set category = VERB_CATEGORY_IC
-
-	usr.say(message,whispering=1)
-
-/mob/verb/say_verb(message as text)
-	set name = "Say"
-	set category = VERB_CATEGORY_IC
-
-	set_typing_indicator(FALSE)
-	usr.say(message)
-
-/mob/verb/me_verb(message as message)
-	set name = "Me"
-	set category = VERB_CATEGORY_IC
-
-	if(muffled)
-		return me_verb_subtle(message)
-	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
-
-	set_typing_indicator(FALSE)
-	if(use_me)
-		usr.emote("me",SAYCODE_TYPE_ALWAYS,message)
-	else
-		usr.emote(message)
+/mob/proc/whisper(var/message, var/datum/prototype/language/speaking = null, var/verb="says", var/alt_name="")
+	say(message, speaking, verb, alt_name, TRUE)
 
 /mob/proc/say_dead(var/message)
 	if(!client)
@@ -118,10 +78,6 @@
 	else if(ending=="?")
 		verb="asks"
 	return verb
-
-/mob/proc/emote(var/act, var/type, var/message)
-	if(act == "me")
-		return custom_emote(type, message)
 
 /mob/proc/get_ear()
 	// returns an atom representing a location on the map from which this

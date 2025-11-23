@@ -22,10 +22,18 @@
 	/// TODO: legacy, stop using this, emags unlocking functionality
 	///       should be handled literally any other way
 	var/list/obj/item/emag_items
+	/// suppressed items, item = true ?
+	/// * suppressed items aren't accessible by the robot (but still exist in them)
+	var/list/obj/item/suppressed_items
+	/// relay mount
+	var/datum/item_mount/robot_provisioning/relay_mount
 
 /datum/robot_provisioning/Destroy()
 	if(applied_to_robot)
 		remove()
+	QDEL_LIST(items)
+	QDEL_LIST(emag_items)
+	QDEL_NULL(relay_mount)
 	return ..()
 
 /datum/robot_provisioning/proc/apply(mob/living/silicon/robot/robot)
@@ -35,3 +43,44 @@
 /datum/robot_provisioning/proc/remove()
 
 #warn impl
+
+/datum/robot_provisioning/proc/add_item(obj/item/item)
+
+/datum/robot_provisioning/proc/remove_item(obj/item/item)
+
+/datum/robot_provisioning/proc/add_emag_item(obj/item/item)
+
+/datum/robot_provisioning/proc/remove_emag_item(obj/item/item)
+
+/**
+ * @return list of items suppressed
+ */
+/datum/robot_provisioning/proc/suppress_all_types_of(path) as /list
+	#warn impl
+
+/**
+ * @return list of items unsuppressed
+ */
+/datum/robot_provisioning/proc/unsuppress_all_types_of(path) as /list
+	#warn impl
+
+/datum/robot_provisioning/proc/on_item_add(obj/item/item)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	if(!applied_to_robot)
+		return
+
+/datum/robot_provisioning/proc/on_item_remove(obj/item/item)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	if(!applied_to_robot)
+		return
+
+/datum/item_mount/robot_provisioning
+
+/datum/item_mount/robot_provisioning/on_item_mount(obj/item/item)
+	..()
+
+/datum/item_mount/robot_provisioning/on_item_unmount(obj/item/item)
+	..()
+	#warn obliterate the item if not already

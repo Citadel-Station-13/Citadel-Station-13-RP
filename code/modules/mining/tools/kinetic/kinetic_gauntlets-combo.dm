@@ -31,7 +31,7 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 		INTENT_DISARM,
 		INTENT_HARM,
 	)
-	default_feedback_message = SPAN_DANGER_CONST("$ATTACKER rapidly strikes $TARGET and sends them flying!")
+	default_feedback_message = SPAN_DANGER_CONST("%%ATTACKER%% rapidly strikes %%TARGET%% and sends them flying!")
 	damage_force = 36
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/slam/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
@@ -65,7 +65,7 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 
 	damage_force = 36
 	default_feedback_sfx = 'sound/weapons/resonator_blast.ogg'
-	default_feedback_message = SPAN_DANGER_CONST("$ATTACKER places three precision strikes $TARGET, causing their destabilization field to collapse into a concussive blast!")
+	default_feedback_message = SPAN_DANGER_CONST("%%ATTACKER%% places three precision strikes %%TARGET%%, causing their destabilization field to collapse into a concussive blast!")
 
 /datum/combo/melee/intent_based/kinetic_gauntlets/concuss/inflict_on(atom/target, target_zone, mob/attacker, datum/event_args/actor/clickchain/clickchain)
 	. = ..()
@@ -89,4 +89,4 @@ GLOBAL_DATUM_INIT(kinetic_gauntlet_melee_combo, /datum/combo_set/melee, new /dat
 	)
 
 	damage_force = 72
-	default_feedback_message = SPAN_DANGER_CONST("$ATTACKER slams $ATTACKER_P_THEIR gauntlet into $TARGET, violently detonating their destabilization field!")
+	default_feedback_message = SPAN_DANGER_CONST("%%ATTACKER%% slams %%ATTACKER_P_THEIR%% gauntlet into %%TARGET%%, violently detonating their destabilization field!")

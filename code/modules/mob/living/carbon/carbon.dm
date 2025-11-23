@@ -1,8 +1,8 @@
 /mob/living/carbon
 	inventory = /datum/inventory/humanoid
+	emote_class = EMOTE_CLASS_IS_BODY | EMOTE_CLASS_IS_HUMANOID
 
 	//* Organs, Reagents, Biologies *//
-
 	/// Our blood holder.
 	var/datum/blood_holder/blood_holder
 
