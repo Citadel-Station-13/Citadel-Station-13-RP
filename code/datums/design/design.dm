@@ -228,11 +228,3 @@
  */
 /datum/prototype/design/proc/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
 	return print(where, amount, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
-
-//? legacy below
-
-/**
- * for legacy lathes
- */
-/datum/prototype/design/proc/legacy_print(atom/where, fabricator)
-	return print(where, 1)
