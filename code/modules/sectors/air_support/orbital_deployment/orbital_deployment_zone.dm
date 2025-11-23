@@ -185,18 +185,32 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	// -- translation: perform alignment --
 	// we align our center (NOT WHAT THE PLAYER BUILT, but OUR ACTUAL CENTER of the ZONE)
 	// to the target turf.
+	// we will go northeast of relative-north, so bias northeast for uneven bits
+	// when facing north, southwest facing south, southeast facing east, northwest facing west
 	var/list/frame_dims = get_frame_dimensions()
 	switch(dir_from_north)
 		if(NORTH)
 			transit.target_lower_left = locate(
-				target_center.x - floor(frame_dims[1] / 2),
-				target_center.y - floor(frame_dims[2] / 2),
+				target_center.x - floor((frame_dims[1] - 1) / 2),
+				target_center.y - floor((frame_dims[2] - 1) / 2),
+				target_center.z,
+			)
+		if(SOUTH)
+			transit.target_lower_left = locate(
+				target_center.x - floor((frame_dims[1] - 0) / 2),
+				target_center.y - floor((frame_dims[2] - 0) / 2),
 				target_center.z,
 			)
 		if(EAST)
 			transit.target_lower_left = locate(
-				,
-				,
+				target_center.x - floor((frame_dims[2] - 1) / 2),
+				target_center.y - floor((frame_dims[1] - 0) / 2),
+				target_center.z,
+			)
+		if(WEST)
+			transit.target_lower_left = locate(
+				target_center.x - floor((frame_dims[2] - 0) / 2),
+				target_center.y - floor((frame_dims[1] - 1) / 2),
 				target_center.z,
 			)
 	// -- end --
