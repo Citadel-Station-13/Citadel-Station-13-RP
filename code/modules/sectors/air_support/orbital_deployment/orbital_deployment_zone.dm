@@ -182,6 +182,25 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	if(!their_entity)
 		return null
 	var/datum/orbital_deployment_transit/transit = new(src)
+	// -- translation: perform alignment --
+	// we align our center (NOT WHAT THE PLAYER BUILT, but OUR ACTUAL CENTER of the ZONE)
+	// to the target turf.
+	var/list/frame_dims = get_frame_dimensions()
+	switch(dir_from_north)
+		if(NORTH)
+			transit.target_lower_left = locate(
+				target_center.x - floor(frame_dims[1] / 2),
+				target_center.y - floor(frame_dims[2] / 2),
+				target_center.z,
+			)
+		if(EAST)
+			transit.target_lower_left = locate(
+				,
+				,
+				target_center.z,
+			)
+	// -- end --
+	transit.target_dir_from_north = dir_from_north
 	transit.launching_actor = actor
 	if(!transit.allocate_and_package(locate(lower_left.x + 1, lower_left.y + 1, lower_left.z), locate(upper_right.x - 1, upper_right.y - 1, upper_right.z), current_area))
 		qdel(transit)
@@ -197,6 +216,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
  * @return TRUE if it's safe to translate, codewise, FALSE otherwise
  */
 /datum/orbital_deployment_zone/proc/check_zone(turf/target_center, dir_from_north, list/warnings_out, list/errors_out)
+	var/list/frame_dims = get_frame_dimensions()
 	#warn impl
 
 /datum/orbital_deployment_zone/proc/get_frame_width()
@@ -204,6 +224,12 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 
 /datum/orbital_deployment_zone/proc/get_frame_height()
 	return (upper_right.y - lower_left.y) - 1
+
+/datum/orbital_deployment_zone/proc/get_frame_dimensions()
+	return list(
+		(upper_right.x - lower_left.x) - 1,
+		(upper_right.y - lower_left.y) - 1,
+	)
 
 /datum/orbital_deployment_zone/proc/on_launch()
 	#warn shake screen tell everyone

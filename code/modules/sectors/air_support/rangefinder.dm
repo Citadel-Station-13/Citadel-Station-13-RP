@@ -82,7 +82,7 @@
 	/// * THIS IS NOT NECESSARILY THE PERSON HOLDING US.
 	var/mob/currently_zoomed_in
 
-#warn impl
+	// TODO: sound.
 
 /obj/item/rangefinder/Destroy()
 	QDEL_NULL(active_laser_target)
