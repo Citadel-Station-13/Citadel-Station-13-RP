@@ -19091,7 +19091,7 @@
 	id = "podbayouterhanger";
 	name = "Pod Bay Outer Hanger Door";
 	pixel_y = 32;
-	req_one_access = list(19,10,2,5)
+	req_one_access = list(19,10,2,5,18)
 	},
 /obj/machinery/light{
 	dir = 1
@@ -25399,8 +25399,7 @@
 	id = "podbayinnerhanger";
 	name = "Pod Bay Inner Hanger Door";
 	pixel_y = 32;
-	req_access = list(19,10,2);
-	req_one_access = list(19,10,2);
+	req_one_access = list(19,10,2,18);
 	pixel_x = -1
 	},
 /obj/effect/floor_decal/borderfloorblack{
