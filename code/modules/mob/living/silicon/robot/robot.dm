@@ -178,7 +178,7 @@
 	var/obj/item/pda/ai/rbPDA = null
 
 	var/opened = FALSE
-	var/emagged = 0
+	var/emagged = FALSE
 	var/emag_items = FALSE
 	var/wiresexposed = FALSE
 	var/locked = TRUE
