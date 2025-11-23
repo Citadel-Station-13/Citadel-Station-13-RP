@@ -23289,18 +23289,6 @@
 	name = "Chapel Launcher Door Control";
 	pixel_x = 36
 	},
-/obj/machinery/button/crematorium{
-	id = "chapelgun";
-	name = "Chapel Mass Driver";
-	pixel_y = 9;
-	pixel_x = 26;
-	desc = "A remote control switch for a mass driver."
-	},
-/obj/machinery/button/remote/driver{
-	id = "chapelgun";
-	name = "Chapel Mass Driver";
-	pixel_x = 25
-	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/office)
 "qOg" = (
