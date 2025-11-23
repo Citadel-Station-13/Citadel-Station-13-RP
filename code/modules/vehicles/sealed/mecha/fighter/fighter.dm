@@ -47,12 +47,19 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 	)
 
+	/// fighters don't have hands we're not actually at the gundam phase of mech implementation yet
+	melee_attacks = null
+
 	/// We're FLYYYYING
 	var/flight_mode = FALSE
 	/// Can fly in gravity
 	var/flight_works_in_gravity = TRUE
 	/// base speed on ground
 	var/ground_base_movement_speed = 2
+	/// Flight mode energy cost in joules per second
+	var/flight_energy_cost = 500
+	/// Flight mode can be kept on without an occupant
+	var/flight_has_autopilot = FALSE
 
 	/// legacy: ion trail when flying
 	var/datum/effect_system/ion_trail_follow/ion_trail
@@ -72,6 +79,15 @@
 	cell.charge = 30000
 	cell.maxcharge = 30000
 
+/obj/vehicle/sealed/mecha/fighter/process(delta_time)
+	..()
+	if(flight_mode)
+		if(flight_energy_cost)
+			if(!draw_sourced_power_oneoff("thrusters", "thrusters", flight_energy_cost * delta_time))
+				occupant_send_default_chat("Power lost to thrusters.")
+				disable_flight(null, null, TRUE)
+
+#warn autopilot
 /obj/vehicle/sealed/mecha/fighter/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	consider_gravity()
@@ -146,23 +162,31 @@
 	else
 		return 0
 
-
 /obj/vehicle/sealed/mecha/fighter/play_entered_noise(var/mob/who)
 	if(hasInternalDamage())
 		who << sound('sound/mecha/fighter_entered_bad.ogg',volume=50)
 	else
 		who << sound('sound/mecha/fighter_entered.ogg',volume=50)
 
-//causes damage when running into objects
-/obj/vehicle/sealed/mecha/fighter/Bump(atom/obstacle)
-	. = ..()
-	// this isn't defined becuase this is shitcode anyways and i'm just patching it
-	// todo: why the fuck are you guys doing snowflake collision code??
-	if(TIMER_COOLDOWN_CHECK(src, "fighter_collision"))
-		return
-	if(istype(obstacle, /obj) || istype(obstacle, /turf))
-		TIMER_COOLDOWN_START(src, "fighter_collision", 5 SECONDS)
-		occupant_message("<B><FONT COLOR=red SIZE=+1>Collision Alert!</B></FONT>")
-		take_damage_legacy(20, "brute")
-		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
+/obj/vehicle/sealed/mecha/fighter/proc/user_enable_flight(datum/event_args/actor/actor, silent)
+	#warn log this and that
 
+/obj/vehicle/sealed/mecha/fighter/proc/user_disable_flight(datum/event_args/actor/actor, silent)
+
+/obj/vehicle/sealed/mecha/fighter/proc/enable_flight(datum/event_args/actor/actor, silent)
+	#warn impl
+
+	var/datum/vehicle_ui_controller/mecha/fighter/ui_controller = src.ui_controller
+	ui_controller?.update_ui_flight()
+
+/**
+ * @params
+ * * actor
+ * * silent
+ * * involuntary - set to TRUE if running out of power, pilot ejecting without autopilot, etc
+ */
+/obj/vehicle/sealed/mecha/fighter/proc/disable_flight(datum/event_args/actor/actor, silent, involuntary)
+	#warn impl
+
+	var/datum/vehicle_ui_controller/mecha/fighter/ui_controller = src.ui_controller
+	ui_controller?.update_ui_flight()

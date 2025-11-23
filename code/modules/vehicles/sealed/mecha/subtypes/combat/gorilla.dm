@@ -28,7 +28,9 @@
 	wreckage = /obj/effect/decal/mecha_wreckage/gorilla
 	add_req_access = 0
 	internal_damage_threshold = 25
-	force = 60
+
+	melee_standard_force = 45
+	melee_standard_tier = 5
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_WEAPON = 3,

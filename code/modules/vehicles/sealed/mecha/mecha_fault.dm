@@ -56,6 +56,14 @@
 /datum/mecha_fault/internal_fire/on_tick(obj/vehicle/sealed/mecha/mech, stacks)
 	. = ..()
 
+/datum/mecha_fault/internal_fire/on_apply(obj/vehicle/sealed/mecha/mech)
+	. = ..()
+
+/datum/mecha_fault/internal_fire/on_remove(obj/vehicle/sealed/mecha/mech)
+	. = ..()
+// 'sound/mecha/internaldmgalarm.ogg'
+#warn warn occupant
+
 /**
  * causes:
  * * stumbling around in movement on bipedal mechs

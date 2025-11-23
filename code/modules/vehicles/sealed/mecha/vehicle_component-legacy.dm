@@ -1,4 +1,3 @@
-
 /obj/item/vehicle_component
 	name = "mecha component"
 	icon = 'icons/mecha/mech_component.dmi'
@@ -6,8 +5,6 @@
 	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 
-	var/component_type = null
-	var/obj/vehicle/sealed/mecha/chassis = null
 	var/start_damaged = FALSE
 	var/emp_resistance = 0	// Amount of emp 'levels' removed.
 
@@ -15,8 +12,6 @@
 	var/integrity_danger_mod = 0.5	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 100
 
-	var/step_delay = 0
-	var/relative_size = 30	// Percent chance for the component to be hit.
 	var/internal_damage_flag	// If set, the component will toggle the flag on or off if it is destroyed / severely damaged.
 
 /obj/item/vehicle_component/examine(mob/user, dist)

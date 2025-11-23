@@ -103,27 +103,27 @@
  */
 /datum/melee_attack/vehicle/mecha
 	/**
-	 * Multiplier to the vehicle's `melee_force_standard`
+	 * Multiplier to the vehicle's `melee_standard_force`
 	 */
 	var/attack_force_multiplier = 1
 	/**
-	 * (Nullable) Overrides the vehicle's `melee_force_standard`
+	 * (Nullable) Overrides the vehicle's `melee_standard_force`
 	 */
 	var/attack_force_override
 	/**
-	 * Additive modifier to the vehicle's `melee_tier_standard`
+	 * Additive modifier to the vehicle's `melee_standard_tier`
 	 */
 	var/attack_tier_add = 1
 	/**
-	 * (Nullable) Overrides the vehicle's `melee_tier_standard`
+	 * (Nullable) Overrides the vehicle's `melee_standard_tier`
 	 */
 	var/attack_tier_override
 	/**
-	 * Multiplier to the vehicle's `melee_speed_standard`
+	 * Multiplier to the vehicle's `melee_standard_speed`
 	 */
 	var/attack_cooldown_multiplier = 1
 	/**
-	 * (Nullable) Overrides the vehicle's `melee_speed_standard`
+	 * (Nullable) Overrides the vehicle's `melee_standard_speed`
 	 */
 	var/attack_cooldown_override
 

@@ -21,7 +21,6 @@
 	dir_in = 1 //Facing North.
 	wreckage = /obj/effect/decal/mecha_wreckage/janus
 	internal_damage_threshold = 25
-	force = 20
 	phasing_energy_drain = 300
 
 	module_slots = list(

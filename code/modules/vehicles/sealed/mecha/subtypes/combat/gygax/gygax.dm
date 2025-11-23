@@ -103,15 +103,6 @@
 	wreckage = /obj/effect/decal/mecha_wreckage/gygax/dark_adv
 	mech_faction = MECH_FACTION_SYNDI
 
-/obj/vehicle/sealed/mecha/combat/gygax/dark/add_cell(var/obj/item/cell/C=null)
-	if(C)
-		C.forceMove(src)
-		cell = C
-		return
-	cell = new(src)
-	cell.charge = 30000
-	cell.maxcharge = 30000
-
 /obj/vehicle/sealed/mecha/combat/gygax/dark/equipped
 	modules = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
@@ -119,6 +110,7 @@
 		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/lazy/legacy/teleporter,
 	)
+	power_cell_type = /obj/item/cell/hyper
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/gygax/old

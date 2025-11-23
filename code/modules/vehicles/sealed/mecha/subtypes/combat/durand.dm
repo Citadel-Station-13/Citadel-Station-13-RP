@@ -45,8 +45,9 @@
 
 	dir_in = 1 //Facing North.
 	max_temperature = 30000
-	force = 40
 	wreckage = /obj/effect/decal/mecha_wreckage/durand
+
+	melee_standard_force = 40
 
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5

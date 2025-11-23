@@ -65,43 +65,10 @@
 				if(temp)
 					var/update = 0
 					switch(damtype)
-						if("brute")
-							H.afflict_unconscious(20 * 1)
-							temp.inflict_bodypart_damage(
-								brute = rand(force / 2, force),
-							)
-						if("fire")
-							temp.inflict_bodypart_damage(
-								burn = rand(force / 2, force),
-							)
-						if("tox")
-							if(H.reagents)
-								if(H.reagents.get_reagent_amount("carpotoxin") + force < force*2)
-									H.reagents.add_reagent("carpotoxin", force)
-								if(H.reagents.get_reagent_amount("cryptobiolin") + force < force*2)
-									H.reagents.add_reagent("cryptobiolin", force)
-						if("halloss")
-							H.electrocute(stun_power = force / 2)
-						else
-							return
 					if(update)	H.update_damage_overlay()
 				H.update_health()
 
 			else
-				switch(damtype)
-					if("brute")
-						M.afflict_unconscious(20 * 1)
-						M.take_overall_damage(rand(force/2, force))
-					if("fire")
-						M.take_overall_damage(0, rand(force/2, force))
-					if("tox")
-						if(M.reagents)
-							if(M.reagents.get_reagent_amount("carpotoxin") + force < force*2)
-								M.reagents.add_reagent("carpotoxin", force)
-							if(M.reagents.get_reagent_amount("cryptobiolin") + force < force*2)
-								M.reagents.add_reagent("cryptobiolin", force)
-					else
-						return
 				M.update_health()
 			src.occupant_message("You hit [T].")
 			src.visible_message("<font color='red'><b>[src.name] hits [T].</b></font>")

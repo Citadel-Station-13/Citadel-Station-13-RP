@@ -10,13 +10,11 @@
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 5000, MAT_GLASS = 1000)
 
-	component_type = MECH_ARMOR
 	start_damaged = FALSE
 	emp_resistance = 4
 	integrity_danger_mod = 0.4	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 120
 	internal_damage_flag = MECHA_INT_TEMP_CONTROL
-	step_delay = 1
 
 	var/deflect_chance = 10
 	var/list/damage_absorption = list(

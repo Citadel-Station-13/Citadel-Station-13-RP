@@ -61,7 +61,6 @@
 	)
 
 	max_temperature = 45000
-	overload_coeff = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/honker/cluwne
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/equipped
@@ -72,12 +71,4 @@
 		/obj/item/vehicle_module/toggled/energy_relay,
 		/obj/item/vehicle_module/lazy/legacy/teleporter,
 	)
-
-/obj/vehicle/sealed/mecha/combat/honker/cluwne/add_cell(var/obj/item/cell/C=null)
-	if(C)
-		C.forceMove(src)
-		cell = C
-		return
-	cell = new(src)
-	cell.charge = 30000
-	cell.maxcharge = 30000
+	power_cell_type = /obj/item/cell/hyper

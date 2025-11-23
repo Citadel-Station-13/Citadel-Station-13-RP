@@ -40,7 +40,6 @@
 	/// What direction will the mech face when entered/powered on? Defaults to South.
 	var/dir_in = 2
 
-	var/obj/item/cell/cell
 	var/state = MECHA_OPERATING
 	var/last_message = 0
 	#warn enable ID upload if just built
@@ -129,7 +128,6 @@
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
 
-	add_cell()
 	log_message("[src.name] created.")
 
 /obj/vehicle/sealed/mecha/Destroy()
@@ -372,7 +370,7 @@
 				if(can_phase)
 					can_phase = FALSE
 					flick("[initial_icon]-phase", src)
-					src.loc = get_step(src,src.dir)
+					forceMove(get_step(src,src.dir))
 					src.use_power(phasing_energy_drain)
 					sleep(get_step_delay() * 3)
 					can_phase = TRUE
@@ -391,11 +389,6 @@
 
 	else//No idea when this triggers, so i won't touch it.
 		. = ..(obstacle)
-	return
-
-///////////////////////////////////
-////////  Internal damage  ////////
-///////////////////////////////////
 
 //ATM, the ignore_threshold is literally only used for the pulse rifles beams used mostly by deathsquads.
 // todo: this is uh, not a check, this is a **roll**.
@@ -416,21 +409,6 @@
 			var/obj/item/vehicle_module/lazy/legacy/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
-
-/obj/vehicle/sealed/mecha/proc/setInternalDamage(int_dam_flag)
-	internal_damage |= int_dam_flag
-	log_append_to_last("Internal damage of type [int_dam_flag].",1)
-	occupant_legacy << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
-
-/obj/vehicle/sealed/mecha/proc/clearInternalDamage(int_dam_flag)
-	internal_damage &= ~int_dam_flag
-	switch(int_dam_flag)
-		if(MECHA_INT_TEMP_CONTROL)
-			occupant_message("<font color='blue'><b>Life support system reactivated.</b></font>")
-		if(MECHA_INT_FIRE)
-			occupant_message("<font color='blue'><b>Internal fire extinquished.</b></font>")
-		if(MECHA_INT_TANK_BREACH)
-			occupant_message("<font color='blue'><b>Damaged internal tank has been sealed.</b></font>")
 
 /obj/vehicle/sealed/mecha/proc/take_damage_legacy(amount, type="brute")
 	update_damage_alerts()

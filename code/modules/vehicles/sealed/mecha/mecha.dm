@@ -96,11 +96,16 @@
 	/// Currently active melee attack
 	var/datum/mecha_melee_attack/melee_attack
 	/// 'Standard' melee force, used to scale a melee attack accordingly.
-	var/melee_force_standard = 20
+	var/melee_standard_force = 20
 	/// 'Standard' melee tier
-	var/melee_tier_standard = 4.25
+	var/melee_standard_tier = 4.25
 	/// 'Standard' melee attack cooldown
-	var/melee_speed_standard = 0.8 SECONDS
+	var/melee_standard_speed = 0.8 SECONDS
+	/// 'Standard' melee knockdown power
+	var/melee_standard_knockdown = 20
+	/// 'Standard' melee push-away power
+	var/melee_standard_push_force = MOVE_FORCE_OVERPOWERING
+
 	/// Next melee attack
 	//  TODO: get rid of this on /mob-vehicle update
 	var/melee_next_time
@@ -124,13 +129,29 @@
 	/// Base turn cost in joules
 	var/turn_cost_base = 500
 
+	//* Power *//
+	/// Our cell
+	var/obj/item/cell/power_cell
+	/// Our starting cell type
+	//  TODO: this is super beecause we're moving to 30k base cells for large anyways at some point
+	var/power_cell_type = /obj/item/cell/super
+
 /obj/vehicle/sealed/mecha/Initialize()
 	. = ..()
+	create_initial_cell()
 	START_PROCESSING(SSobj, src)
 
 /obj/vehicle/sealed/mecha/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	// TODO: cell wreckage?
+	QDEL_NULL(cell)
 	return ..()
+
+/obj/vehicle/sealed/mecha/create_initial_cell(path = power_cell_type)
+	if(power_cell)
+		QDEL_NULL(power_cell)
+	if(path)
+		power_cell = new path
 
 /obj/vehicle/sealed/mecha/create_initial_components()
 	..()
@@ -231,3 +252,6 @@
 	// Legacy: Process internal damage
 	legacy_internal_damage_step()
 	//! END
+
+/obj/vehicle/sealed/mecha/get_cell(inducer)
+	return cell

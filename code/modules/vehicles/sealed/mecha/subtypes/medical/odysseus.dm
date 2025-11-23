@@ -20,7 +20,6 @@
 	integrity_max = 70
 	wreckage = /obj/effect/decal/mecha_wreckage/odysseus
 	internal_damage_threshold = 35
-	step_energy_drain = 6
 
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2

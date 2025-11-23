@@ -11,11 +11,6 @@
 	if(!(locate(src.type) in M.equipment) && !M.proc_res["dyndomove"])
 		return ..()
 
-/obj/item/vehicle_module/lazy/legacy/tool/jetpack/detach()
-	..()
-	chassis.proc_res["dyndomove"] = null
-	return
-
 /obj/item/vehicle_module/lazy/legacy/tool/jetpack/attach(obj/vehicle/sealed/mecha/M as obj)
 	..()
 	if(!ion_trail)

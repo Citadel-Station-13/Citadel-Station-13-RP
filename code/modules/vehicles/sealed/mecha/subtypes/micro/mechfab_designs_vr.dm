@@ -51,7 +51,7 @@
 /datum/prototype/design/science/mecha/hydraulic_clamp/micro
 	name = "Mounted ore box"
 	id = "ore_scoop"
-	build_path = /obj/item/vehicle_module/lazy/legacy/tool/micro/orescoop
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/orescoop/micro
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 2500)
 

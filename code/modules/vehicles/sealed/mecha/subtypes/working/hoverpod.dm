@@ -36,6 +36,9 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 	)
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+	)
 
 /obj/vehicle/sealed/mecha/working/hoverpod/Initialize(mapload)
 	. = ..()
@@ -50,49 +53,6 @@
 	. = ..()
 	if(!length(occupants))
 		ion_trail.stop()
-
-//Modified phazon code
-/obj/vehicle/sealed/mecha/working/hoverpod/Topic(href, href_list)
-	..()
-	if (href_list["toggle_stabilization"])
-		stabilization_enabled = !stabilization_enabled
-		send_byjax(src.occupant_legacy,"exosuit.browser","stabilization_command","[stabilization_enabled?"Dis":"En"]able thruster stabilization")
-		src.occupant_message("<span class='notice'>Thruster stabilization [stabilization_enabled? "enabled" : "disabled"].</span>")
-		return
-
-/obj/vehicle/sealed/mecha/working/hoverpod/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_stabilization=1'><span id="stabilization_command">[stabilization_enabled?"Dis":"En"]able thruster stabilization</span></a><br>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
-
-/obj/vehicle/sealed/mecha/working/hoverpod/can_ztravel()
-	return (stabilization_enabled && has_charge(step_energy_drain))
-
-// No space drifting
-/obj/vehicle/sealed/mecha/working/hoverpod/check_for_support()
-	//does the hoverpod have enough charge left to stabilize itself?
-	if (!has_charge(step_energy_drain))
-		ion_trail.stop()
-	else
-		if (!ion_trail.on)
-			ion_trail.start()
-		if (stabilization_enabled)
-			return 1
-
-	return ..()
-
-// No falling if we've got our boosters on
-/obj/vehicle/sealed/mecha/working/hoverpod/can_fall()
-	if(stabilization_enabled && has_charge(step_energy_drain))
-		return FALSE
-	else
-		return TRUE
 
 //Hoverpod variants
 /obj/vehicle/sealed/mecha/working/hoverpod/combatpod

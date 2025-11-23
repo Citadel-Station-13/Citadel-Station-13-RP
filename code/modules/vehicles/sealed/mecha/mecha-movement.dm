@@ -46,15 +46,17 @@
 			// 5 to 20 linear
 			if(prob(stacks_of_miscalibration * 5))
 				direction = turn(direction, pick(45, -45))
+
 	if(strafing)
 		face_direction = dir
 	else
 		// direction controller; we need to be in the dir we're moving if not strafing.
 		if(!(dir & direction))
-			#warn impl turn
+			user_vehicle_turn(ISDIAGONALDIR(direction) ? EWCOMPONENT(direction) : direction)
 			// if we're not turned somehow, abort
 			if(!(dir & direction))
 				return FALSE
+
 	return vehicle_move(direction, face_direction)
 
 /obj/vehicle/sealed/mecha/vehicle_turn(direction)

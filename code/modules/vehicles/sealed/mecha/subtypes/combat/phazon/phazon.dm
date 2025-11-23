@@ -25,7 +25,6 @@
 	wreckage = /obj/effect/decal/mecha_wreckage/phazon
 	add_req_access = 1
 	internal_damage_threshold = 25
-	force = 15
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_WEAPON = 3,

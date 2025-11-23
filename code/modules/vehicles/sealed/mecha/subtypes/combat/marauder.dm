@@ -41,7 +41,9 @@
 	wreckage = /obj/effect/decal/mecha_wreckage/marauder
 	add_req_access = 0
 	internal_damage_threshold = 25
-	force = 45
+
+	melee_standard_force = 40
+
 	mech_faction = MECH_FACTION_NT
 
 	zoom_possible = TRUE

@@ -27,8 +27,6 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 2,
 	)
 
-	overload_possible = 1
-
 	icon_scale_x = 1.35
 	icon_scale_y = 1.35
 
@@ -53,7 +51,6 @@
 	integrity_max = 1.25 * /obj/vehicle/sealed/mecha/combat/reticent::integrity_max
 
 	max_temperature = 45000
-	overload_coeff = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/reticent/reticence
 
 	module_slots = list(
@@ -70,12 +67,4 @@
 		/obj/item/vehicle_module/shield_projector/omnidirectional/reticence,
 		/obj/item/vehicle_module/lazy/legacy/cloak,
 	)
-
-/obj/vehicle/sealed/mecha/combat/reticent/reticence/add_cell(var/obj/item/cell/C=null)
-	if(C)
-		C.forceMove(src)
-		cell = C
-		return
-	cell = new(src)
-	cell.charge = 30000
-	cell.maxcharge = 30000
+	power_cell_type = /obj/item/cell/hyper
