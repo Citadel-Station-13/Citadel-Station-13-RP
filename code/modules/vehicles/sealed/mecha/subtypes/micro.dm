@@ -3,9 +3,7 @@
 	force = 10 //still a robot
 	anchored = 0 //light enough to push and pull, but you still can't just walk past them. Like people on non-help.
 	opacity = 0 //small enough to see around, like people.
-	step_energy_drain = 2 // They're light and small. A compact is gonna get better MPG than a truck.
 	internal_damage_threshold = 50
-	maint_access = 0
 
 	integrity = 0.75 * /obj/vehicle/sealed/mecha::integrity
 	integrity_max = 0.75 * /obj/vehicle/sealed/mecha::integrity_max

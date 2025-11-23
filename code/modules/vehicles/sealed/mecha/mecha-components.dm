@@ -11,5 +11,3 @@
 		. += comp_hull.examine_render_on_vehicle(examine)
 	else
 		. += "It has no hull paneling."
-
-#warn impl

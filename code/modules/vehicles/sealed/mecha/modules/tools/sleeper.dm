@@ -117,19 +117,52 @@
 		return
 	switch(action)
 		if("stasisLevel")
+			vehicle_log_for_admins(
+				actor,
+				"setStasis",
+				list(
+					"level" = ,
+				)
+			)
+			#warn impl
+			return TRUE
 		if("setPumpActive")
-			var/active = params["active"]
-			set_pumping_active(!!active)
+			var/active = !!params["active"]
+			if(pumping == active)
+				return TRUE
+			set_pumping_active(active)
+			vehicle_log_for_admins(
+				actor,
+				"setPump",
+				list(
+					"state" = pumping,
+				)
+			)
 			return TRUE
 		if("setDialysisActive")
-			var/active = params["active"]
-			set_filtering_active(!!active)
+			var/active = !!params["active"]
+			if(filtering == active)
+				return TRUE
+			set_filtering_active(active)
+			vehicle_log_for_admins(
+				actor,
+				"setFilter",
+				list(
+					"state" = filtering,
+				)
+			)
 			return TRUE
 		if("eject")
 			if(!occupant_legacy)
 				update_occupant_ui_data()
 				return TRUE
-			#warn log
+			vehicle_log_for_admins(
+				actor,
+				"ejected",
+				list(
+					"occupant" = "[occupant_legacy]",
+				),
+			)
 			go_out()
 			update_occupant_ui_data()
 			return TRUE

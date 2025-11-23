@@ -21,7 +21,6 @@
 	comp_hull = /obj/item/vehicle_component/plating/hull/durable
 
 	dir_in = 1 //Facing North.
-	step_energy_drain = 3
 	max_temperature = 25000
 	wreckage = /obj/effect/decal/mecha_wreckage/phazon
 	add_req_access = 1

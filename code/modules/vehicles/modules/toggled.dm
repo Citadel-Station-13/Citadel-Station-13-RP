@@ -6,10 +6,29 @@
  */
 /obj/item/vehicle_module/toggled
 	ui_component = "Toggled"
+
 	var/active = FALSE
+
+	var/toggle_delay = 1 SECONDS
+
 	var/ui_text_active = "Enabled"
 	var/ui_text_inactive = "Disabled"
 	var/ui_require_confirm = FALSE
+
+	var/sfx_toggle
+	var/sfx_toggle_vol = 75
+	var/sfx_toggle_external = TRUE
+	var/sfx_toggle_vary = TRUE
+
+	var/sfx_togggle_on
+	var/sfx_togggle_on_vol
+	var/sfx_togggle_on_external
+	var/sfx_togggle_on_vary
+
+	var/sfx_togggle_off
+	var/sfx_togggle_off_vol
+	var/sfx_togggle_off_external
+	var/sfx_togggle_off_vary
 
 /obj/item/vehicle_module/toggled/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
 	..()
@@ -36,6 +55,7 @@
 	.["inactiveText"] = ui_text_inactive
 	.["confirmRequired"] = ui_require_confirm
 	.["active"] = active
+	.["toggleDelay"] = toggle_delay
 
 /obj/item/vehicle_module/toggled/proc/activate(datum/event_args/actor/actor, silent)
 	#warn log

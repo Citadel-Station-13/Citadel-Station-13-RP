@@ -63,7 +63,6 @@
 	max_temperature = 45000
 	overload_coeff = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/honker/cluwne
-	step_energy_drain = 5
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/equipped
 	modules = list(

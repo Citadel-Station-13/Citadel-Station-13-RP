@@ -7,7 +7,6 @@
 	integrity = 150
 	integrity_max = 150
 	internal_damage_threshold = 50
-	step_energy_drain = 3
 
 	show_pilot = TRUE
 	pilot_lift = 5

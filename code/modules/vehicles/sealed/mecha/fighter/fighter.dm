@@ -52,7 +52,7 @@
 	/// Can fly in gravity
 	var/flight_works_in_gravity = TRUE
 	/// base speed on ground
-	var/ground_base_movement_Speed = 2
+	var/ground_base_movement_speed = 2
 
 	/// legacy: ion trail when flying
 	var/datum/effect_system/ion_trail_follow/ion_trail
@@ -79,13 +79,6 @@
 /obj/vehicle/sealed/mecha/fighter/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	consider_gravity()
-
-//Modified phazon code
-/obj/vehicle/sealed/mecha/fighter/Topic(href, href_list)
-	..()
-	if (href_list["toggle_landing_gear"])
-		landing_gear_raised = !landing_gear_raised
-		src.occupant_message("<span class='notice'>Landing gear [landing_gear_raised? "raised" : "lowered"].</span>")
 
 /obj/vehicle/sealed/mecha/fighter/can_ztravel()
 	return (landing_gear_raised && has_charge(step_energy_drain))
@@ -121,10 +114,6 @@
     . = ..()
     if(has_gravity() && !landing_gear_raised)
         . += 4
-
-/obj/vehicle/sealed/mecha/fighter/handle_equipment_movement()
-	. = ..()
-	consider_gravity(TRUE)
 
 /obj/vehicle/sealed/mecha/fighter/proc/start_hover()
 	if(!ion_trail.on) //We'll just use this to store if we're floating or not

@@ -81,22 +81,14 @@
 /obj/item/vehicle_module/lazy/legacy/proc/detach(atom/moveto=null)
 	moveto = moveto || get_turf(chassis)
 	if(src.forceMove(moveto))
-		chassis.log_message("[src] removed from equipment.")
 		chassis = null
 		set_ready_state(1)
 
 /obj/item/vehicle_module/lazy/legacy/proc/set_ready_state(state)
 	equip_ready = state
-	if(chassis)
-		send_byjax(chassis.occupant_legacy,"exosuit.browser","\ref[src]",src.get_equip_info())
 
 /obj/item/vehicle_module/lazy/legacy/proc/occupant_message(message)
-	if(chassis)
-		chassis.occupant_message("[icon2html(src, world)] [message]")
-
-/obj/item/vehicle_module/lazy/legacy/proc/log_message(message)
-	if(chassis)
-		chassis.log_message("<i>[src]:</i> [message]")
+	return vehicle_occupant_send_default_chat(message)
 
 ///Equipment returns its slowdown or speedboost.
 /obj/item/vehicle_module/lazy/legacy/proc/get_step_delay()

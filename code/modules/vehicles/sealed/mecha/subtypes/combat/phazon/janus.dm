@@ -19,7 +19,6 @@
 	armor_type = /datum/armor/vehicle/mecha/combat/phazon/janus
 
 	dir_in = 1 //Facing North.
-	step_energy_drain = 3
 	wreckage = /obj/effect/decal/mecha_wreckage/janus
 	internal_damage_threshold = 25
 	force = 20
@@ -44,17 +43,6 @@
 			radiation_pulse(src, RAD_INTENSITY_MECH_JANUS_FORCED_UNPHASE)
 			log_append_to_last("WARNING: BLUESPACE DRIVE INSTABILITY DETECTED. DISABLING DRIVE.",1)
 			visible_message("<span class='alien'>The [src.name] appears to flicker, before its silhouette stabilizes!</span>")
-
-/obj/vehicle/sealed/mecha/combat/phazon/janus/query_damtype()
-	var/new_damtype = alert(src.occupant_legacy,"Gauntlet Phase Emitter Mode",null,"Force","Energy","Stun")
-	switch(new_damtype)
-		if("Force")
-			damtype = "brute"
-		if("Energy")
-			damtype = "fire"
-		if("Stun")
-			damtype = "halloss"
-	src.occupant_message("Melee damage type switched to [new_damtype]")
 
 /obj/effect/decal/mecha_wreckage/janus
 	name = "Janus wreckage"

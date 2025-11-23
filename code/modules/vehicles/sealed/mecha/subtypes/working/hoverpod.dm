@@ -19,7 +19,6 @@
 
 	base_movement_speed = 4
 
-	step_energy_drain = 10
 	max_temperature = 20000
 	integrity = 150
 	integrity_max = 150
@@ -134,7 +133,6 @@
 	initial_icon = "shuttle_standard"
 	internal_damage_threshold = 60
 
-	step_energy_drain = 5
 	max_temperature = 20000
 	integrity = 300
 	integrity_max = 300

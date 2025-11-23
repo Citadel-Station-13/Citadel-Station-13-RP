@@ -371,8 +371,11 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 		occu.playsound_local(get_turf(src), sfx, vol, vary, freq)
 
 #warn does this work icon wise?
+/obj/vehicle/proc/occupant_send_default_chat(html)
+	occupant_send_chat("<img src=\"\ref[src]\"> [html]")
+
 /obj/vehicle/proc/occupant_send_chat(html)
-	to_chat(occupants, "<img src=\"\ref[src]\"> [html]")
+	to_chat(occupants, html)
 
 //* Weight Handling *//
 

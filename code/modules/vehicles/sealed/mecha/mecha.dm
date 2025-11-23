@@ -89,6 +89,22 @@
 	//* Maintenance *//
 	#warn impl maybe?
 
+	//* Melee *//
+	/// Pickable melee options; set to list of typepaths to init
+	#warn impl
+	var/list/datum/mecha_melee_attack/melee_attacks
+	/// Currently active melee attack
+	var/datum/mecha_melee_attack/melee_attack
+	/// 'Standard' melee force, used to scale a melee attack accordingly.
+	var/melee_force_standard = 20
+	/// 'Standard' melee tier
+	var/melee_tier_standard = 4.25
+	/// 'Standard' melee attack cooldown
+	var/melee_speed_standard = 0.8 SECONDS
+	/// Next melee attack
+	//  TODO: get rid of this on /mob-vehicle update
+	var/melee_next_time
+
 	//* Movement *//
 	/// Base turn speed. If non-zero, turns will take time.
 	/// * A non-zero value specifically activates turn handling systems. Under turn handling,
@@ -103,6 +119,10 @@
 	/// Turn sound
 	/// * Can be a soundbyte ID or path.
 	var/turn_sound = 'sound/mecha/mechturn.ogg'
+	/// Base move cost in joules
+	var/move_cost_base = 2000
+	/// Base turn cost in joules
+	var/turn_cost_base = 500
 
 /obj/vehicle/sealed/mecha/Initialize()
 	. = ..()
@@ -180,6 +200,22 @@
 #warn impl all
 
 /obj/vehicle/sealed/mecha/process(delta_time)
+	// Attempt to recalibrate
+	// TODO: faster if not moving / acting
+	if(fault_check(/datum/mecha_fault/calibration_lost))
+		// 10% per second
+		if(prob(10 * delta_time))
+			fault_remove(/datum/mecha_fault/calibration_lost, 1)
+	// Attempt to seal breaches
+	// TODO: consider making this a manual repair, but then this has to be way less major / more cumulative
+	if(fault_check(/datum/mecha_fault/tank_breach))
+		// 10% per second
+		if(prob(10 * delta_time))
+			fault_remove(/datum/mecha_fault/tank_breach, 1)
+	if(fault_check(/datum/mecha_fault/cabin_breach))
+		// 10% per second
+		if(prob(10 * delta_time))
+			fault_remove(/datum/mecha_fault/cabin_breach, 1)
 	#warn impl
 	//! LEGACY
 	// Legacy: Air temperature step, if air exists

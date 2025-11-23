@@ -78,7 +78,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
-/obj/item/vehicle_component/proc/can_be_removed()
+/obj/item/vehicle_module/proc/can_be_removed()
 	return !intrinsic
 
 /**
@@ -162,6 +162,18 @@
 /obj/item/vehicle_module/proc/on_vehicle_click(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return clickchain_flags
 
+/**
+ * Call this to hook in any target scrambling, like from inherent inaccuracy / damage.
+ */
+/obj/item/vehicle_module/proc/request_click_target_scrmabling(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return vehicle ? vehicle.request_click_target_scrmabling(target, clickchain, clickchain_flags) : target
+
+/**
+ * Call this to hook in any target scrambling, like from inherent inaccuracy / damage.
+ */
+/obj/item/vehicle_module/proc/request_click_angle_scrmabling(angle, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return vehicle ? vehicle.request_click_angle_scrmabling(target, clickchain, clickchain_flags) : angle
+
 //* Interactions *//
 
 /**
@@ -206,6 +218,15 @@
  */
 /obj/item/vehicle_module/proc/vehicle_log_for_fluff_ic()
 	CRASH("not implemented")
+
+//* Occupants / Feedback *//
+
+#warn does this work icon wise?
+/obj/item/vehicle_module/proc/vehicle_occupant_send_default_chat(html)
+	vehicle?.occupant_send_default_chat("<img src=\"\ref[src]\"> [html]")
+
+/obj/item/vehicle_module/proc/vehicle_occupant_send_chat(html)
+	vehicle?.occupant_send_chat(html)
 
 //* Usage - World *//
 

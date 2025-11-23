@@ -145,9 +145,3 @@
 	if(removing.client)
 		removing.client.mouse_pointer_icon = initial(removing.client.mouse_pointer_icon)
 
-/obj/vehicle/sealed/mecha/combat/Topic(href,href_list)
-	..()
-	var/datum/topic_input/top_filter = new (href,href_list)
-	if(top_filter.get("close"))
-		am = null
-		return

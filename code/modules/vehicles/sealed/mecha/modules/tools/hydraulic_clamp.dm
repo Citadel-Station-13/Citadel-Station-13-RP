@@ -69,10 +69,10 @@
 		chassis.visible_message("[chassis] lifts [target] and starts to load it into cargo compartment.")
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
-		#warn log
 		var/T = chassis.loc
 		if(vehicle_do_after_and_sound(null, lift_delay, target))
 			vehicle.cargo_add(O)
+			vehicle_log_for_admins(new /datum/event_args/actor(usr), "loaded", list("entity" = "[target]", "entityType" = "[target.type]"))
 			occupant_message("<span class='notice'>[target] succesfully loaded.</span>")
 		else
 			occupant_message("<span class='warning'>You must hold still while handling objects.</span>")
@@ -87,6 +87,7 @@
 			occupant_message("<span class='warning'>You squeeze [target] with [src.name]. Something cracks.</span>")
 			playsound(src, "fracture", 5, 1, -2) //CRACK
 			chassis.visible_message("<span class='warning'>[chassis] squeezes [target].</span>")
+			vehicle_log_for_admins(new /datum/event_args/actor(usr), "attacked", list("entity" = "[target]", "entityType" = "[target.type]", "action" = "squeeze"))
 		else if(chassis.occupant_legacy.a_intent == INTENT_DISARM)
 			playsound(src, 'sound/mecha/hydraulic.ogg', 10, 1, -2)
 			M.take_overall_damage(dam_force/2)
@@ -94,12 +95,14 @@
 			M.update_health()
 			occupant_message("<span class='warning'>You slam [target] with [src.name]. Something cracks.</span>")
 			playsound(src, "fracture", 3, 1, -2) //CRACK 2
+			vehicle_log_for_admins(new /datum/event_args/actor(usr), "attacked", list("entity" = "[target]", "entityType" = "[target.type]", "action" = "slam"))
 			chassis.visible_message("<span class='warning'>[chassis] slams [target].</span>")
 			M.throw_at_old(get_step(M,get_dir(src, M)), 14, 1.5, chassis)
 		else
 			step_away(M,chassis)
 			occupant_message("You push [target] out of the way.")
 			chassis.visible_message("[chassis] pushes [target] out of the way.")
+			vehicle_log_for_admins(new /datum/event_args/actor(usr), "attacked", list("entity" = "[target]", "entityType" = "[target.type]", "action" = "push"))
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
 		do_after_cooldown()

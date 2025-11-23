@@ -5,14 +5,11 @@
 	icon_state = "ripley"
 	initial_icon = "ripley"
 	base_movement_speed = 2.75
-	step_energy_drain = 5
 	max_temperature = 20000
 	integrity = 200
 	integrity_max = 200		//Don't forget to update the /old variant if  you change this number.
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley
 	cargo_capacity = 10
-
-	encumbrance_gap = 2
 
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2

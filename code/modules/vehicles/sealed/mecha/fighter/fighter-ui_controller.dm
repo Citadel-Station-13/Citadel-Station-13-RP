@@ -12,7 +12,7 @@
 	. = ..()
 	var/obj/vehicle/sealed/mecha/fighter/casted_vehicle = vehicle
 	#warn impl
-	.["flightMode"] = casted_vehicle.landing_gear_raised
+	.["flightMode"] = casted_vehicle.flight_mode
 
 /datum/vehicle_ui_controller/mecha/fighter/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -26,6 +26,6 @@
 
 /datum/vehicle_ui_controller/mecha/fighter/proc/update_ui_flight()
 	var/obj/vehicle/sealed/mecha/fighter/casted_vehicle = vehicle
-	push_ui_data(list("flightMode" = casted_vehicle.landing_gear_raised))
+	push_ui_data(list("flightMode" = casted_vehicle.flight_mode))
 
 #warn impl

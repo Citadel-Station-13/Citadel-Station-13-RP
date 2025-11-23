@@ -37,11 +37,8 @@
 
 	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
 	var/initial_icon = null
-	/// How many points of slowdown are negated from equipment? Added to the mech's base step_in.
-	var/encumbrance_gap = 1
 	/// What direction will the mech face when entered/powered on? Defaults to South.
 	var/dir_in = 2
-	var/step_energy_drain = 10
 
 	var/obj/item/cell/cell
 	var/state = MECHA_OPERATING
@@ -50,10 +47,7 @@
 	var/add_req_access = FALSE
 	#warn enable maint if just built
 	var/maint_access = FALSE
-	/// Stores proc owners, like proc_res["functionname"] = owner reference.
-	var/list/proc_res = list()
 	var/datum/effect_system/spark_spread/spark_system = new
-	var/force = 0
 
 	var/mech_faction = null
 	/// It's simple. If it's 0, no one entered it yet. Otherwise someone entered it at least once.
@@ -82,9 +76,6 @@
 
 	var/wreckage
 
-	/// outgoing melee damage (legacy var)
-	var/damtype = DAMAGE_TYPE_BRUTE
-
 	var/static/image/radial_image_eject = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_eject")
 	var/static/image/radial_image_airtoggle = image(icon= 'icons/mob/radial.dmi', icon_state = "radial_airtank")
 	var/static/image/radial_image_lighttoggle = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_light")
@@ -92,13 +83,6 @@
 
 	//* Legacy - Actions *//
 	var/datum/mini_hud/mech/minihud
-
-	/// Same as above. Don't forget to GRANT the verb&actions if you want everything to work proper.
-	var/overload_possible = 0
-	/// Are our legs overloaded.
-	var/overload = 0
-	/// How much extra energy you use when use the L E G.
-	var/overload_coeff = 1
 
 	var/zoom = 0
 	var/zoom_possible = 0
@@ -111,20 +95,14 @@
 	var/can_phase = TRUE
 	var/phasing_energy_drain = 200
 
-	/// Can you switch damage type? It is mostly for the Phazon and its children.
-	var/switch_dmg_type_possible = 0
-
 //All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
-
 	var/datum/action/mecha/mech_toggle_internals/internals_action
 	var/datum/action/mecha/mech_toggle_lights/lights_action
 	var/datum/action/mecha/mech_view_stats/stats_action
 	var/datum/action/mecha/strafe/strafing_action
 
-	var/datum/action/mecha/mech_overload_mode/overload_action
 	var/datum/action/mecha/mech_zoom/zoom_action
 	var/datum/action/mecha/mech_cycle_equip/cycle_action
-	var/datum/action/mecha/mech_switch_damtype/switch_damtype_action
 	var/datum/action/mecha/mech_toggle_phasing/phasing_action
 
 	//* Legacy *//
@@ -137,10 +115,8 @@
 	stats_action = new(src)
 	strafing_action = new(src)
 
-	overload_action = new(src)
 	zoom_action = new(src)
 	cycle_action = new(src)
-	switch_damtype_action = new(src)
 	phasing_action = new(src)
 	. = ..()
 	update_transform()
@@ -148,24 +124,15 @@
 	icon_state += "-open"
 	add_radio()
 	add_cabin()
-	if(!add_airtank()) //we check this here in case mecha does not have an internal tank available by default - WIP
-		removeVerb(/obj/vehicle/sealed/mecha/verb/connect_to_port)
-		removeVerb(/obj/vehicle/sealed/mecha/verb/toggle_internal_tank)
+	add_airtank()
 
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
 
 	add_cell()
-	removeVerb(/obj/vehicle/sealed/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
 
 /obj/vehicle/sealed/mecha/Destroy()
-	src.legacy_eject_occupant()
-	for(var/mob/M in src) //Be Extra Sure
-		M.forceMove(get_turf(src))
-		if(M != src.occupant_legacy)
-			step_rand(M)
-
 	if(prob(30))
 		explosion(get_turf(loc), 0, 0, 1, 3)
 
@@ -220,21 +187,6 @@
 /obj/vehicle/sealed/mecha/can_drain_energy(datum/actor, amount)
 	return TRUE
 
-////////////////////////
-////// Helpers /////////
-////////////////////////
-
-/obj/vehicle/sealed/mecha/proc/legacy_eject_occupant()
-	if(!occupant_legacy)
-		return
-	mob_exit(occupant_legacy)
-
-/obj/vehicle/sealed/mecha/proc/removeVerb(verb_path)
-	remove_obj_verb(src, verb_path)
-
-/obj/vehicle/sealed/mecha/proc/addVerb(verb_path)
-	add_obj_verb(src, verb_path)
-
 /obj/vehicle/sealed/mecha/proc/add_airtank()
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
 	return internal_tank
@@ -262,18 +214,6 @@
 	radio.icon = icon
 	radio.icon_state = icon_state
 	radio.subspace_transmission = 1
-
-/obj/vehicle/sealed/mecha/proc/enter_after(delay as num, var/mob/user as mob, var/numticks = 5)
-	var/delayfraction = delay/numticks
-
-	var/turf/T = user.loc
-
-	for(var/i = 0, i<numticks, i++)
-		sleep(delayfraction)
-		if(!src || !user || !CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || !(user.loc == T))
-			return 0
-
-	return 1
 
 /obj/vehicle/sealed/mecha/proc/check_for_support()
 	var/list/things = orange(1, src)
@@ -308,10 +248,6 @@
 	var/dir_to_target = get_dir(src,target)
 	if(dir_to_target && !(dir_to_target & src.dir))//wrong direction
 		return
-	if(hasInternalDamage(MECHA_INT_CONTROL_LOST))
-		target = SAFEPICK(view(3,target))
-		if(!target)
-			return
 	if(istype(target, /obj/machinery))
 		if (src.interface_action(target))
 			return
@@ -347,35 +283,12 @@
 		if(src_object in view(2, src))
 			return UI_UPDATE //if they're close enough, allow the occupant_legacy to see the screen through the viewport or whatever.
 
-/obj/vehicle/sealed/mecha/proc/melee_action(atom/target)
-	return
-
-/obj/vehicle/sealed/mecha/proc/range_action(atom/target)
-	return
-
 #warn nuke this
 /obj/vehicle/sealed/mecha/relaymove(mob/user,direction)
-	if(user != src.occupant_legacy) //While not "realistic", this piece is player friendly.
-		if(istype(user,/mob/living/carbon/brain))
-			to_chat(user, "<span class='warning'>You try to move, but you are not the pilot! The exosuit doesn't respond.</span>")
-			return 0
-		user.forceMove(get_turf(src))
-		to_chat(user, "You climb out from [src]")
-		return 0
-	if(zoom)
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while in zoom mode.")
-			last_message = world.time
-		return 0
 	if(connected_port)
 		if(world.time - last_message > 20)
 			src.occupant_message("<span class='warning'>Unable to move while connected to the air system port</span>")
 			last_message = world.time
-		return 0
-	if(!has_charge(step_energy_drain))
-		return 0
-	if(state)
-		occupant_message("<span class='warning'>Maintenance protocols in effect</span>")
 		return 0
 	return domove(direction)
 
@@ -426,43 +339,20 @@
 /obj/vehicle/sealed/mecha/proc/dyndomove(direction)
 	if(src.pr_inertial_movement.active())
 		return 0
-	if(!has_charge(step_energy_drain))
-		return 0
 
 	var/atom/oldloc = loc
-
-	if(zoom)//:eyes:
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while in zoom mode.")
-			last_message = world.time
-		return 0
 
 	if(overload)//Check if you have leg overload
 		integrity--
 		if(integrity < initial(integrity) - initial(integrity)/3)
 			overload = 0
-			step_energy_drain = initial(step_energy_drain)
 			src.occupant_message("<font color='red'>Leg actuators damage threshold exceded. Disabling overload.</font>")
-
 	var/move_result = 0
-
-	if(hasInternalDamage(MECHA_INT_CONTROL_LOST) && prob(35))
-		move_result = mechsteprand()
 	//Up/down zmove
-	else if(direction & UP || direction & DOWN)
+	if(direction & UP || direction & DOWN)
 		if(!can_ztravel())
 			occupant_message("<span class='warning'>Your vehicle lacks the capacity to move in that direction!</span>")
 			return FALSE
-
-	if(move_result)
-		can_move = 0
-		use_power(step_energy_drain)
-		if(istype(src.loc, /turf/space))
-			if(!src.check_for_support())
-				src.pr_inertial_movement.start(list(src,direction))
-		sleep(get_step_delay() * ((ISDIAGONALDIR(direction) && (get_dir(oldloc, loc) == direction))? SQRT_2 : 1))
-		can_move = 1
-		return 1
 	return 0
 
 /obj/vehicle/sealed/mecha/Bump(var/atom/obstacle)
@@ -1223,7 +1113,6 @@
 
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant_legacy]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant_legacy]!</span>")
 		P.go_out()
-		P.log_message("[occupant_legacy] was removed.")
 		return
 	if(href_list["add_req_access"] && add_req_access && top_filter.getObj("id_card"))
 		if(!in_range(src, usr))	return

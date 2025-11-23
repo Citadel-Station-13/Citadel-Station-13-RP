@@ -55,7 +55,6 @@
 	max_temperature = 45000
 	overload_coeff = 1
 	wreckage = /obj/effect/decal/mecha_wreckage/reticent/reticence
-	step_energy_drain = 5
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_WEAPON = 2,

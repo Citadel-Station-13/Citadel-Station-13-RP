@@ -7,7 +7,6 @@
 	base_movement_speed = 4
 
 	dir_in = 2 //Facing south.
-	step_energy_drain = 4 // less efficient than base micromech, but still a micromech.
 	max_temperature = 15000
 	wreckage = /obj/effect/decal/mecha_wreckage/micro/sec/polecat
 	internal_damage_threshold = 35
