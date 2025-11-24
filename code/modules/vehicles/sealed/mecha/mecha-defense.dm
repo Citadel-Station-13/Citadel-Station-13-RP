@@ -10,7 +10,22 @@
 #warn impl
 
 /obj/vehicle/sealed/mecha/run_armorcalls(list/shieldcall_args, fake_attack)
+	// -- EXTERIOR --
+	// run against armor; if pierced, goes to hull
+
+	// -- INTERIOR --
+	// run against hull & components based on how damaged hull is
 	. = ..()
 
 	#warn armor
 	#warn hull
+
+	// -- CHASSIS --
+	// run against occupant & chassis
+
+	// the occupant is considered a soak source
+	//
+	for(var/mob/living/victim in occupants)
+
+
+	return ..()

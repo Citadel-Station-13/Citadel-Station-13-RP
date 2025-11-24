@@ -1,8 +1,8 @@
-/datum/armor/vehicle_plating/armor
+/datum/armor/vehicle_plating/mecha_armor
 
-/datum/armor/vehicle_plating_redirection/armor
+/datum/armor/vehicle_plating_redirection/mecha_armor
 
-/obj/item/vehicle_component/plating/armor
+/obj/item/vehicle_component/plating/mecha_armor
 	name = "mecha plating"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "armor"
@@ -32,7 +32,7 @@
 	var/minimum_penetration = 0
 	var/fail_penetration_value = 0.66
 
-/obj/item/vehicle_component/plating/armor/mining
+/obj/item/vehicle_component/plating/mecha_armor/mining
 	name = "blast-resistant mecha plating"
 	step_delay = 2
 	integrity_max = 80
@@ -47,7 +47,7 @@
 									"rad"=1
 									)
 
-/obj/item/vehicle_component/plating/armor/lightweight
+/obj/item/vehicle_component/plating/mecha_armor/lightweight
 	name = "lightweight mecha plating"
 	integrity_max = 50
 	step_delay = 0
@@ -62,7 +62,7 @@
 									"rad"=1
 									)
 
-/obj/item/vehicle_component/plating/armor/reinforced
+/obj/item/vehicle_component/plating/mecha_armor/reinforced
 	name = "reinforced mecha plating"
 	step_delay = 4
 	integrity_max = 80
@@ -76,7 +76,7 @@
 		"bomb"=0.8
 		)
 
-/obj/item/vehicle_component/plating/armor/military
+/obj/item/vehicle_component/plating/mecha_armor/military
 	name = "military grade mecha plating"
 	step_delay = 4
 	integrity_max = 100
@@ -92,7 +92,7 @@
 		"bomb"=0.8
 		)
 
-/obj/item/vehicle_component/plating/armor/marshal
+/obj/item/vehicle_component/plating/mecha_armor/marshal
 	name = "marshal mecha plating"
 	step_delay = 3
 	integrity_max = 100
@@ -108,7 +108,7 @@
 		"bomb"=1
 		)
 
-/obj/item/vehicle_component/plating/armor/marshal/reinforced
+/obj/item/vehicle_component/plating/mecha_armor/marshal/reinforced
 	name = "blackops mecha plating"
 	step_delay = 5
 	damage_absorption = list(
@@ -120,7 +120,7 @@
 		"bomb"=0.8
 		)
 
-/obj/item/vehicle_component/plating/armor/military/marauder
+/obj/item/vehicle_component/plating/mecha_armor/military/marauder
 	name = "cutting edge mecha plating"
 	step_delay = 4
 	integrity_max = 150
@@ -137,7 +137,7 @@
 		"bomb"=0.7
 		)
 
-/obj/item/vehicle_component/plating/armor/alien
+/obj/item/vehicle_component/plating/mecha_armor/alien
 	name = "strange mecha plating"
 	step_delay = 2
 	damage_absorption = list(
@@ -149,7 +149,7 @@
 		"bomb"=0.7
 		)
 
-/obj/item/vehicle_component/plating/armor/heavy_duty
+/obj/item/vehicle_component/plating/mecha_armor/heavy_duty
 	name = "heavy duty mecha plating"
 	step_delay = 4
 	integrity_max = 3000

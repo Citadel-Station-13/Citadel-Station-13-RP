@@ -31,7 +31,6 @@
 /obj/item/vehicle_module/lazy/legacy/proc/destroy()
 	if(chassis)
 		chassis.occupant_message(SPAN_DANGER("The [src] is destroyed!"))
-		chassis.log_append_to_last("[src] is destroyed.",1)
 		if(istype(src, /obj/item/vehicle_module/lazy/legacy/weapon))//Gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
@@ -50,6 +49,19 @@
 					src.chassis.occupant_legacy  << sound('sound/mecha/critdestr.ogg',volume=50)
 	spawn
 		qdel(src)
+
+/obj/item/vehicle_module/lazy/legacy/on_vehicle_click(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	var/atom/target = clickchain.target
+	if(target == vehicle)
+	else if(sufficiently_adjacent(target))
+		if(is_melee())
+			action(target)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	else
+		if(is_ranged())
+			action(target)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return clickchain_flags
 
 /obj/item/vehicle_module/lazy/legacy/proc/is_ranged()//add a distance restricted equipment. Why not?
 	return range&RANGED

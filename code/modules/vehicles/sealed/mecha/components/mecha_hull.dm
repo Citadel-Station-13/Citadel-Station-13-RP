@@ -1,8 +1,8 @@
 /datum/armor/vehicle_plating/hull
 
-/datum/armor/vehicle_plating_redirection/hull
+/datum/armor/vehicle_plating_redirection/mecha_hull
 
-/obj/item/vehicle_component/plating/hull
+/obj/item/vehicle_component/plating/mecha_hull
 	name = "mecha hull"
 	icon = 'icons/mecha/mech_component.dmi'
 	icon_state = "hull"
@@ -14,18 +14,18 @@
 	integrity_max = 50
 	internal_damage_flag = MECHA_INT_FIRE
 
-/obj/item/vehicle_component/plating/hull/durable
+/obj/item/vehicle_component/plating/mecha_hull/durable
 	name = "durable mecha hull"
 	step_delay = 4
 	integrity_danger_mod = 0.3
 	integrity_max = 100
 
-/obj/item/vehicle_component/plating/hull/lightweight
+/obj/item/vehicle_component/plating/mecha_hull/lightweight
 	name = "lightweight mecha hull"
 	step_delay = 1
 	integrity_danger_mod = 0.3
 
-/obj/item/vehicle_component/plating/hull/heavy_duty
+/obj/item/vehicle_component/plating/mecha_hull/heavy_duty
 	name = "heavy duty mecha hull"
 	step_delay = 5
 	integrity_danger_mod = 0.2

@@ -151,7 +151,7 @@
 /**
  * Returns if our mount is sufficiently close to something to be considered adjacent.
  *
- * * This is usually our mech.
+ * * This is usually our vehicle.
  * * If we are not mounted, this always fails.
  */
 /obj/item/vehicle_module/proc/sufficiently_adjacent(atom/entity)

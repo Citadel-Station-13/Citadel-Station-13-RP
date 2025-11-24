@@ -128,8 +128,6 @@
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
 
-	log_message("[src.name] created.")
-
 /obj/vehicle/sealed/mecha/Destroy()
 	if(prob(30))
 		explosion(get_turf(loc), 0, 0, 1, 3)
@@ -170,13 +168,6 @@
 
 	return ..()
 
-/obj/vehicle/sealed/mecha/on_drop_vehicle_contents(atom/where)
-	..()
-	for(var/atom/movable/cargo in cargo_held)
-		cargo.forceMove(where)
-		step_rand()
-	cargo_held = null
-
 /obj/vehicle/sealed/mecha/drain_energy(datum/actor, amount, flags)
 	if(!cell)
 		return 0
@@ -215,31 +206,10 @@
 	if(M == occupant_legacy && radio.broadcasting)
 		radio.talk_into(M, message_pieces)
 
-#warn nuke this
-/obj/vehicle/sealed/mecha/proc/click_action(atom/target,mob/user, params)
-
-	if(!get_charge())
-		return
-	if(src == target)
-		return
-	var/dir_to_target = get_dir(src,target)
-	if(dir_to_target && !(dir_to_target & src.dir))//wrong direction
-		return
-	if(istype(target, /obj/machinery))
-		if (src.interface_action(target))
-			return
-	if(!sufficiently_adjacent(target))
-		if(selected && selected.is_ranged())
-			selected.action(target)
-	else if(selected && selected.is_melee())
-		selected.action(target, params)
-	else
-		src.melee_action(target)
-
+#warn this
 /obj/vehicle/sealed/mecha/proc/interface_action(obj/machinery/target)
 	if(istype(target, /obj/machinery/access_button) || istype(target, /obj/machinery/button/remote/blast_door))
 		src.occupant_message("<span class='notice'>Interfacing with [target].</span>")
-		src.log_message("Interfaced with [target].")
 		target.attack_hand(src.occupant_legacy)
 		return 1
 	if(istype(target, /obj/machinery/embedded_controller))
@@ -255,7 +225,6 @@
 			return UI_INTERACTIVE
 		if(src.Adjacent(src_object))
 			src.occupant_message("<span class='notice'>Interfacing with [src_object]...</span>")
-			src.log_message("Interfaced with [src_object].")
 			return UI_INTERACTIVE
 		if(src_object in view(2, src))
 			return UI_UPDATE //if they're close enough, allow the occupant_legacy to see the screen through the viewport or whatever.
@@ -336,11 +305,6 @@
 		M.Move(get_step(obstacle,src.dir))
 	else if(istype(obstacle, /obj))//Then we check for regular obstacles.
 		var/obj/O = obstacle
-		if(emulate_door_bumps)
-			if(istype(O, /obj/machinery/door))
-				for(var/m in occupants)
-					O.Bumped(m)
-
 		if(phasing && get_charge()>=phasing_energy_drain)//Phazon check. This could use an improvement elsewhere.
 			spawn()
 				if(can_phase)
@@ -390,13 +354,9 @@
 	update_damage_alerts()
 	if(amount)
 		var/damage = absorbDamage(amount,type)
-
 		damage = components_handle_damage(damage,type)
-
 		damage_integrity(damage)
-
 		update_health()
-		log_append_to_last("Took [damage] points of damage. Damage type: \"[type]\".",1)
 
 /obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
 	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
@@ -446,7 +406,6 @@
 	if(prob(temp_deflect_chance))
 		src.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
 		src.visible_message("The [src.name] armor deflects the projectile")
-		src.log_append_to_last("Armor saved.")
 		return
 
 	if(Proj.damage_type == DAMAGE_TYPE_HALLOSS)
@@ -504,13 +463,11 @@
 	if(get_charge())
 		use_power((cell.charge/2)/severity)
 		take_damage_legacy(50 / severity,"energy")
-	src.log_message("EMP detected",1)
 	if(prob(80))
 		check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 
 /obj/vehicle/sealed/mecha/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>src.max_temperature)
-		src.log_message("Exposed to dangerous temperature.",1)
 		src.take_damage_legacy(5,"fire")	//The take_damage_legacy() proc handles armor values
 		src.check_for_internal_damage(list(MECHA_INT_FIRE, MECHA_INT_TEMP_CONTROL))
 
@@ -612,7 +569,6 @@
 			src.cell = null
 			state = MECHA_CELL_OUT
 			to_chat(user, "You unscrew and pry out the powercell.")
-			src.log_message("Powercell removed")
 		else if(state==MECHA_CELL_OUT && src.cell)
 			state=MECHA_CELL_OPEN
 			to_chat(user, "You screw the cell in place")
@@ -622,11 +578,9 @@
 			to_chat(user, "You attempt to eject the pilot using the maintenance controls.")
 			if(src.occupant_legacy.stat)
 				src.legacy_eject_occupant()
-				src.log_message("[src.occupant_legacy] was ejected using the maintenance controls.")
 			else
 				to_chat(user, "<span class='warning'>Your attempt is rejected.</span>")
 				src.occupant_message("<span class='warning'>An attempt to eject you was made using the maintenance controls.</span>")
-				src.log_message("Eject attempt made using maintenance controls - rejected.")
 		return
 	else if(istype(W, /obj/item/cell))
 		if(state==MECHA_CELL_OUT)
@@ -635,7 +589,6 @@
 					return
 				to_chat(user, "You install the powercell")
 				src.cell = W
-				src.log_message("Powercell installed")
 			else
 				to_chat(user, "There's already a powercell installed.")
 		return
@@ -705,7 +658,6 @@
 		network.gases += internal_tank.return_air()
 		network.update = 1
 	playsound(src, 'sound/mecha/gasconnected.ogg', 50, 1)
-	log_message("Connected to gas port.")
 	return 1
 
 /obj/vehicle/sealed/mecha/proc/disconnect()
@@ -719,7 +671,6 @@
 	connected_port.connected_device = null
 	connected_port = null
 	playsound(src, 'sound/mecha/gasdisconnected.ogg', 50, 1)
-	src.log_message("Disconnected from gas port.")
 	return 1
 
 /obj/vehicle/sealed/mecha/verb/connect_to_port()
@@ -794,7 +745,6 @@
 
 	use_internal_tank = !use_internal_tank
 	src.occupant_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
-	src.log_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
 	playsound(src, 'sound/mecha/gasdisconnected.ogg', 30, 1)
 
 /obj/vehicle/sealed/mecha/verb/toggle_strafing()
@@ -809,7 +759,6 @@
 		return
 	strafing = !strafing
 	src.occupant_message("Toggled strafing mode [strafing?"on":"off"].")
-	src.log_message("Toggled strafing mode [strafing?"on":"off"].")
 	return
 
 /obj/vehicle/sealed/mecha/mob_can_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed)
@@ -821,7 +770,6 @@
 		passed = 1
 	if(!passed)
 		to_chat(actor.initiator, "<span class='warning'>Access denied</span>")
-		src.log_append_to_last("Permission denied.")
 		return FALSE
 	return ..()
 
@@ -984,14 +932,6 @@
 		if(src.occupant_legacy && src.occupant_legacy.client)
 			to_chat(src.occupant_legacy, "[icon2html(src, world)] [message]")
 
-// LEGACY, NULL-OPPED WHILE WE FIGURE OUT WHAT WE WANT FOR MECH LOGS.
-/obj/vehicle/sealed/mecha/proc/log_message(message as text,red=null)
-	return
-
-// LEGACY, NULL-OPPED WHILE WE FIGURE OUT WHAT WE WANT FOR MECH LOGS.
-/obj/vehicle/sealed/mecha/proc/log_append_to_last(message as text,red=null)
-	return
-
 /obj/vehicle/sealed/mecha/Topic(href, href_list)
 	..()
 	var/datum/topic_input/top_filter = new /datum/topic_input(href,href_list)
@@ -1087,7 +1027,6 @@
 	if(href_list["repair_int_control_lost"])
 		if(usr != src.occupant_legacy)	return
 		src.occupant_message("Recalibrating coordination system.")
-		src.log_message("Recalibration of coordination system started.")
 		var/T = src.loc
 		sleep(100)
 		if(T == src.loc)
@@ -1257,7 +1196,6 @@
 	var/mob/living/carbon/human/H = adding
 	occupant_legacy = H
 	add_fingerprint(H)
-	log_append_to_last("[H] moved in as pilot.")
 	update_icon()
 	if(occupant_legacy.hud_used)
 		minihud = new (occupant_legacy.hud_used, src)
@@ -1277,7 +1215,6 @@
 	QDEL_NULL(minihud)
 	RemoveActions(removing, human_occupant=1)
 
-	log_message("[removing] moved out.")
 	removing << browse(null, "window=exosuit")
 	if(removing.client && cloaked_selfimage)
 		removing.client.images -= cloaked_selfimage

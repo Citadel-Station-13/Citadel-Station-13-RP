@@ -143,7 +143,7 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
  * Drop vehicle stuff here.
  */
 /obj/vehicle/proc/on_drop_vehicle_contents(atom/where)
-	return
+	cargo_dump()
 
 //* Actions *//
 
