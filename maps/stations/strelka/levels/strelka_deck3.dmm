@@ -5992,6 +5992,28 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/monowhite,
 /area/space)
+"tK" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "supply_dock";
+	pixel_x = 25
+	},
+/turf/simulated/floor/reinforced/lythios43c,
+/area/quartermaster/strelka/cargo/hangar)
 "tL" = (
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/plating,
@@ -29370,7 +29392,7 @@ sh
 hF
 sh
 sh
-sh
+tK
 sh
 pv
 zw

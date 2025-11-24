@@ -8532,7 +8532,7 @@
 	name = "Shuttle Hatch";
 	req_one_access = null
 	},
-/turf/simulated/shuttle/plating,
+/turf/simulated/shuttle/floor/black,
 /area/shuttle/supply)
 "wH" = (
 /obj/machinery/deployable/barrier,
@@ -12336,18 +12336,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/holofloor/space,
 /area/space)
-"Gu" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "supply_shuttle_hatch";
-	locked = 1;
-	name = "Shuttle Hatch";
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
-/turf/simulated/shuttle/floor,
-/area/shuttle/supply)
 "Gv" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-04"
@@ -39402,7 +39390,7 @@ Mm
 Mm
 Mi
 Mm
-Gu
+wG
 wG
 Mi
 Mi
