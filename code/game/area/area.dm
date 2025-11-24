@@ -51,6 +51,9 @@
 	 *
 	 * If this is FALSE, this is instead just a regular area that groups turfs and any system can spawn any amount of it (if not unique)
 	 * for any reason.
+	 *
+	 * * Setting this to TRUE acts as an invariant check for things like orbital drops; we will not allow
+	 *   overwriting areas with this enabled.
 	 */
 	var/special = FALSE
 
@@ -720,7 +723,7 @@ var/list/ghostteleportlocs = list()
 
 	return 1
 
-//* Atmospherics
+//* Atmospherics *//
 
 /area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYADD(vent_scrubbers, instance)

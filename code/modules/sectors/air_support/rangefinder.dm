@@ -2,6 +2,9 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /atom/movable/laser_designator_target
+	name = "rangefinding laser"
+	desc = "Stop staring at the laser and start staring at the sky, because \
+	something's probably about to fall out of it."
 	plane = ABOVE_LIGHTING_PLANE
 	layer = ABOVE_LIGHTING_LAYER_MAIN
 	#warn sprite
@@ -13,6 +16,7 @@
 /atom/movable/laser_designator_target/Initialize(mapload, allow_weapons_guidance, visible_dot)
 	src.allow_weapons_guidance = allow_weapons_guidance
 	src.visible_dot = visible_dot
+	alpha = visible_dot ? initial(alpha) : 0
 	AddComponent(/datum/component/spatial_grid, SSspatial_grids.laser_designations)
 	if(ismovable(loc))
 		var/atom/movable/thingy = loc

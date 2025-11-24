@@ -76,6 +76,16 @@
 			continue
 		to_damage_mobs += try_and_cheat_this_explo
 
+	CHECK_TICK
+	// scream at everyone
+	var/list/mob/to_notify_mobs = list()
+	for(var/mob/outside in SSspatial_grids.living.range_query(mob_query_center, mob_query_dist + world_view_max_number()))
+		to_notify_mobs += outside
+	to_notify_mobs -= to_damage_mobs
+
+	for(var/mob/notifying in to_notify_mobs)
+		#warn tell them and shake
+
 	// turfs that shouldn't be there result in a small explosion
 	for(var/tuple_i in 1 to length(turf_overlap_coord_x))
 		var/turf/impacted_turf = locate(
@@ -119,6 +129,8 @@
 
 	// people who were stupid and didn't keep their hands and feet in the vehicle
 	for(var/atom/movable/victim as anything in falling_out_of_the_sky)
+		if(QDELETED(victim))
+			continue
 		var/turf/drop_at = get_random_outside_turf(7)
 		victim.forceMove(drop_at)
 		// fuck you take double damage
@@ -157,6 +169,7 @@
 					hit_zone = pick(global.all_body_zones),
 				)
 				CHECK_TICK
+
 
 #warn log the shit out of ... everything
 
