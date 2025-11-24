@@ -73,20 +73,17 @@
 	//* Composition *//
 
 	/// set to instance to init as that instance
-	#warn impl
 	var/datum/prototype/robot_iconset/iconset
 	/// set to instance to init as that instance
 	var/datum/prototype/robot_chassis/chassis
 	var/datum/robot_provisioning/chassis_provisioning
 	/// set to instance to init as that instance
-	#warn impl
 	var/datum/prototype/robot_module/module
 	var/datum/robot_provisioning/module_provisioning
 
 	/// all installed upgrades
 	/// * some upgrades are consumed on install, and therefore won't be in here
 	/// * associated to `/datum/robot_provisioning`
-	#warn impl
 	var/list/obj/item/robot_upgrade/upgrades
 
 	//* Configuration *//
@@ -138,7 +135,7 @@
 	/// Base movement speed in tiles / second
 	var/movement_base_speed = 4.5
 
-	//-* Legacy Below *-//
+	//* -- Legacy Below -- *//
 
 	/// legacy: are we floor scrubbing?
 	var/legacy_floor_scrubbing = FALSE

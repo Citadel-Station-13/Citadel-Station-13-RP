@@ -224,14 +224,14 @@
  *
  * @return null, or amount the item mount has
  */
-/datum/item_mount/proc/reagent_get_amount(obj/item/item, key, id)
-	return relay_to_other?.reagent_get_amount(item, key, id)
+/datum/item_mount/proc/reagent_get_amount(obj/item/item, key, datum/reagent/reagent)
+	return relay_to_other?.reagent_get_amount(item, key, datum/reagent/reagent)
 
 /**
  * Checks if the item mount has a given amount of a reagent
  * @return null, or TRUE / FALSE
  */
-/datum/item_mount/proc/reagent_has_amount(obj/item/item, key, id, amount)
+/datum/item_mount/proc/reagent_has_amount(obj/item/item, key, datum/reagent/reagent, amount)
 	. = reagent_get_amount(id)
 	if(.)
 		return . >= amount
@@ -239,20 +239,20 @@
 /**
  * @return null, or amount the item mount could  to erase
  */
-/datum/item_mount/proc/reagent_erase_amount(obj/item/item, key, id, amount)
-	return relay_to_other?.reagent_erase_amount(item, key, id, amount)
+/datum/item_mount/proc/reagent_erase_amount(obj/item/item, key, datum/reagent/reagent, amount)
+	return relay_to_other?.reagent_erase_amount(item, key, datum/reagent/reagent, amount)
 
 /**
  * @return null, or amount the item mount could give to erase
  */
-/datum/item_mount/proc/reagent_erase_checked_amount(obj/item/item, key, id, amount)
-	return reagent_has_amount(item, key, id, amount) && reagent_erase_amount(item, key, id, amount)
+/datum/item_mount/proc/reagent_erase_checked_amount(obj/item/item, key, datum/reagent/reagent, amount)
+	return reagent_has_amount(item, key, datum/reagent/reagent, amount) && reagent_erase_amount(item, key, datum/reagent/reagent, amount)
 
 /**
  * @return null, or amount the item mount could accept
  */
-/datum/item_mount/proc/reagent_spawn_amount(obj/item/item, key, id, amount, force)
-	return relay_to_other?.reagent_spawn_amount(item, key, id, amount, force)
+/datum/item_mount/proc/reagent_spawn_amount(obj/item/item, key, datum/reagent/reagent, amount, force)
+	return relay_to_other?.reagent_spawn_amount(item, key, datum/reagent/reagent, amount, force)
 
 //* Stacks *//
 

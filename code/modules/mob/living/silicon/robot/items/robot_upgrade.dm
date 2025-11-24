@@ -32,7 +32,7 @@
 
 /obj/item/robot_upgrade/Destroy()
 	owner?.uninstall_upgrade(src, TRUE)
-	QDEL_LIST(mounted_items)
+	QDEL_NULL(provisioning)
 	return ..()
 
 /obj/item/robot_upgrade/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/callback/reachability_check)
@@ -48,7 +48,7 @@
 			target = robot_target,
 		)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	robot_target.user_install_upgrade(src, actor = e_args)
+	robot_target.user_install_upgrade(src, actor = clickchain)
 	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/robot_upgrade/proc/ensure_mounted_items_loaded()

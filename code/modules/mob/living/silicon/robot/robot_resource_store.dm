@@ -14,20 +14,24 @@
 	//* Storage *//
 
 	/// Provisioned store for stacks.
+	/// * Measured in sheets
 	/// * Stack type to `/datum/robot_resource/provisioned`
 	/// * Lazylist outside of provisioning. Lists are always formed during provisioning.
 	/// * Automatically given to the robot as a mounted item if provided.
 	var/list/provisioned_stack_store
 	/// Provisioned store for materials.
+	/// * Measured in cm3
 	/// * Material id to `/datum/robot_resource/provisioned`
 	/// * Lazylist outside of provisioning. Lists are always formed during provisioning.
 	/// * Automatically given to the robot as a mounted item if provided.
 	var/list/provisioned_material_store
 	/// Provisioned store for reagents.
+	/// * Measured in units
 	/// * Reagent id to `/datum/robot_resource/provisioned`
 	/// * Lazylist outside of provisioning. Lists are always formed during provisioning.
 	var/list/provisioned_reagent_store
 	/// Provisioned store for misc string-key resources.
+	/// * Measured arbitrarily
 	/// * String key to `/datum/robot_resource/provisioned`
 	/// * Lazylist outside of provisioning. Lists are always formed during provisioning.
 	var/list/provisioned_resource_store
@@ -35,13 +39,19 @@
 	//* Provider API *//
 
 	/// Stack synthesizer used as a provider API.
-	var/datum/stack_provider/robot_stack_provider/stack_provider
+	var/datum/item_mount/robot_item_mount/item_mount
 
-/datum/robot_resource_store/New()
-	stack_provider = new(src)
+	//* Robot *//
+	/// Our owner
+	var/mob/living/silicon/robot/owner
 
-/datum/robot_resource_store/Destroy()
-	QDEL_NULL(stack_provider)
+/datum/item_mount/robot_item_mount/New(mob/living/silicon/robot/owner)
+	item_mount = new(src)
+	src.owner = owner
+
+/datum/item_mount/robot_item_mount/Destroy()
+	QDEL_NULL(item_mount)
+	owner = null
 	return ..()
 
 /datum/robot_resource_store/proc/prep_provisioning()

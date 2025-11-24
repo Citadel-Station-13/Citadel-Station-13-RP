@@ -89,7 +89,6 @@
 /datum/robot_resource/provisioned/preset/ointment/advanced
 	name = "advanced ointment tank"
 	amount_max = 50
-	amount_max = 50
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/nanopaste
@@ -97,3 +96,9 @@
 	amount_max = 50
 	regen_per_second = 5
 
+//* presets - reagents *//
+
+/datum/robot_resource/provisioned/preset/water
+	name = "water tank"
+	amount_max = 500
+	regen_per_second = 15

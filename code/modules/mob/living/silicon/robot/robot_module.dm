@@ -131,7 +131,7 @@
  *   You can lazyclearlist it later.
  */
 /datum/prototype/robot_module/proc/provision_resource_store(datum/robot_resource_store/store)
-	return
+	store.provisioned_reagent_store[/datum/reagent/water::id] = new /datum/robot_resource/provisioned/preset/water
 
 /datum/prototype/robot_module/proc/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
 	return
