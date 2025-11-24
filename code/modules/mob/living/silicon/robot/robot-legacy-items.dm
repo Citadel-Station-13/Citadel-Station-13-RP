@@ -346,8 +346,8 @@
 	new /obj/item/paper(T)
 
 
-//Personal shielding for the combat module.
-#warn the rendering here needs to change
+// Personal shielding for the combat module.
+// TODO: refactor this shit this is awful lol
 /obj/item/borg/combat/shield
 	name = "personal shielding"
 	desc = "A powerful experimental module that turns aside or absorbs incoming attacks at the cost of charge."

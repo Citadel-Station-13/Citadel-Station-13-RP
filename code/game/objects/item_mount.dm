@@ -11,6 +11,14 @@
  * * Items don't actually need to be mounted to use things. That's why
  *   there's minimally stateful procs. Some stateful procs just gracefully
  *   reject the usage / check if an item isn't mounted.
+ *
+ * ## Relaying
+ *
+ * Item mounts have an inbuilt relay system as 'mount an item that will be used in a module in a cyborg
+ * or rigsuit or mech' is a common patern.
+ *
+ * * Please know what you're doing if you use it. For performance reasons, there's no infinite loop guards.
+ * * If you use this system, it's on you to unlink it as needed and not cause GC issues.
  */
 /datum/item_mount
 	/// mounted items; lazy list
@@ -23,15 +31,23 @@
 /datum/item_mount/Destroy()
 	for(var/obj/item/mounted as anything in mounted_items)
 		unmount(mounted)
-	stack_provider = null
 	relay_unlink_all()
+	relay_clear()
 	return ..()
 
 /datum/item_mount/proc/relay_to(datum/item_mount/other)
-	#warn impl
+	relay_to_other = other
+	LAZYADD(relay_to_other.relay_to_self, src)
+
+/datum/item_mount/proc/relay_clear()
+	if(!relay_to_other)
+		return
+	LAZYREMOVE(relay_to_other.relay_to_self, src)
+	relay_to_other = null
 
 /datum/item_mount/proc/relay_unlink_all()
-	#warn impl
+	for(var/datum/item_mount/mount as anything in relay_to_self)
+		mount.relay_clear()
 
 /datum/item_mount/proc/mount(obj/item/item)
 	if(item.item_mount)
@@ -177,7 +193,7 @@
  * @return null, or TRUE / FALSE for has that amount of energy
  */
 /datum/item_mount/proc/lazy_energy_check(obj/item/item, key, joules)
-	return relay_to_other?.lazy_power_check(item, key, joules)
+	return relay_to_other?.lazy_energy_check(item, key, joules)
 
 /**
  * Lazy use-power-oneoff style thing
@@ -205,113 +221,129 @@
 /**
  * Gets if an item mount has a reagent, and if it does, its amount.
  * * Semantically, null means 'we can't store this'.
- * @return amount the item mount has, null if it doesn't have it
+ *
+ * @return null, or amount the item mount has
  */
 /datum/item_mount/proc/reagent_get_amount(obj/item/item, key, id)
-	return null
+	return relay_to_other?.reagent_get_amount(item, key, id)
 
 /**
  * Checks if the item mount has a given amount of a reagent
- * @return amount the item mount has
+ * @return null, or TRUE / FALSE
  */
 /datum/item_mount/proc/reagent_has_amount(obj/item/item, key, id, amount)
-	. = reagent_get_amount(id) || 0
-	if(. < amount)
-		return 0
+	. = reagent_get_amount(id)
+	if(.)
+		return . >= amount
 
 /**
- * @return amount the item mount could  to erase
+ * @return null, or amount the item mount could  to erase
  */
 /datum/item_mount/proc/reagent_erase_amount(obj/item/item, key, id, amount)
-	return 0
+	return relay_to_other?.reagent_erase_amount(item, key, id, amount)
 
 /**
- * @return amount the item mount could give to erase
+ * @return null, or amount the item mount could give to erase
  */
 /datum/item_mount/proc/reagent_erase_checked_amount(obj/item/item, key, id, amount)
-	return reagent_has_amount(id, amount) ? reagent_erase_amount(id, amount) : 0
+	return reagent_has_amount(item, key, id, amount) && reagent_erase_amount(item, key, id, amount)
 
 /**
- * @return amount the item mount could accept
+ * @return null, or amount the item mount could accept
  */
 /datum/item_mount/proc/reagent_spawn_amount(obj/item/item, key, id, amount, force)
-	return 0
+	return relay_to_other?.reagent_spawn_amount(item, key, id, amount, force)
 
 //* Stacks *//
 
 /**
  * Get the name of the provider.
+ *
+ * @return null, or name
  */
 /datum/item_mount/proc/stack_get_provider_name(obj/item/item, key, path)
-	return "stack storage"
+	return relay_to_other?.stack_get_provider_name(item, key, path)
 
 /**
  * Material stacks are invalid here.
  *
  * * Amount is in stack amount.
  *
- * @return amount used.
+ * @return null, or amount used.
  */
 /datum/item_mount/proc/stack_use_checked_amount(obj/item/item, key, path, amount)
-	return stack_has_amount(item, key, path, amount) ? stack_use_amount(item, key, path, amount) : 0
+	return stack_has_amount(item, key, path, amount) && stack_use_amount(item, key, path, amount)
 
 /**
  * Material stacks are invalid here.
+ *
  * * Amount is in stack amount.
- * @return amount given.
+ *
+ * @return null, or amount given.
  */
 /datum/item_mount/proc/stack_give_amount(obj/item/item, key, path, amount, force)
-	return 0
+	return relay_to_other?.stack_give_amount(item, key, path, amount, force)
 
 /**
  * Material stacks are invalid here.
- * @return max amount.
+ *
+ * @return null, or max amount.
  */
 /datum/item_mount/proc/stack_get_capacity(obj/item/item, key, path)
-	return 0
+	return relay_to_other?.stack_get_capacity(item, key, path)
 
 /**
  * Material stacks are invalid here.
+ *
  * * Amount is in stack amount.
- * @return amount remaining.
+ *
+ * @return null, or amount remaining.
  */
 /datum/item_mount/proc/stack_get_amount(obj/item/item, key, path)
-	return 0
+	return relay_to_other?.stack_get_amount(item, key, path)
 
 /**
  * Material stacks are invalid here.
+ *
  * * Amount is in stack amount.
- * @return TRUE / FALSE.
+ *
+ * @return null, or TRUE / FALSE.
  */
 /datum/item_mount/proc/stack_has_amount(obj/item/item, key, path, amount)
-	return FALSE
+	. = stack_get_amount(item, key, path)
+	if(.)
+		return . >= amount
 
 /**
  * Material stacks are invalid here.
+ *
  * * Amount is in stack amount.
- * @return amount used.
+ *
+ * @return null, or amount used.
  */
 /datum/item_mount/proc/stack_use_amount(obj/item/item, key, path, amount)
-	return 0
+	return relay_to_other?.stack_use_amount(item, key, path, amount)
 
 //* ------ MISC BELOW HERE ------ *//
 
 //* Misc - Extinguisher *//
 
 /**
- * @return volume remaining
+ * @return null, or volume remaining
  */
 /datum/item_mount/proc/extinguisher_get_volume(obj/item/extinguisher/extinguisher, key)
-	return 0
+	return relay_to_other?.extinguisher_get_volume(extinguisher, key)
 
 /**
- * @return TRUE / FALSE on if there's that much left
+ * @return null ,or TRUE / FALSE on if there's that much left
  */
 /datum/item_mount/proc/extinguisher_has_volume(obj/item/extinguisher/extinguisher, key, requested)
-	return extinguisher_get_volume(extinguisher) >= requested
+	. = extinguisher_get_volume(extinguisher)
+	if(.)
+		return . >= requested
 
 /**
- * @return volume pulled
+ * @return null, or volume pulled
  */
-/datum/item_mount/proc/extinguisher_transfer_volume(obj/item/extinguisher/extinguisher, key, requested, datum/reagent_holder/into)
-	return 0
+/datum/item_mount/proc/extinguisher_transfer_volume(obj/item/extinguisher/extinguisher, key, requested, datum/reagent_holder/into_holder)
+	return relay_to_other?.extinguisher_transfer_volume(extinguisher, key, requested, into_holder)

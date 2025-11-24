@@ -405,7 +405,7 @@
  * Gets how many sheets we have.
  */
 /obj/item/stack/proc/get_amount()
-	if(item_mount?.stack_provider)
+	if(item_mount)
 		return check_provider_remaining()
 	return amount
 
@@ -413,7 +413,7 @@
  * Gets how many sheets we can carry.
  */
 /obj/item/stack/proc/get_max_amount()
-	if(item_mount?.stack_provider)
+	if(item_mount)
 		return check_provider_capacity()
 	return max_amount
 
@@ -447,7 +447,7 @@
  * @return amount used
  */
 /obj/item/stack/proc/use_amount(amount)
-	if(item_mount?.stack_provider)
+	if(item_mount)
 		return pull_from_provider(amount)
 	if(amount <= 0)
 		return 0
@@ -462,7 +462,7 @@
  * @return amount added
  */
 /obj/item/stack/proc/give_amount(amount, force)
-	if(item_mount?.stack_provider)
+	if(item_mount)
 		return push_to_provider(amount, force)
 	if(!force)
 		amount = min(amount, max_amount - src.amount)
@@ -485,7 +485,7 @@
 		stack_trace("Tried to set a bad stack amount: [new_amount]")
 		return 0
 
-	if(item_mount?.stack_provider)
+	if(item_mount)
 		var/current_amount = check_provider_remaining()
 		var/amount_to_push_or_pull = new_amount - current_amount
 
@@ -507,12 +507,12 @@
 /obj/item/stack/proc/update_amount()
 	if(QDELING(src))
 		return
-	if(item_mount?.stack_provider)
+	if(item_mount)
 	else
 		if(amount <= 0)
 			qdel(src)
 			return
-	update_icon()
+		update_icon()
 
 //* Getters *//
 
@@ -562,7 +562,7 @@
 		for(var/mat_id in legacy_remap)
 			. = min(., (item_mount.material_get_capacity(src, null, mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
 	else
-		. = item_mount.stack_get_capacity(src, null, stack_type) / SHEET_MATERIAL_AMOUNT
+	. = item_mount.stack_get_capacity(src, null, stack_type) / SHEET_MATERIAL_AMOUNT
 
 /**
  * * You must check if stack provider exists.

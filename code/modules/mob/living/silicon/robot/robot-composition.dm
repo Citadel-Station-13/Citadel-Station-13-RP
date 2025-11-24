@@ -7,10 +7,11 @@
  * todo: better name?
  */
 /mob/living/silicon/robot/proc/rebuild()
-	// todo: wipe whatever state is left
-	set_chassis(chassis)
-	set_iconset(iconset)
-	set_module(module)
+	set_chassis(chassis, TRUE)
+	set_iconset(iconset, TRUE)
+	set_module(module, TRUE)
+	// TODO: what about upgrades
+	update_icon()
 
 /**
  * Annihilate composition
@@ -18,9 +19,9 @@
  * todo: better name?
  */
 /mob/living/silicon/robot/proc/wipe_for_gc()
-	set_chassis(null)
-	set_iconset(null)
-	set_module(null)
+	set_chassis(null, TRUE)
+	set_iconset(null, TRUE)
+	set_module(null, TRUE)
 
 /**
  * Hard reset, to unformatted
@@ -29,15 +30,17 @@
  * todo: rework maybe?
  */
 /mob/living/silicon/robot/proc/perform_module_reset(perform_transform_animation)
-	set_chassis(null)
-	set_module(null)
-	set_iconset(RSrobot_iconsets.fetch_local_or_throw(/datum/prototype/robot_iconset/baseline_standard/standard))
-
+	set_chassis(null, TRUE)
+	set_module(null, TRUE)
+	set_iconset(
+		RSrobot_iconsets.fetch_local_or_throw(/datum/prototype/robot_iconset/baseline_standard/standard),
+		TRUE,
+	)
+	update_icon()
 	can_repick_frame = TRUE
 	can_repick_module = TRUE
 
 	//! legacy
-	module_legacy?.Reset(src)
 	lights_on = FALSE
 	radio.set_light(0)
 	if(perform_transform_animation)
@@ -60,19 +63,27 @@
 
 /**
  * Initialize to a chassis
+ *
+ * * Will re-init if it's the same one.
  */
-/mob/living/silicon/robot/proc/set_chassis(datum/prototype/robot_chassis/chassis)
+/mob/living/silicon/robot/proc/set_chassis(datum/prototype/robot_chassis/chassis, skip_icon_update)
+	// cleanup
+	if(chassis_provisioning)
+		QDEL_NULL(chassis_provisioning)
+	// set
 	src.chassis = chassis
-
-	#warn impl
-
+	// build
 	if(!chassis)
 		return
+	chassis_provisioning = chassis.create_provisioning()
+	chassis_provisioning.apply(src)
 
 /**
  * Initialize to a iconset
+ *
+ * * Will re-init if it's the same one.
  */
-/mob/living/silicon/robot/proc/set_iconset(datum/prototype/robot_iconset/iconset)
+/mob/living/silicon/robot/proc/set_iconset(datum/prototype/robot_iconset/iconset, skip_icon_update)
 	src.iconset = iconset
 
 	if(iconset)
@@ -95,24 +106,33 @@
 		icon_x_dimension = initial(icon_x_dimension)
 		icon_y_dimension = initial(icon_y_dimension)
 
-	update_icon()
+	if(!skip_icon_update)
+		update_icon()
 
 /**
  * Initialize to a module
+ *
+ * * Will re-init if it's the same one.
  */
-/mob/living/silicon/robot/proc/set_module(datum/prototype/robot_module/module)
-	src.module = module
-
-	#warn impl
-
+/mob/living/silicon/robot/proc/set_module(datum/prototype/robot_module/module, skip_icon_update)
+	// cleanup
+	if(module_provisioning)
+		QDEL_NULL(module_provisioning)
 	if(module_legacy)
 		module_legacy.Reset()
 		QDEL_NULL(module_legacy)
-
+	// set
+	src.module = module
+	// build
 	if(!module)
 		return
-
+	module_provisioning = module.create_provisioning()
+	module_provisioning.apply(src)
 	module_legacy = new module.use_robot_module_path(src)
+	can_repick_module = FALSE
+
+	if(!skip_icon_update)
+		update_icon()
 
 /**
  * Set chassis / iconset from a frame.
@@ -120,6 +140,7 @@
 /mob/living/silicon/robot/proc/set_from_frame(datum/robot_frame/frame)
 	set_chassis(frame.robot_chassis, TRUE)
 	set_iconset(frame.robot_iconset, TRUE)
+	can_repick_frame = FALSE
 
 	#warn impl
 

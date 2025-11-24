@@ -68,7 +68,13 @@
 
 /datum/prototype/robot_iconset/New()
 	..()
-
-
-#warn impl
-#warn resolve variations
+	for(var/i in 1 to length(variations))
+		var/datum/robot_iconset_variation/maybe_variation = variations[i]
+		if(ispath(maybe_variation))
+			maybe_variation = new maybe_variation
+		else if(IS_ANONYMOUS_TYPEPATH(maybe_variation))
+			maybe_variation = new maybe_variation
+		else if(istype(maybe_variation))
+		else
+			stack_trace("invalid variation in index [i] on [type] ([id])")
+		variations[maybe_variation.id] = maybe_variation

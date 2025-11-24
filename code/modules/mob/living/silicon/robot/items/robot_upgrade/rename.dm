@@ -11,12 +11,11 @@
 		return
 	heldname = sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN)
 
-/obj/item/robot_upgrade/rename/action(var/mob/living/silicon/robot/R)
-	if(..())
-		return FALSE
+// TODO: refactor cyborg namepicking
+/obj/item/robot_upgrade/rename/being_installed(mob/living/silicon/robot/target)
+	var/mob/living/silicon/robot/R = target
 	R.notify_ai(ROBOT_NOTIFICATION_NEW_NAME, R.name, heldname)
 	R.name = heldname
 	R.custom_name = heldname
 	R.real_name = heldname
-
-	return TRUE
+	qdel(src)

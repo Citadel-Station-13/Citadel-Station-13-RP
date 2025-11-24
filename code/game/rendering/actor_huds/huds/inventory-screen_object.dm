@@ -179,7 +179,7 @@
 
 
 /**
- * Button: 'oepn robot modules'
+ * Button: 'open / close robot modules'
  */
 #warn impl
 /atom/movable/screen/actor_hud/inventory/robot_drawer
@@ -197,6 +197,27 @@
 	var/datum/actor_hud/inventory/inventory_hud = hud
 	inventory_hud.toggle_robot_modules()
 	#warn this
+
+/**
+ * Item renderer
+ */
+/atom/movable/screen/actor_hud/inventory/robot_drawer_item
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer_item/Initialize(mapload, datum/actor_hud/inventory/hud, obj/item/render_as)
+	. = ..()
+	masquarade(render_as)
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer_item/proc/masquarade(obj/item/render_as)
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer_item/sync_style(datum/hud_style/style, style_alpha, style_color)
+	. = ..()
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer_item/on_click(mob/user, list/params)
+	. = ..()
+
+
+#warn impl above
+
 
 /**
  * Button: 'open inventory slots'

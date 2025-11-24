@@ -27,6 +27,8 @@
 	var/list/obj/item/suppressed_items
 	/// relay mount
 	var/datum/item_mount/robot_provisioning/relay_mount
+	/// emaged status?
+	var/emag_enabled = FALSE
 
 /datum/robot_provisioning/Destroy()
 	if(applied_to_robot)
@@ -39,6 +41,7 @@
 /datum/robot_provisioning/proc/apply(mob/living/silicon/robot/robot)
 	if(applied_to_robot)
 		remove()
+	set_emag_enabled(robot.emag_items)
 
 /datum/robot_provisioning/proc/remove()
 
@@ -51,6 +54,12 @@
 /datum/robot_provisioning/proc/add_emag_item(obj/item/item)
 
 /datum/robot_provisioning/proc/remove_emag_item(obj/item/item)
+
+/datum/robot_provisioning/proc/set_emag_enabled(new_state)
+	if(emag_enabled == new_state)
+		return
+	emag_enabled = new_state
+	#warn impl
 
 /**
  * @return list of items suppressed

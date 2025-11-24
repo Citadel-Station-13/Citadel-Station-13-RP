@@ -22,27 +22,33 @@
 
 	/// Who we're installed in.
 	var/mob/living/silicon/robot/owner
-	/// Items provided
-	/// * Lazy-inited
-	var/list/obj/item/mounted_items
+	/// Provisioning
+	/// * Not destroyed across different owners, this owns our items and more.
+	var/datum/robot_provisioning/provisioning
 	/// Lazy man's create_mounted_item_descriptor injection.
 	/// * This shouldn't be used at compile time; just override the proc.
 	#warn hook
-	var/list/mounted_item_descriptor_inject
+	VAR_PRIVATE/list/provisioning_inject_item_descriptors
 
 /obj/item/robot_upgrade/Destroy()
 	owner?.uninstall_upgrade(src, TRUE)
 	QDEL_LIST(mounted_items)
 	return ..()
 
-/obj/item/robot_upgrade/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+/obj/item/robot_upgrade/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/callback/reachability_check)
 	. = ..()
 	if(.)
 		return
 	if(!isrobot(target))
 		return
 	var/mob/living/silicon/robot/robot_target = target
-	robot_target.install_upgrade(src, actor = e_args)
+	if(!robot_target.opened)
+		clickchain.chat_feedback(
+			SPAN_WARNING("[robot_target] needs to havea their cover opened for you to access their internals!"),
+			target = robot_target,
+		)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	robot_target.user_install_upgrade(src, actor = e_args)
 	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/robot_upgrade/proc/ensure_mounted_items_loaded()
@@ -61,7 +67,7 @@
  * This uses the exact same format and is handled in a similar way.
  */
 /obj/item/robot_upgrade/proc/create_mounted_item_descriptors(list/out_list)
-	return
+	out_list.Add(provisioning_inject_item_descriptors)
 
 /**
  * Called when checking if we can be applied
