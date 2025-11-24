@@ -217,17 +217,6 @@
 
 #warn nuke this
 /obj/vehicle/sealed/mecha/proc/click_action(atom/target,mob/user, params)
-	if(!src.occupant_legacy || src.occupant_legacy != user )
-		return
-	if(user.stat)
-		return
-	if(state)
-		occupant_message("<font color='red'>Maintenance protocols in effect</font>")
-		return
-
-	if(phasing)//Phazon and other mechs with phasing.
-		src.occupant_message("Unable to interact with objects while phasing")//Haha dumbass.
-		return
 
 	if(!get_charge())
 		return
