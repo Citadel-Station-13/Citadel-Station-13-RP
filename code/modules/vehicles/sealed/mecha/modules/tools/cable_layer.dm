@@ -4,12 +4,13 @@
 	var/turf/old_turf
 	var/obj/structure/cable/last_piece
 	var/obj/item/stack/cable_coil/cable
-	var/max_cable = 1000
+	var/max_cable = 3000
 
 /obj/item/vehicle_module/lazy/legacy/tool/cable_layer/Initialize(mapload)
 	. = ..()
 	cable = new(src)
-	cable.amount = 0
+	cable.amount = max_cable
+	cable.max_amount = max_cable
 
 /obj/item/vehicle_module/lazy/legacy/tool/cable_layer/MoveAction()
 	layCable()

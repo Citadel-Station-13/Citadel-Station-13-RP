@@ -189,16 +189,6 @@
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
 	return internal_tank
 
-/obj/vehicle/sealed/mecha/proc/add_cell(var/obj/item/cell/C=null)
-	if(C)
-		C.forceMove(src)
-		cell = C
-		return
-	cell = new /obj/item/cell/high(src)
-
-/obj/vehicle/sealed/mecha/get_cell(inducer)
-	return cell
-
 /obj/vehicle/sealed/mecha/proc/add_cabin()
 	cabin_air = new
 	cabin_air.temperature = T20C
@@ -294,9 +284,6 @@
 	for(var/obj/item/vehicle_module/lazy/legacy/tool/jetpack/jp in equipment)
 		return jp.equip_ready
 	return FALSE
-
-/obj/vehicle/sealed/mecha/proc/domove(direction)
-	return call((proc_res["dyndomove"]||src), "dyndomove")(direction)
 
 /obj/vehicle/sealed/mecha/proc/get_step_delay()
 	var/tally = 0

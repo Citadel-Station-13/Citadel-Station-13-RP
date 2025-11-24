@@ -70,15 +70,6 @@
 	ion_trail.set_up(src)
 	ion_trail.stop()
 
-/obj/vehicle/sealed/mecha/fighter/add_cell(var/obj/item/cell/C=null)
-	if(C)
-		C.forceMove(src)
-		cell = C
-		return
-	cell = new(src)
-	cell.charge = 30000
-	cell.maxcharge = 30000
-
 /obj/vehicle/sealed/mecha/fighter/process(delta_time)
 	..()
 	if(flight_mode)

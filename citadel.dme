@@ -5666,6 +5666,7 @@
 #include "code\modules\vehicles\sealed\mecha\modules\tools\inflatables.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\tools\jetpack.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\tools\orescanner.dm"
+#include "code\modules\vehicles\sealed\mecha\modules\tools\orescoop.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\tools\passenger.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\tools\powertool.dm"
 #include "code\modules\vehicles\sealed\mecha\modules\tools\rcd.dm"
