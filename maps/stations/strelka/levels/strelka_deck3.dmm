@@ -1344,9 +1344,7 @@
 /obj/machinery/light/spot{
 	dir = 4
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "eS" = (
 /obj/map_helper/access_helper/airlock/station/head_office/chief_medical_officer,
@@ -2253,15 +2251,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
 "hz" = (
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 10
-	},
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 5
-	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "hB" = (
 /turf/simulated/wall/r_wall/prepainted/command,
@@ -2528,9 +2518,7 @@
 /area/rnd/strelka)
 "iB" = (
 /obj/effect/overlay/snow/floor/edges_new,
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "iC" = (
 /obj/structure/closet/secure_closet/miner,
@@ -5302,9 +5290,7 @@
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 9
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "ru" = (
 /obj/fiftyspawner/steel,
@@ -5477,9 +5463,7 @@
 /obj/structure/flora/grass/event/reed_bush1{
 	pixel_y = 19
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "sa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -6009,7 +5993,7 @@
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "supply_dock";
+	id_tag = "supply_shuttle";
 	pixel_x = 25
 	},
 /turf/simulated/floor/reinforced/lythios43c,
@@ -7882,9 +7866,7 @@
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "zV" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -8125,9 +8107,7 @@
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "AD" = (
 /obj/structure/stairs/spawner/west,
@@ -9433,15 +9413,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
-"El" = (
-/obj/effect/overlay/snow/floor/edges_new,
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 5
-	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
-/area/hallway/strelka/deck3)
 "Eo" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/monodark,
@@ -11630,13 +11601,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck3)
-"Lk" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/quartermaster/strelka/cargo/hangar)
 "Ll" = (
 /obj/effect/floor_decal/rust,
 /obj/random/multiple/corp_crate/no_weapons,
@@ -12675,15 +12639,10 @@
 /obj/structure/flora/grass/event/reed_bush1{
 	pixel_y = 19
 	},
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 6
-	},
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "Ov" = (
 /obj/machinery/light/small/old{
@@ -13544,9 +13503,7 @@
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 5
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "Rj" = (
 /obj/structure/undies_wardrobe,
@@ -14456,9 +14413,7 @@
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 9
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "TS" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -15961,9 +15916,7 @@
 /obj/structure/flora/grass/event/reed_bush1{
 	pixel_y = 19
 	},
-/turf/simulated/floor/water/indoors{
-	layer = 1
-	},
+/turf/simulated/floor/outdoors/ice/indoors,
 /area/hallway/strelka/deck3)
 "YX" = (
 /obj/effect/floor_decal/corner/brown{
@@ -29778,8 +29731,8 @@ xi
 jr
 Gr
 zR
-Lk
-Lk
+jr
+jr
 lj
 qh
 Bl
@@ -35025,7 +34978,7 @@ qc
 kK
 tz
 Ri
-El
+iB
 ou
 CQ
 zY
