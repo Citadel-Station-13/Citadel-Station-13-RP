@@ -3116,15 +3116,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/misc_lab)
 "cpq" = (
-/obj/structure/sign/directions/elevator{
-	dir = 4
-	},
-/obj/structure/sign/directions/bridge{
-	dir = 4;
-	pixel_y = 7
-	},
-/turf/simulated/wall/prepainted/civilian,
-/area/chapel/main)
+/obj/structure/table/rack,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/excursion/endeavour/cargo)
 "cpA" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light{
@@ -4498,7 +4492,6 @@
 /area/hallway/d1portaftmaint/endeavour)
 "dnu" = (
 /obj/machinery/door/blast/regular,
-/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "dnA" = (
@@ -6104,7 +6097,8 @@
 /area/hallway/d1strfwdmaint/endeavour)
 "epS" = (
 /obj/structure/morgue/crematorium{
-	dir = 8
+	dir = 8;
+	id = "chapel_crematorium"
 	},
 /turf/simulated/floor/tiled,
 /area/chapel/main)
@@ -10640,7 +10634,6 @@
 /turf/simulated/open,
 /area/maintenance/substation/dock)
 "hQO" = (
-/obj/structure/table/rack,
 /obj/machinery/fire_alarm/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/endeavour/cargo)
@@ -11035,7 +11028,6 @@
 /area/chapel/main)
 "ibU" = (
 /obj/machinery/door/blast/regular,
-/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/station/exploration/aux_hanger/endeavour)
 "icA" = (
@@ -13035,7 +13027,6 @@
 /turf/simulated/floor/plating,
 /area/hallway/d1strfwdmaint/endeavour)
 "jzd" = (
-/obj/structure/table/steel_reinforced,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -13045,6 +13036,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_y = -28
 	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/endeavour/cargo)
 "jzu" = (
@@ -14638,6 +14630,9 @@
 /obj/structure/bed/chair/bay/shuttle,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
+	},
+/obj/structure/panic_button{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
@@ -16541,11 +16536,7 @@
 /turf/simulated/floor/grass,
 /area/exploration/meeting)
 "lRT" = (
-/obj/machinery/mech_recharger,
-/obj/effect/floor_decal/industrial/warning/full,
-/obj/structure/panic_button{
-	pixel_y = 32
-	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/endeavour/general)
 "lSg" = (
@@ -16698,9 +16689,10 @@
 /area/rnd/test_area)
 "lZv" = (
 /obj/machinery/door/blast/regular{
-	id = "chapelgun";
+	id = "chapelgundoor";
 	name = "Chapel Launcher Door"
 	},
+/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "maa" = (
@@ -20268,6 +20260,13 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_bar)
+"oAU" = (
+/obj/machinery/button/crematorium{
+	id = "chapel_crematorium";
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/chapel/main)
 "oAZ" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/station/civilian/evastorage/endeavour)
@@ -23284,6 +23283,11 @@
 	id = "chapelgun";
 	name = "Chapel Mass Driver";
 	pixel_x = 25
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "chapelgundoor";
+	name = "Chapel Launcher Door Control";
+	pixel_x = 36
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/office)
@@ -27404,7 +27408,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/endeavour/cargo)
 "tKM" = (
@@ -31089,13 +31092,13 @@
 	pixel_x = 32;
 	pixel_y = 3
 	},
-/obj/machinery/lathe/autolathe,
 /obj/machinery/button/remote/blast_door{
 	id = "shuttle_lockdown";
 	name = "Shuttle Lockdown";
 	pixel_x = -6;
 	pixel_y = 26
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/endeavour/cargo)
 "wlk" = (
@@ -33214,7 +33217,6 @@
 /area/bridge)
 "xLn" = (
 /obj/machinery/door/blast/regular,
-/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway)
 "xLO" = (
@@ -33879,7 +33881,6 @@
 /area/rnd/test_area)
 "yhF" = (
 /obj/machinery/door/blast/regular,
-/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "yiX" = (
@@ -37582,14 +37583,14 @@ dkX
 dkX
 ihi
 ihi
-ihi
+cCF
 cCF
 cCF
 qlw
 qCw
 cCF
 cCF
-ihi
+cCF
 ihi
 ihi
 evs
@@ -37777,12 +37778,12 @@ dkX
 ihi
 ihi
 quY
-quY
+pVQ
 mmA
 sFT
 hJV
 hQO
-quY
+cpq
 quY
 ihi
 ihi
@@ -37971,7 +37972,7 @@ dkX
 ihi
 ihi
 nXC
-pVQ
+lnP
 lnP
 fbr
 sof
@@ -54678,7 +54679,7 @@ dwJ
 iYx
 slO
 iVV
-cpq
+pgA
 pgA
 pgA
 pgA
@@ -55067,7 +55068,7 @@ mGw
 hQQ
 ibq
 pgA
-vxs
+oAU
 vxs
 xpU
 rXv

@@ -221,7 +221,7 @@
 	id = "salvage_launch";
 	name = "Salvager Bay Doors";
 	pixel_y = -5;
-	req_access = list(19)
+	req_one_access = list(19,50)
 	},
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/quartermaster/miningdock)
@@ -7359,15 +7359,12 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "flh" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Engineering Riser"
+/obj/machinery/air_alarm{
+	dir = 4;
+	pixel_x = -22
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/security)
+/turf/simulated/floor/reinforced,
+/area/security/hangar)
 "flr" = (
 /obj/structure/toilet{
 	dir = 1
@@ -12334,15 +12331,12 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3fwdportmaint/endeavour)
 "iVS" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 9
+/obj/machinery/door/blast/regular{
+	name = "Fighter Hanger Blast Door";
+	id = "fighterhanger"
 	},
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/old_cargo/gray,
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/reinforced,
 /area/security/hangar)
 "iWx" = (
 /obj/structure/flora/ausbushes/brflowers,
@@ -20926,15 +20920,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "pvA" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 10
-	},
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded,
-/turf/simulated/floor/tiled/old_cargo/gray,
+/turf/simulated/floor/reinforced,
 /area/security/hangar)
 "pvB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -22744,6 +22733,9 @@
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/security/hallway)
@@ -29427,7 +29419,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Riser"
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -31795,6 +31787,9 @@
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/security/hallway)
@@ -42270,9 +42265,9 @@ icx
 icx
 mDp
 mDp
-mDp
-mDp
-mDp
+jYr
+qkI
+jYr
 mDp
 mDp
 mDp
@@ -42462,12 +42457,12 @@ jmX
 eEQ
 eEQ
 eEQ
-mDp
-mDp
-jYr
-qkI
-jYr
-mDp
+eEQ
+eEQ
+eEQ
+eEQ
+eEQ
+eEQ
 mDp
 mDp
 mDp
@@ -42656,12 +42651,12 @@ hNE
 eEQ
 eEQ
 eEQ
-eEQ
-eEQ
-eEQ
-eEQ
-eEQ
-eEQ
+ooX
+ooX
+ooX
+flh
+pvA
+iVS
 vXk
 mDp
 mDp
@@ -42853,8 +42848,8 @@ kNj
 ooX
 ooX
 ooX
-iVS
-pvA
+jNA
+hbK
 eGX
 vXk
 mDp
@@ -44383,7 +44378,7 @@ opM
 opM
 opM
 opM
-flh
+opM
 opM
 bJy
 opM
