@@ -1354,6 +1354,19 @@
 		M.make_dizzy(5)
 		M.make_jittery(5)
 
+/datum/reagent/ferric
+	name = "Ferric carboxymaltose"
+	id = "ferric"
+	description = "Injectable iron supplement for cases of anemia."
+	taste_description = "metal"
+	reagent_state = REAGENT_SOLID
+	color = "#8a4b04"
+	scannable = 1
+
+/datum/reagent/ferric/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	if(alien != IS_DIONA)
+		M.add_chemical_effect(CE_BLOODRESTORE, 12 * removed)
+
 /* Antidepressants */
 
 #define ANTIDEPRESSANT_MESSAGE_DELAY 5*60*10
