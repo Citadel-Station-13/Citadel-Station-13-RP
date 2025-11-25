@@ -83,7 +83,6 @@
 
 	/// all installed upgrades
 	/// * some upgrades are consumed on install, and therefore won't be in here
-	/// * associated to `/datum/robot_provisioning`
 	var/list/obj/item/robot_upgrade/upgrades
 
 	//* Configuration *//
@@ -106,7 +105,7 @@
 	/// Bootup sound
 	var/conf_reboot_sound = 'sound/voice/liveagain.ogg'
 	/// MMI type to make if we have none
-	var/conf_mmi_create_type
+	var/conf_mmi_create_type = /obj/item/mmi
 	/// Create cell type if it doesn't exist
 	var/conf_cell_create_type = /obj/item/cell/high/plus
 

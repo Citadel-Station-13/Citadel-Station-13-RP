@@ -23,12 +23,13 @@
 
 	/// Allowed robot frames.
 	/// * set to list of typepaths/anonymous types to init
-	var/list/datum/robot_frame/frames = list()
+	var/list/datum/robot_frame/frames
 
 	/// Generate robot frames from iconsets.
 	/// * set to list of `/datum/prototype/robot_iconset` ids or paths
 	/// * the iconset must have `chassis` set, or this will runtime.
-	var/list/auto_iconsets = list()
+	/// * will append to [frames].
+	var/list/auto_iconsets
 
 	/// Required selection groups
 	/// * If both this and `selection_groups_any` are null, this can't be picked.
@@ -38,7 +39,6 @@
 	var/list/selection_groups_any
 
 	/// show on manifest?
-	#warn hook
 	var/legacy_show_on_manifest = FALSE
 
 	//* Lighting *//
@@ -63,7 +63,34 @@
 	/// * item instances are **not allowed** and will result in shit exploding!
 	var/list/mounted_item_descriptor_inject_emag
 
-#warn init frames
+/datum/prototype/robot_module/New()
+	LAZYINITLIST(frames)
+	for(var/i in 1 to length(auto_iconsets))
+		var/entry = auto_iconsets[i]
+		if(ispath(entry))
+			auto_iconsets[i] = new entry
+		else if(IS_ANONYMOUS_TYPEPATH(entry))
+			auto_iconsets[i] = new entry
+		else if(istype(entry, /datum/robot_frame))
+		else
+			stack_trace("invalid entry [entry] in index [i] on hardcoded frames on [id] ([type])")
+			continue
+	for(var/resolve_iconset in auto_iconsets)
+		var/datum/prototype/robot_iconset/resolved_iconset = RSrobot_iconsets.fetch_local_or_throw(resolve_iconset)
+		if(!resolved_iconset)
+			stack_trace("unknown entry [resolve_iconset] in auto_iconsets on [id] ([type])")
+			continue
+		if(!resolved_iconset.auto_chassis)
+			stack_trace("entry [resolve_iconset] in auto_iconsets on [id] ([type]) has no automatic chassis")
+			continue
+		var/datum/prototype/robot_chassis/resolved_chassis = RSrobot_chassis.fetch_local_or_throw(resolved_iconset.auto_chassis)
+		if(!resolved_chassis)
+			stack_trace("entry [resolve_iconset] in auto_iconsets on [id] ([type]) had an invalid chassis ([resolved_iconset.auto_chassis])")
+			continue
+		var/datum/robot_frame/generated_frame = new
+		generated_frame.robot_iconset = resolved_iconset
+		generated_frame.robot_chassis = resolved_chassis
+		frames += generated_frame
 
 /datum/prototype/robot_module/proc/create_provisioning() as /datum/robot_provisioning
 	var/datum/robot_provisioning/creating = new

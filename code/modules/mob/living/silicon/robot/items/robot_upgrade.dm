@@ -27,7 +27,6 @@
 	var/datum/robot_provisioning/provisioning
 	/// Lazy man's create_mounted_item_descriptor injection.
 	/// * This shouldn't be used at compile time; just override the proc.
-	#warn hook
 	VAR_PRIVATE/list/provisioning_inject_item_descriptors
 
 /obj/item/robot_upgrade/Destroy()
@@ -51,15 +50,43 @@
 	robot_target.user_install_upgrade(src, actor = clickchain)
 	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
-/obj/item/robot_upgrade/proc/ensure_mounted_items_loaded()
-	if(mounted_items)
+/obj/item/robot_upgrade/proc/load_provisioning_if_needed()
+	if(provisioning)
 		return
-	create_mounted_items()
+	create_provisioning()
 
-/obj/item/robot_upgrade/proc/create_mounted_items()
-	var/list/descriptors = create_mounted_item_descriptors()
-	#warn impl
-	#warn handle item deletions
+/obj/item/robot_upgrade/proc/create_provisioning() as /datum/robot_provisioning
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	// obliterate existing if there
+	QDEL_NULL(provisioning)
+	// make new one
+	var/datum/robot_provisioning/creating = new
+	. = creating
+	var/list/items = create_mounted_items()
+	for(var/obj/item/item as anything in items)
+		creating.add_item(item)
+	return creating
+
+/obj/item/robot_upgrade/proc/create_mounted_items() as /list
+	var/list/obj/item/items = list()
+
+	var/list/i_normal = list()
+	create_mounted_item_descriptors(i_normal)
+	for(var/obj/item/descriptor as anything in i_normal)
+		var/obj/item/resolved
+		if(istype(descriptor))
+			resolved = descriptor
+		else if(ispath(descriptor))
+			resolved = new descriptor
+		else if(IS_ANONYMOUS_TYPEPATH(descriptor))
+			resolved = new descriptor
+		else
+			stack_trace("invalid descriptor [descriptor] on [id] ([type])")
+			continue
+		items += resolved
+
+	return items
 
 /**
  * See: `/datum/prototype/robot_module/proc/create_mounted_item_descriptors`.

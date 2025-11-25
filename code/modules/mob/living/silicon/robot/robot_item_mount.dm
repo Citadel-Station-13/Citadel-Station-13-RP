@@ -12,8 +12,6 @@
 	src.store = store
 
 /datum/item_mount/robot_item_mount/Destroy()
-	if(store?.stack_provider == src)
-		store.stack_provider = null
 	store = null
 	return ..()
 

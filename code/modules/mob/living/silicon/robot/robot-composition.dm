@@ -46,7 +46,6 @@
 	if(perform_transform_animation)
 		transform_with_anim()
 	//! end
-	#warn impl
 
 /mob/living/silicon/robot/proc/get_module_pick_groups()
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -141,8 +140,6 @@
 	set_chassis(frame.robot_chassis, TRUE)
 	set_iconset(frame.robot_iconset, TRUE)
 	can_repick_frame = FALSE
-
-	#warn impl
 
 /**
  * Apply a provisioning set; this is one of the things orchestrating composition.

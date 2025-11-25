@@ -45,11 +45,11 @@
 	/// Our owner
 	var/mob/living/silicon/robot/owner
 
-/datum/item_mount/robot_item_mount/New(mob/living/silicon/robot/owner)
+/datum/robot_resource_store/New(mob/living/silicon/robot/owner)
 	item_mount = new(src)
 	src.owner = owner
 
-/datum/item_mount/robot_item_mount/Destroy()
+/datum/robot_resource_store/Destroy()
 	QDEL_NULL(item_mount)
 	owner = null
 	return ..()
