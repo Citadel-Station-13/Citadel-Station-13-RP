@@ -17,5 +17,5 @@
 	var/static/regex/expression = regex(@"[\r\n\t]", "g")
 	. = str
 	. = trim(.)
-	. = replacetext_char(., expression)
+	. = replacetext_char(., expression, "")
 	. = html_encode(.)
