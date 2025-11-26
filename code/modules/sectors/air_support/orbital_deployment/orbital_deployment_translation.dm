@@ -13,6 +13,11 @@
 	var/datum/orbital_deployment_transit/transit
 	var/datum/event_args/actor/launching_actor
 
+	var/list/types_crushed = list()
+	var/list/types_dropped = list()
+	var/list/mob/important_mobs_crushed = list()
+	var/list/mob/important_mobs_dropped = list()
+
 /datum/orbital_deployment_translation/New(datum/orbital_deployment_transit/from_transit)
 	transit = from_transit
 	launching_actor = transit.launching_actor
@@ -24,12 +29,15 @@
 	dest_lower_left = dest_upper_right = null
 	falling_out_of_the_sky = null
 	QDEL_LIST(falling_out_of_the_sky)
+	types_crushed = types_dropped = null
+	important_mobs_crushed = important_mobs_dropped = null
 	return ..()
 
 /datum/orbital_deployment_translation/proc/on_turf_overlap(turf/from_turf, turf/to_turf)
 	if(to_turf.density)
 		turf_overlap_coord_x += to_turf.x
 		turf_overlap_coord_y += to_turf.y
+		++types_crushed[to_turf.type]
 
 /datum/orbital_deployment_translation/proc/on_movable_overlap(atom/movable/victim, turf/from_turf, turf/to_turf)
 	var/throw_aside_and_crush = FALSE
@@ -44,6 +52,11 @@
 			full_obliteration_chance = 100 - (item_victim.w_class - 1) * 20
 		if(!prob(full_obliteration_chance))
 			throw_aside_and_crush = TRUE
+	++types_crushed[victim.type]
+	if(ismob(victim))
+		var/mob/mob_victim = victim
+		if(mob_victim.is_potentially_important_for_logs())
+			important_mobs_crushed += mob_victim
 	if(throw_aside_and_crush)
 		crush_and_obliterate += victim
 		victim.forceMove(get_random_outside_turf())
@@ -62,6 +75,7 @@
 			continue
 		for(var/obj/O in T)
 			to_damage_objs += O
+			++types_dropped[O.type]
 	// cheat this, explo
 	var/mob_query_dist = ceil(
 		max(
@@ -75,8 +89,31 @@
 		if(where.loc != transported_area)
 			continue
 		to_damage_mobs += try_and_cheat_this_explo
+		if(try_and_cheat_this_explo.is_potentially_important_for_logs())
+			important_mobs_crushed += try_and_cheat_this_explo
+		++types_dropped[try_and_cheat_this_explo.type]
 
+	// render log output incase people get deleted from anything when we start doing stuff
+	var/list/rendered_important_mobs_crushed = list()
+	var/list/rendered_important_mobs_dropped = list()
+	for(var/mob/entity as anything in important_mobs_crushed)
+		rendered_important_mobs_crushed += key_name(entity)
+	for(var/mob/entity as anything in important_mobs_dropped)
+		rendered_important_mobs_dropped += key_name(entity)
+
+	// log
 	CHECK_TICK
+	log_orbital_deployment(
+		launching_actor,
+		"orbital drop landed",
+		list(
+			"dropTypes" = types_dropped,
+			"impactTypes" = types_crushed,
+			"dropImportantMobs" = rendered_important_mobs_dropped,
+			"impactImportantMobs" = rendered_important_mobs_crushed,
+		),
+	)
+
 	// scream at everyone
 	var/list/mob/to_notify_mobs = list()
 	for(var/mob/outside in SSspatial_grids.living.range_query(mob_query_center, mob_query_dist + world_view_max_number()))
@@ -170,12 +207,10 @@
 				)
 				CHECK_TICK
 
-
-#warn log the shit out of ... everything
-
 /**
  * get random turf outside of edge
  */
 /datum/orbital_deployment_translation/proc/get_random_outside_turf(radius = 1)
+	//
 
 	#warn impl

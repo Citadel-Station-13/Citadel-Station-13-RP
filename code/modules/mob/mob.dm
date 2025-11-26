@@ -118,6 +118,16 @@
 	actionspeed_modifiers = null
 	return QDEL_HINT_HARDDEL
 
+/**
+ * Checks if we're relatively important for logging
+ * * As a rule of thumb, if a player is attacking or being attacked, something should be logged.
+ *   This checks if we're important enough to invoke logs whether on the sending or receiving sides.
+ *
+ * @return truth-y or false-y value, not necessarily TRUE / FALSE
+ */
+/mob/proc/is_potentially_important_for_logs()
+	return ckey || mind
+
 //* Mob List Registration *//
 
 /mob/proc/mob_list_register(for_stat)

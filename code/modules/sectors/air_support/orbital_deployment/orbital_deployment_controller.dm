@@ -180,7 +180,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 				if(!check_target_flare_validity(dangerously_unchecked_target))
 					return TRUE
 				target_ref = dangerously_unchecked_target
-			#warn impl
+			var/turf/target_center = get_turf(target_ref)
+			var/dir_from_north = params["dir"]
+			var/list/out_warnings = list()
+			var/list/out_errors = list()
+			if(!linked_zone.check_zone(target_center, dir_from_north, out_warnings, out_errors))
+				return TRUE
+			// TODO: emit warnings / errors as spoken output?
+			if(length(out_errors))
+				return TRUE
+			linked_zone.launch(target_center, dir_from_north, actor = actor)
+			return TRUE
 
 /obj/machinery/orbital_deployment_controller/proc/check_target_laser_validity(atom/movable/laser_designator_target/target)
 	if(!isturf(target.loc))
