@@ -544,7 +544,22 @@
 	REMOVE_TRAIT(src, TRAIT_ORGAN_PRESERVED, source)
 	reconsider_processing()
 
+
+
+
 //Germs
+
+//TODO: REWORK HANDLE_ANTIBIOTICS()
+// In essence what I need to do here as per FOl's doc and the projected changes is to uniquely adapt antibiotics
+// antibiotics should no longer be handled by a simple chem_effects on the owner but rather a more dynamic check on the-
+// - antibiotic type. In essence we will have to refactor this proc to take into consideration multiple bacteria
+// and their sensibilities to different types of antibiotics
+// similarly we must implement a treatmentresistance system so that just giving wide-spectrum cocktails is not good treatment
+// the main issue is figuring out a sensible way to handle different antibiotics' effect on different bacteria
+// some work, some dont
+// currently all antibios are handled under a single variable
+// it would be supremely stupid to make 9 new antibiovariables and 20 nested if statements for each different bacteria
+//
 /obj/item/organ/proc/handle_antibiotics()
 	if(istype(owner))
 		var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC] || 0
@@ -567,6 +582,15 @@
 		else
 			/// You waited this long to get treated, you don't really deserve this organ.
 			adjust_germ_level(-antibiotics)
+
+// TODO: rework handle_germ_effects()
+// following last todo for antibiotic handling, this is the more important piece of work.
+// we could utilize the current system of germ level to handle infection effects, that is fine i believe as it exists currently.
+// basically, i think we can run this system so long as the current bacteria isn't being treated by the correct antibiotic
+// likewise and the most important diversion here is that if a bacteria isnt treated for long enough to the point of sepsis
+// the organ owner dies. like straight up dies,
+// or more likely just a massive MASSIVE flood of toxin damage that not even coro+dylo can treat
+//
 
 ///A little wonky: internal organs stop calling this (they return early in process) when dead, but external ones cause further damage when dead
 /obj/item/organ/proc/handle_germ_effects()
