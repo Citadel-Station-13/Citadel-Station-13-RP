@@ -25,20 +25,12 @@ var/game_year			= (text2num(time2text(world.realtime, "YYYY")) + 544)
 var/master_mode       = "extended" // "extended"
 var/secret_force_mode = "secret"   // if this is anything but "secret", the secret rotation will forceably choose this mode.
 
-var/host = null //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
-
-var/list/jobMax        = list()
 var/list/bombers       = list()
 var/list/admin_log     = list()
 var/list/lastsignalers = list() // Keeps last 100 signals here in format: "[src] used \ref[src] @ location [src.loc]: [freq]/[code]"
 var/list/lawchanges    = list() // Stores who uploaded laws to which silicon-based lifeform, and what the law was.
-var/list/reg_dna       = list()
 
 var/mouse_respawn_time = 5 // Amount of time that must pass between a player dying as a mouse and repawning as a mouse. In minutes.
-
-var/list/monkeystart     = list()
-var/list/wizardstart     = list()
-var/list/newplayer_start = list()
 
 var/list/xeno_spawn         = list() // Aliens spawn at at these.
 var/list/tdome1             = list()
@@ -50,16 +42,9 @@ var/list/ninjastart         = list()
 
 var/datum/configuration_legacy/config_legacy      = null
 
-var/list/combatlog = list()
-var/list/IClog     = list()
-var/list/OOClog    = list()
-var/list/adminlog  = list()
-
 var/list/powernets = list()	// TODO - Move into SSmachines
 
 var/gravity_is_on = 1
-
-var/join_motd = null
 
 var/datum/legacy_metric/metric = new() // Metric datum, used to keep track of the round.
 
@@ -67,33 +52,10 @@ var/list/awaydestinations = list() // Away missions. A list of landmarks that th
 
 // For FTP requests. (i.e. downloading runtime logs.)
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.
-var/fileaccess_timer = 0
 var/custom_event_msg = null
 
 // Added for Xenoarchaeology, might be useful for other stuff.
 var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
-
-
-// Used by robots and robot preferences.
-var/list/robot_module_types = list(
-	"Standard",
-	"Engineering",
-	"Medical",
-	"Miner",
-	"Janitor",
-	"Service",
-	"Clerical",
-	"Security",
-	"Research",
-	"Quadruped",
-	"MediQuad",
-	"SecuriQuad",
-	"JaniQuad",
-	"SciQuad",
-	"EngiQuad",
-	"Mining Quad",
-	"Service Quad"
-)
 
 // Some scary sounds.
 var/static/list/scarySounds = list(

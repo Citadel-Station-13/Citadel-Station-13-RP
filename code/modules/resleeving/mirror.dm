@@ -72,8 +72,8 @@
 			MT.imp = src
 			MT.update_icon()
 		else
-			if(istype(I, /obj/item/dogborg/mirrortool))
-				var/obj/item/dogborg/mirrortool/MT = I
+			if(istype(I, /obj/item/robot_builtin/dog_mirrortool))
+				var/obj/item/robot_builtin/dog_mirrortool/MT = I
 				if(MT.imp)
 					to_chat(usr, "The mirror tool already contains a mirror.")
 					return // It's full.
