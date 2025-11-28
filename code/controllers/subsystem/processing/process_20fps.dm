@@ -3,5 +3,5 @@
  */
 PROCESSING_SUBSYSTEM_DEF(process_20fps)
 	name = "Processing - 20 fps"
-	wait = 0.5
+	wait = (1 / 20) SECONDS
 	stat_tag = "P20"
