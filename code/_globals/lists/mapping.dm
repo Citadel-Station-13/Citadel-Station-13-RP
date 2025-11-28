@@ -29,7 +29,7 @@ GLOBAL_REAL_LIST(cornerdirsz) = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST,
 /**
  * All cardinal + intercardinal (so horizontal) dirs
  */
-GLOBAL_REAL_LIST(alldirs, list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
+GLOBAL_REAL_LIST(alldirs) = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
 //* Real var for speed *//
 GLOBAL_REAL_LIST(reverse_dir) = list( // reverse_dir[dir] = reverse of dir

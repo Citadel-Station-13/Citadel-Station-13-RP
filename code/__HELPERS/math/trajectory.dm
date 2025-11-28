@@ -158,21 +158,21 @@
 	// return null if intercept is impossible
 	switch(length(results))
 		if(1)
-			. results[1] > 0 ? results[1] : null
+			. = results[1] > 0 ? results[1] : null
 		if(2)
 			if(results[1] < 0)
 				if(results[2] < 0)
 					// both invalid
 				else
 					// 2 valid
-					. results[2]
+					. = results[2]
 			else
 				if(results[2] < 0)
 					// 1 valid
-					. results[1]
+					. = results[1]
 				else
 					// both valid
-					. results[2] < results[1] ? results[2] : results[1]
+					. = results[2] < results[1] ? results[2] : results[1]
 
 	// if we don't have a time, we will never intersect
 	if(!.)

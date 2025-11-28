@@ -4585,6 +4585,7 @@
 #include "code\modules\overmap\entity\entity-hooks.dm"
 #include "code\modules\overmap\entity\entity-location.dm"
 #include "code\modules\overmap\entity\entity-misc.dm"
+#include "code\modules\overmap\entity\entity-movement.dm"
 #include "code\modules\overmap\entity\entity-physics.dm"
 #include "code\modules\overmap\entity\entity.dm"
 #include "code\modules\overmap\entity\overmap_initializer.dm"
