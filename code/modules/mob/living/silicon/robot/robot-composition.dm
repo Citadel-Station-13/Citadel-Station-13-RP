@@ -96,6 +96,9 @@
 		set_base_pixel_x(iconset.base_pixel_x)
 		icon_x_dimension = iconset.icon_dimension_x
 		icon_y_dimension = iconset.icon_dimension_y
+		// reset resting variation if needed
+		if(!iconset.variations[picked_resting_variation])
+			picked_resting_variation = null
 	else
 		zmm_flags &= ~ZMM_WIDE_LOAD
 		base_icon_state = initial(base_icon_state) || initial(icon_state)
@@ -104,6 +107,8 @@
 		set_base_pixel_x(0)
 		icon_x_dimension = initial(icon_x_dimension)
 		icon_y_dimension = initial(icon_y_dimension)
+		// reset resting variation
+		picked_resting_variation = null
 
 	if(!skip_icon_update)
 		update_icon()
