@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(grids)
  * * leave_area - the area instance to leave behind. if not set, this defaults to world.area. this can be a typepath if the typepath is an unique area.
  * * emit_motion_flags - use this to extract ordered motion flags
  * * emit_moved_atoms - use this to extract what movables got moved
- * * turf_overlap_handler - bound proc that's fired for things in the way with (from_turf, to_turf); things: turfs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
+ * * turf_overlap_handler - bound proc that's fired for things in the way with (from_turf, to_turf); things: turfs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored. Called before `movable_overlap_handler`.
  * * movable_overlap_handler - bound proc that's fired for things in the way with (thing, from_turf, to_turf); things: objs, mobs. ATOM_ABSTRACT and ATOM_NONWORLD are ignored.
  */
 /datum/controller/subsystem/grids/proc/translate(list/from_turfs, list/to_turfs, from_dir, to_dir, grid_flags, baseturf_boundary, area/leave_area, list/emit_motion_flags = list(), list/emit_moved_atoms = list(), datum/bound_proc/turf_overlap_handler, datum/bound_proc/movable_overlap_handler)
@@ -151,7 +151,7 @@ SUBSYSTEM_DEF(grids)
 	// The actual process:
 	// * Collect turfs, with order of opinions being area -> turf -> movable
 	// * Move areas to their new turfs all at once
-	// * Move turfs one by one
+	// * Move turfs one by one, calling turf --> movable overlap handlers on that turf if needed.
 	// * Move movables to their new turfs
 	// * Proc grid_after() on all areas -> turfs -> movables in these stages
 	// * Cleanup areas from their old turfs all at once

@@ -144,20 +144,26 @@
 	ASSERT(target_lower_left)
 	ASSERT(target_dir_from_north)
 
+	var/turf/target_upper_right = locate(
+		target_lower_left.x + packaged_width - 1,
+		target_lower_left.y + packaged_height - 1,
+		target_lower_left.z,
+	)
+
 	var/list/from_lower_left_coords = reservation.bottom_left_coords
 	var/list/from_turfs = SSgrids.get_ordered_turfs(
-		from_lower_left_coords[1],
-		from_lower_left_coords[1] + packaged_width - 1,
-		from_lower_left_coords[2],
-		from_lower_left_coords[2] + packaged_height - 1,
+		from_lower_left_coords[1] + packaged_border,
+		from_lower_left_coords[1] + packaged_border, packaged_width - 1,
+		from_lower_left_coords[2] + packaged_border,
+		from_lower_left_coords[2] + packaged_border + packaged_height - 1,
 		from_lower_left_coords[3],
 		NORTH,
 	)
 	var/list/to_turfs = SSgrids.get_ordered_turfs(
 		target_lower_left.x,
-		target_lower_left.x + packaged_width - 1,
+		target_upper_right.x,
 		target_lower_left.y,
-		target_lower_left.y + packaged_height - 1,
+		target_upper_right.y,
 		target_lower_left.z,
 		target_dir_from_north
 	)
@@ -166,6 +172,9 @@
 	var/list/out_moved_atoms = list()
 
 	var/datum/orbital_deployment_translation/translation = new(src)
+	translation.dest_lower_left = target_lower_left
+	translation.dest_upper_right = target_upper_right
+	translation.initialize()
 
 	var/datum/bound_proc/turf_overlap_handler = BOUND_PROC(translation, TYPE_PROC_REF(/datum/orbital_deployment_translation, on_turf_overlap))
 	var/datum/bound_proc/movable_overlap_handler = BOUND_PROC(translation, TYPE_PROC_REF(/datum/orbital_deployment_translation, on_movable_overlap))

@@ -8,6 +8,11 @@
 
 	var/turf/dest_lower_left
 	var/turf/dest_upper_right
+	/// computed in initialize()
+	var/turf/dest_center
+
+	var/area/structural_area
+
 	var/list/atom/movable/falling_out_of_the_sky = list()
 
 	var/datum/orbital_deployment_transit/transit
@@ -18,8 +23,12 @@
 	var/list/mob/important_mobs_crushed = list()
 	var/list/mob/important_mobs_dropped = list()
 
+	/// cached list of turf mappings for throws
+	var/list/impact_throw_to_mappings = list()
+
 /datum/orbital_deployment_translation/New(datum/orbital_deployment_transit/from_transit)
 	transit = from_transit
+	structural_area = from_transit.structural_area
 	launching_actor = transit.launching_actor
 
 /datum/orbital_deployment_translation/Destroy()
@@ -32,6 +41,13 @@
 	types_crushed = types_dropped = null
 	important_mobs_crushed = important_mobs_dropped = null
 	return ..()
+
+/datum/orbital_deployment_translation/proc/initialize()
+	dest_center = locate(
+		floor((dest_upper_right.y - dest_lower_left.y) / 2),
+		floor((dest_upper_right.x - dest_lower_left.x) / 2),
+		dest_lower_left.z,
+	)
 
 /datum/orbital_deployment_translation/proc/on_turf_overlap(turf/from_turf, turf/to_turf)
 	if(to_turf.density)
@@ -59,7 +75,7 @@
 			important_mobs_crushed += mob_victim
 	if(throw_aside_and_crush)
 		crush_and_obliterate += victim
-		victim.forceMove(get_random_outside_turf())
+		victim.forceMove(get_crush_move_turf_mapping(victim.loc))
 	else
 		qdel(victim)
 
@@ -70,6 +86,7 @@
 	// First, gather, as this doesn't CHECK_TICK
 	var/list/obj/to_damage_objs = list()
 	var/list/mob/to_damage_mobs = list()
+
 	for(var/turf/T as anything in block(dest_lower_left, dest_upper_right))
 		if(T.loc != transported_area)
 			continue
@@ -207,10 +224,42 @@
 				)
 				CHECK_TICK
 
-/**
- * get random turf outside of edge
- */
-/datum/orbital_deployment_translation/proc/get_random_outside_turf(radius = 1)
-	//
+/datum/orbital_deployment_translation/proc/get_crush_move_turf_mapping(turf/origin)
+	// cached for speed
+	var/list/impact_throw_to_mappings = src.impact_throw_to_mappings
+	. = impact_throw_to_mappings[origin]
+	if(.)
+		return
+	var/escape_dir = get_dir(dest_center, origin)
+	if(!escape_dir)
+		escape_dir = ALL
+	else if(!ISDIAGONALDIR(escape_dir))
+		escape_dir |= turn(escape_dir, 45) | turn(escape_dir, -45)
+	var/shortest = INFINITY
+	for(var/dir in global.alldirs)
+		if(!(dir & escape_dir))
+			continue
+		var/turf/iterating = origin
+		var/list/turf/iterated = list()
+		for(var/i in 1 to 35)
+			iterating = get_step(iterating, dir)
+			iterated += iterating
+			if(iterating.loc == structural_area)
+				continue
+			// found something outside
+			for(var/turf/T as anything in iterated)
+				if(impact_throw_to_mappings[T])
+					if(prob(50))
+						impact_throw_to_mappings[T] = iterating
+				else
+					impact_throw_to_mappings[T] = iterating
+			if(shortest > i)
+				shortest = min(shortest, i)
+				. = iterating
+			else if(shortest == i)
+				if(prob(50))
+					. = iterating
+			break
 
-	#warn impl
+	if(!.)
+		CRASH("failed to get crush move turf mapping, an orbital deployment zone is probably way too big")

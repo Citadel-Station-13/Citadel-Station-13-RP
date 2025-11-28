@@ -34,13 +34,20 @@
 	var/datum/overmap/overmap
 
 	//* physics *//
+
 	/// velocity x in overmap units per second
+	//  todo: after VV is reworked, change this to a /vector.
 	var/vel_x
 	/// velocity y in overmap units per second
+	//  todo: after VV is reworked, change this to a /vector.
 	var/vel_y
 	/// cached, read-only cached center x in overmap dist
+	//  todo: get rid of this if possible, this is only here for
+	//        faster virtualized pos calculation and for drift sanity checks.
 	var/pos_x
 	/// cached, read-only cached center y in overmap dist
+	//  todo: get rid of this if possible, this is only here for
+	//        faster virtualized pos calculation and for drift sanity checks.
 	var/pos_y
 	/// bump was handled
 	var/bump_handled = FALSE

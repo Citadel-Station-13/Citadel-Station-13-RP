@@ -129,3 +129,55 @@
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, only got distance")
 			else
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, got none of the above")
+
+/**
+ * Solves for angle needed to intercept a target when an interceptor is fired with
+ * a given velocity.
+ *
+ * * Input must include source / target positions.
+ * * Input must include source velocity as a scalar
+ * * Input must include target velocity as a vector
+ * * Returned angle is clockwise of north
+ *
+ * @return list(angle, predicted time), or null if no solution found
+ */
+#warn test this shit
+/proc/math__solve_intercept_trajectory(vector/source, vector/target, source_speed, vector/target_vel)
+	// 0 = (vt^2 - vs^2) * t^2 + 2 * (pt - ps) * vt * t + (pt - ps)^2
+	// with dot product'd as needed to convert into scalars
+	// i have no clue why this works yet but it does lol
+
+	var/vector/offset = target - source
+	var/a = (target_vel.Dot(target_vel) - source_speed ** 2)
+	var/b = 2 * (target_vel.Dot(offset))
+	var/c = offset.Dot(offset)
+
+	var/list/results = SolveQuadratic(a, b, c)
+
+	// we want the smaller number
+	// return null if intercept is impossible
+	switch(length(results))
+		if(1)
+			. results[1] > 0 ? results[1] : null
+		if(2)
+			if(results[1] < 0)
+				if(results[2] < 0)
+					// both invalid
+				else
+					// 2 valid
+					. results[2]
+			else
+				if(results[2] < 0)
+					// 1 valid
+					. results[1]
+				else
+					// both valid
+					. results[2] < results[1] ? results[2] : results[1]
+
+	// if we don't have a time, we will never intersect
+	if(!.)
+		return
+
+	// solve for angle
+	var/vector/intersection_point = target + target_vel * .
+	return arctan(intersection_point[2])
