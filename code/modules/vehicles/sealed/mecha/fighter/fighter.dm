@@ -29,7 +29,7 @@
 	base_movement_speed = 5
 
 	comp_armor_relative_thickness = 1.25
-	comp_hull = /obj/item/vehicle_component/plating/hull/lightweight
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/lightweight
 	comp_hull_relative_thickness = 1.25
 
 	wreckage = /obj/effect/decal/mecha_wreckage/gunpod

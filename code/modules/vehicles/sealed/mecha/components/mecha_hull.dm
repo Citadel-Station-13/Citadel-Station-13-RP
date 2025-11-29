@@ -9,9 +9,12 @@
 	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 3500, MAT_GLASS = 200)
+
+	integrity = 300
+	integrity_max = 300
+	integrity_failure = 200
+
 	emp_resistance = 0	// Amount of emp 'levels' removed.
-	integrity_danger_mod = 0.5	// Multiplier for comparison to integrity_max before problems start.
-	integrity_max = 50
 	internal_damage_flag = MECHA_INT_FIRE
 
 /obj/item/vehicle_component/plating/mecha_hull/durable

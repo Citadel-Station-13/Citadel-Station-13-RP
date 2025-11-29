@@ -18,8 +18,8 @@
 	base_movement_speed = 4
 	armor_type = /datum/armor/vehicle/combat/gygax
 
-	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
-	comp_hull = /obj/item/vehicle_component/plating/hull/lightweight
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/marshal
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/lightweight
 
 	dir_in = 1 //Facing North.
 	integrity = 250

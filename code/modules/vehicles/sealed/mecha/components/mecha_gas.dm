@@ -9,9 +9,3 @@
 	integrity_danger_mod = 0.4
 	integrity_max = 40
 	internal_damage_flag = MECHA_INT_TANK_BREACH
-
-/obj/item/vehicle_component/mecha_gas/reinforced
-	name = "reinforced mecha life-support"
-	emp_resistance = 2
-	integrity_max = 80
-	relative_size = 40

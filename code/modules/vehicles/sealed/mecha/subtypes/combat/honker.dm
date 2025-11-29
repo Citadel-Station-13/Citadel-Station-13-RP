@@ -27,8 +27,8 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 2,
 	)
 
-	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
-	comp_hull = /obj/item/vehicle_component/plating/hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/marshal
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/durable
 
 	dir_in = 1 //Facing North.
 	max_temperature = 25000

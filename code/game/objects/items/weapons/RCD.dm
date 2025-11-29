@@ -289,6 +289,7 @@
 	return ..()
 
 /obj/item/rcd/electric/Destroy()
+	QDEL_NULL(cell)
 	if(cell)
 		QDEL_NULL(cell)
 	return ..()
@@ -328,6 +329,7 @@
 /obj/item/rcd/electric/mounted/get_cell(inducer)
 	return get_external_power_supply()
 
+// TODO: use item mounts
 /obj/item/rcd/electric/mounted/proc/get_external_power_supply()
 	if(isrobot(loc)) // In a borg.
 		var/mob/living/silicon/robot/R = loc
@@ -339,9 +341,8 @@
 	if(istype(loc, /obj/item/vehicle_module)) // In a mech.
 		var/obj/item/vehicle_module/lazy/legacy/ME = loc
 		if(ME.chassis) // Is the part attached to a mech?
-			return ME.chassis.cell
+			return ME.chassis.power_cell
 	return null
-
 
 // RCDs for borgs.
 /obj/item/rcd/electric/mounted/borg

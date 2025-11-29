@@ -916,28 +916,28 @@
 	id = "marmor"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 10000 * (1 / 3), MAT_GLASS = 2000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/plating/armor
+	build_path = /obj/item/vehicle_component/plating/mecha_armor
 
 /datum/prototype/design/science/mecha_component/armor/blast
 	design_name = "Mecha Plating - Blast Resistant"
 	id = "marmorblast"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_GLASS = 500 * (1 / 3), MAT_PLASTEEL = 2000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/plating/armor/mining
+	build_path = /obj/item/vehicle_component/plating/mecha_armor/mining
 
 /datum/prototype/design/science/mecha_component/armor/lightweight
 	design_name = "Mecha Plating - Lightweight"
 	id = "marmorlight"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_PLASTIC = 5000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/plating/armor/lightweight
+	build_path = /obj/item/vehicle_component/plating/mecha_armor/lightweight
 
 /datum/prototype/design/science/mecha_component/armor/reinforced
 	design_name = "Mecha Plating - Reinforced"
 	id = "marmorreinf"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6, TECH_COMBAT = 5)
 	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_PLASTEEL = 5000 * (1 / 3), MAT_URANIUM = 5000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/plating/armor/reinforced
+	build_path = /obj/item/vehicle_component/plating/mecha_armor/reinforced
 
 /datum/prototype/design/science/mecha_component/electrical
 	design_name = "Mecha Electrical Harness"
@@ -958,21 +958,21 @@
 	id = "mhull"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GLASS = 500 * (1 / 3))
-	build_path = /obj/item/vehicle_component/plating/hull
+	build_path = /obj/item/vehicle_component/plating/mecha_hull
 
 /datum/prototype/design/science/mecha_component/hull/durable
 	design_name = "Mecha Hull - Durable"
 	id = "mhulldura"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GLASS = 500 * (1 / 3), MAT_PLASTEEL = 10000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/plating/hull/durable
+	build_path = /obj/item/vehicle_component/plating/mecha_hull/durable
 
 /datum/prototype/design/science/mecha_component/hull/lightweight
 	design_name = "Mecha Hull - Lightweight"
 	id = "mhulllight"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 5)
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GLASS = 500 * (1 / 3), MAT_PLASTIC = 3000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/plating/hull/lightweight
+	build_path = /obj/item/vehicle_component/plating/mecha_hull/lightweight
 
 /datum/prototype/design/science/mecha_component/gas
 	design_name = "Mecha Life-Support"

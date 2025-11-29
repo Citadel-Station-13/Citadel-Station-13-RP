@@ -17,8 +17,8 @@
 
 	base_movement_speed = 5
 	armor_type = /datum/armor/vehicle/mecha/combat/phazon
-	comp_armor = /obj/item/vehicle_component/plating/armor/alien
-	comp_hull = /obj/item/vehicle_component/plating/hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/alien
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/durable
 
 	dir_in = 1 //Facing North.
 	max_temperature = 25000

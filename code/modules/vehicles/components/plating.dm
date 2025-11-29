@@ -34,18 +34,28 @@
 
 /**
  * Returns part of damage instance that should be continued, if any
+ *
  * * Any blocked damage should be directed to ourselves. The vehicle-side defense code will handle that.
+ * * This will modify the passed in list.
  */
-/obj/item/vehicle_component/plating/proc/compute_resultant_inbound_vehicle_damage_instance(SHIELDCALL_PROC_HEADER)
+/obj/item/vehicle_component/plating/proc/run_inbound_vehicle_damage_instance(list/shieldcall_args, fake_attack)
+	// check how damaged we are; after integrity failure there's escalating chance we start letting
+	// stuff through wholesale
 
-/obj/item/vehicle_component/plating/proc/
+	if(integrity < integrity_failure)
+		// simple linear interpolation once at integrity failure
+		var/pass_percent = (1 - (integrity / integrity_failure)) * 100
+		if(prob(pass_percent))
+			return
 
+	var/datum/armor/redirection = fetch_redirection_armor()
+	var/reduced_damage = redirection?.resultant_damage(
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE],
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER],
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG],
+		shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] & DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
+	)
+	if(shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] & DAMAGE_MODE_REQUEST_ARMOR_BLUNTING)
+		// if requested, blunt tier as needed
 
-
-/obj/item/vehicle_component/plating/proc/
-
-
-/obj/item/vehicle_component/plating/proc/
-
-
-#warn impl
+	#warn impl

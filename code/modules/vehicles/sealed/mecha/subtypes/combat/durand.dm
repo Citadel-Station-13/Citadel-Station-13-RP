@@ -29,9 +29,9 @@
 	base_movement_speed = 2.5
 
 	comp_hull_relative_thickness = 1.5 * /obj/vehicle/sealed/mecha/combat::comp_hull_relative_thickness
-	comp_hull = /obj/item/vehicle_component/plating/hull/durable
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/durable
 	comp_armor_relative_thickness = 1.5 * /obj/vehicle/sealed/mecha/combat::comp_armor_relative_thickness
-	comp_armor = /obj/item/vehicle_component/plating/armor/military
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/military
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_WEAPON = 2,

@@ -16,7 +16,7 @@
 	integrity = 0.75 * /obj/vehicle/sealed/mecha/combat/gygax::integrity
 	integrity_max = 0.75 * /obj/vehicle/sealed/mecha/combat/gygax::integrity_max
 
-	comp_armor = /obj/item/vehicle_component/plating/armor/lightweight
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/lightweight
 
 	occupant_huds = list(
 		/datum/atom_hud/data/human/medical,

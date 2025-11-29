@@ -13,8 +13,8 @@
 	base_movement_speed = 3.33
 	integrity = 1.0 * /obj/vehicle/sealed/mecha/combat::integrity
 	integrity_max = 1.0 * /obj/vehicle/sealed/mecha/combat::integrity_max
-	comp_armor = /obj/item/vehicle_component/plating/armor/marshal
-	comp_hull = /obj/item/vehicle_component/plating/hull/lightweight
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/marshal
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/lightweight
 
 	max_temperature = 25000
 	wreckage = /obj/effect/decal/mecha_wreckage/reticent

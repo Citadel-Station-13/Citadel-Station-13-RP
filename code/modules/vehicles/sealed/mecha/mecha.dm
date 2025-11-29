@@ -53,7 +53,7 @@
 	var/obj/item/vehicle_component/mecha_actuator/comp_actuator = /obj/item/vehicle_component/mecha_actuator
 	/// our armor component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/plating/armor/comp_armor = /obj/item/vehicle_component/plating/armor
+	var/obj/item/vehicle_component/plating/mecha_armor/comp_armor = /obj/item/vehicle_component/plating/mecha_armor
 	/// armor relative thickness
 	/// * pretty much multiplies the integrity
 	/// * relative to 1
@@ -66,11 +66,19 @@
 	var/obj/item/vehicle_component/mecha_gas/comp_gas = /obj/item/vehicle_component/mecha_gas
 	/// our hull component
 	/// * set to typepath to start with
-	var/obj/item/vehicle_component/plating/hull/comp_hull = /obj/item/vehicle_component/plating/hull
+	var/obj/item/vehicle_component/plating/mecha_hull/comp_hull = /obj/item/vehicle_component/plating/mecha_hull
 	/// hull relative thickness
 	/// * pretty much multiplies the integrity
 	/// * relative to 1
 	var/comp_hull_relative_thickness = 1
+
+	// TODO: these should not be hardcoded but since i don't have a good
+	//       formula yet they are. armor doesn't have a rel_size because it's
+	//       always checked first.
+	var/comp_actuator_rel_size = 1
+	var/comp_hull_rel_size = 10
+	var/comp_electrical_rel_size = 1
+	var/comp_gas_rel_size = 1
 
 	//* Faults *//
 	/// Fault path to stacks

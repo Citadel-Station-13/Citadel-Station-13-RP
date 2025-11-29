@@ -124,7 +124,7 @@
 		qdel(src)
 		return
 
-	var/obj/item/cell/mechcell = owner_mech.cell
+	var/obj/item/cell/mechcell = owner_mech.power_cell
 	var/obj/machinery/portable_atmospherics/canister/mechtank = owner_mech.internal_tank
 
 	var/charge_percentage = mechcell ? mechcell.charge / mechcell.maxcharge : 0

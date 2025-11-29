@@ -359,7 +359,7 @@
 		update_health()
 
 /obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
-	var/obj/item/vehicle_component/plating/armor/AC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/mecha_armor/AC = internal_components[MECH_ARMOR]
 
 	if(AC)
 		var/armor_efficiency = AC.get_efficiency()
@@ -367,7 +367,7 @@
 		AC.damage_part(damage_change, type)
 		damage -= damage_change
 
-	var/obj/item/vehicle_component/plating/hull/HC = internal_components[MECH_HULL]
+	var/obj/item/vehicle_component/plating/mecha_hull/HC = internal_components[MECH_HULL]
 
 	if(HC)
 		if(HC.integrity)
@@ -384,7 +384,7 @@
 	return damage
 
 /obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
-	var/obj/item/vehicle_component/plating/armor/ArmC = internal_components[MECH_ARMOR]
+	var/obj/item/vehicle_component/plating/mecha_armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
 	var/temp_damage_minimum = damage_minimum

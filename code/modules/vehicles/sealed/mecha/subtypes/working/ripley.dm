@@ -14,8 +14,8 @@
 	icon_scale_x = 1.2
 	icon_scale_y = 1.2
 
-	comp_hull = /obj/item/vehicle_component/plating/hull/durable
-	comp_armor = /obj/item/vehicle_component/plating/armor/mining
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/durable
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/mining
 
 	modules_intrinsic = list(
 		/obj/item/vehicle_module/lazy/legacy/tool/orescanner,
