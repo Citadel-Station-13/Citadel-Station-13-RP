@@ -732,3 +732,12 @@
 	starts_with = list(
 		/obj/item/reagent_containers/food/snacks/stroopwafel = 8
 	)
+
+/obj/item/storage/box/holidaycake
+	name = "Christmas Syndiecake"
+	desc = "A rare seasonal Syndiecake product. The packaging says it has TACTICAL HOLIDAY FLAVOR, whatever that is. It's long past it's expiration date."
+	icon_state = "holidaycakebox"
+	max_items = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	starts_with = list(/obj/item/reagent_containers/food/snacks/slice/holidaycake)
