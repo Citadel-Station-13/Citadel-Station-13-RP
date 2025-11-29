@@ -361,6 +361,12 @@
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/herbal = 6)
 	brand = "\improper Subrosa"
 
+/obj/item/storage/fancy/cigarettes/vanillas
+	name = "\improper pack of Temperamento Vanillas"
+	desc = "A packet of limited-edition, vanilla flavored Temperamentos. These are outlawed in several territories, but not frontier space!"
+	icon_state = "TVpacket"
+	brand = "\improper Temperamento Vanilla"
+
 /obj/item/storage/fancy/cigar
 	name = "cigar case"
 	desc = "A case for holding your cigars when you are not smoking them."

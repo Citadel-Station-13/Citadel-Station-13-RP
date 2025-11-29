@@ -14,9 +14,14 @@
 	description_fluff = "Stealth Assault Enterprises ex-contractors once decided to make a cigarette that was easy to light and had a waterproof case, specifically tailored for soldiers.  They created Jerichos.  Jerichos are known for their hickory smoke and warm feeling in your lungs.  They are loved by soldiers and people employed in para-military outfits."
 
 /obj/item/storage/fancy/cigarettes/menthols
-	description_fluff = "The Temperamento Menthol Company is a large cigarette company based in Mars.  They have been around since the very dawn of human colonization and have remained a favorite for those seeking a more numbing cigarette.<br>\
+	description_fluff = "The Temperamento Tobacco Company is a large cigarette company based on Mars.  They have been around since the very dawn of human colonization and have remained a favorite for those seeking a more numbing cigarette.<br>\
 	<br>\
 	This is a pack of Temperamento Menthols, the main product of the company.  They taste like menthol, surprisingly enough."
+
+/obj/item/storage/fancy/cigarettes/vanillas
+	description_fluff = "The Temperamento Tobacco Company is a large cigarette company based on Mars.  They have been around since the very dawn of human colonization and have remained a favorite for those seeking a more numbing cigarette.<br>\
+	<br>\
+	This is a pack of Temperamento Vanillas.  These are only made in limited numbers each year as a holiday seasonal for specific markets.  Hoard them while you can!"
 
 /obj/item/storage/fancy/cigarettes/carcinomas
 	description_fluff = "The precursor company of CarcinoCo was originally destined to fail, as the company's cigarettes were found to be the 'most carcinogenic cigarette ever made'. Yet, the cigarettes became a hit among those rich enough to afford the exorbitant treatment costs after it's endorsement by a well-known journalist. Soon enough the company underwent a complete rebranding, embracing the new motto."
