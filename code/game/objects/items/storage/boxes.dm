@@ -739,4 +739,4 @@
 	icon_state = "holidaycakebox"
 	w_class = WEIGHT_CLASS_NORMAL
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	starts_with = list(/obj/item/reagent_containers/food/snacks/holidaycake)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/sliceable/holidaycake)
