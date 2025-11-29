@@ -2772,6 +2772,7 @@
 	id = "space_upcranberry"
 	description = "Space-Up with a cranberry and spice twist."
 	taste_description = "cranberry soda"
+	color = "#c21e26"
 
 	glass_name = "Space-Up Cranberry"
 	glass_desc = "Space-Up Cranberry. Citrus intermingles with tart cranberry and a hint of spice."
