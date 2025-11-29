@@ -2745,6 +2745,75 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
+// Seasonals
+
+/datum/reagent/ethanol/caramelwhiskey
+	name = "Salted Caramel Whiskey"
+	id = "caramelwhiskey"
+	description = "A limited-edition bottle of decadent caramel-flavored whiskey. It has a Gilthari Exports sticker on it."
+	taste_description = "boozy caramel"
+	color = "#AB5A11"
+	proof = SCHNAPPS
+
+	glass_name = "Caramel Whiskey"
+	glass_desc = "A cloyingly sweet mixture of whiskey and salted caramel."
+
+/datum/reagent/drink/soda/cinnamon
+	name = "Space Cola Cinnamon"
+	id = "cinnamoncola"
+	description = "The classic taste of Space Cola with a hint of warm cinnamon flavor. Happy Holidays!"
+	taste_description = "cinnamon cola"
+
+	glass_name = "Space Cola Cinnamon"
+	glass_desc = "A glass of limited-edition Space Cola Cinnamon."
+
+/datum/reagent/drink/soda/space_up/cranberry
+	name = "Space-Up Cranberry"
+	id = "space_upcranberry"
+	description = "Space-Up with a cranberry and spice twist. Happy Holidays!"
+	taste_description = "cranberry soda"
+
+	glass_name = "Space-Up Cranberry"
+	glass_desc = "Space-Up Cranberry. Citrus intermingles with tart cranberry and a hint of spice."
+
+/datum/reagent/drink/coffee/peppermint_mocha
+	name = "Vanilla Peppermint Mocha"
+	id = "peppermint_mocha"
+	description = "A nice, tasty beverage for the holiday season."
+	taste_description = "creamy vanilla"
+	color = "#9C714C"
+	adj_temp = 5
+	nutrition = 1
+
+	glass_name = "Vanilla Peppermint Mocha"
+	glass_desc = "A nice, tasty beverage for the holiday season."
+
+	cup_icon_state = "cup_peppermintmocha"
+	cup_name = "Cup of Vanilla Peppermint Mocha"
+	cup_desc = "A nice, tasty beverage for the holiday season."
+
+/datum/reagent/ethanol/caramel_russian
+	name = "Caramel White Russian"
+	id = "caramelrussian"
+	description = "Caramel whiskey, coffee liqueur and a generous serving of cream for good measure."
+	taste_description = "caramel icecream"
+	color = "#A68340"
+	proof = (SCHNAPPS+KAHLUA)/3
+
+	glass_name = "Caramel White Russian"
+	glass_desc = "Who's to say russians can't drink whiskey once in a while?"
+
+/datum/reagent/ethanol/caramel_cider
+	name = "Salted Caramel Cider"
+	id = "caramelcider"
+	description = "Caramel whiskey that has been diluted in hard cider."
+	taste_description = "alcoholic caramel apples"
+	color = "#A68340"
+	proof = (SCHNAPPS+CIDER*2)/3
+
+	glass_name = "Salted Caramel Cider"
+	glass_desc = "The sweet union of crisp apple and smooth caramel. And alcohol, obviously."
+
 // Cocktails
 
 #define SCREWDRIVERCOCKTAIL (VODKA/3)
