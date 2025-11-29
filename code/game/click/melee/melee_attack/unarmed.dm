@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 		ATTACK_TYPE_MELEE,
 		clickchain,
-		NONE,
+		SHIELDCALL_FLAG_SECOND_CALL,
 		clickchain.target_zone,
 	)
 	if(ismob(attacker))

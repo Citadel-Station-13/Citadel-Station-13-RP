@@ -1,6 +1,11 @@
 //* Helpers, so we're not up a creek if we ever decide to use something like auxmos. *//
 //*    -- These are only necessary for things that aren't already proc-calls! --     *//
 
+//* getters / setters, define for speed *//
+
+#define XGM_SET_TEMPERATURE(GM, TMP) (GM.temperature = TMP)
+#define XGM_GET_TEMPERATURE(GM) (GM.temperature)
+
 //* group multiplier dependent *//
 
 /// Takes group_multiplier into account.

@@ -513,9 +513,6 @@
 		if(istype(thing, /obj/item/storage/box/syringes))
 			fear_amount += 2
 
-		if(istype(thing, /obj/item/vehicle_module/tool/syringe_gun))
-			fear_amount += 8 //Syringe gun for a big ass mech.
-
 		if(istype(thing, /obj/machinery/sleep_console)) //Sleepers got them needles in them.
 			fear_amount += 4
 

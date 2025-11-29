@@ -174,13 +174,13 @@
 	switch(flag)
 		if(ARMOR_MELEE)
 			var/tdiff = melee_tier - tier
-			return 1 - ARMOR_TIER_CALC(melee, tdiff)
+			return 1 - armor_tier_calculation(melee, tdiff)
 		if(ARMOR_BULLET)
 			var/tdiff = bullet_tier - tier
-			return 1 - ARMOR_TIER_CALC(bullet, tdiff)
+			return 1 - armor_tier_calculation(bullet, tdiff)
 		if(ARMOR_LASER)
 			var/tdiff = laser_tier - tier
-			return 1 - ARMOR_TIER_CALC(laser, tdiff)
+			return 1 - armor_tier_calculation(laser, tdiff)
 		if(ARMOR_ENERGY)
 			return energy
 		if(ARMOR_BOMB)
@@ -216,7 +216,7 @@
 				effective_blunt_tierdiff = bullet_tier - shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER]
 			if(ARMOR_LASER)
 				effective_blunt_tierdiff = laser_tier - shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER]
-		var/blunt_chance = ARMOR_TIER_BLUNT_CHANCE(effective_blunt_tierdiff)
+		var/blunt_chance = armor_tier_blunt_calculation(effective_blunt_tierdiff)
 		if(prob(blunt_chance))
 			shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] &= DAMAGE_MODES_BLUNTED_BY_ARMOR
 
@@ -307,6 +307,29 @@
 		return max(a / sqrt(2 + a ** 2), mit_ratio)
 	else
 		return mit_ratio / (1 + (((-tier_diff) ** 17.5) / 1.75))
+
+/datum/armor/proc/armor_tier_blunt_calculation(tierdiff)
+	switch(tierdiff)
+		if(-INFINITY to -2)
+			return 0
+		if(-2 to -1)
+			return 15
+		if(-1 to -0.5)
+			return 22.5
+		if(-0.5 to -0.3)
+			return 30
+		if(-0.3 to 0)
+			return 45.5
+		if(0 to 0.3)
+			return 57.5
+		if(0.3 to 0.6)
+			return 70
+		if(0.6 to 1)
+			return 85
+		if(1 to 2)
+			return 90
+		else
+			return 99 // tf2 critsound.ogg
 
 /**
  * returns a /datum/armor with the given values overwritten
