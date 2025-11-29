@@ -7116,7 +7116,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree
 	name = "gingerbread cookie"
-	desc = "A gingerbread conifer of the festive kind."
+	desc = "A small conifer of the gingerbread species."
 	icon_state =  "gingerbreadtree"
 	filling_color = "#7D5F46"
 	nutriment_amt = 1
