@@ -716,7 +716,7 @@
 		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
 		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
 		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree,
-		/obj/item/reagent_containers/food/snacks/gingerbreadcookiee/star
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star
 	)
 
 /obj/item/storage/box/stroopwafel
