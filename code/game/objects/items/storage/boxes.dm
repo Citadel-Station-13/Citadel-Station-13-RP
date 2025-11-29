@@ -694,7 +694,7 @@
 	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 
 /obj/item/storage/box/gingerbreadcookie
-	name = "box of gingerbread cookies"
+	name = "Centauri Gingerbread Cookies"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "gingerbreadbox"
 	desc = "Just like mom used to make. Assuming your mom was a trans-stellar food corporation, that is."
@@ -719,7 +719,7 @@
 	)
 
 /obj/item/storage/box/stroopwafel
-	name = "box of stroopwafels"
+	name = "Van Thyssen's Stroopwafels"
 	icon = 'icons/obj/food.dmi'
 	icon_state = "stroopwafelbox"
 	desc = "A hexagonal box of imported holiday treats. Best served with coffee."
@@ -733,8 +733,8 @@
 	)
 
 /obj/item/storage/box/holidaycake
-	name = "Christmas Syndiecake"
-	desc = "A rare seasonal Syndiecake product. The packaging says it has TACTICAL HOLIDAY FLAVOR, whatever that is. It's long past it's expiration date."
+	name = "Christmas Syndi-Cake"
+	desc = "A rare seasonal Syndicake product. The packaging advertises it as having TACTICAL HOLIDAY FLAVOR. It's long past it's expiration date."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "holidaycakebox"
 	w_class = WEIGHT_CLASS_NORMAL
