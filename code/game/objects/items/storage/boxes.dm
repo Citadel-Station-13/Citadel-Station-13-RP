@@ -692,3 +692,51 @@
 	max_items = 1
 	insertion_whitelist = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+
+/obj/item/storage/box/gingerbreadcookie
+	name = "box of gingerbread cookies"
+	icon = 'icons/obj/food.dmi'
+	icon_state = "gingerbreadbox"
+	desc = "Just like mom used to make. Assuming your mom was a trans-stellar food corporation, that is."
+
+	var/startswith = 8
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 8
+	insertion_whitelist = list(
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree
+	)
+	starts_with = list(
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star
+	)
+
+/obj/item/storage/box/stroopwafel
+	name = "box of stroopwafels"
+	icon = 'icons/obj/food.dmi'
+	icon_state = "stroopwafelbox"
+	desc = "A hexagonal box of imported holiday treats. Best served with coffee."
+	var/startswith = 7
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 7
+	insertion_whitelist = list(
+		/obj/item/reagent_containers/food/snacks/stroopwafel
+	)
+	starts_with = list(
+		/obj/item/reagent_containers/food/snacks/stroopwafel = 7
+	)
+
+/obj/item/storage/box/holidaycake
+	name = "Christmas Syndiecake"
+	desc = "A rare seasonal Syndiecake product. The packaging says it has TACTICAL HOLIDAY FLAVOR, whatever that is. It's long past it's expiration date."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "holidaycakebox"
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	starts_with = list(/obj/item/reagent_containers/food/snacks/holidaycake)

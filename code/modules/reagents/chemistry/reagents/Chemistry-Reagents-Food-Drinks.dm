@@ -2780,7 +2780,7 @@
 	name = "Vanilla Peppermint Mocha"
 	id = "peppermint_mocha"
 	description = "A nice, tasty beverage for the holiday season."
-	taste_description = "creamy vanilla"
+	taste_description = "creamy, minty vanilla"
 	color = "#9C714C"
 	adj_temp = 5
 	nutrition = 1
