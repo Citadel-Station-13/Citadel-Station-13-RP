@@ -50,7 +50,6 @@
 	icon_state = "coffeecola"
 	center_of_mass = list("x"=16, "y"=10)
 
-
 /obj/item/reagent_containers/food/drinks/cans/cola_coffee/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("coffeecola", 30)
@@ -60,7 +59,6 @@
 	desc = "The classic taste of Space Cola with a hint of warm cinnamon flavor. Happy Holidays!"
 	icon_state = "cinnamoncola"
 	center_of_mass = list("x"=16, "y"=10)
-
 
 /obj/item/reagent_containers/food/drinks/cans/cola_cinnamon/Initialize(mapload)
 	. = ..()
