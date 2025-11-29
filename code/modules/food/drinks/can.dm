@@ -364,6 +364,16 @@
 	. = ..()
 	reagents.add_reagent("cafe_latte", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint
+	name = "\improper Robust Express Peppermint Mocha"
+	desc = "Delicious caffeine infused with creamy vanilla and peppermint flavor. It's pleasantly warm to the touch."
+	icon_state = "robustexpresspeppermint"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("peppermint_mocha", 30)
+
 //Alraune Drink Import
 /obj/item/reagent_containers/food/drinks/cans/alraune
 	name = "Loam Nutri-Juice"
