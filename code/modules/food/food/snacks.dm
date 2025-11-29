@@ -7093,3 +7093,76 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 3)
 	reagents.add_reagent("triglyceride", 1)
+
+//Seasonals
+
+/obj/item/reagent_containers/food/snacks/gingerbreadcookie
+	name = "gingerbread cookie"
+	desc = "A gingerbread individual. You struggle to ascertain their gender."
+	icon_state =  "gingerbread"
+	filling_color = "#7D5F46"
+	nutriment_amt = 1
+	nutriment_desc = list("gingerbread" = 1)
+	bitesize = 1
+
+/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane
+	name = "gingerbread cookie"
+	desc = "A gingerbread cane with stripes drawn in icing."
+	icon_state =  "gingerbreadcane"
+	filling_color = "#7D5F46"
+	nutriment_amt = 1
+	nutriment_desc = list("gingerbread" = 1)
+	bitesize = 1
+
+/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree
+	name = "gingerbread cookie"
+	desc = "A gingerbread conifer of the festive kind."
+	icon_state =  "gingerbreadtree"
+	filling_color = "#7D5F46"
+	nutriment_amt = 1
+	nutriment_desc = list("gingerbread" = 1)
+	bitesize = 1
+
+	/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star
+	name = "gingerbread cookie"
+	desc = "A gingerbread star. Presumably of the astronomical rather than marine variety, but you're not sure."
+	icon_state =  "gingerbreadstar"
+	filling_color = "#7D5F46"
+	nutriment_amt = 1
+	nutriment_desc = list("gingerbread" = 1)
+	bitesize = 1
+
+	/obj/item/reagent_containers/food/snacks/stroopwafel
+	name = "stroopwafel"
+	desc = "A pair of thin wafers glued together with thick, syrupy caramel. Delicious."
+	icon_state =  "stroopwafel"
+	filling_color = "#7D5F46"
+	nutriment_amt = 3
+	nutriment_desc = list("wafer" = 2, "caramel" = 1)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/sliceable/holidaycake
+	name = "Holiday Fruit Cake"
+	desc = "A perfectly preserved holiday fruit cake. The hole in the middle makes it a breeze to cut even if you're using a bayonet."
+	icon_state = "holidaycake"
+	slice_path = /obj/item/reagent_containers/food/snacks/slice/holidaycake
+	slices_num = 5
+	filling_color = "#3b2b0d"
+	nutriment_desc = list("cake" = 10, "sweetness" = 10, "candied berry" = 15)
+	nutriment_amt = 25
+
+/obj/item/reagent_containers/food/snacks/sliceable/holidaycake/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("tricordrazine", 15)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/slice/holidaycake
+	name = "Holiday Fruit Cake slice"
+	desc = "A festive slice of holiday fruit cake. Great for sharing with friends!"
+	icon_state = "holidaycake_slice"
+	filling_color = "#3b2b0d"
+	bitesize = 2
+	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/holidaycake
+
+/obj/item/reagent_containers/food/snacks/slice/holidaycake/filled
+	filled = TRUE

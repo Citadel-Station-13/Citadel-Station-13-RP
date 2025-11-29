@@ -692,3 +692,43 @@
 	max_items = 1
 	insertion_whitelist = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
 	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+
+//Seasonals
+
+/obj/item/storage/box/gingerbreadcookie
+	name = "box of gingerbread cookies"
+	icon_state = "gingerbreadbox"
+	desc = "Just like mom used to make. Assuming your mom was a trans-stellar food corporation, that is."
+
+	var/startswith = 8
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 8
+	insertion_whitelist = list(
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree
+		)
+	starts_with = list(
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookiee/star
+	)
+
+/obj/item/storage/box/stroopwafel
+	name = "box of stroopwafels"
+	icon_state = "stroopwafelbox"
+	desc = "A hexagonal box of imported holiday treats. Best served with coffee."
+
+	var/startswith = 8
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 8
+	insertion_whitelist = list(
+		/obj/item/reagent_containers/food/snacks/stroopwafel
+	)
+	starts_with = list(
+		/obj/item/reagent_containers/food/snacks/stroopwafel = 8
+	)
