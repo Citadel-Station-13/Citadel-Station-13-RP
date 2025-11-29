@@ -1028,7 +1028,7 @@ Drinks Data
 	glass_icon_state = "caramelwhiskeyglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
 
-/datum/reagent/ethanol/caramel_russian_russian
+/datum/reagent/ethanol/caramel_russian
 	glass_icon_state = "caramelrussianglass"
 	glass_center_of_mass = list("x"=16, "y"=9)
 

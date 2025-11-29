@@ -365,7 +365,7 @@
 	reagents.add_reagent("cafe_latte", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint
-	name = "\improper Robust Express Vanilla Peppermint Mocha"
+	name = "\improper Robust Express Peppermint Mocha"
 	desc = "Delicious caffeine infused with creamy vanilla and peppermint flavor. It's pleasantly warm to the touch."
 	icon_state = "robustexpresspeppermint"
 	center_of_mass = list("x"=16, "y"=10)

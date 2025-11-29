@@ -2748,7 +2748,7 @@
 // Seasonals
 
 /datum/reagent/ethanol/caramelwhiskey
-	name = "Salted Caramel Whiskey"
+	name = "Caramel Whiskey"
 	id = "caramelwhiskey"
 	description = "A decadent caramel-flavored whiskey."
 	taste_description = "boozy caramel"

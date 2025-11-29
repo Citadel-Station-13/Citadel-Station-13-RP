@@ -7123,7 +7123,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("gingerbread" = 1)
 	bitesize = 1
 
-	/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star
+/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star
 	name = "gingerbread cookie"
 	desc = "A gingerbread star. Presumably of the astronomical rather than marine variety, but you're not sure."
 	icon_state =  "gingerbreadstar"
@@ -7132,7 +7132,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("gingerbread" = 1)
 	bitesize = 1
 
-	/obj/item/reagent_containers/food/snacks/stroopwafel
+/obj/item/reagent_containers/food/snacks/stroopwafel
 	name = "stroopwafel"
 	desc = "A pair of thin wafers glued together with thick, syrupy caramel. Delicious."
 	icon_state =  "stroopwafel"
@@ -7166,3 +7166,50 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/slice/holidaycake/filled
 	filled = TRUE
+
+/obj/item/storage/box/gingerbreadcookie
+	name = "box of gingerbread cookies"
+	icon_state = "gingerbreadbox"
+	desc = "Just like mom used to make. Assuming your mom was a trans-stellar food corporation, that is."
+
+	var/startswith = 8
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 8
+	insertion_whitelist = list(
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree
+	)
+	starts_with = list(
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree,
+		/obj/item/reagent_containers/food/snacks/gingerbreadcookie/star
+	)
+
+/obj/item/storage/box/stroopwafel
+	name = "box of stroopwafels"
+	icon_state = "stroopwafelbox"
+	desc = "A hexagonal box of imported holiday treats. Best served with coffee."
+
+	var/startswith = 8
+	max_combined_volume = WEIGHT_VOLUME_SMALL * 8
+	insertion_whitelist = list(
+		/obj/item/reagent_containers/food/snacks/stroopwafel
+	)
+	starts_with = list(
+		/obj/item/reagent_containers/food/snacks/stroopwafel = 8
+	)
+
+/obj/item/storage/box/holidaycake
+	name = "Christmas Syndiecake"
+	desc = "A rare seasonal Syndiecake product. The packaging says it has TACTICAL HOLIDAY FLAVOR, whatever that is. It's long past it's expiration date."
+	icon_state = "holidaycakebox"
+	max_items = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	starts_with = list(/obj/item/reagent_containers/food/snacks/slice/holidaycake)
