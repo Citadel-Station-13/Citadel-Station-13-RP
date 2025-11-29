@@ -23,7 +23,7 @@
 	start_with_single_reagent = /datum/reagent/ethanol/bluecuracao
 
 /obj/item/reagent_containers/food/drinks/bottle/caramelwhiskey
-	name = "Kaiken Salted Caramel"
+	name = "Al-Karamil Whiskey Liqueur"
 	desc = "A limited-edition bottle of decadent caramel-flavored whiskey. It has a Gilthari Exports sticker on it."
 	icon_state = "caramelwhiskeybottle"
 	center_of_mass = list("x"=16, "y"=2)
