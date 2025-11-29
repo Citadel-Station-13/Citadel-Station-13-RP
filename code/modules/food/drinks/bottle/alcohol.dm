@@ -22,6 +22,13 @@
 	center_of_mass = list("x"=16, "y"=6)
 	start_with_single_reagent = /datum/reagent/ethanol/bluecuracao
 
+/obj/item/reagent_containers/food/drinks/bottle/caramelwhiskey
+	name = "Kaiken Salted Caramel"
+	desc = "A limited-edition bottle of decadent caramel-flavored whiskey. It has a Gilthari Exports sticker on it."
+	icon_state = "caramelwhiskeybottle"
+	center_of_mass = list("x"=16, "y"=2)
+	start_with_single_reagent = /datum/reagent/ethanol/caramelwhiskey
+
 /obj/item/reagent_containers/food/drinks/bottle/cognac
 	name = "Chateau De Baton Premium Cognac"
 	desc = "A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing."
