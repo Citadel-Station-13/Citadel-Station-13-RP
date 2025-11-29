@@ -2750,7 +2750,7 @@
 /datum/reagent/ethanol/caramelwhiskey
 	name = "Salted Caramel Whiskey"
 	id = "caramelwhiskey"
-	description = "A limited-edition bottle of decadent caramel-flavored whiskey. It has a Gilthari Exports sticker on it."
+	description = "A decadent caramel-flavored whiskey."
 	taste_description = "boozy caramel"
 	color = "#AB5A11"
 	proof = SCHNAPPS
