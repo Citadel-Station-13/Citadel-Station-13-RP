@@ -7102,7 +7102,7 @@ END CITADEL CHANGE */
 	icon_state =  "gingerbread"
 	filling_color = "#7D5F46"
 	nutriment_amt = 1
-	nutriment_desc = list("gingerbread" = 1)
+	nutriment_desc = list("gingerbread" = 2)
 	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/gingerbreadcookie/cane
@@ -7111,7 +7111,7 @@ END CITADEL CHANGE */
 	icon_state =  "gingerbreadcane"
 	filling_color = "#7D5F46"
 	nutriment_amt = 1
-	nutriment_desc = list("gingerbread" = 1)
+	nutriment_desc = list("gingerbread" = 2)
 	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/gingerbreadcookie/tree
@@ -7120,7 +7120,7 @@ END CITADEL CHANGE */
 	icon_state =  "gingerbreadtree"
 	filling_color = "#7D5F46"
 	nutriment_amt = 1
-	nutriment_desc = list("gingerbread" = 1)
+	nutriment_desc = list("gingerbread" = 2)
 	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/gingerbreadcookie/star
@@ -7129,7 +7129,7 @@ END CITADEL CHANGE */
 	icon_state =  "gingerbreadstar"
 	filling_color = "#7D5F46"
 	nutriment_amt = 1
-	nutriment_desc = list("gingerbread" = 1)
+	nutriment_desc = list("gingerbread" = 2)
 	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/stroopwafel
@@ -7154,6 +7154,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/holidaycake/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tricordrazine", 15)
+	reagents.add_reagent("paracetamol", 5)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/slice/holidaycake
@@ -7162,6 +7163,7 @@ END CITADEL CHANGE */
 	icon_state = "holidaycake_slice"
 	filling_color = "#3b2b0d"
 	bitesize = 2
+	nutriment_desc = list("cake" = 10, "sweetness" = 10, "candied berry" = 15)
 	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/holidaycake
 
 /obj/item/reagent_containers/food/snacks/slice/holidaycake/filled
