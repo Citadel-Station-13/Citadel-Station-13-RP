@@ -50,9 +50,21 @@
 	icon_state = "coffeecola"
 	center_of_mass = list("x"=16, "y"=10)
 
+
 /obj/item/reagent_containers/food/drinks/cans/cola_coffee/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("coffeecola", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_cinnamon
+	name = "\improper Space Cola Cinnamon"
+	desc = "The classic taste of Space Cola with a hint of warm cinnamon flavor. Happy Holidays!"
+	icon_state = "cinnamoncola"
+	center_of_mass = list("x"=16, "y"=10)
+
+
+/obj/item/reagent_containers/food/drinks/cans/cola_cinnamon/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cinnamoncola", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/waterbottle
 	name = "bottled water"
@@ -167,6 +179,16 @@
 /obj/item/reagent_containers/food/drinks/cans/space_up/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("space_up", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/space_upcranberry
+	name = "\improper Space-Up Cranberry"
+	desc = "Space-Up with a cranberry and spice twist. Happy Holidays!"
+	icon_state = "space-upcranberry"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/space_upcranberry/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("space_upcranberry", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/lemon_lime
 	name = "\improper Lemon-Lime"
