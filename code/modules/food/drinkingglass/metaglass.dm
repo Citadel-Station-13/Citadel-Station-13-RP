@@ -1021,3 +1021,16 @@ Drinks Data
 /datum/reagent/ethanol/mimosa
 	glass_icon_state = "mimosa"
 	glass_center_of_mass = list("x"=16, "y"=8)
+
+//Seasonals
+
+/datum/reagent/ethanol/caramelwhiskey
+	glass_icon_state = "caramelwhiskeyglass"
+	glass_center_of_mass = list("x"=16, "y"=12)
+
+/datum/reagent/ethanol/caramel_russian_russian
+	glass_icon_state = "caramelrussianglass"
+	glass_center_of_mass = list("x"=16, "y"=9)
+
+/datum/reagent/ethanol/caramel_cider
+	glass_icon_state = "caramelciderglass"
