@@ -11,6 +11,8 @@
 		/obj/item/reagent_containers/food/snacks/bagged/chips = 6,
 		/obj/item/reagent_containers/food/snacks/bagged/sosjerky = 6,
 		/obj/item/reagent_containers/food/snacks/boxed/no_raisin = 6,
+		/obj/item/storage/box/gingerbreadcookie = 3,
+		/obj/item/storage/box/stroopwafel = 3,
 		/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie = 6,
 		/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers = 6,
 		/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers = 3,
@@ -26,6 +28,7 @@
 	contraband = list(
 		/obj/item/reagent_containers/food/snacks/syndicake = 6,
 		/obj/item/reagent_containers/food/snacks/boxed/unajerky = 6,
+		/obj/item/storage/box/holidaycake = 2
 	)
 	prices = list(
 		/obj/item/reagent_containers/food/snacks/wrapped/candy = 2,
@@ -33,6 +36,8 @@
 		/obj/item/reagent_containers/food/snacks/bagged/chips = 3,
 		/obj/item/reagent_containers/food/snacks/bagged/sosjerky = 3,
 		/obj/item/reagent_containers/food/snacks/boxed/no_raisin = 2,
+		/obj/item/storage/box/gingerbreadcookie = 3,
+		/obj/item/storage/box/stroopwafel = 3,
 		/obj/item/reagent_containers/food/snacks/wrapped/spacetwinkie = 2,
 		/obj/item/reagent_containers/food/snacks/bagged/cheesiehonkers = 3,
 		/obj/item/reagent_containers/food/snacks/bagged/hotcheesiehonkers = 6,
@@ -45,7 +50,8 @@
 		/obj/item/reagent_containers/food/snacks/wrapped/glad2nut = 4,
 		/obj/item/reagent_containers/food/snacks/wrapped/natkat = 4,
 		/obj/item/reagent_containers/food/snacks/syndicake = 7,
-		/obj/item/reagent_containers/food/snacks/boxed/unajerky = 6,
+		/obj/item/storage/box/holidaycake = 10,
+		/obj/item/reagent_containers/food/snacks/boxed/unajerky = 6
 	)
 
 /obj/machinery/vending/fitness // Added Liquid Protein and slightly adjusted price of liquid food items due to buff.

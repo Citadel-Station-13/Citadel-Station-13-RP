@@ -12,6 +12,7 @@
 		/obj/item/reagent_containers/food/drinks/tea = 25,
 		/obj/item/reagent_containers/food/drinks/h_chocolate = 25,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpress = 10,
+		/obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint = 10,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte = 10
 	)
 	contraband = list(
@@ -22,6 +23,7 @@
 		/obj/item/reagent_containers/food/drinks/tea = 3,
 		/obj/item/reagent_containers/food/drinks/h_chocolate = 3,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpress = 2,
+		/obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint = 2,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpresslatte = 2,
 		/obj/item/reagent_containers/food/drinks/ice = 1
 	)
@@ -51,10 +53,12 @@
 		/obj/item/reagent_containers/food/drinks/cans/ramune = 10,
 		/obj/item/reagent_containers/food/drinks/cans/starkist = 10,
 		/obj/item/reagent_containers/food/drinks/cans/cola = 10,
+		/obj/item/reagent_containers/food/drinks/cans/cola_cinnamon = 10,
 		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 10,
 		/obj/item/reagent_containers/food/drinks/cans/cola_coffee = 10,
 		/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind = 10,
 		/obj/item/reagent_containers/food/drinks/cans/space_up = 10,
+		/obj/item/reagent_containers/food/drinks/cans/space_upcranberry = 10,
 		/obj/item/reagent_containers/food/drinks/cans/iced_tea = 10,
 		/obj/item/reagent_containers/food/drinks/cans/gondola_energy = 10,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpressiced = 10,
@@ -74,6 +78,7 @@
 		/obj/item/reagent_containers/food/drinks/cans/starkist = 2,
 		/obj/item/reagent_containers/food/drinks/cans/waterbottle = 2,
 		/obj/item/reagent_containers/food/drinks/cans/space_up = 2,
+		/obj/item/reagent_containers/food/drinks/cans/space_upcranberry = 2,
 		/obj/item/reagent_containers/food/drinks/cans/iced_tea = 2,
 		/obj/item/reagent_containers/food/drinks/cans/grape_juice = 2,
 		/obj/item/reagent_containers/food/drinks/cans/gingerale = 2,
@@ -92,6 +97,7 @@
 		/obj/item/reagent_containers/food/drinks/cans/kyocola_sakura = 2,
 		/obj/item/reagent_containers/food/drinks/cans/kyocola_blue = 2,
 		/obj/item/reagent_containers/food/drinks/cans/dr_gibb_cherry = 2,
+		/obj/item/reagent_containers/food/drinks/cans/cola_cinnamon = 2,
 		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 2,
 		/obj/item/reagent_containers/food/drinks/cans/cola_coffee = 2,
 		/obj/item/reagent_containers/food/drinks/cans/robustexpressiced = 2,

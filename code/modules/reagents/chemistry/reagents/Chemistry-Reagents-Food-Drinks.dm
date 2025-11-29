@@ -2788,7 +2788,7 @@
 	glass_name = "Vanilla Peppermint Mocha"
 	glass_desc = "A nice, tasty beverage for the holiday season."
 
-	cup_icon_state = "cup_peppermintmocha"
+	cup_icon_state = "cup_cream"
 	cup_name = "Cup of Vanilla Peppermint Mocha"
 	cup_desc = "A nice, tasty beverage for the holiday season."
 
