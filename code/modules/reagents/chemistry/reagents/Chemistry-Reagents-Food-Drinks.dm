@@ -2761,7 +2761,7 @@
 /datum/reagent/drink/soda/cinnamon
 	name = "Space Cola Cinnamon"
 	id = "cinnamoncola"
-	description = "The classic taste of Space Cola with a hint of warm cinnamon flavor. Happy Holidays!"
+	description = "The classic taste of Space Cola with a hint of warm cinnamon flavor."
 	taste_description = "cinnamon cola"
 
 	glass_name = "Space Cola Cinnamon"
@@ -2770,7 +2770,7 @@
 /datum/reagent/drink/soda/space_up/cranberry
 	name = "Space-Up Cranberry"
 	id = "space_upcranberry"
-	description = "Space-Up with a cranberry and spice twist. Happy Holidays!"
+	description = "Space-Up with a cranberry and spice twist."
 	taste_description = "cranberry soda"
 
 	glass_name = "Space-Up Cranberry"
