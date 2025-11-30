@@ -546,7 +546,6 @@
 
 
 
-
 //Germs
 
 //TODO: REWORK HANDLE_ANTIBIOTICS()
@@ -648,6 +647,8 @@
 	if (germ_level >= INFECTION_LEVEL_THREE && antibiotics < ANTIBIO_OD)
 		. = 3 //Organ qualifies for effect-specific processing
 		adjust_germ_level(rand(5,10)) //Germ_level increases without overdose of antibiotics
+
+
 
 /obj/item/organ/proc/handle_rejection()
 	// Process unsuitable transplants. TODO: consider some kind of
