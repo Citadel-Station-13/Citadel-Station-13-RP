@@ -7,7 +7,7 @@
  * - amount - standard strength in deciseconds
  */
 /mob/proc/default_combat_knockdown(amount)
-	return afflict_knockdown(sqrt(40))
+	return afflict_knockdown(sqrt(amount * 4))
 
 /mob/proc/is_stunned()
 	RETURN_TYPE(/datum/status_effect)

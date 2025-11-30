@@ -1,8 +1,3 @@
-///////////////////////////////////
-////////  Mecha wreckage   ////////
-///////////////////////////////////
-
-
 /obj/effect/decal/mecha_wreckage
 	name = "Exosuit wreckage"
 	desc = "Remains of some unfortunate mecha. Completely unrepairable."
@@ -65,48 +60,6 @@
 		..()
 	return
 
-
-/obj/effect/decal/mecha_wreckage/gygax
-	name = "Gygax wreckage"
-	icon_state = "gygax-broken"
-
-/obj/effect/decal/mecha_wreckage/gygax/New()
-	..()
-	var/list/parts = list(
-		/obj/item/vehicle_part/gygax_torso,
-		/obj/item/vehicle_part/gygax_head,
-		/obj/item/vehicle_part/gygax_left_arm,
-		/obj/item/vehicle_part/gygax_right_arm,
-		/obj/item/vehicle_part/gygax_left_leg,
-		/obj/item/vehicle_part/gygax_right_leg,
-	)
-	for(var/i=0;i<2;i++)
-		if(!!length(parts) && prob(40))
-			var/part = pick(parts)
-			welder_salvage += part
-			parts -= part
-	return
-
-/obj/effect/decal/mecha_wreckage/gygax/dark
-	name = "Dark Gygax wreckage"
-	icon_state = "darkgygax-broken"
-
-/obj/effect/decal/mecha_wreckage/gygax/adv
-	name = "Gygax wreckage"
-	icon_state = "gygax_adv-broken"
-
-/obj/effect/decal/mecha_wreckage/gygax/dark_adv
-	name = "Advanced Dark Gygax wreckage"
-	icon_state = "darkgygax_adv-broken"
-
-/obj/effect/decal/mecha_wreckage/gygax/medgax
-	name = "Medgax wreckage"
-	icon_state = "medgax-broken"
-
-/obj/effect/decal/mecha_wreckage/gygax/serenity
-	name = "Serenity wreckage"
-	icon_state = "medgax-broken"
-
 /obj/effect/decal/mecha_wreckage/marauder
 	name = "Marauder wreckage"
 	icon_state = "marauder-broken"
@@ -119,72 +72,6 @@
 /obj/effect/decal/mecha_wreckage/seraph
 	name = "Seraph wreckage"
 	icon_state = "seraph-broken"
-
-/obj/effect/decal/mecha_wreckage/ripley
-	name = "Ripley wreckage"
-	icon_state = "ripley-broken"
-
-/obj/effect/decal/mecha_wreckage/ripley/New()
-	..()
-	var/list/parts = list(
-		/obj/item/vehicle_part/ripley_torso,
-		/obj/item/vehicle_part/ripley_left_arm,
-		/obj/item/vehicle_part/ripley_right_arm,
-		/obj/item/vehicle_part/ripley_left_leg,
-		/obj/item/vehicle_part/ripley_right_leg,
-	)
-	for(var/i=0;i<2;i++)
-		if(!!length(parts) && prob(40))
-			var/part = pick(parts)
-			welder_salvage += part
-			parts -= part
-	return
-
-/obj/effect/decal/mecha_wreckage/ripley/firefighter
-	name = "Firefighter wreckage"
-	icon_state = "firefighter-broken"
-
-/obj/effect/decal/mecha_wreckage/ripley/firefighter/New()
-	..()
-	var/list/parts = list(
-		/obj/item/vehicle_part/ripley_torso,
-		/obj/item/vehicle_part/ripley_left_arm,
-		/obj/item/vehicle_part/ripley_right_arm,
-		/obj/item/vehicle_part/ripley_left_leg,
-		/obj/item/vehicle_part/ripley_right_leg,
-		/obj/item/clothing/suit/fire,
-	)
-	for(var/i=0;i<2;i++)
-		if(!!length(parts) && prob(40))
-			var/part = pick(parts)
-			welder_salvage += part
-			parts -= part
-	return
-
-/obj/effect/decal/mecha_wreckage/ripley/geiger
-	name = "Lightweight APLU wreckage"
-	icon_state = "ripley-broken-old"
-
-/obj/effect/decal/mecha_wreckage/ripley/geiger/New()
-	..()
-	var/list/parts = list(
-		/obj/item/vehicle_part/geiger_torso,
-		/obj/item/vehicle_part/ripley_left_arm,
-		/obj/item/vehicle_part/ripley_right_arm,
-		/obj/item/vehicle_part/ripley_left_leg,
-		/obj/item/vehicle_part/ripley_right_leg,
-	)
-	for(var/i=0;i<2;i++)
-		if(!!length(parts) && prob(40))
-			var/part = pick(parts)
-			welder_salvage += part
-			parts -= part
-	return
-
-
-/obj/effect/decal/mecha_wreckage/ripley/deathripley
-	name = "Death-Ripley wreckage"
-	icon_state = "deathripley-broken"
 
 /obj/effect/decal/mecha_wreckage/durand
 	name = "Durand wreckage"
@@ -207,31 +94,6 @@
 			parts -= part
 	return
 
-/obj/effect/decal/mecha_wreckage/phazon
-	name = "Phazon wreckage"
-	icon_state = "phazon-broken"
-
-
-/obj/effect/decal/mecha_wreckage/odysseus
-	name = "Odysseus wreckage"
-	icon_state = "odysseus-broken"
-
-/obj/effect/decal/mecha_wreckage/odysseus/New()
-	..()
-	var/list/parts = list(
-		/obj/item/vehicle_part/odysseus_torso,
-		/obj/item/vehicle_part/odysseus_head,
-		/obj/item/vehicle_part/odysseus_left_arm,
-		/obj/item/vehicle_part/odysseus_right_arm,
-		/obj/item/vehicle_part/odysseus_left_leg,
-		/obj/item/vehicle_part/odysseus_right_leg,
-	)
-	for(var/i=0;i<2;i++)
-		if(!!length(parts) && prob(40))
-			var/part = pick(parts)
-			welder_salvage += part
-			parts -= part
-	return
 
 /obj/effect/decal/mecha_wreckage/odysseus/murdysseus
 	icon_state = "murdysseus-broken"
@@ -239,11 +101,6 @@
 /obj/effect/decal/mecha_wreckage/hoverpod
 	name = "Hover pod wreckage"
 	icon_state = "engineering_pod-broken"
-
-/obj/effect/decal/mecha_wreckage/janus
-	name = "Janus wreckage"
-	icon_state = "janus-broken"
-	description_info = "Due to the incredibly intricate design of this exosuit, it is impossible to salvage components from it."
 
 /obj/effect/decal/mecha_wreckage/shuttlecraft
 	name = "Shuttlecraft wreckage"

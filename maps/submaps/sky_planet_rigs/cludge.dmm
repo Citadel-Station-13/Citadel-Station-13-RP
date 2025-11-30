@@ -67,7 +67,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/skyplanet/poi/cludge)
 "n" = (
-/obj/vehicle/sealed/mecha/combat/fighter/cludge,
+/obj/vehicle/sealed/mecha/fighter/cludge,
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/reinforced,
 /area/submap/skyplanet/poi/cludge)
