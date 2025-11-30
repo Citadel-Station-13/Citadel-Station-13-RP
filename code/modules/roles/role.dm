@@ -2,14 +2,10 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * WIP
- *
- * todo: unified role system
- * todo: /datum/prototype? or maybe not? should this be loaded by map
- *       and shuttle / offmap / ghostrole spawner datums / objects?
+ * A role is something you can join the game as, usually from the lobby or from the observer panel.
  */
-/datum/role
-	abstract_type = /datum/role
+/datum/prototype/role
+	abstract_type = /datum/prototype/role
 
 	//* Basics *//
 
@@ -30,18 +26,23 @@
 	/// * strings associated to a list of strings for keyed faction accounts
 	var/list/economy_grant_account_details
 
+/datum/prototype/role/can_be_unloaded()
+	// We have round-local temporaries.
+	// TODO: but do we really? should we, really?
+	return FALSE
+
 //* Economy *//
 
 /**
  * Get the multiplier to total starting funds in our personal account that we should impart.
  */
-/datum/role/proc/get_economic_payscale()
+/datum/prototype/role/proc/get_economic_payscale()
 	return economy_payscale
 
 /**
  * Create and get economy account datum for someone.
  */
-/datum/role/proc/economy_create_self_account(datum/mind/person) as /datum/economy_account
+/datum/prototype/role/proc/economy_create_self_account(datum/mind/person) as /datum/economy_account
 	RETURN_TYPE(/datum/economy_account)
 
 	if(person.initial_economy_account_number)
@@ -72,7 +73,7 @@
 /**
  * Imprint managed accounts on someone
  */
-/datum/role/proc/economy_imprint_managed_accounts(datum/mind/person)
+/datum/prototype/role/proc/economy_imprint_managed_accounts(datum/mind/person)
 	for(var/key in economy_grant_account_details)
 		var/list/nested_keys_maybe = economy_grant_account_details[key]
 		if(!nested_keys_maybe)
@@ -86,7 +87,7 @@
 /**
  * Get economy account datums someone should have access to.
  */
-/datum/role/proc/economy_get_managed_accounts(datum/mind/person) as /list
+/datum/prototype/role/proc/economy_get_managed_accounts(datum/mind/person) as /list
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/first_key in economy_grant_account_details)

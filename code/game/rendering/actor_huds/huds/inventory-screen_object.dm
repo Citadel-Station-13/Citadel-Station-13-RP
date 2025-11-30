@@ -111,7 +111,7 @@
 	var/obj/item/in_slot = user.item_by_slot_id(inventory_slot_id)
 	if(with_item)
 		if(in_slot)
-			with_item.melee_interaction_chain(in_slot, user, NONE, list())
+			with_item.lazy_melee_interaction_chain(in_slot, user, NONE, list())
 		else
 			user.equip_to_slot_if_possible(with_item, inventory_slot_id, NONE, user)
 	else
@@ -192,7 +192,7 @@
 /atom/movable/screen/actor_hud/inventory/swap_hand
 	name = "swap active hand"
 	icon_state = "hand-swap"
-	
+
 /atom/movable/screen/actor_hud/inventory/swap_hand/Initialize(mapload, datum/inventory/host, hand_count)
 	. = ..()
 	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(hand_count)

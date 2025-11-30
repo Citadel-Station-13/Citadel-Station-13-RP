@@ -123,3 +123,25 @@
 	ani_state = "wolf_citmain_w"
 	do_colouration = TRUE
 	legacy_use_additive_color_matrix = FALSE
+
+/datum/sprite_accessory/tail/kitsuann
+	name = "Kitsune (Ann)"
+	id = "kitsuann"
+	icon_state = "kitsuann_primary"
+	ani_state = "kitsuann_primary_w"
+	extra_overlay = "kitsuann_secondary"
+	extra_overlay_w = "kitsuann_secondary_w"
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE
+
+/datum/sprite_accessory/tail/foxann
+	name = "Fox tail 3"
+	id = "foxann"
+	icon_state = "foxann_primary"
+	ani_state = "foxann_primary_w"
+	extra_overlay = "foxann_secondary"
+	extra_overlay_w = "foxann_secondary_w"
+	icon_sidedness = SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND
+	do_colouration = TRUE
+	legacy_use_additive_color_matrix = FALSE

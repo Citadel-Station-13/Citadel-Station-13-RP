@@ -40,6 +40,12 @@
 	/// How are we intending to act? Help / harm / etc.
 	var/a_intent = INTENT_HELP
 
+	//* Input*//
+	/// next time we should allow a click being ingested into the click-chain handling sequence.
+	/// * This is effectively only from our client. Remote control should directly call clickchain
+	///   handlers, instead of 'click_on'.
+	var/next_click
+
 	//* Perspective & Vision *//
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
@@ -51,17 +57,6 @@
 	//? Movement
 	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.
 	var/datum/movement_intercept
-
-	//* Buckling *//
-	/// Atom we're buckled to
-	var/atom/movable/buckled
-	/// Atom we're buckl**ing** to. Used to stop stuff like lava from incinerating those who are mid buckle.
-	//  todo: can this be put in an existing bitfield somewhere else?
-	var/atom/movable/buckling
-
-	//* HUD (Atom) *//
-	/// HUDs to initialize, typepaths
-	var/list/atom_huds_to_initialize
 
 	//* HUD *//
 	/// active, opened storage
@@ -195,8 +190,6 @@
 	 */
 	var/atom/movable/screen/zone_sel/zone_sel = null
 
-	/// Allows all mobs to use the me verb by default, will have to manually specify they cannot.
-	var/use_me = 1
 	var/damageoverlaytemp = 0
 	var/computer_id = null
 	var/obj/machinery/machine = null
@@ -410,10 +403,6 @@
 	/// a singular thing that can intercept keyboard inputs
 	var/datum/key_intercept
 
-	//Moved from code\game\click\click.dm
-	// 1 decisecond click delay (above and beyond mob/next_move)
-	var/next_click = 0
-
 	//Moved from code\game\rendering\legacy\alert.dm
 	var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
 
@@ -433,7 +422,7 @@
 
 	//Moved from code\modules\nano\nanoexternal.dm
 	// Used by the Nano UI Manager (/datum/nanomanager) to track UIs opened by this mob
-	var/list/open_uis = list()
+	var/list/open_nano_uis = list()
 
 	///List of progress bars this mob is currently seeing for actions
 	var/list/progressbars = null //for stacking do_after bars

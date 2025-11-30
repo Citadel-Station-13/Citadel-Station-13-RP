@@ -5,7 +5,7 @@
  * @license MIT
  */
 
-import { Button } from "../../components";
+import { Button } from "tgui-core/components";
 
 export interface IDCard {
   // entity name of the id card itself
@@ -33,7 +33,7 @@ export interface IDSlotProps {
   readonly onClick: (e) => void;
 }
 
-export const IDSlot = (props: IDSlotProps, context) => {
+export const IDSlot = (props: IDSlotProps) => {
   return (
     <Button
       icon="eject"

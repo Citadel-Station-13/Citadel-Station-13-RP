@@ -107,7 +107,6 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/overmap/entity/visitable/ship/landable/tinycarrier,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/debrisfield_vr/tinyshuttle/crew)
 "an" = (
@@ -716,7 +715,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/debrisfield_vr/tinyshuttle/hangar)
 "br" = (
-/obj/machinery/mecha_part_fabricator{
+/obj/machinery/lathe/mecha_part_fabricator{
 	req_access = list()
 	},
 /obj/machinery/light{

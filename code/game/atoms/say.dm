@@ -24,13 +24,17 @@
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message, null, FALSE, speech_bubble_hearers, 3 SECONDS)
 
 /atom/proc/say_overhead(var/message, whispering, message_range = 7, var/datum/prototype/language/speaking = null, var/list/passed_hearing_list)
-	var/list/speech_bubble_hearers = list()
 	var/italics
 	if(whispering)
 		italics = TRUE
-	for(var/mob/M in get_mobs_in_view(message_range, src))
-		if(M.client)
-			speech_bubble_hearers += M.client
+	var/list/speech_bubble_hearers
+	if(passed_hearing_list)
+		speech_bubble_hearers = passed_hearing_list
+	else
+		speech_bubble_hearers = list()
+		for(var/mob/M in get_mobs_in_view(message_range, src))
+			if(M.client)
+				speech_bubble_hearers += M.client
 	if(length(speech_bubble_hearers))
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/atom/movable, animate_chat), message, speaking, italics, speech_bubble_hearers, 30)
 

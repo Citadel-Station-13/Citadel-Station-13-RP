@@ -5,3 +5,8 @@
  */
 /obj/item/tool
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+
+/obj/item/tool/get_description_info()
+	. = ..()
+	. += "It appears to work at [(TOOL_SPEED_DEFAULT/tool_speed)*100]% speed."

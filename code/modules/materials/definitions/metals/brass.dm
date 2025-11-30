@@ -18,6 +18,8 @@
 
 	worth = 7.5
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/brass/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(name = "brass floor tiles", product = /obj/item/stack/tile/brass, amount = 4)

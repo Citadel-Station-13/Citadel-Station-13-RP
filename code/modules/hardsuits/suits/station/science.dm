@@ -10,26 +10,6 @@
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/hazmat
 
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/stack/flag,
-		/obj/item/storage/excavation,
-		/obj/item/pickaxe,
-		/obj/item/healthanalyzer,
-		/obj/item/measuring_tape,
-		/obj/item/ano_scanner,
-		/obj/item/depth_scanner,
-		/obj/item/core_sampler,
-		/obj/item/gps,
-		/obj/item/beacon_locator,
-		/obj/item/radio/beacon,
-		/obj/item/pickaxe/hand,
-		/obj/item/storage/bag/fossils,
-		/obj/item/bluespace_radio,
-	)
-
 /datum/armor/hardsuit/ami
 	melee = 0.3
 	melee_tier = 4

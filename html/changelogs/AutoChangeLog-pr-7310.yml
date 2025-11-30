@@ -1,0 +1,4 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - tweak: "Adjusted aim mode to not automatically shoot people for every single click and instead be more reasonable."

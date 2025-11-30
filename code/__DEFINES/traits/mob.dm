@@ -52,8 +52,12 @@ DATUM_TRAIT(/mob, TRAIT_MOB_SLEEPING)
 #define TRAIT_MOB_FORCED_STANDING "mob_forced_standing"
 DATUM_TRAIT(/mob, TRAIT_MOB_FORCED_STANDING)
 
-//? misc
+//* Misc *//
 
+/// Emote cooldown trait
+#define TRAIT_EMOTE_COOLDOWN(KEY) "emote-cd-[KEY]"
+/// Emote cooldown trait
+#define TRAIT_EMOTE_GLOBAL_COOLDOWN "emote-cd"
 /// Tracks whether you're a mime or not.
 #define TRAIT_MIMING "miming"
 DATUM_TRAIT(/mob, TRAIT_MIMING)
@@ -90,3 +94,10 @@ DATUM_TRAIT(/mob, TRAIT_DEAF)
 // This mob can breathe water
 #define TRAIT_MOB_WATER_BREATHER		"mob_water_breather"
 DATUM_TRAIT(/mob, TRAIT_MOB_WATER_BREATHER)
+
+// Mob AI interaction Traits
+#define TRAIT_MOB_IGNORED_BY_AI				"Ignored by AI"
+DATUM_TRAIT(/mob, TRAIT_IGNORED_BY_AI)
+
+//! What causes you to be ignored by AI
+#define XENOHYBRID_SNEAK_ABILITY /datum/ability/species/xenomorph_hybrid/sneak

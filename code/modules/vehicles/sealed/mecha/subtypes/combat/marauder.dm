@@ -79,6 +79,7 @@
 	wreckage = /obj/effect/decal/mecha_wreckage/mauler
 	mech_faction = MECH_FACTION_SYNDI
 
+
 //I'll break this down later
 /obj/vehicle/sealed/mecha/combat/marauder/relaymove(mob/user,direction)
 	if(user != src.occupant_legacy) //While not "realistic", this piece is player friendly.
@@ -107,9 +108,13 @@
 	if(internal_damage&MECHA_INT_CONTROL_LOST)
 		move_result = mechsteprand()
 	else if(src.dir!=direction)
-		move_result = mechturn(direction)
+		if(strafing)
+			move_result = mechstep(direction)
+		else
+			move_result = mechturn(direction)
 	else
 		move_result	= mechstep(direction)
+
 	if(move_result)
 		if(istype(src.loc, /turf/space))
 			if(!src.check_for_support())

@@ -63,7 +63,7 @@
 	var/obj/item/I = user.get_inactive_held_item()
 	if(istype(I, /obj/item/material/knife/machete/hatchet/unathiknife))
 		hits ++
-		I.melee_interaction_chain(target, user, CLICKCHAIN_REDIRECTED, params)
+		I.lazy_melee_interaction_chain(target, user, CLICKCHAIN_REDIRECTED, params)
 	..()
 
 /obj/item/material/knife/machete/hatchet/unathiknife/afterattack(atom/target, mob/user, clickchain_flags, list/params)
@@ -76,8 +76,10 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hoe"
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	material_primary = "tip"
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/material/minihoe/plasteel
 	material_parts = /datum/prototype/material/plasteel

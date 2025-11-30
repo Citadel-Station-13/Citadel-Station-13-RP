@@ -101,7 +101,7 @@
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, FALSE)
 		return TRUE
 
-/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui)
+/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

@@ -424,10 +424,16 @@
 	else
 		toggle(user)
 
-/obj/structure/closet/AltClick()
-	..()
+/obj/structure/closet/on_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
 	if(secure)
 		verb_togglelock()
+		return . | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+/obj/structure/closet/should_list_turf_on_alt_click(mob/user)
+	return FALSE
 
 /obj/structure/closet/verb/verb_togglelock()
 	set src in oview(1) // One square distance

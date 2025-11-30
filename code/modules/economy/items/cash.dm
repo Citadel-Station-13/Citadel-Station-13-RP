@@ -9,6 +9,7 @@
 	throw_speed = 1
 	throw_range = 2
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 

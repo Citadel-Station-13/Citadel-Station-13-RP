@@ -147,6 +147,10 @@
 	var/list/material_traits
 	/// Material trait sensitivity hooks - total
 	var/material_trait_flags
+	/// String material tags - used for autoselect/UI things, mostly
+	/// e.g material_tags = list("my epic material")
+	/// some common ones are defined in \__DEFINES\materials\misc.dm
+	var/list/material_tags
 
 	//! Attributes - legacy
 	/// Delay in ticks when cutting through this wall.

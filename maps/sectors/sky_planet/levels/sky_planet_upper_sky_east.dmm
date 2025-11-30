@@ -1,13 +1,32 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/structure/railing,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "ao" = (
 /obj/item/coin/gold,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"aw" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
 "aA" = (
 /obj/structure/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/rock)
+"aN" = (
+/turf/simulated/floor/carpet/patterened/orange,
+/area/sector/sky_planet/rock)
+"bd" = (
+/obj/item/spacecash/c500,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"bl" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
 "bB" = (
 /obj/machinery/door/blast/regular{
@@ -18,16 +37,49 @@
 "bD" = (
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
+"bV" = (
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
+"ce" = (
+/obj/item/spacecash/c10,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
 "cf" = (
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
+"cA" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "cB" = (
 /mob/living/simple_mob/aggressive/dragoon,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"cN" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4;
+	pixel_x = -12
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"cY" = (
+/obj/structure/barricade/miaphus/tentleatheredge{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
 "dg" = (
 /obj/structure/catwalk,
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
+/area/sector/sky_planet/rock)
+"dh" = (
+/obj/random/multiple/large_corp_crate,
+/turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/sky_planet/rock)
 "dq" = (
 /turf/simulated/mineral/cave,
@@ -36,31 +88,178 @@
 /obj/item/digestion_remains/ribcage,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"dw" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/plating,
+/area/sector/sky_planet/sky)
 "dJ" = (
 /obj/structure/bed/chair/sofa/purp/right,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"dT" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"eh" = (
+/obj/effect/floor_decal/techfloor/hole,
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"ev" = (
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "ez" = (
 /mob/living/simple_mob/mechanical/mecha/mouse_tank/manned,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"eC" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
+"eG" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"eP" = (
+/obj/structure/bed/chair/pew/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
+"eR" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"eW" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/sky)
 "fe" = (
 /obj/effect/decal/remains/mummy1,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"fI" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/rock)
+"ge" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"gi" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"gr" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/machinery/mech_recharger,
+/obj/structure/railing,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "gL" = (
 /turf/simulated/floor/holofloor/reinforced{
 	outdoors = 1
 	},
+/area/sector/sky_planet/sky)
+"gN" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/beige/border,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"gY" = (
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/wood/sif/broken,
+/area/sector/sky_planet/sky)
+"hb" = (
+/obj/structure/closet,
+/obj/item/clothing/head/soft/mbill,
+/obj/item/clothing/under/brandjumpsuit/mbill,
+/obj/random/multiple/gun/projectile/shotgun,
+/turf/simulated/floor/plating/indoors,
+/area/sector/sky_planet/sky)
+"hg" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"hv" = (
+/turf/simulated/open/lythios43c,
 /area/sector/sky_planet/sky)
 "hK" = (
 /obj/structure/table/steel,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"hW" = (
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/sky)
+"ij" = (
+/obj/structure/bed/chair/pew/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif/broken,
+/area/sector/sky_planet/sky)
+"iy" = (
+/obj/structure/bed/pod,
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/rock)
+"jr" = (
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
 "jT" = (
 /obj/item/clothing/accessory/collar/fluff/goldenstring,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"kg" = (
+/obj/structure/table/bench/wooden,
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"ki" = (
+/obj/structure/bed/roller,
+/turf/simulated/floor/carpet/patterened/green,
+/area/sector/sky_planet/rock)
+"kk" = (
+/obj/random/multiple/treasure,
+/turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/sky_planet/rock)
 "kB" = (
 /obj/effect/blocker,
@@ -70,12 +269,54 @@
 /mob/living/simple_mob/aggressive/dragoon/yellow,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"kX" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
+"lf" = (
+/obj/machinery/mech_recharger,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"li" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
 "lt" = (
 /obj/item/clothing/gloves/ring/material/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"lD" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"lL" = (
+/obj/machinery/mech_recharger,
+/obj/structure/railing,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "lQ" = (
 /turf/simulated/mineral/cave,
+/area/sector/sky_planet/sky)
+"lU" = (
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/sky)
+"mb" = (
+/obj/machinery/power/solar,
+/turf/simulated/floor/tiled/steel_grid,
+/area/sector/sky_planet/sky)
+"mq" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/sky)
 "mD" = (
 /obj/structure/railing/grey{
@@ -84,7 +325,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
 /area/sector/sky_planet/rock)
 "mG" = (
 /obj/machinery/button/remote/airlock{
@@ -93,13 +334,51 @@
 	},
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
+"na" = (
+/obj/structure/closet/largecardboard,
+/obj/random/tool/powermaint,
+/obj/random/unidentified_medicine,
+/obj/random/unidentified_medicine,
+/obj/random/unidentified_medicine,
+/turf/simulated/floor/plating/indoors,
+/area/sector/sky_planet/sky)
 "nW" = (
 /obj/item/digestion_remains/ribcage,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"oe" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat,
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"om" = (
+/obj/structure/reagent_dispensers/fueltank/high,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/sector/sky_planet/sky)
+"oz" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "oK" = (
 /obj/item/toy/plushie/carp/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"oN" = (
+/obj/structure/bed/holobed,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/sector/sky_planet/rock)
+"oW" = (
+/turf/simulated/floor/carpet/patterened/blue,
+/area/sector/sky_planet/sky)
+"oZ" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
 "pe" = (
 /obj/effect/decal/remains/tajaran,
@@ -109,6 +388,69 @@
 /obj/effect/decal/remains/ribcage,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"px" = (
+/obj/structure/barricade/miaphus/tentleathercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/rock)
+"pz" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/item/trash/diggerstew,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"pM" = (
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/rock)
+"pU" = (
+/obj/structure/closet,
+/obj/item/clothing/under/brandjumpsuit/mbill,
+/obj/item/clothing/head/soft/mbill,
+/turf/simulated/floor/plating/indoors,
+/area/sector/sky_planet/sky)
+"qb" = (
+/obj/random/cash,
+/turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"ql" = (
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"qv" = (
+/obj/machinery/door/airlock/silencium,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"rd" = (
+/obj/structure/table/rack/steel,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/sky)
+"rn" = (
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
+"rp" = (
+/turf/simulated/wall/r_wall/prepainted/command,
+/area/sector/sky_planet/sky)
+"rz" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/machinery/mech_recharger,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "rF" = (
 /mob/living/simple_mob/aggressive/dragoon/yellow,
 /turf/simulated/floor/outdoors/rocks,
@@ -116,6 +458,41 @@
 "rM" = (
 /obj/item/stack/material/gold,
 /turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"rR" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/obj/item/trash/diggerstew,
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"rX" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/plating/indoors,
+/area/sector/sky_planet/sky)
+"sg" = (
+/obj/structure/bonfire/permanent,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"sX" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/lattice,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"ta" = (
+/obj/random/multiple/treasure,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/rock)
 "tf" = (
 /obj/structure/closet/syndicate,
@@ -125,30 +502,149 @@
 /obj/machinery/light/small/emergency/flicker,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"uf" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/beige/border,
+/obj/item/trash/rkibble,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"uo" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/cash_register{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"uv" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/debris/cleanable/blood/splatter,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
 "uw" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"uF" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/beige/border,
+/obj/item/trash/chips,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
 "uI" = (
-/obj/structure/table/steel,
-/obj/item/clothing/suit/space/syndicate/black/red,
-/obj/item/clothing/head/helmet/space/syndicate/black/red,
-/obj/random/handgun,
-/turf/simulated/floor/tiled/techfloor,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/plating/indoors,
+/area/sector/sky_planet/sky)
+"uM" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
 "uZ" = (
 /obj/spawner/corpse/syndicatesoldier,
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
+"vf" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"vj" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"vJ" = (
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
 "vK" = (
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"wa" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/beige/border,
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"wi" = (
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
+"xo" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"xr" = (
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
+"xE" = (
+/obj/random/multiple/minevault,
+/obj/random/multiple/miningdrills,
+/turf/simulated/floor/carpet/patterened/brown,
+/area/sector/sky_planet/rock)
+"xM" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
+"xR" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/beige/border,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"xU" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/sector/sky_planet/sky)
 "xX" = (
 /obj/item/target/syndicate,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"yg" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/carpet/patterened/green,
+/area/sector/sky_planet/rock)
+"ys" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/beige/border,
+/obj/effect/debris/cleanable/blood/gibs/robot,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
 "yz" = (
 /obj/item/clothing/ears/laurel/gold,
 /turf/simulated/floor/outdoors/rocks,
@@ -156,19 +652,79 @@
 "zf" = (
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky/unexplored)
+"zh" = (
+/obj/effect/debris/cleanable/blood/gibs/robot,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "zB" = (
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
 /area/sector/sky_planet/rock)
 "zM" = (
 /obj/item/stack/material/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"zP" = (
+/turf/simulated/floor/plating/indoors,
+/area/sector/sky_planet/sky)
+"Ac" = (
+/turf/simulated/floor/carpet/patterened/blue,
+/area/sector/sky_planet/rock)
+"Af" = (
+/turf/simulated/floor/carpet/patterened/green,
+/area/sector/sky_planet/rock)
+"At" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"AF" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/lattice,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"AG" = (
+/obj/effect/debris/cleanable/blood/splatter,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/sector/sky_planet/sky)
+"AK" = (
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/sector/sky_planet/sky)
+"AQ" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"BE" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "BF" = (
 /obj/structure/statue/gold/hop,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"BJ" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/rock)
+"BW" = (
+/obj/structure/barricade/miaphus/tentleatheredge{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
 /area/sector/sky_planet/rock)
 "Cf" = (
 /obj/item/coin/gold,
@@ -180,6 +736,25 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"Cp" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"CP" = (
+/obj/structure/closet/largecardboard,
+/obj/random/multiple/voidsuit/vintage,
+/obj/random/multiple/voidsuit/vintage,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/sector/sky_planet/sky)
+"Df" = (
+/obj/structure/palletjack/random,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/sky)
 "DE" = (
 /obj/item/storage/toolbox/gold_fake,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -190,25 +765,97 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"Ef" = (
+/obj/vehicle/ridden/quadbike/random,
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"El" = (
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"EG" = (
+/turf/simulated/floor/carpet/patterened/brown,
+/area/sector/sky_planet/rock)
+"EN" = (
+/obj/effect/decal/remains/tajaran,
+/obj/item/spacecash/c10,
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"Fj" = (
+/obj/effect/debris/cleanable/blood/drip,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
 "FB" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"FH" = (
+/obj/structure/closet/crate/miningcar,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"FT" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "FV" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"FY" = (
+/turf/simulated/floor/carpet/turcarpet,
+/area/sector/sky_planet/rock)
+"FZ" = (
+/obj/structure/flora/pottedplant/hedge,
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
 "Gl" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
 /area/sector/sky_planet/rock)
+"Go" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/reagent_containers/food/snacks/full_goss,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"GH" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/effect/floor_decal/industrial/halfstair,
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
+"GK" = (
+/obj/spawner/window/full/firelocks,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "GR" = (
 /obj/structure/bed/pod,
 /obj/structure/curtain/open/bed,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"Hp" = (
+/turf/simulated/floor/carpet/patterened/blue/alt,
+/area/sector/sky_planet/rock)
+"HG" = (
+/obj/spawner/window/full/firelocks,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
+"HM" = (
+/obj/effect/debris/cleanable/blood/drip,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/sector/sky_planet/sky)
+"HP" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "Ip" = (
 /obj/effect/decal/remains/tajaran,
 /turf/simulated/floor/outdoors/rocks,
@@ -217,6 +864,10 @@
 /obj/structure/bed/chair/sofa/purp/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"Jn" = (
+/obj/effect/debris/cleanable/blood/oil,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "Jt" = (
 /obj/effect/decal/remains/mummy2,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -225,27 +876,122 @@
 /obj/structure/bonfire/permanent,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"JM" = (
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif,
+/area/sector/sky_planet/sky)
+"JY" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/border,
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
 "Kb" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
+"Kk" = (
+/obj/item/storage/single_use/mre/menu6,
+/obj/item/storage/single_use/mre/menu6,
+/turf/simulated/floor/carpet/patterened/blue/alt,
+/area/sector/sky_planet/rock)
+"Kn" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/debris/cleanable/blood/gibs/robot,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"KY" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
+"KZ" = (
+/obj/item/trash/chips,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"Lb" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/effect/debris/cleanable/blood/oil,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"Lf" = (
+/obj/structure/barricade/miaphus/tentleatheredge{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
 "Ll" = (
 /turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/rock)
+"Lo" = (
+/obj/structure/bed/psych,
+/turf/simulated/floor/carpet/patterened/green,
 /area/sector/sky_planet/rock)
 "Lq" = (
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"LV" = (
+/obj/item/spacecash/c500,
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"Mn" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/table/bench/wooden,
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"Mt" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/machinery/light/spot{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"MM" = (
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/turf/simulated/floor/wood/sif/broken,
+/area/sector/sky_planet/sky)
 "MV" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /obj/structure/railing/grey,
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
 /area/sector/sky_planet/rock)
 "Nu" = (
 /obj/item/reagent_containers/food/drinks/golden_cup,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"Nz" = (
+/turf/simulated/floor/wood/sif/broken,
+/area/sector/sky_planet/sky)
 "NO" = (
 /mob/living/simple_mob/aggressive/dragoon/blue,
 /turf/simulated/open/skyplanet,
@@ -253,53 +999,276 @@
 "Oh" = (
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"Om" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/sector/sky_planet/sky)
+"Oo" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
 "Ot" = (
 /obj/structure/bed/chair/sofa/purp/left{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"OS" = (
+/obj/structure/barricade/miaphus/tentleathercorner,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/rock)
+"Ph" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4;
+	pixel_x = -12
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"PB" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/rock)
 "PO" = (
 /obj/item/digestion_remains/skull/tajaran,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"PT" = (
+/obj/structure/table/rack/shelf,
+/obj/random/drinkbottle,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"PY" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/carpet/patterened/blue/alt,
+/area/sector/sky_planet/rock)
+"Qj" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/sector/sky_planet/sky)
 "Qm" = (
 /mob/living/simple_mob/aggressive/dragoon/red,
 /turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"Qr" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"QI" = (
+/obj/structure/table/rack/shelf,
+/obj/random/cash,
+/obj/random/cash,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/sector/sky_planet/sky)
+"QJ" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/beige/border,
+/obj/item/trash/rkibble,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"QO" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/rock)
+"QR" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/obj/item/trash/rust_can,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"QY" = (
+/obj/structure/table/rack/shelf,
+/obj/item/reagent_containers/food/snacks/fuegoburrito,
+/turf/simulated/floor/plating,
+/area/sector/sky_planet/sky)
+"Rb" = (
+/obj/structure/table/steel_reinforced,
+/obj/random/curseditem,
+/turf/simulated/floor/wood/indoors,
+/area/sector/sky_planet/sky)
+"Rz" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
 "RX" = (
 /obj/effect/decal/remains/ribcage,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"Sb" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/rock)
 "So" = (
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
 /area/sector/sky_planet/rock)
 "Sz" = (
 /obj/structure/lattice,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"SG" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"Tr" = (
+/obj/structure/lattice,
+/obj/structure/railing,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
 "TJ" = (
 /obj/structure/railing/grey,
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
 /area/sector/sky_planet/rock)
 "TX" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/rock)
+"Ub" = (
+/obj/random/cash,
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
 "Uo" = (
 /obj/item/clothing/ears/earring/stud/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
+/area/sector/sky_planet/rock)
+"Ur" = (
+/obj/item/spacecash/c1000,
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"UH" = (
+/obj/structure/bed/pod,
+/turf/simulated/floor/carpet/patterened/green,
+/area/sector/sky_planet/rock)
+"UL" = (
+/obj/item/trash/rust_can,
+/turf/simulated/floor/plating/indoors,
+/area/sector/sky_planet/sky)
+"Vv" = (
+/obj/random/multiple/large_corp_crate,
+/turf/simulated/floor/carpet/patterened/brown,
+/area/sector/sky_planet/rock)
+"Vw" = (
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/wood/sif/broken,
+/area/sector/sky_planet/sky)
+"Wg" = (
+/obj/structure/bed/holobed,
+/turf/simulated/floor/carpet/patterened/orange,
+/area/sector/sky_planet/rock)
+"Wt" = (
+/obj/effect/debris/cleanable/blood/drip,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/sky)
+"Wu" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"Wv" = (
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
 /area/sector/sky_planet/rock)
 "WF" = (
 /obj/machinery/mech_recharger,
 /obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon,
 /turf/simulated/floor/holofloor/reinforced,
 /area/sector/sky_planet/rock)
+"Xm" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"XO" = (
+/obj/vehicle/ridden/quadbike/random,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"XS" = (
+/obj/structure/bonfire/permanent,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
 "Yb" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/rock)
+"Yk" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "Yy" = (
 /obj/item/digestion_remains/skull/tajaran,
+/turf/simulated/floor/outdoors/rocks,
+/area/sector/sky_planet/rock)
+"YD" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/carpet/patterened/orange,
+/area/sector/sky_planet/rock)
+"YW" = (
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/rock)
+"Zq" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/beige/border,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"Zy" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
+	},
+/obj/random/multiple/corp_crate,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/rock)
+"ZZ" = (
+/obj/structure/simple_door/iron,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
 
@@ -343,11 +1312,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -537,11 +1506,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -731,11 +1700,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -925,11 +1894,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+Sz
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -1120,10 +2089,10 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+AF
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -1315,9 +2284,9 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
+Sz
+El
+ev
 Oh
 Oh
 Oh
@@ -1508,10 +2477,10 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+HP
+Sz
+El
+ev
 Oh
 Oh
 Oh
@@ -1702,10 +2671,10 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+AF
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -1895,11 +2864,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+Sz
+El
+BE
+ev
 Oh
 Oh
 Oh
@@ -2066,34 +3035,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+bV
+Fj
+bV
+bV
+bV
+bV
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+Sz
 Oh
 Oh
 Oh
+Sz
+bV
+bV
 Oh
 Oh
 Oh
-Oh
-Oh
+ev
+El
+El
+BE
+ev
 Oh
 Oh
 Oh
@@ -2260,34 +3229,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+bV
+hW
+hW
+hW
+hW
+hW
+rp
+dT
+vj
+rR
+vj
+wa
+xM
+bV
+Sz
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+AF
+El
+El
+bV
+bV
+bV
+bV
+ev
+BE
+BE
+El
+ev
 Oh
 Oh
 Oh
@@ -2454,34 +3423,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+bV
+hW
+Wt
+hW
+hW
+hW
+rp
+Om
+zP
+ql
+zP
+uF
+bV
+bV
+El
+AF
+AF
+BE
+BE
+El
+BE
+BE
+El
+El
+El
+El
+BE
+ev
 Oh
 Oh
 Oh
@@ -2648,34 +3617,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+bV
+hW
+hW
+Wt
+hW
+hW
+rp
+Oo
+rX
+ql
+ge
+xR
+rp
+bV
+El
+BE
+El
+El
+zh
+El
+El
+El
+BE
+BE
+BE
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -2842,34 +3811,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+bV
+hW
+hW
+hW
+hW
+hW
+rp
+pz
+ge
+ql
+QY
+Zq
+rp
+bV
+BE
+El
+eR
+BE
+Jn
+bV
+bV
+bV
+bV
+ev
+BE
+BE
+El
+ev
 Oh
 Oh
 Oh
@@ -3036,34 +4005,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+bV
+hW
+Wt
+hW
+hW
+hW
+rp
+hg
+ge
+KZ
+dw
+ys
+GK
+bV
+BE
+lL
+om
+rz
+BE
+bV
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+Sz
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -3230,34 +4199,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+rp
+hW
+hW
+hW
+hW
+Df
+rp
+QR
+ge
+zP
+ge
+Zq
+GK
+bV
+BE
+ae
+AK
+oz
+BE
+bV
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -3424,34 +4393,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+rp
+Qj
+rp
+rp
+rp
+rp
+rp
+hg
+PT
+zP
+ge
+uf
+GK
+bV
+BE
+lL
+om
+lf
+BE
+bV
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -3618,34 +4587,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+rp
+xU
+HM
+CP
+QI
+na
+rp
+Oo
+UL
+zP
+ql
+QJ
+rp
+bV
+BE
+El
+AQ
+El
+El
+Sz
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -3812,34 +4781,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+rp
+zP
+zP
+xU
+HM
+AG
+rp
+hg
+Go
+aw
+uo
+gN
+rp
+bV
+BE
+El
+El
+El
+Sz
 Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+Sz
 Oh
 Oh
 Oh
@@ -3983,7 +4952,7 @@ Ll
 Ll
 Ll
 Ll
-ez
+Ll
 Ll
 TX
 dq
@@ -4006,34 +4975,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+rp
+hb
+pU
+uI
+xU
+xU
+KY
+Qr
+Cp
+uv
+Mt
+JY
+rp
+bV
+El
+Lb
+BE
+BE
+Sz
 Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+AF
+Sz
 Oh
 Oh
 Oh
@@ -4200,34 +5169,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+bV
+El
+lD
+BE
+BE
+Sz
 Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+Sz
 Oh
 Oh
 Oh
@@ -4394,34 +5363,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+HG
+FZ
+FZ
+MM
+vJ
+JM
+vJ
+JM
+vJ
+MM
+vJ
+gY
+GK
+bV
+El
+Kn
+eR
+BE
+Sz
 Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+El
+Sz
 Oh
 Oh
 Oh
@@ -4555,7 +5524,7 @@ tn
 TX
 TX
 Ll
-ez
+Ll
 zB
 So
 So
@@ -4587,35 +5556,35 @@ Oh
 Oh
 Oh
 Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
+HG
+HG
+lU
+GH
+xr
+eP
+xr
+eP
+Nz
+eP
+xr
+eP
+FZ
+GK
+bV
+BE
+gr
+om
+lf
+El
+Sz
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+ev
+BE
+BE
+BE
+Sz
 Oh
 Oh
 Oh
@@ -4740,7 +5709,7 @@ Ll
 Ll
 Yb
 Yb
-ez
+Ll
 Ll
 TX
 Iq
@@ -4781,35 +5750,35 @@ Oh
 Oh
 Oh
 Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
+HG
+rd
+lU
+eW
+mq
+oW
+oW
+oW
+oW
+oW
+oW
+oW
+oW
+qv
+bV
+AF
+ae
+AK
+eG
+El
+bV
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -4933,7 +5902,7 @@ TX
 Ll
 Ll
 hK
-uI
+Yb
 Ll
 Ll
 TX
@@ -4975,35 +5944,35 @@ Oh
 Oh
 Oh
 Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+HG
+lU
+lU
+Rb
+mq
+oW
+oW
+oW
+oW
+oW
+oW
+oW
+oW
+rp
+bV
+AF
+Tr
+om
+lf
+BE
+bV
+bV
+bV
+bV
+ev
+BE
+BE
+El
+ev
 Oh
 Oh
 Oh
@@ -5169,35 +6138,35 @@ Oh
 Oh
 Oh
 Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+HG
+rd
+lU
+eW
+mq
+oW
+oW
+oW
+oW
+oW
+oW
+oW
+oW
+qv
+bV
+Sz
+AF
+AQ
+El
+BE
+zh
+El
+El
+El
+Sz
+El
+El
+BE
+ev
 Oh
 Oh
 Oh
@@ -5363,35 +6332,35 @@ Oh
 Oh
 Oh
 Oh
+HG
+HG
+lU
+kX
+xr
+vJ
+xr
+vJ
+xr
+wi
+xr
+vJ
+gY
+GK
+bV
+Sz
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+sX
+El
+Lb
+El
+El
+El
+Sz
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+El
+BE
+ev
 Oh
 Oh
 Oh
@@ -5558,34 +6527,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+HG
+FZ
+FZ
+Vw
+eP
+rn
+ij
+Vw
+eP
+Vw
+eP
+FZ
+GK
+bV
+AF
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+AF
+BE
+BE
+bV
+bV
+bV
+bV
+Sz
+BE
+BE
+El
+ev
 Oh
 Oh
 Oh
@@ -5752,34 +6721,34 @@ Oh
 Oh
 Oh
 Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+rp
+Sz
+Oh
+Oh
+Sz
+bV
+bV
+bV
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -5969,11 +6938,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -6163,11 +7132,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -6357,11 +7326,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -6551,11 +7520,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -6745,11 +7714,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -6939,11 +7908,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -7133,11 +8102,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -7327,11 +8296,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -7521,11 +8490,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -7715,11 +8684,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -7909,11 +8878,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -8103,11 +9072,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -8297,11 +9266,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -8491,11 +9460,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-dq
-dq
-dq
-Oh
+ev
+jr
+jr
+jr
+ev
 Oh
 Oh
 Oh
@@ -8685,11 +9654,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+YW
+vf
+vf
+vf
+YW
 dq
 Oh
 Oh
@@ -8879,11 +9848,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Lq
-Lq
+YW
+vf
+vf
+vf
+YW
 dq
 dq
 Oh
@@ -9073,11 +10042,11 @@ dq
 dq
 dq
 dq
-dq
-Lq
-Lq
-Lq
-Lq
+YW
+jr
+jr
+jr
+YW
 Lq
 Lq
 Lq
@@ -9267,11 +10236,11 @@ dq
 dq
 dq
 dq
-dq
-Lq
-Lq
-Lq
-Lq
+YW
+vf
+vf
+vf
+YW
 Lq
 Lq
 Lq
@@ -9461,11 +10430,11 @@ dq
 dq
 dq
 dq
-Lq
-Lq
-Lq
-Lq
-Lq
+YW
+jr
+jr
+jr
+YW
 Lq
 Lq
 Lq
@@ -9655,11 +10624,11 @@ dq
 dq
 dq
 dq
-Lq
-Lq
-Lq
-Lq
-Lq
+YW
+jr
+jr
+jr
+YW
 Lq
 Lq
 Lq
@@ -9849,17 +10818,17 @@ dq
 dq
 dq
 Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Oh
+YW
+jr
+jr
+jr
+QO
+YW
+YW
+YW
+pM
+pM
+bV
 Oh
 Oh
 Oh
@@ -10043,17 +11012,17 @@ dq
 dq
 dq
 Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Oh
+YW
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+bV
 Oh
 Oh
 Oh
@@ -10237,17 +11206,17 @@ dq
 dq
 Lq
 Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-dq
-Oh
-Oh
+YW
+vf
+vf
+vf
+Ph
+cN
+cN
+vf
+vf
+BE
+bV
 Oh
 Oh
 Oh
@@ -10431,17 +11400,17 @@ dq
 dq
 Lq
 Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-dq
-dq
-dq
-Oh
-Oh
+YW
+vf
+jr
+oZ
+vf
+jr
+jr
+vf
+jr
+lD
+bV
 Oh
 Oh
 Oh
@@ -10625,17 +11594,17 @@ dq
 dq
 Lq
 Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-Lq
-dq
-dq
-dq
-Oh
-Oh
+YW
+YW
+YW
+QO
+YW
+Sb
+pM
+jr
+jr
+El
+bV
 Oh
 Oh
 Oh
@@ -10825,11 +11794,11 @@ Lq
 Lq
 Lq
 Lq
-dq
-dq
-Oh
-Oh
-Oh
+pM
+jr
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -11019,11 +11988,11 @@ Lq
 Lq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+pM
+vf
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -11213,11 +12182,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -11407,11 +12376,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+El
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -11601,11 +12570,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -11795,11 +12764,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+El
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -11989,11 +12958,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+pM
+jr
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -12183,11 +13152,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -12377,11 +13346,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -12571,11 +13540,11 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
+bV
+El
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -12765,11 +13734,11 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
+bV
+BE
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -12959,11 +13928,11 @@ Lq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
+bV
+El
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -13153,11 +14122,11 @@ Lq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
+bV
+El
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -13347,11 +14316,11 @@ Lq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+El
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -13541,11 +14510,11 @@ Lq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -13735,11 +14704,11 @@ Lq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -13929,11 +14898,11 @@ Lq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+El
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -14123,11 +15092,11 @@ Lq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -14317,11 +15286,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+pM
+jr
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -14511,11 +15480,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+pM
+jr
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -14705,11 +15674,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+pM
+vf
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -14899,11 +15868,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Oh
-Oh
+pM
+vf
+vf
+BE
+bV
 Oh
 Oh
 Oh
@@ -15093,11 +16062,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Oh
-Oh
+pM
+jr
+jr
+El
+bV
 Oh
 Oh
 Oh
@@ -15287,11 +16256,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
+pM
+vf
+vf
+vf
+bV
 Oh
 Oh
 Oh
@@ -15481,11 +16450,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
+pM
+jr
+jr
+jr
+bV
 Oh
 Oh
 Oh
@@ -15675,11 +16644,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
+pM
+jr
+jr
+jr
+bV
 Oh
 Oh
 Oh
@@ -15869,11 +16838,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
+pM
+jr
+jr
+jr
+bV
 Oh
 Oh
 Oh
@@ -16063,11 +17032,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
+pM
+vf
+vf
+vf
+bV
 Oh
 Oh
 Oh
@@ -16257,11 +17226,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
+pM
+vf
+vf
+vf
+bV
 Oh
 Oh
 Oh
@@ -16451,11 +17420,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
+pM
+jr
+jr
+jr
+bV
 Oh
 Oh
 Oh
@@ -16645,11 +17614,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Oh
-Oh
+pM
+vf
+vf
+BE
+bV
 Oh
 Oh
 Oh
@@ -16839,11 +17808,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Oh
-Oh
+pM
+jr
+jr
+El
+bV
 Oh
 Oh
 Oh
@@ -17033,11 +18002,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Oh
-Oh
+pM
+jr
+jr
+El
+bV
 Oh
 Oh
 Oh
@@ -17227,11 +18196,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Oh
-Oh
+pM
+vf
+vf
+BE
+bV
 Oh
 Oh
 Oh
@@ -17421,11 +18390,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+PB
+Xm
+FT
+BE
+bV
 Oh
 Oh
 Oh
@@ -17615,11 +18584,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+fI
+kg
+cA
+El
+bV
 Oh
 Oh
 Oh
@@ -17809,11 +18778,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+pM
+vf
+BE
+BE
+bV
 Oh
 Oh
 Oh
@@ -18003,11 +18972,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
-Oh
-Oh
+pM
+jr
+El
+El
+bV
 Oh
 Oh
 Oh
@@ -18197,11 +19166,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+El
+cA
+cA
+eC
 Oh
 Oh
 Oh
@@ -18391,11 +19360,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+El
+El
+El
+eC
 Oh
 Oh
 Oh
@@ -18585,11 +19554,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+Mn
+eC
 Oh
 Oh
 Oh
@@ -18779,11 +19748,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+BE
+BE
+gi
+eC
 Oh
 Oh
 Oh
@@ -18971,13 +19940,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Oh
-Oh
-Oh
-Oh
+Lq
+Ef
+pM
+El
+El
+FH
+eC
 Oh
 Oh
 Oh
@@ -19164,14 +20133,14 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
-Oh
-Oh
-Oh
+Lq
+Lq
+Lq
+pM
+BE
+gi
+gi
+eC
 Oh
 Oh
 Oh
@@ -19358,14 +20327,14 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-Oh
-Oh
-Oh
+Lf
+Lf
+Lf
+px
+jr
+El
+sg
+eC
 Oh
 Oh
 Oh
@@ -19551,15 +20520,15 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
-Oh
+Wg
+Lo
+UH
+Af
+BW
+jr
+li
+xo
+eC
 Oh
 Oh
 Oh
@@ -19729,7 +20698,7 @@ Lq
 vK
 vK
 vK
-vK
+ce
 Lq
 Lq
 dq
@@ -19744,16 +20713,16 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
-Oh
+aN
+FY
+FY
+Ac
+aN
+Wv
+vf
+Wu
+BE
+eC
 Oh
 Oh
 Oh
@@ -19938,16 +20907,16 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+Ac
+Ac
+FY
+Ac
+aN
+BW
+vf
+vf
+uM
+eC
 Oh
 Oh
 Oh
@@ -20116,7 +21085,7 @@ Lq
 Lq
 Lq
 Lq
-vK
+bd
 vK
 vK
 du
@@ -20131,17 +21100,17 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+Lq
+ki
+oN
+iy
+FY
+aN
+BW
+jr
+jr
+Rz
+eC
 Oh
 Oh
 Oh
@@ -20316,8 +21285,8 @@ RX
 vK
 rM
 Lq
+Ub
 Lq
-Lq
 dq
 dq
 dq
@@ -20326,16 +21295,16 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+cY
+cY
+cY
+cY
+cY
+OS
+vf
+vf
+Zy
+eC
 Oh
 Oh
 Oh
@@ -20520,16 +21489,16 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+Lq
+Lq
+Lq
+oe
+Lq
+pM
+jr
+jr
+jr
+eC
 Oh
 Oh
 Oh
@@ -20698,11 +21667,11 @@ dq
 Lq
 Yy
 Lq
-vK
+qb
 RX
 zM
 vK
-Ip
+EN
 zM
 Lq
 Lq
@@ -20712,18 +21681,18 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+Lq
+ZZ
+Lq
+Lq
+Lq
+Lq
+oe
+pM
+jr
+jr
+jr
+eC
 Oh
 Oh
 Oh
@@ -20906,18 +21875,18 @@ dq
 dq
 dq
 dq
+eh
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+Lf
+Lf
+Lf
+Lf
+Lf
+px
+jr
+jr
+SG
+eC
 Oh
 Oh
 Oh
@@ -21084,7 +22053,7 @@ dq
 dq
 dq
 Jy
-Lq
+LV
 vK
 vK
 oK
@@ -21102,16 +22071,16 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+Af
+Af
+Ac
+Ac
+Hp
+Wv
+vf
+vf
+vf
+eC
 Oh
 Oh
 Oh
@@ -21296,16 +22265,16 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+PY
+YD
+ta
+Af
+Kk
+BW
+vf
+At
+At
+eC
 Oh
 Oh
 Oh
@@ -21480,7 +22449,7 @@ vK
 vK
 vK
 Lq
-Lq
+Ur
 Lq
 Jy
 dq
@@ -21491,15 +22460,15 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
+yg
+Ac
+kk
+EG
+BW
+jr
+jr
+XS
+eC
 Oh
 Oh
 Oh
@@ -21675,8 +22644,8 @@ Nu
 vK
 Cf
 Lq
+Ub
 Lq
-Lq
 dq
 dq
 dq
@@ -21686,14 +22655,14 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-Oh
-Oh
+dh
+Hp
+EG
+BW
+vf
+At
+gi
+eC
 Oh
 Oh
 Oh
@@ -21863,7 +22832,7 @@ dq
 Lq
 Lq
 Lq
-vK
+qb
 PO
 pe
 vK
@@ -21881,13 +22850,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-Oh
-Oh
+Vv
+xE
+BW
+jr
+jr
+El
+eC
 Oh
 Oh
 Oh
@@ -22075,13 +23044,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-Oh
-Oh
+cY
+cY
+OS
+SG
+jr
+El
+eC
 Oh
 Oh
 Oh
@@ -22269,13 +23238,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-Oh
-Oh
+bl
+bl
+BJ
+vf
+vf
+BE
+eC
 Oh
 Oh
 Oh
@@ -22464,12 +23433,12 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-Oh
-Oh
-Oh
+bl
+BJ
+vf
+BE
+BE
+eC
 Oh
 Oh
 Oh
@@ -22659,11 +23628,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+pM
+XO
+El
+El
+eC
 Oh
 Oh
 Oh
@@ -22853,11 +23822,11 @@ dq
 dq
 dq
 dq
-dq
-Oh
-Oh
-Oh
-Oh
+YW
+BE
+BE
+BE
+eC
 Oh
 Oh
 Oh
@@ -23047,11 +24016,11 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+eC
 Oh
 Oh
 Oh
@@ -23241,11 +24210,11 @@ dq
 dq
 dq
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+eC
 Oh
 Oh
 Oh
@@ -23435,11 +24404,11 @@ dq
 dq
 dq
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+xo
+eC
 Oh
 Oh
 Oh
@@ -23629,11 +24598,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+gi
+Yk
 Oh
 Oh
 Oh
@@ -23823,11 +24792,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Yk
+BE
+BE
+gi
+Yk
 Oh
 Oh
 Oh
@@ -24017,11 +24986,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Yk
+xo
+El
+El
+Yk
 Oh
 Oh
 Oh
@@ -24211,11 +25180,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Yk
+Mn
+BE
+BE
+Yk
 Oh
 Oh
 Oh
@@ -24405,11 +25374,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Yk
+cA
+El
+El
+Yk
 Oh
 Oh
 Oh
@@ -24599,11 +25568,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+Yk
 Oh
 Oh
 Oh
@@ -24793,11 +25762,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+Mn
+Yk
 Oh
 Oh
 Oh
@@ -24977,21 +25946,21 @@ dq
 dq
 dq
 dq
+bV
+bV
+bV
+bV
+bV
+bV
+bV
+bV
+bV
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+FT
+Yk
 Oh
 Oh
 Oh
@@ -25171,29 +26140,29 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+bV
+bV
+ev
+El
+El
+El
+ev
+Sz
+Sz
+bV
+bV
+bV
+bV
+bV
+bV
 Oh
 Oh
 Oh
@@ -25365,30 +26334,30 @@ dq
 dq
 dq
 dq
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+bV
+ev
+BE
+BE
+BE
+ev
 Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
+bV
+bV
+ev
+ev
+ev
+ev
+bV
+bV
 Oh
 Oh
 Oh
@@ -25559,31 +26528,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+ev
+El
+El
+El
+ev
+bV
+bV
+ev
+ev
+ev
+ev
+ev
+ev
+bV
+bV
 Oh
 Oh
 Oh
@@ -25753,31 +26722,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+ev
+El
+El
+El
+ev
+bV
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -25947,31 +26916,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+ev
+El
+El
+El
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -26141,31 +27110,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+ev
+BE
+BE
+BE
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -26335,31 +27304,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+ev
+BE
+BE
+BE
+ev
+bV
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -26529,31 +27498,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+ev
+El
+El
+El
+ev
+bV
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -26723,31 +27692,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+bV
+bV
+ev
+BE
+BE
+BE
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -26917,31 +27886,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+bV
+hv
+ev
+El
+El
+El
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -27111,31 +28080,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+bV
+hv
+ev
+El
+El
+El
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -27305,31 +28274,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+bV
+bV
+ev
+BE
+BE
+BE
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -27499,31 +28468,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+ev
+BE
+BE
+BE
+ev
+bV
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -27693,31 +28662,31 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+ev
+El
+El
+El
+ev
+bV
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -27886,32 +28855,32 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+ev
+BE
+BE
+BE
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -28079,33 +29048,33 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+ev
+El
+El
+El
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -28273,33 +29242,33 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+ev
+El
+El
+El
+ev
+bV
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+ev
+bV
 Oh
 Oh
 Oh
@@ -28467,33 +29436,33 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+ev
+El
+El
+El
+ev
+bV
+bV
+ev
+ev
+ev
+ev
+ev
+ev
+bV
+bV
 Oh
 Oh
 Oh
@@ -28661,32 +29630,32 @@ dq
 dq
 dq
 dq
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+bV
+ev
+BE
+BE
+BE
+ev
 Oh
-Oh
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
-Oh
+bV
+bV
+ev
+ev
+ev
+ev
+bV
+bV
 Oh
 Oh
 Oh
@@ -28854,32 +29823,32 @@ dq
 dq
 dq
 dq
-Oh
-Oh
-Oh
-Oh
-Oh
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-zf
-Oh
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+xU
+bV
+bV
+ev
+BE
+BE
+BE
+ev
+Sz
+Sz
+bV
+bV
+bV
+bV
+bV
+bV
 Oh
 Oh
 Oh
@@ -29048,24 +30017,24 @@ dq
 dq
 dq
 dq
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+mb
+bV
+bV
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -29242,24 +30211,24 @@ dq
 dq
 dq
 dq
+bV
+bV
+bV
+bV
+bV
+bV
+bV
+bV
+bV
+bV
+bV
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -29449,11 +30418,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -29643,11 +30612,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -29837,11 +30806,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -30031,11 +31000,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -30225,11 +31194,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -30419,11 +31388,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -30613,11 +31582,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -30807,11 +31776,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -31001,11 +31970,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+ev
+El
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -31195,11 +32164,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -31389,11 +32358,11 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+BE
+BE
+BE
+ev
 Oh
 Oh
 Oh
@@ -31546,9 +32515,9 @@ dq
 dq
 dq
 dq
-gL
-gL
-gL
+ev
+ev
+ev
 Sz
 Sz
 Sz
@@ -31584,10 +32553,10 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+Sz
+El
+El
+ev
 Oh
 Oh
 Oh
@@ -31737,12 +32706,12 @@ dq
 dq
 dq
 dq
-gL
-gL
-gL
-gL
-gL
-gL
+ev
+ev
+ev
+ev
+ev
+ev
 Sz
 Oh
 Oh
@@ -31778,10 +32747,10 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
+AF
+AF
+BE
+ev
 Oh
 Oh
 Oh
@@ -31930,13 +32899,13 @@ cf
 dq
 dq
 dq
-gL
-gL
-gL
-gL
-gL
-gL
-gL
+ev
+ev
+ev
+ev
+ev
+ev
+ev
 Sz
 Oh
 Oh
@@ -31972,10 +32941,10 @@ Oh
 Oh
 Oh
 Oh
+Sz
 Oh
-Oh
-Oh
-Oh
+Sz
+ev
 Oh
 Oh
 Oh
@@ -32126,11 +33095,11 @@ dq
 dq
 dq
 dq
-gL
-gL
-gL
-gL
-gL
+ev
+ev
+ev
+ev
+ev
 Sz
 Oh
 Oh
@@ -32166,10 +33135,10 @@ Oh
 Oh
 Oh
 Oh
+Sz
 Oh
-Oh
-Oh
-Oh
+Sz
+ev
 Oh
 Oh
 Oh
@@ -32319,12 +33288,12 @@ dq
 dq
 dq
 dq
-gL
-gL
-gL
-gL
-gL
-gL
+ev
+ev
+ev
+ev
+ev
+ev
 Sz
 Oh
 Oh
@@ -32360,10 +33329,10 @@ Oh
 Oh
 Oh
 Oh
+Sz
 Oh
 Oh
-Oh
-Oh
+Sz
 Oh
 Oh
 Oh
@@ -32514,11 +33483,11 @@ dq
 dq
 lQ
 dq
-gL
-gL
-gL
-gL
-gL
+ev
+ev
+ev
+ev
+ev
 Sz
 Oh
 Oh
@@ -32557,7 +33526,7 @@ Oh
 Oh
 Oh
 Oh
-Oh
+Sz
 Oh
 Oh
 Oh
@@ -35658,7 +36627,7 @@ Oh
 Oh
 Oh
 Oh
-kC
+Oh
 Oh
 Oh
 Oh

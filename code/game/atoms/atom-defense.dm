@@ -13,6 +13,14 @@
 /atom/proc/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return FALSE
 
+/**
+ * Checks if we should be targetable by a throw impact
+ * * This is for explicit target impacts when something is in our turf but not impacting on cross.
+ *   Crossed impacts will ignore this entirely, meaning density / blockage implies targetability.
+ */
+/atom/proc/is_throw_explicit_targetable(datum/thrownthing/throw_datum)
+	return FALSE
+
 //* External API / Damage Receiving *//
 
 /**
@@ -342,17 +350,25 @@
 		return
 	return P.resolve_impact_sfx(get_combat_fx_classifier(ATTACK_TYPE_PROJECTILE, P, bullet_act_args[BULLET_ACT_ARG_ZONE]), src)
 
-/atom/proc/hitsound_throwhit(obj/item/I)
-	. = I.attacksound_override(src, ATTACK_TYPE_THROWN)
+/atom/proc/hitsound_throwhit(atom/movable/impacting)
+	var/resolved_damage_type = DAMAGE_TYPE_BRUTE
+	var/resolved_damage_mode = NONE
+	var/resolved_impacting_attack_sound
+	if(isitem(impacting))
+		var/obj/item/casted_item = impacting
+		resolved_damage_type = casted_item.damage_type
+		resolved_damage_mode = casted_item.damage_mode
+		resolved_impacting_attack_sound = casted_item.attack_sound
+		. = casted_item.attacksound_override(src, ATTACK_TYPE_THROWN)
 	if(!isnull(.))
 		return
-	. = hitsound_override(I.damage_type, I.damage_mode, ATTACK_TYPE_THROWN, I)
+	. = hitsound_override(resolved_damage_type, resolved_damage_mode, ATTACK_TYPE_THROWN, impacting)
 	if(.)
 		return
-	. = (I.damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute)  || I.attack_sound
+	. = (resolved_damage_type == DAMAGE_TYPE_BURN? hit_sound_burn : hit_sound_brute) || resolved_impacting_attack_sound
 	if(.)
 		return
-	switch(I.damage_type)
+	switch(resolved_damage_type)
 		if(DAMAGE_TYPE_BRUTE)
 			return "swing_hit"
 		if(DAMAGE_TYPE_BURN)

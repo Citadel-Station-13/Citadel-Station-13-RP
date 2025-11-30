@@ -1,4 +1,5 @@
-root: true
+﻿root: true
+extends: prettier
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: 2020
@@ -13,9 +14,10 @@ plugins:
   - sonarjs
   - react
   - unused-imports
+  - simple-import-sort
 settings:
   react:
-    version: '16.10'
+    version: '19.1'
 rules:
   ## Possible Errors
   ## ----------------------------------------
@@ -763,3 +765,6 @@ rules:
   ## Prevents the use of unused imports.
   ## This could be done by enabling no-unused-vars, but we're doing this for now
   unused-imports/no-unused-imports: error
+  ## https://github.com/lydell/eslint-plugin-simple-import-sort/
+  simple-import-sort/imports: error
+  simple-import-sort/exports: error

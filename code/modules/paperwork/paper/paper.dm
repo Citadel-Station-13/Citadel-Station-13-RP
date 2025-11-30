@@ -15,6 +15,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	throw_force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_range = 1
@@ -425,6 +426,8 @@
 			updateinfolinks()
 
 		update_space(t)
+
+		playsound(src, pick('sound/items/pen1.ogg','sound/items/pen2.ogg'), 5)
 
 		SSassets.send_asset_pack(usr.client, /datum/asset_pack/simple/logos)
 		usr.client.asset_cache_flush_browse_queue()

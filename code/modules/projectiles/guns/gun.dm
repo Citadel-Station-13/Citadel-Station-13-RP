@@ -6,6 +6,8 @@
  * todo: /obj/item/gun/projectile vs /obj/item/gun/launcher,
  *       instead of have projectile be on /obj/item/gun
  *
+ * TODO: screentips - alt click is safety
+ *
  * ## Hotkey Priority
  *
  * The usable semantic hotkeys for guns are: Z, Spacebar, F, G.
@@ -48,6 +50,7 @@
 	item_state = "gun"
 	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_ARMOR
 	materials_base = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS
 	w_class = WEIGHT_CLASS_NORMAL
@@ -352,7 +355,8 @@
 
 /obj/item/gun/Destroy()
 	QDEL_NULL(pin)
-	QDEL_LIST(attachments)
+	QDEL_LAZYLIST(attachments)
+	QDEL_LAZYLIST(modular_components)
 	return ..()
 
 /obj/item/gun/examine(mob/user, dist)
@@ -430,7 +434,7 @@
 	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		return
 
-	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
+	if(user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
 		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
 		return
 
@@ -469,6 +473,15 @@
 		PreFire(clickchain.target, user) //They're using the new gun system, locate what they're aiming at.
 		return CLICKCHAIN_DID_SOMETHING
 	// end
+
+	if(check_safety())
+		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
+		//will reflexively do it anyway
+		if(clickchain.using_intent == INTENT_HARM && prob(50))
+			toggle_safety(clickchain.performer)
+		else
+			handle_click_safety(clickchain.performer)
+			return
 
 	return handle_clickchain_fire(clickchain, clickchain_flags)
 
@@ -735,14 +748,22 @@
 /obj/item/gun/proc/ensure_firemodes_owned()
 	if(!is_typelist(NAMEOF(src, firemodes), firemodes))
 		return
+	var/at_index = firemodes.Find(firemode)
 	firemodes = deep_clone_list(firemodes)
+	if(at_index)
+		set_firemode(firemodes[at_index], TRUE)
+	else if(firemodes)
+		set_firemode(firemodes[1], TRUE)
 
 //* Interaction *//
 
-/obj/item/gun/CtrlClick(mob/user)
+/obj/item/gun/on_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
-	if(user.is_holding(src))
-		toggle_safety(user)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(clickchain.performer.is_holding(src))
+		toggle_safety(clickchain.performer)
+		return . | CLICKCHAIN_DID_SOMETHING
 
 //* Rendering *//
 

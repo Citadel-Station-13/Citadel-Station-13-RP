@@ -14,6 +14,7 @@
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
 	var/spray_particles = 3
 	var/spray_amount = 10	//units of liquid per particle
@@ -23,17 +24,19 @@
 	var/sprite_name = "fire_extinguisher"
 
 /obj/item/extinguisher/mini
-	name = "fire extinguisher"
+	name = "compact fire extinguisher"
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
 	icon_state = "miniFE0"
 	item_state = "miniFE"
 	attack_sound = null	//it is much lighter, after all.
 	throw_force = 2
+	materials_base = list(MAT_PLASTIC = 90)
 	w_class = WEIGHT_CLASS_SMALL
 	damage_force = 3.0
 	max_water = 150
 	spray_particles = 3
 	sprite_name = "miniFE"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 /obj/item/extinguisher/mini/plasman
 	name = "emergency phoronoid extinguisher"

@@ -7,6 +7,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
 	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	seal_delay = 1
+	control_overridden = TRUE //c:
 	var/mob/living/carbon/human/myprotean
 	initial_modules = list(
 		/obj/item/hardsuit_module/power_sink,
@@ -66,4 +67,3 @@
 	desc = "A body-hugging mass of nanomachines."
 	can_breach = 0
 	species_restricted = null
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/bluespace_radio)
