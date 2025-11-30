@@ -15,6 +15,7 @@
 
 
 /atom/movable/render/orbital_deployment_telegraph/proc/scale_to_packaged(width, height)
+
 /atom/movable/render/orbital_deployment_telegraph/proc/animation()
 
 /atom/movable/render/orbital_deployment_telegraph/proc/yell_at_everyone(message)

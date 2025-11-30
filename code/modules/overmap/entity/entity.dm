@@ -16,6 +16,7 @@
 	pixel_movement = TRUE
 	animate_movement = NONE
 	glide_size = 128
+	// always slide and do not jump
 	step_size = INFINITY
 	uses_bounds_overlay = TRUE
 

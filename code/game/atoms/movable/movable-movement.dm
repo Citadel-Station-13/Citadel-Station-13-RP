@@ -388,7 +388,7 @@
  * Do not do anything that will re-move the atom, or bad things happen.
  * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
  *
- * todo: old_locs is not actually real used right now
+ * todo: old_locs is not actually really used right now
  * todo: momentum_change is not actually used right now
  *
  * @params

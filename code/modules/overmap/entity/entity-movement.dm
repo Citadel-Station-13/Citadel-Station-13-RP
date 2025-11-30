@@ -7,30 +7,46 @@
 // the _p stands for pixel movement, or pixloc, or perhaps perilous
 
 /obj/overmap/entity/proc/move_p(pixloc/dest)
+	var/atom/old_loc = loc
+	Move(dest)
+	var/atom/new_loc = loc
+	if(old_loc != new_loc)
+		Moved(old_loc, NONE, FALSE, null, null)
 
 /obj/overmap/entity/proc/step_p(vector/offset)
+	var/atom/old_loc = loc
 	Move(pixloc + offset)
+	var/atom/new_loc = loc
 
 /**
  * Will call side effects.
  */
 /obj/overmap/entity/proc/force_move_p(pixloc/dest)
-
-	move_p_impl(dest)
+	var/atom/old_loc = loc
+	force_move_p_impl(dest)
+	var/atom/new_loc = loc
+	if(old_loc != new_loc)
+		Moved(old_loc, NONE, FALSE, null, null)
 
 /**
  * Will call side effects.
  */
 /obj/overmap/entity/proc/force_move_p_null()
-
-	move_p_impl(null)
+	var/atom/old_loc = loc
+	force_move_p_impl(null)
+	var/atom/new_loc = loc
+	if(old_loc != new_loc)
+		Moved(old_loc, NONE, FALSE, null, null)
 
 /**
  * Will not call side effects.
  */
 /obj/overmap/entity/proc/force_move_p_abstract(pixloc/dest)
-
-	move_p_impl(dest)
+	var/atom/old_loc = loc
+	force_move_p_impl(dest)
+	var/atom/new_loc = loc
+	if(old_loc != new_loc)
+		Moved(old_loc, NONE, FALSE, null, null)
 
 /**
  * Will not call side effects.
