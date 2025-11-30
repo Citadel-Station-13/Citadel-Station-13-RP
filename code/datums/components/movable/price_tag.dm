@@ -36,3 +36,13 @@
 		AddComponent(/datum/component/price_tag, price)
 	else
 		price_tag.price = price
+
+/**
+ * @return TRUE if something was deleted, FALSE otherwise
+ */
+/atom/movable/proc/delete_price_tag()
+	var/datum/component/price_tag/price_tag = get_price_tag()
+	if(price_tag)
+		qdel(price_tag)
+		return TRUE
+	return FALSE

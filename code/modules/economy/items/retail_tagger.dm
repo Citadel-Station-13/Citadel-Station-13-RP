@@ -9,6 +9,8 @@
 
 	/// are we in auto mode?
 	var/automatic_mode = FALSE
+	/// are we in removal mode?
+	var/remove_mode = FALSE
 
 	/// manual mode: price to set
 	/// * set to 0 or null to remove tags
@@ -23,6 +25,9 @@
 		return
 
 	switch(action)
+		if("toggleRemove")
+			remove_mode = !!params["value"]
+			return TRUE
 		if("toggleAuto")
 			automatic_mode = !!params["value"]
 			return TRUE
@@ -59,12 +64,26 @@
 	// no moca you can't have your 2.51$ catgirl gimmick
 	if(iscarbon(target))
 		return
-	tag_entity(target, e_args)
+	if(remove_mode)
+		tag_remove_entity(target, e_args)
+	else
+		tag_entity(target, e_args)
 	return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/retail_tagger/proc/tag_entity(atom/movable/target, datum/event_args/actor/actor, silent)
 	if(!istype(target))
 		return FALSE
+
+	var/datum/component/price_tag/price_tag = target.get_price_tag()
+	#warn impl
+
+	return TRUE
+
+/obj/item/retail_tagger/proc/tag_remove_entity(atom/movable/target, datum/event_args/actor/actor, silent)
+	if(!istype(target))
+		return FALSE
+
+	var/datum/component/price_tag/price_tag = target.get_price_tag()
 	#warn impl
 
 	return TRUE

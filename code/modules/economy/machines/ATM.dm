@@ -2,14 +2,8 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 // todo: rewrite this from scratch
 /obj/machinery/atm
-	name = "Automatic Teller Machine"
-	desc = "For all your monetary needs!"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "atm"
-	anchored = TRUE
-	use_power = USE_POWER_IDLE
-	idle_power_usage = 10
-	circuit =  /obj/item/circuitboard/atm
 	/// can accept deposits using these payment types
 	var/deposit_payment_types = PAYMENT_TYPE_CASH | PAYMENT_TYPE_HOLOCHIPS | PAYMENT_TYPE_CHARGE_CARD
 	var/datum/economy_account/authenticated_account
@@ -23,13 +17,6 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 	var/editing_security_level = 0
 	var/account_security_level = 0
 	var/datum/effect_system/spark_spread/spark_system
-
-/obj/machinery/atm/Initialize(mapload)
-	. = ..()
-	machine_id = "ATM Terminal #[GLOB.num_financial_terminals++]"
-	spark_system = new /datum/effect_system/spark_spread
-	spark_system.set_up(5, 0, src)
-	spark_system.attach(src)
 
 /obj/machinery/atm/process(delta_time)
 	if(machine_stat & NOPOWER)

@@ -8,10 +8,6 @@
 	//*                      book-keeping                        *//
 	//* these are handled by internals and may not be falsified. *//
 
-	/// peer account number, if any
-	/// * only sourced / point-to-point / transfer transactions have this set
-	/// * 'amount' will be withdrawan (and given if negative)
-	var/acct_num_peer
 	/// target account number, if any
 	/// * non point-to-point transactions / system transactions will always have
 	///   the target account as this!
@@ -19,6 +15,10 @@
 	#warn uhhh hmmm
 	#warn audit
 	var/acct_num_target
+	/// peer account number, if any
+	/// * only sourced / point-to-point / transfer transactions have this set
+	/// * 'amount' will be withdrawan (and given if negative)
+	var/acct_num_peer
 
 	/// balance change to target
 	/// * if the peer is specified, this is, by default, the opposite change of target!

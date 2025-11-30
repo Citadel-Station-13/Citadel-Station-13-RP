@@ -1,7 +1,7 @@
 /datum/prototype/role/job/station/pilot
 	id = JOB_ID_PILOT
 	title = "Pilot"
-	economy_payscale = /datum/role/job/station::economy_payscale * ECONOMY_PAYSCALE_JOB_DANGER
+	economy_payscale = /datum/prototype/role/job/station::economy_payscale * ECONOMY_PAYSCALE_JOB_DANGER
 	flag = PILOT
 	departments = list(DEPARTMENT_CIVILIAN)
 	department_flag = CIVILIAN

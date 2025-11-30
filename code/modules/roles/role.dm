@@ -7,12 +7,6 @@
 /datum/prototype/role
 	abstract_type = /datum/prototype/role
 
-	//* Basics *//
-
-	/// unique id
-	/// * must be globally unique, roles may be persistable!
-	var/id
-
 	//* Economy *//
 
 	/// starting money multiplier
@@ -78,11 +72,11 @@
 		var/list/nested_keys_maybe = economy_grant_account_details[key]
 		if(!nested_keys_maybe)
 			var/datum/economy_account/top_level = SSeconomy.resolve_keyed_account(key)
-			person.store_memory_of_economy_account(top_level, "[top_level.owner_name]")
+			person.store_memory_of_economy_account(top_level, "[top_level.fluff_owner_name]")
 		else
 			for(var/nested_key in nested_keys_maybe)
 				var/datum/economy_account/nested_account = SSeconomy.resolve_keyed_account(nested_key, key)
-				person.store_memory_of_economy_account(nested_account, "[nested_account.owner_name]")
+				person.store_memory_of_economy_account(nested_account, "[nested_account.fluff_owner_name]")
 
 /**
  * Get economy account datums someone should have access to.

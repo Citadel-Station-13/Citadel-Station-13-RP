@@ -58,6 +58,8 @@
 	/// purchase was successfully finished
 	var/state_purchase_completed = FALSE
 
+	var/sfx_transaction_success 'sound/machines/chime.ogg'
+
 /obj/item/retail_terminal/Initialize(mapload)
 	. = ..()
 	#warn get terminal id, bind to account if needed
@@ -97,18 +99,17 @@
 
 /obj/item/retail_terminal/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["accessPinAllowReset"] = access_pin_allow_reset
 	var/list/scanned_by_entity = list()
 	for(var/id in state_transaction_scanned_by_weakref)
 		var/datum/retail_terminal_entry/entry = state_transaction_scanned_by_weakref[id]
 		#warn impl
 	.["scannedEntityEntries"] = scanned_by_entity
-
 	var/list/scanned_by_key = list()
 	for(var/id in state_transaction_scanned_by_key)
 		var/datum/retail_terminal_entry/entry = state_transaction_scanned_by_key[id]
 		#warn impl
 	.["scannedKeyedEntries"] = scanned_by_key
-
 	var/list/custom_entries = list()
 	for(var/datum/retail_terminal_entry/entry as anything in state_transaction_custom_entries)
 		#warn impl
@@ -136,8 +137,25 @@
 		return
 	switch(action)
 		if("lock")
+			if(locked)
+				return TRUE
+			if(!access_pin)
+				return TRUE
+			locked = TRUE
+			return TRUE
 		if("unlock")
+			if(!locked)
+				return TRUE
 			var/pin = params["pin"]
+			if(pin != access_pin)
+				return TRUE
+			locked = FALSE
+			return TRUE
+		if("resetPin")
+			if(!access_pin_allow_reset)
+				return TRUE
+			#warn impl, reset state
+			return TRUE
 		if("setTransactionPurpose")
 			var/purpose = params["purpose"]
 		if("toggleScanner")
@@ -176,9 +194,29 @@
 
 	//* storage *//
 
+	/// register opened?
+	var/cash_open = FALSE
 	/// amount of Thaler stored
 	var/cash_stored = 0
 
+/obj/item/retail_terminal/cash_register/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("Alt-click while adjacent to access the cash register.")
+
+/obj/item/retail_terminal/cash_register/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(cash_open)
+		.["close-register"] = create_context_menu_tuple("close register", src, 1, MOBILITY_CAN_USE, TRUE)
+	else
+		.["open-register"] = create_context_menu_tuple("open register", src, 1, MOBILITY_CAN_USE, TRUE)
+
+/obj/item/retail_terminal/cash_register/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("open-register")
+		if("close-register")
 
 /obj/item/retail_terminal/cash_register/proc/can_access_cash_drawer_from(turf/tile)
 	return tile == loc || get_dir(src, tile) == dir

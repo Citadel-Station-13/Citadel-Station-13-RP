@@ -324,7 +324,7 @@
 
 	// TODO: job refactor
 
-/datum/role/job/get_economic_payscale()
+/datum/prototype/role/job/get_economic_payscale()
 	var/highest_department_multiplier = null
 	for(var/department in departments)
 		var/datum/department/maybe_department = SSjob.department_datums[department]
