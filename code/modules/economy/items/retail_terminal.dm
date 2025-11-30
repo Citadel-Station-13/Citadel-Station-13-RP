@@ -58,7 +58,7 @@
 	/// purchase was successfully finished
 	var/state_purchase_completed = FALSE
 
-	var/sfx_transaction_success 'sound/machines/chime.ogg'
+	var/sfx_transaction_success = 'sound/machines/chime.ogg'
 
 /obj/item/retail_terminal/Initialize(mapload)
 	. = ..()

@@ -1,5 +1,3 @@
-GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'))
-
 // todo: rewrite this from scratch
 /obj/machinery/atm
 	icon = 'icons/obj/terminals.dmi'
@@ -7,33 +5,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 	/// can accept deposits using these payment types
 	var/deposit_payment_types = PAYMENT_TYPE_CASH | PAYMENT_TYPE_HOLOCHIPS | PAYMENT_TYPE_CHARGE_CARD
 	var/datum/economy_account/authenticated_account
-	var/number_incorrect_tries = 0
-	var/previous_account_number = 0
-	var/max_pin_attempts = 3
-	var/ticks_left_locked_down = 0
-	var/ticks_left_timeout = 0
-	var/machine_id = ""
-	var/obj/item/card/id/held_card
-	var/editing_security_level = 0
-	var/account_security_level = 0
 	var/datum/effect_system/spark_spread/spark_system
-
-/obj/machinery/atm/process(delta_time)
-	if(machine_stat & NOPOWER)
-		return
-
-	if(ticks_left_timeout > 0)
-		ticks_left_timeout--
-		if(ticks_left_timeout <= 0)
-			authenticated_account = null
-	if(ticks_left_locked_down > 0)
-		ticks_left_locked_down--
-		if(ticks_left_locked_down <= 0)
-			number_incorrect_tries = 0
-
-	for(var/obj/item/spacecash/S in src)
-		S.loc = src.loc
-		playsound(loc, pick(GLOB.atm_sounds), 50, 1)
 
 /obj/machinery/atm/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
@@ -173,17 +145,6 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 			R.info += "<i>Balance:</i> $[authenticated_account.balance]<br>"
 			R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 			R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
-
-			//stamp the paper
-			var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-			stampoverlay.icon_state = "paper_stamp-cent"
-			if(!R.stamped)
-				R.stamped = new
-			R.stamped += /obj/item/stamp
-			R.add_overlay(stampoverlay)
-			R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
-
-			playsound(loc, pick(GLOB.atm_sounds), 50, 1)
 		if("transfer")
 			if(!authenticated_account)
 				return
@@ -214,27 +175,6 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 				authenticated_account.transaction_log.Add(T)
 			else
 				to_chat(user, "[icon2html(thing = src, target = user)]<span class='warning'>Funds transfer failed.</span>")
-			// /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
-			// 	for(var/datum/economy_account/D in GLOB.all_money_accounts)
-			// 		if(D.account_id == attempt_account_number && !D.suspended)
-			// 			D.money += amount
-
-			// 			//create a transaction log entry
-			// 			var/datum/economy_transaction/T = new()
-			// 			T.target_name = source_name
-			// 			T.purpose = purpose
-			// 			if(amount < 0)
-			// 				T.amount = "([amount])"
-			// 			else
-			// 				T.amount = "[amount]"
-			// 			T.date = GLOB.current_date_string
-			// 			T.time = stationtime2text()
-			// 			T.source_terminal = terminal_id
-			// 			D.transaction_log.Add(T)
-
-			// 			return 1
-
-			// 	return 0
 		if("change_security_level")
 			if(!authenticated_account)
 				return
@@ -299,26 +239,9 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 				R.info += "<td>[T.source_terminal]</td>"
 				R.info += "</tr>"
 			R.info += "</table>"
-
-			//stamp the paper
-			var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-			stampoverlay.icon_state = "paper_stamp-cent"
-			if(!R.stamped)
-				R.stamped = new
-			R.stamped += /obj/item/stamp
-			R.add_overlay(stampoverlay)
-			R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
-
-			playsound(loc, pick(GLOB.atm_sounds), 50, 1)
 		if("logout")
 			authenticated_account = null
 			account_security_level = 0
-
-/obj/machinery/atm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(istype(user, /mob/living/silicon))
-		to_chat (user, SPAN_WARNING("A firewall prevents you from interfacing with this device!"))
-		return
-	ui_interact(user)
 
 //stolen wholesale and then edited a bit from newscasters, which are awesome and by Agouri
 /obj/machinery/atm/proc/scan_user(mob/living/carbon/human/human_user as mob)
@@ -339,7 +262,6 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 	if(ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(held_card)
 	held_card = null
-
 
 /obj/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
 	var/obj/item/charge_card/E = new /obj/item/charge_card(loc)

@@ -89,6 +89,7 @@
 /datum/economy_transaction/proc/execute_system_transaction(datum/economy_account/account)
 	#warn impl
 	#warn set date / time to 'now'
+	global.event_logger.log__economy_transaction(src)
 
 /**
  * Executes as a transfer from one account to another
@@ -98,3 +99,4 @@
 /datum/economy_transaction/proc/execute_transfer_transaction(datum/economy_account/source_account, datum/economy_account/peer_account)
 	#warn impl
 	#warn set date / time to 'now'
+	global.event_logger.log__economy_transaction(src)

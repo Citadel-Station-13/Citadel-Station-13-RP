@@ -129,5 +129,11 @@
  *     timestamp = html | null,
  *   }[],
  */
- /datum/economy_account/proc/ui_audit_logs(page, per_page = 10)
+/datum/economy_account/proc/ui_audit_logs(page, per_page = 10)
+	var/list/assembled_logs
+	return list(
+		"pages",
+		"page",
+		"logs" = assembled_logs,
+	)
 	#warn impl
