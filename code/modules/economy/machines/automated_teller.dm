@@ -25,14 +25,11 @@
 	var/obj/item/card/id/auth_inserted_id
 	/// timerid of logout timer
 	var/auth_logout_timerid
-	/// last time 'activity' existed
-	/// * any open UI by someone physically able to Adjacent() to us counts as activity
-	var/auth_last_activity
 
 	var/auth_fail_current = 0
 	var/auth_fail_decay_time = 3 SECONDS
 	var/auth_fail_lockout_threshold = 5
-	var/auth_fail_lockout_time = 20 SECONDNS
+	var/auth_fail_lockout_time = 20 SECONDS
 	var/auth_fail_lockout = FALSE
 
 	var/sfx_emit_cash = 'sound/items/polaroid1.ogg'
@@ -44,6 +41,20 @@
 	#warn terminal_id
 
 #warn impl
+
+/obj/machinery/automated_teller/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(istype(using, /obj/item/card))
+
+/obj/machinery/automated_teller/power_change()
+	. = ..()
+	if(!powered())
+		if(auth_inserted_id)
+			visible_message(SPAN_WARNING("[src] beeps once as it ejects [auth_inserted_id]."))
+			auth_inserted_id.forceMove(drop_location())
+			auth_inserted_id = null
 
 /obj/machinery/automated_teller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -102,6 +113,7 @@
 			else
 				auth_inserted_id.forceMove(drop_location())
 			auth_inserted_id = null
+			auth_logout()
 			return TRUE
 		if("auth")
 			if(auth_logged_in_account)
@@ -127,11 +139,21 @@
 				return TRUE
 			var/obj/item/paper/printed = print_account_statement()
 
-/obj/machinery/automated_teller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
+/obj/machinery/automated_teller/proc/spawn_cash(amount, mob/put_in_hands) as /obj/item/spacecash
+	var/obj/item/spacecash/created = new(put_in_hands, amount)
+	if(put_in_hands)
+		put_in_hands.put_in_hands_or_drop(created)
+	else
+		created.forceMove(drop_location())
+	return created
 
-/obj/machinery/automated_teller/emag_act(remaining_charges, mob/user, emag_source)
-	. = ..()
+/obj/machinery/automated_teller/proc/spawn_charge_card(amount, mob/put_in_hands) as /obj/item/charge_card
+	var/obj/item/charge_card/created = new(put_in_hands, amount)
+	if(put_in_hands)
+		put_in_hands.put_in_hands_or_drop(created)
+	else
+		created.forceMove(drop_location())
+	return created
 
 /obj/machinery/automated_teller/ui_status(mob/user, datum/ui_state/state)
 	// TODO: don't entirely forbid silicons, let them touch if adjacent? or maybe with a hack?
@@ -139,11 +161,21 @@
 		return UI_UPDATE
 	return ..()
 
-/obj/machinery/automated_teller/proc/print_account_balance() as /obj/item/paper
-	var/obj/item/paper/created = new
+/obj/machinery/automated_teller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "ATM")
+		ui.open()
 
-	var/list/c_header = do_get_account_statement_header()
-	var/list/c_status = do_get_account_statement_status()
+/obj/machinery/automated_teller/proc/print_account_balance(datum/economy_account/account) as /obj/item/paper
+	var/obj/item/paper/created = new
+	var/name_append = account.fluff_owner_name ? "- [account.fluff_owner_name]" : ""
+	created.name = "Account Balance[name_append]"
+
+	var/list/info = list()
+	#warn impl
+	created.info = info
 
 	// TODO: generalize / refactor this
 	var/image/stamp_overlay = image('icons/obj/bureaucracy.dmi', "paper_stamp-cent")
@@ -154,12 +186,15 @@
 	created.stamps = "<hr><i>This paper has been stamped by the Automated Teller Machine.</i>"
 	return created
 
-/obj/machinery/automated_teller/proc/print_account_statement() as /obj/item/paper
+/obj/machinery/automated_teller/proc/print_account_statement(datum/economy_account/account) as /obj/item/paper
 	var/obj/item/paper/created = new
+	var/name_append = account.fluff_owner_name ? "- [account.fluff_owner_name]" : ""
+	created.name = "Account Statement[name_append]"
 
-	var/list/c_header = do_get_account_statement_header()
-	var/list/c_status = do_get_account_statement_status()
-	var/list/c_transactions = do_get_account_statement_transactions()
+	var/list/info = list()
+	#warn impl
+	info += account.print_html_account_transactions()
+	created.info = info
 
 	// TODO: generalize / refactor this
 	var/image/stamp_overlay = image('icons/obj/bureaucracy.dmi', "paper_stamp-cent")
@@ -170,12 +205,35 @@
 	created.stamps = "<hr><i>This paper has been stamped by the Automated Teller Machine.</i>"
 	return created
 
-/obj/machinery/automated_teller/proc/do_get_account_statement_header() as /list
-	. = list()
-	. += ""
+/obj/machinery/automated_teller/proc/has_any_auth_activity()
+	. = FALSE
+	for(var/datum/tgui/tgui in open_uis)
+		if(tgui.status <= UI_UPDATE)
+			continue
+		// interactive ones are considered activity
+		return TRUE
 
-/obj/machinery/automated_teller/proc/do_get_account_statement_status() as /list
-	. = list()
-	. += ""
+/obj/machinery/automated_teller/proc/reconsider_auth_logout_timer()
+	var/has_any_activity = has_any_auth_activity()
 
-/obj/machinery/automated_teller/proc/do_get_account_statement_transactions() as /list
+/obj/machinery/automated_teller/proc/timer_logout()
+	if(!auth_logged_in_account)
+		return
+	auth_logout()
+	#warn yell
+
+/obj/machinery/automated_teller/proc/auth_login(datum/economy_account/account, datum/event_args/actor/actor)
+	if(auth_logged_in_account)
+		if(auth_logged_in_account == account)
+			return
+		auth_logout()
+	auth_logged_in_account = account
+
+/obj/machinery/automated_teller/proc/auth_fail(datum/economy_account/account, datum/event_args/actor/actor)
+
+/obj/machinery/automated_teller/proc/auth_logout()
+	auth_logged_in_account = null
+
+#warn impl
+
+// TODO: readd emagging / similar

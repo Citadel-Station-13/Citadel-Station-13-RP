@@ -15,9 +15,6 @@ SUBSYSTEM_DEF(economy)
 	/// * account numbers are text-ified
 	/// todo: byond 516 alist()
 	var/list/account_lookup = list()
-	/// keyed accounts
-	/// * this is for global accounts, not factional accounts
-	var/list/keyed_accounts = list()
 
 	/// fallback vendor account
 	var/datum/economy_account/fallback_vendor_account
@@ -46,22 +43,17 @@ SUBSYSTEM_DEF(economy)
  * @params
  * * id - the key of the account
  * * faction - the faction to use, if any; a faction, id, or path are all valid.
- *             a `/datum/world_faction`'s id is also valid here, as if it has an economy faction,
- *             it'll have the same ID.
  */
 /datum/controller/subsystem/economy/proc/resolve_keyed_account(id, datum/economy_faction/faction) as /datum/economy_account
 	RETURN_TYPE(/datum/economy_account)
-	if(faction)
-		var/datum/economy_faction/resolved_faction
-		if(istext(faction))
-			resolved_faction = faction_lookup[faction]
-		else if(ispath(faction))
-			resolved_faction = faction_lookup[initial(faction)]
-		else
-			resolved_faction = faction
-		return faction?.keyed_accounts[id]
+	var/datum/economy_faction/resolved_faction
+	if(istext(faction))
+		resolved_faction = faction_lookup[faction]
+	else if(ispath(faction))
+		resolved_faction = faction_lookup[initial(faction)]
 	else
-		return keyed_accounts[id]
+		resolved_faction = faction
+	return faction?.keyed_accounts[id]
 
 /**
  * legacy: get the vendor account to send stuff to if a vendor doesn't have a specific
@@ -95,8 +87,12 @@ SUBSYSTEM_DEF(economy)
 /**
  * Allocates an account.
  *
- * **This is the only place where accounts should be created.**
- * **You must use named parameters.**
+ * * **This is the only place where accounts should be created.**
+ * * **You must use named parameters.**
+ *
+ * @params
+ * * for_faction - (optional) for a given faction.
+ * * with_key - (optional) with a given key for that faction, or if factionless, a global key.
  *
  * @return /datum/economy_account, or null on an error
  */

@@ -4,13 +4,6 @@
 /**
  * Economy holder for factions. More generically, this is just a way to
  * group different accounts. Access to bank uplinks is determined by faction.
- *
- * * These are spawned by a `/datum/world_faction`
- * * These always have the same ID as their parent world faction
- * * The system technically allows for unbound economy factions
- *   that aren't linked to a world faction, but you must take extreme
- *   care to not cause an ID conflict. Failure to do so will result in
- *   undefined behavior.
  */
 /datum/economy_faction
 	/// our ID
@@ -54,6 +47,8 @@
 /**
  * Gets accounts an uplink can access.
  *
+ * * Do not modify passed back list!
+ *
  * todo: access constraints, should that be here or in the uplink?
  */
 /datum/economy_faction/proc/uplink_get_managed_accounts() as /list
@@ -62,7 +57,9 @@
 
 /**
  * Gets accounts an uplink can access that are root accounts to fund from / withdraw into
+ *
  * * This is stuff like station and department accounts
+ * * Do not modify passed back list!
  *
  * todo: access constraints, should that be here or in the uplink?
  */

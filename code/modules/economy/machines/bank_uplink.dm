@@ -12,6 +12,7 @@
 	var/terminal_id
 	/// inserted auth ID
 	var/obj/item/card/id/inserted_id
+
 	/// last time we printed a report
 	var/last_report_print
 	/// report print cooldown
@@ -20,6 +21,12 @@
 /obj/machinery/computer/bank_uplink/Initialize(mapload)
 	#warn terminal id; generate but also get it from circuit?
 	return ..()
+
+/obj/machinery/computer/bank_uplink/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(istype(using, /obj/item/card))
 
 /obj/machinery/computer/bank_uplink/proc/get_accessible_factions() as /list
 	RETURN_TYPE(/list)
@@ -141,6 +148,8 @@
 			var/fund_amount
 			var/fund_reason
 			#warn impl
+		if("deleteAccount")
+			#warn impl
 		if("suspendAccount")
 			if(!validated_target_account)
 				return TRUE
@@ -156,6 +165,17 @@
 				return TRUE
 			visible_message(SPAN_NOTICE("[src] spits out a small report. How neat."))
 			print_account_status(validated_target_account, drop_location())
+			return TRUE
+		if("printAccountAudit")
+			if(!try_invoke_print_cooldown())
+				return TRUE
+			if(!validated_target_account)
+				return TRUE
+			visible_message(SPAN_NOTICE("[src] spits out a small, securely packaged report. How neat."))
+			wrap_report(
+				print_account_audit(validated_target_account),
+				drop_location(),
+			)
 			return TRUE
 		if("printAccountAccess")
 			if(!try_invoke_print_cooldown())
@@ -199,6 +219,7 @@
 /obj/machinery/computer/bank_uplink/proc/ui_push_account_logs(datum/economy_account/account, page = 1)
 	push_ui_modules(updates = list(
 		"acct-log-[account.account_id]" = account.ui_audit_logs(page, 10),
+		"acct-log-page" = page,
 	))
 
 /obj/machinery/computer/bank_uplink/proc/ui_push_faction_accounts(datum/economy_faction/faction)
@@ -216,6 +237,33 @@
  * @return printed report
  */
 /obj/machinery/computer/bank_uplink/proc/print_account_status(datum/economy_account/account, atom/put_report_at)
+	var/obj/item/paper/printing_paper = new /obj/item/paper(put_report_at)
+	var/name_append = account.fluff_owner_name ? "- [account.fluff_owner_name]" : ""
+	printing_paper.name = "Account Status[name_append]"
+
+	var/list/info = list()
+	info += account.print_html_account_identity()
+	info += account.print_html_account_balance()
+	#warn impl
+	printing_paper.info = info
+
+	stamp_report(printing_paper)
+
+// todo: better printing, document datums, don't make custom strings every time
+/**
+ * @return printed report
+ */
+/obj/machinery/computer/bank_uplink/proc/print_account_audit(datum/economy_account/account, atom/put_report_at)
+	var/obj/item/paper/printing_paper = new /obj/item/paper(put_report_at)
+	var/name_append = account.fluff_owner_name ? "- [account.fluff_owner_name]" : ""
+	printing_paper.name = "Account Audit[name_append]"
+
+	var/list/info = list()
+	info += account.print_html_account_identity()
+	info += account.print_html_account_balance()
+	#warn impl
+	info += account.print_html_account_transactions()
+	printing_paper.info = info
 
 	stamp_report(printing_paper)
 
@@ -224,7 +272,11 @@
  * @return printed report
  */
 /obj/machinery/computer/bank_uplink/proc/print_account_access(datum/economy_account/account, atom/put_report_at)
+	var/obj/item/paper/printing_paper = new /obj/item/paper(put_report_at)
+	var/name_append = account.fluff_owner_name ? "- [account.fluff_owner_name]" : ""
+	printing_paper.name = "Account Credentials[name_append]"
 
+	#warn impl
 	stamp_report(printing_paper)
 
 // todo: better printing, document datums, don't make custom strings every time
@@ -233,17 +285,19 @@
  */
 /obj/machinery/computer/bank_uplink/proc/print_account_creation(datum/economy_account/account, atom/put_report_at)
 	var/obj/item/paper/printing_paper = new /obj/item/paper(put_report_at)
-	printing_paper.name = "Account Information - [account.owner_name]"
-	printing_paper.info = {"
-		<h1><center>Account Details (Confidential)</center></h1><hr>
-		<i>Account holder:</i> [account.owner_name]<br>
-		<i>Account number:</i> [account.account_id]<br>
-		<i>Account pin:</i> [account.security_passkey]<br>
+	var/name_append = account.fluff_owner_name ? "- [account.fluff_owner_name]" : ""
+	printing_paper.name = "Account Information[name_append]"
+	var/list/info = list()
+	info += "<h1><center>Account Details (Confidential)</center></h1><hr>"
+	info += account.print_html_account_identity()
+	info += account.print_html_account_authorization()
+	info += {"
 		<i>Starting balance:</i> $[account.balance]<br>
 		<i>Date / Time:</i> [SSeconomy.timestamp_now()]<br>
 		<i>Creation uplink ID:</i> #[terminal_id]<br>
 		<i>Authorizing individual:</i> [get_authorizing_name()]<br>
 	"}
+	printing_paper.info = info
 	stamp_report(printing_paper)
 
 /obj/machinery/computer/bank_uplink/proc/stamp_report(obj/item/paper/report)

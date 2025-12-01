@@ -6,8 +6,8 @@
 	icon = 'icons/obj/items.dmi'
 	name = "Coin"
 	icon_state = "coin"
-	damage_force = 0.0
-	throw_force = 0.0
+	damage_force = 0
+	throw_force = 0
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	var/string_attached

@@ -1,3 +1,4 @@
+// TODO: rename to /obj/item/cash
 /obj/item/spacecash
 	name = "0 Thaler"
 	desc = "It's worth 0 Thalers."
@@ -15,6 +16,11 @@
 
 	/// Amount of money this is.
 	var/worth = 0
+
+/obj/item/spacecash/Initialize(mapload, amount)
+	if(!isnull(amount))
+		worth = amount
+	return ..()
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))

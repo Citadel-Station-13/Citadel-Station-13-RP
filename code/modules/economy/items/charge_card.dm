@@ -8,8 +8,6 @@
 	drop_sound = 'sound/items/drop/card.ogg'
 	pickup_sound = 'sound/items/pickup/card.ogg'
 
-	/// stated owner name, if any
-	var/owner_name
 	/// balance remaining
 	var/balance = 0
 
@@ -22,7 +20,7 @@
 	. = ..()
 	if (!(user in view(2)) && user!=src.loc)
 		return
-	. += "<font color=#4F49AF>Charge card's owner: [owner_name]. Thalers remaining: [balance].</font>"
+	. += "<font color=#4F49AF>Thalers remaining: [balance].</font>"
 
 //* Economy *//
 

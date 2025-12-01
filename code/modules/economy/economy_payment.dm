@@ -84,6 +84,8 @@
  * Helper to make a transaction to execute against a source account,
  * run it, and set out variables.
  *
+ * * This is source account paying to the target.
+ *
  * @return TRUE if handled, FALSE on unknown error
  */
 /datum/economy_payment/proc/lazy_execute_against_account(datum/economy_account/source_account)

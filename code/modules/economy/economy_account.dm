@@ -15,6 +15,12 @@
 	#warn impl uniqueness
 	#warn audit access
 	var/account_id
+	/**
+	 * Is this a protected account?
+	 * * Protected accounts cannot be deleted by players.
+	 * * Anything created by the game automatically should probably be protected.
+	 */
+	var/protected = FALSE
 
 	//* Balance *//
 
@@ -28,7 +34,7 @@
 
 	/// our faction id, if we're part of a faction
 	var/faction_id
-	/// our id, if we're a keyed account for our factoin
+	/// our faction account key, if we're a keyed account for our factoin
 	var/faction_account_key
 
 	//* Logging *//
@@ -137,3 +143,44 @@
 		"logs" = assembled_logs,
 	)
 	#warn impl
+
+/datum/economy_account/proc/print_html_account_identity()
+	. = list()
+	. += "<i>Account ID:</i> [account_id]<br>"
+	if(fluff_owner_name)
+		. += "<i>Account Holder:</i> [fluff_owner_name]<br>"
+
+/datum/economy_account/proc/print_html_account_authorization()
+	. = list()
+	. += "<i>Account pin:</i> [security_passkey]<br>"
+	. += "<i>Account security:</i> [security_level]<br>""
+	. += "<i>Account locked:</i> [security_lock ? "Yes" : "No"]<br>"
+
+/datum/economy_account/proc/print_html_account_balance()
+	. = list()
+	. += "<i>Account balance:</i> [balance]<br>"
+
+/datum/economy_account/proc/print_html_account_transactions(limit = 100)
+	limit = clamp(limit, 0, 750)
+	. = list()
+	. += "<h3><center>Transaction Log</center></h3><hr>"
+	. += "<table border=1 style='width:100%'>"
+	. += "<tr>"
+	. += "<td>Timestamp</td>"
+	. += "<td>Terminal</td>"
+	. += "<td>Peer</td>"
+	. += "<td>Purpose</td>"
+	. += "<td>Amount</td>"
+	. += "</tr>"
+	for(var/datum/economy_account_log/log_entry as anything in audit_log)
+		. += "<tr>\
+		<td>[log_entry.audit_timestamp_as_unsafe_html]</td>\
+		<td>[log_entry.audit_terminal_as_unsafe_html]</td>\
+		<td>[log_entry.audit_peer_name_as_unsafe_html]</td>\
+		<td>[log_entry.audit_purpose_as_unsafe_html]</td>\
+		<td>[log_entry.audit_balance_change_as_unsafe_html]</td>\
+		</tr>"
+	if(audit_ephemeral_balance_accumulator)
+		. += "<tr><td></td><td></td><td></td><td>-- pending ephemeral transactions --</td><td>[audit_ephemeral_balance_accumulator]</td></tr>"
+	. += "</table>"
+

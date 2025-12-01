@@ -7,22 +7,6 @@
 	var/datum/economy_account/authenticated_account
 	var/datum/effect_system/spark_spread/spark_system
 
-/obj/machinery/atm/emag_act(var/remaining_charges, var/mob/user)
-	if(!emagged)
-		return
-
-	//Short out the machine, shoot sparks, spew money!
-	emagged = TRUE
-	spark_system.start()
-	spawn_money(rand(100,500),src.loc)
-	//We don't want to grief people by locking their id in an emagged ATM
-	release_held_id(user)
-
-	//Display a message to the user
-	var/response = pick("Initiating withdraw. Have a nice day!", "CRITICAL ERROR: Activating cash chamber panic siphon.","PIN Code accepted! Emptying account balance.", "Jackpot!")
-	to_chat(user, SPAN_WARNING("[icon2html(thing = src, target = user)] The [src] beeps: \"[response]\""))
-	return TRUE
-
 /obj/machinery/atm/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
@@ -81,21 +65,10 @@
 		passed_list["[transaction_num]"] = new_list
 	return passed_list
 
-/obj/machinery/atm/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
-	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
-		ui = new(user, src, "ATM", "[machine_id]")
-		ui.open()
-
 /obj/machinery/atm/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/data[0]
 
-	data["incorrect_attempts"] = number_incorrect_tries
-	data["max_pin_attempts"] = max_pin_attempts
-	data["ticks_left_locked_down"] = ticks_left_locked_down
-	data["emagged"] = emagged
 	data["authenticated_acc"] = (authenticated_account ? 1 : 0)
 	data["account_name"] = authenticated_account?.owner_name || "UNKWN"
 	data["transaction_log"] = generate_ui_transaction_log(authenticated_account?.transaction_log || list())
@@ -220,28 +193,6 @@
 			R.info += "<i>Account number:</i> [authenticated_account.account_id]<br>"
 			R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 			R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
-			R.info += "<table border=1 style='width:100%'>"
-			R.info += "<tr>"
-			R.info += "<td><b>Date</b></td>"
-			R.info += "<td><b>Time</b></td>"
-			R.info += "<td><b>Target</b></td>"
-			R.info += "<td><b>Purpose</b></td>"
-			R.info += "<td><b>Value</b></td>"
-			R.info += "<td><b>Source terminal ID</b></td>"
-			R.info += "</tr>"
-			for(var/datum/economy_transaction/T in authenticated_account.transaction_log)
-				R.info += "<tr>"
-				R.info += "<td>[T.date]</td>"
-				R.info += "<td>[T.time]</td>"
-				R.info += "<td>[T.target_name]</td>"
-				R.info += "<td>[T.purpose]</td>"
-				R.info += "<td>$[T.amount]</td>"
-				R.info += "<td>[T.source_terminal]</td>"
-				R.info += "</tr>"
-			R.info += "</table>"
-		if("logout")
-			authenticated_account = null
-			account_security_level = 0
 
 //stolen wholesale and then edited a bit from newscasters, which are awesome and by Agouri
 /obj/machinery/atm/proc/scan_user(mob/living/carbon/human/human_user as mob)
@@ -249,26 +200,6 @@
 		var/obj/item/card/id/I = human_user.GetIdCard()
 		if(istype(I))
 			return I
-
-// put the currently held id on the ground or in the hand of the user
-/obj/machinery/atm/proc/release_held_id(mob/living/carbon/human/human_user as mob)
-	if(!held_card)
-		return
-
-	held_card.loc = src.loc
-	authenticated_account = null
-	account_security_level = 0
-
-	if(ishuman(human_user) && !human_user.get_active_held_item())
-		human_user.put_in_hands(held_card)
-	held_card = null
-
-/obj/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
-	var/obj/item/charge_card/E = new /obj/item/charge_card(loc)
-	if(ishuman(human_user) && !human_user.get_active_held_item())
-		human_user.put_in_hands(E)
-	E.worth = sum
-	E.owner_name = authenticated_account.owner_name
 
 /obj/machinery/atm/proc/attempt_authentication(var/mob/user, var/input_pin, var/input_acc)
 	var/obj/item/card/id/login_card
