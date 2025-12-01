@@ -31,6 +31,8 @@
 /obj/machinery/computer/bank_uplink/proc/get_accessible_factions() as /list
 	RETURN_TYPE(/list)
 	. = list()
+	if(!(/datum/access/station/command/bank_manage::access_value in inserted_id.access))
+		return
 	var/datum/economy_faction/sorry_unimplemented = SSeconomy.resolve_faction(/datum/world_faction/core/station::id)
 	if(sorry_unimplemented)
 		. += sorry_unimplemented
