@@ -1352,7 +1352,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "aZK" = (
 /obj/structure/cable/green{
@@ -1570,7 +1570,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "bhD" = (
-/obj/structure/flora/pottedplant/thinbush,
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/wood,
 /area/medical/medbay4)
 "biy" = (
@@ -1759,7 +1759,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/beige,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "bmg" = (
 /obj/effect/floor_decal/rust,
@@ -2045,8 +2045,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/flora/grass/event/full_grass2,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "bzj" = (
 /obj/structure/catwalk,
@@ -2324,7 +2323,8 @@
 /area/hallway/d2aftmaint/endeavour)
 "bFI" = (
 /obj/machinery/computer/arcade/clawmachine,
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/sign/christmas/wreath,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "bGt" = (
 /obj/structure/cable/green{
@@ -2618,11 +2618,11 @@
 /turf/simulated/floor,
 /area/hallway/d2amidportmaint/endeavour)
 "bOa" = (
-/obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "bOb" = (
@@ -2641,7 +2641,7 @@
 	dir = 4
 	},
 /obj/landmark/spawnpoint/job/scientist,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "bOx" = (
 /obj/structure/table/bench/steel,
@@ -3770,7 +3770,7 @@
 /obj/structure/bed/chair/sofa/beige/right{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "czJ" = (
 /obj/machinery/door/blast/shutters{
@@ -4125,7 +4125,7 @@
 	accepted_types = list(/obj/item);
 	desc = "A wall-mounted refrigerated storage unit. Should keep your food fresh until lunchtime."
 	},
-/turf/simulated/wall/prepainted/medical,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "cIZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4138,7 +4138,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "cKy" = (
 /turf/simulated/floor/tiled/dark,
@@ -5251,8 +5254,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/full_grass2,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "dyU" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
@@ -5515,7 +5517,7 @@
 /area/rnd/anomaly_lab)
 "dHc" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "dHE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6477,10 +6479,15 @@
 /turf/simulated/floor/plating,
 /area/hallway/d2amidportmaint/endeavour)
 "eoQ" = (
-/obj/structure/flora/grass/event/lavender_grass1,
-/obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass/indoors,
-/area/hallway/public_meeting_room/endeavour)
+/obj/machinery/computer/arcade/orion_trail{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/carpet/patterened/magneta,
+/area/hallway/d2afthall/endeavour)
 "eoT" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6547,8 +6554,8 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/flora/grass/event/sunny_bush1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "eqB" = (
 /obj/effect/floor_decal/borderfloor{
@@ -6636,7 +6643,7 @@
 "etO" = (
 /obj/item/stool/padded,
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "evH" = (
 /obj/machinery/light{
@@ -6723,7 +6730,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "eyZ" = (
 /obj/machinery/air_alarm{
@@ -6846,7 +6853,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "eCw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7195,11 +7202,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "eSf" = (
-/obj/structure/flora/grass/event/leafy_bush2,
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "eSM" = (
 /obj/effect/floor_decal/borderfloor,
@@ -7675,7 +7682,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "fiD" = (
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "fiF" = (
 /obj/machinery/door/firedoor/glass,
@@ -8484,6 +8491,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"fIV" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "fJj" = (
 /obj/machinery/smartfridge/chemistry,
 /turf/simulated/wall/r_wall/prepainted/science,
@@ -8587,11 +8600,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/flora/grass/event/lavender_grass1,
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "fMh" = (
 /obj/effect/floor_decal/spline/plain{
@@ -9609,8 +9621,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/d2fwdhall/endeavour)
 "gzO" = (
-/obj/structure/flora/grass/event/purple_flowers1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/green,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "gAn" = (
 /obj/structure/closet/crate/biohazard,
@@ -10087,8 +10099,8 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "gQJ" = (
-/obj/structure/flora/grass/event/sparse_grass2,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/rock/rock4,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "gQO" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -10504,7 +10516,7 @@
 	anchored = 1;
 	can_be_unanchored = 1
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "hjR" = (
 /obj/machinery/air_alarm/west_mount,
@@ -10699,7 +10711,7 @@
 /obj/structure/bed/chair/modern_chair{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "hpC" = (
 /obj/machinery/camera/network/civilian,
@@ -11067,11 +11079,10 @@
 /area/medical/virology)
 "hCR" = (
 /obj/effect/floor_decal/spline/plain{
-	dir = 1
+	dir = 4
 	},
-/obj/structure/flora/grass/event/stalky_bush1,
-/turf/simulated/floor/grass/indoors,
-/area/hallway/public_meeting_room/endeavour)
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "hDc" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -11203,8 +11214,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/leafy_bush1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "hGE" = (
 /obj/structure/railing{
@@ -11968,7 +11979,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "ikZ" = (
 /obj/structure/cable/green{
@@ -12115,8 +12126,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/sunny_bush1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/bush,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "itq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12215,8 +12226,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "ivV" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass,
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/d2afthall/endeavour)
 "iwg" = (
 /obj/structure/disposalpipe/segment{
@@ -12303,7 +12314,7 @@
 /obj/machinery/computer/arcade/battle{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "izS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12344,8 +12355,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "iAd" = (
-/obj/structure/flora/grass/event/yellow_flowers1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "iAl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12697,7 +12708,7 @@
 /obj/machinery/computer/arcade/orion_trail{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "iMe" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -12834,8 +12845,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "iRZ" = (
-/obj/structure/flora/grass/event/grassy_bush1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "iSa" = (
 /obj/machinery/camera/network/research{
@@ -12914,8 +12925,8 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/flora/grass/event/sparse_grass2,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/green,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "iVM" = (
 /obj/structure/toilet{
@@ -12979,8 +12990,11 @@
 /turf/simulated/floor/plating,
 /area/medical/patient_b)
 "iZN" = (
-/obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/grass,
+/obj/structure/flora/grass/green,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/snow/snow2,
 /area/hallway/d2afthall/endeavour)
 "iZQ" = (
 /mob/living/bot/secbot/slime/slimesky,
@@ -13744,7 +13758,7 @@
 /obj/structure/bed/chair/sofa/beige/corner{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "jBC" = (
 /obj/structure/cable/green{
@@ -14014,7 +14028,7 @@
 "jMc" = (
 /obj/structure/table/glass,
 /obj/item/book/manual/standard_operating_procedure,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "jMl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14145,8 +14159,8 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/obj/structure/flora/grass/event/grassy_bush1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "jRb" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -14842,8 +14856,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/full_grass1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "ktj" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -14937,7 +14950,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "kzf" = (
 /obj/machinery/recharge_station,
@@ -15082,7 +15095,7 @@
 /area/space)
 "kER" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "kFb" = (
 /obj/machinery/light{
@@ -15741,11 +15754,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/d2afthall/endeavour)
 "laO" = (
-/obj/structure/flora/grass/event/ferny_bush1,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/rock/rock3,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "lbt" = (
 /obj/structure/table/reinforced,
@@ -16139,6 +16152,11 @@
 /obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/plating,
 /area/hallway/d2amidportmaint/endeavour)
+"lrz" = (
+/obj/structure/flora/bush,
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "lrJ" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -17084,7 +17102,6 @@
 /turf/simulated/floor/wood,
 /area/hallway/public_meeting_room/endeavour)
 "maq" = (
-/obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
 	},
@@ -17097,6 +17114,7 @@
 /obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 9
 	},
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "maF" = (
@@ -17227,7 +17245,7 @@
 /obj/structure/poster/nanotrasen{
 	pixel_x = 32
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "mft" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17495,7 +17513,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "moD" = (
 /turf/simulated/wall/prepainted,
@@ -19095,6 +19113,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"nvs" = (
+/obj/structure/sign/christmas/wreath,
+/turf/simulated/floor/carpet/patterened/magneta,
+/area/hallway/d2afthall/endeavour)
 "nvB" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/wood/sif/indoors,
@@ -20258,6 +20280,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/d2afthall/endeavour)
+"oof" = (
+/obj/structure/flora/rock/rock1{
+	pixel_y = 7;
+	pixel_x = -13
+	},
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "ooj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
@@ -20583,12 +20612,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/surgeryprep)
 "oFh" = (
-/obj/structure/flora/grass/event/sparse_grass2,
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/grass/indoors,
-/area/hallway/public_meeting_room/endeavour)
+/turf/simulated/floor/carpet/patterened/magneta,
+/area/hallway/d2afthall/endeavour)
 "oFo" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled,
@@ -22052,9 +22077,8 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "pzn" = (
-/obj/structure/flora/grass/event/sparse_grass1,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "pzO" = (
 /obj/structure/cable/green{
@@ -22987,7 +23011,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "pZS" = (
 /obj/structure/table/steel_reinforced,
@@ -23233,7 +23257,7 @@
 /obj/machinery/microwave{
 	pixel_y = 7
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "qks" = (
 /obj/machinery/vending/cola,
@@ -23907,7 +23931,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "qIo" = (
 /obj/machinery/atmospherics/component/unary/freezer{
@@ -24221,8 +24245,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d2aftmaint/endeavour)
 "qTZ" = (
-/obj/structure/flora/grass/event/lavender_grass1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "qUX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -24392,6 +24415,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/station/rnd/robotics/morgue/endeavour)
+"rbk" = (
+/obj/structure/flora/grass/brown,
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "rbx" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -24405,7 +24435,7 @@
 "rbM" = (
 /obj/structure/table/woodentable,
 /obj/item/book/manual/medical_diagnostics_manual,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "rbR" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -24690,7 +24720,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "roh" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -25301,7 +25331,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/beige/left,
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "rOO" = (
 /turf/simulated/wall/prepainted,
@@ -25577,7 +25607,10 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "rZj" = (
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "rZr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -25959,8 +25992,8 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/obj/structure/flora/grass/event/yellow_flowers1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "spw" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
@@ -26957,7 +26990,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/medical/medbay_emt_bay)
 "tdo" = (
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "tdK" = (
 /obj/structure/cable/green{
@@ -27179,7 +27212,7 @@
 /area/rnd/chemistry_lab)
 "thW" = (
 /obj/structure/table/glass,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "thZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -27655,7 +27688,7 @@
 /obj/machinery/photocopier/faxmachine{
 	department = "Research Break Room"
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "twM" = (
 /obj/structure/disposalpipe/segment{
@@ -28519,6 +28552,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/d2aftstrbdmaint/endeavour)
+"udX" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/structure/snowman{
+	pixel_y = 5;
+	pixel_x = -1
+	},
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "ufe" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -28582,7 +28625,7 @@
 "uhx" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/spray/cleaner,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "uhG" = (
 /obj/structure/railing{
@@ -29043,7 +29086,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "uzv" = (
 /obj/machinery/air_alarm{
@@ -29077,6 +29120,13 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
+"uAZ" = (
+/obj/structure/flora/bush,
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "uBa" = (
 /obj/structure/sign/directions/medical{
 	dir = 4
@@ -29253,7 +29303,7 @@
 /obj/machinery/holoplant{
 	pixel_y = 12
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "uJh" = (
 /obj/structure/disposalpipe/segment,
@@ -29278,7 +29328,7 @@
 "uLc" = (
 /obj/structure/table/glass,
 /obj/item/duct_tape_roll,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "uLA" = (
 /obj/random/toy,
@@ -29748,7 +29798,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "vdv" = (
 /obj/machinery/power/apc/west_mount,
@@ -29781,8 +29831,8 @@
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
 "vdU" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/d2afthall/endeavour)
 "vem" = (
 /obj/structure/table/steel_reinforced,
@@ -29833,7 +29883,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "vhp" = (
 /obj/structure/cable/green{
@@ -29936,9 +29986,8 @@
 /area/medical/medbay_primary_storage)
 "vmL" = (
 /obj/machinery/light,
-/obj/structure/flora/grass/event/stalky_bush1,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "vnp" = (
 /obj/structure/cable/green{
@@ -30039,8 +30088,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/obj/structure/flora/grass/event/purple_flowers1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "vrg" = (
 /obj/spawner/window/low_wall/reinforced,
@@ -30146,7 +30194,7 @@
 "vvG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "vvK" = (
 /obj/structure/cable/green{
@@ -30669,7 +30717,10 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "vOA" = (
 /obj/machinery/air_alarm/west_mount,
@@ -31097,8 +31148,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "wbV" = (
-/obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass,
+/obj/structure/flora/grass/green,
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/snow/snow2,
 /area/hallway/d2afthall/endeavour)
 "wcx" = (
 /obj/machinery/door/airlock/maintenance/medical{
@@ -31122,7 +31176,7 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/job/scientist,
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "wdh" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -31144,11 +31198,11 @@
 /obj/structure/bed/chair/sofa/beige{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "weC" = (
-/obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "weJ" = (
@@ -31247,7 +31301,7 @@
 /obj/machinery/coffeemaker{
 	pixel_y = 7
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/turf/simulated/floor/carpet/patterened/blue,
 /area/crew_quarters/medbreak)
 "whn" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -31616,7 +31670,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "wtw" = (
 /obj/machinery/recharge_station,
@@ -31930,7 +31984,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/pottedplant/minitree,
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/public_meeting_room/endeavour)
 "wCL" = (
@@ -31976,7 +32030,8 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "wDR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -32067,8 +32122,8 @@
 /turf/simulated/floor/tiled,
 /area/station/medical/virology_aft_access/endeavour)
 "wGZ" = (
-/obj/structure/flora/grass/event/full_grass2,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/bush,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "wHh" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -32174,8 +32229,8 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/ferny_bush1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/snow/snow2,
 /area/hallway/public_meeting_room/endeavour)
 "wKx" = (
 /obj/machinery/fire_alarm/south_mount{
@@ -32200,7 +32255,8 @@
 /area/rnd/anomaly_lab)
 "wMn" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/carpet/patterened/magneta,
 /area/hallway/d2afthall/endeavour)
 "wMB" = (
 /obj/structure/cable/green{
@@ -33135,7 +33191,7 @@
 /obj/structure/bed/chair/modern_chair{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "xpK" = (
 /obj/structure/cable{
@@ -33358,6 +33414,12 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
+"xxU" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "xyo" = (
 /obj/machinery/camera/network/outside{
 	dir = 8
@@ -33739,6 +33801,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/d2fwdhall/endeavour)
+"xKn" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/snow/snow2,
+/area/hallway/d2afthall/endeavour)
 "xLl" = (
 /obj/machinery/camera/network/research{
 	dir = 8;
@@ -43049,11 +43117,11 @@ dro
 tLC
 nql
 keN
-ivV
-wbV
+uAZ
+xKn
 iZN
-vdU
-iZN
+xKn
+fIV
 cjj
 aCS
 aqP
@@ -43243,11 +43311,11 @@ ooc
 sTH
 xen
 cjj
-vdU
+xxU
 vdU
 ivV
-ivV
-vdU
+oof
+lrz
 cjj
 xYv
 bKi
@@ -43438,10 +43506,10 @@ tLC
 nql
 keN
 wbV
-iZN
-vdU
-iZN
-wbV
+hCR
+udX
+hCR
+rbk
 cjj
 shH
 bKi
@@ -45572,11 +45640,11 @@ mAj
 mEb
 mDj
 bFI
-rZj
+oFh
 izN
 iLW
 izN
-iLW
+eoQ
 moD
 gAn
 aLl
@@ -45959,11 +46027,11 @@ wQI
 gsh
 tks
 mDj
-rZj
-rZj
+nvs
+oFh
 eyU
 eCj
-rZj
+oFh
 wDC
 moD
 rUB
@@ -46154,7 +46222,7 @@ gsh
 tks
 mDj
 bFI
-rZj
+oFh
 vOd
 cKd
 rZj
@@ -62640,9 +62708,9 @@ qjz
 moe
 tOU
 byX
-gzO
 wGZ
-iAd
+iRZ
+iRZ
 dyS
 pzn
 pLA
@@ -63027,12 +63095,12 @@ hxV
 ycR
 qjz
 tOU
-hCR
+byX
 iAd
 wGZ
 gzO
 itb
-eoQ
+pzn
 pLA
 vkA
 vkA
@@ -63224,7 +63292,7 @@ tOU
 vqS
 wKr
 ksR
-oFh
+ksR
 pZN
 eSf
 pLA
