@@ -9494,6 +9494,7 @@
 /obj/machinery/computer/rcon{
 	dir = 1
 	},
+/obj/item/paper/strelka_rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "zj" = (
@@ -13310,6 +13311,7 @@
 /obj/machinery/computer/security/engineering{
 	dir = 1
 	},
+/obj/item/paper/strelka_rust_access,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "Jh" = (
@@ -15216,6 +15218,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/item/paper/strelka_rust,
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "Ok" = (
@@ -15974,6 +15977,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
+/obj/item/paper/strelka_rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "Qq" = (
@@ -18565,6 +18569,20 @@
 /obj/item/paper/strelka_rust_access,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/strelka/engine)
+"WO" = (
+/obj/structure/table/bench/steel,
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/item/paper/strelka_rust_access{
+	pixel_x = -20
+	},
+/turf/simulated/floor/wood/indoors,
+/area/engineering/hallway/strelka/engineering)
 "WQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -33307,7 +33325,7 @@ RZ
 ZA
 FJ
 HT
-Oj
+WO
 Zk
 Xs
 jh
