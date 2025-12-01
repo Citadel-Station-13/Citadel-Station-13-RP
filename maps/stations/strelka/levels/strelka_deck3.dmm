@@ -2265,6 +2265,9 @@
 /obj/machinery/door/airlock/medical{
 	name = "Psychiatry"
 	},
+/obj/structure/cable/blue{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/psy)
 "hF" = (
