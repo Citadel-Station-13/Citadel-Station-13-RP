@@ -137,3 +137,18 @@
 	opacity = 0
 	anchored = 1
 	can_be_unanchored = 0
+
+/turf/simulated/floor/outdoors/safeice/strelka
+	name = "Fake ice"
+	icon_state = "ice"
+	desc = "Its ... Fake ice ? Layers of tinted glass mimicing ice put over the pond ! At least you aint slowed on it."
+	slowdown = 0
+	edge_blending_priority = 0
+	outdoors = FALSE
+
+
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka
+	name = "Fake Snow"
+	desc = "Its Fake snow. Well. Actually it is kinda real, still made with water, but with added additive to prevent it to melt until march and april."
+	slowdown = 0
+	outdoors = FALSE
