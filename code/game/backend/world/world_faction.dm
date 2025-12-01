@@ -20,13 +20,14 @@
 
 	//* composition *//
 
-	/// storyteller faction path to init, if any
-	// var/datum/storyteller_faction/storyteller_faction
+	// todo: storytellers
+	/// * set to typepath to initialize a storyteller faction.
+	// var/datum/storyteller_faction/c_storyteller
 	// todo: supply faction
-	/// supply faction path to init, if any
-	// var/datum/supply_faction/supply_faction
-	/// economy faction to init, if any
-	var/datum/economy_faction/economy_faction = /datum/economy_faction
+	/// * set to typepath to initialize a supply faction.
+	// var/datum/supply_faction/c_supply
+	/// * set to typepath to initialize an economy faction.
+	var/datum/economy_faction/c_economy = /datum/economy_faction
 
 	//* world simulation *//
 
@@ -43,13 +44,24 @@
  * called if we're on the active map so we create all our datums
  */
 /datum/world_faction/proc/prime()
-	economy_faction = create_economy_faction()
+	create_economy_faction()
+	#warn hook
 
 /datum/world_faction/proc/create_economy_faction() as /datum/economy_faction
 	RETURN_TYPE(/datum/economy_faction)
-	if(!economy_faction)
+	if(!ispath(c_economy))
 		return
-	var/datum/economy_faction/creating = new economy_faction
-	creating.id = id
+	var/datum/economy_faction/creating = SSeconomy.allocate_faction(
+		economy_faction,
+		id,
+	)
 	creating.abbreviation = abbreviation
+	c_economy = creating
 	return creating
+
+/**
+ * called after all active map world factions are initialized.
+ * * allows for resolving cross-faction dependencies safely.
+ */
+/datum/world_faction/proc/post_prime()
+	#warn hook

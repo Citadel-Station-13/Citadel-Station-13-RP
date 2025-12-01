@@ -3,9 +3,6 @@
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "atm"
 	/// can accept deposits using these payment types
-	var/deposit_payment_types = PAYMENT_TYPE_CASH | PAYMENT_TYPE_HOLOCHIPS | PAYMENT_TYPE_CHARGE_CARD
-	var/datum/economy_account/authenticated_account
-	var/datum/effect_system/spark_spread/spark_system
 
 /obj/machinery/atm/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
@@ -49,39 +46,6 @@
 				qdel(I)		// chargecards don't delete
 	else
 		..()
-
-/obj/machinery/atm/proc/generate_ui_transaction_log(var/list/transaction_list)
-	var/list/passed_list = list()
-	for(var/datum/economy_transaction/T in transaction_list)
-		var/transaction_num = 0
-		var/list/new_list = list()
-		new_list["target_name"] = T.target_name
-		new_list["purpose"] = T.purpose
-		new_list["amount"] = T.amount
-		new_list["date"] = T.date
-		new_list["time"] = T.time
-		new_list["source_terminal"] = T.source_terminal
-		transaction_num++
-		passed_list["[transaction_num]"] = new_list
-	return passed_list
-
-/obj/machinery/atm/ui_data(mob/user, datum/tgui/ui)
-	. = ..()
-	var/data[0]
-
-	data["authenticated_acc"] = (authenticated_account ? 1 : 0)
-	data["account_name"] = authenticated_account?.owner_name || "UNKWN"
-	data["transaction_log"] = generate_ui_transaction_log(authenticated_account?.transaction_log || list())
-	data["account_security_level"] = account_security_level
-	data["current_account_security_level"] = authenticated_account?.security_level
-	data["acc_suspended"] = authenticated_account?.suspended || 0
-	data["balance"] = authenticated_account?.money || 0
-	data["machine_id"] = machine_id
-	data["card_inserted"] = (held_card ? TRUE : FALSE)
-	data["inserted_card_name"] = (held_card ? held_card.registered_name : "--INSERT CARD--")
-	data["logout_time"] = DisplayTimeText(ticks_left_timeout * 10)
-
-	return data
 
 /obj/machinery/atm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()

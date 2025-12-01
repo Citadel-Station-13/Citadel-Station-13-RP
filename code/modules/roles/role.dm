@@ -42,7 +42,9 @@
 	if(person.initial_economy_account_number)
 		CRASH("attempted to create self account on someone already with 'initial_economy_account_number' set.")
 
-	var/datum/economy_account/creating = SSeconomy.allocate_account()
+	var/datum/economy_account/creating = SSeconomy.allocate_account(
+		protect_from_deletion = TRUE,
+	)
 	. = creating
 
 	var/starting_amount = round(

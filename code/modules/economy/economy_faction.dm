@@ -8,9 +8,9 @@
 /datum/economy_faction
 	/// our ID
 	var/id
-	/// our abbreviation
+	/// our abbreviation, used for displays
 	/// * technically optional but it's a real bad idea to not have this
-	var/abbreviation
+	var/abbreviation = "UNKW"
 	/// keyed accounts
 	/// * these accounts, while having an account number,
 	///   may be accessed by key.
@@ -46,23 +46,22 @@
 
 /**
  * Gets accounts an uplink can access.
- *
  * * Do not modify passed back list!
- *
- * todo: access constraints, should that be here or in the uplink?
  */
 /datum/economy_faction/proc/uplink_get_managed_accounts() as /list
-	RETURN_TYPE(/list)
-	#warn impl
+	return list()
 
 /**
  * Gets accounts an uplink can access that are root accounts to fund from / withdraw into
- *
  * * This is stuff like station and department accounts
  * * Do not modify passed back list!
- *
- * todo: access constraints, should that be here or in the uplink?
  */
 /datum/economy_faction/proc/uplink_get_managed_source_accounts() as /list
-	RETURN_TYPE(/list)
-	#warn impl
+	return list()
+
+/**
+ * Gets the effective root account for an uplink.
+ * * The root account is what is the source / target for account creation funding / account deletion fund recovery.
+ */
+/datum/economy_faction/proc/uplink_get_effective_root_account() as /datum/economy_account
+	return null

@@ -14,7 +14,7 @@
 
 	//* config *//
 	/// accepted payment types for deposits
-	var/conf_deposit_allow_payment_types = PAYMENT_TYPE_COIN | PAYMENT_TYPE_CASH | PAYMENT_TYPE_CHARGE_CARD
+	var/conf_deposit_allow_payment_types = PAYMENT_TYPE_CASH | PAYMENT_TYPE_CHARGE_CARD
 
 	//* state *//
 
@@ -47,6 +47,23 @@
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	if(istype(using, /obj/item/card))
+		#warn impl
+	else if(istype(using, /obj/item/charge_card))
+		if(!(conf_deposit_allow_payment_types & PAYMENT_TYPE_CASH))
+			clickchain.chat_feedback(
+				SPAN_WARNING("[src] does not accept cash deposits."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	else if(istype(using, /obj/item/spacecash))
+		if(!(conf_deposit_allow_payment_types & PAYMENT_TYPE_CHARGE_CARD))
+			clickchain.chat_feedback(
+				SPAN_WARNING("[src] does not accept chargecard deposits."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+
+#warn impl
 
 /obj/machinery/automated_teller/power_change()
 	. = ..()
@@ -58,9 +75,15 @@
 
 /obj/machinery/automated_teller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["auth"] = ui_auth_data
 
 /obj/machinery/automated_teller/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+
+/obj/machinery/automated_teller/proc/update_ui_auth_data()
+	push_ui_data(data = list("auth" = ui_auth_data))
+
+/obj/machinery/automated_teller/proc/ui_auth_data()
 
 /obj/machinery/automated_teller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()

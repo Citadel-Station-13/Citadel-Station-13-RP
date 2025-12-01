@@ -46,13 +46,16 @@
 		return FALSE
 	return TRUE
 
+#warn do we need more granular access for departments?
+
 /obj/machinery/computer/bank_uplink/proc/get_accessible_accounts(datum/economy_faction/faction) as /list
-	RETURN_TYPE(/list)
 	return faction.uplink_get_managed_accounts()
 
 /obj/machinery/computer/bank_uplink/proc/get_accessible_source_accounts(datum/economy_faction/faction) as /list
-	RETURN_TYPE(/list)
 	return faction.uplink_get_managed_source_accounts()
+
+/obj/machinery/computer/bank_uplink/proc/get_effective_root_account(datum/economy_faction/faction) as /datum/economy_account
+	return faction.uplink_get_effective_root_account()
 
 /obj/machinery/computer/bank_uplink/proc/get_authorizing_name()
 	if(!inserted_id)
@@ -73,7 +76,7 @@
 		ui = new(user, src, "machines/BankUplinkConsole.tsx")
 		ui.open()
 
-/obj/machinery/computer/bank_uplink/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/bank_uplink/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -142,11 +145,17 @@
 		if("ejectCard")
 			#warn impl
 		if("insertCard")
+			if(inserted_id)
+				return TRUE
+			var/obj/item/card/id/maybe_held_id = actor.performer.get_active_held_item()
+			if(!istype(maybe_held_id))
+				return TRUE
 			#warn impl
+			return TRUE
 		if("fundAccount", "drainAccount")
-			var/fund_source_account_id
-			var/fund_amount
-			var/fund_reason
+			var/source_account_id = params["source"]
+			var/transact_amount = params["amount"]
+			var/transact_reason = params["reason"]
 			#warn impl
 		if("deleteAccount")
 			#warn impl

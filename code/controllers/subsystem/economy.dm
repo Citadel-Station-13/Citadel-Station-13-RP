@@ -25,8 +25,10 @@ SUBSYSTEM_DEF(economy)
 	return ..()
 
 /datum/controller/subsystem/economy/proc/initialize_fallback_vendor_account()
-	var/datum/economy_account/allocating = allocate_account()
-	allocating.owner_name = "Vendor"
+	var/datum/economy_account/allocating = allocate_account(
+		protect_from_deletion = TRUE,
+	)
+	allocating.fluff_owner_name = "Vendor"
 	fallback_vendor_account = allocating
 
 //* Lookup *//
@@ -75,14 +77,24 @@ SUBSYSTEM_DEF(economy)
 /**
  * Initializes a faction with a given ID and returns it.
  *
- * **This is the only place where factions should be created.**
- * **You must use named parameters.**
+ * * **This is the only place where factions should be created.**
+ * * **You must use named parameters.**
+ *
+ * @params
+ * * with_type
+ * * with_id
  *
  * @return /datum/economy_faction, or null on an error
  */
-/datum/controller/subsystem/economy/proc/allocate_faction(with_id) as /datum/economy_faction
+/datum/controller/subsystem/economy/proc/allocate_faction(with_type, with_id) as /datum/economy_faction
 	RETURN_TYPE(/datum/economy_faction)
-	#warn impl
+	if(faction_lookup[with_id])
+		#warn scream at them
+		CRASH()
+	var/datum/economy_faction/creating = new with_type
+	creating.id = with_id
+	faction_lookup[creating.id] = creating
+	return creating
 
 /**
  * Allocates an account.
@@ -93,10 +105,11 @@ SUBSYSTEM_DEF(economy)
  * @params
  * * for_faction - (optional) for a given faction.
  * * with_key - (optional) with a given key for that faction, or if factionless, a global key.
+ * * protect_from_deletion - (optional) protect from players deleting it / doing similarly horrible things to it
  *
  * @return /datum/economy_account, or null on an error
  */
-/datum/controller/subsystem/economy/proc/allocate_account(datum/economy_faction/for_faction, with_key) as /datum/economy_account
+/datum/controller/subsystem/economy/proc/allocate_account(datum/economy_faction/for_faction, with_key, protect_from_deletion) as /datum/economy_account
 	RETURN_TYPE(/datum/economy_account)
 	#warn impl
 

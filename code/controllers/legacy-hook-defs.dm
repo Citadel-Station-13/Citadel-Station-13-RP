@@ -50,17 +50,3 @@
  * Parameters: var/mob/living/carbon/alien/diona
  */
 /legacy_hook/harvest_podman
-
-/**
- * Payroll revoked hook.
- * Called in Accounts_DB.dm when someone's payroll is stolen at the Accounts terminal.
- * Parameters: var/datum/economy_account
- */
-/legacy_hook/revoke_payroll
-
-/**
- * Account suspension hook.
- * Called in Accounts_DB.dm when someone's account is suspended or unsuspended at the Accounts terminal.
- * Parameters: var/datum/economy_account
- */
-/legacy_hook/change_account_status

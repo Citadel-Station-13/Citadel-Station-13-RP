@@ -1,13 +1,11 @@
 //* payment_type bitflags *//
 
-/// coins
-#define PAYMENT_TYPE_COIN				(1<<0)
 /// cash
-#define PAYMENT_TYPE_CASH				(1<<1)
+#define PAYMENT_TYPE_CASH				(1<<0)
 /// chargecard; basically electronic cash wallet
-#define PAYMENT_TYPE_CHARGE_CARD		(1<<2)
+#define PAYMENT_TYPE_CHARGE_CARD		(1<<1)
 /// bank-linked account
-#define PAYMENT_TYPE_BANK_CARD			(1<<3)
+#define PAYMENT_TYPE_BANK_CARD			(1<<2)
 
 /// all payment typesw
 #define PAYMENT_TYPE_ALL				ALL

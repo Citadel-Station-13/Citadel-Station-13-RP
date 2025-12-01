@@ -51,11 +51,6 @@
 
 	if(href_list["choice"])
 		switch(href_list["choice"])
-			if("toggle_suspension")
-				if(detailed_account_view)
-					detailed_account_view.suspended = !detailed_account_view.suspended
-					callHook("change_account_status", list(detailed_account_view))
-
 			if("finalise_create_account")
 				var/account_name = href_list["holder_name"]
 				var/starting_funds = max(text2num(href_list["starting_funds"]), 0)
@@ -76,22 +71,6 @@
 					ui.close()
 
 				creating_new_account = 0
-			if("insert_card")
-				if(held_card)
-					held_card.loc = src.loc
-
-					if(ishuman(usr) && !usr.get_active_held_item())
-						usr.put_in_hands(held_card)
-					held_card = null
-
-				else
-					var/obj/item/I = usr.get_active_held_item()
-					if (istype(I, /obj/item/card/id))
-						var/obj/item/card/id/C = I
-						if(!usr.attempt_insert_item_for_installation(C, src))
-							return
-						held_card = C
-
 			if("revoke_payroll")
 				var/funds = detailed_account_view.money
 				var/account_trx = create_transation(GLOB.station_account.owner_name, "Revoke payroll", "([funds])")
@@ -102,8 +81,6 @@
 
 				detailed_account_view.transaction_log.Add(account_trx)
 				GLOB.station_account.transaction_log.Add(station_trx)
-
-				callHook("revoke_payroll", list(detailed_account_view))
 
 			if("print")
 				var/text

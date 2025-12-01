@@ -6,14 +6,17 @@
 	id = "station"
 	desc = "The main map. You shouldn't be able to see this. This is always active."
 
-/datum/world_faction/core/station/create_economy_faction()
-	var/datum/economy_faction/creating = ..()
+	c_economy = /datum/economy_faction/station
 
+/datum/world_faction/core/station/post_prime()
 	// todo: pull based on the active map
 	var/datum/world_faction/station_sponsor = SSgame_world.resolve_faction(/datum/world_faction/corporation/nanotrasen)
-	var/datum/economy_faction/station_sponsor_economy = SSeconomy.resolve_faction(station_sponsor.id)
+	var/datum/economy_faction/station_sponsor_economy = station_sponsor.c_economy
 
-	var/datum/economy_account/station_account = SSeconomy.allocate_account(src, /datum/world_faction/core/station::id)
+	var/datum/economy_account/station_account = SSeconomy.allocate_account(
+		for_faction = c_economy,
+		with_key = "station",
+	)
 	station_account.fluff_owner_name = "Station Account"
 	station_account.randomize_credentials()
 	var/station_account_starting_balance = ECONOMY_BASE_BALANCE_FOR_STATION
@@ -24,7 +27,10 @@
 	station_account_transaction.execute_system_transaction(station_account)
 
 	for(var/datum/department/station/station_department in SSjob.department_datums)
-		var/datum/economy_account/department_account = SSeconomy.allocate_account(src, station_department.id)
+		var/datum/economy_account/department_account = SSeconomy.allocate_account(
+			for_faction = c_economy,
+			with_key = "station",
+		)
 		department_account.randomize_credentials()
 		department_account.fluff_owner_name = "[station_department.name] Account"
 		var/department_account_starting_balance = ECONOMY_BASE_BALANCE_FOR_DEPARTMENT
