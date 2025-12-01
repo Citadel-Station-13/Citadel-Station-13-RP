@@ -10,6 +10,8 @@
 #warn impl
 
 /obj/vehicle/sealed/mecha/run_armorcalls(list/shieldcall_args, fake_attack)
+	var/original_damage = shieldcall_args[SHIELDCALL_ARG_DAMAGE]
+
 	// -- EXTERIOR --
 	// run against armor; if pierced, goes to hull
 	if(comp_armor)
@@ -21,13 +23,9 @@
 	// run against hull & components based on how damaged hull is
 
 	if(comp_hull)
-		shieldcall_args = comp_hull.run_inbound_vehicle_damage_instance(shieldcall_args, fake_attack)
+		comp_hull.run_inbound_vehicle_damage_instance(shieldcall_args, fake_attack)
 		if(shieldcall_args[SHIELDCALL_ARG_DAMAGE] <= DAMAGE_PRECISION)
 			return
-	. = ..()
-
-	#warn armor
-	#warn hull
 
 	// -- CHASSIS --
 	// run against occupant & chassis
@@ -46,6 +44,46 @@
 			continue
 		// they're the victim, send the entire hit through them
 		// but also fully
+		var/ratio = shieldcall_args[SHIELDCALL_ARG_DAMAGE] / original_damage
+		switch(shieldcall_args[SHIELDCALL_ARG_ATTACK_TYPE])
+			if(ATTACK_TYPE_PROJECTILE)
+				var/obj/projectile/source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
+				if(source && !source.impacted[victim])
+					victim.bullet_act(source, NONE, null, ratio)
+				// soaked
+				return
+			if(ATTACK_TYPE_MELEE)
+				var/datum/event_args/actor/clickchain/source = shieldcall_args[SHIELDCALL_ARG_ATTACK_SOURCE]
+				if(source?.using_melee_attack)
+					var/datum/event_args/actor/clickchain/cloned = source.clone()
+					cloned.attack_melee_multiplier *= ratio
+					cloned.attack_contact_multiplier *= ratio
+					cloned.using_melee_attack.perform_attack_message(
+						cloned.performer,
+						victim,
+						FALSE,
+						cloned.using_melee_weapon,
+						cloned,
+						CLICKCHAIN_REDIRECTED,
+					)
+					cloned.using_melee_attack.perform_attack_impact(
+						cloned.performer,
+						victim,
+						FALSE,
+						cloned.using_melee_weapon,
+						cloned,
+						CLICKCHAIN_REDIRECTED,
+					)
+					cloned.using_melee_attack.perform_attack_sound(
+						cloned.performer,
+						victim,
+						FALSE,
+						cloned.using_melee_weapon,
+						cloned,
+						CLICKCHAIN_REDIRECTED,
+					)
+				// soaked
+				return
 
 	// whatever's left goes to chassis
 	..()

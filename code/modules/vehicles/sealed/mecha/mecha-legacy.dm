@@ -150,17 +150,17 @@
 			comp.damage_part(rand(10, 20))
 			comp.detach()
 			WR.crowbar_salvage += comp
-		if(cell)
-			WR.crowbar_salvage += cell
-			cell.forceMove(WR)
-			cell.charge = rand(0, cell.charge)
-			cell = null
+		if(power_cell)
+			WR.crowbar_salvage += power_cell
+			cepower_cellll.forceMove(WR)
+			power_cell.charge = rand(0, power_cell.charge)
+			power_cell = null
 		if(internal_tank)
 			WR.crowbar_salvage += internal_tank
 			internal_tank.forceMove(WR)
 			internal_tank = null
 	else
-		QDEL_NULL(cell)
+		QDEL_NULL(power_cell)
 		QDEL_NULL(internal_tank)
 
 	QDEL_NULL(spark_system)
