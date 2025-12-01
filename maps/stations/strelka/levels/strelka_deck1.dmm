@@ -66,6 +66,7 @@
 	id = "personel2"
 	},
 /obj/machinery/door/airlock,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/personalmicro2)
 "aC" = (
@@ -292,6 +293,12 @@
 	id_tag = "strelka_personalmicro2_docker";
 	pixel_y = -23;
 	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	pixel_x = 11;
+	pixel_y = -22;
+	id = "personel2"
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/shuttle/personalmicro2)
@@ -1413,6 +1420,7 @@
 	id = "personel3"
 	},
 /obj/machinery/door/airlock,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/personalmicro3)
 "fV" = (
@@ -3434,6 +3442,11 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	id_tag = "strelka_personalmicro1_docker";
 	pixel_y = 24
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 25;
+	pixel_x = 9;
+	id = "personel1"
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/personalmicro1)
@@ -7068,6 +7081,7 @@
 	id = "personel1"
 	},
 /obj/machinery/door/airlock,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/personalmicro1)
 "Ew" = (
@@ -9133,6 +9147,11 @@
 	id_tag = "strelka_personalmicro3_docker";
 	pixel_y = 24
 	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 25;
+	pixel_x = 9;
+	id = "personel3"
+	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/shuttle/personalmicro3)
 "Nk" = (
@@ -9210,6 +9229,12 @@
 	id_tag = "strelka_personalmicro4_docker";
 	pixel_y = -23;
 	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	pixel_x = 11;
+	pixel_y = -22;
+	id = "personel4"
 	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/personalmicro4)
@@ -10999,6 +11024,7 @@
 	id = "personel4"
 	},
 /obj/machinery/door/airlock,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/personalmicro4)
 "VC" = (

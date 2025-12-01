@@ -352,7 +352,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
-	id = "robot"
+	id = "robot2"
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/rnd/strelka/robotics)
@@ -10945,9 +10945,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
 "IU" = (
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/surgery)

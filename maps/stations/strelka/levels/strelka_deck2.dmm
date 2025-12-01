@@ -2733,9 +2733,6 @@
 /obj/machinery/pda_multicaster,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/coms)
-"hG" = (
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/emt/strelka/main)
 "hH" = (
 /obj/structure/table/reinforced,
 /obj/fiftyspawner/deuterium,
@@ -3620,6 +3617,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/hallway/strelka/engineering)
+"jV" = (
+/obj/machinery/door/window/southleft,
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/emt/strelka/main)
 "jW" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -4701,8 +4705,8 @@
 	tag_north_con = 0.21;
 	tag_north = 1;
 	tag_east = 1;
-	tag_west_con = 0.79;
-	on = 1
+	on = 1;
+	tag_east_con = 0.79
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/strelka/engineering/atmos)
@@ -7120,6 +7124,17 @@
 "tm" = (
 /turf/simulated/wall/r_wall/prepainted/exploration,
 /area/strelka/explo/pathfy)
+"tn" = (
+/obj/machinery/porta_turret/stationary{
+	gl_uid = "exploration";
+	installation = /obj/item/gun/projectile/energy/phasegun;
+	name = "exploration turret";
+	req_one_access = list(19,43,62,67);
+	uid = "EMT";
+	enabled = 0
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/emt/strelka/cockpit)
 "tp" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/plating,
@@ -15617,7 +15632,6 @@
 "Px" = (
 /obj/structure/window/reinforced,
 /obj/effect/floor_decal/corner/red/border,
-/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka/main)
 "Py" = (
@@ -17882,6 +17896,7 @@
 /area/engineering/atmos/strelka/engineering/atmos)
 "Vg" = (
 /obj/structure/bed/chair/bay/shuttle,
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka/main)
 "Vk" = (
@@ -18635,10 +18650,6 @@
 	dir = 1
 	},
 /obj/machinery/air_alarm/east_mount,
-/obj/machinery/recharger/wallcharger{
-	pixel_x = 4;
-	pixel_y = 28
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka/main)
 "Xb" = (
@@ -35212,7 +35223,7 @@ hr
 DF
 Db
 hr
-NO
+jo
 KC
 KC
 KC
@@ -35220,7 +35231,7 @@ XS
 KC
 KC
 eE
-NO
+jo
 dz
 gA
 yX
@@ -37541,8 +37552,8 @@ Sx
 do
 mj
 mj
-hG
 UG
+jV
 Xa
 yd
 jI
@@ -37735,7 +37746,7 @@ RU
 nJ
 do
 mj
-uA
+UG
 UG
 UG
 Zp
@@ -38706,13 +38717,13 @@ KP
 Sx
 do
 mj
-uA
+tn
 lR
 lR
 lR
 lR
 lR
-uA
+tn
 fV
 Ks
 RC
