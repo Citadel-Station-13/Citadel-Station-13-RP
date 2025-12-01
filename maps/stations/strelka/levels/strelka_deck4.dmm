@@ -159,10 +159,10 @@
 	},
 /obj/machinery/smartfridge/drinks,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/sign/christmas/lights{
+/obj/machinery/light/fairy{
 	dir = 1
 	},
-/obj/structure/sign/christmas/lights{
+/obj/machinery/light/fairy{
 	dir = 4
 	},
 /turf/simulated/floor/bmarble,
@@ -2640,6 +2640,18 @@
 /obj/machinery/light/fairy,
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
+"jP" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/crew_quarters/bar/strelka)
 "jT" = (
 /obj/structure/grille,
 /obj/structure/marker_beacon/yellow,
@@ -2922,7 +2934,7 @@
 	pixel_x = -7;
 	pixel_y = 7
 	},
-/obj/structure/sign/christmas/lights{
+/obj/machinery/light/fairy{
 	dir = 4
 	},
 /turf/simulated/floor/bmarble,
@@ -4225,6 +4237,15 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/bridge/strelka/captain)
+"pE" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
+/obj/machinery/light/fairy,
+/turf/simulated/open,
+/area/hallway/strelka/deck4)
 "pF" = (
 /obj/item/bedsheet/browndouble,
 /obj/structure/bed/double/padded,
@@ -5084,6 +5105,21 @@
 /obj/machinery/biogenerator,
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/hydroponics/strelka/hallway/botany)
+"sS" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/hallway/strelka/deck4)
 "sV" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 4
@@ -5127,12 +5163,12 @@
 	pixel_y = -3;
 	pixel_x = 13
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /obj/machinery/light/small/old{
 	dir = 8;
 	light_power = 1
+	},
+/obj/machinery/light/fairy{
+	dir = 1
 	},
 /turf/simulated/floor/bmarble,
 /area/crew_quarters/bar/strelka)
@@ -6404,6 +6440,15 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/dormhallway/pool)
+"yb" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights,
+/obj/machinery/light/fairy,
+/turf/simulated/open,
+/area/hallway/strelka/deck4)
 "yc" = (
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 8
@@ -12489,6 +12534,21 @@
 	},
 /turf/simulated/floor/carpet/patterened,
 /area/strelka/dormhallway/pool)
+"Vq" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/machinery/light/fairy{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/hallway/strelka/deck4)
 "Vr" = (
 /obj/machinery/light/small/old{
 	dir = 1;
@@ -13157,6 +13217,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/library)
@@ -29990,13 +30053,13 @@ SU
 Mv
 PM
 kQ
-IU
+Vq
 ke
 zO
 cr
 zO
 kO
-JY
+yb
 ZV
 It
 sC
@@ -32891,7 +32954,7 @@ lR
 UT
 AU
 as
-sp
+jP
 Zv
 xO
 Yp
@@ -34443,7 +34506,7 @@ Mf
 Mf
 ph
 yA
-sp
+jP
 TE
 vO
 Th
@@ -36004,13 +36067,13 @@ ic
 VV
 SL
 UJ
-Yi
+sS
 ke
 zO
 ju
 zO
 kO
-ui
+pE
 IY
 GJ
 IN

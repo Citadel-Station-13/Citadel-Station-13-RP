@@ -648,6 +648,9 @@
 	},
 /obj/structure/table/carbon/reinforced,
 /obj/structure/window/phoronreinforced,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/secondarybridge)
 "cI" = (
@@ -3942,6 +3945,14 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/hyper/west_mount,
+/obj/machinery/button/remote/blast_door{
+	id = "armorylight";
+	name = "Emergency bridge Acccess";
+	pixel_x = 42;
+	req_access = list(19,44);
+	dir = 1;
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/secondarybridge)
 "qy" = (
@@ -8815,6 +8826,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/highsecurity,
 /obj/map_helper/access_helper/airlock/station/command/strelka,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "secondarybridge";
+	name = "Emergency bridge Acccess"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "secondarybridge";
+	name = "Emergency bridge Acccess";
+	pixel_x = 26;
+	req_access = list(19,44)
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/secondarybridge)
 "LG" = (
@@ -11354,6 +11376,11 @@
 /obj/structure/table/carbon/reinforced,
 /obj/structure/window/phoronreinforced{
 	dir = 1
+	},
+/obj/machinery/recharger{
+	pixel_y = -2;
+	pixel_x = 15;
+	layer = 3
 	},
 /turf/simulated/floor/tiled/dark,
 /area/strelka/secondarybridge)

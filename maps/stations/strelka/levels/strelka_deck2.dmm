@@ -716,6 +716,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
 "cb" = (
@@ -3109,7 +3112,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -3119,6 +3121,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
@@ -4317,7 +4322,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/psyward)
 "lY" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light/small/old{
 	dir = 1;
 	light_power = 1
@@ -5262,16 +5266,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
-"oq" = (
-/obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 1379;
-	master_tag = "solar_dock";
-	name = "interior access button";
-	pixel_y = 11
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/maintenance/strelka/eva)
 "or" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8139,9 +8133,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
@@ -8721,7 +8717,6 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/emt/strelka/cockpit)
 "xv" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/door/window/southleft{
 	req_one_access = list(10,24,11)
@@ -10430,6 +10425,13 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/structure/cable/white{
 	icon_state = "4-8"
+	},
+/obj/machinery/access_button{
+	command = "cycle_int";
+	frequency = 1379;
+	master_tag = "solar_dock";
+	name = "interior access button";
+	pixel_y = -22
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/eva)
@@ -12608,6 +12610,13 @@
 	dir = 1;
 	light_power = 1
 	},
+/obj/machinery/access_button{
+	command = "cycle_int";
+	frequency = 1379;
+	master_tag = "solar_dock";
+	name = "interior access button";
+	pixel_y = 11
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
 "Hk" = (
@@ -13780,6 +13789,9 @@
 /obj/machinery/light/small/old{
 	dir = 4;
 	light_power = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/eva)
@@ -32120,7 +32132,7 @@ Wf
 Wf
 tb
 Bo
-oq
+tb
 VU
 rG
 OA
