@@ -30,4 +30,4 @@
 #define HOLIDAY_NEW_YEAR_EVE 		"New Year's Eve"
 #define HOLIDAY_FRIDAY_THIRTEEN 	"Friday the 13th"
 #define HOLIDAY_CHRISTMAS			"Christmas"
-#define HOLIDAY_hALLOWEEN			"Halloween"
+#define HOLIDAY_HALLOWEEN			"Halloween"

@@ -153,7 +153,7 @@
  */
 /obj/machinery/vending/proc/handle_holiday_products()
 	for(var/holiday in holiday_products)
-		if(holiday in GLOB.Holiday)
+		if(IsHoliday(holiday))
 			products += holiday_products[holiday]
 
 /obj/machinery/vending/Destroy()
