@@ -1,5 +1,5 @@
 /datum/holiday/xmas
-	name = CHRISTMAS
+	name = HOLIDAY_CHRISTMAS
 	desc = "Christmas is a very old holiday that originated in Earth, Sol.  It was a \
 					religious holiday for the Christian religion, which would later form Unitarianism.  Nowdays, the holiday is celebrated \
 					generally by giving gifts, symbolic decoration, and reuniting with one's family.  It also features a mythical fat \

@@ -1,5 +1,5 @@
 /datum/holiday/halloween
-	name = HALLOWEEN
+	name = HOLIDAY_HALLOWEEN
 	desc = "Originating from Earth, Halloween is also known as All Saints' Eve, and \
 					is celebrated by some by attending costume parties, trick-or-treating, carving faces in pumpkins, or visiting \
 					'haunted' locations.  Some people make it a goal to scare other people."

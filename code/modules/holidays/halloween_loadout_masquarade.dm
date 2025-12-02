@@ -20,7 +20,7 @@
  * i decided it'd be really funny if we had pseudo antags running around as a reminder that our server could have antags (and therefore fun) but don't
  */
 /datum/loadout_entry/seasonal/masquarade
-	holiday_whitelist = list(HALLOWEEN)
+	holiday_whitelist = list(HOLIDAY_HALLOWEEN)
 	category = "Halloween - Masquarade"
 	abstract_type = /datum/loadout_entry/seasonal/masquarade
 	description = "This is not a real antagonist item. It is highly recommended you rename and set their description yourself using gear tweaks."
