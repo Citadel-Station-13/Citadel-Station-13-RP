@@ -19,12 +19,8 @@
 	/// active effective thickness multiplier; determines our effective integrity
 	var/effective_relative_thickness = 1
 
-/obj/item/vehicle_component/plating/get_weight()
-	return weight * effective_relative_thickness + obj_storage?.get_containing_weight()
-
 /obj/item/vehicle_component/plating/proc/set_effective_relative_thickness(multiplier)
 	effective_relative_thickness = multiplier
-	update_weight()
 
 /obj/item/vehicle_component/plating/proc/reset_redirection_armor()
 	set_redirection_armor(initial(armor_type))

@@ -30,4 +30,6 @@
 
 /obj/item/proc/propagate_weight(old_weight, new_weight)
 	loc?.on_contents_weight_change(src, old_weight, new_weight)
-	inv_inside?.owner?.adjust_current_carry_weight(new_weight - old_weight)
+	if(isliving(inv_inside?.owner))
+		var/mob/living/casted = inv_inside.owner
+		casted.adjust_current_carry_weight(new_weight - old_weight)

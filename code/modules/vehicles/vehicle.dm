@@ -73,6 +73,10 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/in_gravity = TRUE
 	/// Last time we moved ourselves.
 	var/last_self_move
+	/// cached total module vehicle_encumbrance
+	var/tmp/total_module_encumbrance = 0
+	/// cached total component vehicle_encumbrance
+	var/tmp/total_component_encumbrance = 0
 
 	//* Occupants *//
 	/// list of mobs associated to their control flags
@@ -383,12 +387,12 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	..()
 	if(istype(entity, /obj/item/vehicle_component) && (entity in components))
 		cached_component_weight += (new_weight - old_weight)
-	if(istype(entity, /obj/item/vehicle_module) && (entity in modules))
+	else if(istype(entity, /obj/item/vehicle_module) && (entity in modules))
 		cached_module_weight += (new_weight - old_weight)
-
-	// TODO: /atom/movable level weight
-	// if(entity in occupants)
-	// if(entity in cargo_held)
+	else if(entity in cargo_held)
+		cached_cargo_weight += (new_weight - old_weight)
+	else if(entity in occupants)
+		cached_occupant_weight += (new_weight - old_weight)
 
 	ui_controller?.queue_update_weight_data()
 

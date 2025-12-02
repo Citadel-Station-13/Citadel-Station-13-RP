@@ -17,6 +17,8 @@
 	var/obj/vehicle/vehicle
 	/// Unremoveable? Won't be able to be salvaged if this is set to TRUE.
 	var/intrinsic = FALSE
+	/// vehicle encumbrance
+	var/vehicle_encumbrance = 0
 
 	//* Binding *//
 	/// bind shieldtype type; must be a path of /datum/shieldcall/bound/vehicle_component if set.
@@ -72,6 +74,16 @@
 /obj/item/vehicle_component/proc/examine_render_on_vehicle(datum/event_args/examine/examine)
 	var/integrity_string = examine_render_integrity(examine)
 	return "It has [examine_render_name(examine)] attached.[integrity_string ? " [integrity_string]" : ""]"
+
+/obj/item/vehicle_component/proc/set_vehicle_encumbrance(new_value)
+	. = vehicle_encumbrance
+	vehicle_encumbrance = new_value
+	on_vehicle_encumbrance_change(., new_value)
+	. = null
+
+/obj/item/vehicle_component/proc/on_vehicle_encumbrance_change(old_value, new_value)
+	vehicle?.total_component_encumbrance += (new_value - old_value)
+	vehicle.update_movespeed_vehicle_encumbrance()
 
 /**
  * Does an action after a delay. This is basically `do_after` but for vehicles.

@@ -36,7 +36,7 @@
 	for(var/mob/living/victim in occupants)
 		// don't use dead people as soak sources or the meta will be
 		// piling corpses into your mech
-		if(victim.stat != STAT_IS_CONSCIOUS)
+		if(victim.stat != CONSCIOUS)
 			if(prob(80))
 				continue
 		// low probability in the first place

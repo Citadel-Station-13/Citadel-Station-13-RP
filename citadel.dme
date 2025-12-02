@@ -3902,7 +3902,6 @@
 #include "code\modules\mob\living\living-inventory.dm"
 #include "code\modules\mob\living\living-melee_attack_chain.dm"
 #include "code\modules\mob\living\living-movement.dm"
-#include "code\modules\mob\living\living-on_contents.dm"
 #include "code\modules\mob\living\living-radiation.dm"
 #include "code\modules\mob\living\living.dm"
 #include "code\modules\mob\living\living_defines.dm"

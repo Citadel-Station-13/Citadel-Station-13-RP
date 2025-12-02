@@ -146,6 +146,10 @@
 		SMOOTH_GLIDE_SIZE(src, pixels_per_tick * GLOB.glide_size_multiplier, TRUE)
 #endif
 
+/obj/vehicle/proc/update_movespeed_vehicle_encumbrance()
+	#warn impl
+	update_movespeed_modifier()
+
 /// Handles the special case of editing the movement var
 /obj/vehicle/vv_edit_var(var_name, var_value)
 	var/slowdown_edit = (var_name == NAMEOF(src, movespeed_hyperbolic))

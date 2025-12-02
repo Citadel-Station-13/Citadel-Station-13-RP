@@ -14,6 +14,7 @@
 	integrity_failure = 100
 
 	weight = 10
+	w_class = WEIGHT_CLASS_BULKY
 
 	//* Module *//
 	/// currently active chassis
@@ -30,6 +31,8 @@
 	/// * generally needs to be set if [disallow_duplicates] is
 	#warn check this in vehicle
 	var/disallow_duplicates_match_type
+	/// vehicle encumbrance
+	var/vehicle_encumbrance = 0
 
 	//* Click *//
 	/// click half-arc from forward of mech
@@ -92,6 +95,16 @@
 	if(!vehicle)
 		return FALSE
 	#warn impl
+
+/obj/item/vehicle_module/proc/set_vehicle_encumbrance(new_value)
+	. = vehicle_encumbrance
+	vehicle_encumbrance = new_value
+	on_vehicle_encumbrance_change(., new_value)
+	. = null
+
+/obj/item/vehicle_module/proc/on_vehicle_encumbrance_change(old_value, new_value)
+	vehicle?.total_module_encumbrance += (new_value - old_value)
+	vehicle.update_movespeed_vehicle_encumbrance()
 
 /**
  * Does an action after a delay. This is basically `do_after` but for vehicles.

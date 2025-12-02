@@ -41,7 +41,6 @@
 	var/dir_in = 2
 
 	var/state = MECHA_OPERATING
-	var/last_message = 0
 	#warn enable ID upload if just built
 	var/add_req_access = FALSE
 	#warn enable maint if just built
@@ -152,7 +151,7 @@
 			WR.crowbar_salvage += comp
 		if(power_cell)
 			WR.crowbar_salvage += power_cell
-			cepower_cellll.forceMove(WR)
+			power_cell.forceMove(WR)
 			power_cell.charge = rand(0, power_cell.charge)
 			power_cell = null
 		if(internal_tank)
@@ -169,9 +168,9 @@
 	return ..()
 
 /obj/vehicle/sealed/mecha/drain_energy(datum/actor, amount, flags)
-	if(!cell)
+	if(!power_cell)
 		return 0
-	return cell.drain_energy(actor, amount, flags)
+	return power_cell.drain_energy(actor, amount, flags)
 
 /obj/vehicle/sealed/mecha/can_drain_energy(datum/actor, amount)
 	return TRUE
@@ -228,15 +227,6 @@
 			return UI_INTERACTIVE
 		if(src_object in view(2, src))
 			return UI_UPDATE //if they're close enough, allow the occupant_legacy to see the screen through the viewport or whatever.
-
-#warn nuke this
-/obj/vehicle/sealed/mecha/relaymove(mob/user,direction)
-	if(connected_port)
-		if(world.time - last_message > 20)
-			src.occupant_message("<span class='warning'>Unable to move while connected to the air system port</span>")
-			last_message = world.time
-		return 0
-	return domove(direction)
 
 /obj/vehicle/sealed/mecha/proc/can_ztravel()
 	for(var/obj/item/vehicle_module/lazy/legacy/tool/jetpack/jp in equipment)
@@ -349,14 +339,6 @@
 			var/obj/item/vehicle_module/lazy/legacy/destr = SAFEPICK(equipment)
 			if(destr)
 				destr.destroy()
-
-/obj/vehicle/sealed/mecha/proc/take_damage_legacy(amount, type="brute")
-	update_damage_alerts()
-	if(amount)
-		var/damage = absorbDamage(amount,type)
-		damage = components_handle_damage(damage,type)
-		damage_integrity(damage)
-		update_health()
 
 /obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
 	var/obj/item/vehicle_component/plating/mecha_armor/AC = internal_components[MECH_ARMOR]

@@ -1,6 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/obj/vehicle/sealed/mecha/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	..()
+	if(connected_port && loc != connected_port.loc)
+		disconnect()
+
 /obj/vehicle/sealed/mecha/user_vehicle_turn(direction)
 	// -- LEGACY BULLSHIT
 	if(zoom)
@@ -19,6 +24,10 @@
 	if(zoom)
 		if(!(world.time % 1 SECONDS))
 			occupant_send_default_chat("You cannot move while zoom-mode is turned on.")
+		return
+	if(connected_port)
+		if(!(world.time % 1 SECONDS))
+			occupant_send_default_chat("You cannot move while connected to an air port.")
 		return
 	// -- END
 
