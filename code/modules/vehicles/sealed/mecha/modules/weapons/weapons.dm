@@ -3,6 +3,7 @@
 	range = RANGED
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3)
 
+	vehicle_encumbrance = 3.5
 	module_slot = VEHICLE_MODULE_SLOT_WEAPON
 
 	var/projectile //Type of projectile fired.

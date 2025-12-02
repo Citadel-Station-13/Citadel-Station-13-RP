@@ -24,3 +24,4 @@
 	projectiles = 20
 	deviation = 1
 	module_slot = VEHICLE_MODULE_SLOT_UTILITY
+	vehicle_encumbrance = 5

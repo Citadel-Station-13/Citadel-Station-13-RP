@@ -6,7 +6,7 @@
 	desc = "A wireless energy tap that siphons power from the nearest APC. The efficiency is quite low."
 	#warn sprite; "tesla"?
 
-	weight = 15
+	vehicle_encumbrance = 2.5
 	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 
 	/// multiplier for power pulled to give to cell

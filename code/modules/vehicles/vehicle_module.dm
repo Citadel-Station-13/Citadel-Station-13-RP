@@ -13,7 +13,8 @@
 	integrity_max = 200
 	integrity_failure = 100
 
-	weight = 10
+	vehicle_encumbrance = 1
+	weight = 3
 	w_class = WEIGHT_CLASS_BULKY
 
 	//* Module *//

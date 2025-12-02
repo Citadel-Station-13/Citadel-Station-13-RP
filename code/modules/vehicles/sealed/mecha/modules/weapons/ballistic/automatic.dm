@@ -54,3 +54,4 @@
 	projectile = /obj/projectile/bullet/pistol
 	deviation = 0.5
 	module_slot = VEHICLE_MODULE_SLOT_UTILITY
+	vehicle_encumbrance = 5

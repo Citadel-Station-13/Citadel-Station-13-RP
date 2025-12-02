@@ -8,6 +8,7 @@
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 1000
+	vehicle_encumbrance = 7.5
 
 /obj/projectile/bullet/cannon
 	name ="armor-piercing shell"

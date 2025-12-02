@@ -4,15 +4,8 @@
 	icon_state = "component"
 	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-
 	var/start_damaged = FALSE
 	var/emp_resistance = 0	// Amount of emp 'levels' removed.
-
-	integrity = 100
-	var/integrity_danger_mod = 0.5	// Multiplier for comparison to integrity_max before problems start.
-	integrity_max = 100
-
-	var/internal_damage_flag	// If set, the component will toggle the flag on or off if it is destroyed / severely damaged.
 
 /obj/item/vehicle_component/examine(mob/user, dist)
 	. = ..()
@@ -128,6 +121,3 @@
 					adjust_integrity_mecha(10)
 			return
 	return ..()
-
-/obj/item/vehicle_component/proc/get_step_delay()
-	return step_delay

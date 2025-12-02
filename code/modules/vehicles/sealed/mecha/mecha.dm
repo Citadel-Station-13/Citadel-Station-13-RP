@@ -170,7 +170,7 @@
 /obj/vehicle/sealed/mecha/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	// TODO: cell wreckage?
-	QDEL_NULL(cell)
+	QDEL_NULL(power_cell)
 	return ..()
 
 /obj/vehicle/sealed/mecha/create_initial_cell(path = power_cell_type)
@@ -266,7 +266,7 @@
 	#warn impl
 	//! LEGACY
 	// Legacy: Air temperature step, if air exists
-	if(cabin_air?.volume && !hasInternalDamage(MECHA_INT_TEMP_CONTROL))
+	if(cabin_air?.volume && !fault_check(/datum/mecha_fault/temperature_control))
 		// stabilize temperature
 		// TODO: should be the job of a vehicle life support component; use proper heater and temperature loss modelling too.
 		var/target_temperature_change = T20C - XGM_GET_TEMPERATURE(cabin_air)

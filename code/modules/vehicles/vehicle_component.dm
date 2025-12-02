@@ -11,6 +11,8 @@
 	integrity = 200
 	integrity_max = 200
 	integrity_failure = 100
+	vehicle_encumbrance = 1.0
+	weight = 4.5
 
 	//* Component *//
 	/// currently active chassis

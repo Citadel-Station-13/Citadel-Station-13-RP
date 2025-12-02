@@ -29,9 +29,9 @@
 	integrity_max = 9 * /obj/vehicle/sealed/mecha/combat::integrity_max
 
 	comp_hull_relative_thickness = 5 * /obj/vehicle/sealed/mecha/combat::comp_hull_relative_thickness
-	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/heavy_duty
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/heavy
 	comp_armor_relative_thickness = 5 * /obj/vehicle/sealed/mecha/combat::comp_armor_relative_thickness
-	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/heavy_duty
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/heavy
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_HULL = 2,

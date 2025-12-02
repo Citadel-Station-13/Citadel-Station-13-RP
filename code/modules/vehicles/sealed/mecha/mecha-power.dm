@@ -7,7 +7,7 @@
 		penalty = max(comp_electrical.get_electrical_draw_penalty(), 1)
 	else
 		penalty = 1.5
-	return cell.use(DYNAMIC_J_TO_CELL_UNITS(joules * penalty))
+	return power_cell.use(DYNAMIC_J_TO_CELL_UNITS(joules * penalty))
 
 /obj/vehicle/sealed/mecha/draw_component_power_oneoff(obj/item/vehicle_component/component, joules)
 	var/penalty = 1
@@ -15,7 +15,7 @@
 		penalty = max(comp_electrical.get_electrical_draw_penalty(), 1)
 	else
 		penalty = 1.5
-	return cell.use(DYNAMIC_J_TO_CELL_UNITS(joules * penalty))
+	return power_cell.use(DYNAMIC_J_TO_CELL_UNITS(joules * penalty))
 
 /obj/vehicle/sealed/mecha/draw_sourced_power_oneoff(source, name, joules)
 	var/penalty = 1
@@ -23,4 +23,4 @@
 		penalty = max(comp_electrical.get_electrical_draw_penalty(), 1)
 	else
 		penalty = 1.5
-	return cell.use(DYNAMIC_J_TO_CELL_UNITS(joules * penalty))
+	return power_cell.use(DYNAMIC_J_TO_CELL_UNITS(joules * penalty))

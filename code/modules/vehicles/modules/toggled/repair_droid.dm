@@ -6,7 +6,7 @@
 	desc = "A repair-drone deployer that can fix some limited amount of damage to the vehicle's components and modules."
 	#warn sprite
 
-	weight = 15
+	vehicle_encumbrance = 2.5
 
 	module_slot = VEHICLE_MODULE_SLOT_HULL
 

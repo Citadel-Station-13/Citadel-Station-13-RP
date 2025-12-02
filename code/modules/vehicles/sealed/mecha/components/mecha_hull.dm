@@ -2,6 +2,9 @@
 
 /datum/armor/vehicle_plating_redirection/mecha_hull
 
+/**
+ * * Acquirable from R&D / lathes
+ */
 /obj/item/vehicle_component/plating/mecha_hull
 	name = "mecha hull"
 	icon = 'icons/mecha/mech_component.dmi'
@@ -14,23 +17,25 @@
 	integrity_max = 300
 	integrity_failure = 200
 
-	emp_resistance = 0	// Amount of emp 'levels' removed.
+	vehicle_encumbrance = 7.5
 	internal_damage_flag = MECHA_INT_FIRE
 
+/**
+ * * Acquirable from R&D / lathes
+ */
 /obj/item/vehicle_component/plating/mecha_hull/durable
-	name = "durable mecha hull"
-	step_delay = 4
-	integrity_danger_mod = 0.3
-	integrity_max = 100
+	name = /obj/item/vehicle_component/plating/mecha_hull::name + " (durable)"
+	vehicle_encumbrance = 12.5
 
+/obj/item/vehicle_component/plating/mecha_hull/durable/citadel
+	name = /obj/item/vehicle_component/plating/mecha_hull::name + " (citadel)"
+	vehicle_encumbrance = 25
+
+/**
+ * * Acquirable from R&D / lathes
+ */
 /obj/item/vehicle_component/plating/mecha_hull/lightweight
-	name = "lightweight mecha hull"
-	step_delay = 1
-	integrity_danger_mod = 0.3
+	name = /obj/item/vehicle_component/plating/mecha_hull::name + " (lightweight)"
+	vehicle_encumbrance = 4
 
-/obj/item/vehicle_component/plating/mecha_hull/heavy_duty
-	name = "heavy duty mecha hull"
-	step_delay = 5
-	integrity_danger_mod = 0.2
-	integrity_max = 2500
-
+#warn stats

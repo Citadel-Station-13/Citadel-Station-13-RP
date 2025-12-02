@@ -2,6 +2,9 @@
 
 /datum/armor/vehicle_plating_redirection/mecha_armor
 
+/**
+ * * Acquirable from R&D / lathes
+ */
 /obj/item/vehicle_component/plating/mecha_armor
 	name = "mecha plating"
 	icon = 'icons/mecha/mech_component.dmi'
@@ -14,6 +17,7 @@
 	integrity_max = 300
 	integrity_failure = 200
 
+	vehicle_encumbrance = 7.5
 	start_damaged = FALSE
 	emp_resistance = 4
 	internal_damage_flag = MECHA_INT_TEMP_CONTROL
@@ -34,23 +38,11 @@
 	var/minimum_penetration = 0
 	var/fail_penetration_value = 0.66
 
-/obj/item/vehicle_component/plating/mecha_armor/mining
-	name = "blast-resistant mecha plating"
-	step_delay = 2
-	integrity_max = 80
-	damage_absorption = list(
-									"brute"=0.8,
-									"fire"=0.8,
-									"bullet"=1.2,
-									"laser"=1.2,
-									"energy"=1,
-									"bomb"=0.5,
-									"bio"=1,
-									"rad"=1
-									)
-
+/**
+ * * Acquirable from R&D / lathes
+ */
 /obj/item/vehicle_component/plating/mecha_armor/lightweight
-	name = "lightweight mecha plating"
+	name = /obj/item/vehicle_component/plating/mecha_armor::name + " (lightweight)"
 	integrity_max = 50
 	step_delay = 0
 	damage_absorption = list(
@@ -64,8 +56,11 @@
 									"rad"=1
 									)
 
-/obj/item/vehicle_component/plating/mecha_armor/reinforced
-	name = "reinforced mecha plating"
+/**
+ * * Acquirable from R&D / lathes
+ */
+/obj/item/vehicle_component/plating/mecha_armor/durable
+	name = /obj/item/vehicle_component/plating/mecha_armor::name + " (reinforced)"
 	step_delay = 4
 	integrity_max = 80
 	minimum_penetration = 10
@@ -78,69 +73,17 @@
 		"bomb"=0.8
 		)
 
-/obj/item/vehicle_component/plating/mecha_armor/military
-	name = "military grade mecha plating"
-	step_delay = 4
-	integrity_max = 100
-	emp_resistance = 2
-	damage_minimum = 15
-	minimum_penetration = 25
-	damage_absorption = list(
-		"brute"=0.5,
-		"fire"=1.1,
-		"bullet"=0.65,
-		"laser"=0.85,
-		"energy"=0.9,
-		"bomb"=0.8
-		)
+/obj/item/vehicle_component/plating/mecha_armor/durable/citadel
+	name = /obj/item/vehicle_component/plating/mecha_armor::name + " (citadel)"
 
-/obj/item/vehicle_component/plating/mecha_armor/marshal
-	name = "marshal mecha plating"
-	step_delay = 3
-	integrity_max = 100
-	emp_resistance = 3
-	deflect_chance = 15
-	minimum_penetration = 10
-	damage_absorption = list(
-		"brute"=0.75,
-		"fire"=1,
-		"bullet"=0.8,
-		"laser"=0.7,
-		"energy"=0.85,
-		"bomb"=1
-		)
+/obj/item/vehicle_component/plating/mecha_armor/advanced
+	name = /obj/item/vehicle_component/plating/mecha_armor::name + " (advanced)"
 
-/obj/item/vehicle_component/plating/mecha_armor/marshal/reinforced
-	name = "blackops mecha plating"
-	step_delay = 5
-	damage_absorption = list(
-		"brute"=0.6,
-		"fire"=0.8,
-		"bullet"=0.6,
-		"laser"=0.5,
-		"energy"=0.65,
-		"bomb"=0.8
-		)
-
-/obj/item/vehicle_component/plating/mecha_armor/military/marauder
-	name = "cutting edge mecha plating"
-	step_delay = 4
-	integrity_max = 150
-	emp_resistance = 3
-	deflect_chance = 25
-	damage_minimum = 30
-	minimum_penetration = 25
-	damage_absorption = list(
-		"brute"=0.5,
-		"fire"=0.7,
-		"bullet"=0.45,
-		"laser"=0.6,
-		"energy"=0.7,
-		"bomb"=0.7
-		)
+/obj/item/vehicle_component/plating/mecha_armor/advanced/lightweight
+	name = /obj/item/vehicle_component/plating/mecha_armor::name + " (advanced lightweight)"
 
 /obj/item/vehicle_component/plating/mecha_armor/alien
-	name = "strange mecha plating"
+	name = /obj/item/vehicle_component/plating/mecha_armor::name + " (???)"
 	step_delay = 2
 	damage_absorption = list(
 		"brute"=0.7,
@@ -150,20 +93,3 @@
 		"energy"=0.7,
 		"bomb"=0.7
 		)
-
-/obj/item/vehicle_component/plating/mecha_armor/heavy_duty
-	name = "heavy duty mecha plating"
-	step_delay = 4
-	integrity_max = 3000
-	emp_resistance = 5
-	deflect_chance = 15
-	minimum_penetration = 0
-	damage_absorption = list(
-		"brute"=0.50,
-		"fire"=0.9,
-		"bullet"=0.65,
-		"laser"=0.8,
-		"energy"=0.85,
-		"bomb"=0.5
-		)
-
