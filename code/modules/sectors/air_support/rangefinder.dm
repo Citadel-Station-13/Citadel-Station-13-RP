@@ -88,14 +88,13 @@
 	/// * THIS IS NOT NECESSARILY THE PERSON HOLDING US.
 	var/mob/currently_zoomed_in
 
-	var/sfx_lasing_start
-	var/sfx_lasing_start_vol = 75
+	var/sfx_lasing_start = /datum/soundbyte/nightvision_chargeup
+	var/sfx_lasing_start_vol = 35
 	var/sfx_lasing_start_vary = FALSE
 
-	var/sfx_lasing_lock
-	var/sfx_lasing_lock_vol = 75
+	var/sfx_lasing_lock = /datum/soundbyte/target_lock_1
+	var/sfx_lasing_lock_vol = 35
 	var/sfx_lasing_lock_vary = FALSE
-	#warn impl sound
 
 /obj/item/rangefinder/Destroy()
 	QDEL_NULL(active_laser_target)
@@ -218,7 +217,14 @@
 		)
 		return TRUE
 
+	var/effective_delay = laser_time
+
+	if(effective_delay > 0.5 SECONDS)
+		playsound(src, sfx_lasing_start, sfx_lasing_start_vol, sfx_lasing_start_vary, -4)
 	#warn impl
+
+
+	playsound(src, sfx_lasing_lock, sfx_lasing_lock_vol, sfx_lasing_lock_vary, -4)
 
 /obj/item/rangefinder/process(delta_time)
 	if(active_laser_target)

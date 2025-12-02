@@ -7,7 +7,8 @@
 /obj/overmap/entity/orbital_deployment_transit
 	name = "orbital base drop"
 	desc = "A base someone launched at a planet. Is this safe?"
-	#warn sprite
+	icon = 'icons/modules/overmap/entity.dmi'
+	icon_state = "orbital_deployment_transit"
 
 	var/datum/orbital_deployment_zone/zone
 	var/datum/orbital_deployment_transit/transit
