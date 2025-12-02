@@ -3653,10 +3653,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/storage/box/nifsofts_engineering,
 /obj/item/storage/box/nifsofts_medical,
-/obj/item/storage/box/nifsofts_mining,
-/obj/item/storage/box/nifsofts_security,
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
 "mk" = (
@@ -14708,13 +14705,19 @@
 /area/maintenance/strelka/medical)
 "UT" = (
 /obj/structure/table/carbon,
-/obj/machinery/recharger,
+/obj/machinery/recharger{
+	pixel_x = 6
+	},
 /obj/effect/floor_decal/corner/brown/full{
 	dir = 8
 	},
 /obj/machinery/light/small/old{
 	dir = 1;
 	light_power = 1
+	},
+/obj/item/storage/box/nifsofts_mining{
+	pixel_y = 12;
+	pixel_x = -7
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/reception)

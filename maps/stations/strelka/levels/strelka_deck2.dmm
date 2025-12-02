@@ -907,8 +907,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "cw" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "cy" = (
@@ -1105,7 +1105,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/eva)
 "dg" = (
-/obj/structure/closet/radiation,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "dh" = (
@@ -2102,7 +2102,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/space)
 "fU" = (
@@ -2739,6 +2739,10 @@
 "hH" = (
 /obj/structure/table/reinforced,
 /obj/fiftyspawner/deuterium,
+/obj/structure/railing/grey,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "hJ" = (
@@ -4030,10 +4034,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/strelka/detective)
-"kX" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/simulated/floor/plating,
-/area/engineering/strelka/engine)
 "kY" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
@@ -5441,11 +5441,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 1
 	},
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/engine)
 "oF" = (
@@ -6194,6 +6194,9 @@
 "qS" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/structure/railing/grey{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
@@ -7042,12 +7045,12 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/maintenance/strelka/eva)
 "tc" = (
-/obj/structure/closet/firecloset/full,
 /obj/machinery/light/small/old{
 	dir = 4;
 	light_power = 1
 	},
 /obj/structure/railing,
+/obj/structure/closet/walllocker_double/hydrant/east,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/explo)
 "td" = (
@@ -8950,10 +8953,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
 	},
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/structure/railing/grey,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "yd" = (
@@ -9675,6 +9675,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "zG" = (
@@ -9736,13 +9737,6 @@
 /obj/machinery/computer/timeclock/premade/west,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/explo)
-"zM" = (
-/obj/machinery/camera/network/engineering{
-	dir = 4
-	},
-/obj/machinery/fusion_fuel_compressor,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/strelka/engine)
 "zN" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "Nitrogen Filter";
@@ -11209,6 +11203,7 @@
 /area/security/strelka/cell1)
 "Dn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
+/obj/structure/railing/grey,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "Do" = (
@@ -12580,6 +12575,7 @@
 /obj/machinery/light/spot/no_nightshift{
 	dir = 8
 	},
+/obj/machinery/fusion_fuel_compressor,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "Hh" = (
@@ -12664,6 +12660,9 @@
 "Hq" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
+	},
+/obj/structure/railing/grey{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
@@ -13751,14 +13750,11 @@
 /area/shuttle/emt/strelka/main)
 "KD" = (
 /obj/machinery/button/remote/blast_door{
-	dir = 4;
+	dir = 1;
 	id = "EngineVent";
 	name = "Reactor Ventillatory Control";
 	req_access = list(10);
-	pixel_x = -22
-	},
-/obj/item/paper/strelka_rust_access{
-	pixel_x = -33
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
@@ -14966,6 +14962,13 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/strelka/nacelle2)
+"NN" = (
+/obj/structure/closet/masks,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/strelka/engine)
 "NO" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/emt/strelka/main)
@@ -15413,8 +15416,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "OO" = (
@@ -15528,6 +15531,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
+	},
+/obj/structure/railing/grey{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
@@ -15905,8 +15911,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/strelka/engine)
 "Qh" = (
@@ -17516,7 +17522,7 @@
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos/strelka/engineering/atmos)
 "TW" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/space)
 "TX" = (
@@ -17795,7 +17801,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "UO" = (
-/obj/structure/closet/emcloset,
+/obj/structure/closet/walllocker/emerglocker/east,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/strelka/explo)
 "UP" = (
@@ -18333,12 +18339,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 10
 	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/railing/grey{
-	dir = 8
-	},
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "Wm" = (
@@ -18741,8 +18742,7 @@
 	pixel_y = -5
 	},
 /obj/item/clothing/accessory/armor/tag/ntc{
-	pixel_x = 5;
-	pixel_y = 5
+	pixel_x = 5
 	},
 /obj/item/clothing/accessory/armor/tag/ntc{
 	pixel_x = 5;
@@ -18750,11 +18750,18 @@
 	},
 /obj/item/clothing/accessory/armor/tag/ntbs{
 	pixel_x = 5;
-	pixel_y = 1
+	pixel_y = -4
+	},
+/obj/item/storage/box/nifsofts_security{
+	pixel_y = 13;
+	pixel_x = 6
 	},
 /obj/item/clothing/accessory/armor/tag/ntbs{
 	pixel_x = 5;
-	pixel_y = 1
+	pixel_y = -4
+	},
+/obj/item/clothing/accessory/armor/tag/ntc{
+	pixel_x = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/strelka/storage)
@@ -30230,13 +30237,13 @@ tr
 tr
 tv
 tv
-Ik
-Ik
-DL
+UU
+UU
+UU
 KP
-DL
-Ik
-Ik
+UU
+UU
+UU
 Ik
 tr
 Ik
@@ -30619,11 +30626,11 @@ Uq
 TW
 vC
 vC
-vC
-vC
+nc
+nc
 nu
-vC
-vC
+nc
+nc
 vC
 vC
 uj
@@ -30813,13 +30820,13 @@ fT
 cw
 vC
 hH
-zM
-kX
-QC
-kX
 dg
+QC
+QC
+QC
+dg
+NN
 Md
-vC
 Ok
 Qe
 uj
@@ -31006,13 +31013,13 @@ ON
 ON
 cw
 Hf
-Dh
-zF
-kX
+xx
+dg
 QC
-kX
+QC
+QC
 zF
-Dh
+Vv
 KD
 XD
 oD
@@ -31202,9 +31209,9 @@ Dh
 Dh
 Mr
 nc
-nc
+QC
 Cb
-nc
+QC
 nc
 xV
 Dh
@@ -31590,9 +31597,9 @@ Gj
 Dh
 Yr
 ki
-nc
+QC
 fD
-nc
+QC
 Rr
 Kq
 Dh
