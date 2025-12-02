@@ -17,6 +17,7 @@
 	var/stabilization_on = 0
 	var/volume_rate = 500              //Needed for borg jetpack transfer
 	item_action_name = "Toggle Jetpack"
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 /obj/item/tank/jetpack/Initialize(mapload)
 	. = ..()
