@@ -65,29 +65,12 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 				if(17)
 					Holiday[HOLIDAY_ST_PATRICK] = "An old holiday originating from Earth, Sol, celebrating the color green, \
 					shamrocks, attending parades, and drinking alcohol."
-				if(27)
-					if(YY == 16)
-						Holiday["Easter"] = ""
-				if(31)
-					if(YY == 13)
-						Holiday["Easter"] = ""
 
 		if(4)	//Apr
 			switch(DD)
 				if(1)
 					Holiday["April Fool's Day"] = "An old holiday that endevours one to pull pranks and spread hoaxes on their friends."
-					if(YY == 18)
-						Holiday["Easter"] = ""
-				if(8)
-					if(YY == 15)
-						Holiday["Easter"] = ""
-				if(16)
-					if(YY == 17) //Easter can go die for all of this copypasta.
-						Holiday["Easter"] = ""
 
-				if(20)
-					if(YY == 14)
-						Holiday["Easter"] = ""
 				if(22)
 					Holiday[HOLIDAY_EARTH] = "A holiday of enviromentalism, that originated on it's namesake, Earth."
 
