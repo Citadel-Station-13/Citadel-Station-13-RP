@@ -29,13 +29,15 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 	//Main switch. If any of these are too dumb/inappropriate, or you have better ones, feel free to change whatever
 	//Holidays are now associate lists.  You should write holidays like this.
 	//Holiday["Holiday Name Here"] = "Blurb about the holiday here."
+	if(is_it_easter(YY, MM, DD))
+		Holiday[HOLIDAY_EASTER] = ""
 	switch(MM)
 		if(1)	//Jan
 			switch(DD)
 				if(1)
-					Holiday["New Years's Day"] = "The day of the new solar year on Sol."
+					Holiday[HOLIDAY_NEW_YEAR] = "The day of the new solar year on Sol."
 				if(12)
-					Holiday["Vertalliq-Qerr"] = "Vertalliq-Qerr, translated to mean 'Festival of the Royals', is a \
+					Holiday[HOLIDAY_SKRELL_ROYALS] = "Vertalliq-Qerr, translated to mean 'Festival of the Royals', is a \
 					Skrell holiday that celebrates the Qerr-Katish and all they have provided for the rest of Skrell society, \
 					it often features colourful displays and skilled performers take this time to show off some of their more \
 					fancy displays."
@@ -43,25 +45,25 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 		if(2)	//Feb
 			switch(DD)
 				if(2)
-					Holiday["Groundhog Day"] = "An unoffical holiday based on ancient folklore that originated on Earth, \
+					Holiday[HOLIDAY_GROUNDHOG] = "An unoffical holiday based on ancient folklore that originated on Earth, \
 					that involves the worship of an almighty groundhog, that could control the weather based on if it casted a shadow."
 				if(14)
-					Holiday["Valentine's Day"] = "An old holiday that revolves around romance and love."
+					Holiday[HOLIDAY_VALENTINES] = "An old holiday that revolves around romance and love."
 				if(17)
-					Holiday["Random Acts of Kindness Day"] = "An unoffical holiday that challenges everyone to perform \
+					Holiday[HOLIDAY_RANDOM_KINDNESS] = "An unoffical holiday that challenges everyone to perform \
 					acts of kindness to their friends, co-workers, and strangers, for no reason."
 
 		if(3)	//Mar
 			switch(DD)
 				if(3)
-					Holiday["Qixm-tes"] = "Qixm-tes, or 'Day of mourning', is a Skrell holiday where Skrell gather at places \
+					Holiday[HOLIDAY_SKRELL_MOURNING] = "Qixm-tes, or 'Day of mourning', is a Skrell holiday where Skrell gather at places \
 					of worship and sing a song of mourning for all those who have died in service to their empire."
 				if(14)
-					Holiday["Pi Day"] = "An unoffical holiday celebrating the mathematical constant Pi.  It is celebrated on \
+					Holiday[HOLIDAY_PI] = "An unoffical holiday celebrating the mathematical constant Pi.  It is celebrated on \
 					March 14th, as the digits form 3 14, the first three significant digits of Pi.  Observance of Pi Day generally \
 					involve eating (or throwing) pie, due to a pun.  Pies also tend to be round, and thus relatable to Pi."
 				if(17)
-					Holiday["St. Patrick's Day"] = "An old holiday originating from Earth, Sol, celebrating the color green, \
+					Holiday[HOLIDAY_ST_PATRICK] = "An old holiday originating from Earth, Sol, celebrating the color green, \
 					shamrocks, attending parades, and drinking alcohol."
 				if(27)
 					if(YY == 16)
@@ -87,41 +89,41 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 					if(YY == 14)
 						Holiday["Easter"] = ""
 				if(22)
-					Holiday["Earth Day"] = "A holiday of enviromentalism, that originated on it's namesake, Earth."
+					Holiday[HOLIDAY_EARTH] = "A holiday of enviromentalism, that originated on it's namesake, Earth."
 
 		if(5)	//May
 			switch(DD)
 				if(1)
-					Holiday["Interstellar Workers' Day"] = "This holiday celebrates the work of laborers and the working class."
+					Holiday[HOLIDAY_WORKERS] = "This holiday celebrates the work of laborers and the working class."
 				if(18)
-					Holiday["Remembrance Day"] = "Remembrance Day (or, as it is more informally known, Armistice Day) is a confederation-wide holiday \
+					Holiday[HOLIDAY_REMEMBRANCE] = "Remembrance Day (or, as it is more informally known, Armistice Day) is a confederation-wide holiday \
 					mostly observed by its member states since late 2520. Officially, it is a day of remembering the men and women who died in various armed conflicts \
 					throughout human history. Unofficially, however, it is commonly treated as a holiday honoring the victims of the Human-Unathi war. \
 					Observance of this day varies throughout human space, but most common traditions are the act of bringing flowers to graves,\
 					attending parades, and the wearing of poppies (either paper or real) in one's clothing."
 				if(28)
-					Holiday["Jiql-tes"] = "A Skrellian holiday that translates to 'Day of Celebration', Skrell communities \
+					Holiday[HOLIDAY_SKRELL_CELEBRATION] = "A Skrellian holiday that translates to 'Day of Celebration', Skrell communities \
 					gather for a grand feast and give gifts to friends and close relatives."
 
 		if(6)	//Jun
 			switch(DD)
 				if(6)
-					Holiday["Sapient Rights Day"] = "This holiday celebrates the passing of the Declaration of Sapient Rights by OriCon, which guarantees the \
+					Holiday[HOLIDAY_SAPIENT_RIGHTS] = "This holiday celebrates the passing of the Declaration of Sapient Rights by OriCon, which guarantees the \
 					same protections humans are granted to all sapient, living species."
 				if(14)
-					Holiday["Blood Donor Day"] = "This holiday was created to raise awareness of the need for safe blood and blood products, \
+					Holiday[HOLIDAY_BLOOD_DONOR] = "This holiday was created to raise awareness of the need for safe blood and blood products, \
 					and to thank blood donors for their voluntary, life-saving gifts of blood."
 				if(20)
-					Holiday["Civil Servant's Day"] = "Civil Servant's Day is a holiday observed in OCG member states that honors civil servants everywhere,\
+					Holiday[HOLIDAY_CIVIL_SERVANTS] = "Civil Servant's Day is a holiday observed in OCG member states that honors civil servants everywhere,\
 +					(especially those who are members of the armed forces and the emergency services), or have been or have been civil servants in the past."
 
 		if(7)	//Jul
 			switch(DD)
 				if(1)
-					Holiday["Doctors' Day"] = "A holiday that recognizes the services of physicians, commonly celebrated \
+					Holiday[HOLIDAY_DOCTORS] = "A holiday that recognizes the services of physicians, commonly celebrated \
 					in healthcare organizations and facilities."
 				if(30)
-					Holiday["Friendship Day"] = "An unoffical holiday that recognizes the value of friends and companionship.  Indeed, not having someone watch \
+					Holiday[HOLIDAY_FRIENDSHIP] = "An unoffical holiday that recognizes the value of friends and companionship.  Indeed, not having someone watch \
 					your back while in space can be dangerous, and the cold, isolating nature of space makes friends all the more important."
 
 		if(8)	//Aug
@@ -130,34 +132,34 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 //					Holiday["S'randarr's Day"] = "A Tajaran holiday that occurs on the longest day of the year in summer,
 //					on Ahdomai. It is named after the Tajaran deity of Light, and huge celebrations are common."
 				if(8)
-					Holiday["Vore Day"] = "A holiday representing the innate desire in all/most/some/a few of us to devour each other or be devoured."
+					Holiday[HOLIDAY_VORE] = "A holiday representing the innate desire in all/most/some/a few of us to devour each other or be devoured."
 
 				if(27)
-					Holiday["Forgiveness Day"] = "A time to forgive and be forgiven."
+					Holiday[HOLIDAY_FORGIVENESS] = "A time to forgive and be forgiven."
 
 		if(9)	//Sep
 			switch(DD)
 				if(17)
-					Holiday["Qill-xamr"] = "Translated to 'Night of the dead', it is a Skrell holiday where Skrell \
+					Holiday[HOLIDAY_SKRELL_DEAD] = "Translated to 'Night of the dead', it is a Skrell holiday where Skrell \
 					communities hold parties in order to remember loved ones who passed, unlike Qixm-tes, this applies to everyone \
 					and is a joyful celebration."
 				if(19)
-					Holiday["Talk-Like-a-Pirate Day"] = "Ahoy, matey!  Tis unoffical holiday be celebratin' the jolly \
+					Holiday[HOLIDAY_PIRATE] = "Ahoy, matey!  Tis unoffical holiday be celebratin' the jolly \
 					good humor of speakin' like the pirates of old."
 				if(28)
-					Holiday["Stupid-Questions Day"] = "Known as Ask A Stupid Question Day, it is an unoffical holiday \
+					Holiday[HOLIDAY_STUPID_QUESTION] = "Known as Ask A Stupid Question Day, it is an unoffical holiday \
 					created by teachers in Sol, very long ago, to encourage students to ask more questions in the classroom."
 
 		if(10)	//Oct
 			switch(DD)
 				if(16)
-					Holiday["Boss' Day"] = "Boss' Day has traditionally been a day for employees to thank their bosses for the difficult work that they do \
+					Holiday[HOLIDAY_BOSS] = "Boss' Day has traditionally been a day for employees to thank their bosses for the difficult work that they do \
 					throughout the year. This day was created for the purpose of strengthening the bond between employer and employee."
 
 		if(11)	//Nov
 			switch(DD)
 				if(13)
-					Holiday["Kindness Day"] = "Kindness Day is an unofficial holiday to highlight good deeds in the \
+					Holiday[HOLIDAY_KINDNESS] = "Kindness Day is an unofficial holiday to highlight good deeds in the \
 					community, focusing on the positive power and the common thread of kindness which binds humanity and \
 					friends together."
 //				if(28) //Space thanksgiving.
@@ -166,22 +168,22 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 //					for what one has in life."
 			if(28 > DD > 20)
 				if(time2text(world.timeofday, "Day") == "Thursday")
-					Holiday["Thanksgiving"] = "Originally an old holiday from Earth, Thanksgiving follows many of the \
+					Holiday[HOLIDAY_THANKSGIVING] = "Originally an old holiday from Earth, Thanksgiving follows many of the \
 					traditions that its predecessor did, such as having a large feast (turkey often included), gathering with family, and being thankful \
 					for what one has in life."
 
 		if(12)	//Dec
 			switch(DD)
 				if(10)
-					Holiday["Human-Rights Day"] = "An old holiday created by an intergovernmental organization known back than as the United Nations, \
+					Holiday[HOLIDAY_HUMAN_RIGHTS] = "An old holiday created by an intergovernmental organization known back than as the United Nations, \
 					human rights were not recognized globally at the time, and the holiday was made in honor of the Universal Declaration of Human Rights.  \
 					These days, OriCon ensures that past efforts were not in vain, and continues to honor this holiday across the galaxy."
 				if(22)
-					Holiday["Vertalliq-qixim"] = "A Skrellian holiday that celebrates the Skrell's first landing on one of \
+					Holiday[HOLIDAY_SKRELL_LANDING] = "A Skrellian holiday that celebrates the Skrell's first landing on one of \
 					their moons.  It's often celebrated with grand festivals."
 
 				if(31)
-					Holiday["New Year's Eve"] = "The eve of the New Year for Sol.  It is traditionally celebrated by counting down to midnight, as that is \
+					Holiday[HOLIDAY_NEW_YEAR_EVE] = "The eve of the New Year for Sol.  It is traditionally celebrated by counting down to midnight, as that is \
 					when the new year begins.  Other activities include planning for self-improvement over the new year, attending New Year's parties, or \
 					watching a timer count to zero, a large object descending, and fireworks exploding in the sky, in person or on broadcast."
 
@@ -189,7 +191,7 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 		//Friday the 13th
 		if(DD == 13)
 			if(time2text(world.timeofday, "DDD") == "Fri")
-				Holiday["Friday the 13th"] = "Friday the 13th is a superstitious day, associated with bad luck and misfortune."
+				Holiday[HOLIDAY_FRIDAY_THIRTEEN] = "Friday the 13th is a superstitious day, associated with bad luck and misfortune."
 
 //Allows GA and GM to set the Holiday variable
 /client/proc/Set_Holiday()
@@ -233,3 +235,21 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 /proc/Holiday_Random_Event()
 	if(!length(Holiday))
 		return 0
+
+// gauss easter algorithm
+/proc/is_it_easter(year, month, day)
+	var/a = year % 19
+	var/b = year % 4
+	var/c = year % 7
+	var/k = floor(year/100)
+	var/p = floor((13+8*k)/25)
+	var/q = floor(k/4)
+	var/m = (15-p+k-q) % 30
+	var/n = (4+k-q) % 7
+	var/d = (19*a + m) % 30
+	var/e = (2*b + 4*c + 6*d + n) % 7
+
+	var/x = d+e+22
+	if(x < 32)
+		return month == 3 && day == x
+	return month == 4 && day == (d+e-9)
