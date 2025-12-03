@@ -167,8 +167,10 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_surgery_priority_asc(datum/surgery_step/A, datum/surgery_step/B)
 	return B.priority - A.priority
 
-/proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
-	return A.priority - B.priority
+/proc/cmp_holiday_priority(A, B)
+	var/datum/holiday/holiday_a = SSevents.holidays[A]
+	var/datum/holiday/holiday_b = SSevents.holidays[B]
+	return holiday_a.priority - holiday_b.priority
 
 ///Tracks are sorted by genre then by title inside that.
 /proc/cmp_media_track_asc(datum/media_track/A, datum/media_track/B)
