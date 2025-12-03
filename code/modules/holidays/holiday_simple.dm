@@ -1,7 +1,7 @@
 // no point making 50 separate files for holidays with no special behaviour
 // if there's anything other than "its on a specific day and it makes a roundstart message" it should go in its own file
 /datum/holiday/simple
-	abstract_type = /datum/holiday/simple/simple
+	abstract_type = /datum/holiday/simple
 	priority = 1
 
 /datum/holiday/simple/new_years
@@ -184,7 +184,7 @@
 	name = HOLIDAY_HUMAN_RIGHTS
 	desc = "An old holiday created by an intergovernmental organization known back than as the United Nations, \
 					human rights were not recognized globally at the time, and the holiday was made in honor of the Universal Declaration of Human Rights.  \
-					These days, OriCon ensures that past efforts were not in vain, and continues to honor this holiday across the galaxy.""
+					These days, OriCon ensures that past efforts were not in vain, and continues to honor this holiday across the galaxy."
 	begin_day = 10
 	begin_month = 12
 

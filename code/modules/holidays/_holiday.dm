@@ -16,7 +16,7 @@
 	var/obj/item/drone_hat //If this is defined, drones without a default hat will spawn with this one during the holiday; check drones_as_items.dm to see this used
 	/// increase loadout points to MAX_GEAR_POINTS_HOLIDAY_SPAM. usually used for christmas/halloween aka "everyone is full greytide mode day"
 	var/loadout_spam = FALSE
-	var/abstract_type = /datum/holiday
+	abstract_type = /datum/holiday
 
 /// Run during SSevents init
 /datum/holiday/proc/OnInit()
@@ -37,7 +37,7 @@
 
 // Return 1 if this holidy should be celebrated today
 /datum/holiday/proc/ShouldCelebrate(dd, mm, yy, ww, ddd)
-	if(path == abstract_type)
+	if(type == abstract_type)
 		return FALSE
 	if(always_celebrate)
 		return TRUE
