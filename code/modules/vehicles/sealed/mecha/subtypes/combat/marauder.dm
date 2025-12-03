@@ -68,7 +68,7 @@
 
 /obj/vehicle/sealed/mecha/combat/marauder/old/Initialize(mapload)
 	. = ..()
-	cell.charge = rand(0, (cell.charge/2))
+	power_cell.charge = rand(0, (power_cell.charge/2))
 
 /obj/vehicle/sealed/mecha/combat/marauder/seraph
 	name = "Seraph"

@@ -36,8 +36,6 @@
 		/obj/item/vehicle_module/lazy/legacy/cloak,
 	)
 
-	encumbrance_gap = 2
-
 	phasing_possible = TRUE
 	switch_dmg_type_possible = TRUE
 
@@ -59,4 +57,4 @@
 	. = ..()
 	integrity = 25
 	integrity_max = 150	//Just slightly worse.
-	cell.charge = rand(0, (cell.charge/2))
+	power_cell.charge = rand(0, (power_cell.charge/2))

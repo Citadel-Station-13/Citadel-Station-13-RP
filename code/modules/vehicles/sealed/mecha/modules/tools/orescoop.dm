@@ -1,5 +1,5 @@
 
-/obj/item/vehicle_module/lazy/legacy/tool/orescoop/micro
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop
 	w_class = WEIGHT_CLASS_BULKY
 	name = "Mounted ore box"
 	desc = "A mounted ore scoop and hopper, for gathering ores."
@@ -7,10 +7,10 @@
 	icon_state = "microscoop"
 	equip_cooldown = 5
 	energy_drain = 0
-	module_class = VEHICLE_MODULE_CLASS_MICRO
+	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 	var/orecapacity = 500
 
-/obj/item/vehicle_module/lazy/legacy/tool/orescoop/micro/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop/action(atom/target)
 	if(!action_checks(target))
 		return
 	set_ready_state(0)
@@ -30,7 +30,7 @@
 						ore.forceMove(src)
 	return 1
 
-/obj/item/vehicle_module/lazy/legacy/tool/orescoop/micro/Topic(href,href_list)
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop/Topic(href,href_list)
 	..()
 	if (href_list["empty_box"])
 		if(contents.len < 1)
@@ -41,7 +41,7 @@
 			O.loc = chassis.loc
 		occupant_message("Ore compartment emptied.")
 
-/obj/item/vehicle_module/lazy/legacy/tool/orescoop/micro/get_equip_info()
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop/get_equip_info()
 	return "[..()] <br /><a href='?src=\ref[src];empty_box=1'>Empty ore compartment</a>"
 
 /obj/item/vehicle_module/lazy/legacy/tool/orescoop/verb/empty_box() //so you can still get the ore out if someone detaches it from the mech

@@ -8,7 +8,7 @@
 	energy_drain = 50
 	projectile = /obj/projectile/beam
 	fire_sound = 'sound/weapons/Laser.ogg'
-	module_class = VEHICLE_MODULE_CLASS_MICRO
+	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
 /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/microheavy
 	w_class = WEIGHT_CLASS_BULKY
@@ -20,7 +20,7 @@
 	energy_drain = 120
 	projectile = /obj/projectile/beam/heavylaser
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
-	module_class = VEHICLE_MODULE_CLASS_MICRO
+	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
 /obj/item/vehicle_module/lazy/legacy/weapon/energy/microtaser
 	w_class = WEIGHT_CLASS_BULKY
@@ -32,7 +32,7 @@
 	equip_cooldown = 10
 	projectile = /obj/projectile/beam/stun
 	fire_sound = 'sound/weapons/Taser.ogg'
-	module_class = VEHICLE_MODULE_CLASS_MICRO
+	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
 /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun
 	w_class = WEIGHT_CLASS_BULKY
@@ -49,7 +49,7 @@
 	projectiles_per_shot = 1
 	deviation = 0.7
 	projectile_energy_cost = 100
-	module_class = VEHICLE_MODULE_CLASS_MICRO
+	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
 /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun/Topic(href,href_list)
 	..()
@@ -79,7 +79,7 @@
 	missile_speed = 1.5
 	projectile_energy_cost = 800
 	equip_cooldown = 30
-	module_class = VEHICLE_MODULE_CLASS_MICRO
+	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
 /obj/item/vehicle_module/lazy/legacy/tool/drill/micro
 	w_class = WEIGHT_CLASS_BULKY
@@ -90,7 +90,7 @@
 	equip_cooldown = 30
 	energy_drain = 10
 	damage_force = 15
-	module_class = VEHICLE_MODULE_CLASS_MICRO
+	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
 /obj/item/vehicle_module/lazy/legacy/tool/orescoop/micro
 	w_class = WEIGHT_CLASS_BULKY
@@ -100,4 +100,4 @@
 	icon_state = "microscoop"
 	equip_cooldown = 5
 	energy_drain = 0
-	module_class = VEHICLE_MODULE_CLASS_MICRO
+	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO

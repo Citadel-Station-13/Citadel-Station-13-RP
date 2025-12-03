@@ -59,4 +59,4 @@
 	. = ..()
 	integrity = 25
 	integrity_max = 50	//Just slightly worse.
-	cell.charge = rand(0, (cell.charge/2))
+	power_cell.charge = rand(0, (power_cell.charge/2))

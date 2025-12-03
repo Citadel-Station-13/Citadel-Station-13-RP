@@ -1,9 +1,9 @@
 /obj/vehicle/sealed/mecha/micro
 	icon = 'icons/mecha/micro.dmi'
-	force = 10 //still a robot
-	anchored = 0 //light enough to push and pull, but you still can't just walk past them. Like people on non-help.
-	opacity = 0 //small enough to see around, like people.
-	internal_damage_threshold = 50
+	melee_standard_force = 10
+	melee_standard_knockdown = 0
+	anchored = FALSE
+	opacity = FALSE
 
 	integrity = 0.75 * /obj/vehicle/sealed/mecha::integrity
 	integrity_max = 0.75 * /obj/vehicle/sealed/mecha::integrity_max
@@ -16,7 +16,7 @@
 		VEHICLE_MODULE_SLOT_HULL = 2,
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
 	)
-	module_classes_allowed = VEHICLE_MODULE_CLASS_MICRO
+	module_classes_required = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
 	var/size_requirement = 0.7
 

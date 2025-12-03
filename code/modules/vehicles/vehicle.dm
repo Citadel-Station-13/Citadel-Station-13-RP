@@ -46,8 +46,8 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// Module slot limits
 	/// * VEHICLE_MODULE_SLOT_* associated to a number.
 	var/list/module_slots = list()
-	/// Module classes to allow
-	var/module_classes_allowed = ~(VEHICLE_MODULE_CLASS_MACRO | VEHICLE_MODULE_CLASS_MICRO)
+	var/module_classes_required = NONE
+	var/module_classes_forbidden = VEHICLE_MODULE_CLASS_REQUIRE_MACRO
 	/// Active click module
 	/// * Someday this'll be changed to actor HUD system so multiple people can select different ones.
 	var/obj/item/module_active_click

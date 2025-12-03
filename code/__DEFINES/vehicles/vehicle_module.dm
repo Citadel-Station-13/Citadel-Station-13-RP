@@ -13,8 +13,9 @@
 
 /// allow micro-mechs
 /// * sigh, blame vorestation but i didn't have the heart to backspace it even though i honestly should
-#define VEHICLE_MODULE_CLASS_MICRO (1<<0)
-/// allow macro-mechs
-#define VEHICLE_MODULE_CLASS_MACRO (1<<1)
+#define VEHICLE_MODULE_CLASS_ALLOW_MICRO (1<<0)
+/// require macro-mechs
+/// * for utterly huge modules
+#define VEHICLE_MODULE_CLASS_REQUIRE_MACRO (1<<1)
 
 // TODO: DEFINE_BITFIELD_NEW

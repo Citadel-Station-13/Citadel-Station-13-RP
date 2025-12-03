@@ -32,7 +32,6 @@
 	modules_intrinsic = list()
 
 	phasing_possible = TRUE
-	switch_dmg_type_possible = TRUE
 
 /obj/vehicle/sealed/mecha/combat/phazon/janus/inflict_damage_instance(damage, damage_type, damage_tier, damage_flag, damage_mode, attack_type, attack_source, shieldcall_flags, hit_zone, list/additional)
 	. = ..()

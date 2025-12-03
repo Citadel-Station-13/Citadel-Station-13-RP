@@ -29,9 +29,9 @@
 	integrity_max = 9 * /obj/vehicle/sealed/mecha/combat::integrity_max
 
 	comp_hull_relative_thickness = 5 * /obj/vehicle/sealed/mecha/combat::comp_hull_relative_thickness
-	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/heavy
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/durable/citadel
 	comp_armor_relative_thickness = 5 * /obj/vehicle/sealed/mecha/combat::comp_armor_relative_thickness
-	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/heavy
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/durable/citadel
 
 	module_slots = list(
 		VEHICLE_MODULE_SLOT_HULL = 2,
@@ -39,6 +39,9 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 3,
 		VEHICLE_MODULE_SLOT_SPECIAL = 0,
 	)
+	module_classes_forbidden = \
+		/obj/vehicle/sealed/mecha/combat::module_classes_forbidden & \
+		~(VEHICLE_MODULE_CLASS_REQUIRE_MACRO)
 
 	floodlight_range = 12
 
