@@ -73,23 +73,32 @@
 /datum/robot_provisioning/proc/unsuppress_all_types_of(path) as /list
 	#warn impl
 
-/datum/robot_provisioning/proc/on_item_add(obj/item/item)
+/datum/robot_provisioning/proc/on_item_add(obj/item/item, emag_item)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!applied_to_robot)
 		return
 
-/datum/robot_provisioning/proc/on_item_remove(obj/item/item)
+/datum/robot_provisioning/proc/on_item_remove(obj/item/item, emag_item)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!applied_to_robot)
 		return
+
+/datum/robot_provisioning/proc/cleanup_item(obj/item/item)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 
 /datum/item_mount/robot_provisioning
+	var/datum/robot_provisioning/provisioning
 
-/datum/item_mount/robot_provisioning/on_item_mount(obj/item/item)
-	..()
+/datum/item_mount/robot_provisioning/New(datum/robot_provisioning/provisioning)
+	src.provisioning = provisioning
+
+/datum/item_mount/robot_provisioning/Destroy()
+	provisioning = null
+	return ..()
 
 /datum/item_mount/robot_provisioning/on_item_unmount(obj/item/item)
 	..()
-	#warn obliterate the item if not already
+	provisioning?.cleanup_item(item)
