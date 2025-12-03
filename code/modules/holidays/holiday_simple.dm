@@ -8,8 +8,8 @@
 /datum/holiday/simple/new_years
 	name = HOLIDAY_NEW_YEAR
 	desc = "The day of the new solar year on Sol."
-	begin_day = 3
-	begin_month = 12
+	begin_day = 1
+	begin_month = 1
 
 /datum/holiday/simple/skrell_royals
 	name = HOLIDAY_SKRELL_ROYALS
