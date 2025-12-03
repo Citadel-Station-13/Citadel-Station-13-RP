@@ -37,6 +37,8 @@
 
 // Return 1 if this holidy should be celebrated today
 /datum/holiday/proc/ShouldCelebrate(dd, mm, yy, ww, ddd)
+	if(path == abstract_type)
+		return FALSE
 	if(always_celebrate)
 		return TRUE
 
