@@ -18,3 +18,8 @@
 	display_name = "Ward-Takashi - Arachne"
 	icon_state = "arachne"
 	icon_state_indicator = "arachne-indicator"
+
+/datum/prototype/robot_iconset/baseline_misc/squats
+	display_name = "Gorlex Marauders - Squats"
+	icon_state = "squats"
+	icon_state_indicator = "squats-indicator"

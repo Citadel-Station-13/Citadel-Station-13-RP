@@ -10,7 +10,7 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 		/datum/prototype/robot_iconset/raptor/syndicate_medical,
 		/datum/prototype/robot_iconset/biped_heavy/antag,
 		/datum/prototype/robot_iconset/grounded_spider/combat,
-		/datum/prototype/robot_iconset/,
+		/datum/prototype/robot_iconset/baseline_misc/squats,
 	)
 
 /datum/prototype/robot_module/cybersun/assault/create_mounted_item_descriptors(list/normal_out, list/emag_out)
@@ -23,8 +23,6 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 		/obj/item/melee/baton/robot,
 		/obj/item/melee/transforming/energy/sword,
 	)
-
-#warn translate chassis below
 
 /obj/item/robot_module_legacy/robot/syndicate
 	name = "illegal robot module"
@@ -43,10 +41,4 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/assault)
 		LANGUAGE_SIGN	 = 0,
 		LANGUAGE_TERMINUS = 1,
 		LANGUAGE_ZADDAT = 0
-	)
-
-/obj/item/robot_module_legacy/robot/syndicate/protector
-	name = "protector robot module"
-	sprites = list(
-		"Ares" = "squats",
 	)
