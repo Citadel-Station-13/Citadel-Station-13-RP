@@ -66,6 +66,8 @@ GLOBAL_LIST_INIT(hud_styles, init_hud_styles())
 	var/inventory_icons_slot = 'icons/screen/hud/styles/midnight/inventory-slot.dmi'
 	/// inventory icons: big
 	var/inventory_icons_wide = 'icons/screen/hud/styles/midnight/inventory-wide.dmi'
+	/// robot icons
+	var/robot_icons = 'icons/screen/hud/robot/default.dmi'
 
 /**
  * midnight style just inherits defaults
@@ -101,6 +103,7 @@ GLOBAL_LIST_INIT(hud_styles, init_hud_styles())
 	inventory_icons = 'icons/screen/hud/styles/minimalist/inventory.dmi'
 	inventory_icons_slot = 'icons/screen/hud/styles/minimalist/inventory-slot.dmi'
 	inventory_icons_wide = 'icons/screen/hud/styles/minimalist/inventory-wide.dmi'
+	robot_icons = 'icons/screen/hud/robot/minimalist.dmi'
 
 /datum/hud_style/hologram
 	name = "Holographic"

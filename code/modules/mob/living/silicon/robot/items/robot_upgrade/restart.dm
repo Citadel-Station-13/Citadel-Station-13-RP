@@ -4,6 +4,12 @@
 	icon_state = "cyborg_upgrade1"
 	item_state = "cyborg_upgrade"
 
+/obj/item/robot_upgrade/restart/can_install(mob/living/silicon/robot/target, robot_opinion, datum/event_args/actor/actor, silent)
+	. = ..()
+
+/obj/item/robot_upgrade/restart/being_installed(mob/living/silicon/robot/target)
+	. = ..()
+
 /obj/item/robot_upgrade/restart/action(var/mob/living/silicon/robot/R)
 	if(R.health < 0)
 		to_chat(usr, "You have to repair the robot before using this module!")

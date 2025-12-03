@@ -49,7 +49,7 @@
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
-	icon = 'icons/mob/robots.dmi'
+	icon = 'icons/mob/robot-legacy.dmi'
 	icon_state = "robot"
 	maxHealth = 200
 	health = 200
@@ -113,7 +113,6 @@
 
 	inventory = /datum/inventory/robot
 	/// Resources store
-	#warn make on new
 	var/datum/robot_resource_store/resources
 
 	//* State *//
@@ -127,7 +126,6 @@
 	/// Currently active voluntary sprite variation for rest.
 	/// * Reset upon stopping resting.
 	/// * This is the ID of the variation.
-	#warn impl picker
 	var/picked_resting_variation
 
 	//* Movement *//
@@ -216,6 +214,8 @@
 	var/mob/living/silicon/ai/mainframe = null
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
+	resources = new(src)
+
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -271,6 +271,36 @@
 
 	update_icon()
 
+/mob/living/silicon/robot/Destroy()
+	wipe_for_gc()
+	QDEL_NULL(resources)
+	// TODO: don't do this, just don't fucking dust() people or have dust() have a drop proc????
+	if(mmi && mind)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
+		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.
+		if(T)
+			mmi.forceMove(T)
+		if(mmi.brainmob)
+			var/obj/item/robot_module_legacy/M = locate() in contents
+			if(M)
+				mmi.brainmob.languages = M.original_languages
+			else
+				mmi.brainmob.languages = languages
+			mmi.brainmob.remove_language("Robot Talk")
+			mind.transfer(mmi.brainmob)
+		else if(!shell) // Shells don't have brainmbos in their MMIs.
+			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
+			ghostize()
+			//ERROR("A borg has been destroyed, but its MMI lacked a brainmob, so the mind could not be transferred. Player: [ckey].")
+		mmi = null
+	if(connected_ai)
+		connected_ai.connected_robots -= src
+	if(shell)
+		if(deployed)
+			undeploy()
+		revert_shell() // To get it out of the GLOB list.
+	QDEL_NULL(wires)
+	return ..()
+
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new /obj/item/camera/siliconcam/robot_camera(src)
 
@@ -303,9 +333,12 @@
 	updatename()
 
 /mob/living/silicon/robot/proc/sync()
-	if(lawupdate && connected_ai)
-		lawsync()
-		photosync()
+	if(!lawupdate)
+		return
+	if(!connected_ai)
+		return
+	lawsync()
+	photosync()
 
 /mob/living/silicon/robot/drain_energy(datum/actor, amount, flags)
 	if(!cell)
@@ -330,35 +363,6 @@
 		communicator = new/obj/item/communicator/integrated(src)
 	communicator.register_device(src.name, "[modtype] [braintype]")
 
-//If there's an MMI in the robot, have it ejected when the mob goes away. --NEO
-//Improved /N
-/mob/living/silicon/robot/Destroy()
-	wipe_for_gc()
-	if(mmi && mind)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
-		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.
-		if(T)	mmi.loc = T
-		if(mmi.brainmob)
-			var/obj/item/robot_module_legacy/M = locate() in contents
-			if(M)
-				mmi.brainmob.languages = M.original_languages
-			else
-				mmi.brainmob.languages = languages
-			mmi.brainmob.remove_language("Robot Talk")
-			mind.transfer(mmi.brainmob)
-		else if(!shell) // Shells don't have brainmbos in their MMIs.
-			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
-			ghostize()
-			//ERROR("A borg has been destroyed, but its MMI lacked a brainmob, so the mind could not be transferred. Player: [ckey].")
-		mmi = null
-	if(connected_ai)
-		connected_ai.connected_robots -= src
-	if(shell)
-		if(deployed)
-			undeploy()
-		revert_shell() // To get it out of the GLOB list.
-	qdel(wires)
-	wires = null
-	return ..()
 
 /mob/living/silicon/robot/proc/updatename(var/prefix as text)
 	if(prefix)
@@ -935,6 +939,8 @@
 			break
 
 /mob/living/silicon/robot/proc/self_destruct()
+	// explosion readd: back to the old days of blowing borgs lmfao who nerfed this
+	explosion(get_turf(src), 0, 0, 3)
 	gib()
 
 /mob/living/silicon/robot/proc/UnlinkSelf()
@@ -1052,12 +1058,11 @@
 		return
 
 	if(opened)//Cover is open
-		if(emagged)	return//Prevents the X has hit Y with Z message also you cant emag them twice
+		if(emagged)
+			return//Prevents the X has hit Y with Z message also you cant emag them twice
 		if(wiresexposed)
 			to_chat(user, "You must close the panel first")
 			return
-
-
 		// The block of code below is from TG. Feel free to replace with a better result if desired.
 		if(shell) // AI shells cannot be emagged, so we try to make it look like a standard reset. Smart players may see through this, however.
 			to_chat(user, SPAN_DANGER("[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
@@ -1103,11 +1108,11 @@
 				to_chat(src, "<b>Obey these laws:</b>")
 				laws.show_laws(src)
 				to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and [TU.his] commands.</span>")
+			return 1
 		else
 			to_chat(user, "You fail to hack [src]'s interface.")
 			to_chat(src, "Hack attempt detected.")
-		return 1
-	return
+			return
 
 /mob/living/silicon/robot/is_sentient()
 	return braintype != BORG_BRAINTYPE_DRONE

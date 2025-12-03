@@ -6,7 +6,7 @@
  */
 /atom/movable/screen/actor_hud/inventory
 	name = "inventory"
-	icon = 'icons/screen/hud/midnight/inventory.dmi'
+	icon = 'icons/screen/hud/styles/midnight/inventory.dmi'
 	plane = HUD_PLANE
 	layer = HUD_LAYER_INVENTORY
 
@@ -40,7 +40,7 @@
 	plane = HUD_ITEM_PLANE
 	layer = HUD_ITEM_LAYER_BASE
 
-	var/self_icon = 'icons/screen/hud/midnight/inventory.dmi'
+	var/self_icon = 'icons/screen/hud/styles/midnight/inventory.dmi'
 	var/self_icon_state = ""
 	var/self_alpha = 255
 	var/self_color = "#ffffff"
@@ -167,6 +167,7 @@
 		active_image.color = self_color
 		add_overlay(active_image)
 
+#warn below
 /**
  * Backplate for robot modules inventory.
  */
@@ -174,29 +175,6 @@
 /atom/movable/screen/actor_hud/inventory/robot_drawer_backplate
 	icon = 'icons/screen/hud/styles/common/storage.dmi'
 	icon_state = "block"
-
-#warn impl
-
-
-/**
- * Button: 'open / close robot modules'
- */
-#warn impl
-/atom/movable/screen/actor_hud/inventory/robot_drawer
-	name = "module drawer"
-	icon_state = "robot-drawer"
-	#warn deal with screen loc
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
-
-/atom/movable/screen/actor_hud/inventory/robot_drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
-	..()
-	icon = style.inventory_icons
-
-/atom/movable/screen/actor_hud/inventory/robot_drawer/on_click(mob/user, list/params)
-	// todo: remote control
-	var/datum/actor_hud/inventory/inventory_hud = hud
-	inventory_hud.toggle_robot_modules()
-	#warn this
 
 /**
  * Item renderer
@@ -216,8 +194,7 @@
 	. = ..()
 
 
-#warn impl above
-
+#warn above
 
 /**
  * Button: 'open inventory slots'
@@ -225,7 +202,6 @@
 /atom/movable/screen/actor_hud/inventory/drawer
 	name = "drawer"
 	icon_state = "drawer"
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
 
 /atom/movable/screen/actor_hud/inventory/drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
@@ -240,6 +216,25 @@
 	var/datum/actor_hud/inventory/inventory_hud = hud
 	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in inventory_hud.hidden_classes) ? "drawer" : "drawer-active"]"
 	return ..()
+
+/**
+ * Button: 'open / close robot modules'
+ *
+ * * The icon for this gets replaced with the robot's module if we're on an actual robot.
+ */
+/atom/movable/screen/actor_hud/inventory/robot_drawer
+	name = "module drawer"
+	icon = 'icons/screen/hud/robot/module-drawer.dmi'
+	icon_state = "robot-drawer"
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
+	..()
+	icon = style.robot_icons
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer/on_click(mob/user, list/params)
+	// todo: remote control
+	var/datum/actor_hud/inventory/inventory_hud = hud
+	inventory_hud.toggle_robot_modules()
 
 /**
  * Button: 'swap hand'

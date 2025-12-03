@@ -82,7 +82,7 @@
 		else if(IS_ANONYMOUS_TYPEPATH(descriptor))
 			resolved = new descriptor
 		else
-			stack_trace("invalid descriptor [descriptor] on [type]")
+			stack_trace("invalid descriptor [descriptor] on [src] ([type])")
 			continue
 		items += resolved
 

@@ -30,6 +30,9 @@
 	/// emaged status?
 	var/emag_enabled = FALSE
 
+/datum/robot_provisioning/New()
+	relay_mount = new(src)
+
 /datum/robot_provisioning/Destroy()
 	if(applied_to_robot)
 		remove()
@@ -49,11 +52,19 @@
 
 /datum/robot_provisioning/proc/add_item(obj/item/item)
 
+	on_item_add(item, FALSE)
+
 /datum/robot_provisioning/proc/remove_item(obj/item/item)
+
+	on_item_remove(item, FALSE)
 
 /datum/robot_provisioning/proc/add_emag_item(obj/item/item)
 
+	on_item_add(item, TRUE)
+
 /datum/robot_provisioning/proc/remove_emag_item(obj/item/item)
+
+	on_item_remove(item, TRUE)
 
 /datum/robot_provisioning/proc/set_emag_enabled(new_state)
 	if(emag_enabled == new_state)
@@ -73,13 +84,13 @@
 /datum/robot_provisioning/proc/unsuppress_all_types_of(path) as /list
 	#warn impl
 
-/datum/robot_provisioning/proc/on_item_add(obj/item/item, emag_item)
+/datum/robot_provisioning/proc/on_item_add(obj/item/item, is_emag_item)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!applied_to_robot)
 		return
 
-/datum/robot_provisioning/proc/on_item_remove(obj/item/item, emag_item)
+/datum/robot_provisioning/proc/on_item_remove(obj/item/item, is_emag_item)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!applied_to_robot)
