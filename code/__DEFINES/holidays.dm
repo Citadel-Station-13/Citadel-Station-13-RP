@@ -8,6 +8,7 @@
 #define HOLIDAY_PI 					"Pi Day"
 #define HOLIDAY_EASTER				"Easter"
 #define HOLIDAY_ST_PATRICK 			"St. Patrick's Day"
+#define HOLIDAY_APRIL_FOOLS			"April Fool's Day"
 #define HOLIDAY_EARTH 				"Earth Day"
 #define HOLIDAY_WORKERS 			"Interstellar Workers' Day"
 #define HOLIDAY_REMEMBRANCE 		"Remembrance Day"
