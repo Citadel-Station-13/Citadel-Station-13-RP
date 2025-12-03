@@ -156,5 +156,22 @@ SUBSYSTEM_DEF(events)
 		var/datum/holiday/holiday = holidays[name]
 		holiday.OnRoundstart()
 
+	// handle announcing holidays where needed
+	if(SSevents.holidays.len != 0)
+		var/list/holiday_names = list()
+		var/list/holiday_blurbs = list()
+		for(var/datum/holiday/p in SSevents.holidays)
+			if(p.announce)
+				holiday_names.Add(p)
+				holiday_blurbs.Add("[SSevents.holidays[p].desc]")
+		if(!length(holiday_names))
+			return
+		var/holidays_string = english_list(holiday_names, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
+		to_chat(world, "<font color=#4F49AF>and...</font>")
+		to_chat(world, "<h4>Happy [holidays_string] Everybody!</h4>")
+		if(holiday_blurbs.len != 0)
+			for(var/blurb in holiday_blurbs)
+				to_chat(world, "<div align='center'><font color=#4F49AF>[blurb]</font></div>")
+
 /proc/IsHoliday(name)
 	return SSevents.holidays[name]? TRUE : FALSE

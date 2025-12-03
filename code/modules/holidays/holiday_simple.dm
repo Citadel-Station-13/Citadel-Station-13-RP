@@ -3,6 +3,7 @@
 /datum/holiday/simple
 	abstract_type = /datum/holiday/simple
 	priority = 1
+	announce = TRUE
 
 /datum/holiday/simple/new_years
 	name = HOLIDAY_NEW_YEAR
