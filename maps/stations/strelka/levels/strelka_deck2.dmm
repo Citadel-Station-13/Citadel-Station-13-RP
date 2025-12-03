@@ -86,6 +86,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/explo/emt)
+"an" = (
+/obj/structure/table/reinforced,
+/obj/item/paper/strelka_rust,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/strelka/engine)
 "ao" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -1361,6 +1366,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/coms)
 "dN" = (
@@ -2104,7 +2110,7 @@
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
-/area/space)
+/area/engineering/strelka/engine)
 "fU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /obj/structure/cable/orange{
@@ -2880,6 +2886,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/hallway/strelka/engineering)
@@ -5630,6 +5639,15 @@
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/wood/indoors,
 /area/security/strelka/interogation)
+"ph" = (
+/obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 4;
+	frequency = 1435;
+	id = "exhaust_out";
+	volume_rate = 100
+	},
+/turf/space,
+/area/space)
 "pi" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -7487,12 +7505,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/strelka)
-"uj" = (
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4
-	},
-/turf/simulated/wall/r_wall/prepainted,
-/area/space)
 "uk" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7761,7 +7773,7 @@
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
-/area/space)
+/area/engineering/atmos/strelka/engineering/atmos)
 "uS" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/photocopier/faxmachine{
@@ -8125,11 +8137,10 @@
 "vS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/air_alarm/west_mount,
-/obj/machinery/fire_alarm/east_mount,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/fire_alarm/west_mount,
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/coms)
 "vT" = (
@@ -8156,6 +8167,12 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
+"vW" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "vX" = (
 /obj/structure/cable/orange,
 /obj/machinery/power/apc/west_mount,
@@ -9669,13 +9686,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/strelka/engine)
-"zF" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/engine)
 "zG" = (
@@ -17210,6 +17220,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/atmos/strelka/engineering/atmos)
+"Ti" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/machinery/computer/general_air_control/large_tank_control{
+	frequency = 1435;
+	input_tag = "exhaust_out";
+	name = "Engine Exhaust Control";
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/strelka/engine)
 "Tj" = (
 /obj/machinery/recharge_station,
 /obj/effect/floor_decal/spline/fancy{
@@ -17524,7 +17546,7 @@
 "TW" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
-/area/space)
+/area/engineering/strelka/engine)
 "TX" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -17945,15 +17967,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/excursion/strelka)
-"Vm" = (
-/obj/machinery/atmospherics/component/unary/outlet_injector{
-	dir = 4;
-	frequency = 1435;
-	id = "exhaust_out";
-	volume_rate = 100
-	},
-/turf/simulated/floor/plating,
-/area/engineering/strelka/engine)
 "Vn" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -30052,7 +30065,7 @@ Ne
 Sm
 Sm
 Pw
-KP
+ph
 Ew
 KP
 Ne
@@ -30246,7 +30259,7 @@ UU
 UU
 Ik
 tr
-Ik
+vW
 tr
 Ik
 tv
@@ -30440,14 +30453,14 @@ UU
 UU
 UU
 Uq
-Ik
+vW
 tr
 Ik
 Ik
 Ik
 DL
 Ik
-tv
+Ik
 UU
 zP
 Wk
@@ -30633,8 +30646,8 @@ nc
 nc
 vC
 vC
-uj
-Vm
+Ok
+vW
 Uq
 Ik
 Ik
@@ -30814,7 +30827,7 @@ Ik
 TF
 Ik
 Ik
-UU
+vC
 fT
 fT
 cw
@@ -30829,9 +30842,9 @@ NN
 Md
 Ok
 Qe
-uj
-UU
-UU
+Ok
+Vf
+Vf
 Ik
 TF
 Ik
@@ -31018,14 +31031,14 @@ dg
 QC
 QC
 QC
-zF
+dg
 Vv
 KD
 XD
 oD
 Mv
-vC
-UU
+Vf
+Vf
 Ik
 DL
 Ik
@@ -31216,14 +31229,14 @@ nc
 xV
 Dh
 BO
-KB
-Dh
-vC
-UU
-UU
-UU
-UU
-UU
+Ti
+an
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
 uR
 qM
 zl
