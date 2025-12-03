@@ -197,18 +197,6 @@
 			if(issilicon(usr))
 				usr:installed_modules()
 
-		if("module1")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(1)
-
-		if("module2")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(2)
-
-		if("module3")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(3)
-
 		if("AI Core")
 			if(isAI(usr))
 				var/mob/living/silicon/ai/AI = usr

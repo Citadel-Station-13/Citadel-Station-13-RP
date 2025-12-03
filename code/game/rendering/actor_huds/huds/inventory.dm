@@ -26,6 +26,8 @@
 
 	/// drawer object
 	var/atom/movable/screen/actor_hud/inventory/drawer/button_drawer
+	/// robot drawer object, if any
+	var/atom/movable/screen/actor_hud/inventory/robot_drawer/button_robot_drawer
 	/// swap hand object
 	var/atom/movable/screen/actor_hud/inventory/swap_hand/button_swap_hand
 	/// equip object
@@ -140,6 +142,8 @@
 
 	if(length(inventory_slots_with_mappings))
 		add_screen((button_drawer = new(null, src)))
+		button_drawer.screen_loc = screen_loc_for_slot_drawer()
+	#warn robot drawer injection?
 
 	// slots
 	rebuild_slots(inventory_slots_with_mappings)
@@ -264,6 +268,23 @@
 	button_equip_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(number_of_hands)
 	button_swap_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(number_of_hands)
 
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_index(index)
+
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_swap()
+
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_equip()
+
+/datum/actor_hud/inventory/proc/screen_loc_for_robot_drawer()
+
+/datum/actor_hud/inventory/proc/screen_loc_for_slot_drawer()
+	return "LEFT:6,BOTTOM:5"
+
+/datum/actor_hud/inventory/proc/screen_loc_for_drawer_aligned_slot(main, cross)
+
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_aligned_slot(main, cross)
+
+#warn impl all
+
 /**
  * @params
  * * filter_by_class - a singular, or a list, of inventory hud classes to filter by
@@ -303,6 +324,8 @@
 		. += button_equip_hand
 	if(button_drawer)
 		. += button_drawer
+	if(button_robot_drawer)
+		. += button_robot_drawer
 
 //* Robot Modules *//
 

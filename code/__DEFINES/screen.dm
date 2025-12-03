@@ -32,17 +32,18 @@
 //* Mob HUD - Inventory *//
 
 /// screen loc for a hand index
-#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND(HAND) "CENTER[index % 2? "" : "-1"]:16,BOTTOM[index < 2? "" : "+[(round(index / 2) - 1)]"]:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND(HAND, HAND_ROW_SIZE) "CENTER[index % 2? "" : "-1"]:16,BOTTOM[index < 2? "" : "+[(round(index / 2) - 1)]"]:5"
 /// screen loc for hand swap button for a given number of hands
-#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(TOTAL_HANDS) "CENTER-1:28,BOTTOM+[ceil(max(TOTAL_HANDS,2)/2)]:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(TOTAL_HANDS, HAND_ROW_SIZE) "CENTER-1:28,BOTTOM+[ceil(max(TOTAL_HANDS,2)/2)]:5"
 /// screen loc for hand swap button for a given number of hands
-#define SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(TOTAL_HANDS) "CENTER-1:16,BOTTOM+[ceil(max(TOTAL_HANDS,2)/2 )]:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(TOTAL_HANDS, HAND_ROW_SIZE) "CENTER-1:16,BOTTOM+[ceil(max(TOTAL_HANDS,2)/2 )]:5"
 /// the bottom-left drawer position of inventory HUD
-#define SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER "LEFT:6,BOTTOM:5"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
 /// slot alignment for drawer-anchor
 #define SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_DRAWER_ALIGNED(MAIN_AXIS, CROSS_AXIS) "LEFT+[CROSS_AXIS]:[6 + (CROSS_AXIS * 2)],BOTTOM+[MAIN_AXIS]:[5 + (MAIN_AXIS * 2)]"
 /// slot alignment for hand-anchor
-#define SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_HANDS_ALIGNED(MAIN_AXIS, CROSS_AXIS) "CENTER-1:[16 + (MAIN_AXIS > 0 ? (32 * (MAIN_AXIS + 1)) : (32 * MAIN_AXIS))],BOTTOM+[CROSS_AXIS]:[5 + (CROSS_AXIS * 2)]"
+#define SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_HANDS_ALIGNED(MAIN_AXIS, CROSS_AXIS, HAND_ROW_SIZE, HAS_ROBOT_DRAWER) "CENTER-1:[16 + (MAIN_AXIS > 0 ? (32 * (MAIN_AXIS + 1)) : (32 * MAIN_AXIS))],BOTTOM+[CROSS_AXIS]:[5 + (CROSS_AXIS * 2)]"
+#warn move into actor hud file
 
 //! < legacy stuff below > !//
 
@@ -50,12 +51,6 @@
 
 #define ui_smallquad "RIGHT-4:18,BOTTOM:4"
 
-///borgs
-#define ui_inv1 "CENTER-1,BOTTOM:5"
-///borgs
-#define ui_inv2 "CENTER,BOTTOM:5"
-///borgs
-#define ui_inv3 "CENTER+1,BOTTOM:5"
 ///borgs
 #define ui_borg_store "CENTER+2,BOTTOM:5"
 ///borgs
