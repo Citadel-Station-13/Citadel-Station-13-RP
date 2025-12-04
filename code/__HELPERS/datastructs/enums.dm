@@ -27,17 +27,6 @@ GLOBAL_LIST(enums_by_var)
 			continue
 		var/datum/enum/instance = new path
 		enums += instance
-	// add legacy shit
-	var/list/legacy_enums = generate_enums()
-	for(var/var_name in legacy_enums)
-		var/list/reverse_lookup = legacy_enums[var_name]
-		var/datum/enum/legacy_instance = new
-		for(var/name in reverse_lookup)
-			var/enum = reverse_lookup[name]
-			legacy_instance.names += name
-			legacy_instance.enums += enum
-		legacy_instance.paths = list((/datum) = var_name)
-		enums += legacy_instance
 	for(var/datum/enum/enum as anything in enums)
 		for(var/path in enum.paths)
 			if(!enum_by_path[path])

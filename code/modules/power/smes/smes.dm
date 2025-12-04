@@ -329,11 +329,11 @@ GLOBAL_LIST_EMPTY(smeses)
 		"inputLevelMax" = input_level_max  * 1000,
 		"inputAvailable" = getTerminalPower(),
 		"outputAttempt" = output_attempt,
-		"outputting" = energy_to_power(outputting),
+		"outputting" = outputting,
 		"outputLevel" = output_level * 1000,
 		"outputLevel_text" = display_power(output_level * 1000, convert = FALSE),
 		"outputLevelMax" = output_level_max  * 1000,
-		"outputUsed" = energy_to_power(output_used),
+		"outputUsed" = output_used,
 	)
 	return data
 

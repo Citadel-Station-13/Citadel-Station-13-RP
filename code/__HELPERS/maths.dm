@@ -54,13 +54,3 @@
  */
 /proc/display_energy(units)
 	return siunit(units, "J", 3)
-
-/**
- * Converts the joule to the watt, assuming SSmachines tick rate.
- * Arguments
- *
- * * joules - the value in joules to convert
- * * datum/controller/subsystem/scheduler - the subsystem whos wait time is used in the conversion
- */
-/proc/energy_to_power(joules, datum/controller/subsystem/scheduler = SSmachines)
-	return joules * (1 SECONDS) / scheduler.wait
