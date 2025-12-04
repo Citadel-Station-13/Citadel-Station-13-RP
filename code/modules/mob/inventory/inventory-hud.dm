@@ -7,6 +7,7 @@
 /datum/inventory/proc/hud_alter(datum/actor_hud/inventory/hud)
 	hud.inv_held_items_row_mode = held_items_row_mode
 	hud.inv_held_items_suppress_buttons = held_items_suppress_buttons
+	hud.inv_held_items_use_robot_icon = held_items_use_robot_icon
 
 /**
  * Modifies HUD object after syncing to preferences

@@ -2,10 +2,15 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * mob inventory data goes in here.
+ * # Inventory
  *
- * * this does not include hands; that's handled mob-side.
- * * this only includes inventory slots.
+ * Mob inventory is handled by inventory datums, which hold logic for:
+ * * Slots
+ * * Hands
+ * * Robot modules
+ *
+ * TODO: /datum/inventory_hud_style for overrides, instead of a bazillion held_items_xyz vars for robots.
+ *       This is also important for things like occult mobs later.
  */
 /datum/inventory
 	//* Basics *//
@@ -46,6 +51,9 @@
 	/// allow normal pickups
 	/// * used for robot module support
 	var/held_items_allow_pickup = TRUE
+	/// use robot module icons?
+	/// * used for robot support
+	var/held_items_use_robot_icon = FALSE
 	/// robot modules
 	/// * this is a list with special semantics; null = do not render, existing = render, even if empty.
 	/// * this will be rendered if it's existing. this list being non-null is the 'is this supported' check.

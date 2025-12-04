@@ -41,6 +41,8 @@
 	var/tmp/inv_held_items_row_mode
 	/// suppress swap / equip buttons for hands
 	var/tmp/inv_held_items_suppress_buttons
+	/// use robot icons for hands
+	var/tmp/inv_held_items_use_robot_icon
 
 /datum/actor_hud/inventory/sync_to_preferences(datum/hud_preferences/preference_set)
 	var/old_active_hand = applied_active_hand
@@ -243,12 +245,13 @@
 			aligning.inventory_hud_main_axis = main_axis
 			aligned += aligning
 
+	var/number_of_hands = host.get_hand_count()
 	for(var/atom/movable/screen/actor_hud/inventory/plate/slot/slot_object as anything in aligned)
 		switch(slot_object.inventory_hud_anchor)
 			if(INVENTORY_HUD_ANCHOR_TO_DRAWER)
-				slot_object.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_DRAWER_ALIGNED(slot_object.inventory_hud_main_axis, slot_object.inventory_hud_cross_axis)
+				slot_object.screen_loc = screen_loc_for_drawer_aligned_slot(slot_object.inventory_hud_main_axis, slot_object.inventory_hud_cross_axis)
 			if(INVENTORY_HUD_ANCHOR_TO_HANDS)
-				slot_object.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_HANDS_ALIGNED(slot_object.inventory_hud_main_axis, slot_object.inventory_hud_cross_axis)
+				slot_object.screen_loc = screen_loc_for_hand_aligned_slot(slot_object.inventory_hud_main_axis, slot_object.inventory_hud_cross_axis, number_of_hands)
 
 /**
  * Rebuilds our hands. Doesn't rebuild anything else. Doesn't wipe old objects.
@@ -260,6 +263,7 @@
 		hands.len = number_of_hands
 		for(var/i in old_length + 1 to number_of_hands)
 			var/atom/movable/screen/actor_hud/inventory/plate/hand/hand_object = new(null, src, i)
+			hand_object.screen_loc = screen_loc_for_hand_index(i, number_of_hands)
 			add_screen(hand_object)
 			hands[i] = hand_object
 	else if(length(hands) > number_of_hands)
@@ -270,23 +274,42 @@
 			qdel(hands[i])
 		hands.len = number_of_hands
 
-	button_equip_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(number_of_hands)
-	button_swap_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(number_of_hands)
+	button_equip_hand?.screen_loc = screen_loc_for_hand_equip(number_of_hands)
+	button_swap_hand?.screen_loc = screen_loc_for_hand_swap(number_of_hands)
 
-/datum/actor_hud/inventory/proc/screen_loc_for_hand_index(index)
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_index(index, number_of_hands)
+	// Align to center minus one, move left one per two hands.
+	var/hand_start_col_left_offset = floor(number_of_hands / 2)
+	// Add one to left offset because byond is 1-indexed because it's STUPID!!
+	var/col = index - hand_start_col_left_offset = 1
+	var/row = floor(index / number_of_hands) + 1
+	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+[row]:5"
 
-/datum/actor_hud/inventory/proc/screen_loc_for_hand_swap()
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_swap(number_of_hands)
+	// Always aligned to center of hands.
+	var/rows = max(1, ceil(number_of_hands / 2))
+	return "CENTER-1:28,BOTTOM+[rows]:5"
 
-/datum/actor_hud/inventory/proc/screen_loc_for_hand_equip()
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_equip(number_of_hands)
+	// Always aligned to center of hands.
+	var/rows = max(1, ceil(number_of_hands / 2))
+	return "CENTER-1:16,BOTTOM+[rows]:5"
 
-/datum/actor_hud/inventory/proc/screen_loc_for_robot_drawer()
+/datum/actor_hud/inventory/proc/screen_loc_for_robot_drawer(number_of_hands)
+	// Always aligned to right side of hands.
+	var/col = ceil(number_of_hands / 2) + 1
+	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+[row]:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_slot_drawer()
 	return "LEFT:6,BOTTOM:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_drawer_aligned_slot(main, cross)
+	return "LEFT+[cross]:[6 + (cross * 2)],BOTTOM+[main]:[5 + (main * 2)]"
 
-/datum/actor_hud/inventory/proc/screen_loc_for_hand_aligned_slot(main, cross)
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_aligned_slot(main, cross, number_of_hands)
+	#warn finish this
+	var/one_after_hand_end = ceil(number_of_hands / 2) + 1
+	return "CENTER-1:[16 + (main > 0 ? (32 * (main + 1)) : (32 * main))],BOTTOM+[cross]:[5 + (cross * 2)]"
 
 #warn impl all
 

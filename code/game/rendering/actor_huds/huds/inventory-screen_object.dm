@@ -127,25 +127,38 @@
 	var/handcuffed = FALSE
 	/// should we have the active overlay?
 	var/active = FALSE
+	/// use robot icons?
+	var/use_robot_icons = FALSE
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/Initialize(mapload, datum/inventory/host, hand_index)
 	. = ..()
 	src.hand_index = hand_index
-	sync_index(hand_index)
+	src.use_robot_icons = host.held_items_use_robot_icon
+	sync_index(hand_index, host.held_items_row_mode)
 	update_icon()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/sync_style(datum/hud_style/style, style_alpha, style_color)
-	self_icon = style.inventory_icons
+	if(use_robot_icons)
+		self_icon = style.robot_icons
+	else
+		self_icon = style.inventory_icons
 	..()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
 	var/datum/actor_hud/inventory/inventory_hud = hud
 	inventory_hud.owner.mob.swap_hand(hand_index)
 
-/atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
-	name = "[index % 2? "left" : "right"] hand[index > 2? " #[index]" : ""]"
-	self_icon_state = "hand-[index % 2? "left" : "right"]"
+/atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index, override_per_row = 2)
+	if(use_robot_icons)
+		name = "hand #[index]"
+		self_icon_state = "hand"
+		return
+	if(override_per_row == 2)
+		name = "[index % 2? "left" : "right"] hand[index > 2? " #[index]" : ""]"
+		self_icon_state = "hand-[index % 2? "left" : "right"]"
+	else
+		name = "hand"
+		self_icon_state = "hand-left"
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/set_handcuffed(state)
 	if(state == handcuffed)
