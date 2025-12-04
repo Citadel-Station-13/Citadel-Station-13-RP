@@ -34,10 +34,13 @@
 	var/atom/movable/screen/actor_hud/inventory/equip_hand/button_equip_hand
 
 	//* Imprinted by /datum/inventory *//
+
 	/// render held items in row mode; no left/right semantics.
 	/// * will use 'hand' instead of 'hand-(left|right)'
 	#warn impl
 	var/tmp/inv_held_items_row_mode
+	/// suppress swap / equip buttons for hands
+	var/tmp/inv_held_items_suppress_buttons
 
 /datum/actor_hud/inventory/sync_to_preferences(datum/hud_preferences/preference_set)
 	var/old_active_hand = applied_active_hand
@@ -137,13 +140,15 @@
 	cleanup()
 
 	// buttons
-	add_screen((button_swap_hand = new(null, src, number_of_hands)))
-	add_screen((button_equip_hand = new(null, src, number_of_hands)))
-
+	if(!inv_held_items_suppress_buttons)
+		add_screen((button_swap_hand = new(null, src, number_of_hands)))
+		add_screen((button_equip_hand = new(null, src, number_of_hands)))
 	if(length(inventory_slots_with_mappings))
 		add_screen((button_drawer = new(null, src)))
 		button_drawer.screen_loc = screen_loc_for_slot_drawer()
-	#warn robot drawer injection?
+	if(host.robot_module_supported())
+		add_screen((button_robot_drawer = new(null, src)))
+		button_robot_drawer.screen_loc = screen_loc_for_robot_drawer()
 
 	// slots
 	rebuild_slots(inventory_slots_with_mappings)

@@ -90,6 +90,11 @@
 	if(!I)
 		return TRUE
 
+	if(flags & INV_OP_DIRECTLY_DROPPING)
+		// no dropping robot modules
+		if(inventory.robot_module_is_registered(I))
+			return FALSE
+
 	var/hand = get_held_index(I)
 	var/old
 	if(hand)

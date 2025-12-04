@@ -940,6 +940,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_ABSTRACT | INV_SLOT_ALLOW_RANDOM_ID
 	abstract_type = /datum/inventory_slot/abstract
 
+#warn how..
+/datum/inventory_slot/abstract/inactive_robot_module_storage
+	name = "in robot modules"
+	id = SLOT_ID_ROBOT_MODULE_STORAGE
+
 /datum/inventory_slot/abstract/put_in_hands
 	name = "put in hands"
 	id = SLOT_ID_HANDS

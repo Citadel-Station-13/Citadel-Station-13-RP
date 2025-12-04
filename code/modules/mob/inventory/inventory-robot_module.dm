@@ -119,5 +119,3 @@
 /datum/inventory/proc/on_robot_module_unregister(obj/item/item)
 	PROTECTED_PROC(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
-
-#warn check all the inventory procs, add checks to make sure you can't just like, pull items out

@@ -8,6 +8,17 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	if(!upgrade.dupe_allowed)
+		var/check_type = upgrade.dupe_type || upgrade.type
+		for(var/obj/item/robot_upgrade/other as anything in upgrades)
+			if(istype(other.type, check_type))
+				if(!silent)
+					actor?.chat_feedback(
+						SPAN_WARNING("There's already an upgrade of the same type in [src]."),
+						target = src,
+					)
+				return FALSE
+
 	return force || upgrade.can_install(src, ., actor, silent)
 
 /mob/living/silicon/robot/proc/can_fit_upgrade(obj/item/robot_upgrade/upgrade, datum/event_args/actor/actor, silent)
@@ -20,14 +31,14 @@
 		if(actor.performer && actor.performer.is_in_inventory(upgrade))
 			if(!actor.performer.can_unequip(upgrade, upgrade.worn_slot))
 				actor.chat_feedback(
-					SPAN_WARNING("[component] is stuck to your hand!"),
+					SPAN_WARNING("[upgrade] is stuck to your hand!"),
 					target = src,
 				)
 				return FALSE
 	if(!install_upgrade(upgrade, actor))
 		return FALSE
 	// TODO: sound
-	return install_upgrade(upgrade, force, actor, silent)
+	return install_upgrade(upgrade, actor, silent)
 
 /**
  * * moves the upgrade into us if it wasn't already
@@ -57,7 +68,7 @@
 
 	return TRUE
 
-/mob/living/silicon/robot/proc/user_uninstall_upgrade(obj/item/robot_upgrade/upgrade, datum/event_args/actor/actor)
+/mob/living/silicon/robot/proc/user_uninstall_upgrade(obj/item/robot_upgrade/upgrade, datum/event_args/actor/actor, put_in_hands)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	var/obj/item/uninstalled = uninstall_upgrade(upgrade, actor, new_loc = src)

@@ -39,17 +39,25 @@
 		return FALSE
 	return TRUE
 
+/**
+ * @return TRUE if an operation happened. if we pick it up and immediately drop it from failing
+ *         to keep it in us, **this is a TRUE return.**
+ */
 /obj/item/proc/attempt_pickup(mob/user)
-	. = TRUE
-	if (!user)
-		return
-
+	// make sure they have inventory
+	if (!user?.inventory)
+		return FALSE
+	// make sure we want them to pick up
 	if(!should_allow_pickup(new /datum/event_args/actor(user)))
+		return FALSE
+	// make sure their inventory can pick us up at all
+	// but also, if we're a robot module allow the pickup
+	if(!user.inventory.held_items_allow_pickup && !user.inventory.robot_module_is_registered(src))
 		return FALSE
 
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
-		return
+		return FALSE
 
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H = user
@@ -58,10 +66,10 @@
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")
-			return
+			return FALSE
 		if(!temp)
 			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
-			return
+			return FALSE
 
 	var/old_loc = src.loc
 	var/obj/item/actually_picked_up = src
@@ -88,16 +96,18 @@
 
 	if(isnull(actually_picked_up))
 		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
-		return
+		return FALSE
 	if(!user.put_in_hands(actually_picked_up, INV_OP_NO_MERGE_STACKS, user.active_hand))
 		if(has_to_drop_to_ground_on_fail)
 			actually_picked_up.forceMove(user.drop_location())
-		return
+			return TRUE
+		return FALSE
 	// success
 	if(isturf(old_loc))
 		new /obj/effect/temporary_effect/item_pickup_ghost(old_loc, actually_picked_up, user)
 	user.trigger_aiming(TARGET_CAN_CLICK)
-	
+	return TRUE
+
 //* Drag / Drop *//
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)

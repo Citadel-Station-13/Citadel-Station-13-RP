@@ -31,7 +31,6 @@
 
 	//* Inventory *//
 	/// held items
-	///
 	/// * empty indices are null
 	/// * this is also our rendered & nominal hand count
 	/// * 1, 3, 5, ... are left
@@ -39,12 +38,17 @@
 	var/list/obj/item/held_items = list()
 	/// held items are rendered with this many on one row
 	/// * if set, we will not apply default left/right hand semantics!
-	var/held_items_row_mode
+	/// * as num | null
+	var/held_items_row_mode = null
+	/// suppress 'swap' and 'equip' and other hand slot buttons
+	/// * used for robot module support
+	var/held_items_suppress_buttons = FALSE
+	/// allow normal pickups
+	/// * used for robot module support
+	var/held_items_allow_pickup = TRUE
 	/// robot modules
-	///
 	/// * this is a list with special semantics; null = do not render, existing = render, even if empty.
 	/// * this will be rendered if it's existing. this list being non-null is the 'is this supported' check.
-	#warn impl
 	var/list/obj/item/robot_modules
 
 	//* Rendering *//
