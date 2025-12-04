@@ -63,3 +63,4 @@
 /obj/vehicle/sealed/mecha/tesla_act(power)
 	..()
 	take_damage_legacy(power / 200, "energy") // A surface lightning strike will do 100 damage.
+#warn don't do this here + don't do this in general
