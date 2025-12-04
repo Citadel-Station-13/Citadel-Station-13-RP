@@ -706,6 +706,10 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/space,
 /area/bridge/strelka/captain)
+"cn" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/wood/indoors,
+/area/crew_quarters/bar/strelka)
 "cp" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
@@ -1377,9 +1381,11 @@
 /obj/machinery/light/fairy{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 31
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/wood/broken,
 /area/crew_quarters/bar/strelka)
@@ -4700,8 +4706,18 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/dormhallway/pool)
 "rA" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/flora/grass/event/bright_flowers1,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "rB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5814,6 +5830,17 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/library/strelka/library/room)
+"vG" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/flora/grass/event/bright_flowers1,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck4)
 "vI" = (
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/fey/forest_grass,
@@ -7098,6 +7125,10 @@
 /obj/machinery/door/blast/strelka/blockade,
 /turf/simulated/floor/trap/dark,
 /area/fitness/strelka/mime)
+"Ap" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/wood/indoors,
+/area/crew_quarters/bar/strelka)
 "Au" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -8658,6 +8689,18 @@
 "Gl" = (
 /turf/simulated/floor/carpet/patterened/red,
 /area/chapel/strelka)
+"Gs" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/wood/indoors,
+/area/crew_quarters/bar/strelka)
 "Gu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9554,6 +9597,19 @@
 /obj/machinery/cryopod/robot/door/gateway,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
+"JG" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/flora/grass/event/generic_bush1,
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck4)
 "JJ" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Substation - Deck 4 Crew Quarter";
@@ -10240,6 +10296,17 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/asteroid_steel,
+/area/hallway/strelka/deck4)
+"Mn" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "Mp" = (
 /obj/machinery/light{
@@ -11535,6 +11602,17 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/library)
+"Rn" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck4)
 "Rp" = (
 /obj/landmark/spawnpoint/job/chef,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -11674,8 +11752,15 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
 "RQ" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "RR" = (
 /obj/machinery/atmospheric_field_generator/perma,
@@ -11803,6 +11888,19 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
+"Sw" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood/indoors,
+/area/crew_quarters/bar/strelka)
 "Sy" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/maintenance/strelka)
@@ -12014,6 +12112,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/strelka/pointdefense)
+"Tj" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/wood/indoors,
+/area/crew_quarters/bar/strelka)
 "Tk" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -13283,6 +13389,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/simulated/floor/wood/indoors,
 /area/crew_quarters/bar/strelka)
 "Yi" = (
@@ -13390,12 +13499,10 @@
 "YA" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/item/stool,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/wood/indoors,
 /area/crew_quarters/bar/strelka)
 "YB" = (
@@ -28309,7 +28416,7 @@ Qg
 Mt
 bP
 mw
-rA
+JG
 Se
 rA
 mw
@@ -28890,7 +28997,7 @@ JF
 iH
 cv
 VL
-RQ
+Mn
 zO
 zO
 zO
@@ -29085,9 +29192,9 @@ kg
 cv
 VL
 mw
-rA
-rA
-rA
+vG
+Rn
+Rn
 mw
 VL
 cv
@@ -32178,8 +32285,8 @@ QD
 LD
 fo
 QL
-VJ
-TE
+cn
+Tj
 cZ
 Pj
 Ci
@@ -32760,7 +32867,7 @@ TO
 Ja
 lR
 yt
-VJ
+Ap
 YA
 FF
 gQ
@@ -34702,9 +34809,9 @@ GA
 db
 Xj
 hW
+Gs
 lE
-lE
-lE
+Sw
 lE
 fV
 PZ

@@ -1630,6 +1630,18 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/xenobio)
+"fH" = (
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/flora/grass/event/leafy_bush1,
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck3)
 "fI" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -4252,8 +4264,15 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/strelka/rd)
 "oa" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/simulated/floor/holofloor/tiled/dark,
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
 "od" = (
 /obj/effect/floor_decal/techfloor{
@@ -5351,8 +5370,15 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/upload)
 "rD" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/flora/grass/event/bright_flowers1,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
 "rF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11742,6 +11768,17 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
+"LI" = (
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck3)
 "LL" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -13184,6 +13221,18 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/medical/strelka/roomhallway)
+"PZ" = (
+/obj/structure/flora/grass/event/bright_flowers1,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/flora/grass/event/grassy_bush1,
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck3)
 "Qb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13713,6 +13762,18 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/xenobio)
+"RG" = (
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/flora/grass/event/leafy_bush2,
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck3)
 "RH" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/test)
@@ -15836,6 +15897,17 @@
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
+"YD" = (
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/fey/forest_grass,
+/area/hallway/strelka/deck3)
 "YE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/closet/crate/freezer,
@@ -30727,8 +30799,8 @@ sL
 MI
 UO
 XQ
-rD
-rD
+RG
+LI
 rD
 XQ
 Ka
@@ -31308,7 +31380,7 @@ cD
 pq
 LU
 kp
-oa
+PZ
 uD
 uD
 uD
@@ -31504,8 +31576,8 @@ ew
 Ub
 XQ
 rD
-rD
-rD
+fH
+YD
 XQ
 Ka
 jt
