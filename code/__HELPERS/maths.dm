@@ -34,18 +34,6 @@
 	var/prefix = prefixes[prefix_index]
 	. = list(SI_COEFFICIENT = coefficient, SI_UNIT = " [prefix][unit]")
 
-/**Format a power value in prefixed watts.
- * Converts from energy if convert is true.
- * Args:
- * - power: The value of power to format.
- * - convert: Whether to convert this from joules.
- * - datum/controller/subsystem/scheduler: used in the conversion
- * Returns: The string containing the formatted power.
- */
-/proc/display_power(power, convert = TRUE, datum/controller/subsystem/scheduler = SSmachines)
-	power = convert ? energy_to_power(power, scheduler) : power
-	return siunit(power, "W", 3)
-
 /**
  * Format an energy value in prefixed joules.
  * Arguments
