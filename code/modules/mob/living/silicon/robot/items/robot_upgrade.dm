@@ -29,6 +29,11 @@
 	/// * This shouldn't be used at compile time; just override the proc.
 	VAR_PRIVATE/list/provisioning_inject_item_descriptors
 
+	/// Allow dupes?
+	var/dupe_allowed = FALSE
+	/// Dupe type to check; defaults to self type
+	var/dupe_type
+
 /obj/item/robot_upgrade/Destroy()
 	owner?.uninstall_upgrade(src, TRUE)
 	QDEL_NULL(provisioning)
@@ -101,6 +106,7 @@
  *
  * * Robot has final say for hard conflicts. (we won't be called in that case)
  * * We have final say for soft conflicts.
+ * * skipped if 'force' is enabled on checks in the robot
  *
  * @params
  * * target - robot we're attempting to be installed in
