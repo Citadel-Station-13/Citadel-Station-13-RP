@@ -26,4 +26,4 @@
 /// * not necessarily as bad as [SLIP_CLASS_OIL] but also specialized
 #define SLIP_CLASS_FOAM (1<<5)
 
-// todo: DEFINE_BITFIELD_NEW
+// todo: DEFINE_BITFIELD_NAMED

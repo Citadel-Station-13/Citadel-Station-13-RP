@@ -163,15 +163,20 @@ DEFINE_BITFIELD(movement_type, list(
 /// this is opt in as a flag so people have to think about it before throwing it onto things.
 /// <--- clueless comment author
 #define INTEGRITY_FLAMMABLE (1<<5)
+/// ignore tesla damage effects
+//  TODO: remove on tesla update patch?
+#define INTEGRITY_TESLAPROOF (1<<6)
 
-DEFINE_BITFIELD(integrity_flags, list(
-	BITFIELD(INTEGRITY_INDESTRUCTIBLE),
-	BITFIELD(INTEGRITY_FIREPROOF),
-	BITFIELD(INTEGRITY_ACIDPROOF),
-	BITFIELD(INTEGRITY_LAVAPROOF),
-	BITFIELD(INTEGRITY_NO_DECONSTRUCT),
-	BITFIELD(INTEGRITY_FLAMMABLE),
+DECLARE_BITFIELD(atom_integrity_flags, list(
+	BITFIELD_NAMED("Indestructible", INTEGRITY_INDESTRUCTIBLE),
+	BITFIELD_NAMED("Fireproof", INTEGRITY_FIREPROOF),
+	BITFIELD_NAMED("Acidproof", INTEGRITY_ACIDPROOF),
+	BITFIELD_NAMED("Lavaproof", INTEGRITY_LAVAPROOF),
+	BITFIELD_NAMED("Destruction Doesn't Deconstruct", INTEGRITY_NO_DECONSTRUCT),
+	BITFIELD_NAMED("Flammable", INTEGRITY_FLAMMABLE),
+	BITFIELD_NAMED("Teslaproof", INTEGRITY_TESLAPROOF),
 ))
+ASSIGN_BITFIELD(atom_integrity_flags, /atom, integrity_flags)
 
 //? /atom/movable buckle_flags
 /// Requires restrained() (usually handcuffs) to work.
