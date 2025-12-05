@@ -54,6 +54,16 @@
 	. = ..()
 	reagents.add_reagent("coffeecola", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/cola_cinnamon
+	name = "\improper Space Cola Cinnamon"
+	desc = "The classic taste of Space Cola with a hint of warm cinnamon flavor. Happy Holidays!"
+	icon_state = "cinnamoncola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_cinnamon/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cinnamoncola", 30)
+
 /obj/item/reagent_containers/food/drinks/cans/waterbottle
 	name = "bottled water"
 	desc = "Introduced to the vending machines by Skrellian request, this water probably came from some icy comet in deep space!"
@@ -167,6 +177,16 @@
 /obj/item/reagent_containers/food/drinks/cans/space_up/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("space_up", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/space_upcranberry
+	name = "\improper Space-Up Cranberry"
+	desc = "Space-Up with a cranberry and spice twist. Happy Holidays!"
+	icon_state = "space-upcranberry"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/space_upcranberry/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("space_upcranberry", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/lemon_lime
 	name = "\improper Lemon-Lime"
@@ -341,6 +361,16 @@
 /obj/item/reagent_containers/food/drinks/cans/robustexpresslatte/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("cafe_latte", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint
+	name = "\improper Robust Express Peppermint Mocha"
+	desc = "Delicious caffeine infused with creamy vanilla and peppermint flavor. It's pleasantly warm to the touch."
+	icon_state = "robustexpresspeppermint"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("peppermint_mocha", 30)
 
 //Alraune Drink Import
 /obj/item/reagent_containers/food/drinks/cans/alraune
