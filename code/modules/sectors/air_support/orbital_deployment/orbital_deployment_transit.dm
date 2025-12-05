@@ -33,6 +33,8 @@
 	var/c_landing_mob_dmg_sides
 	var/c_landing_mob_dmg_cnt
 
+	var/c_telegraph_time
+
 	var/landing = FALSE
 
 /datum/orbital_deployment_transit/New(datum/orbital_deployment_zone/zone)
@@ -48,6 +50,7 @@
 	src.c_landing_mob_dmg_base = zone.c_landing_mob_dmg_base
 	src.c_landing_mob_dmg_sides = zone.c_landing_mob_dmg_sides
 	src.c_landing_mob_dmg_cnt = zone.c_landing_mob_dmg_cnt
+	src.c_telegraph_time = zone.c_telegraph_time
 
 /datum/orbital_deployment_transit/Destroy()
 	QDEL_NULL(reservation)

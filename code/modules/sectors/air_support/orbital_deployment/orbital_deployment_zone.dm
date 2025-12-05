@@ -45,6 +45,8 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	var/c_landing_mob_dmg_sides = 15
 	var/c_landing_mob_dmg_cnt = 15
 
+	var/c_telegraph_period = 10 SECONDS
+
 	var/area/current_area
 
 /datum/orbital_deployment_zone/New(

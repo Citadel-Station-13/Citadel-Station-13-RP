@@ -52,7 +52,27 @@
 	var/c_time = computed[2]
 
 	set_velocity(cos(c_angle) * launch_speed, sin(c_angle) * launch_speed)
+	var/c_telegraph_time = max(c_time - c_telegraph_time, 0)
+	addtimer(src, CALLBACK(PROC_REF(telegraph), c_time - c_telegraph_time), c_telegraph_time)
 	addtimer(src, CALLBACK(PROC_REF(land)), c_time)
 
 /obj/overmap/entity/orbital_deployment_transit/proc/land()
 	transit.land()
+
+/obj/overmap/entity/orbital_deployment_transit/proc/telegraph()
+	var/list/source_coords = transit.reservation.bottom_left_coords
+	var/r_type = transit.reservation.turf_type
+	var/ll_of_source_x = source_coords[1] - 1
+	var/ll_of_source_y = source_coords[2] - 1
+	var/ll_of_source_z = source_coords[3]
+	var/ll_of_target_x = transit.target_lower_left.x - 1
+	var/ll_of_target_y = transit.target_lower_left.y - 1
+	var/ll_of_target_z = transit.target_lower_left.z
+	// telegraph tiles that exist
+	for(var/x in 1 to transit.packaged_width)
+		for(var/y in 1 to transit.packaged_height)
+			var/turf/source = locate(ll_of_source_x + x, ll_of_source_y + y, ll_of_source_z)
+			if(istype(source, r_type))
+				continue
+			var/turf/target = locate(ll_of_target_x + x, ll_of_target_y + y, ll_of_target_z)
+			new /atom/movable/render/orbital_deployment_telegraph(target, landing_time)
