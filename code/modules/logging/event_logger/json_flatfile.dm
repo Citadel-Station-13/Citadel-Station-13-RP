@@ -4,6 +4,7 @@
 /datum/world_event_logger/json_flatfile
 	var/version = "0.0.1"
 
+	var/log__economy_transaction
 	var/log__gun_firing_cycle
 
 /datum/world_event_logger/json_flatfile/setup_logger(log_directory)
@@ -33,3 +34,6 @@
 		"result_last" = cycle.last_firing_result,
 	)
 	WRITE_LOG(log__gun_firing_cycle, json_encode(.))
+
+/datum/world_event_logger/json_flatfile/log__economy_transaction(datum/economy_transaction/transaction)
+	#warn impl

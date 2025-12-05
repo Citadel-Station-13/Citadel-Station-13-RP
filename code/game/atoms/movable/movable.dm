@@ -236,6 +236,13 @@
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
 
+/atom/movable/examine(mob/user, dist)
+	. = ..()
+	// todo: we have to have a better way of segmenting examine than this..
+	var/datum/component/price_tag/maybe_price_tag = get_price_tag()
+	if(maybe_price_tag)
+		. += SPAN_NOTICE("It has a price tag on it: [maybe_price_tag.price] [CURRENCY_NAME_SINGULAR](s).")
+
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	if(mover in buckled_mobs)
 		return TRUE

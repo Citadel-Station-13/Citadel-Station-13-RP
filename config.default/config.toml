@@ -8,6 +8,8 @@ admin = true
 adminchat = true
 adminwarn = true
 attack = true
+# Low-level clickchain logging
+clickchain = true
 debug = true
 emote = true
 game = true

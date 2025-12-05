@@ -33,7 +33,7 @@
 	/// nominal climb delay before modifiers
 	var/climb_delay = 3.5 SECONDS
 
-	//* Coloration
+	//* Coloration *//
 	/// coloration mode
 	var/coloration_mode = COLORATION_MODE_NONE
 	/// coloration:
@@ -167,7 +167,7 @@
 	/// volume when breaking out using resist process
 	var/breakout_volume = 100
 
-	//? Systems - naming convention is 'obj_[system]'
+	//* Systems - naming convention is 'obj_[system]' *//
 	/// cell slot system
 	var/datum/object_system/cell_slot/obj_cell_slot
 	/// storage system
@@ -824,6 +824,9 @@
 	// todo: context + construction (tool) examines at some point need a better system
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
 		. += SPAN_NOTICE("This entity can be rotated[(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK)? "" : " while unanchored"] via context menu (alt click while adjacent).")
+	var/datum/component/price_tag/maybe_price_tag = GetComponent(/datum/component/price_tag)
+	if(maybe_price_tag)
+		. += SPAN_NOTICE("This has a price tag of [maybe_price_tag.price] [maybe_price_tag.price > 1 ? CURRENCY_NAME_PLURAL : CURRENCY_NAME_SINGULAR] affixed to it.")
 
 /obj/proc/examine_integrity(mob/user)
 	. = list()

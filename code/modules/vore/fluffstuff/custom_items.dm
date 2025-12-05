@@ -201,25 +201,6 @@
 		to_chat(user, "<span class='warning'>This isn't even an ID card you idiot.</span>")
 		return
 
-//arokha:Aronai Sieyes - Centcom ID (Medical dept)
-/obj/item/card/id/centcom/station/fluff/aronai
-	registered_name = "CONFIGURE ME"
-	assignment = "CC Medical"
-	var/configured = 0
-
-/obj/item/card/id/centcom/station/fluff/aronai/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(configured)
-		return ..()
-
-	user.set_id_info(src)
-	if(user.mind && user.mind.initial_account)
-		associated_account_number = user.mind.initial_account.account_number
-	configured = 1
-	to_chat(user, "<span class='notice'>Card settings set.</span>")
-
 //Swat43:Fortune Bloise
 /obj/item/storage/backpack/satchel/fluff/swat43bag
 	name = "Coloured Satchel"
@@ -464,43 +445,6 @@
 	name = "New Space Pioneer's Bible"
 	desc = "A New Space Pioneer's Bible. This one says it was printed in 2492. The name 'Eric Hayvers' is written on the inside of the cover, crossed out. \
 	Under it is written 'Kouri, Amina, Marine Unit 14, Fifth Echelon. Service number NTN-5528928522372'"
-
-//arokha:Amaya Rahl - Custom ID (Medical dept)
-/obj/item/card/id/fluff/amaya
-	registered_name = "CONFIGURE ME"
-	assignment = "CONFIGURE ME"
-	var/configured = 0
-	var/accessset = 0
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "amayarahlwahID"
-	desc = "A primarily blue ID with a holographic 'WAH' etched onto its back. The letters do not obscure anything important on the card. It is shiny and it feels very bumpy."
-	var/title_strings = list("Amaya Rahl's Wah-identification card", "Amaya Rahl's Wah-ID card")
-
-/obj/item/card/id/fluff/amaya/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(configured == 1)
-		return ..()
-
-	var/title = user.client.prefs.get_job_alt_title_name(RSroles.legacy_job_by_title(user.job)) || user.job
-	assignment = title
-	user.set_id_info(src)
-	if(user.mind && user.mind.initial_account)
-		associated_account_number = user.mind.initial_account.account_number
-	var/tempname = pick(title_strings)
-	name = tempname + " ([title])"
-	configured = 1
-	to_chat(user, "<span class='notice'>Card settings set.</span>")
-
-/obj/item/card/id/fluff/amaya/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/card/id) && !accessset)
-		var/obj/item/card/id/O = I
-		access |= O.access
-		to_chat(user, "<span class='notice'>You copy the access from \the [I] to \the [src].</span>")
-		qdel(I)
-		accessset = 1
-	..()
 
 //General use, Verk felt like sharing.
 /obj/item/clothing/glasses/fluff/science_proper

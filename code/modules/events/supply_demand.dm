@@ -1,9 +1,8 @@
 /var/global/running_demand_events = list()
 
-/legacy_hook/sell_shuttle/proc/supply_demand_sell_shuttle(var/area/area_shuttle)
+/proc/legacy_supply_demand_supply_sell_hook(list/atom/movable/entities)
 	for(var/datum/event/supply_demand/E in running_demand_events)
-		E.handle_sold_shuttle(area_shuttle)
-	return 1 // All hooks must return one to show success.
+		E.handle_sold_shuttle(entities)
 
 //
 // The Supply Demand Event - CentCom asks for us to put some stuff on the shuttle
@@ -72,7 +71,9 @@
 	// Check if the crew succeeded or failed!
 	if(required_items.len == 0)
 		// Success!
-		SSsupply.points += 100 * severity
+		var/datum/economy_account/cargo_account = SSsupply.resolve_station_cargo_account()
+		// todo: i'm too lazy to make a transaction log
+		cargo_account.adjust_balance_without_logging(10000 * severity)
 		var/msg = "Great work! With those items you delivered our inventory levels all match up. "
 		msg += "[capitalize(pick(GLOB.first_names_female))] from accounting will have nothing to complain about. "
 		msg += "I think you'll find a little something in your supply account."
@@ -96,10 +97,10 @@
 /**
  * Event Handler for responding to the supply shuttle arriving at centcom.
  */
-/datum/event/supply_demand/proc/handle_sold_shuttle(var/area/area_shuttle)
+/datum/event/supply_demand/proc/handle_sold_shuttle(list/atom/movable/entities)
 	var/match_found = 0;
 
-	for(var/atom/movable/MA in area_shuttle)
+	for(var/atom/movable/MA in entities)
 		// Special case to allow us to count mechs!
 		if(MA.anchored && !istype(MA, /obj/vehicle/sealed/mecha))	continue // Ignore anchored stuff
 

@@ -50,33 +50,3 @@
  * Parameters: var/mob/living/carbon/alien/diona
  */
 /legacy_hook/harvest_podman
-
-/**
- * Payroll revoked hook.
- * Called in Accounts_DB.dm when someone's payroll is stolen at the Accounts terminal.
- * Parameters: var/datum/money_account
- */
-/legacy_hook/revoke_payroll
-
-/**
- * Account suspension hook.
- * Called in Accounts_DB.dm when someone's account is suspended or unsuspended at the Accounts terminal.
- * Parameters: var/datum/money_account
- */
-/legacy_hook/change_account_status
-
-/**
- * Crate sold hook.
- * Called in supplyshuttle.dm when a crate is sold on the shuttle.
- * Parameters: var/obj/structure/closet/crate/sold, var/area/shuttle
- */
-/legacy_hook/sell_crate
-
-/**
- * Supply Shuttle sold hook.
- * Called in supplyshuttle.dm when the shuttle contents are sold.
- * This hook is called _before_ the crates are processed for normal
- * phoron/metal sale (and before the sell_crate hooks)
- * Parameters: var/area/area_shuttle
- */
-/legacy_hook/sell_shuttle

@@ -34,3 +34,5 @@ This module has the core definitions and relationship definitions of things like
 Management is done by SSgame_world, but at some point, might be moved to a static repository.
 
 This is the only 'non-ticking' module; it **describes** the world, as opposed to acts as the world.
+
+* Things like economy can request factions from the world.

@@ -1,11 +1,13 @@
-/*****************************Coin********************************/
-
+/**
+ * Despite being in the economy module,
+ * coins have no value or purpose whatsoever for economy as of time of writing.
+ */
 /obj/item/coin
 	icon = 'icons/obj/items.dmi'
 	name = "Coin"
 	icon_state = "coin"
-	damage_force = 0.0
-	throw_force = 0.0
+	damage_force = 0
+	throw_force = 0
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	var/string_attached
@@ -18,17 +20,6 @@
 	. = ..()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
-
-// not yet, currency coins later
-/obj/item/coin/is_static_currency(prevent_types)
-	return NOT_STATIC_CURRENCY
-
-// not yet
-/obj/item/coin/amount_static_currency()
-	return 0
-
-/obj/item/coin/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	visible_message(SPAN_NOTICE("[user] insert [src] into [target]."), SPAN_NOTICE("You insert [src] into [target]."), SPAN_NOTICE("You hear a metallic clink."), range)
 
 /obj/item/coin/iron
 	name = "iron coin"

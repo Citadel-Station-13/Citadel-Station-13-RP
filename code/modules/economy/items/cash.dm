@@ -1,27 +1,29 @@
+// TODO: rename to /obj/item/cash
 /obj/item/spacecash
 	name = "0 Thaler"
 	desc = "It's worth 0 Thalers."
-	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "spacecash1"
-	opacity = 0
-	density = 0
-	anchored = 0.0
-	damage_force = 1.0
-	throw_force = 1.0
+	gender = PLURAL
+	damage_force = 1
+	throw_force = 1
 	throw_speed = 1
 	throw_range = 2
 	w_class = WEIGHT_CLASS_SMALL
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
-	var/access = list()
-	access = ACCESS_MISC_CASHCRATE
-	var/worth = 0
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
+	/// Amount of money this is.
+	var/worth = 0
+
+/obj/item/spacecash/Initialize(mapload, amount)
+	if(!isnull(amount))
+		worth = amount
+	return ..()
+
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
-		if(istype(W, /obj/item/spacecash/ewallet)) return 0
 
 		var/obj/item/spacecash/SC = W
 
@@ -103,27 +105,64 @@
 	SC.set_worth(amount)
 	usr.put_in_hands(SC)
 
-/obj/item/spacecash/is_static_currency(prevent_types)
-	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
+//* Economy *//
 
-/obj/item/spacecash/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL_PROPER] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
+/obj/item/spacecash/economy_is_payment()
+	return TRUE
 
-/obj/item/spacecash/consume_static_currency(amount, force, mob/user, atom/target, range)
-	if(force)
-		amount = min(amount, worth)
-	if(amount > worth)
-		return PAYMENT_INSUFFICIENT
-	worth -= amount
-	do_static_currency_feedback(amount, user, target, range)
-	. = amount
+/obj/item/spacecash/economy_attempt_payment(datum/economy_payment/payment, payment_op_flags, atom/movable/accepting_entity, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain)
+	if((payment.payment_types_allowed & PAYMENT_TYPE_CASH))
+		actor?.chat_feedback(
+			SPAN_WARNING("[accepting_entity] doesn't accept cash."),
+			target = accepting_entity,
+		)
+		return TRUE
+
+	var/paying_amount
+
+	if(worth < payment.amount)
+		if(payment.allow_partial)
+			paying_amount = worth
+		else
+			actor?.chat_feedback(
+				SPAN_WARNING("[src] isn't enough to pay [accepting_entity] with."),
+				target = src,
+			)
+			// don't actually execute payment as this isn't a card swipe and we're
+			// not inserting the cash.
+			// todo: should we have a system to allow logical insertion and rejection?
+			//       this system currently doesn't support the machine itself throwing an error
+			//       as from its perspective the cash was never inserted.
+			return TRUE
+	else
+		paying_amount = payment.amount
+
+	if(!(payment_op_flags & PAYMENT_OP_SUPPRESSED))
+		actor?.visible_feedback(
+			target = accepting_entity,
+			range = MESSAGE_RANGE_ITEM_HARD,
+			visible = SPAN_NOTICE("[actor.performer] inserts some cash into [accepting_entity]."),
+			otherwise_self = SPAN_NOTICE("You insert some cash into [accepting_entity]."),
+		)
+	// todo: sound
+
+	worth -= paying_amount
+	ASSERT(worth >= 0)
+
+	payment.out_payment_result = PAYMENT_RESULT_SUCCESS
+	payment.out_amount_paid = paying_amount
+
 	if(!worth)
 		qdel(src)
-		return
-	update_appearance()
+	else
+		update_appearance()
+	return TRUE
 
-/obj/item/spacecash/amount_static_currency()
-	return worth
+//* Supply *//
+
+/obj/item/spacecash/supply_export_enumerate(datum/supply_export/export)
+	export.earned_direct_cash += worth
+	export.earned += worth
 
 /obj/item/spacecash/c1
 	name = "1 Thaler"
@@ -180,46 +219,3 @@
 	if (ishuman(human_user) && !human_user.get_active_held_item())
 		human_user.put_in_hands(SC)
 
-/obj/item/spacecash/ewallet
-	name = "charge card"
-	icon_state = "efundcard"
-	desc = "A card that holds an amount of money."
-	drop_sound = 'sound/items/drop/card.ogg'
-	pickup_sound = 'sound/items/pickup/card.ogg'
-	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
-
-/obj/item/spacecash/ewallet/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	return //Don't act
-
-/obj/item/spacecash/ewallet/attackby()
-	return //like actual
-
-/obj/item/spacecash/ewallet/update_icon()
-	return //space cash
-
-/obj/item/spacecash/ewallet/examine(mob/user, dist)
-	. = ..()
-	if (!(user in view(2)) && user!=src.loc)
-		return
-	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
-
-/obj/item/spacecash/ewallet/is_static_currency(prevent_types)
-	return (prevent_types & PAYMENT_TYPE_CHARGE_CARD)? NOT_STATIC_CURRENCY : DISCRETE_STATIC_CURRENCY
-
-/obj/item/spacecash/ewallet/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	visible_message(SPAN_NOTICE("[user] swipes [src] through [target]."), SPAN_NOTICE("You swipe [src] through [target]."), SPAN_NOTICE("You hear a card swipe."), range)
-
-/obj/item/spacecash/ewallet/amount_static_currency()
-	return worth
-
-/obj/item/spacecash/ewallet/consume_static_currency(amount, force, mob/user, atom/target, range)
-	if(force)
-		amount = min(amount, worth)
-	if(amount > worth)
-		return PAYMENT_INSUFFICIENT
-	worth -= amount
-	do_static_currency_feedback(amount, user, target, range)
-	return amount

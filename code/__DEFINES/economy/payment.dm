@@ -1,60 +1,31 @@
-// payment_type bitflags
-/// coin
-#define PAYMENT_TYPE_COIN				(1<<0)
+//* payment_type bitflags *//
+
 /// cash
-#define PAYMENT_TYPE_CASH				(1<<1)
-/// holochips
-#define PAYMENT_TYPE_HOLOCHIPS          (1<<2)
-/// some kind of bank card that's linked to an account
-#define PAYMENT_TYPE_BANK_CARD			(1<<3)
-/// chargecard
-#define PAYMENT_TYPE_CHARGE_CARD		(1<<4)
+#define PAYMENT_TYPE_CASH				(1<<0)
+/// chargecard; basically electronic cash wallet
+#define PAYMENT_TYPE_CHARGE_CARD		(1<<1)
+/// bank-linked account
+#define PAYMENT_TYPE_BANK_CARD			(1<<2)
 
-/// not a method - example for something that can be blocked/filtered - this payment type requires biometric authentication
-#define PAYMENT_TYPE_BIOMETRIC			(1<<23)
-
-/// all payment types
+/// all payment typesw
 #define PAYMENT_TYPE_ALL				ALL
 /// only these types
 #define PAYMENT_TYPES_ALLOW_ONLY(types)		(~(types))
 /// prevent these types
 #define PAYMENT_TYPES_EXCEPT_FOR(types)		(~(types))
 
-// kinds of static currency
-/// not static currency
-#define NOT_STATIC_CURRENCY				0
-/// discrete object, e.g. coins, chargecards
-#define DISCRETE_STATIC_CURRENCY			1
-/// stack, e.g. cash, holochips
-#define PLURAL_STATIC_CURRENCY			2
+//* payment op flags *//
 
-// attempt_dynamic_payment and attempt_use_currency
-/// successful - syntatically, even 0 is fine
-#define PAYMENT_SUCCESS				0
-/// errored
-#define PAYMENT_DYNAMIC_ERROR		-1
-/// didn't try at all
-#define PAYMENT_NOT_CURRENCY		-2
-/// not enough money - this is only for "dumb" currency, if it's a dynamic method use payment error for logical errors like "bank account insufficient" and return error
-#define PAYMENT_INSUFFICIENT		-3
+/// no sound
+#define PAYMENT_OP_SILENT (1<<0)
+/// no message
+#define PAYMENT_OP_SUPPRESSED (1<<1)
+/// do not allow user input
+#define PAYMENT_OP_SKIP_USER_INPUT (1<<2)
 
-// list return for /datum/proc/transaction_charge_details(list/data)
-/// recipient identity
-#define CHARGE_DETAIL_RECIPIENT				"recipient"
-/// location as string - **player facing** so feel free to obfuscate this
-#define CHARGE_DETAIL_LOCATION				"location"
-/// machine/charge device identity
-#define CHARGE_DETAIL_DEVICE				"device"
-/// reason field
-#define CHARGE_DETAIL_REASON				"reason"
+//* payment_result enums *//
 
-
-// datalist for dynamic payment keys
-/// error message on failure
-#define DYNAMIC_PAYMENT_DATA_FAIL_REASON		"fail_reason"
-/// paid amount
-#define DYNAMIC_PAYMENT_DATA_PAID_AMOUNT		"amount"
-/// bank account used if any
-#define DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT       "account"
-/// payment type used
-#define DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE		"currency_type"
+#define PAYMENT_RESULT_UNSET "unset"
+#define PAYMENT_RESULT_SUCCESS "success"
+#define PAYMENT_RESULT_INSUFFICIENT "insufficient"
+#define PAYMENT_RESULT_ERROR "error"

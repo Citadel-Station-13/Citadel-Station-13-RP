@@ -18,27 +18,28 @@
 	var/gameprice = 1
 	var/winscreen = ""
 
-// Payment
-/obj/machinery/computer/arcade/clawmachine/attackby(obj/item/I, mob/user)
-	if(..())
+/obj/machinery/computer/arcade/clawmachine/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
-	if(gamepaid == 0 && GLOB.vendor_account && !GLOB.vendor_account.suspended)
-		var/paid = 0
-		var/obj/item/card/id/W = I.GetID()
-		if(W) //for IDs and PDAs and wallets with IDs
-			paid = pay_with_card(W,I)
-		else if(istype(I, /obj/item/spacecash/ewallet))
-			var/obj/item/spacecash/ewallet/C = I
-			paid = pay_with_ewallet(C)
-		else if(istype(I, /obj/item/spacecash))
-			var/obj/item/spacecash/C = I
-			paid = pay_with_cash(C, user)
-		if(paid)
-			gamepaid = 1
-			instructions = "Hit start to play!"
-			return
-		return
+	if(!gamepaid && using.economy_is_payment())
+		var/datum/economy_payment/payment = new
+		payment.amount = gameprice
+		payment.audit_terminal_name_as_unsafe_html = name
+		payment.audit_purpose_as_unsafe_html = "Arcade game purchase"
+		payment.audit_recipient_as_unsafe_html = "Vendor"
+
+		if(emagged)
+			payment.allow_partial = TRUE
+			payment.amount = INFINITY
+
+		if(using.economy_attempt_payment(payment, NONE, src, e_args, e_args))
+			if(payment.is_successful())
+				gamepaid = TRUE
+				instructions = "Hit start to play!"
+			return CLICKCHAIN_DID_SOMETHING
+		#warn impl
 
 // Cash
 /obj/machinery/computer/arcade/clawmachine/proc/pay_with_cash(obj/item/spacecash/cashmoney, mob/user)
@@ -70,7 +71,7 @@
 
 
 ///// Ewallet
-/obj/machinery/computer/arcade/clawmachine/proc/pay_with_ewallet(obj/item/spacecash/ewallet/wallet)
+/obj/machinery/computer/arcade/clawmachine/proc/pay_with_ewallet(obj/item/charge_card/wallet)
 	if(!emagged)
 		visible_message(SPAN_INFO("\The [usr] swipes \the [wallet] through \the [src]."))
 		playsound(src, 'sound/machines/id_swipe.ogg', 50, TRUE)
@@ -93,7 +94,7 @@
 	else
 		visible_message(SPAN_INFO("\The [usr] swipes \the [ID_container] through \the [src]."))
 	playsound(src, 'sound/machines/id_swipe.ogg', 50, 1)
-	var/datum/money_account/customer_account = get_account(I.associated_account_number)
+	var/datum/economy_account/customer_account = get_account(I.associated_account_number)
 	if(!customer_account)
 		visible_message(SPAN_WARNING("Error: Unable to access account. Please contact technical support if problem persists."))
 		return FALSE
@@ -111,49 +112,8 @@
 		if(!customer_account)
 			visible_message(SPAN_WARNING("Unable to access account: incorrect credentials."))
 			return FALSE
+	#warn impl
 
-	if(gameprice > customer_account.money)
-		visible_message(SPAN_WARNING("Insufficient funds in account."))
-		return FALSE
-	else
-		// Okay to move the money at this point
-		if(emagged)
-			gameprice = customer_account.money
-		// debit money from the purchaser's account
-		customer_account.money -= gameprice
-
-		// create entry in the purchaser's account log
-		var/datum/transaction/T = new()
-		T.target_name = "[GLOB.vendor_account.owner_name] (via [name])"
-		T.purpose = "Purchase of arcade game([name])"
-		if(gameprice > 0)
-			T.amount = "([gameprice])"
-		else
-			T.amount = "[gameprice]"
-		T.source_terminal = name
-		T.date = GLOB.current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
-
-		// Give the vendor the money. We use the account owner name, which means
-		// that purchases made with stolen/borrowed card will look like the card
-		// owner made them
-		credit_purchase(customer_account.owner_name)
-		return TRUE
-
-/// Add to vendor account
-
-/obj/machinery/computer/arcade/clawmachine/proc/credit_purchase(target as text)
-	GLOB.vendor_account.money += gameprice
-
-	var/datum/transaction/T = new()
-	T.target_name = target
-	T.purpose = "Purchase of arcade game([name])"
-	T.amount = "[gameprice]"
-	T.source_terminal = name
-	T.date = GLOB.current_date_string
-	T.time = stationtime2text()
-	GLOB.vendor_account.transaction_log.Add(T)
 
 /// End Payment
 

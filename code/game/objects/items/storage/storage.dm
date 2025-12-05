@@ -121,3 +121,9 @@
 	obj_storage.ui_numerical_mode = ui_numerical_mode
 	obj_storage.ui_expand_when_needed = ui_expand_when_needed
 	obj_storage.ui_force_slot_mode = ui_force_slot_mode
+
+
+//* Supply *//
+
+/obj/item/storage/supply_export_recurse()
+	return contents.Copy()

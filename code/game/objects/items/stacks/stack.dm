@@ -479,6 +479,11 @@
 		return null
 	return CEILING(the_amount / max_amount * icon_state_count, 1)
 
+//* Supply *//
+
+/obj/item/stack/supply_export_enumerate(datum/supply_export/export)
+	export.entities_stack += src
+
 //* Types *//
 
 /**
