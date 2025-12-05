@@ -20,15 +20,21 @@
 
 /obj/structure/blob/tesla_act(power)
 	..()
+	if(integrity_flags & INTEGRITY_TESLAPROOF)
+		return
 	adjust_integrity_blob(-power/400)
 
 /obj/machinery/nuclearbomb/tesla_act(power, explosive)
 	..()
+	if(integrity_flags & INTEGRITY_TESLAPROOF)
+		return
 	if(explosive)
 		qdel(src)//like the singulo, tesla deletes it. stops it from exploding over and over
 
 /obj/machinery/tesla_act(power, explosive = FALSE)
 	..()
+	if(integrity_flags & INTEGRITY_TESLAPROOF)
+		return
 	if(prob(85) && explosive)
 		explosion(loc, 0, 2, 4, /*flame_range = 2,*/ adminlog = FALSE/*, smoke = FALSE*/) // No devastation range
 	else if(prob(50))
@@ -40,9 +46,13 @@
 	if(isEmpProof())
 		return
 	..()
+	if(integrity_flags & INTEGRITY_TESLAPROOF)
+		return
 	qdel(src) //to prevent bomb testing camera from exploding over and over forever
 
 /obj/machinery/light/tesla_act(power, explosive = FALSE)
+	if(integrity_flags & INTEGRITY_TESLAPROOF)
+		return
 	if(explosive)
 		explosion(loc, 0, 0, 0/*, flame_range = 5*/, adminlog = FALSE)
 		qdel(src)
@@ -52,14 +62,20 @@
 
 /obj/structure/closet/tesla_act(var/power)
 	..() //extend the zap
+	if(integrity_flags & INTEGRITY_TESLAPROOF)
+		return
 	visible_message("<span class='danger'>[src] is blown apart by the bolt of electricity!</span>", "<span class='danger'>You hear a metallic screeching sound.</span>")
 	dump_contents()
 	qdel(src)
 
 /obj/structure/reagent_dispensers/fueltank/tesla_act()
 	..() //extend the zap
+	if(integrity_flags & INTEGRITY_TESLAPROOF)
+		return
 	explode()
 
 /obj/vehicle/sealed/mecha/tesla_act(power)
 	..()
+	if(integrity_flags & INTEGRITY_TESLAPROOF)
+		return
 	take_damage_legacy(power / 200, "energy") // A surface lightning strike will do 100 damage.

@@ -14,7 +14,7 @@
 
 //* emote_class's ; determines who can do what emote *//
 //* -- This is broadphase, effectively.              *//
-//  todo: DEFINE_BITFIELD_NEW
+//  todo: DEFINE_BITFIELD_NAMED
 
 /// require body
 /// * so no brains
@@ -31,7 +31,7 @@ GLOBAL_REAL_LIST(emote_class_bit_descriptors) = list(
 //* emote_require's ; more freeform classes that should invoke procs *//
 //* -- This is narrowphase and doesn't exclude emotes from listings, *//
 //*    generally.                                                    *//
-//  todo: DEFINE_BITFIELD_NEW
+//  todo: DEFINE_BITFIELD_NAMED
 
 /// has a speaker of some kind
 /// * implies `EMOTE_REQUIRE_VOCALIZATION`
