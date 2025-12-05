@@ -13,24 +13,35 @@
 /datum/controller/subsystem/job/proc/GetPlayerAltTitle(mob/new_player/player, rank)
 	return player.client.prefs.get_job_alt_title_name(RSroles.legacy_job_by_title(rank))
 
-/datum/controller/subsystem/job/proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
-	job_debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
-	if(player && player.mind && rank)
-		var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(rank)
-		var/reasons = job.check_client_availability_one(player.client)
-		if(reasons != ROLE_AVAILABLE)
-			job_debug("AR failed: player [player], rank [rank], latejoin [latejoin], failed for [reasons]")
-			return FALSE
-		job_debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions]")
-		player.mind.assigned_role = rank
-		player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
-		// this can be called in latejoin!!
-		// todo: we shouldn't have to do this
-		divide_unassigned?.Remove(player)
-		job.current_positions++
-		return 1
-	job_debug("AR has failed, Player: [player], Rank: [rank]")
-	return 0
+/datum/controller/subsystem/job/proc/AssignRole(mob/new_player/player, datum/prototype/role/job/job, datum/prototype/struct/alt_title/alt_title, latejoin = 0)
+
+	job_debug("Running AR, Player: [player], Rank: [job.title], LJ: [latejoin]")
+	if(!(player && player.mind && job))
+		job_debug("AR has failed, Bad input, Player: [player], Rank: [job.title]")
+		return FALSE
+	if(alt_title)
+		var/alt_verified = FALSE
+		for(var/rank in job.alt_titles)
+			if(rank == alt_title.title)
+				alt_verified = TRUE
+				break
+		if(!alt_verified)
+			job_debug("AR has failed, Bad alt-title, Player: [player], Alt Title: [alt_title.title]")
+
+	var/reasons = job.check_client_availability_one(player.client)
+	if(reasons != ROLE_AVAILABLE)
+		job_debug("AR failed: Player [player], Rank [job.title], latejoin [latejoin], failed for [reasons]")
+		return FALSE
+
+	//job_debug("Player: [player] is now Rank: [job.title], JCP:[job.current_positions")
+	player.mind.assigned_job = job
+	player.mind.assigned_alt_title = alt_title
+	job.current_positions++
+	// this can be called in latejoin!!
+	// todo: we shouldn't have to do this
+	divide_unassigned?.Remove(player)
+	return TRUE
+
 
 /// Making additional slot on the fly.
 /datum/controller/subsystem/job/proc/FreeRole(rank)
@@ -59,10 +70,10 @@
 	for(var/datum/prototype/role/job/job in shuffle(RSroles.legacy_all_job_datums()))
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
-			job_debug("GRJ failed for [reasons] on [job.id]")
+			job_debug("GRJ failed for [reasons] on [job.title]")
 			continue
-		if(!AssignRole(player, job.title))
-			job_debug("GRJ on [job.id] for [player] AssignRole failed!!!")
+		if(!AssignRole(player, job))
+			job_debug("GRJ on [job.title] for [player] AssignRole failed!!!")
 			continue
 		divide_unassigned -= player
 		break
@@ -74,10 +85,7 @@
  */
 /datum/controller/subsystem/job/proc/FillHeadPosition()
 	for(var/level in JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW step -1)
-		for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-			var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(command_position)
-			if(!job)
-				continue
+		for(var/datum/prototype/role/job/job in SSjob.get_all_department_datums(DEPARTMENT_COMMAND))
 			var/list/candidates = FindOccupationCandidates(job, level)
 			if(!candidates.len)
 				continue
@@ -114,9 +122,9 @@
 
 
 			var/mob/new_player/candidate = pickweight(weightedCandidates)
-			if(AssignRole(candidate, command_position))
-				return 1
-	return 0
+			if(AssignRole(candidate, job))
+				return TRUE
+	return FALSE
 
 
 /**
@@ -124,15 +132,14 @@
  * head jobs to be checked before any other jobs of the same level.
  */
 /datum/controller/subsystem/job/proc/CheckHeadPositions(level)
-	for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-		var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(command_position)
+	for(var/datum/prototype/role/job/job in SSjob.get_all_department_datums(DEPARTMENT_COMMAND))
 		if(!job || (job.current_positions >= job.spawn_positions))
 			continue
 		var/list/candidates = FindOccupationCandidates(job, level)
 		if(!candidates.len)
 			continue
 		var/mob/new_player/candidate = pick(candidates)
-		AssignRole(candidate, command_position)
+		AssignRole(candidate, job)
 	return
 
 
@@ -171,7 +178,7 @@
 	job_debug("AC1, Candidates: [assistant_candidates.len]")
 	for(var/mob/new_player/player in assistant_candidates)
 		job_debug("AC1 pass, Player: [player]")
-		AssignRole(player, USELESS_JOB)
+		AssignRole(player, assist)
 		assistant_candidates -= player
 	job_debug("DO, AC1 end")
 
@@ -211,7 +218,7 @@
 					// If the job isn't filled
 					if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 						job_debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
-						AssignRole(player, job.title)
+						AssignRole(player, job)
 						divide_unassigned -= player
 						break
 
@@ -229,7 +236,7 @@
 	for(var/mob/new_player/player in divide_unassigned)
 		if(divide_overflows[player] == JOB_ALTERNATIVE_BE_ASSISTANT)
 			job_debug("AC2 Assistant located, Player: [player]")
-			AssignRole(player, USELESS_JOB)
+			AssignRole(player, DEFAULT_JOB_TYPE)
 
 	//For ones returning to lobby
 	for(var/mob/new_player/player in divide_unassigned)
@@ -282,7 +289,7 @@
 		job.setup_account(H)
 
 		// Equip job items.
-		job.equip(H, H.mind ? H.mind.role_alt_title : "")
+		job.equip(H, H.mind ? H.mind.assigned_alt_title.title : "")
 
 		// Stick their fingerprints on literally everything
 		job.apply_fingerprints(H)
