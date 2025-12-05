@@ -130,6 +130,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/structure/sign/christmas/wreath{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "as" = (
@@ -480,6 +483,9 @@
 /obj/machinery/computer/cryopod/travel{
 	pixel_y = 30
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "bi" = (
@@ -522,6 +528,9 @@
 /area/crew_quarters/kitchen/strelka)
 "bs" = (
 /obj/machinery/fire_alarm/south_mount,
+/obj/structure/sign/christmas/wreath{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/library/strelka/library)
 "bw" = (
@@ -661,6 +670,10 @@
 /obj/structure/flora/grass/event/yellow_flowers1,
 /turf/simulated/floor/event/grass/grass1,
 /area/chapel/strelka)
+"bX" = (
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/bridge/strelka)
 "bY" = (
 /obj/machinery/camera/network/security{
 	dir = 8
@@ -773,6 +786,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "cv" = (
@@ -1201,6 +1215,9 @@
 "eB" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/computer/ship/engines/adv,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
 "eC" = (
@@ -1472,6 +1489,7 @@
 /obj/structure/curtain/open/black,
 /obj/structure/closet/secure_closet/hop,
 /obj/item/megaphone,
+/obj/item/radio,
 /turf/simulated/floor/wood/broken,
 /area/bridge/strelka/hop/room)
 "fv" = (
@@ -1932,7 +1950,7 @@
 /area/strelka/dormhallway/pool/sauna)
 "hm" = (
 /obj/structure/grille,
-/turf/space,
+/turf/simulated/shuttle/floor/glass,
 /area/crew_quarters/bar/strelka/back)
 "hn" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -1959,6 +1977,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1997,6 +2018,9 @@
 "hv" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
@@ -2385,6 +2409,7 @@
 /obj/machinery/computer/cryopod/travel{
 	pixel_y = -29
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "iX" = (
@@ -2571,6 +2596,9 @@
 	},
 /obj/machinery/status_display{
 	pixel_y = -32
+	},
+/obj/structure/sign/christmas/wreath{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
@@ -3364,6 +3392,7 @@
 	},
 /obj/item/megaphone,
 /obj/item/disk/nuclear,
+/obj/item/radio,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/captain/room)
 "mf" = (
@@ -3660,6 +3689,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka)
+"ns" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/sign/christmas/wreath{
+	dir = 1
+	},
+/turf/simulated/floor/wood/indoors,
+/area/hallway/strelka/deck4)
 "nx" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -3780,6 +3825,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
 "nZ" = (
@@ -4069,6 +4115,9 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/wreath{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/library/strelka/library)
 "pa" = (
@@ -4259,6 +4308,9 @@
 /area/strelka/dormhallway/Dorm)
 "pG" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "pH" = (
@@ -4462,6 +4514,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/crew_quarters/bar/strelka)
 "qz" = (
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/bridge/strelka)
 "qA" = (
@@ -4595,6 +4648,9 @@
 	dir = 1
 	},
 /obj/structure/table/carbon/reinforced,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
 "rh" = (
@@ -4662,6 +4718,7 @@
 /obj/structure/sign/deck/fourth{
 	pixel_y = 31
 	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck4)
 "rs" = (
@@ -4706,18 +4763,19 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/dormhallway/pool)
 "rA" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/flora/grass/event/bright_flowers1,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/fey/forest_grass,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/hallway/strelka/deck4)
 "rB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5384,6 +5442,7 @@
 /area/fitness/strelka)
 "tQ" = (
 /obj/machinery/door/blast/strelka/blockade,
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/chapel/strelka/morgue)
 "tT" = (
@@ -5514,6 +5573,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/structure/sign/christmas/wreath{
+	dir = 4
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "uB" = (
@@ -5628,6 +5690,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
@@ -5831,15 +5896,18 @@
 /turf/simulated/floor/wood/indoors,
 /area/library/strelka/library/room)
 "vG" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/structure/flora/grass/event/bright_flowers1,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/fey/forest_grass,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/hallway/strelka/deck4)
 "vI" = (
 /obj/structure/flora/ausbushes/leafybush,
@@ -5892,10 +5960,16 @@
 	dir = 8
 	},
 /obj/machinery/fitness/heavy/lifter,
+/obj/structure/sign/christmas/wreath{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "vR" = (
 /obj/structure/fitness/weightlifter,
+/obj/structure/sign/christmas/wreath{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "vU" = (
@@ -6192,6 +6266,23 @@
 	},
 /turf/simulated/floor/water/pool,
 /area/strelka/dormhallway/pool)
+"xa" = (
+/obj/structure/flora/grass/event/yellow_flowers1,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/area/hallway/strelka/deck4)
 "xb" = (
 /obj/structure/grille,
 /turf/simulated/shuttle/floor/glass,
@@ -6368,6 +6459,9 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/wreath{
+	dir = 1
+	},
 /turf/simulated/floor/wood/indoors,
 /area/library/strelka/library)
 "xM" = (
@@ -6396,6 +6490,7 @@
 	dir = 8
 	},
 /obj/machinery/vending/coffee,
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "xQ" = (
@@ -6867,6 +6962,7 @@
 /obj/machinery/papershredder,
 /obj/machinery/air_alarm/north_mount,
 /obj/machinery/fire_alarm/west_mount,
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
 "zm" = (
@@ -6933,6 +7029,15 @@
 /obj/structure/flora/ausbushes,
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
+"zr" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/bridge/strelka)
 "zs" = (
 /obj/machinery/computer/crew,
 /obj/structure/table/carbon/reinforced,
@@ -7018,6 +7123,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/structure/sign/christmas/wreath{
+	dir = 4
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "zE" = (
@@ -7036,6 +7144,9 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
+	},
+/obj/structure/sign/christmas/wreath{
+	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
@@ -8134,6 +8245,9 @@
 	dir = 4;
 	light_power = 1
 	},
+/obj/structure/sign/christmas/wreath{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
 "DU" = (
@@ -8228,12 +8342,18 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
+/obj/structure/sign/christmas/wreath{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
 "Eq" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
+	},
+/obj/structure/sign/christmas/wreath{
+	dir = 1
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/library/strelka/library)
@@ -8774,6 +8894,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/strelka/deck4)
 "GJ" = (
@@ -8892,6 +9013,7 @@
 	dir = 8;
 	light_power = 1
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/open,
 /area/bridge/strelka)
 "Hh" = (
@@ -8982,7 +9104,7 @@
 "HD" = (
 /obj/structure/grille,
 /obj/structure/marker_beacon/yellow,
-/turf/space,
+/turf/simulated/shuttle/floor/glass,
 /area/bridge/strelka/hop/room)
 "HE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9257,6 +9379,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/structure/sign/christmas/wreath{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
@@ -9598,17 +9723,20 @@
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "JG" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
 /obj/structure/flora/grass/event/yellow_flowers1,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/flora/grass/event/generic_bush1,
-/turf/simulated/floor/fey/forest_grass,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/hallway/strelka/deck4)
 "JJ" = (
 /obj/machinery/power/smes/buildable{
@@ -9703,6 +9831,11 @@
 	},
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
+"Kg" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/obj/machinery/door/blast/strelka/blockade,
+/turf/simulated/floor/tiled/monowhite,
+/area/bridge/strelka)
 "Ki" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -10298,15 +10431,22 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
 "Mn" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
 /obj/structure/flora/grass/event/purple_flowers1,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/fey/forest_grass,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/snowman/borg,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/hallway/strelka/deck4)
 "Mp" = (
 /obj/machinery/light{
@@ -10488,6 +10628,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
 "MV" = (
@@ -10503,6 +10644,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
@@ -11220,10 +11364,6 @@
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/carpet/turcarpet,
 /area/fitness/strelka)
-"PB" = (
-/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
-/turf/space,
-/area/bridge/strelka)
 "PD" = (
 /obj/item/trash/cavemoss,
 /obj/landmark{
@@ -11252,6 +11392,9 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
@@ -11412,6 +11555,7 @@
 /area/hallway/strelka/dormhallway)
 "Qw" = (
 /obj/machinery/vending/fitness,
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "Qx" = (
@@ -11419,6 +11563,24 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
+/area/hallway/strelka/deck4)
+"QA" = (
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/structure/flora/grass/event/reed_bush1,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/hallway/strelka/deck4)
 "QC" = (
 /obj/structure/table/hardwoodtable,
@@ -11573,6 +11735,9 @@
 /turf/simulated/floor/bmarble,
 /area/crew_quarters/bar/strelka)
 "Rf" = (
+/obj/structure/sign/christmas/wreath{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
 "Rg" = (
@@ -11603,15 +11768,17 @@
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/library)
 "Rn" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/structure/flora/grass/event/purple_flowers1,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/fey/forest_grass,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/flora/grass/event/ferny_bush1,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/hallway/strelka/deck4)
 "Rp" = (
 /obj/landmark/spawnpoint/job/chef,
@@ -11752,15 +11919,21 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/bridge/strelka)
 "RQ" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
 /obj/structure/flora/grass/event/yellow_flowers1,
 /obj/machinery/door/firedoor/glass{
 	dir = 4
 	},
-/turf/simulated/floor/fey/forest_grass,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/hallway/strelka/deck4)
 "RR" = (
 /obj/machinery/atmospheric_field_generator/perma,
@@ -11904,6 +12077,18 @@
 "Sy" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/maintenance/strelka)
+"Sz" = (
+/obj/structure/flora/grass/event/purple_flowers1,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/flora/grass/event/leafy_bush2,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/area/hallway/strelka/deck4)
 "SB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4;
@@ -12480,7 +12665,7 @@
 "UI" = (
 /obj/structure/grille,
 /obj/structure/marker_beacon/yellow,
-/turf/space,
+/turf/simulated/shuttle/floor/glass,
 /area/crew_quarters/bar/strelka/back)
 "UJ" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -13365,6 +13550,14 @@
 	},
 /turf/simulated/floor/bmarble,
 /area/hallway/strelka/dormhallway)
+"Yd" = (
+/obj/structure/table/carbon/reinforced,
+/obj/machinery/recharger{
+	pixel_x = 11;
+	pixel_y = -4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/bridge/strelka)
 "Yf" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -13729,6 +13922,9 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
 "Zi" = (
@@ -13862,6 +14058,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck4)
 "ZF" = (
@@ -13885,7 +14084,7 @@
 	},
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /obj/machinery/door/blast/strelka/blockade,
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/monowhite,
 /area/bridge/strelka)
 "ZI" = (
 /obj/structure/undies_wardrobe,
@@ -13961,6 +14160,9 @@
 /obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/item/folder/white_rd,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka)
 "ZY" = (
@@ -28613,7 +28815,7 @@ RQ
 zO
 zO
 zO
-mw
+QA
 VL
 iW
 Qg
@@ -29001,7 +29203,7 @@ Mn
 zO
 zO
 zO
-mw
+xa
 VL
 cv
 LN
@@ -29193,7 +29395,7 @@ cv
 VL
 mw
 vG
-Rn
+Sz
 Rn
 mw
 VL
@@ -32302,7 +32504,7 @@ pi
 Hu
 CB
 hP
-fJ
+ns
 Rq
 aG
 td
@@ -32857,7 +33059,7 @@ PG
 PG
 PG
 PG
-PG
+gJ
 se
 RA
 Vu
@@ -38117,7 +38319,7 @@ aT
 iZ
 ni
 Ez
-al
+Yd
 al
 AL
 iZ
@@ -39085,11 +39287,11 @@ ET
 ab
 Nm
 iC
-Rf
+bX
 aQ
 rH
 vC
-MU
+zr
 WY
 jG
 ab
@@ -40053,15 +40255,15 @@ PG
 PG
 PG
 PG
-PB
-PB
+ET
+ET
 ZG
-WJ
-WJ
-WJ
-WJ
-PB
-PB
+Kg
+Kg
+Kg
+Kg
+ET
+ET
 PG
 PG
 PG
