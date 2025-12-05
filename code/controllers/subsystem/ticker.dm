@@ -326,8 +326,6 @@ SUBSYSTEM_DEF(ticker)
 				SEND_SOUND(world, sound('sound/roundStart/start_up_3.ogg'))
 			if(4)
 				SEND_SOUND(world, sound('sound/roundStart/start_up_4.ogg'))//the original sound
-		//Holiday Round-start stuff	~Carn
-		Holiday_Game_Start()
 
 	//start_events() //handles random events and space dust.
 	//new random event system is handled from the MC.

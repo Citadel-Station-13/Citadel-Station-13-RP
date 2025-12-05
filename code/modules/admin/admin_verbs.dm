@@ -158,7 +158,6 @@ var/list/admin_verbs_spawn = list(
 
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/capture_map,
-	/client/proc/Set_Holiday,
 	/client/proc/ToRban,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
@@ -297,7 +296,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/make_sound,
 	/client/proc/toggle_random_events,
 	/client/proc/cmd_admin_add_random_ai_law,
-	/client/proc/Set_Holiday,
 	/client/proc/ToRban,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
@@ -395,7 +393,6 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/cmd_admin_delete,
 	/datum/admins/proc/delay_start,
 	/datum/admins/proc/delay_end,
-	/client/proc/Set_Holiday,
 	/client/proc/make_sound,
 	/client/proc/toggle_random_events,
 	/datum/admins/proc/cmd_admin_dress,
