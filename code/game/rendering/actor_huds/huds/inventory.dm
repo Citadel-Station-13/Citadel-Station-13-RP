@@ -307,11 +307,14 @@
 	return "LEFT+[cross]:[6 + (cross * 2)],BOTTOM+[main]:[5 + (main * 2)]"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_aligned_slot(main, cross, number_of_hands)
-	#warn finish this
-	var/one_after_hand_end = ceil(number_of_hands / 2) + 1
-	return "CENTER-1:[16 + (main > 0 ? (32 * (main + 1)) : (32 * main))],BOTTOM+[cross]:[5 + (cross * 2)]"
-
-#warn impl all
+	if(main > 0)
+		var/right_bias = 0
+		// TODO: should be passed in maybe?
+		if(button_robot_drawer)
+			right_bias = 1
+		return "CENTER-1:[16 + (32 * (main + 1 + right_bias)) ],BOTTOM+[cross]:[5 + (cross * 2)]"
+	else
+		return "CENTER-1:[16 + (32 * main)],BOTTOM+[cross]:[5 + (cross * 2)]"
 
 /**
  * @params

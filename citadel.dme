@@ -3890,7 +3890,6 @@
 #include "code\modules\mob\inventory\inventory.dm"
 #include "code\modules\mob\inventory\inventory_slot.dm"
 #include "code\modules\mob\inventory\humanoid\humanoid.dm"
-#include "code\modules\mob\inventory\robot\robot-hud.dm"
 #include "code\modules\mob\inventory\robot\robot.dm"
 #include "code\modules\mob\living\autohiss.dm"
 #include "code\modules\mob\living\butchering.dm"

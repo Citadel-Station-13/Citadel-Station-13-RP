@@ -257,8 +257,7 @@
 	icon_state = "hand-swap"
 
 /atom/movable/screen/actor_hud/inventory/swap_hand/Initialize(mapload, datum/inventory/host, hand_count)
-	. = ..()
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(hand_count)
+	return ..()
 
 /atom/movable/screen/actor_hud/inventory/swap_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
@@ -276,8 +275,7 @@
 	icon_state = "button-equip"
 
 /atom/movable/screen/actor_hud/inventory/equip_hand/Initialize(mapload, datum/inventory/host, hand_count)
-	. = ..()
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(hand_count)
+	return ..()
 
 /atom/movable/screen/actor_hud/inventory/equip_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
