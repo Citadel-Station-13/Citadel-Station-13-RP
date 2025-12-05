@@ -30,7 +30,7 @@
 		owner.visible_message("<b>[owner]</b> [transform_text]")
 
 /datum/component/custom_transform/proc/try_transform(silent = FALSE)
-	if(transformed.loc == parent)
+	if(get_current_transform_state() == STATE_NOT_TRANSFORMED)
 		transform(silent)
 		return TRUE
 	return FALSE
@@ -45,8 +45,7 @@
 		owner.visible_message("<b>[owner]</b> [untransform_text]")
 
 /datum/component/custom_transform/proc/try_untransform(silent = FALSE)
-	var/mob/owner = parent
-	if(owner.loc == transformed)
+	if(get_current_transform_state() == STATE_TRANSFORMED)
 		untransform(silent)
 		return TRUE
 	return FALSE
@@ -102,3 +101,11 @@
 			S.mob_radio = null
 	H.forceMove(get_turf(M))
 	M.transfer_client_to(H)
+
+/datum/component/custom_transform/proc/get_current_transform_state()
+	var/mob/M = parent
+	if(transformed.loc == M)
+		return STATE_NOT_TRANSFORMED
+	if(M.loc == transformed)
+		return STATE_TRANSFORMED
+	return STATE_UNKNOWN_TRANSFORM
