@@ -79,6 +79,10 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 	var/extra_overlay2
 	var/can_be_hidden = TRUE
 
+	// bandaid fix for a dm bug where scaling below 100% breaks scaling when we have front/back icons
+	// when set to true rendering the icon for mobs below 100% scale will act as if icon_sidedness is SPRITE_ACCESSORY_SIDEDNESS_NONE
+	var/override_icon_sidedness_for_micros = FALSE
+
 /**
  * todo: with_base_state completely tramples extra_overlay, extra_overlay2
  * we need to redo this at some point.
@@ -121,25 +125,28 @@ GLOBAL_LIST_EMPTY(sprite_accessory_icon_cache)
 	var/list/layers = list()
 	var/index = 0
 	// process base layers
+
+	var/icon_sidedness_value = (override_icon_sidedness_for_micros && for_whom.size_multiplier < 1) ? SPRITE_ACCESSORY_SIDEDNESS_NONE : icon_sidedness
+
 	for(var/state in icon_states)
 		++index
 		var/image/rendering
 		// front
-		rendering = image(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[state]-front" : "[state]", layer_front)
+		rendering = image(icon, icon_sidedness_value > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[state]-front" : "[state]", layer_front)
 		rendering.dir = NONE
 		if(do_colouration && length(colors) >= index)
 			rendering.color = colors[index]
 		// process add layer if needed
 		if(has_add_state)
 			var/image/adding
-			adding = image(icon, icon_sidedness > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[with_base_state]-add-front" : "[with_base_state]-add", layer_front)
+			adding = image(icon, icon_sidedness_value > SPRITE_ACCESSORY_SIDEDNESS_NONE? "[with_base_state]-add-front" : "[with_base_state]-add", layer_front)
 			adding.blend_mode = BLEND_ADD
 			adding.dir = NONE
 			rendering.overlays += adding
 		// add
 		layers += rendering
 
-		if(icon_sidedness >= SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
+		if(icon_sidedness_value >= SPRITE_ACCESSORY_SIDEDNESS_FRONT_BEHIND)
 			// behind
 			rendering = image(icon, "[state]-behind", layer_behind)
 			if(do_colouration && length(colors) >= index)
