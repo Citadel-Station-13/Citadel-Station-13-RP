@@ -207,8 +207,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	spawn_types = list(
 	/mob/living/simple_mob/animal/space/xenomorph/drone = 20,
 	/mob/living/simple_mob/animal/space/xenomorph/warrior = 10,
-	/mob/living/simple_mob/animal/space/xenomorph/vanguard = 5,
-	/mob/living/simple_mob/animal/space/xenomorph/monarch = 1
+	/mob/living/simple_mob/animal/space/xenomorph/vanguard = 5
 	)
 
 /obj/structure/mob_spawner/scanner/xenos/royal
@@ -223,9 +222,6 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	anchored = 1
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
-	spawn_types = list(
-	/mob/living/simple_mob/animal/space/xenomorph/monarch = 5
-	)
 
 ////////////////////////////////////
 //Invisible mob spawner. This one spawns mobs until depleted. Often used in caves.
@@ -456,7 +452,6 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	/mob/living/simple_mob/animal/space/xenomorph/drone = 20,
 	/mob/living/simple_mob/animal/space/xenomorph/warrior = 10,
 	/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter = 5,
-	/mob/living/simple_mob/animal/space/xenomorph/monarch = 1
 	)
 
 /obj/structure/mob_spawner/scanner/xenos/royal
@@ -471,6 +466,3 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	anchored = 1
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
-	spawn_types = list(
-	/mob/living/simple_mob/animal/space/xenomorph/monarch = 5,
-	)
