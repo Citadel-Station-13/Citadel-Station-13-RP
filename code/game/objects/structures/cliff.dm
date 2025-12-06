@@ -229,7 +229,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 	// Cliff climbing requires climbing gear.
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/clothing/shoes/shoes = H.inventory.get_slot(/datum/inventory_slot/inventory/shoes)
+		var/obj/item/clothing/shoes/shoes = H.inventory.get_slot(/datum/inventory_slot/inventory/shoes::id)
 		if(istype(shoes) && shoes.rock_climbing)
 			return TRUE
 		var/obj/item/held = H.get_active_held_item()

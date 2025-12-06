@@ -9,7 +9,7 @@
 	name = "spider-bot"
 	desc = "A skittering robotic friend!"
 	tt_desc = "Maintenance Robot"
-	icon = 'icons/mob/robots.dmi'
+	icon = 'icons/mob/robot-legacy.dmi'
 	icon_state = "spiderbot-chassis"
 	icon_living = "spiderbot-chassis"
 	icon_dead = "spiderbot-smashed"

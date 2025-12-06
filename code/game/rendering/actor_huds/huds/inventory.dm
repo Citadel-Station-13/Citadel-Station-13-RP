@@ -9,11 +9,13 @@
 	var/datum/inventory/host
 
 	/// hidden classes, associated to list of reasons
-	var/list/hidden_classes = list(
+	var/tmp/list/hidden_classes = list(
 		(INVENTORY_HUD_CLASS_DRAWER) = list(
 			INVENTORY_HUD_HIDE_SOURCE_DRAWER,
 		),
 	)
+	/// is robot module inventory shown?
+	var/tmp/robot_module_inventory_drawn = FALSE
 
 	/// keyed slot id to screen object
 	var/list/atom/movable/screen/actor_hud/inventory/plate/slot/slots
@@ -24,15 +26,32 @@
 
 	/// drawer object
 	var/atom/movable/screen/actor_hud/inventory/drawer/button_drawer
+	/// robot drawer object, if any
+	var/atom/movable/screen/actor_hud/inventory/robot_drawer/button_robot_drawer
 	/// swap hand object
 	var/atom/movable/screen/actor_hud/inventory/swap_hand/button_swap_hand
 	/// equip object
 	var/atom/movable/screen/actor_hud/inventory/equip_hand/button_equip_hand
 
+	//* Imprinted by /datum/inventory *//
+
+	/// render held items in row mode; no left/right semantics.
+	/// * will use 'hand' instead of 'hand-(left|right)'
+	var/tmp/inv_held_items_row_mode
+	/// suppress swap / equip buttons for hands
+	var/tmp/inv_held_items_suppress_buttons
+	/// use robot icons for hands
+	var/tmp/inv_held_items_use_robot_icon
+
 /datum/actor_hud/inventory/sync_to_preferences(datum/hud_preferences/preference_set)
 	var/old_active_hand = applied_active_hand
 	set_active_hand(null)
-	. = ..()
+
+	var/list/atom/movable/screen/screens = ..()
+	. = screens
+
+	for(var/atom/movable/screen/actor_hud/actor_hud_object in screens)
+		host?.hud_object_post_sync(src, actor_hud_object)
 	set_active_hand(old_active_hand)
 
 /datum/actor_hud/inventory/on_mob_bound(mob/target)
@@ -52,6 +71,7 @@
 	ASSERT(!host)
 	host = inventory
 	LAZYADD(inventory.huds_using, src)
+	inventory.hud_alter(src)
 	rebuild(inventory.build_inventory_slots_with_remappings(), length(inventory.held_items))
 	for(var/i in 1 to length(inventory.held_items))
 		if(!inventory.held_items[i])
@@ -121,9 +141,15 @@
 	cleanup()
 
 	// buttons
-	add_screen((button_swap_hand = new(null, src, number_of_hands)))
-	add_screen((button_equip_hand = new(null, src, number_of_hands)))
-	add_screen((button_drawer = new(null, src)))
+	if(!inv_held_items_suppress_buttons)
+		add_screen((button_swap_hand = new(null, src, number_of_hands)))
+		add_screen((button_equip_hand = new(null, src, number_of_hands)))
+	if(length(inventory_slots_with_mappings))
+		add_screen((button_drawer = new(null, src)))
+		button_drawer.screen_loc = screen_loc_for_slot_drawer()
+	if(host.robot_module_supported())
+		add_screen((button_robot_drawer = new(null, src)))
+		button_robot_drawer.screen_loc = screen_loc_for_robot_drawer()
 
 	// slots
 	rebuild_slots(inventory_slots_with_mappings)
@@ -218,12 +244,13 @@
 			aligning.inventory_hud_main_axis = main_axis
 			aligned += aligning
 
+	var/number_of_hands = host.get_hand_count()
 	for(var/atom/movable/screen/actor_hud/inventory/plate/slot/slot_object as anything in aligned)
 		switch(slot_object.inventory_hud_anchor)
 			if(INVENTORY_HUD_ANCHOR_TO_DRAWER)
-				slot_object.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_DRAWER_ALIGNED(slot_object.inventory_hud_main_axis, slot_object.inventory_hud_cross_axis)
+				slot_object.screen_loc = screen_loc_for_drawer_aligned_slot(slot_object.inventory_hud_main_axis, slot_object.inventory_hud_cross_axis)
 			if(INVENTORY_HUD_ANCHOR_TO_HANDS)
-				slot_object.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_SLOT_HANDS_ALIGNED(slot_object.inventory_hud_main_axis, slot_object.inventory_hud_cross_axis)
+				slot_object.screen_loc = screen_loc_for_hand_aligned_slot(slot_object.inventory_hud_main_axis, slot_object.inventory_hud_cross_axis, number_of_hands)
 
 /**
  * Rebuilds our hands. Doesn't rebuild anything else. Doesn't wipe old objects.
@@ -235,6 +262,7 @@
 		hands.len = number_of_hands
 		for(var/i in old_length + 1 to number_of_hands)
 			var/atom/movable/screen/actor_hud/inventory/plate/hand/hand_object = new(null, src, i)
+			hand_object.screen_loc = screen_loc_for_hand_index(i, number_of_hands)
 			add_screen(hand_object)
 			hands[i] = hand_object
 	else if(length(hands) > number_of_hands)
@@ -245,8 +273,47 @@
 			qdel(hands[i])
 		hands.len = number_of_hands
 
-	button_equip_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(number_of_hands)
-	button_swap_hand?.screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(number_of_hands)
+	button_equip_hand?.screen_loc = screen_loc_for_hand_equip(number_of_hands)
+	button_swap_hand?.screen_loc = screen_loc_for_hand_swap(number_of_hands)
+
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_index(index, number_of_hands)
+	// Align to center minus one, move left one per two hands.
+	var/hand_start_col_left_offset = floor(number_of_hands / 2)
+	// Add one to left offset because byond is 1-indexed because it's STUPID!!
+	var/col = index - hand_start_col_left_offset = 1
+	var/row = floor(index / number_of_hands) + 1
+	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+[row]:5"
+
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_swap(number_of_hands)
+	// Always aligned to center of hands.
+	var/rows = max(1, ceil(number_of_hands / 2))
+	return "CENTER-1:28,BOTTOM+[rows]:5"
+
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_equip(number_of_hands)
+	// Always aligned to center of hands.
+	var/rows = max(1, ceil(number_of_hands / 2))
+	return "CENTER-1:16,BOTTOM+[rows]:5"
+
+/datum/actor_hud/inventory/proc/screen_loc_for_robot_drawer(number_of_hands)
+	// Always aligned to right side of hands.
+	var/col = ceil(number_of_hands / 2) + 1
+	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+1:5"
+
+/datum/actor_hud/inventory/proc/screen_loc_for_slot_drawer()
+	return "LEFT:6,BOTTOM:5"
+
+/datum/actor_hud/inventory/proc/screen_loc_for_drawer_aligned_slot(main, cross)
+	return "LEFT+[cross]:[6 + (cross * 2)],BOTTOM+[main]:[5 + (main * 2)]"
+
+/datum/actor_hud/inventory/proc/screen_loc_for_hand_aligned_slot(main, cross, number_of_hands)
+	if(main > 0)
+		var/right_bias = 0
+		// TODO: should be passed in maybe?
+		if(button_robot_drawer)
+			right_bias = 1
+		return "CENTER-1:[16 + (32 * (main + 1 + right_bias)) ],BOTTOM+[cross]:[5 + (cross * 2)]"
+	else
+		return "CENTER-1:[16 + (32 * main)],BOTTOM+[cross]:[5 + (cross * 2)]"
 
 /**
  * @params
@@ -287,6 +354,15 @@
 		. += button_equip_hand
 	if(button_drawer)
 		. += button_drawer
+	if(button_robot_drawer)
+		. += button_robot_drawer
+
+//* Robot Modules *//
+
+/datum/actor_hud/inventory/proc/toggle_robot_modules()
+	#warn impl
+
+//* Hidden Classes *//
 
 /datum/actor_hud/inventory/proc/toggle_hidden_class(class, source)
 	var/list/atom/movable/screen/actor_hud/inventory/affected

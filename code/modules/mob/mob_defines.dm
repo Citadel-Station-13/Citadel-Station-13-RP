@@ -98,8 +98,6 @@
 	var/list/datum/ability/abilities
 
 	//* Inventory *//
-	/// our inventory datum, if any.
-	var/datum/inventory/inventory
 	/// active hand index - null or num. must always be in range of held_items indices!
 	var/active_hand
 
