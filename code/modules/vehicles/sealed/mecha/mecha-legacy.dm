@@ -1009,8 +1009,8 @@
 	return ..()
 
 /obj/vehicle/sealed/mecha/proc/update_cell_alerts()
-	if(occupant_legacy && cell)
-		var/cellcharge = cell.charge/cell.maxcharge
+	if(occupant_legacy && power_cell)
+		var/cellcharge = power_cell.maxcharge && (power_cell.charge / power_cell.maxcharge)
 		switch(cellcharge)
 			if(0.75 to INFINITY)
 				occupant_legacy.clear_alert("charge")

@@ -24,3 +24,7 @@
 	return 0
 
 // TODO: register_sourced_power
+
+/obj/vehicle/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
+	// yeah nah no inducers
+	return

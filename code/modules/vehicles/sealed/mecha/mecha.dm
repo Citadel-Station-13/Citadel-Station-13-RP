@@ -277,4 +277,4 @@
 	//! END
 
 /obj/vehicle/sealed/mecha/get_cell(inducer)
-	return cell
+	return power_cell

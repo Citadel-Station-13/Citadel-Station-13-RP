@@ -56,6 +56,8 @@
 	var/flight_works_in_gravity = TRUE
 	/// base speed on ground
 	var/ground_base_movement_speed = 2
+	/// base speed in air
+	var/flight_base_movement_speed = 5
 	/// Flight mode energy cost in joules per second
 	var/flight_energy_cost = 500
 	/// Flight mode can be kept on without an occupant
@@ -87,15 +89,17 @@
 	. = ..()
 	consider_gravity()
 
+/obj/vehicle/sealed/mecha/fighter/process_spacemove_support(drifting, movement_dir)
+	// with what hands?
+	return null
+
+/obj/vehicle/sealed/mecha/fighter/process_spacemove(drifting, movement_dir, just_checking)
+	if(flight_mode)
+		return TRUE
+	return ..()
+
 /obj/vehicle/sealed/mecha/fighter/can_ztravel()
 	return (landing_gear_raised && has_charge(step_energy_drain))
-
-// No space drifting
-// This doesnt work but I actually dont want it to anyways, so I'm not touching it at all. Space drifting is cool.
-/obj/vehicle/sealed/mecha/fighter/check_for_support()
-	if (landing_gear_raised)
-		return 1
-	return ..()
 
 // No falling if we've got our boosters on
 /obj/vehicle/sealed/mecha/fighter/can_fall()
@@ -141,17 +145,6 @@
 	if(ion_trail.on)
 		ion_trail.stop()
 		animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
-
-/obj/vehicle/sealed/mecha/fighter/check_for_support()
-	if (has_charge(step_energy_drain) && landing_gear_raised)
-		return 1
-
-	var/list/things = orange(1, src)
-
-	if(locate(/obj/structure/grille) in things || locate(/obj/structure/lattice) in things || locate(/turf/simulated) in things || locate(/turf/unsimulated) in things)
-		return 1
-	else
-		return 0
 
 /obj/vehicle/sealed/mecha/fighter/play_entered_noise(var/mob/who)
 	if(hasInternalDamage())
