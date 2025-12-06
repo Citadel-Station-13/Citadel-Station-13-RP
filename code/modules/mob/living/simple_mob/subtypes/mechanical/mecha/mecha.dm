@@ -102,16 +102,6 @@
 /mob/living/simple_mob/mechanical/mecha/is_sentient()
 	return pilot_type ? TRUE : FALSE
 
-/*
-// Real mechs can't turn and run at the same time. This tries to simulate that.
-// Commented out because the AI can't handle it sadly.
-/mob/living/simple_mob/mechanical/mecha/SelfMove(turf/n, direct)
-	if(direct != dir)
-		setDir(direct)
-		return FALSE // We didn't actually move, and returning FALSE means the mob can try to actually move almost immediately and not have to wait the full movement cooldown.
-	return ..()
-*/
-
 /mob/living/simple_mob/mechanical/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(deflect_chance))
 		visible_message(SPAN_WARNING( "\The [proj] is deflected by \the [src]'s armor!"))

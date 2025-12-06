@@ -157,22 +157,20 @@
 
 /**
  * Recursively set glide size for atom's pulled and buckled things
+ * * Doesn't go past one level of buckling because nested buckling is patently insane.
  *
  * todo: un-jankify this proc
  */
 /atom/movable/proc/recursive_glidesize_update()
 	var/list/ran = list()
-	var/atom/movable/updating = pulling
+	var/atom/movable/updating = src
 	while(updating)
 		if(ran[updating])
 			return
 		updating.set_glide_size(glide_size, FALSE)
 		ran[updating] = TRUE
 		for(var/mob/M as anything in updating.buckled_mobs)
-			if(ran[M])
-				continue
 			M.set_glide_size(glide_size, FALSE)
-			ran[M] = TRUE
 		updating = updating.pulling
 
 /**

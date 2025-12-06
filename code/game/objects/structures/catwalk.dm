@@ -99,7 +99,7 @@
 	return TRUE
 
 /obj/structure/catwalk/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
-	return fall_flags | FALL_BLOCKED
+	return fall_flags | ZFALL_BLOCKED
 
 /obj/structure/catwalk/z_pass_in(atom/movable/AM, dir, turf/old_loc)
 	return dir == UP

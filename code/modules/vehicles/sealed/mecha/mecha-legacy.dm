@@ -127,10 +127,12 @@
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
 
-/obj/vehicle/sealed/mecha/Destroy()
+/obj/vehicle/sealed/mecha/atom_destruction()
 	if(prob(30))
 		explosion(get_turf(loc), 0, 0, 1, 3)
+	return ..()
 
+/obj/vehicle/sealed/mecha/Destroy()
 	if(wreckage)
 		var/obj/effect/decal/mecha_wreckage/WR = new wreckage(loc)
 		for(var/obj/item/vehicle_module/lazy/legacy/mod as anything in modules)
@@ -146,8 +148,7 @@
 			if(!comp.can_be_removed())
 				continue
 			uninstall_component(comp, null, TRUE, TRUE, WR)
-			comp.damage_part(rand(10, 20))
-			comp.detach()
+			comp.run_damage_instance(rand(20, 40), DAMAGE_TYPE_BRUTE, 4.5, ARMOR_BOMB)
 			WR.crowbar_salvage += comp
 		if(power_cell)
 			WR.crowbar_salvage += power_cell
@@ -236,21 +237,6 @@
 /obj/vehicle/sealed/mecha/proc/get_step_delay()
 	var/tally = 0
 
-	if(LAZYLEN(equipment))
-		for(var/obj/item/vehicle_module/lazy/legacy/ME in equipment)
-			if(ME.get_step_delay())
-				tally += ME.get_step_delay()
-
-		if(tally <= encumbrance_gap)	// If the total is less than our encumbrance gap, ignore equipment weight.
-			tally = 0
-		else	// Otherwise, start the tally after cutting that gap out.
-			tally -= encumbrance_gap
-
-	for(var/slot in internal_components)
-		var/obj/item/vehicle_component/C = internal_components[slot]
-		if(C && C.get_step_delay())
-			tally += C.get_step_delay()
-
 	var/obj/item/vehicle_component/mecha_actuator/actuator = internal_components[MECH_ACTUATOR]
 
 	if(!actuator)	// Relying purely on hydraulic pumps. You're going nowhere fast.
@@ -270,9 +256,6 @@
 	return max(1, round(tally, 0.1))	// Round the total to the nearest 10th. Can't go lower than 1 tick. Even humans have a delay longer than that.
 
 /obj/vehicle/sealed/mecha/proc/dyndomove(direction)
-	if(src.pr_inertial_movement.active())
-		return 0
-
 	var/atom/oldloc = loc
 
 	if(overload)//Check if you have leg overload

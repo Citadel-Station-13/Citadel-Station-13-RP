@@ -112,31 +112,20 @@
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
 		mob.ghostize()
 		return FALSE
-	// don't move if there's a forced movement datum on us
-/*
-	if(mob.force_moving)
-		return FALSE
-*/
+
 	// already istype'd earlier ; cast for checks
 	var/mob/living/L = mob
 	// check for incorpmove aka move through walls
 	if(L.incorporeal_move)
 		Process_Incorpmove(direct)
 		return FALSE
+
 	// todo: proper relaymove system
-	// remote controlling something; relay move to that
-/*
-	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
-		return mob.remote_control.relaymove(mob, direct)
-*/
+
 	// we have an eye; relay to that
 	if(mob.eyeobj)
 		return mob.EyeMove(n,direct)
-	// ai move specials
-/*
-	if(isAI(mob))
-		return AIMove(n,direct,mob)
-*/
+
 	//! WARNING: LEGACY CODE START
 	// unzoom
 	// todo: component/element/signal/datum/anything but this
@@ -164,12 +153,6 @@
 	if(!CHECK_MOBILITY(mob, MOBILITY_CAN_MOVE))
 		return
 
-	// new mobility flags check todo
-/*
-	if(!(L.mobility_flags & MOBILITY_CAN_MOVE))
-		return FALSE
-*/
-
 	// todo: proper relaymove handling
 	// machine might process relaymove
 	if(mob.machine)
@@ -185,8 +168,9 @@
 
 	// todo: this should probably be on mob or something
 	// check for gravity
-	if(!mob.Process_Spacemove(direct))
-		return FALSE
+	if(!mob.has_gravity())
+		if(!mob.process_spacemove(FALSE, direct))
+			return FALSE
 
 	//! WARNING: SHITCODE
 	// .... why
@@ -255,7 +239,7 @@
 				if(M)
 					if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
 						var/turf/T = mob.loc
-						. = mob.SelfMove(n, direct)
+						. = mob.self_move(n, direct)
 						if (isturf(M.loc))
 							var/diag = get_dir(mob, M)
 							if ((diag - 1) & diag)
@@ -290,7 +274,7 @@
 						to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
-		. = mob.SelfMove(n, direct)
+		. = mob.self_move(n, direct)
 	//! End
 
 	//! WARNING: MORE LEGACY CODE
@@ -321,15 +305,7 @@
 		mob.move_delay = world.time + add_delay
 
 	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(add_delay))
-
 	mob.last_self_move = world.time
-
-/mob/proc/SelfMove(turf/T, dir)
-	in_selfmove = TRUE
-	. = Move(T, dir)
-	in_selfmove = FALSE
-	if(.)
-		throwing?.terminate()
 
 ///Process_Incorpmove
 ///Called by client/Move()

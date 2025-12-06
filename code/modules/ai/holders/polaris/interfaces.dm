@@ -87,7 +87,7 @@
 		if(!old_T.Adjacent(newloc))
 			return MOVEMENT_FAILED
 
-		. = SelfMove(newloc) ? MOVEMENT_SUCCESSFUL : MOVEMENT_FAILED
+		. = self_move(newloc) ? MOVEMENT_SUCCESSFUL : MOVEMENT_FAILED
 		if(. == MOVEMENT_SUCCESSFUL)
 			setDir(get_dir(old_T, newloc))
 			// Apply movement delay.

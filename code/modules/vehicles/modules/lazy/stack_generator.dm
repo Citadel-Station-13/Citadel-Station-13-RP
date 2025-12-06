@@ -101,9 +101,9 @@
 /obj/item/vehicle_module/lazy/stack_generator/process()
 
 /obj/item/vehicle_module/lazy/stack_generator/proc/accepts_stack_type(obj/item/stack/stack_or_type)
-	if(!ispath(stack_type.type, /obj/item/stack))
+	if(!ispath(stack_or_type.type, /obj/item/stack))
 		return FALSE
-	return ispath(stack_type.type, accept_type)
+	return ispath(stack_or_type.type, stack_or_type)
 
 /**
  * @return FALSE to deny burn and extinguish

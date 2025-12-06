@@ -21,10 +21,11 @@
 		. += 1
 
 // NEW: Use power while moving.
-/mob/living/silicon/robot/SelfMove(turf/n, direct)
+/mob/living/silicon/robot/self_move(turf/n, direct)
 	if (!is_component_functioning("actuator"))
 		return 0
 
+	// TODO: this can't work like this when self_move can return FALSE, this should be on_self_move or something
 	var/datum/robot_component/actuator/A = get_component("actuator")
 	if (cell_use_power(A.active_usage))
 		return ..()

@@ -143,6 +143,7 @@
 
 	if(flying) // Allows movement up/down with wings.
 		return 1
+
 	if(Process_Spacemove())
 		return TRUE
 
@@ -365,7 +366,7 @@
 /atom/proc/CheckFall(atom/movable/falling_atom)
 	if(density && !(atom_flags & ATOM_BORDER))
 		return TRUE
-	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
+	return prevent_z_fall(falling_atom, 0, NONE) & (ZFALL_TERMINATED | ZFALL_BLOCKED)
 
 /**
  * If you are hit: how is it handled.
