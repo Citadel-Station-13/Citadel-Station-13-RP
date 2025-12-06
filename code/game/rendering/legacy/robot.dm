@@ -1,5 +1,7 @@
 var/atom/movable/screen/robot_inventory
 
+#warn what the fuck
+
 /datum/hud/proc/robot_hud(ui_style='icons/mob/screen1_robot.dmi', var/ui_color = "#ffffff", var/ui_alpha = 255, var/mob/living/silicon/robot/target)
 
 	if(ui_style == 'icons/mob/screen/minimalist.dmi')

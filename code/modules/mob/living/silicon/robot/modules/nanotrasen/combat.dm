@@ -3,6 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 	id = "nt-combat"
 	display_name = "NT-Lancer"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/combat
+	module_hud_state = "combat"
 	light_color = "#FF0000"
 	auto_iconsets = list(
 		/datum/prototype/robot_iconset/hover_eyebot/combat,

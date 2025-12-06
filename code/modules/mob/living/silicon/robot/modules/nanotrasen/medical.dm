@@ -3,6 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 	id = "nt-medical"
 	display_name = "NT-Triage"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/medical
+	module_hud_state = "medical"
 	light_color = "#0099FF"
 	auto_iconsets = list(
 		/datum/prototype/robot_iconset/baseline_toiletbot/medical,
@@ -43,7 +44,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 	if(normal_out)
 		normal_out |=  list(
 			/obj/item/borg/sight/hud/med,
-			/obj/item/healthanalyzer,
+			/obj/item/healthanalyzer/advanced,
 			/obj/item/reagent_containers/borghypo/surgeon,
 			/obj/item/reagent_containers/glass/beaker/large,
 			/obj/item/reagent_scanner/adv,

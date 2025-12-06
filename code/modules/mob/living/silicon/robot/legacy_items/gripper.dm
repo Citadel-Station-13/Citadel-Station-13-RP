@@ -30,6 +30,8 @@
 	/// currently held item
 	VAR_PRIVATE/obj/item/wrapped
 
+	var/conf_inject_clickchain_flags
+
 /obj/item/gripper/examine(mob/user, dist)
 	. = ..()
 	if(wrapped)
@@ -96,7 +98,7 @@
 
 /obj/item/gripper/melee_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!isnull(wrapped))
-		return wrapped.melee_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED)
+		return wrapped.melee_interaction_chain(clickchain, clickchain_flags | CLICKCHAIN_REDIRECTED | conf_inject_clickchain_flags)
 	return ..()
 
 /obj/item/gripper/verb/drop_item()
@@ -170,6 +172,9 @@
 	icon_state = "gripper-omni"
 
 	can_hold = list(/obj/item) // Testing and Event gripper.
+
+/obj/item/gripper/omni/no_attack
+	conf_inject_clickchain_flags = CLICKCHAIN_DO_NOT_ATTACK
 
 // VEEEEERY limited version for mining borgs. Basically only for swapping cells and upgrading the drills.
 /obj/item/gripper/miner

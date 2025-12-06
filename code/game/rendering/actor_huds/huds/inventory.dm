@@ -33,6 +33,9 @@
 	/// equip object
 	var/atom/movable/screen/actor_hud/inventory/equip_hand/button_equip_hand
 
+	/// robot drawer backplate, if any
+	var/atom/movable/screen/actor_hud/inventory/robot_drawer_backplate/robot_drawer_backplate
+
 	//* Imprinted by /datum/inventory *//
 
 	/// render held items in row mode; no left/right semantics.
@@ -360,7 +363,16 @@
 //* Robot Modules *//
 
 /datum/actor_hud/inventory/proc/toggle_robot_modules()
-	#warn impl
+	robot_module_inventory_drawn = !robot_module_inventory_drawn
+	if(robot_module_inventory_drawn)
+		if(!robot_drawer_backplate)
+			robot_drawer_backplate = new
+		robot_drawer_backplate.redraw()
+		robot_drawer_backplate.invisibility = INVISIBILITY_NONE
+	else
+		// this is important to dump out item refs!
+		robot_drawer_backplate.redraw()
+		robot_drawer_backplate.invisibility = INVISIBILITY_ABSTRACT
 
 //* Hidden Classes *//
 
@@ -418,18 +430,26 @@
 //* Hooks *//
 
 /datum/actor_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
-	var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
-	screen_obj?.bind_item(item)
+	switch(slot_or_index.type)
+		if(/datum/inventory_slot/abstract/inactive_robot_module_storage)
+			if(robot_module_inventory_drawn)
+				robot_drawer_backplate.redraw()
+		else
+			var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
+			screen_obj?.bind_item(item)
 
 /datum/actor_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot/slot_or_index)
-	var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
-	screen_obj?.unbind_item(item)
+	switch(slot_or_index.type)
+		if(/datum/inventory_slot/abstract/inactive_robot_module_storage)
+			if(robot_module_inventory_drawn)
+				robot_drawer_backplate.redraw()
+		else
+			var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
+			screen_obj?.unbind_item(item)
 
 /datum/actor_hud/inventory/proc/move_item(obj/item/item, datum/inventory_slot/from_slot_or_index, datum/inventory_slot/to_slot_or_index)
-	var/atom/movable/screen/actor_hud/inventory/plate/old_screen_obj = isnum(from_slot_or_index) ? hands[from_slot_or_index] : slots[from_slot_or_index.id]
-	var/atom/movable/screen/actor_hud/inventory/plate/new_screen_obj = isnum(to_slot_or_index) ? hands[to_slot_or_index] : slots[to_slot_or_index.id]
-	old_screen_obj?.unbind_item(item)
-	new_screen_obj?.bind_item(item)
+	remove_item(item, from_slot_or_index)
+	add_item(item, to_slot_or_index)
 
 /datum/actor_hud/inventory/proc/swap_active_hand(from_index, to_index)
 	set_active_hand(to_index)

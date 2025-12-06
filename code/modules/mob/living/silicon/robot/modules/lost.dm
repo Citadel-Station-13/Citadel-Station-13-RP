@@ -2,6 +2,7 @@ GENERATE_ROBOT_MODULE_PRESET(/lost)
 /datum/prototype/robot_module/lost
 	id = "lost"
 	light_color = "#AAAA00"
+	module_hud_state = "recon"
 	auto_iconsets = list(
 		/datum/prototype/robot_iconset/hover_drone/lost,
 		/datum/prototype/robot_iconset/dog_vale/stray,

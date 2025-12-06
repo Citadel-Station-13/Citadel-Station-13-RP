@@ -5,25 +5,29 @@
 	item_state = "cyborg_upgrade"
 
 /obj/item/robot_upgrade/restart/can_install(mob/living/silicon/robot/target, robot_opinion, datum/event_args/actor/actor, silent)
-	. = ..()
-
-/obj/item/robot_upgrade/restart/being_installed(mob/living/silicon/robot/target)
-	. = ..()
-
-/obj/item/robot_upgrade/restart/action(var/mob/living/silicon/robot/R)
-	if(R.health < 0)
-		to_chat(usr, "You have to repair the robot before using this module!")
+	if(target.health < 0)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("You have to repair [target] before using an emergency restart module."),
+				target = target,
+			)
 		return FALSE
-
-	if(!R.key)
-		for(var/mob/observer/dead/ghost in GLOB.player_list)
-			if(ghost.mind && ghost.mind.current == R)
-				ghost.transfer_client_to(R)
-
-	R.set_stat(CONSCIOUS)
-	dead_mob_list -= R
-	living_mob_list |= R
-	R.notify_ai(ROBOT_NOTIFICATION_NEW_UNIT)
+	if(target.stat != DEAD)
+		if(!silent)
+			// ok this is a bit morbid but it's funny.
+			actor?.chat_feedback(
+				SPAN_WARNING("[target] is operational; only fully disabled cyborgs may be restarted."),
+				target = target,
+			)
+		return FALSE
 	return TRUE
 
-#warn swap
+/obj/item/robot_upgrade/restart/being_installed(mob/living/silicon/robot/target)
+	// TODO: standardize revival.
+	target.revive(TRUE, FALSE, FALSE)
+	if(!target.ckey)
+		for(var/mob/observer/dead/ghost in GLOB.player_list)
+			if(ghost.mind?.current == target)
+				ghost.transfer_client_to(target)
+	target.notify_ai(ROBOT_NOTIFICATION_NEW_UNIT)
+	qdel(src)

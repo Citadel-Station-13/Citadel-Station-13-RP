@@ -180,31 +180,33 @@
 		active_image.color = self_color
 		add_overlay(active_image)
 
-#warn below
 /**
  * Backplate for robot modules inventory.
  */
-#warn impl
 /atom/movable/screen/actor_hud/inventory/robot_drawer_backplate
 	icon = 'icons/screen/hud/styles/common/storage.dmi'
 	icon_state = "block"
 
+	var/list/atom/movable/render/robot_drawer_item_render/renderers
+
+/atom/movable/screen/actor_hud/inventory/robot_drawer_backplate/proc/redraw()
+	var/datum/actor_hud/inventory/casted = hud
+	if(casted.robot_module_inventory_drawn)
+		// draw
+	else
+		// undraw
+#warn impl
+
 /**
  * Item renderer
  */
-/atom/movable/screen/actor_hud/inventory/robot_drawer_item
+/atom/movable/render/robot_drawer_item_render
 
-/atom/movable/screen/actor_hud/inventory/robot_drawer_item/Initialize(mapload, datum/actor_hud/inventory/hud, obj/item/render_as)
+/atom/movable/render/robot_drawer_item_render/Initialize(mapload, datum/actor_hud/inventory/hud, obj/item/render_as)
 	. = ..()
 	masquarade(render_as)
 
-/atom/movable/screen/actor_hud/inventory/robot_drawer_item/proc/masquarade(obj/item/render_as)
-
-/atom/movable/screen/actor_hud/inventory/robot_drawer_item/sync_style(datum/hud_style/style, style_alpha, style_color)
-	. = ..()
-
-/atom/movable/screen/actor_hud/inventory/robot_drawer_item/on_click(mob/user, list/params)
-	. = ..()
+/atom/movable/render/robot_drawer_item_render/proc/masquarade(obj/item/render_as)
 
 
 #warn above

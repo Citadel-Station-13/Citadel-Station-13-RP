@@ -707,7 +707,6 @@
 /obj/item/weldingtool/electric/mounted/cyborg
 	tool_speed = 0.5
 
-
 /obj/item/weldingtool/electric/mounted/RIGset
 	name = "arc welder"
 	tool_speed = 0.7 // Let's see if this works with RIGs

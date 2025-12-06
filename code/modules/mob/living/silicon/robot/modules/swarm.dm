@@ -3,8 +3,9 @@
 /datum/prototype/robot_module/swarm
 	id = "swarmer"
 	light_color = "#77FFFF"
-	allowed_frames = list(
-	)
+	module_hud_state = "recon"
+	// TODO: add some
+	allowed_frames = list()
 
 /datum/prototype/robot_module/swarm/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	..()

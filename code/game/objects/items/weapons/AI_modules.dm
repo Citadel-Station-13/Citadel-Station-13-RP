@@ -8,7 +8,7 @@ AI MODULES
 
 /obj/item/aiModule
 	name = "\improper AI module"
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "std_mod"
 	desc = "An AI Module for transmitting encrypted instructions to the AI."
 	damage_force = 5.0

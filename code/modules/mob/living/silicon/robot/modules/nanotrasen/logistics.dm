@@ -3,6 +3,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 	id = "nt-logistics"
 	display_name = "NT-Logistics"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/logistics
+	module_hud_state = "mining"
 	light_color = "#FBE281"
 	auto_iconsets = list(
 		/datum/prototype/robot_iconset/dog_k9/logistics,
@@ -34,9 +35,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 /datum/prototype/robot_module/nanotrasen/logistics/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	if(normal_out)
 		normal_out |= list(
-			/obj/item/borg/sight/material,
-			/obj/item/tool/wrench/cyborg,
-			/obj/item/tool/screwdriver/cyborg,
+			/obj/item/borg/sight/meson,
+			/obj/item/switchtool,
+			/obj/item/weldingtool/electric/mounted,
 			/obj/item/storage/bag/ore,
 			/obj/item/pickaxe/borgdrill,
 			/obj/item/gun/projectile/energy/kinetic_accelerator/cyborg,

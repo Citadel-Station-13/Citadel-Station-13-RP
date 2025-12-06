@@ -384,7 +384,7 @@
 	name = "minebot cooldown decrease"
 	desc = "Decreases the cooldown of a kinetic accelerator. Only rated for minebot use."
 	icon_state = "door_electronics"
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	denied_type = /obj/item/ka_modkit/cooldown/minebot
 	modifier = 10
 	cost = 0

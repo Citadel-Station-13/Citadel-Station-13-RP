@@ -4,8 +4,7 @@
 /obj/item/robot_upgrade
 	name = "robot upgrade module"
 	desc = "An upgrade module for a robot platform."
-	#warn sprite reorg
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "cyborg_upgrade"
 
 	//* Actions *//

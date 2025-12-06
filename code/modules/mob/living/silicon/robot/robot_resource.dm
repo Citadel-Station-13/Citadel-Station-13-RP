@@ -68,27 +68,27 @@
 
 /datum/robot_resource/provisioned/preset/splints
 	name = "splint magazine"
-	amount_max = 20
+	amount_max = 30
 	regen_per_second = 2
 
 /datum/robot_resource/provisioned/preset/bandages
 	name = "bandage roller"
-	amount_max = 50
+	amount_max = 100
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/bandages/advanced
 	name = "dermal nanowrap roller"
-	amount_max = 50
+	amount_max = 100
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/ointment
 	name = "ointment tank"
-	amount_max = 50
+	amount_max = 100
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/ointment/advanced
 	name = "advanced ointment tank"
-	amount_max = 50
+	amount_max = 100
 	regen_per_second = 5
 
 /datum/robot_resource/provisioned/preset/nanopaste

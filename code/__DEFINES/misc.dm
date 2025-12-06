@@ -31,6 +31,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 /// * Underfloor objects (we don't want them to be interactable at all)
 /// * Abstract objects (we don't want them to be interactable at all)
 
+#define INVISIBILITY_NONE 0
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
 #define INVISIBILITY_LEVEL_TWO		45

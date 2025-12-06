@@ -22,8 +22,7 @@
 	var/use_robot_module_path = /obj/item/robot_module_legacy/robot
 
 	/// This corrosponds to the icon_state in `icons/screen/hud/robot/modules.dmi'
-	var/module_hud_state = "none"
-	#warn set on all modules lol
+	var/module_hud_state = "standard"
 
 	/// Allowed robot frames.
 	/// * set to list of typepaths/anonymous types to init
