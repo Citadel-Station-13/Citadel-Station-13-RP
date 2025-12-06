@@ -10,25 +10,13 @@
 	if(!clickchain.target?.is_melee_targetable(clickchain, clickchain_flags))
 		return clickchain_flags
 
-	var/datum/melee_attack/vehicle/mecha/using_style = melee_attack_active
+	var/datum/melee_attack/vehicle/mecha/using_style = melee_attack
 	if(!using_style)
 		return clickchain_flags
 	. = melee_attack(clickchain, clickchain_flags, using_style)
 
 /obj/vehicle/sealed/mecha/proc/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/vehicle/mecha/attack_style)
 	SHOULD_NOT_SLEEP(TRUE)
-
-	//! Admin Proccall Support
-	if(isatom(clickchain))
-		clickchain = default_clickchain_event_args(clickchain)
-		clickchain_flags = NONE
-	//! End
-
-	//! Legacy
-	break_cloak()
-	if(isnull(attack_style))
-		attack_style = default_unarmed_attack_style()
-	//! End
 
 	// -- write clickchain data --
 	if((clickchain.using_melee_attack && clickchain.using_melee_attack != attack_style) || \

@@ -484,4 +484,4 @@
 
 /datum/component/riding_handler/proc/process_spacemove()
 	var/atom/movable/AM = parent
-	return (riding_handler_flags & CF_RIDING_HANDLER_FORCED_SPACEMOVE) || AM.Process_Spacemove()
+	return (riding_handler_flags & CF_RIDING_HANDLER_FORCED_SPACEMOVE) || AM.process_spacemove()

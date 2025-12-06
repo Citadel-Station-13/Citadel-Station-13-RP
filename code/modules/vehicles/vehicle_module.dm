@@ -35,6 +35,12 @@
 	/// vehicle encumbrance
 	var/vehicle_encumbrance = 0
 
+	//* Install *//
+	/// Tool behavior needed to remove us
+	var/remove_tool = TOOL_SCREWDRIVER
+	/// Time to remove us
+	var/remove_time = 0
+
 	//* Click *//
 	/// click half-arc from forward of mech
 	/// * 45 is a 90 deg arc centered on front, 90 is a 180.
@@ -296,10 +302,31 @@
 	vehicle.ui_controller?.push_ui_nested_data(updates = list(ref(src) = data))
 
 /**
- * @return TRUE to update data (not static data)
+ * @return TRUE to stop propagation
  */
 /obj/item/vehicle_module/proc/vehicle_ui_module_act(action, list/params, datum/event_args/actor/actor)
 	return FALSE
+
+/obj/item/vehicle_module/proc/vehicle_ui_maint_data()
+	return list(
+		"removeTool" = remove_tool,
+		"removeTime" = remove_time,
+		"integrity" = integrity,
+		"integrityMax" = integrity_max,
+		"name" = name,
+		"desc" = desc,
+		"ref" = ref(src),
+		"allowEject" = !intrinsic,
+	)
+
+/**
+ * @return TRUE to stop propagation
+ */
+/obj/item/vehicle_module/proc/vehicle_ui_maint_act(action, list/params, datum/event_args/actor/actor)
+	return FALSE
+
+/obj/item/vehicle_module/proc/vehicle_ui_maint_push(list/data)
+	vehicle?.maint_controller?.push_ui_nested_data(updates = list(ref(src) = data))
 
 /**
  * Supertype of shieldcalls that handle vehicle hits. Just subtype one

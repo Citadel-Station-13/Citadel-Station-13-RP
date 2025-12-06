@@ -124,9 +124,11 @@
 	return TRUE
 
 /// Space movement (pAI gets one ion burst every 3 seconds)
-/mob/living/silicon/pai/Process_Spacemove(movement_dir = NONE)
+/mob/living/silicon/pai/process_spacemove(drifting, movement_dir)
 	. = ..()
-	if(!. && src.loc != shell)
+	if(.)
+		return
+	if(src.loc != shell)
 		if(world.time >= last_space_movement + 3 SECONDS)
 			last_space_movement = world.time
 			// place an effect for the movement

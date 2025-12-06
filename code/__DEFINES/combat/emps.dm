@@ -30,7 +30,7 @@
 /**
  * Fast lookup for legacy emp severity to power
  */
-GLOBAL_REAL(_legacy_emp_severity_to_power) = list(
+GLOBAL_REAL_LIST(_legacy_emp_severity_to_power) = list(
 	100,
 	70,
 	42.5,

@@ -24,6 +24,7 @@
 	response_harm = "pulverizes"
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
+	movement_works_in_space = TRUE
 
 	var/obj/item/shield_projector/shields = null
 
@@ -37,9 +38,6 @@
 
 /mob/living/simple_mob/mechanical/sentinel/death()
 	..(null,"suddenly crashes to the ground, translucent blue blood leaking from a broken thruster.")
-
-/mob/living/simple_mob/mechanical/combat_drone/Process_Spacemove(var/check_drift = 0)
-	return TRUE
 
 /obj/item/shield_projector/rectangle/automatic/advanced
 	shield_health = 250

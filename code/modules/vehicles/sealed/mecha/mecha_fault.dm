@@ -12,6 +12,7 @@
 
 /datum/mecha_fault/proc/on_apply(obj/vehicle/sealed/mecha/mech)
 
+#warn ways of inflicting these lol
 
 /datum/mecha_fault/proc/on_remove(obj/vehicle/sealed/mecha/mech)
 

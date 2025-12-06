@@ -651,7 +651,6 @@
 /atom/proc/has_gravity(turf/T = get_turf(src))
 	if(!T)
 		return FALSE
-
 	return T.has_gravity()
 
 // todo: annihilate this in favor of ATOM_PASS_INCORPOREAL

@@ -32,6 +32,12 @@
 	var/autobind_shieldcall_type
 	var/datum/shieldcall/bound/vehicle_component/autobind_shieldcall
 
+	//* Install *//
+	/// Tool behavior needed to remove us
+	var/remove_tool = TOOL_SCREWDRIVER
+	/// Time to remove us
+	var/remove_time = 0
+
 	//* Repairs *//
 	/// Repair droid efficiency
 	/// * This is relative difficulty. 2 means twice the power / material!

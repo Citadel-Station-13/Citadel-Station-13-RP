@@ -70,9 +70,11 @@
 	S.try_untransform()
 
 // same way pAI space movement works in pai/mobility.dm
-/mob/living/simple_mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)
+/mob/living/simple_mob/holosphere_shell/process_spacemove(drifting, movement_dir)
 	. = ..()
-	if(!. && src.loc != hologram)
+	if(.)
+		return
+	if(src.loc != hologram)
 		if(world.time >= last_space_movement + 3 SECONDS)
 			last_space_movement = world.time
 			// place an effect for the movement

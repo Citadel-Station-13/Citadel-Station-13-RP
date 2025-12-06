@@ -138,7 +138,12 @@
 			mod = (lumcount * species.light_slowdown) + (LERP(species.dark_slowdown, 0, lumcount))
 		. += mod
 
-/mob/living/carbon/human/Process_Spacemove(dir)
+/mob/living/carbon/human/process_spacemove(drifting, movement_dir)
+	if(flying)
+		return TRUE
+	. = ..()
+	if(.)
+		return
 	//Do we have a working jetpack?
 	// TODO: please for the love of god rework this utter dumpster fire
 	var/obj/item/tank/jetpack/thrust
@@ -152,7 +157,6 @@
 			for(var/obj/item/hardsuit_module/maneuvering_jets/module in hardsuit.installed_modules)
 				thrust = module.jets
 				break
-
 	if(thrust && !lying)
 		if(dir != NONE)
 			if(thrust.allow_thrust(0.01, src))
@@ -160,10 +164,6 @@
 		else
 			if(thrust.stabilization_on && thrust.allow_thrust(0.01, src))
 				return TRUE
-	if(flying)
-		return TRUE
-
-	return ..()
 
 // Handle footstep sounds
 /mob/living/carbon/human/handle_footstep(turf/T)

@@ -1,6 +1,7 @@
 //
 //Robotic Component Analyser, basically a health analyser for robots
 //
+// TODO: move to items, `robot_analyzer`
 /obj/item/robotanalyzer
 	name = "cyborg analyzer"
 	icon = 'icons/obj/device.dmi'
@@ -16,6 +17,8 @@
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/mode = 1;
+
+// TODO: scan mechs
 
 /obj/item/robotanalyzer/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	do_scan(target, user)

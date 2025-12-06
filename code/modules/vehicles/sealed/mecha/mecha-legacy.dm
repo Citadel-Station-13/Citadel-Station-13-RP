@@ -340,107 +340,6 @@
 			if(destr)
 				destr.destroy()
 
-/obj/vehicle/sealed/mecha/proc/components_handle_damage(var/damage, var/type = DAMAGE_TYPE_BRUTE)
-	var/obj/item/vehicle_component/plating/mecha_armor/AC = internal_components[MECH_ARMOR]
-
-	if(AC)
-		var/armor_efficiency = AC.get_efficiency()
-		var/damage_change = armor_efficiency * (damage * 0.5) * AC.damage_absorption[type]
-		AC.damage_part(damage_change, type)
-		damage -= damage_change
-
-	var/obj/item/vehicle_component/plating/mecha_hull/HC = internal_components[MECH_HULL]
-
-	if(HC)
-		if(HC.integrity)
-			var/hull_absorb = round(rand(5, 10) / 10, 0.1) * damage
-			HC.damage_part(hull_absorb, type)
-			damage -= hull_absorb
-
-	for(var/obj/item/vehicle_component/C in (internal_components - list(MECH_HULL, MECH_ARMOR)))
-		if(prob(C.relative_size))
-			var/damage_part_amt = round(damage / 4, 0.1)
-			C.damage_part(damage_part_amt)
-			damage -= damage_part_amt
-
-	return damage
-
-/obj/vehicle/sealed/mecha/proc/dynbulletdamage(var/obj/projectile/Proj)
-	var/obj/item/vehicle_component/plating/mecha_armor/ArmC = internal_components[MECH_ARMOR]
-
-	var/temp_deflect_chance = deflect_chance
-	var/temp_damage_minimum = damage_minimum
-	var/temp_minimum_penetration = minimum_penetration
-	var/temp_fail_penetration_value = fail_penetration_value
-
-	if(!ArmC)
-		temp_deflect_chance = 0
-		temp_damage_minimum = 0
-		temp_minimum_penetration = 0
-		temp_fail_penetration_value = 1
-
-	else
-		temp_deflect_chance = round(ArmC.get_efficiency() * ArmC.deflect_chance)
-		temp_damage_minimum = round(ArmC.get_efficiency() * ArmC.damage_minimum)
-		temp_minimum_penetration = round(ArmC.get_efficiency() * ArmC.minimum_penetration)
-		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
-
-	if(prob(temp_deflect_chance))
-		src.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
-		src.visible_message("The [src.name] armor deflects the projectile")
-		return
-
-	if(Proj.damage_type == DAMAGE_TYPE_HALLOSS)
-		use_power(Proj.damage_force * 5)
-	if(Proj.damage_inflict_agony)
-		use_power(Proj.damage_inflict_agony * 5)
-
-	if(!(Proj.nodamage))
-		var/ignore_threshold
-
-		var/pass_damage = Proj.damage_force
-		var/pass_damage_reduc_mod
-		for(var/obj/item/vehicle_module/lazy/legacy/ME in equipment)
-			pass_damage = ME.handle_projectile_contact(Proj, pass_damage)
-
-		if(pass_damage < temp_damage_minimum)//too pathetic to really damage you.
-			src.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
-			src.visible_message("The [src.name] armor deflects\the [Proj]")
-			return PROJECTILE_IMPACT_BLOCKED
-
-		else if((max(BULLET_TIER_DEFAULT - Proj.damage_tier, 0) * 25) < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
-			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
-			src.visible_message("\The [Proj] struggles to pierce \the [src] armor")
-			pass_damage_reduc_mod = temp_fail_penetration_value / 1.5	//This will apply to reduce damage to 2/3 or 66% by default
-
-		else	//You go through completely because you use AP. Nice.
-			src.occupant_message("<span class='notice'>\The [Proj] manages to pierce \the [src] armor.</span>")
-//			src.visible_message("\The [Proj] manages to pierce \the [src] armor")
-			pass_damage_reduc_mod = 1
-
-		pass_damage = (pass_damage_reduc_mod*pass_damage)//Apply damage reduction before usage.
-		src.take_damage_legacy(pass_damage, Proj.damage_flag)	//The take_damage_legacy() proc handles armor values
-		if(prob(25))
-			spark_system.start()
-		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
-			src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),ignore_threshold)
-
-		//AP projectiles have a chance to cause additional damage
-		if(Proj.legacy_penetrating)
-			var/hit_occupant = 1 //only allow the occupant to be hit once
-			for(var/i in 1 to min(Proj.legacy_penetrating, round(Proj.damage_force/15)))
-				if(src.occupant_legacy && hit_occupant && prob(20))
-					Proj.impact(occupant_legacy)
-					hit_occupant = 0
-				else
-					if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
-						src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT), 1)
-
-				Proj.legacy_penetrating--
-
-				if(prob(15))
-					break //give a chance to exit early
-
 /obj/vehicle/sealed/mecha/emp_act(severity)
 	if(get_charge())
 		use_power((cell.charge/2)/severity)
@@ -453,36 +352,8 @@
 		src.take_damage_legacy(5,"fire")	//The take_damage_legacy() proc handles armor values
 		src.check_for_internal_damage(list(MECHA_INT_FIRE, MECHA_INT_TEMP_CONTROL))
 
+#warn impl
 /obj/vehicle/sealed/mecha/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/kit/paint))
-		var/obj/item/kit/paint/P = W
-		P.customize(src, user)
-		return
-	if(istype(W, /obj/item/robotanalyzer))
-		var/obj/item/robotanalyzer/RA = W
-		RA.do_scan(src, user)
-		return
-
-	#warn deal with
-	if(istype(W, /obj/item/vehicle_module))
-		var/obj/item/vehicle_module/lazy/legacy/E = W
-		if(E.can_attach(src))
-			if(!user.attempt_insert_item_for_installation(E, src))
-				return
-			E.attach(src)
-			user.visible_message("[user] attaches [W] to [src]", "You attach [W] to [src]")
-		else
-			to_chat(user, "You were unable to attach [W] to [src]")
-		return
-
-	#warn deal with
-	if(istype(W, /obj/item/vehicle_component) && state == MECHA_CELL_OUT)
-		var/obj/item/vehicle_component/MC = W
-		if(MC.attach(src))
-			user.transfer_item_to_loc(W, src, INV_OP_FORCE)
-			user.visible_message("[user] installs \the [W] in \the [src]", "You install \the [W] in \the [src].")
-		return
-
 	if(istype(W, /obj/item/card/robot))
 		var/obj/item/card/robot/RoC = W
 		return attackby(RoC.dummy_card, user)

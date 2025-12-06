@@ -725,9 +725,11 @@
  * @return /atom or null
  */
 /atom/movable/proc/process_spacemove_support(drifting, movement_dir) as /atom
-	#warn why lattice and why like this?
-	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
+	if(locate(/obj/structure/lattice) in oview(1, src))
 		return TRUE
+	if(locate(/obj/structure/catwalk) in oview(1, src))
+		return TRUE
+	return FALSE
 
 /**
  * Called when attempting to move in a direction in space.
@@ -752,24 +754,67 @@
 		return TRUE
 	var/atom/grabbed_onto = process_spacemove_support(drifting, movement_dir)
 	if(grabbed_onto)
+		// shitcode galore lmfao
+		if(movement_dir && (movement_dir & (NORTH|WEST|EAST|SOUTH)) && ismovable(grabbed_onto))
+			var/atom/movable/pushing = grabbed_onto
+			if(pushing.newtonian_step(turn(movement_dir & (NORTH|WEST|EAST|SOUTH), 180)))
+				// only if they move.
+				if(ismob(src))
+					var/mob/casted_src = src
+					casted_src.selfmove_feedback(SPAN_WARNING("You push yourself off of [grabbed_onto]!"))
+		else
+			if(ismob(src))
+				var/mob/casted_src = src
+				if(drifting)
+					casted_src.selfmove_feedback(SPAN_WARNING("You reflexively grab onto [grabbed_onto]!"))
 		return TRUE
 	return FALSE
 
-#warn crying
-
-/// Only moves the object if it's under no gravity
-/atom/movable/proc/newtonian_move(direction)
-	if(!loc || Process_Spacemove(NONE))
+/**
+ * Starts drifting ourselves with an immediate move under spacedrift if we don't have gravity.
+ * * Like [newtonian_move] but actually pushes this entity.
+ * * Fails if we have nowhere to go / bump against something solid.
+ * * Undefined behavior results if 'direction' has UP|DOWN in it.
+ * @return TRUE if we moved and are now drifting, FALSE otherwise
+ */
+/atom/movable/proc/newtonian_step(direction)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(has_gravity())
+		return FALSE
+	if(!loc || process_spacemove(TRUE))
 		inertia_dir = NONE
 		return FALSE
-
 	inertia_dir = direction
 	if(!direction)
-		return TRUE
+		return FALSE
+	if(!step(src, direction))
+		inertia_dir = NONE
+		return FALSE
 	inertia_last_loc = loc
 	SSspacedrift.processing[src] = src
 	return TRUE
 
+/**
+ * Starts drifting ourselves under spacedrift if we don't have gravity.
+ * * Still succeeds even if we're against a wall; we 'stop moving' on the next subsystem tick.
+ * * Undefined behavior results if 'direction' has UP|DOWN in it.
+ * @return TRUE if we are now drifting, FALSE otherwise
+ */
+/atom/movable/proc/newtonian_move(direction)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(has_gravity())
+		return FALSE
+	if(!loc || process_spacemove(TRUE))
+		inertia_dir = NONE
+		return FALSE
+	inertia_dir = direction
+	if(!direction)
+		return FALSE
+	inertia_last_loc = loc
+	SSspacedrift.processing[src] = src
+	return TRUE
 
 //? Move Force
 // todo: this system is shit

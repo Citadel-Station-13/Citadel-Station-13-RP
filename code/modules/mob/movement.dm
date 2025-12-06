@@ -401,55 +401,31 @@
 /mob/proc/Post_Incorpmove()
 	return
 
-///Process_Spacemove
-///Called by /client/Move()
-///For moving in space
-///Return 1 for movement 0 for none
-/mob/Process_Spacemove(direction)
+#warn update floating for process spacemove??
+
+/mob/process_spacemove_support(drifting, movement_dir)
 	. = ..()
 	if(.)
 		return
-	if(Check_Dense_Object())
-		update_floating(TRUE)
-		return TRUE
-
-/mob/proc/Check_Dense_Object() //checks for anything to push off in the vicinity. also handles magboots on gravity-less floors tiles
-
-	var/dense_object = 0
-	var/shoegrip
-
-	for(var/turf/turf in oview(1,src))
-		if(istype(turf,/turf/space))
+	var/has_shoegrip
+	// magboots & walls
+	for(var/turf/potential in oview(1, src))
+		if(potential.density)
+			return potential
+		if(istype(potential, /turf/space))
 			continue
-
-		if(istype(turf,/turf/simulated/floor)) // Floors don't count if they don't have gravity
-			var/area/A = turf.loc
-			if(istype(A) && A.has_gravity == 0)
-				if(shoegrip == null)
-					shoegrip = Check_Shoegrip() //Shoegrip is only ever checked when a zero-gravity floor is encountered to reduce load
-				if(!shoegrip)
-					continue
-
-		dense_object++
-		break
-
-	if(!dense_object && (locate(/obj/structure/lattice) in oview(1, src)))
-		dense_object++
-
-	if(!dense_object && (locate(/obj/structure/catwalk) in oview(1, src)))
-		dense_object++
-
-
-	//Lastly attempt to locate any dense objects we could push off of
-	//TODO: If we implement objects drifing in space this needs to really push them
-	//Due to a few issues only anchored and dense objects will now work.
-	if(!dense_object)
-		for(var/obj/O in oview(1, src))
-			if((O) && (O.density) && (O.anchored))
-				dense_object++
-				break
-
-	return dense_object
+		// todo: check for ferromagnetic :troll:
+		if(istype(potential, /turf/simulated/floor))
+			if(isnull(has_shoegrip))
+				has_shoegrip = Check_Shoegrip()
+			else if(has_shoegrip)
+				return potential
+	if(!drifting)
+		// objects but only if not drifting / to be used as impulse
+		for(var/obj/potential in oview(1, src))
+			if(!potential.density)
+				continue
+			return potential
 
 /mob/proc/Check_Shoegrip()
 	if(flying)	// Checks to see if they are flying.

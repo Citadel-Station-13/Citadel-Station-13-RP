@@ -31,6 +31,21 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// * Lazy list.
 	var/list/obj/item/vehicle_component/components
 
+	//* Maintenance *//
+	/// Maint panel path; this is for the actual maint panel, not the UI controller.
+	/// * This is a full item because you can actaully smash it open.
+	var/obj/item/vehicle_maint_panel/maint_panel
+	/// Our stateless external / internal maintenance UI controller
+	/// TODO: good candidate for TGUI controller refactor / investigation
+	var/datum/vehicle_maint_controller/maint_controller = /datum/vehicle_maint_controller
+	/// Maint panel open?
+	/// * this being TRUE OR the maint panel being gone OR the maint panel having `ATOM_BROKEN`
+	///   flag counts as 'open'
+	var/maint_panel_open = FALSE
+	/// Maint panel locked?
+	#warn start unlocked if built
+	var/maint_panel_locked = TRUE
+
 	//* Modules *//
 	/// Modules. Set to typepath list to init.
 	/// * Lazy list.
@@ -102,7 +117,8 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/repair_droid_recovery_efficiency = 2.5
 
 	//* UI *//
-	/// UI controller
+	/// Our stateless occupant / driver UI controller
+	/// TODO: good candidate for TGUI controller refactor / investigation
 	#warn hook this during merging
 	var/datum/vehicle_ui_controller/ui_controller = /datum/vehicle_ui_controller
 

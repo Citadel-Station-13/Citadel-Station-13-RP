@@ -50,9 +50,7 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-
-/mob/living/simple_mob/tomato/space/Process_Spacemove(var/check_drift = 0)
-	return TRUE
+	movement_works_in_space = TRUE
 
 /obj/random/slimecore
 	name = "random slime core"
