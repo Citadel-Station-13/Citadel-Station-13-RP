@@ -54,6 +54,12 @@
 	if(!length(occupants))
 		ion_trail.stop()
 
+/obj/vehicle/sealed/mecha/working/hoverpod/equipped
+	modules = list(
+		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
+		/obj/item/vehicle_module/lazy/legacy/tool/passenger,
+	)
+
 //Hoverpod variants
 /obj/vehicle/sealed/mecha/working/hoverpod/combatpod
 	desc = "An ancient, run-down combat spacecraft." // Ideally would have a seperate icon.

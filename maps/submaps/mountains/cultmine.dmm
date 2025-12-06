@@ -265,7 +265,7 @@
 /turf/simulated/wall,
 /area/submap/cave/cultmine)
 "ba" = (
-/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron,
+/obj/item/vehicle_module/lazy/stack_generator/phoron,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "bb" = (

@@ -94,9 +94,6 @@
 	/// Floodlight color
 	var/floodlight_color = "#ffffff"
 
-	//* Maintenance *//
-	#warn impl maybe?
-
 	//* Melee *//
 	/// Pickable melee options; set to list of typepaths to init
 	#warn impl

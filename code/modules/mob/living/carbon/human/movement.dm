@@ -138,7 +138,7 @@
 			mod = (lumcount * species.light_slowdown) + (LERP(species.dark_slowdown, 0, lumcount))
 		. += mod
 
-/mob/living/carbon/human/process_spacemove(drifting, movement_dir)
+/mob/living/carbon/human/process_spacemove(drifting, movement_dir, just_checking)
 	if(flying)
 		return TRUE
 	. = ..()
@@ -157,7 +157,8 @@
 			for(var/obj/item/hardsuit_module/maneuvering_jets/module in hardsuit.installed_modules)
 				thrust = module.jets
 				break
-	if(thrust && !lying)
+	// no support for just_checking yet
+	if(!just_checking && thrust && !lying)
 		if(dir != NONE)
 			if(thrust.allow_thrust(0.01, src))
 				return TRUE

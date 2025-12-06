@@ -741,11 +741,12 @@
  *
  * @params
  * * drifting - (optional) set if we're drifting (ergo this is trying to check if we should stop drifting)
- * * movement_dir - (optional) which dir we're moving in, up/down is valid. if this is just a check this is null / NONE.
+ * * movement_dir - (optional) which dir we're moving in, up/down is valid. NONE for stopping in place
+ * * just_checking - (optional) just checking don't use thrust
  *
  * @return TRUE, FALSE
  */
-/atom/movable/proc/process_spacemove(drifting, movement_dir)
+/atom/movable/proc/process_spacemove(drifting, movement_dir, just_checking)
 	// someone is pulling us, stop
 	if(pulledby)
 		return TRUE
@@ -754,19 +755,20 @@
 		return TRUE
 	var/atom/grabbed_onto = process_spacemove_support(drifting, movement_dir)
 	if(grabbed_onto)
-		// shitcode galore lmfao
-		if(movement_dir && (movement_dir & (NORTH|WEST|EAST|SOUTH)) && ismovable(grabbed_onto))
-			var/atom/movable/pushing = grabbed_onto
-			if(pushing.newtonian_step(turn(movement_dir & (NORTH|WEST|EAST|SOUTH), 180)))
-				// only if they move.
+		if(!just_checking)
+			// shitcode galore lmfao
+			if(movement_dir && (movement_dir & (NORTH|WEST|EAST|SOUTH)) && ismovable(grabbed_onto))
+				var/atom/movable/pushing = grabbed_onto
+				if(pushing.newtonian_step(turn(movement_dir & (NORTH|WEST|EAST|SOUTH), 180)))
+					// only if they move.
+					if(ismob(src))
+						var/mob/casted_src = src
+						casted_src.selfmove_feedback(SPAN_WARNING("You push yourself off of [grabbed_onto]!"))
+			else
 				if(ismob(src))
 					var/mob/casted_src = src
-					casted_src.selfmove_feedback(SPAN_WARNING("You push yourself off of [grabbed_onto]!"))
-		else
-			if(ismob(src))
-				var/mob/casted_src = src
-				if(drifting)
-					casted_src.selfmove_feedback(SPAN_WARNING("You reflexively grab onto [grabbed_onto]!"))
+					if(drifting)
+						casted_src.selfmove_feedback(SPAN_WARNING("You reflexively grab onto [grabbed_onto]!"))
 		return TRUE
 	return FALSE
 

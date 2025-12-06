@@ -1206,7 +1206,7 @@
 	return pick(
 				prob(12);list(/obj/item/vehicle_module/lazy/legacy/tool/drill),
 				prob(10);list(/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp),
-				prob(8);list(/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron),
+				prob(8);list(/obj/item/vehicle_module/lazy/stack_generator/phoron),
 				prob(7);list(/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot/rigged),
 				prob(6);list(/obj/item/vehicle_module/toggled/repair_droid),
 				prob(3);list(/obj/item/vehicle_module/lazy/legacy/gravcatapult),

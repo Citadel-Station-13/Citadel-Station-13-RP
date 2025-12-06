@@ -551,6 +551,7 @@
 				)
 			playsound(loc, "punch", 25, TRUE, -1)
 
+	#warn rework this
 	// And now to hurt the mech.
 	if(!planetary)
 		take_damage_legacy(rand(damage_min, damage_max))

@@ -15,8 +15,9 @@
  *   sci-fi technologies.
  */
 
+#define DEFAULT_CELLRATE 0.5
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
-GLOBAL_VAR_INIT(cellrate, 0.5)
+GLOBAL_VAR_INIT(cellrate, DEFAULT_CELLRATE)
 
 //* Computers
 

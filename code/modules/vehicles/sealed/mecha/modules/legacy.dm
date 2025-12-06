@@ -83,19 +83,6 @@
 /obj/item/vehicle_module/lazy/legacy/proc/action(atom/target)
 	return
 
-/obj/item/vehicle_module/lazy/legacy/proc/attach(obj/vehicle/sealed/mecha/M as obj)
-	#warn deal with this shit
-	var/has_equipped = FALSE
-	M.equipment += src
-	chassis = M
-	src.loc = M
-
-/obj/item/vehicle_module/lazy/legacy/proc/detach(atom/moveto=null)
-	moveto = moveto || get_turf(chassis)
-	if(src.forceMove(moveto))
-		chassis = null
-		set_ready_state(1)
-
 /obj/item/vehicle_module/lazy/legacy/proc/set_ready_state(state)
 	equip_ready = state
 

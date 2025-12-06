@@ -5,7 +5,7 @@
 	. = ..()
 	. += "simple"
 
-/mob/living/simple_mob/process_spacemove(drifting, movement_dir)
+/mob/living/simple_mob/process_spacemove(drifting, movement_dir, just_checking)
 	if(movement_works_in_space)
 		return TRUE
 	return ..()

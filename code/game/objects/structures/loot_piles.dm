@@ -398,7 +398,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/wirecutters,
 		/obj/item/multitool,
-		/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron,
+		/obj/item/vehicle_module/lazy/stack_generator/phoron,
 		/obj/item/vehicle_module/lazy/legacy/tool/cable_layer,
 		/obj/item/vehicle_module/lazy/legacy/tool/drill,
 		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
@@ -633,12 +633,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/riggedlaser,
 		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
 		/obj/item/vehicle_module/lazy/legacy/tool/drill,
-		/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron
+		/obj/item/vehicle_module/lazy/stack_generator/phoron
 		)
 
 	rare_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
-		/obj/item/vehicle_module/lazy/legacy/simple_generator/nuclear,
+		/obj/item/vehicle_module/lazy/stack_generator/uranium,
 		/obj/item/vehicle_module/lazy/legacy/tool/jetpack
 		)
 
@@ -1014,12 +1014,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	uncommon_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg/rigged,
-		/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron
+		/obj/item/vehicle_module/lazy/stack_generator/phoron
 		)
 
 	rare_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
-		/obj/item/vehicle_module/lazy/legacy/simple_generator/nuclear
+		/obj/item/vehicle_module/lazy/stack_generator/uranium
 		)
 
 /obj/structure/loot_pile/mecha/mouse_tank/livewire
@@ -1054,7 +1054,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	rare_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer,
-		/obj/item/vehicle_module/lazy/legacy/simple_generator/phoron
+		/obj/item/vehicle_module/lazy/stack_generator/phoron
 		)
 
 /obj/structure/loot_pile/mecha/mouse_tank/eraticator
@@ -1090,7 +1090,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	rare_loot = list(
 		/obj/item/gun/projectile/ballistic/gyropistol,
-		/obj/item/vehicle_module/lazy/legacy/simple_generator/nuclear
+		/obj/item/vehicle_module/lazy/stack_generator/uranium
 		)
 
 //Drone loot

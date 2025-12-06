@@ -3,8 +3,9 @@
 		return 0
 	..(prob_slip)
 
-/mob/living/silicon/robot/process_spacemove(drifting, movement_dir)
-	if(module)
+/mob/living/silicon/robot/process_spacemove(drifting, movement_dir, just_checking)
+	// no support for just_checking yet
+	if(module && !just_checking)
 		for(var/obj/item/tank/jetpack/J in module.modules)
 			if(istype(J, /obj/item/tank/jetpack))
 				if(J.allow_thrust(0.01))

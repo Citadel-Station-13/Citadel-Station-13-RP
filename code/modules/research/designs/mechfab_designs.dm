@@ -792,7 +792,7 @@
 	desc = "Phoron Reactor"
 	id = "mech_phoron_generator"
 	req_tech = list(TECH_PHORON = 2, TECH_POWER= 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/vehicle_module/lazy/legacy/simple_generator/phoron
+	build_path = /obj/item/vehicle_module/lazy/stack_generator/phoron
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_SILVER = 375 * (1 / 3), MAT_GLASS = 750 * (1 / 3))
 
 /datum/prototype/design/science/mecha/energy_relay
@@ -872,7 +872,7 @@
 	id = "mech_generator_nuclear"
 	req_tech = list(TECH_POWER= 3, TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_SILVER = 375 * (1 / 3), MAT_GLASS = 750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/lazy/legacy/simple_generator/nuclear
+	build_path = /obj/item/vehicle_module/lazy/stack_generator/uranium
 
 /datum/prototype/design/science/mecha/speedboost_ripley
 	design_name = "Ripley Leg Actuator Overdrive"
