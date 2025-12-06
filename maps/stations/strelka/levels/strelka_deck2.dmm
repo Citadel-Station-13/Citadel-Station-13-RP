@@ -594,6 +594,10 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
+/obj/item/radio/intercom/east_mount{
+	dir = 4;
+	pixel_x = 20
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck2)
 "bL" = (
@@ -1004,6 +1008,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
+	},
+/obj/item/radio/intercom/north_mount{
+	dir = 1;
+	pixel_y = 18
 	},
 /turf/simulated/floor/plating,
 /area/engineering/hallway/strelka/engineering)
@@ -2102,6 +2110,10 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 8
+	},
+/obj/item/radio/intercom/west_mount{
+	dir = 8;
+	pixel_x = -20
 	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck2)
@@ -7495,6 +7507,10 @@
 	dir = 8;
 	light_power = 1
 	},
+/obj/item/radio/intercom/west_mount{
+	dir = 8;
+	pixel_x = -20
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck2)
 "tB" = (
@@ -7563,12 +7579,15 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/strelka/engineering/atmos)
 "tG" = (
-/obj/machinery/air_alarm/west_mount,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
+	},
+/obj/item/radio/intercom/west_mount{
+	dir = 8;
+	pixel_x = -20
 	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
@@ -7613,6 +7632,10 @@
 	},
 /obj/structure/sign/christmas/lights{
 	dir = 8
+	},
+/obj/item/radio/intercom/west_mount{
+	dir = 8;
+	pixel_x = -20
 	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
@@ -10521,6 +10544,10 @@
 	},
 /obj/machinery/camera/network/security{
 	dir = 4
+	},
+/obj/item/radio/intercom/west_mount{
+	dir = 8;
+	pixel_x = -20
 	},
 /turf/simulated/floor/plating,
 /area/engineering/hallway/strelka/engineering)
@@ -17130,6 +17157,10 @@
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway/strelka/engineering)
 "RC" = (
@@ -17896,6 +17927,10 @@
 	dir = 1;
 	light_power = 1
 	},
+/obj/item/radio/intercom/north_mount{
+	dir = 1;
+	pixel_y = 18
+	},
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck2)
 "Tu" = (
@@ -18422,11 +18457,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor/glass,
 /obj/structure/sign/deck/second{
 	pixel_y = 30
 	},
-/obj/machinery/door/airlock/glass,
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck2)
 "UY" = (
@@ -19516,6 +19551,14 @@
 /obj/structure/closet/excavation,
 /turf/simulated/floor/reinforced,
 /area/rnd/strelka/tele)
+"XK" = (
+/obj/effect/floor_decal/rust,
+/obj/item/radio/intercom/north_mount{
+	dir = 1;
+	pixel_y = 18
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/strelka/board)
 "XL" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -19669,6 +19712,10 @@
 	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
+	},
+/obj/item/radio/intercom/department/security{
+	dir = 1;
+	pixel_y = 29
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/main)
@@ -38780,7 +38827,7 @@ TA
 Xp
 jX
 fQ
-td
+XK
 td
 td
 Zw

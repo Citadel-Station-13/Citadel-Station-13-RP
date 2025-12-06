@@ -3,6 +3,10 @@
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 9
 	},
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobotany)
 "ab" = (
@@ -26,6 +30,15 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/main)
+"af" = (
+/obj/structure/curtain/open/shower/medical,
+/obj/item/radio/intercom/department/medbay{
+	dir = 8;
+	layer = 4;
+	pixel_x = -21
+	},
+/turf/simulated/floor/tiled/dark,
+/area/medical/strelka/resleeve)
 "aj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -572,6 +585,24 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/cargo)
+"cc" = (
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/structure/table/bench/wooden,
+/obj/item/radio/intercom/east_mount{
+	dir = 4;
+	pixel_x = 20
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/medical/strelka)
 "ce" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -621,6 +652,10 @@
 "cq" = (
 /obj/machinery/vending/robotics,
 /obj/machinery/light,
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
+	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/strelka/science/main)
 "ct" = (
@@ -707,6 +742,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
+	},
+/obj/item/radio/intercom/department/medbay{
+	dir = 4;
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/emtroom)
@@ -3317,6 +3356,10 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/rnd/strelka/robotics)
 "lh" = (
+/obj/item/radio/intercom/department/medbay{
+	dir = 4;
+	pixel_x = 22
+	},
 /turf/simulated/floor/wood/indoors,
 /area/medical/strelka/surgery)
 "li" = (
@@ -3465,6 +3508,10 @@
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 10
 	},
+/obj/item/radio/intercom/north_mount{
+	dir = 1;
+	pixel_y = 18
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
 "lD" = (
@@ -3604,6 +3651,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/light/small/old,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
 "lY" = (
@@ -3978,6 +4026,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
+"nc" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/table/bench/wooden,
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/strelka/deck3)
 "ne" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -4469,6 +4531,7 @@
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = -23
 	},
+/obj/machinery/light/small/old,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
 "oJ" = (
@@ -6513,6 +6576,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck3)
+"vD" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/item/radio/intercom/north_mount{
+	dir = 1;
+	pixel_y = 18
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/strelka/deck3)
 "vG" = (
 /mob/living/simple_mob/animal/passive/bird/azure_tit,
 /turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
@@ -7043,17 +7114,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/deck3)
-"xd" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/obj/item/radio/intercom/department/medbay{
-	dir = 8;
-	layer = 4;
-	pixel_x = -54
-	},
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/medical/strelka/main)
 "xe" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -9543,6 +9603,24 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/rnd/strelka/science/secondary)
+"Ez" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/rnd/strelka/xenobio)
 "EB" = (
 /obj/structure/morgue/crematorium{
 	dir = 2;
@@ -10393,6 +10471,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
+	},
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/xenobio)
@@ -12667,6 +12749,10 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/item/radio/intercom/east_mount{
+	dir = 4;
+	pixel_x = 20
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
 "Ok" = (
@@ -13927,6 +14013,10 @@
 	},
 /obj/machinery/computer/rdconsole/robotics{
 	dir = 1
+	},
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
@@ -15332,6 +15422,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/science/secondary)
 "Wj" = (
@@ -15755,6 +15849,10 @@
 	dir = 8;
 	light_power = 1
 	},
+/obj/item/radio/intercom/west_mount{
+	dir = 8;
+	pixel_x = -20
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck3)
 "XO" = (
@@ -15888,6 +15986,16 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
+"Ym" = (
+/obj/effect/floor_decal/grass_edge{
+	dir = 8
+	},
+/obj/item/radio/intercom/east_mount{
+	dir = 4;
+	pixel_x = 20
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobotany)
 "Yn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -30525,7 +30633,7 @@ Bv
 Bv
 JD
 BG
-WQ
+Ym
 WQ
 WQ
 WQ
@@ -30693,9 +30801,9 @@ zh
 kD
 Kb
 IN
-Jv
+nc
 oT
-sL
+vD
 MI
 Cv
 Ov
@@ -31484,7 +31592,7 @@ Wt
 sw
 zr
 wE
-mK
+Ez
 oE
 vV
 vV
@@ -33018,7 +33126,7 @@ ch
 CB
 ZH
 EG
-uO
+af
 nP
 Ni
 va
@@ -35339,7 +35447,7 @@ fp
 KB
 KB
 ls
-xd
+OB
 by
 zM
 Jt
@@ -37677,7 +37785,7 @@ zo
 DX
 oC
 Nd
-zo
+cc
 XV
 mb
 tz

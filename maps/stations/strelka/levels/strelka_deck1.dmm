@@ -1560,6 +1560,24 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck1)
+"gr" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/blue{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/item/radio/intercom/south_mount{
+	dir = 2;
+	pixel_y = -23
+	},
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/strelka/hangardeck)
 "gz" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/security/strelka/armory2)
@@ -5062,6 +5080,27 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/shuttle/personalmicro3)
+"ve" = (
+/obj/effect/floor_decal/grass_edge,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small/old{
+	dir = 1;
+	light_power = 1
+	},
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/item/radio/intercom/north_mount{
+	dir = 1;
+	pixel_y = 18
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/hallway/strelka/deck1)
 "vf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -10287,6 +10326,21 @@
 "RI" = (
 /turf/simulated/floor/airless,
 /area/maintenance/strelka/civ)
+"RM" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/item/radio/intercom/west_mount{
+	dir = 8;
+	pixel_x = -20
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/hallway/strelka/deck1)
 "RO" = (
 /obj/effect/shuttle_landmark/automatic{
 	name = "Hangar Section 1d"
@@ -11038,6 +11092,9 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ballista";
 	pixel_x = 24
+	},
+/obj/item/radio/intercom/department/security{
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge/strelka/balista)
@@ -28974,8 +29031,8 @@ CW
 BY
 CE
 zf
-NS
-ZP
+gr
+rL
 yw
 zl
 ra
@@ -30910,7 +30967,7 @@ rH
 DD
 ns
 oE
-oE
+RM
 Op
 yb
 Kz
@@ -33822,7 +33879,7 @@ dE
 dE
 Mk
 ji
-Kg
+ve
 wX
 Tq
 VN
