@@ -19,7 +19,6 @@
 
 	vehicle_encumbrance = 7.5
 	start_damaged = FALSE
-	emp_resistance = 4
 	internal_damage_flag = MECHA_INT_TEMP_CONTROL
 
 	var/deflect_chance = 10

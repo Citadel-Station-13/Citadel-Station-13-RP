@@ -25,6 +25,7 @@
 
 	projectiletype = /obj/projectile/beam
 	base_attack_cooldown = 2 SECONDS
+	movement_works_in_space = TRUE
 
 	var/datum/effect_system/ion_trail_follow/ion_trail
 
@@ -36,6 +37,3 @@
 	ion_trail.set_up(src)
 	ion_trail.start()
 	return ..()
-
-/mob/living/simple_mob/mechanical/mecha/hoverpod/Process_Spacemove(var/check_drift = 0)
-	return TRUE

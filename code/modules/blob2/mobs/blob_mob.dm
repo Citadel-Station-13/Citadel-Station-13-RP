@@ -51,7 +51,8 @@
 		return TRUE
 	return ..()
 
-/mob/living/simple_mob/hostile/blob/Process_Spacemove()
+/mob/living/simple_mob/hostile/blob/process_spacemove_support(drifting, movement_dir)
 	for(var/obj/structure/blob/B in range(1, src))
 		return TRUE
 	return ..()
+

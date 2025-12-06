@@ -56,6 +56,7 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 	say_list_type = /datum/say_list/malf_drone
+	movement_works_in_space = TRUE
 
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
 	var/obj/item/shield_projector/shields = null
@@ -76,9 +77,6 @@
 /mob/living/simple_mob/mechanical/combat_drone/death()
 	..(null,"suddenly breaks apart.")
 	qdel(src)
-
-/mob/living/simple_mob/mechanical/combat_drone/Process_Spacemove(var/check_drift = 0)
-	return TRUE
 
 /obj/projectile/beam/drone
 	damage_force = 10

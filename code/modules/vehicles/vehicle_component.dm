@@ -7,6 +7,11 @@
 /obj/item/vehicle_component
 	name = "vehicle component"
 	desc = "Some kind of component that presumably goes on some kind of vehicle."
+	icon = 'icons/mecha/mech_component.dmi'
+	icon_state = "component"
+	#warn reorg sprites!
+
+	w_class = WEIGHT_CLASS_BULKY
 
 	integrity = 200
 	integrity_max = 200
@@ -61,8 +66,6 @@
 
 /obj/item/vehicle_component/proc/can_be_removed()
 	return !intrinsic
-
-#warn impl
 
 /**
  * @return string
@@ -139,6 +142,20 @@
 			isnull(sfx_vol) ? sound_do_after_default_volume : sfx_vol,
 			isnull(sfx_vary) ? sound_do_after_default_vary : sfx_vary,
 		)
+
+//* Defense & Interactions *//
+
+/obj/item/vehicle_component/emp_act(severity)
+	..()
+	on_emp(EMP_LEGACY_SEVERITY_TO_POWER(severity))
+
+/obj/item/vehicle_component/proc/on_emp(power, from_vehicle)
+	#warn impl
+
+/obj/item/vehicle_component/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+
+#warn impl; repairs? emp?
 
 //* UI *//
 

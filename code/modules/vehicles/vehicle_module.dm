@@ -126,7 +126,7 @@
 	atom/target,
 	flags,
 	max_distance,
-	datum/callback/additional_checks,
+	datum/callback/additional_checks
 )
 	if(!vehicle)
 		return FALSE
@@ -149,7 +149,7 @@
 	datum/callback/additional_checks,
 	sfx,
 	sfx_vol,
-	sfx_vary,
+	sfx_vary
 )
 	. = vehicle_do_after(actor, delay, target, flags, max_distance, additional_checks)
 	if(.)
@@ -262,6 +262,20 @@
  */
 /obj/item/vehicle_module/proc/module_attack_chain(atom/movable/mounted_on, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return clickchain_flags
+
+//* Defense & Interactions *//
+
+/obj/item/vehicle_module/emp_act(severity)
+	..()
+	on_emp(EMP_LEGACY_SEVERITY_TO_POWER(severity))
+
+/obj/item/vehicle_module/proc/on_emp(power, from_vehicle)
+	#warn impl
+
+/obj/item/vehicle_module/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+
+#warn impl; repairs? emp?
 
 //* UI *//
 

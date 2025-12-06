@@ -246,7 +246,7 @@
 		(isnull(additional_checks) || additional_checks.Invoke(args)) && \
 		(isnull(max_distance) || get_dist(vehicle, target) <= max_distance)
 
-	//* setup
+	//* setup *//
 
 	var/atom/vehicle_loc = vehicle.loc
 	var/turf/vehicle_turf = (flags & DO_VEHICLE_CHECK_VEHICLE_TURF)? get_turf(vehicle) : null
@@ -330,3 +330,44 @@
 	if(!isnull(target))
 		// TODO: mob vehicles.
 		// STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
+
+// TODO: this is a disaster.
+/**
+ * Same as do_mob except for movables and it allows both to drift and doesn't draw progressbar.
+ */
+/proc/do_atom(atom/movable/user , atom/movable/target, time = 30, uninterruptible = 0,datum/callback/extra_checks = null)
+	if(!user || !target)
+		return TRUE
+	var/user_loc = user.loc
+
+	var/drifting = FALSE
+	if(!user.process_spacemove(TRUE, NONE) && user.inertia_dir)
+		drifting = TRUE
+
+	var/target_drifting = FALSE
+	if(!target.process_spacemove(TRUE, NONE) && target.inertia_dir)
+		target_drifting = TRUE
+
+	var/target_loc = target.loc
+
+	var/endtime = world.time+time
+	. = TRUE
+	while (world.time < endtime)
+		stoplag(1)
+		if(QDELETED(user) || QDELETED(target))
+			. = 0
+			break
+		if(uninterruptible)
+			continue
+
+		if(drifting && !user.inertia_dir)
+			drifting = FALSE
+			user_loc = user.loc
+
+		if(target_drifting && !target.inertia_dir)
+			target_drifting = FALSE
+			target_loc = target.loc
+
+		if((!drifting && user.loc != user_loc) || (!target_drifting && target.loc != target_loc) || (extra_checks && !extra_checks.Invoke()))
+			. = FALSE
+			break

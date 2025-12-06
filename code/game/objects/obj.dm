@@ -809,7 +809,7 @@
 	else if(atom_flags & ATOM_BROKEN)
 		. =  SPAN_BOLDWARNING("It's broken and falling apart!")
 	else
-		var/perc = percent_integrity()
+		var/perc = integrity_failure < integrity_max ? (integrity - integrity_failure) / (integrity_max - integrity_failure) : 1
 		if(perc > 0.75)
 			. =  SPAN_NOTICE("It looks a bit dented.")
 		else if(perc > 0.5)

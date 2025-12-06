@@ -9,7 +9,6 @@
 	w_class = WEIGHT_CLASS_HUGE
 	materials_base = list(MAT_STEEL = 2500, MAT_GLASS = 1200)
 	start_damaged = FALSE
-	emp_resistance = 1
 	integrity_danger_mod = 0.6	// Multiplier for comparison to integrity_max before problems start.
 	integrity_max = 50
 	internal_damage_flag = MECHA_INT_CONTROL_LOST

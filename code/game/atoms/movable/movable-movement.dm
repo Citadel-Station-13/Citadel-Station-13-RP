@@ -713,33 +713,49 @@
 	return blocker_opinion
 
 /**
-  * Called whenever an object moves and by mobs when they attempt to move themselves through space
-  * And when an object or action applies a force on src, see [newtonian_move][/atom/movable/proc/newtonian_move]
-  *
-  * Return 0 to have src start/keep drifting in a no-grav area and 1 to stop/not start drifting
-  *
-  * Mobs should return 1 if they should be able to move of their own volition, see [/client/Move]
-  *
-  * Arguments:
-  * * movement_dir - 0 when stopping or any dir when trying to move
-  */
-/atom/movable/proc/Process_Spacemove(movement_dir = NONE)
-	if(has_gravity(src))
-		return TRUE
-
-	if(pulledby)
-		return TRUE
-
-	if(throwing)
-		return TRUE
-
-	if(!isturf(loc))
-		return TRUE
-
+ * Called to find something to grab onto when moving in nograv.
+ *
+ * * This should only be called if there's no gravity.
+ * * This is allowed to have side effects.
+ *
+ * @params
+ * * drifting - (optional) set if we're drifting (ergo this is trying to check if we should stop drifting)
+ * * movement_dir - (optional) which dir we're moving in, up/down is valid. if this is just a check this is null / NONE.
+ *
+ * @return /atom or null
+ */
+/atom/movable/proc/process_spacemove_support(drifting, movement_dir) as /atom
+	#warn why lattice and why like this?
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
 		return TRUE
 
+/**
+ * Called when attempting to move in a direction in space.
+ *
+ * * This doesn't actually move us; if this returns TRUE, the movement will succeed.
+ * * This should only be called if there's no gravity.
+ * * This is allowed to have side effects.
+ * * This will either return FALSE for 'no support', or TRUE for 'supported'
+ *
+ * @params
+ * * drifting - (optional) set if we're drifting (ergo this is trying to check if we should stop drifting)
+ * * movement_dir - (optional) which dir we're moving in, up/down is valid. if this is just a check this is null / NONE.
+ *
+ * @return TRUE, FALSE
+ */
+/atom/movable/proc/process_spacemove(drifting, movement_dir)
+	// someone is pulling us, stop
+	if(pulledby)
+		return TRUE
+	// we're being thrown, we don't care for silly things like Newton's laws of motion
+	if(throwing)
+		return TRUE
+	var/atom/grabbed_onto = process_spacemove_support(drifting, movement_dir)
+	if(grabbed_onto)
+		return TRUE
 	return FALSE
+
+#warn crying
 
 /// Only moves the object if it's under no gravity
 /atom/movable/proc/newtonian_move(direction)

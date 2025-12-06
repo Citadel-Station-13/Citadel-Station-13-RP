@@ -8,5 +8,4 @@
 	icon_state = "lifesupport"
 	w_class = WEIGHT_CLASS_HUGE
 	materials_base = list(MAT_STEEL = 1000, MAT_GLASS = 1500)
-	emp_resistance = 1
 	vehicle_encumbrance = 2.5

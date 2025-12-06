@@ -3,7 +3,7 @@
 		return 0
 	..(prob_slip)
 
-/mob/living/silicon/robot/Process_Spacemove()
+/mob/living/silicon/robot/process_spacemove(drifting, movement_dir)
 	if(module)
 		for(var/obj/item/tank/jetpack/J in module.modules)
 			if(istype(J, /obj/item/tank/jetpack))

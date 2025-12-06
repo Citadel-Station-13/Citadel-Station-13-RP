@@ -51,6 +51,7 @@
 	speak = list("ALERT.","Hostile-ile-ile entities dee-twhoooo-wected.","Threat parameterszzzz- szzet.","Bring sub-sub-sub-systems uuuup to combat alert alpha-a-a.")
 	emote_see = list("beeps menacingly","whirrs threateningly","scans its immediate vicinity")
 
+	movement_works_in_space = TRUE
 
 	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/turf/patrol_target
@@ -67,9 +68,6 @@
 	ion_trail = new
 	ion_trail.set_up(src)
 	ion_trail.start()
-
-/mob/living/simple_mob/hostile/malf_drone/Process_Spacemove(var/check_drift = 0)
-	return 1
 
 /mob/living/simple_mob/hostile/malf_drone/isSynthetic()
 	return TRUE

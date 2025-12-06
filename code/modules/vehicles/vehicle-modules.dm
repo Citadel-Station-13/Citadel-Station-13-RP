@@ -11,36 +11,55 @@
 	QDEL_LAZYLIST(modules)
 
 /obj/vehicle/proc/can_install_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent, force)
+	var/is_full
+	#warn is_full
+	. = can_fit_module(v_module, actor, silent)
+	return force || v_module.fits_on_vehicle(src, ., is_full, actor, silent)
 
 /obj/vehicle/proc/can_fit_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent)
+	return TRUE
 
 /obj/vehicle/proc/user_install_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor)
+	#warn impl
 
 /obj/vehicle/proc/user_uninstall_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, put_in_hands)
+	#warn impl
 
 /obj/vehicle/proc/install_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent, force)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	ASSERT(!(v_module in modules))
+	ASSERT(!v_module.vehicle)
+	v_module.vehicle = src
+	LAZYADD(modules, v_module)
+	v_module.on_install(src, actor, silent)
+	on_module_attached(src, actor, silent)
+
 /obj/vehicle/proc/uninstall_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent, force, atom/new_loc) as /obj/item/vehicle_module
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/obj/vehicle/proc/on_module_attached(obj/item/vehicle_module/v_module)
+	ASSERT(v_module in modules)
+	ASSERT(v_module.vehicle == src)
+	v_module.vehicle = null
+	LAZYREMOVE(modules, v_module)
+	v_module.on_uninstall(src, actor, silent)
+	on_module_detached(src, actor, silent)
+
+/obj/vehicle/proc/on_module_attached(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	cached_module_weight += v_module.get_weight()
 	ui_controller?.queue_update_module_refs()
 	ui_controller?.queue_update_weight_data()
 
-/obj/vehicle/proc/on_module_detached(obj/item/vehicle_module/v_module)
+/obj/vehicle/proc/on_module_detached(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	cached_module_weight += v_module.get_weight()
 	ui_controller?.queue_update_module_refs()
 	ui_controller?.queue_update_weight_data()
-
-#warn impl
 
 /**
  * * Allowed to return nulls, including for the list itself

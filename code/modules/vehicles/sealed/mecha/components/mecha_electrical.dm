@@ -7,7 +7,6 @@
 	icon_state = "board"
 	w_class = WEIGHT_CLASS_HUGE
 	materials_base = list(MAT_STEEL = 2500, MAT_GLASS = 1000)
-	emp_resistance = 1
 	vehicle_encumbrance = 2.5
 
 	/**

@@ -475,14 +475,13 @@
 
 	loot_list = list(/obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100, /obj/item/gun/projectile/energy/zip = 100) //Belt of pistols
 
+	movement_works_in_space = TRUE
+
 	var/obj/item/shield_projector/shields = null
 
 /mob/living/simple_mob/humanoid/pirate/captain/Initialize(mapload)
 	shields = new /obj/item/shield_projector/rectangle/automatic/drone(src)
 	return ..()
-
-/mob/living/simple_mob/humanoid/pirate/captain/Process_Spacemove(var/check_drift = 0)
-	return TRUE
 
 /obj/item/shield_projector/rectangle/automatic/drone
 	shield_health = 150
