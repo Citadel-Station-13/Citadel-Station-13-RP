@@ -94,8 +94,8 @@
 		return FALSE
 
 	item.forceMove(owner)
-
 	LAZYADD(robot_modules, item)
+	on_item_entered(item, resolve_inventory_slot(/datum/inventory_slot/abstract/inactive_robot_module_storage))
 	on_robot_module_register(item)
 	return TRUE
 
@@ -105,6 +105,7 @@
 
 /**
  * Unregisters an item from being a robot module.
+ * * You have to move it out of the inventory / mob after!
  */
 /datum/inventory/proc/robot_module_unregister(obj/item/item)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -112,8 +113,8 @@
 
 	if(!robot_module_is_registered(item))
 		return
-
 	LAZYREMOVE(robot_modules, item)
+	on_item_exited(item, isnum(item.inv_slot_or_index) ? item.inv_slot_or_index : resolve_inventory_slot(item.inv_slot_or_index))
 	on_robot_module_unregister(item)
 
 /datum/inventory/proc/on_robot_module_unregister(obj/item/item)

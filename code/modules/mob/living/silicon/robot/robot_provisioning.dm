@@ -51,26 +51,50 @@
 #warn impl
 
 /datum/robot_provisioning/proc/add_item(obj/item/item)
-
+	if(item in items)
+		return TRUE
+	items += item
 	on_item_add(item, FALSE)
+	return TRUE
 
 /datum/robot_provisioning/proc/remove_item(obj/item/item)
-
+	if(!(item in items))
+		return TRUE
+	items -= item
 	on_item_remove(item, FALSE)
+	return TRUE
 
 /datum/robot_provisioning/proc/add_emag_item(obj/item/item)
-
+	if(item in emag_items)
+		return TRUE
+	emag_items += item
 	on_item_add(item, TRUE)
+	return TRUE
 
 /datum/robot_provisioning/proc/remove_emag_item(obj/item/item)
-
+	if(!(item in emag_items))
+		return TRUE
+	emag_items -= item
 	on_item_remove(item, TRUE)
+	return TRUE
 
 /datum/robot_provisioning/proc/set_emag_enabled(new_state)
 	if(emag_enabled == new_state)
 		return
 	emag_enabled = new_state
-	#warn impl
+	if(!applied_to_robot)
+		return
+	if(new_state)
+		for(var/obj/item/item as anything in emag_items)
+			applied_to_robot.inventory.robot_module_register(item)
+	else
+		var/atom/dump_to = get_detached_storage_location()
+		for(var/obj/item/item as anything in emag_items)
+			applied_to_robot.inventory.robot_module_unregister(item)
+			if(dump_to)
+				item.forceMove(dump_to)
+			else
+				item.moveToNullspace()
 
 /**
  * @return list of items suppressed
@@ -89,16 +113,36 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!applied_to_robot)
 		return
+	applied_to_robot.inventory.robot_module_register(item)
 
 /datum/robot_provisioning/proc/on_item_remove(obj/item/item, is_emag_item)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!applied_to_robot)
 		return
+	applied_to_robot.inventory.robot_module_unregister(item)
+	var/atom/dump_to = get_detached_storage_location()
+	if(dump_to)
+		item.forceMove(dump_to)
+	else
+		item.moveToNullspace()
 
 /datum/robot_provisioning/proc/cleanup_item(obj/item/item)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
+	if(!QDESTROYING(item))
+		qdel(item)
+	if(items)
+		items -= item
+	if(emag_items)
+		emag_items -= item
+
+/**
+ * Gets where items get moved to while not in a robot.
+ * * Null is acceptable.
+ */
+/datum/robot_provisioning/proc/get_detached_storage_location() as /atom
+	return null
 
 /datum/item_mount/robot_provisioning
 	var/datum/robot_provisioning/provisioning

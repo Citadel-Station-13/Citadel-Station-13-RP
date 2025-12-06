@@ -25,6 +25,16 @@
 			stack_trace("attempted usage of slot id in abstract insertion converted successfully")
 	. = FALSE
 	switch(slot)
+		if(/datum/inventory_slot/abstract/inactive_robot_module_storage)
+			if(inventory.robot_module_is_registered(I))
+				if(I.inv_slot_or_index == /datum/inventory_slot/abstract/inactive_robot_module_storage::id)
+					return TRUE
+				I.forceMove(src)
+				inventory.on_item_entered(I, resolve_inventory_slot(/datum/inventory_slot/abstract/inactive_robot_module_storage))
+				I.equipped(src, /datum/inventory_slot/abstract/inactive_robot_module_storage::id, flags)
+				return TRUE
+			else
+				return FALSE
 		if(/datum/inventory_slot/abstract/hand/left)
 			return put_in_left_hand(I, flags)
 		if(/datum/inventory_slot/abstract/hand/right)

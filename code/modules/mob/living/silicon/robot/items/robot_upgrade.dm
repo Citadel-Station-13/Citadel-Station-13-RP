@@ -66,7 +66,7 @@
 	// obliterate existing if there
 	QDEL_NULL(provisioning)
 	// make new one
-	var/datum/robot_provisioning/creating = new
+	var/datum/robot_provisioning/robot_upgrade/creating = new(src)
 	. = creating
 	var/list/items = create_mounted_items()
 	for(var/obj/item/item as anything in items)
@@ -180,3 +180,19 @@
 	else if(istype(upgrade_actions, /datum/action))
 		var/datum/action/action = upgrade_actions
 		action.revoke(target.actions_innate)
+
+//* Provisioning *//
+
+/datum/robot_provisioning/robot_upgrade
+	var/obj/item/robot_upgrade/owner
+
+/datum/robot_provisioning/robot_upgrade/New(obj/item/robot_upgrade/upgrade)
+	owner = upgrade
+	..()
+
+/datum/robot_provisioning/robot_upgrade/Destroy()
+	owner = null
+	return ..()
+
+/datum/robot_provisioning/robot_upgrade/get_detached_storage_location()
+	return owner

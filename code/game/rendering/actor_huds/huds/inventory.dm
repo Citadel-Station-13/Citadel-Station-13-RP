@@ -37,7 +37,6 @@
 
 	/// render held items in row mode; no left/right semantics.
 	/// * will use 'hand' instead of 'hand-(left|right)'
-	#warn impl
 	var/tmp/inv_held_items_row_mode
 	/// suppress swap / equip buttons for hands
 	var/tmp/inv_held_items_suppress_buttons
@@ -298,7 +297,7 @@
 /datum/actor_hud/inventory/proc/screen_loc_for_robot_drawer(number_of_hands)
 	// Always aligned to right side of hands.
 	var/col = ceil(number_of_hands / 2) + 1
-	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+[row]:5"
+	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+1:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_slot_drawer()
 	return "LEFT:6,BOTTOM:5"
