@@ -34,6 +34,16 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 		/datum/prototype/robot_iconset/baseline_droid/standard,
 	)
 
+//!                     ~~~~~ "Holy crap, why is standard so OP" ~~~~~                   !//
+//! It isn't. The rest of the modules are shit.                                          !//
+//! I don't know why SS13 standardized to "mob that has scrubbing and trash bag only"    !//
+//! but we don't do that here. Infact, I'd buff standard more, but I'm out of            !//
+//! interesting items to give them because every coder here's busy coding guns.          !//
+//!                                                                                      !//
+//! We should move to modular cyborgs ASAP, but until we do, the name of the game        !//
+//! is going to be making them not miserable to play.                                    !//
+//! If you're stuck listening to other players' orders, might as well have some fun.     !//
+
 /datum/prototype/robot_module/nanotrasen/multirole/provision_resource_store(datum/robot_resource_store/store)
 	..()
 	store.provisioned_material_store[/datum/prototype/material/steel::id] = new /datum/robot_resource/provisioned/preset/material/steel{

@@ -21,10 +21,8 @@
 	/// * set to typepath; resolved on init.
 	var/datum/prototype/robot_chassis
 
-	//* donator *//
-
-	/// restrict to ckeys in list
-	var/list/donator_only
+	/// Lock to ckeys, if set
+	var/list/ckey_lock
 
 /datum/robot_frame/New()
 	// todo: DB pull if needed

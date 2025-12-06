@@ -3,17 +3,29 @@
 
 /datum/tgui_actor_modal/robot_module_picker
 
-/datum/tgui_actor_modal/robot_module_picker/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_actor_modal/robot_module_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
-
-
-/datum/tgui_actor_modal/robot_module_picker/ui_data(mob/user, datum/tgui/ui)
-	. = ..()
-
+	if(.)
+		return
+	switch(action)
+		if("pick")
+			var/module_id = params["moduleId"]
+			var/frame_ref = params["frameRef"]
+			if(!istext(frame_ref) || !length(frame_ref))
+				return TRUE
+			var/datum/prototype/robot_module/resolved_module = RSrobot_modules.fetch_local_or_throw(module_id)
+			if(!resolved_module)
+				return TRUE
+			var/datum/robot_frame/resolved_frame = locate(frame_ref) in resolved_module.frames
+			if(!resolved_frame)
+				return TRUE
+			// check ckey lock
+			if(resolved_frame.ckey_lock && !(actor.initiator.ckey in resolved_frame.ckey_lock))
+				return TRUE
+			#warn pick
 
 /datum/tgui_actor_modal/robot_module_picker/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
-
 	var/list/datum/prototype/robot_module/pickable_modules = assemble_modules(user)
 	var/list/serialized_modules = list()
 	.["modules"] = serialized_modules
@@ -25,7 +37,14 @@
 		)
 		var/list/datum/robot_frame/possible_frames = pickable_modules[possible_module]
 		for(var/datum/robot_frame/possible_frame as anything in possible_frames)
-			serialized_frames[++serialized_frames.len] = list()
+			// ckey enforcement should probably be elsewhere but idgaf lol
+			if(possible_frame.ckey_lock && !(user?.ckey in possible_frame.ckey_lock))
+				continue
+			serialized_frames[++serialized_frames.len] = list(
+				"ref" = ref(possible_frame),
+				"name" = possible_frame.name,
+				"iconRef" = "TEST",
+			)
 			#warn impl
 		serialized_modules[++serialized_modules.len] = serialized_module
 
@@ -56,4 +75,5 @@
 			continue
 		if(!length(module.selection_groups_any & our_selection_groups))
 			continue
+		// frame ckey enforcement is in ui static data.
 		.[module] = module.frames
