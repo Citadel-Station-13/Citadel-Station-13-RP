@@ -257,37 +257,23 @@
 			return FALSE
 	return 0
 
-/obj/vehicle/sealed/mecha/Bump(var/atom/obstacle)
-//	src.inertia_dir = null
-	if(istype(obstacle, /mob))//First we check if it is a mob. Mechs mostly shouln't go through them, even while phasing.
-		var/mob/M = obstacle
-		M.Move(get_step(obstacle,src.dir))
-	else if(istype(obstacle, /obj))//Then we check for regular obstacles.
-		var/obj/O = obstacle
-		if(phasing && get_charge()>=phasing_energy_drain)//Phazon check. This could use an improvement elsewhere.
-			spawn()
-				if(can_phase)
+/obj/vehicle/sealed/mecha/Bump(atom/obstacle)
+	// TODO: refactor phasing.
+	if(phasing && (estimate_cell_power_remaining() >= phasing_energy_drain))
+		var/atom/current = loc
+		var/into_dir = get_dir(current, obstacle)
+		spawn()
+			if(loc == current)
+				if((estimate_cell_power_remaining() >= phasing_energy_drain) && can_phase)
 					can_phase = FALSE
 					flick("[initial_icon]-phase", src)
-					forceMove(get_step(src,src.dir))
+					forceMove(into_dir)
 					src.use_power(phasing_energy_drain)
 					sleep(get_step_delay() * 3)
 					can_phase = TRUE
-					occupant_message("Phazed.")
-			. = ..(obstacle)
-			return
-		if(istype(O, /obj/effect/portal))	//derpfix
-			src.anchored = 0				//I have no idea what this really fix.
-			O.Crossed(src)
-			spawn(0)//countering portal teleport spawn(0), hurr
-				src.anchored = 1
-		else if(O.anchored)
-			obstacle.Bumped(src)
-		else
-			step(obstacle,src.dir)
-
-	else//No idea when this triggers, so i won't touch it.
-		. = ..(obstacle)
+					occupant_message("Phased through [obstacle].")
+	else
+		..()
 
 //ATM, the ignore_threshold is literally only used for the pulse rifles beams used mostly by deathsquads.
 // todo: this is uh, not a check, this is a **roll**.
@@ -323,83 +309,11 @@
 
 #warn impl
 /obj/vehicle/sealed/mecha/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/card/robot))
-		var/obj/item/card/robot/RoC = W
-		return attackby(RoC.dummy_card, user)
-
-	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
-		if(add_req_access || maint_access)
-			if(internals_access_allowed(usr))
-				var/obj/item/card/id/id_card
-				if(istype(W, /obj/item/card/id))
-					id_card = W
-				else
-					var/obj/item/pda/pda = W
-					id_card = pda.id
-				output_maintenance_dialog(id_card, user)
-				return
-			else
-				to_chat(user, "<span class='warning'>Invalid ID: Access denied.</span>")
-		else
-			to_chat(user, "<span class='warning'>Maintenance protocols disabled by operator.</span>")
-	else if(istype(W, /obj/item/stack/cable_coil))
-		if(state >= MECHA_CELL_OPEN && hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
-			var/obj/item/stack/cable_coil/CC = W
-			if(CC.use(2))
-				clearInternalDamage(MECHA_INT_SHORT_CIRCUIT)
-				to_chat(user, "You replace the fused wires.")
-			else
-				to_chat(user, "There's not enough wire to finish the task.")
-		return
-	else if(W.is_screwdriver())
-		if(hasInternalDamage(MECHA_INT_TEMP_CONTROL))
-			clearInternalDamage(MECHA_INT_TEMP_CONTROL)
-			to_chat(user, "You repair the damaged temperature controller.")
-		else if(state==MECHA_CELL_OPEN && src.cell)
-			src.cell.forceMove(src.loc)
-			src.cell = null
-			state = MECHA_CELL_OUT
-			to_chat(user, "You unscrew and pry out the powercell.")
-		else if(state==MECHA_CELL_OUT && src.cell)
-			state=MECHA_CELL_OPEN
-			to_chat(user, "You screw the cell in place")
-		return
-	else if(istype(W, /obj/item/weldingtool) && user.a_intent != INTENT_HARM)
-		var/obj/item/weldingtool/WT = W
-		if (WT.remove_fuel(0,user))
-			if (hasInternalDamage(MECHA_INT_TANK_BREACH))
-				clearInternalDamage(MECHA_INT_TANK_BREACH)
-				to_chat(user, "<span class='notice'>You repair the damaged gas tank.</span>")
-		else
-			return
-		if(src.integrity<initial(src.integrity))
-			to_chat(user, "<span class='notice'>You repair some damage to [src.name].</span>")
-			src.integrity += min(10, initial(src.integrity)-src.integrity)
-			update_damage_alerts()
-		else
-			to_chat(user, "The [src.name] is at full integrity")
-		return
-	else if(istype(W, /obj/item/vehicle_tracking_beacon))
+	if(istype(W, /obj/item/vehicle_tracking_beacon))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		user.visible_message("[user] attaches [W] to [src].", "You attach [W] to [src]")
 		return
-	else if(istype(W,/obj/item/stack/nanopaste))
-		if(state >= MECHA_PANEL_LOOSE)
-			var/obj/item/stack/nanopaste/NP = W
-			for(var/slot in internal_components)
-				var/obj/item/vehicle_component/C = internal_components[slot]
-				if(C)
-					if(C.integrity < C.integrity_max)
-						while(C.integrity < C.integrity_max && NP && do_after(user, 1 SECOND, src))
-							if(NP.use(1))
-								C.adjust_integrity_mecha(10)
-
-						to_chat(user, "<span class='notice'>You repair damage to \the [C].</span>")
-			return
-		else
-			to_chat(user, "<span class='notice'>You can't reach \the [src]'s internal components.</span>")
-			return
 	else
 		return ..()
 

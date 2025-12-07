@@ -10,3 +10,5 @@
 #define VEHICLE_CONTROL_USE_HUDS (1<<1)
 /// exit the vehicle freely
 #define VEHICLE_CONTROL_EXIT (1<<2)
+/// controls vehicle modules
+#define VEHICLE_CONTROL_MODULES (1<<3)

@@ -99,9 +99,9 @@
 		return
 	vehicle_move(direction)
 
-/obj/vehicle/Bump(atom/movable/M)
+/obj/vehicle/Bump(atom/movable/obstacle)
 	. = ..()
 	if(emulate_door_bumps)
-		if(istype(M, /obj/machinery/door))
+		if(istype(obstacle, /obj/machinery/door))
 			for(var/m in occupants)
-				M.Bumped(m)
+				obstacle.Bumped(m)

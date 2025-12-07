@@ -28,6 +28,11 @@
 		if("ejectPilot")
 		if("removeCell")
 		if("insertCell")
+		if("fixShortCircuitFault")
+		if("fixTankBreachFault")
+		if("fixActuatorCalibrationFault")
+		if("fixCabinBreachFault")
+		if("fixTemperatureControllerFault")
 
 /datum/vehicle_maint_controller/mecha/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()

@@ -35,7 +35,7 @@
  * causes:
  * * the main air tank to lose air to surroundings
  * fixed by:
- * * automatic
+ * * maint panel
  */
 /datum/mecha_fault/tank_breach
 	name = "tank breach"
@@ -70,7 +70,7 @@
  * * stumbling around in movement on bipedal mechs
  * * (unimplemented) angular dispersion, inaccuracy, and more on module aiming
  * fixed by:
- * * automatic
+ * * automatic, and maint panel
  */
 /datum/mecha_fault/calibration_lost
 	name = "calibration lost"
@@ -83,7 +83,7 @@
  * causes:
  * * the cabin to mix with outside air
  * fixed by:
- * * automatic
+ * * damage being repaired
  */
 /datum/mecha_fault/cabin_breach
 	name = "cabin breach"
@@ -97,11 +97,25 @@
  * * dynamic swings in temperature
  * * disables temperature regulation
  * fixed by:
- * * automatic
+ * * automatic, and maint panel
  */
 /datum/mecha_fault/temperature_control
 	name = "thermal controller instability"
 	desc = "The exosuit's thermal controller is malfunctioning."
 
 /datum/mecha_fault/temperature_control/on_tick(obj/vehicle/sealed/mecha/mech, stacks)
+	. = ..()
+
+/**
+ * causes:
+ * * higher power draws
+ * * very slow cell discharge
+ * fixed by:
+ * * maint panel
+ */
+/datum/mecha_fault/short_circuit
+	name = "short circuit"
+	desc = "The exosuit's internal wiring has fused together."
+
+/datum/mecha_fault/short_circuit/on_tick(obj/vehicle/sealed/mecha/mech, stacks)
 	. = ..()

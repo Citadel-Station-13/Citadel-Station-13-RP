@@ -14,7 +14,8 @@
 #warn can we emit a message on full block?
 
 /obj/vehicle/sealed/mecha/combat
-	force = 30
+	melee_standard_force = 30
+
 	var/melee_cooldown = 10
 	var/melee_can_hit = 1
 	internal_damage_threshold = 50

@@ -280,7 +280,7 @@
 /obj/item/vehicle_module/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 
-#warn impl; repairs? emp?
+#warn impl; repairs? emp? a bit of nanopaste repair as a treat?
 
 //* UI *//
 

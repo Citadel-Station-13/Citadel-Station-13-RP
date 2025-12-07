@@ -486,18 +486,14 @@
 /atom/movable/Uncrossed(atom/movable/AM)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSSED, AM)
 
-/atom/movable/Bump(atom/A)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
-
-	. = ..()
-
+/atom/movable/Bump(atom/obstacle)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, obstacle)
 	if(throwing)
-		throwing.bump_into(A)
-		if(QDELETED(src) || QDELETED(A))
+		throwing.bump_into(obstacle)
+		if(QDELETED(src) || QDELETED(obstacle))
 			return TRUE
-
-	A.last_bumped = world.time
-	A.Bumped(src)
+	obstacle.last_bumped = world.time
+	obstacle.Bumped(src)
 
 /**
   * forceMove but it brings along pulling/buckled stuff

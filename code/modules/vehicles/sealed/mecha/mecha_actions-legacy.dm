@@ -76,7 +76,7 @@
 	if(.)
 		return
 	var/obj/vehicle/sealed/mecha/chassis = target
-	chassis.view_stats()
+	chassis.get_ui_controller()?.ui_interact(actor.performer)
 
 /datum/action/mecha/strafe
 	name = "Toggle Mech Strafing"
@@ -104,6 +104,7 @@
 	button_icon_state = "mech_zoom_[chassis.zoom ? "on" : "off"]"
 	update_buttons()
 
+// TODO: should be a base vehicle driver thing.
 #warn oh my god make this a base fucking vehicle thing and refactor this lol
 /datum/action/mecha/mech_cycle_equip
 	name = "Cycle Equipment"
