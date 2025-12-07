@@ -417,19 +417,6 @@
 		return
 	strafing = !strafing
 	src.occupant_message("Toggled strafing mode [strafing?"on":"off"].")
-	return
-
-/obj/vehicle/sealed/mecha/mob_can_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed)
-	if (src.occupant_legacy)
-		to_chat(actor.initiator, "<span class='danger'>The [src.name] is already occupied!</span>")
-		return FALSE
-	var/passed
-	if(src.operation_allowed(entering))
-		passed = 1
-	if(!passed)
-		to_chat(actor.initiator, "<span class='warning'>Access denied</span>")
-		return FALSE
-	return ..()
 
 /obj/vehicle/sealed/mecha/proc/play_entered_noise(var/mob/who)
 	if(!hasInternalDamage()) //Otherwise it's not nominal!
@@ -449,13 +436,6 @@
 			else//Everyone else gets the normal noise
 				who << sound('sound/mecha/nominal.ogg',volume=50)
 
-/obj/vehicle/sealed/mecha/proc/operation_allowed(mob/living/carbon/human/H)
-	for(var/ID in list(H.get_active_held_item(), H.wear_id, H.belt))
-		if(src.check_access(ID,src.operation_req_access))
-			return 1
-	return 0
-
-
 /obj/vehicle/sealed/mecha/proc/internals_access_allowed(mob/living/carbon/human/H)
 	if(istype(H))
 		for(var/atom/ID in list(H.get_active_held_item(), H.wear_id, H.belt))
@@ -466,26 +446,6 @@
 		if(src.check_access(R.idcard,src.internals_req_access))
 			return 1
 	return 0
-
-/obj/vehicle/sealed/mecha/check_access(obj/item/card/id/I, list/access_list)
-	if(!istype(access_list))
-		return 1
-	if(!access_list.len) //no requirements
-		return 1
-	if(istype(I, /obj/item/pda))
-		var/obj/item/pda/pda = I
-		I = pda.id
-	if(!istype(I) || !I.access) //not ID or no access
-		return 0
-	if(access_list==src.operation_req_access)
-		for(var/req in access_list)
-			if(!(req in I.access)) //doesn't have this access
-				return 0
-	else if(access_list==src.internals_req_access)
-		for(var/req in access_list)
-			if(req in I.access)
-				return 1
-	return 1
 
 #warn nuke this
 /obj/vehicle/sealed/mecha/proc/report_internal_damage()
@@ -582,8 +542,6 @@
 	..()
 	if (href_list["toggle_zoom"])
 		src.zoom()
-	if(href_list["switch_damtype"])
-		src.switch_damtype()
 	if(href_list["phasing"])
 		src.phasing()
 	if(href_list["port_disconnect"])

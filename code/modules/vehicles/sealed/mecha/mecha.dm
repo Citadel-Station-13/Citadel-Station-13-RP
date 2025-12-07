@@ -143,7 +143,6 @@
 	//  TODO: this is super beecause we're moving to 30k base cells for large anyways at some point
 	var/power_cell_type = /obj/item/cell/super
 
-
 /obj/vehicle/sealed/mecha/Initialize()
 	. = ..()
 	create_initial_cell()
@@ -256,3 +255,25 @@
 	// Legacy: Process internal damage
 	legacy_internal_damage_step()
 	//! END
+
+/obj/vehicle/sealed/mecha/mob_can_enter(mob/entering, datum/event_args/actor/actor, silent, suppressed)
+	. = ..()
+	if(!.)
+		return
+	// Yes, you can shove people in the mech now.
+	if(!check_access_for_cockpit(actor?.performer || entering))
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("Access denied."),
+				target = src,
+			)
+		return FALSE
+	return TRUE
+
+//* Access *//
+
+/obj/vehicle/sealed/mecha/proc/check_access_for_maint(mob/user)
+	#warn impl
+
+/obj/vehicle/sealed/mecha/proc/check_access_for_cockpit(mob/user)
+	return check_access_for_maint(user)

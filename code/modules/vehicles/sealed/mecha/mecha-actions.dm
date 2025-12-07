@@ -20,3 +20,5 @@
 	if(.)
 		return
 	target.mob_try_exit(actor.performer, actor)
+
+#warn probably a warning would be nice

@@ -31,7 +31,7 @@
 	make_shield_comp_recharge_delay = 7 SECONDS
 	make_shield_comp_recharge_rate = 30
 	make_shield_comp_recharge_rebuild_rate = 30
-	make_shield_comp_recharge_rebuild_ratio = 0
+	make_shield_comp_recharge_rebuild_restore_ratio = 0
 	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
 	make_shield_comp_color_full = "#808080"
 	make_shield_comp_color_depleted = "#202020"
