@@ -4461,6 +4461,7 @@
 #include "code\modules\multiz\atom-z_move.dm"
 #include "code\modules\multiz\basic_legacy.dm"
 #include "code\modules\multiz\core.dm"
+#include "code\modules\multiz\movable-z_move.dm"
 #include "code\modules\multiz\movement.dm"
 #include "code\modules\multiz\turf-multiz_misc.dm"
 #include "code\modules\multiz\turf-z_fall.dm"
