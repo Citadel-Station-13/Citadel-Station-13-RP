@@ -1,6 +1,6 @@
 /obj/item/vehicle_module/lazy/legacy
 	name = "mecha equipment"
-	icon = 'icons/mecha/mecha_equipment.dmi'
+	icon = 'icons/modules/vehicles/equipment.dmi'
 	icon_state = "mecha_equip"
 	damage_force = 5
 	origin_tech = list(TECH_MATERIAL = 2)

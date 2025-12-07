@@ -127,8 +127,7 @@
 	ME.attach(src)
 
 /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/banana_mortar
-	name = "Banana Mortar"
-	icon = 'icons/mecha/mecha_equipment_vr.dmi'
+	name = "Banana Mortar"'
 	icon_state = "mecha_bananamrtr"
 	projectile = /obj/item/bananapeel
 	fire_sound = 'sound/items/bikehorn.ogg'
@@ -143,8 +142,7 @@
 		return ..()
 
 /obj/item/vehicle_module/lazy/legacy/weapon/honker
-	name = "\improper HoNkER BlAsT 5000"
-	icon = 'icons/mecha/mecha_equipment_vr.dmi'
+	name = "\improper HoNkER BlAsT 5000"'
 	icon_state = "mecha_honker"
 	energy_drain = 200
 	equip_cooldown = 150

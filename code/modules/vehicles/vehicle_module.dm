@@ -7,7 +7,8 @@
 /obj/item/vehicle_module
 	name = "vehicle module"
 	desc = "Presumably something you attach to a vehicle. What is this?"
-	#warn sprite
+	icon = 'icons/modules/vehicles/vehicle_module.dmi'
+	icon_state = "tesla"
 
 	integrity = 200
 	integrity_max = 200
@@ -61,6 +62,13 @@
 	var/sound_do_after_default
 	var/sound_do_after_default_volume = 75
 	var/sound_do_after_default_vary = TRUE
+
+	//* Sprite *//
+	#warn impl/hook for repair droid!!
+	/// Contains on-vehicle state.
+	var/has_vehicle_overlay = FALSE
+	/// State append for vehicle overlay
+	var/use_vehicle_overlay_append
 
 	//* UI *//
 	/// UI component key when being rendered

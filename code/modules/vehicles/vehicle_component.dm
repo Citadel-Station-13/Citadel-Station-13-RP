@@ -7,9 +7,8 @@
 /obj/item/vehicle_component
 	name = "vehicle component"
 	desc = "Some kind of component that presumably goes on some kind of vehicle."
-	icon = 'icons/mecha/mech_component.dmi'
+	icon = 'icons/modules/vehicles/vehicle_component.dmi'
 	icon_state = "component"
-	#warn reorg sprites!
 
 	w_class = WEIGHT_CLASS_BULKY
 

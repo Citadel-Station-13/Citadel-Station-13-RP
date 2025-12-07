@@ -4,7 +4,7 @@
 /obj/item/vehicle_module/toggled/energy_relay
 	name = "energy relay"
 	desc = "A wireless energy tap that siphons power from the nearest APC. The efficiency is quite low."
-	#warn sprite; "tesla"?
+	icon_state = "tesla"
 
 	vehicle_encumbrance = 2.5
 	module_slot = VEHICLE_MODULE_SLOT_UTILITY

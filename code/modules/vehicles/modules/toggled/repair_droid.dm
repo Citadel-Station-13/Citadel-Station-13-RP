@@ -4,7 +4,9 @@
 /obj/item/vehicle_module/toggled/repair_droid
 	name = "repair droid"
 	desc = "A repair-drone deployer that can fix some limited amount of damage to the vehicle's components and modules."
-	#warn sprite
+	icon = 'icons/modules/vehicles/vehicle_module/droids.dmi'
+	icon_state = "repair_droid"
+	base_icon_state = "repair_droid"
 
 	vehicle_encumbrance = 2.5
 
@@ -66,6 +68,7 @@
 		var/list/obj/item/vehicle_module/modules_needing_repair = list()
 		for(var/obj/item/vehicle_module/module in modules_to_repair)
 			if(module.integrity < module.integrity_max * module.repair_droid_max_ratio)
+#warn impl
 
 /obj/item/vehicle_module/toggled/repair_droid/proc/update_vehicle_overlay()
 	if(!vehicle)
@@ -75,5 +78,3 @@
 		vehicle.cut_overlay(overlay_applied, TRUE)
 	overlay_applied = building
 	vehicle.add_overlay(overlay_applied, TRUE)
-
-#warn impl

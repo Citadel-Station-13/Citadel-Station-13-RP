@@ -1199,7 +1199,7 @@
 
 /obj/random/multiple/mechtool
 	name = "random mech equipment"
-	icon = 'icons/mecha/mecha_equipment.dmi'
+	icon = 'icons/modules/vehicles/equipment.dmi'
 	icon_state = "mecha_clamp"
 
 /obj/random/multiple/mechtool/item_to_spawn()

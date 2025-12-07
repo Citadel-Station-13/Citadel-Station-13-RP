@@ -2,8 +2,7 @@
 /obj/item/vehicle_module/lazy/legacy/tool/orescoop
 	w_class = WEIGHT_CLASS_BULKY
 	name = "Mounted ore box"
-	desc = "A mounted ore scoop and hopper, for gathering ores."
-	icon = 'icons/mecha/mecha_equipment_vr.dmi'
+	desc = "A mounted ore scoop and hopper, for gathering ores."'
 	icon_state = "microscoop"
 	equip_cooldown = 5
 	energy_drain = 0
