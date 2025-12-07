@@ -84,7 +84,7 @@
 
 	wreckage = /obj/effect/decal/mecha_wreckage/seraph
 	internal_damage_threshold = 20
-	force = 55
+	melee_standard_force = 50
 
 /obj/vehicle/sealed/mecha/combat/marauder/seraph/equipped
 	modules = list(

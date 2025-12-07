@@ -37,7 +37,6 @@
 	)
 
 	cargo_capacity = 1
-	encumbrance_gap = 1.5
 
 /obj/vehicle/sealed/mecha/combat/melee_action(atom/T)
 	if(internal_damage&MECHA_INT_CONTROL_LOST)

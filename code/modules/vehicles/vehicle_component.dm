@@ -129,7 +129,7 @@
 /**
  * `vehicle_do_after` and play a sound on success
  */
-/obj/item/vehicle_module/proc/vehicle_do_after_and_sound(
+/obj/item/vehicle_component/proc/vehicle_do_after_and_sound(
 	datum/event_args/actor/actor,
 	delay,
 	atom/target,

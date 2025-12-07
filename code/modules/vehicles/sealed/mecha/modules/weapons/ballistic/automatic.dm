@@ -44,7 +44,7 @@
 	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
 	projectiles = 1
 	projectile_energy_cost = 2000
-	module_class = VEHICLE_MODULE_CLASS_MACRO
+	module_class = VEHICLE_MODULE_CLASS_REQUIRE_MACRO
 
 /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg/rigged
 	name = "jury-rigged machinegun"
