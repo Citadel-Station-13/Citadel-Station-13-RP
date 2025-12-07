@@ -80,7 +80,7 @@
 	projectiletype = /obj/projectile/beam/gravity_sphere/sentinel
 
 /mob/living/simple_mob/mechanical/sentinel/proc/flame(atom/target)
-	projectiletype = /obj/projectile/potent_fire/sentinel
+	projectiletype = /obj/projectile/potent_fire/sentinel/scatter
 
 
 /obj/item/gravity_sphere/sentinel
@@ -186,6 +186,8 @@
 	modifier_duration = 8 SECONDS
 	damage_force = 0
 	nodamage = TRUE
+
+/obj/projectile/potent_fire/sentinel/scatter
 	submunitions = 3
-	submunition_dispersion = 30
+	submunition_dispersion = 50
 	submunition_type = /obj/projectile/potent_fire/sentinel
