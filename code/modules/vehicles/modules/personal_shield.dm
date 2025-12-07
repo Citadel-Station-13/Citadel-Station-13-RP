@@ -13,7 +13,7 @@
  * * DO NOT USE RAW TYPE NAKED; A VISUAL MUST BE PROVIDED
  */
 /obj/item/vehicle_module/personal_shield
-	name = "personal shield module"
+	name = "vehicle shield module"
 	desc = "Some kind of shielding module."
 
 	#warn equip slot to hull
@@ -28,8 +28,6 @@
 
 	/// charge
 	/// * default scaling is 1 point of damage for 1 charge
-	/// * by default, damage is linear; this actually makes the shield more powerful
-	///   against high AP low damage things than the other way around!
 	var/charge = 0
 	/// max charge
 	var/charge_max = 150
@@ -47,7 +45,10 @@
 	/// shielding arc degrees CW of **FRONT**
 	var/shielded_arc_center_cw_of_front = 0
 	/// shielding arc degrees left/right of center
+	/// * This rounds down for melee.
 	var/shielded_arc_degrees_from_center = 180
+
+	var/works_on_melee = TRUE
 
 #warn impl
 
@@ -66,9 +67,15 @@
  * replaces rw/ccw armor boosters
  */
 /obj/item/vehicle_module/personal_shield/structural_field
+	name = /obj/item/vehicle_module/personal_shield::name + " (structural field)"
 	name = "structural field projector"
 	desc = "Projects a field that dampens incoming attacks, albeit imperfectly."
 	#warn set routing armor
+
+	disallow_duplicates = TRUE
+	disallow_duplicates_match_type = /obj/item/vehicle_module/personal_shield/structural_field
+
+	works_on_melee = TRUE
 
 /obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
 	name = "exterior damping field (ranged)"
@@ -91,7 +98,7 @@
  * * technically this type's function is to just flick a graphic on hit
  */
 /obj/item/vehicle_module/personal_shield/deflector
-	name = "deflector network"
+	name = /obj/item/vehicle_module/personal_shield::name + " (deflector network)"
 	desc = "A set of specialized shield projectors that can entirely soak an incoming attack."
 	routing_armor_type = /datum/armor/vehicle_module/personal_shield_routing/deflector
 	charge_max = 200
@@ -100,17 +107,14 @@
 	charge_regen_rate = 20 //! can absorb a laser hit every 2 seconds
 	charge_regen_rate_free_deactivated = 5
 	charge_held_while_deactivated = TRUE
+	works_on_melee = FALSE
 
-	/// last flick
-	var/vfx_last = 0
-	/// max average flick rate
-	/// * DO NOT SET THIS TO 0 UNDER ANY CIRCUMSTANCES IF YOU DO I WILL TURN YOU INTO PASTE AND NOT IN A FUN WAY
-	var/vfx_avg_flick_limit = 0.15
-	/// stacks of vfx on us
-	var/vfx_stacks = 0
-	/// max vfx stacks
-	/// * DO NOT SET THIS TO A HIGH VALUE
-	var/vfx_stack_limit = 7
+	/// last vfx check
+	var/vfx_last_check
+	/// running vfx average
+	var/vfx_avg_rate = 0
+	/// max average flick rate per second
+	var/vfx_avg_flick_limit = 6.5
 
 /obj/item/vehicle_module/personal_shield/deflector/proc/on_take_routed_damage(amount)
 	. = ..()
@@ -120,7 +124,17 @@
 
 /obj/item/vehicle_module/personal_shield/deflector/proc/flick_vfx_if_possible()
 	if(!vehicle)
-		return
+		return FALSE
+	var/elapsed_since_last = world.time - vfx_last_check
+	vfx_last_check = world.time
+	// this isn't a real average but i don't care lol
+	vfx_avg_rate /= (10 + elapsed_since_last) * 0.1
+	if(vfx_avg_rate > vfx_avg_flick_limit)
+		return FALSE
+	vfx_avg_rate++
+	flick_vfx()
+
+/obj/item/vehicle_module/personal_shield/deflector/proc/flick_vfx()
 	#warn impl
 
 /obj/item/vehicle_module/personal_shield/deflector/durand

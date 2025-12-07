@@ -25,7 +25,7 @@
 	var/make_shield_comp_recharge_delay = 7 SECONDS
 	var/make_shield_comp_recharge_rate = 10
 	var/make_shield_comp_recharge_rebuild_rate = 10
-	var/make_shield_comp_recharge_rebuild_ratio = 1
+	var/make_shield_comp_recharge_rebuild_restore_ratio = 1
 	var/make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
 	var/make_shield_comp_color_full = /datum/directional_shield_config::color_full
 	var/make_shield_comp_color_depleted = /datum/directional_shield_config::color_depleted
@@ -38,13 +38,13 @@
 		if(make_shield_comp_health != shield_comp.health)
 			shield_comp.health = health
 		if(make_shield_comp_recharge_delay != shield_comp.recharge_delay)
-			shield_comp.recharge_delay = recharge_delay
+			shield_comp.recharge_delay = make_shield_comp_recharge_delay
 		if(make_shield_comp_recharge_rate != shield_comp.recharge_rate)
-			shield_comp.recharge_rate = recharge_rate
+			shield_comp.recharge_rate = make_shield_comp_recharge_rate
 		if(make_shield_comp_recharge_rebuild_rate != shield_comp.recharge_rebuild_rate)
-			shield_comp.recharge_rebuild_rate = recharge_rebuild_rate
-		if(make_shield_comp_recharge_rebuild_ratio != shield_comp.recharge_rebuild_ratio)
-			shield_comp.recharge_rebuild_ratio = recharge_rebuild_ratio
+			shield_comp.recharge_rebuild_rate = make_shield_comp_recharge_rebuild_rate
+		if(make_shield_comp_recharge_rebuild_restore_ratio != shield_comp.recharge_rebuild_restore_ratio)
+			shield_comp.recharge_rebuild_restore_ratio = make_shield_comp_recharge_rebuild_restore_ratio
 		if(make_shield_comp_color_full != shield_comp.color_full)
 			shield_comp.color_full = make_shield_comp_color_full
 		if(make_shield_comp_color_depleted != shield_comp.color_depleted)

@@ -11,6 +11,16 @@
 	QDEL_LAZYLIST(modules)
 
 /obj/vehicle/proc/can_install_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent, force)
+	if(v_module.disallow_duplicates)
+		var/dupe_type = v_module.disallow_duplicates_match_type || type
+		for(var/obj/item/vehicle_module/other as anything in modules)
+			if(istype(other, dupe_type))
+				if(!silent)
+					actor?.chat_feedback(
+						SPAN_WARNING("There's already a module similar to [v_module] on [src]."),
+						target = src,
+					)
+				return FALSE
 	var/is_full
 	#warn is_full
 	. = can_fit_module(v_module, actor, silent)

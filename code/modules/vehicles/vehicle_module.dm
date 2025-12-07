@@ -28,10 +28,11 @@
 	/// Classes
 	var/module_class = NONE
 	/// dedupe?
+	/// * bypasses [force]
 	var/disallow_duplicates = FALSE
 	/// dedupe type? if set, use that type and subtypes; otherwise uses exact path
+	/// * bypasses [force]
 	/// * generally needs to be set if [disallow_duplicates] is
-	#warn check this in vehicle
 	var/disallow_duplicates_match_type
 	/// vehicle encumbrance
 	var/vehicle_encumbrance = 0
