@@ -33,7 +33,7 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 6,
 	)
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/lazy/legacy/cloak,
+		/obj/item/vehicle_module/toggled/cloak,
 	)
 
 	phasing_possible = TRUE

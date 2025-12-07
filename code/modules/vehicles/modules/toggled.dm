@@ -44,8 +44,10 @@
 			if(desired == active)
 				vehicle_ui_module_push(data = list("active" = active))
 				return TRUE
-			active = desired
-			#warn LOG THIS
+			if(desired)
+				activate(actor)
+			else
+				deactivate(actor)
 			vehicle_ui_module_push(data = list("active" = active))
 			return TRUE
 
@@ -58,14 +60,13 @@
 	.["toggleDelay"] = toggle_delay
 
 /obj/item/vehicle_module/toggled/proc/activate(datum/event_args/actor/actor, silent)
-	#warn log
+	#warn log + message
 
 /obj/item/vehicle_module/toggled/proc/deactivate(datum/event_args/actor/actor, silent)
-	#warn log
+	#warn log + message
 
 /obj/item/vehicle_module/toggled/proc/on_activate(datum/event_args/actor/actor, silent)
+	return
 
 /obj/item/vehicle_module/toggled/proc/on_deactivate(datum/event_args/actor/actor, silent)
-
-
-#warn impl
+	return
