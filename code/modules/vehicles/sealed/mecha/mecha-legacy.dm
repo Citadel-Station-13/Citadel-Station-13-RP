@@ -870,60 +870,24 @@
 			src.occupant_message("<font color='blue'>Recalibration successful.</font>")
 		else
 			src.occupant_message("<font color='red'>Recalibration failed.</font>")
-	if(href_list["drop_from_cargo"])
-		var/obj/O = locate(href_list["drop_from_cargo"])
-		if(O && (O in src.cargo))
-			src.occupant_message("<span class='notice'>You unload [O].</span>")
-			O.forceMove(get_turf(src))
-			src.cargo -= O
-			var/turf/T = get_turf(O)
-			if(T)
-				T.Entered(O)
 
-///////////////////////
-///// Power stuff /////
-///////////////////////
-
+//* STOP USING THIS. *//
 /obj/vehicle/sealed/mecha/proc/has_charge(amount)
-	return (get_charge()>=amount)
+	return estimate_cell_power_remaining() >= amount
 
+//* STOP USING THIS. *//
 /obj/vehicle/sealed/mecha/proc/get_charge()
-	return call((proc_res["dyngetcharge"]||src), "dyngetcharge")()
+	return estimate_cell_power_remaining()
 
-/obj/vehicle/sealed/mecha/proc/dyngetcharge()//returns null if no powercell, else returns cell.charge
-	if(!src.cell) return
-	return max(0, src.cell.charge)
-
+//* STOP USING THIS. *//
 /obj/vehicle/sealed/mecha/proc/use_power(amount)
-	return call((proc_res["dynusepower"]||src), "dynusepower")(amount)
-
-/obj/vehicle/sealed/mecha/proc/dynusepower(amount)
 	update_cell_alerts()
-	var/obj/item/vehicle_component/mecha_electrical/EC = internal_components[MECH_ELECTRIC]
+	return draw_sourced_power_oneoff("misc", "misc", DYNAMIC_CELL_UNITS_TO_J(amount))
 
-	if(EC)
-		amount = amount * (2 - EC.get_efficiency()) * EC.charge_cost_mod
-	else
-		amount *= 5
-
-	if(get_charge())
-		cell.use(amount)
-		return 1
-	return 0
-
+//* STOP USING THIS. *//
 /obj/vehicle/sealed/mecha/proc/give_power(amount)
 	update_cell_alerts()
-	var/obj/item/vehicle_component/mecha_electrical/EC = internal_components[MECH_ELECTRIC]
-
-	if(!EC)
-		amount /= 4
-	else
-		amount *= EC.get_efficiency()
-
-	if(!isnull(get_charge()))
-		cell.give(amount)
-		return 1
-	return 0
+	return power_cell?.give(amount)
 
 /obj/vehicle/sealed/mecha/proc/legacy_air_flow_step()
 	var/obj/vehicle/sealed/mecha/mecha = src
@@ -1018,10 +982,6 @@
 				occupant_legacy.throw_alert("mech damage", /atom/movable/screen/alert/low_mech_integrity, 3)
 			else
 				occupant_legacy.clear_alert("mech damage")
-
-// Various sideways-defined get_cells
-/obj/vehicle/sealed/mecha/get_cell(inducer)
-	return cell
 
 /obj/vehicle/sealed/mecha/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()

@@ -51,23 +51,36 @@
 	projectile_energy_cost = 100
 	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
-/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun/Topic(href,href_list)
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun/render_ui()
 	..()
-	if(href_list["mode"])
-		mode = text2num(href_list["mode"])
-		switch(mode)
-			if(0)
-				occupant_message("Now firing buckshot.")
-				projectile = /obj/projectile/bullet/pellet/shotgun
-			if(1)
-				occupant_message("Now firing beanbags.")
-				projectile = /obj/projectile/bullet/shotgun/beanbag
-			if(2)
-				occupant_message("Now firing slugs.")
-				projectile = /obj/projectile/bullet/shotgun
+	var/selected
+	switch(mode)
+		if(0)
+			selected = "Buckshot"
+		if(1)
+			selected = "Beanbag"
+		if(2)
+			selected = "Slug"
+	l_ui_select("mode", "Select Mode", list("Buckshot", "Beanbag", "Slug"), selected)
 
-/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun/get_equip_info()
-	return "[..()] \[<a href='?src=\ref[src];mode=0'>BS</a>|<a href='?src=\ref[src];mode=1'>BB</a>|<a href='?src=\ref[src];mode=2'>S</a>\]"
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/microshotgun/on_l_ui_select(datum/event_args/actor/actor, key, name)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("mode")
+			switch(name)
+				if("Buckshot")
+					mode = 0
+					projectile = /obj/projectile/bullet/pellet/shotgun
+				if("Beanbag")
+					mode = 1
+					projectile = /obj/projectile/bullet/shotgun/beanbag
+				if("Slug")
+					mode = 2
+					projectile = /obj/projectile/bullet/shotgun
+			vehicle_log_for_admins(actor, "switch-projectile-mode", list("mode" = name))
+			vehicle_occupant_send_default_chat("Now firing [lowertext(name)].")
 
 /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/microflashbang
 	w_class = WEIGHT_CLASS_BULKY

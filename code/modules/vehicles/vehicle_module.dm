@@ -96,12 +96,11 @@
  */
 /obj/item/vehicle_module/proc/is_potential_active_click_module()
 	return FALSE
-	#warn hook
 
 /obj/item/vehicle_module/proc/is_active_click_module()
 	if(!vehicle)
 		return FALSE
-	#warn impl
+	return vehicle.module_active_click == src
 
 /obj/item/vehicle_module/proc/set_vehicle_encumbrance(new_value)
 	. = vehicle_encumbrance

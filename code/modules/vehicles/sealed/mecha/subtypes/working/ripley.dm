@@ -63,11 +63,6 @@
 	. = ..()
 	integrity = 25
 	integrity_max = 190	//Just slightly worse.
-	cell.charge = rand(0, cell.charge)
+	power_cell.charge = rand(0, power_cell.charge)
 
-/// Moved here from underdark_things.dm (cleaning up files)
-//Mechbay
-/obj/vehicle/sealed/mecha/working/ripley/abandoned/Initialize(mapload)
-	. = ..()
-	for(var/obj/item/vehicle_tracking_beacon/B in src.contents)	//Deletes the beacon so it can't be found easily
-		qdel(B)
+/obj/vehicle/sealed/mecha/working/ripley/abandoned

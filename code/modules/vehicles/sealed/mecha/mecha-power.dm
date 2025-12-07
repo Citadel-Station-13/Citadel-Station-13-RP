@@ -24,3 +24,9 @@
 	else
 		penalty = 1.5
 	return power_cell.use(DYNAMIC_J_TO_CELL_UNITS(joules * penalty))
+
+/obj/vehicle/sealed/mecha/estimate_cell_power_remaining()
+	return power_cell ? power_cell.charge : 0
+
+/obj/vehicle/sealed/mecha/get_cell(inducer)
+	return power_cell

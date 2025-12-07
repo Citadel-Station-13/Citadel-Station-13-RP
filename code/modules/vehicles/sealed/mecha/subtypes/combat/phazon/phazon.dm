@@ -37,7 +37,6 @@
 	)
 
 	phasing_possible = TRUE
-	switch_dmg_type_possible = TRUE
 
 /obj/effect/decal/mecha_wreckage/phazon
 	name = "Phazon wreckage"

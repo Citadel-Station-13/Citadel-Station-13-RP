@@ -88,7 +88,7 @@
 
 /datum/vehicle_ui_controller/mecha/proc/update_ui_strafing()
 	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
-	push_ui_data(list("data" = casted_vehicle.strafing))
+	push_ui_data(list("strafing" = casted_vehicle.strafing))
 
 /datum/vehicle_ui_controller/mecha/proc/update_ui_floodlights()
 	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle

@@ -72,16 +72,36 @@
  * @return list of modules
  */
 /obj/vehicle/proc/query_active_click_modules() as /list
-	#warn impl
+	. = list()
+	for(var/obj/item/vehicle_module/module as anything in modules)
+		if(module.is_active_click_module())
+			. += module
 
 /**
  * @return TRUE for success, FALSE otherwise
  */
 /obj/vehicle/proc/set_active_click_module(obj/item/vehicle_module/module, silent)
-	#warn impl
+	if(module.vehicle == src)
+		module_active_click = module
+		return TRUE
+	return FALSE
 
 /**
- * @return new module or null or FALSE if none available
+ * @return new module or null
  */
 /obj/vehicle/proc/cycle_active_click_modules(allow_deselect = TRUE, silent) as /obj/item/vehicle_module
-	#warn impl
+	var/current_index = module_active_click ? modules.Find(module_active_click) : 0
+	var/obj/item/vehicle_module/next
+	for(var/i in current_index + 1 to length(modules))
+		var/obj/item/vehicle_module/potential = modules[i]
+		if(potential.is_active_click_module())
+			next = potential
+			break
+	if(!next && !allow_deselect)
+		for(var/i in 1 to current_index)
+			var/obj/item/vehicle_module/potential = modules[i]
+			if(potential.is_active_click_module())
+				next = potential
+				break
+	module_active_click = next
+	return next

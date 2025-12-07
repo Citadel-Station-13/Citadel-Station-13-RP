@@ -29,6 +29,7 @@
 	. = ..()
 	.["moduleRefs"] = encode_module_refs()
 	.["componentRefs"] = encode_component_refs()
+	.["cargoRefs"] = encode_cargo_refs()
 
 /datum/vehicle_ui_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -54,6 +55,16 @@
 			return TRUE
 		if("selectActiveClickModule")
 			#warn impl
+			return TRUE
+		if("ejectCargo")
+			var/ref = params["ref"]
+			if(!istext(ref) || !length(ref))
+				return TRUE
+			var/atom/movable/entity = locate(ref) in vehicle.cargo_held
+			if(!entity)
+				return TRUE
+			#warn log / message
+			vehicle.cargo_drop(entity)
 			return TRUE
 
 /datum/vehicle_ui_controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -108,3 +119,9 @@
 	. = list()
 	for(var/obj/item/vehicle_module/encoding as anything in vehicle.modules)
 		. += ref(encoding)
+
+/datum/vehicle_ui_controller/proc/encode_cargo_refs()
+	#warn impl ;name?
+
+/datum/vehicle_ui_controller/proc/update_cargo_refs()
+	push_ui_data(data = list("cargoRefs" = encode_cargo_refs()))

@@ -76,13 +76,11 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 	)
 
-#warn /equipped
-/obj/vehicle/sealed/mecha/working/hoverpod/combatpod/Initialize(mapload)
-	. = ..()
-	var/obj/item/vehicle_module/lazy/legacy/ME = new /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive
-	ME.attach(src)
+/obj/vehicle/sealed/mecha/working/hoverpod/combatpod/equipped
+	modules = list(
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
+	)
 
 /obj/vehicle/sealed/mecha/working/hoverpod/shuttlepod
 	desc = "Who knew a tiny ball could fit three people?"

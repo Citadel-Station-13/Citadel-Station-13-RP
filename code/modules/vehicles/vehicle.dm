@@ -8,8 +8,15 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
  * generic, multiseat-capable vehicles system
  *
  * ## Concepts
+ *
  * * The 'chassis' is ourselves. Chassis armor / integrity are handled via atom integrity.
  *   This may change in the future, so use wrappers in `vehicle-defense.dm`
+ *
+ * ## Power
+ *
+ * Vehicles have a standard power handling API.
+ * This API runs in **watts**, not cell units; this is because vehicles are not really
+ * handheld entities that should be running solely off cells a lot of the time.
  */
 /obj/vehicle
 	integrity = 300
@@ -193,11 +200,20 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 //* Cargo *//
 
 /obj/vehicle/proc/cargo_add(atom/movable/entity)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(entity in cargo_held)
 		return
-	cargo_held += entity
+	LAZYADD(cargo_held, entity)
 	entity.forceMove(src)
 	on_cargo_add(entity)
+
+/obj/vehicle/proc/cargo_drop(atom/movable/entity, atom/where = drop_location())
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!(entity in cargo_held))
+		return
+	LAZYREMOVE(cargo_held, entity)
+	entity.forceMove(src)
+	on_cargo_remove(entity)
 
 /obj/vehicle/proc/cargo_slots_used()
 	return length(cargo_held)
@@ -209,11 +225,13 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	return cargo_capacity - length(cargo_held)
 
 /obj/vehicle/proc/cargo_dump(atom/where = drop_location())
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!where)
 		return 0
 	. = 0
 	for(var/atom/movable/entity in cargo_held)
 		entity.forceMove(where)
+		on_cargo_remove(entity)
 		.++
 
 /obj/vehicle/proc/on_cargo_add(atom/movable/entity)

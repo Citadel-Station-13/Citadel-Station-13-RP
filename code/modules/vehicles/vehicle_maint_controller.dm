@@ -57,6 +57,15 @@
 				return TRUE
 			#warn impl
 			return TRUE
+		if("removeComponent")
+			var/ref = params["ref"]
+			if(!istext(ref) || !length(ref))
+				return TRUE
+			var/obj/item/vehicle_component/to_eject = locate(ref) in vehicle.components
+			if(!to_eject)
+				return TRUE
+			#warn impl
+			return TRUE
 		if("closePanel")
 		if("openPanel")
 		if("unlockPanel")

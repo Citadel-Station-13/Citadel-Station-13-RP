@@ -70,10 +70,8 @@
 	occupant_legacy = null
 	set_ready_state(1)
 
-/obj/item/vehicle_module/lazy/legacy/tool/sleeper/detach()
-	if(occupant_legacy)
-		occupant_message("Unable to detach [src] - equipment occupied.")
-		return
+/obj/item/vehicle_module/lazy/legacy/tool/sleeper/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	go_out()
 	return ..()
 
 /obj/item/vehicle_module/lazy/legacy/tool/sleeper/Topic(href,href_list)

@@ -275,6 +275,3 @@
 	// Legacy: Process internal damage
 	legacy_internal_damage_step()
 	//! END
-
-/obj/vehicle/sealed/mecha/get_cell(inducer)
-	return power_cell

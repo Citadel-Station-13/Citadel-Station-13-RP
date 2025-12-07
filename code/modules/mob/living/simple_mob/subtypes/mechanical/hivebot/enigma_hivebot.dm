@@ -602,7 +602,13 @@
 
 			else if(istype(thing, /obj/vehicle/sealed/mecha))
 				var/obj/vehicle/sealed/mecha/M = thing
-				M.take_damage_legacy(i * 2, "energy") // Mechs don't have a concept for siemens so energy armor check is the best alternative.
+				M.run_damage_instance(
+					i * 2,
+					DAMAGE_TYPE_BURN,
+					5,
+					ARMOR_ENERGY,
+					DAMAGE_MODE_ABLATING,
+				)
 
 		sleep(1 SECOND)
 
