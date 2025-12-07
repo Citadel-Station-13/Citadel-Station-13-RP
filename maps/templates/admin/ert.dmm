@@ -2278,10 +2278,10 @@
 /area/ship/ert/mech_bay)
 "qT" = (
 /obj/structure/table/rack/steel,
-/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
-/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
-/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
-/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+/obj/item/vehicle_module/toggled/jetpack/electric,
+/obj/item/vehicle_module/toggled/jetpack/electric,
+/obj/item/vehicle_module/toggled/jetpack/electric,
+/obj/item/vehicle_module/toggled/jetpack/electric,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)

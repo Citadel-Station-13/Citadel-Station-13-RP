@@ -47,6 +47,12 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/list/obj/item/vehicle_component/components
 
 	//* Encumbrance *//
+	/// what our self-encumbrance is, without anything on us
+	/// * this is only used for things like jetpack modules to calculate their
+	///   delays; we assume that this is supported for our base movement speed.
+	var/self_chassis_encumbrance = 0
+	/// amount of encumbrance we should ignore other than our self_chassis_encumbrance
+	var/encumbrance_support = 10
 	/// cached total module vehicle_encumbrance
 	var/tmp/total_module_encumbrance = 0
 	/// cached total component vehicle_encumbrance

@@ -22,10 +22,12 @@
 
 /obj/item/vehicle_module/toggled/cloak/proc/on_activate(datum/event_args/actor/actor, silent)
 	..()
-	vehicle?.cloak()
+	ASYNC
+		vehicle?.cloak()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/vehicle_module/toggled/cloak/proc/on_deactivate(datum/event_args/actor/actor, silent)
 	..()
-	vehicle?.uncloak()
+	ASYNC
+		vehicle?.uncloak()
 	STOP_PROCESSING(SSobj, src)

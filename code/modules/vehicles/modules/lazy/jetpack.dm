@@ -1,0 +1,71 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/obj/item/vehicle_module/lazy/jetpack
+	icon_state = "mecha_jetpack"
+	disallow_duplicates_match_type = /obj/item/vehicle_module/lazy/jetpack
+
+	// TODO: jetpacks at some point should simulate their own encumbrance
+	//       support
+
+/obj/item/vehicle_module/lazy/jetpack/render_ui()
+	..()
+
+
+/obj/item/vehicle_module/lazy/jetpack/on_l_ui_select(datum/event_args/actor/actor, key, name)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("toggle")
+			switch(name)
+				if("Enable")
+				if("Disable")
+
+/obj/item/vehicle_module/lazy/jetpack/proc/set_active(new_state)
+
+/obj/item/vehicle_module/lazy/jetpack/proc/on_activate()
+	#warn register
+
+/obj/item/vehicle_module/lazy/jetpack/proc/on_deactivate()
+	#warn register
+
+// TODO: IOU /obj/item/vehicle_module/lazy/jetpack/gas
+// TODO: IOU /obj/item/vehicle_module/lazy/jetpack/gas/ion
+
+/**
+ * Power-consuming only jetpacks.
+ *
+ * This will eventually be replaced with gas and hybrid-gas ion jetpacks, but for now,
+ * I'll allow it to continue.
+ */
+/obj/item/vehicle_module/lazy/jetpack/electric
+	name = /obj/item/vehicle_module::name + " (electric jetpack)"
+	desc = "Allows controlled spaceflight. Very slow, and energy consuming compared to proper ion-gas jetpacks."
+	disallow_duplicates_match_type = /obj/item/vehicle_module/lazy/jetpack
+
+	var/datum/effect_system/ion_trail_follow/ion_trail
+
+	var/cost_per_tile = 5000
+
+/obj/item/vehicle_module/lazy/jetpack/electric/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	..()
+	if(!ion_trail)
+		ion_trail = new
+		ion_trail.set_up(vehicle)
+
+/obj/item/vehicle_module/lazy/jetpack/electric/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	..()
+	if(ion_trail)
+		QDEL_NULL(ion_trail)
+
+/obj/item/vehicle_module/lazy/jetpack/electric/on_activate()
+	..()
+	ion_trail.start()
+
+/obj/item/vehicle_module/lazy/jetpack/electric/on_deactivate()
+	..()
+	ion_trail.stop()
+
+
+#warn impl

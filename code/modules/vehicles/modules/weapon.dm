@@ -5,3 +5,4 @@
  * supertype of vehicle weapons.
  */
 /obj/item/vehicle_module/weapon
+	module_slot = VEHICLE_MODULE_SLOT_WEAPON

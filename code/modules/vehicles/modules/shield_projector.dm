@@ -59,8 +59,8 @@
 	name = /obj/item/vehicle_module/shield_projector::name + " (omnidirectional)"
 	desc = "A perfected Silencium combat shield. The manner by which it distorts the air is the only way to tell it's there at all."
 	#warn sprite
-	shield_shield_color_full = "#CFCFCF"
-	shield_shield_color_empty = "#FFC2C2"
+	shield_color_full = "#CFCFCF"
+	shield_color_empty = "#FFC2C2"
 
 /obj/item/vehicle_module/shield_projector/linear
 	name = /obj/item/vehicle_module/shield_projector::name + " (linear)"
@@ -72,5 +72,5 @@
 	desc = "A Silencium infused linear combat shield. Its faint presence cannot be easily detected."
 	#warn sprite
 	icon_state = "shield_mime"
-	shield_shield_color_full = "#CFCFCF"
-	shield_shield_color_empty = "#FFC2C2"
+	shield_color_full = "#CFCFCF"
+	shield_color_empty = "#FFC2C2"

@@ -37,7 +37,7 @@
 		VEHICLE_MODULE_SLOT_SPECIAL = 1,
 	)
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+		/obj/item/vehicle_module/toggled/jetpack/electric,
 	)
 
 /obj/vehicle/sealed/mecha/working/hoverpod/Initialize(mapload)

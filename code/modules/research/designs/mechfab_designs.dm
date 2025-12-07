@@ -785,7 +785,7 @@
 	desc = "Using directed ion bursts and cunning solar wind reflection technique, this device enables controlled space flight."
 	id = "mech_jetpack"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MAGNET = 4) //One less magnet than the actual got-damn teleporter.
-	build_path = /obj/item/vehicle_module/lazy/legacy/tool/jetpack
+	build_path = /obj/item/vehicle_module/toggled/jetpack/electric
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_SILVER = 300 * (1 / 3), MAT_GLASS = 600 * (1 / 3))
 
 /datum/prototype/design/science/mecha/phoron_generator

@@ -6663,7 +6663,7 @@
 /area/ship/manta/hallways_aft)
 "Hz" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+/obj/item/vehicle_module/toggled/jetpack/electric,
 /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/xray,
 /obj/effect/floor_decal/techfloor{
 	dir = 6

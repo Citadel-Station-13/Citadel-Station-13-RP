@@ -39,8 +39,6 @@
 	cargo_capacity = 1
 
 /obj/vehicle/sealed/mecha/combat/melee_action(atom/T)
-	if(internal_damage&MECHA_INT_CONTROL_LOST)
-		T = SAFEPICK(oview(1,src))
 	if(!melee_can_hit)
 		return
 	if(istype(T, /mob/living))
@@ -49,25 +47,7 @@
 			playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
 			if(damtype == "brute")
 				step_away(M,src,15)
-			/*
-			if(M.stat>1)
-				M.gib()
-				melee_can_hit = 0
-				if(do_after(melee_cooldown))
-					melee_can_hit = 1
-				return
-			*/
 			if(ishuman(T))
-				var/mob/living/carbon/human/H = T
-	//			if (M.integrity <= 0) return
-
-				var/obj/item/organ/external/temp = H.get_organ(pick(BP_TORSO, BP_TORSO, BP_TORSO, BP_HEAD))
-				if(temp)
-					var/update = 0
-					switch(damtype)
-					if(update)	H.update_damage_overlay()
-				H.update_health()
-
 			else
 				M.update_health()
 			src.occupant_message("You hit [T].")
@@ -76,10 +56,6 @@
 			step_away(M,src)
 			src.occupant_message("You push [T] out of the way.")
 			src.visible_message("[src] pushes [T] out of the way.")
-
-		melee_can_hit = 0
-		spawn(melee_cooldown)
-			melee_can_hit = 1
 		return
 
 	else

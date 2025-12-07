@@ -16,7 +16,7 @@
 	name = "vehicle shield module"
 	desc = "Some kind of shielding module."
 
-	#warn equip slot to hull
+	module_slot = VEHICLE_MODULE_SLOT_HULL
 
 	/// armor used to check for damage routing to self
 	/// * any damage this armor 'blocks' will be routed to the shield layer instead

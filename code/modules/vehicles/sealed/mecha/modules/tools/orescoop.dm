@@ -9,7 +9,7 @@
 	energy_drain = 0
 	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
 
-	var/orecapacity = 500
+	var/orecapacity = 50
 
 /obj/item/vehicle_module/lazy/legacy/tool/orescoop/on_attack_self(datum/event_args/actor/e_args)
 	if(length(contents))
@@ -51,13 +51,12 @@
 	occupant_message("<span class='info'>You sweep around the area with the scoop.</span>")
 	var/T = chassis.loc
 	//var/C = target.loc	//why are these backwards? we may never know -Pete
-	if(do_after_cooldown(target))
-		if(T == chassis.loc && src == chassis.selected)
-			for(var/obj/item/stack/ore/ore in range(chassis,1))
-				if(get_dir(chassis,ore)&chassis.dir)
-					if (contents.len >= orecapacity)
-						occupant_message("<span class='warning'>The ore compartment is full.</span>")
-						return 1
-					else
-						ore.forceMove(src)
+	if(vehicle_do_after(null, 1 SECONDS, target))
+		for(var/obj/item/stack/ore/ore in range(chassis,1))
+			if(get_dir(chassis,ore)&chassis.dir)
+				if (contents.len >= orecapacity)
+					occupant_message("<span class='warning'>The ore compartment is full.</span>")
+					return 1
+				else
+					ore.forceMove(src)
 	return 1

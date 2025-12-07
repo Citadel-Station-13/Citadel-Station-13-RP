@@ -27,7 +27,6 @@
 	else
 		message = "[result] meters of cable successfully loaded."
 	occupant_message(message)
-	return
 
 /obj/item/vehicle_module/lazy/legacy/tool/cable_layer/Topic(href,href_list)
 	..()
@@ -76,7 +75,6 @@
 		occupant_message("No enough cable to finish the task.")
 		return
 	cable.use(amount)
-	update_equip_info()
 	return 1
 
 /obj/item/vehicle_module/lazy/legacy/tool/cable_layer/proc/reset()

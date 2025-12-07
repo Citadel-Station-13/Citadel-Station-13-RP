@@ -13,6 +13,7 @@ GLOBAL_LIST_BOILERPLATE(vehicle_tracking_beacons, /obj/item/vehicle_tracking_bea
 	if(!in_mecha())
 		return FALSE
 
+	// TODO: just vehicle
 	var/obj/vehicle/sealed/mecha/M = loc
 	data["ref"] = REF(src)
 	data["charge"] = M.get_charge()
@@ -27,8 +28,8 @@ GLOBAL_LIST_BOILERPLATE(vehicle_tracking_beacons, /obj/item/vehicle_tracking_bea
 	data["pilot"] = M.occupant_legacy
 	data["location"] = get_area(M)
 	data["active"] = M.module_active_click
-	data["cargoUsed"] = length(RM.cargo_held)
-	data["cargoMax"] = RM.cargo_capacity
+	data["cargoUsed"] = length(M.cargo_held)
+	data["cargoMax"] = M.cargo_capacity
 
 	return data
 
@@ -53,7 +54,7 @@ GLOBAL_LIST_BOILERPLATE(vehicle_tracking_beacons, /obj/item/vehicle_tracking_bea
 	if(!in_mecha())
 		return list()
 	var/obj/vehicle/sealed/mecha/M = loc
-	return M.get_log_tgui()
+	return list()
 
 /obj/item/storage/box/mechabeacons
 	name = "Exosuit Tracking Beacons"

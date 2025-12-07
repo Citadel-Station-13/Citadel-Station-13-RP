@@ -639,7 +639,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	rare_loot = list(
 		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
 		/obj/item/vehicle_module/lazy/stack_generator/uranium,
-		/obj/item/vehicle_module/lazy/legacy/tool/jetpack
+		/obj/item/vehicle_module/toggled/jetpack/electric
 		)
 
 //Stuff you may find attached to a ripley.

@@ -25488,7 +25488,7 @@
 /obj/item/vehicle_module/lazy/legacy/tool/powertool/screwdriver,
 /obj/item/vehicle_module/lazy/legacy/tool/powertool/welding,
 /obj/item/rcd/electric/mounted/mecha,
-/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+/obj/item/vehicle_module/toggled/jetpack/electric,
 /turf/simulated/floor/plating,
 /area/shuttle/salvager)
 "qIM" = (

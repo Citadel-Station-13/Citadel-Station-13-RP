@@ -39,7 +39,7 @@
 		VEHICLE_MODULE_SLOT_UTILITY = 4,
 	)
 	modules_intrinsic = list(
-		/obj/item/vehicle_module/lazy/legacy/tool/jetpack,
+		/obj/item/vehicle_module/toggled/jetpack/electric,
 		/obj/item/vehicle_module/lazy/smokescreen,
 	)
 

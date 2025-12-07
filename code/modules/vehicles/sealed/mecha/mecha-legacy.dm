@@ -216,7 +216,7 @@
 			return UI_UPDATE //if they're close enough, allow the occupant_legacy to see the screen through the viewport or whatever.
 
 /obj/vehicle/sealed/mecha/proc/can_ztravel()
-	for(var/obj/item/vehicle_module/lazy/legacy/tool/jetpack/jp in equipment)
+	for(var/obj/item/vehicle_module/toggled/jetpack/electric/jp in equipment)
 		return jp.equip_ready
 	return FALSE
 
