@@ -25,6 +25,9 @@
 		if("changeIdLock")
 			var/list/ids_to_add = params["add"]
 			var/list/ids_to_remove = params["remove"]
+		if("ejectPilot")
+		if("removeCell")
+		if("insertCell")
 
 /datum/vehicle_maint_controller/mecha/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()

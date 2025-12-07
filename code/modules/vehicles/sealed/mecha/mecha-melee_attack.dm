@@ -32,9 +32,6 @@
 	 * 3. we react to what they return, including calling their on_x_act()
 	 */
 
-	// -- call on ourselves --
-	legacy_alter_melee_clickchain(clickchain)
-
 	// -- call on them (if we didn't miss / get called off already) --
 	clickchain_flags |= clickchain.target.melee_act(src, src, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 

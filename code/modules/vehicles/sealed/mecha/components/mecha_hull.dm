@@ -16,9 +16,7 @@
 	integrity = 300
 	integrity_max = 300
 	integrity_failure = 200
-
 	vehicle_encumbrance = 7.5
-	internal_damage_flag = MECHA_INT_FIRE
 
 /**
  * * Acquirable from R&D / lathes

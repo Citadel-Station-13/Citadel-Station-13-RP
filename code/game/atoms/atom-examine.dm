@@ -103,6 +103,17 @@
 			else
 				. += SPAN_DANGER("It's empty.")
 
+	//* check for context menu options *//
+	var/datum/event_args/actor/actor = new(user)
+	var/list/context_query = context_menu_query(actor)
+	if(length(context_query))
+		var/list/encoded_options = list()
+		for(var/ctx_key in context_query)
+			var/ctx_name = context_query[key][ATOM_CONTEXT_TUPLE_INDEX_NAME]
+			encoded_options += "[ctx_name]"
+		encoded_options = jointext(encoded_options, "<br>")
+		. += SPAN_NOTICE("Ctrl-Shift click on this for more [SPAN_TOOLTIP_DANGEROUS_HTML(encoded_options, "options")].")
+
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 
 	// todo: this shouldn't be in main examine(), format this crap better too.

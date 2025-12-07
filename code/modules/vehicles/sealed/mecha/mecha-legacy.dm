@@ -1,19 +1,5 @@
-
-#define MECHA_INT_FIRE 1
-#define MECHA_INT_TEMP_CONTROL 2
-#define MECHA_INT_SHORT_CIRCUIT 4
-#define MECHA_INT_TANK_BREACH 8
-#define MECHA_INT_CONTROL_LOST 16
-
 #define MELEE 1
 #define RANGED 2
-
-#define MECHA_OPERATING     0
-#define MECHA_BOLTS_SECURED 1
-#define MECHA_PANEL_LOOSE   2
-#define MECHA_CELL_OPEN     3
-#define MECHA_CELL_OUT      4
-
 #define MECH_FACTION_NT "nano"
 #define MECH_FACTION_SYNDI "syndi"
 #define MECH_FACTION_NONE "none"
@@ -356,37 +342,6 @@
 				to_chat(user, "<span class='warning'>Invalid ID: Access denied.</span>")
 		else
 			to_chat(user, "<span class='warning'>Maintenance protocols disabled by operator.</span>")
-	else if(W.is_wrench())
-		if(state==MECHA_BOLTS_SECURED)
-			state = MECHA_PANEL_LOOSE
-			to_chat(user, "You undo the securing bolts.")
-		else if(state==MECHA_PANEL_LOOSE)
-			state = MECHA_BOLTS_SECURED
-			to_chat(user, "You tighten the securing bolts.")
-		return
-	else if(W.is_crowbar())
-		if(state==MECHA_PANEL_LOOSE)
-			state = MECHA_CELL_OPEN
-			to_chat(user, "You open the hatch to the power unit")
-		else if(state==MECHA_CELL_OPEN)
-			state=MECHA_PANEL_LOOSE
-			to_chat(user, "You close the hatch to the power unit")
-		else if(state==MECHA_CELL_OUT)
-			var/list/removable_components = list()
-			for(var/slot in internal_components)
-				var/obj/item/vehicle_component/MC = internal_components[slot]
-				if(istype(MC))
-					removable_components[MC.name] = MC
-				else
-					to_chat(user, "<span class='notice'>\The [src] appears to be missing \the [slot].</span>")
-
-			var/remove = input(user, "Which component do you want to pry out?", "Remove Component") as null|anything in removable_components
-			if(!remove)
-				return
-
-			var/obj/item/vehicle_component/RmC = removable_components[remove]
-			RmC.detach()
-		return
 	else if(istype(W, /obj/item/stack/cable_coil))
 		if(state >= MECHA_CELL_OPEN && hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
 			var/obj/item/stack/cable_coil/CC = W
@@ -408,25 +363,6 @@
 		else if(state==MECHA_CELL_OUT && src.cell)
 			state=MECHA_CELL_OPEN
 			to_chat(user, "You screw the cell in place")
-		return
-	else if(istype(W, /obj/item/multitool))
-		if(state>=MECHA_CELL_OPEN && src.occupant_legacy)
-			to_chat(user, "You attempt to eject the pilot using the maintenance controls.")
-			if(src.occupant_legacy.stat)
-				src.legacy_eject_occupant()
-			else
-				to_chat(user, "<span class='warning'>Your attempt is rejected.</span>")
-				src.occupant_message("<span class='warning'>An attempt to eject you was made using the maintenance controls.</span>")
-		return
-	else if(istype(W, /obj/item/cell))
-		if(state==MECHA_CELL_OUT)
-			if(!src.cell)
-				if(!user.attempt_insert_item_for_installation(W, src))
-					return
-				to_chat(user, "You install the powercell")
-				src.cell = W
-			else
-				to_chat(user, "There's already a powercell installed.")
 		return
 	else if(istype(W, /obj/item/weldingtool) && user.a_intent != INTENT_HARM)
 		var/obj/item/weldingtool/WT = W
@@ -464,7 +400,6 @@
 		else
 			to_chat(user, "<span class='notice'>You can't reach \the [src]'s internal components.</span>")
 			return
-
 	else
 		return ..()
 
@@ -770,7 +705,6 @@
 
 /obj/vehicle/sealed/mecha/Topic(href, href_list)
 	..()
-	var/datum/topic_input/top_filter = new /datum/topic_input(href,href_list)
 	if (href_list["toggle_zoom"])
 		src.zoom()
 	if(href_list["switch_damtype"])
@@ -782,33 +716,6 @@
 		return
 	if (href_list["port_connect"])
 		src.connect_to_port()
-		return
-	if (href_list["toggle_id_upload"])
-		if(usr != src.occupant_legacy)	return
-		add_req_access = !add_req_access
-		return
-	if(href_list["toggle_maint_access"])
-		if(usr != src.occupant_legacy)	return
-		if(state)
-			occupant_message("<font color='red'>Maintenance protocols in effect</font>")
-			return
-		maint_access = !maint_access
-		return
-	if(href_list["req_access"] && add_req_access)
-		if(!in_range(src, usr))	return
-		output_access_dialog(top_filter.getObj("id_card"),top_filter.getMob("user"))
-		return
-	if(href_list["maint_access"] && maint_access)
-		if(!in_range(src, usr))	return
-		var/mob/user = top_filter.getMob("user")
-		if(user)
-			if(state==MECHA_OPERATING)
-				state = MECHA_BOLTS_SECURED
-				to_chat(user, "The securing bolts are now exposed.")
-			else if(state==MECHA_BOLTS_SECURED)
-				state = MECHA_OPERATING
-				to_chat(user, "The securing bolts are now hidden.")
-			output_maintenance_dialog(top_filter.getObj("id_card"),user)
 		return
 	if(href_list["set_internal_tank_valve"] && state >=MECHA_BOLTS_SECURED)
 		if(!in_range(src, usr))	return
@@ -843,22 +750,6 @@
 
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant_legacy]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant_legacy]!</span>")
 		P.go_out()
-		return
-	if(href_list["add_req_access"] && add_req_access && top_filter.getObj("id_card"))
-		if(!in_range(src, usr))	return
-		operation_req_access += top_filter.getNum("add_req_access")
-		output_access_dialog(top_filter.getObj("id_card"),top_filter.getMob("user"))
-		return
-	if(href_list["del_req_access"] && add_req_access && top_filter.getObj("id_card"))
-		if(!in_range(src, usr))	return
-		operation_req_access -= top_filter.getNum("del_req_access")
-		output_access_dialog(top_filter.getObj("id_card"),top_filter.getMob("user"))
-		return
-	if(href_list["finish_req_access"])
-		if(!in_range(src, usr))	return
-		add_req_access = 0
-		var/mob/user = top_filter.getMob("user")
-		user << browse(null,"window=exosuit_add_access")
 		return
 	if(href_list["repair_int_control_lost"])
 		if(usr != src.occupant_legacy)	return

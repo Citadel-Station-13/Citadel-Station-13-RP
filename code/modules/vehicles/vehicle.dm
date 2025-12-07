@@ -415,6 +415,18 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 /obj/vehicle/proc/occupant_send_chat(html)
 	to_chat(occupants, html)
 
+//* UI *//
+
+/obj/vehicle/proc/get_maint_controller() as /datum/vehicle_maint_controller
+	if(!maint_controller)
+		maint_controller = new(src)
+	return maint_controller
+
+/obj/vehicle/proc/get_ui_controller() as /datum/vehicle_ui_controller
+	if(!ui_controller)
+		ui_controller = new(src)
+	return ui_controller
+
 //* Weight Handling *//
 
 /obj/vehicle/on_contents_weight_change(atom/movable/entity, old_weight, new_weight)
