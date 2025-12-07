@@ -275,33 +275,6 @@
 	else
 		..()
 
-//ATM, the ignore_threshold is literally only used for the pulse rifles beams used mostly by deathsquads.
-// todo: this is uh, not a check, this is a **roll**.
-/obj/vehicle/sealed/mecha/proc/check_for_internal_damage(var/list/possible_int_damage,var/ignore_threshold=null)
-	if(!islist(possible_int_damage) || !length(possible_int_damage)) return
-	if(prob(30))
-		if(ignore_threshold || src.integrity*100/initial(src.integrity) < src.internal_damage_threshold)
-			for(var/T in possible_int_damage)
-				if(internal_damage & T)
-					possible_int_damage -= T
-			var/int_dam_flag = SAFEPICK(possible_int_damage)
-			if(int_dam_flag)
-				setInternalDamage(int_dam_flag)
-			return	//It already hurts to get some, lets not get both.
-
-	if(prob(10))
-		if(ignore_threshold || src.integrity*100/initial(src.integrity) < src.internal_damage_threshold)
-			var/obj/item/vehicle_module/lazy/legacy/destr = SAFEPICK(equipment)
-			if(destr)
-				destr.destroy()
-
-/obj/vehicle/sealed/mecha/emp_act(severity)
-	if(get_charge())
-		use_power((cell.charge/2)/severity)
-		take_damage_legacy(50 / severity,"energy")
-	if(prob(80))
-		check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
-
 /obj/vehicle/sealed/mecha/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>src.max_temperature)
 		src.take_damage_legacy(5,"fire")	//The take_damage_legacy() proc handles armor values
@@ -517,18 +490,6 @@
 #warn nuke this
 /obj/vehicle/sealed/mecha/proc/report_internal_damage()
 	var/output = null
-	var/list/dam_reports = list(
-										"[MECHA_INT_FIRE]" = "<font color='red'><b>INTERNAL FIRE</b></font>",
-										"[MECHA_INT_TEMP_CONTROL]" = "<font color='red'><b>LIFE SUPPORT SYSTEM MALFUNCTION</b></font>",
-										"[MECHA_INT_TANK_BREACH]" = "<font color='red'><b>GAS TANK BREACH</b></font>",
-										"[MECHA_INT_CONTROL_LOST]" = "<font color='red'><b>COORDINATION SYSTEM CALIBRATION FAILURE</b></font> - <a href='?src=\ref[src];repair_int_control_lost=1'>Recalibrate</a>",
-										"[MECHA_INT_SHORT_CIRCUIT]" = "<font color='red'><b>SHORT CIRCUIT</b></font>"
-										)
-	for(var/tflag in dam_reports)
-		var/intdamflag = text2num(tflag)
-		if(hasInternalDamage(intdamflag))
-			output += dam_reports[tflag]
-			output += "<br />"
 	if(return_pressure() > WARNING_HIGH_PRESSURE)
 		output += "<font color='red'><b>DANGEROUSLY HIGH CABIN PRESSURE</b></font><br />"
 	return output
@@ -720,6 +681,8 @@
 				t_air.merge(removed)
 			else //just delete the cabin gas, we're in space or some shit
 				qdel(removed)
+	#warn slightly smarter control please
+	#warn if temp controller is up, try to stabilize
 
 /obj/vehicle/sealed/mecha/proc/legacy_internal_damage_step()
 	var/obj/vehicle/sealed/mecha/mecha = src
@@ -744,11 +707,6 @@
 				mecha.loc.assume_air(leaked_gas)
 			else
 				qdel(leaked_gas)
-	if(mecha.hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
-		if(mecha.get_charge())
-			mecha.spark_system.start()
-			mecha.cell.charge -= min(20,mecha.cell.charge)
-			mecha.cell.maxcharge -= min(20,mecha.cell.maxcharge)
 
 /obj/vehicle/sealed/mecha/cloak()
 	. = ..()

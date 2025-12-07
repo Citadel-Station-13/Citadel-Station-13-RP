@@ -96,10 +96,12 @@
 
 	//* Melee *//
 	/// Pickable melee options; set to list of typepaths to init
-	#warn impl
-	var/list/datum/mecha_melee_attack/melee_attacks
+	var/list/datum/melee_attack/vehicle/mecha/melee_attacks = list(
+		/datum/melee_attack/vehicle/mecha/punch,
+		/datum/melee_attack/vehicle/mecha/kick,
+	)
 	/// Currently active melee attack
-	var/datum/mecha_melee_attack/melee_attack
+	var/datum/melee_attack/vehicle/mecha/melee_attack
 	/// 'Standard' melee force, used to scale a melee attack accordingly.
 	var/melee_standard_force = 20
 	/// 'Standard' melee tier
@@ -250,16 +252,12 @@
 		// 10% per second
 		if(prob(10 * delta_time))
 			fault_remove(/datum/mecha_fault/calibration_lost, 1)
-	// Attempt to seal breaches
-	// TODO: consider making this a manual repair, but then this has to be way less major / more cumulative
-	if(fault_check(/datum/mecha_fault/tank_breach))
-		// 10% per second
-		if(prob(10 * delta_time))
-			fault_remove(/datum/mecha_fault/tank_breach, 1)
-	if(fault_check(/datum/mecha_fault/cabin_breach))
-		// 10% per second
-		if(prob(10 * delta_time))
-			fault_remove(/datum/mecha_fault/cabin_breach, 1)
+	// Attempt to fix temperature controller
+	if(fault_check(/datum/mecha_fault/temperature_control))
+		// 7% per second
+		if(prob(7 * delta_time))
+			fault_remove(/datum/mecha_fault/temperature_control, 1)
+	fault_process(delta_time)
 	#warn impl
 	//! LEGACY
 	// Legacy: Air temperature step, if air exists

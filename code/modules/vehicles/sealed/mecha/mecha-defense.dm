@@ -87,3 +87,7 @@
 
 	// whatever's left goes to chassis
 	..()
+
+/obj/vehicle/sealed/mecha/tesla_act(power)
+	. = ..()
+	#warn damage
