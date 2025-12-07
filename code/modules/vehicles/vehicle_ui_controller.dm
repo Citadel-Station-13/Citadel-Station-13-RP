@@ -24,6 +24,9 @@
 	.["integrity"] = vehicle.integrity
 	.["integrityMax"] = vehicle.integrity_max
 	.["name"] = vehicle.name
+	.["maintPanelLocked"] = vehicle.maint_panel_locked
+	.["maintPanelOpen"] = vehicle.maint_panel_open
+	.["maintPanelBroken"] = !vehicle.maint_panel || (vehicle.maint_panel.atom_flags & ATOM_BROKEN)
 
 /datum/vehicle_ui_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -66,6 +69,8 @@
 			#warn log / message
 			vehicle.cargo_drop(entity)
 			return TRUE
+		if("toggleMaintLock")
+			#warn impl
 
 /datum/vehicle_ui_controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)

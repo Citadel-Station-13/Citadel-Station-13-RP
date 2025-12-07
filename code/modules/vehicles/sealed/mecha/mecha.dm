@@ -143,23 +143,6 @@
 	//  TODO: this is super beecause we're moving to 30k base cells for large anyways at some point
 	var/power_cell_type = /obj/item/cell/super
 
-	//* Weight *//
-
-	/// base weight supported at full move speed
-	/// * all weight values are in kilograms.
-	/// * weight_support_x = weight tolerated of x without spilling
-	/// * weight_spill_ratio_x = weight past weight support to spill as a multiplier. 0.5 is forgiving.
-	/// * weight doesn't go away just because it's supported; a mech with infinite weight support with
-	///   200kg of nested contents still weighs 200kg.
-	var/weight_support_base = 100
-	var/weight_support_components = 0
-	var/weight_support_modules = 0
-	var/weight_support_occupants = 0
-	var/weight_support_cargo = 100
-	var/weight_spill_ratio_components = 1
-	var/weight_spill_ratio_modules = 1
-	var/weight_spill_ratio_cargo = 0.5
-	var/weight_spill_ratio_occupant = 0.5
 
 /obj/vehicle/sealed/mecha/Initialize()
 	. = ..()

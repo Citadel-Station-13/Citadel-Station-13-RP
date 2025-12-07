@@ -21,10 +21,11 @@
 	if(.)
 		return
 	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
+
+	if(!actor.performer.Reachability(casted_vehicle) || !casted_vehicle.maint_panel_is_accessible())
+		return TRUE
+	// below here requires panel access //
 	switch(action)
-		if("changeIdLock")
-			var/list/ids_to_add = params["add"]
-			var/list/ids_to_remove = params["remove"]
 		if("ejectPilot")
 		if("removeCell")
 		if("insertCell")
@@ -33,6 +34,8 @@
 		if("fixActuatorCalibrationFault")
 		if("fixCabinBreachFault")
 		if("fixTemperatureControllerFault")
+
+	#warn impl all
 
 /datum/vehicle_maint_controller/mecha/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()

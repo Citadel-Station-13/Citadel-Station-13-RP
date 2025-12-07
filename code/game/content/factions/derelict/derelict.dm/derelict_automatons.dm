@@ -26,27 +26,15 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 	movement_works_in_space = TRUE
 
-	var/obj/item/shield_projector/shields = null
-
-/mob/living/simple_mob/mechanical/sentinel/Initialize(mapload)
-	shields = new /obj/item/shield_projector/rectangle/automatic/advanced(src)
-	return ..()
-
-/mob/living/simple_mob/mechanical/sentinel/Destroy()
-	QDEL_NULL(shields)
-	return ..()
+	make_shield_comp = TRUE
+	make_shield_comp_health = 250
+	make_shield_comp_recharge_delay = 7 SECONDS
+	make_shield_comp_recharge_rate = 30
+	make_shield_comp_recharge_rebuild_rate = 30
+	make_shield_comp_recharge_rebuild_ratio = 0
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
+	make_shield_comp_color_full = "#808080"
+	make_shield_comp_color_depleted = "#202020"
 
 /mob/living/simple_mob/mechanical/sentinel/death()
 	..(null,"suddenly crashes to the ground, translucent blue blood leaking from a broken thruster.")
-
-/obj/item/shield_projector/rectangle/automatic/advanced
-	shield_health = 250
-	max_shield_health = 250
-	shield_regen_delay = 7 SECONDS
-	shield_regen_amount = 30
-	size_x = 1
-	size_y = 1
-	color = "#808080"
-	high_color = "#808080"
-	low_color = "#808080"
-	light_color = "#2e0808"

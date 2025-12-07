@@ -128,57 +128,9 @@
 
 #warn obliterate this shit
 
-/mob/observer/can_ztravel()
-	return TRUE
-
-/mob/living/can_ztravel()
-	if(incapacitated())
-		return FALSE
-	return (hovering || is_incorporeal())
-
-/mob/living/carbon/human/can_ztravel()
-	if(incapacitated())
-		return FALSE
-
-	if(hovering || is_incorporeal())
-		return TRUE
-
-	if(flying) // Allows movement up/down with wings.
-		return 1
-
-	if(Process_Spacemove())
-		return TRUE
-
-	if(Check_Shoegrip())	//scaling hull with magboots
-		for(var/turf/simulated/T in trange(1,src))
-			if(T.density)
-				return TRUE
-
-/mob/living/silicon/robot/can_ztravel()
-	if(incapacitated() || is_dead())
-		return FALSE
-
-	if(hovering)
-		return TRUE
-
-	if(Process_Spacemove()) //Checks for active jetpack
-		return TRUE
-
-	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"
-		if(T.density)
-			return TRUE
-
-// TODO - Leshana Experimental
-
-//Execution by grand piano!
-/atom/movable/proc/get_fall_damage()
-	return 42
-
 //If atom stands under open space, it can prevent fall, or not
 /atom/proc/can_prevent_fall(var/atom/movable/mover, var/turf/coming_from)
 	return (!CanPass(mover, coming_from))
-
-////////////////////////////
 
 //FALLING STUFF
 // todo: refactor
@@ -464,7 +416,6 @@
 
 /atom/movable/proc/isParachute()
 	return parachute
-
 
 /**
  * This is what makes the parachute items know they've been used.

@@ -62,7 +62,7 @@ export const GuestPassTerminal = (props) => {
                   <AccessListMod
                     accessShown={data.allowed}
                     selected={data.selected} access={data.access} uid="1"
-                    fill set={(id) => act('toggle', { value: id })}
+                    fill toggle={(id) => act('toggle', { value: id })}
                     grant={(cat) => act('grant', { category: cat })}
                     deny={(cat) => act('deny', { category: cat })} />
                 </Stack.Item>

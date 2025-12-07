@@ -6,6 +6,7 @@
  * @return TRUE if we can currently overcome gravity.
  */
 /atom/movable/proc/can_overcome_gravity(mob/emit_feedback_to)
+	return atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD)
 
 /**
  * This should run the do_after needed to overcome gravity and go above.
@@ -13,6 +14,12 @@
  * @return TRUE if successful
  */
 /atom/movable/proc/process_overcome_gravity(time_required, mob/emit_feedback_to)
+	if(atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
+		return TRUE
+	return FALSE
+
+/atom/movable/proc/standard_process_overcome_gravity(time_required, mob/emit_feedback_to)
+	#warn impl
 
 /**
  * * Undefined behavior if 'dir' is not UP or DOWN (not both)

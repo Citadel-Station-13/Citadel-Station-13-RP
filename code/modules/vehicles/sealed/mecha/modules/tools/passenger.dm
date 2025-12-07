@@ -66,20 +66,15 @@
 	occupant_legacy = null
 	return
 
-/obj/item/vehicle_module/lazy/legacy/tool/passenger/attach()
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
 	..()
-	if (chassis)
-		add_obj_verb(chassis, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
+	add_obj_verb(vehicle, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
 
-/obj/item/vehicle_module/lazy/legacy/tool/passenger/detach()
-	if(occupant_legacy)
-		occupant_message("Unable to detach [src] - equipment occupied.")
-		return
-
-	var/obj/vehicle/sealed/mecha/M = chassis
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	go_out()
 	..()
-	if (M && !(locate(/obj/item/vehicle_module/lazy/legacy/tool/passenger) in M))
-		remove_verb(M, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
+	if(!(locate(/obj/item/vehicle_module/lazy/legacy/tool/passenger) in vehicle.modules))
+		remove_verb(vehicle, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
 
 /obj/item/vehicle_module/lazy/legacy/tool/passenger/render_ui()
 	..()

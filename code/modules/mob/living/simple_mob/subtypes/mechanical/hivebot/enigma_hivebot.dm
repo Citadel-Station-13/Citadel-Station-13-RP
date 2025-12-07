@@ -92,19 +92,11 @@
 	movement_sound = 'sound/enigma/enigma_move2.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/hivebot
 
-/mob/living/simple_mob/mechanical/hivebot/enigma/custodian/Initialize(mapload)
-	var/shield_type = /obj/item/shield_projector/rectangle{
-		shield_health = 150;
-		max_shield_health = 150;
-		shield_regen_delay = 10 SECONDS;
-		shield_regen_amount = 10;
-		size_x = 1;
-		size_y = 1;
-		always_on = TRUE;
-	}
-	var/obj/item/shield_projector/shield_projector = new shield_type(src)
-	shield_projector.create_shields()
-	return ..()
+	make_shield_comp = TRUE
+	make_shield_comp_health = 150
+	make_shield_comp_recharge_delay = 7 SECONDS
+	make_shield_comp_recharge_rate = 10
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/disassembler
 	name = "disassembler"
@@ -216,20 +208,11 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 	projectiletype = /obj/projectile/beam/cyan/hivebot
 
-/mob/living/simple_mob/mechanical/hivebot/enigma/atomizer/Initialize(mapload)
-	var/shield_type = /obj/item/shield_projector/rectangle{
-		shield_health = 150;
-		max_shield_health = 150;
-		shield_regen_delay = 10 SECONDS;
-		shield_regen_amount = 10;
-		size_x = 1;
-		size_y = 1;
-		always_on = TRUE;
-	}
-	var/obj/item/shield_projector/shield_projector = new shield_type(src)
-	shield_projector.create_shields()
-	return ..()
-
+	make_shield_comp = TRUE
+	make_shield_comp_health = 150
+	make_shield_comp_recharge_delay = 10 SECONDS
+	make_shield_comp_recharge_rate = 10
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/sweeper
 	name = "sweeper"
@@ -259,21 +242,11 @@
 	projectiletype = /obj/projectile/arc/fragmentation/mortar
 	base_attack_cooldown = 30
 
-/mob/living/simple_mob/mechanical/hivebot/enigma/sweeper/Initialize(mapload)
-	var/shield_type = /obj/item/shield_projector/rectangle{
-		shield_health = 250;
-		max_shield_health = 250;
-		shield_regen_delay = 5 SECONDS;
-		shield_regen_amount = 10;
-		size_x = 1;
-		size_y = 1;
-		always_on = TRUE;
-	}
-	var/obj/item/shield_projector/shield_projector = new shield_type(src)
-	shield_projector.create_shields()
-	return ..()
-
-
+	make_shield_comp = TRUE
+	make_shield_comp_health = 250
+	make_shield_comp_recharge_delay = 5 SECONDS
+	make_shield_comp_recharge_rate = 10
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
 
 // Troopers
 
@@ -383,19 +356,11 @@
 	projectiletype = /obj/projectile/beam/antigravbeamwraith
 	base_attack_cooldown = 10 //1 attacks per second
 
-/mob/living/simple_mob/mechanical/hivebot/enigma/P4/Wraith/Initialize(mapload) //Gives the unit a weak overshield since it would be very unfun to fight kiting AI with actual proper health regen as initially intended
-	var/shield_type = /obj/item/shield_projector/rectangle{
-		shield_health = 100;
-		max_shield_health = 100;
-		shield_regen_delay = 5 SECONDS;
-		shield_regen_amount = 30;
-		size_x = 1;
-		size_y = 1;
-		always_on = TRUE;
-	}
-	var/obj/item/shield_projector/shield_projector = new shield_type(src)
-	shield_projector.create_shields()
-	return ..()
+	make_shield_comp = TRUE
+	make_shield_comp_health = 100
+	make_shield_comp_recharge_delay = 5 SECONDS
+	make_shield_comp_recharge_rate = 20
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/P4/Banshee
 	name = "banshee"
@@ -533,19 +498,11 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
 	var/obj/effect/overlay/energy_ball/energy_ball = null
 
-/mob/living/simple_mob/mechanical/hivebot/enigma/mimir/Initialize(mapload)
-	var/shield_type = /obj/item/shield_projector/rectangle{
-		shield_health = 500;
-		max_shield_health = 500;
-		shield_regen_delay = 5 SECONDS;
-		shield_regen_amount = 30;
-		size_x = 1;
-		size_y = 1;
-		always_on = TRUE;
-	}
-	var/obj/item/shield_projector/shield_projector = new shield_type(src)
-	shield_projector.create_shields()
-	return ..()
+	make_shield_comp = TRUE
+	make_shield_comp_health = 500
+	make_shield_comp_recharge_delay = 7 SECONDS
+	make_shield_comp_recharge_rate = 20
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/mimir/Destroy()
 	if(energy_ball)

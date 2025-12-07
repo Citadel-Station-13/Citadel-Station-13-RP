@@ -17,7 +17,8 @@
 	. = ..()
 	if(. == COMPONENT_INCOMPATIBLE)
 		return
-	src.pattern = config?.pattern
+	if(config)
+		set_config(config)
 	src.on_damage_instance = on_damage_instance
 
 /datum/component/directional_shield/RegisterWithParent()
@@ -157,7 +158,8 @@
 	var/recharge_rebuild_rate = /datum/directional_shield_config::recharge_rebuild_rate
 	/// when do we restore once rebuilding from downed?
 	/// * we go back to normal [recharge_rate] when we become active again
-	/// * 1 = restore when fully back up, 0.5 = when half up, 0 = immediately (don't use rebuild rate)
+	/// * if 0 we will never go down
+	/// * 1 = restore when fully back up, 0.5 = when half up
 	var/recharge_rebuild_restore_ratio = /datum/directional_shield_config::recharge_rebuild_restore_ratio
 	/// last time we took damage
 	var/last_damage
@@ -188,6 +190,10 @@
 		recharge_rebuild_rate = config.recharge_rebuild_rate
 	if(recharge_rebuild_restore_ratio != config.recharge_rebuild_restore_ratio)
 		recharge_rebuild_restore_ratio = config.recharge_rebuild_restore_ratio
+
+/datum/component/directional_shield/standalone/recharging/set_health()
+	..()
+	#warn go down if 0 if rebuild ratio isn't 0
 
 /datum/component/directional_shield/standalone/recharging/on_damage_instance(list/shieldcall_args)
 	..()

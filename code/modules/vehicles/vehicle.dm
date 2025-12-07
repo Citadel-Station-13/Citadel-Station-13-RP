@@ -24,6 +24,14 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	integrity_failure = 0
 	armor_type = /datum/armor/vehicle
 
+	//* Access *//
+
+	/// For maint panel
+	var/access_maint_req_all
+	/// For maint panel
+	var/access_maint_req_one
+	#warn impl
+
 	//* Cargo Hold *//
 	/// Things in cargo hold
 	/// * Lazy list
@@ -37,6 +45,13 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	/// Installed components
 	/// * Lazy list.
 	var/list/obj/item/vehicle_component/components
+
+	//* Encumbrance *//
+	/// cached total module vehicle_encumbrance
+	var/tmp/total_module_encumbrance = 0
+	/// cached total component vehicle_encumbrance
+	var/tmp/total_component_encumbrance = 0
+	#warn impl
 
 	//* Maintenance *//
 	/// Maint panel path; this is for the actual maint panel, not the UI controller.
@@ -95,10 +110,6 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/in_gravity = TRUE
 	/// Last time we moved ourselves.
 	var/last_self_move
-	/// cached total module vehicle_encumbrance
-	var/tmp/total_module_encumbrance = 0
-	/// cached total component vehicle_encumbrance
-	var/tmp/total_component_encumbrance = 0
 
 	//* Occupants *//
 	/// list of mobs associated to their control flags
@@ -171,6 +182,11 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
  */
 /obj/vehicle/proc/on_drop_vehicle_contents(atom/where)
 	cargo_dump()
+
+//* Access *//
+
+/obj/vehicle/proc/check_access_list_for_maint(list/access_list)
+	return has_access(access_maint_req_all, access_maint_req_one, access_list)
 
 //* Actions *//
 
@@ -319,6 +335,11 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 			action.grant(controller.actions_controlled)
 		else if(action.required_control_flags & flags_removed)
 			action.revoke(controller.actions_controlled)
+
+//* Maintenance *//
+
+/obj/vehicle/proc/maint_panel_is_accessible()
+	return maint_panel_open || (!maint_panel || (maint_panel.atom_flags & ATOM_BROKEN))
 
 //* Occupants *//
 

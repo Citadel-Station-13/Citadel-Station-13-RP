@@ -34,6 +34,7 @@
 	. = ..()
 	.["moduleRefs"] = encode_module_refs()
 	.["componentRefs"] = encode_component_refs()
+	#warn send maint panel access
 
 /datum/vehicle_maint_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -70,6 +71,32 @@
 		if("openPanel")
 		if("unlockPanel")
 		if("lockPanel")
+		if("accessMaintWipe")
+			var/category = params["cat"]
+			if(!category)
+				access_cockpit_req_all = null
+				access_cockpit_req_one = null
+			else
+				var/list/access_ids = SSjob.access_ids_of_category(category)
+				LAZYREMOVE(access_cockpit_req_one, access_ids)
+				LAZYREMOVE(access_cockpit_req_all, access_ids)
+			return TRUE
+		if("accessMaintToggle")
+			var/id = params["id"]
+			var/mode_all = params["mode"] == "all"
+			if(!access || !SSjob.access_id_lookup[params["id"]])
+				return
+			if(!mode)
+				if(access in access_cockpit_req_one)
+					LAZYREMOVE(access_cockpit_req_one, access)
+				else
+					LAZYDISTINCTADD(access_cockpit_req_one, access)
+			else
+				if(access in access_cockpit_req_all)
+					LAZYREMOVE(access_cockpit_req_all, access)
+				else
+					LAZYDISTINCTADD(access_cockpit_req_all, access)
+			return TRUE
 	#warn impl all
 
 /datum/vehicle_maint_controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)

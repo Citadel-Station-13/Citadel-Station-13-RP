@@ -101,3 +101,18 @@
 			y,
 			WEST,
 		)
+
+/datum/directional_shield_pattern/square/r_3x3
+	radius = 1
+
+/datum/directional_shield_pattern/square/r_5x5
+	radius = 2
+
+/datum/directional_shield_pattern/square/r_7x7
+	radius = 3
+
+/datum/directional_shield_pattern/square/r_9x9
+	radius = 4
+
+/datum/directional_shield_pattern/square/r_11x11
+	radius = 5
