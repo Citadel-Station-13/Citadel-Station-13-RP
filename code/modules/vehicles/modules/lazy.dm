@@ -80,8 +80,16 @@
 
 /obj/item/vehicle_module/lazy/vehicle_ui_module_data()
 	. = ..()
+	.["imtguiStruct"] = get_ui_struct()
 
 /obj/item/vehicle_module/lazy/vehicle_ui_module_act(action, list/params, datum/event_args/actor/actor)
 	. = ..()
-
-#warn impl
+	if(.)
+		return
+	switch(action)
+		if("imtguiButton")
+			on_l_ui_button(actor, params["key"])
+		if("imtguiSelect")
+			on_l_ui_button(actor, params["key"], params["name"])
+		if("imtguiMultiselect")
+			on_l_ui_button(actor, params["key"], params["name"], params["enabled"])

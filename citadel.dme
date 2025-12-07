@@ -5794,8 +5794,6 @@
 #include "code\modules\vore\fluffstuff\custom_clothes.dm"
 #include "code\modules\vore\fluffstuff\custom_items.dm"
 #include "code\modules\vore\fluffstuff\custom_items_cit.dm"
-#include "code\modules\vore\fluffstuff\custom_mecha.dm"
-#include "code\modules\vore\fluffstuff\custom_permits.dm"
 #include "code\modules\vore\fluffstuff\life_crystals.dm"
 #include "code\modules\vore\persist\persist_vr.dm"
 #include "code\modules\vore\resizing\grav_pull_vr.dm"

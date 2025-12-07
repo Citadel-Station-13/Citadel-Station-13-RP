@@ -4,31 +4,33 @@
 /obj/item/vehicle_module/shield_projector
 	name = "shield projector"
 	desc = "A shield projector that forms a deflector shield some distance away from the vehicle."
+	#warn sprite
 
 	module_slot = VEHICLE_MODULE_SLOT_HULL
 
 	var/active = FALSE
-	var/shield_pattern = /datum/directional_shield_pattern
-	var/shield_health = 200
-	var/shield_health_max = 200
 
-	var/shield_color_empty = "#ff0000"
-	var/shield_color_full = "#44cccc"
+	var/make_comp_shield_pattern = /datum/directional_shield_pattern
+	var/make_comp_shield_health = 200
+	var/make_comp_shield_health_max = 200
 
-	var/shield_regen_rate = 10
-	var/shield_regen_delay = 5 SECONDS
-	var/shield_regen_ignore_gradual = TRUE
-	var/shield_rebuild_rate = 20
-	var/shield_rebuild_ratio = 1
+	var/make_comp_shield_color_empty = "#ff0000"
+	var/make_comp_shield_color_full = "#44cccc"
+
+	var/make_comp_shield_regen_rate = 10
+	var/make_comp_shield_regen_delay = 5 SECONDS
+	var/make_comp_shield_regen_ignore_gradual = TRUE
+	var/make_comp_shield_rebuild_rate = 20
+	var/make_comp_shield_rebuild_ratio = 1
 
 	/// joules to use when recharging 1 health
-	var/shield_build_cost_factor = 30
+	var/make_comp_shield_build_cost_factor = 30
 	/// watts to maintain per 1 health
-	var/shield_maintain_cost_factor = 10
+	var/make_comp_shield_maintain_cost_factor = 10
 
 	/// do we rebuild when off?
 	/// * if off, this needs to rebuild when it's turned on.
-	var/shield_rebuilds_while_off = FALSE
+	var/make_comp_shield_rebuilds_while_off = FALSE
 
 	var/datum/component/directional_shield/shield_component
 
@@ -51,10 +53,7 @@
 /obj/item/vehicle_module/shield_projector/omnidirectional
 	name = "omnidirectional shield projector"
 	desc = /obj/item/vehicle_module/shield_projector::desc + " This one projects in the shape of a full radius around the hull."
-	shield_pattern = /datum/directional_shield_pattern/square/vehicle
-
-/datum/directional_shield_pattern/square/vehicle
-	radius = 2
+	shield_pattern = /datum/directional_shield_pattern/square/r_5x5
 
 /obj/item/vehicle_module/shield_projector/omnidirectional/reticence
 	name = "faint omni shield"
@@ -66,11 +65,7 @@
 /obj/item/vehicle_module/shield_projector/linear
 	name = "linear shield projector"
 	desc = /obj/item/vehicle_module/shield_projector::desc + " This one projects in the shape of a line in-front of the chassis."
-	shield_pattern = /datum/directional_shield_pattern/linear/vehicle
-
-/datum/directional_shield_pattern/linear/vehicle
-	distance = 2
-	halflength = 2
+	shield_pattern = /datum/directional_shield_pattern/linear/gap_2/width_5
 
 /obj/item/vehicle_module/shield_projector/linear/reticent
 	name = "linear combat shield"

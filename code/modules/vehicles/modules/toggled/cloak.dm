@@ -11,10 +11,10 @@
 	// * stop whining this is already a third of the old value
 	var/active_power = 50000
 
-	sfx_togggle = 'sound/effects/EMPulse.ogg'
-	sfx_togggle_vary = TRUE
-	sfx_togggle_external = TRUE
-	sfx_togggle_vol = 100
+	sfx_toggle = 'sound/effects/EMPulse.ogg'
+	sfx_toggle_vary = TRUE
+	sfx_toggle_external = TRUE
+	sfx_toggle_vol = 100
 
 /obj/item/vehicle_module/toggled/cloak/process(delta_time)
 	if(!vehicle.draw_module_power_oneoff(src, active_power * delta_time))

@@ -51,6 +51,90 @@
 			NORTHWEST,
 		)
 
+/datum/directional_shield_pattern/linear/gap_0
+	distance = 0
+
+/datum/directional_shield_pattern/linear/gap_0/width_1
+	halflength = 0
+
+/datum/directional_shield_pattern/linear/gap_0/width_3
+	halflength = 1
+
+/datum/directional_shield_pattern/linear/gap_0/width_5
+	halflength = 2
+
+/datum/directional_shield_pattern/linear/gap_0/width_7
+	halflength = 3
+
+/datum/directional_shield_pattern/linear/gap_0/width_9
+	halflength = 4
+
+/datum/directional_shield_pattern/linear/gap_0/width_11
+	halflength = 5
+
+/datum/directional_shield_pattern/linear/gap_1
+	distance = 1
+
+/datum/directional_shield_pattern/linear/gap_1/width_1
+	halflength = 0
+
+/datum/directional_shield_pattern/linear/gap_1/width_3
+	halflength = 1
+
+/datum/directional_shield_pattern/linear/gap_1/width_5
+	halflength = 2
+
+/datum/directional_shield_pattern/linear/gap_1/width_7
+	halflength = 3
+
+/datum/directional_shield_pattern/linear/gap_1/width_9
+	halflength = 4
+
+/datum/directional_shield_pattern/linear/gap_1/width_11
+	halflength = 5
+
+/datum/directional_shield_pattern/linear/gap_2
+	distance = 2
+
+/datum/directional_shield_pattern/linear/gap_2/width_1
+	halflength = 0
+
+/datum/directional_shield_pattern/linear/gap_2/width_3
+	halflength = 1
+
+/datum/directional_shield_pattern/linear/gap_2/width_5
+	halflength = 2
+
+/datum/directional_shield_pattern/linear/gap_2/width_7
+	halflength = 3
+
+/datum/directional_shield_pattern/linear/gap_2/width_9
+	halflength = 4
+
+/datum/directional_shield_pattern/linear/gap_2/width_11
+	halflength = 5
+
+/datum/directional_shield_pattern/linear/gap_3
+	distance = 3
+
+/datum/directional_shield_pattern/linear/gap_3/width_1
+	halflength = 0
+
+/datum/directional_shield_pattern/linear/gap_3/width_3
+	halflength = 1
+
+/datum/directional_shield_pattern/linear/gap_3/width_5
+	halflength = 2
+
+/datum/directional_shield_pattern/linear/gap_3/width_7
+	halflength = 3
+
+/datum/directional_shield_pattern/linear/gap_3/width_9
+	halflength = 4
+
+/datum/directional_shield_pattern/linear/gap_3/width_11
+	halflength = 5
+
 /datum/directional_shield_pattern/square
 	/// distance from entity; 2 is 5x5 with 3x3 inner, 1 is 3x3 with 1x1 inner.
 	var/radius = 2

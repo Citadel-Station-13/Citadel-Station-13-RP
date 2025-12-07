@@ -74,28 +74,28 @@
 		if("accessMaintWipe")
 			var/category = params["cat"]
 			if(!category)
-				access_cockpit_req_all = null
-				access_cockpit_req_one = null
+				vehicle.access_cockpit_req_all = null
+				vehicle.access_cockpit_req_one = null
 			else
 				var/list/access_ids = SSjob.access_ids_of_category(category)
-				LAZYREMOVE(access_cockpit_req_one, access_ids)
-				LAZYREMOVE(access_cockpit_req_all, access_ids)
+				LAZYREMOVE(vehicle.access_cockpit_req_one, access_ids)
+				LAZYREMOVE(vehicle.access_cockpit_req_all, access_ids)
 			return TRUE
 		if("accessMaintToggle")
-			var/id = params["id"]
+			var/access = params["id"]
 			var/mode_all = params["mode"] == "all"
 			if(!access || !SSjob.access_id_lookup[params["id"]])
 				return
 			if(!mode)
-				if(access in access_cockpit_req_one)
-					LAZYREMOVE(access_cockpit_req_one, access)
+				if(access in vehicle.access_cockpit_req_one)
+					LAZYREMOVE(vehicle.access_cockpit_req_one, access)
 				else
-					LAZYDISTINCTADD(access_cockpit_req_one, access)
+					LAZYDISTINCTADD(vehicle.access_cockpit_req_one, access)
 			else
-				if(access in access_cockpit_req_all)
-					LAZYREMOVE(access_cockpit_req_all, access)
+				if(access in vehicle.access_cockpit_req_all)
+					LAZYREMOVE(vehicle.access_cockpit_req_all, access)
 				else
-					LAZYDISTINCTADD(access_cockpit_req_all, access)
+					LAZYDISTINCTADD(vehicle.access_cockpit_req_all, access)
 			return TRUE
 	#warn impl all
 

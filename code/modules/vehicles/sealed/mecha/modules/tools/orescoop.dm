@@ -1,17 +1,50 @@
 
+// todo: /ore_box & /ore_box/with_scoop
 /obj/item/vehicle_module/lazy/legacy/tool/orescoop
 	w_class = WEIGHT_CLASS_BULKY
 	name = "Mounted ore box"
-	desc = "A mounted ore scoop and hopper, for gathering ores."'
+	desc = "A mounted ore scoop and hopper, for gathering ores."
 	icon_state = "microscoop"
 	equip_cooldown = 5
 	energy_drain = 0
 	module_class = VEHICLE_MODULE_CLASS_ALLOW_MICRO
+
 	var/orecapacity = 500
+
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop/on_attack_self(datum/event_args/actor/e_args)
+	if(length(contents))
+		dump()
+		e_args.chat_feedback(
+			SPAN_NOTICE("You dump out the contents of [src]."),
+			target = src,
+		)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop/proc/dump(atom/where = drop_location())
+	. = 0
+	for(var/obj/item/stack/ore/ore in contents)
+		. += ore.amount
+		ore.forceMove(where)
+
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop/render_ui()
+	..()
+	l_ui_html("Stored", "~[length(contents)] stacks")
+	l_ui_button("dump", "Dump", "Empty Box Contents", confirm = TRUE)
+
+/obj/item/vehicle_module/lazy/legacy/tool/orescoop/on_l_ui_button(datum/event_args/actor/actor, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("dump")
+			var/amt_dumped = dump(vehicle?.drop_location())
+			vehicle_log_for_admins(actor, "ore-dump", list("amount" = amt_dumped))
 
 /obj/item/vehicle_module/lazy/legacy/tool/orescoop/action(atom/target)
 	if(!action_checks(target))
 		return
+	// TODO: logging
 	set_ready_state(0)
 	chassis.use_power(energy_drain)
 	chassis.visible_message("<span class='info'>[chassis] sweeps around with its ore scoop.</span>")
@@ -28,44 +61,3 @@
 					else
 						ore.forceMove(src)
 	return 1
-
-/obj/item/vehicle_module/lazy/legacy/tool/orescoop/Topic(href,href_list)
-	..()
-	if (href_list["empty_box"])
-		if(contents.len < 1)
-			occupant_message("The ore compartment is empty.")
-			return
-		for (var/obj/item/stack/ore/O in contents)
-			contents -= O
-			O.loc = chassis.loc
-		occupant_message("Ore compartment emptied.")
-
-/obj/item/vehicle_module/lazy/legacy/tool/orescoop/get_equip_info()
-	return "[..()] <br /><a href='?src=\ref[src];empty_box=1'>Empty ore compartment</a>"
-
-/obj/item/vehicle_module/lazy/legacy/tool/orescoop/verb/empty_box() //so you can still get the ore out if someone detaches it from the mech
-	set name = "Empty Ore compartment"
-	set category = VERB_CATEGORY_OBJECT
-	set src in view(1)
-
-	if(!istype(usr, /mob/living/carbon/human)) //Only living, intelligent creatures with hands can empty ore boxes.
-		to_chat(usr, "<span class='warning'>You are physically incapable of emptying the ore box.</span>")
-		return
-
-	if( usr.stat || usr.restrained() )
-		return
-
-	if(!Adjacent(usr)) //You can only empty the box if you can physically reach it
-		to_chat(usr, "You cannot reach the ore box.")
-		return
-
-	add_fingerprint(usr)
-
-	if(contents.len < 1)
-		to_chat(usr, "<span class='warning'>The ore box is empty</span>")
-		return
-
-	for (var/obj/item/stack/ore/O in contents)
-		contents -= O
-		O.loc = src.loc
-	to_chat(usr, "<span class='info'>You empty the ore box</span>")

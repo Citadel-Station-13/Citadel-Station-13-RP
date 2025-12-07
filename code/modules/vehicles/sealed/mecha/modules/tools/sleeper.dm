@@ -115,11 +115,12 @@
 		return
 	switch(action)
 		if("stasisLevel")
+			var/level
 			vehicle_log_for_admins(
 				actor,
 				"setStasis",
 				list(
-					"level" = ,
+					"level" = level,
 				)
 			)
 			#warn impl
