@@ -98,15 +98,20 @@
 		return TRUE
 	return ..()
 
-/obj/vehicle/sealed/mecha/fighter/can_ztravel()
-	return (landing_gear_raised && has_charge(step_energy_drain))
-
-// No falling if we've got our boosters on
-/obj/vehicle/sealed/mecha/fighter/can_fall()
-	if(landing_gear_raised && has_charge(step_energy_drain))
-		return FALSE
-	else
+/obj/vehicle/sealed/mecha/fighter/can_overcome_gravity(mob/emit_feedback_to)
+	if(flight_mode)
 		return TRUE
+	return ..()
+
+/obj/vehicle/sealed/mecha/fighter/process_overcome_gravity(time_required, mob/emit_feedback_to)
+	if(flight_mode)
+		time_required *= 0.25
+		if(time_required >= 1 SECONDS)
+			#warn burn sound / noise for everyone around
+		if(do_vehicle(src, time_required))
+			return TRUE
+		return FALSE
+	return ..()
 
 /obj/vehicle/sealed/mecha/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()

@@ -126,6 +126,8 @@
 			currentpipe.ventcrawl_to(src, currentpipe.node2, direction)
 	return ..()
 
+#warn obliterate this shit
+
 /mob/observer/can_ztravel()
 	return TRUE
 

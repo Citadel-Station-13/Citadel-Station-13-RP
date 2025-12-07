@@ -19,12 +19,3 @@
 		else if((direct & WEST) && x > 1)
 			x--
 	Moved(oldloc, direct, FALSE)
-
-/mob/observer/dead/process_spacemove(drifting, movement_dir, just_checking)
-	return TRUE
-
-/mob/observer/dead/canface()
-	return TRUE
-
-/mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
-	return TRUE // ghosts don't block
