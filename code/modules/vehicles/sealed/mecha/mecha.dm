@@ -173,24 +173,6 @@
 			continue
 		#warn impl
 
-/obj/vehicle/sealed/mecha/vehicle_turn(direction)
-	if(dir == direction)
-		return TRUE
-	. = ..()
-	if(.)
-		#warn set move delay
-
-/obj/vehicle/sealed/mecha/vehicle_move(direction)
-	// Mechs have a special movement controller.
-	if(strafing)
-		// Strafing: Usually comes with a move delay but doesn't turn the mech.
-		#warn handle strafing
-	else if(!(direction & dir))
-		// Normal: Turn the mech if we're not travelling vaguely in our dir.
-		#warn handle turn
-
-	return vehicle_move(direction, dir)
-
 /obj/vehicle/sealed/mecha/proc/user_set_strafing(datum/event_args/actor/actor, active)
 	if(!set_strafing(active))
 		return FALSE

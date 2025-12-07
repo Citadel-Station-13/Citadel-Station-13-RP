@@ -29,11 +29,11 @@
 /**
  * Called to hook in target scrambling from the vehicle, like from inherent inaccuracy / damage.
  */
-/obj/vehicle/proc/request_click_target_scrmabling(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/vehicle/proc/request_click_target_scrambling(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return target
 
 /**
  * Called to hook in target scrambling from the vehicle, like from inherent inaccuracy / damage.
  */
-/obj/vehicle/proc/request_click_angle_scrmabling(angle, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/vehicle/proc/request_click_angle_scrambling(angle, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return angle

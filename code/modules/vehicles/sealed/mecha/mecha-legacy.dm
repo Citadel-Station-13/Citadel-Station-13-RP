@@ -241,22 +241,6 @@
 
 	return max(1, round(tally, 0.1))	// Round the total to the nearest 10th. Can't go lower than 1 tick. Even humans have a delay longer than that.
 
-/obj/vehicle/sealed/mecha/proc/dyndomove(direction)
-	var/atom/oldloc = loc
-
-	if(overload)//Check if you have leg overload
-		integrity--
-		if(integrity < initial(integrity) - initial(integrity)/3)
-			overload = 0
-			src.occupant_message("<font color='red'>Leg actuators damage threshold exceded. Disabling overload.</font>")
-	var/move_result = 0
-	//Up/down zmove
-	if(direction & UP || direction & DOWN)
-		if(!can_ztravel())
-			occupant_message("<span class='warning'>Your vehicle lacks the capacity to move in that direction!</span>")
-			return FALSE
-	return 0
-
 /obj/vehicle/sealed/mecha/Bump(atom/obstacle)
 	// TODO: refactor phasing.
 	if(phasing && (estimate_cell_power_remaining() >= phasing_energy_drain))
@@ -361,7 +345,6 @@
 		else
 			occupant_message("Nothing happens")
 
-
 /obj/vehicle/sealed/mecha/verb/disconnect_from_port()
 	set name = "Disconnect from port"
 	set category = "Exosuit Interface"
@@ -404,19 +387,6 @@
 	use_internal_tank = !use_internal_tank
 	src.occupant_message("Now taking air from [use_internal_tank?"internal airtank":"environment"].")
 	playsound(src, 'sound/mecha/gasdisconnected.ogg', 30, 1)
-
-/obj/vehicle/sealed/mecha/verb/toggle_strafing()
-	set name = "Toggle strafing"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-	strafing()
-
-/obj/vehicle/sealed/mecha/proc/strafing()
-	if(usr!=src.occupant_legacy)
-		return
-	strafing = !strafing
-	src.occupant_message("Toggled strafing mode [strafing?"on":"off"].")
 
 /obj/vehicle/sealed/mecha/proc/play_entered_noise(var/mob/who)
 	if(!hasInternalDamage()) //Otherwise it's not nominal!

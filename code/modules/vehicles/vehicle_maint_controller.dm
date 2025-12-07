@@ -86,7 +86,7 @@
 			var/mode_all = params["mode"] == "all"
 			if(!access || !SSjob.access_id_lookup[params["id"]])
 				return
-			if(!mode)
+			if(!mode_all)
 				if(access in vehicle.access_maint_req_one)
 					LAZYREMOVE(vehicle.access_maint_req_one, access)
 				else

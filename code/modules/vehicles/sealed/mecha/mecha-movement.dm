@@ -13,11 +13,7 @@
 			occupant_send_default_chat("You cannot turn while zoom-mode is turned on.")
 		return FALSE
 	// -- END
-
-	if(!draw_sourced_power_oneoff("actuators", "actuators", turn_cost_base))
-		return FALSE
-
-	return vehicle_turn(direction)
+	return ..()
 
 /obj/vehicle/sealed/mecha/user_vehicle_move(direction, face_direction)
 	// -- LEGACY BULLSHIT
@@ -30,10 +26,6 @@
 			occupant_send_default_chat("You cannot move while connected to an air port.")
 		return
 	// -- END
-
-	if(!draw_sourced_power_oneoff("actuators", "actuators", move_cost_base))
-		return FALSE
-
 	var/stacks_of_miscalibration = fault_check(/datum/mecha_fault/calibration_lost)
 	if(stacks_of_miscalibration)
 		if(stacks_of_miscalibration > 15)
@@ -69,13 +61,29 @@
 	return vehicle_move(direction, face_direction)
 
 /obj/vehicle/sealed/mecha/vehicle_turn(direction)
+	if(dir == direction)
+		return TRUE
+	if(!draw_sourced_power_oneoff("actuators", "actuators", turn_cost_base))
+		return FALSE
 	. = ..()
 	if(!.)
 		return
+	#warn set turn delay
 	if(turn_sound)
 		playsound(src, turn_sound, 40, TRUE)
 
+#warn strafing / not strafing should be handled in user, vehicle move should move without turning
+
 /obj/vehicle/sealed/mecha/vehicle_move(direction)
+	if(!draw_sourced_power_oneoff("actuators", "actuators", move_cost_base))
+		return FALSE
+	// Mechs have a special movement controller.
+	if(strafing)
+		// Strafing: Usually comes with a move delay but doesn't turn the mech.
+		#warn handle strafing
+	else if(!(direction & dir))
+		// Normal: Turn the mech if we're not travelling vaguely in our dir.
+		#warn handle turn
 	. = ..()
 	if(!.)
 		return

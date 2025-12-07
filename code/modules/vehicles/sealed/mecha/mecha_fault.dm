@@ -11,23 +11,60 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 /**
  * relatively stateless thingys
  * * can be stacked.
- * * is stateless because status effects should be used for stateful ones.
+ * * shows up in UI
  */
 /datum/mecha_fault
 	var/name = "unknown fault"
 	var/desc = "A critical fault in the exosuit's systems."
+	var/requires_ticking = TRUE
 
+	#warn hook these
+	var/sfx_on_apply = 'sound/mecha/critdestrnano.ogg'
+	var/sfx_on_apply_vol = 75
+	var/sfx_on_apply_external
+	var/sfx_on_apply_vary = TRUE
+
+	var/sfx_on_remove
+	var/sfx_on_remove_vol = 75
+	var/sfx_on_remove_external
+	var/sfx_on_remove_vary = TRUE
+
+	var/sfx_on_gain_stack
+	var/sfx_on_gain_stack_vol = 75
+	var/sfx_on_gain_stack_external
+	var/sfx_on_gain_stack_vary = TRUE
+
+	var/sfx_on_lose_stack
+	var/sfx_on_lose_stack_vol = 75
+	var/sfx_on_lose_stack_external
+	var/sfx_on_lose_stack_vary = TRUE
+
+#warn ways of inflicting these lol.
+
+/**
+ * * Called before `on_stack_change`
+ * * It is undefined whether `mecha_fault_stacks` on the mecha will be changed before or after
+ *   this call; use `on_stack_change` for behavior that cares.
+ */
 /datum/mecha_fault/proc/on_apply(obj/vehicle/sealed/mecha/mech)
+	return
 
-#warn ways of inflicting these lol
-
+/**
+ * * Called after `on_stack_change`
+ * * It is undefined whether `mecha_fault_stacks` on the mecha will be changed before or after
+ *   this call; use `on_stack_change` for behavior that cares.
+ */
 /datum/mecha_fault/proc/on_remove(obj/vehicle/sealed/mecha/mech)
+	return
 
 /**
  * * called after on_apply
  * * called before on_remove
+ * * It is undefined whether `mecha_fault_stacks` on the mecha will be changed before or after
+ *   this call; use the arguments.
  */
 /datum/mecha_fault/proc/on_stack_change(obj/vehicle/sealed/mecha/mecha, old_stacks, new_stacks)
+	return
 
 /datum/mecha_fault/proc/tick(obj/vehicle/sealed/mecha/mech, stacks = 1, dt = 1)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -35,6 +72,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 	on_tick(mech, stacks)
 
 /datum/mecha_fault/proc/on_tick(obj/vehicle/sealed/mecha/mech, stacks, dt)
+	return
 
 #warn impl
 
@@ -47,6 +85,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 /datum/mecha_fault/tank_breach
 	name = "tank breach"
 	desc = "The exosuit's internal airtank is leaking air."
+	// TODO: sfx
 
 /datum/mecha_fault/tank_breach/on_tick(obj/vehicle/sealed/mecha/mech, stacks, dt)
 	..()
@@ -64,6 +103,8 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 /datum/mecha_fault/internal_fire
 	name = "internal fire"
 	desc = "Something has ignited inside the cabin's backplane"
+	sfx_on_apply = 'sound/mecha/internaldmgalarm.ogg'
+	// TODO: sfx
 
 /datum/mecha_fault/internal_fire/on_tick(obj/vehicle/sealed/mecha/mech, stacks, dt)
 	..()
@@ -73,7 +114,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 
 /datum/mecha_fault/internal_fire/on_remove(obj/vehicle/sealed/mecha/mech)
 	..()
-// 'sound/mecha/internaldmgalarm.ogg'
+//
 #warn warn occupant
 
 /**
@@ -86,6 +127,8 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 /datum/mecha_fault/calibration_lost
 	name = "calibration lost"
 	desc = "The exosuit is experiencing control issues with its actuators."
+	// TODO: sfx
+	requires_ticking = FALSE
 
 /**
  * causes:
@@ -96,6 +139,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 /datum/mecha_fault/cabin_breach
 	name = "cabin breach"
 	desc = "The exosuit is leaking air from its cabin!"
+	// TODO: sfx
 
 /datum/mecha_fault/cabin_breach/on_tick(obj/vehicle/sealed/mecha/mech, stacks, dt)
 	..()
@@ -112,14 +156,17 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 /datum/mecha_fault/temperature_control
 	name = "thermal controller instability"
 	desc = "The exosuit's thermal controller is malfunctioning."
+	// TODO: sfx
 
 /datum/mecha_fault/temperature_control/on_apply(obj/vehicle/sealed/mecha/mech)
 	..()
-	#warn message if on fire
+	mech.occupant_send_default_chat(SPAN_BOLDWARNING("System: thermoregulation module offline."))
 
 /datum/mecha_fault/temperature_control/on_remove(obj/vehicle/sealed/mecha/mech)
 	..()
-	#warn message if on fire
+	mech.occupant_send_default_chat(SPAN_NOTICE("System: Thermoregulation module back online."))
+	if(mech.fault_check(/datum/mecha_fault/internal_fire))
+		mech.occupant_send_default_chat(SPAN_BOLDWARNING("System: Attempting fire supression..."))
 
 /**
  * causes:
@@ -131,6 +178,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 /datum/mecha_fault/short_circuit
 	name = "short circuit"
 	desc = "The exosuit's internal wiring has fused together."
+	// TODO: sfx
 
 /datum/mecha_fault/short_circuit/on_tick(obj/vehicle/sealed/mecha/mech, stacks, dt)
 	..()

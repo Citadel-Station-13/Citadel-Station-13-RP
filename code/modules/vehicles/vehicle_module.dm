@@ -193,14 +193,14 @@
 /**
  * Call this to hook in any target scrambling, like from inherent inaccuracy / damage.
  */
-/obj/item/vehicle_module/proc/request_click_target_scrmabling(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	return vehicle ? vehicle.request_click_target_scrmabling(target, clickchain, clickchain_flags) : target
+/obj/item/vehicle_module/proc/request_click_target_scrambling(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return vehicle ? vehicle.request_click_target_scrambling(target, clickchain, clickchain_flags) : target
 
 /**
  * Call this to hook in any target scrambling, like from inherent inaccuracy / damage.
  */
-/obj/item/vehicle_module/proc/request_click_angle_scrmabling(angle, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
-	return vehicle ? vehicle.request_click_angle_scrmabling(target, clickchain, clickchain_flags) : angle
+/obj/item/vehicle_module/proc/request_click_angle_scrambling(angle, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	return vehicle ? vehicle.request_click_angle_scrambling(angle, clickchain, clickchain_flags) : angle
 
 //* Interactions *//
 

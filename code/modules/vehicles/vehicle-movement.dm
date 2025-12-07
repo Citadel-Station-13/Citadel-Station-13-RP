@@ -5,9 +5,15 @@
 /obj/vehicle/proc/movement_delay()
 	return movespeed_hyperbolic
 
+/**
+ * Called when a user wants to turn the vehicle.
+ */
 /obj/vehicle/proc/user_vehicle_turn(direction)
 	return vehicle_turn(direction)
 
+/**
+ * Called when a user wants to move the vehicle.
+ */
 /obj/vehicle/proc/user_vehicle_move(direction, face_direction)
 	return vehicle_move(direction, face_direction)
 

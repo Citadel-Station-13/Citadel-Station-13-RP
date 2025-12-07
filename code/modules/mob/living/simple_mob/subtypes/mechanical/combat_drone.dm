@@ -80,9 +80,6 @@
 	..(null,"suddenly breaks apart.")
 	qdel(src)
 
-/obj/projectile/beam/drone
-	damage_force = 10
-
 // A slightly easier drone, for POIs.
 // Difference is that it should not be faster than you.
 /mob/living/simple_mob/mechanical/combat_drone/lesser
