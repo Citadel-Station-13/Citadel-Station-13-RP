@@ -331,6 +331,9 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "amU" = (
@@ -2045,7 +2048,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "bzj" = (
 /obj/structure/catwalk,
@@ -2641,6 +2644,9 @@
 	dir = 4
 	},
 /obj/landmark/spawnpoint/job/scientist,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "bOx" = (
@@ -5254,7 +5260,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "dyU" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
@@ -5271,6 +5277,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "dAa" = (
@@ -6555,7 +6562,7 @@
 	dir = 1
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "eqB" = (
 /obj/effect/floor_decal/borderfloor{
@@ -7124,6 +7131,9 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "eMG" = (
@@ -7206,7 +7216,7 @@
 	dir = 6
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "eSM" = (
 /obj/effect/floor_decal/borderfloor,
@@ -7589,6 +7599,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "fdv" = (
@@ -8173,6 +8184,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "fwy" = (
@@ -8495,7 +8509,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "fJj" = (
 /obj/machinery/smartfridge/chemistry,
@@ -8603,7 +8617,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "fMh" = (
 /obj/effect/floor_decal/spline/plain{
@@ -8896,6 +8910,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "fWX" = (
@@ -9045,6 +9062,9 @@
 	dir = 1
 	},
 /obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -9622,7 +9642,7 @@
 /area/hallway/d2fwdhall/endeavour)
 "gzO" = (
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "gAn" = (
 /obj/structure/closet/crate/biohazard,
@@ -10100,7 +10120,7 @@
 /area/holodeck_control)
 "gQJ" = (
 /obj/structure/flora/rock/rock4,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "gQO" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -10711,6 +10731,12 @@
 /obj/structure/bed/chair/modern_chair{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "hpC" = (
@@ -11081,7 +11107,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "hDc" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -11215,7 +11241,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/both,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "hGE" = (
 /obj/structure/railing{
@@ -12127,7 +12153,7 @@
 	dir = 4
 	},
 /obj/structure/flora/bush,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "itq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12227,7 +12253,7 @@
 /area/rnd/anomaly_lab)
 "ivV" = (
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "iwg" = (
 /obj/structure/disposalpipe/segment{
@@ -12356,7 +12382,7 @@
 /area/medical/medbay4)
 "iAd" = (
 /obj/structure/flora/grass/both,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "iAl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12842,11 +12868,14 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "iRZ" = (
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "iSa" = (
 /obj/machinery/camera/network/research{
@@ -12926,7 +12955,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "iVM" = (
 /obj/structure/toilet{
@@ -12994,7 +13023,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "iZQ" = (
 /mob/living/bot/secbot/slime/slimesky,
@@ -14160,7 +14189,7 @@
 	dir = 9
 	},
 /obj/structure/flora/grass/both,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "jRb" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -14856,7 +14885,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "ktj" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -14948,6 +14977,9 @@
 	},
 /obj/landmark/spawnpoint/job/scientist,
 /obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/patterened/purple,
@@ -15362,6 +15394,9 @@
 /area/medical/sleeper)
 "kOA" = (
 /obj/machinery/vending/snack,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "kPx" = (
@@ -15758,7 +15793,7 @@
 	dir = 8
 	},
 /obj/structure/flora/rock/rock3,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "lbt" = (
 /obj/structure/table/reinforced,
@@ -16155,7 +16190,7 @@
 "lrz" = (
 /obj/structure/flora/bush,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "lrJ" = (
 /obj/structure/cable{
@@ -17512,6 +17547,9 @@
 /obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
@@ -20285,7 +20323,7 @@
 	pixel_y = 7;
 	pixel_x = -13
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "ooj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -22078,7 +22116,7 @@
 /area/medical/medbay_primary_storage)
 "pzn" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "pzO" = (
 /obj/structure/cable/green{
@@ -22957,6 +22995,9 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "pYv" = (
@@ -23011,7 +23052,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "pZS" = (
 /obj/structure/table/steel_reinforced,
@@ -23261,6 +23302,9 @@
 /area/crew_quarters/medbreak)
 "qks" = (
 /obj/machinery/vending/cola,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "qls" = (
@@ -24245,7 +24289,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d2aftmaint/endeavour)
 "qTZ" = (
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "qUX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -24420,7 +24464,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "rbx" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -25993,7 +26037,7 @@
 	dir = 10
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "spw" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
@@ -26130,6 +26174,12 @@
 /area/rnd/research/researchdivision)
 "suZ" = (
 /obj/structure/bed/chair/comfy/beige,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "svc" = (
@@ -27181,6 +27231,9 @@
 /obj/machinery/camera/network/medbay{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "thc" = (
@@ -27212,6 +27265,9 @@
 /area/rnd/chemistry_lab)
 "thW" = (
 /obj/structure/table/glass,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
 "thZ" = (
@@ -27604,6 +27660,15 @@
 /obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
+"tue" = (
+/obj/structure/bed/chair/modern_chair{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/purple,
+/area/rnd/breakroom)
 "tut" = (
 /obj/machinery/artifact_analyser,
 /turf/simulated/floor/tiled/dark,
@@ -27687,6 +27752,9 @@
 /obj/structure/table/glass,
 /obj/machinery/photocopier/faxmachine{
 	department = "Research Break Room"
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/carpet/patterened/purple,
 /area/rnd/breakroom)
@@ -27994,6 +28062,9 @@
 "tIh" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
@@ -28560,7 +28631,7 @@
 	pixel_y = 5;
 	pixel_x = -1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "ufe" = (
 /obj/structure/cable/green{
@@ -28619,6 +28690,9 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
@@ -29125,7 +29199,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "uBa" = (
 /obj/structure/sign/directions/medical{
@@ -29832,7 +29906,7 @@
 /area/medical/virologymaint)
 "vdU" = (
 /obj/structure/flora/grass/both,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "vem" = (
 /obj/structure/table/steel_reinforced,
@@ -29883,7 +29957,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "vhp" = (
 /obj/structure/cable/green{
@@ -29987,7 +30061,7 @@
 "vmL" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "vnp" = (
 /obj/structure/cable/green{
@@ -30088,7 +30162,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "vrg" = (
 /obj/spawner/window/low_wall/reinforced,
@@ -30142,6 +30216,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "vtx" = (
@@ -31152,7 +31227,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "wcx" = (
 /obj/machinery/door/airlock/maintenance/medical{
@@ -32123,7 +32198,7 @@
 /area/station/medical/virology_aft_access/endeavour)
 "wGZ" = (
 /obj/structure/flora/bush,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "wHh" = (
 /obj/structure/closet/secure_closet/medical1,
@@ -32230,7 +32305,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/public_meeting_room/endeavour)
 "wKx" = (
 /obj/machinery/fire_alarm/south_mount{
@@ -32281,6 +32356,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
+/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "wNb" = (
@@ -33418,7 +33494,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "xyo" = (
 /obj/machinery/camera/network/outside{
@@ -33805,7 +33881,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d2afthall/endeavour)
 "xLl" = (
 /obj/machinery/camera/network/research{
@@ -50661,7 +50737,7 @@ fMl
 moK
 hpi
 kyn
-hpi
+tue
 fiD
 tIh
 amq

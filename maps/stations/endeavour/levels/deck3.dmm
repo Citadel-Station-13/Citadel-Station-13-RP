@@ -167,6 +167,9 @@
 	pixel_y = 27
 	},
 /obj/item/paicard,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/hallway/d3fwdhall/endeavour)
 "aiW" = (
@@ -481,7 +484,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "atT" = (
 /obj/structure/cable/green{
@@ -568,7 +571,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "awQ" = (
 /turf/simulated/wall/prepainted/civilian,
@@ -694,7 +697,7 @@
 	dir = 5
 	},
 /obj/structure/flora/rock/rock3,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "aAS" = (
 /obj/machinery/air_alarm{
@@ -878,7 +881,8 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/snow/snow2,
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "aGx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1314,6 +1318,9 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 27
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "aSN" = (
@@ -1675,6 +1682,9 @@
 /area/quartermaster/foyer)
 "bfd" = (
 /obj/machinery/fire_alarm/east_mount,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "bfz" = (
@@ -1823,12 +1833,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ywflowers,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/grass,
+/obj/structure/flora/grass/brown,
+/turf/simulated/floor/snow/snow2/fake,
 /area/quartermaster/foyer)
 "bki" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1836,6 +1846,9 @@
 /area/security/brig)
 "bkP" = (
 /obj/machinery/air_alarm/east_mount,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "blj" = (
@@ -1895,6 +1908,12 @@
 /area/security/hallway)
 "bmF" = (
 /obj/structure/flora/pottedplant/xmas,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "bno" = (
@@ -2002,7 +2021,7 @@
 /area/hallway/d3fwdhall/endeavour)
 "bqn" = (
 /obj/structure/flora/rock/rock3,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "bqo" = (
 /obj/structure/table,
@@ -2293,7 +2312,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "bBF" = (
 /obj/effect/shuttle_landmark/automatic{
@@ -2321,8 +2340,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass,
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/snow/snow2/fake,
 /area/quartermaster/foyer)
 "bCs" = (
 /obj/structure/table/wooden_reinforced,
@@ -2407,7 +2426,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "bFp" = (
 /obj/structure/table/standard,
@@ -2807,7 +2826,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "bUW" = (
 /turf/simulated/floor/tiled,
@@ -2875,7 +2894,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "bYP" = (
 /obj/structure/disposalpipe/segment{
@@ -3032,7 +3051,7 @@
 /obj/effect/floor_decal/spline/plain/corner{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "ciU" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3170,7 +3189,8 @@
 	},
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "coF" = (
 /obj/structure/flora/pottedplant/subterranean,
@@ -3225,6 +3245,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/carpet/patterened/purple,
 /area/crew_quarters/game_room)
 "crH" = (
@@ -3659,6 +3680,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/hallway/d3fwdhall/endeavour)
@@ -4217,6 +4241,12 @@
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
+"dcI" = (
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/game_room)
 "ddh" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/security/brig)
@@ -5035,7 +5065,7 @@
 /obj/item/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "dIB" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -5186,7 +5216,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "dME" = (
 /obj/machinery/station_map{
@@ -5346,7 +5376,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "dSm" = (
 /obj/machinery/light{
@@ -5435,6 +5465,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = -26
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/carpet/patterened/purple,
 /area/crew_quarters/game_room)
 "dTZ" = (
@@ -5780,7 +5811,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "efa" = (
 /obj/machinery/vending/coffee,
@@ -6053,7 +6084,7 @@
 	dir = 8
 	},
 /obj/structure/sign/christmas/lights,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "eqo" = (
 /obj/structure/extinguisher_cabinet{
@@ -6375,6 +6406,9 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/hallway/d3fwdhall/endeavour)
 "eBf" = (
@@ -6463,7 +6497,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "eEa" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
@@ -7958,6 +7992,7 @@
 /area/security/brig)
 "fNf" = (
 /obj/machinery/light,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "fNj" = (
@@ -8348,7 +8383,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "fYn" = (
 /obj/effect/floor_decal/corner/red{
@@ -8448,7 +8483,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "gal" = (
 /obj/machinery/requests_console/preset/cargo{
@@ -8621,7 +8656,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "glG" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -8972,7 +9007,7 @@
 /area/hallway/d3afthall/endeavour)
 "gvm" = (
 /obj/structure/flora/bush,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "gvA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9261,7 +9296,7 @@
 /obj/effect/floor_decal/spline/plain/corner{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "gJu" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -9693,7 +9728,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "gYg" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -10694,7 +10729,7 @@
 "hGu" = (
 /obj/item/reagent_containers/glass/bucket/wood,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "hHe" = (
 /obj/effect/floor_decal/industrial/outline/red,
@@ -10775,7 +10810,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "hKY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11782,7 +11817,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "iur" = (
 /obj/structure/table/steel,
@@ -12050,6 +12085,9 @@
 /obj/machinery/media/jukebox,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 4
 	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/game_room)
@@ -12442,7 +12480,8 @@
 	},
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/flora/grass/both,
-/turf/simulated/floor/snow/snow2,
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "iWE" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -12598,11 +12637,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/stalkybush,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/rock/rock3,
+/turf/simulated/floor/snow/snow2/fake,
 /area/quartermaster/foyer)
 "jdI" = (
 /obj/structure/table/bench/steel,
@@ -13792,7 +13831,7 @@
 	},
 /obj/structure/flora/grass/both,
 /obj/structure/sign/christmas/lights,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "jYd" = (
 /obj/structure/table/rack/shelf/steel,
@@ -13986,6 +14025,13 @@
 "kdY" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/hallway/d3aftmaint/endeavour)
+"keb" = (
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/wood,
+/area/crew_quarters/game_room)
 "keU" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/yellow{
@@ -14227,7 +14273,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "klU" = (
 /obj/effect/floor_decal/spline/plain{
@@ -14379,7 +14425,7 @@
 "ktv" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/flora/grass/both,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "ktJ" = (
 /obj/machinery/media/jukebox,
@@ -14902,7 +14948,7 @@
 	dir = 1
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "kRu" = (
 /obj/structure/poster/preset/baystation/bay_50{
@@ -14964,6 +15010,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "kUM" = (
@@ -14987,7 +15036,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "kWu" = (
 /obj/effect/floor_decal/rust,
@@ -15005,6 +15054,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/carpet/patterened/purple,
 /area/crew_quarters/game_room)
 "kXP" = (
@@ -15046,6 +15096,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
+"kZC" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/flora/grass/brown,
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/snow/snow2/fake,
+/area/hydroponics/garden)
 "lag" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -15105,7 +15161,7 @@
 	dir = 9
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "lcL" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -15365,7 +15421,7 @@
 "lot" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "lpr" = (
 /obj/machinery/light{
@@ -16031,6 +16087,7 @@
 "lNU" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/cards,
+/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/carpet/patterened/purple,
 /area/crew_quarters/game_room)
 "lOf" = (
@@ -16158,6 +16215,9 @@
 	dir = 4
 	},
 /obj/machinery/vending/nifsoft_shop,
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/crew_quarters/game_room)
 "lUH" = (
@@ -16167,14 +16227,14 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ppflowers,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/grass/green,
+/turf/simulated/floor/snow/snow2/fake,
 /area/quartermaster/foyer)
 "lVi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16212,7 +16272,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "lXa" = (
 /obj/structure/cable{
@@ -16413,7 +16473,7 @@
 	dir = 1
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "mfU" = (
 /obj/machinery/power/apc/south_mount,
@@ -16499,7 +16559,7 @@
 "mik" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/flora/bush,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "miu" = (
 /obj/machinery/door/airlock/maintenance,
@@ -16563,7 +16623,7 @@
 "mkn" = (
 /obj/structure/lightpost/urban,
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "mkK" = (
 /obj/effect/floor_decal/corner/red{
@@ -16611,7 +16671,7 @@
 	dir = 5
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "mlH" = (
 /obj/structure/fitness/weightlifter,
@@ -16718,7 +16778,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "mnL" = (
 /turf/simulated/floor/carpet,
@@ -17076,7 +17136,7 @@
 	dir = 1
 	},
 /obj/structure/sign/christmas/lights,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "mDJ" = (
 /obj/structure/window/reinforced{
@@ -18011,7 +18071,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "nlw" = (
 /obj/item/radio/intercom/north_mount,
@@ -18052,7 +18112,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "nnu" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -18174,6 +18234,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
+"nqS" = (
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/wood,
+/area/crew_quarters/game_room)
 "nrV" = (
 /turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/storage)
@@ -18545,7 +18612,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "nGI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -19301,7 +19368,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "oeY" = (
 /obj/structure/railing,
@@ -19351,6 +19418,9 @@
 "ogU" = (
 /obj/machinery/camera/network/civilian,
 /obj/structure/flora/pottedplant/xmas,
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "ohc" = (
@@ -19550,7 +19620,7 @@
 /area/vacant/vacant_shop)
 "orm" = (
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "orr" = (
 /obj/structure/disposalpipe/segment{
@@ -19596,7 +19666,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "oth" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -19719,7 +19789,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "owz" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -19797,7 +19867,7 @@
 "ozn" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "ozu" = (
 /obj/machinery/space_heater,
@@ -20024,7 +20094,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "oGr" = (
 /obj/fiftyspawner/wood,
@@ -20188,6 +20258,9 @@
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
@@ -20464,7 +20537,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "pbc" = (
 /obj/effect/floor_decal/corner/brown/diagonal,
@@ -20866,7 +20939,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/vacant/vacant_shop)
 "pmY" = (
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "pnc" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -20897,7 +20970,7 @@
 	},
 /obj/structure/flora/grass/both,
 /obj/structure/sign/christmas/lights,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "poa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21086,7 +21159,7 @@
 /obj/effect/floor_decal/spline/plain/corner{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "pvx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21230,7 +21303,7 @@
 	dir = 5
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "pzs" = (
 /obj/structure/disposalpipe/segment,
@@ -21471,7 +21544,7 @@
 	dir = 9
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "pQv" = (
 /obj/machinery/door/firedoor,
@@ -21793,7 +21866,7 @@
 /area/security/brig)
 "pYS" = (
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "pYU" = (
 /obj/structure/cable/green{
@@ -22034,7 +22107,7 @@
 /area/hallway/d3portamidhall/endeavour)
 "qhD" = (
 /obj/structure/flora/tree/pine/xmas,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "qhP" = (
 /obj/machinery/holopad,
@@ -22063,7 +22136,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "qiz" = (
 /obj/structure/table/borosilicate,
@@ -22978,7 +23051,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "qPz" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -23151,7 +23224,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "qXF" = (
 /obj/machinery/door/firedoor{
@@ -23695,7 +23768,7 @@
 	pixel_y = 6
 	},
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "rxl" = (
 /obj/machinery/newscaster{
@@ -23791,6 +23864,9 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/patterened/magneta,
@@ -23972,7 +24048,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "rFN" = (
 /obj/machinery/light/small{
@@ -25380,7 +25456,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "swy" = (
 /turf/simulated/wall/prepainted,
@@ -25685,7 +25761,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "sIY" = (
 /obj/effect/floor_decal/industrial/outline{
@@ -27297,7 +27373,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "tTY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27897,7 +27973,7 @@
 	},
 /obj/structure/flora/grass/brown,
 /obj/structure/sign/christmas/lights,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "uni" = (
 /obj/machinery/camera/network/civilian{
@@ -27913,7 +27989,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "uny" = (
 /obj/machinery/meter,
@@ -28503,7 +28579,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "uMm" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -28596,7 +28672,7 @@
 	dir = 6
 	},
 /obj/structure/sign/christmas/lights,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "uQm" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -28686,7 +28762,7 @@
 	dir = 1
 	},
 /obj/structure/flora/grass/both,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "uUM" = (
 /obj/machinery/air_alarm{
@@ -28700,7 +28776,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "uVc" = (
 /obj/structure/janitorialcart,
@@ -29004,7 +29080,7 @@
 /obj/structure/flora/bush{
 	pixel_y = -11
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "vgl" = (
 /obj/machinery/door/firedoor{
@@ -29024,7 +29100,7 @@
 	},
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/sign/christmas/lights,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "vhx" = (
 /obj/random/trash_pile,
@@ -29234,7 +29310,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "voq" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -29752,7 +29828,7 @@
 /area/security/hallway)
 "vEq" = (
 /obj/structure/flora/rock/rock4,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "vEy" = (
 /obj/effect/floor_decal/corner/black/full,
@@ -30101,7 +30177,7 @@
 	dir = 5
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "vOp" = (
 /obj/structure/grille,
@@ -30343,7 +30419,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "vWL" = (
 /obj/effect/floor_decal/corner/red{
@@ -30819,7 +30895,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "wmU" = (
 /obj/structure/table/steel_reinforced,
@@ -31485,7 +31561,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/grassybush,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
@@ -31493,7 +31568,8 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/grass/both,
+/turf/simulated/floor/snow/snow2/fake,
 /area/quartermaster/foyer)
 "wKK" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -31572,7 +31648,8 @@
 /area/maintenance/starboardsolar)
 "wOA" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/obj/structure/sign/christmas/lights,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "wPE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -32103,7 +32180,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "xeq" = (
 /obj/structure/cable/green{
@@ -32823,6 +32900,12 @@
 	},
 /obj/structure/table/wooden_reinforced,
 /obj/item/deck/tarot,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/carpet/patterened/magneta,
 /area/crew_quarters/game_room)
 "xEC" = (
@@ -33137,7 +33220,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "xNI" = (
 /obj/item/radio/intercom{
@@ -33221,7 +33304,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "xSF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -33350,6 +33433,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
+"xXa" = (
+/obj/structure/table/wooden_reinforced,
+/obj/structure/sign/christmas/lights{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/magneta,
+/area/crew_quarters/game_room)
 "xXk" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -33383,7 +33473,7 @@
 /obj/structure/sign/christmas/lights{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "xXF" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -33432,7 +33522,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "xYM" = (
 /obj/effect/mist,
@@ -33526,13 +33616,16 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "yer" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/sign/christmas/lights{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -33605,7 +33698,7 @@
 	dir = 1
 	},
 /obj/structure/sign/christmas/lights,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hydroponics/garden)
 "yil" = (
 /obj/structure/bed/chair/office/dark{
@@ -52404,7 +52497,7 @@ nsm
 kRs
 pmY
 vEq
-ozn
+kZC
 blM
 uVT
 okS
@@ -53568,7 +53661,7 @@ fub
 eaJ
 eaJ
 eaJ
-eaJ
+crH
 blM
 obw
 xMc
@@ -54347,11 +54440,11 @@ oeN
 pnV
 hJb
 xDS
-hnK
+xXa
 rAW
 oOG
-jmL
-jmL
+dcI
+keb
 daj
 daj
 daj
@@ -55903,7 +55996,7 @@ iDG
 lUz
 bfd
 bkP
-jmL
+nqS
 xps
 aVI
 sPv

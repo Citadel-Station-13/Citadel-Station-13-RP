@@ -1108,7 +1108,7 @@
 /area/hallway/d1fwdhall/endeavour)
 "aKB" = (
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "aKC" = (
 /obj/machinery/air_alarm{
@@ -1173,7 +1173,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "aOp" = (
-/obj/structure/flora/pottedplant/minitree,
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aPQ" = (
@@ -1258,7 +1258,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "aUt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3578,7 +3578,7 @@
 	pixel_y = -4;
 	pixel_x = -12
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/station/exploration/hallway_aft/endeavour)
 "cDQ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -3700,7 +3700,7 @@
 	name = "Steffansson"
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/station/exploration/hallway_aft/endeavour)
 "cJy" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -4147,7 +4147,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/station/exploration/hallway_aft/endeavour)
 "cZw" = (
 /obj/machinery/power/apc/north_mount,
@@ -8230,7 +8230,6 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "fNh" = (
-/obj/structure/flora/pottedplant/minitree,
 /obj/machinery/fire_alarm/north_mount{
 	dir = 1;
 	pixel_y = -21
@@ -8239,6 +8238,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "fNp" = (
@@ -11235,7 +11235,7 @@
 	dir = 8
 	},
 /obj/structure/flora/bush,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/station/exploration/hallway_aft/endeavour)
 "ijf" = (
 /obj/machinery/light,
@@ -11747,7 +11747,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "iDH" = (
 /obj/machinery/light,
@@ -12917,7 +12917,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "jvV" = (
 /obj/structure/mirror{
@@ -13185,7 +13185,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "jEi" = (
 /obj/machinery/recharge_station,
@@ -13432,7 +13432,7 @@
 /obj/structure/railing,
 /obj/structure/flora/bush,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "jJL" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -14148,7 +14148,7 @@
 /area/hallway/sauna/endeavour)
 "klj" = (
 /obj/structure/flora/grass/green,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "klV" = (
 /obj/machinery/air_alarm/north_mount,
@@ -14993,7 +14993,7 @@
 /area/chapel/main)
 "kOT" = (
 /obj/structure/flora/rock/rock2,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "kOV" = (
 /obj/machinery/door/firedoor{
@@ -15859,7 +15859,7 @@
 /obj/stucture/flora/rock/crystal_large{
 	pixel_x = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/exploration/meeting)
 "lus" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16538,6 +16538,9 @@
 /obj/structure/sign/christmas/lights{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/patterened/green,
 /area/crew_quarters/coffee_shop)
 "lRT" = (
@@ -16988,7 +16991,7 @@
 	pixel_x = 32
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "miT" = (
 /obj/structure/cable/green{
@@ -19240,7 +19243,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "nNH" = (
 /obj/structure/table/standard,
@@ -19812,7 +19815,7 @@
 	dir = 5
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/station/exploration/hallway_aft/endeavour)
 "oiQ" = (
 /obj/structure/catwalk,
@@ -20600,7 +20603,7 @@
 /obj/stucture/flora/rock/crystal_large{
 	pixel_x = -1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/exploration/meeting)
 "oSH" = (
 /obj/structure/table/woodentable,
@@ -23143,7 +23146,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "qIc" = (
 /obj/machinery/air_alarm{
@@ -23804,7 +23807,7 @@
 /obj/stucture/flora/rock/crystal_large{
 	pixel_x = 1
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/exploration/meeting)
 "rdf" = (
 /obj/structure/bookcase{
@@ -24800,7 +24803,7 @@
 /area/hallway/d1portforhall/endeavour)
 "rSs" = (
 /obj/structure/flora/rock/rock1,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "rSz" = (
 /obj/structure/handrail{
@@ -24996,7 +24999,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "rZl" = (
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "rZw" = (
 /obj/random/maintenance/security,
@@ -26556,7 +26559,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "teT" = (
 /obj/structure/window/reinforced{
@@ -26943,10 +26946,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/d1portforhall/endeavour)
 "tve" = (
-/obj/structure/flora/pottedplant,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
+/obj/structure/flora/pottedplant/xmas,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "tvl" = (
@@ -27662,7 +27665,7 @@
 "tUe" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "tUS" = (
 /obj/structure/cable/green{
@@ -29077,7 +29080,7 @@
 "uLs" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "uLN" = (
 /obj/structure/cable/green{
@@ -29415,7 +29418,7 @@
 /area/hallway/secondary/docking_hallway)
 "uZh" = (
 /obj/machinery/light,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "uZA" = (
 /obj/structure/poster/nanotrasen{
@@ -31221,7 +31224,7 @@
 /area/exploration/pilot_Office)
 "woL" = (
 /obj/structure/flora/tree/pine,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "woM" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -31745,7 +31748,7 @@
 /area/vacant/vacant_bar)
 "wJX" = (
 /obj/structure/flora/grass/both,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/hallway/d1portforhall/endeavour)
 "wKv" = (
 /obj/structure/cable/green{
@@ -32719,7 +32722,7 @@
 	dir = 6
 	},
 /obj/structure/flora/grass/brown,
-/turf/simulated/floor/snow/snow2,
+/turf/simulated/floor/snow/snow2/fake,
 /area/station/exploration/hallway_aft/endeavour)
 "xuK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

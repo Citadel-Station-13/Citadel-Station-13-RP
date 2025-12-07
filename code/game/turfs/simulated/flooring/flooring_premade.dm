@@ -592,6 +592,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	icon_state = "snowyplayingdrift"
 	initial_flooring = /datum/prototype/flooring/snow/plating/drift
 
+/turf/simulated/floor/snow/snow2/fake
+	name = "snow"
+	icon_state = "snow"
+	initial_flooring = /datum/prototype/flooring/snow/snow2/fake
 
 // Roguetown Floors
 /turf/simulated/floor/roguetown/wood

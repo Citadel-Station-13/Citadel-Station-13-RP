@@ -3522,7 +3522,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "dfs" = (
@@ -6783,6 +6783,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/structure/sign/christmas/lights{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4starboardforhall/endeavour)
 "fVo" = (
@@ -9561,6 +9564,13 @@
 /obj/map_helper/access_helper/airlock/station/maintenance,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
+"ivi" = (
+/obj/structure/snowman{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/turf/simulated/floor/tiled/freezer/cold,
+/area/crew_quarters/kitchen)
 "ivx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9860,7 +9870,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "iIw" = (
@@ -10725,6 +10735,12 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4starboardforhall/endeavour)
+"jra" = (
+/obj/structure/sign/christmas/lights{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "jrF" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/tiled/techmaint,
@@ -15572,7 +15588,7 @@
 	name = "Bar Shutters"
 	},
 /obj/item/material/ashtray/glass,
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "nJT" = (
@@ -16479,7 +16495,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "oEL" = (
@@ -17813,7 +17829,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "pXJ" = (
@@ -18263,7 +18279,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "qxC" = (
@@ -19008,7 +19024,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "rhM" = (
@@ -21436,7 +21452,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "tIM" = (
@@ -21893,7 +21909,7 @@
 	id = "bar";
 	name = "Bar Shutters"
 	},
-/obj/structure/table/fancyblack,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "udV" = (
@@ -47119,7 +47135,7 @@ sBb
 cWM
 vig
 mLD
-swV
+jra
 fUv
 fUv
 fUv
@@ -49061,7 +49077,7 @@ aCV
 vQA
 jLs
 xES
-aCV
+ivi
 aHb
 mWZ
 kaa

@@ -37,6 +37,9 @@
 	icon_base = "snow"
 	flooring_flags = TURF_HAS_EDGES
 
+/datum/prototype/flooring/snow/snow2/fake
+	desc = "Upon closer inspection, you find out this isn't even real snow."
+
 /datum/prototype/flooring/snow/gravsnow2
 	name = "gravsnow"
 	icon = 'icons/turf/snow.dmi'
