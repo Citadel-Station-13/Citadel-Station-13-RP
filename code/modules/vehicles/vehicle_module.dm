@@ -28,10 +28,10 @@
 	/// Classes
 	var/module_class = NONE
 	/// dedupe?
-	/// * bypasses [force]
+	/// * overrides 'force' parameter on install
 	var/disallow_duplicates = FALSE
 	/// dedupe type? if set, use that type and subtypes; otherwise uses exact path
-	/// * bypasses [force]
+	/// * overrides 'force' parameter on install
 	/// * generally needs to be set if [disallow_duplicates] is
 	var/disallow_duplicates_match_type
 	/// vehicle encumbrance

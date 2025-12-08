@@ -48,9 +48,6 @@
 //* Modular Components - Add / Remove *//
 
 /obj/item/gun/proc/user_install_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-
 	if(actor)
 		if(actor.performer && actor.performer.is_in_inventory(component))
 			if(!actor.performer.can_unequip(component, component.worn_slot))
@@ -66,9 +63,6 @@
 	return TRUE
 
 /obj/item/gun/proc/user_uninstall_modular_component(obj/item/gun_component/component, datum/event_args/actor/actor, put_in_hands)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
-
 	if(!component.can_remove)
 		actor?.chat_feedback(
 			SPAN_WARNING("[component] is not removable."),
@@ -93,7 +87,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if(!can_install_modular_component(component, actor, silent))
+	if(!can_install_modular_component(component, actor, silent, force))
 		return FALSE
 
 	if(!silent)

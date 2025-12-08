@@ -162,16 +162,33 @@
 
 /obj/vehicle/sealed/mecha/create_initial_components()
 	..()
-	for(var/maybe_path in list(
-		initial(comp_actuator),
-		initial(comp_armor),
-		initial(comp_electrical),
-		initial(comp_gas),
-		initial(comp_hull),
-	))
-		if(!ispath(maybe_path))
-			continue
-		#warn impl
+	var/list/making = list()
+	// these checks support anonymous types / pops which aren't technically paths.
+	if(comp_actuator && !istype(comp_actuator))
+		making += comp_actuator
+		comp_actuator = null
+	if(comp_armor && !istype(comp_armor))
+		making += comp_armor
+		comp_armor = null
+	if(comp_hull && !istype(comp_hull))
+		making += comp_hull
+		comp_hull = null
+	if(comp_electrical && !istype(comp_electrical))
+		making += comp_electrical
+		comp_electrical = null
+	if(comp_gas && !istype(comp_gas))
+		making += comp_gas
+		comp_gas = null
+	for(var/maybe_path in making)
+		var/obj/item/vehicle_component/created = new maybe_path
+		if(!install_component(created, null, TRUE, TRUE))
+			// if you're reading this, make sure you're not trying to overrule
+			// things that cannot be overruled with 'force' parameter.
+			//
+			// we generally use those for stability concerns so admins/mappers are not allowed
+			// to overrule it.
+			stack_trace("failed to install initial component [created] ([maybe_path]).")
+			qdel(created)
 
 /obj/vehicle/sealed/mecha/proc/user_set_strafing(datum/event_args/actor/actor, active)
 	if(!set_strafing(active))

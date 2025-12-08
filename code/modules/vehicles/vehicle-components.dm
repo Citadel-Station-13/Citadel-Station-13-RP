@@ -29,7 +29,7 @@
 	if(!exists_hardcoded_slot_for_component(v_comp))
 		if(!silent)
 			actor?.chat_feedback(
-				"",
+				SPAN_WARNING("[v_comp] isn't for [src]!"),
 				target = src,
 			)
 		return FALSE
@@ -37,7 +37,7 @@
 	else if(!has_free_hardcoded_slot_for_component(v_comp))
 		if(!silent)
 			actor?.chat_feedback(
-				"",
+				SPAN_WARNING("[src] already has a component of [v_comp]'s type!"),
 				target = src,
 			)
 		return FALSE
@@ -60,16 +60,75 @@
 	return null
 
 /obj/vehicle/proc/user_install_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor)
-	#warn impl
+	if(actor)
+		if(actor.performer && actor.performer.is_in_inventory(v_component))
+			if(!actor.performer.can_unequip(v_component, v_component.worn_slot))
+				actor.chat_feedback(
+					SPAN_WARNING("[v_component] is stuck to your hand!"),
+					target = src,
+				)
+				return FALSE
+	if(!install_modular_component(v_component, actor))
+		return FALSE
+	// todo: better sound
+	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
+	return TRUE
 
 /obj/vehicle/proc/user_uninstall_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, put_in_hands)
-	#warn impl
+	if(v_component.intrinsic)
+		actor?.chat_feedback(
+			SPAN_WARNING("[v_component] is not removable."),
+			target = src,
+		)
+		return FALSE
+	var/obj/item/uninstalled = uninstall_component(v_component, actor, new_loc = src)
+	if(put_in_hands && actor?.performer)
+		actor.performer.put_in_hands_or_drop(uninstalled)
+	else
+		var/atom/where_to_drop = drop_location()
+		ASSERT(where_to_drop)
+		uninstalled.forceMove(where_to_drop)
+	// todo: better sound
+	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
+	return TRUE
 
+/**
+ * * Moves the component into us if it wasn't already.
+ */
 /obj/vehicle/proc/install_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, silent, force)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	#warn impl
+	ASSERT(!v_comp.vehicle)
+
+	if(!can_install_component(v_component, actor, silent, force))
+		return FALSE
+
+	// if we can't set slot obliterate it (this should never happen)
+	if(!place_hardcoded_slot_for_component(v_comp))
+		stack_trace("couldn't place hardcoded slot for component [v_comp]; did can_install_component incorrectly return?")
+		return FALSE
+
+	vehicle_log_for_admins(actor, "component-install", list(
+		"component" = "[v_component]",
+		"component-type" = v_component.type,
+	))
+
+	if(!silent)
+		if(actor?.performer && !(actor.performer.loc == src) && actor.performer.Reachability(src))
+			actor?.visible_feedback(
+				target = src,
+				visible = SPAN_NOTICE("[actor.performer] installs [v_component] onto [src]."),
+				range = MESSAGE_RANGE_CONSTRUCTION,
+			)
+		else
+			visible_message(
+				SPAN_NOTICE("[v_component] is hoisted and installed onto [src]."),
+				range = MESSAGE_RANGE_CONSTRUCTION,
+			)
+	if(v_component.loc != src)
+		v_component.forceMove(src)
+
 	LAZYADD(components, v_comp)
 	v_comp.vehicle = src
 	v_comp.on_install(src, actor, silent)
@@ -79,11 +138,41 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	#warn impl
+	ASSERT(v_component.vehicle == src)
+
+	var/obj/item/vehicle_component/unplaced = unplace_hardcoded_slot_for_component(v_comp)
+	if(unplaced != v_comp)
+		stack_trace("unplaced component from hardcoded slot differed from uninstalling component; did someone make hardcoded slot determination non-deterministic?")
+
+	vehicle_log_for_admins(actor, "component-remove", list(
+		"component" = "[v_component]",
+		"component-type" = v_component.type,
+	))
+
 	LAZYREMOVE(components, v_comp)
 	v_comp.vehicle = null
 	v_comp.on_uninstall(src, actor, silent)
 	on_component_detached(v_comp, actor, silent)
+
+	if(!silent)
+		if(actor?.performer && !(actor.performer.loc == src) && actor.performer.Reachability(src))
+			actor?.visible_feedback(
+				target = src,
+				visible = SPAN_NOTICE("[actor.performer] pulls [v_component] off of [src]."),
+				range = MESSAGE_RANGE_CONSTRUCTION,
+			)
+		else
+			visible_message(
+				SPAN_NOTICE("[v_component] drops out of [src] with a clunk."),
+				range = MESSAGE_RANGE_CONSTRUCTION,
+			)
+
+	if(new_loc)
+		v_component.forceMove(new_loc)
+		. = v_component
+	else
+		qdel(v_component)
+		. = null
 
 /obj/vehicle/proc/on_component_attached(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, silent)
 	SHOULD_CALL_PARENT(TRUE)

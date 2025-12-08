@@ -391,7 +391,6 @@
 #include "code\__DEFINES\turfs\flooring.dm"
 #include "code\__DEFINES\turfs\turfs.dm"
 #include "code\__DEFINES\turfs\type_generation.dm"
-#include "code\__DEFINES\vehicles\vehicle_component.dm"
 #include "code\__DEFINES\vehicles\vehicle_control_flags.dm"
 #include "code\__DEFINES\vehicles\vehicle_module.dm"
 #include "code\__HELPERS\_auxtools_api.dm"
