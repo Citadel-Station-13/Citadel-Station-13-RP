@@ -150,14 +150,14 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 		return
 	arming = TRUE
 	arming_last_toggle = world.time
+	current_area.alpha = 175
 
 /datum/orbital_deployment_zone/proc/disarm()
 	if(!arming)
 		return
 	arming = FALSE
 	arming_last_toggle = world.time
-
-#warn impl
+	current_area.alpha = 0
 
 /datum/orbital_deployment_zone/proc/is_armed()
 	return arming && ((arming_last_toggle + arming_time) <= world.time)
@@ -306,13 +306,13 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	)
 
 /datum/orbital_deployment_zone/proc/on_launch()
-	#warn shake screen tell everyone
 	var/obj/overmap/entity/our_entity = get_overmap_entity()
 	var/list/mob/witnesses = our_entity.get_all_players_in_location(TRUE)
 	// TODO: standardize this on /entity
 	for(var/mob/witness as anything in witnesses)
 		witness.show_message(SPAN_WARNING("The floor lurches beneath you as a shock plows through the installation. \
 		Creaking can be heard from the walls."), SAYCODE_TYPE_ALWAYS)
+		shake_camera(witness, 0.5 SECONDS, 0.25 * WORLD_ICON_SIZE)
 
 /datum/orbital_deployment_zone/proc/contains_turf(turf/T)
 	return T.x >= lower_left.x && T.x <= upper_right.x && T.y >= lower_left.y && T.y <= upper_right.y

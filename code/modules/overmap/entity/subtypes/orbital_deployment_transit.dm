@@ -48,18 +48,18 @@
 	// EDIT: impossible in general as we compensate for their speed now
 	if(!computed)
 		CRASH("failed to solve intercept trajectory for orbital launch; please don't launch at living planets!")
-	var/c_angle = computed[1]
-	var/c_time = computed[2]
+	var/use_angle = computed[1]
+	var/use_time = computed[2]
+	var/use_telegraph_time = max(use_time - transit.c_telegraph_time, 0)
 
-	set_velocity(cos(c_angle) * launch_speed, sin(c_angle) * launch_speed)
-	var/c_telegraph_time = max(c_time - c_telegraph_time, 0)
-	addtimer(src, CALLBACK(PROC_REF(telegraph), c_time - c_telegraph_time), c_telegraph_time)
-	addtimer(src, CALLBACK(PROC_REF(land)), c_time)
+	set_velocity(cos(use_angle) * launch_speed, sin(use_angle) * launch_speed)
+	addtimer(src, CALLBACK(PROC_REF(telegraph), use_time - use_telegraph_time), use_telegraph_time)
+	addtimer(src, CALLBACK(PROC_REF(land)), use_time)
 
 /obj/overmap/entity/orbital_deployment_transit/proc/land()
 	transit.land()
 
-/obj/overmap/entity/orbital_deployment_transit/proc/telegraph()
+/obj/overmap/entity/orbital_deployment_transit/proc/telegraph(landing_time)
 	var/list/source_coords = transit.reservation.bottom_left_coords
 	var/r_type = transit.reservation.turf_type
 	var/ll_of_source_x = source_coords[1] - 1

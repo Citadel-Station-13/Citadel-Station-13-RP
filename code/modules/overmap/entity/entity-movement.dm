@@ -43,14 +43,14 @@
  */
 /obj/overmap/entity/proc/force_move_p_abstract(pixloc/dest)
 	var/atom/old_loc = loc
-	force_move_p_impl(dest)
+	pixloc = dest
 	var/atom/new_loc = loc
 	if(old_loc != new_loc)
 		Moved(old_loc, NONE, FALSE, null, null)
 
 /**
- * Will not call side effects.
+ * Will call side effects.
  */
 /obj/overmap/entity/proc/force_move_p_impl(pixloc/dest)
-
-#warn impl
+	step_size = 0
+	Move(dest)

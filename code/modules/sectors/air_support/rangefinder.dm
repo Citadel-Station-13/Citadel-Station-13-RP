@@ -88,6 +88,8 @@
 	/// * THIS IS NOT NECESSARILY THE PERSON HOLDING US.
 	var/mob/currently_zoomed_in
 
+	var/zoom_range_in_tiles = 21
+
 	var/sfx_lasing_start = /datum/soundbyte/nightvision_chargeup
 	var/sfx_lasing_start_vol = 35
 	var/sfx_lasing_start_vary = FALSE
@@ -165,10 +167,14 @@
 /obj/item/rangefinder/proc/start_zooming(mob/viewing)
 	if(currently_zoomed_in)
 		stop_zooming()
+
+	#warn comp
 	currently_zoomed_in = viewing
 	RegisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE, PROC_REF(on_user_examine))
+	return TRUE
 
 /obj/item/rangefinder/proc/stop_zooming()
+	#warn comp
 	UnregisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE)
 
 /obj/item/rangefinder/proc/on_user_examine(mob/source, atom/target, list/examine_list)

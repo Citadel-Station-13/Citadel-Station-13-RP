@@ -164,7 +164,8 @@
 	to_notify_mobs -= to_damage_mobs
 
 	for(var/mob/notifying in to_notify_mobs)
-		#warn tell them and shake
+		to_chat(notifying, SPAN_DANGER("You feel the ground lurch beneath you as the massive structure lands from orbit!"))
+		shake_camera(notifying, 2 SECONDS, 0.5 * WORLD_ICON_SIZE)
 
 	// turfs that shouldn't be there result in a small explosion
 	for(var/tuple_i in 1 to length(turf_overlap_coord_x))

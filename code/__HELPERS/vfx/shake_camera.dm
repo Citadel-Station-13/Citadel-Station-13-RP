@@ -1,5 +1,9 @@
 /**
  * Shakes the camera of any client watching from an atom's perspective.
+ *
+ * @params
+ * * duration - how long to do it for
+ * * strength - how many pixels max
  */
 /proc/shake_camera(atom/movable/AM, duration, strength = 1)
 	if(!AM || isEye(AM) || isAI(AM))
@@ -17,7 +21,7 @@
 		var/old_y = C.pixel_y
 		for(var/i in 1 to duration)
 			if(i == 1)
-				animate(C, pixel_x = rand(min, max), pixel_y = rand(min, max), time = 1)
+				animate(C, pixel_x = rand(min, max), pixel_y = rand(min, max), time = 1.25)
 			else
-				animate(pixel_x = rand(min, max), pixel_y = rand(min, max), time = 1)
-		animate(pixel_x = old_x, pixel_y = old_y, time = 1)
+				animate(pixel_x = rand(min, max), pixel_y = rand(min, max), time = 1.25)
+		animate(pixel_x = old_x, pixel_y = old_y, time = 1.25)

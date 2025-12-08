@@ -20,11 +20,6 @@
 //// From /mob/living/say(): ()
 #define COMSIG_MOB_SAY "mob_say"
 
-/// Sent when a mob/login() finishes: (client)
-#define COMSIG_MOB_CLIENT_LOGIN "comsig_mob_client_login"
-/// Sent when a mob/logout() begins: (client)
-#define COMSIG_MOB_CLIENT_LOGOUT "comsig_mob_client_logout"
-
 /// From base of mob/Life(): (seconds, times_fired)
 #define COMSIG_MOB_ON_LIFE			"mob_life"
 	#define COMPONENT_INTERRUPT_PHYSICAL_LIFE			(1<<0)
