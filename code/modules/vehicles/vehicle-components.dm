@@ -61,27 +61,33 @@
 
 /obj/vehicle/proc/user_install_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor)
 	if(actor)
-		if(actor.performer && actor.performer.is_in_inventory(v_component))
-			if(!actor.performer.can_unequip(v_component, v_component.worn_slot))
+		if(actor.performer && actor.performer.is_in_inventory(v_comp))
+			if(!actor.performer.can_unequip(v_comp, v_comp.worn_slot))
 				actor.chat_feedback(
-					SPAN_WARNING("[v_component] is stuck to your hand!"),
+					SPAN_WARNING("[v_comp] is stuck to your hand!"),
 					target = src,
 				)
 				return FALSE
-	if(!install_modular_component(v_component, actor))
+	if(!install_component(v_comp, actor))
 		return FALSE
 	// todo: better sound
 	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
 	return TRUE
 
 /obj/vehicle/proc/user_uninstall_component(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, put_in_hands)
-	if(v_component.intrinsic)
+	if(v_comp.intrinsic)
 		actor?.chat_feedback(
-			SPAN_WARNING("[v_component] is not removable."),
+			SPAN_WARNING("[v_comp] is not removable."),
 			target = src,
 		)
 		return FALSE
-	var/obj/item/uninstalled = uninstall_component(v_component, actor, new_loc = src)
+	var/obj/item/uninstalled = uninstall_component(v_comp, actor, new_loc = src)
+	if(!uninstalled)
+		actor?.chat_feedback(
+			SPAN_WARNING("You reach in to remove the component, but don't manage to remove anything."),
+			target = src,
+		)
+		return TRUE
 	if(put_in_hands && actor?.performer)
 		actor.performer.put_in_hands_or_drop(uninstalled)
 	else
@@ -101,7 +107,7 @@
 
 	ASSERT(!v_comp.vehicle)
 
-	if(!can_install_component(v_component, actor, silent, force))
+	if(!can_install_component(v_comp, actor, silent, force))
 		return FALSE
 
 	// if we can't set slot obliterate it (this should never happen)
@@ -110,24 +116,24 @@
 		return FALSE
 
 	vehicle_log_for_admins(actor, "component-install", list(
-		"component" = "[v_component]",
-		"component-type" = v_component.type,
+		"component" = "[v_comp]",
+		"component-type" = v_comp.type,
 	))
 
 	if(!silent)
 		if(actor?.performer && !(actor.performer.loc == src) && actor.performer.Reachability(src))
 			actor?.visible_feedback(
 				target = src,
-				visible = SPAN_NOTICE("[actor.performer] installs [v_component] onto [src]."),
+				visible = SPAN_NOTICE("[actor.performer] installs [v_comp] onto [src]."),
 				range = MESSAGE_RANGE_CONSTRUCTION,
 			)
 		else
 			visible_message(
-				SPAN_NOTICE("[v_component] is hoisted and installed onto [src]."),
+				SPAN_NOTICE("[v_comp] is hoisted and installed onto [src]."),
 				range = MESSAGE_RANGE_CONSTRUCTION,
 			)
-	if(v_component.loc != src)
-		v_component.forceMove(src)
+	if(v_comp.loc != src)
+		v_comp.forceMove(src)
 
 	LAZYADD(components, v_comp)
 	v_comp.vehicle = src
@@ -138,15 +144,15 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	ASSERT(v_component.vehicle == src)
+	ASSERT(v_comp.vehicle == src)
 
 	var/obj/item/vehicle_component/unplaced = unplace_hardcoded_slot_for_component(v_comp)
 	if(unplaced != v_comp)
 		stack_trace("unplaced component from hardcoded slot differed from uninstalling component; did someone make hardcoded slot determination non-deterministic?")
 
 	vehicle_log_for_admins(actor, "component-remove", list(
-		"component" = "[v_component]",
-		"component-type" = v_component.type,
+		"component" = "[v_comp]",
+		"component-type" = v_comp.type,
 	))
 
 	LAZYREMOVE(components, v_comp)
@@ -158,20 +164,20 @@
 		if(actor?.performer && !(actor.performer.loc == src) && actor.performer.Reachability(src))
 			actor?.visible_feedback(
 				target = src,
-				visible = SPAN_NOTICE("[actor.performer] pulls [v_component] off of [src]."),
+				visible = SPAN_NOTICE("[actor.performer] pulls [v_comp] off of [src]."),
 				range = MESSAGE_RANGE_CONSTRUCTION,
 			)
 		else
 			visible_message(
-				SPAN_NOTICE("[v_component] drops out of [src] with a clunk."),
+				SPAN_NOTICE("[v_comp] drops out of [src] with a clunk."),
 				range = MESSAGE_RANGE_CONSTRUCTION,
 			)
 
 	if(new_loc)
-		v_component.forceMove(new_loc)
-		. = v_component
+		v_comp.forceMove(new_loc)
+		. = v_comp
 	else
-		qdel(v_component)
+		qdel(v_comp)
 		. = null
 
 /obj/vehicle/proc/on_component_attached(obj/item/vehicle_component/v_comp, datum/event_args/actor/actor, silent)

@@ -4,22 +4,22 @@
 /obj/vehicle/proc/initialize_modules()
 	var/list/keeping = list()
 	var/list/making = list()
-	for(var/obj/item/vehicle_module/module_path as anything in 1 to length(modules))
-		if(istype(module_path))
-			keeping += module_path
+	for(var/obj/item/vehicle_module/what as anything in 1 to length(modules))
+		if(istype(what))
+			keeping += what
 		else
 			// anonymous types / pops are allowed, don't actually treat as a path
-			making += module_path
+			making += what
 	modules = keeping
-	for(var/obj/item/vehicle_module/module_path as anything in making)
-		var/obj/item/vehicle_module/created = new module_path
+	for(var/obj/item/vehicle_module/pathlike as anything in making)
+		var/obj/item/vehicle_module/created = new pathlike
 		if(!install_module(created, null, TRUE, TRUE))
 			// if you're reading this, make sure you're not trying to overrule
 			// things that cannot be overruled with 'force' parameter.
 			//
 			// we generally use those for stability concerns so admins/mappers are not allowed
 			// to overrule it.
-			stack_trace("failed to install initial module [created] ([maybe_path]).")
+			stack_trace("failed to install initial module [created] ([pathlike]).")
 			qdel(created)
 
 /**
@@ -54,7 +54,7 @@
 			)
 
 /obj/vehicle/proc/can_fit_module(obj/item/vehicle_module/v_module, datum/event_args/actor/actor, silent)
-	if((module_classes_required && !(module_classes_required & other)))
+	if((module_classes_required && !(module_classes_required & v_module.module_class)))
 		return FALSE
 	else if(module_classes_forbidden & v_module)
 		return FALSE
@@ -69,7 +69,7 @@
 					target = src,
 				)
 				return FALSE
-	if(!install_modular_component(v_module, actor))
+	if(!install_module(v_module, actor))
 		return FALSE
 	// todo: better sound
 	playsound(src, 'sound/weapons/empty.ogg', 25, TRUE, -3)
@@ -83,6 +83,12 @@
 		)
 		return FALSE
 	var/obj/item/uninstalled = uninstall_module(v_module, actor, new_loc = src)
+	if(!uninstalled)
+		actor?.chat_feedback(
+			SPAN_WARNING("You reach in to remove the module, but don't manage to remove anything."),
+			target = src,
+		)
+		return TRUE
 	if(put_in_hands && actor?.performer)
 		actor.performer.put_in_hands_or_drop(uninstalled)
 	else
