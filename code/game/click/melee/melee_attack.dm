@@ -22,6 +22,9 @@ GLOBAL_LIST_EMPTY(melee_attack_singletons)
  *   unnecessary fluff.
  */
 /datum/melee_attack
+	//* VFX *//
+	/// ATTACK_ANIMATION_X enum for standard animation, if any
+	var/animation_type = ATTACK_ANIMATION_PUNCH
 
 /**
  * Called to perform standard attack effects on a target.

@@ -76,7 +76,8 @@
 
 	if(missed)
 		return clickchain_flags
-	fixed_target.animate_hit_by_attack(attack_style.animation_type)
+	if(attack_style.animation_type)
+		fixed_target.animate_hit_by_attack(attack_style.animation_type)
 	return clickchain_flags | fixed_target.on_melee_act(src, null, attack_style, clickchain.target_zone, clickchain, clickchain_flags)
 
 /obj/vehicle/sealed/mecha/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/vehicle/mecha/attack_style)

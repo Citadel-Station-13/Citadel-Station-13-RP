@@ -34,10 +34,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// sound when missing
 	var/miss_sound = 'sound/weapons/punchmiss.ogg'
 
-	//? Visuals
-	/// ATTACK_ANIMATION_X enum
-	var/animation_type = ATTACK_ANIMATION_PUNCH
-
 	//? Text
 
 	/// past participle verb form describing the attack

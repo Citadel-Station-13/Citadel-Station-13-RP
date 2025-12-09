@@ -40,13 +40,35 @@
 	owning_component = null
 	return ..()
 
-/atom/movable/directional_shield/proc/update_pos()
+/atom/movable/directional_shield/proc/update_dir(turf/to_where, to_dir, to_degrees)
+	if(to_dir != oriented_dir)
+		// reorient
+		oriented_dir = to_dir
+		setDir(turn(north_facing_dir, to_degrees))
+		switch(to_dir)
+			if(NORTH)
+				oriented_x_offset = x_offset
+				oriented_y_offset = y_offset
+			if(SOUTH)
+				oriented_x_offset = -x_offset
+				oriented_y_offset = y_offset
+			if(EAST)
+				oriented_x_offset = y_offset
+				oriented_y_offset = x_offset
+			if(WEST)
+				oriented_x_offset = -y_offset
+				oriented_y_offset = -x_offset
 
-#warn impl
+	abstract_move(locate(to_where.x + oriented_x_offset, to_where.y + oriented_y_offset, to_where.z))
+
+/atom/movable/directional_shield/proc/update_pos(turf/to_where)
+	abstract_move(locate(to_where.x + oriented_x_offset, to_where.y + oriented_y_offset, to_where.z))
 
 /atom/movable/directional_shield/CanPass(atom/movable/mover, turf/target)
-	. = ..()
-	#warn projectile handling
+	if(istype(mover, /obj/projectile))
+		// allows pass if they're going out as oriented dir is going outwards
+		return get_dir(mover, target) & oriented_dir
+	return ..()
 
 /atom/movable/directional_shield/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	// no please go ahead, do hit us even if you want to pierce!
@@ -54,7 +76,7 @@
 	return ..()
 
 /atom/movable/directional_shield/inflict_damage_instance(SHIELDCALL_PROC_HEADER)
-	#warn impl
+	owning_component.on_damage_instance(src, args)
 
 /atom/movable/directional_shield/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return FALSE

@@ -18,6 +18,7 @@
 	var/recharge_ignore_gradual = TRUE
 	var/recharge_rebuild_rate = 20
 	var/recharge_rebuild_restore_ratio = 1
+	var/recharge_ignore_threshold = 1
 
 /datum/directional_shield_config/New()
 	if(ispath(pattern) || IS_ANONYMOUS_TYPEPATH(pattern))
