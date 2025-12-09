@@ -129,7 +129,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define ANNOUNCER_NAME "Facility PA"
 
-#define DEFAULT_JOB_TYPE /datum/role/job/station/assistant
+#define DEFAULT_JOB_TYPE /datum/prototype/role/job/station/assistant
 
 //Assistant/Visitor/Whatever
 #define USELESS_JOB	"Visitor"
@@ -264,9 +264,6 @@ var/list/economy_station_departments = list(
 /// Not really needed but consistancy I guess.
 #define TSC_XION	"Xion"
 #define TSC_ZH		"Zeng-Hu"
-
-///The number of deciseconds in a day
-#define MIDNIGHT_ROLLOVER		864000
 
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34

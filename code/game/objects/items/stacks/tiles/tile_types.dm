@@ -59,6 +59,13 @@
 	. += create_stack_recipe_datum(name = "lush grass", product = /obj/structure/flora/ausbushes/grassybush, cost = 1)
 	. += create_stack_recipe_datum(name = "grass", product = /obj/structure/flora/ausbushes/fullgrass, cost = 1)
 	. += create_stack_recipe_datum(name = "sparse grass", product = /obj/structure/flora/ausbushes/sparsegrass, cost = 1)
+	. += create_stack_recipe_datum(name = "soil bed", product = /obj/machinery/portable_atmospherics/hydroponics/soil/grassy, cost = 15)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Foliage", product = /obj/structure/flora/grass/fey/bush/florarandom, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Bush", product = /obj/structure/flora/grass/fey/bush/bushrandom, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Low Bush", product = /obj/structure/flora/grass/fey/bush/lowbushrandom, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Big Fey Grass", product = /obj/structure/flora/fey/large/randombush, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Grass", product = /obj/structure/flora/grass/fey/bush/grassrandom, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Sparce Grass", product = /obj/structure/flora/grass/fey/bush/sparcegrassrandom, cost = 1)
 
 /*
  * Wood

@@ -23,7 +23,7 @@
 
 /obj/machinery/compressor
 	name = "compressor"
-	desc = "The compressor stage of a gas turbine generator."
+	desc = "The compressor stage of a gas turbine generator.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/pipes.dmi'
 	icon_state = "compressor"
 	CanAtmosPass = ATMOS_PASS_PROC
@@ -42,7 +42,7 @@
 
 /obj/machinery/power/turbine
 	name = "gas turbine generator"
-	desc = "A gas turbine used for backup power generation."
+	desc = "A gas turbine used for backup power generation.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/pipes.dmi'
 	icon_state = "turbine"
 	anchored = TRUE

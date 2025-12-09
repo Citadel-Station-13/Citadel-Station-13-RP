@@ -22,10 +22,6 @@
 //// From /mob/living/say(): ()
 #define COMSIG_MOB_SAY "mob_say"
 
-/// Sent on custom emote. (mob, raw_emote)
-#define COMSIG_MOB_CUSTOM_EMOTE				"custom_emote"
-/// Sent on subtle/subtler. (mob, raw_emote)
-#define COMSIG_MOB_SUBTLE_EMOTE				"subtle_emote"
 /// Sent when a mob/login() finishes: (client)
 #define COMSIG_MOB_CLIENT_LOGIN "comsig_mob_client_login"
 /// Sent when a mob/logout() begins: (client)

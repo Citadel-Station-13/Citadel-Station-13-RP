@@ -3,6 +3,7 @@ import { Box, Button, Input, LabeledList, Section, Stack, Table, Tabs } from "tg
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import { useLegacyForceRendering } from '../legacy';
 
 const ResearchConsoleViewResearch = (props) => {
   const { act, data } = useBackend<any>();
@@ -10,6 +11,8 @@ const ResearchConsoleViewResearch = (props) => {
   const {
     tech,
   } = data;
+
+  useLegacyForceRendering();
 
   return (
     <Section title="Current Research Levels" buttons={
@@ -43,6 +46,8 @@ const PaginationTitle = (props) => {
     title,
     target,
   } = props;
+
+  useLegacyForceRendering();
 
   let page = data[target];
   if (typeof page === "number") {
@@ -80,6 +85,8 @@ const ResearchConsoleViewDesigns = (props) => {
   const {
     designs,
   } = data;
+
+  useLegacyForceRendering();
 
   return (
     <Section title={<PaginationTitle title="Researched Technologies & Designs" target="design_page" />} buttons={
@@ -157,6 +164,8 @@ const TechDisk = (props) => {
       </Section>
     );
   }
+
+  useLegacyForceRendering();
 
   return (
     <Section title="Inserted Technology Disk">
@@ -274,6 +283,8 @@ const DataDisk = (props) => {
     );
   }
 
+  useLegacyForceRendering();
+
   return (
     <Section title={`Inserted Design Disk (${disk.design_count}/${disk.design_cap} stored)`}>
       <Box>
@@ -367,6 +378,8 @@ const ResearchConsoleDisk = (props) => {
     t_disk,
   } = data.info;
 
+  useLegacyForceRendering();
+
   if (!d_disk.present && !t_disk.present) {
     return (
       <Section title="Disk Operations">
@@ -402,6 +415,8 @@ const ResearchConsoleDestructiveAnalyzer = (props) => {
     loaded_item,
     origin_tech,
   } = linked_destroy;
+
+  useLegacyForceRendering();
 
   return (
     <Section title="Destructive Analyzer">
@@ -458,6 +473,8 @@ const ResearchConsoleSettings = (props) => {
   } = data.info;
 
   const [settingsTab, setSettingsTab] = useState(0);
+
+  useLegacyForceRendering();
 
   return (
     <Section title="Settings">
@@ -572,6 +589,7 @@ export const ResearchConsoleProtolathe = (props) => {
     linked_lathe,
   } = data.info;
 
+  useLegacyForceRendering();
 
   if (!linked_lathe.present) {
     return (
@@ -601,6 +619,8 @@ export const ResearchConsoleImprinter = (props) => {
     linked_imprinter,
     linked_lathe,
   } = data.info;
+
+  useLegacyForceRendering();
 
   if (!linked_imprinter.present) {
     return (

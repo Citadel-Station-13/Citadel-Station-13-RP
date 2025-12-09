@@ -17,6 +17,7 @@
 	worn_render_flags = copy.worn_render_flags
 	item_icons = copy.item_icons
 	sprite_sheets = copy.sprite_sheets
+	worn_bodytypes = copy.worn_bodytypes
 
 	var/obj/item/clothing/under/uniform_copy = copy
 	if(istype(uniform_copy))
@@ -35,6 +36,8 @@
 		item_state_slots = copy.item_state_slots.Copy()
 	if(copy.sprite_sheets)
 		sprite_sheets = copy.sprite_sheets.Copy()
+	if(copy.sprite_sheets_obj)
+		sprite_sheets_obj = copy.sprite_sheets_obj.Copy()
 
 	OnDisguise(copy, user)
 	qdel(copy)
@@ -55,11 +58,12 @@
 	item_icons = null
 	item_state_slots = null
 	sprite_sheets = null
+	sprite_sheets_obj = null
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 
 // Subtypes shall override this, not /disguise()
 /obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
 	return
-	//copying sprite_sheets_obj should be unnecessary as chameleon items are not refittable.
 
 
 /proc/generate_chameleon_choices(var/basetype, var/blacklist = list())

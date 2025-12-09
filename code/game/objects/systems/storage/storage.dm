@@ -199,6 +199,10 @@
 	/// ui update queued?
 	//  todo: this is only needed because redirection is halfassed.
 	var/ui_refresh_queued = FALSE
+	/// Queued a reconsider_mob_viewable?
+	/// * Done because moving diagonally is weird and we're technically 'detached'
+	///   for a moment.
+	var/ui_move_reconsideration_queued = FALSE
 
 /datum/object_system/storage/New(obj/parent)
 	src.parent = parent
@@ -367,7 +371,14 @@
  * Hooked into obj/Moved().
  */
 /datum/object_system/storage/proc/on_parent_moved(atom/old_loc, forced)
-	reconsider_mob_viewable()
+	if(ui_move_reconsideration_queued)
+		return
+	ui_move_reconsideration_queued = TRUE
+	spawn(0)
+		ui_move_reconsideration_queued = FALSE
+		if(QDELETED(src))
+			return
+		reconsider_mob_viewable()
 
 /datum/object_system/storage/proc/on_pickup(mob/user)
 	grant_buttons(user)

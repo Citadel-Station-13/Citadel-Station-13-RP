@@ -1,0 +1,4 @@
+author: "seekssss"
+delete-after: True
+changes:
+  - rscadd: "You can now rename vessels to have a different name. Please play nice with this."

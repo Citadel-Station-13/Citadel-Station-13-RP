@@ -15,6 +15,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	throw_force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_range = 1

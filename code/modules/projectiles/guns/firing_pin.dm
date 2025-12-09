@@ -201,9 +201,9 @@
 /proc/onstation_weapon_locked(z)
 	if(!z)
 		return FALSE
-	var/lock_override = SSmapping.level_trait(z, ZTRAIT_FACILITY_SAFETY)
+	var/lock_override = SSmapping.level_has_trait(z, ZTRAIT_FACILITY_SAFETY)
 	if(isnull(lock_override))
-		return SSmapping.level_trait(z, ZTRAIT_STATION)
+		return SSmapping.level_has_trait(z, ZTRAIT_STATION)
 	return lock_override
 
 //Allows swiping an armoury access ID on an explorer locked gun to unlock it

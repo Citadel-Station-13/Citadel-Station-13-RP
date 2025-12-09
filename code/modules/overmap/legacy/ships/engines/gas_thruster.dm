@@ -54,7 +54,7 @@
 
 /obj/machinery/atmospherics/component/unary/engine
 	name = "rocket nozzle"
-	desc = "Simple rocket nozzle, expelling gas at hypersonic velocities to propell the ship."
+	desc = "Simple rocket nozzle, expelling gas at hypersonic velocities to propell the ship.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "nozzle"
 	opacity = TRUE

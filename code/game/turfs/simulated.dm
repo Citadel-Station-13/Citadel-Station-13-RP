@@ -1,5 +1,6 @@
 /turf/simulated
 	name = "station"
+	turf_spawn_flags = TURF_SPAWN_FLAGS_ALLOW_ALL
 	var/wet = 0
 	var/image/wet_overlay = null
 

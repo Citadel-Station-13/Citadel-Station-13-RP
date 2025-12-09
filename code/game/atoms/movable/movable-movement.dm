@@ -311,7 +311,7 @@
 			var/pull_dir = get_dir(src, pulling)
 			if(pulling.can_move_pulled(src) && (get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir))))
 				pulling.moving_from_pull = src
-				var/success = pulling.Move(T, get_dir(pulling, T), glide_size) //the pullee tries to reach our previous position
+				var/success = pulling.Move(T, get_dir(pulling, T), null, null, glide_size) //the pullee tries to reach our previous position
 				pulling.moving_from_pull = null
 				if(success)
 					// hook for baystation stuff
@@ -339,7 +339,7 @@
 	l_move_time = world.time
 
 // Hooks for foreign code.
-/atom/movable/Move(...)
+/atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
 	var/old_loc = loc
 	. = ..()
 	if (!.)
@@ -366,7 +366,7 @@
 //! WARNING WARNING THIS IS SHITCODE
 /atom/movable/proc/handle_buckled_mob_movement(newloc, direct, glide_size_override, forcemoving)
 	for(var/mob/M as anything in buckled_mobs)
-		if(!M.Move(newloc, direct, glide_size_override))
+		if(!M.Move(newloc, direct, null, null, glide_size_override))
 			if(forcemoving)
 				unbuckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
 				continue

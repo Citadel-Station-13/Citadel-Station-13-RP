@@ -15,7 +15,6 @@
 	icon_state = "rig-sec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuit", SLOT_ID_LEFT_HAND = "sec_voidsuit")
 	armor_type = /datum/armor/station/secsuit
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 	siemens_coefficient = 0.7
 	helmet_type = /obj/item/clothing/head/helmet/space/void/security
 	worth_intrinsic = 450
@@ -43,5 +42,4 @@
 	name = "riot security voidsuit"
 	desc = "A heavily armored voidsuit, designed to intimidate people who find black intimidating. Surprisingly slimming."
 	armor_type = /datum/armor/station/secsuitriot
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 	helmet_type = /obj/item/clothing/head/helmet/space/void/security/alt

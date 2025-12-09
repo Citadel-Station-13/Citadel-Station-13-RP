@@ -7,6 +7,7 @@ import { decodeHtmlEntities, toTitleCase } from 'tgui-core/string';
 
 import { useBackend, useLocalState } from "../backend";
 import { Window } from "../layouts";
+import { useLegacyForceRendering } from '../legacy';
 import { CrewManifestContent } from './CrewManifest';
 
 const HOMETAB = 1;
@@ -71,6 +72,8 @@ const VideoComm = (props) => {
     videoSetting,
     setVideoSetting,
   } = props;
+
+  useLegacyForceRendering();
 
   if (videoSetting === 0) {
     return (
@@ -197,6 +200,8 @@ const CommunicatorHeader = (props) => {
     occupation,
   } = data;
 
+  useLegacyForceRendering();
+
   return (
     <Section>
       <Flex align="center" justify="space-between">
@@ -230,6 +235,8 @@ const CommunicatorFooter = (props) => {
     videoSetting,
     setVideoSetting,
   } = props;
+
+  useLegacyForceRendering();
 
   return (
     <Flex>
@@ -303,6 +310,8 @@ const HomeTab = (props) => {
     homeScreen,
   } = data;
 
+  useLegacyForceRendering();
+
   return (
     <Flex mt={2} wrap="wrap" align="center" justify="center">
       {homeScreen.map(app => (
@@ -349,6 +358,8 @@ const PhoneTab = (props) => {
     video_comm,
     selfie_mode,
   } = data;
+
+  useLegacyForceRendering();
 
   return (
     <Section title="Phone">
@@ -523,6 +534,8 @@ const NumberPad = (props) => {
     );
   }
 
+  useLegacyForceRendering();
+
   return (
     <Flex align="center" justify="center" mt={1}>
       <Flex.Item>
@@ -603,6 +616,8 @@ const ContactsTab = (props) => {
     knownDevices,
   } = data;
 
+  useLegacyForceRendering();
+
   return (
     <Section title="Known Devices">
       {knownDevices.length && (
@@ -663,6 +678,8 @@ const MessagingTab = (props) => {
   const {
     imContacts,
   } = data;
+
+  useLegacyForceRendering();
 
   return (
     <Section title="Messaging">
@@ -747,6 +764,8 @@ const MessagingThreadTab = (props) => {
   } = data;
 
   const [clipboardMode, setClipboardMode] = useState(false);
+
+  useLegacyForceRendering();
 
   if (clipboardMode) {
     return (
@@ -852,6 +871,8 @@ const NewsTab = (props) => {
     target_feed,
   } = data;
 
+  useLegacyForceRendering();
+
   return (
     <Section title="News" stretchContents height="100%">
       {!feeds.length && (
@@ -873,6 +894,8 @@ const NewsTargetFeed = (props) => {
   const {
     target_feed,
   } = data;
+
+  useLegacyForceRendering();
 
   return (
     <Section
@@ -908,6 +931,8 @@ const NewsFeed = (props) => {
     feeds,
     latest_news,
   } = data;
+
+  useLegacyForceRendering();
 
   return (
     <>
@@ -961,6 +986,8 @@ const NoteTab = (props) => {
     note,
   } = data;
 
+  useLegacyForceRendering();
+
   return (
     <Section title="Note Keeper" height="100%" stretchContents buttons={
       <Button
@@ -1001,6 +1028,8 @@ const WeatherTab = (props) => {
     aircontents,
     weather,
   } = data;
+
+  useLegacyForceRendering();
 
   return (
     <Section title="Weather">
@@ -1078,6 +1107,8 @@ const SettingsTab = (props) => {
     ring,
     selfie_mode,
   } = data;
+
+  useLegacyForceRendering();
 
   return (
     <Section title="Settings">

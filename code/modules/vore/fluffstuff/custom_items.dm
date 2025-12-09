@@ -483,7 +483,7 @@
 	if(configured == 1)
 		return ..()
 
-	var/title = user.client.prefs.get_job_alt_title_name(SSjob.name_occupations[user.job]) || user.job
+	var/title = user.client.prefs.get_job_alt_title_name(RSroles.legacy_job_by_title(user.job)) || user.job
 	assignment = title
 	user.set_id_info(src)
 	if(user.mind && user.mind.initial_account)
@@ -1191,7 +1191,6 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
-	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
 	damage_type = DAMAGE_TYPE_HALLOSS
 
 /obj/item/melee/fluffstuff/wolfgirlsword/dropped(mob/user, flags, atom/newLoc)

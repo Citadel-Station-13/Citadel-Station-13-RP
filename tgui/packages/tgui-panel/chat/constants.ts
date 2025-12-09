@@ -5,7 +5,8 @@
  */
 
 export const CHAT_VERSION_MIN = 6;
-export const CHAT_VERSION_CURRENT = 6;
+export const CHAT_VERSION_MAX = 7;
+export const CHAT_VERSION_CURRENT = 7;
 
 export const MAX_VISIBLE_MESSAGES = 2500;
 export const MAX_PERSISTED_MESSAGES = 1000;

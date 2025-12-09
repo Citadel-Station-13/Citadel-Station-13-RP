@@ -74,6 +74,8 @@
 	#define SPECIES_ID_XENOMORPH_SENTINEL "xenomorph_sentinel"
 #define SPECIES_ID_XENOHYBRID "xenohybrid"
 	#define SPECIES_ID_XENOHYBRID_ALT "xenohybrid_alt"
+	#define SPECIES_ID_XENOHYBRID_HUNTER "xenohybrid_hunter"
+	#define SPECIES_ID_XENOHYBRID_WARRIOR "xenohybrid_warrior"
 #define SPECIES_ID_ZADDAT "zaddat"
 #define SPECIES_ID_ZORREN "zorren"
 	#define SPECIES_ID_ZORREN_HIGH "zorren_high"

@@ -153,11 +153,13 @@
 	var/list/utility_equipment = new
 	var/list/universal_equipment = new
 	var/list/special_equipment = new
+	var/list/heavy_weapon_equipment = new
 	var/max_hull_equip = 2
 	var/max_weapon_equip = 2
 	var/max_utility_equip = 2
 	var/max_universal_equip = 2
 	var/max_special_equip = 1
+	var/max_heavy_weapon_equip = 0 //Should only be used for 3x3 mechs.
 
 	/// List containing starting tools.
 	var/list/starting_equipment = null
@@ -1168,7 +1170,7 @@
 			src.visible_message("The [src.name] armor deflects\the [Proj]")
 			return PROJECTILE_IMPACT_BLOCKED
 
-		else if((max(BULLET_TIER_DEFAULT - Proj.damage_tier, 0) * 25) < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+		else if((max(Proj.damage_tier - BULLET_TIER_DEFAULT, 0) * 15) <= temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
 			src.visible_message("\The [Proj] struggles to pierce \the [src] armor")
 			pass_damage_reduc_mod = temp_fail_penetration_value / 1.5	//This will apply to reduce damage to 2/3 or 66% by default

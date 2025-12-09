@@ -24,12 +24,29 @@
 	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
 		return
 	var/inflicted_damage
+	var/snowflake_what_we_would_inflict_if_we_werent_indestructible
 	if(isitem(AM))
 		var/obj/item/I = AM
-		inflicted_damage = inflict_atom_damage(I.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), I.damage_flag, I.damage_mode, ATTACK_TYPE_THROWN, AM)
+		snowflake_what_we_would_inflict_if_we_werent_indestructible = I.throw_force * TT.get_damage_multiplier(src)
+		inflicted_damage = inflict_atom_damage(
+			I.throw_force * TT.get_damage_multiplier(src),
+			TT.get_damage_tier(src),
+			I.damage_flag,
+			I.damage_mode,
+			ATTACK_TYPE_THROWN,
+			AM,
+		)
 	else
-		inflicted_damage = inflict_atom_damage(AM.throw_force * TT.get_damage_multiplier(src), TT.get_damage_tier(src), ARMOR_MELEE, null, ATTACK_TYPE_THROWN, AM)
-	if(inflicted_damage)
+		snowflake_what_we_would_inflict_if_we_werent_indestructible = AM.throw_force * TT.get_damage_multiplier(src)
+		inflicted_damage = inflict_atom_damage(
+			snowflake_what_we_would_inflict_if_we_werent_indestructible,
+			TT.get_damage_tier(src),
+			ARMOR_MELEE,
+			null,
+			ATTACK_TYPE_THROWN,
+			AM,
+		)
+	if(inflicted_damage || ((integrity_flags & INTEGRITY_INDESTRUCTIBLE) && (snowflake_what_we_would_inflict_if_we_werent_indestructible > 5)))
 		playsound(src, hitsound_throwhit(AM), 75)
 	// if we got destroyed
 	if(QDELETED(src) && (obj_flags & OBJ_ALLOW_THROW_THROUGH))
@@ -50,7 +67,6 @@
 /obj/hitsound_throwhit(atom/movable/impacting)
 	if(!isnull(material_primary))
 		var/datum/prototype/material/primary = get_primary_material()
-
 		var/resolved_damage_type
 		if(isitem(impacting))
 			var/obj/item/casted_item = impacting
@@ -58,7 +74,7 @@
 		else
 			resolved_damage_type = DAMAGE_TYPE_BRUTE
 
-		. = resolved_damage_type == DAMAGE_TYPE_BURN? primary.sound_melee_burn : primary.sound_melee_brute
+		. = resolved_damage_type == DAMAGE_TYPE_BURN? primary?.sound_melee_burn : primary?.sound_melee_brute
 		if(!isnull(.))
 			return
 	return ..()

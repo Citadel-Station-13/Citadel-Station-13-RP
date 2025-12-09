@@ -116,5 +116,5 @@
 /datum/preferences/proc/real_species_name()
 	return SScharacters.resolve_species_id(get_character_data(CHARACTER_DATA_REAL_SPECIES)).name
 
-/datum/preferences/proc/character_species_job_check(datum/role/job/J)
+/datum/preferences/proc/character_species_job_check(datum/prototype/role/job/J)
 	return TRUE	// todo
