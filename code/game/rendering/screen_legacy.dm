@@ -185,9 +185,9 @@
 			if(isrobot(usr))
 				var/mob/living/silicon/robot/R = usr
 				open_tgui_actor_modal(
-					/datum/tgui_actor_modal,
-					new /datum/event_args/actor(R),
-					modal_target = R,
+					/datum/tgui_actor_modal/robot_module_picker,
+					actor = new /datum/event_args/actor(R),
+					target = R,
 				)
 
 		if("radio")

@@ -3,6 +3,11 @@
 
 /datum/tgui_actor_modal/robot_module_picker
 
+/datum/tgui_actor_modal/robot_module_picker/initialize()
+	if(!isrobot(actor.performer))
+		return FALSE
+	return ..()
+
 /datum/tgui_actor_modal/robot_module_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
@@ -26,7 +31,7 @@
 
 /datum/tgui_actor_modal/robot_module_picker/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
-	var/list/datum/prototype/robot_module/pickable_modules = assemble_modules(user)
+	var/list/datum/prototype/robot_module/pickable_modules = assemble_modules(actor.performer)
 	var/list/serialized_modules = list()
 	.["modules"] = serialized_modules
 	for(var/datum/prototype/robot_module/possible_module as anything in pickable_modules)

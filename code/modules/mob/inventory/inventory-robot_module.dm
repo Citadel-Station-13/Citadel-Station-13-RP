@@ -91,7 +91,11 @@
 	if(robot_module_is_registered(item))
 		return TRUE
 	if(item.inv_inside)
-		return FALSE
+		// kick them out
+		item.forceMove(owner)
+		if(item.inv_inside)
+			stack_trace("failed to kick item out of existing inv in robot_module_register")
+			return FALSE
 
 	item.forceMove(owner)
 	LAZYADD(robot_modules, item)
@@ -114,6 +118,7 @@
 	if(!robot_module_is_registered(item))
 		return
 	LAZYREMOVE(robot_modules, item)
+	#warn handle unequip if they're in slot
 	on_item_exited(item, isnum(item.inv_slot_or_index) ? item.inv_slot_or_index : resolve_inventory_slot(item.inv_slot_or_index))
 	on_robot_module_unregister(item)
 
