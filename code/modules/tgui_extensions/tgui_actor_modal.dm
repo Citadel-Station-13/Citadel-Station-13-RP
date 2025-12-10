@@ -42,14 +42,14 @@
 /datum/tgui_actor_modal/New(datum/event_args/actor/actor, datum/callback/validity)
 	var/mob/initiator = actor.initiator
 	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
-	ADD_TRAIT(initiator, trait)
+	ADD_TRAIT(initiator, trait, ref(src))
 	src.actor = actor
 	src.validity = validity
 
 /datum/tgui_actor_modal/Destroy()
 	var/mob/initiator = actor.initiator
 	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
-	REMOVE_TRAIT(initiator, trait)
+	REMOVE_TRAIT(initiator, trait, ref(src))
 	actor = null
 	validity = null
 	return ..()

@@ -55,9 +55,7 @@ DATUM_TRAIT(/mob, TRAIT_MOB_FORCED_STANDING)
 //* UI *//
 
 /// actor modal open of type with ourselves as the initiator
-#define TRAIT_MOB_ACTOR_MODAL_INITIATOR(TYPE, INITIATOR, PERFORMER)
-#warn ughh
-DATUM_TRAIT(/mob, TRAIT_MOB_ACTOR_MODAL_INITIATOR)
+#define TRAIT_MOB_ACTOR_MODAL_INITIATOR(TYPE, INITIATOR, PERFORMER) "[type]-[REF(initiator)]-[REF(PERFORMER)]"
 
 //* Misc *//
 

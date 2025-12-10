@@ -1,7 +1,3 @@
-var/atom/movable/screen/robot_inventory
-
-#warn what the fuck
-
 /datum/hud/proc/robot_hud(ui_style='icons/mob/screen1_robot.dmi', var/ui_color = "#ffffff", var/ui_alpha = 255, var/mob/living/silicon/robot/target)
 
 	if(ui_style == 'icons/mob/screen/minimalist.dmi')
@@ -86,16 +82,6 @@ var/atom/movable/screen/robot_inventory
 	mymob.throw_icon.screen_loc = ui_borg_store
 	src.other += mymob.throw_icon
 
-//Inventory
-	robot_inventory = new /atom/movable/screen()
-	robot_inventory.name = "inventory"
-	robot_inventory.icon = ui_style
-	robot_inventory.icon_state = "inventory"
-	robot_inventory.alpha = ui_alpha
-	robot_inventory.color = ui_color
-	robot_inventory.screen_loc = ui_borg_inventory
-	src.other += robot_inventory
-
 //Temp
 	mymob.bodytemp = new /atom/movable/screen()
 	mymob.bodytemp.icon_state = "temp0"
@@ -149,7 +135,7 @@ var/atom/movable/screen/robot_inventory
 
 	mymob.client.screen = list()
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, using, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
+	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, using, mymob.pullin, mymob.gun_setting_icon)
 	mymob.client.screen += src.adding + src.other
 
 	mymob.reload_rendering()
