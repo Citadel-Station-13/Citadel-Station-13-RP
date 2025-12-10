@@ -98,6 +98,11 @@
 	var/sfx_lasing_lock_vol = 35
 	var/sfx_lasing_lock_vary = FALSE
 
+	var/last_laser_retrace
+
+	var/atom/lasing_target
+	var/datum/event_args/actor/lasing_actor
+
 /obj/item/rangefinder/Destroy()
 	QDEL_NULL(active_laser_target)
 	stop_zooming()
@@ -153,6 +158,7 @@
 /obj/item/rangefinder/proc/reconsider_laser_designation()
 	var/turf/target_turf = get_turf(active_laser_target)
 	var/list/turf/traced = trace_laser_designation(target_turf)
+	last_laser_retrace = world.time
 	for(var/turf/T as anything in traced)
 		if(T.has_opaque_atom)
 			destroy_laser_designator_target()
@@ -227,10 +233,32 @@
 
 	if(effective_delay > 0.5 SECONDS)
 		playsound(src, sfx_lasing_start, sfx_lasing_start_vol, sfx_lasing_start_vary, -4)
-	#warn impl
 
+	lasing_target = target
+	lasing_actor = clickchain
+	{
+		. = do_after(clickchain.performer, effective_delay, src, additional_checks = CALLBACK(src, PROC_REF(continue_to_laser)))
+	}
+	lasing_actor = null
+	lasing_target = null
+	if(!.)
+		return
 
 	playsound(src, sfx_lasing_lock, sfx_lasing_lock_vol, sfx_lasing_lock_vary, -4)
+
+/obj/item/rangefinder/proc/continue_to_laser(list/do_after_args)
+	if(world.time < last_laser_retrace + 0.35 SECONDS)
+		return TRUE
+	last_laser_retrace = world.time
+	var/list/turfs = trace_laser_designation(lasing_target)
+	for(var/turf/T as anything in turfs)
+		if(T.has_opaque_atom)
+			lasing_actor?.chat_feedback(
+				SPAN_WARNING("Something on [T] breaks your targeting laser's beam."),
+				target = T,
+			)
+			return FALSE
+	return TRUE
 
 /obj/item/rangefinder/process(delta_time)
 	if(active_laser_target)

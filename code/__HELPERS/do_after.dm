@@ -69,6 +69,7 @@
  * * mobility_flags - required mobility flags
  * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
  * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
+ *                       if this returns FALSE, we fail.
  * * progress_anchor - override progressbar anchor location
  * * progress_instance - override progressbar instance; this progressbar instance will be **deleted** when we are finished,
  *                       and should have a goal number equal to the delay.
