@@ -1146,11 +1146,11 @@
 	if(!wearer.lastarea)
 		wearer.lastarea = get_area(wearer.loc)
 
-	if((istype(wearer.loc, /turf/space)) || (wearer.lastarea.has_gravity == 0))
-		if(!wearer.Process_Spacemove(0))
-			return 0
+	if(!wearer.in_gravity)
+		if(!wearer.process_spacemove(FALSE, direction))
+			return FALSE
 
-	if(malfunctioning)
+	if(malfunctioning && prob(30))
 		direction = pick(GLOB.cardinal)
 
 	// Inside an object, tell it we moved.

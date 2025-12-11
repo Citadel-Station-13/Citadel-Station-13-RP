@@ -14,7 +14,7 @@
 			return
 	if(A == loc && pulling.density)
 		return
-	if(!Process_Spacemove(get_dir(pulling.loc, A)))
+	if(!process_spacemove(FALSE, get_dir(pulling, A, TRUE)))
 		return
 	if(!pulling.can_move_pulled(src))
 		return

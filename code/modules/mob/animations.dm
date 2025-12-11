@@ -68,9 +68,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	is_jittery = 0
 	reset_pixel_offsets()
 
-/mob/proc/update_floating(dense_object=0)
-
-	if(anchored||buckled)
+/mob/proc/update_floating()
+	if(anchored || buckled)
 		make_floating(0)
 		return
 	if(ishuman(src))
@@ -78,25 +77,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		if(H.flying)
 			make_floating(1)
 			return
-	var/turf/turf = get_turf(src)
-	if(!istype(turf,/turf/space))
-		var/area/A = turf.loc
-		if(istype(A) && A.has_gravity)
-			make_floating(0)
-			return
-		else if (Check_Shoegrip())
-			make_floating(0)
-			return
-		else
-			make_floating(1)
-			return
-
-	if(dense_object && Check_Shoegrip())
-		make_floating(0)
-		return
-
-	make_floating(1)
-	return
+	make_floating(in_gravity_tethered)
 
 /mob/proc/make_floating(var/n)
 	if(buckled)

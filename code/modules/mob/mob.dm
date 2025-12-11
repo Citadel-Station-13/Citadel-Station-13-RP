@@ -38,6 +38,11 @@
 	var/list/movespeed_modifier_immunities
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/movespeed_hyperbolic
+	/// Tracks if we have gravity from environment right now.
+	var/in_gravity
+	/// This is FALSE if we're neither in gravity nor tethered by say,
+	/// being next to a wall.
+	var/in_gravity_tethered
 
 /**
  * Intialize a mob

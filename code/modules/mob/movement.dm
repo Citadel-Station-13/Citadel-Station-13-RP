@@ -417,9 +417,6 @@
 	prob_slip = round(prob_slip)
 	return(prob_slip)
 
-/mob/proc/mob_has_gravity(turf/T)
-	return has_gravity(src, T)
-
 // Called when a mob successfully moves.
 // Would've been an /atom/movable proc but it caused issues.
 /mob/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -534,19 +531,6 @@
 		return FALSE
 	if(shift_pixel_y > -16)
 		adjust_pixel_shift_y(-1)
-
-//? Gravity
-
-/mob/proc/update_gravity()
-	var/has_gravity = has_gravity()
-	if(has_gravity == in_gravity)
-		return
-	var/old_gravity = in_gravity
-	in_gravity = has_gravity
-	on_gravity_change(has_gravity, old_gravity)
-
-/mob/proc/on_gravity_change(old_gravity, new_gravity)
-	update_movespeed()
 
 //? Movement Intercepts
 
