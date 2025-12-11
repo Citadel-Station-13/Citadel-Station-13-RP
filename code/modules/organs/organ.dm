@@ -73,6 +73,8 @@
 	var/decays = TRUE
 	/// decay rate
 	var/decay_rate = ORGAN_DECAY_PER_SECOND_DEFAULT
+	/// Is this organ currently infected?
+	var/infected = FALSE
 
 	//* ## LANGUAGE VARS - For organs that assist with certain languages.
 	var/list/will_assist_languages = list()
