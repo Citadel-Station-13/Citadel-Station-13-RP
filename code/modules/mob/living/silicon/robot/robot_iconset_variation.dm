@@ -40,6 +40,7 @@
 /datum/robot_iconset_variation/resting
 	id = "resting"
 	icon_state_append = "-rest"
+	alt_resting_state = TRUE
 
 /datum/robot_iconset_variation/sitting
 	id = "sitting"

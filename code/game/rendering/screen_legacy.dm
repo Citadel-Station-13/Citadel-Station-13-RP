@@ -187,7 +187,6 @@
 				open_tgui_actor_modal(
 					/datum/tgui_actor_modal/robot_module_picker,
 					actor = new /datum/event_args/actor(R),
-					target = R,
 				)
 
 		if("radio")

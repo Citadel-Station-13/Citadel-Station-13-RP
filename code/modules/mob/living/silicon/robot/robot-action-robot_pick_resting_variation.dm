@@ -11,12 +11,13 @@
 
 /datum/action/robot_pick_resting_variation/invoke_target(mob/living/silicon/robot/target, datum/event_args/actor/actor)
 	// resolve iconset variations
+	var/datum/prototype/robot_iconset/base = target.iconset
 	var/list/datum/robot_iconset_variation/variation/variations = list()
 	for(var/id in target.iconset?.variations)
 		var/datum/robot_iconset_variation/variation = target.iconset.variations[id]
 		if(variation.alt_resting_state)
 			variations += variation
-	if(length(assembled_radial_choices) <= 1)
+	if(length(variations) <= 1)
 		actor.chat_feedback(
 			SPAN_WARNING("Your chassis has no resting variations to pick from."),
 			target = target,
@@ -25,7 +26,13 @@
 
 	// assemble radial choices
 	var/list/assembled_radial_choices = list()
-#warn impl
+	for(var/datum/robot_iconset_variation/variation as anything in variations)
+		var/image/built = image(
+			variation.icon_override || base.icon,
+			variation.icon_state || "[base.icon_state][variation.icon_state_append]",
+		)
+		built.maptext = MAPTEXT_CENTER(variation.id)
+		assembled_radial_choices[variation.id] = built
 
 	// ask them
 	var/picked_id = show_radial_menu(actor.initiator, target, assembled_radial_choices)
