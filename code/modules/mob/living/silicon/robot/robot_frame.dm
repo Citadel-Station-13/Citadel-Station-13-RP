@@ -16,10 +16,10 @@
 	var/name
 	/// our iconset
 	/// * set to typepath; resolved on init.
-	var/datum/prototype/robot_iconset
+	var/datum/prototype/robot_iconset/robot_iconset
 	/// our chassis
 	/// * set to typepath; resolved on init.
-	var/datum/prototype/robot_chassis
+	var/datum/prototype/robot_chassis/robot_chassis
 
 	/// Lock to ckeys, if set
 	var/list/ckey_lock
