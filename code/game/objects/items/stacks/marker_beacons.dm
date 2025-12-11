@@ -13,7 +13,6 @@ var/list/marker_beacon_colors = list(
 "Purple" = LIGHT_COLOR_PURPLE,
 "Violet" = LIGHT_COLOR_LAVENDER,
 "Fuchsia" = LIGHT_COLOR_PINK,
-"Green" = LIGHT_COLOR_GREEN,
 )
 
 /obj/item/stack/marker_beacon
