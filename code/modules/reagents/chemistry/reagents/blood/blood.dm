@@ -64,10 +64,6 @@
 					M.adjustToxLoss(removed)
 		if(IS_SLIME)
 			nutritionvalue = 20
-			if(data["species"] == M.species.name) //just 'inject' the blood if it happens to be promethean "blood".
-				M.regen_blood(metabolism.legacy_volume_remaining * volume_mod)
-				metabolism.legacy_current_holder.remove_reagent(id, metabolism.legacy_current_holder)
-				return
 		if(IS_TESHARI) //birb.
 			nutritionvalue = 30
 		if(IS_UNATHI) //carnivorous lizord...
