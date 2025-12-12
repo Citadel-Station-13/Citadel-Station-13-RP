@@ -120,6 +120,8 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
 	dispose_abilities()
+	// inventory
+	QDEL_NULL(inventory)
 	// actions
 	QDEL_NULL(actions_controlled)
 	QDEL_NULL(actions_innate)
@@ -140,7 +142,7 @@
 	movespeed_modifiers = null
 	// actionspeed
 	actionspeed_modifiers = null
-	return QDEL_HINT_HARDDEL
+	return QDEL_HINT_QUEUE
 
 //* Mob List Registration *//
 

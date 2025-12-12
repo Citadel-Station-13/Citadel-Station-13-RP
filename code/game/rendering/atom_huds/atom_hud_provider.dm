@@ -85,6 +85,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	var/image/hud_image = A.atom_huds[type]
 	images -= hud_image
 	atoms -= A
+	A.atom_huds -= type
 	for(var/datum/perspective/perspective as anything in using_perspectives)
 		perspective.remove_image(hud_image)
 	for(var/client/user as anything in using_clients)
