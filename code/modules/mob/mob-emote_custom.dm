@@ -52,11 +52,15 @@
  *
  * @return raw HTML
  */
-/mob/proc/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
+/mob/proc/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
 	. = emote_text
 	. = html_encode(.)
 	. = say_emphasis(.)
-	. = "<b>[src]</b> " + .
+	// let the roleplayers roleplay their silly `'s`...
+	if(.[1] == "'")
+		. = "<b>[src]</b>" + .
+	else
+		. = "<b>[src]</b> " + .
 	if(subtle)
 		if(anti_ghost)
 			. = SPAN_SINGING(.)
@@ -66,8 +70,9 @@
 /**
  * Emit a custom emote
  */
-/mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
-	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost)
+/mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
+	var/never_show_ghosts = !actor?.initiator?.ckey
+	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost || never_show_ghosts)
 	// TODO: centralized observer pref check in saycode_view_query
 	var/optimize_this_later_max_number = world_view_max_number() + 2
 	var/mob/filtered_mobs = list()

@@ -236,6 +236,29 @@
 
 	return ..()
 
+/atom/gc_trace_data()
+	. = ..()
+	if(loc)
+		.["atom-coord"] = "[COORD(src)]"
+		var/turf/our_turf = get_turf(src)
+		.["atom-turf"] = "[AREACOORD(our_turf)]"
+	else
+		.["atom-coord"] = "nullspace"
+	if(length(context_menus))
+		.["atom-context-menus"] = json_encode(context_menus)
+	if(length(atom_huds))
+		.["atom-huds"] = json_encode(atom_huds)
+	if(reagents)
+		.["atom-reagents"] = "exists"
+	if(length(material_traits))
+		.["atom-material-traits"] = json_encode(material_traits)
+	if(length(shieldcalls))
+		.["atom-shieldcalls"] = json_encode(shieldcalls)
+	if(orbiters)
+		.["atom-orbiters"] = "exists"
+	if(length(interacting_mobs))
+		.["atom-interacting-mobs"] = json_encode(interacting_mobs)
+
 /atom/proc/reveal_blood()
 	return
 

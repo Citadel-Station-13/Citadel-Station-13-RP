@@ -284,6 +284,24 @@ SUBSYSTEM_DEF(garbage)
 	if(detail)
 		LAZYADD(type_info.extra_details, detail)
 
+	// CITADEL EDIT: trace GC
+	do
+		if()
+		var/list/trace_data = D.gc_trace_data()
+		if(isatom(D))
+
+			#ifndef TESTING
+			// it's usually safe to encode atom vars as stuff like
+			// admin data and other config crap are on datums
+			trace_data["atom-vars"] = json_encode(D.vars)
+			#endif
+
+		#ifdef TESTING
+		trace_data["vars"] = json_encode(D.vars)
+		#endif
+		log_world("GC-TRACE: [json_encode(trace_data)]")
+	while(FALSE)
+
 	var/tick_usage = TICK_USAGE
 	del(D)
 	tick_usage = TICK_USAGE_TO_MS(tick_usage)
