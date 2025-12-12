@@ -157,7 +157,7 @@
 
 /obj/structure/ladder/teleporter/proc/climbLadderteleporter(var/mob/M, var/obj/target_ladder)
 	var/direction = (target_ladder == target_up ? "up" : "down")
-	M.visible_message("<span class='notice'>The [M] teleports [direction] the teleporter!</span>",
+	M.visible_message("<span class='notice'>\The [M] teleports [direction] the teleporter!</span>",
 		"You are being teleported [direction] the teleporter!",
 		"You hear the teleporter being used.")
 
@@ -169,7 +169,7 @@
 		for(var/atom/A in T)
 			playsound(src, 'sound/effects/uncloak.ogg', 50, 1)
 			if(!A.CanPass(M, M.loc, 1.5, 0))
-				to_chat(M, "<span class='notice'>The [A] is blocking \the teleporter.</span>")
+				to_chat(M, "<span class='notice'>\The [A] is blocking the teleporter.</span>")
 				return FALSE
 		return M.forceMove(T)
 
