@@ -12,6 +12,8 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	plane = MOB_PLANE
 	layer = 4
 	light_color = "#cc7700"
+	// it's an electromagnetic field wtf are you gonna do to it lol
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 	var/size = 1
 	var/energy = 0
