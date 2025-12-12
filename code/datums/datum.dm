@@ -136,10 +136,7 @@
 	return QDEL_HINT_QUEUE
 
 /datum/proc/gc_trace_data()
-	. = list(
-		"type" = "[type]",
-		"refcount" = refcount(src),
-	)
+	. = list()
 	if(length(active_timers))
 		.["datum-active-timers"] = json_encode(active_timers)
 	if(length(open_uis))

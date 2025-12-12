@@ -15,10 +15,6 @@
 	//  todo: kil
 	var/verbose_logging = FALSE
 
-/datum/controller/New()
-	if(type == /datum/controller)
-		CRASH("raw /datum/controller made")
-
 /datum/controller/vv_delete()
 	return FALSE
 

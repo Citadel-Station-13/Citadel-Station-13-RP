@@ -129,6 +129,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	addtimer(CALLBACK(src, PROC_REF(process_queue)), 0)
 
 /datum/atom_hud_provider/proc/process_queue()
+	update_queued = FALSE
 	for(var/atom/A as anything in queued_for_update)
 		var/opcode = queued_for_update[A]
 		switch(opcode)
@@ -136,7 +137,6 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 				update(A, A.atom_huds[type])
 			if(ATOM_HUD_QUEUED_FOR_REMOVE)
 				remove(A)
-	update_queued = FALSE
 	queued_for_update = list()
 
 /datum/atom_hud_provider/proc/create_image(atom/target)
