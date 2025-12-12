@@ -5832,7 +5832,7 @@ END CITADEL CHANGE */
 	name = "roast beef"
 	desc = "It's beef. It's roasted. It's been a staple of dining tradition for centuries."
 	icon_state = "roastbeef"
-	trash = /obj/item/trash/waffles
+	trash = /obj/item/trash/plate
 	nutriment_amt = 8
 	nutriment_desc = list("cooked meat" = 5)
 
