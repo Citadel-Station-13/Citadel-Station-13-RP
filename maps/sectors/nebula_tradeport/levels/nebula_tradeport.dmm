@@ -11507,6 +11507,10 @@
 "aFh" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
+/obj/machinery/door/blast/regular{
+	id = "salv3"
+	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "aFi" = (
@@ -18177,13 +18181,9 @@
 "aYr" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/obj/machinery/door/blast/regular{
-	id = "salv3"
-	},
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "aYs" = (
@@ -25452,6 +25452,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/blast/regular{
+	id = "salv3"
+	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "qAM" = (
@@ -26413,13 +26417,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/blast/regular{
-	id = "salv3"
-	},
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "sRG" = (
