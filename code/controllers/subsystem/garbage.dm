@@ -247,7 +247,7 @@ SUBSYSTEM_DEF(garbage)
 			if (GC_QUEUE_HARDDELETE)
 				// We don't want to hold a reference anymore when the harddel runs,
 				// so early-cut the list so that only this proc (and HardDelete) holds a ref.
-				queue.Cut(current_index + 1, length(queue))
+				queue.Cut(current_index + 1, length(queue) + 1)
 				HardDelete(D)
 				continue
 
@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(garbage)
 			break
 		#endif
 
-	queue.Cut(current_index + 1, length(queue))
+	queue.Cut(current_index + 1, length(queue) + 1)
 
 #undef REFS_WE_EXPECT
 

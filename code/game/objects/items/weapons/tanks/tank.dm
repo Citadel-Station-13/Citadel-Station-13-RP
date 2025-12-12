@@ -630,7 +630,6 @@ var/list/global/tank_gauge_cache = list()
 	var/obj/item/tank/tank = null
 	var/obj/item/assembly_holder/assembly = null
 
-
 /obj/item/tankassemblyproxy/receive_signal()	//This is mainly called by the sensor through sense() to the holder, and from the holder to here.
 	tank.ignite()	//boom (or not boom if you made shijwtty mix)
 
