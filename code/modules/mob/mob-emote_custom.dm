@@ -54,10 +54,11 @@
  */
 /mob/proc/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
 	. = emote_text
+	var/first_was_apostrophe = .[1] == "'"
 	. = html_encode(.)
 	. = say_emphasis(.)
 	// let the roleplayers roleplay their silly `'s`...
-	if(.[1] == "'")
+	if(first_was_apostrophe)
 		. = "<b>[src]</b>" + .
 	else
 		. = "<b>[src]</b> " + .
