@@ -285,7 +285,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		if(!silent)
 			to_chat(user, SPAN_WARNING("This circuit is not in an assembly!"))
 		return
-	if(!removable !force)
+	if(!removable && !force)
 		if(!silent)
 			to_chat(user, SPAN_WARNING("\The [src] seems to be permanently attached to the case."))
 		return
@@ -296,7 +296,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 	// in case we can't easily get the index, we want to be able to get it still.
 	if(!index && A)
-		index = A.ui_circuit_props.Find(src)
+		index = A.assembly_components.Find(src)
 
 	// Remove from helper and TGUI lists
 	A.ui_circuit_props.Cut(index, index + 1)

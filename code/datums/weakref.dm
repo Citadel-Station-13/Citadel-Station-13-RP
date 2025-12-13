@@ -56,7 +56,7 @@
 	var/reference
 
 /datum/weakref/New(datum/thing)
-	reference = REF(thing)
+	reference = ref(thing)
 
 /datum/weakref/Destroy(force)
 	var/datum/target = resolve()

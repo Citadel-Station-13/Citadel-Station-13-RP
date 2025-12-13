@@ -76,6 +76,13 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 		/obj/item/integrated_circuit/built_in/action_button,
 		/obj/item/clothing/ears/circuitry,
 		/obj/item/clothing/mask/gas/half,
+		/obj/item/clothing/suit/storage/bladerunner,
+		/obj/item/clothing/suit/armor/pcarrier/ballistic,
+		/obj/effect/temp_visual/explosion/fast,
+		/obj/effect/temporary_effect/cleave_attack,
+		/obj/effect/plant,
+		/obj/effect/floormimic,
+		/obj/effect/forcefield/cult,
 	)
 	var/list/min_post_destroy_refcounts = list()
 	var/list/min_pre_destroy_refcounts = list()
@@ -86,11 +93,16 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 
 	var/list/weakrefs = list()
 
+	var/create_path_index = 0
+
 	while(TRUE)
 		sleep(world.tick_lag)
 		// create / destroy something
 		do
-			var/path = pick(allowed_types)
+			create_path_index++
+			if(create_path_index > length(allowed_types))
+				create_path_index = 1
+			var/path = allowed_types[create_path_index]
 			var/datum/entity = new path
 			var/list/weakref_pack = new /list(5)
 			weakref_pack[1] = WEAKREF(entity)
@@ -115,7 +127,7 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 					break
 				++i
 				var/datum/weakref/weak = pack[1]
-				var/datum/maybe_resolved = weak.resolve()
+				var/datum/maybe_resolved = weak.hard_resolve()
 				if(!maybe_resolved)
 					// did we win or did SSgarbage harddel it? who knows..
 					continue

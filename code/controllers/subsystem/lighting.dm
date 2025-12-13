@@ -1,8 +1,6 @@
 SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
-	// YEEEEEHAW
-	// TODO: SS_HIBERNATE or something so this isn't literally running every tick
-	wait = 0
+	wait = LIGHTING_INTERVAL
 	priority = FIRE_PRIORITY_LIGHTING
 	init_order = INIT_ORDER_LIGHTING
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY

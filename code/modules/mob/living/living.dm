@@ -42,7 +42,8 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 		add_verb(src, /mob/living/proc/insidePanel)
 		//Tries to load prefs if a client is present otherwise gives freebie stomach
 		spawn(2 SECONDS)
-			init_vore()
+			if(!QDESTROYING(src))
+				init_vore()
 	//*        END         *//
 
 /mob/living/Destroy()
@@ -73,6 +74,10 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 			qdel(O)
 	internal_organs.Cut()
 	profile = null
+
+	QDEL_LIST(vore_organs)
+	if(length(vore_organs) || vore_selected)
+		stack_trace("vore is being very stupid and not gcing again")
 
 	return ..()
 

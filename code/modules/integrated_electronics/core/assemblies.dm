@@ -398,11 +398,13 @@
 
 // Actually puts the circuit inside, doesn't perform any checks.
 /obj/item/electronic_assembly/proc/add_component(var/obj/item/integrated_circuit/IC)
+	if(IC in assembly_components)
+		return
 	IC.forceMove(get_object())
 	IC.assembly = src
 	// Build TGUI lists here for efficiency.  We don't need to do that every time the UI updates.
 	ui_circuit_props.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC),"removable" = IC.removable,"input" = IC.can_be_asked_input)))
-	assembly_components |= IC
+	assembly_components += IC
 	/* TBI	diag hud
 	//increment numbers for diagnostic hud
 	if(component.action_flags & IC_ACTION_COMBAT)

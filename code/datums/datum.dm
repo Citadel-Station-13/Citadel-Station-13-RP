@@ -101,7 +101,10 @@
 	//SHOULD_NOT_SLEEP(TRUE)
 	tag = null
 	datum_flags &= ~DF_USE_TAG //In case something tries to REF us
-	weak_reference = null //ensure prompt GCing of weakref.
+	// -- CITADEL REMOVAL --
+	// This shouldn't be needed; weakref already has resolve() vs hard_resolve().
+	// We use weakref for GC tracing.
+	// weak_reference = null //ensure prompt GCing of weakref.
 
 	if(active_timers)
 		var/list/timers = active_timers
