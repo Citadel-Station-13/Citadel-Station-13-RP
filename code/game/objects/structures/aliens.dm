@@ -396,8 +396,7 @@ Alien plants should do something if theres a lot of poison
 	if(exposed_temperature > 500 + T0C)
 		damage_integrity(5, TRUE)
 
-/obj/structure/alien/egg/Proximity(datum/proxfield/field, ...)
-	..()
+/obj/structure/alien/egg/Proximity(datum/proxfield/field, atom/movable/AM)
 	if(status == GROWN)
 		if(!CanHug(AM))
 			return

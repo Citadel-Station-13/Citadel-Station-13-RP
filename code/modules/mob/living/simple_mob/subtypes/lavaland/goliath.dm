@@ -98,7 +98,7 @@
 	goliath_sac.my_atom = src
 
 /mob/living/simple_mob/animal/goliath/Destroy()
-	QDEL_NULL(goliath_sack)
+	QDEL_NULL(goliath_sac)
 	return ..()
 
 /datum/ai_holder/polaris/simple_mob/melee/goliath
