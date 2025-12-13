@@ -156,16 +156,16 @@ SUBSYSTEM_DEF(garbage)
 // 1 from the hard reference in the queue, and 1 from the variable used before this
 #define REFS_WE_EXPECT 2
 
-	// this is the checking index; anything **after** this will be cut.
-	var/checking_index = length(queue)
-	while(checking_index > 0)
+	// this is the checking index; anything **before** this will be cut.
+	var/checking_index = 1
+	while(checking_index <= length(queue))
 		if(MC_TICK_CHECK)
 			break
 
 		var/list/queue_entry = queue[checking_index]
 		// invalid entry for some reason, drop it
 		if(length(queue_entry) < GC_QUEUE_ITEM_INDEX_COUNT)
-			--checking_index
+			++checking_index
 			var/static/warned_invalid_entry = FALSE
 			if(!warned_invalid_entry)
 				warned_invalid_entry = TRUE
@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(garbage)
 			break
 
 		// at this point, the entry is going to get popped off, no matter what
-		checking_index--
+		++checking_index
 
 		var/datum/D = queue_entry[GC_QUEUE_ITEM_REF]
 		// if there's only the expected refcount (one in queue, one in this proc),
@@ -248,7 +248,7 @@ SUBSYSTEM_DEF(garbage)
 			if (GC_QUEUE_HARDDELETE)
 				// We don't want to hold a reference anymore when the harddel runs,
 				// so early-cut the list so that only this proc (and HardDelete) holds a ref.
-				queue.Cut(checking_index + 1, length(queue) + 1)
+				queue.Cut(1, checking_index)
 				HardDelete(D)
 				continue
 
@@ -259,7 +259,7 @@ SUBSYSTEM_DEF(garbage)
 			break
 		#endif
 
-	queue.Cut(checking_index + 1, length(queue) + 1)
+	queue.Cut(1, checking_index)
 
 #undef REFS_WE_EXPECT
 
