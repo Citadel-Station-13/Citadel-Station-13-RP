@@ -515,6 +515,8 @@
 	icon_state = "spawner-jackolantern"
 
 /obj/landmark/carved_pumpkin_spawn/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
+	atom_flags |= ATOM_INITIALIZED
 	var/new_pumpkin = pick(
 		prob(70);/obj/structure/flora/pumpkin,
 		prob(60);/obj/structure/flora/pumpkin/carved,

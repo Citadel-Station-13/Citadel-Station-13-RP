@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/baseturf_core()
 	// todo: this is shitcode, pull it out on maploader refactor.
 	// this is very obviously a copypaste from ChangeTurf.
-	. = ordered_levels[z].base_turf || BLANK_TURF_TYPE
+	. = SSmapping.ordered_levels[z].base_turf || BLANK_TURF_TYPE
 	if(. == /turf/space)
 		if(istype(below(), /turf/simulated))
 			. = /turf/simulated/open
@@ -88,7 +88,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(!path)
 		return
 	if(path == /turf/baseturf_bottom)
-		path = ordered_levels[z] || /turf/space
+	. = SSmapping.ordered_levels[z].base_turf || BLANK_TURF_TYPE
+		path = ordered_levels[z].base_turf || /turf/space
 	switch(path)
 		if(/turf/space)
 			var/turf/below = locate(x, y, SSmapping.cached_level_down[z])
