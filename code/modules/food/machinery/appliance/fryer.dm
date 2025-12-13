@@ -40,7 +40,7 @@
 	oil.add_reagent("tallow", optimal_oil*(1 - variance))
 
 /obj/machinery/appliance/cooker/fryer/Destroy()
-	QDLE_NULL(oil)
+	QDEL_NULL(oil)
 	return ..()
 
 /obj/machinery/appliance/cooker/fryer/examine(var/mob/user)
