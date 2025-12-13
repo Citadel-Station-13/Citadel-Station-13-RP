@@ -281,11 +281,13 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 /obj/item/integrated_circuit/proc/remove(mob/user, silent, index, force)
 	var/obj/item/electronic_assembly/A = assembly
-	if(!A && !silent)
-		to_chat(user, SPAN_WARNING("This circuit is not in an assembly!"))
+	if(!A)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("This circuit is not in an assembly!"))
 		return
-	if(!removable && !silent && !force)
-		to_chat(user, SPAN_WARNING("\The [src] seems to be permanently attached to the case."))
+	if(!removable !force)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("\The [src] seems to be permanently attached to the case."))
 		return
 	var/obj/item/electronic_assembly/ea = loc
 
