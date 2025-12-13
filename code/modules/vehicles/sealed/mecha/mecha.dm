@@ -394,6 +394,9 @@
 	QDEL_NULL(radio)
 	QDEL_NULL(smoke_system)
 
+	selected = null
+	proc_res = null
+
 	mechas_list -= src //global mech list
 	. = ..()
 

@@ -37,6 +37,11 @@
 	///Does the component slow/speed up the suit?
 	var/step_delay = 0
 
+/obj/item/vehicle_module/Destroy()
+	if(chassis)
+		detach()
+	return ..()
+
 /obj/item/vehicle_module/proc/do_after_cooldown(target=1)
 	sleep(equip_cooldown)
 	set_ready_state(1)

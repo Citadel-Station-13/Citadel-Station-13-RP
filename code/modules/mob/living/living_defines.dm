@@ -144,3 +144,6 @@
 	var/minHealth = MOB_MINIMUM_HEALTH
 	var/softCritHealth = MOB_SOFT_CRITICAL_HEALTH
 	var/critHealth = MOB_CRITICAL_HEALTH
+
+	var/obj/aiming_overlay/aiming
+	var/list/aimed = list()

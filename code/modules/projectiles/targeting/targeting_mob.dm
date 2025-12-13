@@ -1,6 +1,3 @@
-/mob/living/var/obj/aiming_overlay/aiming
-/mob/living/var/list/aimed = list()
-
 /mob/verb/toggle_gun_mode()
 	set name = "Toggle Gun Mode"
 	set desc = "Begin or stop aiming."
