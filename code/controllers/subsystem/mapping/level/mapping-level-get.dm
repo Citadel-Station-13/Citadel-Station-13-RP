@@ -89,13 +89,13 @@
  */
 /datum/controller/subsystem/mapping/proc/level_get_baseturf(z)
 	var/datum/map_level/L = ordered_levels[z]
-	return L.base_turf || world.turf
+	return L.base_turf
 /**
  * Gets basearea type of a zlevel
  */
 /datum/controller/subsystem/mapping/proc/level_get_basearea(z)
 	var/datum/map_level/L = ordered_levels[z]
-	return L.base_area || world.area
+	return L.base_area
 
 //* Fluff *//
 

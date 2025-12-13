@@ -305,6 +305,24 @@
 	mechas_list += src //global mech list
 
 /obj/vehicle/sealed/mecha/Destroy()
+	// WHAT THE FUCK
+	var/list/all_actions = list(
+		internals_action,
+		lights_action,
+		stats_action,
+		strafing_action,
+		defence_action,
+		overload_action,
+		smoke_action,
+		zoom_action,
+		thrusters_action,
+		cycle_action,
+		switch_damtype_action,
+		phasing_action,
+		cloak_action
+	)
+	QDEL_LIST(all_actions)
+
 	src.legacy_eject_occupant()
 	for(var/mob/M in src) //Be Extra Sure
 		M.forceMove(get_turf(src))
