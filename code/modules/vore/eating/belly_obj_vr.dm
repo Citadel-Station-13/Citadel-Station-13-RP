@@ -164,7 +164,7 @@
 	. = ..()
 	//If not, we're probably just in a prefs list or something.
 	if(isliving(loc))
-		if(QDESTROYING(loc))
+		if(QDELING(loc))
 			CRASH("tried to make a belly in a qdeleting/qdeleted mob, what the fuck")
 		owner = loc
 		owner.vore_organs |= src

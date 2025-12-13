@@ -42,7 +42,7 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 		add_verb(src, /mob/living/proc/insidePanel)
 		//Tries to load prefs if a client is present otherwise gives freebie stomach
 		spawn(2 SECONDS)
-			if(!QDESTROYING(src))
+			if(!QDELING(src))
 				init_vore()
 	//*        END         *//
 

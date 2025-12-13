@@ -143,7 +143,7 @@ SUBSYSTEM_DEF(plants)
 
 /datum/controller/subsystem/plants/proc/add_plant(var/obj/effect/plant/plant)
 	// todo: shouldn't need this but here for now for gc check reasons
-	if(QDESTROYING(plant))
+	if(QDELING(plant))
 		CRASH("tried to add a qdestroying plant")
 	processing |= plant
 

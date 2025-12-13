@@ -38,7 +38,7 @@
 
 /mob/living/proc/init_vore()
 	// FUCK YOU FUCK YOU WHY DOESNT THIS CHECK FOR GC??
-	if(QDESTROYING(src))
+	if(QDELING(src))
 		CRASH("vore just tried to have a vore moment")
 	//Something else made organs, meanwhile.
 	if(LAZYLEN(vore_organs))

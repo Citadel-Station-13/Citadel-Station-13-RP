@@ -302,7 +302,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	A.ui_circuit_props.Cut(index, index + 1)
 	A.assembly_components.Cut(index, index + 1)
 
-	if(!QDESTROYING(src))
+	if(!QDELING(src))
 		var/turf/T = get_turf(src)
 		forceMove(T)
 		if(!silent)
