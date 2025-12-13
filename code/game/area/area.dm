@@ -177,8 +177,7 @@
 /*
  * Initalize this area
  *
- * intializes the dynamic area lighting and also registers the area with the z level via
- * reg_in_areas_in_z
+ * intializes the dynamic area lighting
  *
  * returns INITIALIZE_HINT_LATELOAD
  */
@@ -204,8 +203,6 @@
 
 	. = ..()
 
-	reg_in_areas_in_z()
-
 	blend_mode = BLEND_MULTIPLY // Putting this in the constructor so that it stops the icons being screwed up in the map editor.
 
 	if(!IS_DYNAMIC_LIGHTING(src))
@@ -218,23 +215,6 @@
  */
 /area/LateInitialize()
 	power_change() // all machines set to current power level, also updates lighting icon
-
-/**
- * Register this area as belonging to a z level
- *
- * Ensures the item is added to the SSmapping.areas_in_z list for this z
- */
-/area/proc/reg_in_areas_in_z()
-	if(!length(contents))
-		return
-	var/list/areas_in_z = SSmapping.areas_in_z
-	// update_areasize()
-	if(!z)
-		WARNING("No z found for [src]")
-		return
-	if(!areas_in_z["[z]"])
-		areas_in_z["[z]"] = list()
-	areas_in_z["[z]"] += src
 
 /**
  * Destroy an area and clean it up
