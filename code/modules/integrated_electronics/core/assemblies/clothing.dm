@@ -17,9 +17,10 @@
 	var/obj/item/clothing/clothing = null
 
 /obj/item/electronic_assembly/clothing/Destroy()
-	if(clothing.EA == src)
-		clothing.EA = null
-	clothing = null
+	if(clothing)
+		if(clothing.EA == src)
+			clothing.EA = null
+		clothing = null
 	return ..()
 
 /obj/item/electronic_assembly/clothing/ui_host()
@@ -92,10 +93,12 @@
 		..()
 
 /obj/item/clothing/Moved(oldloc)
-	EA ? EA.on_loc_moved(oldloc) : ..()
+	..()
+	EA?.on_loc_moved(oldloc)
 
 /obj/item/clothing/on_loc_moved(oldloc)
-	EA ? EA.on_loc_moved(oldloc) : ..()
+	..()
+	EA?.on_loc_moved(oldloc)
 
 /obj/item/clothing/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	. = ..()

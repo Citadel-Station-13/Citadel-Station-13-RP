@@ -372,7 +372,6 @@ a creative player the means to solve many problems.  Circuits are held inside an
 /obj/item/integrated_circuit/proc/ext_moved(oldLoc, dir)
 	return
 
-
 /// Returns the object that is supposed to be used in attack messages, location checks, etc.
 /obj/item/integrated_circuit/proc/get_object()
 	// If the component is located in an assembly, let assembly determine it.
@@ -380,7 +379,6 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		return assembly.get_object()
 	else
 		return src	// If not, the component is acting on its own.
-
 
 /// Returns the location to be used for dropping items.
 /// Same as the regular drop_location(), but with proc being run on assembly if there is any.
@@ -390,7 +388,6 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		return assembly.drop_location()
 	else
 		return ..()	// If not, the component is acting on its own.
-
 
 /// Checks if the target object is reachable.  Useful for various manipulators and manipulator-like objects.
 /obj/item/integrated_circuit/proc/check_target(atom/target, exclude_contents = FALSE, exclude_components = FALSE, exclude_self = FALSE, exclude_outside = FALSE)
