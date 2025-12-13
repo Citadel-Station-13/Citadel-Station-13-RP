@@ -39,9 +39,6 @@
 			warned = TRUE
 			stack_trace("turf space basic had preloader active, shouldn't happen")
 
-/turf/space/basic/ChangeTurf(path, list/new_baseturfs, flags)
-	. = ..(path, new_baseturfs, flags | CHANGETURF_SKIP)
-
 /**
  * Space Initialize
  *

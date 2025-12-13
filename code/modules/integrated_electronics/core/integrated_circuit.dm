@@ -3,6 +3,8 @@
 a creative player the means to solve many problems.  Circuits are held inside an electronic assembly, and are wired using special tools.
 */
 
+// this is a fucking miserable bag of bullshit, refactor this shit asap
+
 /obj/item/integrated_circuit
 	name = "integrated circuit"
 	desc = "It's a tiny chip!  This one doesn't seem to do much, however."
@@ -13,13 +15,13 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	var/obj/item/electronic_assembly/assembly = null
 	var/extended_desc = null
 	var/can_be_asked_input = 0
-	var/list/inputs = list()
+	var/list/datum/integrated_io/inputs = list()
 	/// Assoc list which will fill a pin with data upon creation.  e.g. "2" = 0 will set input pin 2 to equal 0 instead of null.
 	var/list/inputs_default = list()
-	var/list/outputs = list()
+	var/list/datum/integrated_io/outputs = list()
 	/// Ditto, for output.
 	var/list/outputs_default = list()
-	var/list/activators = list()
+	var/list/datum/integrated_io/activators = list()
 	///Uses world.time
 	var/next_use = 0
 	///This acts as a limitation on building machines, more resource-intensive components cost more 'space'.
@@ -46,6 +48,12 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	var/displayed_name = ""
 	/// Allows additional multitool functionality
 	var/allow_multitool = 1
+
+/obj/item/integrated_circuit/Destroy()
+	disconnect_all()
+	if(assembly)
+		#warn AAAA
+	return ..()
 
 /obj/item/integrated_circuit/examine(mob/user, dist)
 	. = ..()
@@ -301,9 +309,8 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
 		to_chat(user, SPAN_NOTICE("You pop \the [src] out of the case, and slide it out."))
 
-	if(istype(ea))
+	if(istype(ea) && user)
 		ea.ui_interact(user)
-
 
 /obj/item/integrated_circuit/proc/push_data()
 	for(var/datum/integrated_io/O in outputs)

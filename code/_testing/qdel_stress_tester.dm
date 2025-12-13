@@ -67,6 +67,15 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 		/obj/machinery/recharge_station,
 		/obj/machinery/sleeper,
 		/obj/machinery/sleep_console,
+		/obj/item/integrated_circuit/arithmetic/absolute,
+		/obj/item/integrated_circuit/built_in/self_sensor,
+		/obj/item/integrated_electronics/analyzer,
+		/obj/item/integrated_circuit_printer/upgraded,
+		/obj/item/integrated_circuit/output/access_displayer,
+		/obj/item/electronic_assembly/clothing/large,
+		/obj/item/integrated_circuit/built_in/action_button,
+		/obj/item/clothing/ears/circuitry,
+		/obj/item/clothing/mask/gas/half,
 	)
 	var/list/min_post_destroy_refcounts = list()
 	var/list/min_pre_destroy_refcounts = list()
@@ -78,10 +87,10 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 	var/list/weakrefs = list()
 
 	while(TRUE)
-		var/path = pick(allowed_types)
 		sleep(world.tick_lag)
 		// create / destroy something
 		do
+			var/path = pick(allowed_types)
 			var/datum/entity = new path
 			var/list/weakref_pack = new /list(5)
 			weakref_pack[1] = WEAKREF(entity)
