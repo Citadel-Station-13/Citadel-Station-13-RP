@@ -27,6 +27,7 @@ it's entirety. You can then take the disk to any R&D console and upload it's dat
 won't update every console in existence) but it's more of a hassle to do. Also, the disks can be stolen.
 */
 
+GLOBAL_LIST_BOILERPLATE(rdconsoles, /obj/machinery/computer/rdconsole)
 /obj/machinery/computer/rdconsole
 	name = "R&D control console"
 	desc = "Science, in a computer! Experiment results not guaranteed."
