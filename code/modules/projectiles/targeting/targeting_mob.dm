@@ -14,7 +14,7 @@
 
 /mob/living/proc/stop_aiming(obj/item/thing, no_message = FALSE)
 	if(!aiming)
-		aiming = new(src)
+		return
 	if(thing && aiming.aiming_with != thing)
 		return
 	aiming.cancel_aiming(no_message)
