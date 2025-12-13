@@ -282,9 +282,6 @@
 	// todo: what the fuck
 	var/can_be_antagged = FALSE
 
-	/// The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
-	var/mob/living/carbon/LAssailant = null
-
 	/// Wizard's spell list, it can be used in other modes thanks to the "Give Spell" badmin button.
 	var/list/spell/spell_list = list()
 

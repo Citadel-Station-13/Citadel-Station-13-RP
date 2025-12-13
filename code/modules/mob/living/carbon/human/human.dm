@@ -1,3 +1,8 @@
+/mob/living/carbon/human
+	//* Movement *//
+	/// are we trying to crawl under someone? mob if true
+	var/tmp/mob/crawling_under_someone
+
 /**
  * constructor; pass in a specieslike resolver as second argument to set
  *
@@ -55,18 +60,20 @@
 	if(!species.vision_organ)
 		add_blindness_source(TRAIT_BLINDNESS_SPECIES)
 
-//! WARNING SHITCODE REMOVE LATER
-/mob/living/carbon/human/LateInitialize()
-	regenerate_icons()
-	update_transform()
-
 /mob/living/carbon/human/Destroy()
 	human_mob_list -= src
 	for(var/organ in organs)
 		qdel(organ)
 	QDEL_NULL(nif)
 	QDEL_LIST_NULL(vore_organs)
+	QDEL_NULL(ab_handler)
+	QDEL_NULL(immune_system)
 	return ..()
+
+//! WARNING SHITCODE REMOVE LATER
+/mob/living/carbon/human/LateInitialize()
+	regenerate_icons()
+	update_transform()
 
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()

@@ -104,6 +104,7 @@
 	// hud
 	for(var/alert in alerts)
 		clear_alert(alert)
+	QDEL_NULL(ability_master)
 	if(client)
 		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			qdel(spell_master)
@@ -133,8 +134,7 @@
 	// get rid of our shit and nullspace everything first..
 	..()
 	// rendering
-	if(hud_used)
-		QDEL_NULL(hud_used)
+	QDEL_NULL(hud_used)
 	dispose_rendering()
 	// perspective; it might be gone now because self perspective is destroyed in ..()
 	using_perspective?.remove_mob(src, TRUE)
