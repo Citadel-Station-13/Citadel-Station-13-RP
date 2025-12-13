@@ -10,6 +10,10 @@
 	..()
 	alarm_handlers = list()
 
+/datum/tgui_module_old/alarm_monitor/Destroy()
+	QDEL_LIST(alarm_handlers)
+	return ..()
+
 /datum/tgui_module_old/alarm_monitor/all
 /datum/tgui_module_old/alarm_monitor/all/New()
 	..()

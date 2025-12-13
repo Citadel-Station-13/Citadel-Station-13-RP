@@ -24,6 +24,11 @@
 	var/field_type = /obj/structure/atmospheric_retention_field
 	circuit = /obj/item/circuitboard/arf_generator
 
+// TODO: this is still not correct behavior.
+/obj/machinery/atmospheric_field_generator/Destroy()
+	disable_field()
+	return ..()
+
 /obj/machinery/atmospheric_field_generator/impassable
 	desc = "An older model of ARF-G that generates an impassable retention field. Works just as well as the modern variety, but is slightly more energy-efficient.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
 	active_power_usage = 800

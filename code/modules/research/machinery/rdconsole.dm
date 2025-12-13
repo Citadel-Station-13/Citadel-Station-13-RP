@@ -51,6 +51,43 @@ GLOBAL_LIST_BOILERPLATE(rdconsoles, /obj/machinery/computer/rdconsole)
 	var/datum/design_holder/lathe_designs = /datum/design_holder/lathe/autolathe
 	var/datum/design_holder/circuit_designs = /datum/design_holder
 
+/obj/machinery/computer/rdconsole/Initialize(mapload)
+	. = ..()
+	if(ispath(lathe_designs))
+		lathe_designs = new lathe_designs(src)
+		lathe_designs.design_ids = list()
+	if(ispath(circuit_designs))
+		circuit_designs = new circuit_designs(src)
+		circuit_designs.design_ids = list()
+	files = new /datum/research(src) //Setup the research data holder.
+	spawn(0)
+		UpdateKnownDesigns()
+	if(!id)
+		for(var/obj/machinery/r_n_d/server/centcom/S in GLOB.machines)
+			S.update_connections()
+			break
+	SyncRDevices()
+
+/obj/machinery/computer/rdconsole/Destroy()
+	QDEL_NULL(lathe_designs)
+	QDEL_NULL(circuit_designs)
+	QDEL_NULL(t_disk)
+	QDEL_NULL(d_disk)
+	QDEL_NULL(files)
+	if(linked_destroy)
+		if(linked_destroy.linked_console == src)
+			linked_destroy.linked_console = null
+		linked_destroy = null
+	if(linked_lathe)
+		if(linked_lathe.linked_console == src)
+			linked_lathe.linked_console = null
+		linked_lathe = null
+	if(linked_imprinter)
+		if(linked_imprinter.linked_console == src)
+			linked_imprinter.linked_console = null
+		linked_imprinter = null
+	return ..()
+
 /obj/machinery/computer/rdconsole/proc/CallMaterialName(var/ID)
 	var/return_name = ID
 	switch(return_name)
@@ -97,23 +134,6 @@ GLOBAL_LIST_BOILERPLATE(rdconsoles, /obj/machinery/computer/rdconsole)
 				linked_imprinter = D
 				linked_imprinter.design_holder = circuit_designs
 				D.linked_console = src
-
-/obj/machinery/computer/rdconsole/Initialize(mapload)
-	. = ..()
-	if(ispath(lathe_designs))
-		lathe_designs = new lathe_designs(src)
-		lathe_designs.design_ids = list()
-	if(ispath(circuit_designs))
-		circuit_designs = new circuit_designs(src)
-		circuit_designs.design_ids = list()
-	files = new /datum/research(src) //Setup the research data holder.
-	spawn(0)
-		UpdateKnownDesigns()
-	if(!id)
-		for(var/obj/machinery/r_n_d/server/centcom/S in GLOB.machines)
-			S.update_connections()
-			break
-	SyncRDevices()
 
 /obj/machinery/computer/rdconsole/proc/UpdateKnownDesigns()
 	var/list/known_designs = files.legacy_all_design_datums()

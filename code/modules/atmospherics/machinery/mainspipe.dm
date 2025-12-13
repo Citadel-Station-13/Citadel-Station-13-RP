@@ -66,6 +66,12 @@
 	aux.volume = volume
 	aux.nodes.len = nodes.len
 
+/obj/machinery/atmospherics/mains_pipe/Destroy()
+	QDEL_NULL(supply)
+	QDEL_NULL(scrubbers)
+	QDEL_NULL(aux)
+	return ..()
+
 /obj/machinery/atmospherics/mains_pipe/proc/burst()
 	for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
 		burst()

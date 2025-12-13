@@ -4114,9 +4114,6 @@ END CITADEL CHANGE */
 /mob/living/carbon/alien/diona
 	composition_reagent = "nutriment"//Dionae are plants, so eating them doesn't give animal protein
 
-/mob/living/simple_mob/slime
-	composition_reagent = "slimejelly"
-
 // /mob/living/simple_animal
 // 	var/kitchen_tag = "animal" //Used for cooking with animals
 

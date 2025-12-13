@@ -330,9 +330,11 @@ Alien plants should do something if theres a lot of poison
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	new /datum/proxfield/basic/square(src, 1)
-	spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
-		if((status == GROWING) && (BURST == 0))
-			Grow()
+	addtimer(CALLBACK(src, PROC_REF(try_grow)), rand(MIN_GROWTH_TIME, MAX_GROWTH_TIME))
+
+/obj/structure/alien/egg/proc/try_grow()
+	if(status == GROWING)
+		Grow()
 
 /obj/structure/alien/egg/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
@@ -360,7 +362,6 @@ Alien plants should do something if theres a lot of poison
 	icon_state = "egg"
 	status = GROWN
 	new /obj/item/clothing/mask/facehugger(src)
-	return
 
 /obj/structure/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
 	if(status == GROWN || status == GROWING)
