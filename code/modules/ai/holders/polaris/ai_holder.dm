@@ -11,13 +11,6 @@
 										// mob to stay still (e.g. delayed attacwking). If you need the mob to be inactive for an extended period of time,
 										// consider sleeping the AI instead.
 
-/datum/ai_holder/polaris/hostile
-	hostile = TRUE
-
-/datum/ai_holder/polaris/retaliate
-	hostile = TRUE
-	retaliate = TRUE
-
 /datum/ai_holder/polaris/New(var/new_holder)
 	ASSERT(new_holder)
 	holder = new_holder
@@ -32,6 +25,12 @@
 	leader = null
 	return ..()
 
+/datum/ai_holder/polaris/hostile
+	hostile = TRUE
+
+/datum/ai_holder/polaris/retaliate
+	hostile = TRUE
+	retaliate = TRUE
 
 // Now for the actual AI stuff.
 
