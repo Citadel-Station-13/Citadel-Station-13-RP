@@ -10,7 +10,7 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 	spawn(0)
 		call(src, PROC_REF(loop))()
 /datum/__qdel_stress_tester/proc/loop()
-	UNTIL(SSgarbage.initialized && SSatoms.initialized)
+	UNTIL(SSgarbage.initialized && SSatoms.initialized && MC_INITIALIZED(INIT_STAGE_WORLD))
 	var/const/use_random_locations = TRUE
 
 	var/static/list/allowed_types = list(
@@ -85,6 +85,20 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 		/obj/effect/plant,
 		/obj/effect/floormimic,
 		/obj/effect/forcefield/cult,
+		/obj/item/vehicle_module/cloak,
+		/obj/item/vehicle_module/combat_shield,
+		/obj/item/vehicle_module/tool/syringe_gun,
+		/obj/item/vehicle_module/weapon/ballistic/gauss_rifle,
+		/obj/item/vehicle_module/weapon/energy/ion,
+		/obj/item/vehicle_component/armor/heavy_duty,
+		/obj/structure/lattice,
+		/obj/structure/catwalk,
+		/obj/item/nifrepairer,
+		/obj/item/hardsuit_module/armblade,
+		/obj/item/hardsuit/ce/equipped,
+		/obj/machinery/lathe/autolathe,
+		/obj/machinery/lathe/mecha_part_fabricator/pros,
+		/obj/machinery/lathe/mecha_part_fabricator,
 	)
 	var/list/min_post_destroy_refcounts = list()
 	var/list/min_pre_destroy_refcounts = list()
@@ -112,7 +126,7 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 				picked_loc = locate(rand(1, world.maxx), rand(1, world.maxy), rand(2, world.maxz))
 			var/datum/entity = new path(picked_loc)
 			var/list/weakref_pack = new /list(5)
-			weakref_pack[1] = WEAKREF(entity)
+			weakref_pack[1] = WEAKREF_UNSAFE(entity)
 			weakref_pack[2] = world.time
 			weakref_pack[3] = path
 

@@ -15,21 +15,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	plane = TURF_PLANE
 
-
-/obj/structure/lattice/Initialize(mapload)
-	. = ..()
-
-	// Should remove this at some point.
-	if(!(istype(loc, /turf/space) || istype(loc, /turf/simulated/open) || istype(loc, /turf/simulated/mineral)))
-		return INITIALIZE_HINT_QDEL
-
-	for(var/obj/structure/lattice/LAT in loc)
-		if(LAT != src)
-			stack_trace("multiple lattices found in ([loc.x], [loc.y], [loc.z])")
-			return INITIALIZE_HINT_QDEL
-
-
-
 /obj/structure/lattice/Destroy()
 	var/turf/old_loc = get_turf(src)
 	. = ..()
@@ -37,18 +22,12 @@
 		for(var/atom/movable/AM in old_loc)
 			AM.fall(old_loc)
 
-
 /obj/structure/lattice/legacy_ex_act(severity)
 	switch(severity)
-		if(1.0)
+		if(1)
 			qdel(src)
-			return
-		if(2.0)
+		if(2)
 			qdel(src)
-			return
-		if(3.0)
-			return
-	return
 
 /obj/structure/lattice/attackby(obj/item/C, mob/user)
 
