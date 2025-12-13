@@ -168,7 +168,7 @@
 
 /atom/movable/screen/spell/Destroy()
 	. = ..()
-	QDEL_NULL(spell)
+	spell = null
 	last_charged_icon = null
 	if(spellmaster)
 		spellmaster.spell_objects -= src
