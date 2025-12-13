@@ -80,7 +80,7 @@
 	QDEL_NULL(plant)
 	parent = null
 	SSplants.remove_plant(src)
-	for(var/obj/effect/plant/neighbor in range(1,src))
+	for(var/obj/effect/plant/neighbor in orange(1, src))
 		SSplants.add_plant(neighbor)
 	return ..()
 

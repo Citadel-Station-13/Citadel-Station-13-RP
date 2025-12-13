@@ -90,6 +90,7 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 	var/list/max_post_destroy_refcounts = list()
 	var/list/max_pre_destroy_refcounts = list()
 	var/list/max_delayed_refcounts = list()
+	var/list/fail_counts = list()
 
 	var/list/weakrefs = list()
 
@@ -138,6 +139,7 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 				var/after_refcount = pack[5]
 				// one for this proc one for ssgarbage queue
 				if(delayed_refcount > 2)
+					fail_counts[path] = 1 + fail_counts[path]
 					min_pre_destroy_refcounts[path] = isnull(min_pre_destroy_refcounts[path]) ? before_refcount : \
 						min(min_pre_destroy_refcounts[path], before_refcount)
 					max_pre_destroy_refcounts[path] = isnull(max_pre_destroy_refcounts[path]) ? before_refcount : \
