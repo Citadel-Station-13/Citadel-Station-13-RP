@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * a holder for a pack of objects that can be ordered
@@ -67,8 +67,6 @@
 	var/list/lazy_gacha_contained
 
 	//* legacy *//
-	/// if null, it will be auto-converted from worth
-	var/legacy_cost
 	var/legacy_contraband = FALSE
 	/// literally just a flag so the subsystem picks it up
 	var/legacy = FALSE
@@ -114,9 +112,6 @@
 			"amount" = lazy_gacha_amount,
 		)
 		lazy_gacha_contained = null
-	// legacy
-	if(isnull(legacy_cost))
-		legacy_cost = ceil(worth * 0.06)
 
 /datum/supply_pack/proc/compact()
 	if(!length(contains))
@@ -159,7 +154,7 @@
 
 /**
  * todo: return list of entities?
- * 
+ *
  * @return container spawned, or null (which can also mean we don't use a container for some reason)
  */
 /datum/supply_pack/proc/instantiate_pack_at(atom/where)

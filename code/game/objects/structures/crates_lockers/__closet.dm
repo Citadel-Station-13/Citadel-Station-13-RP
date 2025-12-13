@@ -624,3 +624,8 @@
 		else
 			visible_message("<span class='warning'>\The [src] sparks and breaks open!</span>", "You hear a faint electrical spark.")
 		return 1
+
+//* Supply *//
+
+/obj/structure/closet/supply_export_is_container()
+	return TRUE

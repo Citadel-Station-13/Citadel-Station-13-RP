@@ -26,6 +26,10 @@
 	key = "attack"
 	default = TRUE
 
+/datum/toml_config_entry/backend/logging/toggles/clickchain
+	key = "clickchain"
+	default = TRUE
+
 /datum/toml_config_entry/backend/logging/toggles/debug
 	key = "debug"
 	default = TRUE

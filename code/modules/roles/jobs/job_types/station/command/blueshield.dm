@@ -1,6 +1,5 @@
 /datum/prototype/role/job/station/blueshield
 	id = JOB_ID_BLUESHIELD
-	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	title = "Blueshield"
 	departments = list(DEPARTMENT_COMMAND)
 	department_flag = ENGSEC

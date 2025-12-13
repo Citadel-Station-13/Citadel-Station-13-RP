@@ -8,8 +8,8 @@
 	spawn_positions = 3			// Let's have 3 able to spawn in roundstart
 	supervisors = "your laws and the AI"	//Nodrak
 	selection_color = "#254C25"
+	economy_create_account = FALSE
 	minimal_player_age = 3		// 1 day is a little too little time
-	account_allowed = 0
 	pto_type = PTO_CYBORG
 	has_headset = FALSE
 	assignable = FALSE

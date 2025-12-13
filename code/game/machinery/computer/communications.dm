@@ -85,7 +85,7 @@
 				if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel > SEC_LEVEL_RED) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
-				set_security_level(tmp_alertlevel)
+				set_station_security_level(tmp_alertlevel)
 				if(GLOB.security_level != old_level)
 					//Only notify the admins if an actual change happened
 					log_game("[key_name(usr)] has changed the security level to [get_security_level()].")

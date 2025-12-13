@@ -3,6 +3,11 @@
 // just define a department, and put that department's name in one or more job datums' departments list.
 // todo: refactor
 /datum/department
+	//* Basics *//
+
+	/// Unique ID
+	var/id
+
 	var/name = "NOPE"		// Name used in UIs, and the index for the department assoc list in SSjob.
 	var/short_name = "NO"	// Shorter name, used for things like external Topic() responses.
 	var/color = "#000000"	// Color to use in UIs to represent this department.
@@ -12,5 +17,13 @@
 	var/visible = TRUE		// If false, it should not show up on things like the manifest or ID computer.
 	var/assignable = TRUE	// Similar for above, but only for ID computers and such. Used for silicon department.
 	var/centcom_only = FALSE
+
+	//* Economy *//
+
 	/// starting pay modifier
 	var/economy_payscale = ECONOMY_PAYSCALE_DEPT_DEFAULT
+
+/**
+ * station departments are this
+ */
+/datum/department/station

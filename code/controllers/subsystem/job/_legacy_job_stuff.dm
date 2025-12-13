@@ -242,9 +242,7 @@
 	return 1
 
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0)
-	if(!H)
-		return null
-
+	H.mind_initialize()
 	var/datum/prototype/role/job/job = RSroles.legacy_job_by_title(rank)
 
 	if(!joined_late)
@@ -279,7 +277,7 @@
 
 	if(job)
 		// Set up their account
-		job.setup_account(H)
+		job.economy_create_self_account(H.mind)
 
 		// Equip job items.
 		job.equip(H, H.mind ? H.mind.role_alt_title : "")
@@ -299,18 +297,6 @@
 	H.job = rank
 	log_game("JOINED [key_name(H)] as \"[rank]\"")
 	log_game("SPECIES [key_name(H)] is a: \"[H.species.name]\"")
-
-	// If they're head, give them the account info for their department
-	if(H.mind && job.department_accounts)
-		var/remembered_info = ""
-		for(var/D in job.department_accounts)
-			var/datum/money_account/department_account = GLOB.department_accounts[D]
-			if(department_account)
-				remembered_info += "<b>Department account number ([D]):</b> #[department_account.account_number]<br>"
-				remembered_info += "<b>Department account pin ([D]):</b> [department_account.remote_access_pin]<br>"
-				remembered_info += "<b>Department account funds ([D]):</b> $[department_account.money]<br>"
-
-		H.mind.store_memory(remembered_info)
 
 	var/alt_title = null
 	if(H.mind)
