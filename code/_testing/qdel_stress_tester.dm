@@ -13,7 +13,28 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 	UNTIL(SSgarbage.initialized && SSatoms.initialized && MC_INITIALIZED(INIT_STAGE_WORLD))
 	var/const/use_random_locations = TRUE
 
-	var/static/list/allowed_types = list(
+	var/static/list/allowed_types = list()
+	// automatic types
+	do
+		allowed_types |= subtypesof(/mob/living/simple_mob)
+		allowed_types |= subtypesof(/mob/living/carbon)
+		allowed_types |= subtypesof(/obj/item/vehicle_module)
+		allowed_types |= subtypesof(/obj/item/vehicle_chassis)
+		allowed_types |= subtypesof(/obj/item/vehicle_component)
+		allowed_types |= subtypesof(/obj/item/vehicle_part)
+		allowed_types |= subtypesof(/obj/vehicle)
+		allowed_types |= subtypesof(/obj/vehicle_old)
+		allowed_types |= subtypesof(/obj/structure)
+		allowed_types |= subtypesof(/obj/machinery)
+		allowed_types |= subtypesof(/obj/effect)
+		for(var/atom/path as anything in allowed_types)
+			if(path.abstract_type == path)
+				allowed_types -= path
+			if(path.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
+				allowed_types -= path
+	while(FALSE)
+	// manual forced types
+	allowed_types |= list(
 		/obj/item,
 		/obj/item/aicard,
 		/obj/item/gun,
