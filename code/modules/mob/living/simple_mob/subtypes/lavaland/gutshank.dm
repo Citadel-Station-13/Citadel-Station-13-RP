@@ -84,6 +84,7 @@
 	shank_gland.my_atom = src
 
 /mob/living/simple_mob/animal/gutshank/Destroy()
+	START_PROCESSING(SSobj, src)
 	QDEL_NULL(shank_gland)
 	return ..()
 

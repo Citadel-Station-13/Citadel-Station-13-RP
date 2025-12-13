@@ -235,33 +235,34 @@
 	src.update_chassis_page()
 	return
 
-/obj/item/vehicle_module/proc/detach(atom/moveto=null)
+/obj/item/vehicle_module/proc/detach(atom/moveto = drop_location())
 	moveto = moveto || get_turf(chassis)
-	if(src.forceMove(moveto))
-		chassis.equipment -= src
-		chassis.universal_equipment -= src
-		if(equip_type)
-			switch(equip_type)
-				if(EQUIP_HULL)
-					chassis.hull_equipment -= src
-				if(EQUIP_WEAPON)
-					chassis.weapon_equipment -= src
-				if(EQUIP_HEAVY_WEAPON)
-					chassis.heavy_weapon_equipment -= src
-				if(EQUIP_UTILITY)
-					chassis.utility_equipment -= src
-				if(EQUIP_SPECIAL)
-					chassis.special_equipment -= src
-				if(EQUIP_MICRO_UTILITY)
-					chassis.micro_utility_equipment -= src
-				if(EQUIP_MICRO_WEAPON)
-					chassis.micro_weapon_equipment -= src
-		if(chassis.selected == src)
-			chassis.selected = null
-		update_chassis_page()
-		chassis.log_message("[src] removed from equipment.")
-		chassis = null
-		set_ready_state(1)
+	if(moveto)
+		forceMove(moveto)
+	chassis.equipment -= src
+	chassis.universal_equipment -= src
+	if(equip_type)
+		switch(equip_type)
+			if(EQUIP_HULL)
+				chassis.hull_equipment -= src
+			if(EQUIP_WEAPON)
+				chassis.weapon_equipment -= src
+			if(EQUIP_HEAVY_WEAPON)
+				chassis.heavy_weapon_equipment -= src
+			if(EQUIP_UTILITY)
+				chassis.utility_equipment -= src
+			if(EQUIP_SPECIAL)
+				chassis.special_equipment -= src
+			if(EQUIP_MICRO_UTILITY)
+				chassis.micro_utility_equipment -= src
+			if(EQUIP_MICRO_WEAPON)
+				chassis.micro_weapon_equipment -= src
+	if(chassis.selected == src)
+		chassis.selected = null
+	update_chassis_page()
+	chassis.log_message("[src] removed from equipment.")
+	chassis = null
+	set_ready_state(1)
 	enable_special = FALSE
 	return
 

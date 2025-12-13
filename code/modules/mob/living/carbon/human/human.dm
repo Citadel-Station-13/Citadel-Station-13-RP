@@ -13,10 +13,6 @@
 	// todo: init_dna?? reset_dna??
 	. = ..()
 
-	if(!dna)
-		dna = new /datum/dna(null)
-		// Species name is handled by set_species()
-
 	if(specieslike)
 		set_species(specieslike, force = TRUE, regen_icons = FALSE)
 	else

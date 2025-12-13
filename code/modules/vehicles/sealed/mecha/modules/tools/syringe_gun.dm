@@ -32,7 +32,7 @@
 	return ..()
 
 /obj/item/vehicle_module/tool/syringe_gun/detach()
-	synth.stop()
+	synth?.stop()
 	return ..()
 
 /obj/item/vehicle_module/tool/syringe_gun/critfail()

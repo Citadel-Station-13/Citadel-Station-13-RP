@@ -7,6 +7,9 @@
 
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
+	if(!dna)
+		dna = new /datum/dna(null)
+		// Species name is handled by set_species()
 	//setup reagent holders
 	bloodstr = new/datum/reagent_holder/metabolism/bloodstream(500, src)
 	ingested = new/datum/reagent_holder/metabolism/ingested(500, src)

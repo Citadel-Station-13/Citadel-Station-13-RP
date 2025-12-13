@@ -7,10 +7,10 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 
 /datum/__qdel_stress_tester
 /datum/__qdel_stress_tester/New()
-	Master.sleep_offline_after_initializations = FALSE
 	spawn(0)
 		call(src, PROC_REF(loop))()
 /datum/__qdel_stress_tester/proc/loop()
+	Master.sleep_offline_after_initializations = FALSE
 	UNTIL(SSgarbage.initialized && SSatoms.initialized && MC_INITIALIZED(INIT_STAGE_WORLD))
 	var/const/use_random_locations = TRUE
 

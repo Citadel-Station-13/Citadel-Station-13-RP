@@ -98,6 +98,7 @@
 	goliath_sac.my_atom = src
 
 /mob/living/simple_mob/animal/goliath/Destroy()
+	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(goliath_sac)
 	return ..()
 
