@@ -5932,6 +5932,7 @@
 #include "maps\stations\strelka\strelka-overmap.dm"
 #include "maps\stations\strelka\strelka-papers.dm"
 #include "maps\stations\strelka\strelka-shuttles.dm"
+#include "maps\stations\strelka\strelka-turbolift.dm"
 #include "maps\stations\strelka\strelka.dm"
 #include "maps\stations\strelka\telecomms.dm"
 #include "maps\stations\tether\engines.dm"
