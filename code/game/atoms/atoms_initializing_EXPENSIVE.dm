@@ -83,11 +83,6 @@
 			//we were deleted
 			return
 
-#warn make sure everything calls this because fucking tags lol
-/atom/EarlyDestroy(force)
-	tag = null
-	return ..()
-
 /**
  * The primary method that objects are setup in SS13 with
  *

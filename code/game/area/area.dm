@@ -170,7 +170,9 @@
 	return ..()
 
 /area/EarlyDestroy(force)
-	return Destroy(force)
+	if(GLOB.areas_by_type[type] == src)
+		GLOB.areas_by_type[type] = null
+	return ..()
 
 /*
  * Initalize this area

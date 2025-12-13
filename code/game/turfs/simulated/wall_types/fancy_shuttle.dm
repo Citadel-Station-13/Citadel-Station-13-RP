@@ -35,7 +35,9 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	GLOB.fancy_shuttles[fancy_shuttle_tag] = src
 
 /obj/effect/fancy_shuttle/EarlyDestroy(force)
-	return Destroy(force)
+	if(GLOB.fancy_shuttles[fancy_shuttle_tag] == src)
+		GLOB.fancy_shuttles[fancy_shuttle_tag] = null
+	return ..()
 
 /obj/effect/fancy_shuttle/Destroy()
 	if(GLOB.fancy_shuttles[fancy_shuttle_tag] == src)

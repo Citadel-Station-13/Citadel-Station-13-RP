@@ -211,6 +211,8 @@
  * * Must clean up anything done in /New.
  */
 /atom/proc/EarlyDestroy(force)
+	if(tag)
+		tag = null
 	return QDEL_HINT_QUEUE
 
 /**
