@@ -65,6 +65,7 @@
 
 	else
 		set_ic_selected_io(io)
+		selected_io = get_ic_selected_io()
 		to_chat(user, "<span class='notice'>You link \the multitool to \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
 
 	update_icon()

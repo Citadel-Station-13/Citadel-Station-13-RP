@@ -303,10 +303,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	if(!QDESTROYING(src))
 		var/turf/T = get_turf(src)
 		forceMove(T)
+		if(!silent)
+			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
+			to_chat(user, SPAN_NOTICE("You pop \the [src] out of the case, and slide it out."))
 	assembly = null
-	if(!silent)
-		playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
-		to_chat(user, SPAN_NOTICE("You pop \the [src] out of the case, and slide it out."))
 
 	if(istype(ea) && user)
 		ea.ui_interact(user)

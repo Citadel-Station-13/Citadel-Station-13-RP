@@ -16,10 +16,10 @@
 	var/mode = WIRE
 	var/datum/weakref/selected_io_weakref
 
-/obj/item/multitool/proc/get_ic_selected_io() as /datum/integrated_io
+/obj/item/integrated_electronics/wirer/proc/get_ic_selected_io() as /datum/integrated_io
 	return selected_io_weakref?.resolve()
 
-/obj/item/multitool/proc/set_ic_selected_io(datum/integrated_io/selecting)
+/obj/item/integrated_electronics/wirer/proc/set_ic_selected_io(datum/integrated_io/selecting)
 	if(!selecting)
 		selected_io_weakref = null
 	selected_io_weakref = WEAKREF(selecting)
