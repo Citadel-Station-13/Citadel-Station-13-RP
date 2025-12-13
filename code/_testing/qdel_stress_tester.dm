@@ -70,28 +70,67 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 	)
 	var/list/min_post_destroy_refcounts = list()
 	var/list/min_pre_destroy_refcounts = list()
+	var/list/min_delayed_refcounts = list()
 	var/list/max_post_destroy_refcounts = list()
 	var/list/max_pre_destroy_refcounts = list()
+	var/list/max_delayed_refcounts = list()
+
+	var/list/weakrefs = list()
 
 	while(TRUE)
 		var/path = pick(allowed_types)
 		sleep(world.tick_lag)
-		var/entity = new path
+		// create / destroy something
+		do
+			var/datum/entity = new path
+			var/list/weakref_pack = new /list(5)
+			weakref_pack[1] = WEAKREF(entity)
+			weakref_pack[2] = world.time
+			weakref_pack[3] = path
 
-		var/before_refcount = refcount(entity)
-		qdel(entity)
-		var/after_refcount = refcount(entity)
+			var/before_refcount = refcount(entity)
+			qdel(entity)
+			var/after_refcount = refcount(entity)
+			weakref_pack[4] = before_refcount
+			weakref_pack[5] = after_refcount
+			weakrefs[++weakrefs.len] = weakref_pack
+		while(FALSE)
 
-		// one for this proc one for ssgarbage queue
-		if(after_refcount > 2)
-			min_pre_destroy_refcounts[path] = isnull(min_pre_destroy_refcounts[path]) ? before_refcount : \
-				min(min_pre_destroy_refcounts[path], before_refcount)
-			max_pre_destroy_refcounts[path] = isnull(max_pre_destroy_refcounts[path]) ? before_refcount : \
-				max(max_pre_destroy_refcounts[path], before_refcount)
-			min_post_destroy_refcounts[path] = isnull(min_post_destroy_refcounts[path]) ? after_refcount : \
-				min(min_post_destroy_refcounts[path], after_refcount)
-			max_post_destroy_refcounts[path] = isnull(max_post_destroy_refcounts[path]) ? after_refcount : \
-				max(max_post_destroy_refcounts[path], after_refcount)
+		// sweep weakrefs
+		do
+			var/i = 1
+			var/const/delay = 2 MINUTES
+			while(i <= length(weakrefs))
+				var/list/pack = weakrefs[i]
+				if(pack[2] > world.time - delay)
+					break
+				++i
+				var/datum/weakref/weak = pack[1]
+				var/datum/maybe_resolved = weak.resolve()
+				if(!maybe_resolved)
+					// did we win or did SSgarbage harddel it? who knows..
+					continue
+				// should only be one in here and in SSgarbage, ideally
+				var/delayed_refcount = refcount(maybe_resolved)
+				var/path = pack[3]
+				var/before_refcount = pack[4]
+				var/after_refcount = pack[5]
+				// one for this proc one for ssgarbage queue
+				if(delayed_refcount > 2)
+					min_pre_destroy_refcounts[path] = isnull(min_pre_destroy_refcounts[path]) ? before_refcount : \
+						min(min_pre_destroy_refcounts[path], before_refcount)
+					max_pre_destroy_refcounts[path] = isnull(max_pre_destroy_refcounts[path]) ? before_refcount : \
+						max(max_pre_destroy_refcounts[path], before_refcount)
+					min_post_destroy_refcounts[path] = isnull(min_post_destroy_refcounts[path]) ? after_refcount : \
+						min(min_post_destroy_refcounts[path], after_refcount)
+					max_post_destroy_refcounts[path] = isnull(max_post_destroy_refcounts[path]) ? after_refcount : \
+						max(max_post_destroy_refcounts[path], after_refcount)
+					min_delayed_refcounts[path] = isnull(min_delayed_refcounts[path]) ? delayed_refcount : \
+						min(min_delayed_refcounts[path], delayed_refcount)
+					max_delayed_refcounts[path] = isnull(max_delayed_refcounts[path]) ? delayed_refcount : \
+						max(max_delayed_refcounts[path], delayed_refcount)
+			weakrefs.Cut(1, i)
+		while(FALSE)
 
 		// attach debugger here
 		pass()
