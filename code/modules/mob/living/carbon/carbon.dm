@@ -19,6 +19,7 @@
 	QDEL_NULL(blood_holder)
 	QDEL_NULL(ingested)
 	QDEL_NULL(touching)
+	bloodstr = null
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
 	for(var/guts in internal_organs)
 		qdel(guts)

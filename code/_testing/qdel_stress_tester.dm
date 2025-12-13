@@ -19,7 +19,10 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 		/obj/item/gun/projectile/magic,
 		/obj/item/gun/projectile/magnetic,
 		/obj/item/gun/projectile/ballistic,
+		/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg,
 		/obj/item/gun/projectile/energy,
+		/obj/item/gun/projectile/energy/nt_isd/sidearm,
+		/obj/item/gun/projectile/energy/nt_protolaser/carbine,
 		/obj/item/ammo_casing,
 		/obj/item/ammo_casing/a12_7mm,
 		/obj/item/ammo_magazine/a10mm,
@@ -76,18 +79,19 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 		var/entity = new path
 
 		var/before_refcount = refcount(entity)
-		min_pre_destroy_refcounts[path] = isnull(min_pre_destroy_refcounts[path]) ? before_refcount : \
-			min(min_pre_destroy_refcounts[path], before_refcount)
-		max_pre_destroy_refcounts[path] = isnull(max_pre_destroy_refcounts[path]) ? before_refcount : \
-			max(max_pre_destroy_refcounts[path], before_refcount)
-
 		qdel(entity)
-
 		var/after_refcount = refcount(entity)
-		min_post_destroy_refcounts[path] = isnull(min_post_destroy_refcounts[path]) ? after_refcount : \
-			min(min_post_destroy_refcounts[path], after_refcount)
-		max_post_destroy_refcounts[path] = isnull(max_post_destroy_refcounts[path]) ? after_refcount : \
-			max(max_post_destroy_refcounts[path], after_refcount)
+
+		// one for this proc one for ssgarbage queue
+		if(after_refcount > 2)
+			min_pre_destroy_refcounts[path] = isnull(min_pre_destroy_refcounts[path]) ? before_refcount : \
+				min(min_pre_destroy_refcounts[path], before_refcount)
+			max_pre_destroy_refcounts[path] = isnull(max_pre_destroy_refcounts[path]) ? before_refcount : \
+				max(max_pre_destroy_refcounts[path], before_refcount)
+			min_post_destroy_refcounts[path] = isnull(min_post_destroy_refcounts[path]) ? after_refcount : \
+				min(min_post_destroy_refcounts[path], after_refcount)
+			max_post_destroy_refcounts[path] = isnull(max_post_destroy_refcounts[path]) ? after_refcount : \
+				max(max_post_destroy_refcounts[path], after_refcount)
 
 		// attach debugger here
 		pass()

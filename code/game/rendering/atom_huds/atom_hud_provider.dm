@@ -99,9 +99,11 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 /datum/atom_hud_provider/proc/remove(atom/A)
 	if(!A.atom_huds)
 		return
+	queued_for_update[A] = null
 	var/image/hud_image = A.atom_huds?[type]
 	if(hud_image)
 		images -= hud_image
+		hud_image.loc = null
 	atoms -= A
 	A.atom_huds -= id
 	for(var/datum/perspective/perspective as anything in using_perspectives)
@@ -132,6 +134,11 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 
 /datum/atom_hud_provider/proc/queue_add_or_update(atom/A)
 	queued_for_update[A] = ATOM_HUD_QUEUED_FOR_UPDATE
+	// Must be set so if they get deleted before we fire our queue they know to clean up.
+	if(!A.atom_huds?[id])
+		if(!A.atom_huds)
+			A.atom_huds = list()
+		A.atom_huds[id] = null
 	if(!update_queued)
 		wake_queue()
 
