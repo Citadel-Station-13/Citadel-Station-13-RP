@@ -104,6 +104,7 @@
 		src.update_chassis_page()
 		chassis.occupant_message(SPAN_DANGER("The [src] is destroyed!"))
 		chassis.log_append_to_last("[src] is destroyed.",1)
+		chassis = null
 		if(istype(src, /obj/item/vehicle_module/weapon))//Gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)

@@ -13,6 +13,7 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 	Master.sleep_offline_after_initializations = FALSE
 	UNTIL(SSgarbage.initialized && SSatoms.initialized && MC_INITIALIZED(INIT_STAGE_WORLD))
 	var/const/use_random_locations = TRUE
+	var/run_cycles = 1
 
 	var/static/list/allowed_types = list()
 	// automatic types
@@ -134,32 +135,37 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 	var/list/weakrefs = list()
 
 	var/create_path_index = 0
+	var/full_cycles = 0
 
 	while(TRUE)
 		sleep(world.tick_lag)
 		// create / destroy something
-		do
-			create_path_index++
-			if(create_path_index > length(allowed_types))
-				create_path_index = 1
-			var/path = allowed_types[create_path_index]
-			var/picked_loc = null
-			if(use_random_locations)
-				// skip first reserved level
-				picked_loc = locate(rand(1, world.maxx), rand(1, world.maxy), rand(2, world.maxz))
-			var/datum/entity = new path(picked_loc)
-			var/list/weakref_pack = new /list(5)
-			weakref_pack[1] = WEAKREF_UNSAFE(entity)
-			weakref_pack[2] = world.time
-			weakref_pack[3] = path
+		if(full_cycles < run_cycles)
+			do
+				create_path_index++
+				if(create_path_index > length(allowed_types))
+					create_path_index = 1
+					full_cycles++
+					if(full_cycles >= run_cycles)
+						break
+				var/path = allowed_types[create_path_index]
+				var/picked_loc = null
+				if(use_random_locations)
+					// skip first reserved level
+					picked_loc = locate(rand(1, world.maxx), rand(1, world.maxy), rand(2, world.maxz))
+				var/datum/entity = new path(picked_loc)
+				var/list/weakref_pack = new /list(5)
+				weakref_pack[1] = WEAKREF_UNSAFE(entity)
+				weakref_pack[2] = world.time
+				weakref_pack[3] = path
 
-			var/before_refcount = refcount(entity)
-			qdel(entity)
-			var/after_refcount = refcount(entity)
-			weakref_pack[4] = before_refcount
-			weakref_pack[5] = after_refcount
-			weakrefs[++weakrefs.len] = weakref_pack
-		while(FALSE)
+				var/before_refcount = refcount(entity)
+				qdel(entity)
+				var/after_refcount = refcount(entity)
+				weakref_pack[4] = before_refcount
+				weakref_pack[5] = after_refcount
+				weakrefs[++weakrefs.len] = weakref_pack
+			while(FALSE)
 
 		// sweep weakrefs
 		do

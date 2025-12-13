@@ -79,11 +79,6 @@
 
 	can_enter_vent_with = list(/obj/item/clothing/head)
 
-/datum/say_list/slime
-	speak = list("Blorp...", "Blop...", "Blorble...")
-	emote_see = list("bounces", "jiggles", "sways")
-	emote_hear = list("squishes")
-
 /mob/living/simple_mob/slime/Initialize(mapload)
 	add_verb(src, /mob/living/proc/ventcrawl)
 	update_mood()
@@ -95,6 +90,11 @@
 /mob/living/simple_mob/slime/Destroy()
 	QDEL_NULL(hat)
 	return ..()
+
+/datum/say_list/slime
+	speak = list("Blorp...", "Blop...", "Blorble...")
+	emote_see = list("bounces", "jiggles", "sways")
+	emote_hear = list("squishes")
 
 /mob/living/simple_mob/slime/set_stat(new_stat, update_mobility)
 	. = ..()

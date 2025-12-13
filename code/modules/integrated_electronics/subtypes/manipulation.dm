@@ -58,7 +58,7 @@
 	origin_tech = list(TECH_ENGINEERING = 2)
 
 /obj/item/integrated_circuit/manipulation/anchoring/remove(mob/user, silent, index, force)
-	if(assembly.anchored_by == src && !force)
+	if(assembly?.anchored_by == src && !force)
 		silent ? null : to_chat(user, SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
 		return
 	. = ..()

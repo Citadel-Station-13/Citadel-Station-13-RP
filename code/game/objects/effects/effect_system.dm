@@ -153,7 +153,8 @@ steam.start() -- spawns the effect
 				direction = pick(GLOB.alldirs)
 			for(i=0, i<pick(1,2,3), i++)
 				sleep(5)
-				step(sparks,direction)
+				if(isloc(sparks.loc) && !QDELETED(sparks))
+					step(sparks,direction)
 			spawn(20)
 				src.total_sparks--
 

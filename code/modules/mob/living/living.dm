@@ -64,6 +64,7 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 		buckled.unbuckle_mob(src, TRUE)
 	if(selected_image)
 		QDEL_NULL(selected_image)
+	aimed = null
 	QDEL_NULL(aiming)
 
 	// this all needs to be Cut and not null

@@ -32,12 +32,6 @@
 	stop_aiming(no_message=1)
 	..()
 
-/mob/living/Destroy()
-	if(aiming)
-		QDEL_NULL(aiming)
-	aimed.Cut()
-	return ..()
-
 /turf/Enter(atom/movable/mover, atom/oldloc)
 	. = ..()
 	if(isliving(mover))
