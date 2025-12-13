@@ -131,7 +131,8 @@
 			chassis.clearInternalDamage(internal_damage_flag)
 
 		if(!isloc(chassis.loc))
-			qdel(src)
+			if(!QDESTROYING(src))
+				qdel(src)
 		else
 			forceMove(get_turf(chassis))
 	chassis = null
