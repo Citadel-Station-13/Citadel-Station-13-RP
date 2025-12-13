@@ -11,6 +11,8 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 		call(src, PROC_REF(loop))()
 /datum/__qdel_stress_tester/proc/loop()
 	UNTIL(SSgarbage.initialized && SSatoms.initialized)
+	var/const/use_random_locations = TRUE
+
 	var/static/list/allowed_types = list(
 		/obj/item,
 		/obj/item/aicard,
@@ -104,7 +106,11 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 			if(create_path_index > length(allowed_types))
 				create_path_index = 1
 			var/path = allowed_types[create_path_index]
-			var/datum/entity = new path
+			var/picked_loc = null
+			if(use_random_locations)
+				// skip first reserved level
+				picked_loc = locate(rand(1, world.maxx), rand(1, world.maxy), rand(2, world.maxz))
+			var/datum/entity = new path(picked_loc)
 			var/list/weakref_pack = new /list(5)
 			weakref_pack[1] = WEAKREF(entity)
 			weakref_pack[2] = world.time
