@@ -47,6 +47,7 @@
 
 /obj/machinery/appliance/Initialize(mapload, newdir)
 	. = ..()
+	// tODO: what??
 	component_parts = list()
 	component_parts += /obj/item/circuitboard/cooking
 	component_parts += /obj/item/stock_parts/capacitor

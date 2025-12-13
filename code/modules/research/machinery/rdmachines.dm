@@ -50,4 +50,9 @@
 	var/design_type
 	var/obj/machinery/computer/rdconsole/linked_console
 
-/obj/machinery/lathe/r_n_d
+/obj/machinery/lathe/r_n_d/Destroy()
+	if(linked_console)
+		if(linked_console.linked_lathe == src)
+			linked_console.linked_lathe = null
+		linked_console = null
+	return ..()
