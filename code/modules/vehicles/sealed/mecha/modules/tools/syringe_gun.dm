@@ -27,6 +27,10 @@
 	create_reagents(max_volume)
 	synth = new (list(src),0)
 
+/obj/item/vehicle_module/tool/syringe_gun/Destroy()
+	QDEL_NULL(synth)
+	return ..()
+
 /obj/item/vehicle_module/tool/syringe_gun/detach()
 	synth.stop()
 	return ..()
