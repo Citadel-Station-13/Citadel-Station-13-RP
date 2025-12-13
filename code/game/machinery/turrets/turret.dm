@@ -575,7 +575,7 @@
 	if(iscuffed(L)) // If the target is handcuffed, leave it alone
 		return TURRET_NOT_TARGET
 
-	if(isanimal(L)) // Animals are not so dangerous
+	if(isanimal_legacy_this_is_broken(L)) // Animals are not so dangerous
 		return check_anomalies ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 
 	if(isxenomorph(L) || isalien(L)) // Xenos are dangerous

@@ -541,6 +541,7 @@
 #include "code\_globals\lists\reaction_recipes.dm"
 #include "code\_globals\lists\sounds.dm"
 #include "code\_globals\lists\typecache.dm"
+#include "code\_testing\qdel_stress_tester.dm"
 #include "code\controllers\communications.dm"
 #include "code\controllers\controller.dm"
 #include "code\controllers\failsafe.dm"

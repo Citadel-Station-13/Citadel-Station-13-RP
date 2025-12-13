@@ -69,6 +69,8 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	ASSERT(layer_bias <= 100 && layer_bias >= 0)
 
 /datum/atom_hud_provider/Destroy()
+	SHOULD_CALL_PARENT(FALSE)
+	. = QDEL_HINT_LETMELIVE
 	CRASH("attempted to qdel an atom hud provider, this isn't supported because there's no way to \
 	cleanly remove them from all using_perspectives and using_clients.")
 	// TODO: this doesn't actually clean up properly

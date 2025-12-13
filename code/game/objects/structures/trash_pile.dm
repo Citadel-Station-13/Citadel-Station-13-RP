@@ -62,7 +62,7 @@
 
 /obj/structure/trash_pile/attack_generic(mob/user)
 	//Simple Animal
-	if(isanimal(user))
+	if(isanimal_legacy_this_is_broken(user))
 		var/mob/living/L = user
 		//They're in it, and want to get out.
 		if(L.loc == src)

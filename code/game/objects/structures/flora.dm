@@ -517,12 +517,12 @@
 /obj/landmark/carved_pumpkin_spawn/Initialize(mapload)
 	var/new_pumpkin = pick(
 		prob(70);/obj/structure/flora/pumpkin,
-        prob(60);/obj/structure/flora/pumpkin/carved,
-        prob(30);/obj/structure/flora/pumpkin/carved/scream,
-        prob(30);/obj/structure/flora/pumpkin/carved/girly,
-        prob(10);/obj/structure/flora/pumpkin/carved/owo)
-    new new_pumpkin(src.loc)
-    return INITIALIZE_HINT_QDEL
+		prob(60);/obj/structure/flora/pumpkin/carved,
+		prob(30);/obj/structure/flora/pumpkin/carved/scream,
+		prob(30);/obj/structure/flora/pumpkin/carved/girly,
+		prob(10);/obj/structure/flora/pumpkin/carved/owo)
+	new new_pumpkin(src.loc)
+	return INITIALIZE_HINT_QDEL
 
 /obj/structure/flora/pumpkin/carved
 	name = "jack o'lantern"

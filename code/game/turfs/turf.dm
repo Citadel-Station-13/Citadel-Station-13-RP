@@ -347,7 +347,7 @@
 		return
 	if(!isturf(O.loc) || !isturf(user.loc))
 		return
-	if(isanimal(user) && O != user)
+	if(isanimal_legacy_this_is_broken(user) && O != user)
 		return
 	if(M.pulledby || M.is_grabbed())
 		return

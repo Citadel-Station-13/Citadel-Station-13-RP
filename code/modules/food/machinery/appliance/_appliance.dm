@@ -565,7 +565,7 @@
 	if (!Adjacent(user))
 		return FALSE
 
-	if (isanimal(user))
+	if (isanimal_legacy_this_is_broken(user))
 		return FALSE
 
 	return TRUE
@@ -645,7 +645,7 @@
 	if (victim.reagents)
 		victim.reagents.trans_to_holder(result.reagents, victim.reagents.total_volume)
 
-	if (isanimal(victim))
+	if (issimplemob(victim))
 		var/mob/living/simple_animal/SA = victim
 		result.kitchen_tag = SA.kitchen_tag
 
