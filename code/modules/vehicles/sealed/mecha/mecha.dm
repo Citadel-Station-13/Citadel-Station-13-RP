@@ -302,7 +302,6 @@
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/vehicle/sealed/mecha, add_iterators))
 	removeVerb(/obj/vehicle/sealed/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
-	loc.Entered(src)
 	mechas_list += src //global mech list
 
 /obj/vehicle/sealed/mecha/Destroy()
