@@ -11,14 +11,6 @@
 
 // STRUCTURES
 
-/obj/structure/Destroy()
-	updateVisibility(src)
-	return ..()
-
-/obj/structure/Initialize(mapload)
-	. = ..()
-	updateVisibility(src)
-
 // EFFECTS
 
 /obj/effect/Destroy()

@@ -88,8 +88,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(!path)
 		return
 	if(path == /turf/baseturf_bottom)
-	. = SSmapping.ordered_levels[z].base_turf || BLANK_TURF_TYPE
-		path = ordered_levels[z].base_turf || /turf/space
+		path = SSmapping.ordered_levels[z].base_turf || /turf/space
 	switch(path)
 		if(/turf/space)
 			var/turf/below = locate(x, y, SSmapping.cached_level_down[z])

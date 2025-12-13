@@ -306,22 +306,19 @@
 
 /obj/vehicle/sealed/mecha/Destroy()
 	// WHAT THE FUCK
-	var/list/all_actions = list(
-		internals_action,
-		lights_action,
-		stats_action,
-		strafing_action,
-		defence_action,
-		overload_action,
-		smoke_action,
-		zoom_action,
-		thrusters_action,
-		cycle_action,
-		switch_damtype_action,
-		phasing_action,
-		cloak_action
-	)
-	QDEL_LIST(all_actions)
+	QDEL_NULL(internals_action)
+	QDEL_NULL(lights_action)
+	QDEL_NULL(stats_action)
+	QDEL_NULL(strafing_action)
+	QDEL_NULL(defence_action)
+	QDEL_NULL(overload_action)
+	QDEL_NULL(smoke_action)
+	QDEL_NULL(zoom_action)
+	QDEL_NULL(thrusters_action)
+	QDEL_NULL(cycle_action)
+	QDEL_NULL(switch_damtype_action)
+	QDEL_NULL(phasing_action)
+	QDEL_NULL(cloak_action)
 
 	src.legacy_eject_occupant()
 	for(var/mob/M in src) //Be Extra Sure
@@ -388,15 +385,14 @@
 	cell = null
 	internal_tank = null
 
-	if(smoke_possible)	//Just making sure nothing is running.
-		qdel(smoke_system)
-
 	QDEL_NULL(pr_int_temp_processor)
 	QDEL_NULL(pr_inertial_movement)
 	QDEL_NULL(pr_give_air)
 	QDEL_NULL(pr_internal_damage)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(minihud)
+	QDEL_NULL(radio)
+	QDEL_NULL(smoke_system)
 
 	mechas_list -= src //global mech list
 	. = ..()

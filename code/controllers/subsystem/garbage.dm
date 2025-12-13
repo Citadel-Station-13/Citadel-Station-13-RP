@@ -249,6 +249,7 @@ SUBSYSTEM_DEF(garbage)
 				// We don't want to hold a reference anymore when the harddel runs,
 				// so early-cut the list so that only this proc (and HardDelete) holds a ref.
 				queue.Cut(1, checking_index)
+				checking_index = 1
 				HardDelete(D)
 				continue
 

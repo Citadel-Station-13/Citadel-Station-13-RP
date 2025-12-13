@@ -202,6 +202,7 @@
 				M.update_perspective()
 			else
 				qdel(A)
+	QDEL_NULL(circuit)
 	return ..()
 
 /obj/machinery/process(delta_time)//If you dont use process or power why are you here

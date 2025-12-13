@@ -63,6 +63,7 @@
 	init_physiology()
 	// atom HUDs
 	prepare_huds()
+	// key focus
 	set_key_focus(src)
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
@@ -96,6 +97,8 @@
 	status_effects = null
 	// mob lists
 	mob_list_unregister(stat)
+	// key focus
+	set_key_focus(null)
 	// todo: remove machine
 	unset_machine()
 	// hud

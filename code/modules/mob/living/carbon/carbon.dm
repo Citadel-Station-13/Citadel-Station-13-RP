@@ -17,8 +17,8 @@
 
 /mob/living/carbon/Destroy()
 	QDEL_NULL(blood_holder)
-	qdel(ingested)
-	qdel(touching)
+	QDEL_NULL(ingested)
+	QDEL_NULL(touching)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
 	for(var/guts in internal_organs)
 		qdel(guts)
