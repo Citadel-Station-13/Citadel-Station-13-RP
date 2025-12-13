@@ -27,8 +27,8 @@
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
 
-/obj/item/storage/box/bodybags/New()
-	..()
+/obj/item/storage/box/bodybags/Initialize(mapload, empty)
+	. = ..()
 	new /obj/item/bodybag(src)
 	new /obj/item/bodybag(src)
 	new /obj/item/bodybag(src)

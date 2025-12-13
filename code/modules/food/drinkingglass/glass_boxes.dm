@@ -3,8 +3,8 @@
 	desc = "A box of assorted glassware"
 	insertion_whitelist = list(/obj/item/reagent_containers/food/drinks/glass2)
 
-/obj/item/storage/box/mixedglasses/New()
-	..()
+/obj/item/storage/box/mixedglasses/Initialize(mapload, empty)
+	. = ..()
 	new /obj/item/reagent_containers/food/drinks/glass2/square(src)
 	new /obj/item/reagent_containers/food/drinks/glass2/rocks(src)
 	new /obj/item/reagent_containers/food/drinks/glass2/shake(src)
@@ -20,9 +20,8 @@
 	var/glass_type = /obj/item/reagent_containers/food/drinks/glass2
 	insertion_whitelist = list(/obj/item/reagent_containers/food/drinks/glass2)
 
-/obj/item/storage/box/glasses/New()
-	..()
-
+/obj/item/storage/box/glasses/Initialize(mapload, empty)
+	. = ..()
 	for(var/i = 1 to 7)
 		new glass_type(src)
 
@@ -69,9 +68,8 @@
 	insertion_whitelist = list(/obj/item/glass_extra)
 	max_items = 14
 
-/obj/item/storage/box/glass_extras/New()
-	..()
-
+/obj/item/storage/box/glass_extras/Initialize(mapload, empty)
+	. = ..()
 	for(var/i = 1 to 14)
 		new extra_type(src)
 

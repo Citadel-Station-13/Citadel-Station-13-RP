@@ -3,9 +3,9 @@
 	var/obj/machinery/atmospherics/mains_pipe/parent_pipe
 	var/list/obj/machinery/atmospherics/pipe/mains_component/nodes = new()
 
-/obj/machinery/atmospherics/pipe/mains_component/New(loc)
-	..(loc)
+/obj/machinery/atmospherics/pipe/mains_component/Initialize(mapload, newdir)
 	parent_pipe = loc
+	return ..()
 
 /obj/machinery/atmospherics/pipe/mains_component/check_pressure(pressure)
 	var/datum/gas_mixture/environment = loc.loc.return_air()

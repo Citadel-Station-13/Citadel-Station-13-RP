@@ -19,8 +19,8 @@
 		icon_state = "exposed_off"
 		on = 0
 
-/obj/machinery/atmospherics/component/unary/oxygen_generator/New()
-	..()
+/obj/machinery/atmospherics/component/unary/oxygen_generator/Initialize(mapload)
+	. = ..()
 	air_contents.volume = 50
 
 /obj/machinery/atmospherics/component/unary/oxygen_generator/process()

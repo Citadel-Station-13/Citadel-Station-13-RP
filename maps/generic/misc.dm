@@ -112,17 +112,6 @@
 
 /obj/machinery/power/smes/buildable/offmap_spawn/empty // For some reason the proc thing bellow isnt doing its job? I dont know, the SMES doesnt seem to work as intended anyways - BLoop
 
-/obj/machinery/power/smes/buildable/offmap_spawn/empty/New()
-	..(1)
-	charge = 0
-	RCon = TRUE
-	input_level = input_level_max
-	output_level = output_level_max
-	input_attempt = TRUE
-
-
-
-
 
 /////////////////////////////////////////////////////////////////
 

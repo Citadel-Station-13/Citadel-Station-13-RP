@@ -169,6 +169,9 @@
 			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70)) // This interacts with the map loader, so it needs to be set immediately
 	return ..()
 
+/area/EarlyDestroy(force)
+	return Destroy(force)
+
 /*
  * Initalize this area
  *
