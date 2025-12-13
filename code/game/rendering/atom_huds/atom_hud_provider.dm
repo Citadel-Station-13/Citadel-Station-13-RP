@@ -9,10 +9,12 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 		if(initial(provider_type.abstract_type) == provider_type)
 			continue
 		var/datum/atom_hud_provider/provider = new provider_type
-		if(.[provider.id])
-			stack_trace("dupe id [provider.id] between [.[provider.id]:type] and [provider_type]")
-			continue
-		.[provider.id] = provider
+		if(provider.id)
+			if(.[provider.id])
+				stack_trace("dupe id [provider.id] between [.[provider.id]:type] and [provider_type]")
+				continue
+			.[provider.id] = provider
+		.[provider.type] = provider
 
 /**
  * instantiate a custom hud provider
@@ -29,7 +31,8 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	provider.queue_remove(A)
 
 /proc/add_atom_hud_provider(atom/A, hud_path)
-	return update_atom_hud_provider(A, hud_path)
+	var/datum/atom_hud_provider/provider = GLOB.atom_hud_providers[hud_path]
+	provider.queue_add_or_update(A)
 
 /proc/update_atom_hud_provider(atom/A, hud_path)
 	var/datum/atom_hud_provider/provider = GLOB.atom_hud_providers[hud_path]
@@ -62,8 +65,18 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 
 /datum/atom_hud_provider/New()
 	if(isnull(id))
-		id = type
+		id = "[type]"
 	ASSERT(layer_bias <= 100 && layer_bias >= 0)
+
+/datum/atom_hud_provider/Destroy()
+	CRASH("attempted to qdel an atom hud provider, this isn't supported because there's no way to \
+	cleanly remove them from all using_perspectives and using_clients.")
+	// TODO: this doesn't actually clean up properly
+	for(var/atom/A as anything in atoms)
+		remove(A)
+	if(length(images))
+		stack_trace("images not empty")
+	return ..()
 
 /datum/atom_hud_provider/proc/add_perspective(datum/perspective/perspective)
 	using_perspectives += perspective
@@ -82,21 +95,24 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	user.images -= images
 
 /datum/atom_hud_provider/proc/remove(atom/A)
-	var/image/hud_image = A.atom_huds[type]
-	images -= hud_image
+	if(!A.atom_huds)
+		return
+	var/image/hud_image = A.atom_huds?[type]
+	if(hud_image)
+		images -= hud_image
 	atoms -= A
-	A.atom_huds -= type
+	A.atom_huds -= id
 	for(var/datum/perspective/perspective as anything in using_perspectives)
 		perspective.remove_image(hud_image)
 	for(var/client/user as anything in using_clients)
 		user.images -= hud_image
 
 /datum/atom_hud_provider/proc/add_or_update(atom/A)
-	LAZYINITLIST(A.atom_huds)
-	atoms += A
-	var/image/hud_image = A.atom_huds[type]
+	var/image/hud_image = A.atom_huds?[id]
 	if(isnull(hud_image))
-		A.atom_huds[type] = hud_image = create_image(A)
+		LAZYINITLIST(A.atom_huds)
+		atoms += A
+		A.atom_huds[id] = hud_image = create_image(A)
 		images += hud_image
 		for(var/datum/perspective/perspective as anything in using_perspectives)
 			perspective.add_image(hud_image)
@@ -108,24 +124,18 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 	return
 
 /datum/atom_hud_provider/proc/queue_remove(atom/A)
-	if(!update_queued)
-		queue_update()
 	queued_for_update[A] = ATOM_HUD_QUEUED_FOR_REMOVE
+	if(!update_queued)
+		wake_queue()
 
 /datum/atom_hud_provider/proc/queue_add_or_update(atom/A)
-	if(!update_queued)
-		queue_update()
-	LAZYINITLIST(A.atom_huds)
-	var/image/hud_image = A.atom_huds[type]
-	// todo: should we queue the add operations instead of duping them..?
-	if(isnull(hud_image))
-		A.atom_huds[type] = hud_image = create_image(A)
-		images += hud_image
-		for(var/datum/perspective/perspective as anything in using_perspectives)
-			perspective.add_image(hud_image)
 	queued_for_update[A] = ATOM_HUD_QUEUED_FOR_UPDATE
+	if(!update_queued)
+		wake_queue()
 
-/datum/atom_hud_provider/proc/queue_update()
+/datum/atom_hud_provider/proc/wake_queue()
+	if(update_queued)
+		return
 	update_queued = TRUE
 	addtimer(CALLBACK(src, PROC_REF(process_queue)), 0)
 
@@ -135,7 +145,7 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 		var/opcode = queued_for_update[A]
 		switch(opcode)
 			if(ATOM_HUD_QUEUED_FOR_UPDATE)
-				update(A, A.atom_huds[type])
+				add_or_update(A)
 			if(ATOM_HUD_QUEUED_FOR_REMOVE)
 				remove(A)
 	queued_for_update = list()

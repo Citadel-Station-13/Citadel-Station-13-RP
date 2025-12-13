@@ -163,6 +163,9 @@
 	SSzcopy.openspace_overlays += 1
 	loc?.Entered(src, null)
 
+/atom/movable/openspace/mimic/EarlyDestroy(force)
+	return Destroy(force)
+
 /atom/movable/openspace/mimic/Destroy()
 	SSzcopy.openspace_overlays -= 1
 	queued = 0

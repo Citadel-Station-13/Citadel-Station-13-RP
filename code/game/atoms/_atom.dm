@@ -207,6 +207,13 @@
 	var/hit_sound_burn
 
 /**
+ * Called if we're deleted before Initialize() is called.
+ * * Must clean up anything done in /New.
+ */
+/atom/proc/EarlyDestroy(force)
+	return QDEL_HINT_QUEUE
+
+/**
  * Top level of the destroy chain for most atoms
  *
  * Cleans up the following:

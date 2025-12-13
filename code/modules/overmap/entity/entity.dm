@@ -59,6 +59,10 @@
 	id = "[GLOB.round_id? "[GLOB.round_id]_" : ""][num2text(++id_next, 999)]"
 	return ..()
 
+/obj/overmap/entity/EarlyDestroy()
+	// do nothing, just here to acknowledge the New()
+	return ..()
+
 /obj/overmap/entity/Initialize(mapload, datum/overmap_location/location)
 	. = ..()
 	// bind location
