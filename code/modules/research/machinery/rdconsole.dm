@@ -136,6 +136,8 @@ GLOBAL_LIST_BOILERPLATE(rdconsoles, /obj/machinery/computer/rdconsole)
 				D.linked_console = src
 
 /obj/machinery/computer/rdconsole/proc/UpdateKnownDesigns()
+	if(QDELETED(src))
+		return
 	var/list/known_designs = files.legacy_all_design_datums()
 	for(var/datum/prototype/design/D in known_designs)
 		if(D.lathe_type & LATHE_TYPE_CIRCUIT)

@@ -27,6 +27,7 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 		allowed_types |= subtypesof(/obj/structure)
 		allowed_types |= subtypesof(/obj/machinery)
 		allowed_types |= subtypesof(/obj/effect)
+		allowed_types |= subtypesof(/obj/item)
 		for(var/atom/path as anything in allowed_types)
 			if(path.abstract_type == path)
 				allowed_types -= path

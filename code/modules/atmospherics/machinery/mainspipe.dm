@@ -316,6 +316,10 @@
 	initialize_mains_directions = turn(dir, 90) | turn(dir, -90)
 	initialize_directions = dir // actually have a normal connection too
 
+/obj/machinery/atmospherics/mains_pipe/split/Destroy()
+	QDEL_NULL(split_node)
+	return ..()
+
 /obj/machinery/atmospherics/mains_pipe/split/atmos_init()
 	var/node1_dir
 	var/node2_dir

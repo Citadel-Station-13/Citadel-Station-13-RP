@@ -10,7 +10,10 @@
 	// A list of all objects interested in alarm changes, associated to proc-refs.
 	var/list/listeners = list()
 
-/datum/alarm_handler/Destroy()
+/datum/alarm_handler/Destroy(force)
+	if(!force)
+		stack_trace("attempted to delete an alarm handler (don't do this please)")
+		return QDEL_HINT_LETMELIVE
 	listeners = null
 	return ..()
 

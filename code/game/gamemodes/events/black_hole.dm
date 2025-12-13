@@ -13,6 +13,10 @@
 	. = ..()
 	START_PROCESSING(SSprocess_5fps, src)
 
+/obj/effect/bhole/Destroy()
+	STOP_PROCESSING(SSprocess_5fps, src)
+	return ..()
+
 /obj/effect/bhole/process()
 	if(!isturf(loc))
 		qdel(src)

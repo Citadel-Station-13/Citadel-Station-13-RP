@@ -82,12 +82,13 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 
 	name = "[department] requests console"
 	allConsoles += src
-	if(departmentType & RC_ASSIST)
-		req_console_assistance |= department
-	if(departmentType & RC_SUPPLY)
-		req_console_supplies |= department
-	if(departmentType & RC_INFO)
-		req_console_information |= department
+	if(departmentType)
+		if(departmentType & RC_ASSIST)
+			req_console_assistance |= department
+		if(departmentType & RC_SUPPLY)
+			req_console_supplies |= department
+		if(departmentType & RC_INFO)
+			req_console_information |= department
 
 	set_light(1)
 
@@ -307,7 +308,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 /obj/machinery/requests_console/preset
 	name = ""
 	department = ""
-	departmentType = ""
+	departmentType = NONE
 	announcementConsole = 0
 
 // Departments
