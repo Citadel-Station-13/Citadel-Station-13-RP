@@ -50,9 +50,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	var/allow_multitool = 1
 
 /obj/item/integrated_circuit/Destroy()
-	disconnect_all()
-	if(assembly)
-		#warn AAAA
+	remove(silent = TRUE, force = TRUE)
 	return ..()
 
 /obj/item/integrated_circuit/examine(mob/user, dist)
@@ -281,12 +279,12 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			return
 	return FALSE
 
-/obj/item/integrated_circuit/proc/remove(mob/user, silent, index)
+/obj/item/integrated_circuit/proc/remove(mob/user, silent, index, force)
 	var/obj/item/electronic_assembly/A = assembly
 	if(!A && !silent)
 		to_chat(user, SPAN_WARNING("This circuit is not in an assembly!"))
 		return
-	if(!removable && !silent)
+	if(!removable && !silent && !force)
 		to_chat(user, SPAN_WARNING("\The [src] seems to be permanently attached to the case."))
 		return
 	var/obj/item/electronic_assembly/ea = loc
@@ -302,8 +300,9 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	A.ui_circuit_props.Cut(index, index + 1)
 	A.assembly_components.Cut(index, index + 1)
 
-	var/turf/T = get_turf(src)
-	forceMove(T)
+	if(!QDESTROYING(src))
+		var/turf/T = get_turf(src)
+		forceMove(T)
 	assembly = null
 	if(!silent)
 		playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
