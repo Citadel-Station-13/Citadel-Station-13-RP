@@ -29,6 +29,7 @@
 	holder = null
 	SSai.processing -= src // We might've already been asleep and removed, but byond won't care if we do this again and it saves a conditional.
 	home_turf = null
+	leader = null
 	return ..()
 
 

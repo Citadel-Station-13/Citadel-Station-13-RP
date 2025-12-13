@@ -139,6 +139,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/list/old_comp_lookup = comp_lookup?.Copy()
 	var/list/old_signal_procs = signal_procs?.Copy()
 	var/turf/new_turf = new path(src)
+	var/new_turf_was_immediately_initialized = atom_flags & ATOM_INITIALIZED
 
 	new_turf.above = old_above // Multiz ref tracking.
 
@@ -166,9 +167,14 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
 		outdoors = old_outdoors
 
-	// Regen AO
-	if (permit_ao)
-		regenerate_ao()
+	// queue smoothing and AO if needed and we're already initialized
+	// this will be false if we're in mapload so this *should* be a
+	// safe optimization to make.
+	if(new_turf_was_immediately_initialized)
+		if (permit_ao)
+			regenerate_ao()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 
 	// restore/update atmos
 	if(old_fire)
@@ -196,11 +202,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if (old_z_opacity != new_z_opacity)
 			for (var/datum/lighting_corner/corn in corners)
 				corn.rebuild_ztraversal(!new_z_opacity)
-
-	// only queue for smoothing if initialized
-	if(atom_flags & ATOM_INITIALIZED)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
 
 	return new_turf
 

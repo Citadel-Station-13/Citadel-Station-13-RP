@@ -106,6 +106,7 @@
 	var/datum/description_profile/profile
 	var/fullref_url
 	var/headshot_url
+	// todo: shitcode, torch this
 	var/obj/structure/mob_spawner/source_spawner = null
 
 //custom say verbs

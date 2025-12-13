@@ -47,6 +47,11 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 	//*        END         *//
 
 /mob/living/Destroy()
+	if(source_spawner)
+		if(istype(source_spawner))
+			if(source_spawner.spawned_mobs)
+				source_spawner.spawned_mobs -= src
+		source_spawner = null
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
 			var/obj/structure/prop/nest/N = nest

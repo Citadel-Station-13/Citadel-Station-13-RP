@@ -215,7 +215,7 @@
 
 /obj/machinery/emp_act(severity)
 	if(use_power && machine_stat == NONE)
-		use_power(7500/severity)
+		use_power(7500 / severity)
 
 		var/obj/effect/overlay/pulse2 = new /obj/effect/overlay(src.loc)
 		pulse2.icon = 'icons/effects/effects.dmi'

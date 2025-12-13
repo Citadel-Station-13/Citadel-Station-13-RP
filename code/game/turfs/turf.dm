@@ -156,7 +156,6 @@
 	assemble_baseturfs()
 
 	SETUP_SMOOTHING()
-
 	QUEUE_SMOOTH(src)
 
 	//atom color stuff

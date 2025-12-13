@@ -55,7 +55,7 @@
  */
 /mob/Initialize(mapload)
 	// mob lists
-	mob_list_register(stat)
+	mob_list_register()
 	// actions
 	actions_controlled = new /datum/action_holder/mob_actor(src)
 	actions_innate = new /datum/action_holder/mob_actor(src)
@@ -96,7 +96,7 @@
 		qdel(effect)
 	status_effects = null
 	// mob lists
-	mob_list_unregister(stat)
+	mob_list_unregister()
 	// key focus
 	set_key_focus(null)
 	// todo: remove machine
@@ -149,23 +149,31 @@
 
 //* Mob List Registration *//
 
-/mob/proc/mob_list_register(for_stat)
+/mob/proc/mob_list_register()
 	GLOB.mob_list += src
-	if(for_stat == DEAD)
+	if(stat == DEAD)
 		dead_mob_list += src
 	else
 		living_mob_list += src
 
-/mob/proc/mob_list_unregister(for_stat)
+/mob/proc/mob_list_unregister()
 	GLOB.mob_list -= src
-	if(for_stat == DEAD)
-		dead_mob_list -= src
-	else
-		living_mob_list -= src
+	dead_mob_list -= src
+	living_mob_list -= src
 
 /mob/proc/mob_list_update_stat(old_stat, new_stat)
-	mob_list_unregister(old_stat)
-	mob_list_register(new_stat)
+	if(old_stat == new_stat)
+		return
+	switch(old_stat)
+		if(DEAD)
+			dead_mob_list -= src
+		else
+			living_mob_list -= src
+	switch(new_stat)
+		if(DEAD)
+			dead_mob_list += src
+		else
+			living_mob_list += src
 
 /**
  * Generate the tag for this mob
