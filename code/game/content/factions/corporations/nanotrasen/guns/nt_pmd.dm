@@ -60,7 +60,7 @@
 	slot_flags = SLOT_BELT
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = null
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	one_handed_penalty = 0
 	safety_state = GUN_SAFETY_OFF

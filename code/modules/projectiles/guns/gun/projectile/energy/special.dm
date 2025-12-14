@@ -47,7 +47,7 @@
 	projectile_type = /obj/projectile/energy/floramut
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
 	modifystate = "floramut"
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	no_pin_required = 1
 	legacy_battery_lock = 1
 	var/singleton/plantgene/gene = null
@@ -141,7 +141,7 @@
 	charge_cost = 480
 	projectile_type = /obj/projectile/change
 	origin_tech = null
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	charge_meter = 0
 
@@ -215,7 +215,7 @@
 	heavy = TRUE
 	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
 	projectile_type = /obj/projectile/energy/blue_pellet
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	accuracy = 75 // Suppressive weapons don't work too well if there's no risk of being hit.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_ILLEGAL = 6)
@@ -242,7 +242,6 @@
 	projectile_type = /obj/projectile/beam/tungsten
 	cell_type = /obj/item/cell/basic/tier_1/large
 	cell_accept = CELL_TYPE_LARGE
-	cell_system_legacy_use_device = FALSE
 
 	accuracy = 75
 	charge_meter = 0
@@ -335,9 +334,8 @@
 	fire_sound = 'sound/weapons/eluger.ogg'
 
 	projectile_type = /obj/projectile/beam/medigun
+	cell_accept = CELL_TYPE_LARGE
 
-	cell_system_legacy_use_device = FALSE
-	cell_type = /obj/item/cell/high
 	charge_cost = 2500
 
 /obj/item/gun/projectile/energy/puzzle_key
@@ -354,7 +352,7 @@
 		cycle_cooldown = 1 SECONDS;
 		charge_cost = 2400 / 3;
 	}
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	one_handed_penalty = 0
 
@@ -368,7 +366,7 @@
 		cycle_cooldown = 2 SECONDS;
 	}
 	charge_cost = 900
-	cell_system_legacy_use_device = FALSE
+	cell_accept = CELL_TYPE_MEDIUM
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE

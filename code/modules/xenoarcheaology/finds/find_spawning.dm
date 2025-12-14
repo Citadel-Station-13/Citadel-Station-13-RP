@@ -305,10 +305,10 @@
 				if(prob(5))
 					new_gun.obj_cell_slot.cell.rigged = 1
 				if(prob(10))
-					new_gun.obj_cell_slot.cell.maxcharge = 0
+					new_gun.obj_cell_slot.cell.max_charge = 0
 					LAZYSET(new_gun.origin_tech, TECH_ARCANE, rand(0, 1))
 				if(prob(15))
-					new_gun.obj_cell_slot.cell.charge = rand(0, new_gun.obj_cell_slot.cell.maxcharge)
+					new_gun.obj_cell_slot.cell.charge = rand(0, new_gun.obj_cell_slot.cell.max_charge)
 					LAZYSET(new_gun.origin_tech, TECH_ARCANE, 1)
 				else
 					new_gun.obj_cell_slot.cell.charge = 0
@@ -429,7 +429,7 @@
 				/obj/item/surgical/retractor/alien,
 				/obj/item/surgical/scalpel/alien,
 				/obj/item/surgical/surgicaldrill/alien,
-				/obj/item/cell/device/weapon/recharge/alien,
+				/obj/item/cell/regen/weapon,
 				/obj/item/clothing/suit/armor/alien,
 				/obj/item/clothing/head/helmet/alien,
 				/obj/item/clothing/head/psy_crown/wrath

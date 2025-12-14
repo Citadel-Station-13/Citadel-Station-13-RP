@@ -370,9 +370,10 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/frame,
 		/obj/item/broken_device/random,
 		/obj/item/borg/upgrade/restart,
-		/obj/item/cell,
-		/obj/item/cell/high,
-		/obj/item/cell/device,
+		/obj/item/cell/basic/tier_2/weapon,
+		/obj/item/cell/basic/tier_2/medium,
+		/obj/item/cell/basic/tier_2/small,
+		/obj/item/cell/basic/tier_2/large,
 		/obj/item/circuitboard/broken,
 		/obj/item/circuitboard/arcade,
 		/obj/item/circuitboard/machine/lathe/autolathe,
@@ -414,8 +415,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 
 	uncommon_loot = list(
-		/obj/item/cell/super,
-		/obj/item/cell/device/weapon,
+		/obj/item/cell/basic/tier_3/medium,
+		/obj/item/cell/basic/tier_3/weapon,
+		/obj/item/cell/basic/tier_3/large,
 		/obj/item/circuitboard/security,
 		/obj/item/circuitboard/crew,
 		/obj/item/aiModule/reset,
@@ -446,7 +448,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 
 	very_rare_loot = list(
-		/obj/item/cell/hyper,
+		/obj/item/cell/basic/tier_4/mediums,
 		/obj/item/aiModule/freeform,
 		/obj/item/aiModule/asimov,
 		/obj/item/aiModule/paladin,

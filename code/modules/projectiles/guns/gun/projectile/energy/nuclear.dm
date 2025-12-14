@@ -156,7 +156,7 @@
 	damage_force = 8 //looks heavier than a pistol
 	w_class = WEIGHT_CLASS_BULKY	//Looks bigger than a pistol, too.
 	heavy = TRUE
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	modifystate = null
 

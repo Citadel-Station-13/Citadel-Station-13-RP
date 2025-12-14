@@ -1533,6 +1533,7 @@
 #include "code\game\machinery\supply_display.dm"
 #include "code\game\machinery\supplybeacon.dm"
 #include "code\game\machinery\syndicatebeacon.dm"
+#include "code\game\machinery\thermoregulator.dm"
 #include "code\game\machinery\transportpod.dm"
 #include "code\game\machinery\turnstile.dm"
 #include "code\game\machinery\vitals_monitor.dm"

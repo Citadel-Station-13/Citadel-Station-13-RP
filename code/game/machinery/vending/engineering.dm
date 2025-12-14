@@ -40,9 +40,10 @@
 		/obj/item/geiger_counter = 4,
 		/obj/item/clothing/glasses/meson = 2,
 		/obj/item/multitool = 4,
-		/obj/item/cell/small = 10,
-		/obj/item/cell/medium = 10,
-		/obj/item/cell/large = 10,
+		/obj/item/cell/small = 15,
+		/obj/item/cell/medium = 15,
+		/obj/item/cell/large = 15,
+		/obj/item/cell/weapon = 5,
 		/obj/item/airlock_electronics = 10,
 		/obj/item/module/power_control = 10,
 		/obj/item/circuitboard/airalarm = 10,
@@ -72,7 +73,7 @@
 		/obj/item/clothing/glasses/omnihud/eng = 6,
 	)
 	contraband = list(
-		/obj/item/cell/potato = 3,
+		// /obj/item/cell/potato = 3,
 	)
 	premium = list(
 		/obj/item/storage/belt/utility = 3,

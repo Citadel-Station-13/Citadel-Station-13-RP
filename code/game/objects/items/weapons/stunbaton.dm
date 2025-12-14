@@ -20,6 +20,7 @@
 
 	/// Starting cell type
 	var/cell_type
+	var/cell_accept = CELL_TYPE_MEDIUM
 
 	/// Shock stun power
 	var/stun_power = 60
@@ -41,8 +42,7 @@
 
 /obj/item/melee/baton/Initialize(mapload)
 	. = ..()
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type)
-	cell_slot.legacy_use_device_cells = TRUE
+	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type, cell_accept)
 	cell_slot.remove_yank_context = TRUE
 	cell_slot.remove_yank_offhand = TRUE
 	cell_slot.receive_inducer = TRUE
@@ -235,7 +235,7 @@
 		. += SPAN_NOTICE("[src] does not have a power source installed.")
 
 /obj/item/melee/baton/loaded
-	cell_type = /obj/item/cell/device/weapon
+	cell_type = /obj/item/cell/basic/tier_1/weapon
 
 //secborg stun baton module
 /obj/item/melee/baton/robot
@@ -254,10 +254,8 @@
 	charge_cost = 2500
 	attack_verb = list("poked")
 	slot_flags = SLOT_BACK
+	cell_accept = CELL_TYPE_MEDIUM
 
-/obj/item/melee/baton/cattleprod/Initialize(mapload)
-	. = ..()
-	obj_cell_slot.legacy_use_device_cells = FALSE
 
 /obj/item/melee/baton/cattleprod/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/bluespace_crystal))

@@ -17,7 +17,8 @@
 	/// transfer amount per second
 	var/transfer_rate = 1000
 	/// type of cell to spawn
-	var/cell_type = /obj/item/cell/high
+	var/cell_type = /obj/item/cell/basic/tier_1/medium
+	var/cell_accept = CELL_TYPE_MEDIUM
 	/// panel open?
 	var/opened = FALSE
 	/// currently inducing?
@@ -33,7 +34,7 @@
 
 /obj/item/inducer/Initialize(mapload)
 	. = ..()
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type, CELL_TYPE_MEDIUM)
+	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type, cell_accept)
 	cell_slot.receive_emp = TRUE
 	cell_slot.receive_inducer = TRUE
 	cell_slot.remove_yank_offhand = TRUE
@@ -183,7 +184,7 @@
 	icon_state = "inducer-syndi"
 	item_state = "inducer-syndi"
 	transfer_rate = 2000
-	cell_type = /obj/item/cell/super
+	cell_type = /obj/item/cell/basic/tier_3/medium
 	inducer_flags = NONE
 
 /*

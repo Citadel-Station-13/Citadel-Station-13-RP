@@ -173,8 +173,8 @@
 			. += "It is switched off."
 
 		if (cover_open)
-			if(cell)
-				. += "The panel is open, exposing the [obj_cell_slot?.cell]."
+			if(obj_cell_slot?.cell)
+				. += "The panel is open, exposing the [obj_cell_slot.cell]."
 			else
 				. += "The panel is open."
 
@@ -188,7 +188,6 @@
 
 /obj/item/suit_cooling_unit/emergency
 	icon_state = "esuitcooler"
-	cell = /obj/item/cell/medium
 	w_class = WEIGHT_CLASS_NORMAL
 	cell_locked = TRUE
 

@@ -16434,7 +16434,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/projectile/energy/gun/fluff/gunsword,
+/obj/item/gun/projectile/energy/gun/sword_buster,
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},

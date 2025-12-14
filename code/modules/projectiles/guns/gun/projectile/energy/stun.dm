@@ -70,7 +70,7 @@
 	silenced = 1
 	projectile_type = /obj/projectile/energy/bolt
 	charge_cost = 480
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	charge_meter = 0
 

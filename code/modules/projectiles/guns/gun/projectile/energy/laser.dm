@@ -123,7 +123,7 @@
 		cycle_cooldown = 1 SECONDS;
 	}
 
-	cell_type = /obj/item/cell/device/weapon/recharge/alien // Self charges.
+	cell_type = /obj/item/cell/regen/weapon
 	origin_tech = list(TECH_COMBAT = 8, TECH_MAGNET = 7)
 	modifystate = "alienpistol"
 
@@ -219,7 +219,7 @@
 	name = "expedition marksman energy rifle"
 	desc = "A modified version of the HI DMR 9E with a replacement firing pin and reduced shot capacity in exchange for a self recharging cell."
 	pin = /obj/item/firing_pin/explorer
-	cell_type = /obj/item/cell/device/weapon/recharge/sniper
+	cell_type = /obj/item/cell/regen/weapon
 	accuracy = 45 //Modifications include slightly better hip-firing furniture.
 	legacy_battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
 	scoped_accuracy = 100

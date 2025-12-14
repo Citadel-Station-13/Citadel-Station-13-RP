@@ -41,7 +41,6 @@
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
 	. = ..()
-	obj_cell_slot.legacy_use_device_cells = FALSE
 	// todo : dont update icon here
 	update_icon()
 
@@ -209,7 +208,7 @@
 
 	power_cost = 500
 
-	cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_1/medium
 
 /obj/item/gun/projectile/magnetic/fuelrod/Initialize(mapload)
 	capacitor = new /obj/item/stock_parts/capacitor

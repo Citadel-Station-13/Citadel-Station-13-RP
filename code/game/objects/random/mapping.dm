@@ -570,7 +570,7 @@
 				/obj/item/module/power_control,
 				/obj/item/stack/cable_coil,
 				/obj/item/frame2/apc,
-				/obj/item/cell/high,
+				/obj/item/cell/basic/tier_1/large,
 				/obj/structure/closet/crate/corporate/focalpoint //FOCAL APC
 			),
 			prob(5);list(

@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/energy/gun/fluff/gunsword
+/obj/item/gun/projectile/energy/gun/sword_buster
 	name = "Sword Buster"
 	desc = "The Sword Buster gun is custom built using the science behind a Golden Empire pistol. The cell can be removed in close range and used as energy shortsword."
 
@@ -16,18 +16,19 @@
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	charge_meter = 1
 
-	cell_type = /obj/item/cell/device/weapon/gunsword
+	#warn how do we accept this and only this cell (and make the cell not work anywhere else?)
+	cell_type = /obj/item/cell/sword_buster
 
 	modifystate = "gbuster"
 
 	firemodes = list(
-	list(mode_name="stun", charge_cost=240,projectile_type=/obj/projectile/beam/stun, modifystate="gbuster", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
+		list(mode_name="stun", charge_cost=240,projectile_type=/obj/projectile/beam/stun, modifystate="gbuster", fire_sound='sound/weapons/Taser.ogg'),
+		list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
-#warn sigh
+#warn sigh; tune.
 // -----------------gunsword battery--------------------------
-/obj/item/cell/device/weapon/gunsword
+/obj/item/cell/sword_buster
 	name = "Buster Cell"
 	desc = "The Buster Cell. It doubles as a sword when activated outside the gun housing."
 	icon = 'icons/vore/custom_guns_vr.dmi'
@@ -45,7 +46,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 5)
 	damage_mode = NONE
-	armor_penetration = 50
 
 	var/active = 0
 	var/active_force = 30
@@ -57,7 +57,7 @@
 	var/lcolor = "#800080"
 
 
-/obj/item/cell/device/weapon/gunsword/proc/activate(mob/living/user)
+/obj/item/cell/sword_buster/proc/activate(mob/living/user)
 	if(active)
 		return
 	icon_state = "gsaber"
@@ -74,7 +74,7 @@
 
 
 
-/obj/item/cell/device/weapon/gunsword/proc/deactivate(mob/living/user)
+/obj/item/cell/sword_buster/proc/deactivate(mob/living/user)
 	if(!active)
 		return
 	playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
@@ -90,7 +90,7 @@
 	attack_verb = list()
 
 
-/obj/item/cell/device/weapon/gunsword/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/cell/sword_buster/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -111,5 +111,5 @@
 	add_fingerprint(user)
 	return
 
-/obj/item/cell/device/weapon/gunsword/update_icon()
+/obj/item/cell/sword_buster/update_icon()
 	cut_overlay()
