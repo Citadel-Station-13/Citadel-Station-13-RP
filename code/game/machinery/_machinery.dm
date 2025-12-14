@@ -563,8 +563,10 @@
 	A.pixel_y = pixel_y
 	A.update_desc()
 	A.update_appearance()
-	M.loc = null
+	M.forceMove(A)
 	M.after_deconstruct(src)
+	// release circuit
+	circuit = null
 
 // todo: kill this shit, this is legacy
 /obj/machinery/proc/dismantle()

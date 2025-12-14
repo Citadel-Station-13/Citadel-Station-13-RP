@@ -34,10 +34,16 @@
 			else
 				A.LateInitialize()
 		if(INITIALIZE_HINT_QDEL)
-			A.atom_flags |= ATOM_INITIALIZED // never call EarlyDestroy if we return this hint
+			// never call EarlyDestroy if we return this hint as it's atleast partially
+			// initialized.
+			A.atom_flags |= ATOM_INITIALIZED
 			qdel(A)
 			qdeleted = TRUE
 		else
+			// this means init runtimed or someone fucked up, which is really bad.
+			// we should assume it's in inconsistent state, and therefore
+			// Destroy() should be called.
+			A.atom_flags |= ATOM_INITIALIZED
 			stack_trace("[A] ([A.type]) didn't return a hint.")
 			BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
 
