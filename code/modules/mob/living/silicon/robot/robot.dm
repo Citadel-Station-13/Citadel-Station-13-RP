@@ -520,7 +520,7 @@
 		INJECT_STATPANEL_DATA_LINE(., "")
 		if(cell)
 			INJECT_STATPANEL_DATA_LINE(., "Charge Left: [round(cell.percent())]%")
-			INJECT_STATPANEL_DATA_LINE(., "Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			INJECT_STATPANEL_DATA_LINE(., "Cell Rating: [round(cell.max_charge)]") // Round just in case we somehow get crazy values
 			INJECT_STATPANEL_DATA_LINE(., "Power Cell Load: [round(used_power_this_tick)]W")
 		else
 			INJECT_STATPANEL_DATA_LINE(., "No Cell Inserted!")

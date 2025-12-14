@@ -252,7 +252,7 @@
 					// prob(1);/obj/item/sleevemate,
 					// prob(1);/obj/item/bodysnatcher,
 					prob(1);/obj/item/beartrap,
-					prob(1);/obj/item/cell/hyper/empty,
+					prob(1);/obj/item/cell/basic/tier_4/medium,
 					prob(1);/obj/item/disk/nifsoft/compliance,
 					prob(1);/obj/item/material/knife/tacknife,
 					prob(1);/obj/item/clothing/accessory/storage/brown_vest,

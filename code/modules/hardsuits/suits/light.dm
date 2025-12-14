@@ -97,7 +97,7 @@
 	chest_type = /obj/item/clothing/suit/space/hardsuit/light/ninja
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/light/ninja
 	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/light/ninja
-	cell_type =  /obj/item/cell/hyper
+	cell_type =  /obj/item/cell/basic/tier_4/large
 
 	req_access = list(ACCESS_FACTION_SYNDICATE)
 

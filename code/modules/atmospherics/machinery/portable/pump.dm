@@ -20,10 +20,6 @@
 /obj/machinery/portable_atmospherics/powered/pump/filled
 	start_pressure = 90 * ONE_ATMOSPHERE
 
-/obj/machinery/portable_atmospherics/powered/pump/Initialize(mapload)
-	. = ..()
-	cell = new/obj/item/cell/apc(src)
-
 /obj/machinery/portable_atmospherics/powered/pump/update_icon()
 	cut_overlays()
 	. = ..()

@@ -40,8 +40,8 @@
 	var/is_charge=0
 
 /obj/item/integrated_circuit/passive/power/starter/make_energy()
-	if(assembly.battery)
-		if(assembly.battery.charge)
+	if(assembly.obj_cell_slot?.cell)
+		if(assembly.obj_cell_slot.cell.charge)
 			if(!is_charge)
 				activate_pin(1)
 			is_charge=1
@@ -139,9 +139,10 @@
 	push_data()
 
 /obj/item/integrated_circuit/passive/power/chemical_cell/make_energy()
+	var/obj/item/cell/battery = assembly.get_cell()
 	if(assembly)
 		for(var/I in fuel)
-			if(DYNAMIC_CELL_UNITS_TO_W(assembly.battery.max_charge - assembly.battery.charge, 1) > fuel[I])
+			if(DYNAMIC_CELL_UNITS_TO_W(battery.max_charge - battery.charge, 1) > fuel[I])
 				var/power = 1
 				if(reagents.remove_reagent(I, 1))
 					assembly.give_power(fuel[I]*power)
@@ -209,13 +210,14 @@
 	IO.disconnect_from_network()
 
 /obj/item/integrated_circuit/passive/power/powernet/make_energy()
-	if(assembly && assembly.anchored && assembly.battery)
+	var/obj/item/cell/battery = get_cell()
+	if(assembly && assembly.anchored && battery)
 		var/should_act = get_pin_data(IC_INPUT, 1) // Even if this is false, we still need to update the output pins with powernet information.
 		var/drawing = get_pin_data(IC_INPUT, 2)
 
 		if(should_act) // We're gonna give or take from the net.
 			if(drawing)
-				var/to_transfer = min(throughput, DYNAMIC_CELL_UNITS_TO_KW(assembly.battery.amount_missing(), 1)) // So we don't need to draw 10kW if the cell needs much less.
+				var/to_transfer = min(throughput, DYNAMIC_CELL_UNITS_TO_KW(battery.amount_missing(), 1)) // So we don't need to draw 10kW if the cell needs much less.
 				var/amount = IO.draw_power(to_transfer)
 				assembly.give_power_kw(amount)
 			else

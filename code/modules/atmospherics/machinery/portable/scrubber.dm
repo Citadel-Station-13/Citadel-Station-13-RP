@@ -21,10 +21,6 @@
 	/// minimum moles to scrub per tick (if enough power) even if flow is not enough
 	var/scrub_mole_boost = 50
 
-/obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
-	. = ..()
-	cell = new /obj/item/cell/apc(src)
-
 //! LEGACY BELOW
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)

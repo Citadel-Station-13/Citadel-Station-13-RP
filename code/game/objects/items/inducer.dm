@@ -18,7 +18,7 @@
 	var/transfer_rate = 1000
 	/// type of cell to spawn
 	var/cell_type = /obj/item/cell/basic/tier_1/medium
-	var/cell_accept = CELL_TYPE_MEDIUM
+	var/cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	/// panel open?
 	var/opened = FALSE
 	/// currently inducing?

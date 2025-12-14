@@ -20,7 +20,7 @@
 
 	/// Starting cell type
 	var/cell_type
-	var/cell_accept = CELL_TYPE_MEDIUM
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 	/// Shock stun power
 	var/stun_power = 60
@@ -254,8 +254,7 @@
 	charge_cost = 2500
 	attack_verb = list("poked")
 	slot_flags = SLOT_BACK
-	cell_accept = CELL_TYPE_MEDIUM
-
+	cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 /obj/item/melee/baton/cattleprod/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/bluespace_crystal))

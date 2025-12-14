@@ -18,7 +18,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
 
 	var/cell_type = /obj/item/cell/basic/tier_1/medium
-	var/cell_accept = CELL_TYPE_MEDIUM
+	var/cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	var/cell_locked = FALSE
 
 	var/on = 0				//is it turned on?

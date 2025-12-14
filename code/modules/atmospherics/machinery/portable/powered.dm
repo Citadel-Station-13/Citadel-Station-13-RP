@@ -10,9 +10,13 @@
 	var/efficiency_multiplier = 1
 
 	var/last_power_draw_legacy = 0
+	#warn cell slot
 	var/obj/item/cell/cell
 	var/use_cell = TRUE
 	var/removeable_cell = TRUE
+
+	var/cell_type = /obj/item/cell/basic/tier_1/medium
+	var/cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_LARGE
 
 /obj/machinery/portable_atmospherics/powered/Initialize(mapload)
 	. = ..()

@@ -241,7 +241,7 @@
 	charge_cost = 7500
 	projectile_type = /obj/projectile/beam/tungsten
 	cell_type = /obj/item/cell/basic/tier_1/large
-	cell_accept = CELL_TYPE_LARGE
+	cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM | CELL_TYPE_LARGE
 
 	accuracy = 75
 	charge_meter = 0
@@ -334,7 +334,7 @@
 	fire_sound = 'sound/weapons/eluger.ogg'
 
 	projectile_type = /obj/projectile/beam/medigun
-	cell_accept = CELL_TYPE_LARGE
+	cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM | CELL_TYPE_LARGE
 
 	charge_cost = 2500
 
@@ -366,7 +366,7 @@
 		cycle_cooldown = 2 SECONDS;
 	}
 	charge_cost = 900
-	cell_accept = CELL_TYPE_MEDIUM
+	cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE

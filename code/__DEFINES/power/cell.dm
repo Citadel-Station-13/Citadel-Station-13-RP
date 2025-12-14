@@ -26,6 +26,8 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	BITFIELD_NEW("Weapon", CELL_TYPE_WEAPON),
 ))
 
+#warn don't forget storage size and sprite now that it isn't all inherited
+
 /// generate /small, /medium, /large, and /weapon cells for a power cell datum and typepath combo
 #define POWER_CELL_GENERATE_TYPES(DATUM_TYPEPATH, CELL_TYPEPATH, PROTOTYPE_ID) \
 /obj/item/cell##CELL_TYPEPATH/small { \

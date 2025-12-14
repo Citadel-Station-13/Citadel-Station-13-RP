@@ -33,9 +33,9 @@
 	. = ..()
 	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
-		. += "The power cell is [cell ? "installed" : "missing"]."
+		. += "The power cell is [obj_cell_slot?.cell ? "installed" : "missing"]."
 	else
-		. += "The charge meter reads [obj_cell_slot?.cell ? round(cell.percent(),1) : 0]%"
+		. += "The charge meter reads [obj_cell_slot?.cell ? round(obj_cell_slot.cell.percent(),1) : 0]%"
 
 /obj/machinery/space_heater/powered()
 	return obj_cell_slot?.cell?.charge
@@ -65,7 +65,7 @@
 		else
 			dat += "<A href='byond://?src=\ref[src];op=cellinstall'>Removed</A><BR>"
 
-		dat += "Power Level: [obj_cell_slot?.cell ? round(cell.percent(),1) : 0]%<BR><BR>"
+		dat += "Power Level: [obj_cell_slot?.cell ? round(obj_cell_slot.cell.percent(),1) : 0]%<BR><BR>"
 
 		dat += "Set Temperature: "
 
@@ -99,7 +99,7 @@
 
 			if("cellremove")
 				if(panel_open && obj_cell_slot?.cell)
-					usr.visible_message("<span class='notice'>\The [usr] removes \the [cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
+					usr.visible_message("<span class='notice'>\The [usr] removes \the [obj_cell_slot.cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
 					var/obj/item/cell/removed = obj_cell_slot.remove_cell()
 					usr.put_in_hands_or_drop(removed)
 					removed.add_fingerprint(usr)

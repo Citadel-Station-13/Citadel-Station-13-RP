@@ -150,7 +150,7 @@
 /**
  * Wrapper for lazily initializing a cell slot that uses small cells.
  */
-/obj/proc/init_cell_slot_easy_tool(preload_path, offhand_removal = TRUE, inhand_removal = FALSE)
+/obj/proc/init_cell_slot_easy_tool(preload_path, cell_accept = CELL_TYPE_SMALL | CELL_TYPE_MEDIUM, offhand_removal = TRUE, inhand_removal = FALSE)
 	RETURN_TYPE(/datum/object_system/cell_slot)
 	if(isnull(init_cell_slot(preload_path)))
 		return
@@ -160,7 +160,7 @@
 		obj_cell_slot.remove_yank_inhand = FALSE
 	obj_cell_slot.remove_yank_context = TRUE
 	obj_cell_slot.remove_yank_time = 0
-	obj_cell_slot.legacy_use_device_cells = TRUE
+	obj_cell_slot.accepts_cell = cell_accept
 	obj_cell_slot.cell_type = CELL_TYPE_SMALL
 	return obj_cell_slot
 
