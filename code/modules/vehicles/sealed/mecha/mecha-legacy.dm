@@ -26,11 +26,6 @@
 	/// What direction will the mech face when entered/powered on? Defaults to South.
 	var/dir_in = 2
 
-	var/state = MECHA_OPERATING
-	#warn enable ID upload if just built
-	var/add_req_access = FALSE
-	#warn enable maint if just built
-	var/maint_access = FALSE
 	var/datum/effect_system/spark_spread/spark_system = new
 
 	var/mech_faction = null
@@ -389,7 +384,7 @@
 	playsound(src, 'sound/mecha/gasdisconnected.ogg', 30, 1)
 
 /obj/vehicle/sealed/mecha/proc/play_entered_noise(var/mob/who)
-	if(!hasInternalDamage()) //Otherwise it's not nominal!
+	if(!length(mecha_fault_stacks)) //Otherwise it's not nominal!
 		switch(mech_faction)
 			if(MECH_FACTION_NT)//The good guys category
 				if(firstactivation)//First time = long activation sound

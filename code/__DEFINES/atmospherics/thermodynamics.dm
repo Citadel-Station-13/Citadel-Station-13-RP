@@ -1,25 +1,3 @@
-//* Thermodynamics - Constants *//
-
-/**
- * Constant used as absolute zero.
- *
- * * Why the hell is this conflicting with COSMIC_RADIATION_TEMPERATURE?
- * * This is basically the absolute zero of simulation. Gas cannot / should not get colder than this, ever.
- * * This is -270.3C.
- * * Please get this a better name.
- */
-#define TCMB 2.7
-/**
- * * Constant used for calculating blackbody radiation emittance.
- * * Unit is W / (m^2 * K^4)
- */
-#define STEFAN_BOLTZMANN_CONSTANT 5.6704e-8
-/**
- * Temperature of cosmic microwave background radiation used for radiative space cooling.
- *
- * * This is above TCMB. Why?
- */
-#define COSMIC_RADIATION_TEMPERATURE 3.15
 
 //* Thermodynamics - Radiation *//
 

@@ -83,7 +83,6 @@
 /obj/vehicle/sealed/mecha/proc/melee_finalize(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/vehicle/mecha/attack_style)
 	SHOULD_NOT_SLEEP(TRUE)
 
-
 /**
  * "So I got punched by a gundam"
  */
