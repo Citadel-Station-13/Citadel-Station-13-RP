@@ -111,7 +111,7 @@
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = "signaller"
 
-/obj/random/bomb_supply/item_to_spawn()x`
+/obj/random/bomb_supply/item_to_spawn()
 	return pick(/obj/item/assembly/igniter,
 				/obj/item/assembly/prox_sensor,
 				/obj/item/assembly/signaler,
