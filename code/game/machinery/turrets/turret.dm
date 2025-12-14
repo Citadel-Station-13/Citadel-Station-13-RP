@@ -727,7 +727,7 @@
 	//Shooting Code:
 	proj.firer = src
 	proj.def_zone = def_zone
-	proj.original_atom = target
+	proj.original_target = target
 	proj.fire(angle)
 
 /obj/machinery/porta_turret/proc/aggro_for(seconds, mob/aggressor)
