@@ -270,7 +270,7 @@
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
 	materials_base = list(MAT_STEEL = 2000)
 	projectile_type = /obj/projectile/beam/lasertag/blue
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 
@@ -312,7 +312,6 @@
 	slot_flags = SLOT_BACK
 	charge_cost = 60 // 40 shots, lay down the firepower
 	projectile_type = /obj/projectile/beam/weaklaser
-	cell_type = /obj/item/cell/device/weapon
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 5, TECH_ILLEGAL = 3)
 
 	firemodes = list(
@@ -330,7 +329,6 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/projectile/beam/heavylaser //But it hurts a lot
-	cell_type = /obj/item/cell/device/weapon
 	unstable = 1
 
 //NT SpecOps Laser Rifle

@@ -25,6 +25,7 @@
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
 		add_overlay("ccharger-o[newlevel]")
 
+#warn this shit
 /obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")

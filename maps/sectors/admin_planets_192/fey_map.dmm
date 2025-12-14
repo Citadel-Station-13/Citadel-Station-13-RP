@@ -1725,58 +1725,58 @@
 /area/admin_planet/fey_forest/gateway_facility)
 "Ku" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8
 	},
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_1/weapon,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/fey_forest/gateway_facility)
 "KN" = (

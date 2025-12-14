@@ -13158,7 +13158,7 @@
 /area/hallway/d3afthall/endeavour)
 "jGk" = (
 /obj/structure/table/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -9;
 	pixel_y = 4
 	},
@@ -13168,46 +13168,46 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -7;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -6;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -3;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -2;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 2;
 	pixel_y = 4
 	},
@@ -15320,25 +15320,25 @@
 "lsq" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -1
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 3
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -17111,7 +17111,7 @@
 	dir = 10
 	},
 /obj/structure/closet/secure_closet/warden{
-	starts_with = list(/obj/item/storage/box/survival_knife,/obj/item/clothing/suit/storage/vest/warden,/obj/item/clothing/under/rank/warden,/obj/item/clothing/under/rank/warden/corp,/obj/item/clothing/under/rank/warden/skirt_pleated,/obj/item/clothing/suit/storage/vest/wardencoat,/obj/item/clothing/suit/storage/vest/wardencoat/alt,/obj/item/clothing/head/helmet/dermal,/obj/item/clothing/head/helmet/warden,/obj/item/clothing/head/helmet/warden/hat,/obj/item/cartridge/security,/obj/item/radio/headset/headset_sec,/obj/item/radio/headset/headset_sec/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/barrier_tape_roll/police,/obj/item/clothing/accessory/badge/holo/warden,/obj/item/storage/box/flashbangs,/obj/item/storage/box/firingpins,/obj/item/storage/belt/security,/obj/item/reagent_containers/spray/pepper,/obj/item/melee/baton/loaded,/obj/item/gun/projectile/energy/gun,/obj/item/cell/device/weapon,/obj/item/storage/box/holobadge,/obj/item/clothing/head/beret/sec/corporate/warden,/obj/item/clothing/suit/storage/hooded/wintercoat/security,/obj/item/clothing/shoes/boots/winter/security,/obj/item/gps/security,/obj/item/flashlight/maglight,/obj/item/megaphone,/obj/item/clothing/mask/gas/half,/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,/obj/item/holowarrant)
+	starts_with = list(/obj/item/storage/box/survival_knife,/obj/item/clothing/suit/storage/vest/warden,/obj/item/clothing/under/rank/warden,/obj/item/clothing/under/rank/warden/corp,/obj/item/clothing/under/rank/warden/skirt_pleated,/obj/item/clothing/suit/storage/vest/wardencoat,/obj/item/clothing/suit/storage/vest/wardencoat/alt,/obj/item/clothing/head/helmet/dermal,/obj/item/clothing/head/helmet/warden,/obj/item/clothing/head/helmet/warden/hat,/obj/item/cartridge/security,/obj/item/radio/headset/headset_sec,/obj/item/radio/headset/headset_sec/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/barrier_tape_roll/police,/obj/item/clothing/accessory/badge/holo/warden,/obj/item/storage/box/flashbangs,/obj/item/storage/box/firingpins,/obj/item/storage/belt/security,/obj/item/reagent_containers/spray/pepper,/obj/item/melee/baton/loaded,/obj/item/gun/projectile/energy/gun,/obj/item/cell/basic/tier_1/weapon,/obj/item/storage/box/holobadge,/obj/item/clothing/head/beret/sec/corporate/warden,/obj/item/clothing/suit/storage/hooded/wintercoat/security,/obj/item/clothing/shoes/boots/winter/security,/obj/item/gps/security,/obj/item/flashlight/maglight,/obj/item/megaphone,/obj/item/clothing/mask/gas/half,/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,/obj/item/holowarrant)
 	},
 /obj/structure/cable/green,
 /obj/item/book/manual/security_space_law,

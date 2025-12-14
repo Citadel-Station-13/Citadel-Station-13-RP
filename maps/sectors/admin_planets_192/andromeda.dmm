@@ -4977,45 +4977,45 @@
 /area/admin_planet/andromeda/engi_lobby)
 "pa" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = 3
 	},
@@ -5996,29 +5996,12 @@
 /area/admin_planet/andromeda/sec_holding_cell)
 "sn" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_y = 7
-	},
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_y = -3
-	},
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_y = 2
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_y = 7
-	},
-/obj/item/cell/high{
-	maxcharge = 15000;
-	pixel_y = -3
-	},
+/obj/item/cell/high,
+/obj/item/cell/high,
+/obj/item/cell/high,
+/obj/item/cell/high,
+/obj/item/cell/high,
+/obj/item/cell/high,
 /obj/item/cell/device,
 /obj/item/cell/device,
 /obj/item/cell/device,
@@ -13130,41 +13113,41 @@
 /area/admin_planet/andromeda/engi_lobby)
 "OR" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = -5
 	},

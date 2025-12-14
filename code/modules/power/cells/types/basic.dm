@@ -3,6 +3,7 @@
 
 /datum/prototype/power_cell/basic
 	abstract_type = /datum/prototype/power_cell/basic
+	typegen_capacity_multiplier = /datum/prototype/power_cell::typegen_capacity_multiplier * 1.0
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_1, /basic/tier_1, "basic-t1")
 /datum/prototype/power_cell/basic/tier_1

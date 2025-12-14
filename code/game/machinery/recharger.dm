@@ -19,6 +19,8 @@
 	var/base_power_draw = 20000
 	circuit = /obj/item/circuitboard/recharger
 
+#warn this shit
+
 /obj/machinery/recharger/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"

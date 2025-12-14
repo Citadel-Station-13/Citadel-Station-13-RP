@@ -238,9 +238,10 @@
 	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 
-	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
+	charge_cost = 7500
 	projectile_type = /obj/projectile/beam/tungsten
-	cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_1/large
+	cell_accept = CELL_TYPE_LARGE
 	cell_system_legacy_use_device = FALSE
 
 	accuracy = 75
@@ -420,7 +421,6 @@
 	item_state = null
 	projectile_type = /obj/projectile/plasma
 	charge_cost = 400
-	cell_type = /obj/item/cell/device/weapon
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE

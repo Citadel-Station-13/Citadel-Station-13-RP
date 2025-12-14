@@ -16,7 +16,8 @@
 	dispersion = list(0)
 
 	cell_system = TRUE
-	cell_type = /obj/item/cell/device/weapon
+	cell_type = /obj/item/cell/basic/tier_1/weapon
+	cell_accept = CELL_TYPE_WEAPON
 	firemodes = /datum/firemode/energy
 
 	//* Modular System *//

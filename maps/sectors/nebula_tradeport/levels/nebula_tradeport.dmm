@@ -7553,7 +7553,7 @@
 /obj/random/tool/power,
 /obj/random/tool/power,
 /obj/random/tool/power,
-/obj/item/cell/device/weapon/recharge/alien,
+/obj/item/cell/basic/tier_1/weapon/recharge/alien,
 /obj/random/tool/alien,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -22728,12 +22728,12 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
 "jQK" = (

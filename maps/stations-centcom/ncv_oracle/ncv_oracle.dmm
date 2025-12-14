@@ -8657,26 +8657,26 @@
 	},
 /area/centcom/bathroom)
 "Bb" = (
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -9667,15 +9667,15 @@
 "EI" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -15903,41 +15903,41 @@
 "YE" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
