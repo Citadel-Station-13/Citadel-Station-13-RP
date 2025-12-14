@@ -1,7 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-POWER_CELL_GENERATE_TYPES(/datum/power_cell/microfission, /microfission)
+// ---- lore note ----
+// the justification for why this is a thing is [i don't care]
+// go refluff it if you want this is a generic "makes radiation to make power" idea
+// i literally dgaf what is written here so if you wanna bikeshed over it bikeshed
+// yourself outside of my PR lol
+POWER_CELL_GENERATE_TYPES(/datum/power_cell/microfission, /microfission, "microfission")
 /datum/power_cell/microfission
 	functional = TRUE
 

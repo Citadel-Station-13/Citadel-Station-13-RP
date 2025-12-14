@@ -26,13 +26,14 @@ POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_3, /basic/tier_3, "basic-
 POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_4, /basic/tier_4, "basic-t4")
 /datum/power_cell/basic/tier_4
 	cell_name = "superdense"
-	cell_desc = "Tier 4:  ."
+	cell_desc = "Tier 4: An ultradense power cell made from special, low-resistance alloys."
 	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 2.0
 
 POWER_CELL_GENERATE_TYPES(/datum/power_cell/basic/tier_5, /basic/tier_5, "basic-t5")
 /datum/power_cell/basic/tier_5
 	cell_name = "ultratech"
-	cell_desc = "Tier 5: This indecipherable cell crams ."
+	cell_desc = "Tier 5: This indecipherable cell crams unbelievable amounts of energy \
+	into a storage matrix fabricated out of exotic materials."
 	typegen_capacity_multiplier = /datum/power_cell/basic::typegen_capacity_multiplier * 3.0
 
 #warn new way
