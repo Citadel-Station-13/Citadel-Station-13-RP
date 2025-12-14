@@ -239,3 +239,10 @@
 
 /obj/vehicle_old/train/proc/update_car(var/train_length, var/active_engines)
 	return
+
+/obj/item/key/cargo_train
+	name = "key"
+	desc = "A keyring with a small steel key, and a yellow fob reading \"Choo Choo!\"."
+	icon = 'icons/obj/vehicles.dmi'
+	icon_state = "train_keys"
+	w_class = WEIGHT_CLASS_TINY
