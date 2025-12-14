@@ -40,7 +40,7 @@
 	return IC.examine(user)
 
 /obj/item/implant/integrated_circuit/attackby(var/obj/item/O, var/mob/user)
-	if(O.is_crowbar() || istype(O, /obj/item/integrated_electronics) || istype(O, /obj/item/integrated_circuit) || O.is_screwdriver() || istype(O, /obj/item/cell/device) )
+	if(O.is_crowbar() || istype(O, /obj/item/integrated_electronics) || istype(O, /obj/item/integrated_circuit) || O.is_screwdriver() || istype(O, /obj/item/cell) )
 		IC.attackby(O, user)
 	else
 		..()

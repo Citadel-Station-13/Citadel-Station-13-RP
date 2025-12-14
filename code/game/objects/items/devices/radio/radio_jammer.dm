@@ -75,7 +75,7 @@ var/global/list/active_radio_jammers = list()
 	if(on)
 		turn_off(user)
 	else
-		if(power_source)
+		if(obj_cell_slot?.cell)
 			turn_on(user)
 		else
 			to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
@@ -89,8 +89,8 @@ var/global/list/active_radio_jammers = list()
 		icon_state = initial(icon_state)
 
 	var/overlay_percent = 0
-	if(power_source)
-		overlay_percent = between(0, round( power_source.percent() , 25), 100)
+	if(obj_cell_slot?.cell)
+		overlay_percent = between(0, round( obj_cell_slot.cell.percent() , 25), 100)
 	else
 		overlay_percent = 0
 

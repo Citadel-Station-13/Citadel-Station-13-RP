@@ -587,16 +587,19 @@
 	worth_intrinsic = 70
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 24	//The rough equivalent of 1 unit of fuel, based on us wanting 10 welds per battery
-	var/cell_type = /obj/item/cell/device
 	var/use_external_power = 0	//If in a borg or hardsuit, this needs to = 1
 	flame_color = "#00CCFF"  // Blue-ish, to set it apart from the gas flames.
 	acti_sound = /datum/soundbyte/sparks
 	deac_sound = /datum/soundbyte/sparks
 
+	var/cell_type = /obj/item/cell/basic/tier_1/small
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null
 
 /obj/item/weldingtool/electric/Initialize(mapload)
+	#warn ob jcell slot
 	. = ..()
 	if(cell_type == null)
 		update_icon()

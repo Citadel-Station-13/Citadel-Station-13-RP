@@ -99,7 +99,10 @@
 
 			if("cellremove")
 				if(panel_open && obj_cell_slot?.cell)
-					usr.visible_message("<span class='notice'>\The [usr] removes \the [obj_cell_slot.cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
+					usr.visible_message(
+						"<span class='notice'>\The [usr] removes \the [obj_cell_slot.cell] from \the [src].</span>",
+						"<span class='notice'>You remove \the [obj_cell_slot.cell] from \the [src].</span>",
+					)
 					var/obj/item/cell/removed = obj_cell_slot.remove_cell()
 					usr.put_in_hands_or_drop(removed)
 					removed.add_fingerprint(usr)

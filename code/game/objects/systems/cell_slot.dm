@@ -48,8 +48,8 @@
  * returns TRUE if slot accepts this type of cell
  */
 /datum/object_system/cell_slot/proc/accepts_cell(obj/item/cell/cell)
-	#warn this
-	return legacy_use_device_cells? istype(cell, /obj/item/cell/device) : TRUE
+	. = cell.cell_type & cell_type
+	. = parent.object_cell_slot_accepts(cell, src, ., null, null)
 
 // TODO: user_remove_cell && user_insert_cell
 // TODO: play sound please & visible message
@@ -119,8 +119,19 @@
 /**
  * hook called to check if cell slot removal behavior is active
  */
-/obj/proc/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+/obj/proc/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	return TRUE
+
+/**
+ * @params
+ * * cell - the cell
+ * * slot - the cell slot
+ * * slot_opinion - what default checks returned
+ * * silent - (optional) don't emit messages / sounds
+ * * actor - (optional) who's doing it
+ */
+/obj/proc/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
+	return slot_opinion
 
 //? Lazy wrappers for init
 
@@ -160,8 +171,7 @@
 		obj_cell_slot.remove_yank_inhand = FALSE
 	obj_cell_slot.remove_yank_context = TRUE
 	obj_cell_slot.remove_yank_time = 0
-	obj_cell_slot.accepts_cell = cell_accept
-	obj_cell_slot.cell_type = CELL_TYPE_SMALL
+	obj_cell_slot.cell_type = cell_accept
 	return obj_cell_slot
 
 //? Wrappers for cell.dm functions

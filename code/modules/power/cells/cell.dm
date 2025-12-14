@@ -42,8 +42,10 @@
 	#warn we should set name and desc via macro too..
 
 	//* Behavior *//
-	/// cell component; loaded at init, set to typepath or anonymous type
+	/// cell data prototype; loaded at init, set to typepath or anonymous type
 	var/datum/prototype/power_cell/cell_datum
+	/// what cell types we are
+	var/cell_type = NONE
 	#warn this
 
 	//* Charge *//

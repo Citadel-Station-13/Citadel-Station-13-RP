@@ -908,7 +908,7 @@
 		prob(3);/obj/item/ammo_magazine/a44/speedloader,
 		prob(3);/obj/item/ammo_magazine/a7_62mm,
 		prob(3);/obj/item/ammo_magazine/a5_56mm,
-		prob(3);/obj/item/cell/device/weapon,
+		prob(3);/obj/item/cell/basic/tier_2/weapon,
 		prob(2);/obj/item/ammo_magazine/a44,
 		prob(2);/obj/item/ammo_magazine/a357/speedloader,
 		prob(2);/obj/item/ammo_magazine/a7_62mm,
