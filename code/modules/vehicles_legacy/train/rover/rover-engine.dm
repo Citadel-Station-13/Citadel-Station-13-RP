@@ -23,8 +23,8 @@
 	load_offset_x = 0
 	pixel_x = -8
 	pixel_y = -8
-	cell = /obj/item/cell/high
 
+	cell_type = /obj/item/cell/basic/tier_1/large
 
 	var/car_limit = 0	//how many cars an engine can pull before performance degrades. This should be 0 to prevent trailers from unhitching.
 	active_engines = 1
@@ -33,11 +33,11 @@
 
 /obj/vehicle_old/train/rover/engine/Initialize(mapload)
 	. = ..()
-	cell = new /obj/item/cell/high(src)
 	key = new(src)
 	turn_off()	//so engine verbs are correctly set
 
 /obj/vehicle_old/train/rover/engine/Move(var/turf/destination)
+	var/obj/item/cell/cell = get_cell()
 	if(on && cell.charge < charge_use)
 		turn_off()
 		update_stats()
@@ -68,14 +68,6 @@
 	desc = "A Dune Buggy developed for asteroid exploration and transportation. It has a sSSticker that says to wear EVA suits if used in space."
 	icon = 'icons/vore/rover_vr.dmi'
 	icon_state = "dunebug"
-
-/obj/vehicle_old/train/rover/engine/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
-	..()
-	update_stats()
-
-/obj/vehicle_old/train/rover/engine/remove_cell(var/mob/living/carbon/human/H)
-	..()
-	update_stats()
 
 /obj/vehicle_old/train/rover/engine/Bump(atom/Obstacle)
 	var/obj/machinery/door/D = Obstacle
@@ -139,6 +131,7 @@
 /obj/vehicle_old/train/rover/engine/examine(mob/user, dist)
 	. = ..()
 	. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
+	var/obj/item/cell/cell = get_cell()
 	. += "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
 
 /obj/vehicle_old/train/rover/engine/verb/start_engine()
@@ -157,6 +150,7 @@
 	if (on)
 		to_chat(usr, "You start [src]'s engine.")
 	else
+		var/obj/item/cell/cell = get_cell()
 		if(cell.charge < charge_use)
 			to_chat(usr, "[src] is out of power.")
 		else

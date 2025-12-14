@@ -42,12 +42,7 @@
 
 /obj/item/melee/baton/Initialize(mapload)
 	. = ..()
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type, cell_accept)
-	cell_slot.remove_yank_context = TRUE
-	cell_slot.remove_yank_offhand = TRUE
-	cell_slot.receive_inducer = TRUE
-	cell_slot.primary = TRUE
-	cell_slot.receive_emp = TRUE
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 	update_icon()
 
 /obj/item/melee/baton/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)

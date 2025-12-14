@@ -36,13 +36,13 @@
 
 	var/typegen_capacity_multiplier = 1
 	/// compounded with [typegen_capacity_multiplier]
-	var/typegen_capacity_multiplier_small = 1
+	var/typegen_capacity_multiplier_small = 1 * POWER_CELL_CAPACITY_MULTIPLIER_SMALL
 	/// compounded with [typegen_capacity_multiplier]
-	var/typegen_capacity_multiplier_medium = 1
+	var/typegen_capacity_multiplier_medium = 1 * POWER_CELL_CAPACITY_MULTIPLIER_MEDIUM
 	/// compounded with [typegen_capacity_multiplier]
-	var/typegen_capacity_multiplier_large = 1
+	var/typegen_capacity_multiplier_large = 1 * POWER_CELL_CAPACITY_MULTIPLIER_LARGE
 	/// compounded with [typegen_capacity_multiplier]
-	var/typegen_capacity_multiplier_weapon = 1
+	var/typegen_capacity_multiplier_weapon = 1 * POWER_CELL_CAPACITY_MULTIPLIER_WEAPON
 
 	//* Materials - Type Generation *//
 
@@ -76,6 +76,10 @@
 
 	//* Worth / Materials *//
 
+	var/typegen_worth_base_small = 10
+	var/typegen_worth_base_medium = 30
+	var/typegen_worth_base_large = 40
+	var/typegen_worth_base_weapon = 75
 	/// worth multiplier
 	///
 	/// * set to null to say "we have no worth / are invaluable" (useful for infinite cells)

@@ -8,7 +8,7 @@
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	req_components = list(
-		/obj/item/cell/large = 1,
+		/obj/item/cell = 1,
 		/obj/item/stock_parts/capacitor = 1,
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/micro_laser = 1,
@@ -20,6 +20,6 @@
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 1
-		)
+		/obj/item/stock_parts/manipulator = 1,
+	)
 

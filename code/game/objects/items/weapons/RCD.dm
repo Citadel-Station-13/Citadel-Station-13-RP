@@ -286,7 +286,6 @@
 
 /obj/item/rcd/electric/Initialize(mapload)
 	init_cell_slot_easy_tool(cell_type, cell_accept)
-	obj_cell_slot.primary = TRUE
 	return ..()
 
 /obj/item/rcd/electric/can_afford(amount) // This makes it so borgs won't drain their last sliver of charge by mistake, as a bonus.

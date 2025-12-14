@@ -12,22 +12,18 @@
 
 /obj/item/shield_diffuser/Initialize(mapload)
 	. = ..()
-	if(cell)
-		cell = new cell(src)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 
 /obj/item/shield_diffuser/Destroy()
-	QDEL_NULL(cell)
 	if(enabled)
 		STOP_PROCESSING(SSobj, src)
-	. = ..()
-
-/obj/item/shield_diffuser/get_cell(inducer)
-	return cell
+	return ..()
 
 /obj/item/shield_diffuser/process(delta_time)
 	if(!enabled)
 		return PROCESS_KILL
 
+	var/obj/item/cell/cell = get_cell()
 	for(var/direction in GLOB.cardinal)
 		var/turf/simulated/shielded_tile = get_step(get_turf(src), direction)
 		for(var/obj/effect/shield/S in shielded_tile)
@@ -58,35 +54,6 @@
 
 /obj/item/shield_diffuser/examine(mob/user, dist)
 	. = ..()
+	var/obj/item/cell/cell = get_cell()
 	to_chat(user, "The charge meter reads [cell ? cell.percent() : 0]%")
 	to_chat(user, "It is [enabled ? "enabled" : "disabled"].")
-
-/obj/item/shield_diffuser/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(user.get_inactive_held_item() == src)
-		if(cell)
-			cell.update_icon()
-			user.put_in_hands(cell)
-			cell = null
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
-			playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
-			enabled = 0
-			update_icon()
-			return
-		..()
-	else
-		return ..()
-
-/obj/item/shield_diffuser/attackby(obj/item/W, mob/user as mob)
-	if(istype(W, /obj/item/cell/small))
-		if(istype(W, /obj/item/cell/small))
-			if(!cell)
-				if(!user.attempt_insert_item_for_installation(W, src))
-					return
-				cell = W
-				to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
-				playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
-				update_icon()
-			else
-				to_chat(user, "<span class='notice'>\The [src] already has a cell.</span>")
-		else
-			to_chat(user, "<span class='notice'>\The [src] cannot use that type of cell.</span>")

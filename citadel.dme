@@ -4683,7 +4683,6 @@
 #include "code\modules\power\cells\cell.dm"
 #include "code\modules\power\cells\cells_legacy.dm"
 #include "code\modules\power\cells\power_cell.dm"
-#include "code\modules\power\cells\process_this.dm"
 #include "code\modules\power\cells\types\basic.dm"
 #include "code\modules\power\cells\types\infinite.dm"
 #include "code\modules\power\cells\types\microfission.dm"

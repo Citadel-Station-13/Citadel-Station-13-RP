@@ -58,7 +58,6 @@
 
 /obj/item/electronic_assembly/Initialize()
 	init_cell_slot_easy_tool(cell_type, cell_accept)
-	obj_cell_slot.primary = TRUE
 	src.max_components = round(max_components)
 	src.max_complexity = round(max_complexity)
 	if(!cost)

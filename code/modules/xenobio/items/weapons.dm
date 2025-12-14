@@ -8,7 +8,7 @@
 	active_color = "#33CCFF"
 	origin_tech = list(TECH_COMBAT = 2, TECH_BIO = 2)
 	description_info = "This baton will stun a slime or other slime-based lifeform for about five seconds, if hit with it while on."
-	charge_cost = /obj/item/cell/basic/tier_1/weapon::maxcharge / 10
+	charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge / 10
 	stun_power = 10
 
 	var/extra_slime_stun_power = 40

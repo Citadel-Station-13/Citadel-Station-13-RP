@@ -12,23 +12,24 @@
 	load_offset_x = 0
 	mob_offset_y = 7
 
-	cell = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_1/large
+
 	var/speed_mod = 1.1
 	var/car_limit = 3		//how many cars an engine can pull before performance degrades
 	active_engines = 1
+
 	var/obj/item/key/key
 	var/key_type = /obj/item/key/cargo_train
 
 /obj/vehicle_old/train/engine/Initialize(mapload)
 	. = ..()
-	if(cell)
-		cell = new cell(src)
 	key = new key_type(src)
 	var/image/I = new(icon = 'icons/obj/vehicles.dmi', icon_state = "cargo_engine_overlay", layer = src.layer + 0.2) //over mobs
 	add_overlay(I)
 	turn_off()	//so engine verbs are correctly set
 
 /obj/vehicle_old/train/engine/Move(var/turf/destination)
+	var/obj/item/cell/cell = get_cell()
 	if(on && cell.charge < charge_use)
 		turn_off()
 		update_stats()
@@ -53,14 +54,6 @@
 			add_obj_verb(src, /obj/vehicle_old/train/engine/verb/remove_key)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
-
-/obj/vehicle_old/train/engine/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
-	..()
-	update_stats()
-
-/obj/vehicle_old/train/engine/remove_cell(var/mob/living/carbon/human/H)
-	..()
-	update_stats()
 
 /obj/vehicle_old/train/engine/Bump(atom/Obstacle)
 	var/obj/machinery/door/D = Obstacle
@@ -124,6 +117,7 @@
 /obj/vehicle_old/train/engine/examine(mob/user, dist)
 	. = ..()
 	. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
+	var/obj/item/cell/cell = get_cell()
 	. += "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"
 
 /obj/vehicle_old/train/engine/CtrlClick(var/mob/user)
@@ -157,6 +151,7 @@
 	if (on)
 		to_chat(usr, "You start [src]'s engine.")
 	else
+		var/obj/item/cell/cell = get_cell()
 		if(cell.charge < charge_use)
 			to_chat(usr, "[src] is out of power.")
 		else

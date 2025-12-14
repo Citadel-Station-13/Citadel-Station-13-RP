@@ -35,7 +35,6 @@
 	var/powered = 0		//set if vehicle is powered and should use fuel when moving
 	var/move_delay = 1	//set this to limit the speed of the vehicle
 
-	var/obj/item/cell/cell
 	var/charge_use = 5	//set this to adjust the amount of power the vehicle uses per move
 
 	var/paint_color = "#666666" //For vehicles with special paint overlays.
@@ -46,13 +45,27 @@
 	var/load_offset_y = 0		//pixel_y offset for item overlay
 	var/mob_offset_y = 0		//pixel_y offset for mob overlay
 
-//-------------------------------------------
-// Standard procs
-//-------------------------------------------
+	var/cell_type
+	var/cell_accept
 
-//BUCKLE HOOKS
+/obj/vehicle_old/Initialize(mapload)
+	. = ..()
+	var/datum/object_systme/cell_slot/cell = init_cell_slot(cell_type, cell_accept)
+	#warn make sure it can be used
+
+/obj/vehicle_old/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	..()
+	powercheck()
+
+/obj/vehicle_old/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	..()
+	powercheck()
+
+/obj/vehicle_old/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
+	return ..() && open
 
 /obj/vehicle_old/Move()
+	var/obj/item/cell/cell = get_cell()
 	if(world.time > l_move_time + move_delay)
 		var/old_loc = get_turf(src)
 		if(mechanical && on && powered && cell.charge < charge_use)
@@ -90,11 +103,6 @@
 				update_icon()
 				to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
 				playsound(src, W.tool_sound, 50, 1)
-		else if(W.is_crowbar() && cell && open)
-			remove_cell(user)
-
-		else if(istype(W, /obj/item/cell/large) && !cell && open)
-			insert_cell(W, user)
 		else if(istype(W, /obj/item/weldingtool))
 			var/obj/item/weldingtool/T = W
 			if(T.welding)
@@ -181,6 +189,7 @@
 /obj/vehicle_old/proc/turn_on()
 	if(!mechanical || stat)
 		return FALSE
+	var/obj/item/cell/cell = get_cell()
 	if(powered && cell.charge < charge_use)
 		return FALSE
 	on = 1
@@ -224,10 +233,11 @@
 		new /obj/effect/gibspawner/robot(Tsec)
 		new /obj/effect/debris/cleanable/blood/oil(src.loc)
 
+		var/obj/item/cell/cell = obj_cell_slot?.cell
 		if(cell)
 			cell.forceMove(Tsec)
 			cell.update_icon()
-			cell = null
+			obj_cell_slot.cell = null
 
 	qdel(src)
 
@@ -239,6 +249,7 @@
 	if(!mechanical)
 		return
 
+	var/obj/item/cell/cell = get_cell()
 	if(!cell && !powered)
 		return
 
@@ -253,31 +264,6 @@
 	if(cell && powered)
 		turn_on()
 		return
-
-/obj/vehicle_old/proc/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
-	if(!mechanical)
-		return
-	if(cell)
-		return
-	if(!istype(C))
-		return
-	if(!H.attempt_insert_item_for_installation(C, src))
-		return
-
-	cell = C
-	powercheck()
-	to_chat(usr, "<span class='notice'>You install [C] in [src].</span>")
-
-/obj/vehicle_old/proc/remove_cell(var/mob/living/carbon/human/H)
-	if(!mechanical)
-		return
-	if(!cell)
-		return
-
-	to_chat(usr, "<span class='notice'>You remove [cell] from [src].</span>")
-	H.grab_item_from_interacted_with(cell, src)
-	cell = null
-	powercheck()
 
 /obj/vehicle_old/proc/RunOver(var/mob/living/M)
 	return		//write specifics for different vehicles

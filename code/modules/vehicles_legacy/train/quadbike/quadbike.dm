@@ -20,14 +20,14 @@
 
 	var/frame_state = "quad" //Custom-item proofing!
 	var/custom_frame = FALSE
-	cell = /obj/item/cell/high
 
 	paint_color = "#ffffff"
+	cell_type = /obj/item/cell/basic/tier_1/large
 
 	var/outdoors_speed_mod = 0.7 //The general 'outdoors' speed. I.E., the general difference you'll be at when driving outside.
 
 /obj/vehicle_old/train/engine/quadbike/built
-	cell = null
+	cell_type = null
 
 /obj/vehicle_old/train/engine/quadbike/random/Initialize(mapload)
 	. = ..()

@@ -139,6 +139,7 @@
  * Creates a cell slot
  *
  * * This proc will error if it cannot detect a cell type, nor a preload to detect it from.
+ * * Also sets the cell slot as primary.
  *
  * @params
  * * preload_path - (optional) cell typepath to start with
@@ -156,10 +157,12 @@
 		cell_type = CELL_TYPE_MEDIUM
 		stack_trace("failed to provide a cell type accept bitfield, and didn't provide a preload path to autodetect from")
 	obj_cell_slot.cell_type = cell_type
+	obj_cell_slot.primary = TRUE
 	return obj_cell_slot
 
 /**
  * Wrapper for lazily initializing a cell slot that uses small cells.
+ * * Also sets the cell slot as primary.
  */
 /obj/proc/init_cell_slot_easy_tool(preload_path, cell_accept = CELL_TYPE_SMALL | CELL_TYPE_MEDIUM, offhand_removal = TRUE, inhand_removal = FALSE)
 	RETURN_TYPE(/datum/object_system/cell_slot)
@@ -172,6 +175,7 @@
 	obj_cell_slot.remove_yank_context = TRUE
 	obj_cell_slot.remove_yank_time = 0
 	obj_cell_slot.cell_type = cell_accept
+	obj_cell_slot.primary = TRUE
 	return obj_cell_slot
 
 //? Wrappers for cell.dm functions

@@ -34,39 +34,51 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	name = "small power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A small power cell used in handheld electronics. " + ##DATUM_TYPEPATH::cell_desc; \
 	prototype_id = "cell-" + ##PROTOTYPE_ID + "-small"; \
-	max_charge = /obj/item/cell/small::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_small * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	max_charge = /obj/item/cell::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_small * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
+	rendering_system = TRUE; \
+	indicator_count = 4; \
+	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_small; \
 } \
 /obj/item/cell##CELL_TYPEPATH/medium { \
 	name = "medium power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A decently sized cell used in many pieces of modern equipment. " + ##DATUM_TYPEPATH::cell_desc; \
 	prototype_id = "cell-" + ##PROTOTYPE_ID + "-medium"; \
-	max_charge = /obj/item/cell/medium::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_medium * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	max_charge = /obj/item/cell::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_medium * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
+	rendering_system = TRUE; \
+	indicator_count = 4; \
+	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_medium; \
 } \
 /obj/item/cell##CELL_TYPEPATH/large { \
 	name = "large power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A bulky power cell used in industrial equipment and power supply systems. " + ##DATUM_TYPEPATH::cell_desc; \
 	prototype_id = "cell-" + ##PROTOTYPE_ID + "-large"; \
-	max_charge = /obj/item/cell/large::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_large * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	max_charge = /obj/item/cell::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_large * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
+	rendering_system = TRUE; \
+	indicator_count = 4; \
+	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_large; \
 } \
 /obj/item/cell##CELL_TYPEPATH/weapon { \
 	name = "weapon power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A power cell accepted by many kinds of handheld weaponry. " + ##DATUM_TYPEPATH::cell_desc; \
 	prototype_id = "cell-" + ##PROTOTYPE_ID + "-weapon"; \
-	max_charge = /obj/item/cell/weapon::max_charge + ##DATUM_TYPEPATH::typegen_capacity_multiplier_weapon * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	max_charge = /obj/item/cell::max_charge + ##DATUM_TYPEPATH::typegen_capacity_multiplier_weapon * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
+	rendering_system = TRUE; \
+	indicator_count = 4; \
+	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_weapon; \
 }

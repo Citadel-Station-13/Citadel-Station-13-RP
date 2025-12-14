@@ -16,7 +16,7 @@
 
 	fire_dam_coeff = 0.6
 	brute_dam_coeff = 0.5
-	cell = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_1/large
 	var/protection_percent = 60
 
 	var/land_speed = 0.5 //if 0 it can't go on turf
@@ -31,13 +31,15 @@
 
 /obj/vehicle_old/bike/Initialize(mapload)
 	. = ..()
-	if(ispath(cell))
-		cell = new cell(src)
 	ion = new /datum/effect_system/ion_trail_follow()
 	ion.set_up(src)
 	turn_off()
 	icon_state = "[bike_icon]_off"
 	update_icon()
+
+/obj/vehicle_old/bike/Destroy()
+	QDEL_NULL(ion)
+	return ..()
 
 /obj/vehicle_old/bike/built
 	cell = null
@@ -71,6 +73,7 @@
 
 	if(usr.incapacitated()) return
 
+	var/obj/item/cell/cell = get_cell()
 	if(!on && cell && cell.charge > charge_use)
 		turn_on()
 		src.visible_message("\The [src] rumbles to life.", "You hear something rumble deeply.")
@@ -137,6 +140,7 @@
 /obj/vehicle_old/bike/Move(var/turf/destination)
 	if(kickstand) return 0
 
+	var/obj/item/cell/cell = get_cell()
 	if(on && (!cell || cell.charge < charge_use))
 		turn_off()
 		visible_message("<span class='warning'>\The [src] whines, before its engines wind down.</span>")
