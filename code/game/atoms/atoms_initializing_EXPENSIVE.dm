@@ -34,6 +34,7 @@
 			else
 				A.LateInitialize()
 		if(INITIALIZE_HINT_QDEL)
+			A.atom_flags |= ATOM_FLAG_INITIALIZED // never call EarlyDestroy if we return this hint
 			qdel(A)
 			qdeleted = TRUE
 		else
