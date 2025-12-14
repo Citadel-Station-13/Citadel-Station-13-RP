@@ -1,8 +1,9 @@
-import { round } from 'common/math';
-import { BooleanLike } from 'common/react';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
+import { Box, Button, LabeledList, NumberInput, Section, Stack } from 'tgui-core/components';
+import { round } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+
 import { useBackend, useLocalState } from '../../backend';
-import { Box, Button, LabeledList, NumberInput, Section, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { AtmosAnalyzerResults, AtmosGasGroupFlags, AtmosGasID, GasContext } from '../common/Atmos';
 import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
@@ -40,23 +41,23 @@ const AirAlarmRaiseLookup: {
   color: string;
   status: string;
 }[] = [
-  {
-    color: 'good',
-    status: 'Okay',
-  },
-  {
-    color: 'average',
-    status: 'Warning',
-  },
-  {
-    color: 'bad',
-    status: 'Danger',
-  },
-];
+    {
+      color: 'good',
+      status: 'Okay',
+    },
+    {
+      color: 'average',
+      status: 'Warning',
+    },
+    {
+      color: 'bad',
+      status: 'Danger',
+    },
+  ];
 
 type AirAlarmTLV = [number, number, number, number];
 
-const TLVCheck = (val: number, tlv: AirAlarmTLV | null | undefined) => tlv? (val < tlv[0] || val > tlv[3]
+const TLVCheck = (val: number, tlv: AirAlarmTLV | null | undefined) => tlv ? (val < tlv[0] || val > tlv[3]
   ? AirAlarmRaise.Danger : val < tlv[1] || val > tlv[2]
     ? AirAlarmRaise.Warning
     : AirAlarmRaise.Okay) : AirAlarmRaise.Okay;
@@ -91,8 +92,8 @@ interface AirAlarmData {
   emagged: BooleanLike;
 }
 
-export const AirAlarm = (props, context) => {
-  const { act, data } = useBackend<AirAlarmData>(context);
+export const AirAlarm = (props) => {
+  const { act, data } = useBackend<AirAlarmData>();
   const locked = data.locked && !data.siliconUser && !data.remoteUser;
   const localRaised = AirAlarmRaiseLookup[data.danger_level];
   const pressureRaised = AirAlarmRaiseLookup[TLVCheck(data.environment.pressure, data.pressureTLV)];
@@ -131,8 +132,8 @@ export const AirAlarm = (props, context) => {
                 <LabeledList.Item label="Local Status" color={localRaised.color}>
                   {localRaised.status}
                 </LabeledList.Item>
-                <LabeledList.Item label="Area Status" color={data.atmos_alarm || data.fire_alarm? 'bad' : 'good'}>
-                  {data.atmos_alarm? "Atmosphere Alarm" : data.fire_alarm? "Fire Alarm" : "Nominal"}
+                <LabeledList.Item label="Area Status" color={data.atmos_alarm || data.fire_alarm ? 'bad' : 'good'}>
+                  {data.atmos_alarm ? "Atmosphere Alarm" : data.fire_alarm ? "Fire Alarm" : "Nominal"}
                 </LabeledList.Item>
                 {!!data.emagged && (
                   <LabeledList.Item
@@ -158,8 +159,8 @@ export const AirAlarm = (props, context) => {
   );
 };
 
-const AirAlarmUnlockedControl = (props, context) => {
-  const { act, data } = useBackend<AirAlarmData>(context);
+const AirAlarmUnlockedControl = (props) => {
+  const { act, data } = useBackend<AirAlarmData>();
   const {
     target_temperature,
     rcon,
@@ -215,8 +216,8 @@ const AIR_ALARM_ROUTES = {
   },
 };
 
-const AirAlarmControl = (props, context) => {
-  const [screen, setScreen] = useLocalState<string>(context, 'screen', 'home');
+const AirAlarmControl = (props) => {
+  const [screen, setScreen] = useLocalState<string>('screen', 'home');
   const route = AIR_ALARM_ROUTES[screen] || AIR_ALARM_ROUTES.home;
   const Component = route.component();
   return (
@@ -239,9 +240,9 @@ const AirAlarmControl = (props, context) => {
 //  Home screen
 // --------------------------------------------------------
 
-const AirAlarmControlHome = (props, context) => {
-  const { act, data } = useBackend<AirAlarmData>(context);
-  const [screen, setScreen] = useLocalState<string>(context, 'screen', '');
+const AirAlarmControlHome = (props) => {
+  const { act, data } = useBackend<AirAlarmData>();
+  const [screen, setScreen] = useLocalState<string>('screen', '');
   const {
     mode,
     atmos_alarm,
@@ -291,8 +292,8 @@ const AirAlarmControlHome = (props, context) => {
 
 //* Vents *//
 
-const AirAlarmVentScreenWrapped = (props, context) => {
-  const { data, act } = useBackend<AirAlarmData>(context);
+const AirAlarmVentScreenWrapped = (props) => {
+  const { data, act } = useBackend<AirAlarmData>();
   return (
     <AirAlarmVentScreen
       vents={data.vents}
@@ -337,8 +338,8 @@ const AirAlarmVentScreen = (props: AirAlarmVentScreenProps) => {
 
 //* Scrubbers *//
 
-const AirAlarmScrubberScreenWrapped = (props, context) => {
-  const { data, act } = useBackend<AirAlarmData>(context);
+const AirAlarmScrubberScreenWrapped = (props) => {
+  const { data, act } = useBackend<AirAlarmData>();
   return (
     <AirAlarmScrubberScreen
       gasContext={data.gasContext}
@@ -384,8 +385,8 @@ const AirAlarmScrubberScreen = (props: AirAlarmScrubberScreenProps) => {
 //* Modes *//
 
 // todo: legacy, remove
-const AirAlarmModeScreenWrapped = (props, context) => {
-  const { data, act } = useBackend<AirAlarmData>(context);
+const AirAlarmModeScreenWrapped = (props) => {
+  const { data, act } = useBackend<AirAlarmData>();
   return (
     <AirAlarmModeScreen
       selected={data.mode}
@@ -423,7 +424,7 @@ interface AirAlarmModeButtonProps {
 const AirAlarmModeButton = (props: AirAlarmModeButtonProps) => {
   return (
     <Button
-      icon={props.selected? 'check-square-o' : 'square-o'}
+      icon={props.selected ? 'check-square-o' : 'square-o'}
       content={props.desc}
       onClick={() => props.setAct?.()}
       selected={props.selected}
@@ -433,12 +434,12 @@ const AirAlarmModeButton = (props: AirAlarmModeButtonProps) => {
 
 //* Thresholds / TLVs *//
 
-const AirAlarmThresholdScreenWrapped = (props, context) => {
-  const { data, act } = useBackend<AirAlarmData>(context);
+const AirAlarmThresholdScreenWrapped = (props) => {
+  const { data, act } = useBackend<AirAlarmData>();
   return (
     <table
       className="LabeledList"
-      style={{ width: '100%', "margin-left": "2.5px", "margin-right": "2.5px" }}>
+      style={{ width: '100%', marginLeft: "2.5px", marginRight: "2.5px" }}>
       <thead>
         <tr>
           <td />
@@ -488,11 +489,12 @@ const AirAlarmTLVEntry = (props: AirAlarmTLVEntryProps) => {
       {props.entry.map((val, i) => (
         <td key={`${i}`}>
           <NumberInput
+            step={0.001}
             value={round(val, 2)}
             width="60px"
             minValue={0}
             maxValue={1000000}
-            onChange={(e, v) => props.setEntry(v, i)} />
+            onChange={(v) => props.setEntry(v, i)} />
         </td>
       ))}
     </tr>

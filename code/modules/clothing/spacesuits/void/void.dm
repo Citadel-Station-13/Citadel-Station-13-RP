@@ -16,7 +16,6 @@
 //	inv_hide_flags = HIDEEARS|BLOCKHAIR
 
 	//Species-specific stuff.
-	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_ALRAUNE, SPECIES_PHORONOID)
 	sprite_sheets_refit = list(
 		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
 		SPECIES_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/head.dmi',
@@ -43,13 +42,11 @@
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT
 	weight = ITEM_WEIGHT_VOIDSUIT
 	armor_type = /datum/armor/general/space/armored
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 	heat_protection_cover = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	min_pressure_protection = 0 * ONE_ATMOSPHERE
 	max_pressure_protection = 10 * ONE_ATMOSPHERE
 
-	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN, SPECIES_PHORONOID) //phoronoids are more humanoid than skrell!!
 	sprite_sheets_refit = list(
 		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/suits.dmi',
 		SPECIES_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/suits.dmi',
@@ -69,7 +66,6 @@
 		SPECIES_ZORREN_FLAT		= 'icons/obj/clothing/species/fennec/suits.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/obj/clothing/species/fox/suits.dmi',
 		SPECIES_VULPKANIN		= 'icons/obj/clothing/species/vulpkanin/suits.dmi',
-		SPECIES_PROMETHEAN		= 'icons/obj/clothing/species/skrell/suits.dmi'
 		)
 
 	//Breach thresholds, should ideally be inherited by most (if not all) voidsuits.

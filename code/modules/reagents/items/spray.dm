@@ -4,7 +4,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner"
 	item_state = "cleaner"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throw_force = 3
@@ -13,6 +13,7 @@
 	throw_range = 10
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/spray_size = 3
 	var/list/spray_sizes = list(1,3)
 	volume = 250
@@ -39,7 +40,7 @@
 
 	Spray_at(target, user, (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 
-	user.setClickCooldown(4)
+	user.setClickCooldownLegacy(4)
 
 	if(reagents.has_reagent("sacid"))
 		message_admins("[key_name_admin(user)] fired sulphuric acid from \a [src].")
@@ -121,6 +122,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "pepperspray"
 	item_state = "pepperspray"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	possible_transfer_amounts = null
 	volume = 40
 	worth_intrinsic = 85

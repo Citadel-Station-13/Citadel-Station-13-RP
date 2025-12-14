@@ -213,7 +213,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/clothing/mask/smokable/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/mask/smokable/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(lit && H == user && istype(H))
 		var/obj/item/blocked = H.check_mouth_coverage()
@@ -244,7 +244,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		text = replacetext(text, "FLAME", "[W.name]")
 		light(text)
 
-/obj/item/clothing/mask/smokable/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/clothing/mask/smokable/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/L = target
 	if(istype(L) && L.on_fire)
 		user.do_attack_animation(L)
@@ -586,6 +586,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "lighter-g"
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 4
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
 	var/base_state
@@ -643,7 +644,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		set_light(0)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/flame/lighter/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flame/lighter/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return ..()

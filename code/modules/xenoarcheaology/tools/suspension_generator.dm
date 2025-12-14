@@ -67,7 +67,7 @@
 
 	return data
 
-/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -117,15 +117,12 @@
 			cell = W
 			to_chat(user, SPAN_NOTICE("You insert [cell]."))
 			icon_state = "suspension1"
-	else if(istype(W, /obj/item/card/emag))
-		return W.resolve_attackby(src, user)
 	else
 		if(check_access(W))
 			locked = !locked
 			to_chat(user, SPAN_NOTICE("You [locked ? "lock" : "unlock"] [src]."))
 		else
 			to_chat(user, SPAN_WARNING("[src] flashes \'<i>Access denied.</i>\'"))
-		return
 
 /obj/machinery/suspension_gen/emag_act(var/remaining_charges, var/mob/user)
 	if(locked)

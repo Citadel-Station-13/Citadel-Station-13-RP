@@ -53,6 +53,8 @@
 	//* Flags
 	/// turf flags
 	var/turf_flags = NONE
+	/// turf spawning flags
+	var/turf_spawn_flags = TURF_SPAWN_FLAG_BUILDMODE | TURF_SPAWN_FLAG_FILLABLE | TURF_SPAWN_FLAG_LEVEL_TURF
 	/// multiz flags
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
@@ -92,9 +94,6 @@
 	var/temperature = T20C
 	/// Does this turf contain air/let air through?
 	var/blocks_air = FALSE
-
-
-	var/holy = 0
 
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
@@ -264,6 +263,8 @@
 
 /turf/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()
+	if(.)
+		return
 	//QOL feature, clicking on turf can toggle doors, unless pulling something
 	if(!user.pulling)
 		var/obj/machinery/door/airlock/AL = locate(/obj/machinery/door/airlock) in src.contents
@@ -276,11 +277,11 @@
 			return TRUE
 
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || user.restrained() || !(user.pulling))
-		return 0
+		return FALSE
 	if(user.pulling.anchored || !isturf(user.pulling.loc))
-		return 0
+		return FALSE
 	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
-		return 0
+		return FALSE
 	if(ismob(user.pulling))
 		var/mob/M = user.pulling
 		var/atom/movable/t = M.pulling
@@ -289,12 +290,13 @@
 		M.start_pulling(t, suppress_message = TRUE)
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
-	return 1
+	return TRUE
 
 /turf/attack_ai(mob/user as mob) //this feels like a bad idea ultimately but this is the cheapest way to let cyborgs nudge things they're pulling around
 	. = ..()
 	if(Adjacent(user))
-		attack_hand(user, list("siliconattack" = TRUE))
+		var/datum/event_args/actor/clickchain/clickchain = user.default_clickchain_event_args(src)
+		attack_hand(user, clickchain)
 
 /turf/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
@@ -323,7 +325,7 @@
 // 		var/mob/living/victim = pick(viable_targets)
 // 		success = W.resolve_attackby(victim, user)
 
-// 	user.setClickCooldown(user.get_attack_speed(W))
+// 	user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 // 	user.do_attack_animation(src, no_attack_icons = TRUE)
 
 // 	if(!success)	// Nothing got hit.
@@ -517,7 +519,7 @@
 			//? length check
 			return TRUE
 */
-	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+	return SSmapping.level_has_trait(z, ZTRAIT_GRAVITY)
 
 /* // TODO: Implement this. @Zandario
 /turf/proc/update_weather(obj/abstract/weather_system/new_weather, force_update_below = FALSE)

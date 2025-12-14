@@ -123,9 +123,10 @@
  *
  * neither prefixes nor states may have spaces!
  */
-/datum/asset_pack/spritesheet/proc/do_insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
-	I = icon(I, icon_state=icon_state, dir=dir, frame=frame, moving=moving)
-	if (!I || !length(icon_states(I))) // That direction or state doesn't exist!
+/datum/asset_pack/spritesheet/proc/do_insert(sprite_name, icon/I, icon_state = "", dir = SOUTH, frame = 1, moving = FALSE, skip_checks)
+	I = icon(I, icon_state, dir, frame, moving)
+	// Check that it exists.
+	if(!skip_checks && !length(adaptive_icon_states(I)))
 		return
 	// Any sprite modifications we want to do (aka, coloring a greyscaled asset)
 	I = modify_inserted(I)
@@ -150,7 +151,7 @@
 /**
  * neither prefixes nor states may have spaces!
  */
-/datum/asset_pack/spritesheet/proc/insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE)
+/datum/asset_pack/spritesheet/proc/insert(sprite_name, icon/I, icon_state="", dir=SOUTH, frame=1, moving=FALSE, skip_checks)
 	to_generate += list(args.Copy())
 
 /**

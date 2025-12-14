@@ -189,8 +189,6 @@ SUBSYSTEM_DEF(ticker)
 	var/start_wait = world.time
 	//UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
 	while(world.time - start_wait < delay)
-		if(delay_end)		//delayed, break loop.
-			break
 		var/timeleft = delay - (world.time - start_wait)
 		// If we have less than 10 seconds left.
 		if(timeleft <= 10 SECONDS)
@@ -309,6 +307,8 @@ SUBSYSTEM_DEF(ticker)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
+	SStime_keep.cached_round_start_time = world.time
+	SStime_keep.cached_round_start_rtod = REALTIMEOFDAY
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore, SetRoundStart))
 
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
@@ -326,8 +326,6 @@ SUBSYSTEM_DEF(ticker)
 				SEND_SOUND(world, sound('sound/roundStart/start_up_3.ogg'))
 			if(4)
 				SEND_SOUND(world, sound('sound/roundStart/start_up_4.ogg'))//the original sound
-		//Holiday Round-start stuff	~Carn
-		Holiday_Game_Start()
 
 	//start_events() //handles random events and space dust.
 	//new random event system is handled from the MC.

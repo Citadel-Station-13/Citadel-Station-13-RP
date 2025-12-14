@@ -1,0 +1,5 @@
+author: "MarsM0nd"
+delete-after: True
+changes:
+  - bugfix: "disruptor cuffs stop disrupting if removed"
+  - bugfix: "real blindfolds actually blind"

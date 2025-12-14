@@ -11,7 +11,6 @@
 	bio = 1.0
 	rad = 1.0
 
-
 /datum/category_item/catalogue/fauna/iceleech
 	name = "Sivian Fauna - River Leech"
 	desc = "Classification: S Hirudinea phorus \
@@ -73,7 +72,7 @@
 
 	holder_type = /obj/item/holder/leech
 
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	aquatic_movement = -2
 
 	legacy_melee_damage_lower = 1
@@ -117,8 +116,8 @@
 /mob/living/simple_mob/animal/sif/leech/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_LINE("")
-		STATPANEL_DATA_ENTRY("Chemicals", chemicals)
+		INJECT_STATPANEL_DATA_LINE(., "")
+		INJECT_STATPANEL_DATA_ENTRY(., "Chemicals", chemicals)
 
 /mob/living/simple_mob/animal/sif/leech/do_special_attack(atom/A)
 	. = TRUE
@@ -272,7 +271,7 @@
 
 		var/list/covering_clothing = E.get_covering_clothing()
 		for(var/obj/item/clothing/C in covering_clothing)
-			if(C.fetch_armor().raw(ARMOR_MELEE) * 100 >= 20 + attack_armor_pen + attack_armor_pen)
+			if(C.fetch_armor().get_mitigation(ARMOR_MELEE) * 100 >= 20 + attack_armor_pen + attack_armor_pen)
 				to_chat(user, SPAN_NOTICE("We cannot get through that host's protective gear."))
 				return
 
@@ -378,7 +377,7 @@
 
 	var/list/covering_clothing = E.get_covering_clothing()
 	for(var/obj/item/clothing/C in covering_clothing)
-		if(C.fetch_armor().raw(ARMOR_MELEE) * 100 >= 40 + attack_armor_pen)
+		if(C.fetch_armor().get_mitigation(ARMOR_MELEE) * 100 >= 40 + attack_armor_pen)
 			to_chat(user, SPAN_NOTICE("You cannot get through that host's protective gear."))
 			return
 

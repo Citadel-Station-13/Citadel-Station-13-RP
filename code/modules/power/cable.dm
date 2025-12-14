@@ -569,7 +569,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 ///////////////////////////////////
 
 //you can use wires to heal robotics
-/obj/item/stack/cable_coil/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/stack/cable_coil/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(ishuman(target) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]

@@ -277,8 +277,8 @@
 		else if(istype(input_device,/obj/machinery/r_n_d/server))
 			var/obj/machinery/r_n_d/server/input_machine = input_device
 			incoming_files = input_machine.files
-		else if(istype(input_device,/obj/machinery/mecha_part_fabricator))
-			var/obj/machinery/mecha_part_fabricator/input_machine = input_device
+		else if(istype(input_device,/obj/machinery/lathe/mecha_part_fabricator))
+			var/obj/machinery/lathe/mecha_part_fabricator/input_machine = input_device
 			incoming_files = input_machine.files
 
 		if(!incoming_files || !incoming_files.known_tech || !incoming_files.known_tech.len)
@@ -405,7 +405,7 @@
 	drain_loc = interfaced_with.loc
 
 	holder.spark_system.start()
-	playsound(H.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(H.loc, /datum/soundbyte/sparks, 50, 1)
 
 	return 1
 
@@ -429,7 +429,7 @@
 		return 0
 
 	holder.spark_system.start()
-	playsound(H, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(H, /datum/soundbyte/sparks, 50, 1)
 
 	H.break_cloak()
 

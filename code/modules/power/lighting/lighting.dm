@@ -348,6 +348,10 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/small/poi
 	start_with_cell = FALSE
 
+/obj/machinery/light/small/old
+	color = "#f6a820"
+	brightness_color = "#e99a11"
+
 /obj/machinery/light/fairy
 	name = "fairy lights"
 	icon = 'icons/obj/lighting.dmi'
@@ -483,6 +487,7 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/update_icon()
 	cut_overlays()
 
+	var/image/additional_overlay
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			if(shows_alerts && current_alert && on)
@@ -494,18 +499,20 @@ var/global/list/light_type_cache = list()
 						addcolor = COLOR_ORANGE
 				var/image/I = image(icon, "tube1")
 				I.color = addcolor
-				add_overlay(I)
-
+				additional_overlay = I
 			else
-				add_overlay("tube1")
+				additional_overlay = image(icon, "tube1")
 		if(LIGHT_EMPTY)
 			on = 0
 		if(LIGHT_BURNED)
-			add_overlay("tube_burned")
+			additional_overlay = image(icon, "tube_burned")
 			on = 0
 		if(LIGHT_BROKEN)
-			add_overlay("tube_broken")
+			additional_overlay = image(icon, "tube_broken")
 			on = 0
+	if(additional_overlay)
+		additional_overlay.dir = NONE
+		add_overlay(additional_overlay)
 
 /obj/machinery/light/setDir(ndir)
 	. = ..()
@@ -731,7 +738,7 @@ var/global/list/light_type_cache = list()
 		//If xenos decide they want to smash a light bulb with a toolbox, who am I to stop them? /N
 
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
-
+		SEND_SIGNAL(user, COMSIG_MOB_ON_ITEM_MELEE_ATTACK)
 
 		if(prob(1+W.damage_force * 5))
 
@@ -855,10 +862,6 @@ var/global/list/light_type_cache = list()
 	to_chat(user, "<span class='notice'>Emergency lights for this fixture have been [no_emergency ? "disabled" : "enabled"].</span>")
 	update(FALSE)
 
-// ai alt click - Make light flicker.  Very important for atmosphere.
-/obj/machinery/light/AIAltClick(mob/user)
-	flicker(1)
-
 /obj/machinery/light/flamp/attack_ai(mob/user)
 	attack_hand()
 	return
@@ -876,7 +879,7 @@ var/global/list/light_type_cache = list()
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			for(var/mob/M in viewers(src))
 				M.show_message("<font color='red'>[user.name] smashed the light!</font>", 3, "You hear a tinkle of breaking glass", 2)
 			broken()

@@ -158,7 +158,7 @@
 
 /obj/machinery/sleeper
 	name = "sleeper"
-	desc = "A stasis pod with built-in injectors, a dialysis machine, and a limited health scanner."
+	desc = "A stasis pod with built-in injectors, a dialysis machine, and a limited health scanner.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "sleeper_0"
 	density = TRUE

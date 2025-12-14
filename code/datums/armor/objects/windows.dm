@@ -1,10 +1,16 @@
+/**
+ * window armor
+ *
+ * * not randomized as a cheap / lazy fix to fists breaking them with randomization as fists are just under the threshold
+ */
 /datum/armor/window
-	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_LIGHT)
+	randomization_percent = 0
 	melee = 0.1
+	melee_tier = 2
 	bomb = -1
 
 /datum/armor/window/reinforced
 	melee_deflect = 6
 	melee_soak = 0
-	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_MEDIUM)
-	melee = 0.2
+	melee_tier = 3
+	melee = 0.3

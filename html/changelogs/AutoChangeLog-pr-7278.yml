@@ -1,0 +1,5 @@
+author: "Dimasw99"
+delete-after: True
+changes:
+  - rscadd: "Added proc to get an atom before the turf"
+  - bugfix: "Held integrated circuit guns no longer shooting into nullspace"

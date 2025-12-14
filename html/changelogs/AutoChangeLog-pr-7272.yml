@@ -1,0 +1,4 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - bugfix: "fix being unable to select moth as a species"

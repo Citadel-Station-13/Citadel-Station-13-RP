@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 		SPRITE_ACCESSORY_SLOT_WINGS = /datum/sprite_accessory/wing/bodyset/moth,
 	)
 
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	unarmed_types = list(/datum/melee_attack/unarmed/stomp, /datum/melee_attack/unarmed/kick, /datum/melee_attack/unarmed/claws, /datum/melee_attack/unarmed/bite/sharp)
 
 	vision_innate = /datum/vision/baseline/species_tier_2
 	vision_organ = O_EYES
@@ -171,6 +171,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
+	id = SPECIES_ID_MOTH_DARK
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/dark
 
@@ -186,6 +187,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
+	id = SPECIES_ID_MOTH_LIGHT
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	mob_physiology_modifier = /datum/physiology_modifier/intrinsic/species/nepid/light
 

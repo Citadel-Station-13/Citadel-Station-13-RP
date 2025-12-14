@@ -18,7 +18,6 @@
 		SPECIES_ZORREN_FLAT = 'icons/obj/clothing/species/fennec/hats.dmi',
 		SPECIES_ZORREN_HIGH = 'icons/obj/clothing/species/fox/hats.dmi',
 		SPECIES_VULPKANIN   = 'icons/obj/clothing/species/vulpkanin/hats.dmi',
-		SPECIES_PROMETHEAN  = 'icons/obj/clothing/species/skrell/hats.dmi',
 		SPECIES_XENOHYBRID  = 'icons/obj/clothing/species/unathi/hats.dmi',
 		SPECIES_VOX         = 'icons/obj/clothing/species/vox/hats.dmi',
 		)
@@ -27,7 +26,6 @@
 	sprite_sheets_obj = list(
 		SPECIES_AKULA       = 'icons/obj/clothing/species/akula/suits.dmi',
 		SPECIES_NEVREAN     = 'icons/obj/clothing/species/nevrean/suits.dmi',
-		SPECIES_PROMETHEAN  = 'icons/obj/clothing/species/skrell/suits.dmi',
 		SPECIES_SERGAL      = 'icons/obj/clothing/species/sergal/suits.dmi',
 		SPECIES_SKRELL      = 'icons/obj/clothing/species/skrell/suits.dmi',
 		SPECIES_TAJ         = 'icons/obj/clothing/species/tajaran/suits.dmi',
@@ -49,29 +47,6 @@
 /obj/item/clothing/suit/space/void/explorer
 	desc = "A classy red voidsuit for the needs of any semi-retro-futuristic spaceperson! This one is rather loose fitting."
 	helmet_type = /obj/item/clothing/head/helmet/space/void/explorer
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_NEVREAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOCHIMERA,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
 
 /obj/item/clothing/suit/space/void/explorer/Initialize(mapload)
 	. = ..()
@@ -80,29 +55,6 @@
 
 /obj/item/clothing/head/helmet/space/void/explorer
 	desc = "A helmet that matches a red voidsuit! So classy."
-	species_restricted = list(
-		SPECIES_AKULA,
-		SPECIES_ALRAUNE,
-		SPECIES_APIDAEN,
-		SPECIES_AURIL,
-		SPECIES_DREMACHIR,
-		SPECIES_HUMAN,
-		SPECIES_NEVREAN,
-		SPECIES_RAPALA,
-		SPECIES_SERGAL,
-		SPECIES_SKRELL,
-		SPECIES_TAJ,
-		SPECIES_TESHARI,
-		SPECIES_UNATHI,
-		SPECIES_UNATHI_DIGI,
-		SPECIES_VASILISSAN,
-		SPECIES_VOX,
-		SPECIES_VULPKANIN,
-		SPECIES_XENOCHIMERA,
-		SPECIES_XENOHYBRID,
-		SPECIES_ZORREN_FLAT,
-		SPECIES_ZORREN_HIGH,
-	)
 
 /obj/item/clothing/head/helmet/space/void/explorer/Initialize(mapload)
 	. = ..()

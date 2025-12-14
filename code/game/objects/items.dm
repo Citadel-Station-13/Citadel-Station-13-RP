@@ -32,7 +32,7 @@
 	/// armor flag for melee attacks
 	var/damage_flag = ARMOR_MELEE
 	/// damage tier
-	var/damage_tier = MELEE_TIER_MEDIUM
+	var/damage_tier = 3
 	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
 	var/damage_mode = NONE
 	/// DAMAGE_TYPE_* enum
@@ -48,6 +48,10 @@
 	/// note that the component will not be modified while held;
 	/// if this is changed, the component needs to be remade.
 	var/passive_parry
+	/// base melee click cooldown
+	var/melee_click_cd_base = 0.8 SECONDS
+	/// base melee click cooldown multiplier
+	var/melee_click_cd_multiply = 1
 
 	//* Economy
 	/// economic category for items
@@ -113,6 +117,18 @@
 	var/obj/item/worn_inside
 	/// suppress auto inventory hooks in forceMove
 	var/worn_hook_suppressed = FALSE
+	/// Suit storage classes
+	var/suit_storage_class = NONE
+	/// Suit storage classes to allow
+	var/suit_storage_class_allow = NONE
+	/// Suit storage classes to disallow
+	var/suit_storage_class_disallow = NONE
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_allow_override
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_disallow_override
 
 	//* Environmentals *//
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
@@ -171,9 +187,6 @@
 	var/permeability_coefficient = 1
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
-	/// Suit storage stuff.
-	// todo: kill with fire
-	var/list/allowed = null
 	// todo: kill with fire
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
 	var/obj/item/uplink/hidden/hidden_uplink = null
@@ -186,8 +199,6 @@
 	/// 0 won't embed, and 100 will always embed
 	var/embed_chance = EMBED_CHANCE_UNSET
 
-	/// How long click delay will be when using this, in 1/10ths of a second. Checked in the user's get_attack_speed().
-	var/attackspeed = DEFAULT_ATTACK_COOLDOWN
 	/// Length of tiles it can reach, 1 is adjacent.
 	var/reach = 1
 	/// Icon overlay for ADD highlights when applicable.
@@ -371,11 +382,6 @@
 	. = ..()
 	if(QDELETED(A))
 		return
-/*
-		if(get_temperature() && isliving(hit_atom))
-			var/mob/living/L = hit_atom
-			L.IgniteMob()
-*/
 	if(isliving(A)) //Living mobs handle hit sounds differently.
 		var/volume = get_volume_by_throwforce_and_or_w_class()
 		if (throw_force > 0)
@@ -387,11 +393,12 @@
 				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else
 			playsound(A, 'sound/weapons/throwtap.ogg', 1, volume, -1)
-	else
-		playsound(src, drop_sound, 30)
 
 /obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
+	// if we're landing from the impact we don't play a sound as we already played hitsound
+	if(drop_sound && (A != TT.landing_from_impact))
+		playsound(src, drop_sound, 50, TRUE)
 	if(TT.throw_flags & THROW_AT_IS_NEAT)
 		return
 	var/matrix/M = matrix(transform)
@@ -464,7 +471,7 @@
 
 	add_attack_logs(user,M,"Attack eyes with [name]")
 
-	user.setClickCooldown(user.get_attack_speed())
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
@@ -824,7 +831,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 //* Flags *//
 
-/obj/item/proc/set_body_cover_flags()
+/obj/item/proc/set_body_cover_flags(new_body_cover_flags)
+	body_cover_flags = new_body_cover_flags
 	inv_inside.invalidate_coverage_cache()
 
 //* Interactions *//
@@ -832,20 +840,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/attackby(obj/item/I, mob/user, list/params, clickchain_flags, damage_multiplier)
 	if(isturf(loc) && I.obj_storage?.allow_mass_gather && I.obj_storage.allow_mass_gather_via_click)
 		I.obj_storage.auto_handle_interacted_mass_pickup(new /datum/event_args/actor(user), src)
-		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	// TODO: why do we need this here when /obj level hooks it?
-	if(istype(I, /obj/item/cell) && !isnull(obj_cell_slot) && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(user))
-		if(!user.transfer_item_to_loc(I, src))
-			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		user.visible_action_feedback(
-			target = src,
-			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] inserts [I] into [src]."),
-			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
-			visible_self = SPAN_NOTICE("You insert [I] into [src]."),
-		)
-		obj_cell_slot.insert_cell(I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
@@ -878,11 +872,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	var/datum/prototype/material/material = get_primary_material()
 	var/turf/T = get_turf(src)
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-	if(istype(loc, /mob/living))
-		var/mob/living/M = loc
-		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
-			var/obj/item/material/shard/S = material.place_shard(T)
-			M.embed(S)
+	// if(istype(loc, /mob/living))
+	// 	var/mob/living/M = loc
+	// 	if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
+	// 		var/obj/item/material/shard/S = material.place_shard(T)
+	// 		M.embed(S)
 
 	playsound(src, "shatter", 70, 1)
 	qdel(src)

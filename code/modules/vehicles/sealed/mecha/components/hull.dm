@@ -32,3 +32,11 @@
 
 	step_delay = 1
 	integrity_danger_mod = 0.3
+
+/obj/item/vehicle_component/hull/heavy_duty //should only be used for 3x3 mechs.
+	name = "heavy duty mecha hull"
+	step_delay = 5
+	//required_type = list(/obj/vehicle/sealed/mecha/combat/quasimodo) why doesm't it work?
+	integrity_danger_mod = 0.2
+	integrity_max = 2500
+

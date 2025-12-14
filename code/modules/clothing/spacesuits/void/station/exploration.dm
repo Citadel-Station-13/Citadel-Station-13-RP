@@ -15,8 +15,6 @@
 	icon_state = "void_explorer"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skrell_suit_black", SLOT_ID_LEFT_HAND = "skrell_suit_black")
 	armor_type = /datum/armor/exploration/space
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
-	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 	helmet_type = /obj/item/clothing/head/helmet/space/void/exploration
 	worth_intrinsic = 300
 
@@ -32,6 +30,23 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skrell_suit_white", SLOT_ID_LEFT_HAND = "skrell_suit_white")
 	helmet_type = /obj/item/clothing/head/helmet/space/void/exploration/alt
 
+/obj/item/clothing/head/helmet/space/void/exploration/med
+	name = "field medic voidsuit helmet"
+	desc = "A radiation-resistant helmet made especially for exploring unknown planetary environments."
+	icon_state = "helm_exp_medic"
+	item_state = "helm_exp_medic"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
+	armor_type = /datum/armor/exploration/space
+	light_overlay = "helmet_light"
+	camera_networks = list(NETWORK_EXPLO_HELMETS)
+
+/obj/item/clothing/suit/space/void/exploration/med
+	name = "field medic voidsuit"
+	desc = "A lightweight, radiation-resistant voidsuit, featuring the Medical emblem on its chest plate. Designed for exploring unknown planetary environments."
+	icon_state = "void_exp_medic"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skrell_suit_black", SLOT_ID_LEFT_HAND = "skrell_suit_black")
+	helmet_type = /obj/item/clothing/head/helmet/space/void/exploration
+
 /obj/item/clothing/head/helmet/space/void/exploration/pathfinder
 	name = "pathfinder voidsuit helmet"
 	desc = "A comfortable helmet designed to provide protection for Pathfinder units on long-term operations."
@@ -46,7 +61,5 @@
 	icon_state = "void_explorer_pf"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skrell_suit_black", SLOT_ID_LEFT_HAND = "skrell_suit_black")
 	armor_type = /datum/armor/exploration/space/pathfinder
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
-	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 	helmet_type = /obj/item/clothing/head/helmet/space/void/exploration/pathfinder
 	worth_intrinsic = 400

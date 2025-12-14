@@ -19,7 +19,7 @@
 	var/list/jobs = sanitize_islist(data)
 	var/highest
 	for(var/id in jobs)
-		var/datum/role/job/J = SSjob.job_by_id(id)
+		var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(id)
 		if(!J)
 			jobs -= id
 			continue
@@ -69,7 +69,7 @@
 			if((count >= limit) || ((count + dep_amt > limit) && (dep_amt <= limit) && ((limit - count) <= 4)))
 				NEW_COLUMN
 			for(var/id in ids)
-				. += render_job(prefs, SSjob.job_by_id(id), current[id], assistant_selected)
+				. += render_job(prefs, RSroles.legacy_job_by_id(id), current[id], assistant_selected)
 				++count
 				if(count >= limit)
 					NEW_COLUMN
@@ -98,7 +98,7 @@
 #undef END_COLUMN
 #undef START_COLUMN
 
-/datum/category_item/player_setup_item/occupation/jobs/proc/render_job(datum/preferences/prefs, datum/role/job/J, current_priority, assistant_selected)
+/datum/category_item/player_setup_item/occupation/jobs/proc/render_job(datum/preferences/prefs, datum/prototype/role/job/J, current_priority, assistant_selected)
 	. = list()
 	. += "<tr bgcolor='[J.selection_color]'><td width='60%' align='right'>"
 	// left side
@@ -148,7 +148,7 @@
 /**
  * return null if allowed, otherwise return error to display
  */
-/datum/category_item/player_setup_item/occupation/jobs/proc/check_job(datum/preferences/prefs, datum/role/job/J, current_priority)
+/datum/category_item/player_setup_item/occupation/jobs/proc/check_job(datum/preferences/prefs, datum/prototype/role/job/J, current_priority)
 	var/client/C = pref.client
 	if(!C)
 		return null
@@ -165,7 +165,7 @@
 			prefs.set_job_priority(job_id, level)
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("title")
-			var/datum/role/job/J = SSjob.job_by_id(params["title"])
+			var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(params["title"])
 			if(!J)
 				return PREFERENCES_NOACTION
 			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in prefs.available_alt_titles(J)
@@ -174,7 +174,7 @@
 			prefs.set_job_title(params["title"], title)
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("help")
-			var/datum/role/job/J = SSjob.job_by_id(params["help"])
+			var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(params["help"])
 			var/list/built = list("<blockquote class='info'>")
 			built += "<center><b><h3>[J.title]</h3></b></center>"
 			built += "<b>Purpose:</b> [J.desc]"
@@ -206,11 +206,11 @@
 /datum/category_item/player_setup_item/occupation/jobs/default_value(randomizing)
 	return list()
 
-/datum/preferences/proc/available_alt_titles(datum/role/job/J)
+/datum/preferences/proc/available_alt_titles(datum/prototype/role/job/J)
 	RETURN_TYPE(/list)
 	return J.alt_title_query(all_background_ids())
 
-/datum/preferences/proc/check_alt_title(datum/role/job/J, alt_title)
+/datum/preferences/proc/check_alt_title(datum/prototype/role/job/J, alt_title)
 	return J.alt_title_check(alt_title, all_background_ids())
 
 /**
@@ -227,7 +227,7 @@
 	var/list/background_ids_cached = prefs.all_background_ids()
 	// check the ones we have to ensure compliance
 	for(var/id in jobs)
-		var/datum/role/job/J = SSjob.job_by_id(id)
+		var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(id)
 		if(!J)
 			jobs -= id
 			continue
@@ -235,7 +235,7 @@
 		if(!J.alt_title_check(title, background_ids_cached))
 			jobs -= id
 	// check the ones we don't and are strict titles
-	for(var/datum/role/job/J as anything in SSjob.all_jobs())
+	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_sorted_job_datums())
 		if(!isnull(jobs[J.id]))
 			continue
 		var/forced = J.alt_title_enforcement(background_ids_cached)
@@ -267,11 +267,11 @@
 	)
 	return sanitize_inlist(data, static_list, JOB_ALTERNATIVE_BE_ASSISTANT)
 
-/datum/preferences/proc/get_job_priority(datum/role/job/J)
+/datum/preferences/proc/get_job_priority(datum/prototype/role/job/J)
 	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
 	return jobs[J.id]
 
-/datum/preferences/proc/get_job_alt_title_name(datum/role/job/J)
+/datum/preferences/proc/get_job_alt_title_name(datum/prototype/role/job/J)
 	RETURN_TYPE(/datum/prototype/struct/alt_title)
 	var/list/titles = get_character_data(CHARACTER_DATA_ALT_TITLES)
 	return titles[J.id] || J.title
@@ -294,7 +294,7 @@
 			continue
 		.[id] = priorities[id]
 
-/datum/preferences/proc/effective_job_priority(datum/role/job/J)
+/datum/preferences/proc/effective_job_priority(datum/prototype/role/job/J)
 	if(!lore_faction_job_check(J))
 		return JOB_PRIORITY_NEVER
 	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
@@ -304,7 +304,7 @@
  * gets effective job priority of a job for current slot; used for
  * roundstart procs. returns JOB_PRIORITY_NEVER if we can't be said job.
  */
-/client/proc/effective_job_priority(datum/role/job/J)
+/client/proc/effective_job_priority(datum/prototype/role/job/J)
 	if(J.check_client_availability_one(src) != ROLE_AVAILABLE)
 		return JOB_PRIORITY_NEVER
 	return prefs?.effective_job_priority(J)
@@ -319,7 +319,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	var/list/priorities = sanitize_islist(prefs.get_character_data(CHARACTER_DATA_JOBS))
-	for(var/datum/role/job/J as anything in SSjob.all_jobs())
+	for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_job_datums())
 		if(J.check_client_availability_one(src) != ROLE_AVAILABLE)
 			continue
 		var/id = J.id
@@ -349,7 +349,7 @@
 	return get_character_data(CHARACTER_DATA_OVERFLOW_MODE)
 
 /datum/preferences/proc/set_job_priority(id, priority)
-	var/datum/role/job/J = SSjob.job_by_id(id)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(id)
 	if(!J)
 		return
 	if(priority < JOB_PRIORITY_NEVER || priority > JOB_PRIORITY_HIGH)
@@ -362,7 +362,7 @@
 	set_character_data(CHARACTER_DATA_JOBS, current)
 
 /datum/preferences/proc/set_job_title(id, title)
-	var/datum/role/job/J = SSjob.job_by_id(id)
+	var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(id)
 	if(!J)
 		return
 	var/list/current = get_character_data(CHARACTER_DATA_ALT_TITLES)

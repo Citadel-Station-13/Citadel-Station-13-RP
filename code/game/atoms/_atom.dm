@@ -9,6 +9,7 @@
 	layer = TURF_LAYER
 
 	//* Core *//
+
 	/// Atom flags.
 	var/atom_flags = NONE
 	/// Prototype ID; persistence uses this to know what atom to load, even if the path changes in a refactor.
@@ -118,7 +119,8 @@
 	/// Shows up under a UV light.
 	var/fluorescent
 
-	//? Materials
+	//* Materials *//
+
 	/// combined material trait flags
 	/// this list is at /atom level but are only used/implemented on /obj generically; anything else, e.g. walls, should implement manually for efficiency.
 	/// * this variable is a cache variable and is generated from the materials on an entity.
@@ -135,7 +137,6 @@
 	var/tmp/material_traits_data
 	/// 'stacks' of ticking
 	/// this synchronizes the system so removing one ticking material trait doesn't fully de-tick the entity
-	//! DO NOT FUCK WITH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
 	/// * this variable is a cache variable and is generated from the materials on an entity.
 	/// * this variable is not visible and should not be edited in the map editor.
 	var/tmp/material_ticking_counter = 0
@@ -148,6 +149,7 @@
 	/// radiation flags
 	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
 	/// radiation insulation - does *not* affect rad_act!
+	//  TODO: BUG: rad_insulation needs a `set_rad_insulation()` which updates turf!
 	var/rad_insulation = RAD_INSULATION_NONE
 	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
 	var/rad_stickiness = 1
@@ -229,38 +231,10 @@
 	if(light)
 		QDEL_NULL(light)
 
-
-
 	if(smoothing_flags & SMOOTH_QUEUED)
 		SSicon_smooth.remove_from_queues(src)
 
 	return ..()
-
-//* Preload Hooks *//
-
-/**
- * Called by the maploader if a dmm_context is set
- *
- * todo: rename to preload_from_mapload()
- */
-/atom/proc/preloading_instance(datum/dmm_context/context)
-	return
-
-/**
- * hook for abstract direction sets from the maploader
- *
- * todo: this might need to be part of preloading_instance; investigate
- *
- * return FALSE to override maploader automatic rotation
- */
-/atom/proc/preloading_dir(datum/dmm_context/context)
-	return TRUE
-
-/**
- * Preloads before Initialize(), invoked by init from a stack recipe.
- */
-/atom/proc/preload_from_stack_recipe(datum/stack_recipe/recipe)
-	return
 
 /atom/proc/reveal_blood()
 	return
@@ -703,40 +677,6 @@
 /atom/proc/get_cell(inducer)
 	return
 
-//? Radiation
-
-/**
- * called when we're hit by a radiation wave
- *
- * * this is only called directly on turfs
- * * this is also called directly if an outgoing pulse is shielded by something, so it hits everything inside it instead
- * * for any other atom on turf, you need /datum/component/radiation_listener
- * * /datum/element/z_radiation_listener is needed if you want to listen to z-wide and other high-gain rad pulses
- */
-/atom/proc/rad_act(strength, datum/radiation_wave/wave)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
-
-/**
- * called when we're hit by z radiation
- */
-/atom/proc/z_rad_act(strength)
-	SHOULD_CALL_PARENT(TRUE)
-	rad_act(strength)
-
-/atom/proc/add_rad_block_contents(source)
-	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
-	rad_flags |= RAD_BLOCK_CONTENTS
-
-/atom/proc/remove_rad_block_contents(source)
-	REMOVE_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
-	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
-		rad_flags &= ~RAD_BLOCK_CONTENTS
-
-/atom/proc/clean_radiation(str, mul, cheap)
-	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
-	RA?.clean(str, mul)
-
 //* Color *//
 
 /**
@@ -840,6 +780,7 @@
 
 //? Pixel Offsets
 
+// todo: figure out exactly what we're doing here because this is a dumpster fire; we need to well-define what each of htese is supposed to do.
 // todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
 
 /atom/proc/set_pixel_x(val)
@@ -924,3 +865,17 @@
 /atom/proc/auto_pixel_offset_to_center()
 	set_base_pixel_y(get_centering_pixel_y_offset())
 	set_base_pixel_x(get_centering_pixel_x_offset())
+
+/**
+ * Get the left-to-right lower-left to top-right width of our icon in pixels.
+ * * This is used to align some overlays like HUD overlays.
+ */
+/atom/proc/get_pixel_x_self_width()
+	return icon_x_dimension
+
+/**
+ * Get the left-to-right lower-left to top-right width of our icon in pixels.
+ * * This is used to align some overlays like HUD overlays.
+ */
+/atom/proc/get_pixel_y_self_width()
+	return icon_y_dimension

@@ -2,10 +2,12 @@
  * @file
  * @license MIT
  */
-import { BooleanLike } from "common/react";
-import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "../../components";
-import { Sprite } from "../../components/Sprite";
+import { useState } from "react";
+import { Box, Button, Dimmer, Flex, Icon, LabeledList, Modal, NumberInput, Section, Stack } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { Sprite } from "../../components";
 import { Window } from "../../layouts";
 import { ByondColorString, ColorPicker } from "../common/Color";
 
@@ -36,9 +38,9 @@ const sizeKeyForCrayonDatapack = (pack: CrayonDatapack) => {
   return `${pack.width}x${pack.height}`;
 };
 
-export const Crayon = (props, context) => {
-  const { data, act } = useBackend<CrayonUIData>(context);
-  const [pickingColor, setPickingColor] = useLocalState<boolean>(context, 'pickingColor', false);
+export const Crayon = (props) => {
+  const { data, act } = useBackend<CrayonUIData>();
+  const [pickingColor, setPickingColor] = useState<boolean>(false);
 
   return (
     <Window width={500} height={800} title={data.canonicalName}>
@@ -62,16 +64,16 @@ export const Crayon = (props, context) => {
               <LabeledList>
                 {!!data.cappable && (
                   <LabeledList.Item label="Cap">
-                    <Button content={data.capped? "Capped" : "Uncapped"}
+                    <Button content={data.capped ? "Capped" : "Uncapped"}
                       selected={!data.capped} onClick={() => act('cap')} />
                   </LabeledList.Item>
                 )}
                 {(data.anyColor || data.colorList) && (
                   <LabeledList.Item label="Color">
-                    {data.anyColor? (
+                    {data.anyColor ? (
                       <Stack>
                         <Stack.Item>
-                          <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}
+                          <Box style={{ position: "relative", top: "5px", marginTop: "-3px" }}
                             backgroundColor={data.graffitiPickedColor} width="13.5px" height="13.5px" />
                         </Stack.Item>
                         <Stack.Item>
@@ -83,7 +85,7 @@ export const Crayon = (props, context) => {
                         {data.colorList?.map((color) => (
                           <Stack.Item key={color}>
                             <Button content={
-                              <Box style={{ position: "relative", top: "5px", "margin-top": "-3px" }}
+                              <Box style={{ position: "relative", top: "5px", marginTop: "-3px" }}
                                 backgroundColor={data.graffitiPickedColor} width="13.5px" height="13.5px" />
                             } onClick={() => act('color', { color: color })} />
                           </Stack.Item>
@@ -107,7 +109,7 @@ export const Crayon = (props, context) => {
                       minValue={0}
                       maxValue={359}
                       step={1}
-                      onChange={(e, val) => act('angle', { angle: val })} />
+                      onChange={(val) => act('angle', { angle: val })} />
                   </>
                 </LabeledList.Item>
               </LabeledList>

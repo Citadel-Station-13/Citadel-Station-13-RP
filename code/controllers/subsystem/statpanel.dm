@@ -78,33 +78,33 @@ SUBSYSTEM_DEF(statpanels)
 	if(cache_mc_data)
 		return cache_mc_data
 	. = list()
-	STATPANEL_DATA_ENTRY("CPU:", num2text(world.cpu))
-	STATPANEL_DATA_ENTRY("Instances:", num2text(world.contents.len, 10))
-	STATPANEL_DATA_ENTRY("World Time:", num2text(world.time))
+	INJECT_STATPANEL_DATA_ENTRY(., "CPU:", num2text(world.cpu))
+	INJECT_STATPANEL_DATA_ENTRY(., "Instances:", num2text(world.contents.len, 10))
+	INJECT_STATPANEL_DATA_ENTRY(., "World Time:", num2text(world.time))
 	if(GLOB)
-		STATPANEL_DATA_CLICK(GLOB.stat_key(), GLOB.stat_entry(), "\ref[GLOB]")
+		INJECT_STATPANEL_DATA_CLICK(., GLOB.stat_key(), GLOB.stat_entry(), "\ref[GLOB]")
 	else
-		STATPANEL_DATA_LINE("FATAL - NO GLOB")
+		INJECT_STATPANEL_DATA_LINE(., "FATAL - NO GLOB")
 	if(config)
-		STATPANEL_DATA_CLICK(config.stat_key(), config.stat_entry(), "\ref[config]")
+		INJECT_STATPANEL_DATA_CLICK(., config.stat_key(), config.stat_entry(), "\ref[config]")
 	else
-		STATPANEL_DATA_LINE("FATAL - NO CONFIG")
+		INJECT_STATPANEL_DATA_LINE(., "FATAL - NO CONFIG")
 	if(config)
-		STATPANEL_DATA_CLICK(Configuration.stat_key(), Configuration.stat_entry(), "\ref[Configuration]")
+		INJECT_STATPANEL_DATA_CLICK(., Configuration.stat_key(), Configuration.stat_entry(), "\ref[Configuration]")
 	else
-		STATPANEL_DATA_LINE("FATAL - NO CONFIG (NEW)")
-	STATPANEL_DATA_ENTRY("BYOND:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)")
+		INJECT_STATPANEL_DATA_LINE(., "FATAL - NO CONFIG (NEW)")
+	INJECT_STATPANEL_DATA_ENTRY(., "BYOND:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)")
 	if(Master)
-		STATPANEL_DATA_CLICK(Master.stat_key(), Master.stat_entry(), "\ref[Master]")
+		INJECT_STATPANEL_DATA_CLICK(., Master.stat_key(), Master.stat_entry(), "\ref[Master]")
 	else
-		STATPANEL_DATA_LINE("FATAL - NO MASTER CONTROLLER")
+		INJECT_STATPANEL_DATA_LINE(., "FATAL - NO MASTER CONTROLLER")
 	if(Failsafe)
-		STATPANEL_DATA_CLICK(Failsafe.stat_key(), Failsafe.stat_entry(), "\ref[Failsafe]")
+		INJECT_STATPANEL_DATA_CLICK(., Failsafe.stat_key(), Failsafe.stat_entry(), "\ref[Failsafe]")
 	else
-		STATPANEL_DATA_LINE("WARNING - NO FAILSAFE")
-	STATPANEL_DATA_LINE("")
+		INJECT_STATPANEL_DATA_LINE(., "WARNING - NO FAILSAFE")
+	INJECT_STATPANEL_DATA_LINE(., "")
 	for(var/datum/controller/subsystem/S as anything in Master.subsystems)
-		STATPANEL_DATA_CLICK(S.stat_key(), S.stat_entry(), "\ref[S]")
+		INJECT_STATPANEL_DATA_CLICK(., S.stat_key(), S.stat_entry(), "\ref[S]")
 	. = url_encode(json_encode(.))
 	cache_mc_data = .
 
@@ -113,17 +113,17 @@ SUBSYSTEM_DEF(statpanels)
 		return cache_server_data
 	. = list()
 	//L += SSmapping.stat_map_name
-	STATPANEL_DATA_ENTRY("Round ID", "[GLOB?.round_id || "ERROR"]")
+	INJECT_STATPANEL_DATA_ENTRY(., "Round ID", "[GLOB?.round_id || "ERROR"]")
 	// VIRGO START
-	STATPANEL_DATA_ENTRY("Station Time", stationtime2text())
-	STATPANEL_DATA_ENTRY("Station Date", stationdate2text())
-	STATPANEL_DATA_ENTRY("Round Duration", roundduration2text())
+	INJECT_STATPANEL_DATA_ENTRY(., "Station Time", stationtime2text())
+	INJECT_STATPANEL_DATA_ENTRY(., "Station Date", stationdate2text())
+	INJECT_STATPANEL_DATA_ENTRY(., "Round Duration", roundduration2text())
 	// VIRGO END
-	STATPANEL_DATA_ENTRY("Time dilation", SStime_track.stat_time_text)
+	INJECT_STATPANEL_DATA_ENTRY(., "Time dilation", SStime_track.stat_time_text)
 	//L += SSshuttle.emergency_shuttle_stat_text
 	var/shuttle_eta = SSemergencyshuttle.get_status_panel_eta()
 	if(shuttle_eta)
-		STATPANEL_DATA_ENTRY("Shuttle", shuttle_eta)
+		INJECT_STATPANEL_DATA_ENTRY(., "Shuttle", shuttle_eta)
 	. = url_encode(json_encode(.))
 	cache_server_data = .
 
@@ -132,7 +132,7 @@ SUBSYSTEM_DEF(statpanels)
 		return cache_ticket_data
 	if(!GLOB.ahelp_tickets)
 		. = list()
-		STATPANEL_DATA_LINE("FATAL - NO GLOBAL TICKETS HOLDER")
+		INJECT_STATPANEL_DATA_LINE(., "FATAL - NO GLOBAL TICKETS HOLDER")
 		. = url_encode(json_encode(.))
 	else
 		. = url_encode(json_encode(GLOB.ahelp_tickets.stat_data()))
@@ -142,7 +142,7 @@ SUBSYSTEM_DEF(statpanels)
 	if(cache_sdql_data)
 		return cache_sdql_data
 	. = list()
-	STATPANEL_DATA_CLICK("Global SDQL2 List:", "\[Edit\]", "\ref[GLOB?.sdql2_vv_statobj]")
+	INJECT_STATPANEL_DATA_CLICK(., "Global SDQL2 List:", "\[Edit\]", "\ref[GLOB?.sdql2_vv_statobj]")
 	for(var/datum/SDQL2_query/Q in GLOB.sdql2_queries)
 		. += Q.generate_stat()
 	. = url_encode(json_encode(.))

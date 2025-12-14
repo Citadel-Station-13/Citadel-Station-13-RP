@@ -59,7 +59,7 @@
 		icon_state = "[initial(icon_state)]-open"
 		sleep(0.5 SECONDS)
 		icon_state = initial(icon_state)
-	else if(user.a_intent == INTENT_HELP || (P.item_flags & ITEM_NOBLUDGEON))
+	else if(user.a_intent == INTENT_HELP || (P.item_flags & ITEM_NO_BLUDGEON))
 		to_chat(user, SPAN_WARNING("You can't put [P] in [src]!"))
 	else
 		return ..()
@@ -86,7 +86,7 @@
 
 	return data
 
-/obj/structure/filingcabinet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/structure/filingcabinet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

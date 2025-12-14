@@ -1,0 +1,4 @@
+author: "Sorrowfulwinds"
+delete-after: True
+changes:
+  - bugfix: "Add parens to clarify if statement in language.dm"

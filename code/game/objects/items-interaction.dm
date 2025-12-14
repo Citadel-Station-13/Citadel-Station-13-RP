@@ -5,21 +5,21 @@
 
 //* Attack Hand *//
 
-/obj/item/on_attack_hand(datum/event_args/actor/clickchain/e_args)
+/obj/item/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	if(.)
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 
-	if(e_args.performer.is_in_inventory(src))
-		if(e_args.performer.is_holding(src))
-			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_interacted_open(e_args))
-				return TRUE
+	if(clickchain.performer.is_in_inventory(src))
+		if(clickchain.performer.is_holding(src))
+			if(obj_storage?.allow_open_via_offhand_click && obj_storage.auto_handle_interacted_open(clickchain))
+				return . | CLICKCHAIN_DID_SOMETHING
 		else
-			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(e_args))
-				return TRUE
-	if(!e_args.performer.is_holding(src))
-		if(should_attempt_pickup(e_args) && attempt_pickup(e_args.performer))
-			return TRUE
+			if(obj_storage?.allow_open_via_equipped_click && obj_storage.auto_handle_interacted_open(clickchain))
+				return . | CLICKCHAIN_DID_SOMETHING
+	if(!clickchain.performer.is_holding(src))
+		if(should_attempt_pickup(clickchain) && attempt_pickup(clickchain.performer))
+			return . | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/proc/should_attempt_pickup(datum/event_args/actor/actor)
 	return TRUE
@@ -96,7 +96,8 @@
 	// success
 	if(isturf(old_loc))
 		new /obj/effect/temporary_effect/item_pickup_ghost(old_loc, actually_picked_up, user)
-
+	user.trigger_aiming(TARGET_CAN_CLICK)
+	
 //* Drag / Drop *//
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
@@ -191,10 +192,13 @@
 		actor = new /datum/event_args/actor(user)
 	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_ACTIVATE_INHAND, actor)
 	if(signal_return & RAISE_ITEM_ACTIVATE_INHAND_HANDLED)
+		user.trigger_aiming(TARGET_CAN_CLICK)
 		return TRUE
 	if(on_attack_self(actor))
+		user.trigger_aiming(TARGET_CAN_CLICK)
 		return TRUE
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
+		user.trigger_aiming(TARGET_CAN_CLICK)
 		interact(user)
 
 /**

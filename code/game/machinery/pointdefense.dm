@@ -45,7 +45,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	ui_interact(user)
 	return TRUE
 
-/obj/machinery/pointdefense_control/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/pointdefense_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -118,7 +118,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	name = "\improper point defense battery"
 	icon = 'icons/obj/pointdefense.dmi'
 	icon_state = "pointdefense"
-	desc = "A Kuiper pattern anti-meteor battery. Capable of destroying most threats in a single salvo."
+	desc = "A Kuiper pattern anti-meteor battery. Capable of destroying most threats in a single salvo.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	description_info = "Must have the same ident tag as a fire assist mainframe on the same facility. Use a multitool to set the ident tag."
 	density = TRUE
 	anchored = TRUE

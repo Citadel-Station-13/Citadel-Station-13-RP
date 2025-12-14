@@ -317,7 +317,7 @@
 
 	// For objects below the top level who still want to hear.
 	for(var/obj/O in global.listening_objects)
-		if(get_turf(O) in hearturfs)
+		if(get_turf(O) in hear)
 			objs |= O
 
 	return list("mobs" = mobs, "objs" = objs)
@@ -582,7 +582,7 @@
 		if(isnewplayer(player_mob)) // exclude people in the lobby
 			continue
 		if(isobserver(player_mob)) // Ghosts are fine if they were playing once (didn't start as observers)
-			// var/mob/dead/observer/ghost_player = player_mob
+			// var/mob/observer/dead/ghost_player = player_mob
 			// if(ghost_player.started_as_observer) // Exclude people who started as observers
 			continue
 		active_players++

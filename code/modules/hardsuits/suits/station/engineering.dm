@@ -10,29 +10,24 @@
 	siemens_coefficient= 0.75
 	seal_delay = 24 //Should be slightly faster than other hardsuits, giving Engineering faster response time for emergencies.
 
-
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/eva
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/eva
-
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/storage/briefcase/inflatable,
-		/obj/item/t_scanner,
-		/obj/item/rcd
-		)
 
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /datum/armor/hardsuit/eva
 	melee = 0.35
-	bullet = 0.1
+	melee_tier = 3.75
+	bullet = 0.075
+	bullet_tier = 3.75
 	laser = 0.2
-	energy = 0.25
-	bomb = 0.45
+	laser_tier = 4
+	energy = 0.45
+	bomb = 0.65
 	bio = 1.0
 	rad = 0.95
+	fire = 1.0
+	acid = 1.0
 
 /obj/item/clothing/gloves/gauntlets/hardsuit/eva
 	name = "insulated gauntlets"
@@ -68,26 +63,12 @@
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/ce
 	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/ce
 
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/storage/bag/ore,
-		/obj/item/t_scanner,
-		/obj/item/pickaxe,
-		/obj/item/rcd,
-		/obj/item/bluespace_radio,
-	)
-
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /datum/armor/hardsuit/ce
-	melee = 0.4
-	bullet = 0.2
-	laser = 0.3
-	energy = 0.25
-	bomb = 0.4
-	bio = 1.0
+	melee_tier = 4.1
+	bullet_tier = 4.1
+	laser_tier = 4.3
 	rad = 1.0
 
 /obj/item/clothing/gloves/gauntlets/hardsuit/ce

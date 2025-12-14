@@ -97,7 +97,11 @@
 		see_invisible = initial(see_invisible)
 		incorporeal_move = initial(incorporeal_move)
 		density = initial(density)
-		force_max_speed = initial(force_max_speed)
+		remove_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/shadein_jaunt)
+		for(var/id in atom_huds)
+			var/image/image = atom_huds[id]
+			image.alpha = initial(image.alpha)
+
 		update_icon()
 
 		//Cosmetics mostly
@@ -151,16 +155,22 @@
 		sleep(5)
 		invisibility = INVISIBILITY_LEVEL_TWO
 		see_invisible = INVISIBILITY_LEVEL_TWO
+
+		//Medical/security/etc. HUD displays should not be able to see us.
+		for(var/id in atom_huds)
+			var/image/image = atom_huds[id]
+			image.alpha = 0
+
 		// cut_overlays()
 		update_icon()
 		alpha = 127
 
 		// probably replace with a trait later.
 		add_atom_phasing(SPECIES_SHADEKIN_PHASING_TRAIT)
+		add_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/shadein_jaunt)
 
 		incorporeal_move = TRUE
 		density = FALSE
-		force_max_speed = TRUE
 
 /*
 /mob/living/carbon/human/MouseDroppedOnLegacy(atom/dropping, mob/user)

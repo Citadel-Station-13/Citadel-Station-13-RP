@@ -2,13 +2,18 @@
 	light_overlay = "helmet_light_dual_green"
 
 /datum/armor/hardsuit/combat
-	melee = 0.8
-	bullet = 0.65
+	melee = 0.5
+	melee_tier = 4
+	bullet = 0.45
+	bullet_tier = 4
 	laser = 0.5
+	laser_tier = 4
 	energy = 0.25
 	bomb = 0.6
 	bio = 1.0
 	rad = 0.6
+	fire = 0.5
+	acid = 0.8
 
 /obj/item/hardsuit/combat
 	name = "combat hardsuit control module"
@@ -21,15 +26,6 @@
 	offline_vision_restriction = 1
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/combat
-	allowed = list(
-		/obj/item/gun,
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/melee/baton,
-		/obj/item/bluespace_radio,
-	)
-
 
 /obj/item/hardsuit/combat/equipped
 
@@ -67,28 +63,6 @@
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY
 	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_HEAVY * 2
 	offline_vision_restriction = 1
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/ammo_magazine,
-		/obj/item/ammo_casing,
-		/obj/item/handcuffs,
-		/obj/item/t_scanner,
-		/obj/item/rcd,
-		/obj/item/weldingtool,
-		/obj/item/tool,
-		/obj/item/multitool,
-		/obj/item/radio,
-		/obj/item/atmos_analyzer,
-		/obj/item/storage/briefcase/inflatable,
-		/obj/item/melee/baton,
-		/obj/item/gun,
-		/obj/item/storage/firstaid,
-		/obj/item/reagent_containers/hypospray,
-		/obj/item/roller,
-		/obj/item/suit_cooling_unit,
-		/obj/item/bluespace_radio,
-	)
 
 	chest_type = /obj/item/clothing/suit/space/hardsuit/military
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/military
@@ -97,16 +71,12 @@
 
 /obj/item/clothing/head/helmet/space/hardsuit/military
 	light_overlay = "helmet_light_dual_green"
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/suit/space/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/shoes/magboots/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/clothing/gloves/gauntlets/hardsuit/military
-	species_restricted = list(SPECIES_HUMAN,SPECIES_PROMETHEAN)
 
 /obj/item/hardsuit/military/equipped
 	initial_modules = list(

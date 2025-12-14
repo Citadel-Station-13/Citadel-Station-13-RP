@@ -121,14 +121,6 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot/lobber)
 
-
-/obj/projectile/arc/blue_energy
-	name = "energy missile"
-	icon_state = "force_missile"
-	// A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
-	damage_force = 15 // A bit stronger since arcing projectiles are much easier to avoid than traditional ones.
-	damage_type = DAMAGE_TYPE_BURN
-
 // Very long ranged hivebot that rains down hell.
 // Their projectiles arc, meaning they go over everything until it hits the ground.
 // This means they're somewhat easier to avoid, but go over most defenses (like allies, or barriers),
@@ -167,27 +159,6 @@
 
 	base_attack_cooldown = 60
 
-/obj/projectile/arc/emp_blast
-	name = "emp blast"
-	icon_state = "bluespace"
-	var/emp_dev = 2
-	var/emp_heavy = 4
-	var/emp_med = 7
-	var/emp_light = 10
-
-/obj/projectile/arc/emp_blast/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-	empulse(target, emp_dev, emp_heavy, emp_med, emp_light) // Normal EMP grenade.
-	return . | PROJECTILE_IMPACT_DELETE
-
-/obj/projectile/arc/emp_blast/weak
-	emp_dev = 1
-	emp_heavy = 2
-	emp_med = 3
-	emp_light = 4
-
 // Fires shots that irradiate the tile hit.
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage/siege/radiation
 	name = "irradiator hivebot"
@@ -222,7 +193,7 @@
 	icon_state = "lurker"
 	icon_living = "lurker"
 	alpha = 200
-	movement_cooldown = 0.7 SECONDS
+	movement_base_speed = 10 / 0.7 SECONDS
 
 	projectiletype = /obj/projectile/beam/xray
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/sniper
@@ -240,7 +211,7 @@
 	icon_living = "suppressor"
 	icon_state = "suppressor"
 	base_attack_cooldown = 6
-	movement_cooldown = 0.5 SECONDS
+	movement_base_speed = 10 / 0.5 SECONDS
 	projectiletype = /obj/projectile/beam/smalllaser/hivebot
 
 	maxHealth = 4 LASERS_TO_KILL
@@ -251,7 +222,7 @@
 
 /obj/projectile/beam/smalllaser/hivebot
 	damage_force = 25
-	agony = 20
+	damage_inflict_agony = 20
 	legacy_muzzle_type = /obj/effect/projectile/muzzle/lightning
 	legacy_tracer_type = /obj/effect/projectile/tracer/lightning
 	legacy_impact_type = /obj/effect/projectile/impact/lightning
@@ -275,4 +246,4 @@
 
 /obj/projectile/beam/cyan/hivebot
 	damage_force = 45
-	armor_penetration = 15
+	damage_tier = 4

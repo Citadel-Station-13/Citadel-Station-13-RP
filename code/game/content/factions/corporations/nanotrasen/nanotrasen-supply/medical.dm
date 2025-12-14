@@ -375,7 +375,7 @@
 /datum/supply_pack/nanotrasen/medical/medigun
 	name = "Cell-Loaded Medigun crate"
 	contains = list(
-		/obj/item/gun/projectile/ballistic/microbattery/vm_aml = 1,
+		/obj/item/gun/projectile/ballistic/microbattery/vm_aml/sidearm = 1,
 		/obj/item/ammo_magazine/microbattery/vm_aml = 1,
 	)
 	worth = 1500

@@ -9,10 +9,12 @@
 	show_messages = 1
 	origin_tech = null
 	inhand_default_type = INHAND_DEFAULT_ICON_HOLDERS
+	worn_render_flags = WORN_RENDER_SLOT_ALLOW_DEFAULT
 	pixel_y = 8
 	throw_range = 14
 	throw_force = 10
 	throw_speed = 3
+
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -80,6 +82,7 @@
 	add_overlay(MA)
 	name = M.name
 	desc = M.desc
+	item_state = held_mob.icon_state
 	update_worn_icon()
 
 /obj/item/holder/contents_resist(mob/escapee)
@@ -97,6 +100,10 @@
 	else if(isitem(loc))
 		to_chat(escapee, SPAN_WARNING("You struggle free of [loc]."))
 		escapee.forceMove(get_turf(escapee))
+	else if(istype(loc, /atom/movable/storage_indirection) && loc.loc) //Second type how an item can have storage
+		to_chat(escapee, SPAN_WARNING("You struggle free of [loc.loc]."))
+		escapee.forceMove(get_turf(escapee))
+
 
 /obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
 	if(M == held_mob)
@@ -136,7 +143,7 @@
 		return
 	for(var/mob/living/simple_mob/M in src.contents)
 		if((INTENT_HELP) && user.canClick())
-			user.setClickCooldown(user.get_attack_speed())
+			user.setClickCooldownLegacy(user.get_attack_speed_legacy())
 			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")
 
 /obj/item/holder/holosphere_shell/relaymove(var/mob/user, var/direction)
@@ -178,7 +185,7 @@
 	clothing_flags = ALLOWINTERNALS
 	slot_flags = SLOT_HEAD | SLOT_OCLOTHING | SLOT_HOLSTER | SLOT_ICLOTHING | SLOT_ID | SLOT_MASK | SLOT_GLOVES | SLOT_BACK | SLOT_BELT | SLOT_FEET | SLOT_EARS | SLOT_EYES
 	w_class = WEIGHT_CLASS_TINY
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 //Roach Types
 /obj/item/holder/roach
@@ -211,7 +218,7 @@
 
 /mob/living/proc/get_scooped(var/mob/living/carbon/grabber, var/self_grab)
 
-	if(!holder_type || buckled || pinned.len)
+	if(!holder_type || buckled) // || pinned.len)
 		return
 
 	if(self_grab)

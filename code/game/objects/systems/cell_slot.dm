@@ -19,9 +19,11 @@
 	/// no-tool time for removal, if any
 	var/remove_yank_time = 0
 	/// tool behavior for removal, if any
+
 	var/remove_tool_behavior = null
 	/// tool time for removal, if any
 	var/remove_tool_time = 0
+
 	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE
 
@@ -42,16 +44,15 @@
 	/// cell types accepted
 	var/cell_type = NONE
 
-	//! Legacy !//
-	// todo: kill this
-	var/legacy_use_device_cells = FALSE
-
 /**
  * returns TRUE if slot accepts this type of cell
  */
 /datum/object_system/cell_slot/proc/accepts_cell(obj/item/cell/cell)
 	#warn this
 	return legacy_use_device_cells? istype(cell, /obj/item/cell/device) : TRUE
+
+// TODO: user_remove_cell && user_insert_cell
+// TODO: play sound please & visible message
 
 /**
  * removes cell from the system and drops it at new_loc

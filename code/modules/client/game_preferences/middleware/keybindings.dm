@@ -13,15 +13,9 @@
 /datum/game_preference_middleware/keybindings/handle_reset(datum/game_preferences/prefs)
 	. = ..()
 
-	prefs.keybindings = list()
-	// don't change their hotkey mode.. unless it was never there.
-	prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = \
-		isnull(prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE])? TRUE : !!prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
-	var/hotkey_mode = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE]
-	var/list/defaults = deep_copy_list(hotkey_mode? GLOB.hotkey_keybinding_list_by_key : GLOB.classic_keybinding_list_by_key)
-	prefs.keybindings = defaults
-
-	prefs.push_ui_modules(updates = list((src.key) = list(
+	prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = TRUE
+	prefs.keybindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key)
+	prefs.push_ui_nested_data(updates = list((src.key) = list(
 		"bindings" = prefs.keybindings,
 		"hotkeyMode" = prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE],
 	)))
@@ -40,7 +34,7 @@
 				return TRUE
 			prefs.misc_by_key[GAME_PREFERENCE_MISC_KEY_HOTKEY_MODE] = !!value
 			prefs.mark_dirty()
-			prefs.push_ui_modules(updates = list((src.key) = list(
+			prefs.push_ui_nested_data(updates = list((src.key) = list(
 				"hotkeyMode" = value,
 			)))
 			prefs.active?.set_macros()
@@ -65,7 +59,7 @@
 				prefs.keybindings[adding_key] = list()
 			if(!(keybind_id in prefs.keybindings[adding_key]))
 				prefs.keybindings[adding_key] += keybind_id
-			prefs.push_ui_modules(updates = list((src.key) = list(
+			prefs.push_ui_nested_data(updates = list((src.key) = list(
 				"bindings" = prefs.keybindings,
 			)))
 			prefs.active?.update_movement_keys()
@@ -76,7 +70,7 @@
 			if(!key)
 				return TRUE
 			prefs.keybindings[key] -= keybind_id
-			prefs.push_ui_modules(updates = list((src.key) = list(
+			prefs.push_ui_nested_data(updates = list((src.key) = list(
 				"bindings" = prefs.keybindings,
 			)))
 			prefs.active?.update_movement_keys()

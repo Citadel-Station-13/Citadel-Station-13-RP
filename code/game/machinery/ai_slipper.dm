@@ -84,9 +84,8 @@
 		t += "Dispenser [(disabled ? "deactivated" : "activated")] - <A href='?src=\ref[src];toggleOn=1'>[(disabled ? "Enable" : "Disable")]?</a><br>\n"
 		t += "Uses Left: [uses]. <A href='?src=\ref[src];toggleUse=1'>Activate the dispenser?</A><br>\n"
 
-	user << browse(t, "window=computer;size=575x450")
+	user << browse(HTML_SKELETON(t), "window=computer;size=575x450")
 	onclose(user, "computer")
-	return
 
 /obj/machinery/ai_slipper/Topic(href, href_list)
 	..()

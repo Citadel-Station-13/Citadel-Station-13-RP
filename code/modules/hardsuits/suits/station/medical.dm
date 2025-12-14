@@ -10,25 +10,19 @@
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/medical
 
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/storage/firstaid,
-		/obj/item/healthanalyzer,
-		/obj/item/stack/medical,
-		/obj/item/roller,
-		/obj/item/bluespace_radio,
-	)
-
 /datum/armor/hardsuit/medical
 	melee = 0.3
+	melee_tier = 3.5
 	bullet = 0.15
+	bullet_tier = 3.5
 	laser = 0.2
+	laser_tier = 3.5
 	energy = 0.6
 	bomb = 0.3
 	bio = 1.0
 	rad = 1.0
+	fire = 0.8
+	acid = 0.9
 
 /obj/item/hardsuit/medical/equipped
 	seal_delay = 5

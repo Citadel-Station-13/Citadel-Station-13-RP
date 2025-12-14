@@ -107,7 +107,11 @@
 	data["valid_destinations"] = generate_telebeacon_list()
 	return data
 
-/obj/machinery/computer/teleporter/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/teleporter/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+
 	switch(action)
 		if("set_destination")
 			set_destination(compare_beacon_to_identifier(params["new_locked"], beacon_uuid_assoc.Copy()))

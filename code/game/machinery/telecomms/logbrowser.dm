@@ -73,7 +73,7 @@
 		ui = new(user, src, "TelecommsLogBrowser", name)
 		ui.open()
 
-/obj/machinery/computer/telecomms/server/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/telecomms/server/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -146,7 +146,7 @@
 
 /obj/machinery/computer/telecomms/server/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		playsound(src, /datum/soundbyte/grouped/sparks, 75, 1)
+		playsound(src, /datum/soundbyte/sparks, 75, 1)
 		emagged = 1
 		to_chat(user, "<span class='notice'>You you disable the security protocols</span>")
 		src.updateUsrDialog()

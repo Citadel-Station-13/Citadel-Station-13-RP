@@ -1,0 +1,9 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - rscadd: "Traveler.dm to voidsuits lists, with downgraded syndie suits and helmets for travelers to use"
+  - tweak: "upped the prices on the suits in the vendor on Nebula to more reasonable levels"
+  - rscadd: "added a new armor class for traveler suits"
+  - tweak: "upped the armor values for Exploration suits"
+  - tweak: "rebalanced the RHR on Lythious 43a to a more reasonable weapon"
+  - tweak: "fixed airlocks on Vevalia shuttle and syndie suit displays to the traveler variant"

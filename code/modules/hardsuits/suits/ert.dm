@@ -4,12 +4,17 @@
 
 /datum/armor/hardsuit/ert
 	melee = 0.6
+	melee_tier = 4
 	bullet = 0.5
-	laser = 0.3
+	bullet_tier = 4
+	laser = 0.5
+	laser_tier = 4.5
 	energy = 0.15
 	bomb = 0.3
 	bio = 1.0
 	rad = 1.0
+	fire = 0.7
+	acid = 1.0
 
 /obj/item/hardsuit/ert
 	name = "ERT-C hardsuit control module"
@@ -23,27 +28,6 @@
 	siemens_coefficient= 0.5
 
 	armor_type = /datum/armor/hardsuit/ert
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/t_scanner,
-		/obj/item/rcd,
-		/obj/item/tool/crowbar,
-		/obj/item/tool/screwdriver,
-		/obj/item/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/multitool,
-		/obj/item/radio,
-		/obj/item/atmos_analyzer,
-		/obj/item/storage/briefcase/inflatable,
-		/obj/item/melee/baton,
-		/obj/item/gun,
-		/obj/item/storage/firstaid,
-		/obj/item/reagent_containers/hypospray,
-		/obj/item/roller,
-		/obj/item/bluespace_radio,
-	)
 
 	initial_modules = list(
 		/obj/item/hardsuit_module/ai_container,
@@ -103,12 +87,11 @@
 		)
 
 /datum/armor/hardsuit/ert/deathsquad
-	melee = 0.8
-	bullet = 0.65
-	laser = 0.5
-	energy = 0.25
+	melee_tier = 5
+	bullet_tier = 6
+	laser_tier = 6
 	bomb = 0.8
-	bio = 1.0
+	energy = 0.45
 
 /obj/item/hardsuit/ert/assetprotection
 	name = "Heavy Asset Protection suit control module"

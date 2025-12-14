@@ -10,6 +10,7 @@
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
 	worth_intrinsic = 45
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
 	var/times_used = 0 //Number of times it's been used.
 	var/broken = FALSE     //Is the flash burnt out?
@@ -152,7 +153,7 @@
 		return TRUE
 
 //attack_as_weapon
-/obj/item/flash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flash/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	flash_mob(target, user)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -162,7 +163,7 @@
 
 	add_attack_logs(user,M,"Flashed (attempt) with [src]")
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(M)
 
 	if(!clown_check(user))
@@ -247,7 +248,7 @@
 	if(!user || !clown_check(user))
 		return
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 
 	if(broken)
 		user.show_message("<span class='warning'>The [src.name] is broken</span>", 2)
@@ -305,7 +306,7 @@
 	can_repair = FALSE
 
 //attack_as_weapon
-/obj/item/flash/synthetic/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/flash/synthetic/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	if(!broken)
 		broken = 1

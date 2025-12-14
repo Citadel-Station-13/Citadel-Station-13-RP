@@ -1,0 +1,6 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - tweak: "Changed around the FD's office on the Atlas map, and added a new lounge area outside of it."
+  - bugfix: "Fixed the surgery hallway not obeying the nightshift setting."
+  - bugfix: "Fixed the APC in the library hallway on Atlas not being connected properly."

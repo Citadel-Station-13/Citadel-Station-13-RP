@@ -7,7 +7,6 @@
 	blood_overlay_type = "coat"
 	body_cover_flags = UPPER_TORSO|ARMS
 	inv_hide_flags = HIDEHOLSTER
-	allowed = list(/obj/item/atmos_analyzer,/obj/item/stack/medical,/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,/obj/item/healthanalyzer,/obj/item/flashlight/pen,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle,/obj/item/paper)
 	armor_type = /datum/armor/suit/labcoat
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
@@ -121,3 +120,8 @@
 	name = "OSS&NECRO Labcoat"
 	desc = "A flashy labcoat with cyan markings. This one is often provided to OSS&NECRO employees as standard equipement. Isn't it similar to the one that the Research Director has?"
 	icon_state = "labcoat_ossnecro"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/pmd
+	name = "PMD labcoat"
+	desc = "A suit that protects against minor chemical hazards. This one has black trim and a PMD insignia on the back."
+	icon_state = "labcoat_pmd"

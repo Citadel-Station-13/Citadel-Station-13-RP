@@ -3,11 +3,12 @@
 	desc = "Swipe your ID card to make purchases electronically."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "retail_idle"
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
 	req_access = list(ACCESS_COMMAND_BRIDGE)
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 1)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	var/locked = 1
 	var/emagged = 0
@@ -394,7 +395,7 @@
 /obj/item/retail_scanner/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		to_chat(user, "<span class='danger'>You stealthily swipe the cryptographic sequencer through \the [src].</span>")
-		playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
+		playsound(src, /datum/soundbyte/sparks, 50, 1)
 		req_access = list()
 		emagged = 1
 

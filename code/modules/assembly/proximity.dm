@@ -93,9 +93,6 @@
 		LAZYADD(attached_overlays, "prox_scanning")
 	if(holder)
 		holder.update_icon()
-	if(holder && istype(holder.loc,/obj/item/grenade/chem_grenade))
-		var/obj/item/grenade/chem_grenade/grenade = holder.loc
-		grenade.primed(scanning)
 
 /obj/item/assembly/prox_sensor/Move()
 	..()
@@ -121,7 +118,7 @@
 
 	return data
 
-/obj/item/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/assembly/prox_sensor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

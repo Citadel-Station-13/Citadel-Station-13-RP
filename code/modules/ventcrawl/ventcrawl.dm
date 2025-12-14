@@ -77,10 +77,11 @@ var/list/ventcrawl_machinery = list(
 			return FALSE
 	return TRUE
 
-/mob/living/AltClickOn(var/atom/A)
+/mob/living/alt_click_on(atom/target, location, control, list/params)
+	var/atom/A = target
 	if(is_type_in_list(A,ventcrawl_machinery))
 		handle_ventcrawl(A)
-		return 1
+		return TRUE
 	return ..()
 
 /mob/proc/start_ventcrawl()

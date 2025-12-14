@@ -7,6 +7,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	name_plural = "Prometheans"
 	category = "Special"
 	default_bodytype = BODYTYPE_PROMETHEAN
+	base_species = SPECIES_PROMETHEAN
 
 	blurb = {"
 	Prometheans (Macrolimus artificialis) are a species of artificially-created gelatinous humanoids, chiefly characterized
@@ -85,7 +86,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)
 
-	unarmed_types = list(/datum/unarmed_attack/slime_glomp)
+	unarmed_types = list(/datum/melee_attack/unarmed/slime_glomp)
 
 	has_organ = list(
 		O_BRAIN    = /obj/item/organ/internal/brain/slime,

@@ -28,7 +28,7 @@
 #define WORLDTIME2TEXT(format) GAMETIMESTAMP(format, world.time)
 #define WORLDTIMEOFDAY2TEXT(format) GAMETIMESTAMP(format, world.timeofday)
 #define TIME_STAMP(format, showds) showds ? "[WORLDTIMEOFDAY2TEXT(format)]:[world.timeofday % 10]" : WORLDTIMEOFDAY2TEXT(format)
-#define STATION_TIME(display_only, wtime) ((((wtime - SSticker.SSticker.round_start_time) * SSticker.station_time_rate_multiplier) + SSticker.gametime_offset) % 864000) - (display_only? GLOB.timezoneOffset : 0)
+#define STATION_TIME(display_only, wtime) ((((wtime - SSticker.SSticker.round_start_time) * SSticker.station_time_rate_multiplier) + SSticker.gametime_offset) % 864000)
 #define STATION_TIME_TIMESTAMP(format, wtime) time2text(STATION_TIME(TRUE, wtime), format)
 
 #define JANUARY		1
@@ -48,3 +48,21 @@
 #define CHATSPAM_THROTTLE_DEFAULT		(!(world.time % 5))
 /// ditto
 #define CHATSPAM_THROTTLE(every)			(!(world.time % every))
+
+//* REALTIMEOFDAY, because we don't have chrono::steady_clock *//
+//* Automatically adjusts to the server rolling over midnight *//
+//* so this is monotonically increasing wall-time.            *//
+#define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
+
+#define MIDNIGHT_ROLLOVER		864000
+#define MIDNIGHT_ROLLOVER_CHECK (global.midnight_rollover_last_timeofday != world.timeofday ? update_midnight_rollover() : global.midnight_rollovers)
+#define MIDNIGHT_ROLLOVER_CHECK_STANDALONE if(global.midnight_rollover_last_timeofday != world.timeofday) update_midnight_rollover()
+
+GLOBAL_REAL_VAR(midnight_rollovers) = 0
+GLOBAL_REAL_VAR(midnight_rollover_last_timeofday) = world.timeofday
+
+/proc/update_midnight_rollover()
+	if (world.timeofday < global.midnight_rollover_last_timeofday) //TIME IS GOING BACKWARDS!
+		++global.midnight_rollovers
+	midnight_rollover_last_timeofday = world.timeofday
+	return global.midnight_rollovers

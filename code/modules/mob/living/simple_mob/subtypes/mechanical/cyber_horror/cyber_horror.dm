@@ -32,7 +32,7 @@
 	legacy_melee_damage_lower = 5
 	legacy_melee_damage_upper = 10
 
-	movement_cooldown = 3
+	movement_base_speed = 10 / 3
 	movement_sound = 'sound/effects/houndstep.ogg'
 	// To promote a more diverse weapon selection.
 	armor_legacy_mob = list(melee = 25, bullet = 25, laser = -20, bio = 100, rad = 100)
@@ -117,7 +117,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attacktext = list ("sliced", "diced", "lashed", "shredded")
  // Slow as all sin
-	movement_cooldown = 9
+	movement_base_speed = 10 / 9
 	movement_sound = 'sound/effects/houndstep.ogg'
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
@@ -182,7 +182,14 @@
 		if(L == src)
 			continue
 
-		var/list/shieldcall_result = L.atom_shieldcall(40, DAMAGE_TYPE_BRUTE, MELEE_TIER_MEDIUM, ARMOR_MELEE, NONE, ATTACK_TYPE_MELEE)
+		var/list/shieldcall_result = L.atom_shieldcall(
+			40,
+			DAMAGE_TYPE_BRUTE,
+			3,
+			ARMOR_MELEE,
+			NONE,
+			ATTACK_TYPE_MELEE,
+		)
 		if(shieldcall_result[SHIELDCALL_ARG_FLAGS] & SHIELDCALL_FLAGS_BLOCK_ATTACK)
 			continue
 
@@ -297,12 +304,10 @@
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/on_melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/attack_style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
-	break_cloak()
-
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
-	. = ..()
+	if(. & CLICKCHAIN_ATTACK_MISSED)
+		return
 	break_cloak()
 
 //Arcing Ranged Mob
@@ -319,12 +324,6 @@
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting
 
 	armor_legacy_mob = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
-
-/obj/projectile/arc/blue_energy
-	name = "energy missle"
-	icon_state = "force_missile"
-	damage_force = 12
-	damage_type = DAMAGE_TYPE_BURN
 
 //Direct Ranged Mob
 /mob/living/simple_mob/mechanical/cyber_horror/corgi
@@ -352,7 +351,7 @@
 
 	maxHealth = 40
 	health = 40
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	movement_sound = 'sound/effects/servostep.ogg'
 
 	pass_flags = ATOM_PASS_TABLE
@@ -391,12 +390,6 @@
 /obj/projectile/beam/drone
 	damage_force = 3
 
-/obj/projectile/arc/blue_energy
-	name = "energy missle"
-	icon_state = "force_missile"
-	damage_force = 12
-	damage_type = DAMAGE_TYPE_BURN
-
 //Boss Mob - The High Priest
 /mob/living/simple_mob/mechanical/cyber_horror/priest
 	name = "hulking cyber horror"
@@ -415,7 +408,7 @@
 	mob_class = MOB_CLASS_ABERRATION
 	mob_size = MOB_HUGE
 	taser_kill = FALSE
-	movement_cooldown = 8
+	movement_base_speed = 10 / 8
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
 	special_attack_max_range = 8
@@ -427,20 +420,6 @@
 	projectiletype = /obj/projectile/arc/blue_energy/priest
 	projectilesound = 'sound/weapons/Laser.ogg'
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest
-
-/obj/projectile/arc/blue_energy/priest
-	name = "nanite cloud"
-	icon_state = "particle-heavy"
-	damage_force = 15
-	damage_type = DAMAGE_TYPE_BRUTE
-
-/obj/projectile/arc/blue_energy/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-	if(ishuman(target))
-		var/mob/living/carbon/human/M = target
-		M.Confuse(rand(3,5))
 
 /datum/ai_holder/polaris/simple_mob/ranged/aggressive/priest //Adopted from the Blood Hunter.
 	pointblank = FALSE
@@ -496,19 +475,6 @@
 
 	visible_message(SPAN_WARNING( "[src] closes its reactor port."))
 	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
-
-/obj/projectile/arc/radioactive/priest
-	name  = "superheated plama discharge"
-	icon_state = "plasma3"
-	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
-
-/obj/projectile/arc/radioactive/priest/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(!isturf(target))
-		return
-	var/turf/T = target
-	new /obj/effect/explosion(T)
-	explosion(T, 0, 1, 4)
 
 ////////////////////////
 //Lavaland Cyber_Horrors
@@ -594,7 +560,7 @@
 	maxHealth = 1500
 	health = 1500
 	armor_legacy_mob = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	legacy_melee_damage_lower = 15
 	legacy_melee_damage_upper = 25
 	attack_armor_pen = 25

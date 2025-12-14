@@ -25,8 +25,7 @@
 	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
-
-
+#warn sigh
 // -----------------gunsword battery--------------------------
 /obj/item/cell/device/weapon/gunsword
 	name = "Buster Cell"
@@ -39,6 +38,7 @@
 	max_charge = 2400
 	self_recharge_amount = 20
 	damage_force = 3
+	damage_tier = 4.75
 	throw_force = 5
 	throw_speed = 1
 	throw_range = 5

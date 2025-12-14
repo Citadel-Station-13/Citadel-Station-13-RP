@@ -15,11 +15,35 @@
  */
 /obj/item/pen
 	desc = "It's a normal black ink pen."
+	description_info = {"
+		This is an item for writing down your thoughts, on paper or elsewhere. The following special commands are available:
+		Pen and crayon commands
+		\[br\] : Creates a linebreak.
+		\[center\] - \[/center\] : Centers the text.
+		\[h1\] - \[/h1\] : Makes the text a first level heading.
+		\[h2\] - \[/h2\] : Makes the text a second level headin.
+		\[h3\] - \[/h3\] : Makes the text a third level heading.
+		\[b\] - \[/b\] : Makes the text bold.
+		\[i\] - \[/i\] : Makes the text italic.
+		\[u\] - \[/u\] : Makes the text underlined.
+		\[large\] - \[/large\] : Increases the size of the text.
+		\[sign\] : Inserts a signature of your name in a foolproof way.
+		\[field\] : Inserts an invisible field which lets you start type from there. Useful for forms.
+		\[date\] : Inserts today's station date.
+		\[time\] : Inserts the current station time.
+		Pen exclusive commands
+		\[small\] - \[/small\] : Decreases the size of the text.
+		\[list\] - \[/list\] : A list.
+		\[*\] : A dot used for lists.
+		\[hr\] : Adds a horizontal rule.
+	"}
+
 	name = "pen"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
 	item_state = "pen"
 	slot_flags = SLOT_BELT | SLOT_EARS
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	throw_force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 7
@@ -44,7 +68,7 @@
 		return
 	if(user.next_move > world.time)
 		return
-	user.setClickCooldown(1 SECOND)
+	user.setClickCooldownLegacy(1 SECOND)
 	to_chat(user, "<span class='notice'>Click.</span>")
 	playsound(src, 'sound/items/penclick.ogg', 50, 1)
 
@@ -124,7 +148,7 @@
 	. = ..()
 	create_reagents(30)
 
-/obj/item/pen/reagent/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pen/reagent/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
 	var/mob/living/L = target
 	if(istype(L))
@@ -153,7 +177,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 7
 	throw_range = 15
-	armor_penetration = 20
+	damage_tier = 5
 
 	var/active = 0
 	var/active_embed_chance = 0

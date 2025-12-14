@@ -62,8 +62,8 @@
 	/obj/item/tool/wirecutters,
 	/obj/item/tool/wrench,
 	/obj/item/tool/screwdriver,
-	/obj/item/grenade/chem_grenade/cleaner,
-	/obj/item/grenade/chem_grenade/metalfoam,
+	/obj/item/grenade/simple/chemical/premade/cleaner,
+	/obj/item/grenade/simple/chemical/premade/metalfoam,
 	/obj/structure/closet/crate/mimic/
 	)
 
@@ -152,7 +152,7 @@
 	data["tgui_construction"] = tgui_construction
 	return data
 
-/obj/machinery/replicator/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/replicator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

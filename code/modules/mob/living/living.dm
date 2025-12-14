@@ -1,3 +1,6 @@
+/mob/living
+	emote_class = EMOTE_CLASS_IS_BODY
+
 TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 /mob/living/Initialize(mapload)
 	. = ..()
@@ -715,7 +718,7 @@ default behaviour is:
 /mob/living/get_centering_pixel_y_offset(dir)
 	. = ..()
 	// since we're shifted up by transforms..
-	. -= ((size_multiplier * icon_scale_y) - 1) * 16
+	. -= (size_multiplier * icon_scale_y - 1) * 16
 
 /mob/living/get_managed_pixel_y()
 	. = ..()
@@ -726,7 +729,7 @@ default behaviour is:
  * Allows an observer to take control of the mob at any time. Must use the "existing" ghostrole subtype.
  * R: the ghostrole datum to use
  */
-/mob/living/proc/add_ghostrole(datum/role/ghostrole/existing/R = /datum/role/ghostrole/existing/)
+/mob/living/proc/add_ghostrole(datum/prototype/role/ghostrole/existing/R = /datum/prototype/role/ghostrole/existing/)
 	var/list/L = list()
 	L["mob"] += src
 	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, L)

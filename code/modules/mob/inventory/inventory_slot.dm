@@ -255,9 +255,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	if(istype(equipped, /obj/item/clothing/shoes))
 		var/obj/item/clothing/shoes/S = equipped
 		index = (S.shoes_under_pants == 1)? 2 : 1
-	else if(istype(equipped, /obj/item/storage/belt))
-		var/obj/item/storage/belt/B = equipped
-		index = (B.show_above_suit == 1)? 2 : 1
+	else if(istype(equipped, /obj/item/storage/backpack))
+		var/obj/item/storage/backpack/B = equipped
+		index = (B.hide_under_tail == 1)? 1 : 2
+	else if(istype(equipped, /obj/item/clothing/shoes))
+		var/obj/item/clothing/shoes/S = equipped
+		index = (S.shoes_under_pants == 1)? 2 : 1
 	return render_layer[clamp(index, 1, length(render_layer))]
 
 /datum/inventory_slot/proc/handle_worn_fallback(bodytype, list/worn_data)
@@ -304,7 +307,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_fallback = list(
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
-	render_layer = HUMAN_LAYER_SLOT_BACKPACK
+	render_layer = list(HUMAN_LAYER_SLOT_BACKPACK, HUMAN_LAYER_SLOT_BACKPACK_ALT)
 
 /datum/inventory_slot/inventory/uniform
 	name = "uniform"
@@ -464,7 +467,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_AKULA       = 'icons/mob/clothing/species/akula/helmet.dmi',
 		BODYTYPE_STRING_NEVREAN     = 'icons/mob/clothing/species/nevrean/helmet.dmi',
 		BODYTYPE_STRING_PHORONOID   = 'icons/mob/clothing/species/phoronoid/head.dmi',
-		BODYTYPE_STRING_PROMETHEAN  = 'icons/mob/clothing/species/skrell/helmet.dmi',
 		BODYTYPE_STRING_SERGAL      = 'icons/mob/clothing/species/sergal/helmet.dmi',
 		BODYTYPE_STRING_SKRELL      = 'icons/mob/clothing/species/skrell/helmet.dmi',
 		BODYTYPE_STRING_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/helmet.dmi',
@@ -501,7 +503,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_AKULA       = 'icons/mob/clothing/species/akula/suits.dmi',
 		BODYTYPE_STRING_NEVREAN     = 'icons/mob/clothing/species/nevrean/suits.dmi',
 		BODYTYPE_STRING_PHORONOID   = 'icons/mob/clothing/species/phoronoid/suits.dmi',
-		BODYTYPE_STRING_PROMETHEAN  = 'icons/mob/clothing/species/skrell/suits.dmi',
 		BODYTYPE_STRING_SERGAL      = 'icons/mob/clothing/species/sergal/suits.dmi',
 		BODYTYPE_STRING_SKRELL      = 'icons/mob/clothing/species/skrell/suits.dmi',
 		BODYTYPE_STRING_TAJARAN         = 'icons/mob/clothing/species/tajaran/suits.dmi',
@@ -790,10 +791,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/obj/item/suit_item = wearer.item_by_slot_id(SLOT_ID_SUIT)
 	if(!suit_item)
 		return FALSE
-	// todo: this check is ass
-	if(istype(I, /obj/item/pda) || istype(I, /obj/item/pen) || is_type_in_list(I, suit_item.allowed))
-		return TRUE
-	return FALSE
+	return suit_item.can_suit_storage(I)
 
 /datum/inventory_slot/inventory/ears
 	sort_order = 9500

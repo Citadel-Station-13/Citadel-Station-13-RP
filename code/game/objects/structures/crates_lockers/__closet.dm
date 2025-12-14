@@ -233,7 +233,7 @@
 /obj/structure/closet/proc/store_mobs(var/stored_units)
 	var/added_units = 0
 	for(var/mob/living/M in loc)
-		if(M.buckled || M.pinned.len)
+		if(M.buckled) // || M.pinned.len)
 			continue
 		if(stored_units + added_units + M.mob_size > storage_capacity)
 			break
@@ -325,7 +325,7 @@
 			spark_system.set_up(5, 0, loc)
 			spark_system.start()
 			playsound(src, 'sound/weapons/blade1.ogg', 50, 1)
-			playsound(src, /datum/soundbyte/grouped/sparks, 50, 1)
+			playsound(src, /datum/soundbyte/sparks, 50, 1)
 
 	else if(I.is_wrench())
 		if(sealed)
@@ -424,10 +424,16 @@
 	else
 		toggle(user)
 
-/obj/structure/closet/AltClick()
-	..()
+/obj/structure/closet/on_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
 	if(secure)
 		verb_togglelock()
+		return . | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+/obj/structure/closet/should_list_turf_on_alt_click(mob/user)
+	return FALSE
 
 /obj/structure/closet/verb/verb_togglelock()
 	set src in oview(1) // One square distance
@@ -497,7 +503,7 @@
 		open()
 		return
 
-	escapee.setClickCooldown(100)
+	escapee.setClickCooldownLegacy(100)
 
 	//okay, so the closet is either sealed or locked... resist!!!
 	to_chat(escapee, "<span class='warning'>You lean on the back of \the [src] and start pushing the door open. (this will take about [breakout_time] minutes)</span>")

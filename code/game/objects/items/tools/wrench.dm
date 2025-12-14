@@ -150,13 +150,13 @@
 	throw_force = 8
 	attack_verb = list("drilled", "screwed", "jabbed")
 	tool_speed = 0.25
-	var/obj/item/tool/screwdriver/power/counterpart = null
+	var/obj/item/tool/screwdriver/power/counterpart = /obj/item/tool/screwdriver/power
 	random_color = FALSE
 
 /obj/item/tool/wrench/power/Initialize(mapload, no_counterpart = TRUE)
 	. = ..()
-	if(!counterpart && no_counterpart)
-		counterpart = new(src, FALSE)
+	if(!isobj(counterpart) && no_counterpart)
+		counterpart = new counterpart(src, FALSE)
 		counterpart.counterpart = src
 
 /obj/item/tool/wrench/power/Destroy()

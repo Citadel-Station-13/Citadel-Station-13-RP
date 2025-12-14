@@ -14,7 +14,7 @@
 	/// scan cooldown
 	var/scan_delay = 10 SECONDS
 
-/obj/machinery/computer/bioscan/preloading_instance(datum/dmm_context/context)
+/obj/machinery/computer/bioscan/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	if(network_key_obfuscated && !network_key)
 		network_key = SSmapping.obfuscated_round_local_id(network_key_obfuscated, context.mangling_id, "bioscan")
@@ -38,7 +38,7 @@
 		if(!T)
 			continue
 		. += list(list(
-			"level" = SSmapping.fluff_level_id(get_z(A)),
+			"level" = SSmapping.level_get_fluff_id(get_z(A)),
 			"id" = "[A.id]",
 			"anchor" = A.anchored,
 			"name" = A.name,
@@ -51,8 +51,11 @@
 	.["scan_ready"] = !on_cooldown()
 	.["network"] = network_key || ""
 
-/obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/bioscan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
+	if(.)
+		return
+
 	switch(action)
 		if("scan")
 			if(!network_key)
@@ -102,7 +105,7 @@
 	var/list/assembled = list()
 	for(var/z_str in indices)
 		var/list/gottem = list()
-		gottem["id"] = SSmapping.fluff_level_id(text2num(z_str))
+		gottem["id"] = SSmapping.level_get_fluff_id(text2num(z_str))
 		var/mobs_all = 0
 		var/mobs_complex = 0
 		var/mobs_complex_alive = 0
@@ -111,7 +114,7 @@
 			++mobs_all
 			if(!isliving(M))
 				continue	// don't care didn't ask
-			if(!issimple(M))
+			if(!issimplemob(M))
 				++mobs_complex
 				if(IS_DEAD(M))
 					++mobs_complex_dead

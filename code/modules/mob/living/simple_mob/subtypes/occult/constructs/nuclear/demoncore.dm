@@ -22,7 +22,7 @@
 	attack_armor_pen = 50
 	attacktext = list("rammed")
 	attack_sound = 'sound/effects/clang1.ogg'
-	movement_cooldown = 4
+	movement_base_speed = 10 / 4
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nuclear_spirits/demoncore)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
@@ -48,7 +48,6 @@
 		return 1
 
 /mob/living/simple_mob/construct/nuclear/demoncore/death()
-	..()
 	for(var/mob/M in viewers(src, null))
 		if((M.client && !( M.has_status_effect(/datum/status_effect/sight/blindness) )))
 			M.show_message("<font color='red'>[src] screeches and explodes in a blue flash.</font>")

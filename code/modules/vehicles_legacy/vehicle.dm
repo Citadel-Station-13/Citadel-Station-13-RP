@@ -101,7 +101,7 @@
 				if(health < maxhealth)
 					if(open)
 						health = min(maxhealth, health+10)
-						user.setClickCooldown(user.get_attack_speed(W))
+						user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 						playsound(src, T.tool_sound, 50, 1)
 						user.visible_message("<font color='red'>[user] repairs [src]!</font>","<font color=#4F49AF> You repair [src]!</font>")
 					else
@@ -112,7 +112,7 @@
 				to_chat(user, "<span class='notice'>Unable to repair while [src] is off.</span>")
 
 	else if(hasvar(W,"damage_force") && hasvar(W,"damage_type"))
-		user.setClickCooldown(user.get_attack_speed(W))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(W))
 		switch(W.damage_type)
 			if("fire")
 				health -= W.damage_force * fire_dam_coeff

@@ -1,6 +1,6 @@
 /obj/machinery/power/quantumpad
 	name = "quantum pad"
-	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
+	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "qpad-idle"
 	anchored = TRUE

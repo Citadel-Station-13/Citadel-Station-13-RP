@@ -25,7 +25,7 @@
 	max_additional_languages = 3
 	intrinsic_languages = LANGUAGE_ID_VERNAL
 
-	slowdown = 1 //slow, they're plants. Not as slow as full diona.
+	movement_base_speed = 4.5
 	snow_movement  = -1 // Alraune can still wear shoes. Combined with winter boots, negates light snow slowdown but still slowed on ice.
 	water_movement = -1 // Combined with swimming fins, negates shallow water slowdown.
 	total_health = 100 //standard
@@ -73,10 +73,10 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	unarmed_types = list(
-		/datum/unarmed_attack/stomp,
-		/datum/unarmed_attack/kick,
-		/datum/unarmed_attack/punch,
-		/datum/unarmed_attack/bite,
+		/datum/melee_attack/unarmed/stomp,
+		/datum/melee_attack/unarmed/kick,
+		/datum/melee_attack/unarmed/punch,
+		/datum/melee_attack/unarmed/bite,
 	)
 
 	inherent_verbs = list(

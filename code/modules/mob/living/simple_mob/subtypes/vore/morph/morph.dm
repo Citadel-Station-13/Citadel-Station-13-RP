@@ -9,7 +9,7 @@
 	icon_state = "morph"
 	icon_living = "morph"
 	icon_dead = "morph_dead"
-	movement_cooldown = 1
+	movement_base_speed = 10 / 1
 	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
 	mob_bump_flag = SLIME
@@ -71,7 +71,8 @@
 			. += "<span class='warning'>It doesn't look quite right...</span>"
 	return
 
-/mob/living/simple_mob/vore/hostile/morph/ShiftClickOn(atom/movable/A)
+/mob/living/simple_mob/vore/hostile/morph/shift_click_on(atom/target, location, control, list/params)
+	var/atom/A = target
 	if(Adjacent(A))
 		if(morph_time <= world.time && !stat)
 			if(A == src)
@@ -81,8 +82,9 @@
 				assume(A)
 		else
 			to_chat(src, "<span class='warning'>Your chameleon skin is still repairing itself!</span>")
+		return TRUE
 	else
-		..()
+		return ..()
 
 /mob/living/simple_mob/vore/hostile/morph/proc/assume(atom/movable/target)
 	if(morphed)
@@ -112,7 +114,7 @@
 	//Morphed is weaker
 	legacy_melee_damage_lower = melee_damage_disguised
 	legacy_melee_damage_upper = melee_damage_disguised
-	movement_cooldown = 5
+	movement_base_speed = 10 / 5
 
 	morph_time = world.time + MORPH_COOLDOWN
 	return
@@ -142,7 +144,7 @@
 	//Baseline stats
 	legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 	legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
-	movement_cooldown = initial(movement_cooldown)
+	movement_base_speed = initial(movement_base_speed)
 
 	morph_time = world.time + MORPH_COOLDOWN
 

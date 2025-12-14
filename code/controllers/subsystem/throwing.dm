@@ -91,10 +91,14 @@ SUBSYSTEM_DEF(throwing)
 	var/dx
 	/// y dir
 	var/dy
+	/// current targeted angle
+	var/current_angle
 	/// tracks diagonal error so we move in a relatively "raycasted" (shittily) path
 	var/diagonal_error
 	/// are we purely diagonal?
 	var/pure_diagonal
+	/// What did we hit that's causing us to land?
+	var/atom/landing_from_impact
 
 	//! fluff shit players use to kill each other
 	/// zone selected by user at time of throw
@@ -118,6 +122,24 @@ SUBSYSTEM_DEF(throwing)
 	src.resist = AM.throw_resist
 	impacted = list()
 
+/datum/thrownthing/Destroy()
+	. = ..()
+	if(!finished)
+		terminate(TRUE)
+	if(thrownthing)
+		SSthrowing.processing -= thrownthing
+		thrownthing.throwing = null
+		thrownthing = null
+	landing_from_impact = null
+	target = null
+	thrower = null
+	on_hit = null
+	on_land = null
+	initial_turf = null
+	target_turf = null
+	impacted = null
+	return ..()
+
 /datum/thrownthing/proc/target_atom(atom/target)
 	src.target = target
 	var/turf/T = get_turf(target)
@@ -134,6 +156,7 @@ SUBSYSTEM_DEF(throwing)
 
 	dist_x = abs(target_turf.x - AM.x)
 	dist_y = abs(target_turf.y - AM.y)
+	current_angle = arctan(target_turf.y - AM.y, target_turf.x - AM.x)
 	dx = (target_turf.x > AM.x)? EAST : WEST
 	dy = (target_turf.y > AM.y)? NORTH : SOUTH
 
@@ -149,22 +172,6 @@ SUBSYSTEM_DEF(throwing)
 		dy = olddx
 	diagonal_error = dist_x / 2 - dist_y
 	return TRUE
-
-/datum/thrownthing/Destroy()
-	if(!finished)
-		terminate(TRUE)
-	if(thrownthing)
-		SSthrowing.processing -= thrownthing
-		thrownthing.throwing = null
-		thrownthing = null
-	target = null
-	thrower = null
-	on_hit = null
-	on_land = null
-	initial_turf = null
-	target_turf = null
-	impacted = null
-	return ..()
 
 /datum/thrownthing/proc/tick()
 	SHOULD_NOT_SLEEP(TRUE)
@@ -225,16 +232,7 @@ SUBSYSTEM_DEF(throwing)
 			land()
 			return
 
-	//? Experimental: Do not try to hit before movement, instead let cross/whatnot hooks handle it
-/*
-		var/atom/to_hit = scan_for_impact(stepping)
-		while(to_hit)
-			impact(to_hit)
-			if(finished)
-				return
-			to_hit = scan_for_impact(stepping)
-*/
-
+		// move
 		AM.Move(stepping, get_dir(AM, stepping))
 
 		// atom somehow got deleted
@@ -321,18 +319,20 @@ SUBSYSTEM_DEF(throwing)
  * handle impacting an atom
  * return TRUE if we should end the throw, FALSE to pierce
  */
-/datum/thrownthing/proc/impact(atom/A, in_land)
-	impacted[A] = TRUE
+/datum/thrownthing/proc/impact(atom/impacting, in_land)
+	impacted[impacting] = TRUE
 
-	var/op_return = thrownthing._throw_do_hit(A, src)
+	var/op_return = thrownthing._throw_do_hit(impacting, src)
 	if(op_return & COMPONENT_THROW_HIT_TERMINATE)
 		terminate()
 		return
 
-	on_hit?.InvokeAsync(A, src)
+	on_hit?.InvokeAsync(impacting, src)
 
 	if(!(op_return & COMPONENT_THROW_HIT_PIERCE) && !in_land)
+		landing_from_impact = impacting
 		land(get_turf(thrownthing))
+		landing_from_impact = null
 		return
 
 	// we are piercing. move again.
@@ -341,15 +341,15 @@ SUBSYSTEM_DEF(throwing)
 /**
  * land on something and terminate the throw
  */
-/datum/thrownthing/proc/land(atom/A = get_turf(thrownthing))
+/datum/thrownthing/proc/land(atom/landing = get_turf(thrownthing))
 	// todo: need to rewrite to consider qdel's for object + us maybe?
 	// nothing to land on
-	if(!A)
+	if(!landing)
 		terminate()
 		return
 
 	// hit our target if we haven't already
-	if(!impacted[target] && (target in get_turf(A)))
+	if(!impacted[target] && (target in get_turf(landing)) && target.is_throw_explicit_targetable(src))
 		impact(target, TRUE)
 
 	// we got terminated already
@@ -357,8 +357,8 @@ SUBSYSTEM_DEF(throwing)
 		return
 
 	// land
-	thrownthing._throw_finalize(A, src)
-	on_land?.InvokeAsync(A, src)
+	thrownthing._throw_finalize(landing, src)
+	on_land?.InvokeAsync(landing, src)
 
 	// halt
 	terminate()
@@ -419,8 +419,14 @@ SUBSYSTEM_DEF(throwing)
 		var/obj/item/thing = thrownthing
 		return thing.damage_tier
 	if(iscarbon(thrownthing))
-		return MELEE_TIER_HEAVY // :trol:
-	return MELEE_TIER_LIGHT
+		return 4 // :trol:
+	return 2.5
+
+/**
+ * Get angle we're flying
+ */
+/datum/thrownthing/proc/get_current_angle()
+	return current_angle
 
 /**
  * simulated thrownthing datums

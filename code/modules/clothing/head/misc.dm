@@ -275,7 +275,6 @@
 	name = "fedora"
 	desc = "A brown fedora - either the cornerstone of a reporter's style or a poor attempt at looking cool, depending on the person wearing it."
 	icon_state = "detective"
-	allowed = list(/obj/item/reagent_containers/food/snacks/candy_corn, /obj/item/pen)
 
 /obj/item/clothing/head/fedora/grey
 	icon_state = "detective2"
@@ -549,7 +548,7 @@
 /obj/item/clothing/head/reindeer
 	name = "reindeer antlers"
 	desc = "A set of costume antlers with a glowing red nose, an Old Earth favorite."
-	icon_state = "reindeer0"
+	icon_state = "reindeer"
 	item_action_name = "Toggle Nose"
 
 /obj/item/clothing/head/reindeer/attack_self(mob/user, datum/event_args/actor/actor)
@@ -741,3 +740,8 @@
 	icon = 'icons/clothing/head/onestar.dmi'
 	icon_state = "os_cap"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/analyst
+	name = "analyst's hat"
+	desc = "A wide brimmed, pointed hat made of sturdy material. The decorative strap fastened around it holds in place a prominent PMD insignia."
+	icon_state = "analyst"

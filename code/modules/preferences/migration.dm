@@ -52,7 +52,7 @@
 		var/list/assembled_titles = list()
 		if(!islist(player_alt_titles))
 			player_alt_titles = list()
-		for(var/datum/role/job/J as anything in SSjob.occupations)
+		for(var/datum/prototype/role/job/J as anything in RSroles.legacy_all_job_datums())
 			switch(J.department_flag)
 				if(CIVILIAN)
 					if(job_civilian_high & J.flag)
@@ -244,6 +244,11 @@
 				catlist -= key
 				catlist["/datum/loadout_tweak/color"] = val
 		WRITE_FILE(S["all_underwear_metadata"], all_underwear_metadata)
+	if(current_version < 6)
+		if(character[CHARACTER_DATA_REAL_SPECIES] == "blackeyedshadekin")
+			character[CHARACTER_DATA_REAL_SPECIES] = "shadekin_blackeyed"
+		if(character[CHARACTER_DATA_CHAR_SPECIES] == "blackeyedshadekin")
+			character[CHARACTER_DATA_CHAR_SPECIES] = "shadekin_blackeyed"
 
 /**
  * clientless migration of savefiles

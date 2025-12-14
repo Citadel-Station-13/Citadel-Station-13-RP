@@ -4,6 +4,9 @@
 //? Page has all balancing parameters + algorithms for dynamic attribute computations for things like armor ?//
 //? Prefix subsystem procs with 'dynamic_', please!                                                         ?//
 
+// TODO: redo pretty much this entire file, all the calculations are horrible
+//       lohikar was right i should've used a straight line man
+
 //* Armor *//
 
 /**
@@ -267,3 +270,33 @@
 	damage_flag = melee_stats[MATERIAL_MELEE_STATS_FLAG]
 	damage_mode = melee_stats[MATERIAL_MELEE_STATS_MODE]
 	damage_tier = base_tier + melee_stats[MATERIAL_MELEE_STATS_TIERMOD]
+
+
+//* Tools *//
+
+/**
+ * Get toolspeed
+ *
+ * @params
+ * * hardness_weight : weight of material hardness (0-1), should sum with all other weights to 1
+ * * toughness_weight : weight of material tougness (0-1), should sum with all other weights to 1
+ * * refraction_weight : weight of material refr (0-1), should sum with all other weights to 1
+ * * absorption_weight : weight of material absorp (0-1), should sum with all other weights to 1
+ * * nullification_weight : weight of material nulli (0-1), should sum with all other weights to 1
+ * * initial_toolspeed : speed of the tool to begin with
+ * * significance - a modifier that determines how well materials scale; less significant tools scale less. we assume baseline for most tools.
+ *
+ * https://www.desmos.com/calculator/m4gtk3aabl
+ * @return new_toolspeed
+ */
+/datum/prototype/material/proc/tool_stats(hardness_weight = 0.5, toughness_weight = 0.5, refraction_weight = 0, absorption_weight = 0, nullification_weight = 0, initial_toolspeed = 1, significance = MATERIAL_SIGNIFICANCE_BASELINE)
+	//-80-80 value for the tool.
+	//20 is the 'baseline' value. Anything worse than 20 will reduce stats, anything better than 20 will improve it.
+	var/tool_score = ((hardness_weight * hardness)+(toughness_weight*toughness)+(refraction_weight*refraction)+(absorption_weight*absorption)+(nullification_weight*nullification))/10
+
+
+	//amount toolspeed will be adjusted by
+	var/toolspeed_adjust = (-1 * ( (2*MATERIAL_DYNAMICS_TOOLSPEED_BOUND)/(1+(NUM_E**( (MATERIAL_DYNAMICS_TOOLSPEED_GRADIENT) * (tool_score - MATERIAL_DYNAMICS_TOOLSPEED_X_INTERCEPT) ) ) ) ) ) + MATERIAL_DYNAMICS_TOOLSPEED_BOUND
+
+	return round(1/((1/initial_toolspeed) + toolspeed_adjust),MATERIAL_DYNAMICS_TOOLSPEED_PRECISION)
+

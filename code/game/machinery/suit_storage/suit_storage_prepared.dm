@@ -24,8 +24,8 @@
 	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 
 /obj/machinery/suit_storage_unit/search_and_rescue
-	suit_stored_TYPE = /obj/item/clothing/suit/space/void/exploration/alt
-	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/exploration/alt
+	suit_stored_TYPE = /obj/item/clothing/suit/space/void/exploration/med
+	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/exploration/med
 	mask_stored_TYPE = /obj/item/clothing/mask/breath
 	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 

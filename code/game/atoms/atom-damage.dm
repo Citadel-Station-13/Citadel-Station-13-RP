@@ -66,6 +66,11 @@
 		if(DAMAGE_TYPE_BURN)
 		else
 			return // normal atoms can't take non brute-burn damage
+
+	#ifdef CF_VISUALIZE_DAMAGE_TICKS
+	visualize_atom_damage(damage, damage_type)
+	#endif
+
 	// default atom damage handling
 	inflict_atom_damage(
 		damage,
@@ -75,17 +80,35 @@
 		damage_mode,
 		hit_zone,
 		attack_type,
-		weapon,
+		attack_source,
 	)
 
 /**
  * decodes damage type to what it should actually do
  *
  * * this is for hybrid / semantic damage types like bio-acid and searing damage to work
+ * * for the love of god make sure you are not infinite looping here; never use a compound damage type in this.
+ * * this gets a direct reference to args; you can just modify it and pass it back.
+ *
+ * TODO: can we datumize damage types already?
  *
  * @return TRUE to handle the damage type.
  */
 /atom/proc/inflict_damage_type_special(list/shieldcall_args)
+	switch(shieldcall_args[SHIELDCALL_ARG_DAMAGE_TYPE])
+		if(DAMAGE_TYPE_BIOACID)
+			// hand it back
+			shieldcall_args[SHIELDCALL_ARG_DAMAGE_TYPE] = DAMAGE_TYPE_BURN
+			return FALSE
+		if(DAMAGE_TYPE_SEARING)
+			// split to two and call
+			var/list/new_args = shieldcall_args.Copy()
+			new_args[SHIELDCALL_ARG_DAMAGE] /= 2
+			new_args[SHIELDCALL_ARG_DAMAGE_TYPE] = DAMAGE_TYPE_BRUTE
+			inflict_damage_instance(arglist(new_args))
+			new_args[SHIELDCALL_ARG_DAMAGE_TYPE] = DAMAGE_TYPE_BURN
+			inflict_damage_instance(arglist(new_args))
+			return TRUE
 	return FALSE
 
 //* Damage Processing API *//
@@ -111,7 +134,7 @@
  *
  * @return raw damage taken
  */
-/atom/proc/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/weapon)
+/atom/proc/inflict_atom_damage(damage, damage_type, damage_tier, damage_flag, damage_mode, hit_zone, attack_type, datum/attack_source)
 	if(!integrity_enabled)
 		return 0
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
@@ -122,6 +145,17 @@
 	damage_integrity(damage)
 	. = . - integrity
 
+/**
+ * Visualizes a damage instance.
+ *
+ * @params
+ * * damage - amount inflicted
+ * * damage_type - (optional) damage type inflicted
+ */
+/atom/proc/visualize_atom_damage(damage, damage_type)
+	var/atom/movable/render/damage_tick/damage_tick = new(loc, src, 0.75 SECOND)
+	var/use_color = damage_type_to_visualized_color(damage_type)
+	damage_tick.maptext = MAPTEXT_CENTER("<font color='[use_color]'>[damage]</font>")
 
 //* Integrity - Direct Manipulation *//
 

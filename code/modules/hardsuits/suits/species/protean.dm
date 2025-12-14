@@ -7,6 +7,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
 	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	seal_delay = 1
+	control_overridden = TRUE //c:
 	var/mob/living/carbon/human/myprotean
 	initial_modules = list(
 		/obj/item/hardsuit_module/power_sink,
@@ -21,13 +22,18 @@
 	maintenance_while_online = TRUE
 
 /datum/armor/hardsuit/protean
-	melee = 0.0
-	bullet = 0.0
-	laser = 0.0
-	energy = 0.0
-	bomb = 0.0
+	melee = 0.05
+	melee_tier = 4
+	bullet = 0.05
+	bullet_tier = 4
+	laser = 0.05
+	laser_tier = 4
+	energy = 0.3
+	bomb = 0.3
 	bio = 1.0
 	rad = 1.0
+	fire = 0.7
+	acid = 0.7
 
 /obj/item/hardsuit/protean/relaymove(mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
@@ -61,4 +67,3 @@
 	desc = "A body-hugging mass of nanomachines."
 	can_breach = 0
 	species_restricted = null
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/bluespace_radio)

@@ -17,6 +17,7 @@
 	drop_sound = 'sound/items/drop/gun.ogg'
 	pickup_sound = 'sound/items/pickup/gun.ogg'
 	preserve_item = 1
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	var/filled = 0
 	var/list/filled_reagents = list()
 	var/hyposound	// What sound do we play on use?
@@ -29,7 +30,7 @@
 				reagents.add_reagent(r, filled_reagents[r])
 	update_icon()
 
-/obj/item/reagent_containers/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/hypospray/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(!reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty.</span>")
 		return
@@ -69,7 +70,7 @@
 	if(!istype(H) || !istype(user))
 		return FALSE
 
-	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
 	to_chat(user, SPAN_NOTICE("You inject \the [H] with \the [src]."))
 	H.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
 
@@ -440,7 +441,7 @@
 	else
 		return
 
-/obj/item/reagent_containers/hypospray/glukoz/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/hypospray/glukoz/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(closed)
 		to_chat(user, "<span class='notice'>You can't use [src] until you open it!</span>")
 		return

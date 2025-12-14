@@ -16,15 +16,6 @@
 		return
 	config.update_player_viewsize()
 
-/*
-/datum/config_entry/string/game_viewport_size
-	default = "19x15"
-
-/datum/config_entry/string/max_viewport_size/ValidateAndSet(str_val)
-	. = ..()
-*/
-//! BYONd world.view is immutable, this config is left here as a todo. If it's still immutable by, say, 516, remove it.
-
 /datum/config_entry/flag/starlight
 	default = TRUE
 
@@ -101,11 +92,9 @@
 	. = ..()
 	if(!.)
 		return
-	var/datum/bitfield/single/target_bitfield = /datum/bitfield/single/nightshift_level
-	var/target_bitname = initial(target_bitfield.variable)
-	var/list/actual_bitfield = GLOB.bitfields[target_bitname]
+	var/datum/bitfield_legacy/single/target_bitfield = new /datum/bitfield_legacy/single/nightshift_level
 	var/new_flags = NONE
 	for(var/key in config_entry_value)
 		if(config_entry_value[key])
-			new_flags |= actual_bitfield[key]
+			new_flags |= target_bitfield.flags[key]
 	SSnightshift.nightshift_level = new_flags

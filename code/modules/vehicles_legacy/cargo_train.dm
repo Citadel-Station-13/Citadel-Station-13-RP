@@ -1,7 +1,7 @@
 // TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 /obj/vehicle_old/train/engine
 	name = "cargo train tug"
-	desc = "A ridable electric car designed for pulling cargo trolleys."
+	desc = "A rideable electric car designed for pulling cargo trolleys."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "cargo_engine"
 	on = 0
@@ -376,7 +376,7 @@
 	else
 		move_delay = max(0, (-car_limit * active_engines) + train_length - active_engines)	//limits base overweight so you cant overspeed trains
 		move_delay *= (1 / max(1, active_engines)) * 2 										//overweight penalty (scaled by the number of engines)
-		move_delay += config_legacy.run_speed 														//base reference speed
+		move_delay += 2													//base reference speed
 		move_delay *= speed_mod																//makes cargo trains 10% slower than running when not overweight
 
 /obj/vehicle_old/train/trolley/update_car(var/train_length, var/active_engines)

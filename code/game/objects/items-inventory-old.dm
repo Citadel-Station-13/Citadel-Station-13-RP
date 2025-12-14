@@ -92,7 +92,7 @@
 	// unload actions
 	unregister_item_actions(user)
 	// close context menus
-	context_close()
+	close_context_menus()
 	// storage stuff
 	obj_storage?.on_dropped(user)
 	// get rid of shieldcalls
@@ -222,6 +222,14 @@
 /obj/item/proc/can_equip(mob/M, slot, mob/user, flags)
 	if(!equip_check_beltlink(M, slot, user, flags))
 		return FALSE
+	if(ishuman(M) && !(flags & INV_OP_FORCE))
+		// todo: put on the mob side maybe?
+		var/mob/living/carbon/human/casted_bodytype_check = M
+		var/their_bodytype = casted_bodytype_check.species.get_effective_bodytype(casted_bodytype_check, src, slot)
+		if(!worn_bodytypes?.contains(their_bodytype) && !worn_bodytypes_fallback?.contains(their_bodytype))
+			if(!(flags & INV_OP_SILENT))
+				to_chat(user || M, SPAN_WARNING("[src] doesn't fit on you."))
+			return FALSE
 	return TRUE
 
 /**
@@ -238,8 +246,19 @@
  * allow an item in suit storage slot?
  */
 /obj/item/proc/can_suit_storage(obj/item/I)
-	// todo: this is awful
-	return is_type_in_list(I, allowed)
+	if(suit_storage_types_disallow_override)
+		for(var/path in suit_storage_types_disallow_override)
+			if(istype(I, path))
+				return FALSE
+	if(suit_storage_types_allow_override)
+		for(var/path in suit_storage_types_allow_override)
+			if(istype(I, path))
+				return FALSE
+	if(suit_storage_class_disallow & I.suit_storage_class)
+		return FALSE
+	if(suit_storage_class_allow & I.suit_storage_class)
+		return TRUE
+	return FALSE
 
 /**
  * checks if we need something to attach to in a certain slot

@@ -42,9 +42,9 @@
 	. = ..()
 	update_icon()
 
-/obj/item/material/twohanded/standard_melee_attack(atom/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/material/twohanded/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	if(!(item_flags & ITEM_MULTIHAND_WIELDED))
-		mult *= unwielded_force_multiplier
+		clickchain.attack_melee_multiplier *= unwielded_force_multiplier
 	return ..()
 
 /obj/item/material/twohanded/update_icon()
@@ -80,11 +80,11 @@
 	. = ..()
 	pry = FALSE
 
-/obj/item/material/twohanded/fireaxe/attack_object(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags, mult = 1)
-	if(istype(target, /obj/structure/window))
-		mult *= 2
-	else if(istype(target, /obj/effect/plant))
-		mult *= 2
+/obj/item/material/twohanded/fireaxe/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
+	if(istype(clickchain.target, /obj/structure/window))
+		clickchain.attack_melee_multiplier *= 2
+	else if(istype(clickchain.target, /obj/effect/plant))
+		clickchain.attack_melee_multiplier *= 2
 	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam
@@ -153,6 +153,7 @@
 	damage_force = 10
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	throw_force_multiplier = 1.5
 	throw_speed = 5
@@ -162,9 +163,8 @@
 	material_parts = /datum/prototype/material/glass
 	material_color = 0
 	reach = 2 // Spears are long.
-	attackspeed = 20
 	weight = ITEM_WEIGHT_MELEE_SPEAR
-	var/obj/item/grenade/explosive = null
+	var/obj/item/grenade/simple/explosive = null
 	var/war_cry = "AAAAARGH!!!"
 
 /obj/item/material/twohanded/spear/Initialize(mapload, material_key)
@@ -191,15 +191,13 @@
 
 /obj/item/material/twohanded/spear/AltClick(mob/user)
 	. = ..()
-	if(usr)
-		..()
-		if(!explosive)
-			return
-		if(istype(user) && loc == user)
-			var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
-			if(input)
-				src.war_cry = input
-		return TRUE
+	if(!explosive)
+		return
+	if(istype(user) && loc == user)
+		var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
+		if(input)
+			src.war_cry = input
+	return TRUE
 
 /obj/item/material/twohanded/spear/CheckParts(list/parts_list)
 	var/obj/item/material/twohanded/spear/S = locate() in parts_list
@@ -260,6 +258,6 @@
 	w_class = WEIGHT_CLASS_HUGE
 	encumbrance = ITEM_ENCUMBRANCE_MELEE_SLEDGEHAMMER
 	attack_verb = list("attacked", "smashed", "crushed", "wacked", "pounded")
-	armor_penetration = 50
 	heavy = TRUE
+	damage_tier = 4
 	can_cleave = TRUE

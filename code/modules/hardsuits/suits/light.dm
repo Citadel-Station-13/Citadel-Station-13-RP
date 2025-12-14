@@ -1,9 +1,15 @@
 /datum/armor/hardsuit/light
-	melee = 0.5
-	bullet = 0.15
+	melee = 0.4
+	melee_tier = 3.5
+	bullet = 0.3
+	bullet_tier = 3
 	laser = 0.5
-	energy = 0.1
-	bomb = 0.25
+	laser_tier = 3
+	energy = 0.25
+	bomb = 0.35
+	rad = 0.5
+	fire = 0.7
+	acid = 0.7
 
 // Light rigs are not space-capable, but don't suffer excessive slowdown or sight issues when depowered.
 /obj/item/hardsuit/light
@@ -11,7 +17,6 @@
 	desc = "A lighter, less armoured hardsuit suit."
 	icon_state = "ninja_rig"
 	suit_type = "light suit"
-	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/cell)
 	armor_type = /datum/armor/hardsuit/light
 	emp_protection = 10
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
@@ -95,17 +100,6 @@
 	cell_type =  /obj/item/cell/hyper
 
 	req_access = list(ACCESS_FACTION_SYNDICATE)
-	allowed = list(
-		/obj/item/gun,
-		/obj/item/ammo_magazine,
-		/obj/item/ammo_casing,
-		/obj/item/melee/baton,
-		/obj/item/handcuffs,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/cell,
-		/obj/item/bluespace_radio,
-	)
 
 	initial_modules = list(
 		/obj/item/hardsuit_module/teleporter,

@@ -1,5 +1,7 @@
-/proc/load_configuration()
+/proc/create_legacy_configuration()
 	config_legacy = new /datum/configuration_legacy()
+
+/proc/load_legacy_configuration()
 	config_legacy.load("config/legacy/config.txt")
 	config_legacy.load("config/legacy/game_options.txt","game_options")
 
@@ -68,7 +70,6 @@
 	var/usealienwhitelist = 0
 	var/allow_extra_antags = 0
 	var/guests_allowed = 1
-	var/debugparanoid = 0
 	var/paranoia_logging = 0
 
 	var/serverurl
@@ -93,20 +94,6 @@
 	var/revival_brain_life = -1
 
 	var/welder_vision = 1
-	var/no_click_cooldown = 0
-
-	//Used for modifying movement speed for mobs.
-	//Unversal modifiers
-	var/run_speed = 0
-	var/walk_speed = 0
-
-	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
-	var/human_delay = 0
-	var/robot_delay = 0
-	var/monkey_delay = 0
-	var/alien_delay = 0
-	var/slime_delay = 0
-	var/animal_delay = 0
 
 	var/footstep_volume = 0
 
@@ -128,13 +115,13 @@
 	var/expected_round_length = 3 * 60 * 60 * 10 // 3 hours
 	// If the first delay has a custom start time
 	// No custom time, no custom time, between 80 to 100 minutes respectively.
-	var/list/event_first_run   = list(EVENT_LEVEL_MUNDANE = null, 	EVENT_LEVEL_MODERATE = null,	EVENT_LEVEL_MAJOR = list("lower" = 48000, "upper" = 60000))
+	var/list/event_first_run   = list(null, null, list("lower" = 48000, "upper" = 60000))
 	// The lowest delay until next event
 	// 10, 30, 50 minutes respectively
-	var/list/event_delay_lower = list(EVENT_LEVEL_MUNDANE = 6000,	EVENT_LEVEL_MODERATE = 18000,	EVENT_LEVEL_MAJOR = 30000)
+	var/list/event_delay_lower = list(6000, 18000, 30000)
 	// The upper delay until next event
 	// 15, 45, 70 minutes respectively
-	var/list/event_delay_upper = list(EVENT_LEVEL_MUNDANE = 9000,	EVENT_LEVEL_MODERATE = 27000,	EVENT_LEVEL_MAJOR = 42000)
+	var/list/event_delay_upper = list(9000, 27000, 42000)
 
 	var/aliens_allowed = 0
 	var/ninjas_allowed = 0
@@ -219,12 +206,6 @@
 
 				if ("multi_z_explosion_scalar")
 					multi_z_explosion_scalar = text2num(value)
-
-				if ("debug_paranoid")
-					config_legacy.debugparanoid = 1
-
-				if ("no_click_cooldown")
-					config_legacy.no_click_cooldown = 1
 
 				if ("allow_vote_restart")
 					config_legacy.allow_vote_restart = 1
@@ -409,9 +390,6 @@
 				if("load_jobs_from_txt")
 					load_jobs_from_txt = 1
 
-				if("allow_holidays")
-					Holiday = 1
-
 				if("ticklag")
 					var/ticklag = text2num(value)
 					if(ticklag > 0)
@@ -556,24 +534,6 @@
 					config_legacy.revival_brain_life = value
 				if("allow_headgibs")
 					config_legacy.allow_headgibs = TRUE
-
-				if("run_speed")
-					config_legacy.run_speed = value
-				if("walk_speed")
-					config_legacy.walk_speed = value
-
-				if("human_delay")
-					config_legacy.human_delay = value
-				if("robot_delay")
-					config_legacy.robot_delay = value
-				if("monkey_delay")
-					config_legacy.monkey_delay = value
-				if("alien_delay")
-					config_legacy.alien_delay = value
-				if("slime_delay")
-					config_legacy.slime_delay = value
-				if("animal_delay")
-					config_legacy.animal_delay = value
 
 				if("footstep_volume")
 					config_legacy.footstep_volume = text2num(value)

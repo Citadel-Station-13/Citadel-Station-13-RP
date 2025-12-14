@@ -33,7 +33,7 @@
 		/obj/item/storage,
 		/obj/machinery/atmospherics/component/unary/cryo_cell,
 		/obj/machinery/dna_scannernew,
-		/obj/item/grenade/chem_grenade,
+		/obj/item/grenade/simple/chemical,
 		/mob/living/bot/medibot,
 		/obj/item/storage/secure/safe,
 		/obj/machinery/iv_drip,
@@ -74,7 +74,7 @@
 		atom_flags |= OPENCONTAINER
 	update_icon()
 
-/obj/item/reagent_containers/glass/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/glass/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	standard_feed_mob(user, target)
@@ -152,6 +152,7 @@
 	base_icon_state = "beaker"
 	item_state = "beaker"
 	materials_base = list(MAT_GLASS = 500)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'

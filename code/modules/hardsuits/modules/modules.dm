@@ -247,12 +247,12 @@
 	. = list()
 	if(!C.statpanel_tab("Hardsuit Modules", needed))
 		return
-	var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.max_charge]" : "ERROR"
-	STATPANEL_DATA_ENTRY("Suit charge", cell_status)
+	var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
+	INJECT_STATPANEL_DATA_ENTRY(., "Suit charge", cell_status)
 	for(var/obj/item/hardsuit_module/module in R.installed_modules)
 		for(var/stat_hardsuit_module/SRM in module.stat_modules)
 			if(SRM.CanUse())
-				STATPANEL_DATA_CLICK(SRM.module.interface_name, SRM.name, REF(SRM))
+				INJECT_STATPANEL_DATA_CLICK(., SRM.module.interface_name, SRM.name, REF(SRM))
 
 /stat_hardsuit_module
 	parent_type = /atom/movable

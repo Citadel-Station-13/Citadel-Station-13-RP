@@ -1,0 +1,7 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - rscadd: "FIghter parking forward on deck 4"
+  - rscadd: "pipe dispensers in Atmos"
+  - rscadd: "some more clocks and such around the halls"
+  - rscadd: "shield dispersers in front of Sec's fighter bay"

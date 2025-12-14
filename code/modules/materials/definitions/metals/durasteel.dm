@@ -25,6 +25,8 @@
 	absorption = MATERIAL_RESISTANCE_HIGH
 	nullification = MATERIAL_RESISTANCE_LOW
 
+	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
 /datum/prototype/material/durasteel/generate_recipes()
 	. = ..()
 	. += create_stack_recipe_datum(name = "durasteel floor tiles", product = /obj/item/stack/tile/durasteel, amount = 4)

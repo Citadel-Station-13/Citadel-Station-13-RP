@@ -184,7 +184,7 @@
 
 	return data
 
-/obj/machinery/computer/arcade/clawmachine/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/arcade/clawmachine/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 
@@ -219,7 +219,7 @@
 			gameprice = 1
 			emagged = FALSE
 			winscreen = "You won...?"
-			var/obj/item/grenade/G = new /obj/item/grenade/explosive(get_turf(src)) /// YEAAAAAAAAAAAAAAAAAAH!!!!!!!!!!
+			var/obj/item/grenade/G = new /obj/item/grenade/simple/explosive(get_turf(src)) /// YEAAAAAAAAAAAAAAAAAAH!!!!!!!!!!
 			G.activate()
 			G.throw_at_old(get_turf(usr),10,10) /// Play stupid games, win stupid prizes.
 

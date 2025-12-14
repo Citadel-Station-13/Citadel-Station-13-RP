@@ -1,0 +1,5 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - bugfix: "Fixed erroneous space when starting a me message with a comma or apostrophe."
+  - bugfix: "Your character will now cry in pain when trying to hold something with a broken hand."

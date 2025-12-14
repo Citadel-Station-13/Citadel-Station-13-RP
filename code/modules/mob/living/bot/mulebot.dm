@@ -93,7 +93,7 @@
 	)
 	return data
 
-/mob/living/bot/mulebot/ui_act(action, list/params, datum/tgui/ui)
+/mob/living/bot/mulebot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -181,7 +181,7 @@
 	locked = !locked
 	to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
 	flick("mulebot-emagged", src)
-	playsound(loc, /datum/soundbyte/grouped/sparks, 100, 0)
+	playsound(loc, /datum/soundbyte/sparks, 100, 0)
 	return 1
 
 /mob/living/bot/mulebot/update_icons()

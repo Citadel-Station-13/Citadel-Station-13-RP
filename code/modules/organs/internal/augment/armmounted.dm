@@ -10,7 +10,7 @@
 	organ_tag = O_AUG_L_FOREARM
 	parent_organ = BP_L_ARM
 	target_slot = /datum/inventory_slot/abstract/hand/left
-	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED)
+	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED, ORGAN_ROBOT, ORGAN_LIFELIKE)
 	integrated_object_type = /obj/item/gun/projectile/energy/laser/mounted/augment
 
 
@@ -92,15 +92,6 @@
 	aug_cooldown = 1.5 MINUTES
 
 /obj/item/organ/internal/augment/armmounted/shoulder/surge/augment_action()
-	if(!owner)
-		return
-
-	if(aug_cooldown)
-		if(last_activate <= world.time + aug_cooldown)
-			last_activate = world.time
-		else
-			return
-
 	if(istype(owner, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner
 		H.add_modifier(/datum/modifier/melee_surge, 0.75 MINUTES)

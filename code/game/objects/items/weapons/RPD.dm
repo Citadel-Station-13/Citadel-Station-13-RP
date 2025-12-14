@@ -17,7 +17,7 @@
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
-	item_flags = ITEM_NOBLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
@@ -25,6 +25,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	///Direction of the device we are going to spawn, set up in the UI
@@ -156,7 +157,7 @@
 	data["init_directions"] = init_directions
 	return data
 
-/obj/item/pipe_dispenser/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/pipe_dispenser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -343,7 +344,7 @@
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 /obj/item/pipe_dispenser/proc/do_wrench(var/atom/target, mob/user)
-	tool.melee_interaction_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
+	tool.lazy_melee_interaction_chain(target, user, CLICKCHAIN_HAS_PROXIMITY)
 
 /obj/item/pipe_dispenser/proc/mouse_wheeled(mob/user, atom/A, delta_x, delta_y, params)
 	SIGNAL_HANDLER

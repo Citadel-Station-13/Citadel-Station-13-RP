@@ -1,6 +1,6 @@
 /obj/machinery/mech_recharger
 	name = "mech recharger"
-	desc = "A mech recharger, built into the floor."
+	desc = "A mech recharger, built into the floor.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/mecha/mech_bay.dmi'
 	icon_state = "recharge_floor"
 	density = 0

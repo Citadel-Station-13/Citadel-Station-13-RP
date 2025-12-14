@@ -9,22 +9,19 @@
 
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/hazard
 
-	allowed = list(
-		/obj/item/gun,
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/melee/baton,
-		/obj/item/bluespace_radio,
-	)
 /datum/armor/hardsuit/hazard
-	melee = 0.6
-	bullet = 0.4
+	melee = 0.3
+	melee_tier = 4
+	bullet = 0.3
+	bullet_tier = 4
 	laser = 0.3
-	energy = 0.15
+	laser_tier = 4
+	energy = 0.25
 	bomb = 0.6
 	bio = 1.0
-	rad = 0.3
+	rad = 0.5
+	fire = 0.7
+	acid = 0.7
 
 /obj/item/hardsuit/hazard/equipped
 

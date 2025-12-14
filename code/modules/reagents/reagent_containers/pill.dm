@@ -11,6 +11,7 @@
 	drop_sound = 'sound/items/drop/food.ogg'
 	pickup_sound = 'sound/items/pickup/food.ogg'
 	rad_flags = RAD_NO_CONTAMINATE
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	possible_transfer_amounts = null
 	w_class = WEIGHT_CLASS_TINY
@@ -39,7 +40,7 @@
 /obj/item/reagent_containers/pill/proc/randomize_pixel_offsets()
 	set_pixel_offsets(rand(-10, 10), rand(-10, 10))
 
-/obj/item/reagent_containers/pill/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/reagent_containers/pill/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target == user)
 		if(istype(target, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = target
@@ -72,7 +73,7 @@
 
 		user.visible_message("<span class='warning'>[user] attempts to force [target] to swallow \the [src].</span>")
 
-		user.setClickCooldown(user.get_attack_speed(src))
+		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 		if(!do_mob(user, target))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_void_item_for_installation(src))

@@ -189,6 +189,7 @@
 	// send start hooks
 	on_firing_cycle_start(our_cycle)
 	SEND_SIGNAL(src, COMSIG_GUN_FIRING_CYCLE_START, our_cycle)
+	SEND_SIGNAL(firer, COMSIG_MOB_WEAPON_FIRE_ATTEMPT)
 
 	var/safety = 50
 	var/iteration = 0
@@ -252,7 +253,7 @@
 	// todo: do we really need to newtonian move always? some guns shouldn't?
 	if(ismovable(cycle.firing_atom))
 		var/atom/movable/movable_firer = cycle.firing_atom
-		movable_firer.newtonian_move(angle2dir(cycle.original_angle))
+		movable_firer.newtonian_move(turn(angle2dir(cycle.original_angle), 180))
 
 	// todo: muzzle flash implementation
 

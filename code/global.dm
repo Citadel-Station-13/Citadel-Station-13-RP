@@ -40,15 +40,11 @@ var/list/monkeystart     = list()
 var/list/wizardstart     = list()
 var/list/newplayer_start = list()
 
-var/list/prisonwarp         = list() // Prisoners go to these
-var/list/holdingfacility    = list() // Captured people go here
 var/list/xeno_spawn         = list() // Aliens spawn at at these.
 var/list/tdome1             = list()
 var/list/tdome2             = list()
 var/list/tdomeobserve       = list()
 var/list/tdomeadmin         = list()
-var/list/prisonsecuritywarp = list() // Prison security goes to these.
-var/list/prisonwarped       = list() // List of players already warped.
 var/list/blobstart          = list()
 var/list/ninjastart         = list()
 
@@ -135,46 +131,81 @@ var/list/eventdestinations = list() // List of scatter landmarks for event porta
 
 var/global/list/acceptable_fruit_types = list(
 	"ambrosia",
+	"amanita",
+	"ambrosiadeus",
+	"ambrosiagaia",
 	"apple",
+	"goldapple",
 	"banana",
 	"berries",
+	"bloodrose",
+	"bloodtomato",
+	"bentars",
 	"cabbage",
+	"carpet",
 	"carrot",
 	"celery",
 	"cherry",
 	"chili",
+	"coconut",
 	"cocoa",
 	"corn",
+	"cersut",
 	"durian",
+	"disho",
+	"brickdisho",
+	"thatchdisho",
 	"eggplant",
+	"egg-plant",
 	"grapes",
 	"grass",
+	"glowshroom",
+	"glowberries",
 	"greengrapes",
 	"harebells",
-	"jahtak",
+	"icechili",
+	"ironwood",
+	"juhtak",
+	"jurlmah",
 	"lavender",
 	"lemon",
 	"lettuce",
 	"lime",
+	"libertycap",
+	"mtear",
+	"nettle",
 	"onion",
 	"orange",
+	"peas",
 	"peanut",
 	"poppies",
+	"pokalea",
 	"potato",
 	"pumpkin",
+	"plastic",
+	"plumphelmet",
 	"pyrrhlea",
 	"rice",
 	"rose",
+	"reishi",
 	"rhubarb",
+	"shimash",
+	"shand",
 	"soybean",
+	"siflettuce",
 	"spineapple",
 	"sugarcane",
 	"sunflowers",
+	"taro",
+	"telriis",
 	"tomato",
+	"tobacco",
+	"towercap",
 	"vanilla",
 	"watermelon",
 	"wheat",
 	"whitebeet",
+	"whitewabback",
 	)
 
 var/global/list/acceptable_nectar_types= list(

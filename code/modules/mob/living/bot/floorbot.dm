@@ -101,7 +101,7 @@
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, FALSE)
 		return TRUE
 
-/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui)
+/mob/living/bot/floorbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -321,7 +321,7 @@
 /mob/living/bot/floorbot/explode()
 	turn_off()
 	visible_message("<span class='danger'>\The [src] blows apart!</span>")
-	playsound(src.loc, /datum/soundbyte/grouped/sparks, 50, 1)
+	playsound(src.loc, /datum/soundbyte/sparks, 50, 1)
 	var/turf/Tsec = get_turf(src)
 
 	var/obj/item/storage/toolbox/mechanical/N = new /obj/item/storage/toolbox/mechanical(Tsec)

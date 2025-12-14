@@ -11,21 +11,13 @@
 	rigsuit_min_pressure = 0							  // Min pressure the hardsuit protects against when sealed
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/industrial
 
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/storage/bag/ore,
-		/obj/item/t_scanner,
-		/obj/item/pickaxe,
-		/obj/item/rcd,
-		/obj/item/bluespace_radio,
-	)
-
 /datum/armor/hardsuit/industrial
-	melee = 0.6
-	bullet = 0.5
-	laser = 0.3
+	melee = 0.4
+	melee_tier = 4.5
+	bullet = 0.4
+	bullet_tier = 4
+	laser = 0.4
+	laser_tier = 3.75
 	energy = 0.2
 	bomb = 0.5
 	bio = 1.0

@@ -7,6 +7,7 @@
 	worn_state = "handcuff"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	slot_flags = SLOT_BELT
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
@@ -18,12 +19,12 @@
 	worth_intrinsic = 10
 	var/elastic
 	var/dispenser = 0
-	var/breakouttime = 1200 //Deciseconds = 120s = 2 minutes
+	var/breakouttime = 2 MINUTES
 	var/cuff_sound = 'sound/weapons/handcuffs.ogg'
 	var/cuff_type = "handcuffs"
-	var/use_time = 30
+	var/use_time = 3 SECONDS
 
-/obj/item/handcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		return
@@ -89,7 +90,7 @@
 	add_attack_logs(user,H,"Handcuffed (attempt)")
 	feedback_add_details("handcuffs","H")
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
@@ -140,11 +141,10 @@ var/last_chew = 0
 	name = "fuzzy cuffs"
 	icon_state = "fuzzycuff"
 	desc = "Use this to keep... 'prisoners' in line."
-	breakouttime = 30 //3sec breakout time. why did this not exist before. bruh moment.
+	breakouttime = 3 SECONDS
 
 /obj/item/handcuffs/sinew
 	name = "sinew cuffs"
-	icon = 'icons/obj/mining.dmi'
 	icon_state = "sinewcuff"
 	desc = "A complex weave of sinew repurposed as handcuffs."
 
@@ -152,7 +152,7 @@ var/last_chew = 0
 	name = "cable restraints"
 	desc = "Looks like some cables tied together. Could be used to tie something up."
 	icon_state = "cuff_white"
-	breakouttime = 300 //Deciseconds = 30s
+	breakouttime = 30 SECONDS
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
 	cuff_type = "cable restraints"
 	elastic = 0 //citadel change, why would cable be better than actual handcuffs? who knows.
@@ -203,7 +203,7 @@ var/last_chew = 0
 	icon_state = "tape_cross"
 	item_state = null
 	icon = 'icons/obj/bureaucracy.dmi'
-	breakouttime = 200
+	breakouttime = 20 SECONDS
 	cuff_type = "duct tape"
 
 /obj/item/handcuffs/cable/tape/cyborg
@@ -216,27 +216,31 @@ var/last_chew = 0
 	worn_state = "disruptorcuff"
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
-/obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
+/obj/item/handcuffs/disruptor/equipped(var/mob/living/user, var/slot)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
 		ADD_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
+
+/obj/item/handcuffs/disruptor/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(slot == SLOT_ID_HANDCUFFED)
+		REMOVE_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
 
 //Legcuffs. Not /really/ handcuffs, but its close enough.
 /obj/item/handcuffs/legcuffs
 	name = "legcuffs"
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
-	icon = 'icons/obj/items.dmi'
 	icon_state = "legcuff"
 	throw_force = 0
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
-	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
+	breakouttime = 30 SECONDS
 	cuff_type = "legcuffs"
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
 
-/obj/item/handcuffs/legcuffs/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/handcuffs/legcuffs/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if(!istype(C))
 		return
@@ -287,7 +291,7 @@ var/last_chew = 0
 	add_attack_logs(user,H,"Legcuffed (attempt)")
 	feedback_add_details("legcuffs","H")
 
-	user.setClickCooldown(user.get_attack_speed(src))
+	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
 
 	user.visible_message("<span class='danger'>\The [user] has put [cuff_type] on \the [H]!</span>")
@@ -311,9 +315,8 @@ var/last_chew = 0
 /obj/item/handcuffs/legcuffs/fuzzy
 	name = "fuzzy legcuffs"
 	desc = "Use this to keep... 'prisoners' in line."
-	icon = 'icons/obj/items_vr.dmi'
 	icon_state = "fuzzylegcuff"
-	breakouttime = 30 //3sec
+	breakouttime = 3 SECONDS
 
 
 /obj/item/handcuffs/legcuffs/bola
@@ -322,7 +325,7 @@ var/last_chew = 0
 	icon_state = "bola"
 	elastic = 1
 	use_time = 0
-	breakouttime = 30
+	breakouttime = 3 SECONDS
 	cuff_sound = 'sound/weapons/towelwipe.ogg' //Is there anything this sound can't do?
 
 /obj/item/handcuffs/legcuffs/bola/can_place(var/mob/target, var/mob/user)
@@ -356,13 +359,13 @@ var/last_chew = 0
 	name = "reinforced bola"
 	desc = "A strong bola, made with a long steel chain. It looks heavy, enough so that it could trip somebody."
 	icon_state = "bola_r"
-	breakouttime = 70
+	breakouttime = 7 SECONDS
 
 /obj/item/handcuffs/legcuffs/bola/cult
 	name = "\improper paranatural bola"
 	desc = "A strong bola, bound with dark magic that allows it to pass harmlessly through allied cultists. Throw it to trip and slow your victim."
 	icon_state = "bola_cult"
-	breakouttime = 60
+	breakouttime = 6 SECONDS
 
 /obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()

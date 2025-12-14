@@ -1,5 +1,7 @@
 //DO NOT ADD MECHA PARTS TO THE GAME WITH THE DEFAULT "SPRITE ME" SPRITE!
 //I'm annoyed I even have to tell you this! SPRITE FIRST, then commit.
+#define EQUIP_HEAVY_WEAPON "heavy_weapon" //Should only be used on weapons meant for 3x3 mechs.
+
 #define EQUIP_HULL		"hull"
 #define EQUIP_WEAPON	"weapon"
 #define EQUIP_UTILITY	"utility"
@@ -74,6 +76,9 @@
 			if(equip_type == EQUIP_WEAPON)
 				chassis.weapon_equipment -= src
 				listclearnulls(chassis.weapon_equipment)
+			if(equip_type == EQUIP_HEAVY_WEAPON)
+				chassis.heavy_weapon_equipment -= src
+				listclearnulls(chassis.heavy_weapon_equipment)
 			if(equip_type == EQUIP_UTILITY)
 				chassis.utility_equipment -= src
 				listclearnulls(chassis.utility_equipment)
@@ -163,6 +168,8 @@
 		return TRUE
 	if(equip_type == EQUIP_WEAPON && M.weapon_equipment.len < M.max_weapon_equip)
 		return TRUE
+	if(equip_type == EQUIP_HEAVY_WEAPON && M.heavy_weapon_equipment.len < M.max_heavy_weapon_equip)
+		return TRUE
 	if(equip_type == EQUIP_UTILITY && M.utility_equipment.len < M.max_utility_equip)
 		return TRUE
 	if(equip_type == EQUIP_SPECIAL && M.special_equipment.len < M.max_special_equip)
@@ -192,6 +199,9 @@
 		has_equipped = TRUE
 	if(equip_type == EQUIP_WEAPON && M.weapon_equipment.len < M.max_weapon_equip && !has_equipped)
 		M.weapon_equipment += src
+		has_equipped = TRUE
+	if(equip_type == EQUIP_HEAVY_WEAPON && M.heavy_weapon_equipment.len < M.max_heavy_weapon_equip && !has_equipped)
+		M.heavy_weapon_equipment += src
 		has_equipped = TRUE
 	if(equip_type == EQUIP_UTILITY && M.utility_equipment.len < M.max_utility_equip && !has_equipped)
 		M.utility_equipment += src
@@ -231,6 +241,8 @@
 					chassis.hull_equipment -= src
 				if(EQUIP_WEAPON)
 					chassis.weapon_equipment -= src
+				if(EQUIP_HEAVY_WEAPON)
+					chassis.heavy_weapon_equipment -= src
 				if(EQUIP_UTILITY)
 					chassis.utility_equipment -= src
 				if(EQUIP_SPECIAL)

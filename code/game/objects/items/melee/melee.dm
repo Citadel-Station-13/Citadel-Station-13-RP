@@ -1,9 +1,9 @@
 /datum/passive_parry/melee
-	parry_arc = 155
+	parry_arc = 180
 	parry_arc_round_down = TRUE
 
 /**
- * this is like /device and /weapon but a little less dumb
+ * this is just as silly as /device and /weapon most of the time.
  *
  * this has some simple wrappers for default defense stuff, so 'common'ly melee weapons
  * like knives, armblades, etc, can easily use them.
@@ -20,3 +20,4 @@
 	passive_parry = /datum/passive_parry{
 		parry_chance_melee = 5;
 	}
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR

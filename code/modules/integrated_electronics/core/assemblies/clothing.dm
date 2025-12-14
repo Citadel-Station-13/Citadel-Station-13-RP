@@ -50,9 +50,9 @@
 		EA.examine(user)
 	. = ..()
 
-/obj/item/clothing/attackby(obj/item/I, mob/user)
+/obj/item/clothing/attackby(obj/item/tool, mob/user, list/params, clickchain_flags, damage_multiplier, datum/event_args/actor/clickchain/clickchain)
 	if(EA)
-		if (I.is_crowbar())
+		if (tool.is_crowbar())
 			var/turf/T = get_turf(src)
 			EA.forceMove(T)
 			src.EA_Installed = 0
@@ -61,9 +61,9 @@
 			EA.clothing = null
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
 			to_chat(usr, SPAN_NOTICE("You pull the circuitry out of \the [src]."))
-			return
+			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else
-		..()
+		return ..()
 
 /obj/item/clothing/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -112,9 +112,12 @@
 /obj/item/clothing/under/circuitry
 	name = "electronic jumpsuit"
 	desc = "It's a wearable case for electronics.  This one is a black jumpsuit with wiring woven into the fabric."
+	icon = 'icons/clothing/uniform/workwear/circuitry.dmi'
 	icon_state = "circuitry"
-	snowflake_worn_state = "circuitry"
 	EA_Installed = 1
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/circuitry/Initialize(mapload)
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing)

@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
-	item_flags = ITEM_NOBLUDGEON
+	item_flags = ITEM_NO_BLUDGEON
 
 	//Main variables
 	var/pdachoice = 1
@@ -1351,7 +1351,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				return
 			to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
 
-/obj/item/pda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/pda/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	var/mob/living/carbon/C = target
 	if (istype(C, /mob/living/carbon))
 		switch(scanmode)

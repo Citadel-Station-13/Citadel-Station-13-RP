@@ -3,7 +3,7 @@
 ////////////////////////////
 
 /datum/category_item/catalogue/fauna/nuclear_spirits/charred
-	name = "Charred Runner"
+	name = "Paranatural Entity - Charred Runner"
 	desc = "A paranatural creature resembling a charred corpse. \
 	The carbonized 'flesh' of this creature is adept at absorbing \
 	energy but vulnerable to kinectic force. Lacking any innate \
@@ -25,7 +25,7 @@
 	legacy_melee_damage_upper = 10
 	attacktext = list("slapped")
 	friendly = list("caresses")
-	movement_cooldown = 0
+	movement_base_speed = 6.66
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nuclear_spirits/charred)
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive

@@ -194,7 +194,7 @@
 				continue
 			if(blacklist.len && (current_species_name in blacklist))
 				continue
-			if((S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !config.check_alien_whitelist(ckey(S.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE ? S.id : S.uid), ckey))
+			if((S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !Configuration.check_species_whitelist(S.species_spawn_flags & SPECIES_SPAWN_WHITELIST_FLEXIBLE ? S.id : S.uid, ckey))
 				continue
 
 		valid_species += current_species_name

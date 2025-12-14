@@ -2,7 +2,7 @@
     name = "disabler beam"
     icon_state = "omnilaser"
     nodamage = 1
-    agony = 40
+    damage_inflict_agony = 40
     damage_type = DAMAGE_TYPE_HALLOSS
     light_color = "#00CECE"
 
@@ -11,13 +11,13 @@
     legacy_impact_type = /obj/effect/projectile/impact/laser_omni
 
 /obj/projectile/beam/stun
-	agony = 35
+	damage_inflict_agony = 35
 
 /obj/projectile/beam/energy_net
 	name = "energy net projection"
 	icon_state = "xray"
 	nodamage = 1
-	agony = 5
+	damage_inflict_agony = 5
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#00CC33"
 

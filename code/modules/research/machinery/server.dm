@@ -192,7 +192,7 @@
 
 	return data
 
-/obj/machinery/computer/rdservercontrol/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/rdservercontrol/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -266,7 +266,7 @@
 
 /obj/machinery/computer/rdservercontrol/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		playsound(src.loc, /datum/soundbyte/grouped/sparks, 75, TRUE)
+		playsound(src.loc, /datum/soundbyte/sparks, 75, TRUE)
 		emagged = TRUE
 		to_chat(user, SPAN_NOTICE("You you disable the security protocols."))
 		SStgui.update_uis(src)

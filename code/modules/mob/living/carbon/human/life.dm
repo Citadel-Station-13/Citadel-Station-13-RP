@@ -1189,9 +1189,9 @@
 		// Check everything else.
 
 		//Periodically double-check embedded_flag
-		if(embedded_flag && !(life_tick % 10))
-			if(!embedded_needs_process())
-				embedded_flag = 0
+		// if(embedded_flag && !(life_tick % 10))
+			// if(!embedded_needs_process())
+			// 	embedded_flag = 0
 
 		if(species.vision_organ)
 			var/obj/item/organ/vision = internal_organs_by_name[species.vision_organ]
@@ -1599,7 +1599,7 @@
 
 		//! shitcode ahead
 		if(get_z(src))
-			if(SSmapping.level_trait(get_z(src), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
+			if(SSmapping.level_has_trait(get_z(src), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
 				RemoveSightSelf(SEE_OBJS | SEE_MOBS | SEE_TURFS)
 		//! end
 
