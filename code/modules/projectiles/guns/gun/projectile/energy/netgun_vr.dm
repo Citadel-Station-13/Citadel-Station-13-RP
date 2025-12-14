@@ -33,7 +33,7 @@
 	var/list/overlays_to_add = list()
 
 	if(obj_cell_slot.cell)
-		var/ratio = obj_cell_slot.cell.charge / obj_cell_slot.cell.maxcharge
+		var/ratio = obj_cell_slot.cell.charge / obj_cell_slot.cell.max_charge
 
 		if(obj_cell_slot.cell.charge < charge_cost)
 			ratio = 0

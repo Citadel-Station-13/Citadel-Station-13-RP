@@ -136,7 +136,7 @@
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
-	charge_cost = /obj/item/cell/regen/weapon::maxcharge / 5
+	charge_cost = /obj/item/cell/regen/weapon::max_charge / 5
 	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 

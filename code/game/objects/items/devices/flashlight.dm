@@ -20,7 +20,9 @@
 	var/flashlight_range = 4
 
 	var/obj/item/cell/cell
-	var/cell_type = /obj/item/cell/device
+	var/cell_type = /obj/item/cell/basic/tier_1/small
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	#warn slot
 	var/list/brightness_levels
 	var/brightness_level = "medium"
 	var/power_usage

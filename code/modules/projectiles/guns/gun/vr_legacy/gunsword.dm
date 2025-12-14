@@ -16,7 +16,6 @@
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	charge_meter = 1
 
-	#warn how do we accept this and only this cell (and make the cell not work anywhere else?)
 	cell_type = /obj/item/cell/sword_buster
 
 	modifystate = "gbuster"
@@ -26,7 +25,9 @@
 		list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
-#warn sigh; tune.
+/obj/item/gun/projectile/energy/gun/sword_buster/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
+	return istype(cell, /obj/item/cell/sword_buster) || ..()
+
 // -----------------gunsword battery--------------------------
 /obj/item/cell/sword_buster
 	name = "Buster Cell"
@@ -36,7 +37,7 @@
 	icon_override = 'icons/vore/custom_guns_vr.dmi'
 	item_state = "gsaberoff"
 	atom_flags = NOBLOODY
-	max_charge = 2400
+	max_charge = 4800
 	self_recharge_amount = 20
 	damage_force = 3
 	damage_tier = 4.75

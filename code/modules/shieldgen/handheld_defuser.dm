@@ -6,9 +6,10 @@
 	icon_state = "hdiffuser_off"
 	origin_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_ILLEGAL = 2)
 	w_class = WEIGHT_CLASS_SMALL
-	var/obj/item/cell/device/cell = /obj/item/cell/device
-	var/enabled = 0
 
+	var/cell_type = /obj/item/cell/basic/tier_1/small
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	var/enabled = 0
 
 /obj/item/shield_diffuser/Initialize(mapload)
 	. = ..()

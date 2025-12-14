@@ -42,7 +42,7 @@
 	return ..()
 
 /obj/vehicle_old/bike/built
-	cell = null
+	cell_type = null
 
 /obj/vehicle_old/bike/random/Initialize(mapload)
 	. = ..()

@@ -50,7 +50,7 @@
 
 /obj/vehicle_old/Initialize(mapload)
 	. = ..()
-	var/datum/object_systme/cell_slot/cell = init_cell_slot(cell_type, cell_accept)
+	var/datum/object_system/cell_slot/cell = init_cell_slot(cell_type, cell_accept)
 	#warn make sure it can be used
 
 /obj/vehicle_old/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)

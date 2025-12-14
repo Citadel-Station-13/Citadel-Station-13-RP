@@ -118,7 +118,7 @@
 		sparks.set_up(2, 1, T)
 		sparks.start()
 		obj_cell_slot.cell.charge = 0
-		obj_cell_slot.cell.maxcharge = 1 //just to avoid div/0 runtimes
+		obj_cell_slot.cell.max_charge = 1 //just to avoid div/0 runtimes
 		obj_cell_slot.cell.desc += " It seems to be burnt out!"
 		desc += " The casing is covered in scorch-marks."
 		// todo: transform_cycle_cooldown(datum/firing_cycle/cycle) as num

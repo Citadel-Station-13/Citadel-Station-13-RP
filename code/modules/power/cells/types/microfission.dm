@@ -19,15 +19,16 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
  */
 /obj/item/cell/microfission
 	can_be_recharged = FALSE
+	integrity = 200
+	integrity_max = 200
+	integrity_failure = 0.66 * 200
 
 	/// are we leaking?
 	var/leaking = FALSE
-	/// catastrophic failure: force reaction rate to maximum
-	var/leaking_catastrophically = FALSE
 	/// radiation power at minimum charge rate (or when not charging)
-	var/leaking_noncharge_strength = RAD_POWER_CELL_MICROFISSION_LEAK_MINIMUIM
+	var/leaking_strength_min = RAD_INTENSITY_CELL_MICROFISSION_LEAK_MINIMUM
 	/// radiation power at maximum charge rate
-	var/leaking_noncharge_strength = RAD_POWER_CELL_MICROFISSION_LEAK_MAXIMUM
+	var/leaking_strength_max = RAD_INTENSITY_CELL_MICROFISSION_LEAK_MAXIMUM
 	/// radiation power falloff
 	var/leaking_falloff = RAD_FALLOFF_CELL_MICROFISSION
 	#warn sprite for leaking
@@ -42,14 +43,10 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
 	/// if set, sets cell units to be recharged to be a multiplier of our maxcharge
 	/// * the default formula multiplies back our 1/4'd capacity
 	var/regen_as_multiplier = 20 * 4
-	/// if set, lose this much 'latent' charge per second; defaults to being set from [regen_loss_per_second_as_ratio]
-	var/regen_loss_per_second
-	/// if set, lose this much maximum charge per second as a ratio of [regen_left]
-	var/regen_loss_per_second_as_ratio = 1 / ((1 HOURS) / 10) // / 10 because the macros turn time into deciseconds.
 	/// minimum recharge per second
 	var/regen_min_per_second = STATIC_KW_TO_CELL_UNITS(2.5, 1)
 	/// maximum recharge per second
-	var/regen_max_per_second = STATIC_KW_TO_CELL_UNITS(25, 1)
+	var/regen_max_per_second = STATIC_KW_TO_CELL_UNITS(12.5, 1)
 	/// at what % of [regen_initial] we start to have regen drop
 	var/regen_drop_start = 2 / 3
 	/// at what % of [regen_initial] we fall to minimum regen
@@ -57,8 +54,12 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
 
 /obj/item/cell/microfission/Initialize(mapload)
 	. = ..()
-	#warn calc regen
-	START_PROCESSING(SSobj, start)
+	regen_left = regen_initial = (isnull(regen_as_static) ? (regen_as_multiplier * max_charge) : regen_as_static)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/cell/microfission/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/cell/microfission/process(delta_time)
 	..()

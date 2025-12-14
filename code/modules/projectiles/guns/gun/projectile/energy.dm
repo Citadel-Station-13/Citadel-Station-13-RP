@@ -66,6 +66,7 @@
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
 
 	//self-recharging
+	// TODO: torch this and use cells that self-charge instead
 	var/self_recharge = 0	//if set, the weapon will recharge itself
 	var/use_external_power = 0 //if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
 	var/use_organic_power = 0 // If set, the weapon will draw from nutrition or blood.
@@ -78,7 +79,8 @@
 /obj/item/gun/projectile/energy/Initialize(mapload)
 	if(self_recharge)
 		cell_system = TRUE
-		cell_type = cell_type || /obj/item/cell/device/weapon
+		cell_type ||= /obj/item/cell/basic/tier_1/weapon
+		legacy_battery_lock = TRUE
 		START_PROCESSING(SSobj, src)
 	. = ..()
 	// todo: this isn't necessarily needed

@@ -16,6 +16,11 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 
+	armor_type = /datum/armor/object/light
+	integrity = 200
+	integrity_max = 200
+	integrity_failure = 100
+
 	//* -- Set by type generation -- *//
 
 	/// should we run typegen from the power cell datum we're provided?
@@ -253,7 +258,7 @@
 	return charge >= amount
 
 /obj/item/cell/proc/checked_use(amount, reserve)
-	if(!check(amount + reserve))
+	if(!check_charge(amount + reserve))
 		return 0
 	return use(amount)
 
