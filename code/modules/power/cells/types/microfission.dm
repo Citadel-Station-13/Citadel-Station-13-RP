@@ -6,24 +6,18 @@
 // go refluff it if you want this is a generic "makes radiation to make power" idea
 // i literally dgaf what is written here so if you wanna bikeshed over it bikeshed
 // yourself outside of my PR lol
-POWER_CELL_GENERATE_TYPES(/datum/power_cell/microfission, /microfission, "microfission")
-/datum/power_cell/microfission
-	functional = TRUE
-
+POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfission, "microfission")
+/datum/prototype/power_cell/microfission
 	cell_name = "microfission"
 	cell_desc = "This one contains highly enriched nuclear material, which is constantly used to recharge the cell with an induced process."
 
 	typegen_visual_stripe_color = "#007700"
 	typegen_capacity_multiplier = 1 / 4 // we're, however, very small, because this is mostly just a nuclear accident in a can.
 
-#warn new way
-
-
 /**
  * COBALT-60: DROP AND RUN
  */
 /obj/item/cell/microfission
-
 	can_be_recharged = FALSE
 
 	/// are we leaking?
@@ -46,7 +40,8 @@ POWER_CELL_GENERATE_TYPES(/datum/power_cell/microfission, /microfission, "microf
 	/// if set, hard-sets additional cell units to be recharged; overrides [regen_as_multiplier]
 	var/regen_as_static
 	/// if set, sets cell units to be recharged to be a multiplier of our maxcharge
-	var/regen_as_multiplier = 35 * (1 / 4) // multiply back our 1/4'd capacity
+	/// * the default formula multiplies back our 1/4'd capacity
+	var/regen_as_multiplier = 20 * 4
 	/// if set, lose this much 'latent' charge per second; defaults to being set from [regen_loss_per_second_as_ratio]
 	var/regen_loss_per_second
 	/// if set, lose this much maximum charge per second as a ratio of [regen_left]
@@ -69,3 +64,5 @@ POWER_CELL_GENERATE_TYPES(/datum/power_cell/microfission, /microfission, "microf
 	..()
 	#warn impl
 	#warn impl - leak
+
+#warn use power_cell datum vars

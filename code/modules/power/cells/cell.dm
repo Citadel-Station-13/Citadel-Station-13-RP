@@ -43,7 +43,8 @@
 
 	//* Behavior *//
 	/// cell component; loaded at init, set to typepath or anonymous type
-	var/datum/power_cell/cell_datum
+	var/datum/prototype/power_cell/cell_datum
+	#warn this
 
 	//* Charge *//
 	/// current charge
@@ -52,6 +53,8 @@
 	///
 	/// * also used as a base for type generation
 	var/max_charge = POWER_CELL_CAPACITY_BASE
+	/// last time power was drawn from us
+	var/last_use
 
 	//* Configuration *//
 	/// allow rechargers
@@ -81,7 +84,6 @@
 	var/emp_proof = FALSE
 	var/rigged = 0		// true if rigged to explode
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
-	var/last_use = 0 // A tracker for use in self-charging
 	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
 	var/rating = 1
 	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 50)
@@ -131,51 +133,6 @@
 /obj/item/cell/can_drain_energy(datum/actor, flags)
 	return TRUE
 
-/obj/item/cell/proc/fully_charged()
-	return (charge == max_charge)
-
-// checks if the power cell is able to provide the specified amount of charge
-/obj/item/cell/proc/check_charge(var/amount)
-	#warn cell datum
-	return (charge >= amount)
-
-// Returns how much charge is missing from the cell, useful to make sure not overdraw from the grid when recharging.
-/obj/item/cell/proc/amount_missing()
-	return max(max_charge - charge, 0)
-
-// use power from a cell, returns the amount actually used
-/obj/item/cell/proc/use(var/amount)
-	#warn cell datum
-	if(rigged && amount > 0)
-		explode()
-		return 0
-	var/used = min(charge, amount)
-	charge -= used
-	last_use = world.time
-	update_icon()
-	return used
-
-// Checks if the specified amount can be provided. If it can, it removes the amount
-// from the cell and returns 1. Otherwise does nothing and returns 0.
-/obj/item/cell/proc/checked_use(amount, reserve)
-	if(!check_charge(amount + reserve))
-		return 0
-	use(amount)
-	return 1
-
-// recharge the cell
-/obj/item/cell/proc/give(var/amount)
-	#warn cell datum
-	if(rigged && amount > 0)
-		explode()
-		return FALSE
-	var/amount_used = min(max_charge-charge,amount)
-	charge += amount_used
-	update_icon()
-	if(loc)
-		loc.update_icon()
-	return amount_used
-
 /obj/item/cell/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
@@ -189,16 +146,11 @@
 	..()
 	if(istype(W, /obj/item/reagent_containers/syringe))
 		var/obj/item/reagent_containers/syringe/S = W
-
 		to_chat(user, "You inject the solution into the power cell.")
-
 		if(S.reagents.has_reagent("phoron", 5))
-
 			rigged = 1
-
 			log_admin("LOG: [user.name] ([user.ckey]) injected a power cell with phoron, rigging it to explode.")
 			message_admins("LOG: [user.name] ([user.ckey]) injected a power cell with phoron, rigging it to explode.")
-
 		S.reagents.clear_reagents()
 
 /obj/item/cell/proc/explode()
@@ -211,21 +163,17 @@
  * */
 	if (charge==0)
 		return
-	var/devastation_range = -1 //round(charge/11000)
-	var/heavy_impact_range = round(sqrt(charge)/60)
-	var/light_impact_range = round(sqrt(charge)/30)
+	var/devastation_range = 0
+	var/heavy_impact_range = round(sqrt(charge) / 60)
+	var/light_impact_range = round(sqrt(charge) / 30)
 	var/flash_range = light_impact_range
 	if (light_impact_range==0)
 		rigged = 0
 		corrupt()
 		return
-	//explosion(T, 0, 1, 2, 2)
-
 	log_admin("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
 	message_admins("LOG: Rigged power cell explosion, last touched by [fingerprintslast]")
-
 	explosion(T, devastation_range, heavy_impact_range, light_impact_range, flash_range)
-
 	qdel(src)
 
 /obj/item/cell/proc/corrupt()
@@ -242,11 +190,9 @@
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
 		severity *= R.cell_emp_mult
-
 	charge -= charge / (severity + 1)
 	if (charge < 0)
 		charge = 0
-
 	update_icon()
 
 /obj/item/cell/legacy_ex_act(severity)
@@ -282,6 +228,43 @@
 		return round(damage)
 	else
 		return 0
+
+//* Main *//
+
+/obj/item/cell/proc/give(amount)
+	// LEGACY - explosion?
+	if(rigged && amount > 0)
+		explode()
+		return FALSE
+	// END
+	. = clamp(amount, 0, max_charge - charge)
+	charge += .
+	update_icon()
+
+/obj/item/cell/proc/amount_missing()
+	. = max(0, max_charge - charge)
+
+/obj/item/cell/proc/fully_charged()
+	return check_charge(max_charge)
+
+/obj/item/cell/proc/check_charge(amount)
+	return charge >= amount
+
+/obj/item/cell/proc/checked_use(amount, reserve)
+	if(!check(amount + reserve))
+		return 0
+	return use(amount)
+
+/obj/item/cell/proc/use(amount)
+	// LEGACY - explosion?
+	if(rigged && amount > 0)
+		explode()
+		return 0
+	// END
+	. = min(charge, amount)
+	charge -= .
+	last_use = world.time
+	update_icon()
 
 //* Calculations *//
 

@@ -1,21 +1,25 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-POWER_CELL_GENERATE_TYPES(/datum/power_cell/infinite, /infinite, "infinite")
-/datum/power_cell/infinite
+POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/infinite, /infinite, "infinite")
+/datum/prototype/power_cell/infinite
 	cell_name = "fractal"
 	cell_desc = "This one is unlike anything you've seen before, boasting a seemingly limitless energy output."
 
 	typegen_visual_stripe_color = "#ffff00"
 	typegen_worth_multiplier = null
 
-	functional = TRUE
-
-/datum/power_cell/infinite/use(obj/item/cell/cell, amount)
+/obj/item/cell/infinite/use(amount)
 	return amount
 
-/datum/power_cell/infinite/check(obj/item/cell/cell, amount)
+/obj/item/cell/infinite/give(amount)
+	return 0
+
+/obj/item/cell/infinite/check_charge(amount)
 	return TRUE
 
-/datum/power_cell/infinite/give(obj/item/cell/cell, amount)
+/obj/item/cell/infinite/amount_missing()
 	return 0
+
+/obj/item/cell/infinite/fully_charged()
+	return TRUE

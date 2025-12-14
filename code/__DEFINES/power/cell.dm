@@ -26,9 +26,9 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	BITFIELD_NEW("Weapon", CELL_TYPE_WEAPON),
 ))
 
-/// generate /small, /medium, /large, and /weapon cells for a power cell datum
+/// generate /small, /medium, /large, and /weapon cells for a power cell datum and typepath combo
 #define POWER_CELL_GENERATE_TYPES(DATUM_TYPEPATH, CELL_TYPEPATH, PROTOTYPE_ID) \
-/obj/item/cell/small##CELL_TYPEPATH { \
+/obj/item/cell##CELL_TYPEPATH/small { \
 	name = "small power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A small power cell used in handheld electronics. " + ##DATUM_TYPEPATH::cell_desc; \
 	prototype_id = "cell-" + ##PROTOTYPE_ID + "-small"; \
@@ -38,7 +38,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
 } \
-/obj/item/cell/medium##CELL_TYPEPATH { \
+/obj/item/cell##CELL_TYPEPATH/medium { \
 	name = "medium power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A decently sized cell used in many pieces of modern equipment. " + ##DATUM_TYPEPATH::cell_desc; \
 	prototype_id = "cell-" + ##PROTOTYPE_ID + "-medium"; \
@@ -48,7 +48,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
 } \
-/obj/item/cell/large##CELL_TYPEPATH { \
+/obj/item/cell##CELL_TYPEPATH/large { \
 	name = "large power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A bulky power cell used in industrial equipment and power supply systems. " + ##DATUM_TYPEPATH::cell_desc; \
 	prototype_id = "cell-" + ##PROTOTYPE_ID + "-large"; \
@@ -58,7 +58,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	typegen_active = TRUE; \
 	cell_datum = ##DATUM_TYPEPATH; \
 } \
-/obj/item/cell/weapon##CELL_TYPEPATH { \
+/obj/item/cell##CELL_TYPEPATH/weapon { \
 	name = "weapon power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
 	desc = "A power cell accepted by many kinds of handheld weaponry. " + ##DATUM_TYPEPATH::cell_desc; \
 	prototype_id = "cell-" + ##PROTOTYPE_ID + "-weapon"; \

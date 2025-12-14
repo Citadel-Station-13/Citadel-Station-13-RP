@@ -2,9 +2,25 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * Encapsulates power cell behavior.
+ * A prototype that stores core tuning for power cells.
+ *
+ * ## Are you fucking insane?
+ *
+ * * Yes.
+ *
+ * ## Why?
+ *
+ * * Power cells being persisteed with all their data can end really badly if an
+ *   admin fucks up their VV-fu.
+ *   Using prototypes allows for managed storage of things like names, descs,
+ *   and other fluff data.
+ *
+ * ## What does / doesn't this do?
+ *
+ * * This **does not** encapsulate behavior. Power cells themselves do that.
+ *   This is just a template for common tuning parameters.
  */
-/datum/power_cell
+/datum/prototype/power_cell
 	//* Descriptors *//
 
 	/// our cell name
@@ -15,18 +31,6 @@
 	///
 	/// * used for type generation
 	var/cell_desc = "Some unknown technology, probably. What is this?"
-
-	//* Function *//
-
-	/// are we an actual functional power cell datum, or just a template?
-	///
-	/// * If set to FALSE, the power cell will not grab a datum instance of us, rather than just setting variables via us.
-	var/functional = FALSE
-	/// do we require processing?
-	///
-	/// * requires [functional]
-	var/requires_processing = FALSE
-	#warn impl
 
 	//* Capacity - Type Generation *//
 
@@ -78,34 +82,18 @@
 	/// * null behaves like 0 right now but might not later
 	var/typegen_worth_multiplier = 1
 
-/**
- * Intercepts 'use' behavior
- *
- * @return amount that could used
- */
-/datum/power_cell/proc/use(obj/item/cell/cell, amount)
-	return 0
+	//* Misc *//
 
-/**
- * Intercepts 'check' behavior
- *
- * @return if we have that amount
- */
-/datum/power_cell/proc/check(obj/item/cell/cell, amount)
-	return FALSE
+	/// for subtypes that have reactions, as a tuning variable
+	///
+	/// known integrations:
+	/// * used for regen speed on regen cells
+	/// * used for use rate on microfission
+	var/c_reaction_multiplier = 1
+	/// for subtypes that have reactions, as a tuning variable
+	///
+	/// known integrations:
+	/// * used for total fuel on microfission
+	var/c_fuel_multiplier = 1
 
-/**
- * Intercepts 'give' behavior
- *
- * @return amount consumed
- */
-/datum/power_cell/proc/give(obj/item/cell/cell, amount)
-	return 0
-
-/**
- * Intercepts / requests processing. Only when `requires_processing` is enabled.
- */
-/datum/power_cell/proc/on_process(obj/item/cell/cell, dt)
-	return
-
-#warn impl all
+// TODO: serializable

@@ -14,7 +14,7 @@
 	)
 
 	/// base power draw per shot in cell units
-	var/base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / 24)
+	var/base_charge_cost = /obj/item/cell/weapon/tier_1::max_charge * (1 / 24)
 
 	/// Render battery state.
 	///

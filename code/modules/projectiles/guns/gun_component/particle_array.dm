@@ -11,7 +11,7 @@
 	component_slot = GUN_COMPONENT_PARTICLE_ARRAY
 
 	/// base charge cost in cell units
-	var/base_charge_cost = /obj/item/cell/device/weapon::maxcharge / 24
+	var/base_charge_cost = /obj/item/cell/weapon/tier_1::max_charge / 24
 	/// considered lethal?
 	/// * lethal arrays can be disabled on a separate 'safety' setting
 	var/considered_lethal = FALSE

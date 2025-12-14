@@ -136,8 +136,8 @@
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	w_class = WEIGHT_CLASS_NORMAL
 	projectile_type = /obj/projectile/beam
-	charge_cost = /obj/item/cell/device/weapon/recharge/captain::maxcharge / 5
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	charge_cost = /obj/item/cell/weapon/regen::maxcharge / 5
+	cell_type = /obj/item/cell/weapon/regen
 	legacy_battery_lock = 1
 
 /obj/item/gun/projectile/energy/lasercannon
