@@ -525,6 +525,9 @@
 	var/collar_tag
 
 /obj/item/clothing/accessory/collar/proc/set_collar_tag(var/new_tag, var/update_name = TRUE, var/update_desc = TRUE, var/name_format = "COLLAR_NAME (COLLAR_TAG)", var/desc_format = "The tag says \"COLLAR_TAG\".")
+	if(!length(collar_tag))
+		collar_name = name
+
 	collar_tag = new_tag
 
 	var/applicable_name = length(collar_name) ? collar_name : initial(name)
