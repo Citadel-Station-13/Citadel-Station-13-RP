@@ -20,12 +20,17 @@
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
 GLOBAL_VAR_INIT(cellrate, 0.5)
 
-#define POWER_CELL_CAPACITY_BASE 1000
+/// Divisible by 1, 2, 3.
+#define POWER_CELL_CAPACITY_BASE 1200
 
-#define POWER_CELL_MULTIPLIER_SMALL (1.2)
-#define POWER_CELL_MULTIPLIER_MEDIUM (1.2 * 5)
-#define POWER_CELL_MULTIPLIER_LARGE (1.2 * 5 * 5)
-#define POWER_CELL_MULTIPLIER_WEAPON (1.2 * 2.5)
+/// base
+#define POWER_CELL_MULTIPLIER_SMALL 2
+/// vs small is 100% space-efficient
+#define POWER_CELL_MULTIPLIER_WEAPON 4
+/// vs weapon is 125% space-efficient
+#define POWER_CELL_MULTIPLIER_MEDIUM 10
+/// vs medium is 150% space-efficient
+#define POWER_CELL_MULTIPLIER_LARGE 30
 
 #define POWER_CELL_CAPACITY_MULTIPLIER_SMALL (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_SMALL)
 #define POWER_CELL_CAPACITY_MULTIPLIER_MEDIUM (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_MEDIUM)

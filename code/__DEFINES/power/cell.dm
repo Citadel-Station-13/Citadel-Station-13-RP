@@ -42,6 +42,8 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_small; \
+	w_class = ##DATUM_TYPEPATH::typegen_w_class_small; \
+	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_small; \
 } \
 /obj/item/cell##CELL_TYPEPATH/medium { \
 	name = "medium power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
@@ -55,6 +57,8 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_medium; \
+	w_class = ##DATUM_TYPEPATH::typegen_w_class_medium; \
+	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_medium; \
 } \
 /obj/item/cell##CELL_TYPEPATH/large { \
 	name = "large power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
@@ -68,6 +72,8 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_large; \
+	w_class = ##DATUM_TYPEPATH::typegen_w_class_large; \
+	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_large; \
 } \
 /obj/item/cell##CELL_TYPEPATH/weapon { \
 	name = "weapon power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
@@ -81,4 +87,6 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_weapon; \
+	w_class = ##DATUM_TYPEPATH::typegen_w_class_weapon; \
+	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_weapon; \
 }

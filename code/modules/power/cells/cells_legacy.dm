@@ -16,14 +16,14 @@
 	icon = 'icons/mob/slimes.dmi' //'icons/obj/harvest.dmi'
 	icon_state = "yellow slime extract" //"potato_battery"
 	description_info = "This 'cell' holds a max charge of 10k and self recharges over time."
-	max_charge = 10000
 	materials_base = null
 	rating = 5
-	#warn inherit from tier 2 medium for size
-	#warn make it small sized
+	max_charge = POWER_CELL_CAPACITY_BASE * POWER_CELL_CAPACITY_MULTIPLIER_MEDIUM
+	w_class = WEIGHT_CLASS_SMALL
+	weight_volume = WEIGHT_VOLUME_SMALL
 	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	self_recharge = TRUE
-	self_recharge_amount = STATIC_KW_TO_CELL_UNITS(30, 1)
+	self_recharge_amount = STATIC_KW_TO_CELL_UNITS(15, 1)
 
 // todo: this isn't even a fucking cell get it out of here
 //Not actually a cell, but if people look for it, they'll probably look near other cells
@@ -68,6 +68,7 @@
 /obj/item/cell/emergency_light
 	name = "miniature power cell"
 	desc = "A tiny power cell with a very low power capacity. Used in light fixtures to power them in the event of an outage."
+	charge = 120
 	max_charge = 120 //Emergency lights use 0.2 W per tick, meaning ~10 minutes of emergency power from a cell
 	materials_base = list(MAT_GLASS = 20)
 	w_class = WEIGHT_CLASS_TINY

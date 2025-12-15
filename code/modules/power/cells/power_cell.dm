@@ -22,6 +22,7 @@
  */
 /datum/prototype/power_cell
 	//* Descriptors *//
+	// TODO: make sure these all apply if the prototype updates
 
 	/// our cell name
 	///
@@ -33,6 +34,7 @@
 	var/cell_desc = "Some unknown technology, probably. What is this?"
 
 	//* Capacity - Type Generation *//
+	// TODO: make sure these all apply if the prototype updates
 
 	var/typegen_capacity_multiplier = 1
 	/// compounded with [typegen_capacity_multiplier]
@@ -45,6 +47,7 @@
 	var/typegen_capacity_multiplier_weapon = 1 * POWER_CELL_CAPACITY_MULTIPLIER_WEAPON
 
 	//* Materials - Type Generation *//
+	// TODO: make sure these all apply if the prototype updates
 
 	var/typegen_material_multiply = 1
 	/// compounded with [typegen_material_multiply]
@@ -67,7 +70,21 @@
 	var/list/typegen_materials_base_adjust
 	#warn impl
 
+	//* Size - Type Generation *//
+	// TODO: make sure these all apply if the prototype updates
+
+	var/typegen_w_class_small = WEIGHT_CLASS_SMALL
+	var/typegen_w_class_weapon = WEIGHT_CLASS_NORMAL
+	var/typegen_w_class_medium = WEIGHT_CLASS_NORMAL
+	var/typegen_w_class_large = WEIGHT_CLASS_BULKY
+
+	var/typegen_w_volume_small = WEIGHT_VOLUME_TINY
+	var/typegen_w_volume_weapon = WEIGHT_VOLUME_SMALL
+	var/typegen_w_volume_medium = WEIGHT_VOLUME_NORMAL
+	var/typegen_w_volume_large = WEIGHT_VOLUME_BULKY
+
 	//* Visuals - Type Generation *//
+	// TODO: make sure this applies if the prototype updates
 
 	/// color of the cell's stripe
 	var/typegen_visual_stripe_color
@@ -76,6 +93,7 @@
 
 	//* Worth / Materials *//
 
+	// TODO: make sure these all apply if the prototype updates
 	var/typegen_worth_base_small = 10
 	var/typegen_worth_base_medium = 30
 	var/typegen_worth_base_large = 40
@@ -91,13 +109,26 @@
 	/// for subtypes that have reactions, as a tuning variable
 	///
 	/// known integrations:
-	/// * used for regen speed on regen cells
-	/// * used for use rate on microfission
+	/// * used for base regen speed in cell units on regen cells
+	/// * used for reaction rate on microfission (cell units used per tick to regen)
 	var/c_reaction_multiplier = 1
 	/// for subtypes that have reactions, as a tuning variable
 	///
 	/// known integrations:
-	/// * used for total fuel on microfission
+	/// * used for base regen speed in cell units on regen cells
+	/// * used for reaction rate on microfission (cell units used per tick to regen)
+	var/c_reaction_adjust = 0
+	/// for subtypes that have reactions, as a tuning variable
+	///
+	/// known integrations:
+	/// * used for percent regen speed on regen cells
+	/// * used for total cell units over lifetime (fuel) on microfission
 	var/c_fuel_multiplier = 1
+	/// for subtypes that have reactions, as a tuning variable
+	///
+	/// known integrations:
+	/// * used for percent regen speed on regen cells
+	/// * used for total cell units over lifetime (fuel) on microfission
+	var/c_fuel_adjust = 0
 
 // TODO: serializable
