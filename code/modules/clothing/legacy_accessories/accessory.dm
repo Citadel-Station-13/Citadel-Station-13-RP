@@ -794,7 +794,7 @@
 	set_collar_tag(str)
 
 /obj/item/clothing/accessory/collar/holo/set_collar_tag(var/tag)
-		..(tag, use_name = FALSE)
+		..(tag, update_name = FALSE)
 
 /obj/item/clothing/accessory/collar/attackby(obj/item/I, mob/user)
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
