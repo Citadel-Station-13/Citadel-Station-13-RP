@@ -28,7 +28,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen/fractal, /regen/frac
 	// in % of the cell's capacity
 	// * multiplied by `c_fuel_multplier`
 	// * adjusted by `c_fuel_adjust`
-	var/base_regen_percent 0
+	var/base_regen_percent = 0
 
 /obj/item/cell/regen/Initialize()
 
