@@ -11,6 +11,7 @@
 	anchored = TRUE
 	atom_flags = ATOM_BORDER
 	icon_state = "railing0"
+	color = "#d4701e"
 
 	integrity = 150
 	integrity_max = 150
@@ -269,3 +270,6 @@
 
 /obj/structure/railing/do_climb_target(mob/living/climber)
 	return climber.loc == get_turf(src)? get_step(src, dir) : ..()
+
+/obj/structure/railing/grey
+	color = "#979db6"
