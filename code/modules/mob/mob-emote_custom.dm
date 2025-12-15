@@ -40,10 +40,10 @@
 	else
 		log_emote(log_string, src)
 
-	var/raw_html = process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
+	var/raw_html = process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead, actor)
 	if(!raw_html)
 		return
-	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
+	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, actor)
 
 /**
  * Perform special preprocessing on an incoming custom emote
