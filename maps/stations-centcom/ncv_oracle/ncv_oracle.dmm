@@ -7065,7 +7065,7 @@
 /obj/structure/closet{
 	name = "robotics parts"
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_1/large{
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
@@ -7078,17 +7078,17 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_1/large{
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_1/large{
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_1/large{
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
@@ -11576,10 +11576,10 @@
 /area/centcom/bathroom)
 "KM" = (
 /obj/structure/table/standard,
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_1/large{
 	maxcharge = 15000
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_1/large{
 	maxcharge = 15000
 	},
 /obj/machinery/cell_charger,

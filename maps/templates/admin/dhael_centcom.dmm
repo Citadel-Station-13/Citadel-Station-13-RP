@@ -11,41 +11,41 @@
 "af" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -478,26 +478,26 @@
 /area/centcom/specops)
 "bu" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3165,15 +3165,15 @@
 "iE" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},

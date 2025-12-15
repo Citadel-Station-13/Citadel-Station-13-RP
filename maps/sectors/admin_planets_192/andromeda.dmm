@@ -6002,12 +6002,12 @@
 /obj/item/cell/high,
 /obj/item/cell/high,
 /obj/item/cell/high,
-/obj/item/cell/device,
-/obj/item/cell/device,
-/obj/item/cell/device,
-/obj/item/cell/device,
-/obj/item/cell/device,
-/obj/item/cell/device,
+/obj/item/cell/basic/tier_3/small,
+/obj/item/cell/basic/tier_3/small,
+/obj/item/cell/basic/tier_3/small,
+/obj/item/cell/basic/tier_3/small,
+/obj/item/cell/basic/tier_3/small,
+/obj/item/cell/basic/tier_3/small,
 /turf/simulated/floor/tiled/techfloor,
 /area/admin_planet/andromeda/engi_equipment)
 "so" = (
