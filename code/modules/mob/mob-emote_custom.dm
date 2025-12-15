@@ -72,6 +72,7 @@
  * Emit a custom emote
  */
 /mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
+	// TODO: can we please have a better way to determine this?
 	var/never_show_ghosts = !actor?.initiator?.ckey
 	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost || never_show_ghosts)
 	// TODO: centralized observer pref check in saycode_view_query
