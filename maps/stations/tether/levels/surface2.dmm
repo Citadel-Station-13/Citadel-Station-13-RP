@@ -14060,7 +14060,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/super/critical/north_mount{
+/obj/machinery/power/apc/large_cell/tier_2/critical/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -24323,7 +24323,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/west_mount{
+/obj/machinery/power/apc/large_cell/west_mount{
 	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -25818,7 +25818,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/super/north_mount{
+/obj/machinery/power/apc/large_cell/tier_2/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/button/remote/airlock{

@@ -731,7 +731,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/south_mount,
+/obj/machinery/power/apc/large_cell/south_mount,
 /turf/simulated/floor/plating,
 /area/sector/surt/mining_base/common)
 "sA" = (

@@ -2665,7 +2665,7 @@
 	dir = 9
 	},
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/hyper/south_mount,
+/obj/machinery/power/apc/large_cell/tier_3/south_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
 "ahw" = (
@@ -24508,7 +24508,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "nOM" = (
-/obj/machinery/power/apc/high/east_mount,
+/obj/machinery/power/apc/large_cell/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -26956,7 +26956,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
-/obj/machinery/power/apc/hyper/west_mount,
+/obj/machinery/power/apc/large_cell/tier_3/west_mount,
 /obj/structure/cable/pink{
 	icon_state = "0-8";
 	dir = 1

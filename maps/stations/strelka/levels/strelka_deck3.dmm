@@ -9041,7 +9041,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/super/north_mount,
+/obj/machinery/power/apc/large_cell/tier_2/north_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck3)
 "EJ" = (

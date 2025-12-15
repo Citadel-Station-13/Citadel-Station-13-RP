@@ -2073,7 +2073,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/super/north_mount{
+/obj/machinery/power/apc/large_cell/tier_2/north_mount{
 	pixel_y = 28
 	},
 /obj/structure/cable/green{

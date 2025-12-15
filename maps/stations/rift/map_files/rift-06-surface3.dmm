@@ -7550,7 +7550,7 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/power/apc/high,
+/obj/machinery/power/apc/large_cell,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "axr" = (
@@ -25168,7 +25168,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/west_mount,
+/obj/machinery/power/apc/large_cell/west_mount,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/shuttle/oldcentury)

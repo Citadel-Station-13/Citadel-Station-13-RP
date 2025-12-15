@@ -20355,7 +20355,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/power/apc/high/south_mount,
+/obj/machinery/power/apc/large_cell/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -23616,7 +23616,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/power/apc/super/east_mount{
+/obj/machinery/power/apc/large_cell/tier_2/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},

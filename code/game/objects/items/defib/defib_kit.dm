@@ -42,7 +42,7 @@
 	. = ..()
 	var/list/new_overlays = list()
 
-	var/obj/item/bcell = get_cell()
+	var/obj/item/cell/bcell = get_cell()
 	if(paddles && paddles.loc == src) //in case paddles got destroyed somehow.
 		new_overlays += "[initial(icon_state)]-paddles"
 	if(bcell && paddles)

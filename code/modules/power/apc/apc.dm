@@ -55,28 +55,25 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 22)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
-#warn redo
 /// High capacity cell APCs
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 22)
-/obj/machinery/power/apc/high
-	cell_type = /obj/item/cell/high
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell, 22)
+/obj/machinery/power/apc/large_cell
+	cell_type = /obj/item/cell/basic/tier_1/large
 
-#warn redo
 /// Super capacity cell APCS
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 22)
-/obj/machinery/power/apc/super
-	cell_type = /obj/item/cell/super
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_2, 22)
+/obj/machinery/power/apc/large_cell/tier_2
+	cell_type = /obj/item/cell/basic/tier_2/large
 
 /// Critical APCs with super cells
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 22)
-/obj/machinery/power/apc/super/critical
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_2/critical, 22)
+/obj/machinery/power/apc/large_cell/tier_2/critical
 	is_critical = 1
 
-#warn redo
 /// APCS with hyper cells. How lewd
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 22)
-/obj/machinery/power/apc/hyper
-	cell_type = /obj/item/cell/hyper
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_3, 22)
+/obj/machinery/power/apc/large_cell/tier_3
+	cell_type = /obj/item/cell/basic/tier_3/large
 
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden, 22)
@@ -133,10 +130,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 	var/area/area
 	var/areastring = null
+	#warn erm
 	var/obj/item/cell/cell
+	var/cell_type = /obj/item/cell/basic/tier_1/medium
+	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+
 	var/chargelevel = 0.0005  // Cap for how fast APC cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 	var/start_charge = 90				// initial cell charge %
-	var/cell_type = /obj/item/cell/apc
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
 	var/grid_check = FALSE
@@ -254,18 +254,13 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	area.power_equip = 0
 	area.power_environ = 0
 	area.power_change()
-	qdel(wires)
-	wires = null
-	qdel(terminal)
-	terminal = null
-	if(cell)
-		cell.forceMove(loc)
-		cell = null
+	QDEL_NULL(wireS)
+	QDEL_NULL(terminal)
+	QDEL_NULL(cell)
 
 	// Malf AI, removes the APC from AI's hacked APCs list.
 	if((hacker) && (hacker.hacked_apcs) && (src in hacker.hacked_apcs))
 		hacker.hacked_apcs -= src
-
 	return ..()
 
 /obj/machinery/power/apc/get_cell(inducer)

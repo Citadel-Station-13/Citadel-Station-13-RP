@@ -1946,9 +1946,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4afthall/endeavour)
 "bLm" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -15465,9 +15463,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "nJc" = (
-/obj/machinery/power/apc/south_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -19671,9 +19667,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
 "rZh" = (
@@ -23301,9 +23295,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4portafthall/endeavour)
 "vtv" = (
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

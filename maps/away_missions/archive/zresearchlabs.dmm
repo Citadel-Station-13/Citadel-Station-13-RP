@@ -188,10 +188,10 @@
 /obj/item/airlock_electronics,
 /obj/item/airlock_electronics,
 /obj/item/module/power_control,
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_1/medium{
 	maxcharge = 15000
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_1/medium{
 	maxcharge = 15000
 	},
 /obj/machinery/light,
@@ -2598,7 +2598,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_1/medium,
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
@@ -3301,7 +3301,7 @@
 "jH" = (
 /obj/structure/table/reinforced,
 /obj/item/borg/upgrade/vtec,
-/obj/item/cell/hyper/empty,
+/obj/item/cell/basic/tier_1/medium/empty,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -5879,7 +5879,7 @@
 	pixel_y = 5
 	},
 /obj/item/storage/belt/champion,
-/obj/item/cell/infinite,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor{
 	dir = 1
 	},

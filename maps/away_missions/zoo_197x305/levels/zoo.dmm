@@ -1423,7 +1423,7 @@
 /area/awaymission/zoo/pirateship)
 "eq" = (
 /obj/structure/table/rack,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_1/medium,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
@@ -1621,7 +1621,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "eT" = (
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "eU" = (
@@ -8291,9 +8291,9 @@
 "xc" = (
 /obj/structure/closet/crate/solar,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/cell/crap,
-/obj/item/cell/crap,
-/obj/item/cell/crap,
+/obj/item/cell/basic/tier_1/medium,
+/obj/item/cell/basic/tier_1/medium,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "xd" = (

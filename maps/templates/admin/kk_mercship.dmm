@@ -54,7 +54,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/hyper/west_mount{
+/obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - West";
 	pixel_x = -24
@@ -582,7 +582,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/hyper/north_mount{
+/obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
@@ -629,7 +629,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/hyper/north_mount{
+/obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
@@ -1805,7 +1805,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "iQ" = (
-/obj/machinery/power/apc/hyper/east_mount{
+/obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
@@ -1888,7 +1888,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/manta_ship_boat)
 "jg" = (
-/obj/machinery/power/apc/hyper/north_mount{
+/obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
@@ -2431,7 +2431,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/power/apc/hyper/east_mount{
+/obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
@@ -2682,7 +2682,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/machinery/power/apc/hyper/east_mount{
+/obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
@@ -2954,7 +2954,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "ov" = (
-/obj/machinery/power/apc/hyper/east_mount{
+/obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
@@ -3208,7 +3208,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
-/obj/machinery/power/apc/hyper/east_mount{
+/obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
@@ -3429,7 +3429,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "rl" = (
-/obj/machinery/power/apc/hyper/south_mount{
+/obj/machinery/power/apc/large_cell/tier_3/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -4215,7 +4215,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "vw" = (
-/obj/machinery/power/apc/hyper/south_mount{
+/obj/machinery/power/apc/large_cell/tier_3/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -4712,7 +4712,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "xv" = (
-/obj/machinery/power/apc/hyper/west_mount{
+/obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - West";
 	pixel_x = -24
@@ -5544,7 +5544,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Bk" = (
-/obj/machinery/power/apc/hyper/west_mount{
+/obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - West";
 	pixel_x = -24
@@ -5688,7 +5688,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
 "Cn" = (
-/obj/machinery/power/apc/hyper/south_mount{
+/obj/machinery/power/apc/large_cell/tier_3/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -6367,7 +6367,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/power/apc/hyper/south_mount{
+/obj/machinery/power/apc/large_cell/tier_3/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -6638,7 +6638,7 @@
 /obj/structure/table/rack,
 /obj/item/vehicle_module/shocker,
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/power/apc/hyper/south_mount{
+/obj/machinery/power/apc/large_cell/tier_3/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -7409,7 +7409,7 @@
 /area/ship/manta/dock_star)
 "LC" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/power/apc/hyper/south_mount{
+/obj/machinery/power/apc/large_cell/tier_3/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -8273,7 +8273,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/hyper/north_mount{
+/obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
@@ -8292,7 +8292,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/power/apc/hyper/west_mount{
+/obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - West";
 	pixel_x = -24
@@ -8784,7 +8784,7 @@
 	name = "Syndicate-Spawn"
 	},
 /obj/item/bedsheet/hos,
-/obj/machinery/power/apc/hyper/east_mount{
+/obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24
@@ -9474,7 +9474,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "Ww" = (
-/obj/machinery/power/apc/hyper/south_mount{
+/obj/machinery/power/apc/large_cell/tier_3/south_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - South"
 	},
@@ -9916,7 +9916,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8
 	},
-/obj/machinery/power/apc/hyper/north_mount{
+/obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - North";
 	pixel_y = 24
@@ -10106,7 +10106,7 @@
 	pixel_x = 12;
 	pixel_y = 8
 	},
-/obj/machinery/power/apc/hyper/east_mount{
+/obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
 	name = "Merc APC - East";
 	pixel_x = 24

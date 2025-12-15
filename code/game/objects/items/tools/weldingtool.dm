@@ -608,14 +608,12 @@
 	update_icon()
 	setWelding(FALSE)
 
-/obj/item/weldingtool/electric/get_cell(inducer)
-	return power_supply
-
 /obj/item/weldingtool/electric/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) > 1)
 		return
 	else					// The << need to stay, for some reason no they dont
+		var/obj/item/cell/power_supply = obj_cell_slot.cell
 		if(power_supply)
 			. += "[icon2html(thing = src, target = world)] The [src] has [get_fuel()] charge left."
 		else

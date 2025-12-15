@@ -2496,7 +2496,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/power/apc/super/north_mount{
+/obj/machinery/power/apc/large_cell/tier_2/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -3430,7 +3430,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/power/apc/high,
+/obj/machinery/power/apc/large_cell,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},

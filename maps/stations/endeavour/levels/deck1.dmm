@@ -1502,7 +1502,6 @@
 /area/station/exploration/hallway_aft/endeavour)
 "bci" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	dir = 2;
 	pixel_x = 0;
 	pixel_y = 21
@@ -2672,9 +2671,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/exploration/hallway_fore/endeavour)
 "bXQ" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -4168,9 +4165,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "cZW" = (
@@ -4927,9 +4922,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -5822,9 +5815,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -16490,9 +16481,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "lQM" = (
@@ -16894,9 +16883,7 @@
 /area/bridge)
 "mfu" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -20458,9 +20445,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/d1portforhall/endeavour)
 "oMt" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/dark,
 /area/gateway)

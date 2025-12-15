@@ -1387,7 +1387,7 @@
 /area/awaymission/BMPship1)
 "fE" = (
 /obj/structure/table/rack,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/BMPship1)
 "fF" = (
@@ -1528,7 +1528,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor,
 /area/awaymission/BMPship1)
 "gi" = (

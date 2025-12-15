@@ -701,8 +701,8 @@
 /area/awaymission/snow_outpost/powered)
 "di" = (
 /obj/structure/table/standard,
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_1/medium,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor,
 /area/awaymission/snow_outpost/powered)
 "dj" = (
@@ -828,7 +828,7 @@
 /area/awaymission/snow_outpost/dark)
 "dJ" = (
 /obj/structure/table/woodentable,
-/obj/item/cell/device/weapon/recharge/alien,
+/obj/item/cell/basic/tier_1/medium/weapon/recharge/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "dK" = (

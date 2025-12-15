@@ -368,7 +368,7 @@
 	damage_tier = 3
 
 	// :trol:
-	cell_type = /obj/item/cell/infinite
+	cell_type = /obj/item/cell/infinite/weapon
 
 /obj/item/melee/baton/electrostaff/Initialize(mapload)
 	. = ..()

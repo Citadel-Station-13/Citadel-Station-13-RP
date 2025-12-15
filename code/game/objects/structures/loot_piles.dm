@@ -144,8 +144,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/flashlight/glowstick/red,
 		/obj/item/flashlight/glowstick/yellow,
 		/obj/item/flashlight/pen,
-		/obj/item/cell,
-		/obj/item/cell/device,
+		/obj/item/cell/basic/tier_1/weapon,
+		/obj/item/cell/basic/tier_1/medium,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/mask/breath,
@@ -1117,7 +1117,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/cell/high,
+		/obj/item/cell/basic/tier_2/medium,
 		/obj/item/robot_parts/robot_component/actuator,
 		/obj/item/robot_parts/robot_component/armour,
 		/obj/item/robot_parts/robot_component/binary_communication_device,
@@ -1127,7 +1127,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/cell/super,
+		/obj/item/cell/basic/tier_3/medium,
 		/obj/item/borg/upgrade/restart,
 		/obj/item/borg/upgrade/jetpack,
 		/obj/item/borg/upgrade/tasercooler,

@@ -369,11 +369,11 @@
 		return ITEM_RELOCATED_BY_DROPPED
 
 /obj/item/shockpaddles/linked/check_charge(var/charge_amt)
-	var/obj/item/bcell = base_unit.get_cell()
+	var/obj/item/cell/bcell = base_unit.get_cell()
 	return (bcell && bcell.check_charge(charge_amt))
 
 /obj/item/shockpaddles/linked/checked_use(var/charge_amt)
-	var/obj/item/bcell = base_unit.get_cell()
+	var/obj/item/cell/bcell = base_unit.get_cell()
 	return (bcell && bcell.checked_use(charge_amt))
 
 /obj/item/shockpaddles/linked/make_announcement(var/message, var/msg_class)

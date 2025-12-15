@@ -10173,7 +10173,7 @@
 	light_range = 12
 	},
 /obj/machinery/power/rtg/fake_gen,
-/obj/machinery/power/apc/hyper/west_mount,
+/obj/machinery/power/apc/large_cell/tier_3/west_mount,
 /turf/simulated/floor/reinforced,
 /area/admin_planet/croatoan/extreme_security_containment_facilities)
 "Kc" = (

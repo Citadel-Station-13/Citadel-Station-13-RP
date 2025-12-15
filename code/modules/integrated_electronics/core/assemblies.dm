@@ -212,11 +212,12 @@
 			return TRUE
 
 		if("remove_cell")
+			if(!obj_cell_slot?.cell)
+				return TRUE
 			var/turf/T = get_turf(src)
-			battery.forceMove(T)
+			var/obj/item/cell/removed = obj_cell_slot.remove_cell(T)
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
-			to_chat(usr, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
-			battery = null
+			to_chat(usr, SPAN_NOTICE("You pull \the [removed] out of \the [src]'s power supplier."))
 			return TRUE
 
 		// Circuit actions
