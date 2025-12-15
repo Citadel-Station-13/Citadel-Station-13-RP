@@ -18,6 +18,9 @@
 
 	var/obj/item/reagent_containers/syringe/syringe
 
+/obj/item/ammo_casing/syringe/Destroy()
+	QDEL_NULL(syringe)
+	return ..()
 
 /obj/item/ammo_casing/syringe/expend()
 	var/obj/projectile/syringe/maybe_syringe = ..()

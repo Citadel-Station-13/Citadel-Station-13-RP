@@ -42,6 +42,10 @@
 	// todo: kill this
 	var/legacy_use_device_cells = FALSE
 
+/datum/object_system/cell_slot/Destroy()
+	QDEL_NULL(cell)
+	return ..()
+
 /**
  * returns TRUE if slot accepts this type of cell
  */

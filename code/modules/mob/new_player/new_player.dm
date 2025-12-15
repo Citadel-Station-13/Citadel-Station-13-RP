@@ -17,17 +17,20 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 /mob/new_player/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
-	mob_list_register(stat)
+	mob_list_register()
 	atom_flags |= ATOM_INITIALIZED
 	// we only need innate
 	actions_innate = new /datum/action_holder/mob_actor(src)
 	return INITIALIZE_HINT_NORMAL
 
-/mob/new_player/mob_list_register(for_stat)
+/mob/new_player/mob_list_register()
 	GLOB.mob_list += src
 
-/mob/new_player/mob_list_unregister(for_stat)
+/mob/new_player/mob_list_unregister()
 	GLOB.mob_list -= src
+
+/mob/new_player/mob_list_update_stat(old_stat, new_stat)
+	return
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr

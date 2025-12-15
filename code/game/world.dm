@@ -8,6 +8,8 @@ GLOBAL_LIST(topic_status_cache)
 /world
 	mob = /mob/new_player
 	// TODO: replace with /turf/unallocated
+	// --           DO NOT USE THIS TURF ANYWHERE ELSE!                --
+	// -- DO NOT EVEN REFERENCE WORLD.TURF OTHER THAN TO CHECK FOR IT. --
 	turf = /turf/space/basic
 	// TODO: replace with /area/unallocated
 	area = /area/space

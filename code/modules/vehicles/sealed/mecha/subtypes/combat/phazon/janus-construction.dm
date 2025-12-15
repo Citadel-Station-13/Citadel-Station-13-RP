@@ -2,9 +2,9 @@
 	name = "Janus Chassis"
 	origin_tech = list(TECH_MATERIAL = 7)
 
-/obj/item/vehicle_chassis/janus/New()
-	..()
+/obj/item/vehicle_chassis/janus/Initialize(mapload)
 	construct = new /datum/construction/mecha/janus_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/janus_torso
 	name="Imperion Torso"

@@ -3,6 +3,8 @@
 a creative player the means to solve many problems.  Circuits are held inside an electronic assembly, and are wired using special tools.
 */
 
+// this is a fucking miserable bag of bullshit, refactor this shit asap
+
 /obj/item/integrated_circuit
 	name = "integrated circuit"
 	desc = "It's a tiny chip!  This one doesn't seem to do much, however."
@@ -13,13 +15,13 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	var/obj/item/electronic_assembly/assembly = null
 	var/extended_desc = null
 	var/can_be_asked_input = 0
-	var/list/inputs = list()
+	var/list/datum/integrated_io/inputs = list()
 	/// Assoc list which will fill a pin with data upon creation.  e.g. "2" = 0 will set input pin 2 to equal 0 instead of null.
 	var/list/inputs_default = list()
-	var/list/outputs = list()
+	var/list/datum/integrated_io/outputs = list()
 	/// Ditto, for output.
 	var/list/outputs_default = list()
-	var/list/activators = list()
+	var/list/datum/integrated_io/activators = list()
 	///Uses world.time
 	var/next_use = 0
 	///This acts as a limitation on building machines, more resource-intensive components cost more 'space'.
@@ -46,6 +48,10 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	var/displayed_name = ""
 	/// Allows additional multitool functionality
 	var/allow_multitool = 1
+
+/obj/item/integrated_circuit/Destroy()
+	remove(silent = TRUE, force = TRUE)
+	return ..()
 
 /obj/item/integrated_circuit/examine(mob/user, dist)
 	. = ..()
@@ -273,13 +279,15 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			return
 	return FALSE
 
-/obj/item/integrated_circuit/proc/remove(mob/user, silent, index)
+/obj/item/integrated_circuit/proc/remove(mob/user, silent, index, force)
 	var/obj/item/electronic_assembly/A = assembly
-	if(!A && !silent)
-		to_chat(user, SPAN_WARNING("This circuit is not in an assembly!"))
+	if(!A)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("This circuit is not in an assembly!"))
 		return
-	if(!removable && !silent)
-		to_chat(user, SPAN_WARNING("\The [src] seems to be permanently attached to the case."))
+	if(!removable && !force)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("\The [src] seems to be permanently attached to the case."))
 		return
 	var/obj/item/electronic_assembly/ea = loc
 
@@ -288,22 +296,22 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 	// in case we can't easily get the index, we want to be able to get it still.
 	if(!index && A)
-		index = A.ui_circuit_props.Find(src)
+		index = A.assembly_components.Find(src)
 
 	// Remove from helper and TGUI lists
 	A.ui_circuit_props.Cut(index, index + 1)
 	A.assembly_components.Cut(index, index + 1)
 
-	var/turf/T = get_turf(src)
-	forceMove(T)
+	if(!QDELING(src))
+		var/turf/T = get_turf(src)
+		forceMove(T)
+		if(!silent)
+			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
+			to_chat(user, SPAN_NOTICE("You pop \the [src] out of the case, and slide it out."))
 	assembly = null
-	if(!silent)
-		playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
-		to_chat(user, SPAN_NOTICE("You pop \the [src] out of the case, and slide it out."))
 
-	if(istype(ea))
+	if(istype(ea) && user)
 		ea.ui_interact(user)
-
 
 /obj/item/integrated_circuit/proc/push_data()
 	for(var/datum/integrated_io/O in outputs)
@@ -366,7 +374,6 @@ a creative player the means to solve many problems.  Circuits are held inside an
 /obj/item/integrated_circuit/proc/ext_moved(oldLoc, dir)
 	return
 
-
 /// Returns the object that is supposed to be used in attack messages, location checks, etc.
 /obj/item/integrated_circuit/proc/get_object()
 	// If the component is located in an assembly, let assembly determine it.
@@ -374,7 +381,6 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		return assembly.get_object()
 	else
 		return src	// If not, the component is acting on its own.
-
 
 /// Returns the location to be used for dropping items.
 /// Same as the regular drop_location(), but with proc being run on assembly if there is any.
@@ -384,7 +390,6 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		return assembly.drop_location()
 	else
 		return ..()	// If not, the component is acting on its own.
-
 
 /// Checks if the target object is reachable.  Useful for various manipulators and manipulator-like objects.
 /obj/item/integrated_circuit/proc/check_target(atom/target, exclude_contents = FALSE, exclude_components = FALSE, exclude_self = FALSE, exclude_outside = FALSE)

@@ -5,14 +5,14 @@
 /obj/structure/disposalpipe/junction
 	icon_state = "pipe-j1"
 
-/obj/structure/disposalpipe/junction/New()
-	..()
+/obj/structure/disposalpipe/junction/Initialize(mapload, dir)
 	if(icon_state == "pipe-j1")
 		dpdir = dir | turn(dir, -90) | turn(dir,180)
 	else if(icon_state == "pipe-j2")
 		dpdir = dir | turn(dir, 90) | turn(dir,180)
 	else // pipe-y
 		dpdir = dir | turn(dir,90) | turn(dir, -90)
+	return ..()
 
 // next direction to move
 // if coming in from secondary dirs, then next is primary dir

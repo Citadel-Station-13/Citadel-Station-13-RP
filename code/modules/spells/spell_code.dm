@@ -62,6 +62,10 @@
 	//still_recharging_msg = "<span class='notice'>[name] is still recharging.</span>"
 	charge_counter = charge_max
 
+/spell/Destroy()
+	QDEL_NULL(connected_button)
+	return ..()
+
 /spell/process(delta_time)
 	spawn while(charge_counter < charge_max)
 		charge_counter++

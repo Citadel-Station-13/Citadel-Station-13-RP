@@ -15,6 +15,22 @@
 	var/frequency = 1379
 	var/datum/radio_frequency/radio_connection
 
+/obj/machinery/mech_sensor/Initialize(mapload)
+	. = ..()
+	set_frequency(frequency)
+
+/obj/machinery/mech_sensor/Destroy()
+	set_frequency(null)
+	return ..()
+
+/obj/machinery/mech_sensor/proc/set_frequency(new_frequency)
+	if(radio_connection)
+		radio_controller.remove_object(src, frequency)
+		radio_connection = null
+	frequency = new_frequency
+	if(frequency)
+		radio_connection = radio_controller.add_object(src, frequency)
+
 /obj/machinery/mech_sensor/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!enabled())
 		return TRUE
@@ -70,17 +86,6 @@
 		icon_state = "airlock_sensor_standby"
 	else
 		icon_state = "airlock_sensor_off"
-
-/obj/machinery/mech_sensor/Initialize(mapload)
-	. = ..()
-	set_frequency(frequency)
-
-/obj/machinery/mech_sensor/proc/set_frequency(new_frequency)
-	if(radio_connection)
-		radio_controller.remove_object(src, frequency)
-	frequency = new_frequency
-	if(frequency)
-		radio_connection = radio_controller.add_object(src, frequency)
 
 /obj/machinery/mech_sensor/receive_signal(datum/signal/signal)
 	if(machine_stat & NOPOWER)

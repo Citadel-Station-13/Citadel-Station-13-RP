@@ -2,9 +2,9 @@
 /obj/item/vehicle_chassis/durand
 	name = "Durand Chassis"
 
-/obj/item/vehicle_chassis/durand/New()
-	..()
+/obj/item/vehicle_chassis/durand/Initialize(mapload)
 	construct = new /datum/construction/mecha/durand_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/durand_torso
 	name="Durand Torso"

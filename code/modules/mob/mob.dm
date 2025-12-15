@@ -55,7 +55,7 @@
  */
 /mob/Initialize(mapload)
 	// mob lists
-	mob_list_register(stat)
+	mob_list_register()
 	// actions
 	actions_controlled = new /datum/action_holder/mob_actor(src)
 	actions_innate = new /datum/action_holder/mob_actor(src)
@@ -63,6 +63,7 @@
 	init_physiology()
 	// atom HUDs
 	prepare_huds()
+	// key focus
 	set_key_focus(src)
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
@@ -89,23 +90,52 @@
 	return ..()
 
 /mob/Destroy()
+	// this kicks out client
+	// this is needed to be early because we destroy stuff like inventory
+	// TODO: can we have this ran even earlier?
+	//       ideally we want to preserve as much state as possible so
+	//       we don't want to run further-down behavior before this
+	ghostize()
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
 		qdel(effect)
 	status_effects = null
 	// mob lists
-	mob_list_unregister(stat)
+	mob_list_unregister()
+	// key focus
+	set_key_focus(null)
 	// todo: remove machine
 	unset_machine()
 	// hud
 	for(var/alert in alerts)
 		clear_alert(alert)
-	if(client)
-		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
-			qdel(spell_master)
-		remove_screen_obj_references()
-		client.screen = list()
+	// abilities
+	QDEL_NULL(ability_master)
+	// spells
+	QDEL_LIST(spell_list)
+	QDEL_LIST(spell_masters)
+	// cleanup screen objects
+	QDEL_NULL(hands)
+	QDEL_NULL(pullin)
+	QDEL_NULL(purged)
+	QDEL_NULL(internals)
+	QDEL_NULL(oxygen)
+	QDEL_NULL(i_select)
+	QDEL_NULL(m_select)
+	QDEL_NULL(toxin)
+	QDEL_NULL(fire)
+	QDEL_NULL(bodytemp)
+	QDEL_NULL(healths)
+	QDEL_NULL(throw_icon)
+	QDEL_NULL(nutrition_icon)
+	QDEL_NULL(pressure)
+	QDEL_NULL(pain)
+	QDEL_NULL(item_use_icon)
+	QDEL_NULL(gun_move_icon)
+	QDEL_NULL(gun_setting_icon)
+	QDEL_NULL(spell_masters)
+	QDEL_NULL(zone_sel)
 	// mind
 	if(!isnull(mind))
 		if(mind.current == src)
@@ -120,16 +150,15 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
 	dispose_abilities()
+	// inventory
+	QDEL_NULL(inventory)
 	// actions
 	QDEL_NULL(actions_controlled)
 	QDEL_NULL(actions_innate)
-	// this kicks out client
-	ghostize()
 	// get rid of our shit and nullspace everything first..
 	..()
 	// rendering
-	if(hud_used)
-		QDEL_NULL(hud_used)
+	QDEL_NULL(hud_used)
 	dispose_rendering()
 	// perspective; it might be gone now because self perspective is destroyed in ..()
 	using_perspective?.remove_mob(src, TRUE)
@@ -140,27 +169,35 @@
 	movespeed_modifiers = null
 	// actionspeed
 	actionspeed_modifiers = null
-	return QDEL_HINT_HARDDEL
+	return QDEL_HINT_QUEUE
 
 //* Mob List Registration *//
 
-/mob/proc/mob_list_register(for_stat)
+/mob/proc/mob_list_register()
 	GLOB.mob_list += src
-	if(for_stat == DEAD)
+	if(stat == DEAD)
 		dead_mob_list += src
 	else
 		living_mob_list += src
 
-/mob/proc/mob_list_unregister(for_stat)
+/mob/proc/mob_list_unregister()
 	GLOB.mob_list -= src
-	if(for_stat == DEAD)
-		dead_mob_list -= src
-	else
-		living_mob_list -= src
+	dead_mob_list -= src
+	living_mob_list -= src
 
 /mob/proc/mob_list_update_stat(old_stat, new_stat)
-	mob_list_unregister(old_stat)
-	mob_list_register(new_stat)
+	if(old_stat == new_stat)
+		return
+	switch(old_stat)
+		if(DEAD)
+			dead_mob_list -= src
+		else
+			living_mob_list -= src
+	switch(new_stat)
+		if(DEAD)
+			dead_mob_list += src
+		else
+			living_mob_list += src
 
 /**
  * Generate the tag for this mob
@@ -184,28 +221,6 @@
 	for(var/hud in atom_huds_to_initialize)
 		update_atom_hud_provider(src, hud)
 	atom_huds_to_initialize = null
-
-/mob/proc/remove_screen_obj_references()
-	hands = null
-	pullin = null
-	purged = null
-	internals = null
-	oxygen = null
-	i_select = null
-	m_select = null
-	toxin = null
-	fire = null
-	bodytemp = null
-	healths = null
-	throw_icon = null
-	nutrition_icon = null
-	pressure = null
-	pain = null
-	item_use_icon = null
-	gun_move_icon = null
-	gun_setting_icon = null
-	spell_masters = null
-	zone_sel = null
 
 /mob/statpanel_data(client/C)
 	. = ..()

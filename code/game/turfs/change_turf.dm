@@ -50,13 +50,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/baseturf_core()
 	// todo: this is shitcode, pull it out on maploader refactor.
 	// this is very obviously a copypaste from ChangeTurf.
-	. = SSmapping.level_get_baseturf(z) || world.turf
-	if(!ispath(.))
-		. = text2path(.)
-		if (!ispath(.))
-			warning("Z-level [z] has invalid baseturf '[SSmapping.level_get_baseturf(z)]'")
-			. = world.turf
-	if(. == world.turf)		// no space/basic check, if you use space/basic in a map honestly get bent
+	. = SSmapping.ordered_levels[z].base_turf || BLANK_TURF_TYPE
+	if(. == /turf/space)
 		if(istype(below(), /turf/simulated))
 			. = /turf/simulated/open
 /**
@@ -90,41 +85,22 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	//       then we can skip all this bullshit and have proper space zmimic
 	//       as long as zm overhead isn't too high.
 	//* THIS CANNOT CALL ANY PROCS UP UNTIL 'new path'! *//
-	// todo: this entire switch section is kind of ass
+	if(!path)
+		return
+	if(path == /turf/baseturf_bottom)
+		path = SSmapping.ordered_levels[z].base_turf || /turf/space
 	switch(path)
-		if(null)
-			return
-		if(/turf/baseturf_bottom)
-			var/turf/below = below()
-			path = SSmapping.level_get_baseturf(z) || /turf/space
-			if(!ispath(path))
-				stack_trace("Z-level [z] has invalid baseturf '[SSmapping.level_get_baseturf(z)]'")
-				path = /turf/space
-			if(path == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
-				if(istype(below, /turf/simulated))
-					path = /turf/simulated/open
-			else if(path == /turf/simulated/open)
-				if(istype(below, /turf/space))
-					path = /turf/space
-		// TODO: we shouldn't have this hook.
-		if(/turf/space/basic)
-			var/turf/below = below()
-			// basic doesn't initialize and this will cause issues
-			// no warning though because this can happen naturaly as a result of it being built on top of
-			if(istype(below, /turf/simulated))
-				path = /turf/simulated/open
-			else
-				path = /turf/space
 		if(/turf/space)
-			var/turf/below = below()
+			var/turf/below = locate(x, y, SSmapping.cached_level_down[z])
 			if(istype(below, /turf/simulated))
 				path = /turf/simulated/open
 		if(/turf/simulated/open)
-			var/turf/below = below()
+			var/turf/below = locate(x, y, SSmapping.cached_level_down[z])
 			if(istype(below, /turf/space))
 				path = /turf/space
 
-	if(!global.dmm_preloader_active && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs)) // Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
+	// Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
+	if(!global.dmm_preloader_active && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs))
 		return src
 	if(!(atom_flags & ATOM_INITIALIZED) || (flags & CHANGETURF_SKIP))
 		return new path(src)
@@ -163,6 +139,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/list/old_comp_lookup = comp_lookup?.Copy()
 	var/list/old_signal_procs = signal_procs?.Copy()
 	var/turf/new_turf = new path(src)
+	var/new_turf_was_immediately_initialized = atom_flags & ATOM_INITIALIZED
 
 	new_turf.above = old_above // Multiz ref tracking.
 
@@ -190,9 +167,14 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
 		outdoors = old_outdoors
 
-	// Regen AO
-	if (permit_ao)
-		regenerate_ao()
+	// queue smoothing and AO if needed and we're already initialized
+	// this will be false if we're in mapload so this *should* be a
+	// safe optimization to make.
+	if(new_turf_was_immediately_initialized)
+		if (permit_ao)
+			regenerate_ao()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 
 	// restore/update atmos
 	if(old_fire)
@@ -220,11 +202,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if (old_z_opacity != new_z_opacity)
 			for (var/datum/lighting_corner/corn in corners)
 				corn.rebuild_ztraversal(!new_z_opacity)
-
-	// only queue for smoothing if initialized
-	if(atom_flags & ATOM_INITIALIZED)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
 
 	return new_turf
 
