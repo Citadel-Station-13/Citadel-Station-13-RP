@@ -49,31 +49,33 @@ GLOBAL_LIST_EMPTY(apcs)
 #define NIGHTSHIFT_NEVER 2
 #define NIGHTSHIFT_ALWAYS 3
 
-//NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-//Critical//
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 22)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
-/// High capacity cell APCs
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell, 22)
 /obj/machinery/power/apc/large_cell
 	cell_type = /obj/item/cell/basic/tier_1/large
 
-/// Super capacity cell APCS
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_2, 22)
 /obj/machinery/power/apc/large_cell/tier_2
 	cell_type = /obj/item/cell/basic/tier_2/large
 
-/// Critical APCs with super cells
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_2/critical, 22)
 /obj/machinery/power/apc/large_cell/tier_2/critical
 	is_critical = 1
 
-/// APCS with hyper cells. How lewd
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_3, 22)
 /obj/machinery/power/apc/large_cell/tier_3
 	cell_type = /obj/item/cell/basic/tier_3/large
+
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_4, 22)
+/obj/machinery/power/apc/large_cell/tier_4
+	cell_type = /obj/item/cell/basic/tier_4/large
+
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_5, 22)
+/obj/machinery/power/apc/large_cell/tier_5
+	cell_type = /obj/item/cell/basic/tier_5/large
 
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden, 22)
@@ -567,6 +569,10 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	else if	(istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
 		if(cell)
 			to_chat(user,"The [src.name] already has a power cell installed.")
+			return
+		var/obj/item/cell/casted_cell = W
+		if(!(casted_cell.cell_type & cell_accept))
+			to_chat(usr, SPAN_WARNING("[casted_cell] won't fit in [src]'s cell slot."))
 			return
 		if (machine_stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
