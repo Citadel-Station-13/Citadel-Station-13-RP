@@ -193,7 +193,7 @@
 		/datum/firemode/energy/nt_isd/lance/kill,
 	)
 	item_renderer = /datum/gun_item_renderer/segments{
-		offset_x = 3
+		offset_x = 3;
 		count = 4;
 		use_color = TRUE;
 		independent_colored_firemode = TRUE;
@@ -251,7 +251,7 @@
 		/datum/firemode/energy/nt_isd/multiphase/ion,
 	)
 	item_renderer = /datum/gun_item_renderer/segments{
-		offset_x = 4
+		offset_x = 4;
 		count = 4;
 		use_color = TRUE;
 		independent_colored_firemode = TRUE;

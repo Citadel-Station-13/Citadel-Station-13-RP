@@ -107,8 +107,6 @@ SUBSYSTEM_DEF(garbage)
 			dellog += "\tIgnored force: [I.no_respect_force] times"
 		if (I.no_hint)
 			dellog += "\tTotal No hint: [I.no_hint] times"
-		if(LAZYLEN(I.extra_details))
-			dellog += "\tDeleted Metadata: [I.extra_details.Join("\n\t\t")]"
 
 	log_qdel(dellog.Join("\n"))
 
@@ -144,40 +142,46 @@ SUBSYSTEM_DEF(garbage)
 	if (level == GC_QUEUE_FILTER)
 		delslasttick = 0
 		gcedlasttick = 0
+
 	var/cut_off_time = world.time - collection_timeout[level] //ignore entries newer then this
 	var/list/queue = queues[level]
-	var/static/lastlevel
-	var/static/count = 0
-	if (count) //runtime last run before we could do this.
-		var/c = count
-		count = 0 //so if we runtime on the Cut, we don't try again.
-		var/list/lastqueue = queues[lastlevel]
-		lastqueue.Cut(1, c+1)
 
-	lastlevel = level
+	// this usually indicates a leak but technically can be valid behavior
+	var/static/oh_my_god = FALSE
+	if(length(queue) > 500000)
+		if(!oh_my_god)
+			oh_my_god = TRUE
+			log_and_message_admins("SSgarbage queue index [level] is > 500000; what is going on? Yell at coders.")
 
 // 1 from the hard reference in the queue, and 1 from the variable used before this
 #define REFS_WE_EXPECT 2
 
-	//We do this rather then for(var/list/ref_info in queue) because that sort of for loop copies the whole list.
-	//Normally this isn't expensive, but the gc queue can grow to 40k items, and that gets costly/causes overrun.
-	for (var/i in 1 to length(queue))
-		var/list/L = queue[i]
-		if (length(L) < GC_QUEUE_ITEM_INDEX_COUNT)
-			count++
-			if (MC_TICK_CHECK)
-				return
+	// this is the checking index; anything **before** this will be cut.
+	var/checking_index = 1
+	while(checking_index <= length(queue))
+		if(MC_TICK_CHECK)
+			break
+
+		var/list/queue_entry = queue[checking_index]
+		// invalid entry for some reason, drop it
+		if(length(queue_entry) < GC_QUEUE_ITEM_INDEX_COUNT)
+			++checking_index
+			var/static/warned_invalid_entry = FALSE
+			if(!warned_invalid_entry)
+				warned_invalid_entry = TRUE
+				log_and_message_admins("SSgarbage found an invalid entry with list length [length(queue_entry)]. Yell at coders if you see this.")
 			continue
-
-		var/queued_at_time = L[GC_QUEUE_ITEM_QUEUE_TIME]
+		var/queued_at_time = queue_entry[GC_QUEUE_ITEM_QUEUE_TIME]
 		if(queued_at_time > cut_off_time)
-			break // Everything else is newer, skip them
-		count++
+			break
 
-		var/datum/D = L[GC_QUEUE_ITEM_REF]
+		// at this point, the entry is going to get popped off, no matter what
+		++checking_index
 
-		// If that's all we've got, send er off
-		if (refcount(D) == REFS_WE_EXPECT)
+		var/datum/D = queue_entry[GC_QUEUE_ITEM_REF]
+		// if there's only the expected refcount (one in queue, one in this proc),
+		// release them to let it GC
+		if(refcount(D) == REFS_WE_EXPECT)
 			++gcedlasttick
 			++totalgcs
 			pass_counts[level]++
@@ -185,18 +189,16 @@ SUBSYSTEM_DEF(garbage)
 			// tg text_ref is just `return ref()`, and REF() has side effects
 			reference_find_on_fail -= ref(D) //It's deleted we don't care anymore.
 			#endif
-			if (MC_TICK_CHECK)
-				return
 			continue
 
-		// Something's still referring to the qdel'd object.
+		// else, something is still referencing it
 		fail_counts[level]++
 
 		#ifdef REFERENCE_TRACKING
 		var/ref_searching = FALSE
 		#endif
 
-		switch (level)
+		switch(level)
 			if (GC_QUEUE_CHECK)
 				#ifdef REFERENCE_TRACKING
 				// Decides how many refs to look for (potentially)
@@ -219,9 +221,14 @@ SUBSYSTEM_DEF(garbage)
 				message = "[message] (ref count of [refcount(D)])"
 				log_world(message)
 
-				var/detail = D.dump_harddel_info()
-				if(detail)
-					LAZYADD(I.extra_details, detail)
+				// -- CITADEL EDIT: more aggressive GC tracing --
+				do
+					var/list/trace_data = D.gc_trace_data()
+					trace_data["type"] = "[type]"
+					trace_data["refcount"] = refcount(D)
+					log_world("GC-TRACE: [json_encode(trace_data)]")
+				while(FALSE)
+				// -- End --
 
 				#ifdef TESTING
 				for(var/c in GLOB.admins) //Using testing() here would fill the logs with ADMIN_VV garbage
@@ -235,27 +242,25 @@ SUBSYSTEM_DEF(garbage)
 				if (I.qdel_flags & QDEL_ITEM_SUSPENDED_FOR_LAG)
 					#ifdef REFERENCE_TRACKING
 					if(ref_searching)
-						return //ref searching intentionally cancels all further fires while running so things that hold references don't end up getting deleted, so we want to return here instead of continue
+						break //ref searching intentionally cancels all further fires while running so things that hold references don't end up getting deleted, so we want to return here instead of continue
 					#endif
 					continue
 			if (GC_QUEUE_HARDDELETE)
+				// We don't want to hold a reference anymore when the harddel runs,
+				// so early-cut the list so that only this proc (and HardDelete) holds a ref.
+				queue.Cut(1, checking_index)
+				checking_index = 1
 				HardDelete(D)
-				if (MC_TICK_CHECK)
-					return
 				continue
 
 		Queue(D, level+1)
 
 		#ifdef REFERENCE_TRACKING
 		if(ref_searching)
-			return
+			break
 		#endif
 
-		if (MC_TICK_CHECK)
-			return
-	if (count)
-		queue.Cut(1,count+1)
-		count = 0
+	queue.Cut(1, checking_index)
 
 #undef REFS_WE_EXPECT
 
@@ -280,9 +285,18 @@ SUBSYSTEM_DEF(garbage)
 	var/type = D.type
 	var/refID = ref(D)
 	var/datum/qdel_item/type_info = items[type]
-	var/detail = D.dump_harddel_info()
-	if(detail)
-		LAZYADD(type_info.extra_details, detail)
+
+	// CITADEL EDIT: trace GC
+	var/maybe_trace_data
+	do
+		var/list/trace_data = D.gc_trace_data()
+		trace_data["type"] = "[type]"
+		// this *should* be at 2 here, one in the handlequeue proc,
+		// and one here. any extras are dangling references.
+		trace_data["refcount"] = refcount(D)
+		maybe_trace_data = json_encode(trace_data)
+		log_world("GC-TRACE: [maybe_trace_data]")
+	while(FALSE)
 
 	var/tick_usage = TICK_USAGE
 	del(D)
@@ -331,7 +345,6 @@ SUBSYSTEM_DEF(garbage)
 	var/no_hint = 0 //!Number of times it's not even bother to give a qdel hint
 	var/slept_destroy = 0 //!Number of times it's slept in its destroy
 	var/qdel_flags = 0 //!Flags related to this type's trip thru qdel.
-	var/list/extra_details //!Lazylist of string metadata about the deleted objects
 
 /datum/qdel_item/New(mytype)
 	name = "[mytype]"
@@ -360,8 +373,15 @@ SUBSYSTEM_DEF(garbage)
 	to_delete.gc_destroyed = GC_CURRENTLY_BEING_QDELETED
 	var/start_time = world.time
 	var/start_tick = world.tick_usage
-	SEND_SIGNAL(to_delete, COMSIG_PARENT_QDELETING, force) // Let the (remaining) components know about the result of Destroy
-	var/hint = to_delete.Destroy(force) // Let our friend know they're about to get fucked up.
+
+	var/hint
+	if(isatom(to_delete) && !(to_delete:atom_flags & ATOM_INITIALIZED))
+		// early destroy for atoms
+		to_delete:EarlyDestroy(force)
+	else
+		// normal destroy
+		SEND_SIGNAL(to_delete, COMSIG_PARENT_QDELETING, force) // Let the (remaining) components know about the result of Destroy
+		hint = to_delete.Destroy(force)
 
 	if(world.time != start_time)
 		trash.slept_destroy++

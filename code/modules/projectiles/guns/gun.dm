@@ -357,6 +357,7 @@
 	QDEL_NULL(pin)
 	QDEL_LAZYLIST(attachments)
 	QDEL_LAZYLIST(modular_components)
+	QDEL_NULL(firemode_swap_action)
 	return ..()
 
 /obj/item/gun/examine(mob/user, dist)

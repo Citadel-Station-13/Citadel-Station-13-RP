@@ -7,7 +7,7 @@
 	icon_state = "Contain_F"
 	anchored = TRUE
 	density = FALSE
-	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
+	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF | INTEGRITY_INDESTRUCTIBLE
 	use_power = USE_POWER_OFF
 	light_range = 4
 	var/obj/machinery/field_generator/FG1 = null

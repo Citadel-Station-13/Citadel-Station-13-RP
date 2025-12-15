@@ -89,6 +89,8 @@
 /obj/item/gun/projectile/energy/Destroy()
 	if(self_recharge)
 		STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(modular_particle_array_swap_action)
+	QDEL_NULL(lethal_safety_action)
 	return ..()
 
 /obj/item/gun/projectile/energy/update_overlays()

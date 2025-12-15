@@ -54,22 +54,17 @@ var/religion_name = null
 		new_station_name = name + " "
 
 	// Prefix
-	switch(Holiday)
-		//get normal name
-		if(null,"",0)
-			name = pick("", "Stanford", "Dorf", "Alium", "Prefix", "Clowning", "Aegis", "Ishimura", "Scaredy", "Death-World", "Mime", "Honk", "Rogue", "MacRagge", "Ultrameens", "Safety", "Paranoia", "Explosive", "Neckbear", "Donk", "Muppet", "North", "West", "East", "South", "Slant-ways", "Widdershins", "Rimward", "Expensive", "Procreatory", "Imperial", "Unidentified", "Immoral", "Carp", "Ork", "Pete", "Control", "Nettle", "Aspie", "Class", "Crab", "Fist","Corrogated","Skeleton","Race", "Fatguy", "Gentleman", "Capitalist", "Communist", "Bear", "Beard", "Derp", "Space", "Spess", "Star", "Moon", "System", "Mining", "Neckbeard", "Research", "Supply", "Military", "Orbital", "Battle", "Science", "Asteroid", "Home", "Production", "Transport", "Delivery", "Extraplanetary", "Orbital", "Correctional", "Robot", "Hats", "Pizza")
-			if(name)
-				new_station_name += name + " "
-
+	if(length(SSevents.holidays))
 		//For special days like christmas, easter, new-years etc ~Carn
-		if("Friday the 13th")
+		if(SSevents.holidays[HOLIDAY_FRIDAY_THIRTEEN])
 			name = pick("Mike","Friday","Evil","Myers","Murder","Deathly","Stabby")
 			new_station_name += name + " "
 			random = 13
 		else
+			var/randon_holiday = pick(SSevents.holidays)
 			//get the first word of the Holiday and use that
-			var/i = findtext(Holiday," ",1,0)
-			name = copytext(Holiday,1,i)
+			var/i = findtext(randon_holiday," ",1,0)
+			name = copytext(randon_holiday,1,i)
 			new_station_name += name + " "
 
 	// Suffix

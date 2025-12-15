@@ -1,9 +1,9 @@
 /obj/item/vehicle_chassis/reticent
 	name = "Reticent Chassis"
 
-/obj/item/vehicle_chassis/reticent/New()
-	..()
+/obj/item/vehicle_chassis/reticent/Initialize(mapload)
 	construct = new /datum/construction/mecha/reticent_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/reticent_torso
 	name="Reticent Torso"

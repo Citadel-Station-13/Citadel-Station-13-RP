@@ -42,11 +42,11 @@ DEFINE_BITFIELD(turf_flags, list(
 #define TURF_SPAWN_FLAG_LEVEL_TURF (1<<4)
 
 DEFINE_BITFIELD(turf_spawn_flags, list(
-	BITFIELD_NEW("Allow Mass Fill", TURF_SPAWN_FLAG_FILLABLE),
-	BITFIELD_NEW("Allow Admin Buildmode", TURF_SPAWN_FLAG_BUILDMODE),
-	BITFIELD_NEW("Allow Holographic Render", TURF_SPAWN_FLAG_HOLODECK),
-	BITFIELD_NEW("Allow Virtual Reality", TURF_SPAWN_FLAG_VR),
-	BITFIELD_NEW("Allow as Level Baseturf", TURF_SPAWN_FLAG_LEVEL_TURF),
+	BITFIELD_NAMED("Allow Mass Fill", TURF_SPAWN_FLAG_FILLABLE),
+	BITFIELD_NAMED("Allow Admin Buildmode", TURF_SPAWN_FLAG_BUILDMODE),
+	BITFIELD_NAMED("Allow Holographic Render", TURF_SPAWN_FLAG_HOLODECK),
+	BITFIELD_NAMED("Allow Virtual Reality", TURF_SPAWN_FLAG_VR),
+	BITFIELD_NAMED("Allow as Level Baseturf", TURF_SPAWN_FLAG_LEVEL_TURF),
 ))
 
 /// for turfs that can be spawned by most turf spawners / renderers

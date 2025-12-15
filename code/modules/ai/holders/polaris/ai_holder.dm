@@ -11,13 +11,6 @@
 										// mob to stay still (e.g. delayed attacwking). If you need the mob to be inactive for an extended period of time,
 										// consider sleeping the AI instead.
 
-/datum/ai_holder/polaris/hostile
-	hostile = TRUE
-
-/datum/ai_holder/polaris/retaliate
-	hostile = TRUE
-	retaliate = TRUE
-
 /datum/ai_holder/polaris/New(var/new_holder)
 	ASSERT(new_holder)
 	holder = new_holder
@@ -29,8 +22,15 @@
 	holder = null
 	SSai.processing -= src // We might've already been asleep and removed, but byond won't care if we do this again and it saves a conditional.
 	home_turf = null
+	leader = null
 	return ..()
 
+/datum/ai_holder/polaris/hostile
+	hostile = TRUE
+
+/datum/ai_holder/polaris/retaliate
+	hostile = TRUE
+	retaliate = TRUE
 
 // Now for the actual AI stuff.
 

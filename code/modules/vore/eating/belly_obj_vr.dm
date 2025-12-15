@@ -164,14 +164,19 @@
 	. = ..()
 	//If not, we're probably just in a prefs list or something.
 	if(isliving(loc))
+		if(QDELING(loc))
+			CRASH("tried to make a belly in a qdeleting/qdeleted mob, what the fuck")
 		owner = loc
 		owner.vore_organs |= src
 		SSbellies.belly_list += src
 
 /obj/belly/Destroy()
 	SSbellies.belly_list -= src
-	if(owner?.vore_organs)
-		owner.vore_organs -= src
+	if(owner)
+		if(owner.vore_organs)
+			owner.vore_organs -= src
+		if(owner.vore_selected == src)
+			owner.vore_selected = null
 		owner = null
 	. = ..()
 

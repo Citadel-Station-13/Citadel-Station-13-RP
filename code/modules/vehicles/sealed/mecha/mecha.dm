@@ -302,10 +302,24 @@
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/vehicle/sealed/mecha, add_iterators))
 	removeVerb(/obj/vehicle/sealed/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
-	loc.Entered(src)
 	mechas_list += src //global mech list
 
 /obj/vehicle/sealed/mecha/Destroy()
+	// WHAT THE FUCK
+	QDEL_NULL(internals_action)
+	QDEL_NULL(lights_action)
+	QDEL_NULL(stats_action)
+	QDEL_NULL(strafing_action)
+	QDEL_NULL(defence_action)
+	QDEL_NULL(overload_action)
+	QDEL_NULL(smoke_action)
+	QDEL_NULL(zoom_action)
+	QDEL_NULL(thrusters_action)
+	QDEL_NULL(cycle_action)
+	QDEL_NULL(switch_damtype_action)
+	QDEL_NULL(phasing_action)
+	QDEL_NULL(cloak_action)
+
 	src.legacy_eject_occupant()
 	for(var/mob/M in src) //Be Extra Sure
 		M.forceMove(get_turf(src))
@@ -371,15 +385,17 @@
 	cell = null
 	internal_tank = null
 
-	if(smoke_possible)	//Just making sure nothing is running.
-		qdel(smoke_system)
-
 	QDEL_NULL(pr_int_temp_processor)
 	QDEL_NULL(pr_inertial_movement)
 	QDEL_NULL(pr_give_air)
 	QDEL_NULL(pr_internal_damage)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(minihud)
+	QDEL_NULL(radio)
+	QDEL_NULL(smoke_system)
+
+	selected = null
+	proc_res = null
 
 	mechas_list -= src //global mech list
 	. = ..()

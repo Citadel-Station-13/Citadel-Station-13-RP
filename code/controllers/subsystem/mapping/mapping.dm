@@ -102,13 +102,6 @@ SUBSYSTEM_DEF(mapping)
 	/// expect zlevel adjacency.
 	var/map_system_mutex = FALSE
 
-	//! Legacy !//
-
-	// todo: this is going to need a lot more documentation
-	// the idea of a single zlevel for areas is sorta flawed
-	// this is an acceptable lazy lookup but we need to standardize what this means / look at how this is generated.
-	var/list/areas_in_z = list()
-
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	// load data
 	// todo: refactor

@@ -101,6 +101,7 @@
 	/// If clicked on harm intent.
 	var/response_harm   = "tries to hurt"
 	/// Mobs on this list wont get attacked regardless of faction status.
+	// TODO: THIS IS A GC FAILURE!
 	var/list/friends = list()
 	/// How much an unarmed harm click does to this mob.
 	var/harm_intent_damage = 3
@@ -275,17 +276,11 @@
 
 	if(has_eye_glow)
 		add_eyes()
-
-	inventory = new(src)
-	inventory.set_inventory_slots(inventory_slots)
-	inventory.set_hand_count(get_usable_hand_count())
-
 	return ..()
 
 /mob/living/simple_mob/Destroy()
 	default_language = null
-	if(access_card)
-		QDEL_NULL(access_card)
+	QDEL_NULL(access_card)
 
 	friends.Cut()
 	languages.Cut()
@@ -293,6 +288,13 @@
 	if(has_eye_glow)
 		remove_eyes()
 	return ..()
+
+/mob/living/simple_mob/init_inventory()
+	if(inventory)
+		return
+	inventory = new(src)
+	inventory.set_inventory_slots(inventory_slots)
+	inventory.set_hand_count(get_usable_hand_count())
 
 /mob/living/simple_mob/proc/init_melee_style()
 	melee_style = new

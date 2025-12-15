@@ -79,14 +79,13 @@
 	return
 
 //Constructor allows passing the human to sync damages
-/mob/living/simple_mob/slime/promethean/New(var/newloc, var/mob/living/carbon/human/H)
-	..()
+/mob/living/simple_mob/slime/promethean/Initialize(mapload, mob/living/carbon/human/H)
+	. = ..()
 	if(H)
 		humanform = H
 		update_health()
-
 	else
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /mob/living/simple_mob/slime/promethean/update_health()
 	if(!humanform)

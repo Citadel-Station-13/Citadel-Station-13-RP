@@ -12,6 +12,7 @@
 /datum/mini_hud/Destroy()
 	main_hud?.remove_minihud(src)
 	main_hud = null
+	QDEL_LIST(screenobjs)
 	if(needs_processing)
 		STOP_PROCESSING(SSprocessing, src)
 	return ..()
@@ -65,7 +66,8 @@
 
 /datum/mini_hud/hardsuit/Destroy()
 	if(owner_rig)
-		//owner_rig.minihud = null
+		if(owner_rig.minihud == src)
+			owner_rig.minihud = null
 		owner_rig = null
 	return ..()
 

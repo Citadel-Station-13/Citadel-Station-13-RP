@@ -67,18 +67,15 @@
 	icon_state = "healthhud"
 	icon = 'icons/obj/clothing/glasses.dmi'
 
-/obj/item/borg/sight/hud/med/New()
-	..()
+/obj/item/borg/sight/hud/med/Initialize(mapload)
 	hud = new /obj/item/clothing/glasses/hud/health(src)
-	return
-
+	return ..()
 
 /obj/item/borg/sight/hud/sec
 	name = "security hud"
 	icon_state = "securityhud"
 	icon = 'icons/obj/clothing/glasses.dmi'
 
-/obj/item/borg/sight/hud/sec/New()
-	..()
+/obj/item/borg/sight/hud/sec/Initialize(mapload)
 	hud = new /obj/item/clothing/glasses/hud/security(src)
-	return
+	return ..()
