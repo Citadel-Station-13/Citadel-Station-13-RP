@@ -525,6 +525,7 @@
 	var/collar_tag
 
 /obj/item/clothing/accessory/collar/proc/set_collar_tag(var/new_tag, var/update_name = TRUE, var/update_desc = TRUE, var/name_format = "COLLAR_NAME (COLLAR_TAG)", var/desc_format = "The tag says \"COLLAR_TAG\".")
+	// if there's no tag, we can safely say the current name is the new name to use when applying a tag, rather than the initial name
 	if(!length(collar_tag))
 		collar_name = name
 
