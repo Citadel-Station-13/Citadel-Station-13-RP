@@ -117,6 +117,77 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	var/tinted
 	var/id_tint
 
+/obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
+	//if assembly is given, create the new door from the assembly
+	if (assembly && istype(assembly))
+		assembly_type = assembly.type
+
+		electronics = assembly.electronics
+		electronics.loc = src
+
+		//update the door's access to match the electronics'
+		secured_wires = electronics.secure
+		req_one_access = electronics.conf_req_one_access?.Copy()
+		req_access = electronics.conf_req_access?.Copy()
+
+		//get the name from the assembly
+		if(assembly.created_name)
+			name = assembly.created_name
+		else
+			name = "[istext(assembly.glass) ? "[assembly.glass] airlock" : assembly.base_name]"
+
+		//get the dir from the assembly
+		setDir(assembly.dir)
+
+	//wires
+	var/turf/T = get_turf(loc)
+	if(T && (T.z in (LEGACY_MAP_DATUM).admin_levels))
+		secured_wires = 1
+	if (secured_wires)
+		wires = new/datum/wires/airlock/secure(src)
+	else
+		wires = new/datum/wires/airlock(src)
+
+	if(src.closeOtherId != null)
+		for (var/obj/machinery/door/airlock/A in GLOB.machines)
+			if(A.closeOtherId == src.closeOtherId && A != src)
+				src.closeOther = A
+				break
+	name = "\improper [name]"
+	if(autoset_dir)
+		for (var/cardinal in GLOB.cardinal) //No list copy please good sir
+			var/turf/step_turf = get_step(src, cardinal)
+			if(step_turf)
+				for(var/atom/thing as anything in step_turf)
+					if(thing.type in airlock_typecache)
+						switch(cardinal)
+							if(EAST)
+								setDir(SOUTH)
+							if(WEST)
+								setDir(SOUTH)
+							if(NORTH)
+								setDir(WEST)
+							if(SOUTH)
+								setDir(WEST)
+						break
+				if (step_turf.density == TRUE)
+					switch(cardinal)
+						if(EAST)
+							setDir(SOUTH)
+						if(WEST)
+							setDir(SOUTH)
+						if(NORTH)
+							setDir(WEST)
+						if(SOUTH)
+							setDir(WEST)
+					break
+	update_icon(AIRLOCK_CLOSED)
+	. = ..()
+
+/obj/machinery/door/airlock/Destroy()
+	QDEL_NULL(wires)
+	return ..()
+
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/icon/color_overlay
 	var/icon/filling_overlay
@@ -1053,77 +1124,6 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/can_pathfinding_pass(atom/movable/actor, datum/pathfinding/search)
 	return ..() || (has_access(req_access, req_one_access, search.ss13_with_access) && !locked && !inoperable())
-
-/obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
-	//if assembly is given, create the new door from the assembly
-	if (assembly && istype(assembly))
-		assembly_type = assembly.type
-
-		electronics = assembly.electronics
-		electronics.loc = src
-
-		//update the door's access to match the electronics'
-		secured_wires = electronics.secure
-		req_one_access = electronics.conf_req_one_access?.Copy()
-		req_access = electronics.conf_req_access?.Copy()
-
-		//get the name from the assembly
-		if(assembly.created_name)
-			name = assembly.created_name
-		else
-			name = "[istext(assembly.glass) ? "[assembly.glass] airlock" : assembly.base_name]"
-
-		//get the dir from the assembly
-		setDir(assembly.dir)
-
-	//wires
-	var/turf/T = get_turf(loc)
-	if(T && (T.z in (LEGACY_MAP_DATUM).admin_levels))
-		secured_wires = 1
-	if (secured_wires)
-		wires = new/datum/wires/airlock/secure(src)
-	else
-		wires = new/datum/wires/airlock(src)
-
-	if(src.closeOtherId != null)
-		for (var/obj/machinery/door/airlock/A in GLOB.machines)
-			if(A.closeOtherId == src.closeOtherId && A != src)
-				src.closeOther = A
-				break
-	name = "\improper [name]"
-	if(autoset_dir)
-		for (var/cardinal in GLOB.cardinal) //No list copy please good sir
-			var/turf/step_turf = get_step(src, cardinal)
-			for(var/atom/thing as anything in step_turf)
-				if(thing.type in airlock_typecache)
-					switch(cardinal)
-						if(EAST)
-							setDir(SOUTH)
-						if(WEST)
-							setDir(SOUTH)
-						if(NORTH)
-							setDir(WEST)
-						if(SOUTH)
-							setDir(WEST)
-					break
-			if (step_turf.density == TRUE)
-				switch(cardinal)
-					if(EAST)
-						setDir(SOUTH)
-					if(WEST)
-						setDir(SOUTH)
-					if(NORTH)
-						setDir(WEST)
-					if(SOUTH)
-						setDir(WEST)
-				break
-	update_icon(AIRLOCK_CLOSED)
-	. = ..()
-
-/obj/machinery/door/airlock/Destroy()
-	qdel(wires)
-	wires = null
-	return ..()
 
 // Most doors will never be deconstructed over the course of a round,
 // so as an optimization defer the creation of electronics until

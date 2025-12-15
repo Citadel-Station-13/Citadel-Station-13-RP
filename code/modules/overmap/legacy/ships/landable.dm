@@ -84,7 +84,7 @@
 	landmark_tag += "_[shuttle_name]"
 	src.shuttle_name = shuttle_name
 	. = ..()
-	base_turf = world.turf
+	base_turf = BLANK_TURF_TYPE
 
 /obj/effect/shuttle_landmark/ship/Destroy()
 	var/obj/overmap/entity/visitable/ship/landable/ship = get_overmap_sector(z)

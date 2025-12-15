@@ -20,7 +20,7 @@
 	window = new(client, id)
 	window.subscribe(src, PROC_REF(on_message))
 
-/datum/tgui_panel/Del()
+/datum/tgui_panel/Destroy()
 	window.unsubscribe(src)
 	window.close()
 	client = null

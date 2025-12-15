@@ -284,8 +284,8 @@
 		var/turf/new_turf = get_turf(src)
 
 		if(old_turf != new_turf)
-			old_turf.unregister_dangerous_object(src)
-			new_turf.register_dangerous_object(src)
+			old_turf?.unregister_dangerous_object(src)
+			new_turf?.register_dangerous_object(src)
 
 /obj/worth_contents(flags)
 	. = ..()

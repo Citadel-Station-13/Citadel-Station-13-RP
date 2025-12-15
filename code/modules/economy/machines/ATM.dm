@@ -41,6 +41,10 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
+/obj/machinery/atm/Destroy()
+	QDEL_NULL(spark_system)
+	return ..()
+
 /obj/machinery/atm/process(delta_time)
 	if(machine_stat & NOPOWER)
 		return

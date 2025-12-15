@@ -1542,8 +1542,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pdabox"
 
-/obj/item/storage/box/PDAs/New()
-	..()
+/obj/item/storage/box/PDAs/Initialize(mapload, empty)
+	. = ..()
 	new /obj/item/pda(src)
 	new /obj/item/pda(src)
 	new /obj/item/pda(src)

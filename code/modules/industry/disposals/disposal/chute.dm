@@ -159,7 +159,7 @@
 		return
 
 	//animals cannot put mobs other than themselves into disposal
-	if(isanimal(user) && target != user)
+	if(isanimal_legacy_this_is_broken(user) && target != user)
 		return
 
 	src.add_fingerprint(user)

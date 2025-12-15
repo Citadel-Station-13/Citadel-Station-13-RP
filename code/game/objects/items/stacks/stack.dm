@@ -87,10 +87,14 @@
 	if(!stacktype_legacy)
 		stacktype_legacy = type
 	. = ..()
-	if(merge && !mapload)
+	// only merge 1. outside of mapload and 2. if we had amount
+	if(merge && !mapload && amount)
 		for(var/obj/item/stack/S in loc)
 			if(can_merge(S))
 				merge(S)
+		// and if we did and no longer have amount, delete ourselves
+		if(amount == 0)
+			zero_amount()
 	update_icon()
 
 /obj/item/stack/update_icon_state()
@@ -214,12 +218,12 @@
 		return FALSE
 	return other.stacktype_legacy == stacktype_legacy
 
-/obj/item/stack/proc/use(used)
+/obj/item/stack/proc/use(used, no_delete)
 	if (!can_use(used))
 		return FALSE
 	if(!uses_charge)
 		amount -= used
-		if (amount <= 0)
+		if (amount <= 0 && !no_delete)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return TRUE
@@ -345,7 +349,7 @@
 		merge(AM)
 
 /// Merge src into S, as much as possible.
-/obj/item/stack/proc/merge(obj/item/stack/S)
+/obj/item/stack/proc/merge(obj/item/stack/S, no_delete)
 	if(uses_charge)
 		return	// how about no!
 	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
@@ -358,7 +362,7 @@
 	if(pulledby)
 		pulledby.start_pulling(S)
 	S.copy_evidences(src)
-	use(transfer, TRUE)
+	use(transfer, no_delete)
 	S.add(transfer)
 	return transfer
 
