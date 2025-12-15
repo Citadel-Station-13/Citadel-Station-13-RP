@@ -90,6 +90,12 @@
 	return ..()
 
 /mob/Destroy()
+	// this kicks out client
+	// this is needed to be early because we destroy stuff like inventory
+	// TODO: can we have this ran even earlier?
+	//       ideally we want to preserve as much state as possible so
+	//       we don't want to run further-down behavior before this
+	ghostize()
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
@@ -149,8 +155,6 @@
 	// actions
 	QDEL_NULL(actions_controlled)
 	QDEL_NULL(actions_innate)
-	// this kicks out client
-	ghostize()
 	// get rid of our shit and nullspace everything first..
 	..()
 	// rendering
