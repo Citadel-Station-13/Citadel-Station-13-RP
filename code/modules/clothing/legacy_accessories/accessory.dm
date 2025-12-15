@@ -793,14 +793,14 @@
 		to_chat(user,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
 		initialize_tag(str)
 
-/obj/item/clothing/accessory/collar/proc/initialize_tag(var/tag)
-		name = initial(name) + " ([tag])"
-		desc = initial(desc) + " \"[tag]\" has been engraved on the tag."
+/obj/item/clothing/accessory/collar/proc/initialize_tag(var/tag, var/use_initial = TRUE)
+		name = use_initial ? initial(name) : name + " ([tag])"
+		desc = use_initial ? initial(desc) : desc + " \"[tag]\" has been engraved on the tag."
 		writtenon = 1
 
-/obj/item/clothing/accessory/collar/holo/initialize_tag(var/tag)
+/obj/item/clothing/accessory/collar/holo/initialize_tag(var/tag, var/use_initial = TRUE)
 		..()
-		desc = initial(desc) + " The tag says \"[tag]\"."
+		desc = use_initial ? initial(desc) : desc + " The tag says \"[tag]\"."
 
 /obj/item/clothing/accessory/collar/attackby(obj/item/I, mob/user)
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
