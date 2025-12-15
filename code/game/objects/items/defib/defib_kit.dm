@@ -1,5 +1,4 @@
 // todo: rework defibs
-// todo: object cell system
 
 //backpack item
 /obj/item/defib_kit
@@ -18,32 +17,32 @@
 	worth_intrinsic = 300
 
 	var/obj/item/shockpaddles/linked/paddles
-	var/obj/item/cell/bcell = null
+
+	var/cell_type
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM
 
 /obj/item/defib_kit/Initialize(mapload) //starts without a cell for rnd
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 	. = ..()
 	if(ispath(paddles))
 		paddles = new paddles(src, src)
 	else
 		paddles = new(src, src)
-
-	if(ispath(bcell))
-		bcell = new bcell(src)
 	update_icon()
 
 /obj/item/defib_kit/Destroy()
-	. = ..()
 	QDEL_NULL(paddles)
-	QDEL_NULL(bcell)
+	return ..()
 
 /obj/item/defib_kit/loaded //starts with a cell
-	bcell = /obj/item/cell/apc
+	cell_type = /obj/item/cell/basic/tier_1/medium
 
 /obj/item/defib_kit/update_icon()
 	cut_overlays()
 	. = ..()
 	var/list/new_overlays = list()
 
+	var/obj/item/bcell = get_cell()
 	if(paddles && paddles.loc == src) //in case paddles got destroyed somehow.
 		new_overlays += "[initial(icon_state)]-paddles"
 	if(bcell && paddles)
@@ -75,26 +74,6 @@
 	if(W == paddles)
 		reattach_paddles(user)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	else if(istype(W, /obj/item/cell/medium))
-		if(bcell)
-			to_chat(user, "<span class='notice'>\the [src] already has a cell.</span>")
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		else
-			if(!user.attempt_insert_item_for_installation(W, src))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
-			bcell = W
-			to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
-			update_icon()
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-
-	else if(W.is_screwdriver())
-		if(bcell)
-			bcell.update_icon()
-			bcell.forceMove(get_turf(src.loc))
-			bcell = null
-			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
-			update_icon()
-		return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		return ..()
 
@@ -102,7 +81,6 @@
 	if(paddles)
 		. = paddles.emag_act(user)
 		update_icon()
-	return
 
 //Paddle stuff
 
@@ -167,8 +145,7 @@
 	worth_intrinsic = 500
 
 /obj/item/defib_kit/compact/loaded
-	bcell = /obj/item/cell/high
-
+	cell_type = /obj/item/cell/basic/tier_1/medium
 
 /obj/item/defib_kit/compact/combat
 	name = "combat defibrillator"
@@ -176,4 +153,4 @@
 	paddles = /obj/item/shockpaddles/linked/combat
 
 /obj/item/defib_kit/compact/combat/loaded
-	bcell = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_2/medium

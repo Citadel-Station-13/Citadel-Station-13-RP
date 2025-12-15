@@ -1,13 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/discharge_beam, /gun_component/particle_array/discharge_beam, "gun_component-particle_array-discharge_beam")
-/obj/item/gun_component/particle_array/discharge_beam
-	name = /obj/item/gun_component/particle_array::name + " (discharge beam)"
-	desc = "A particle array that generates an ionized pathway to send an electric discharge through."
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/discharge_bolt, /gun_component/particle_array/discharge_bolt, "gun_component-particle_array-discharge_bolt")
+/obj/item/gun_component/particle_array/discharge_bolt
+	name = /obj/item/gun_component/particle_array::name + " (discharge bolt)"
+	desc = "A particle array that generates an energy bolt that causes an electrical discharge on impact."
 
 	considered_lethal = TRUE
-	selection_name = "discharge beam"
+	selection_name = "discharge bolt"
 	render_color = "#ffff00"
 	base_charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge / 12
 
@@ -18,10 +18,10 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 		/datum/prototype/material/silver::id = 250,
 	)
 
-	projectile_type = /obj/projectile/particle_array/discharge_beam
+	projectile_type = /obj/projectile/particle_array/discharge_bolt
 
-/obj/projectile/particle_array/discharge_beam
-	name = "discharge beam"
+/obj/projectile/particle_array/discharge_bolt
+	name = "discharge bolt"
 	#warn icon state
 	pass_flags = NONE
 	damage_type = DAMAGE_TYPE_BURN
@@ -29,8 +29,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	damage_force = 0
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_ENERGY
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
-	hitscan = TRUE
 	color = "#f5ed00"
-	#warn tracer_icon_state, tracer_add_state, tracer_add_state_alpha
 	auto_emissive_strength = 192
 	#warn fire_sound

@@ -88,6 +88,17 @@
 			update_icon()
 			return 1
 
+		else if(!cell && istype(W,/obj/item/cell))
+			var/obj/item/cell/casted_cell = W
+			if(!(casted_cell.cell_type & cell_accept))
+				to_chat(user, SPAN_WARNING("[W] doesn't fit in [src]'s cell slot."))
+				return
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
+			to_chat(user, "You jack \the [W] into \the [src]'s battery mount.")
+			src.cell = W
+			return
+
 		else if(W.is_wrench())
 
 			if(!air_supply)

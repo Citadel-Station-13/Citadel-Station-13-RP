@@ -41,7 +41,7 @@
 	//  todo: component_parts supporting "use this and don't keep this in component_parts".
 	var/obj/item/cell/cell
 	/// initial cell type
-	var/cell_type = /obj/item/cell/high
+	var/cell_type = /obj/item/cell/basic/tier_1/large
 	/// recharge rate in KW
 	var/recharge_rate = 10
 	/// inserted beaker / whatever
@@ -432,7 +432,7 @@
 			)
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
-		if(istype(I, /obj/item/cell/medium))
+		if(istype(I, /obj/item/cell))
 			if(cell)
 				user.action_feedback(SPAN_WARNING("[src] already has a cell."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE

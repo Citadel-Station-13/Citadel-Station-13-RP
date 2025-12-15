@@ -156,7 +156,8 @@
 
 	var/cell_type =  /obj/item/cell/basic/tier_1/large
 	var/cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_LARGE
-	#warn cell slot
+
+	// TODO: obj cell slot
 	var/obj/item/cell/cell                             // Power supply, if any.
 	var/unremovable_cell = FALSE
 
