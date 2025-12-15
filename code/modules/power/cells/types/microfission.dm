@@ -12,13 +12,12 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
 	cell_desc = "This one contains highly enriched nuclear material, which is constantly used to recharge the cell with an induced process."
 
 	typegen_visual_stripe_color = "#007700"
-	typegen_capacity_multiplier = 1 / 4 // we're, however, very small, because this is mostly just a nuclear accident in a can.
+	typegen_capacity_multiplier = 3 / 4
 
 /**
  * COBALT-60: DROP AND RUN
  */
 /obj/item/cell/microfission
-	can_be_recharged = FALSE
 	integrity = 200
 	integrity_max = 200
 	integrity_failure = 0.66 * 200
@@ -41,12 +40,11 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
 	/// if set, hard-sets additional cell units to be recharged; overrides [regen_as_multiplier]
 	var/regen_as_static
 	/// if set, sets cell units to be recharged to be a multiplier of our maxcharge
-	/// * the default formula multiplies back our 1/4'd capacity
-	var/regen_as_multiplier = 20 * 4
+	var/regen_as_multiplier = 20 * (4 / 3)
 	/// minimum recharge per second
 	var/regen_min_per_second = STATIC_KW_TO_CELL_UNITS(2.5, 1)
 	/// maximum recharge per second
-	var/regen_max_per_second = STATIC_KW_TO_CELL_UNITS(12.5, 1)
+	var/regen_max_per_second = STATIC_KW_TO_CELL_UNITS(25, 1)
 	/// at what % of [regen_initial] we start to have regen drop
 	var/regen_drop_start = 2 / 3
 	/// at what % of [regen_initial] we fall to minimum regen

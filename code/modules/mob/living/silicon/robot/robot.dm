@@ -105,7 +105,6 @@
 	var/obj/item/radio/borg/radio = null
 	var/obj/item/communicator/integrated/communicator = null
 	var/mob/living/silicon/ai/connected_ai = null
-	var/obj/item/cell/cell = null
 	var/obj/machinery/camera/camera = null
 
 	var/cell_emp_mult = 2
@@ -173,7 +172,10 @@
 
 	//* Power *//
 	/// starting cell type
-	var/starting_cell_type = /obj/item/cell/large
+	var/cell_type = /obj/item/cell/basic/tier_1/large
+	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	/// our power cell
+	var/obj/item/cell/cell
 
 	//* Movement *//
 	/// Base movement speed in tiles / second
@@ -226,7 +228,7 @@
 		C.wrapped = new C.external_type
 
 	if(!cell)
-		cell = new starting_cell_type(src)
+		cell = new cell_type(src)
 
 	. = ..()
 
@@ -683,6 +685,7 @@
 
 	else if (istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
 		var/datum/robot_component/C = components["power cell"]
+		// TODO: check cell accept
 		if(wiresexposed)
 			to_chat(user, "Close the panel first.")
 		else if(cell)

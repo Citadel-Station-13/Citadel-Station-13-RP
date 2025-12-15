@@ -428,7 +428,7 @@
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new /obj/item/cell/high(src)
+	cell = new /obj/item/cell/basic/tier_1/large(src)
 
 /obj/vehicle/sealed/mecha/get_cell(inducer)
 	return cell
@@ -1440,7 +1440,7 @@
 				src.log_message("Eject attempt made using maintenance controls - rejected.")
 		return
 
-	else if(istype(W, /obj/item/cell/large))
+	else if(istype(W, /obj/item/cell))
 		if(state==MECHA_CELL_OUT)
 			if(!src.cell)
 				if(!user.attempt_insert_item_for_installation(W, src))

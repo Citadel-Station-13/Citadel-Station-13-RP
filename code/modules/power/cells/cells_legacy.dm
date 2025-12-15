@@ -7,6 +7,7 @@
 	charge = 100
 	max_charge = 300
 	minor_fault = 1
+	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 /obj/item/cell/slime
 	name = "charged slime core"
@@ -18,8 +19,11 @@
 	max_charge = 10000
 	materials_base = null
 	rating = 5
+	#warn inherit from tier 2 medium for size
+	#warn make it small sized
+	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	self_recharge = TRUE
-	charge_amount = 750
+	self_recharge_amount = STATIC_KW_TO_CELL_UNITS(30, 1)
 
 // todo: this isn't even a fucking cell get it out of here
 //Not actually a cell, but if people look for it, they'll probably look near other cells
