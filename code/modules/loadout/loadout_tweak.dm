@@ -473,4 +473,4 @@ gear_tweak_collar_tag/**
 	if(metadata == "")
 		return ..()
 	else
-		C.initialize_tag(metadata, use_initial = FALSE)
+		C.set_collar_tag(metadata)

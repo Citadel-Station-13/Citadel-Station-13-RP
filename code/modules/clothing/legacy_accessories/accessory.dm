@@ -521,7 +521,17 @@
 	icon = 'icons/obj/clothing/collars.dmi'
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	var/icon_previous_override
-	var/writtenon = 0
+	var/collar_name
+	var/collar_tag
+
+/obj/item/clothing/accessory/collar/proc/set_collar_tag(var/new_tag, var/update_name = TRUE, var/update_desc = TRUE, var/name_format = "COLLAR_NAME (COLLAR_TAG)", var/desc_format = "The tag says \"COLLAR_TAG\".")
+	collar_tag = new_tag
+
+	var/applicable_name = length(collar_name) ? collar_name : initial(name)
+	if(update_name)
+		name = length(new_tag) ? replacetext(replacetext(name_format, "COLLAR_NAME", applicable_name), "COLLAR_TAG", new_tag) : applicable_name
+	if(update_desc)
+		desc = length(new_tag) ? replacetext(replacetext(desc_format, "COLLAR_NAME", applicable_name), "COLLAR_TAG", new_tag) : initial(desc)
 
 // Forces different sprite sheet on equip
 /obj/item/clothing/accessory/collar/Initialize(mapload)
@@ -532,15 +542,7 @@
 	if(istype(P, /obj/item/pen))
 		to_chat(user,"<span class='notice'>You write on [name]'s tag.</span>")
 		var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
-
-		if(!str || !length(str))
-			to_chat(user,"<span class='notice'>[name]'s tag set to be blank.</span>")
-			name = initial(name)
-			desc = initial(desc)
-		else
-			to_chat(user,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
-			name = initial(name) + " ([str])"
-			desc = initial(desc) + " The tag says \"[str]\"."
+		set_collar_tag(str)
 		return CLICKCHAIN_DID_SOMETHING
 	return ..()
 
@@ -778,29 +780,17 @@
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
 		to_chat(user,"<span class='notice'>[name]'s interface is projected onto your hand.</span>")
 	else
-		if(writtenon)
+		if(length(collar_tag))
 			to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
 			return
 		to_chat(user,"<span class='notice'>You adjust the [name]'s tag.</span>")
 
 	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
 
-	if(!str || !length(str))
-		to_chat(user,"<span class='notice'>[name]'s tag set to be blank.</span>")
-		name = initial(name)
-		desc = initial(desc)
-	else
-		to_chat(user,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
-		initialize_tag(str)
+	set_collar_tag(str)
 
-/obj/item/clothing/accessory/collar/proc/initialize_tag(var/tag, var/use_initial = TRUE)
-		name = use_initial ? initial(name) : name + " ([tag])"
-		desc = use_initial ? initial(desc) : desc + " \"[tag]\" has been engraved on the tag."
-		writtenon = 1
-
-/obj/item/clothing/accessory/collar/holo/initialize_tag(var/tag, var/use_initial = TRUE)
-		..()
-		desc = use_initial ? initial(desc) : desc + " The tag says \"[tag]\"."
+/obj/item/clothing/accessory/collar/holo/set_collar_tag(var/tag)
+		..(tag, use_name = FALSE)
 
 /obj/item/clothing/accessory/collar/attackby(obj/item/I, mob/user)
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
@@ -823,22 +813,19 @@
 	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
 
 	if(!str || !length(str))
-		if(!writtenon)
+		if(!length(collar_tag))
 			to_chat(user,"<span class='notice'>You don't write anything.</span>")
 		else
 			to_chat(user,"<span class='notice'>You [erasing] the words with the [I].</span>")
-			name = initial(name)
+			set_collar_tag("")
 			desc = initial(desc) + " The tag has had the words [erasemethod]."
 	else
-		if(!writtenon)
+		if(!length(collar_tag))
 			to_chat(user,"<span class='notice'>You write '[str]' on the tag with the [I].</span>")
-			name = initial(name) + " ([str])"
-			desc = initial(desc) + " \"[str]\" has been [writemethod] on the tag."
-			writtenon = 1
+			set_collar_tag(str, desc_format = "\"COLLAR_TAG\" has been [writemethod] on the tag.")
 		else
 			to_chat(user,"<span class='notice'>You [erasing] the words on the tag with the [I], and write '[str]'.</span>")
-			name = initial(name) + " ([str])"
-			desc = initial(desc) + " Something has been [erasemethod] on the tag, and it now has \"[str]\" [writemethod] on it."
+			set_collar_tag(str, desc_format = "Something has been [erasemethod] on the tag, and it now has \"COLLAR_TAG\" [writemethod] on it.")
 
 //Medals
 
