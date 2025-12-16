@@ -979,18 +979,18 @@
 "cM" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2166,12 +2166,8 @@
 /area/centcom/control)
 "fl" = (
 /obj/structure/table/standard,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /obj/machinery/cell_charger,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/purple/border,
@@ -2314,8 +2310,7 @@
 /obj/structure/closet{
 	name = "robotics parts"
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -2327,18 +2322,15 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -10098,18 +10090,18 @@
 /area/centcom/living)
 "Ez" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

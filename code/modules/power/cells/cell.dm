@@ -57,7 +57,6 @@
 	/// current charge
 	var/charge
 	/// maximum charge
-	///
 	/// * also used as a base for type generation
 	var/max_charge = POWER_CELL_CAPACITY_BASE
 	/// last time power was drawn from us

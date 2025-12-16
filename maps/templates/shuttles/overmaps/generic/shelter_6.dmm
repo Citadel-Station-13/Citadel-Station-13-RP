@@ -733,16 +733,16 @@
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /obj/item/gun/projectile/energy/frontier,
 /obj/item/gun/projectile/energy/frontier,
 /obj/item/gun/projectile/energy/frontier,
@@ -1179,30 +1179,10 @@
 /obj/item/storage/secure/briefcase/nsfw_pack,
 /obj/item/ammo_casing/microbattery/vm_aml/corpse_mend,
 /obj/item/ammo_casing/microbattery/vm_aml/corpse_mend,
-/obj/item/cell/slime{
-	description_info = "This 'cell' holds a max charge of 20k and self recharges over time.";
-	icon_state = "icell";
-	maxcharge = 20000;
-	name = "slime core cell"
-	},
-/obj/item/cell/slime{
-	description_info = "This 'cell' holds a max charge of 20k and self recharges over time.";
-	icon_state = "icell";
-	maxcharge = 20000;
-	name = "slime core cell"
-	},
-/obj/item/cell/slime{
-	description_info = "This 'cell' holds a max charge of 20k and self recharges over time.";
-	icon_state = "icell";
-	maxcharge = 20000;
-	name = "slime core cell"
-	},
-/obj/item/cell/slime{
-	description_info = "This 'cell' holds a max charge of 20k and self recharges over time.";
-	icon_state = "icell";
-	maxcharge = 20000;
-	name = "slime core cell"
-	},
+/obj/item/cell/slime,
+/obj/item/cell/slime,
+/obj/item/cell/slime,
+/obj/item/cell/slime,
 /obj/item/slime_extract/pink,
 /obj/item/slime_extract/pink,
 /obj/item/slime_extract/pink,
