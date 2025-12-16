@@ -30978,9 +30978,9 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/cell,
-/obj/item/cell/basic/tier_1/small/empty,
-/obj/item/cell/basic/tier_1/small/empty,
+/obj/item/cell/basic/tier_2/medium,
+/obj/item/cell/basic/tier_1/small,
+/obj/item/cell/basic/tier_1/small,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "wjN" = (

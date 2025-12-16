@@ -1112,7 +1112,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
-		/obj/item/cell,
+		/obj/item/cell/basic/tier_3/large,
+		/obj/item/cell/basic/tier_2/large,
+		/obj/item/cell/basic/tier_4/medium,
 		/obj/item/material/shard
 		)
 

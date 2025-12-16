@@ -78,6 +78,3 @@
 	var/area/A = get_area(src)
 	if(!A.lightswitch || !A.light_power)
 		charge = 0 //For naturally depowered areas, we start with no power
-
-#warn use item/cell/(potato|slime|super|hyper|high|device|emergency_light|crap|apc|secborg|infinite)
-#warn check item/cell\b(?!::|/|\)|##)

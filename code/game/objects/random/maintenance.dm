@@ -37,7 +37,6 @@ something, make sure it's not in one of the other lists.*/
 				prob(1);/obj/item/flashlight/glowstick/red,
 				prob(1);/obj/item/flashlight/glowstick/yellow,
 				prob(1);/obj/item/flashlight/pen,
-				prob(4);/obj/item/cell,
 				prob(4);/obj/item/cell/basic/tier_1/weapon,
 				prob(2);/obj/item/cell/basic/tier_1/small,
 				prob(3);/obj/item/cell/basic/tier_1/medium,

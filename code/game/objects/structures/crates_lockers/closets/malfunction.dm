@@ -10,6 +10,6 @@
 		/obj/item/clothing/head/helmet/space/void,
 		/obj/item/clothing/suit/space/void,
 		/obj/item/tool/crowbar,
-		/obj/item/cell,
+		/obj/item/cell/basic/tier_2/medium,
 		/obj/item/multitool,
 	)
