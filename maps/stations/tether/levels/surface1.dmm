@@ -5873,9 +5873,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "cZI" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -8210,16 +8208,12 @@
 	pixel_x = 3;
 	pixel_y = -7
 	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil{
 	pixel_x = 3;
 	pixel_y = -7
 	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -2;
 	pixel_y = -1
@@ -10700,9 +10694,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "fHJ" = (
@@ -17765,9 +17757,7 @@
 "jrU" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
@@ -20747,9 +20737,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -22315,9 +22303,7 @@
 /area/tether/surfacebase/security/brig)
 "lRY" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -24296,9 +24282,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
 	pixel_y = -32
@@ -35221,9 +35205,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/cable/green{
 	icon_state = "16-0"
@@ -36530,9 +36512,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -43637,9 +43617,7 @@
 /obj/effect/floor_decal/corner/brown/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},

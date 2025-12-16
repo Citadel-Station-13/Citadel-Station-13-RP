@@ -22616,9 +22616,7 @@
 /obj/machinery/camera/network/exploration{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -30981,8 +30979,8 @@
 	},
 /obj/structure/table/reinforced,
 /obj/item/cell,
-/obj/item/cell/device/empty,
-/obj/item/cell/device/empty,
+/obj/item/cell/basic/tier_1/small/empty,
+/obj/item/cell/basic/tier_1/small/empty,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "wjN" = (
@@ -33720,9 +33718,7 @@
 /obj/effect/floor_decal/corner/navgold/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

@@ -28389,9 +28389,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "uRN" = (
@@ -30381,12 +30379,8 @@
 /area/hallway/d3fwdportmaint/endeavour)
 "wiS" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8

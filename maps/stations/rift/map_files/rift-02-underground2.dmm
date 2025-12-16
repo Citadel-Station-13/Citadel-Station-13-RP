@@ -11483,14 +11483,10 @@
 /area/maintenance/atmos)
 "QQ" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/device,
-/obj/item/cell/device,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_2/small,
+/obj/item/cell/basic/tier_2/small,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "QS" = (

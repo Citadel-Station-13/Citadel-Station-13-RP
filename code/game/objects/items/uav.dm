@@ -45,7 +45,7 @@
 	var/no_masters_time = 0
 
 /obj/item/uav/loaded
-	cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_3/large
 
 /obj/item/uav/Initialize(mapload)
 	. = ..()

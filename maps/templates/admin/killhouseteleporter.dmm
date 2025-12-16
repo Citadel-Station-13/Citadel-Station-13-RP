@@ -124,9 +124,7 @@
 	dir = 6;
 	icon_state = "warning"
 	},
-/obj/machinery/power/apc/large_cell/tier_3/south_mount{
-	cell_type = /obj/item/cell/infinite
-	},
+/obj/machinery/power/apc/large_cell/tier_3/south_mount,
 /turf/simulated/floor/reinforced,
 /area/killhouse/teleporter)
 "M" = (

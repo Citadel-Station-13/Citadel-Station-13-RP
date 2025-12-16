@@ -55,7 +55,7 @@
 	icon_state = "battery_lambda"
 	hardware_size = 1
 	battery_rating = 30000
-	battery = /obj/item/cell/infinite
+	battery = /obj/item/cell/infinite/small
 
 /obj/item/computer_hardware/battery_module/diagnostics(var/mob/user)
 	..()

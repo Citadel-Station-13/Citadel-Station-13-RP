@@ -2628,7 +2628,6 @@
 /area/shuttle/udang/main)
 "ahr" = (
 /obj/machinery/power/apc/alarms_hidden/south_mount{
-	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -11580,9 +11579,9 @@
 /area/space)
 "aFr" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/cell/hyper,
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_4/large,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /obj/item/storage/toolbox/syndicate{
 	pixel_y = 11
 	},
@@ -25121,7 +25120,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/alarms_hidden/south_mount{
-	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,

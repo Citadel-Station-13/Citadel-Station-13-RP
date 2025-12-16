@@ -34,6 +34,7 @@
 	var/use_external_power = FALSE // Do we use charge from an external source?
 
 	var/cell_type = /obj/item/cell/device
+	#warn cell slot
 
 	//? damage
 	var/stagger_strength = 1.5

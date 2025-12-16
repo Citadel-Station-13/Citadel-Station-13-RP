@@ -196,7 +196,7 @@
 		/obj/item/clothing/under/rank/trek/medsci/ds9 = 1,
 		/obj/item/clothing/suit/storage/trek/ds9 = 1,
 		/obj/item/gun/projectile/energy/retro = 4,
-		/obj/item/cell/device/weapon = 8,
+		/obj/item/cell/basic/tier_2/weapon = 8,
 	)
 
 /obj/item/storage/lockbox/axhs

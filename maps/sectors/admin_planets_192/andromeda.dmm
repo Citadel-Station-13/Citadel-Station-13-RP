@@ -5996,12 +5996,12 @@
 /area/admin_planet/andromeda/sec_holding_cell)
 "sn" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/high,
-/obj/item/cell/high,
-/obj/item/cell/high,
-/obj/item/cell/high,
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /obj/item/cell/basic/tier_3/small,
 /obj/item/cell/basic/tier_3/small,
 /obj/item/cell/basic/tier_3/small,

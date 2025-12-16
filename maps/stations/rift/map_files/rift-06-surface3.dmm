@@ -2275,9 +2275,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "ahF" = (
-/obj/machinery/power/apc/east_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -7395,11 +7393,11 @@
 "awT" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 6;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 6;
 	pixel_y = -4
 	},
@@ -7505,9 +7503,7 @@
 	pixel_x = 32
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -14854,8 +14850,8 @@
 	},
 /obj/item/gun/projectile/energy/gun,
 /obj/item/gun/projectile/energy/gun,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_2/weapon,
+/obj/item/cell/basic/tier_2/weapon,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aUt" = (

@@ -5919,23 +5919,19 @@
 	empty = 1;
 	name = "First-Aid (empty)"
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},

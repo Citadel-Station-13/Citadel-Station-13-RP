@@ -12090,11 +12090,11 @@
 	icon_state = "implantpad-0"
 	},
 /obj/machinery/cell_charger,
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 2;
 	pixel_y = -1
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 2;
 	pixel_y = -1
 	},

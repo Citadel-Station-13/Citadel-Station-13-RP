@@ -19,6 +19,7 @@
 	var/hitcost = 120
 	var/obj/item/cell/bcell = null
 	var/cell_type = /obj/item/cell/device
+	#warn cell slot
 
 	passive_parry = /datum/passive_parry/melee/energy
 

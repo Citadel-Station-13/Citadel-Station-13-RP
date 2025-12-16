@@ -6914,7 +6914,7 @@
 "Ji" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/cell_charger,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},

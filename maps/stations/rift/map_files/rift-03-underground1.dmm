@@ -5989,7 +5989,7 @@
 /area/maintenance/substation/engineering)
 "rC" = (
 /obj/item/storage/toolbox/mechanical,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_2/medium,
 /obj/structure/table/rack/shelf,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -6897,9 +6897,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "uV" = (
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -13749,9 +13747,7 @@
 /area/hallway/primary/underone)
 "Qt" = (
 /obj/structure/table/steel,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil,
 /obj/machinery/cell_charger{
 	pixel_y = 5

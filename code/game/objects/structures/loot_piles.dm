@@ -511,7 +511,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 // May contain powercells or alien weaponry.
 /obj/structure/loot_pile/surface/alien/security
 	uncommon_loot = list(
-		/obj/item/cell/device/weapon/recharge/alien,
+		/obj/item/cell/regen/fractal/weapon,
 		/obj/item/clothing/suit/armor/alien,
 		/obj/item/clothing/head/helmet/alien
 	)
@@ -541,7 +541,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/surgical/retractor/alien,
 		/obj/item/surgical/scalpel/alien,
 		/obj/item/surgical/surgicaldrill/alien,
-		/obj/item/cell/device/weapon/recharge/alien,
+		/obj/item/cell/regen/fractal/weapon,
 		/obj/item/clothing/suit/armor/alien,
 		/obj/item/clothing/head/helmet/alien,
 		/obj/item/gun/projectile/energy/alien
