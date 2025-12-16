@@ -33,7 +33,8 @@
 	var/charge_cost = 30 //How much energy is needed to flash.
 	var/use_external_power = FALSE // Do we use charge from an external source?
 
-	var/cell_type = /obj/item/cell/device
+	var/cell_type = /obj/item/cell/basic/tier_1
+	var/cell_accept = CELL_TYPE_SMALL
 	#warn cell slot
 
 	//? damage

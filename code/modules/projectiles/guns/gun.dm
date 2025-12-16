@@ -213,7 +213,7 @@
 	/// do we use a cell slot?
 	var/cell_system = FALSE
 	/// cell type to start with
-	var/cell_type = /obj/item/cell/device/weapon
+	var/cell_type = /obj/item/cell/basic/tier_1/weapon
 	/// cell types accepted
 	var/cell_accept = CELL_TYPE_WEAPON
 
@@ -303,9 +303,8 @@
 
 	//* cell system *//
 	if(cell_system)
-		var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type, cell_accept)
-		slot.remove_yank_offhand = TRUE
-		slot.remove_yank_context = TRUE
+		init_cell_slot_easy_tool(cell_type, cell_accept)
+		obj_cell_slot?.receive_inducer = FALSE
 
 	//* modular components *//
 	if(islist(modular_component_slots))

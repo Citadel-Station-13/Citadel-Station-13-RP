@@ -586,7 +586,7 @@
 /obj/item/circuitboard/cell_charger,
 /obj/item/stack/cable_coil/white,
 /obj/item/stack/cable_coil/white,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "AV" = (

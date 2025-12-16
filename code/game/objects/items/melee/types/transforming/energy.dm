@@ -18,7 +18,9 @@
 	var/use_cell = FALSE
 	var/hitcost = 120
 	var/obj/item/cell/bcell = null
-	var/cell_type = /obj/item/cell/device
+
+	var/cell_type = /obj/item/cell/basic/tier_1/weapon
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	#warn cell slot
 
 	passive_parry = /datum/passive_parry/melee/energy

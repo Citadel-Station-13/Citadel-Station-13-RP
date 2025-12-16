@@ -13260,7 +13260,7 @@
 "Uu" = (
 /obj/structure/table/reinforced,
 /obj/item/defib_kit,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/tool/screwdriver,
 /obj/structure/window/reinforced{
 	dir = 8
