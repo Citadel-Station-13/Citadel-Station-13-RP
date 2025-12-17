@@ -11,7 +11,7 @@
 	anchored = TRUE
 	atom_flags = ATOM_BORDER
 	icon_state = "railing0"
-	color = "#d4701e"
+	color =  "#975b2a"//"#b36525"
 
 	integrity = 150
 	integrity_max = 150
