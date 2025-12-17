@@ -125,8 +125,7 @@
 
 	w_class = WEIGHT_CLASS_BULKY
 	max_single_weight_class = WEIGHT_CLASS_SMALL
-	insertion_whitelist = list() // any
-	insertion_blacklist = list(/obj/item/disk/nuclear)
+	insertion_whitelist = list(/obj/item/trash,/obj/item/cigbutt)
 
 // -----------------------------
 //        Mining Satchel
