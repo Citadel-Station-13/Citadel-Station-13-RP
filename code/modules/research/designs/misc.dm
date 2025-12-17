@@ -134,7 +134,7 @@
 	id = "blutrash"
 	category = DESIGN_CATEGORY_STORAGE
 	req_tech = list(TECH_BLUESPACE = 5, TECH_MATERIAL = 6)
-	materials_base = list(MAT_PLASTIC = 750, MAT_GOLD = 250, MAT_URANIUM = 375, MAT_PHORON = 500)
+	materials_base = list(MAT_PLASTIC = 500, MAT_GOLD = 200, MAT_URANIUM = 300, MAT_PHORON = 400)
 	build_path = /obj/item/storage/bag/trash/bluespace
 
 /datum/prototype/design/science/reagent_synth_chemistry

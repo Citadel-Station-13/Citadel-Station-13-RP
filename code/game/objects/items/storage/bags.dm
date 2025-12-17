@@ -77,8 +77,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_CLASS_SMALL * 21
-	insertion_whitelist = list() // any
-	insertion_blacklist = list(/obj/item/disk/nuclear)
+	insertion_whitelist = list(/obj/item/trash,/obj/item/cigbutt)
 
 /obj/item/storage/bag/trash/initialize_storage()
 	. = ..()
@@ -102,6 +101,8 @@
 	max_combined_volume = WEIGHT_CLASS_SMALL * 56
 	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
 	icon_state = "bluetrashbag"
+
+	insertion_whitelist = list(/obj/item/trash,/obj/item/cigbutt,/obj/item/ammo_casing,/obj/item/bone,/obj/item/storage/fancy/cigarettes) // any
 
 /obj/item/storage/bag/trash/bluespace/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage/backpack/holding) || istype(W, /obj/item/storage/bag/trash/bluespace))
