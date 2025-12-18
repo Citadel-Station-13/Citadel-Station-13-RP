@@ -29,7 +29,13 @@
 		italics = TRUE
 	var/list/speech_bubble_hearers
 	if(passed_hearing_list)
-		speech_bubble_hearers = passed_hearing_list
+		speech_bubble_hearers = list()
+		for(var/anything in passed_hearing_list)
+			if(ismob(anything))
+				var/mob/casted = anything
+				speech_bubble_hearers += casted.client
+			else if(istype(anything, /client))
+				speech_bubble_hearers += anything
 	else
 		speech_bubble_hearers = list()
 		for(var/mob/M in get_mobs_in_view(message_range, src))

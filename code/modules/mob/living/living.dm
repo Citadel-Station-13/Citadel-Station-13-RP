@@ -1,6 +1,26 @@
 /mob/living
 	emote_class = EMOTE_CLASS_IS_BODY
 
+	//* mobility *//
+	/// are we resting either by will or by force
+	var/resting = FALSE
+	/// are we intentionally resting?
+	var/resting_intentionally = FALSE
+	/// are we resisting out of a resting state?
+	var/getting_up = FALSE
+	/// last loc while getting up - used by resist_a_rest
+	var/atom/getting_up_loc
+	/// last penalize time while getting up - used by resist_a_rest
+	var/getting_up_penalized
+	/// last delay before modifications while getting up - used by resist_a_rest, so reducing damage / whatever doesn't leave you with the same delay
+	var/getting_up_original
+
+	//* movement *//
+	/// current depth on turf in pixels
+	var/depth_current = 0
+	/// set during move: staged depth; on successful move, we update depth_current if it's different.
+	var/tmp/depth_staged = 0
+
 TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 /mob/living/Initialize(mapload)
 	. = ..()
@@ -22,10 +42,16 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 		add_verb(src, /mob/living/proc/insidePanel)
 		//Tries to load prefs if a client is present otherwise gives freebie stomach
 		spawn(2 SECONDS)
-			init_vore()
+			if(!QDELING(src))
+				init_vore()
 	//*        END         *//
 
 /mob/living/Destroy()
+	if(source_spawner)
+		if(istype(source_spawner))
+			if(source_spawner.spawned_mobs)
+				source_spawner.spawned_mobs -= src
+		source_spawner = null
 	if(nest) //Ew.
 		if(istype(nest, /obj/structure/prop/nest))
 			var/obj/structure/prop/nest/N = nest
@@ -38,6 +64,8 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 		buckled.unbuckle_mob(src, TRUE)
 	if(selected_image)
 		QDEL_NULL(selected_image)
+	aimed = null
+	QDEL_NULL(aiming)
 
 	// this all needs to be Cut and not null
 	// TODO: fix whatever is accessing these lists after qdel
@@ -53,6 +81,10 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 			qdel(O)
 	internal_organs.Cut()
 	profile = null
+
+	QDEL_LIST(vore_organs)
+	if(length(vore_organs) || vore_selected)
+		stack_trace("vore is being very stupid and not gcing again")
 
 	return ..()
 

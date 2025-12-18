@@ -102,6 +102,7 @@
 		else
 			innate_feedback(SPAN_NOTICE("You get up."))
 	getting_up = FALSE
+	getting_up_loc = null
 
 /mob/living/proc/get_up_delay()
 	// todo: redo

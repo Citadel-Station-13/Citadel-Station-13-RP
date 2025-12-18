@@ -29,7 +29,6 @@
 	/// are we recording?
 	var/recording = FALSE
 
-
 /obj/item/tape_recorder/Initialize(mapload)
 	. = ..()
 	if(ispath(tape))
@@ -40,8 +39,8 @@
 /obj/item/tape_recorder/Destroy()
 	stop_everything()
 	listening_objects -= src
-	if(tape)
-		QDEL_NULL(tape)
+	QDEL_NULL(tape)
+	QDEL_NULL(tape_iterator)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 

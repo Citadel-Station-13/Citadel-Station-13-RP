@@ -237,6 +237,21 @@
 
 	update_icon(1)
 
+/obj/item/hardsuit/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(gloves)
+	QDEL_NULL(boots)
+	QDEL_NULL(helmet)
+	QDEL_NULL(chest)
+	QDEL_NULL(wires)
+	QDEL_NULL(cell)
+	QDEL_LIST(installed_modules)
+	QDEL_NULL(spark_system)
+	QDEL_NULL(minihud)
+	QDEL_NULL(visor)
+	QDEL_NULL(air_supply)
+	return ..()
+
 /obj/item/hardsuit/proc/spawn_storage_contents()
 	if(length(storage_starts_with) && !storage_empty)
 		// this is way too permissive already
@@ -275,18 +290,6 @@
 	obj_storage.sfx_remove = storage_sfx_remove
 
 	obj_storage.ui_numerical_mode = storage_ui_numerical_mode
-
-/obj/item/hardsuit/Destroy()
-	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
-		qdel(piece)
-	STOP_PROCESSING(SSobj, src)
-	if(minihud)
-		QDEL_NULL(minihud)
-	qdel(wires)
-	wires = null
-	qdel(spark_system)
-	spark_system = null
-	return ..()
 
 /obj/item/hardsuit/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype)
 	switch(slot_id_or_hand_index)

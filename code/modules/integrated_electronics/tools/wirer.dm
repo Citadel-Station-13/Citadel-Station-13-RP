@@ -13,19 +13,29 @@
 	icon_state = "wirer-wire"
 	item_state = "wirer"
 	w_class = WEIGHT_CLASS_SMALL
-	var/datum/integrated_io/selected_io = null
 	var/mode = WIRE
+	var/datum/weakref/selected_io_weakref
+
+/obj/item/integrated_electronics/wirer/proc/get_ic_selected_io() as /datum/integrated_io
+	return selected_io_weakref?.resolve()
+
+/obj/item/integrated_electronics/wirer/proc/set_ic_selected_io(datum/integrated_io/selecting)
+	if(!selecting)
+		selected_io_weakref = null
+	selected_io_weakref = WEAKREF(selecting)
 
 /obj/item/integrated_electronics/wirer/update_icon()
 	icon_state = "wirer-[mode]"
 
 /obj/item/integrated_electronics/wirer/proc/wire(var/datum/integrated_io/io, mob/user)
+	var/datum/integrated_io/selected_io = get_ic_selected_io()
 	if(!io.holder.assembly)
 		to_chat(user, "<span class='warning'>\The [io.holder] needs to be secured inside an assembly first.</span>")
 		return
 	switch(mode)
 		if(WIRE)
-			selected_io = io
+			set_ic_selected_io(io)
+			selected_io = get_ic_selected_io()
 			to_chat(user, "<span class='notice'>You attach a data wire to \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
 			mode = WIRING
 			update_icon()
@@ -46,10 +56,11 @@
 			mode = WIRE
 			update_icon()
 			selected_io.holder.interact(user) // This is to update the UI.
-			selected_io = null
+			set_ic_selected_io(null)
 
 		if(UNWIRE)
-			selected_io = io
+			set_ic_selected_io(io)
+			selected_io = get_ic_selected_io()
 			if(!io.linked.len)
 				to_chat(user, "<span class='warning'>There is nothing connected to \the [selected_io] data channel.</span>")
 				selected_io = null
@@ -69,32 +80,32 @@
 				to_chat(user, "<span class='notice'>You disconnect \the [selected_io.holder]'s [selected_io.name] from \
 				\the [io.holder]'s [io.name].</span>")
 				selected_io.holder.interact(user) // This is to update the UI.
-				selected_io = null
+				set_ic_selected_io(null)
 				mode = UNWIRE
 				update_icon()
 			else
 				to_chat(user, "<span class='warning'>\The [selected_io.holder]'s [selected_io.name] and \the [io.holder]'s \
 				[io.name] are not connected.</span>")
-				return
 
 /obj/item/integrated_electronics/wirer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
+	var/datum/integrated_io/selected_io = get_ic_selected_io()
 	switch(mode)
 		if(WIRE)
 			mode = UNWIRE
 		if(WIRING)
 			if(selected_io)
 				to_chat(user, "<span class='notice'>You decide not to wire the data channel.</span>")
-			selected_io = null
+			set_ic_selected_io(null)
 			mode = WIRE
 		if(UNWIRE)
 			mode = WIRE
 		if(UNWIRING)
 			if(selected_io)
 				to_chat(user, "<span class='notice'>You decide not to disconnect the data channel.</span>")
-			selected_io = null
+			set_ic_selected_io(null)
 			mode = UNWIRE
 	update_icon()
 	to_chat(user, "<span class='notice'>You set \the [src] to [mode].</span>")

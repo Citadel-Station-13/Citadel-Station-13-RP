@@ -41,15 +41,6 @@
 	var/spinup_delay      = 20
 	var/spinup_counter    = 0
 
-/obj/machinery/power/shield_generator/update_icon()
-	if(running)
-		icon_state = "generator1"
-		set_light(1, 2, "#66FFFF")
-	else
-		icon_state = "generator0"
-		set_light(0)
-
-
 /obj/machinery/power/shield_generator/Initialize(mapload)
 	. = ..()
 	if(!wires)
@@ -67,8 +58,16 @@
 	field_segments = null
 	damaged_segments = null
 	mode_list = null
-	. = ..()
+	QDEL_NULL(wires)
+	return ..()
 
+/obj/machinery/power/shield_generator/update_icon()
+	if(running)
+		icon_state = "generator1"
+		set_light(1, 2, "#66FFFF")
+	else
+		icon_state = "generator0"
+		set_light(0)
 
 /obj/machinery/power/shield_generator/RefreshParts()
 	max_energy = 0
