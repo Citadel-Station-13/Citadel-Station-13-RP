@@ -14,7 +14,7 @@
 
 
 /mob/living/simple_mob/mechanical/derelict/minuteman/wasp
-	name = "Minuteman Wasp"
+	name = "minuteman wasp"
 	desc = "A small drone that hovers over the ground. Its frame appears small and delicate, however it twitches and moves around incessantly."
 
 	icon_state = "wasp"
