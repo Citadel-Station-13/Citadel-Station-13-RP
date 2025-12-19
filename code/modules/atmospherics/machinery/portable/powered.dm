@@ -20,8 +20,7 @@
 /obj/machinery/portable_atmospherics/powered/Initialize(mapload)
 	. = ..()
 	if(use_cell)
-		init_cell_slot(cell_type, cell_accept)
-		#warn make sure it's usable; require screwdriver to remove
+		init_cell_slot_easy_machine(cell_type, cell_accept)
 	if(isnull(power_setting))
 		power_setting = power_maximum
 

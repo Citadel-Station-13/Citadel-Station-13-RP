@@ -10,6 +10,13 @@
 	var/obj/item/cell/cell
 
 	//* Config - Interaction *//
+
+	/// allow insertion via context menu
+	var/insert_via_context = FALSE
+	/// allow insertion via click
+	var/insert_via_usage = FALSE
+	#warn hook these
+
 	/// allow quick removal by clicking with hand?
 	var/remove_yank_offhand = FALSE
 	/// allow context menu removal?
@@ -18,10 +25,16 @@
 	var/remove_yank_inhand = FALSE
 	/// no-tool time for removal, if any
 	var/remove_yank_time = 0
+
 	/// tool behavior for removal, if any
 	var/remove_tool_behavior = null
 	/// tool time for removal, if any
 	var/remove_tool_time = 0
+	/// allow remove hooks in tool act
+	var/remove_tool_usage = FALSE
+	/// allow remove hooks in context menu for tooled removal
+	var/remove_tool_context = FALSE
+	#warn hook these
 
 	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE
@@ -160,21 +173,54 @@
 	return obj_cell_slot
 
 /**
- * Wrapper for lazily initializing a cell slot that uses small cells.
+ * Wrapper for lazily initializing a cell slot for tools.
  * * Also sets the cell slot as primary.
  */
-/obj/proc/init_cell_slot_easy_tool(preload_path, cell_accept = CELL_TYPE_SMALL | CELL_TYPE_MEDIUM, offhand_removal = TRUE, inhand_removal = FALSE)
-	RETURN_TYPE(/datum/object_system/cell_slot)
-	if(isnull(init_cell_slot(preload_path)))
+/obj/proc/init_cell_slot_easy_tool(preload_path, cell_type = CELL_TYPE_SMALL | CELL_TYPE_MEDIUM, offhand_removal = TRUE, inhand_removal = FALSE) as /datum/object_system/cell_slot
+	if(isnull(init_cell_slot(preload_path, cell_type)))
 		return
+	obj_cell_slot.insert_via_context = TRUE
+	obj_cell_slot.insert_via_usage = TRUE
 	if(offhand_removal)
 		obj_cell_slot.remove_yank_offhand = TRUE
 	if(inhand_removal)
 		obj_cell_slot.remove_yank_inhand = FALSE
 	obj_cell_slot.remove_yank_context = TRUE
 	obj_cell_slot.remove_yank_time = 0
-	obj_cell_slot.cell_type = cell_accept
-	obj_cell_slot.primary = TRUE
+	return obj_cell_slot
+
+/**
+ * Wrapper for lazily initializing a cell slot for machines.
+ * * Also sets the cell slot as primary.
+ *
+ * @params
+ * * skip_interactions - do not automatically handle interactions
+ * * require_remove_tool - tool behavior required for removal; defaults to none (context menu works)
+ * * require_context_menu - require context menu interaction even if we require a tool behavior.
+ *                          useful to not collide with other tool behaviors.
+ */
+/obj/proc/init_cell_slot_easy_machine(
+	preload_path,
+	cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM,
+	skip_interactions,
+	require_remove_tool,
+	require_context_menu,
+) as /datum/object_system/cell_slot
+	if(isnull(init_cell_slot(preload_path, cell_type)))
+		return
+	if(!skip_interactions)
+		// insertion
+		if(!require_context_menu)
+			obj_cell_slot.insert_via_usage = TRUE
+		obj_cell_slot.insert_via_context = TRUE
+		// removal
+		if(require_remove_tool)
+			obj_cell_slot.remove_tool_behavior = require_remove_tool
+			if(!require_context_menu)
+				obj_cell_slot.remove_tool_usage = TRUE
+			obj_cell_slot.remove_tool_context = TRUE
+		else
+			obj_cell_slot.remove_yank_context = TRUE
 	return obj_cell_slot
 
 //? Wrappers for cell.dm functions
