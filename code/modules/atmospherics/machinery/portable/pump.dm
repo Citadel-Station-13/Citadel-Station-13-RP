@@ -197,11 +197,8 @@
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/Initialize(mapload)
 	. = ..()
-	cell = null
-
 	id = gid
 	gid++
-
 	name = "[name] (ID [id])"
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()

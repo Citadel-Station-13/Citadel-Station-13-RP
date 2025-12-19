@@ -20,7 +20,6 @@
 
 	var/cell_type = /obj/item/cell/basic/tier_1/weapon
 	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
-	#warn cell slot
 
 	passive_parry = /datum/passive_parry/melee/energy
 

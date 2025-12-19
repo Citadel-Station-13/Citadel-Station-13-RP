@@ -13,8 +13,30 @@
 	/// base power draw
 	var/base_power_draw = 50000
 	var/chargelevel = -1
+
 	var/obj/item/cell/charging = null
+	/// starting cell type
+	var/charging_start_path = null
+
 	circuit = /obj/item/circuitboard/cell_charger
+
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_MEDIUM | CELL_TYPE_LARGE | CELL_TYPE_WEAPON
+	/// accept cells with no CELL_TYPE field
+	/// * for shit like gunsword
+	var/cell_accept_nonstandard = TRUE
+
+/obj/machinery/cell_charger/Initialize(mapload)
+	. = ..()
+	if(charging_start_path)
+		charging = new charging_start_path
+		update_icon()
+
+/obj/machinery/cell_charger/Destroy()
+	QDEL_NULL(charging)
+	return ..()
+
+/obj/machinery/cell_charger/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
+	return cell.cell_type ? (cell.cell_type & cell_accept) : cell_accept_nonstandard
 
 /obj/machinery/cell_charger/update_icon()
 	cut_overlays()
@@ -25,7 +47,6 @@
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
 		add_overlay("ccharger-o[newlevel]")
 
-#warn this shit
 /obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")
@@ -37,9 +58,9 @@
 		return
 
 	if(istype(W, /obj/item/cell) && anchored)
-		// if(istype(W, /obj/item/cell/device))
-		// 	to_chat(user, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
-		// 	return
+		if(!object_cell_slot_accepts(W))
+			to_chat(user, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
+			return
 
 		if(charging)
 			to_chat(user, SPAN_WARNING("There is already [charging] in [src]."))
@@ -47,9 +68,6 @@
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))
-				return
-			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, SPAN_WARNING("\The [src] blinks red as you try to insert [W]!"))
 				return
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return

@@ -118,18 +118,38 @@
 
 /**
  * hook called on cell slot removal
+ *
+ * @params
+ * * cell - the cell
+ * * slot - the cell slot
+ * * silent - (optional) don't emit messages / sounds
+ * * actor - (optional) who's doing it
  */
-/obj/proc/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+/obj/proc/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	return
 
 /**
  * hook called on cell slot insertion
+ *
+ * @params
+ * * cell - the cell
+ * * slot - the cell slot
+ * * silent - (optional) don't emit messages / sounds
+ * * actor - (optional) who's doing it
  */
-/obj/proc/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+/obj/proc/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	return
 
 /**
  * hook called to check if cell slot removal behavior is active
+ *
+ * @params
+ * * cell - the cell
+ * * slot - the cell slot
+ * * silent - (optional) don't emit messages / sounds
+ * * actor - (optional) who's doing it
+ *
+ * @return truthy/falsy value (not necessarily 0 / 1)
  */
 /obj/proc/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	return TRUE
@@ -137,10 +157,12 @@
 /**
  * @params
  * * cell - the cell
- * * slot - the cell slot
- * * slot_opinion - what default checks returned
+ * * slot - (optional) the cell slot
+ * * slot_opinion - (optional) what default checks returned
  * * silent - (optional) don't emit messages / sounds
  * * actor - (optional) who's doing it
+ *
+ * @return truthy/falsy value (not necessarily 0 / 1)
  */
 /obj/proc/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
 	return slot_opinion
@@ -201,7 +223,7 @@
  */
 /obj/proc/init_cell_slot_easy_machine(
 	preload_path,
-	cell_Type = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM,
+	cell_type = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM,
 	skip_interactions,
 	require_remove_tool,
 	require_context_menu,

@@ -4,13 +4,13 @@
 //* /obj/item/cell/var/cell_type *//
 
 /// handheld devices
-#define CELL_TYPE_SMALL (1<<1)
+#define CELL_TYPE_SMALL (1<<0)
 /// medium size devices like inducers, bulky handheld equipment, etc
-#define CELL_TYPE_MEDIUM (1<<2)
+#define CELL_TYPE_MEDIUM (1<<1)
 /// mecha, apcs, large drills, etc
-#define CELL_TYPE_LARGE (1<<3)
+#define CELL_TYPE_LARGE (1<<2)
 /// energy weapons that don't use special cells / specific other types
-#define CELL_TYPE_WEAPON (1<<4)
+#define CELL_TYPE_WEAPON (1<<3)
 
 DEFINE_BITFIELD_NEW(cell_type, list(
 	/obj/item/cell = list(
