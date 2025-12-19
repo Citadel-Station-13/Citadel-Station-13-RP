@@ -116,7 +116,7 @@
 		START_PROCESSING(SSobj, src)
 
 /obj/item/cell/Destroy()
-	if(self_recharge)
+	if(datum_flags & DF_ISPROCESSING)
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 

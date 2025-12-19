@@ -28,11 +28,13 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen/fractal, /regen/frac
 	// in % of the cell's capacity
 	// * multiplied by `c_fuel_multplier`
 	// * adjusted by `c_fuel_adjust`
-	var/base_regen_percent = 0
+	var/base_regen_ratio = 0
 
 /obj/item/cell/regen/Initialize()
-
-
-#warn impl
-
-#warn use power_cell datum vars
+	. = ..()
+	// TODO: automated way to update when prototypes change?
+	base_regen_static  = initial(base_regen_static) * cell_datum.c_reaction_multiplier + cell_datum.c_reaction_adjust
+	base_regen_ratio  = initial(base_regen_ratio) * cell_datum.c_fuel_multiplier + cell_datum.c_fuel_adjust
+	self_recharge = TRUE
+	self_recharge_amount = base_regen_static + base_regen_ratio * 0.01 * max_charge
+	START_PROCESSING(SSobj, src)

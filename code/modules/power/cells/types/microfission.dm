@@ -14,6 +14,11 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
 	typegen_visual_stripe_color = "#007700"
 	typegen_capacity_multiplier = 3 / 4
 
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/small, /power_cell/microfission/small, "powercell-microfission-small")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/medium, /power_cell/microfission/medium, "powercell-microfission-medium")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/large, /power_cell/microfission/large, "powercell-microfission-large")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cell/microfission/weapon, "powercell-microfission-weapon")
+
 /**
  * COBALT-60: DROP AND RUN
  */
