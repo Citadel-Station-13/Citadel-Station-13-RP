@@ -29,7 +29,6 @@
 
 	var/base_icon = "flash"
 
-	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 30 //How much energy is needed to flash.
 	var/use_external_power = FALSE // Do we use charge from an external source?
 
@@ -43,7 +42,7 @@
 
 /obj/item/flash/Initialize(mapload)
 	. = ..()
-	power_supply = new cell_type(src)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 
 /obj/item/flash/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_screwdriver() && broken)
@@ -66,7 +65,7 @@
 
 /obj/item/flash/update_icon()
 	. = ..()
-	var/obj/item/cell/battery = power_supply
+	var/obj/item/cell/battery = obj_cell_slot?.cell
 
 	if(use_external_power)
 		battery = get_external_power_supply()
@@ -75,9 +74,6 @@
 		icon_state = "[base_icon]burnt"
 	else
 		icon_state = "[base_icon]"
-
-/obj/item/flash/get_cell(inducer)
-	return power_supply
 
 /obj/item/flash/proc/get_external_power_supply()
 	if(isrobot(src.loc))
@@ -103,6 +99,7 @@
 /obj/item/flash/proc/flash_recharge()
 	//Every ten seconds the flash doesn't get used, the times_used variable goes down by one, making the flash less likely to burn out,
 	// as well as being able to flash more before reaching max_flashes cap.
+	var/obj/item/cell/power_supply = obj_cell_slot?.cell
 	for(var/i=0, i < max_flashes, i++)
 		if(last_used + 10 SECONDS > world.time)
 			break
@@ -126,7 +123,7 @@
 /obj/item/flash/proc/check_capacitor(var/mob/user)
 	//spamming the flash before it's fully charged (60 seconds) increases the chance of it breaking
 	//It will never break on the first use.
-	var/obj/item/cell/battery = power_supply
+	var/obj/item/cell/battery = obj_cell_slot?.cell
 
 	if(use_external_power)
 		battery = get_external_power_supply()

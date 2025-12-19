@@ -31,6 +31,7 @@
 	var/spawn_dir
 
 /obj/item/flashlight/Initialize(mapload)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 	set_flashlight()
 	. = ..()
 
@@ -44,10 +45,10 @@
 
 /obj/item/flashlight/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	QDEL_NULL(cell)
 	return ..()
 
 /obj/item/flashlight/process(delta_time)
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(!on || !cell)
 		return PROCESS_KILL
 
@@ -102,6 +103,7 @@
 
 /obj/item/flashlight/examine(mob/user, dist)
 	. = ..()
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(power_use && brightness_level)
 		. += "\The [src] is set to [brightness_level]. "
 		if(cell)
@@ -119,6 +121,7 @@
 	attack_self(user)
 
 /obj/item/flashlight/attack_self(mob/user, datum/event_args/actor/actor)
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(power_use)
 		if(!isturf(user.loc))
 			to_chat(user, "You cannot turn the light on while in this [user.loc].") //To prevent some lighting anomalities.
@@ -196,39 +199,6 @@
 			L.flash_eyes()
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
-
-/obj/item/flashlight/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(user.get_inactive_held_item() == src)
-		if(cell)
-			cell.update_appearance()
-			user.put_in_hands(cell)
-			cell = null
-			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
-			playsound(src, 'sound/machines/button.ogg', 30, TRUE, 0)
-			on = FALSE
-			update_appearance()
-			return
-		..()
-	else
-		return ..()
-
-/obj/item/flashlight/attackby(obj/item/W, mob/user as mob)
-	if(power_use)
-		if(istype(W, /obj/item/cell))
-			if(istype(W, /obj/item/cell/small))
-				if(!cell)
-					if(!user.attempt_insert_item_for_installation(W, src))
-						return
-					cell = W
-					to_chat(user, SPAN_NOTICE("You install a cell in \the [src]."))
-					playsound(src, 'sound/machines/button.ogg', 30, 1, 0)
-					update_appearance()
-				else
-					to_chat(user, SPAN_NOTICE("\The [src] already has a cell."))
-			else
-				to_chat(user, SPAN_NOTICE("\The [src] cannot use that type of cell."))
-	else
-		..()
 
 /obj/item/flashlight/pen
 	name = "penlight"

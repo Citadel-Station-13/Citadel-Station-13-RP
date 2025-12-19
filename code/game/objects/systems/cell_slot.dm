@@ -19,7 +19,6 @@
 	/// no-tool time for removal, if any
 	var/remove_yank_time = 0
 	/// tool behavior for removal, if any
-
 	var/remove_tool_behavior = null
 	/// tool time for removal, if any
 	var/remove_tool_time = 0

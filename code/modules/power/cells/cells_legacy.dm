@@ -23,7 +23,7 @@
 	weight_volume = WEIGHT_VOLUME_SMALL
 	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	self_recharge = TRUE
-	self_recharge_amount = STATIC_KW_TO_CELL_UsNITS(15, 1)
+	self_recharge_amount = STATIC_KW_TO_CELL_UNITS(15, 1)
 
 // todo: this isn't even a fucking cell get it out of here
 //Not actually a cell, but if people look for it, they'll probably look near other cells

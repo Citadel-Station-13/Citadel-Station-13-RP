@@ -12,9 +12,11 @@
 	var/obj/effect/suspension_field/suspension_field
 
 /obj/machinery/suspension_gen/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	init_cell_slot(cell_type, cell_accept)
 	#warn interactions?
-	. = ..()
 
 /obj/machinery/suspension_gen/process(delta_time)
 	var/obj/item/cell/cell = get_cell()

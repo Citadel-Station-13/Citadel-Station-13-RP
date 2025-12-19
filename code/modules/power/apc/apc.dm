@@ -256,7 +256,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	area.power_equip = 0
 	area.power_environ = 0
 	area.power_change()
-	QDEL_NULL(wireS)
+	QDEL_NULL(wires)
 	QDEL_NULL(terminal)
 	QDEL_NULL(cell)
 
