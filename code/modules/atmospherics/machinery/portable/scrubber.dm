@@ -36,6 +36,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/update_icon_state()
 	. = ..()
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(on && cell && cell.charge)
 		icon_state = "pscrubber:1"
 	else
@@ -92,6 +93,7 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
 	..()
 
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(on && (cell?.charge || !use_cell))
 		var/datum/gas_mixture/scrubbing = isnull(holding)? loc.return_air() : holding.air_contents
 		var/old_mols = scrubbing.total_moles
@@ -126,11 +128,8 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/Initialize(mapload)
 	. = ..()
-	cell = null
-
 	id = gid
 	gid++
-
 	name = "[name] (ID [id])"
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/update_icon()

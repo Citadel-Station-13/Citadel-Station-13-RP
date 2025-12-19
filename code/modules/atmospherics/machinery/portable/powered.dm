@@ -66,6 +66,7 @@
 	.["hasCell"] = !isnull(cell)
 
 /obj/machinery/portable_atmospherics/powered/use_power(amount, chan, dt)
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(!use_cell)
 		return ..()
 	else if(!cell)

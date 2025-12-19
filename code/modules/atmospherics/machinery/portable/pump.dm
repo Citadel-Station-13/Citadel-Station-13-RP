@@ -25,6 +25,7 @@
 	. = ..()
 	var/list/overlays_to_add = list()
 
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(on && cell && cell.charge)
 		icon_state = "psiphon:1"
 	else
@@ -57,6 +58,7 @@
 	..()
 	var/power_draw = -1
 
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(on && cell && cell.charge)
 		var/datum/gas_mixture/environment
 		if(holding)
@@ -127,6 +129,7 @@
 	data["max_pressure"] = round(pressuremax)
 
 
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	data["powerDraw"] = round(last_power_draw_legacy)
 	data["cellCharge"] = cell ? cell.charge : 0
 	data["cellMaxCharge"] = cell ? cell.max_charge : 1

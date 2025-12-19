@@ -61,9 +61,6 @@
 			update_appearance()
 			return PROCESS_KILL
 
-/obj/item/flashlight/get_cell(inducer)
-	return cell
-
 /obj/item/flashlight/verb/toggle()
 	set name = "Toggle Flashlight Brightness"
 	set category = VERB_CATEGORY_OBJECT

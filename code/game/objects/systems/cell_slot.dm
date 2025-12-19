@@ -201,7 +201,7 @@
  */
 /obj/proc/init_cell_slot_easy_machine(
 	preload_path,
-	cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM,
+	cell_Type = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM,
 	skip_interactions,
 	require_remove_tool,
 	require_context_menu,
