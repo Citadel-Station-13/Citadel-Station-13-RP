@@ -10,6 +10,10 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_1, /basic/tier_
 	cell_name = "basic"
 	cell_desc = "Tier 1: This one is a standard design, and performs about what you expect for a power cell."
 	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.0
+	typegen_materials_base = list(
+		/datum/prototype/material/steel::id = 200,
+		/datum/prototype/material/glass::id = 75,
+	)
 
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/small, /power_cell/basic/tier_1/small, "powercell-basic-tier_1-small")
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/medium, /power_cell/basic/tier_1/medium, "powercell-basic-tier_1-medium")
@@ -21,6 +25,13 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_2, /basic/tier_
 	cell_name = "improved"
 	cell_desc = "Tier 2: This one utilizes more advanced materials in its electrolytes, allowing it to store a sizeable chunk more power than a basic cell."
 	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.25
+	typegen_materials_base = list(
+		/datum/prototype/material/steel::id = 250,
+		/datum/prototype/material/glass::id = 125,
+		/datum/prototype/material/copper::id = 50,
+		/datum/prototype/material/gold::id = 75,
+		/datum/prototype/material/silver::id = 75,
+	)
 
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/small, /power_cell/basic/tier_2/small, "powercell-basic-tier_2-small")
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/medium, /power_cell/basic/tier_2/medium, "powercell-basic-tier_2-medium")
@@ -32,6 +43,14 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_3, /basic/tier_
 	cell_name = "advanced"
 	cell_desc = "Tier 3: This one is even more overtuned than an upgraded cell, utilizing novel crystalline lattices to improve energy densities."
 	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.5
+	typegen_materials_base = list(
+		/datum/prototype/material/steel::id = 175,
+		/datum/prototype/material/glass::id = 100,
+		/datum/prototype/material/copper::id = 100,
+		/datum/prototype/material/gold::id = 100,
+		/datum/prototype/material/silver::id = 100,
+		/datum/prototype/material/diamond::id = 50,
+	)
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/small, /power_cell/basic/tier_3/small, "powercell-basic-tier_3-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/medium, /power_cell/basic/tier_3/medium, "powercell-basic-tier_3-medium")
@@ -43,6 +62,15 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_4, /basic/tier_
 	cell_name = "superdense"
 	cell_desc = "Tier 4: An ultradense power cell made from special, low-resistance alloys."
 	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 2.0
+	typegen_materials_base = list(
+		/datum/prototype/material/steel::id = 200,
+		/datum/prototype/material/glass::id = 200,
+		/datum/prototype/material/copper::id = 200,
+		/datum/prototype/material/silver::id = 450,
+		/datum/prototype/material/durasteel::id = 100,
+		/datum/prototype/material/hydrogen/mhydrogen::id = 600,
+		/datum/prototype/material/verdantium::id = 450,
+	)
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/small, /power_cell/basic/tier_4/small, "powercell-basic-tier_4-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/medium, /power_cell/basic/tier_4/medium, "powercell-basic-tier_4-medium")
@@ -55,36 +83,18 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_5, /basic/tier_
 	cell_desc = "Tier 5: This indecipherable cell crams unbelievable amounts of energy \
 	into a storage matrix fabricated out of exotic materials."
 	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 3.0
+	typegen_materials_base = list(
+		/datum/prototype/material/steel::id = 175,
+		/datum/prototype/material/glass::id = 350,
+		/datum/prototype/material/copper::id = 250,
+		/datum/prototype/material/gold::id = 350,
+		/datum/prototype/material/silver::id = 250,
+		/datum/prototype/material/verdantium::id = 50,
+		/datum/prototype/material/morphium::id = 300,
+		/datum/prototype/material/valhollide::id = 350,
+	)
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/small, /power_cell/basic/tier_5/small, "powercell-basic-tier_5-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/medium, /power_cell/basic/tier_5/medium, "powercell-basic-tier_5-medium")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/large, /power_cell/basic/tier_5/large, "powercell-basic-tier_5-large")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/weapon, /power_cell/basic/tier_5/weapon, "powercell-basic-tier_5-weapon")
-
-#warn new way
-
-// POWER_CELL_GENERATE_TYPES(/obj/item/cell/basic)
-// /obj/item/cell/basic
-// 	materials_base = list(
-// 		/datum/material/steel::id = 200,
-// 		/datum/material/glass::id = 75,
-// 	)
-
-// /obj/item/cell/basic/tier_2
-// 	materials_base = list(
-// 		/datum/material/steel::id = 250,
-// 		/datum/material/glass::id = 125,
-// 		/datum/material/copper::id = 50,
-// 		/datum/material/gold::id = 75,
-// 		/datum/material/silver::id = 75,
-// 	)
-
-// /obj/item/cell/basic/tier_3
-// 	materials_base = list(
-// 		/datum/material/steel::id = 175,
-// 		/datum/material/glass::id = 100,
-// 		/datum/material/copper::id = 100,
-// 		/datum/material/gold::id = 100,
-// 		/datum/material/silver::id = 100,
-// 		/datum/material/diamond::id = 50,
-// 	)

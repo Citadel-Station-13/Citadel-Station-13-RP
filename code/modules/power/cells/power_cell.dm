@@ -61,13 +61,13 @@
 	var/typegen_material_multiply_small = 1
 	/// * automatically set via define / typegen
 	/// * compounded with [typegen_material_multiply]
-	var/typegen_material_multiply_medium = 1
+	var/typegen_material_multiply_medium = 7.5
 	/// * automatically set via define / typegen
 	/// * compounded with [typegen_material_multiply]
-	var/typegen_material_multiply_large = 1
+	var/typegen_material_multiply_large = 15
 	/// * automatically set via define / typegen
 	/// * compounded with [typegen_material_multiply]
-	var/typegen_material_multiply_weapon = 1
+	var/typegen_material_multiply_weapon = 2.5
 
 	/// sets base materials; negative values are allowed
 	/// * this is keyed as ids, not instances, of materials! materials are
