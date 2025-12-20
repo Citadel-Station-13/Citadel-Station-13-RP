@@ -17,7 +17,7 @@
 
 	var/poison_type = "expired_medicine"
 	var/poison_chance = 100
-	var/poison_per_bite = 15
+	var/poison_per_bite = 2
 
 
 /mob/living/simple_mob/mechanical/derelict/minuteman/hornet/poison/apply_melee_effects(var/atom/A)

@@ -15,9 +15,9 @@
 	legacy_melee_damage_lower = 20
 
 
-	var/poison_type = "irradiated_nanites"
+	var/poison_type = "fast_irradiated_nanites"
 	var/poison_chance = 100
-	var/poison_per_bite = 5
+	var/poison_per_bite = 10
 
 
 /mob/living/simple_mob/mechanical/derelict/minuteman/hornet/irradiator/apply_melee_effects(var/atom/A)

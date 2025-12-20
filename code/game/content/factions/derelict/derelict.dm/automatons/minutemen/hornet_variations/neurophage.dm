@@ -15,7 +15,7 @@
 	legacy_melee_damage_lower = 20
 
 
-	var/poison_type = "neurophage_nanites"
+	var/poison_type = "fast_neurophage_nanites"
 	var/poison_chance = 100
 	var/poison_per_bite = 5
 

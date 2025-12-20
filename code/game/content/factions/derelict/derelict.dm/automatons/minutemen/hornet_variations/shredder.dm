@@ -16,10 +16,11 @@
 	legacy_melee_damage_lower = 20
 
 
-	var/poison_type = "shredding_nanites"
-	var/poison_chance = 100
-	var/poison_per_bite = 10
+	var/shredding_poison_type = "fast_shredding_nanites"
+	var/shredding_poison_chance = 100
+	var/shredding_poison_per_bite = 5
 
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
 /mob/living/simple_mob/mechanical/derelict/minuteman/hornet/apply_melee_effects(var/atom/A)
 	if(isliving(A))
@@ -27,10 +28,10 @@
 		if(L.reagents)
 			var/target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
 			if(L.can_inject(src, null, target_zone))
-				inject_poison(L, target_zone)
+				inject_poison1(L, target_zone)
 
 
-/mob/living/simple_mob/mechanical/derelict/minuteman/hornet/proc/inject_poison(mob/living/L, target_zone)
-	if(prob(poison_chance))
+/mob/living/simple_mob/mechanical/derelict/minuteman/hornet/proc/inject_poison1(mob/living/L, target_zone1)
+	if(prob(shredding_poison_chance))
 		to_chat(L, "<span class='warning'>Something burns in your veins!</span>")
-		L.reagents.add_reagent(poison_type, poison_per_bite)
+		L.reagents.add_reagent(shredding_poison_type, shredding_poison_per_bite)

@@ -32,5 +32,6 @@
 	legacy_melee_damage_upper = 15
 	legacy_melee_damage_lower = 15
 
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event
 
 
