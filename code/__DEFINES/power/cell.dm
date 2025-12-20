@@ -29,6 +29,7 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 #warn don't forget sprite now that it isn't all inherited
 
 /// generate /small, /medium, /large, and /weapon cells for a power cell datum and typepath combo
+/// * only works for standard cells with standard graphics.
 #define POWER_CELL_GENERATE_TYPES(DATUM_TYPEPATH, CELL_TYPEPATH, PROTOTYPE_ID) \
 /obj/item/cell##CELL_TYPEPATH/small { \
 	name = "small power cell (" + ##DATUM_TYPEPATH::cell_name + ")"; \
@@ -39,12 +40,14 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \
+	typegen_material_multiplier = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_small; \
 	cell_datum = ##DATUM_TYPEPATH; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_small; \
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_small; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_small; \
+	cell_type = CELL_TYPE_SMALL; \
 } \
 /obj/item/cell##CELL_TYPEPATH/small/empty { \
 	charge = 0; \
@@ -58,12 +61,14 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \
+	typegen_material_multiplier = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_medium; \
 	cell_datum = ##DATUM_TYPEPATH; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_medium; \
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_medium; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_medium; \
+	cell_type = CELL_TYPE_MEDIUM; \
 } \
 /obj/item/cell##CELL_TYPEPATH/medium/empty { \
 	charge = 0; \
@@ -77,12 +82,14 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \
+	typegen_material_multiplier = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_large; \
 	cell_datum = ##DATUM_TYPEPATH; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_large; \
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_large; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_large; \
+	cell_type = CELL_TYPE_LARGE; \
 } \
 /obj/item/cell##CELL_TYPEPATH/large/empty { \
 	charge = 0; \
@@ -96,12 +103,14 @@ DEFINE_BITFIELD_NEW(cell_type, list(
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \
+	typegen_material_multiplier = ##DATUM_TYPEPATH::typegen_material_multiply * ##DATUM_TYPEPATH::typegen_material_multiply_weapon; \
 	cell_datum = ##DATUM_TYPEPATH; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_weapon; \
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_weapon; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_weapon; \
+	cell_type = CELL_TYPE_WEAPON; \
 } \
 /obj/item/cell##CELL_TYPEPATH/weapon/empty { \
 	charge = 0; \

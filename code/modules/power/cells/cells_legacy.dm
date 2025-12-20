@@ -6,7 +6,6 @@
 	icon_state = "potato_cell" //"potato_battery"
 	charge = 100
 	max_charge = 300
-	minor_fault = 1
 	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 /obj/item/cell/slime

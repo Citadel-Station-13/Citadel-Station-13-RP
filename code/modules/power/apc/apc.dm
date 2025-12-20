@@ -132,10 +132,14 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 	var/area/area
 	var/areastring = null
-	#warn erm
+
 	var/obj/item/cell/cell
+	/// starting path
 	var/cell_type = /obj/item/cell/basic/tier_1/medium
 	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	/// accept cells with no CELL_TYPE field
+	/// * for shit like gunsword
+	var/cell_accept_nonstandard = TRUE
 
 	var/chargelevel = 0.0005  // Cap for how fast APC cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 	var/start_charge = 90				// initial cell charge %
@@ -264,6 +268,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	if((hacker) && (hacker.hacked_apcs) && (src in hacker.hacked_apcs))
 		hacker.hacked_apcs -= src
 	return ..()
+
+/obj/machinery/power/apc/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
+	return cell.cell_type ? (cell.cell_type & cell_accept) : cell_accept_nonstandard
 
 /obj/machinery/power/apc/get_cell(inducer)
 	return cell
@@ -571,7 +578,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 			to_chat(user,"The [src.name] already has a power cell installed.")
 			return
 		var/obj/item/cell/casted_cell = W
-		if(!(casted_cell.cell_type & cell_accept))
+		if(!object_cell_slot_accepts(casted_cell))
 			to_chat(usr, SPAN_WARNING("[casted_cell] won't fit in [src]'s cell slot."))
 			return
 		if (machine_stat & MAINT)

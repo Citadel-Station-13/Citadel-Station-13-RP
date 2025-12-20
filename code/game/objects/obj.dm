@@ -119,8 +119,8 @@
 	/// ! This is what determines what constraints are used by the material parts system.
 	/// * Use null if something doesn't use material parts system, or if something uses the abstraction API to implement material parts themselves.
 	/// * This var should never be changed from a list to a normal value or vice versa at runtime, again, like material_parts
-	/// * as it is closely linked to material_parts
-	var/list/material_constraints = null
+	///   as it is closely linked to material_parts
+	var/tmp/list/material_constraints = null
 	/// material costs - lets us track the costs of what we're made of.
 	/// this is either a lazy key-value list of material keys to cost in cm3,
 	/// or a single number.
@@ -129,10 +129,11 @@
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	/// * This should still be set even if you are implementing material_parts yourself!
 	//  todo: abstraction API for this when we need it.
-	var/list/material_costs
+	var/tmp/list/material_costs
 	/// material part considered primary.
-	var/material_primary
+	var/tmp/material_primary
 	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
+	/// * checked in get_materials().
 	var/material_multiplier = 1
 
 	//* Persistence *//
@@ -225,24 +226,24 @@
 	. = ..()
 	// cache base materials if it's not modified
 	if(!isnull(materials_base) && !(obj_flags & OBJ_MATERIALS_MODIFIED))
-		if(has_typelist(materials_base))
-			materials_base = get_typelist(materials_base)
+		if(has_typelist(NAMEOF(src, materials_base)))
+			materials_base = get_typelist(NAMEOF(src, materials_base))
 		else
 			// preprocess
 			materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
 			materials_base = typelist(NAMEOF(src, materials_base), materials_base)
 	// cache material costs if it's not modified
 	if(islist(material_costs))
-		if(has_typelist(material_costs))
-			material_costs = get_typelist(material_costs)
+		if(has_typelist(NAMEOF(src, material_costs)))
+			material_costs = get_typelist(NAMEOF(src, material_costs))
 		else
 			// preprocess
 			material_costs = SSmaterials.preprocess_kv_keys_to_ids(material_costs)
 			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
 	// cache material constraints if it's not modified
 	if(islist(material_constraints))
-		if(has_typelist(material_constraints))
-			material_constraints = get_typelist(material_constraints)
+		if(has_typelist(NAMEOF(src, material_constraints)))
+			material_constraints = get_typelist(NAMEOF(src, material_constraints))
 		else
 			material_constraints = typelist(NAMEOF(src, material_constraints), material_constraints)
 

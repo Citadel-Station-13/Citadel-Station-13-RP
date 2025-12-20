@@ -36,39 +36,49 @@
 	//* Capacity - Type Generation *//
 	// TODO: make sure these all apply if the prototype updates
 
+	/// * automatically set via define / typegen
 	var/typegen_capacity_multiplier = 1
-	/// compounded with [typegen_capacity_multiplier]
+	/// * automatically set via define / typegen
+	/// * compounded with [typegen_capacity_multiplier]
 	var/typegen_capacity_multiplier_small = 1 * POWER_CELL_CAPACITY_MULTIPLIER_SMALL
-	/// compounded with [typegen_capacity_multiplier]
+	/// * automatically set via define / typegen
+	/// * compounded with [typegen_capacity_multiplier]
 	var/typegen_capacity_multiplier_medium = 1 * POWER_CELL_CAPACITY_MULTIPLIER_MEDIUM
-	/// compounded with [typegen_capacity_multiplier]
+	/// * automatically set via define / typegen
+	/// * compounded with [typegen_capacity_multiplier]
 	var/typegen_capacity_multiplier_large = 1 * POWER_CELL_CAPACITY_MULTIPLIER_LARGE
-	/// compounded with [typegen_capacity_multiplier]
+	/// * automatically set via define / typegen
+	/// * compounded with [typegen_capacity_multiplier]
 	var/typegen_capacity_multiplier_weapon = 1 * POWER_CELL_CAPACITY_MULTIPLIER_WEAPON
 
 	//* Materials - Type Generation *//
 	// TODO: make sure these all apply if the prototype updates
 
+	/// * automatically set via define / typegen
 	var/typegen_material_multiply = 1
-	/// compounded with [typegen_material_multiply]
+	/// * automatically set via define / typegen
+	/// * compounded with [typegen_material_multiply]
 	var/typegen_material_multiply_small = 1
-	/// compounded with [typegen_material_multiply]
+	/// * automatically set via define / typegen
+	/// * compounded with [typegen_material_multiply]
 	var/typegen_material_multiply_medium = 1
-	/// compounded with [typegen_material_multiply]
+	/// * automatically set via define / typegen
+	/// * compounded with [typegen_material_multiply]
 	var/typegen_material_multiply_large = 1
-	/// compounded with [typegen_material_multiply]
+	/// * automatically set via define / typegen
+	/// * compounded with [typegen_material_multiply]
 	var/typegen_material_multiply_weapon = 1
 
 	/// sets base materials; negative values are allowed
-	///
+	/// * this is keyed as ids, not instances, of materials! materials are
+	///   resolved at init time.
 	/// * this is applied before typegen material multiply
 	var/list/typegen_materials_base
-	#warn impl
 	/// added to the base materials; negative values are allowed
-	///
+	/// * this is keyed as ids, not instances, of materials! materials are
+	///   resolved at init time.
 	/// * this is applied after typegen material multiply
 	var/list/typegen_materials_base_adjust
-	#warn impl
 
 	//* Size - Type Generation *//
 	// TODO: make sure these all apply if the prototype updates

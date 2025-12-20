@@ -21,37 +21,28 @@
 	integrity_max = 200
 	integrity_failure = 100
 
+	/**
+	 * Materials base is intentionally nulled by default on /cell.
+	 *
+	 * This will invoke type generation. If this is set by a mapper or varedit, it will ignore
+	 * typegen.
+	 */
+	materials_base = null
+
 	//* -- Set by type generation -- *//
 
 	/// should we run typegen from the power cell datum we're provided?
-	///
-	/// These things are affected, on the power cell datum side
-	/// * typegen_capacity
-	/// * typegen_material
-	/// * typegen_visual
-	/// * typegen_worth
-	///
-	/// The following things are statically set by the #define generator
-	/// * indicator color
-	/// * stripe color
-	/// * charge capacity
-	///
-	/// The following things are set at init
-	/// * materials
-	///
-	/// The following things are read at runtime
-	/// * worth
-	///
-	/// This should never be modified after Initialize() runs.
+	/// * This is statically set by the power cell type generation defines.
+	/// * This should never be modified after Initialize() runs.
 	var/tmp/typegen_active = FALSE
-	#warn we should set name and desc via macro too..
+	var/tmp/typegen_material_multiplier = 1
 
 	//* Behavior *//
-	/// cell data prototype; loaded at init, set to typepath or anonymous type
+	/// Power cell prototype. Fetched at init.
+	/// * This is nullable! If this is null, we don't perform typegen.
 	var/datum/prototype/power_cell/cell_datum
 	/// what cell types we are
 	var/cell_type = NONE
-	#warn this
 
 	//* Charge *//
 	/// current charge
@@ -61,11 +52,6 @@
 	var/max_charge = POWER_CELL_CAPACITY_BASE
 	/// last time power was drawn from us
 	var/last_use
-
-	//* Configuration *//
-	/// allow rechargers
-	var/can_be_recharged = TRUE
-	#warn impl
 
 	//* Rendering *//
 	/// perform default rendering
@@ -89,25 +75,28 @@
 	/// Are we EMP immune?
 	var/emp_proof = FALSE
 	var/rigged = 0		// true if rigged to explode
-	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
-	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
 	var/rating = 1
-	materials_base = list(MAT_STEEL = 700, MAT_GLASS = 50)
-
-	// Overlay stuff.
-	var/overlay_half_state = "cell-o1" // Overlay used when not fully charged but not empty.
-	var/overlay_full_state = "cell-o2" // Overlay used when fully charged.
 
 /obj/item/cell/Initialize(mapload)
-	#warn cell datum; use it to do materials mod
-	if(!isnull(typegen_material_modify) && !is_typelist(NAMEOF(src, materials_base), materials_base))
-		if(has_typelist(NAMEOF(src, materials_base)))
-			materials_base = get_typelist(NAMEOF(src, materials_base))
-		else
-			var/list/multiplied = materials_base.Copy()
-			for(var/key in multiplied)
-				multiplied[key] = multiplied[key] * typegen_material_modify
-			materials_base = typelist(NAMEOF(src, materials_base), multiplied)
+	cell_datum = RSpower_cells.fetch_local_or_throw(cell_datum)
+	if(typegen_active)
+		// Typegen is active, run type generation stuff.
+		// This will trample all map edits. If you're editing a map, you shouldn't be editing power cells.
+		// Or if you are, you should null out their cell datum.
+		if(isnull(materials_base) && cell_datum.typegen_materials_base)
+			if(has_typelist(NAMEOF(src, materials_base)))
+				materials_base = get_typelist(NAMEOF(src, materials_base))
+			else
+				// This will **trample** the materials_base check in /obj initialization, so we have to the
+				// entire cycle.
+				var/list/generating_materials = cell_datum.typegen_materials_base.Copy()
+				if(typegen_material_multiplier != 1)
+					for(var/key in generating_materials)
+						generating_materials[key] *= typegen_material_multiplier
+				for(var/key in cell_datum.typegen_materials_base_adjust)
+					generating_materials[key] += cell_datum.typegen_materials_base_adjust[key]
+				generating_materials = SSmaterials.preprocess_kv_keys_to_ids(generating_materials)
+				materials_base = typelist(NAMEOF(src, materials_base), generating_materials)
 	. = ..()
 	if(isnull(charge))
 		charge = max_charge
@@ -300,25 +289,14 @@
 /obj/item/cell/update_icon()
 	if(rendering_system)
 		cut_overlays()
-
 		if(stripe_color)
 			var/image/stripe = image(icon, "cell-stripe")
 			stripe.color = stripe_color
 			add_overlay(stripe)
-
 		if(indicator_count)
 			var/image/indicator = image(icon, "cell-[charge <= 1? "empty" : "[ceil(charge / max_charge * 5)]"]")
 			indicator.color = indicator_color
 			add_overlay(indicator)
-	else
-		//! LEGACY CODE !//
-		cut_overlays()
-		if(charge < 0.01) // Empty.
-		else if(charge/max_charge >= 0.995) // Full
-			add_overlay(overlay_full_state)
-		else // Inbetween.
-			add_overlay(overlay_half_state)
-		//! END !//
 	return ..()
 
 //* Setters *//

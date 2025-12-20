@@ -1,4 +1,4 @@
-// todo: dynamic recharger API on item for cell chargers, wall chargers, and device rechargers.
+3// todo: dynamic recharger API on item for cell chargers, wall chargers, and device rechargers.
 /obj/machinery/recharger
 	name = "recharger"
 	desc = "A standard recharger for all devices that use power.\n <span class='notice'>\[Accepts Upgrades\]</span>"
