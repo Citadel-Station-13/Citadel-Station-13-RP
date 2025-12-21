@@ -1,9 +1,9 @@
 /mob/living/simple_mob/mechanical/derelict/minuteman/hornet/irradiator
-	name = "minuteman hornet"
+	name = "minuteman irradiator hornet"
 	desc = "A medium sized automaton that flies low above the ground. It looks like it can take a few good hits, but most alarmingly is the multitude of pincers and syringes on the tendrils beneath it. This one reeks of ozone."
 
-	icon_state = "hornet"
-	icon_living = "hornet"
+	icon_state = "irradiator_hornet"
+	icon_living = "irradiator_hornet"
 
 	health = 170
 	maxHealth = 170

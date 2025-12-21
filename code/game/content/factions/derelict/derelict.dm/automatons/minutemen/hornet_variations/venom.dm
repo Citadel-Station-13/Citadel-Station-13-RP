@@ -1,9 +1,9 @@
 /mob/living/simple_mob/mechanical/derelict/minuteman/hornet/venom
-	name = "minuteman hornet"
+	name = "minuteman venom hornet"
 	desc = "A medium sized automaton that flies low above the ground. It looks like it can take a few good hits, but most alarmingly is the multitude of pincers and syringes on the tendrils beneath it. Its frame reeks of pepper and fire."
 
-	icon_state = "hornet"
-	icon_living = "hornet"
+	icon_state = "venom_hornet"
+	icon_living = "venom_hornet"
 
 	health = 170
 	maxHealth = 170

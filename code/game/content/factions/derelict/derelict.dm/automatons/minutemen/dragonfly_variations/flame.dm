@@ -1,9 +1,9 @@
 /mob/living/simple_mob/mechanical/derelict/minuteman/dragonfly/flame
-	name = "minuteman dragonfly"
+	name = "minuteman incendiary dragonfly"
 	desc = "A lithe hovering automaton. It sports an array of mechanical 'wings', which seems to allow it greater mobility. This one reeks of smoke and fire."
 
-	icon_state = "dragonfly"
-	icon_living = "dragonfly"
+	icon_state = "flame_dragonfly"
+	icon_living = "flame_dragonfly"
 	color = "#808080"
 
 	health = 200

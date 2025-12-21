@@ -1,9 +1,9 @@
 /mob/living/simple_mob/mechanical/derelict/minuteman/dragonfly/sniper
-	name = "minuteman dragonfly"
+	name = "minuteman marksman dragonfly"
 	desc = "A lithe hovering automaton. It sports an array of mechanical 'wings', which seems to allow it greater mobility. This one appears fitted with some sort of long-ranged energy weapon."
 
-	icon_state = "dragonfly"
-	icon_living = "dragonfly"
+	icon_state = "sniper_dragonfly"
+	icon_living = "sniper_dragonfly"
 	color = "#808080"
 
 	health = 200

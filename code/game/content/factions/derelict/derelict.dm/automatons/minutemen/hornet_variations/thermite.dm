@@ -1,9 +1,9 @@
 /mob/living/simple_mob/mechanical/derelict/minuteman/hornet/thermite
-	name = "minuteman hornet"
+	name = "minuteman thermite hornet"
 	desc = "A medium sized automaton that flies low above the ground. It looks like it can take a few good hits, but most alarmingly is the multitude of pincers and syringes on the tendrils beneath it. You see some sort of powder in one of its syringes."
 
-	icon_state = "hornet"
-	icon_living = "hornet"
+	icon_state = "thermite_hornet"
+	icon_living = "thermite_hornet"
 
 	health = 170
 	maxHealth = 170

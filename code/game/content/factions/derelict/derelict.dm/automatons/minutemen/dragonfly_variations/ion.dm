@@ -1,9 +1,9 @@
 /mob/living/simple_mob/mechanical/derelict/minuteman/dragonfly/ion
-	name = "minuteman dragonfly"
+	name = "minuteman ionospheric dragonfly"
 	desc = "A lithe hovering automaton. It sports an array of mechanical 'wings', which seems to allow it greater mobility. Your electronics are crackling by merely looking at this one."
 
-	icon_state = "dragonfly"
-	icon_living = "dragonfly"
+	icon_state = "ion_dragonfly"
+	icon_living = "ion_dragonfly"
 	color = "#808080"
 
 	health = 200
