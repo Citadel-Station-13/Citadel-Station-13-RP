@@ -236,9 +236,9 @@
 
 	lasing_target = target
 	lasing_actor = clickchain
-	{
+	do
 		. = do_after(clickchain.performer, effective_delay, src, additional_checks = CALLBACK(src, PROC_REF(continue_to_laser)))
-	}
+	while(FALSE)
 	lasing_actor = null
 	lasing_target = null
 	if(!.)
