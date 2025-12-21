@@ -188,12 +188,8 @@
 /obj/item/airlock_electronics,
 /obj/item/airlock_electronics,
 /obj/item/module/power_control,
-/obj/item/cell/basic/tier_1/medium{
-	maxcharge = 15000
-	},
-/obj/item/cell/basic/tier_1/medium{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_1/medium,
+/obj/item/cell/basic/tier_1/medium,
 /obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/awaymission/labs/cave)

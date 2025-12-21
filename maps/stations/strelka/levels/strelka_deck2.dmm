@@ -17063,12 +17063,8 @@
 	pixel_y = 17
 	},
 /obj/machinery/cell_charger,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/carpet/patterened/orange,
 /area/engineering/strelka/storage)
 "Rt" = (
