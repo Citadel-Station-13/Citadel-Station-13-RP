@@ -1,14 +1,11 @@
 /mob/proc/LegacyDestroy()
+	// key focus
+	set_key_focus(null)
 	// todo: remove machine
 	unset_machine()
 	// hud
 	for(var/alert in alerts)
 		clear_alert(alert)
-	if(client)
-		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
-			qdel(spell_master)
-		remove_screen_obj_references()
-		client.screen = list()
 	// mind
 	if(!isnull(mind))
 		if(mind.current == src)
@@ -19,6 +16,32 @@
 		else
 			// mind is not ours, null it out
 			mind = null
+	// abilities
+	QDEL_NULL(ability_master)
+	// spells
+	QDEL_LIST(spell_list)
+	QDEL_LIST(spell_masters)
+	// cleanup screen objects
+	QDEL_NULL(hands)
+	QDEL_NULL(pullin)
+	QDEL_NULL(purged)
+	QDEL_NULL(internals)
+	QDEL_NULL(oxygen)
+	QDEL_NULL(i_select)
+	QDEL_NULL(m_select)
+	QDEL_NULL(toxin)
+	QDEL_NULL(fire)
+	QDEL_NULL(bodytemp)
+	QDEL_NULL(healths)
+	QDEL_NULL(throw_icon)
+	QDEL_NULL(nutrition_icon)
+	QDEL_NULL(pressure)
+	QDEL_NULL(pain)
+	QDEL_NULL(item_use_icon)
+	QDEL_NULL(gun_move_icon)
+	QDEL_NULL(gun_setting_icon)
+	QDEL_NULL(spell_masters)
+	QDEL_NULL(zone_sel)
 
 /**
  * Generate the tag for this mob
@@ -27,28 +50,6 @@
  */
 /mob/generate_tag()
 	tag = "mob_[++next_mob_id]"
-
-/mob/proc/remove_screen_obj_references()
-	hands = null
-	pullin = null
-	purged = null
-	internals = null
-	oxygen = null
-	i_select = null
-	m_select = null
-	toxin = null
-	fire = null
-	bodytemp = null
-	healths = null
-	throw_icon = null
-	nutrition_icon = null
-	pressure = null
-	pain = null
-	item_use_icon = null
-	gun_move_icon = null
-	gun_setting_icon = null
-	spell_masters = null
-	zone_sel = null
 
 /mob/statpanel_data(client/C)
 	. = ..()
