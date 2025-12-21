@@ -19,10 +19,14 @@
 	var/mob/living/carbon/occupant = null
 	var/injecting = 0
 
-
-/obj/machinery/implantchair/New()
-	..()
+/obj/machinery/implantchair/Initialize(mapload)
+	. = ..()
 	add_implants()
+
+/obj/machinery/implantchair/Destroy()
+	QDEL_LIST(implant_list)
+	occupant = null
+	return ..()
 
 /obj/machinery/implantchair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)

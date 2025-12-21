@@ -220,7 +220,9 @@
 			entries[id] = entry_data
 			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME))
 				return TRUE
-			var/name = sanitize(params["name"], MAX_NAME_LEN)
+			var/name = params["name"]
+			if(length(name) > MAX_NAME_LEN)
+				return TRUE
 			if(isnull(name))
 				return TRUE
 			if(name)
@@ -251,7 +253,9 @@
 			entries[id] = entry_data
 			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC))
 				return TRUE
-			var/desc = sanitize(params["desc"], MAX_MESSAGE_LEN)
+			var/desc = params["desc"]
+			if(length(desc) > MAX_MESSAGE_LEN)
+				return TRUE
 			if(isnull(desc))
 				return TRUE
 			if(desc)

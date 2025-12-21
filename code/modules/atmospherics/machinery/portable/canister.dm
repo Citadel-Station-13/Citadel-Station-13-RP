@@ -489,22 +489,6 @@
 	src.air_contents.adjust_gas(GAS_ID_DEUTERIUM, MolesForPressure())
 	src.update_icon()
 
-//Dirty way to fill room with gas. However it is a bit easier to do than creating some floor/engine/n2o -rastaf0
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/Initialize(mapload)
-	. = ..()
-	air_contents.gas[GAS_ID_NITROUS_OXIDE] = 9*4000
-	air_contents.update_values()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/LateInitialize()
-	. = ..()
-	var/turf/simulated/location = src.loc
-	if (istype(src.loc))
-		while (!location.air)
-			sleep(10)
-		location.assume_air(air_contents)
-		air_contents = new
-
 /obj/machinery/portable_atmospherics/canister/nitrogen/Initialize(mapload)
 	. = ..()
 	src.air_contents.adjust_gas(GAS_ID_NITROGEN, MolesForPressure())

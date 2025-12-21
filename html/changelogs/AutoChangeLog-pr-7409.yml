@@ -1,0 +1,11 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - bugfix: "button sprite/icons for mass driver buttons in chapels"
+  - rscadd: "door control to the chapel mass driver"
+  - rscadd: "cremetoriam activation button"
+  - bugfix: "engineering access into Sec via main engineering trunk"
+  - bugfix: "button access for cargo's pinnace"
+  - bugfix: "button access for auxiliary docking bay on deck 4"
+  - tweak: "explo shuttle profile to add cyborg charger"
+  - tweak: "repositioned some lights and cameras on deck 4"

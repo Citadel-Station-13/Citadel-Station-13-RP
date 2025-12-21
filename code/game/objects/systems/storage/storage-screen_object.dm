@@ -15,18 +15,20 @@
 /atom/movable/screen/storage/closer/Click()
 	usr.active_storage?.hide(usr)
 
+INITIALIZE_IMMEDIATE(/atom/movable/screen/storage/item)
 /atom/movable/screen/storage/item
 	plane = HUD_ITEM_PLANE
 	layer = HUD_ITEM_LAYER_BASE
 	var/obj/item/item
 
-/atom/movable/screen/storage/item/New(newloc, obj/item/from_item)
+/atom/movable/screen/storage/item/Initialize(mapload, obj/item/from_item)
 	item = from_item
 	bind(from_item)
 	return ..()
 
 /atom/movable/screen/storage/item/Destroy()
 	item = null
+	vis_contents.len = 0
 	return ..()
 
 /atom/movable/screen/storage/item/MouseEntered(location, control, params)

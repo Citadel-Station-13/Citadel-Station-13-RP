@@ -15,12 +15,6 @@
 	tag_secure = 1
 	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "toggle_override")
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port/process()
-	airlock_program?.process()
-	docking_program?.process()
-
-	update_icon()
-
 /obj/machinery/embedded_controller/radio/airlock/docking_port/Initialize(mapload)
 	. = ..()
 	airlock_program = new/datum/computer/file/embedded_program/airlock/docking(src)
@@ -28,6 +22,17 @@
 	program = docking_program
 	if(display_name)
 		docking_program.display_name = display_name
+
+/obj/machinery/embedded_controller/radio/airlock/docking_port/Destroy()
+	QDEL_NULL(airlock_program)
+	QDEL_NULL(docking_program)
+	return ..()
+
+/obj/machinery/embedded_controller/radio/airlock/docking_port/process()
+	airlock_program?.process()
+	docking_program?.process()
+
+	update_icon()
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port/attackby(obj/item/W, mob/user)
 	if(istype(W,/obj/item/multitool)) //give them part of code, would take few tries to get full

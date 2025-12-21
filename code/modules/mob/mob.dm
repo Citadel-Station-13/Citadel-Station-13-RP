@@ -49,7 +49,7 @@
 
 /mob/Initialize(mapload)
 	// mob lists
-	mob_list_register(stat)
+	mob_list_register()
 	// actions
 	actions_controlled = new /datum/action_holder/mob_actor(src)
 	actions_innate = new /datum/action_holder/mob_actor(src)
@@ -57,6 +57,7 @@
 	init_physiology()
 	// atom HUDs
 	prepare_huds()
+	// key focus
 	set_key_focus(src)
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
@@ -83,29 +84,34 @@
 	return ..()
 
 /mob/Destroy()
+	// this kicks out client
+	// this is needed to be early because we destroy stuff like inventory
+	// TODO: can we have this ran even earlier?
+	//       ideally we want to preserve as much state as possible so
+	//       we don't want to run further-down behavior before this
+	ghostize()
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
 		qdel(effect)
 	status_effects = null
 	// mob lists
-	mob_list_unregister(stat)
+	mob_list_unregister()
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
 	dispose_abilities()
+	// inventory
+	QDEL_NULL(inventory)
 	// actions
 	QDEL_NULL(actions_controlled)
 	QDEL_NULL(actions_innate)
-	// this kicks out client
-	ghostize()
 	// run legacy actions
 	LegacyDestroy()
 	// get rid of our shit and nullspace everything first..
 	..()
 	// rendering
-	if(hud_used)
-		QDEL_NULL(hud_used)
+	QDEL_NULL(hud_used)
 	dispose_rendering()
 	// perspective; it might be gone now because self perspective is destroyed in ..()
 	using_perspective?.remove_mob(src, TRUE)
@@ -116,7 +122,7 @@
 	movespeed_modifiers = null
 	// actionspeed
 	actionspeed_modifiers = null
-	return QDEL_HINT_HARDDEL
+	return QDEL_HINT_QUEUE
 
 /**
  * Checks if we're relatively important for logging
@@ -130,23 +136,31 @@
 
 //* Mob List Registration *//
 
-/mob/proc/mob_list_register(for_stat)
+/mob/proc/mob_list_register()
 	GLOB.mob_list += src
-	if(for_stat == DEAD)
+	if(stat == DEAD)
 		dead_mob_list += src
 	else
 		living_mob_list += src
 
-/mob/proc/mob_list_unregister(for_stat)
+/mob/proc/mob_list_unregister()
 	GLOB.mob_list -= src
-	if(for_stat == DEAD)
-		dead_mob_list -= src
-	else
-		living_mob_list -= src
+	dead_mob_list -= src
+	living_mob_list -= src
 
 /mob/proc/mob_list_update_stat(old_stat, new_stat)
-	mob_list_unregister(old_stat)
-	mob_list_register(new_stat)
+	if(old_stat == new_stat)
+		return
+	switch(old_stat)
+		if(DEAD)
+			dead_mob_list -= src
+		else
+			living_mob_list -= src
+	switch(new_stat)
+		if(DEAD)
+			dead_mob_list += src
+		else
+			living_mob_list += src
 
 // TODO: /verbs folder these
 

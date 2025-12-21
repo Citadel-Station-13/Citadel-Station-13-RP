@@ -1,0 +1,6 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - bugfix: "fixed icons for: reindeer hat, 12.7mm ammo, green marker beacon (this isnt a thing, it's just the olive option)"
+  - bugfix: "fixed roast beef spawning waffle trash instead of plate trash"
+  - bugfix: "fixed initial defib paddles sprite\n:cl:"

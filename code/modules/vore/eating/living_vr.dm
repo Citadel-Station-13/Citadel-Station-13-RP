@@ -37,6 +37,9 @@
 	var/permit_stripped
 
 /mob/living/proc/init_vore()
+	// FUCK YOU FUCK YOU WHY DOESNT THIS CHECK FOR GC??
+	if(QDELING(src))
+		CRASH("vore just tried to have a vore moment")
 	//Something else made organs, meanwhile.
 	if(LAZYLEN(vore_organs))
 		return TRUE
@@ -61,15 +64,6 @@
 		B.can_taste = TRUE
 		return TRUE
 
-//
-// Hide vore organs in contents
-//
-///mob/living/view_variables_filter_contents(list/L)
-//	. = ..()
-//	var/len_before = L.len
-//	L -= vore_organs
-//	. += len_before - L.len
-//
 //
 // Handle being clicked, perhaps with something to devour
 //

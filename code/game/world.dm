@@ -8,6 +8,8 @@ GLOBAL_LIST(topic_status_cache)
 /world
 	mob = /mob/new_player
 	// TODO: replace with /turf/unallocated
+	// --           DO NOT USE THIS TURF ANYWHERE ELSE!                --
+	// -- DO NOT EVEN REFERENCE WORLD.TURF OTHER THAN TO CHECK FOR IT. --
 	turf = /turf/space/basic
 	// TODO: replace with /area/unallocated
 	area = /area/space
@@ -74,8 +76,11 @@ GLOBAL_LIST(topic_status_cache)
 
 	InitTgs()
 
+	// load configuration
+	load_legacy_configuration()
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 	config.update_world_viewsize()	//! Since world.view is immutable, we load it here.
+	Configuration.Initialize()
 
 	//SetupLogs depends on the RoundID, so lets check
 	//DB schema and set RoundID if we can

@@ -71,11 +71,11 @@
 
 	//* Turf Properties *//
 	/// base turf typepath for this level
-	/// * This is one of the few places where this is allowed to be /turf/space/basic rather
-	///   than /turf/space. This optimizes mapload.
-	var/base_turf = /turf/space/basic
+	/// * if unset, will not overwrite the level's turfs
+	var/base_turf
 	/// base area typepath for this level
-	var/base_area = /area/space
+	/// * if unset, will not overwrite the level's area
+	var/base_area
 	/// gas string / atmosphere path / atmosphere id for indoors air
 	/// if atmosphere path, it'll be automatically packed to ID on serialize, as we don't want to serialize paths to disk.
 	var/air_indoors = GAS_STRING_STP

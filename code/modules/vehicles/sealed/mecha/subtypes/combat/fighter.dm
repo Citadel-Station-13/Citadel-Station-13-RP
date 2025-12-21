@@ -52,6 +52,10 @@
 	ion_trail.set_up(src)
 	ion_trail.stop()
 
+/obj/vehicle/sealed/mecha/combat/fighter/Destroy()
+	QDEL_NULL(ion_trail)
+	return ..()
+
 /obj/vehicle/sealed/mecha/combat/fighter/add_cell(var/obj/item/cell/C=null)
 	if(C)
 		C.forceMove(src)
