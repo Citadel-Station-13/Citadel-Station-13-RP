@@ -25,7 +25,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_2, /basic/tier_
 /datum/prototype/power_cell/basic/tier_2
 	cell_name = "improved"
 	cell_desc = "Tier 2: This one utilizes more advanced materials in its electrolytes, allowing it to store a sizeable chunk more power than a basic cell."
-	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.2
+	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.25
 	typegen_materials_base = list(
 		/datum/prototype/material/steel::id = 250,
 		/datum/prototype/material/glass::id = 125,
@@ -44,7 +44,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_3, /basic/tier_
 /datum/prototype/power_cell/basic/tier_3
 	cell_name = "advanced"
 	cell_desc = "Tier 3: This one is even more overtuned than an upgraded cell, utilizing novel crystalline lattices to improve energy densities."
-	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.45
+	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.5
 	typegen_materials_base = list(
 		/datum/prototype/material/steel::id = 175,
 		/datum/prototype/material/glass::id = 100,
@@ -64,7 +64,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_4, /basic/tier_
 /datum/prototype/power_cell/basic/tier_4
 	cell_name = "superdense"
 	cell_desc = "Tier 4: An ultradense power cell made from special, low-resistance alloys."
-	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.85
+	typegen_capacity_multiplier = /datum/prototype/power_cell/basic::typegen_capacity_multiplier * 1.75
 	typegen_materials_base = list(
 		/datum/prototype/material/steel::id = 200,
 		/datum/prototype/material/glass::id = 200,

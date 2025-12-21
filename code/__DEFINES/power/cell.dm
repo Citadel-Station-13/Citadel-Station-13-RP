@@ -112,8 +112,8 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	icon = 'icons/items/power/cells/weapon.dmi'; \
 	icon_state = "cell"; \
 	base_icon_state = "cell"; \
-	charge = /obj/item/cell::max_charge + ##DATUM_TYPEPATH::typegen_capacity_multiplier_weapon * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
-	max_charge = /obj/item/cell::max_charge + ##DATUM_TYPEPATH::typegen_capacity_multiplier_weapon * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	charge = /obj/item/cell::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_weapon * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
+	max_charge = /obj/item/cell::max_charge * ##DATUM_TYPEPATH::typegen_capacity_multiplier_weapon * ##DATUM_TYPEPATH::typegen_capacity_multiplier; \
 	stripe_color = ##DATUM_TYPEPATH::typegen_visual_stripe_color; \
 	indicator_color = ##DATUM_TYPEPATH::typegen_visual_indicator_color; \
 	typegen_active = TRUE; \

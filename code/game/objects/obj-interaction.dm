@@ -5,14 +5,14 @@
 
 /obj/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(istype(using, /obj/item/cell) && obj_cell_slot?.insert_via_usage && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(clickchain.performer))
-		if(!clickchain.performer.transfer_item_to_loc(using, src))
-			clickchain.chat_feedback(SPAN_WARNING("[using] is stuck to your hand!"), target = src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!obj_cell_slot.accepts_cell(using))
 			clickchain.chat_feedback(
 				SPAN_WARNING("[src] does not accept [using]."),
 				target = src,
 			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!clickchain.performer.transfer_item_to_loc(using, src))
+			clickchain.chat_feedback(SPAN_WARNING("[using] is stuck to your hand!"), target = src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		clickchain.visible_dual_feedback(
 			target = src,
