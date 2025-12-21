@@ -1,3 +1,6 @@
+/mob/living/simple_mob/mechanical/derelict
+	var/self_rejuvination = FALSE
+
 /mob/living/simple_mob/mechanical/derelict/sentinel
 	name = "Sentinel"
 	desc = "A large, bulky machine that has some type of grey energy shield hovering around it. Thrusters flank its side, constantly emitting powerful bursts of energy that keep the automaton upwards and mobile."
@@ -12,6 +15,7 @@
 	iff_factions = MOB_IFF_FACTION_DERELICT_AUTOMATONS
 	health = 400
 	maxHealth = 400
+	self_rejuvination = TRUE
 	movement_base_speed = 10 / 4
 	hovering = TRUE
 
@@ -47,8 +51,8 @@
 /obj/item/shield_projector/rectangle/automatic/advanced
 	shield_health = 300
 	max_shield_health = 300
-	shield_regen_delay = 7 SECONDS
-	shield_regen_amount = 30
+	shield_regen_delay = 5 SECONDS
+	shield_regen_amount = 50
 	size_x = 1
 	size_y = 1
 	color = "#808080"
@@ -56,13 +60,22 @@
 	low_color = "#808080"
 	light_color = "#2e0808"
 
+/mob/living/simple_mob/mechanical/derelict/handle_special()
+	if(self_rejuvination)
+		adjustBruteLoss(-2)
+		adjustFireLoss(-2)
+		adjustToxLoss(-2)
+		adjustOxyLoss(-2)
+		adjustCloneLoss(-2)
+	..()
+
 
 /mob/living/simple_mob/mechanical/derelict/sentinel/do_special_attack(atom/A)
 	. = TRUE
 	switch(a_intent)
 		if(INTENT_HELP) // Primary Laser
 			primary(A)
-		if(INTENT_DISARM) // Ion Cannon
+		if(INTENT_DISARM) // Ion Shotgun
 			ion(A)
 		if(INTENT_GRAB) // Net Gun
 			net(A)

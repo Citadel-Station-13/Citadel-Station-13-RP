@@ -43,6 +43,11 @@
 	submunition_dispersion = 30
 	submunition_type = /obj/projectile/bullet/shotgun/ion
 
+/obj/projectile/ion/small/scatter
+	submunitions = 1
+	submunition_dispersion = 70
+	submunition_type = /obj/projectile/ion/small
+
 /obj/projectile/scatter/excavation
 	damage_force = 10
 	damage_tier = 4
