@@ -1,19 +1,29 @@
 // TODO: why is this here? should be impl'd on multitool
 /obj/item/multitool
 	var/accepting_refs
-	var/datum/integrated_io/selected_io = null
+	var/datum/weakref/selected_io_weakref
 	var/mode = 0
+
+/obj/item/multitool/proc/get_ic_selected_io() as /datum/integrated_io
+	return selected_io_weakref?.resolve()
+
+/obj/item/multitool/proc/set_ic_selected_io(datum/integrated_io/selecting)
+	if(!selecting)
+		selected_io_weakref = null
+	selected_io_weakref = WEAKREF(selecting)
 
 /obj/item/multitool/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
+	var/datum/integrated_io/selected_io = get_ic_selected_io()
 	if(selected_io)
-		selected_io = null
+		set_ic_selected_io(null)
 		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")
 	update_icon()
 
 /obj/item/multitool/update_icon()
+	var/datum/integrated_io/selected_io = get_ic_selected_io()
 	if(selected_io)
 		if(buffer || connecting || connectable)
 			icon_state = "multitool_tracking"
@@ -30,6 +40,7 @@
 			icon_state = "multitool"
 
 /obj/item/multitool/proc/wire(var/datum/integrated_io/io, mob/user)
+	var/datum/integrated_io/selected_io = get_ic_selected_io()
 	if(!io.holder.assembly)
 		to_chat(user, "<span class='warning'>\The [io.holder] needs to be secured inside an assembly first.</span>")
 		return
@@ -50,10 +61,11 @@
 
 		to_chat(user, "<span class='notice'>You connect \the [selected_io.holder]'s [selected_io.name] to \the [io.holder]'s [io.name].</span>")
 		selected_io.holder.interact(user) // This is to update the UI.
-		selected_io = null
+		set_ic_selected_io(null)
 
 	else
-		selected_io = io
+		set_ic_selected_io(io)
+		selected_io = get_ic_selected_io()
 		to_chat(user, "<span class='notice'>You link \the multitool to \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
 
 	update_icon()

@@ -24,7 +24,7 @@
 	return ..()
 
 /obj/item/vehicle_module/tesla_energy_relay/detach()
-	pr_energy_relay.stop()
+	pr_energy_relay?.stop()
 //	chassis.proc_res["dynusepower"] = null
 	chassis.proc_res["dyngetcharge"] = null
 	..()

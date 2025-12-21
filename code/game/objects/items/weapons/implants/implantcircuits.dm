@@ -14,9 +14,7 @@
 	IC.implant = src
 
 /obj/item/implant/integrated_circuit/Destroy()
-	if(!isnull(IC))
-		IC.implant = null
-		qdel(IC)
+	QDEL_NULL(IC)
 	return ..()
 
 /obj/item/implant/integrated_circuit/get_data()

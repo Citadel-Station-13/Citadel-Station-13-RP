@@ -265,6 +265,12 @@
 /area/strelka/dormhallway/Dorm/Room4
 	name = "\improper Deck 4 Dorm 4"
 
+/area/strelka/dormhallway/Dorm/Room5
+	name = "\improper Deck 4 Dorm 5"
+
+/area/strelka/dormhallway/Dorm/Room6
+	name = "\improper Deck 4 Dorm 6"
+
 /area/strelka/dormhallway/pool
 	name = "\improper Deck 4 Pool"
 	icon_state = "green"
@@ -427,6 +433,18 @@
 	ambience = AMBIENCE_STRELKA_ROOM_WOOD
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
+/area/medical/strelka/psyward
+	name = "\improper Deck 3 Medical Psychiatry Ward Monitor Room"
+	icon_state = "medbay"
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
+/area/medical/strelka/psywardroom
+	name = "\improper Deck 3 Medical Psychiatry Ward Room"
+	icon_state = "medbay"
+	ambience = AMBIENCE_STRELKA_ROOM_WOOD
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+
 /area/maintenance/strelka/medical
 	name = "\improper Deck 3 Medical Maintenance"
 	icon_state = "maintcentral"
@@ -470,7 +488,7 @@
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/maintenance/strelka/cargo
-	name = "\improper Deck 3 Medical Maintenance"
+	name = "\improper Deck 3 Cargo Maintenance"
 	icon_state = "maintcentral"
 	sound_env = TUNNEL_ENCLOSED
 	ambience = AMBIENCE_MAINTENANCE
@@ -745,6 +763,13 @@
 	ambience = AMBIENCE_HIGHSEC
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
 
+/area/strelka/secondarybridge
+	name = "\improper Deck 1 Emergency Bridge"
+	icon_state = "security_sub"
+	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_HIGHSEC
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
+
 //Deck 1 Civilian
 
 /area/strelka/pilot
@@ -807,3 +832,47 @@
 	icon_state = "maintcentral"
 	sound_env = TUNNEL_ENCLOSED
 	ambience = AMBIENCE_MAINTENANCE
+
+//turbolift
+
+/area/turbolift/s_ship/level2
+	name = "Deck 2 (base)"
+	lift_floor_label = "Level 2"
+	lift_floor_name = "Deck 2"
+	lift_announce_str = "Arriving on Deck 2. Enjoy the gallery !"
+
+/area/turbolift/s_ship/level3
+	name = "Deck 3"
+	lift_floor_label = "Level 3"
+	lift_floor_name = "Deck 3"
+	lift_announce_str = "Arriving on Deck 3. Enjoy the casino !"
+
+/area/turbolift/s_ship/level4
+	name = "Deck 4"
+	lift_floor_label = "Level 4"
+	lift_floor_name = "Deck 4"
+	lift_announce_str = "Arriving on Deck 4. Enjoy the Bar !"
+
+/area/turbolift/s_ship_fighter/level1
+	name = "fighter Deck 1 (base)"
+	lift_floor_label = "Level 1"
+	lift_floor_name = "Deck 1"
+	lift_announce_str = "Arriving on Deck 1."
+
+/area/turbolift/s_ship_fighter/level2
+	name = "fighter Deck 2"
+	lift_floor_label = "Level 2"
+	lift_floor_name = "Deck 2"
+	lift_announce_str = "Arriving on Deck 2."
+
+/area/turbolift/s_ship_fighter_civ/level1
+	name = "civilian fighter Deck 1 (base)"
+	lift_floor_label = "Level 1"
+	lift_floor_name = "Deck 1"
+	lift_announce_str = "Arriving on Deck 1."
+
+/area/turbolift/s_ship_fighter_civ/level2
+	name = "civilian fighter Deck 2"
+	lift_floor_label = "Level 2"
+	lift_floor_name = "Deck 2"
+	lift_announce_str = "Arriving on Deck 2."

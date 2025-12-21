@@ -30,13 +30,14 @@
 
 	dpdir = sortdir | posdir | negdir
 
-/obj/structure/disposalpipe/sortjunction/New()
-	. = ..()
-	if(sortType) GLOB.tagger_locations |= sortType
+/obj/structure/disposalpipe/sortjunction/Initialize(mapload, dir)
+	if(sortType)
+		GLOB.tagger_locations |= sortType
 
 	updatedir()
 	updatename()
 	updatedesc()
+	return ..()
 
 /obj/structure/disposalpipe/sortjunction/attackby(obj/item/I, mob/user)
 	if(..())

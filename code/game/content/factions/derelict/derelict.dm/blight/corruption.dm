@@ -12,10 +12,10 @@
 
 /obj/effect/decal/event/blight/wall_growth
 	name = "Blight Growth"
-	desc = "A thick, incessant growth that covvers the wall. It appears to quiver and undulate with activity."
+	desc = "A thick, incessant growth that covers the wall. It appears to quiver and undulate with activity."
 	icon_state = "corruption_wall"
 
 /obj/effect/decal/event/blight/wall_growth2
 	name = "Blight Growth"
-	desc = "A thick, incessant growth that covvers the wall. It appears to quiver and undulate with activity."
+	desc = "A thick, incessant growth that covers the wall. It appears to quiver and undulate with activity."
 	icon_state = "corruption_wall2"

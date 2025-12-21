@@ -157,10 +157,9 @@
 			products += holiday_products[holiday]
 
 /obj/machinery/vending/Destroy()
-	qdel(wires)
-	wires = null
-	qdel(coin)
-	coin = null
+	QDEL_NULL(wires)
+	QDEL_NULL(coin)
+	currently_vending = null
 	for(var/datum/stored_item/vending_product/R in product_records)
 		qdel(R)
 	product_records = null

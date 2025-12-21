@@ -1,9 +1,9 @@
 /obj/item/vehicle_chassis/serenity
 	name = "Serenity Chassis"
 
-/obj/item/vehicle_chassis/serenity/New()
-	..()
+/obj/item/vehicle_chassis/serenity/Initialize(mapload)
 	construct = new /datum/construction/mecha/serenity_chassis(src)
+	return ..()
 
 /datum/construction/mecha/serenity_chassis
 	steps = list(list("key"=/obj/item/vehicle_part/gygax_torso),//1

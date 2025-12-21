@@ -56,6 +56,10 @@
 	/// cell types accepted
 	var/cell_type = NONE
 
+/datum/object_system/cell_slot/Destroy()
+	QDEL_NULL(cell)
+	return ..()
+
 /**
  * returns TRUE if slot accepts this type of cell
  */

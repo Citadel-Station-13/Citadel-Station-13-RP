@@ -31,6 +31,7 @@ SUBSYSTEM_DEF(zcopy)
 	wait = 1
 	init_order = INIT_ORDER_ZMIMIC
 	priority = FIRE_PRIORITY_ZMIMIC
+	init_stage = INIT_STAGE_WORLD
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
 	var/list/queued_turfs = list()

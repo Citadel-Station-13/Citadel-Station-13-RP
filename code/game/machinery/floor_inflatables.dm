@@ -18,6 +18,22 @@
 	LAZYADD(A.all_doors, src)
 	update_icon()
 
+/obj/machinery/floor_inflatables/Destroy()
+	var/area/A = get_area(src)
+	LAZYREMOVE(A.all_doors, src)
+	return ..()
+
+/obj/machinery/floor_inflatables/Moved(atom/old_loc, direction, forced, list/old_locs, momentum_change)
+	var/area/old_area = get_area(old_loc)
+	..()
+	var/area/new_area = get_area(src)
+	if(old_area == new_area)
+		return
+	if(old_area)
+		LAZYREMOVE(old_area.all_doors, src)
+	if(new_area)
+		LAZYADD(new_area.all_doors, src)
+
 /obj/machinery/floor_inflatables/update_icon(updates)
 	. = ..()
 	if(stored)

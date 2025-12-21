@@ -85,7 +85,7 @@
 					log.parameters["intelligible"] = 1
 				else if(isslime(M))
 					race = "Slime"
-				else if(isanimal(M))
+				else if(isanimal_legacy_this_is_broken(M))
 					race = "Domestic Animal"
 
 				log.parameters["race"] = race

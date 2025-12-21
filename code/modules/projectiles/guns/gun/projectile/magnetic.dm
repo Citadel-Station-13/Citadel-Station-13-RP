@@ -47,6 +47,7 @@
 
 /obj/item/gun/projectile/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(manipulator)
 	QDEL_NULL(loaded)
 	QDEL_NULL(capacitor)
 	. = ..()

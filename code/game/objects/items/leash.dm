@@ -62,7 +62,7 @@
 	var/is_simple_animal = FALSE
 	var/mob/living/carbon/C = target
 	if(!istype(C))
-		if(isanimal(target))
+		if(isanimal_legacy_this_is_broken(target))
 			is_simple_animal = TRUE
 		else
 			return

@@ -36,6 +36,10 @@
 	. = ..()
 	update_icon()
 
+/obj/machinery/recharge_station/Destroy()
+	QDEL_NULL(cell)
+	return ..()
+
 /obj/machinery/recharge_station/proc/has_cell_power()
 	return cell && cell.percent() > 0
 

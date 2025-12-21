@@ -31,7 +31,7 @@
 /obj/effect/temp_visual/dir_setting
 	randomdir = FALSE
 
-/obj/effect/temp_visual/dir_setting/New(loc, setDir)
+/obj/effect/temp_visual/dir_setting/Initialize(mapload, setDir)
 	if(setDir)
 		dir = setDir
 	return ..()

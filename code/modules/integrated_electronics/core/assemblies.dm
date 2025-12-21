@@ -10,7 +10,7 @@
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
-	var/list/assembly_components = list()
+	var/list/obj/item/integrated_circuit/assembly_components = list()
 	var/list/ui_circuit_props = list()
 	/// Players who built the circuit can scan it as a ghost.
 	var/list/ckeys_allowed_to_scan = list()
@@ -56,7 +56,7 @@
 	var/cell_type = /obj/item/cell/basic/tier_1/small
 	var/cell_accept = CELL_TYPE_SMALL
 
-/obj/item/electronic_assembly/Initialize()
+/obj/item/electronic_assembly/Initialize(mapload)
 	init_cell_slot_easy_tool(cell_type, cell_accept)
 	src.max_components = round(max_components)
 	src.max_complexity = round(max_complexity)
@@ -76,6 +76,11 @@
 
 /obj/item/electronic_assembly/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	collw = null
+	for(var/obj/item/integrated_circuit/circuit in assembly_components)
+		QDEL_NULL(circuit)
+	if(length(assembly_components))
+		stack_trace("failed to clear all assembly component refs")
 //	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 // TBI		diag_hud.remove_from_hud(src)
 	return ..()
@@ -393,11 +398,13 @@
 
 // Actually puts the circuit inside, doesn't perform any checks.
 /obj/item/electronic_assembly/proc/add_component(var/obj/item/integrated_circuit/IC)
+	if(IC in assembly_components)
+		return
 	IC.forceMove(get_object())
 	IC.assembly = src
 	// Build TGUI lists here for efficiency.  We don't need to do that every time the UI updates.
 	ui_circuit_props.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC),"removable" = IC.removable,"input" = IC.can_be_asked_input)))
-	assembly_components |= IC
+	assembly_components += IC
 	/* TBI	diag hud
 	//increment numbers for diagnostic hud
 	if(component.action_flags & IC_ACTION_COMBAT)

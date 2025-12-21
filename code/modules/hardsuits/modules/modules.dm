@@ -54,6 +54,40 @@
 
 	var/list/stat_hardsuit_module/stat_modules = new()
 
+/obj/item/hardsuit_module/Initialize(mapload)
+	. = ..()
+	if(suit_overlay_inactive)
+		suit_overlay = suit_overlay_inactive
+
+	if(charges && charges.len)
+		var/list/processed_charges = list()
+		for(var/list/charge in charges)
+			var/datum/rig_charge/charge_dat = new
+
+			charge_dat.short_name   = charge[1]
+			charge_dat.display_name = charge[2]
+			charge_dat.product_type = charge[3]
+			charge_dat.charges      = charge[4]
+
+			if(!charge_selected) charge_selected = charge_dat.short_name
+			processed_charges[charge_dat.short_name] = charge_dat
+
+		charges = processed_charges
+
+	stat_modules +=	new/stat_hardsuit_module/activate(src)
+	stat_modules +=	new/stat_hardsuit_module/deactivate(src)
+	stat_modules +=	new/stat_hardsuit_module/engage(src)
+	stat_modules +=	new/stat_hardsuit_module/select(src)
+	stat_modules +=	new/stat_hardsuit_module/charge(src)
+
+/obj/item/hardsuit_module/Destroy()
+	QDEL_LIST(stat_modules)
+	if(holder)
+		if(holder.installed_modules)
+			holder.installed_modules -= src
+		holder = null
+	return ..()
+
 /obj/item/hardsuit_module/examine(mob/user, dist)
 	. = ..()
 	switch(damage)
@@ -107,36 +141,6 @@
 		cable.use(5)
 		return
 	..()
-
-/obj/item/hardsuit_module/Initialize(mapload)
-	. = ..()
-	if(suit_overlay_inactive)
-		suit_overlay = suit_overlay_inactive
-
-	if(charges && charges.len)
-		var/list/processed_charges = list()
-		for(var/list/charge in charges)
-			var/datum/rig_charge/charge_dat = new
-
-			charge_dat.short_name   = charge[1]
-			charge_dat.display_name = charge[2]
-			charge_dat.product_type = charge[3]
-			charge_dat.charges      = charge[4]
-
-			if(!charge_selected) charge_selected = charge_dat.short_name
-			processed_charges[charge_dat.short_name] = charge_dat
-
-		charges = processed_charges
-
-	stat_modules +=	new/stat_hardsuit_module/activate(src)
-	stat_modules +=	new/stat_hardsuit_module/deactivate(src)
-	stat_modules +=	new/stat_hardsuit_module/engage(src)
-	stat_modules +=	new/stat_hardsuit_module/select(src)
-	stat_modules +=	new/stat_hardsuit_module/charge(src)
-
-/obj/item/hardsuit_module/Destroy()
-	QDEL_LIST(stat_modules)
-	return ..()
 
 // Called when the module is installed into a suit.
 /obj/item/hardsuit_module/proc/installed(var/obj/item/hardsuit/new_holder)
