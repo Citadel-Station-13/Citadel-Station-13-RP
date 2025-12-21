@@ -7552,7 +7552,7 @@
 /obj/random/tool/power,
 /obj/random/tool/power,
 /obj/random/tool/power,
-/obj/item/cell/basic/tier_1/weapon/recharge/alien,
+/obj/item/cell/recharge/fractal/weapon,
 /obj/random/tool/alien,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)

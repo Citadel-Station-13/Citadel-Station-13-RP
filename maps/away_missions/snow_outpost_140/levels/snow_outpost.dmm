@@ -828,7 +828,7 @@
 /area/awaymission/snow_outpost/dark)
 "dJ" = (
 /obj/structure/table/woodentable,
-/obj/item/cell/basic/tier_1/medium/weapon/recharge/alien,
+/obj/item/cell/basic/recharge/fractal/weapon,
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "dK" = (
