@@ -12,21 +12,23 @@
 /// energy weapons that don't use special cells / specific other types
 #define CELL_TYPE_WEAPON (1<<3)
 
-DEFINE_BITFIELD_NEW(cell_type, list(
-	/obj/item/cell = list(
-		"cell_type",
-	),
-	/datum/object_system/cell_slot = list(
-		"cell_type",
-	),
-), list(
-	BITFIELD_NEW("Small", CELL_TYPE_SMALL),
-	BITFIELD_NEW("Medium", CELL_TYPE_MEDIUM),
-	BITFIELD_NEW("Large", CELL_TYPE_LARGE),
-	BITFIELD_NEW("Weapon", CELL_TYPE_WEAPON),
+DECLARE_BITFIELD(cell_type, list(
+	BITFIELD_NAMED("Small", CELL_TYPE_SMALL),
+	BITFIELD_NAMED("Medium", CELL_TYPE_MEDIUM),
+	BITFIELD_NAMED("Large", CELL_TYPE_LARGE),
+	BITFIELD_NAMED("Weapon", CELL_TYPE_WEAPON),
 ))
-
-#warn don't forget sprite now that it isn't all inherited
+ASSIGN_BITFIELD(cell_type, /obj/item/cell, cell_type)
+ASSIGN_BITFIELD(cell_type, /datum/object_system/cell_slot, cell_type)
+ASSIGN_BITFIELD(cell_type, /obj/machinery/recharger, cell_accept)
+ASSIGN_BITFIELD(cell_type, /obj/machinery/cell_charger, cell_accept)
+ASSIGN_BITFIELD(cell_type, /obj/machinery/power/apc, cell_accept)
+ASSIGN_BITFIELD(cell_type, /obj/item/flashlight, cell_accept)
+ASSIGN_BITFIELD(cell_type, /obj/item/melee/transforming/energy, cell_accept)
+ASSIGN_BITFIELD(cell_type, /obj/item/melee/baton, cell_accept)
+ASSIGN_BITFIELD(cell_type, /obj/item/inducer, cell_accept)
+ASSIGN_BITFIELD(cell_type, /obj/item/machinery/space_heater, cell_accept)
+ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 
 /// generate /small, /medium, /large, and /weapon cells for a power cell datum and typepath combo
 /// * only works for standard cells with standard graphics.
