@@ -228,7 +228,7 @@
 		obj_cell_slot.cell = new preload_path
 		if(isnull(cell_type))
 			cell_type = obj_cell_slot.cell_type
-	else if(!cell_type)
+	else if(isnull(cell_type))
 		stack_trace("failed to provide a cell type accept bitfield, and didn't provide a preload path to autodetect from")
 	obj_cell_slot.cell_type = cell_type
 	obj_cell_slot.primary = TRUE

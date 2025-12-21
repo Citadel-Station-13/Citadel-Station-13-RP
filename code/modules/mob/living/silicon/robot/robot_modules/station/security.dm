@@ -166,7 +166,7 @@
 		/obj/item/dogborg/jaws/big,
 		/obj/item/melee/baton/robot,
 		/obj/item/barrier_tape_roll/police,
-		/obj/item/gun/projectile/energy/taser/mounted/cyborg/ertgun,
+		/obj/item/gun/projectile/energy/taser/mounted/cyborg,
 		/obj/item/dogborg/swordtail
 	)
 

@@ -315,7 +315,6 @@
 	name = "mounted electric rapid construction device"
 	desc = "A device used to rapidly build and deconstruct. It runs directly off of electricity from an external power source."
 	cell_type = null
-	cell_accept = NONE
 
 /obj/item/rcd/electric/mounted/get_cell(inducer)
 	return get_external_power_supply()
