@@ -12813,7 +12813,7 @@
 /area/medical/virologytransiteast)
 "igE" = (
 /obj/structure/table/rack/shelf,
-/obj/item/cell/large,
+/obj/item/cell/basic/tier_1/large,
 /obj/item/module/power_control,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)

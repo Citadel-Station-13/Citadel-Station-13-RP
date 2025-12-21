@@ -13,7 +13,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen, /regen, "regen")
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen/fractal, /regen/fractal, "regen-fractal")
 /datum/prototype/power_cell/regen/fractal
-	id = "regen-fractal"
+	id = "fractal"
 	cell_name = "fractal"
 	cell_desc = "You can't even begin to comprehend what this is, other than the fact it's out of this world and \
 	making energy out of nowhere."

@@ -3994,7 +3994,7 @@
 /obj/structure/cable/white{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/hyper/west_mount,
+/obj/machinery/power/apc/large_cell/west_mount,
 /obj/machinery/button/remote/blast_door{
 	id = "armorylight";
 	name = "Emergency bridge Acccess";
