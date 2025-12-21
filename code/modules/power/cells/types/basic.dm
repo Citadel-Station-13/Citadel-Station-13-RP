@@ -4,6 +4,8 @@
 /datum/prototype/power_cell/basic
 	abstract_type = /datum/prototype/power_cell/basic
 	typegen_capacity_multiplier = /datum/prototype/power_cell::typegen_capacity_multiplier * 1.0
+/datum/prototype/design/generated/power_cell/basic
+	abstract_type = /datum/prototype/design/generated/power_cell/basic
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_1, /basic/tier_1, "basic-t1")
 
@@ -18,8 +20,8 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_1, /basic/tier_
 	)
 	typegen_visual_stripe_color = "#adfff3"
 
-/datum/prototype/design/power_cell/basic/tier_1
-	abstract_type = /datum/prototype/design/power_cell/basic/tier_1
+/datum/prototype/design/generated/power_cell/basic/tier_1
+	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_1
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/small, /power_cell/basic/tier_1/small, "powercell-basic-tier_1-small")
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/medium, /power_cell/basic/tier_1/medium, "powercell-basic-tier_1-medium")
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/large, /power_cell/basic/tier_1/large, "powercell-basic-tier_1-large")
@@ -40,8 +42,8 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_2, /basic/tier_
 	)
 	typegen_visual_stripe_color = "#005a75"
 
-/datum/prototype/design/power_cell/basic/tier_2
-	abstract_type = /datum/prototype/design/power_cell/basic/tier_2
+/datum/prototype/design/generated/power_cell/basic/tier_2
+	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_2
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/small, /power_cell/basic/tier_2/small, "powercell-basic-tier_2-small")
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/medium, /power_cell/basic/tier_2/medium, "powercell-basic-tier_2-medium")
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/large, /power_cell/basic/tier_2/large, "powercell-basic-tier_2-large")
@@ -65,8 +67,8 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_3, /basic/tier_
 	)
 	typegen_visual_stripe_color = "#003fc6"
 
-/datum/prototype/design/power_cell/basic/tier_3
-	abstract_type = /datum/prototype/design/power_cell/basic/tier_3
+/datum/prototype/design/generated/power_cell/basic/tier_3
+	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_3
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/small, /power_cell/basic/tier_3/small, "powercell-basic-tier_3-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/medium, /power_cell/basic/tier_3/medium, "powercell-basic-tier_3-medium")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/large, /power_cell/basic/tier_3/large, "powercell-basic-tier_3-large")
@@ -90,8 +92,8 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_4, /basic/tier_
 	)
 	typegen_visual_stripe_color = "#7451ff"
 
-/datum/prototype/design/power_cell/basic/tier_4
-	abstract_type = /datum/prototype/design/power_cell/basic/tier_4
+/datum/prototype/design/generated/power_cell/basic/tier_4
+	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_4
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/small, /power_cell/basic/tier_4/small, "powercell-basic-tier_4-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/medium, /power_cell/basic/tier_4/medium, "powercell-basic-tier_4-medium")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/large, /power_cell/basic/tier_4/large, "powercell-basic-tier_4-large")
@@ -115,8 +117,8 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_5, /basic/tier_
 	)
 	typegen_visual_stripe_color = "#ff81fd"
 
-/datum/prototype/design/power_cell/basic/tier_5
-	abstract_type = /datum/prototype/design/power_cell/basic/tier_5
+/datum/prototype/design/generated/power_cell/basic/tier_5
+	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_5
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/small, /power_cell/basic/tier_5/small, "powercell-basic-tier_5-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/medium, /power_cell/basic/tier_5/medium, "powercell-basic-tier_5-medium")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/large, /power_cell/basic/tier_5/large, "powercell-basic-tier_5-large")
