@@ -6,8 +6,8 @@
 	icon_state = "broodmother"
 	icon_living = "broodmother"
 	icon_dead = null
-	icon_scale_x = 1.1
-	icon_scale_y = 1.1
+	icon_scale_x = 1.2
+	icon_scale_y = 1.2
 	base_pixel_x = -8
 
 	iff_factions = MOB_IFF_FACTION_DERELICT_AUTOMATONS

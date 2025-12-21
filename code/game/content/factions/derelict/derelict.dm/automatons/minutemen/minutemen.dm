@@ -1,7 +1,7 @@
 /mob/living/simple_mob/mechanical/derelict/minuteman
 	icon = 'code/game/content/factions/derelict/derelict.dmi/automatons/minutemen.dmi'
 	iff_factions = MOB_IFF_FACTION_DERELICT_AUTOMATONS
-
+	color = "#cac8c8"
 
 /mob/living/simple_mob/mechanical/derelict/minuteman/death()
 	..()
@@ -84,7 +84,6 @@
 
 	icon_state = "dragonfly"
 	icon_living = "dragonfly"
-	color = "#cac8c8"
 
 	health = 200
 	maxHealth = 200
@@ -108,7 +107,6 @@
 
 	icon_state = "mantis"
 	icon_living = "mantis"
-	color = "#808080"
 
 	health = 250
 	maxHealth = 250

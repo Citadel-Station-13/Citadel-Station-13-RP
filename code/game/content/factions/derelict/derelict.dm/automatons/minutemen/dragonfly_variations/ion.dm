@@ -4,7 +4,6 @@
 
 	icon_state = "ion_dragonfly"
 	icon_living = "ion_dragonfly"
-	color = "#808080"
 
 	health = 200
 	maxHealth = 200

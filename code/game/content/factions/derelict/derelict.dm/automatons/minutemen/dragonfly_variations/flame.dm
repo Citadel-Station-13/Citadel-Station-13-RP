@@ -4,7 +4,6 @@
 
 	icon_state = "flame_dragonfly"
 	icon_living = "flame_dragonfly"
-	color = "#808080"
 
 	health = 200
 	maxHealth = 200

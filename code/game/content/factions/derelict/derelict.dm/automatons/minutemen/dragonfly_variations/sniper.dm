@@ -4,7 +4,6 @@
 
 	icon_state = "sniper_dragonfly"
 	icon_living = "sniper_dragonfly"
-	color = "#808080"
 
 	health = 200
 	maxHealth = 200
