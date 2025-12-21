@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/datum/prototype/design/generated/power_cell/microfission
+	abstract_type = /datum/prototype/design/generated/power_cell/microfission
+
 // ---- lore note ----
 // the justification for why this is a thing is [i don't care]
 // go refluff it if you want this is a generic "makes radiation to make power" idea

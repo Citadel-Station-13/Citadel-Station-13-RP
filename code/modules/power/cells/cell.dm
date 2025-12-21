@@ -2,6 +2,7 @@
  * Just a supertype for power cell designs
  */
 /datum/prototype/design/generated/power_cell
+	abstract_type = /datum/prototype/design/generated/power_cell
 	category = DESIGN_CATEGORY_POWER
 
 /**

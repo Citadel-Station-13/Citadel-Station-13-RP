@@ -4,6 +4,7 @@
 /datum/prototype/power_cell/basic
 	abstract_type = /datum/prototype/power_cell/basic
 	typegen_capacity_multiplier = /datum/prototype/power_cell::typegen_capacity_multiplier * 1.0
+
 /datum/prototype/design/generated/power_cell/basic
 	abstract_type = /datum/prototype/design/generated/power_cell/basic
 
