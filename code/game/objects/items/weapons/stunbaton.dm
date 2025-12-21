@@ -23,14 +23,14 @@
 	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 	/// Shock stun power
-	var/stun_power = 60
+	var/stun_power = 45
 	/// Electrocute act flags
 	var/stun_electrocute_flags = ELECTROCUTE_ACT_FLAG_DO_NOT_STUN
 	/// Sound for the stun
 	var/stun_sound = 'sound/weapons/Egloves.ogg'
 
 	/// Charge cost per hit in cell units
-	var/charge_cost = 240
+	var/charge_cost = POWER_CELL_CAPACITY_WEAPON / 16
 
 	/// Are we on?
 	var/active = FALSE
@@ -234,7 +234,7 @@
 
 //secborg stun baton module
 /obj/item/melee/baton/robot
-	charge_cost = 500
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 10
 	legacy_use_external_power = TRUE
 
 //Makeshift stun baton. Replacement for stun gloves.
@@ -246,7 +246,7 @@
 	damage_force = 3
 	throw_force = 5
 	stun_power = 60	//same force as a stunbaton, but uses way more charge.
-	charge_cost = 2500
+	charge_cost = 4000
 	attack_verb = list("poked")
 	slot_flags = SLOT_BACK
 	cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
@@ -271,7 +271,7 @@
 	damage_force = 3
 	throw_force = 5
 	stun_power = 60	//same force as a stunbaton, but uses way more charge.
-	charge_cost = 2500
+	charge_cost = 4000
 	attack_verb = list("poked")
 	slot_flags = null
 
@@ -330,7 +330,7 @@
 	throw_force = 2
 	stun_power = 120
 	stun_electrocute_flags = NONE
-	charge_cost = 1150
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 2
 	stun_sound = 'sound/effects/lightningshock.ogg'
 
 /obj/item/melee/baton/loaded/mini/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)

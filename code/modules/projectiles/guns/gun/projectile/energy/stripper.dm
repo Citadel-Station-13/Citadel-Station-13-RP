@@ -1,6 +1,6 @@
 /datum/firemode/energy/stripper
 	projectile_type = /obj/projectile/energy/stripper
-	charge_cost = 240
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 10
 
 /obj/item/gun/projectile/energy/stripper//Because it can be fun
 	name = "stripper gun"
