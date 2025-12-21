@@ -23,11 +23,11 @@ ASSIGN_BITFIELD(cell_type, /datum/object_system/cell_slot, cell_type)
 ASSIGN_BITFIELD(cell_type, /obj/machinery/recharger, cell_accept)
 ASSIGN_BITFIELD(cell_type, /obj/machinery/cell_charger, cell_accept)
 ASSIGN_BITFIELD(cell_type, /obj/machinery/power/apc, cell_accept)
+ASSIGN_BITFIELD(cell_type, /obj/machinery/space_heater, cell_accept)
 ASSIGN_BITFIELD(cell_type, /obj/item/flashlight, cell_accept)
 ASSIGN_BITFIELD(cell_type, /obj/item/melee/transforming/energy, cell_accept)
 ASSIGN_BITFIELD(cell_type, /obj/item/melee/baton, cell_accept)
 ASSIGN_BITFIELD(cell_type, /obj/item/inducer, cell_accept)
-ASSIGN_BITFIELD(cell_type, /obj/item/machinery/space_heater, cell_accept)
 ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 
 /// generate /small, /medium, /large, and /weapon cells for a power cell datum and typepath combo

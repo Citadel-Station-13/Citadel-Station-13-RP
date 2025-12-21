@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(processing)
 			if(thing)
 				var/list/trace = thing.gc_trace_data()
 				trace["type"] = thing.type
-				trace["refcount"] = refconut(thing)
+				trace["refcount"] = refcount(thing)
 				log_world("GC-TRACE: From [src], [thing.type] had trace: [json_encode(trace)]")
 			stack_trace("deleted entity found in [src]; check logs.")
 			processing -= thing

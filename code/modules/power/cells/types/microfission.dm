@@ -136,7 +136,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 /obj/item/cell/microfission/proc/set_leaking(new_leaking)
 	leaking = new_leaking
 	do
-		var/turf//our_turf = get_turf(src)
+		var/turf/our_turf = get_turf(src)
 		log_game("MISC: Microfission cell at [COORD(our_turf)] leaking set to [new_leaking][inv_inside ? ", carried by [key_name(inv_inside.owner)]" : ""]")
 	while(FALSE)
 	if(leaking)
