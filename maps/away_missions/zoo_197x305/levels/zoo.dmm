@@ -2348,7 +2348,7 @@
 /obj/item/stack/material/glass{
 	amount = 15
 	},
-/obj/item/cell/medium,
+/obj/item/cell/basic/tier_2/medium,
 /turf/simulated/shuttle/floor/darkred,
 /area/awaymission/zoo/syndieship)
 "hf" = (
