@@ -1,7 +1,12 @@
-// the power cell
-// charge from 0 to 100%
-// fits in APC to provide backup power
+/**
+ * Just a supertype for power cell designs
+ */
+/datum/prototype/design/generated/power_cell
+	category = DESIGN_CATEGORY_POWER
 
+/**
+ * Power storage cells
+ */
 /obj/item/cell
 	name = "power cell"
 	desc = "A rechargable electrochemical power cell."

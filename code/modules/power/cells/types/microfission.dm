@@ -13,6 +13,15 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
 
 	typegen_visual_stripe_color = "#007700"
 	typegen_capacity_multiplier = 3 / 4
+	typegen_materials_base = list(
+		/datum/prototype/material/steel::id = 350,
+		/datum/prototype/material/glass::id = 150,
+		/datum/prototype/material/copper::id = 75,
+		/datum/prototype/material/gold::id = 75,
+		/datum/prototype/material/lead::id = 300,
+		/datum/prototype/material/silver::id = 150,
+		/datum/prototype/material/uranium::id = 200,
+	)
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/small, /power_cell/microfission/small, "powercell-microfission-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/medium, /power_cell/microfission/medium, "powercell-microfission-medium")
