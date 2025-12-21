@@ -1,9 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/prototype/design/generated/power_cell/microfission
-	abstract_type = /datum/prototype/design/generated/power_cell/microfission
-
 // ---- lore note ----
 // the justification for why this is a thing is [i don't care]
 // go refluff it if you want this is a generic "makes radiation to make power" idea
@@ -27,8 +24,8 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
 		/datum/prototype/material/uranium::id = 200,
 	)
 
-/datum/prototype/design/power_cell/microfission
-	abstract_type = /datum/prototype/design/power_cell/microfission
+/datum/prototype/design/generated/power_cell/microfission
+	abstract_type = /datum/prototype/design/generated/power_cell/microfission
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/small, /power_cell/microfission/small, "powercell-microfission-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/medium, /power_cell/microfission/medium, "powercell-microfission-medium")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/large, /power_cell/microfission/large, "powercell-microfission-large")
