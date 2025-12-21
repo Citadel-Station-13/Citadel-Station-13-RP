@@ -1,6 +1,4 @@
 /mob/proc/LegacyDestroy()
-	// key focus
-	set_key_focus(null)
 	// todo: remove machine
 	unset_machine()
 	// hud

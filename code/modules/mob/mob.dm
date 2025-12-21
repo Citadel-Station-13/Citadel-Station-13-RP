@@ -90,6 +90,8 @@
 	//       ideally we want to preserve as much state as possible so
 	//       we don't want to run further-down behavior before this
 	ghostize()
+	// key focus
+	set_key_focus(null)
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
