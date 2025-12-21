@@ -15,7 +15,9 @@
 	var/insert_via_context = FALSE
 	/// allow insertion via click
 	var/insert_via_usage = FALSE
-	#warn hook these
+	/// insertion time
+	//  TODO: impl
+	var/insert_time = 0
 
 	/// allow quick removal by clicking with hand?
 	var/remove_yank_offhand = FALSE
@@ -24,6 +26,7 @@
 	/// allow quick removal by using in hand?
 	var/remove_yank_inhand = FALSE
 	/// no-tool time for removal, if any
+	//  TODO: impl
 	var/remove_yank_time = 0
 
 	/// tool behavior for removal, if any
@@ -34,7 +37,6 @@
 	var/remove_tool_usage = FALSE
 	/// allow remove hooks in context menu for tooled removal
 	var/remove_tool_context = FALSE
-	#warn hook these
 
 	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE

@@ -32,7 +32,7 @@
 	var/colorable = 1
 	var/color_overlay = null
 	tool_speed = 1
-	tool_behaviour = TOOL_MULTITOOL
+	tool_behavior = TOOL_MULTITOOL
 	tool_sound = 'sound/weapons/empty.ogg'
 
 /obj/item/multitool/Initialize(mapload)

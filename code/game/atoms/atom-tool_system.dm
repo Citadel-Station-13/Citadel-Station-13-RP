@@ -78,7 +78,7 @@
 		var/list/possibilities = dynamic_tool_query(provided_item, e_args)
 		if(!length(possibilities) || (provided_item.tool_locked == TOOL_LOCKING_STATIC))
 			// no dynamic tool functionality, or dynamic functionality disabled, route normally.
-			function = provided_item.tool_behaviour()
+			function = provided_item.tool_behavior()
 			if(!function)
 				return NONE
 			return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
@@ -97,7 +97,7 @@
 				possibilities -= i
 			if(!length(possibilities))
 				// none can be used, just go to static tool act if possible
-				function = provided_item.tool_behaviour()
+				function = provided_item.tool_behavior()
 				if(!function)
 					return NONE
 				return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
