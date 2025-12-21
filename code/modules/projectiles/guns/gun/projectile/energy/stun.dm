@@ -4,12 +4,12 @@
 /datum/firemode/energy/taser/stun
 	name = "stun"
 	projectile_type = /obj/projectile/energy/electrode
-	legacy_direct_varedits = list(modifystate="taser", charge_cost = 240)
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 10
 
 /datum/firemode/energy/taser/disable
 	name = "disable"
 	projectile_type = /obj/projectile/beam/disabler/weak
-	legacy_direct_varedits = list(modifystate="taserblue", charge_cost = 160)
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 20
 
 /obj/item/gun/projectile/energy/taser
 	name = "taser gun"
@@ -39,15 +39,11 @@
 
 /obj/item/gun/projectile/energy/taser/mounted/cyborg
 	name = "taser gun"
-	charge_cost = 400
 	recharge_time = 7 //Time it takes for shots to recharge (in ticks)
 
 /obj/item/gun/projectile/energy/taser/mounted/cyborg/swarm
 	name = "disabler"
 	desc = "An archaic device which attacks the target's nervous-system or control circuits."
-	projectile_type = /obj/projectile/beam/stun/disabler
-	charge_cost = 200
-	recharge_time = 0.5 SECONDS
 
 /obj/item/gun/projectile/energy/stunrevolver
 	name = "stun revolver"
@@ -56,7 +52,7 @@
 	item_state = "stunrevolver"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	projectile_type = /obj/projectile/energy/electrode/strong
-	charge_cost = 400
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 8
 
 /obj/item/gun/projectile/energy/crossbow
 	name = "mini energy-crossbow"
@@ -69,7 +65,7 @@
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	silenced = 1
 	projectile_type = /obj/projectile/energy/bolt
-	charge_cost = 480
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 12
 	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	charge_meter = 0
@@ -96,7 +92,7 @@
 	firemodes = /datum/firemode/energy{
 		projectile_type = /obj/projectile/energy/plasmastun;
 		cycle_cooldown = 2 SECONDS;
-		charge_cost = 2400 / 4;
+		charge_cost = POWER_CELL_CAPACITY_WEAPON / 4;
 	}
 	one_handed_penalty = 5
 
@@ -109,5 +105,5 @@
 	firemodes = /datum/firemode/energy{
 		projectile_type = /obj/projectile/energy/electrode/stunshot;
 		cycle_cooldown = 0.4 SECONDS;
-		charge_cost = 2400 / 2;
+		charge_cost = POWER_CELL_CAPACITY_WEAPON / 2;
 	}

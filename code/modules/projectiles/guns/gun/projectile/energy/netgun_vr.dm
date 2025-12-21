@@ -21,7 +21,7 @@
 	fire_sound = 'sound/weapons/eluger.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	projectile_type = /obj/projectile/beam/stun/blue
-	charge_cost = 240
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 5
 
 	firemodes = list(
 		/datum/firemode/energy/netgun/stun,

@@ -110,13 +110,14 @@
  * @return TRUE success, FALSE otherwise
  */
 /datum/object_system/cell_slot/proc/insert_cell(obj/item/cell/cell)
-	if(!isnull(cell))
+	if(!isnull(src.cell))
 		remove_cell(parent.drop_location())
-		ASSERT(!cell)
+		ASSERT(!src.cell)
 	src.cell = cell
 	if(cell.loc != parent)
 		cell.forceMove(parent)
 	parent.object_cell_slot_inserted(cell, src)
+	return TRUE
 
 /**
  * returns TRUE if the cell slot is mutable
@@ -227,8 +228,7 @@
 		obj_cell_slot.cell = new preload_path
 		if(isnull(cell_type))
 			cell_type = obj_cell_slot.cell_type
-	else
-		cell_type = CELL_TYPE_MEDIUM
+	else if(!cell_type)
 		stack_trace("failed to provide a cell type accept bitfield, and didn't provide a preload path to autodetect from")
 	obj_cell_slot.cell_type = cell_type
 	obj_cell_slot.primary = TRUE

@@ -9,7 +9,7 @@
 /datum/firemode/energy/nt_pmd/service_revolver/normal
 	name = "normal"
 	projectile_type = /obj/projectile/bullet/pistol/medium/silver
-	charge_cost = 2400 / 8
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 20
 
 /datum/firemode/energy/nt_pmd/service_revolver/normal/make_radial_appearance()
 	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-normal")
@@ -18,7 +18,7 @@
 	name = "shatter"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun/silvershot
 	cycle_cooldown = 1.5 SECONDS
-	charge_cost = 2400 / 5
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 10
 
 /datum/firemode/energy/nt_pmd/service_revolver/shatter/make_radial_appearance()
 	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-shatter")
@@ -27,7 +27,7 @@
 	name = "spin"
 	projectile_type = /obj/projectile/bullet/pistol/spin
 	cycle_cooldown = 0.1 SECONDS
-	charge_cost = 2400 / 80
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 120
 
 /datum/firemode/energy/nt_pmd/service_revolver/spin/make_radial_appearance()
 	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-spin")
@@ -36,7 +36,7 @@
 	name = "pierce"
 	projectile_type = /obj/projectile/bullet/rifle/a762/ap/silver
 	cycle_cooldown = 1.5 SECONDS
-	charge_cost = 2400 / 5
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 14
 
 /datum/firemode/energy/nt_pmd/service_revolver/pierce/make_radial_appearance()
 	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-pierce")
@@ -45,7 +45,7 @@
 	name = "charge"
 	projectile_type = /obj/projectile/bullet/burstbullet/service
 	cycle_cooldown = 2 SECONDS
-	charge_cost = 2400 / 4
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 8
 
 /datum/firemode/energy/nt_pmd/service_revolver/charge/make_radial_appearance()
 	return image(/obj/item/gun/projectile/energy/nt_pmd/service_revolver::icon, "service-charge")

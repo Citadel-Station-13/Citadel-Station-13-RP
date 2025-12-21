@@ -17,7 +17,7 @@
 
 	cell_system = TRUE
 	cell_type = /obj/item/cell/basic/tier_1/weapon
-	cell_accept = CELL_TYPE_WEAPON
+	cell_accept = CELL_TYPE_WEAPON | CELL_TYPE_SMALL
 	firemodes = /datum/firemode/energy
 
 	//* Modular System *//
@@ -58,7 +58,7 @@
 
 	//! LEGACY BELOW !//
 	// todo: do not use this var, use firemodes
-	var/charge_cost = 240 //How much energy is needed to fire.
+	var/charge_cost = POWER_CELL_CAPACITY_WEAPON / 20
 
 	projectile_type = /obj/projectile/beam/practice
 

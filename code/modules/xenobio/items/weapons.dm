@@ -52,7 +52,7 @@
 	While marketed towards handling slimes, it may be useful for other creatures."
 	icon_state = "taserold"
 	fire_sound = 'sound/weapons/taser2.ogg'
-	charge_cost = 120 // Twice as many shots.
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 24
 	no_pin_required = 1
 	accuracy = 30 // Make it a bit easier to hit the slimes.
 	description_info = "This gun will stun a slime or other lesser slimy lifeform for about two seconds, if hit with the projectile it fires."

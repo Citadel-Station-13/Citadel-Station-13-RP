@@ -4,7 +4,7 @@
 /datum/firemode/energy/energy_gun/stun
 	name = "stun"
 	projectile_type = /obj/projectile/beam/stun/med
-	charge_cost = 2400 / 10
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 10
 	cycle_cooldown = 0.4 SECONDS
 	legacy_direct_varedits = list(
 		"modifystate" = "energystun",
@@ -13,7 +13,7 @@
 /datum/firemode/energy/energy_gun/kill
 	name = "lethal"
 	projectile_type = /obj/projectile/beam
-	charge_cost = 2400 / 5
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 5
 	cycle_cooldown = 0.8 SECONDS
 	legacy_direct_varedits = list(
 		"modifystate" = "energykill",
@@ -95,23 +95,27 @@
 /datum/firemode/energy/mining_carbine/mine
 	name = "mine"
 	projectile_type = /obj/projectile/beam/excavation
-	legacy_direct_varedits = list(modifystate="fm-2tstun", charge_cost = 20)
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 120
+	legacy_direct_varedits = list(modifystate="fm-2tstun")
 
 /datum/firemode/energy/mining_carbine/mine_burst
 	name = "mine burst"
 	projectile_type = /obj/projectile/beam/excavation
 	burst_amount = 5
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 120
 	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), modifystate="fm-2tstun")
 
 /datum/firemode/energy/mining_carbine/scatter
 	name = "scatter"
 	projectile_type = /obj/projectile/scatter/excavation
-	legacy_direct_varedits = list(modifystate="fm-2tkill", charge_cost = 40)
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 40
+	legacy_direct_varedits = list(modifystate="fm-2tkill")
 
 /datum/firemode/energy/mining_carbine/scatter_burst
 	name = "scatter burst"
 	burst_amount = 5
 	projectile_type = /obj/projectile/scatter/excavation
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 40
 	legacy_direct_varedits = list(burst_accuracy=list(65,65,65), dispersion=list(0.0, 0.2, 0.5), modifystate="fm-2tkill")
 
 /obj/item/gun/projectile/energy/gun/miningcarbine
@@ -119,7 +123,6 @@
 	desc = "Following Miner's demand for a portable excavation laser, a military-favourite FM-2t has been modified to shoot excavation lasers."
 	icon_state = "fm-2tstun100"	//May resprite this to be more rifley
 	item_state = null	//so the human update icon uses the icon_state instead.
-	charge_cost = 20
 	damage_force = 8
 	w_class = WEIGHT_CLASS_BULKY
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_ILLEGAL = 2)
@@ -139,12 +142,12 @@
 /datum/firemode/energy/advanced_energy_gun/stun
 	name = "stun"
 	projectile_type = /obj/projectile/beam/stun/med
-	charge_cost = 2400 / 10
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 10
 
 /datum/firemode/energy/advanced_energy_gun/kill
 	name = "lethal"
 	projectile_type = /obj/projectile/beam
-	charge_cost = 2400 / 5
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 5
 
 /obj/item/gun/projectile/energy/gun/nuclear
 	name = "advanced energy gun"
@@ -175,12 +178,12 @@
 /datum/firemode/energy/legacy_nt_combat_pistol/stun
 	name = "stun"
 	projectile_type = /obj/projectile/beam/stun/med
-	charge_cost = 2400 / 12
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 12
 
 /datum/firemode/energy/legacy_nt_combat_pistol/kill
 	name = "lethal"
 	projectile_type = /obj/projectile/beam
-	charge_cost = 2400 / 6
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 6
 
 //NT SpecOps Laser Pistol
 /obj/item/gun/projectile/energy/gun/combat

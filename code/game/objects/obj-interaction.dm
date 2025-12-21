@@ -21,7 +21,7 @@
 			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
 			visible_self = SPAN_NOTICE("You insert [using] into [src]."),
 		)
-		obj_cell_slot.user_insert_cell(cell, actor = clickchain)
+		obj_cell_slot.user_insert_cell(using, actor = clickchain)
 		clickchain.performer.trigger_aiming(TARGET_CAN_CLICK)
 		log_construction(clickchain, src, "inserted cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
