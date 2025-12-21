@@ -84,7 +84,7 @@
 
 	icon_state = "dragonfly"
 	icon_living = "dragonfly"
-	color = "#808080"
+	color = "#cac8c8"
 
 	health = 200
 	maxHealth = 200
@@ -110,8 +110,8 @@
 	icon_living = "mantis"
 	color = "#808080"
 
-	health = 200
-	maxHealth = 200
+	health = 250
+	maxHealth = 250
 	armor_legacy_mob = list(
 		"melee" = 60,
 		"bullet" = 30,

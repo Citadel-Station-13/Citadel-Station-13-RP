@@ -13,7 +13,7 @@
 	evasion = 20
 
 
-	base_attack_cooldown = 30
+	base_attack_cooldown = 40
 	projectiletype = /obj/projectile/potent_fire/sentinel
 	legacy_melee_damage_upper = 15
 	legacy_melee_damage_lower = 15

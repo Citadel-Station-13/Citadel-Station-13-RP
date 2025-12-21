@@ -14,7 +14,7 @@
 
 
 	base_attack_cooldown = 15
-	projectiletype = /obj/projectile/ion
+	projectiletype = /obj/projectile/ion/small
 	legacy_melee_damage_upper = 15
 	legacy_melee_damage_lower = 15
 

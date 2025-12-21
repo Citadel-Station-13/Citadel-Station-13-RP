@@ -30,7 +30,6 @@
 	special_attack_max_range = 7
 	special_attack_cooldown = 1 SECONDS
 
-
 	var/obj/item/shield_projector/shields = null
 
 /mob/living/simple_mob/mechanical/derelict/sentinel/Initialize(mapload)
@@ -45,7 +44,7 @@
 	..(null,"suddenly crashes to the ground, translucent blue blood leaking from a broken thruster.")
 
 
-/mob/living/simple_mob/mechanical/combat_drone/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/mechanical/derelict/sentinel/Process_Spacemove(var/check_drift = 0)
 	return TRUE
 
 /obj/item/shield_projector/rectangle/automatic/advanced
