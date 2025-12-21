@@ -17,7 +17,7 @@
 	description_info = "This 'cell' holds a max charge of 10k and self recharges over time."
 	materials_base = null
 	rating = 5
-	max_charge = POWER_CELL_CAPACITY_BASE * POWER_CELL_CAPACITY_MULTIPLIER_MEDIUM
+	max_charge = POWER_CELL_CAPACITY_BASE * POWER_CELL_CAPACITY_MEDIUM
 	w_class = WEIGHT_CLASS_SMALL
 	weight_volume = WEIGHT_VOLUME_SMALL
 	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON

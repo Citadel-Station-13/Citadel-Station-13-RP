@@ -14,6 +14,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_1, /basic/tier_
 		/datum/prototype/material/steel::id = 200,
 		/datum/prototype/material/glass::id = 75,
 	)
+	typegen_visual_stripe_color = "#adfff3"
 
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/small, /power_cell/basic/tier_1/small, "powercell-basic-tier_1-small")
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/medium, /power_cell/basic/tier_1/medium, "powercell-basic-tier_1-medium")
@@ -32,6 +33,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_2, /basic/tier_
 		/datum/prototype/material/gold::id = 75,
 		/datum/prototype/material/silver::id = 75,
 	)
+	typegen_visual_stripe_color = "#005a75"
 
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/small, /power_cell/basic/tier_2/small, "powercell-basic-tier_2-small")
 GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/medium, /power_cell/basic/tier_2/medium, "powercell-basic-tier_2-medium")
@@ -51,6 +53,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_3, /basic/tier_
 		/datum/prototype/material/silver::id = 100,
 		/datum/prototype/material/diamond::id = 50,
 	)
+	typegen_visual_stripe_color = "#003fc6"
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/small, /power_cell/basic/tier_3/small, "powercell-basic-tier_3-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/medium, /power_cell/basic/tier_3/medium, "powercell-basic-tier_3-medium")
@@ -71,6 +74,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_4, /basic/tier_
 		/datum/prototype/material/hydrogen/mhydrogen::id = 600,
 		/datum/prototype/material/verdantium::id = 450,
 	)
+	typegen_visual_stripe_color = "#7451ff"
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/small, /power_cell/basic/tier_4/small, "powercell-basic-tier_4-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/medium, /power_cell/basic/tier_4/medium, "powercell-basic-tier_4-medium")
@@ -93,6 +97,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_5, /basic/tier_
 		/datum/prototype/material/morphium::id = 300,
 		/datum/prototype/material/valhollide::id = 350,
 	)
+	typegen_visual_stripe_color = "#ff81fd"
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/small, /power_cell/basic/tier_5/small, "powercell-basic-tier_5-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/medium, /power_cell/basic/tier_5/medium, "powercell-basic-tier_5-medium")

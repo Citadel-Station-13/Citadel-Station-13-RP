@@ -99,7 +99,7 @@
 	/// color of the cell's stripe
 	var/typegen_visual_stripe_color
 	/// color of the cell's indicator
-	var/typegen_visual_indicator_color
+	var/typegen_visual_indicator_color = "#80ff41"
 
 	//* Worth / Materials *//
 

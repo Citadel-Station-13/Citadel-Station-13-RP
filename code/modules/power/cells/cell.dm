@@ -131,11 +131,7 @@
 /obj/item/cell/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
-		. += " It has a power rating of [max_charge].\nThe charge meter reads [round(src.percent() )]%."
-	if(max_charge < 30000)
-		. += "[desc]\nThe manufacturer's label states this cell has a power rating of [max_charge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%."
-	else
-		. += "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [max_charge]!\nThe charge meter reads [round(src.percent() )]%."
+		. += "It has a power rating of [max_charge].\nThe charge meter reads [round(src.percent() )]%."
 
 /obj/item/cell/attackby(obj/item/W, mob/user)
 	..()
