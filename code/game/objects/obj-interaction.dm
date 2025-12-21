@@ -21,7 +21,7 @@
 			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
 			visible_self = SPAN_NOTICE("You insert [using] into [src]."),
 		)
-		obj_cell_slot.insert_cell(using)
+		obj_cell_slot.user_insert_cell(cell, actor = clickchain)
 		clickchain.performer.trigger_aiming(TARGET_CAN_CLICK)
 		log_construction(clickchain, src, "inserted cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -43,7 +43,7 @@
 			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
 		log_construction(clickchain, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		clickchain.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(clickchain.performer))
+		clickchain.performer.put_in_hands_or_drop(obj_cell_slot.user_remove_cell(clickchain.performer, actor = clickchain))
 		return CLICKCHAIN_DID_SOMETHING
 
 /obj/tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
@@ -75,7 +75,7 @@
 			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 		)
 		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-		var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
+		var/obj/item/cell/removed = obj_cell_slot.user_remove_cell(src, actor = e_args)
 		if(e_args.performer.Reachability(src))
 			e_args.performer.put_in_hands_or_drop(removed)
 		else
@@ -154,7 +154,7 @@
 					target = src,
 				)
 				return TRUE
-			obj_cell_slot.insert_cell(cell)
+			obj_cell_slot.user_insert_cell(cell, actor = e_args)
 			e_args.visible_feedback(
 				target = src,
 				range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
@@ -194,7 +194,7 @@
 				otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
 			)
 			log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-			var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
+			var/obj/item/cell/removed = obj_cell_slot.user_remove_cell(src, actor = e_args)
 			if(reachability == REACH_PHYSICAL)
 				e_args.performer.put_in_hands_or_drop(removed)
 			else

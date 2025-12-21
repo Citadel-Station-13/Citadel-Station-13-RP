@@ -58,6 +58,14 @@
 	/// cell types accepted
 	var/cell_type = NONE
 
+	//* Config - Sound *//
+	var/insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
+	var/insert_sound_vol = 55
+	var/insert_sound_vary = FALSE
+	var/remove_sound = 'sound/weapons/empty.ogg'
+	var/remove_sound_vol = 55
+	var/remove_sound_vary = FALSE
+
 /datum/object_system/cell_slot/Destroy()
 	QDEL_NULL(cell)
 	return ..()
@@ -99,10 +107,12 @@
 
 /**
  * replaces the existing cell with the inserted cell, dropping the old cell
+ * @return TRUE success, FALSE otherwise
  */
 /datum/object_system/cell_slot/proc/insert_cell(obj/item/cell/cell)
 	if(!isnull(cell))
-		. = remove_cell(parent.drop_location())
+		remove_cell(parent.drop_location())
+		ASSERT(!cell)
 	src.cell = cell
 	if(cell.loc != parent)
 		cell.forceMove(parent)
@@ -119,6 +129,30 @@
  */
 /datum/object_system/cell_slot/proc/has_cell()
 	return !isnull(cell)
+
+//* Interaction Wrappers *//
+
+/datum/object_system/cell_slot/proc/user_insert_cell(obj/item/cell/cell, mob/user, silent, datum/event_args/actor/actor)
+	. = insert_cell(cell)
+	if(!.)
+		return
+	on_user_insert_cell(cell, user, silent, actor)
+
+/datum/object_system/cell_slot/proc/user_remove_cell(atom/newloc, mob/user, silent, datum/event_args/actor/actor) as /obj/item/cell
+	. = remove_cell(newloc)
+	if(!.)
+		return
+	on_user_remove_cell(., user, silent, actor)
+
+/datum/object_system/cell_slot/proc/on_user_insert_cell(obj/item/cell, mob/user, silent, datum/event_args/actor/actor)
+	if(!silent)
+		if(insert_sound)
+			playsound(parent, insert_sound, insert_sound_vol, insert_sound_vary)
+
+/datum/object_system/cell_slot/proc/on_user_remove_cell(obj/item/cell, mob/user, silent, datum/event_args/actor/actor)
+	if(!silent)
+		if(remove_sound)
+			playsound(parent, remove_sound, remove_sound_vol, remove_sound_vary)
 
 //? Hooks
 
