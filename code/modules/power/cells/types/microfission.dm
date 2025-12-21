@@ -98,7 +98,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 		if(!leaking)
 			return PROCESS_KILL
 	else
-		var/missing_charge = max_charge - charge
 		// calc charge rate
 		if(c_regen_left < c_regen_initial * regen_drop_end)
 			reaction_ratio = 0

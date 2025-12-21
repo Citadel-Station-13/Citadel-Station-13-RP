@@ -14,9 +14,12 @@
 	var/heating_power = 40000
 
 /obj/machinery/space_heater/Initialize(mapload, newdir)
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type, cell_accept)
+	init_cell_slot_easy_machine(cell_type, cell_accept)
 	. = ..()
 	update_icon()
+
+/obj/machinery/space_heater/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
+	return panel_open && ..()
 
 /obj/machinery/space_heater/update_icon()
 	cut_overlays()

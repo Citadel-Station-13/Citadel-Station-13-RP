@@ -448,7 +448,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 
 	very_rare_loot = list(
-		/obj/item/cell/basic/tier_4/mediums,
+		/obj/item/cell/basic/tier_4/medium,
 		/obj/item/aiModule/freeform,
 		/obj/item/aiModule/asimov,
 		/obj/item/aiModule/paladin,
