@@ -10,7 +10,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen, /regen, "regen")
 	// ~15 seconds per laser shot for a weapon cell.
 	c_fuel_adjust = 0.01 * (2 / 3)
 
-POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen/fractal, /regen/fractal, "fractal")
+POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen/fractal, /regen/fractal, "regen-fractal")
 /datum/prototype/power_cell/regen/fractal
 	cell_name = "fractal"
 	cell_desc = "You can't even begin to comprehend what this is, other than the fact it's out of this world and \

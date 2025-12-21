@@ -20,7 +20,8 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/particl
 
 /obj/projectile/particle_array/particle_bolt
 	name = "particle bolt"
-	#warn icon state
+	icon = 'icons/modules/projectiles/projectile-hardsprited.dmi'
+	icon_state = "particle-bolt"
 	pass_flags = NONE
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
@@ -30,4 +31,4 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/particl
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
 	color = "#ff1100"
 	auto_emissive_strength = 192
-	#warn fire_sound
+	fire_sound = /datum/soundbyte/guns/energy/laser_1

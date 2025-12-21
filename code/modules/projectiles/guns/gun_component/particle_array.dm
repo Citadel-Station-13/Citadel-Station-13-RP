@@ -28,7 +28,7 @@
 /**
  * Consume next projectile hook
  */
-/obj/item/gun_component/particle_array/proc/consume_next_projectile(datum/gun_firing_cycle/cycle) as /obj/projectile
+/obj/item/gun_component/particle_array/proc/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	var/effective_power_use = base_charge_cost * cycle.next_projectile_cost_multiplier
 	if(effective_power_use)
 		if(!installed.modular_use_checked_power(src, effective_power_use))

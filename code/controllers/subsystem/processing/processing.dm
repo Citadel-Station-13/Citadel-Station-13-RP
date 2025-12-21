@@ -28,6 +28,7 @@ SUBSYSTEM_DEF(processing)
 		var/datum/thing = current_run[current_run.len]
 		current_run.len--
 		if(QDELETED(thing))
+			log_world("")
 			processing -= thing
 		else if(thing.process(dt) == PROCESS_KILL)
 			// fully stop so that a future START_PROCESSING will work

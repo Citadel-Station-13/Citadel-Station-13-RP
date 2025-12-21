@@ -22,7 +22,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 
 /obj/projectile/particle_array/discharge_beam
 	name = "discharge beam"
-	#warn icon state
 	pass_flags = NONE
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
@@ -31,6 +30,16 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
 	hitscan = TRUE
 	color = "#f5ed00"
-	#warn tracer_icon_state, tracer_add_state, tracer_add_state_alpha
+	tracer_icon = 'icons/modules/projectiles/projectile-tracer.dmi'
+	tracer_icon_state = "discharge-1"
+	tracer_add_state = TRUE
+	tracer_add_state_alpha = 192
 	auto_emissive_strength = 192
-	#warn fire_sound
+	fire_sound = /datum/soundbyte/guns/energy/taser_2
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_energy = 50;
+			shock_damage = 7.5;
+			shock_agony = 30;
+		},
+	)

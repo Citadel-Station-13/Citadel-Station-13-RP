@@ -22,7 +22,8 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 
 /obj/projectile/particle_array/discharge_bolt
 	name = "discharge bolt"
-	#warn icon state
+	icon = 'icons/modules/projectiles/projectile-hardsprited.dmi'
+	icon_state = "discharge-bolt"
 	pass_flags = NONE
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_ENERGY
@@ -31,4 +32,11 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
 	color = "#f5ed00"
 	auto_emissive_strength = 192
-	#warn fire_sound
+	fire_sound = /datum/soundbyte/guns/energy/taser_2
+	base_projectile_effects = list(
+		/datum/projectile_effect/electrical_impulse{
+			shock_energy = 100;
+			shock_damage = 10;
+			shock_agony = 40;
+		},
+	)
