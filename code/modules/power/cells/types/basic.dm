@@ -51,7 +51,9 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_3, /basic/tier_
 		/datum/prototype/material/copper::id = 100,
 		/datum/prototype/material/gold::id = 100,
 		/datum/prototype/material/silver::id = 100,
-		/datum/prototype/material/diamond::id = 50,
+		/datum/prototype/material/diamond::id = 250,
+		/datum/prototype/material/durasteel::id = 100,
+		/datum/prototype/material/verdantium::id = 450,
 	)
 	typegen_visual_stripe_color = "#003fc6"
 
@@ -69,10 +71,11 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_4, /basic/tier_
 		/datum/prototype/material/steel::id = 200,
 		/datum/prototype/material/glass::id = 200,
 		/datum/prototype/material/copper::id = 200,
-		/datum/prototype/material/silver::id = 450,
-		/datum/prototype/material/durasteel::id = 100,
-		/datum/prototype/material/hydrogen/mhydrogen::id = 600,
-		/datum/prototype/material/verdantium::id = 450,
+		/datum/prototype/material/gold::id = 500,
+		/datum/prototype/material/silver::id = 250,
+		/datum/prototype/material/verdantium::id = 50,
+		/datum/prototype/material/morphium::id = 300,
+		/datum/prototype/material/valhollide::id = 350,
 	)
 	typegen_visual_stripe_color = "#7451ff"
 
@@ -90,12 +93,11 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_5, /basic/tier_
 	typegen_materials_base = list(
 		/datum/prototype/material/steel::id = 175,
 		/datum/prototype/material/glass::id = 350,
-		/datum/prototype/material/copper::id = 250,
-		/datum/prototype/material/gold::id = 350,
-		/datum/prototype/material/silver::id = 250,
-		/datum/prototype/material/verdantium::id = 50,
-		/datum/prototype/material/morphium::id = 300,
-		/datum/prototype/material/valhollide::id = 350,
+		/datum/prototype/material/lead::id = 750,
+		/datum/prototype/material/silver::id = 750,
+		/datum/prototype/material/verdantium::id = 250,
+		/datum/prototype/material/valhollide::id = 750,
+		/datum/prototype/material/supermatter::id = 350,
 	)
 	typegen_visual_stripe_color = "#ff81fd"
 
