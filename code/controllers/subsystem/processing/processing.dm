@@ -28,7 +28,13 @@ SUBSYSTEM_DEF(processing)
 		var/datum/thing = current_run[current_run.len]
 		current_run.len--
 		if(QDELETED(thing))
-			log_world("")
+			log_world("GC-TRACE: Deleted entity found in [src] - [thing ? thing.type : "-- null value --"]")
+			if(thing)
+				var/list/trace = thing.gc_trace_data()
+				trace["type"] = thing.type
+				trace["refcount"] = refconut(thing)
+				log_world("GC-TRACE: From [src], [thing.type] had trace: [json_encode(trace)]")
+			stack_trace("deleted entity found in [src]; check logs.")
 			processing -= thing
 		else if(thing.process(dt) == PROCESS_KILL)
 			// fully stop so that a future START_PROCESSING will work

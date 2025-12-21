@@ -37,10 +37,17 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 	var/leaking_falloff = RAD_FALLOFF_CELL_MICROFISSION
 
 	/// additional cell units able to be recharged
-	var/regen_left
+	/// * cached computation
+	var/tmp/c_regen_left
 	/// original [regen_left]
+	/// * cached computation
 	/// * modulated by `c_fuel_*` on cell datums
-	var/regen_initial
+	var/tmp/c_regen_initial
+	/// * cached computation
+	var/tmp/c_regen_min_per_second
+	/// * cached computation
+	var/tmp/c_regen_max_per_second
+
 	/// if set, hard-sets additional cell units to be recharged; overrides [regen_as_multiplier]
 	/// * modulated by `c_fuel_*` on cell datums
 	var/regen_as_static
@@ -60,8 +67,16 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 
 /obj/item/cell/microfission/Initialize(mapload)
 	. = ..()
-	regen_left = regen_initial = (isnull(regen_as_static) ? (regen_as_multiplier * max_charge) : regen_as_static)
+	// TODO: automated way to update when prototypes change?
 	if(cell_datum)
+		c_regen_left = c_regen_initial = (isnull(regen_as_static) ? (regen_as_multiplier * max_charge) : regen_as_static) \
+			* cell_datum.c_fuel_adjust + cell_datum.c_fuel_multiplier
+		c_regen_min_per_second = max(0, regen_min_per_second * cell_datum.c_reaction_multiplier + cell_datum.c_reaction_adjust)
+		c_regen_max_per_second = max(0, regen_max_per_second * cell_datum.c_reaction_multiplier + cell_datum.c_reaction_adjust)
+	else
+		c_regen_left = c_regen_initial = (isnull(regen_as_static) ? (regen_as_multiplier * max_charge) : regen_as_static)
+		c_regen_min_per_second = regen_min_per_second
+		c_regen_max_per_second = regen_max_per_second
 
 	START_PROCESSING(SSobj, src)
 
@@ -69,16 +84,46 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+/obj/item/cell/microfission/use(amount)
+	. = ..()
+	// wake if needed
+	if(!(datum_flags & DF_ISPROCESSING))
+		START_PROCESSING(SSobj, src)
+
 /obj/item/cell/microfission/process(delta_time)
 	..()
-	var/charge_rate = 0
+	var/reaction_ratio = 0
 	if(charge >= max_charge)
 		// don't charge
+		if(!leaking)
+			return PROCESS_KILL
 	else
+		var/missing_charge = max_charge - charge
 		// calc charge rate
-		var/ratio = regen_left / regen_initial
-	#warn impl
-	#warn impl - leak
+		if(c_regen_left < c_regen_initial * regen_drop_end)
+			reaction_ratio = 0
+		else if(c_regen_left > c_regen_initial * regen_drop_start)
+			reaction_ratio = 1
+		else
+			// the part of the ratio that is bottom and high end can be ignored
+			var/nonaffecting_portion = c_regen_initial * (1 - (regen_drop_start + regen_drop_end))
+			// subtract the bottom end of the bar that would already fall to minimum rate
+			reaction_ratio = (c_regen_left - (c_regen_initial * regen_drop_end)) / (nonaffecting_portion)
+
+		var/effective_charge_units = LERP(c_regen_min_per_second, c_regen_max_per_second, reaction_ratio)
+		if(effective_charge_units)
+			// just to be nice, allow overcharging.
+			give(effective_charge_units, TRUE)
+		else if(!leaking)
+			return PROCESS_KILL
+	if(leaking)
+		SSradiation.radiation_pulse(
+			src,
+			LERP(leaking_strength_min, leaking_strength_min, reaction_ratio),
+			leaking_falloff,
+			TRUE,
+			FALSE,
+		)
 
 /obj/item/cell/microfission/atom_break()
 	..()
@@ -90,6 +135,10 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 
 /obj/item/cell/microfission/proc/set_leaking(new_leaking)
 	leaking = new_leaking
+	do
+		var/turf//our_turf = get_turf(src)
+		log_game("MISC: Microfission cell at [COORD(our_turf)] leaking set to [new_leaking][inv_inside ? ", carried by [key_name(inv_inside.owner)]" : ""]")
+	while(FALSE)
 	if(leaking)
 		add_filter("microfission-cell-leak", 10, outline_filter(2, "#14ff71"))
 		var/animating_filter = get_filter("microfission-cell-leak")

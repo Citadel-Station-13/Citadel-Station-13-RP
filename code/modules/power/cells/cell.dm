@@ -226,13 +226,16 @@
 
 //* Main *//
 
-/obj/item/cell/proc/give(amount)
+/obj/item/cell/proc/give(amount, force)
 	// LEGACY - explosion?
 	if(rigged && amount > 0)
 		explode()
 		return FALSE
 	// END
-	. = clamp(amount, 0, max_charge - charge)
+	if(force)
+		. = amount
+	else
+		. = clamp(amount, 0, max_charge - charge)
 	charge += .
 	update_icon()
 

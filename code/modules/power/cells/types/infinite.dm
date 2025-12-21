@@ -12,7 +12,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/infinite, /infinite, "infi
 /obj/item/cell/infinite/use(amount)
 	return amount
 
-/obj/item/cell/infinite/give(amount)
+/obj/item/cell/infinite/give(amount, force)
 	return 0
 
 /obj/item/cell/infinite/check_charge(amount)

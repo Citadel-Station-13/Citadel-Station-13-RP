@@ -33,8 +33,12 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen/fractal, /regen/frac
 /obj/item/cell/regen/Initialize()
 	. = ..()
 	// TODO: automated way to update when prototypes change?
-	base_regen_static  = initial(base_regen_static) * cell_datum.c_reaction_multiplier + cell_datum.c_reaction_adjust
-	base_regen_ratio  = initial(base_regen_ratio) * cell_datum.c_fuel_multiplier + cell_datum.c_fuel_adjust
+	var/c_base_regen_static = cell_datum ? \
+		base_regen_static * cell_datum.c_reaction_multiplier + cell_datum.c_reaction_adjust : \
+		base_regen_static
+	var/c_base_regen_ratio = cell_datum ? \
+		base_regen_ratio * cell_datum.c_fuel_multiplier + cell_datum.c_fuel_adjust : \
+		base_regen_ratio
 	self_recharge = TRUE
-	self_recharge_amount = base_regen_static + base_regen_ratio * 0.01 * max_charge
+	self_recharge_amount = c_base_regen_static + c_base_regen_ratio * 0.01 * max_charge
 	START_PROCESSING(SSobj, src)
