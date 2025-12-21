@@ -24,18 +24,26 @@ GLOBAL_VAR_INIT(cellrate, 0.5)
 #define POWER_CELL_CAPACITY_BASE 1200
 
 /// base
+/// * this is a default; power cell datums can override this
 #define POWER_CELL_MULTIPLIER_SMALL 2
 /// vs small is 100% space-efficient
+/// * this is a default; power cell datums can override this
 #define POWER_CELL_MULTIPLIER_WEAPON 4
 /// vs weapon is 125% space-efficient
+/// * this is a default; power cell datums can override this
 #define POWER_CELL_MULTIPLIER_MEDIUM 10
 /// vs medium is 150% space-efficient
+/// * this is a default; power cell datums can override this
 #define POWER_CELL_MULTIPLIER_LARGE 30
 
-#define POWER_CELL_CAPACITY_MULTIPLIER_SMALL (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_SMALL)
-#define POWER_CELL_CAPACITY_MULTIPLIER_MEDIUM (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_MEDIUM)
-#define POWER_CELL_CAPACITY_MULTIPLIER_LARGE (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_LARGE)
-#define POWER_CELL_CAPACITY_MULTIPLIER_WEAPON (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_WEAPON)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_SMALL (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_SMALL)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_MEDIUM (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_MEDIUM)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_LARGE (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_LARGE)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_WEAPON (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_WEAPON)
 
 //* Computers
 

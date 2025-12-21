@@ -40,16 +40,16 @@
 	var/typegen_capacity_multiplier = 1
 	/// * automatically set via define / typegen
 	/// * compounded with [typegen_capacity_multiplier]
-	var/typegen_capacity_multiplier_small = 1 * POWER_CELL_CAPACITY_MULTIPLIER_SMALL
+	var/typegen_capacity_multiplier_small = 1 * POWER_CELL_MULTIPLIER_SMALL
 	/// * automatically set via define / typegen
 	/// * compounded with [typegen_capacity_multiplier]
-	var/typegen_capacity_multiplier_medium = 1 * POWER_CELL_CAPACITY_MULTIPLIER_MEDIUM
+	var/typegen_capacity_multiplier_medium = 1 * POWER_CELL_MULTIPLIER_MEDIUM
 	/// * automatically set via define / typegen
 	/// * compounded with [typegen_capacity_multiplier]
-	var/typegen_capacity_multiplier_large = 1 * POWER_CELL_CAPACITY_MULTIPLIER_LARGE
+	var/typegen_capacity_multiplier_large = 1 * POWER_CELL_MULTIPLIER_LARGE
 	/// * automatically set via define / typegen
 	/// * compounded with [typegen_capacity_multiplier]
-	var/typegen_capacity_multiplier_weapon = 1 * POWER_CELL_CAPACITY_MULTIPLIER_WEAPON
+	var/typegen_capacity_multiplier_weapon = 1 * POWER_CELL_MULTIPLIER_WEAPON
 
 	//* Materials - Type Generation *//
 	// TODO: make sure these all apply if the prototype updates
