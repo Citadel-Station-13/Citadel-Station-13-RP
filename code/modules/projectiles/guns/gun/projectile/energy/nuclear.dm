@@ -4,7 +4,7 @@
 /datum/firemode/energy/energy_gun/stun
 	name = "stun"
 	projectile_type = /obj/projectile/beam/stun/med
-	charge_cost = POWER_CELL_CAPACITY_WEAPON / 10
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 12
 	cycle_cooldown = 0.4 SECONDS
 	legacy_direct_varedits = list(
 		"modifystate" = "energystun",
@@ -13,7 +13,7 @@
 /datum/firemode/energy/energy_gun/kill
 	name = "lethal"
 	projectile_type = /obj/projectile/beam
-	charge_cost = POWER_CELL_CAPACITY_WEAPON / 5
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 12
 	cycle_cooldown = 0.8 SECONDS
 	legacy_direct_varedits = list(
 		"modifystate" = "energykill",
