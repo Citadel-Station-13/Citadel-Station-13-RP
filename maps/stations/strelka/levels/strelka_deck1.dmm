@@ -5059,7 +5059,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/super/north_mount,
+/obj/machinery/power/apc/large_cell/north_mount,
 /obj/machinery/computer/ship/helm,
 /turf/simulated/floor/carpet/oracarpet,
 /area/shuttle/personalmicro2)
@@ -5840,7 +5840,7 @@
 	pixel_y = -30;
 	pixel_x = 10
 	},
-/obj/machinery/power/apc/super/south_mount,
+/obj/machinery/power/apc/large_cell/south_mount,
 /obj/structure/cable,
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/personalmicro1)
@@ -7879,7 +7879,7 @@
 	pixel_y = 30;
 	pixel_x = -14
 	},
-/obj/machinery/power/apc/super/north_mount,
+/obj/machinery/power/apc/large_cell/north_mount,
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
@@ -8161,7 +8161,7 @@
 	pixel_y = -30;
 	pixel_x = 10
 	},
-/obj/machinery/power/apc/super/south_mount,
+/obj/machinery/power/apc/large_cell/south_mount,
 /obj/machinery/light{
 	dir = 4
 	},

@@ -5282,7 +5282,7 @@
 /area/crew_quarters/sleep/engi_wash)
 "eKh" = (
 /obj/structure/table/steel,
-/obj/item/cell/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil,
 /obj/machinery/camera/network/engineering{
 	dir = 8
@@ -8796,11 +8796,11 @@
 /area/hallway/d4fwdportmaint/endeavour)
 "hPd" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/cell/basic/tier_3/medium,
-/obj/item/cell/cell/basic/tier_3/medium,
-/obj/item/cell/cell/basic/tier_3/medium,
-/obj/item/cell/cell/basic/tier_3/medium,
-/obj/item/cell/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -14378,11 +14378,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/cell/cell/basic/tier_3/medium,
-/obj/item/cell/cell/basic/tier_3/medium,
-/obj/item/cell/cell/basic/tier_3/medium,
-/obj/item/cell/cell/basic/tier_3/medium,
-/obj/item/cell/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},

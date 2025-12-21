@@ -2163,10 +2163,10 @@
 /obj/item/clothing/glasses/hud/security,
 /obj/item/clothing/glasses/hud/security,
 /obj/item/clothing/glasses/hud/security,
-/obj/item/cell/cell/basic/tier_1/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -3
 	},
-/obj/item/cell/cell/basic/tier_1/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 3
 	},
 /turf/simulated/floor/tiled/dark,
@@ -17627,20 +17627,20 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/item/cell/cell/basic/tier_1/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -6;
 	pixel_y = 3
 	},
-/obj/item/cell/cell/basic/tier_1/weapon,
-/obj/item/cell/cell/basic/tier_1/weapon{
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -6;
 	pixel_y = -3
 	},
-/obj/item/cell/cell/basic/tier_1/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/cell/cell/basic/tier_1/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 5;
 	pixel_y = 3
 	},
