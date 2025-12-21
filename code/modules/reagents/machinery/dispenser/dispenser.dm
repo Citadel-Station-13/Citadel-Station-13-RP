@@ -4,8 +4,11 @@
 	req_components = list(
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/cell/medium = 1,
+		/obj/item/cell = 1,
 		/obj/item/stock_parts/console_screen = 1,
+	)
+	def_components = list(
+		/obj/item/cell = /obj/item/cell/basic/tier_1/large,
 	)
 
 #define MAX_MACROS 20

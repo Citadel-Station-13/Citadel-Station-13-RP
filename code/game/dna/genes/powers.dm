@@ -22,12 +22,12 @@
 	..(M,connected,flags)
 	add_verb(M, /mob/living/carbon/human/proc/remoteobserve)
 
-/datum/gene/basic/regenerate
+/datum/gene/regenerate
 	name = "Regenerate"
 	activation_messages = list("You feel better.")
 	mutation = MUTATION_REGENERATE
 
-/datum/gene/basic/regenerate/New()
+/datum/gene/regenerate/New()
 	block = DNABLOCK_REGENERATE
 
 /datum/gene/basic/increaserun

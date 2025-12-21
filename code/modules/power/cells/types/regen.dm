@@ -42,3 +42,9 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen/fractal, /regen/frac
 	self_recharge = TRUE
 	self_recharge_amount = c_base_regen_static + c_base_regen_ratio * 0.01 * max_charge
 	START_PROCESSING(SSobj, src)
+
+/obj/item/cell/regen/fractal
+	// TODO: relore this, the generic precursor shit is boring.
+	catalogue_data = list(
+		/datum/category_item/catalogue/anomalous/precursor_a/alien_void_cell,
+	)

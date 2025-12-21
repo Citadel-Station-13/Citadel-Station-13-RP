@@ -126,16 +126,16 @@
 
 /datum/uplink_item/item/ammo/weapon_cell
 	name = "weapon power cell"
-	path = /obj/item/cell/weapon
+	path = /obj/item/cell/basic/tier_4/weapon
 
 /datum/uplink_item/item/ammo/small
 	name = "small power cell"
-	path = /obj/item/cell/small
+	path = /obj/item/cell/basic/tier_4/small
 
 /datum/uplink_item/item/ammo/medium_cell
 	name = "medium power cell"
-	path = /obj/item/cell/medium
+	path = /obj/item/cell/basic/tier_4/medium
 
 /datum/uplink_item/item/ammo/large_cell
 	name = "large power cell"
-	path = /obj/item/cell/large
+	path = /obj/item/cell/basic/tier_4/large

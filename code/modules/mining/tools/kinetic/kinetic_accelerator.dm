@@ -20,13 +20,13 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
-	cell_type = /obj/item/cell/basic/tier_1/weapon/empproof
+	cell_type = /obj/item/cell/kinetic_capacitor
 	clothing_flags = NONE
 	charge_meter = FALSE
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	projectile_type = /obj/projectile/kinetic
-	charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge
+	charge_cost = /obj/item/cell/kinetic_capacitor::max_charge
 	legacy_battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	render_use_legacy_by_default = FALSE
@@ -62,15 +62,6 @@
 /obj/item/gun/projectile/energy/kinetic_accelerator/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
 	. = ..()
 	attempt_reload()
-
-/*
-/obj/item/gun/projectile/energy/kinetic_accelerator/premiumka
-	name = "premium accelerator"
-	desc = "A premium kinetic accelerator fitted with an extended barrel and increased pressure tank."
-	icon_state = "premiumgun"
-	item_state = "premiumgun"
-	projectile_type = /obj/projectile/kinetic/premium
-*/
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/examine(mob/user, dist)
 	. = ..()

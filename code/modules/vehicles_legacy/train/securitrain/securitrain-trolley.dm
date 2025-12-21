@@ -28,9 +28,6 @@
 	else
 		..()
 
-/obj/vehicle_old/train/security/trolley/insert_cell(var/obj/item/cell/C, var/mob/living/carbon/human/H)
-	return
-
 /obj/vehicle_old/train/security/trolley/Bump(atom/Obstacle)
 	if(!lead)
 		return //so people can't knock others over by pushing a trolley around

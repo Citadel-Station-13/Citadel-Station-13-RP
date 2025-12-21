@@ -172,7 +172,7 @@
 	name = "Belt-miner gear crate"
 	contains = list(
 		/obj/item/gun/projectile/energy/particle = 2,
-		/obj/item/cell/weapon = 2,
+		/obj/item/cell/basic/tier_2/weapon = 2,
 		/obj/item/storage/firstaid/regular = 1,
 		/obj/item/gps = 2,
 		/obj/item/storage/box/traumainjectors = 1,

@@ -65,7 +65,6 @@
 	if(power_cost > cell.charge)
 		to_chat(user, "<span class='notice'>The [src] flashes a warning light, it doesn't have enough charge to dig.</span>")
 		return
-	var/obj/item/cell/cell = get_cell()
 	if(do_after(user, 2.5 SECONDS) && cell.use(power_cost))
 		var/turf/T = get_turf(user)
 		LEGACY_EX_ACT(T, 1, null)
