@@ -3,6 +3,7 @@
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen, /regen, "regen")
 /datum/prototype/power_cell/regen
+	id = "regen"
 	cell_name = "void"
 	cell_desc = "This one is unlike anything you've seen before, able to generate energy seemingly out of nowhere."
 	typegen_visual_stripe_color = "#aa00aa"
@@ -12,6 +13,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen, /regen, "regen")
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/regen/fractal, /regen/fractal, "regen-fractal")
 /datum/prototype/power_cell/regen/fractal
+	id = "regen-fractal"
 	cell_name = "fractal"
 	cell_desc = "You can't even begin to comprehend what this is, other than the fact it's out of this world and \
 	making energy out of nowhere."

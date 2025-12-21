@@ -8,6 +8,7 @@
 // yourself outside of my PR lol
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfission, "microfission")
 /datum/prototype/power_cell/microfission
+	id = "microfission"
 	cell_name = "microfission"
 	cell_desc = "This one contains highly enriched nuclear material, which is constantly used to recharge the cell with an induced process."
 
@@ -23,6 +24,8 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/microfission, /microfissio
 		/datum/prototype/material/uranium::id = 200,
 	)
 
+/datum/prototype/design/power_cell/microfission
+	abstract_type = /datum/prototype/design/power_cell/microfission
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/small, /power_cell/microfission/small, "powercell-microfission-small")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/medium, /power_cell/microfission/medium, "powercell-microfission-medium")
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/large, /power_cell/microfission/large, "powercell-microfission-large")

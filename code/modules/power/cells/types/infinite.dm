@@ -3,6 +3,7 @@
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/infinite, /infinite, "infinite")
 /datum/prototype/power_cell/infinite
+	id = "infinite"
 	cell_name = "fractal"
 	cell_desc = "This one is unlike anything you've seen before, boasting a seemingly limitless energy output."
 
