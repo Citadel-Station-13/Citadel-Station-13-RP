@@ -26,6 +26,6 @@
 	var/mob/living/living_target = target
 	living_target.apply_status_effect(
 		status_effect_path,
-		status_effect_duration * efficienc * proj.projectile_effect_multiplier,
+		status_effect_duration * efficiency * proj.projectile_effect_multiplier,
 	)
 	return impact_flags
