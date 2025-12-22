@@ -5,6 +5,7 @@
 	..()
 	// auto switch
 	if(component == modular_particle_array_active)
+		modular_particle_array_active = null
 		auto_set_particle_array(null)
 
 /obj/item/gun/projectile/energy/on_modular_component_install(obj/item/gun_component/component, datum/event_args/actor/actor, silent)

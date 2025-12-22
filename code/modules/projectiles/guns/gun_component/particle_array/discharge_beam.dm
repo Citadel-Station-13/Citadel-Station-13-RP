@@ -10,6 +10,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	selection_name = "discharge beam"
 	render_color = "#ffff00"
 	base_charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge / 12
+	base_delay_add = 0.35 SECONDS
 
 	materials_base = list(
 		/datum/prototype/material/steel::id = 500,

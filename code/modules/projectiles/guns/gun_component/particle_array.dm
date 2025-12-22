@@ -9,9 +9,12 @@
 	desc = "A nondescript particle array used in energy weapons."
 	icon = 'icons/modules/projectiles/components/particle_array.dmi'
 	component_slot = GUN_COMPONENT_PARTICLE_ARRAY
+	hook_iteration_pre_fire = TRUE
 
 	/// base charge cost in cell units
 	var/base_charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge / 24
+	/// base delay add
+	var/base_delay_add = 0 SECONDS
 	/// considered lethal?
 	/// * lethal arrays can be disabled on a separate 'safety' setting
 	var/considered_lethal = FALSE
@@ -24,6 +27,14 @@
 
 	/// projectile type
 	var/projectile_type
+
+/obj/item/gun_component/particle_array/on_firing_cycle_iteration(datum/gun_firing_cycle/cycle)
+	..()
+	// sorry no subtracting with add! that can result in weird shit happening.
+	if(cycle.cycle_iterations_fired == 1 && base_delay_add > 0)
+		// first one, inject base delay
+		cycle.firing_delay += base_delay_add
+		cycle.overall_cooldown_adjust += base_delay_add
 
 /**
  * Consume next projectile hook
