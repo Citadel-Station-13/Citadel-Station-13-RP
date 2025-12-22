@@ -39,7 +39,6 @@
 
 	max_temperature = 60000
 	wreckage = /obj/effect/decal/mecha_wreckage/marauder
-	add_req_access = 0
 	internal_damage_threshold = 25
 
 	melee_standard_force = 40

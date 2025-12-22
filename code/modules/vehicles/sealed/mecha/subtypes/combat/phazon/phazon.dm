@@ -23,7 +23,6 @@
 	dir_in = 1 //Facing North.
 	max_temperature = 25000
 	wreckage = /obj/effect/decal/mecha_wreckage/phazon
-	add_req_access = 1
 	internal_damage_threshold = 25
 
 	module_slots = list(

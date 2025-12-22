@@ -26,7 +26,6 @@
 
 	max_temperature = 35000 //Just a bit better than the Durand.
 	wreckage = /obj/effect/decal/mecha_wreckage/gorilla
-	add_req_access = 0
 	internal_damage_threshold = 25
 
 	melee_standard_force = 45

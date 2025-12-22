@@ -5655,6 +5655,7 @@
 #include "code\modules\vehicles\sealed\mecha\components\mecha_electrical.dm"
 #include "code\modules\vehicles\sealed\mecha\components\mecha_gas.dm"
 #include "code\modules\vehicles\sealed\mecha\components\mecha_hull.dm"
+#include "code\modules\vehicles\sealed\mecha\fighter\fighter-legacy.dm"
 #include "code\modules\vehicles\sealed\mecha\fighter\fighter-ui_controller.dm"
 #include "code\modules\vehicles\sealed\mecha\fighter\fighter.dm"
 #include "code\modules\vehicles\sealed\mecha\fighter\subtypes\allure.dm"

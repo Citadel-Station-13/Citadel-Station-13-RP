@@ -439,34 +439,8 @@
 	output_text += "</div>"
 	return output_text
 
-/obj/vehicle/sealed/mecha/proc/output_maintenance_dialog(obj/item/card/id/id_card,mob/user)
-	if(!id_card || !user) return
-
-	var/maint_options = "<a href='?src=\ref[src];set_internal_tank_valve=1;user=\ref[user]'>Set Cabin Air Pressure</a>"
-	if (locate(/obj/item/vehicle_module/lazy/legacy/tool/passenger) in contents)
-		maint_options += "<a href='?src=\ref[src];remove_passenger=1;user=\ref[user]'>Remove Passenger</a>"
-
-	var/output_text = {"<html>
-						<head>
-						<style>
-						body {color: #00ff00; background: #000000; font-family:"Courier New", Courier, monospace; font-size: 12px;}
-						a {padding:2px 5px; background:#32CD32;color:#000;display:block;margin:2px;text-align:center;text-decoration:none;}
-						</style>
-						</head>
-						<body>
-						[add_req_access?"<a href='?src=\ref[src];req_access=1;id_card=\ref[id_card];user=\ref[user]'>Edit operation keycodes</a>":null]
-						[maint_access?"<a href='?src=\ref[src];maint_access=1;id_card=\ref[id_card];user=\ref[user]'>Initiate maintenance protocol</a>":null]
-						[(state>0) ? maint_options : ""]
-						</body>
-						</html>"}
-	user << browse(output_text, "window=exosuit_maint_console")
-	onclose(user, "exosuit_maint_console")
-	return
-
-/obj/vehicle/sealed/mecha/proc/occupant_message(message as text)
-	if(message)
-		if(src.occupant_legacy && src.occupant_legacy.client)
-			to_chat(src.occupant_legacy, "[icon2html(src, world)] [message]")
+/obj/vehicle/sealed/mecha/proc/occupant_message(message)
+	occupant_send_default_chat(message)
 
 /obj/vehicle/sealed/mecha/Topic(href, href_list)
 	..()
@@ -514,16 +488,6 @@
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant_legacy]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant_legacy]!</span>")
 		P.go_out()
 		return
-	if(href_list["repair_int_control_lost"])
-		if(usr != src.occupant_legacy)	return
-		src.occupant_message("Recalibrating coordination system.")
-		var/T = src.loc
-		sleep(100)
-		if(T == src.loc)
-			src.clearInternalDamage(MECHA_INT_CONTROL_LOST)
-			src.occupant_message("<font color='blue'>Recalibration successful.</font>")
-		else
-			src.occupant_message("<font color='red'>Recalibration failed.</font>")
 
 //* STOP USING THIS. *//
 /obj/vehicle/sealed/mecha/proc/has_charge(amount)

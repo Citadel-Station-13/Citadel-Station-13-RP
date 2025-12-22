@@ -63,6 +63,11 @@
 	/// Flight mode can be kept on without an occupant
 	var/flight_has_autopilot = FALSE
 
+	var/flight_move_sound = 'sound/mecha/fighter/engine_mid_fighter_move.ogg'
+	var/flight_turn_sound = 'sound/mecha/fighter/engine_mid_boost_01.ogg'
+	var/ground_move_sound = 'sound/effects/roll.ogg'
+	var/ground_turn_sound = 'sound/effects/roll.ogg'
+
 	/// legacy: ion trail when flying
 	var/datum/effect_system/ion_trail_follow/ion_trail
 
@@ -113,23 +118,19 @@
 		return FALSE
 	return ..()
 
-/obj/vehicle/sealed/mecha/fighter/proc/consider_gravity(var/moved = FALSE)
-	var/gravity = has_gravity()
-	if (gravity && !landing_gear_raised)
-		playsound(src, 'sound/effects/roll.ogg', 50, 1)
-	else if(gravity && ground_capable && occupant_legacy)
-		start_hover()
-	else if((!gravity && ground_capable) || !occupant_legacy)
-		stop_hover()
-	else if(moved && gravity && !ground_capable)
-		occupant_message("Collision alert! Vehicle not rated for use in gravity!")
-		take_damage_legacy(in_gravity_damage, "brute")
-		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
+/obj/vehicle/sealed/mecha/fighter/proc/on_start_flying()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	move_sound = flight_move_sound
+	turn_sound = flight_turn_sound
 
-/obj/vehicle/sealed/mecha/fighter/get_step_delay()
-    . = ..()
-    if(has_gravity() && !landing_gear_raised)
-        . += 4
+/obj/vehicle/sealed/mecha/fighter/proc/on_stop_flying()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	move_sound = ground_move_sound
+	turn_sound = ground_turn_sound
+
+#warn hovering
 
 /obj/vehicle/sealed/mecha/fighter/proc/start_hover()
 	if(!ion_trail.on) //We'll just use this to store if we're floating or not
@@ -151,12 +152,6 @@
 		ion_trail.stop()
 		animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 
-/obj/vehicle/sealed/mecha/fighter/play_entered_noise(var/mob/who)
-	if(hasInternalDamage())
-		who << sound('sound/mecha/fighter_entered_bad.ogg',volume=50)
-	else
-		who << sound('sound/mecha/fighter_entered.ogg',volume=50)
-
 /obj/vehicle/sealed/mecha/fighter/proc/user_enable_flight(datum/event_args/actor/actor, silent)
 	#warn log this and that
 
@@ -167,6 +162,7 @@
 
 	var/datum/vehicle_ui_controller/mecha/fighter/ui_controller = src.ui_controller
 	ui_controller?.update_ui_flight()
+	on_stop_flying()
 
 /**
  * @params
@@ -179,3 +175,4 @@
 
 	var/datum/vehicle_ui_controller/mecha/fighter/ui_controller = src.ui_controller
 	ui_controller?.update_ui_flight()
+	on_start_flying()
