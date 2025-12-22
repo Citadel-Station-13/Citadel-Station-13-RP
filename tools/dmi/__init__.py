@@ -381,16 +381,36 @@ class DmiTransformPipeline:
 
         return image
 
+    def shift_crop_by_pattern(self, pattern: str) -> DmiTransformPipeline:
+        matcher: re.Pattern = re.compile(pattern)
+        self.dmi.states = [DmiTransformPipeline.impl_shift_crop(s, x_o, y_o) if matcher.fullmatch(s.name) else s for s in self.dmi.states]
+        return self
+
+    def impl_shift_crop_state(self, state: State, x_o: int, y_o: int):
+        state.frames = [DmiTransformPipeline.impl_shift_crop_image(f, x_o, y_o) for f in state.frames]
+        return state
+
+    def impl_shift_crop_image(self, image: Image.Image, x_o: int, y_o: int):
+        image2 = image.copy()
+        for x in range(image.width):
+            for y in range(image.height):
+                o_x = x + x_o
+                o_y = y + y_o
+                if(o_x > image.width or o_x < 1):
+                    continue
+                if(o_y > image.width or o_y < 1):
+                    continue
+                image2.putpixel((o_x, o_y), image.getpixel((x, y)))
+        return image
+
     def greyscale_state_pattern(self, pattern: str) -> DmiTransformPipeline:
         matcher: re.Pattern = re.compile(pattern)
         self.dmi.states = [DmiTransformPipeline._greyscale_state(s) if matcher.fullmatch(s.name) else s for s in self.dmi.states]
         return self
 
     def greyscale_all_states(self) -> DmiTransformPipeline:
-
         for state in self.dmi.states:
             DmiTransformPipeline._greyscale_state(state)
-
         return self
 
     def greyscale_state(self, name: str | list[str]) -> DmiTransformPipeline:

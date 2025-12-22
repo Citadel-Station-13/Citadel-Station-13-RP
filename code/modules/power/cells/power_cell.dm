@@ -88,10 +88,10 @@
 	var/typegen_w_class_medium = WEIGHT_CLASS_NORMAL
 	var/typegen_w_class_large = WEIGHT_CLASS_BULKY
 
-	var/typegen_w_volume_small = WEIGHT_VOLUME_TINY
-	var/typegen_w_volume_weapon = WEIGHT_VOLUME_SMALL
-	var/typegen_w_volume_medium = WEIGHT_VOLUME_NORMAL
-	var/typegen_w_volume_large = WEIGHT_VOLUME_BULKY
+	var/typegen_w_volume_small = ITEM_VOLUME_SMALL_CELL
+	var/typegen_w_volume_weapon = ITEM_VOLUME_WEAPON_CELL
+	var/typegen_w_volume_medium = ITEM_VOLUME_MEDIUM_CELL
+	var/typegen_w_volume_large = ITEM_VOLUME_LARGE_CELL
 
 	//* Visuals - Type Generation *//
 	// TODO: make sure this applies if the prototype updates
