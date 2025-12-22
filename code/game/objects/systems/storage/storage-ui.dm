@@ -169,8 +169,14 @@
 	var/rendering_width_in_pixels = rendering_width * 32
 	// effective max scales up if we're overrunning
 	var/effective_max_volume = max(max_combined_volume, cached_combined_volume)
-	// scale down width to volume
-	rendering_width_in_pixels = min(rendering_width_in_pixels, effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
+	// see if we're trying to render a small container
+	var/requested_pixels = effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO_MIN
+	// clamp it
+	rendering_width_in_pixels = clamp(
+		requested_pixels,
+		VOLUMETRIC_STORAGE_MINIMUM_TILES * WORLD_ICON_SIZE,
+		rendering_width_in_pixels,
+	)
 
 	//? resolve items
 

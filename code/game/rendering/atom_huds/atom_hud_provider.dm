@@ -221,7 +221,6 @@ GLOBAL_LIST_INIT(atom_hud_providers, initialize_atom_hud_providers())
 		return
 	var/mob/living/carbon/human/H = A
 	var/image/holder = plate
-	holder.pixel_y = -16
 	if(H.wear_id)
 		var/obj/item/card/id/I = H.wear_id.GetID()
 		if(I)
