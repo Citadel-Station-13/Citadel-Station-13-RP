@@ -23,8 +23,10 @@
 		// TODO: sound
 		// TODO: log
 		var/obj/item/cell/joined = new join_result
-		joined.set_integrity(joined.integrity_max * (((src.integrity / src.integrity_max) + (joining.integrity / joining.integrity_max)) / 2))
-		joined.set_charge(joined.max_charge * (((src.charge / src.max_charge) + (joining.charge / joining.max_charge)) / 2))
+		joining.transfer_fingerprints_to(joined)
+		src.transfer_fingerprints_to(joined)
+		joined.set_integrity(joined.integrity_max * ((src.integrity + joining.integrity) + (src.integrity_max + joining.integrity_max)))
+		joined.set_charge(joined.max_charge * ((src.charge + joining.charge) / (src.max_charge + joining.max_charge)))
 		joined.charge = src.charge + joining.charge
 		clickchain.chat_feedback(SPAN_NOTICE("You squeeze both [src]\s together, forming a [joined]."), target = src)
 		qdel(using)
