@@ -53,6 +53,8 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_small; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_small; \
 	cell_type = CELL_TYPE_SMALL; \
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_ARMOR | SUIT_STORAGE_CLASS_HARDWEAR; \
+	slot_flags = SLOT_POCKET; \
 } \
 /obj/item/cell##CELL_TYPEPATH/small/empty { \
 	charge = 0; \
@@ -77,6 +79,7 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_medium; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_medium; \
 	cell_type = CELL_TYPE_MEDIUM; \
+	suit_storage_class = SUIT_STORAGE_CLASS_ARMOR | SUIT_STORAGE_CLASS_HARDWEAR; \
 } \
 /obj/item/cell##CELL_TYPEPATH/medium/empty { \
 	charge = 0; \
@@ -101,6 +104,7 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_large; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_large; \
 	cell_type = CELL_TYPE_LARGE; \
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR; \
 } \
 /obj/item/cell##CELL_TYPEPATH/large/empty { \
 	charge = 0; \
@@ -125,6 +129,8 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_weapon; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_weapon; \
 	cell_type = CELL_TYPE_WEAPON; \
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_ARMOR; \
+	slot_flags = SLOT_POCKET; \
 } \
 /obj/item/cell##CELL_TYPEPATH/weapon/empty { \
 	charge = 0; \
