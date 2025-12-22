@@ -237,7 +237,10 @@
 	else
 		. = clamp(amount, 0, max_charge - charge)
 	charge += .
-	update_icon()
+	if(.)
+		update_icon()
+		// :3 for guns to update, someone find a better solution later
+		loc?.update_icon()
 
 /obj/item/cell/proc/amount_missing()
 	. = max(0, max_charge - charge)

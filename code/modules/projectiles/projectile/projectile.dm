@@ -504,11 +504,9 @@
 	if(isnum(set_angle_to))
 		set_angle(set_angle_to)
 	// handle submunitions - this can qdelete ourselves!
-	var/list/obj/projectile/fired_submunitions = submunitions ? split_into_default_submunitions(TRUE, null, use_direct_target) : null
+	var/list/obj/projectile/fired_submunitions = submunitions ? split_into_default_submunitions(TRUE, null, direct_target, no_source_check) : null
 	if(!QDELETED(src))
 		launch(direct_target, no_source_check)
-	for(var/obj/projectile/submunition as anything in fired_submunitions)
-		submunition.launch(direct_target, no_source_check)
 
 /**
  * Handles actually launching a projectile.
@@ -1239,7 +1237,7 @@
 /**
  * This can qdel() ourselves!
  */
-/obj/projectile/proc/split_into_default_submunitions(fire_immediately, datum/callback/on_submunition_ready, atom/use_direct_target)
+/obj/projectile/proc/split_into_default_submunitions(fire_immediately, datum/callback/on_submunition_ready, atom/use_direct_target, no_source_check)
 	. = split_into_submunitions(
 		submunitions,
 		submunition_type || type,
@@ -1253,6 +1251,7 @@
 		fire_immediately,
 		on_submunition_ready,
 		use_direct_target,
+		no_source_check,
 	)
 	if(submunitions_only)
 		qdel(src)
@@ -1271,10 +1270,12 @@
  * * fire_immediately - fire the split shots.
  * * on_submunition_ready - (optional) callback to execute when a submunition is readied, right before it's fire()'d.
  *                          The callback is executed asynchronously.
+ * * use_direct_target - (optional) invokes PB behavior
+ * * no_source_check - (optional) passed into fire()
  *
  * @return list() of submunitions
  */
-/obj/projectile/proc/split_into_submunitions(amount, path, angular_spread, uniform_angular_spread, linear_spread, uniform_linear_spread, distribute, distribute_mod, distribute_overwrite, fire_immediately, datum/callback/on_submunition_ready, atom/use_direct_target)
+/obj/projectile/proc/split_into_submunitions(amount, path, angular_spread, uniform_angular_spread, linear_spread, uniform_linear_spread, distribute, distribute_mod, distribute_overwrite, fire_immediately, datum/callback/on_submunition_ready, atom/use_direct_target, no_source_check)
 	// we must be fired; otherwise, things don't work right.
 	ASSERT(fired)
 	. = list()
@@ -1304,7 +1305,7 @@
 		split.set_angle(angle + our_angle_mod)
 		on_submunition_ready?.InvokeAsync(split)
 		if(fire_immediately)
-			split.fire(null, use_direct_target)
+			split.fire(null, use_direct_target, no_source_check)
 		. += split
 
 /**
