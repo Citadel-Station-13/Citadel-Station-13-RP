@@ -721,7 +721,7 @@
 
 /obj/projectile/Crossed(atom/movable/AM)
 	if(!impacted)
-		stack_trace("found a non-initialized and/or gc'd projectile. destroying.")
+		STACK_TRACE("found a non-initialized and/or gc'd projectile. destroying.")
 		qdel(src)
 		return
 	..()
