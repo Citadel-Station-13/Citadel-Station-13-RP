@@ -4,4 +4,4 @@
 PROCESSING_SUBSYSTEM_DEF(process_5fps)
 	name = "Processing - 5 FPS"
 	wait = (1 / 5) SECONDS
-	stat_tag = "P5"
+	stat_tag = "P_5"
