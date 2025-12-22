@@ -32,7 +32,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/particl
 	color = "#ff1100"
 	tracer_icon_state = "laser-1"
 	tracer_add_state = TRUE
-	tracer_add_state_alpha = 255
+	tracer_add_state_alpha = 65
 	auto_emissive_strength = 192
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	eyeblur = 2

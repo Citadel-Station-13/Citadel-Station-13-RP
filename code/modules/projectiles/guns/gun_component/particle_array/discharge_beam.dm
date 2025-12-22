@@ -34,7 +34,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	tracer_icon = 'icons/modules/projectiles/projectile-tracer.dmi'
 	tracer_icon_state = "discharge-1"
 	tracer_add_state = TRUE
-	tracer_add_state_alpha = 255
+	tracer_add_state_alpha = 235
 	auto_emissive_strength = 192
 	fire_sound = /datum/soundbyte/guns/energy/taser_2
 	base_projectile_effects = list(
