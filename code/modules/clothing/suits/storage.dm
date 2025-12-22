@@ -5,7 +5,7 @@
 	var/list/insertion_blacklist
 	var/list/insertion_allow
 
-	var/max_single_weight_class = WEIGHT_CLASS_SMALL
+	var/max_single_weight_class = WEIGHT_CLASS_NORMAL
 	var/max_combined_weight_class
 	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 	var/max_items
