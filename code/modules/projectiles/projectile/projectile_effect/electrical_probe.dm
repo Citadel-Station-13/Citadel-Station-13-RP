@@ -14,8 +14,18 @@
 /datum/projectile_effect/electrical_probe/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
 	if(!isliving(target))
 		return impact_flags
-	var/list/shock_results = target.electrocute(0, 0, 0, ELECTROCUTE_ACT_FLAG_SILENT, def_zone, proj)
+	var/list/shock_results = target.electrocute(
+		0,
+		0,
+		0,
+		ELECTROCUTE_ACT_FLAG_SILENT,
+		def_zone,
+		proj,
+	)
 	var/efficiency = shock_results[ELECTROCUTE_ACT_ARG_EFFICIENCY]
 	var/mob/living/living_target = target
-	living_target.apply_status_effect(status_effect_path, status_effect_duration * efficiency)
+	living_target.apply_status_effect(
+		status_effect_path,
+		status_effect_duration * efficienc * proj.projectile_effect_multiplier,
+	)
 	return impact_flags
