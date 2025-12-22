@@ -84,7 +84,7 @@
 	// TODO: make sure these all apply if the prototype updates
 
 	var/typegen_w_class_small = WEIGHT_CLASS_SMALL
-	var/typegen_w_class_weapon = WEIGHT_CLASS_NORMAL
+	var/typegen_w_class_weapon = WEIGHT_CLASS_SMALL
 	var/typegen_w_class_medium = WEIGHT_CLASS_NORMAL
 	var/typegen_w_class_large = WEIGHT_CLASS_BULKY
 
