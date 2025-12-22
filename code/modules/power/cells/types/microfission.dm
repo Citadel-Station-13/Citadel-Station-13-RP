@@ -102,6 +102,13 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 	if(!(datum_flags & DF_ISPROCESSING))
 		START_PROCESSING(SSobj, src)
 
+/obj/item/cell/microfission/set_charge(amount, update)
+	..()
+	if(charge < max_charge)
+		// wake if needed
+		if(!(datum_flags & DF_ISPROCESSING))
+			START_PROCESSING(SSobj, src)
+
 /obj/item/cell/microfission/process(delta_time)
 	..()
 	var/reaction_ratio = 0

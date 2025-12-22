@@ -187,9 +187,7 @@
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
 		severity *= R.cell_emp_mult
-	charge -= charge / (severity + 1)
-	if (charge < 0)
-		charge = 0
+	use(charge / (severity + 1))
 	update_icon()
 
 /obj/item/cell/legacy_ex_act(severity)
