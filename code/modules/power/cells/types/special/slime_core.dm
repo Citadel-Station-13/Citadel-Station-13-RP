@@ -27,7 +27,6 @@
 		src.transfer_fingerprints_to(joined)
 		joined.set_integrity(joined.integrity_max * ((src.integrity + joining.integrity) + (src.integrity_max + joining.integrity_max)))
 		joined.set_charge(joined.max_charge * ((src.charge + joining.charge) / (src.max_charge + joining.max_charge)))
-		joined.charge = src.charge + joining.charge
 		clickchain.chat_feedback(SPAN_NOTICE("You squeeze both [src]\s together, forming a [joined]."), target = src)
 		qdel(using)
 		qdel(src)
