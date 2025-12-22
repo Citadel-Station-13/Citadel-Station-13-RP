@@ -8,21 +8,6 @@
 	max_charge = 300
 	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
-/obj/item/cell/slime
-	name = "charged slime core"
-	desc = "A yellow slime core infused with phoron, it crackles with power."
-	origin_tech = list(TECH_POWER = 4, TECH_BIO = 5)
-	icon = 'icons/mob/slimes.dmi' //'icons/obj/harvest.dmi'
-	icon_state = "yellow slime extract" //"potato_battery"
-	materials_base = null
-	rating = 5
-	max_charge = POWER_CELL_CAPACITY_MEDIUM
-	w_class = WEIGHT_CLASS_SMALL
-	weight_volume = WEIGHT_VOLUME_SMALL
-	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM
-	self_recharge = TRUE
-	self_recharge_amount = STATIC_KW_TO_CELL_UNITS(15, 1)
-
 // todo: this isn't even a fucking cell get it out of here
 //Not actually a cell, but if people look for it, they'll probably look near other cells
 /obj/item/fbp_backup_cell

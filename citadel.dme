@@ -4690,6 +4690,7 @@
 #include "code\modules\power\cells\types\infinite.dm"
 #include "code\modules\power\cells\types\microfission.dm"
 #include "code\modules\power\cells\types\regen.dm"
+#include "code\modules\power\cells\types\special\slime_core.dm"
 #include "code\modules\power\engines\rust\_setup.dm"
 #include "code\modules\power\engines\rust\fusion_circuits.dm"
 #include "code\modules\power\engines\rust\fusion_reactions.dm"
