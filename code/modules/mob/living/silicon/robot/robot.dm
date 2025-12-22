@@ -171,11 +171,14 @@
 	var/bellyup = FALSE
 
 	//* Power *//
+	/// our power cell
+	var/obj/item/cell/cell
 	/// starting cell type
 	var/cell_type = /obj/item/cell/basic/tier_1/large
 	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
-	/// our power cell
-	var/obj/item/cell/cell
+	/// accept cells with no CELL_TYPE field
+	/// * for shit like gunsword
+	var/cell_accept_nonstandard = TRUE
 
 	//* Movement *//
 	/// Base movement speed in tiles / second
@@ -690,8 +693,8 @@
 			to_chat(user, "Close the panel first.")
 		else if(cell)
 			to_chat(user, "There is a power cell already installed.")
-		else if(W.w_class != WEIGHT_CLASS_NORMAL)
-			to_chat(user, "\The [W] is too [W.w_class < WEIGHT_CLASS_NORMAL ? "small" : "large"] to fit here.")
+		else if(!accepts_cell(W, new /datum/event_args/actor(user)))
+			to_chat(user, "\The [W] doesn't fit in [src]'s battery compartment.")
 		else
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
