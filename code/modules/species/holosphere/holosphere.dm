@@ -25,9 +25,9 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_BODY_ALPHA | HAS_HAIR_ALPHA
 	species_flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE | NO_BLOOD | NO_NUTRITION_GAIN
 
-	total_health = 20
+	total_health = 200
 	death_health = 0
-	crit_health = -100 // never happens because you hit death health first, and cant go into crit while dead
+	crit_health = 180 // they turn into their shell at crit, so effectively they have 20 health
 
 	hunger_factor = 0 // doesn't get hungry naturally, but instead when healing they use nutrition
 
@@ -156,34 +156,6 @@
 
 	remove_chameleon_gear()
 
-/datum/species/shapeshifter/holosphere/proc/try_transform(force = FALSE)
-	if(force || !IS_DEAD(holosphere_shell))
-		if(holosphere_shell.hologram.incapacitated(INCAPACITATION_ALL))
-			to_chat(holosphere_shell.hologram, SPAN_WARNING("You can't do that right now!"))
-			return
-
-		holosphere_shell.name = holosphere_shell.hologram.name
-		try_exit_recharge_station()
-		if(transform_component.try_transform())
-			holosphere_shell.hologram.drop_held_items()
-			holosphere_shell.regenerate_icons()
-
-/datum/species/shapeshifter/holosphere/proc/try_untransform(force = FALSE)
-	if(force || !IS_DEAD(holosphere_shell.hologram))
-		try_exit_recharge_station()
-		transform_component.try_untransform()
-
-/mob/living/carbon/human/proc/disable_hologram()
-	set name = "Disable Hologram (Holosphere)"
-	set desc = "Disable your hologram."
-	set category = VERB_CATEGORY_IC
-
-	var/datum/species/shapeshifter/holosphere/holosphere_species = species
-	if(!istype(holosphere_species))
-		return
-
-	holosphere_species.try_transform()
-
 /datum/species/shapeshifter/holosphere/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	into_box?.Add(/obj/item/tool/prybar/red)
 	into_box?.Add(/obj/item/flashlight/flare/survival)
@@ -204,6 +176,7 @@
 		SPECIES_MONKEY_TAJ, SPECIES_MONKEY_AKULA, SPECIES_MONKEY_VULPKANIN,
 		SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN,
 	)
+
 /datum/species/shapeshifter/holosphere/proc/try_exit_recharge_station()
 	var/obj/machinery/recharge_station/shell_station = holosphere_shell.loc
 	var/obj/machinery/recharge_station/hologram_station = holosphere_shell.hologram.loc
