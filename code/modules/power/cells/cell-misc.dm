@@ -14,13 +14,12 @@
 	origin_tech = list(TECH_POWER = 4, TECH_BIO = 5)
 	icon = 'icons/mob/slimes.dmi' //'icons/obj/harvest.dmi'
 	icon_state = "yellow slime extract" //"potato_battery"
-	description_info = "This 'cell' holds a max charge of 10k and self recharges over time."
 	materials_base = null
 	rating = 5
 	max_charge = POWER_CELL_CAPACITY_MEDIUM
 	w_class = WEIGHT_CLASS_SMALL
 	weight_volume = WEIGHT_VOLUME_SMALL
-	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	cell_type = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM
 	self_recharge = TRUE
 	self_recharge_amount = STATIC_KW_TO_CELL_UNITS(15, 1)
 
