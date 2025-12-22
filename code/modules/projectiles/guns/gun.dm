@@ -50,7 +50,8 @@
 	item_state = "gun"
 	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_ARMOR
+	// Fuck it YOLO guns go everywhere now because it's pointless arguing at this point, maybe this'll be re-evaluated later.
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_ARMOR
 	materials_base = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS
 	w_class = WEIGHT_CLASS_NORMAL
