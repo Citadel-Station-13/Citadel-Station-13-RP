@@ -504,7 +504,8 @@
 	if(isnum(set_angle_to))
 		set_angle(set_angle_to)
 	// handle submunitions - this can qdelete ourselves!
-	var/list/obj/projectile/fired_submunitions = submunitions ? split_into_default_submunitions(TRUE, null, direct_target, no_source_check) : null
+	if(submunitions)
+		plit_into_default_submunitions(TRUE, null, direct_target, no_source_check)
 	if(!QDELETED(src))
 		launch(direct_target, no_source_check)
 
