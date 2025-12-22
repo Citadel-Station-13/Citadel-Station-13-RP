@@ -26,9 +26,8 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/particl
 	damage_type = DAMAGE_TYPE_BURN
 	damage_flag = ARMOR_LASER
 	damage_tier = 3.75
-	damage_force = 30
+	damage_force = 35
 	projectile_type = PROJECTILE_TYPE_ENERGY | PROJECTILE_TYPE_PHOTONIC
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
-	color = "#ff1100"
 	auto_emissive_strength = 192
 	fire_sound = /datum/soundbyte/guns/energy/laser_1

@@ -10,7 +10,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	selection_name = "discharge bolt"
 	render_color = "#ffff00"
 	base_charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge / 12
-	base_delay_add = 0.35 SECONDS
+	base_delay_add = 0.25 SECONDS
 
 	materials_base = list(
 		/datum/prototype/material/steel::id = 500,
@@ -31,7 +31,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	damage_force = 0
 	projectile_type = PROJECTILE_TYPE_BEAM | PROJECTILE_TYPE_ENERGY
 	impact_sound = PROJECTILE_IMPACT_SOUNDS_ENERGY
-	color = "#f5ed00"
 	auto_emissive_strength = 192
 	fire_sound = /datum/soundbyte/guns/energy/taser_2
 	base_projectile_effects = list(

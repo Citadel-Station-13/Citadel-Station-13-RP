@@ -10,7 +10,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	selection_name = "discharge beam"
 	render_color = "#ffff00"
 	base_charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge / 12
-	base_delay_add = 0.35 SECONDS
+	base_delay_add = 0.3 SECONDS
 
 	materials_base = list(
 		/datum/prototype/material/steel::id = 500,
@@ -34,7 +34,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/particle_array/dischar
 	tracer_icon = 'icons/modules/projectiles/projectile-tracer.dmi'
 	tracer_icon_state = "discharge-1"
 	tracer_add_state = TRUE
-	tracer_add_state_alpha = 192
+	tracer_add_state_alpha = 255
 	auto_emissive_strength = 192
 	fire_sound = /datum/soundbyte/guns/energy/taser_2
 	base_projectile_effects = list(

@@ -57,7 +57,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun_component/focusing_lens/divide_b
 	divide_by = 3
 	cheat_factor = 1.2
 	cooldown_multiplier = 1.5
-	power_consumption_multiplier = 1.25
+	power_consumption_multiplier = 1.2
 
 	materials_base = list(
 		/datum/prototype/material/steel::id = 500,

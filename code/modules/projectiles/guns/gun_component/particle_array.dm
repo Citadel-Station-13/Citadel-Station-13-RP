@@ -4,12 +4,15 @@
 /datum/prototype/design/generated/gun_component/particle_array
 	abstract_type = /datum/prototype/design/generated/gun_component/particle_array
 
+/**
+ * ## Warning - Caveats
+ * * Component signal hooks currently always fire, even if this isn't the active array.
+ */
 /obj/item/gun_component/particle_array
 	name = "weapon particle array"
 	desc = "A nondescript particle array used in energy weapons."
 	icon = 'icons/modules/projectiles/components/particle_array.dmi'
 	component_slot = GUN_COMPONENT_PARTICLE_ARRAY
-	hook_iteration_pre_fire = TRUE
 
 	/// base charge cost in cell units
 	var/base_charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge / 24
@@ -28,18 +31,16 @@
 	/// projectile type
 	var/projectile_type
 
-/obj/item/gun_component/particle_array/on_firing_cycle_iteration(datum/gun_firing_cycle/cycle)
-	..()
+/**
+ * Consume next projectile hook
+ */
+/obj/item/gun_component/particle_array/proc/consume_next_projectile(datum/gun_firing_cycle/cycle)
+	// appliy delay if needed
 	// sorry no subtracting with add! that can result in weird shit happening.
 	if(cycle.cycle_iterations_fired == 1 && base_delay_add > 0)
 		// first one, inject base delay
 		cycle.firing_delay += base_delay_add
 		cycle.overall_cooldown_adjust += base_delay_add
-
-/**
- * Consume next projectile hook
- */
-/obj/item/gun_component/particle_array/proc/consume_next_projectile(datum/gun_firing_cycle/cycle)
 	var/effective_power_use = base_charge_cost * cycle.next_projectile_cost_multiplier
 	if(effective_power_use)
 		if(!installed.modular_use_checked_power(src, effective_power_use))
