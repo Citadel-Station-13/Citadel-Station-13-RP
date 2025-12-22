@@ -17,7 +17,7 @@
 /// How much padding to give to edges
 #define VOLUMETRIC_STORAGE_EDGE_PADDING 0
 /// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
-#define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO_MIN 4
+#define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 8
 /// An attempt to make smaller containers not too tiny.
 #define VOLUMETRIC_STORAGE_MINIMUM_TILES 4
 
@@ -68,12 +68,12 @@
 
 //* Volumetrics - Default Item Volumes *//
 
-#define WEIGHT_VOLUME_TINY				1
-#define WEIGHT_VOLUME_SMALL			2
-#define WEIGHT_VOLUME_NORMAL			8
-#define WEIGHT_VOLUME_BULKY			16
-#define WEIGHT_VOLUME_HUGE				32
-#define WEIGHT_VOLUME_GIGANTIC			64
+#define WEIGHT_VOLUME_TINY				0.5
+#define WEIGHT_VOLUME_SMALL			1
+#define WEIGHT_VOLUME_NORMAL			4
+#define WEIGHT_VOLUME_BULKY			8
+#define WEIGHT_VOLUME_HUGE				16
+#define WEIGHT_VOLUME_GIGANTIC			32
 
 GLOBAL_REAL_LIST(w_class_to_volume) = list(
 	WEIGHT_VOLUME_TINY,

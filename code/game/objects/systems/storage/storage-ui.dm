@@ -170,7 +170,7 @@
 	// effective max scales up if we're overrunning
 	var/effective_max_volume = max(max_combined_volume, cached_combined_volume)
 	// see if we're trying to render a small container
-	var/requested_pixels = effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO_MIN
+	var/requested_pixels = effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO
 	// clamp it
 	rendering_width_in_pixels = clamp(
 		requested_pixels,

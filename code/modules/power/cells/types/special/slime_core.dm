@@ -50,7 +50,7 @@
 		split2.set_integrity(split_integrity)
 		var/split_charge = split1.max_charge * (charge / max_charge)
 		split1.set_charge(split_charge)
-		split1.set_charge(split_charge)
+		split2.set_charge(split_charge)
 		clickchain.chat_feedback(SPAN_NOTICE("You squeeze through [src]'s middle, splitting it into two [split1]\s."), target = src)
 		qdel(src)
 		// TODO: check telekinesis
