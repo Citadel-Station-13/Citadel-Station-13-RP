@@ -9923,6 +9923,7 @@
 /obj/structure/sink/kitchen{
 	pixel_y = 28
 	},
+/obj/structure/reagent_dispensers/watertank/high,
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "Kl" = (
