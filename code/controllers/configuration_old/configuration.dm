@@ -390,9 +390,6 @@
 				if("load_jobs_from_txt")
 					load_jobs_from_txt = 1
 
-				if("allow_holidays")
-					Holiday = 1
-
 				if("ticklag")
 					var/ticklag = text2num(value)
 					if(ticklag > 0)

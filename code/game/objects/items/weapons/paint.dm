@@ -26,10 +26,10 @@ var/global/list/cached_icons = list()
 	else
 		return ..()
 
-/obj/item/reagent_containers/glass/paint/New()
+/obj/item/reagent_containers/glass/paint/Initialize(mapload)
 	if(paint_type && length(paint_type) > 0)
 		name = paint_type + " " + name
-	..()
+	. = ..()
 	reagents.add_reagent("water", volume*3/5)
 	reagents.add_reagent("plasticide", volume/5)
 	if(paint_type == "white") //why don't white crayons exist

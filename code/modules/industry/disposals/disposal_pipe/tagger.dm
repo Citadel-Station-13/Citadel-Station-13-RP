@@ -15,10 +15,11 @@
 	else
 		name = initial(name)
 
-/obj/structure/disposalpipe/tagger/New()
+/obj/structure/disposalpipe/tagger/Initialize(mapload, dir)
 	. = ..()
-	dpdir = dir | turn(dir, 180)
-	if(sort_tag) GLOB.tagger_locations |= sort_tag
+	dpdir = src.dir | turn(src.dir, 180)
+	if(sort_tag)
+		GLOB.tagger_locations |= sort_tag
 	updatename()
 	updatedesc()
 

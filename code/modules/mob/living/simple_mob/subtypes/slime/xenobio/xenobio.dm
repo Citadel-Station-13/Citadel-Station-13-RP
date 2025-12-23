@@ -27,12 +27,9 @@
 	ASSERT(ispath(ai_holder_type, /datum/ai_holder/polaris/simple_mob/xenobio_slime))
 	number = rand(1, 1000)
 	update_name()
-
 	. = ..() // This will make the AI and do the other mob constructor things. It will also return the default hint at the end.
-
 	if(my_predecessor)
 		inherit_information(my_predecessor)
-
 
 /mob/living/simple_mob/slime/xenobio/Destroy()
 	if(victim)
@@ -55,7 +52,6 @@
 	AI.obedience = max(previous_AI.obedience - 1, 0)
 	AI.resentment = max(previous_AI.resentment - 1, 0)
 	AI.rabid = previous_AI.rabid
-
 
 /mob/living/simple_mob/slime/xenobio/update_icon()
 	icon_living = "[icon_state_override ? "[icon_state_override] slime" : "slime"] [is_adult ? "adult" : "baby"][victim ? " eating" : ""]"

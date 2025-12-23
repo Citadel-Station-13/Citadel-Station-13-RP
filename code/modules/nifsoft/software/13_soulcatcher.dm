@@ -135,11 +135,11 @@
 		return
 	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
-	var/maybe_sender_name = skip_name ? "" : "<b>[sender_name]</b> "
+	var/maybe_sender_name = skip_name ? "" : "<b>[sender_name]</b>[message[1] == "'" ? "" : " "]"
 
 	//AR Projecting
 	if(eyeobj)
-		sender.eyeobj.visible_message("[sender_name] [message]")
+		sender.eyeobj.visible_message("[maybe_sender_name][message]")
 
 	//Not AR Projecting
 	else

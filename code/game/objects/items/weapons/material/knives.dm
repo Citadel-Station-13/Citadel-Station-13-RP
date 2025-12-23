@@ -174,6 +174,10 @@
 /obj/item/material/knife/machete/armblade/hardsuit
 	var/obj/item/hardsuit_module/armblade/storing_module
 
+/obj/item/material/knife/machete/armblade/hardsuit/Destroy()
+	storing_module = null
+	return ..()
+
 /obj/item/material/knife/machete/armblade/hardsuit/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(storing_module)

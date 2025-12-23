@@ -245,7 +245,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/power/turbinemotor/LateInitialize()
-	. = ..()
 	updateConnection()
 
 /obj/machinery/power/turbinemotor/proc/updateConnection()

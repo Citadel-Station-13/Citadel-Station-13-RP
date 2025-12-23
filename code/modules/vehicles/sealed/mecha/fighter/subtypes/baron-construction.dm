@@ -4,10 +4,9 @@
 
 	origin_tech = list(TECH_MATERIAL = 2)
 
-/obj/item/vehicle_chassis/fighter/baron/New()
-	..()
+/obj/item/vehicle_chassis/fighter/baron/Initialize(mapload)
 	construct = new /datum/construction/mecha/fighter/baron_chassis(src)
-
+	return ..()
 
 /obj/item/vehicle_part/fighter/baron_core
 	name="\improper Baron Core"

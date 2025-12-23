@@ -4,10 +4,9 @@
 
 	origin_tech = list(TECH_MATERIAL = 2)
 
-/obj/item/vehicle_chassis/fighter/duke/New()
-	..()
+/obj/item/vehicle_chassis/fighter/duke/Initialize(mapload)
 	construct = new /datum/construction/mecha/fighter/duke_chassis(src)
-
+	return ..()
 
 /obj/item/vehicle_part/fighter/duke_core
 	name="\improper Duke Core"

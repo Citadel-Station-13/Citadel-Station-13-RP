@@ -1,4 +1,4 @@
-/proc/atom_emote(atom/A as atom in world)
+/proc/atom_emote(atom/A as mob|obj in world)
 	set name = "Atom Emote"
 	set category = VERB_CATEGORY_OBJECT
 

@@ -20,6 +20,11 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	var/atom/holder
 	var/setup = 0
 
+/datum/effect_system/Destroy()
+	holder = null
+	location = null
+	return..()
+
 /datum/effect_system/proc/set_up(n = 3, c = 0, turf/loc)
 	if(n > 10)
 		n = 10
@@ -148,7 +153,8 @@ steam.start() -- spawns the effect
 				direction = pick(GLOB.alldirs)
 			for(i=0, i<pick(1,2,3), i++)
 				sleep(5)
-				step(sparks,direction)
+				if(isloc(sparks.loc) && !QDELETED(sparks))
+					step(sparks,direction)
 			spawn(20)
 				src.total_sparks--
 
@@ -328,9 +334,12 @@ steam.start() -- spawns the effect
 					direction = pick(GLOB.alldirs)
 			for(i=0, i<pick(0,1,1,1,2,2,2,3), i++)
 				sleep(10)
+				if(QDELETED(smoke))
+					break
 				step(smoke,direction)
 			spawn(smoke.time_to_live*0.75+rand(10,30))
-				if (smoke) qdel(smoke)
+				if (smoke)
+					qdel(smoke)
 				src.total_smoke--
 
 /datum/effect_system/smoke_spread/bad

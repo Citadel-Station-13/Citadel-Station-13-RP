@@ -94,6 +94,14 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
 
+/mob/living/simple_mob/construct/Initialize(mapload)
+	. = ..()
+	name = "[initial(name)] ([rand(1, 1000)])"
+	real_name = name
+	for(var/spell in construct_spells)
+		src.add_spell(new spell, "const_spell_ready")
+	updateicon()
+
 /mob/living/simple_mob/construct/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
 		return 0
@@ -126,14 +134,6 @@
 
 /mob/living/simple_mob/construct/cultify()
 	return
-
-/mob/living/simple_mob/construct/Initialize(mapload)
-	. = ..()
-	name = "[initial(name)] ([rand(1, 1000)])"
-	real_name = name
-	for(var/spell in construct_spells)
-		src.add_spell(new spell, "const_spell_ready")
-	updateicon()
 
 /*
 /mob/living/simple_mob/construct/update_icon()

@@ -154,6 +154,7 @@
 
 GLOBAL_LIST_EMPTY(buildholders)
 
+INITIALIZE_IMMEDIATE(/obj/effect/bmode/buildholder)
 /obj/effect/bmode/buildholder
 	density = 0
 	anchored = 1
@@ -165,7 +166,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 	var/atom/movable/throw_atom = null
 	var/list/selected_mobs = list()
 
-/obj/effect/bmode/buildholder/New()
+/obj/effect/bmode/buildholder/Initialize(mapload)
 	GLOB.buildholders += src
 	return ..()
 

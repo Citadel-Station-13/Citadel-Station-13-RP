@@ -18,69 +18,6 @@ var/list/blob_cores = list()
 	var/point_rate = 2
 	var/ai_controlled = TRUE
 
-// Spawn this if you want a ghost to be able to play as the blob.
-/obj/structure/blob/core/player
-	ai_controlled = FALSE
-
-// Spawn these if you want a semi-random blob.
-/obj/structure/blob/core/random_easy
-	difficulty_threshold = BLOB_DIFFICULTY_EASY
-
-/obj/structure/blob/core/random_medium
-	difficulty_threshold = BLOB_DIFFICULTY_MEDIUM
-
-/obj/structure/blob/core/random_hard
-	difficulty_threshold = BLOB_DIFFICULTY_HARD
-
-// Spawn these if you want a specific blob.
-/obj/structure/blob/core/blazing_oil
-	desired_blob_type = /datum/blob_type/blazing_oil
-
-/obj/structure/blob/core/grey_goo
-	desired_blob_type = /datum/blob_type/grey_goo
-
-/obj/structure/blob/core/fabrication_swarm
-	desired_blob_type = /datum/blob_type/fabrication_swarm
-
-/obj/structure/blob/core/electromagnetic_web
-	desired_blob_type = /datum/blob_type/electromagnetic_web
-
-/obj/structure/blob/core/fungal_bloom
-	desired_blob_type = /datum/blob_type/fungal_bloom
-
-/obj/structure/blob/core/fulminant_organism
-	desired_blob_type = /datum/blob_type/fulminant_organism
-
-/obj/structure/blob/core/reactive_spines
-	desired_blob_type = /datum/blob_type/reactive_spines
-
-/obj/structure/blob/core/synchronous_mesh
-	desired_blob_type = /datum/blob_type/synchronous_mesh
-
-/obj/structure/blob/core/shifting_fragments
-	desired_blob_type = /datum/blob_type/shifting_fragments
-
-/obj/structure/blob/core/cryogenic_goo
-	desired_blob_type = /datum/blob_type/cryogenic_goo
-
-/obj/structure/blob/core/energized_jelly
-	desired_blob_type = /datum/blob_type/energized_jelly
-
-/obj/structure/blob/core/explosive_lattice
-	desired_blob_type = /datum/blob_type/explosive_lattice
-
-/obj/structure/blob/core/pressurized_slime
-	desired_blob_type = /datum/blob_type/pressurized_slime
-
-/obj/structure/blob/core/radioactive_ooze
-	desired_blob_type = /datum/blob_type/radioactive_ooze
-
-/obj/structure/blob/core/volatile_alluvium
-	desired_blob_type = /datum/blob_type/volatile_alluvium
-
-/obj/structure/blob/core/classic
-	desired_blob_type = /datum/blob_type/classic
-
 /obj/structure/blob/core/Initialize(mapload, client/new_overmind, new_rate = 2, placed = FALSE)
 	. = ..()
 	blob_cores += src
@@ -94,10 +31,7 @@ var/list/blob_cores = list()
 
 /obj/structure/blob/core/Destroy()
 	blob_cores -= src
-	if(overmind)
-		overmind.blob_core = null
-		qdel(overmind)
-	overmind = null
+	QDEL_NULL(overmind)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -188,3 +122,66 @@ var/list/blob_cores = list()
 			continue
 		valid_types += BT
 	return pick(valid_types)
+
+// Spawn this if you want a ghost to be able to play as the blob.
+/obj/structure/blob/core/player
+	ai_controlled = FALSE
+
+// Spawn these if you want a semi-random blob.
+/obj/structure/blob/core/random_easy
+	difficulty_threshold = BLOB_DIFFICULTY_EASY
+
+/obj/structure/blob/core/random_medium
+	difficulty_threshold = BLOB_DIFFICULTY_MEDIUM
+
+/obj/structure/blob/core/random_hard
+	difficulty_threshold = BLOB_DIFFICULTY_HARD
+
+// Spawn these if you want a specific blob.
+/obj/structure/blob/core/blazing_oil
+	desired_blob_type = /datum/blob_type/blazing_oil
+
+/obj/structure/blob/core/grey_goo
+	desired_blob_type = /datum/blob_type/grey_goo
+
+/obj/structure/blob/core/fabrication_swarm
+	desired_blob_type = /datum/blob_type/fabrication_swarm
+
+/obj/structure/blob/core/electromagnetic_web
+	desired_blob_type = /datum/blob_type/electromagnetic_web
+
+/obj/structure/blob/core/fungal_bloom
+	desired_blob_type = /datum/blob_type/fungal_bloom
+
+/obj/structure/blob/core/fulminant_organism
+	desired_blob_type = /datum/blob_type/fulminant_organism
+
+/obj/structure/blob/core/reactive_spines
+	desired_blob_type = /datum/blob_type/reactive_spines
+
+/obj/structure/blob/core/synchronous_mesh
+	desired_blob_type = /datum/blob_type/synchronous_mesh
+
+/obj/structure/blob/core/shifting_fragments
+	desired_blob_type = /datum/blob_type/shifting_fragments
+
+/obj/structure/blob/core/cryogenic_goo
+	desired_blob_type = /datum/blob_type/cryogenic_goo
+
+/obj/structure/blob/core/energized_jelly
+	desired_blob_type = /datum/blob_type/energized_jelly
+
+/obj/structure/blob/core/explosive_lattice
+	desired_blob_type = /datum/blob_type/explosive_lattice
+
+/obj/structure/blob/core/pressurized_slime
+	desired_blob_type = /datum/blob_type/pressurized_slime
+
+/obj/structure/blob/core/radioactive_ooze
+	desired_blob_type = /datum/blob_type/radioactive_ooze
+
+/obj/structure/blob/core/volatile_alluvium
+	desired_blob_type = /datum/blob_type/volatile_alluvium
+
+/obj/structure/blob/core/classic
+	desired_blob_type = /datum/blob_type/classic

@@ -62,7 +62,7 @@
 
 /obj/structure/trash_pile/attack_generic(mob/user)
 	//Simple Animal
-	if(isanimal(user))
+	if(isanimal_legacy_this_is_broken(user))
 		var/mob/living/L = user
 		//They're in it, and want to get out.
 		if(L.loc == src)
@@ -305,7 +305,3 @@
 	. = ..()
 	var/atom/A = get_holder_at_turf_level(src)
 	A.visible_message("[.] crawls out of \the [src].")
-
-/obj/structure/mob_spawner/pest_nest/get_death_report(var/mob/living/L)
-	..()
-	last_spawn = rand(world.time - spawn_delay, world.time)
