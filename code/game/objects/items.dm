@@ -117,18 +117,6 @@
 	var/obj/item/worn_inside
 	/// suppress auto inventory hooks in forceMove
 	var/worn_hook_suppressed = FALSE
-	/// Suit storage classes
-	var/suit_storage_class = NONE
-	/// Suit storage classes to allow
-	var/suit_storage_class_allow = NONE
-	/// Suit storage classes to disallow
-	var/suit_storage_class_disallow = NONE
-	/// Suit storage override type-list
-	/// * only for adminbus really
-	VAR_PRIVATE/list/suit_storage_types_allow_override
-	/// Suit storage override type-list
-	/// * only for adminbus really
-	VAR_PRIVATE/list/suit_storage_types_disallow_override
 
 	//* Environmentals *//
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags.
@@ -164,6 +152,26 @@
 	/// storage cost for volumetric storage
 	/// null to default to weight class
 	var/weight_volume
+
+	//* Storage - Belts *//
+	/// Belt storage class
+	var/belt_storage_class = BELT_CLASS_INVALID
+	/// Belt storage size
+	var/belt_storage_size = BELT_SIZE_DEFAULT
+
+	//* Storage - Suit Storage *//
+	/// Suit storage classes
+	var/suit_storage_class = NONE
+	/// Suit storage classes to allow
+	var/suit_storage_class_allow = NONE
+	/// Suit storage classes to disallow
+	var/suit_storage_class_disallow = NONE
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_allow_override
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_disallow_override
 
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite

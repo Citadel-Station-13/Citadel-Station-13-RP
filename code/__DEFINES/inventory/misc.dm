@@ -7,6 +7,24 @@
 /// relocated; return false
 #define ITEM_RELOCATED_BY_DROPPED -1
 
+//* Item `belt_storage_class` defines *//
+
+/// Doesn't go in a belt
+#define BELT_CLASS_INVALID 0
+/// small grenades, pill bottles, syringes, pistol mags, etc
+#define BELT_CLASS_SMALL 1
+/// rifle mags, welding torches, crowbars, etc
+#define BELT_CLASS_MEDIUM 2
+/// sidearms, rpds, etc
+#define BELT_CLASS_LARGE 3
+
+// TODO: DECLARE_ENUM
+
+//* Item `belt_storage_size` defines *//
+
+/// Default belt size for items
+#define BELT_SIZE_DEFAULT 1
+
 //* Item `suit_storage_class` defines *//
 
 #define SUIT_STORAGE_CLASS_HARDWEAR (1<<0)
