@@ -12,6 +12,7 @@
 	throw_force = 7
 	atom_flags = NOCONDUCT
 	w_class = WEIGHT_CLASS_NORMAL
+	belt_storage_class = BELT_CLASS_LARGE
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
 	origin_tech = list(TECH_COMBAT = 2)

@@ -24,6 +24,14 @@
 
 /// Default belt size for items
 #define BELT_SIZE_DEFAULT 1
+/// Default belt size for ammo casings
+#define BELT_SIZE_AMMO_CASING 0.25
+/// Default magazine size
+#define BELT_SIZE_MAGAZINE 1
+/// Default flashlight size
+#define BELT_SIZE_FLASHLIGHT 1
+#define BELT_SIZE_SYRINGE 0.25
+#define BELT_SIZE_PILL 0.25
 
 //* Item `suit_storage_class` defines *//
 

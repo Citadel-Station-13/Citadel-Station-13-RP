@@ -10,6 +10,7 @@
 	icon_state = "switchtool"
 	item_state = "switchtool"
 	desc = "A multi-deployable, multi-instrument, finely crafted multi-purpose tool. The envy of engineers everywhere."
+	belt_storage_class = BELT_CLASS_SMALL
 	siemens_coefficient = 1
 	damage_force = 3
 	w_class = WEIGHT_CLASS_SMALL

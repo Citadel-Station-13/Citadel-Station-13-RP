@@ -4,6 +4,7 @@
 	desc = "This injects the person with DNA."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "dnainjector"
+	belt_storage_class = BELT_CLASS_SMALL
 	var/block=0
 	var/datum/dna2/record/buf
 	var/s_time = 10.0

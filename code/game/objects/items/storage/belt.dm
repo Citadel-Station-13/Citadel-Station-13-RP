@@ -15,6 +15,15 @@
 	worth_intrinsic = 50
 	var/show_above_suit = 0
 
+	storage_datum_path = /datum/object_system/storage/belt
+	var/set_max_combined_belt_small
+	var/set_max_combined_belt_medium
+	var/set_max_combined_belt_large
+
+/obj/item/storage/belt/Initialize(mapload, empty)
+	. = ..()
+	#warn deal with set_max_combined_*
+
 /obj/item/storage/belt/verb/toggle_layer()
 	set name = "Switch Belt Layer"
 	set category = VERB_CATEGORY_OBJECT
@@ -45,111 +54,13 @@
 		var/mob/M = src.loc
 		M.update_inv_belt()
 
-/obj/item/storage/belt/utility
-	name = "tool-belt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
-	desc = "Can hold various tools."
-	icon_state = "utility"
-	item_state = "utility"
-	insertion_whitelist = list(
-		///obj/item/combitool,
-		/obj/item/tool/crowbar,
-		/obj/item/tool/screwdriver,
-		/obj/item/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/multitool,
-		/obj/item/flashlight,
-		/obj/item/cell/device,
-		/obj/item/stack/cable_coil,
-		/obj/item/t_scanner,
-		/obj/item/atmos_analyzer,
-		/obj/item/clothing/glasses,
-		/obj/item/clothing/gloves,
-		/obj/item/pda,
-		/obj/item/megaphone,
-		/obj/item/barrier_tape_roll,
-		/obj/item/radio/headset,
-		/obj/item/robotanalyzer,
-		/obj/item/material/minihoe,
-		/obj/item/material/knife/machete/hatchet,
-		/obj/item/plant_analyzer,
-		/obj/item/extinguisher/mini,
-		/obj/item/duct_tape_roll,
-		/obj/item/switchtool,
-		/obj/item/integrated_electronics/wirer,
-		/obj/item/integrated_electronics/debugger,
-		)
-
-/obj/item/storage/belt/utility/full
-	starts_with = list(
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/wrench,
-		/obj/item/weldingtool,
-		/obj/item/tool/crowbar,
-		/obj/item/tool/wirecutters,
-		/obj/item/stack/cable_coil/random_belt
-	)
-
-/obj/item/storage/belt/utility/atmostech
-	starts_with = list(
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/wrench,
-		/obj/item/weldingtool,
-		/obj/item/tool/crowbar,
-		/obj/item/tool/wirecutters,
-	)
-
-/obj/item/storage/belt/utility/chief
-	name = "chief engineer's toolbelt"
-	desc = "Holds tools, looks snazzy."
-	icon_state = "utilitybelt_ce"
-	item_state = "utility_ce"
-
-/obj/item/storage/belt/utility/chief/full
-	starts_with = list(
-		/obj/item/tool/screwdriver/power,
-		/obj/item/tool/crowbar/power,
-		/obj/item/weldingtool/experimental,
-		/obj/item/multitool,
-		/obj/item/stack/cable_coil/random_belt,
-		/obj/item/extinguisher/mini,
-		/obj/item/atmos_analyzer/longrange
-	)
-
+#warn below
 /obj/item/storage/belt/medical
 	name = "medical belt"
 	desc = "Can hold various medical equipment."
 	icon_state = "medical"
 	insertion_whitelist = list(
-		/obj/item/healthanalyzer,
-		/obj/item/dnainjector,
-		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/reagent_containers/pill,
-		/obj/item/reagent_containers/syringe,
-		/obj/item/storage/quickdraw/syringe_case,
-		/obj/item/flame/lighter/zippo,
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/storage/pill_bottle,
-		/obj/item/stack/medical,
-		/obj/item/radio/headset,
-		/obj/item/pda,
-		/obj/item/barrier_tape_roll,
-		/obj/item/megaphone,
-		/obj/item/clothing/mask/surgical,
-		/obj/item/clothing/head/surgery,
-		/obj/item/clothing/gloves,
-		/obj/item/reagent_containers/hypospray,
-		/obj/item/hypospray,
-		/obj/item/reagent_containers/glass/hypovial,
-		/obj/item/clothing/glasses,
-		/obj/item/tool/crowbar,
-		/obj/item/flashlight,
 		/obj/item/cell/device,
-		/obj/item/extinguisher/mini,
-		/obj/item/switchtool/surgery,
-		/obj/item/storage/quickdraw/syringe_case
 		)
 
 /obj/item/storage/belt/medical/emt
@@ -164,40 +75,8 @@
 	max_items = 7
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(
-		/obj/item/tape_recorder,
-		/obj/item/barrier_tape_roll,
-		/obj/item/clothing/glasses,
-		/obj/item/flashlight,
 		/obj/item/cell/device,
-		/obj/item/reagent_containers/spray/luminol,
-		/obj/item/sample,
-		/obj/item/forensics/sample_kit/powder,
-		/obj/item/forensics/swab,
-		/obj/item/uv_light,
-		/obj/item/forensics/sample_kit,
-		/obj/item/photo,
-		/obj/item/camera_film,
-		/obj/item/camera,
-		/obj/item/autopsy_scanner,
-		/obj/item/mass_spectrometer,
-		/obj/item/clothing/accessory/badge,
-		/obj/item/reagent_scanner,
-		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/syringe,
-		/obj/item/pda,
-		/obj/item/hailer,
-		/obj/item/megaphone,
-		/obj/item/radio/headset,
-		/obj/item/clothing/gloves,
-		/obj/item/barrier_tape_roll,
-		/obj/item/reagent_containers/spray/pepper,
-		/obj/item/handcuffs,
-		/obj/item/flash,
-		/obj/item/flame/lighter,
 		/obj/item/reagent_containers/food/snacks/donut/,
-		/obj/item/ammo_magazine,
-		/obj/item/gun/projectile/ballistic/colt/detective,
-		/obj/item/holowarrant
 		)
 
 /obj/item/storage/belt/explorer
@@ -208,52 +87,11 @@
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 	show_above_suit = 1
 	insertion_whitelist = list(
-		/obj/item/grenade,
-		/obj/item/tool/crowbar,
-		/obj/item/tool/screwdriver,
-		/obj/item/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
 		/obj/item/pickaxe/,
-		/obj/item/multitool,
-		/obj/item/stack/cable_coil,
-		/obj/item/t_scanner,
-		/obj/item/atmos_analyzer,
-		/obj/item/flashlight,
 		/obj/item/cell/device,
 		/obj/item/cell/device/weapon,
 		/obj/item/material/butterfly,
 		/obj/item/material/knife,
-		/obj/item/melee/transforming/energy/sword,
-		/obj/item/shield/transforming/energy,
-		/obj/item/ammo_casing/,
-		/obj/item/ammo_magazine/,
-		/obj/item/storage/box/beanbags,
-		/obj/item/storage/box/shotgunammo,
-		/obj/item/storage/box/shotgunshells,
-		/obj/item/healthanalyzer,
-		/obj/item/robotanalyzer,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/reagent_containers/syringe,
-		/obj/item/reagent_containers/hypospray,
-		/obj/item/hypospray,
-		/obj/item/storage/pill_bottle,
-		/obj/item/stack/medical,
-		/obj/item/stack/marker_beacon,
-		/obj/item/flashlight,
-		/obj/item/extinguisher/mini,
-		/obj/item/storage/quickdraw/syringe_case,
-		/obj/item/photo,
-		/obj/item/camera_film,
-		/obj/item/camera,
-		/obj/item/tape_recorder,
-		/obj/item/barrier_tape_roll,
-		/obj/item/healthanalyzer,
-		/obj/item/geiger_counter,
-		/obj/item/gps,
-		/obj/item/switchtool,
-		/obj/item/ano_scanner
 		)
 
 /obj/item/storage/belt/soulstone
@@ -268,24 +106,6 @@
 /obj/item/storage/belt/soulstone/full
 	starts_with = list(/obj/item/soulstone = 6)
 
-/obj/item/storage/belt/utility/alien
-	name = "alien belt"
-	desc = "A belt(?) that can hold things."
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "belt"
-	item_state = "security"
-
-/obj/item/storage/belt/utility/alien/full
-	starts_with = list(
-		/obj/item/tool/screwdriver/alien,
-		/obj/item/tool/wrench/alien,
-		/obj/item/weldingtool/alien,
-		/obj/item/tool/crowbar/alien,
-		/obj/item/tool/wirecutters/alien,
-		/obj/item/multitool/alien,
-		/obj/item/stack/cable_coil/alien
-	)
-
 /obj/item/storage/belt/medical/alien
 	name = "alien belt"
 	desc = "A belt(?) that can hold things."
@@ -294,32 +114,8 @@
 	item_state = "security"
 	max_items = 8
 	insertion_whitelist = list(
-		/obj/item/healthanalyzer,
-		/obj/item/dnainjector,
-		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/reagent_containers/pill,
-		/obj/item/reagent_containers/syringe,
-		/obj/item/flame/lighter/zippo,
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/storage/pill_bottle,
-		/obj/item/stack/medical,
-		/obj/item/radio/headset,
-		/obj/item/pda,
-		/obj/item/barrier_tape_roll,
-		/obj/item/megaphone,
-		/obj/item/clothing/mask/surgical,
-		/obj/item/clothing/head/surgery,
-		/obj/item/clothing/gloves,
-		/obj/item/reagent_containers/hypospray,
-		/obj/item/hypospray,
-		/obj/item/clothing/glasses,
-		/obj/item/tool/crowbar,
-		/obj/item/flashlight,
 		/obj/item/cell/device,
 		/obj/item/extinguisher/mini,
-		/obj/item/surgical
 		)
 
 /obj/item/storage/belt/medical/alien
@@ -374,22 +170,7 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	worth_intrinsic = 35
 	insertion_whitelist = list(
-		/obj/item/clothing/glasses,
-		/obj/item/flashlight,
 		/obj/item/cell/device,
-		/obj/item/grenade,
-		/obj/item/pda,
-		/obj/item/radio/headset,
-		/obj/item/clothing/gloves,
-		/obj/item/clothing/mask/surgical, //sterile mask,
-		/obj/item/assembly/mousetrap,
-		/obj/item/light/bulb,
-		/obj/item/light/tube,
-		/obj/item/flame/lighter,
-		/obj/item/megaphone,
-		/obj/item/barrier_tape_roll,
-		/obj/item/reagent_containers/spray,
-		/obj/item/soap
 		)
 
 /obj/item/storage/belt/archaeology
@@ -398,33 +179,8 @@
 	icon_state = "gear"
 	worth_intrinsic = 65
 	insertion_whitelist = list(
-		/obj/item/storage/box/samplebags,
-		/obj/item/core_sampler,
-		/obj/item/beacon_locator,
-		/obj/item/radio/beacon,
-		/obj/item/gps,
-		/obj/item/measuring_tape,
-		/obj/item/flashlight,
 		/obj/item/cell/device,
 		/obj/item/pickaxe,
-		/obj/item/depth_scanner,
-		/obj/item/camera,
-		/obj/item/paper,
-		/obj/item/photo,
-		/obj/item/folder,
-		/obj/item/pen,
-		/obj/item/folder,
-		/obj/item/clipboard,
-		/obj/item/anodevice,
-		/obj/item/clothing/glasses,
-		/obj/item/tool/wrench,
-		/obj/item/storage/excavation,
-		/obj/item/anobattery,
-		/obj/item/ano_scanner,
-		/obj/item/pickaxe/hand,
-		/obj/item/hand_labeler,
-		/obj/item/xenoarch_multi_tool,
-		/obj/item/pickaxe/excavationdrill
 		)
 
 /obj/item/storage/belt/fannypack
@@ -489,10 +245,10 @@
 	insertion_whitelist = list(
 		/obj/item/material/sword/sabre,
 		/obj/item/melee/baton/stunsword,
-		)
+	)
 	starts_with = list(
 		/obj/item/material/sword/sabre,
-		)
+	)
 
 /obj/item/storage/belt/sheath/initialize_storage()
 	. = ..()
@@ -521,91 +277,31 @@
 	icon_state = "dual_holster"
 	max_items = 2
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	insertion_whitelist = list(
-		/obj/item/gun/projectile/energy/alien,
-		/obj/item/gun/projectile/energy/captain,
-		/obj/item/gun/projectile/energy/crossbow,
-		/obj/item/gun/projectile/energy/decloner,
-		/obj/item/gun/projectile/energy/floragun,
-		/obj/item/gun/projectile/energy/gun,
-		/obj/item/gun/projectile/energy/gun/nuclear,
-		/obj/item/gun/projectile/energy/ionrifle/pistol,
-		/obj/item/gun/projectile/energy/lasertag,
-		/obj/item/gun/projectile/energy/netgun,
-		/obj/item/gun/projectile/energy/phasegun/pistol,
-		/obj/item/gun/projectile/energy/nt_pulse/carbine,
-		/obj/item/gun/projectile/energy/retro,
-		/obj/item/gun/projectile/energy/nt_pmd/service_revolver,
-		/obj/item/gun/projectile/energy/stunrevolver,
-		/obj/item/gun/projectile/energy/taser,
-		/obj/item/gun/projectile/energy/toxgun,
-		/obj/item/gun/projectile/energy/zip,
-		/obj/item/gun/projectile/ballistic/colt,
-		/obj/item/gun/projectile/ballistic/contender,
-		/obj/item/gun/projectile/ballistic/dartgun,
-		/obj/item/gun/projectile/ballistic/deagle,
-		/obj/item/gun/projectile/ballistic/derringer,
-		/obj/item/gun/projectile/ballistic/gyropistol,
-		/obj/item/gun/projectile/ballistic/luger,
-		/obj/item/gun/projectile/ballistic/r9,
-		/obj/item/gun/projectile/ballistic/revolver,
-		/obj/item/gun/projectile/ballistic/sec,
-		/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn,
-		/obj/item/gun/projectile/ballistic/shotgun/flare,
-		/obj/item/gun/projectile/ballistic/silenced,
-		/obj/item/gun/projectile/ballistic/p92x,
-		/obj/item/gun/projectile/ballistic/pistol,
-		/obj/item/gun/projectile/ballistic/pirate
-		)
+
+	set_max_combined_belt_large = 2
 
 /obj/item/storage/belt/quiver
 	name = "leather quiver"
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
-	max_items = 15
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	set_max_combined_belt_small = 30
 	insertion_whitelist = list(
-		/obj/item/ammo_casing/arrow
-		)
+		/obj/item/ammo_casing/arrow,
+	)
 
 /obj/item/storage/belt/quiver/full
 	name = "leather quiver"
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
-	max_items = 15
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	insertion_whitelist = list(
-		/obj/item/ammo_casing/arrow
-		)
 	starts_with = list(
-		/obj/item/ammo_casing/arrow = 15
-		)
+		/obj/item/ammo_casing/arrow = /obj/item/storage/belt/quiver::set_max_combined_belt_small,
+	)
 
 /obj/item/storage/belt/quiver/full/ash
 	name = "leather quiver"
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon_state = "quiver"
-	max_items = 15
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	insertion_whitelist = list(
-		/obj/item/ammo_casing/arrow
-		)
 	starts_with = list(
-		/obj/item/ammo_casing/arrow/bone = 15
-		)
-
-/obj/item/storage/belt/utility/crystal
-	name = "crystalline tool harness"
-	desc = "A segmented belt of strange crystalline material."
-	icon_state = "utilitybelt_crystal"
-	item_state = "utilitybelt_crystal"
-
-/obj/item/storage/belt/utility/crystal/Initialize()
-	new /obj/item/multitool/crystal(src)
-	new /obj/item/tool/wrench/crystal(src)
-	new /obj/item/tool/crowbar/crystal(src)
-	new /obj/item/tool/screwdriver/crystal(src)
-	new /obj/item/tool/wirecutters/crystal(src)
-	new /obj/item/weldingtool/electric/crystal(src)
-	update_icon()
-	. = ..()
+		/obj/item/ammo_casing/arrow/bone = /obj/item/storage/belt/quiver::set_max_combined_belt_small,
+	)

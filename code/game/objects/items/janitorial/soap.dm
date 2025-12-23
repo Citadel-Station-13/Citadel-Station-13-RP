@@ -9,6 +9,7 @@
 	atom_flags = NOCONDUCT
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_HOLSTER
+	belt_storage_class = BELT_CLASS_SMALL
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20

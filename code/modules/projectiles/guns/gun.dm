@@ -51,6 +51,7 @@
 	item_flags = ITEM_ENCUMBERS_WHILE_HELD | ITEM_ENCUMBERS_ONLY_HELD
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_ARMOR
+	belt_storage_class = BELT_CLASS_MEDIUM
 	materials_base = list(MAT_STEEL = 2000)
 	rad_flags = RAD_BLOCK_CONTENTS
 	w_class = WEIGHT_CLASS_NORMAL

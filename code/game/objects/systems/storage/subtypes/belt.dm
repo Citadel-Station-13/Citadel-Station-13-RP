@@ -9,6 +9,7 @@
 /datum/object_system/storage/belt
 	ui_numerical_mode = TRUE
 
+
 	/// max size of small-class belt items
 	var/max_combined_belt_small = 5
 	/// max size of medium-class belt items

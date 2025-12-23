@@ -1956,6 +1956,7 @@
 #include "code\game\objects\items\storage\uplink_kits.dm"
 #include "code\game\objects\items\storage\wallets.dm"
 #include "code\game\objects\items\storage\belt\security.dm"
+#include "code\game\objects\items\storage\belt\utility.dm"
 #include "code\game\objects\items\storage\medical\firstaid.dm"
 #include "code\game\objects\items\storage\medical\hypokit.dm"
 #include "code\game\objects\items\storage\medical\pill_bottle.dm"

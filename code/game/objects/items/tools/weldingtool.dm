@@ -10,6 +10,7 @@
 	slot_flags = SLOT_BELT
 	tool_behaviour = TOOL_WELDER
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_MEDIUM
 
 	//Amount of OUCH when it's thrown
 	damage_force = 3.0

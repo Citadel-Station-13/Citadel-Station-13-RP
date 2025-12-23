@@ -65,6 +65,7 @@
 // -----------------------------
 //          Trash bag
 // -----------------------------
+#warn deal with this for athena's sake
 /obj/item/storage/bag/trash
 	name = "trash bag"
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"

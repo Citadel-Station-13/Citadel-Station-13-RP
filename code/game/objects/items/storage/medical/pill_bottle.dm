@@ -18,6 +18,7 @@
 	materials_base = list(MAT_PLASTIC = 80)
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	var/label_text = ""
 	var/labeled = 0
