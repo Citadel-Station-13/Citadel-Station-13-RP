@@ -80,9 +80,9 @@
 		equipped.disguise(entry.path, H)
 
 		if((entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME) && entry_data[LOADOUT_ENTRYDATA_RENAME])
-			equipped.name = entry_data[LOADOUT_ENTRYDATA_RENAME]
+			equipped.name = sanitize(entry_data[LOADOUT_ENTRYDATA_RENAME])
 		if((entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC) && entry_data[LOADOUT_ENTRYDATA_REDESC])
-			equipped.desc = entry_data[LOADOUT_ENTRYDATA_REDESC]
+			equipped.desc = sanitize(entry_data[LOADOUT_ENTRYDATA_REDESC])
 		if((entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_COLOR) && entry_data[LOADOUT_ENTRYDATA_RECOLOR])
 			equipped.color = entry_data[LOADOUT_ENTRYDATA_RECOLOR]
 

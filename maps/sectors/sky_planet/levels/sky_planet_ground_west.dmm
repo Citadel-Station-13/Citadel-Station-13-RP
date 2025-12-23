@@ -88,10 +88,6 @@
 /obj/item/reagent_containers/glass/beaker/vial/random,
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"cC" = (
-/obj/structure/catwalk,
-/turf/simulated/lava,
-/area/sector/sky_planet/rock)
 "cP" = (
 /obj/structure/bed/chair/pew/left{
 	dir = 1
@@ -174,10 +170,6 @@
 /obj/structure/flora/rock/rock2,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
-"gp" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/water/acid/outdoors,
-/area/sector/sky_planet/rock)
 "gH" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor,
@@ -257,10 +249,6 @@
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"it" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
 "iB" = (
 /obj/item/ammo_casing/a5_56mm,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -353,13 +341,6 @@
 /obj/structure/table/steel,
 /obj/item/reagent_containers/food/snacks/ribplate,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
-/area/sector/sky_planet/rock)
-"mY" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/tiled/techfloor/virgo2,
 /area/sector/sky_planet/rock)
 "nb" = (
 /obj/structure/flora/rock/rock2,
@@ -478,9 +459,8 @@
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "rF" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
+/obj/structure/catwalk,
+/obj/structure/railing/grey,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/sector/sky_planet/rock)
 "rJ" = (
@@ -589,7 +569,7 @@
 /obj/structure/railing/grey,
 /obj/structure/catwalk,
 /mob/living/simple_mob/mechanical/hivebot/miner,
-/turf/simulated/floor/water/acid/outdoors,
+/turf/simulated/floor/tiled/techfloor/virgo2,
 /area/sector/sky_planet/rock)
 "vO" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -942,11 +922,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
-"Ht" = (
-/obj/structure/railing/grey,
-/obj/structure/catwalk,
-/turf/simulated/floor/water/acid/outdoors,
-/area/sector/sky_planet/rock)
 "Hz" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/monotechmaint,
@@ -1036,8 +1011,8 @@
 "Jv" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/projectile/energy/phasegun/cannon,
-/obj/item/gun/projectile/ballistic/ax99,
 /obj/item/gun/projectile/ballistic/automatic/tommygun,
+/obj/item/gun/projectile/ballistic/deagle/taj,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/rock)
 "Jz" = (
@@ -1218,7 +1193,7 @@
 /area/sector/sky_planet/rock)
 "OF" = (
 /mob/living/simple_mob/mechanical/hivebot/sword,
-/turf/simulated/floor/outdoors/dirt/indoors,
+/turf/simulated/floor/tiled/techfloor/virgo2,
 /area/sector/sky_planet/rock)
 "ON" = (
 /mob/living/simple_mob/mechanical/combat_drone/lesser,
@@ -1526,13 +1501,6 @@
 	},
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
-"Xk" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/water/acid/outdoors,
-/area/sector/sky_planet/rock)
 "Xm" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/matriarch,
 /turf/simulated/floor,
@@ -29308,8 +29276,8 @@ EK
 EK
 EK
 FV
-rF
-ue
+dL
+dL
 FV
 qD
 FV
@@ -29502,7 +29470,7 @@ EK
 EK
 EK
 FV
-mY
+LW
 vM
 br
 br
@@ -29695,9 +29663,9 @@ EK
 EK
 EK
 EK
-br
-Xk
-Ht
+QD
+LW
+ue
 br
 br
 br
@@ -29889,8 +29857,8 @@ EK
 EK
 br
 br
-br
-Xk
+QD
+LW
 ue
 SH
 id
@@ -30084,7 +30052,7 @@ br
 br
 br
 FV
-mY
+dL
 dL
 Qs
 id
@@ -30278,7 +30246,7 @@ br
 br
 EK
 FV
-rF
+dL
 dL
 Qs
 id
@@ -30472,7 +30440,7 @@ EK
 EK
 EK
 FV
-rF
+dL
 ls
 SH
 id
@@ -30666,7 +30634,7 @@ EK
 EK
 EK
 FV
-rF
+dL
 ls
 SH
 Si
@@ -30860,7 +30828,7 @@ EK
 EK
 EK
 FV
-rF
+dL
 ls
 SH
 id
@@ -31054,7 +31022,7 @@ EK
 EK
 EK
 FV
-rF
+dL
 dL
 Qs
 id
@@ -31248,7 +31216,7 @@ EK
 EK
 EK
 FV
-rF
+dL
 dL
 Qs
 id
@@ -31442,7 +31410,7 @@ br
 EK
 EK
 FV
-rF
+dL
 ls
 AP
 zJ
@@ -31635,9 +31603,9 @@ EK
 br
 br
 br
-br
-gp
 QD
+LW
+ue
 br
 br
 br
@@ -31829,9 +31797,9 @@ EK
 br
 br
 br
-br
-br
-br
+QD
+LW
+rF
 br
 br
 br
@@ -32024,8 +31992,8 @@ EK
 EK
 EK
 FV
-rF
-Ht
+LW
+ue
 br
 br
 br
@@ -32218,7 +32186,7 @@ EK
 EK
 EK
 FV
-rF
+dL
 ls
 SH
 id
@@ -33008,11 +32976,11 @@ id
 id
 bt
 id
-it
-gp
-gp
-gp
-it
+dL
+LW
+LW
+LW
+dL
 id
 id
 br
@@ -33202,11 +33170,11 @@ id
 Yt
 id
 id
-id
-it
-gp
-gp
-it
+dL
+LW
+LW
+LW
+dL
 id
 br
 br
@@ -34935,7 +34903,7 @@ EK
 EK
 FV
 dL
-dL
+ls
 AP
 id
 id
@@ -36114,17 +36082,17 @@ dL
 dL
 dL
 dL
+dL
 LW
-gp
-gp
-it
-id
+LW
+LW
+dL
 OF
-it
-cC
-cC
-it
-id
+LW
+LW
+LW
+LW
+dL
 EK
 EK
 fe
@@ -36310,16 +36278,16 @@ dL
 dL
 dL
 LW
-gp
-gp
-it
+LW
+LW
+dL
+dL
+LW
+LW
+LW
+LW
+dL
 id
-it
-cC
-cC
-it
-id
-EK
 EK
 fe
 "}
@@ -38245,19 +38213,19 @@ MM
 fJ
 Ud
 Ud
-id
-id
-id
-id
-id
 EK
-EK
-br
-br
-EK
-qj
-qj
 id
+id
+id
+id
+dL
+LW
+LW
+LW
+LW
+LW
+LW
+dL
 id
 EK
 EK
@@ -38438,20 +38406,20 @@ Ud
 Ud
 Ud
 JA
-id
+EK
+EK
 EK
 EK
 id
 id
-id
-id
-it
-gp
-gp
-it
-cC
-it
-id
+dL
+LW
+LW
+LW
+LW
+LW
+LW
+dL
 id
 EK
 EK
@@ -38637,16 +38605,16 @@ EK
 EK
 EK
 EK
-id
-id
-it
-gp
-gp
-it
-cC
-it
-id
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 fe
