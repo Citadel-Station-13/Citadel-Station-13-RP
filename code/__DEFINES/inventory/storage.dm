@@ -9,7 +9,7 @@
 #define VOLUMETRIC_STORAGE_BOX_BORDER_SIZE 2
 /// Minimum pixels an item must have in volumetric scaled storage UI
 /// This must not be smaller than BOX_BORDER_SIZE * 2.
-#define VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM 6
+#define VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM 12
 /// Maximum number of objects that will be allowed to be displayed using the volumetric display system. Arbitrary number to prevent server lockups.
 #define VOLUMETRIC_STORAGE_MAX_ITEMS 128
 /// How much padding to give between items
