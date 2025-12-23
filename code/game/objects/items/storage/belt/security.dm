@@ -6,25 +6,11 @@
 	desc = "Standard issue belt capable of storing many kinds of tactical gear."
 	icon_state = "security"
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	set_max_combined_belt_large = /datum/object_system/storage/belt::max_combined_belt_large + 1
+	set_max_combined_belt_medium = /datum/object_system/storage/belt::max_combined_belt_medium
 	insertion_whitelist = list(
-		/obj/item/grenade,
-		/obj/item/reagent_containers/spray/pepper,
-		/obj/item/handcuffs,
-		/obj/item/flash,
-		/obj/item/clothing/glasses,
 		/obj/item/cell/device,
-		/obj/item/flame/lighter,
-		/obj/item/tape_recorder,
-		/obj/item/barrier_tape_roll,
-		/obj/item/pda,
-		/obj/item/radio/headset,
-		/obj/item/clothing/gloves,
-		/obj/item/hailer,
-		/obj/item/megaphone,
 		/obj/item/melee,
-		/obj/item/clothing/accessory/badge,
-		/obj/item/barrier_tape_roll,
-		/obj/item/holowarrant,
 	)
 
 /obj/item/storage/belt/security/nt_isd_preload
@@ -36,3 +22,14 @@
 		/obj/item/cell/device/weapon,
 		/obj/item/reagent_containers/spray/pepper,
 	)
+
+/obj/item/storage/belt/security/tactical
+	name = "combat belt"
+	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
+	icon_state = "swat"
+	set_max_combined_belt_medium = /obj/item/storage/belt/security::set_max_combined_belt_medium + 2
+
+/obj/item/storage/belt/security/tactical/bandolier
+	name = "combat belt"
+	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
+	icon_state = "bandolier"

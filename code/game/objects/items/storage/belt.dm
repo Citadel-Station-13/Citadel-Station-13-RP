@@ -139,19 +139,6 @@
 		"/obj/item/clothing/mask/luchador"
 		)
 
-/obj/item/storage/belt/security/tactical
-	name = "combat belt"
-	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
-	icon_state = "swat"
-	max_items = 9
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
-
-/obj/item/storage/belt/security/tactical/bandolier
-	name = "combat belt"
-	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
-	icon_state = "bandolier"
-
 /obj/item/storage/belt/spike_bandolier
 	name = "spike bandolier"
 	desc = "A bandolier used to hold spikes, and only spikes."
@@ -275,9 +262,6 @@
 	name = "dual holster gunbelt"
 	desc = "Belts like these were popular on old Earth, but were largely supplanted by modular holsters. This gunbelt is too bulky to be comfortably anchored to clothes without support."
 	icon_state = "dual_holster"
-	max_items = 2
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-
 	set_max_combined_belt_large = 2
 
 /obj/item/storage/belt/quiver

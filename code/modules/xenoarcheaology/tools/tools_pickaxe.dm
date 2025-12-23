@@ -131,15 +131,17 @@
 	item_state = "syringe_kit"
 	max_items = 7
 	w_class = WEIGHT_CLASS_SMALL
-	insertion_whitelist = list(/obj/item/pickaxe/brush,
 	belt_storage_class = BELT_CLASS_SMALL
-	/obj/item/pickaxe/one_pick,
-	/obj/item/pickaxe/two_pick,
-	/obj/item/pickaxe/three_pick,
-	/obj/item/pickaxe/four_pick,
-	/obj/item/pickaxe/five_pick,
-	/obj/item/pickaxe/six_pick,
-	/obj/item/pickaxe/hand)
+	insertion_whitelist = list(
+		/obj/item/pickaxe/brush,
+		/obj/item/pickaxe/one_pick,
+		/obj/item/pickaxe/two_pick,
+		/obj/item/pickaxe/three_pick,
+		/obj/item/pickaxe/four_pick,
+		/obj/item/pickaxe/five_pick,
+		/obj/item/pickaxe/six_pick,
+		/obj/item/pickaxe/hand,
+	)
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 9
 	max_single_weight_class = WEIGHT_CLASS_SMALL
 	allow_mass_gather = TRUE
