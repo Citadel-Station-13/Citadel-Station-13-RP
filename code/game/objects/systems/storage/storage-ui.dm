@@ -158,6 +158,11 @@
 		return create_ui_slot_mode(user)
 	. = list()
 
+	//? resolve items
+
+	// resolve indirection
+	var/atom/indirection = real_contents_loc()
+
 	//? resolve view and rendering
 	// todo: clientless support is awful here
 
@@ -170,18 +175,16 @@
 	// effective max scales up if we're overrunning
 	var/effective_max_volume = max(max_combined_volume, cached_combined_volume)
 	// see if we're trying to render a small container
-	var/requested_pixels = effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO
+	var/requested_pixels = max(
+		effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO,
+		VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM * length(indirectio?.contents),
+	)
 	// clamp it
 	rendering_width_in_pixels = clamp(
 		requested_pixels,
 		VOLUMETRIC_STORAGE_MINIMUM_TILES * WORLD_ICON_SIZE,
 		rendering_width_in_pixels,
 	)
-
-	//? resolve items
-
-	// resolve indirection
-	var/atom/indirection = real_contents_loc()
 
 	//? prepare iteration
 
