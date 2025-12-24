@@ -484,7 +484,8 @@
 	required_container_path = /obj/item/slime_extract/yellow
 
 /datum/chemical_reaction/slime/yellow_battery/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
-	new /obj/item/cell/slime_core/whole(get_turf(holder.my_atom))
+	for(var/i in 1 to 2)
+		new /obj/item/cell/slime_core/whole(get_turf(holder.my_atom))
 	..()
 
 // ***************
