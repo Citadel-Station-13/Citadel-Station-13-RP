@@ -254,7 +254,7 @@
 	if(current_row == 1)
 		// expand it if we still have room left to take into account the unused space.
 		if(volume_accounted_for < effective_max_volume)
-			iteration_width = min(rendering_width_px_limit, iteration_width + (effective_max_volume - volume_accounted_for) * effective_pixel_volume_ratio)
+			iteration_width = min(rendering_width_px_limit, iteration_width + (effective_max_volume - volume_accounted_for) * effective_pixel_volume_ratio + VOLUMETRIC_STORAGE_ITEM_PADDING)
 	// do final row stuff
 	if(iteration_width > 0)
 		// subtract last item padding if any items were rendered
