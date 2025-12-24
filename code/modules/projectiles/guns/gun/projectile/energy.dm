@@ -16,7 +16,8 @@
 	dispersion = list(0)
 
 	cell_system = TRUE
-	cell_type = /obj/item/cell/device/weapon
+	cell_type = /obj/item/cell/basic/tier_1/weapon
+	cell_accept = CELL_TYPE_WEAPON | CELL_TYPE_SMALL
 	firemodes = /datum/firemode/energy
 
 	//* Modular System *//
@@ -57,7 +58,7 @@
 
 	//! LEGACY BELOW !//
 	// todo: do not use this var, use firemodes
-	var/charge_cost = 240 //How much energy is needed to fire.
+	var/charge_cost = POWER_CELL_CAPACITY_WEAPON / 20
 
 	projectile_type = /obj/projectile/beam/practice
 
@@ -65,6 +66,7 @@
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
 
 	//self-recharging
+	// TODO: torch this and use cells that self-charge instead
 	var/self_recharge = 0	//if set, the weapon will recharge itself
 	var/use_external_power = 0 //if set, the weapon will look for an external power source to draw from, otherwise it recharges magically
 	var/use_organic_power = 0 // If set, the weapon will draw from nutrition or blood.
@@ -77,7 +79,8 @@
 /obj/item/gun/projectile/energy/Initialize(mapload)
 	if(self_recharge)
 		cell_system = TRUE
-		cell_type = cell_type || /obj/item/cell/device/weapon
+		cell_type ||= /obj/item/cell/basic/tier_1/weapon
+		legacy_battery_lock = TRUE
 		START_PROCESSING(SSobj, src)
 	. = ..()
 	// todo: this isn't necessarily needed
@@ -104,14 +107,14 @@
 /obj/item/gun/projectile/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_fire + charge_delay)	//Doesn't work if you've fired recently
-			if(!obj_cell_slot.cell || obj_cell_slot.cell.charge >= obj_cell_slot.cell.maxcharge)
+			if(!obj_cell_slot.cell || obj_cell_slot.cell.charge >= obj_cell_slot.cell.max_charge)
 				return 0 // check if we actually need to recharge
 
 			charge_tick++
 			if(charge_tick < recharge_time) return 0
 			charge_tick = 0
 
-			var/rechargeamt = obj_cell_slot.cell.maxcharge*0.2
+			var/rechargeamt = obj_cell_slot.cell.max_charge*0.2
 
 			if(use_external_power)
 				var/obj/item/cell/external = get_external_power_supply()
@@ -258,11 +261,11 @@
 	if(!estimated_cost)
 		return 1
 	if(rounded)
-		var/full_shots = floor(cell.maxcharge / estimated_cost)
+		var/full_shots = floor(cell.max_charge / estimated_cost)
 		if(!full_shots)
 			return 0
 		return min(1, floor(cell.charge / estimated_cost) / full_shots)
-	return min(1, cell.maxcharge ? cell.charge / cell.maxcharge : 0)
+	return min(1, cell.max_charge ? cell.charge / cell.max_charge : 0)
 
 /**
  * Estimates how many shots the gun's power supply has charge for
@@ -305,7 +308,7 @@
 	var/estimated_cost = get_estimated_charge_cost()
 	if(!estimated_cost)
 		return INFINITY
-	return floor(cell.maxcharge / estimated_cost)
+	return floor(cell.max_charge / estimated_cost)
 
 //* Power *//
 

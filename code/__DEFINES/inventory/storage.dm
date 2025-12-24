@@ -9,7 +9,7 @@
 #define VOLUMETRIC_STORAGE_BOX_BORDER_SIZE 2
 /// Minimum pixels an item must have in volumetric scaled storage UI
 /// This must not be smaller than BOX_BORDER_SIZE * 2.
-#define VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM 6
+#define VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM 12
 /// Maximum number of objects that will be allowed to be displayed using the volumetric display system. Arbitrary number to prevent server lockups.
 #define VOLUMETRIC_STORAGE_MAX_ITEMS 128
 /// How much padding to give between items
@@ -18,6 +18,10 @@
 #define VOLUMETRIC_STORAGE_EDGE_PADDING 0
 /// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
 #define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 8
+/// Used if a UI would be very, very small; this is the max we can inflate the calculation to.
+#define VOLUMETRIC_STORAGE_INFLATED_PIXEL_RATIO 16
+/// If volumetric storage is below this, inflate the pixel ratio up to this
+#define VOLUMETRIC_STORAGE_INFLATE_TO_TILES 3.5
 
 //* Storage access *//
 
@@ -66,8 +70,8 @@
 
 //* Volumetrics - Default Item Volumes *//
 
-#define WEIGHT_VOLUME_TINY				1
-#define WEIGHT_VOLUME_SMALL			2
+#define WEIGHT_VOLUME_TINY				0.5
+#define WEIGHT_VOLUME_SMALL			1
 #define WEIGHT_VOLUME_NORMAL			4
 #define WEIGHT_VOLUME_BULKY			8
 #define WEIGHT_VOLUME_HUGE				16
@@ -85,7 +89,23 @@ GLOBAL_REAL_LIST(w_class_to_volume) = list(
 //* Volumetrics - Storage Volumes *//
 
 #define STORAGE_VOLUME_BOX (WEIGHT_VOLUME_SMALL * 7)
+#define STORAGE_VOLUME_BOX_2X (WEIGHT_VOLUME_SMALL * 14)
 #define STORAGE_VOLUME_BACKPACK (WEIGHT_VOLUME_NORMAL * 7)
 #define STORAGE_VOLUME_DUFFLEBAG (WEIGHT_VOLUME_NORMAL * 9)
 
 //* Volumetrics - Item Volumes *//
+
+// 2x capacity to pack small items for now, unfortunately
+#define ITEM_VOLUME_BOX (WEIGHT_VOLUME_NORMAL * 1)
+// for some bigger boxes
+#define ITEM_VOLUME_BOX_AND_HALF (WEIGHT_VOLUME_NORMAL * 1.5)
+
+#define ITEM_VOLUME_SMALL_CELL (WEIGHT_VOLUME_NORMAL / 4)
+#define ITEM_VOLUME_WEAPON_CELL (WEIGHT_VOLUME_NORMAL / 2)
+#define ITEM_VOLUME_MEDIUM_CELL (WEIGHT_VOLUME_NORMAL * 1)
+#define ITEM_VOLUME_LARGE_CELL (WEIGHT_VOLUME_NORMAL * 2)
+
+#define ITEM_VOLUME_PISTOL_MAG (WEIGHT_VOLUME_NORMAL / 4)
+#define ITEM_VOLUME_RIFLE_MAG (WEIGHT_VOLUME_NORMAL / 2)
+
+#define ITEM_VOLUME_AMMO_CASING (WEIGHT_VOLUME_TINY / 2)

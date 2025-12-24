@@ -63,7 +63,7 @@
 		return
 	cell = new(src)
 	cell.charge = 30000
-	cell.maxcharge = 30000
+	cell.max_charge = 30000
 
 /obj/vehicle/sealed/mecha/combat/fighter/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()

@@ -308,9 +308,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "sx" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 1;

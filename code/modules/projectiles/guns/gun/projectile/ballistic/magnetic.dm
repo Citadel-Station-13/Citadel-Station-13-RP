@@ -3,8 +3,8 @@
 
 /obj/item/gun/projectile/ballistic/magnetic
 	cell_system = TRUE
-	cell_system_legacy_use_device = TRUE
-	cell_type = /obj/item/cell/device/weapon
+	cell_accept = CELL_TYPE_WEAPON
+	cell_type = /obj/item/cell/basic/tier_1/weapon
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACCELERATION_COIL = 1,
@@ -14,7 +14,7 @@
 	)
 
 	/// base power draw per shot in cell units
-	var/base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / 24)
+	var/base_charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge * (1 / 24)
 
 	/// Render battery state.
 	///

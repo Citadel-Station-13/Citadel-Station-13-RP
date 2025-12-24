@@ -24,24 +24,23 @@ var/global/list/active_radio_jammers = list()
 
 	var/on = 0
 	var/jam_range = 7
-	var/obj/item/cell/device/weapon/power_source
+
+	var/cell_type = /obj/item/cell/basic/tier_1/small
+	var/cell_accept = CELL_TYPE_SMALL
+
 	var/tick_cost = 5 // For the ERPs.
 
 	origin_tech = list(TECH_ILLEGAL = 7, TECH_BLUESPACE = 5) //Such technology! Subspace jamming!
 
 /obj/item/radio_jammer/Initialize(mapload)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 	. = ..()
-	power_source = new(src)
 	update_icon() // So it starts with the full overlay.
 
 /obj/item/radio_jammer/Destroy()
 	if(on)
 		turn_off()
-	QDEL_NULL(power_source)
 	return ..()
-
-/obj/item/radio_jammer/get_cell(inducer)
-	return power_source
 
 /obj/item/radio_jammer/proc/turn_off(mob/user)
 	if(user)
@@ -60,24 +59,14 @@ var/global/list/active_radio_jammers = list()
 	update_icon()
 
 /obj/item/radio_jammer/process(delta_time)
-	if(!power_source || !power_source.check_charge(tick_cost))
+	if(!obj_cell_slot?.cell?.check_charge(tick_cost))
 		var/mob/living/notify
 		if(isliving(loc))
 			notify = loc
 		turn_off(notify)
 	else
-		power_source.use(tick_cost)
+		obj_cell_slot.cell.use(tick_cost)
 		update_icon()
-
-
-/obj/item/radio_jammer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(user.get_inactive_held_item() == src && power_source)
-		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
-		user.put_in_hands(power_source)
-		power_source = null
-		turn_off()
-	else
-		return ..()
 
 /obj/item/radio_jammer/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -86,19 +75,10 @@ var/global/list/active_radio_jammers = list()
 	if(on)
 		turn_off(user)
 	else
-		if(power_source)
+		if(obj_cell_slot?.cell)
 			turn_on(user)
 		else
 			to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
-
-/obj/item/radio_jammer/attackby(obj/W, mob/user)
-	if(istype(W,/obj/item/cell/device/weapon) && !power_source)
-		if(!user.attempt_insert_item_for_installation(power_source, src))
-			return
-		power_source = W
-		power_source.update_icon() //Why doesn't a cell do this already? :|
-		update_icon()
-		to_chat(user,"<span class='notice'>You insert \the [power_source] into \the [src].</span>")
 
 /obj/item/radio_jammer/update_icon()
 	cut_overlays()
@@ -109,8 +89,8 @@ var/global/list/active_radio_jammers = list()
 		icon_state = initial(icon_state)
 
 	var/overlay_percent = 0
-	if(power_source)
-		overlay_percent = between(0, round( power_source.percent() , 25), 100)
+	if(obj_cell_slot?.cell)
+		overlay_percent = between(0, round( obj_cell_slot.cell.percent() , 25), 100)
 	else
 		overlay_percent = 0
 

@@ -21,7 +21,7 @@
 	fire_sound = 'sound/weapons/eluger.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	projectile_type = /obj/projectile/beam/stun/blue
-	charge_cost = 240
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 5
 
 	firemodes = list(
 		/datum/firemode/energy/netgun/stun,
@@ -33,7 +33,7 @@
 	var/list/overlays_to_add = list()
 
 	if(obj_cell_slot.cell)
-		var/ratio = obj_cell_slot.cell.charge / obj_cell_slot.cell.maxcharge
+		var/ratio = obj_cell_slot.cell.charge / obj_cell_slot.cell.max_charge
 
 		if(obj_cell_slot.cell.charge < charge_cost)
 			ratio = 0

@@ -2233,7 +2233,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/super/north_mount,
+/obj/machinery/power/apc/large_cell/north_mount,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck3)
 "hj" = (
@@ -13183,11 +13183,11 @@
 	icon_state = "implantpad-0"
 	},
 /obj/machinery/cell_charger,
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 2;
 	pixel_y = -1
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 2;
 	pixel_y = -1
 	},

@@ -33,7 +33,7 @@
 
 	var/C = 0
 	for(var/obj/item/cell/PC in component_parts)
-		C += PC.maxcharge
+		C += PC.max_charge
 		cells_amount++
 	capacity = KJ_TO_KWM(DYNAMIC_CELL_UNITS_TO_KJ(C))
 
