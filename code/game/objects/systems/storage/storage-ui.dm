@@ -188,6 +188,8 @@
 
 	//? prepare iteration
 
+	// volume accounted for; at the end, we render the remaining if we have room
+	var/volume_accounted_for = 0
 	// max x used in all rows, including padding.
 	var/maximum_used_width = 0
 	// current consumed x of row
@@ -200,6 +202,7 @@
 	var/safety = VOLUMETRIC_STORAGE_MAX_ITEMS
 	// iterate and render
 	for(var/obj/item/item in indirection)
+		var/item_volume = item.get_weight_volume()
 		// check safety
 		safety--
 		if(safety <= 0)
@@ -224,7 +227,7 @@
 		// render the item
 		var/atom/movable/screen/storage/item/volumetric/renderer = new(null, item)
 		// scale it as necessary, to nearest multiple of 2
-		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(rendering_width_in_pixels * (item.get_weight_volume() / effective_max_volume), 2))
+		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(rendering_width_in_pixels * (item_volume / effective_max_volume), 2))
 		// emit to renderer
 		renderer.set_pixel_width(used_pixels)
 		// set screen loc
@@ -235,6 +238,12 @@
 		// add to iteration tracking
 		iteration_used_width += used_pixels
 		iteration_used_padding += VOLUMETRIC_STORAGE_ITEM_PADDING
+		volume_accounted_for += item_volume
+	// expand first row if needed to emphasize that there's still room left
+	if(current_row == 1)
+		if(volume_accounted_for < effective_max_volume)
+			iteration_used_width = min(rendering_width_in_pixels, iteration_used_width + (effective_max_volume - volume_accounted_for) * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
+
 	// register to maximum used width
 	// we add the edge padding for both edges, but remove the last item's padding.
 	maximum_used_width = max(maximum_used_width, iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING * 2 - VOLUMETRIC_STORAGE_ITEM_PADDING)
