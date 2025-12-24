@@ -171,7 +171,7 @@
 	var/view_x = decoded_view[1]
 	// setup initial width
 	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	var/rendering_width_in_pixels = rendering_width * 32
+	var/rendering_width_px_limit = rendering_width * 32
 	// effective max scales up if we're overrunning
 	var/effective_max_volume = max(max_combined_volume, cached_combined_volume)
 	// see if we're trying to render a small container
@@ -180,10 +180,10 @@
 		VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM * length(indirection?.contents),
 	)
 	// clamp it
-	rendering_width_in_pixels = clamp(
+	var/rendering_width_px = clamp(
 		requested_pixels,
 		VOLUMETRIC_STORAGE_MINIMUM_TILES * WORLD_ICON_SIZE,
-		rendering_width_in_pixels,
+		rendering_width_px_limit,
 	)
 
 	//? prepare iteration
@@ -210,7 +210,7 @@
 			break
 
 		// check row
-		if(iteration_used_width >= rendering_width_in_pixels)
+		if(iteration_used_width >= rendering_width_px)
 			// check if we're out of rows
 			if(current_row >= STORAGE_UI_MAX_ROWS)
 				to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
@@ -227,7 +227,7 @@
 		// render the item
 		var/atom/movable/screen/storage/item/volumetric/renderer = new(null, item)
 		// scale it as necessary, to nearest multiple of 2
-		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(rendering_width_in_pixels * (item_volume / effective_max_volume), 2))
+		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(rendering_width_px * (item_volume / effective_max_volume), 2))
 		// emit to renderer
 		renderer.set_pixel_width(used_pixels)
 		// set screen loc
@@ -242,7 +242,7 @@
 	// expand first row if needed to emphasize that there's still room left
 	if(current_row == 1)
 		if(volume_accounted_for < effective_max_volume)
-			iteration_used_width = min(rendering_width_in_pixels, iteration_used_width + (effective_max_volume - volume_accounted_for) * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
+			iteration_used_width = min(rendering_width_px_limit, iteration_used_width + (effective_max_volume - volume_accounted_for) * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
 
 	// register to maximum used width
 	// we add the edge padding for both edges, but remove the last item's padding.
@@ -250,7 +250,7 @@
 
 	// now that everything's set up, we can render everything based on the solved sizes.
 	// middle size; we also keep in account padding so there's a smooth expansion instead of a sudden expansion at the end.
-	var/middle_width = max(maximum_used_width, rendering_width_in_pixels + iteration_used_padding)
+	var/middle_width = max(maximum_used_width, rendering_width_px + iteration_used_padding)
 	// i hate byond i hate byond i hate byond i hate byond; this is because things break if we don't extend by 2 pixels
 	// at a time for left/right as we use a dumb transform matrix and screen loc to shift, instead of a scale and shift matrix
 	middle_width = CEILING(middle_width, 2)
