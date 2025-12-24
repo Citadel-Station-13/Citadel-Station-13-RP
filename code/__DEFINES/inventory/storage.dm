@@ -18,8 +18,10 @@
 #define VOLUMETRIC_STORAGE_EDGE_PADDING 0
 /// Standard pixel width ratio for volumetric storage; 1 volume converts into this many pixels.
 #define VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO 8
-/// An attempt to make smaller containers not too tiny.
-#define VOLUMETRIC_STORAGE_MINIMUM_TILES 3.5
+/// Used if a UI would be very, very small; this is the max we can inflate the calculation to.
+#define VOLUMETRIC_STORAGE_INFLATED_PIXEL_RATIO 16
+/// If volumetric storage is below this, inflate the pixel ratio up to this
+#define VOLUMETRIC_STORAGE_INFLATE_TO_TILES 3.5
 
 //* Storage access *//
 
