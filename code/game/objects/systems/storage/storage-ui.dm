@@ -177,7 +177,7 @@
 	// see if we're trying to render a small container
 	var/requested_pixels = max(
 		effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO,
-		VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM * length(indirectio?.contents),
+		VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM * length(indirection?.contents),
 	)
 	// clamp it
 	rendering_width_in_pixels = clamp(
