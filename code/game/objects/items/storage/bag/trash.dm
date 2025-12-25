@@ -15,6 +15,7 @@
 	. = ..()
 	obj_storage.update_icon_on_item_change = TRUE
 
+// TODO: this is fucking broken, fix it.
 /obj/item/storage/bag/trash/update_icon_state()
 	switch(w_class)
 		if(3)
