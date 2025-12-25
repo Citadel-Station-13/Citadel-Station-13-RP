@@ -77,8 +77,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_CLASS_SMALL * 32
-	insertion_whitelist = list() // any
-	insertion_blacklist = list(/obj/item/disk/nuclear)
 
 /obj/item/storage/bag/trash/initialize_storage()
 	. = ..()
