@@ -146,6 +146,8 @@
 
 	/// mutex to prevent mass operation spam
 	var/mass_operation_interaction_mutex = FALSE
+	/// max items dropped per second for mass dumping
+	var/mass_operation_dumping_limit_per_second
 
 	//* Redirection *//
 
@@ -854,7 +856,7 @@
  */
 /datum/object_system/storage/proc/mass_storage_dumping_handler(list/obj/item/things, atom/to_loc, datum/event_args/actor/actor, list/rejections_out = list(), trigger_on_found = TRUE)
 	var/atom/indirection = real_contents_loc()
-	var/i = length(things)
+	var/i = mass_operation_dumping_limit_per_second == null ? length(things) : min(ceil(mass_operation_dumping_limit_per_second * 0.5), length(things))
 	. = TRUE
 	while(i > 0)
 		// stop if overtaxed

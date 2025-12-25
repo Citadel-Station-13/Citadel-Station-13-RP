@@ -6,18 +6,14 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "trashbag", SLOT_ID_LEFT_HAND = "trashbag")
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
+	w_class = WEIGHT_CLASS_NORMAL
 
-	w_class = WEIGHT_CLASS_SMALL
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	storage_datum_path = /datum/object_system/storage/trash_bag
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 48
 
 /obj/item/storage/bag/trash/initialize_storage()
 	. = ..()
 	obj_storage.update_icon_on_item_change = TRUE
-	obj_storage.limited_random_access_amount = 8
-	obj_storage.limited_random_access_total_weight_volume = WEIGHT_VOLUME_NORMAL * 3
-	// needed for LRA to work
-	obj_storage.ui_force_slot_mode = TRUE
 
 /obj/item/storage/bag/trash/update_icon_state()
 	switch(w_class)
@@ -41,7 +37,7 @@
 
 /obj/item/storage/bag/trash/bluespace
 	name = "trash bag of holding"
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 48 * 3
 	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
 	icon_state = "bluetrashbag"
@@ -53,7 +49,5 @@
 	icon_state = "plasticbag"
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
-
 	w_class = WEIGHT_CLASS_BULKY
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 3
