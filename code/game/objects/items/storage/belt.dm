@@ -3,22 +3,23 @@
 	desc = "Can hold various things."
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
-	max_items = 7
-	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7 //This should ensure belts always have enough room to store whatever.
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	ui_force_slot_mode = TRUE
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
 	worth_intrinsic = 50
-	var/show_above_suit = 0
 
 	storage_datum_path = /datum/object_system/storage/belt
+
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	ui_force_slot_mode = TRUE
+
 	var/set_max_combined_belt_small
 	var/set_max_combined_belt_medium
 	var/set_max_combined_belt_large
+
+	var/show_above_suit = 0
 
 /obj/item/storage/belt/Initialize(mapload, empty)
 	. = ..()

@@ -120,7 +120,7 @@
 	// see if we need to process numerical display
 	var/list/datum/storage_numerical_display/numerical_rendered = uses_numerical_ui()? render_numerical_display() : null
 	// process indirection
-	var/obj/item/accessible = accessible_items()
+	var/obj/item/accessible = get_accessible_items()
 	// if we have expand when needed, only show 1 more than the actual amount.
 	if(ui_expand_when_needed)
 		rendering_width = min(rendering_width, (isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)) + 1)

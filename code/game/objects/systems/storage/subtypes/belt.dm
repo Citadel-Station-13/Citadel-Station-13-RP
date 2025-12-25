@@ -7,7 +7,7 @@
  * Uses a list of class-size-limits.
  */
 /datum/object_system/storage/belt
-	ui_numerical_mode = TRUE
+	ui_force_slot_mode = TRUE
 
 	/// max size of small-class belt items
 	var/max_combined_belt_small = 5

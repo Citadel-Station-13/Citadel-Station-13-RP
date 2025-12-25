@@ -231,14 +231,13 @@
 /**
  * you may mutate returned list
  */
-/datum/object_system/storage/proc/accessible_items(random_access = TRUE)
+/datum/object_system/storage/proc/get_accessible_items(random_access = TRUE)
 	var/atom/redirection = real_contents_loc()
 	if(!length(redirection.contents))
 		return list()
-	var/list/copied_contents
-	if(random_access)
+	if(random_access && limited_random_access_amount)
+		var/list/copied_contents = . = list()
 		if(limited_random_access_amount)
-			copied_contents = list()
 			var/original_contents_length = length(redirection.contents)
 			var/lra_start
 			var/lra_end
@@ -267,8 +266,7 @@
 					break
 				copied_contents += maybe_item
 	else
-		copied_contents = redirection.contents.Copy()
-	return copied_contents
+		. = redirection.contents.Copy()
 
 /**
  * Recursively return all inventory in this or nested storage (without indirection)
