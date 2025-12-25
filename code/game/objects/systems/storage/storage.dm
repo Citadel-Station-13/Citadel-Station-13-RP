@@ -86,11 +86,11 @@
 	var/insert_preposition = "in"
 
 	/// allow quick empty at all
-	var/allow_quick_empty = FALSE
+	var/allow_quick_empty = TRUE
 	/// allow quick empty via clickdrag
 	var/allow_quick_empty_via_clickdrag = TRUE
 	/// allow quick empty via attack self
-	var/allow_quick_empty_via_attack_self = TRUE
+	var/allow_quick_empty_via_attack_self = FALSE
 
 	/// allow inbound mass transfers
 	var/allow_inbound_mass_transfer = TRUE

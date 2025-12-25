@@ -97,7 +97,7 @@
 	if(isturf(old_loc))
 		new /obj/effect/temporary_effect/item_pickup_ghost(old_loc, actually_picked_up, user)
 	user.trigger_aiming(TARGET_CAN_CLICK)
-	
+
 //* Drag / Drop *//
 
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)

@@ -72,10 +72,10 @@
 		if(BELT_CLASS_SMALL)
 			return max(0, max_combined_belt_large - cached_combined_belt_large_size) + \
 				 max(0, max_combined_belt_medium - cached_combined_belt_medium_size) + \
-				 max_combined_belt_medium - cached_combined_belt_medium_size
+				 max(0, max_combined_belt_small - cached_combined_belt_small_size)
 		if(BELT_CLASS_MEDIUM)
 			return max(0, max_combined_belt_large - cached_combined_belt_large_size) + \
-				 max_combined_belt_medium - cached_combined_belt_medium_size
+				 max(0, max_combined_belt_medium - cached_combined_belt_medium_size)
 		if(BELT_CLASS_LARGE)
 			return max_combined_belt_large - cached_combined_belt_large_size
 		else
@@ -85,7 +85,7 @@
 	if(!room_left_for_belt_class(candidate.belt_storage_class) >= candidate.belt_storage_size)
 		// incase list index out of bounds
 		. = "runtime errored"
-		return "insufficient belt loops of size [global.belt_class_names[candidate.belt_storage_class]] or bigger"
+		return "insufficient belt loops of size [lowertext(global.belt_class_names[candidate.belt_storage_class])] or bigger"
 	return ..()
 
 /datum/object_system/storage/belt/check_insertion_limits(obj/item/candidate)
