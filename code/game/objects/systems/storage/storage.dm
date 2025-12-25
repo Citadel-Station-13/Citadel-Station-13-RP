@@ -259,8 +259,8 @@
 				// it is valid albeit silly to have non-items in a storage object
 				if(!istype(maybe_item))
 					continue
-				lra_twc += item.w_class
-				lra_twv += item.weight_volume
+				lra_twc += maybe_item.w_class
+				lra_twv += maybe_item.weight_volume
 				if(lra_twc > limited_random_access_total_weight_class)
 					break
 				if(lra_twv > limited_random_access_total_weight_volume)
@@ -268,7 +268,7 @@
 				copied_contents += maybe_item
 	else
 		copied_contents = redirection.contents.Copy()
-	return copied_contents()
+	return copied_contents
 
 /**
  * Recursively return all inventory in this or nested storage (without indirection)
