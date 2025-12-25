@@ -2214,6 +2214,7 @@
 #include "code\game\objects\systems\storage\storage-screen_object.dm"
 #include "code\game\objects\systems\storage\storage-ui.dm"
 #include "code\game\objects\systems\storage\storage.dm"
+#include "code\game\objects\systems\storage\subtypes\backpack.dm"
 #include "code\game\objects\systems\storage\subtypes\belt.dm"
 #include "code\game\objects\systems\storage\subtypes\stack.dm"
 #include "code\game\objects\systems\storage\subtypes\stock_parts.dm"
