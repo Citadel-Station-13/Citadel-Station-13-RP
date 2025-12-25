@@ -162,7 +162,8 @@
 		force makes this weapon's name a logical choice.
 	"} + "<br>"
 	icon_state = "lmg"
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/drum
+	// todo: box mag
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick/drum
 	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN
 
 	// todo: rendering; how are we going to render both unloaded and open?
