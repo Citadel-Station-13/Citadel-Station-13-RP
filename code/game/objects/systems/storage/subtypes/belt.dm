@@ -29,14 +29,65 @@
 /datum/object_system/storage/belt/uses_volumetric_ui()
 	return FALSE
 
+/datum/object_system/storage/belt/handle_storage_examine(list/examine_list)
+	var/list/free_slots = compute_free_slots()
+	var/list/max_slots = list(max_combined_belt_small, max_combined_belt_medium, max_combined_belt_large)
+	var/list/rendered_loop_types = list()
+	var/has_overrun
+	for(var/i in 1 to 3)
+		if(free_slots[i] < 0)
+			has_overrun = TRUE
+		rendered_loop_types += "[free_slots[i] > 0 ? free_slots[i] : "<span class='bad'>[free_slots[i]]</span>"]/[max_slots[i]] \
+		[lowertext(global.belt_class_names[i + 1])]"
+	examine_list += SPAN_NOTICE("This is a storage item with <b>belt loops</b>. There are \
+	[english_list(rendered_loop_types)] loops on it.[has_overrun ? " Some of the larger loops are \
+	currently being filled up by excess items of smaller size." : ""]")
+
+/**
+ * @return list(small, medium, large, )
+ */
+/datum/object_system/storage/belt/proc/compute_free_slots() as /list
+	var/small = 0
+	var/medium = 0
+	var/large = 0
+
+	// belts are weird
+	// small items can overflow onto medium, medium can overflow onto large
+
+	// the problem arises in that if small is overrunning, you don't know if it's
+	// overrunning into medium or large; this is because storage ui does not yet store, bespoke,
+	// which slot an item is in, so the player has no control over it
+
+	// thus this standard proc is here to enforce a single order of operations
+	// right now, we assume that any items always have dibs on their own slot first,
+	// and overrun 'hops over' if there's not enough.
+
+	small = max_combined_belt_small - cached_combined_belt_small_size
+	medium = max_combined_belt_medium - cached_combined_belt_medium_size
+	large = max_combined_belt_large - cached_combined_belt_large_size
+
+	if(small < 0)
+		if(medium > 0)
+			// overrun as much as we can to medium
+			. = min(medium, -small)
+			small += .
+			medium -= .
+		// overrun rest to large
+		large += small
+		small = 0
+	if(medium < 0)
+		// overrun all medium to large
+		large += medium
+		medium = 0
+
+	return list(small, medium, large)
+
 /datum/object_system/storage/belt/get_ui_drawer_tint()
+	var/list/remaining = compute_free_slots()
 	var/full_classes = 0
-	if(cached_combined_belt_large_size >= max_combined_belt_large)
-		full_classes += 1
-	if(cached_combined_belt_medium_size >= max_combined_belt_medium)
-		full_classes += 1
-	if(cached_combined_belt_small_size >= max_combined_belt_small)
-		full_classes += 1
+	for(var/i in 1 to 3)
+		if(remaining[i] <= 0)
+			full_classes += 1
 	switch(full_classes)
 		if(0)
 			return null
@@ -70,16 +121,12 @@
 /datum/object_system/storage/belt/proc/room_left_for_belt_class(belt_class)
 	switch(belt_class)
 		if(BELT_CLASS_SMALL)
-			return max(0, max_combined_belt_large - cached_combined_belt_large_size) + \
-				 max(0, max_combined_belt_medium - cached_combined_belt_medium_size) + \
-				 max(0, max_combined_belt_small - cached_combined_belt_small_size)
+			. = 1
 		if(BELT_CLASS_MEDIUM)
-			return max(0, max_combined_belt_large - cached_combined_belt_large_size) + \
-				 max(0, max_combined_belt_medium - cached_combined_belt_medium_size)
+			. = 2
 		if(BELT_CLASS_LARGE)
-			return max_combined_belt_large - cached_combined_belt_large_size
-		else
-			return 0
+			. = 3
+	return . ? compute_free_slots()[.] : 0
 
 /datum/object_system/storage/belt/why_failed_insertion_limits(obj/item/candidate)
 	if(!room_left_for_belt_class(candidate.belt_storage_class) >= candidate.belt_storage_size)

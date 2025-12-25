@@ -1,6 +1,75 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* UI Main *//
+
+/**
+ * @return TRUE if we did something (to interrupt clickchain)
+ */
+/datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force, suppressed)
+	if(!force && is_locked(actor.performer))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	if(check_on_found_hooks(actor))
+		return TRUE
+	if(!suppressed && !isnull(actor) && sfx_open)
+		// todo: variable sound
+		playsound(actor.performer, sfx_open, 50, 1, -5)
+	// todo: jiggle animation
+	show(actor.initiator)
+	return TRUE
+
+/datum/object_system/storage/proc/show(mob/viewer)
+	if(viewer.active_storage == src)
+		refresh_ui(viewer)
+		return TRUE
+
+	viewer.active_storage?.hide(viewer)
+	viewer.active_storage = src
+
+	create_ui(viewer)
+
+	parent.object_storage_opened(viewer)
+
+/**
+ * if user not specified, it is 'all'.
+ */
+/datum/object_system/storage/proc/hide(mob/viewer)
+	if(isnull(viewer))
+		for(var/mob/iterating as anything in ui_by_mob)
+			hide(iterating)
+		return
+
+	if(viewer.active_storage != src)
+		stack_trace("viewer didn't have active storage set right, wtf?")
+	else
+		viewer.active_storage = null
+
+	cleanup_ui(viewer)
+
+	parent.object_storage_closed(viewer)
+
+/datum/object_system/storage/proc/refresh(mob/viewer)
+	ui_refresh_queued = FALSE
+	if(isnull(viewer))
+		for(var/mob/iterating as anything in ui_by_mob)
+			refresh_ui(iterating)
+		return
+	refresh_ui(viewer)
+
+
+/datum/object_system/storage/proc/reconsider_mob_viewable(mob/user)
+	if(isnull(user))
+		for(var/mob/viewer as anything in ui_by_mob)
+			reconsider_mob_viewable(viewer)
+		return
+	if(accessible_by_mob(user))
+		return
+	hide(user)
+
 //* Helper Datums *//
 
 /**

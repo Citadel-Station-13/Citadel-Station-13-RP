@@ -2209,6 +2209,7 @@
 #include "code\game\objects\systems\storage\storage-filters.dm"
 #include "code\game\objects\systems\storage\storage-indirection.dm"
 #include "code\game\objects\systems\storage\storage-indirection_holder.dm"
+#include "code\game\objects\systems\storage\storage-insertion_removal.dm"
 #include "code\game\objects\systems\storage\storage-limits.dm"
 #include "code\game\objects\systems\storage\storage-screen_object.dm"
 #include "code\game\objects\systems\storage\storage-ui.dm"

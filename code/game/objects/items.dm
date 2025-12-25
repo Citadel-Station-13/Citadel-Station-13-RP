@@ -335,18 +335,8 @@
 			. += "It looks like it weighs a lot. You probably will have a hard time running with it."
 		if(40 to INFINITY)
 			. += "It looks like it weighs a ton. You really won't be doing much running with it."
-
-	// if(resistance_flags & INDESTRUCTIBLE)
-	// 	. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
-	// else
-	// 	if(resistance_flags & LAVA_PROOF)
-	// 		. += "[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!"
-	// 	if(resistance_flags & (ACID_PROOF | UNACIDABLE))
-	// 		. += "[src] looks pretty robust! It'd probably be able to withstand acid!"
-	// 	if(resistance_flags & FREEZE_PROOF)
-	// 		. += "[src] is made of cold-resistant materials."
-	// 	if(resistance_flags & FIRE_PROOF)
-	// 		. += "[src] is made of fire-retardant materials."
+	if(belt_storage_class != BELT_CLASS_INVALID)
+		. += "It looks like it can fit into a belt, and would use [belt_storage_size] [lowertext(global.belt_class_names[belt_storage_class])]-sized loop(s)."
 
 	// if(item_flags & (ITEM_CAN_BLOCK | ITEM_CAN_PARRY))
 	// 	var/datum/block_parry_data/data = return_block_parry_datum(block_parry_data)
