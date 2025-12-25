@@ -19,10 +19,10 @@
 /datum/object_system/storage/stack/uses_numerical_ui()
 	return TRUE
 
-/datum/object_system/storage/stack/rebuild_caches()
-	. = ..()
+/datum/object_system/storage/stack/rebuild_caches_impl(list/atom/movable/entities)
+	..()
 	cached_combined_stack_amount = 0
-	for(var/obj/item/stack/stack in real_contents_loc())
+	for(var/obj/item/stack/stack in entities)
 		cached_combined_stack_amount += stack.amount
 
 /datum/object_system/storage/stack/why_failed_insertion_limits(obj/item/candidate)

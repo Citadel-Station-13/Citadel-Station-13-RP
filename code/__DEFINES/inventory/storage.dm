@@ -113,13 +113,13 @@ GLOBAL_REAL_LIST(w_class_to_volume) = list(
 //* Item `belt_storage_class` defines *//
 
 /// Doesn't go in a belt
-#define BELT_CLASS_INVALID 0
+#define BELT_CLASS_INVALID 1
 /// small grenades, pill bottles, syringes, pistol mags, etc
-#define BELT_CLASS_SMALL 1
+#define BELT_CLASS_SMALL 2
 /// rifle mags, welding torches, crowbars, etc
-#define BELT_CLASS_MEDIUM 2
+#define BELT_CLASS_MEDIUM 3
 /// sidearms, rpds, etc
-#define BELT_CLASS_LARGE 3
+#define BELT_CLASS_LARGE 4
 
 #define BELT_CLASS_FOR_SMALL_CELL BELT_CLASS_SMALL
 #define BELT_CLASS_FOR_WEAPON_CELL BELT_CLASS_MEDIUM
@@ -127,6 +127,13 @@ GLOBAL_REAL_LIST(w_class_to_volume) = list(
 #define BELT_CLASS_FOR_LARGE_CELL BELT_CLASS_INVALID
 
 // TODO: DECLARE_ENUM
+
+GLOBAL_LIST(belt_class_names) = list(
+	"Invalid",
+	"Small",
+	"Medium",
+	"Large",
+)
 
 //* Item `belt_storage_size` defines *//
 

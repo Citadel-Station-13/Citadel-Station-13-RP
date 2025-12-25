@@ -325,11 +325,20 @@
 //* Caches *//
 
 /datum/object_system/storage/proc/rebuild_caches()
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	var/atom/indirection = real_contents_loc()
+	rebuild_caches_impl(indirection ? indirection.contents : list())
+
+/datum/object_system/storage/proc/rebuild_caches_impl(list/atom/movable/entities)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	cached_combined_volume = 0
 	cached_combined_weight_class = 0
 	var/old_weight = weight_cached
 	weight_cached = 0
-	for(var/obj/item/item in real_contents_loc())
+	for(var/obj/item/item in entities)
 		cached_combined_volume += item.get_weight_volume()
 		cached_combined_weight_class += item.get_weight_class()
 		weight_cached += item.get_weight()

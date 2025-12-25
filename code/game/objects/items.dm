@@ -155,8 +155,12 @@
 
 	//* Storage - Belts *//
 	/// Belt storage class
+	/// * IT IS NOT SAFE TO MODIFY THIS WITHOUT USING GETTER / SETTER PATTERN
+	/// TODO: getter / setter
 	var/belt_storage_class = BELT_CLASS_INVALID
 	/// Belt storage size
+	/// * IT IS NOT SAFE TO MODIFY THIS WITHOUT USING GETTER / SETTER PATTERN
+	/// TODO: getter / setter
 	var/belt_storage_size = BELT_SIZE_DEFAULT
 
 	//* Storage - Suit Storage *//

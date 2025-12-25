@@ -90,6 +90,12 @@
 	return ui_numerical_mode
 
 /**
+ * inspired by CM; allows tinting the background if something is nearly full
+ */
+/datum/object_system/storage/proc/get_ui_drawer_tint()
+	return null
+
+/**
  * * Will not respect random access limits in numerical mode.
  */
 /datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
@@ -121,6 +127,7 @@
 	// render boxes
 	boxes.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		LEFT+[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y + rows_needed - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	boxes.color = get_ui_drawer_tint()
 	// render closer
 	closer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// render items
@@ -293,6 +300,7 @@
 		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
 		BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	p_box.color = get_ui_drawer_tint()
 	// render closer on bottom
 	var/atom/movable/screen/storage/closer/closer = new
 	. += closer
