@@ -111,9 +111,8 @@
 	use_cell = TRUE
 	hitcost = 75
 
-/obj/item/melee/transforming/energy/sword/charge/loaded/Initialize(mapload)
-	. = ..()
-	bcell = new/obj/item/cell/device/weapon(src)
+/obj/item/melee/transforming/energy/sword/charge/loaded
+	cell_type = /obj/item/cell/basic/tier_1/weapon
 
 /obj/item/melee/transforming/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/transforming/energy/sword/charge))

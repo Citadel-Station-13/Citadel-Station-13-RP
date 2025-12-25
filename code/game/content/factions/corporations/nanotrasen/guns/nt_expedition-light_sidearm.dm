@@ -96,6 +96,7 @@
 	icon_state = "pistol-5"
 	base_icon_state = "pistol"
 	rendering_system = GUN_RENDERING_STATES
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	rendering_count = 5
 	rendering_static_overlay = "pistol-stripe"
 	ammo_max = 14
@@ -105,6 +106,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	name = "smg magazine (NT-9)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	rendering_static_overlay = "smg-stripe"

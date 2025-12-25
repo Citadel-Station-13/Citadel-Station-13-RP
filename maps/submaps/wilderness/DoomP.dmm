@@ -352,8 +352,8 @@
 /area/submap/DoomP)
 "bq" = (
 /obj/structure/table/rack,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DoomP)
 "br" = (

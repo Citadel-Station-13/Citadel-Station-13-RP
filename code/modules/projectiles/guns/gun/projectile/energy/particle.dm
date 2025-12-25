@@ -21,7 +21,7 @@
 	firemodes = /datum/firemode/energy{
 		cycle_cooldown = 1 SECONDS;
 	}
-	charge_cost = 200	//slightly more shots than lasers
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 16
 	var/safetycatch = 0 //if 1, won't let you fire in pressurised environment, rather than malfunctioning
 	var/obj/item/pressurelock/attached_safety
 
@@ -63,7 +63,7 @@
 	damage_force = 10
 	one_handed_penalty = 60 // The thing's heavy and huge.
 	accuracy = 70
-	charge_cost = 400 // 6 shots
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 8
 	self_recharge = 1
 	heavy = TRUE
 	charge_delay = 15 //won't start charging until it's ready to fire again
@@ -118,7 +118,7 @@
 		sparks.set_up(2, 1, T)
 		sparks.start()
 		obj_cell_slot.cell.charge = 0
-		obj_cell_slot.cell.maxcharge = 1 //just to avoid div/0 runtimes
+		obj_cell_slot.cell.max_charge = 1 //just to avoid div/0 runtimes
 		obj_cell_slot.cell.desc += " It seems to be burnt out!"
 		desc += " The casing is covered in scorch-marks."
 		// todo: transform_cycle_cooldown(datum/firing_cycle/cycle) as num

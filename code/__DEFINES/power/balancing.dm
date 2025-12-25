@@ -2,6 +2,8 @@
 
 //* Cells
 
+#define CELLRATE_DEFAULT 0.5
+
 /**
  * current calculations
  * cellrate 0.5 = 0.5 kj/unit
@@ -17,6 +19,31 @@
 
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
 GLOBAL_VAR_INIT(cellrate, 0.5)
+
+/// Divisible by 1, 2, 3.
+#define POWER_CELL_CAPACITY_BASE 1200
+
+/// base
+/// * this is a default; power cell datums can override this
+#define POWER_CELL_MULTIPLIER_SMALL 2
+/// vs small is 100% space-efficient
+/// * this is a default; power cell datums can override this
+#define POWER_CELL_MULTIPLIER_WEAPON 4
+/// vs weapon is 125% space-efficient
+/// * this is a default; power cell datums can override this
+#define POWER_CELL_MULTIPLIER_MEDIUM 10
+/// vs medium is 150% space-efficient
+/// * this is a default; power cell datums can override this
+#define POWER_CELL_MULTIPLIER_LARGE 30
+
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_SMALL (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_SMALL)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_MEDIUM (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_MEDIUM)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_LARGE (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_LARGE)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_WEAPON (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_WEAPON)
 
 //* Computers
 

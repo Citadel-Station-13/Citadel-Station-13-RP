@@ -1,4 +1,4 @@
-/obj/item/gun/projectile/energy/gun/fluff/gunsword
+/obj/item/gun/projectile/energy/gun/sword_buster
 	name = "Sword Buster"
 	desc = "The Sword Buster gun is custom built using the science behind a Golden Empire pistol. The cell can be removed in close range and used as energy shortsword."
 
@@ -16,27 +16,29 @@
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	charge_meter = 1
 
-	cell_type = /obj/item/cell/device/weapon/gunsword
+	cell_type = /obj/item/cell/sword_buster
 
 	modifystate = "gbuster"
 
 	firemodes = list(
-	list(mode_name="stun", charge_cost=240,projectile_type=/obj/projectile/beam/stun, modifystate="gbuster", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
+		list(mode_name="stun", charge_cost=240,projectile_type=/obj/projectile/beam/stun, modifystate="gbuster", fire_sound='sound/weapons/Taser.ogg'),
+		list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam, modifystate="gbuster", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
-
+/obj/item/gun/projectile/energy/gun/sword_buster/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
+	return istype(cell, /obj/item/cell/sword_buster) || ..()
 
 // -----------------gunsword battery--------------------------
-/obj/item/cell/device/weapon/gunsword
+/obj/item/cell/sword_buster
 	name = "Buster Cell"
 	desc = "The Buster Cell. It doubles as a sword when activated outside the gun housing."
 	icon = 'icons/vore/custom_guns_vr.dmi'
 	icon_state = "gsaberoff"
 	icon_override = 'icons/vore/custom_guns_vr.dmi'
 	item_state = "gsaberoff"
-	maxcharge = 2400
-	charge_amount = 20
+	atom_flags = NOBLOODY
+	max_charge = 4800
+	self_recharge_amount = 20
 	damage_force = 3
 	damage_tier = 4.75
 	throw_force = 5
@@ -44,19 +46,19 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 5)
+	damage_mode = NONE
 
 	var/active = 0
 	var/active_force = 30
 	var/active_throwforce = 20
 	var/active_w_class = WEIGHT_CLASS_BULKY
 	var/active_embed_chance = 0		//In the off chance one of these is supposed to embed, you can just tweak this var
-	atom_flags = NOBLOODY
 	var/lrange = 2
 	var/lpower = 2
 	var/lcolor = "#800080"
 
 
-/obj/item/cell/device/weapon/gunsword/proc/activate(mob/living/user)
+/obj/item/cell/sword_buster/proc/activate(mob/living/user)
 	if(active)
 		return
 	icon_state = "gsaber"
@@ -73,7 +75,7 @@
 
 
 
-/obj/item/cell/device/weapon/gunsword/proc/deactivate(mob/living/user)
+/obj/item/cell/sword_buster/proc/deactivate(mob/living/user)
 	if(!active)
 		return
 	playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
@@ -89,7 +91,7 @@
 	attack_verb = list()
 
 
-/obj/item/cell/device/weapon/gunsword/attack_self(mob/user, datum/event_args/actor/actor)
+/obj/item/cell/sword_buster/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -110,5 +112,5 @@
 	add_fingerprint(user)
 	return
 
-/obj/item/cell/device/weapon/gunsword/update_icon()
+/obj/item/cell/sword_buster/update_icon()
 	cut_overlay()

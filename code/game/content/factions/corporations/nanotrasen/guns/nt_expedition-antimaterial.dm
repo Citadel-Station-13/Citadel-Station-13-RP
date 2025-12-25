@@ -52,6 +52,7 @@
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/antimaterial
 	ammo_max = 5
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/antimaterial
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	magazine_type = MAGAZINE_TYPE_NORMAL
 
 /obj/item/ammo_magazine/nt_expedition/antimaterial/update_icon(updates)

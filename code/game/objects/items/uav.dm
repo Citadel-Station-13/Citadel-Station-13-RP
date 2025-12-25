@@ -45,7 +45,7 @@
 	var/no_masters_time = 0
 
 /obj/item/uav/loaded
-	cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_3/large
 
 /obj/item/uav/Initialize(mapload)
 	. = ..()
@@ -115,7 +115,7 @@
 			cell.forceMove(get_turf(src))
 			cell = null
 
-	else if(istype(I, /obj/item/cell) && !cell)
+	else if(istype(I, /obj/item/cell/medium) && !cell)
 		if(do_after(user, 3 SECONDS, src))
 			to_chat(user, SPAN_NOTICE("You insert [I] into [nickname]."))
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
@@ -262,7 +262,7 @@
 	return FALSE
 
 /obj/item/uav/proc/get_status_string()
-	return "[nickname] - [get_x(src)],[get_y(src)],[get_z(src)] - I:[health]/[initial(health)] - C:[cell ? "[cell.charge]/[cell.maxcharge]" : "Not Installed"]"
+	return "[nickname] - [get_x(src)],[get_y(src)],[get_z(src)] - I:[health]/[initial(health)] - C:[cell ? "[cell.charge]/[cell.max_charge]" : "Not Installed"]"
 
 /obj/item/uav/proc/add_master(var/mob/living/M)
 	LAZYDISTINCTADD(masters, WEAKREF(M))

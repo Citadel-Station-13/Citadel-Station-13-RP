@@ -17,7 +17,8 @@
 	/// transfer amount per second
 	var/transfer_rate = 1000
 	/// type of cell to spawn
-	var/cell_type = /obj/item/cell/high
+	var/cell_type = /obj/item/cell/basic/tier_1/medium
+	var/cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	/// panel open?
 	var/opened = FALSE
 	/// currently inducing?
@@ -33,7 +34,7 @@
 
 /obj/item/inducer/Initialize(mapload)
 	. = ..()
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type)
+	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type, cell_accept)
 	cell_slot.receive_emp = TRUE
 	cell_slot.receive_inducer = TRUE
 	cell_slot.remove_yank_offhand = TRUE
@@ -44,7 +45,7 @@
 /obj/item/inducer/examine(mob/user, dist)
 	. = ..()
 	if(!isnull(obj_cell_slot.cell))
-		. += "<br><span class='notice'>Its display shows: [round(obj_cell_slot.cell.charge)] / [obj_cell_slot.cell.maxcharge].</span>"
+		. += "<br><span class='notice'>Its display shows: [round(obj_cell_slot.cell.charge)] / [obj_cell_slot.cell.max_charge].</span>"
 	else
 		. += "<br><span class='notice'>Its display is dark.</span>"
 	if(opened)
@@ -183,7 +184,7 @@
 	icon_state = "inducer-syndi"
 	item_state = "inducer-syndi"
 	transfer_rate = 2000
-	cell_type = /obj/item/cell/super
+	cell_type = /obj/item/cell/basic/tier_3/medium
 	inducer_flags = NONE
 
 /*
@@ -217,7 +218,7 @@
 	var/obj/item/cell/C = get_cell(TRUE)
 	if(C)
 		things_to_induce += C
-		if(C.charge >= C.maxcharge)
+		if(C.charge >= C.max_charge)
 			return INDUCER_SCAN_FULL
 
 /**
@@ -234,7 +235,7 @@
 	. = ..()
 	var/obj/item/cell/C = get_cell()
 	if(C)
-		var/use = clamp(C.maxcharge - C.charge, 0, amount)
+		var/use = clamp(C.max_charge - C.charge, 0, amount)
 		C.give(use)
 		return use
 	else

@@ -85,6 +85,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/storage/item)
 
 /**
  * we are centered.
+ * * this includes the border, but not the padding.
  */
 /atom/movable/screen/storage/item/volumetric/proc/set_pixel_width(width)
 	overlays.len = 0

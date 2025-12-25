@@ -57,6 +57,7 @@
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	ammo_max = 6
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader/update_icon(updates)
@@ -80,6 +81,7 @@
 	base_icon_state = "magazine"
 	rendering_static_overlay = "magazine-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	ammo_max = 10
 
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
@@ -87,6 +89,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	name = "smg magazine (NT-9-LR)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	rendering_static_overlay = "smg-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 20

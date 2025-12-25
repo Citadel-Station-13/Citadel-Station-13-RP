@@ -5072,7 +5072,7 @@
 "dsH" = (
 /obj/machinery/cell_charger,
 /obj/structure/table/standard,
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_2/medium{
 	pixel_x = 2;
 	pixel_y = -1
 	},
@@ -8794,9 +8794,7 @@
 "fOz" = (
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -12815,7 +12813,7 @@
 /area/medical/virologytransiteast)
 "igE" = (
 /obj/structure/table/rack/shelf,
-/obj/item/cell,
+/obj/item/cell/basic/tier_1/large,
 /obj/item/module/power_control,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/warehouse)
@@ -16471,11 +16469,11 @@
 /obj/machinery/newscaster{
 	pixel_x = 32
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 6;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 6;
 	pixel_y = -4
 	},
@@ -20355,7 +20353,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/power/apc/high/south_mount,
+/obj/machinery/power/apc/large_cell/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -21401,7 +21399,7 @@
 	dir = 6
 	},
 /obj/machinery/cell_charger,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_2/medium,
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
 "nmZ" = (
@@ -23167,11 +23165,11 @@
 /obj/item/spaceflare{
 	icon_state = "implantpad-0"
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_2/medium{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/cell/high{
+/obj/item/cell/basic/tier_2/medium{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -23616,7 +23614,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/power/apc/super/east_mount{
+/obj/machinery/power/apc/large_cell/tier_2/east_mount{
 	name = "east bump";
 	pixel_x = 24
 	},

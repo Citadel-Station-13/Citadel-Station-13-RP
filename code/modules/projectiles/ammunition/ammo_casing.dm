@@ -15,6 +15,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
+	weight_volume = ITEM_VOLUME_AMMO_CASING
 
 	//* Casing *//
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm

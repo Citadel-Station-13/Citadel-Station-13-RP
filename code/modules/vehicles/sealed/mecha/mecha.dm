@@ -444,7 +444,7 @@
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new /obj/item/cell/high(src)
+	cell = new /obj/item/cell/basic/tier_1/large(src)
 
 /obj/vehicle/sealed/mecha/get_cell(inducer)
 	return cell
@@ -2534,7 +2534,7 @@
 		if(mecha.get_charge())
 			mecha.spark_system.start()
 			mecha.cell.charge -= min(20,mecha.cell.charge)
-			mecha.cell.maxcharge -= min(20,mecha.cell.maxcharge)
+			mecha.cell.max_charge -= min(20,mecha.cell.max_charge)
 	return
 
 
@@ -2588,7 +2588,7 @@
 
 /obj/vehicle/sealed/mecha/proc/update_cell_alerts()
 	if(occupant_legacy && cell)
-		var/cellcharge = cell.charge/cell.maxcharge
+		var/cellcharge = cell.charge/cell.max_charge
 		switch(cellcharge)
 			if(0.75 to INFINITY)
 				occupant_legacy.clear_alert("charge")
