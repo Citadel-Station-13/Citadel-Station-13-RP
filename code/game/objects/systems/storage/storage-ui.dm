@@ -96,7 +96,9 @@
 	return null
 
 /datum/object_system/storage/proc/get_ui_predicted_max_items()
-	return max_items ? max_items : ceil(STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x))
+	// good ol' widescreen predict length of 9 if max isn't set
+	// this is so things don't break when they expect an answer
+	return max_items || 9
 
 /**
  * * Will not respect random access limits in numerical mode.
