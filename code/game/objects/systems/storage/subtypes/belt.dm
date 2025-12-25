@@ -37,11 +37,11 @@
 	for(var/i in 1 to 3)
 		if(used_slots[i] > max_slots[i])
 			has_overrun = TRUE
-		rendered_loop_types += "[used_slots[i] > max_slots[i] ? used_slots[i] : "<span color='bad'><b>[used_slots[i]]</b></span>"]/[max_slots[i]] \
+		rendered_loop_types += "<b>[used_slots[i] > max_slots[i] ? SPAN_DANGER("[used_slots[i]]") : used_slots[i]]/[max_slots[i]]</b> \
 		[lowertext(global.belt_class_names[i + 1])]"
 	examine_list += SPAN_NOTICE("This is a storage item with <b>belt loops</b>. There are \
-	[english_list(rendered_loop_types)] loops on it.[has_overrun ? " Some of the larger loops are \
-	currently being filled up by excess items of smaller size." : ""]")
+	[english_list(rendered_loop_types)] loops on it.[has_overrun ? SPAN_WARNING(" Some of the larger loops are \
+	currently being filled up by excess items of smaller size.") : ""]")
 
 /**
  * @return list(small, medium, large, )
