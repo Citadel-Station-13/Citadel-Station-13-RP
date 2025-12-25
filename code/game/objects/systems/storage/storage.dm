@@ -583,8 +583,9 @@
 
 /**
  * handle moving an item in
- *
  * we can assume this proc will do potentially literally anything with the item, so.
+ *
+ * @return inserted item or null (null doesn't mean insert failed; for example stacks can be merged in)
  */
 /datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move, from_hook)
 	inserting.item_flags |= ITEM_IN_STORAGE
@@ -600,6 +601,7 @@
 			update_containing_weight(inserting_weight)
 	cached_combined_volume += inserting.get_weight_volume()
 	cached_combined_weight_class += inserting.get_weight_class()
+	return inserting
 
 /**
  * @return TRUE / FALSE
@@ -660,8 +662,9 @@
 
 /**
  * handle moving an item out
- *
  * we can assume this proc will do potentially literally anything with the item, so..
+ *
+ * @return moved item
  */
 /datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where, no_move, from_hook)
 	removing.item_flags &= ~ITEM_IN_STORAGE

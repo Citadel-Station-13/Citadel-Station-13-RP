@@ -72,7 +72,7 @@
 		other.add(stack.amount, TRUE)
 		// this should delete the stack (?!)
 		stack.use(stack.amount)
-		return TRUE
+		return null
 	inserting = stack
 	return ..()
 

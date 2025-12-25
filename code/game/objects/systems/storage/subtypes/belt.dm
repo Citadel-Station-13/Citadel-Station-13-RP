@@ -93,21 +93,25 @@
 
 
 /datum/object_system/storage/belt/physically_insert_item(obj/item/inserting, no_move, from_hook)
-	..()
-	switch(inserting.belt_storage_class)
+	var/obj/item/actually_inserted = . = ..()
+	if(!istype(actually_inserted))
+		return
+	switch(actually_inserted.belt_storage_class)
 		if(BELT_CLASS_SMALL)
-			cached_combined_belt_small_size += inserting.belt_storage_size
+			cached_combined_belt_small_size += actually_inserted.belt_storage_size
 		if(BELT_CLASS_MEDIUM)
-			cached_combined_belt_medium_size += inserting.belt_storage_size
+			cached_combined_belt_medium_size += actually_inserted.belt_storage_size
 		if(BELT_CLASS_LARGE)
-			cached_combined_belt_large_size += inserting.belt_storage_size
+			cached_combined_belt_large_size += actually_inserted.belt_storage_size
 
 /datum/object_system/storage/belt/physically_remove_item(obj/item/removing, atom/to_where, no_move, from_hook)
-	..()
-	switch(removing.belt_storage_class)
+	var/obj/item/actually_removed = . = ..()
+	if(!istype(actually_removed))
+		return
+	switch(actually_removed.belt_storage_class)
 		if(BELT_CLASS_SMALL)
-			cached_combined_belt_small_size -= removing.belt_storage_size
+			cached_combined_belt_small_size -= actually_removed.belt_storage_size
 		if(BELT_CLASS_MEDIUM)
-			cached_combined_belt_medium_size -= removing.belt_storage_size
+			cached_combined_belt_medium_size -= actually_removed.belt_storage_size
 		if(BELT_CLASS_LARGE)
-			cached_combined_belt_large_size -= removing.belt_storage_size
+			cached_combined_belt_large_size -= actually_removed.belt_storage_size
