@@ -6848,8 +6848,7 @@
 /obj/structure/closet{
 	name = "robotics parts"
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_1/large{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -6861,18 +6860,15 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_1/large{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_1/large{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_1/large{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -7161,26 +7157,26 @@
 	},
 /area/centcom/security)
 "tc" = (
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -9858,18 +9854,18 @@
 "Ad" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -16119,15 +16115,15 @@
 "Ql" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -16283,41 +16279,41 @@
 "QN" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -19684,12 +19680,8 @@
 /area/centcom/security)
 "Zk" = (
 /obj/structure/table/standard,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_1/large,
+/obj/item/cell/basic/tier_1/large,
 /obj/machinery/cell_charger,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/purple/border,
@@ -19851,18 +19843,18 @@
 /area/holodeck/holodorm/source_boxing)
 "ZE" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

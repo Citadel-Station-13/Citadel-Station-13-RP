@@ -8,7 +8,7 @@
 	icon_state = "welder"
 	item_state = "welder"
 	slot_flags = SLOT_BELT
-	tool_behaviour = TOOL_WELDER
+	tool_behavior = TOOL_WELDER
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	belt_storage_class = BELT_CLASS_MEDIUM
 
@@ -586,41 +586,42 @@
 	max_fuel = 0	//We'll handle the consumption later.
 	item_state = "ewelder"
 	worth_intrinsic = 70
-	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 24	//The rough equivalent of 1 unit of fuel, based on us wanting 10 welds per battery
-	var/cell_type = /obj/item/cell/device
 	var/use_external_power = 0	//If in a borg or hardsuit, this needs to = 1
 	flame_color = "#00CCFF"  // Blue-ish, to set it apart from the gas flames.
 	acti_sound = /datum/soundbyte/sparks
 	deac_sound = /datum/soundbyte/sparks
 
-/obj/item/weldingtool/electric/unloaded
-	cell_type = null
+	var/cell_type = /obj/item/cell/basic/tier_1/small
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 /obj/item/weldingtool/electric/Initialize(mapload)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 	. = ..()
-	if(cell_type == null)
-		update_icon()
-	else if(cell_type)
-		power_supply = new cell_type(src)
-	else
-		power_supply = new /obj/item/cell/device(src)
 	update_icon()
 
-/obj/item/weldingtool/electric/get_cell(inducer)
-	return power_supply
+/obj/item/weldingtool/electric/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	. = ..()
+	update_icon()
+
+/obj/item/weldingtool/electric/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+	. = ..()
+	update_icon()
+	setWelding(FALSE)
 
 /obj/item/weldingtool/electric/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) > 1)
 		return
 	else					// The << need to stay, for some reason no they dont
+		var/obj/item/cell/power_supply = obj_cell_slot.cell
 		if(power_supply)
 			. += "[icon2html(thing = src, target = world)] The [src] has [get_fuel()] charge left."
 		else
 			. += "[icon2html(thing = src, target = world)] The [src] has no power cell!"
 
 /obj/item/weldingtool/electric/get_fuel()
+	var/obj/item/cell/power_supply = get_cell()
 	if(use_external_power)
 		var/obj/item/cell/external = get_external_power_supply()
 		if(external)
@@ -631,15 +632,17 @@
 		return 0
 
 /obj/item/weldingtool/electric/get_max_fuel()
+	var/obj/item/cell/power_supply = get_cell()
 	if(use_external_power)
 		var/obj/item/cell/external = get_external_power_supply()
 		if(external)
-			return external.maxcharge
+			return external.max_charge
 	else if(power_supply)
-		return power_supply.maxcharge
+		return power_supply.max_charge
 	return 0
 
 /obj/item/weldingtool/electric/remove_fuel(var/amount = 1, var/mob/M = null)
+	var/obj/item/cell/power_supply = get_cell()
 	if(!welding)
 		return 0
 	if(get_fuel() >= amount)
@@ -658,36 +661,6 @@
 		update_icon()
 		return 0
 
-/obj/item/weldingtool/electric/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(user.get_inactive_held_item() == src)
-		if(power_supply)
-			power_supply.update_icon()
-			user.put_in_hands(power_supply)
-			power_supply = null
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
-			setWelding(0)
-			update_icon()
-			return
-		..()
-	else
-		return ..()
-
-/obj/item/weldingtool/electric/attackby(obj/item/W, mob/user as mob)
-	if(istype(W, /obj/item/cell))
-		if(istype(W, /obj/item/cell/device))
-			if(!power_supply)
-				if(!user.attempt_insert_item_for_installation(W, src))
-					return
-				power_supply = W
-				to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
-				update_icon()
-			else
-				to_chat(user, "<span class='notice'>\The [src] already has a cell.</span>")
-		else
-			to_chat(user, "<span class='notice'>\The [src] cannot use that type of cell.</span>")
-	else
-		..()
-
 /obj/item/weldingtool/electric/proc/get_external_power_supply()
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
@@ -702,12 +675,14 @@
 					return suit.cell
 	return null
 
+/obj/item/weldingtool/electric/unloaded
+	cell_type = null
+
 /obj/item/weldingtool/electric/mounted
 	use_external_power = 1
 
 /obj/item/weldingtool/electric/mounted/cyborg
 	tool_speed = 0.5
-
 
 /obj/item/weldingtool/electric/mounted/RIGset
 	name = "arc welder"

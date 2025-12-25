@@ -26,6 +26,7 @@
 	item_state = "syringe_kit"
 	max_single_weight_class = WEIGHT_CLASS_SMALL
 	max_combined_volume = STORAGE_VOLUME_BOX
+	weight_volume = ITEM_VOLUME_BOX
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	worth_intrinsic = 25

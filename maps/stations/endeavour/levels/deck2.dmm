@@ -12333,7 +12333,6 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	dir = 2;
 	pixel_x = 0;
 	pixel_y = 21
@@ -13872,7 +13871,8 @@
 "jGo" = (
 /obj/structure/table/steel,
 /obj/machinery/recharger,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_1/small,
+/obj/item/cell/basic/tier_1/weapon,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "jHd" = (
@@ -15996,7 +15996,6 @@
 /area/hallway/d2amidportmaint/endeavour)
 "lnu" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	dir = 2;
 	pixel_x = 0;
 	pixel_y = 21
@@ -16217,7 +16216,6 @@
 /area/medical/patient_wing)
 "luU" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	dir = 2;
 	pixel_x = 0;
 	pixel_y = 21
@@ -16761,7 +16759,6 @@
 /area/assembly/robotics)
 "lOB" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	dir = 2;
 	pixel_x = 0;
 	pixel_y = 21
@@ -24658,7 +24655,6 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	dir = 2;
 	pixel_x = 0;
 	pixel_y = 21

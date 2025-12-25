@@ -403,7 +403,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	if(exclude_components && assembly)
 		if(target in assembly.assembly_components)
 			return FALSE
-		if(target == assembly.battery)
+		if(target == assembly.obj_cell_slot?.cell)
 			return FALSE
 	if(!exclude_outside && target.Adjacent(acting_object) && isturf(target.loc))
 		return TRUE

@@ -329,25 +329,25 @@
 "bE" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = -8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = -4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = -1
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 3
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -1918,11 +1918,11 @@
 /obj/machinery/newscaster{
 	pixel_x = 39
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 6;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_2/weapon{
 	pixel_x = 6;
 	pixel_y = -4
 	},
@@ -3994,7 +3994,7 @@
 /obj/structure/cable/white{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/hyper/west_mount,
+/obj/machinery/power/apc/large_cell/west_mount,
 /obj/machinery/button/remote/blast_door{
 	id = "armorylight";
 	name = "Emergency bridge Acccess";
@@ -5059,7 +5059,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/super/north_mount,
+/obj/machinery/power/apc/large_cell/north_mount,
 /obj/machinery/computer/ship/helm,
 /turf/simulated/floor/carpet/oracarpet,
 /area/shuttle/personalmicro2)
@@ -5840,7 +5840,7 @@
 	pixel_y = -30;
 	pixel_x = 10
 	},
-/obj/machinery/power/apc/super/south_mount,
+/obj/machinery/power/apc/large_cell/south_mount,
 /obj/structure/cable,
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/personalmicro1)
@@ -7879,7 +7879,7 @@
 	pixel_y = 30;
 	pixel_x = -14
 	},
-/obj/machinery/power/apc/super/north_mount,
+/obj/machinery/power/apc/large_cell/north_mount,
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
@@ -8161,7 +8161,7 @@
 	pixel_y = -30;
 	pixel_x = 10
 	},
-/obj/machinery/power/apc/super/south_mount,
+/obj/machinery/power/apc/large_cell/south_mount,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -8334,7 +8334,7 @@
 "Ji" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/cell_charger,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},

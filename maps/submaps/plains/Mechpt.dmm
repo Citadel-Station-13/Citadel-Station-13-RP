@@ -22,8 +22,8 @@
 "f" = (
 /obj/structure/railing,
 /obj/structure/table/woodentable,
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /turf/template_noop,
 /area/submap/Mechpt)
 "g" = (
@@ -110,8 +110,8 @@
 	dir = 1
 	},
 /obj/structure/table/woodentable,
-/obj/item/cell/high,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/weapon,
 /turf/template_noop,
 /area/submap/Mechpt)
 "v" = (

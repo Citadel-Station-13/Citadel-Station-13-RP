@@ -84,7 +84,7 @@
 		if(R.module)
 			R.module.respawn_consumable(R, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1) / 250) //consumables are magical, apparently
 		if(R.cell && !R.cell.fully_charged())
-			var/diff = min(R.cell.maxcharge - R.cell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
+			var/diff = min(R.cell.max_charge - R.cell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
 			var/charge_used = cell.use(diff)
 			R.cell.give(charge_used)
 
@@ -129,7 +129,7 @@
 					storedmod.damage = 0
 			var/obj/item/cell/rigcell = wornrig.get_cell()
 			if(rigcell)
-				var/diff = min(rigcell.maxcharge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
+				var/diff = min(rigcell.max_charge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
 				var/charge_used = cell.use(diff)
 				rigcell.give(charge_used)
 

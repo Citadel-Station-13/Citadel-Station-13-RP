@@ -2628,7 +2628,6 @@
 /area/shuttle/udang/main)
 "ahr" = (
 /obj/machinery/power/apc/alarms_hidden/south_mount{
-	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},
 /obj/structure/cable/yellow,
@@ -2665,7 +2664,7 @@
 	dir = 9
 	},
 /obj/structure/cable/cyan,
-/obj/machinery/power/apc/hyper/south_mount,
+/obj/machinery/power/apc/large_cell/tier_3/south_mount,
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
 "ahw" = (
@@ -7553,7 +7552,7 @@
 /obj/random/tool/power,
 /obj/random/tool/power,
 /obj/random/tool/power,
-/obj/item/cell/device/weapon/recharge/alien,
+/obj/item/cell/regen/fractal/weapon,
 /obj/random/tool/alien,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -11580,9 +11579,9 @@
 /area/space)
 "aFr" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/cell/hyper,
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_4/large,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /obj/item/storage/toolbox/syndicate{
 	pixel_y = 11
 	},
@@ -16434,7 +16433,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/item/gun/projectile/energy/gun/fluff/gunsword,
+/obj/item/gun/projectile/energy/gun/sword_buster,
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
@@ -22728,12 +22727,12 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
 "jQK" = (
@@ -24508,7 +24507,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "nOM" = (
-/obj/machinery/power/apc/high/east_mount,
+/obj/machinery/power/apc/large_cell/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
@@ -25121,7 +25120,6 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/alarms_hidden/south_mount{
-	cell_type = /obj/item/cell/super;
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -26956,7 +26954,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
-/obj/machinery/power/apc/hyper/west_mount,
+/obj/machinery/power/apc/large_cell/tier_3/west_mount,
 /obj/structure/cable/pink{
 	icon_state = "0-8";
 	dir = 1

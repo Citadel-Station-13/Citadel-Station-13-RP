@@ -15,7 +15,8 @@
 		/obj/item/assembly/prox_sensor = 3,
 		/obj/item/storage/toolbox/electrical,
 		/obj/item/flash = 4,
-		/obj/item/cell/high = 2,
+		/obj/item/cell/basic/tier_3/medium = 2,
+		/obj/item/cell/basic/tier_3/large = 2,
 	)
 	worth = 250 // literally only because of the flashes; nerf flashes when?
 

@@ -45,7 +45,7 @@
 	suit_type = "dense alien"
 	emp_protection = 40 //change this to 30 if too high.
 	req_access = list(ACCESS_FACTION_SYNDICATE)
-	cell_type =  /obj/item/cell/hyper
+	cell_type =  /obj/item/cell/basic/tier_4/large
 	initial_modules = list(
 		/obj/item/hardsuit_module/mounted/energy_blade,
 		/obj/item/hardsuit_module/sprinter,
@@ -61,7 +61,7 @@
 	icon_state = "voxstealth_rig"
 	emp_protection = 40 //change this to 30 if too high.
 	req_access = list(ACCESS_FACTION_SYNDICATE)
-	cell_type =  /obj/item/cell/hyper
+	cell_type =  /obj/item/cell/basic/tier_4/large
 	initial_modules = list(
 		/obj/item/hardsuit_module/stealth_field,
 		/obj/item/hardsuit_module/electrowarfare_suite,

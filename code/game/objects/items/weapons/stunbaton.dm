@@ -21,16 +21,17 @@
 
 	/// Starting cell type
 	var/cell_type
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 	/// Shock stun power
-	var/stun_power = 60
+	var/stun_power = 45
 	/// Electrocute act flags
 	var/stun_electrocute_flags = ELECTROCUTE_ACT_FLAG_DO_NOT_STUN
 	/// Sound for the stun
 	var/stun_sound = 'sound/weapons/Egloves.ogg'
 
 	/// Charge cost per hit in cell units
-	var/charge_cost = 240
+	var/charge_cost = POWER_CELL_CAPACITY_WEAPON / 16
 
 	/// Are we on?
 	var/active = FALSE
@@ -42,13 +43,7 @@
 
 /obj/item/melee/baton/Initialize(mapload)
 	. = ..()
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type)
-	cell_slot.legacy_use_device_cells = TRUE
-	cell_slot.remove_yank_context = TRUE
-	cell_slot.remove_yank_offhand = TRUE
-	cell_slot.receive_inducer = TRUE
-	cell_slot.primary = TRUE
-	cell_slot.receive_emp = TRUE
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 	update_icon()
 
 /obj/item/melee/baton/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
@@ -236,11 +231,11 @@
 		. += SPAN_NOTICE("[src] does not have a power source installed.")
 
 /obj/item/melee/baton/loaded
-	cell_type = /obj/item/cell/device/weapon
+	cell_type = /obj/item/cell/basic/tier_1/weapon
 
 //secborg stun baton module
 /obj/item/melee/baton/robot
-	charge_cost = 500
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 10
 	legacy_use_external_power = TRUE
 
 //Makeshift stun baton. Replacement for stun gloves.
@@ -252,13 +247,10 @@
 	damage_force = 3
 	throw_force = 5
 	stun_power = 60	//same force as a stunbaton, but uses way more charge.
-	charge_cost = 2500
+	charge_cost = 4000
 	attack_verb = list("poked")
 	slot_flags = SLOT_BACK
-
-/obj/item/melee/baton/cattleprod/Initialize(mapload)
-	. = ..()
-	obj_cell_slot.legacy_use_device_cells = FALSE
+	cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 /obj/item/melee/baton/cattleprod/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/bluespace_crystal))
@@ -280,7 +272,7 @@
 	damage_force = 3
 	throw_force = 5
 	stun_power = 60	//same force as a stunbaton, but uses way more charge.
-	charge_cost = 2500
+	charge_cost = 4000
 	attack_verb = list("poked")
 	slot_flags = null
 
@@ -339,7 +331,7 @@
 	throw_force = 2
 	stun_power = 120
 	stun_electrocute_flags = NONE
-	charge_cost = 1150
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 2
 	stun_sound = 'sound/effects/lightningshock.ogg'
 
 /obj/item/melee/baton/loaded/mini/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
@@ -377,7 +369,7 @@
 	damage_tier = 3
 
 	// :trol:
-	cell_type = /obj/item/cell/infinite
+	cell_type = /obj/item/cell/infinite/weapon
 
 /obj/item/melee/baton/electrostaff/Initialize(mapload)
 	. = ..()

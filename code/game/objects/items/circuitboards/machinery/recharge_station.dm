@@ -14,5 +14,5 @@
 		/obj/item/stock_parts/manipulator = 2,
 	)
 	def_components = list(
-		/obj/item/cell = /obj/item/cell/super
+		/obj/item/cell = /obj/item/cell/basic/tier_1/large,
 	)

@@ -1899,7 +1899,7 @@
 	pixel_y = 4
 	},
 /obj/item/t_scanner,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},

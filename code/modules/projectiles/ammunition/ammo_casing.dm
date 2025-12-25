@@ -11,6 +11,7 @@
 	pickup_sound = 'sound/items/pickup/ring.ogg'
 	belt_storage_class = BELT_CLASS_SMALL
 	belt_storage_size = BELT_SIZE_AMMO_CASING
+	weight_volume = ITEM_VOLUME_AMMO_CASING
 
 	//* Casing *//
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm
