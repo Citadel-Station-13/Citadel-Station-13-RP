@@ -858,9 +858,13 @@
 	var/atom/indirection = real_contents_loc()
 	var/i = length(things)
 	. = TRUE
+	// we're driven on 0.5 second ticks; we want to pause after half a MODLPS
+	// might want to adjust this later and use a parameter or something lol
+	var/pause_after = mass_operation_dumping_limit_per_second * 0.5
+	var/transferred = 0
 	while(i > 0)
 		// stop if overtaxed
-		if(TICK_CHECK || (. > mass_operation_dumping_limit_per_second))
+		if(TICK_CHECK || (transferred > pause_after))
 			break
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
@@ -882,6 +886,10 @@
 		if(removed == transferring)
 			// but only go down if we got rid of the real item
 			i--
+		// always count the cycle as transferred,
+		// if you have invalid objects and it gets in the way of MODLPS
+		// then that's on you, stop powergaming.
+		transferred++
 	things.Cut(i + 1, length(things) + 1)
 	return . && length(things)
 
