@@ -30,14 +30,14 @@
 	return FALSE
 
 /datum/object_system/storage/belt/handle_storage_examine(list/examine_list)
-	var/list/free_slots = compute_free_slots()
+	var/list/free_slots = list(cached_combined_belt_small_size, cached_combined_belt_medium_size, cached_combined_belt_large_size)
 	var/list/max_slots = list(max_combined_belt_small, max_combined_belt_medium, max_combined_belt_large)
 	var/list/rendered_loop_types = list()
 	var/has_overrun
 	for(var/i in 1 to 3)
 		if(free_slots[i] < 0)
 			has_overrun = TRUE
-		rendered_loop_types += "[free_slots[i] > 0 ? free_slots[i] : "<span class='bad'>[free_slots[i]]</span>"]/[max_slots[i]] \
+		rendered_loop_types += "[free_slots[i] > max_slots[i] ? free_slots[i] : "<span class='bad'>[free_slots[i]]</span>"]/[max_slots[i]] \
 		[lowertext(global.belt_class_names[i + 1])]"
 	examine_list += SPAN_NOTICE("This is a storage item with <b>belt loops</b>. There are \
 	[english_list(rendered_loop_types)] loops on it.[has_overrun ? " Some of the larger loops are \

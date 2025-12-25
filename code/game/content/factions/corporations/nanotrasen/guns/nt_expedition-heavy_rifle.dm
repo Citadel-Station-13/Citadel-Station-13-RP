@@ -113,6 +113,7 @@
 	item_renderer = /datum/gun_item_renderer/empty_state
 	internal_magazine = TRUE
 	internal_magazine_size = 1
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
@@ -129,6 +130,7 @@
 	base_icon_state = "semi"
 	item_renderer = /datum/gun_item_renderer/empty_state
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
@@ -145,6 +147,7 @@
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
 	name = "light machine gun"
@@ -153,13 +156,14 @@
 		The tests of the Mod.2 design quickly turned development towards a
 		general purpose machine gun (GPMG) version of the Ranger series, the “Hailmaker.”.
 		Sporting a frame-mounted cryo-stabilized heavy barrel, a feed tray for quickly reloading
-		via an assistant gunner, a belt box for 100 rounds of 7.5x54mm, and a gyroscopic assist system,
+		via an assistant gunner, and a gyroscopic assist system,
 		this weapon is seen in the guard towers of base camps and atop vehicles in addition to
 		dedicated machine gun teams. The patter this weapon makes as it suppresses any hostile
 		force makes this weapon's name a logical choice.
 	"} + "<br>"
 	icon_state = "lmg"
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/drum
+	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN
 
 	// todo: rendering; how are we going to render both unloaded and open?
 	// todo: rendering; maybe expand the render additional to allow for generation of a list?

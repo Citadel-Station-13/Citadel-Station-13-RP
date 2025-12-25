@@ -68,6 +68,22 @@
 /// Essentially means it cannot be picked up or placed in an inventory, ex: Mech Parts, Safe - Can not fit in Boh
 #define WEIGHT_CLASS_GIGANTIC 6
 
+//* Weight Classes - Items *//
+
+// tiny holdout pistols
+// * probably should stop existing ASAP
+#define WEIGHT_CLASS_FOR_HOLDOUT_SIDEARM WEIGHT_CLASS_SMALL
+// big revolvers, magpistols, etc
+#define WEIGHT_CLASS_FOR_SIDEARM WEIGHT_CLASS_NORMAL
+// energy carbines and similar
+#define WEIGHT_CLASS_FOR_SHORT_RIFLE WEIGHT_CLASS_BULKY
+// full sized ARs
+#define WEIGHT_CLASS_FOR_LONG_RIFLE WEIGHT_CLASS_HUGE
+// self-documenting name
+#define WEIGHT_CLASS_FOR_SHOTGUN WEIGHT_CLASS_HUGE
+// LMGs and similar
+#define WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN WEIGHT_CLASS_HUGE
+
 //* Volumetrics - Default Item Volumes *//
 
 #define WEIGHT_VOLUME_TINY				0.5

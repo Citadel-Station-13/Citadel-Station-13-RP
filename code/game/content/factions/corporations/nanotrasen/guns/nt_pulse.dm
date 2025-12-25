@@ -66,6 +66,7 @@
 		count = 4;
 		use_empty = TRUE;
 	}
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 //* Carbine *//
 
@@ -113,6 +114,7 @@
 		count = 4;
 		use_empty = TRUE;
 	}
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 //* Projectiles *//
 

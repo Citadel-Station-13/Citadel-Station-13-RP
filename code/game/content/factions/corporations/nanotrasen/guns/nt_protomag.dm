@@ -79,6 +79,7 @@
 		/datum/prototype/material/copper::id = 750,
 		/datum/prototype/material/lead::id = 250,
 	)
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 	legacy_discharged_fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
 
@@ -127,6 +128,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 		/datum/prototype/material/copper::id = 1200,
 		/datum/prototype/material/lead::id = 450,
 	)
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 	legacy_discharged_fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
 
