@@ -57,7 +57,7 @@
 			if(BELT_CLASS_LARGE)
 				cached_combined_belt_large_size += item.belt_storage_size
 
-/datum/object_system/storage/can_be_inserted(obj/item/inserting, datum/event_args/actor/actor, silent)
+/datum/object_system/storage/belt/can_be_inserted(obj/item/inserting, datum/event_args/actor/actor, silent)
 	if(inserting.belt_storage_class == BELT_CLASS_INVALID)
 		if(!silent)
 			actor?.chat_feedback(
@@ -90,7 +90,6 @@
 
 /datum/object_system/storage/belt/check_insertion_limits(obj/item/candidate)
 	return room_left_for_belt_class(candidate.belt_storage_class) >= candidate.belt_storage_size && ..()
-
 
 /datum/object_system/storage/belt/physically_insert_item(obj/item/inserting, no_move, from_hook)
 	var/obj/item/actually_inserted = . = ..()
