@@ -128,7 +128,7 @@ GLOBAL_REAL_LIST(w_class_to_volume) = list(
 
 // TODO: DECLARE_ENUM
 
-GLOBAL_LIST(belt_class_names) = list(
+GLOBAL_REAL_LIST(belt_class_names, /list) = list(
 	"Invalid",
 	"Small",
 	"Medium",
