@@ -118,15 +118,26 @@
 		return FALSE
 	return ..()
 
-/datum/object_system/storage/belt/proc/room_left_for_belt_class(belt_class)
-	switch(belt_class)
-		if(BELT_CLASS_SMALL)
-			. = 1
-		if(BELT_CLASS_MEDIUM)
-			. = 2
-		if(BELT_CLASS_LARGE)
-			. = 3
-	return . ? compute_free_slots()[.] : 0
+/datum/object_system/storage/belt/proc/room_left_for_belt_class(belt_class, forbid_overrun)
+	if(forbid_overrun)
+		switch(belt_class)
+			if(BELT_CLASS_SMALL)
+				. = 1
+			if(BELT_CLASS_MEDIUM)
+				. = 2
+			if(BELT_CLASS_LARGE)
+				. = 3
+		return . ? compute_free_slots()[.] : 0
+	else
+		var/list/free_slots = compute_free_slots()
+		switch(belt_class)
+			if(BELT_CLASS_SMALL)
+				return free_slots[1] + free_slots[2] + free_slots[3]
+			if(BELT_CLASS_MEDIUM)
+				return free_slots[2] + free_slots[3]
+			if(BELT_CLASS_LARGE)
+				return free_slots[3]
+		return 0
 
 /datum/object_system/storage/belt/why_failed_insertion_limits(obj/item/candidate)
 	if(!room_left_for_belt_class(candidate.belt_storage_class) >= candidate.belt_storage_size)
