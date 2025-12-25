@@ -4,11 +4,6 @@
 	desc = "Can hold various tools."
 	icon_state = "utility"
 	item_state = "utility"
-	#warn this
-	insertion_whitelist = list(
-		/obj/item/cell/device,
-		/obj/item/material/knife/machete/hatchet,
-	)
 
 /obj/item/storage/belt/utility/full
 	starts_with = list(

@@ -66,9 +66,6 @@
 	name = "medical belt"
 	desc = "Can hold various medical equipment."
 	icon_state = "medical"
-	insertion_whitelist = list(
-		/obj/item/cell/device,
-		)
 
 /obj/item/storage/belt/medical/emt
 	name = "EMT utility belt"
@@ -81,10 +78,6 @@
 	icon_state = "security"
 	max_items = 7
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	insertion_whitelist = list(
-		/obj/item/cell/device,
-		/obj/item/reagent_containers/food/snacks/donut/,
-		)
 
 /obj/item/storage/belt/explorer
 	name = "pathfinder's bandolier"
@@ -93,22 +86,12 @@
 	max_items = 7
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 7
 	show_above_suit = 1
-	insertion_whitelist = list(
-		/obj/item/pickaxe/,
-		/obj/item/cell/device,
-		/obj/item/cell/device/weapon,
-		/obj/item/material/butterfly,
-		/obj/item/material/knife,
-		)
 
 /obj/item/storage/belt/soulstone
 	name = "soul stone belt"
 	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"
 	icon_state = "soulstone"
 	max_items = 6
-	insertion_whitelist = list(
-		/obj/item/soulstone
-		)
 
 /obj/item/storage/belt/soulstone/full
 	starts_with = list(/obj/item/soulstone = 6)
@@ -120,10 +103,6 @@
 	icon_state = "belt"
 	item_state = "security"
 	max_items = 8
-	insertion_whitelist = list(
-		/obj/item/cell/device,
-		/obj/item/extinguisher/mini,
-		)
 
 /obj/item/storage/belt/medical/alien
 	starts_with = list(
@@ -142,9 +121,6 @@
 	desc = "Proves to the world that you are the strongest!"
 	icon_state = "champion"
 	max_items = 1
-	insertion_whitelist = list(
-		"/obj/item/clothing/mask/luchador"
-		)
 
 /obj/item/storage/belt/spike_bandolier
 	name = "spike bandolier"
@@ -163,19 +139,12 @@
 	max_items = 7
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	worth_intrinsic = 35
-	insertion_whitelist = list(
-		/obj/item/cell/device,
-		)
 
 /obj/item/storage/belt/archaeology
 	name = "excavation gear-belt"
 	desc = "Can hold various excavation gear."
 	icon_state = "gear"
 	worth_intrinsic = 65
-	insertion_whitelist = list(
-		/obj/item/cell/device,
-		/obj/item/pickaxe,
-		)
 
 /obj/item/storage/belt/fannypack
 	name = "leather fannypack"

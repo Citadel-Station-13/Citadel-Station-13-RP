@@ -561,10 +561,12 @@
 /obj/item/reagent_containers/food/snacks/donut
 	name = "donut"
 	desc = "Goes great with Robust Coffee."
+	description_fluff = "These donuts claim to be made fresh daily in a boutique bakery in New Reykjavik and delivered to Nanotrasen's hardworking asset protection crew. They're probably synthesized."
 	icon_state = "donut1"
 	filling_color = "#D9C386"
 	var/overlay_state = "box-donut1"
 	nutriment_desc = list("sweetness", "donut")
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/reagent_containers/food/snacks/donut/normal
 	name = "donut"

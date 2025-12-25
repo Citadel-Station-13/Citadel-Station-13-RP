@@ -22,6 +22,7 @@
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_HEAVY
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_MEDIUM
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	attack_verb = list("chopped", "torn", "cut")
 	material_color = 0

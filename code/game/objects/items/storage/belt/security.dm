@@ -1,6 +1,5 @@
 // todo: better storage insertion broad-spectrum check system
 //       to not need to list all paths out.
-#warn below
 /obj/item/storage/belt/security
 	name = "security belt"
 	desc = "Standard issue belt capable of storing many kinds of tactical gear."
@@ -8,10 +7,6 @@
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	set_max_combined_belt_large = /datum/object_system/storage/belt::max_combined_belt_large + 1
 	set_max_combined_belt_medium = /datum/object_system/storage/belt::max_combined_belt_medium
-	insertion_whitelist = list(
-		/obj/item/cell/device,
-		/obj/item/melee,
-	)
 
 /obj/item/storage/belt/security/nt_isd_preload
 	starts_with = list(
