@@ -11,9 +11,7 @@
 	worth_intrinsic = 50
 
 	storage_datum_path = /datum/object_system/storage/belt
-
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	ui_force_slot_mode = TRUE
 
 	var/set_max_combined_belt_small
 	var/set_max_combined_belt_medium

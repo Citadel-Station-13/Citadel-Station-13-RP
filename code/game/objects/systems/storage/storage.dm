@@ -33,7 +33,7 @@
 	/// use the setter, do not change this manually.
 	var/weight_propagation = TRUE
 	/// carry weight in us prior to mitigation
-	var/weight_cached = 0
+	var/tmp/weight_cached = 0
 	/// carry weight mitigation, static. applied after multiplicative
 	var/weight_subtract = 0
 	/// carry weight mitigation, multiplicative.
@@ -200,8 +200,10 @@
 	/// ui force slot mode.
 	var/ui_force_slot_mode = FALSE
 	/// show minimum number of slots necessary, expand as needed
-	/// currently only works for slot mode
-	var/ui_expand_when_needed = FALSE
+	/// * currently only works for slot mode
+	/// * this should be set to a number to determine how many minimum slots to show despite this
+	///   setting; the minimum enabled number of '1' just shows a single slot.
+	var/ui_expand_when_needed = 0
 	/// ui update queued?
 	//  todo: this is only needed because redirection is halfassed.
 	var/ui_refresh_queued = FALSE

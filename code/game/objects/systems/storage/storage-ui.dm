@@ -114,16 +114,18 @@
 	var/view_x = decoded_view[1]
 	// clamp to max items if needed
 	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	var/predicted_max_items = get_ui_predicted_max_items()
-	if(predicted_max_items)
-		rendering_width = min(predicted_max_items, rendering_width)
 	// see if we need to process numerical display
 	var/list/datum/storage_numerical_display/numerical_rendered = uses_numerical_ui()? render_numerical_display() : null
 	// process indirection
 	var/obj/item/accessible = get_accessible_items()
+	// predict max items for slot mode
+	var/predicted_max_items = get_ui_predicted_max_items()
+	if(predicted_max_items)
+		rendering_width = min(predicted_max_items, rendering_width)
 	// if we have expand when needed, only show 1 more than the actual amount.
 	if(ui_expand_when_needed)
-		rendering_width = min(rendering_width, (isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)) + 1)
+		var/actually_needed = max((isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)) + 1, ui_expand_when_needed)
+		rendering_width = min(rendering_width, actually_needed)
 	// compute count and rows
 	var/item_count = isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)
 	var/rows_needed = ROUND_UP(item_count / rendering_width) || 1

@@ -7,7 +7,10 @@
  * Uses a list of class-size-limits.
  */
 /datum/object_system/storage/belt
+	// belts use slot mode for now, pending a new belt UI
 	ui_force_slot_mode = TRUE
+	// belts can be massive so only expand when needed
+	ui_expand_when_needed = 7
 
 	/// max size of small-class belt items
 	var/max_combined_belt_small = 5
