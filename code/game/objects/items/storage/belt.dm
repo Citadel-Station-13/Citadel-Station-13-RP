@@ -61,7 +61,6 @@
 		var/mob/M = src.loc
 		M.update_inv_belt()
 
-#warn below
 /obj/item/storage/belt/medical
 	name = "medical belt"
 	desc = "Can hold various medical equipment."

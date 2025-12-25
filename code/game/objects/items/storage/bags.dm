@@ -65,7 +65,6 @@
 // -----------------------------
 //          Trash bag
 // -----------------------------
-#warn deal with this for athena's sake
 /obj/item/storage/bag/trash
 	name = "trash bag"
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
@@ -77,13 +76,15 @@
 
 	w_class = WEIGHT_CLASS_SMALL
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	max_combined_volume = WEIGHT_CLASS_SMALL * 21
+	max_combined_volume = WEIGHT_CLASS_SMALL * 32
 	insertion_whitelist = list() // any
 	insertion_blacklist = list(/obj/item/disk/nuclear)
 
 /obj/item/storage/bag/trash/initialize_storage()
 	. = ..()
 	obj_storage.update_icon_on_item_change = TRUE
+	obj_storage.limited_random_access = 8
+	obj_storage.limited_random_access_total_weight_volume = WEIGHT_VOLUME_NORMAL * 3
 
 /obj/item/storage/bag/trash/update_icon_state()
 	switch(w_class)
@@ -97,10 +98,18 @@
 			icon_state = "[initial(icon_state)]"
 	return ..()
 
+/obj/item/storage/bag/trash/throw_land(atom/A, datum/thrownthing/TT)
+	. = ..()
+	// let them shuffle the contents so they can grab other stuff with this if they really want
+	obj_storage?.hide()
+	var/list/athena_event_balancing_patch = contents.Copy()
+	shuffle_inplace(athena_event_balancing_patch)
+	contents = athena_event_balancing_patch
+
 /obj/item/storage/bag/trash/bluespace
 	name = "trash bag of holding"
-	max_single_weight_class = WEIGHT_CLASS_HUGE
-	max_combined_volume = WEIGHT_CLASS_SMALL * 56
+	max_single_weight_class = WEIGHT_CLASS_NORMAL
+	max_combined_volume = WEIGHT_CLASS_SMALL * 96
 	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
 	icon_state = "bluetrashbag"
 

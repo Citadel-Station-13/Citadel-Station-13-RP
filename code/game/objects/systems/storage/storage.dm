@@ -11,10 +11,16 @@
 	//* Access *//
 
 	/// if set, limit allowable random access to first n items
-	var/limited_random_access_stack_amount
+	var/limited_random_access_amount
+	/// if set, limit allowable random access to first n items with this max weight class
+	/// * requires [limited_random_access_amount] to be set
+	var/limited_random_access_total_weight_class = INFINITY
+	/// if set, limit allowable random access to first n items with this max weight volume
+	/// * requires [limited_random_access_amount] to be set
+	var/limited_random_access_total_weight_volume = INFINITY
 	/// if set, limit allowable random access goes from bottom up, not top down
 	/// * top down is from end of contents list, bottom up is from start of contents list
-	var/limited_random_access_stack_bottom_first = FALSE
+	var/limited_random_access_bottom_first = FALSE
 
 	//* Actions *//
 
@@ -223,32 +229,46 @@
 //* Access *//
 
 /**
- * do not mutate returned list
- */
-/datum/object_system/storage/proc/dangerously_accessible_items_immutable(random_access = TRUE)
-	var/atom/redirection = real_contents_loc()
-	if(random_access)
-		if(limited_random_access_stack_amount)
-			var/contents_length = length(redirection.contents)
-			if(limited_random_access_stack_bottom_first)
-				return redirection.contents.Copy(1, min(contents_length + 1, limited_random_access_stack_bottom_first + 1))
-			else
-				return redirection.contents.Copy(max(1, contents_length - limited_random_access_stack_amount + 1), contents_length + 1)
-	return redirection.contents
-
-/**
  * you may mutate returned list
  */
 /datum/object_system/storage/proc/accessible_items(random_access = TRUE)
 	var/atom/redirection = real_contents_loc()
+	if(!length(redirection.contents))
+		return list()
+	var/list/copied_contents
 	if(random_access)
-		if(limited_random_access_stack_amount)
-			var/contents_length = length(redirection.contents)
-			if(limited_random_access_stack_bottom_first)
-				return redirection.contents.Copy(1, min(contents_length + 1, limited_random_access_stack_bottom_first + 1))
+		if(limited_random_access_amount)
+			copied_contents = list()
+			var/original_contents_length = length(redirection.contents)
+			var/lra_start
+			var/lra_end
+			var/lra_step
+			if(limited_random_access_bottom_first)
+				lra_start = 1
+				lra_end = min(limited_random_access_amount, original_contents_length)
+				lra_step = 1
 			else
-				return redirection.contents.Copy(max(1, contents_length - limited_random_access_stack_amount + 1), contents_length + 1)
-	return redirection.contents.Copy()
+				lra_start = original_contents_length
+				lra_end = max(1, original_contents_length - limited_random_access_amount + 1)
+				lra_step = -1
+			var/list/lra_ref = redirection.contents
+			var/lra_twc = 0
+			var/lra_twv = 0
+			for(var/i in lra_start to lra_end step lra_step)
+				var/obj/item/maybe_item = lra_ref[i]
+				// it is valid albeit silly to have non-items in a storage object
+				if(!istype(maybe_item))
+					continue
+				lra_twc += item.w_class
+				lra_twv += item.weight_volume
+				if(lra_twc > limited_random_access_total_weight_class)
+					break
+				if(lra_twv > limited_random_access_total_weight_volume)
+					break
+				copied_contents += maybe_item
+	else
+		copied_contents = redirection.contents.Copy()
+	return copied_contents()
 
 /**
  * Recursively return all inventory in this or nested storage (without indirection)

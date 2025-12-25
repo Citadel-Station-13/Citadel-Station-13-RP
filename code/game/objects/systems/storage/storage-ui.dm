@@ -89,6 +89,9 @@
 /datum/object_system/storage/proc/uses_numerical_ui()
 	return ui_numerical_mode
 
+/**
+ * * Will not respect random access limits in numerical mode.
+ */
 /datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
 	. = list()
 	var/atom/movable/screen/storage/closer/closer = new
@@ -105,12 +108,12 @@
 	// see if we need to process numerical display
 	var/list/datum/storage_numerical_display/numerical_rendered = uses_numerical_ui()? render_numerical_display() : null
 	// process indirection
-	var/atom/indirection = real_contents_loc()
+	var/obj/item/accessible = accessible_items()
 	// if we have expand when needed, only show 1 more than the actual amount.
 	if(ui_expand_when_needed)
-		rendering_width = min(rendering_width, (isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)) + 1)
+		rendering_width = min(rendering_width, (isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)) + 1)
 	// compute count and rows
-	var/item_count = isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)
+	var/item_count = isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)
 	var/rows_needed = ROUND_UP(item_count / rendering_width) || 1
 	// prepare iteration
 	var/current_row = 1
@@ -138,7 +141,7 @@
 				if(current_row > STORAGE_UI_MAX_ROWS)
 					break
 	else
-		for(var/obj/item/item in indirection)
+		for(var/obj/item/item in accessible)
 			var/atom/movable/screen/storage/item/slot/renderer = new(null, item)
 			. += renderer
 			// position
@@ -152,6 +155,10 @@
 				if(current_row > STORAGE_UI_MAX_ROWS)
 					break
 
+/**
+ * Volumetric rendering.
+ * * Doesn't respect random access limits.
+ */
 /datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
 	// guard against divide-by-0's
 	if(!max_combined_volume)
@@ -211,7 +218,7 @@
 
 	// -- iterate --
 
-	for(var/obj/item/item as anything in indirection)
+	for(var/obj/item/item in indirection)
 		var/item_volume = item.get_weight_volume()
 		// check safety
 		if(--safety <= 0)
