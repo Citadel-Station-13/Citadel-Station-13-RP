@@ -22,7 +22,14 @@
 
 /obj/item/storage/belt/Initialize(mapload, empty)
 	. = ..()
-	#warn deal with set_max_combined_*
+	if(istype(obj_storage, /datum/object_system/storage/belt))
+		var/datum/object_system/storage/belt/casted_obj_storage = obj_storage
+		if(set_max_combined_belt_large != null)
+			casted_obj_storage.max_combined_belt_large = set_max_combined_belt_large
+		if(set_max_combined_belt_medium != null)
+			casted_obj_storage.max_combined_belt_medium = set_max_combined_belt_medium
+		if(set_max_combined_belt_small != null)
+			casted_obj_storage.max_combined_belt_small = set_max_combined_belt_small
 
 /obj/item/storage/belt/verb/toggle_layer()
 	set name = "Switch Belt Layer"
