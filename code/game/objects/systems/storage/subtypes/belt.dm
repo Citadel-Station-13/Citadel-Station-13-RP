@@ -20,6 +20,9 @@
 	var/tmp/cached_combined_belt_medium_size = 0
 	var/tmp/cached_combined_belt_large_size = 0
 
+/datum/object_system/storage/belt/get_ui_predicted_max_items()
+	return max(..(), max_combined_belt_small + max_combined_belt_medium + max_combined_belt_large)
+
 /datum/object_system/storage/belt/uses_volumetric_ui()
 	return FALSE
 

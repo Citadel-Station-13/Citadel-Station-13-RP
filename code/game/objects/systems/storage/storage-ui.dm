@@ -95,6 +95,9 @@
 /datum/object_system/storage/proc/get_ui_drawer_tint()
 	return null
 
+/datum/object_system/storage/proc/get_ui_predicted_max_items()
+	return max_items ? max_items : ceil(STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x))
+
 /**
  * * Will not respect random access limits in numerical mode.
  */
@@ -109,8 +112,9 @@
 	var/view_x = decoded_view[1]
 	// clamp to max items if needed
 	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	if(max_items)
-		rendering_width = min(max_items, rendering_width)
+	var/predicted_max_items = get_ui_predicted_max_items()
+	if(predicted_max_items)
+		rendering_width = min(predicted_max_items, rendering_width)
 	// see if we need to process numerical display
 	var/list/datum/storage_numerical_display/numerical_rendered = uses_numerical_ui()? render_numerical_display() : null
 	// process indirection
