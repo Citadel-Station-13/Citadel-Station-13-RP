@@ -13,7 +13,7 @@
 		/obj/item/handcuffs,
 		/obj/item/flash,
 		/obj/item/gun/projectile/energy/nt_isd/sidearm/with_light,
-		/obj/item/melee/baton,
+		/obj/item/melee/baton/loaded,
 		/obj/item/cell/basic/tier_2/weapon,
 		/obj/item/reagent_containers/spray/pepper,
 	)
