@@ -1,30 +1,4 @@
-/datum/transhuman/mind_record
-
-/datum/transhuman/mind_record/New(var/datum/mind/mind, var/mob/living/carbon/human/M, var/add_to_db = TRUE, var/one_time = FALSE)
-	ASSERT(mind)
-	//Mental stuff the game doesn't keep mentally
-	if(istype(M) || istype(M,/mob/living/carbon/brain/caught_soul))
-		languages = M.languages.Copy()
-
 /datum/transhuman/body_record/proc/init_from_mob(var/mob/living/carbon/human/M, var/add_to_db = 0, var/ckeylock = 0)
-
-	//Probably should
-	M.dna.check_integrity()
-
-	//The DNA2 stuff
-	mydna = new ()
-	mydna.dna = M.dna.Clone()
-	mydna.ckey = M.ckey
-	mydna.id = copytext(md5(M.real_name), 2, 6)
-	mydna.name = M.dna.real_name
-	mydna.types = DNA2_BUF_UI|DNA2_BUF_UE|DNA2_BUF_SE
-	mydna.flavor = M.flavor_texts.Copy()
-
-	//My stuff
-	client_ref = M.client
-	ckey = M.ckey
-	mind_ref = M.mind
-
 	//External organ status. 0:gone, 1:normal, "string":manufacturer
 	for(var/limb in limb_data)
 		var/obj/item/organ/external/O = M.organs_by_name[limb]
@@ -64,12 +38,3 @@
 
 		//Just set the data to this. 0:normal, 1:assisted, 2:mechanical, 3:digital
 		organ_data[org] = I.robotic
-
-	//Genetic modifiers
-	for(var/modifier in M.modifiers)
-		var/datum/modifier/mod = modifier
-		if(mod.flags & MODIFIER_GENETIC)
-			genetic_modifiers.Add(mod.type)
-
-	if(add_to_db)
-		SStranscore.add_body(src)

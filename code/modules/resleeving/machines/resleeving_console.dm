@@ -74,7 +74,7 @@
 			P.connected = src
 			P.name = "[initial(P.name)] #[pods.len]"
 			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
-	if(istype(W, /obj/item/implant/mirror))
+	if(istype(W, /obj/item/organ/internal/mirror))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		hasmirror = W

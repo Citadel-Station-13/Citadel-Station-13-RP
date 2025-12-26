@@ -36,7 +36,9 @@
 	do
 		// sigh, grab their languages from their mob
 		src.legacy_language_ids = list()
-		#warn backup langauges
+		for(var/lang_name in from_mind.current?.languages)
+			var/datum/prototype/language/lang = RSlanguages.legacy_resolve_language_name(lang_name)
+			src.legacy_language_ids += lang.id
 	while(FALSE)
 
 

@@ -168,7 +168,7 @@
 		/obj/item/implant/language/eal,
 		/obj/item/implant/backup,
 		/obj/item/nif,
-		/obj/item/implant/mirror,
+		/obj/item/organ/internal/mirror,
 	)
 	var/delete
 	var/temphtml
@@ -348,7 +348,7 @@
 					implantSubData["name"] = I.name
 					if(is_type_in_list(I, known_implants))
 						implantSubData["known"] = 1
-					for(var/obj/item/implant/mirror/P in E.implants)
+					for(var/obj/item/organ/internal/mirror/P in E.implants)
 						mirror = P
 
 					implantData.Add(list(implantSubData))
@@ -435,7 +435,7 @@
 
 	if (href_list["backup"])
 		if(mirror != null)
-			var/obj/item/implant/mirror/E = mirror
+			var/obj/item/organ/internal/mirror/E = mirror
 			E.post_implant(scanner.occupant)
 			visible_message(SPAN_NOTICE("Manual backup complete."))
 		else

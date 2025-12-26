@@ -18,7 +18,7 @@
 	var/mob/created_mob = create_character(where)
 
 	var/api_supported = created.resleeving_supports_mirrors()
-	var/obj/item/implant/mirror/created = created_mob.resleeving_create_mirror()
+	var/obj/item/organ/internal/mirror/created = created_mob.resleeving_create_mirror()
 
 	// make sure api support isn't lying
 	if(!api_supported && created)
@@ -29,7 +29,7 @@
 		return
 
 	// make sure we can get it
-	var/obj/item/implant/mirror/fetched = created_mob.resleeving_get_mirror()
+	var/obj/item/organ/internal/mirror/fetched = created_mob.resleeving_get_mirror()
 	if(fetched != created)
 		// shouldn't happen even if technically API-legal
 		TEST_FAIL("mirror didn't match between get and create")
@@ -59,7 +59,7 @@
 		var/datum/unit_test_way_of_killing_someone/death = new death_typepath
 		var/mob/victim = create_character(where)
 		victim.resleeving_create_mirror()
-		var/obj/item/implant/mirror/mirror = victim.resleeving_get_mirror()
+		var/obj/item/organ/internal/mirror/mirror = victim.resleeving_get_mirror()
 		if(QDELETED(mirror))
 			TEST_FAIL("on death type [death_typepath] victim didn't have (or had deleted) mirror prior to invoke")
 		death.invoke(victim)

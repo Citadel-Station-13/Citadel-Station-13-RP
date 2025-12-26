@@ -55,3 +55,19 @@
 	legacy_weight = from_human.weight
 	legacy_ooc_notes = from_human.ooc_notes
 
+	var/datum/dna2/record/cloning_dna = new
+	legacy_dna = cloning_dna
+
+	cloning_dna.dna = from_human.dna.Clone()
+	cloning_dna.ckey = from_human.ckey
+	// what the hell is this??? just for old cloners, really
+	cloning_dna.id = copytext(md5(from_human.real_name), 2, 6)
+	cloning_dna.name = from_human.dna.real_name
+	cloning_dna.types = DNA2_BUF_SE | DNA2_BUF_UE | DNA2_BUF_UI
+	cloning_dna.flavor = from_human.flavor_texts.copy()
+
+	for(var/datum/modifier/modifier in from_human.modifiers)
+		if(modifier.flags & MODIFIER_GENETIC)
+			legacy_genetic_modifiers += modifier.type
+
+

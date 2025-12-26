@@ -13,17 +13,17 @@
 /**
  * Ensures the target has a mirror.
  */
-/mob/proc/resleeving_create_mirror() as /obj/item/implant/mirror
+/mob/proc/resleeving_create_mirror() as /obj/item/organ/internal/mirror
 	return null
 
 /**
  * Gets the target's mirror, if any
  */
-/mob/proc/resleeving_get_mirror() as /obj/item/implant/mirror
+/mob/proc/resleeving_get_mirror() as /obj/item/organ/internal/mirror
 	return null
 
 /**
  * transfers the target's mirror out, if any, returning it
  */
-/mob/proc/resleeving_remove_mirror(atom/new_loc) as /obj/item/implant/mirror
+/mob/proc/resleeving_remove_mirror(atom/new_loc) as /obj/item/organ/internal/mirror
 	return null

@@ -10,15 +10,15 @@
 
 /mob/living/carbon/human/resleeving_create_mirror()
 	#warn impl
-	// var/obj/item/implant/mirror/new_imp = new()
+	// var/obj/item/organ/internal/mirror/new_imp = new()
 	// if(new_imp.handle_implant(occupant, BP_TORSO))
 	// 	new_imp.post_implant(occupant)
 		// if((client.prefs.organ_data[O_BRAIN] != null))
-		// 	var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)
+		// 	var/obj/item/organ/internal/mirror/positronic/F = new /obj/item/organ/internal/mirror/positronic(new_character)
 		// 	F.handle_implant(new_character)
 		// 	F.post_implant(new_character)
 		// else
-		// 	var/obj/item/implant/mirror/E = new /obj/item/implant/mirror(new_character)
+		// 	var/obj/item/organ/internal/mirror/E = new /obj/item/organ/internal/mirror(new_character)
 		// 	E.handle_implant(new_character)
 		// 	E.post_implant(new_character)
 
@@ -30,7 +30,7 @@
 
 	// if(target_zone == BP_TORSO && imp == null)
 	// 	for(var/obj/item/organ/I in H.organs)
-	// 		for(var/obj/item/implant/mirror/MI in I.contents)
+	// 		for(var/obj/item/organ/internal/mirror/MI in I.contents)
 	// 			if(imp == null)
 	// 				H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
 	// 				user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)

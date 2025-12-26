@@ -13,7 +13,7 @@
 	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
-	var/obj/item/implant/mirror/imp = null
+	var/obj/item/organ/internal/mirror/imp = null
 
 /obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/mob/living/carbon/human/H = target
@@ -86,7 +86,7 @@
 		icon_state = "mirrortool_loaded"
 
 /obj/item/mirrortool/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/implant/mirror))
+	if(istype(I, /obj/item/organ/internal/mirror))
 		if(imp)
 			to_chat(usr, "This mirror tool already contains a mirror.")
 			return

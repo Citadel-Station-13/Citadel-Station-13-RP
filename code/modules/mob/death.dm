@@ -101,3 +101,9 @@
 		SSticker.mode.check_win()
 
 	return 1
+
+/**
+ * helper proc used to compose death procs
+ * pretty much for "drop all internal organs"
+ */
+/mob/proc/death__drop_internal_composition() as /list

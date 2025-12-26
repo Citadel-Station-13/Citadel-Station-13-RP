@@ -5,39 +5,27 @@
  *
  * Code-wise, this is a fucking nightmare. Oh boy.
  */
-/obj/item/implant/mirror
-	name = "mirror implant"
-	desc = "A small implanted disk that stores a copy of ones conciousness, updated at times of rest."
+/obj/item/organ/internal/mirror
+	name = "mirror"
+	desc = "A small, implanted disk that stores a copy of one's consciousness."
 	catalogue_data = /datum/category_item/catalogue/technology/resleeving
 	icon = 'icons/obj/mirror.dmi'
 	icon_state = "mirror_implant_f"
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	var/stored_mind = null
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
+	organ_tag = ORGAN_TAG_MIRROR
+	parent_organ = BP_TORSO
 
 	/// The 'real mind' of.. us.
 	/// * Cannot be erased without admin intervention; usually set on implant.
 	/// * This ensures you cannot overwrite a mirror by putting it in someone else.
 	var/datum/mind_ref/owner_mind_ref
 
-	/// kinda legacy; the old transhuman way of doing things is not great but it is what we have.
-	/// thins stores the actual mind backup.
-	var/datum/transhuman/mind_record/backed_up
+	var/datum/resleeving_body_backup/recorded_body
+	var/datum/resleeving_mind_backup/recorded_mind
 
-/obj/item/implant/mirror/get_data()
-	var/dat = {"
-<b>Implant Specifications:</b><BR>
-<b>Name:</b> Galactic Immortality Initiative Mirror Implant<BR>
-<b>Life:</b> Indefinite.<BR>
-<b>Important Notes:</b> Implant updates when the user sleeps, or when manually done by an update chamber. Loss of implant complicates resleeving.<BR>
-<HR>
-<b>Implant Details:</b><BR>
-<b>Function:</b> A self-contained disk that can store the conciousness of a living creature.<BR>
-<b>Special Features:</b> Allows the user to transfer their mind to another body in the event of death, or the desire to change sleeves.<BR>
-<b>Integrity:</b> Extremely sturdy, at risk of damage through sustained high frequency or direct energy attacks."}
-	return dat
-
-/obj/item/implant/mirror/post_implant(var/mob/living/carbon/human/H)
+/obj/item/organ/internal/mirror/post_implant(var/mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	spawn(20)
@@ -51,13 +39,13 @@
 		human = H
 		human.mirror = src
 
-/obj/item/implant/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/organ/internal/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/obj/machinery/computer/transhuman/resleeving/comp = target
 	if (!istype(comp))
 		return
 	comp.active_mr = stored_mind
 
-/obj/item/implant/mirror/attackby(obj/item/I, mob/user)
+/obj/item/organ/internal/mirror/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mirrorscanner))
 		if(backed_up == null)
 			to_chat(usr, "No consciousness found.")
@@ -77,7 +65,3 @@
 				forceMove(MT)
 			MT.imp = src
 			MT.update_icon()
-
-/obj/item/implant/mirror/surgically_remove(mob/living/carbon/human/target, obj/item/organ/external/chest/removing_from)
-	. = ..()
-	target.mirror = null

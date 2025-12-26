@@ -404,9 +404,6 @@
 	//Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
-	if(to_despawn.mind && ishuman(to_despawn))
-		var/mob/living/carbon/human/H = to_despawn
-		SStranscore.m_backup(H.mind, H.nif, TRUE)
 	if(isliving(to_despawn))
 		var/mob/living/L = to_despawn
 		for(var/belly in L.vore_organs)
