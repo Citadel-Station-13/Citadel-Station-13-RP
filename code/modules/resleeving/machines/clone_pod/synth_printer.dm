@@ -81,7 +81,7 @@
 		return
 
 	//Get the DNA and generate a new mob
-	var/datum/dna2/record/R = current_project.legacy_mydna
+	var/datum/dna2/record/R = current_project.legacy_dna
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
 
 	//Fix the external organs
@@ -136,10 +136,9 @@
 	H.sync_organ_dna()
 	H.regenerate_icons()
 
-	H.ooc_notes = current_project.legacy_body_oocnotes
+	H.ooc_notes = current_project.legacy_ooc_notes
 	H.flavor_texts = current_project.legacy_dna.flavor.Copy()
 	H.resize(current_project.legacy_sizemult)
-	H.appearance_flags = current_project.legacy_aflags
 	H.weight = current_project.legacy_weight
 	if(current_project.legacy_custom_species_name)
 		H.custom_species = current_project.legacy_custom_species_name

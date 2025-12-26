@@ -26,7 +26,7 @@
 	remove_biomass(CLONE_BIOMASS)
 
 	//Get the DNA and generate a new mob
-	var/datum/dna2/record/R = current_project.legacy_mydna
+	var/datum/dna2/record/R = current_project.legacy_dna
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 	H.set_species(R.dna.species)
 	H.dna.base_species = R.dna.base_species //! Hacky way to get the DNA to work.
