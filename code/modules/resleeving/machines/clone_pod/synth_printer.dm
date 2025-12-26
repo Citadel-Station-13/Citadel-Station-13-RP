@@ -15,7 +15,7 @@
 	var/busy = 0       //Busy cloning
 	var/body_cost = 15000  //Cost of a cloned body (metal and glass ea.)
 	var/max_res_amount = 30000 //Max the thing can hold
-	var/datum/transhuman/body_record/current_project
+	var/datum/tresleeving_body_backup/body_record
 	var/broken = 0
 	var/burn_value = 45
 	var/brute_value = 60
@@ -81,15 +81,13 @@
 		return
 
 	//Get the DNA and generate a new mob
-	var/datum/dna2/record/R = current_project.mydna
+	var/datum/dna2/record/R = body_record.legacy_mydna
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
-	if(current_project.locked)
-		H.resleeve_lock = current_project.ckey
 
 	//Fix the external organs
-	for(var/part in current_project.limb_data)
+	for(var/part in body_record.legacy_limb_data)
 
-		var/status = current_project.limb_data[part]
+		var/status = body_record.legacy_limb_data[part]
 		if(status == null) continue //Species doesn't have limb? Child of amputated limb?
 
 		var/obj/item/organ/external/O = H.organs_by_name[part]
@@ -103,9 +101,9 @@
 			O.robotize(status)
 
 	//Then the internal organs
-	for(var/part in current_project.organ_data)
+	for(var/part in body_record.legacy_organ_data)
 
-		var/status = current_project.organ_data[part]
+		var/status = body_record.legacy_organ_data[part]
 		if(status == null) continue //Species doesn't have organ? Child of missing part?
 
 		var/obj/item/organ/I = H.internal_organs_by_name[part]
@@ -127,7 +125,6 @@
 
 	//Apply DNA
 	H.dna = R.dna.Clone()
-	H.original_player = current_project.ckey
 
 	//Apply damage
 	H.adjustBruteLoss(brute_value)
@@ -139,13 +136,13 @@
 	H.sync_organ_dna()
 	H.regenerate_icons()
 
-	H.ooc_notes = current_project.body_oocnotes
-	H.flavor_texts = current_project.mydna.flavor.Copy()
-	H.resize(current_project.sizemult)
-	H.appearance_flags = current_project.aflags
-	H.weight = current_project.weight
-	if(current_project.speciesname)
-		H.custom_species = current_project.speciesname
+	H.ooc_notes = body_record.legacy_body_oocnotes
+	H.flavor_texts = body_record.legacy_mydna.flavor.Copy()
+	H.resize(body_record.legacy_sizemult)
+	H.appearance_flags = body_record.legacy_aflags
+	H.weight = body_record.legacy_weight
+	if(body_record.legacy_speciesname)
+		H.custom_species = body_record.legacy_speciesname
 
 	//Suiciding var
 	H.suiciding = 0

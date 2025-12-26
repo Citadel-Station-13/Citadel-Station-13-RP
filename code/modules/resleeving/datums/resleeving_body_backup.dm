@@ -49,8 +49,9 @@
 
 	var/mob/living/carbon/human/from_human = from_body
 	legacy_synthetic = from_human.isSynthetic()
-	legacy_species_id = from_human.species.uid
+	legacy_species_uid = from_human.species.uid
 	legacy_gender = from_human.gender
 	legacy_sizemult = from_human.size_multiplier
 	legacy_weight = from_human.weight
+	legacy_ooc_notes = from_human.ooc_notes
 
