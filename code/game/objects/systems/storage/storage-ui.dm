@@ -278,10 +278,13 @@
 	var/effective_pixel_volume_ratio = VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO
 	// we compute how much pixels we ideally will need to display everything
 	var/ideal_width_px = effective_pixel_volume_ratio * effective_max_volume
+	// compute what the sane minimum is so small containers don't explode
+	// 'ui_expand_volumetric_minimum_items' is used here to make tiny containers not too small
+	var/sane_minimum = max((VOLUMETRIC_STORAGE_INFLATE_TO_TILES * WORLD_ICON_SIZE), ui_expand_volumetric_minimum_items * VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM)
 	// if too low,
-	if(ideal_width_px < (VOLUMETRIC_STORAGE_INFLATE_TO_TILES * WORLD_ICON_SIZE))
+	if(ideal_width_px < sane_minimum)
 		// expand our horizons
-		effective_pixel_volume_ratio = (VOLUMETRIC_STORAGE_INFLATE_TO_TILES * WORLD_ICON_SIZE) / effective_max_volume
+		effective_pixel_volume_ratio = sane_minimum / effective_max_volume
 		ideal_width_px = effective_pixel_volume_ratio * effective_max_volume
 
 	// -- prepare for iteration --

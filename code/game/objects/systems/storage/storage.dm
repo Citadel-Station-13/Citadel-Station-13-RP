@@ -206,6 +206,8 @@
 	/// * this should be set to a number to determine how many minimum slots to show despite this
 	///   setting; the minimum enabled number of '1' just shows a single slot.
 	var/ui_expand_when_needed = 0
+	/// used to hint the number of minimum items to assume we have. useful for pill bottles.
+	var/ui_expand_volumetric_minimum_items
 	/// ui update queued?
 	//  todo: this is only needed because redirection is halfassed.
 	var/ui_refresh_queued = FALSE
@@ -468,41 +470,6 @@
 		if(thing.on_containing_storage_opening(actor, src))
 			return TRUE
 	return FALSE
-
-//* Insertion & Removal *//
-
-//* Limits *//
-
-/**
- * generally a bad idea to call, tbh.
- *
- * uses max single weight class
- * uses combined volume
- *
- * can use type whitelist
- * if type_whitelist is FALSE, this just wipes all type whitelists.
- */
-/datum/object_system/storage/proc/fit_to_contents(type_whitelist = FALSE, no_shrink = FALSE)
-	var/scanned_max_single_weight_class = WEIGHT_CLASS_TINY
-	var/scanned_max_combined_volume = 0
-
-	if(!no_shrink)
-		max_single_weight_class = scanned_max_single_weight_class
-		max_combined_volume = scanned_max_combined_volume
-
-	var/list/types = list()
-	for(var/obj/item/item in real_contents_loc())
-		if(type_whitelist)
-			types |= item.type
-		scanned_max_single_weight_class = max(max_single_weight_class, item.w_class)
-		scanned_max_combined_volume += item.get_weight_volume()
-
-	max_single_weight_class = max(max_single_weight_class, scanned_max_single_weight_class)
-	max_combined_volume = max(max_combined_volume, scanned_max_combined_volume)
-
-	set_insertion_whitelist(type_whitelist? types : null)
-	set_insertion_blacklist(null)
-	set_insertion_allow(null)
 
 //* Locking *//
 
