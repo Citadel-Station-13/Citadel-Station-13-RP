@@ -11,9 +11,17 @@
 	//* that is unironically where we're at                                 *//
 
 	var/datum/dna2/record/legacy_dna
+	// prevents synthfabs from printing organics and vice versa
+	//
+	// considered legacy because this shoud realistically just be a torso examination tbh
+	// and invalid parts just don't get printed lol lmao
+	//
+	// or better, put the WIP body in the other machine and have it automatically
+	// fabricate the missing things if it's possible for it to print
+	var/legacy_synthetic
 	// legacy because species should be a /prototype reference once
 	// species are made stateless and global singletons
-	var/legacy_species_id
+	var/legacy_species_uid
 	var/legacy_gender
 	var/legacy_ooc_notes
 	var/list/legacy_limb_data = list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO)
@@ -40,4 +48,9 @@
 		return
 
 	var/mob/living/carbon/human/from_human = from_body
+	legacy_synthetic = from_human.isSynthetic()
+	legacy_species_id = from_human.species.uid
+	legacy_gender = from_human.gender
+	legacy_sizemult = from_human.size_multiplier
+	legacy_weight = from_human.weight
 

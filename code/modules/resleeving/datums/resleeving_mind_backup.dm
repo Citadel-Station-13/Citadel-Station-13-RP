@@ -32,4 +32,11 @@
 
 /datum/resleeving_mind_backup/proc/initialize_from_mind(datum/mind/from_mind)
 	src.mind_ref = from_mind.get_mind_ref()
-	#warn backup langauges
+
+	do
+		// sigh, grab their languages from their mob
+		src.legacy_language_ids = list()
+		#warn backup langauges
+	while(FALSE)
+
+

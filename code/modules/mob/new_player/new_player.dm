@@ -575,6 +575,9 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	new_character.update_icons_body()
 	new_character.update_eyes()
 
+	// store their round-local body backup
+	SSresleeving.store_round_local_body_backup(new_character.mind, new_character)
+
 	transfer_client_to(new_character)
 
 	return new_character

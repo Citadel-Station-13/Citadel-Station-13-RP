@@ -8,7 +8,7 @@
 
 #warn put in chest
 
-/mob/living/carbon/human/resleeving_create_mirror() as /obj/item/implant/mirror
+/mob/living/carbon/human/resleeving_create_mirror()
 	#warn impl
 	// var/obj/item/implant/mirror/new_imp = new()
 	// if(new_imp.handle_implant(occupant, BP_TORSO))
@@ -22,10 +22,10 @@
 		// 	E.handle_implant(new_character)
 		// 	E.post_implant(new_character)
 
-/mob/living/carbon/human/resleeving_get_mirror() as /obj/item/implant/mirror
+/mob/living/carbon/human/resleeving_get_mirror()
 	#warn impl
 
-/mob/living/carbon/human/resleeving_remove_mirror(atom/new_loc) as /obj/item/implant/mirror
+/mob/living/carbon/human/resleeving_remove_mirror(atom/new_loc)
 	#warn impl
 
 	// if(target_zone == BP_TORSO && imp == null)

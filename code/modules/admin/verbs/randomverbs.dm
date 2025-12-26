@@ -292,6 +292,7 @@ If a guy was gibbed and you want to revive him, this is a good way to do so.
 Works kind of like entering the game with a new character. Character receives a new mind if they didn't have one.
 Traitors and the like can also be revived with the previous role mostly intact.
 /N */
+// TODO: this is insane it should just use the same spawn cycle new player does :sob:
 /client/proc/respawn_character()
 	set category = "Special Verbs"
 	set name = "Spawn Character"
@@ -422,9 +423,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				antag_data.place_mob(new_character)
 
 	// Required for persistence
-	if(new_character.mind)
-		new_character.mind.loaded_from_ckey = picked_ckey
-		new_character.mind.loaded_from_slot = picked_slot
+	new_character.mind.loaded_from_ckey = picked_ckey
+	new_character.mind.loaded_from_slot = picked_slot
 
 	//If desired, apply equipment.
 	if(equipment)
@@ -444,6 +444,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	log_admin("[admin] has spawned [player_key]'s character [new_character.real_name].")
 	message_admins("[admin] has spawned [player_key]'s character [new_character.real_name].", 1)
+
+	// store their body backup again
+	SSresleeving.store_round_local_body_backup(new_character.mind, new_character)
 
 	to_chat(new_character, "You have been fully spawned. Enjoy the game.")
 

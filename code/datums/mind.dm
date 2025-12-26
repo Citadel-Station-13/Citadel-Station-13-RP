@@ -32,6 +32,9 @@
  *
  * * Should never be deleted; minds are considered **permanently loaded** once put in.
  *   Many things are allowed to hard-reference them.
+ * * Minds cannot be cloned in any way. References are invalidated once it is;
+ *   the only authoritative reference is 'mind_ref' datum, which we effectively treat
+ *   as an unique, shared key to the mind.
  */
 /datum/mind
 	/// ckey of mind
