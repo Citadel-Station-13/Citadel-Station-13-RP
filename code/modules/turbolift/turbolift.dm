@@ -159,7 +159,7 @@
 				if(istype(AM, /mob/living))
 					var/mob/living/M = AM
 					ASYNC
-						M.gib()
+						M.death_via_gib()
 				else if(!(AM.atom_flags & ATOM_ABSTRACT) && !(istype(AM, /mob/observer)))
 					qdel(AM)
 

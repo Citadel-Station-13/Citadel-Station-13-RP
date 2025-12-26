@@ -216,7 +216,7 @@
 		to_chat(H, deathmsg)
 	ASYNC
 		if(!QDELETED(H))
-			H.gib()
+			H.death_via_gib()
 
 /datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
 	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)

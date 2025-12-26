@@ -1,4 +1,4 @@
-/mob/living/carbon/human/gib()
+/mob/living/carbon/human/death_via_gib()
 	//Drop the NIF, they're expensive, why not recover them? Also important for prometheans.
 	if(nif)
 		var/obj/item/nif/deadnif = nif //Unimplant removes the reference on the mob
@@ -39,7 +39,7 @@
 	..(species.gibbed_anim) // uses the default mob.dmi file for these, so we only need to specify the first argument
 	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))
 
-/mob/living/carbon/human/dust()
+/mob/living/carbon/human/death_via_dust()
 
 	//mirror should drop on dust
 	if(mirror)
@@ -51,7 +51,7 @@
 	else
 		return ..()
 
-/mob/living/carbon/human/ash()
+/mob/living/carbon/human/death_via_ash()
 
 	//mirror should drop on ash
 	if(mirror)

@@ -140,7 +140,7 @@
 	explode()
 	..()
 
-/mob/living/simple_mob/vore/solarmoth/gib() //This baby will explode no matter what you do to it.
+/mob/living/simple_mob/vore/solarmoth/death_via_gib() //This baby will explode no matter what you do to it.
 	explode()
 	..()
 

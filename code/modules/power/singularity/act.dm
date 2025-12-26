@@ -6,7 +6,7 @@
 
 /mob/living/singularity_act()
 	investigate_log("has been consumed by a singularity", INVESTIGATE_SINGULO)
-	gib()
+	death_via_gib()
 	return 20
 
 /mob/living/singularity_pull(S, current_size)
@@ -20,7 +20,7 @@
 		if(mind.assigned_role == USELESS_JOB)
 			gain = rand(0, 300)
 	investigate_log(INVESTIGATE_SINGULO,"has been consumed by a singularity", INVESTIGATE_SINGULO)
-	gib()
+	death_via_gib()
 	return gain
 
 /mob/living/carbon/human/singularity_pull(S, current_size)

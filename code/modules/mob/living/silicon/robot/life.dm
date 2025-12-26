@@ -247,7 +247,7 @@
 				to_chat(src, "<span class='danger'>Killswitch Activated</span>")
 			killswitch = 0
 			spawn(5)
-				gib()
+				death_via_gib()
 
 /mob/living/silicon/robot/proc/process_locks()
 	if(weapon_lock)

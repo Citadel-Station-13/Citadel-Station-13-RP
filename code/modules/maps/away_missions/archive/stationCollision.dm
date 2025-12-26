@@ -195,7 +195,7 @@ var/sc_safecode5 = "[rand(0,9)]"
 		return 0
 	if (istype(A,/mob/living))
 		var/mob/living/L = A
-		L.gib()
+		L.death_via_gib()
 	else if(istype(A,/obj/))
 		var/obj/O = A
 		O.legacy_ex_act(1.0)

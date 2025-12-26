@@ -27,7 +27,7 @@
 				adjustBruteLoss(100)
 				adjustFireLoss(100)
 				if(!anchored)
-					gib()
+					death_via_gib()
 		if(2.0)
 			if (stat != 2)
 				adjustBruteLoss(60)

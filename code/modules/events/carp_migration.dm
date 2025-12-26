@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated wi
 
 /datum/event/carp_migration/proc/check_gib(var/mob/living/simple_mob/animal/space/carp/M)	//awesome road kills
 	if(M.health <= 0 && prob(60))
-		M.gib()
+		M.death_via_gib()
 
 /datum/event/carp_migration/proc/reduce_carp_count(var/mob/M)
 	for(var/Z in affecting_z)

@@ -101,7 +101,7 @@
 	"A few last desperate seals give out with a weary series of pops, and the suit contorts with the final pressure differentials resolved: the suit tangles and leaks, and finally compacts back into it's rightful shape.",
 	"Tightening, the suit re-attempts to remain it's current form, before it collapses under the stress, supporting mechanisms closing in on themselves like a noose with nothing left to catch on.",
 	"The suit makes a noise akin to clockwork binding, and shutters, before something imperceptible gives with an abysmal noise and the suit returns to it's default form.")))
-	// gib()
+	// death_via_gib()
 	if(rand(1,2) == 1)
 		new rig1(droploc)
 	else

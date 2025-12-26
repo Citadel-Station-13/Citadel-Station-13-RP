@@ -1,5 +1,5 @@
 
-/mob/living/carbon/gib()
+/mob/living/carbon/death_via_gib()
 	for(var/mob/M in src)
 		if(M in src.stomach_contents)
 			src.stomach_contents.Remove(M)

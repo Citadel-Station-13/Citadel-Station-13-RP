@@ -40,7 +40,7 @@
 	if(H.species.primitive)
 		O = new H.species.primitive(src)
 	else
-		H.gib() //Trying to change the species of a creature with no primitive var set is messy.
+		H.death_via_gib() //Trying to change the species of a creature with no primitive var set is messy.
 		return
 
 	if(M)
