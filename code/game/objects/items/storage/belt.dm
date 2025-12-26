@@ -203,6 +203,7 @@
 	desc = "An ornate sheath designed to hold an officer's blade."
 	icon_state = "sheath-sabre"
 	max_items = 1
+	storage_datum_path = /datum/object_system/storage
 	insertion_whitelist = list(
 		/obj/item/material/sword/sabre,
 		/obj/item/melee/baton/stunsword,
