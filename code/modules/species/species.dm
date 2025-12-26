@@ -756,6 +756,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	var/obj/item/nif/our_nif = H.nif
 	if(H.nif)
 		H.nif.unimplant(H)
+	#warn mirror
 
 	// store the markings for each limb we have so we can apply them to our new limbs
 	var/list/temporary_marking_store = list()

@@ -1,7 +1,11 @@
 #define MALFUNCTION_TEMPORARY 1
 #define MALFUNCTION_PERMANENT 2
 
-
+/**
+ * Implants that (ideally) go in organs.
+ * * Organ/external allows for implanting.. a lot of things. The difference is that
+ *   /obj/item/implant tracks lifecycle for you.
+ */
 /obj/item/implant
 	name = "implant"
 	icon = 'icons/obj/device.dmi'
@@ -21,6 +25,21 @@
 
 /obj/item/implant/proc/activate()
 	return
+
+#warn hook these
+/**
+ * Called on insertion to a bodypart.
+ */
+/obj/item/implant/proc/on_inserted(obj/item/organ/external/bodypart)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/**
+ * Called on removal from a bodypart.
+ */
+/obj/item/implant/proc/on_removed(obj/item/organ/external/bodypart)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 // Moves the implant where it needs to go, and tells it if there's more to be done in post_implant
 /obj/item/implant/proc/handle_implant(var/mob/source, var/target_zone = BP_TORSO)

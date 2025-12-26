@@ -570,9 +570,7 @@
 		occupant.dna.real_name = occupant.real_name
 
 	//Give them a mirror
-	var/obj/item/implant/mirror/new_imp = new()
-	if(new_imp.handle_implant(occupant, BP_TORSO))
-		new_imp.post_implant(occupant)
+	occupant.resleeving_create_mirror()
 
 	//Inform them and make them a little dizzy.
 	if(confuse_amount + blur_amount <= 16)

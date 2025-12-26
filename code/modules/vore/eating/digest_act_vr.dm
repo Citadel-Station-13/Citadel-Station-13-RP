@@ -4,6 +4,8 @@
 
 // Ye default implementation.
 /obj/item/proc/digest_act(var/atom/movable/item_storage = null)
+	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
+		return FALSE
 	if(istype(item_storage,/obj/item/dogborg/sleeper))
 		for(var/obj/item/O in contents)
 			if(item_storage)

@@ -565,14 +565,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		new_character.dna.SetSEState(DNABLOCK_GLASSES,1,0)
 		new_character.disabilities |= DISABILITY_NEARSIGHTED
 	if(client.prefs.mirror == TRUE)
-		if((client.prefs.organ_data[O_BRAIN] != null))
-			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)
-			F.handle_implant(new_character)
-			F.post_implant(new_character)
-		else
-			var/obj/item/implant/mirror/E = new /obj/item/implant/mirror(new_character)
-			E.handle_implant(new_character)
-			E.post_implant(new_character)
+		new_character.resleeving_create_mirror()
 
 	// And uncomment this, too.
 	//new_character.dna.UpdateSE()

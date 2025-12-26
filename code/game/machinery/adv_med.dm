@@ -158,7 +158,18 @@
 //Body Scan Console
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/scanner
-	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif, /obj/item/implant/mirror)
+	var/known_implants = list(
+		/obj/item/implant/health,
+		/obj/item/implant/chem,
+		/obj/item/implant/death_alarm,
+		/obj/item/implant/loyalty,
+		/obj/item/implant/tracking,
+		/obj/item/implant/language,
+		/obj/item/implant/language/eal,
+		/obj/item/implant/backup,
+		/obj/item/nif,
+		/obj/item/implant/mirror,
+	)
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"

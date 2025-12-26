@@ -104,19 +104,6 @@
 		else
 			if(!MT.imp)
 				user.visible_message("This Mirror Installation Tool is empty.")
-	if(istype(W, /obj/item/dogborg/mirrortool))
-		var/obj/item/mirrortool/MT = W
-		if(MT.imp)
-			active_mr = MT.imp.stored_mind
-			hasmirror = MT.imp
-			MT.imp = null
-			user.visible_message("Mirror successfully transferred.")
-			MT.update_icon()
-		else
-			if(!MT.imp)
-				user.visible_message("This Mirror Installation Tool is empty.")
-
-
 	return ..()
 
 /obj/machinery/computer/transhuman/resleeving/verb/eject_mirror()

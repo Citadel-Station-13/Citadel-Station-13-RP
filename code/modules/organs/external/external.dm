@@ -103,7 +103,8 @@
 	var/list/children = list()
 	/// Internal organs of this body part
 	var/list/internal_organs = list()
-	/// Currently implanted objects.
+	/// Implanted entities.
+	/// * Not necessarily `/obj/item/implant`, or even an `/obj/item`.
 	var/list/implants = list()
 	/// Relative size of the organ.
 	var/organ_rel_size = 25

@@ -11,25 +11,9 @@
 	//User visible
 	var/mindname = "!!ERROR!!"
 
-	//0: Normal, 1: Might be dead, 2: Definitely dead, show on console
-	var/dead_state = 0
-	var/last_update = 0
-	var/last_notification
 
 	//Backend
-	var/ckey = ""
 	var/id_gender = MALE
-	var/datum/mind/mind_ref
-	var/cryo_at = 0
-	var/languages = list()
-	var/mind_oocnotes = ""
-
-	var/nif_path
-	var/nif_durability
-	var/list/nif_software
-	var/list/nif_savedata = list()
-
-	var/one_time = FALSE
 
 /datum/transhuman/mind_record/New(var/datum/mind/mind, var/mob/living/carbon/human/M, var/add_to_db = TRUE, var/one_time = FALSE)
 	ASSERT(mind)
@@ -64,42 +48,12 @@
 	if(add_to_db)
 		SStranscore.add_backup(src)
 
-/////// Body Record ///////
-/datum/transhuman/body_record
-	var/datum/dna2/record/mydna
-
-	//These may or may not be set, mostly irrelevant since it's just a body record.
-	var/ckey
-	var/locked
-	var/client/client_ref
-	var/datum/mind/mind_ref
-	var/synthetic
-	var/speciesname
-	var/bodygender
-	var/body_oocnotes
-	var/list/limb_data = list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO)
-	var/list/organ_data = list(O_HEART, O_EYES, O_LUNGS, O_BRAIN)
-	var/list/genetic_modifiers = list()
-	var/toocomplex
-	var/sizemult
-	var/weight
-	var/aflags
-
 /datum/transhuman/body_record/New(var/copyfrom, var/add_to_db = 0, var/ckeylock = 0)
 	..()
 	if(istype(copyfrom, /datum/transhuman/body_record))
 		init_from_br(copyfrom)
 	else if(ishuman(copyfrom))
 		init_from_mob(copyfrom, add_to_db, ckeylock)
-
-/datum/transhuman/body_record/Destroy()
-	. = ..()
-	mydna = null
-	client_ref = null
-	mind_ref = null
-	limb_data.Cut()
-	organ_data.Cut()
-	return QDEL_HINT_HARDDEL // For now at least there is no easy way to clear references to this in machines etc.
 
 /datum/transhuman/body_record/proc/init_from_mob(var/mob/living/carbon/human/M, var/add_to_db = 0, var/ckeylock = 0)
 	ASSERT(!QDELETED(M))

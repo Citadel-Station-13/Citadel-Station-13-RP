@@ -17,6 +17,9 @@
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
 
+	// TODO: /obj/item/organ/internal/consciousness_holder or something, this is just copypaste
+	var/compatible_with_mirrors = TRUE
+
 /obj/item/organ/internal/brain/Initialize(mapload, ...)
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(clear_brainmob_hud)), 15)

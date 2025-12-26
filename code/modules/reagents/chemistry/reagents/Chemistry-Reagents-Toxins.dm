@@ -677,22 +677,8 @@
 		if(H.species.get_species_id() != SPECIES_ID_PROMETHEAN)
 			to_chat(M, "<span class='danger'>Your flesh rapidly mutates!</span>")
 
-			var/list/backup_implants = list()
-			for(var/obj/item/organ/I in H.organs)
-				for(var/obj/item/implant/backup/BI in I.contents)
-					backup_implants += BI
-			if(backup_implants.len)
-				for(var/obj/item/implant/backup/BI in backup_implants)
-					BI.forceMove(src)
-
 			H.set_species(/datum/species/shapeshifter/promethean)
 			H.shapeshifter_set_colour("#05FF9B") //They can still change their color.
-
-			if(backup_implants.len)
-				var/obj/item/organ/external/torso = H.get_organ(BP_TORSO)
-				for(var/obj/item/implant/backup/BI in backup_implants)
-					BI.forceMove(torso)
-					torso.implants += BI
 
 
 /datum/reagent/soporific

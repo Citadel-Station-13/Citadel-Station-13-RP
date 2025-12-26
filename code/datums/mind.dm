@@ -25,6 +25,14 @@
  * 	yourself.
  */
 
+/**
+ * ## Minds
+ *
+ * Pretty much embodies the .. soul or whatever, of a character.
+ *
+ * * Should never be deleted; minds are considered **permanently loaded** once put in.
+ *   Many things are allowed to hard-reference them.
+ */
 /datum/mind
 	/// ckey of mind
 	var/ckey
@@ -38,6 +46,9 @@
 
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
+
+	/// Active mind ref for when something wants to get a non-owning handle to us.
+	var/datum/mind_ref/mind_ref
 
 	//? Characteristics
 	/// characteristics holder
@@ -107,7 +118,25 @@
 /datum/mind/Destroy()
 	QDEL_NULL(characteristics)
 	QDEL_LIST_NULL(abilities)
+	// unlink / drop references for mind ref.
+	if(mind_ref)
+		mind_ref.linked = null
+		mind_ref = null
 	return ..()
+
+/**
+ * Gets an indirected reference to us.
+ *
+ * Things that require a reference but are okay with the reference potentially being lost to
+ * the actual mind datum should use this, like mirror implants and mind backups.
+ *
+ * * Pretty much if you need to know who someone is and if they're still around you use this;
+ *   if you need a reference to actually act on them you directly reference /datum/mind.
+ */
+/datum/mind/proc/get_mind_ref() as /datum/mind_ref
+	if(!mind_ref)
+		mind_ref = new(src)
+	return mind_ref
 
 //? Characteristics
 
