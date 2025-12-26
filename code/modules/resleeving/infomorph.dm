@@ -391,12 +391,6 @@ var/list/infomorph_emotions = list(
 		return
 
 	close_up()
-
-	//Resleeving 'cryo'
-	if(mind && (mind.name in SStranscore.backed_up))
-		var/datum/transhuman/mind_record/MR = SStranscore.backed_up[mind.name]
-		SStranscore.stop_backup(MR)
-
 	card.removePersonality()
 	clear_client()
 

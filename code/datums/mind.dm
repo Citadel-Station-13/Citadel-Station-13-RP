@@ -123,7 +123,7 @@
 	QDEL_LIST_NULL(abilities)
 	// unlink / drop references for mind ref.
 	if(mind_ref)
-		mind_ref.linked = null
+		mind_ref.loaded = null
 		mind_ref = null
 	return ..()
 

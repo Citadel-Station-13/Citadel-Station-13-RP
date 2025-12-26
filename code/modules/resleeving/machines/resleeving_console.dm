@@ -18,7 +18,6 @@
 	var/datum/transhuman/mind_record/active_mr = null
 	var/organic_capable = 1
 	var/synthetic_capable = 1
-	var/obj/item/disk/transcore/disk
 	var/hasmirror = null
 
 /obj/machinery/computer/transhuman/resleeving/Initialize(mapload)
@@ -75,20 +74,6 @@
 			P.connected = src
 			P.name = "[initial(P.name)] #[pods.len]"
 			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
-	else if(istype(W, /obj/item/disk/transcore) && SStranscore && !SStranscore.core_dumped)
-		if(!user.attempt_insert_item_for_installation(W, src))
-			return
-		disk = W
-		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
-	// if(istype(W, /obj/item/disk/body_record))
-	// 	var/obj/item/disk/body_record/brDisk = W
-	// 	if(!brDisk.stored)
-	// 		to_chat(user, "<span class='warning'>\The [W] does not contain a stored body record.</span>")
-	// 		return
-	// 	active_br = new /datum/transhuman/body_record(brDisk.stored) // Loads a COPY!
-	// 	menu = 4
-	// 	to_chat(user, "<span class='notice'>\The [src] loads the body record from \the [W] before ejecting it.</span>")
-	// 	attack_hand(user)
 	if(istype(W, /obj/item/implant/mirror))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
@@ -225,8 +210,6 @@
 	data["spodsLen"] = spods.len
 	data["sleeversLen"] = sleevers.len
 	data["temp"] = temp
-	data["coredumped"] = SStranscore.core_dumped
-	data["emergency"] = disk ? 1 : 0
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -263,18 +246,6 @@
 
 	else if (href_list["refresh"])
 		updateUsrDialog()
-
-	else if (href_list["coredump"])
-		if(disk)
-			SStranscore.core_dump(disk)
-			sleep(5)
-			visible_message("<span class='warning'>\The [src] spits out \the [disk].</span>")
-			disk.forceMove(get_turf(src))
-			disk = null
-
-	else if (href_list["ejectdisk"])
-		disk.forceMove(get_turf(src))
-		disk = null
 
 	else if (href_list["create"])
 		if(istype(active_br))

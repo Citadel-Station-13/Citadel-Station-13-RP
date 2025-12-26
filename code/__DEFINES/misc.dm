@@ -517,3 +517,5 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //name for blank icon states for clothing
 #define CLOTHING_BLANK_ICON_STATE "blank"
+
+#define CLONE_BIOMASS 30

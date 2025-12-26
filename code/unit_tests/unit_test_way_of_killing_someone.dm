@@ -5,7 +5,7 @@
 	var/is_ideally_gibbing = FALSE
 	var/is_potentially_destructive = FALSE
 
-/datum/unit_test_way_of_killing_someone/proc/invoke(mob/living/carbon/human)
+/datum/unit_test_way_of_killing_someone/proc/invoke(mob/human)
 
 /datum/unit_test_way_of_killing_someone/a_ton_of_brute_damage
 
