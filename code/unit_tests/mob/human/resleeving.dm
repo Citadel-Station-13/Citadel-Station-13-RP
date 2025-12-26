@@ -17,7 +17,7 @@
 	var/turf/where = pick(block(run_loc_floor_bottom_left, run_loc_floor_top_right))
 	var/mob/created_mob = create_character(where)
 
-	var/api_supported = created.resleeving_supports_mirrors()
+	var/api_supported = created_mob.resleeving_supports_mirrors()
 	var/obj/item/organ/internal/mirror/created = created_mob.resleeving_create_mirror()
 
 	// make sure api support isn't lying
@@ -95,5 +95,3 @@
 	created.set_species(/datum/species/protean)
 	ASSERT(locate(/obj/item/organ/internal/mmi_holder/posibrain/nano) in created.internal_organs)
 	return created
-
-#warn impl all
