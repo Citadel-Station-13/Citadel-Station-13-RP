@@ -638,11 +638,6 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 /mob/new_player/proc/spawn_checks_vr() //Custom spawn checks.
 	var/pass = TRUE
 
-	//Are they on the VERBOTEN LIST?
-	if (prevent_respawns.Find(client.prefs.real_name))
-		to_chat(src,"<span class='warning'>You've already quit the round as this character. You can't go back now that you've free'd your job slot. Play another character, or wait for the next round.</span>")
-		pass = FALSE
-
 	//Do they have their scale properly setup?
 	if(!client.prefs.size_multiplier)
 		pass = FALSE

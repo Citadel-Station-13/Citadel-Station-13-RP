@@ -29,6 +29,7 @@
 	var/list/legacy_genetic_modifiers = list()
 	var/legacy_sizemult
 	var/legacy_weight
+	var/legacy_custom_species_name
 
 /datum/resleeving_body_backup/Destroy()
 	// might be referenced by other stuff
@@ -54,6 +55,7 @@
 	legacy_sizemult = from_human.size_multiplier
 	legacy_weight = from_human.weight
 	legacy_ooc_notes = from_human.ooc_notes
+	legacy_custom_species_name = from_human.custom_species
 
 	var/datum/dna2/record/cloning_dna = new
 	legacy_dna = cloning_dna
@@ -64,7 +66,7 @@
 	cloning_dna.id = copytext(md5(from_human.real_name), 2, 6)
 	cloning_dna.name = from_human.dna.real_name
 	cloning_dna.types = DNA2_BUF_SE | DNA2_BUF_UE | DNA2_BUF_UI
-	cloning_dna.flavor = from_human.flavor_texts.copy()
+	cloning_dna.flavor = from_human.flavor_texts.Copy()
 
 	for(var/datum/modifier/modifier in from_human.modifiers)
 		if(modifier.flags & MODIFIER_GENETIC)

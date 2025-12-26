@@ -319,7 +319,6 @@
 		brainmob.dna = H.dna
 		brainmob.ooc_notes = H.ooc_notes
 		brainmob.timeofhostdeath = H.timeofdeath
-		SStranscore.m_backup(brainmob.mind,0) //It does ONE, so medical will hear about it.
 
 	//Else maybe they're a joining ghost
 	else if(isobserver(M))

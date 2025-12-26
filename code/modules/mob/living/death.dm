@@ -21,3 +21,5 @@
 		S.sharer_died(gibbed)
 	remove_ghostrole() //gone too soon to realize their potential, if they had it.
 	. = ..()
+
+#warn move from mob

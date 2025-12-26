@@ -21,6 +21,8 @@
 		if(animation)	qdel(animation)
 		if(src)			qdel(src)
 
+#warn move this crap to living
+
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
 //Dusting robots does not eject the MMI, so it's a bit more powerful than death_via_gib() /N
@@ -89,8 +91,6 @@
 	timeofdeath = world.time
 	if(mind)
 		mind.store_memory("Time of death: [stationtime2text()]", 0)
-	living_mob_list -= src
-	dead_mob_list |= src
 
 	set_respawn_timer()
 	updateicon()
