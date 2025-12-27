@@ -1970,7 +1970,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/resleeving/body_printer/grower_pod/full,
+/obj/machinery/resleeving/body_printer/grower_pod/loaded,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},

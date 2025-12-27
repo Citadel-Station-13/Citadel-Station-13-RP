@@ -6260,7 +6260,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sN" = (
-/obj/machinery/resleeving/body_printer/grower_pod/full,
+/obj/machinery/resleeving/body_printer/grower_pod/loaded,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},

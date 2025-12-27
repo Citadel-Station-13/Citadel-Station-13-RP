@@ -1,3 +1,14 @@
+/obj/machinery/resleeving/body_printer/synth_fab
+
+
+#warn impl all
+
+/obj/machinery/resleeving/body_printer/synth_fab/loaded/Initialize(mapload)
+	. = ..()
+	#warn impl
+
+#warn below
+
 // TODO: subtype of /clone_pod
 /obj/machinery/resleeving/body_printer/synth_fab
 	name = "SynthFab 3000"

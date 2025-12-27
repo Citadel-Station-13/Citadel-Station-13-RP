@@ -222,7 +222,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "aV" = (
-/obj/machinery/resleeving/body_printer/grower_pod/full,
+/obj/machinery/resleeving/body_printer/grower_pod/loaded,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "aW" = (

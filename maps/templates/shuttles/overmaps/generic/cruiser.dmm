@@ -4416,7 +4416,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "ka" = (
-/obj/machinery/resleeving/body_printer/grower_pod/full,
+/obj/machinery/resleeving/body_printer/grower_pod/loaded,
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "kb" = (

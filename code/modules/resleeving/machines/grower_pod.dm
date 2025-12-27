@@ -3,12 +3,13 @@
 	name = "grower pod"
 	circuit = /obj/item/circuitboard/transhuman_clonepod
 
-// TODO: this should be clone_pod or a subtype
-//A full version of the pod
-/obj/machinery/resleeving/body_printer/grower_pod/full/Initialize(mapload)
+/obj/machinery/resleeving/body_printer/grower_pod/loaded/Initialize(mapload)
 	. = ..()
-	for(var/i = 1 to container_limit)
-		containers += new /obj/item/reagent_containers/glass/bottle/biomass(src)
+	for(var/i in 1 to bottles_limit)
+		bottles += new /obj/item/reagent_containers/glass/bottle/biomass(src)
+
+#warn impl all
+#warn below
 
 /obj/machinery/resleeving/body_printer/grower_pod/growclone(datum/resleeving_body_backup/current_project)
 	//Manage machine-specific stuff.

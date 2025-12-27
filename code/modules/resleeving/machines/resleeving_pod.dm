@@ -17,15 +17,38 @@
 	/// * is what's inserted into a mob to sleeve the person back in
 	var/obj/item/organ/internal/mirror/held_mirror
 
+/obj/machinery/resleeving/resleeving_pod/Initialize(mapload)
+	. = ..()
+	update_icon()
+
+/obj/machinery/resleeving/resleeving_pod/Destroy()
+	#warn drop occupant/mirror
+	return ..()
+
+/obj/machinery/resleeving/resleeving_pod/drop_products(method, atom/where)
+	. = ..()
+	#warn drop occupant/mirror
+
+/**
+ * @return TRUE/FALSE
+ */
+/obj/machinery/resleeving/resleeving_pod/proc/insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor, silent)
+	#warn impl
+
+/**
+ * @return TRUE/FALSE
+ */
+/obj/machinery/resleeving/resleeving_pod/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor, silent)
+	#warn impl
+
+/obj/machinery/resleeving/resleeving_pod/proc/perform_resleeve()
+	#warn impl
+
 #warn below
 
 /obj/machinery/resleeving/resleeving_pod
 	var/blur_amount
 	var/confuse_amount
-
-/obj/machinery/resleeving/resleeving_pod/Initialize(mapload)
-	. = ..()
-	update_icon()
 
 /obj/machinery/resleeving/resleeving_pod/RefreshParts()
 	var/scan_rating = 0

@@ -15,8 +15,12 @@
 	var/allow_organic = FALSE
 	/// can fab synthetic limbs
 	var/allow_synthetic = FALSE
+
 	/// materials container
 	var/datum/material_container/materials
+	/// inserted reagent containers
+	var/list/obj/item/bottles
+	var/bottles_limit = 3
 
 	/// current project record
 	var/datum/resleeving_body_backup/currently_growing
@@ -28,6 +32,7 @@
 /obj/machinery/resleeving/body_printer/Initialize(mapload)
 	. = ..()
 	#warn reagents / materials
+	update_icon()
 
 /obj/machinery/resleeving/body_printer/Destroy()
 	QDEL_NULL(materials)
@@ -48,6 +53,17 @@
  * @return TRUE on success, FALSE on failure
  */
 /obj/machinery/resleeving/body_printer/proc/start_body(datum/resleeving_body_backup/backup)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	var/mob/living/created = create_body_impl(backup)
+	#warn impl
+
+/obj/machinery/resleeving/body_printer/proc/create_body_impl(datum/resleeving_body_backup/backup) as /mob/living
+	// backups are always human right now
+	var/mob/living/carbon/human/created_human = new(src)
+
+	#warn impl
 
 /**
  * Continues to grow the mob.
@@ -56,9 +72,20 @@
  * @return TRUE if mob is done, FALSE otherwise
  */
 /obj/machinery/resleeving/body_printer/proc/grow_body(dt)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	grow_body_impl(dt)
+
+	return currently_growing_progress_estimate_ratio >= 1
+
+/obj/machinery/resleeving/body_printer/proc/grow_body_impl(dt)
 
 
 /obj/machinery/resleeving/body_printer/proc/eject_body()
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	#warn impl
 
 //* ADMIN VV WRAPPERS *//
 
@@ -69,6 +96,8 @@
 	grow_body(INFINITY)
 	eject_body()
 
+/obj/machinery/resleeving/body_printer/process(delta_time)
+	#warn impl
 
 #warn below
 
@@ -86,22 +115,12 @@
 	/// How many beakers can the machine hold?
 	var/container_limit = 3
 
-/obj/machinery/resleeving/body_printer/Initialize(mapload)
-	. = ..()
-	update_icon()
-
-/obj/machinery/resleeving/body_printer/attack_ai(mob/user)
-
-	add_hiddenprint(user)
-	return attack_hand(user)
-
 /obj/machinery/resleeving/body_printer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
 		var/completion = (100 * ((occupant.health + 50) / (heal_level + 100))) // Clones start at -150 health
 		to_chat(user, "Current clone cycle is [round(completion)]% complete.")
-	return
 
 /// Start growing a human clone in the pod!
 /obj/machinery/resleeving/body_printer/proc/growclone(var/datum/dna2/record/R)
