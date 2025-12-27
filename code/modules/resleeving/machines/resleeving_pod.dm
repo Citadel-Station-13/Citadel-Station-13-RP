@@ -1,9 +1,7 @@
-#warn /machinery/resleeving_pod
 /obj/machinery/resleeving/resleeving_pod
 	name = "resleeving pod"
 	desc = "Used to combine mind and body into one unit.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	catalogue_data = list(
-		// /datum/category_item/catalogue/information/organization/vey_med,
 		/datum/category_item/catalogue/technology/resleeving,
 	)
 	icon = 'icons/obj/machines/implantchair.dmi'
@@ -12,11 +10,14 @@
 	density = TRUE
 	opacity = FALSE
 	anchored = TRUE
+
+	/// held occupant
+	var/mob/living/occupant
+	/// held mirror
+	var/obj/item/organ/internal/mirror/held_mirror
+
 	var/blur_amount
 	var/confuse_amount
-
-	var/mob/living/carbon/human/occupant = null
-	var/connected = null
 
 /obj/machinery/resleeving/resleeving_pod/Initialize(mapload)
 	. = ..()

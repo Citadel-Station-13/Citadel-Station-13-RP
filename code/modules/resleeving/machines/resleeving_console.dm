@@ -25,7 +25,12 @@
 /obj/machinery/computer/resleeving/Destroy()
 	for(var/obj/machinery/resleeving/linked as anything in linked_resleeving_machinery)
 		unlink_resleeving_machine(linked)
+	#warn drop mirror
 	return ..()
+
+/obj/machinery/computer/resleeving/drop_products(method, atom/where)
+	. = ..()
+	#warn drop mirror
 
 /obj/machinery/computer/resleeving/proc/rescan_nearby_machines()
 	for(var/obj/machinery/resleeving/maybe_in_range in GLOB.machines)
@@ -56,7 +61,11 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/machinery/computer/resleeving/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "")
+		#warn ui
+		ui.open()
 
 /obj/machinery/computer/resleeving/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -66,337 +75,19 @@
 	switch(action)
 		if("relink")
 		if("printBody")
+			var/printer_ref = params["printerRef"]
+			var/body_ref
 		if("resleeve")
+			var/sleever_ref = params["sleeverRef"]
 
 /obj/machinery/computer/resleeving/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
+	var/list/resleeving_pod_datas = list()
+	var/list/body_printer_datas = list()
+
+	for(var/obj/machinery/resleeving/machine_ref in linked_resleeving_machinery)
+		if(istype(machine_ref, /obj/machinery/resleeving/body_printer))
+		else if(istype(machine_ref, /obj/machinery/resleeving/resleeving_pod))
+
 #warn impl all
-
-
-
-/obj/machinery/computer/resleeving
-	#warn below
-
-	var/datum/transhuman/body_record/active_br = null
-	var/datum/transhuman/mind_record/active_mr = null
-	var/organic_capable = 1
-	var/synthetic_capable = 1
-	var/hasmirror = null
-
-
-/obj/machinery/computer/resleeving/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/multitool))
-		var/obj/item/multitool/M = W
-		var/obj/machinery/resleeving/body_printer/grower_pod/P = M.connecting
-		if(istype(P) && !(P in pods))
-			pods += P
-			P.connected = src
-			P.name = "[initial(P.name)] #[pods.len]"
-			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
-	if(istype(W, /obj/item/organ/internal/mirror))
-		if(!user.attempt_insert_item_for_installation(W, src))
-			return
-		hasmirror = W
-		user.visible_message("[user] inserts the [W] into the [src].", "You insert the [W] into the [src].")
-	if(istype(W, /obj/item/mirrortool))
-		var/obj/item/mirrortool/MT = W
-		if(MT.imp)
-			active_mr = MT.imp.stored_mind
-			hasmirror = MT.imp
-			MT.imp = null
-			user.visible_message("Mirror successfully transferred.")
-			MT.update_icon()
-		else
-			if(!MT.imp)
-				user.visible_message("This Mirror Installation Tool is empty.")
-	return ..()
-
-/obj/machinery/computer/resleeving/verb/eject_mirror()
-	set category = VERB_CATEGORY_OBJECT
-	set name = "Eject Mirror"
-	set src in oview(1)
-
-	if(hasmirror)
-		to_chat(usr, "You eject the mirror.")
-		usr.put_in_hands_or_drop(hasmirror)
-		hasmirror = null
-		active_mr = null
-	else
-		to_chat(usr, "There is no mirror to eject.")
-
-/obj/machinery/computer/resleeving/attack_ai(mob/user as mob)
-	return attack_hand(user)
-
-/obj/machinery/computer/resleeving/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	user.set_machine(src)
-	add_fingerprint(user)
-
-	if(machine_stat & (BROKEN|NOPOWER))
-		return
-
-	updatemodules()
-
-	nano_ui_interact(user)
-
-/obj/machinery/computer/resleeving/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_machine(src)
-
-	var/data[0]
-
-	var/bodyrecords_list_ui[0]
-	for(var/N in SStranscore.body_scans)
-		var/datum/transhuman/body_record/BR = SStranscore.body_scans[N]
-		bodyrecords_list_ui[++bodyrecords_list_ui.len] = list("name" = N, "recref" = "\ref[BR]")
-
-	var/mindrecords_list_ui[0]
-	for(var/N in SStranscore.backed_up)
-		var/datum/transhuman/mind_record/MR = SStranscore.backed_up[N]
-		mindrecords_list_ui[++mindrecords_list_ui.len] = list("name" = N, "recref" = "\ref[MR]")
-
-	var/pods_list_ui[0]
-	for(var/obj/machinery/resleeving/body_printer/grower_pod/pod in pods)
-		pods_list_ui[++pods_list_ui.len] = list("pod" = pod, "biomass" = pod.get_biomass())
-
-	var/spods_list_ui[0]
-	for(var/obj/machinery/resleeving/body_printer/synth_fab/spod in spods)
-		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, MAT_STEEL = spod.stored_material[MAT_STEEL], MAT_GLASS = spod.stored_material["glass"])
-
-	var/sleevers_list_ui[0]
-	for(var/obj/machinery/resleeving/resleeving_pod/resleever in sleevers)
-		sleevers_list_ui[++sleevers_list_ui.len] = list("sleever" = resleever, "occupant" = resleever.occupant ? resleever.occupant.real_name : "None")
-
-	if(pods)
-		data["pods"] = pods_list_ui
-	else
-		data["pods"] = null
-
-	if(spods)
-		data["spods"] = spods_list_ui
-	else
-		data["spods"] = null
-
-	if(sleevers)
-		data["sleevers"] = sleevers_list_ui
-	else
-		data["pods"] = null
-
-	if(bodyrecords_list_ui.len)
-		data["bodyrecords"] = bodyrecords_list_ui
-	else
-		data["bodyrecords"] = null
-
-	if(mindrecords_list_ui.len)
-		data["mindrecords"] = mindrecords_list_ui
-	else
-		data["mindrecords"] = null
-
-
-	if(active_br)
-		var/can_grow_active = 1
-		if(!synthetic_capable && active_br.synthetic) //Disqualified due to being synthetic in an organic only.
-			can_grow_active = 0
-		else if(!organic_capable && !active_br.synthetic) //Disqualified for the opposite.
-			can_grow_active = 0
-		else if(!synthetic_capable && !organic_capable) //What have you done??
-			can_grow_active = 0
-		else if(active_br.toocomplex)
-			can_grow_active = 0
-
-		data["activeBodyRecord"] = list("real_name" = active_br.mydna.name, \
-									"speciesname" = active_br.speciesname ? active_br.speciesname : active_br.mydna.dna.species, \
-									"gender" = active_br.bodygender, \
-									"synthetic" = active_br.synthetic ? "Yes" : "No", \
-									"locked" = active_br.locked ? "Low" : "High", \
-									"cando" = can_grow_active,
-									"booc" = active_br.body_oocnotes)
-	else
-		data["activeRecord"] = null
-
-	if(active_mr)
-		var/can_sleeve_current = 1
-		if(!sleevers.len)
-			can_sleeve_current = 0
-		data["activeMindRecord"] = list("charname" = active_mr.mindname, \
-										"obviously_dead" = active_mr.dead_state == MR_DEAD ? "Past-due" : "Current", \
-										"cando" = can_sleeve_current,
-										"mooc" = active_mr.mind_oocnotes)
-	else
-		data["activeMindRecord"] = null
-
-
-	data["menu"] = menu
-	data["podsLen"] = pods.len
-	data["spodsLen"] = spods.len
-	data["sleeversLen"] = sleevers.len
-	data["temp"] = temp
-
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "sleever.tmpl", "Resleeving Control Console", 400, 450)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(5)
-
-/obj/machinery/computer/resleeving/Topic(href, href_list)
-	if(..())
-		return 1
-
-	else if (href_list["view_brec"])
-		active_br = locate(href_list["view_brec"])
-		if(active_br && istype(active_br.mydna))
-			menu = 4
-		else
-			active_br = null
-			temp = "ERROR: Record missing."
-
-	else if (href_list["view_mrec"])
-		active_mr = locate(href_list["view_mrec"])
-		if(active_mr && istype(active_mr))
-			menu = 5
-		else
-			active_mr = null
-			temp = "ERROR: Record missing."
-
-	else if (href_list["boocnotes"])
-		menu = 6
-
-	else if (href_list["moocnotes"])
-		menu = 7
-
-	else if (href_list["refresh"])
-		updateUsrDialog()
-
-	else if (href_list["create"])
-		if(istype(active_br))
-			//Tried to grow a synth but no synth pods.
-			if(active_br.synthetic && !spods.len)
-				temp = "Error: No SynthFabs detected."
-			//Tried to grow an organic but no growpods.
-			else if(!active_br.synthetic && !pods.len)
-				temp = "Error: No growpods detected."
-			//We have the machines. We can rebuild them. Probably.
-			else
-				//We're cloning a synth.
-				if(active_br.synthetic)
-					var/obj/machinery/resleeving/body_printer/synth_fab/spod = spods[1]
-					if (spods.len > 1)
-						spod = input(usr,"Select a SynthFab to use", "Printer selection") as anything in spods
-
-					//Already doing someone.
-					if(spod.busy)
-						temp = "Error: SynthFab is currently busy."
-
-					//Not enough steel or glass
-					else if(spod.stored_material[MAT_STEEL] < spod.body_cost)
-						temp = "Error: Not enough [MAT_STEEL] in SynthFab."
-					else if(spod.stored_material["glass"] < spod.body_cost)
-						temp = "Error: Not enough glass in SynthFab."
-
-					//Gross pod (broke mid-cloning or something).
-					else if(spod.broken)
-						temp = "Error: SynthFab malfunction."
-
-					//Do the cloning!
-					else if(spod.print(active_br))
-						temp = "Initiating printing cycle..."
-						menu = 1
-					else
-						temp = "Initiating printing cycle...<br>Error: Post-initialisation failed. Printing cycle aborted."
-
-				//We're cloning an organic.
-				else
-					var/obj/machinery/resleeving/body_printer/grower_pod/pod = pods[1]
-					if (pods.len > 1)
-						pod = input(usr,"Select a growing pod to use", "Pod selection") as anything in pods
-
-					//Already doing someone.
-					if(pod.occupant)
-						temp = "Error: Growpod is currently occupied."
-
-					//Not enough materials.
-					else if(pod.get_biomass() < CLONE_BIOMASS)
-						temp = "Error: Not enough biomass."
-
-					//Gross pod (broke mid-cloning or something).
-					else if(pod.mess)
-						temp = "Error: Growpod malfunction."
-
-					//Disabled in config_legacy.
-					else if(!config_legacy.revival_cloning)
-						temp = "Error: Unable to initiate growing cycle."
-
-					//Do the cloning!
-					else if(pod.growclone(active_br))
-						temp = "Initiating growing cycle..."
-						menu = 1
-					else
-						temp = "Initiating growing cycle...<br>Error: Post-initialisation failed. Growing cycle aborted."
-
-		//The body record is broken somehow.
-		else
-			temp = "Error: Data corruption."
-
-	else if (href_list["sleeve"])
-		if(istype(active_mr))
-			if(!sleevers.len)
-				temp = "Error: No sleevers detected."
-			else
-				var/mode = text2num(href_list["sleeve"])
-				var/override
-				var/obj/machinery/resleeving/resleeving_pod/sleever = sleevers[1]
-				if (sleevers.len > 1)
-					sleever = input(usr,"Select a resleeving pod to use", "Resleever selection") as anything in sleevers
-
-				switch(mode)
-					if(1) //Body resleeving
-						//No body to sleeve into.
-						if(!sleever.occupant)
-							temp = "Error: Resleeving pod is not occupied."
-
-						//OOC body lock thing.
-						if(sleever.occupant.resleeve_lock && active_mr.ckey != sleever.occupant.resleeve_lock)
-							temp = "Error: Mind incompatible with body."
-
-						var/list/subtargets = list()
-						for(var/mob/living/carbon/human/H in sleever.occupant)
-							if(H.resleeve_lock && active_mr.ckey != H.resleeve_lock)
-								continue
-							subtargets += H
-						if(subtargets.len)
-							var/oc_sanity = sleever.occupant
-							override = input(usr,"Multiple bodies detected. Select target for resleeving of [active_mr.mindname] manually. Sleeving of primary body is unsafe with sub-contents, and is not listed.", "Resleeving Target") as null|anything in subtargets
-							if(!override || oc_sanity != sleever.occupant || !(override in sleever.occupant))
-								temp = "Error: Target selection aborted."
-
-					if(2) //Card resleeving
-						if(sleever.sleevecards <= 0)
-							temp = "Error: No available cards in resleever."
-
-				//Body to sleeve into, but mind is in another living body.
-				if(active_mr.mind_ref.current && active_mr.mind_ref.current.stat < DEAD) //Mind is in a body already that's alive
-					var/answer = alert(active_mr.mind_ref.current,"Someone is attempting to restore a backup of your mind. Do you want to abandon this body, and move there? You MAY suffer memory loss! (Same rules as CMD apply)","Resleeving","Yes","No")
-
-					//They declined to be moved.
-					if(answer == "No")
-						temp = "Initiating resleeving...<br>Error: Post-initialisation failed. Resleeving cycle aborted."
-						menu = 1
-
-				//They were dead, or otherwise available.
-				if(!temp)
-					sleever.putmind(active_mr,mode,override)
-					temp = "Initiating resleeving and transferring mirror..."
-					menu = 1
-					qdel(hasmirror)
-					active_mr = null
-
-		//IDK but it broke somehow.
-		else
-			temp = "Error: Data corruption."
-
-	else if (href_list["menu"])
-		menu = href_list["menu"]
-		temp = ""
-
-	SSnanoui.update_uis(src)
-	add_fingerprint(usr)

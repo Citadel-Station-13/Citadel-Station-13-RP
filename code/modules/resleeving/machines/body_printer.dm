@@ -1,19 +1,42 @@
-// TODO: clone_pod, generic /living printer lol
-//       or maybe humantype if it's too complicated.
-
 /**
- * Clone pods are a generic way to rebuild mobs from DNA, resleeving backups, and more.
+ * Body printers are a generic way to rebuild mobs from DNA, resleeving backups, templates, and more.
  */
 /obj/machinery/resleeving/body_printer
-	name = "cloning pod"
-	desc = "An electronically-lockable pod for growing organic tissue.\n <span class='notice'>\[Accepts Upgrades\]</span>"
+	name = "body printer"
+	desc = "Some kind of advanced device for printing humanoid bodies. Who came up with this?"
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/clonepod
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
 	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
+
+	/// held occupant
 	var/mob/living/occupant
+	/// can grow organic tissue
+	var/allow_organic = FALSE
+	/// can fab synthetic limbs
+	var/allow_synthetic = FALSE
+	/// materials container
+	var/datum/material_container/materials
+
+/obj/machinery/resleeving/body_printer/Initialize(mapload)
+	. = ..()
+	#warn reagents / materials
+
+/obj/machinery/resleeving/body_printer/Destroy()
+	QDEL_NULL(materials)
+	if(occupant)
+		#warn eject occupant
+	return ..()
+
+/obj/machinery/resleeving/body_printer/drop_products(method, atom/where)
+	. = ..()
+	#warn drop materials
+
+#warn below
+
+/obj/machinery/resleeving/body_printer
 	/// The clone is released once its health reaches this level.
 	var/heal_level = 20
 	var/heal_rate = 1
