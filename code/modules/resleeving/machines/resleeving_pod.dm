@@ -18,8 +18,6 @@
 	var/mob/living/carbon/human/occupant = null
 	var/connected = null
 
-	var/sleevecards = 2
-
 /obj/machinery/transhuman/resleever/Initialize(mapload)
 	. = ..()
 	update_icon()
@@ -82,13 +80,6 @@
 			qdel(G)
 			src.updateUsrDialog()
 			return //Don't call up else we'll get attack messsages
-	if(istype(W, /obj/item/sleevecard))
-		var/obj/item/sleevecard/C = W
-		if(!user.attempt_consume_item_for_construction(C))
-			return
-		C.removePersonality()
-		sleevecards++
-		to_chat(user, SPAN_NOTICE("You store \the [C] in \the [src]."))
 
 /obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user)
 	if(!istype(O))
@@ -139,7 +130,7 @@
 	//If we're sleeving a subtarget, briefly swap them to not need to duplicate tons of code.
 	var/mob/living/carbon/human/original_occupant
 	if(override)
-		original_occupant = occupant
+		original_occupant =
 		occupant = override
 
 	//In case they already had a mind!

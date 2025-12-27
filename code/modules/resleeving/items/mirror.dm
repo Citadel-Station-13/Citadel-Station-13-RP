@@ -25,19 +25,20 @@
 	var/datum/resleeving_body_backup/recorded_body
 	var/datum/resleeving_mind_backup/recorded_mind
 
-/obj/item/organ/internal/mirror/post_implant(var/mob/living/carbon/human/H)
-	if(!istype(H))
-		return
-	spawn(20)
-	if((H.client.prefs.organ_data[O_BRAIN] != null))
-		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
-		H.mirror = src
-		return
-	else
-		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
+/obj/item/organ/internal/mirror/replaced(mob/living/carbon/human/target, obj/item/organ/external/affected)
+	. = ..()
+
+/obj/item/organ/internal/mirror/removed(mob/living/user, ignore_vital)
+	. = ..()
+
+/obj/item/organ/internal/mirror/update_icon_state()
+	if(owner_mind_ref && recorded_body && recorded_mind)
 		icon_state = "mirror_implant"
-		human = H
-		human.mirror = src
+	else
+		icon_state = "mirror_implant_f"
+	return ..()
+
+#warn backup shit
 
 /obj/item/organ/internal/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/obj/machinery/computer/transhuman/resleeving/comp = target

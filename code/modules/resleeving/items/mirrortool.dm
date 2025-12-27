@@ -4,6 +4,7 @@
 	desc = "A tool for the installation and removal of Mirrors. The tool has a set of barbs for removing Mirrors from a body, and a slot for depositing it directly into a resleeving console."
 	icon = 'icons/obj/mirror.dmi'
 	icon_state = "mirrortool"
+	base_icon_state = "mirrortool"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throw_force = 3
@@ -13,7 +14,45 @@
 	materials_base = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
-	var/obj/item/organ/internal/mirror/imp = null
+
+	var/obj/item/organ/internal/mirror/inserted_mirror
+
+/obj/item/mirrortool/Destroy()
+	QDEL_NULL(inserted_mirror)
+	return ..()
+
+/obj/item/mirrortool/update_icon_state()
+	icon_state = inserted_mirror ? "mirrortool_loaded" : "mirrortool"
+
+/obj/item/mirrortool/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(istype(using, /obj/item/organ/internal/mirror))
+		var/obj/item/organ/internal/mirror/mirror = using
+
+/obj/item/mirrortool/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(istype(target, /obj/item/organ/internal/mirror))
+		var/obj/item/organ/internal/mirror/mirror = target
+
+/obj/item/mirrortool/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+
+/obj/item/mirrortool/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+
+/obj/item/mirrortool/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	. = ..()
+
+/obj/item/mirrortool/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+
+
+
 
 /obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/mob/living/carbon/human/H = target
@@ -78,12 +117,6 @@
 		update_icon()
 	. = ..()
 
-/obj/item/mirrortool/update_icon() //uwu
-	..()
-	if(imp == null)
-		icon_state = "mirrortool"
-	else
-		icon_state = "mirrortool_loaded"
 
 /obj/item/mirrortool/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/organ/internal/mirror))
