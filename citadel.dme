@@ -5145,7 +5145,7 @@
 #include "code\modules\resleeving\machines\resleeving.dm"
 #include "code\modules\resleeving\machines\resleeving_console.dm"
 #include "code\modules\resleeving\machines\resleeving_pod.dm"
-#include "code\modules\resleeving\machines\synth_pod.dm"
+#include "code\modules\resleeving\machines\synth_fab.dm"
 #include "code\modules\rogueminer_vr\asteroid.dm"
 #include "code\modules\rogueminer_vr\controller.dm"
 #include "code\modules\rogueminer_vr\debug.dm"

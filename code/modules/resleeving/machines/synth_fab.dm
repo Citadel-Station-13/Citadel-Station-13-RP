@@ -9,11 +9,9 @@
 	anchored = 1
 
 	var/list/stored_material =  list(MAT_STEEL = 30000, MAT_GLASS = 30000)
-	var/connected      //What console it's done up with
 	var/busy = 0       //Busy cloning
 	var/body_cost = 15000  //Cost of a cloned body (metal and glass ea.)
 	var/max_res_amount = 30000 //Max the thing can hold
-	var/datum/resleeving_body_backup/current_project
 	var/broken = 0
 	var/burn_value = 45
 	var/brute_value = 60
