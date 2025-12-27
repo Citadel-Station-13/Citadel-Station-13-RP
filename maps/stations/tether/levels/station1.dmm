@@ -13213,7 +13213,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "Bm" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /obj/machinery/status_display{

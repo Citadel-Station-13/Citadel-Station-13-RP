@@ -1764,7 +1764,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/rnd/strelka/science/secondary)
 "fS" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
 "fT" = (
@@ -5521,7 +5521,7 @@
 /area/rnd/strelka)
 "rS" = (
 /obj/machinery/air_alarm/west_mount,
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
 "rU" = (
@@ -8034,7 +8034,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/strelka/science/main)
 "Af" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
 "Ai" = (
@@ -11174,7 +11174,7 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/space)
 "Ji" = (
-/obj/machinery/clonepod/transhuman,
+/obj/machinery/resleeving/body_printer/grower_pod,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
 	},
@@ -11979,7 +11979,7 @@
 /turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/hallway/strelka/deck3)
 "LQ" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -15683,7 +15683,7 @@
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
 "Xm" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/paleblue{

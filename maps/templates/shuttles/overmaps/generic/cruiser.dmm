@@ -3888,7 +3888,7 @@
 /turf/simulated/wall/rpshull,
 /area/mothership/resleeving)
 "iW" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -4412,15 +4412,15 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "jZ" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "ka" = (
-/obj/machinery/clonepod/transhuman/full,
+/obj/machinery/resleeving/body_printer/grower_pod/full,
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "kb" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "kc" = (

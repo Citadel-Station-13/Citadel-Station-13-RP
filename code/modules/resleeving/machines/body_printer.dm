@@ -4,7 +4,7 @@
 /**
  * Clone pods are a generic way to rebuild mobs from DNA, resleeving backups, and more.
  */
-/obj/machinery/clonepod
+/obj/machinery/resleeving/body_printer
 	name = "cloning pod"
 	desc = "An electronically-lockable pod for growing organic tissue.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	density = TRUE
@@ -31,16 +31,16 @@
 	/// How many beakers can the machine hold?
 	var/container_limit = 3
 
-/obj/machinery/clonepod/Initialize(mapload)
+/obj/machinery/resleeving/body_printer/Initialize(mapload)
 	. = ..()
 	update_icon()
 
-/obj/machinery/clonepod/attack_ai(mob/user)
+/obj/machinery/resleeving/body_printer/attack_ai(mob/user)
 
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/machinery/resleeving/body_printer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
@@ -49,7 +49,7 @@
 	return
 
 /// Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(var/datum/dna2/record/R)
+/obj/machinery/resleeving/body_printer/proc/growclone(var/datum/dna2/record/R)
 	if(mess || attempting)
 		return FALSE
 	var/datum/mind/clonemind = locate(R.mind)
@@ -150,7 +150,7 @@
 	return 1
 
 /// Grow clones to maturity then kick them out.  FREELOADERS
-/obj/machinery/clonepod/process(delta_time)
+/obj/machinery/resleeving/body_printer/process(delta_time)
 	if(machine_stat & NOPOWER) // Autoeject if power is lost
 		if(occupant)
 			locked = 0
@@ -200,7 +200,7 @@
 	return
 
 //Let's unlock this early I guess.  Might be too early, needs tweaking.
-/obj/machinery/clonepod/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/resleeving/body_printer/attackby(obj/item/W as obj, mob/user as mob)
 	if(isnull(occupant))
 		if(default_deconstruction_screwdriver(user, W))
 			return
@@ -253,7 +253,7 @@
 	else
 		..()
 
-/obj/machinery/clonepod/emag_act(var/remaining_charges, var/mob/user)
+/obj/machinery/resleeving/body_printer/emag_act(var/remaining_charges, var/mob/user)
 	if(isnull(occupant))
 		return
 	to_chat(user, "You force an emergency ejection.")
@@ -262,7 +262,7 @@
 	return 1
 
 /// Put messages in the connected computer's temp var for display.
-/obj/machinery/clonepod/proc/connected_message(var/message)
+/obj/machinery/resleeving/body_printer/proc/connected_message(var/message)
 	if((isnull(connected)) || (!istype(connected, /obj/machinery/computer/cloning)))
 		return FALSE
 	if(!message)
@@ -272,7 +272,7 @@
 	connected.updateUsrDialog()
 	return 1
 
-/obj/machinery/clonepod/RefreshParts()
+/obj/machinery/resleeving/body_printer/RefreshParts()
 	..()
 	var/rating = 0
 	for(var/obj/item/stock_parts/P in component_parts)
@@ -282,7 +282,7 @@
 	heal_level = rating * 10 - 20
 	heal_rate = round(rating / 4)
 
-/obj/machinery/clonepod/verb/eject()
+/obj/machinery/resleeving/body_printer/verb/eject()
 	set name = "Eject Cloner"
 	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
@@ -293,7 +293,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/clonepod/proc/go_out()
+/obj/machinery/resleeving/body_printer/proc/go_out()
 	if(locked)
 		return
 
@@ -322,14 +322,14 @@
 	return
 
 // Returns the total amount of biomass reagent in all of the pod's stored containers
-/obj/machinery/clonepod/proc/get_biomass()
+/obj/machinery/resleeving/body_printer/proc/get_biomass()
 	var/biomass_count = 0
 	for(var/obj/item/reagent_containers/container in containers)
 		biomass_count += container.reagents?.reagent_volumes?[/datum/reagent/nutriment/biomass::id]
 	return biomass_count
 
 // Removes [amount] biomass, spread across all containers. Doesn't have any check that you actually HAVE enough biomass, though.
-/obj/machinery/clonepod/proc/remove_biomass(amount = CLONE_BIOMASS)		//Just in case it doesn't get passed a new amount, assume one clone
+/obj/machinery/resleeving/body_printer/proc/remove_biomass(amount = CLONE_BIOMASS)		//Just in case it doesn't get passed a new amount, assume one clone
 	for(var/obj/item/reagent_containers/glass/beaker in containers)
 		amount -= beaker.reagents.remove_reagent(/datum/reagent/nutriment/biomass, amount)
 		if(!amount)
@@ -337,7 +337,7 @@
 	return !amount
 
 // Empties all of the beakers from the cloning pod, used to refill it
-/obj/machinery/clonepod/verb/empty_beakers()
+/obj/machinery/resleeving/body_printer/verb/empty_beakers()
 	set name = "Eject Beakers"
 	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
@@ -351,7 +351,7 @@
 
 // Actually does all of the beaker dropping
 // Returns 1 if it succeeds, 0 if it fails. Added in case someone wants to add messages to the user.
-/obj/machinery/clonepod/proc/drop_beakers()
+/obj/machinery/resleeving/body_printer/proc/drop_beakers()
 	if(LAZYLEN(containers))
 		var/turf/T = get_turf(src)
 		if(T)
@@ -361,7 +361,7 @@
 		return	1
 	return 0
 
-/obj/machinery/clonepod/proc/malfunction()
+/obj/machinery/resleeving/body_printer/proc/malfunction()
 	if(occupant)
 		connected_message("Critical Error!")
 		mess = 1
@@ -371,18 +371,18 @@
 			qdel(occupant)
 	return
 
-/obj/machinery/clonepod/relaymove(mob/user as mob)
+/obj/machinery/resleeving/body_printer/relaymove(mob/user as mob)
 	if(user.stat)
 		return
 	go_out()
 	return
 
-/obj/machinery/clonepod/emp_act(severity)
+/obj/machinery/resleeving/body_printer/emp_act(severity)
 	if(prob(100/severity))
 		malfunction()
 	..()
 
-/obj/machinery/clonepod/legacy_ex_act(severity)
+/obj/machinery/resleeving/body_printer/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
@@ -407,7 +407,7 @@
 		else
 	return
 
-/obj/machinery/clonepod/update_icon()
+/obj/machinery/resleeving/body_printer/update_icon()
 	..()
 	icon_state = "pod_0"
 	if(occupant && !(machine_stat & NOPOWER))
@@ -416,7 +416,7 @@
 		icon_state = "pod_g"
 
 
-/obj/machinery/clonepod/full/Initialize(mapload, newdir)
+/obj/machinery/resleeving/body_printer/full/Initialize(mapload, newdir)
 	. = ..()
 	for(var/i = 1 to container_limit)
 		containers += new /obj/item/reagent_containers/glass/bottle/biomass(src)

@@ -47,7 +47,7 @@
 	return
 
 /obj/machinery/computer/cloning/proc/releasecloner()
-	for(var/obj/machinery/clonepod/P in pods)
+	for(var/obj/machinery/resleeving/body_printer/P in pods)
 		P.connected = null
 		P.name = initial(P.name)
 	pods.Cut()
@@ -55,7 +55,7 @@
 /obj/machinery/computer/cloning/proc/findcloner()
 	var/num = 1
 	var/area/A = get_area(src)
-	for(var/obj/machinery/clonepod/P in A.get_contents())
+	for(var/obj/machinery/resleeving/body_printer/P in A.get_contents())
 		if(!P.connected)
 			pods += P
 			P.connected = src
@@ -72,7 +72,7 @@
 			return
 	else if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
-		var/obj/machinery/clonepod/P = M.connecting
+		var/obj/machinery/resleeving/body_printer/P = M.connecting
 		if(P && !(P in pods))
 			pods += P
 			P.connected = src
@@ -115,7 +115,7 @@
 		records_list_ui[++records_list_ui.len] = list("ckey" = R.ckey, "name" = R.dna.real_name)
 
 	var/pods_list_ui[0]
-	for(var/obj/machinery/clonepod/pod in pods)
+	for(var/obj/machinery/resleeving/body_printer/pod in pods)
 		pods_list_ui[++pods_list_ui.len] = list("pod" = pod, "biomass" = pod.get_biomass())
 
 	if(pods)
@@ -247,7 +247,7 @@
 			if(!LAZYLEN(pods))
 				temp = "Error: No clone pods detected."
 			else
-				var/obj/machinery/clonepod/pod = pods[1]
+				var/obj/machinery/resleeving/body_printer/pod = pods[1]
 				if (pods.len > 1)
 					pod = input(usr,"Select a cloning pod to use", "Pod selection") as anything in pods
 				if(pod.occupant)

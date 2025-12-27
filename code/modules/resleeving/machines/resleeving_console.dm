@@ -1,74 +1,94 @@
-#warn computer/resleeving
-/obj/machinery/computer/transhuman/resleeving
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/obj/machinery/computer/resleeving
 	name = "resleeving control console"
-	desc = "A control console for the resleeving and grower pods. It has a small slot for inserting a mirror tool for direct transfer of mirrors."
-	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
-						/datum/category_item/catalogue/technology/resleeving)
+	desc = "A central controller for resleeving machinery."
+	catalogue_data = list(
+		/datum/category_item/catalogue/technology/resleeving,
+	)
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	light_color = "#315ab4"
 	circuit = /obj/item/circuitboard/resleeving_control
-	req_access = list(ACCESS_COMMAND_BRIDGE) //Only used for record deletion right now.
-	var/list/pods = list() //Linked grower pods.
-	var/list/spods = list()
-	var/list/sleevers = list() //Linked resleeving booths.
-	var/temp = ""
-	var/menu = 1 //Which menu screen to display
+
+	/// all linked machines
+	/// * lazy list
+	var/list/obj/machinery/resleeving/linked_resleeving_machinery
+	/// link range in tiles
+	var/link_range = 4
+
+/obj/machinery/computer/resleeving/Initialize(mapload)
+	. = ..()
+	rescan_nearby_machines()
+
+/obj/machinery/computer/resleeving/Destroy()
+	for(var/obj/machinery/resleeving/linked as anything in linked_resleeving_machinery)
+		unlink_resleeving_machine(linked)
+	return ..()
+
+/obj/machinery/computer/resleeving/proc/rescan_nearby_machines()
+	for(var/obj/machinery/resleeving/maybe_in_range in GLOB.machines)
+		if(maybe_in_range.z != src.z)
+			continue
+		if(get_dist(maybe_in_range, src) > link_range)
+			continue
+		if(maybe_in_range.linked_console)
+			continue
+		link_resleeving_machine(maybe_in_range)
+
+/obj/machinery/computer/resleeving/proc/link_resleeving_machine(obj/machinery/resleeving/resleeving_machine)
+	SHOULD_NOT_SLEEP(TRUE)
+	return resleeving_machine.link_console(src)
+
+/obj/machinery/computer/resleeving/proc/unlink_resleeving_machine(obj/machinery/resleeving/resleeving_machine)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(resleeving_machine.linked_console != src)
+		return TRUE
+	return resleeving_machine.unlink_console()
+
+/obj/machinery/computer/resleeving/proc/on_resleeving_machine_linked(obj/machinery/resleeving/resleeving_machine)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/machinery/computer/resleeving/proc/on_resleeving_machine_unlinked(obj/machinery/resleeving/resleeving_machine)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/machinery/computer/resleeving/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+
+/obj/machinery/computer/resleeving/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("relink")
+		if("printBody")
+		if("resleeve")
+
+/obj/machinery/computer/resleeving/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+#warn impl all
+
+
+
+/obj/machinery/computer/resleeving
+	#warn below
+
 	var/datum/transhuman/body_record/active_br = null
 	var/datum/transhuman/mind_record/active_mr = null
 	var/organic_capable = 1
 	var/synthetic_capable = 1
 	var/hasmirror = null
 
-/obj/machinery/computer/transhuman/resleeving/Initialize(mapload)
-	. = ..()
-	updatemodules()
 
-/obj/machinery/computer/transhuman/resleeving/Destroy()
-	releasepods()
-	return ..()
-
-/obj/machinery/computer/transhuman/resleeving/proc/updatemodules()
-	releasepods()
-	findpods()
-
-/obj/machinery/computer/transhuman/resleeving/proc/releasepods()
-	for(var/obj/machinery/clonepod/transhuman/P in pods)
-		P.connected = null
-		P.name = initial(P.name)
-	pods.Cut()
-	for(var/obj/machinery/transhuman/synthprinter/P in spods)
-		P.connected = null
-		P.name = initial(P.name)
-	spods.Cut()
-	for(var/obj/machinery/transhuman/resleever/P in sleevers)
-		P.connected = null
-		P.name = initial(P.name)
-	sleevers.Cut()
-
-/obj/machinery/computer/transhuman/resleeving/proc/findpods()
-	var/num = 1
-	var/area/A = get_area(src)
-	for(var/obj/machinery/clonepod/transhuman/P in A.get_contents())
-		if(!P.connected)
-			pods += P
-			P.connected = src
-			P.name = "[initial(P.name)] #[num++]"
-	for(var/obj/machinery/transhuman/synthprinter/P in A.get_contents())
-		if(!P.connected)
-			spods += P
-			P.connected = src
-			P.name = "[initial(P.name)] #[num++]"
-	for(var/obj/machinery/transhuman/resleever/P in A.get_contents())
-		if(!P.connected)
-			sleevers += P
-			P.connected = src
-			P.name = "[initial(P.name)] #[num++]"
-
-/obj/machinery/computer/transhuman/resleeving/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/computer/resleeving/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
-		var/obj/machinery/clonepod/transhuman/P = M.connecting
+		var/obj/machinery/resleeving/body_printer/grower_pod/P = M.connecting
 		if(istype(P) && !(P in pods))
 			pods += P
 			P.connected = src
@@ -92,7 +112,7 @@
 				user.visible_message("This Mirror Installation Tool is empty.")
 	return ..()
 
-/obj/machinery/computer/transhuman/resleeving/verb/eject_mirror()
+/obj/machinery/computer/resleeving/verb/eject_mirror()
 	set category = VERB_CATEGORY_OBJECT
 	set name = "Eject Mirror"
 	set src in oview(1)
@@ -105,10 +125,10 @@
 	else
 		to_chat(usr, "There is no mirror to eject.")
 
-/obj/machinery/computer/transhuman/resleeving/attack_ai(mob/user as mob)
+/obj/machinery/computer/resleeving/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/transhuman/resleeving/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/machinery/computer/resleeving/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 	add_fingerprint(user)
 
@@ -119,7 +139,7 @@
 
 	nano_ui_interact(user)
 
-/obj/machinery/computer/transhuman/resleeving/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/resleeving/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -135,15 +155,15 @@
 		mindrecords_list_ui[++mindrecords_list_ui.len] = list("name" = N, "recref" = "\ref[MR]")
 
 	var/pods_list_ui[0]
-	for(var/obj/machinery/clonepod/transhuman/pod in pods)
+	for(var/obj/machinery/resleeving/body_printer/grower_pod/pod in pods)
 		pods_list_ui[++pods_list_ui.len] = list("pod" = pod, "biomass" = pod.get_biomass())
 
 	var/spods_list_ui[0]
-	for(var/obj/machinery/transhuman/synthprinter/spod in spods)
+	for(var/obj/machinery/resleeving/body_printer/synth_fab/spod in spods)
 		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, MAT_STEEL = spod.stored_material[MAT_STEEL], MAT_GLASS = spod.stored_material["glass"])
 
 	var/sleevers_list_ui[0]
-	for(var/obj/machinery/transhuman/resleever/resleever in sleevers)
+	for(var/obj/machinery/resleeving/resleeving_pod/resleever in sleevers)
 		sleevers_list_ui[++sleevers_list_ui.len] = list("sleever" = resleever, "occupant" = resleever.occupant ? resleever.occupant.real_name : "None")
 
 	if(pods)
@@ -218,7 +238,7 @@
 		ui.open()
 		ui.set_auto_update(5)
 
-/obj/machinery/computer/transhuman/resleeving/Topic(href, href_list)
+/obj/machinery/computer/resleeving/Topic(href, href_list)
 	if(..())
 		return 1
 
@@ -259,7 +279,7 @@
 			else
 				//We're cloning a synth.
 				if(active_br.synthetic)
-					var/obj/machinery/transhuman/synthprinter/spod = spods[1]
+					var/obj/machinery/resleeving/body_printer/synth_fab/spod = spods[1]
 					if (spods.len > 1)
 						spod = input(usr,"Select a SynthFab to use", "Printer selection") as anything in spods
 
@@ -286,7 +306,7 @@
 
 				//We're cloning an organic.
 				else
-					var/obj/machinery/clonepod/transhuman/pod = pods[1]
+					var/obj/machinery/resleeving/body_printer/grower_pod/pod = pods[1]
 					if (pods.len > 1)
 						pod = input(usr,"Select a growing pod to use", "Pod selection") as anything in pods
 
@@ -324,7 +344,7 @@
 			else
 				var/mode = text2num(href_list["sleeve"])
 				var/override
-				var/obj/machinery/transhuman/resleever/sleever = sleevers[1]
+				var/obj/machinery/resleeving/resleeving_pod/sleever = sleevers[1]
 				if (sleevers.len > 1)
 					sleever = input(usr,"Select a resleeving pod to use", "Resleever selection") as anything in sleevers
 

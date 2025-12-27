@@ -287,7 +287,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "cN" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -2411,7 +2411,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/escape)
 "uL" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -3879,7 +3879,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "Fo" = (
-/obj/machinery/clonepod/transhuman/full,
+/obj/machinery/resleeving/body_printer/grower_pod/full,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},
@@ -5292,7 +5292,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
 "PJ" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},

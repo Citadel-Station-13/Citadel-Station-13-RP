@@ -5587,7 +5587,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/hallway/strelka/deck4)
 "uq" = (
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /obj/structure/table/carbon/reinforced,
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/item/radio/intercom/department/medbay{

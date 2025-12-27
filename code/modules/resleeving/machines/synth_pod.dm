@@ -1,5 +1,5 @@
 // TODO: subtype of /clone_pod
-/obj/machinery/transhuman/synthprinter
+/obj/machinery/resleeving/body_printer/synth_fab
 	name = "SynthFab 3000"
 	desc = "A rapid fabricator for synthetic bodies.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
@@ -20,11 +20,11 @@
 	var/burn_value = 45
 	var/brute_value = 60
 
-/obj/machinery/transhuman/synthprinter/Initialize(mapload)
+/obj/machinery/resleeving/body_printer/synth_fab/Initialize(mapload)
 	. = ..()
 	update_icon()
 
-/obj/machinery/transhuman/synthprinter/RefreshParts()
+/obj/machinery/resleeving/body_printer/synth_fab/RefreshParts()
 
 	//Scanning modules reduce burn rating by 15 each
 	var/burn_rating = initial(burn_value)
@@ -44,7 +44,7 @@
 		store_rating = store_rating * MB.rating
 	max_res_amount = store_rating
 
-/obj/machinery/transhuman/synthprinter/process(delta_time)
+/obj/machinery/resleeving/body_printer/synth_fab/process(delta_time)
 	if(machine_stat & NOPOWER)
 		if(busy)
 			busy = 0
@@ -60,7 +60,7 @@
 
 	return
 
-/obj/machinery/transhuman/synthprinter/proc/print(var/datum/resleeving_body_backup/BR)
+/obj/machinery/resleeving/body_printer/synth_fab/proc/print(var/datum/resleeving_body_backup/BR)
 	if(!istype(BR) || busy)
 		return 0
 
@@ -73,7 +73,7 @@
 
 	return 1
 
-/obj/machinery/transhuman/synthprinter/proc/make_body()
+/obj/machinery/resleeving/body_printer/synth_fab/proc/make_body()
 	//Manage machine-specific stuff
 	if(!current_project)
 		busy = 0
@@ -163,13 +163,13 @@
 
 	return 1
 
-/obj/machinery/transhuman/synthprinter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/machinery/resleeving/body_printer/synth_fab/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((busy == 0) || (machine_stat & NOPOWER))
 		return
 	to_chat(user, "Current print cycle is [busy]% complete.")
 	return
 
-/obj/machinery/transhuman/synthprinter/attackby(obj/item/W, mob/user)
+/obj/machinery/resleeving/body_printer/synth_fab/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(busy)
 		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
@@ -207,7 +207,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/transhuman/synthprinter/update_icon()
+/obj/machinery/resleeving/body_printer/synth_fab/update_icon()
 	..()
 	icon_state = "pod_0"
 	if(busy && !(machine_stat & NOPOWER))

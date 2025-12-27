@@ -1,5 +1,5 @@
 #warn /machinery/resleeving_pod
-/obj/machinery/transhuman/resleever
+/obj/machinery/resleeving/resleeving_pod
 	name = "resleeving pod"
 	desc = "Used to combine mind and body into one unit.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	catalogue_data = list(
@@ -18,11 +18,11 @@
 	var/mob/living/carbon/human/occupant = null
 	var/connected = null
 
-/obj/machinery/transhuman/resleever/Initialize(mapload)
+/obj/machinery/resleeving/resleeving_pod/Initialize(mapload)
 	. = ..()
 	update_icon()
 
-/obj/machinery/transhuman/resleever/RefreshParts()
+/obj/machinery/resleeving/resleeving_pod/RefreshParts()
 	var/scan_rating = 0
 	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
 		scan_rating += SM.rating
@@ -33,7 +33,7 @@
 		manip_rating += M.rating
 	blur_amount = (48 - manip_rating * 8)
 
-/obj/machinery/transhuman/resleever/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/machinery/resleeving/resleeving_pod/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 	var/health_text = ""
 	var/mind_text = ""
@@ -57,7 +57,7 @@
 	user << browse(HTML_SKELETON(dat), "window=resleever")
 	onclose(user, "resleever")
 
-/obj/machinery/transhuman/resleever/attackby(obj/item/W, mob/user)
+/obj/machinery/resleeving/resleeving_pod/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -81,7 +81,7 @@
 			src.updateUsrDialog()
 			return //Don't call up else we'll get attack messsages
 
-/obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user)
+/obj/machinery/resleeving/resleeving_pod/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user)
 	if(!istype(O))
 		return FALSE //not a mob
 	if(user.incapacitated())
@@ -112,12 +112,12 @@
 
 	add_fingerprint(user)
 
-/obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(mob/target, mob/user) //Allows borgs to put people into resleeving without external assistance
+/obj/machinery/resleeving/resleeving_pod/MouseDroppedOnLegacy(mob/target, mob/user) //Allows borgs to put people into resleeving without external assistance
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !ishuman(target))
 		return
 	put_mob(target)
 
-/obj/machinery/transhuman/resleever/proc/putmind(datum/transhuman/mind_record/MR, mode = 1, mob/living/carbon/human/override = null)
+/obj/machinery/resleeving/resleeving_pod/proc/putmind(datum/transhuman/mind_record/MR, mode = 1, mob/living/carbon/human/override = null)
 	if((!occupant || !istype(occupant) || occupant.stat >= DEAD) && mode == 1)
 		return 0
 
@@ -179,7 +179,7 @@
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 100, TRUE) // Play our sound at the end of the mind injection!
 	return 1
 
-/obj/machinery/transhuman/resleever/proc/go_out(mob/M)
+/obj/machinery/resleeving/resleeving_pod/proc/go_out(mob/M)
 	if(!occupant)
 		return
 	occupant.forceMove(loc)
@@ -188,7 +188,7 @@
 	icon_state = "implantchair"
 	return
 
-/obj/machinery/transhuman/resleever/proc/put_mob(mob/living/carbon/human/M as mob)
+/obj/machinery/resleeving/resleeving_pod/proc/put_mob(mob/living/carbon/human/M as mob)
 	if(!ishuman(M))
 		to_chat(usr, SPAN_WARNING("\The [src] cannot hold this!"))
 		return
@@ -203,7 +203,7 @@
 	icon_state = "implantchair_on"
 	return TRUE
 
-/obj/machinery/transhuman/resleever/verb/get_out()
+/obj/machinery/resleeving/resleeving_pod/verb/get_out()
 	set name = "EJECT Occupant"
 	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)
@@ -213,7 +213,7 @@
 	add_fingerprint(usr)
 	return
 
-/obj/machinery/transhuman/resleever/verb/move_inside()
+/obj/machinery/resleeving/resleeving_pod/verb/move_inside()
 	set name = "Move INSIDE"
 	set category = VERB_CATEGORY_OBJECT
 	set src in oview(1)

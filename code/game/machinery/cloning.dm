@@ -149,6 +149,6 @@
 
 //SOME SCRAPS I GUESS
 /* EMP grenade/spell effect
-		if(istype(A, /obj/machinery/clonepod))
+		if(istype(A, /obj/machinery/resleeving/body_printer))
 			A:malfunction()
 */

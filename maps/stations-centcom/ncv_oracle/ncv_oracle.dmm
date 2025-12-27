@@ -1970,7 +1970,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/clonepod/transhuman/full,
+/obj/machinery/resleeving/body_printer/grower_pod/full,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -9805,7 +9805,7 @@
 	},
 /area/centcom/security)
 "Fe" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -10505,7 +10505,7 @@
 	dir = 4
 	},
 /obj/machinery/light,
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "HG" = (
@@ -11328,7 +11328,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -14335,7 +14335,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -14348,7 +14348,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "Tn" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "To" = (
@@ -14649,7 +14649,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /obj/item/book/manual/resleeving,
 /obj/item/storage/box/backup_kit,
 /turf/unsimulated/floor/steel,

@@ -1,5 +1,5 @@
 
-/obj/machinery/clonepod/transhuman
+/obj/machinery/resleeving/body_printer/grower_pod
 	name = "grower pod"
 	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
 						/datum/category_item/catalogue/technology/resleeving)
@@ -7,12 +7,12 @@
 
 // TODO: this should be clone_pod or a subtype
 //A full version of the pod
-/obj/machinery/clonepod/transhuman/full/Initialize(mapload)
+/obj/machinery/resleeving/body_printer/grower_pod/full/Initialize(mapload)
 	. = ..()
 	for(var/i = 1 to container_limit)
 		containers += new /obj/item/reagent_containers/glass/bottle/biomass(src)
 
-/obj/machinery/clonepod/transhuman/growclone(datum/resleeving_body_backup/current_project)
+/obj/machinery/resleeving/body_printer/grower_pod/growclone(datum/resleeving_body_backup/current_project)
 	//Manage machine-specific stuff.
 	if(mess || attempting)
 		return 0
@@ -120,7 +120,7 @@
 	attempting = 0
 	return 1
 
-/obj/machinery/clonepod/transhuman/process(delta_time)
+/obj/machinery/resleeving/body_printer/grower_pod/process(delta_time)
 	if(machine_stat & NOPOWER)
 		if(occupant)
 			locked = 0

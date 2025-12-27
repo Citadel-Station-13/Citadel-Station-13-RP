@@ -41,7 +41,7 @@
 #warn backup shit
 
 /obj/item/organ/internal/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	var/obj/machinery/computer/transhuman/resleeving/comp = target
+	var/obj/machinery/computer/resleeving/comp = target
 	if (!istype(comp))
 		return
 	comp.active_mr = stored_mind

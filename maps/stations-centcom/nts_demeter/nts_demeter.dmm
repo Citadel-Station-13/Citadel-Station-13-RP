@@ -5961,7 +5961,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "rQ" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -6086,7 +6086,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sd" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -6155,7 +6155,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/centcom/simulated/medical)
 "sr" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -6260,7 +6260,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sN" = (
-/obj/machinery/clonepod/transhuman/full,
+/obj/machinery/resleeving/body_printer/grower_pod/full,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},
