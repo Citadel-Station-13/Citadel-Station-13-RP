@@ -14,8 +14,12 @@
 	/// held occupant
 	var/mob/living/occupant
 	/// held mirror
+	/// * is what's inserted into a mob to sleeve the person back in
 	var/obj/item/organ/internal/mirror/held_mirror
 
+#warn below
+
+/obj/machinery/resleeving/resleeving_pod
 	var/blur_amount
 	var/confuse_amount
 

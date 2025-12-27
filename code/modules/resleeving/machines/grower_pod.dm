@@ -1,8 +1,6 @@
 
 /obj/machinery/resleeving/body_printer/grower_pod
 	name = "grower pod"
-	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
-						/datum/category_item/catalogue/technology/resleeving)
 	circuit = /obj/item/circuitboard/transhuman_clonepod
 
 // TODO: this should be clone_pod or a subtype

@@ -2,8 +2,6 @@
 /obj/machinery/resleeving/body_printer/synth_fab
 	name = "SynthFab 3000"
 	desc = "A rapid fabricator for synthetic bodies.\n <span class='notice'>\[Accepts Upgrades\]</span>"
-	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
-						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/machines/synthpod.dmi'
 	icon_state = "pod_0"
 	circuit = /obj/item/circuitboard/transhuman_synthprinter

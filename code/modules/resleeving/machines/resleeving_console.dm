@@ -18,6 +18,13 @@
 	/// link range in tiles
 	var/link_range = 4
 
+	/// inserted mirror
+	/// * used for body records
+	var/obj/item/organ/internal/mirror/inserted_mirror
+	/// inserted dna disk
+	/// * used to print dna2 records (which should get refactored someday)
+	var/obj/item/disk/data/inserted_disk
+
 /obj/machinery/computer/resleeving/Initialize(mapload)
 	. = ..()
 	rescan_nearby_machines()

@@ -11,14 +11,19 @@
 	icon_state = "pod_0"
 	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
 
-	/// held occupant
-	var/mob/living/occupant
 	/// can grow organic tissue
 	var/allow_organic = FALSE
 	/// can fab synthetic limbs
 	var/allow_synthetic = FALSE
 	/// materials container
 	var/datum/material_container/materials
+
+	/// current project record
+	var/datum/resleeving_body_backup/currently_growing
+	/// held occupant (current project)
+	var/mob/living/currently_growing_body
+	/// 0 to 1 ratio
+	var/currently_growing_progress_estimate_ratio
 
 /obj/machinery/resleeving/body_printer/Initialize(mapload)
 	. = ..()
@@ -34,6 +39,37 @@
 	. = ..()
 	#warn drop materials
 
+/**
+ * Builds the initial mob.
+ * * Will set `currently_growing_xyz` variables.
+ * * The API for this only accepts backups. If you're trying to use DNA records,
+ *   write a wrapper, don't override the proc.
+ *
+ * @return TRUE on success, FALSE on failure
+ */
+/obj/machinery/resleeving/body_printer/proc/start_body(datum/resleeving_body_backup/backup)
+
+/**
+ * Continues to grow the mob.
+ * * Will set `currently_growing_xyz` variables.
+ *
+ * @return TRUE if mob is done, FALSE otherwise
+ */
+/obj/machinery/resleeving/body_printer/proc/grow_body(dt)
+
+
+/obj/machinery/resleeving/body_printer/proc/eject_body()
+
+//* ADMIN VV WRAPPERS *//
+
+// prints a body immediately if we have space
+/obj/machinery/resleeving/body_printer/proc/admin_print_one_shot(datum/resleeving_body_backup/backup)
+	if(!start_body(backup))
+		return FALSE
+	grow_body(INFINITY)
+	eject_body()
+
+
 #warn below
 
 /obj/machinery/resleeving/body_printer
@@ -41,12 +77,8 @@
 	var/heal_level = 20
 	var/heal_rate = 1
 	var/locked = FALSE
-	/// So we remember the connected clone machine.
-	var/obj/machinery/computer/cloning/connected = null
 	/// Need to clean out it if it's full of exploded clone.
 	var/mess = FALSE
-	/// One clone attempt at a time thanks.
-	var/attempting = FALSE
 	/// Don't eject them as soon as they are created.
 	var/eject_wait = FALSE
 	/// Beakers for our liquid biomass.
