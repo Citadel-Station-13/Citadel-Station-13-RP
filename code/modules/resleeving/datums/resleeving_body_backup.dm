@@ -5,6 +5,9 @@
  * * Considered immutable once created; many datums may be shared!
  */
 /datum/resleeving_body_backup
+	/// mind ref.
+	/// * used to prevent impersonation; printed bodies get imprinted with this
+	var/datum/mind_ref/mind_ref
 
 	//* legacy - in the future we want to have the same structures as prefs *//
 	//* it might seem ridiculous to mark an entire datum as legacy but      *//
@@ -53,6 +56,10 @@
 		return
 
 	var/mob/living/carbon/human/from_human = from_body
+
+	// mind ref only gets set if the body has a mind.
+	mind_ref = from_human.mind?.get_mind_ref()
+
 	legacy_synthetic = from_human.isSynthetic()
 	legacy_species_uid = from_human.species.uid
 	legacy_gender = from_human.gender

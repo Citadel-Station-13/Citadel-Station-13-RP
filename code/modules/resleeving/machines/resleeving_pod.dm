@@ -130,7 +130,7 @@
 	//If we're sleeving a subtarget, briefly swap them to not need to duplicate tons of code.
 	var/mob/living/carbon/human/original_occupant
 	if(override)
-		original_occupant =
+		original_occupant = occupant
 		occupant = override
 
 	//In case they already had a mind!

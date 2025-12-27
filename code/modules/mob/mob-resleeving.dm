@@ -27,3 +27,30 @@
  */
 /mob/proc/resleeving_remove_mirror(atom/new_loc) as /obj/item/organ/internal/mirror
 	return null
+
+/**
+ * * Accepts a `/datum/mind` or `/datum/mind_ref`
+ *
+ * Sets `mind_resleeving_lock` to a specific mind ref.
+ */
+/mob/proc/resleeving_place_mind_lock(use_mind)
+	var/datum/mind_ref/mind_ref
+	if(istype(use_mind, /datum/mind_ref))
+		mind_ref = use_mind
+	else if(istype(use_mind, /datum/mind))
+		var/datum/mind/casted_mind = use_mind
+		mind_ref = casted_mind.get_mind_ref()
+	else if(!use_mind)
+		mind_ref = null
+	else
+		CRASH("invalid argument [use_mind] for mind.")
+	mind_resleeving_lock = mind_ref
+	return TRUE
+
+/**
+ * Checks if a mind should be accepted.
+ */
+/mob/proc/resleeving_check_mind_belongs(datum/mind/use_mind)
+	if(!mind_resleeving_lock)
+		return TRUE
+	return use_mind.mind_ref == mind_resleeving_lock

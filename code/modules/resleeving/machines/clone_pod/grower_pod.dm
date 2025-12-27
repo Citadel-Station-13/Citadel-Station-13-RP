@@ -104,6 +104,8 @@
 	H.flavor_texts = current_project.legacy_dna.flavor.Copy()
 	H.resize(current_project.legacy_sizemult, FALSE)
 	H.weight = current_project.legacy_weight
+	// place mind lock to prevent body impersonation
+	H.resleeving_place_mind_lock(current_project.mind_ref)
 	if(current_project.legacy_custom_species_name)
 		H.custom_species = current_project.legacy_custom_species_name
 

@@ -1,6 +1,9 @@
 // TODO: clone_pod, generic /living printer lol
 //       or maybe humantype if it's too complicated.
 
+/**
+ * Clone pods are a generic way to rebuild mobs from DNA, resleeving backups, and more.
+ */
 /obj/machinery/clonepod
 	name = "cloning pod"
 	desc = "An electronically-lockable pod for growing organic tissue.\n <span class='notice'>\[Accepts Upgrades\]</span>"

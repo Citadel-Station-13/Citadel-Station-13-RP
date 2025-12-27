@@ -433,17 +433,6 @@
 			printing = null
 			printing_text = null
 
-	if (href_list["backup"])
-		if(mirror != null)
-			var/obj/item/organ/internal/mirror/E = mirror
-			E.post_implant(scanner.occupant)
-			visible_message(SPAN_NOTICE("Manual backup complete."))
-		else
-			visible_message(SPAN_NOTICE("No mirror detected!"))
-		return
-
-
-
 /obj/machinery/body_scanconsole/proc/generate_printing_text()
 	var/dat = ""
 

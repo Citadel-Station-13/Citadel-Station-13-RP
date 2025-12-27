@@ -42,6 +42,8 @@
 	/// Replaces mob/var/original_name
 	var/name
 	//  todo: /mob, not /living
+	//  todo: of fucking course it should be owned by only one what the fuck.
+	//        make a mind_ref of "original_mind" on a mob if needed??? or decide something??
 	/// the mob we're currently inhabiting. the mind can be referenced by many mobs, however, only one may be 'owned' by it.
 	/// this functionality is used for things like aghosting and astral projection, as even though the player is in another mob,
 	/// their actual mob is what owns their mind.
@@ -154,6 +156,10 @@
 
 //? Transfer
 
+/**
+ * Removes us from our current mob.
+ * * Does not transfer active players out.
+ */
 /datum/mind/proc/disassociate()
 	ASSERT(!isnull(current))
 
@@ -172,6 +178,10 @@
 	// done
 	current = null
 
+/**
+ * * Will set `mind_last` on the character.
+ * * Will try to transfer the player to the new mob.
+ */
 /datum/mind/proc/associate(mob/new_character)
 	ASSERT(isnull(current))
 	ASSERT(isnull(new_character.mind))
@@ -181,6 +191,7 @@
 
 	// set mind
 	new_character.mind = src
+	new_character.mind_last = get_mind_ref()
 	// add characteristics
 	characteristics?.associate_with_mob(new_character)
 	// add abilities
