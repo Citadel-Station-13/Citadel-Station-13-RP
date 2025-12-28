@@ -235,7 +235,7 @@
 	data["is_pill_bottle_loaded"] = pill_bottle ? TRUE : FALSE
 	if(pill_bottle)
 		data["pill_bottle_current_amount"] = pill_bottle.contents.len
-		data["pill_bottle_max_amount"] = pill_bottle.max_combined_volume
+		data["pill_bottle_max_amount"] = pill_bottle.obj_storage?.max_combined_volume / ITEM_VOLUME_PILL
 
 	data["is_beaker_loaded"]      = beaker ? TRUE : FALSE
 	data["beaker_current_volume"] = beaker ? round(beaker.reagents.total_volume, 0.01) : null

@@ -17,6 +17,7 @@
 
 	possible_transfer_amounts = null
 	w_class = WEIGHT_CLASS_TINY
+	weight_volume = ITEM_VOLUME_PILL
 	slot_flags = SLOT_EARS
 	volume = 60
 

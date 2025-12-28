@@ -126,6 +126,8 @@ GLOBAL_REAL_LIST(w_class_to_volume) = list(
 
 #define ITEM_VOLUME_AMMO_CASING (WEIGHT_VOLUME_TINY / 2)
 
+#define ITEM_VOLUME_PILL WEIGHT_VOLUME_TINY
+
 //* Item `belt_storage_class` defines *//
 
 /// Doesn't go in a belt
