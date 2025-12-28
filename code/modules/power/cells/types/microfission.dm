@@ -82,7 +82,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 	// TODO: automated way to update when prototypes change?
 	if(cell_datum)
 		c_regen_left = c_regen_initial = (isnull(regen_as_static) ? (regen_as_multiplier * max_charge) : regen_as_static) \
-			* cell_datum.c_fuel_adjust + cell_datum.c_fuel_multiplier
+			* cell_datum.c_fuel_multiplier + cell_datum.c_fuel_adjust
 		c_regen_min_per_second = max(0, regen_min_per_second * cell_datum.c_reaction_multiplier + cell_datum.c_reaction_adjust)
 		c_regen_max_per_second = max(0, regen_max_per_second * cell_datum.c_reaction_multiplier + cell_datum.c_reaction_adjust)
 	else
@@ -111,8 +111,11 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 
 /obj/item/cell/microfission/process(delta_time)
 	..()
+	if(c_regen_left <= 0)
+		return PROCESS_KILL
 	var/reaction_ratio = 0
-	if(charge >= max_charge)
+	var/missing_charge = max(0, max_charge - charge)
+	if(!missing_charge)
 		// don't charge
 		if(!leaking)
 			return PROCESS_KILL
@@ -130,8 +133,12 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/microfission/weapon, /power_cel
 
 		var/effective_charge_units = LERP(c_regen_min_per_second, c_regen_max_per_second, reaction_ratio)
 		if(effective_charge_units)
+			if(effective_charge_units > missing_charge)
+				// this basically means you don't lose charge BUT you're still reacting full strength so enjoy your radiation if you're leaking lol
+				effective_charge_units = missing_charge
 			// just to be nice, allow overcharging.
-			give(effective_charge_units, TRUE)
+			give(effective_charge_units)
+			c_regen_left -= effective_charge_units
 		else if(!leaking)
 			return PROCESS_KILL
 	if(leaking)

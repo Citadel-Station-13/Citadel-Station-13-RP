@@ -33,13 +33,9 @@
 	opened = TRUE
 
 /obj/item/inducer/Initialize(mapload)
-	. = ..()
-	var/datum/object_system/cell_slot/cell_slot = init_cell_slot(cell_type, cell_accept)
-	cell_slot.receive_emp = TRUE
-	cell_slot.receive_inducer = TRUE
-	cell_slot.remove_yank_offhand = TRUE
-	cell_slot.remove_yank_context = TRUE
+	var/datum/object_system/cell_slot/cell_slot = init_cell_slot_easy_tool(cell_type, cell_accept)
 	cell_slot.remove_yank_inhand = TRUE
+	. = ..()
 	update_appearance()
 
 /obj/item/inducer/examine(mob/user, dist)
@@ -148,15 +144,15 @@
 	inducing = FALSE
 	user.visible_message(SPAN_NOTICE("[user] recharged [A]."), SPAN_NOTICE("Recharged [A] with [used] units of power."))
 
-/obj/item/inducer/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+/obj/item/inducer/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	. = ..()
 	update_icon()
 
-/obj/item/inducer/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+/obj/item/inducer/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	. = ..()
 	update_icon()
 
-/obj/item/inducer/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+/obj/item/inducer/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	return opened && ..()
 
 /obj/item/inducer/update_icon()
