@@ -98,11 +98,12 @@
 	icon_state = "cell"
 
 /obj/random/powercell/item_to_spawn()
-	return pick(prob(40);/obj/item/cell,
-				prob(25);/obj/item/cell/device,
-				prob(25);/obj/item/cell/high,
-				prob(9);/obj/item/cell/super,
-				prob(1);/obj/item/cell/hyper)
+	// TODO: just make power cell loot packs ughh
+	return pick(prob(40);/obj/item/cell/basic/tier_1/medium,
+				prob(25);/obj/item/cell/basic/tier_2/weapon,
+				prob(25);/obj/item/cell/basic/tier_2/medium,
+				prob(9);/obj/item/cell/basic/tier_3/large,
+				prob(1);/obj/item/cell/basic/tier_4/large)
 
 
 /obj/random/bomb_supply
@@ -907,7 +908,7 @@
 		prob(3);/obj/item/ammo_magazine/a44/speedloader,
 		prob(3);/obj/item/ammo_magazine/a7_62mm,
 		prob(3);/obj/item/ammo_magazine/a5_56mm,
-		prob(3);/obj/item/cell/device/weapon,
+		prob(3);/obj/item/cell/basic/tier_2/weapon,
 		prob(2);/obj/item/ammo_magazine/a44,
 		prob(2);/obj/item/ammo_magazine/a357/speedloader,
 		prob(2);/obj/item/ammo_magazine/a7_62mm,

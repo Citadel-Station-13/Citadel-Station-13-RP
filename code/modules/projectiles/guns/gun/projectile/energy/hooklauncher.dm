@@ -13,8 +13,6 @@
 		cycle_cooldown = 1.5 SECONDS;
 	}
 	charge_cost = 300
-
-	cell_type = /obj/item/cell/device/weapon
 	projectile_type = /obj/projectile/energy/hook
 
 // An easily concealable not-ripoff version. It would be silenced, if it didn't make it blatant you're the one using it.
@@ -28,7 +26,7 @@
 
 	w_class = WEIGHT_CLASS_TINY
 
-	cell_type = /obj/item/cell/device/weapon/recharge/alien
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = TRUE
 	charge_cost = 400
 	charge_meter = FALSE

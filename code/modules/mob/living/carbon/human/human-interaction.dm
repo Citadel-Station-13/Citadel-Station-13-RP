@@ -175,8 +175,6 @@
 	if(!G)	//the grab will delete itself in New if affecting is anchored
 		return CLICKCHAIN_DID_SOMETHING
 	L.put_in_active_hand(G)
-	LAssailant = L
-
 	L.do_attack_animation(src)
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 	visible_message("<span class='warning'>[L] has grabbed [src] [(L.zone_sel.selecting == BP_L_HAND || L.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")

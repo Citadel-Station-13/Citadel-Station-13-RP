@@ -100,7 +100,7 @@
 /**
  * Called right before fire() is invoked, if [hook_iteration_pre_fire] is set.
  */
-/obj/item/gun_component/proc/on_firing_cycle_iteration(datum/gun_firing_cycle/cycle)
+/obj/item/gun_component/proc/on_firing_cycle_iteration(obj/item/gun/source, datum/gun_firing_cycle/cycle)
 	return
 
 /**
@@ -109,7 +109,7 @@
  * * This is relatively low level compared to firing cycle iteration, and can be used to
  *   modify the projectile.
  */
-/obj/item/gun_component/proc/on_projectile_injection(datum/gun_firing_cycle/cycle, obj/projectile/proj)
+/obj/item/gun_component/proc/on_projectile_injection(obj/item/gun/source, datum/gun_firing_cycle/cycle, obj/projectile/proj)
 	return
 
 //* Gun API - Actions *//

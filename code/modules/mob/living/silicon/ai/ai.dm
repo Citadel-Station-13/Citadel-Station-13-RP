@@ -268,7 +268,7 @@ var/list/ai_verbs_default = list(
 				else if(!R.cell || R.cell.charge <= 0)
 					robot_status = "DEPOWERED"
 				//Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
-				INJECT_STATPANEL_DATA_LINE(., "[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
+				INJECT_STATPANEL_DATA_LINE(., "[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.max_charge]" : "Empty"] | \
 				Module: [R.modtype] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]")
 			INJECT_STATPANEL_DATA_LINE(., "AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]") //Count of total AI shells
 		else

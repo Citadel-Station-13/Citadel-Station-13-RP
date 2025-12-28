@@ -1,0 +1,5 @@
+author: "Sorrowfulwinds"
+delete-after: True
+changes:
+  - bugfix: "removes a dead branch in blood.dm"
+  - bugfix: "removes all uses of datum[varname]"

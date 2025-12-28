@@ -290,20 +290,21 @@
 		if("danger level")
 			var/mob/living/carbon/human/H = usr
 			if(istype(H) && istype(H.species, /datum/species/shapeshifter/xenochimera))
-				if(H.feral > 50)
+				var/datum/species/shapeshifter/xenochimera/species = H.species
+				if(species.feral > 50)
 					to_chat(usr, "<span class='warning'>You are currently <b>completely feral.</b></span>")
-				else if(H.feral > 10)
+				else if(species.feral > 10)
 					to_chat(usr, "<span class='warning'>You are currently <b>crazed and confused.</b></span>")
-				else if(H.feral > 0)
+				else if(species.feral > 0)
 					to_chat(usr, "<span class='warning'>You are currently <b>acting on instinct.</b></span>")
 				else
 					to_chat(usr, "<span class='notice'>You are currently <b>calm and collected.</b></span>")
-				if(H.feral > 0)
+				if(species.feral > 0)
 					var/feral_passing = TRUE
 					if(H.traumatic_shock > min(60, H.nutrition/10))
 						to_chat(usr, "<span class='warning'>Your pain prevents you from regaining focus.</span>")
 						feral_passing = FALSE
-					if(H.feral + H.nutrition < 150)
+					if(species.feral + H.nutrition < 150)
 						to_chat(usr, "<span class='warning'>Your hunger prevents you from regaining focus.</span>")
 						feral_passing = FALSE
 					if(H.jitteriness >= 100)

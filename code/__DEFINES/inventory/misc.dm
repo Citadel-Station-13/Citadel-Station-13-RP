@@ -14,9 +14,9 @@
 #define SUIT_STORAGE_CLASS_ARMOR (1<<2)
 
 DECLARE_BITFIELD(suit_storage_class, list(
-	BITFIELD_NEW("Hardwear", SUIT_STORAGE_CLASS_HARDWEAR),
-	BITFIELD_NEW("Softwear", SUIT_STORAGE_CLASS_SOFTWEAR),
-	BITFIELD_NEW("Armor", SUIT_STORAGE_CLASS_ARMOR),
+	BITFIELD_NAMED("Hardwear", SUIT_STORAGE_CLASS_HARDWEAR),
+	BITFIELD_NAMED("Softwear", SUIT_STORAGE_CLASS_SOFTWEAR),
+	BITFIELD_NAMED("Armor", SUIT_STORAGE_CLASS_ARMOR),
 ))
 ASSIGN_BITFIELD(suit_storage_class, /obj/item, suit_storage_class)
 ASSIGN_BITFIELD(suit_storage_class, /obj/item, suit_storage_class_allow)

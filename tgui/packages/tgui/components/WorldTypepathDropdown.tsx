@@ -15,8 +15,9 @@ import { JsonAssetLoader } from "./JsonAssetLoader";
 import { VStaticScrollingWindower, VStaticScrollingWindowerEntry } from "./VStaticScrollingWindower";
 
 export interface WorldTypepathDropdownProps extends BoxProps {
-  selectedPath: string;
+  selectedPath: string | null;
   onSelectPath: (path: string) => void;
+  allowDeselect: BooleanLike;
   color?: string;
   disabled?: BooleanLike;
   menuHeight?: number;
@@ -128,6 +129,16 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
             }
 
             let compiledTypepathEntries: WorldTypepathDropdownEntryData[] = [];
+            if (this.props.allowDeselect) {
+              compiledTypepathEntries.push({
+                key: "-- none -- ",
+                name: "-- none -- ",
+                path: "",
+                iconRef: null,
+                iconState: null,
+                onSelectPath: onSelectPathAndHide,
+              });
+            }
             if (filter?.areas?.enabled) {
               Object.entries(typepathPack.areas)
                 .filter(([path, descriptor]) => (!descriptor.unique || filter.areas?.allowUnique))
@@ -219,12 +230,6 @@ export class WorldTypepathDropdown extends Component<WorldTypepathDropdownProps>
     );
   }
 }
-
-const WorldTypepathDropdownInner = (props: {
-  pack: Json_WorldTypepaths;
-}) => {
-
-};
 
 interface WorldTypepathDropdownEntryData extends VStaticScrollingWindowerEntry {
   name: string | null;

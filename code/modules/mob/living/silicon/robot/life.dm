@@ -172,7 +172,7 @@
 
 	if (src.cells)
 		if (src.cell)
-			var/cellcharge = src.cell.charge/src.cell.maxcharge
+			var/cellcharge = src.cell.charge/src.cell.max_charge
 			switch(cellcharge)
 				if(0.75 to INFINITY)
 					src.cells.icon_state = "charge4"

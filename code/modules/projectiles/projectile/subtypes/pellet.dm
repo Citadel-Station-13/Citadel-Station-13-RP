@@ -97,10 +97,6 @@
 	else
 		. |= PROJECTILE_IMPACT_PIERCE
 
-// todo: this is only needed because process_damage_instance isn't used for structured right now!
-/obj/projectile/bullet/pellet/get_structure_damage()
-	return ..() * pellets
-
 //Explosive grenade projectile, borrowed from fragmentation grenade code.
 /obj/projectile/bullet/pellet/fragment
 	damage_force = 10

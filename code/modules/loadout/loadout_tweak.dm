@@ -1,4 +1,4 @@
-/**
+gear_tweak_collar_tag/**
  * arbitrary loadout tweaks
  *
  * stored data should always be a string.
@@ -473,4 +473,4 @@
 	if(metadata == "")
 		return ..()
 	else
-		C.initialize_tag(metadata)
+		C.set_collar_tag(metadata)

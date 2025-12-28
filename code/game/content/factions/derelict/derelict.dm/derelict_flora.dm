@@ -210,7 +210,7 @@
 
 // Rocks
 
-/obj/stucture/flora/rock/crystal_medium
+/obj/structure/flora/rock/crystal_medium
 	name = "large crystal"
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
 	icon_state = "crystal_medium"
@@ -219,7 +219,7 @@
 	light_range = 2
 	light_color = "#9966cc"
 
-/obj/stucture/flora/rock/crystal_large
+/obj/structure/flora/rock/crystal_large
 	name = "hefty crystal"
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_flora.dmi'
 	icon_state = "crystal_large"

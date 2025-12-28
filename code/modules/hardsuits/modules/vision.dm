@@ -13,6 +13,10 @@
 	var/mode
 	var/obj/item/clothing/glasses/glasses
 
+/datum/rig_vision/Destroy()
+	QDEL_NULL(glasses)
+	return ..()
+
 /datum/rig_vision/nvg
 	mode = "night vision"
 
@@ -80,6 +84,10 @@
 		)
 
 	var/vision_index
+
+/obj/item/hardsuit_module/vision/Destroy()
+	QDEL_NULL(vision)
+	return ..()
 
 /obj/item/hardsuit_module/vision/multi
 

@@ -26,3 +26,6 @@
 	if(cell.charge - joules < reserve)
 		return 0
 	return cell.use(joules)
+
+/mob/living/silicon/robot/proc/accepts_cell(obj/item/cell/cell, datum/event_args/actor/actor, silent)
+	return cell.cell_type ? (cell.cell_type & cell_accept) : cell_accept_nonstandard

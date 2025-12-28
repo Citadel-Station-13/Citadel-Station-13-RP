@@ -137,7 +137,7 @@
 /mob/living/simple_mob/animal/space/blight/ranged/wraith
 	name = "Blight Wraith"
 	desc = "A often translucent pale white creature that scurries around on four legs, brandishing extensive talons on each. \
-	Its back appears to be covered in long spines, along with its mouth being shaped rather oddly. It looks almost like its meant to direct sound?"
+	Its back appears to be covered in long spines, along with its mouth being shaped rather oddly. It looks almost like it's meant to direct sound?"
 
 	icon = 'code/game/content/factions/derelict/derelict.dmi/blight/wraith.dmi'
 	icon_state = "wraith"
@@ -177,7 +177,7 @@
 
 /mob/living/simple_mob/animal/space/blight/melee/brute
 	name = "Blight Brute"
-	desc = "A hulking creature with an uparmored exoskeleton and two massive clubs in place of its hands. Unfortunately, it's coming right at you."
+	desc = "A hulking creature with an uparmored exoskeleton and two massive clubs in place of its hands. It appears capable of feats including extreme strength."
 
 	icon = 'code/game/content/factions/derelict/derelict.dmi/blight/brute.dmi'
 	icon_state = "brute"
@@ -215,8 +215,7 @@
 	name = "Blight Zenith"
 	desc = "What appears to be the evolutionary culmination of whatever the Blight is. \
 	Every aspect of this creature has been dedicated to the sole purpose of inflicting death. \
-	From its many, clawed and taloned legs to the scythed limbs portruding from its back. \
-	Pray you can kill this thing before it subsumes your flesh."
+	From its many, clawed and taloned legs to the scythed limbs portruding from its back."
 
 	icon = 'code/game/content/factions/derelict/derelict.dmi/blight/zenith.dmi'
 	icon_state = "zenith"

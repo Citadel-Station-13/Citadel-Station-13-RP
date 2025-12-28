@@ -38,6 +38,11 @@
 /obj/structure/mob_spawner/process()
 	if(!can_spawn())
 		return
+	for(var/mob/M as anything in spawned_mobs)
+		if(!istype(M))
+			spawned_mobs -= M
+		if(QDELETED(M))
+			spawned_mobs -= M
 	var/chosen_mob = choose_spawn()
 	if(chosen_mob)
 		do_spawn(chosen_mob)
@@ -66,10 +71,6 @@
 	if(mob_faction)
 		L.set_iff_factions(mob_faction)
 	return L
-
-/obj/structure/mob_spawner/proc/get_death_report(var/mob/living/L)
-	if(L in spawned_mobs)
-		spawned_mobs.Remove(L)
 
 /obj/structure/mob_spawner/clear_zlevel/can_spawn()
 	if(!..())
@@ -207,8 +208,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	spawn_types = list(
 	/mob/living/simple_mob/animal/space/xenomorph/drone = 20,
 	/mob/living/simple_mob/animal/space/xenomorph/warrior = 10,
-	/mob/living/simple_mob/animal/space/xenomorph/vanguard = 5,
-	/mob/living/simple_mob/animal/space/xenomorph/monarch = 1
+	/mob/living/simple_mob/animal/space/xenomorph/vanguard = 5
 	)
 
 /obj/structure/mob_spawner/scanner/xenos/royal
@@ -223,9 +223,6 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	anchored = 1
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
-	spawn_types = list(
-	/mob/living/simple_mob/animal/space/xenomorph/monarch = 5
-	)
 
 ////////////////////////////////////
 //Invisible mob spawner. This one spawns mobs until depleted. Often used in caves.
@@ -456,7 +453,6 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	/mob/living/simple_mob/animal/space/xenomorph/drone = 20,
 	/mob/living/simple_mob/animal/space/xenomorph/warrior = 10,
 	/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter = 5,
-	/mob/living/simple_mob/animal/space/xenomorph/monarch = 1
 	)
 
 /obj/structure/mob_spawner/scanner/xenos/royal
@@ -471,6 +467,3 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	anchored = 1
 	icon = 'icons/screen/actions/actions.dmi'
 	icon_state = "alien_egg"
-	spawn_types = list(
-	/mob/living/simple_mob/animal/space/xenomorph/monarch = 5,
-	)

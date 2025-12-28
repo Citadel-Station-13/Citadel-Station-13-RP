@@ -47,6 +47,7 @@ if (!(Test-Path $PythonExe -PathType Leaf)) {
 		"https://www.python.org/ftp/python/$PythonVersion/python-$PythonVersion-embed-amd64.zip" `
 		-OutFile $Archive `
 		-ErrorAction Stop
+		-UseBasicParsing
 
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($Archive, $PythonDir)
 
@@ -69,6 +70,7 @@ if (!(Test-Path "$PythonDir/Scripts/pip.exe")) {
 	Invoke-WebRequest "https://bootstrap.pypa.io/get-pip.py" `
 		-OutFile "$Cache/get-pip.py" `
 		-ErrorAction Stop
+		-UseBasicParsing
 
 	& $PythonExe "$Cache/get-pip.py" --no-warn-script-location
 	if ($LASTEXITCODE -ne 0) {

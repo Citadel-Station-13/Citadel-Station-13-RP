@@ -182,12 +182,13 @@
 	var/out_visible = string_format(template_string_visible, template_parameters)
 	var/out_audible = string_format(template_string_audible, template_parameters)
 
-	var/list/mob/hearing_mobs = actor.performer.saycode_view_query(null, TRUE, FALSE)
+	var/list/atom/found_hearers = actor.performer.saycode_view_query(null, TRUE, FALSE)
 	// TODO: centralized observer pref check in saycode_view_query
 	var/optimize_this_later_max_number = world_view_max_number() + 2
 	// TODO: proper runechat stuff.
 	actor.performer.say_overhead(out_visible)
-	for(var/mob/hearing as anything in hearing_mobs)
+	// TODO: non mob support
+	for(var/mob/hearing in found_hearers)
 		if(isobserver(hearing))
 			if((get_dist(hearing, src) > optimize_this_later_max_number) && !hearing.get_preference_toggle(/datum/game_preference_toggle/observer/ghost_sight))
 				continue

@@ -110,10 +110,14 @@
 	if(!stack_type)
 		stack_type = type
 	. = ..()
-	if(merge && !mapload)
+	// only merge 1. outside of mapload and 2. if we had amount
+	if(merge && !mapload && amount)
 		for(var/obj/item/stack/S in loc)
 			if(can_merge_into(S))
-				merge_into_other(S)
+				merge_into_other(S, TRUE)
+		// and if we did and no longer have amount, delete ourselves
+		if(amount == 0)
+			return INITIALIZE_HINT_QDEL
 	update_icon()
 
 /obj/item/stack/update_icon_state()
@@ -231,8 +235,8 @@
 	return has_amount(used)
 
 // todo: deprecated
-/obj/item/stack/proc/use(used)
-	return use_amount(used)
+/obj/item/stack/proc/use(used, no_delete)
+	return use_amount(used, no_delete)
 
 // todo: deprecated
 /obj/item/stack/proc/add(extra, force)
@@ -305,7 +309,7 @@
  *
  * @return amount merged
  */
-/obj/item/stack/proc/merge_into_other(obj/item/stack/other)
+/obj/item/stack/proc/merge_into_other(obj/item/stack/other, no_delete)
 	if(QDELETED(other) || QDELETED(src) || (other == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()
@@ -313,7 +317,7 @@
 	if(pulledby)
 		pulledby.start_pulling(other)
 	other.copy_evidences(src)
-	use(transfer)
+	use(transfer, no_delete)
 	other.add(transfer)
 	return transfer
 
@@ -446,7 +450,7 @@
  *
  * @return amount used
  */
-/obj/item/stack/proc/use_amount(amount)
+/obj/item/stack/proc/use_amount(amount, no_delete)
 	if(item_mount)
 		return pull_from_provider(amount)
 	if(amount <= 0)
@@ -454,7 +458,7 @@
 	amount = min(amount, src.amount)
 	. = amount
 	src.amount -= amount
-	update_amount()
+	update_amount(no_delete)
 
 /**
  * Gives a number of sheets back to us.
@@ -504,13 +508,14 @@
 /**
  * This can destroy the stack.
  */
-/obj/item/stack/proc/update_amount()
+/obj/item/stack/proc/update_amount(no_delete)
 	if(QDELING(src))
 		return
 	if(item_mount)
 	else
 		if(amount <= 0)
-			qdel(src)
+			if(!no_delete)
+				qdel(src)
 			return
 		update_icon()
 

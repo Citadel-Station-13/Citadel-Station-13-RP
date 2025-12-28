@@ -19,6 +19,11 @@
 	caliber = /datum/ammo_caliber/nt_protomag
 	chamber_simulation = FALSE
 	modular_system = TRUE
+	// you need spot for the ammo box and for the charge cost so ammo economy wise
+	// giving it 3 mags per battery is fine as this effective gives it 2/3 ammo economy
+	// compared to a normal rifle
+	base_charge_cost = POWER_CELL_CAPACITY_WEAPON * \
+		(1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 2))
 
 	var/legacy_discharged_fire_sound
 
@@ -58,8 +63,6 @@
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
 	magazine_restrict = /obj/item/ammo_magazine/nt_protomag/sidearm
 	fire_sound = /datum/soundbyte/guns/magnetic/magnetic_1/pistol
-	// todo: boost this again maybe when weapon cells aren't tiny
-	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/sidearm::ammo_max * 2))
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,
@@ -108,8 +111,6 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/magnetic/nt
 	render_battery_overlay = MAGNETIC_RENDER_BATTERY_IN
 	magazine_restrict = /obj/item/ammo_magazine/nt_protomag/rifle
 	fire_sound = /datum/soundbyte/guns/magnetic/magnetic_1/rifle
-	// todo: boost this again maybe when weapon cells aren't tiny
-	base_charge_cost = /obj/item/cell/device/weapon::maxcharge * (1 / (/obj/item/ammo_magazine/nt_protomag/rifle::ammo_max * 2))
 
 	modular_component_slots = list(
 		GUN_COMPONENT_ACTIVE_COOLER = 1,

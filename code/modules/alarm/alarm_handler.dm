@@ -3,9 +3,19 @@
 
 /datum/alarm_handler
 	var/category = ""
-	var/list/datum/alarm/alarms = new		// All alarms, to handle cases when an origin has been deleted with one or more active alarms
-	var/list/datum/alarm/alarms_assoc = new	// Associative list of alarms, to efficiently acquire them based on origin.
-	var/list/listeners = new				// A list of all objects interested in alarm changes.
+	// All alarms, to handle cases when an origin has been deleted with one or more active alarms
+	var/list/datum/alarm/alarms = list()
+	// Associative list of alarms, to efficiently acquire them based on origin.
+	var/list/datum/alarm/alarms_assoc = list()
+	// A list of all objects interested in alarm changes, associated to proc-refs.
+	var/list/listeners = list()
+
+/datum/alarm_handler/Destroy(force)
+	if(!force)
+		stack_trace("attempted to delete an alarm handler (don't do this please)")
+		return QDEL_HINT_LETMELIVE
+	listeners = null
+	return ..()
 
 /datum/alarm_handler/process(delta_time)
 	for(var/datum/alarm/A in alarms)

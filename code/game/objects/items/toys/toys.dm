@@ -1263,6 +1263,16 @@
 	icon_state = "doll"
 	pokephrase = ""
 
+/obj/item/toy/plushie/antrumite
+	name = "antrumite plushie"
+	desc = "A small toy plushie of a black antrumite."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "antrumite"
+	pokephrase = "Uhrf!"
+	attack_verb = list("traumatized", "tested")
+	drop_sound = 'sound/voice/arf.ogg'
+	pickup_sound = 'sound/voice/exp14.wav'
+
 //Toy cult sword
 /obj/item/toy/cultsword
 	name = "foam sword"

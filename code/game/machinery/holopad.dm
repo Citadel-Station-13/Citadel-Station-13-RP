@@ -1255,9 +1255,11 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	var/mob/living/vored
 
 /obj/effect/overlay/hologram/holopad/ai/Destroy()
-	if(owner?.hologram == src)
-		owner.hologram = null
-		owner.terminate_holopad_connection()
+	if(owner)
+		if(owner?.hologram == src)
+			owner.hologram = null
+			owner.terminate_holopad_connection()
+		owner = null
 	// handle fetish content
 	drop_vored()
 	// dump shit out just in case

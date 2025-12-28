@@ -36,9 +36,9 @@
 	last_used = world.time
 	sealed = !sealed
 	if(sealed)
-		command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/blockade_runner_riff.ogg', volume=15))
+		command_announcement.Announce("Vessel is now entering Blockade Runner Mode. Closing ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/blockade_runner_riff.ogg', volume=50))
 	else
-		command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=15))
+		command_announcement.Announce("Vessel is now exiting Blockade Runner Mode. Opening ship shutters.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=30))
 	switch_blastdoors()
 
 /obj/machinery/button/remote/blast_door/strelka/blockade/proc/switch_blastdoors()
@@ -102,90 +102,6 @@
 	Be safe.
 	"}
 
-//*ladder teleporter :D
-
-/obj/structure/ladder/teleporter
-	name = "Strelka Interdeck teleporter"
-	desc = "A simple inter ship teleporting system, in place of a elevator... dates back from 2520..."
-	icon = 'icons/obj/telescience.dmi'
-	icon_state = "qpad-idle"
-
-/obj/structure/ladder/teleporter/Initialize(mapload)
-	. = ..()
-	// the upper will connect to the lower
-	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
-		for(var/obj/structure/ladder/L in get_vertical_step(src, DOWN))
-			if(L.allowed_directions & UP)
-				target_down = L
-				L.target_up = src
-				return
-	update_icon()
-
-/obj/structure/ladder/teleporter/Destroy()
-	if(target_down)
-		target_down.target_up = null
-		target_down = null
-	if(target_up)
-		target_up.target_down = null
-		target_up = null
-	return ..()
-
-/obj/structure/ladder/teleporter/attackby(obj/item/C as obj, mob/user as mob)
-	attack_hand(user)
-	return
-
-/obj/structure/ladder/teleporter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/M = user
-	if(!istype(M))
-		return
-	if(!M.may_climb_ladders(src))
-		return
-
-	var/obj/structure/ladder/teleporter/target_ladder = getTargetLadder(M)
-	if(!target_ladder)
-		return
-	if(M.loc != loc)
-		step_towards(M, loc)
-		if(M.loc != loc)
-			to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
-			return
-
-	climbLadderteleporter(M, target_ladder)
-
-/obj/structure/ladder/teleporter/proc/climbLadderteleporter(var/mob/M, var/obj/target_ladder)
-	var/direction = (target_ladder == target_up ? "up" : "down")
-	M.visible_message("<span class='notice'>\The [M] teleports [direction] \the teleporter!</span>",
-		"You are being teleported [direction] \the teleporter!",
-		"You hear the teleporter being used.")
-
-	target_ladder.audible_message("<span class='notice'>You hear something teleporting [direction] \the teleporter</span>")
-	playsound(src, 'sound/effects/uncloak.ogg', 50, 1)
-
-	if(do_after(M, src))
-		var/turf/T = get_turf(target_ladder)
-		for(var/atom/A in T)
-			playsound(src, 'sound/effects/uncloak.ogg', 50, 1)
-			if(!A.CanPass(M, M.loc, 1.5, 0))
-				to_chat(M, "<span class='notice'>\The [A] is blocking \the teleporter.</span>")
-				return FALSE
-		return M.forceMove(T)
-
-/obj/structure/ladder/teleporter/CanPass(obj/mover, turf/source, height, airflow)
-	. = ..()
-	return airflow || !density
-
-/obj/structure/ladder/teleporter/up
-	allowed_directions = UP
-	icon = 'icons/obj/telescience.dmi'
-	icon_state = "qpad-idle"
-
-/obj/structure/ladder/teleporter/updown
-	allowed_directions = UP|DOWN
-	icon_state = "qpad-idle"
-
 //wheelchair assistance ramp
 /turf/simulated/floor/trap/wheelchair
 	name = "Assisted Wheelchair System"
@@ -221,3 +137,18 @@
 	opacity = 0
 	anchored = 1
 	can_be_unanchored = 0
+
+/turf/simulated/floor/outdoors/safeice/strelka
+	name = "Fake ice"
+	icon_state = "ice"
+	desc = "Its ... Fake ice ? Layers of tinted glass mimicing ice put over the pond ! At least you aint slowed on it."
+	slowdown = 0
+	edge_blending_priority = 0
+	outdoors = FALSE
+
+
+/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka
+	name = "Fake Snow"
+	desc = "Its Fake snow. Well. Actually it is kinda real, still made with water, but with added additive to prevent it to melt until march and april."
+	slowdown = 0
+	outdoors = FALSE

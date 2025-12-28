@@ -1,9 +1,9 @@
 /obj/item/vehicle_chassis/odysseus
 	name = "Odysseus Chassis"
 
-/obj/item/vehicle_chassis/odysseus/New()
-	..()
+/obj/item/vehicle_chassis/odysseus/Initialize(mapload)
 	construct = new /datum/construction/mecha/odysseus_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/odysseus_head
 	name="Odysseus Head"

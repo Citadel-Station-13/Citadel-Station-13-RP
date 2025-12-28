@@ -27,11 +27,6 @@
 	var/datum/reagent_holder/oil
 	var/optimal_oil = 9000//90 litres of cooking oil
 
-
-/obj/machinery/appliance/cooker/fryer/examine(var/mob/user)
-	. = ..()
-	. += "Oil Level: [oil.total_volume]/[optimal_oil]"
-
 /obj/machinery/appliance/cooker/fryer/Initialize(mapload)
 	. = ..()
 	oil = new(optimal_oil * 1.25, src)
@@ -43,6 +38,14 @@
 		//hm yes 20% of the time we will make fryers start with less this is very fun and interactive
 		variance = rand()*0.5
 	oil.add_reagent("tallow", optimal_oil*(1 - variance))
+
+/obj/machinery/appliance/cooker/fryer/Destroy()
+	QDEL_NULL(oil)
+	return ..()
+
+/obj/machinery/appliance/cooker/fryer/examine(var/mob/user)
+	. = ..()
+	. += "Oil Level: [oil.total_volume]/[optimal_oil]"
 
 /obj/machinery/appliance/cooker/fryer/heat_up()
 	if (..())

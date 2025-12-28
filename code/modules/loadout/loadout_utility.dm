@@ -101,7 +101,7 @@
 
 /datum/loadout_entry/utility/battery
 	name = "Device Cell"
-	path = /obj/item/cell/device
+	path = /obj/item/cell/basic/tier_1/small
 
 /datum/loadout_entry/utility/implant
 	slot = "implant"

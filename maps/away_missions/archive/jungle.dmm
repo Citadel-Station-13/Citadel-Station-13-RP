@@ -708,7 +708,7 @@
 /turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dN" = (
-/obj/item/cell,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dO" = (

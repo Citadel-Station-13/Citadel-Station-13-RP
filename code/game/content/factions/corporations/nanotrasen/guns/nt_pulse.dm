@@ -25,15 +25,14 @@
 /datum/firemode/energy/nt_pulse/rifle/laser
 	name = "laser"
 	render_key = "kill"
-	// todo: function of defines for weapon cell standard capacities
-	charge_cost = 80
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 48
 	projectile_type = /obj/projectile/beam
 
 /datum/firemode/energy/nt_pulse/rifle/pulse
 	name = "pulse"
 	render_key = "destroy"
 	// todo: function of defines for weapon cell standard capacities
-	charge_cost = 160
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 24
 	projectile_type = /obj/projectile/beam/pulse
 
 /obj/item/gun/projectile/energy/nt_pulse/rifle
@@ -77,14 +76,14 @@
 	name = "laser"
 	render_key = "kill"
 	// todo: function of defines for weapon cell standard capacities
-	charge_cost = 120
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 32
 	projectile_type = /obj/projectile/beam
 
 /datum/firemode/energy/nt_pulse/carbine/pulse
 	name = "pulse"
 	render_key = "destroy"
 	// todo: function of defines for weapon cell standard capacities
-	charge_cost = 240
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 16
 	projectile_type = /obj/projectile/beam/pulse
 
 /obj/item/gun/projectile/energy/nt_pulse/carbine
@@ -121,8 +120,8 @@
 /obj/projectile/beam/pulse
 	name = "pulse"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	damage_force = 60
-	damage_tier = 6
+	damage_force = 50
+	damage_tier = 6.5
 	light_color = "#0066FF"
 
 	tracer_icon = 'icons/content/factions/corporations/nanotrasen/items/guns/nt_pulse-projectile.dmi'

@@ -260,7 +260,7 @@
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_containers/food/snacks/attack_generic(var/mob/living/user)
-	if(!isanimal(user) && !isalien(user))
+	if(!isanimal_legacy_this_is_broken(user) && !isalien(user))
 		return
 	user.visible_message("<b>[user]</b> nibbles away at \the [src].","You nibble away at \the [src].")
 	bitecount++
@@ -4114,17 +4114,14 @@ END CITADEL CHANGE */
 /mob/living/carbon/alien/diona
 	composition_reagent = "nutriment"//Dionae are plants, so eating them doesn't give animal protein
 
-/mob/living/simple_mob/slime
-	composition_reagent = "slimejelly"
+// /mob/living/simple_animal
+// 	var/kitchen_tag = "animal" //Used for cooking with animals
 
-/mob/living/simple_animal
-	var/kitchen_tag = "animal" //Used for cooking with animals
+// /mob/living/simple_animal/mouse
+// 	kitchen_tag = "rodent"
 
-/mob/living/simple_animal/mouse
-	kitchen_tag = "rodent"
-
-/mob/living/simple_animal/lizard
-	kitchen_tag = "lizard"
+// /mob/living/simple_animal/lizard
+// 	kitchen_tag = "lizard"
 
 /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel
 	slices_num = 8
@@ -5832,7 +5829,7 @@ END CITADEL CHANGE */
 	name = "roast beef"
 	desc = "It's beef. It's roasted. It's been a staple of dining tradition for centuries."
 	icon_state = "roastbeef"
-	trash = /obj/item/trash/waffles
+	trash = /obj/item/trash/plate
 	nutriment_amt = 8
 	nutriment_desc = list("cooked meat" = 5)
 

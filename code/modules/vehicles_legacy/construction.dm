@@ -99,6 +99,7 @@
 				return
 
 		if(4)
+			// todo: lol
 			if(istype(W, /obj/item/cell))
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
@@ -136,7 +137,8 @@
 					playsound(loc, W.tool_sound, 30, 1)
 					var/obj/vehicle_old/train/engine/quadbike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
-					product.cell = cell
+					QDEL_NULL(product.obj_cell_slot.cell)
+					product.obj_cell_slot.cell = cell
 					cell.forceMove(product)
 					cell = null
 					qdel(src)
@@ -243,6 +245,7 @@
 				return
 
 		if(5)
+			// todo: lol
 			if(istype(W, /obj/item/cell))
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
@@ -259,7 +262,8 @@
 					playsound(loc, W.tool_sound, 30, 1)
 					var/obj/vehicle_old/bike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
-					product.cell = cell
+					QDEL_NULL(product.obj_cell_slot.cell)
+					product.obj_cell_slot.cell = cell
 					cell.forceMove(product)
 					cell = null
 					qdel(src)

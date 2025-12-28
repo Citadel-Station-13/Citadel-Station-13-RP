@@ -22,7 +22,7 @@
 /area/tether_away/beach/powershed)
 "ag" = (
 /obj/structure/table/woodentable,
-/obj/item/cell/apc,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/janibar)
 "ah" = (

@@ -5,8 +5,8 @@
 	name = "defibrillator paddles"
 	desc = "A pair of plastic-gripped paddles with flat metal surfaces that are used to deliver powerful electric shocks."
 	icon = 'icons/obj/medical/defibrillator.dmi'
-	icon_state = "defibpaddles"
-	item_state = "defibpaddles"
+	icon_state = "defibpaddles0"
+	item_state = "defibpaddles0"
 	gender = PLURAL
 	damage_force = 2
 	throw_force = 6
@@ -369,10 +369,12 @@
 		return ITEM_RELOCATED_BY_DROPPED
 
 /obj/item/shockpaddles/linked/check_charge(var/charge_amt)
-	return (base_unit.bcell && base_unit.bcell.check_charge(charge_amt))
+	var/obj/item/cell/bcell = base_unit.get_cell()
+	return (bcell && bcell.check_charge(charge_amt))
 
 /obj/item/shockpaddles/linked/checked_use(var/charge_amt)
-	return (base_unit.bcell && base_unit.bcell.checked_use(charge_amt))
+	var/obj/item/cell/bcell = base_unit.get_cell()
+	return (bcell && bcell.checked_use(charge_amt))
 
 /obj/item/shockpaddles/linked/make_announcement(var/message, var/msg_class)
 	base_unit.audible_message("<b>\The [base_unit]</b> [message]", "\The [base_unit] vibrates slightly.")

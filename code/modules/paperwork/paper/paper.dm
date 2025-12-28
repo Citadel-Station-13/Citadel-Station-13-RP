@@ -145,7 +145,7 @@
 		icon_state = "scrap"
 		return
 	user.examinate(src)
-	if(rigged && (Holiday == "April Fool's Day"))
+	if(rigged && IsHoliday(HOLIDAY_APRIL_FOOLS))
 		if(spam_flag == 0)
 			spam_flag = 1
 			playsound(loc, 'sound/items/bikehorn.ogg', 50, 1)

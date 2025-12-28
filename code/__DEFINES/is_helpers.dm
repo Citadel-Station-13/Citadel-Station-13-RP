@@ -72,7 +72,7 @@
 
 #define isalien(A) istype(A, /mob/living/carbon/alien)
 
-#define isanimal(A) istype(A, /mob/living/simple_animal)
+#define isanimal_legacy_this_is_broken(A) istype(A, /mob/living/simple_animal)
 
 #define isbrain(A) istype(A, /mob/living/carbon/brain)
 

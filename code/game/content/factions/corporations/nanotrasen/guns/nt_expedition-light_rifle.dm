@@ -41,6 +41,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_rifle
@@ -86,6 +87,7 @@
 	name = "ammo magazine (NT-7.5)"
 	icon_state = "rifle-1"
 	base_icon_state = "rifle"
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	rendering_static_overlay = "rifle-stripe"
