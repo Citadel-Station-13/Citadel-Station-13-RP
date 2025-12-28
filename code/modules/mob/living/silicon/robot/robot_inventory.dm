@@ -24,7 +24,18 @@
 	/// * Lazy list
 	var/list/datum/actor_hud/robot_inventory/huds_using
 
-#warn impl all
+/datum/robot_inventory/Destroy()
+	if(owner)
+		if(owner.robot_inventory == src)
+			owner.robot_inventory = null
+		owner = null
+	for(var/obj/item/item in provided_items)
+		inv_unregister(item)
+	provided_items = null
+	for(var/datum/actor_hud/robot_inventory/hud in huds_using)
+		hud.unbind_from_inventory(src)
+	huds_using = null
+	return ..()
 
 //* Get *//
 
@@ -87,10 +98,6 @@
 	on_inv_register(item)
 	return TRUE
 
-/datum/robot_inventory/proc/on_inv_register(obj/item/item)
-	PROTECTED_PROC(TRUE)
-	SHOULD_CALL_PARENT(TRUE)
-
 /**
  * Unregisters an item from being a robot module.
  * * You have to move it out of the inventory / mob after!
@@ -104,6 +111,26 @@
 	LAZYREMOVE(provided_items, item)
 	on_inv_unregister(item)
 
+/datum/robot_inventory/proc/on_inv_register(obj/item/item)
+	PROTECTED_PROC(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+	RegisterSignal(item, COMSIG_ITEM_DROPPED, PROC_REF(handle_item_drop))
+	RegisterSignal(item, COMSIG_PARENT_QDELETING, PROC_REF(handle_item_del))
+
+	for(var/datum/actor_hud/robot_inventory/hud as anything in huds_using)
+		hud.drawer_backplate?.redraw()
+
 /datum/robot_inventory/proc/on_inv_unregister(obj/item/item)
 	PROTECTED_PROC(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
+
+	for(var/datum/actor_hud/robot_inventory/hud as anything in huds_using)
+		hud.drawer_backplate?.redraw()
+
+/datum/robot_inventory/proc/handle_item_drop(obj/item/source, ...)
+	source.forceMove(owner)
+	return COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
+
+/datum/robot_inventory/proc/handle_item_del(obj/item/source, ...)
+	inv_unregister(source)
