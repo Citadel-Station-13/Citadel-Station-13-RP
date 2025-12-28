@@ -25,10 +25,10 @@
 	return TRUE
 
 /**
- * @params
- * * actor - (optional) person doing it
- * * silent - suppress feedback
- */
+* @params
+* * actor - (optional) person doing it
+* * silent - suppress feedback
+*/
 /obj/item/proc/should_allow_pickup(datum/event_args/actor/actor, silent)
 	if(anchored)
 		if(!silent)
@@ -44,15 +44,14 @@
  *         to keep it in us, **this is a TRUE return.**
  */
 /obj/item/proc/attempt_pickup(mob/user)
+	var/datum/event_args/actor/actor = new(user)
 	// make sure they have inventory
 	if (!user?.inventory)
 		return FALSE
-	// make sure we want them to pick up
-	if(!should_allow_pickup(new /datum/event_args/actor(user)))
+	// check if pickup is allowed
+	if(!should_allow_pickup(actor))
 		return FALSE
-	// make sure their inventory can pick us up at all
-	// but also, if we're a robot module allow the pickup
-	if(!user.inventory.held_items_allow_pickup && !user.inventory.robot_module_is_registered(src))
+	if(!user.should_allow_pickup(src, actor))
 		return FALSE
 
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))

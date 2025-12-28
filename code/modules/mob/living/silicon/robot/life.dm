@@ -31,7 +31,7 @@
 		C.update_power_state()
 
 	if ( cell && is_component_functioning("power cell") && src.cell.charge > 0 )
-		legacy_cell_use_power(50 * length(inventory.robot_module_get_active()))
+		legacy_cell_use_power(50 * length(robot_inventory.inv_get_active()))
 
 		if(lights_on)
 			legacy_cell_use_power(30) 	// 30W light. Normal lights would use ~15W, but increased for balance reasons.

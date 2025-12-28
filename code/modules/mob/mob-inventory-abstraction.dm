@@ -236,3 +236,11 @@
 	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hand(old_index)
 		update_inv_hand(index)
+
+/**
+ * Checks if we can pick up an item.
+ * * Despite 'actor' being provided, 'actor.performer' should always be 'src' in this context.
+ *   It's just provided to allow a common API surface.
+ */
+/mob/proc/should_allow_pickup(obj/item/item, datum/event_args/actor/actor, silent)
+	return TRUE

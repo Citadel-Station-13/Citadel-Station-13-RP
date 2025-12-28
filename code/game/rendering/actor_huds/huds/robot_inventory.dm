@@ -52,7 +52,7 @@
 /datum/actor_hud/robot_inventory/proc/rebuild()
 	add_screen((drawer_button = new(null, src)))
 	drawer_button = screen_loc_for_drawer_button()
-	#warn backplage?
+	#warn backplate?
 
 /datum/actor_hud/robot_inventory/proc/screen_loc_for_drawer_button()
 	// Always aligned to right side of hands.

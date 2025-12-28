@@ -51,11 +51,12 @@
 
 /atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate/proc/redraw()
 	var/datum/actor_hud/robot_inventory/casted = hud
-	if(casted.robot_module_inventory_drawn)
+	if(casted.drawer_toggled)
 		// draw
+		#warn impl
 	else
 		// undraw
-#warn impl
+		QDEL_LIST_NULL(renderers)
 
 /**
  * Item renderer

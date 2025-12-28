@@ -4147,7 +4147,7 @@
 #include "code\modules\mob\living\silicon\robot\photos.dm"
 #include "code\modules\mob\living\silicon\robot\robot-action-robot_pick_resting_variation.dm"
 #include "code\modules\mob\living\silicon\robot\robot-composition.dm"
-#include "code\modules\mob\living\silicon\robot\robot-inventory-legacy.dm"
+#include "code\modules\mob\living\silicon\robot\robot-inventory.dm"
 #include "code\modules\mob\living\silicon\robot\robot-legacy-animation_vr.dm"
 #include "code\modules\mob\living\silicon\robot\robot-legacy-damage.dm"
 #include "code\modules\mob\living\silicon\robot\robot-legacy-emag.dm"
