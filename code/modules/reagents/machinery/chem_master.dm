@@ -403,7 +403,7 @@
 				var/drop_threshold = INFINITY
 				if(pill_bottle)
 					if(pill_bottle.obj_storage)
-						drop_threshold = pill_bottle.obj_storage.max_combined_volume - pill_bottle.contents.len * WEIGHT_VOLUME_TINY
+						drop_threshold = (pill_bottle.obj_storage.max_combined_volume - pill_bottle.contents.len * ITEM_VOLUME_PILL) / ITEM_VOLUME_PILL
 						target_loc = pill_bottle
 				for(var/i in 1 to amount)
 					if(i-1 < drop_threshold)
