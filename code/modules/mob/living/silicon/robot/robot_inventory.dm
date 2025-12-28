@@ -73,7 +73,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if(robot_module_is_registered(item))
+	if(item in provided_items)
 		return TRUE
 	if(item.inv_inside)
 		// TODO: this is shitcode
@@ -83,9 +83,8 @@
 			return FALSE
 
 	item.forceMove(owner)
-	LAZYADD(robot_modules, item)
-	on_item_entered(item, resolve_inventory_slot(/datum/inventory_slot/abstract/inactive_robot_module_storage))
-	on_robot_module_register(item)
+	LAZYADD(provided_items, item)
+	on_inv_register(item)
 	return TRUE
 
 /datum/robot_inventory/proc/on_inv_register(obj/item/item)
@@ -100,13 +99,10 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if(!robot_module_is_registered(item))
+	if(!(item in provided_items))
 		return
-	LAZYREMOVE(robot_modules, item)
-	// yank out of any inventory including ours
-	// TODO: this is shitcode
-	item.forceMove(src)
-	on_robot_module_unregister(item)
+	LAZYREMOVE(provided_items, item)
+	on_inv_unregister(item)
 
 /datum/robot_inventory/proc/on_inv_unregister(obj/item/item)
 	PROTECTED_PROC(TRUE)

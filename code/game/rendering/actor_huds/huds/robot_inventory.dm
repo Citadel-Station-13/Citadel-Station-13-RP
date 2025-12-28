@@ -13,8 +13,10 @@
 	var/atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate/drawer_backplate
 
 /datum/actor_hud/robot_inventory/on_mob_bound(mob/target)
-	if(target.robot_inventory)
-		bind_to_inventory(target.robot_inventory)
+	if(isrobot(target))
+		var/mob/living/silicon/robot/casted = target
+		if(casted.robot_inventory)
+			bind_to_inventory(casted.robot_inventory)
 	return ..()
 
 /datum/actor_hud/robot_inventory/proc/bind_to_inventory(datum/robot_inventory/robot_inventory)
@@ -37,8 +39,10 @@
 	host = null
 
 /datum/actor_hud/robot_inventory/on_mob_unbound(mob/target)
-	if(target.robot_inventory)
-		unbind_from_inventory(target.robot_inventory)
+	if(isrobot(target))
+		var/mob/living/silicon/robot/casted = target
+		if(casted.robot_inventory)
+			unbind_from_inventory(casted.robot_inventory)
 	return ..()
 
 /datum/actor_hud/robot_inventory/proc/cleanup()
@@ -64,14 +68,14 @@
 	if(drawer_backplate)
 		. += drawer_backplate
 
-/datum/actor_hud/robot_inventory/proc/toggle_robot_modules()
-	robot_module_inventory_drawn = !robot_module_inventory_drawn
-	if(robot_module_inventory_drawn)
-		if(!robot_drawer_backplate)
-			robot_drawer_backplate = new
-		robot_drawer_backplate.redraw()
-		robot_drawer_backplate.invisibility = INVISIBILITY_NONE
+/datum/actor_hud/robot_inventory/proc/toggle_drawer()
+	drawer_toggled = !drawer_toggled
+	if(drawer_toggled)
+		if(!drawer_backplate)
+			drawer_backplate = new
+		drawer_backplate.redraw()
+		drawer_backplate.invisibility = INVISIBILITY_NONE
 	else
 		// this is important to dump out item refs!
-		robot_drawer_backplate.redraw()
-		robot_drawer_backplate.invisibility = INVISIBILITY_ABSTRACT
+		drawer_backplate.redraw()
+		drawer_backplate.invisibility = INVISIBILITY_ABSTRACT

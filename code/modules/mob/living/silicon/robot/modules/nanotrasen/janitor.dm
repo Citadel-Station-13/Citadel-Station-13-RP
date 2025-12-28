@@ -66,7 +66,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 // todo: this is evil
 /datum/prototype/robot_module/nanotrasen/janitor/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
 	..()
-	for(var/obj/item/reagent_containers/spray/maybe_evil_lube_spray in robot.inventory.robot_modules)
+	for(var/obj/item/reagent_containers/spray/maybe_evil_lube_spray in robot.robot_inventory.provided_items)
 		if(maybe_evil_lube_spray.name != "lube spray")
 			continue
 		maybe_evil_lube_spray.reagents?.add_reagent(/datum/reagent/lube::id, 2 * dt)

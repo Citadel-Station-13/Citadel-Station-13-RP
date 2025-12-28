@@ -85,7 +85,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 // todo: this is evil
 /datum/prototype/robot_module/nanotrasen/medical/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
 	..()
-	for(var/obj/item/reagent_containers/spray/maybe_evil_acid_spray in robot.inventory.robot_modules)
+	for(var/obj/item/reagent_containers/spray/maybe_evil_acid_spray in robot.robot_inventory.provided_items)
 		if(maybe_evil_acid_spray.name != "Polyacid spray")
 			continue
 		maybe_evil_acid_spray.reagents?.add_reagent(/datum/reagent/acid/polyacid::id, 2 * dt)

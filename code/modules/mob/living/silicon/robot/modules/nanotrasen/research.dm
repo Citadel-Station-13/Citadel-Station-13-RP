@@ -68,7 +68,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 // todo: this is evil
 /datum/prototype/robot_module/nanotrasen/research/legacy_custom_regenerate_resources(mob/living/silicon/robot/robot, dt, multiplier)
 	..()
-	for(var/obj/item/reagent_containers/syringe/syringe in robot.inventory.robot_modules)
+	for(var/obj/item/reagent_containers/syringe/syringe in robot.robot_inventory.provided_items)
 		// todo: refactor syringes
 		if(syringe.mode == 2)
 			syringe.reagents?.clear_reagents()
