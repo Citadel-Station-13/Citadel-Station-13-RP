@@ -5893,6 +5893,7 @@
 #include "maps\sectors\sky_planet\sky_planet-misc.dm"
 #include "maps\sectors\sky_planet\sky_planet-shuttles.dm"
 #include "maps\sectors\sky_planet\sky_planet.dm"
+#include "maps\sectors\frozen_192\halloween_ball.dm"
 #include "maps\sectors\solarstar_station\solar_station.dm"
 #include "maps\sectors\solarstar_station\solar_station_areas.dm"
 #include "maps\sectors\solarstar_station\solar_station_misc.dm"
