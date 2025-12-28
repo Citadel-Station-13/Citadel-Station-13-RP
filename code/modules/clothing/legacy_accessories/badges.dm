@@ -120,15 +120,14 @@
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
 
-/obj/item/storage/box/holobadge/New()
+/obj/item/storage/box/holobadge/Initialize(mapload, empty)
+	. = ..()
 	new /obj/item/clothing/accessory/badge/holo(src)
 	new /obj/item/clothing/accessory/badge/holo(src)
 	new /obj/item/clothing/accessory/badge/holo(src)
 	new /obj/item/clothing/accessory/badge/holo(src)
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
-	..()
-	return
 
 /obj/item/clothing/accessory/badge/holo/warden
 	name = "warden's holobadge"
@@ -152,7 +151,8 @@
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
 
-/obj/item/storage/box/holobadge/hos/New()
+/obj/item/storage/box/holobadge/hos/Initialize(mapload, empty)
+	. = ..()
 	new /obj/item/clothing/accessory/badge/holo(src)
 	new /obj/item/clothing/accessory/badge/holo(src)
 	new /obj/item/clothing/accessory/badge/holo/warden(src)
@@ -160,8 +160,6 @@
 	new /obj/item/clothing/accessory/badge/holo/detective(src)
 	new /obj/item/clothing/accessory/badge/holo/hos(src)
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
-	..()
-	return
 
 //PMD
 

@@ -157,7 +157,7 @@
 	shuttle = "Decades Old civilian Transport"
 	scanner_name = "Decades Old civilian Transport"
 	scanner_desc = @{"[i]Registration[/i]: ---
-[i]Class[/i]: 2460 Belka class Civilian Shuttle
+[i]Class[/i]: 2460 Ustio class Civilian Shuttle
 [i]Transponder[/i]: Transmitting (CIV), Registered with NT.
 [b]Notice[/b]: The shuttle is assigned to the NEV Strelka"}
 	color = "#7fbd27"
@@ -186,6 +186,156 @@
 	docking_controller_tag = "supply_shuttle"
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
 
+//Personal Micro Shuttle
+
+/datum/shuttle/autodock/overmap/trade/personalmicro1
+	name = "Personal Micro Shuttle 1"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/personalmicro1)
+	current_location = "strelka_personalmicro1"
+	docking_controller_tag = "strelka_personalmicro1_docker"
+	fuel_consumption = 1
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/personalmicro1
+	name = "Personal Micro Shuttle 1"
+	desc = "A Shuttle linked to the NEV Strelka."
+	color = "#78cf56"
+	fore_dir = WEST
+	vessel_mass = 1000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Personal Micro Shuttle 1"
+	scanner_name = "Strelka Personal Transport 1"
+	scanner_desc = @{"[i]Registration[/i]: ---
+[i]Class[/i]: 2550 Personal Civilian Shuttle
+[i]Transponder[/i]: Transmitting (CIV), Registered with NT.
+[b]Notice[/b]: The shuttle is assigned to the NEV Strelka"}
+
+/obj/machinery/computer/shuttle_control/explore/personalmicro1
+	name = "short jump console"
+	shuttle_tag = "Personal Micro Shuttle 1"
+
+/area/shuttle/personalmicro1
+	name = "Personal Shuttle 1"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+
+//Personal Micro Shuttle 2
+
+/datum/shuttle/autodock/overmap/trade/personalmicro2
+	name = "Personal Micro Shuttle 2"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/personalmicro2)
+	current_location = "strelka_personalmicro2"
+	docking_controller_tag = "strelka_personalmicro2_docker"
+	fuel_consumption = 1
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/personalmicro2
+	name = "Personal Micro Shuttle 2"
+	desc = "A Shuttle linked to the NEV Strelka."
+	color = "#f1d221"
+	fore_dir = WEST
+	vessel_mass = 1000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Personal Micro Shuttle 2"
+	scanner_name = "Strelka Personal Transport 2"
+	scanner_desc = @{"[i]Registration[/i]: ---
+[i]Class[/i]: 2550 Personal Civilian Shuttle
+[i]Transponder[/i]: Transmitting (CIV), Registered with NT.
+[b]Notice[/b]: The shuttle is assigned to the NEV Strelka"}
+
+/obj/machinery/computer/shuttle_control/explore/personalmicro2
+	name = "short jump console"
+	shuttle_tag = "Personal Micro Shuttle 2"
+
+/area/shuttle/personalmicro2
+	name = "Personal Shuttle 2"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+
+//Personal Micro Shuttle 3
+
+/datum/shuttle/autodock/overmap/trade/personalmicro3
+	name = "Personal Micro Shuttle 3"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/personalmicro3)
+	current_location = "strelka_personalmicro3"
+	docking_controller_tag = "strelka_personalmicro3_docker"
+	fuel_consumption = 1
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/personalmicro3
+	name = "Personal Micro Shuttle 3"
+	desc = "A Shuttle linked to the NEV Strelka."
+	fore_dir = WEST
+	vessel_mass = 1000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Personal Micro Shuttle 3"
+	scanner_name = "Strelka Personal Transport 3"
+	scanner_desc = @{"[i]Registration[/i]: ---
+[i]Class[/i]: 2550 Personal Civilian Shuttle
+[i]Transponder[/i]: Transmitting (CIV), Registered with NT.
+[b]Notice[/b]: The shuttle is assigned to the NEV Strelka"}
+	color = "#4ad9e4"
+
+/obj/machinery/computer/shuttle_control/explore/personalmicro3
+	name = "short jump console"
+	shuttle_tag = "Personal Micro Shuttle 3"
+
+/area/shuttle/personalmicro3
+	name = "Personal Shuttle 3"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+
+//Personal Micro Shuttle 4
+
+/datum/shuttle/autodock/overmap/trade/personalmicro4
+	name = "Personal Micro Shuttle 4"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/personalmicro4)
+	current_location = "strelka_personalmicro4"
+	docking_controller_tag = "strelka_personalmicro4_docker"
+	fuel_consumption = 1
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/personalmicro4
+	name = "Personal Micro Shuttle 4"
+	desc = "A Shuttle linked to the NEV Strelka."
+	color = "#dd2a2a"
+	fore_dir = WEST
+	vessel_mass = 1000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Personal Micro Shuttle 4"
+	scanner_name = "Strelka Personal Transport 4"
+	scanner_desc = @{"[i]Registration[/i]: ---
+[i]Class[/i]: 2550 Personal Civilian Shuttle
+[i]Transponder[/i]: Transmitting (CIV), Registered with NT.
+[b]Notice[/b]: The shuttle is assigned to the NEV Strelka"}
+
+
+/obj/machinery/computer/shuttle_control/explore/personalmicro4
+	name = "short jump console"
+	shuttle_tag = "Personal Micro Shuttle 4"
+
+/area/shuttle/personalmicro4
+	name = "Personal Shuttle 4"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+
+
 //Landmarks
 
 // Exclusive landmark for docking *inside* the station
@@ -211,3 +361,30 @@
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/strelka/civhangar
 
+/obj/effect/shuttle_landmark/strelka/deck1/personal1
+	name = "NEV strelka - Civilian Personal Dock 1"
+	landmark_tag = "strelka_personalmicro1"
+	docking_controller = "strelka_personalmicro1_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/strelka/deck1/personal2
+	name = "NEV strelka - Civilian Personal Dock 2"
+	landmark_tag = "strelka_personalmicro2"
+	docking_controller = "strelka_personalmicro2_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/strelka/deck1/personal3
+	name = "NEV strelka - Civilian Personal Dock 3"
+	landmark_tag = "strelka_personalmicro3"
+	docking_controller = "strelka_personalmicro3_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/strelka/deck1/personal4
+	name = "NEV strelka - Civilian Personal Dock 4"
+	landmark_tag = "strelka_personalmicro4"
+	docking_controller = "strelka_personalmicro4_dock"
+	base_turf = /turf/space
+	base_area = /area/space

@@ -76,7 +76,6 @@
 /obj/machinery/vending/engineering{
 	icon_deny = null;
 	icon_state = "sovietsoda";
-	products = list(/obj/item/clothing/under/rank/chief_engineer=4,/obj/item/clothing/under/rank/engineer=4,/obj/item/clothing/shoes/orange=4,/obj/item/clothing/head/hardhat=4,/obj/item/storage/belt/utility=4,/obj/item/clothing/glasses/meson=4,/obj/item/clothing/gloves/yellow=4,/obj/item/tool/screwdriver=12,/obj/item/tool/crowbar=12,/obj/item/tool/wirecutters=12,/obj/item/multitool=12,/obj/item/tool/wrench=12,/obj/item/t_scanner=12,/obj/item/stack/cable_coil/heavyduty=8,/obj/item/cell=8,/obj/item/weldingtool=8,/obj/item/clothing/head/welding=8,/obj/item/light/tube=10,/obj/item/clothing/head/hardhat/red=4,/obj/item/clothing/suit/fire=4,/obj/item/stock_parts/scanning_module=5,/obj/item/stock_parts/micro_laser=5,/obj/item/stock_parts/matter_bin=5,/obj/item/stock_parts/manipulator=5,/obj/item/stock_parts/console_screen=5);
 	req_access = list(301);
 	req_log_access = 301;
 	req_one_access = list(301)
@@ -195,15 +194,15 @@
 	pixel_y = 24
 	},
 /obj/structure/table/standard,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -5;
 	pixel_y = 2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 5;
 	pixel_y = 2
 	},
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "cb" = (
@@ -2334,7 +2333,6 @@
 /area/talon/deckone/starboard_eng)
 "ux" = (
 /obj/machinery/vending/engivend{
-	products = list(/obj/item/geiger_counter=4,/obj/item/clothing/glasses/meson=2,/obj/item/multitool=4,/obj/item/cell/high=10,/obj/item/airlock_electronics=10,/obj/item/module/power_control=10,/obj/item/circuitboard/airalarm=10,/obj/item/circuitboard/firealarm=10,/obj/item/circuitboard/status_display=2,/obj/item/circuitboard/ai_status_display=2,/obj/item/circuitboard/newscaster=2,/obj/item/circuitboard/machine/holopad=2,/obj/item/circuitboard/intercom=4,/obj/item/circuitboard/security/telescreen/entertainment=4,/obj/item/stock_parts/motor=2,/obj/item/stock_parts/spring=2,/obj/item/stock_parts/gear=2,/obj/item/circuitboard/atm,/obj/item/circuitboard/guestpass,/obj/item/circuitboard/keycard_auth,/obj/item/circuitboard/photocopier,/obj/item/circuitboard/fax,/obj/item/circuitboard/request,/obj/item/circuitboard/microwave,/obj/item/circuitboard/washing,/obj/item/circuitboard/scanner_console,/obj/item/circuitboard/sleeper_console,/obj/item/circuitboard/body_scanner,/obj/item/circuitboard/sleeper,/obj/item/circuitboard/dna_analyzer);
 	req_access = list(301);
 	req_log_access = 301
 	},
@@ -3538,14 +3536,14 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
-/obj/item/cell/super{
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = -5;
 	pixel_y = 5
 	},
-/obj/item/cell/super{
+/obj/item/cell/basic/tier_4/medium{
 	pixel_y = 10
 	},
-/obj/item/cell/super{
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -5588,15 +5586,15 @@
 /area/talon/deckone/central_hallway)
 "Uy" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -5;
 	pixel_y = 1
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 5;
 	pixel_y = 1
 	},
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "UA" = (
@@ -5842,15 +5840,15 @@
 /area/talon/deckone/engine)
 "WJ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = 5;
 	pixel_y = 1
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_3/weapon{
 	pixel_x = -5;
 	pixel_y = 1
 	},
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /obj/item/gun/projectile/energy/netgun,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)

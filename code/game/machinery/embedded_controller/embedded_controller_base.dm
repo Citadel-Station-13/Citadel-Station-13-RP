@@ -13,8 +13,7 @@
 	return ..()
 
 /obj/machinery/embedded_controller/Destroy()
-	if(istype(program))
-		qdel(program) // the program will clear the ref in its Destroy
+	QDEL_NULL(program)
 	return ..()
 
 /obj/machinery/embedded_controller/proc/post_signal(datum/signal/signal, comm_line)

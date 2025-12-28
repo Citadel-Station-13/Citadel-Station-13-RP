@@ -240,6 +240,17 @@ proc/check_panel(mob/M)
 	var/collapse
 	var/image/down
 
+/obj/effect/fake_attacker/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 30 SECONDS)
+	step_away(src,my_target,2)
+	INVOKE_ASYNC(src, PROC_REF(attack_loop))
+
+/obj/effect/fake_attacker/Destroy()
+	if(my_target)
+		my_target.hallucinations -= src
+	return ..()
+
 /obj/effect/fake_attacker/attackby(var/obj/item/P as obj, mob/user as mob)
 	step_away(src,my_target,2)
 	for(var/mob/M in oviewers(world.view,my_target))
@@ -255,17 +266,6 @@ proc/check_panel(mob/M)
 		if(prob(30))
 			for(var/mob/O in oviewers(world.view , my_target))
 				to_chat(O, "<font color='red'><B>[my_target] stumbles around.</B></font>")
-
-/obj/effect/fake_attacker/Initialize(mapload)
-	. = ..()
-	QDEL_IN(src, 30 SECONDS)
-	step_away(src,my_target,2)
-	INVOKE_ASYNC(src, PROC_REF(attack_loop))
-
-/obj/effect/fake_attacker/Destroy()
-	if(my_target)
-		my_target.hallucinations -= src
-	return ..()
 
 /obj/effect/fake_attacker/proc/updateimage()
 
@@ -286,6 +286,8 @@ proc/check_panel(mob/M)
 /obj/effect/fake_attacker/proc/attack_loop()
 	while(1)
 		sleep(rand(5,10))
+		if(QDELETED(src))
+			return
 		if(src.health < 0)
 			collapse()
 			continue

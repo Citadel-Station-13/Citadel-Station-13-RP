@@ -17,13 +17,20 @@
 	// If it uses energy.
 	var/use_cell = FALSE
 	var/hitcost = 120
-	var/obj/item/cell/bcell = null
-	var/cell_type = /obj/item/cell/device
+
+	var/cell_type = /obj/item/cell/basic/tier_1/weapon
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 	passive_parry = /datum/passive_parry/melee/energy
 
 	activation_sound = 'sound/weapons/saberon.ogg'
 	deactivation_sound = 'sound/weapons/saberoff.ogg'
+
+/obj/item/melee/transforming/energy/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 
 /obj/item/melee/transforming/energy/examine(mob/user, dist)
 	. = ..()
@@ -39,6 +46,7 @@
 	set_light(0)
 
 /obj/item/melee/transforming/energy/proc/use_charge(var/cost)
+	var/obj/item/cell/bcell = obj_cell_slot?.cell
 	if(active)
 		if(bcell)
 			if(bcell.checked_use(cost))
@@ -49,6 +57,7 @@
 
 /obj/item/melee/transforming/energy/examine(mob/user, dist)
 	. = ..()
+	var/obj/item/cell/bcell = obj_cell_slot?.cell
 	if(use_cell)
 		if(bcell)
 			. += "<span class='notice'>The blade is [round(bcell.percent())]% charged.</span>"
@@ -56,6 +65,7 @@
 			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
 /obj/item/melee/transforming/energy/toggle(datum/event_args/actor/actor, silent)
+	var/obj/item/cell/bcell = obj_cell_slot?.cell
 	if(use_cell)
 		if((!bcell || bcell.charge < hitcost) && !active)
 			if(!silent)
@@ -81,28 +91,7 @@
 			rainbow = FALSE
 		to_chat(user, "<span class='notice'>You manipulate the color controller in [src].</span>")
 		update_icon()
-	if(use_cell)
-		if(istype(W, cell_type))
-			if(!bcell)
-				if(!user.attempt_insert_item_for_installation(W, src))
-					return
-				bcell = W
-				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
-				update_icon()
-			else
-				to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
-		else if(W.is_screwdriver() && bcell)
-			bcell.update_icon()
-			bcell.forceMove(get_turf(loc))
-			bcell = null
-			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
-			set_activation(FALSE)
-			update_icon()
-			return
 	return ..()
-
-/obj/item/melee/transforming/energy/get_cell(inducer)
-	return bcell
 
 /obj/item/melee/transforming/energy/build_active_overlay()
 	var/image/creating = ..()

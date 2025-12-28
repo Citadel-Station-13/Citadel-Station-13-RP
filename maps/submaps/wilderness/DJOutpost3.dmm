@@ -174,8 +174,7 @@
 "aC" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/radio,
-/obj/machinery/power/apc/east_mount{
-	cell_type = /obj/item/cell/hyper;
+/obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	environ = 1;
 	equipment = 1;
 	lighting = 1;

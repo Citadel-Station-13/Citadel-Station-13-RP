@@ -178,7 +178,7 @@
 	light_range = 2
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/slime_irradiator/New()
+/obj/item/slime_irradiator/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	set_light(light_range, light_power, light_color)
 	return ..()

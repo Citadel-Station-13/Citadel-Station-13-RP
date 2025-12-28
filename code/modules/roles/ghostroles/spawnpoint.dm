@@ -35,6 +35,11 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 			return
 		notify_ghosts("Ghostrole spawner created: [role.name] - [parent] - [get_area(parent)]", source = parent, ignore_mapload = TRUE, flashwindow = FALSE)
 
+/datum/component/ghostrole_spawnpoint/Destroy()
+	proc_to_call_or_callback = null
+	params = null
+	return ..()
+
 /datum/component/ghostrole_spawnpoint/RegisterWithParent()
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE

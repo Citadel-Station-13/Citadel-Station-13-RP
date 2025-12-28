@@ -47,6 +47,7 @@
 	icon_state = "stripper"
 	base_icon_state = "stripper"
 	ammo_max = 6
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	magazine_type = MAGAZINE_TYPE_CLIP
 
 /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip/update_icon(updates)
@@ -68,6 +69,7 @@
 	name = "ammo magazine (NT-7.5-LR)"
 	icon_state = "mag-basic-0"
 	base_icon_state = "mag-basic"
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 16
 

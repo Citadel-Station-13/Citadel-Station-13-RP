@@ -8,7 +8,7 @@
 	icon_state = "cutters"
 	item_state = "cutters"
 	slot_flags = SLOT_BELT
-	tool_behaviour = TOOL_WIRECUTTER
+	tool_behavior = TOOL_WIRECUTTER
 	damage_force = 6
 	throw_speed = 2
 	throw_range = 9
