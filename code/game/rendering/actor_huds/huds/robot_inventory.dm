@@ -19,8 +19,8 @@
 
 /datum/actor_hud/robot_inventory/proc/bind_to_inventory(datum/robot_inventory/robot_inventory)
 	ASSERT(!host)
-	host = inventory
-	LAZYADD(inventory.huds_using, src)
+	host = robot_inventory
+	LAZYADD(robot_inventory.huds_using, src)
 	rebuild()
 
 /datum/actor_hud/robot_inventory/screens()
@@ -31,9 +31,9 @@
 		. += drawer_backplate
 
 /datum/actor_hud/robot_inventory/proc/unbind_from_inventory(datum/robot_inventory/robot_inventory)
-	ASSERT(host == inventory)
+	ASSERT(host == robot_inventory)
 	cleanup()
-	LAZYREMOVE(inventory.huds_using, src)
+	LAZYREMOVE(robot_inventory.huds_using, src)
 	host = null
 
 /datum/actor_hud/robot_inventory/on_mob_unbound(mob/target)
@@ -43,14 +43,14 @@
 
 /datum/actor_hud/robot_inventory/proc/cleanup()
 	QDEL_NULL(drawer_backplate)
-	QDEL_NULL(drawer_toggle)
+	QDEL_NULL(drawer_button)
 
 /datum/actor_hud/robot_inventory/proc/rebuild()
-	add_screen((drawer_toggle = new(null, src)))
-	drawer_toggle = screen_loc_for_drawer_toggle()
+	add_screen((drawer_button = new(null, src)))
+	drawer_button = screen_loc_for_drawer_button()
 	#warn backplage?
 
-/datum/actor_hud/robot_inventory/proc/screen_loc_for_drawer_toggle()
+/datum/actor_hud/robot_inventory/proc/screen_loc_for_drawer_button()
 	// Always aligned to right side of hands.
 	#warn impl
 	// var/col = ceil(number_of_hands / 2) + 1

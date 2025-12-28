@@ -49,14 +49,14 @@
 	for(var/obj/item/item as anything in items)
 		if(suppressed_items[item])
 			continue
-		robot.inventory?.robot_module_register(item)
+		robot.robot_inventory?.inv_register(item)
 		if(item.loc != robot)
 			item.forceMove(robot)
 	if(emag_enabled)
 		for(var/obj/item/item as anything in emag_items)
 			if(suppressed_items[item])
 				continue
-			robot.inventory?.robot_module_register(item)
+			robot.robot_inventory?.inv_register(item)
 			if(item.loc != robot)
 				item.forceMove(robot)
 
@@ -65,7 +65,7 @@
 		return
 	var/atom/where_to_dump = get_detached_storage_location()
 	for(var/obj/item/item as anything in items)
-		applied_to_robot.inventory?.robot_module_unregister(item)
+		applied_to_robot.robot_inventory?.inv_register(item)
 		if(item.loc != where_to_dump)
 			if(where_to_dump)
 				item.forceMove(where_to_dump)
@@ -73,7 +73,7 @@
 				item.moveToNullspace()
 	if(emag_enabled)
 		for(var/obj/item/item as anything in emag_items)
-			applied_to_robot.inventory?.robot_module_unregister(item)
+			applied_to_robot.robot_inventory?.inv_unregister(item)
 			if(item.loc != where_to_dump)
 				if(where_to_dump)
 					item.forceMove(where_to_dump)
@@ -121,11 +121,11 @@
 		for(var/obj/item/item as anything in emag_items)
 			if(suppressed_items?[item])
 				continue
-			applied_to_robot.inventory.robot_module_register(item)
+			applied_to_robot.robot_inventory?.inv_register(item)
 	else
 		var/atom/dump_to = get_detached_storage_location()
 		for(var/obj/item/item as anything in emag_items)
-			applied_to_robot.inventory.robot_module_unregister(item)
+			applied_to_robot.robot_inventory?.inv_unregister(item)
 			if(dump_to)
 				item.forceMove(dump_to)
 			else
@@ -159,7 +159,7 @@
 	if(suppressed_items?[item])
 		return
 	LAZYSET(suppressed_items, item, TRUE)
-	applied_to_robot?.inventory?.robot_module_unregister(item)
+	applied_to_robot?.robot_inventory?.inv_unregister(item)
 
 /datum/robot_provisioning/proc/unsuppress_item(obj/item/item) as /list
 	if(!suppressed_items?[item])
@@ -168,23 +168,23 @@
 	if(!length(suppressed_items))
 		suppressed_items = null
 	if(item in items)
-		applied_to_robot?.inventory?.robot_module_register(item)
+		applied_to_robot?.robot_inventory?.inv_register(item)
 	else if(item in emag_items)
 		if(emag_enabled)
-			applied_to_robot?.inventory?.robot_module_register(item)
+			applied_to_robot?.robot_inventory?.inv_register(item)
 
 /datum/robot_provisioning/proc/on_item_add(obj/item/item, is_emag_item)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!applied_to_robot)
 		return
-	applied_to_robot.inventory.robot_module_register(item)
+	applied_to_robot.robot_inventory?.inv_register(item)
 
 /datum/robot_provisioning/proc/on_item_remove(obj/item/item, is_emag_item)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(applied_to_robot)
-		applied_to_robot.inventory.robot_module_unregister(item)
+		applied_to_robot.robot_inventory?.inv_unregister(item)
 	if(!QDESTROYING(item))
 		var/atom/dump_to = get_detached_storage_location()
 		if(dump_to)

@@ -1,5 +1,6 @@
 /mob/living/silicon/robot/Process_Spacemove()
-	for(var/obj/item/tank/jetpack/J in inventory?.robot_module_get_active())
+	// active robot modules are held items
+	for(var/obj/item/tank/jetpack/J in inventory?.get_held_items())
 		if(istype(J, /obj/item/tank/jetpack))
 			if(J.allow_thrust(0.01))
 				return TRUE

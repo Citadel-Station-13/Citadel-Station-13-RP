@@ -521,7 +521,7 @@
 
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
-	return locate(/obj/item/tank/jetpack) in inventory.robot_modules
+	return locate(/obj/item/tank/jetpack) in robot_inventory.provided_items
 
 // update the status screen display
 /mob/living/silicon/robot/statpanel_data(client/C)
