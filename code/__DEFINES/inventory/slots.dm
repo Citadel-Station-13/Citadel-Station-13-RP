@@ -23,10 +23,6 @@
  * **STOP USING THIS IN EQUIPPED/UNEQUIPPED.** new on_(un)equipped directly passes in number for hand index.
  */
 #define SLOT_ID_HANDS			"hands"
-/**
- * 'fake' slot ID; anything in robot modules is considered to be in this slot while not held
- */
-#define SLOT_ID_ROBOT_MODULE_STORAGE "robot-module-storage"
 
 /// *ONLY USE THIS FOR RENDERING* - this is nonsensical anywhere else
 #define SLOT_ID_LEFT_HAND		"left_hand"

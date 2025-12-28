@@ -38,7 +38,7 @@
 	mob_size = MOB_SMALL // pulled here from a _vr file
 
 	conf_mmi_create_type = /obj/item/mmi/digital/robot
-	conf_cell_create_type = /obj/item/cell/high
+	conf_cell_create_type = /obj/item/cell/basic/tier_1/medium
 
 	//Used for self-mailing.
 	var/mail_destination = ""

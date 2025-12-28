@@ -29,6 +29,8 @@
 			if(inventory.robot_module_is_registered(I))
 				if(I.inv_slot_or_index == /datum/inventory_slot/abstract/inactive_robot_module_storage::id)
 					return TRUE
+				// yank out of any inventory including ours
+				// TODO: this is shitcode
 				I.forceMove(src)
 				inventory.on_item_entered(I, resolve_inventory_slot(/datum/inventory_slot/abstract/inactive_robot_module_storage))
 				I.equipped(src, /datum/inventory_slot/abstract/inactive_robot_module_storage::id, flags)

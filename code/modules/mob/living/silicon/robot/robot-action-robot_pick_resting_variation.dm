@@ -12,7 +12,7 @@
 /datum/action/robot_pick_resting_variation/invoke_target(mob/living/silicon/robot/target, datum/event_args/actor/actor)
 	// resolve iconset variations
 	var/datum/prototype/robot_iconset/base = target.iconset
-	var/list/datum/robot_iconset_variation/variation/variations = list()
+	var/list/datum/robot_iconset_variation/variations = list()
 	for(var/id in target.iconset?.variations)
 		var/datum/robot_iconset_variation/variation = target.iconset.variations[id]
 		if(variation.alt_resting_state)

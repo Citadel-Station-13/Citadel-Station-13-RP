@@ -112,6 +112,8 @@
 	//* Inventory *//
 
 	inventory = /datum/inventory/robot
+	/// Robot inventory
+	var/datum/robot_inventory/robot_inventory
 	/// Resources store
 	var/datum/robot_resource_store/resources
 
@@ -227,7 +229,9 @@
 	var/movement_base_speed = 4
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
+	. = ..()
 	resources = new(src)
+	robot_inventory = new(src)
 
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
@@ -268,10 +272,8 @@
 		C.installed = 1
 		C.wrapped = new C.external_type
 
-	if(!cell)
-		cell = conf_cell_create_type
-
-	. = ..()
+	if(!cell && conf_cell_create_type)
+		cell = new conf_cell_create_type
 
 	if(cell)
 		var/datum/robot_component/cell_component = components["power cell"]
@@ -287,6 +289,7 @@
 /mob/living/silicon/robot/Destroy()
 	wipe_for_gc()
 	QDEL_NULL(resources)
+	QDEL_NULL(robot_inventory)
 	// TODO: don't do this, just don't fucking dust() people or have dust() have a drop proc????
 	if(mmi && mind)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
 		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.

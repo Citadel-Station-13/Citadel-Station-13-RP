@@ -1,9 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/**
- * Inventory slots specifically, not hands.
- */
 /datum/actor_hud/inventory
 	/// owning inventory
 	var/datum/inventory/host
@@ -14,9 +11,6 @@
 			INVENTORY_HUD_HIDE_SOURCE_DRAWER,
 		),
 	)
-	/// is robot module inventory shown?
-	var/tmp/robot_module_inventory_drawn = FALSE
-
 	/// keyed slot id to screen object
 	var/list/atom/movable/screen/actor_hud/inventory/plate/slot/slots
 	/// ordered hand objects
@@ -26,15 +20,11 @@
 
 	/// drawer object
 	var/atom/movable/screen/actor_hud/inventory/drawer/button_drawer
-	/// robot drawer object, if any
-	var/atom/movable/screen/actor_hud/inventory/robot_drawer/button_robot_drawer
 	/// swap hand object
 	var/atom/movable/screen/actor_hud/inventory/swap_hand/button_swap_hand
 	/// equip object
 	var/atom/movable/screen/actor_hud/inventory/equip_hand/button_equip_hand
 
-	/// robot drawer backplate, if any
-	var/atom/movable/screen/actor_hud/inventory/robot_drawer_backplate/robot_drawer_backplate
 
 	//* Imprinted by /datum/inventory *//
 
@@ -150,9 +140,6 @@
 	if(length(inventory_slots_with_mappings))
 		add_screen((button_drawer = new(null, src)))
 		button_drawer.screen_loc = screen_loc_for_slot_drawer()
-	if(host.robot_module_supported())
-		add_screen((button_robot_drawer = new(null, src)))
-		button_robot_drawer.screen_loc = screen_loc_for_robot_drawer()
 
 	// slots
 	rebuild_slots(inventory_slots_with_mappings)
@@ -297,11 +284,6 @@
 	var/rows = max(1, ceil(number_of_hands / 2))
 	return "CENTER-1:16,BOTTOM+[rows]:5"
 
-/datum/actor_hud/inventory/proc/screen_loc_for_robot_drawer(number_of_hands)
-	// Always aligned to right side of hands.
-	var/col = ceil(number_of_hands / 2) + 1
-	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+1:5"
-
 /datum/actor_hud/inventory/proc/screen_loc_for_slot_drawer()
 	return "LEFT:6,BOTTOM:5"
 
@@ -310,11 +292,7 @@
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_aligned_slot(main, cross, number_of_hands)
 	if(main > 0)
-		var/right_bias = 0
-		// TODO: should be passed in maybe?
-		if(button_robot_drawer)
-			right_bias = 1
-		return "CENTER-1:[16 + (32 * (main + 1 + right_bias)) ],BOTTOM+[cross]:[5 + (cross * 2)]"
+		return "CENTER-1:[16 + (32 * (main + 1)) ],BOTTOM+[cross]:[5 + (cross * 2)]"
 	else
 		return "CENTER-1:[16 + (32 * main)],BOTTOM+[cross]:[5 + (cross * 2)]"
 
@@ -357,22 +335,6 @@
 		. += button_equip_hand
 	if(button_drawer)
 		. += button_drawer
-	if(button_robot_drawer)
-		. += button_robot_drawer
-
-//* Robot Modules *//
-
-/datum/actor_hud/inventory/proc/toggle_robot_modules()
-	robot_module_inventory_drawn = !robot_module_inventory_drawn
-	if(robot_module_inventory_drawn)
-		if(!robot_drawer_backplate)
-			robot_drawer_backplate = new
-		robot_drawer_backplate.redraw()
-		robot_drawer_backplate.invisibility = INVISIBILITY_NONE
-	else
-		// this is important to dump out item refs!
-		robot_drawer_backplate.redraw()
-		robot_drawer_backplate.invisibility = INVISIBILITY_ABSTRACT
 
 //* Hidden Classes *//
 
@@ -430,22 +392,12 @@
 //* Hooks *//
 
 /datum/actor_hud/inventory/proc/add_item(obj/item/item, datum/inventory_slot/slot_or_index)
-	switch(slot_or_index.type)
-		if(/datum/inventory_slot/abstract/inactive_robot_module_storage)
-			if(robot_module_inventory_drawn)
-				robot_drawer_backplate.redraw()
-		else
-			var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
-			screen_obj?.bind_item(item)
+	var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
+	screen_obj?.bind_item(item)
 
 /datum/actor_hud/inventory/proc/remove_item(obj/item/item, datum/inventory_slot/slot_or_index)
-	switch(slot_or_index.type)
-		if(/datum/inventory_slot/abstract/inactive_robot_module_storage)
-			if(robot_module_inventory_drawn)
-				robot_drawer_backplate.redraw()
-		else
-			var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
-			screen_obj?.unbind_item(item)
+	var/atom/movable/screen/actor_hud/inventory/plate/screen_obj = isnum(slot_or_index) ? hands[slot_or_index] : slots[slot_or_index.id]
+	screen_obj?.unbind_item(item)
 
 /datum/actor_hud/inventory/proc/move_item(obj/item/item, datum/inventory_slot/from_slot_or_index, datum/inventory_slot/to_slot_or_index)
 	remove_item(item, from_slot_or_index)

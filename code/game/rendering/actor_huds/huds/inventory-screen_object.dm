@@ -181,37 +181,6 @@
 		add_overlay(active_image)
 
 /**
- * Backplate for robot modules inventory.
- */
-/atom/movable/screen/actor_hud/inventory/robot_drawer_backplate
-	icon = 'icons/screen/hud/styles/common/storage.dmi'
-	icon_state = "block"
-
-	var/list/atom/movable/render/robot_drawer_item_render/renderers
-
-/atom/movable/screen/actor_hud/inventory/robot_drawer_backplate/proc/redraw()
-	var/datum/actor_hud/inventory/casted = hud
-	if(casted.robot_module_inventory_drawn)
-		// draw
-	else
-		// undraw
-#warn impl
-
-/**
- * Item renderer
- */
-/atom/movable/render/robot_drawer_item_render
-
-/atom/movable/render/robot_drawer_item_render/Initialize(mapload, datum/actor_hud/inventory/hud, obj/item/render_as)
-	. = ..()
-	masquarade(render_as)
-
-/atom/movable/render/robot_drawer_item_render/proc/masquarade(obj/item/render_as)
-
-
-#warn above
-
-/**
  * Button: 'open inventory slots'
  */
 /atom/movable/screen/actor_hud/inventory/drawer
@@ -231,25 +200,6 @@
 	var/datum/actor_hud/inventory/inventory_hud = hud
 	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in inventory_hud.hidden_classes) ? "drawer" : "drawer-active"]"
 	return ..()
-
-/**
- * Button: 'open / close robot modules'
- *
- * * The icon for this gets replaced with the robot's module if we're on an actual robot.
- */
-/atom/movable/screen/actor_hud/inventory/robot_drawer
-	name = "module drawer"
-	icon = 'icons/screen/hud/robot/module-drawer.dmi'
-	icon_state = "robot-drawer"
-
-/atom/movable/screen/actor_hud/inventory/robot_drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
-	..()
-	icon = style.robot_icons
-
-/atom/movable/screen/actor_hud/inventory/robot_drawer/on_click(mob/user, list/params)
-	// todo: remote control
-	var/datum/actor_hud/inventory/inventory_hud = hud
-	inventory_hud.toggle_robot_modules()
 
 /**
  * Button: 'swap hand'

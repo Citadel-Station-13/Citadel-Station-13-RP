@@ -30,7 +30,6 @@
 
 	//* HUDs *//
 	/// Actor HUDs using us
-	///
 	/// * Lazy list
 	var/list/datum/actor_hud/inventory/huds_using
 
@@ -48,16 +47,9 @@
 	/// suppress 'swap' and 'equip' and other hand slot buttons
 	/// * used for robot module support
 	var/held_items_suppress_buttons = FALSE
-	/// allow normal pickups
-	/// * used for robot module support
-	var/held_items_allow_pickup = TRUE
 	/// use robot module icons?
 	/// * used for robot support
 	var/held_items_use_robot_icon = FALSE
-	/// robot modules
-	/// * this is a list with special semantics; null = do not render, existing = render, even if empty.
-	/// * this will be rendered if it's existing. this list being non-null is the 'is this supported' check.
-	var/list/obj/item/robot_modules
 
 	//* Rendering *//
 	/// cached overlays by slot id or hand index
