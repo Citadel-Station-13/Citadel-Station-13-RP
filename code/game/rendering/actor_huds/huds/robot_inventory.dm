@@ -52,13 +52,18 @@
 /datum/actor_hud/robot_inventory/proc/rebuild()
 	add_screen((drawer_button = new(null, src)))
 	drawer_button = screen_loc_for_drawer_button()
-	#warn backplate?
+	add_screen((drawer_backplate = new(null, src)))
+	set_drawer_backplate_parameters()
+	drawer_backplate.redraw()
 
 /datum/actor_hud/robot_inventory/proc/screen_loc_for_drawer_button()
 	// Always aligned to right side of hands.
 	#warn impl
 	// var/col = ceil(number_of_hands / 2) + 1
 	// return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+1:5"
+
+/datum/actor_hud/robot_inventory/proc/set_drawer_backplate_parameters()
+	#warn impl
 
 /datum/actor_hud/robot_inventory/proc/all_screen_objects()
 	RETURN_TYPE(/list)
@@ -70,12 +75,6 @@
 
 /datum/actor_hud/robot_inventory/proc/toggle_drawer()
 	drawer_toggled = !drawer_toggled
-	if(drawer_toggled)
-		if(!drawer_backplate)
-			drawer_backplate = new
-		drawer_backplate.redraw()
-		drawer_backplate.invisibility = INVISIBILITY_NONE
-	else
-		// this is important to dump out item refs!
-		drawer_backplate.redraw()
-		drawer_backplate.invisibility = INVISIBILITY_ABSTRACT
+	if(drawer_toggled && !drawer_backplate)
+		drawer_backplate = new
+	drawer_backplate?.redraw()
