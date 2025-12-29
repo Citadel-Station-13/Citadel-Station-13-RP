@@ -16,6 +16,10 @@
 		max_z = max(z, max_z)
 	return max_z
 
+// stub implementation
+/proc/is_station_level(level)
+	return (level in (LEGACY_MAP_DATUM).station_levels)
+
 /proc/get_area(atom/A)
 	RETURN_TYPE(/area)
 	if (isarea(A))
