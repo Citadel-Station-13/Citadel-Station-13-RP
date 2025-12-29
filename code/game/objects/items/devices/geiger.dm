@@ -18,6 +18,7 @@
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 100)
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	var/grace = RAD_GRACE_PERIOD
 	var/datum/looping_sound/geiger/soundloop

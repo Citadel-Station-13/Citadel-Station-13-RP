@@ -77,6 +77,7 @@
 		/datum/prototype/material/gold::id = 125,
 		/datum/prototype/material/copper::id = 500,
 	)
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/sidearm/no_pin, /nt_protolaser/sidearm, "nt-protolaser-sidearm")
 /obj/item/gun/projectile/energy/nt_protolaser/sidearm/no_pin
@@ -133,6 +134,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 		/datum/prototype/material/gold::id = 250,
 		/datum/prototype/material/copper::id = 500,
 	)
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/carbine/no_pin, /nt_protolaser/carbine, "nt-protolaser-carbine")
 /obj/item/gun/projectile/energy/nt_protolaser/carbine/no_pin
@@ -189,6 +191,7 @@ GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/
 		/datum/prototype/material/gold::id = 750,
 		/datum/prototype/material/copper::id = 500,
 	)
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/energy/nt_protolaser/rifle/no_pin, /nt_protolaser/rifle, "nt-protolaser-rifle")
 /obj/item/gun/projectile/energy/nt_protolaser/rifle/no_pin

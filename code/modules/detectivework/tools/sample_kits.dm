@@ -131,6 +131,7 @@
 	desc = "A magnifying glass and tweezers. Used to lift suit fibers."
 	icon_state = "m_glass"
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
 	var/evidence_type = "fiber"
 	var/evidence_path = /obj/item/sample/fibers
 

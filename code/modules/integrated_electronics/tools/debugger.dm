@@ -5,6 +5,7 @@
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "debugger"
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
 	var/data_to_write = null
 	var/accepting_refs = FALSE
 	var/copy_values = FALSE

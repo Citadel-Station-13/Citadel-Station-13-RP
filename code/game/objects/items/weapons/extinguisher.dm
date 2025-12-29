@@ -146,7 +146,8 @@
 	max_water = 150
 	spray_particles = 3
 	sprite_name = "miniFE"
-	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_ARMOR
+	belt_storage_class = BELT_CLASS_MEDIUM
 
 /obj/item/extinguisher/mini/plasman
 	name = "emergency phoronoid extinguisher"

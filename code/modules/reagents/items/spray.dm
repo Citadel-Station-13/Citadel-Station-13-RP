@@ -14,6 +14,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_MEDIUM
 	var/spray_size = 3
 	var/list/spray_sizes = list(1,3)
 	volume = 250
@@ -123,6 +124,7 @@
 	icon_state = "pepperspray"
 	item_state = "pepperspray"
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	possible_transfer_amounts = null
 	volume = 40
 	worth_intrinsic = 85
