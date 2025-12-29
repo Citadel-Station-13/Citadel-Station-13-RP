@@ -1,0 +1,5 @@
+﻿help: "Please replace with the proper structure spawner."
+=/obj/structure/grille:
+  banned_neighbors:
+    FULLTILE_WINDOW:
+      pattern: ^/obj/structure/window[/\w]*?fulltile$

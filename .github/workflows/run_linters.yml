@@ -91,9 +91,9 @@ jobs:
         run: ./DMCompiler_linux-x64/DMCompiler citadel.dme --suppress-unimplemented --define=CIBUILDING | bash tools/ci/annotate_od.sh
       - name: Run Map Checks
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
-        # tools/bootstrap/python -m tools.maplint.source
         run: |
           tools/bootstrap/python -m mapmerge2.dmm_test
+          tools/bootstrap/python -m tools.maplint.source
       - name: Run DMI Tests
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: tools/bootstrap/python -m dmi.test

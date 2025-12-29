@@ -1,0 +1,3 @@
+﻿/obj/structure/bed/chair:
+  banned_neighbors:
+    - /obj/structure/bed/chair
