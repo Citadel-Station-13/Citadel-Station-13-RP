@@ -1,7 +1,7 @@
 {
 	"file": "citadel.dme",
 	"scannable_directory": "code/",
-	"subdirectories": false,
+	"subdirectories": true,
 	"excluded_files": [],
 	"forbidden_includes": [
 		"code/modules/tgs/**/*.dm",
