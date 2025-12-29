@@ -50,8 +50,6 @@
  * Backplate for robot modules inventory.
  */
 /atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate
-	icon = 'icons/screen/hud/styles/common/storage.dmi'
-	icon_state = "block"
 	is_drawer = TRUE
 
 	/// * FALSE: main axis is X, cross axis is Y
@@ -63,10 +61,14 @@
 	var/main_axis_max_size
 	/// tile offset applied to main axis per iteration
 	var/cross_axis_offset
-	/// alignment; this is something like 'NORTH+5' as string
+	/// alignment; this is something like 'NORTH' as string
 	var/first_tile_screen_ax
-	/// alignment; this is something like 'NORTH+5' as string
+	/// alignment; this is something like 'NORTH' as string
 	var/first_tile_screen_ay
+	/// tile; this is a number
+	var/first_tile_screen_tx
+	/// tile; this is a number
+	var/first_tile_screen_ty
 	/// pixel; this is a number
 	var/first_tile_screen_px
 	/// pixel; this is a number
@@ -78,23 +80,94 @@
 	var/datum/actor_hud/robot_inventory/casted = hud
 	if(casted.drawer_toggled)
 		// draw
-		#warn impl
+		// check if we actually need to rebuild renderers; this is needed if row count changes
+		// TODO: optimize this
+		var/requires_rebuild = TRUE
+		if(requires_rebuild)
+			var/MAO = 0 // main axis offset
+			var/CAO = 0 // cross axis offset
+			var/MAC = 0 // main axis count
+			var/AMT = ceil(length(casted.host.provided_items) / main_axis_max_size) * main_axis_max_size
+			for(var/IDX in 1 to AMT)
+				if(MAC > main_axis_max_size)
+					CAO++
+					MAO = 0
+					MAC = 0
+				// fetch or make a renderer
+				if(IDX > length(renderers))
+					renderers += new /atom/movable/render/robot_drawer_item_render(null, hud, src)
+				var/atom/movable/render/robot_drawer_item_render/renderer = renderers[IDX]
+				// set its pixel loc as needed
+				// 0, 0 is ontop of us
+				if(is_vertical)
+					renderer.pixel_x = CAO * cross_axis_offset * WORLD_ICON_SIZE
+					renderer.pixel_y = MAO * main_axis_offset * WORLD_ICON_SIZE
+				else
+					renderer.pixel_x = MAO * main_axis_offset * WORLD_ICON_SIZE
+					renderer.pixel_y = CAO * cross_axis_offset * WORLD_ICON_SIZE
+				++MAO
+				++MAC
+
+			var/x_r = first_tile_screen_tx > 0 ? "-[first_tile_screen_tx]" : "[first_tile_screen_tx]"
+			var/y_r = first_tile_screen_ty > 0 ? "-[first_tile_screen_ty]" : "[first_tile_screen_ty]"
+			screen_loc = "[first_tile_screen_ax][x_r]:[first_tile_screen_px],\
+			[first_tile_screen_ay][y_r]:[first_tile_screen_py]"
+		// apply items
+		var/ridx = 1
+		var/iidx = 1
+		var/iidx_max = length(casted.host.provided_items)
+		var/ridx_max = length(renderers)
+		while(iidx < iidx_max && ridx < ridx_max)
+			var/atom/movable/render/robot_drawer_item_render/renderer = renderers[idx]
+			++iidx
+			var/obj/item/item = casted.host.provided_items[iidx]
+			if(item.inv_slot_or_index)
+				// active module, don't render
+				continue
+			if(renderer.masquarading_as != item)
+				renderer.masquarade(item)
+			++ridx
+		for(ridx in ridx + 1 to ridx_max)
+			var/atom/movable/render/robot_drawer_item_render/renderer = renderers[idx]
+			if(renderer.masquarading_as)
+				renderer.reset()
+
 		src.invisibility = INVISIBILITY_NONE
 	else
 		// undraw
-		QDEL_LIST_NULL(renderers)
+		for(var/atom/movable/render/robot_drawer_item_render/renderer as anything in renderers)
+			renderer.reset()
 		src.invisibility = INVISIBILITY_ABSTRACT
 
 /**
  * Item renderer
  */
 /atom/movable/render/robot_drawer_item_render
+	icon = 'icons/screen/hud/styles/common/storage.dmi'
+	icon_state = "block"
+	var/atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate/backplate
+	var/obj/item/masquarading_as
 
-/atom/movable/render/robot_drawer_item_render/Initialize(mapload, datum/actor_hud/robot_inventory/hud, obj/item/render_as)
+/atom/movable/render/robot_drawer_item_render/Initialize(
+	mapload,
+	datum/actor_hud/robot_inventory/hud,
+	atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate/backplate
+)
 	. = ..()
-	masquarade(render_as)
+	src.backplate = backplate
+	src.backplate.vis_contents += src
+	src.backplate.renderers += src
+
+/atom/movable/render/robot_drawer_item_render/Destroy()
+	reset()
+	src.backplate.vis_contents -= src
+	src.backplate.renderers -= src
+	return ..()
 
 /atom/movable/render/robot_drawer_item_render/proc/masquarade(obj/item/render_as)
+	vis_contents += render_as
+	masquarading_as = render_as
 
-
-#warn above
+/atom/movable/render/robot_drawer_item_render/proc/reset()
+	vis_contents.len = 0
+	masquarading_as = null
