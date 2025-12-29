@@ -63,13 +63,13 @@ jobs:
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
           bash tools/ci/run_server.sh
-      - name: Upload screenshot tests
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: test_artifacts_${{ inputs.major }}_${{ inputs.minor }}
-          path: data/screenshots_new/
-          retention-days: 1
+      # - name: Upload screenshot tests
+      #   if: always()
+      #   uses: actions/upload-artifact@v6
+      #   with:
+      #     name: test_artifacts_${{ inputs.major }}_${{ inputs.minor }}
+      #     path: data/screenshots_new/
+      #     retention-days: 1
       - name: On test fail, write a step summary
         if: always() && steps.run_tests.outcome == 'failure'
         run: |
