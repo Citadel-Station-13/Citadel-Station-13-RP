@@ -243,7 +243,7 @@
  * pretty much just for hooks that happen before standard handling and I'm too lazy to rewrite.
  */
 /mob/proc/legacy_click_on(atom/target, location, control, params)
-	if(client.buildmode)
+	if(client?.buildmode)
 		build_click(src, client.buildmode, params, target)
 		return TRUE
 	return FALSE
