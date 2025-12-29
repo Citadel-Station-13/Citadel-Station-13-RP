@@ -193,7 +193,7 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	clicker.next_click = -1
 	clicker.next_move = -1
 	usr = clicker // bypass check
-	clicker.click_on(clicked_on, null, null, list2params(passed_params))
+	clicker.click_on(clicked_on, params = list2params(passed_params))
 
 /proc/RunUnitTest(datum/unit_test/test_path, list/test_results)
 	if(ispath(test_path, /datum/unit_test/focus_only))

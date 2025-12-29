@@ -1,8 +1,9 @@
-### Files and folders specified here will never be tracked.
+###Files and folders specified here will never be tracked.
 
 # Ignore everything in datafolder and subdirectories
 /data/**/*
 /tmp/**/*
+/cache/**/*
 
 # Ignore byond config folder.
 /cfg/**/*
@@ -31,10 +32,6 @@
 *.lk
 *.int
 *.backup
-
-# Opendream compile result
-citadel.json
-
 ### https://raw.github.com/github/gitignore/cc542de017c606138a87ee4880e5f06b3a306def/Global/Linux.gitignore
 
 *~
@@ -188,12 +185,12 @@ Temporary Items
 *.kdev4*
 *.kate-swp
 
-# Extra map stuff
+# extra map stuff
 /maps/**/backup/
 /maps/templates.dm
 
-# Extra DMI stuff
-/icons/*.dme
+#dmm palette file. You really should be using StrongDMM instead.
+*.dmm-pal
 
 #dmdoc default folder
 /dmdoc
@@ -207,25 +204,37 @@ Temporary Items
 !/config/title_screens/images/exclude
 
 #Linux docker
-/tools/LinuxOneShot/SetupProgram/obj/*
-/tools/LinuxOneShot/SetupProgram/bin/*
-/tools/LinuxOneShot/SetupProgram/.vs
-/tools/LinuxOneShot/Database
-/tools/LinuxOneShot/TGS_Config
-/tools/LinuxOneShot/TGS_Instances
-/tools/LinuxOneShot/TGS_Logs
+/tools/tgs_test/.vs/*
+/tools/tgs_test/bin/*
+/tools/tgs_test/obj/*
 
 # Built auxtools libraries and intermediate files
 aux*.dll
 libaux*.so
-aux*.pdb
+*.pdb
 
 # byond-tracy, we intentionally do not ship this and do not want to maintain it
+# https://github.com/mafemergency/byond-tracy/
 prof.dll
 libprof.so
+
+# Tracy can read source files when it is in the root folder, even without absolute paths.
+# If you're interested, run this hack:
+# https://gist.github.com/Mothblocks/db5462aa84d7d6b1d1b1276b820f62da
+Tracy.exe
 
 # JavaScript tools
 **/node_modules
 
 # Screenshot tests
 /artifacts
+
+# named byond versions config
+/tools/build/dm_versions.json
+
+# From /tools/define_sanity/check.py - potential output file that we load onto the user's machine that we don't want to have committed.
+define_sanity_output.txt
+
+# Running OpenDream locally
+citadel.json
+rust_g64.dll
