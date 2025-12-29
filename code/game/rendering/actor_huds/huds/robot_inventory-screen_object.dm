@@ -118,7 +118,7 @@
 		var/iidx_max = length(casted.host.provided_items)
 		var/ridx_max = length(renderers)
 		while(iidx < iidx_max && ridx < ridx_max)
-			var/atom/movable/render/robot_drawer_item_render/renderer = renderers[idx]
+			var/atom/movable/render/robot_drawer_item_render/renderer = renderers[ridx]
 			++iidx
 			var/obj/item/item = casted.host.provided_items[iidx]
 			if(item.inv_slot_or_index)
@@ -128,7 +128,7 @@
 				renderer.masquarade(item)
 			++ridx
 		for(ridx in ridx + 1 to ridx_max)
-			var/atom/movable/render/robot_drawer_item_render/renderer = renderers[idx]
+			var/atom/movable/render/robot_drawer_item_render/renderer = renderers[ridx]
 			if(renderer.masquarading_as)
 				renderer.reset()
 
