@@ -27,9 +27,7 @@
 /area/submap/PooledR)
 "h" = (
 /obj/structure/table/woodentable,
-/obj/item/gun/projectile/energy/retro{
-	cell_type = /obj/item/cell/device/weapon/empty
-	},
+/obj/item/gun/projectile/energy/retro,
 /turf/template_noop,
 /area/submap/PooledR)
 "i" = (

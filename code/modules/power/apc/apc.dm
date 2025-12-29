@@ -49,31 +49,33 @@ GLOBAL_LIST_EMPTY(apcs)
 #define NIGHTSHIFT_NEVER 2
 #define NIGHTSHIFT_ALWAYS 3
 
-//NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-//Critical//
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/critical, 22)
 /obj/machinery/power/apc/critical
 	is_critical = 1
 
-/// High capacity cell APCs
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/high, 22)
-/obj/machinery/power/apc/high
-	cell_type = /obj/item/cell/high
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell, 22)
+/obj/machinery/power/apc/large_cell
+	cell_type = /obj/item/cell/basic/tier_1/large
 
-/// Super capacity cell APCS
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super, 22)
-/obj/machinery/power/apc/super
-	cell_type = /obj/item/cell/super
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_2, 22)
+/obj/machinery/power/apc/large_cell/tier_2
+	cell_type = /obj/item/cell/basic/tier_2/large
 
-/// Critical APCs with super cells
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/super/critical, 22)
-/obj/machinery/power/apc/super/critical
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_2/critical, 22)
+/obj/machinery/power/apc/large_cell/tier_2/critical
 	is_critical = 1
 
-/// APCS with hyper cells. How lewd
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/hyper, 22)
-/obj/machinery/power/apc/hyper
-	cell_type = /obj/item/cell/hyper
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_3, 22)
+/obj/machinery/power/apc/large_cell/tier_3
+	cell_type = /obj/item/cell/basic/tier_3/large
+
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_4, 22)
+/obj/machinery/power/apc/large_cell/tier_4
+	cell_type = /obj/item/cell/basic/tier_4/large
+
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/large_cell/tier_5, 22)
+/obj/machinery/power/apc/large_cell/tier_5
+	cell_type = /obj/item/cell/basic/tier_5/large
 
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/alarms_hidden, 22)
@@ -130,10 +132,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 	var/area/area
 	var/areastring = null
+
 	var/obj/item/cell/cell
+	/// starting path
+	var/cell_type = /obj/item/cell/basic/tier_1/medium
+	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	/// accept cells with no CELL_TYPE field
+	/// * for shit like gunsword
+	var/cell_accept_nonstandard = TRUE
+
 	var/chargelevel = 0.0005  // Cap for how fast APC cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 	var/start_charge = 90				// initial cell charge %
-	var/cell_type = /obj/item/cell/apc
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
 	var/grid_check = FALSE
@@ -251,19 +260,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	area.power_equip = 0
 	area.power_environ = 0
 	area.power_change()
-	qdel(wires)
-	wires = null
-	qdel(terminal)
-	terminal = null
-	if(cell)
-		cell.forceMove(loc)
-		cell = null
+	QDEL_NULL(wires)
+	QDEL_NULL(terminal)
+	QDEL_NULL(cell)
 
 	// Malf AI, removes the APC from AI's hacked APCs list.
 	if((hacker) && (hacker.hacked_apcs) && (src in hacker.hacked_apcs))
 		hacker.hacked_apcs -= src
-
 	return ..()
+
+/obj/machinery/power/apc/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
+	return cell.cell_type ? (cell.cell_type & cell_accept) : cell_accept_nonstandard
 
 /obj/machinery/power/apc/get_cell(inducer)
 	return cell
@@ -310,7 +317,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	// is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
 		src.cell = new cell_type(src)
-		cell.charge = start_charge * cell.maxcharge / 100.0 		// (convert percentage to actual value)
+		cell.charge = start_charge * cell.max_charge / 100.0 		// (convert percentage to actual value)
 
 	var/area/A = src.loc.loc
 
@@ -569,6 +576,10 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 	else if	(istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
 		if(cell)
 			to_chat(user,"The [src.name] already has a power cell installed.")
+			return
+		var/obj/item/cell/casted_cell = W
+		if(!object_cell_slot_accepts(casted_cell))
+			to_chat(usr, SPAN_WARNING("[casted_cell] won't fit in [src]'s cell slot."))
 			return
 		if (machine_stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
@@ -1167,7 +1178,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		if(src.attempt_charging())
 			if(excess > 0)		// check to make sure we have enough to charge
 				// Max charge is capped to % per second constant
-				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.maxcharge * chargelevel, cell.maxcharge - cell.charge)
+				var/ch = min(DYNAMIC_KW_TO_CELL_UNITS(excess, 1), cell.max_charge * chargelevel, cell.max_charge - cell.charge)
 				var/charged = draw_power(DYNAMIC_CELL_UNITS_TO_KW(ch, 1)) // Removes the power we're taking from the grid
 				cell.give(DYNAMIC_KW_TO_CELL_UNITS(charged, 1)) // actually recharge the cell
 				lastused_charging = charged * 1000
@@ -1184,7 +1195,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 
 		if(chargemode)
 			if(!charging)
-				var/charge_tick = cell.maxcharge * chargelevel
+				var/charge_tick = cell.max_charge * chargelevel
 				charge_tick = DYNAMIC_CELL_UNITS_TO_KW(charge_tick, 1)
 				if(excess > charge_tick)
 					chargecount++

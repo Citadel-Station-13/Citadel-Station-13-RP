@@ -2,8 +2,8 @@
 	icon_state = "pipe-d"
 
 /obj/structure/disposalpipe/down/Initialize(mapload, dir)
-	dpdir = dir
-	return ..()
+	. = ..()
+	dpdir = src.dir
 
 /obj/structure/disposalpipe/down/nextdir(fromdir)
 	var/nextdir

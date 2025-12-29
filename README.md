@@ -13,7 +13,7 @@
 * **Ban Appeals:** <http://citadel-station.net/forum/forumdisplay.php?fid=8>
 * **Discord:**  <https://discord.gg/citadelstation>
 
-This is the codebase for the CitadelRP flavoured fork of SpaceStation 13.
+This is the codebase for the CitadelRP flavored fork of SpaceStation 13.
 
 Citadel Station 13 RP, also known as CitadelRP was originally a fork of VOREStation, which separated on 01/25/2019.
 
@@ -21,7 +21,7 @@ Citadel Station 13 RP, also known as CitadelRP was originally a fork of VOREStat
 
 [Downloading](.github/guides/DOWNLOADING.md)
 
-## :exclamation: How to compile :exclamation
+## :exclamation: How to compile :exclamation:
 
 On **May 9, 2022** we have changed the way to compile the codebase.
 
@@ -67,7 +67,7 @@ These are also the folders you are likely going to encounter while managing the 
 - /tmp: server scratch space
   - /assets - for asset generation
   - /config - used as scratch space for config
-  
+
 You only need to make the top level folders (e.g. config, data) static folders in TGS4.
 
 Subfolders are automatically included.

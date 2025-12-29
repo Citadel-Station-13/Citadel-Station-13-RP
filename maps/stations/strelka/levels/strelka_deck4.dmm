@@ -1281,6 +1281,7 @@
 	layer = 1
 	},
 /obj/structure/flora/grass/event/bright_flowers1,
+/obj/machinery/light,
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "eM" = (
@@ -1660,6 +1661,7 @@
 	dir = 6
 	},
 /obj/machinery/seed_storage/garden,
+/obj/machinery/light,
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/hydroponics/strelka/hallway/botany)
 "fZ" = (
@@ -1935,6 +1937,9 @@
 	},
 /obj/machinery/portable_atmospherics/hydroponics{
 	layer = 1
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
@@ -4015,6 +4020,9 @@
 	},
 /obj/item/storage/belt/utility,
 /obj/item/shovel/spade,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/hydroponics/strelka/hallway/botany)
 "oG" = (
@@ -7362,6 +7370,7 @@
 	},
 /obj/item/storage/belt/utility,
 /obj/item/shovel/spade,
+/obj/machinery/light,
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/hydroponics/strelka/hallway/botany)
 "AC" = (
@@ -8346,6 +8355,9 @@
 	},
 /obj/machinery/vending/hydronutrients{
 	req_one_access = list(30,35,47,77)
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
 /area/hydroponics/strelka/hallway/botany)
@@ -9911,6 +9923,7 @@
 /obj/structure/sink/kitchen{
 	pixel_y = 28
 	},
+/obj/structure/reagent_dispensers/watertank/high,
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "Kl" = (
@@ -11189,6 +11202,9 @@
 	layer = 1
 	},
 /obj/structure/flora/grass/event/bright_flowers1,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "OK" = (
@@ -11546,6 +11562,7 @@
 /obj/machinery/portable_atmospherics/hydroponics{
 	layer = 1
 	},
+/obj/machinery/light,
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
 "Qe" = (

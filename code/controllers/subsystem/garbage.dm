@@ -217,13 +217,10 @@ SUBSYSTEM_DEF(garbage)
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
 
-				var/message = "## TESTING: GC: -- [ref(D)] | [type] was unable to be GC'd --"
-				message = "[message] (ref count of [refcount(D)])"
-				log_world(message)
-
 				// -- CITADEL EDIT: more aggressive GC tracing --
 				do
 					var/list/trace_data = D.gc_trace_data()
+					trace_data["gc-stage"] = "check-failed"
 					trace_data["type"] = "[type]"
 					trace_data["refcount"] = refcount(D)
 					log_world("GC-TRACE: [json_encode(trace_data)]")
@@ -290,6 +287,7 @@ SUBSYSTEM_DEF(garbage)
 	var/maybe_trace_data
 	do
 		var/list/trace_data = D.gc_trace_data()
+		trace_data["gc-stage"] = "hard-deleting"
 		trace_data["type"] = "[type]"
 		// this *should* be at 2 here, one in the handlequeue proc,
 		// and one here. any extras are dangling references.

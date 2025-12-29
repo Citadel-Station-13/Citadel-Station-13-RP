@@ -3,8 +3,8 @@
 	icon_state = "pipe-s"
 
 /obj/structure/disposalpipe/segment/Initialize(mapload, dir)
+	. = ..()
 	if(icon_state == "pipe-s")
-		dpdir = dir | turn(dir, 180)
+		dpdir = src.dir | turn(src.dir, 180)
 	else
-		dpdir = dir | turn(dir, -90)
-	return ..()
+		dpdir = src.dir | turn(src.dir, -90)

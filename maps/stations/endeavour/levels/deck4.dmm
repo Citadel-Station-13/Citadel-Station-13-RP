@@ -1946,9 +1946,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4afthall/endeavour)
 "bLm" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -5284,9 +5282,7 @@
 /area/crew_quarters/sleep/engi_wash)
 "eKh" = (
 /obj/structure/table/steel,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil,
 /obj/machinery/camera/network/engineering{
 	dir = 8
@@ -8800,21 +8796,11 @@
 /area/hallway/d4fwdportmaint/endeavour)
 "hPd" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -14392,21 +14378,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -15465,9 +15441,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "nJc" = (
-/obj/machinery/power/apc/south_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -19671,9 +19645,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
 "rZh" = (
@@ -23301,9 +23273,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4portafthall/endeavour)
 "vtv" = (
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

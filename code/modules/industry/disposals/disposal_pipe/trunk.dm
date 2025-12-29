@@ -5,7 +5,7 @@
 
 /obj/structure/disposalpipe/trunk/Initialize(mapload)
 	. = ..()
-	dpdir = dir
+	dpdir = src.dir
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/disposalpipe/trunk/LateInitialize()

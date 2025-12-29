@@ -2529,9 +2529,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
 "bpc" = (
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -11045,16 +11043,12 @@
 	pixel_x = 3;
 	pixel_y = -7
 	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil{
 	pixel_x = 3;
 	pixel_y = -7
 	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -2;
 	pixel_y = -1
@@ -13627,9 +13621,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "iku" = (
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -13844,9 +13836,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "iqT" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -16169,9 +16159,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "jHu" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -16196,9 +16184,7 @@
 	dir = 6
 	},
 /obj/landmark/spawnpoint/job/librarian,
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -16841,12 +16827,8 @@
 	dir = 9
 	},
 /obj/machinery/cell_charger,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "kev" = (
@@ -19528,9 +19510,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "lUN" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
@@ -25128,9 +25108,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "pbg" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
@@ -25746,9 +25724,7 @@
 /obj/structure/bed/chair/wheelchair{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -27196,9 +27172,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "qix" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -33608,23 +33582,19 @@
 /obj/structure/closet{
 	name = "robotics parts"
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -35821,9 +35791,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "vmd" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -37382,9 +37350,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "wdG" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -39919,9 +39885,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},

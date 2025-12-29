@@ -577,6 +577,7 @@
 
 // Void Core, power source for Abductor ships and bases.
 // Provides a lot of power, but tends to explode when mistreated.
+// todo: rewrite this shit
 /obj/machinery/power/rtg/abductor
 	name = "Void Core"
 	icon_state = "core-nocell"
@@ -587,7 +588,7 @@
 	buckle_allowed = FALSE
 	pixel_y = 7
 	var/going_kaboom = FALSE // Is it about to explode?
-	var/obj/item/cell/device/weapon/recharge/alien
+	var/obj/item/cell/regen/fractal/large/alien
 
 	var/icon_base = "core"
 	var/state_change = TRUE
@@ -629,7 +630,7 @@
 
 /obj/machinery/power/rtg/abductor/attackby(obj/item/I, mob/user, params)
 	state_change = TRUE //Can't tell if parent did something
-	if(istype(I, /obj/item/cell/device/weapon/recharge/alien) && !alien)
+	if(istype(I, /obj/item/cell/regen/fractal/large) && !alien)
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		alien = I
@@ -675,6 +676,7 @@
 
 /obj/machinery/power/rtg/abductor/built/Initialize(mapload)
 	. = ..()
+	QDEL_NULL(alien)
 	alien = new(src)
 	RefreshParts()
 
@@ -689,5 +691,6 @@
 
 /obj/machinery/power/rtg/abductor/hybrid/built/Initialize(mapload)
 	. = ..()
-	alien = new /obj/item/cell/device/weapon/recharge/alien(src)
+	QDEL_NULL(alien)
+	alien = new /obj/item/cell/regen/fractal/large(src)
 	RefreshParts()
