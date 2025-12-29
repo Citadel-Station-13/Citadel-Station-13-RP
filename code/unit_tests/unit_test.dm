@@ -192,6 +192,7 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 /datum/unit_test/proc/click_wrapper(mob/living/clicker, atom/clicked_on, list/passed_params = list("left" = 1, "button" = "left"))
 	clicker.next_click = -1
 	clicker.next_move = -1
+	usr = src // bypass check
 	clicker.click_on(clicked_on, null, null, list2params(passed_params))
 
 /proc/RunUnitTest(datum/unit_test/test_path, list/test_results)
