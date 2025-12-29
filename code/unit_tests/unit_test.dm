@@ -321,7 +321,7 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 
 	SSticker.force_ending = TRUE
 	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
-	SSticker.standard_reboot()
+	SSticker.declare_completion()
 
 /datum/map_level/unit_tests
 	id = "__UnitTestLevel"
