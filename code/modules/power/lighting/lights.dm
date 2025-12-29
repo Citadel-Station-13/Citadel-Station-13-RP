@@ -41,6 +41,8 @@
 	base_icon_state = "ltube"
 	item_state = "c_tube"
 	materials_base = list(MAT_GLASS = 100)
+	belt_storage_class = BELT_CLASS_SMALL
+
 	brightness_range = 8
 	brightness_power = 0.8
 	brightness_color = LIGHT_COLOR_HALOGEN
@@ -114,6 +116,7 @@
 	base_icon_state = "lbulb"
 	item_state = "contvapour"
 	materials_base = list(MAT_GLASS = 100)
+	belt_storage_class = BELT_CLASS_SMALL
 
 	brightness_color = LIGHT_COLOR_TUNGSTEN
 	brightness_range = 4

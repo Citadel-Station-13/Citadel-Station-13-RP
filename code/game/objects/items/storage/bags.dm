@@ -63,71 +63,6 @@
 			set_weight_class(staged)
 
 // -----------------------------
-//          Trash bag
-// -----------------------------
-/obj/item/storage/bag/trash
-	name = "trash bag"
-	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
-	icon = 'icons/obj/janitor.dmi'
-	icon_state = "trashbag"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "trashbag", SLOT_ID_LEFT_HAND = "trashbag")
-	drop_sound = 'sound/items/drop/wrapper.ogg'
-	pickup_sound = 'sound/items/pickup/wrapper.ogg'
-
-	w_class = WEIGHT_CLASS_SMALL
-	max_single_weight_class = WEIGHT_CLASS_NORMAL
-	max_combined_volume = WEIGHT_CLASS_SMALL * 21
-	insertion_whitelist = list() // any
-	insertion_blacklist = list(/obj/item/disk/nuclear)
-
-/obj/item/storage/bag/trash/initialize_storage()
-	. = ..()
-	obj_storage.update_icon_on_item_change = TRUE
-
-/obj/item/storage/bag/trash/update_icon_state()
-	switch(w_class)
-		if(3)
-			icon_state = "[initial(icon_state)]1"
-		if(4)
-			icon_state = "[initial(icon_state)]2"
-		if(5 to INFINITY)
-			icon_state = "[initial(icon_state)]3"
-		else
-			icon_state = "[initial(icon_state)]"
-	return ..()
-
-/obj/item/storage/bag/trash/bluespace
-	name = "trash bag of holding"
-	max_single_weight_class = WEIGHT_CLASS_HUGE
-	max_combined_volume = WEIGHT_CLASS_SMALL * 56
-	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
-	icon_state = "bluetrashbag"
-
-/obj/item/storage/bag/trash/bluespace/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/storage/backpack/holding) || istype(W, /obj/item/storage/bag/trash/bluespace))
-		to_chat(user, "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>")
-		qdel(W)
-		return 1
-	return ..()
-
-// -----------------------------
-//        Plastic Bag
-// -----------------------------
-
-/obj/item/storage/bag/plasticbag
-	name = "plastic bag"
-	desc = "It's a very flimsy, very noisy alternative to a bag."
-	icon = 'icons/obj/trash.dmi'
-	icon_state = "plasticbag"
-	drop_sound = 'sound/items/drop/wrapper.ogg'
-	pickup_sound = 'sound/items/pickup/wrapper.ogg'
-
-	w_class = WEIGHT_CLASS_BULKY
-	max_single_weight_class = WEIGHT_CLASS_SMALL
-	insertion_whitelist = list() // any
-	insertion_blacklist = list(/obj/item/disk/nuclear)
-
-// -----------------------------
 //        Mining Satchel
 // -----------------------------
 /*
@@ -147,7 +82,7 @@
 	max_items = 300
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	storage_datum_path = /datum/object_system/storage/stack
-	ui_expand_when_needed = TRUE
+	ui_expand_when_needed = 5
 	insertion_whitelist = list(/obj/item/stack/ore)
 	auto_fit_weight_class_to_largest_contained = FALSE
 
@@ -251,7 +186,7 @@
 	allow_mass_gather = TRUE
 	allow_mass_gather_mode_switch = FALSE
 	auto_fit_weight_class_to_largest_contained = FALSE
-	ui_expand_when_needed = TRUE
+	ui_expand_when_needed = 5
 
 // -----------------------------
 //    Sheet Snatcher (Cyborg)

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 //* Storage UI defines *//
 
@@ -68,6 +68,22 @@
 /// Essentially means it cannot be picked up or placed in an inventory, ex: Mech Parts, Safe - Can not fit in Boh
 #define WEIGHT_CLASS_GIGANTIC 6
 
+//* Weight Classes - Items *//
+
+// tiny holdout pistols
+// * probably should stop existing ASAP
+#define WEIGHT_CLASS_FOR_HOLDOUT_SIDEARM WEIGHT_CLASS_SMALL
+// big revolvers, magpistols, etc
+#define WEIGHT_CLASS_FOR_SIDEARM WEIGHT_CLASS_NORMAL
+// energy carbines and similar
+#define WEIGHT_CLASS_FOR_SHORT_RIFLE WEIGHT_CLASS_BULKY
+// full sized ARs
+#define WEIGHT_CLASS_FOR_LONG_RIFLE WEIGHT_CLASS_HUGE
+// self-documenting name
+#define WEIGHT_CLASS_FOR_SHOTGUN WEIGHT_CLASS_HUGE
+// LMGs and similar
+#define WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN WEIGHT_CLASS_HUGE
+
 //* Volumetrics - Default Item Volumes *//
 
 #define WEIGHT_VOLUME_TINY				0.5
@@ -109,3 +125,66 @@ GLOBAL_REAL_LIST(w_class_to_volume) = list(
 #define ITEM_VOLUME_RIFLE_MAG (WEIGHT_VOLUME_NORMAL / 2)
 
 #define ITEM_VOLUME_AMMO_CASING (WEIGHT_VOLUME_TINY / 2)
+
+#define ITEM_VOLUME_PILL WEIGHT_VOLUME_TINY
+
+//* Item `belt_storage_class` defines *//
+
+/// Doesn't go in a belt
+#define BELT_CLASS_INVALID 1
+/// small grenades, pill bottles, syringes, pistol mags, etc
+#define BELT_CLASS_SMALL 2
+/// rifle mags, welding torches, crowbars, etc
+#define BELT_CLASS_MEDIUM 3
+/// sidearms, rpds, etc
+#define BELT_CLASS_LARGE 4
+
+#define BELT_CLASS_FOR_SMALL_CELL BELT_CLASS_SMALL
+#define BELT_CLASS_FOR_WEAPON_CELL BELT_CLASS_MEDIUM
+#define BELT_CLASS_FOR_MEDIUM_CELL BELT_CLASS_LARGE
+#define BELT_CLASS_FOR_LARGE_CELL BELT_CLASS_INVALID
+
+// TODO: DECLARE_ENUM
+
+GLOBAL_REAL_LIST(belt_class_names) = list(
+	"Invalid",
+	"Small",
+	"Medium",
+	"Large",
+)
+
+//* Item `belt_storage_size` defines *//
+
+/// Default belt size for items
+#define BELT_SIZE_DEFAULT 1
+
+/// Default belt size for ammo casings
+#define BELT_SIZE_FOR_AMMO_CASING 0.25
+/// Default magazine size
+#define BELT_SIZE_FOR_MAGAZINE 1
+
+/// Default flashlight size
+#define BELT_SIZE_FOR_FLASHLIGHT 1
+
+#define BELT_SIZE_FOR_SYRINGE 0.25
+#define BELT_SIZE_FOR_PILL 0.25
+
+#define BELT_SIZE_FOR_SMALL_CELL 1
+#define BELT_SIZE_FOR_WEAPON_CELL 1
+#define BELT_SIZE_FOR_MEDIUM_CELL 1
+#define BELT_SIZE_FOR_LARGE_CELL 1
+
+//* Item `suit_storage_class` defines *//
+
+#define SUIT_STORAGE_CLASS_HARDWEAR (1<<0)
+#define SUIT_STORAGE_CLASS_SOFTWEAR (1<<1)
+#define SUIT_STORAGE_CLASS_ARMOR (1<<2)
+
+DECLARE_BITFIELD(suit_storage_class, list(
+	BITFIELD_NAMED("Hardwear", SUIT_STORAGE_CLASS_HARDWEAR),
+	BITFIELD_NAMED("Softwear", SUIT_STORAGE_CLASS_SOFTWEAR),
+	BITFIELD_NAMED("Armor", SUIT_STORAGE_CLASS_ARMOR),
+))
+ASSIGN_BITFIELD(suit_storage_class, /obj/item, suit_storage_class)
+ASSIGN_BITFIELD(suit_storage_class, /obj/item, suit_storage_class_allow)
+ASSIGN_BITFIELD(suit_storage_class, /obj/item, suit_storage_class_disallow)

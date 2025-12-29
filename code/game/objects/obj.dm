@@ -747,6 +747,8 @@
 	// todo: context + construction (tool) examines at some point need a better system
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
 		. += SPAN_NOTICE("This entity can be rotated[(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK)? "" : " while unanchored"] via context menu (alt click while adjacent).")
+	if(dist <= 1)
+		obj_storage?.handle_storage_examine(.)
 
 /obj/proc/examine_integrity(mob/user)
 	. = list()

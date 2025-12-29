@@ -15,6 +15,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	var/helpforce = 0	//For help intent things
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
@@ -65,6 +66,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("drilled")
+	belt_storage_class = BELT_CLASS_MEDIUM
 
 /*
  * Scalpel
@@ -139,6 +141,7 @@
 	materials_base = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
+	belt_storage_class = BELT_CLASS_MEDIUM
 
 /obj/item/surgical/circular_saw/manager
 	name = "energetic bone diverter"

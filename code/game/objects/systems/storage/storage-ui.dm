@@ -1,6 +1,75 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* UI Main *//
+
+/**
+ * @return TRUE if we did something (to interrupt clickchain)
+ */
+/datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force, suppressed)
+	if(!force && is_locked(actor.performer))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	if(check_on_found_hooks(actor))
+		return TRUE
+	if(!suppressed && !isnull(actor) && sfx_open)
+		// todo: variable sound
+		playsound(actor.performer, sfx_open, 50, 1, -5)
+	// todo: jiggle animation
+	show(actor.initiator)
+	return TRUE
+
+/datum/object_system/storage/proc/show(mob/viewer)
+	if(viewer.active_storage == src)
+		refresh_ui(viewer)
+		return TRUE
+
+	viewer.active_storage?.hide(viewer)
+	viewer.active_storage = src
+
+	create_ui(viewer)
+
+	parent.object_storage_opened(viewer)
+
+/**
+ * if user not specified, it is 'all'.
+ */
+/datum/object_system/storage/proc/hide(mob/viewer)
+	if(isnull(viewer))
+		for(var/mob/iterating as anything in ui_by_mob)
+			hide(iterating)
+		return
+
+	if(viewer.active_storage != src)
+		stack_trace("viewer didn't have active storage set right, wtf?")
+	else
+		viewer.active_storage = null
+
+	cleanup_ui(viewer)
+
+	parent.object_storage_closed(viewer)
+
+/datum/object_system/storage/proc/refresh(mob/viewer)
+	ui_refresh_queued = FALSE
+	if(isnull(viewer))
+		for(var/mob/iterating as anything in ui_by_mob)
+			refresh_ui(iterating)
+		return
+	refresh_ui(viewer)
+
+
+/datum/object_system/storage/proc/reconsider_mob_viewable(mob/user)
+	if(isnull(user))
+		for(var/mob/viewer as anything in ui_by_mob)
+			reconsider_mob_viewable(viewer)
+		return
+	if(accessible_by_mob(user))
+		return
+	hide(user)
+
 //* Helper Datums *//
 
 /**
@@ -89,6 +158,20 @@
 /datum/object_system/storage/proc/uses_numerical_ui()
 	return ui_numerical_mode
 
+/**
+ * inspired by CM; allows tinting the background if something is nearly full
+ */
+/datum/object_system/storage/proc/get_ui_drawer_tint()
+	return null
+
+/datum/object_system/storage/proc/get_ui_predicted_max_items()
+	// good ol' widescreen predict length of 9 if max isn't set
+	// this is so things don't break when they expect an answer
+	return max_items || 9
+
+/**
+ * * Will not respect random access limits in numerical mode.
+ */
 /datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
 	. = list()
 	var/atom/movable/screen/storage/closer/closer = new
@@ -100,17 +183,20 @@
 	var/view_x = decoded_view[1]
 	// clamp to max items if needed
 	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	if(max_items)
-		rendering_width = min(max_items, rendering_width)
 	// see if we need to process numerical display
 	var/list/datum/storage_numerical_display/numerical_rendered = uses_numerical_ui()? render_numerical_display() : null
 	// process indirection
-	var/atom/indirection = real_contents_loc()
+	var/obj/item/accessible = get_accessible_items()
+	// predict max items for slot mode
+	var/predicted_max_items = get_ui_predicted_max_items()
+	if(predicted_max_items)
+		rendering_width = min(predicted_max_items, rendering_width)
 	// if we have expand when needed, only show 1 more than the actual amount.
 	if(ui_expand_when_needed)
-		rendering_width = min(rendering_width, (isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)) + 1)
+		var/actually_needed = max((isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)) + 1, ui_expand_when_needed)
+		rendering_width = min(rendering_width, actually_needed)
 	// compute count and rows
-	var/item_count = isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)
+	var/item_count = isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)
 	var/rows_needed = ROUND_UP(item_count / rendering_width) || 1
 	// prepare iteration
 	var/current_row = 1
@@ -118,6 +204,7 @@
 	// render boxes
 	boxes.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		LEFT+[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y + rows_needed - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	boxes.color = get_ui_drawer_tint()
 	// render closer
 	closer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// render items
@@ -138,7 +225,7 @@
 				if(current_row > STORAGE_UI_MAX_ROWS)
 					break
 	else
-		for(var/obj/item/item in indirection)
+		for(var/obj/item/item in accessible)
 			var/atom/movable/screen/storage/item/slot/renderer = new(null, item)
 			. += renderer
 			// position
@@ -152,6 +239,10 @@
 				if(current_row > STORAGE_UI_MAX_ROWS)
 					break
 
+/**
+ * Volumetric rendering.
+ * * Doesn't respect random access limits.
+ */
 /datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
 	// guard against divide-by-0's
 	if(!max_combined_volume)
@@ -187,10 +278,13 @@
 	var/effective_pixel_volume_ratio = VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO
 	// we compute how much pixels we ideally will need to display everything
 	var/ideal_width_px = effective_pixel_volume_ratio * effective_max_volume
+	// compute what the sane minimum is so small containers don't explode
+	// 'ui_expand_volumetric_minimum_items' is used here to make tiny containers not too small
+	var/sane_minimum = max((VOLUMETRIC_STORAGE_INFLATE_TO_TILES * WORLD_ICON_SIZE), ui_expand_volumetric_minimum_items * VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM)
 	// if too low,
-	if(ideal_width_px < (VOLUMETRIC_STORAGE_INFLATE_TO_TILES * WORLD_ICON_SIZE))
+	if(ideal_width_px < sane_minimum)
 		// expand our horizons
-		effective_pixel_volume_ratio = (VOLUMETRIC_STORAGE_INFLATE_TO_TILES * WORLD_ICON_SIZE) / effective_max_volume
+		effective_pixel_volume_ratio = sane_minimum / effective_max_volume
 		ideal_width_px = effective_pixel_volume_ratio * effective_max_volume
 
 	// -- prepare for iteration --
@@ -211,7 +305,7 @@
 
 	// -- iterate --
 
-	for(var/obj/item/item as anything in indirection)
+	for(var/obj/item/item in indirection)
 		var/item_volume = item.get_weight_volume()
 		// check safety
 		if(--safety <= 0)
@@ -286,6 +380,7 @@
 		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
 		BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	p_box.color = get_ui_drawer_tint()
 	// render closer on bottom
 	var/atom/movable/screen/storage/closer/closer = new
 	. += closer

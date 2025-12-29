@@ -7,17 +7,15 @@
 	pickup_sound = 'sound/items/pickup/pillbottle.ogg'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "contsolid", SLOT_ID_LEFT_HAND = "contsolid")
 	w_class = WEIGHT_CLASS_SMALL
-	insertion_whitelist = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
-	allow_quick_empty = TRUE
-	allow_mass_gather = TRUE
 	sfx_insert = null
 	sfx_remove = null
 	sfx_open = null
-	max_combined_volume = WEIGHT_VOLUME_TINY * 14
-	max_single_weight_class = WEIGHT_CLASS_TINY
 	materials_base = list(MAT_PLASTIC = 80)
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	belt_storage_class = BELT_CLASS_SMALL
+	storage_datum_path = /datum/object_system/storage/pill_bottle
+	insertion_whitelist = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
 
 	var/label_text = ""
 	var/labeled = 0
