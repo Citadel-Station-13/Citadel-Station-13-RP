@@ -24,6 +24,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	worth_intrinsic = 50
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	var/sampled_turf = ""
 	var/num_stored_bags = 10

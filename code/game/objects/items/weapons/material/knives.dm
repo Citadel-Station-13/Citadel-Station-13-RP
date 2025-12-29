@@ -8,6 +8,7 @@
 	attack_verb = list("patted", "tapped")
 	force_multiplier = 0.1
 	throw_force_multiplier = 1.5
+	belt_storage_class = BELT_CLASS_SMALL
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
 	var/active = FALSE
@@ -75,6 +76,7 @@
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	belt_storage_class = BELT_CLASS_MEDIUM
 	materials_base = list(MAT_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

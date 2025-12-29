@@ -140,6 +140,7 @@
 	icon_state = "revolver"
 	base_icon_state = "revolver"
 	render_break_overlay = BALLISTIC_RENDER_BREAK_OPEN
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/semirifle
 	name = "semi-automatic rifle"
@@ -156,6 +157,7 @@
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"
@@ -172,6 +174,7 @@
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/pdw
 	name = "personal defense weapon"
@@ -188,6 +191,7 @@
 	base_icon_state = "pdw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/lmg
 	name = "squad automatic weapon"
@@ -205,3 +209,4 @@
 	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
 	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN

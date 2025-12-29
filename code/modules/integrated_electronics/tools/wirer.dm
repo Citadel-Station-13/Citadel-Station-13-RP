@@ -13,6 +13,7 @@
 	icon_state = "wirer-wire"
 	item_state = "wirer"
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
 	var/mode = WIRE
 	var/datum/weakref/selected_io_weakref
 
