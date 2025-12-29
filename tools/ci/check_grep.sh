@@ -157,6 +157,14 @@ fi;
 #     st=1
 # fi;
 
+# section "516 Href Styles"
+# part "byond href styles"
+# if $grep "href[\s='\"\\\\]*\?" $code_files ; then
+#     echo
+#     echo -e "${RED}ERROR: BYOND requires internal href links to begin with \"byond://\".${NC}"
+#     st=1
+# fi;
+
 section "common mistakes"
 # part "global vars"
 # if $grep '^/*var/' $code_files; then
@@ -164,27 +172,55 @@ section "common mistakes"
 # 	echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
 # 	st=1
 # fi;
+
 # part "proc args with var/"
 # if $grep '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
 # 	echo
 # 	echo -e "${RED}ERROR: Changed files contains a proc argument starting with 'var'.${NC}"
 # 	st=1
 # fi;
+
 part "improperly pathed static lists"
 if $grep -i 'var/list/static/.*' $code_files; then
 	echo
 	echo -e "${RED}ERROR: Found incorrect static list definition 'var/list/static/', it should be 'var/static/list/' instead.${NC}"
 	st=1
 fi;
-part "can_perform_action argument check"
-if $grep 'can_perform_action\(\s*\)' $code_files; then
+
+# part "src as a trait source" # ideally we'd lint / test for ANY datum reference as a trait source, but 'src' is the most common.
+# if $grep -i '(add_trait|remove_trait)\(.+,\s*.+,\s*src\)' $code_files; then
+# 	echo
+# 	echo -e "${RED}ERROR: Using 'src' as a trait source. Source must be a string key - dont't use references to datums as a source, perhaps use 'REF(src)'.${NC}"
+# 	st=1
+# fi;
+# if $grep -i '(add_traits|remove_traits)\(.+,\s*src\)' $code_files; then
+# 	echo
+# 	echo -e "${RED}ERROR: Using 'src' as trait sources. Source must be a string key - dont't use references to datums as sources, perhaps use 'REF(src)'.${NC}"
+# 	st=1
+# fi;
+
+part "forceMove sanity"
+if $grep 'forceMove\(\s*(\w+\(\)|\w+)\s*,\s*(\w+\(\)|\w+)\s*\)' $code_files; then
 	echo
-	echo -e "${RED}ERROR: Found a can_perform_action() proc with improper arguments.${NC}"
+	echo -e "${RED}ERROR: forceMove() call with two arguments - this is not how forceMove() is invoked! It's x.forceMove(y), not forceMove(x, y).${NC}"
 	st=1
 fi;
 
+# part "as anything on typeless loops"
+# if $grep 'var/[^/]+ as anything' $code_files; then
+#     echo
+#     echo -e "${RED}ERROR: 'as anything' used in a typeless for loop. This doesn't do anything and should be removed.${NC}"
+#     st=1
+# fi;
+
+part "as anything on internal functions"
+if $grep 'var\/(turf|mob|obj|atom\/movable).+ as anything in o?(view|range|hearers)\(' $code_files; then
+    echo
+    echo -e "${RED}ERROR: 'as anything' typed for loop over an internal function. These functions have some internal optimization that relies on the loop not having 'as anything' in it.${NC}"
+    st=1
+fi;
+
 part "common spelling mistakes"
-# one pesky door causing this issue
 # if $grep -i 'centcomm' $code_files; then
 # 	echo
 #     echo -e "${RED}ERROR: Misspelling(s) of CentCom detected in code, please remove the extra M(s).${NC}"
@@ -200,20 +236,35 @@ if $grep 'NanoTrasen' $code_files; then
     echo -e "${RED}ERROR: Misspelling(s) of Nanotrasen detected in code, please uncapitalize the T(s).${NC}"
     st=1
 fi;
-# there is a lot, fixme!
 # if $grep -i'eciev' $code_files; then
 # 	echo
 #     echo -e "${RED}ERROR: Common I-before-E typo detected in code.${NC}"
 #     st=1
 # fi;
 
+part "Ineffective easing flags in animate()"
+if $grep 'easing\w*=\w*(EASE_IN|EASE_OUT|\(EASE_IN\w*\|\w*EASE_OUT\))' $code_files; then
+    echo
+    echo -e "${RED}ERROR: 'animate' was called with an easing argument and the default, LINEAR_EASING curve. This doesn't do anything and should be adjusted.${NC}"
+    st=1
+fi;
+
 part "updatepaths validity"
-missing_txt_lines=$(find tools/UpdatePaths/scripts -type f ! -name "*.txt" | wc -l)
+missing_txt_lines=$(find tools/UpdatePaths/Scripts -type f ! -name "*.txt" | wc -l)
 if [ $missing_txt_lines -gt 0 ]; then
     echo
     echo -e "${RED}ERROR: Found an UpdatePaths File that doesn't end in .txt! Please add the proper file extension!${NC}"
     st=1
 fi;
+
+# enable this when theres a script file, this silently fails.
+# number_prefix_lines=$(find tools/UpdatePaths/Scripts -type f | wc -l)
+# valid_number_prefix_lines=$(find tools/UpdatePaths/Scripts -type f | $grep -P "\d+_(.+)" | wc -l)
+# if [ $valid_number_prefix_lines -ne $number_prefix_lines ]; then
+#     echo
+#     echo -e "${RED}ERROR: Detected an UpdatePaths File that doesn't start with the PR number! Please add the proper number prefix!${NC}"
+#     st=1
+# fi;
 
 section "515 Proc Syntax"
 part "proc ref syntax"
