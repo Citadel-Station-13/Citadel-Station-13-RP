@@ -1645,4 +1645,3 @@ def _encode(events_lol, unknown_callback=None, never_add_eot=False,
                 data.append(_ber_compressed_int(dtime)+event_data)
 
     return b''.join(data)
-
