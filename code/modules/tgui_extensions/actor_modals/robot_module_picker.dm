@@ -41,6 +41,7 @@
 			"frames" = serialized_frames,
 		)
 		var/list/datum/robot_frame/possible_frames = pickable_modules[possible_module]
+		// TODO: iconRef doesn't work properly for non-hardcoded frames but we can worry about it later
 		for(var/datum/robot_frame/possible_frame as anything in possible_frames)
 			// ckey enforcement should probably be elsewhere but idgaf lol
 			if(possible_frame.ckey_lock && !(user?.ckey in possible_frame.ckey_lock))
