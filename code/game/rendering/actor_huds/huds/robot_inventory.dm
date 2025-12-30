@@ -58,12 +58,19 @@
 
 /datum/actor_hud/robot_inventory/proc/screen_loc_for_drawer_button()
 	// Always aligned to right side of hands.
-	#warn impl
-	// var/col = ceil(number_of_hands / 2) + 1
-	// return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+1:5"
+	return "RIGHT-5,BOTTOM:5"
 
 /datum/actor_hud/robot_inventory/proc/set_drawer_backplate_parameters()
-	#warn impl
+	drawer_backplate.first_tile_screen_ax = ""
+	drawer_backplate.first_tile_screen_ay = ""
+	drawer_backplate.first_tile_screen_tx = STORAGE_UI_START_TILE_X
+	drawer_backplate.first_tile_screen_ty = STORAGE_UI_START_TILE_Y
+	drawer_backplate.first_tile_screen_px = STORAGE_UI_START_PIXEL_X
+	drawer_backplate.first_tile_screen_py = STORAGE_UI_START_PIXEL_Y
+	drawer_backplate.is_vertical = FALSE
+	drawer_backplate.main_axis_max_size = 9
+	drawer_backplate.main_axis_offset = 1
+	drawer_backplate.cross_axis_offset = 1
 
 /datum/actor_hud/robot_inventory/proc/all_screen_objects()
 	RETURN_TYPE(/list)

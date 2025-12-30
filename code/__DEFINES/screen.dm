@@ -37,10 +37,6 @@
 
 #define ui_smallquad "RIGHT-4:18,BOTTOM:4"
 
-///borgs
-#define ui_borg_store "CENTER+2,BOTTOM:5"
-///borgs
-#define ui_borg_inventory "CENTER-2,BOTTOM:5"
 ///same height as humans, hugging the right border
 #define ui_construct_health "RIGHT:00,CENTER:15"
 #define ui_construct_purge "RIGHT:00,CENTER-1:15"
