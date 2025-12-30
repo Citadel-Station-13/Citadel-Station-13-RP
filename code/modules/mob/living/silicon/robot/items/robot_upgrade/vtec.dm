@@ -37,6 +37,8 @@
 
 /obj/item/robot_upgrade/vtec/proc/user_toggle_tps_boost(datum/event_args/actor/actor)
 	set_power_level(current_power_level >= length(possible_tps_boosts) ? 0 : current_power_level + 1)
+	for(var/datum/action/action in upgrade_actions)
+		action.update_buttons()
 
 /obj/item/robot_upgrade/vtec/proc/update_movespeed_modifier()
 	owner.update_movespeed_modifier(/datum/movespeed_modifier/mob_vtec_upgrade, TRUE, list(
@@ -47,9 +49,18 @@
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/mob_vtec_upgrade)
 
 /datum/action/robot_upgrade_action/vtec
-	#warn rendering, icon state change
+	button_icon = 'icons/screen/actions/generic.dmi'
+	button_icon_state = "chevron-1"
+
+	var/vtec_chevron_icon_state_base = "chevron-"
+	var/vtec_chevron_icon_states = 3
+
+/datum/action/robot_upgrade_action/vtec/pre_render_hook()
+	. = ..()
+	var/obj/item/robot_upgrade/vtec/casted_target = target
+	button_icon_state = "[vtec_chevron_icon_state_base]\
+	[ceil((casted_target.current_power_level / length(casted_target.possible_tps_boosts)) * vtec_chevron_icon_states)]"
 
 /datum/action/robot_upgrade_action/vtec/invoke_target(obj/item/robot_upgrade/vtec/target, datum/event_args/actor/actor)
 	target.user_toggle_tps_boost(actor)
-	button_icon_state
 	return ..()
