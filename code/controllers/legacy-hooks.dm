@@ -23,7 +23,7 @@
  * @param hook	Identifier of the hook to call.
  * @returns		1 if all hooked code runs successfully, 0 otherwise.
  */
-/proc/callHook(hook, list/args=null)
+/proc/callHook(hook, list/params=null)
 	var/hook_path = text2path("/legacy_hook/[hook]")
 	if(!hook_path)
 		log_world("Invalid hook '/legacy_hook/[hook]' called.")
@@ -32,7 +32,7 @@
 	var/delegate = new hook_path
 	var/status = 1
 	for(var/P in typesof("[hook_path]/proc"))
-		if(!call(delegate, P)(arglist(args)))
+		if(!call(delegate, P)(arglist(params)))
 			log_world("Hook '[P]' failed or runtimed.")
 			status = 0
 
