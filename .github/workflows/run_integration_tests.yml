@@ -38,10 +38,15 @@ jobs:
           name: build-artifact-${{ inputs.major || env.BYOND_MAJOR }}-${{ inputs.minor || env.BYOND_MINOR}}
           path: ./
       - name: Restore Flyway
+        id: restore_flyway_cache
         uses: actions/cache@v4
         with:
           path: ~/flyway
           key: ${{ runner.os }}-flyway-${{ hashFiles('dependencies.sh') }}
+      - name: Install flyway
+        if: ${{ !steps.restore_flyway_cache.outputs.cache-hit }}
+        shell: bash
+        run: bash tools/ci/install/install_flyway.sh
       - name: Setup database
         # env:
         #   MYSQL_CONFIG_FILE: tools/ci/mysql_config.cnf
