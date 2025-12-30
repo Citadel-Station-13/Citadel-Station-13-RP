@@ -400,8 +400,7 @@
 /area/awaymission/example)
 "bG" = (
 /obj/machinery/door/airlock{
-	name = "Unisex Restrooms";
-	
+	name = "Unisex Restrooms"
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/example)
