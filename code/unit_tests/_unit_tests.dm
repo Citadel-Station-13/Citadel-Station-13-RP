@@ -107,9 +107,9 @@
 #include "font_awesome_icons.dm"
 #include "get_turf_pixel.dm"
 #include "initialize_sanity.dm"
-#include "keybinding_init.dm"
+// #include "keybinding_init.dm" // this works
 #include "map_template_paths.dm"
-#include "missing_icons.dm"
+// #include "missing_icons.dm" // there is a lot
 // #include "pills.dm"
 // #include "plantgrowth_tests.dm"
 // #include "projectiles.dm"

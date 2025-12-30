@@ -7,7 +7,7 @@
 	)
 
 /datum/unit_test/reagent_container_sanity/Run()
-	for(var/entry in subtypesof(/obj/item/reagent_containers) - unallocatable)
+	for(var/entry in (subtypesof(/obj/item/reagent_containers) - unallocatable))
 		var/obj/item/reagent_containers/container = allocate(entry)
 		var/initialized_volume = 0
 		if(!length(container.start_with_reagents))
