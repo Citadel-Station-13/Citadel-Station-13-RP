@@ -36,7 +36,7 @@
 
 /obj/machinery/resleeving/body_printer/Destroy()
 	QDEL_NULL(materials)
-	if(occupant)
+	if(currently_growing_body)
 		#warn eject occupant
 	return ..()
 
