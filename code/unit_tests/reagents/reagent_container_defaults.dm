@@ -1,12 +1,10 @@
 /// Checks if reagent container transfer amount defaults match with actual possible values
 /datum/unit_test/reagent_container_defaults
-	var/list/unallocatable = list(
-		// borgs
-		/obj/item/reagent_containers/borghypo,
-	)
 
 /datum/unit_test/reagent_container_defaults/Run()
-	for(var/container_type in (subtypesof(/obj/item/reagent_containers) - unallocatable))
+	for(var/container_type in subtypesof(/obj/item/reagent_containers))
+		if (typesof(container_type, /obj/item/reagent_containers/borghypo))
+			continue // skip this
 		var/obj/item/reagent_containers/container = allocate(container_type)
 		if(!container.possible_transfer_amounts || !length(container.possible_transfer_amounts)) // we treat 0 len as no transfer
 			continue
