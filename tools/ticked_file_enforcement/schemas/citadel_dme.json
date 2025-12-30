@@ -3,8 +3,5 @@
 	"scannable_directory": "code/",
 	"subdirectories": true,
 	"excluded_files": [],
-	"forbidden_includes": [
-		"code/modules/tgs/**/*.dm",
-		"code/modules/unit_tests/[!_]*.dm"
-	]
+	"forbidden_includes": ["code/modules/tgs/**/*.dm", "code/unit_tests/[!_]*.dm"]
 }

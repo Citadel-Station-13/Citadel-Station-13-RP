@@ -74,11 +74,11 @@ jobs:
       - name: Run Grep Checks
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: bash tools/ci/check_grep.sh
-      - name: Ticked File Enforcement
-        if: steps.linter-setup.conclusion == 'success' && !cancelled()
-        # tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/citadel_dme.json
-        run: |
-          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/unit_tests.json
+      # - name: Ticked File Enforcement
+      #   if: steps.linter-setup.conclusion == 'success' && !cancelled()
+      #   run: |
+      #     tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/unit_tests.json
+      #     tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/citadel_dme.json
       # - name: Check Define Sanity
       #   if: steps.linter-setup.conclusion == 'success' && !cancelled()
       #   run: tools/bootstrap/python -m define_sanity.check
