@@ -8,7 +8,7 @@
 /datum/unit_test/reagent_container_defaults/Run()
 	for(var/container_type in subtypesof(/obj/item/reagent_containers) - unallocatable)
 		var/obj/item/reagent_containers/container = allocate(container_type)
-		if(!container.possible_transfer_amounts)
+		if(!container.possible_transfer_amounts || !length(container.possible_transfer_amounts)) // we treat 0 len as no transfer
 			continue
 		var/initial_value = initial(container.amount_per_transfer_from_this)
 		var/index_of_initial_value = container.possible_transfer_amounts.Find(initial_value)
