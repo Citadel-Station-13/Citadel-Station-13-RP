@@ -1,9 +1,13 @@
 /// Test to ensure that all possible reagent containers have enough space to hold any reagents they spawn in with.
 /// A drink can with only 30 units of space should not be able to hold 50 units of drink, as an example.
 /datum/unit_test/reagent_container_sanity
+	var/list/unallocatable = list(
+		// borgs
+		/obj/item/reagent_containers/borghypo,
+	)
 
 /datum/unit_test/reagent_container_sanity/Run()
-	for(var/entry in subtypesof(/obj/item/reagent_containers))
+	for(var/entry in subtypesof(/obj/item/reagent_containers) - unallocatable)
 		var/obj/item/reagent_containers/container = allocate(entry)
 		var/initialized_volume = 0
 		if(!length(container.start_with_reagents))
