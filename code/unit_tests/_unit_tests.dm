@@ -102,6 +102,7 @@
 // #include "chain_pull_through_space.dm"
 #include "component_tests.dm"
 #include "container_sanity.dm"
+#include "create_and_destroy.dm"
 #include "focus_only_tests.dm"
 #include "font_awesome_icons.dm"
 #include "get_turf_pixel.dm"
