@@ -72,16 +72,6 @@
 	using.layer = HUD_LAYER_BASE-0.01
 	src.adding += using
 
-//Store
-	mymob.throw_icon = new /atom/movable/screen()
-	mymob.throw_icon.icon = ui_style
-	mymob.throw_icon.icon_state = "store"
-	mymob.throw_icon.alpha = ui_alpha
-	mymob.throw_icon.color = ui_color
-	mymob.throw_icon.name = "store"
-	mymob.throw_icon.screen_loc = ui_borg_store
-	src.other += mymob.throw_icon
-
 //Temp
 	mymob.bodytemp = new /atom/movable/screen()
 	mymob.bodytemp.icon_state = "temp0"
