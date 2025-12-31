@@ -15,7 +15,7 @@
 	// -- EXTERIOR --
 	// run against armor; if pierced, goes to hull
 	if(comp_armor)
-		comp_armor.run_inbound_vehicle_damage_instance(shieldcall_args, fake_attack)
+		comp_armor.handle_inbound_vehicle_damage_instance(shieldcall_args, fake_attack)
 		if(shieldcall_args[SHIELDCALL_ARG_DAMAGE] <= DAMAGE_PRECISION)
 			return
 
@@ -23,7 +23,7 @@
 	// run against hull & components based on how damaged hull is
 
 	if(comp_hull)
-		comp_hull.run_inbound_vehicle_damage_instance(shieldcall_args, fake_attack)
+		comp_hull.handle_inbound_vehicle_damage_instance(shieldcall_args, fake_attack)
 		if(shieldcall_args[SHIELDCALL_ARG_DAMAGE] <= DAMAGE_PRECISION)
 			return
 

@@ -40,7 +40,7 @@
 		return
 	if(!maybe_area.powered(pull_power_channel))
 		return
-	var/missing_units = maybe_cell.maxcharge - maybe_cell.charge
+	var/missing_units = maybe_cell.max_charge - maybe_cell.charge
 	var/missing = DYNAMIC_CELL_UNITS_TO_W(missing_units, delta_time)
 	var/draw = min(missing, pull_power)
 	var/drawn = maybe_area.use_power_oneoff(draw, pull_power_channel)

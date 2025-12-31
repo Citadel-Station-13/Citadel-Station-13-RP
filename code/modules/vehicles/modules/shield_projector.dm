@@ -35,10 +35,15 @@
 	var/datum/component/directional_shield/shield_component
 
 /obj/item/vehicle_module/shield_projector/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
-	. = ..()
+	..()
+	START_PROCESSING(SSobj, src)
 
 /obj/item/vehicle_module/shield_projector/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
-	. = ..()
+	..()
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/vehicle_module/shield_projector/process(delta_time)
+	if(shield_rebuilds_while_off)
 
 /obj/item/vehicle_module/shield_projector/proc/activate(datum/event_args/actor/actor)
 	#warn impl
@@ -48,6 +53,10 @@
 
 #warn impl all
 /obj/item/vehicle_module/shield_projector/proc/handle_damage_instance(list/shieldcall_args)
+	SHOULD_NOT_SLEEP(TRUE)
+	inflict_shield_damage(shieldcall_args)
+
+/obj/item/vehicle_module/shield_projector/proc/inflict_shield_damage(list/shieldcall_args)
 
 
 /obj/item/vehicle_module/shield_projector/omnidirectional

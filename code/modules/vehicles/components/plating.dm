@@ -41,7 +41,7 @@
  * * Any blocked damage should be directed to ourselves. The vehicle-side defense code will handle that.
  * * This will modify the passed in list.
  */
-/obj/item/vehicle_component/plating/proc/run_inbound_vehicle_damage_instance(list/shieldcall_args, fake_attack)
+/obj/item/vehicle_component/plating/proc/handle_inbound_vehicle_damage_instance(list/shieldcall_args, fake_attack)
 	// check how damaged we are; after integrity failure there's escalating chance we start letting
 	// stuff through wholesale
 
@@ -51,14 +51,14 @@
 		if(prob(pass_percent))
 			return
 
-	var/datum/armor/redirection = fetch_redirection_armor()
-	var/reduced_damage = redirection?.resultant_damage(
-		shieldcall_args[SHIELDCALL_ARG_DAMAGE],
-		shieldcall_args[SHIELDCALL_ARG_DAMAGE_TIER],
-		shieldcall_args[SHIELDCALL_ARG_DAMAGE_FLAG],
-		shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] & DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION,
-	)
-	if(shieldcall_args[SHIELDCALL_ARG_DAMAGE_MODE] & DAMAGE_MODE_REQUEST_ARMOR_BLUNTING)
-		// if requested, blunt tier as needed
+	var/list/copied_instance = shieldcall_args.Copy()
 
-	#warn impl
+	var/datum/armor/redirection = fetch_redirection_armor()
+	redirection.handle_shieldcall(shieldcall_args, fake_attack)
+
+	// this is dumb but we have no other way without making invasive changes to armor
+	var/reduced_damage = copied_instance[SHIELDCALL_ARG_DAMAGE] - shieldcall_args[SHIELDCALL_ARG_DAMAGE]
+	if(reduced_damage > 0 && !fake_attack)
+		// run it against ourselves
+		copied_instance[SHIELDCALL_ARG_DAMAGE] = reduced_damage
+		run_damage_instance(arglist(copied_instance))

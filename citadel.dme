@@ -5613,6 +5613,7 @@
 #include "code\modules\vehicles\ridden.dm"
 #include "code\modules\vehicles\sealed-legacy.dm"
 #include "code\modules\vehicles\sealed.dm"
+#include "code\modules\vehicles\vehicle-action.dm"
 #include "code\modules\vehicles\vehicle-admin.dm"
 #include "code\modules\vehicles\vehicle-components.dm"
 #include "code\modules\vehicles\vehicle-defense.dm"

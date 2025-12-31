@@ -18,9 +18,8 @@
 	/// health per second
 	var/repair_speed = 1.5
 	/// wattage
-	var/repair_power_cost = 1000
-
-#warn impl
+	/// * our efficiency of joules per hp is effectively this divided by [repair_speed]
+	var/repair_power_cost = 2000
 
 /obj/item/vehicle_module/toggled/repair_droid/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
 	..()
@@ -46,29 +45,67 @@
 		return PROCESS_KILL
 	if(!vehicle)
 		return PROCESS_KILL
-	// repair processes:
 
-	// + chassis --> ordered components
-	#warn take into account repair_droid_recovery_efficiency
-	#warn take into account integrity_failure
-	var/chassis_step_remaining = repair_speed
-	if(vehicle.integrity < vehicle.integrity_max * vehicle.repair_droid_max_ratio)
-		var/chassis_efficiency = vehicle.repair_droid_inbound_efficiency
-		if(vehicle.integrity < vehicle.integrity_failure)
-			chassis_efficiency *= vehicle.repair_droid_recovery_efficiency
+	// prepare
+	var/total_repair = repair_speed * delta_time
+	var/remaining_repair = total_repair
 
-	if(chassis_step_remaining)
-		var/list/obj/item/vehicle_component/components_to_repair = vehicle.query_repair_droid_components_immutable()
-		if(length(components_to_repair))
-			for(var/obj/item/vehicle_component/c)
+	// + chassis
+	var/repair_chassis_to = vehicle.integrity_max * vehicle.repair_droid_max_ratio
+	if(vehicle.integrity < repair_chassis_to)
+		var/chassis_efficiency = vehicle.integrity < vehicle.integrity_failure ? \
+		vehicle.repair_droid_recovery_efficiency * vehicle.repair_droid_inbound_efficiency : \
+		vehicle.repair_droid_inbound_efficiency
 
-	// + modules all at once
+		var/chassis_missing_amount = repair_chassis_to - vehicle.integrity
+		var/chassis_fix_amount = min(chassis_missing_amount, remaining_repair)
+
+		vehicle.adjust_integrity(chassis_fix_amount)
+		remaining_repair -= chassis_fix_amount
+	if(remaining_repair <= 0)
+		return
+
+	// + components, ordered
+	// TODO: do we want to order this like this?
+	var/list/obj/item/vehicle_component/components_to_repair = vehicle.query_repair_droid_components_immutable()
+	if(length(components_to_repair))
+		for(var/obj/item/vehicle_component/component as anything in components_to_repair)
+			var/component_efficiency = component.integrity < component.integrity_failure ? \
+			component.repair_droid_recovery_efficiency * component.repair_droid_inbound_efficiency : \
+			component.repair_droid_inbound_efficiency
+
+			var/component_missing_amount = repair_component_to - component.integrity
+			var/component_fix_amount = min(component_missing_amount, remaining_repair)
+
+			component.adjust_integrity(component_fix_amount)
+			remaining_repair -= component_fix_amount
+			if(remaining_repair <= 0)
+				break
+	if(remaining_repair <= 0)
+		return
+
+	// + modules, ordered
+	// TODO: do we want to order this like this?
 	var/list/obj/item/vehicle_module/modules_to_repair = vehicle.query_repair_droid_modules_immutable()
 	if(length(modules_to_repair))
-		var/list/obj/item/vehicle_module/modules_needing_repair = list()
-		for(var/obj/item/vehicle_module/module in modules_to_repair)
-			if(module.integrity < module.integrity_max * module.repair_droid_max_ratio)
-#warn impl
+		for(var/obj/item/vehicle_module/module as anything in modules_to_repair)
+			var/module_efficiency = module.integrity < module.integrity_failure ? \
+			module.repair_droid_recovery_efficiency * module.repair_droid_inbound_efficiency : \
+			module.repair_droid_inbound_efficiency
+
+			var/module_missing_amount = repair_module_to - module.integrity
+			var/module_fix_amount = min(module_missing_amount, remaining_repair)
+
+			module.adjust_integrity(module_fix_amount)
+			remaining_repair -= module_fix_amount
+			if(remaining_repair <= 0)
+				break
+	if(remaining_repair <= 0)
+		return
+
+	// watt times time = joules
+	var/using_power = repair_power_cost * delta_time * (1 - (remaining_repair / total_repair))
+	vehicle.draw_module_power_oneoff(src, using_power)
 
 /obj/item/vehicle_module/toggled/repair_droid/proc/update_vehicle_overlay()
 	if(!vehicle)

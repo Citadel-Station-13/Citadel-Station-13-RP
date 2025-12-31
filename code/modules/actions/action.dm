@@ -81,6 +81,14 @@
 	/// overlay to add to background if active
 	var/button_active_overlay = "active-1"
 
+	#warn how do we do this
+	/// ask for confirmation
+	/// * for stuff like turning hardsuits off, turning mechas off
+	var/ask_confirm = FALSE
+	/// ask for aggressive confirmation
+	/// * for stuff like "oh shit this will literally maxcap"
+	var/ask_aggressive_confirm = FALSE
+
 /datum/action/New(datum/target)
 	if(!target_compatible(target))
 		qdel(src)
