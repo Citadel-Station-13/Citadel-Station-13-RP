@@ -15,21 +15,6 @@
 	legacy_melee_damage_lower = 20
 
 
-	var/poison_type = "expired_medicine"
-	var/poison_chance = 100
-	var/poison_per_bite = 2
-
-
-/mob/living/simple_mob/mechanical/derelict/minuteman/hornet/poison/apply_melee_effects(var/atom/A)
-	if(isliving(A))
-		var/mob/living/L = A
-		if(L.reagents)
-			var/target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
-			if(L.can_inject(src, null, target_zone))
-				inject_poison(L, target_zone)
-
-
-/mob/living/simple_mob/mechanical/derelict/minuteman/hornet/poison/proc/inject_poison(mob/living/L, target_zone)
-	if(prob(poison_chance))
-		to_chat(L, "<span class='warning'>You begin to feel woozy.</span>")
-		L.reagents.add_reagent(poison_type, poison_per_bite)
+	poison_type = "expired_medicine"
+	poison_chance = 100
+	poison_per_bite = 2
