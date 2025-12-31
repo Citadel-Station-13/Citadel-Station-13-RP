@@ -29,7 +29,7 @@
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGOUT, client)
 	SSnanoui.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
 	SStgui.on_logout(src) // Cleanup any TGUIs the user has open
-	GLOB.player_list -= src
+	remove_from_player_list()
 	disconnect_time = world.realtime // Logging when we disappear.
 	active_storage?.hide(src)
 	update_client_z(null)
@@ -51,4 +51,4 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
 
 	..()
-	return 1
+	return TRUE

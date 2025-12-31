@@ -35,7 +35,7 @@
 
 	AddComponent(/datum/component/personal_crafting)
 
-	human_mob_list |= src
+	GLOB.human_list += src
 	hide_underwear.Cut()
 	for(var/category in GLOB.global_underwear.categories_by_name)
 		hide_underwear[category] = FALSE
@@ -57,7 +57,7 @@
 		add_blindness_source(TRAIT_BLINDNESS_SPECIES)
 
 /mob/living/carbon/human/Destroy()
-	human_mob_list -= src
+	GLOB.human_list -= src
 	for(var/organ in organs)
 		qdel(organ)
 	QDEL_NULL(nif)

@@ -20,7 +20,7 @@
  */
 /proc/is_area_occupied(area/myarea)
 	// Testing suggests looping over human_mob_list is quicker than looping over area contents
-	for(var/mob/living/carbon/human/H in human_mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.mob_living_list)
 		// Conditions for exclusion here, like if disconnected people start blocking it.
 		if(H.stat >= DEAD)
 			continue

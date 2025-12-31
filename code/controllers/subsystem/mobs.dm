@@ -41,9 +41,7 @@ SUBSYSTEM_DEF(mobs)
 		var/mob/M = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(QDELETED(M))
-			GLOB.mob_list -= M
-		else
+		if(!QDELETED(M))
 			// Right now mob.Life() is unstable enough I think we need to use a try catch.
 			// Obviously we should try and get rid of this for performance reasons when we can.
 			if(M.low_priority && !(M.z in busy_z_levels))

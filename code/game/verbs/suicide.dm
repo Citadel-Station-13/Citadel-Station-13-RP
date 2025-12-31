@@ -17,6 +17,7 @@
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		update_health()
+		add_to_mob_suicide_list()
 
 /mob/living/silicon/robot/verb/suicide()
 	set hidden = 1
@@ -37,4 +38,5 @@
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		update_health()
+		add_to_mob_suicide_list()
 

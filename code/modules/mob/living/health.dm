@@ -25,6 +25,17 @@
 	. = ..()
 	if(!.)
 		return
+
+	switch(.) //Previous stat.
+		if(DEAD)
+			remove_from_dead_mob_list()
+			add_to_alive_mob_list()
+
+	switch(stat) //Current stat.
+		if(DEAD)
+			remove_from_alive_mob_list()
+			add_to_dead_mob_list()
+
 	GLOB.cultnet.updateVisibility(src, FALSE)
 
 /mob/living/revive(force, full_heal, restore_nutrition = TRUE)

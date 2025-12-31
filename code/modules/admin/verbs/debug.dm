@@ -267,11 +267,13 @@
 		if("Mobs")
 			to_chat(usr, jointext(GLOB.mob_list,","), confidential = TRUE)
 		if("Living Mobs")
-			to_chat(usr, jointext(living_mob_list,","), confidential = TRUE)
+			to_chat(usr, jointext(GLOB.alive_mob_list,","), confidential = TRUE)
 		if("Dead Mobs")
-			to_chat(usr, jointext(dead_mob_list,","), confidential = TRUE)
+			to_chat(usr, jointext(GLOB.dead_mob_list,","), confidential = TRUE)
 		if("Clients")
 			to_chat(usr, jointext(GLOB.clients,","), confidential = TRUE)
+		if("Joined Clients")
+			to_chat(usr, jointext(GLOB.joined_player_list,","), confidential = TRUE)
 
 /client/proc/cmd_display_del_log()
 	set category = VERB_CATEGORY_DEBUG

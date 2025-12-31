@@ -17,6 +17,7 @@
 	reagents = bloodstr
 	if (!default_language && species_language)
 		default_language = RSlanguages.legacy_resolve_language_name(species_language)
+	GLOB.carbon_list += src
 
 /mob/living/carbon/Destroy()
 	QDEL_NULL(blood_holder)
@@ -28,6 +29,7 @@
 		qdel(guts)
 	for(var/food in stomach_contents)
 		qdel(food)
+	GLOB.carbon_list -= src
 	return ..()
 
 /mob/living/carbon/init_inventory()

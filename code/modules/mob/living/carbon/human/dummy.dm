@@ -3,29 +3,32 @@
 	status_flags = STATUS_GODMODE | STATUS_CAN_PUSH
 	ssd_visible = FALSE
 	no_vore = TRUE //Dummies don't need bellies.
+	var/in_use = FALSE
 
-// NO STOP USING THESE FOR ANYTHING BUT PREFS SETUP
+INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
+
+/mob/living/carbon/human/dummy/Destroy()
+	in_use = FALSE
+	return ..()
+
+/mob/living/carbon/human/dummy/Life(seconds_per_tick)
+	SHOULD_CALL_PARENT(FALSE) // no.
+	return
+
+/mob/living/carbon/human/dummy/proc/wipe_state()
+	delete_inventory(TRUE, TRUE)
+	set_species(/datum/species/human, TRUE, TRUE)
+	cut_overlays(TRUE)
+
+// NO STOP USING THESE FOR ANYTHING BUT PREFS SETUP <- no fuck off i need standardized humans for ci
 // MAKE SOMETHING THAT ISN'T /HUMAN IF YOU JUST WANT A MANNEQUIN THIS IS NOT HARD TO FIGURE OUT
 // DONT USE THE SUPER COMPLICATED PLAYER MOB WITH ORGANS FOR A *MANNEQUIN*, WHY??
 INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 /mob/living/carbon/human/dummy/mannequin
-	/// currently locked for usage
-	var/in_use = FALSE
 
 /mob/living/carbon/human/dummy/mannequin/Initialize(mapload)
 	. = ..()
-	GLOB.mob_list -= src
-	living_mob_list -= src
-	dead_mob_list -= src
 	delete_inventory()
-
-/mob/living/carbon/human/dummy/mannequin/proc/wipe_state()
-	delete_inventory(TRUE, TRUE)
-	set_species(/datum/species/human, TRUE, TRUE)
-
-/mob/living/carbon/human/dummy/mannequin/proc/unset_busy()
-	wipe_state()
-	in_use = FALSE
 
 //Inefficient pooling/caching way.
 GLOBAL_LIST_EMPTY(human_dummy_list)
@@ -37,8 +40,6 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	var/mob/living/carbon/human/dummy/mannequin/D = GLOB.human_dummy_list[slotkey]
 	if(istype(D))
 		UNTIL(!D.in_use)
-	else
-		pass()
 	if(QDELETED(D))
 		D = new
 		GLOB.human_dummy_list[slotkey] = D
@@ -57,7 +58,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		carbon_target.dna.transfer_identity(copycat, transfer_SE = TRUE)
+		carbon_target.dna = copycat.dna.Clone()
 
 		if(ishuman(target))
 			var/mob/living/carbon/human/human_target = target
@@ -75,9 +76,10 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 /proc/unset_busy_human_dummy(slotkey)
 	if(!slotkey)
 		return
-	var/mob/living/carbon/human/dummy/mannequin/D = GLOB.human_dummy_list[slotkey]
+	var/mob/living/carbon/human/dummy/D = GLOB.human_dummy_list[slotkey]
 	if(istype(D))
-		D.unset_busy()
+		D.wipe_state()
+		D.in_use = FALSE
 
 /proc/clear_human_dummy(slotkey)
 	if(!slotkey)

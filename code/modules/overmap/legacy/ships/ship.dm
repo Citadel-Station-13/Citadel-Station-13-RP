@@ -70,7 +70,7 @@
 	var/life = 0
 
 	var/list/our_levels = get_owned_z_indices()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in our_levels)
 			life++
 

@@ -27,8 +27,10 @@ SUBSYSTEM_DEF(server_maint)
 	lists_to_clear = list(
 		"player_list" = GLOB.player_list,
 		"mob_list" = GLOB.mob_list,
-		"living_mob_list" = living_mob_list,
-		"dead_mob_list" = dead_mob_list
+		"alive_mob_list" = GLOB.alive_mob_list,
+		"suicided_mob_list" = GLOB.suicided_mob_list,
+		"dead_mob_list" = GLOB.dead_mob_list,
+		"keyloop_list" = GLOB.keyloop_list, //A null here will cause new clients to be unable to move. totally unacceptable
 	)
 
 	return SS_INIT_SUCCESS
@@ -54,14 +56,13 @@ SUBSYSTEM_DEF(server_maint)
 
 	var/list/currentrun = src.currentrun
 	var/round_started = SSticker.HasRoundStarted()
+
 	var/kick_inactive = !!config_legacy.kick_inactive
 	var/afk_period
 	if(kick_inactive)
 		afk_period = (config_legacy.kick_inactive MINUTES)
-
 	for(var/I in currentrun)
 		var/client/C = I
-
 		//handle kicking inactive players
 		if(round_started && kick_inactive && !C.holder && C.is_afk(afk_period))
 			var/cmob = C.mob

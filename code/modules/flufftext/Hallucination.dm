@@ -333,7 +333,7 @@ proc/check_panel(mob/M)
 	var/mob/living/carbon/human/clone = null
 	var/clone_weapon = null
 
-	for(var/mob/living/carbon/human/H in living_mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.mob_living_list)
 		if(H.stat || H.lying)
 			continue
 		possible_clones += H

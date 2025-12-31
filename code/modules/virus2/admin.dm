@@ -183,7 +183,7 @@
 			resistance = S
 		if("infectee")
 			var/list/candidates = list()
-			for(var/mob/living/carbon/G in living_mob_list)
+			for(var/mob/living/carbon/G in GLOB.carbon_list)
 				if(G.stat != DEAD && G.species)
 					if(G.species.get_bodytype_legacy() in species)
 						candidates["[G.name][G.client ? "" : " (no client)"]"] = G
