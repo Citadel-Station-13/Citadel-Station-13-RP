@@ -192,27 +192,6 @@
 		if(src_object in view(2, src))
 			return UI_UPDATE //if they're close enough, allow the occupant_legacy to see the screen through the viewport or whatever.
 
-/obj/vehicle/sealed/mecha/proc/get_step_delay()
-	var/tally = 0
-
-	var/obj/item/vehicle_component/mecha_actuator/actuator = internal_components[MECH_ACTUATOR]
-
-	if(!actuator)	// Relying purely on hydraulic pumps. You're going nowhere fast.
-		tally = 2 SECONDS
-
-		return tally
-
-	tally += 0.5 SECONDS * (1 - actuator.get_efficiency())	// Damaged actuators run slower, slowing as damage increases beyond its threshold.
-
-	#warn deal with strafing
-	if(strafing)
-		tally = round(tally * actuator.strafing_multiplier)
-
-	if(overload)	// At the end, because this would normally just make the mech *slower* since tally wasn't starting at 0.
-		tally = min(1, round(tally/2))
-
-	return max(1, round(tally, 0.1))	// Round the total to the nearest 10th. Can't go lower than 1 tick. Even humans have a delay longer than that.
-
 /obj/vehicle/sealed/mecha/Bump(atom/obstacle)
 	// TODO: refactor phasing.
 	if(phasing && (estimate_cell_power_remaining() >= phasing_energy_drain))

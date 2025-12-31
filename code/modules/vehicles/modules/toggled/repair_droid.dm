@@ -72,6 +72,7 @@
 	var/list/obj/item/vehicle_component/components_to_repair = vehicle.query_repair_droid_components_immutable()
 	if(length(components_to_repair))
 		for(var/obj/item/vehicle_component/component as anything in components_to_repair)
+			var/repair_component_to = component.integrity_max * component.repair_droid_max_ratio
 			var/component_efficiency = component.integrity < component.integrity_failure ? \
 			component.repair_droid_recovery_efficiency * component.repair_droid_inbound_efficiency : \
 			component.repair_droid_inbound_efficiency
@@ -91,6 +92,7 @@
 	var/list/obj/item/vehicle_module/modules_to_repair = vehicle.query_repair_droid_modules_immutable()
 	if(length(modules_to_repair))
 		for(var/obj/item/vehicle_module/module as anything in modules_to_repair)
+			var/repair_module_to = module.integrity_max * module.repair_droid_max_ratio
 			var/module_efficiency = module.integrity < module.integrity_failure ? \
 			module.repair_droid_recovery_efficiency * module.repair_droid_inbound_efficiency : \
 			module.repair_droid_inbound_efficiency
