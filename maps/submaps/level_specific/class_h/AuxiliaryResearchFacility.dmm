@@ -2066,7 +2066,7 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "VL" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/item/cell/apc,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "VM" = (

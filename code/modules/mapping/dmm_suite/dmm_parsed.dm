@@ -497,6 +497,7 @@
 		// 5. and the members are world.turf and world.area
 		// Basically, if we find an entry like this: "XXX" = (/turf/default, /area/inherit_area)
 		// We can skip calling this proc every time we see XXX
+		// TODO: this is broken because we use world.area and world.turf as unallocated.
 		if(no_changeturf \
 			&& !(.[SPACE_KEY]) \
 			&& members.len == 2 \

@@ -4,6 +4,7 @@
 // Humans need 30 seconds (AI is faster when it comes to complex electronics)
 // Used for advanced grid control (read: Substations)
 
+GLOBAL_LIST_BOILERPLATE(breakerboxes, /obj/machinery/power/breakerbox)
 /obj/machinery/power/breakerbox
 	name = "Breaker Box"
 	icon = 'icons/obj/power.dmi'
@@ -22,16 +23,17 @@
 	var/update_locked = 0
 	var/datum/wires/breakerbox/wires
 
+/obj/machinery/power/breakerbox/Initialize(mapload)
+	wires = new(src)
+	return ..()
+
 /obj/machinery/power/breakerbox/Destroy()
 	for(var/obj/structure/cable/C in loc)
 		qdel(C)
 	. = ..()
-	for(var/datum/tgui_module_old/rcon/R in world)
+	QDEL_NULL(wires)
+	for(var/datum/tgui_module_old/rcon/R in GLOB.breakerboxes)
 		R.FindDevices()
-
-/obj/machinery/power/breakerbox/Initialize(mapload)
-	. = ..()
-	wires = new(src)
 
 /obj/machinery/power/breakerbox/activated
 	icon_state = "bbox_on"

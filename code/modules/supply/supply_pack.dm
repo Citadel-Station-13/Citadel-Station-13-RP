@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * a holder for a pack of objects that can be ordered
@@ -159,7 +159,7 @@
 
 /**
  * todo: return list of entities?
- * 
+ *
  * @return container spawned, or null (which can also mean we don't use a container for some reason)
  */
 /datum/supply_pack/proc/instantiate_pack_at(atom/where)

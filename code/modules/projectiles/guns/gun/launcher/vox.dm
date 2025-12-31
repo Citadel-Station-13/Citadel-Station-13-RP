@@ -64,7 +64,7 @@
 	heavy = TRUE
 	charge_cost = 300
 	projectile_type = /obj/projectile/beam/stun/darkmatter
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	accuracy = 30
 
@@ -103,6 +103,22 @@
 	legacy_tracer_type = /obj/effect/projectile/tracer/darkmatter
 	legacy_impact_type = /obj/effect/projectile/impact/darkmatter
 
+/obj/projectile/beam/darkmatter/sentinel
+	name = "dark matter bolt"
+	icon_state = "darkb"
+	fire_sound = 'sound/weapons/marauder.ogg'
+	damage_force = 40
+	damage_tier = 4
+	damage_type = DAMAGE_TYPE_SEARING
+	damage_flag = ARMOR_ENERGY
+	light_color = "#310d3d"
+
+	embed_chance = 0
+
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/darkmatter
+	legacy_tracer_type = /obj/effect/projectile/tracer/darkmatter
+	legacy_impact_type = /obj/effect/projectile/impact/darkmatter
+
 /obj/projectile/energy/darkmatter
 	name = "dark matter pellet"
 	icon_state = "dark_pellet"
@@ -125,7 +141,7 @@
 	item_state = "noise"
 	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	charge_cost = 400
 

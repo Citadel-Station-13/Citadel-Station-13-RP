@@ -221,7 +221,7 @@
 	id = "salvage_launch";
 	name = "Salvager Bay Doors";
 	pixel_y = -5;
-	req_access = list(19)
+	req_one_access = list(19,50)
 	},
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/quartermaster/miningdock)
@@ -7359,15 +7359,12 @@
 /turf/simulated/floor/tiled,
 /area/security/range)
 "flh" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Engineering Riser"
+/obj/machinery/air_alarm{
+	dir = 4;
+	pixel_x = -22
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/department,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/security)
+/turf/simulated/floor/reinforced,
+/area/security/hangar)
 "flr" = (
 /obj/structure/toilet{
 	dir = 1
@@ -12334,15 +12331,12 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3fwdportmaint/endeavour)
 "iVS" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 9
+/obj/machinery/door/blast/regular{
+	name = "Fighter Hanger Blast Door";
+	id = "fighterhanger"
 	},
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/old_cargo/gray,
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/reinforced,
 /area/security/hangar)
 "iWx" = (
 /obj/structure/flora/ausbushes/brflowers,
@@ -13164,7 +13158,7 @@
 /area/hallway/d3afthall/endeavour)
 "jGk" = (
 /obj/structure/table/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -9;
 	pixel_y = 4
 	},
@@ -13174,46 +13168,46 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -7;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -6;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -3;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -2;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 2;
 	pixel_y = 4
 	},
@@ -15326,25 +15320,25 @@
 "lsq" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -1
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 3
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -17117,7 +17111,7 @@
 	dir = 10
 	},
 /obj/structure/closet/secure_closet/warden{
-	starts_with = list(/obj/item/storage/box/survival_knife,/obj/item/clothing/suit/storage/vest/warden,/obj/item/clothing/under/rank/warden,/obj/item/clothing/under/rank/warden/corp,/obj/item/clothing/under/rank/warden/skirt_pleated,/obj/item/clothing/suit/storage/vest/wardencoat,/obj/item/clothing/suit/storage/vest/wardencoat/alt,/obj/item/clothing/head/helmet/dermal,/obj/item/clothing/head/helmet/warden,/obj/item/clothing/head/helmet/warden/hat,/obj/item/cartridge/security,/obj/item/radio/headset/headset_sec,/obj/item/radio/headset/headset_sec/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/barrier_tape_roll/police,/obj/item/clothing/accessory/badge/holo/warden,/obj/item/storage/box/flashbangs,/obj/item/storage/box/firingpins,/obj/item/storage/belt/security,/obj/item/reagent_containers/spray/pepper,/obj/item/melee/baton/loaded,/obj/item/gun/projectile/energy/gun,/obj/item/cell/device/weapon,/obj/item/storage/box/holobadge,/obj/item/clothing/head/beret/sec/corporate/warden,/obj/item/clothing/suit/storage/hooded/wintercoat/security,/obj/item/clothing/shoes/boots/winter/security,/obj/item/gps/security,/obj/item/flashlight/maglight,/obj/item/megaphone,/obj/item/clothing/mask/gas/half,/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,/obj/item/holowarrant)
+	starts_with = list(/obj/item/storage/box/survival_knife,/obj/item/clothing/suit/storage/vest/warden,/obj/item/clothing/under/rank/warden,/obj/item/clothing/under/rank/warden/corp,/obj/item/clothing/under/rank/warden/skirt_pleated,/obj/item/clothing/suit/storage/vest/wardencoat,/obj/item/clothing/suit/storage/vest/wardencoat/alt,/obj/item/clothing/head/helmet/dermal,/obj/item/clothing/head/helmet/warden,/obj/item/clothing/head/helmet/warden/hat,/obj/item/cartridge/security,/obj/item/radio/headset/headset_sec,/obj/item/radio/headset/headset_sec/alt,/obj/item/clothing/accessory/armor/helmetcamera/security,/obj/item/clothing/accessory/armor/helmetcamera/security/body,/obj/item/clothing/glasses/sunglasses/sechud,/obj/item/barrier_tape_roll/police,/obj/item/clothing/accessory/badge/holo/warden,/obj/item/storage/box/flashbangs,/obj/item/storage/box/firingpins,/obj/item/storage/belt/security,/obj/item/reagent_containers/spray/pepper,/obj/item/melee/baton/loaded,/obj/item/gun/projectile/energy/gun,/obj/item/cell/basic/tier_1/weapon,/obj/item/storage/box/holobadge,/obj/item/clothing/head/beret/sec/corporate/warden,/obj/item/clothing/suit/storage/hooded/wintercoat/security,/obj/item/clothing/shoes/boots/winter/security,/obj/item/gps/security,/obj/item/flashlight/maglight,/obj/item/megaphone,/obj/item/clothing/mask/gas/half,/obj/item/gun/projectile/ballistic/shotgun/pump/combat/warden,/obj/item/holowarrant)
 	},
 /obj/structure/cable/green,
 /obj/item/book/manual/security_space_law,
@@ -20926,15 +20920,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "pvA" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 10
-	},
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/fighter/baron/security/equipped,
-/turf/simulated/floor/tiled/old_cargo/gray,
+/turf/simulated/floor/reinforced,
 /area/security/hangar)
 "pvB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -22744,6 +22733,9 @@
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/security/hallway)
@@ -28397,9 +28389,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "uRN" = (
@@ -29427,7 +29417,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Riser"
 	},
-/obj/map_helper/access_helper/airlock/station/engineering/department,
+/obj/map_helper/access_helper/airlock/station/security/general,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -30389,12 +30379,8 @@
 /area/hallway/d3fwdportmaint/endeavour)
 "wiS" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/machinery/fire_alarm/east_mount,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -31795,6 +31781,9 @@
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/security/hallway)
@@ -42270,9 +42259,9 @@ icx
 icx
 mDp
 mDp
-mDp
-mDp
-mDp
+jYr
+qkI
+jYr
 mDp
 mDp
 mDp
@@ -42462,12 +42451,12 @@ jmX
 eEQ
 eEQ
 eEQ
-mDp
-mDp
-jYr
-qkI
-jYr
-mDp
+eEQ
+eEQ
+eEQ
+eEQ
+eEQ
+eEQ
 mDp
 mDp
 mDp
@@ -42656,12 +42645,12 @@ hNE
 eEQ
 eEQ
 eEQ
-eEQ
-eEQ
-eEQ
-eEQ
-eEQ
-eEQ
+ooX
+ooX
+ooX
+flh
+pvA
+iVS
 vXk
 mDp
 mDp
@@ -42853,8 +42842,8 @@ kNj
 ooX
 ooX
 ooX
-iVS
-pvA
+jNA
+hbK
 eGX
 vXk
 mDp
@@ -44383,7 +44372,7 @@ opM
 opM
 opM
 opM
-flh
+opM
 opM
 bJy
 opM

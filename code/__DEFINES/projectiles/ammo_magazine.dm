@@ -12,14 +12,14 @@
 /// * Only usable on guns with internal magazines.
 #define MAGAZINE_TYPE_CLIP (1<<2)
 
-DEFINE_BITFIELD_NEW(ammo_magazine_types, list(
+DEFINE_BITFIELD_NAMED(ammo_magazine_types, list(
 	/obj/item/ammo_magazine = list(
 		NAMEOF_TYPE(/obj/item/ammo_magazine, magazine_type),
 	),
 ), list(
-	BITFIELD_NEW("Normal", MAGAZINE_TYPE_NORMAL),
-	BITFIELD_NEW("Speedloader", MAGAZINE_TYPE_SPEEDLOADER),
-	BITFIELD_NEW("Stripper Clip", MAGAZINE_TYPE_CLIP),
+	BITFIELD_NAMED("Normal", MAGAZINE_TYPE_NORMAL),
+	BITFIELD_NAMED("Speedloader", MAGAZINE_TYPE_SPEEDLOADER),
+	BITFIELD_NAMED("Stripper Clip", MAGAZINE_TYPE_CLIP),
 ))
 
 //* /obj/item/ammo_magazine - magazine_class *//
@@ -55,18 +55,18 @@ GLOBAL_REAL_LIST(magazine_class_bit_to_state) = list(
 	"mag-belt",
 )
 
-DEFINE_BITFIELD_NEW(ammo_magazine_types, list(
+DEFINE_BITFIELD_NAMED(ammo_magazine_types, list(
 	/obj/item/ammo_magazine = list(
 		NAMEOF_TYPE(/obj/item/ammo_magazine, magazine_class),
 	),
 ), list(
-	BITFIELD_NEW("Generic", MAGAZINE_CLASS_GENERIC),
-	BITFIELD_NEW("Drum", MAGAZINE_CLASS_DRUM),
-	BITFIELD_NEW("Extended", MAGAZINE_CLASS_EXTENDED),
-	BITFIELD_NEW("Box", MAGAZINE_CLASS_BOX),
-	BITFIELD_NEW("Pouch", MAGAZINE_CLASS_POUCH),
-	BITFIELD_NEW("Clip", MAGAZINE_CLASS_CLIP),
-	BITFIELD_NEW("Belt", MAGAZINE_CLASS_BELT),
+	BITFIELD_NAMED("Generic", MAGAZINE_CLASS_GENERIC),
+	BITFIELD_NAMED("Drum", MAGAZINE_CLASS_DRUM),
+	BITFIELD_NAMED("Extended", MAGAZINE_CLASS_EXTENDED),
+	BITFIELD_NAMED("Box", MAGAZINE_CLASS_BOX),
+	BITFIELD_NAMED("Pouch", MAGAZINE_CLASS_POUCH),
+	BITFIELD_NAMED("Clip", MAGAZINE_CLASS_CLIP),
+	BITFIELD_NAMED("Belt", MAGAZINE_CLASS_BELT),
 ))
 
 /// Fits in most guns

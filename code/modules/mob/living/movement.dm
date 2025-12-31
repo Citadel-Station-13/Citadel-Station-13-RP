@@ -159,9 +159,6 @@
 	// if not, can we bump
 	// we just return at this point to let the other code handle it
 	. = !can_bump_push_mob(L)
-	if(.)
-		// idk why this is here but i'm keeping it i guess
-		L.LAssailant = src
 
 /**
  * swaps us with another mob. assumes they're next to us.

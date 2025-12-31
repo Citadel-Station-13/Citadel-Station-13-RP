@@ -118,7 +118,7 @@ list[](
 
 /* TBI Screw multitools, they're all over the place.
 /datum/integrated_io/proc/handle_wire(datum/integrated_io/linked_pin, obj/item/tool, action, mob/living/user)
-	if(tool.tool_behaviour == TOOL_MULTITOOL)
+	if(tool.tool_behavior == TOOL_MULTITOOL)
 		switch(action)
 			if("wire")
 				tool.wire(src, user)

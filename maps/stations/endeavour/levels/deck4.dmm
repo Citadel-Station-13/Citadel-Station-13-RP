@@ -92,6 +92,9 @@
 	req_access = list(11);
 	dir = 2
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "afr" = (
@@ -1943,9 +1946,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4afthall/endeavour)
 "bLm" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -3713,9 +3714,6 @@
 	req_access = list(11);
 	dir = 2
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "dmg" = (
@@ -5284,9 +5282,7 @@
 /area/crew_quarters/sleep/engi_wash)
 "eKh" = (
 /obj/structure/table/steel,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil,
 /obj/machinery/camera/network/engineering{
 	dir = 8
@@ -6578,6 +6574,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/d4afthall/endeavour)
@@ -8797,21 +8796,11 @@
 /area/hallway/d4fwdportmaint/endeavour)
 "hPd" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -8850,10 +8839,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engineering_monitoring)
-"hPX" = (
-/obj/machinery/camera/network/engineering,
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/d4portafthall/endeavour)
 "hQB" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -10961,12 +10946,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_gas)
-"jEX" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/d4portafthall/endeavour)
 "jFB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
@@ -11789,6 +11768,9 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
+	dir = 1
+	},
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -13089,23 +13071,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
-"lIS" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/lightorange/border,
-/turf/simulated/floor/tiled/steel_grid,
-/area/hallway/d4afthall/endeavour)
 "lJh" = (
 /obj/structure/table/reinforced,
 /obj/item/floor_painter,
@@ -14413,21 +14378,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -15486,9 +15441,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "nJc" = (
-/obj/machinery/power/apc/south_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -19091,7 +19044,7 @@
 	id = "podbayouterhanger";
 	name = "Pod Bay Outer Hanger Door";
 	pixel_y = 32;
-	req_one_access = list(19,10,2,5)
+	req_one_access = list(19,10,2,5,18,19,12)
 	},
 /obj/machinery/light{
 	dir = 1
@@ -19692,9 +19645,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
 "rZh" = (
@@ -23322,9 +23273,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4portafthall/endeavour)
 "vtv" = (
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -25399,8 +25348,7 @@
 	id = "podbayinnerhanger";
 	name = "Pod Bay Inner Hanger Door";
 	pixel_y = 32;
-	req_access = list(19,10,2);
-	req_one_access = list(19,10,2);
+	req_one_access = list(19,10,2,18,18,12);
 	pixel_x = -1
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -25415,6 +25363,7 @@
 /obj/effect/floor_decal/corner/navblue/bordercorner2{
 	dir = 4
 	},
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4portafthall/endeavour)
 "xmV" = (
@@ -25801,6 +25750,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/d4afthall/endeavour)
@@ -37481,7 +37433,7 @@ tFm
 tFm
 dzG
 jmD
-jEX
+piG
 mtE
 wrI
 aGv
@@ -37675,7 +37627,7 @@ jhP
 jhP
 eDe
 jmD
-hPX
+piG
 agu
 mEZ
 jnW
@@ -41968,7 +41920,7 @@ soV
 tmH
 voR
 lOL
-lIS
+cuI
 leo
 rRC
 mel

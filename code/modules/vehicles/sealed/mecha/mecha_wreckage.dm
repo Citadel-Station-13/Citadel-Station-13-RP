@@ -7,13 +7,14 @@
 	opacity = 0
 	var/list/welder_salvage = list(/obj/item/stack/material/plasteel,/obj/item/stack/material/steel,/obj/item/stack/rods)
 	var/list/wirecutters_salvage = list(/obj/item/stack/cable_coil)
-	var/list/crowbar_salvage
+	var/list/crowbar_salvage = list()
 	var/salvage_num = 5
 
-/obj/effect/decal/mecha_wreckage/New()
-	..()
-	crowbar_salvage = new
-	return
+/obj/effect/decal/mecha_wreckage/Destroy()
+	welder_salvage = null
+	wirecutters_salvage = null
+	crowbar_salvage = null
+	return ..()
 
 /obj/effect/decal/mecha_wreckage/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weldingtool))
@@ -77,8 +78,8 @@
 	name = "Durand wreckage"
 	icon_state = "durand-broken"
 
-/obj/effect/decal/mecha_wreckage/durand/New()
-	..()
+/obj/effect/decal/mecha_wreckage/durand/Initialize(mapload)
+	. = ..()
 	var/list/parts = list(
 		/obj/item/vehicle_part/durand_torso,
 		/obj/item/vehicle_part/durand_head,
@@ -92,7 +93,6 @@
 			var/part = pick(parts)
 			welder_salvage += part
 			parts -= part
-	return
 
 
 /obj/effect/decal/mecha_wreckage/odysseus/murdysseus
@@ -115,8 +115,8 @@
 	name = "H.O.N.K. wreckage"
 	icon_state = "honker-broken"
 
-/obj/effect/decal/mecha_wreckage/honker/New()
-	..()
+/obj/effect/decal/mecha_wreckage/honker/Initialize(mapload)
+	. = ..()
 	var/list/parts = list(
 		/obj/item/vehicle_part/honker_torso,
 		/obj/item/vehicle_part/honker_head,
@@ -130,7 +130,6 @@
 			var/part = pick(parts)
 			welder_salvage += part
 			parts -= part
-	return
 
 /obj/effect/decal/mecha_wreckage/honker/cluwne
 	name = "C.L.W.U.N.E. wreckage"
@@ -142,8 +141,8 @@
 	name = "Reticent wreckage"
 	icon_state = "reticent-broken"
 
-/obj/effect/decal/mecha_wreckage/reticent/New()
-	..()
+/obj/effect/decal/mecha_wreckage/reticent/Initialize(mapload)
+	. = ..()
 	var/list/parts = list(
 		/obj/item/vehicle_part/reticent_torso,
 		/obj/item/vehicle_part/reticent_head,
@@ -157,7 +156,6 @@
 			var/part = pick(parts)
 			welder_salvage += part
 			parts -= part
-	return
 
 /obj/effect/decal/mecha_wreckage/reticent/reticence
 	name = "Reticence wreckage"

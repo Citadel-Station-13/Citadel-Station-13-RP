@@ -41,6 +41,7 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_rifle
@@ -86,6 +87,7 @@
 	name = "ammo magazine (NT-7.5)"
 	icon_state = "rifle-1"
 	base_icon_state = "rifle"
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	rendering_static_overlay = "rifle-stripe"
@@ -138,6 +140,7 @@
 	icon_state = "revolver"
 	base_icon_state = "revolver"
 	render_break_overlay = BALLISTIC_RENDER_BREAK_OPEN
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/semirifle
 	name = "semi-automatic rifle"
@@ -154,6 +157,7 @@
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"
@@ -170,6 +174,7 @@
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/pdw
 	name = "personal defense weapon"
@@ -186,6 +191,7 @@
 	base_icon_state = "pdw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/lmg
 	name = "squad automatic weapon"
@@ -203,3 +209,4 @@
 	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
 	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN

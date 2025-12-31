@@ -224,7 +224,7 @@
 	material_color = 0
 
 /obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
-	..(mapload,"bone")
+	return ..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
 	material_parts = /datum/prototype/material/plasteel
@@ -243,7 +243,7 @@
 
 
 /obj/item/material/twohanded/spear/bronze/Initialize(mapload, material_key)
-	..(mapload,"bronze")
+	return ..(mapload,"bronze")
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 

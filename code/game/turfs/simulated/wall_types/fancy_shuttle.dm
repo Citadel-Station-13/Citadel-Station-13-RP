@@ -34,6 +34,16 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	split_icon = icon(split_file, null, dir)
 	GLOB.fancy_shuttles[fancy_shuttle_tag] = src
 
+/obj/effect/fancy_shuttle/EarlyDestroy(force)
+	if(GLOB.fancy_shuttles[fancy_shuttle_tag] == src)
+		GLOB.fancy_shuttles[fancy_shuttle_tag] = null
+	return ..()
+
+/obj/effect/fancy_shuttle/Destroy()
+	if(GLOB.fancy_shuttles[fancy_shuttle_tag] == src)
+		GLOB.fancy_shuttles[fancy_shuttle_tag] = null
+	return ..()
+
 /obj/effect/fancy_shuttle_floor_preview
 	name = "shuttle floor preview"
 	icon = 'icons/turf/fancy_shuttles/generic_preview.dmi'

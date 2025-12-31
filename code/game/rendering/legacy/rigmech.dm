@@ -12,6 +12,7 @@
 /datum/mini_hud/Destroy()
 	main_hud?.remove_minihud(src)
 	main_hud = null
+	QDEL_LIST(screenobjs)
 	if(needs_processing)
 		STOP_PROCESSING(SSprocessing, src)
 	return ..()
@@ -65,7 +66,8 @@
 
 /datum/mini_hud/hardsuit/Destroy()
 	if(owner_rig)
-		//owner_rig.minihud = null
+		if(owner_rig.minihud == src)
+			owner_rig.minihud = null
 		owner_rig = null
 	return ..()
 
@@ -77,7 +79,7 @@
 	var/obj/item/cell/rigcell = owner_rig.cell
 	var/obj/item/tank/rigtank = owner_rig.air_supply
 
-	var/charge_percentage = rigcell ? rigcell.charge / rigcell.maxcharge : 0
+	var/charge_percentage = rigcell ? rigcell.charge / rigcell.max_charge : 0
 	var/air_percentage = rigtank ? clamp(rigtank.air_contents.total_moles / 17.4693, 0, 1) : 0
 	var/air_on = owner_rig.wearer?.internal ? 1 : 0
 
@@ -127,7 +129,7 @@
 	var/obj/item/cell/mechcell = owner_mech.power_cell
 	var/obj/machinery/portable_atmospherics/canister/mechtank = owner_mech.internal_tank
 
-	var/charge_percentage = mechcell ? mechcell.charge / mechcell.maxcharge : 0
+	var/charge_percentage = mechcell ? mechcell.charge / mechcell.max_charge : 0
 	var/air_percentage = mechtank ? clamp(mechtank.air_contents.total_moles / 1863.47, 0, 1) : 0
 	var/health_percentage = owner_mech.percent_integrity()
 	var/air_on = owner_mech.use_internal_tank

@@ -12,18 +12,20 @@
 	iff_factions = MOB_IFF_FACTION_DERELICT_AUTOMATONS
 	health = 250
 	maxHealth = 250
-	movement_base_speed = 10 / 5
+	movement_base_speed = 10 / 4
 	hovering = TRUE
 
-	base_attack_cooldown = 12
-	projectiletype = /obj/projectile/beam/darkmatter
-	projectilesound = 'sound/weapons/marauder.ogg'
+	base_attack_cooldown = 20
 
 	response_help = "shoves aside"
 	response_disarm = "forces aside"
-	response_harm = "pulverizes"
+	response_harm = "smashes into"
 
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
+	special_attack_min_range = 1
+	special_attack_max_range = 7
+	special_attack_cooldown = 1 SECONDS
+
 	movement_works_in_space = TRUE
 
 	make_shield_comp = TRUE

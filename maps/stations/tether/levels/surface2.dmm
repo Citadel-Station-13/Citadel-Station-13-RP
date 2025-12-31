@@ -2163,10 +2163,10 @@
 /obj/item/clothing/glasses/hud/security,
 /obj/item/clothing/glasses/hud/security,
 /obj/item/clothing/glasses/hud/security,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 3
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6662,9 +6662,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/techmaint,
 /area/tcomfoyer)
 "eUu" = (
@@ -8194,9 +8192,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -10276,9 +10272,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12908,9 +12902,7 @@
 /obj/structure/table/reinforced,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_2/medium,
 /obj/machinery/status_display{
 	pixel_x = 32
 	},
@@ -14060,7 +14052,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/super/critical/north_mount{
+/obj/machinery/power/apc/large_cell/tier_2/critical/north_mount{
 	name = "north bump";
 	pixel_y = 24
 	},
@@ -17635,20 +17627,20 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -6;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -6;
 	pixel_y = -3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 5;
 	pixel_y = 3
 	},
@@ -23226,9 +23218,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
@@ -24323,7 +24313,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/west_mount{
+/obj/machinery/power/apc/large_cell/west_mount{
 	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -25818,7 +25808,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/super/north_mount{
+/obj/machinery/power/apc/large_cell/tier_2/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/button/remote/airlock{
@@ -27951,9 +27941,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

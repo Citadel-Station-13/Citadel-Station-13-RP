@@ -5,7 +5,9 @@
  * get raw materials remaining in us as list (not reagents)
  * used from everything from economy to lathe recycling
  *
- * for things like stacks, this is amount per sheet.
+ * * For stacks, this is amount per sheet.
+ * * This does not include the materials of our contents. For example, ammo magazines don't
+ *   count the bullets left in them.
  *
  * @params
  * * respect_multiplier - respect material_multiplier which is often used to modify atom materials when efficiency is higher in lathes.

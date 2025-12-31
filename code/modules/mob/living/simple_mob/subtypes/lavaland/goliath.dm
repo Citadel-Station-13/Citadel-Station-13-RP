@@ -88,6 +88,20 @@
 	var/pregnant = 0
 	var/child_type = /mob/living/simple_mob/animal/goliath/calf
 
+/mob/living/simple_mob/animal/goliath/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+	if(prob(1))
+		new /mob/living/simple_mob/animal/goliath/ancient(loc)
+		return INITIALIZE_HINT_QDEL
+	goliath_sac = new(50)
+	goliath_sac.my_atom = src
+
+/mob/living/simple_mob/animal/goliath/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(goliath_sac)
+	return ..()
+
 /datum/ai_holder/polaris/simple_mob/melee/goliath
 	hostile = TRUE
 	retaliate = TRUE
@@ -130,16 +144,6 @@
 		icon_state = initial(icon_state)
 	else if(pre_attack && !stat)
 		icon_state = pre_attack_icon
-
-
-/mob/living/simple_mob/animal/goliath/Initialize(mapload)
-	. = ..()
-	START_PROCESSING(SSobj, src)
-	if(prob(1))
-		new /mob/living/simple_mob/animal/goliath/ancient(loc)
-		return INITIALIZE_HINT_QDEL
-	goliath_sac = new(50)
-	goliath_sac.my_atom = src
 
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
 	var/obj/item/reagent_containers/glass/G = O

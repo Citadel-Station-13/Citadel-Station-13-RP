@@ -535,6 +535,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	color = COLOR_RED
 	desc = "A coil of power cable."
 	throw_force = 10
+	belt_storage_class = BELT_CLASS_SMALL
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 5
@@ -665,15 +666,13 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return
 	..()
 
-/obj/item/stack/cable_coil/use(used)
+/obj/item/stack/cable_coil/use(used, no_delete)
 	. = ..()
 	update_appearance()
-	return
 
 /obj/item/stack/cable_coil/add()
 	. = ..()
 	update_appearance()
-	return
 
 ///////////////////////////////////////////////
 // Cable laying procedures
@@ -987,7 +986,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/item/stack/cable_coil/alien/can_use(var/used)
 	return 1
 
-/obj/item/stack/cable_coil/alien/use()	//It's endless
+/obj/item/stack/cable_coil/alien/use(used, no_delete)	//It's endless
 	return TRUE
 
 /obj/item/stack/cable_coil/alien/add()	//Still endless

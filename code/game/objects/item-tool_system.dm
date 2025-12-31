@@ -6,19 +6,19 @@
  * with arbitrary tool speeds and qualities, while allowing the item to hook usages.
  *
  * ! Warning: Unlike other things, the standard API for this only promises to return specific types
- * ! 	of values; not to obey original variables like tool_behaviour and tool_override.
+ * ! 	of values; not to obey original variables like tool_behavior and tool_override.
  * ! 	This is a necessary drawback of optimizaiton.
  */
 /obj/item
 	/// static tool behavior
-	var/tool_behaviour
+	var/tool_behavior
 	/// static tool quality
 	var/tool_quality = TOOL_QUALITY_DEFAULT
 	/// tool speed - multiplies delay (e.g. 0.5 for twixe as fast). also the default for dynamic tools.
 	var/tool_speed = TOOL_SPEED_DEFAULT
-	/// dynamic tool locking - if set, dynamic tool behaviour (including confirmation radials) are entirely disregarded to use this item as a normal tool with whatever tool_behaviour() returns.
+	/// dynamic tool locking - if set, dynamic tool behaviour (including confirmation radials) are entirely disregarded to use this item as a normal tool with whatever tool_behavior() returns.
 	var/tool_locked = TOOL_LOCKING_AUTO
-	/// the sound to play (compatible with getsfx()) when we are used as a tool, if the function is the same as tool_behaviour.
+	/// the sound to play (compatible with getsfx()) when we are used as a tool, if the function is the same as tool_behavior.
 	var/tool_sound
 	/// override for dynamic tool support - varedit only, and not always supported.
 	VAR_PRIVATE/list/tool_override
@@ -40,8 +40,8 @@
 	RETURN_TYPE(/list)
 	. = list()
 	// if normal tool behavior
-	if(tool_behaviour)
-		.[tool_behaviour] = tool_quality
+	if(tool_behavior)
+		.[tool_behavior] = tool_quality
 	// if overriding, overwrite
 	if(tool_override)
 		. |= tool_override
@@ -66,7 +66,7 @@
 	ASSERT(function)
 	if(tool_override && tool_override[function])
 		return tool_quality_transform(tool_override[function], e_args, target, flags, usage)
-	return (function == tool_behaviour)? tool_quality_transform(tool_quality, e_args, target, flags, usage) : null
+	return (function == tool_behavior)? tool_quality_transform(tool_quality, e_args, target, flags, usage) : null
 
 /**
  * transforms tool quality according to a user's skill
@@ -107,8 +107,8 @@
  *
  * some dynamic tools will return the locked-in behaviour if locking is enabled
  */
-/obj/item/proc/tool_behaviour()
-	return tool_behaviour
+/obj/item/proc/tool_behavior()
+	return tool_behavior
 
 /**
  * gets the quality of this tool
@@ -121,7 +121,7 @@
  * - flags - tool operation flags
  * - usage - what we're being used for
  */
-/obj/item/proc/tool_quality(function = tool_behaviour(), datum/event_args/actor/clickchain/e_args, atom/target, flags, usage)
+/obj/item/proc/tool_quality(function = tool_behavior(), datum/event_args/actor/clickchain/e_args, atom/target, flags, usage)
 	// this is just a wrapper, the only difference is function is automatically provided.
 	return tool_check(function, e_args, target, flags, usage)
 

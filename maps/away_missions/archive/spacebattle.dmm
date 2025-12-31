@@ -1343,8 +1343,8 @@
 /area/awaymission/spacebattle/cruiser)
 "hC" = (
 /obj/structure/closet/crate,
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_1/medium,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "hD" = (
