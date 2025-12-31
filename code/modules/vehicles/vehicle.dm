@@ -221,6 +221,11 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	for(var/mob/occupant as anything in occupants)
 		occupant.actions_controlled.remove_action(action)
 
+/obj/vehicle/proc/update_action_buttons_of_path(path)
+	for(var/datum/action/action as anything in occupant_actions)
+		if(istype(action, path))
+			action.update_buttons()
+
 //* Cargo *//
 
 /obj/vehicle/proc/cargo_add(atom/movable/entity)

@@ -19,3 +19,58 @@
 	if(.)
 		return
 	target.mob_try_exit(actor.performer, actor)
+
+/datum/action/vehicle/mecha/strafing
+	name = "Toggle Strafing"
+	desc = "Toggle strafing movement on/off."
+	button_icon_state = "strafing"
+	#warn iconstate
+
+/datum/action/vehicle/mecha/strafing/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.user_set_strafing(actor, !target.strafing)
+
+/datum/action/vehicle/mecha/floodlight
+	name = "Toggle Floodlights"
+	desc = "Toggle floodlights on/off."
+	button_icon_state = "floodlights"
+	#warn iconstate
+
+/datum/action/vehicle/mecha/floodlight/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	target.user_set_floodlights(actor, !target.floodlight_active)
+
+/datum/action/vehicle/mecha/toggle_internals/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+
+#warn impl
+
+//* legacy crap *//
+
+// these are less 'shouldn't be buttons' and more 'the design conflicts with my worldview of how the game should be',
+// thus they get kicked into that
+
+/datum/action/vehicle/mecha/legacy
+
+/datum/action/vehicle/mecha/legacy/phasing
+
+/datum/action/vehicle/mecha/legacy/phasing/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+
+/datum/action/vehicle/mecha/legacy/zoom
+
+/datum/action/vehicle/mecha/legacy/zoom/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+
+#warn impl all
+

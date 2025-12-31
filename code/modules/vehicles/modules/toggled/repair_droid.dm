@@ -10,6 +10,8 @@
 
 	vehicle_encumbrance = 2.5
 
+	requires_power_to_stay_active = TRUE
+
 	module_slot = VEHICLE_MODULE_SLOT_HULL
 
 	/// opaque data for overlay. should never be mutated internally, only replaced.

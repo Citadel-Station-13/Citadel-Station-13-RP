@@ -91,3 +91,14 @@
 		playsound(src, move_sound, 40, TRUE)
 
 #warn strafing should do more delay
+
+// -- jetpacks need refactored but that's for rigsuit branch -- //
+
+/obj/vehicle/sealed/mecha/process_spacemove(drifting, movement_dir, just_checking)
+	. = ..()
+	if(.)
+		return
+	for(var/obj/item/vehicle_module/toggled/jetpack/jetpack in modules)
+		#warn impl
+
+#warn impl all

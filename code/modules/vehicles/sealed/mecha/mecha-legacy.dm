@@ -74,29 +74,11 @@
 	var/can_phase = TRUE
 	var/phasing_energy_drain = 200
 
-//All of those are for the HUD buttons in the top left. See Grant and Remove procs in mecha_actions.
-	var/datum/action/mecha/mech_toggle_internals/internals_action
-	var/datum/action/mecha/mech_toggle_lights/lights_action
-	var/datum/action/mecha/mech_view_stats/stats_action
-	var/datum/action/mecha/strafe/strafing_action
-
-	var/datum/action/mecha/mech_zoom/zoom_action
-	var/datum/action/mecha/mech_cycle_equip/cycle_action
-	var/datum/action/mecha/mech_toggle_phasing/phasing_action
-
 	//* Legacy *//
 	/// the first controller in us
 	var/mob/occupant_legacy
 
 /obj/vehicle/sealed/mecha/Initialize(mapload)
-	internals_action = new(src)
-	lights_action = new(src)
-	stats_action = new(src)
-	strafing_action = new(src)
-
-	zoom_action = new(src)
-	cycle_action = new(src)
-	phasing_action = new(src)
 	. = ..()
 	update_transform()
 
@@ -209,11 +191,6 @@
 			return UI_INTERACTIVE
 		if(src_object in view(2, src))
 			return UI_UPDATE //if they're close enough, allow the occupant_legacy to see the screen through the viewport or whatever.
-
-/obj/vehicle/sealed/mecha/proc/can_ztravel()
-	for(var/obj/item/vehicle_module/toggled/jetpack/electric/jp in equipment)
-		return jp.equip_ready
-	return FALSE
 
 /obj/vehicle/sealed/mecha/proc/get_step_delay()
 	var/tally = 0
@@ -572,7 +549,7 @@
 
 /obj/vehicle/sealed/mecha/proc/update_cell_alerts()
 	if(occupant_legacy && power_cell)
-		var/cellcharge = power_cell.maxcharge && (power_cell.charge / power_cell.maxcharge)
+		var/cellcharge = power_cell.max_charge && (power_cell.charge / power_cell.max_charge)
 		switch(cellcharge)
 			if(0.75 to INFINITY)
 				occupant_legacy.clear_alert("charge")
@@ -643,3 +620,22 @@
 		src.zoom = 0
 
 	strafing = 0
+
+/obj/vehicle/sealed/mecha/proc/zoom()//This could use improvements but maybe later.
+	if(usr!=src.occupant_legacy)
+		return
+	if(src.occupant_legacy.client)
+		var/client/myclient = src.occupant_legacy.client
+		src.zoom = !src.zoom
+		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
+		if(zoom)
+			myclient.set_temporary_view(GLOB.max_client_view_x + 5, GLOB.max_client_view_y + 5)
+			src.occupant_legacy << sound('sound/mecha/imag_enh.ogg',volume=50)
+		else
+			myclient.reset_temporary_view()
+
+/obj/vehicle/sealed/mecha/proc/phasing()
+	if(usr!=src.occupant_legacy)
+		return
+	phasing = !phasing
+	src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
