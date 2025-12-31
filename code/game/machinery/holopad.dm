@@ -477,7 +477,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		ringing[++ringing.len] = holocall.ui_caller_id_source()
 	.["ringing"] = ringing
 
-/obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -1255,9 +1255,11 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	var/mob/living/vored
 
 /obj/effect/overlay/hologram/holopad/ai/Destroy()
-	if(owner?.hologram == src)
-		owner.hologram = null
-		owner.terminate_holopad_connection()
+	if(owner)
+		if(owner?.hologram == src)
+			owner.hologram = null
+			owner.terminate_holopad_connection()
+		owner = null
 	// handle fetish content
 	drop_vored()
 	// dump shit out just in case

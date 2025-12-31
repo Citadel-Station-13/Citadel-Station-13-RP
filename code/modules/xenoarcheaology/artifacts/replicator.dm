@@ -47,7 +47,9 @@
 	/obj/item/clothing/head/cone,
 	/obj/item/tool/crowbar,
 	/obj/item/clipboard,
-	/obj/item/cell,
+	/obj/item/cell/basic/tier_3/weapon,
+	/obj/item/cell/basic/tier_2/medium,
+	/obj/item/cell/basic/tier_1/large,
 	/obj/item/surgical/circular_saw,
 	/obj/item/material/knife/machete/hatchet,
 	/obj/item/handcuffs,
@@ -152,7 +154,7 @@
 	data["tgui_construction"] = tgui_construction
 	return data
 
-/obj/machinery/replicator/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/replicator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

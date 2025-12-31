@@ -48,6 +48,10 @@
 	udder = new(50)
 	udder.my_atom = src
 
+/mob/living/simple_mob/animal/goat/Destroy()
+	QDEL_NULL(udder)
+	return ..()
+
 /mob/living/simple_mob/animal/goat/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
 		return

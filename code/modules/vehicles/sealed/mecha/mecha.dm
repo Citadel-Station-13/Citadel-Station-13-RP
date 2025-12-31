@@ -153,11 +153,13 @@
 	var/list/utility_equipment = new
 	var/list/universal_equipment = new
 	var/list/special_equipment = new
+	var/list/heavy_weapon_equipment = new
 	var/max_hull_equip = 2
 	var/max_weapon_equip = 2
 	var/max_utility_equip = 2
 	var/max_universal_equip = 2
 	var/max_special_equip = 1
+	var/max_heavy_weapon_equip = 0 //Should only be used for 3x3 mechs.
 
 	/// List containing starting tools.
 	var/list/starting_equipment = null
@@ -300,10 +302,24 @@
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/vehicle/sealed/mecha, add_iterators))
 	removeVerb(/obj/vehicle/sealed/mecha/verb/disconnect_from_port)
 	log_message("[src.name] created.")
-	loc.Entered(src)
 	mechas_list += src //global mech list
 
 /obj/vehicle/sealed/mecha/Destroy()
+	// WHAT THE FUCK
+	QDEL_NULL(internals_action)
+	QDEL_NULL(lights_action)
+	QDEL_NULL(stats_action)
+	QDEL_NULL(strafing_action)
+	QDEL_NULL(defence_action)
+	QDEL_NULL(overload_action)
+	QDEL_NULL(smoke_action)
+	QDEL_NULL(zoom_action)
+	QDEL_NULL(thrusters_action)
+	QDEL_NULL(cycle_action)
+	QDEL_NULL(switch_damtype_action)
+	QDEL_NULL(phasing_action)
+	QDEL_NULL(cloak_action)
+
 	src.legacy_eject_occupant()
 	for(var/mob/M in src) //Be Extra Sure
 		M.forceMove(get_turf(src))
@@ -369,15 +385,17 @@
 	cell = null
 	internal_tank = null
 
-	if(smoke_possible)	//Just making sure nothing is running.
-		qdel(smoke_system)
-
 	QDEL_NULL(pr_int_temp_processor)
 	QDEL_NULL(pr_inertial_movement)
 	QDEL_NULL(pr_give_air)
 	QDEL_NULL(pr_internal_damage)
 	QDEL_NULL(spark_system)
 	QDEL_NULL(minihud)
+	QDEL_NULL(radio)
+	QDEL_NULL(smoke_system)
+
+	selected = null
+	proc_res = null
 
 	mechas_list -= src //global mech list
 	. = ..()
@@ -426,7 +444,7 @@
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new /obj/item/cell/high(src)
+	cell = new /obj/item/cell/basic/tier_1/large(src)
 
 /obj/vehicle/sealed/mecha/get_cell(inducer)
 	return cell
@@ -1168,7 +1186,7 @@
 			src.visible_message("The [src.name] armor deflects\the [Proj]")
 			return PROJECTILE_IMPACT_BLOCKED
 
-		else if((max(BULLET_TIER_DEFAULT - Proj.damage_tier, 0) * 25) < temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
+		else if((max(Proj.damage_tier - BULLET_TIER_DEFAULT, 0) * 15) <= temp_minimum_penetration)	//If you don't have enough pen, you won't do full damage
 			src.occupant_message("<span class='notice'>\The [Proj] struggles to pierce \the [src] armor.</span>")
 			src.visible_message("\The [Proj] struggles to pierce \the [src] armor")
 			pass_damage_reduc_mod = temp_fail_penetration_value / 1.5	//This will apply to reduce damage to 2/3 or 66% by default
@@ -2516,7 +2534,7 @@
 		if(mecha.get_charge())
 			mecha.spark_system.start()
 			mecha.cell.charge -= min(20,mecha.cell.charge)
-			mecha.cell.maxcharge -= min(20,mecha.cell.maxcharge)
+			mecha.cell.max_charge -= min(20,mecha.cell.max_charge)
 	return
 
 
@@ -2570,7 +2588,7 @@
 
 /obj/vehicle/sealed/mecha/proc/update_cell_alerts()
 	if(occupant_legacy && cell)
-		var/cellcharge = cell.charge/cell.maxcharge
+		var/cellcharge = cell.charge/cell.max_charge
 		switch(cellcharge)
 			if(0.75 to INFINITY)
 				occupant_legacy.clear_alert("charge")

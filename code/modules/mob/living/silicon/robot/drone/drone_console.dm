@@ -45,7 +45,7 @@
 			"name" = D.real_name,
 			"active" = D.stat != 2,
 			"charge" = D.cell.charge,
-			"maxCharge" = D.cell.maxcharge,
+			"maxCharge" = D.cell.max_charge,
 			"loc" = "[get_area(D)]",
 			"ref" = "\ref[D]",
 		)))
@@ -59,7 +59,7 @@
 
 	return data
 
-/obj/machinery/computer/drone_control/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/drone_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

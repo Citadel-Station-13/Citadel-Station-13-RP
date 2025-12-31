@@ -3,7 +3,7 @@
 // todo: it's been like 9 months and i worked on asset cache please kill this shit with fire and rewirte it all oh my god ~silicons
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
-	desc = "Used to seperate and package chemicals in to autoinjectors, patches, pills, or bottles. Warranty void if used to create Space Drugs."
+	desc = "Used to seperate and package chemicals in to autoinjectors, patches, pills, or bottles. Warranty void if used to create Space Drugs.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/medical/chemical.dmi'
@@ -235,7 +235,7 @@
 	data["is_pill_bottle_loaded"] = pill_bottle ? TRUE : FALSE
 	if(pill_bottle)
 		data["pill_bottle_current_amount"] = pill_bottle.contents.len
-		data["pill_bottle_max_amount"] = pill_bottle.max_combined_volume
+		data["pill_bottle_max_amount"] = pill_bottle.obj_storage?.max_combined_volume / ITEM_VOLUME_PILL
 
 	data["is_beaker_loaded"]      = beaker ? TRUE : FALSE
 	data["beaker_current_volume"] = beaker ? round(beaker.reagents.total_volume, 0.01) : null
@@ -277,7 +277,7 @@
 
 	return static_data
 
-/obj/machinery/chem_master/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/chem_master/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -402,8 +402,8 @@
 				var/target_loc = drop_location()
 				var/drop_threshold = INFINITY
 				if(pill_bottle)
-					if(pill_bottle.max_combined_volume)
-						drop_threshold = pill_bottle.max_combined_volume - pill_bottle.contents.len
+					if(pill_bottle.obj_storage)
+						drop_threshold = (pill_bottle.obj_storage.max_combined_volume - pill_bottle.contents.len * ITEM_VOLUME_PILL) / ITEM_VOLUME_PILL
 						target_loc = pill_bottle
 				for(var/i in 1 to amount)
 					if(i-1 < drop_threshold)
@@ -487,17 +487,17 @@
 		if("analyze")
 			var/datum/reagent/analyzed_reagent = GLOB.name2reagent[params["id"]]
 			if(analyzed_reagent)
-				var/state = "Unknown"
+				var/reagent_state = "Unknown"
 				if(initial(analyzed_reagent.reagent_state) == REAGENT_SOLID)
-					state = "Solid"
+					reagent_state = "Solid"
 				else if(initial(analyzed_reagent.reagent_state) == REAGENT_LIQUID)
-					state = "Liquid"
+					reagent_state = "Liquid"
 				else if(initial(analyzed_reagent.reagent_state) == REAGENT_GAS)
-					state = "Gas"
+					reagent_state = "Gas"
 				var/metabolization_rate = initial(analyzed_reagent.metabolism_rate)// * (60 / SSMOBS_DT)
 				analyze_vars = list(
 					"name" = initial(analyzed_reagent.name),
-					"state" = state,
+					"state" = reagent_state,
 					"color" = initial(analyzed_reagent.color),
 					"description" = initial(analyzed_reagent.description),
 					"metaRate" = metabolization_rate,

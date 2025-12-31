@@ -10,6 +10,9 @@
 	desc = "A magazine for some kind of gun."
 	item_flags = ITEM_EASY_LATHE_DECONSTRUCT | ITEM_ENCUMBERS_WHILE_HELD
 	slot_flags = SLOT_BELT
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_MEDIUM
+	belt_storage_size = BELT_SIZE_FOR_MAGAZINE
 
 	icon = 'icons/system/error_32x32.dmi'
 	inhand_state = "syringe_kit"

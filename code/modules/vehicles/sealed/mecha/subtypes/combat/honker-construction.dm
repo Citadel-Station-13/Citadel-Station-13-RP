@@ -1,9 +1,9 @@
 /obj/item/vehicle_chassis/honker
 	name = "H.O.N.K. Chassis"
 
-/obj/item/vehicle_chassis/honker/New()
-	..()
+/obj/item/vehicle_chassis/honker/Initialize(mapload)
 	construct = new /datum/construction/mecha/honker_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/honker_torso
 	name="H.O.N.K. Torso"

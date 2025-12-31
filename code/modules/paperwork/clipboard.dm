@@ -8,6 +8,8 @@
 	throw_speed = 3
 	throw_range = 7
 	slot_flags = SLOT_BELT
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	/// The stored pen
 	var/obj/item/pen/pen
@@ -65,7 +67,7 @@
 
 /obj/item/clipboard/AltClick(mob/user)
 	. = ..()
-	if(.)
+	if(. != "keep-going")
 		return
 
 	if(isnull(pen))
@@ -148,7 +150,7 @@
 
 	return data
 
-/obj/item/clipboard/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/clipboard/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

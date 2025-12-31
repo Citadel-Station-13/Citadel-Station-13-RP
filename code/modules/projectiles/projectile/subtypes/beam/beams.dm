@@ -97,6 +97,19 @@
 	legacy_tracer_type = /obj/effect/projectile/tracer/laser_omni
 	legacy_impact_type = /obj/effect/projectile/impact/laser_omni
 
+/obj/projectile/beam/alpha_rad //Alpha Radiation is powerful but has poor penetration
+	name = "alpha beam"
+	icon_state = "pink"
+	fire_sound = 'sound/weapons/eluger.ogg'
+	damage_force = 60
+	damage_tier = 3
+	irradiate = 200
+	light_color = "#ff00dd"
+
+	legacy_muzzle_type = /obj/effect/projectile/muzzle/laser_pink
+	legacy_tracer_type = /obj/effect/projectile/tracer/laser_pink
+	legacy_impact_type = /obj/effect/projectile/impact/laser_pink
+
 /obj/projectile/beam/weak
 	name = "weak cyan beam"
 	icon_state = "cyan"

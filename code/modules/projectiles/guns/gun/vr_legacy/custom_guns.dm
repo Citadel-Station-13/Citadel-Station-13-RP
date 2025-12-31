@@ -235,15 +235,14 @@
 	item_state = "gun"
 	w_class = WEIGHT_CLASS_SMALL
 	projectile_type = /obj/projectile/beam/stun
-	charge_cost = 1200
 	charge_meter = 0
 	modifystate = null
 	legacy_battery_lock = 1
 	fire_sound = 'sound/weapons/Taser.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, fire_sound='sound/weapons/Taser.ogg', charge_cost = 600),
-		list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_sound='sound/weapons/Laser.ogg', charge_cost = 1200),
+		list(mode_name="stun", projectile_type=/obj/projectile/beam/stun, fire_sound='sound/weapons/Taser.ogg', charge_cost=POWER_CELL_CAPACITY_WEAPON/12),
+		list(mode_name="lethal", projectile_type=/obj/projectile/beam, fire_sound='sound/weapons/Laser.ogg', charge_cost=POWER_CELL_CAPACITY_WEAPON/8),
 		)
 
 /obj/item/gun/projectile/energy/gun/martin/update_overlays()

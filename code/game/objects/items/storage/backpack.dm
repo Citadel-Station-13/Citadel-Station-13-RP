@@ -9,15 +9,14 @@
 	icon_state = "backpack"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
-	max_single_weight_class = WEIGHT_CLASS_BULKY
 	weight = ITEM_WEIGHT_STORAGE_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
-	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
 	var/hide_under_tail = 1
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
+	storage_datum_path = /datum/object_system/storage/backpack
 
 /*
  * Backpack Types
@@ -28,7 +27,6 @@
 	desc = "A backpack that opens into a localized pocket of Blue Space."
 	origin_tech = list(TECH_BLUESPACE = 4)
 	icon_state = "holdingpack"
-	max_single_weight_class = WEIGHT_CLASS_BULKY
 	max_combined_volume = WEIGHT_VOLUME_NORMAL * 14 // 56
 
 /obj/item/storage/backpack/holding/duffle
@@ -153,7 +151,7 @@
 	flat_encumbrance = ITEM_FLAT_ENCUMBRANCE_DUFFLEBAG
 	// todo: remove when weight system is used
 	slowdown = 0.25
-	max_combined_volume = STORAGE_VOLUME_DUFFLEBAG
+	storage_datum_path = /datum/object_system/storage/backpack/dufflebag
 
 /obj/item/storage/backpack/dufflebag/syndie
 	name = "black dufflebag"
@@ -346,6 +344,20 @@
 	name = "integrated satchel"
 	desc = "A minimalist satchel designed to fit inside of clothing, directly against the skin."
 	item_state = "none"
+
+/obj/item/storage/satchel/roguetown
+	name = "hide satchel"
+	desc = "A satchel made from an unknown hide."
+	icon = 'icons/clothing/uniform/casual/roguetown/hide_satchel.dmi'
+	icon_state = "hidesatchel"
+	slot_flags = SLOT_BACK
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_bodytypes = BODYTYPE_DEFAULT
+	icon_override = null
+	weight = ITEM_WEIGHT_STORAGE_BACKPACK
+	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
+	drop_sound = 'sound/items/drop/backpack.ogg'
+	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
 //ERT backpacks.
 /obj/item/storage/backpack/ert
@@ -580,8 +592,6 @@
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
 	var/icon_base = "saddlebag"
-	encumbrance = ITEM_ENCUMBRANCE_STORAGE_DUFFLEBAG
-	max_combined_volume = STORAGE_VOLUME_DUFFLEBAG //Saddlebags can hold more, like dufflebags
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 	hide_under_tail = -1
 
@@ -636,7 +646,6 @@
 	item_state = "taurvest"
 	icon_state = "taurvest"
 	icon_base = "taurvest"
-	max_combined_volume = STORAGE_VOLUME_BACKPACK
 	encumbrance = ITEM_ENCUMBRANCE_STORAGE_BACKPACK
 
 /obj/item/storage/backpack/dufflebag/fluff //Black dufflebag without syndie buffs.

@@ -3,7 +3,7 @@
 	icon_state = "mechfab"
 	base_icon_state = "mechfab"
 	name = "Exosuit Fabricator"
-	desc = "A machine used for construction of mechas."
+	desc = "A machine used for construction of mechas.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -22,7 +22,9 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/lathe/mecha_part_fabricator/LateInitialize()
-	for(var/obj/machinery/computer/rdconsole/RDC in get_area(src))
+	for(var/obj/machinery/computer/rdconsole/RDC in GLOB.rdconsoles)
+		if(get_area(RDC) != get_area(src))
+			continue
 		if(!RDC.sync)
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)

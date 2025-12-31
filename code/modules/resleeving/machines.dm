@@ -177,7 +177,7 @@
 //Synthetic version
 /obj/machinery/transhuman/synthprinter
 	name = "SynthFab 3000"
-	desc = "A rapid fabricator for synthetic bodies."
+	desc = "A rapid fabricator for synthetic bodies.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
 						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/machines/synthpod.dmi'
@@ -396,7 +396,7 @@
 /////// Resleever Pod ///////
 /obj/machinery/transhuman/resleever
 	name = "resleeving pod"
-	desc = "Used to combine mind and body into one unit."
+	desc = "Used to combine mind and body into one unit.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	catalogue_data = list(
 		// /datum/category_item/catalogue/information/organization/vey_med,
 		/datum/category_item/catalogue/technology/resleeving,

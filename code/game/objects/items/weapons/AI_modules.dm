@@ -21,7 +21,7 @@ AI MODULES
 	var/datum/ai_laws/laws = null
 
 /obj/item/aiModule/proc/install(var/atom/movable/AM, var/mob/living/user)
-	if(!user.IsAdvancedToolUser() && isanimal(user))
+	if(!user.IsAdvancedToolUser() && isanimal_legacy_this_is_broken(user))
 		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
 			return 0

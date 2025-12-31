@@ -185,7 +185,7 @@
 	data["modal"] = ui_modal_data(src)
 	return data
 
-/obj/machinery/computer/secure_data/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/secure_data/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -391,7 +391,7 @@
 						answer = text2num(answer)
 
 					if(field == "rank")
-						if(answer in SSjob.all_job_titles())
+						if(answer in RSroles.legacy_all_job_titles())
 							active1.fields["real_rank"] = answer
 
 					if(field == "criminal")

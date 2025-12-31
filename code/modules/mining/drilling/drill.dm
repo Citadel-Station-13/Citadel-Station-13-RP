@@ -7,7 +7,7 @@
 
 /obj/machinery/mining/drill
 	name = "mining drill head"
-	desc = "An enormous drill."
+	desc = "An enormous drill.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon_state = "mining_drill"
 	circuit = /obj/item/circuitboard/miningdrill
 	var/braces_needed = 2
@@ -54,7 +54,7 @@
 		new /obj/item/stock_parts/matter_bin(src),
 		new /obj/item/stock_parts/capacitor(src),
 		new /obj/item/stock_parts/micro_laser(src),
-		new /obj/item/cell/high(src)
+		new /obj/item/cell/basic/tier_1/large(src)
 	)
 	RefreshParts()
 
@@ -338,7 +338,7 @@
 
 /obj/machinery/mining/brace
 	name = "mining drill brace"
-	desc = "A machinery brace for an industrial drill. It looks easily two feet thick."
+	desc = "A machinery brace for an industrial drill. It looks easily two feet thick.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon_state = "mining_brace"
 	circuit = /obj/item/circuitboard/miningdrillbrace
 	var/brace_tier = 1

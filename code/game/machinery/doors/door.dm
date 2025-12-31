@@ -46,7 +46,6 @@
 
 	var/reinforcing = 0
 
-
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
 	if(density)

@@ -38,7 +38,7 @@ var/datum/category_collection/underwear/global_underwear = new()
 //!Backpacks - The load order here is important to maintain. Don't go swapping these around.
 var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
-var/global/list/exclude_jobs = list(/datum/role/job/station/ai,/datum/role/job/station/cyborg)
+var/global/list/exclude_jobs = list(/datum/prototype/role/job/station/ai,/datum/prototype/role/job/station/cyborg)
 
 //* Visual nets
 GLOBAL_LIST_EMPTY(visual_nets)
@@ -254,33 +254,6 @@ var/global/list/fancy_release_sounds = list(
 		"None" = null
 		)
 
-var/global/list/global_vore_egg_types = list(
-		SPECIES_UNATHI 		= UNATHI_EGG,
-		SPECIES_UNATHI_DIGI = UNATHI_EGG,
-		"Tajaran" 		= TAJARAN_EGG,
-		SPECIES_AKULA 		= AKULA_EGG,
-		SPECIES_SKRELL 		= SKRELL_EGG,
-		SPECIES_NEVREAN		= NEVREAN_EGG,
-		SPECIES_SERGAL 		= SERGAL_EGG,
-		SPECIES_HUMAN			= HUMAN_EGG,
-		"Slime"			= SLIME_EGG,
-		"Egg"			= EGG_EGG,
-		SPECIES_XENOCHIMERA 		= XENOCHIMERA_EGG,
-		SPECIES_XENO		= XENOMORPH_EGG)
-
-var/global/list/tf_vore_egg_types = list(
-	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
-	SPECIES_UNATHI_DIGI = /obj/structure/closet/secure_closet/egg/unathi,
-	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
-	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
-	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,
-	SPECIES_SERGAL		= /obj/structure/closet/secure_closet/egg/sergal,
-	SPECIES_NEVREAN		= /obj/structure/closet/secure_closet/egg/nevrean,
-	SPECIES_HUMAN			= /obj/structure/closet/secure_closet/egg/human,
-	"Slime"			= /obj/structure/closet/secure_closet/egg/slime,
-	"Egg"			= /obj/structure/closet/secure_closet/egg,
-	SPECIES_XENOCHIMERA		= /obj/structure/closet/secure_closet/egg/scree,
-	SPECIES_XENO		= /obj/structure/closet/secure_closet/egg/xenomorph)
 
 var/global/list/edible_trash = list(/obj/item/broken_device,
 				/obj/item/clothing/accessory/collar,

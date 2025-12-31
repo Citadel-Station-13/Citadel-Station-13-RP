@@ -7,19 +7,24 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 	var/list/gvars_datum_in_built_vars
 	var/list/gvars_datum_init_order
 
-
 /datum/controller/global_vars/New()
 	if(GLOB)
 		CRASH("Multiple instances of global variable controller created")
 	GLOB = src
 
 	var/datum/controller/exclude_these = new
-	gvars_datum_in_built_vars = exclude_these.vars + list("gvars_datum_protected_varlist", "gvars_datum_in_built_vars", "gvars_datum_init_order")
+	gvars_datum_in_built_vars = list()
+	for(var/key in exclude_these.vars)
+		gvars_datum_in_built_vars += key
+	gvars_datum_in_built_vars += list(
+		"gvars_datum_protected_varlist",
+		"gvars_datum_in_built_vars",
+		"gvars_datum_init_order",
+	)
 
 	log_world("[vars.len - gvars_datum_in_built_vars.len] global variables")
 
 	Initialize(exclude_these)
-
 
 /datum/controller/global_vars/Destroy(force)
 	stack_trace("There was an attempt to qdel the global vars holder!")
@@ -34,16 +39,13 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 
 	return ..()
 
-
 /datum/controller/global_vars/stat_entry()
 	return "Edit"
-
 
 /datum/controller/global_vars/vv_edit_var(var_name, var_value)
 	if(gvars_datum_protected_varlist[var_name])
 		return FALSE
 	return ..()
-
 
 /datum/controller/global_vars/Initialize(exclude_these)
 	gvars_datum_init_order = list()

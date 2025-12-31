@@ -140,7 +140,7 @@
 			status = R.stat,
 			health = round(R.health * 100 / R.maxHealth, 0.1),
 			charge = R.cell ? round(R.cell.percent()) : null,
-			cell_capacity = R.cell ? R.cell.maxcharge : null,
+			cell_capacity = R.cell ? R.cell.max_charge : null,
 			module = R.module ? R.module.name : "No Module Detected",
 			synchronization = R.connected_ai,
 			is_hacked =  R.connected_ai && R.emagged,
@@ -150,7 +150,7 @@
 	data["show_detonate_all"] = (data["auth"] && length(data["cyborgs"]) > 0 && ishuman(user))
 	return data
 
-/obj/machinery/computer/robotics/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/robotics/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 	. = FALSE

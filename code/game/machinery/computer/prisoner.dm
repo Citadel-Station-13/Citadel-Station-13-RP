@@ -64,7 +64,7 @@
 	return list("locked" = !screen, "chemImplants" = chemImplants, "trackImplants" = trackImplants)
 
 
-/obj/machinery/computer/prisoner/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/prisoner/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

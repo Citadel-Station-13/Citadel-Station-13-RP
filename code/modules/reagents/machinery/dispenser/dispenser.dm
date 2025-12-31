@@ -7,6 +7,9 @@
 		/obj/item/cell = 1,
 		/obj/item/stock_parts/console_screen = 1,
 	)
+	def_components = list(
+		/obj/item/cell = /obj/item/cell/basic/tier_1/large,
+	)
 
 #define MAX_MACROS 20
 #define MAX_MACRO_STEPS 50
@@ -41,7 +44,7 @@
 	//  todo: component_parts supporting "use this and don't keep this in component_parts".
 	var/obj/item/cell/cell
 	/// initial cell type
-	var/cell_type = /obj/item/cell/high
+	var/cell_type = /obj/item/cell/basic/tier_1/large
 	/// recharge rate in KW
 	var/recharge_rate = 10
 	/// inserted beaker / whatever
@@ -125,7 +128,7 @@
 		return
 	if(!cell || !charging)
 		return
-	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.maxcharge - cell.charge, delta_time))
+	var/wanted = max(0, DYNAMIC_CELL_UNITS_TO_KW(cell.max_charge - cell.charge, delta_time))
 	if(!wanted)
 		return
 	// todo: this is shit, it doesn't update area power because our power code is primitive.
@@ -198,7 +201,7 @@
 	.["amount_max"] = dispense_amount_max
 	.["has_cell"] = !!cell
 	.["cell_charge"] = cell?.charge
-	.["cell_capacity"] = cell?.maxcharge
+	.["cell_capacity"] = cell?.max_charge
 	.["panel_open"] = panel_open
 	.["has_beaker"] = !!inserted
 	.["beaker"] = inserted?.reagents? list(
@@ -210,7 +213,7 @@
 	.["recharging"] = charging
 	.["recharge_rate"] = recharge_rate
 
-/obj/machinery/chemical_dispenser/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/chemical_dispenser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

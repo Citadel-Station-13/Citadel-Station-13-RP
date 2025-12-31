@@ -8,6 +8,7 @@
 	attack_verb = list("patted", "tapped")
 	force_multiplier = 0.1
 	throw_force_multiplier = 1.5
+	belt_storage_class = BELT_CLASS_SMALL
 	drop_sound = 'sound/items/drop/knife.ogg'
 	pickup_sound = 'sound/items/pickup/knife.ogg'
 	var/active = FALSE
@@ -72,8 +73,10 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "knife"
 	desc = "A general purpose chef's knife. Glithari Exports filet knives, Centauri bread knives, all pale in comparison to Nanotrasen's very own Cookware line of cheap, affordable chef's knives."
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	damage_mode = DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 	material_significance = MATERIAL_SIGNIFICANCE_WEAPON_LIGHT
+	belt_storage_class = BELT_CLASS_MEDIUM
 	materials_base = list(MAT_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -172,6 +175,10 @@
 
 /obj/item/material/knife/machete/armblade/hardsuit
 	var/obj/item/hardsuit_module/armblade/storing_module
+
+/obj/item/material/knife/machete/armblade/hardsuit/Destroy()
+	storing_module = null
+	return ..()
 
 /obj/item/material/knife/machete/armblade/hardsuit/dropped(mob/user, flags, atom/newLoc)
 	. = ..()

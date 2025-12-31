@@ -9,6 +9,7 @@
 	layer = TURF_LAYER
 
 	//* Core *//
+
 	/// Atom flags.
 	var/atom_flags = NONE
 	/// Prototype ID; persistence uses this to know what atom to load, even if the path changes in a refactor.
@@ -148,6 +149,7 @@
 	/// radiation flags
 	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
 	/// radiation insulation - does *not* affect rad_act!
+	//  TODO: BUG: rad_insulation needs a `set_rad_insulation()` which updates turf!
 	var/rad_insulation = RAD_INSULATION_NONE
 	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
 	var/rad_stickiness = 1
@@ -205,6 +207,16 @@
 	var/hit_sound_burn
 
 /**
+ * Called if we're deleted before Initialize() is called.
+ * * Must clean up anything done in /New.
+ */
+/atom/proc/EarlyDestroy(force)
+	// tag is set in New()
+	if(tag)
+		tag = null
+	return QDEL_HINT_QUEUE
+
+/**
  * Top level of the destroy chain for most atoms
  *
  * Cleans up the following:
@@ -234,31 +246,28 @@
 
 	return ..()
 
-//* Preload Hooks *//
-
-/**
- * Called by the maploader if a dmm_context is set
- *
- * todo: rename to preload_from_mapload()
- */
-/atom/proc/preloading_instance(datum/dmm_context/context)
-	return
-
-/**
- * hook for abstract direction sets from the maploader
- *
- * todo: this might need to be part of preloading_instance; investigate
- *
- * return FALSE to override maploader automatic rotation
- */
-/atom/proc/preloading_dir(datum/dmm_context/context)
-	return TRUE
-
-/**
- * Preloads before Initialize(), invoked by init from a stack recipe.
- */
-/atom/proc/preload_from_stack_recipe(datum/stack_recipe/recipe)
-	return
+/atom/gc_trace_data()
+	. = ..()
+	if(loc)
+		.["atom-coord"] = "[COORD(src)]"
+		var/turf/our_turf = get_turf(src)
+		.["atom-turf"] = "[AREACOORD(our_turf)]"
+	else
+		.["atom-coord"] = "nullspace"
+	if(length(context_menus))
+		.["atom-context-menus"] = json_encode(context_menus)
+	if(length(atom_huds))
+		.["atom-huds"] = json_encode(atom_huds)
+	if(reagents)
+		.["atom-reagents"] = "exists"
+	if(length(material_traits))
+		.["atom-material-traits"] = json_encode(material_traits)
+	if(length(shieldcalls))
+		.["atom-shieldcalls"] = json_encode(shieldcalls)
+	if(orbiters)
+		.["atom-orbiters"] = "exists"
+	if(length(interacting_mobs))
+		.["atom-interacting-mobs"] = json_encode(interacting_mobs)
 
 /atom/proc/reveal_blood()
 	return
@@ -804,6 +813,7 @@
 
 //? Pixel Offsets
 
+// todo: figure out exactly what we're doing here because this is a dumpster fire; we need to well-define what each of htese is supposed to do.
 // todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
 
 /atom/proc/set_pixel_x(val)
@@ -888,3 +898,17 @@
 /atom/proc/auto_pixel_offset_to_center()
 	set_base_pixel_y(get_centering_pixel_y_offset())
 	set_base_pixel_x(get_centering_pixel_x_offset())
+
+/**
+ * Get the left-to-right lower-left to top-right width of our icon in pixels.
+ * * This is used to align some overlays like HUD overlays.
+ */
+/atom/proc/get_pixel_x_self_width()
+	return icon_x_dimension
+
+/**
+ * Get the left-to-right lower-left to top-right width of our icon in pixels.
+ * * This is used to align some overlays like HUD overlays.
+ */
+/atom/proc/get_pixel_y_self_width()
+	return icon_y_dimension

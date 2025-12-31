@@ -5,21 +5,19 @@
  * cell slot
  */
 /datum/object_system/cell_slot
+	//* State *//
 	/// held cell
 	var/obj/item/cell/cell
-	/// reserved - cell type accepted enum, for when we do large/medium/small/etc cells later.
-	var/cell_type
 
-	/// considered primary? if so, we get returned on get_cell()
-	var/primary = TRUE
+	//* Config - Interaction *//
 
-	/// allow inducer?
-	var/receive_inducer = FALSE
-	/// allow EMPs to hit?
-	var/receive_emp = FALSE
-	/// allow explosions to hit cell?
-	// todo: currently unused; probably kill this eventually
-	var/recieve_explosion = FALSE
+	/// allow insertion via context menu
+	var/insert_via_context = FALSE
+	/// allow insertion via click
+	var/insert_via_usage = FALSE
+	/// insertion time
+	//  TODO: impl
+	var/insert_time = 0
 
 	/// allow quick removal by clicking with hand?
 	var/remove_yank_offhand = FALSE
@@ -28,25 +26,59 @@
 	/// allow quick removal by using in hand?
 	var/remove_yank_inhand = FALSE
 	/// no-tool time for removal, if any
+	//  TODO: impl
 	var/remove_yank_time = 0
-	/// tool behavior for removal, if any
 
+	/// tool behavior for removal, if any
 	var/remove_tool_behavior = null
 	/// tool time for removal, if any
 	var/remove_tool_time = 0
+	/// allow remove hooks in tool act
+	var/remove_tool_usage = FALSE
+	/// allow remove hooks in context menu for tooled removal
+	var/remove_tool_context = FALSE
 
 	/// removal / insertion is discrete or loud
 	var/remove_is_discrete = TRUE
 
-	/// legacy
-	// todo: kill this
-	var/legacy_use_device_cells = FALSE
+	//* Config - Defense *//
+	/// allow EMPs to hit?
+	var/receive_emp = FALSE
+	/// allow explosions to hit cell?
+	// todo: currently unused
+	var/recieve_explosion = FALSE
+
+	//* Config - Integration *//
+	/// allow inducer?
+	var/receive_inducer = FALSE
+	/// considered primary? if so, we get returned on get_cell()
+	var/primary = TRUE
+
+	//* Config - Cell Accept *//
+	/// cell types accepted
+	var/cell_type = NONE
+
+	//* Config - Sound *//
+	var/insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
+	var/insert_sound_vol = 55
+	var/insert_sound_vary = FALSE
+	var/remove_sound = 'sound/weapons/empty.ogg'
+	var/remove_sound_vol = 55
+	var/remove_sound_vary = FALSE
+
+/datum/object_system/cell_slot/Destroy()
+	QDEL_NULL(cell)
+	return ..()
 
 /**
  * returns TRUE if slot accepts this type of cell
  */
 /datum/object_system/cell_slot/proc/accepts_cell(obj/item/cell/cell)
-	return legacy_use_device_cells? istype(cell, /obj/item/cell/device) : TRUE
+	. = cell.cell_type & cell_type
+	. = parent.object_cell_slot_accepts(cell, src, ., null, null)
+
+// TODO: user_remove_cell && user_insert_cell
+// TODO: play sound please & visible message
 
 /**
  * removes cell from the system and drops it at new_loc
@@ -75,14 +107,17 @@
 
 /**
  * replaces the existing cell with the inserted cell, dropping the old cell
+ * @return TRUE success, FALSE otherwise
  */
 /datum/object_system/cell_slot/proc/insert_cell(obj/item/cell/cell)
-	if(!isnull(cell))
-		. = remove_cell(parent.drop_location())
+	if(!isnull(src.cell))
+		remove_cell(parent.drop_location())
+		ASSERT(!src.cell)
 	src.cell = cell
 	if(cell.loc != parent)
 		cell.forceMove(parent)
 	parent.object_cell_slot_inserted(cell, src)
+	return TRUE
 
 /**
  * returns TRUE if the cell slot is mutable
@@ -96,47 +131,158 @@
 /datum/object_system/cell_slot/proc/has_cell()
 	return !isnull(cell)
 
+//* Interaction Wrappers *//
+
+/datum/object_system/cell_slot/proc/user_insert_cell(obj/item/cell/cell, mob/user, silent, datum/event_args/actor/actor)
+	. = insert_cell(cell)
+	if(!.)
+		return
+	on_user_insert_cell(cell, user, silent, actor)
+
+/datum/object_system/cell_slot/proc/user_remove_cell(atom/newloc, mob/user, silent, datum/event_args/actor/actor) as /obj/item/cell
+	. = remove_cell(newloc)
+	if(!.)
+		return
+	on_user_remove_cell(., user, silent, actor)
+
+/datum/object_system/cell_slot/proc/on_user_insert_cell(obj/item/cell, mob/user, silent, datum/event_args/actor/actor)
+	if(!silent)
+		if(insert_sound)
+			playsound(parent, insert_sound, insert_sound_vol, insert_sound_vary)
+
+/datum/object_system/cell_slot/proc/on_user_remove_cell(obj/item/cell, mob/user, silent, datum/event_args/actor/actor)
+	if(!silent)
+		if(remove_sound)
+			playsound(parent, remove_sound, remove_sound_vol, remove_sound_vary)
+
 //? Hooks
 
 /**
  * hook called on cell slot removal
+ *
+ * @params
+ * * cell - the cell
+ * * slot - the cell slot
+ * * silent - (optional) don't emit messages / sounds
+ * * actor - (optional) who's doing it
  */
-/obj/proc/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+/obj/proc/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	return
 
 /**
  * hook called on cell slot insertion
+ *
+ * @params
+ * * cell - the cell
+ * * slot - the cell slot
+ * * silent - (optional) don't emit messages / sounds
+ * * actor - (optional) who's doing it
  */
-/obj/proc/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot)
+/obj/proc/object_cell_slot_inserted(obj/item/cell/cell, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	return
 
 /**
  * hook called to check if cell slot removal behavior is active
+ *
+ * @params
+ * * cell - the cell
+ * * slot - the cell slot
+ * * silent - (optional) don't emit messages / sounds
+ * * actor - (optional) who's doing it
+ *
+ * @return truthy/falsy value (not necessarily 0 / 1)
  */
-/obj/proc/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+/obj/proc/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	return TRUE
+
+/**
+ * @params
+ * * cell - the cell
+ * * slot - (optional) the cell slot
+ * * slot_opinion - (optional) what default checks returned
+ * * silent - (optional) don't emit messages / sounds
+ * * actor - (optional) who's doing it
+ *
+ * @return truthy/falsy value (not necessarily 0 / 1)
+ */
+/obj/proc/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
+	return slot_opinion
 
 //? Lazy wrappers for init
 
-/obj/proc/init_cell_slot(initial_cell_path)
+/**
+ * Creates a cell slot
+ *
+ * * This proc will error if it cannot detect a cell type, nor a preload to detect it from.
+ * * Also sets the cell slot as primary.
+ *
+ * @params
+ * * preload_path - (optional) cell typepath to start with
+ * * cell_type - (optional) CELL_TYPE_* bitfield, of cell types to accept; defaults to preload_path's type if it exists and this isn't provided.
+ */
+/obj/proc/init_cell_slot(preload_path, cell_type)
 	RETURN_TYPE(/datum/object_system/cell_slot)
 	ASSERT(isnull(obj_cell_slot))
 	obj_cell_slot = new(src)
-	if(initial_cell_path)
-		obj_cell_slot.cell = new initial_cell_path
+	if(preload_path)
+		obj_cell_slot.cell = new preload_path
+		if(isnull(cell_type))
+			cell_type = obj_cell_slot.cell_type
+	else if(isnull(cell_type))
+		stack_trace("failed to provide a cell type accept bitfield, and didn't provide a preload path to autodetect from")
+	obj_cell_slot.cell_type = cell_type
+	obj_cell_slot.primary = TRUE
 	return obj_cell_slot
 
-/obj/proc/init_cell_slot_easy_tool(initial_cell_path, offhand_removal = TRUE, inhand_removal = FALSE)
-	RETURN_TYPE(/datum/object_system/cell_slot)
-	if(isnull(init_cell_slot(initial_cell_path)))
+/**
+ * Wrapper for lazily initializing a cell slot for tools.
+ * * Also sets the cell slot as primary.
+ */
+/obj/proc/init_cell_slot_easy_tool(preload_path, cell_type = CELL_TYPE_SMALL | CELL_TYPE_MEDIUM, offhand_removal = TRUE, inhand_removal = FALSE) as /datum/object_system/cell_slot
+	if(isnull(init_cell_slot(preload_path, cell_type)))
 		return
+	obj_cell_slot.insert_via_context = TRUE
+	obj_cell_slot.insert_via_usage = TRUE
 	if(offhand_removal)
 		obj_cell_slot.remove_yank_offhand = TRUE
 	if(inhand_removal)
 		obj_cell_slot.remove_yank_inhand = FALSE
 	obj_cell_slot.remove_yank_context = TRUE
 	obj_cell_slot.remove_yank_time = 0
-	obj_cell_slot.legacy_use_device_cells = TRUE
+	return obj_cell_slot
+
+/**
+ * Wrapper for lazily initializing a cell slot for machines.
+ * * Also sets the cell slot as primary.
+ *
+ * @params
+ * * skip_interactions - do not automatically handle interactions
+ * * require_remove_tool - tool behavior required for removal; defaults to none (context menu works)
+ * * require_context_menu - require context menu interaction even if we require a tool behavior.
+ *                          useful to not collide with other tool behaviors.
+ */
+/obj/proc/init_cell_slot_easy_machine(
+	preload_path,
+	cell_type = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM,
+	skip_interactions,
+	require_remove_tool,
+	require_context_menu,
+) as /datum/object_system/cell_slot
+	if(isnull(init_cell_slot(preload_path, cell_type)))
+		return
+	if(!skip_interactions)
+		// insertion
+		if(!require_context_menu)
+			obj_cell_slot.insert_via_usage = TRUE
+		obj_cell_slot.insert_via_context = TRUE
+		// removal
+		if(require_remove_tool)
+			obj_cell_slot.remove_tool_behavior = require_remove_tool
+			if(!require_context_menu)
+				obj_cell_slot.remove_tool_usage = TRUE
+			obj_cell_slot.remove_tool_context = TRUE
+		else
+			obj_cell_slot.remove_yank_context = TRUE
 	return obj_cell_slot
 
 //? Wrappers for cell.dm functions

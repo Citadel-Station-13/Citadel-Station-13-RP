@@ -46,9 +46,9 @@
 /**
  * initializes our locality
  *
- * remember: at this point, overmap hasn't been set, because we're currently being called from a /datum/turf_reservation!
+ * remember: at this point, overmap hasn't been set, because we're currently being called from a /datum/map_reservation!
  */
-/turf/overmap/edge/proc/initialize_border(datum/overmap/map, datum/turf_reservation/reservation)
+/turf/overmap/edge/proc/initialize_border(datum/overmap/map, datum/map_reservation/reservation)
 	var/lower_left_x = reservation.bottom_left_coords[1]
 	var/lower_left_y = reservation.bottom_left_coords[2]
 	var/upper_right_x = reservation.top_right_coords[1]
@@ -116,7 +116,7 @@
 //! LEGACY BELOW
 
 /turf/overmap/Destroy()
-	for(var/obj/overmap/entity/visitable/ship/entity in loc)
+	for(var/obj/overmap/entity/visitable/ship/entity in src)
 		Exited(entity)
 	return ..()
 

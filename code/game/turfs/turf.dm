@@ -53,6 +53,8 @@
 	//* Flags
 	/// turf flags
 	var/turf_flags = NONE
+	/// turf spawning flags
+	var/turf_spawn_flags = TURF_SPAWN_FLAG_BUILDMODE | TURF_SPAWN_FLAG_FILLABLE | TURF_SPAWN_FLAG_LEVEL_TURF
 	/// multiz flags
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
@@ -92,9 +94,6 @@
 	var/temperature = T20C
 	/// Does this turf contain air/let air through?
 	var/blocks_air = FALSE
-
-
-	var/holy = 0
 
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
@@ -157,7 +156,6 @@
 	assemble_baseturfs()
 
 	SETUP_SMOOTHING()
-
 	QUEUE_SMOOTH(src)
 
 	//atom color stuff
@@ -348,7 +346,7 @@
 		return
 	if(!isturf(O.loc) || !isturf(user.loc))
 		return
-	if(isanimal(user) && O != user)
+	if(isanimal_legacy_this_is_broken(user) && O != user)
 		return
 	if(M.pulledby || M.is_grabbed())
 		return
@@ -520,7 +518,7 @@
 			//? length check
 			return TRUE
 */
-	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+	return SSmapping.level_has_trait(z, ZTRAIT_GRAVITY)
 
 /* // TODO: Implement this. @Zandario
 /turf/proc/update_weather(obj/abstract/weather_system/new_weather, force_update_below = FALSE)

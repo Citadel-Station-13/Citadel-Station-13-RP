@@ -599,6 +599,7 @@
 /area/tether/surfacebase/entertainment
 	name = "\improper Entertainment Auditorium"
 	icon_state = "library"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/tether/surfacebase/entertainment/stage
 	name = "\improper Entertainment Stage"
@@ -945,7 +946,7 @@
 /area/rnd/research/researchdivision
 	name = "\improper Research Division"
 	icon_state = "research"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 //Outpost areas
 //TFF 28/8/19 - cleanup of areas placement

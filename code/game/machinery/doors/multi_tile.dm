@@ -19,7 +19,7 @@
 	stripe_file = 'icons/obj/doors/double/stripe.dmi'
 	stripe_fill_file = 'icons/obj/doors/double/fill_stripe.dmi'
 
-/obj/machinery/door/airlock/multi_tile/preloading_dir(datum/dmm_context/context)
+/obj/machinery/door/airlock/multi_tile/preloading_from_mapload_rotation(datum/dmm_context/context)
 	. = ..()
 	SetBounds()
 

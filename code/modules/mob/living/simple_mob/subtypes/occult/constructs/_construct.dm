@@ -25,7 +25,8 @@
 		/datum/category_item/catalogue/fauna/construct/juggernaut,
 		/datum/category_item/catalogue/fauna/construct/proteon,
 		/datum/category_item/catalogue/fauna/construct/shade,
-		/datum/category_item/catalogue/fauna/construct/wraith
+		/datum/category_item/catalogue/fauna/construct/wraith,
+		/datum/category_item/catalogue/fauna/construct/cyclops
 		)
 
 /mob/living/simple_mob/construct
@@ -85,11 +86,21 @@
 
 	supernatural = TRUE
 
+	vision_innate = /datum/vision/baseline/species_tier_3 //Supernatural Other Things Are Beyond Needing Light to see
+
 	var/construct_type = "shade"
 	var/list/construct_spells = list()
 //	var/do_glow = TRUE
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
+
+/mob/living/simple_mob/construct/Initialize(mapload)
+	. = ..()
+	name = "[initial(name)] ([rand(1, 1000)])"
+	real_name = name
+	for(var/spell in construct_spells)
+		src.add_spell(new spell, "const_spell_ready")
+	updateicon()
 
 /mob/living/simple_mob/construct/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
@@ -123,14 +134,6 @@
 
 /mob/living/simple_mob/construct/cultify()
 	return
-
-/mob/living/simple_mob/construct/Initialize(mapload)
-	. = ..()
-	name = "[initial(name)] ([rand(1, 1000)])"
-	real_name = name
-	for(var/spell in construct_spells)
-		src.add_spell(new spell, "const_spell_ready")
-	updateicon()
 
 /*
 /mob/living/simple_mob/construct/update_icon()

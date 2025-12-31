@@ -150,8 +150,7 @@
 /obj/item/implanter/restrainingbolt
 	name = "implanter (bolt)"
 
-/obj/item/implanter/restrainingbolt/New()
+/obj/item/implanter/restrainingbolt/Initialize(mapload)
 	src.imp = new /obj/item/implant/restrainingbolt( src )
-	..()
+	. = ..()
 	update()
-	return

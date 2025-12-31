@@ -40,7 +40,10 @@
 		/obj/item/geiger_counter = 4,
 		/obj/item/clothing/glasses/meson = 2,
 		/obj/item/multitool = 4,
-		/obj/item/cell/high = 10,
+		/obj/item/cell/basic/tier_2/small = 15,
+		/obj/item/cell/basic/tier_2/medium = 15,
+		/obj/item/cell/basic/tier_2/large = 15,
+		/obj/item/cell/basic/tier_2/weapon = 5,
 		/obj/item/airlock_electronics = 10,
 		/obj/item/module/power_control = 10,
 		/obj/item/circuitboard/airalarm = 10,
@@ -70,7 +73,7 @@
 		/obj/item/clothing/glasses/omnihud/eng = 6,
 	)
 	contraband = list(
-		/obj/item/cell/potato = 3,
+		// /obj/item/cell/potato = 3,
 	)
 	premium = list(
 		/obj/item/storage/belt/utility = 3,
@@ -100,7 +103,10 @@
 		/obj/item/tool/wrench = 12,
 		/obj/item/t_scanner = 12,
 		/obj/item/stack/cable_coil/heavyduty = 8,
-		/obj/item/cell = 8,
+		/obj/item/cell/basic/tier_2/small = 8,
+		/obj/item/cell/basic/tier_2/medium = 8,
+		/obj/item/cell/basic/tier_2/large = 8,
+		/obj/item/cell/basic/tier_2/weapon = 8,
 		/obj/item/weldingtool = 8,
 		/obj/item/clothing/head/welding = 8,
 		/obj/item/light/tube = 10,

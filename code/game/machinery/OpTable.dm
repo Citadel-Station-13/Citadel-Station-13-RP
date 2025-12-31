@@ -1,6 +1,6 @@
 /obj/machinery/optable
 	name = "the operating table"
-	desc = "Used for advanced medical procedures."
+	desc = "Used for advanced medical procedures.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_OVERHEAD_THROW

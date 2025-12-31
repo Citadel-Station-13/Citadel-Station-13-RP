@@ -127,7 +127,7 @@
 
 /datum/component/personal_crafting/proc/get_surroundings(atom/a)
 	. = list()
-	.["tool_behaviour"] = list()
+	.["tool_behavior"] = list()
 	.["other"] = list()
 	.["instances"] = list()
 	for(var/obj/item/I in get_environment(a))
@@ -140,8 +140,8 @@
 		if(istype(I, /obj/item/stack))
 			var/obj/item/stack/S = I
 			.["other"][I.type] += S.amount
-		else if(I.tool_behaviour)
-			.["tool_behaviour"] += I.tool_behaviour
+		else if(I.tool_behavior)
+			.["tool_behavior"] += I.tool_behavior
 			.["other"][I.type] += 1
 		else
 			if(istype(I, /obj/item/reagent_containers))
@@ -158,18 +158,18 @@
 		return TRUE
 	var/list/possible_tools = list()
 	var/list/present_qualities = list()
-	present_qualities |= contents["tool_behaviour"]
+	present_qualities |= contents["tool_behavior"]
 	for(var/obj/item/I in a.contents)
 		if(istype(I, /obj/item/storage))
 			for(var/obj/item/SI in I.contents)
 				possible_tools += SI.type
-				if(SI.tool_behaviour)
-					present_qualities.Add(SI.tool_behaviour)
+				if(SI.tool_behavior)
+					present_qualities.Add(SI.tool_behavior)
 
 		possible_tools += I.type
 
-		if(I.tool_behaviour)
-			present_qualities.Add(I.tool_behaviour)
+		if(I.tool_behavior)
+			present_qualities.Add(I.tool_behavior)
 
 	possible_tools |= contents["other"]
 
@@ -373,7 +373,7 @@
 	data["crafting_recipes"] = crafting_recipes
 	return data
 
-/datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui)
+/datum/component/personal_crafting/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return
 	switch(action)

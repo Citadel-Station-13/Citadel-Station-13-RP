@@ -3,10 +3,12 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { useBackend, useLocalState } from "../../backend";
-import { Button, NoticeBox, Section, Tabs } from "../../components";
-import { Module } from "../../components/Module";
+import { useState } from "react";
+import { Button, NoticeBox, Section, Tabs } from "tgui-core/components";
+import { BooleanLike } from "tgui-core/react";
+
+import { useBackend } from "../../backend";
+import { LegacyModule } from "../../components/LegacyModule";
 import { Window } from "../../layouts";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
 import { CrewManifestContent } from "../CrewManifest";
@@ -19,9 +21,9 @@ interface IdentificationComputerContext {
   authed_slotmod: BooleanLike;
 }
 
-export const IdentificationComputer = (props, context) => {
-  const { data, act } = useBackend<IdentificationComputerContext>(context);
-  const [currentTab, setCurrentTab] = useLocalState<number>(context, 'currentTab', 0);
+export const IdentificationComputer = (props) => {
+  const { data, act } = useBackend<IdentificationComputerContext>();
+  const [currentTab, setCurrentTab] = useState<number>(0);
   return (
     <Window width={500} height={700}>
       <Window.Content scrollable>
@@ -47,16 +49,16 @@ export const IdentificationComputer = (props, context) => {
             </Section>
             <Section>
               {
-                data.authed_cardmod? (
-                  data.modify_card? (
-                    <Module id="modify" />
+                data.authed_cardmod ? (
+                  data.modify_card ? (
+                    <LegacyModule id="modify" />
                   ) : (
-                    <NoticeBox warning>
+                    <NoticeBox >
                       Please insert target card.
                     </NoticeBox>
                   )
                 ) : (
-                  <NoticeBox warning>
+                  <NoticeBox >
                     Authentication required for ID modification.
                   </NoticeBox>
                 )
@@ -69,7 +71,7 @@ export const IdentificationComputer = (props, context) => {
             title="Manifest"
             buttons={
               <Button
-                content={data.printing? "Printing" : "Print"}
+                content={data.printing ? "Printing" : "Print"}
                 disabled={data.printing}
                 icon="print"
                 onClick={() => act('print_manifest')} />

@@ -226,7 +226,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/cruise_ship)
 "xa" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "yT" = (
 /obj/machinery/atmospherics/portables_connector{

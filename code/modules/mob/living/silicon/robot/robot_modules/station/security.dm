@@ -58,7 +58,7 @@
 	else if(F.times_used)
 		F.times_used--
 	var/obj/item/gun/projectile/energy/taser/mounted/cyborg/T = locate() in src.modules
-	if(T.obj_cell_slot.cell.charge < T.obj_cell_slot.cell.maxcharge)
+	if(T.obj_cell_slot.cell.charge < T.obj_cell_slot.cell.max_charge)
 		T.obj_cell_slot.cell.give(T.charge_cost * amount)
 		T.update_icon()
 	else
@@ -137,7 +137,7 @@
 	else if(F.times_used)
 		F.times_used--
 	var/obj/item/gun/projectile/energy/taser/mounted/cyborg/T = locate() in src.modules
-	if(T.obj_cell_slot.cell.charge < T.obj_cell_slot.cell.maxcharge)
+	if(T.obj_cell_slot.cell.charge < T.obj_cell_slot.cell.max_charge)
 		T.obj_cell_slot.cell.give(T.charge_cost * amount)
 		T.update_icon()
 	else
@@ -166,7 +166,7 @@
 		/obj/item/dogborg/jaws/big,
 		/obj/item/melee/baton/robot,
 		/obj/item/barrier_tape_roll/police,
-		/obj/item/gun/projectile/energy/taser/mounted/cyborg/ertgun,
+		/obj/item/gun/projectile/energy/taser/mounted/cyborg,
 		/obj/item/dogborg/swordtail
 	)
 

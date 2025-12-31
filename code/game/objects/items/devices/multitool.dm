@@ -12,6 +12,7 @@
 	icon_state = "multitool"
 	damage_force = 5.0
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
 	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
@@ -32,7 +33,8 @@
 	var/colorable = 1
 	var/color_overlay = null
 	tool_speed = 1
-	tool_behaviour = TOOL_MULTITOOL
+	tool_behavior = TOOL_MULTITOOL
+	tool_sound = 'sound/weapons/empty.ogg'
 
 /obj/item/multitool/Initialize(mapload)
 	. = ..()
@@ -86,7 +88,7 @@
 					return CLICKCHAIN_DID_SOMETHING
 				// revive the holosphere shell
 				visible_message(SPAN_NOTICE("[clickchain.performer] successfully reboots [target] using \the [src]."))
-				shell.revive(TRUE, TRUE, restore_nutrition = FALSE)
+				shell.revive(full_heal = TRUE, restore_nutrition = FALSE)
 				return CLICKCHAIN_DID_SOMETHING
 	return ..()
 

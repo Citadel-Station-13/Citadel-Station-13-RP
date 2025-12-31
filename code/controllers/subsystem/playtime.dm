@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(playtime)
 				"minutes" = minutes,
 				"player" = playerid
 			)
-			C.persistent.playtime[roleid] += minutes
+			LAZYADDASSOC(C.persistent.playtime, roleid, minutes)
 		C.persistent.playtime_queued = list()
 	SSdbcore.MassInsertLegacy(DB_PREFIX_TABLE_NAME("playtime"), built, duplicate_key = "ON DUPLICATE KEY UPDATE minutes = minutes + VALUES(minutes)")
 
@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(playtime)
 	else
 		. = list(PLAYER_PLAYTIME_LIVING)
 		var/best_effort_attempt_at_resolving_legacy_name_based_roles = M.mind?.assigned_role
-		var/datum/role/job/J = SSjob.job_by_title(best_effort_attempt_at_resolving_legacy_name_based_roles)
+		var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(best_effort_attempt_at_resolving_legacy_name_based_roles)
 		if(J)
 			. += PLAYER_PLAYTIME_ROLE(J.id)
 

@@ -29,11 +29,6 @@
 #define PERCENT(val) (round((val)*100, 0.1))
 #define CLAMP01(x) (clamp(x, 0, 1))
 
-//time of day but automatically adjusts to the server going into the next day within the same round.
-//for when you need a reliable time number that doesn't depend on byond time.
-#define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
-#define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )
-
 #define SIGN(x) ( (x)!=0 ? (x) / abs(x) : 0 )
 
 /// ceil()
@@ -192,6 +187,7 @@
 	return (mean + stddev * R1)
 #undef ACCURACY
 
+// TODO: rework
 /proc/get_turf_in_angle(angle, turf/starting, increments)
 	var/pixel_x = 0
 	var/pixel_y = 0
@@ -251,3 +247,6 @@
 
 /// get highest magnitude of two numbers, magnitude is abs value
 #define BIGGER_MAGNITUDE(a, b) ((abs(a) > abs(b))? a : b)
+
+#define SI_COEFFICIENT "coefficient"
+#define SI_UNIT "unit"

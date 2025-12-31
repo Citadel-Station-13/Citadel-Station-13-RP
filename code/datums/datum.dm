@@ -9,19 +9,14 @@
  * use of variables at this level
  */
 /datum
-	/**
-	 * Tick count time when this object was destroyed.
-	 *
-	 * If this is non zero then the object has been garbage collected and is awaiting either
-	 * a hard del by the GC subsystme, or to be autocollected (if it has no references)
-	 */
-	var/gc_destroyed
-
-	/// Active timers with this datum as the target
-	var/list/active_timers
 	/// Status traits attached to this datum. associative list of the form: list(trait name (string) = list(source1, source2, source3,...))
 	var/list/status_traits
+	/// Datum level flags
+	var/datum_flags = NONE
+	/// A weak reference to another datum
+	var/datum/weakref/weak_reference
 
+	//* Datum Component System *//
 	/**
 	 * Components attached to this datum
 	 * Lazy assoclist of type -> component reference or list of component references
@@ -35,14 +30,10 @@
 	var/list/comp_lookup
 	/// Lazy associated list in the structure of `signals:proctype` that are run when the datum receives that signal
 	var/list/list/datum/callback/signal_procs
-
 	/// Is this datum capable of sending signals?
 	var/signal_enabled = FALSE
-	/// Datum level flags
-	var/datum_flags = NONE
-	/// A weak reference to another datum
-	var/datum/weakref/weak_reference
 
+	//* Cooldown System *//
 	/*
 	* Lazy associative list of currently active cooldowns.
 	*
@@ -51,9 +42,31 @@
 	*/
 	var/list/cooldowns
 
+	//* Subsystem - Garbage *//
+	/**
+	 * Tick count time when this object was destroyed.
+	 *
+	 * If this is non zero then the object has been garbage collected and is awaiting either
+	 * a hard del by the GC subsystme, or to be autocollected (if it has no references)
+	 */
+	var/gc_destroyed
+
+	//* Subsystem - Timer *//
+	/// Active timers with this datum as the target
+	var/list/active_timers
+
+	//* Subsystem - TGUI *//
+	/// Open uis owned by this datum
+	/// Lazy, since this case is semi rare
+	var/list/datum/tgui/open_uis
+
+	//* misc - filters *//
 	/// List for handling persistent filters.
+	///
+	/// * This is on /datum so it can be used on /image. This is pretty horrible. How do we fix this?
 	var/list/filter_data
 
+	//* misc - reftracking *//
 #ifdef REFERENCE_TRACKING
 	/// When was this datum last touched by a reftracker?
 	/// If this value doesn't match with the start of the search
@@ -66,10 +79,6 @@
 	var/list/found_refs
 	#endif
 #endif
-
-	// If we have called dump_harddel_info already. Used to avoid duped calls (since we call it immediately in some cases on failure to process)
-	// Create and destroy is weird and I wanna cover my bases
-	var/harddel_deets_dumped = FALSE
 
 /**
  * Default implementation of clean-up code.
@@ -92,7 +101,10 @@
 	//SHOULD_NOT_SLEEP(TRUE)
 	tag = null
 	datum_flags &= ~DF_USE_TAG //In case something tries to REF us
-	weak_reference = null //ensure prompt GCing of weakref.
+	// -- CITADEL REMOVAL --
+	// This shouldn't be needed; weakref already has resolve() vs hard_resolve().
+	// We use weakref for GC tracing.
+	// weak_reference = null //ensure prompt GCing of weakref.
 
 	if(active_timers)
 		var/list/timers = active_timers
@@ -125,6 +137,29 @@
 	//END: ECS SHIT
 
 	return QDEL_HINT_QUEUE
+
+/datum/proc/gc_trace_data()
+	. = list()
+	if(length(active_timers))
+		.["datum-active-timers"] = json_encode(active_timers)
+	if(length(open_uis))
+		.["datum-open-uis"] = json_encode(open_uis)
+	if(length(status_traits))
+		.["datum-status-traits"] = json_encode(status_traits)
+	if(length(datum_components))
+		.["datum-components"] = json_encode(datum_components)
+	if(length(comp_lookup))
+		.["datum-component-lookups"] = json_encode(comp_lookup)
+
+///images are pretty generic, this should help a bit with tracking harddels related to them
+/image/gc_trace_data()
+	. = list(
+		"type" = "[type]",
+		"refcount" = refcount(src),
+		"icon" = "[icon]",
+		"icon_state" = "[icon_state]",
+		"loc" = loc ? "loc: [loc] ([COORD(loc)])" : "",
+	)
 
 ///Only override this if you know what you're doing. You do not know what you're doing
 ///This is a threat
@@ -206,16 +241,3 @@
  */
 /datum/proc/deserialize(list/data)
 	return TRUE
-
-/// Return text from this proc to provide extra context to hard deletes that happen to it
-/// Optional, you should use this for cases where replication is difficult and extra context is required
-/// Can be called more then once per object, use harddel_deets_dumped to avoid duplicate calls (I am so sorry)
-/datum/proc/dump_harddel_info()
-	return
-
-///images are pretty generic, this should help a bit with tracking harddels related to them
-/image/dump_harddel_info()
-	if(harddel_deets_dumped)
-		return
-	harddel_deets_dumped = TRUE
-	return "Image icon: [icon] - icon_state: [icon_state] [loc ? "loc: [loc] ([loc.x],[loc.y],[loc.z])" : ""]"

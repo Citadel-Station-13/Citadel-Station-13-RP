@@ -164,7 +164,7 @@
 	.["slot"] = tgui_loadout_selected(the_slot)
 	.["slotIndex"] = slot_index
 
-/datum/category_item/player_setup_item/loadout/gear/ui_act(action, list/params, datum/tgui/ui)
+/datum/category_item/player_setup_item/loadout/gear/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -220,7 +220,9 @@
 			entries[id] = entry_data
 			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_NAME))
 				return TRUE
-			var/name = sanitize(params["name"], MAX_NAME_LEN)
+			var/name = params["name"]
+			if(length(name) > MAX_NAME_LEN)
+				return TRUE
 			if(isnull(name))
 				return TRUE
 			if(name)
@@ -251,7 +253,9 @@
 			entries[id] = entry_data
 			if(!(entry.loadout_customize_flags & LOADOUT_CUSTOMIZE_DESC))
 				return TRUE
-			var/desc = sanitize(params["desc"], MAX_MESSAGE_LEN)
+			var/desc = params["desc"]
+			if(length(desc) > MAX_MESSAGE_LEN)
+				return TRUE
 			if(isnull(desc))
 				return TRUE
 			if(desc)
@@ -424,7 +428,7 @@
  * * flags - PREF_COPY_TO flags
  * * role - the role being used for equip
  */
-/datum/preferences/proc/generate_loadout_entry_list(flags, datum/role/role, override_slot = null)
+/datum/preferences/proc/generate_loadout_entry_list(flags, datum/prototype/role/role, override_slot = null)
 	RETURN_TYPE(/list)
 	. = list()
 	var/list/loadout_slots = get_character_data(CHARACTER_DATA_LOADOUT)
@@ -439,9 +443,9 @@
 		var/datum/loadout_entry/entry = gear_datums[id]
 		if(!(flags & PREF_COPY_TO_LOADOUT_IGNORE_ROLE))
 			if(length(entry.allowed_roles))
-				if(!istype(role, /datum/role/job))
+				if(!istype(role, /datum/prototype/role/job))
 					continue
-				var/datum/role/job/J = role
+				var/datum/prototype/role/job/J = role
 				if(!(J.title in entry.allowed_roles))
 					continue
 		if(!(flags & PREF_COPY_TO_LOADOUT_IGNORE_WHITELIST))

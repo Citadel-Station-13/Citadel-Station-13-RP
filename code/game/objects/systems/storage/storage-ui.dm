@@ -1,6 +1,75 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* UI Main *//
+
+/**
+ * @return TRUE if we did something (to interrupt clickchain)
+ */
+/datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force, suppressed)
+	if(!force && is_locked(actor.performer))
+		actor.chat_feedback(
+			msg = SPAN_WARNING("[parent] is locked."),
+			target = parent,
+		)
+		return TRUE
+	if(check_on_found_hooks(actor))
+		return TRUE
+	if(!suppressed && !isnull(actor) && sfx_open)
+		// todo: variable sound
+		playsound(actor.performer, sfx_open, 50, 1, -5)
+	// todo: jiggle animation
+	show(actor.initiator)
+	return TRUE
+
+/datum/object_system/storage/proc/show(mob/viewer)
+	if(viewer.active_storage == src)
+		refresh_ui(viewer)
+		return TRUE
+
+	viewer.active_storage?.hide(viewer)
+	viewer.active_storage = src
+
+	create_ui(viewer)
+
+	parent.object_storage_opened(viewer)
+
+/**
+ * if user not specified, it is 'all'.
+ */
+/datum/object_system/storage/proc/hide(mob/viewer)
+	if(isnull(viewer))
+		for(var/mob/iterating as anything in ui_by_mob)
+			hide(iterating)
+		return
+
+	if(viewer.active_storage != src)
+		stack_trace("viewer didn't have active storage set right, wtf?")
+	else
+		viewer.active_storage = null
+
+	cleanup_ui(viewer)
+
+	parent.object_storage_closed(viewer)
+
+/datum/object_system/storage/proc/refresh(mob/viewer)
+	ui_refresh_queued = FALSE
+	if(isnull(viewer))
+		for(var/mob/iterating as anything in ui_by_mob)
+			refresh_ui(iterating)
+		return
+	refresh_ui(viewer)
+
+
+/datum/object_system/storage/proc/reconsider_mob_viewable(mob/user)
+	if(isnull(user))
+		for(var/mob/viewer as anything in ui_by_mob)
+			reconsider_mob_viewable(viewer)
+		return
+	if(accessible_by_mob(user))
+		return
+	hide(user)
+
 //* Helper Datums *//
 
 /**
@@ -89,6 +158,20 @@
 /datum/object_system/storage/proc/uses_numerical_ui()
 	return ui_numerical_mode
 
+/**
+ * inspired by CM; allows tinting the background if something is nearly full
+ */
+/datum/object_system/storage/proc/get_ui_drawer_tint()
+	return null
+
+/datum/object_system/storage/proc/get_ui_predicted_max_items()
+	// good ol' widescreen predict length of 9 if max isn't set
+	// this is so things don't break when they expect an answer
+	return max_items || 9
+
+/**
+ * * Will not respect random access limits in numerical mode.
+ */
 /datum/object_system/storage/proc/create_ui_slot_mode(mob/user)
 	. = list()
 	var/atom/movable/screen/storage/closer/closer = new
@@ -100,17 +183,20 @@
 	var/view_x = decoded_view[1]
 	// clamp to max items if needed
 	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	if(max_items)
-		rendering_width = min(max_items, rendering_width)
 	// see if we need to process numerical display
 	var/list/datum/storage_numerical_display/numerical_rendered = uses_numerical_ui()? render_numerical_display() : null
 	// process indirection
-	var/atom/indirection = real_contents_loc()
+	var/obj/item/accessible = get_accessible_items()
+	// predict max items for slot mode
+	var/predicted_max_items = get_ui_predicted_max_items()
+	if(predicted_max_items)
+		rendering_width = min(predicted_max_items, rendering_width)
 	// if we have expand when needed, only show 1 more than the actual amount.
 	if(ui_expand_when_needed)
-		rendering_width = min(rendering_width, (isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)) + 1)
+		var/actually_needed = max((isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)) + 1, ui_expand_when_needed)
+		rendering_width = min(rendering_width, actually_needed)
 	// compute count and rows
-	var/item_count = isnull(numerical_rendered)? length(indirection.contents) : length(numerical_rendered)
+	var/item_count = isnull(numerical_rendered)? length(accessible) : length(numerical_rendered)
 	var/rows_needed = ROUND_UP(item_count / rendering_width) || 1
 	// prepare iteration
 	var/current_row = 1
@@ -118,6 +204,7 @@
 	// render boxes
 	boxes.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		LEFT+[STORAGE_UI_START_TILE_X + rendering_width - 1]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y + rows_needed - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	boxes.color = get_ui_drawer_tint()
 	// render closer
 	closer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X + rendering_width]:[STORAGE_UI_START_PIXEL_X],BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y]"
 	// render items
@@ -138,7 +225,7 @@
 				if(current_row > STORAGE_UI_MAX_ROWS)
 					break
 	else
-		for(var/obj/item/item in indirection)
+		for(var/obj/item/item in accessible)
 			var/atom/movable/screen/storage/item/slot/renderer = new(null, item)
 			. += renderer
 			// position
@@ -152,11 +239,20 @@
 				if(current_row > STORAGE_UI_MAX_ROWS)
 					break
 
+/**
+ * Volumetric rendering.
+ * * Doesn't respect random access limits.
+ */
 /datum/object_system/storage/proc/create_ui_volumetric_mode(mob/user)
 	// guard against divide-by-0's
 	if(!max_combined_volume)
 		return create_ui_slot_mode(user)
 	. = list()
+
+	//? resolve items
+
+	// resolve indirection
+	var/atom/indirection = real_contents_loc()
 
 	//? resolve view and rendering
 	// todo: clientless support is awful here
@@ -164,75 +260,106 @@
 	// resolve view
 	var/list/decoded_view = decode_view_size(user.client?.view || world.view)
 	var/view_x = decoded_view[1]
-	// setup initial width
-	var/rendering_width = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
-	var/rendering_width_in_pixels = rendering_width * 32
-	// effective max scales up if we're overrunning
+	// setup initial width limits
+	var/rendering_width_limit = STORAGE_UI_TILES_FOR_SCREEN_VIEW_X(view_x)
+	var/rendering_width_px_limit = rendering_width_limit * 32
+
+	// here's the tricky part
+	// we don't know our max (need to know how many items in one row which we don't)
+	// or our min (ditto)
+	// and during the row-forming ops we can actually end up adding more space as needed
+	// so:
+
+	// we keep a running current-width
+	var/rendering_width_px = 0
+	// we scale up effective max volume if we're overpacked
 	var/effective_max_volume = max(max_combined_volume, cached_combined_volume)
-	// scale down width to volume
-	rendering_width_in_pixels = min(rendering_width_in_pixels, effective_max_volume * VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO)
+	// we have some dynamic tuning for how many pixels things use
+	var/effective_pixel_volume_ratio = VOLUMETRIC_STORAGE_STANDARD_PIXEL_RATIO
+	// we compute how much pixels we ideally will need to display everything
+	var/ideal_width_px = effective_pixel_volume_ratio * effective_max_volume
+	// compute what the sane minimum is so small containers don't explode
+	// 'ui_expand_volumetric_minimum_items' is used here to make tiny containers not too small
+	var/sane_minimum = max((VOLUMETRIC_STORAGE_INFLATE_TO_TILES * WORLD_ICON_SIZE), ui_expand_volumetric_minimum_items * VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM)
+	// if too low,
+	if(ideal_width_px < sane_minimum)
+		// expand our horizons
+		effective_pixel_volume_ratio = sane_minimum / effective_max_volume
+		ideal_width_px = effective_pixel_volume_ratio * effective_max_volume
 
-	//? resolve items
+	// -- prepare for iteration --
 
-	// resolve indirection
-	var/atom/indirection = real_contents_loc()
+	// volume accounted for.
+	// when we render things smaller than minimum pixels per item, we effectively 'overrun'.
+	// this results in things looking full when they're not.
+	// so, we track how much actual volume we rendered
+	var/volume_accounted_for = 0
 
-	//? prepare iteration
-
-	// max x used in all rows, including padding.
-	var/maximum_used_width = 0
-	// current consumed x of row
-	var/iteration_used_width = 0
-	// current consumed item padding of row
-	var/iteration_used_padding = 0
+	// currently used inner-width;
+	// * this includes boxes and padding alike
+	var/iteration_width = 0
 	// current row
 	var/current_row = 1
-	// safety
+	// safety var
 	var/safety = VOLUMETRIC_STORAGE_MAX_ITEMS
-	// iterate and render
+
+	// -- iterate --
+
 	for(var/obj/item/item in indirection)
+		var/item_volume = item.get_weight_volume()
 		// check safety
-		safety--
-		if(safety <= 0)
+		if(--safety <= 0)
 			to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
 			break
-
-		// check row
-		if(iteration_used_width >= rendering_width_in_pixels)
+		var/item_width_px = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, item_volume * effective_pixel_volume_ratio)
+		var/space_left_px = rendering_width_px_limit - iteration_width
+		// check row; only wrap around when we're out of px-limit, or, if
+		// the current item would be unacceptably squashed by being stuffed in.
+		if(space_left_px < (item_width_px * 0.75))
 			// check if we're out of rows
 			if(current_row >= STORAGE_UI_MAX_ROWS)
 				to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
 				break
+			// do final row stuff
+			if(iteration_width > 0)
+				// subtract last item padding if any items were rendered
+				iteration_width -= VOLUMETRIC_STORAGE_ITEM_PADDING
+			iteration_width += VOLUMETRIC_STORAGE_EDGE_PADDING
+			rendering_width_px = max(rendering_width_px, iteration_width)
 			// make another row
-			current_row++
-			// register to maximum used width
-			// we add the edge padding for both edges, but remove the last item's padding.
-			maximum_used_width = max(maximum_used_width, iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING * 2 - VOLUMETRIC_STORAGE_ITEM_PADDING)
-			// reset vars
-			iteration_used_padding = 0
-			iteration_used_width = 0
+			++current_row
+			iteration_width = 0
 
 		// render the item
 		var/atom/movable/screen/storage/item/volumetric/renderer = new(null, item)
-		// scale it as necessary, to nearest multiple of 2
-		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(rendering_width_in_pixels * (item.get_weight_volume() / effective_max_volume), 2))
-		// emit to renderer
-		renderer.set_pixel_width(used_pixels)
-		// set screen loc
-		renderer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + (iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING) + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
-			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 		// add to emitted screen list
 		. += renderer
+		// scale it as necessary, to nearest multiple of 2
+		var/used_pixels = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, CEILING(ideal_width_px * (item_volume / effective_max_volume), 2))
+		renderer.set_pixel_width(used_pixels)
+		// set screen loc
+		renderer.screen_loc = "LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + VOLUMETRIC_STORAGE_EDGE_PADDING + iteration_width + (used_pixels - VOLUMETRIC_STORAGE_BOX_ICON_SIZE) * 0.5],\
+			BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
 		// add to iteration tracking
-		iteration_used_width += used_pixels
-		iteration_used_padding += VOLUMETRIC_STORAGE_ITEM_PADDING
-	// register to maximum used width
-	// we add the edge padding for both edges, but remove the last item's padding.
-	maximum_used_width = max(maximum_used_width, iteration_used_width + iteration_used_padding + VOLUMETRIC_STORAGE_EDGE_PADDING * 2 - VOLUMETRIC_STORAGE_ITEM_PADDING)
+		iteration_width += used_pixels + VOLUMETRIC_STORAGE_ITEM_PADDING
+		volume_accounted_for += item_volume
+
+	// if we only used one row..
+	if(current_row == 1)
+		// expand it if we still have room left to take into account the unused space.
+		if(volume_accounted_for < effective_max_volume)
+			iteration_width = min(rendering_width_px_limit, iteration_width + (effective_max_volume - volume_accounted_for) * effective_pixel_volume_ratio + VOLUMETRIC_STORAGE_ITEM_PADDING)
+	// do final row stuff
+	if(iteration_width > 0)
+		// subtract last item padding if any items were rendered
+		iteration_width -= VOLUMETRIC_STORAGE_ITEM_PADDING
+	iteration_width += VOLUMETRIC_STORAGE_EDGE_PADDING
+	rendering_width_px = max(rendering_width_px, iteration_width)
+
+	// -- render --
 
 	// now that everything's set up, we can render everything based on the solved sizes.
-	// middle size; we also keep in account padding so there's a smooth expansion instead of a sudden expansion at the end.
-	var/middle_width = max(maximum_used_width, rendering_width_in_pixels + iteration_used_padding)
+	var/middle_width = rendering_width_px + VOLUMETRIC_STORAGE_EDGE_PADDING * 2
 	// i hate byond i hate byond i hate byond i hate byond; this is because things break if we don't extend by 2 pixels
 	// at a time for left/right as we use a dumb transform matrix and screen loc to shift, instead of a scale and shift matrix
 	middle_width = CEILING(middle_width, 2)
@@ -253,6 +380,7 @@
 		BOTTOM+[STORAGE_UI_START_TILE_Y]:[STORAGE_UI_START_PIXEL_Y] to \
 		LEFT+[STORAGE_UI_START_TILE_X]:[STORAGE_UI_START_PIXEL_X + middle_shift],\
 		BOTTOM+[STORAGE_UI_START_TILE_Y + current_row - 1]:[STORAGE_UI_START_PIXEL_Y]"
+	p_box.color = get_ui_drawer_tint()
 	// render closer on bottom
 	var/atom/movable/screen/storage/closer/closer = new
 	. += closer

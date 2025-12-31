@@ -68,8 +68,64 @@
 				to_chat(O, SPAN_NOTICEALIEN("You mend the bone in your [E]"))
 				return//fix one then stop, trigger again to mend more
 
+/datum/ability/species/xenomorph_hybrid/sneak
+	name = "Sneak around"
+	desc = "Sneak around using your natural affinity to stealth."
+	action_state = "alien-default"
+	windup = 3 SECOND
+	interact_type = ABILITY_INTERACT_TOGGLE
+	always_bind = TRUE
+	ability_check_flags = ABILITY_CHECK_STANDING
+	mobility_check_flags = MOBILITY_CAN_MOVE
+	var/move_speed_mod = /datum/movespeed_modifier/sneaky_xenohybrid
+	var/action_speed_mod = /datum/actionspeed_modifier/sneaky_xenohybrid
 
+/datum/movespeed_modifier/sneaky_xenohybrid
+	id = "sneaking_xenomorph_hybrid"
+	mod_multiply_speed = 0.25
+	limit_tiles_per_second_max = 0.01
+	variable = TRUE
 
+/datum/actionspeed_modifier/sneaky_xenohybrid
+	multiplicative_slowdown = 2 // You take care to work silently
 
+/datum/ability/species/xenomorph_hybrid/sneak/on_enable()
+	var/mob/living/carbon/human/O = owner
+	if(istype(O))
+		register_signals()
+		O.visible_emote("fades into the shadows.")
+		animate(O, alpha = 20, time = 3 SECOND)
+		O.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+		ADD_TRAIT(O, TRAIT_MOB_IGNORED_BY_AI, XENOHYBRID_SNEAK_ABILITY)
+		O.update_movespeed_modifier(move_speed_mod)
+		O.add_actionspeed_modifier(action_speed_mod)
+		O.base_attack_cooldown = initial(O.base_attack_cooldown) * 5
 
+/datum/ability/species/xenomorph_hybrid/sneak/proc/register_signals()
+	RegisterSignal(owner, COMSIG_MOB_ON_THROW, PROC_REF(on_potential_attack))
+	RegisterSignal(owner, COMSIG_MOB_MELEE_IMPACT_HOOK, PROC_REF(on_potential_attack))
+	RegisterSignal(owner, COMSIG_MOB_ON_ITEM_MELEE_ATTACK, PROC_REF(on_potential_attack))
+	RegisterSignal(owner, COMSIG_MOB_WEAPON_FIRE_ATTEMPT, PROC_REF(on_potential_attack))
 
+/datum/ability/species/xenomorph_hybrid/sneak/proc/unregister_signals()
+	UnregisterSignal(owner, COMSIG_MOB_ON_THROW)
+	UnregisterSignal(owner, COMSIG_MOB_MELEE_IMPACT_HOOK)
+	UnregisterSignal(owner, COMSIG_MOB_ON_ITEM_MELEE_ATTACK)
+	UnregisterSignal(owner, COMSIG_MOB_WEAPON_FIRE_ATTEMPT)
+
+// Throwing, shooting and punching all are decloak actions
+/datum/ability/species/xenomorph_hybrid/sneak/proc/on_potential_attack()
+	SIGNAL_HANDLER
+	disable(TRUE)
+
+/datum/ability/species/xenomorph_hybrid/sneak/on_disable()
+	var/mob/living/carbon/human/O = owner
+	if(istype(O))
+		O.visible_emote("appears out of the shadows.")
+		O.mouse_opacity = MOUSE_OPACITY_OPAQUE
+		REMOVE_TRAIT(O, TRAIT_MOB_IGNORED_BY_AI, XENOHYBRID_SNEAK_ABILITY)
+		O.remove_movespeed_modifier(move_speed_mod)
+		O.remove_actionspeed_modifier(action_speed_mod)
+		O.base_attack_cooldown = initial(O.base_attack_cooldown)
+		animate(O, alpha = 255, time = 0.5 SECOND)
+		unregister_signals()

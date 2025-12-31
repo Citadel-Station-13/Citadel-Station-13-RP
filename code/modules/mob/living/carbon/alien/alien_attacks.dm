@@ -21,8 +21,6 @@
 			grabbed_by += G
 			G.affecting = src
 
-			LAssailant = L
-
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			for(var/mob/O in viewers(src, null))
 				if ((O.client && !( O.has_status_effect(/datum/status_effect/sight/blindness) )))

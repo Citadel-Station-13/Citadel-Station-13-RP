@@ -14,7 +14,7 @@
 
 /obj/machinery/biogenerator
 	name = "biogenerator"
-	desc = "Converts plants into biomass, which can be used for fertilizer and sort-of-synthetic products."
+	desc = "Converts plants into biomass, which can be used for fertilizer and sort-of-synthetic products.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/biogenerator.dmi'
 	icon_state = "biogen"
 	base_icon_state = "biogen"
@@ -188,7 +188,7 @@
 
 	return static_data
 
-/obj/machinery/biogenerator/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/biogenerator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

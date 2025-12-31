@@ -2569,7 +2569,7 @@
 	dir = 8;
 	pixel_x = -22
 	},
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /obj/item/gun/projectile/energy/zip{
 	name = "First Mate Zippy"
 	},
@@ -3210,8 +3210,8 @@
 /area/piratebase/bunks)
 "DI" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon/gunsword,
-/obj/item/gun/projectile/energy/gun/fluff/gunsword,
+/obj/item/cell/sword_buster,
+/obj/item/gun/projectile/energy/gun/sword_buster,
 /turf/simulated/floor/reinforced,
 /area/piratebase/vault)
 "DJ" = (
@@ -4387,7 +4387,7 @@
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/engine)
 "Nn" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Np" = (
 /obj/structure/table/rack/steel,

@@ -181,6 +181,11 @@
 	/// Used to manually offset buckle pixel offsets. Ignored if we have a riding component.
 	var/buckle_pixel_y = 0
 
+/atom/movable/EarlyDestroy()
+	// don't use forcemove or abstract_move as that emits events
+	loc = null
+	return ..()
+
 /atom/movable/Initialize(mapload)
 	. = ..()
 	// WARNING WARNING SHITCODE THIS MEANS THAT ONLY TURFS RECEIVE MAPLOAD ENTERED

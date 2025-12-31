@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * this is only on the turfs inside the overmap,
@@ -12,6 +12,7 @@
 	icon_state = "start"
 	// todo: sensor update
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+	unique = FALSE
 
 	/// our overmap
 	var/datum/overmap/overmap

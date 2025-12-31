@@ -5,17 +5,20 @@
 	icon_state = "suspension2"
 	density = 1
 	req_access = list(ACCESS_SCIENCE_MAIN)
-	var/obj/item/cell/cell
+	var/cell_type = /obj/item/cell/basic/tier_1/large
+	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_WEAPON | CELL_TYPE_SMALL
 	var/locked = TRUE
 	var/power_use = 5
 	var/obj/effect/suspension_field/suspension_field
 
 /obj/machinery/suspension_gen/Initialize(mapload)
 	. = ..()
-	qdel(cell)
-	cell = new /obj/item/cell/high(src)
+	if(. == INITIALIZE_HINT_QDEL)
+		return
+	init_cell_slot_easy_machine(cell_type, cell_accept)
 
 /obj/machinery/suspension_gen/process(delta_time)
+	var/obj/item/cell/cell = get_cell()
 	if(suspension_field)
 		if(cell.use(power_use))
 			var/turf/T = get_turf(suspension_field)
@@ -36,17 +39,6 @@
 			deactivate()
 
 /obj/machinery/suspension_gen/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(panel_open)
-		if(cell)
-			to_chat(user, SPAN_NOTICE("You remove [cell]."))
-			cell.forceMove(loc)
-			cell.add_fingerprint(user)
-			cell.update_icon()
-
-			icon_state = "suspension0"
-			cell = null
-		return
-
 	ui_interact(user)
 
 /obj/machinery/suspension_gen/ui_interact(mob/user, datum/tgui/ui)
@@ -57,20 +49,22 @@
 
 /obj/machinery/suspension_gen/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = ..()
+	var/obj/item/cell/cell = get_cell()
 
 	data["cell"] = cell
 	data["cellCharge"] = cell?.charge
-	data["cellMaxCharge"] = cell?.maxcharge
+	data["cellMaxCharge"] = cell?.max_charge
 
 	data["locked"] = locked
 	data["suspension_field"] = suspension_field
 
 	return data
 
-/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/suspension_gen/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
+	var/obj/item/cell/cell = get_cell()
 	switch(action)
 		if("toggle_field")
 			if(locked)
@@ -107,22 +101,13 @@
 				desc = "It has stubby legs bolted up against it's body for stabilising."
 		else
 			to_chat(user, SPAN_WARNING("You are unable to unsecure [src] while it is active!"))
-	else if(istype(W, /obj/item/cell))
-		if(panel_open)
-			if(cell)
-				to_chat(user, SPAN_WARNING("There is a power cell already installed."))
-				return
-			if(!user.attempt_insert_item_for_installation(W, src))
-				return
-			cell = W
-			to_chat(user, SPAN_NOTICE("You insert [cell]."))
-			icon_state = "suspension1"
 	else
 		if(check_access(W))
 			locked = !locked
 			to_chat(user, SPAN_NOTICE("You [locked ? "lock" : "unlock"] [src]."))
 		else
 			to_chat(user, SPAN_WARNING("[src] flashes \'<i>Access denied.</i>\'"))
+	return ..()
 
 /obj/machinery/suspension_gen/emag_act(var/remaining_charges, var/mob/user)
 	if(locked)

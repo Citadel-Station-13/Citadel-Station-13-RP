@@ -7,13 +7,6 @@
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	siemens_coefficient = 0.2
-	allowed = list(
-		/obj/item/gun,
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/bluespace_radio,
-	)
 	air_type = /obj/item/tank/vox
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/vox
 	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/vox
@@ -52,7 +45,7 @@
 	suit_type = "dense alien"
 	emp_protection = 40 //change this to 30 if too high.
 	req_access = list(ACCESS_FACTION_SYNDICATE)
-	cell_type =  /obj/item/cell/hyper
+	cell_type =  /obj/item/cell/basic/tier_4/large
 	initial_modules = list(
 		/obj/item/hardsuit_module/mounted/energy_blade,
 		/obj/item/hardsuit_module/sprinter,
@@ -68,7 +61,7 @@
 	icon_state = "voxstealth_rig"
 	emp_protection = 40 //change this to 30 if too high.
 	req_access = list(ACCESS_FACTION_SYNDICATE)
-	cell_type =  /obj/item/cell/hyper
+	cell_type =  /obj/item/cell/basic/tier_4/large
 	initial_modules = list(
 		/obj/item/hardsuit_module/stealth_field,
 		/obj/item/hardsuit_module/electrowarfare_suite,

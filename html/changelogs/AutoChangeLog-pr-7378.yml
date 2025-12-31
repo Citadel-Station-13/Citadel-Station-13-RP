@@ -1,0 +1,4 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - bugfix: "make sure holosphere's shell is alive when reviving the hologram"

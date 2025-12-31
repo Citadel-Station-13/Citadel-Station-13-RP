@@ -153,12 +153,15 @@
 
 /area/engineering/atmos/atmos_lobby
 	name = "\improper Atmospherics Lobby"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/medical/recovery_room
 	name = "\improper Recovery Room"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/public_bunker
 	name = "\improper Public Bunker"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/crew_quarters/public_bunker/dorm_one
 	name = "\improper Public Bunker Dorm 1"
@@ -172,6 +175,7 @@
 /area/bridge/bunker
 	name = "\improper Command Bunker"
 	icon_state = "bridge"
+	nightshift_level = NIGHTSHIFT_LEVEL_COMMAND_SENSITIVE
 
 /area/crew_quarters/maint_dorm
 	name = "\improper Maintenance - Unknown"
@@ -182,21 +186,25 @@
 /area/maintenance/maint_bar
 	name = "\improper Maintenance Bar"
 	icon_state = "fsmaint"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/crew_quarters/bar_backroom
 	name = "\improper Bar Backroom"
 	icon_state = "bar"
 	sound_env = SMALL_SOFTFLOOR
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/crew_quarters/game_room
 	name = "\improper Game Room"
 	icon_state = "bar"
 	sound_env = SMALL_SOFTFLOOR
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/rift/surfaceeva
 	name = "\improper Primary Surface EVA"
 	sound_env = SMALL_ENCLOSED
-
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
+	
 /area/rift/surfaceeva/airlock/main
 	name = "\improper Primary Surface Airlock"
 
@@ -209,9 +217,13 @@
 /area/rift/surfaceeva/airlock/arrivals/secondary
 	name = "\improper Arrivals Airlock Two"
 
+
+/area/rift/surfaceeva/aa
+	nightshift_level = NIGHTSHIFT_LEVEL_COMMAND_SENSITIVE
+
 /area/rift/surfaceeva/aa/surface_north
 	name = "\improper Surface One - North Anti-Air Battery"
-
+	
 /area/rift/surfaceeva/aa/surface_south
 	name = "\improper Surface One - South Anti-Air Battery"
 
@@ -220,6 +232,7 @@
 
 /area/rift/surfaceeva/aa/cliff_south
 	name = "\improper Surface Three - South Anti-Air Battery"
+
 
 /area/rift/surfaceeva/cargodock
 	name = "\improper Cargo Dock"
@@ -281,21 +294,29 @@
 // Stairwells
 //
 
+/area/rift/stairwell/primary
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
+
 /area/rift/stairwell/primary/undertwo
 	name = "\improper Central Primary Stairwell - Underground Two"
 	icon_state = "dk_yellow"
+
 /area/rift/stairwell/primary/underone
 	name = "\improper Central Primary Stairwell - Underground One"
 	icon_state = "dk_yellow"
+
 /area/rift/stairwell/primary/surfaceone
 	name = "\improper Central Primary Stairwell - Surface One"
 	icon_state = "dk_yellow"
+
 /area/rift/stairwell/primary/surfacetwo
 	name = "\improper Central Primary Stairwell - Surface Two"
 	icon_state = "dk_yellow"
+
 /area/rift/stairwell/primary/surfacethree
 	name = "\improper Central Primary Stairwell - Surface Three"
 	icon_state = "dk_yellow"
+
 /area/rift/stairwell/primary/surfacefour
 	name = "\improper Central Primary Stairwell - Surface Four"
 	icon_state = "dk_yellow"
@@ -320,6 +341,7 @@
 	name = "Outside - Surface"
 	ambience = AMBIENCE_LYTHIOS
 	is_outside = OUTSIDE_YES
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/rift/surfacebase/outside/outside1
 	icon_state = "outside1"
@@ -332,64 +354,6 @@
 
 /area/rift/surfacebase/outside/empty
 	name = "Outside - Empty Area"
-
-/area/tether/surfacebase/north_stairs_one
-	name = "\improper North Stairwell First Floor"
-	icon_state = "dk_yellow"
-/area/tether/surfacebase/north_stairs_two
-	name = "\improper North Stairwell Second Floor"
-	icon_state = "dk_yellow"
-/area/tether/surfacebase/north_stairs_three
-	name = "\improper North Stairwell Third Floor"
-	icon_state = "dk_yellow"
-
-
-// /area/tether/surfacebase/east_stairs_one //This is just part of a lower hallway
-
-/area/tether/surfacebase/east_stairs_two
-	name = "\improper East Stairwell Second Floor"
-	icon_state = "dk_yellow"
-/area/vacant/vacant_site/east
-	name = "\improper East Base Vacant Site"
-/area/vacant/vacant_library
-	name = "\improper Atrium Construction Site"
-/area/vacant/vacant_bar
-	name = "\improper Vacant Bar"
-
-// /area/tether/surfacebase/east_stairs_three //This is just part of an upper hallway
-
-/area/tether/surfacebase/emergency_storage
-	icon_state = "emergencystorage"
-/area/tether/surfacebase/emergency_storage/rnd
-	name = "\improper RnD Emergency Storage"
-/area/tether/surfacebase/emergency_storage/atmos
-	name = "\improper Atmospherics Emergency Storage"
-/area/tether/surfacebase/emergency_storage/atrium
-	name = "\improper Atrium Emergency Storage"
-
-// Main mining area
-/area/tether/surfacebase/mining_main
-	icon_state = "outpost_mine_main"
-/area/tether/surfacebase/mining_main/airlock
-	name = "\improper Mining Airlock"
-/area/tether/surfacebase/mining_main/storage
-	name = "\improper Mining Gear Storage"
-/area/tether/surfacebase/mining_main/uxstorage
-	name = "\improper Mining Secondary Storage"
-/area/tether/surfacebase/mining_main/ore
-	name = "\improper Mining Ore Storage"
-/area/tether/surfacebase/mining_main/eva
-	name = "\improper Mining EVA"
-/area/tether/surfacebase/mining_main/break_room
-	name = "\improper Mining Crew Area"
-/area/tether/surfacebase/mining_main/refinery
-	name = "\improper Mining Refinery"
-/area/tether/surfacebase/mining_main/external
-	name = "\improper Mining Refinery"
-/area/tether/surfacebase/mining_main/bathroom
-	name = "\improper Mining Bathroom"
-/area/tether/surfacebase/mining_main/lobby
-	name = "\improper Mining Lobby"
 
 // Mining Underdark // ???? Fix this.
 /area/mine/unexplored/underdark
@@ -442,24 +406,17 @@
 /area/outpost/mining_main/outpost/maintenance/north
 	name = "\improper Outpost Maintenance North"
 
-// Solars map areas
-/area/tether/outpost/solars_outside
-	name = "\improper Solar Farm"
-	is_outside = OUTSIDE_YES
-
-/area/tether/outpost/solars_shed
-	name = "\improper Solar Farm Shed"
-
 // Geothermal power areas
 /area/rift/geothermal
 	name = "\improper Geothermal Power Plant"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/rift/geothermal/balcony
 	name = "\improper Geothermal Overview balcony"
 
 /area/rift/geothermal/sauna
 	name = "\improper Geothermal Sauna"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/maintenance/substation/medsec
 	name = "\improper MedSec Substation"
@@ -477,63 +434,13 @@
 	name = "\improper Civilian West Substation"
 
 
-/area/tether/surfacebase/security
-	icon_state = "security"
-
-/area/tether/surfacebase/security/breakroom
-	name = "\improper Surface Security Break Room"
-
-/area/tether/surfacebase/security/lobby
-	name = "\improper Surface Security Lobby"
-
-/area/tether/surfacebase/security/common
-	name = "\improper Surface Security Room"
-
 /area/rift/surfacebase/security/armory
 	name = "\improper Surface Armory"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
 
 /area/rift/surfacebase/security/checkpoint
 	name = "\improper Surface Checkpoint Office"
-
-/area/tether/surfacebase/security/hallway
-	name = "\improper Surface Checkpoint Hallway"
-
-
-/area/engineering/atmos/processing
-	name = "Atmospherics Processing"
-	icon_state = "atmos"
-	sound_env = LARGE_ENCLOSED
-
-/area/engineering/atmos/intake
-	name = "\improper Atmospherics Intake"
-	icon_state = "atmos"
-	sound_env = MOUNTAINS
-
-
-/area/engineering/engine_core
-	name = "\improper Supermatter Engine Core"
-
-/area/engineering/turbine_room
-	name = "\improper Gas Turbine Engine Room"
-
-/area/engineering/atmos/hallway
-	name = "\improper Atmospherics Main Hallway"
-
-/area/engineering/lower/lobby
-	name = "\improper Engineering Surface Lobby"
-
-/area/engineering/lower/breakroom
-	name = "\improper Engineering Surface Break Room"
-
-/area/engineering/lower/corridor
-	name = "\improper Tether Lower Service Corridor"
-
-/area/engineering/lower/atmos_lockers
-	name = "\improper Engineering Atmos Locker Room"
-
-/area/engineering/lower/atmos_eva
-	name = "\improper Engineering Atmos EVA"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/crew_quarters/locker/laundry_arrival
 	name = "\improper Arrivals Laundry"
@@ -592,6 +499,7 @@
 // Research
 /area/rnd/xenobiology/cell
 	name = "\improper Xenobiology Cell 1"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/rnd/xenobiology/cell/two
 	name = "\improper Xenobiology Cell 2"
@@ -614,74 +522,6 @@
 /area/rnd/xenobiology/xenoflora/lab_atmos
 	name = "\improper Xenoflora Atmospherics Lab"
 
-/area/rnd/breakroom
-	name = "\improper Research Break Room"
-	icon_state = "research"
-
-/area/rnd/reception_desk
-	name = "\improper Research Reception Desk"
-	icon_state = "research"
-
-/area/rnd/lockers
-	name = "\improper Research Locker Room"
-	icon_state = "research"
-
-/area/rnd/external
-	name = "\improper Research External Access"
-	icon_state = "research"
-
-/area/rnd/hallway
-	name = "\improper Research Lower Hallway"
-	icon_state = "research"
-
-/area/rnd/anomaly_lab
-	name = "\improper Anomaly Lab"
-	icon_state = "research"
-
-/area/rnd/anomaly_lab/containment_one
-	name = "\improper Anomaly Lab - Containment One"
-	icon_state = "research"
-
-/area/rnd/anomaly_lab/containment_two
-	name = "\improper Anomaly Lab - Containment Two"
-	icon_state = "research"
-
-/area/rnd/xenoarch_storage
-	name = "\improper Xenoarch Storage"
-	icon_state = "research"
-
-
-// Misc
-/area/hallway/lower/third_south
-	name = "\improper Hallway Third Floor South"
-	icon_state = "hallC1"
-
-/area/hallway/lower/first_west
-	name = "\improper Hallway First Floor West"
-	icon_state = "hallC1"
-
-
-/area/storage/surface_eva
-	icon_state = "storage"
-	name = "\improper Surface EVA"
-
-/area/storage/surface_eva/external
-	name = "\improper Surface EVA Access"
-
-
-/area/tether/surfacebase/shuttle_pad
-	name = "\improper Tether Shuttle Pad"
-
-/area/tether/surfacebase/reading_room
-	name = "\improper Reading Room"
-
-/area/tether/surfacebase/vacant_site
-	name = "\improper Vacant Site"
-
-/area/crew_quarters/freezer
-	name = "\improper Kitchen Freezer"
-
-
 //
 // Station Z Levels
 //
@@ -690,60 +530,12 @@
 /area/rift/station/stairs_one
 	name = "\improper Engineering Stairwell First Floor"
 	icon_state = "dk_yellow"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
 /area/rift/station/stairs_two
 	name = "\improper Engineering Stairwell Second Floor"
 	icon_state = "dk_yellow"
-
-/area/tether/station/stairs_three
-	name = "\improper Station Stairwell Third Floor"
-	icon_state = "dk_yellow"
-
-/area/tether/station/dock_one
-	name = "\improper Dock One"
-	icon_state = "dk_yellow"
-
-/area/tether/station/dock_two
-	name = "\improper Dock Two"
-	icon_state = "dk_yellow"
-
-
-/area/crew_quarters/showers
-	name = "\improper Unisex Showers"
-	icon_state = "recreation_area_restroom"
-
-/area/crew_quarters/sleep/maintDorm1
-	name = "\improper Construction Dorm 1"
-	icon_state = "Sleep"
-
-/area/crew_quarters/sleep/maintDorm2
-	name = "\improper Construction Dorm 2"
-	icon_state = "Sleep"
-
-/area/crew_quarters/sleep/maintDorm3
-	name = "\improper Construction Dorm 3"
-	icon_state = "Sleep"
-
-/area/crew_quarters/sleep/maintDorm4
-	name = "\improper Construction Dorm 4"
-	icon_state = "Sleep"
-
-/area/crew_quarters/sleep/Dorm_1/holo
-	name = "\improper Dorm 1 Holodeck"
-	icon_state = "dk_yellow"
-
-/area/crew_quarters/sleep/Dorm_3/holo
-	name = "\improper Dorm 3 Holodeck"
-	icon_state = "dk_yellow"
-
-/area/crew_quarters/sleep/Dorm_5/holo
-	name = "\improper Dorm 5 Holodeck"
-	icon_state = "dk_yellow"
-
-/area/crew_quarters/sleep/Dorm_7/holo
-	name = "\improper Dorm 7 Holodeck"
-	icon_state = "dk_yellow"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_HALLWAYS
 
 /area/holodeck/holodorm/source_basic
 	name = "\improper Holodeck Source"
@@ -772,101 +564,80 @@
 /area/holodeck/holodorm/source_off
 	name = "\improper Holodeck Source"
 
-
-/area/ai/foyer
-	name = "\improper AI Core Access"
-
-
 /area/medical/virologyisolation
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
+	
 /area/medical/virologymorgue
 	name = "\improper Virology Morgue"
 	icon_state = "virology"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/medical/recoveryrestroom
 	name = "\improper Recovery Room Restroom"
 	icon_state = "virology"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/security/hallway
 	name = "\improper Security Hallway"
 	icon_state = "security"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/security/hallwayaux
 	name = "\improper Security Armory Hallway"
 	icon_state = "security"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_HALLWAYS
 
 /area/security/forensics
 	name = "\improper Forensics Lab"
 	icon_state = "security"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/breakroom
 	name = "\improper Security Breakroom"
 	icon_state = "security"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/security/brig/visitation
 	name = "\improper Visitation"
 	icon_state = "security"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/brig/bathroom
 	name = "\improper Brig Bathroom"
 	icon_state = "security"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE
 
 /area/security/armory/blue
 	name = "\improper Armory - Blue"
 	icon_state = "armory"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
 
 /area/security/armory/red
 	name = "\improper Armory - Red"
 	icon_state = "armory"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
 
 /area/security/evastorage
 	name = "\improper Security EVA Equipment Storage"
 	icon_state = "security"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/observation
 	name = "\improper Brig Observation"
 	icon_state = "riot_control"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/eva
 	name = "\improper Security EVA"
 	icon_state = "security_equip_storage"
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/security/recstorage
 	name = "\improper Brig Recreation Storage"
 	icon_state = "brig"
-
-
-/area/engineering/atmos/backup
-	name = "\improper Backup Atmospherics"
-
-/area/engineering/engine_balcony
-	name = "\improper Engine Room Balcony"
-
-/area/engineering/foyer_mezzenine
-	name = "\improper Engineering Mezzenine"
-
-
-/area/hallway/station
-	icon_state = "hallC1"
-
-/area/hallway/station/atrium
-	name = "\improper Main Station Atrium"
-
-/area/hallway/station/port
-	name = "\improper Main Port Hallway"
-
-/area/hallway/station/starboard
-	name = "\improper Main Starboard Hallway"
-
-/area/hallway/station/upper
-	name = "\improper Main Upper Hallway"
-
-/area/hallway/station/docks
-	name = "\improper Docks Hallway"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/maintenance/station
 	icon_state = "fsmaint"
@@ -910,29 +681,9 @@
 	name = "Public Meeting Room"
 	icon_state = "blue"
 	sound_env = SMALL_SOFTFLOOR
-
-
-/area/shuttle/tether/crash1
-	name = "\improper Crash Site 1"
-	icon_state = "shuttle2"
-
-/area/shuttle/tether/crash2
-	name = "\improper Crash Site 2"
-	icon_state = "shuttle2"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 // Exploration Shuttle stuff //
-/area/tether/station/excursion_dock
-	name = "\improper Excursion Shuttle Dock"
-
-/area/tether/station/explorer_prep
-	name = "\improper Explorer Prep Room"
-
-/area/tether/station/explorer_meeting
-	name = "\improper Explorer Meeting Room"
-
-/area/tether/station/pathfinder_office
-	name = "\improper Pathfinder's Office"
 
 /area/shuttle/excursion
 	name = "\improper Excursion Shuttle"
@@ -967,13 +718,14 @@
 /area/rift/station/adherent_maintenance
 	icon_state = "yellow"
 	name = "\improper Adherent Maintenance"
-
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 //Fighter Bay
 /area/rift/station/fighter_bay
 	icon_state = "blue"
 	name = "\improper Fighter Bay"
 	ambience = AMBIENCE_HANGAR
+	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
 
 /area/rift/station/fighter_bay/hangar
 	name = "\improper Fighter Hangar"
@@ -995,6 +747,7 @@
 /area/rift/station/public_garden
 	icon_state = "green"
 	name = "\improper Public Garden"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/rift/station/public_garden/stairwell
 	name = "\improper Public Garden Stairwell"
@@ -1052,6 +805,7 @@ Do this eventually. */
 /area/rift/surfacebase/outside/west
 	name = "Western Plains Surface"
 	icon_state = "green"
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/rift/surfacebase/outside/west/submap_seedzone
 	name = "Western Plains Surface"
@@ -1086,6 +840,7 @@ Do this eventually. */
 /area/rift/trade_shop
 	name = "\improper Trade Shop"
 	icon_state = "green"
+	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
 /area/rift/trade_shop/landing_pad
 	name = "\improper Trade Shop Landing Pad"
@@ -1187,6 +942,7 @@ Do this eventually. */
 //Other Lythios outdoor areas
 /area/rift/exterior
 	is_outside = OUTSIDE_YES
+	nightshift_level = NIGHTSHIFT_LEVEL_UNSET
 
 /area/rift/exterior/nuketown
 	name = "\improper High Yield Explosives Test Site"
@@ -1211,3 +967,7 @@ Do this eventually. */
 
 /area/rift/exterior/mineshaft
 	name = "\improper Abandoned Mineshaft"
+
+/area/rift/exterior/hangar
+	name = "\improper Abandoned Hangar"
+

@@ -23,6 +23,7 @@
 	/// should we use bounds overlays?
 	var/uses_bounds_overlay = FALSE
 
+	//  TODO: ALL OF THESE BELOW VARIABLES shouldn't be on /obj/overmap level
 	/// Does this show up on nav computers automatically.
 	var/known = TRUE
 	/// If set to TRUE will show up on ship sensors for detailed scans.
@@ -58,8 +59,6 @@
 	if(!(LEGACY_MAP_DATUM).use_overmap)
 		return INITIALIZE_HINT_QDEL
 
-	if(known && !mapload)
-		SSovermaps.queue_helm_computer_rebuild()
 	update_icon()
 
 /obj/overmap/Destroy()
@@ -115,7 +114,7 @@
 	expire_skybox_representation()
 	build_skybox_representation()
 	for(var/obj/overmap/entity/visitable/O in loc)
-		for(var/z in O.map_z)
+		for(var/z in O.location?.get_owned_z_indices())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/overmap/proc/get_scan_data(mob/user)
@@ -129,13 +128,13 @@
 /obj/overmap/Crossed(var/obj/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
-		for(var/z in other.map_z)
+		for(var/z in other.get_z_indices())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/overmap/Uncrossed(var/obj/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
-		for(var/z in other.map_z)
+		for(var/z in other.get_z_indices())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/overmap/update_icon()

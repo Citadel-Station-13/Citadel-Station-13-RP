@@ -33,7 +33,7 @@ function Verify-Node {
 	Write-Output "Verifying Node checksum"
 	$FileHash = Get-FileHash $NodeTarget -Algorithm SHA256
 	$ActualSha = $FileHash.Hash
-	$LoginResponse = Invoke-WebRequest "https://nodejs.org/download/release/v$NodeVersion/SHASUMS256.txt"
+	$LoginResponse = Invoke-WebRequest "https://nodejs.org/download/release/v$NodeVersion/SHASUMS256.txt" -UseBasicParsing
 	$ShaArray = $LoginResponse.Content.split("`n")
 	foreach ($ShaArrayEntry in $ShaArray) {
 		$EntrySplit = $ShaArrayEntry -split "\s+"
@@ -72,14 +72,7 @@ if ($Env:TG_BOOTSTRAP_CACHE) {
 # Get OS version
 [int]$OSMajor = (Get-WmiObject -Class Win32_OperatingSystem).Version.Split(".")[0]
 
-# Set Node version based on OS version
-if ($OSMajor -lt 10) {
-	# Anything under Windows 10
-	$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_COMPAT"
-}
-else {
-	$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_LTS"
-}
+$NodeVersion = Extract-Variable -Path "$BaseDir\..\..\dependencies.sh" -Key "NODE_VERSION_LTS"
 
 $NodeSource = "https://nodejs.org/download/release/v$NodeVersion/win-x64/node.exe"
 $NodeTargetDir = "$Cache\node-v$NodeVersion-x64"

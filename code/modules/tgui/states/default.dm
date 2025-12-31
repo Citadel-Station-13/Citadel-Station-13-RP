@@ -10,6 +10,7 @@
  * and view for robots.
  */
 
+// TODO: ughhhhhh check the logic on this and define what this even semantically means
 GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 
 /datum/ui_state/default/can_use_topic(src_object, mob/user)
@@ -41,11 +42,13 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 	if(. != UI_INTERACTIVE)
 		return
 
-	// Prevents the AI from using Topic on admin levels (by for example viewing through the court/thunderdome cameras)
-	// unless it's on the same level as the object it's interacting with.
-	var/turf/T = get_turf(src_object)
-	if(!T || !(z == T.z || (T.z in (LEGACY_MAP_DATUM).player_levels)))
-		return UI_CLOSE
+	// Make sure it's in the same map
+	var/turf/src_turf = get_turf(src_object)
+	var/turf/our_turf = get_turf(src)
+	var/datum/map_level/src_level = src_turf && SSmapping.ordered_levels[src_turf.z]
+	var/datum/map_level/our_level = our_turf && SSmapping.ordered_levels[our_turf.z]
+	if(!src_level || (src_level.parent_map != our_level.parent_map))
+		return FALSE
 
 	// If an object is in view then we can interact with it
 	if(src_object in view(client.view, src))

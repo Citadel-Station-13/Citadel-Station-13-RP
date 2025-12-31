@@ -98,6 +98,10 @@
 		incorporeal_move = initial(incorporeal_move)
 		density = initial(density)
 		remove_movespeed_modifier(/datum/movespeed_modifier/forced_speedup/shadein_jaunt)
+		for(var/id in atom_huds)
+			var/image/image = atom_huds[id]
+			image.alpha = initial(image.alpha)
+
 		update_icon()
 
 		//Cosmetics mostly
@@ -151,6 +155,12 @@
 		sleep(5)
 		invisibility = INVISIBILITY_LEVEL_TWO
 		see_invisible = INVISIBILITY_LEVEL_TWO
+
+		//Medical/security/etc. HUD displays should not be able to see us.
+		for(var/id in atom_huds)
+			var/image/image = atom_huds[id]
+			image.alpha = 0
+
 		// cut_overlays()
 		update_icon()
 		alpha = 127

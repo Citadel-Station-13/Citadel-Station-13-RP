@@ -1,5 +1,7 @@
 //DO NOT ADD MECHA PARTS TO THE GAME WITH THE DEFAULT "SPRITE ME" SPRITE!
 //I'm annoyed I even have to tell you this! SPRITE FIRST, then commit.
+#define EQUIP_HEAVY_WEAPON "heavy_weapon" //Should only be used on weapons meant for 3x3 mechs.
+
 #define EQUIP_HULL		"hull"
 #define EQUIP_WEAPON	"weapon"
 #define EQUIP_UTILITY	"utility"
@@ -34,6 +36,11 @@
 	var/enable_special = FALSE
 	///Does the component slow/speed up the suit?
 	var/step_delay = 0
+
+/obj/item/vehicle_module/Destroy()
+	if(chassis)
+		detach()
+	return ..()
 
 /obj/item/vehicle_module/proc/do_after_cooldown(target=1)
 	sleep(equip_cooldown)
@@ -74,6 +81,9 @@
 			if(equip_type == EQUIP_WEAPON)
 				chassis.weapon_equipment -= src
 				listclearnulls(chassis.weapon_equipment)
+			if(equip_type == EQUIP_HEAVY_WEAPON)
+				chassis.heavy_weapon_equipment -= src
+				listclearnulls(chassis.heavy_weapon_equipment)
 			if(equip_type == EQUIP_UTILITY)
 				chassis.utility_equipment -= src
 				listclearnulls(chassis.utility_equipment)
@@ -110,6 +120,7 @@
 					src.chassis.occupant_legacy  << sound('sound/mecha/critdestrsyndi.ogg',volume=70)
 				else
 					src.chassis.occupant_legacy  << sound('sound/mecha/critdestr.ogg',volume=50)
+		chassis = null
 	spawn
 		qdel(src)
 	return
@@ -163,6 +174,8 @@
 		return TRUE
 	if(equip_type == EQUIP_WEAPON && M.weapon_equipment.len < M.max_weapon_equip)
 		return TRUE
+	if(equip_type == EQUIP_HEAVY_WEAPON && M.heavy_weapon_equipment.len < M.max_heavy_weapon_equip)
+		return TRUE
 	if(equip_type == EQUIP_UTILITY && M.utility_equipment.len < M.max_utility_equip)
 		return TRUE
 	if(equip_type == EQUIP_SPECIAL && M.special_equipment.len < M.max_special_equip)
@@ -193,6 +206,9 @@
 	if(equip_type == EQUIP_WEAPON && M.weapon_equipment.len < M.max_weapon_equip && !has_equipped)
 		M.weapon_equipment += src
 		has_equipped = TRUE
+	if(equip_type == EQUIP_HEAVY_WEAPON && M.heavy_weapon_equipment.len < M.max_heavy_weapon_equip && !has_equipped)
+		M.heavy_weapon_equipment += src
+		has_equipped = TRUE
 	if(equip_type == EQUIP_UTILITY && M.utility_equipment.len < M.max_utility_equip && !has_equipped)
 		M.utility_equipment += src
 		has_equipped = TRUE
@@ -220,31 +236,34 @@
 	src.update_chassis_page()
 	return
 
-/obj/item/vehicle_module/proc/detach(atom/moveto=null)
+/obj/item/vehicle_module/proc/detach(atom/moveto = drop_location())
 	moveto = moveto || get_turf(chassis)
-	if(src.forceMove(moveto))
-		chassis.equipment -= src
-		chassis.universal_equipment -= src
-		if(equip_type)
-			switch(equip_type)
-				if(EQUIP_HULL)
-					chassis.hull_equipment -= src
-				if(EQUIP_WEAPON)
-					chassis.weapon_equipment -= src
-				if(EQUIP_UTILITY)
-					chassis.utility_equipment -= src
-				if(EQUIP_SPECIAL)
-					chassis.special_equipment -= src
-				if(EQUIP_MICRO_UTILITY)
-					chassis.micro_utility_equipment -= src
-				if(EQUIP_MICRO_WEAPON)
-					chassis.micro_weapon_equipment -= src
-		if(chassis.selected == src)
-			chassis.selected = null
-		update_chassis_page()
-		chassis.log_message("[src] removed from equipment.")
-		chassis = null
-		set_ready_state(1)
+	if(moveto)
+		forceMove(moveto)
+	chassis.equipment -= src
+	chassis.universal_equipment -= src
+	if(equip_type)
+		switch(equip_type)
+			if(EQUIP_HULL)
+				chassis.hull_equipment -= src
+			if(EQUIP_WEAPON)
+				chassis.weapon_equipment -= src
+			if(EQUIP_HEAVY_WEAPON)
+				chassis.heavy_weapon_equipment -= src
+			if(EQUIP_UTILITY)
+				chassis.utility_equipment -= src
+			if(EQUIP_SPECIAL)
+				chassis.special_equipment -= src
+			if(EQUIP_MICRO_UTILITY)
+				chassis.micro_utility_equipment -= src
+			if(EQUIP_MICRO_WEAPON)
+				chassis.micro_weapon_equipment -= src
+	if(chassis.selected == src)
+		chassis.selected = null
+	update_chassis_page()
+	chassis.log_message("[src] removed from equipment.")
+	chassis = null
+	set_ready_state(1)
 	enable_special = FALSE
 	return
 

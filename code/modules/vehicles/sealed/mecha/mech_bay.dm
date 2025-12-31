@@ -1,6 +1,6 @@
 /obj/machinery/mech_recharger
 	name = "mech recharger"
-	desc = "A mech recharger, built into the floor."
+	desc = "A mech recharger, built into the floor.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/mecha/mech_bay.dmi'
 	icon_state = "recharge_floor"
 	density = 0
@@ -55,7 +55,7 @@
 	var/obj/vehicle/sealed/mecha/mech = charging
 	var/obj/item/cell/cell = charging.get_cell()
 	if(cell)
-		var/t = min(charge, cell.maxcharge - cell.charge)
+		var/t = min(charge, cell.max_charge - cell.charge)
 		if(t > 0)
 			if(istype(mech))
 				mech.give_power(t)

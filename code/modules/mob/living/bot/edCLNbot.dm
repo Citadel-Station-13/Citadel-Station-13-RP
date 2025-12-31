@@ -90,7 +90,7 @@
 	data["blue_switch"] = blue_switch
 	return data
 
-/mob/living/bot/cleanbot/edCLN/ui_act(action, list/params, datum/tgui/ui)
+/mob/living/bot/cleanbot/edCLN/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -216,6 +216,7 @@
 					to_chat(user, "<span class='notice'>Mop attached.</span>")
 
 		if(8)
+			// TODO: have them run off cells after lol
 			if(istype(W, /obj/item/cell))
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return

@@ -87,10 +87,14 @@
 	if(!stacktype_legacy)
 		stacktype_legacy = type
 	. = ..()
-	if(merge)
+	// only merge 1. outside of mapload and 2. if we had amount
+	if(merge && !mapload && amount)
 		for(var/obj/item/stack/S in loc)
 			if(can_merge(S))
 				merge(S)
+		// and if we did and no longer have amount, delete ourselves
+		if(amount == 0)
+			zero_amount()
 	update_icon()
 
 /obj/item/stack/update_icon_state()
@@ -156,7 +160,7 @@
 	. = ..()
 	.["amount"] = get_amount()
 
-/obj/item/stack/ui_act(action, list/params, datum/tgui/ui)
+/obj/item/stack/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -214,12 +218,12 @@
 		return FALSE
 	return other.stacktype_legacy == stacktype_legacy
 
-/obj/item/stack/proc/use(used)
+/obj/item/stack/proc/use(used, no_delete)
 	if (!can_use(used))
 		return FALSE
 	if(!uses_charge)
 		amount -= used
-		if (amount <= 0)
+		if (amount <= 0 && !no_delete)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return TRUE
@@ -345,7 +349,7 @@
 		merge(AM)
 
 /// Merge src into S, as much as possible.
-/obj/item/stack/proc/merge(obj/item/stack/S)
+/obj/item/stack/proc/merge(obj/item/stack/S, no_delete)
 	if(uses_charge)
 		return	// how about no!
 	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
@@ -358,7 +362,7 @@
 	if(pulledby)
 		pulledby.start_pulling(S)
 	S.copy_evidences(src)
-	use(transfer, TRUE)
+	use(transfer, no_delete)
 	S.add(transfer)
 	return transfer
 
@@ -369,6 +373,19 @@
 		return
 	return ..()
 
+/obj/item/stack/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	.["split"] = create_context_menu_tuple("split", src, 1, MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP, TRUE)
+
+/obj/item/stack/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("split")
+			// TODO: e-args support
+			attempt_split_stack(e_args.initiator)
+
 /obj/item/stack/alt_clicked_on(mob/user, location, control, list/params)
 	. = ..()
 	if(.)
@@ -376,6 +393,10 @@
 	if(user.Reachability(src) && CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		attempt_split_stack(user)
 		return TRUE
+
+// TODO: THERE HAS TO BE A BETTER FUCKING WAY
+/obj/item/stack/should_list_turf_on_alt_click(mob/user)
+	return FALSE
 
 /obj/item/stack/proc/attempt_split_stack(mob/living/user)
 	if(uses_charge)

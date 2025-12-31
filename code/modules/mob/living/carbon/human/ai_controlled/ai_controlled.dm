@@ -37,7 +37,7 @@
 	if(generate_id_gender)
 		identifying_gender = pick(list(MALE, FEMALE, PLURAL, NEUTER))
 
-	..(loc, generate_species)
+	. = ..(loc, generate_species)
 
 	h_style = to_wear_hair
 
@@ -89,9 +89,9 @@
 	if(to_wear_id_type)
 		var/obj/item/card/id/W = new to_wear_id_type(src)
 		W.name = "[real_name]'s ID Card"
-		var/datum/role/job/jobdatum
-		for(var/jobtype in typesof(/datum/role/job))
-			var/datum/role/job/J = new jobtype
+		var/datum/prototype/role/job/jobdatum
+		for(var/jobtype in typesof(/datum/prototype/role/job))
+			var/datum/prototype/role/job/J = new jobtype
 			if(J.title == to_wear_id_job)
 				jobdatum = J
 				break

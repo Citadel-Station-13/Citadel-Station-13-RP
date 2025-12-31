@@ -1,5 +1,6 @@
+import { Button, LabeledList, Section, Stack } from 'tgui-core/components';
+
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type SpawnersMenuContext = {
@@ -15,8 +16,8 @@ type spawner = {
   important_text?: string;
 };
 
-export const SpawnersMenu = (props, context) => {
-  const { act, data } = useBackend<SpawnersMenuContext>(context);
+export const SpawnersMenu = (props) => {
+  const { act, data } = useBackend<SpawnersMenuContext>();
   const spawners = data.spawners || [];
   return (
     <Window title="Spawners Menu" width={700} height={525}>

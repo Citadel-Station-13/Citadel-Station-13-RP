@@ -52,6 +52,10 @@
 	ion_trail.set_up(src)
 	ion_trail.stop()
 
+/obj/vehicle/sealed/mecha/combat/fighter/Destroy()
+	QDEL_NULL(ion_trail)
+	return ..()
+
 /obj/vehicle/sealed/mecha/combat/fighter/add_cell(var/obj/item/cell/C=null)
 	if(C)
 		C.forceMove(src)
@@ -59,7 +63,7 @@
 		return
 	cell = new(src)
 	cell.charge = 30000
-	cell.maxcharge = 30000
+	cell.max_charge = 30000
 
 /obj/vehicle/sealed/mecha/combat/fighter/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()

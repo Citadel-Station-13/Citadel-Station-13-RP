@@ -429,8 +429,8 @@
 /obj/structure/table/alien,
 /obj/item/gun/projectile/energy/medigun,
 /obj/item/gun/projectile/energy/medigun,
-/obj/item/cell/infinite,
-/obj/item/cell/infinite,
+/obj/item/cell/infinite/weapon,
+/obj/item/cell/infinite/weapon,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "Bv" = (

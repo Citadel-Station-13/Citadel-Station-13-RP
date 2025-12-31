@@ -174,9 +174,9 @@
 		spellmaster.spell_objects -= src
 		if(spellmaster.spell_holder && spellmaster.spell_holder.client)
 			spellmaster.spell_holder.client.screen -= src
-	if(spellmaster && !spellmaster.spell_objects.len)
-		qdel(spellmaster)
-	spellmaster = null
+		if(!length(spellmaster.spell_objects.len))
+			qdel(spellmaster)
+		spellmaster = null
 
 /atom/movable/screen/spell/proc/update_charge(var/forced_update = 0)
 	if(!spell)

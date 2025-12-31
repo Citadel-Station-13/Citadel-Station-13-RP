@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/game_preference_entry
 	abstract_type = /datum/game_preference_entry
@@ -103,7 +103,7 @@
 	var/disabled_name = "Off"
 
 /datum/game_preference_entry/toggle/filter_value(value)
-	return !!value
+	return isnull(value) ? default_value : !!value
 
 /datum/game_preference_entry/toggle/tgui_preference_schema()
 	return ..() | list(

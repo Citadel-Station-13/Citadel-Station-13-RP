@@ -56,7 +56,7 @@
 	var/ai_interface_path = "hardsuit.tmpl"
 	var/interface_title = "Hardsuit Controller"
 	var/wearer_move_delay //Used for AI moving.
-	var/ai_controlled_move_delay = 10
+	var/ai_controlled_move_delay = 2
 
 	// Keeps track of what this hardsuit should spawn with.
 	var/suit_type = "hardsuit"
@@ -65,10 +65,7 @@
 	var/helm_type =  /obj/item/clothing/head/helmet/space/hardsuit
 	var/boot_type =  /obj/item/clothing/shoes/magboots/hardsuit
 	var/glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit
-	var/cell_type =  /obj/item/cell/high
 	var/air_type =   /obj/item/tank/oxygen
-
-	var/unremovable_cell = FALSE
 
 	//Component/device holders.
 	var/obj/item/tank/air_supply                       // Air tank, if any.
@@ -76,7 +73,6 @@
 	var/obj/item/clothing/suit/space/hardsuit/chest                // Deployable chestpiece, if any.
 	var/obj/item/clothing/head/helmet/space/hardsuit/helmet = null // Deployable helmet, if any.
 	var/obj/item/clothing/gloves/gauntlets/hardsuit/gloves = null  // Deployable gauntlets, if any.
-	var/obj/item/cell/cell                             // Power supply, if any.
 	var/obj/item/hardsuit_module/selected_module = null            // Primary system (used with middle-click)
 	var/obj/item/hardsuit_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
 	var/obj/item/hardsuit_module/voice/speech                      // As above.
@@ -158,6 +154,13 @@
 	/// set to prevent us from spawning starts_with
 	var/storage_empty = FALSE
 
+	var/cell_type =  /obj/item/cell/basic/tier_1/large
+	var/cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_LARGE
+
+	// TODO: obj cell slot
+	var/obj/item/cell/cell                             // Power supply, if any.
+	var/unremovable_cell = FALSE
+
 /obj/item/hardsuit/get_cell(inducer)
 	return cell
 
@@ -218,8 +221,6 @@
 		add_obj_verb(src, /obj/item/hardsuit/proc/toggle_boots)
 	if(chest_type)
 		chest = new chest_type(src)
-		if(allowed)
-			chest.allowed = allowed
 		add_obj_verb(src, /obj/item/hardsuit/proc/toggle_chest)
 
 	for(var/obj/item/piece in list(gloves,helmet,boots,chest))
@@ -238,6 +239,21 @@
 		piece.set_armor(fetch_armor())
 
 	update_icon(1)
+
+/obj/item/hardsuit/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(gloves)
+	QDEL_NULL(boots)
+	QDEL_NULL(helmet)
+	QDEL_NULL(chest)
+	QDEL_NULL(wires)
+	QDEL_NULL(cell)
+	QDEL_LIST(installed_modules)
+	QDEL_NULL(spark_system)
+	QDEL_NULL(minihud)
+	QDEL_NULL(visor)
+	QDEL_NULL(air_supply)
+	return ..()
 
 /obj/item/hardsuit/proc/spawn_storage_contents()
 	if(length(storage_starts_with) && !storage_empty)
@@ -277,18 +293,6 @@
 	obj_storage.sfx_remove = storage_sfx_remove
 
 	obj_storage.ui_numerical_mode = storage_ui_numerical_mode
-
-/obj/item/hardsuit/Destroy()
-	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
-		qdel(piece)
-	STOP_PROCESSING(SSobj, src)
-	if(minihud)
-		QDEL_NULL(minihud)
-	qdel(wires)
-	wires = null
-	qdel(spark_system)
-	spark_system = null
-	return ..()
 
 /obj/item/hardsuit/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype)
 	switch(slot_id_or_hand_index)
@@ -411,8 +415,9 @@
 		booting_R.icon_state = "boot_load"
 		animate(booting_L, alpha=230, time=30, easing=SINE_EASING)
 		animate(booting_R, alpha=200, time=20, easing=SINE_EASING)
-		M.client.screen += booting_L
-		M.client.screen += booting_R
+		if(M.client)
+			M.client?.screen += booting_L
+			M.client?.screen += booting_R
 
 	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 	set_activation_state(is_sealing? RIG_ACTIVATION_STARTUP : RIG_ACTIVATION_SHUTDOWN)
@@ -481,8 +486,9 @@
 
 	if(failed_to_seal)
 		set_activation_state(old_activation)
-		M.client.screen -= booting_L
-		M.client.screen -= booting_R
+		if(M.client)
+			M.client?.screen -= booting_L
+			M.client?.screen -= booting_R
 		qdel(booting_L)
 		qdel(booting_R)
 		for(var/obj/item/piece in list(helmet,boots,gloves,chest))
@@ -516,11 +522,13 @@
 			minihud = new (M.hud_used, src)
 
 	to_chat(M, "<font color=#4F49AF><b>Your entire suit [!is_sealing ? "loosens as the components relax" : "tightens around you as the components lock into place"].</b></font>")
-	M.client.screen -= booting_L
+	if(M.client)
+		M.client.screen -= booting_L
 	qdel(booting_L)
 	booting_R.icon_state = "boot_done"
 	spawn(40)
-		M.client.screen -= booting_R
+		if(M.client)
+			M.client.screen -= booting_R
 		qdel(booting_R)
 
 	if(is_sealing)
@@ -738,8 +746,8 @@
 	data["chest"] =     (chest ?  "[chest.name]" :  "None.")
 
 	data["charge"] =       cell ? round(cell.charge,1) : 0
-	data["maxcharge"] =    cell ? cell.maxcharge : 0
-	data["chargestatus"] = cell ? FLOOR((cell.charge/cell.maxcharge)*50, 1) : 0
+	data["max_charge"] =    cell ? cell.max_charge : 0
+	data["chargestatus"] = cell ? FLOOR((cell.charge/cell.max_charge)*50, 1) : 0
 
 	data["emagged"] =       subverted
 	data["coverlock"] =     locked
@@ -835,7 +843,7 @@
 			to_chat(user, "<span class='danger'>Unauthorized user. Access denied.</span>")
 			return 0
 
-	else if(!ai_override_enabled)
+	else if(!ai_override_enabled && !control_overridden)
 		to_chat(user, "<span class='danger'>Synthetic access disabled. Please consult hardware provider.</span>")
 		return 0
 

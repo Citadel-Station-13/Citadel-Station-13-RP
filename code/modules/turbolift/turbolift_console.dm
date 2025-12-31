@@ -29,9 +29,9 @@
 			user.visible_message("<span class='notice'>\The [user] presses the lift button.</span>")
 
 
-/obj/structure/lift/New(var/newloc, var/datum/turbolift/_lift)
+/obj/structure/lift/Initialize(mapload, datum/turbolift/_lift)
 	lift = _lift
-	return ..(newloc)
+	return ..()
 
 /obj/structure/lift/attack_ai(var/mob/user)
 	return attack_hand(user)
@@ -165,10 +165,9 @@
 	dat += "<hr></body></html>"
 
 	user.set_machine(src)
-	var/datum/browser/popup = new(user, "turbolift_panel", "Lift Panel", 350, 320)
+	var/datum/browser/popup = new(user, "turbolift_panel", "Lift Panel", 450, 450)
 	popup.set_content(jointext(dat, null))
 	popup.open()
-	return
 
 /obj/structure/lift/panel/Topic(href, href_list)
 	. = ..()

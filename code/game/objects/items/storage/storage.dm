@@ -20,29 +20,32 @@
 	var/list/insertion_blacklist
 	var/list/insertion_allow
 
-	var/max_single_weight_class = WEIGHT_CLASS_SMALL
+	var/max_single_weight_class
 	var/max_combined_weight_class
-	var/max_combined_volume = WEIGHT_VOLUME_SMALL * 4
+	var/max_combined_volume
 	var/max_items
 
+	var/weight_propagation
+	// always set on base type for :: purposes
 	var/weight_subtract = 0
+	// always set on base type for :: purposes
 	var/weight_multiply = 1
 
-	var/allow_mass_gather = FALSE
-	var/allow_mass_gather_mode_switch = TRUE
-	var/mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
+	var/allow_mass_gather
+	var/allow_mass_gather_mode_switch
+	var/mass_gather_mode
 
-	var/allow_quick_empty = TRUE
-	var/allow_quick_empty_via_clickdrag = TRUE
-	var/allow_quick_empty_via_attack_self = FALSE
+	var/allow_quick_empty
+	var/allow_quick_empty_via_clickdrag
+	var/allow_quick_empty_via_attack_self
 
 	var/sfx_open = "rustle"
 	var/sfx_insert = "rustle"
 	var/sfx_remove = "rustle"
 
-	var/ui_numerical_mode = FALSE
-	var/ui_expand_when_needed = FALSE
-	var/ui_force_slot_mode = FALSE
+	var/ui_numerical_mode
+	var/ui_expand_when_needed
+	var/ui_force_slot_mode
 
 	//* Initialization *//
 
@@ -55,7 +58,7 @@
 	/// set to prevent us from spawning starts_with
 	var/empty = FALSE
 
-/obj/item/storage/preload_from_stack_recipe(datum/stack_recipe/recipe)
+/obj/item/storage/preloading_from_stack_recipe(datum/stack_recipe/recipe)
 	..()
 	if(recipe.product_auto_create_empty)
 		empty = TRUE
@@ -98,26 +101,44 @@
 	obj_storage.set_insertion_whitelist(insertion_whitelist)
 	obj_storage.set_insertion_blacklist(insertion_blacklist)
 
-	obj_storage.max_single_weight_class = max_single_weight_class
-	obj_storage.max_combined_weight_class = max_combined_weight_class
-	obj_storage.max_combined_volume = max_combined_volume
-	obj_storage.max_items = max_items
+	if(!isnull(max_single_weight_class))
+		obj_storage.max_single_weight_class = max_single_weight_class
+	if(!isnull(max_combined_weight_class))
+		obj_storage.max_combined_weight_class = max_combined_weight_class
+	if(!isnull(max_combined_volume))
+		obj_storage.max_combined_volume = max_combined_volume
+	if(!isnull(max_items))
+		obj_storage.max_items = max_items
 
+	if(!isnull(weight_propagation))
+		obj_storage.weight_propagation = weight_propagation
 	obj_storage.weight_subtract = weight_subtract
 	obj_storage.weight_multiply = weight_multiply
 
-	obj_storage.allow_mass_gather = allow_mass_gather
-	obj_storage.allow_mass_gather_mode_switch = allow_mass_gather_mode_switch
-	obj_storage.mass_gather_mode = mass_gather_mode
+	if(!isnull(allow_mass_gather))
+		obj_storage.allow_mass_gather = allow_mass_gather
+	if(!isnull(allow_mass_gather_mode_switch))
+		obj_storage.allow_mass_gather_mode_switch = allow_mass_gather_mode_switch
+	if(!isnull(mass_gather_mode))
+		obj_storage.mass_gather_mode = mass_gather_mode
 
-	obj_storage.allow_quick_empty = allow_quick_empty
-	obj_storage.allow_quick_empty_via_clickdrag = allow_quick_empty_via_clickdrag
-	obj_storage.allow_quick_empty_via_attack_self = allow_quick_empty_via_attack_self
+	if(!isnull(allow_quick_empty))
+		obj_storage.allow_quick_empty = allow_quick_empty
+	if(!isnull(allow_quick_empty_via_clickdrag))
+		obj_storage.allow_quick_empty_via_clickdrag = allow_quick_empty_via_clickdrag
+	if(!isnull(allow_quick_empty_via_attack_self))
+		obj_storage.allow_quick_empty_via_attack_self = allow_quick_empty_via_attack_self
 
-	obj_storage.sfx_open = sfx_open
-	obj_storage.sfx_insert = sfx_insert
-	obj_storage.sfx_remove = sfx_remove
+	if(!isnull(sfx_open))
+		obj_storage.sfx_open = sfx_open
+	if(!isnull(sfx_insert))
+		obj_storage.sfx_insert = sfx_insert
+	if(!isnull(sfx_remove))
+		obj_storage.sfx_remove = sfx_remove
 
-	obj_storage.ui_numerical_mode = ui_numerical_mode
-	obj_storage.ui_expand_when_needed = ui_expand_when_needed
-	obj_storage.ui_force_slot_mode = ui_force_slot_mode
+	if(!isnull(ui_numerical_mode))
+		obj_storage.ui_numerical_mode = ui_numerical_mode
+	if(!isnull(ui_expand_when_needed))
+		obj_storage.ui_expand_when_needed = ui_expand_when_needed
+	if(!isnull(ui_force_slot_mode))
+		obj_storage.ui_force_slot_mode = ui_force_slot_mode

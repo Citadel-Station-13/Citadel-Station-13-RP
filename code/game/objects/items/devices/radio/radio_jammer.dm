@@ -1,0 +1,104 @@
+var/global/list/active_radio_jammers = list()
+
+/proc/is_jammed(var/obj/radio)
+	var/turf/Tr = get_turf(radio)
+	if(!Tr) return 0 //Nullspace radios don't get jammed.
+
+	for(var/jammer in active_radio_jammers)
+		var/obj/item/radio_jammer/J = jammer
+		var/turf/Tj = get_turf(J)
+
+		if(J.on && Tj.z == Tr.z) //If we're on the same Z, it's worth checking.
+			var/dist = get_dist(Tj,Tr)
+			if(dist <= J.jam_range)
+				return list("jammer" = J, "distance" = dist)
+
+/obj/item/radio_jammer
+	name = "subspace jammer"
+	desc = "Primarily for blocking subspace communications, preventing the use of headsets, PDAs, and communicators. Also masks suit sensors."	// Added suit sensor jamming
+	icon = 'icons/obj/device.dmi'
+	icon_state = "jammer0"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	var/active_state = "jammer1"
+	var/last_overlay_percent = null // Stores overlay icon_state to avoid excessive recreation of overlays.
+
+	var/on = 0
+	var/jam_range = 7
+
+	var/cell_type = /obj/item/cell/basic/tier_1/small
+	var/cell_accept = CELL_TYPE_SMALL
+
+	var/tick_cost = 5 // For the ERPs.
+
+	origin_tech = list(TECH_ILLEGAL = 7, TECH_BLUESPACE = 5) //Such technology! Subspace jamming!
+
+/obj/item/radio_jammer/Initialize(mapload)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
+	. = ..()
+	update_icon() // So it starts with the full overlay.
+
+/obj/item/radio_jammer/Destroy()
+	if(on)
+		turn_off()
+	return ..()
+
+/obj/item/radio_jammer/proc/turn_off(mob/user)
+	if(user)
+		to_chat(user,"<span class='warning'>\The [src] deactivates.</span>")
+	STOP_PROCESSING(SSobj, src)
+	active_radio_jammers -= src
+	on = FALSE
+	update_icon()
+
+/obj/item/radio_jammer/proc/turn_on(mob/user)
+	if(user)
+		to_chat(user,"<span class='notice'>\The [src] is now active.</span>")
+	START_PROCESSING(SSobj, src)
+	active_radio_jammers += src
+	on = TRUE
+	update_icon()
+
+/obj/item/radio_jammer/process(delta_time)
+	if(!obj_cell_slot?.cell?.check_charge(tick_cost))
+		var/mob/living/notify
+		if(isliving(loc))
+			notify = loc
+		turn_off(notify)
+	else
+		obj_cell_slot.cell.use(tick_cost)
+		update_icon()
+
+/obj/item/radio_jammer/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	if(on)
+		turn_off(user)
+	else
+		if(obj_cell_slot?.cell)
+			turn_on(user)
+		else
+			to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
+
+/obj/item/radio_jammer/update_icon()
+	cut_overlays()
+	. = ..()
+	if(on)
+		icon_state = active_state
+	else
+		icon_state = initial(icon_state)
+
+	var/overlay_percent = 0
+	if(obj_cell_slot?.cell)
+		overlay_percent = between(0, round( obj_cell_slot.cell.percent() , 25), 100)
+	else
+		overlay_percent = 0
+
+	var/image/I = image(src.icon, src, "jammer_overlay_[overlay_percent]")
+	add_overlay(I)
+	last_overlay_percent = overlay_percent
+
+//Unlimited use, unlimited range jammer for admins. Turn it on, drop it somewhere, it works.
+/obj/item/radio_jammer/admin
+	jam_range = 255
+	tick_cost = 0

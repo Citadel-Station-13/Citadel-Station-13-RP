@@ -66,7 +66,8 @@
 	set desc = "Enable your hologram."
 	set category = VERB_CATEGORY_IC
 
-	transform_component.try_untransform()
+	var/datum/species/shapeshifter/holosphere/S = hologram.species
+	S.try_untransform()
 
 // same way pAI space movement works in pai/mobility.dm
 /mob/living/simple_mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)
@@ -165,6 +166,7 @@
 	hologram.adjust_nutrition(got)
 	return (got * SYNTHETIC_NUTRITION_KJ_PER_UNIT) / GLOB.cellrate / SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR
 
+// support the shell having accents (hissing) if the hologram has it
 /mob/living/simple_mob/holosphere_shell/proc/handle_hologram_shell_speech(datum/source, list/message_args)
 	var/message = message_args["message"]
 	var/language_name = message_args["language_name"]

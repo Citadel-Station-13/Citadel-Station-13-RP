@@ -24,6 +24,12 @@
 	moveToNullspace()
 	verbs.Cut()
 
+/obj/aiming_overlay/Destroy()
+	owner = null
+	aiming_at = null
+	aiming_with = null
+	return ..()
+
 /obj/aiming_overlay/proc/toggle_permission(var/perm)
 
 	if(target_permissions & perm)
@@ -170,8 +176,7 @@
 
 	if(owner.client)
 		owner.client.add_gun_icons()
-	to_chat(target, "<span class='danger'>You now have a gun pointed at you. No sudden moves!</span>")
-	to_chat(target, "<span class='critical'>If you fail to comply with your assailant, you accept the consequences of your actions.</span>")
+	to_chat(target, SPAN_BIG(SPAN_DANGER("You have a gun pointed at you. No sudden movements!")))
 	aiming_with = thing
 	aiming_at = target
 	if(istype(aiming_with, /obj/item/gun))

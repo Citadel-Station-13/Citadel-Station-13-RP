@@ -9,5 +9,4 @@
 	name = "Facility Director voidsuit"
 	icon_state = "capsuit_void"
 	armor_type = /datum/armor/station/tactical
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
 	helmet_type = /obj/item/clothing/head/helmet/space/void/captain

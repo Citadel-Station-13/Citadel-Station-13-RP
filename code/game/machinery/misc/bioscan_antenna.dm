@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	// todo: scaling levels of how accurate they are
 	// todo: multiz / world-sector functionality; for now one must be there for each zlevel
 
-/obj/machinery/bioscan_antenna/preloading_instance(datum/dmm_context/context)
+/obj/machinery/bioscan_antenna/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	if(network_key_obfuscated && !network_key)
 		network_key = SSmapping.obfuscated_round_local_id(network_key_obfuscated, context.mangling_id, "bioscan")
@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 	if(!network_mutable)
 		return ..()
 	. = TRUE
-	var/new_network = default_input_text(e_args.initiator, "What do you want to set the network key to?", "Modify Network", network_key)
+	var/new_network = tgui_input_text(e_args.initiator, "What do you want to set the network key to?", "Modify Network", network_key)
 	if(!e_args.performer.Reachability(src) || isnull(new_network))
 		return
 	e_args.visible_feedback(
