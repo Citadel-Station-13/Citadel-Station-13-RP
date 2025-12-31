@@ -17,10 +17,11 @@ SUBSYSTEM_DEF(mobs)
 	var/list/busy_z_levels = list()
 	var/slept_mobs = 0
 
+// TODO: do we really need to tick mob_list instead of just living mobs (mob_living_list)
 /datum/controller/subsystem/mobs/stat_entry()
-	return ..() + " P: [GLOB.mob_list.len] | S: [slept_mobs]"
+	return ..() + " P: [length(GLOB.mob_list)] | S: [slept_mobs]"
 
-/datum/controller/subsystem/mobs/fire(resumed = 0)
+/datum/controller/subsystem/mobs/fire(resumed = FALSE)
 	var/list/busy_z_levels = src.busy_z_levels
 
 	if (!resumed)
@@ -38,16 +39,19 @@ SUBSYSTEM_DEF(mobs)
 	var/times_fired = src.times_fired
 	var/dt = nominal_dt_s
 	while(currentrun.len)
-		var/mob/M = currentrun[currentrun.len]
+		var/mob/processing_mob = currentrun[currentrun.len]
 		currentrun.len--
 
-		if(!QDELETED(M))
+		if(!QDELETED(processing_mob) || !processing_mob)
 			// Right now mob.Life() is unstable enough I think we need to use a try catch.
 			// Obviously we should try and get rid of this for performance reasons when we can.
-			if(M.low_priority && !(M.z in busy_z_levels))
+			if(processing_mob.low_priority && !(processing_mob.z in busy_z_levels))
 				slept_mobs++
 				continue
-			M.Life(dt, times_fired)
+			processing_mob.Life(dt, times_fired)
+		else
+			// going to be qdeleted anyways, kick out early
+			GLOB.mob_list.Remove(processing_mob)
 
 		if (MC_TICK_CHECK)
 			return

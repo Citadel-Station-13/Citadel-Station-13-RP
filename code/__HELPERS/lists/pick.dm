@@ -31,6 +31,15 @@
 	return null
 
 /**
+ * Pick2Weight but sets the key to 1 if unset
+ */
+/proc/pickweight_one_default(list/list_to_pick)
+	for(var/item in list_to_pick)
+		if(!list_to_pick[item])
+			list_to_pick[item] = 1
+	return pickweight(list_to_pick)
+
+/**
  * Pick a random element from the list and remove it from the list.
  */
 /proc/pick_n_take(list/L)
