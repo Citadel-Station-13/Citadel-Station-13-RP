@@ -48,8 +48,6 @@
 		qdel(hud_used) //remove the hud objects
 
 	hud_used = new /datum/hud(src)
-	if(!client)
-		return FALSE
 
 	next_move = 1
 
