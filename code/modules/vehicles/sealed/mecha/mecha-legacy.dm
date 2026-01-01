@@ -355,17 +355,6 @@
 			else//Everyone else gets the normal noise
 				who << sound('sound/mecha/nominal.ogg',volume=50)
 
-/obj/vehicle/sealed/mecha/proc/internals_access_allowed(mob/living/carbon/human/H)
-	if(istype(H))
-		for(var/atom/ID in list(H.get_active_held_item(), H.wear_id, H.belt))
-			if(src.check_access(ID,src.internals_req_access))
-				return 1
-	else if(istype(H, /mob/living/silicon/robot))
-		var/mob/living/silicon/robot/R = H
-		if(src.check_access(R.idcard,src.internals_req_access))
-			return 1
-	return 0
-
 #warn nuke this
 /obj/vehicle/sealed/mecha/proc/report_internal_damage()
 	var/output = null

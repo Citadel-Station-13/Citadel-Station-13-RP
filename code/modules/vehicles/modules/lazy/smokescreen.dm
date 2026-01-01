@@ -12,18 +12,39 @@
 	var/auto_recharge = TRUE
 	var/auto_recharge_delay = 1 MINUTES
 
+	var/recharge_timer_id
+
 /obj/item/vehicle_module/lazy/smokescreen/render_ui()
 	..()
+	l_ui_button("smokepop", "Emit Smoke", "Pop Smokescreen ([charges] / [charges_max])", confirm = TRUE)
 
 /obj/item/vehicle_module/lazy/smokescreen/on_l_ui_button(datum/event_args/actor/actor, key)
 	. = ..()
 	if(.)
 		return
+	switch(key)
+		if("smokepop")
+			try_emit_smoke(actor)
+			return TRUE
+
+/obj/item/vehicle_module/lazy/smokescreen/proc/dispatch_recharge_timer(delay)
+	if(recharge_timer_id)
+		deltimer(recharge_timer_id)
+		recharge_timer_id = null
+	recharge_timer_id = addtimer(CALLBACK(src, PROC_REF(recharge_one)), delay, TIMER_STOPPABLE)
+
+/obj/item/vehicle_module/lazy/smokescreen/proc/recharge_one()
+	if(charges >= charges_max)
+		return
+	charges++
+	if(auto_recharge && charges < charges_max)
+		dispatch_recharge_timer(auto_recharge_delay)
 
 /obj/item/vehicle_module/lazy/smokescreen/proc/try_emit_smoke(datum/event_args/actor/actor)
 	if(!isturf(vehicle?.loc))
 		#warn yell
 		return FALSE
+	#warn log
 
 /obj/item/vehicle_module/lazy/smokescreen/proc/emit_smoke(datum/event_args/actor/actor)
 	if(!isturf(vehicle?.loc))
@@ -34,6 +55,5 @@
 	we_should_cache_this_later.start()
 	qdel(we_should_cache_this_later)
 	playsound(src, 'sound/effects/smoke.ogg', 50, TRUE)
+	charges = max(0, charges - 1)
 	return TRUE
-
-#warn impl
