@@ -14,6 +14,8 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
  * * shows up in UI
  */
 /datum/mecha_fault
+	/// id for UI and internal systems; do not change this
+	var/id
 	var/name = "unknown fault"
 	var/desc = "A critical fault in the exosuit's systems."
 	var/requires_ticking = TRUE
@@ -83,6 +85,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
  * * maint panel
  */
 /datum/mecha_fault/tank_breach
+	id = "tank-breach"
 	name = "tank breach"
 	desc = "The exosuit's internal airtank is leaking air."
 	// TODO: sfx
@@ -101,6 +104,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
  * * automatic
  */
 /datum/mecha_fault/internal_fire
+	id = "internal-fire"
 	name = "internal fire"
 	desc = "Something has ignited inside the cabin's backplane"
 	sfx_on_apply = 'sound/mecha/internaldmgalarm.ogg'
@@ -129,6 +133,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
  * * automatic, and maint panel
  */
 /datum/mecha_fault/calibration_lost
+	id = "calibration-lost"
 	name = "calibration lost"
 	desc = "The exosuit is experiencing control issues with its actuators."
 	// TODO: sfx
@@ -141,6 +146,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
  * * damage being repaired
  */
 /datum/mecha_fault/cabin_breach
+	id = "cabin-breach"
 	name = "cabin breach"
 	desc = "The exosuit is leaking air from its cabin!"
 	// TODO: sfx
@@ -158,6 +164,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
  * * automatic, and maint panel
  */
 /datum/mecha_fault/temperature_control
+	id = "temperature-control"
 	name = "thermal controller instability"
 	desc = "The exosuit's thermal controller is malfunctioning."
 	// TODO: sfx
@@ -180,6 +187,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
  * * maint panel
  */
 /datum/mecha_fault/short_circuit
+	id = "short-circuit"
 	name = "short circuit"
 	desc = "The exosuit's internal wiring has fused together."
 	// TODO: sfx

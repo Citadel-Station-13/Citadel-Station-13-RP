@@ -12,6 +12,7 @@
 
 /datum/vehicle_maint_controller/mecha/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["faults"] = encode_ui_faults()
 
 /datum/vehicle_maint_controller/mecha/update_component_refs()
 	..()
@@ -39,14 +40,25 @@
 
 /datum/vehicle_maint_controller/mecha/ui_nested_data(mob/user, datum/tgui/ui)
 	. = ..()
+	#warn impl
 
 /datum/vehicle_maint_controller/mecha/proc/encode_ui_faults()
+	var/list/encoding = list()
+	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
+	for(var/path in casted_vehicle.mecha_fault_stacks)
+		var/datum/mecha_fault/resolved = GLOB.mecha_faults[path]
+		if(!resolved?.id)
+			continue
+		encoding[resolved.id] = list(
+			"name" = resolved.name,
+			"desc" = resolved.desc,
+			"stacks" = casted_vehicle.mecha_fault_stacks[path],
+		)
+	return encoding
 
 /datum/vehicle_maint_controller/mecha/proc/queue_update_ui_faults()
 	// TODO: queue
 	update_ui_faults()
 
 /datum/vehicle_maint_controller/mecha/proc/update_ui_faults()
-
-
-#warn impl
+	push_ui_data(data = list("faults" = encode_ui_faults()))
