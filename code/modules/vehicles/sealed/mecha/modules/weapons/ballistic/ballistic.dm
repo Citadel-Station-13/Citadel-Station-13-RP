@@ -7,7 +7,7 @@
 	l_ui_html("Ammo", "[projectiles] / [initial(projectiles)]")
 	l_ui_button("rearm", "Rearming", "Rearm", FALSE, projectiles >= initial(projectiles))
 
-/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/on_l_ui_button(key)
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/on_l_ui_button(datum/event_args/actor/actor, key)
 	. = ..()
 	if(.)
 		return
@@ -15,7 +15,7 @@
 		if("rearm")
 			if(projectiles >= initial(projectiles))
 				return TRUE
-			#warn log
+			vehicle_log_for_admins(actor, "rearmed")
 			rearm()
 			return TRUE
 
