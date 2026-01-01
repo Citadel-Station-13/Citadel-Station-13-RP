@@ -514,9 +514,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "ch" = (
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
-	dir = 4
-	},
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
 /obj/machinery/mech_recharger,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,

@@ -14,6 +14,8 @@
 	var/base_strafing_speed_multiplier = 0.5
 	/// any dir
 	var/base_speed_multiplier = 1
+	/// base turn speed multiplier
+	var/base_turn_multiplier = 1
 	#warn hook all
 
 /**

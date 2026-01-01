@@ -162,7 +162,7 @@
 
 	var/datum/vehicle_ui_controller/mecha/fighter/ui_controller = src.ui_controller
 	ui_controller?.update_ui_flight()
-	on_stop_flying()
+	on_start_flying()
 
 /**
  * @params
@@ -175,4 +175,4 @@
 
 	var/datum/vehicle_ui_controller/mecha/fighter/ui_controller = src.ui_controller
 	ui_controller?.update_ui_flight()
-	on_start_flying()
+	on_stop_flying()

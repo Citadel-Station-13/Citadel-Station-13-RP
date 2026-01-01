@@ -61,6 +61,8 @@
 	return vehicle_move(direction, face_direction)
 
 /obj/vehicle/sealed/mecha/vehicle_turn(direction)
+	if(turn_delay > world.time)
+		return FALSE
 	if(dir == direction)
 		return TRUE
 	if(!draw_sourced_power_oneoff("actuators", "actuators", turn_cost_base))
@@ -68,7 +70,8 @@
 	. = ..()
 	if(!.)
 		return
-	#warn set turn delay
+	var/actuator_mod = comp_actuator ? comp_actuator.base_turn_multiplier : 1
+	turn_delay = world.time + base_turn_delay * actuator_mod
 	if(turn_sound)
 		playsound(src, turn_sound, 40, TRUE)
 

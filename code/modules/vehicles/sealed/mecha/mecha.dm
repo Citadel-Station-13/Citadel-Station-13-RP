@@ -118,11 +118,12 @@
 	var/melee_next_time
 
 	//* Movement *//
+	/// Next turn time
+	var/turn_delay = 0
 	/// Base turn speed. If non-zero, turns will take time.
 	/// * A non-zero value specifically activates turn handling systems. Under turn handling,
 	///   mecha move a little differently from normal.
-	#warn impl
-	var/base_turn_delay = 0
+	var/base_turn_delay = 0.35 SECONDS
 	/// Strafing? Strafing mechs won't turn to face where they're going.
 	var/strafing = FALSE
 	/// Move sound
