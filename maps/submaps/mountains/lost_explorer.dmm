@@ -25,7 +25,7 @@
 /area/submap/cave/lost_explorer)
 "g" = (
 /obj/item/clothing/suit/storage/hooded/explorer,
-/obj/item/cell/device,
+/obj/item/cell/basic/tier_4/weapon,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/lost_explorer)
 "h" = (

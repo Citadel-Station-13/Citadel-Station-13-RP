@@ -118,12 +118,12 @@
 	var/melee_next_time
 
 	//* Movement *//
-	/// Next turn time
-	var/turn_delay = 0
-	/// Base turn speed. If non-zero, turns will take time.
+	/// Base turn speed. If non-zero, turns will take that many deciseconds.
 	/// * A non-zero value specifically activates turn handling systems. Under turn handling,
 	///   mecha move a little differently from normal.
-	var/base_turn_delay = 0.35 SECONDS
+	var/base_turn_speed = 0.35 SECONDS
+	/// next world.time we can move at
+	var/turn_delay = 0
 	/// Strafing? Strafing mechs won't turn to face where they're going.
 	var/strafing = FALSE
 	/// Move sound
@@ -203,16 +203,16 @@
 	src.strafing = strafing
 	var/datum/vehicle_ui_controller/mecha/casted_ui_controller = ui_controller
 	casted_ui_controller.update_ui_strafing()
+	update_action_buttons_of_path(/datum/action/vehicle/mecha/strafing)
 	return TRUE
 
 /obj/vehicle/sealed/mecha/proc/user_set_floodlights(datum/event_args/actor/actor, active)
 	if(!set_floodlights(active))
 		return FALSE
 	#warn log, feedback
-	playsound(src, 'sound/mecha/heavylightswitch.ogg', 50, 1)
 	return TRUE
 
-/obj/vehicle/sealed/mecha/proc/set_floodlights(active)
+/obj/vehicle/sealed/mecha/proc/set_floodlights(active, silent)
 	if(active == src.floodlight_active)
 		return
 	src.floodlight_active = active
@@ -220,9 +220,11 @@
 		set_light(floodlight_range, floodlight_power, floodlight_color)
 	else
 		set_light(l_power = 0)
+	if(!silent)
+		playsound(src, 'sound/mecha/heavylightswitch.ogg', 50, 1)
 	var/datum/vehicle_ui_controller/mecha/casted_ui_controller = ui_controller
 	casted_ui_controller.update_ui_floodlights()
-	#warn update button
+	update_action_buttons_of_path(/datum/action/vehicle/mecha/floodlight)
 	return TRUE
 
 #warn impl all

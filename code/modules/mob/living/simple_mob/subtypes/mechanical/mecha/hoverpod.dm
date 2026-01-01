@@ -38,3 +38,6 @@
 /mob/living/simple_mob/mechanical/mecha/hoverpod/Destroy()
 	QDEL_NULL(ion_trail)
 	return ..()
+
+/mob/living/simple_mob/mechanical/mecha/hoverpod/manned
+	pilot_type = /mob/living/simple_mob/humanoid/merc/ranged

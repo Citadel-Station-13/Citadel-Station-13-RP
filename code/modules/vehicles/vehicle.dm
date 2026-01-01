@@ -122,9 +122,10 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	var/list/mob/occupants
 
 	//* Occupants - Actions *//
-	/// actions to give everyone; set to typepaths to init
+	/// actions to hand out; set to typepaths to init
 	///
 	/// * all of these must be /datum/action/vehicle's
+	/// * required control flags will be respected on it
 	var/list/occupant_actions
 
 	//* Occupants - HUDs *//
@@ -134,11 +135,12 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	//* Repairs *//
 	/// Repair droid efficiency
 	var/repair_droid_inbound_efficiency = 1.0
-	/// Repair droid max ratio to heal. Repair droids won't heal us above this of our max integrity minus failure integrity.
-	/// * This includes `integrity_failure`!
-	var/repair_droid_max_ratio = 1
 	/// Additional repair droid efficiency, as multiplier, if already broken.
+	/// * multiplied to inbound efficiency
 	var/repair_droid_recovery_efficiency = 2.5
+	/// Repair droid max ratio to heal. Repair droids won't heal us above this of our max integrity.
+	/// * This includes `integrity_failure`!
+	var/repair_droid_max_ratio = 0.8
 
 	//* UI *//
 	/// Our stateless occupant / driver UI controller
@@ -218,6 +220,11 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	occupant_actions -= action
 	for(var/mob/occupant as anything in occupants)
 		occupant.actions_controlled.remove_action(action)
+
+/obj/vehicle/proc/update_action_buttons_of_path(path)
+	for(var/datum/action/action as anything in occupant_actions)
+		if(istype(action, path))
+			action.update_buttons()
 
 //* Cargo *//
 

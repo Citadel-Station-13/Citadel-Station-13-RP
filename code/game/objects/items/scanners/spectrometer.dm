@@ -9,6 +9,7 @@
 	throw_force = 5
 	throw_speed = 4
 	throw_range = 20
+	belt_storage_class = BELT_CLASS_SMALL
 
 	materials_base = list(MAT_STEEL = 30, MAT_GLASS = 20)
 

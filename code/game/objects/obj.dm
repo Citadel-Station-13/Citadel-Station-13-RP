@@ -116,8 +116,8 @@
 	/// ! This is what determines what constraints are used by the material parts system.
 	/// * Use null if something doesn't use material parts system, or if something uses the abstraction API to implement material parts themselves.
 	/// * This var should never be changed from a list to a normal value or vice versa at runtime, again, like material_parts
-	/// * as it is closely linked to material_parts
-	var/list/material_constraints = null
+	///   as it is closely linked to material_parts
+	var/tmp/list/material_constraints = null
 	/// material costs - lets us track the costs of what we're made of.
 	/// this is either a lazy key-value list of material keys to cost in cm3,
 	/// or a single number.
@@ -126,10 +126,11 @@
 	/// * This may use typepath keys at compile time, but is immediately converted to material IDs on boot.
 	/// * This should still be set even if you are implementing material_parts yourself!
 	//  todo: abstraction API for this when we need it.
-	var/list/material_costs
+	var/tmp/list/material_costs
 	/// material part considered primary.
-	var/material_primary
+	var/tmp/material_primary
 	/// make the actual materials multiplied by this amount. used by lathes to prevent duping with efficiency upgrades.
+	/// * checked in get_materials().
 	var/material_multiplier = 1
 
 	//* Persistence *//
@@ -222,24 +223,24 @@
 	. = ..()
 	// cache base materials if it's not modified
 	if(!isnull(materials_base) && !(obj_flags & OBJ_MATERIALS_MODIFIED))
-		if(has_typelist(materials_base))
-			materials_base = get_typelist(materials_base)
+		if(has_typelist(NAMEOF(src, materials_base)))
+			materials_base = get_typelist(NAMEOF(src, materials_base))
 		else
 			// preprocess
 			materials_base = SSmaterials.preprocess_kv_keys_to_ids(materials_base)
 			materials_base = typelist(NAMEOF(src, materials_base), materials_base)
 	// cache material costs if it's not modified
 	if(islist(material_costs))
-		if(has_typelist(material_costs))
-			material_costs = get_typelist(material_costs)
+		if(has_typelist(NAMEOF(src, material_costs)))
+			material_costs = get_typelist(NAMEOF(src, material_costs))
 		else
 			// preprocess
 			material_costs = SSmaterials.preprocess_kv_keys_to_ids(material_costs)
 			material_costs = typelist(NAMEOF(src, material_costs), material_costs)
 	// cache material constraints if it's not modified
 	if(islist(material_constraints))
-		if(has_typelist(material_constraints))
-			material_constraints = get_typelist(material_constraints)
+		if(has_typelist(NAMEOF(src, material_constraints)))
+			material_constraints = get_typelist(NAMEOF(src, material_constraints))
 		else
 			material_constraints = typelist(NAMEOF(src, material_constraints), material_constraints)
 
@@ -663,84 +664,6 @@
 			return "#ffffff"
 	return coloration
 
-//* Context *//
-
-/obj/context_menu_query(datum/event_args/actor/e_args)
-	. = ..()
-	if(!isnull(obj_cell_slot?.cell) && obj_cell_slot.remove_yank_context && obj_cell_slot.interaction_active(e_args.performer))
-		var/image/rendered = image(obj_cell_slot.cell)
-		.["obj_cell_slot"] = create_context_menu_tuple("remove cell", rendered, mobility = MOBILITY_CAN_USE, defaultable = TRUE)
-	if(obj_storage?.allow_open_via_context_click)
-		var/image/rendered = image(src)
-		.["obj_storage"] = create_context_menu_tuple("open storage", rendered, mobility = MOBILITY_CAN_STORAGE, defaultable = TRUE)
-	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
-		if(obj_rotation_flags & OBJ_ROTATION_BIDIRECTIONAL)
-			var/image/rendered = image(src) // todo: sprite
-			.["rotate_cw"] = create_context_menu_tuple(
-				"Rotate Clockwise",
-				rendered,
-				1,
-				MOBILITY_CAN_USE,
-				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
-			)
-			rendered = image(src) // todo: sprite
-			.["rotate_ccw"] = create_context_menu_tuple(
-				"Rotate Counterclockwise",
-				rendered,
-				1,
-				MOBILITY_CAN_USE,
-				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
-			)
-		else
-			var/image/rendered = image(src) // todo: sprite
-			.["rotate_[obj_rotation_flags & OBJ_ROTATION_CCW? "ccw" : "cw"]"] = create_context_menu_tuple(
-				"Rotate [obj_rotation_flags & OBJ_ROTATION_CCW? "Counterclockwise" : "Clockwise"]",
-				rendered,
-				1,
-				MOBILITY_CAN_USE,
-				!!(obj_rotation_flags & OBJ_ROTATION_DEFAULTING),
-			)
-
-/obj/context_menu_act(datum/event_args/actor/e_args, key)
-	switch(key)
-		if("obj_cell_slot")
-			var/reachability = e_args.performer.Reachability(src)
-			if(!reachability)
-				return TRUE
-			if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
-				e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
-				return TRUE
-			if(isnull(obj_cell_slot.cell))
-				e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
-				return TRUE
-			if(!obj_cell_slot.interaction_active(e_args.performer))
-				return TRUE
-			e_args.visible_feedback(
-				target = src,
-				range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
-				audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-				otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
-			)
-			log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
-			var/obj/item/cell/removed = obj_cell_slot.remove_cell(src)
-			if(reachability == REACH_PHYSICAL)
-				e_args.performer.put_in_hands_or_drop(removed)
-			else
-				removed.forceMove(drop_location())
-			return TRUE
-		if("obj_storage")
-			var/reachability = e_args.performer.Reachability(src)
-			if(!reachability)
-				return TRUE
-			obj_storage?.auto_handle_interacted_open(e_args)
-			return TRUE
-		if("rotate_cw", "rotate_ccw")
-			var/clockwise = key == "rotate_cw"
-			handle_rotation(e_args, clockwise)
-			return TRUE
-	return ..()
-
 //* EMP *//
 
 /obj/emp_act(severity)
@@ -797,6 +720,8 @@
 	// todo: context + construction (tool) examines at some point need a better system
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
 		. += SPAN_NOTICE("This entity can be rotated[(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK)? "" : " while unanchored"] via context menu (alt click while adjacent).")
+	if(dist <= 1)
+		obj_storage?.handle_storage_examine(.)
 
 /**
  * @return list or string

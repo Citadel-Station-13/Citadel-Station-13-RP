@@ -79,7 +79,7 @@ var/global/list/drone_matrices = list()
 			D.movement_base_speed += 1
 			D.update_movespeed_base()
 		if(MTX_UPG_CELL)
-			D.cell.maxcharge *= 1.5
+			D.cell.max_charge = D.cell.max_charge * 1.5
 		if(MTX_UPG_HEALTH)
 			D.maxHealth += 15
 		if(MTX_UPG_MOP)

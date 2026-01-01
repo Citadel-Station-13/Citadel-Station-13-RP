@@ -256,7 +256,7 @@
 	desc = "A complex grasping tool used for working with circuitry."
 
 	can_hold = list(
-		/obj/item/cell/device,
+		/obj/item/cell,
 		/obj/item/electronic_assembly,
 		/obj/item/assembly/electronic_assembly,
 		/obj/item/clothing/under/circuitry,

@@ -41,19 +41,6 @@
 /mob/living/simple_mob/mechanical/sentinel/death()
 	..(null,"suddenly crashes to the ground, translucent blue blood leaking from a broken thruster.")
 
-/obj/item/shield_projector/rectangle/automatic/advanced
-	shield_health = 250
-	max_shield_health = 250
-	shield_regen_delay = 7 SECONDS
-	shield_regen_amount = 30
-	size_x = 1
-	size_y = 1
-	color = "#808080"
-	high_color = "#808080"
-	low_color = "#808080"
-	light_color = "#2e0808"
-
-
 /mob/living/simple_mob/mechanical/sentinel/do_special_attack(atom/A)
 	. = TRUE // So we don't fire a bolt as well.
 	switch(a_intent)

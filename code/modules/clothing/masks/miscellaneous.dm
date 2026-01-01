@@ -37,6 +37,7 @@
 	permeability_coefficient = 0.01
 	armor_type = /datum/armor/mask/surgical
 	materials_base = list(MAT_PLASTIC = 100, MAT_WOOD = 20)
+	belt_storage_class = BELT_CLASS_SMALL
 	var/hanging = 0
 
 /obj/item/clothing/mask/surgical/proc/adjust_mask(mob_user)

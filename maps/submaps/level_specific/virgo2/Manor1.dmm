@@ -511,8 +511,8 @@
 /area/submap/virgo2/Manor1)
 "cc" = (
 /obj/structure/closet/cabinet,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
 /obj/random/medical,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)

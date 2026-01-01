@@ -12,11 +12,9 @@
 
 	/// when not going forwards
 	var/base_strafing_speed_multiplier = 0.5
+	#warn hook
 	/// any dir
 	var/base_speed_multiplier = 1
-	/// base turn speed multiplier
-	var/base_turn_multiplier = 1
-	#warn hook all
 
 /**
  * * Acquirable from R&D / lathes

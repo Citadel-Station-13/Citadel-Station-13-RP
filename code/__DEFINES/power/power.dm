@@ -147,7 +147,8 @@
  * #define SMESMAXOUTPUT 250000
  */
 
-/* cells */
+//* Cells *//
+
 // Cells practically use their own power systems
 // "Use power from cell" for **handheld/portable devices**, semantically, should always use cell units and not a "real unit"
 // This way we can tweak balance with just cellrate.
@@ -175,28 +176,17 @@
 #define DYNAMIC_CELL_UNITS_TO_KWM(U)		(((U) * GLOB.cellrate) / (60))
 #define DYNAMIC_CELL_UNITS_TO_WM(U)			(((U) * GLOB.cellrate) / (60 / 1000))
 
-// static versions of dynamic cell unit procs, uses default cellrate
+//* Cells - Static; These use CELLRATE_DEFAULT *//
 
-#define STATIC_KJ_TO_CELL_UNITS(KJ)		((KJ) / DEFAULT_CELLRATE)
-#define STATIC_J_TO_CELL_UNITS(J)			(((J) * 0.001) / DEFAULT_CELLRATE)
-#define STATIC_CELL_UNITS_TO_KJ(U)			((U) * DEFAULT_CELLRATE)
-#define STATIC_CELL_UNITS_TO_J(U)			((U) * (1000 * DEFAULT_CELLRATE))
-/// dt in seconds
-#define STATIC_W_TO_CELL_UNITS(W, DT)		(STATIC_J_TO_CELL_UNITS(W) * (DT))
-/// dt in seconds
-#define STATIC_KW_TO_CELL_UNITS(KW, DT)	(STATIC_KJ_TO_CELL_UNITS(KW) * (DT))
-/// dt in "seconds this will be drained over" - usually 1
-#define STATIC_CELL_UNITS_TO_W(U, DT)		(STATIC_CELL_UNITS_TO_J(U) / (DT))
-/// dt in "seconds this will sbe drained over" - usually 1
-#define STATIC_CELL_UNITS_TO_KW(U, DT)		(STATIC_CELL_UNITS_TO_KJ(U) / (DT))
-#define STATIC_WH_TO_CELL_UNITS(WH)		((3.6 * (WH)) / DEFAULT_CELLRATE)
-#define STATIC_KWH_TO_CELL_UNITS(KWH)		((3600 * (KWH)) / DEFAULT_CELLRATE)
-#define STATIC_CELL_UNITS_TO_KWH(U)		(((U) * DEFAULT_CELLRATE) / (60 * 60))
-#define STATIC_CELL_UNITS_TO_WH(U)			(((U) * DEFAULT_CELLRATE) / ((60 * 60) / 1000))
-#define STATIC_KWM_TO_CELL_UNITS(KWM)		(((KWM) * 60) / DEFAULT_CELLRATE)
-#define STATIC_WM_TO_CELL_UNITS(WM)		(((WM) * (60 / 1000)) / DEFAULT_CELLRATE)
-#define STATIC_CELL_UNITS_TO_KWM(U)		(((U) * DEFAULT_CELLRATE) / (60))
-#define STATIC_CELL_UNITS_TO_WM(U)			(((U) * DEFAULT_CELLRATE) / (60 / 1000))
+#define STATIC_KW_TO_CELL_UNITS(KW, DT)		((KW) * (DT) / CELLRATE_DEFAULT)
+#define STATIC_W_TO_CELL_UNITS(W, DT)		(((W) * 0.001) * (DT) / CELLRATE_DEFAULT)
+#define STATIC_J_TO_CELL_UNITS(J)			(((J) * 0.001) / CELLRATE_DEFAULT)
+#define STATIC_KJ_TO_CELL_UNITS(KJ)			((KJ) / CELLRATE_DEFAULT)
+
+#define STATIC_CELL_UNITS_TO_KW(U, DT)		((U) * CELLRATE_DEFAULT / (DT))
+#define STATIC_CELL_UNITS_TO_W(U, DT)		((U) * CELLRATE_DEFAULT / (DT) * 1000)
+#define STATIC_CELL_UNITS_TO_J(U)			((U) * CELLRATE_DEFAULT * 1000)
+#define STATIC_CELL_UNITS_TO_KJ(U)			((U) * CELLRATE_DEFAULT)
 
 /**
  * LEGACY ENUMS

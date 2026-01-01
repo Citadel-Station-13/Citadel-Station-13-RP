@@ -716,22 +716,22 @@
 /area/medical/morgue)
 "ayC" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = -5
 	},
@@ -2522,30 +2522,30 @@
 /area/rift/surfacebase/outside/outside2)
 "brw" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -12504,7 +12504,7 @@
 	desc = null;
 	pixel_y = 24
 	},
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
@@ -16292,42 +16292,42 @@
 /area/crew_quarters/sleep)
 "kjQ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = -5
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = -5
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -8;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = -4;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_1/weapon{
 	pixel_x = 8;
 	pixel_y = 3
 	},
@@ -22686,9 +22686,7 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/sleeper)
 "nUi" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
@@ -23538,7 +23536,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/power/apc/super/north_mount{
+/obj/machinery/power/apc/large_cell/tier_2/north_mount{
 	pixel_y = 24
 	},
 /obj/machinery/button/remote/airlock{
@@ -26801,9 +26799,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "qCM" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},

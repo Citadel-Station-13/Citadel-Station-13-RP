@@ -65,10 +65,7 @@
 	var/helm_type =  /obj/item/clothing/head/helmet/space/hardsuit
 	var/boot_type =  /obj/item/clothing/shoes/magboots/hardsuit
 	var/glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit
-	var/cell_type =  /obj/item/cell/high
 	var/air_type =   /obj/item/tank/oxygen
-
-	var/unremovable_cell = FALSE
 
 	//Component/device holders.
 	var/obj/item/tank/air_supply                       // Air tank, if any.
@@ -76,7 +73,6 @@
 	var/obj/item/clothing/suit/space/hardsuit/chest                // Deployable chestpiece, if any.
 	var/obj/item/clothing/head/helmet/space/hardsuit/helmet = null // Deployable helmet, if any.
 	var/obj/item/clothing/gloves/gauntlets/hardsuit/gloves = null  // Deployable gauntlets, if any.
-	var/obj/item/cell/cell                             // Power supply, if any.
 	var/obj/item/hardsuit_module/selected_module = null            // Primary system (used with middle-click)
 	var/obj/item/hardsuit_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
 	var/obj/item/hardsuit_module/voice/speech                      // As above.
@@ -157,6 +153,13 @@
 	var/list/storage_starts_with
 	/// set to prevent us from spawning starts_with
 	var/storage_empty = FALSE
+
+	var/cell_type =  /obj/item/cell/basic/tier_1/large
+	var/cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_LARGE
+
+	// TODO: obj cell slot
+	var/obj/item/cell/cell                             // Power supply, if any.
+	var/unremovable_cell = FALSE
 
 /obj/item/hardsuit/get_cell(inducer)
 	return cell
@@ -743,8 +746,8 @@
 	data["chest"] =     (chest ?  "[chest.name]" :  "None.")
 
 	data["charge"] =       cell ? round(cell.charge,1) : 0
-	data["maxcharge"] =    cell ? cell.maxcharge : 0
-	data["chargestatus"] = cell ? FLOOR((cell.charge/cell.maxcharge)*50, 1) : 0
+	data["max_charge"] =    cell ? cell.max_charge : 0
+	data["chargestatus"] = cell ? FLOOR((cell.charge/cell.max_charge)*50, 1) : 0
 
 	data["emagged"] =       subverted
 	data["coverlock"] =     locked

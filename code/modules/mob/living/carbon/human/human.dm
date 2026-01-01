@@ -98,7 +98,7 @@
 			var/obj/item/hardsuit/suit = back
 			var/cell_status = "ERROR"
 			if(suit.cell)
-				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
+				cell_status = "[suit.cell.charge]/[suit.cell.max_charge]"
 			INJECT_STATPANEL_DATA_ENTRY(., "Suit charge", "[cell_status]")
 
 		if(mind)

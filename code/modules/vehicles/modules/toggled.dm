@@ -11,6 +11,10 @@
 
 	var/toggle_delay = 1 SECONDS
 
+	/// turn off when vehicle is depowered
+	#warn impl
+	var/requires_power_to_stay_active = FALSE
+
 	var/ui_text_active = "Enabled"
 	var/ui_text_inactive = "Disabled"
 	var/ui_require_confirm = FALSE

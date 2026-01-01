@@ -16,6 +16,7 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 1, TECH_ENGINEERING = 2)
 	materials_base = list(MAT_STEEL = 500, MAT_GLASS = 200)
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	var/mode = 1;
 
 // TODO: scan mechs

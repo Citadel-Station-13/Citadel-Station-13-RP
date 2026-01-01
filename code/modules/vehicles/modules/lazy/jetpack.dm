@@ -30,6 +30,9 @@
 /obj/item/vehicle_module/lazy/jetpack/proc/on_deactivate()
 	#warn register
 
+/obj/item/vehicle_module/lazy/jetpack/proc/handle_process_spacemove(drifting, movement_dir, just_checking)
+	#warn impl
+
 // TODO: IOU /obj/item/vehicle_module/lazy/jetpack/gas
 // TODO: IOU /obj/item/vehicle_module/lazy/jetpack/gas/ion
 

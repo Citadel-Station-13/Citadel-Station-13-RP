@@ -7,6 +7,8 @@
 		disconnect()
 
 /obj/vehicle/sealed/mecha/user_vehicle_turn(direction)
+	if(world.time < turn_delay)
+		return FALSE
 	// -- LEGACY BULLSHIT
 	if(zoom)
 		if(!(world.time % 1 SECONDS))
@@ -16,6 +18,8 @@
 	return ..()
 
 /obj/vehicle/sealed/mecha/user_vehicle_move(direction, face_direction)
+	if(world.time < move_delay)
+		return FALSE
 	// -- LEGACY BULLSHIT
 	if(zoom)
 		if(!(world.time % 1 SECONDS))
@@ -65,19 +69,22 @@
 		return FALSE
 	if(dir == direction)
 		return TRUE
+	if(world.time < turn_delay)
+		return FALSE
 	if(!draw_sourced_power_oneoff("actuators", "actuators", turn_cost_base))
 		return FALSE
 	. = ..()
 	if(!.)
 		return
-	var/actuator_mod = comp_actuator ? comp_actuator.base_turn_multiplier : 1
-	turn_delay = world.time + base_turn_delay * actuator_mod
+	turn_delay = world.time + turn_delay()
 	if(turn_sound)
 		playsound(src, turn_sound, 40, TRUE)
 
 #warn strafing / not strafing should be handled in user, vehicle move should move without turning
 
 /obj/vehicle/sealed/mecha/vehicle_move(direction)
+	if(world.time < move_delay)
+		return FALSE
 	if(!draw_sourced_power_oneoff("actuators", "actuators", move_cost_base))
 		return FALSE
 	// Mechs have a special movement controller.
@@ -94,3 +101,21 @@
 		playsound(src, move_sound, 40, TRUE)
 
 #warn strafing should do more delay
+
+/obj/vehicle/sealed/mecha/proc/turn_delay()
+	return base_turn_speed
+
+/obj/vehicle/sealed/mecha/movement_delay()
+	. = ..()
+	if(comp_actuator)
+		. *= comp_actuator.base_speed_multiplier
+
+// -- jetpacks need refactored but that's for rigsuit branch -- //
+
+/obj/vehicle/sealed/mecha/process_spacemove(drifting, movement_dir, just_checking)
+	. = ..()
+	if(.)
+		return
+	for(var/obj/item/vehicle_module/toggled/lazy/jetpack/jetpack in modules)
+		if(jetpack.handle_process_spacemove(drifting, movement_dir, just_checking))
+			return TRUE

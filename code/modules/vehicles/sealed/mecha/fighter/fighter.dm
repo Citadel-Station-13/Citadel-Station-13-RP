@@ -60,8 +60,6 @@
 	var/flight_base_movement_speed = 5
 	/// Flight mode energy cost in joules per second
 	var/flight_energy_cost = 500
-	/// Flight mode can be kept on without an occupant
-	var/flight_has_autopilot = FALSE
 
 	var/flight_move_sound = 'sound/mecha/fighter/engine_mid_fighter_move.ogg'
 	var/flight_turn_sound = 'sound/mecha/fighter/engine_mid_boost_01.ogg'
@@ -85,14 +83,15 @@
 				occupant_send_default_chat("Power lost to thrusters.")
 				disable_flight(null, null, TRUE)
 
-#warn autopilot
+// TODO: have the fighter crash if no one's piloting and there's no autopilot so we don't just have auto-loitering fighters lol
+
 /obj/vehicle/sealed/mecha/fighter/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
-	. = ..()
-	consider_gravity()
+	..()
+	update_gravity()
 
 /obj/vehicle/sealed/mecha/fighter/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
-	. = ..()
-	consider_gravity()
+	..()
+	update_gravity()
 
 /obj/vehicle/sealed/mecha/fighter/process_spacemove_support(drifting, movement_dir)
 	// with what hands?

@@ -175,10 +175,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/talon, 28)
 	req_one_access = list(ACCESS_FACTION_TALON)
 	alarms_hidden = 1
 
-CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc/talon/hyper, 28)
-/obj/machinery/power/apc/talon/hyper
-	cell_type = /obj/item/cell/hyper
-
 CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm/talon, 26)
 /obj/machinery/air_alarm/talon
 	req_access = list()

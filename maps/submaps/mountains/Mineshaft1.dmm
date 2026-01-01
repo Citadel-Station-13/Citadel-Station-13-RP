@@ -108,8 +108,8 @@
 /area/submap/cave/AMine1)
 "v" = (
 /obj/structure/table/standard,
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor,
 /area/submap/cave/AMine1)
 "w" = (

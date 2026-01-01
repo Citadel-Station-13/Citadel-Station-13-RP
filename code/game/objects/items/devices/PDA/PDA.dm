@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
 	item_flags = ITEM_NO_BLUDGEON
+	belt_storage_class = BELT_CLASS_SMALL
 
 	//Main variables
 	var/pdachoice = 1

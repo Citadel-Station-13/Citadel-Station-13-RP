@@ -144,8 +144,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/flashlight/glowstick/red,
 		/obj/item/flashlight/glowstick/yellow,
 		/obj/item/flashlight/pen,
-		/obj/item/cell,
-		/obj/item/cell/device,
+		/obj/item/cell/basic/tier_1/weapon,
+		/obj/item/cell/basic/tier_1/medium,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/mask/breath,
@@ -370,9 +370,10 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/frame,
 		/obj/item/broken_device/random,
 		/obj/item/borg/upgrade/restart,
-		/obj/item/cell,
-		/obj/item/cell/high,
-		/obj/item/cell/device,
+		/obj/item/cell/basic/tier_2/weapon,
+		/obj/item/cell/basic/tier_2/medium,
+		/obj/item/cell/basic/tier_2/small,
+		/obj/item/cell/basic/tier_2/large,
 		/obj/item/circuitboard/broken,
 		/obj/item/circuitboard/arcade,
 		/obj/item/circuitboard/machine/lathe/autolathe,
@@ -414,8 +415,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 
 	uncommon_loot = list(
-		/obj/item/cell/super,
-		/obj/item/cell/device/weapon,
+		/obj/item/cell/basic/tier_3/medium,
+		/obj/item/cell/basic/tier_3/weapon,
+		/obj/item/cell/basic/tier_3/large,
 		/obj/item/circuitboard/security,
 		/obj/item/circuitboard/crew,
 		/obj/item/aiModule/reset,
@@ -446,7 +448,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	)
 
 	very_rare_loot = list(
-		/obj/item/cell/hyper,
+		/obj/item/cell/basic/tier_4/medium,
 		/obj/item/aiModule/freeform,
 		/obj/item/aiModule/asimov,
 		/obj/item/aiModule/paladin,
@@ -509,7 +511,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 // May contain powercells or alien weaponry.
 /obj/structure/loot_pile/surface/alien/security
 	uncommon_loot = list(
-		/obj/item/cell/device/weapon/recharge/alien,
+		/obj/item/cell/regen/fractal/weapon,
 		/obj/item/clothing/suit/armor/alien,
 		/obj/item/clothing/head/helmet/alien
 	)
@@ -539,7 +541,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/surgical/retractor/alien,
 		/obj/item/surgical/scalpel/alien,
 		/obj/item/surgical/surgicaldrill/alien,
-		/obj/item/cell/device/weapon/recharge/alien,
+		/obj/item/cell/regen/fractal/weapon,
 		/obj/item/clothing/suit/armor/alien,
 		/obj/item/clothing/head/helmet/alien,
 		/obj/item/gun/projectile/energy/alien
@@ -1110,12 +1112,14 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/stack/material/steel{amount = 25},
 		/obj/item/stack/material/glass{amount = 10},
 		/obj/item/stack/material/plasteel{amount = 5},
-		/obj/item/cell,
+		/obj/item/cell/basic/tier_3/large,
+		/obj/item/cell/basic/tier_2/large,
+		/obj/item/cell/basic/tier_4/medium,
 		/obj/item/material/shard
 		)
 
 	uncommon_loot = list(
-		/obj/item/cell/high,
+		/obj/item/cell/basic/tier_2/medium,
 		/obj/item/robot_parts/robot_component/actuator,
 		/obj/item/robot_parts/robot_component/armour,
 		/obj/item/robot_parts/robot_component/binary_communication_device,
@@ -1125,7 +1129,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	rare_loot = list(
-		/obj/item/cell/super,
+		/obj/item/cell/basic/tier_3/medium,
 		/obj/item/borg/upgrade/restart,
 		/obj/item/borg/upgrade/jetpack,
 		/obj/item/borg/upgrade/tasercooler,

@@ -1304,8 +1304,8 @@
 	pixel_x = -3;
 	pixel_y = 13
 	},
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled/techfloor/grid,

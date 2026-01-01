@@ -24,7 +24,7 @@
 	var/enclosed = FALSE	// is the rider protected from bullets? assume no
 	var/list/autogrant_actions_passenger	//plain list of typepaths
 	var/list/autogrant_actions_controller	//assoc list "[bitflag]" = list(typepaths)
-	var/list/mob/occupant_actions_legacy			//assoc list mob = list(type = action datum assigned to mob)
+	var/list/occupant_actions_legacy			//assoc list mob = list(type = action datum assigned to mob)
 	var/obj/vehicle/trailer
 	var/mouse_pointer //do we have a special mouse
 

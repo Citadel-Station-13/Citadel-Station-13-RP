@@ -191,6 +191,7 @@
 
 /obj/machinery/portable_atmospherics/powered/reagent_distillery/use_power(var/amount, var/chan = -1)
 	last_power_draw_legacy = amount
+	var/obj/item/cell/cell = obj_cell_slot?.cell
 	if(use_cell && cell && cell.charge)
 		var/needed = DYNAMIC_W_TO_CELL_UNITS(amount, 1)
 		needed -= cell.use(needed)

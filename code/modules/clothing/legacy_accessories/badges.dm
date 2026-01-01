@@ -10,6 +10,7 @@
 	icon_state = "badge"
 	slot_flags = SLOT_BELT | SLOT_TIE
 	slot = ACCESSORY_SLOT_MEDAL
+	belt_storage_class = BELT_CLASS_SMALL
 
 	var/stored_name
 	var/badge_string = "Corporate Security"
