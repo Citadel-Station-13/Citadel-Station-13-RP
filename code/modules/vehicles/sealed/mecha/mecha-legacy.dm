@@ -50,9 +50,6 @@
 	/// Contains bitflags.
 	var/internal_damage = 0
 
-	/// Required access level for mecha operation.
-	var/list/operation_req_access = list()
-
 	var/wreckage
 
 	var/static/image/radial_image_eject = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_eject")
@@ -201,10 +198,11 @@
 			if(loc == current)
 				if((estimate_cell_power_remaining() >= phasing_energy_drain) && can_phase)
 					can_phase = FALSE
+					// TODO: don't use flick for this, use filters or smth
 					flick("[initial_icon]-phase", src)
 					forceMove(into_dir)
 					src.use_power(phasing_energy_drain)
-					sleep(get_step_delay() * 3)
+					sleep(movement_delay() * 3)
 					can_phase = TRUE
 					occupant_message("Phased through [obstacle].")
 	else
@@ -567,8 +565,6 @@
 	if(occupant_legacy.hud_used)
 		minihud = new (occupant_legacy.hud_used, src)
 
-	GrantActions(occupant_legacy, 1)
-
 	update_cell_alerts()
 	update_damage_alerts()
 	setDir(dir_in)
@@ -580,9 +576,7 @@
 /obj/vehicle/sealed/mecha/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	QDEL_NULL(minihud)
-	RemoveActions(removing, human_occupant=1)
 
-	removing << browse(null, "window=exosuit")
 	if(removing.client && cloaked_selfimage)
 		removing.client.images -= cloaked_selfimage
 	removing.clear_alert("charge")
@@ -618,3 +612,22 @@
 		return
 	phasing = !phasing
 	src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
+
+#warn obliterate
+/obj/vehicle/sealed/mecha/combat/melee_action(atom/T)
+	if(istype(T, /mob/living))
+		var/mob/living/M = T
+		if(src.occupant_legacy.a_intent == INTENT_HARM || istype(src.occupant_legacy, /mob/living/carbon/brain)) //Brains cannot change intents; Exo-piloting brains lack any form of physical feedback for control, limiting the ability to 'play nice'.
+			playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
+			if(damtype == "brute")
+				step_away(M,src,15)
+			if(ishuman(T))
+			else
+				M.update_health()
+			src.occupant_message("You hit [T].")
+			src.visible_message("<font color='red'><b>[src.name] hits [T].</b></font>")
+		else
+			step_away(M,src)
+			src.occupant_message("You push [T] out of the way.")
+			src.visible_message("[src] pushes [T] out of the way.")
+		return

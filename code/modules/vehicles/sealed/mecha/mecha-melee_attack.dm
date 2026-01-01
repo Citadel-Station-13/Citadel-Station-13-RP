@@ -87,6 +87,8 @@
  * "So I got punched by a gundam"
  */
 /datum/melee_attack/vehicle/mecha
+	sfx_hit_sound = 'sound/weapons/heavysmash.ogg'
+
 	/**
 	 * Multiplier to the vehicle's `melee_standard_force`
 	 */
@@ -116,15 +118,23 @@
 
 /datum/melee_attack/vehicle/mecha/perform_attack_animation(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(.)
+		return
 
 /datum/melee_attack/vehicle/mecha/perform_attack_impact(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(.)
+		return
 
 /datum/melee_attack/vehicle/mecha/perform_attack_message(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(.)
+		return
 
 /datum/melee_attack/vehicle/mecha/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(.)
+		return
 
 /datum/melee_attack/vehicle/mecha/punch
 

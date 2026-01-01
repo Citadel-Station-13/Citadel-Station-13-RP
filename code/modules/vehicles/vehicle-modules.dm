@@ -210,10 +210,12 @@
  * @return TRUE for success, FALSE otherwise
  */
 /obj/vehicle/proc/set_active_click_module(obj/item/vehicle_module/module, silent)
-	if(module.vehicle == src)
-		module_active_click = module
-		return TRUE
-	return FALSE
+	if(module && module.vehicle != src)
+		return FALSE
+	// this can null it out!
+	module_active_click = module
+	update_action_buttons_of_path(/datum/action/vehicle/cycle_active_module)
+	return TRUE
 
 /**
  * @return new module or null
@@ -232,5 +234,5 @@
 			if(potential.is_active_click_module())
 				next = potential
 				break
-	module_active_click = next
+	set_active_click_module(next)
 	return next

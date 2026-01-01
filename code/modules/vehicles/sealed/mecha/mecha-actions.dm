@@ -44,6 +44,12 @@
 		return
 	target.user_set_floodlights(actor, !target.floodlight_active)
 
+/datum/action/vehicle/mecha/toggle_internals
+	name = "Toggle Internals"
+	desc = "Toggle cabin air supply between environmental and our internal tank."
+	button_icon_state = "internals"
+	#warn iconstate
+
 /datum/action/vehicle/mecha/toggle_internals/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
@@ -59,6 +65,10 @@
 /datum/action/vehicle/mecha/legacy
 
 /datum/action/vehicle/mecha/legacy/phasing
+	name = "Toggle Phasing"
+	desc = "Toggle phasing, if your mech supports it"
+	button_icon_state = "phasing"
+	#warn iconstate
 
 /datum/action/vehicle/mecha/legacy/phasing/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()
@@ -66,6 +76,10 @@
 		return
 
 /datum/action/vehicle/mecha/legacy/zoom
+	name = "Toggle Zoom"
+	desc = "Toggle zoom mode, if your mech supports it"
+	button_icon_state = "zoom"
+	#warn iconstate
 
 /datum/action/vehicle/mecha/legacy/zoom/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()

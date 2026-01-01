@@ -38,46 +38,6 @@
 
 	cargo_capacity = 1
 
-/obj/vehicle/sealed/mecha/combat/melee_action(atom/T)
-	if(!melee_can_hit)
-		return
-	if(istype(T, /mob/living))
-		var/mob/living/M = T
-		if(src.occupant_legacy.a_intent == INTENT_HARM || istype(src.occupant_legacy, /mob/living/carbon/brain)) //Brains cannot change intents; Exo-piloting brains lack any form of physical feedback for control, limiting the ability to 'play nice'.
-			playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
-			if(damtype == "brute")
-				step_away(M,src,15)
-			if(ishuman(T))
-			else
-				M.update_health()
-			src.occupant_message("You hit [T].")
-			src.visible_message("<font color='red'><b>[src.name] hits [T].</b></font>")
-		else
-			step_away(M,src)
-			src.occupant_message("You push [T] out of the way.")
-			src.visible_message("[src] pushes [T] out of the way.")
-		return
-
-	else
-		if(istype(T, /obj/machinery/disposal)) // Stops mechs from climbing into disposals
-			return
-		if(src.occupant_legacy.a_intent == INTENT_HARM || istype(src.occupant_legacy, /mob/living/carbon/brain)) // Don't smash unless we mean it
-			if(damtype == "brute")
-				src.occupant_message("You hit [T].")
-				src.visible_message("<font color='red'><b>[src.name] hits [T]</b></font>")
-				playsound(src, 'sound/weapons/heavysmash.ogg', 50, 1)
-				T.inflict_atom_damage(
-					force,
-					4,
-					ARMOR_MELEE,
-				)
-
-				melee_can_hit = 0
-
-				spawn(melee_cooldown)
-					melee_can_hit = 1
-	return
-
 /obj/vehicle/sealed/mecha/combat/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	if(adding.client)
