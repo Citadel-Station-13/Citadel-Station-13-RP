@@ -50,17 +50,17 @@
 	legacy_tracer_type = /obj/effect/projectile/tracer/laser_blue
 	legacy_impact_type = /obj/effect/projectile/impact/laser_blue
 
-// /obj/projectile/beam/gravity_sphere/on_impact(atom/target, impact_flags, def_zone, efficiency)
-// 	. = ..()
-// 	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-// 		return
-// 	if(!ismob(target))
-// 		return
-// 	do_net(target)
+/obj/projectile/beam/gravity_sphere/on_impact(atom/target, impact_flags, def_zone, efficiency)
+	. = ..()
+	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
+		return
+	if(!ismob(target))
+		return
+	do_net(target)
 
-// /obj/projectile/beam/gravity_sphere/proc/do_net(var/mob/M)
-// 	var/obj/item/gravity_sphere/sentinel/net = new (get_turf(M))
-// 	net.throw_impact(M)
+/obj/projectile/beam/gravity_sphere/proc/do_net(var/mob/M)
+	var/obj/item/gravity_sphere/sentinel/net = new (get_turf(M))
+	net.throw_impact(M)
 
 /obj/projectile/beam/stun/blue
 	icon_state = "bluelaser"
