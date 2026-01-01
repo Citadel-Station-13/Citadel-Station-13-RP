@@ -47,10 +47,6 @@
 /mob/proc/add_to_player_list()
 	SHOULD_CALL_PARENT(TRUE)
 	GLOB.player_list |= src
-	if(client.holder)
-		GLOB.keyloop_list |= src
-	else if(stat != DEAD)
-		GLOB.keyloop_list |= src
 	if(stat == DEAD)
 		add_to_current_dead_players()
 	else
@@ -60,7 +56,6 @@
 /mob/proc/remove_from_player_list()
 	SHOULD_CALL_PARENT(TRUE)
 	GLOB.player_list -= src
-	GLOB.keyloop_list -= src
 	if(stat == DEAD)
 		remove_from_current_dead_players()
 	else
@@ -94,28 +89,7 @@
 ///Adds the cliented mob reference to the list of living player-mobs. If the mob is an antag, it adds it to the list of living antag player-mobs.
 /mob/proc/add_to_current_living_players()
 	GLOB.alive_player_list |= src
-	// if(is_antag(NONE))
-	// 	add_to_current_living_antags()
 
 ///Removes the mob reference from the list of living player-mobs. If the mob is an antag, it removes it from the list of living antag player-mobs.
 /mob/proc/remove_from_current_living_players()
 	GLOB.alive_player_list -= src
-	// if(is_antag(NONE))
-	// 	remove_from_current_living_antags()
-
-
-///Adds the cliented mob reference to the list of living antag player-mobs.
-/mob/proc/add_to_current_living_antags()
-	GLOB.current_living_antags |= src
-	// if (length(mind.antag_datums) == 0)
-	// 	return
-
-	// for (var/datum/antagonist/antagonist in mind.antag_datums)
-	// 	if (antagonist.antag_flags & ANTAG_SKIP_GLOBAL_LIST)
-	// 		continue
-	// 	GLOB.current_living_antags |= src
-	// 	return
-
-///Removes the mob reference from the list of living antag player-mobs.
-/mob/proc/remove_from_current_living_antags()
-	GLOB.current_living_antags -= src

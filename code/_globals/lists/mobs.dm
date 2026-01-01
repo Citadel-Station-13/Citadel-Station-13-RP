@@ -13,7 +13,6 @@ GLOBAL_LIST_INIT(abstract_mob_types, list(
 
 
 GLOBAL_LIST_EMPTY(player_list) //all mobs **with clients attached**.
-GLOBAL_LIST_EMPTY(keyloop_list) //as above but can be limited to boost performance
 GLOBAL_LIST_EMPTY(mob_list) //all mobs, including clientless
 GLOBAL_LIST_EMPTY(alive_mob_list) //all alive mobs, including clientless. Excludes /mob/dead/new_player
 GLOBAL_LIST_EMPTY(suicided_mob_list) //contains a list of all mobs that suicided, including their associated ghosts.
@@ -31,9 +30,6 @@ GLOBAL_LIST_EMPTY(alive_player_list)
 
 /// All dead mobs with clients. Does not include observers.
 GLOBAL_LIST_EMPTY(dead_player_list)
-
-/// All alive antags with clients.
-GLOBAL_LIST_EMPTY(current_living_antags)
 
 /// All observers with clients that joined as observers.
 GLOBAL_LIST_EMPTY(current_observers_list)

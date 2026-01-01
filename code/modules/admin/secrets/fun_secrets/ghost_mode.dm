@@ -12,7 +12,7 @@
 		return
 
 	var/list/affected_areas = list()
-	for(var/mob/M in GLOB.mob_living_list)
+	for(var/mob/M in GLOB.alive_player_list)
 		if(M.stat == CONSCIOUS && !(M in affected_mobs))
 			affected_mobs |= M
 			switch(rand(1,4))
