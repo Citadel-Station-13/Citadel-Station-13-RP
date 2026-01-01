@@ -42,9 +42,17 @@
 
 /obj/item/vehicle_module/lazy/smokescreen/proc/try_emit_smoke(datum/event_args/actor/actor)
 	if(!isturf(vehicle?.loc))
-		#warn yell
+		actor?.chat_feedback(SPAN_WARNING("Not enough clearance around the vehicle to emit smoke."), target = vehicle)
 		return FALSE
-	#warn log
+	if(charges <= 0)
+		actor?.chat_feedback(
+			SPAN_WARNING("Not enough smokescreen charges left."),
+			target = vehicle,
+		)
+		return TRUE
+	vehicle_log_for_admins(actor, "smoke-popped")
+	emit_smoke(actor)
+	return TRUE
 
 /obj/item/vehicle_module/lazy/smokescreen/proc/emit_smoke(datum/event_args/actor/actor)
 	if(!isturf(vehicle?.loc))
