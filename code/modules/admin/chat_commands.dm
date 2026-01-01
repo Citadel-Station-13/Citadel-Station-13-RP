@@ -25,7 +25,7 @@
 		return new /datum/tgs_message_content("Insufficient parameters")
 	log_admin("Chat Name Check: [sender.friendly_name] on [params]")
 	message_admins("Name checking [params] from [sender.friendly_name]")
-	return new /datum/tgs_message_content(keywords_lookup(params, 1))
+	return new /datum/tgs_message_content(keywords_lookup(params, TRUE))
 
 /datum/tgs_chat_command/adminwho
 	name = "adminwho"

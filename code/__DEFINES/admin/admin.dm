@@ -117,3 +117,8 @@
 // LOG BROWSE TYPES
 #define BROWSE_ROOT_ALL_LOGS     1
 #define BROWSE_ROOT_CURRENT_LOGS 2
+
+/// for [/proc/check_asay_links], if there are any actionable refs in the asay message, this index in the return list contains the new message text to be printed
+#define ASAY_LINK_NEW_MESSAGE_INDEX "!asay_new_message"
+/// for [/proc/check_asay_links], if there are any admin pings in the asay message, this index in the return list contains a list of admins to ping
+#define ASAY_LINK_PINGED_ADMINS_INDEX "!pinged_admins"
