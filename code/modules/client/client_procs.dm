@@ -109,6 +109,9 @@
 			C = M.client
 		cmd_admin_pm(C,null)
 		return
+	if (href_list["player_ticket_panel"])
+		view_latest_ticket()
+		return
 
 	// Depricated. go use TGS
 	if(href_list["irc_msg"])

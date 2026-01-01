@@ -103,11 +103,11 @@
 /**
  *! AHELP Commands.
  */
-#define ADMIN_AHELP_REJECT(user)    ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=reject'>[SPAN_TOOLTIP("Reject and close this ticket.","REJT")]</a>)")
-#define ADMIN_AHELP_IC(user)        ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=icissue'>[SPAN_TOOLTIP("Close this ticket and mark it IC.","IC")]</a>)")
-#define ADMIN_AHELP_CLOSE(user)     ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=close'>[SPAN_TOOLTIP("Close this ticket.","CLOSE")]</a>)")
-#define ADMIN_AHELP_RESOLVE(user)   ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=resolve'>[SPAN_TOOLTIP("Close this ticket and mark it as Resolved.","RSLVE")]</a>)")
-#define ADMIN_AHELP_HANDLE(user)    ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=handleissue'>[SPAN_TOOLTIP("Alert other Administrators that you're handling this ticket.","HANDLE")]</a>)")
+#define ADMIN_AHELP_REJECT(user)    ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=reject'>[SPAN_TOOLTIP("Reject and close this ticket.","REJT")]</a>)")
+#define ADMIN_AHELP_IC(user)        ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=icissue'>[SPAN_TOOLTIP("Close this ticket and mark it IC.","IC")]</a>)")
+#define ADMIN_AHELP_CLOSE(user)     ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=close'>[SPAN_TOOLTIP("Close this ticket.","CLOSE")]</a>)")
+#define ADMIN_AHELP_RESOLVE(user)   ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=resolve'>[SPAN_TOOLTIP("Close this ticket and mark it as Resolved.","RSLVE")]</a>)")
+#define ADMIN_AHELP_HANDLE(user)    ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=handleissue'>[SPAN_TOOLTIP("Alert other Administrators that you're handling this ticket.","HANDLE")]</a>)")
 #define ADMIN_AHELP_FULLMONTY(user) ("[ADMIN_AHELP_REJECT(user)] [ADMIN_AHELP_IC(user)] [ADMIN_AHELP_CLOSE(user)] [ADMIN_AHELP_RESOLVE(user)] [ADMIN_AHELP_HANDLE(user)]")
 
 #define AHELP_ACTIVE   1
