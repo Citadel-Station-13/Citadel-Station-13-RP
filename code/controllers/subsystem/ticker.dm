@@ -111,12 +111,11 @@ SUBSYSTEM_DEF(ticker)
 				if(blackbox)
 					blackbox.save_all_data_to_sql()
 
-				send2irc("Server", "A round of [mode.name] just ended.")
 				if(CONFIG_GET(string/chat_roundend_notice_tag))
-					var/broadcastmessage = "The round has ended."
+					var/broadcastmessage = "[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."
 					if(CONFIG_GET(string/chat_reboot_role))
 						broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
-					send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
+					send2chat(new /datum/tgs_message_content(broadcastmessage), CONFIG_GET(string/chat_roundend_notice_tag))
 
 				SSdbcore.SetRoundEnd()
 				SSpersistence.SavePersistence()
@@ -125,13 +124,14 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
-	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
+	if(Master.initializations_finished_with_no_players_logged_in)
+		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
 	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
 	SEND_SOUND(world, sound('sound/misc/server-ready.ogg', volume = 100))
+	if(CONFIG_GET(string/chat_roundend_notice_tag))
+		send2chat(new /datum/tgs_message_content("New round starting on [(LEGACY_MAP_DATUM).name]!"), CONFIG_GET(string/chat_roundend_notice_tag))
 	current_state = GAME_STATE_PREGAME
-	if(Master.initializations_finished_with_no_players_logged_in)
-		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 	fire()
 
 /datum/controller/subsystem/ticker/proc/process_pregame()

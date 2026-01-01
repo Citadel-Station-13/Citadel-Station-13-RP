@@ -64,30 +64,6 @@
 	status += "Players: [GLOB.clients.len] (Active: [get_active_player_count(FALSE, TRUE, FALSE)]). Round has [SSticker.HasRoundStarted() ? "" : "not "]started."
 	return new /datum/tgs_message_content(status)
 
-/datum/tgs_chat_command/irccheck
-	name = "check"
-	help_text = "Gets the playercount, gamemode, and address of the server"
-	var/last_irc_check = 0
-
-/datum/tgs_chat_command/irccheck/Run(datum/tgs_chat_user/sender, params)
-	var/rtod = REALTIMEOFDAY
-	if(rtod - last_irc_check < IRC_STATUS_THROTTLE)
-		return
-	last_irc_check = rtod
-	var/server = null		//CONFIG_GET(string/server)
-	//return "[round_id ? "Round #[round_id]: " : ""][clients.len] players on [SSmapping.config_legacy.map_name], Mode: [master_mode]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]"
-	var/current_state
-	switch(SSticker.current_state)
-		if(GAME_STATE_PREGAME)
-			current_state = "pregame"
-		if(GAME_STATE_SETTING_UP)
-			current_state = "starting"
-		if(GAME_STATE_PLAYING)
-			current_state = "active"
-		if(GAME_STATE_FINISHED)
-			current_state = "finishing"
-	return "[GLOB.clients.len] players on [(LEGACY_MAP_DATUM).name], Mode: [master_mode]; round [current_state] -- Duration [roundduration2text()] -- [server ? server : "[world.internet_address]:[world.port]"]"
-
 /datum/tgs_chat_command/ahelp
 	name = "ahelp"
 	help_text = "<ckey|ticket #> <message|ticket <close|resolve|icissue|reject|reopen <ticket #>|list>>"
@@ -109,21 +85,6 @@
 	var/res = IrcPm(target, all_params.Join(" "), sender.friendly_name)
 	if(res != "Message Successful")
 		return res
-
-GLOBAL_LIST(round_end_notifiees)
-
-/datum/tgs_chat_command/endnotify
-	name = "notify"
-	help_text = "Pings the invoker when the round ends"
-	admin_only = FALSE
-
-/datum/tgs_chat_command/endnotify/Run(datum/tgs_chat_user/sender, params)
-	//if(!SSticker.IsRoundInProgress() && SSticker.HasRoundStarted())
-	if(SSticker.current_state == GAME_STATE_FINISHED)
-		return "[sender.mention], the round has already ended!"
-	LAZYINITLIST(GLOB.round_end_notifiees)
-	GLOB.round_end_notifiees[sender.mention] = TRUE
-	return "I will notify [sender.mention] when the round ends."
 
 /datum/tgs_chat_command/whitelist
 	name = "whitelist"

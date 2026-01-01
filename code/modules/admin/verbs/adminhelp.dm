@@ -314,7 +314,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if(embed.content)
 			webhook_info["content"] = embed.content
 	// Uncomment when servers are moved to TGS4
-	// send2chat(new /datum/tgs_message_conent("[initiator_ckey] | [message_content]"), "ahelp", TRUE)
+	// send2chat(new /datum/tgs_message_content("[initiator_ckey] | [message_content]"), "ahelp", TRUE)
 	var/list/headers = list()
 	headers["Content-Type"] = "application/json"
 	var/datum/http_request/request = new()
