@@ -64,13 +64,6 @@
 	var/sound_do_after_default_volume = 75
 	var/sound_do_after_default_vary = TRUE
 
-	//* Sprite *//
-	#warn impl/hook for repair droid!!
-	/// Contains on-vehicle state.
-	var/has_vehicle_overlay = FALSE
-	/// State append for vehicle overlay
-	var/use_vehicle_overlay_append
-
 	//* UI *//
 	/// UI component key when being rendered
 	/// * Must route to a valid component in vehicle UI routing. Check TGUI folder for more info.
@@ -209,11 +202,9 @@
  * can radial for which module wants to receive it.
  * * This doesn't mean a user can't use an item if this returns FALSE! The normal `using_item_on` can still be used.
  */
-#warn hook
 /obj/item/vehicle_module/proc/interested_using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags, atom/movable/from_mounted_on)
 	return FALSE
 
-#warn this
 /**
  * Called to handle item attack chain (using_item_on) on our chassis (whether that's a vehicle or something else)
  * or a normal item attack chain
@@ -229,7 +220,6 @@
 /obj/item/vehicle_module/proc/receive_using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags, atom/movable/from_mounted_on)
 	SHOULD_NOT_SLEEP(TRUE)
 	return clickchain_flags
-	#warn hook on chassis
 
 //* Logging *//
 
@@ -288,8 +278,10 @@
 
 /obj/item/vehicle_module/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
 
-#warn impl; repairs? emp? a bit of nanopaste repair as a treat?
+#warn impl; repairs? a bit of nanopaste repair as a treat?
 
 //* UI *//
 

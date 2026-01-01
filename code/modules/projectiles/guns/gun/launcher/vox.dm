@@ -131,6 +131,9 @@
 
 	embed_chance = 0
 
+/obj/projectile/energy/darkmatter/dragonfly
+	damage_type = DAMAGE_TYPE_SEARING
+
 /*
  * Vox Sonic Cannon
  */

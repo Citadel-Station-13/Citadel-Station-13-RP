@@ -22,7 +22,14 @@ GLOBAL_LIST_EMPTY(melee_attack_singletons)
  *   unnecessary fluff.
  */
 /datum/melee_attack
+	//* SFX *//
+	var/sfx_hit_sound
+	var/sfx_hit_volume = 75
+	var/sfx_hit_vary = TRUE
 
+	var/sfx_miss_sound = 'sound/weapons/punchmiss.ogg'
+	var/sfx_miss_volume = 25
+	var/sfx_miss_vary = TRUE
 
 	//* VFX *//
 	/// ATTACK_ANIMATION_X enum for standard animation, if any
@@ -75,8 +82,13 @@ GLOBAL_LIST_EMPTY(melee_attack_singletons)
 /datum/melee_attack/proc/perform_attack_sound(atom/movable/attacker, atom/target, missed, obj/item/weapon, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(missed)
-		playsound(target, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		return TRUE
+		if(sfx_miss_sound)
+			playsound(target, sfx_miss_sound, sfx_miss_volume, sfx_miss_vary, -1)
+			return TRUE
+	else
+		if(sfx_hit_sound)
+			playsound(target, sfx_hit_sound, sfx_hit_volume, sfx_hit_vary)
+			return TRUE
 	return FALSE
 
 /**

@@ -8,9 +8,12 @@
 	// TODO: jetpacks at some point should simulate their own encumbrance
 	//       support
 
+	/// Whether or not this jetpack is active.
+	var/active = FALSE
+
 /obj/item/vehicle_module/lazy/jetpack/render_ui()
 	..()
-
+	l_ui_select("toggle", "Enabled", list("Enable", "Disable"), active ? "Enable" : "Disable")
 
 /obj/item/vehicle_module/lazy/jetpack/on_l_ui_select(datum/event_args/actor/actor, key, name)
 	. = ..()
@@ -23,12 +26,13 @@
 				if("Disable")
 
 /obj/item/vehicle_module/lazy/jetpack/proc/set_active(new_state)
+	#warn impl
 
 /obj/item/vehicle_module/lazy/jetpack/proc/on_activate()
-	#warn register
+	return
 
 /obj/item/vehicle_module/lazy/jetpack/proc/on_deactivate()
-	#warn register
+	return
 
 /obj/item/vehicle_module/lazy/jetpack/proc/handle_process_spacemove(drifting, movement_dir, just_checking)
 	#warn impl
@@ -47,8 +51,9 @@
 	desc = "Allows controlled spaceflight. Very slow, and energy consuming compared to proper ion-gas jetpacks."
 	disallow_duplicates_match_type = /obj/item/vehicle_module/lazy/jetpack
 
+	/// our ion trail follow effect
 	var/datum/effect_system/ion_trail_follow/ion_trail
-
+	/// in joules
 	var/cost_per_tile = 5000
 
 /obj/item/vehicle_module/lazy/jetpack/electric/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
@@ -70,5 +75,7 @@
 	..()
 	ion_trail.stop()
 
-
-#warn impl
+/obj/item/vehicle_module/lazy/jetpack/electric/handle_process_spacemove(drifting, movement_dir, just_checking)
+	if(!vehicle.draw_module_power_oneoff(src, cost_per_tile))
+		return FALSE
+	return TRUE

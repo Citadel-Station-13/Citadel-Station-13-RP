@@ -79,17 +79,19 @@
 
 /obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
 	name = "exterior damping field (ranged)"
+	works_on_melee = FALSE
 
 /obj/item/vehicle_module/personal_shield/structural_field/concussive
 	name = "exterior damping field (melee)"
+	works_on_melee = TRUE
 
 /datum/armor/vehicle_module/personal_shield_routing/deflector
 	melee_soak = 5
 	bullet_soak = 20
-	laser_soak = 30
-	melee_deflect = 25
-	bullet_deflect = 25
-	laser_deflect = 25
+	laser_soak = 20
+	melee_deflect = 5
+	bullet_deflect = 5
+	laser_deflect = 5
 
 /**
  * blame tg i don't even like evangelion

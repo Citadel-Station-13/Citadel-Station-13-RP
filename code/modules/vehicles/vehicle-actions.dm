@@ -30,12 +30,29 @@
 /datum/action/vehicle/cycle_active_module
 	name = "Cycle Active Module"
 	desc = "Cycle which module receives mouse clicks."
+	button_icon_state = "cycle-module"
+
+/datum/action/vehicle/cycle_active_module/pre_render_hook()
+	..()
+	#warn render the active module
 
 /datum/action/vehicle/cycle_active_module/invoke_target(obj/vehicle/target, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
-	#warn impl
+
+	if(!length(target.modules))
+		actor?.chat_feedback(
+			SPAN_WARNING("No equipment available."),
+			target = target,
+		)
+		return TRUE
+	var/obj/item/vehicle_module/maybe_switched_to = target.cycle_active_click_modules(TRUE)
+	actor?.chat_feedback(
+		SPAN_NOTICE("You [maybe_switched_to ? "select [maybe_switched_to]" : "deselect the active module"]."),
+		target = target,
+	)
+	return TRUE
 
 //* Sealed *//
 

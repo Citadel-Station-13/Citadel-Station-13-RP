@@ -1,8 +1,11 @@
-/mob/living/simple_mob/mechanical/sentinel
+/mob/living/simple_mob/mechanical/derelict
+	var/self_rejuvination = FALSE
+
+/mob/living/simple_mob/mechanical/derelict/sentinel
 	name = "Sentinel"
 	desc = "A large, bulky machine that has some type of grey energy shield hovering around it. Thrusters flank its side, constantly emitting powerful bursts of energy that keep the automaton upwards and mobile."
 
-	icon = 'code/game/content/factions/derelict/derelict.dmi/automatons/48x48.dmi'
+	icon = 'code/game/content/factions/derelict/derelict.dmi/automatons/sentinel.dmi'
 	icon_state = "sentinel"
 	icon_living = "sentinel"
 	icon_dead = "sentinel_dead"
@@ -10,12 +13,13 @@
 	base_pixel_x = -8
 
 	iff_factions = MOB_IFF_FACTION_DERELICT_AUTOMATONS
-	health = 250
-	maxHealth = 250
+	health = 400
+	maxHealth = 400
+	self_rejuvination = TRUE
 	movement_base_speed = 10 / 4
 	hovering = TRUE
 
-	base_attack_cooldown = 20
+	base_attack_cooldown = 12
 
 	response_help = "shoves aside"
 	response_disarm = "forces aside"
@@ -38,15 +42,37 @@
 	make_shield_comp_color_full = "#808080"
 	make_shield_comp_color_depleted = "#202020"
 
-/mob/living/simple_mob/mechanical/sentinel/death()
+/mob/living/simple_mob/mechanical/derelict/sentinel/death()
 	..(null,"suddenly crashes to the ground, translucent blue blood leaking from a broken thruster.")
 
-/mob/living/simple_mob/mechanical/sentinel/do_special_attack(atom/A)
-	. = TRUE // So we don't fire a bolt as well.
+/obj/item/shield_projector/rectangle/automatic/advanced
+	shield_health = 300
+	max_shield_health = 300
+	shield_regen_delay = 5 SECONDS
+	shield_regen_amount = 50
+	size_x = 1
+	size_y = 1
+	color = "#808080"
+	high_color = "#808080"
+	low_color = "#808080"
+	light_color = "#2e0808"
+
+/mob/living/simple_mob/mechanical/derelict/handle_special()
+	if(self_rejuvination)
+		adjustBruteLoss(-2)
+		adjustFireLoss(-2)
+		adjustToxLoss(-2)
+		adjustOxyLoss(-2)
+		adjustCloneLoss(-2)
+	..()
+
+
+/mob/living/simple_mob/mechanical/derelict/sentinel/do_special_attack(atom/A)
+	. = TRUE
 	switch(a_intent)
 		if(INTENT_HELP) // Primary Laser
 			primary(A)
-		if(INTENT_DISARM) // Ion Cannon
+		if(INTENT_DISARM) // Ion Shotgun
 			ion(A)
 		if(INTENT_GRAB) // Net Gun
 			net(A)
@@ -54,16 +80,16 @@
 			flame(A)
 
 
-/mob/living/simple_mob/mechanical/sentinel/proc/primary(atom/target)
+/mob/living/simple_mob/mechanical/derelict/sentinel/proc/primary(atom/target)
 	projectiletype = /obj/projectile/beam/darkmatter/sentinel
 
-/mob/living/simple_mob/mechanical/sentinel/proc/ion(atom/target)
+/mob/living/simple_mob/mechanical/derelict/sentinel/proc/ion(atom/target)
 	projectiletype = /obj/projectile/ion
 
-/mob/living/simple_mob/mechanical/sentinel/proc/net(atom/target)
+/mob/living/simple_mob/mechanical/derelict/sentinel/proc/net(atom/target)
 	projectiletype = /obj/projectile/beam/gravity_sphere/sentinel
 
-/mob/living/simple_mob/mechanical/sentinel/proc/flame(atom/target)
+/mob/living/simple_mob/mechanical/derelict/sentinel/proc/flame(atom/target)
 	projectiletype = /obj/projectile/potent_fire/sentinel/scatter
 
 
@@ -166,12 +192,12 @@
 	name = "ember"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "explosion_particle"
-	modifier_type_to_apply = /datum/modifier/fire
-	modifier_duration = 8 SECONDS
+	modifier_type_to_apply = /datum/modifier/fire/intense
+	modifier_duration = 4 SECONDS
 	damage_force = 0
 	nodamage = TRUE
 
 /obj/projectile/potent_fire/sentinel/scatter
 	submunitions = 3
-	submunition_dispersion = 50
+	submunition_dispersion = 70
 	submunition_type = /obj/projectile/potent_fire/sentinel

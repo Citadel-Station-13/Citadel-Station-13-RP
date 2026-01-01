@@ -27,9 +27,13 @@ TYPE_REGISTER_SPATIAL_GRID(/obj/vehicle, SSspatial_grids.vehicles)
 	//* Access *//
 
 	/// For maint panel
-	var/access_maint_req_all
+	/// * Lazy list
+	/// * List of access IDs.
+	var/list/access_maint_req_all
 	/// For maint panel
-	var/access_maint_req_one
+	/// * Lazy list
+	/// * List of access IDs.
+	var/list/access_maint_req_one
 	#warn impl
 
 	//* Cargo Hold *//

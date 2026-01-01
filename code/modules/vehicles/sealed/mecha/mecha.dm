@@ -275,7 +275,7 @@
 //* Access *//
 
 /obj/vehicle/sealed/mecha/proc/check_access_for_maint(mob/user)
-	#warn impl
+	#warn impl; check ID and wallets
 
 /obj/vehicle/sealed/mecha/proc/check_access_for_cockpit(mob/user)
 	return check_access_for_maint(user)
