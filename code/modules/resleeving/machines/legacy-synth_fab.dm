@@ -7,12 +7,9 @@
 	desc = "A rapid fabricator for synthetic bodies.\n <span class='notice'>\[Accepts Upgrades\]</span>"
 	icon = 'icons/obj/machines/synthpod.dmi'
 	icon_state = "pod_0"
-	circuit = /obj/item/circuitboard/transhuman_synthprinter
-	density = 1
-	anchored = 1
+	circuit = /obj/item/circuitboard/resleeving/synth_printer
 
 	var/list/stored_material =  list(MAT_STEEL = 30000, MAT_GLASS = 30000)
-	var/busy = 0       //Busy cloning
 	var/max_res_amount = 30000 //Max the thing can hold
 	var/broken = 0
 	var/burn_value = 45
@@ -21,42 +18,6 @@
 /obj/machinery/resleeving/body_printer/synth_fab/Initialize(mapload)
 	. = ..()
 	update_icon()
-
-/obj/machinery/resleeving/body_printer/synth_fab/RefreshParts()
-
-	//Scanning modules reduce burn rating by 15 each
-	var/burn_rating = initial(burn_value)
-	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
-		burn_rating = burn_rating - (SM.rating*15)
-	burn_value = burn_rating
-
-	//Manipulators reduce brute by 10 each
-	var/brute_rating = initial(burn_value)
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		brute_rating = brute_rating - (M.rating*10)
-	brute_value = brute_rating
-
-	//Matter bins multiply the storage amount by their rating.
-	var/store_rating = initial(max_res_amount)
-	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
-		store_rating = store_rating * MB.rating
-	max_res_amount = store_rating
-
-/obj/machinery/resleeving/body_printer/synth_fab/process(delta_time)
-	if(machine_stat & NOPOWER)
-		if(busy)
-			busy = 0
-			current_project = null
-		update_icon()
-		return
-
-	if(busy > 0 && busy <= 95)
-		busy += 5
-
-	if(busy >= 100)
-		make_body()
-
-	return
 
 /obj/machinery/resleeving/body_printer/synth_fab/proc/print(var/datum/resleeving_body_backup/BR)
 	if(!istype(BR) || busy)
@@ -105,12 +66,6 @@
 
 	return 1
 
-/obj/machinery/resleeving/body_printer/synth_fab/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if((busy == 0) || (machine_stat & NOPOWER))
-		return
-	to_chat(user, "Current print cycle is [busy]% complete.")
-	return
-
 /obj/machinery/resleeving/body_printer/synth_fab/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 	if(busy)
@@ -147,7 +102,6 @@
 		to_chat(user, "\the [src] cannot hold more [S.name].")
 
 	updateUsrDialog()
-	return
 
 /obj/machinery/resleeving/body_printer/synth_fab/update_icon()
 	..()

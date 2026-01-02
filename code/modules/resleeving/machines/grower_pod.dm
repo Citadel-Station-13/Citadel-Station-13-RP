@@ -1,7 +1,6 @@
-
 /obj/machinery/resleeving/body_printer/grower_pod
 	name = "grower pod"
-	circuit = /obj/item/circuitboard/transhuman_clonepod
+	circuit = /obj/item/circuitboard/resleeving/grower_pod
 
 /obj/machinery/resleeving/body_printer/grower_pod/loaded/Initialize(mapload)
 	. = ..()

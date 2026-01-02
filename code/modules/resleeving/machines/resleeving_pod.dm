@@ -6,7 +6,7 @@
 	)
 	icon = 'icons/obj/machines/implantchair.dmi'
 	icon_state = "implantchair"
-	circuit = /obj/item/circuitboard/transhuman_resleever
+	circuit = /obj/item/circuitboard/resleeving/resleeving_pod
 	density = TRUE
 	opacity = FALSE
 	anchored = TRUE

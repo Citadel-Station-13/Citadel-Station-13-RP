@@ -1,6 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2025 Citadel Station Developers           *//
-
 /obj/machinery/computer/resleeving
 	name = "resleeving control console"
 	desc = "A central controller for resleeving machinery."
@@ -10,7 +7,7 @@
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	light_color = "#315ab4"
-	circuit = /obj/item/circuitboard/resleeving_control
+	circuit = /obj/item/circuitboard/resleeving_console
 
 	/// all linked machines
 	/// * lazy list

@@ -35,6 +35,9 @@
 	/// are we locked? premature ejection can only done if unlocked.
 	var/locked = FALSE
 
+	/// speed multiplier; different from the `c_` variables which are read-only configurations.
+	var/speed_multiplier
+
 	/// ratio of health to create with
 	var/c_create_body_health_ratio = 0.2
 	/// stabilize them while they're inside. you REALLY shouldn't turn this off.
@@ -70,6 +73,13 @@
 /obj/machinery/resleeving/body_printer/Initialize(mapload)
 	. = ..()
 	#warn reagents / materials
+	if(!allow_organic)
+		bottles_limit = 0
+	if(allow_synthetic)
+		materials = new /datum/material_container(list(
+			/datum/prototype/material/steel::id = 15 * SHEET_MATERIAL_AMOUNT * 3,
+			/datum/prototype/material/glass::id = 7.5 * SHEET_MATERIAL_AMOUNT * 3,
+		))
 	update_icon()
 
 /obj/machinery/resleeving/body_printer/Destroy()
@@ -77,6 +87,55 @@
 	if(currently_growing_body)
 		#warn eject occupant
 	return ..()
+
+/obj/machinery/resleeving/body_printer/RefreshParts()
+	var/scanner_amt = 0
+	var/scanner_tot = 0
+	var/manip_amt   = 0
+	var/manip_tot   = 0
+	var/bin_amt     = 0
+	var/bin_tot     = 0
+	for(var/obj/item/stock_parts/scanning_module/scanner in component_parts)
+		++scanner_amt
+		scanner_tot += scanner.rating
+	for(var/obj/item/stock_parts/manipulator/manipulator in component_parts)
+		++manip_amt
+		manip_tot += manipulator.rating
+	for(var/obj/item/stock_parts/matter_bin/bin          in component_parts)
+		++bin_amt
+		bin_tot += bin.rating
+
+	var/scanner_avg = scanner_amt / scanner_tot
+	var/manip_avg = manip_amt / manip_tot
+	speed_multiplier = 1 + 0.2 * scanner_avg + 0.2 * manip_avg
+
+	// ignore bins for now, you really don't need that much storage lol
+	bin_amt = bin_amt
+	bin_tot = bin_tot
+
+/obj/machinery/resleeving/body_printer/examine(mob/user, dist)
+	. = ..()
+	if(allow_synthetic)
+		if(dist <= 3)
+			for(var/id in materials)
+				. += SPAN_NOTICE("It has [materials.stored[id]]/[materials.capacity[id]]cm3 of [id] stored.")
+	if(allow_organic)
+		if(dist <= 3)
+			. += SPAN_NOTICE("It has [length(bottles)] / [bottles_limit] bottles of (hopefully) biomass inserted.")
+	if(currently_growing)
+		if(dist <= 3)
+			. += SPAN_NOTICE("The current cloning cycle is ~[currently_growing_progress_estimate_ratio * 100]% complete.")
+
+/obj/machinery/resleeving/body_printer/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(currently_growing)
+		clickchain.chat_feedback(
+			SPAN_NOTICE("The current cloning cycle is ~[currently_growing_progress_estimate_ratio * 100]% complete."),
+			target = src,
+		)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/machinery/resleeving/body_printer/drop_products(method, atom/where)
 	. = ..()

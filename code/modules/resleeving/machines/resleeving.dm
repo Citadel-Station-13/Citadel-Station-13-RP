@@ -1,6 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2025 Citadel Station Developers           *//
-
 /obj/machinery/resleeving
 	name = "resleeving machinery"
 	desc = "Some kind of machinery for the Vey-Med Trans-Human Resleeving System."

@@ -2,20 +2,10 @@
 #warn below
 
 /obj/machinery/resleeving/body_printer
-	/// The clone is released once its health reaches this level.
-	var/heal_level = 20
-	var/heal_rate = 1
 	/// Need to clean out it if it's full of exploded clone.
 	var/mess = FALSE
 	/// Don't eject them as soon as they are created.
 	var/eject_wait = FALSE
-
-/obj/machinery/resleeving/body_printer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if((isnull(occupant)) || (machine_stat & NOPOWER))
-		return
-	if((!isnull(occupant)) && (occupant.stat != 2))
-		var/completion = (100 * ((occupant.health + 50) / (heal_level + 100))) // Clones start at -150 health
-		to_chat(user, "Current clone cycle is [round(completion)]% complete.")
 
 /// Start growing a human clone in the pod!
 /obj/machinery/resleeving/body_printer/proc/growclone(var/datum/dna2/record/R)
