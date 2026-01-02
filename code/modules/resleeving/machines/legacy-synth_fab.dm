@@ -82,40 +82,6 @@
 	var/datum/dna2/record/R = current_project.legacy_dna
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
 
-	//Fix the external organs
-	for(var/part in current_project.legacy_limb_data)
-
-		var/status = current_project.legacy_limb_data[part]
-		if(status == null) continue //Species doesn't have limb? Child of amputated limb?
-
-		var/obj/item/organ/external/O = H.organs_by_name[part]
-		if(!O) continue //Not an organ. Perhaps another amputation removed it already.
-
-		if(status == 1) //Normal limbs
-			continue
-		else if(status == 0) //Missing limbs
-			O.remove_rejuv()
-		else if(status) //Anything else is a manufacturer
-			O.robotize(status)
-
-	//Then the internal organs
-	for(var/part in current_project.legacy_organ_data)
-
-		var/status = current_project.legacy_organ_data[part]
-		if(status == null) continue //Species doesn't have organ? Child of missing part?
-
-		var/obj/item/organ/I = H.internal_organs_by_name[part]
-		if(!I) continue//Not an organ. Perhaps external conversion changed it already?
-
-		if(status == 0) //Normal organ
-			continue
-		else if(status == 1) //Assisted organ
-			I.mechassist()
-		else if(status == 2) //Mechanical organ
-			I.robotize()
-		else if(status == 3) //Digital organ
-			I.digitize()
-
 	//Set the name or generate one
 	if(!R.dna.real_name)
 		R.dna.real_name = "synth ([rand(0,999)])"
@@ -128,7 +94,6 @@
 	H.adjustBruteLoss(brute_value)
 	H.adjustFireLoss(burn_value)
 	H.update_health()
-x`x`
 	//Plonk them here.
 	H.loc = get_turf(src)
 

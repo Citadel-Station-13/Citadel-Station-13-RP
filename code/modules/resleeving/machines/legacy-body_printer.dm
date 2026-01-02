@@ -71,23 +71,16 @@
 	clonemind.transfer(H)
 	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
 
-	// -- Mode/mind specific stuff goes here
-	callHook("clone", list(H))
-	update_antag_icons(H.mind)
-	// -- End mode specific stuff
-
 	if(!R.dna)
 		H.dna = new /datum/dna()
 		H.dna.real_name = H.real_name
 	else
 		H.dna = R.dna
 	if(heal_level < 60)
-		randmutb(H) //Sometimes the clones come out wrong.
 		H.dna.UpdateSE()
 		H.dna.UpdateUI()
 
 	H.set_cloned_appearance()
-	update_icon()
 
 	// A modifier is added which makes the new clone be unrobust.
 	var/modifier_lower_bound = 25 MINUTES

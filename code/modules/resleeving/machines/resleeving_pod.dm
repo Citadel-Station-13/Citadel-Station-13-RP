@@ -44,6 +44,15 @@
 /obj/machinery/resleeving/resleeving_pod/proc/perform_resleeve()
 	#warn impl
 
+/obj/machinery/resleeving/resleeving_pod/proc/perform_mind_insertion_impl(mob/living/target, datum/mind/mind)
+
+	// - LEGACY - //
+
+	// this is legacy because this shouldn't be here
+	update_antag_icons(target.mind)
+
+	// - END - //
+
 #warn below
 
 /obj/machinery/resleeving/resleeving_pod

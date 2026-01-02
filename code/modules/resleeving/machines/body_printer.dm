@@ -108,7 +108,8 @@
 	update_icon()
 
 /**
- * This is what creates the actual body.
+ * This is what creates the actual body; [create_body_impl] is called to create the physical body,
+ * this does more standardized things.
  */
 /obj/machinery/resleeving/body_printer/proc/create_body(datum/resleeving_body_backup/backup) as /mob/living
 	// backups are always human right now
@@ -137,6 +138,72 @@
 /obj/machinery/resleeving/body_printer/proc/create_body_impl(datum/resleeving_body_backup/backup) as /mob/living
 	// backups are always human right now
 	var/mob/living/carbon/human/created_human = new(src)
+
+	// honestly not sure if this works properly for synths buuuuut..
+	created_human.set_species(backup.legacy_species_uid)
+	// this is for legacy stuff; i don't even know what uses it
+	created_human.dna.base_species = backup.legacy_dna.dna.base_species
+
+	// This is the weird part. We sorta obey 'can make organic/synthetic' but .. not really?
+	// We will never make a non-viable clone, basically. Or at least try not to. This still might, who knows.
+
+	// -- patch external organs --
+	for(var/bp_tag in backup.legacy_limb_data)
+		var/status = backup.legacy_limb_data[bp_tag]
+		var/obj/item/organ/external/limb = created_human.organs_by_name[bp_tag]
+		switch(status)
+			if(null)
+				// ignore
+			if(0)
+				// missing
+				if(bp_tag != BP_TORSO)
+					limb.remove_rejuv()
+			if(1)
+				// normal
+				if(allow_organic)
+					// TODO: organic-ize it if needed
+				else
+					// obliterate if we don't support it
+					if(bp_tag != BP_TORSO)
+						limb.remove_rejuv()
+			else
+				// robolimb manufacturer
+				if(allow_synthetic)
+					// robotize it
+					limb.robotize(status)
+				else
+					// obliterate it if we don't support it
+					if(bp_tag != BP_TORSO)
+						limb.remove_rejuv()
+
+	// -- patch internal organs --
+	// we currently ignore if we can actually make robotic organs because
+	// it can cause serious issues if we don't due to legacy code
+	// in the future, this should only robotize if it can / replace with robot organs if
+	// it needs to, etc.
+	for(var/organ_tag in backup.legacy_organ_data)
+		var/status = backup.legacy_organ_data[organ_tag]
+		var/obj/item/organ/internal/organ = created_human.internal_organs_by_name[organ_tag]
+		switch(status)
+			if(null)
+				// ignore
+			if(0)
+				// organic
+			if(1)
+				// assisted
+				organ.mechassist()
+			if(2)
+				// mechanical
+				organ.robotize()
+			if(3)
+				// digital
+				organ.digitize()
+			if(4)
+				// nanite ; do not make under any circumstances
+				// this is hardcoded not for lore enforcement reasons but because we have
+				// no good way to do it yet
+				stack_trace("attempted to clone a nanite organ; obliterating...")
+
 
 	#warn impl
 

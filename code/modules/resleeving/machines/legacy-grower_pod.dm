@@ -17,44 +17,6 @@
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = current_project.legacy_dna
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
-	H.set_species(R.dna.species)
-	H.dna.base_species = R.dna.base_species //! Hacky way to get the DNA to work.
-
-	//Fix the external organs
-	for(var/part in current_project.legacy_limb_data)
-
-		var/status = current_project.legacy_limb_data[part]
-		if(status == null) continue //Species doesn't have limb? Child of amputated limb?
-
-		var/obj/item/organ/external/O = H.organs_by_name[part]
-		if(!O) continue //Not an organ. Perhaps another amputation removed it already.
-
-		if(status == 1) //Normal limbs
-			continue
-		else if(status == 0) //Missing limbs
-			O.remove_rejuv()
-		else if(status) //Anything else is a manufacturer
-			O.remove_rejuv() //Don't robotize them, leave them removed so robotics can attach a part.
-
-	//Look, this machine can do this because [reasons] okay?!
-	for(var/part in current_project.legacy_organ_data)
-
-		var/status = current_project.legacy_organ_data[part]
-		if(status == null) continue //Species doesn't have organ? Child of missing part?
-
-		var/obj/item/organ/I = H.internal_organs_by_name[part]
-		if(!I) continue//Not an organ. Perhaps external conversion changed it already?
-
-		if(status == 0) //Normal organ
-			continue
-		else if(status == 1) //Assisted organ
-			I.mechassist()
-		else if(status == 2) //Mechanical organ
-			I.robotize()
-		else if(status == 3) //Digital organ
-			I.digitize()
-
-	occupant = H
 
 	//Set the name or generate one
 	if(!R.dna.real_name)
@@ -78,8 +40,6 @@
 	H.afflict_unconscious(20 * 4)
 	H.update_health()
 
-	//Machine specific stuff at the end
-	update_icon()
 	return 1
 
 /obj/machinery/resleeving/body_printer/grower_pod/process(delta_time)
