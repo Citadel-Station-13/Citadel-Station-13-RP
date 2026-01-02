@@ -588,25 +588,28 @@ var/global/floorIsLava = 0
 	usr << browse(HTML_SKELETON(dat), "window=ban;size=400x400")
 
 /datum/admins/proc/Game()
-	if(!check_rights(0))	return
+	if(!check_rights(0))
+		return
 
 	var/dat = {"
 		<center><B>Game Panel</B></center><hr>\n
-		<A href='?src=\ref[src];c_mode=1'>Change Game Mode</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];c_mode=1'>Change Game Mode</A><br>
 		"}
 	if(master_mode == "secret")
-		dat += "<A href='?src=\ref[src];f_secret=1'>(Force Secret Mode)</A><br>"
+		dat += "<A href='byond://?src=[REF(src)];[HrefToken()];f_secret=1'>(Force Secret Mode)</A><br>"
 
 	dat += {"
 		<BR>
-		<A href='?src=\ref[src];create_object=1'>Create Object</A><br>
-		<A href='?src=\ref[src];quick_create_object=1'>Quick Create Object</A><br>
-		<A href='?src=\ref[src];create_turf=1'>Create Turf</A><br>
-		<A href='?src=\ref[src];create_mob=1'>Create Mob</A><br>
-		<br><A href='?src=\ref[src];atmos_vsc=1'>Modify Atmospherics Properties</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];create_object=1'>Create Object</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];quick_create_object=1'>Quick Create Object</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];create_turf=1'>Create Turf</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];create_mob=1'>Create Mob</A><br>
+		<br><A href='byond://?src=[REF(src)];[HrefToken()];atmos_vsc=1'>Modify Atmospherics Properties</A><br>
 		"}
 
-	usr << browse(HTML_SKELETON(dat), "window=admin2;size=210x280")
+	var/datum/browser/browser = new(usr, "admin2", "Game Panel", 240, 280)
+	browser.set_content(dat)
+	browser.open()
 	return
 
 /datum/admins/proc/Secrets(var/datum/admin_secret_category/active_category = null)
@@ -964,14 +967,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 			log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
 //		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay Game Start") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/adjump()
-	set category = "Server"
-	set desc="Toggle admin jumping"
-	set name="Toggle Jump"
-	config_legacy.allow_admin_jump = !(config_legacy.allow_admin_jump)
-	message_admins("<font color=#4F49AF>Toggled admin jumping to [config_legacy.allow_admin_jump].</font>")
-	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /datum/admins/proc/adspawn()
 	set category = "Server"
 	set desc="Toggle admin spawning"
@@ -984,12 +979,9 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set category = "Admin"
 	set name = "Unprison"
 	if (M.z == 2)
-		if (config_legacy.allow_admin_jump)
-			M.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
-			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
-			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
-		else
-			alert("Admin jumping disabled")
+		M.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
+		message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
+		log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 	else
 		alert("[M.name] is not prisoned.")
 	feedback_add_details("admin_verb","UP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -1533,8 +1525,10 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		dead.alpha = initial(dead.alpha)
 		if(dead.original_name)
 			dead.name = dead.original_name
+		dead.mouse_opacity = initial(dead.mouse_opacity)
 	else
 		dead.invisibility = INVISIBILITY_MAXIMUM
 		dead.alpha = 0
 		dead.original_name = dead.name
 		dead.name = "ghost"
+		dead.mouse_opacity = MOUSE_OPACITY_TRANSPARENT

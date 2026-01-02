@@ -1,38 +1,50 @@
 /atom/movable/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
-	var/static/list/pixel_movement_edits = list("step_x", "step_y", "step_size", "bounds")
-	var/static/list/careful_edits = list("bound_x", "bound_y", "bound_width", "bound_height")
-	if(!pixel_movement)
-		if(var_name in pixel_movement_edits)
-			return FALSE	//PLEASE no.
-		if((var_name in careful_edits) && (var_value % world.icon_size) != 0)
-			return FALSE
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, step_x) = TRUE, NAMEOF_STATIC(src, step_y) = TRUE, NAMEOF_STATIC(src, step_size) = TRUE, NAMEOF_STATIC(src, bounds) = TRUE)
+	var/static/list/careful_edits = list(NAMEOF_STATIC(src, bound_x) = TRUE, NAMEOF_STATIC(src, bound_y) = TRUE, NAMEOF_STATIC(src, bound_width) = TRUE, NAMEOF_STATIC(src, bound_height) = TRUE)
+	var/static/list/not_falsey_edits = list(NAMEOF_STATIC(src, bound_width) = TRUE, NAMEOF_STATIC(src, bound_height) = TRUE)
+
+	if(banned_edits[var_name])
+		return FALSE //PLEASE no.
+	if(careful_edits[var_name] && (var_value % world.icon_size) != 0)
+		return FALSE
+	if(not_falsey_edits[var_name] && !var_value)
+		return FALSE
+
 	switch(var_name)
-		if("x")
-			var/turf/T = locate(var_value, y, z)
-			if(T)
-				forceMove(T)
+		if(NAMEOF(src, x))
+			var/turf/current_turf = locate(var_value, y, z)
+			if(current_turf)
+				admin_teleport(current_turf)
 				return TRUE
 			return FALSE
-		if("y")
+		if(NAMEOF(src, y))
 			var/turf/T = locate(x, var_value, z)
 			if(T)
-				forceMove(T)
+				admin_teleport(T)
 				return TRUE
 			return FALSE
-		if("z")
+		if(NAMEOF(src, z))
 			var/turf/T = locate(x, y, var_value)
 			if(T)
-				forceMove(T)
+				admin_teleport(T)
 				return TRUE
 			return FALSE
-		if("loc")
-			if(istype(var_value, /atom))
-				forceMove(var_value)
+		if(NAMEOF(src, loc))
+			if(isatom(var_value) || isnull(var_value))
+				admin_teleport(var_value)
 				return TRUE
-			else if(isnull(var_value))
-				moveToNullspace()
-				return TRUE
-			return
+			return FALSE
+		if(NAMEOF(src, anchored))
+			set_anchored(var_value)
+			. = TRUE
+		if(NAMEOF(src, glide_size))
+			set_glide_size(var_value)
+			. = TRUE
+
+	if(!isnull(.))
+		datum_flags |= DF_VAR_EDITED
+		return
+
 	. = ..()
 	if(!.)
 		return

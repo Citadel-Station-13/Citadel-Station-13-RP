@@ -105,3 +105,7 @@
 */
 /// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
 #define MAPTEXT_CENTER(text) {"<span class='maptext center'>[##text]</span>"}
+
+/// BYOND's string procs don't support being used on datum references (as in it doesn't look for a name for stringification)
+/// We just use this macro to ensure that we will only pass strings to this BYOND-level function without developers needing to really worry about it.
+#define LOWER_TEXT(thing) lowertext(UNLINT("[thing]"))

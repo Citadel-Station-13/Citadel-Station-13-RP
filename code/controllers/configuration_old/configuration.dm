@@ -12,7 +12,6 @@
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
 	var/allow_vote_mode = 0				// allow votes to change mode
-	var/allow_admin_jump = 1			// allows admin jumping
 	var/allow_admin_spawning = 1		// allows admin item spawning
 	var/vote_delay = 6000				// minimum time between voting sessions (deciseconds, 10 minute default)
 	var/vote_period = 600				// length of voting period (deciseconds, default 1 minute)
@@ -212,9 +211,6 @@
 
 				if ("allow_vote_mode")
 					config_legacy.allow_vote_mode = 1
-
-				if ("allow_admin_jump")
-					config_legacy.allow_admin_jump = 1
 
 				if ("allow_admin_spawning")
 					config_legacy.allow_admin_spawning = 1

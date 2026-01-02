@@ -9,6 +9,11 @@
 #define NAMEOF(datum, X) (#X || ##datum.##X)
 
 /**
+ * NAMEOF that actually works in static definitions because src::type requires src to be defined
+ */
+#define NAMEOF_STATIC(datum, X) (nameof(type::##X))
+
+/**
  * Compile-checked name of a proc.
  *
  * * Does not work in static contexts.

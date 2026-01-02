@@ -68,6 +68,11 @@
 			index = findtext(t, char, index + length(char))
 	return t
 
+/proc/sanitize_text(text, default="")
+	if(istext(text))
+		return text
+	return default
+
 /**
  * Run sanitize(), but remove <, >, " first to prevent displaying them as &gt; &lt; &34; in some places, after html_encode().
  * Best used for sanitize object names, window titles.
@@ -150,55 +155,70 @@
 	return output
 
 /**
- * Returns null if there is any bad text in the string.
- */
+ * Returns the text if properly formatted, or null else.
+ *
+ * Things considered improper:
+ * * Larger than max_length.
+ * * Presence of non-ASCII characters if asci_only is set to TRUE.
+ * * Only whitespaces, tabs and/or line breaks in the text.
+ * * Presence of the <, >, \ and / characters.
+ * * Presence of ASCII special control characters (horizontal tab and new line not included).
+ * */
 /proc/reject_bad_text(text, max_length = 512, ascii_only = TRUE)
-	var/char_count = 0
-	var/non_whitespace = FALSE
-	var/lenbytes = length(text)
-	var/char = ""
-	for(var/i = 1, i <= lenbytes, i += length(char))
-		char = text[i]
-		char_count++
-		if(char_count > max_length)
-			return
-		switch(text2ascii(char))
-			if(62, 60, 92, 47) // <, >, \, /
-				return
-			if(0 to 31)
-				return
-			if(32)
-				continue // Whitespace.
-			if(127 to INFINITY)
-				if(ascii_only)
-					return
-			else
-				non_whitespace = TRUE
-	if(non_whitespace)
-		return text // Only accepts the text if it has some non-spaces.
-
-/**
- * Used to get a properly sanitized input, of max_length
- * no_trim is self explanatory but it prevents the input from being trimed if you intend to parse newlines or whitespace.
- */
-/proc/stripped_input(mob/user, message = "", title = "", default = "", max_length = MAX_MESSAGE_LEN + 1, no_trim = FALSE)
-	var/name = input(user, message, title, default) as text|null
-	if(no_trim)
-		return copytext(html_encode(name), 1, max_length)
-	else
-		return trim(html_encode(name), max_length) //trim is "outside" because html_encode can expand single symbols into multiple symbols (such as turning < into &lt;)
-
-/**
- * Used to get a properly sanitized multiline input, of max_length.
- */
-/proc/stripped_multiline_input(mob/user, message = "", title = "", default = "", max_length = MAX_MESSAGE_LEN + 1, no_trim = FALSE)
-	var/name = input(user, message, title, default) as message|null
-	if(isnull(name)) // Return null if canceled.
+	if(ascii_only)
+		if(length(text) > max_length)
+			return null
+		var/static/regex/non_ascii = regex(@"[^\x20-\x7E\t\n]")
+		if(non_ascii.Find(text))
+			return null
+	else if(length_char(text) > max_length)
 		return null
+	var/static/regex/non_whitespace = regex(@"\S")
+	if(!non_whitespace.Find(text))
+		return null
+	var/static/regex/bad_chars = regex(@"[\\<>/\x00-\x08\x11-\x1F]")
+	if(bad_chars.Find(text))
+		return null
+	return text
+
+
+/**
+ * Used to get a properly sanitized input. Returns null if cancel is pressed.
+ *
+ * Arguments
+ ** user - Target of the input prompt.
+ ** message - The text inside of the prompt.
+ ** title - The window title of the prompt.
+ ** max_length - If you intend to impose a length limit - default is 1024.
+ ** no_trim - Prevents the input from being trimmed if you intend to parse newlines or whitespace.
+*/
+/proc/stripped_input(mob/user, message = "", title = "", default = "", max_length = MAX_MESSAGE_LEN, no_trim=FALSE)
+	var/user_input = input(user, message, title, default) as text|null
+	if(isnull(user_input)) // User pressed cancel
+		return
 	if(no_trim)
-		return copytext(html_encode(name), 1, max_length)
+		return copytext_char(html_encode(user_input), 1, max_length)
 	else
-		return trim(html_encode(name), max_length)
+		return trim(html_encode(user_input), max_length) //trim is "outside" because html_encode can expand single symbols into multiple symbols (such as turning < into &lt;)
+
+/**
+ * Used to get a properly sanitized input in a larger box. Works very similarly to stripped_input.
+ *
+ * Arguments
+ ** user - Target of the input prompt.
+ ** message - The text inside of the prompt.
+ ** title - The window title of the prompt.
+ ** max_length - If you intend to impose a length limit - default is 1024.
+ ** no_trim - Prevents the input from being trimmed if you intend to parse newlines or whitespace.
+*/
+/proc/stripped_multiline_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN, no_trim=FALSE)
+	var/user_input = input(user, message, title, default) as message|null
+	if(isnull(user_input)) // User pressed cancel
+		return
+	if(no_trim)
+		return copytext_char(html_encode(user_input), 1, max_length)
+	else
+		return trim(html_encode(user_input), max_length)
 
 /**
  * Old variant. Haven't dared to replace in some places.

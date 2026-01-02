@@ -69,10 +69,10 @@
 	help_text = "<ckey|ticket #> <message|ticket <close|resolve|icissue|reject|reopen <ticket #>|list>>"
 	admin_only = TRUE
 
-/datum/tgs_chat_command/ahelp/Run(datum/tgs_chat_user/sender, params)
+/datum/tgs_chat_command/ahelp/Validated_Run(datum/tgs_chat_user/sender, params)
 	var/list/all_params = splittext(params, " ")
 	if(all_params.len < 2)
-		return "Insufficient parameters"
+		return new /datum/tgs_message_content("Insufficient parameters")
 	var/target = all_params[1]
 	all_params.Cut(1, 2)
 	var/id = text2num(target)
@@ -81,10 +81,8 @@
 		if(AH)
 			target = AH.initiator_ckey
 		else
-			return "Ticket #[id] not found!"
-	var/res = IrcPm(target, all_params.Join(" "), sender.friendly_name)
-	if(res != "Message Successful")
-		return res
+			return new /datum/tgs_message_content("Ticket #[id] not found!")
+	return new /datum/tgs_message_content(TgsPm(target, all_params.Join(" "), sender.friendly_name))
 
 /datum/tgs_chat_command/whitelist
 	name = "whitelist"

@@ -482,20 +482,25 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Aghost"
 	if(!holder)
 		return
-	if(istype(mob,/mob/observer/dead))
+
+	if(isobserver(mob))
 		//re-enter
 		var/mob/observer/dead/ghost = mob
-		if(ghost.can_reenter_corpse)
-			ghost.reenter_corpse()
-		else
-			to_chat(ghost, "<font color='red'>Error:  Aghost:  Can't reenter corpse.</font>")
-			return
-
+		if(!ghost.mind || !ghost.mind.current) //won't do anything if there is no body
+			return FALSE
+		if(!ghost.can_reenter_corpse)
+			log_admin("[key_name(usr)] re-entered corpse")
+			message_admins("[key_name_admin(usr)] re-entered corpse")
+		ghost.can_reenter_corpse = TRUE //force re-entering even when otherwise not possible
+		ghost.reenter_corpse()
 		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-	else if(istype(mob,/mob/new_player))
-		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
+	else if(isnewplayer(mob))
+		to_chat(usr, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>", confidential = TRUE)
+		return FALSE
 	else
+		//ghostize
+		log_admin("[key_name(usr)] admin ghosted.")
+		message_admins("[key_name_admin(usr)] admin ghosted.")
 		holder.admin_ghost()
 		feedback_add_details("admin_verb","O") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -563,6 +568,7 @@ var/list/admin_verbs_event_manager = list(
 
 /client/proc/game_panel()
 	set name = "Game Panel"
+	set desc = "Look at the state of the game."
 	set category = "Admin"
 	if(holder)
 		holder.Game()
@@ -576,24 +582,34 @@ var/list/admin_verbs_event_manager = list(
 		holder.Secrets()
 	feedback_add_details("admin_verb","S") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/findStealthKey(txt)
-	if(txt)
-		for(var/P in GLOB.stealthminID)
-			if(GLOB.stealthminID[P] == txt)
-				return P
-	txt = GLOB.stealthminID[ckey]
-	return txt
+/// Takes a stealthed ckey as input, returns the true key it represents
+/proc/findStealthKey(stealth_key)
+	if(!stealth_key)
+		return
+	for(var/potentialKey in GLOB.stealthminID)
+		if(GLOB.stealthminID[potentialKey] == stealth_key)
+			return potentialKey
+
+/// Hands back a stealth ckey to use, guarenteed to be unique
+/proc/generateStealthCkey()
+	var/guess = rand(0, 1000)
+	var/text_guess
+	var/valid_found = FALSE
+	while(valid_found == FALSE)
+		valid_found = TRUE
+		text_guess = "@[num2text(guess)]"
+		// We take a guess at some number, and if it's not in the existing stealthmin list we exit
+		for(var/key in GLOB.stealthminID)
+			// If it is in the list tho, we up one number, and redo the loop
+			if(GLOB.stealthminID[key] == text_guess)
+				guess += 1
+				valid_found = FALSE
+				break
+
+	return text_guess
 
 /client/proc/createStealthKey()
-	var/num = (rand(0,1000))
-	var/i = 0
-	while(i == 0)
-		i = 1
-		for(var/P in GLOB.stealthminID)
-			if(num == GLOB.stealthminID[P])
-				num++
-				i = 0
-	GLOB.stealthminID["[ckey]"] = "@[num2text(num)]"
+	GLOB.stealthminID["[ckey]"] = generateStealthCkey()
 
 /client/proc/stealth()
 	set category = "Admin"
@@ -604,11 +620,9 @@ var/list/admin_verbs_event_manager = list(
 			if(istype(src.mob, /mob/new_player))
 				mob.name = capitalize(ckey)
 		else
-			var/new_key = ckeyEx(input("Enter your desired display name.", "Fake Key", key) as text|null)
+			var/new_key = ckeyEx(stripped_input(usr, "Enter your desired display name.", "Fake Key", key, 26))
 			if(!new_key)
 				return
-			if(length(new_key) >= 26)
-				new_key = copytext(new_key, 1, 26)
 			holder.fakekey = new_key
 			createStealthKey()
 			if(istype(mob, /mob/new_player))
@@ -623,27 +637,36 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Drop Bomb"
 	set desc = "Cause an explosion of varying strength at your location."
 
+	var/list/choices = list("Small Bomb (1, 2, 3, 3)", "Medium Bomb (2, 3, 4, 4)", "Big Bomb (3, 5, 7, 5)", "Custom Bomb", "Cancel")
+	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
+	if(isnull(choice))
+		return
 	var/turf/epicenter = mob.loc
-	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb", "Cancel")
-	var/choice = input("What size explosion would you like to produce?") in choices
+
 	switch(choice)
-		if(null)
-			return 0
-		if("Cancel")
-			return 0
-		if("Small Bomb")
-			explosion(epicenter, 1, 2, 3, 3)
-		if("Medium Bomb")
-			explosion(epicenter, 2, 3, 4, 4)
-		if("Big Bomb")
-			explosion(epicenter, 3, 5, 7, 5)
+		if("Small Bomb (1, 2, 3, 3)")
+			explosion(epicenter, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3, flash_range = 3, adminlog = TRUE)
+		if("Medium Bomb (2, 3, 4, 4)")
+			explosion(epicenter, devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, flash_range = 4, adminlog = TRUE)
+		if("Big Bomb (3, 5, 7, 5)")
+			explosion(epicenter, devastation_range = 3, heavy_impact_range = 5, light_impact_range = 7, flash_range = 5, adminlog = TRUE)
 		if("Custom Bomb")
-			var/devastation_range = input("Devastation range (in tiles):") as num
-			var/heavy_impact_range = input("Heavy impact range (in tiles):") as num
-			var/light_impact_range = input("Light impact range (in tiles):") as num
-			var/flash_range = input("Flash range (in tiles):") as num
-			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range)
-	message_admins("<font color=#4F49AF>[ckey] creating an admin explosion at [epicenter.loc].</font>")
+			var/range_devastation = input(usr, "Devastation range (in tiles):") as null|num
+			if(range_devastation == null)
+				return
+			var/range_heavy = input(usr, "Heavy impact range (in tiles):") as null|num
+			if(range_heavy == null)
+				return
+			var/range_light = input(usr, "Light impact range (in tiles):") as null|num
+			if(range_light == null)
+				return
+			var/range_flash = input(usr, "Flash range (in tiles):") as null|num
+			if(range_flash == null)
+				return
+			epicenter = get_turf(mob) //We need to reupdate as they may have moved again
+			explosion(epicenter, devastation_range = range_devastation, heavy_impact_range = range_heavy, light_impact_range = range_light, flash_range = range_flash, adminlog = TRUE)
+	message_admins("[ADMIN_LOOKUPFLW(mob)] creating an admin explosion at [epicenter.loc].")
+	log_admin("[key_name(usr)] created an admin explosion at [epicenter.loc].")
 	feedback_add_details("admin_verb","DB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/give_disease2(mob/T as mob in GLOB.mob_list) // -- Giacom
@@ -764,10 +787,10 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 
 	if(holder)
-		log_admin("[src] deadmined themself.")
-		message_admins("[src] deadmined themself.", 1)
 		deadmin()
-		to_chat(src, "<span class='interface'>You are now a normal player.</span>")
+		to_chat(usr, SPAN_INTERFACE("You are now a normal player."))
+		log_admin("[key_name(usr)] deadminned themselves.")
+		message_admins("[key_name_admin(usr)] deadminned themselves.")
 		if(deadmin_holder?.fakekey)
 			to_chat(src, SPAN_RED(SPAN_BIG(SPAN_ANNOUNCE("Your ckey is still obfuscated as '[deadmin_holder.fakekey]' due to de-adminning while stealthed."))))
 		add_verb(src, /client/proc/readmin_self)
@@ -775,6 +798,7 @@ var/list/admin_verbs_event_manager = list(
 
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"
+	set desc = "View the current AI laws."
 	set category = "Admin"
 	if(holder)
 		src.holder.output_ai_laws()
@@ -1020,11 +1044,15 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Give Spell"
 	set desc = "Gives a spell to a mob."
 	var/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in typesof(/spell)
-	if(!S) return
+	if(!S)
+		return
+	if(QDELETED(T))
+		to_chat(usr, SPAN_WARNING("The intended spell recipient no longer exists."))
+		return
 	T.spell_list += new S
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
-	message_admins("<font color=#4F49AF>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</font>", 1)
+	message_admins("[key_name_admin(usr)] gave [key_name(T)] the spell [S].")
 
 /client/proc/toggle_AI_interact()
 	set name = "Toggle Admin AI Interact"
