@@ -17,6 +17,7 @@
 
 	// lazy list
 	var/list/legacy_language_ids
+	var/legacy_identifying_gender
 
 /datum/resleeving_mind_backup/New(datum/mind/from_mind)
 	if(from_mind)
@@ -38,4 +39,6 @@
 			src.legacy_language_ids += lang.id
 	while(FALSE)
 
-
+	if(ishuman(from_mind.current))
+		var/mob/living/carbon/human/casted_current_human = from_mind.current
+		legacy_identifying_gender = casted_current_human.identifying_gender

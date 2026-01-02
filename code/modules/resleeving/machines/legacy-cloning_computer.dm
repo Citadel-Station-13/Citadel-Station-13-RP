@@ -15,52 +15,6 @@
 	var/obj/item/disk/data/diskette = null //Mostly so the geneticist can steal everything.
 	var/loading = 0 // Nice loading text
 
-
-/obj/machinery/computer/cloning/Initialize(mapload)
-	. = ..()
-	updatemodules()
-
-/obj/machinery/computer/cloning/Destroy()
-	releasecloner()
-	..()
-
-/obj/machinery/computer/cloning/proc/updatemodules()
-	scanner = findscanner()
-	releasecloner()
-	findcloner()
-
-/obj/machinery/computer/cloning/proc/findscanner()
-	var/obj/machinery/dna_scannernew/scannerf = null
-
-	//Try to find scanner on adjacent tiles first
-	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		scannerf = locate(/obj/machinery/dna_scannernew, get_step(src, dir))
-		if (scannerf)
-			return scannerf
-
-	//Then look for a free one in the area
-	if(!scannerf)
-		var/area/A = get_area(src)
-		for(var/obj/machinery/dna_scannernew/S in A.get_contents())
-			return S
-
-	return
-
-/obj/machinery/computer/cloning/proc/releasecloner()
-	for(var/obj/machinery/resleeving/body_printer/P in pods)
-		P.connected = null
-		P.name = initial(P.name)
-	pods.Cut()
-
-/obj/machinery/computer/cloning/proc/findcloner()
-	var/num = 1
-	var/area/A = get_area(src)
-	for(var/obj/machinery/resleeving/body_printer/P in A.get_contents())
-		if(!P.connected)
-			pods += P
-			P.connected = src
-			P.name = "[initial(P.name)] #[num++]"
-
 /obj/machinery/computer/cloning/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/disk/data)) //INSERT SOME DISKETTES
 		if (!diskette)
@@ -90,9 +44,6 @@
 	else
 		..()
 	return
-
-/obj/machinery/computer/cloning/attack_ai(mob/user as mob)
-	return attack_hand(user)
 
 /obj/machinery/computer/cloning/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
@@ -170,12 +121,6 @@
 
 			loading = 0
 
-		//No locking an open scanner.
-	else if ((href_list["lock"]) && (!isnull(scanner)))
-		if ((!scanner.locked) && (scanner.occupant))
-			scanner.locked = 1
-		else
-			scanner.locked = 0
 
 	else if ((href_list["eject"]) && (!isnull(scanner)))
 		if ((!scanner.locked) && (scanner.occupant))
@@ -280,98 +225,84 @@
 		else
 			temp = "Error: Data corruption."
 
-	else if (href_list["menu"])
-		menu = href_list["menu"]
-		temp = ""
-		scantemp = ""
+// -- This is kept because this should be pushed to the genetics system later. --
+// -- We usually don't want to keep commented code around but whatever.        --
 
-	SSnanoui.update_uis(src)
-	add_fingerprint(usr)
+// /obj/machinery/computer/cloning/proc/scan_mob(mob/living/carbon/human/subject as mob)
+// 	var/brain_skip = 0
+// 	if (istype(subject, /mob/living/carbon/brain)) //Brain scans.
+// 		brain_skip = 1
+// 	if ((isnull(subject)) || (!(ishuman(subject)) && !brain_skip) || (!subject.dna))
+// 		scantemp = "Error: Unable to locate valid genetic data."
+// 		return
+// 	if (!subject.has_brain() && !brain_skip)
+// 		if(istype(subject, /mob/living/carbon/human))
+// 			var/mob/living/carbon/human/H = subject
+// 			if(H.should_have_organ("brain"))
+// 				scantemp = "Error: No signs of intelligence detected."
+// 		else
+// 			scantemp = "Error: No signs of intelligence detected."
+// 		return
 
-/obj/machinery/computer/cloning/proc/scan_mob(mob/living/carbon/human/subject as mob)
-	var/brain_skip = 0
-	if (istype(subject, /mob/living/carbon/brain)) //Brain scans.
-		brain_skip = 1
-	if ((isnull(subject)) || (!(ishuman(subject)) && !brain_skip) || (!subject.dna))
-		scantemp = "Error: Unable to locate valid genetic data."
-		return
-	if (!subject.has_brain() && !brain_skip)
-		if(istype(subject, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = subject
-			if(H.should_have_organ("brain"))
-				scantemp = "Error: No signs of intelligence detected."
-		else
-			scantemp = "Error: No signs of intelligence detected."
-		return
+// 	if(subject.isSynthetic())
+// 		scantemp = "Error: Majority of subject is non-organic."
+// 		return
+// 	if (subject.suiciding)
+// 		scantemp = "Error: Subject's brain is not responding to scanning stimuli."
+// 		return
+// 	if (MUTATION_NOCLONE in subject.mutations)
+// 		scantemp = "Error: Mental interface failure."
+// 		return
+// 	if (subject.species && subject.species.species_flags & NO_SCAN && !brain_skip)
+// 		scantemp = "Error: Mental interface failure."
+// 		return
+// 	for(var/modifier_type in subject.modifiers)	//Can't be cloned, even if they had a previous scan
+// 		if(istype(modifier_type, /datum/modifier/no_clone))
+// 			scantemp = "Error: Mental interface failure."
+// 			return
+// 	if ((!subject.ckey) || (!subject.client))
+// 		scantemp = "Error: Mental interface failure."
+// 		if(subject.stat == DEAD && subject.mind && subject.mind.ckey) // If they're dead and not in their body, tell them to get in it.
+// 			for(var/mob/observer/dead/ghost in GLOB.player_list)
+// 				if(ghost.ckey == ckey(subject.mind.ckey))
+// 					ghost.notify_revive("Someone is trying to scan your body in the cloner. Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
+// 					break
+// 		return
+// 	if (!isnull(find_record(subject.ckey)))
+// 		scantemp = "Subject already in database."
+// 		return
 
-	if(subject.isSynthetic())
-		scantemp = "Error: Majority of subject is non-organic."
-		return
-	if (subject.suiciding)
-		scantemp = "Error: Subject's brain is not responding to scanning stimuli."
-		return
-	if (MUTATION_NOCLONE in subject.mutations)
-		scantemp = "Error: Mental interface failure."
-		return
-	if (subject.species && subject.species.species_flags & NO_SCAN && !brain_skip)
-		scantemp = "Error: Mental interface failure."
-		return
-	for(var/modifier_type in subject.modifiers)	//Can't be cloned, even if they had a previous scan
-		if(istype(modifier_type, /datum/modifier/no_clone))
-			scantemp = "Error: Mental interface failure."
-			return
-	if ((!subject.ckey) || (!subject.client))
-		scantemp = "Error: Mental interface failure."
-		if(subject.stat == DEAD && subject.mind && subject.mind.ckey) // If they're dead and not in their body, tell them to get in it.
-			for(var/mob/observer/dead/ghost in GLOB.player_list)
-				if(ghost.ckey == ckey(subject.mind.ckey))
-					ghost.notify_revive("Someone is trying to scan your body in the cloner. Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
-					break
-		return
-	if (!isnull(find_record(subject.ckey)))
-		scantemp = "Subject already in database."
-		return
+// 	subject.dna.check_integrity()
 
-	subject.dna.check_integrity()
+// 	var/datum/dna2/record/R = new /datum/dna2/record()
+// 	R.dna = subject.dna
+// 	R.ckey = subject.ckey
+// 	R.id = copytext(md5(subject.real_name), 2, 6)
+// 	R.name = R.dna.real_name
+// 	R.types = DNA2_BUF_UI|DNA2_BUF_UE|DNA2_BUF_SE
+// 	R.languages = subject.languages
+// 	R.gender = subject.gender
+// 	R.body_descriptors = subject.descriptors
+// 	if(!brain_skip) //Brains don't have flavor text.
+// 		R.flavor = subject.flavor_texts.Copy()
+// 	else
+// 		R.flavor = list()
+// 	for(var/datum/modifier/mod in subject.modifiers)
+// 		if(mod.flags & MODIFIER_GENETIC)
+// 			R.genetic_modifiers.Add(mod.type)
 
-	var/datum/dna2/record/R = new /datum/dna2/record()
-	R.dna = subject.dna
-	R.ckey = subject.ckey
-	R.id = copytext(md5(subject.real_name), 2, 6)
-	R.name = R.dna.real_name
-	R.types = DNA2_BUF_UI|DNA2_BUF_UE|DNA2_BUF_SE
-	R.languages = subject.languages
-	R.gender = subject.gender
-	R.body_descriptors = subject.descriptors
-	if(!brain_skip) //Brains don't have flavor text.
-		R.flavor = subject.flavor_texts.Copy()
-	else
-		R.flavor = list()
-	for(var/datum/modifier/mod in subject.modifiers)
-		if(mod.flags & MODIFIER_GENETIC)
-			R.genetic_modifiers.Add(mod.type)
+// 	//Add an implant if needed
+// 	var/obj/item/implant/health/imp = locate(/obj/item/implant/health, subject)
+// 	if (isnull(imp))
+// 		imp = new /obj/item/implant/health(subject)
+// 		imp.implanted = subject
+// 		R.implant = "\ref[imp]"
+// 	//Update it if needed
+// 	else
+// 		R.implant = "\ref[imp]"
 
-	//Add an implant if needed
-	var/obj/item/implant/health/imp = locate(/obj/item/implant/health, subject)
-	if (isnull(imp))
-		imp = new /obj/item/implant/health(subject)
-		imp.implanted = subject
-		R.implant = "\ref[imp]"
-	//Update it if needed
-	else
-		R.implant = "\ref[imp]"
+// 	if (!isnull(subject.mind)) //Save that mind so traitors can continue traitoring after cloning.
+// 		R.mind = "\ref[subject.mind]"
 
-	if (!isnull(subject.mind)) //Save that mind so traitors can continue traitoring after cloning.
-		R.mind = "\ref[subject.mind]"
-
-	records += R
-	scantemp = "Subject successfully scanned."
-
-//Find a specific record by key.
-/obj/machinery/computer/cloning/proc/find_record(var/find_key)
-	var/selected_record = null
-	for(var/datum/dna2/record/R in records)
-		if (R.ckey == find_key)
-			selected_record = R
-			break
-	return selected_record
+// 	records += R
+// 	scantemp = "Subject successfully scanned."

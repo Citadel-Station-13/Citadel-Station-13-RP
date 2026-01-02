@@ -22,6 +22,9 @@
 	/// * used to print dna2 records (which should get refactored someday)
 	var/obj/item/disk/data/inserted_disk
 
+	var/last_relink
+	var/last_relink_throttle = 3 SECONDS
+
 /obj/machinery/computer/resleeving/Initialize(mapload)
 	. = ..()
 	rescan_nearby_machines()
@@ -78,6 +81,13 @@
 
 	switch(action)
 		if("relink")
+			if(world.time > (last_relink + last_relink_throttle))
+				return TRUE
+			last_relink = world.time
+			rescan_nearby_machines()
+			return TRUE
+		if("unlink")
+			var/unlink_pref = params["unlinkRef"]
 		if("printBody")
 			var/printer_ref = params["printerRef"]
 			var/body_ref
@@ -86,6 +96,7 @@
 
 /obj/machinery/computer/resleeving/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["relinkOnCooldown"] = world.time > (last_relink + last_relink_throttle)
 
 	var/list/resleeving_pod_datas = list()
 	var/list/body_printer_datas = list()

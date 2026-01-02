@@ -11,7 +11,8 @@
 	icon_state = "pod_0"
 	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
 
-	active_power_usage = 5000
+	// 15 kilowatts :trol:
+	active_power_usage = 15000
 	idle_power_usage = 10
 
 	/// can grow organic tissue
@@ -117,7 +118,7 @@
 	. = ..()
 	if(allow_synthetic)
 		if(dist <= 3)
-			for(var/id in materials)
+			for(var/id in materials.capacity)
 				. += SPAN_NOTICE("It has [materials.stored[id]]/[materials.capacity[id]]cm3 of [id] stored.")
 	if(allow_organic)
 		if(dist <= 3)
@@ -141,6 +142,12 @@
 	. = ..()
 	#warn drop materials
 
+/obj/machinery/resleeving/body_printer/Exited(atom/movable/AM, atom/newLoc)
+	..()
+	if(AM == currently_growing_body)
+		eject_body(do_not_move = TRUE)
+		#warn handle
+
 /obj/machinery/resleeving/body_printer/proc/is_compatible_with_body(datum/resleeving_body_backup/backup)
 	#warn impl
 
@@ -159,6 +166,8 @@
 
 	var/mob/living/created = create_body_impl(backup)
 	#warn impl
+
+	#warn staiblize them and knock them out, take it off on eject
 
 	locked = TRUE
 	progress_recalc_last_time = world.time
@@ -268,7 +277,8 @@
 
 /**
  * Continues to grow the mob.
- * * Will set `currently_growing_xyz` variables.
+ * * Will change `currently_growing_xyz` variables.
+ * * This can eject the body.
  *
  * @return TRUE if mob is done, FALSE otherwise
  */
@@ -276,14 +286,44 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
+	if(currently_growing_body.stat == DEAD)
+		eject_body()
+		#warn error message
+
 	grow_body_impl(dt)
 
 	return currently_growing_progress_estimate_ratio >= 1
 
 /obj/machinery/resleeving/body_printer/proc/grow_body_impl(dt)
+	// human only for now
+	if(!ishuman(currently_growing_body))
+		return
+	var/mob/living/carbon/human/casted_human = currently_growing_body
 
+	var/ratio_to_heal = c_regen_body_health_radio_per_second * speed_multiplier
 
-/obj/machinery/resleeving/body_printer/proc/eject_body()
+	var/heal_organic
+	var/heal_synthetic
+	if(allow_organic)
+		heal_organic = TRUE
+		// heal clone damage
+		casted_human.adjustCloneLoss(-(casted_human.maxHealth * dt * ratio_to_heal))
+		// they're oxygenated by the machine
+		casted_human.adjustOxyLoss(-3.5 * speed_multiplier * dt)
+	if(allow_synthetic)
+		heal_synthetic = TRUE
+
+	for(var/obj/item/organ/internal/internal_organ as anything in casted_human.internal_organs)
+		internal_organ.heal_damage_i(0.5 * speed_multiplier * dt)
+	for(var/obj/item/organ/external/external_organ as anything in casted_human.get_external_organs())
+		if((external_organ.robotic >= ORGAN_ROBOT) && !heal_synthetic)
+			continue
+		if((external_organ.robotic <= ORGAN_ASSISTED) && !heal_organic)
+			continue
+		var/amt_to_heal = ratio_to_heal * external_organ.max_damage
+		external_organ.heal_damage(amt_to_heal, amt_to_heal, TRUE, TRUE)
+
+/obj/machinery/resleeving/body_printer/proc/eject_body(do_not_move)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	#warn impl
@@ -293,6 +333,7 @@
 /**
  * Recalculates our progress on the clone, ejecting them if they've failed to improve
  * too many times (stuck machine / unviable clone)
+ * * This can eject the body.
  */
 /obj/machinery/resleeving/body_printer/proc/handle_progress_recalc()
 
@@ -303,6 +344,21 @@
 	if(!powered())
 		#warn depowered_autoeject_time, depowered_last
 		return
+
+	var/should_recalc_progress = world.time > progress_recalc_last_time + progress_recalc_delay
+
+	if(should_recalc_progress)
+		handle_progress_recalc()
+		var/elapsed = world.time - progress_recalc_last_time
+		progress_recalc_last_time = world.time
+		if(!currently_growing)
+			// handle progress recalc kicks them out
+			return
+
+		// we only grow body on progress recalc for now
+		// in the future we can have this be every tick if needed
+		if(elapsed > 0)
+			grow_body(elapsed * 0.1)
 
 	#warn impl
 

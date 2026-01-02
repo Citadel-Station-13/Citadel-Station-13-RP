@@ -100,46 +100,13 @@
 /// Grow clones to maturity then kick them out.  FREELOADERS
 /obj/machinery/resleeving/body_printer/process(delta_time)
 	if((occupant) && (occupant.loc == src))
-		if((occupant.stat == DEAD) || (occupant.suiciding) || !occupant.key)  //Autoeject corpses and suiciding dudes.
-			locked = 0
-			go_out()
-			connected_message("Clone Rejected: Deceased.")
-			return
-
-		else if(occupant.health < heal_level && occupant.getCloneLoss() > 0)
-			occupant.afflict_unconscious(20 * 4)
-
-			 //Slowly get that clone healed and finished.
-			occupant.adjustCloneLoss(-2 * heal_rate)
-
-			//Premature clones may have brain damage.
-			occupant.adjustBrainLoss(-(CEILING(0.5*heal_rate, 1)))
-
-			//So clones don't die of oxyloss in a running pod.
-			if(occupant.reagents.get_reagent_amount("inaprovaline") < 30)
-				occupant.reagents.add_reagent("inaprovaline", 60)
-			occupant.afflict_sleeping(20 * 30)
-			//Also heal some oxyloss ourselves because inaprovaline is so bad at preventing it!!
-			occupant.adjustOxyLoss(-4)
-
-			use_power(7500) //This might need tweaking.
-			return
-
-		else if((occupant.health >= heal_level || occupant.health == occupant.getMaxHealth()) && (!eject_wait))
+		if((occupant.health >= heal_level || occupant.health == occupant.getMaxHealth()) && (!eject_wait))
 			playsound(src, 'sound/machines/medbayscanner1.ogg', 50, 1)
 			audible_message("\The [src] signals that the cloning process is complete.")
 			connected_message("Cloning Process Complete.")
 			locked = 0
 			go_out()
 			return
-
-	else if((!occupant) || (occupant.loc != src))
-		occupant = null
-		if(locked)
-			locked = 0
-		return
-
-	return
 
 //Let's unlock this early I guess.  Might be too early, needs tweaking.
 /obj/machinery/resleeving/body_printer/attackby(obj/item/W as obj, mob/user as mob)
@@ -213,16 +180,6 @@
 	connected.temp = "[name] : [message]"
 	connected.updateUsrDialog()
 	return 1
-
-/obj/machinery/resleeving/body_printer/RefreshParts()
-	..()
-	var/rating = 0
-	for(var/obj/item/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/stock_parts/scanning_module) || istype(P, /obj/item/stock_parts/manipulator))
-			rating += P.rating
-
-	heal_level = rating * 10 - 20
-	heal_rate = round(rating / 4)
 
 /obj/machinery/resleeving/body_printer/verb/eject()
 	set name = "Eject Cloner"

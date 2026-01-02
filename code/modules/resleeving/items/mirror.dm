@@ -39,30 +39,3 @@
 	return ..()
 
 #warn backup shit
-
-/obj/item/organ/internal/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	var/obj/machinery/computer/resleeving/comp = target
-	if (!istype(comp))
-		return
-	comp.active_mr = stored_mind
-
-/obj/item/organ/internal/mirror/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/mirrorscanner))
-		if(backed_up == null)
-			to_chat(usr, "No consciousness found.")
-		else
-			to_chat(usr, "This mirror contains a consciousness.")
-	else
-		if(istype(I, /obj/item/mirrortool))
-			var/obj/item/mirrortool/MT = I
-			if(MT.imp)
-				to_chat(usr, "The mirror tool already contains a mirror.")
-				return // It's full.
-			#warn make sure this owrks for borgs
-			if(loc == user)			// we assume they can't click someone else's hand items lmao
-				if(!user.attempt_insert_item_for_installation(src, MT))
-					return
-			else
-				forceMove(MT)
-			MT.imp = src
-			MT.update_icon()
