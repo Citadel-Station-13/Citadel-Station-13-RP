@@ -51,6 +51,10 @@
 	var/c_synthetic_metal_cost = 15 * SHEET_MATERIAL_AMOUNT
 	/// for now, just a flat cost per human mob
 	var/c_synthetic_glass_cost = 7.5 * SHEET_MATERIAL_AMOUNT
+	/// * only applied to non-synths for now
+	var/c_cloning_sickness_low = 15 MINUTES
+	/// * only applied to non-synths for now
+	var/c_cloning_sickness_high = 22.5 MINUTES
 
 	/// since when have we been without power
 	/// * null while powered
@@ -163,8 +167,24 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
+	if(/datum/modifier/no_clone in backup.legacy_genetic_modifiers)
+		send_audible_system_message("Error; Body record has corrupted genetic data.")
+		return FALSE
 
 	var/mob/living/created = create_body_impl(backup)
+
+	if(ishuman(created))
+		var/mob/living/carbon/human/casted_human = created
+		// damage them to this much
+		var/ratio_to_damage_to = c_create_body_health_ratio
+		if(casted_human.isSynthetic())
+			// synths: yeah uhhh shit we should refactor everything because synths shouldn't die from
+			//         limb damage lol
+			var/amt = (1 - ratio_to_damage_to) * casted_human.maxHealth * 0.5
+			casted_human.take_overall_damage(amt, amt, DAMAGE_MODE_GRADUAL)
+		else
+			// organics: just cloneloss i can't be arsed
+			casted_human.adjustCloneLoss(casted_human.maxHealth * ratio_to_damage_to)
 	#warn impl
 
 	#warn staiblize them and knock them out, take it off on eject
@@ -174,6 +194,7 @@
 	progress_recalc_strikes = 0
 
 	update_icon()
+	return TRUE
 
 /**
  * This is what creates the actual body; [create_body_impl] is called to create the physical body,
@@ -182,6 +203,11 @@
 /obj/machinery/resleeving/body_printer/proc/create_body(datum/resleeving_body_backup/backup) as /mob/living
 	// backups are always human right now
 	var/mob/living/carbon/human/created_human = create_body_impl(backup)
+	// check if it was made properly
+	if(!created_human)
+		return
+	if(!ishuman(created_human))
+		CRASH("expected human, got [created_human.type]")
 
 	// copy ooc notes / flavor text manually
 	created_human.ooc_notes = backup.legacy_ooc_notes || ""
@@ -200,12 +226,25 @@
 	created_human.sync_organ_dna()
 	created_human.regenerate_icons()
 
+	// apply cloning sickness to non-synths; this should be a status effect
+	if(!created_human.isSynthetic() && created_human.species?.cloning_modifier)
+		created_human.add_modifier(created_human.species.cloning_modifier, rand(c_cloning_sickness_low, c_cloning_sickness_high))
+	// add cloned modifier to everyone; this should be a status effect
+	created_human.add_modifier(/datum/modifier/cloned)
+
+	// this is really stupid, transfer rest of legacy crap
+	for(var/modifier_type in backup.legacy_genetic_modifiers)
+		created_human.add_modifier(modifier_type)
+
 /**
  * This is what creates the actual body; the organs/whatnot should be made here.
  */
 /obj/machinery/resleeving/body_printer/proc/create_body_impl(datum/resleeving_body_backup/backup) as /mob/living
 	// backups are always human right now
 	var/mob/living/carbon/human/created_human = new(src)
+
+	// set gender first; legacy set species code might blow up less. we need a helper at some point.
+	created_human.gender = backup.legacy_gender
 
 	// honestly not sure if this works properly for synths buuuuut..
 	created_human.set_species(backup.legacy_species_uid)
@@ -361,6 +400,8 @@
 			grow_body(elapsed * 0.1)
 
 	#warn impl
+
+// TODO: emag behavior?
 
 //* ADMIN VV WRAPPERS *//
 

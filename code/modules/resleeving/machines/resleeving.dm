@@ -38,4 +38,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
+/obj/machinery/resleeving/proc/send_system_message(msg)
+
+/obj/machinery/resleeving/proc/send_audible_system_message(msg)
+
 #warn impl all

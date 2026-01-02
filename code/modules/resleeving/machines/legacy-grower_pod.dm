@@ -2,10 +2,6 @@
 #warn below
 
 /obj/machinery/resleeving/body_printer/grower_pod/growclone(datum/resleeving_body_backup/current_project)
-	//Manage machine-specific stuff.
-	if(mess || attempting)
-		return 0
-	attempting = 1 //One at a time!!
 	locked = 1
 	eject_wait = 1
 	spawn(30)
@@ -30,15 +26,6 @@
 			continue
 		var/datum/trait/T = all_traits[trait]
 		T.apply(H.species, H)
-
-	//Apply genetic modifiers
-	for(var/modifier_type in R.genetic_modifiers)
-		H.add_modifier(modifier_type)
-
-	//Apply damage
-	H.adjustCloneLoss((H.getMaxHealth() - H.getMinHealth())*-0.75)
-	H.afflict_unconscious(20 * 4)
-	H.update_health()
 
 	return 1
 

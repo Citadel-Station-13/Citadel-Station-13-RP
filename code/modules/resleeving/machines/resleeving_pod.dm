@@ -23,6 +23,7 @@
 /obj/machinery/resleeving/resleeving_pod/Initialize(mapload)
 	. = ..()
 	update_icon()
+	init_occupant_pod_openable()
 
 /obj/machinery/resleeving/resleeving_pod/Destroy()
 	#warn drop occupant/mirror
@@ -60,9 +61,14 @@
 	casted_human.identifying_gender = backup.legacy_identifying_gender
 	#warn impl
 
+	for(var/langauge_id in backup.legacy_language_ids)
+		var/datum/prototype/language/resolved_language = RSlanguages.fetch_local_or_throw(langauge_id)
+		casted_human.add_language(resolved_language.name)
+
 	return TRUE
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_mind_insertion_impl(mob/living/target, datum/mind/mind)
+
 
 	// - LEGACY - //
 

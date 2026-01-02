@@ -9,19 +9,7 @@
 	icon_state = "pod_0"
 	circuit = /obj/item/circuitboard/resleeving/synth_printer
 
-	var/list/stored_material =  list(MAT_STEEL = 30000, MAT_GLASS = 30000)
-	var/max_res_amount = 30000 //Max the thing can hold
-	var/broken = 0
-	var/burn_value = 45
-	var/brute_value = 60
-
-/obj/machinery/resleeving/body_printer/synth_fab/Initialize(mapload)
-	. = ..()
-	update_icon()
-
 /obj/machinery/resleeving/body_printer/synth_fab/proc/print(var/datum/resleeving_body_backup/BR)
-	if(!istype(BR) || busy)
-		return 0
 
 	if(stored_material[MAT_STEEL] < body_cost || stored_material["glass"] < body_cost)
 		return 0
@@ -33,12 +21,6 @@
 	return 1
 
 /obj/machinery/resleeving/body_printer/synth_fab/proc/make_body()
-	//Manage machine-specific stuff
-	if(!current_project)
-		busy = 0
-		update_icon()
-		return
-
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = current_project.legacy_dna
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
@@ -50,13 +32,6 @@
 
 	//Apply DNA
 	H.dna = R.dna.Clone()
-
-	//Apply damage
-	H.adjustBruteLoss(brute_value)
-	H.adjustFireLoss(burn_value)
-	H.update_health()
-	//Plonk them here.
-	H.loc = get_turf(src)
 
 	//Machine specific stuff at the end
 	stored_material[MAT_STEEL] -= body_cost

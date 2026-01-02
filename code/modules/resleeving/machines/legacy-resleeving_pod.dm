@@ -93,9 +93,6 @@
 		log_and_message_admins("was resleeve-wiped from their body.",occupant.mind)
 		occupant.ghostize()
 
-	//Attach as much stuff as possible to the mob.
-	for(var/datum/prototype/language/L in MR.languages)
-		occupant.add_language(L.name)
 	MR.mind_ref.active = 1 //Well, it's about to be.
 	MR.mind_ref.transfer(occupant) //Does mind+ckey+client.
 	occupant.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.
@@ -112,9 +109,13 @@
 
 	//Inform them and make them a little dizzy.
 	if(confuse_amount + blur_amount <= 16)
-		to_chat(occupant, SPAN_NOTICE("You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. "))
-	else
-		to_chat(occupant, SPAN_WARNING("You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  "))
+		to_chat(occupant, SPAN_NOTICE("You feel a small pain in your back as you're given a new \
+		mirror implant. Oh, and a new body. \
+		Your brain will struggle for some time to relearn its neurological pathways, \
+		and you may feel disorientation, moments of confusion, and random pain or spasms. \
+		You also feel a constant disconnect, and your body feels foreign. \
+		You can't shake the final thoughts and feelings of your past life, and they linger at the \
+		forefront of your memory. "))
 
 	occupant.confused   = max(occupant.confused, confuse_amount)
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)

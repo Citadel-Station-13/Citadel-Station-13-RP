@@ -76,6 +76,8 @@
 	cloning_dna.types = DNA2_BUF_SE | DNA2_BUF_UE | DNA2_BUF_UI
 	cloning_dna.flavor = from_human.flavor_texts.Copy()
 
+	// TODO: this obviously doesn't preserve it properly. this won't stack /modifier/cloned.
+	//       we will need a way to clone status effects when we shift stuff there so some can persist.
 	for(var/datum/modifier/modifier in from_human.modifiers)
 		if(modifier.flags & MODIFIER_GENETIC)
 			legacy_genetic_modifiers += modifier.type
