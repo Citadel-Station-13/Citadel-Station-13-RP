@@ -48,22 +48,6 @@
 
 #warn replace these with design macros
 
-/datum/prototype/design/circuit/clonecontrol
-	design_name = "cloning control console"
-	id = "clonecontrol"
-	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
-	category = DESIGN_CATEGORY_MEDICAL
-	subcategory = DESIGN_SUBCATEGORY_STATION
-	build_path = /obj/item/circuitboard/cloning
-
-/datum/prototype/design/circuit/clonepod
-	design_name = "clone pod"
-	id = "clonepod"
-	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
-	category = DESIGN_CATEGORY_MEDICAL
-	subcategory = DESIGN_SUBCATEGORY_STATION
-	build_path = /obj/item/circuitboard/clonepod
-
 /datum/prototype/design/circuit/transhuman_clonepod
 	design_name = "grower pod"
 	id = "transhuman_clonepod"
@@ -81,8 +65,6 @@
 	id = "transhuman_resleever"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_BIO = 4)
 	build_path = /obj/item/circuitboard/resleeving/resleeving_pod
-
-// Resleeving
 
 /datum/prototype/design/circuit/resleeving_control
 	design_name = "Resleeving control console"
