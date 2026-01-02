@@ -11,6 +11,9 @@
 	icon_state = "pod_0"
 	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
 
+	active_power_usage = 5000
+	idle_power_usage = 10
+
 	/// can grow organic tissue
 	var/allow_organic = FALSE
 	/// can fab synthetic limbs
@@ -29,15 +32,40 @@
 	/// 0 to 1 ratio
 	var/currently_growing_progress_estimate_ratio
 
+	/// are we locked? premature ejection can only done if unlocked.
+	var/locked = FALSE
+
+	/// ratio of health to create with
 	var/c_create_body_health_ratio = 0.2
+	/// stabilize them while they're inside. you REALLY shouldn't turn this off.
 	var/c_always_stabilize_body = TRUE
-	var/c_regen_body_health_radio_per_second = 1 / ((1.5 MINUTES) / (1 SECOND))
+	/// ratio to regenerate per second; by default, cycle finishes in 3 minutes.
+	var/c_regen_body_health_radio_per_second = 1 / ((3 MINUTES) / (1 SECOND))
 	/// for now, just a flat cost per human mob
 	var/c_biological_biomass_cost = 30
 	/// for now, just a flat cost per human mob
 	var/c_synthetic_metal_cost = 15 * SHEET_MATERIAL_AMOUNT
 	/// for now, just a flat cost per human mob
 	var/c_synthetic_glass_cost = 7.5 * SHEET_MATERIAL_AMOUNT
+
+	/// since when have we been without power
+	/// * null while powered
+	var/depowered_started_at = null
+	/// eject at time
+	var/depowered_autoeject_time = 30 SECONDS
+
+	/// when did we fully tabluate the mob
+	var/progress_recalc_last_time
+	/// last progress ratio
+	var/progress_recalc_last_ratio
+	/// how often to recalculate progress
+	var/progress_recalc_delay = 10 SECONDS
+	/// how many times progress has failed to go up
+	var/progress_recalc_strikes = 0
+	/// how many times progress can fail to go up
+	var/progress_recalc_strike_limit = 3
+	/// how much progress must be going up to be considered valid
+	var/progress_recalc_working_threshold_ratio = 0.025
 
 /obj/machinery/resleeving/body_printer/Initialize(mapload)
 	. = ..()
@@ -69,8 +97,15 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
+
 	var/mob/living/created = create_body_impl(backup)
 	#warn impl
+
+	locked = TRUE
+	progress_recalc_last_time = world.time
+	progress_recalc_strikes = 0
+
+	update_icon()
 
 /**
  * This is what creates the actual body.
@@ -127,7 +162,22 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	#warn impl
 
+	update_icon()
+
+/**
+ * Recalculates our progress on the clone, ejecting them if they've failed to improve
+ * too many times (stuck machine / unviable clone)
+ */
+/obj/machinery/resleeving/body_printer/proc/handle_progress_recalc()
+
+
 /obj/machinery/resleeving/body_printer/process(delta_time)
+	if(!currently_growing)
+		return
+	if(!powered())
+		#warn depowered_autoeject_time, depowered_last
+		return
+
 	#warn impl
 
 //* ADMIN VV WRAPPERS *//

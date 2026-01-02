@@ -5,15 +5,10 @@
 	/// The clone is released once its health reaches this level.
 	var/heal_level = 20
 	var/heal_rate = 1
-	var/locked = FALSE
 	/// Need to clean out it if it's full of exploded clone.
 	var/mess = FALSE
 	/// Don't eject them as soon as they are created.
 	var/eject_wait = FALSE
-	/// Beakers for our liquid biomass.
-	var/list/containers = list()
-	/// How many beakers can the machine hold?
-	var/container_limit = 3
 
 /obj/machinery/resleeving/body_printer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
@@ -86,8 +81,6 @@
 		H.dna.real_name = H.real_name
 	else
 		H.dna = R.dna
-	H.UpdateAppearance()
-	H.sync_organ_dna()
 	if(heal_level < 60)
 		randmutb(H) //Sometimes the clones come out wrong.
 		H.dna.UpdateSE()
@@ -118,19 +111,11 @@
 	for(var/datum/prototype/language/L in R.languages)
 		H.add_language(L.name)
 
-	H.flavor_texts = R.flavor.Copy()
-	H.suiciding = 0
 	attempting = 0
 	return 1
 
 /// Grow clones to maturity then kick them out.  FREELOADERS
 /obj/machinery/resleeving/body_printer/process(delta_time)
-	if(machine_stat & NOPOWER) // Autoeject if power is lost
-		if(occupant)
-			locked = 0
-			go_out()
-		return
-
 	if((occupant) && (occupant.loc == src))
 		if((occupant.stat == DEAD) || (occupant.suiciding) || !occupant.key)  //Autoeject corpses and suiciding dudes.
 			locked = 0
@@ -284,11 +269,6 @@
 	occupant.update_perspective()
 
 	eject_wait = 0 //If it's still set somehow.
-
-	if(ishuman(occupant)) //Need to be safe.
-		var/mob/living/carbon/human/patient = occupant
-		if(!(patient.species.species_flags & NO_SCAN)) //If, for some reason, someone makes a genetically-unalterable clone, let's not make them permanently disabled.
-			domutcheck(occupant) //Waiting until they're out before possible transforming.
 
 	occupant = null
 

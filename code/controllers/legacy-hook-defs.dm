@@ -24,13 +24,6 @@
 /legacy_hook/death
 
 /**
- * Cloning hook.
- * Called in cloning.dm when someone is brought back by the wonders of modern science.
- * Parameters: var/mob/living/carbon/human
- */
-/legacy_hook/clone
-
-/**
  * Debrained hook.
  * Called in brain_item.dm when someone gets debrained.
  * Parameters: var/obj/item/organ/brain
