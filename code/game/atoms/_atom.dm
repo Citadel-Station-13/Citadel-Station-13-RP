@@ -197,7 +197,7 @@
 	//? Misc
 	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
 	var/list/interacting_mobs
-	/// The orbiter comopnent if we're being orbited.
+	/// The orbiter component if we're being orbited.
 	var/datum/component/orbiter/orbiters
 
 	//? Sounds
