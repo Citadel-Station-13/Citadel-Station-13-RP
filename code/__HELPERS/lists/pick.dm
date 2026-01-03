@@ -1,49 +1,43 @@
 /**
- * Picks a random element from a list based on a weighting system:
- * - 1. Adds up the total of weights for each element.
- * - 2. Gets a number between 1 and that total.
- * - 3. For each element in the list, subtracts its weighting from that number.
- * - 4. If that makes the number 0 or less, return that element.
- *
- * Warning: This *will* modify the input list.
+ * Picks a random element from a list based on a weighting system.
+ * For example, given the following list:
+ * A = 6, B = 3, C = 1, D = 0
+ * A would have a 60% chance of being picked,
+ * B would have a 30% chance of being picked,
+ * C would have a 10% chance of being picked,
+ * and D would have a 0% chance of being picked.
+ * You should only pass integers in.
  */
-/proc/pickweight(list/L)
+/proc/pickweight(list/list_to_pick)
+	if(length(list_to_pick) == 0)
+		return null
+
 	var/total = 0
-	var/item
-	for (item in L)
-		if (!L[item])
-			L[item] = 1
-		total += L[item]
+	for(var/item in list_to_pick)
+		if(!list_to_pick[item])
+			list_to_pick[item] = 0
+		total += list_to_pick[item]
 
 	total = rand(1, total)
-	for (item in L)
-		total -=L [item]
-		if (total <= 0)
+	for(var/item in list_to_pick)
+		var/item_weight = list_to_pick[item]
+		if(item_weight == 0)
+			continue
+
+		total -= item_weight
+		if(total <= 0)
 			return item
 
 	return null
 
 /**
- * The original pickweight proc will sometimes pick entries with zero weight.
- * I'm not sure if changing the original will break anything, so I left it be.
- *
- * Warning: This *will* modify the input list.
+ * Pick2Weight but sets the key to 1 if unset
  */
-/proc/pickweightAllowZero(list/L)
-	var/total = 0
-	var/item
-	for (item in L)
-		if (!L[item])
-			L[item] = 0
-		total += L[item]
-
-	total = rand(0, total)
-	for (item in L)
-		total -=L [item]
-		if (total <= 0 && L[item])
-			return item
-
-	return null
+/proc/pickweight_one_default(list/list_to_pick)
+	for(var/item in list_to_pick)
+		if(!list_to_pick[item])
+			list_to_pick[item] = 1
+	return pickweight(list_to_pick)
 
 /**
  * Pick a random element from the list and remove it from the list.

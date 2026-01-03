@@ -242,7 +242,7 @@
 
 /datum/weather/virgo4/rain/process_effects()
 	..()
-	for(var/mob/living/L as anything in living_mob_list)
+	for(var/mob/living/L as anything in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -288,7 +288,7 @@
 
 /datum/weather/virgo4/storm/process_effects()
 	..()
-	for(var/mob/living/L as anything in living_mob_list)
+	for(var/mob/living/L as anything in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -341,7 +341,7 @@
 
 /datum/weather/virgo4/hail/process_effects()
 	..()
-	for(var/mob/living/carbon/H as anything in human_mob_list)
+	for(var/mob/living/carbon/H as anything in GLOB.carbon_list)
 		if(H.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(H)
 			if(!T.outdoors)
@@ -434,7 +434,7 @@
 
 /datum/weather/virgo4/ash_storm/process_effects()
 	..()
-	for(var/thing in living_mob_list)
+	for(var/thing in GLOB.mob_living_list)
 		var/mob/living/L = thing
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
@@ -471,7 +471,7 @@
 
 /datum/weather/virgo4/fallout/process_effects()
 	..()
-	for(var/thing in living_mob_list)
+	for(var/thing in GLOB.mob_living_list)
 		var/mob/living/L = thing
 		if(L.z in holder.our_planet.expected_z_levels)
 			irradiate_nearby_turf(L)

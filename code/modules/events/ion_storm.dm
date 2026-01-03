@@ -25,7 +25,7 @@
 		players += player.real_name
 
 	// Flomph synthetics
-	for(var/mob/living/carbon/S in living_mob_list)
+	for(var/mob/living/carbon/S in GLOB.alive_mob_list)
 		if (!S.isSynthetic())
 			continue
 		if(!(S.z in affecting_z))
@@ -39,7 +39,7 @@
 		S.eye_blurry += (ionbug - 1)
 
 	// Ionize silicon mobs
-	for (var/mob/living/silicon/ai/target in silicon_mob_list)
+	for (var/mob/living/silicon/ai/target in GLOB.ai_list)
 		if(!(target.z in affecting_z))
 			continue
 		var/law = target.generate_ion_law()

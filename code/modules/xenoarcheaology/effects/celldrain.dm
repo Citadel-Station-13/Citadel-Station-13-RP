@@ -31,7 +31,7 @@
 			if(get_dist(T, S) > src.effectrange)
 				continue
 			S.charge = max(S.charge - 100,0)
-		for (var/mob/living/silicon/robot/M in silicon_mob_list)
+		for (var/mob/living/silicon/robot/M in GLOB.silicon_mobs)
 			if(T.z != M.z)
 				continue
 			if(get_dist(T, M) > 50)
@@ -59,7 +59,7 @@
 			if(get_dist(T, S) > src.effectrange)
 				continue
 			S.charge = max(S.charge - 250,0)
-		for (var/mob/living/silicon/robot/M in silicon_mob_list)
+		for (var/mob/living/silicon/robot/M in GLOB.silicon_mobs)
 			if(T.z != M.z)
 				continue
 			if(get_dist(T, M) > 100)

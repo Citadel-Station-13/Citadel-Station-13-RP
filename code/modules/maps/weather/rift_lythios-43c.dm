@@ -199,7 +199,7 @@
 
 /datum/weather/lythios43c/snow/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -244,7 +244,7 @@
 
 /datum/weather/lythios43c/blizzard/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -294,7 +294,7 @@
 
 /datum/weather/lythios43c/storm/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -380,7 +380,7 @@
 
 /datum/weather/lythios43c/hail/process_effects()
 	..()
-	for(var/humie in living_mob_list)
+	for(var/humie in GLOB.mob_living_list)
 		var/mob/living/H = humie
 		if(H.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(H)
@@ -442,7 +442,7 @@
 
 /datum/weather/lythios43c/fallout/process_effects()
 	..()
-	for(var/thing in living_mob_list)
+	for(var/thing in GLOB.mob_living_list)
 		var/mob/living/L = thing
 		if(L.z in holder.our_planet.expected_z_levels)
 			irradiate_nearby_turf(L)

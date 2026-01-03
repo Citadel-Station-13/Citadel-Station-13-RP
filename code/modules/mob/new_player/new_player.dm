@@ -1,36 +1,34 @@
 INITIALIZE_IMMEDIATE(/mob/new_player)
 /mob/new_player
-	var/ready = 0
-	var/spawning = 0			// Referenced when you want to delete the new_player later on in the code.
-	var/totalPlayers = 0		// Player counts for the Lobby tab
-	var/totalPlayersReady = 0
-	var/datum/browser/panel
-	universal_speak = 1
-
-	invisibility = 101
-
-	density = 0
+	invisibility = INVISIBILITY_ABSTRACT
+	density = FALSE
 	stat = DEAD
 	mobility_flags = NONE
 
+	universal_speak = 1
 	anchored = 1	// Don't get pushed around
+
+	var/ready = 0
+	/// Referenced when you want to delete the new_player later on in the code.
+	var/spawning = FALSE
+
+	var/totalPlayers = 0		// Player counts for the Lobby tab
+	var/totalPlayersReady = 0
+	var/datum/browser/panel
 
 /mob/new_player/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
-	mob_list_register()
 	atom_flags |= ATOM_INITIALIZED
 	// we only need innate
 	actions_innate = new /datum/action_holder/mob_actor(src)
+
+	GLOB.new_player_list += src
 	return INITIALIZE_HINT_NORMAL
 
-/mob/new_player/mob_list_register()
-	GLOB.mob_list += src
+/mob/dead/new_player/Destroy()
+	GLOB.new_player_list -= src
 
-/mob/new_player/mob_list_unregister()
-	GLOB.mob_list -= src
-
-/mob/new_player/mob_list_update_stat(old_stat, new_stat)
-	return
+	return ..()
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
@@ -189,7 +187,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 			if(client.media)
 				client.media.stop_music() // MAD JAMS cant last forever yo
 
-			observer.started_as_observer = 1
+			observer.started_as_observer = TRUE
 			close_spawn_windows()
 			var/obj/landmark/L = pick_landmark_by_key(/obj/landmark/observer_spawn)
 			if(L)
@@ -411,11 +409,13 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		log_shadowban("[key_name(src)] latejoin as [rank] blocked.")
 		return 0
+
 	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(rank)
 	var/reason
 	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
 		to_chat(src, SPAN_WARNING("[rank] is not available: [J.get_availability_reason(client, reason)]"))
 		return FALSE
+
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
@@ -455,6 +455,8 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = character.mind.role_alt_title || rank), announce_channel, character.z)
 	character = SSjob.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
+
+	GLOB.joined_player_list += character.ckey
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")
