@@ -69,7 +69,7 @@
 	help_text = "<ckey|ticket #> <message|ticket <close|resolve|icissue|reject|reopen <ticket #>|list>>"
 	admin_only = TRUE
 
-/datum/tgs_chat_command/ahelp/Validated_Run(datum/tgs_chat_user/sender, params)
+/datum/tgs_chat_command/ahelp/Run(datum/tgs_chat_user/sender, params)
 	var/list/all_params = splittext(params, " ")
 	if(all_params.len < 2)
 		return new /datum/tgs_message_content("Insufficient parameters")

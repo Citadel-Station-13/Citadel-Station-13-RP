@@ -259,30 +259,37 @@
 		href_list["secretsadmin"] = "check_antagonist"
 
 	else if(href_list["simplemake"])
-
-		if(!check_rights(R_SPAWN))	return
+		if(!check_rights(R_SPAWN))
+			return
 
 		var/mob/M = locate(href_list["mob"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.", confidential = TRUE)
 			return
 
-		var/delmob = 0
-		switch(alert("Delete old mob?","Message","Yes","No","Cancel"))
-			if("Cancel")	return
-			if("Yes")		delmob = 1
+		var/delmob = TRUE
+		if(!isobserver(M))
+			switch(tgui_alert(usr,"Delete old mob?","Message",list("Yes","No","Cancel")))
+				if("Cancel")
+					return
+				if("No")
+					delmob = FALSE
 
-		log_admin("[key_name(usr)] has used rudimentary transformation on [key_name(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
-		message_admins("<font color=#4F49AF>[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]</font>", 1)
+		log_admin("[key_name(usr)] has used rudimentary transformation on [key_name(M)]. Transforming to [href_list["simplemake"]].; deletemob=[delmob]")
+		message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]].; deletemob=[delmob]"))
 
 		switch(href_list["simplemake"])
-			if("observer")			M.change_mob_type( /mob/observer/dead , null, null, delmob )
+			if("observer")
+				M.change_mob_type( /mob/observer/dead , null, null, delmob )
+			if("human")
+				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
+			if("monkey")
+				M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
+			if("robot")
+				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
 			if("larva")				M.change_mob_type( /mob/living/carbon/alien/larva , null, null, delmob )
 			if("nymph")				M.change_mob_type( /mob/living/carbon/alien/diona , null, null, delmob )
-			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
 			if("slime")				M.change_mob_type( /mob/living/simple_mob/slime/xenobio , null, null, delmob )
-			if("monkey")			M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
-			if("robot")				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
 			if("cat")				M.change_mob_type( /mob/living/simple_mob/animal/passive/cat , null, null, delmob )
 			if("runtime")			M.change_mob_type( /mob/living/simple_mob/animal/passive/cat/runtime , null, null, delmob )
 			if("corgi")				M.change_mob_type( /mob/living/simple_mob/animal/passive/dog/corgi , null, null, delmob )
@@ -1989,9 +1996,9 @@
 	if(!target) return
 	// The way admin jump links handle their src is weirdly inconsistent...
 	if(istype(source, /datum/admins))
-		source = "src=\ref[source]"
+		source = "src=[REF(source)]"
 	else
 		source = "_src_=holder"
 
-	. = "<A HREF='?[source];adminplayerobservejump=\ref[target]'>JMP</A>"
+	. = "<A HREF='?[source];[HrefToken()];adminplayerobservejump=[REF(target)]'>JMP</A>"
 	. += target.extra_admin_link(source)

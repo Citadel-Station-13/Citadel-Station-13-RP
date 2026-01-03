@@ -647,9 +647,14 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-	ready_for_reboot = TRUE
+	TriggerRoundEndTgsEvent()
+
 	sleep(5 SECONDS)
+	ready_for_reboot = TRUE
 	standard_reboot()
+
+/datum/controller/subsystem/ticker/proc/TriggerRoundEndTgsEvent()
+	world.TgsTriggerEvent("tg-Roundend", wait_for_completion = TRUE)
 
 /datum/controller/subsystem/ticker/proc/standard_reboot()
 	if(ready_for_reboot)

@@ -175,7 +175,6 @@ var/list/admin_verbs_server = list(
 	/client/proc/toggle_browser_inspect,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/adspawn,
-	/datum/admins/proc/adjump,
 	/datum/admins/proc/toggle_aliens,
 	/datum/admins/proc/toggle_space_ninja,
 	/client/proc/toggle_random_events,
@@ -306,7 +305,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/reload_configuration,
 	/datum/admins/proc/toggleAI,
 	/datum/admins/proc/adspawn,
-	/datum/admins/proc/adjump,
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/callproc,
@@ -518,31 +516,6 @@ var/list/admin_verbs_event_manager = list(
 			to_chat(mob, "<font color=#4F49AF><b>Invisimin on. You are now as invisible as a ghost.</b></font>")
 			mob.alpha = max(mob.alpha - 100, 0)
 
-/*
-/client/proc/player_panel()
-	set name = "Player Panel"
-	set category = "Admin"
-	if(holder)
-		holder.player_panel_old()
-	feedback_add_details("admin_verb","PP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	return
-*/
-/client/proc/player_panel()
-	set name = "Player Panel"
-	set category = "Admin"
-	if(holder)
-		holder.player_panel()
-	feedback_add_details("admin_verb","PPN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	return
-
-/client/proc/check_antagonists()
-	set name = "Check Antagonists"
-	set category = "Admin"
-	if(holder)
-		holder.check_antagonists()
-		log_admin("[key_name(usr)] checked antagonists.")	//for tsar~
-	feedback_add_details("admin_verb","CHA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	return
 
 /client/proc/jobbans()
 	set name = "Display Job bans"
@@ -582,8 +555,12 @@ var/list/admin_verbs_event_manager = list(
 		holder.Secrets()
 	feedback_add_details("admin_verb","S") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/// Returns this client's stealthed ckey
+/client/proc/getStealthKey()
+	return GLOB.stealthminID[ckey]
+
 /// Takes a stealthed ckey as input, returns the true key it represents
-/proc/findStealthKey(stealth_key)
+/proc/findTrueKey(stealth_key)
 	if(!stealth_key)
 		return
 	for(var/potentialKey in GLOB.stealthminID)
@@ -965,23 +942,6 @@ var/list/admin_verbs_event_manager = list(
 	if(holder)
 		holder.PlayerNotes()
 	return
-
-/client/proc/free_slot()
-	set name = "Free Job Slot"
-	set category = "Admin"
-	if(holder)
-		var/list/jobs = list()
-		for (var/datum/prototype/role/job/J in RSroles.legacy_all_job_datums())
-			if (J.current_positions >= J.total_positions && J.total_positions != -1)
-				jobs += J.title
-		if (!jobs.len)
-			to_chat(usr, "There are no fully staffed jobs.")
-			return
-		var/job = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
-		if (job)
-			SSjob.FreeRole(job)
-			message_admins("A job slot for [job] has been opened by [key_name_admin(usr)]")
-			return
 
 /client/proc/toggleghostwriters()
 	set name = "Toggle ghost writers"

@@ -7,8 +7,8 @@
 
 	GLOB.Debug2 = !GLOB.Debug2
 	var/message = "toggled debugging [(GLOB.Debug2 ? "ON" : "OFF")]"
-	message_admins("[key_name_admin(src)] [message].")
-	log_admin("[key_name(src)] [message].")
+	message_admins("[key_name_admin(usr)] [message].")
+	log_admin("[key_name(usr)] [message].")
 
 	feedback_add_details("admin_verb","DG2") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -124,7 +124,7 @@
 
 	if(!check_rights(R_DEBUG|R_SPAWN))	return
 
-	var/type_to_del = src.poll_type_to_del(object)
+	var/type_to_del = poll_type_to_del(object)
 	if(!type_to_del)
 		return
 
@@ -134,8 +134,8 @@
 			counter++
 			qdel(O)
 		CHECK_TICK
-	log_admin("[key_name(src)] has deleted all ([counter]) instances of [type_to_del].")
-	message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [type_to_del].")
+	log_admin("[key_name(usr)] has deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(usr)] has deleted all ([counter]) instances of [type_to_del].")
 
 /client/proc/cmd_del_all_force(object as text)
 	set category = VERB_CATEGORY_DEBUG
@@ -154,8 +154,8 @@
 			counter++
 			qdel(O, force = TRUE)
 		CHECK_TICK
-	log_admin("[key_name(src)] has force-deleted all ([counter]) instances of [type_to_del].")
-	message_admins("[key_name_admin(src)] has force-deleted all ([counter]) instances of [type_to_del].")
+	log_admin("[key_name(usr)] has force-deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(usr)] has force-deleted all ([counter]) instances of [type_to_del].")
 
 /client/proc/cmd_del_all_hard(object as text)
 	set category = VERB_CATEGORY_DEBUG
@@ -164,20 +164,20 @@
 
 	if(!check_rights(R_DEBUG|R_SPAWN))	return
 
-	var/type_to_del = src.poll_type_to_del(object)
+	var/type_to_del = poll_type_to_del(object)
 	if(!type_to_del)
 		return
 
-	var/choice = alert(src, "ARE YOU SURE that you want to hard delete this type? It will cause MASSIVE lag.", "Hoooo lad what happen?", "Yes", "No")
+	var/choice = alert(usr, "ARE YOU SURE that you want to hard delete this type? It will cause MASSIVE lag.", "Hoooo lad what happen?", "Yes", "No")
 	if(choice != "Yes")
 		return
 
-	choice = alert(src, "Do you want to pre qdelete the atom? This will speed things up significantly, but may break depending on your level of fuckup.", "How do you even get it that bad", "Yes", "No")
+	choice = alert(usr, "Do you want to pre qdelete the atom? This will speed things up significantly, but may break depending on your level of fuckup.", "How do you even get it that bad", "Yes", "No")
 	var/should_pre_qdel = TRUE
 	if(choice == "No")
 		should_pre_qdel = FALSE
 
-	choice = alert(src, "Ok one last thing, do you want to yield to the game? or do it all at once. These are hard deletes remember.", "Jesus christ man", "Yield", "Ignore the server")
+	choice = alert(usr, "Ok one last thing, do you want to yield to the game? or do it all at once. These are hard deletes remember.", "Jesus christ man", "Yield", "Ignore the server")
 	var/should_check_tick = TRUE
 	if(choice == "Ignore the server")
 		should_check_tick = FALSE
@@ -199,8 +199,8 @@
 					qdel(O)
 				del(O)
 
-	log_admin("[key_name(src)] has hard deleted all ([counter]) instances of [type_to_del].")
-	message_admins("[key_name_admin(src)] has hard deleted all ([counter]) instances of [type_to_del].")
+	log_admin("[key_name(usr)] has hard deleted all ([counter]) instances of [type_to_del].")
+	message_admins("[key_name_admin(usr)] has hard deleted all ([counter]) instances of [type_to_del].")
 
 /client/proc/cmd_debug_make_powernets()
 	set category = VERB_CATEGORY_DEBUG
@@ -210,11 +210,11 @@
 	if(!check_rights(R_DEBUG|R_SERVER))	return
 
 	SSmachines.makepowernets()
-	log_admin("[key_name(src)] has remade the powernet. SSmachines.makepowernets() called.")
-	message_admins("[key_name_admin(src)] has remade the powernets. SSmachines.makepowernets() called.", 0)
+	log_admin("[key_name(usr)] has remade the powernet. SSmachines.makepowernets() called.")
+	message_admins("[key_name_admin(usr)] has remade the powernets. SSmachines.makepowernets() called.", 0)
 	feedback_add_details("admin_verb","MPWN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
+/client/proc/cmd_admin_grantfullaccess(mob/M in GLOB.mob_list)
 	set category = VERB_CATEGORY_DEBUG
 	set name = "Grant Full Access"
 	set desc = "Grant full access to a mob."
@@ -222,7 +222,7 @@
 	if(!check_rights(R_DEBUG))	return
 
 	if(!SSticker.HasRoundStarted())
-		tgui_alert(src, "Wait until the game starts")
+		tgui_alert(usr, "Wait until the game starts")
 		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -244,9 +244,9 @@
 			H.equip_to_slot_or_del(id, SLOT_ID_WORN_ID)
 			H.update_inv_wear_id()
 	else
-		alert("Invalid mob")
+		tgui_alert(usr,"Invalid mob")
 	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(src)] has granted [M.key] full access.")
+	log_admin("[key_name(usr)] has granted [M.key] full access.")
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has granted [M.key] full access."))
 
 /client/proc/cmd_debug_mob_lists()
@@ -256,7 +256,7 @@
 
 	if(!check_rights(R_DEBUG))	return
 
-	var/chosen_list = input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs","Clients")
+	var/chosen_list = tgui_input_list(usr, "Which list?", "Select List", list("Players","Admins","Mobs","Living Mobs","Dead Mobs","Clients","Joined Clients"))
 	if(isnull(chosen_list))
 		return
 	switch(chosen_list)
@@ -267,11 +267,13 @@
 		if("Mobs")
 			to_chat(usr, jointext(GLOB.mob_list,","), confidential = TRUE)
 		if("Living Mobs")
-			to_chat(usr, jointext(living_mob_list,","), confidential = TRUE)
+			to_chat(usr, jointext(GLOB.alive_mob_list,","), confidential = TRUE)
 		if("Dead Mobs")
-			to_chat(usr, jointext(dead_mob_list,","), confidential = TRUE)
+			to_chat(usr, jointext(GLOB.dead_mob_list,","), confidential = TRUE)
 		if("Clients")
 			to_chat(usr, jointext(GLOB.clients,","), confidential = TRUE)
+		if("Joined Clients")
+			to_chat(usr, jointext(GLOB.joined_player_list,","), confidential = TRUE)
 
 /client/proc/cmd_display_del_log()
 	set category = VERB_CATEGORY_DEBUG
@@ -281,10 +283,12 @@
 	if(!check_rights(R_DEBUG))	return
 
 	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	tim_sort(SSgarbage.items, cmp=GLOBAL_PROC_REF(cmp_qdel_item_time), associative = TRUE)
+	tim_sort(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
 		dellog += "<li><u>[path]</u><ul>"
+		if (I.qdel_flags & QDEL_ITEM_SUSPENDED_FOR_LAG)
+			dellog += "<li>SUSPENDED FOR LAG</li>"
 		if (I.failures)
 			dellog += "<li>Failures: [I.failures]</li>"
 		dellog += "<li>qdel() Count: [I.qdels]</li>"
@@ -292,6 +296,9 @@
 		if (I.hard_deletes)
 			dellog += "<li>Total Hard Deletes [I.hard_deletes]</li>"
 			dellog += "<li>Time Spent Hard Deleting: [I.hard_delete_time]ms</li>"
+			dellog += "<li>Highest Time Spent Hard Deleting: [I.hard_delete_max]ms</li>"
+			if (I.hard_deletes_over_threshold)
+				dellog += "<li>Hard Deletes Over Threshold: [I.hard_deletes_over_threshold]</li>"
 		if (I.slept_destroy)
 			dellog += "<li>Sleeps: [I.slept_destroy]</li>"
 		if (I.no_respect_force)
@@ -354,7 +361,7 @@
 	var/bucket_list_output = generate_timer_source_output(SStimer.bucket_list)
 	var/second_queue = generate_timer_source_output(SStimer.second_queue)
 
-	var/datum/browser/browser = new(src, "check_timer_sources", "Timer Sources", 700, 700)
+	var/datum/browser/browser = new(usr, "check_timer_sources", "Timer Sources", 700, 700)
 	browser.set_content({"
 		<h3>bucket_list</h3>
 		[bucket_list_output]
@@ -447,57 +454,126 @@
 
 	download_icon(A)
 
-/client/proc/cmd_admin_areatest()
+/client/proc/cmd_admin_areatest(on_station as num, filter_maint as num)
 	set category = "Mapping"
 	set name = "Test areas"
+	set desc = "Tests the areas for various machinery."
 
+	var/list/dat = list()
 	var/list/areas_all = list()
 	var/list/areas_with_APC = list()
+	var/list/areas_with_multiple_APCs = list()
 	var/list/areas_with_air_alarm = list()
 	var/list/areas_with_RC = list()
 	var/list/areas_with_light = list()
 	var/list/areas_with_LS = list()
 	var/list/areas_with_intercom = list()
 	var/list/areas_with_camera = list()
+	///Additionally, blacklist in order to filter out the types of areas that can show up on station Z-levels that we never need to test for.
+	var/static/list/station_areas_blacklist = typecacheof(list(
+		/area/mine,
+		/area/shuttle,
+		/area/space,
+		/area/holodeck,
+		/area/solar,
+	))
 
-	for(var/area/A in GLOB.sortedAreas)
-		if(!(A.type in areas_all))
+	if(SSticker.current_state <= GAME_STATE_SETTING_UP)
+		to_chat(usr, "Game still loading, please hold!", confidential = TRUE)
+		return
+
+	var/log_message
+	if(on_station)
+		dat += "<b>Only checking areas on station z-levels.</b><br><br>"
+		log_message = "station z-levels"
+	else
+		log_message = "all z-levels"
+	if(filter_maint)
+		dat += "<b>Maintenance Areas Filtered Out</b>"
+		log_message += ", with no maintenance areas"
+
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] used the Test Areas debug command checking [log_message]."))
+	log_admin("[key_name(usr)] used the Test Areas debug command checking [log_message].")
+
+	for(var/area/A as anything in GLOB.sortedAreas)
+		if(on_station)
+			var/list/area_turfs = get_area_turfs(A.type)
+			if (!length(area_turfs))
+				continue
+			var/turf/picked = pick(area_turfs)
+			if(isStationLevel(picked.z))
+				if(!(A.type in areas_all) && !is_type_in_typecache(A, station_areas_blacklist))
+					if(filter_maint && istype(A, /area/maintenance))
+						continue
+					areas_all.Add(A.type)
+		else if(!(A.type in areas_all))
 			areas_all.Add(A.type)
+		CHECK_TICK
 
-	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
-		var/area/A = get_area(apc)
-		if(A && !(A.type in areas_with_APC))
+	for(var/obj/machinery/power/apc/APC as anything in GLOB.apcs)
+		var/area/A = APC.area
+		if(!A)
+			dat += "Skipped over [APC] in invalid location, [APC.loc]."
+			continue
+		if(!(A.type in areas_with_APC))
 			areas_with_APC.Add(A.type)
+		else if(A.type in areas_all)
+			areas_with_multiple_APCs.Add(A.type)
+		CHECK_TICK
 
-	for(var/obj/machinery/air_alarm/alarm in GLOB.machines)
-		var/area/A = get_area(alarm)
-		if(A && !(A.type in areas_with_air_alarm))
+	for(var/obj/machinery/air_alarm/AA in GLOB.machines)
+		var/area/A = get_area(AA)
+		if(!A) //Make sure the target isn't inside an object, which results in runtimes.
+			dat += "Skipped over [AA] in invalid location, [AA.loc].<br>"
+			continue
+		if(!(A.type in areas_with_air_alarm))
 			areas_with_air_alarm.Add(A.type)
+		CHECK_TICK
 
 	for(var/obj/machinery/requests_console/RC in GLOB.machines)
 		var/area/A = get_area(RC)
-		if(A && !(A.type in areas_with_RC))
+		if(!A)
+			dat += "Skipped over [RC] in invalid location, [RC.loc].<br>"
+			continue
+		if(!(A.type in areas_with_RC))
 			areas_with_RC.Add(A.type)
+		CHECK_TICK
 
 	for(var/obj/machinery/light/L in GLOB.machines)
 		var/area/A = get_area(L)
-		if(A && !(A.type in areas_with_light))
+		if(!A)
+			dat += "Skipped over [L] in invalid location, [L.loc].<br>"
+			continue
+		if(!(A.type in areas_with_light))
 			areas_with_light.Add(A.type)
+		CHECK_TICK
 
 	for(var/obj/machinery/light_switch/LS in GLOB.machines)
 		var/area/A = get_area(LS)
-		if(A && !(A.type in areas_with_LS))
+		if(!A)
+			dat += "Skipped over [LS] in invalid location, [LS.loc].<br>"
+			continue
+		if(!(A.type in areas_with_LS))
 			areas_with_LS.Add(A.type)
+		CHECK_TICK
 
 	for(var/obj/item/radio/intercom/I in GLOB.machines)
 		var/area/A = get_area(I)
-		if(A && !(A.type in areas_with_intercom))
+		if(!A)
+			dat += "Skipped over [I] in invalid location, [I.loc].<br>"
+			continue
+		if(!(A.type in areas_with_intercom))
 			areas_with_intercom.Add(A.type)
+		CHECK_TICK
 
 	for(var/obj/machinery/camera/C in GLOB.machines)
 		var/area/A = get_area(C)
-		if(A && !(A.type in areas_with_camera))
+		if(!A)
+			dat += "Skipped over [C] in invalid location, [C.loc].<br>"
+			continue
+		if(!(A.type in areas_with_camera))
 			areas_with_camera.Add(A.type)
+		CHECK_TICK
 
 	var/list/areas_without_APC = areas_all - areas_with_APC
 	var/list/areas_without_air_alarm = areas_all - areas_with_air_alarm
@@ -507,33 +583,60 @@
 	var/list/areas_without_intercom = areas_all - areas_with_intercom
 	var/list/areas_without_camera = areas_all - areas_with_camera
 
-	to_chat(world, "<b>AREAS WITHOUT AN APC:</b>")
-	for(var/areatype in areas_without_APC)
-		to_chat(world, "* [areatype]")
+	if(areas_without_APC.len)
+		dat += "<h1>AREAS WITHOUT AN APC:</h1>"
+		for(var/areatype in areas_without_APC)
+			dat += "[areatype]<br>"
+			CHECK_TICK
 
-	to_chat(world, "<b>AREAS WITHOUT AN AIR ALARM:</b>")
-	for(var/areatype in areas_without_air_alarm)
-		to_chat(world, "* [areatype]")
+	if(areas_with_multiple_APCs.len)
+		dat += "<h1>AREAS WITH MULTIPLE APCS:</h1>"
+		for(var/areatype in areas_with_multiple_APCs)
+			dat += "[areatype]<br>"
+			CHECK_TICK
 
-	to_chat(world, "<b>AREAS WITHOUT A REQUEST CONSOLE:</b>")
-	for(var/areatype in areas_without_RC)
-		to_chat(world, "* [areatype]")
+	if(areas_without_air_alarm.len)
+		dat += "<h1>AREAS WITHOUT AN AIR ALARM:</h1>"
+		for(var/areatype in areas_without_air_alarm)
+			dat += "[areatype]<br>"
+			CHECK_TICK
 
-	to_chat(world, "<b>AREAS WITHOUT ANY LIGHTS:</b>")
-	for(var/areatype in areas_without_light)
-		to_chat(world, "* [areatype]")
+	if(areas_without_RC.len)
+		dat += "<h1>AREAS WITHOUT A REQUEST CONSOLE:</h1>"
+		for(var/areatype in areas_without_RC)
+			dat += "[areatype]<br>"
+			CHECK_TICK
 
-	to_chat(world, "<b>AREAS WITHOUT A LIGHT SWITCH:</b>")
-	for(var/areatype in areas_without_LS)
-		to_chat(world, "* [areatype]")
+	if(areas_without_light.len)
+		dat += "<h1>AREAS WITHOUT ANY LIGHTS:</h1>"
+		for(var/areatype in areas_without_light)
+			dat += "[areatype]<br>"
+			CHECK_TICK
 
-	to_chat(world, "<b>AREAS WITHOUT ANY INTERCOMS:</b>")
-	for(var/areatype in areas_without_intercom)
-		to_chat(world, "* [areatype]")
+	if(areas_without_LS.len)
+		dat += "<h1>AREAS WITHOUT A LIGHT SWITCH:</h1>"
+		for(var/areatype in areas_without_LS)
+			dat += "[areatype]<br>"
+			CHECK_TICK
 
-	to_chat(world, "<b>AREAS WITHOUT ANY CAMERAS:</b>")
-	for(var/areatype in areas_without_camera)
-		to_chat(world, "* [areatype]")
+	if(areas_without_intercom.len)
+		dat += "<h1>AREAS WITHOUT ANY INTERCOMS:</h1>"
+		for(var/areatype in areas_without_intercom)
+			dat += "[areatype]<br>"
+			CHECK_TICK
+
+	if(areas_without_camera.len)
+		dat += "<h1>AREAS WITHOUT ANY CAMERAS:</h1>"
+		for(var/areatype in areas_without_camera)
+			dat += "[areatype]<br>"
+			CHECK_TICK
+
+	if(!(areas_with_APC.len || areas_with_multiple_APCs.len || areas_with_air_alarm.len || areas_with_RC.len || areas_with_light.len || areas_with_LS.len || areas_with_intercom.len || areas_with_camera.len))
+		dat += "<b>No problem areas!</b>"
+
+	var/datum/browser/popup = new(mob, "testareas", "Test Areas", 500, 750)
+	popup.set_content(dat.Join())
+	popup.open()
 
 /datum/admins/proc/cmd_admin_dress(input in getmobs())
 	set category = "Fun"

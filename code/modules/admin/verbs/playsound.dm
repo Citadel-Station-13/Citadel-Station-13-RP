@@ -1,41 +1,47 @@
+//world/proc/shelleo
+#define SHELLEO_ERRORLEVEL 1
+#define SHELLEO_STDOUT 2
+#define SHELLEO_STDERR 3
+
 /client/proc/play_sound()
 	set category = "Fun"
 	set name = "Play Global Sound"
+	set desc = "Play a sound to all connected players."
 
 	if(!check_rights(R_SOUNDS))
 		return
 
-	var/S = prompt_for_sound_or_null("Pick a sound", "Play Global Sound", 2 * 1024 * 1024)
-	if(!S)
+	var/sound = prompt_for_sound_or_null("Pick a sound", "Play Global Sound", 2 * 1024 * 1024)
+	if(!sound)
 		return
 
-	var/vol = input(usr, "What volume would you like the sound to play at?",, 100) as null|num
+	var/vol = tgui_input_number(usr, "What volume would you like the sound to play at?", max_value = 100)
 	if(!vol)
 		return
-	var/freq = input(usr, "What frequency would you like the sound to play at?",, 1) as null|num
+	var/freq = tgui_input_number(usr, "What frequency would you like the sound to play at?", max_value = 100)
 	if(!freq)
-		freq = 1
+		return
 	vol = clamp(vol, 1, 100)
 
 	var/sound/admin_sound = new()
-	admin_sound.file = S
+	admin_sound.file = sound
 	admin_sound.priority = 250
 	admin_sound.channel = CHANNEL_ADMIN
 	admin_sound.frequency = freq
 	admin_sound.wait = 1
-	admin_sound.repeat = 0
+	admin_sound.repeat = FALSE
 	admin_sound.status = SOUND_STREAM
 	admin_sound.volume = vol
 
-	var/res = alert(usr, "Show the title of this song to the players?",, "Yes","No", "Cancel")
+	var/res = tgui_alert(usr, "Show the title of this song to the players?", "Play Sound", list("Yes", "No", "Cancel"))
 	switch(res)
 		if("Yes")
-			to_chat(world, "<span class='boldannounce'>An admin played: [S]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("An admin played: [sound]"), confidential = TRUE)
 		if("Cancel")
 			return
 
-	log_admin("[key_name(src)] played sound [S]")
-	message_admins("[key_name_admin(src)] played sound [S]")
+	log_admin("[key_name(usr)] played sound [sound]")
+	message_admins("[key_name_admin(usr)] played sound [sound]")
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.get_preference_toggle(/datum/game_preference_toggle/music/admin)) //if(M.client.prefs.toggles & SOUND_MIDI)
@@ -48,52 +54,54 @@
 /client/proc/play_local_sound()
 	set category = "Fun"
 	set name = "Play Local Sound"
+	set desc = "Plays a sound only you can hear."
 
 	if(!check_rights(R_SOUNDS))
 		return
 
-	var/S = prompt_for_sound_or_null("Pick a sound", "Play Local Sound", 2 * 1024 * 1024)
-	if(!S)
+	var/sound = prompt_for_sound_or_null("Pick a sound", "Play Local Sound", 2 * 1024 * 1024)
+	if(!sound)
 		return
 
-	log_admin("[key_name(src)] played a local sound [S]")
-	message_admins("[key_name_admin(src)] played a local sound [S]")
-	playsound(get_turf(src.mob), S, 50, 0, 0)
+	log_admin("[key_name(usr)] played a local sound [sound]")
+	message_admins("[key_name_admin(usr)] played a local sound [sound]")
+	var/volume = tgui_input_number(usr, "What volume would you like the sound to play at?", max_value = 100)
+	playsound(get_turf(mob), sound, volume || 50, FALSE)
 	feedback_add_details("admin_verb","PLS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/play_web_sound()
 	set category = "Fun"
 	set name = "Play Internet Sound"
+	set desc = "Play a given internet sound to all players."
+
 	if(!check_rights(R_SOUNDS))
 		return
 
 	if(S_TIMER_COOLDOWN_TIMELEFT(SStimer, CD_INTERNET_SOUND))
-		if(tgui_alert(src, "Someone else is already playing an Internet sound! It has [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(SStimer, CD_INTERNET_SOUND), 1)] remaining. \
+		if(tgui_alert(usr, "Someone else is already playing an Internet sound! It has [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(SStimer, CD_INTERNET_SOUND), 1)] remaining. \
 		Would you like to override?", "Musicalis Interruptus", list("No","Yes")) != "Yes")
 			return
 
-	var/web_sound_input = input("Enter content URL (supported sites only, leave blank to stop playing)", "Play Internet Sound via youtube-dl") as text|null
+	var/web_sound_input = tgui_input_text(usr, "Enter content URL (supported sites only, leave blank to stop playing)", "Play Internet Sound", null)
 
 	if(length(web_sound_input))
 		web_sound_input = trim(web_sound_input)
 		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(src, SPAN_BOLDWARNING("Non-http(s) URIs are not allowed."), confidential = TRUE)
-			to_chat(src, SPAN_WARNING("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
+			to_chat(usr, SPAN_BOLDWARNING("Non-http(s) URIs are not allowed."), confidential = TRUE)
+			to_chat(usr, SPAN_WARNING("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
 			return
-		web_sound(src.mob, web_sound_input)
+		web_sound(mob, web_sound_input)
 	else
-		web_sound(src.mob, null)
+		web_sound(mob, null)
 
 ///Takes an input from either proc/play_web_sound or the request manager and runs it through yt-dlp and prompts the user before playing it to the server.
 /proc/web_sound(mob/user, input, credit)
 	if(!check_rights(R_SOUNDS))
 		return
-
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
 		to_chat(user, SPAN_BOLDWARNING("yt-dlp was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
-
 	var/web_sound_url = ""
 	var/stop_web_sounds = FALSE
 	var/list/music_extra_data = list()
@@ -128,35 +136,44 @@
 		music_extra_data["album"] = data["album"]
 		duration = data["duration"] * 1 SECONDS
 		if (duration > 10 MINUTES)
-			if((tgui_alert(user, "This song is over 10 minutes long. Are you sure you want to play it?", "Length Warning!", list("No", "Yes", "Cancel")) != "Yes"))
+			if((tgui_alert(user, "This song is over 10 minutes long. Are you sure you want to play it?", "Length Warning", list("No", "Yes", "Cancel")) != "Yes"))
 				return
-		var/res = tgui_alert(user, "Show the title of and link to this song to the players?\n[title]", "Show Info?", list("Yes", "No", "Cancel"))
-		switch(res)
+		var/include_song_data = tgui_alert(user, "Show the title of and link to this song to the players?\n[title]", "Song Info", list("Yes", "No", "Cancel"))
+		switch(include_song_data)
 			if("Yes")
 				music_extra_data["title"] = data["title"]
+				music_extra_data["artist"] = data["artist"]
 			if("No")
-				music_extra_data["link"] = "Song Link Hidden"
-				music_extra_data["title"] = "Song Title Hidden"
-				music_extra_data["artist"] = "Song Artist Hidden"
-				music_extra_data["upload_date"] = "Song Upload Date Hidden"
-				music_extra_data["album"] = "Song Album Hidden"
+				music_extra_data["link"] = "\[\[HYPERLINK BLOCKED\]\]"
+				music_extra_data["title"] = "Untitled"
+				music_extra_data["artist"] = "Unknown"
+				music_extra_data["upload_date"] = "XX.YY.ZZZZ"
+				music_extra_data["album"] = "Default"
 			if("Cancel", null)
 				return
-		var/anon = tgui_alert(user, "Display who played the song?", "Credit Yourself?", list("Yes", "No", "Cancel"))
-		switch(anon)
+		var/credit_yourself = tgui_alert(user, "Display who played the song?", "Credit Yourself", list("Yes", "No", "Cancel"))
+
+		var/list/to_chat_message = list()
+
+		switch(credit_yourself)
 			if("Yes")
-				if(res == "Yes")
-					to_chat(world, SPAN_BOLDANNOUNCE("[user.key] played: [webpage_url]"), confidential = TRUE)
+				if(include_song_data == "Yes")
+					to_chat_message += SPAN_NOTICE("[user.ckey] played: [SPAN_LINKIFY(webpage_url)]")
 				else
-					to_chat(world, SPAN_BOLDANNOUNCE("[user.key] played a sound"), confidential = TRUE)
+					to_chat_message += SPAN_NOTICE("[user.ckey] played a sound.")
 			if("No")
-				if(res == "Yes")
-					to_chat(world, SPAN_BOLDANNOUNCE("An admin played: [webpage_url]"), confidential = TRUE)
+				if(include_song_data == "Yes")
+					to_chat_message += SPAN_NOTICE("An admin played: [SPAN_LINKIFY(webpage_url)]")
+				else
+					to_chat_message += SPAN_NOTICE("An admin played a sound.")
 			if("Cancel", null)
 				return
+
 		if(credit)
-			to_chat(world, SPAN_BOLDANNOUNCE(credit), confidential = TRUE)
-		// SSblackbox.record_feedback("nested tally", "played_url", 1, list("[user.ckey]", "[input]"))
+			to_chat_message += SPAN_NOTICE("<br>[credit]")
+
+		to_chat(world, fieldset_block("Now Playing: [SPAN_BOLD(music_extra_data["title"])] by [SPAN_BOLD(music_extra_data["artist"])]", jointext(to_chat_message, ""), "boxed_message"))
+
 		log_admin("[key_name(user)] played web sound: [input]")
 		message_admins("[key_name(user)] played web sound: [input]")
 	else
@@ -185,6 +202,7 @@
 
 	feedback_add_details("admin_verb","PIS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+//? HEY! yt-dlp is smart enough to handle direct file links (this verb might not be needed)
 /client/proc/manual_play_web_sound()
 	set category = "Fun"
 	set name = "Manual Play Internet Sound"
@@ -235,14 +253,22 @@
 /client/proc/stop_sounds()
 	set category = "Debug"
 	set name = "Stop All Playing Sounds"
-	if(!src.holder)
+	set desc = "Stops all playing sounds for EVERYONE."
+
+	if(!holder)
 		return
 
-	log_admin("[key_name(src)] stopped all currently playing sounds.")
-	message_admins("[key_name_admin(src)] stopped all currently playing sounds.")
-	for(var/mob/M in GLOB.player_list)
-		SEND_SOUND(M, sound(null))
-		var/client/C = M.client
-		C?.tgui_panel?.stop_music()
-	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Stop All Playing Sounds") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(usr)] stopped all currently playing sounds.")
+	message_admins("[key_name_admin(usr)] stopped all currently playing sounds.")
+	for(var/mob/player as anything in GLOB.player_list)
+		SEND_SOUND(player, sound(null))
+		var/client/player_client = player.client
+		player_client?.tgui_panel?.stop_music()
+
+	S_TIMER_COOLDOWN_RESET(SStimer, CD_INTERNET_SOUND)
 	feedback_add_details("admin_verb","SAPS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+//world/proc/shelleo
+#undef SHELLEO_ERRORLEVEL
+#undef SHELLEO_STDOUT
+#undef SHELLEO_STDERR

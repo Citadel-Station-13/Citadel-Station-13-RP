@@ -25,6 +25,8 @@
 #define ROUNDSTART_LOGOUT_REPORT_TIME 6000
 
 //! Admin permissions.
+/// Used for signifying that all admins can use this regardless of actual permissions
+#define R_NONE NONE
 #define R_BUILDMODE   (1<<0)
 #define R_ADMIN       (1<<1)
 #define R_BAN         (1<<2)
