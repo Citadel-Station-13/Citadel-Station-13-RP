@@ -664,18 +664,36 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		SSticker.start_immediately = TRUE
-		log_admin("[usr.key] has started the game.")
-		var/msg = ""
-		if(SSticker.current_state == GAME_STATE_INIT)
-			msg = " (The server is still setting up, but the round will be started as soon as possible.)"
-		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the game.[msg]"))
-		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		return 1
-	else
-		to_chat(usr, SPAN_WARNING("Error: Start Now: Game has already started."))
-		return 0
+
+	if(!check_rights(R_SERVER))
+		return
+
+	var/static/list/waiting_states = list(GAME_STATE_SETTING_UP, GAME_STATE_PREGAME, GAME_STATE_INIT)
+	if(!(SSticker.current_state in waiting_states))
+		to_chat(user, SPAN_WARNING(SPAN_RED("The game has already started!")))
+		return
+
+	if(SSticker.start_immediately)
+		SSticker.start_immediately = FALSE
+		SSticker.SetTimeLeft(3 MINUTES)
+		to_chat(world, SPAN_BIG(SPAN_NOTICE("The game will start in 3 minutes.")))
+		SEND_SOUND(world, sound('sound/announcer/classic/attention.ogg'))
+		message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has cancelled immediate game start. Game will start in 3 minutes."))
+		log_admin("[key_name(usr)] has cancelled immediate game start.")
+		return
+
+	if(!usr.client.is_localhost())
+		var/response = tgui_alert(usr, "Are you sure you want to start the round?", "Start Now", list("Start Now", "Cancel"))
+		if(response != "Start Now")
+			return
+	SSticker.start_immediately = TRUE
+
+	log_admin("[key_name(usr)] has started the game.")
+	message_admins("[key_name_admin(usr)] has started the game.")
+	if(SSticker.current_state == GAME_STATE_INIT)
+		message_admins("The server is still setting up, but the round will be started as soon as possible.")
+
+	feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/toggleenter()
 	set category = "Server"
@@ -693,22 +711,30 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 /datum/admins/proc/toggleAI()
 	set category = "Server"
-	set desc="People can't be AI"
-	set name="Toggle AI"
-	config_legacy.allow_ai = !( config_legacy.allow_ai )
-	if (!( config_legacy.allow_ai ))
-		to_chat(world, "<B>The AI job is no longer chooseable.</B>")
+	set name = "Toggle AI"
+	set desc = "Toggle the ability to choose AI jobs."
+
+	if(!check_rights(R_SERVER))
+		return
+
+	config_legacy.allow_ai = !config_legacy.allow_ai
+	if (!config_legacy.allow_ai)
+		to_chat(world, SPAN_BOLD("The AI job is no longer chooseable."), confidential = TRUE)
 	else
-		to_chat(world, "<B>The AI job is chooseable now.</B>")
+		to_chat(world, SPAN_BOLD("The AI job is chooseable now."), confidential = TRUE)
 	log_admin("[key_name(usr)] toggled AI allowed.")
 	world.update_status()
 	feedback_add_details("admin_verb","TAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/toggleaban()
 	set category = "Server"
-	set desc = "Respawn basically"
 	set name = "Toggle Respawn"
-	config_legacy.abandon_allowed = !(config_legacy.abandon_allowed)
+	set desc = "Toggle the ability to respawn."
+
+	if(!check_rights(R_SERVER))
+		return
+
+	config_legacy.abandon_allowed = !config_legacy.abandon_allowed
 	if(config_legacy.abandon_allowed)
 		to_chat(world, "<B>Returning to menu as a ghost is now allowed.</B>")
 	else
@@ -766,31 +792,29 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 /datum/admins/proc/delay_start()
 	set category = "Server"
-	set desc = "Delay the game start"
-	set name = "Delay pre-game"
+	set name = "Delay Pre-Game"
+	set desc = "Delay the game start."
 
-	var/newtime = input("Set a new time in seconds. Set -1 for indefinite delay.","Set Delay",round(SSticker.GetTimeLeft()/10)) as num|null
+	if(!check_rights(R_SERVER))
+		return
+
+	var/newtime = input(usr, "Set a new time in seconds. Set -1 for indefinite delay.", "Set Delay", round(SSticker.GetTimeLeft()/10)) as num|null
+	if(!newtime)
+		return
 	if(SSticker.current_state > GAME_STATE_PREGAME)
-		return alert("Too late... The game has already started!")
-	if(newtime)
-		newtime = newtime*10
-		SSticker.SetTimeLeft(newtime)
-		if(newtime < 0)
-			to_chat(world, "<b>The game start has been delayed.</b>")
-			log_admin("[key_name(usr)] delayed the round start.")
-		else
-			to_chat(world, "<b>The game will start in [DisplayTimeText(newtime)].</b>")
-			SEND_SOUND(world, sound('sound/announcer/classic/attention.ogg'))
-			log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
-//		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay Game Start") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		return tgui_alert(usr, "Too late... The game has already started!")
 
-/datum/admins/proc/adspawn()
-	set category = "Server"
-	set desc="Toggle admin spawning"
-	set name="Toggle Spawn"
-	config_legacy.allow_admin_spawning = !(config_legacy.allow_admin_spawning)
-	message_admins("<font color=#4F49AF>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
-	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	newtime = newtime*10
+	SSticker.SetTimeLeft(newtime)
+	SSticker.start_immediately = FALSE
+
+	if(newtime < 0)
+		to_chat(world, SPAN_INFOPLAIN("<b>The game start has been delayed.</b>"), confidential = TRUE)
+		log_admin("[key_name(usr)] delayed the round start.")
+	else
+		to_chat(world, SPAN_INFOPLAIN(SPAN_BOLD("The game will start in [DisplayTimeText(newtime)].")), confidential = TRUE)
+		SEND_SOUND(world, sound('sound/announcer/classic/attention.ogg'))
+		log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
 
 /datum/admins/proc/unprison(var/mob/M in GLOB.mob_list)
 	set category = "Admin"

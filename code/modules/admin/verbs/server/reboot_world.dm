@@ -39,7 +39,7 @@
 			if(!delay)
 				return FALSE
 			if(!usr.client.is_localhost())
-				if(alert(user,"Are you sure you want to restart the server?","This server is live", "Restart", "Cancel") != "Restart")
+				if(alert(usr,"Are you sure you want to restart the server?","This server is live", "Restart", "Cancel") != "Restart")
 					return FALSE
 
 			if (result != NO_EVENT_RESTART)
