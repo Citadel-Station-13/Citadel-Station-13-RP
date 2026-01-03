@@ -300,9 +300,6 @@
 
 	. += config_legacy.slime_delay
 
-/mob/living/simple_animal/slime/Process_Spacemove()
-	return 2
-
 /mob/living/simple_animal/slime/verb/evolve()
 	set category = "Slime"
 	set desc = "This will let you evolve from baby to adult slime."

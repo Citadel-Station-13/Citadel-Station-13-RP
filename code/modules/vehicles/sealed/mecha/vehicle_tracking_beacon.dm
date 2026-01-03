@@ -13,34 +13,31 @@ GLOBAL_LIST_BOILERPLATE(vehicle_tracking_beacons, /obj/item/vehicle_tracking_bea
 	if(!in_mecha())
 		return FALSE
 
+	// TODO: just vehicle
 	var/obj/vehicle/sealed/mecha/M = loc
 	data["ref"] = REF(src)
 	data["charge"] = M.get_charge()
 	data["name"] = M.name
 	data["integrity"] = M.integrity
 	data["maxHealth"] = initial(M.integrity)
-	data["cell"] = M.cell
-	if(M.cell)
-		data["cellCharge"] = M.cell.charge
-		data["cellMaxCharge"] = M.cell.charge
+	data["cell"] = M.power_cell
+	if(M.power_cell)
+		data["cellCharge"] = M.power_cell.charge
+		data["cellMaxCharge"] = M.power_cell.charge
 	data["airtank"] = M.return_pressure()
 	data["pilot"] = M.occupant_legacy
 	data["location"] = get_area(M)
-	data["active"] = M.selected
-	if(istype(M, /obj/vehicle/sealed/mecha/working/ripley))
-		var/obj/vehicle/sealed/mecha/working/ripley/RM = M
-		data["cargoUsed"] = RM.cargo.len
-		data["cargoMax"] = RM.cargo_capacity
+	data["active"] = M.module_active_click
+	data["cargoUsed"] = length(M.cargo_held)
+	data["cargoMax"] = M.cargo_capacity
 
 	return data
 
 /obj/item/vehicle_tracking_beacon/emp_act()
 	qdel(src)
-	return
 
 /obj/item/vehicle_tracking_beacon/legacy_ex_act()
 	qdel(src)
-	return
 
 /obj/item/vehicle_tracking_beacon/proc/in_mecha()
 	if(istype(loc, /obj/vehicle/sealed/mecha))
@@ -57,7 +54,7 @@ GLOBAL_LIST_BOILERPLATE(vehicle_tracking_beacons, /obj/item/vehicle_tracking_bea
 	if(!in_mecha())
 		return list()
 	var/obj/vehicle/sealed/mecha/M = loc
-	return M.get_log_tgui()
+	return list()
 
 /obj/item/storage/box/mechabeacons
 	name = "Exosuit Tracking Beacons"

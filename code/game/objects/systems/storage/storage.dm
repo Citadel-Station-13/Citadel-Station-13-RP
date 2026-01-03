@@ -450,7 +450,7 @@
 /datum/object_system/storage/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
 	cached_combined_volume += (new_weight_volume - old_weight_volume)
 
-/datum/object_system/storage/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+/datum/object_system/storage/proc/on_contents_weight_change(atom/movable/entity, old_weight, new_weight)
 	weight_cached += (new_weight - old_weight)
 	update_containing_weight(new_weight - old_weight)
 

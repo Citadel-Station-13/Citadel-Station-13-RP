@@ -8,6 +8,9 @@
 	eyeblur = 2
 	impact_sound = null
 
+/obj/projectile/beam/drone
+	damage_force = 10
+
 /obj/projectile/beam/weaklaser
 	name = "weak laser"
 	icon_state = "laser"

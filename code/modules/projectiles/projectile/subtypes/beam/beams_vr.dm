@@ -41,7 +41,7 @@
 	name = "gravity sphere projection"
 	icon_state = "xray"
 	nodamage = 0
-	damage_inflict_agony = 35
+	damage_inflict_agony = 55
 	damage_type = DAMAGE_TYPE_HALLOSS
 	light_color = "#072f6b"
 	fire_sound = 'sound/weapons/laser_alt.ogg'

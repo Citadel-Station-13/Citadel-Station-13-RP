@@ -36,7 +36,7 @@
 			proj.damage_mode,
 			ATTACK_TYPE_PROJECTILE,
 			proj,
-			NONE,
+			SHIELDCALL_FLAG_SECOND_CALL,
 			bullet_act_args[BULLET_ACT_ARG_ZONE],
 		)
 	// turf refs don't change so while QDELETED() doesn't work this is a close approximate

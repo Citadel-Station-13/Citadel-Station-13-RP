@@ -1,164 +1,57 @@
+/datum/armor/vehicle/mecha/combat/gorilla
+	melee = 0.45
+	melee_tier = 4
+	bullet = 0.45
+	bullet_tier = 4
+	laser = 0.45
+	laser_tier = 4
+	energy = 0.35
+	bomb = 0.5
 
 /obj/vehicle/sealed/mecha/combat/gorilla
 	name = "Gorilla"
-	desc = "<b>Blitzkrieg!</b>" //stop using all caps in item descs i will fight you. its redundant with the bold.
+	desc = "<b>Blitzkrieg!</b>"
+	description_fluff = "Quadrupedal mech designs are considered excessively rare. This chassis feels more like a vehicle than a proper exosuit as a result. Although specs similar to those found in the Gorilla were patened by Hephaestus over a century ago, the company maintains that it had nothing to do with the production of this machine. When its legs are fully extended the Gorilla stands 20'(6.1m) tall, making it nearly impossible to operate at full speed within the cramped confines of a facility or vessel."
 	icon = 'icons/mecha/mecha64x64.dmi'
 	icon_state = "pzrmech"
 	initial_icon = "pzrmech"
+	// Multi-tile mechs don't support opacity properly.
+	opacity = FALSE
 	pixel_x = -16
-	step_in = 10
 	integrity = 5000
 	integrity_max = 5000
-	opacity = 0 // Because there's big tall legs to look through. Also it looks fucky if this is set to 1.
-	deflect_chance = 50
-	damage_absorption = list("brute"=0.1,"fire"=0.8,"bullet"=0.1,"laser"=0.6,"energy"=0.7,"bomb"=0.7) //values show how much damage will pass through, not how much will be absorbed.
+
+	base_movement_speed = 1.5
+	armor_type = /datum/armor/vehicle/mecha/combat/gorilla
+
 	max_temperature = 35000 //Just a bit better than the Durand.
-	infra_luminosity = 3
 	wreckage = /obj/effect/decal/mecha_wreckage/gorilla
-	add_req_access = 0
 	internal_damage_threshold = 25
-	force = 60
-	max_equip = 5
-//This will (Should) never be in the hands of players. If it is, the one who inflicted this monster upon the server can edit these vars to not be insane.
-	max_hull_equip = 5
-	max_weapon_equip = 5
-	max_utility_equip = 5
-	max_universal_equip = 5
-	max_special_equip = 2
 
-	smoke_possible = 1
+	melee_standard_force = 45
+	melee_standard_tier = 5
+
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 3,
+		VEHICLE_MODULE_SLOT_HULL = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 2,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+	)
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/toggled/jetpack/electric,
+		/obj/item/vehicle_module/lazy/smokescreen,
+	)
+
 	zoom_possible = 1
-	thrusters_possible = 1
 
-/obj/vehicle/sealed/mecha/combat/gorilla/Initialize(mapload)
-	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/tesla_energy_relay(src) // This thing basically cannot function without an external power supply.
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/cannon(src)
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/cannon/weak(src) //Saves energy, I suppose. Anti-infantry.
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive(src)
-	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/lmg(src)
-	ME.attach(src)
-
-/obj/vehicle/sealed/mecha/combat/gorilla/mechstep(direction)
-	var/result = step(src,direction)
-	playsound(src,"mechstep",40,1)
-	return result
-
-/obj/vehicle/sealed/mecha/combat/gorilla/mechturn(direction)
-	dir = direction
-	playsound(src,"mechstep",40,1)
-
-
-/obj/vehicle/sealed/mecha/combat/gorilla/relaymove(mob/user,direction)
-	if(user != src.occupant_legacy)
-		user.loc = get_turf(src)
-		to_chat(user, "You climb out from [src]")
-		return 0
-	if(!can_move)
-		return 0
-	if(zoom)
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while in zoom mode.")
-			last_message = world.time
-		return 0
-	if(connected_port)
-		if(world.time - last_message > 20)
-			src.occupant_message("Unable to move while connected to the air system port")
-			last_message = world.time
-		return 0
-	if(state || !has_charge(step_energy_drain))
-		return 0
-	var/tmp_step_in = step_in
-	var/tmp_step_energy_drain = step_energy_drain
-	var/move_result = 0
-	if(internal_damage&MECHA_INT_CONTROL_LOST)
-		move_result = mechsteprand()
-	else if(src.dir!=direction)
-		move_result = mechturn(direction)
-	else
-		move_result	= mechstep(direction)
-	if(move_result)
-		if(istype(src.loc, /turf/space))
-			if(!src.check_for_support())
-				src.pr_inertial_movement.start(list(src,direction))
-		can_move = 0
-		spawn(tmp_step_in) can_move = 1
-		use_power(tmp_step_energy_drain)
-		return 1
-	return 0
-
-
-/obj/vehicle/sealed/mecha/combat/gorilla/get_stats_part()
-	var/output = ..()
-	output += {"<b>Smoke:</b> [smoke_reserve]"}
-	return output
-
-
-/obj/vehicle/sealed/mecha/combat/gorilla/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_zoom=1'>Toggle zoom mode</a><br>
-						<a href='?src=\ref[src];smoke=1'>Smoke</a>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
-
-/obj/item/vehicle_module/weapon/ballistic/cannon
-	name = "8.8cm KwK 47"
-	desc = "<i>Precision German engineering!</i>" // Why would you ever take this off the mech, anyway?
-	icon_state = "mecha_uac2"
-	equip_cooldown = 60 // 6 seconds
-	projectile = /obj/projectile/bullet/cannon
-	fire_sound = 'sound/weapons/Gunshot_cannon.ogg'
-	projectiles = 1
-	projectile_energy_cost = 1000
-	salvageable = 0 // We don't want players ripping this off a dead mech. Could potentially be a prize for beating it if Devs bless me and someone offers a nerf idea.
-
-/obj/projectile/bullet/cannon
-	name ="armor-piercing shell"
-	icon = 'icons/obj/projectiles.dmi'
-	icon_state = "shell"
-	damage_force = 1000 // In order to 1-hit any other mech and royally fuck anyone unfortunate enough to get in the way.
-
-/obj/projectile/bullet/cannon/on_impact(atom/target, impact_flags, def_zone, efficiency)
-	. = ..()
-	if(. & PROJECTILE_IMPACT_FLAGS_UNCONDITIONAL_ABORT)
-		return
-	explosion(target, 0, 0, 2, 4)
-
-/obj/item/vehicle_module/weapon/ballistic/cannon/weak
-	name = "8.8 cm KwK 36"
-	equip_cooldown = 120 // 12 seconds.
-	projectile = /obj/projectile/bullet/cannon/weak
-	projectile_energy_cost = 400
-	salvageable = 1
-
-/obj/projectile/bullet/cannon/weak
-	name ="canister shell"
-	icon_state = "canister"
-	damage_force = 120 //Do not get fucking shot.
-
-/* // GLITCHY UND LAGGY. Will later look into fixing.
-/obj/item/vehicle_module/weapon/ballistic/mg42
-	name = "Maschinengewehr 60"
-	icon_state = "mecha_uac2"
-	equip_cooldown = 10
-	projectile = /obj/projectile/bullet/midbullet2
-	fire_sound = 'sound/weapons/mg42.ogg'
-	projectiles = 1000
-	projectiles_per_shot = 5
-	deviation = 0.3
-	projectile_energy_cost = 20
-	fire_cooldown = 1
-	salvageable = 0 // We don't want players ripping this off a dead mech.
-*/
+/obj/vehicle/sealed/mecha/combat/gorilla/equipped
+	modules = list(
+		/obj/item/vehicle_module/toggled/energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon/weak,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
+	)
 
 /obj/effect/decal/mecha_wreckage/gorilla
 	name = "Gorilla wreckage"

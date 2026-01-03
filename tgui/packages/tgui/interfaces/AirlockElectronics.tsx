@@ -22,7 +22,7 @@ export const AirlockElectronics = (props) => {
           access={data.access}
           req_access={data.req_access}
           req_one_access={data.req_one_access}
-          set={(id, mode) => {
+          toggle={(id, mode) => {
             act('set', { id: id, mode: mode });
           }}
           wipe={(category) => {

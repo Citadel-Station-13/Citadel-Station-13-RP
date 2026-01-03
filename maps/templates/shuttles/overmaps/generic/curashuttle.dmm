@@ -1073,14 +1073,14 @@
 /area/shuttle/curabitur/curashuttle/eng)
 "cc" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/crisis_drone,
-/obj/item/vehicle_module/crisis_drone/rad,
-/obj/item/vehicle_module/tool/syringe_gun,
-/obj/item/vehicle_module/weapon/energy/medigun,
-/obj/item/vehicle_module/tool/powertool/inflatables,
-/obj/item/vehicle_module/tool/powertool/medanalyzer,
-/obj/item/vehicle_module/tool/powertool/prybar,
-/obj/item/vehicle_module/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/crisis_drone,
+/obj/item/vehicle_module/lazy/legacy/crisis_drone/rad,
+/obj/item/vehicle_module/lazy/legacy/tool/syringe_gun,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/medigun,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/inflatables,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/medanalyzer,
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/prybar,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cd" = (
@@ -1153,11 +1153,11 @@
 /area/shuttle/curabitur/curashuttle/hangar)
 "cm" = (
 /obj/structure/table/rack,
-/obj/item/vehicle_module/tool/passenger,
-/obj/item/vehicle_module/tool/sleeper,
-/obj/item/vehicle_module/tool/sleeper,
-/obj/item/vehicle_module/tool/sleeper,
-/obj/item/vehicle_module/tool/sleeper,
+/obj/item/vehicle_module/lazy/legacy/tool/passenger,
+/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -1331,7 +1331,7 @@
 /turf/simulated/wall/rpshull,
 /area/shuttle/curabitur/curashuttle/hangar)
 "cL" = (
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace{
+/obj/vehicle/sealed/mecha/fighter/pinnace/equipped{
 	desc = "A modified Pinnace made to be able to fit a wide arsenal of equipment for rescue missions in space.";
 	integrity = 200;
 	max_equip = 1;

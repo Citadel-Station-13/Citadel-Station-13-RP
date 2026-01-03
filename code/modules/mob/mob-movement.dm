@@ -1,6 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/mob/proc/self_move(turf/dest, dir)
+	in_selfmove = TRUE
+	. = Move(dest, dir)
+	in_selfmove = FALSE
+	if(.)
+		throwing?.terminate()
+
 /**
  * Gets movement delay.
  * Kept just in case we need to, for whatever reason, override this later.

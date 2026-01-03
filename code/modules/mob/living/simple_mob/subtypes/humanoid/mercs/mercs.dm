@@ -364,11 +364,9 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
+	movement_works_in_space = TRUE
 
 	corpse = /obj/spawner/corpse/syndicatecommando
-
-/mob/living/simple_mob/humanoid/merc/melee/sword/space/Process_Spacemove(var/check_drift = 0)
-	return
 
 // Ranged Space Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space
@@ -397,9 +395,7 @@
 	reload_max = 20
 
 	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/c20r = 100)
-
-/mob/living/simple_mob/humanoid/merc/ranged/space/Process_Spacemove(var/check_drift = 0)
-	return
+	movement_works_in_space = TRUE
 
 //Combat Shotgun Merc
 /mob/living/simple_mob/humanoid/merc/ranged/space/shotgun

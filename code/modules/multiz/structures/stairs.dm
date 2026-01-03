@@ -16,7 +16,7 @@
 		update_icon()
 
 /obj/structure/stairs/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
-	return fall_flags | FALL_TERMINATED
+	return fall_flags | ZFALL_TERMINATED
 
 // Returns TRUE if the stairs are a complete and connected unit, FALSE if a piece is missing or obstructed
 // Will attempt to reconnect broken pieces

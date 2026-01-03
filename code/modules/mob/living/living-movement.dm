@@ -18,3 +18,19 @@
  */
 /mob/living/proc/legacy_movement_delay()
 	return 0
+
+/mob/living/process_spacemove(drifting, movement_dir, just_checking)
+	if(hovering)
+		return TRUE
+	if(is_incorporeal())
+		return TRUE
+	return ..()
+
+/mob/living/can_overcome_gravity()
+	if(is_incorporeal())
+		return TRUE
+
+/mob/living/process_overcome_gravity(time_required, mob/emit_feedback_to)
+	if(is_incorporeal())
+		return standard_process_overcome_gravity(time_required, emit_feedback_to)
+	return TRUE

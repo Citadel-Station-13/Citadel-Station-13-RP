@@ -2183,7 +2183,7 @@
 	dir = 4
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon,
+/obj/vehicle/sealed/mecha/fighter/gunpod/recon,
 /obj/effect/floor_decal/industrial/hatch,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
@@ -3090,8 +3090,8 @@
 /area/sector/miaphus/beach/jungle)
 "pr" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/vehicle_module/weapon/ballistic/scattershot,
-/obj/item/vehicle_module/weapon/ballistic/cannon/weak,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/cannon/weak,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/miaphus/sdf)
@@ -7109,7 +7109,7 @@
 /area/sector/miaphus/beach/resort/dorm4)
 "LA" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/duke/db/loaded,
+/obj/vehicle/sealed/mecha/fighter/duke/deep_blue/equipped,
 /obj/machinery/light{
 	dir = 8
 	},

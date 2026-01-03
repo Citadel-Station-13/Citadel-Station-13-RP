@@ -152,13 +152,14 @@
 	name ="155mm shell"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "big_shell"
-	damage_force = 300 // This thing is meant to hit like a truck, it's an anti tank/building weapon. Gun can only be used on massive mechs.
-	speed = 120 //If you get hit by this, skissue.
+	damage_force = 40
 	damage_tier = 6
+	damage_flag = ARMOR_BOMB
+	speed = 3.5 * WORLD_ICON_SIZE
 	base_projectile_effects = list(
 		/datum/projectile_effect/detonation/legacy_explosion{
-    		sev_1 = 1;
+    		sev_1 = 0;
     		sev_2 = 3;
-    		sev_3 = 5;
+    		sev_3 = 6;
     	},
 	)
