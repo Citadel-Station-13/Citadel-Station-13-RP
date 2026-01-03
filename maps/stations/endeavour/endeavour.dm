@@ -31,6 +31,7 @@
 		/datum/map/centcom/ncv_oracle,
 	)
 	lateload = list(
+		/datum/map/sector/halloween_ball,
 		/datum/map/sector/debrisfield_192,
 		/datum/map/sector/piratebase_192,
 		/datum/map/sector/mining_192,
