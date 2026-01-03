@@ -29,9 +29,9 @@
 /datum/supply_pack/nanotrasen/medical/bloodpack
 	name = "BloodPack crate"
 	contains = list(
-		/obj/item/storage/box/bloodpacks = 3,
+		/obj/item/storage/box/bloodpacks_filled = 3,
 	)
-	worth = 250
+	worth = 750
 	container_type = /obj/structure/closet/crate/medical/blood
 	container_name = "BloodPack crate"
 
