@@ -160,7 +160,7 @@
 //Sandbag port
 /obj/fiftyspawner/emptysandbag
 	name = "stack of empty sandbags"
-	type_to_spawn = /obj/item/stack/emptysandbag
+	type_to_spawn = /obj/item/stack/sandbag/empty
 
 /obj/fiftyspawner/sandbags
 	name = "stack of sandbags"

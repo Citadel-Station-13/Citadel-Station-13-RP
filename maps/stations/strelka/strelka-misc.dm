@@ -58,7 +58,7 @@
 	desc = "A small, normal-looking drone. It pilots the Cargo Supply shuttle... Yep, no MK2 pilot here..."
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/corrupt_maint_drone)
 
-	icon = 'icons/mob/robots.dmi'
+	icon = 'icons/mob/robot-legacy.dmi'
 	icon_state = "corrupt-repairbot"
 	icon_living = "corrupt-repairbot"
 	hovering = FALSE // Can trigger landmines.

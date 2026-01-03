@@ -34,7 +34,7 @@
 	if(!(inv_op_flags & INV_OP_NO_MERGE_STACKS) && istype(I, /obj/item/stack))
 		var/obj/item/stack/S = I
 		for(var/obj/item/stack/held_stack in get_held_items())
-			if(S.can_merge(held_stack) && S.merge(held_stack))
+			if(S.can_merge_into(held_stack) && S.merge_into_other(held_stack))
 				to_chat(owner, SPAN_NOTICE("The [held_stack.name] in your hands now contains [held_stack.get_amount()] [held_stack.singular_name]\s."))
 				if(QDELETED(S))
 					return INV_RETURN_SUCCESS

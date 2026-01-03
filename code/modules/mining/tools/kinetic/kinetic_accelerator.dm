@@ -266,8 +266,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "modkit"
 	w_class = WEIGHT_CLASS_SMALL
-	var/require_module = 1
-	// module_type = list(/obj/item/robot_module/miner)
+	// module_type = list(/obj/item/robot_module_legacy/miner)
 	var/denied_type = null
 	var/maximum_of_type = 1
 	var/cost = 30
@@ -376,7 +375,7 @@
 	name = "minebot cooldown decrease"
 	desc = "Decreases the cooldown of a kinetic accelerator. Only rated for minebot use."
 	icon_state = "door_electronics"
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	denied_type = /obj/item/ka_modkit/cooldown/minebot
 	modifier = 10
 	cost = 0

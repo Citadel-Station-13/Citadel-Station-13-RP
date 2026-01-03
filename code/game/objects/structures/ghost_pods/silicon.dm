@@ -17,7 +17,7 @@
 
 /obj/structure/ghost_pod/manual/lost_drone/create_occupant(var/mob/M)
 	density = FALSE
-	var/mob/living/silicon/robot/lost/randomlaws/R = new(get_turf(src))
+	var/mob/living/silicon/robot/preset_module/lost/randomlaws/R = new(get_turf(src))
 	R.adjustBruteLoss(rand(5, 30))
 	R.adjustFireLoss(rand(5, 10))
 	if(M.mind)
@@ -48,7 +48,7 @@
 
 /obj/structure/ghost_pod/automatic/gravekeeper_drone/create_occupant(var/mob/M)
 	density = FALSE
-	var/mob/living/silicon/robot/gravekeeper/R = new(get_turf(src))
+	var/mob/living/silicon/robot/preset_module/gravekeeper/R = new(get_turf(src))
 	if(M.mind)
 		M.mind.transfer(R)
 	// Put this text here before ckey change so that their laws are shown below it, since borg login() shows it.
@@ -114,7 +114,7 @@
 		return ..()
 	else
 		density = FALSE
-		var/mob/living/silicon/robot/stray/randomlaws/R = new(get_turf(src))
+		var/mob/living/silicon/robot/preset_module/lost/randomlaws/R = new(get_turf(src))
 		R.adjustBruteLoss(rand(5, 30))
 		R.adjustFireLoss(rand(5, 10))
 		if(M.mind)
