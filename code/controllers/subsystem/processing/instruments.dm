@@ -5,6 +5,7 @@ PROCESSING_SUBSYSTEM_DEF(instruments)
 	init_stage = INIT_STAGE_EARLY
 	subsystem_flags = SS_KEEP_TIMING
 	priority = FIRE_PRIORITY_INSTRUMENTS
+	stat_tag = "P_INST"
 	var/static/list/datum/instrument/instrument_data = list()		//id = datum
 	var/static/list/datum/song/songs = list()
 	var/static/musician_maxlines = 600

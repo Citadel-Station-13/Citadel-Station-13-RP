@@ -652,6 +652,19 @@
 /turf/proc/sector_set_temperature(temperature)
 	return
 
+/**
+ * blocks laser designators and similar from propagating up through us
+ * * does not check the current level!
+ */
+/turf/proc/sector_block_high_altitude_observation_to_below()
+	return !(mz_flags & (MZ_MIMIC_BELOW | MZ_ALLOW_LIGHTING))
+
+/**
+ * always visible from high altitude
+ */
+/turf/proc/sector_always_visible_from_high_altitude()
+	return FALSE
+
 //* Radiation *//
 
 /turf/proc/update_rad_insulation()

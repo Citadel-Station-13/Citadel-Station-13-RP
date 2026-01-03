@@ -1,6 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/mob/OnMouseDrop(atom/over, mob/user, proximity, params)
+	. = ..()
+	if(over != user)
+		return
+	. |= mouse_drop_strip_interaction(user)
+
 /mob/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)

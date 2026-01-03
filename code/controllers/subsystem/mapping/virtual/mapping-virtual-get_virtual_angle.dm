@@ -2,29 +2,24 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * Gets virual angle between two turfs in horizontal terms
- * IGNORES STRUCT Z DEPTH!
+ * Gets virtual horizontal compass angle between two turfs.
+ * * undefined behavior if A / B are not turfs
+ * * angle is clockwise from north.
+ * * Ignores up / down / vertical directions.
  *
- * Angle is clockwise from north.
- *
- * If the atoms aren't in managed space, acts like GetAngle
- *
- * Returns null for unreachable,
- * if A is in managed space and B isn't or vice versa,
- * OR if they both aren't and aren't in the same zlevel,
- * OR if hey both are and aren't in the same struct
+ * @return null unreachable or angle
  */
-/datum/controller/subsystem/mapping/proc/get_virtual_angle(atom/A, atom/B)
-	// todo: impl
-	return get_visual_angle(A, B)
-	// A = get_turf(A)
-	// B = get_turf(B)
-	// if(A.z == B.z)
-	// 	return get_physics_angle(A, B)
-	// if(!level_is_virtualized(A) || !level_is_virtualized(B))
-	// 	return null
-	// if(struct_by_z[A.z] != struct_by_z[B.z])
-	// 	return null
-	// var/datum/space_level/S1 = ordered_levels[A.z]
-	// var/datum/space_level/S2 = ordered_levels[B.z]
-	// return get_angle_direct(S1.struct_x * world.maxx + A.x, S1.struct_y * world.maxy + A.y, S2.struct_x * world.maxx + B.x, S2.struct_y * world.maxy + B.y)
+/datum/controller/subsystem/mapping/proc/get_virtual_angle(turf/A, turf/B)
+	var/datum/map_level/level_a = ordered_levels[A.z]
+	var/datum/map_level/level_b = ordered_levels[B.z]
+	if(level_a == level_b)
+		return get_visual_angle(A, B)
+	if(level_a.parent_map != level_b.parent_map)
+		return null
+
+	return get_visual_angle_raw(
+		level_a.virtual_alignment_x + A.x,
+		level_a.virtual_alignment_y + A.y,
+		level_b.virtual_alignment_x + B.x,
+		level_b.virtual_alignment_y + B.y,
+	)
