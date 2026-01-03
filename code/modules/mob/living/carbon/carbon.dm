@@ -48,16 +48,6 @@
 	if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
 		germ_level++
 
-/mob/living/carbon/gib()
-	for(var/mob/M in src)
-		if(M in src.stomach_contents)
-			src.stomach_contents.Remove(M)
-		M.forceMove(loc)
-		for(var/mob/N in viewers(src, null))
-			if(N.client)
-				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
-	..()
-
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src.health >= getCritHealth())
 		if(src == M && istype(src, /mob/living/carbon/human))

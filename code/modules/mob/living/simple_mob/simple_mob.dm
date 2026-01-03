@@ -424,10 +424,10 @@
 		qdel(src)
 	else
 		user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
-		gib()
+		death_via_gib()
 
 /* Replace the above ^^^^ with this if enabling the butchering component.
-/mob/living/simple_mob/gib()
+/mob/living/simple_mob/death_via_gib()
 	if(butcher_results || guaranteed_butcher_results)
 		var/list/butcher = list()
 		if(butcher_results)

@@ -4,7 +4,7 @@
 
 /obj/item/circuitboard/clonepod
 	name = T_BOARD("clone pod")
-	build_path = /obj/machinery/clonepod
+	build_path = /obj/machinery/resleeving/body_printer
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	req_components = list(

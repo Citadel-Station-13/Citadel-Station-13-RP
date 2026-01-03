@@ -415,7 +415,7 @@
 			if(istype(W,/obj/item/organ/external/chest))
 				var/obj/item/organ/external/chest/C = W
 				for (var/obj/item/I in C.implants)
-					if(istype(I,/obj/item/implant/mirror))
+					if(istype(I,/obj/item/organ/internal/mirror))
 						I.forceMove(src)
 						items_preserved += I // these are undigestable anyway so just add them regardless
 			for(var/slot in slots)

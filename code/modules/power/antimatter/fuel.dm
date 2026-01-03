@@ -74,7 +74,7 @@
 /obj/item/fuel/proc/injest(mob/M as mob)
 	switch(content)
 		if("Anti-Hydrogen")
-			M.gib() //Yikes!
+			M.death_via_gib() //Yikes!
 		if("Hydrogen")
 			to_chat(M, "<font color=#4F49AF>You feel very light, as if you might just float away...</font>")
 	qdel(src)

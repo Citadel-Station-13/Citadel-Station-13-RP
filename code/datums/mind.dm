@@ -25,12 +25,25 @@
  * 	yourself.
  */
 
+/**
+ * ## Minds
+ *
+ * Pretty much embodies the .. soul or whatever, of a character.
+ *
+ * * Should never be deleted; minds are considered **permanently loaded** once put in.
+ *   Many things are allowed to hard-reference them.
+ * * Minds cannot be cloned in any way. References are invalidated once it is;
+ *   the only authoritative reference is 'mind_ref' datum, which we effectively treat
+ *   as an unique, shared key to the mind.
+ */
 /datum/mind
 	/// ckey of mind
 	var/ckey
 	/// Replaces mob/var/original_name
 	var/name
 	//  todo: /mob, not /living
+	//  todo: of fucking course it should be owned by only one what the fuck.
+	//        make a mind_ref of "original_mind" on a mob if needed??? or decide something??
 	/// the mob we're currently inhabiting. the mind can be referenced by many mobs, however, only one may be 'owned' by it.
 	/// this functionality is used for things like aghosting and astral projection, as even though the player is in another mob,
 	/// their actual mob is what owns their mind.
@@ -39,9 +52,12 @@
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
 
+	/// Active mind ref for when something wants to get a non-owning handle to us.
+	var/datum/mind_ref/mind_ref
+
 	//? Characteristics
 	/// characteristics holder
-	var/datum/characteristics_holder/characteristics
+	var/datum/characteristic_holder/characteristics
 
 	//? Abilities
 	/// mind-level abilities
@@ -107,14 +123,32 @@
 /datum/mind/Destroy()
 	QDEL_NULL(characteristics)
 	QDEL_LIST_NULL(abilities)
+	// unlink / drop references for mind ref.
+	if(mind_ref)
+		mind_ref.loaded = null
+		mind_ref = null
 	return ..()
+
+/**
+ * Gets an indirected reference to us.
+ *
+ * Things that require a reference but are okay with the reference potentially being lost to
+ * the actual mind datum should use this, like mirror implants and mind backups.
+ *
+ * * Pretty much if you need to know who someone is and if they're still around you use this;
+ *   if you need a reference to actually act on them you directly reference /datum/mind.
+ */
+/datum/mind/proc/get_mind_ref() as /datum/mind_ref
+	if(!mind_ref)
+		mind_ref = new(src)
+	return mind_ref
 
 //? Characteristics
 
 /**
  * make sure we have a characteristics holder
  */
-/datum/mind/proc/characteristics_holder()
+/datum/mind/proc/characteristic_holder()
 	if(!characteristics)
 		characteristics = new
 		characteristics.associate_with_mind(src)
@@ -122,6 +156,10 @@
 
 //? Transfer
 
+/**
+ * Removes us from our current mob.
+ * * Does not transfer active players out.
+ */
 /datum/mind/proc/disassociate()
 	ASSERT(!isnull(current))
 
@@ -140,6 +178,10 @@
 	// done
 	current = null
 
+/**
+ * * Will set `mind_last` on the character.
+ * * Will try to transfer the player to the new mob.
+ */
 /datum/mind/proc/associate(mob/new_character)
 	ASSERT(isnull(current))
 	ASSERT(isnull(new_character.mind))
@@ -149,6 +191,7 @@
 
 	// set mind
 	new_character.mind = src
+	new_character.mind_last = get_mind_ref()
 	// add characteristics
 	characteristics?.associate_with_mob(new_character)
 	// add abilities

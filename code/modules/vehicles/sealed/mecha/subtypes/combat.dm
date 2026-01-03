@@ -49,7 +49,7 @@
 				step_away(M,src,15)
 			/*
 			if(M.stat>1)
-				M.gib()
+				M.death_via_gib()
 				melee_can_hit = 0
 				if(do_after(melee_cooldown))
 					melee_can_hit = 1

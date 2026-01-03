@@ -3461,7 +3461,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/resleeving)
 "cwF" = (
@@ -10833,7 +10833,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/staircase/secondfloor)
 "hQV" = (
-/obj/machinery/clonepod/transhuman,
+/obj/machinery/resleeving/body_printer/grower_pod,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -14509,7 +14509,7 @@
 /turf/simulated/open,
 /area/tether/surfacebase/surface_two_hall)
 "kyn" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 4
 	},
 /obj/machinery/light{

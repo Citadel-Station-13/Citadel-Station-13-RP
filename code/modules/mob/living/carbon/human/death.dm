@@ -1,4 +1,4 @@
-/mob/living/carbon/human/gib()
+/mob/living/carbon/human/death_via_gib()
 	//Drop the NIF, they're expensive, why not recover them? Also important for prometheans.
 	if(nif)
 		var/obj/item/nif/deadnif = nif //Unimplant removes the reference on the mob
@@ -22,11 +22,6 @@
 		if(istype(loc,/turf))
 			I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 
-	//mirror should drop on gib
-	if(mirror)
-		mirror.forceMove(drop_location())
-		mirror.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/mirror.w_class))
-
 	for(var/obj/item/organ/external/E in src.organs)
 		E.droplimb(0,DROPLIMB_EDGE,1)
 
@@ -39,24 +34,13 @@
 	..(species.gibbed_anim) // uses the default mob.dmi file for these, so we only need to specify the first argument
 	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))
 
-/mob/living/carbon/human/dust()
-
-	//mirror should drop on dust
-	if(mirror)
-		mirror.forceMove(drop_location())
-		mirror = null
-
+/mob/living/carbon/human/death_via_dust()
 	if(species)
 		return ..(species.dusted_anim, species.remains_type)
 	else
 		return ..()
 
-/mob/living/carbon/human/ash()
-
-	//mirror should drop on ash
-	if(mirror)
-		mirror.forceMove(drop_location())
-
+/mob/living/carbon/human/death_via_ash()
 	if(species)
 		..(species.dusted_anim)
 	else

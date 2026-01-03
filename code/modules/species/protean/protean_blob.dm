@@ -188,7 +188,7 @@
 	if(!QDELETED(humanform))
 		humanform.forceMove(loc)
 		transfer_client_to(humanform)
-		humanform.gib()
+		humanform.death_via_gib()
 	humanform = null
 	. = ..()
 	ASYNC

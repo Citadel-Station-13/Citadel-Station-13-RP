@@ -201,7 +201,7 @@ var/global/list/narsie_list = list()
 		if(C2.status_flags & STATUS_GODMODE)
 			return 0
 
-		C2.dust() // Changed from gib(), just for less lag.
+		C2.death_via_dust() // Changed from gib(), just for less lag.
 
 	else if (istype(A, /obj/))
 		qdel(A)
@@ -233,7 +233,7 @@ var/global/list/narsie_list = list()
 		if(C2.status_flags & STATUS_GODMODE)
 			return 0
 
-		C2.dust() // Changed from gib(), just for less lag.
+		C2.death_via_dust() // Changed from gib(), just for less lag.
 
 	else if (istype(A, /obj/))
 		qdel(A)

@@ -153,7 +153,7 @@
 	visible_message(SPAN_NOTICE("\The [src] fades away!"))
 	qdel(src)
 
-/mob/living/simple_mob/animal/space/carp/holographic/gib()
+/mob/living/simple_mob/animal/space/carp/holographic/death_via_gib()
 	derez() // Holograms can't gib.
 
 /mob/living/simple_mob/animal/space/carp/holographic/death()

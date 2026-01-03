@@ -107,7 +107,8 @@
 	rad_flags = RAD_BLOCK_CONTENTS
 	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
-	//* Construction / Deconstruction
+	//* Construction / Deconstruction *//
+
 	/// allow default part replacement. null for disallowed, number for time.
 	var/default_part_replacement = 0
 	/// Can be constructed / deconstructed by players by default. null for off, number for time needed. Panel must be open.
@@ -130,6 +131,11 @@
 	var/panel_icon_state
 	/// is the maintenance panel open?
 	var/panel_open = FALSE
+
+	//* Machinery Systems *//
+
+	/// Occupant pod system, if any
+	var/datum/machinery_system/occupant_pod/machine_occupant_pod
 
 	//* unsorted
 	var/machine_stat = 0

@@ -139,7 +139,7 @@
 			T.break_tile()
 
 	if(target.health == 1)
-		target.gib()
+		target.death_via_gib()
 	else
 		target.adjustBruteLoss( min( 99 , (target.health - 1) )    )
 		target.afflict_stun(20 * 20)

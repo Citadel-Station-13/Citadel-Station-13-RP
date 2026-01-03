@@ -163,7 +163,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 			CRASH("failed to load [filelike]: does not exist")
 		decoded = rustg_read_toml_file(filelike)
 	else if(isfile(filelike))
-		// noa path, it might be rsc cache; rust_g can't read that directly.
+		// no path, it might be rsc cache; rust_g can't read that directly.
 		fdel("tmp/config/loading.toml")
 		fcopy(filelike, "tmp/config/loading.toml")
 		decoded = rustg_read_toml_file("tmp/config/loading.toml")

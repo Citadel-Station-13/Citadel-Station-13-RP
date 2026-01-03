@@ -148,7 +148,7 @@
 				gibs_ready = 0
 				if(locate(/mob,washing))
 					var/mob/M = locate(/mob,washing)
-					M.gib()
+					M.death_via_gib()
 			for(var/atom/movable/O in washing)
 				O.loc = src.loc
 			crayon = null

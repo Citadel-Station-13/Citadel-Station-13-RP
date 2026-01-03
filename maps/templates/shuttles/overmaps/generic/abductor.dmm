@@ -9,7 +9,7 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/abductor/interior)
 "bP" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "cF" = (
