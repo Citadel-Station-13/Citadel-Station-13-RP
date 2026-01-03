@@ -30,7 +30,7 @@
 	if(!ispath(src.path, /atom/movable))
 		CRASH("invalid path '[src.path]'.")
 
-	if(desc == initial(desc))
+	if(desc == initial(src.desc))
 		var/atom/movable/casted = src.path
 		desc = initial(casted.desc)
 

@@ -1,12 +1,12 @@
 # UpdatePaths
 
-## How To Use
+## How To Use:
 
 Drag one of the scripts in the “Scripts” folder onto the .bat file “Update Paths” to open it with the `.bat` file (or use the Python script directly depending on your operating system). Let the script run to completion.
 
 Use this tool before using MapMerge2 or opening the map in an map editor. This is because the map editor may discard any unknown paths not found in the /tg/station environment (or what it builds after parsing `tgstation.dme`).
 
-## Scriptmaking
+## Scriptmaking:
 
 This tool updates paths in the game to new paths. For instance:
 
@@ -89,7 +89,6 @@ On this example map key:
 
 You will then result the following:
 
-
 ```dm
 "a" = (
 /obj/structure/door/airlock/science/closed/rd,
@@ -141,6 +140,7 @@ UpdatePaths has the powerful ability to output multiple paths from a single inpu
 ```txt
 /turf/open/floor/iron/i_like_spawning_mobs : /obj/mob_spawner, /turf/open/floor/iron
 ```
+
 So, now when you have the following example map keys:
 
 ```dm
@@ -157,6 +157,7 @@ Running the script will mutate this into:
 /turf/open/floor/iron,
 /area/station/kitchen),
 ```
+
 Remember that this is a kind of silly example, but this is one of the things that UpdatePaths was built to do- help coders fix shitty code without having to bug out over how maps don't compile.
 
 ### Subtype Handling
@@ -198,7 +199,6 @@ Running the script will update this into:
 ```
 
 Note how since you kept in `{@OLD}`, it was able to retain the re-named variables of the subtypes.
-
 
 ### Old Path Variable Filtering
 
@@ -299,7 +299,7 @@ You would then get the following output:
 
 As you would have wished, only the `pixel_x` variable copied through. This is pretty constraining and might not match up to certain needs of the repository (or other repositories), so recommend using the [first example](#method-open-mind-to-all-possibilities) when possible.
 
-#### Method: Keep All The Soul
+#### Method: Keep All The Soul!
 
 Okay, let's say that you want to change all instances of `/obj/structure/sink` that have `dir=2` to `dir=1` for a laugh. However, there's an issue. You see, 2 is SOUTH in DM directions, (1 is NORTH), and code-side, `/obj/structure/sink` has `dir = 2` by default and doesn't show up in the map editor. You would have to do something like this:
 
@@ -342,6 +342,60 @@ You would then get the following output:
 ```
 
 Note how we keep the "Money Hole" intact, while still managing to extrapolate the `dir` variable to 1 on the sink that had absolutely no variables set on it. This is useful for when you want to change a variable that is not shown in the map editor, but you want to keep the rest of the variables intact.
+
+#### Methods: Any Value Fits All and Naming Conventions
+
+But what if you just want to rename the variable `maxHealth` to `good_boy_points` for all instances of `/mob/living/github_user`? Using the `@ANY` parameter after a variable name, you can capture any instance that has it edited in a map. While, to set the value of the newly named `good_boy_points` to that of the old `maxHealth`, we can use `@OLD:maxHealth`, put after the name of the new variable to achieve that. The result'll be something like this:
+
+```txt
+/mob/living/github_user{maxHealth=@ANY} : /mob/living/github_user{good_boy_points=@OLD:maxHealth}
+```
+
+Though, If you read about the previous methods, you'd know that without the `@OLD` parameter (the one without colon), every other variable edit will also be discarded, so it's important to add that BEFORE any other parament, as well as `maxHealth=@SKIP` following that since we're renaming that variable. So, take two:
+
+```txt
+/mob/living/github_user{maxHealth=@ANY} : /mob/living/github_user{@OLD; maxHealth=@SKIP; good_boy_points=@OLD:maxHealth}
+```
+
+Perfect, so now let's assume the following map:
+
+```dm
+"a" = (
+/mob/living/basic/mouse{
+	maxHealth = 15
+	},
+/turf/open/floor/iron,
+/area/github),
+"b" = (
+/mob/living/github_user{
+	name = "ShizCalev";
+	desc= "Has more good boy points than a megafauna has health.";
+	maxHealth = 2083
+	},
+/turf/open/floor/iron,
+/area/github),
+```
+
+You would then get the following output:
+
+```dm
+"a" = (
+/mob/living/basic/mouse{
+	maxHealth = 15
+	},
+/turf/open/floor/iron,
+/area/github),
+"b" = (
+/mob/living/github_user{
+	name = "ShizCalev";
+	desc= "Has more good boy points than a megafauna has health.";
+	good_boy_points = 2083
+	},
+/turf/open/floor/iron,
+/area/github),
+```
+
+As an addendum, you don't have to use both `@ANY` and `@OLD:prop_name` together. I'm merely providing a single example for the both of them and their most practical usage.
 
 ### Blend it all together
 

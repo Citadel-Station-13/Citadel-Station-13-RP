@@ -236,7 +236,7 @@
 	name = "coffee cup"
 	desc = "A heat-formed plastic coffee cup. Can theoretically be used for other hot drinks, if you're feeling adventurous."
 	icon_state = "coffee_cup_e"
-	possible_transfer_amounts = list(10)
+	possible_transfer_amounts = list(5, 10)
 	volume = 30
 	atom_flags = OPENCONTAINER
 	drop_sound = 'sound/items/drop/papercup.ogg'

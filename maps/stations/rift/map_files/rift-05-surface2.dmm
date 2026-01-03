@@ -2402,11 +2402,6 @@
 /obj/random/maintenance/research,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
-"bnN" = (
-/obj/structure/grille,
-/obj/structure/grille,
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/outside/outside2)
 "bog" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/floor_decal/industrial/warning{
@@ -49739,7 +49734,7 @@ wGI
 lac
 lac
 lac
-bnN
+wGI
 oLJ
 oLJ
 pBj

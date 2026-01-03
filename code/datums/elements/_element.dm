@@ -9,22 +9,33 @@
 	var/element_flags = NONE
 	/**
 	  * The index of the first attach argument to consider for duplicate elements
-	  * Is only used when flags contains ELEMENT_BESPOKE
+	  *
+	  * All arguments from this index onwards (1 based, until `argument_hash_end_idx` is reached, if set)
+	  * are hashed into the key to determine if this is a new unique element or one already exists
+	  *
+	  * Is only used when flags contains [ELEMENT_BESPOKE]
+	  *
 	  * This is infinity so you must explicitly set this
 	  */
 	var/id_arg_index = INFINITY
 
 /// Activates the functionality defined by the element on the given target datum
 /datum/element/proc/Attach(datum/target)
-	SHOULD_CALL_PARENT(1)
+	SHOULD_CALL_PARENT(TRUE)
 	if(type == /datum/element)
 		return ELEMENT_INCOMPATIBLE
 	if(element_flags & ELEMENT_DETACH)
-		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(Detach), override = TRUE)
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(OnTargetDelete), override = TRUE)
+
+/datum/element/proc/OnTargetDelete(datum/source)
+	SIGNAL_HANDLER
+	Detach(source)
 
 /// Deactivates the functionality defines by the element on the given datum
-/datum/element/proc/Detach(datum/source, force)
-	SHOULD_CALL_PARENT(1)
+/datum/element/proc/Detach(datum/source, ...)
+	SIGNAL_HANDLER
+	SHOULD_CALL_PARENT(TRUE)
+
 	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
 
 /datum/element/Destroy(force)
