@@ -57,7 +57,7 @@
 
 	//? Characteristics
 	/// characteristics holder
-	var/datum/characteristics_holder/characteristics
+	var/datum/characteristic_holder/characteristics
 
 	//? Abilities
 	/// mind-level abilities
@@ -148,7 +148,7 @@
 /**
  * make sure we have a characteristics holder
  */
-/datum/mind/proc/characteristics_holder()
+/datum/mind/proc/characteristic_holder()
 	if(!characteristics)
 		characteristics = new
 		characteristics.associate_with_mind(src)

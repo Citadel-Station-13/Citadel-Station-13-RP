@@ -1,6 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2025 Citadel Station Developers           *//
-
 /**
  * * Considered immutable once created; many datums may be shared!
  */
@@ -20,6 +17,7 @@
 
 	// lazy list
 	var/list/legacy_language_ids
+	var/legacy_identifying_gender
 
 /datum/resleeving_mind_backup/New(datum/mind/from_mind)
 	if(from_mind)
@@ -41,4 +39,6 @@
 			src.legacy_language_ids += lang.id
 	while(FALSE)
 
-
+	if(ishuman(from_mind.current))
+		var/mob/living/carbon/human/casted_current_human = from_mind.current
+		legacy_identifying_gender = casted_current_human.identifying_gender

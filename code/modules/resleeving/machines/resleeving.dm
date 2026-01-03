@@ -1,6 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2025 Citadel Station Developers           *//
-
 /obj/machinery/resleeving
 	name = "resleeving machinery"
 	desc = "Some kind of machinery for the Vey-Med Trans-Human Resleeving System."
@@ -40,5 +37,9 @@
 /obj/machinery/resleeving/proc/on_console_unlinked(obj/machinery/computer/resleeving/console)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
+/obj/machinery/resleeving/proc/send_system_message(msg)
+
+/obj/machinery/resleeving/proc/send_audible_system_message(msg)
 
 #warn impl all

@@ -1,6 +1,3 @@
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2025 Citadel Station Developers           *//
-
 /obj/machinery/computer/resleeving
 	name = "resleeving control console"
 	desc = "A central controller for resleeving machinery."
@@ -10,7 +7,7 @@
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	light_color = "#315ab4"
-	circuit = /obj/item/circuitboard/resleeving_control
+	circuit = /obj/item/circuitboard/resleeving_console
 
 	/// all linked machines
 	/// * lazy list
@@ -24,6 +21,9 @@
 	/// inserted dna disk
 	/// * used to print dna2 records (which should get refactored someday)
 	var/obj/item/disk/data/inserted_disk
+
+	var/last_relink
+	var/last_relink_throttle = 3 SECONDS
 
 /obj/machinery/computer/resleeving/Initialize(mapload)
 	. = ..()
@@ -81,6 +81,13 @@
 
 	switch(action)
 		if("relink")
+			if(world.time > (last_relink + last_relink_throttle))
+				return TRUE
+			last_relink = world.time
+			rescan_nearby_machines()
+			return TRUE
+		if("unlink")
+			var/unlink_pref = params["unlinkRef"]
 		if("printBody")
 			var/printer_ref = params["printerRef"]
 			var/body_ref
@@ -89,6 +96,7 @@
 
 /obj/machinery/computer/resleeving/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["relinkOnCooldown"] = world.time > (last_relink + last_relink_throttle)
 
 	var/list/resleeving_pod_datas = list()
 	var/list/body_printer_datas = list()

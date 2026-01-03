@@ -2,29 +2,15 @@
 #warn below
 
 /obj/machinery/resleeving/body_printer
-	/// The clone is released once its health reaches this level.
-	var/heal_level = 20
-	var/heal_rate = 1
 	/// Need to clean out it if it's full of exploded clone.
 	var/mess = FALSE
 	/// Don't eject them as soon as they are created.
 	var/eject_wait = FALSE
 
-/obj/machinery/resleeving/body_printer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if((isnull(occupant)) || (machine_stat & NOPOWER))
-		return
-	if((!isnull(occupant)) && (occupant.stat != 2))
-		var/completion = (100 * ((occupant.health + 50) / (heal_level + 100))) // Clones start at -150 health
-		to_chat(user, "Current clone cycle is [round(completion)]% complete.")
-
 /// Start growing a human clone in the pod!
 /obj/machinery/resleeving/body_printer/proc/growclone(var/datum/dna2/record/R)
-	if(mess || attempting)
-		return FALSE
 	var/datum/mind/clonemind = locate(R.mind)
 
-	if(!istype(clonemind, /datum/mind)) // Not a mind.
-		return FALSE
 	if(clonemind.current && clonemind.current.stat != DEAD) // Mind is associated with a non-dead body.
 		return FALSE
 	if(clonemind.active) // Somebody is using that mind.
@@ -38,43 +24,17 @@
 				else
 					return FALSE
 
-	for(var/modifier_type in R.genetic_modifiers) // Can't be cloned, even if they had a previous scan
-		if(istype(modifier_type, /datum/modifier/no_clone))
-			return FALSE
-
 	// Remove biomass when the cloning is started, rather than when the guy pops out
 	remove_biomass(CLONE_BIOMASS)
 
-	attempting = TRUE // One at a time!!
 	locked = TRUE
-
-	eject_wait = TRUE
-	spawn(30)
-		eject_wait = FALSE
-
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
 	occupant = H
 
 	if(!R.dna.real_name) // To prevent null names
 		R.dna.real_name = "clone ([rand(0,999)])"
 	H.real_name = R.dna.real_name
-	H.gender = R.gender
 	H.descriptors = R.body_descriptors
-
-	// Get the clone body ready
-	H.adjustCloneLoss(150) // New damage var so you can't eject a clone early then stab them to abuse the current damage system --NeoFite
-	H.afflict_unconscious(20 * 4)
-
-	// Here let's calculate their health so the pod doesn't immediately eject them!!!
-	H.update_health()
-
-	clonemind.transfer(H)
-	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
-
-	// -- Mode/mind specific stuff goes here
-	callHook("clone", list(H))
-	update_antag_icons(H.mind)
-	// -- End mode specific stuff
 
 	if(!R.dna)
 		H.dna = new /datum/dna()
@@ -82,81 +42,21 @@
 	else
 		H.dna = R.dna
 	if(heal_level < 60)
-		randmutb(H) //Sometimes the clones come out wrong.
 		H.dna.UpdateSE()
 		H.dna.UpdateUI()
-
 	H.set_cloned_appearance()
-	update_icon()
-
-	// A modifier is added which makes the new clone be unrobust.
-	var/modifier_lower_bound = 25 MINUTES
-	var/modifier_upper_bound = 40 MINUTES
-
-	// Upgraded cloners can reduce the time of the modifier, up to 80%
-	var/clone_sickness_length = abs(((heal_level - 20) / 100 ) - 1)
-	clone_sickness_length = clamp( clone_sickness_length, 0.2,  1.0) // Caps it off just incase.
-	modifier_lower_bound = round(modifier_lower_bound * clone_sickness_length, 1)
-	modifier_upper_bound = round(modifier_upper_bound * clone_sickness_length, 1)
-
-	H.add_modifier(H.species.cloning_modifier, rand(modifier_lower_bound, modifier_upper_bound))
-
-	// Modifier that doesn't do anything.
-	H.add_modifier(/datum/modifier/cloned)
-
-	// This is really stupid.
-	for(var/modifier_type in R.genetic_modifiers)
-		H.add_modifier(modifier_type)
-
-	for(var/datum/prototype/language/L in R.languages)
-		H.add_language(L.name)
-
-	attempting = 0
 	return 1
 
 /// Grow clones to maturity then kick them out.  FREELOADERS
 /obj/machinery/resleeving/body_printer/process(delta_time)
 	if((occupant) && (occupant.loc == src))
-		if((occupant.stat == DEAD) || (occupant.suiciding) || !occupant.key)  //Autoeject corpses and suiciding dudes.
-			locked = 0
-			go_out()
-			connected_message("Clone Rejected: Deceased.")
-			return
-
-		else if(occupant.health < heal_level && occupant.getCloneLoss() > 0)
-			occupant.afflict_unconscious(20 * 4)
-
-			 //Slowly get that clone healed and finished.
-			occupant.adjustCloneLoss(-2 * heal_rate)
-
-			//Premature clones may have brain damage.
-			occupant.adjustBrainLoss(-(CEILING(0.5*heal_rate, 1)))
-
-			//So clones don't die of oxyloss in a running pod.
-			if(occupant.reagents.get_reagent_amount("inaprovaline") < 30)
-				occupant.reagents.add_reagent("inaprovaline", 60)
-			occupant.afflict_sleeping(20 * 30)
-			//Also heal some oxyloss ourselves because inaprovaline is so bad at preventing it!!
-			occupant.adjustOxyLoss(-4)
-
-			use_power(7500) //This might need tweaking.
-			return
-
-		else if((occupant.health >= heal_level || occupant.health == occupant.getMaxHealth()) && (!eject_wait))
+		if((occupant.health >= heal_level || occupant.health == occupant.getMaxHealth()) && (!eject_wait))
 			playsound(src, 'sound/machines/medbayscanner1.ogg', 50, 1)
 			audible_message("\The [src] signals that the cloning process is complete.")
 			connected_message("Cloning Process Complete.")
 			locked = 0
 			go_out()
 			return
-
-	else if((!occupant) || (occupant.loc != src))
-		occupant = null
-		if(locked)
-			locked = 0
-		return
-
-	return
 
 //Let's unlock this early I guess.  Might be too early, needs tweaking.
 /obj/machinery/resleeving/body_printer/attackby(obj/item/W as obj, mob/user as mob)
@@ -203,22 +103,7 @@
 				user.visible_message("[user] secures [src] to the floor.", "You secure [src] to the floor.")
 			else
 				user.visible_message("[user] unsecures [src] from the floor.", "You unsecure [src] from the floor.")
-	else if(istype(W, /obj/item/multitool))
-		var/obj/item/multitool/M = W
-		M.connecting = src
-		to_chat(user, SPAN_NOTICE("You load connection data from [src] to [M]."))
-		M.update_icon()
-		return
-	else
-		..()
 
-/obj/machinery/resleeving/body_printer/emag_act(var/remaining_charges, var/mob/user)
-	if(isnull(occupant))
-		return
-	to_chat(user, "You force an emergency ejection.")
-	locked = 0
-	go_out()
-	return 1
 
 /// Put messages in the connected computer's temp var for display.
 /obj/machinery/resleeving/body_printer/proc/connected_message(var/message)
@@ -230,16 +115,6 @@
 	connected.temp = "[name] : [message]"
 	connected.updateUsrDialog()
 	return 1
-
-/obj/machinery/resleeving/body_printer/RefreshParts()
-	..()
-	var/rating = 0
-	for(var/obj/item/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/stock_parts/scanning_module) || istype(P, /obj/item/stock_parts/manipulator))
-			rating += P.rating
-
-	heal_level = rating * 10 - 20
-	heal_rate = round(rating / 4)
 
 /obj/machinery/resleeving/body_printer/verb/eject()
 	set name = "Eject Cloner"

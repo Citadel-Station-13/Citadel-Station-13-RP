@@ -40,6 +40,11 @@
 
 /obj/item/mirrortool/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(clickchain.initiator.is_holding_inactive(src))
+		user_remove_mirror(clickchain)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/mirrortool/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	. = ..()
@@ -47,17 +52,56 @@
 /obj/item/mirrortool/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 
-/obj/item/mirrortool/ui_data(mob/user, datum/tgui/ui)
+/obj/item/mirrortool/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["mirror"] = inserted_mirror ? list(
+		"activated" = !!inserted_mirror.owner_mind_ref,
+		"body_recorded" = inserted_mirror.recorded_body ? list(
+			"gender" = inserted_mirror.recorded_body.legacy_gender || "Unknown",
+			"species" = inserted_mirror.recorded_body.legacy_custom_species_name || inserted_mirror.recorded_body.legacy_species_uid || "Unknown",
+			"synthetic" = !!inserted_mirror.legacy_synthetic,
+		) : null,
+		"mind_recorded" = inserted_mirror.recorded_body ? list(
+			"recorded_name" = inserted_mirror.recorded_mind.user_name,
+		) : null,
+	) : null
 
+/obj/item/mirrortool/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("eject-mirror")
+			user_remove_mirror(e_args)
+			return TRUE
 
+/obj/item/mirrortool/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(inserted_mirror)
+		.["eject-mirror"] = create_context_menu_tuple("eject mirror", image(src), 0, MOBILITY_CAN_USE, FALSE)
 
+/obj/item/mirrortool/proc/user_remove_mirror(datum/event_args/actor/actor, put_in_hands = TRUE)
+	#warn impl
 
+/obj/item/mirrortool/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor)
+
+/obj/item/mirrortool/proc/on_mirror_removed(obj/item/organ/internal/mirror/mirror)
+	update_static_data()
+	update_icon()
+
+/obj/item/mirrortool/proc/user_insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
+	#warn impl
+
+/obj/item/mirrortool/proc/insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
+
+/obj/item/mirrortool/proc/on_mirror_inserted(obj/item/organ/internal/mirror/mirror)
+	update_static_data()
+	update_icon()
+
+#warn below
 
 /obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/mob/living/carbon/human/H = target
-	if(!istype(H))
-		return
 	if(user.zone_sel.selecting == BP_TORSO && imp == null)
 		if(imp == null && H.mirror)
 			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
@@ -99,25 +143,6 @@
 		to_chat(usr, "You must target the torso.")
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/mirrortool/attack_self(mob/user, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	if(!imp)
-		to_chat(usr, "No mirror is loaded.")
-	else
-		user.put_in_hands_or_drop(imp)
-		imp = null
-		update_icon()
-
-/obj/item/mirrortool/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(user.get_inactive_held_item() == src)
-		user.put_in_hands_or_drop(imp)
-		imp = null
-		update_icon()
-	. = ..()
-
-
 /obj/item/mirrortool/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/organ/internal/mirror))
 		if(imp)
@@ -127,6 +152,3 @@
 			return
 		imp = I
 		user.visible_message("[user] inserts the [I] into the [src].", "You insert the [I] into the [src].")
-	update_icon()
-	update_worn_icon()
-	return

@@ -1,6 +1,6 @@
-GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
+GLOBAL_LIST_INIT(characteristic_skills, _create_characteristic_skills())
 
-/proc/_create_characteristics_skills()
+/proc/_create_characteristic_skills()
 	. = list()
 	for(var/datum/characteristic_skill/skill in subtypesof(/datum/characteristic_skill))
 		if(is_abstract(skill))
@@ -19,9 +19,9 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
  *
  * use typepaths whenever possible for compile time!
  */
-/proc/resolve_characteristics_skill(datum/characteristic_skill/typepath_or_id)
+/proc/resolve_characteristic_skill(datum/characteristic_skill/typepath_or_id)
 	RETURN_TYPE(/datum/characteristic_skill)
-	return GLOB.characteristics_skills[ispath(typepath_or_id)? initial(typepath_or_id.id) : typepath_or_id]
+	return GLOB.characteristic_skills[ispath(typepath_or_id)? initial(typepath_or_id.id) : typepath_or_id]
 
 /**
  * skills - more enum-like numerics/whatnot than boolean-like talents
