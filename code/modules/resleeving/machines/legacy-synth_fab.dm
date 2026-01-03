@@ -128,9 +128,6 @@
 	H.adjustBruteLoss(brute_value)
 	H.adjustFireLoss(burn_value)
 	H.update_health()
-x`x`
-	//Plonk them here.
-	H.loc = get_turf(src)
 
 	//Machine specific stuff at the end
 	stored_material[MAT_STEEL] -= body_cost
