@@ -2468,7 +2468,6 @@
 #include "code\modules\admin\verbs\SDQL2\wrappers\map.dm"
 #include "code\modules\admin\verbs\SDQL2\wrappers\math.dm"
 #include "code\modules\admin\verbs\SDQL2\wrappers\memory.dm"
-#include "code\modules\admin\verbs\SDQL2\wrappers\new.dm"
 #include "code\modules\admin\verbs\server\reboot_world.dm"
 #include "code\modules\admin\verbs\server\set_next_map.dm"
 #include "code\modules\admin\view_variables\admin_delete.dm"
