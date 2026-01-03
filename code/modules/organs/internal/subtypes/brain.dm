@@ -271,6 +271,16 @@
 	qdel(src)
 	return TRUE
 
+/**
+ * The core of a Stargazer promethean.
+ * * All player prometheans are currently this, unlike on main.
+ *   It's just this way so you can still make the version that .. isn't this.
+ * * We would use an abstract organ to do this but it actually makes more sense for it to be in a slime core
+ *   because of how weird slimes are.
+ */
+/obj/item/organ/internal/brain/slime/stargazer
+	#warn inject into here
+
 /datum/chemical_reaction/promethean_brain_revival
 	name = "Promethean Revival"
 	id = "prom_revival"
