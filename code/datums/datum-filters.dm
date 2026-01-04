@@ -67,7 +67,6 @@
 
 	atom_cast.filters = filter_cache
 	UNSETEMPTY(filter_data)
-	SEND_SIGNAL(src, COMSIG_ATOM_RELOAD_FILTERS)
 
 /obj/item/update_filters(start_index = null)
 	. = ..()
