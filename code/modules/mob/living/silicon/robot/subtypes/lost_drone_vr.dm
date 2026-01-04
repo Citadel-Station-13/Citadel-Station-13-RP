@@ -1,5 +1,5 @@
-/datum/category_item/catalogue/fauna/silicon/robot/stray
-	name = "Robot - Stray"
+/datum/category_item/catalogue/fauna/silicon/robot/lost
+	name = "Robot - Lost"
 	desc = "Cyborgs may be considered valuable assets on the Frontier, but their \
 	recovery is not always tenable. Vessels lost in space, due either to mishap or \
 	design, will sometimes harbor 'lost' cyborgs. These units are often sole survivors, \
