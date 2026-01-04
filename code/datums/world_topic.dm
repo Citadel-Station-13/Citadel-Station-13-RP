@@ -23,10 +23,11 @@
 	var/keyword
 	var/log = TRUE
 	var/key_valid
-	var/require_comms_key = FALSE
+	/// If the config key is required. If you flip this to false, ensure the code is correct and the query you receive is legit.
+	var/require_comms_key = TRUE
 
 /datum/world_topic/proc/TryRun(list/input)
-	key_valid = (config_legacy.comms_key == input["key"]) && (config_legacy.comms_key != initial(config_legacy.comms_key)) && config_legacy.comms_key && input["key"]	//no fucking defaults allowed.
+	key_valid = (config_legacy.comms_key == input["key"]) && (config_legacy.comms_key != initial(config_legacy.comms_key)) && config_legacy.comms_key && input["key"]
 	input -= "key"
 	if(require_comms_key && !key_valid)
 		. = "Bad Key"
@@ -42,11 +43,17 @@
 /datum/world_topic/proc/Run(list/input)
 	CRASH("Run() not implemented for [type]!")
 
-// TOPICS
+/** TOPICS
+ * These are the handlers for world.Export() -> World.Topic() server communication.
+ * Double check to ensure any calls are correct and the query is legit.
+ * World.Topic() exploits can be very devastating since these can be called via a normal player connection without a client.
+ * https://secure.byond.com/docs/ref/index.html#/world/proc/Topic
+*/
 
 /datum/world_topic/ping
 	keyword = "ping"
 	log = FALSE
+	require_comms_key = FALSE
 
 /datum/world_topic/ping/Run(list/input)
 	. = 0
@@ -56,14 +63,14 @@
 /datum/world_topic/playing
 	keyword = "playing"
 	log = FALSE
+	require_comms_key = FALSE
 
 /datum/world_topic/playing/Run(list/input)
 	return GLOB.player_list.len
 
 /datum/world_topic/pr_announce
 	keyword = "announce"
-	require_comms_key = TRUE
-	var/static/list/PRcounts = list()	//PR id -> number of times announced this round
+	var/static/list/PRcounts = list() //PR id -> number of times announced this round
 
 /datum/world_topic/pr_announce/Run(list/input)
 	var/list/payload = json_decode(input["payload"])
@@ -79,10 +86,32 @@
 	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
+/datum/world_topic/adminmsg
+	keyword = "adminmsg"
+
+/datum/world_topic/adminmsg/Run(list/input)
+	return TgsPm(input[keyword], input["msg"], input["sender"])
+
+/datum/world_topic/namecheck
+	keyword = "namecheck"
+
+/datum/world_topic/namecheck/Run(list/input)
+	log_admin("world/Topic Name Check: [input["sender"]] on [input["namecheck"]]")
+	message_admins("Name checking [input["namecheck"]] from [input["sender"]] (World topic)")
+
+	return keywords_lookup(input["namecheck"], 1)
+
+/datum/world_topic/adminwho
+	keyword = "adminwho"
+
+/datum/world_topic/adminwho/Run(list/input)
+	return tgsadminwho()
+
 /datum/world_topic/jsonstatus
 	keyword = "jsonstatus"
+	require_comms_key = FALSE
 
-/datum/world_topic/jsonstatus/Run(list/input, addr)
+/datum/world_topic/jsonstatus/Run(list/input)
 	. = list()
 	.["mode"] = master_mode
 	.["round_id"] = GLOB.round_id
@@ -98,8 +127,9 @@
 
 /datum/world_topic/jsonplayers
 	keyword = "jsonplayers"
+	require_comms_key = FALSE
 
-/datum/world_topic/jsonplayers/Run(list/input, addr)
+/datum/world_topic/jsonplayers/Run(list/input)
 	. = list()
 	for(var/client/C in GLOB.clients)
 		. += C.get_public_key()
@@ -107,8 +137,9 @@
 
 /datum/world_topic/jsonmanifest
 	keyword = "jsonmanifest"
+	require_comms_key = FALSE
 
-/datum/world_topic/jsonmanifest/Run(list/input, addr)
+/datum/world_topic/jsonmanifest/Run(list/input)
 	var/list/command = list()
 	var/list/security = list()
 	var/list/engineering = list()
@@ -199,6 +230,7 @@
 
 /datum/world_topic/jsonrevision
 	keyword = "jsonrevision"
+	require_comms_key = FALSE
 
 /datum/world_topic/jsonrevision/Run(list/input, addr)
     var/datum/getrev/revdata = GLOB.revdata
@@ -223,8 +255,9 @@
 
 /datum/world_topic/status
 	keyword = "status"
+	require_comms_key = FALSE
 
-/datum/world_topic/status/Run(list/input, addr)
+/datum/world_topic/status/Run(list/input)
 	if(!key_valid) //If we have a key, then it's safe to trust that this isn't a malicious packet. Also prevents the extra info from leaking
 		if(GLOB.topic_status_lastcache >= world.time)
 			return GLOB.topic_status_cache
@@ -234,7 +267,6 @@
 	.["mode"] = master_mode
 	.["respawn"] = config_legacy.abandon_allowed
 	.["enter"] = config_legacy.enter_allowed
-	.["vote"] = config_legacy.allow_vote_mode
 	.["ai"] = config_legacy.allow_ai
 	.["host"] = world.host ? world.host : null
 	.["round_id"] = GLOB.round_id
@@ -267,13 +299,7 @@
 	.["time_dilation_avg_slow"] = SStime_track.time_dilation_avg_slow
 	.["time_dilation_avg_fast"] = SStime_track.time_dilation_avg_fast
 
-	/*
-	if(SSshuttle && SSshuttle.emergency)
-		.["shuttle_mode"] = SSshuttle.emergency.mode
-		// Shuttle status, see /__DEFINES/stat.dm
-		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
-		// Shuttle timer, in seconds
-	*/
+	.["bunkered"] = CONFIG_GET(flag/panic_bunker) || FALSE
 
 	if(!key_valid)
 		GLOB.topic_status_cache = .

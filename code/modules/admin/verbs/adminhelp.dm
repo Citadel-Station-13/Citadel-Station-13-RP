@@ -841,9 +841,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 
 // **do not use**
 /proc/send2irc(msg,msg2)
-	msg = replacetext(replacetext(msg, "\proper", ""), "\improper", "")
-	msg2 = replacetext(replacetext(msg2, "\proper", ""), "\improper", "")
-	world.TgsTargetedChatBroadcast("[msg] | [msg2]", TRUE)
+	send2adminchat(msg, msg2)
 
 /proc/tgsadminwho()
 	var/list/message = list("Admins: ")

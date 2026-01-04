@@ -670,7 +670,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 	var/static/list/waiting_states = list(GAME_STATE_SETTING_UP, GAME_STATE_PREGAME, GAME_STATE_INIT)
 	if(!(SSticker.current_state in waiting_states))
-		to_chat(user, SPAN_WARNING(SPAN_RED("The game has already started!")))
+		to_chat(usr, SPAN_WARNING(SPAN_RED("The game has already started!")))
 		return
 
 	if(SSticker.start_immediately)

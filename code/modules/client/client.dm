@@ -179,15 +179,6 @@
 	/// world.time when ambience was played to this client, to space out ambience sounds.
 	var/time_last_ambience_played = 0
 
-		////////////
-		//SECURITY//
-		////////////
-
-	var/received_irc_pm = -99999
-	///IRC admin that spoke with them last.
-	var/irc_admin
-	var/mute_irc = 0
-
 		////////////////////////////////////
 		//things that require the database//
 		////////////////////////////////////

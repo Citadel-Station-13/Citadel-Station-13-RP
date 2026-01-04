@@ -44,9 +44,15 @@
 	If you have any  questions about this stuff feel free to ask. ~Carn
 	*/
 
-/client/Topic(href, href_list, hsrc)
+//the undocumented 4th argument is for ?[0x\ref] style topic links. hsrc is set to the reference and anything after the ] gets put into hsrc_command
+/client/Topic(href, href_list, hsrc, hsrc_command)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
+
+#ifndef TESTING
+	if (LOWER_TEXT(hsrc_command) == "_debug") //disable the integrated byond vv in the client side debugging tools since it doesn't respect vv read protections
+		return
+#endif
 
 	// Rate limiting
 	var/mtl = config_legacy.minute_topic_limit		//CONFIG_GET(number/minute_topic_limit)
@@ -103,25 +109,10 @@
 
 	//Admin PM
 	if(href_list["priv_msg"])
-		var/client/C = locate(href_list["priv_msg"])
-		if(ismob(C)) 		//Old stuff can feed-in mobs instead of clients
-			var/mob/M = C
-			C = M.client
-		cmd_admin_pm(C,null)
+		cmd_admin_pm(href_list["priv_msg"],null)
 		return
 	if (href_list["player_ticket_panel"])
 		view_latest_ticket()
-		return
-
-	// Depricated. go use TGS
-	if(href_list["irc_msg"])
-		if(!holder && received_irc_pm < world.time - 6000) //Worse they can do is spam IRC for 10 minutes
-			to_chat(usr, "<span class='warning'>You are no longer able to use this, it's been more then 10 minutes since an admin on IRC has responded to you</span>")
-			return
-		if(mute_irc)
-			to_chat(usr, "<span class='warning'You cannot use this as your client has been muted from sending messages to the admins on IRC</span>")
-			return
-		send2irc("AHELP", href_list["irc_msg"])
 		return
 
 	switch(href_list["_src_"])
