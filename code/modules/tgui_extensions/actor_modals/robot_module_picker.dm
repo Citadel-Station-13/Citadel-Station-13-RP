@@ -14,6 +14,15 @@
 		return
 	switch(action)
 		if("pick")
+			var/mob/living/silicon/robot/robot = src.actor.performer
+			if(!istype(robot))
+				// how?
+				qdel(src)
+				return TRUE
+			if(!robot.can_repick_module)
+				// how?
+				qdel(src)
+				return TRUE
 			var/module_id = params["moduleId"]
 			var/frame_ref = params["frameRef"]
 			if(!istext(frame_ref) || !length(frame_ref))
@@ -27,7 +36,14 @@
 			// check ckey lock
 			if(resolved_frame.ckey_lock && !(actor.initiator.ckey in resolved_frame.ckey_lock))
 				return TRUE
-			#warn pick
+			robot.set_from_frame(resolved_frame)
+			robot.set_module(resolved_module)
+			robot.visible_message(
+				SPAN_NOTICE("With a series of mechanical whirrs, [robot] specializes into \a [resolved_module.get_visible_name()] module."),
+				target = robot,
+			)
+			qdel(src)
+			return TRUE
 
 /datum/tgui_actor_modal/robot_module_picker/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -49,9 +65,8 @@
 			serialized_frames[++serialized_frames.len] = list(
 				"ref" = ref(possible_frame),
 				"name" = possible_frame.name,
-				"iconRef" = "TEST",
+				"iconRef" = "[possible_frame.robot_iconset.id]-4",
 			)
-			#warn impl
 		serialized_modules[++serialized_modules.len] = serialized_module
 
 /datum/tgui_actor_modal/robot_module_picker/ui_interact(mob/user, datum/tgui/ui)
@@ -60,8 +75,6 @@
 		ui = new(user, src, "actor_modal/RobotModulePicker.tsx")
 		ui.set_autoupdate(FALSE)
 		ui.open()
-
-#warn impl
 
 /**
  * @return list(
