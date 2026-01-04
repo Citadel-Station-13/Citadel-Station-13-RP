@@ -49,6 +49,6 @@
 	animate(pkm_blur, appearance = list(x = 0), time = 0.33 SECONDS, loop = -1, easing = LINEAR_EASING, flags = ANIMATION_CONTINUE)
 
 	var/pkm_shadow = get_filter("pkm-shadow")
-	animate(pkm_blur, appearance = list(size = 1.65), time = 0.33 SECONDS, loop = -1, easing = QUAD_EASING, flags = ANIMATION_PARALLEL)
-	animate(pkm_blur, appearance = list(size = 0), time = 0.33 SECONDS, loop = -1, easing = LINEAR_EASING, flags = ANIMATION_CONTINUE)
+	animate(pkm_shadow, appearance = list(size = 1.65), time = 0.33 SECONDS, loop = -1, easing = QUAD_EASING, flags = ANIMATION_PARALLEL)
+	animate(pkm_shadow, appearance = list(size = 0), time = 0.33 SECONDS, loop = -1, easing = LINEAR_EASING, flags = ANIMATION_CONTINUE)
 
