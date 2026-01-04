@@ -126,7 +126,6 @@
 	mymob.client.screen = list()
 
 	// this is just separated because this is legacy code and we want to know which line runtimes
-	mymob.client.screen += mymob.throw_icon
 	mymob.client.screen += mymob.zone_sel
 	mymob.client.screen += mymob.oxygen
 	mymob.client.screen += mymob.fire
