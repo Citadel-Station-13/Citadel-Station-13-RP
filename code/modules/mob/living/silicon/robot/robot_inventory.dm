@@ -24,6 +24,9 @@
 	/// * Lazy list
 	var/list/datum/actor_hud/robot_inventory/huds_using
 
+/datum/robot_inventory/New(mob/living/silicon/robot/owner)
+	src.owner = owner
+
 /datum/robot_inventory/Destroy()
 	if(owner)
 		if(owner.robot_inventory == src)

@@ -47,14 +47,14 @@
 	applied_to_robot = robot
 	emag_enabled = robot.emag_items
 	for(var/obj/item/item as anything in items)
-		if(suppressed_items[item])
+		if(suppressed_items?[item])
 			continue
 		robot.robot_inventory?.inv_register(item)
 		if(item.loc != robot)
 			item.forceMove(robot)
 	if(emag_enabled)
 		for(var/obj/item/item as anything in emag_items)
-			if(suppressed_items[item])
+			if(suppressed_items?[item])
 				continue
 			robot.robot_inventory?.inv_register(item)
 			if(item.loc != robot)
