@@ -238,7 +238,7 @@
 				target = casted_mob,
 				range = MESSAGE_RANGE_INVENTORY_SOFT,
 				visible = SPAN_NOTICE("[clickchain.performer] touches their fingers to [src] and starts to drain power from it."),
-				otehrwise_self = SPAN_NOTICE("You touch your fingers to [src] and start pulling power from it."),
+				otherwise_self = SPAN_NOTICE("You touch your fingers to [src] and start pulling power from it."),
 			)
 			var/flow_per_second = casted_mob.synth_cell_charging_max_power_flow()
 			var/transferred_energy = 0
