@@ -12,6 +12,7 @@
 /datum/prototype/robot_iconset
 	abstract_type = /datum/prototype/robot_iconset
 	anonymous = TRUE
+	anonymous_namespace = "robot_iconset"
 
 	/// the name of this iconset
 	var/name
