@@ -132,10 +132,10 @@
 		qdel(src)
 
 /obj/item/antag_spawner/syndicate_drone/protector
-	drone_type = /mob/living/silicon/robot/syndicate/protector
+	drone_type = /mob/living/silicon/robot/module_preset/cybersun/assault
 
 /obj/item/antag_spawner/syndicate_drone/combat_medic
-	drone_type = /mob/living/silicon/robot/syndicate/combat_medic
+	drone_type = /mob/living/silicon/robot/module_preset/cybersun/triage
 
 /obj/item/antag_spawner/syndicate_drone/mechanist
-	drone_type = /mob/living/silicon/robot/syndicate/mechanist
+	drone_type = /mob/living/silicon/robot/module_preset/cybersun/sapper
