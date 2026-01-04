@@ -29,6 +29,7 @@
 	//* Imprinted by /datum/inventory *//
 
 	/// render held items in row mode; no left/right semantics.
+	/// * this forces the number of hands in a row to this value
 	/// * will use 'hand' instead of 'hand-(left|right)'
 	var/tmp/inv_held_items_row_mode
 	/// suppress swap / equip buttons for hands
@@ -267,21 +268,23 @@
 	button_swap_hand?.screen_loc = screen_loc_for_hand_swap(number_of_hands)
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_index(index, number_of_hands)
-	// Align to center minus one, move left one per two hands.
-	var/hand_start_col_left_offset = floor(number_of_hands / 2)
-	// Add one to left offset because byond is 1-indexed because it's STUPID!!
-	var/col = index - hand_start_col_left_offset + 1
-	var/row = floor(index / number_of_hands) + 1
-	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+[row]:5"
+	var/per_row = inv_held_items_row_mode || min(2, number_of_hands)
+	// get half of the total width of the hand bar
+	var/half_total_width = (per_row) * WORLD_ICON_SIZE * 0.5
+	// get row; this starts at 1
+	var/row = ceil(index / per_row)
+	// get column; this starts at 0.
+	var/col = (index % per_row)
+	return "CENTER:[-half_total_width + (col * WORLD_ICON_SIZE)],BOTTOM+[row]:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_swap(number_of_hands)
-	// Always aligned to center of hands.
-	var/rows = max(1, ceil(number_of_hands / 2))
+	// Always aligned to center of hands; bump up per row.
+	var/rows = max(1, ceil(number_of_hands / (inv_held_items_row_mode || 2)))
 	return "CENTER-1:28,BOTTOM+[rows]:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_equip(number_of_hands)
 	// Always aligned to center of hands.
-	var/rows = max(1, ceil(number_of_hands / 2))
+	var/rows = max(1, ceil(number_of_hands / (inv_held_items_row_mode || 2)))
 	return "CENTER-1:16,BOTTOM+[rows]:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_slot_drawer()
@@ -291,10 +294,12 @@
 	return "LEFT+[cross]:[6 + (cross * 2)],BOTTOM+[main]:[5 + (main * 2)]"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_aligned_slot(main, cross, number_of_hands)
+	// even if we only have 1 hand we pretend we have 2
+	var/offset_for_hands = (inv_held_items_row_mode || 2) * WORLD_ICON_SIZE * 0.5
 	if(main > 0)
-		return "CENTER-1:[16 + (32 * (main + 1)) ],BOTTOM+[cross]:[5 + (cross * 2)]"
+		return "CENTER-1:[offset_for_hands + (32 * (main + 1)) ],BOTTOM+[cross]:[5 + (cross * 2)]"
 	else
-		return "CENTER-1:[16 + (32 * main)],BOTTOM+[cross]:[5 + (cross * 2)]"
+		return "CENTER-1:[offset_for_hands + (32 * main)],BOTTOM+[cross]:[5 + (cross * 2)]"
 
 /**
  * @params
