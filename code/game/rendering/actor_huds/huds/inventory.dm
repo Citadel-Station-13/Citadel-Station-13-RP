@@ -268,14 +268,15 @@
 	button_swap_hand?.screen_loc = screen_loc_for_hand_swap(number_of_hands)
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_index(index, number_of_hands)
+	// -- THESE CALCULATIONS ASSUME THE INV SCREEN OBJECT IS A SINGLE WORLD TILE --
 	var/per_row = inv_held_items_row_mode || min(2, number_of_hands)
 	// get half of the total width of the hand bar
 	var/half_total_width = (per_row) * WORLD_ICON_SIZE * 0.5
-	// get row; this starts at 1
-	var/row = ceil(index / per_row)
-	// get column; this starts at 0.
+	// get row; this starts at 0
+	var/row = ceil(index / per_row) - 1
+	// get column; this starts at 1.
 	var/col = (index % per_row)
-	return "CENTER:[-half_total_width + (col * WORLD_ICON_SIZE)],BOTTOM+[row]:5"
+	return "CENTER:[-half_total_width + (col * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE * 0.5)],BOTTOM+[row]:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_swap(number_of_hands)
 	// Always aligned to center of hands; bump up per row.
@@ -288,18 +289,21 @@
 	return "CENTER-1:16,BOTTOM+[rows]:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_slot_drawer()
+	// -- THESE CALCULATIONS ASSUME THE INV SCREEN OBJECT IS A SINGLE WORLD TILE --
 	return "LEFT:6,BOTTOM:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_drawer_aligned_slot(main, cross)
+	// -- THESE CALCULATIONS ASSUME THE INV SCREEN OBJECT IS A SINGLE WORLD TILE --
 	return "LEFT+[cross]:[6 + (cross * 2)],BOTTOM+[main]:[5 + (main * 2)]"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_aligned_slot(main, cross, number_of_hands)
+	// -- THESE CALCULATIONS ASSUME THE INV SCREEN OBJECT IS A SINGLE WORLD TILE --
 	// even if we only have 1 hand we pretend we have 2
-	var/offset_for_hands = (inv_held_items_row_mode || 2) * WORLD_ICON_SIZE * 0.5
+	var/half_total_width = (inv_held_items_row_mode || 2) * WORLD_ICON_SIZE * 0.5
 	if(main > 0)
-		return "CENTER-1:[offset_for_hands + (32 * (main + 1)) ],BOTTOM+[cross]:[5 + (cross * 2)]"
+		return "CENTER-1:[half_total_width + (WORLD_ICON_SIZE * (main + 1)) - (WORLD_ICON_SIZE * 0.5)],BOTTOM+[cross]:[5 + (cross * 2)]"
 	else
-		return "CENTER-1:[offset_for_hands + (32 * main)],BOTTOM+[cross]:[5 + (cross * 2)]"
+		return "CENTER-1:[-half_total_width + (WORLD_ICON_SIZE * main) + (WORLD_ICON_SIZE * 1.5)],BOTTOM+[cross]:[5 + (cross * 2)]"
 
 /**
  * @params

@@ -226,6 +226,8 @@
  * Can we merge with this stack?
  */
 /obj/item/stack/proc/can_merge_into(obj/item/stack/other)
+	if(!istype(other))
+		return FALSE
 	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
 		return FALSE
 	return can_merge_into_type(other.type)
