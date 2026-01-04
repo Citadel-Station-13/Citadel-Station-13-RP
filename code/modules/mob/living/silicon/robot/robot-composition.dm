@@ -60,6 +60,10 @@
 		. |= ROBOT_MODULE_SELECTION_GROUP_LEGACY_RED_ALERT
 	//! end
 
+/mob/living/silicon/robot/proc/get_default_iconset()
+	#warn resolve from module
+	return RSrobot_iconsets.fetch_local_or_throw(/datum/prototype/robot_iconset/baseline_standard/standard)
+
 /**
  * Initialize to a chassis
  *
@@ -86,7 +90,7 @@
 /mob/living/silicon/robot/proc/set_iconset(datum/prototype/robot_iconset/iconset, skip_icon_update)
 	// Iconset will never be null.
 	if(isnull(iconset))
-		iconset = RSrobot_iconsets.fetch_local_or_throw(/datum/prototype/robot_iconset/baseline_standard/standard)
+		iconset = get_default_iconset()
 	src.iconset = iconset
 
 	if(iconset)
@@ -155,9 +159,11 @@
  * * Should only be called by `/datum/robot_provisioning`.
  */
 /mob/living/silicon/robot/proc/apply_provisioning(datum/robot_provisioning/provisioning)
+	// TODO: this is unused?
 
 /**
  * Remove a provisioning set; this is one of the things orchestrating composition.
  * * Should only be called by `/datum/robot_provisioning`.
  */
 /mob/living/silicon/robot/proc/remove_provisioning(datum/robot_provisioning/provisioning)
+	// TODO: this is unused?

@@ -125,8 +125,18 @@
 
 	mymob.client.screen = list()
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, using, mymob.pullin, mymob.gun_setting_icon)
-	mymob.client.screen += src.adding + src.other
+	// this is just separated because this is legacy code and we want to know which line runtimes
+	mymob.client.screen += mymob.throw_icon
+	mymob.client.screen += mymob.zone_sel
+	mymob.client.screen += mymob.oxygen
+	mymob.client.screen += mymob.fire
+	mymob.client.screen += mymob.hands
+	mymob.client.screen += mymob.healths
+	mymob.client.screen += using
+	mymob.client.screen += mymob.pullin
+	mymob.client.screen += mymob.gun_setting_icon
+	mymob.client.screen += src.adding
+	mymob.client.screen += src.other
 
 	mymob.reload_rendering()
 
