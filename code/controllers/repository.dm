@@ -191,6 +191,7 @@
 	RETURN_TYPE(/datum/prototype)
 	// todo: optimize
 	if(isnull(type_or_id))
+		// null is valid
 		return
 	else if(istext(type_or_id))
 		if(init_reverse_lookup_shim)

@@ -72,7 +72,8 @@
 	//* Composition *//
 
 	/// set to instance to init as that instance
-	var/datum/prototype/robot_iconset/iconset
+	/// * This may never be null.
+	var/datum/prototype/robot_iconset/iconset = /datum/prototype/robot_iconset/baseline_standard/standard
 	/// set to instance to init as that instance
 	var/datum/prototype/robot_chassis/chassis
 	var/datum/robot_provisioning/chassis_provisioning
@@ -231,6 +232,10 @@
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
+
+	set_iconset(RSrobot_iconsets.fetch_local_or_throw(iconset), TRUE)
+	set_chassis(RSrobot_chassis.fetch_local_or_throw(chassis), TRUE)
+	set_module(RSrobot_modules.fetch_local_or_throw(module), TRUE)
 
 	add_language("Robot Talk", TRUE)
 	add_language(LANGUAGE_EAL, TRUE)

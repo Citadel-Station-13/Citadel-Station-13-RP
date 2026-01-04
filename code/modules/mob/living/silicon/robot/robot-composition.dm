@@ -80,9 +80,13 @@
 /**
  * Initialize to a iconset
  *
+ * * Iconset may never be null, as otherwise we can't render.
  * * Will re-init if it's the same one.
  */
 /mob/living/silicon/robot/proc/set_iconset(datum/prototype/robot_iconset/iconset, skip_icon_update)
+	// Iconset will never be null.
+	if(isnull(iconset))
+		iconset = RSrobot_iconsets.fetch_local_or_throw(/datum/prototype/robot_iconset/baseline_standard/standard)
 	src.iconset = iconset
 
 	if(iconset)
@@ -97,7 +101,7 @@
 		icon_x_dimension = iconset.icon_dimension_x
 		icon_y_dimension = iconset.icon_dimension_y
 		// reset resting variation if needed
-		if(!iconset.variations[picked_resting_variation])
+		if(!iconset.variations?[picked_resting_variation])
 			picked_resting_variation = null
 	else
 		zmm_flags &= ~ZMM_WIDE_LOAD

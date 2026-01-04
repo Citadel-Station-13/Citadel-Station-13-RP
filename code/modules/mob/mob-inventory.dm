@@ -8,7 +8,7 @@
  */
 /mob/proc/init_inventory()
 	if(ispath(inventory))
-		inventory = new inventory
+		inventory = new inventory(src)
 
 //* Carry Weight *//
 
