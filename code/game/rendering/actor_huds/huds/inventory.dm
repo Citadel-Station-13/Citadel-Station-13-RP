@@ -270,7 +270,7 @@
 	// Align to center minus one, move left one per two hands.
 	var/hand_start_col_left_offset = floor(number_of_hands / 2)
 	// Add one to left offset because byond is 1-indexed because it's STUPID!!
-	var/col = index - hand_start_col_left_offset = 1
+	var/col = index - hand_start_col_left_offset + 1
 	var/row = floor(index / number_of_hands) + 1
 	return "CENTER[col == 0 ? "" : (col > 0 ? "+[col]" : "-[col]")]:16,BOTTOM+[row]:5"
 

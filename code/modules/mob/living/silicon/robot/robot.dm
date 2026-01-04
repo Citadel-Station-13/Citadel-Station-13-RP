@@ -19,7 +19,6 @@
 		/datum/category_item/catalogue/fauna/silicon/robot/cyborg,
 		/datum/category_item/catalogue/fauna/silicon/robot/lost,
 		/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper,
-		/datum/category_item/catalogue/fauna/silicon/robot/syndicate
 		)
 
 /datum/category_item/catalogue/fauna/silicon/robot/cyborg
@@ -117,6 +116,20 @@
 	/// Resources store
 	var/datum/robot_resource_store/resources
 
+	//* Movement *//
+	/// Base movement speed in tiles / second
+	var/movement_base_speed = 4
+
+	//* Power *//
+	/// our power cell
+	var/obj/item/cell/cell
+	/// starting cell type
+	var/cell_type = /obj/item/cell/basic/tier_1/large
+	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	/// accept cells with no CELL_TYPE field
+	/// * for shit like gunsword
+	var/cell_accept_nonstandard = TRUE
+
 	//* State *//
 
 	/// If set, we are a blank slate, and are allowed to pick a module and frame.
@@ -129,10 +142,6 @@
 	/// * Reset upon stopping resting.
 	/// * This is the ID of the variation.
 	var/picked_resting_variation
-
-	//* Movement *//
-	/// Base movement speed in tiles / second
-	var/movement_base_speed = 4.5
 
 	//* -- Legacy Below -- *//
 
@@ -213,20 +222,6 @@
 	var/shell = FALSE
 	var/deployed = FALSE
 	var/mob/living/silicon/ai/mainframe = null
-
-	//* Power *//
-	/// our power cell
-	var/obj/item/cell/cell
-	/// starting cell type
-	var/cell_type = /obj/item/cell/basic/tier_1/large
-	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
-	/// accept cells with no CELL_TYPE field
-	/// * for shit like gunsword
-	var/cell_accept_nonstandard = TRUE
-
-	//* Movement *//
-	/// Base movement speed in tiles / second
-	var/movement_base_speed = 4
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	. = ..()

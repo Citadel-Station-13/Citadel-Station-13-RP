@@ -33,7 +33,7 @@
  */
 /atom/movable/screen/actor_hud/robot_inventory/robot_drawer
 	name = "module drawer"
-	icon = 'icons/screen/hud/robot/module-drawer.dmi'
+	icon = 'icons/screen/hud/robot/default.dmi'
 	icon_state = "robot-drawer"
 	is_drawer = TRUE
 

@@ -7,10 +7,11 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/robot_builtin/dog_mirrortool/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/robot_builtin/dog_mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return
+	var/target_zone = user.zone_sel.selecting
 	if(target_zone == BP_TORSO && imp == null)
 		for(var/obj/item/organ/I in H.organs)
 			for(var/obj/item/implant/mirror/MI in I.contents)

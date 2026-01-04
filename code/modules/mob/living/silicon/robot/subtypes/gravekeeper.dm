@@ -17,6 +17,6 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper)
 	conf_default_lawset_type = /datum/ai_lawset/gravekeeper
 	conf_auto_ai_link = FALSE
-	conf_reboot_sound = 'sound/mecha/nominasyndi.ogg'
+	conf_reboot_sound = 'sound/mecha/nominalsyndi.ogg'
 	conf_mmi_create_type = /obj/item/mmi/digital/robot
 	module = /datum/prototype/robot_module/gravekeeper

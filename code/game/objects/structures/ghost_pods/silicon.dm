@@ -60,51 +60,51 @@
 	R.Namepick()
 	..()
 
-/obj/structure/ghost_pod/ghost_activated/swarm_drone
-	name = "drone shell"
-	desc = "A heavy metallic ball."
-	icon = 'icons/mob/swarmbot.dmi'
-	icon_state = "swarmer_unactivated"
-	density = FALSE
-	anchored = FALSE
+// /obj/structure/ghost_pod/ghost_activated/swarm_drone
+// 	name = "drone shell"
+// 	desc = "A heavy metallic ball."
+// 	icon = 'icons/mob/swarmbot.dmi'
+// 	icon_state = "swarmer_unactivated"
+// 	density = FALSE
+// 	anchored = FALSE
 
-	var/drone_class = "general"
-	var/drone_type = /mob/living/silicon/robot/drone/swarm
+// 	var/drone_class = "general"
+// 	var/drone_type = /mob/living/silicon/robot/drone/swarm
 
-/obj/structure/ghost_pod/ghost_activated/swarm_drone/create_occupant(var/mob/M)
-	var/mob/living/silicon/robot/drone/swarm/R = new drone_type(get_turf(src))
-	if(M.mind)
-		M.mind.transfer(R)
-	to_chat(M, "<span class='cult'>You are <b>[R]</b>, the remnant of some distant species, mechanical or flesh, living or dead.</span>")
-	M.transfer_client_to(R)
-	visible_message("<span class='cult'>As \the [src] shudders, it glows before lifting itself with three shimmering limbs!</span>")
-	spawn(3 SECONDS)
-		to_chat(R,"<span class='notice'>Many of your tools are standard drone devices, however others provide you with particular benefits.</span>")
-		to_chat(R,"<span class='notice'>Unlike standard drones, you are capable of utilizing 'zero point wells', found in your 'spells' tab.</span>")
-		to_chat(R,"<span class='notice'>Here you will also find your replication ability(s), depending on the type of drone you are.</span>")
-		to_chat(R,"<span class='notice'>Gunners have a special anti-personnel gun capable of shocking or punching through armor with low damage.</span>")
-		to_chat(R,"<span class='notice'>Impalers have an energy-lance.</span>")
-		to_chat(R,"<span class='notice'>General drones have the unique ability to produce one of each of these two types of shells per generation.</span>")
-	if(!QDELETED(src))
-		qdel(src)
+// /obj/structure/ghost_pod/ghost_activated/swarm_drone/create_occupant(var/mob/M)
+// 	var/mob/living/silicon/robot/drone/swarm/R = new drone_type(get_turf(src))
+// 	if(M.mind)
+// 		M.mind.transfer(R)
+// 	to_chat(M, "<span class='cult'>You are <b>[R]</b>, the remnant of some distant species, mechanical or flesh, living or dead.</span>")
+// 	M.transfer_client_to(R)
+// 	visible_message("<span class='cult'>As \the [src] shudders, it glows before lifting itself with three shimmering limbs!</span>")
+// 	spawn(3 SECONDS)
+// 		to_chat(R,"<span class='notice'>Many of your tools are standard drone devices, however others provide you with particular benefits.</span>")
+// 		to_chat(R,"<span class='notice'>Unlike standard drones, you are capable of utilizing 'zero point wells', found in your 'spells' tab.</span>")
+// 		to_chat(R,"<span class='notice'>Here you will also find your replication ability(s), depending on the type of drone you are.</span>")
+// 		to_chat(R,"<span class='notice'>Gunners have a special anti-personnel gun capable of shocking or punching through armor with low damage.</span>")
+// 		to_chat(R,"<span class='notice'>Impalers have an energy-lance.</span>")
+// 		to_chat(R,"<span class='notice'>General drones have the unique ability to produce one of each of these two types of shells per generation.</span>")
+// 	if(!QDELETED(src))
+// 		qdel(src)
 
-/obj/structure/ghost_pod/ghost_activated/swarm_drone/event/Initialize(mapload)
-	. = ..()
+// /obj/structure/ghost_pod/ghost_activated/swarm_drone/event/Initialize(mapload)
+// 	. = ..()
 
-	var/turf/T = get_turf(src)
-	say_dead_object("A <span class='notice'>[drone_class] swarm drone</span> shell is now available in \the [T.loc].", src)
+// 	var/turf/T = get_turf(src)
+// 	say_dead_object("A <span class='notice'>[drone_class] swarm drone</span> shell is now available in \the [T.loc].", src)
 
-/obj/structure/ghost_pod/ghost_activated/swarm_drone/event/gunner
-	name = "gunner shell"
+// /obj/structure/ghost_pod/ghost_activated/swarm_drone/event/gunner
+// 	name = "gunner shell"
 
-	drone_class = "gunner"
-	drone_type = /mob/living/silicon/robot/drone/swarm/gunner
+// 	drone_class = "gunner"
+// 	drone_type = /mob/living/silicon/robot/drone/swarm/gunner
 
-/obj/structure/ghost_pod/ghost_activated/swarm_drone/event/melee
-	name = "impaler shell"
+// /obj/structure/ghost_pod/ghost_activated/swarm_drone/event/melee
+// 	name = "impaler shell"
 
-	drone_class = "impaler"
-	drone_type = /mob/living/silicon/robot/drone/swarm/melee
+// 	drone_class = "impaler"
+// 	drone_type = /mob/living/silicon/robot/drone/swarm/melee
 
 /obj/structure/ghost_pod/manual/lost_drone/dogborg
 
