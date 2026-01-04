@@ -234,6 +234,7 @@
 		if(casted_mob.synth_cell_charging_supported() && (casted_mob == clickchain.performer) && (clickchain.using_intent == INTENT_HELP))
 			if(INTERACTING_WITH_FOR(clickchain.performer, src, "synth-cell-self-charging"))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
+
 			clickchain.visible_feedback(
 				target = casted_mob,
 				range = MESSAGE_RANGE_INVENTORY_SOFT,
