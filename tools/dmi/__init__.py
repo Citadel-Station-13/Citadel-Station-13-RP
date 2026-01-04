@@ -3,7 +3,6 @@
 import colorsys
 import math
 import re
-import glob
 
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
@@ -468,23 +467,3 @@ class DmiTransformPipeline:
         if self.committed:
             raise Exception("dmi pipeline already committed.")
         self.dmi.to_file(self.path)
-
-def black_to_transparent(globstr: str):
-    for path in glob.iglob(globstr):
-        transform(path).for_each_state(lambda s: black_to_transparent_state(s)).commit()
-        print(path)
-
-def black_to_transparent_state(state: Dmi.state):
-    state.frames = [black_to_transparent_image(f) for f in state.frames]
-    return state
-
-def black_to_transparent_image(image: Image.Image):
-    image = image.copy()
-    for x in range(image.width):
-        for y in range(image.height):
-            (r, g, b, a) = image.getpixel((x, y))
-            if r == 0 and g == 0 and b == 0 and a == 255:
-                image.putpixel((x, y), (0, 0, 0, 0))
-    return image
-
-black_to_transparent("C:\\Users\\tomje\\Documents\\GitHub\\Citadel-Station-13-RP\\icons\\mob\\clothing\\species\\moth\\moth_uniforms.dmi")
