@@ -90,6 +90,7 @@
 			14,
 		)
 	)
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 /obj/item/gun/projectile/energy/nt_isd/sidearm/with_light
 	attachments = list(
@@ -159,6 +160,7 @@
 		use_color = TRUE;
 		use_empty = TRUE;
 	}
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 //* Energy Lance *//
 
@@ -202,6 +204,7 @@
 		count = 4;
 		use_empty = TRUE;
 	}
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 //* Multiphase Sidearm *//
 
@@ -262,6 +265,7 @@
 		use_empty = TRUE;
 		use_single = TRUE;
 	}
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 //* Projectiles *//
 

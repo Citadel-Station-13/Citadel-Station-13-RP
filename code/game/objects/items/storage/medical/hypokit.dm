@@ -5,6 +5,7 @@
 	inhand_icon = 'icons/items/storage/firstaid.dmi'
 	icon_state = "normal"
 	slot_flags = SLOT_BELT
+	storage_datum_path = /datum/object_system/storage/hypokit
 	max_combined_volume = STORAGE_VOLUME_BOX
 	weight_volume = ITEM_VOLUME_BOX
 	insertion_whitelist = list(

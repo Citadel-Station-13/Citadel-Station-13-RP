@@ -30,6 +30,7 @@
 	}
 	magazine_restrict = /obj/item/ammo_magazine/microbattery/nt_hydra
 	origin_tech = list(TECH_COMBAT = 7, TECH_MATERIAL = 4, TECH_MAGNETS = 3)
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 /obj/item/gun/projectile/ballistic/microbattery/nt_hydra/sidearm/prototype
 	name = "prototype cell-loaded revolver"

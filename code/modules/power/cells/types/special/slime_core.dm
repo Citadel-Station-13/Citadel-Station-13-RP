@@ -72,6 +72,8 @@
 	self_recharge_amount = POWER_CELL_CAPACITY_SMALL * (5 / 6) / ((4 MINUTES) / (1 SECONDS))
 	cell_type = CELL_TYPE_SMALL
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
+	belt_storage_size = BELT_SIZE_FOR_SMALL_CELL / 2
 	weight_volume = ITEM_VOLUME_SMALL_CELL / 2
 
 /obj/item/cell/slime_core/fourth
@@ -87,6 +89,8 @@
 	self_recharge_amount = POWER_CELL_CAPACITY_WEAPON * (5 / 6) / ((4 MINUTES) / (1 SECONDS))
 	cell_type = CELL_TYPE_WEAPON
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
+	belt_storage_size = BELT_SIZE_FOR_SMALL_CELL
 	weight_volume = ITEM_VOLUME_WEAPON_CELL / 2
 
 /obj/item/cell/slime_core/half
@@ -102,6 +106,8 @@
 	self_recharge_amount = POWER_CELL_CAPACITY_MEDIUM * (5 / 6) / ((4 MINUTES) / (1 SECONDS))
 	cell_type = CELL_TYPE_MEDIUM
 	w_class = WEIGHT_CLASS_NORMAL
+	belt_storage_class = BELT_CLASS_MEDIUM
+	belt_storage_size = BELT_SIZE_FOR_MEDIUM_CELL / 2
 	weight_volume = ITEM_VOLUME_MEDIUM_CELL / 2
 
 /obj/item/cell/slime_core/whole
@@ -117,4 +123,6 @@
 	self_recharge_amount = POWER_CELL_CAPACITY_LARGE * (5 / 6) / ((4 MINUTES) / (1 SECONDS))
 	cell_type = CELL_TYPE_LARGE
 	w_class = WEIGHT_CLASS_NORMAL
+	belt_storage_class = BELT_CLASS_MEDIUM
+	belt_storage_size = BELT_SIZE_FOR_MEDIUM_CELL
 	weight_volume = ITEM_VOLUME_LARGE_CELL / 2

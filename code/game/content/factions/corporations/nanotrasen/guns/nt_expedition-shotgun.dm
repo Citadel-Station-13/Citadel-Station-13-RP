@@ -41,6 +41,7 @@
 	"} + "<br>"
 	icon_state = "pump"
 	#warn pump-open
+	w_class = WEIGHT_CLASS_FOR_SHOTGUN
 
 #warn impl
 
@@ -63,5 +64,6 @@
 	"} + "<br>"
 	icon_state = "semiauto"
 	#warn semiauto-empty (magout)
+	w_class = WEIGHT_CLASS_FOR_SHOTGUN
 
 #warn impl

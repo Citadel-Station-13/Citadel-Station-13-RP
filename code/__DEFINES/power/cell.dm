@@ -49,6 +49,8 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	cell_datum = ##DATUM_TYPEPATH; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
+	belt_storage_class = BELT_CLASS_FOR_SMALL_CELL; \
+	belt_storage_size = BELT_SIZE_FOR_SMALL_CELL; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_small; \
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_small; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_small; \
@@ -75,6 +77,8 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	cell_datum = ##DATUM_TYPEPATH; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
+	belt_storage_class = BELT_CLASS_FOR_MEDIUM_CELL; \
+	belt_storage_size = BELT_SIZE_FOR_MEDIUM_CELL; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_medium; \
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_medium; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_medium; \
@@ -100,6 +104,8 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	cell_datum = ##DATUM_TYPEPATH; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
+	belt_storage_class = BELT_CLASS_FOR_LARGE_CELL; \
+	belt_storage_size = BELT_SIZE_FOR_LARGE_CELL; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_large; \
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_large; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_large; \
@@ -125,6 +131,8 @@ ASSIGN_BITFIELD(cell_type, /mob/living/silicon/robot, cell_accept)
 	cell_datum = ##DATUM_TYPEPATH; \
 	rendering_system = TRUE; \
 	indicator_count = 4; \
+	belt_storage_class = BELT_CLASS_FOR_WEAPON_CELL; \
+	belt_storage_size = BELT_SIZE_FOR_WEAPON_CELL; \
 	worth_intrinsic = ##DATUM_TYPEPATH::typegen_worth_base_weapon; \
 	w_class = ##DATUM_TYPEPATH::typegen_w_class_weapon; \
 	weight_volume = ##DATUM_TYPEPATH::typegen_w_volume_weapon; \
