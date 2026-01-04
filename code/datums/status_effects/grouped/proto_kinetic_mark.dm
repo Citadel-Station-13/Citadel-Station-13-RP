@@ -17,7 +17,7 @@
 /datum/status_effect/grouped/proto_kinetic_mark/on_remove()
 	UnregisterSignal(owner, COMSIG_MOVABLE_PROTO_KINETIC_SCAN)
 	UnregisterSignal(owner, COMSIG_MOVABLE_PROTO_KINETIC_DETONATION)
-	owner.update_filters()
+	remove_filter(list("pkm-blur", "pkm-shadow"), TRUE)
 	return ..()
 
 /datum/status_effect/grouped/proto_kinetic_mark/proc/signal_scan(datum/source, list/detonation_data)
