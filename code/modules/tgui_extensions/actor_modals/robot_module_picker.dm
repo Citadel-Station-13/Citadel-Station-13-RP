@@ -38,6 +38,14 @@
 				return TRUE
 			robot.set_from_frame(resolved_frame)
 			robot.set_module(resolved_module)
+			// no moving / acting for 5 seconds
+			robot.afflict_root(5 SECONDS)
+			robot.afflict_daze(5 SECONDS)
+			do
+				var/datum/effect_system/smoke_spread/smoke_puff = new
+				smoke_puff.set_up(2, loca = get_turf(robot))
+				smoke_puff.start()
+			while(FALSE)
 			robot.visible_message(
 				SPAN_NOTICE("With a series of mechanical whirrs, [robot] specializes into \a [resolved_module.get_visible_name()] module."),
 				target = robot,
