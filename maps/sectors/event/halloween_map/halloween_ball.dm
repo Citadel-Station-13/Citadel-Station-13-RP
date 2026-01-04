@@ -11,7 +11,7 @@
     id = "halloween_ball"
     name = "Sector - Halloween Ball"
     display_name = "NT Resort Facility"
-    path = "maps/sectors/frozen_192/halloween_ball.dmm"
+    path = "maps/sectors/event/halloween_map/halloween_ball.dmm"
     base_turf = /turf/simulated/floor/outdoors/snow
     base_area = /area/sector/halloween_ball
 
