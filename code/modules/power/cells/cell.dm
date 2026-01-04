@@ -224,6 +224,44 @@
 	else
 		return 0
 
+/obj/item/cell/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(ismob(target))
+		var/mob/casted_mob = target
+		// synth recharging...
+		if(casted_mob.synth_cell_charging_supported() && (casted_mob == clickchain.performer) && (clickchain.using_intent == INTENT_HELP))
+			if(INTERACTING_WITH_FOR(clickchain.performer, src, "synth-cell-self-charging"))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			clickchain.visible_feedback(
+				target = casted_mob,
+				range = MESSAGE_RANGE_INVENTORY_SOFT,
+				visible = SPAN_NOTICE("[clickchain.performer] touches their fingers to [src] and starts to drain power from it."),
+				otehrwise_self = SPAN_NOTICE("You touch your fingers to [src] and start pulling power from it."),
+			)
+			var/flow_per_second = casted_mob.synth_cell_charging_max_power_flow()
+			var/transferred_energy = 0
+			START_INTERACTING_WITH(casted_mob, src, "synth-cell-self-charging")
+			if(flow_per_second > 0)
+				var/last_flow
+				var/last_tick = world.time
+				do
+					if(!do_after(clickchain.performer, 0.5 SECONDS, clickchain.performer, DO_AFTER_IGNORE_USER_MOVEMENT, MOBILITY_CAN_UI, 0))
+						break
+					var/elapsed = world.time - last_tick
+					last_flow = casted_mob.synth_cell_charging_give_power(min(elapsed * flow_per_second, DYNAMIC_CELL_UNITS_TO_J(charge)))
+					use(DYNAMIC_J_TO_CELL_UNITS(last_flow))
+					transferred_energy += last_flow
+				while(last_flow > 0)
+			STOP_INTERACTING_WITH(casted_mob, src, "synth-cell-self-charging")
+			if(transferred_energy > 0)
+				clickchain.chat_feedback(
+					SPAN_NOTICE("Siphoned [round(transferred_energy * 0.001, 0.1)]kJ from [src]."),
+					target = src,
+				)
+		return CLICKCHAIN_DO_NOT_PROPAGATE  | CLICKCHAIN_DID_SOMETHING
+
 //* Main *//
 
 /obj/item/cell/proc/give(amount, force)
