@@ -7,6 +7,7 @@
 	conf_mmi_create_type = /obj/item/mmi/digital/robot
 	conf_auto_ai_link = FALSE
 	conf_reboot_sound = 'sound/mecha/nominalsyndi.ogg'
+	module = /datum/prototype/robot_module/lost
 
 /mob/living/silicon/robot/preset_module/lost/speech_bubble_appearance()
 	return "synthetic_evil"

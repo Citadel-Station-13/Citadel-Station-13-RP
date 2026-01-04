@@ -31,6 +31,7 @@
 	mob_size = MOB_LARGE
 
 	law_type = /datum/ai_lawset/swarmer
+	module = /datum/prototype/robot_module/s
 	module_type = /obj/item/robot_module_legacy/drone/swarm
 
 	hat_x_offset = 0

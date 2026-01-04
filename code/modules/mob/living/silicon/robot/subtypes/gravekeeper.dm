@@ -19,3 +19,4 @@
 	conf_auto_ai_link = FALSE
 	conf_reboot_sound = 'sound/mecha/nominasyndi.ogg'
 	conf_mmi_create_type = /obj/item/mmi/digital/robot
+	module = /datum/prototype/robot_module/gravekeeper

@@ -431,7 +431,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/robot_upgrade/jetpack,
 		/obj/item/robot_upgrade/advhealth,
 		/obj/item/robot_upgrade/vtec,
-		/obj/item/robot_upgrade/tasercooler,
 		/obj/item/vehicle_module/weapon/energy/riggedlaser,
 		/obj/item/vehicle_module/tool/drill/diamonddrill,
 		/obj/item/hardsuit_module/device/drill,
@@ -1132,7 +1131,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/cell/basic/tier_3/medium,
 		/obj/item/robot_upgrade/restart,
 		/obj/item/robot_upgrade/jetpack,
-		/obj/item/robot_upgrade/tasercooler,
 		/obj/item/robot_upgrade/syndicate,
 		/obj/item/robot_upgrade/vtec
 		)

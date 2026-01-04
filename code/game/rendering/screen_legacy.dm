@@ -192,9 +192,6 @@
 		if("radio")
 			if(issilicon(usr))
 				usr:radio_menu()
-		if("panel")
-			if(issilicon(usr))
-				usr:installed_modules()
 
 		if("AI Core")
 			if(isAI(usr))

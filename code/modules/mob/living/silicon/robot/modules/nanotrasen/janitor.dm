@@ -10,7 +10,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 		/datum/prototype/robot_iconset/hover_eyebot/janitor,
 		/datum/prototype/robot_iconset/biped_marina/janitor,
 		/datum/prototype/robot_iconset/biped_sleek/janitor,
-		/datum/prototype/robot_iconset/biped_heavy/janitor,
 		/datum/prototype/robot_iconset/grounded_landmate/janitor,
 		/datum/prototype/robot_iconset/biped_tall/alternative/janitor,
 		/datum/prototype/robot_iconset/hover_drone/janitor,

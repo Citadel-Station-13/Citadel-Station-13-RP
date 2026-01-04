@@ -16,6 +16,8 @@
 	req_access = list(ACCESS_ENGINEERING_MAIN, ACCESS_SCIENCE_ROBOTICS)
 	integrated_light_power = 3
 	local_transmit = 1
+	can_repick_frame = FALSE
+	can_repick_module = FALSE
 
 	description_info = "Drones are player-controlled synthetics which are lawed to maintain the station and not \
 	interact with anyone else, except for other drones.  They hold a wide array of tools to build, repair, maintain, and clean. \
@@ -81,15 +83,14 @@
 	name = "construction drone"
 	icon_state = "constructiondrone"
 	law_type = /datum/ai_lawset/drone/construction
-	module_type = /obj/item/robot_module_legacy/drone/construction
+	module = /datum/prototype/robot_module/drone/construction
 	hat_x_offset = 1
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
 
-	//holder_type = /obj/item/holder/drone/heavy
 /mob/living/silicon/robot/drone/matriarch
 	name = "matriarch drone"
-	module_type = /obj/item/robot_module_legacy/drone/construction/matriarch
+	module = /datum/prototype/robot_module/drone/construction
 	law_type = /datum/ai_lawset/drone/matriarch
 	maxHealth = 50
 	health = 50
@@ -101,7 +102,7 @@
 	icon_state = "miningdrone"
 	item_state = "constructiondrone"
 	law_type = /datum/ai_lawset/drone/mining
-	module_type = /obj/item/robot_module_legacy/drone/mining
+	module = /datum/prototype/robot_module/drone/mining
 	hat_x_offset = 1
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
@@ -176,11 +177,6 @@
 
 	add_overlay(overlays_to_add)
 
-/mob/living/silicon/robot/drone/choose_icon()
-	return
-
-/mob/living/silicon/robot/drone/pick_module()
-	return
 
 /mob/living/silicon/robot/drone/proc/wear_hat(var/obj/item/new_hat)
 	if(hat)
@@ -298,10 +294,6 @@
 		gib()
 		return
 	..()
-
-//DRONE MOVEMENT.
-/mob/living/silicon/robot/drone/Process_Spaceslipping(var/prob_slip)
-	return 0
 
 //CONSOLE PROCS
 /mob/living/silicon/robot/drone/proc/law_resync()

@@ -2,7 +2,7 @@
 	id = "drone"
 	display_name = "NT Drone"
 	module_hud_state = "platform"
-	use_robot_module_path = /obj/item/robot_module_legacy/robot/drone
+	use_robot_module_path = /obj/item/robot_module_legacy/drone
 	auto_iconsets = list(
 		/datum/prototype/robot_iconset/baseline_drone/construction,
 	)

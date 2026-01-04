@@ -24,11 +24,11 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 		/datum/prototype/robot_iconset/grounded_mechoid/miner,
 		/datum/prototype/robot_iconset/biped_tall/alternative/miner,
 		/datum/prototype/robot_iconset/biped_noble/mining,
-		/datum/prototype/robot_iconset/zoomba/miner,
+		/datum/prototype/robot_iconset/grounded_zoomba/miner,
 		/datum/prototype/robot_iconset/grounded_worm/miner,
 		/datum/prototype/robot_iconset/raptor/mining,
 		/datum/prototype/robot_iconset/baseline_standard/logistics,
-		/datum/prototype/robot_iconset/grounded_landmate/minibng,
+		/datum/prototype/robot_iconset/grounded_landmate/mining,
 		/datum/prototype/robot_iconset/hover_coffin/mining,
 	)
 

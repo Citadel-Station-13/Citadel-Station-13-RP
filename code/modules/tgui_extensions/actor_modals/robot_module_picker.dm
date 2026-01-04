@@ -48,7 +48,6 @@
 			while(FALSE)
 			robot.visible_message(
 				SPAN_NOTICE("With a series of mechanical whirrs, [robot] specializes into \a [resolved_module.get_visible_name()] module."),
-				target = robot,
 			)
 			qdel(src)
 			return TRUE

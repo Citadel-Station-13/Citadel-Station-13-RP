@@ -11,7 +11,7 @@
 	variations = list(
 		/datum/robot_iconset_variation/bellyup,
 		/datum/robot_iconset_variation/resting,
-		/datum/robot_iconset_variation/sit,
+		/datum/robot_iconset_variation/sitting,
 		/datum/robot_iconset_variation/dead,
 	)
 

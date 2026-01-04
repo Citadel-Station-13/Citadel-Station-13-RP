@@ -7,7 +7,7 @@
 
 	auto_chassis = /datum/prototype/robot_chassis/grounded
 
-	icon = 'icons/mob/robot/iconset/worm.dmi'
+	icon = 'icons/mob/robot/iconset/grounded_worm.dmi'
 	icon_state_indicator = "indicator-lighting"
 	icon_state_cover = "open"
 

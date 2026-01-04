@@ -508,7 +508,6 @@
 	desc = "Used to cool a mounted taser, increasing the potential current in it and thus its recharge rate."
 	id = "borg_taser_module"
 	materials_base = list(MAT_STEEL = 6000, MAT_GLASS = 4500, MAT_GOLD = 1500, MAT_DIAMOND = 375)
-	build_path = /obj/item/robot_upgrade/tasercooler
 
 /datum/prototype/design/science/prosfab/robot_upgrade/bluespaceoresatchel
 	design_name = "Bluespace Ore Satchel Module"

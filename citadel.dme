@@ -4203,7 +4203,6 @@
 #include "code\modules\mob\living\silicon\robot\drone\drone_say.dm"
 #include "code\modules\mob\living\silicon\robot\drone\matrix_hive.dm"
 #include "code\modules\mob\living\silicon\robot\drone\matrix_powers.dm"
-#include "code\modules\mob\living\silicon\robot\drone\swarm.dm"
 #include "code\modules\mob\living\silicon\robot\drone\swarm_abilities.dm"
 #include "code\modules\mob\living\silicon\robot\drone\swarm_items.dm"
 #include "code\modules\mob\living\silicon\robot\drone\~defines.dm"
