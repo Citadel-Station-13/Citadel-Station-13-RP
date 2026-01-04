@@ -4,3 +4,4 @@
 #define BODYPART_NO_PATCH	     (1 << 3)
 #define BODYPART_SILENT_WOUNDS   (1 << 4)
 #define BODYPART_NO_INFECTION    (1 << 5)
+#define BODYPART_VISUAL_ROBOTIC	 (1 << 6)
