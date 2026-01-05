@@ -196,6 +196,3 @@
 		human_limb.force_icon = R.icon
 	if(human_secondary_limb)
 		human_secondary_limb.force_icon = R.icon
-
-
-
