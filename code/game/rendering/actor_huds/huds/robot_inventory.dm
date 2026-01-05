@@ -51,7 +51,7 @@
 
 /datum/actor_hud/robot_inventory/proc/rebuild()
 	add_screen((drawer_button = new(null, src)))
-	drawer_button = screen_loc_for_drawer_button()
+	drawer_button.screen_loc = screen_loc_for_drawer_button()
 	add_screen((drawer_backplate = new(null, src)))
 	set_drawer_backplate_parameters()
 	drawer_backplate.redraw()
