@@ -187,12 +187,20 @@
 	if(choice == "None")
 		if(human_limb)
 			human_limb.force_icon = null
+			human_limb.model = null
+			human_limb.get_icon()
 		if(human_secondary_limb)
 			human_secondary_limb.force_icon = null
+			human_secondary_limb.model = null
+			human_secondary_limb.get_icon()
 		return
 
 	var/datum/robolimb/R = usable_manufacturers[choice]
 	if(human_limb)
 		human_limb.force_icon = R.icon
+		human_limb.model = choice
+		human_limb.get_icon()
 	if(human_secondary_limb)
 		human_secondary_limb.force_icon = R.icon
+		human_secondary_limb.model = choice
+		human_secondary_limb.get_icon()
