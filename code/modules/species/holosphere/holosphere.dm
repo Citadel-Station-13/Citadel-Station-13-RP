@@ -73,6 +73,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/hologram_reset_to_slot,
+		/mob/living/carbon/human/proc/change_limb_icons,
 		/mob/living/proc/set_size,
 	)
 
@@ -103,7 +104,8 @@
 
 	actions_to_apply = list(
 		/datum/action/holosphere/toggle_transform,
-		/datum/action/holosphere/change_loadout
+		/datum/action/holosphere/change_loadout,
+		/datum/action/holosphere/change_limbs
 	)
 
 	hunger_slowdown_multiplier = 0.5 // they can't eat and hitting 0 hunger makes them absolutely defenceless, no need to punish them much for this
