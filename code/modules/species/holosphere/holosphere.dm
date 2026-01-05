@@ -105,7 +105,7 @@
 	actions_to_apply = list(
 		/datum/action/holosphere/toggle_transform,
 		/datum/action/holosphere/change_loadout,
-		/datum/action/holosphere/change_limbs
+		/datum/action/holosphere/change_limb_icons
 	)
 
 	hunger_slowdown_multiplier = 0.5 // they can't eat and hitting 0 hunger makes them absolutely defenceless, no need to punish them much for this
