@@ -17,7 +17,7 @@
 /datum/status_effect/grouped/proto_kinetic_mark/on_remove()
 	UnregisterSignal(owner, COMSIG_MOVABLE_PROTO_KINETIC_SCAN)
 	UnregisterSignal(owner, COMSIG_MOVABLE_PROTO_KINETIC_DETONATION)
-	remove_filter(list("pkm-blur", "pkm-shadow"), TRUE)
+	owner.remove_filter(list("pkm-blur", "pkm-shadow"), TRUE)
 	return ..()
 
 /datum/status_effect/grouped/proto_kinetic_mark/proc/signal_scan(datum/source, list/detonation_data)
@@ -31,7 +31,7 @@
 /datum/status_effect/grouped/proto_kinetic_mark/proc/inject_visual_filter(datum/source)
 	SIGNAL_HANDLER
 
-	add_filters(list(
+	owner.add_filters(list(
 		list(
 			"name" = "pkm-blur",
 			"priority" = 1,
@@ -44,11 +44,11 @@
 		),
 	))
 
-	var/pkm_blur = get_filter("pkm-blur")
+	var/pkm_blur = owner.get_filter("pkm-blur")
 	animate(pkm_blur, appearance = list(x = 1.5), time = 0.33 SECONDS, loop = -1, easing = QUAD_EASING)
 	animate(pkm_blur, appearance = list(x = 0), time = 0.33 SECONDS, loop = -1, easing = LINEAR_EASING, flags = ANIMATION_CONTINUE)
 
-	var/pkm_shadow = get_filter("pkm-shadow")
+	var/pkm_shadow = owner.get_filter("pkm-shadow")
 	animate(pkm_shadow, appearance = list(size = 1.65), time = 0.33 SECONDS, loop = -1, easing = QUAD_EASING, flags = ANIMATION_PARALLEL)
 	animate(pkm_shadow, appearance = list(size = 0), time = 0.33 SECONDS, loop = -1, easing = LINEAR_EASING, flags = ANIMATION_CONTINUE)
 
