@@ -5320,6 +5320,8 @@
 #include "code\modules\species\outsider\vox.dm"
 #include "code\modules\species\promethean\promethean.dm"
 #include "code\modules\species\promethean\promethean_blob.dm"
+#include "code\modules\species\promethean\promethean_stargazer_mindlink.dm"
+#include "code\modules\species\promethean\promethean_stargazer_mindnet.dm"
 #include "code\modules\species\protean\blob_recolor.dm"
 #include "code\modules\species\protean\protean.dm"
 #include "code\modules\species\protean\protean_blob.dm"
