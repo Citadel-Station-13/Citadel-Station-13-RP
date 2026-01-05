@@ -141,3 +141,61 @@
 		if(HUMAN_OVERLAY_HAIR, HUMAN_OVERLAY_FACEHAIR)
 			return H.hair_alpha
 	return HOLOGRAM_OTHER_ALPHA
+
+// for now this only supports prosthetics
+/datum/species/shapeshifter/holosphere/proc/change_limb_icons(var/mob/living/carbon/human/H)
+	var/list/options = list("Head", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg")
+	var/limb_option = tgui_input_list(usr, "Choose Limb", "Limb Icon Selection", options)
+	if(!limb_option)
+		return
+	var/limb
+	var/secondary_limb
+
+	switch(limb_option)
+		if("Head")
+			limb = BP_HEAD
+		if("Torso")
+			limb = BP_TORSO
+			secondary_limb = BP_GROIN
+		if("Left Arm")
+			limb = BP_L_ARM
+			secondary_limb = BP_L_HAND
+		if("Right Arm")
+			limb = BP_R_ARM
+			secondary_limb = BP_R_HAND
+		if("Left Leg")
+			limb = BP_L_LEG
+			secondary_limb = BP_L_FOOT
+		if("Right Leg")
+			limb = BP_R_LEG
+			secondary_limb = BP_R_FOOT
+
+	var/list/usable_manufacturers = list()
+	for(var/company in GLOB.chargen_robolimbs)
+		var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
+		if(!(limb in M.parts))
+			continue
+		usable_manufacturers[company] = M
+
+	usable_manufacturers["None"] = "None"
+	var/choice = tgui_input_list(usr, "Which manufacturer do you wish to use for this limb?", "Limb Icon Selection", usable_manufacturers)
+	if(!choice)
+		return
+
+	var/obj/item/organ/external/human_limb = H.get_organ(limb)
+	var/obj/item/organ/external/human_secondary_limb = H.get_organ(secondary_limb)
+	if(choice == "None")
+		if(human_limb)
+			human_limb.force_icon = null
+		if(human_secondary_limb)
+			human_secondary_limb.force_icon = null
+		return
+
+	var/datum/robolimb/R = usable_manufacturers[choice]
+	if(human_limb)
+		human_limb.force_icon = R.icon
+	if(human_secondary_limb)
+		human_secondary_limb.force_icon = R.icon
+
+
+

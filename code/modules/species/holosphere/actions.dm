@@ -38,6 +38,20 @@
 		var/mob/living/carbon/human/H = M
 		var/datum/species/shapeshifter/holosphere/S = H.species
 		if(!istype(S))
-			message_admins("NOT HOLOSPHERE")
 			return
 		H.switch_loadout_holosphere()
+
+/// Change limb icons
+/datum/action/holosphere/change_limb_icons
+	name = "Change Limb Icons"
+	desc = "Change Limb Icons"
+	button_icon_state = "change_limbs"
+
+/datum/action/holosphere/change_limb_icons/invoke_target(mob/M, datum/event_args/actor/actor)
+	. = ..()
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/species/shapeshifter/holosphere/S = H.species
+		if(!istype(S))
+			return
+		S.change_limb_icons(M)
