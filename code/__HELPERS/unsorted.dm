@@ -462,10 +462,6 @@
 		moblist.Add(M)
 	for(var/mob/living/voice/M in sortmob)
 		moblist.Add(M)
-//	for(var/mob/living/silicon/hivebot/M in sortmob)
-//		GLOB.mob_list.Add(M)
-//	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
-//		GLOB.mob_list.Add(M)
 	return moblist
 
 /// Returns the turf located at the map edge in the specified direction relative to A.
