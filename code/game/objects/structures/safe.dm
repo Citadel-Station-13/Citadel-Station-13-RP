@@ -132,6 +132,10 @@ FLOOR SAFES
 
 	return FALSE
 
+/obj/structure/safe/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/safe
+	return ..()
+
 /obj/structure/safe/ui_state(mob/user)
 	return GLOB.physical_state
 
