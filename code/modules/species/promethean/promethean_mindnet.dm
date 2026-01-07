@@ -42,11 +42,18 @@
  *
  * Mindlinking is considered a hostile action by things like mindshields and anti-magic
  * sources, as is all mind-involving things.
+ *
+ * ## Entity Scanning
+ *
+ * Technically, the system supports arbitrary scan range, but,
+ * for the sake of not killing the server's performance,
+ * the actual scan is based on spatial grids and only mindlinked entities can be
+ * detected cross-overmap.
  */
 /datum/promethean_mindnet
 	/// owning slime core
 	/// * Nullable; mindnets can be detached / transferred in-code, even if it's impossible in game.
-	var/obj/item/organ/internal/brain/slime/stargazer/owning_core
+	var/obj/item/organ/internal/brain/promethean/stargazer/owning_core
 	/// Established mindlinks, by mind-ref
 	/// * Key is `/datum/mind_ref`
 	/// * Value is `/datum/promethean_mindlink`
@@ -71,6 +78,24 @@
 	/// linear interpolated between proximity radius min/max
 	var/attunement_power_proximity_max_power = 20
 
+	/// power needed to sense a mob as being nearby at all
+	var/attunement_required_for_presence_sensing = 1
+
+	/// overmap pixel distance for 'same overmap'
+	/// * null = need to be in same sector, 0 = must contact
+	var/overmap_pixel_distance_considered_same = WORLD_ICON_SIZE * 0.5
+
+/datum/promethean_mindnet/New(obj/item/organ/internal/brian/promethean/stargazer/core)
+	src.owning_core = core
+
+/datum/promethean_mindnet/Destroy()
+	if(owning_core)
+		if(owning_core.mindnet == src)
+			owning_core.mindnet = null
+		owning_core = null
+	return ..()
+
+
 #warn impl
 
 /datum/promethean_mindnet/proc/get_attunement_power_for_entity(mob/target)
@@ -81,6 +106,7 @@
 /datum/promethean_mindnet/proc/get_attunement_power_for_mind(datum/mind/mind)
 	. = 0
 	. += attunement_power_global
+	#warn rest
 
 	var/datum/promethean_mindlink/link = link_lookup[mind]
 	if(link)
@@ -93,3 +119,25 @@
 /datum/promethean_mindnet/proc/create_mind_link(datum/mind/mind)
 
 /datum/promethean_mindnet/proc/get_or_create_mind_link(datum/mind/mind)
+
+/datum/promethean_mindnet/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
+
+
+/datum/promethean_mindnet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("invoke")
+		if("rescan")
+
+/datum/promethean_mindnet/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+/datum/promethean_mindnet/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+
+
+
+

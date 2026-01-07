@@ -419,7 +419,7 @@
 		if(istype(thing, /obj/item/slime_cube)) // Also gooey, alongside harbinger of bad news.
 			fear_amount += 2
 
-		if(istype(thing, /obj/item/organ/internal/brain/slime))
+		if(istype(thing, /obj/item/organ/internal/brain/promethean))
 			fear_amount += 2
 
 		if(istype(thing, /obj/item/clothing/head/collectable/slime)) // Some hats are spooky so people can be assholes with them.

@@ -24,6 +24,33 @@
 	/// the target can sense a cooperative attempt even while unconsciuos
 	var/can_be_cooperated_while_unconscious = FALSE
 
+/datum/promethean_mindnet_ability/proc/ui_mindnet_ability_data()
+	return list(
+		"name" = name,
+		"desc" = desc,
+		"attunementCooperativeThreshold" = attunement_cooperative_threshold,
+		"attunementForcedThreshold" = attunement_forced_threshold,
+		"cooperateWhileUnconscious" = can_be_cooperated_while_unconscious,
+	)
+
+/**
+ * * This can sleep.
+ */
+/datum/promethean_mindnet_ability/proc/run(datum/event_args/actor/actor, datum/promethean_mindnet/mindnet)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	on_run(actor, mindnet)
+	#warn impl
+
+/**
+ * * This can sleep.
+ */
+/datum/promethean_mindnet_ability/proc/on_run(datum/event_args/actor/actor, datum/promethean_mindnet/mindnet)
+	SHOULD_CALL_PARENT(TRUE)
+
+
+	#warn impl
+
 /datum/promethean_mindnet_ability/ping
 	name = "Ping"
 	desc = "Ping the targeted mind, ascertaining if they sense you and \
