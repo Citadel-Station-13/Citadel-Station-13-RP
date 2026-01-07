@@ -27,7 +27,7 @@
 
 /datum/controller/configuration/proc/PreConfigReload()
 	if(reload_in_progress)
-		to_chat(usr, span_warning("Another user is already reloading the config!"))
+		to_chat(usr, SPAN_WARNING("Another user is already reloading the config!"))
 		return FALSE
 
 	reload_in_progress = TRUE
