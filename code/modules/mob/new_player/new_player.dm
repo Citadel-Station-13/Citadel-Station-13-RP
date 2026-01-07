@@ -96,7 +96,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 				INJECT_STATPANEL_DATA_ENTRY(., "Game Mode:", "Secret")
 			else
 				if(SSticker.hide_mode == 0)
-					INJECT_STATPANEL_DATA_ENTRY(., "Game Mode:", "[config_legacy.mode_names[master_mode]]")	// Old setting for showing the game mode
+					INJECT_STATPANEL_DATA_ENTRY(., "Game Mode:", "Extended")	// Old setting for showing the game mode
 			var/time_remaining = SSticker.GetTimeLeft()
 			if(time_remaining > 0)
 				INJECT_STATPANEL_DATA_LINE(., "Time To Start: [round(time_remaining/10)]s")
@@ -468,7 +468,6 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		character.forceMove(C.loc)
 
 		AnnounceCyborg(character, rank, "has been transferred to the empty core in \the [character.loc.loc]")
-		SSticker.mode.latespawn(character)
 
 		qdel(C)
 		qdel(src)
@@ -482,8 +481,6 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
 		character.buckled.forceMove(character.loc)
-
-	SSticker.mode.latespawn(character)
 
 	if(character.mind.assigned_role != "Cyborg")
 		data_core.manifest_inject(character)

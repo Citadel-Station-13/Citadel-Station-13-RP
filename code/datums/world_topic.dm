@@ -84,7 +84,7 @@
 
 /datum/world_topic/jsonstatus/Run(list/input, addr)
 	. = list()
-	.["mode"] = master_mode
+	.["mode"] = "Extended"
 	.["round_id"] = GLOB.round_id
 	.["players"] = GLOB.clients.len
 	var/list/adm = get_admin_counts()
@@ -231,7 +231,7 @@
 		GLOB.topic_status_lastcache = world.time + 5
 	. = list()
 	.["version"] = game_version
-	.["mode"] = master_mode
+	.["mode"] = "Extended"
 	.["respawn"] = config_legacy.abandon_allowed
 	.["enter"] = config_legacy.enter_allowed
 	.["vote"] = config_legacy.allow_vote_mode

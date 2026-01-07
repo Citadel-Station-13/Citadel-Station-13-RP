@@ -31,10 +31,6 @@
 		if(deployed_shell)
 			. += SPAN_NOTICE("The wireless networking light is blinking.")
 
-	if(hardware && (hardware.owner == src))
-		. += "\n"
-		. += hardware.get_examine_desc()
-
 	if(LAZYLEN(.) > 1)
 		.[2] = "<hr>[.[2]]"
 

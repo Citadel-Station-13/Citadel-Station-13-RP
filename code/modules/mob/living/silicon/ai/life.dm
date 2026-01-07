@@ -17,15 +17,6 @@
 
 		src.update_health()
 
-		if (!hardware_integrity() || !backup_capacitor())
-			death()
-			return
-
-		// If our powersupply object was destroyed somehow, create new one.
-		if(!psupply)
-			create_powersupply()
-
-
 		// Handle power damage (oxy)
 		if(aiRestorePowerRoutine != 0 && !APU_power)
 			// Lose power
@@ -36,12 +27,6 @@
 			adjustOxyLoss(-1)
 
 		lying = 0			// Handle lying down
-
-		malf_process()
-
-		if(APU_power && (hardware_integrity() < 50))
-			to_chat(src, "<span class='notice'><b>APU GENERATOR FAILURE! (System Damaged)</b></span>")
-			stop_apu(1)
 
 		var/blind = 0
 		var/area/loc = null

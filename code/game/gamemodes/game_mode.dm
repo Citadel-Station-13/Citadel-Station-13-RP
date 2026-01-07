@@ -1,5 +1,6 @@
 var/global/antag_add_failed // Used in antag type voting.
 var/global/list/additional_antag_types = list()
+var/list/nuke_disks = list()
 
 /datum/game_mode
 	var/name = "invalid"
@@ -136,60 +137,13 @@ var/global/list/additional_antag_types = list()
 /datum/game_mode/proc/announce() //to be called when round starts
 	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
 	if(round_description) to_chat(world, "[round_description]")
-	if(round_autoantag) to_chat(world, "Antagonists will be added to the round automagically as needed.")
-	if(antag_templates && antag_templates.len)
-		var/antag_summary = "<b>Possible antagonist types:</b> "
-		var/i = 1
-		for(var/datum/antagonist/antag in antag_templates)
-			if(i > 1)
-				if(i == antag_templates.len)
-					antag_summary += " and "
-				else
-					antag_summary += ", "
-			antag_summary += "[antag.role_text_plural]"
-			i++
-		antag_summary += "."
-		if(antag_templates.len > 1 && master_mode != "secret")
-			to_chat(world, "[antag_summary]")
-		else
-			message_admins("[antag_summary]")
 
-///can_start()
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.
-/datum/game_mode/proc/can_start(var/do_not_spawn)
-	var/playerC = 0
+/datum/game_mode/proc/can_start()
 	for(var/mob/new_player/player in GLOB.player_list)
 		if((player.client)&&(player.ready))
-			playerC++
-
-	if(master_mode=="secret")
-		if(playerC < config_legacy.player_requirements_secret[config_tag])
-			return 0
-	else
-		if(playerC < config_legacy.player_requirements[config_tag])
-			return 0
-
-	if(!(antag_templates && antag_templates.len))
-		return 1
-
-	var/enemy_count = 0
-	if(antag_tags && antag_tags.len)
-		for(var/antag_tag in antag_tags)
-			var/datum/antagonist/antag = GLOB.all_antag_types[antag_tag]
-			if(!antag)
-				continue
-			var/list/potential = list()
-			if(antag.flags & ANTAG_OVERRIDE_JOB)
-				potential = antag.pending_antagonists
-			else
-				potential = antag.candidates
-			if(islist(potential))
-				if(require_all_templates && potential.len < antag.initial_spawn_req)
-					return 0
-				enemy_count += potential.len
-				if(enemy_count >= required_enemies)
-					return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /datum/game_mode/proc/refresh_event_modifiers()
 	if(event_delay_mod_moderate || event_delay_mod_major)
@@ -305,17 +259,6 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/declare_completion()
 
-	var/is_antag_mode = (antag_templates && antag_templates.len)
-	check_victory()
-	if(is_antag_mode)
-		CHECK_TICK
-		for(var/datum/antagonist/antag in antag_templates)
-			CHECK_TICK
-			antag.check_victory()
-			antag.print_player_summary()
-		CHECK_TICK
-		print_ownerless_uplinks()
-
 	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0
@@ -378,88 +321,6 @@ var/global/list/additional_antag_types = list()
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
 
-/datum/game_mode/proc/get_players_for_role(var/role, var/antag_id, var/ghosts_only)
-	var/list/players = list()
-	var/list/candidates = list()
-
-	var/datum/antagonist/antag_template = GLOB.all_antag_types[antag_id]
-	if(!antag_template)
-		return candidates
-
-	// If this is being called post-roundstart then it doesn't care about ready status.
-	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
-		for(var/mob/player in GLOB.player_list)
-			if(!player.client)
-				continue
-			if(istype(player, /mob/new_player))
-				continue
-			if(istype(player, /mob/observer/dead) && !ghosts_only)
-				continue
-			if(!role || (player.client.prefs.be_special & role))
-				log_debug(SPAN_DEBUG("[player.key] had [antag_id] enabled, so we are drafting them."))
-				candidates |= player.mind
-	else
-		// Assemble a list of active players without jobbans.
-		for(var/mob/new_player/player in GLOB.player_list)
-			if( player.client && player.ready )
-				players += player
-
-		// Get a list of all the people who want to be the antagonist for this round
-		for(var/mob/new_player/player in players)
-			if(!role || (player.client.prefs.be_special & role))
-				log_debug(SPAN_DEBUG("[player.key] had [antag_id] enabled, so we are drafting them."))
-				candidates += player.mind
-				players -= player
-
-		// Below is commented out as an attempt to solve an issue of too little people wanting to join the round due to wanting to have cake and eat it too.
-		/*
-		// If we don't have enough antags, draft people who voted for the round.
-		if(candidates.len < required_enemies)
-			for(var/mob/new_player/player in players)
-				if(player.ckey in round_voters)
-					log_debug(SPAN_DEBUG("[player.key] voted for this round, so we are drafting them."))
-					candidates += player.mind
-					players -= player
-					break
-		*/
-
-	return candidates		// Returns: The number of people who had the antagonist role set to yes, regardless of recomended_enemies, if that number is greater than required_enemies
-							//			required_enemies if the number of people with that role set to yes is less than recomended_enemies,
-							//			Less if there are not enough valid players in the game entirely to make required_enemies.
-
-/datum/game_mode/proc/num_players()
-	. = 0
-	for(var/mob/new_player/P in GLOB.player_list)
-		if(P.client && P.ready)
-			. ++
-
-/datum/game_mode/proc/check_antagonists_topic(href, href_list[])
-	return 0
-
-/datum/game_mode/proc/create_antagonists()
-
-	if(!config_legacy.traitor_scaling)
-		antag_scaling_coeff = 0
-
-	if(antag_tags && antag_tags.len)
-		antag_templates = list()
-		for(var/antag_tag in antag_tags)
-			var/datum/antagonist/antag = GLOB.all_antag_types[antag_tag]
-			if(antag)
-				antag_templates |= antag
-
-	if(additional_antag_types && additional_antag_types.len)
-		if(!antag_templates)
-			antag_templates = list()
-		for(var/antag_type in additional_antag_types)
-			var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
-			if(antag)
-				antag_templates |= antag
-
-	newscaster_announcements = pick(newscaster_standard_feeds)
-
-/datum/game_mode/proc/check_victory()
-	return
 
 //////////////////////////
 //Reports player logouts//
@@ -545,12 +406,12 @@ var/global/list/additional_antag_types = list()
 		to_chat(usr, "Something is terribly wrong; there is no gametype.")
 		return
 
-	if(master_mode != "secret")
-		to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
-		if(SSticker.mode.round_description)
-			to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
-		if(SSticker.mode.extended_round_description)
-			to_chat(usr, "[SSticker.mode.extended_round_description]")
-	else
-		to_chat(usr, "<i>Shhhh</i>. It's a secret.")
+	to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
+
+	if(SSticker.mode.round_description)
+		to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
+
+	if(SSticker.mode.extended_round_description)
+		to_chat(usr, "[SSticker.mode.extended_round_description]")
+
 	return
