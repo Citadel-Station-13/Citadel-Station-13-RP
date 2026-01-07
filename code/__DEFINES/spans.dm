@@ -82,6 +82,7 @@
 #define SPAN_INFO(str) ("<span class='info'>[str]</span>")
 #define SPAN_INFOPLAIN(str) ("<span class='infoplain'>[str]</span>")
 #define SPAN_INTERFACE(str) ("<span class='interface'>[str]</span>")
+#define SPAN_ITALICS(str) ("<span class='italics'>" + str + "</span>")
 #define SPAN_LINKIFY(str) ("<span class='linkify'>[str]</span>")
 #define SPAN_LOOC(str) ("<span class='looc'>[str]</span>")
 #define SPAN_MEDAL(str) ("<span class='medal'>[str]</span>")
