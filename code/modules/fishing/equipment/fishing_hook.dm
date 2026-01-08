@@ -110,7 +110,7 @@
 /obj/item/fishing_hook/bone
 	name = "bone hook"
 	desc = "a simple hook carved from sharpened bone"
-	icon_state = "hook_bone"
+	icon_state = "bone"
 
 #undef MAGNET_HOOK_BONUS_MULTIPLIER
 #undef RESCUE_HOOK_FISH_MULTIPLIER
