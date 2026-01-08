@@ -22,7 +22,7 @@
 
 /// Create balloon alerts (text that floats up) to everything within range.
 /// Will only display to people who can see.
-/atom/proc/balloon_alert_to_viewers(message, self_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
+/atom/proc/balloon_alert_to_viewers(message, self_message, vision_distance = 7, list/ignored_mobs)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/list/hearers = get_hearers_in_view(vision_distance, src /*, RECURSIVE_CONTENTS_CLIENT_MOBS */)
