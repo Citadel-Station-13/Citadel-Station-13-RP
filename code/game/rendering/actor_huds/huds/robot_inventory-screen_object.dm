@@ -147,6 +147,7 @@
  * Item renderer
  */
 /atom/movable/render/robot_drawer_item_render
+	name = "drawer"
 	icon = 'icons/screen/hud/styles/common/storage.dmi'
 	icon_state = "block"
 	mouse_opacity = MOUSE_OPACITY_ICON
@@ -169,10 +170,18 @@
 	src.backplate.renderers -= src
 	return ..()
 
+/atom/movable/render/robot_drawer_item_render/Click(location, control, params)
+	#warn impl; allow drawing the item out
+
 /atom/movable/render/robot_drawer_item_render/proc/masquarade(obj/item/render_as)
+	if(masquarading_as)
+		reset()
 	vis_contents += render_as
 	masquarading_as = render_as
+	render_as.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 
 /atom/movable/render/robot_drawer_item_render/proc/reset()
+	if(masquarading_as)
+		masquarading_as.vis_flags &= ~(VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
 	vis_contents.len = 0
 	masquarading_as = null

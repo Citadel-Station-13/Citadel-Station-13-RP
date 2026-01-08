@@ -62,8 +62,8 @@
 	return "CENTER:64,BOTTOM:5"
 
 /datum/actor_hud/robot_inventory/proc/set_drawer_backplate_parameters()
-	drawer_backplate.first_tile_screen_ax = "LEFT"
-	drawer_backplate.first_tile_screen_ay = "BOTTOM"
+	drawer_backplate.first_tile_screen_ax = "LEFT+"
+	drawer_backplate.first_tile_screen_ay = "BOTTOM+"
 	drawer_backplate.first_tile_screen_tx = STORAGE_UI_START_TILE_X
 	drawer_backplate.first_tile_screen_ty = STORAGE_UI_START_TILE_Y
 	drawer_backplate.first_tile_screen_px = STORAGE_UI_START_PIXEL_X
