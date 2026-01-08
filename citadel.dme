@@ -2705,6 +2705,7 @@
 #include "code\modules\awaymissions\loot_vr.dm"
 #include "code\modules\awaymissions\pamphlet.dm"
 #include "code\modules\awaymissions\trigger.dm"
+#include "code\modules\balloon_alert\balloon_alert.dm"
 #include "code\modules\blob2\_defines.dm"
 #include "code\modules\blob2\announcement.dm"
 #include "code\modules\blob2\blobs\base_blob.dm"
