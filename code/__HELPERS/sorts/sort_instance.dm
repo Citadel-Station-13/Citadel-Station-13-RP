@@ -614,7 +614,7 @@ GLOBAL_DATUM_INIT(sort_instance, /datum/sort_instance, new())
 	// 	ASSERT(len2 > 0)
 
 
-/datum/sort_instance/proc/sort_merge(start, end)
+/datum/sort_instance/proc/merge_sort(start, end)
 	var/remaining = end - start
 
 	// If array is small, do an insertion sort.
