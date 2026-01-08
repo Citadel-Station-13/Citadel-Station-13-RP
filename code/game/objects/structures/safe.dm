@@ -79,7 +79,7 @@ FLOOR SAFES
 		if(isnull(input_value))
 			// balloon_alert(user, "reset cancelled!")
 			return TRUE
-		if(user.stat == CONSCIOUS)
+		if(user.stat != CONSCIOUS)
 			// balloon_alert(user, "reset interrupted!")
 			return TRUE
 		new_tumblers.Add(input_value)
@@ -169,7 +169,7 @@ FLOOR SAFES
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr
-	if(!user.stat == CONSCIOUS) // idk where can_perform_act went
+	if(user.stat != CONSCIOUS) // idk where can_perform_act went
 		return
 
 	var/canhear = FALSE
