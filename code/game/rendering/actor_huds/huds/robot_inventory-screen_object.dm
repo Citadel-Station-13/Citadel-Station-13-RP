@@ -171,7 +171,7 @@
 	return ..()
 
 /atom/movable/render/robot_drawer_item_render/Click(location, control, params)
-	#warn impl; allow drawing the item out
+	masquarading_as?.Click(arglist(args))
 
 /atom/movable/render/robot_drawer_item_render/proc/masquarade(obj/item/render_as)
 	if(masquarading_as)
