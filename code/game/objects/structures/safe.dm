@@ -67,20 +67,20 @@ FLOOR SAFES
 
 /obj/structure/safe/wrench_act(mob/living/user, obj/item/tool)
 	if(!open)
-		// balloon_alert(user, "must be open!")
+		balloon_alert(user, "must be open!")
 		return TRUE
 
-	// balloon_alert(user, "resetting lock...")
+	balloon_alert(user, "resetting lock...")
 	to_chat(user, SPAN_NOTICE("You begin resetting the lock for [src]. You'll need to set [number_of_tumblers] numbers."))
 
 	var/list/new_tumblers = list()
 	for(var/tumbler_index in 1 to number_of_tumblers)
 		var/input_value = tgui_input_number(user, "Set tumbler #[tumbler_index] (0-99):", "Set Lock", 0, 99, 0)
 		if(isnull(input_value))
-			// balloon_alert(user, "reset cancelled!")
+			balloon_alert(user, "reset cancelled!")
 			return TRUE
 		if(user.stat != CONSCIOUS)
-			// balloon_alert(user, "reset interrupted!")
+			balloon_alert(user, "reset interrupted!")
 			return TRUE
 		new_tumblers.Add(input_value)
 
@@ -93,7 +93,7 @@ FLOOR SAFES
 	dial = 0
 	tool.play_tool_sound(src)
 	to_chat(user, SPAN_NOTICE("You successfully reset the lock for [src]. The new combination is: [tumblers.Join("-")]."))
-	// balloon_alert(user, "lock set!")
+	balloon_alert(user, "lock set!")
 
 /obj/structure/safe/attackby(obj/item/attacking_item, mob/user, list/params)
 	if(open)
@@ -268,8 +268,7 @@ FLOOR SAFES
 	if(current_tick == 2)
 		to_chat(user, SPAN_ITALICS("The sounds from [src] are too fast and blend together."))
 	if(total_ticks == 1 || prob(SOUND_CHANCE))
-		// balloon_alert(user, pick(sounds))
-		visible_message(pick(sounds), range = 2)
+		balloon_alert(user, pick(sounds))
 
 /obj/structure/safe/open
 	open = TRUE
