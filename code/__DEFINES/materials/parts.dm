@@ -9,6 +9,7 @@
 //* material id enums for lookups during materials init of an entity *//
 
 /// material ID to pass to Initialize() procs for "erase the default material of this slot"
+/// * currently unimplemented.
 #define MATERIAL_ID_ERASE "___ERASE___"
 
 //* material_parts var - defaults *//

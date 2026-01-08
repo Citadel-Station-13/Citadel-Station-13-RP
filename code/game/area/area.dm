@@ -46,6 +46,13 @@
 	 * This is not a flag because you probably should not be touching this at runtime!
 	 */
 	var/unique = TRUE
+	/**
+	 * If this is TRUE, this is a special area with functionality. This means it shouldn't be randomly instantiated by admins.
+	 *
+	 * If this is FALSE, this is instead just a regular area that groups turfs and any system can spawn any amount of it (if not unique)
+	 * for any reason.
+	 */
+	var/special = FALSE
 
 	//* Defaults - Turfs *//
 	/// outdoors by default?
@@ -162,11 +169,15 @@
 			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70)) // This interacts with the map loader, so it needs to be set immediately
 	return ..()
 
+/area/EarlyDestroy(force)
+	if(GLOB.areas_by_type[type] == src)
+		GLOB.areas_by_type[type] = null
+	return ..()
+
 /*
  * Initalize this area
  *
- * intializes the dynamic area lighting and also registers the area with the z level via
- * reg_in_areas_in_z
+ * intializes the dynamic area lighting
  *
  * returns INITIALIZE_HINT_LATELOAD
  */
@@ -192,8 +203,6 @@
 
 	. = ..()
 
-	reg_in_areas_in_z()
-
 	blend_mode = BLEND_MULTIPLY // Putting this in the constructor so that it stops the icons being screwed up in the map editor.
 
 	if(!IS_DYNAMIC_LIGHTING(src))
@@ -206,23 +215,6 @@
  */
 /area/LateInitialize()
 	power_change() // all machines set to current power level, also updates lighting icon
-
-/**
- * Register this area as belonging to a z level
- *
- * Ensures the item is added to the SSmapping.areas_in_z list for this z
- */
-/area/proc/reg_in_areas_in_z()
-	if(!length(contents))
-		return
-	var/list/areas_in_z = SSmapping.areas_in_z
-	// update_areasize()
-	if(!z)
-		WARNING("No z found for [src]")
-		return
-	if(!areas_in_z["[z]"])
-		areas_in_z["[z]"] = list()
-	areas_in_z["[z]"] += src
 
 /**
  * Destroy an area and clean it up
@@ -766,11 +758,35 @@ var/list/ghostteleportlocs = list()
  */
 /area/proc/take_turfs(list/turf/turfs)
 	for(var/turf/T in turfs)
+		if(T.loc == src)
+			continue
 		ChangeArea(T, src)
+
+/**
+ * take turfs into ourselves
+ */
+/area/proc/take_turfs_checking_tick(list/turf/turfs)
+	for(var/turf/T in turfs)
+		if(T.loc == src)
+			continue
+		ChangeArea(T, src)
+		CHECK_TICK
 
 /**
  * give turfs to other area
  */
 /area/proc/give_turfs(list/turf/turfs, area/give_to)
 	for(var/turf/T in turfs)
+		if(T.loc != src)
+			stack_trace("give_turfs found a turf not in source area.")
 		ChangeArea(T, give_to)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs_checking_tick(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		if(T.loc != src)
+			stack_trace("give_turfs found a turf not in source area.")
+		ChangeArea(T, give_to)
+		CHECK_TICK

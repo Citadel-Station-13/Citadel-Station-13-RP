@@ -235,7 +235,7 @@
 	data["is_pill_bottle_loaded"] = pill_bottle ? TRUE : FALSE
 	if(pill_bottle)
 		data["pill_bottle_current_amount"] = pill_bottle.contents.len
-		data["pill_bottle_max_amount"] = pill_bottle.max_combined_volume
+		data["pill_bottle_max_amount"] = pill_bottle.obj_storage?.max_combined_volume / ITEM_VOLUME_PILL
 
 	data["is_beaker_loaded"]      = beaker ? TRUE : FALSE
 	data["beaker_current_volume"] = beaker ? round(beaker.reagents.total_volume, 0.01) : null
@@ -402,8 +402,8 @@
 				var/target_loc = drop_location()
 				var/drop_threshold = INFINITY
 				if(pill_bottle)
-					if(pill_bottle.max_combined_volume)
-						drop_threshold = pill_bottle.max_combined_volume - pill_bottle.contents.len
+					if(pill_bottle.obj_storage)
+						drop_threshold = (pill_bottle.obj_storage.max_combined_volume - pill_bottle.contents.len * ITEM_VOLUME_PILL) / ITEM_VOLUME_PILL
 						target_loc = pill_bottle
 				for(var/i in 1 to amount)
 					if(i-1 < drop_threshold)

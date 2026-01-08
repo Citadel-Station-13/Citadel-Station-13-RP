@@ -1,4 +1,3 @@
-
 SUBSYSTEM_DEF(sounds)
 	name = "Sounds"
 	subsystem_flags = SS_NO_FIRE

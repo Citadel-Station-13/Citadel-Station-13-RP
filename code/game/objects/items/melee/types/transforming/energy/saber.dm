@@ -13,6 +13,8 @@
 	colorable = TRUE
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	var/can_combine = TRUE
 
 	active_damage_force = 30
@@ -32,6 +34,7 @@
 		SPAN_WARNING("You energize \the [src]."),
 		target = src,
 	)
+	suit_storage_class = NONE
 
 /obj/item/melee/transforming/energy/sword/on_deactivate(datum/event_args/actor/actor, silent)
 	. = ..()
@@ -39,6 +42,7 @@
 		SPAN_WARNING("You de-energize \the [src]."),
 		target = src,
 	)
+	suit_storage_class = initial(suit_storage_class)
 
 /obj/item/melee/transforming/energy/sword/passive_parry_intercept(mob/defending, attack_type, datum/attack_source, datum/passive_parry/parry_data)
 	. = ..()
@@ -108,9 +112,8 @@
 	use_cell = TRUE
 	hitcost = 75
 
-/obj/item/melee/transforming/energy/sword/charge/loaded/Initialize(mapload)
-	. = ..()
-	bcell = new/obj/item/cell/device/weapon(src)
+/obj/item/melee/transforming/energy/sword/charge/loaded
+	cell_type = /obj/item/cell/basic/tier_1/weapon
 
 /obj/item/melee/transforming/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/transforming/energy/sword/charge))

@@ -85,7 +85,7 @@
 					log.parameters["intelligible"] = 1
 				else if(isslime(M))
 					race = "Slime"
-				else if(isanimal(M))
+				else if(isanimal_legacy_this_is_broken(M))
 					race = "Domestic Animal"
 
 				log.parameters["race"] = race
@@ -147,7 +147,7 @@
 			"name" = T.scan_name,
 			"x" = T.random_x,
 			"y" = T.random_y,
-			"z" = SSmapping.fluff_level_id(T.random_z),
+			"z" = SSmapping.level_get_fluff_id(T.random_z),
 			"accuracy" = T.accuracy,
 			"last" = world.time - T.last_updated,
 			"tag" = key,

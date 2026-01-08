@@ -7225,8 +7225,8 @@
 	dir = 9
 	},
 /obj/structure/closet,
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "pL" = (

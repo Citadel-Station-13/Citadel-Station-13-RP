@@ -58,6 +58,7 @@
 #define SPAN_DRONE(str) ("<span class='drone'>[str]</span>")
 #define SPAN_ENGRADIO(str) ("<span class='engradio'>[str]</span>")
 #define SPAN_EXTREMELYBIG(str) ("<span class='extremelybig'>[str]</span>")
+#define SPAN_EMOTE(str) ("<span class='emote'>[str]</span>")
 #define SPAN_EXPRADIO(str) ("<span class='expradio'>[str]</span>")
 #define SPAN_ENTRADIO(str) ("<span class='entradio'>[str]</span>")
 #define SPAN_GANGRADIO(str) ("<span class='gangradio'>[str]</span>")

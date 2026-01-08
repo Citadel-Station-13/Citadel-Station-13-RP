@@ -5,6 +5,7 @@
 	icon_state = "taperoll"
 	damage_force = 0
 	w_class = WEIGHT_CLASS_TINY
+	belt_storage_class = BELT_CLASS_SMALL
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	var/amount = 20

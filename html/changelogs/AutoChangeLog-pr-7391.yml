@@ -1,0 +1,4 @@
+author: "Putnam3145"
+delete-after: True
+changes:
+  - bugfix: "Fixes the \"random camera off\" event not to infinitely recurse on nets with no working camera"

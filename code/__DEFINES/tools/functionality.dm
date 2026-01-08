@@ -19,11 +19,14 @@
 #define TOOL_SCALPEL		"scalpel"
 #define TOOL_SAW			"saw"
 //* Glassworking
-#define TOOL_BLOW			"blowing_rod"
-#define TOOL_GLASS_CUT		"glasskit"
-#define TOOL_BONESET		"bonesetter"
+#define TOOL_BLOW			"blowing-rod"
+#define TOOL_GLASS_CUT		"glass-kit"
+#define TOOL_BONESET		"bone-setter"
 
-GLOBAL_REAL_VAR(all_tool_functions) = list(
+/**
+ * Hardcoded tool behaviors.
+ */
+GLOBAL_REAL_VAR(tool_behaviors_hardcoded) = list(
 	// engineering
 	TOOL_CROWBAR,
 	TOOL_MULTITOOL,
@@ -47,6 +50,17 @@ GLOBAL_REAL_VAR(all_tool_functions) = list(
 	TOOL_GLASS_CUT,
 	TOOL_BONESET,
 )
+
+/**
+ * Remaps for tool behavior names.
+ */
+GLOBAL_REAL_LIST(tool_behavior_name_remaps) = list()
+
+/**
+ * Gets the human-friendly name of a tool behavior.
+ */
+/proc/tool_behavior_name(behavior)
+	return global.tool_behavior_name_remaps[behavior] || behavior
 
 /// Yes, this is a real global. No, you shouldn't touch this for no reason.
 /// Add tools to this when they get states in the default icon file for:

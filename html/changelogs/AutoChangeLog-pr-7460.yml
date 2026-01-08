@@ -1,0 +1,4 @@
+author: "Chelxox"
+delete-after: True
+changes:
+  - bugfix: "Species which gender definition is unknown/undefinable to outsiders now display their proper pronouns when examined by members of their own species, ghosts and silicons, whilst maintaining \"they\" pronouns to those who don't are not members of the same species."

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * registers a /movable in a spatial grid
@@ -20,6 +20,8 @@
 		return
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
+	if(!grid)
+		CRASH("attempted to make a spatial grid component without a grid ref")
 
 	src.grid = grid
 	src.grid_width = grid.width

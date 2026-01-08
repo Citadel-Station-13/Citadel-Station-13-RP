@@ -5063,8 +5063,8 @@
 /obj/item/clothing/head/soft/blue,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
 /obj/item/clothing/suit/storage/hooded/wintercoat/olive,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/occulum)
 "xk" = (
@@ -11543,8 +11543,8 @@
 /area/sector/sky_planet/sky)
 "YS" = (
 /obj/item/gun/projectile/energy/taser,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
 /obj/item/clothing/accessory/badge/corporate_tag/press,
 /obj/item/clothing/accessory/badge/corporate_tag/press,
 /obj/structure/closet/walllocker_double/west,
@@ -11552,8 +11552,8 @@
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
 /obj/effect/floor_decal/industrial/hatch,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/crescend)

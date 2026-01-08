@@ -49,6 +49,17 @@
 	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 	var/price_default = 0
 
+	/**
+	 * Example of holiday product being stocked for christmas: (defines in defines/holidays.dm)
+	 * This is the same as the normal format except there's an initial index of the holiday the items should be stocked in
+	var/list/holiday_products = list(
+	  HOLIDAY_CHRISTMAS = list(
+	    /obj/item/reagent_containers/food/snacks/wrapped/candy = 6,
+	  )
+	)
+	*/
+	var/list/holiday_products = list()
+
 	/// List of vending_product items available.
 	var/list/product_records = list()
 
@@ -108,6 +119,7 @@
 		if(product_ads)
 			ads_list += splittext(product_ads, ";")
 
+		handle_holiday_products()
 		build_inventory()
 		power_change()
 
@@ -136,11 +148,18 @@
 
 			product_records.Add(product)
 
+/**
+ * Add holiday products to products if it's that holiday
+ */
+/obj/machinery/vending/proc/handle_holiday_products()
+	for(var/holiday in holiday_products)
+		if(IsHoliday(holiday))
+			products += holiday_products[holiday]
+
 /obj/machinery/vending/Destroy()
-	qdel(wires)
-	wires = null
-	qdel(coin)
-	coin = null
+	QDEL_NULL(wires)
+	QDEL_NULL(coin)
+	currently_vending = null
 	for(var/datum/stored_item/vending_product/R in product_records)
 		qdel(R)
 	product_records = null

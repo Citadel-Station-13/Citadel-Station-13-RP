@@ -17,6 +17,7 @@
 	id = "tail_unathi_damaged"
 	icon_state = "unathitail_damaged_s"
 	species_allowed = list(SPECIES_UNATHI)
+	do_colouration = 1
 	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/unathi_stubby
@@ -24,4 +25,5 @@
 	id = "tail_unathi_stubby"
 	icon_state = "unathitail_stubby_s"
 	species_allowed = list(SPECIES_UNATHI)
+	do_colouration = 1
 	legacy_use_additive_color_matrix = TRUE

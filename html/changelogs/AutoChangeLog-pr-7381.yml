@@ -1,0 +1,5 @@
+author: "silicons"
+delete-after: True
+changes:
+  - refactor: "completely reworked suit storage allowed lists"
+  - balance: "a lot more suit-slot items can now fit a lot more things"

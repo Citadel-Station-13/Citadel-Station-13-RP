@@ -9,6 +9,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	icon_state = "blank"
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	var/seed_type
 	var/datum/seed/seed
@@ -16,7 +17,11 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/Initialize(mapload)
 	update_seed()
-	. = ..()
+	return ..()
+
+/obj/item/seeds/Destroy()
+	seed = null
+	return ..()
 
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()

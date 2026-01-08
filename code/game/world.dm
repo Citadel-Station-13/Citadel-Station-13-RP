@@ -7,7 +7,11 @@ GLOBAL_LIST(topic_status_cache)
 
 /world
 	mob = /mob/new_player
+	// TODO: replace with /turf/unallocated
+	// --           DO NOT USE THIS TURF ANYWHERE ELSE!                --
+	// -- DO NOT EVEN REFERENCE WORLD.TURF OTHER THAN TO CHECK FOR IT. --
 	turf = /turf/space/basic
+	// TODO: replace with /area/unallocated
 	area = /area/space
 	view = "15x15"
 	name = "Citadel Station 13 - Roleplay"
@@ -72,8 +76,11 @@ GLOBAL_LIST(topic_status_cache)
 
 	InitTgs()
 
+	// load configuration
+	load_legacy_configuration()
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 	config.update_world_viewsize()	//! Since world.view is immutable, we load it here.
+	Configuration.Initialize()
 
 	//SetupLogs depends on the RoundID, so lets check
 	//DB schema and set RoundID if we can
@@ -524,12 +531,12 @@ GLOBAL_LIST(topic_status_cache)
 // if we're unit testing do not ever redirect world.log or the test won't show output.
 #ifndef UNIT_TESTS
 	// we already know, we don't care
-	if(global.world_log_redirected)
+	if(global.world_log_shunter_active)
 		return
 	// we're not running in tgs, do not redirect world.log
 	if(!world.params["server_service_version"])
 		return
-	global.world_log_redirected = TRUE
+	global.world_log_shunter_active = TRUE
 	if(fexists("data/logs/world_init_temporary.log"))
 		fdel("data/logs/world_init_temporary.log")
 	world.log = file("data/logs/world_init_temporary.log")
@@ -549,7 +556,7 @@ GLOBAL_LIST(topic_status_cache)
 	if(!(OVERRIDE_LOG_DIRECTORY_PARAMETER in params))
 		world.log = file("[GLOB.log_directory]/dd.log")
 	// handle pre-init log redirection
-	if(!world_log_redirected)
+	if(!world_log_shunter_active)
 		log_world("World log shunt never happened. Something has gone wrong!")
 		return
 	else if(!fexists("data/logs/world_init_temporary.log"))

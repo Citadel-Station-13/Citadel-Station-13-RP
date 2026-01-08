@@ -1,3 +1,6 @@
+/**
+ * Time tracking subsystem responsible for tracking server lag / time dilation.
+ */
 SUBSYSTEM_DEF(time_track)
 	name = "Time Tracking"
 	wait = 1 SECONDS

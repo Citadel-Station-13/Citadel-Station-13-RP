@@ -2,9 +2,6 @@
 	////////////
 	//SECURITY//
 	////////////
-///Could probably do with being lower.
-///Restricts client uploads to the server to 1MB
-#define UPLOAD_LIMIT		1048576
 
 #define LIMITER_SIZE	5
 #define CURRENT_SECOND	1
@@ -148,14 +145,6 @@
 		handle_age_gate(href_list["month"], href_list["year"])
 
 	..()	//redirect to hsrc.Topic()
-
-
-//This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
-/client/AllowUpload(filename, filelength)
-	if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
-		return 0
-	return 1
 
 
 	///////////
@@ -302,7 +291,6 @@
 		winset(src, null, "command=\".configure graphics-hwmode on\"")
 
 	if(holder)
-		add_admin_verbs()
 		admin_memo_show()
 		// to_chat(src, get_message_output("memo"))
 		// adminGreet()
@@ -454,8 +442,6 @@
 	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 */
 
-#undef UPLOAD_LIMIT
-
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
@@ -568,3 +554,32 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 /client/proc/AnnouncePR(announcement)
 	to_chat(src, announcement)
+
+// TODO: this shoudln't be on client.
+/client/proc/getAlertDesc()
+	var/color
+	var/desc
+	//borrow the same colors from the fire alarms
+	switch(get_security_level())
+		if("green")
+			color = "#00ff00"
+			desc = "" //no special description if nothing special is going on
+		if("yellow")
+			color = "#ffff00"
+			desc = CONFIG_GET(string/alert_desc_yellow_upto)
+		if("violet")
+			color = "#9933ff"
+			desc = CONFIG_GET(string/alert_desc_violet_upto)
+		if("orange")
+			color = "#ff9900"
+			desc = CONFIG_GET(string/alert_desc_orange_upto)
+		if("blue")
+			color = "#1024A9"
+			desc = CONFIG_GET(string/alert_desc_blue_upto)
+		if("red")
+			color = "#ff0000"
+			desc = CONFIG_GET(string/alert_desc_red_upto)
+		if("delta")
+			color = "#FF6633"
+			desc = CONFIG_GET(string/alert_desc_delta)
+	. = SPAN_NOTICE("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(get_security_level())]</font>. [desc]")

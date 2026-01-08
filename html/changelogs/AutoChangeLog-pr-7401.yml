@@ -1,0 +1,5 @@
+author: "Colfer1"
+delete-after: True
+changes:
+  - rscadd: "Adds new fruits to the alraune menu, Coconuts, Peas, Bentars, Cersut, Disho Juhtak, Jurlmah, Messa tears, Nettles, Pokelea, Shimash, Sendar hand, Telriis, Taro, Whitewabback"
+  - rscadd: "Adds new 'buildable' plants to the grass tile construction list"

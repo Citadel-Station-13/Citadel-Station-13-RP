@@ -103,7 +103,7 @@
 				occupantData["temperatureSuitability"] = 2
 			else if(occupant.bodytemperature > sp.heat_level_1)
 				occupantData["temperatureSuitability"] = 1
-		else if(isanimal(occupant))
+		else if(isanimal_legacy_this_is_broken(occupant))
 			var/mob/living/simple_mob/silly = occupant
 			if(silly.bodytemperature < silly.minbodytemp)
 				occupantData["temperatureSuitability"] = -3

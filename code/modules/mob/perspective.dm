@@ -252,4 +252,4 @@
  * TODO: this doesn't work on client global planes like admin plane.
  */
 /mob/proc/can_see_plane(val)
-	return val <= BYOND_PLANE || val >= HUD_PLANE || self_perspective.is_plane_visible(val)
+	return val <= BYOND_PLANE || val >= HUD_PLANE || self_perspective?.is_plane_visible(val)

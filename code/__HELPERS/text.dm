@@ -15,7 +15,7 @@
 
 /// Used for preprocessing entered text.
 //  todo: extra is a bad param, we should instead just have linebreaks = n for n linebreaks, and a way to disable it.
-/proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE)
+/proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE, newlines_allowed = 24)
 	if(!input)
 		// don't toss out blank input by nulling it
 		return input
@@ -25,7 +25,7 @@
 
 	if(extra)
 		var/temp_input = replace_characters(input, list("\n"="  ","\t"=" "))//one character is replaced by two
-		if(length_char(input) < (length_char(temp_input) - 24)) //24 is the number of linebreaks allowed per message
+		if(length_char(input) < (length_char(temp_input) - newlines_allowed)) //24 is the number of linebreaks allowed per message
 			input = replace_characters(temp_input,list("  "=" "))//replace again, this time the double spaces with single ones
 
 	if(encode)
@@ -44,6 +44,10 @@
 		input = trim(input)
 
 	return input
+
+/// Runs STRIP_HTML_FULL and sanitize.
+/proc/strip_html_full(text, limit = MAX_MESSAGE_LEN)
+	return sanitize(STRIP_HTML_FULL(text, limit))
 
 /**
  * standard sanitization for atom names

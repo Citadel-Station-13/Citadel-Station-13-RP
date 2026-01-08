@@ -384,6 +384,13 @@
  */
 #define SONAR_PLANE 80
 
+///--------------- FULLSCREEN RUNECHAT BUBBLES, just under hud. ------------
+
+///Popup Chat Messages
+#define RUNECHAT_PLANE 85
+/// Plane for balloon text (text that fades up)
+#define BALLOON_CHAT_PLANE 86
+
 /**
  *! -- Player HUD Plane
  *? Client UI HUD stuff.

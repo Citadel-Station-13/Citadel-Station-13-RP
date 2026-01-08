@@ -3,6 +3,7 @@
 	name = "\proper space"
 	icon_state = "0"
 	plane = SPACE_PLANE
+	turf_spawn_flags = TURF_SPAWN_FLAGS_ALLOW_ALL
 	mz_flags = MZ_ATMOS_BOTH | MZ_OPEN_BOTH
 
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
@@ -18,6 +19,9 @@
 	/// Force this one to pretend it's an overedge turf.
 	var/forced_dirs = 0
 
+/**
+ * * -- DO NOT MAP THIS IN!!!!! --
+ */
 /turf/space/basic
 	atom_flags = ATOM_INITIALIZED
 
@@ -25,8 +29,15 @@
 	// Do not convert to Initialize
 	// This is used to optimize the map loader
 	SHOULD_CALL_PARENT(FALSE)
-	// turn preloader off so it doesn't hit something else
-	global.dmm_preloader_active = FALSE
+
+	// TODO: put this behind compile flag for aggressive asserts
+	if(global.dmm_preloader_active)
+		// this shouldn't happen, because people aren't supposed to map this in
+		global.dmm_preloader_active = FALSE
+		var/static/warned = FALSE
+		if(!warned)
+			warned = TRUE
+			stack_trace("turf space basic had preloader active, shouldn't happen")
 
 /**
  * Space Initialize

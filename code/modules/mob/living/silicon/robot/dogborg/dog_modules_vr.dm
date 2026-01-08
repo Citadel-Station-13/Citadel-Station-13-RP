@@ -247,7 +247,7 @@
 				to_chat(user, "<span class='notice'>You finish off [target], and gain some charge!</span>")
 				var/mob/living/silicon/robot/R = user
 				var/obj/item/cell/C = target
-				R.cell.charge += C.maxcharge / 3
+				R.cell.charge += C.max_charge / 3
 				water.use_charge(5)
 				qdel(target)
 			return
@@ -312,17 +312,6 @@
 		R.scrubbing = FALSE
 		enabled = FALSE
 		icon_state = "scrub0"
-
-/obj/item/gun/projectile/energy/taser/mounted/cyborg/ertgun //Not a taser, but it's being used as a base so it takes energy and actually works.
-	name = "disabler"
-	desc = "A small and nonlethal gun produced by NT.."
-	icon = 'icons/mob/dogborg_vr.dmi'
-	icon_state = "projgun"
-	fire_sound = 'sound/weapons/eLuger.ogg'
-	projectile_type = /obj/projectile/beam/disable
-	charge_cost = 240 //Normal cost of a taser. It used to be 1000, but after some testing it was found that it would sap a borg's battery to quick
-	recharge_time = 10 //Takes ten ticks to recharge a shot, so don't waste them all!
-	//cell_type = null //Same cell as a taser until edits are made.
 
 /obj/item/dogborg/swordtail
 	name = "sword tail"

@@ -32,19 +32,19 @@
 /datum/firemode/energy/nt_isd/sidearm/stun
 	name = "disrupt"
 	render_color = "#ffff00"
-	charge_cost = 2400 / 8
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 12
 	projectile_type = /obj/projectile/nt_isd/electrode
 
 /datum/firemode/energy/nt_isd/sidearm/disable
 	name = "disable"
 	render_color = "#77ffff"
-	charge_cost = 2400 / 20
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 20
 	projectile_type = /obj/projectile/nt_isd/disable
 
 /datum/firemode/energy/nt_isd/sidearm/lethal
 	name = "kill"
 	render_color = "#ff0000"
-	charge_cost = 2400 / 12
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 16
 	projectile_type = /obj/projectile/nt_isd/laser/sidearm
 	considered_lethal = TRUE
 
@@ -90,6 +90,7 @@
 			14,
 		)
 	)
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 /obj/item/gun/projectile/energy/nt_isd/sidearm/with_light
 	attachments = list(
@@ -104,20 +105,20 @@
 /datum/firemode/energy/nt_isd/carbine/disable
 	name = "disable"
 	render_color = "#77ffff"
-	charge_cost = 2400 / 20
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 20
 	projectile_type = /obj/projectile/nt_isd/disable
 
 /datum/firemode/energy/nt_isd/carbine/shock
 	name = "shock"
 	render_color = "#ffff00"
-	charge_cost = 2400 / 10
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 12
 	projectile_type = /obj/projectile/nt_isd/shock
 	considered_lethal = TRUE
 
 /datum/firemode/energy/nt_isd/carbine/kill
 	name = "kill"
 	render_color = "#ff0000"
-	charge_cost = 2400 / 12
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 16
 	projectile_type = /obj/projectile/nt_isd/laser/rifle
 	considered_lethal = TRUE
 	cycle_cooldown = 0.45 SECONDS
@@ -159,6 +160,7 @@
 		use_color = TRUE;
 		use_empty = TRUE;
 	}
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 //* Energy Lance *//
 
@@ -168,7 +170,7 @@
 /datum/firemode/energy/nt_isd/lance/kill
 	name = "kill"
 	render_color = "#00ff00"
-	charge_cost = 2400 / 15
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 16
 	projectile_type = /obj/projectile/nt_isd/laser/lance
 
 /obj/item/gun/projectile/energy/nt_isd/lance
@@ -193,7 +195,7 @@
 		/datum/firemode/energy/nt_isd/lance/kill,
 	)
 	item_renderer = /datum/gun_item_renderer/segments{
-		offset_x = 3
+		offset_x = 3;
 		count = 4;
 		use_color = TRUE;
 		independent_colored_firemode = TRUE;
@@ -202,6 +204,7 @@
 		count = 4;
 		use_empty = TRUE;
 	}
+	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 //* Multiphase Sidearm *//
 
@@ -211,13 +214,13 @@
 	name = "disable"
 	render_color = "#77ffff"
 	projectile_type = /obj/projectile/nt_isd/disable
-	charge_cost = 2400 / 20
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 20
 
 /datum/firemode/energy/nt_isd/multiphase/kill
 	name = "kill"
 	render_color = "#ff0000"
 	projectile_type = /obj/projectile/nt_isd/laser/multiphase
-	charge_cost = 2400 / 12
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 16
 	considered_lethal = TRUE
 	cycle_cooldown = 0.6 SECONDS
 
@@ -226,7 +229,7 @@
 	name = "ion"
 	render_color = "#45a3aa"
 	projectile_type = /obj/projectile/nt_isd/ion
-	charge_cost = 2400 / 6
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 8
 	considered_lethal = TRUE
 	cycle_cooldown = 0.8 SECONDS
 
@@ -251,7 +254,7 @@
 		/datum/firemode/energy/nt_isd/multiphase/ion,
 	)
 	item_renderer = /datum/gun_item_renderer/segments{
-		offset_x = 4
+		offset_x = 4;
 		count = 4;
 		use_color = TRUE;
 		independent_colored_firemode = TRUE;
@@ -262,6 +265,7 @@
 		use_empty = TRUE;
 		use_single = TRUE;
 	}
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 //* Projectiles *//
 

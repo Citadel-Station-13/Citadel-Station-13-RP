@@ -5,7 +5,8 @@
 	var/tally = 0
 
 	if (istype(loc, /turf/space))
-		return 1		//until tg movement slowdown + modifiers is a thing I guess ...
+		return 0		//until tg movement slowdown + modifiers is a thing I guess ...
+						//Also has no effect unless there is gravity in space... which kinda does make no sense, but is the case for the random asteroid mining, so lets return 0
 
 	if(embedded_flag)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
@@ -114,7 +115,7 @@
 
 	// Wind makes it easier or harder to move, depending on if you're with or against the wind.
 	if(T.outdoors && (T.z <= SSplanets.z_to_planet.len))
-		var/datum/planet/P = SSplanets.z_to_planet[z]
+		var/datum/planet/P = SSplanets.z_to_planet[T.z]
 		if(P)
 			var/datum/weather_holder/WH = P.weather_holder
 			if(WH && WH.wind_speed) // Is there any wind?

@@ -4,6 +4,7 @@
 	icon_state = "flask"
 	volume = 60
 	center_of_mass = list("x"=17, "y"=7)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 /obj/item/reagent_containers/food/drinks/flask/shiny
 	name = "shiny flask"

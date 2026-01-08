@@ -490,27 +490,6 @@
 
 	. = ..()
 
-/datum/controller/subsystem/proc/subsystem_log(msg)
-	return log_subsystem(name, msg)
-
-/datum/controller/subsystem/proc/init_debug(msg)
-	subsystem_log("init-debug: [msg]")
-
-/datum/controller/subsystem/proc/init_log(msg)
-	subsystem_log("init-log: [msg]")
-
-/datum/controller/subsystem/proc/init_warning(msg)
-	subsystem_log("init-warn: [msg]")
-	message_admins("[src] load warning: [msg]")
-
-/datum/controller/subsystem/proc/init_error(msg)
-	subsystem_log("init-error: [msg]")
-	message_admins(SPAN_BOLDANNOUNCE("[src] load error: [msg]"))
-
-/datum/controller/subsystem/proc/init_fatal(msg)
-	subsystem_log("init-fatal: [msg]")
-	to_chat(world, SPAN_BOLDANNOUNCE("[src] load fatal: [msg]"))
-
 /**
  * Called when max z is changed since subsystems hook it so much.
  *
@@ -531,7 +510,7 @@
  * * new_ticklag
  */
 /datum/controller/subsystem/proc/on_ticklag_changed(old_ticklag, new_ticklag)
-	return
+	recompute_wait_dt()
 
 /**
  * Called when SQL is reconnected after being disconnected

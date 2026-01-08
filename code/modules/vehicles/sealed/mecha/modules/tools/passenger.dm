@@ -85,7 +85,7 @@
 	var/obj/vehicle/sealed/mecha/M = chassis
 	..()
 	if (M && !(locate(/obj/item/vehicle_module/tool/passenger) in M))
-		remove_verb(M, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
+		remove_obj_verb(M, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
 
 /obj/item/vehicle_module/tool/passenger/get_equip_info()
 	return "[..()] <br />[occupant_legacy? "\[Occupant: [occupant_legacy]\]|" : ""]Exterior Hatch: <a href='?src=\ref[src];toggle_lock=1'>Toggle Lock</a>"

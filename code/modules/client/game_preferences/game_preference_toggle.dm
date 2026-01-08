@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/game_preference_toggle
 	abstract_type = /datum/game_preference_toggle
@@ -105,6 +105,11 @@
 	name = "Mob Tooltips"
 	key = "mob_tooltips"
 	legacy_key = "MOB_TOOLTIPS"
+
+/datum/game_preference_toggle/game/vocal_cues
+	name = "Vocal Cues on Chat"
+	key = "vocal_cues"
+	description = "Enables playing a sound on hearing someone speak / act."
 
 /datum/game_preference_toggle/game/overhead_chat
 	name = "Overhead Chat"

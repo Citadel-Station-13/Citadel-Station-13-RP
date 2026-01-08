@@ -10,6 +10,7 @@
 	output_level_max = 0
 	icon_state = "gsmes"
 	circuit = /obj/item/circuitboard/batteryrack
+	should_be_mapped = TRUE
 	var/cells_amount = 0
 	var/capacitors_amount = 0
 	var/global/list/br_cache = null
@@ -32,7 +33,7 @@
 
 	var/C = 0
 	for(var/obj/item/cell/PC in component_parts)
-		C += PC.maxcharge
+		C += PC.max_charge
 		cells_amount++
 	capacity = KJ_TO_KWM(DYNAMIC_CELL_UNITS_TO_KJ(C))
 

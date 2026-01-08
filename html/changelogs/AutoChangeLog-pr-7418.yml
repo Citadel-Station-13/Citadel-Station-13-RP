@@ -1,0 +1,5 @@
+author: "Athena148"
+delete-after: True
+changes:
+  - balance: "lowers Monarch's burn resist, makes charge not instant."
+  - bugfix: "Removes any reference to the Monarch spawning naturally, probable or not."

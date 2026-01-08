@@ -23,7 +23,7 @@
 "aZ" = (
 /obj/structure/lattice,
 /obj/structure/marker_beacon/yellow,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "bo" = (
 /obj/machinery/atmospherics/pipe/tank/air{
@@ -39,7 +39,7 @@
 /area/osirisdebrisfield/memorial)
 "bT" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield/unexplored)
 "cV" = (
 /obj/machinery/light/poi{
@@ -49,7 +49,7 @@
 /area/osirisdebrisfield/memorial)
 "db" = (
 /obj/structure/lattice,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "dh" = (
 /obj/effect/floor_decal/grass_edge{
@@ -107,7 +107,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_4"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "fv" = (
 /obj/spawner/window/reinforced/full/firelocks,
@@ -301,7 +301,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/osirisdebrisfield/memorial)
 "rM" = (
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield/unexplored)
 "sv" = (
 /obj/effect/floor_decal/grass_edge{
@@ -398,7 +398,7 @@
 /area/osirisdebrisfield/memorial)
 "yp" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/west,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "yq" = (
 /obj/structure/flora/pottedplant/flower{
@@ -409,10 +409,10 @@
 /area/osirisdebrisfield/memorial)
 "yB" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/north,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield/unexplored)
 "yD" = (
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "yR" = (
 /obj/structure/flora/grass/event/yellow_flowers1,
@@ -484,7 +484,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_3"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "Co" = (
 /obj/effect/floor_decal/grass_edge,
@@ -499,11 +499,11 @@
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_1"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "CQ" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/west,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield/unexplored)
 "Da" = (
 /turf/simulated/floor,
@@ -549,7 +549,7 @@
 /area/osirisdebrisfield/memorial)
 "Gx" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/south,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "Hv" = (
 /obj/machinery/door/airlock/glass_external/public,
@@ -562,7 +562,7 @@
 /area/osirisdebrisfield/memorial)
 "HB" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/south,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield/unexplored)
 "Im" = (
 /obj/effect/floor_decal/grass_edge,
@@ -573,7 +573,7 @@
 	name = "Wingman the Carp";
 	iff_factions = list("neutral","pet")
 	},
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "Jp" = (
 /obj/effect/floor_decal/grass_edge{
@@ -610,13 +610,13 @@
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_6"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "Kw" = (
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_5"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "LF" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -691,7 +691,7 @@
 /area/osirisdebrisfield/memorial)
 "OL" = (
 /obj/overmap/entity/visitable/sector/osiris_field,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "OM" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -722,7 +722,7 @@
 /area/osirisdebrisfield/memorial)
 "Pr" = (
 /obj/effect/step_trigger/teleporter/osiris_field_loop/east,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield/unexplored)
 "Qd" = (
 /turf/simulated/floor/fey/forest_grass,
@@ -792,7 +792,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	landmark_tag = "memorial_docks_2"
 	},
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "Ud" = (
 /obj/machinery/light/poi{
@@ -815,7 +815,7 @@
 /area/osirisdebrisfield/memorial)
 "Ye" = (
 /obj/effect/shuttle_landmark/automatic,
-/turf/space/basic,
+/turf/space,
 /area/space/osirisdebrisfield)
 "Yn" = (
 /obj/structure/flora/grass/event/full_grass1,

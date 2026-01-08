@@ -1,7 +1,19 @@
 /// Creates a weakref to the given input.
-/// See /datum/weakref's documentation for more information.
+/// * See /datum/weakref's documentation for more information.
 /proc/WEAKREF(datum/input)
 	if(istype(input) && !QDELETED(input))
+		if(isweakref(input))
+			return input
+
+		if(!input.weak_reference)
+			input.weak_reference = new /datum/weakref(input)
+		return input.weak_reference
+
+/// Creates a weakref to the given input.
+/// * See /datum/weakref's documentation for more information.
+/// * Ignores if the input is qdeleted.
+/proc/WEAKREF_UNSAFE(datum/input)
+	if(istype(input))
 		if(isweakref(input))
 			return input
 
@@ -56,7 +68,7 @@
 	var/reference
 
 /datum/weakref/New(datum/thing)
-	reference = REF(thing)
+	reference = ref(thing)
 
 /datum/weakref/Destroy(force)
 	var/datum/target = resolve()

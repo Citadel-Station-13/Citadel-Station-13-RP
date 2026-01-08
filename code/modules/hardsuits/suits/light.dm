@@ -17,7 +17,6 @@
 	desc = "A lighter, less armoured hardsuit suit."
 	icon_state = "ninja_rig"
 	suit_type = "light suit"
-	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/cell)
 	armor_type = /datum/armor/hardsuit/light
 	emp_protection = 10
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
@@ -98,20 +97,9 @@
 	chest_type = /obj/item/clothing/suit/space/hardsuit/light/ninja
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/light/ninja
 	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/light/ninja
-	cell_type =  /obj/item/cell/hyper
+	cell_type =  /obj/item/cell/basic/tier_4/large
 
 	req_access = list(ACCESS_FACTION_SYNDICATE)
-	allowed = list(
-		/obj/item/gun,
-		/obj/item/ammo_magazine,
-		/obj/item/ammo_casing,
-		/obj/item/melee/baton,
-		/obj/item/handcuffs,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/cell,
-		/obj/item/bluespace_radio,
-	)
 
 	initial_modules = list(
 		/obj/item/hardsuit_module/teleporter,

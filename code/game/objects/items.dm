@@ -153,6 +153,30 @@
 	/// null to default to weight class
 	var/weight_volume
 
+	//* Storage - Belts *//
+	/// Belt storage class
+	/// * IT IS NOT SAFE TO MODIFY THIS WITHOUT USING GETTER / SETTER PATTERN
+	/// TODO: getter / setter
+	var/belt_storage_class = BELT_CLASS_INVALID
+	/// Belt storage size
+	/// * IT IS NOT SAFE TO MODIFY THIS WITHOUT USING GETTER / SETTER PATTERN
+	/// TODO: getter / setter
+	var/belt_storage_size = BELT_SIZE_DEFAULT
+
+	//* Storage - Suit Storage *//
+	/// Suit storage classes
+	var/suit_storage_class = NONE
+	/// Suit storage classes to allow
+	var/suit_storage_class_allow = NONE
+	/// Suit storage classes to disallow
+	var/suit_storage_class_disallow = NONE
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_allow_override
+	/// Suit storage override type-list
+	/// * only for adminbus really
+	VAR_PRIVATE/list/suit_storage_types_disallow_override
+
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
@@ -175,9 +199,6 @@
 	var/permeability_coefficient = 1
 	/// For electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
-	/// Suit storage stuff.
-	// todo: kill with fire
-	var/list/allowed = null
 	// todo: kill with fire
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
 	var/obj/item/uplink/hidden/hidden_uplink = null
@@ -314,18 +335,8 @@
 			. += "It looks like it weighs a lot. You probably will have a hard time running with it."
 		if(40 to INFINITY)
 			. += "It looks like it weighs a ton. You really won't be doing much running with it."
-
-	// if(resistance_flags & INDESTRUCTIBLE)
-	// 	. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
-	// else
-	// 	if(resistance_flags & LAVA_PROOF)
-	// 		. += "[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!"
-	// 	if(resistance_flags & (ACID_PROOF | UNACIDABLE))
-	// 		. += "[src] looks pretty robust! It'd probably be able to withstand acid!"
-	// 	if(resistance_flags & FREEZE_PROOF)
-	// 		. += "[src] is made of cold-resistant materials."
-	// 	if(resistance_flags & FIRE_PROOF)
-	// 		. += "[src] is made of fire-retardant materials."
+	if(belt_storage_class != BELT_CLASS_INVALID)
+		. += "It looks like it can fit into a belt, and would use [belt_storage_size] [lowertext(global.belt_class_names[belt_storage_class])]-sized loop(s)."
 
 	// if(item_flags & (ITEM_CAN_BLOCK | ITEM_CAN_PARRY))
 	// 	var/datum/block_parry_data/data = return_block_parry_datum(block_parry_data)
@@ -373,11 +384,6 @@
 	. = ..()
 	if(QDELETED(A))
 		return
-/*
-		if(get_temperature() && isliving(hit_atom))
-			var/mob/living/L = hit_atom
-			L.IgniteMob()
-*/
 	if(isliving(A)) //Living mobs handle hit sounds differently.
 		var/volume = get_volume_by_throwforce_and_or_w_class()
 		if (throw_force > 0)
@@ -389,11 +395,12 @@
 				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else
 			playsound(A, 'sound/weapons/throwtap.ogg', 1, volume, -1)
-	else
-		playsound(src, drop_sound, 30)
 
 /obj/item/throw_land(atom/A, datum/thrownthing/TT)
 	. = ..()
+	// if we're landing from the impact we don't play a sound as we already played hitsound
+	if(drop_sound && (A != TT.landing_from_impact))
+		playsound(src, drop_sound, 50, TRUE)
 	if(TT.throw_flags & THROW_AT_IS_NEAT)
 		return
 	var/matrix/M = matrix(transform)

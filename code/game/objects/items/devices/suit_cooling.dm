@@ -12,36 +12,37 @@
 	throw_speed = 1
 	throw_range = 4
 	item_action_name = "Toggle Heatsink"
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR
 
 	materials_base = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
 
+	var/cell_type = /obj/item/cell/basic/tier_1/medium
+	var/cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	var/cell_locked = FALSE
+
 	var/on = 0				//is it turned on?
 	var/cover_open = 0		//is the cover open?
-	var/obj/item/cell/cell = /obj/item/cell/high
 	var/max_cooling = 15				// in degrees per second - probably don't need to mess with heat capacity here
 	var/charge_consumption = 3			// charge per second at max_cooling
 	var/thermostat = T20C
 
 	//TODO: make it heat up the surroundings when not in space
 
-/obj/item/suit_cooling_unit/empty
-	cell = null
+/obj/item/suit_cooling_unit/Initialize(mapload)
+	var/datum/object_system/cell_slot/slot = init_cell_slot(cell_type, cell_accept)
+	slot.remove_yank_offhand = TRUE
+	slot.remove_yank_context = TRUE
+	return ..()
+
+/obj/item/suit_cooling_unit/object_cell_slot_mutable(mob/user, datum/object_system/cell_slot/slot)
+	return cover_open && !cell_locked
 
 /obj/item/suit_cooling_unit/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle(usr)
 
-/obj/item/suit_cooling_unit/Initialize(mapload)
-	. = ..()
-	if(ispath(cell))
-		cell = new cell(src)
-
-/obj/item/suit_cooling_unit/Destroy()
-	QDEL_NULL(cell)
-	return ..()
-
 /obj/item/suit_cooling_unit/process()
-	if (!on || !cell)
+	if (!on || !obj_cell_slot?.cell)
 		return PROCESS_KILL
 
 	if (!ismob(loc))
@@ -71,9 +72,9 @@
 
 	H.bodytemperature -= temp_adj*efficiency
 
-	cell.use(charge_usage)
+	obj_cell_slot.cell.use(charge_usage)
 
-	if(cell.charge <= 0)
+	if(obj_cell_slot.cell.charge <= 0)
 		turn_off(1)
 
 /obj/item/suit_cooling_unit/proc/get_environment_temperature()
@@ -108,9 +109,9 @@
 	return 1
 
 /obj/item/suit_cooling_unit/proc/turn_on()
-	if(!cell)
+	if(!obj_cell_slot?.cell)
 		return
-	if(cell.charge <= 0)
+	if(obj_cell_slot.cell.charge <= 0)
 		return
 
 	on = 1
@@ -127,20 +128,6 @@
 	. = ..()
 	if(.)
 		return
-	if(cover_open && cell)
-		if(ishuman(user))
-			user.put_in_hands(cell)
-		else
-			cell.loc = get_turf(loc)
-
-		cell.add_fingerprint(user)
-		cell.update_icon()
-
-		to_chat(user, "You remove \the [src.cell].")
-		src.cell = null
-		updateicon()
-		return
-
 	toggle(user)
 
 /obj/item/suit_cooling_unit/proc/toggle(var/mob/user)
@@ -161,24 +148,11 @@
 		playsound(src, W.tool_sound, 50, 1)
 		updateicon()
 		return
-
-	if (istype(W, /obj/item/cell))
-		if(cover_open)
-			if(cell)
-				to_chat(user, "There is a [cell] already installed here.")
-			else
-				if(!user.attempt_insert_item_for_installation(W, src))
-					return
-				cell = W
-				to_chat(user, "You insert the [cell].")
-		updateicon()
-		return
-
 	return ..()
 
 /obj/item/suit_cooling_unit/proc/updateicon()
 	if (cover_open)
-		if (cell)
+		if (obj_cell_slot?.cell)
 			icon_state = "suitcooler1"
 		else
 			icon_state = "suitcooler2"
@@ -199,32 +173,23 @@
 			. += "It is switched off."
 
 		if (cover_open)
-			if(cell)
-				. += "The panel is open, exposing the [cell]."
+			if(obj_cell_slot?.cell)
+				. += "The panel is open, exposing the [obj_cell_slot.cell]."
 			else
 				. += "The panel is open."
 
-		if (cell)
-			. += "The charge meter reads [round(cell.percent())]%."
+		if (obj_cell_slot?.cell)
+			. += "The charge meter reads [round(obj_cell_slot.cell.percent())]%."
 		else
 			. += "It doesn't have a power cell installed."
 
+/obj/item/suit_cooling_unit/empty
+	cell_type = null
+
 /obj/item/suit_cooling_unit/emergency
 	icon_state = "esuitcooler"
-	cell = /obj/item/cell
 	w_class = WEIGHT_CLASS_NORMAL
+	cell_locked = TRUE
 
 /obj/item/suit_cooling_unit/emergency/updateicon()
 	return
-
-/obj/item/suit_cooling_unit/emergency/get_cell(inducer)
-	if(on)
-		return null // Don't let recharging happen while we're on
-	return cell
-
-/obj/item/suit_cooling_unit/emergency/attackby(obj/item/W as obj, mob/user as mob)
-	if (W.is_screwdriver())
-		to_chat(user, "<span class='warning'>This model has the cell permanently installed!</span>")
-		return
-
-	return ..()

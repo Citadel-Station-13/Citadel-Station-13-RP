@@ -23,6 +23,7 @@ field_generator power level display
 	use_power = USE_POWER_OFF
 	armor = /datum/armor/object/heavy
 	worth_intrinsic = 350
+	integrity_flags = INTEGRITY_TESLAPROOF
 	var/const/num_power_levels = 6	// Total number of power level icon has
 	var/Varedit_start = 0
 	var/Varpower = 0
@@ -156,7 +157,7 @@ field_generator power level display
 	return 0
 
 /obj/machinery/field_generator/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
-	if(istype(proj, /obj/projectile/beam))
+	if(istype(proj, /obj/projectile/beam) || (proj.projectile_type & PROJECTILE_TYPE_PHOTONIC))
 		power += proj.damage_force * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
 		return PROJECTILE_IMPACT_DELETE
