@@ -61,7 +61,10 @@
 	//! end
 
 /mob/living/silicon/robot/proc/get_default_iconset()
-	#warn resolve from module
+	if(module?.auto_iconsets?.len > 0)
+		. = RSrobot_iconsets.fetch_local_or_throw(module.auto_iconsets[1])
+		if(.)
+			return
 	return RSrobot_iconsets.fetch_local_or_throw(/datum/prototype/robot_iconset/baseline_standard/standard)
 
 /**
