@@ -123,6 +123,7 @@
 
 	for(var/datum/actor_hud/robot_inventory/hud as anything in huds_using)
 		hud.drawer_backplate?.redraw()
+	item.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 
 /datum/robot_inventory/proc/on_inv_unregister(obj/item/item)
 	PROTECTED_PROC(TRUE)
@@ -130,6 +131,7 @@
 
 	for(var/datum/actor_hud/robot_inventory/hud as anything in huds_using)
 		hud.drawer_backplate?.redraw()
+	item.vis_flags &= ~(VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
 
 /datum/robot_inventory/proc/handle_item_drop(obj/item/source, ...)
 	source.forceMove(owner)

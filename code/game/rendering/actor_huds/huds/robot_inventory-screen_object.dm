@@ -178,10 +178,7 @@
 		reset()
 	vis_contents += render_as
 	masquarading_as = render_as
-	render_as.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 
 /atom/movable/render/robot_drawer_item_render/proc/reset()
-	if(masquarading_as)
-		masquarading_as.vis_flags &= ~(VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
 	vis_contents.len = 0
 	masquarading_as = null
