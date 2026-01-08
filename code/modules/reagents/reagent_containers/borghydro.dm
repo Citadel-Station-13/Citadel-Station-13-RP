@@ -45,7 +45,17 @@
 	desc = "An advanced nanite and chemical synthesizer and injection system, designed for heavy-duty medical equipment.  This type is capable of safely bypassing \
 	thick materials that other hyposprays would struggle with."
 	bypass_protection = TRUE // Because mercs tend to be in spacesuits.
-	reagent_ids = list("healing_nanites", "hyperzine", "tramadol", "oxycodone", "spaceacillin", "peridaxon", "osteodaxon", "myelamine", "synthblood")
+	reagent_ids = list(
+		/datum/reagent/nanite::id,
+		/datum/reagent/hyperzine::id,
+		/datum/reagent/tramadol::id,
+		/datum/reagent/oxycodone::id,
+		/datum/reagent/spaceacillin::id,
+		/datum/reagent/peridaxon::id,
+		/datum/reagent/osteodaxon::id,
+		/datum/reagent/myelamine::id,
+		/datum/reagent/blood::id,
+	)
 
 /obj/item/reagent_containers/borghypo/Initialize(mapload)
 	. = ..()

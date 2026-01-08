@@ -5,7 +5,6 @@
  * The screen objects for actor HUDs
  */
 /atom/movable/screen/actor_hud
-
 	/// our owning actor hud
 	var/datum/actor_hud/hud
 

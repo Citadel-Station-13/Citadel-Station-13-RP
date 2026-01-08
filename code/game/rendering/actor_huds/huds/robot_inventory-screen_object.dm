@@ -34,7 +34,7 @@
 /atom/movable/screen/actor_hud/robot_inventory/robot_drawer
 	name = "module drawer"
 	icon = 'icons/screen/hud/robot/default.dmi'
-	icon_state = "robot-drawer"
+	icon_state = "drawer"
 	is_drawer = TRUE
 
 /atom/movable/screen/actor_hud/robot_inventory/robot_drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
@@ -50,6 +50,7 @@
  * Backplate for robot modules inventory.
  */
 /atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	is_drawer = TRUE
 
 	/// * FALSE: main axis is X, cross axis is Y
@@ -84,6 +85,7 @@
 		// TODO: optimize this
 		var/requires_rebuild = TRUE
 		if(requires_rebuild)
+			LAZYINITLIST(renderers)
 			var/MAO = 0 // main axis offset
 			var/CAO = 0 // cross axis offset
 			var/MAC = 0 // main axis count
@@ -94,9 +96,11 @@
 					MAO = 0
 					MAC = 0
 				// fetch or make a renderer
+				var/atom/movable/render/robot_drawer_item_render/renderer
 				if(IDX > length(renderers))
-					renderers += new /atom/movable/render/robot_drawer_item_render(null, hud, src)
-				var/atom/movable/render/robot_drawer_item_render/renderer = renderers[IDX]
+					renderer = new /atom/movable/render/robot_drawer_item_render(null, hud, src)
+				else
+					renderer = renderers[IDX]
 				// set its pixel loc as needed
 				// 0, 0 is ontop of us
 				if(is_vertical)
@@ -108,8 +112,8 @@
 				++MAO
 				++MAC
 
-			var/x_r = first_tile_screen_tx > 0 ? "-[first_tile_screen_tx]" : "[first_tile_screen_tx]"
-			var/y_r = first_tile_screen_ty > 0 ? "-[first_tile_screen_ty]" : "[first_tile_screen_ty]"
+			var/x_r = first_tile_screen_tx > 0 ? "[first_tile_screen_tx]" : "-[first_tile_screen_tx]"
+			var/y_r = first_tile_screen_ty > 0 ? "[first_tile_screen_ty]" : "-[first_tile_screen_ty]"
 			screen_loc = "[first_tile_screen_ax][x_r]:[first_tile_screen_px],\
 			[first_tile_screen_ay][y_r]:[first_tile_screen_py]"
 		// apply items
@@ -145,6 +149,7 @@
 /atom/movable/render/robot_drawer_item_render
 	icon = 'icons/screen/hud/styles/common/storage.dmi'
 	icon_state = "block"
+	mouse_opacity = MOUSE_OPACITY_ICON
 	var/atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate/backplate
 	var/obj/item/masquarading_as
 

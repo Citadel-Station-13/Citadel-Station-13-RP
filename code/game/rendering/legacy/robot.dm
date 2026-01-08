@@ -55,7 +55,7 @@
 
 //Installed Module
 	mymob.hands = new /atom/movable/screen()
-	mymob.hands.icon = ui_style
+	mymob.hands.icon = 'icons/screen/hud/robot/modules.dmi'
 	mymob.hands.icon_state = "nomod"
 	mymob.hands.alpha = ui_alpha
 	mymob.hands.name = "module"

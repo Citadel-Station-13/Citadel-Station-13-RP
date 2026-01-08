@@ -131,9 +131,9 @@
 	var/use_robot_icons = FALSE
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/Initialize(mapload, datum/actor_hud/inventory/host, hand_index)
-	. = ..()
 	src.hand_index = hand_index
 	src.use_robot_icons = host.inv_held_items_use_robot_icon
+	. = ..()
 	sync_index(hand_index, host.inv_held_items_row_mode)
 	update_icon()
 

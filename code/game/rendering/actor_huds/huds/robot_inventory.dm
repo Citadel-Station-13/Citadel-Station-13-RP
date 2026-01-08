@@ -57,12 +57,13 @@
 	drawer_backplate.redraw()
 
 /datum/actor_hud/robot_inventory/proc/screen_loc_for_drawer_button()
-	// Always aligned to right side of hands.
-	return "RIGHT-5,BOTTOM:5"
+	// Always aligned to right side of hands, assuming a 3-wide hands
+	// TODO: can we auto-align based on the hands HUD? we'd need to do cascading re-renders..
+	return "CENTER:64,BOTTOM:5"
 
 /datum/actor_hud/robot_inventory/proc/set_drawer_backplate_parameters()
-	drawer_backplate.first_tile_screen_ax = ""
-	drawer_backplate.first_tile_screen_ay = ""
+	drawer_backplate.first_tile_screen_ax = "LEFT"
+	drawer_backplate.first_tile_screen_ay = "BOTTOM"
 	drawer_backplate.first_tile_screen_tx = STORAGE_UI_START_TILE_X
 	drawer_backplate.first_tile_screen_ty = STORAGE_UI_START_TILE_Y
 	drawer_backplate.first_tile_screen_px = STORAGE_UI_START_PIXEL_X

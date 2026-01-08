@@ -5,7 +5,7 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/triage)
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/
 	light_color = "#FF0000"
 	auto_iconsets = list(
-		/datum/prototype/robot_iconset/baseline_toiletbot,
+		/datum/prototype/robot_iconset/baseline_toiletbot/syndicate,
 		/datum/prototype/robot_iconset/raptor/syndicate_medical,
 	)
 
