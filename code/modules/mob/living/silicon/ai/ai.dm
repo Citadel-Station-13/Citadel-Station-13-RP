@@ -463,6 +463,25 @@ var/list/ai_verbs_default = list(
 		return -1
 	return 0
 
+/mob/living/silicon/ai/can_interact_with(atom/A, treat_mob_as_adjacent)
+	. = ..()
+	if (.)
+		return
+	var/turf/ai_turf = get_turf(src)
+	var/turf/target_turf = get_turf(A)
+
+	if(!target_turf)
+		return
+
+	if (!isStationLevel(ai_turf.z) || !isStationLevel(target_turf.z))
+		return FALSE
+
+	if (istype(loc, /obj/item/aicard))
+		if (!ai_turf)
+			return FALSE
+		return ISINRANGE(target_turf.x, ai_turf.x - interaction_range, ai_turf.x + interaction_range) \
+			&& ISINRANGE(target_turf.y, ai_turf.y - interaction_range, ai_turf.y + interaction_range)
+
 /mob/living/silicon/ai/restrained()
 	return 0
 
