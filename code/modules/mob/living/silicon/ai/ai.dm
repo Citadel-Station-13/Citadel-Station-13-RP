@@ -473,7 +473,7 @@ var/list/ai_verbs_default = list(
 	if(!target_turf)
 		return
 
-	if (!isStationLevel(ai_turf.z) || !isStationLevel(target_turf.z))
+	if (!is_valid_z_level(ai_turf, target_turf))
 		return FALSE
 
 	if (istype(loc, /obj/item/aicard))
