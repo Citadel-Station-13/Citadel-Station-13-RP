@@ -9,6 +9,7 @@
 
 	icon = 'icons/mob/robot/iconset/dog_k9.dmi'
 	icon_state_cover = "panel"
+	icon_dimension_x = 64
 	variations = list(
 		/datum/robot_iconset_variation/bellyup,
 		/datum/robot_iconset_variation/resting,

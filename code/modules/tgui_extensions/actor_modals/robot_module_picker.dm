@@ -59,23 +59,27 @@
 	var/list/serialized_modules = list()
 	.["modules"] = serialized_modules
 	for(var/datum/prototype/robot_module/possible_module as anything in pickable_modules)
+		var/module_ref = ref(possible_module)
 		var/list/serialized_frames = list()
 		var/list/serialized_module = list(
+			"ref" = module_ref,
 			"name" = possible_module.get_display_name(),
 			"frames" = serialized_frames,
 		)
 		var/list/datum/robot_frame/possible_frames = pickable_modules[possible_module]
 		// TODO: iconRef doesn't work properly for non-hardcoded frames but we can worry about it later
 		for(var/datum/robot_frame/possible_frame as anything in possible_frames)
+			var/frame_ref = ref(possible_frame)
 			// ckey enforcement should probably be elsewhere but idgaf lol
 			if(possible_frame.ckey_lock && !(user?.ckey in possible_frame.ckey_lock))
 				continue
-			serialized_frames[++serialized_frames.len] = list(
-				"ref" = ref(possible_frame),
+			serialized_frames[frame_ref] = list(
+				"ref" =  frame_ref,
 				"name" = possible_frame.name,
-				"iconRef" = "[possible_frame.robot_iconset.id]-4",
+				"spriteSizeKey" = "[possible_frame.robot_iconset.icon_dimension_x]x[possible_frame.robot_iconset.icon_dimension_y]",
+				"spriteId" = "[possible_frame.robot_iconset.id]-4",
 			)
-		serialized_modules[++serialized_modules.len] = serialized_module
+		serialized_modules[module_ref] = serialized_module
 
 /**
  * @return list(

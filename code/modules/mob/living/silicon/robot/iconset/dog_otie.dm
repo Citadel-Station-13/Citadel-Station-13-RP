@@ -7,6 +7,7 @@
 	auto_chassis = /datum/prototype/robot_chassis/quadruped/canine
 	icon = 'icons/mob/robot/iconset/dog_otie.dmi'
 	icon_state_cover = "panel"
+	icon_dimension_x = 64
 	variations = list(
 		/datum/robot_iconset_variation/dead,
 		/datum/robot_iconset_variation/resting,

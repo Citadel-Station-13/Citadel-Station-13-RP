@@ -8,6 +8,7 @@
 	icon = 'icons/mob/robot/iconset/dog_borgi.dmi'
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator"
+	icon_dimension_x = 64
 	variations = list(
 		/datum/robot_iconset_variation/bellyup,
 		/datum/robot_iconset_variation/resting,

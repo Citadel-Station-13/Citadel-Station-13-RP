@@ -7,6 +7,7 @@
 	auto_chassis = /datum/prototype/robot_chassis/quadruped/feline
 	icon = 'icons/mob/robot/iconset/cat_feli.dmi'
 	icon_state_cover = "panel"
+	icon_dimension_x = 64
 
 /datum/prototype/robot_iconset/cat_feli/standard
 	icon_state = "standard"
