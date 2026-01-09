@@ -74,7 +74,7 @@
 	UNSETEMPTY(provisioned_resource_store)
 
 	for(var/id in provisioned_material_store)
-		if(provided_material_items[id])
+		if(provided_material_items?[id])
 			continue
 		var/datum/prototype/material/resolved_material = RSmaterials.fetch_local_or_throw(id)
 		if(!resolved_material)
@@ -86,7 +86,7 @@
 		owner.robot_inventory.inv_register(created)
 
 	for(var/path in provisioned_stack_store)
-		if(provided_stack_items[path])
+		if(provided_stack_items?[path])
 			continue
 		var/obj/item/stack/created = new path(null)
 		RegisterSignal(created, COMSIG_PARENT_QDELETING, PROC_REF(on_provided_item_del))
@@ -130,4 +130,3 @@
 				STACK_TRACE("provided stack didn't match [source.type] deleting vs [provided_stack_items[source.type]:type] existing")
 			else
 				provided_stack_items -= source.type
-
