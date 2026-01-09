@@ -64,11 +64,10 @@
 	var/list/serialized_modules = list()
 	.["modules"] = serialized_modules
 	for(var/datum/prototype/robot_module/possible_module as anything in pickable_modules)
-		var/module_ref = ref(possible_module)
 		var/module_name = "[possible_module.category ? "[possible_module.category] " : ""][possible_module.get_visible_name()]"
 		var/list/serialized_frames = list()
 		var/list/serialized_module = list(
-			"ref" = module_ref,
+			"id" = module.id,
 			"name" = module_name,
 			"frames" = serialized_frames,
 		)
@@ -85,7 +84,7 @@
 				"iconRef" = "\ref[possible_frame.robot_iconset.icon]",
 				"iconState" = "[possible_frame.robot_iconset.icon_state]",
 			)
-		serialized_modules[module_ref] = serialized_module
+		serialized_modules[possible_module.id] = serialized_module
 
 /**
  * @return list(

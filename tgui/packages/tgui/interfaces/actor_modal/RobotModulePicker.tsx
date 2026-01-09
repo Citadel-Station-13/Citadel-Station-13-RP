@@ -4,7 +4,7 @@
  */
 
 import { useState } from 'react';
-import { Section, Stack, Tabs } from 'tgui-core/components';
+import { Button, Section, Stack, Tabs } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
 import { ByondIconRef } from '../../components/ByondIconRef';
@@ -19,6 +19,7 @@ interface RobotModulePickerData {
 }
 
 interface PickableModule {
+  id: string;
   name: string;
   frames: Record<string, PickableFrame>;
 }
@@ -34,15 +35,15 @@ interface PickableFrame {
 
 export const RobotModulePicker = (props) => {
   const { act, data } = useBackend<RobotModulePickerData>();
-  const [selectedModuleRef, setSelectedModuleRef] = useState<null | string>(
+  const [selectedModuleId, setSelectedModuleId] = useState<null | string>(
     null,
   );
   const [selectedFrameRef, setSelectedFrameRef] = useState<null | string>(null);
 
   let selectedFrame: PickableFrame | null =
-    (selectedModuleRef &&
+    (selectedModuleId &&
       selectedFrameRef &&
-      data.modules?.[selectedModuleRef]?.frames?.[selectedFrameRef]) ||
+      data.modules?.[selectedModuleId]?.frames?.[selectedFrameRef]) ||
     null;
 
   return (
@@ -58,8 +59,8 @@ export const RobotModulePicker = (props) => {
                     return (
                       <Tabs.Tab
                         key={id}
-                        onClick={() => setSelectedModuleRef(id)}
-                        selected={id === selectedModuleRef}
+                        onClick={() => setSelectedModuleId(id)}
+                        selected={id === selectedModuleId}
                       >
                         {module.name}
                       </Tabs.Tab>
@@ -71,9 +72,9 @@ export const RobotModulePicker = (props) => {
           <Stack.Item width="25%">
             <Section title="Frame" fill scrollable>
               <Tabs vertical>
-                {selectedModuleRef &&
-                  !!data.modules[selectedModuleRef] &&
-                  Object.entries(data.modules[selectedModuleRef].frames)
+                {selectedModuleId &&
+                  !!data.modules[selectedModuleId] &&
+                  Object.entries(data.modules[selectedModuleId].frames)
                     .sort(([a1, a2], [b1, b2]) =>
                       a2.name.localeCompare(b2.name),
                     )
@@ -93,62 +94,80 @@ export const RobotModulePicker = (props) => {
           </Stack.Item>
           <Stack.Item grow>
             <Section title="Preview" fill>
-              {selectedFrame && (
-                <Stack fill>
-                  <Stack.Item grow={1}>
-                    <Stack fill vertical>
+              <Stack vertical fill>
+                <Stack.Item grow={1}>
+                  {selectedFrame && (
+                    <Stack fill>
                       <Stack.Item grow={1}>
-                        <Centered>
-                          <ByondIconRef
-                            width="100%"
-                            height="auto"
-                            iconRef={selectedFrame.iconRef}
-                            iconState={selectedFrame.iconState}
-                            direction={Direction.NORTH}
-                          />
-                        </Centered>
+                        <Stack fill vertical>
+                          <Stack.Item grow={1}>
+                            <Centered>
+                              <ByondIconRef
+                                width="100%"
+                                height="auto"
+                                iconRef={selectedFrame.iconRef}
+                                iconState={selectedFrame.iconState}
+                                direction={Direction.NORTH}
+                              />
+                            </Centered>
+                          </Stack.Item>
+                          <Stack.Item grow={1}>
+                            <Centered>
+                              <ByondIconRef
+                                width="100%"
+                                height="auto"
+                                iconRef={selectedFrame.iconRef}
+                                iconState={selectedFrame.iconState}
+                                direction={Direction.SOUTH}
+                              />
+                            </Centered>
+                          </Stack.Item>
+                        </Stack>
                       </Stack.Item>
                       <Stack.Item grow={1}>
-                        <Centered>
-                          <ByondIconRef
-                            width="100%"
-                            height="auto"
-                            iconRef={selectedFrame.iconRef}
-                            iconState={selectedFrame.iconState}
-                            direction={Direction.SOUTH}
-                          />
-                        </Centered>
+                        <Stack fill vertical>
+                          <Stack.Item grow={1}>
+                            <Centered>
+                              <ByondIconRef
+                                width="100%"
+                                height="auto"
+                                iconRef={selectedFrame.iconRef}
+                                iconState={selectedFrame.iconState}
+                                direction={Direction.EAST}
+                              />
+                            </Centered>
+                          </Stack.Item>
+                          <Stack.Item grow={1}>
+                            <Centered>
+                              <ByondIconRef
+                                width="100%"
+                                height="auto"
+                                iconRef={selectedFrame.iconRef}
+                                iconState={selectedFrame.iconState}
+                                direction={Direction.WEST}
+                              />
+                            </Centered>
+                          </Stack.Item>
+                        </Stack>
                       </Stack.Item>
                     </Stack>
-                  </Stack.Item>
-                  <Stack.Item grow={1}>
-                    <Stack fill vertical>
-                      <Stack.Item grow={1}>
-                        <Centered>
-                          <ByondIconRef
-                            width="100%"
-                            height="auto"
-                            iconRef={selectedFrame.iconRef}
-                            iconState={selectedFrame.iconState}
-                            direction={Direction.EAST}
-                          />
-                        </Centered>
-                      </Stack.Item>
-                      <Stack.Item grow={1}>
-                        <Centered>
-                          <ByondIconRef
-                            width="100%"
-                            height="auto"
-                            iconRef={selectedFrame.iconRef}
-                            iconState={selectedFrame.iconState}
-                            direction={Direction.WEST}
-                          />
-                        </Centered>
-                      </Stack.Item>
-                    </Stack>
-                  </Stack.Item>
-                </Stack>
-              )}
+                  )}
+                </Stack.Item>
+                <Stack.Item>
+                  <Button.Confirm
+                    fluid
+                    disabled={!selectedFrameRef || !selectedModuleId}
+                    onClick={() =>
+                      act('pick', {
+                        moduleId: selectedModuleId,
+                        frameRef: selectedFrameRef,
+                      })
+                    }
+                  >
+                    Specialize
+                  </Button.Confirm>
+                </Stack.Item>
+              </Stack>
             </Section>
           </Stack.Item>
         </Stack>

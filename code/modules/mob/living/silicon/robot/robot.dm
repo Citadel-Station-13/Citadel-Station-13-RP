@@ -119,7 +119,7 @@
 
 	//* Movement *//
 	/// Base movement speed in tiles / second
-	var/movement_base_speed = 4
+	var/movement_base_speed = 4.5
 
 	//* Power *//
 	/// our power cell
