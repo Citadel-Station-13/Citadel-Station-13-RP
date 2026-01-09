@@ -6,9 +6,12 @@
 	clamp_values()
 	handle_regular_UI_updates()
 
+	// TODO: actual smoothing?? or less awful-ify this lol
 	var/avg_power_elapsed = world.time - avg_power_last
 	if(avg_power_elapsed > 0)
-		avg_power = avg_power_accumulator / (avg_power_last / (1 SECONDS))
+		avg_power = avg_power_accumulator / (avg_power_elapsed / (1 SECONDS))
+	avg_power_last = world.time
+	avg_power_accumulator = 0
 
 /mob/living/silicon/robot/PhysicalLife(seconds, times_fired)
 	if((. = ..()))
