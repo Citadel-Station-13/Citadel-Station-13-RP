@@ -275,8 +275,8 @@
 	var/half_total_width = (per_row) * WORLD_ICON_SIZE * 0.5
 	// get row; this starts at 0
 	var/row = ceil(index / per_row) - 1
-	// get column; this starts at 1.
-	var/col = ((index - 1) % per_row) + 1
+	// get column; this starts at 0.
+	var/col = ((index - 1) % per_row)
 	return "CENTER:[-half_total_width + (col * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE * 0.5)],BOTTOM+[row]:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_swap(number_of_hands)
