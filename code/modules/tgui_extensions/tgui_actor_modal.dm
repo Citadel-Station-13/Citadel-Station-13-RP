@@ -11,9 +11,10 @@
  * @return modal or null if failed to open
  */
 /proc/open_tgui_actor_modal(type, datum/event_args/actor/actor, datum/callback/validity, ...)
-	if(modal.no_type_dupe)
+	var/datum/tgui_actor_modal/modal_type = type
+	if(modal_type.no_type_dupe)
 		var/mob/initiator = actor.initiator
-		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
+		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type, initiator, actor.performer)
 		if(HAS_TRAIT(initiator, trait))
 			return
 	var/datum/tgui_actor_modal/modal = new type(actor, validity)
