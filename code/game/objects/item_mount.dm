@@ -128,8 +128,8 @@
  *
  * @return null, or name
  */
-/datum/item_mount/proc/material_get_provider_name(obj/item/item, key, datum/prototype/material/material)
-	return relay_to_other?.material_get_provider_name(item, key, material)
+/datum/item_mount/proc/material_get_provider_name(obj/item/item, key, material_id)
+	return relay_to_other?.material_get_provider_name(item, key, material_id)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
@@ -137,8 +137,8 @@
  *
  * @return null, or amount in cm3
  */
-/datum/item_mount/proc/material_get_amount(obj/item/item, key, datum/prototype/material/material)
-	return relay_to_other?.material_get_amount(item, key, material)
+/datum/item_mount/proc/material_get_amount(obj/item/item, key, material_id)
+	return relay_to_other?.material_get_amount(item, key, material_id)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
@@ -146,8 +146,8 @@
  *
  * @return null, or TRUE / FALSE.
  */
-/datum/item_mount/proc/material_has_amount(obj/item/item, key, datum/prototype/material/material, amount)
-	return relay_to_other?.material_has_amount(item, key, material, amount)
+/datum/item_mount/proc/material_has_amount(obj/item/item, key, material_id, amount)
+	return relay_to_other?.material_has_amount(item, key, material_id, amount)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
@@ -155,8 +155,8 @@
  *
  * @return null, or amount used in cm3.
  */
-/datum/item_mount/proc/material_use_amount(obj/item/item, key, datum/prototype/material/material, amount)
-	return relay_to_other?.material_use_amount(item, key, material, amount)
+/datum/item_mount/proc/material_use_amount(obj/item/item, key, material_id, amount)
+	return relay_to_other?.material_use_amount(item, key, material_id, amount)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
@@ -164,8 +164,8 @@
  *
  * @return null, or amount used.
  */
-/datum/item_mount/proc/material_use_checked_amount(obj/item/item, key, datum/prototype/material/material, amount)
-	return material_has_amount(item, key, material, amount) && material_use_amount(item, key, material, amount)
+/datum/item_mount/proc/material_use_checked_amount(obj/item/item, key, material_id, amount)
+	return material_has_amount(item, key, material_id, amount) && material_use_amount(item, key, material_id, amount)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
@@ -173,8 +173,8 @@
  *
  * @return null, or amount given.
  */
-/datum/item_mount/proc/material_give_amount(obj/item/item, key, datum/prototype/material/material, amount, force)
-	return relay_to_other?.material_give_amount(item, key, material, amount, force)
+/datum/item_mount/proc/material_give_amount(obj/item/item, key, material_id, amount, force)
+	return relay_to_other?.material_give_amount(item, key, material_id, amount, force)
 
 /**
  * * Material is any resolvable material, so ID, path, or instance.
@@ -182,8 +182,8 @@
  *
  * @return null, or max amount.
  */
-/datum/item_mount/proc/material_get_capacity(obj/item/item, key, datum/prototype/material/material)
-	return relay_to_other?.material_get_capacity(item, key, material)
+/datum/item_mount/proc/material_get_capacity(obj/item/item, key, material_id)
+	return relay_to_other?.material_get_capacity(item, key, material_id)
 
 //* Power *//
 

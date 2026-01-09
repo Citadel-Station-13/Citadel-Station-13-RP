@@ -15,19 +15,19 @@
 	store = null
 	return ..()
 
-/datum/item_mount/robot_item_mount/material_get_amount(obj/item/item, key, datum/prototype/material/material)
-	var/datum/robot_resource/resource = store.provisioned_material_store[material.id]
+/datum/item_mount/robot_item_mount/material_get_amount(obj/item/item, key, material_id)
+	var/datum/robot_resource/resource = store.provisioned_material_store[material_id]
 	. = resource?.amount
 
-/datum/item_mount/robot_item_mount/material_get_capacity(obj/item/item, key, datum/prototype/material/material)
-	var/datum/robot_resource/resource = store.provisioned_material_store[material.id]
+/datum/item_mount/robot_item_mount/material_get_capacity(obj/item/item, key, material_id)
+	var/datum/robot_resource/resource = store.provisioned_material_store[material_id]
 	. = resource?.amount_max
 
-/datum/item_mount/robot_item_mount/material_get_provider_name(obj/item/item, key, datum/prototype/material/material)
+/datum/item_mount/robot_item_mount/material_get_provider_name(obj/item/item, key, material_id)
 	. = "material store"
 
-/datum/item_mount/robot_item_mount/material_give_amount(obj/item/item, key, datum/prototype/material/material, amount, force)
-	var/datum/robot_resource/resource = store.provisioned_material_store[material.id]
+/datum/item_mount/robot_item_mount/material_give_amount(obj/item/item, key, material_id, amount, force)
+	var/datum/robot_resource/resource = store.provisioned_material_store[material_id]
 	if(resource)
 		if(force)
 			. = amount
@@ -36,8 +36,8 @@
 			. = clamp(resource.amount_max - resource.amount, 0, amount)
 			resource.amount += .
 
-/datum/item_mount/robot_item_mount/material_use_amount(obj/item/item, key, datum/prototype/material/material, amount)
-	var/datum/robot_resource/resource = store.provisioned_material_store[material.id]
+/datum/item_mount/robot_item_mount/material_use_amount(obj/item/item, key, material_id, amount)
+	var/datum/robot_resource/resource = store.provisioned_material_store[material_id]
 	if(resource)
 		. = min(resource.amount, amount)
 		resource.amount -= .

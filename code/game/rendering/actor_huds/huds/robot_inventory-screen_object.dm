@@ -90,9 +90,9 @@
 			var/MAO = 0 // main axis offset
 			var/CAO = 0 // cross axis offset
 			var/MAC = 0 // main axis count
-			var/AMT = ceil(length(casted.host.provided_items) / main_axis_max_size) * main_axis_max_size
+			var/AMT = length(casted.host.provided_items)
 			if(AMT > safety)
-				AMY = safety
+				AMT = safety
 				stack_trace("why the hell does a cyborg have more than 255 items?")
 			for(var/IDX in 1 to AMT)
 				if(MAC > main_axis_max_size)
@@ -167,6 +167,7 @@
 	src.backplate = backplate
 	src.backplate.vis_contents += src
 	src.backplate.renderers += src
+	reset()
 
 /atom/movable/render/robot_drawer_item_render/Destroy()
 	reset()
