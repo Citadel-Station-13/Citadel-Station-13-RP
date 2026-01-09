@@ -190,6 +190,8 @@
 
 		inventory.held_items[index] = I
 		inventory.on_item_entered(I, index)
+		// TODO: pickup can't detect it because we set it after pickup
+		I.inv_slot_or_index = index
 
 	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hand(index)

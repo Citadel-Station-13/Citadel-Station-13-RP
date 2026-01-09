@@ -168,6 +168,7 @@
 	reset()
 	src.backplate.vis_contents -= src
 	src.backplate.renderers -= src
+	src.backplate = null
 	return ..()
 
 /atom/movable/render/robot_drawer_item_render/Click(location, control, params)
@@ -178,7 +179,9 @@
 		reset()
 	vis_contents += render_as
 	masquarading_as = render_as
+	alpha = initial(alpha)
 
 /atom/movable/render/robot_drawer_item_render/proc/reset()
 	vis_contents.len = 0
 	masquarading_as = null
+	alpha = 0
