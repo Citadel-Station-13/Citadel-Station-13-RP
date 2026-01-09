@@ -62,9 +62,11 @@
 
 	//* misc - filters *//
 	/// List for handling persistent filters.
-	///
-	/// * This is on /datum so it can be used on /image. This is pretty horrible. How do we fix this?
 	var/list/filter_data
+	/// An accursed beast of a list that contains our filters. Why? Because var/list/filters on atoms/images isn't actually a list
+	/// but a snowflaked skinwalker pretending to be one, which doesn't support half the list procs/operations and the other half behaves weirdly
+	/// so we cut down on filter creation and appearance update costs by editing *this* list, and then assigning ours to it
+	var/list/filter_cache
 
 	//* misc - reftracking *//
 #ifdef REFERENCE_TRACKING
