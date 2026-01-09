@@ -46,7 +46,6 @@
 #define INIT_ORDER_AI_HOLDERS      25
 
 //* World *//
-
 #define INIT_ORDER_CHARACTERS      140
 #define INIT_ORDER_SOUNDS          130
 #define INIT_ORDER_GARBAGE         120
@@ -87,5 +86,5 @@
 //* Late *//
 
 #define INIT_ORDER_OVERLAY               200
-#define INIT_ORDER_TITLESCREEN           150
+#define INIT_ORDER_TITLESCREEN           100
 #define INIT_ORDER_CHAT                 -100  //! Should be last to ensure chat remains smooth during init.
