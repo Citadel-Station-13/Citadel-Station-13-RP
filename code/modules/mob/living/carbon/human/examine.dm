@@ -80,17 +80,24 @@
 	var/skipface = (wear_mask && (wear_mask.inv_hide_flags & HIDEFACE)) || (head && (head.inv_hide_flags & HIDEFACE))
 
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
+	var/gender_obscured_by_species = FALSE // for different species examine
 
 	if((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)) //big suits/masks/helmets make it hard to tell their gender
 		T = GLOB.gender_datums[PLURAL]
 
 	else if(species && species.ambiguous_genders)
-		if(ishuman(user))
+		// ghosts are omnipotent and omniscient. borgs are logical and precise. whatever. they identify anyone's gender
+		if(issilicon(user) || isobserver(user))
+		else if(ishuman(user))
 			var/mob/living/carbon/human/H = user
+			// only obscure gender if examiner is a different species
 			if(H.species && !istype(species, H.species))
-				T = GLOB.gender_datums[PLURAL]// Species with ambiguous_genders will not show their true gender upon examine if the examiner is not also the same species.
-		if(!(issilicon(user) || isobserver(user))) // Ghosts and borgs are all knowing
+				T = GLOB.gender_datums[PLURAL]
+				gender_obscured_by_species = TRUE
+		else
+			// non-human, non-silicon, non-observer examining
 			T = GLOB.gender_datums[PLURAL]
+			gender_obscured_by_species = TRUE
 
 	//! Just in case someone VVs the gender to something strange.
 	//! It'll runtime anyway when it hits usages, better to CRASH() now with a helpful message.
@@ -480,6 +487,10 @@
 		. += "[print_flavor_text()]"
 
 	. += applying_pressure
+
+	// Add message if gender is obscured by species differences
+	if(gender_obscured_by_species)
+		. += SPAN_INFO("<i>[T.He] [T.is] a different species. You don't have the scientific knowledge to figure out [T.his] exact gender...</i>")
 
 	var/show_descs = show_descriptors_to(user)
 	if(show_descs)

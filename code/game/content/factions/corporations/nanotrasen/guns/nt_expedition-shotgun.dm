@@ -6,7 +6,7 @@
 //* Ammo *//
 
 /obj/item/ammo_magazine/a12g/nt_expedition
-	icon = 'icons/content/factions/corporations/nanotrasen/items/gun/expeditionary/shotgun-ammo.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/shotgun-ammo.dmi'
 
 	#warn restrict to NT-expeditionary
 
@@ -21,7 +21,7 @@
 //* Shotguns *//
 
 /obj/item/gun/projectile/ballistic/nt_expedition/shotgun
-	icon = 'icons/content/factions/corporations/nanotrasen/items/gun/expeditionary/shotgun.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/shotgun.dmi'
 	caliber = /datum/ammo_caliber/a12g
 
 //* Pump Shotgun *//

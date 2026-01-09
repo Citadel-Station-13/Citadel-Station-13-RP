@@ -28736,10 +28736,7 @@
 /turf/simulated/floor/carpet,
 /area/bridge/office)
 "uBh" = (
-/obj/structure/memorial{
-	name = "NSV Endeavour's Builder's Plate";
-	desc = "The Armstrong-Hawker Shipbuilding company would like to thank the following for the contributions to the design: Dáire van der Waals, M.D., Ph.D.; Ruminis Melro, Ph.D-EE; Jonathan A. Russel, Ph.D.; Hammond McGuire Sr., M.S.E.. Their work was essential in the design and manufacture of this vessel, and those of her class in the years to follow."
-	},
+/obj/structure/memorial,
 /turf/simulated/wall/prepainted,
 /area/hallway/d1fwdhall/endeavour)
 "uBu" = (
