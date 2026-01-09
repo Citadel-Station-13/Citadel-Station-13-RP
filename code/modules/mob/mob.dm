@@ -1169,7 +1169,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * Returns whether or not we should be allowed to examine a target
  */
 /mob/proc/allow_examine(atom/A)
-	return client && (client.eye == src)
+	return (client?.eye == src) || (A in DirectAccess())
 
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()

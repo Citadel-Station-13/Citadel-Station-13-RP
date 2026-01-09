@@ -554,9 +554,9 @@
 	if(legacy_remap)
 		. = INFINITY
 		for(var/mat_id in legacy_remap)
-			. = min(., (item_mount.material_get_amount(src, null, mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
+			. = min(., (item_mount.material_get_amount(src, null, mat_id) / legacy_remap[mat_id]))
 	else
-		. = item_mount.stack_get_amount(src, null, stack_type) / SHEET_MATERIAL_AMOUNT
+		. = item_mount.stack_get_amount(src, null, stack_type)
 
 /**
  * * You must check if stack provider exists.
@@ -567,9 +567,9 @@
 	if(legacy_remap)
 		. = INFINITY
 		for(var/mat_id in legacy_remap)
-			. = min(., (item_mount.material_get_capacity(src, null, mat_id) / legacy_remap[mat_id]) / SHEET_MATERIAL_AMOUNT)
+			. = min(., (item_mount.material_get_capacity(src, null, mat_id) / legacy_remap[mat_id]))
 	else
-		. = item_mount.stack_get_capacity(src, null, stack_type) / SHEET_MATERIAL_AMOUNT
+		. = item_mount.stack_get_capacity(src, null, stack_type)
 
 /**
  * * You must check if stack provider exists.
