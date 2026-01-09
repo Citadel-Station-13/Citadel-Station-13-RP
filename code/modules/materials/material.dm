@@ -8,6 +8,10 @@
 	//* Core *//
 	/// Name for debugging purposes; not player-facing.
 	var/name
+	/// Path to the material stack type that nominally represents us in-world
+	/// * While technically `/obj/item/stack/material` can become any material, we still want
+	///   to support custom behaviors if necessary.
+	var/stack_type = /obj/item/stack/material
 
 	//* Identification *//
 	/// Player-facing name. Always used.
@@ -184,8 +188,6 @@
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
 	/// Noise made when a simple door made of this material opens or closes.
 	var/dooropen_noise = 'sound/effects/stonedoor_openclose.ogg'
-	/// Path to resulting stacktype. Todo remove need for this.
-	var/stack_type
 	/// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
