@@ -138,6 +138,12 @@
 		QDEL_NULL(module_legacy)
 	// set
 	src.module = module
+
+	//! -- LEGACY SCREEN / IDENTITY THINGY --
+	src.hands?.icon_state = "none"
+	src.modtype = "Default"
+	//! -- END --
+
 	// build
 	if(!module)
 		return
@@ -153,6 +159,11 @@
 	resources.prep_provisioning()
 	module.provision_resource_store(resources)
 	resources.finish_provisioning()
+
+	//! -- LEGACY SCREEN / IDENTITY THINGY --
+	src.hands?.icon_state = module.module_hud_state
+	src.modtype = module.get_display_name()
+	//! -- END --
 
 	if(!skip_icon_update)
 		update_icon()

@@ -138,14 +138,3 @@
 	mymob.client.screen += src.other
 
 	mymob.reload_rendering()
-
-/mob/living/silicon/robot/update_hud()
-	if(modtype)
-		hands.icon_state = lowertext(modtype)
-	..()
-
-//! ## VR FILE MERGE ## !//
-/mob/living/silicon/robot/update_hud()
-	if(modtype)
-		hands.icon_state = lowertext(modtype)
-	..()

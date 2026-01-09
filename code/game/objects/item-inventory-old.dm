@@ -27,7 +27,7 @@
 			else
 				encumbrance_registered = get_encumbrance()
 				L.adjust_current_carry_encumbrance(encumbrance_registered)
-	// fire signals
+	// fire signals	aghost
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, src, slot, flags)
 

@@ -79,6 +79,7 @@
 
 /atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate/proc/redraw()
 	var/datum/actor_hud/robot_inventory/casted = hud
+	var/safety = 255
 	if(casted.drawer_toggled)
 		// draw
 		// check if we actually need to rebuild renderers; this is needed if row count changes
@@ -90,6 +91,9 @@
 			var/CAO = 0 // cross axis offset
 			var/MAC = 0 // main axis count
 			var/AMT = ceil(length(casted.host.provided_items) / main_axis_max_size) * main_axis_max_size
+			if(AMT > safety)
+				AMY = safety
+				stack_trace("why the hell does a cyborg have more than 255 items?")
 			for(var/IDX in 1 to AMT)
 				if(MAC > main_axis_max_size)
 					CAO++
@@ -131,7 +135,7 @@
 			if(renderer.masquarading_as != item)
 				renderer.masquarade(item)
 			++ridx
-		for(ridx in ridx + 1 to ridx_max)
+		for(ridx in ridx to ridx_max)
 			var/atom/movable/render/robot_drawer_item_render/renderer = renderers[ridx]
 			if(renderer.masquarading_as)
 				renderer.reset()
