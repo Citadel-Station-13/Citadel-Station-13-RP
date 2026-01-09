@@ -233,6 +233,7 @@
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	. = ..()
+	// must be before inventory; inventory binds to resources item mount
 	resources = new(src)
 	robot_inventory = new(src)
 
@@ -296,8 +297,8 @@
 
 /mob/living/silicon/robot/Destroy()
 	wipe_for_gc()
-	QDEL_NULL(resources)
 	QDEL_NULL(robot_inventory)
+	QDEL_NULL(resources)
 	// TODO: don't do this, just don't fucking dust() people or have dust() have a drop proc????
 	if(mmi && mind)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
 		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.

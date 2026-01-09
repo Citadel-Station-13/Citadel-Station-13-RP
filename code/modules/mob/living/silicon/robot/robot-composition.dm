@@ -146,6 +146,14 @@
 	module_legacy = new module.use_robot_module_path(src)
 	can_repick_module = FALSE
 
+	// this entire section is weird but it's the only way to do it for now
+	// what we need is to not have magic regen materials so provisioning can also
+	// be properly composition based and stateful, but for now we don't care
+	resources.wipe_provisioning()
+	resources.prep_provisioning()
+	module.provision_resource_store(resources)
+	resources.finish_provisioning()
+
 	if(!skip_icon_update)
 		update_icon()
 

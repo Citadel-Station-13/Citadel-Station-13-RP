@@ -888,7 +888,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
  * Mounts to an item mount
  */
 /obj/item/proc/mount(datum/item_mount/mount)
-	return item_mount.mount(src)
+	return mount.mount(src)
 
 /**
  * Unmounts us if we're mounted onto an item mount
