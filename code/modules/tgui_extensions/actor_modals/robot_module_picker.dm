@@ -13,17 +13,17 @@
 	. = ..()
 	if(.)
 		return
+	var/mob/living/silicon/robot/robot = src.actor.performer
+	if(!istype(robot))
+		// how?
+		qdel(src)
+		return TRUE
+	if(!robot.can_repick_module)
+		// how?
+		qdel(src)
+		return TRUE
 	switch(action)
 		if("pick")
-			var/mob/living/silicon/robot/robot = src.actor.performer
-			if(!istype(robot))
-				// how?
-				qdel(src)
-				return TRUE
-			if(!robot.can_repick_module)
-				// how?
-				qdel(src)
-				return TRUE
 			var/module_id = params["moduleId"]
 			var/frame_ref = params["frameRef"]
 			if(!istext(frame_ref) || !length(frame_ref))

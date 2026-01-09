@@ -56,7 +56,7 @@
 /mob/living/silicon/robot/proc/get_module_pick_groups_special()
 	. = list()
 	//! todo: rework security levels
-	if(get_security_level() >= SEC_LEVEL_RED)
+	if(GLOB.security_level >= SEC_LEVEL_RED)
 		. |= ROBOT_MODULE_SELECTION_GROUP_LEGACY_RED_ALERT
 	//! end
 

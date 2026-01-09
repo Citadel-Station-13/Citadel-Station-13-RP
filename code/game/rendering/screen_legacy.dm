@@ -184,10 +184,15 @@
 		if("module")
 			if(isrobot(usr))
 				var/mob/living/silicon/robot/R = usr
-				open_tgui_actor_modal(
-					/datum/tgui_actor_modal/robot_module_picker,
-					actor = new /datum/event_args/actor(R),
-				)
+				if(!R.module)
+					if(!R.can_repick_module)
+						to_chat(usr, SPAN_WARNING("You can't repick your module, despite not having one. \
+						Something probably got bugged."))
+					else
+						open_tgui_actor_modal(
+							/datum/tgui_actor_modal/robot_module_picker,
+							actor = new /datum/event_args/actor(R),
+						)
 
 		if("radio")
 			if(issilicon(usr))

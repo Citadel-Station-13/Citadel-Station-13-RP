@@ -87,6 +87,8 @@ export const RobotModulePicker = (props) => {
             <Section title="Preview">
               {selectedFrame && (
                 <Sprite
+                  width="100%"
+                  height="100%"
                   sheet={ROBOT_MODULE_SPRITESHEET_NAME}
                   sizeKey={selectedFrame.spriteSizeKey}
                   sprite={selectedFrame.spriteId}
