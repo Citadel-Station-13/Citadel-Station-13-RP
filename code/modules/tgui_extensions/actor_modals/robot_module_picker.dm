@@ -2,6 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/tgui_actor_modal/robot_module_picker
+	tgui_interface = "actor_modal/RobotModulePicker.tsx"
 
 /datum/tgui_actor_modal/robot_module_picker/initialize()
 	if(!isrobot(actor.performer))
@@ -75,13 +76,6 @@
 				"iconRef" = "[possible_frame.robot_iconset.id]-4",
 			)
 		serialized_modules[++serialized_modules.len] = serialized_module
-
-/datum/tgui_actor_modal/robot_module_picker/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "actor_modal/RobotModulePicker.tsx")
-		ui.set_autoupdate(FALSE)
-		ui.open()
 
 /**
  * @return list(

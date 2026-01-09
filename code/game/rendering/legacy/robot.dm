@@ -138,3 +138,7 @@
 	mymob.client.screen += src.other
 
 	mymob.reload_rendering()
+
+/mob/living/silicon/robot/update_hud()
+	hands.icon_state = module ? module.module_hud_state : "none"
+	..()

@@ -127,6 +127,7 @@
 	PROTECTED_PROC(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
+	RegisterSignal(item, COMSIG_ITEM_PICKUP, PROC_REF(handle_item_pickup))
 	RegisterSignal(item, COMSIG_ITEM_DROPPED, PROC_REF(handle_item_drop))
 	RegisterSignal(item, COMSIG_PARENT_QDELETING, PROC_REF(handle_item_del))
 
@@ -143,10 +144,20 @@
 		hud.drawer_backplate?.redraw()
 	item.vis_flags &= ~(VIS_INHERIT_LAYER | VIS_INHERIT_PLANE)
 
+/datum/robot_inventory/proc/handle_item_pickup(obj/item/source, ...)
+	// TODO: cleaner way to do this?
+	spawn(0)
+		for(var/datum/actor_hud/robot_inventory/inventory_hud as anything in huds_using)
+			inventory_hud?.drawer_backplate.redraw()
+
 /datum/robot_inventory/proc/handle_item_drop(obj/item/source, ...)
 	source.forceMove(owner)
 	source.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 	source.auto_pixel_offset_to_center()
+	// TODO: cleaner way to do this?
+	spawn(0)
+		for(var/datum/actor_hud/robot_inventory/inventory_hud as anything in huds_using)
+			inventory_hud?.drawer_backplate.redraw()
 	return COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
 
 /datum/robot_inventory/proc/handle_item_del(obj/item/source, ...)

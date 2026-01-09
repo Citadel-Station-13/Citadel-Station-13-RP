@@ -38,6 +38,11 @@
 	var/datum/callback/validity
 	/// only one type on initiator-performer pair, period
 	var/no_type_dupe = FALSE
+	/// which tgui interface to open
+	var/tgui_interface
+	/// only initiator can access this ui; by default,
+	/// we use always_state and initiator-only
+	var/lock_to_initiator = TRUE
 
 /datum/tgui_actor_modal/New(datum/event_args/actor/actor, datum/callback/validity)
 	var/mob/initiator = actor.initiator
@@ -60,3 +65,22 @@
 /datum/tgui_actor_modal/proc/initialize()
 	return TRUE
 
+/datum/tgui_actor_modal/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/tgui_actor_modal/ui_status(mob/user, datum/ui_state/state)
+	if(lock_to_initiator)
+		if(user != actor.initiator)
+			return UI_CLOSE
+	return ..()
+
+/datum/tgui_actor_modal/robot_module_picker/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, tgui_interface)
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/tgui_actor_modal/on_ui_close(mob/user, datum/tgui/ui, embedded)
+	..()
+	qdel(src)
