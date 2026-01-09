@@ -10,6 +10,10 @@
 		return FALSE
 	return ..()
 
+/datum/tgui_actor_modal/robot_module_picker/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	..()
+	immediate += /datum/asset_pack/spritesheet/robot_iconsets
+
 /datum/tgui_actor_modal/robot_module_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
@@ -69,7 +73,7 @@
 			"frames" = serialized_frames,
 		)
 		var/list/datum/robot_frame/possible_frames = pickable_modules[possible_module]
-		// TODO: spritesheet doesn't work properly for non-hardcoded frames but we can worry about it later
+		// TODO: iconRef doesn't work properly for non-hardcoded frames but we can worry about it later
 		for(var/datum/robot_frame/possible_frame as anything in possible_frames)
 			var/frame_ref = ref(possible_frame)
 			// ckey enforcement should probably be elsewhere but idgaf lol
@@ -80,6 +84,8 @@
 				"name" = possible_frame.name || "???",
 				"spriteSizeKey" = "[possible_frame.robot_iconset.icon_dimension_x]x[possible_frame.robot_iconset.icon_dimension_y]",
 				"spriteId" = "[possible_frame.robot_iconset.id]-4",
+				"iconRef" = "\ref[possible_frame.robot_iconset.icon]",
+				"iconState" = "[possible_frame.robot_iconset.icon_state]",
 			)
 		serialized_modules[module_ref] = serialized_module
 

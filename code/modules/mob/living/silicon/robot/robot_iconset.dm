@@ -79,3 +79,6 @@
 		else
 			stack_trace("invalid variation in index [i] on [type] ([id])")
 		variations[maybe_variation.id] = maybe_variation
+
+/datum/prototype/robot_iconset/proc/get_display_name()
+	return display_name || name

@@ -10,7 +10,7 @@ import { useBackend } from '../../backend';
 import { Sprite } from '../../components';
 import { Window } from '../../layouts';
 
-export const ROBOT_MODULE_SPRITESHEET_NAME = 'robot-iconsets';
+export const ROBOT_MODULE_SPRITESHEET_NAME = 'roboticonsets';
 
 interface RobotModulePickerData {
   modules: Record<string, PickableModule>;
@@ -46,8 +46,8 @@ export const RobotModulePicker = (props) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item width="25%">
-            <Section title="Module" fill>
-              <Tabs vertical fill>
+            <Section title="Module" fill scrollable>
+              <Tabs vertical >
                 {Object.entries(data.modules).map(([id, module]) => {
                   return (
                     <Tabs.Tab
@@ -63,8 +63,8 @@ export const RobotModulePicker = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item width="25%">
-            <Section title="Frame" fill>
-              <Tabs vertical fill>
+            <Section title="Frame" fill scrollable>
+              <Tabs vertical>
                 {selectedModuleRef &&
                   !!data.modules[selectedModuleRef] &&
                   Object.entries(data.modules[selectedModuleRef].frames).map(
@@ -94,8 +94,6 @@ export const RobotModulePicker = (props) => {
                   {selectedFrame.spriteId}
                   <br />
                   <Sprite
-                    width="100%"
-                    height="100%"
                     sheet={ROBOT_MODULE_SPRITESHEET_NAME}
                     sizeKey={selectedFrame.spriteSizeKey}
                     sprite={selectedFrame.spriteId}
