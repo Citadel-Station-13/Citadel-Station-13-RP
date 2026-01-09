@@ -10,10 +10,6 @@
 		return FALSE
 	return ..()
 
-/datum/tgui_actor_modal/robot_module_picker/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-	..()
-	immediate += /datum/asset_pack/spritesheet/robot_iconsets
-
 /datum/tgui_actor_modal/robot_module_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
@@ -67,7 +63,7 @@
 		var/module_name = "[possible_module.category ? "[possible_module.category] " : ""][possible_module.get_visible_name()]"
 		var/list/serialized_frames = list()
 		var/list/serialized_module = list(
-			"id" = module.id,
+			"id" = possible_module.id,
 			"name" = module_name,
 			"frames" = serialized_frames,
 		)
