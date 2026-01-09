@@ -1,7 +1,8 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 /datum/prototype/robot_module/nanotrasen/combat
 	id = "nt-combat"
-	display_name = "NT-Lancer"
+	display_name = "NT-LANCER"
+	visible_name = "Combat"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/security
 	module_hud_state = "combat"
 	light_color = "#FF0000"

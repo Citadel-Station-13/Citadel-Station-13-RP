@@ -1,7 +1,8 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 /datum/prototype/robot_module/nanotrasen/logistics
 	id = "nt-logistics"
-	display_name = "NT-Logistics"
+	display_name = "NT-LGN"
+	display_name = "Logistics"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/logistics
 	module_hud_state = "mining"
 	light_color = "#FBE281"

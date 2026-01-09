@@ -1,7 +1,8 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 /datum/prototype/robot_module/nanotrasen/janitor
 	id = "nt-janitor"
-	display_name = "NT-Janitorial"
+	display_name = "NT-CLN"
+	visible_name = "Janitorial"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/janitor
 	module_hud_state = "janitor"
 	light_color = "#CC60FF"

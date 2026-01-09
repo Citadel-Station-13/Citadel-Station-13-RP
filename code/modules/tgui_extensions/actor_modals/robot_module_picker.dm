@@ -61,14 +61,15 @@
 	.["modules"] = serialized_modules
 	for(var/datum/prototype/robot_module/possible_module as anything in pickable_modules)
 		var/module_ref = ref(possible_module)
+		var/module_name = "[possible_module.category ? "[possible_module.category] " : ""][possible_module.get_visible_name()]"
 		var/list/serialized_frames = list()
 		var/list/serialized_module = list(
 			"ref" = module_ref,
-			"name" = possible_module.get_display_name(),
+			"name" = module_name,
 			"frames" = serialized_frames,
 		)
 		var/list/datum/robot_frame/possible_frames = pickable_modules[possible_module]
-		// TODO: iconRef doesn't work properly for non-hardcoded frames but we can worry about it later
+		// TODO: spritesheet doesn't work properly for non-hardcoded frames but we can worry about it later
 		for(var/datum/robot_frame/possible_frame as anything in possible_frames)
 			var/frame_ref = ref(possible_frame)
 			// ckey enforcement should probably be elsewhere but idgaf lol
@@ -93,12 +94,12 @@
 	. = list()
 
 	var/list/our_selection_groups = for_robot.get_module_pick_groups()
-	for(var/datum/prototype/robot_module/module as anything in RSrobot_modules.fetch_multi(/datum/prototype/robot_module))
+	for(var/datum/prototype/robot_module/module as anything in RSrobot_modules.fetch_subtypes_immutable(/datum/prototype/robot_module))
 		if(!length(module.selection_groups_all) && !length(module.selection_groups_any))
 			continue
-		if(length(module.selection_groups_all) != (module.selection_groups_all & our_selection_groups))
+		if(module.selection_groups_all && (length(module.selection_groups_all) != length(module.selection_groups_all & our_selection_groups)))
 			continue
-		if(!length(module.selection_groups_any & our_selection_groups))
+		if(module.selection_groups_any && (!length(module.selection_groups_any & our_selection_groups)))
 			continue
 		// frame ckey enforcement is in ui static data.
 		.[module] = module.frames

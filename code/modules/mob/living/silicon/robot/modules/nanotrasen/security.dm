@@ -1,7 +1,8 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 /datum/prototype/robot_module/nanotrasen/security
 	id = "nt-security"
-	display_name = "NT-Security"
+	display_name = "NT-SEC"
+	display_name = "Security"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/security
 	module_hud_state = "security"
 	light_color = "#FF0000"

@@ -1,7 +1,8 @@
 GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 /datum/prototype/robot_module/nanotrasen/medical
 	id = "nt-medical"
-	display_name = "NT-Triage"
+	display_name = "NT-MED"
+	visible_name = "Medical"
 	use_robot_module_path = /obj/item/robot_module_legacy/robot/medical
 	module_hud_state = "medical"
 	light_color = "#0099FF"

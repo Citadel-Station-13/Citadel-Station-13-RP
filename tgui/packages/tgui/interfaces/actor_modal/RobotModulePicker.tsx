@@ -46,8 +46,8 @@ export const RobotModulePicker = (props) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item width="20%">
-            <Section title="Module">
-              <Tabs>
+            <Section title="Module" fill>
+              <Tabs vertical fill>
                 {Object.entries(data.modules).map(([id, module]) => {
                   return (
                     <Tabs.Tab
@@ -63,8 +63,8 @@ export const RobotModulePicker = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item width="20%">
-            <Section title="Frame">
-              <Tabs>
+            <Section title="Frame" fill>
+              <Tabs vertical fill>
                 {selectedModuleRef &&
                   data.modules[selectedModuleRef] &&
                   Object.entries(data.modules[selectedModuleRef].frames).map(
@@ -84,7 +84,7 @@ export const RobotModulePicker = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item grow>
-            <Section title="Preview">
+            <Section title="Preview" fill>
               {selectedFrame && (
                 <Sprite
                   width="100%"

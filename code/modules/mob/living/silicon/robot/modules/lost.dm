@@ -1,6 +1,7 @@
 GENERATE_ROBOT_MODULE_PRESET(/lost)
 /datum/prototype/robot_module/lost
 	id = "lost"
+	display_name = "???"
 	light_color = "#AAAA00"
 	module_hud_state = "recon"
 	auto_iconsets = list(
@@ -30,13 +31,22 @@ GENERATE_ROBOT_MODULE_PRESET(/lost)
 
 			// Engi
 			/obj/item/weldingtool/electric/mounted,
-			/obj/item/tool/screwdriver/cyborg,
-			/obj/item/tool/wrench/cyborg,
-			/obj/item/tool/wirecutters/cyborg,
+			/obj/item/switchtool,
 			/obj/item/multitool,
+
+			// logistics
+			/obj/item/pickaxe/borgdrill,
+			/obj/item/storage/bag/ore,
 
 			// Sci
 			/obj/item/robotanalyzer,
+
+			// service
+			/obj/item/soap/nanotrasen,
+
+			// haha fuck you it's the hour of the standard borg, yeehaw
+			/obj/item/gripper/omni/no_attack,
+			/obj/item/gripper/omni/no_attack,
 		)
 	if(emag_out)
 		emag_out |= list(

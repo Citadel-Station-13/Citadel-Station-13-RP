@@ -53,6 +53,8 @@
 	var/display_name = "???"
 	/// Our examine name, defaulting to display name
 	var/visible_name
+	/// Our category; can be null if default
+	var/category
 
 	//* Mounted Item Descriptor - Injectors *//
 	/// items to inject into normal out
