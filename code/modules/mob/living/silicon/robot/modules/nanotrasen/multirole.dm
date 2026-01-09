@@ -33,6 +33,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 		/datum/prototype/robot_iconset/grounded_worm/standard,
 		/datum/prototype/robot_iconset/raptor/peacekeeper,
 		/datum/prototype/robot_iconset/baseline_droid/standard,
+		/datum/prototype/robot_iconset/dog_borgi/standard,
+		/datum/prototype/robot_iconset/dog_vale/standard,
 	)
 
 //!                     ~~~~~ "Holy crap, why is standard so OP" ~~~~~                   !//

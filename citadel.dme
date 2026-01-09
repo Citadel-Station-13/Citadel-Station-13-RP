@@ -2596,7 +2596,6 @@
 #include "code\modules\asset_cache\assets\json\WorldTypepaths.dm"
 #include "code\modules\asset_cache\assets\spritesheet\crayons.dm"
 #include "code\modules\asset_cache\assets\spritesheet\materials.dm"
-#include "code\modules\asset_cache\assets\spritesheet\robot_iconsets.dm"
 #include "code\modules\asset_cache\packs\changelog_item.dm"
 #include "code\modules\asset_cache\packs\json.dm"
 #include "code\modules\asset_cache\packs\simple.dm"

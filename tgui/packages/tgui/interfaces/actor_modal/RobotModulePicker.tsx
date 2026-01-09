@@ -7,7 +7,9 @@ import { useState } from 'react';
 import { Section, Stack, Tabs } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
-import { Sprite } from '../../components';
+import { ByondIconRef } from '../../components/ByondIconRef';
+import { Centered } from '../../components/Centered';
+import { Direction } from '../../constants';
 import { Window } from '../../layouts';
 
 export const ROBOT_MODULE_SPRITESHEET_NAME = 'roboticonsets';
@@ -26,6 +28,8 @@ interface PickableFrame {
   name: string;
   spriteSizeKey: string;
   spriteId: string;
+  iconRef: string;
+  iconState: string;
 }
 
 export const RobotModulePicker = (props) => {
@@ -47,18 +51,20 @@ export const RobotModulePicker = (props) => {
         <Stack fill>
           <Stack.Item width="25%">
             <Section title="Module" fill scrollable>
-              <Tabs vertical >
-                {Object.entries(data.modules).map(([id, module]) => {
-                  return (
-                    <Tabs.Tab
-                      key={id}
-                      onClick={() => setSelectedModuleRef(id)}
-                      selected={id === selectedModuleRef}
-                    >
-                      {module.name}
-                    </Tabs.Tab>
-                  );
-                })}
+              <Tabs vertical>
+                {Object.entries(data.modules)
+                  .sort(([a1, a2], [b1, b2]) => a2.name.localeCompare(b2.name))
+                  .map(([id, module]) => {
+                    return (
+                      <Tabs.Tab
+                        key={id}
+                        onClick={() => setSelectedModuleRef(id)}
+                        selected={id === selectedModuleRef}
+                      >
+                        {module.name}
+                      </Tabs.Tab>
+                    );
+                  })}
               </Tabs>
             </Section>
           </Stack.Item>
@@ -67,8 +73,11 @@ export const RobotModulePicker = (props) => {
               <Tabs vertical>
                 {selectedModuleRef &&
                   !!data.modules[selectedModuleRef] &&
-                  Object.entries(data.modules[selectedModuleRef].frames).map(
-                    ([id, frame]) => {
+                  Object.entries(data.modules[selectedModuleRef].frames)
+                    .sort(([a1, a2], [b1, b2]) =>
+                      a2.name.localeCompare(b2.name),
+                    )
+                    .map(([id, frame]) => {
                       return (
                         <Tabs.Tab
                           key={id}
@@ -78,27 +87,67 @@ export const RobotModulePicker = (props) => {
                           {frame.name}
                         </Tabs.Tab>
                       );
-                    },
-                  )}
+                    })}
               </Tabs>
             </Section>
           </Stack.Item>
           <Stack.Item grow>
             <Section title="Preview" fill>
               {selectedFrame && (
-                <>
-                  {ROBOT_MODULE_SPRITESHEET_NAME}
-                  <br />
-                  {selectedFrame.spriteSizeKey}
-                  <br />
-                  {selectedFrame.spriteId}
-                  <br />
-                  <Sprite
-                    sheet={ROBOT_MODULE_SPRITESHEET_NAME}
-                    sizeKey={selectedFrame.spriteSizeKey}
-                    sprite={selectedFrame.spriteId}
-                  />
-                </>
+                <Stack fill>
+                  <Stack.Item grow={1}>
+                    <Stack fill vertical>
+                      <Stack.Item grow={1}>
+                        <Centered>
+                          <ByondIconRef
+                            width="100%"
+                            height="auto"
+                            iconRef={selectedFrame.iconRef}
+                            iconState={selectedFrame.iconState}
+                            direction={Direction.NORTH}
+                          />
+                        </Centered>
+                      </Stack.Item>
+                      <Stack.Item grow={1}>
+                        <Centered>
+                          <ByondIconRef
+                            width="100%"
+                            height="auto"
+                            iconRef={selectedFrame.iconRef}
+                            iconState={selectedFrame.iconState}
+                            direction={Direction.SOUTH}
+                          />
+                        </Centered>
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                  <Stack.Item grow={1}>
+                    <Stack fill vertical>
+                      <Stack.Item grow={1}>
+                        <Centered>
+                          <ByondIconRef
+                            width="100%"
+                            height="auto"
+                            iconRef={selectedFrame.iconRef}
+                            iconState={selectedFrame.iconState}
+                            direction={Direction.EAST}
+                          />
+                        </Centered>
+                      </Stack.Item>
+                      <Stack.Item grow={1}>
+                        <Centered>
+                          <ByondIconRef
+                            width="100%"
+                            height="auto"
+                            iconRef={selectedFrame.iconRef}
+                            iconState={selectedFrame.iconState}
+                            direction={Direction.WEST}
+                          />
+                        </Centered>
+                      </Stack.Item>
+                    </Stack>
+                  </Stack.Item>
+                </Stack>
               )}
             </Section>
           </Stack.Item>

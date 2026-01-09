@@ -82,8 +82,6 @@
 			serialized_frames[frame_ref] = list(
 				"ref" =  frame_ref,
 				"name" = possible_frame.name || "???",
-				"spriteSizeKey" = "[possible_frame.robot_iconset.icon_dimension_x]x[possible_frame.robot_iconset.icon_dimension_y]",
-				"spriteId" = "[possible_frame.robot_iconset.id]-4",
 				"iconRef" = "\ref[possible_frame.robot_iconset.icon]",
 				"iconState" = "[possible_frame.robot_iconset.icon_state]",
 			)
