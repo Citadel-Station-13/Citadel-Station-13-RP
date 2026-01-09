@@ -35,9 +35,7 @@ interface PickableFrame {
 
 export const RobotModulePicker = (props) => {
   const { act, data } = useBackend<RobotModulePickerData>();
-  const [selectedModuleId, setSelectedModuleId] = useState<null | string>(
-    null,
-  );
+  const [selectedModuleId, setSelectedModuleId] = useState<null | string>(null);
   const [selectedFrameRef, setSelectedFrameRef] = useState<null | string>(null);
 
   let selectedFrame: PickableFrame | null =
@@ -163,6 +161,7 @@ export const RobotModulePicker = (props) => {
                         frameRef: selectedFrameRef,
                       })
                     }
+                    textAlign="center"
                   >
                     Specialize
                   </Button.Confirm>

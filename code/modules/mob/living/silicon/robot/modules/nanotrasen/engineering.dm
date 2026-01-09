@@ -7,6 +7,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 	module_hud_state = "engineering"
 	light_color = "#FDD800"
 	auto_iconsets = list(
+		/datum/prototype/robot_iconset/grounded_landmate/engineering,
+		/datum/prototype/robot_iconset/grounded_landmate/engineering_tread,
+		/datum/prototype/robot_iconset/grounded_landmate/treadwell,
 		/datum/prototype/robot_iconset/dog_borgi/engineering,
 		/datum/prototype/robot_iconset/dog_k9/engineering,
 		/datum/prototype/robot_iconset/dog_k9/engineering_dark,
@@ -21,9 +24,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 		/datum/prototype/robot_iconset/biped_sleek/engineering,
 		/datum/prototype/robot_iconset/grounded_spider/engineering,
 		/datum/prototype/robot_iconset/biped_heavy/engineering,
-		/datum/prototype/robot_iconset/grounded_landmate/engineering,
-		/datum/prototype/robot_iconset/grounded_landmate/engineering_tread,
-		/datum/prototype/robot_iconset/grounded_landmate/treadwell,
 		/datum/prototype/robot_iconset/hover_drone/engineering,
 		/datum/prototype/robot_iconset/hover_handy/engineering,
 		/datum/prototype/robot_iconset/hover_glitterfly/engineering,

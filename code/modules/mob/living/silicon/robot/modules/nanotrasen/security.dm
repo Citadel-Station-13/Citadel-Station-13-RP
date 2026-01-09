@@ -7,9 +7,9 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/security)
 	module_hud_state = "security"
 	light_color = "#FF0000"
 	auto_iconsets = list(
+		/datum/prototype/robot_iconset/grounded_landmate/security,
 		/datum/prototype/robot_iconset/baseline_standard/security,
 		/datum/prototype/robot_iconset/hover_eyebot/security,
-		/datum/prototype/robot_iconset/grounded_landmate/security,
 		/datum/prototype/robot_iconset/grounded_landmate/security_tread,
 		/datum/prototype/robot_iconset/biped_marina/security,
 		/datum/prototype/robot_iconset/biped_tall/tallred,

@@ -7,6 +7,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 	light_color = "#FFFFFF"
 	module_hud_state = "standard"
 	auto_iconsets = list(
+		/datum/prototype/robot_iconset/baseline_standard/standard,
 		/datum/prototype/robot_iconset/biped_k4t,
 		/datum/prototype/robot_iconset/baseline_old/standard,
 		/datum/prototype/robot_iconset/hover_eyebot/standard,
@@ -17,7 +18,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/multirole)
 		/datum/prototype/robot_iconset/grounded_spider/standard,
 		/datum/prototype/robot_iconset/biped_heavy/standard,
 		/datum/prototype/robot_iconset/cat_feli/standard,
-		/datum/prototype/robot_iconset/baseline_standard/standard,
 		/datum/prototype/robot_iconset/baseline_misc/omoikane,
 		/datum/prototype/robot_iconset/hover_drone/standard,
 		/datum/prototype/robot_iconset/biped_insekt/standard,

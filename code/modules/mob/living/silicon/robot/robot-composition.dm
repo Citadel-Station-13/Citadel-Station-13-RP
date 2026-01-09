@@ -64,7 +64,7 @@
 
 /mob/living/silicon/robot/proc/get_default_iconset()
 	if(module?.auto_iconsets?.len > 0)
-		. = RSrobot_iconsets.fetch_local_or_throw(module.auto_iconsets[1])
+		. = RSrobot_iconsets.fetch_local_or_throw(pick(module.auto_iconsets))
 		if(.)
 			return
 	return RSrobot_iconsets.fetch_local_or_throw(/datum/prototype/robot_iconset/baseline_standard/standard)
@@ -105,8 +105,6 @@
 			zmm_flags &= ~ZMM_WIDE_LOAD
 		base_icon_state = iconset.icon_state
 		icon = iconset.icon
-		// todo: should this be set and not adjust?
-		set_base_pixel_x(iconset.base_pixel_x)
 		icon_x_dimension = iconset.icon_dimension_x
 		icon_y_dimension = iconset.icon_dimension_y
 		// reset resting variation if needed
@@ -116,13 +114,12 @@
 		zmm_flags &= ~ZMM_WIDE_LOAD
 		base_icon_state = initial(base_icon_state) || initial(icon_state)
 		icon = initial(icon)
-		// todo: should this be set and not adjust?
-		set_base_pixel_x(0)
 		icon_x_dimension = initial(icon_x_dimension)
 		icon_y_dimension = initial(icon_y_dimension)
 		// reset resting variation
 		picked_resting_variation = null
 
+	auto_pixel_offset_to_center()
 	if(!skip_icon_update)
 		update_icon()
 

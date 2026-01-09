@@ -7,11 +7,11 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/janitor)
 	module_hud_state = "janitor"
 	light_color = "#CC60FF"
 	auto_iconsets = list(
+		/datum/prototype/robot_iconset/grounded_landmate/janitor,
 		/datum/prototype/robot_iconset/baseline_toiletbot/janitor,
 		/datum/prototype/robot_iconset/hover_eyebot/janitor,
 		/datum/prototype/robot_iconset/biped_marina/janitor,
 		/datum/prototype/robot_iconset/biped_sleek/janitor,
-		/datum/prototype/robot_iconset/grounded_landmate/janitor,
 		/datum/prototype/robot_iconset/biped_tall/alternative/janitor,
 		/datum/prototype/robot_iconset/hover_drone/janitor,
 		/datum/prototype/robot_iconset/hover_glitterfly/janitor,

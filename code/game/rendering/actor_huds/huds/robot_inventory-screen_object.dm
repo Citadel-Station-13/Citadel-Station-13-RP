@@ -184,9 +184,11 @@
 		reset()
 	vis_contents += render_as
 	masquarading_as = render_as
+	name = render_as.name
 	alpha = initial(alpha)
 
 /atom/movable/render/robot_drawer_item_render/proc/reset()
 	vis_contents.len = 0
 	masquarading_as = null
 	alpha = 0
+	name = initial(name)

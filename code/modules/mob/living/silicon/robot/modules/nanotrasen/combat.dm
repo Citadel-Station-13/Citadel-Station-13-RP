@@ -7,6 +7,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 	module_hud_state = "combat"
 	light_color = "#FF0000"
 	auto_iconsets = list(
+		/datum/prototype/robot_iconset/baseline_droid/combat,
 		/datum/prototype/robot_iconset/hover_eyebot/combat,
 		/datum/prototype/robot_iconset/biped_insekt/combat,
 		/datum/prototype/robot_iconset/grounded_zoomba/combat,
@@ -14,7 +15,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/combat)
 		/datum/prototype/robot_iconset/biped_marina/combat,
 		/datum/prototype/robot_iconset/grounded_mechoid/combat,
 		/datum/prototype/robot_iconset/dog_k9/blade,
-		/datum/prototype/robot_iconset/baseline_droid/combat,
 	)
 
 /datum/prototype/robot_module/nanotrasen/combat/create_mounted_item_descriptors(list/normal_out, list/emag_out)

@@ -7,6 +7,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 	module_hud_state = "mining"
 	light_color = "#FBE281"
 	auto_iconsets = list(
+		/datum/prototype/robot_iconset/grounded_landmate/mining,
 		/datum/prototype/robot_iconset/dog_k9/logistics,
 		/datum/prototype/robot_iconset/dog_k9/logistics_dark,
 		/datum/prototype/robot_iconset/dog_vale/mining,
@@ -29,7 +30,6 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/logistics)
 		/datum/prototype/robot_iconset/grounded_worm/miner,
 		/datum/prototype/robot_iconset/raptor/mining,
 		/datum/prototype/robot_iconset/baseline_standard/logistics,
-		/datum/prototype/robot_iconset/grounded_landmate/mining,
 		/datum/prototype/robot_iconset/hover_coffin/mining,
 	)
 

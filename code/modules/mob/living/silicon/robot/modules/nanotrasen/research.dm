@@ -7,8 +7,8 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/research)
 	module_hud_state = "science"
 	light_color = "#CC60FF"
 	auto_iconsets = list(
-		/datum/prototype/robot_iconset/dog_otie/science,
 		/datum/prototype/robot_iconset/hover_eyebot/science,
+		/datum/prototype/robot_iconset/dog_otie/science,
 		/datum/prototype/robot_iconset/biped_marina/service,
 		/datum/prototype/robot_iconset/grounded_spider/science,
 		/datum/prototype/robot_iconset/biped_sleek/science,
