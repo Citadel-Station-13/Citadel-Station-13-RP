@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/cat_feli
-	display_name = "Feline - F3-LINE"
+	display_name = "F3-LINE"
 	abstract_type = /datum/prototype/robot_iconset/cat_feli
 	auto_chassis = /datum/prototype/robot_chassis/quadruped/feline
 	icon = 'icons/mob/robot/iconset/cat_feli.dmi'

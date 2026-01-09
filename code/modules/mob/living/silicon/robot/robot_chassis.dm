@@ -13,6 +13,10 @@
  * * WIP
  */
 /datum/prototype/robot_chassis
+	abstract_type = /datum/prototype/robot_chassis
+
+	/// our name
+	var/name = "???"
 	/// items to inject into normal out
 	/// * paths are allowed
 	/// * anonymous types are allowed

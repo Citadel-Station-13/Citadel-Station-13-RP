@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/dog_vale
-	display_name = "Canine - Vale"
+	display_name = "Vale"
 	abstract_type = /datum/prototype/robot_iconset/dog_vale
 	auto_chassis = /datum/prototype/robot_chassis/quadruped/canine
 	icon = 'icons/mob/robot/iconset/dog_vale.dmi'

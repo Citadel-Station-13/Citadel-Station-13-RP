@@ -2,3 +2,4 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_chassis/baseline
+	name = "Baseline"

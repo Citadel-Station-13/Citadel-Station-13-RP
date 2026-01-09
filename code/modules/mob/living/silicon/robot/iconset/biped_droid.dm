@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/biped_droid
-
+	display_name = "Droid"
 	abstract_type = /datum/prototype/robot_iconset/biped_droid
 	auto_chassis = /datum/prototype/robot_chassis/biped
 	icon = 'icons/mob/robot/iconset/biped_droid.dmi'

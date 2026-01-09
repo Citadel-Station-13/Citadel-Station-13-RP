@@ -5,7 +5,7 @@
 // All sprites used in this file made by mizartz.carrd.co //
 
 /datum/prototype/robot_iconset/drake_mizartz
-	display_name = "Drake - Mizartz"
+	display_name = "Mizartz"
 	abstract_type = /datum/prototype/robot_iconset/drake_mizartz
 	auto_chassis = /datum/prototype/robot_chassis/quadruped/draconic
 

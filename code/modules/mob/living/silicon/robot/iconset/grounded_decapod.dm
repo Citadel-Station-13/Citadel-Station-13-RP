@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/grounded_decapod
+	display_name = "Decapod"
 	abstract_type = /datum/prototype/robot_iconset/grounded_decapod
 	auto_chassis = /datum/prototype/robot_chassis/grounded
 	icon = 'icons/mob/robot/iconset/grounded_decapod.dmi'

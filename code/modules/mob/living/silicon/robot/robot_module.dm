@@ -95,6 +95,7 @@
 		var/datum/robot_frame/generated_frame = new
 		generated_frame.robot_iconset = resolved_iconset
 		generated_frame.robot_chassis = resolved_chassis
+		generated_frame.name = "[resolved_iconset.name] ([resolved_chassis.name])"
 		frames += generated_frame
 
 /datum/prototype/robot_module/proc/create_provisioning() as /datum/robot_provisioning

@@ -2,6 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_chassis/quadruped
+	abstract_type = /datum/prototype/robot_chassis/quadruped
 
 /datum/prototype/robot_chassis/quadruped/create_mounted_item_descriptors(list/normal_out, list/emag_out)
 	if(normal_out)

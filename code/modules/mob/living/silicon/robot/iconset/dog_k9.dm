@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/dog_k9
-	display_name = "Canine - K9"
+	display_name = "K9"
 	abstract_type = /datum/prototype/robot_iconset/dog_k9
 
 	auto_chassis = /datum/prototype/robot_chassis/quadruped/canine

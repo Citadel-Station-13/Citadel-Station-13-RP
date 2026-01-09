@@ -42,10 +42,10 @@ export const RobotModulePicker = (props) => {
     null;
 
   return (
-    <Window width={800} height={600} title="Module Specialization">
+    <Window width={650} height={450} title="Module Specialization">
       <Window.Content>
         <Stack fill>
-          <Stack.Item width="20%">
+          <Stack.Item width="25%">
             <Section title="Module" fill>
               <Tabs vertical fill>
                 {Object.entries(data.modules).map(([id, module]) => {
@@ -62,11 +62,11 @@ export const RobotModulePicker = (props) => {
               </Tabs>
             </Section>
           </Stack.Item>
-          <Stack.Item width="20%">
+          <Stack.Item width="25%">
             <Section title="Frame" fill>
               <Tabs vertical fill>
                 {selectedModuleRef &&
-                  data.modules[selectedModuleRef] &&
+                  !!data.modules[selectedModuleRef] &&
                   Object.entries(data.modules[selectedModuleRef].frames).map(
                     ([id, frame]) => {
                       return (
@@ -86,13 +86,21 @@ export const RobotModulePicker = (props) => {
           <Stack.Item grow>
             <Section title="Preview" fill>
               {selectedFrame && (
-                <Sprite
-                  width="100%"
-                  height="100%"
-                  sheet={ROBOT_MODULE_SPRITESHEET_NAME}
-                  sizeKey={selectedFrame.spriteSizeKey}
-                  sprite={selectedFrame.spriteId}
-                />
+                <>
+                  {ROBOT_MODULE_SPRITESHEET_NAME}
+                  <br />
+                  {selectedFrame.spriteSizeKey}
+                  <br />
+                  {selectedFrame.spriteId}
+                  <br />
+                  <Sprite
+                    width="100%"
+                    height="100%"
+                    sheet={ROBOT_MODULE_SPRITESHEET_NAME}
+                    sizeKey={selectedFrame.spriteSizeKey}
+                    sprite={selectedFrame.spriteId}
+                  />
+                </>
               )}
             </Section>
           </Stack.Item>

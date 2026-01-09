@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/prototype/robot_iconset/dog_pupdozer
-	display_name = "Canine - Pupdozer"
+	display_name = "Pupdozer"
 	abstract_type = /datum/prototype/robot_iconset/dog_pupdozer
 	auto_chassis = /datum/prototype/robot_chassis/quadruped/canine
 	icon = 'icons/mob/robot/iconset/dog_pupdozer.dmi'
