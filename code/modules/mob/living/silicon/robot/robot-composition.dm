@@ -54,7 +54,9 @@
 	. -= conf_module_pick_selection_groups_excluded
 
 /mob/living/silicon/robot/proc/get_module_pick_groups_special()
-	. = list()
+	. = list(
+		ROBOT_MODULE_SELECTION_GROUP_NANOTRASEN,
+	)
 	//! todo: rework security levels
 	if(GLOB.security_level >= SEC_LEVEL_RED)
 		. |= ROBOT_MODULE_SELECTION_GROUP_LEGACY_RED_ALERT

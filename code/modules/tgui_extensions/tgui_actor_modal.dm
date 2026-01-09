@@ -11,12 +11,12 @@
  * @return modal or null if failed to open
  */
 /proc/open_tgui_actor_modal(type, datum/event_args/actor/actor, datum/callback/validity, ...)
-	var/datum/tgui_actor_modal/modal = new type(actor, validity)
 	if(modal.no_type_dupe)
 		var/mob/initiator = actor.initiator
 		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
 		if(HAS_TRAIT(initiator, trait))
 			return
+	var/datum/tgui_actor_modal/modal = new type(actor, validity)
 	if(!modal.initialize(arglist(args.Copy(4))))
 		qdel(modal)
 		return
@@ -37,6 +37,7 @@
 	/// check to see if we can still do it; useful if we're remote controlling or something
 	var/datum/callback/validity
 	/// only one type on initiator-performer pair, period
+	/// * only checked for compile time value
 	var/no_type_dupe = FALSE
 	/// which tgui interface to open
 	var/tgui_interface
@@ -80,6 +81,10 @@
 		ui = new(user, src, tgui_interface)
 		ui.set_autoupdate(FALSE)
 		ui.open()
+	// cleanup if it didn't open
+	spawn(2 SECONDS)
+		if(!QDELETED(src) && !length(open_uis))
+			qdel(src)
 
 /datum/tgui_actor_modal/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	..()

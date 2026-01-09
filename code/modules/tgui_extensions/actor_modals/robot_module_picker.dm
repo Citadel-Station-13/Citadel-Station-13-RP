@@ -2,7 +2,8 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/tgui_actor_modal/robot_module_picker
-	tgui_interface = "actor_modal/RobotModulePicker.tsx"
+	tgui_interface = "actor_modal/RobotModulePicker"
+	no_type_dupe = TRUE
 
 /datum/tgui_actor_modal/robot_module_picker/initialize()
 	if(!isrobot(actor.performer))
