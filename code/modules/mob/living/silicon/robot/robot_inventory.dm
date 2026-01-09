@@ -23,9 +23,13 @@
 	/// actor HUDs using us
 	/// * Lazy list
 	var/list/datum/actor_hud/robot_inventory/huds_using
+	/// our item mount
+	var/datum/item_mount/item_mount
 
 /datum/robot_inventory/New(mob/living/silicon/robot/owner)
 	src.owner = owner
+	item_mount = new
+	item_mount.relay_to(owner.resources.item_mount)
 
 /datum/robot_inventory/Destroy()
 	if(owner)
@@ -38,6 +42,7 @@
 	for(var/datum/actor_hud/robot_inventory/hud in huds_using)
 		hud.unbind_from_inventory(src)
 	huds_using = null
+	QDEL_NULL(item_mount)
 	return ..()
 
 //* Get *//
@@ -98,6 +103,8 @@
 
 	item.forceMove(owner)
 	LAZYADD(provided_items, item)
+	if(!item.item_mount)
+		item.mount(src.item_mount)
 	on_inv_register(item)
 	return TRUE
 
@@ -112,6 +119,8 @@
 	if(!(item in provided_items))
 		return
 	LAZYREMOVE(provided_items, item)
+	if(item.item_mount == src.item_mount)
+		item.unmount()
 	on_inv_unregister(item)
 
 /datum/robot_inventory/proc/on_inv_register(obj/item/item)
@@ -135,6 +144,7 @@
 
 /datum/robot_inventory/proc/handle_item_drop(obj/item/source, ...)
 	source.forceMove(owner)
+	source.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 	return COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
 
 /datum/robot_inventory/proc/handle_item_del(obj/item/source, ...)

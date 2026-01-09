@@ -101,6 +101,10 @@
 			continue
 		user.unregister_shieldcall(shieldcall)
 
+	// fire signals
+	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
+
 	//! LEGACY
 	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc) && !(. & COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
@@ -108,10 +112,6 @@
 	if(zoom)
 		zoom() //binoculars, scope, etc
 	//! END
-
-	// fire signals
-	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
 
 	if((item_flags & ITEM_DROPDEL) && !(flags & INV_OP_DELETING))
 		qdel(src)

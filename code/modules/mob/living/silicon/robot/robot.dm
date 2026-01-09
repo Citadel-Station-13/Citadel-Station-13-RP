@@ -151,7 +151,14 @@
 
 	/// Is our integrated light on?
 	var/lights_on = 0
-	var/used_power_this_tick = 0
+
+	/// last time we retallied avg power (literally a no-smoothing running average)
+	var/avg_power_last = 0
+	/// * units: joules
+	var/avg_power_accumulator = 0
+	/// * units: watts
+	var/avg_power = 0
+
 	var/sight_mode = 0
 	var/custom_name = ""
 	/// The name of the borg, for the purposes of custom icon sprite indexing.
@@ -532,7 +539,7 @@
 		if(cell)
 			INJECT_STATPANEL_DATA_LINE(., "Charge Left: [round(cell.percent())]%")
 			INJECT_STATPANEL_DATA_LINE(., "Cell Rating: [round(cell.max_charge)]") // Round just in case we somehow get crazy values
-			INJECT_STATPANEL_DATA_LINE(., "Power Cell Load: [round(used_power_this_tick)]W")
+			INJECT_STATPANEL_DATA_LINE(., "Power Cell Load: [round(avg_power)]W")
 		else
 			INJECT_STATPANEL_DATA_LINE(., "No Cell Inserted!")
 		INJECT_STATPANEL_DATA_LINE(., "Lights: [lights_on ? "ON" : "OFF"]")
@@ -1013,7 +1020,6 @@
 	if(!amount)
 		return TRUE
 	. = draw_checked_power(amount)
-	used_power_this_tick += .
 	return . ? TRUE : FALSE
 
 /mob/living/silicon/robot/binarycheck()

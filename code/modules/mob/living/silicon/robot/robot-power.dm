@@ -10,7 +10,9 @@
  * @return amount used
  */
 /mob/living/silicon/robot/proc/draw_power(joules)
-	return cell ? cell.use(DYNAMIC_J_TO_CELL_UNITS(joules)) : 0
+	. = cell ? cell.use(DYNAMIC_J_TO_CELL_UNITS(joules)) : 0
+	if(.)
+		avg_power_accumulator += . * DYNAMIC_CELL_UNITS_TO_J(joules)
 
 /**
  * Uses a certain amount of reserve power - usually from the cell.
@@ -27,7 +29,9 @@
 	var/units = DYNAMIC_J_TO_CELL_UNITS(joules)
 	if(cell.charge - units < reserve_units)
 		return 0
-	return cell.use(units)
+	. = cell.use(units)
+	if(.)
+		avg_power_accumulator += . * DYNAMIC_CELL_UNITS_TO_J(joules)
 
 /mob/living/silicon/robot/proc/accepts_cell(obj/item/cell/cell, datum/event_args/actor/actor, silent)
 	return cell.cell_type ? (cell.cell_type & cell_accept) : cell_accept_nonstandard

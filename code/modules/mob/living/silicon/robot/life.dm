@@ -6,6 +6,10 @@
 	clamp_values()
 	handle_regular_UI_updates()
 
+	var/avg_power_elapsed = world.time - avg_power_last
+	if(avg_power_elapsed > 0)
+		avg_power = avg_power_accumulator / (avg_power_last / (1 SECONDS))
+
 /mob/living/silicon/robot/PhysicalLife(seconds, times_fired)
 	if((. = ..()))
 		return
@@ -25,7 +29,6 @@
 	set_sleeping(0)
 
 /mob/living/silicon/robot/proc/use_power()
-	used_power_this_tick = 0
 	for(var/V in components)
 		var/datum/robot_component/C = components[V]
 		C.update_power_state()
