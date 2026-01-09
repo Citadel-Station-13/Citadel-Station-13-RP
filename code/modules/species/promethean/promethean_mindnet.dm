@@ -60,6 +60,9 @@
 	/// * Note that one mind = one mind ref; that is why this is sound behavior to use mind-ref's as keys.
 	var/list/link_lookup
 
+	/// Passive attunement always
+	/// * FOR THE LOVE OF ALL THAT IS HOLY LEAVE THIS AT ZERO
+	var/attunement_power_global = 0
 	/// passive attunement power for someone with some view of the Promethean's body
 	var/attunement_power_visible_min = 25
 	/// passive attunement power for someone with full view of the Promethean's body
@@ -113,6 +116,8 @@
 		. += link.attunement_power_global
 
 /datum/promethean_mindnet/proc/erase_mind_link(datum/mind/mind)
+	link_lookup[mind.mind_ref()]
+	update_static_data()
 
 /datum/promethean_mindnet/proc/get_mind_link(datum/mind/mind)
 
