@@ -2073,7 +2073,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
-/obj/machinery/power/apc/super/north_mount{
+/obj/machinery/power/apc/large_cell/tier_2/north_mount{
 	pixel_y = 28
 	},
 /obj/structure/cable/green{
@@ -2145,9 +2145,7 @@
 /area/hallway/station/docks)
 "eh" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
@@ -8389,9 +8387,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "rf" = (
@@ -10630,8 +10626,8 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/cell/device,
-/obj/item/cell/device,
+/obj/item/cell/basic/tier_2/small,
+/obj/item/cell/basic/tier_2/small,
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 24
@@ -12799,9 +12795,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
 "Ar" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -13174,9 +13168,7 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "Bh" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -14474,7 +14466,6 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	req_access = list();
 	req_one_access = list(11,67)
 	},
@@ -15115,9 +15106,7 @@
 	info = "The big blue box recently installed in here is a 'grid checker' which will shut off the power if a dangerous power spike from the engine erupts into the powernet.  Shutting everything down protects everything from electrical damage, however the outages can be disruptive to colony operations, so it is designed to restore power after a somewhat significant delay, up to ten minutes or so.  The grid checker can be manually hacked in order to end the outage sooner.  To do that, you must cut three specific wires which do not cause a red light to shine, then pulse a fourth wire.  Electrical protection is highly recommended when doing maintenance on the grid checker.";
 	name = "grid checker info"
 	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/storage/box/lights/mixed,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
@@ -16100,19 +16089,13 @@
 "GV" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/tool/wrench,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "GW" = (
@@ -20525,9 +20508,7 @@
 /area/bridge/secondary/hallway)
 "Qj" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -25166,7 +25147,6 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	req_access = list();
 	req_one_access = list(11,67)
 	},

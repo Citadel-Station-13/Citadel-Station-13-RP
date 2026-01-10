@@ -24,7 +24,7 @@
 	rendering_count = 1
 
 	w_class = WEIGHT_CLASS_NORMAL // no boxes
-	weight_volume = WEIGHT_VOLUME_TINY
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	slot_flags = SLOT_POCKET
 
 //* Rifle Magazines *//
@@ -41,7 +41,7 @@
 	rendering_segment_x_offset = -2
 
 	w_class = WEIGHT_CLASS_NORMAL // no boxes
-	weight_volume = WEIGHT_VOLUME_SMALL
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	slot_flags = SLOT_POCKET
 
 //* Typegen *//

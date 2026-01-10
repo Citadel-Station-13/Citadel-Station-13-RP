@@ -9,14 +9,13 @@
 	var/list/vore_organs = list()		// List of vore containers inside a mob
 	var/absorbed = FALSE				// If a mob is absorbed into another
 	var/weight = 137					// Weight for mobs for weightgain system
-	var/vore_egg_type = "egg" 				// Default egg type.
 	var/feral = 0 						// How feral the mob is, if at all. Does nothing for non xenochimera at the moment.
 	var/revive_ready = REVIVING_READY	// Only used for creatures that have the xenochimera regen ability, so far.
 	var/vore_taste = null				// What the character tastes like
 	var/vore_smell = null				// What the character smells like
 	var/no_vore = FALSE					// If the character/mob can vore.
 	var/openpanel = FALSE				// Is the vore panel open?
-	var/noisy = FALSE					// Toggle audible hunger.
+	//var/noisy = FALSE					// Toggle audible hunger.
 	var/absorbing_prey = 0 				// Determines if the person is using the succubus drain or not. See station_special_abilities_vr.
 	var/drain_finalized = 0				// Determines if the succubus drain will be KO'd/absorbed. Can be toggled on at any time.
 	var/fuzzy = 1						// Preference toggle for sharp/fuzzy icon.
@@ -24,7 +23,6 @@
 	var/can_be_drop_prey = FALSE
 	var/can_be_drop_pred = TRUE			// Mobs are pred by default.
 	var/next_preyloop					// For Fancy sound internal loop
-	var/adminbus_trash = FALSE			// For abusing trash eater for event shenanigans.
 	var/bitten = 0
 	var/painmsg = 1
 	/// pending refactor - allow size gun on us?
@@ -37,6 +35,9 @@
 	var/permit_stripped
 
 /mob/living/proc/init_vore()
+	// FUCK YOU FUCK YOU WHY DOESNT THIS CHECK FOR GC??
+	if(QDELING(src))
+		CRASH("vore just tried to have a vore moment")
 	//Something else made organs, meanwhile.
 	if(LAZYLEN(vore_organs))
 		return TRUE
@@ -61,15 +62,6 @@
 		B.can_taste = TRUE
 		return TRUE
 
-//
-// Hide vore organs in contents
-//
-///mob/living/view_variables_filter_contents(list/L)
-//	. = ..()
-//	var/len_before = L.len
-//	L -= vore_organs
-//	. += len_before - L.len
-//
 //
 // Handle being clicked, perhaps with something to devour
 //
@@ -600,7 +592,7 @@
 		to_chat(src, "<span class='warning'>You are not allowed to eat this.</span>")
 		return
 
-	if(is_type_in_list(I,edible_trash) || adminbus_trash)
+	if(is_type_in_list(I,edible_trash))
 		if(I.hidden_uplink)
 			to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
 			message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")

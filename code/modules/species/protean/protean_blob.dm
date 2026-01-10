@@ -70,6 +70,9 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_GROUND_HOIST //blobsurfing
 
+/mob/living/simple_mob/protean_blob/isSynthetic()
+	return TRUE
+
 /datum/say_list/protean_blob
 	speak = list("Blrb?","Sqrsh.","Glrsh!")
 	emote_hear = list("squishes softly","spluts quietly","makes wet noises")
@@ -261,7 +264,7 @@
 			to_chat(src, "<span class='warning'>You can't eat this.</span>")
 			return
 
-		if(is_type_in_list(O, edible_trash) || adminbus_trash)
+		if(is_type_in_list(O, edible_trash))
 			if(O.hidden_uplink)
 				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
 				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
@@ -432,7 +435,7 @@
 				if(back)
 					H.equip_to_slot_if_possible(prig,SLOT_ID_BACK, INV_OP_FORCE | INV_OP_DIRECTLY_EQUIPPING | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 				return
-				
+
 
 	if(isturf(loc))
 		var/obj/item/hardsuit/protean/prig

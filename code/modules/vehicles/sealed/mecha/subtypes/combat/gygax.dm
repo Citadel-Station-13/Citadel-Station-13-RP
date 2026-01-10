@@ -84,7 +84,7 @@
 		return
 	cell = new(src)
 	cell.charge = 30000
-	cell.maxcharge = 30000
+	cell.max_charge = 30000
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/gygax/old

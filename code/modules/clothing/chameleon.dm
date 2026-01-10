@@ -36,6 +36,8 @@
 		item_state_slots = copy.item_state_slots.Copy()
 	if(copy.sprite_sheets)
 		sprite_sheets = copy.sprite_sheets.Copy()
+	if(copy.sprite_sheets_obj)
+		sprite_sheets_obj = copy.sprite_sheets_obj.Copy()
 
 	OnDisguise(copy, user)
 	qdel(copy)
@@ -56,11 +58,12 @@
 	item_icons = null
 	item_state_slots = null
 	sprite_sheets = null
+	sprite_sheets_obj = null
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT, BODYTYPE_TESHARI)
 
 // Subtypes shall override this, not /disguise()
 /obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
 	return
-	//copying sprite_sheets_obj should be unnecessary as chameleon items are not refittable.
 
 
 /proc/generate_chameleon_choices(var/basetype, var/blacklist = list())
@@ -458,7 +461,7 @@
 	fire_sound = 'sound/weapons/Gunshot1.ogg'
 	projectile_type = /obj/projectile/chameleon
 	charge_meter = 0
-	charge_cost = 48 //uses next to no power, since it's just holograms
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 160
 	legacy_battery_lock = 1
 
 	var/obj/projectile/copy_projectile

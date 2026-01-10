@@ -13,6 +13,7 @@
 	pickup_sound = 'sound/items/pickup/gun.ogg'
 	worn_render_flags = NONE
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_MEDIUM
 
 	/// loaded vial
 	var/obj/item/reagent_containers/glass/hypovial/loaded

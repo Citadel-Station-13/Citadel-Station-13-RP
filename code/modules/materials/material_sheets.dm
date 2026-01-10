@@ -101,10 +101,9 @@
 		desc = "A [material.sheet_singular_name] of [material.use_name]."
 		gender = NEUTER
 
-/obj/item/stack/material/use(var/used)
+/obj/item/stack/material/use(used, no_delete)
 	. = ..()
 	update_strings()
-	return
 
 /obj/item/stack/material/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
 	var/obj/item/stack/material/M = S
@@ -312,10 +311,9 @@
 	set_weight_class(min(5, round(amount / 10) + 1))
 	throw_range = round(amount / 7) + 1
 
-/obj/item/stack/material/supermatter/use(var/used)
+/obj/item/stack/material/supermatter/use(used, no_delete)
 	. = ..()
 	update_mass()
-	return
 
 /obj/item/stack/material/supermatter/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	. = ..()

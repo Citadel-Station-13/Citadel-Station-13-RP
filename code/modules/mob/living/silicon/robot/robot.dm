@@ -105,7 +105,6 @@
 	var/obj/item/radio/borg/radio = null
 	var/obj/item/communicator/integrated/communicator = null
 	var/mob/living/silicon/ai/connected_ai = null
-	var/obj/item/cell/cell = null
 	var/obj/machinery/camera/camera = null
 
 	var/cell_emp_mult = 2
@@ -171,6 +170,16 @@
 	var/sitting = FALSE
 	var/bellyup = FALSE
 
+	//* Power *//
+	/// our power cell
+	var/obj/item/cell/cell
+	/// starting cell type
+	var/cell_type = /obj/item/cell/basic/tier_1/large
+	var/cell_accept = CELL_TYPE_LARGE | CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
+	/// accept cells with no CELL_TYPE field
+	/// * for shit like gunsword
+	var/cell_accept_nonstandard = TRUE
+
 	//* Movement *//
 	/// Base movement speed in tiles / second
 	var/movement_base_speed = 4
@@ -222,9 +231,7 @@
 		C.wrapped = new C.external_type
 
 	if(!cell)
-		cell = new /obj/item/cell/high(src)
-		cell.maxcharge = 15000
-		cell.charge = 15000
+		cell = new cell_type(src)
 
 	. = ..()
 
@@ -518,7 +525,7 @@
 		INJECT_STATPANEL_DATA_LINE(., "")
 		if(cell)
 			INJECT_STATPANEL_DATA_LINE(., "Charge Left: [round(cell.percent())]%")
-			INJECT_STATPANEL_DATA_LINE(., "Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			INJECT_STATPANEL_DATA_LINE(., "Cell Rating: [round(cell.max_charge)]") // Round just in case we somehow get crazy values
 			INJECT_STATPANEL_DATA_LINE(., "Power Cell Load: [round(used_power_this_tick)]W")
 		else
 			INJECT_STATPANEL_DATA_LINE(., "No Cell Inserted!")
@@ -681,12 +688,13 @@
 
 	else if (istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
 		var/datum/robot_component/C = components["power cell"]
+		// TODO: check cell accept
 		if(wiresexposed)
 			to_chat(user, "Close the panel first.")
 		else if(cell)
 			to_chat(user, "There is a power cell already installed.")
-		else if(W.w_class != WEIGHT_CLASS_NORMAL)
-			to_chat(user, "\The [W] is too [W.w_class < WEIGHT_CLASS_NORMAL ? "small" : "large"] to fit here.")
+		else if(!accepts_cell(W, new /datum/event_args/actor(user)))
+			to_chat(user, "\The [W] doesn't fit in [src]'s battery compartment.")
 		else
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return

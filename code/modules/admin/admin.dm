@@ -122,7 +122,7 @@ var/global/floorIsLava = 0
 				"}
 
 			//Simple Animals
-			if(isanimal(M))
+			if(isanimal_legacy_this_is_broken(M))
 				body += "<A href='?src=\ref[src];makeanimal=\ref[M]'>Re-Animalize</A> | "
 			else
 				body += "<A href='?src=\ref[src];makeanimal=\ref[M]'>Animalize</A> | "

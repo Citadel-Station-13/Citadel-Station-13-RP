@@ -1,9 +1,9 @@
 /obj/item/vehicle_chassis/ripley
 	name = "Ripley Chassis"
 
-/obj/item/vehicle_chassis/ripley/New()
-	..()
+/obj/item/vehicle_chassis/ripley/Initialize(mapload)
 	construct = new /datum/construction/mecha/ripley_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/ripley_torso
 	name="Ripley Torso"

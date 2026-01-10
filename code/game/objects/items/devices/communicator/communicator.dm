@@ -266,10 +266,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: None
 // Description: Removes the ghost's address and nulls the exonet datum, to allow qdel()ing.
 /mob/observer/dead/Destroy()
-	. = ..()
-	if(exonet)
-		exonet.remove_address()
-		exonet = null
+	QDEL_NULL(exonet)
 	return ..()
 
 // Proc: register_device()

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /mob/living/carbon/human/run_armorcalls(list/shieldcall_args, fake_attack, filter_zone)
 	..() // perform default /mob level

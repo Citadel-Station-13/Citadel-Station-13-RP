@@ -287,7 +287,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo)
 "bk" = (
-/obj/item/cell/device/weapon/empty,
+/obj/item/cell/basic/tier_5/weapon/empty,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo)
 "bl" = (

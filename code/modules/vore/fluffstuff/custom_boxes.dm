@@ -236,7 +236,9 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "capsule"
 	foldable = null
+	// for corvo: makes it not a box
 	w_class = WEIGHT_CLASS_SMALL
+	weight_volume = WEIGHT_VOLUME_SMALL
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	insertion_whitelist = list(/obj/item/clothing/under/swimsuit/)
 	starts_with = list(/obj/item/clothing/under/swimsuit/black)

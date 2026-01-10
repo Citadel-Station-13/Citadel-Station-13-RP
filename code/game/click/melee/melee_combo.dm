@@ -24,23 +24,23 @@
 	/// * automatic message emit will not happen if this isn't set, even if self/audible are.
 	///
 	/// accepted vars:
-	/// * "$ATTACKER" - the person attacking
-	/// * "$ATTACKER_P_THEIR" - pronoun for 'their' for attacker
-	/// * "$TARGET" - the target
+	/// * "%%ATTACKER%%" - the person attacking
+	/// * "%%ATTACKER_P_THEIR%%" - pronoun for 'their' for attacker
+	/// * "%%TARGET%%" - the target
 	var/default_feedback_message
 	/// templateable message
 	///
 	/// accepted vars:
-	/// * "$ATTACKER" - the person attacking
-	/// * "$ATTACKER_P_THEIR" - pronoun for 'their' for attacker
-	/// * "$TARGET" - the target
+	/// * "%%ATTACKER%%" - the person attacking
+	/// * "%%ATTACKER_P_THEIR%%" - pronoun for 'their' for attacker
+	/// * "%%TARGET%%" - the target
 	var/default_feedback_message_self
 	/// templateable message
 	///
 	/// accepted vars:
-	/// * "$ATTACKER" - the person attacking
-	/// * "$ATTACKER_P_THEIR" - pronoun for 'their' for attacker
-	/// * "$TARGET" - the target
+	/// * "%%ATTACKER%%" - the person attacking
+	/// * "%%ATTACKER_P_THEIR%%" - pronoun for 'their' for attacker
+	/// * "%%TARGET%%" - the target
 	var/default_feedback_message_audible
 
 /datum/combo/melee/New()

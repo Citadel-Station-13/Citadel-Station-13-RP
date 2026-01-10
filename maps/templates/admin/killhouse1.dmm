@@ -5,9 +5,7 @@
 /turf/simulated/floor/wood,
 /area/killhouse/one)
 "au" = (
-/obj/machinery/power/apc/hyper/west_mount{
-	cell_type = /obj/item/cell/infinite
-	},
+/obj/machinery/power/apc/large_cell/tier_3/west_mount,
 /obj/machinery/light/small,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one)
@@ -588,7 +586,7 @@
 /obj/item/circuitboard/cell_charger,
 /obj/item/stack/cable_coil/white,
 /obj/item/stack/cable_coil/white,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "AV" = (
@@ -823,9 +821,7 @@
 /area/killhouse/one)
 "MR" = (
 /obj/structure/trash_pile,
-/obj/machinery/power/apc/hyper/east_mount{
-	cell_type = /obj/item/cell/infinite
-	},
+/obj/machinery/power/apc/large_cell/tier_3/east_mount,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "MU" = (

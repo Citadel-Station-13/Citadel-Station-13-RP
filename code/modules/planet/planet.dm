@@ -85,6 +85,7 @@
 
 	needs_work |= PLANET_PROCESS_SUN
 
+// TODO: subsystemize this proc
 /datum/planet/proc/update_sunlight()
 	if (sun_next_brightness == sun_apparent_brightness && sun_next_color == sun_apparent_color)
 		log_debug("update_sunlight(): apparent == next, not bothering")

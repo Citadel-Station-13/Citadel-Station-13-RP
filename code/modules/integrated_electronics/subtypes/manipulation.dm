@@ -57,8 +57,8 @@
 	spawn_flags = IC_SPAWN_DEFAULT
 	origin_tech = list(TECH_ENGINEERING = 2)
 
-/obj/item/integrated_circuit/manipulation/anchoring/remove(mob/user, silent, index)
-	if(assembly.anchored_by == src)
+/obj/item/integrated_circuit/manipulation/anchoring/remove(mob/user, silent, index, force)
+	if(assembly?.anchored_by == src && !force)
 		silent ? null : to_chat(user, SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
 		return
 	. = ..()
@@ -118,7 +118,7 @@
 		push_data()
 		activate_pin(2)
 
-/obj/item/integrated_circuit/manipulation/hatchlock/remove(mob/user, silent, index)
+/obj/item/integrated_circuit/manipulation/hatchlock/remove(mob/user, silent, index, force)
 	lock_enabled ? (assembly.panel_locked -= 1) : null
 	. = ..()
 

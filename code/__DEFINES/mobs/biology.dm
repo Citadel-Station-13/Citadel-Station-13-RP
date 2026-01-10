@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* biology flags
 
@@ -22,7 +22,7 @@
 #define BIOLOGY_TYPES_SYNTHETIC (BIOLOGY_TYPE_SYNTH | BIOLOGY_TYPE_NANITES)
 #define BIOLOGY_TYPES_ALL (ALL)
 
-DEFINE_BITFIELD_NEW(biology_types, list(
+DEFINE_BITFIELD_NAMED(biology_types, list(
 	/datum/medichine_effect/wound_healing = list(
 		"biology_types",
 	),
@@ -30,10 +30,10 @@ DEFINE_BITFIELD_NEW(biology_types, list(
 		"biology_type",
 	),
 ), list(
-	BITFIELD_NEW("Human", BIOLOGY_TYPE_HUMAN),
-	BITFIELD_NEW("Synth", BIOLOGY_TYPE_SYNTH),
-	BITFIELD_NEW("Slime", BIOLOGY_TYPE_SLIME),
-	BITFIELD_NEW("Chimera", BIOLOGY_TYPE_CHIMERA),
-	BITFIELD_NEW("Nanites", BIOLOGY_TYPE_NANITES),
-	BITFIELD_NEW("Plant", BIOLOGY_TYPE_PLANT),
+	BITFIELD_NAMED("Human", BIOLOGY_TYPE_HUMAN),
+	BITFIELD_NAMED("Synth", BIOLOGY_TYPE_SYNTH),
+	BITFIELD_NAMED("Slime", BIOLOGY_TYPE_SLIME),
+	BITFIELD_NAMED("Chimera", BIOLOGY_TYPE_CHIMERA),
+	BITFIELD_NAMED("Nanites", BIOLOGY_TYPE_NANITES),
+	BITFIELD_NAMED("Plant", BIOLOGY_TYPE_PLANT),
 ))

@@ -123,31 +123,7 @@
 			if(DM_SIZE_STEAL)
 				spanstyle = "color:purple;"
 			if(DM_TRANSFORM)
-				switch(B.tf_mode)
-					if(DM_TRANSFORM_MALE)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_HAIR_AND_EYES)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_FEMALE)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_KEEP_GENDER)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR_EGG)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_REPLICA)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_REPLICA_EGG)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_KEEP_GENDER_EGG)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_MALE_EGG)
-						spanstyle = "color:purple;"
-					if(DM_TRANSFORM_FEMALE_EGG)
-						spanstyle = "color:purple;"
-					if(DM_EGG)
-						spanstyle = "color:purple;"
+				spanstyle = "color:purple;"
 
 		dat += "<span style='[spanstyle]'> ([B.contents.len])</span></a></li>"
 
@@ -367,7 +343,6 @@
 
 	dat += "<br><a href='?src=\ref[src];setflavor=1'>Set Your Taste</a>"
 	dat += "<br><a href='?src=\ref[src];setsmell=1'>Set Your Smell</a>"
-	dat += "<br><a href='?src=\ref[src];togglenoisy=1'>Toggle Hunger Noises</a>"
 
 	//Under the last HR, save and stuff.
 	dat += "<HR><a href='?src=\ref[src];saveprefs=1'>Save Prefs</a>"
@@ -1015,16 +990,6 @@
 
 		if(user.client.prefs_vr)
 			user.client.prefs_vr.permit_healbelly = user.permit_healbelly
-
-	if(href_list["togglenoisy"])
-		var/choice = alert(user, "Toggle audible hunger noises. Currently: [user.noisy ? "Enabled" : "Disabled"]", "", "Enable audible hunger", "Cancel", "Disable audible hunger")
-		switch(choice)
-			if("Cancel")
-				return FALSE
-			if("Enable audible hunger")
-				user.noisy = TRUE
-			if("Disable audible hunger")
-				user.noisy = FALSE
 
 	//Refresh when interacted with, returning 1 makes vore_look.Topic update
 	return TRUE

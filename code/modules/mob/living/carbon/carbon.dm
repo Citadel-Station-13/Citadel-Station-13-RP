@@ -1,11 +1,15 @@
 /mob/living/carbon
-	//* Organs, Reagents, Biologies *//
+	emote_class = EMOTE_CLASS_IS_BODY | EMOTE_CLASS_IS_HUMANOID
 
+	//* Organs, Reagents, Biologies *//
 	/// Our blood holder.
 	var/datum/blood_holder/blood_holder
 
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
+	if(!dna)
+		dna = new /datum/dna(null)
+		// Species name is handled by set_species()
 	//setup reagent holders
 	bloodstr = new/datum/reagent_holder/metabolism/bloodstream(500, src)
 	ingested = new/datum/reagent_holder/metabolism/ingested(500, src)
@@ -16,8 +20,9 @@
 
 /mob/living/carbon/Destroy()
 	QDEL_NULL(blood_holder)
-	qdel(ingested)
-	qdel(touching)
+	QDEL_NULL(ingested)
+	QDEL_NULL(touching)
+	bloodstr = null
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
 	for(var/guts in internal_organs)
 		qdel(guts)

@@ -278,22 +278,15 @@
 	name = "electric rapid construction device"
 	desc = "A device used to rapidly build and deconstruct. It runs directly off of electricity, no matter cartridges needed."
 	icon_state = "electric_rcd"
-	var/obj/item/cell/cell = null
-	var/make_cell = TRUE // If false, initialize() won't spawn a cell for this.
+
+	var/cell_type = /obj/item/cell/basic/tier_1/medium
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM
+
 	var/electric_cost_coefficient = 83.33 // Higher numbers make it less efficient. 86.3... means it should match the standard RCD capacity on a 10k cell.
 
 /obj/item/rcd/electric/Initialize(mapload)
-	if(make_cell)
-		cell = new /obj/item/cell/high(src)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 	return ..()
-
-/obj/item/rcd/electric/Destroy()
-	if(cell)
-		QDEL_NULL(cell)
-	return ..()
-
-/obj/item/rcd/electric/get_cell(inducer)
-	return cell
 
 /obj/item/rcd/electric/can_afford(amount) // This makes it so borgs won't drain their last sliver of charge by mistake, as a bonus.
 	var/obj/item/cell/cell = get_cell()
@@ -323,7 +316,7 @@
 /obj/item/rcd/electric/mounted
 	name = "mounted electric rapid construction device"
 	desc = "A device used to rapidly build and deconstruct. It runs directly off of electricity from an external power source."
-	make_cell = FALSE
+	cell_type = null
 
 /obj/item/rcd/electric/mounted/get_cell(inducer)
 	return get_external_power_supply()

@@ -125,7 +125,7 @@
 		stop()
 		return 0
 	var/use_fuel = EG.fuel_per_cycle_idle
-	if(cur_charge<EG.chassis.cell.maxcharge)
+	if(cur_charge<EG.chassis.cell.max_charge)
 		use_fuel = EG.fuel_per_cycle_active
 		EG.chassis.give_power(EG.power_per_cycle)
 	EG.fuel.amount -= min(use_fuel/EG.fuel.perunit,EG.fuel.amount)

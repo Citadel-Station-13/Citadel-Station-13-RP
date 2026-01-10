@@ -12,6 +12,7 @@
 /datum/mini_hud/Destroy()
 	main_hud?.remove_minihud(src)
 	main_hud = null
+	QDEL_LIST(screenobjs)
 	if(needs_processing)
 		STOP_PROCESSING(SSprocessing, src)
 	return ..()
@@ -76,7 +77,7 @@
 	var/obj/item/cell/mechcell = owner_mech.cell
 	var/obj/machinery/portable_atmospherics/canister/mechtank = owner_mech.internal_tank
 
-	var/charge_percentage = mechcell ? mechcell.charge / mechcell.maxcharge : 0
+	var/charge_percentage = mechcell ? mechcell.charge / mechcell.max_charge : 0
 	var/air_percentage = mechtank ? clamp(mechtank.air_contents.total_moles / 1863.47, 0, 1) : 0
 	var/health_percentage = owner_mech.percent_integrity()
 	var/air_on = owner_mech.use_internal_tank

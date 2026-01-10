@@ -7,7 +7,9 @@
 	icon_state = "vertibore"
 	item_state = "vertibore"
 
-	var/obj/item/cell/cell //loaded cell
+	var/cell_type
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM
+
 	var/power_cost = 1000 //10 shots off a highcap
 	var/load_type = /obj/item/stack/material
 	var/mat_storage = 0			// How much material is stored inside? Input in multiples of 2000 as per auto/protolathe.
@@ -16,35 +18,18 @@
 	var/ammo_material = MAT_PHORON
 	var/loading = FALSE
 
+/obj/item/vertibore/Initialize(mapload)
+	. = ..()
+	init_cell_slot_easy_tool(cell_type, cell_accept)
+
 /obj/item/vertibore/examine(mob/user, dist)
 	. = ..()
+	var/obj/item/cell/cell = get_cell()
 	. += "<span class='notice'>The shaft excavator has [mat_storage]cm^3 of phoron inside, and can hold a maximum of [max_mat_storage].</span>"
 	if(cell)
-		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.maxcharge)*100)]%.</span>"
+		. += "<span class='notice'>The installed [cell.name] has a charge level of [round((cell.charge/cell.max_charge)*100)]%.</span>"
 
 /obj/item/vertibore/attackby(var/obj/item/thing, var/mob/user)
-	if(istype(thing, /obj/item/cell))
-		if(cell)
-			to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
-			return
-		if(!user.attempt_insert_item_for_installation(thing, src))
-			return
-		cell = thing
-		playsound(loc, 'sound/machines/click.ogg', 10, 1)
-		user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
-		update_icon()
-		return
-	if(thing.is_screwdriver())
-		if(!cell)
-			to_chat(user, "<span class='warning'>\The [src] has no cell installed.</span>")
-			return
-		cell.forceMove(get_turf(src))
-		user.put_in_hands(cell)
-		user.visible_message("<span class='notice'>\The [user] unscrews \the [cell.name] from \the [src].</span>")
-		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-		cell = null
-		update_icon()
-		return
 	if(istype(thing, load_type))
 		loading = TRUE
 		var/obj/item/stack/material/M = thing
@@ -76,6 +61,7 @@
 	if(mat_cost > mat_storage)
 		to_chat(user, "<span class='notice'>The [src] shudders, the phoron feeding mechanism attempting to move things that aren't there.</span>")
 		return
+	var/obj/item/cell/cell = get_cell()
 	if(power_cost > cell.charge)
 		to_chat(user, "<span class='notice'>The [src] flashes a warning light, it doesn't have enough charge to dig.</span>")
 		return
@@ -84,7 +70,8 @@
 		LEGACY_EX_ACT(T, 1, null)
 
 /obj/item/vertibore/update_icon()
-	var/list/overlays_to_add = list()
+	cut_overlays()
+	var/obj/item/cell/cell = get_cell()
 	if(cell)
-		overlays_to_add += image(icon, "[icon_state]_cell")
-	..()
+		add_overlay("[icon_state]_cell")
+	return ..()

@@ -5,6 +5,7 @@
 	icon_state = "labeler0"
 	item_flags = ITEM_NO_BLUDGEON
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
 	drop_sound = 'sound/items/handling/tape_drop.ogg'
 	pickup_sound = 'sound/items/handling/tape_pickup.ogg'
 	worth_intrinsic = 50

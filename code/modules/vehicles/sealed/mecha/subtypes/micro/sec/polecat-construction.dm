@@ -2,9 +2,9 @@
 	name = "Polecat Chassis"
 	icon_state = "polecat-chassis"
 
-/obj/item/vehicle_chassis/micro/polecat/New()
-	..()
+/obj/item/vehicle_chassis/micro/polecat/Initialize(mapload)
 	construct = new /datum/construction/mecha/polecat_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/micro/polecat_torso
 	name="Polecat Torso"

@@ -5,7 +5,9 @@
 	inhand_icon = 'icons/items/storage/firstaid.dmi'
 	icon_state = "normal"
 	slot_flags = SLOT_BELT
+	storage_datum_path = /datum/object_system/storage/hypokit
 	max_combined_volume = STORAGE_VOLUME_BOX
+	weight_volume = ITEM_VOLUME_BOX
 	insertion_whitelist = list(
 		/obj/item/reagent_containers/glass/hypovial,
 		/obj/item/hypospray,
@@ -52,8 +54,8 @@
 	name = "combat hypospray kit"
 	icon_state = "tactical"
 	vial_path = /obj/item/reagent_containers/glass/hypovial/large
-	max_combined_volume = STORAGE_VOLUME_BOX * 2
-	weight_volume = WEIGHT_VOLUME_NORMAL * 1.5
+	max_combined_volume = STORAGE_VOLUME_BOX_2X
+	weight_volume = ITEM_VOLUME_BOX_AND_HALF
 
 /obj/item/storage/hypokit/combat/full
 	hypospray_path = /obj/item/hypospray/combat
@@ -83,8 +85,8 @@
 	icon_state = "briefcase"
 	inhand_state = "normal"
 	vial_path = /obj/item/reagent_containers/glass/hypovial/large
-	max_combined_volume = STORAGE_VOLUME_BOX * 2
-	weight_volume = WEIGHT_VOLUME_NORMAL * 1.5
+	max_combined_volume = STORAGE_VOLUME_BOX_2X
+	weight_volume = ITEM_VOLUME_BOX_AND_HALF
 
 /obj/item/storage/hypokit/advanced/full
 	hypospray_path = /obj/item/hypospray/advanced

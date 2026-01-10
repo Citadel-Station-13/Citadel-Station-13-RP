@@ -1723,9 +1723,7 @@
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two)
 "Ev" = (
-/obj/machinery/power/apc/hyper/east_mount{
-	cell_type = /obj/item/cell/infinite
-	},
+/obj/machinery/power/apc/large_cell/tier_3/east_mount,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/killhouse/two/outside)
 "EB" = (
@@ -2718,9 +2716,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/killhouse/two)
 "Wi" = (
-/obj/machinery/power/apc/hyper/south_mount{
-	cell_type = /obj/item/cell/infinite
-	},
+/obj/machinery/power/apc/large_cell/tier_3/south_mount,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two)
 "Wj" = (
@@ -2811,7 +2807,7 @@
 /area/killhouse/two)
 "XQ" = (
 /obj/structure/table/steel,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two)
 "XR" = (

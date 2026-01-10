@@ -124,22 +124,18 @@
 	path = /obj/item/storage/box/flashshells
 	item_cost = 10 // Discount due to it being LTL.
 
-/datum/uplink_item/item/ammo/cell
-	name = "weapon cell"
-	path = /obj/item/cell/device/weapon
+/datum/uplink_item/item/ammo/weapon_cell
+	name = "weapon power cell"
+	path = /obj/item/cell/basic/tier_4/weapon
 
-/datum/uplink_item/item/ammo/highcell
-	name = "High capacity cell"
-	path = /obj/item/cell/high
-	item_cost = 15
+/datum/uplink_item/item/ammo/small
+	name = "small power cell"
+	path = /obj/item/cell/basic/tier_4/small
 
-/datum/uplink_item/item/ammo/supercell
-	name = "Super capacity cell"
-	path = /obj/item/cell/super
-	item_cost = 30
-/* Cell type not present on Cit
-/datum/uplink_item/item/ammo/voidcell
-	name = "Void cell"
-	path = /obj/item/cell/device/recharge/alien/hybrid
-	item_cost = DEFAULT_TELECRYSTAL_AMOUNT * 1.5
-*/
+/datum/uplink_item/item/ammo/medium_cell
+	name = "medium power cell"
+	path = /obj/item/cell/basic/tier_4/medium
+
+/datum/uplink_item/item/ammo/large_cell
+	name = "large power cell"
+	path = /obj/item/cell/basic/tier_4/large

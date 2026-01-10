@@ -1,0 +1,7 @@
+author: "TheLordME"
+delete-after: True
+changes:
+  - rscdel: "Removed unused variables that held over from vorestation"
+  - rscdel: "Removed Vore belly transform to egg options"
+  - rscdel: "Removed audible hunger noises"
+  - tweak: "tweaked feral to be a chimera specific variable, instead of a mob variable thats only used by chimera"
