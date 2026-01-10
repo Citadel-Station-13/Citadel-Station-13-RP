@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(ghost_list)
 	mobility_flags = NONE
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
 	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
 
 	/// Were we admin-ghosted?

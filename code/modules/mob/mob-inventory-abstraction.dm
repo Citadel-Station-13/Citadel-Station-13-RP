@@ -194,7 +194,7 @@
 	if(!(flags & INV_OP_NO_UPDATE_ICONS))
 		update_inv_hand(index)
 
-	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
+	if(!(I.interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND))
 		I.add_fingerprint(src)
 	else
 		I.add_hiddenprint(src)

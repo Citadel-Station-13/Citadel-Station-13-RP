@@ -9,6 +9,7 @@
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
 	pen_color = "#FF0000" //RGB
 	clickable = FALSE
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_IGNORE_MOBILITY
 
 	// todo: reorganize vars
 	/// color name

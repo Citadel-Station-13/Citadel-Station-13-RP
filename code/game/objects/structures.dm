@@ -1,7 +1,10 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
+	abstract_type = /obj/structure
 	w_class = WEIGHT_CLASS_HUGE
 	pass_flags = ATOM_PASS_BUCKLED
+
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 
 	// todo: rename to default_unanchor, allow generic structure unanchoring.
 	var/allow_unanchor = FALSE

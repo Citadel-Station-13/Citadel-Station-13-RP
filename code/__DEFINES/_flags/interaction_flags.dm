@@ -1,7 +1,5 @@
-//? interaction_flags_atom on /atom
 /// whether can_interact() checks for anchored. only works on movables.
 #define INTERACT_ATOM_REQUIRES_ANCHORED (1<<0)
-/*
 /// calls try_interact() on attack_hand() and returns that.
 #define INTERACT_ATOM_ATTACK_HAND (1<<1)
 /// automatically calls and returns ui_interact() on interact().
@@ -14,26 +12,43 @@
 #define INTERACT_ATOM_IGNORE_RESTRAINED (1<<5)
 /// incapacitated check checks grab
 #define INTERACT_ATOM_CHECK_GRAB (1<<6)
-*/
-/// prevents leaving fingerprints automatically on attack_hand, put in hands, other touch procs
-#define INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH (1<<7)
+/// prevents leaving fingerprints automatically on attack_hand
+#define INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND (1<<7)
 /// adds hiddenprints instead of fingerprints on interact
 #define INTERACT_ATOM_NO_FINGERPRINT_INTERACT (1<<8)
+/// allows this atom to skip the adjacency check
+#define INTERACT_ATOM_ALLOW_USER_LOCATION (1<<9)
+/// ignores mobility check
+#define INTERACT_ATOM_IGNORE_MOBILITY (1<<10)
+// Bypass all adjacency checks for mouse drop
+#define INTERACT_ATOM_MOUSEDROP_IGNORE_ADJACENT (1<<11)
+/// Bypass all can_perform_action checks for mouse drop
+#define INTERACT_ATOM_MOUSEDROP_IGNORE_USABILITY (1<<12)
+/// Bypass all adjacency and other checks for mouse drop
+#define INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS (INTERACT_ATOM_MOUSEDROP_IGNORE_ADJACENT | INTERACT_ATOM_MOUSEDROP_IGNORE_USABILITY)
+/// calls try_interact() on attack_paw() and returns that.
+#define INTERACT_ATOM_ATTACK_PAW (1<<13)
 
 DEFINE_BITFIELD(interaction_flags_atom, list(
 	BITFIELD(INTERACT_ATOM_REQUIRES_ANCHORED),
-	BITFIELD(INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH),
+	BITFIELD(INTERACT_ATOM_ATTACK_HAND),
+	BITFIELD(INTERACT_ATOM_UI_INTERACT),
+	BITFIELD(INTERACT_ATOM_REQUIRES_DEXTERITY),
+	BITFIELD(INTERACT_ATOM_IGNORE_INCAPACITATED),
+	BITFIELD(INTERACT_ATOM_IGNORE_RESTRAINED),
+	BITFIELD(INTERACT_ATOM_CHECK_GRAB),
+	BITFIELD(INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND),
 	BITFIELD(INTERACT_ATOM_NO_FINGERPRINT_INTERACT),
+	BITFIELD(INTERACT_ATOM_ALLOW_USER_LOCATION),
+	BITFIELD(INTERACT_ATOM_IGNORE_MOBILITY),
+	BITFIELD(INTERACT_ATOM_MOUSEDROP_IGNORE_ADJACENT),
+	BITFIELD(INTERACT_ATOM_MOUSEDROP_IGNORE_USABILITY),
+	BITFIELD(INTERACT_ATOM_ATTACK_PAW),
 ))
 
 //? interaction_flags_item on /obj/item
 /// on attack self, pass to interact
 #define INTERACT_ITEM_ATTACK_SELF (1<<0)
-
-/*
-/// attempt pickup on attack_hand for items
-#define INTERACT_ITEM_ATTACK_HAND_PICKUP (1<<0)
-*/
 
 //? interaction_flags_machine on /obj/machinery
 

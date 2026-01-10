@@ -5,6 +5,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	var/totalPlayers = 0		// Player counts for the Lobby tab
 	var/totalPlayersReady = 0
 	var/datum/browser/panel
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
 	universal_speak = 1
 
 	invisibility = 101

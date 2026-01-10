@@ -13,6 +13,7 @@
 	circuit = /obj/item/circuitboard/mechfab
 	lathe_type = LATHE_TYPE_MECHFAB | LATHE_TYPE_PROSTHETICS
 
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
 	has_interface = TRUE
 	var/datum/research/files
 

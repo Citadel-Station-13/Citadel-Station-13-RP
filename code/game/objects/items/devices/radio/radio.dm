@@ -29,6 +29,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	icon_state = "walkietalkie"
 	item_state = "radio"
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_ALLOW_USER_LOCATION | INTERACT_ATOM_IGNORE_MOBILITY
 
 	///FALSE for off
 	var/on = TRUE
