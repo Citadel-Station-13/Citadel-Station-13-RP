@@ -11503,11 +11503,11 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/circuitboard/transhuman_clonepod{
+/obj/item/circuitboard/resleeving/grower_pod{
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/obj/item/circuitboard/resleeving_control{
+/obj/item/circuitboard/resleeving_console{
 	pixel_y = 1
 	},
 /obj/item/circuitboard/med_data{
@@ -20396,11 +20396,11 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/item/circuitboard/transhuman_resleever{
+/obj/item/circuitboard/resleeving/resleeving_pod{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/circuitboard/transhuman_resleever{
+/obj/item/circuitboard/resleeving/resleeving_pod{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -20438,7 +20438,7 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/circuitboard/transhuman_synthprinter{
+/obj/item/circuitboard/resleeving/synth_printer{
 	pixel_x = -3;
 	pixel_y = 4
 	},

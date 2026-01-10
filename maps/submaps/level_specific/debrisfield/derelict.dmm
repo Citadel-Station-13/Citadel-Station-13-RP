@@ -73,7 +73,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/debrisfield/derelict)
 "ay" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/airless,
 /area/debrisfield/derelict)
 "az" = (
@@ -124,7 +124,7 @@
 /turf/simulated/floor/tiled/steel/airless,
 /area/debrisfield/derelict)
 "aN" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/simulated/floor/tiled/airless,
 /area/debrisfield/derelict)
 "aO" = (

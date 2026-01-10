@@ -120,7 +120,7 @@
 		if (1.0)
 			b_loss += 500
 			if (!prob(legacy_mob_armor(null, "bomb")))
-				gib()
+				death_via_gib()
 				return
 			else
 				var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))

@@ -27,7 +27,7 @@
 
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 	var/obj/machinery/telecomms/buffer // simple machine buffer for device linkage
-	var/obj/machinery/clonepod/connecting //same for cryopod linkage
+	var/obj/machinery/resleeving/body_printer/connecting //same for cryopod linkage
 	var/obj/machinery/connectable	//Used to connect machinery.
 	var/datum/weakref_wiring //Used to store weak references for integrated circuitry. This is now the Omnitool.
 	var/colorable = 1

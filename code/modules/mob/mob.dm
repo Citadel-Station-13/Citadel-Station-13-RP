@@ -7,10 +7,6 @@
 	/// * Lazy list, see mob_movespeed.dm
 	var/list/actionspeed_modifier_immunities
 
-	//* HUD (Atom) *//
-	/// HUDs to initialize, typepaths
-	var/list/atom_huds_to_initialize
-
 	//* Buckling *//
 	/// Atom we're buckled to
 	var/atom/movable/buckled
@@ -24,10 +20,34 @@
 	/// our default emote classes
 	var/emote_class = EMOTE_CLASS_IS_BODY
 
+	//* HUD (Atom) *//
+	/// HUDs to initialize, typepaths
+	var/list/atom_huds_to_initialize
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list
 	var/list/impairments_feigned
+
+	//* Mind *//
+	/// Our owning mind.
+	/// * Minds are what a 'character' is, or perhaps the soul or whatever you want to call it.
+	///   A player / character is recoverable in-round as long as something can still reference the mind.
+	/// * Generally, if you want to reference a body, reference this mob; if you want to reference
+	///   a character, reference the mind if you plan to keep it around for cloning or ghost creation
+	///   or something, and reference the mind's `mind_ref` via `get_mind_ref()` if you're just
+	///   using it for checks.
+	var/datum/mind/mind
+	/// Last owning mind.
+	/// * Set by inbound mind transfers but not cleared by outbound.
+	///   Code can use this to get a reference (if the mind still exists)
+	///   to the last inhabiting player / character / whatever of this mob.
+	var/datum/mind_ref/mind_last
+	/// 'Locking' mind ref.
+	/// * Generally only set on players; Mind transfers will not clear this.
+	///   Resleeving reads this to prevent body impersonation.
+	/// * Should be treated as volatile. Non-IC (or even special antag things) can clear this.
+	var/datum/mind_ref/mind_resleeving_lock
 
 	//* Movespeed *//
 	/// List of movement speed modifiers applying to this mob

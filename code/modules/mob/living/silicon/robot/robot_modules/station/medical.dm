@@ -57,7 +57,7 @@
 		/obj/item/shockpaddles/robot,
 		/obj/item/reagent_containers/dropper, // Allows surgeon borg to fix necrosis
 		/obj/item/reagent_containers/syringe,
-		/obj/item/dogborg/mirrortool
+		/obj/item/mirrortool
 	)
 
 /obj/item/robot_module/robot/medical/surgeon/get_synths(mob/living/silicon/robot/R)
@@ -146,7 +146,7 @@
 		/obj/item/surgical/surgicaldrill/cyborg,
 		/obj/item/gripper/no_use/organ,
 		/obj/item/gripper/medical,
-		/obj/item/dogborg/mirrortool
+		/obj/item/mirrortool
 	)
 
 /obj/item/robot_module/robot/quad/medi/get_synths(mob/living/silicon/robot/R)

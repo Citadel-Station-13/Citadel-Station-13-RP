@@ -1,6 +1,6 @@
-GLOBAL_LIST_INIT(characteristics_talents, _create_characteristics_talents())
+GLOBAL_LIST_INIT(characteristic_talents, _create_characteristic_talents())
 
-/proc/_create_characteristics_talents()
+/proc/_create_characteristic_talents()
 	. = list()
 	for(var/datum/characteristic_talent/talent in subtypesof(/datum/characteristic_talent))
 		if(is_abstract(talent))
@@ -19,9 +19,9 @@ GLOBAL_LIST_INIT(characteristics_talents, _create_characteristics_talents())
  *
  * use typepaths whenever possible for compile time!
  */
-/proc/resolve_characteristics_talent(datum/characteristic_talent/typepath_or_id)
+/proc/resolve_characteristic_talent(datum/characteristic_talent/typepath_or_id)
 	RETURN_TYPE(/datum/characteristic_talent)
-	return GLOB.characteristics_talents[ispath(typepath_or_id)? initial(typepath_or_id.id) : typepath_or_id]
+	return GLOB.characteristic_talents[ispath(typepath_or_id)? initial(typepath_or_id.id) : typepath_or_id]
 
 /**
  * barotrauma-like talents

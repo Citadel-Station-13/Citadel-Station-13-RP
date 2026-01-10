@@ -18,7 +18,7 @@
 		// Med
 		/obj/item/healthanalyzer,
 		/obj/item/shockpaddles/robot/hound,
-		/obj/item/dogborg/mirrortool,
+		/obj/item/mirrortool,
 
 		// Engi
 		/obj/item/weldingtool/electric/mounted,

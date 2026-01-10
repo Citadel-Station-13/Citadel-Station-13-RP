@@ -20,7 +20,7 @@
 		zone = BP_HEAD
 	return organs_by_name[zone]
 
-/mob/living/gib()
+/mob/living/death_via_gib()
 	if(butchery_drops_organs)
 		for(var/path in internal_organs)
 			if(ispath(path))

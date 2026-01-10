@@ -3140,7 +3140,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "wV" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "wW" = (
@@ -4952,7 +4952,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/forehall)
 "Iv" = (
-/obj/machinery/clonepod/transhuman,
+/obj/machinery/resleeving/body_printer/grower_pod,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "Ix" = (
@@ -5976,7 +5976,7 @@
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "PA" = (
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)

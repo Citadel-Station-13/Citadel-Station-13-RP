@@ -1167,7 +1167,7 @@
 			B.obj_storage.interacted_mass_pickup(new /datum/event_args/actor(src), tile)
 
 /mob/living/silicon/robot/proc/self_destruct()
-	gib()
+	death_via_gib()
 	return
 
 /mob/living/silicon/robot/proc/UnlinkSelf()

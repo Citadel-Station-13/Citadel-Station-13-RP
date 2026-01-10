@@ -1,10 +1,10 @@
-/mob/living/silicon/robot/dust()
+/mob/living/silicon/robot/death_via_dust()
 	//Delete the MMI first so that it won't go popping out.
 	if(mmi)
 		QDEL_NULL(mmi)
 	return ..()
 
-/mob/living/silicon/robot/ash()
+/mob/living/silicon/robot/death_via_ash()
 	if(mmi)
 		QDEL_NULL(mmi)
 	return ..()

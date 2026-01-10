@@ -113,7 +113,7 @@
 
 /datum/soul_link/one_way/owner_died(gibbed, mob/living/owner)
 	if(soul_sharer)
-		soul_sharer.dust(FALSE)
+		soul_sharer.death_via_dust(FALSE)
 
 /////////////////
 // SHARED BODY //

@@ -1,6 +1,6 @@
 //This is the proc for gibbing a mob. Cannot gib ghosts.
 //added different sort of gibs and animations. N
-/mob/proc/gib(anim="gibbed-m", do_gibs, gib_file = 'icons/mob/mob.dmi')
+/mob/proc/death_via_gib(anim="gibbed-m", do_gibs, gib_file = 'icons/mob/mob.dmi')
 	death(1)
 	transforming = TRUE
 	mobility_flags = NONE
@@ -21,10 +21,12 @@
 		if(animation)	qdel(animation)
 		if(src)			qdel(src)
 
+#warn move this crap to living
+
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
-//Dusting robots does not eject the MMI, so it's a bit more powerful than gib() /N
-/mob/proc/dust(anim="dust-m",remains=/obj/effect/debris/cleanable/ash)
+//Dusting robots does not eject the MMI, so it's a bit more powerful than death_via_gib() /N
+/mob/proc/death_via_dust(anim="dust-m",remains=/obj/effect/debris/cleanable/ash)
 	death(1)
 	var/atom/movable/overlay/animation = null
 	transforming = TRUE
@@ -45,7 +47,7 @@
 		if(animation)	qdel(animation)
 		if(src)			qdel(src)
 
-/mob/proc/ash(anim = "dust-m")
+/mob/proc/death_via_ash(anim = "dust-m")
 	death(TRUE)
 	var/atom/movable/overlay/animation = null
 	animation = new(loc)
@@ -89,8 +91,6 @@
 	timeofdeath = world.time
 	if(mind)
 		mind.store_memory("Time of death: [stationtime2text()]", 0)
-	living_mob_list -= src
-	dead_mob_list |= src
 
 	set_respawn_timer()
 	updateicon()
@@ -101,3 +101,9 @@
 		SSticker.mode.check_win()
 
 	return 1
+
+/**
+ * helper proc used to compose death procs
+ * pretty much for "drop all internal organs"
+ */
+/mob/proc/death__drop_internal_composition() as /list
