@@ -59,46 +59,6 @@
 	overmap_event_areas = 50
 	usable_email_tlds = list("lythios.nt")
 
-	titlescreens = list(
-		/datum/cutscene/browser/simple/rift_title1 = 20,
-		list(
-			'icons/misc/title_vr.dmi',
-			"title1",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title2",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title3",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title4",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title5",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title6",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title7",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title8",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"bnny",
-		),
-	)
-
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
 	dock_name     = "NCS Demeter"

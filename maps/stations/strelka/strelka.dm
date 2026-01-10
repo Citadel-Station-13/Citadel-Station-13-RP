@@ -57,11 +57,8 @@
 	overmap_event_areas = 50
 	usable_email_tlds = list("strelka.nt")
 	titlescreens = list(
-		list(
-			'icons/misc/title_vr.dmi',
-			"strelka",
-		),
-		)
+		/datum/cutscene/native/simple/titlescreen_strelka
+	)
 
 	station_name	= "NEV Strelka"
 	station_short	= "Strelka"

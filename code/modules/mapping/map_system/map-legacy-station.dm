@@ -80,45 +80,19 @@
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
 
-	/// list of title cutscreens by path to display. for legacy support, tuples of list(icon, state) work too. associate to % chance, defaulting to 1.
+	/// list of title cutscene by path to display.
 	var/list/titlescreens = list(
-		list(
-			'icons/misc/title_vr.dmi',
-			"title1",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title2",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title3",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title4",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title5",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title6",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title7",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"title8",
-		),
-		list(
-			'icons/misc/title_vr.dmi',
-			"bnny",
-		),
+		/datum/cutscene/native/simple/titlescreen_crashing,
+		/datum/cutscene/native/simple/titlescreen_hivebot,
+		/datum/cutscene/native/simple/titlescreen_vadersan,
+		/datum/cutscene/native/simple/titlescreen_station,
+		/datum/cutscene/native/simple/titlescreen_borg,
+		/datum/cutscene/native/simple/titlescreen_postcard,
+		/datum/cutscene/native/simple/titlescreen_pondering,
+		/datum/cutscene/native/simple/titlescreen_bnny,
+		/datum/cutscene/native/simple/titlescreen_orbit
 	)
+
 
 	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
 

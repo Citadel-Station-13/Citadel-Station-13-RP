@@ -46,7 +46,6 @@
 #define INIT_ORDER_AI_HOLDERS      25
 
 //* World *//
-
 #define INIT_ORDER_CHARACTERS      140
 #define INIT_ORDER_SOUNDS          130
 #define INIT_ORDER_GARBAGE         120
