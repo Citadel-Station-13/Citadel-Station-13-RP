@@ -66,7 +66,7 @@
 	QDEL_NULL(provisioning)
 	// make new one
 	var/datum/robot_provisioning/robot_upgrade/creating = new(src)
-	. = creating
+	. = provisioning = creating
 	var/list/items = create_mounted_items()
 	for(var/obj/item/item as anything in items)
 		creating.add_item(item)
@@ -98,7 +98,8 @@
  * This uses the exact same format and is handled in a similar way.
  */
 /obj/item/robot_upgrade/proc/create_mounted_item_descriptors(list/out_list)
-	out_list.Add(provisioning_inject_item_descriptors)
+	if(provisioning_inject_item_descriptors)
+		out_list |= provisioning_inject_item_descriptors
 
 /**
  * Called when checking if we can be applied

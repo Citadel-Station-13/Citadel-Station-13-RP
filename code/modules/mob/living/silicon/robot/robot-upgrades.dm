@@ -11,7 +11,7 @@
 	if(!upgrade.dupe_allowed)
 		var/check_type = upgrade.dupe_type || upgrade.type
 		for(var/obj/item/robot_upgrade/other as anything in upgrades)
-			if(istype(other.type, check_type))
+			if(istype(other, check_type))
 				if(!silent)
 					actor?.chat_feedback(
 						SPAN_WARNING("There's already an upgrade of the same type in [src]."),
@@ -38,7 +38,7 @@
 	if(!install_upgrade(upgrade, actor))
 		return FALSE
 	// TODO: sound
-	return install_upgrade(upgrade, actor, silent)
+	return TRUE
 
 /**
  * * moves the upgrade into us if it wasn't already
@@ -54,10 +54,13 @@
 
 	if(upgrade.loc != src)
 		upgrade.forceMove(src)
-	upgrade.owner = src
-	upgrade.on_install(src)
-	upgrades += upgrade
+
 	// todo: logging
+	upgrade.being_installed(src)
+	if(!QDELETED(upgrade))
+		upgrade.owner = src
+		upgrade.on_install(src)
+		LAZYADD(upgrades, upgrade)
 
 	if(!silent)
 		actor?.visible_feedback(
@@ -91,10 +94,10 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	ASSERT(upgrade.owner == src)
 
+	// todo: logging
 	upgrade.on_uninstall(src)
 	upgrade.owner = null
-	upgrades -= upgrade
-	// todo: logging
+	LAZYREMOVE(upgrades, upgrade)
 
 	if(!silent)
 		actor?.visible_feedback(
