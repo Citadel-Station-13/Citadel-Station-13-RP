@@ -38,13 +38,13 @@ interface AccessListSelectProps extends AccessListProps {
 
 interface AccessListModProps extends AccessListProps {
   readonly selected: Array<AccessId>,
-  set?(id: AccessId): void,
+  toggle?(id: AccessId): void,
   grant?(category?: string): void,
   deny?(category?: string): void,
 }
 
 interface AccessListAuthProps extends AccessListProps {
-  set?(id: AccessId, mode: AccessListSet): void,
+  toggle?(id: AccessId, mode: AccessListSet): void,
   wipe?(category?: string): void,
   readonly req_access?: Array<AccessId>,
   readonly req_one_access?: Array<AccessId>,
@@ -173,7 +173,7 @@ export const AccessListMod = (props: AccessListModProps) => {
                       fluid
                       checked={props.selected.includes(a.value)}
                       content={a.name}
-                      onClick={() => props.set && props.set(a.value)} />
+                      onClick={() => props.toggle && props.toggle(a.value)} />
                   ))
                 }
               </Section>
@@ -272,11 +272,11 @@ export const AccessListAuth = (props: AccessListAuthProps) => {
                             <>
                               <Button.Checkbox
                                 selected={props.req_access?.includes(a.value)}
-                                onClick={() => props.set && props.set(a.value, AccessListSet.All)}
+                                onClick={() => props.toggle && props.toggle(a.value, AccessListSet.All)}
                                 content="All" />
                               <Button.Checkbox
                                 selected={props.req_one_access?.includes(a.value)}
-                                onClick={() => props.set && props.set(a.value, AccessListSet.One)}
+                                onClick={() => props.toggle && props.toggle(a.value, AccessListSet.One)}
                                 content="One" />
                             </>
                           }>

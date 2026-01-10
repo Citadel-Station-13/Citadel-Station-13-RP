@@ -7395,7 +7395,7 @@
 	dir = 4
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "qB" = (
@@ -7578,7 +7578,7 @@
 	dir = 6
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "ri" = (
@@ -7880,7 +7880,7 @@
 	dir = 4
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "sb" = (
@@ -8371,7 +8371,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/bridge)
 "tW" = (
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
@@ -8424,7 +8424,7 @@
 /turf/simulated/floor/reinforced,
 /area/mothership/telecomms2)
 "vD" = (
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
@@ -8636,7 +8636,7 @@
 	dir = 6
 	},
 /obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "Ch" = (
@@ -8760,7 +8760,7 @@
 /area/space)
 "EQ" = (
 /obj/effect/floor_decal/industrial/outline,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
@@ -8932,7 +8932,7 @@
 /area/mothership/hallway)
 "MI" = (
 /obj/effect/floor_decal/industrial/outline,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/loaded,
+/obj/vehicle/sealed/mecha/fighter/gunpod/equipped,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},

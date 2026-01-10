@@ -73,6 +73,7 @@
 				"bomb" = 10,
 				"bio" = 100,
 				"rad" = 100)
+	movement_works_in_space = TRUE
 
 /mob/living/simple_animal/construct/place_spell_in_hand(var/path)
 	if(!path || !ispath(path))
@@ -160,14 +161,6 @@
 		else
 			. += "<B>It looks severely dented!</B>\n"
 		. += "</span>"
-
-
-/mob/living/simple_animal/construct/Process_Spacemove()
-	return 1 //Constructs levitate, can fall from a shuttle with no harm, and are piloted by either damned spirits or some otherworldly entity. It's not hard to believe.
-
-/////////////////Juggernaut///////////////
-
-
 
 /mob/living/simple_animal/construct/armoured
 	name = "Juggernaut"

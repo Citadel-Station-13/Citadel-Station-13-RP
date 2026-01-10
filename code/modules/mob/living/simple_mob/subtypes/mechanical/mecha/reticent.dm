@@ -38,26 +38,13 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee/evasive
 
-/mob/living/simple_mob/mechanical/mecha/combat/reticent/Initialize(mapload)
-	shields = new /obj/item/shield_projector/rectangle/automatic/reticent(src)
-	return ..()
-
-/obj/item/shield_projector/rectangle/automatic/reticent
-	shield_health = 200
-	max_shield_health = 200
-	shield_regen_delay = 10 SECONDS
-	shield_regen_amount = 10
-	size_x = 1
-	size_y = 1
-	color = "#CFCFCF"
-	high_color = "#CFCFCF"
-	low_color = "#FFC2C2"
-
-//No Manned variant yet.
-/*
-/mob/living/simple_mob/mechanical/mecha/combat/reticent/manned
-	pilot_type = null
-*/
+	make_shield_comp = TRUE
+	make_shield_comp_health = 200
+	make_shield_comp_recharge_delay = 7 SECONDS
+	make_shield_comp_recharge_rate = 10
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
+	make_shield_comp_color_full = "#cfcfcf"
+	make_shield_comp_color_depleted = "#ffc2c2"
 
 // A stronger variant.
 
@@ -95,17 +82,4 @@
 				"rad"		= 100
 				)
 
-/mob/living/simple_mob/mechanical/mecha/combat/reticent/reticence/Initialize(mapload)
-	shields = new /obj/item/shield_projector/rectangle/automatic/reticence(src)
-	return ..()
-
-/obj/item/shield_projector/rectangle/automatic/reticence
-	shield_health = 300
-	max_shield_health = 300
-	shield_regen_delay = 10 SECONDS
-	shield_regen_amount = 10
-	size_x = 1
-	size_y = 1
-	color = "#CFCFCF"
-	high_color = "#CFCFCF"
-	low_color = "#FFC2C2"
+	make_shield_comp_health = 300

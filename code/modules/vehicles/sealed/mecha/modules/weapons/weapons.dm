@@ -1,7 +1,11 @@
-/obj/item/vehicle_module/weapon
+/obj/item/vehicle_module/lazy/legacy/weapon
 	name = "mecha weapon"
 	range = RANGED
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3)
+
+	vehicle_encumbrance = 3.5
+	module_slot = VEHICLE_MODULE_SLOT_WEAPON
+
 	var/projectile //Type of projectile fired.
 	var/projectiles = 1 //Amount of projectiles loaded.
 	var/projectiles_per_shot = 1 //Amount of projectiles fired per single shot.
@@ -10,18 +14,15 @@
 	var/fire_sound //Sound played while firing.
 	var/fire_volume = 50 //How loud it is played.
 	var/auto_rearm = 0 //Does the weapon reload itself after each shot?
-	required_type = list(/obj/vehicle/sealed/mecha/combat, /obj/vehicle/sealed/mecha/working/hoverpod/combatpod)
 
 	step_delay = 0.1
 
-	equip_type = EQUIP_WEAPON
-
-/obj/item/vehicle_module/weapon/action_checks(atom/target)
+/obj/item/vehicle_module/lazy/legacy/weapon/action_checks(atom/target)
 	if(projectiles <= 0)
 		return 0
 	return ..()
 
-/obj/item/vehicle_module/weapon/action(atom/target, params)
+/obj/item/vehicle_module/lazy/legacy/weapon/action(atom/target, params)
 	if(!action_checks(target))
 		return
 	var/turf/curloc = chassis.loc
@@ -31,7 +32,6 @@
 	chassis.use_power(energy_drain)
 	chassis.visible_message("<span class='warning'>[chassis] fires [src]!</span>")
 	occupant_message("<span class='warning'>You fire [src]!</span>")
-	log_message("Fired from [src], targeting [target].")
 	var/target_for_log = "unknown"
 	if(ismob(target))
 		target_for_log = target
@@ -68,7 +68,7 @@
 
 	return
 
-/obj/item/vehicle_module/weapon/proc/Fire(atom/A, atom/target, params)
+/obj/item/vehicle_module/lazy/legacy/weapon/proc/Fire(atom/A, atom/target, params)
 	if(istype(A, /obj/projectile))	// Sanity.
 		var/obj/projectile/P = A
 		P.dispersion = deviation
@@ -78,7 +78,7 @@
 		var/atom/movable/AM = A
 		AM.throw_at_old(target, 7, 1, chassis)
 
-/obj/item/vehicle_module/weapon/proc/process_accuracy(obj/projectile, mob/living/user, atom/target)
+/obj/item/vehicle_module/lazy/legacy/weapon/proc/process_accuracy(obj/projectile, mob/living/user, atom/target)
 	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return

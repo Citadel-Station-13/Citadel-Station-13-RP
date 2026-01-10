@@ -33,7 +33,7 @@
 		if("set")
 			var/mode = params["mode"] == "all"
 			var/access = text2num(params["id"])
-			if(!access)
+			if(!access || !SSjob.access_id_lookup[params["id"]])
 				return
 			if(!mode)
 				if(access in conf_req_one_access)

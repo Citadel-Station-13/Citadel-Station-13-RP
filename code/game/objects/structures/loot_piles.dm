@@ -399,13 +399,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/wirecutters,
 		/obj/item/multitool,
-		/obj/item/vehicle_module/generator,
-		/obj/item/vehicle_module/tool/cable_layer,
-		/obj/item/vehicle_module/tool/drill,
-		/obj/item/vehicle_module/tool/hydraulic_clamp,
-		/obj/item/vehicle_module/tool/passenger,
-		/obj/item/vehicle_module/tool/sleeper,
-		/obj/item/vehicle_module/tool/syringe_gun,
+		/obj/item/vehicle_module/lazy/stack_generator/phoron,
+		/obj/item/vehicle_module/lazy/legacy/tool/cable_layer,
+		/obj/item/vehicle_module/lazy/legacy/tool/drill,
+		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
+		/obj/item/vehicle_module/lazy/legacy/tool/passenger,
+		/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+		/obj/item/vehicle_module/lazy/legacy/tool/syringe_gun,
 		/obj/item/robot_parts/robot_component/binary_communication_device,
 		/obj/item/robot_parts/robot_component/armour,
 		/obj/item/robot_parts/robot_component/actuator,
@@ -432,8 +432,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/borg/upgrade/advhealth,
 		/obj/item/borg/upgrade/vtec,
 		/obj/item/borg/upgrade/tasercooler,
-		/obj/item/vehicle_module/weapon/energy/riggedlaser,
-		/obj/item/vehicle_module/tool/drill/diamonddrill,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/riggedlaser,
+		/obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill,
 		/obj/item/hardsuit_module/device/drill,
 		/obj/item/hardsuit_module/device/plasmacutter,
 		/obj/item/hardsuit_module/device/healthscanner,
@@ -454,7 +454,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/aiModule/paladin,
 		/obj/item/aiModule/safeguard,
 		/obj/item/disposable_teleporter,
-		/obj/item/vehicle_module/tesla_energy_relay
+		/obj/item/vehicle_module/toggled/energy_relay
 	)
 
 
@@ -631,17 +631,17 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/weapon/energy/taser,
-		/obj/item/vehicle_module/weapon/energy/riggedlaser,
-		/obj/item/vehicle_module/tool/hydraulic_clamp,
-		/obj/item/vehicle_module/tool/drill,
-		/obj/item/vehicle_module/generator
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/riggedlaser,
+		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
+		/obj/item/vehicle_module/lazy/legacy/tool/drill,
+		/obj/item/vehicle_module/lazy/stack_generator/phoron
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/weapon/energy/laser,
-		/obj/item/vehicle_module/generator/nuclear,
-		/obj/item/vehicle_module/tool/jetpack
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/stack_generator/uranium,
+		/obj/item/vehicle_module/toggled/jetpack/electric
 		)
 
 //Stuff you may find attached to a ripley.
@@ -670,16 +670,16 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/tool/hydraulic_clamp,
-		/obj/item/vehicle_module/tool/drill/diamonddrill,
-		/obj/item/vehicle_module/antiproj_armor_booster,
-		/obj/item/vehicle_module/tool/extinguisher,
+		/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
+		/obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill,
+		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
+		/obj/item/vehicle_module/lazy/legacy/tool/extinguisher,
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/gravcatapult,
-		/obj/item/vehicle_module/tool/rcd,
-		/obj/item/vehicle_module/weapon/energy/flamer/rigged
+		/obj/item/vehicle_module/lazy/legacy/gravcatapult,
+		/obj/item/vehicle_module/lazy/legacy/tool/rcd,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer/rigged
 		)
 
 /obj/structure/loot_pile/mecha/ripley/firefighter
@@ -715,15 +715,15 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/weapon/energy/riggedlaser,
-		/obj/item/vehicle_module/repair_droid,
-		/obj/item/vehicle_module/tesla_energy_relay
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/riggedlaser,
+		/obj/item/vehicle_module/toggled/repair_droid,
+		/obj/item/vehicle_module/toggled/energy_relay
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/tool/rcd,
-		/obj/item/vehicle_module/wormhole_generator,
-		/obj/item/vehicle_module/weapon/energy/flamer/rigged
+		/obj/item/vehicle_module/lazy/legacy/tool/rcd,
+		/obj/item/vehicle_module/lazy/legacy/wormhole_generator,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer/rigged
 		)
 
 /obj/structure/loot_pile/mecha/odysseus
@@ -749,16 +749,16 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/tool/sleeper,
-		/obj/item/vehicle_module/tool/syringe_gun,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/flare,
-		/obj/item/vehicle_module/tool/extinguisher,
+		/obj/item/vehicle_module/lazy/legacy/tool/sleeper,
+		/obj/item/vehicle_module/lazy/legacy/tool/syringe_gun,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/flare,
+		/obj/item/vehicle_module/lazy/legacy/tool/extinguisher,
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/gravcatapult,
-		/obj/item/vehicle_module/anticcw_armor_booster,
-		/obj/item/vehicle_module/shocker
+		/obj/item/vehicle_module/lazy/legacy/gravcatapult,
+		/obj/item/vehicle_module/personal_shield/structural_field/concussive,
+		/obj/item/vehicle_module/lazy/legacy/shocker
 		)
 
 /obj/structure/loot_pile/mecha/odysseus/murdysseus
@@ -793,19 +793,19 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/shocker,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade,
-		/obj/item/vehicle_module/weapon/energy/laser,
-		/obj/item/vehicle_module/weapon/energy/taser,
+		/obj/item/vehicle_module/lazy/legacy/shocker,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
 		/obj/random/paintkit/gygax,
 		/obj/random/paintkit/gygax
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/weapon/ballistic/lmg,
-		/obj/item/vehicle_module/repair_droid,
-		/obj/item/vehicle_module/weapon/energy/laser/heavy
+		/obj/item/vehicle_module/toggled/energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
+		/obj/item/vehicle_module/toggled/repair_droid,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy
 		)
 
 /obj/structure/loot_pile/mecha/gygax/dark
@@ -848,19 +848,19 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/shocker,
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade,
-		/obj/item/vehicle_module/weapon/energy/laser,
-		/obj/item/vehicle_module/antiproj_armor_booster,
+		/obj/item/vehicle_module/lazy/legacy/shocker,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser,
+		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic,
 		/obj/random/paintkit/durand,
 		/obj/random/paintkit/durand
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/weapon/ballistic/scattershot,
-		/obj/item/vehicle_module/repair_droid,
-		/obj/item/vehicle_module/weapon/energy/laser/heavy
+		/obj/item/vehicle_module/toggled/energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot,
+		/obj/item/vehicle_module/toggled/repair_droid,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy
 		)
 
 /obj/structure/loot_pile/mecha/marauder
@@ -898,17 +898,17 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/shocker,
-		/obj/item/vehicle_module/weapon/energy/flamer/rigged,
-		/obj/item/vehicle_module/weapon/energy/laser/heavy,
-		/obj/item/vehicle_module/antiproj_armor_booster
+		/obj/item/vehicle_module/lazy/legacy/shocker,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer/rigged,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy,
+		/obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/weapon/energy/ion,
-		/obj/item/vehicle_module/repair_droid,
-		/obj/item/vehicle_module/teleporter
+		/obj/item/vehicle_module/toggled/energy_relay,
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/ion,
+		/obj/item/vehicle_module/toggled/repair_droid,
+		/obj/item/vehicle_module/lazy/legacy/teleporter
 		)
 
 /obj/structure/loot_pile/mecha/honker
@@ -935,14 +935,14 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/banana,
-		/obj/item/vehicle_module/weapon/honker,
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/banana,
+		/obj/item/vehicle_module/lazy/legacy/weapon/honker,
 		/obj/item/vehicle_part/honker_armour
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/tesla_energy_relay,
-		/obj/item/vehicle_module/repair_droid
+		/obj/item/vehicle_module/toggled/energy_relay,
+		/obj/item/vehicle_module/toggled/repair_droid
 		)
 
 /obj/structure/loot_pile/mecha/honker/cluwne
@@ -973,14 +973,14 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/weapon/whisperblade,
-		/obj/item/vehicle_module/weapon/infernoblade,
+		/obj/item/vehicle_module/lazy/legacy/weapon/whisperblade,
+		/obj/item/vehicle_module/lazy/legacy/weapon/infernoblade,
 		/obj/item/vehicle_part/reticent_armour
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/combat_shield/reticent,
-		/obj/item/vehicle_module/cloak
+		/obj/item/vehicle_module/shield_projector/linear/reticent,
+		/obj/item/vehicle_module/lazy/legacy/cloak
 		)
 
 /obj/structure/loot_pile/mecha/reticent/reticence
@@ -1015,13 +1015,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/weapon/ballistic/lmg/rigged,
-		/obj/item/vehicle_module/generator
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg/rigged,
+		/obj/item/vehicle_module/lazy/stack_generator/phoron
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/weapon/ballistic/lmg,
-		/obj/item/vehicle_module/generator/nuclear
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg,
+		/obj/item/vehicle_module/lazy/stack_generator/uranium
 		)
 
 /obj/structure/loot_pile/mecha/mouse_tank/livewire
@@ -1050,13 +1050,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/vehicle_module/weapon/energy/flamer/rigged,
-		/obj/item/vehicle_module/tool/extinguisher
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer/rigged,
+		/obj/item/vehicle_module/lazy/legacy/tool/extinguisher
 		)
 
 	rare_loot = list(
-		/obj/item/vehicle_module/weapon/energy/flamer,
-		/obj/item/vehicle_module/generator
+		/obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer,
+		/obj/item/vehicle_module/lazy/stack_generator/phoron
 		)
 
 /obj/structure/loot_pile/mecha/mouse_tank/eraticator
@@ -1087,12 +1087,12 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	uncommon_loot = list(
 		/obj/item/ammo_magazine/a75,
-		/obj/item/vehicle_module/weapon/ballistic/mortar
+		/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/mortar
 		)
 
 	rare_loot = list(
 		/obj/item/gun/projectile/ballistic/gyropistol,
-		/obj/item/vehicle_module/generator/nuclear
+		/obj/item/vehicle_module/lazy/stack_generator/uranium
 		)
 
 //Drone loot
