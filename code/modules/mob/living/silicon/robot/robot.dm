@@ -553,16 +553,16 @@
 		// todo: robot panel; this shouldn't be in statpanel, it's not critical data
 		if(resources)
 			for(var/key in resources.provisioned_stack_store)
-				var/datum/robot_resource/resource = resources.provisioned_stack_store
+				var/datum/robot_resource/resource = resources.provisioned_stack_store[key]
 				INJECT_STATPANEL_DATA_LINE(., "[resource.name]: [resource.amount]/[resource.amount_max]")
 			for(var/key in resources.provisioned_material_store)
-				var/datum/robot_resource/resource = resources.provisioned_material_store
+				var/datum/robot_resource/resource = resources.provisioned_material_store[key]
 				INJECT_STATPANEL_DATA_LINE(., "[resource.name]: [resource.amount]/[resource.amount_max]")
 			for(var/key in resources.provisioned_reagent_store)
-				var/datum/robot_resource/resource = resources.provisioned_reagent_store
+				var/datum/robot_resource/resource = resources.provisioned_reagent_store[key]
 				INJECT_STATPANEL_DATA_LINE(., "[resource.name]: [resource.amount]/[resource.amount_max]")
 			for(var/key in resources.provisioned_resource_store)
-				var/datum/robot_resource/resource = resources.provisioned_resource_store
+				var/datum/robot_resource/resource = resources.provisioned_resource_store[key]
 				INJECT_STATPANEL_DATA_LINE(., "[resource.name]: [resource.amount]/[resource.amount_max]")
 
 /mob/living/silicon/robot/restrained()
