@@ -989,8 +989,3 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			return TRUE
 		else
 			return ..()
-
-/// Plays item's usesound, if any.
-/obj/item/proc/play_tool_sound(atom/target, volume=50)
-	if(target && tool_sound && volume)
-		playsound(target, tool_sound, volume, TRUE)

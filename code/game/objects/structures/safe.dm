@@ -84,14 +84,15 @@ FLOOR SAFES
 			return TRUE
 		new_tumblers.Add(input_value)
 
-	tool.play_tool_sound(src)
+	// are you stupid? you are inside wrench_act and still need a function arg
+	tool.tool_feedback_start(TOOL_WRENCH, target = src, time = 10 SECONDS)
 	if(!do_after(user, 10 SECONDS, target = src))
 		return TRUE
 
 	tumblers = new_tumblers
 	current_tumbler_index = 1
 	dial = 0
-	tool.play_tool_sound(src)
+	tool.tool_feedback_end(TOOL_WRENCH, target = src)
 	to_chat(user, SPAN_NOTICE("You successfully reset the lock for [src]. The new combination is: [tumblers.Join("-")]."))
 	balloon_alert(user, "lock set!")
 
