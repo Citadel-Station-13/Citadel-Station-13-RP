@@ -458,19 +458,6 @@ default behaviour is:
 	var/obj/item/organ/external/def_zone = ran_zone(t)
 	return def_zone
 
-
-// heal ONE external organ, organ gets randomly selected from damaged ones.
-/mob/living/proc/heal_organ_damage(var/brute, var/burn)
-	adjustBruteLoss(-brute)
-	adjustFireLoss(-burn)
-	src.update_health()
-
-// heal MANY external organs, in random order
-/mob/living/proc/heal_overall_damage(var/brute, var/burn)
-	adjustBruteLoss(-brute)
-	adjustFireLoss(-burn)
-	src.update_health()
-
 /mob/living/proc/restore_all_organs()
 	return
 

@@ -12,6 +12,10 @@
 
 	/// inventory hud
 	var/datum/actor_hud/inventory/inventory
+	/// rig hud, if any
+	var/datum/actor_hud/rig_control/rigsuit
+
+#warn how to do rigs?
 
 /datum/actor_hud_holder/New(client/C)
 	// set owner

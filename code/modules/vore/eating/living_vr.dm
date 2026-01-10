@@ -481,9 +481,9 @@
 // overrides a proc defined on atom called by breathe.dm
 //
 /obj/belly/return_air()
-	return return_air_for_internal_lifeform()
+	return return_air_for_internal_mob()
 
-/obj/belly/return_air_for_internal_lifeform()
+/obj/belly/return_air_for_internal_mob(mob/entity)
 	//Free air until someone wants to code processing it for reals from predbreaths
 	var/datum/gas_mixture/belly_air/air = new(1000)
 	return air

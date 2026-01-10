@@ -115,12 +115,6 @@
 	tool_sound = 'sound/items/jaws_cut.ogg'
 	tool_speed = 0.5
 
-/obj/item/tool/wirecutters/RIGset
-	name = "integrated wirecutters"
-	desc = "If you're seeing this, someone did a dum-dum."
-	tool_sound = 'sound/items/jaws_cut.ogg'
-	tool_speed = 0.7
-
 /obj/item/tool/wirecutters/hybrid
 	name = "strange wirecutters"
 	desc = "This cuts wires.  With <span class='alien'>Science!</span>"

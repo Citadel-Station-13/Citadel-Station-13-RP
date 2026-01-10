@@ -112,10 +112,10 @@
 	has_organ = list(
 		O_BRAIN        = /obj/item/organ/internal/brain/adherent,
 		O_CELL         = /obj/item/organ/internal/cell/adherent,
-		O_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins,
+		O_COOLING_FINS = /obj/item/organ/internal/adherent/cooling_fins,
 		O_EYES         = /obj/item/organ/internal/eyes/adherent,
-		O_FLOAT        = /obj/item/organ/internal/powered/float,
-		O_JETS         = /obj/item/organ/internal/powered/jets,
+		O_FLOAT        = /obj/item/organ/internal/adherent/float,
+		O_JETS         = /obj/item/organ/internal/adherent/jets,
 	)
 	vision_organ = O_EYES
 
@@ -176,7 +176,7 @@
 /datum/species/adherent/can_overcome_gravity(mob/living/carbon/human/H)
 	. = FALSE
 	if(H && H.stat == CONSCIOUS)
-		for(var/obj/item/organ/internal/powered/float/float in H.internal_organs)
+		for(var/obj/item/organ/internal/adherent/float/float in H.internal_organs)
 			if(float.active)
 				. = TRUE
 				break
@@ -197,7 +197,7 @@
 /datum/species/adherent/handle_fall_special(mob/living/carbon/human/H, turf/landing)
 	var/float_is_usable = FALSE
 	if(H && H.stat == CONSCIOUS)
-		for(var/obj/item/organ/internal/powered/float/float in H.internal_organs)
+		for(var/obj/item/organ/internal/adherent/float/float in H.internal_organs)
 			float_is_usable = TRUE
 			break
 	if(float_is_usable)

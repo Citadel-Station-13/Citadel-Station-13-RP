@@ -108,33 +108,6 @@
 	. = ..()
 	air_contents.adjust_gas(GAS_ID_CARBON_DIOXIDE, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/jetpack/hardsuit
-	name = "jetpack"
-	desc = "It's a jetpack. This description should not see the light of day (well, space-day.). If you can see this, report it on the bug tracker."
-	var/obj/item/hardsuit/holder
-
-/obj/item/tank/jetpack/hardsuit/allow_thrust(num, mob/living/user as mob)
-
-	if(!(src.on))
-		return 0
-
-	if(!istype(holder) || !holder.air_supply)
-		return 0
-
-	var/obj/item/tank/pressure_vessel = holder.air_supply
-
-	if((num < 0.005 || pressure_vessel.air_contents.total_moles < num))
-		src.ion_trail.stop()
-		return 0
-
-	var/datum/gas_mixture/G = pressure_vessel.air_contents.remove(num)
-
-	var/allgases = G.gas[GAS_ID_CARBON_DIOXIDE] + G.gas[GAS_ID_NITROGEN] + G.gas[GAS_ID_OXYGEN] + G.gas[GAS_ID_PHORON]
-	if(allgases >= 0.005)
-		return 1
-	qdel(G)
-	return
-
 /obj/item/tank/jetpack/improvised
 	name = "improvised jetpack"
 	desc = "A jetpack made from two air tanks, a fire extinguisher and some atmospherics equipment. It doesn't look like it can hold much."

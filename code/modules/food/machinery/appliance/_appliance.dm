@@ -189,7 +189,7 @@
 /obj/machinery/appliance/proc/can_insert(var/obj/item/I, var/mob/user)
 	if (istype(I.loc, /mob/living/silicon))
 		return FALSE
-	else if (istype(I.loc, /obj/item/hardsuit_module))
+	else if (istype(I.loc, /obj/item/rig_module/basic))
 		return FALSE
 
 	// We are trying to cook a grabbed mob.

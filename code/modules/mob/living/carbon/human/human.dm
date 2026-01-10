@@ -93,14 +93,6 @@
 		if(P)
 			INJECT_STATPANEL_DATA_LINE(., "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
-
-		if(back && istype(back,/obj/item/hardsuit))
-			var/obj/item/hardsuit/suit = back
-			var/cell_status = "ERROR"
-			if(suit.cell)
-				cell_status = "[suit.cell.charge]/[suit.cell.max_charge]"
-			INJECT_STATPANEL_DATA_ENTRY(., "Suit charge", "[cell_status]")
-
 		if(mind)
 			if(mind.changeling)
 				INJECT_STATPANEL_DATA_ENTRY(., "Chemical Storage", mind.changeling.chem_charges)

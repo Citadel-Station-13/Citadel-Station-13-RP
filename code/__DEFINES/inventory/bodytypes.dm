@@ -60,10 +60,10 @@
 #define BODYTYPE_XENOHYBRID			"xenohybrid"
 /// digitigrade unathi
 #define BODYTYPE_UNATHI_DIGI        "unathi-digi"
+/// IPC; unused in game; only used in sprites for now
+#define BODYTYPE_IPC                "ipc"
 /// krisitik
 #define BODYTYPE_KRISITIK			"krisitik"
-/// IPC; unused in game; only used in sprites for now
-#define BODYTYPE_IPC				"ipc"
 
 //! keep this number (count) up to date
 #define BODYTYPES_TOTAL 21
@@ -112,7 +112,8 @@
 #define BODYTYPE_STRING_PHORONOID "phoronoid"
 #define BODYTYPE_STRING_WEREBEAST "werebeast"
 #define BODYTYPE_STRING_XENOHYBRID "xenohybrid"
-#define BODYTYPE_STRING_KRISITIK "krisitik" //Currently Unused until I can do Suit Sprites
+/// currently unused
+#define BODYTYPE_STRING_KRISITIK "krisitik"
 /// currently unused; only in sprites
 #define BODYTYPE_STRING_IPC "ipc"
 
@@ -157,6 +158,8 @@
 			return BODYTYPE_STRING_WEREBEAST
 		if(BODYTYPE_XENOHYBRID)
 			return BODYTYPE_STRING_XENOHYBRID
+		if(BODYTYPE_IPC)
+			return BODYTYPE_STRING_IPC
 		if(BODYTYPE_KRISITIK)
 			return BODYTYPE_STRING_VULPKANIN //Borrowing Vulp Sprites until I can sprite all the space suits.
 		if(BODYTYPE_IPC)

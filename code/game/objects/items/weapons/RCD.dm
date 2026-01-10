@@ -310,6 +310,8 @@
 	return "It lacks a source of power, and cannot function."
 
 
+#warn item mount for non-mounted..
+
 // 'Mounted' RCDs, used for borgs/RIGs/Mechas, all of which use their cells to drive the RCD.
 /obj/item/rcd/electric/mounted
 	name = "mounted electric rapid construction device"
@@ -323,10 +325,6 @@
 	if(isrobot(loc)) // In a borg.
 		var/mob/living/silicon/robot/R = loc
 		return R.cell
-	if(istype(loc, /obj/item/hardsuit_module)) // In a HARDSUIT.
-		var/obj/item/hardsuit_module/module = loc
-		if(module.holder) // Is it attached to a HARDSUIT?
-			return module.holder.cell
 	if(istype(loc, /obj/item/vehicle_module)) // In a mech.
 		var/obj/item/vehicle_module/ME = loc
 		if(ME.chassis) // Is the part attached to a mech?

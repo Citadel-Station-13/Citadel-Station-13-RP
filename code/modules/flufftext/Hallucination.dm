@@ -259,7 +259,7 @@ proc/check_panel(mob/M)
 
 	src.health -= P.damage_force
 
-/obj/effect/fake_attacker/Crossed(var/mob/M, somenumber)
+/obj/effect/fake_attacker/Crossed(var/mob/M)
 	. = ..()
 	if(M == my_target)
 		step_away(src,my_target,2)

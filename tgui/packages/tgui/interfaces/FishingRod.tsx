@@ -53,7 +53,7 @@ const FishingRodSlot = (props: FishingSlotProps) => {
                 {!!props.current_item_icon
                   && icon_wrapper(props.current_item_icon)}
               </Flex.Item>
-              <Flex.Item grow align="center">
+              <Flex.Item grow={1} align="center">
                 <Box textAlign="center">
                   {props.current_item_name ?? 'None'}
                 </Box>

@@ -1,4 +1,6 @@
-//
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2023 Citadel Station developers.          *//
+
 /// sent upon a mob being added:				(mob)
 #define COMSIG_PERSPECTIVE_MOB_ADD				"perspective_add_mob"
 /// sent upon a mob beiing removed:				(mob, switching)

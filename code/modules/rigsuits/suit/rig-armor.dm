@@ -1,0 +1,22 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/datum/armor/rigsuit
+	melee = 0.3
+	melee_tier = 3
+	melee_soak = 2
+	melee_deflect = 2
+	bullet = 0.2
+	bullet_tier = 3
+	bullet_soak = 2
+	bullet_deflect = 2
+	laser = 0.3
+	laser_tier = 3
+	laser_soak = 2
+	laser_deflect = 2
+	energy = 0.1
+	bomb = 0.3
+	bio = 1.0
+	rad = 0.5
+	fire = 0.5
+	acid = 1.0

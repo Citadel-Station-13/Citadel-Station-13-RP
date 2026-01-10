@@ -249,8 +249,8 @@
 				if(occupant.getToxLoss())
 					occupant.adjustToxLoss(max(-1, -20/occupant.getToxLoss()))
 				var/heal_brute = occupant.getBruteLoss() ? min(1, 20/occupant.getBruteLoss()) : 0
-				var/heal_fire = occupant.getFireLoss() ? min(1, 20/occupant.getFireLoss()) : 0
-				occupant.heal_organ_damage(heal_brute,heal_fire)
+				var/heal_burn = occupant.getFireLoss() ? min(1, 20/occupant.getFireLoss()) : 0
+				occupant.heal_organ_damage(heal_brute,heal_burn)
 		var/has_cryo = occupant.reagents.get_reagent_amount("cryoxadone") >= 1
 		var/has_clonexa = occupant.reagents.get_reagent_amount("clonexadone") >= 1
 		var/has_cryo_medicine = has_cryo || has_clonexa
@@ -367,10 +367,10 @@
 			return
 		put_mob(L)
 
-/atom/proc/return_air_for_internal_lifeform(mob/living/lifeform)
+/atom/proc/return_air_for_internal_mob(mob/entity)
 	return return_air()
 
-/obj/machinery/atmospherics/component/unary/cryo_cell/return_air_for_internal_lifeform()
+/obj/machinery/atmospherics/component/unary/cryo_cell/return_air_for_internal_mob(mob/entity)
 	//assume that the cryo cell has some kind of breath mask or something that
 	//draws from the cryo tube's environment, instead of the cold internal air.
 	if(src.loc)

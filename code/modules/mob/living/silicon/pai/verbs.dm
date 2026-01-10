@@ -35,9 +35,9 @@
 	// Pass lying down or getting up to our pet human, if we're in a hardsuit.
 	if(src.loc == shell)
 		set_resting(FALSE)
-		var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
-		if(istype(hardsuit))
-			hardsuit.force_rest(src)
+		// var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+		// if(istype(hardsuit))
+		// 	hardsuit.force_rest(src)
 	else
 		toggle_intentionally_resting(TRUE)
 		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))

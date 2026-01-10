@@ -86,6 +86,7 @@
 #define O_VRLINK "virtual node"
 #define O_ORCH "orchestrator"
 #define O_FACT "refactory"
+#define O_RIG_SUBCORE "rig subcore"
 #define O_FRUIT "fruit gland"
 #define O_HONEYSTOMACH "honey stomach"
 #define O_WEAVER "silk gland"
@@ -110,6 +111,7 @@
 		O_REGOXY, \
 		O_REGTOX, \
 		O_RESIN, \
+		O_RIG_SUBCORE, \
 		O_RESPONSE, \
 		O_STRATA, \
 		O_VENTC, \

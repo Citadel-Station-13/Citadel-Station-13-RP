@@ -33,7 +33,7 @@
 			return UI_INTERACTIVE
 
 		// Regular ghosts can always at least view if in range.
-		var/datum/client_interface/client = GET_CLIENT(user)
+		var/datum/mocking/client/client = GET_CLIENT(user)
 		if(client)
 			// todo: in view range for zooming
 			if(get_dist(source, user) < max(client.current_viewport_width, client.current_viewport_height))

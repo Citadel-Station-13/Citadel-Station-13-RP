@@ -4,7 +4,7 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Data = {
-  theme: string;
+  theme: WindowTheme;
   bg_color: string;
   folder_name: string;
   contents: string[];
