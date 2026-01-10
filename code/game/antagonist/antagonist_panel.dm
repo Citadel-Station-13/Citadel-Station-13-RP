@@ -31,7 +31,7 @@
 			if(!M.client)      dat += " <i>(logged out)</i>"
 			if(M.stat == DEAD) dat += " <b><font color=red>(DEAD)</font></b>"
 			dat += "</td>"
-			dat += "<td>\[<A HREF='?src=\ref[caller];adminplayeropts=\ref[M]'>PP</A>]\[<A href='?src=\ref[caller];priv_msg=\ref[M]'>PM</A>\]\[<A href='?src=\ref[caller];traitor=\ref[M]'>TP</A>\]</td>"
+			dat += "<td>\[<A HREF='?src=\ref[caller];adminplayeropts=\ref[M]'>PP</A>]\[<A href='?src=\ref[caller];priv_msg=[M.ckey]'>PM</A>\]\[<A href='?src=\ref[caller];traitor=\ref[M]'>TP</A>\]</td>"
 		else
 			dat += "<td>[player.ckey] <i>Mob not found!</i></td>"
 		dat += "</tr>"

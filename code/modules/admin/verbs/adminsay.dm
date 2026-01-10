@@ -9,12 +9,28 @@
 	if(!msg)
 		return
 
-	log_adminsay(msg,src)
+	if(findtext(msg, "@") || findtext(msg, "#"))
+		var/list/link_results = check_asay_links(msg)
+		if(length(link_results))
+			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
+			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
+			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
+			for(var/iter_ckey in pinged_admin_clients)
+				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
+				if(!iter_admin_client?.holder)
+					continue
+				window_flash(iter_admin_client)
+				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
 
-	if(check_rights(R_ADMIN|R_MOD,0))
-		for(var/client/C in GLOB.admins)
-			if((R_ADMIN|R_MOD) & C.holder.rights)
-				to_chat(C, "<span class='adminsay'>" +  "ADMIN: " + " <span class='name'>[key_name(usr, 1)]</span>([admin_jump_link(mob, src)]): <span class='linkify'>[msg]</span></span>")
+	log_adminsay(msg,src)
+	msg = keywords_lookup(msg)
+	msg = "[SPAN_ADMINSAY("[SPAN_PREFIX("ADMIN:")] <EM>[key_name_admin(usr)]</EM> [admin_jump_link(mob)]: <span class='message linkify'>[msg]")]</span>"
+	for(var/client/C in GLOB.admins)
+		if((R_ADMIN|R_MOD) & C.holder.rights)
+			to_chat(C,
+				type = MESSAGE_TYPE_ADMINCHAT,
+				html = msg,
+				confidential = TRUE)
 
 	feedback_add_details("admin_verb","M") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

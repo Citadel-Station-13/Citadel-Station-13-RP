@@ -25,6 +25,8 @@
 #define ROUNDSTART_LOGOUT_REPORT_TIME 6000
 
 //! Admin permissions.
+/// Used for signifying that all admins can use this regardless of actual permissions
+#define R_NONE NONE
 #define R_BUILDMODE   (1<<0)
 #define R_ADMIN       (1<<1)
 #define R_BAN         (1<<2)
@@ -103,11 +105,11 @@
 /**
  *! AHELP Commands.
  */
-#define ADMIN_AHELP_REJECT(user)    ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=reject'>[SPAN_TOOLTIP("Reject and close this ticket.","REJT")]</a>)")
-#define ADMIN_AHELP_IC(user)        ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=icissue'>[SPAN_TOOLTIP("Close this ticket and mark it IC.","IC")]</a>)")
-#define ADMIN_AHELP_CLOSE(user)     ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=close'>[SPAN_TOOLTIP("Close this ticket.","CLOSE")]</a>)")
-#define ADMIN_AHELP_RESOLVE(user)   ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=resolve'>[SPAN_TOOLTIP("Close this ticket and mark it as Resolved.","RSLVE")]</a>)")
-#define ADMIN_AHELP_HANDLE(user)    ("(<a href='?_src_=holder;ahelp=[user];ahelp_action=handleissue'>[SPAN_TOOLTIP("Alert other Administrators that you're handling this ticket.","HANDLE")]</a>)")
+#define ADMIN_AHELP_REJECT(user)    ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=reject'>[SPAN_TOOLTIP("Reject and close this ticket.","REJT")]</a>)")
+#define ADMIN_AHELP_IC(user)        ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=icissue'>[SPAN_TOOLTIP("Close this ticket and mark it IC.","IC")]</a>)")
+#define ADMIN_AHELP_CLOSE(user)     ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=close'>[SPAN_TOOLTIP("Close this ticket.","CLOSE")]</a>)")
+#define ADMIN_AHELP_RESOLVE(user)   ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=resolve'>[SPAN_TOOLTIP("Close this ticket and mark it as Resolved.","RSLVE")]</a>)")
+#define ADMIN_AHELP_HANDLE(user)    ("(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[user];ahelp_action=handleissue'>[SPAN_TOOLTIP("Alert other Administrators that you're handling this ticket.","HANDLE")]</a>)")
 #define ADMIN_AHELP_FULLMONTY(user) ("[ADMIN_AHELP_REJECT(user)] [ADMIN_AHELP_IC(user)] [ADMIN_AHELP_CLOSE(user)] [ADMIN_AHELP_RESOLVE(user)] [ADMIN_AHELP_HANDLE(user)]")
 
 #define AHELP_ACTIVE   1
@@ -117,3 +119,11 @@
 // LOG BROWSE TYPES
 #define BROWSE_ROOT_ALL_LOGS     1
 #define BROWSE_ROOT_CURRENT_LOGS 2
+
+/// for [/proc/check_asay_links], if there are any actionable refs in the asay message, this index in the return list contains the new message text to be printed
+#define ASAY_LINK_NEW_MESSAGE_INDEX "!asay_new_message"
+/// for [/proc/check_asay_links], if there are any admin pings in the asay message, this index in the return list contains a list of admins to ping
+#define ASAY_LINK_PINGED_ADMINS_INDEX "!pinged_admins"
+
+//How many things you can spawn at once with spawn verb/create panel
+#define ADMIN_SPAWN_CAP 100

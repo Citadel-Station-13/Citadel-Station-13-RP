@@ -25,189 +25,6 @@ var/global/floorIsLava = 0
 		if(check_rights(rights, 0, M))
 			to_chat(M, message)
 
-///////////////////////////////////////////////////////////////////////////////////////////////Panels
-
-/datum/admins/proc/show_player_panel(var/mob/M in GLOB.mob_list)
-	set category = "Admin"
-	set name = "Show Player Panel"
-	set desc="Edit player (respawn, ban, heal, etc)"
-
-	if(!M)
-		to_chat(usr, "You seem to be selecting a mob that doesn't exist anymore.")
-		return
-	if (!istype(src,/datum/admins))
-		src = usr.client.holder
-	if (!istype(src,/datum/admins))
-		to_chat(usr, "Error: you are not an admin!")
-		return
-
-	var/body = "<html><head><title>Options for [M.key]</title></head>"
-	body += "<body>Options panel for <b>[M]</b>"
-	if(M.client)
-		body += " played by <b>[M.client]</b> "
-		body += "\[<A href='?src=\ref[src];editrights=show'>[M.client.holder ? M.client.holder.rank : "Player"]</A>\]"
-
-	if(istype(M, /mob/new_player))
-		body += " <B>Hasn't Entered Game</B> "
-	else
-		body += " \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\] "
-
-	if(M.client)
-		body += "<br><b>First connection:</b> [M.client.player.player_age] days ago"
-		body += "<br><b>BYOND account created:</b> [M.client.persistent.account_join]"
-		body += "<br><b>BYOND account age (days):</b> [M.client.persistent.account_age]"
-
-	body += {"
-		<br><br>\[
-		<a href='?_src_=vars;Vars=\ref[M]'>VV</a> -
-		<a href='?src=\ref[src];traitor=\ref[M]'>TP</a> -
-		<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a> -
-		<a href='?src=\ref[src];subtlemessage=\ref[M]'>SM</a> -
-		[admin_jump_link(M, src)]\] <br>
-		<b>Mob type:</b> [M.type]<br>
-		<b>Inactivity time:</b> [M.client ? "[M.client.inactivity/600] minutes" : "Logged out"]<br/><br/>
-		<A href='?src=\ref[src];boot2=\ref[M]'>Kick</A> |
-		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
-		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
-		<A href='?src=\ref[src];oocban=[M.ckey]'>[SSbans.t_is_role_banned_ckey(M.ckey, role = BAN_ROLE_OOC)? "<font color='red'>OOC Ban</font>" : "OOC Ban"]</A> |
-		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A>
-	"}
-
-	if(M.client)
-		var/muted = M.client.prefs.muted
-		body += {"<br><b>Mute: </b>
-			\[<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>PRAY</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>ADMINHELP</font></a> |
-			<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>DEADCHAT</font></a>\]
-			(<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>toggle all</font></a>)
-		"}
-
-	body += {"<br><br>
-		<A href='?src=\ref[src];jumpto=\ref[M]'><b>Jump to</b></A> |
-		<A href='?src=\ref[src];getmob=\ref[M]'>Get</A> |
-		<A href='?src=\ref[src];sendmob=\ref[M]'>Send To</A>
-		<br><br>
-		[check_rights(R_ADMIN|R_MOD,0) ? "<A href='?src=\ref[src];traitor=\ref[M]'>Traitor panel</A> | " : "" ]
-		<A href='?src=\ref[src];narrateto=\ref[M]'>Narrate to</A> |
-		<A href='?src=\ref[src];subtlemessage=\ref[M]'>Subtle message</A>
-	"}
-
-	if (M.client)
-		if(!istype(M, /mob/new_player))
-			body += "<br><br>"
-			body += "<b>Transformation:</b>"
-			body += "<br>"
-
-			//Monkey
-			if(issmall(M))
-				body += "<B>Monkeyized</B> | "
-			else
-				body += "<A href='?src=\ref[src];monkeyone=\ref[M]'>Monkeyize</A> | "
-
-			//Corgi
-			if(iscorgi(M))
-				body += "<B>Corgized</B> | "
-			else
-				body += "<A href='?src=\ref[src];corgione=\ref[M]'>Corgize</A> | "
-
-			//AI / Cyborg
-			if(isAI(M))
-				body += "<B>Is an AI</B> "
-			else if(ishuman(M))
-				body += {"<A href='?src=\ref[src];makeai=\ref[M]'>Make AI</A> |
-					<A href='?src=\ref[src];makerobot=\ref[M]'>Make Robot</A> |
-					<A href='?src=\ref[src];makealien=\ref[M]'>Make Alien</A>
-				"}
-
-			//Simple Animals
-			if(isanimal_legacy_this_is_broken(M))
-				body += "<A href='?src=\ref[src];makeanimal=\ref[M]'>Re-Animalize</A> | "
-			else
-				body += "<A href='?src=\ref[src];makeanimal=\ref[M]'>Animalize</A> | "
-
-			// DNA2 - Admin Hax
-			if(M.dna && iscarbon(M))
-				body += "<br><br>"
-				body += "<b>DNA Blocks:</b><br><table border='0'><tr><th>&nbsp;</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>"
-				var/bname
-				for(var/block=1;block<=DNA_SE_LENGTH;block++)
-					if(((block-1)%5)==0)
-						body += "</tr><tr><th>[block-1]</th>"
-					bname = assigned_blocks[block]
-					body += "<td>"
-					if(bname)
-						var/bstate=M.dna.GetSEState(block)
-						var/bcolor="[(bstate)?"#006600":"#ff0000"]"
-						body += "<A href='?src=\ref[src];togmutate=\ref[M];block=[block]' style='color:[bcolor];'>[bname]</A><sub>[block]</sub>"
-					else
-						body += "[block]"
-					body+="</td>"
-				body += "</tr></table>"
-
-			body += {"<br><br>
-				<b>Rudimentary transformation:</b><font size=2><br>These transformations only create a new mob type and copy stuff over. They do not take into account MMIs and similar mob-specific things. The buttons in 'Transformations' are preferred, when possible.</font><br>
-				<A href='?src=\ref[src];simplemake=observer;mob=\ref[M]'>Observer</A> |
-				\[ Xenos: <A href='?src=\ref[src];simplemake=larva;mob=\ref[M]'>Larva</A>
-				<A href='?src=\ref[src];simplemake=human;species=Xenomorph Drone;mob=\ref[M]'>Drone</A>
-				<A href='?src=\ref[src];simplemake=human;species=Xenomorph Hunter;mob=\ref[M]'>Hunter</A>
-				<A href='?src=\ref[src];simplemake=human;species=Xenomorph Sentinel;mob=\ref[M]'>Sentinel</A>
-				<A href='?src=\ref[src];simplemake=human;species=Xenomorph Queen;mob=\ref[M]'>Queen</A> \] |
-				\[ Crew: <A href='?src=\ref[src];simplemake=human;mob=\ref[M]'>Human</A>
-				<A href='?src=\ref[src];simplemake=human;species=Unathi;mob=\ref[M]'>Unathi</A>
-				<A href='?src=\ref[src];simplemake=human;species=Tajaran;mob=\ref[M]'>Tajaran</A>
-				<A href='?src=\ref[src];simplemake=human;species=Skrell;mob=\ref[M]'>Skrell</A> \] | \[
-				<A href='?src=\ref[src];simplemake=nymph;mob=\ref[M]'>Nymph</A>
-				<A href='?src=\ref[src];simplemake=human;species='Diona';mob=\ref[M]'>Diona</A> \] |
-				\[ slime: <A href='?src=\ref[src];simplemake=slime;mob=\ref[M]'>Baby</A>,
-				<A href='?src=\ref[src];simplemake=adultslime;mob=\ref[M]'>Adult</A> \]
-				<A href='?src=\ref[src];simplemake=monkey;mob=\ref[M]'>Monkey</A> |
-				<A href='?src=\ref[src];simplemake=robot;mob=\ref[M]'>Cyborg</A> |
-				<A href='?src=\ref[src];simplemake=cat;mob=\ref[M]'>Cat</A> |
-				<A href='?src=\ref[src];simplemake=runtime;mob=\ref[M]'>Runtime</A> |
-				<A href='?src=\ref[src];simplemake=corgi;mob=\ref[M]'>Corgi</A> |
-				<A href='?src=\ref[src];simplemake=ian;mob=\ref[M]'>Ian</A> |
-				<A href='?src=\ref[src];simplemake=crab;mob=\ref[M]'>Crab</A> |
-				<A href='?src=\ref[src];simplemake=coffee;mob=\ref[M]'>Coffee</A> |
-				\[ Construct: <A href='?src=\ref[src];simplemake=constructarmoured;mob=\ref[M]'>Armoured</A> ,
-				<A href='?src=\ref[src];simplemake=constructbuilder;mob=\ref[M]'>Builder</A> ,
-				<A href='?src=\ref[src];simplemake=constructwraith;mob=\ref[M]'>Wraith</A> \]
-				<A href='?src=\ref[src];simplemake=shade;mob=\ref[M]'>Shade</A>
-				<br>
-			"}
-	body += {"<br><br>
-			<b>Other actions:</b>
-			<br>
-			<A href='?src=\ref[src];forcespeech=\ref[M]'>Forcesay</A>
-			"}
-	if (M.client)
-		body += {" |
-			<A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> |
-			<A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A> |
-			<A href='?src=\ref[src];tdomeadmin=\ref[M]'>Thunderdome Admin</A> |
-			<A href='?src=\ref[src];tdomeobserve=\ref[M]'>Thunderdome Observer</A> |
-		"}
-	// language toggles
-	body += "<br><br><b>Languages:</b><br>"
-	var/f = 1
-	for(var/datum/prototype/language/L as anything in tim_sort(RSlanguages.fetch_subtypes_immutable(/datum/prototype/language), /proc/cmp_name_asc))
-		if(!(L.language_flags & LANGUAGE_INNATE))
-			if(!f) body += " | "
-			else f = 0
-			if(L in M.languages)
-				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(L.name)]' style='color:#006600'>[L.name]</a>"
-			else
-				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(L.name)]' style='color:#ff0000'>[L.name]</a>"
-
-	body += {"<br>
-		</body></html>
-	"}
-
-	usr << browse(body, "window=[M.ckey]_playerpanel;size=550x515")
-	feedback_add_details("admin_verb","SPP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
 /datum/player_info/var/author // admin who authored the information
 /datum/player_info/var/rank //rank of admin who made the notes
 /datum/player_info/var/content // text content of the information
@@ -588,25 +405,28 @@ var/global/floorIsLava = 0
 	usr << browse(HTML_SKELETON(dat), "window=ban;size=400x400")
 
 /datum/admins/proc/Game()
-	if(!check_rights(0))	return
+	if(!check_rights(0))
+		return
 
 	var/dat = {"
 		<center><B>Game Panel</B></center><hr>\n
-		<A href='?src=\ref[src];c_mode=1'>Change Game Mode</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];c_mode=1'>Change Game Mode</A><br>
 		"}
 	if(master_mode == "secret")
-		dat += "<A href='?src=\ref[src];f_secret=1'>(Force Secret Mode)</A><br>"
+		dat += "<A href='byond://?src=[REF(src)];[HrefToken()];f_secret=1'>(Force Secret Mode)</A><br>"
 
 	dat += {"
 		<BR>
-		<A href='?src=\ref[src];create_object=1'>Create Object</A><br>
-		<A href='?src=\ref[src];quick_create_object=1'>Quick Create Object</A><br>
-		<A href='?src=\ref[src];create_turf=1'>Create Turf</A><br>
-		<A href='?src=\ref[src];create_mob=1'>Create Mob</A><br>
-		<br><A href='?src=\ref[src];atmos_vsc=1'>Modify Atmospherics Properties</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];create_object=1'>Create Object</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];quick_create_object=1'>Quick Create Object</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];create_turf=1'>Create Turf</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];create_mob=1'>Create Mob</A><br>
+		<br><A href='byond://?src=[REF(src)];[HrefToken()];atmos_vsc=1'>Modify Atmospherics Properties</A><br>
 		"}
 
-	usr << browse(HTML_SKELETON(dat), "window=admin2;size=210x280")
+	var/datum/browser/browser = new(usr, "admin2", "Game Panel", 240, 280)
+	browser.set_content(dat)
+	browser.open()
 	return
 
 /datum/admins/proc/Secrets(var/datum/admin_secret_category/active_category = null)
@@ -844,18 +664,36 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		SSticker.start_immediately = TRUE
-		log_admin("[usr.key] has started the game.")
-		var/msg = ""
-		if(SSticker.current_state == GAME_STATE_INIT)
-			msg = " (The server is still setting up, but the round will be started as soon as possible.)"
-		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the game.[msg]"))
-		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		return 1
-	else
-		to_chat(usr, SPAN_WARNING("Error: Start Now: Game has already started."))
-		return 0
+
+	if(!check_rights(R_SERVER))
+		return
+
+	var/static/list/waiting_states = list(GAME_STATE_SETTING_UP, GAME_STATE_PREGAME, GAME_STATE_INIT)
+	if(!(SSticker.current_state in waiting_states))
+		to_chat(usr, SPAN_WARNING(SPAN_RED("The game has already started!")))
+		return
+
+	if(SSticker.start_immediately)
+		SSticker.start_immediately = FALSE
+		SSticker.SetTimeLeft(3 MINUTES)
+		to_chat(world, SPAN_BIG(SPAN_NOTICE("The game will start in 3 minutes.")))
+		SEND_SOUND(world, sound('sound/announcer/classic/attention.ogg'))
+		message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has cancelled immediate game start. Game will start in 3 minutes."))
+		log_admin("[key_name(usr)] has cancelled immediate game start.")
+		return
+
+	if(!usr.client.is_localhost())
+		var/response = tgui_alert(usr, "Are you sure you want to start the round?", "Start Now", list("Start Now", "Cancel"))
+		if(response != "Start Now")
+			return
+	SSticker.start_immediately = TRUE
+
+	log_admin("[key_name(usr)] has started the game.")
+	message_admins("[key_name_admin(usr)] has started the game.")
+	if(SSticker.current_state == GAME_STATE_INIT)
+		message_admins("The server is still setting up, but the round will be started as soon as possible.")
+
+	feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/toggleenter()
 	set category = "Server"
@@ -873,22 +711,30 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 /datum/admins/proc/toggleAI()
 	set category = "Server"
-	set desc="People can't be AI"
-	set name="Toggle AI"
-	config_legacy.allow_ai = !( config_legacy.allow_ai )
-	if (!( config_legacy.allow_ai ))
-		to_chat(world, "<B>The AI job is no longer chooseable.</B>")
+	set name = "Toggle AI"
+	set desc = "Toggle the ability to choose AI jobs."
+
+	if(!check_rights(R_SERVER))
+		return
+
+	config_legacy.allow_ai = !config_legacy.allow_ai
+	if (!config_legacy.allow_ai)
+		to_chat(world, SPAN_BOLD("The AI job is no longer chooseable."), confidential = TRUE)
 	else
-		to_chat(world, "<B>The AI job is chooseable now.</B>")
+		to_chat(world, SPAN_BOLD("The AI job is chooseable now."), confidential = TRUE)
 	log_admin("[key_name(usr)] toggled AI allowed.")
 	world.update_status()
 	feedback_add_details("admin_verb","TAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/toggleaban()
 	set category = "Server"
-	set desc = "Respawn basically"
 	set name = "Toggle Respawn"
-	config_legacy.abandon_allowed = !(config_legacy.abandon_allowed)
+	set desc = "Toggle the ability to respawn."
+
+	if(!check_rights(R_SERVER))
+		return
+
+	config_legacy.abandon_allowed = !config_legacy.abandon_allowed
 	if(config_legacy.abandon_allowed)
 		to_chat(world, "<B>Returning to menu as a ghost is now allowed.</B>")
 	else
@@ -946,50 +792,37 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 /datum/admins/proc/delay_start()
 	set category = "Server"
-	set desc = "Delay the game start"
-	set name = "Delay pre-game"
+	set name = "Delay Pre-Game"
+	set desc = "Delay the game start."
 
-	var/newtime = input("Set a new time in seconds. Set -1 for indefinite delay.","Set Delay",round(SSticker.GetTimeLeft()/10)) as num|null
+	if(!check_rights(R_SERVER))
+		return
+
+	var/newtime = input(usr, "Set a new time in seconds. Set -1 for indefinite delay.", "Set Delay", round(SSticker.GetTimeLeft()/10)) as num|null
+	if(!newtime)
+		return
 	if(SSticker.current_state > GAME_STATE_PREGAME)
-		return alert("Too late... The game has already started!")
-	if(newtime)
-		newtime = newtime*10
-		SSticker.SetTimeLeft(newtime)
-		if(newtime < 0)
-			to_chat(world, "<b>The game start has been delayed.</b>")
-			log_admin("[key_name(usr)] delayed the round start.")
-		else
-			to_chat(world, "<b>The game will start in [DisplayTimeText(newtime)].</b>")
-			SEND_SOUND(world, sound('sound/announcer/classic/attention.ogg'))
-			log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
-//		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay Game Start") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		return tgui_alert(usr, "Too late... The game has already started!")
 
-/datum/admins/proc/adjump()
-	set category = "Server"
-	set desc="Toggle admin jumping"
-	set name="Toggle Jump"
-	config_legacy.allow_admin_jump = !(config_legacy.allow_admin_jump)
-	message_admins("<font color=#4F49AF>Toggled admin jumping to [config_legacy.allow_admin_jump].</font>")
-	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	newtime = newtime*10
+	SSticker.SetTimeLeft(newtime)
+	SSticker.start_immediately = FALSE
 
-/datum/admins/proc/adspawn()
-	set category = "Server"
-	set desc="Toggle admin spawning"
-	set name="Toggle Spawn"
-	config_legacy.allow_admin_spawning = !(config_legacy.allow_admin_spawning)
-	message_admins("<font color=#4F49AF>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
-	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	if(newtime < 0)
+		to_chat(world, SPAN_INFOPLAIN("<b>The game start has been delayed.</b>"), confidential = TRUE)
+		log_admin("[key_name(usr)] delayed the round start.")
+	else
+		to_chat(world, SPAN_INFOPLAIN(SPAN_BOLD("The game will start in [DisplayTimeText(newtime)].")), confidential = TRUE)
+		SEND_SOUND(world, sound('sound/announcer/classic/attention.ogg'))
+		log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
 
 /datum/admins/proc/unprison(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Unprison"
 	if (M.z == 2)
-		if (config_legacy.allow_admin_jump)
-			M.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
-			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
-			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
-		else
-			alert("Admin jumping disabled")
+		M.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
+		message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
+		log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 	else
 		alert("[M.name] is not prisoned.")
 	feedback_add_details("admin_verb","UP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -1533,8 +1366,10 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		dead.alpha = initial(dead.alpha)
 		if(dead.original_name)
 			dead.name = dead.original_name
+		dead.mouse_opacity = initial(dead.mouse_opacity)
 	else
 		dead.invisibility = INVISIBILITY_MAXIMUM
 		dead.alpha = 0
 		dead.original_name = dead.name
 		dead.name = "ghost"
+		dead.mouse_opacity = MOUSE_OPACITY_TRANSPARENT

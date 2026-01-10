@@ -1,8 +1,10 @@
 
 /datum/admins/proc/player_panel()//The new one
-	if (!usr.client.holder)
+	if(!check_rights())
 		return
-	var/dat = "<html><head><title>Admin Player Panel</title></head>"
+	log_admin("[key_name(usr)] checked the player panel.")
+
+	var/dat = "<html><head><meta http-equiv='X-UA-Compatible' content='IE=edge' charset='UTF-8'/><title>Player Panel</title></head>"
 
 	//javascript, the part that does most of the work~
 	dat += {"
@@ -13,8 +15,6 @@
 				var locked_tabs = new Array();
 
 				function updateSearch(){
-
-
 					var filter_text = document.getElementById('filter');
 					var filter = filter_text.value.toLowerCase();
 
@@ -38,15 +38,11 @@
 								}
 								var ltd = tr.getElementsByTagName("td");
 								var td = ltd\[0\];
-								var lsearch = td.getElementsByTagName("b");
+								var lsearch = td.getElementsByClassName("filter_data");
 								var search = lsearch\[0\];
-								//var inner_span = li.getElementsByTagName("span")\[1\] //Should only ever contain one element.
-								//document.write("<p>"+search.innerText+"<br>"+filter+"<br>"+search.innerText.indexOf(filter))
 								if ( search.innerText.toLowerCase().indexOf(filter) == -1 )
 								{
-									//document.write("a");
-									//ltr.removeChild(tr);
-									td.innerHTML = "";
+									tr.innerHTML = "";
 									i--;
 								}
 							}catch(err) {   }
@@ -58,35 +54,41 @@
 					var debug = document.getElementById("debug");
 
 					locked_tabs = new Array();
-
 				}
 
-				function expand(id,job,name,real_name,image,key,ip,antagonist,ref){
+				function expand(data_id,target_id){
+					job = document.getElementById(data_id+"_job").textContent
+					name = document.getElementById(data_id+"_name").textContent
+					real_name = document.getElementById(data_id+"_rname").textContent
+					key = document.getElementById(data_id+"_key").textContent
+					ip = document.getElementById(data_id+"_lastip").textContent
+					antagonist = document.getElementById(data_id+"_isantag").textContent
+					ref = document.getElementById(data_id+"_ref").textContent
 
 					clearAll();
 
-					var span = document.getElementById(id);
+					var span = document.getElementById(target_id);
+					var ckey = key.toLowerCase().replace(/\[^a-z@0-9\]+/g,"");
 
 					body = "<table><tr><td>";
 
 					body += "</td><td align='center'>";
 
-					body += "<font size='2'><b>"+job+" "+name+"</b><br><b>Real name "+real_name+"</b><br><b>Played by "+key+" ("+ip+")</b></font>"
+					body += "<font size='2'><b>"+job+" "+name+"</b><br><b>Real name "+real_name+"</b><br><b>Played by "+key+" ("+ip+")</b></font>";
 
 					body += "</td><td align='center'>";
 
-					body += "<a href='?src=\ref[src];adminplayeropts="+ref+"'>PP</a> - "
-					body += "<a href='?src=\ref[src];notes=show;mob="+ref+"'>N</a> - "
-					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "
-					body += "<a href='?src=\ref[src];traitor="+ref+"'>TP</a> - "
-					body += "<a href='?src=\ref[usr];priv_msg=\ref"+ref+"'>PM</a> - "
-					body += "<a href='?src=\ref[src];subtlemessage="+ref+"'>SM</a> - "
-					body += "<a href='?src=\ref[src];adminplayerobservefollow="+ref+"'>FLW</a><br>"
+					body += "<a href='byond://?_src_=holder;[HrefToken()];adminplayeropts="+ref+"'>PP</a> - "
+					body += "<a href='byond://?_src_=holder;[HrefToken()];notes=show;mob="+ref+"'>N</a> - "
+					body += "<a href='byond://?_src_=vars;[HrefToken()];Vars="+ref+"'>VV</a> - "
+					body += "<a href='byond://?_src_=holder;[HrefToken()];traitor="+ref+"'>TP</a> - "
+					body += "<a href='byond://?priv_msg="+ckey+"'>PM</a> - "
+					body += "<a href='byond://?_src_=holder;[HrefToken()];subtlemessage="+ref+"'>SM</a> - "
+					body += "<a href='byond://?_src_=holder;[HrefToken()];adminplayerobservefollow="+ref+"'>FLW</a><br>"
 					if(antagonist > 0)
-						body += "<font size='2'><a href='?src=\ref[src];check_antagonist=1'><font color='red'><b>Antagonist</b></font></a></font>";
+						body += "<font size='2'><a href='byond://?_src_=holder;[HrefToken()];check_antagonist=1'><font color='red'><b>Antagonist</b></font></a></font>";
 
 					body += "</td></tr></table>";
-
 
 					span.innerHTML = body
 				}
@@ -98,13 +100,13 @@
 
 						var id = span.getAttribute("id");
 
-						if(!(id.indexOf("item")==0))
+						if(!id || !(id.indexOf("item") == 0))
 							continue;
 
 						var pass = 1;
 
 						for(var j = 0; j < locked_tabs.length; j++){
-							if(locked_tabs\[j\]==id){
+							if(locked_tabs\[j\] == id){
 								pass = 0;
 								break;
 							}
@@ -112,9 +114,6 @@
 
 						if(pass != 1)
 							continue;
-
-
-
 
 						span.innerHTML = "";
 					}
@@ -133,7 +132,7 @@
 
 					var pass = 1;
 					for(var j = 0; j < locked_tabs.length; j++){
-						if(locked_tabs\[j\]==id){
+						if(locked_tabs\[j\] == id){
 							pass = 0;
 							break;
 						}
@@ -143,9 +142,6 @@
 					locked_tabs.push(id);
 					var notice_span = document.getElementById(notice_span_id);
 					notice_span.innerHTML = "<font color='red'>Locked</font> ";
-					//link.setAttribute("onClick","attempt('"+id+"','"+link_id+"','"+notice_span_id+"');");
-					//document.write("removeFromLocked('"+id+"','"+link_id+"','"+notice_span_id+"')");
-					//document.write("aa - "+link.getAttribute("onClick"));
 				}
 
 				function attempt(ab){
@@ -157,7 +153,7 @@
 					var index = 0;
 					var pass = 0;
 					for(var j = 0; j < locked_tabs.length; j++){
-						if(locked_tabs\[j\]==id){
+						if(locked_tabs\[j\] == id){
 							pass = 1;
 							index = j;
 							break;
@@ -168,8 +164,6 @@
 					locked_tabs\[index\] = "";
 					var notice_span = document.getElementById(notice_span_id);
 					notice_span.innerHTML = "";
-					//var link = document.getElementById(link_id);
-					//link.setAttribute("onClick","addToLocked('"+id+"','"+link_id+"','"+notice_span_id+"')");
 				}
 
 				function selectTextField(){
@@ -180,7 +174,6 @@
 
 			</script>
 		</head>
-
 
 	"}
 
@@ -194,7 +187,7 @@
 			<tr id='title_tr'>
 				<td align='center'>
 					<font size='5'><b>Player panel</b></font><br>
-					Hover over a line to see more information - <a href='?src=\ref[src];check_antagonist=1'>Check antagonists</a>
+					Hover over a line to see more information - <a href='byond://?_src_=holder;[HrefToken()];check_antagonist=1'>Check antagonists</a>
 					<p>
 				</td>
 			</tr>
@@ -227,10 +220,8 @@
 			if(isliving(M))
 
 				if(iscarbon(M)) //Carbon stuff
-					if(ishuman(M))
+					if(ishuman(M) && M.job)
 						M_job = M.job
-					else if(isslime(M))
-						M_job = "slime"
 					else if(issmall(M))
 						M_job = "Monkey" //???
 					else if(isalien(M))
@@ -251,35 +242,31 @@
 				else if(isanimal_legacy_this_is_broken(M)) //simple animals
 					if(iscorgi(M))
 						M_job = "Corgi"
+					else if(isslime(M))
+						M_job = "slime"
 					else
 						M_job = "Animal"
 
 				else
 					M_job = "Living"
 
-			else if(istype(M,/mob/new_player))
+			else if(isnewplayer(M))
 				M_job = "New player"
 
 			else if(isobserver(M))
-				M_job = "Ghost"
+				var/mob/observer/dead/O = M
+				if(O.started_as_observer)//Did they get BTFO or are they just not trying?
+					M_job = "Observer"
+				else
+					M_job = "Ghost"
 
-			M_job = replacetext(M_job, "'", "")
-			M_job = replacetext(M_job, "\"", "")
-			M_job = replacetext(M_job, "\\", "")
-
-			var/M_name = M.name
-			M_name = replacetext(M_name, "'", "")
-			M_name = replacetext(M_name, "\"", "")
-			M_name = replacetext(M_name, "\\", "")
-			var/M_rname = M.real_name
-			M_rname = replacetext(M_rname, "'", "")
-			M_rname = replacetext(M_rname, "\"", "")
-			M_rname = replacetext(M_rname, "\\", "")
-
-			var/M_key = M.key
-			M_key = replacetext(M_key, "'", "")
-			M_key = replacetext(M_key, "\"", "")
-			M_key = replacetext(M_key, "\\", "")
+			var/M_key = html_encode(M.key)
+			var/M_ip_address = isnull(M.lastKnownIP) ? "+localhost+" : M.lastKnownIP
+			var/M_name = html_encode(M.name)
+			var/M_rname = html_encode(M.real_name)
+			var/M_rname_as_key = html_encode(ckey(M.real_name)) // so you can ignore punctuation
+			if(M_rname == M_rname_as_key)
+				M_rname_as_key = null
 
 			//output for each mob
 			dat += {"
@@ -288,9 +275,18 @@
 					<td align='center' bgcolor='[color]'>
 						<span id='notice_span[i]'></span>
 						<a id='link[i]'
-						onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]",[is_antagonist],"\ref[M]")'
+						onmouseover='expand("data[i]","item[i]")'
 						>
-						<span id='search[i]'><b>[M_name] - [M_rname] - [M_key] ([M_job])</b></span>
+						<b id='search[i]'>[M_name] - [M_rname] - [M_key] ([M_job])</b>
+						<span hidden class='filter_data'>[M_name] [M_rname] [M_rname_as_key] [M_key] [M_job]</span>
+						<span hidden id="data[i]_name">[M_name]</span>
+						<span hidden id="data[i]_job">[M_job]</span>
+						<span hidden id="data[i]_rname">[M_rname]</span>
+						<span hidden id="data[i]_rname_as_key">[M_rname_as_key]</span>
+						<span hidden id="data[i]_key">[M_key]</span>
+						<span hidden id="data[i]_lastip">[M_ip_address]</span>
+						<span hidden id="data[i]_isantag">[is_antagonist]</span>
+						<span hidden id="data[i]_ref">[REF(M)]</span>
 						</a>
 						<br><span id='item[i]'></span>
 					</td>
@@ -314,73 +310,6 @@
 	"}
 
 	usr << browse(dat, "window=players;size=600x480")
-
-//The old one
-/datum/admins/proc/player_panel_old()
-	if (!usr.client.holder)
-		return
-
-	var/dat = "<html><head><title>Player Menu</title></head>"
-	dat += "<body><table border=1 cellspacing=5><B><tr><th>Name</th><th>Real Name</th><th>Assigned Job</th><th>Key</th><th>Options</th><th>PM</th><th>Traitor?</th></tr></B>"
-	//add <th>IP:</th> to this if wanting to add back in IP checking
-	//add <td>(IP: [M.lastKnownIP])</td> if you want to know their ip to the lists below
-	var/list/mobs = sortmobs()
-
-	for(var/mob/M in mobs)
-		if(!M.ckey) continue
-
-		dat += "<tr><td>[M.name]</td>"
-		if(isAI(M))
-			dat += "<td>AI</td>"
-		else if(isrobot(M))
-			dat += "<td>Cyborg</td>"
-		else if(ishuman(M))
-			dat += "<td>[M.real_name]</td>"
-		else if(istype(M, /mob/living/silicon/pai))
-			dat += "<td>pAI</td>"
-		else if(istype(M, /mob/new_player))
-			dat += "<td>New Player</td>"
-		else if(isobserver(M))
-			dat += "<td>Ghost</td>"
-		else if(issmall(M))
-			dat += "<td>Monkey</td>"
-		else if(isalien(M))
-			dat += "<td>Alien</td>"
-		else
-			dat += "<td>Unknown</td>"
-
-
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(H.mind && H.mind.assigned_role)
-				dat += "<td>[H.mind.assigned_role]</td>"
-		else
-			dat += "<td>NA</td>"
-
-
-		dat += {"<td>[M.key ? (M.client ? M.key : "[M.key] (DC)") : "No key"]</td>
-		<td align=center><A HREF='?src=\ref[src];adminplayeropts=\ref[M]'>X</A></td>
-		<td align=center><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td>
-		"}
-
-		if(usr.client)
-			switch(is_special_character(M))
-				if(0)
-					dat += {"<td align=center><A HREF='?src=\ref[src];traitor=\ref[M]'>Traitor?</A></td>"}
-				if(1)
-					dat += {"<td align=center><A HREF='?src=\ref[src];traitor=\ref[M]'><font color=red>Traitor?</font></A></td>"}
-				if(2)
-					dat += {"<td align=center><A HREF='?src=\ref[src];traitor=\ref[M]'><font color=red><b>Traitor?</b></font></A></td>"}
-		else
-			dat += {"<td align=center> N/A </td>"}
-
-
-
-	dat += "</table></body></html>"
-
-	usr << browse(dat, "window=players;size=640x480")
-
-
 
 /datum/admins/proc/check_antagonists()
 	if (SSticker && SSticker.current_state >= GAME_STATE_PLAYING)

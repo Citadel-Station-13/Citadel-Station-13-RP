@@ -3,15 +3,19 @@
 /proc/_abs(A)
 	return abs(A)
 
-/proc/_animate(atom/A, set_vars, time = 10, loop = 1, easing = LINEAR_EASING, flags = null)
+/proc/_animate(atom/target, set_vars, time = 10, loop = 1, easing = LINEAR_EASING, flags = null)
 	var/mutable_appearance/MA = new()
 	// mutable appearance is not FLOAT_PLANE by default
 	MA.plane = FLOAT_PLANE
 	for(var/v in set_vars)
 		MA.vars[v] = set_vars[v]
-	animate(A, appearance = MA, time, loop, easing, flags)
 
-/proc/_acrccos(A)
+	if(target)
+		animate(target, appearance = MA, time, loop, easing, flags)
+	else
+		animate(appearance = MA, time, easing = easing, flags)
+
+/proc/_arccos(A)
 	return arccos(A)
 
 /proc/_arcsin(A)
@@ -35,6 +39,15 @@
 /proc/_cos(X)
 	return cos(X)
 
+/proc/_findtext(Haystack, Needle, Start = 1, End = 0)
+	return findtext(Haystack, Needle, Start, End)
+
+/proc/_findtextEx(Haystack, Needle, Start = 1, End = 0)
+	return findtextEx(Haystack, Needle, Start, End)
+
+/proc/_flick(Icon, Object)
+	flick(Icon, Object)
+
 /proc/_get_dir(Loc1, Loc2)
 	return get_dir(Loc1, Loc2)
 
@@ -43,6 +56,9 @@
 
 /proc/_get_step(Ref, Dir)
 	return get_step(Ref, Dir)
+
+/proc/_hascall(object, procname)
+	return hascall(object, procname)
 
 /proc/_hearers(Depth = world.view, Center = usr)
 	return hearers(Depth, Center)
@@ -54,6 +70,8 @@
 	return istype(object, type)
 
 /proc/_ispath(path, type)
+	if(isnull(type))
+		return ispath(path)
 	return ispath(path, type)
 
 /proc/_json_encode(list/L)
@@ -70,15 +88,21 @@
 
 /proc/_locate(X, Y, Z)
 	if (isnull(Y)) // Assuming that it's only a single-argument call.
-		return locate(X)
+		// direct ref locate
+		var/datum/D = locate(X)
+		// &&'s to last value
+		return istype(D) && D.can_vv_mark() && D
 
 	return locate(X, Y, Z)
 
 /proc/_log(X, Y)
 	return log(X, Y)
 
-/proc/_lowertext(T)
-	return lowertext(T)
+/proc/_uppertext(T)
+	return uppertext(T)
+
+/proc/_LOWER_TEXT(T)
+	return LOWER_TEXT(T)
 
 /proc/_matrix(a, b, c, d, e, f)
 	return matrix(a, b, c, d, e, f)
@@ -93,10 +117,22 @@
 	return min(arglist(args))
 
 /proc/_new(type, arguments)
-	return new type (arglist(arguments))
+	var/datum/result
+
+	if(!length(arguments))
+		result = new type()
+	else
+		result = new type(arglist(arguments))
+
+	if(istype(result))
+		result.datum_flags |= DF_VAR_EDITED
+	return result
 
 /proc/_num2text(N, SigFig = 6)
 	return num2text(N, SigFig)
+
+/proc/_text2num(T)
+	return text2num(T)
 
 /proc/_ohearers(Dist, Center = usr)
 	return ohearers(Dist, Center)
@@ -119,8 +155,15 @@
 /proc/_pick(...)
 	return pick(arglist(args))
 
-/proc/_picklist(list/L)
-	return SAFEPICK(L)
+/// Allow me to explain
+/// for some reason, if pick() is passed arglist(args) directly and args contains only one list
+/// it considers it to be a list of lists
+/// this means something like _pick(list) would fail
+/// need to do this instead
+///
+/// I hate this timeline
+/proc/_pick_list(list/pick_from)
+	return pick(pick_from)
 
 /proc/_prob(P)
 	return prob(P)
@@ -130,6 +173,9 @@
 
 /proc/_range(Dist, Center = usr)
 	return range(Dist, Center)
+
+/proc/_rect_turfs(H_Radius = 0, V_Radius = 0, atom/Center)
+	return RECT_TURFS(H_Radius, V_Radius, Center)
 
 /proc/_regex(pattern, flags)
 	return regex(pattern, flags)
@@ -154,6 +200,9 @@
 
 /proc/_roll(dice)
 	return roll(dice)
+
+/proc/_round(A, B = 1)
+	return round(A, B)
 
 /proc/_sin(X)
 	return sin(X)
@@ -197,14 +246,14 @@
 /proc/_list_set(list/L, key, value)
 	L[key] = value
 
+/proc/_list_get(list/L, key)
+	return L[key]
+
 /proc/_list_numerical_add(L, key, num)
 	L[key] += num
 
 /proc/_list_swap(list/L, Index1, Index2)
 	L.Swap(Index1, Index2)
-
-/proc/_list_get(list/L, index)
-	return L[index]
 
 /proc/_walk(ref, dir, lag)
 	walk(ref, dir, lag)
@@ -236,21 +285,14 @@
 /proc/_step_away(ref, trg, max)
 	step_away(ref, trg, max)
 
-/proc/_has_trait(datum/thing,trait)
-	return HAS_TRAIT(thing,trait)
-
 /// Locating turfs
 /proc/_turf_in_offset(s = usr, x = 0, y = 0, z = 0)
 	var/turf/T = get_turf(s)
 	return locate(clamp(T.x + x, 1, world.maxx), clamp(T.y + y, 1, world.maxy), clamp(T.z + z, 1, world.maxz))
 
-/proc/_add_trait(datum/thing,trait,source)
-	ADD_TRAIT(thing,trait,source)
 /proc/_random_turf_in_range(s = usr, r = 7)
 	return _turf_in_offset(s, rand(-r, r), rand(-r, r))
 
-/proc/_remove_trait(datum/thing,trait,source)
-	REMOVE_TRAIT(thing,trait,source)
 /proc/_random_turf_in_view(s = usr, r = 7)
 	var/list/v = view(s, r)
 	. = list()
@@ -258,17 +300,64 @@
 		. += T
 	return pick(.)
 
+/proc/_has_trait(datum/thing, trait)
+	return HAS_TRAIT(thing, trait)
+
+/proc/_add_trait(datum/thing, trait, source)
+	ADD_TRAIT(thing, trait, source)
+
+/proc/_remove_trait(datum/thing, trait, source)
+	REMOVE_TRAIT(thing, trait, source)
+
+/proc/_winset(player, control_id, params)
+	winset(player, control_id, params)
+
+/proc/_winget(player, control_id, params)
+	return winget(player, control_id, params)
+
+/proc/_text2path(text)
+	return text2path(text)
+
+/proc/_turn(dir, angle)
+	return turn(dir, angle)
+
+/proc/_view(Dist, Center = usr)
+	return view(Dist, Center)
+
+/proc/_viewers(Dist, Center = usr)
+	return viewers(Dist, Center)
+
 /proc/_filter(...)
 	return filter(arglist(args))
 
-/proc/_generator(...)
-	return generator(arglist(args))
+/proc/_generator(type = "num", A = 0, B = 1, rand = UNIFORM_RAND)
+	return generator(type, A, B, rand)
 
-/proc/_url_encode(str)
-	return url_encode(str)
+/proc/_is_type_in_typecache(thing_to_check, typecache)
+	return is_type_in_typecache(thing_to_check, typecache)
 
-/proc/_url_decode(str)
-	return url_encode(str)
+/proc/_floor(a)
+	return floor(a)
+
+/proc/_ceil(a)
+	return ceil(a)
+
+/proc/_typesof(a, subtypes_only = FALSE)
+	. = typesof(a)
+	if(subtypes_only)
+		. -= a
+
+/proc/_html_encode(text)
+	return html_encode(text)
+
+/proc/_html_decode(text)
+	return html_decode(text)
+
+/proc/_url_encode(text)
+	return url_encode(text)
+
+/proc/_url_decode(text)
+	return url_decode(text)
 
 /proc/__nan()
 	var/list/L = json_decode("{\"value\":NaN}")
@@ -279,9 +368,3 @@
  */
 /atom/proc/_contents()
 	return contents.Copy()
-
-/proc/_typesof(what)
-	return typesof(what)
-
-/proc/_subtypesof(what)
-	return subtypesof(what)

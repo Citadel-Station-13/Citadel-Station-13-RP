@@ -1,4 +1,4 @@
-/client/proc/spawn_atom(query as text)
+/client/proc/spawn_atom(object as text|null)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
@@ -6,7 +6,7 @@
 	if(!check_rights(R_SPAWN))
 		return
 
-	if(length(query) < 5)
+	if(length(object) < 5)
 		var/confirm = alert(
 			src,
 			"You haven't specified a long enough filter; this will take a while. Are you sure?",
@@ -17,34 +17,28 @@
 		if(confirm != "Yes")
 			return
 
-	var/list/matches = list()
-	for(var/path in typesof(/atom))
-		if(findtext("[path]", query))
-			matches += path
-		CHECK_TICK
+	var/static/list/atom_types
+	if (isnull(atom_types))
+		atom_types = subtypesof(/atom)
 
-	if(!length(matches))
-		to_chat(src, SPAN_WARNING("Type query for '[query]' returned nothing."))
-		return
+	var/chosen_path = null
+	var/list/preparsed = null
+	if (object)
+		preparsed = splittext(object, ":")
+		var/list/matches = filter_fancy_list(atom_types, preparsed[1])
+		if (length(matches) == 1)
+			chosen_path = matches[1]
 
-	// todo: special prefix handling like # / ! / similar for fast-pathing?
-	var/path_to_spawn
-	if(length(matches) == 1)
-		path_to_spawn = matches[1]
+	var/amount = 1
+	if (length(preparsed) > 1)
+		amount = clamp(text2num(preparsed[2]), 1, ADMIN_SPAWN_CAP)
+
+	var/turf/target_turf = get_turf(mob)
+	if (ispath(chosen_path, /turf))
+		target_turf.ChangeTurf(chosen_path)
 	else
-		var/list/processed_types = make_types_fancy(matches)
-		var/picked_name = input("Select an atom type", "Spawn Atom", matches[1]) as null|anything in processed_types
-		if(!picked_name)
-			return
-		path_to_spawn = processed_types[picked_name]
+		for (var/i in 1 to amount)
+			new chosen_path(target_turf)
 
-	if(!path_to_spawn)
-		return
-
-	if(ispath(path_to_spawn, /turf))
-		var/turf/T = get_turf(mob)
-		T.ChangeTurf(path_to_spawn)
-	else
-		new path_to_spawn(mob.loc)
-
-	log_and_message_admins("spawned [path_to_spawn] at ([usr.x],[usr.y],[usr.z])")
+	log_admin("[key_name(mob)] spawned [amount] x [chosen_path] at [AREACOORD(mob)]")
+	return TRUE

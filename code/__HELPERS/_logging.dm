@@ -295,10 +295,8 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	rustg_log_close_all()
 	global.event_logger.shutdown_logger()
 
-/**
- * Helper procs for building detailed log lines
- */
-/proc/key_name(whom, include_link = null, include_name = TRUE, highlight_special_characters = TRUE)
+/* Helper procs for building detailed log lines */
+/proc/key_name(whom, include_link = null, include_name = TRUE)
 	var/mob/M
 	var/client/C
 	var/key
@@ -325,7 +323,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			M = C.mob
 	else if(istype(whom, /datum/mind))
 		var/datum/mind/mind = whom
-		ckey = mind.ckey
+		ckey = ckey(mind.ckey)
 		if(mind.current)
 			M = mind.current
 			if(M.client)
@@ -338,7 +336,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		if(istype(whom, /atom))
 			var/atom/A = whom
 			swhom = "[A.name]"
-		else if(istype(whom, /datum))
+		else if(isdatum(whom))
 			swhom = "[whom]"
 
 		if(!swhom)
@@ -354,11 +352,11 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if(key)
 		if(C?.is_under_stealthmin() && !include_name)
 			if(include_link)
-				. += "<a href='?priv_msg=[REF(C)]'>"
+				. += "<a href='byond://?priv_msg=[C.getStealthKey()]'>"
 			. += "Administrator"
 		else
 			if(include_link)
-				. += "<a href='?priv_msg=[REF(ckey)]'>"
+				. += "<a href='byond://?priv_msg=[ckey]'>"
 			. += key
 		if(!C)
 			. += "\[DC\]"
@@ -369,19 +367,13 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		. += "*no key*"
 
 	if(include_name)
-		var/name = "*invalid*"
 		if(M)
 			if(M.real_name)
-				name = M.real_name
+				. += "/([M.real_name])"
 			else if(M.name)
-				name = M.name
+				. += "/([M.name])"
 		else if(fallback_name)
-			name = fallback_name
-
-		if(include_link && is_special_character(M) && highlight_special_characters)
-			name = "<font color='#FFA500'>[name]</font>" //Orange
-
-		. += "/([name])"
+			. += "/([fallback_name])"
 
 	return .
 

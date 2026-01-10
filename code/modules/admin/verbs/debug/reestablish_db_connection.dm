@@ -1,33 +1,38 @@
 /client/proc/reestablish_db_connection()
 	set category = "Special Verbs"
-	set name = "Reestablish DB Connection"
+	set name = "Attempts to (re)establish the DB Connection"
+
+	if(!check_rights(R_NONE))
+		return
+
 	if (!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
+		to_chat(usr, SPAN_ADMINNOTICE("The Database is not enabled!"), confidential = TRUE)
 		return
 
 	if (SSdbcore.IsConnected())
-		if (!check_rights(R_DEBUG,0))
-			alert("The database is already connected! (Only those with +debug can force a reconnection)", "The database is already connected!")
+		if (!holder.check_for_rights(R_DEBUG))
+			tgui_alert(usr,"The database is already connected! (Only those with +debug can force a reconnection)", "The database is already connected!")
 			return
 
-		var/reconnect = alert("The database is already connected! If you *KNOW* that this is incorrect, you can force a reconnection", "The database is already connected!", "Force Reconnect", "Cancel")
+		var/reconnect = tgui_alert(usr,"The database is already connected! If you *KNOW* that this is incorrect, you can force a reconnection", "The database is already connected!", list("Force Reconnect", "Cancel"))
 		if (reconnect != "Force Reconnect")
 			return
 
 		SSdbcore.Disconnect()
 		log_admin("[key_name(usr)] has forced the database to disconnect")
 		message_admins("[key_name_admin(usr)] has <b>forced</b> the database to disconnect!")
-		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Force Reestablished Database Connection") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		// BLACKBOX_LOG_ADMIN_VERB("Force Reestablished Database Connection")
 
-	log_admin("[key_name(usr)] is attempting to re-established the DB Connection")
-	message_admins("[key_name_admin(usr)] is attempting to re-established the DB Connection")
-	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Reestablished Database Connection") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(usr)] is attempting to re-establish the DB Connection")
+	message_admins("[key_name_admin(usr)] is attempting to re-establish the DB Connection")
+	// BLACKBOX_LOG_ADMIN_VERB("Reestablished Database Connection")
 
 	SSdbcore.failed_connections = 0
 	if(!SSdbcore.Connect())
 		message_admins("Database connection failed: " + SSdbcore.ErrorMsg())
 	else
 		message_admins("Database connection re-established")
+
 		message_admins("Reloading client database data...")
 		for(var/client/C in GLOB.clients)
 			C.player?.load()
