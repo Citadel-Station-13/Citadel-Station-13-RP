@@ -14,9 +14,6 @@
 	/// The image we use for our client to let them see where we are.
 	var/image/cloaked_selfimage
 
-	/// Reference to atom being orbited.
-	var/atom/orbit_target
-
 	/// The orbiter component of the thing we're orbiting.
 	var/datum/component/orbiter/orbiting
 	///Used for the calculate_adjacencies proc for icon smoothing.
@@ -229,6 +226,10 @@
 
 	if(ai_holder)
 		QDEL_NULL(ai_holder)
+
+	if(orbiting)
+		orbiting.end_orbit(src)
+		orbiting = null
 
 	. = ..()
 
