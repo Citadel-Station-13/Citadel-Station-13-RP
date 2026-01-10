@@ -10,13 +10,12 @@
 
 /obj/item/robot_upgrade/bluespaceorebag/on_install(mob/living/silicon/robot/target)
 	. = ..()
-	var/obj/item/storage/bag/ore/our_bag = locate() in provisioning.items
-	if(!our_bag)
-		return
+	var/obj/item/storage/bag/ore/our_bag = locate() in provisioning?.items
 	var/list/obj/item/suppressed = target.module_provisioning.suppress_all_types_of(/obj/item/storage/bag/ore)
-	for(var/obj/item/storage/transferring in suppressed)
-		for(var/obj/item/stack/ore/ore in transferring.contents)
-			ore.forceMove(our_bag)
+	if(our_bag)
+		for(var/obj/item/storage/transferring in suppressed)
+			for(var/obj/item/stack/ore/ore in transferring.contents)
+				ore.forceMove(our_bag)
 
 /obj/item/robot_upgrade/bluespaceorebag/on_uninstall(mob/living/silicon/robot/target)
 	. = ..()

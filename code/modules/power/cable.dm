@@ -897,10 +897,12 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	. = ..()
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
 
+/obj/item/stack/cable_coil/random_belt
+	amount = /obj/item/stack/cable_coil::max_amount
+
 /obj/item/stack/cable_coil/random_belt/Initialize(mapload, new_amount, merge)
-	. = ..()
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
-	amount = 30
+	return ..()
 
 //Endless alien cable coil
 

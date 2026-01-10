@@ -91,8 +91,8 @@
 			R.adjustBruteLoss(-weld_rate)
 		if(wire_rate && R.getFireLoss() && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(wire_power_use * wire_rate, 1)))
 			R.adjustFireLoss(-wire_rate)
-		R.resources?.regen_provisioned(2 SECONDS)
-		R.module?.legacy_custom_regenerate_resources(R, 2 SECONDS, 1)
+		R.resources?.regen_provisioned(2)
+		R.module?.legacy_custom_regenerate_resources(R, 2, 1)
 
 	//Handles drone matrix upgrades
 	if(isDrone(occupant))

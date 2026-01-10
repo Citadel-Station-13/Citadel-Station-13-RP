@@ -134,6 +134,8 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
+	load_provisioning_if_needed()
+	provisioning?.apply(target)
 	grant_upgrade_actions(target)
 
 /**
@@ -146,6 +148,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	revoke_upgrade_actions(target)
+	provisioning?.remove(target)
 
 //* Actions *//
 

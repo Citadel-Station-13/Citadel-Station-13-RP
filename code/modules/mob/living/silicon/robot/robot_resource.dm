@@ -46,19 +46,19 @@
 
 /datum/robot_resource/provisioned/preset/material/steel
 	amount_max = 100 * SHEET_MATERIAL_AMOUNT
-	regen_per_second = 2.5 * SHEET_MATERIAL_AMOUNT
+	regen_per_second = 2 * SHEET_MATERIAL_AMOUNT
 
 /datum/robot_resource/provisioned/preset/material/glass
 	amount_max = 100 * SHEET_MATERIAL_AMOUNT
-	regen_per_second = 2.5 * SHEET_MATERIAL_AMOUNT
+	regen_per_second = 2 * SHEET_MATERIAL_AMOUNT
 
 /datum/robot_resource/provisioned/preset/material/wood
 	amount_max = 50 * SHEET_MATERIAL_AMOUNT
-	regen_per_second = 1 * SHEET_MATERIAL_AMOUNT
+	regen_per_second = 0.75 * SHEET_MATERIAL_AMOUNT
 
 /datum/robot_resource/provisioned/preset/material/plasteel
 	amount_max = 20 * SHEET_MATERIAL_AMOUNT
-	regen_per_second = 0.5 * SHEET_MATERIAL_AMOUNT
+	regen_per_second = 0.4 * SHEET_MATERIAL_AMOUNT
 
 /datum/robot_resource/provisioned/preset/material/plastic
 	amount_max = 20 * SHEET_MATERIAL_AMOUNT
@@ -69,32 +69,32 @@
 /datum/robot_resource/provisioned/preset/splints
 	name = "splint magazine"
 	amount_max = 30
-	regen_per_second = 2
+	regen_per_second = 1
 
 /datum/robot_resource/provisioned/preset/bandages
 	name = "bandage roller"
 	amount_max = 100
-	regen_per_second = 5
+	regen_per_second = 2.5
 
 /datum/robot_resource/provisioned/preset/bandages/advanced
 	name = "dermal nanowrap roller"
 	amount_max = 100
-	regen_per_second = 5
+	regen_per_second = 2.5
 
 /datum/robot_resource/provisioned/preset/ointment
 	name = "ointment tank"
 	amount_max = 100
-	regen_per_second = 5
+	regen_per_second = 2.5
 
 /datum/robot_resource/provisioned/preset/ointment/advanced
 	name = "advanced ointment tank"
 	amount_max = 100
-	regen_per_second = 5
+	regen_per_second = 2.5
 
 /datum/robot_resource/provisioned/preset/nanopaste
 	name = "synthetic polyfill nanites"
 	amount_max = 50
-	regen_per_second = 5
+	regen_per_second = 2.5
 
 //* presets - reagents *//
 

@@ -135,6 +135,7 @@
 	if(no_variants)
 		icon_state = initial(icon_state)
 	else
+		var/amount = get_amount()
 		if(amount <= (max_amount * (1/3)))
 			icon_state = initial(icon_state)
 		else if (amount <= (max_amount * (2/3)))

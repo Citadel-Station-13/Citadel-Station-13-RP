@@ -104,3 +104,4 @@
 	if(resource)
 		. = min(requested, resource.amount)
 		into_holder.add_reagent(/datum/reagent/water::id, .)
+		resource.amount -= .

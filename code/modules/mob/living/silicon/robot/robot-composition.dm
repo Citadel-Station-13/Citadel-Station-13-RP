@@ -159,6 +159,10 @@
 	module.provision_resource_store(resources)
 	resources.finish_provisioning()
 
+	// now regen to full
+	resources.regen_provisioned(INFINITY)
+	module.legacy_custom_regenerate_resources(src, INFINITY, 1)
+
 	//! -- LEGACY SCREEN / IDENTITY THINGY --
 	src.hands?.icon_state = module.module_hud_state
 	src.modtype = module.get_display_name()

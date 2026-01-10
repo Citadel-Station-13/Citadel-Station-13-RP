@@ -152,6 +152,7 @@
 			/obj/item/multitool, // todo: special robot multitool that can interface with machines?
 			/obj/item/gps/robot,
 			/obj/item/tool/crowbar/cyborg,
+			/obj/item/extinguisher/mini,
 		)
 	if(emag_out)
 		if(mounted_item_descriptor_inject_emag)

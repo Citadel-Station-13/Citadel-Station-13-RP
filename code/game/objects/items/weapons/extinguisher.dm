@@ -30,7 +30,7 @@
 
 /obj/item/extinguisher/examine(mob/user, dist)
 	. = ..()
-	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
+	. += "[icon2html(thing = src, target = user)] [src.name] contains [available_spray_volume()] units of fluid left!"
 
 /obj/item/extinguisher/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
