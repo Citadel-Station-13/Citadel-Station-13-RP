@@ -146,6 +146,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_sidearm/pistol
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 //* SMG *//
 
@@ -187,6 +188,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 		/datum/firemode/nt_expedition_light_smg/semi_auto,
 		/datum/firemode/nt_expedition_light_smg/two_burst,
 	)
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin

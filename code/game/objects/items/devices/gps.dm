@@ -28,6 +28,7 @@
 	materials_base = list(MAT_STEEL = 500)
 	worth_intrinsic = 40
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	/// our GPS tag
 	var/gps_tag = "GEN0"

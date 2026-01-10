@@ -9,6 +9,7 @@
 	desc = "A polaroid camera. 10 photos left."
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	materials_base = list(MAT_STEEL = 2000)

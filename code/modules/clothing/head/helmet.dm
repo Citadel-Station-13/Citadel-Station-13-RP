@@ -18,6 +18,7 @@
 	pickup_sound = 'sound/items/pickup/helm.ogg'
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_MEDIUM_HELMET
 	weight = ITEM_WEIGHT_ARMOR_MEDIUM_HELMET
+	suit_storage_class = SUIT_STORAGE_CLASS_ARMOR
 	material_factoring = 0.000075
 
 /obj/item/clothing/head/helmet/ntsec

@@ -28,6 +28,7 @@ var/list/marker_beacon_colors = list(
 	w_class = WEIGHT_CLASS_SMALL
 	skip_legacy_icon_update = TRUE
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	var/picked_color = "random"
 
 /obj/item/stack/marker_beacon/ten

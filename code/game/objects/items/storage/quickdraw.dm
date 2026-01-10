@@ -67,6 +67,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	max_single_weight_class = WEIGHT_CLASS_TINY
 	max_combined_volume = WEIGHT_CLASS_TINY * 6 //Capable of holding six syringes
+	belt_storage_class = BELT_CLASS_SMALL
 
 	//Can hold syringes and autoinjectors, but also pills if you really wanted. Syringe-shaped objects like pens and cigarettes also fit, but why would you do that?
 	insertion_whitelist = list(/obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray/autoinjector,
