@@ -36,7 +36,7 @@
 
 /datum/robot_iconset_variation/dead
 	id = "dead"
-	icon_state_append = "-wreck"
+	icon_state_append = "-dead"
 
 /datum/robot_iconset_variation/resting
 	id = "resting"

@@ -1,6 +1,5 @@
 /mob/living/silicon/robot/update_icon()
 	cut_overlays()
-
 	. = ..()
 
 	// resolve variation & set icon state
@@ -8,16 +7,18 @@
 	if(IS_DEAD(src))
 		var/datum/robot_iconset_variation/dead_variation = iconset?.variations?[/datum/robot_iconset_variation/dead::id]
 		if(dead_variation)
-			if(dead_variation.icon_state)
-				icon_state = dead_variation.icon_state
-			else
-				icon_state = "[base_icon_state][dead_variation.icon_state_append]"
 			active_variation = dead_variation
 	else if(resting)
 		if(picked_resting_variation)
 			active_variation = iconset?.variations?[picked_resting_variation]
 		if(!active_variation)
 			active_variation = iconset?.variations?[/datum/robot_iconset_variation/resting::id]
+
+	if(active_variation)
+		if(active_variation.icon_state)
+			icon_state = active_variation.icon_state
+		else
+			icon_state = "[base_icon_state][active_variation.icon_state_append]"
 	else
 		icon_state = base_icon_state
 

@@ -1159,3 +1159,9 @@
 		to_chat(src, SPAN_WARNING("You can't do that right now!"))
 		return FALSE
 	return ..()
+
+//* Mobility *//
+
+/mob/living/silicon/robot/set_resting(value)
+	. = ..()
+	update_icon()
