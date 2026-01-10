@@ -1,2 +1,5 @@
 #include "chemical_reaction.dm"
+#include "container_sanity.dm"
+#include "dropper.dm"
 #include "reagent.dm"
+#include "reagent_container_defaults.dm"

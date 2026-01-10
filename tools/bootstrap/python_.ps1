@@ -9,7 +9,6 @@
 # The underscore in the name is so that typing `bootstrap/python` into
 # PowerShell finds the `.bat` file first, which ensures this script executes
 # regardless of ExecutionPolicy.
-
 $host.ui.RawUI.WindowTitle = "starting :: python $args"
 $ErrorActionPreference = "Stop"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -47,7 +46,6 @@ if (!(Test-Path $PythonExe -PathType Leaf)) {
 		"https://www.python.org/ftp/python/$PythonVersion/python-$PythonVersion-embed-amd64.zip" `
 		-OutFile $Archive `
 		-ErrorAction Stop
-		-UseBasicParsing
 
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($Archive, $PythonDir)
 
@@ -70,7 +68,6 @@ if (!(Test-Path "$PythonDir/Scripts/pip.exe")) {
 	Invoke-WebRequest "https://bootstrap.pypa.io/get-pip.py" `
 		-OutFile "$Cache/get-pip.py" `
 		-ErrorAction Stop
-		-UseBasicParsing
 
 	& $PythonExe "$Cache/get-pip.py" --no-warn-script-location
 	if ($LASTEXITCODE -ne 0) {
@@ -98,9 +95,14 @@ if (!(Test-Path "$PythonDir/requirements.txt") -or ((Get-FileHash "$Tools/requir
 Write-Output $PythonExe | Out-File -Encoding utf8 $Log
 [System.String]::Join([System.Environment]::NewLine, $args) | Out-File -Encoding utf8 -Append $Log
 Write-Output "---" | Out-File -Encoding utf8 -Append $Log
-
 $host.ui.RawUI.WindowTitle = "python $args"
-
-& $PythonExe -u $args
-
+$ErrorActionPreference = "Continue"
+& $PythonExe -u $args 2>&1 | ForEach-Object {
+	$str = "$_"
+	if ($_.GetType() -eq [System.Management.Automation.ErrorRecord]) {
+		$str = $str.TrimEnd("`r`n")
+	}
+	$str | Out-File -Encoding utf8 -Append $Log
+	$str | Out-Host
+}
 exit $LastExitCode

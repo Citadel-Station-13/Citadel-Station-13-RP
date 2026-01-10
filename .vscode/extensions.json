@@ -1,13 +1,13 @@
 {
 	"recommendations": [
 		"platymuus.dm-langclient",
-		"editorconfig.editorconfig",
+		"EditorConfig.EditorConfig",
 		"arcanis.vscode-zipfs",
-		"dbaeumer.vscode-eslint",
 		"stylemistake.auto-comment-blocks",
-		"donkie.vscode-tgstation-test-adapter",
+		"Donkie.vscode-tgstation-test-adapter",
 		"anturk.dmi-editor",
-		"aaron-bond.better-comments",
+		"esbenp.prettier-vscode",
+		"biomejs.biome",
 		"ss13.opendream",
 		"tamasfe.even-better-toml"
 	]

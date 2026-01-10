@@ -3,9 +3,6 @@
 # Project depdendencies file
 # Final authority on what's used to build.
 
-#Project dependencies file
-#Final authority on what's required to fully build the project
-
 # byond version
 export BYOND_MAJOR=516
 export BYOND_MINOR=1659
@@ -32,4 +29,4 @@ export FLYWAY_VERSION=11.0.1
 export CUTTER_REPO=spacestation13/hypnagogic
 
 #hypnagogic git tag
-export CUTTER_VERSION=v4.0.0
+export CUTTER_VERSION=v5.0.0

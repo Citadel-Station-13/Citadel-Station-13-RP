@@ -5726,11 +5726,6 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 15)
-	bitesize = 5
-
 /obj/item/reagent_containers/food/snacks/slice/sushi/crab/filled
 	name = "piece of sushi (crab)"
 	desc = "A slice of a larger sushi roll, ready to devour."
@@ -5750,11 +5745,6 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 15)
-	bitesize = 5
-
 /obj/item/reagent_containers/food/snacks/slice/sushi/horse/filled
 	name = "piece of sushi (horse)"
 	desc = "A slice of a larger sushi roll, ready to devour."
@@ -5773,11 +5763,6 @@ END CITADEL CHANGE */
 	slices_num = 5
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
-
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 15)
-	bitesize = 5
 
 /obj/item/reagent_containers/food/snacks/slice/sushi/mystery/filled
 	name = "piece of sushi (???)"

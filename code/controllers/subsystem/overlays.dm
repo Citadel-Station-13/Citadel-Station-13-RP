@@ -185,9 +185,18 @@ SUBSYSTEM_DEF(overlays)
 		listclearnulls(new_overlays)
 		for (var/i in 1 to length(new_overlays))
 			var/image/cached_overlay = new_overlays[i]
+			if (PERFORM_ALL_TESTS(focus_only/invalid_overlays) && istext(cached_overlay) && cached_overlay)
+				if(!icon_exists(icon, cached_overlay))
+					var/icon_file = "[icon]" || "Unknown Generated Icon"
+					stack_trace("Invalid overlay: Icon object '[icon_file]' [REF(icon)] used in '[src]' [type] is missing icon state [cached_overlay].")
+					continue
 			APPEARANCEIFY(cached_overlay, new_overlays[i])
 		return new_overlays
 	else
+		if (PERFORM_ALL_TESTS(focus_only/invalid_overlays) && istext(new_overlays) && new_overlays)
+			if(!icon_exists(icon, new_overlays))
+				var/icon_file = "[icon]" || "Unknown Generated Icon"
+				stack_trace("Invalid overlay: Icon object '[icon_file]' [REF(icon)] used in '[src]' [type] is missing icon state [new_overlays].")
 		APPEARANCEIFY(new_overlays, .)
 
 // The same as the above, but with ZM_AUTOMANGLE.

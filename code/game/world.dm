@@ -74,6 +74,7 @@ GLOBAL_LIST(topic_status_cache)
 
 	GLOB.revdata = new
 
+	// First possible sleep()
 	InitTgs()
 
 	// load configuration
@@ -123,15 +124,24 @@ GLOBAL_LIST(topic_status_cache)
 
 	Master.Initialize(10, FALSE, TRUE)
 
-	#ifdef UNIT_TESTS
-	HandleTestRun()
-	#endif
+	RunUnattendedFunctions()
+
 	if(config_legacy.ToRban)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
+
+/// Runs after the call to Master.Initialize, but before the delay kicks in. Used to turn the world execution into some single function then exit
+/world/proc/RunUnattendedFunctions()
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
+
+	// #ifdef PERFORMANCE_TESTS
+	// queue_performance_tests()
+	// #endif
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -255,6 +265,23 @@ GLOBAL_LIST(topic_status_cache)
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
 
+/// Returns TRUE if the world should do a TGS hard reboot.
+/world/proc/check_hard_reboot()
+	if(!TgsAvailable())
+		return FALSE
+	var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
+	switch(ruhr)
+		if(-1)
+			return FALSE
+		if(0)
+			return TRUE
+		else
+			if(GLOB.restart_counter >= ruhr)
+				return TRUE
+			else
+				text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
+				return FALSE
+
 /**
  * byond reboot proc
  *
@@ -282,38 +309,26 @@ GLOBAL_LIST(topic_status_cache)
 	return
 	#endif
 
-	if(TgsAvailable())
-		var/do_hard_reboot
-		// check the hard reboot counter
-		var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
-		switch(ruhr)
-			if(-1)
-				do_hard_reboot = FALSE
-			if(0)
-				do_hard_reboot = TRUE
-			else
-				if(GLOB.restart_counter >= ruhr)
-					do_hard_reboot = TRUE
-				else
-					text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
-					do_hard_reboot = FALSE
-
-		if(do_hard_reboot)
-			log_world("World hard rebooted at [time_stamp()]")
-			shutdown_logging() // See comment below.
-			TgsEndProcess()
+	if(check_hard_reboot())
+		log_world("World hard rebooted at [time_stamp()]")
+		shutdown_logging() // See comment below.
+		TgsEndProcess()
+		return ..()
 
 	log_world("World rebooted at [time_stamp()]")
 
-	TgsReboot()
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+
+	TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
+
 
 	//! Shutdown Auxtools
 	// AUXTOOLS_SHUTDOWN(AUXTOOLS_YAML)
 
 	//! Finale
 	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
-	sleep(1 SECONDS)
+	// sleep(1 SECONDS) no, rustg should cease beyond this point (no logging)
+
 	..()
 
 /world/Del()
