@@ -492,11 +492,6 @@
 		qdel(to_despawn.mind.objectives)
 		to_despawn.mind.special_role = null
 
-	//else
-		//if(SSticker.mode.name == "AutoTraitor")
-			//var/datum/game_mode/traitor/autotraitor/current_mode = SSticker.mode
-			//current_mode.possible_traitors.Remove(to_despawn)
-
 	// Delete them from datacore.
 
 	if(GLOB.PDA_Manifest.len)

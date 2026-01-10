@@ -28,7 +28,6 @@
 		return
 	last_irc_check = rtod
 	var/server = null		//CONFIG_GET(string/server)
-	//return "[round_id ? "Round #[round_id]: " : ""][clients.len] players on [SSmapping.config_legacy.map_name], Mode: [master_mode]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]"
 	var/current_state
 	switch(SSticker.current_state)
 		if(GAME_STATE_PREGAME)
@@ -39,7 +38,7 @@
 			current_state = "active"
 		if(GAME_STATE_FINISHED)
 			current_state = "finishing"
-	return "[GLOB.clients.len] players on [(LEGACY_MAP_DATUM).name], Mode: [master_mode]; round [current_state] -- Duration [roundduration2text()] -- [server ? server : "[world.internet_address]:[world.port]"]"
+	return "[GLOB.clients.len] players on [(LEGACY_MAP_DATUM).name], Mode: Extended; round [current_state] -- Duration [roundduration2text()] -- [server ? server : "[world.internet_address]:[world.port]"]"
 
 /datum/tgs_chat_command/ahelp
 	name = "ahelp"

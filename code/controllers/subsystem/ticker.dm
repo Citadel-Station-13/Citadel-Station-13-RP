@@ -235,26 +235,7 @@ SUBSYSTEM_DEF(ticker)
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
 	var/init_start = world.timeofday
 
-	//Create and announce mode
-	if(master_mode=="secret")
-		src.hide_mode = 1
-
-	var/list/runnable_modes = config_legacy.get_runnable_modes()
-	if((master_mode=="random") || (master_mode=="secret"))
-		if(!runnable_modes.len)
-			current_state = GAME_STATE_PREGAME
-			Master.SetRunLevel(RUNLEVEL_LOBBY)
-			to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pregame lobby.")
-			return 0
-		if(secret_force_mode != "secret")
-			src.mode = config_legacy.pick_mode(secret_force_mode)
-		if(!src.mode)
-			var/list/weighted_modes = list()
-			for(var/datum/game_mode/GM in runnable_modes)
-				weighted_modes[GM.config_tag] = config_legacy.probabilities[GM.config_tag]
-			src.mode = config_legacy.gamemode_cache[pickweight(weighted_modes)]
-	else
-		src.mode = config_legacy.pick_mode(master_mode)
+	src.mode = config_legacy.gamemode_cache["extended"]
 
 	if(!src.mode)
 		current_state = GAME_STATE_PREGAME
@@ -263,12 +244,10 @@ SUBSYSTEM_DEF(ticker)
 		return 0
 
 	SSjob.reset_occupations()
-	src.mode.create_antagonists()
-	src.mode.pre_setup()
-	SSjob.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
+	SSjob.DivideOccupations()
 
 	if(!src.mode.can_start())
-		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players readied, [config_legacy.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby.")
+		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players readied, 1 players needed. Reverting to pregame lobby.")
 		current_state = GAME_STATE_PREGAME
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		mode.fail_setup()
@@ -276,17 +255,7 @@ SUBSYSTEM_DEF(ticker)
 		SSjob.reset_occupations()
 		return 0
 
-	if(hide_mode)
-		to_chat(world, "<B>The current game mode is - Secret!</B>")
-		if(runnable_modes.len)
-			var/list/tmpmodes = new
-			for (var/datum/game_mode/M in runnable_modes)
-				tmpmodes+=M.name
-			tmpmodes = sortList(tmpmodes)
-			if(tmpmodes.len)
-				to_chat(world, "<B>Possibilities:</B> [english_list(tmpmodes, and_text= "; ", comma_text = "; ")]")
-	else
-		src.mode.announce()
+	src.mode.announce()
 
 	setup_economy()
 	current_state = GAME_STATE_PLAYING

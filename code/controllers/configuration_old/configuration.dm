@@ -29,12 +29,6 @@
 	var/fps = 20
 	var/antag_hud_allowed = 0			// Ghosts can turn on Antagovision to see a HUD of who is the bad guys this round.
 	var/antag_hud_restricted = 0                    // Ghosts that turn on Antagovision cannot rejoin the round.
-	var/list/mode_names = list()
-	var/list/modes = list()				// allowed modes
-	var/list/votable_modes = list()		// votable modes
-	var/list/probabilities = list()		// relative probability of each mode
-	var/list/player_requirements = list() // Overrides for how many players readied up a gamemode needs to start.
-	var/list/player_requirements_secret = list() // Same as above, but for the secret gamemode.
 	var/humans_need_surnames = 0
 	var/allow_random_events = 0			// enables random events mid-round when set to 1
 	var/enable_game_master = 0			// enables the 'smart' event system.
@@ -147,23 +141,8 @@
 	var/list/gamemode_cache = list()
 
 /datum/configuration_legacy/New()
-	var/list/L = subtypesof(/datum/game_mode)
-	for (var/T in L)
-		// I wish I didn't have to instance the game modes in order to look up
-		// their information, but it is the only way (at least that I know of).
-		var/datum/game_mode/M = new T()
-		if (M.config_tag)
-			gamemode_cache[M.config_tag] = M // So we don't instantiate them repeatedly.
-			if(!(M.config_tag in modes))		// ensure each mode is added only once
-				log_misc("Adding game mode [M.name] ([M.config_tag]) to configuration.")
-				modes += M.config_tag
-				mode_names[M.config_tag] = M.name
-				probabilities[M.config_tag] = M.probability
-				player_requirements[M.config_tag] = M.required_players
-				player_requirements_secret[M.config_tag] = M.required_players_secret
-				if (M.votable)
-					src.votable_modes += M.config_tag
-	src.votable_modes += "secret"
+	var/datum/game_mode/extended/M = new /datum/game_mode/extended()
+	gamemode_cache[M.config_tag] = M
 
 /datum/configuration_legacy/proc/load(filename, type = "config") //the type can also be game_options, in which case it uses a different switch. not making it separate to not copypaste code - Urist
 	var/list/Lines = world.file2list(filename)
@@ -344,40 +323,6 @@
 				if("protect_roles_from_antagonist")
 					config_legacy.protect_roles_from_antagonist = 1
 
-				if ("probability")
-					var/prob_pos = findtext(value, " ")
-					var/prob_name = null
-					var/prob_value = null
-
-					if (prob_pos)
-						prob_name = lowertext(copytext(value, 1, prob_pos))
-						prob_value = copytext(value, prob_pos + 1)
-						if (prob_name in config_legacy.modes)
-							config_legacy.probabilities[prob_name] = text2num(prob_value)
-						else
-							log_misc("Unknown game mode probability configuration definition: [prob_name].")
-					else
-						log_misc("Incorrect probability configuration definition: [prob_name]  [prob_value].")
-
-				if ("required_players", "required_players_secret")
-					var/req_pos = findtext(value, " ")
-					var/req_name = null
-					var/req_value = null
-					var/is_secret_override = findtext(name, "required_players_secret") // Being extra sure we're not picking up an override for Secret by accident.
-
-					if(req_pos)
-						req_name = lowertext(copytext(value, 1, req_pos))
-						req_value = copytext(value, req_pos + 1)
-						if(req_name in config_legacy.modes)
-							if(is_secret_override)
-								config_legacy.player_requirements_secret[req_name] = text2num(req_value)
-							else
-								config_legacy.player_requirements[req_name] = text2num(req_value)
-						else
-							log_misc("Unknown game mode player requirement configuration definition: [req_name].")
-					else
-						log_misc("Incorrect player requirement configuration definition: [req_name]  [req_value].")
-
 				if("allow_random_events")
 					config_legacy.allow_random_events = 1
 
@@ -540,20 +485,3 @@
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/pick_mode(mode_name)
-	// I wish I didn't have to instance the game modes in order to look up
-	// their information, but it is the only way (at least that I know of).
-	for (var/game_mode in gamemode_cache)
-		var/datum/game_mode/M = gamemode_cache[game_mode]
-		if (M.config_tag && M.config_tag == mode_name)
-			return M
-	return gamemode_cache["extended"]
-
-/datum/configuration_legacy/proc/get_runnable_modes()
-	var/list/runnable_modes = list()
-	for(var/game_mode in gamemode_cache)
-		var/datum/game_mode/M = gamemode_cache[game_mode]
-		if(M && M.can_start() && !isnull(config_legacy.probabilities[M.config_tag]) && config_legacy.probabilities[M.config_tag] > 0)
-			runnable_modes |= M
-	return runnable_modes

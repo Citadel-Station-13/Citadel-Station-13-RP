@@ -6,10 +6,6 @@
 		message_admins("[usr.key] has attempted to override the admin panel!")
 		return
 
-	if(SSticker.mode && SSticker.mode.check_antagonists_topic(href, href_list))
-		check_antagonists()
-		return
-
 	if(href_list["ahelp"])
 		if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 			return
@@ -965,59 +961,6 @@
 		if(!isnum(mute_type))	return
 
 		cmd_admin_mute(M, mute_type)
-
-	else if(href_list["c_mode"])
-		if(!check_rights(R_ADMIN))	return
-
-		if(SSticker && SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
-		for(var/mode in config_legacy.modes)
-			dat += {"<A href='?src=\ref[src];c_mode2=[mode]'>[config_legacy.mode_names[mode]]</A><br>"}
-		dat += {"<A href='?src=\ref[src];c_mode2=secret'>Secret</A><br>"}
-		dat += {"<A href='?src=\ref[src];c_mode2=random'>Random</A><br>"}
-		dat += {"Now: [master_mode]"}
-		usr << browse(dat, "window=c_mode")
-
-	else if(href_list["f_secret"])
-		if(!check_rights(R_ADMIN))	return
-
-		if(SSticker && SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		if(master_mode != "secret")
-			return alert(usr, "The game mode has to be secret!", null, null, null, null)
-		var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
-		for(var/mode in config_legacy.modes)
-			dat += {"<A href='?src=\ref[src];f_secret2=[mode]'>[config_legacy.mode_names[mode]]</A><br>"}
-		dat += {"<A href='?src=\ref[src];f_secret2=secret'>Random (default)</A><br>"}
-		dat += {"Now: [secret_force_mode]"}
-		usr << browse(dat, "window=f_secret")
-
-	else if(href_list["c_mode2"])
-		if(!check_rights(R_ADMIN|R_SERVER))	return
-
-		if (SSticker && SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		master_mode = href_list["c_mode2"]
-		log_admin("[key_name(usr)] set the mode as [config_legacy.mode_names[master_mode]].")
-		message_admins("<font color=#4F49AF>[key_name_admin(usr)] set the mode as [config_legacy.mode_names[master_mode]].</font>", 1)
-		to_chat(world, "<font color=#4F49AF><b>The mode is now: [config_legacy.mode_names[master_mode]]</b></font>")
-		Game() // updates the main game menu
-		world.save_mode(master_mode)
-		.(href, list("c_mode"=1))
-
-	else if(href_list["f_secret2"])
-		if(!check_rights(R_ADMIN|R_SERVER))	return
-
-		if(SSticker && SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		if(master_mode != "secret")
-			return alert(usr, "The game mode has to be secret!", null, null, null, null)
-		secret_force_mode = href_list["f_secret2"]
-		log_admin("[key_name(usr)] set the forced secret mode as [secret_force_mode].")
-		message_admins("<font color=#4F49AF>[key_name_admin(usr)] set the forced secret mode as [secret_force_mode].</font>", 1)
-		Game() // updates the main game menu
-		.(href, list("f_secret"=1))
 
 	else if(href_list["monkeyone"])
 		if(!check_rights(R_SPAWN))	return

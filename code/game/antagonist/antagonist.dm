@@ -104,6 +104,7 @@
 /datum/antagonist/proc/get_candidates(var/ghosts_only)
 	candidates = list() // Clear.
 
+	/*
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
 	candidates = SSticker.mode.get_players_for_role(role_type, id, ghosts_only)
@@ -126,7 +127,7 @@
 		else if(player_is_antag(player))
 			candidates -= player
 			log_debug(SPAN_DEBUG("[key_name(player)] is not eligible to become a [role_text]: They are already an antagonist! They have been removed from the draft."))
-
+	*/
 	return candidates
 
 /datum/antagonist/proc/attempt_random_spawn()

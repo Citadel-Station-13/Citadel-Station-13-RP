@@ -594,8 +594,6 @@ var/global/floorIsLava = 0
 		<center><B>Game Panel</B></center><hr>\n
 		<A href='?src=\ref[src];c_mode=1'>Change Game Mode</A><br>
 		"}
-	if(master_mode == "secret")
-		dat += "<A href='?src=\ref[src];f_secret=1'>(Force Secret Mode)</A><br>"
 
 	dat += {"
 		<BR>
@@ -1357,24 +1355,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
 	message_admins("[key_name(usr)] attempting to force latespawn with template [antag.id].")
 	antag.attempt_late_spawn()
-
-/datum/admins/proc/force_mode_latespawn()
-	set category = "Admin"
-	set name = "Force Mode Spawn"
-	set desc = "Force autotraitor to proc."
-
-	if (!istype(src,/datum/admins))
-		src = usr.client.holder
-	if (!istype(src,/datum/admins) || !check_rights(R_ADMIN))
-		to_chat(usr, "Error: you are not an admin!")
-		return
-
-	if(!SSticker || !SSticker.mode)
-		to_chat(usr, "Mode has not started.")
-		return
-
-	log_and_message_admins("attempting to force mode autospawn.")
-	SSticker.mode.try_latespawn()
 
 /datum/admins/proc/paralyze_mob(mob/living/H as mob)
 	set category = "Admin"
