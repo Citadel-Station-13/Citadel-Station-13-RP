@@ -99,21 +99,22 @@ GLOBAL_REAL_LIST(rig_zone_bits) = list(
 	RIG_ZONE_BIT_RIGHT_LEG,
 )
 
-DEFINE_BITFIELD_NEW(rig_zone_flags, list(
-	/datum/component/rig_piece = list(
-		"rig_zone_bits",
-	),
-	/datum/rig_theme_piece = list(
-		"rig_zone_bits",
-	),
-), list(
-	BITFIELD_NEW("Chest", RIG_ZONE_BIT_CHEST),
-	BITFIELD_NEW("Head", RIG_ZONE_BIT_HEAD),
-	BITFIELD_NEW("Left Arm", RIG_ZONE_BIT_LEFT_ARM),
-	BITFIELD_NEW("Right Arm", RIG_ZONE_BIT_RIGHT_ARM),
-	BITFIELD_NEW("Left Leg", RIG_ZONE_BIT_LEFT_LEG),
-	BITFIELD_NEW("Right Leg", RIG_ZONE_BIT_RIGHT_LEG),
-))
+#warn that shit
+// DEFINE_BITFIELD_NEW(rig_zone_flags, list(
+// 	/datum/component/rig_piece = list(
+// 		"rig_zone_bits",
+// 	),
+// 	/datum/rig_theme_piece = list(
+// 		"rig_zone_bits",
+// 	),
+// ), list(
+// 	BITFIELD_NEW("Chest", RIG_ZONE_BIT_CHEST),
+// 	BITFIELD_NEW("Head", RIG_ZONE_BIT_HEAD),
+// 	BITFIELD_NEW("Left Arm", RIG_ZONE_BIT_LEFT_ARM),
+// 	BITFIELD_NEW("Right Arm", RIG_ZONE_BIT_RIGHT_ARM),
+// 	BITFIELD_NEW("Left Leg", RIG_ZONE_BIT_LEFT_LEG),
+// 	BITFIELD_NEW("Right Leg", RIG_ZONE_BIT_RIGHT_LEG),
+// ))
 
 /proc/rig_zone_bit_to_zone_enum(bit)
 	switch(bit)
