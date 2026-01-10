@@ -19,11 +19,24 @@
 			bind_to_inventory(casted.robot_inventory)
 	return ..()
 
+/datum/actor_hud/robot_inventory/on_mob_unbound(mob/target)
+	if(isrobot(target))
+		var/mob/living/silicon/robot/casted = target
+		if(casted.robot_inventory)
+			unbind_from_inventory(casted.robot_inventory)
+	return ..()
+
 /datum/actor_hud/robot_inventory/proc/bind_to_inventory(datum/robot_inventory/robot_inventory)
 	ASSERT(!host)
 	host = robot_inventory
 	LAZYADD(robot_inventory.huds_using, src)
 	rebuild()
+
+/datum/actor_hud/robot_inventory/proc/unbind_from_inventory(datum/robot_inventory/robot_inventory)
+	ASSERT(host == robot_inventory)
+	cleanup()
+	LAZYREMOVE(robot_inventory.huds_using, src)
+	host = null
 
 /datum/actor_hud/robot_inventory/screens()
 	. = ..()
@@ -32,21 +45,10 @@
 	if(drawer_backplate)
 		. += drawer_backplate
 
-/datum/actor_hud/robot_inventory/proc/unbind_from_inventory(datum/robot_inventory/robot_inventory)
-	ASSERT(host == robot_inventory)
-	cleanup()
-	LAZYREMOVE(robot_inventory.huds_using, src)
-	host = null
-
-/datum/actor_hud/robot_inventory/on_mob_unbound(mob/target)
-	if(isrobot(target))
-		var/mob/living/silicon/robot/casted = target
-		if(casted.robot_inventory)
-			unbind_from_inventory(casted.robot_inventory)
-	return ..()
-
 /datum/actor_hud/robot_inventory/proc/cleanup()
+	remove_screen(drawer_backplate)
 	QDEL_NULL(drawer_backplate)
+	remove_screen(drawer_button)
 	QDEL_NULL(drawer_button)
 
 /datum/actor_hud/robot_inventory/proc/rebuild()

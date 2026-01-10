@@ -5,7 +5,7 @@
 // All sprites used in this file made by mizartz.carrd.co //
 
 /datum/prototype/robot_iconset/drake_mizartz
-	display_name = "Mizartz"
+	display_name = "Drake"
 	abstract_type = /datum/prototype/robot_iconset/drake_mizartz
 	auto_chassis = /datum/prototype/robot_chassis/quadruped/draconic
 
@@ -27,27 +27,24 @@
 
 /datum/prototype/robot_iconset/drake_mizartz/mining
 	icon_state = "mining"
-	indicator_lighting_coloration_mode = "#aa00ff"
+	indicator_lighting_coloration_packed = "#aa00ff"
 
 /datum/prototype/robot_iconset/drake_mizartz/medical
 	icon_state = "medical"
-	indicator_lighting_coloration_mode = "#00ffff"
-
-/datum/prototype/robot_iconset/drake_mizartz/janitor
-	icon_state = "janitor"
-	indicator_lighting_coloration_mode = COLORATION_MODE_NONE
-
-/datum/prototype/robot_iconset/drake_mizartz/security
-	icon_state = "security"
-	indicator_lighting_coloration_mode = "#ff0000"
-
-/datum/prototype/robot_iconset/drake_mizartz/engineering
-	icon_state = "engineering"
-	indicator_lighting_coloration_mode = "#ffff00"
-
-/datum/prototype/robot_iconset/drake_mizartz/peacekeeper
-	icon_state = "peacekeeper"
+	indicator_lighting_coloration_packed = "#00ffff"
 
 /datum/prototype/robot_iconset/drake_mizartz/janitor
 	icon_state = "janitor"
 	icon_state_indicator = "indicator-lighting-janitor"
+	indicator_lighting_coloration_mode = COLORATION_MODE_NONE
+
+/datum/prototype/robot_iconset/drake_mizartz/security
+	icon_state = "security"
+	indicator_lighting_coloration_packed = "#ff0000"
+
+/datum/prototype/robot_iconset/drake_mizartz/engineering
+	icon_state = "engineering"
+	indicator_lighting_coloration_packed = "#ffff00"
+
+/datum/prototype/robot_iconset/drake_mizartz/peacekeeper
+	icon_state = "peacekeeper"

@@ -47,7 +47,7 @@
 		else if(!was_dead && is_dead)
 			living_mob_list -= src
 			dead_mob_list += src
-	on_stat_change(old_stat, new_state)
+	on_stat_change(old_stat, new_stat)
 	if(update_mobility)
 		update_mobility()
 	update_hud_med_status()
