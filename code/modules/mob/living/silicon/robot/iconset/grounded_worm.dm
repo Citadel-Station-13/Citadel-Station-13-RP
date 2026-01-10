@@ -11,8 +11,6 @@
 	icon_state_indicator = "indicator-lighting"
 	icon_state_cover = "open"
 
-	indicator_lighting_coloration_mode = COLORATION_MODE_MULTIPLY
-
 /datum/prototype/robot_iconset/grounded_worm/standard
 	icon_state = "worm-standard"
 

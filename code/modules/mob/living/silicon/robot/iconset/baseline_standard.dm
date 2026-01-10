@@ -8,7 +8,6 @@
 	icon = 'icons/mob/robot/iconset/baseline_standard.dmi'
 	icon_state_cover = "panel"
 	icon_state_indicator = "indicator-lights"
-	indicator_lighting_coloration_mode = COLORATION_MODE_MULTIPLY
 
 /datum/prototype/robot_iconset/baseline_standard/security
 	icon_state = "security"

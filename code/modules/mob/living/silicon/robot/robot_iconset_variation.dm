@@ -23,6 +23,7 @@
 	/// * overrides [icon_state_indicator_append]
 	var/icon_state_indicator
 	/// state append to override our indicator state with
+	/// * this is applied to our resultant icon state
 	var/icon_state_indicator_append
 	/// cover overlay override state
 	/// * overrides [icon_state_cover_append]

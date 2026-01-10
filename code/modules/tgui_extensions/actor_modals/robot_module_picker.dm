@@ -38,8 +38,9 @@
 			// check ckey lock
 			if(resolved_frame.ckey_lock && !(actor.initiator.ckey in resolved_frame.ckey_lock))
 				return TRUE
-			robot.set_from_frame(resolved_frame)
-			robot.set_module(resolved_module)
+			robot.set_from_frame(resolved_frame, TRUE)
+			robot.set_module(resolved_module, TRUE)
+			robot.update_icon()
 			// no moving / acting for 5 seconds
 			robot.afflict_root(5 SECONDS)
 			robot.afflict_daze(5 SECONDS)

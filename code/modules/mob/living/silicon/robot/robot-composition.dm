@@ -174,10 +174,12 @@
 /**
  * Set chassis / iconset from a frame.
  */
-/mob/living/silicon/robot/proc/set_from_frame(datum/robot_frame/frame)
+/mob/living/silicon/robot/proc/set_from_frame(datum/robot_frame/frame, skip_icon_update)
 	set_chassis(frame.robot_chassis, TRUE)
 	set_iconset(frame.robot_iconset, TRUE)
 	can_repick_frame = FALSE
+	if(!skip_icon_update)
+		update_icon()
 
 /**
  * Apply a provisioning set; this is one of the things orchestrating composition.

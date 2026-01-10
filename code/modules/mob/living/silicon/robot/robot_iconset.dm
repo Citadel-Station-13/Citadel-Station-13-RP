@@ -50,9 +50,11 @@
 	var/icon_dimension_y = 32
 
 	/// indicator lighting colorable?
+	/// * for now, only supports NONE and MULTIPLY
 	var/indicator_lighting_coloration_mode = COLORATION_MODE_NONE
-	// todo: coloration system;
-	//       using greyscale sprites would be nice.
+	/// indicator lighting packed coloration
+	/// * for now, only supports a single RRGGBB(AA) string.
+	var/indicator_lighting_coloration_packed = "#ffffff"
 
 	/// variations
 	/// * this is a list of typepaths / anonymous types at compile time, and

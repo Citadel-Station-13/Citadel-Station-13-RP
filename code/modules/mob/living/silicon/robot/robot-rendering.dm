@@ -23,13 +23,19 @@
 
 	// render indicator lighting
 	if(IS_CONSCIOUS(src) && (!shell || deployed))
+		var/indicator_state
 		if(active_variation)
 			if(active_variation.icon_state_indicator)
-				add_overlay(active_variation.icon_state_indicator)
+				indicator_state = active_variation.icon_state_indicator
 			else if(active_variation.icon_state_indicator_append)
-				add_overlay("[icon_state][active_variation.icon_state_indicator_append]")
+				indicator_state = "[icon_state][active_variation.icon_state_indicator_append]"
 		else if(iconset.icon_state_indicator)
-			add_overlay(iconset.icon_state_indicator)
+			indicator_state = iconset.icon_state_indicator
+		var/image/indicator = image(icon, indicator_state)
+		switch(iconset.indicator_lighting_coloration_mode)
+			if(COLORATION_MODE_MULTIPLY)
+				indicator.color = iconset.indicator_lighting_coloration_packed
+		add_overlay(indicator)
 
 	// render panel
 	if(opened)

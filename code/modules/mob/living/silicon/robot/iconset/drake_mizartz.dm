@@ -27,9 +27,11 @@
 
 /datum/prototype/robot_iconset/drake_mizartz/mining
 	icon_state = "mining"
+	indicator_lighting_coloration_mode = "#aa00ff"
 
 /datum/prototype/robot_iconset/drake_mizartz/medical
 	icon_state = "medical"
+	indicator_lighting_coloration_mode = "#00ffff"
 
 /datum/prototype/robot_iconset/drake_mizartz/janitor
 	icon_state = "janitor"
@@ -37,9 +39,11 @@
 
 /datum/prototype/robot_iconset/drake_mizartz/security
 	icon_state = "security"
+	indicator_lighting_coloration_mode = "#ff0000"
 
 /datum/prototype/robot_iconset/drake_mizartz/engineering
 	icon_state = "engineering"
+	indicator_lighting_coloration_mode = "#ffff00"
 
 /datum/prototype/robot_iconset/drake_mizartz/peacekeeper
 	icon_state = "peacekeeper"

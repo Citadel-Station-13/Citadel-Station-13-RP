@@ -7,7 +7,6 @@
 	auto_chassis = /datum/prototype/robot_chassis/biped
 	icon = 'icons/mob/robot/iconset/biped_droid.dmi'
 	icon_state_cover = "panel"
-	indicator_lighting_coloration_mode = COLORATION_MODE_MULTIPLY
 
 /datum/prototype/robot_iconset/biped_droid/logistics
 	icon_state = "logistics"
