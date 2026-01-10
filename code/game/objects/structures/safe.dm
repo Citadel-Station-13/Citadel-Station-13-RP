@@ -65,7 +65,7 @@ FLOOR SAFES
 	icon_state = "[initial(icon_state)][open ? "-open" : null]"
 	return ..()
 
-/obj/structure/safe/wrench_act(mob/living/user, obj/item/tool)
+/obj/structure/safe/wrench_act(obj/item/tool, datum/event_args/actor/clickchain/e_args, flags, hint)
 	if(!open)
 		balloon_alert(user, "must be open!")
 		return TRUE
@@ -84,15 +84,12 @@ FLOOR SAFES
 			return TRUE
 		new_tumblers.Add(input_value)
 
-	// are you stupid? you are inside wrench_act and still need a function arg
-	tool.tool_feedback_start(TOOL_WRENCH, target = src, time = 10 SECONDS)
-	if(!do_after(user, 10 SECONDS, target = src))
+	if(!use_wrench(tool, e_args, flags, 10 SECONDS))
 		return TRUE
 
 	tumblers = new_tumblers
 	current_tumbler_index = 1
 	dial = 0
-	tool.tool_feedback_end(TOOL_WRENCH, target = src)
 	to_chat(user, SPAN_NOTICE("You successfully reset the lock for [src]. The new combination is: [tumblers.Join("-")]."))
 	balloon_alert(user, "lock set!")
 
