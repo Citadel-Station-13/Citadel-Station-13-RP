@@ -173,7 +173,7 @@
 		return
 	for(var/z in GetConnectedZlevels(TS.z))
 		z_radiation(locate(x, y, z), null, DETONATION_RADS, RAD_FALLOFF_ZLEVEL_SUPERMATTER_DELAMINATION)
-	for(var/mob/living/mob in living_mob_list)
+	for(var/mob/living/mob in GLOB.human_list)
 		var/turf/T = get_turf(mob)
 		if(T && (loc.z == T.z))
 			if(istype(mob, /mob/living/carbon/human))

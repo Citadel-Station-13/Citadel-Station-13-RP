@@ -73,8 +73,6 @@
 				ghost.transfer_client_to(R)
 
 	R.set_stat(CONSCIOUS)
-	dead_mob_list -= R
-	living_mob_list |= R
 	R.notify_ai(ROBOT_NOTIFICATION_NEW_UNIT)
 	return TRUE
 

@@ -342,7 +342,7 @@
 /// When a borg is activated, it can choose which AI it wants to be slaved to.
 /proc/active_ais()
 	. = list()
-	for(var/mob/living/silicon/ai/A in living_mob_list)
+	for(var/mob/living/silicon/ai/A in GLOB.ai_list)
 		if(A.stat == DEAD)
 			continue
 		if(A.control_disabled == 1)
@@ -462,10 +462,6 @@
 		moblist.Add(M)
 	for(var/mob/living/voice/M in sortmob)
 		moblist.Add(M)
-//	for(var/mob/living/silicon/hivebot/M in sortmob)
-//		GLOB.mob_list.Add(M)
-//	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
-//		GLOB.mob_list.Add(M)
 	return moblist
 
 /// Returns the turf located at the map edge in the specified direction relative to A.
