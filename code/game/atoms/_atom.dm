@@ -869,7 +869,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir)
-	return (WORLD_ICON_SIZE - icon_x_dimension) / 2
+	return base_pixel_x + (WORLD_ICON_SIZE - icon_x_dimension) / 2
 
 /**
  * get the pixel_y needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
@@ -878,7 +878,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir)
-	return (WORLD_ICON_SIZE - icon_y_dimension) / 2
+	return base_pixel_y + (WORLD_ICON_SIZE - icon_y_dimension) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)

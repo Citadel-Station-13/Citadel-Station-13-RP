@@ -107,6 +107,8 @@
 		icon = iconset.icon
 		icon_x_dimension = iconset.icon_dimension_x
 		icon_y_dimension = iconset.icon_dimension_y
+		set_base_pixel_x(-((icon_x_dimension - WORLD_ICON_SIZE) / 2))
+		set_base_pixel_y(-((icon_y_dimension - WORLD_ICON_SIZE) / 2))
 		// reset resting variation if needed
 		if(!iconset.variations?[picked_resting_variation])
 			picked_resting_variation = null
@@ -116,10 +118,11 @@
 		icon = initial(icon)
 		icon_x_dimension = initial(icon_x_dimension)
 		icon_y_dimension = initial(icon_y_dimension)
+		set_base_pixel_x(initial(base_pixel_x))
+		set_base_pixel_y(initial(base_pixel_y))
 		// reset resting variation
 		picked_resting_variation = null
 
-	auto_pixel_offset_to_center()
 	if(!skip_icon_update)
 		update_icon()
 
