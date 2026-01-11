@@ -5,7 +5,7 @@
  * This is the basic get multiz step.
  * It will not look across lateral transitions, only up/down.
  */
-/proc/get_step_multiz(atom/us, dir)
+/proc/get_step_multiz(atom/A, dir)
 	if((dir & (UP|DOWN)) == 0)
 		return get_step(A, dir)
 	var/turf/us = get_turf(A)
@@ -20,9 +20,9 @@
  *
  * returns null if B is not on the same level or on a level directly above/below to A.
  */
-/proc/get_dir_multiz(atom/A, atom/B)
-	var/turf/AT = get_turf(A)
-	var/turf/BT = get_turf(B)
+/proc/get_dir_multiz(atom/us, atom/them)
+	var/turf/AT = get_turf(us)
+	var/turf/BT = get_turf(them)
 	if(AT.z == BT.z)
 		return get_dir(AT, BT)
 	else if(BT.z == SSmapping.cached_level_up[AT.z])
