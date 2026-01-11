@@ -68,8 +68,6 @@ GLOBAL_LIST(bitfields_by_var)
 #endif
 
 /proc/fetch_all_bitfields(datum/path)
-	if(!path)
-		return list()
 	. = list()
 	do
 		var/list/maybe_bitfields = GLOB.bitfields_by_path[path]
@@ -81,8 +79,6 @@ GLOBAL_LIST(bitfields_by_var)
 	while(path)
 
 /proc/fetch_bitfield(datum/path, var_name) as /datum/bitfield
-	if(!path)
-		return
 	if(istype(path))
 		path = path.type
 	for(var/datum/bitfield/bitfield as anything in GLOB.bitfields_by_var[var_name])
