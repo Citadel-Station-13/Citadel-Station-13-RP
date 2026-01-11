@@ -16,12 +16,12 @@
 	if(us.z == them.z)
 		return get_dir(us, them)
 	else
-		var/turf/T = (us.mz_flags & MZ_OPEN_UP) ? get_turf(us, UP) : null // GET_TURF_ABOVE
+		var/turf/T = (us.mz_flags & MZ_OPEN_UP) ? get_step(us, UP) : null // GET_TURF_ABOVE
 		var/dir = NONE
 		if(T && (T.z == them.z))
 			dir = UP
 		else
-			T = (us.mz_flags & MZ_OPEN_DOWN) ? get_turf(us, DOWN) : null // GET_TURF_BELOW
+			T = (us.mz_flags & MZ_OPEN_DOWN) ? get_step(us, DOWN) : null // GET_TURF_BELOW
 			if(T && (T.z == them.z))
 				dir = DOWN
 			else
@@ -30,16 +30,16 @@
 
 /proc/get_lowest_turf(atom/ref)
 	var/turf/us = get_turf(ref)
-	var/turf/next = (us.mz_flags & MZ_OPEN_DOWN) ? get_turf(us, DOWN) : null // GET_TURF_BELOW
+	var/turf/next = (us.mz_flags & MZ_OPEN_DOWN) ? get_step(us, DOWN) : null // GET_TURF_BELOW
 	while(next)
 		us = next
-		next = (us.mz_flags & MZ_OPEN_DOWN) ? get_turf(us, DOWN) : null // GET_TURF_BELOW
+		next = (us.mz_flags & MZ_OPEN_DOWN) ? get_step(us, DOWN) : null // GET_TURF_BELOW
 	return us
 
 /proc/get_highest_turf(atom/ref)
 	var/turf/us = get_turf(ref)
-	var/turf/next = (us.mz_flags & MZ_OPEN_UP) ? get_turf(us, UP) : null // GET_TURF_ABOVE
+	var/turf/next = (us.mz_flags & MZ_OPEN_UP) ? get_step(us, UP) : null // GET_TURF_ABOVE
 	while(next)
 		us = next
-		next = (us.mz_flags & MZ_OPEN_UP) ? get_turf(us, UP) : null // GET_TURF_ABOVE
+		next = (us.mz_flags & MZ_OPEN_UP) ? get_step(us, UP) : null // GET_TURF_ABOVE
 	return us
