@@ -184,47 +184,19 @@
 		if("module")
 			if(isrobot(usr))
 				var/mob/living/silicon/robot/R = usr
-//				if(R.module)
-//					R.hud_used.toggle_show_robot_modules()
-//					return 1
-				R.pick_module()
-
-		if("inventory")
-			if(isrobot(usr))
-				var/mob/living/silicon/robot/R = usr
-				if(R.module)
-					R.hud_used.toggle_show_robot_modules()
-					return 1
-				else
-					to_chat(R, "You haven't selected a module yet.")
+				if(!R.module)
+					if(!R.can_repick_module)
+						to_chat(usr, SPAN_WARNING("You can't repick your module, despite not having one. \
+						Something probably got bugged."))
+					else
+						open_tgui_actor_modal(
+							/datum/tgui_actor_modal/robot_module_picker,
+							actor = new /datum/event_args/actor(R),
+						)
 
 		if("radio")
 			if(issilicon(usr))
 				usr:radio_menu()
-		if("panel")
-			if(issilicon(usr))
-				usr:installed_modules()
-
-		if("store")
-			if(isrobot(usr))
-				var/mob/living/silicon/robot/R = usr
-				if(R.module)
-					R.uneq_active()
-					R.hud_used.update_robot_modules_display()
-				else
-					to_chat(R, "You haven't selected a module yet.")
-
-		if("module1")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(1)
-
-		if("module2")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(2)
-
-		if("module3")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(3)
 
 		if("AI Core")
 			if(isAI(usr))

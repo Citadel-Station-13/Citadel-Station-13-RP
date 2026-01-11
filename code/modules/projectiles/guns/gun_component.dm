@@ -61,6 +61,7 @@
  *
  * * we get the final say
  * * this includes if the gun is already overcrowded! be careful with this
+ * * skipped if 'force' is enabled on checks in the gun
  *
  * @params
  * * gun - the gun we tried to attach to

@@ -1,3 +1,5 @@
+// TODO: this should be in the hypospray mark 2 ecosystem.
+// TODO: ontop of that, use fucking item mounts + cyborg resource stores!!
 /obj/item/reagent_containers/borghypo
 	name = "cyborg hypospray"
 	desc = "An advanced chemical synthesizer and injection system, designed for heavy-duty medical equipment."
@@ -27,12 +29,33 @@
 /obj/item/reagent_containers/borghypo/lost
 	reagent_ids = list("bicaridine", "kelotane", "alkysine", "imidazoline", "tricordrazine", "inaprovaline", "dexalin", "anti_toxin", "tramadol", "spaceacillin", "paracetamol")
 
+/obj/item/reagent_containers/borghypo/stabilizer
+	name = "cyborg hypospray (stabilizer)"
+	desc = "A basic chemical synthesizer for stabilizing wounded."
+	reagent_ids = list(
+		/datum/reagent/tricordrazine::id,
+		/datum/reagent/dexalin::id,
+		/datum/reagent/inaprovaline::id,
+		/datum/reagent/dylovene::id,
+		/datum/reagent/paracetamol::id,
+	)
+
 /obj/item/reagent_containers/borghypo/merc
 	name = "advanced cyborg hypospray"
 	desc = "An advanced nanite and chemical synthesizer and injection system, designed for heavy-duty medical equipment.  This type is capable of safely bypassing \
 	thick materials that other hyposprays would struggle with."
 	bypass_protection = TRUE // Because mercs tend to be in spacesuits.
-	reagent_ids = list("healing_nanites", "hyperzine", "tramadol", "oxycodone", "spaceacillin", "peridaxon", "osteodaxon", "myelamine", "synthblood")
+	reagent_ids = list(
+		/datum/reagent/nanite::id,
+		/datum/reagent/hyperzine::id,
+		/datum/reagent/tramadol::id,
+		/datum/reagent/oxycodone::id,
+		/datum/reagent/spaceacillin::id,
+		/datum/reagent/peridaxon::id,
+		/datum/reagent/osteodaxon::id,
+		/datum/reagent/myelamine::id,
+		/datum/reagent/blood::id,
+	)
 
 /obj/item/reagent_containers/borghypo/Initialize(mapload)
 	. = ..()
@@ -55,7 +78,7 @@
 
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
-		if(R && R.cell)
+		if(R && R.cell?.charge > 1000)
 			for(var/T in reagent_ids)
 				if(reagent_volumes[T] < volume)
 					R.cell.use(charge_cost)

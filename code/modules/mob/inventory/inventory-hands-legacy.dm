@@ -30,7 +30,9 @@
  */
 /mob/proc/get_active_held_item()
 	RETURN_TYPE(/obj/item)
-	return inventory?.held_items?[active_hand]
+	if(active_hand < 1 || active_hand > length(inventory?.held_items))
+		return null
+	return inventory.held_items[active_hand]
 
 /**
  * returns held item in inactive hand (or any inactive hand if more than 1)

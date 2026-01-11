@@ -197,7 +197,7 @@
 /obj/item/vehicle_assembly/spacebike/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	switch(build_stage)
 		if(0)
-			if(istype(W, /obj/item/tank/jetpack) || istype(W, /obj/item/borg/upgrade/jetpack))
+			if(istype(W, /obj/item/tank/jetpack) || istype(W, /obj/item/robot_upgrade/jetpack))
 				if(!user.attempt_consume_item_for_construction(W))
 					return
 				increase_step()

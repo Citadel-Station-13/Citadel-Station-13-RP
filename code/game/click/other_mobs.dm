@@ -27,6 +27,12 @@
 
 	A.attack_hand(src, default_clickchain_event_args(A))
 
+/mob/living/silicon/robot/UnarmedAttack(atom/A, proximity_flag)
+	. = ..()
+	if(!.)
+		return
+	A.attack_hand(src, default_clickchain_event_args(A))
+
 /// Return TRUE to cancel other attack hand effects that respect it.
 //  todo: better desc
 //  todo: e_args is not specified all the time, yet.

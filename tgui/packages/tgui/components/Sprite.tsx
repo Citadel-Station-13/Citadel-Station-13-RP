@@ -4,7 +4,7 @@
  */
 
 import { Box } from "tgui-core/components";
-import { BooleanLike, classes } from "tgui-core/react";
+import { classes } from "tgui-core/react";
 
 import { BoxProps } from ".";
 
@@ -13,7 +13,6 @@ interface SpriteProps extends BoxProps {
   readonly sizeKey: string;
   readonly prefix?: string;
   readonly sprite: string;
-  readonly fill?: BooleanLike;
 }
 
 export const Sprite = (props: SpriteProps) => {
@@ -23,7 +22,6 @@ export const Sprite = (props: SpriteProps) => {
         "Sprite",
         `${props.sheet}${props.sizeKey}`,
         props.prefix ? `${props.prefix}-${props.sprite}` : props.sprite,
-        !!props.fill && 'Sprite--fill',
       ])} />
   );
 };

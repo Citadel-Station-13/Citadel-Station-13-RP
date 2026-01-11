@@ -1,18 +1,8 @@
 import { ReactNode } from "react";
 import { Image } from "tgui-core/components";
 
+import { Direction } from "../constants";
 import { BoxProps } from ".";
-
-enum Direction {
-  NORTH = 1,
-  SOUTH = 2,
-  EAST = 4,
-  WEST = 8,
-  NORTHEAST = NORTH | EAST,
-  NORTHWEST = NORTH | WEST,
-  SOUTHEAST = SOUTH | EAST,
-  SOUTHWEST = SOUTH | WEST,
-}
 
 type Props = {
   /** Required: The \ref of the icon */

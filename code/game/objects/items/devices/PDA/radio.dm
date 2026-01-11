@@ -1,7 +1,7 @@
 /obj/item/integated_radio
 	name = "\improper PDA radio module"
 	desc = "An electronic radio system."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "power_mod"
 	var/obj/item/pda/hostpda = null
 

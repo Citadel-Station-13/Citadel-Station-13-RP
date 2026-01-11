@@ -61,11 +61,13 @@ GLOBAL_LIST_INIT(hud_styles, init_hud_styles())
 	var/id
 
 	/// inventory icons
-	var/inventory_icons = 'icons/screen/hud/midnight/inventory.dmi'
+	var/inventory_icons = 'icons/screen/hud/styles/midnight/inventory.dmi'
 	/// inventory icons: slots
-	var/inventory_icons_slot = 'icons/screen/hud/midnight/inventory-slot.dmi'
+	var/inventory_icons_slot = 'icons/screen/hud/styles/midnight/inventory-slot.dmi'
 	/// inventory icons: big
-	var/inventory_icons_wide = 'icons/screen/hud/midnight/inventory-wide.dmi'
+	var/inventory_icons_wide = 'icons/screen/hud/styles/midnight/inventory-wide.dmi'
+	/// robot icons
+	var/robot_icons = 'icons/screen/hud/robot/default.dmi'
 
 /**
  * midnight style just inherits defaults
@@ -77,34 +79,35 @@ GLOBAL_LIST_INIT(hud_styles, init_hud_styles())
 /datum/hud_style/orange
 	name = "Orange"
 	id = "orange"
-	inventory_icons = 'icons/screen/hud/orange/inventory.dmi'
-	inventory_icons_slot = 'icons/screen/hud/orange/inventory-slot.dmi'
-	inventory_icons_wide = 'icons/screen/hud/orange/inventory-wide.dmi'
+	inventory_icons = 'icons/screen/hud/styles/orange/inventory.dmi'
+	inventory_icons_slot = 'icons/screen/hud/styles/orange/inventory-slot.dmi'
+	inventory_icons_wide = 'icons/screen/hud/styles/orange/inventory-wide.dmi'
 
 /datum/hud_style/old
 	name = "Retro"
 	id = "old"
-	inventory_icons = 'icons/screen/hud/old/inventory.dmi'
-	inventory_icons_slot = 'icons/screen/hud/old/inventory-slot.dmi'
-	inventory_icons_wide = 'icons/screen/hud/old/inventory-wide.dmi'
+	inventory_icons = 'icons/screen/hud/styles/old/inventory.dmi'
+	inventory_icons_slot = 'icons/screen/hud/styles/old/inventory-slot.dmi'
+	inventory_icons_wide = 'icons/screen/hud/styles/old/inventory-wide.dmi'
 
 /datum/hud_style/white
 	name = "White"
 	id = "white"
-	inventory_icons = 'icons/screen/hud/white/inventory.dmi'
-	inventory_icons_slot = 'icons/screen/hud/white/inventory-slot.dmi'
-	inventory_icons_wide = 'icons/screen/hud/white/inventory-wide.dmi'
+	inventory_icons = 'icons/screen/hud/styles/white/inventory.dmi'
+	inventory_icons_slot = 'icons/screen/hud/styles/white/inventory-slot.dmi'
+	inventory_icons_wide = 'icons/screen/hud/styles/white/inventory-wide.dmi'
 
 /datum/hud_style/minimalist
 	name = "Minimalist"
 	id = "minimalist"
-	inventory_icons = 'icons/screen/hud/minimalist/inventory.dmi'
-	inventory_icons_slot = 'icons/screen/hud/minimalist/inventory-slot.dmi'
-	inventory_icons_wide = 'icons/screen/hud/minimalist/inventory-wide.dmi'
+	inventory_icons = 'icons/screen/hud/styles/minimalist/inventory.dmi'
+	inventory_icons_slot = 'icons/screen/hud/styles/minimalist/inventory-slot.dmi'
+	inventory_icons_wide = 'icons/screen/hud/styles/minimalist/inventory-wide.dmi'
+	robot_icons = 'icons/screen/hud/robot/minimalist.dmi'
 
 /datum/hud_style/hologram
 	name = "Holographic"
 	id = "hologram"
-	inventory_icons = 'icons/screen/hud/hologram/inventory.dmi'
-	inventory_icons_slot = 'icons/screen/hud/hologram/inventory-slot.dmi'
-	inventory_icons_wide = 'icons/screen/hud/hologram/inventory-wide.dmi'
+	inventory_icons = 'icons/screen/hud/styles/hologram/inventory.dmi'
+	inventory_icons_slot = 'icons/screen/hud/styles/hologram/inventory-slot.dmi'
+	inventory_icons_wide = 'icons/screen/hud/styles/hologram/inventory-wide.dmi'

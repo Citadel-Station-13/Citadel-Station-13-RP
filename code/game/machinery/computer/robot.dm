@@ -141,7 +141,7 @@
 			health = round(R.health * 100 / R.maxHealth, 0.1),
 			charge = R.cell ? round(R.cell.percent()) : null,
 			cell_capacity = R.cell ? R.cell.max_charge : null,
-			module = R.module ? R.module.name : "No Module Detected",
+			module = R.module ? R.module.get_display_name() : "No Module Detected",
 			synchronization = R.connected_ai,
 			is_hacked =  R.connected_ai && R.emagged,
 			hackable = can_hack(user, R),

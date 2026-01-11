@@ -371,16 +371,19 @@
 			return FALSE
 		if (H.gloves)
 			if (fingerprintslast != H.key)
+				LAZYINITLIST(fingerprintshidden)
 				fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
 				fingerprintslast = H.key
 			return FALSE
 		if (!(fingerprints))
 			if (fingerprintslast != H.key)
+				LAZYINITLIST(fingerprintshidden)
 				fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
 				fingerprintslast = H.key
 			return TRUE
 	else
 		if (fingerprintslast != M.key)
+			LAZYINITLIST(fingerprintshidden)
 			fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
 			fingerprintslast = M.key
 	return
@@ -486,6 +489,7 @@
 	else
 		//Smudge up dem prints some
 		if(fingerprintslast != M.key)
+			LAZYINITLIST(fingerprintshidden)
 			fingerprintshidden += "[time_stamp()]: [key_name(M)]"
 			fingerprintslast = M.key
 
@@ -865,7 +869,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir)
-	return base_pixel_x + (icon_x_dimension - WORLD_ICON_SIZE) / 2
+	return (WORLD_ICON_SIZE - icon_x_dimension) / 2
 
 /**
  * get the pixel_y needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
@@ -874,7 +878,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir)
-	return base_pixel_y + (icon_y_dimension - WORLD_ICON_SIZE) / 2
+	return (WORLD_ICON_SIZE - icon_y_dimension) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)
