@@ -43,7 +43,8 @@
 	if(!T || T.check_density(ignore_border = TRUE))
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
 		return
-	if(get_area(target).area_flags & AREA_FLAG_BLUE_SHIELDED)
+	var/area/A = get_area(target)
+	if(A.area_flags & AREA_FLAG_BLUE_SHIELDED)
 		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
 		return
 	if(!do_after(user, 5 SECONDS, src))
