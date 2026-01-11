@@ -8,6 +8,7 @@
 	icon_state = "sac_slime"
 	dead_icon = null
 	standard_pulse_level = PULSE_NONE
+	biology_type = BIOLOGY_TYPE_SLIME
 
 /obj/item/organ/internal/heart/grey/colormatch/slime/process(delta_time)
 	..()
@@ -26,6 +27,7 @@
 	organ_tag = O_REGBRUTE
 
 	icon_state = "sac_slime"
+	biology_type = BIOLOGY_TYPE_SLIME
 
 	var/strain = 0	// The amount of stress this organ is under. Capped at min_broken_damage, usually half its max damage.
 

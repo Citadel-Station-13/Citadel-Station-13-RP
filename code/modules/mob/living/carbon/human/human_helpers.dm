@@ -60,7 +60,7 @@
 	// Ninja cloak.
 	if(istype(back, /obj/item/hardsuit))
 		var/obj/item/hardsuit/suit = back
-		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
+		for(var/obj/item/rig_module/basic/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				cloaker.deactivate()
 
@@ -71,7 +71,7 @@
 	// Ninja cloak.
 	else if(istype(back, /obj/item/hardsuit))
 		var/obj/item/hardsuit/suit = back
-		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
+		for(var/obj/item/rig_module/basic/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				return TRUE
 	return ..()
@@ -182,12 +182,12 @@
 			compiled_vis |= O.enables_planes
 
 	// Check to see if we have a hardsuit (ugh, blame rigs, desnowflake this).
-	var/obj/item/hardsuit/hardsuit = back
-	if(istype(hardsuit) && hardsuit.visor)
-		if(!hardsuit.helmet || (head && hardsuit.helmet == head))
-			if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
-				var/obj/item/clothing/glasses/V = hardsuit.visor.vision.glasses
-				compiled_vis |= V.enables_planes
+	// var/obj/item/hardsuit/hardsuit = back
+	// if(istype(hardsuit) && hardsuit.visor)
+	// 	if(!hardsuit.helmet || (head && hardsuit.helmet == head))
+	// 		if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
+	// 			var/obj/item/clothing/glasses/V = hardsuit.visor.vision.glasses
+	// 			compiled_vis |= V.enables_planes
 
 	// NIF Support.
 	if(nif)

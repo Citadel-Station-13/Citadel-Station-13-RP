@@ -1,5 +1,7 @@
 var/datum/antagonist/ninja/ninjas
 
+// unticked: antag system is effective decommissioned let's do it a bit earlier
+
 /datum/antagonist/ninja
 	id = MODE_NINJA
 	role_type = BE_NINJA
@@ -57,11 +59,11 @@ var/datum/antagonist/ninja/ninjas
 					i++
 					objective_list -= 3
 			if(4)//Download
-				var/datum/objective/download/ninja_objective = new
-				ninja_objective.owner = ninja
-				ninja_objective.gen_amount_goal()
-				ninja.objectives += ninja_objective
-				objective_list -= 4
+				// var/datum/objective/download/ninja_objective = new
+				// ninja_objective.owner = ninja
+				// ninja_objective.gen_amount_goal()
+				// ninja.objectives += ninja_objective
+				// objective_list -= 4
 			if(5)//Harm
 				var/datum/objective/harm/ninja_objective = new
 				ninja_objective.owner = ninja

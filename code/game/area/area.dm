@@ -751,6 +751,11 @@ var/list/ghostteleportlocs = list()
 		if(scrubber.id_tag == id)
 			return scrubber
 
+//* Identity *//
+
+/area/proc/get_display_name()
+	return display_name || name
+
 //* Turfs *//
 
 /**

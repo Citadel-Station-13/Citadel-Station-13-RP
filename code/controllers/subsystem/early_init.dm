@@ -1,3 +1,6 @@
+/**
+ * basically, for shit that's laggy so we don't want init'd with GLOB.
+ */
 SUBSYSTEM_DEF(early_init)
 	name = "Early Init"
 	init_order = INIT_ORDER_EARLY_INIT

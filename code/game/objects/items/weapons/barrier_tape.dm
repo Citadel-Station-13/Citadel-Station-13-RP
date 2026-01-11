@@ -323,7 +323,7 @@ var/list/tape_roll_applications = list()
 		update_icon()
 		name = "crumpled [name]"
 
-/obj/item/barrier_tape_segment/Crossed(atom/movable/AM, oldloc)
+/obj/item/barrier_tape_segment/Crossed(atom/movable/AM)
 	. = ..()
 	if(!lifted && isliving(AM))
 		var/mob/living/M = AM //so that ghosts don't get spammed

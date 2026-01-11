@@ -6,8 +6,6 @@
 	door_icon_base = "stone"
 	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	icon_colour = "##FFF3B2"
-	negation = 2
-	spatial_instability = 30
 	stack_origin_tech = list(TECH_MATERIAL = 7, TECH_PHORON = 5, TECH_BLUESPACE = 5)
 	sheet_singular_name = "gem"
 	sheet_plural_name = "gems"

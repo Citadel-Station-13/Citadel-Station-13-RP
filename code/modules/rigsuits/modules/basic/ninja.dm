@@ -1,0 +1,142 @@
+/*
+ * Contains
+ * /obj/item/rig_module/basic/stealth_field
+ * /obj/item/rig_module/basic/teleporter
+ * /obj/item/rig_module/basic/fabricator/energy_net
+ * /obj/item/rig_module/basic/self_destruct
+ */
+
+/obj/item/rig_module/basic/stealth_field
+	#warn make sure this breaks on weapon / item usage
+	name = "active camouflage module"
+	desc = "A robust hardsuit-integrated stealth module."
+	icon_state = "cloak"
+
+	toggleable = 1
+
+	use_power_cost = 50
+	active_power_cost = 10
+	passive_power_cost = 0
+	module_cooldown = 30
+
+	activate_string = "Enable Cloak"
+	deactivate_string = "Disable Cloak"
+
+	interface_name = "integrated stealth system"
+	interface_desc = "An integrated active camouflage system."
+
+	suit_overlay_active =   "stealth_active"
+	suit_overlay_inactive = "stealth_inactive"
+
+/obj/item/rig_module/basic/stealth_field/activate()
+
+	if(!..())
+		return 0
+
+	var/mob/living/carbon/human/H = holder.wearer
+
+	to_chat(H, "<font color=#4F49AF><b>You are now nearly invisible to normal detection.</b></font>")
+	H.alpha = 5
+
+	anim(get_turf(H), H, 'icons/effects/effects.dmi', "electricity",null,20,null)
+
+	H.visible_message("[H.name] vanishes into thin air!")
+
+/obj/item/rig_module/basic/stealth_field/deactivate()
+
+	if(!..())
+		return 0
+
+	var/mob/living/carbon/human/H = holder.wearer
+
+	to_chat(H, "<span class='danger'>You are now visible.</span>")
+
+	anim(get_turf(H), H,'icons/mob/mob.dmi',,"uncloak",,H.dir)
+	anim(get_turf(H), H, 'icons/effects/effects.dmi', "electricity",null,20,null)
+	H.alpha = initial(H.alpha)
+
+	for(var/mob/O in oviewers(H))
+		O.show_message("[H.name] appears from thin air!",1)
+	playsound(get_turf(H), 'sound/effects/stealthoff.ogg', 75, 1)
+
+
+/obj/item/rig_module/basic/teleporter
+
+	name = "teleportation module"
+	desc = "A complex, sleek-looking, hardsuit-integrated teleportation module."
+	icon_state = "teleporter"
+	use_power_cost = 200
+	redundant = 1
+	usable = 1
+	selectable = 1
+
+	engage_string = "Emergency Leap"
+
+	interface_name = "VOID-shift phase projector"
+	interface_desc = "An advanced teleportation system. It is capable of pinpoint precision or random leaps forward."
+
+/obj/item/rig_module/basic/teleporter/proc/phase_in(var/mob/M,var/turf/T)
+
+	if(!M || !T)
+		return
+
+	holder.spark_system.start()
+	playsound(T, 'sound/effects/phasein.ogg', 25, 1)
+	playsound(T, /datum/soundbyte/sparks, 50, 1)
+	anim(T,M,'icons/mob/mob.dmi',,"phasein",,M.dir)
+
+/obj/item/rig_module/basic/teleporter/proc/phase_out(var/mob/M,var/turf/T)
+
+	if(!M || !T)
+		return
+
+	playsound(T, /datum/soundbyte/sparks, 50, 1)
+	anim(T,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
+
+/obj/item/rig_module/basic/teleporter/engage(var/atom/target, var/notify_ai)
+
+	var/mob/living/carbon/human/H = holder.wearer
+
+	if(!istype(H.loc, /turf))
+		to_chat(H, "<span class='warning'>You cannot teleport out of your current location.</span>")
+		return 0
+
+	var/turf/T
+	if(target)
+		T = get_turf(target)
+	else
+		T = get_teleport_loc(get_turf(H), H, 6, 1, 1, 1)
+
+	if(!T)
+		to_chat(H, "<span class='warning'>No valid teleport target found.</span>")
+		return 0
+
+	if(T.density)
+		to_chat(H, "<span class='warning'>You cannot teleport into solid walls.</span>")
+		return 0
+
+	if(T.z in (LEGACY_MAP_DATUM).admin_levels)
+		to_chat(H, "<span class='warning'>You cannot use your teleporter on this Z-level.</span>")
+		return 0
+
+	if(T.contains_dense_objects())
+		to_chat(H, "<span class='warning'>You cannot teleport to a location with solid objects.</span>")
+		return 0
+
+	if(T.z != H.z || get_dist(T, get_turf(H)) > world.view)
+		to_chat(H, "<span class='warning'>You cannot teleport to such a distant object.</span>")
+		return 0
+
+	if(!..()) return 0
+
+	phase_out(H,get_turf(H))
+	H.forceMove(T)
+	phase_in(H,get_turf(H))
+
+	for(var/obj/item/grab/G in H.contents)
+		if(G.affecting)
+			phase_out(G.affecting,get_turf(G.affecting))
+			G.affecting.forceMove(locate(T.x+rand(-1,1),T.y+rand(-1,1),T.z))
+			phase_in(G.affecting,get_turf(G.affecting))
+
+	return 1

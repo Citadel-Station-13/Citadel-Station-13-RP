@@ -7,7 +7,7 @@
 	/// renderer anchor
 	var/turf/rendering_anchor
 	/// this tick's renderer
-	var/atom/movable/rendering
+	var/atom/movable/graphics_render/rendering
 	/// cached rendering anchor x
 	var/anchoring_x
 	/// cached rendering anchor y
@@ -68,7 +68,7 @@
 	overlay.layer = MANGLE_PLANE_AND_LAYER(AM.plane, AM.layer)
 	rendering_overlays += overlay
 
-/datum/automata/wave/sonar/proc/flick_renderer(atom/movable/renderer)
+/datum/automata/wave/sonar/proc/flick_renderer(atom/movable/graphics_render/renderer)
 	if(isnull(renderer))
 		return
 	renderer.overlays += rendering_overlays

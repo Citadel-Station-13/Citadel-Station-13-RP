@@ -11,6 +11,7 @@
 //	arterial_bleed_severity = 0
 	encased = "ceramic hull"
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 //	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_HEALS_OVERKILL
 
 /obj/item/organ/external/groin/crystal
@@ -23,6 +24,7 @@
 	gendered_icon = 0
 	encased = "ceramic hull"
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/head/crystal
@@ -38,6 +40,7 @@
 	eye_icon_location = 'icons/mob/species/adherent/eyes.dmi'
 	eye_icon = "eyes"
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 //	can_intake_reagents = FALSE //! DO NOT UNCOMMENT THIS LINE UNTIL ADHERENTS CAN PASS IsSynthetic()
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL | ORGAN_FLAG_CAN_BREAK
 
@@ -51,6 +54,7 @@
 	max_damage = 20
 	min_broken_damage = 10
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/arm/right/crystal
@@ -63,6 +67,7 @@
 	max_damage = 20
 	min_broken_damage = 10
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/hand/crystal
@@ -75,6 +80,7 @@
 	max_damage = 20
 	min_broken_damage = 10
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/hand/right/crystal
@@ -87,6 +93,7 @@
 	max_damage = 20
 	min_broken_damage = 10
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
@@ -102,16 +109,20 @@
 	max_damage = 20
 	min_broken_damage = 10
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/leg/right/tendril
 	name = "second tendril"
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 
 /obj/item/organ/external/foot/tendril
 	name = "third tendril"
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE
 
 /obj/item/organ/external/foot/right/tendril
 	name = "fourth tendril"
 	robotic = ORGAN_CRYSTAL
+	biology_type = BIOLOGY_TYPE_CRYSTALLINE

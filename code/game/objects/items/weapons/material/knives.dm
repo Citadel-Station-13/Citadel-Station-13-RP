@@ -173,27 +173,6 @@
 		parry_chance_default = 33;
 	}
 
-/obj/item/material/knife/machete/armblade/hardsuit
-	var/obj/item/hardsuit_module/armblade/storing_module
-
-/obj/item/material/knife/machete/armblade/hardsuit/Destroy()
-	storing_module = null
-	return ..()
-
-/obj/item/material/knife/machete/armblade/hardsuit/dropped(mob/user, flags, atom/newLoc)
-	. = ..()
-	if(storing_module)
-		src.forceMove(storing_module)
-		user.visible_message(
-			"<span class='notice'>[user] retracts [src], folding it away with a click and a hiss.</span>",
-			"<span class='notice'>You retract [src], folding it away with a click and a hiss.</span>",
-			"<span class='notice'>You hear a threatening click and a hiss.</span>"
-			)
-		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
-	else
-		to_chat(user, "Something fucked up and the armblade got out of a module. Please report this bug.")
-		qdel(src)
-
 /obj/item/material/knife/tacknife/survival
 	name = "streamlined survival knife"
 	desc = "A hunting grade survival knife. The bulky storage handle has been replaced with a sleek grip and the ability to easily upgrade the blade."

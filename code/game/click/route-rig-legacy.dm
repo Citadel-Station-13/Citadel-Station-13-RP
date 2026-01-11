@@ -44,30 +44,12 @@
 				if(clickchain.click_params["ctrl"] && !clickchain.click_params["alt"] && !clickchain.click_params["shift"] )
 					route_to_rig = TRUE
 		// this is definitely shitcode.
-		var/obj/item/hardsuit/maybe_hardsuit = get_hardsuit(TRUE)
+		var/obj/item/hardsuit/maybe_hardsuit = legacy_get_rigsuit(TRUE)
 		if(route_to_rig && maybe_hardsuit)
 			. = attempt_rigsuit_click(clickchain, clickchain_flags, maybe_hardsuit)
 			clickchain.data[ACTOR_DATA_RIG_CLICK_LOG] ||= "[maybe_hardsuit]"
 			return
 	return ..()
-
-/mob/living/proc/can_use_hardsuit()
-	return 0
-
-/mob/living/carbon/human/can_use_hardsuit()
-	return 1
-
-/mob/living/simple_mob/holosphere_shell/can_use_hardsuit()
-	return 1
-
-/mob/living/carbon/brain/can_use_hardsuit()
-	return istype(loc, /obj/item/mmi)
-
-/mob/living/silicon/ai/can_use_hardsuit()
-	return carded
-
-/mob/living/silicon/pai/can_use_hardsuit()
-	return loc == card
 
 #undef MIDDLE_CLICK
 #undef ALT_CLICK

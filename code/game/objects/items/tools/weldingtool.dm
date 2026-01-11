@@ -29,6 +29,8 @@
 
 	//Welding tool specific stuff
 	var/welding = 0 	//Whether or not the welding tool is off(0), on(1) or currently welding(2)
+	/// damage force when on (+ will be burning damage instead of brute)
+	var/damage_on = 15
 	var/status = 1 		//Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
 	var/max_fuel = 20 	//The max amount of fuel the welder can hold
 
@@ -592,6 +594,9 @@
 	acti_sound = /datum/soundbyte/sparks
 	deac_sound = /datum/soundbyte/sparks
 
+	/// overall power efficiency multiplier
+	var/energy_cost_multiplier = 1
+
 	var/cell_type = /obj/item/cell/basic/tier_1/small
 	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
@@ -613,7 +618,7 @@
 	. = ..()
 	if(get_dist(src, user) > 1)
 		return
-	else					// The << need to stay, for some reason no they dont
+	else if(!item_mount)					// The << need to stay, for some reason no they dont
 		var/obj/item/cell/power_supply = obj_cell_slot.cell
 		if(power_supply)
 			. += "[icon2html(thing = src, target = world)] The [src] has [get_fuel()] charge left."
@@ -631,7 +636,12 @@
 	else
 		return 0
 
+/**
+ * * If we're item mounted this returns null.
+ */
 /obj/item/weldingtool/electric/get_max_fuel()
+	if(item_mount)
+		return 0
 	var/obj/item/cell/power_supply = get_cell()
 	if(use_external_power)
 		var/obj/item/cell/external = get_external_power_supply()
@@ -644,35 +654,32 @@
 /obj/item/weldingtool/electric/remove_fuel(var/amount = 1, var/mob/M = null)
 	var/obj/item/cell/power_supply = get_cell()
 	if(!welding)
-		return 0
+		return FALSE
+	if(item_mount)
+		return item_mount.lazy_power_use_checked(src, joules = get_energy_cost(amount))
 	if(get_fuel() >= amount)
-		power_supply.checked_use(charge_cost)
+		power_supply.checked_use(DYNAMIC_J_TO_CELL_UNITS(get_energy_cost(amount)))
 		if(use_external_power)
 			var/obj/item/cell/external = get_external_power_supply()
-			if(!external || !external.use(charge_cost)) //Take power from the borg...
-				power_supply.give(charge_cost)	//Give it back to the cell.
+			if(!external || !external.use(DYNAMIC_J_TO_CELL_UNITS(get_energy_cost(amount)))) //Take power from the borg...
+				power_supply.give(DYNAMIC_J_TO_CELL_UNITS(get_energy_cost(amount)))	//Give it back to the cell.
 		if(M)
 			eyecheck(M)
 		update_icon()
-		return 1
+		return TRUE
 	else
 		if(M)
 			to_chat(M, "<span class='notice'>You need more energy to complete this task.</span>")
 		update_icon()
-		return 0
+		return FALSE
+
+/obj/item/weldingtool/electric/proc/get_energy_cost(units)
+	return units * CVARS.energy_cost_electric_welder * energy_cost_multiplier
 
 /obj/item/weldingtool/electric/proc/get_external_power_supply()
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
-	if(istype(src.loc, /obj/item/hardsuit_module))
-		var/obj/item/hardsuit_module/module = src.loc
-		if(module.holder && module.holder.wearer)
-			var/mob/living/carbon/human/H = module.holder.wearer
-			if(istype(H) && H.back)
-				var/obj/item/hardsuit/suit = H.back
-				if(istype(suit))
-					return suit.cell
 	return null
 
 /obj/item/weldingtool/electric/unloaded
@@ -683,11 +690,6 @@
 
 /obj/item/weldingtool/electric/mounted/cyborg
 	tool_speed = 0.5
-
-/obj/item/weldingtool/electric/mounted/RIGset
-	name = "arc welder"
-	tool_speed = 0.7 // Let's see if this works with RIGs
-	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
 	var/obj/item/vehicle_module/equip_mount = null
@@ -721,7 +723,6 @@
 	icon = 'icons/obj/crystal_tools.dmi'
 	materials_base = list(MATERIAL_CRYSTAL = 1250)
 	cell_type = null
-	charge_cost = null
 	tool_speed = 0.2
 	use_external_power = 1
 

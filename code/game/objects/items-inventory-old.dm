@@ -38,6 +38,9 @@
 	on_inv_equipped(user, user.inventory, slot == SLOT_ID_HANDS? user.get_held_index(src) : slot, flags)
 
 
+	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, user, slot, flags)
+
 /**
  * called when an item is unequipped from inventory or moved around in inventory
  *
@@ -69,6 +72,9 @@
 
 	// on_inv_unequipped cannot be called here, as we don't know the inventory index exactly
 	// todo: kill unequipped()
+
+	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, user, slot, flags)
 
 /**
  * called when a mob drops an item

@@ -10,6 +10,7 @@
 #define ATOM_OVERLAY_QUEUED (1<<3)
 /// Atom is absolute-abstract - should not be interactable or movable in any way shape or form
 /// This is for stuff like lighting.
+/// If you detect this in Cross() while registering crossed objects, you should probably ignore this!
 #define ATOM_ABSTRACT       (1<<4)
 /// Atom is not considered a game world object.
 /// This means semantic "wipe game world state" things like turf.empty(), saving, loading, etc, should ignore it,
@@ -30,6 +31,8 @@
 /// Does not leave user's fingerprints/fibers when used on things?
 #define NOPRINT             (1<<12) // TODO: item flag
 
+/// we were made by a holofabricator
+#define ATOM_HOLOFABRICATED			(1<<21)
 /// We are ticking in materials
 #define ATOM_MATERIALS_TICKING		(1<<22)
 /// Use initial icon/icon state for HTML renders in things like VV
@@ -49,6 +52,7 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(OPENCONTAINER),
 	BITFIELD(PHORONGUARD),
 	BITFIELD(NOPRINT),
+	BITFIELD_NAMED("Holofabricated", ATOM_HOLOFABRICATED),
 	BITFIELD(ATOM_MATERIALS_TICKING),
 	BITFIELD(ATOM_HTML_INITIAL_ICON),
 ))

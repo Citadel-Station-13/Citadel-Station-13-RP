@@ -1,3 +1,6 @@
+/**
+ * A generic recharging station meant to allow mobs (?) to enter.
+ */
 /obj/machinery/recharge_station
 	name = "cyborg recharging station"
 	desc = "A heavy duty rapid charging system, designed to quickly recharge cyborg power reserves.\n <span class='notice'>\[Accepts Upgrades\]</span>"
@@ -42,6 +45,21 @@
 
 /obj/machinery/recharge_station/proc/has_cell_power()
 	return cell && cell.percent() > 0
+
+// TODO: move all of the old checks here
+/obj/machinery/recharge_station/proc/should_allow_entry(mob/entity)
+	if(isrobot(entity))
+		return TRUE
+	if(entity.legacy_get_rigsuit())
+		return TRUE
+	return FALSE
+
+/**
+ * @return amount used
+ */
+/obj/machinery/recharge_station/proc/provide_energy(mob/entity, kilojoules)
+	. = 0
+	#warn impl
 
 /obj/machinery/recharge_station/process(delta_time)
 	if(machine_stat & (BROKEN))
@@ -121,12 +139,9 @@
 
 			handle_human_nutrition(H)
 
+		#warn handle this shit
 		var/obj/item/hardsuit/wornrig = H.get_hardsuit()
 		if(wornrig) // just to make sure
-			for(var/obj/item/hardsuit_module/storedmod in wornrig)
-				if(weld_rate && storedmod.damage != 0 && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(weld_power_use * weld_rate, 1)))
-					to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
-					storedmod.damage = 0
 			var/obj/item/cell/rigcell = wornrig.get_cell()
 			if(rigcell)
 				var/diff = min(rigcell.max_charge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
@@ -274,7 +289,7 @@
 
 	else if(istype(L,  /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.isSynthetic() || H.wearing_rig)
+		if(H.isSynthetic() || H.wearing_rig || should_allow_entry(H))
 			add_fingerprint(H)
 			H.forceMove(src)
 			H.update_perspective()

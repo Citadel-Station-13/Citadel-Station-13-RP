@@ -97,6 +97,14 @@
 		return
 	return TRUE
 
+/**
+ * Is this an admin attempting to use admin interaction?
+ *
+ * todo: move this to a new 'interaction' framework for admin datums.
+ */
+/proc/is_admin_interactive(mob/user, datum/target)
+	return IsAdminGhost(user) // same checks for now
+
 /// Is the passed in mob a ghost with admin powers, doesn't check for AI interact like isAdminGhost() used to
 /proc/isAdminObserver(mob/user)
 	if(!user) //Are they a mob? Auto interface updates call this with a null src
@@ -550,6 +558,7 @@ var/list/global/base_miss_chance = list(
  * Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
  * Also used to weight the protection value that armour provides for covering that body part when calculating protection from full-body effects.
  */
+// todo: uhh should we do something about this..?
 var/list/global/organ_rel_size = list(
 	BP_HEAD   = 25,
 	BP_TORSO  = 70,

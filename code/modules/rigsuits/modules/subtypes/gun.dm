@@ -1,0 +1,20 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/**
+ * rig-mounted gun
+ * * please refrain from using these over item_deploy if possible. these are
+ *   generally going to be quite powerful. they're only included for completeness;
+ *   they're Really Quite Bad.
+ */
+/obj/item/rig_module/gun
+	zone_conflict_type = /obj/item/rig_module/gun
+	zone = RIG_ZONE_LEFT_ARM
+
+	/// automatically sets everything as needed.
+	var/lazy_automount_path
+
+#warn impl
+
+/obj/item/rig_module/gun/is_rig_click_module()
+	return TRUE

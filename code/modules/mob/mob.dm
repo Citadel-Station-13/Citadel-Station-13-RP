@@ -224,6 +224,7 @@
 
 /mob/statpanel_data(client/C)
 	. = ..()
+	SEND_SIGNAL(src, COMSIG_MOB_STATPANEL_STATUS_INJECTION, .)
 	if(C.statpanel_tab("Status"))
 		INJECT_STATPANEL_DATA_ENTRY(., "Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 		INJECT_STATPANEL_DATA_ENTRY(., "Map", "[(LEGACY_MAP_DATUM)?.name || "Loading..."]")

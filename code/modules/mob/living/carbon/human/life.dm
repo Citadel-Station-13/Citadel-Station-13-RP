@@ -1175,11 +1175,11 @@
 
 		//Eyes
 		//Check hardsuit first because it's two-check and other checks will override it.
-		if(istype(back,/obj/item/hardsuit))
-			var/obj/item/hardsuit/O = back
-			if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
-				if((!O.is_online() && O.offline_vision_restriction == 2) || (O.is_online() && O.vision_restriction == 2))
-					apply_status_effect(/datum/status_effect/sight/blindness, O.seal_delay)
+		// if(istype(back,/obj/item/hardsuit))
+		// 	var/obj/item/hardsuit/O = back
+		// 	if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
+		// 		if((!O.is_online() && O.offline_vision_restriction == 2) || (O.is_online() && O.vision_restriction == 2))
+		// 			apply_status_effect(/datum/status_effect/sight/blindness, O.seal_delay)
 
 		// Check everything else.
 
@@ -1503,11 +1503,11 @@
 					var/obj/item/clothing/head/welding/O = head
 					if(!O.up)
 						found_welder = 1
-				if(!found_welder && istype(back, /obj/item/hardsuit))
-					var/obj/item/hardsuit/O = back
-					if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
-						if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
-							found_welder = 1
+				// if(!found_welder && istype(back, /obj/item/hardsuit))
+				// 	var/obj/item/hardsuit/O = back
+				// 	if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
+				// 		if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
+				// 			found_welder = 1
 				if(absorbed) found_welder = 1
 			if(found_welder)
 				client.screen |= GLOB.global_hud.darkMask
@@ -1540,11 +1540,11 @@
 		SetSightSelf(species.get_vision_flags(src))
 
 		var/glasses_processed = 0
-		var/obj/item/hardsuit/hardsuit = back
-		if(istype(hardsuit) && hardsuit.visor)
-			if(!hardsuit.helmet || (head && hardsuit.helmet == head))
-				if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
-					glasses_processed = process_glasses(hardsuit.visor.vision.glasses)
+		// var/obj/item/hardsuit/hardsuit = back
+		// if(istype(hardsuit) && hardsuit.visor)
+		// 	if(!hardsuit.helmet || (head && hardsuit.helmet == head))
+		// 		if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
+		// 			glasses_processed = process_glasses(hardsuit.visor.vision.glasses)
 
 		if(glasses && !glasses_processed)
 			glasses_processed = process_glasses(glasses)

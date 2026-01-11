@@ -38,6 +38,8 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	var/injection_rate = 2
 	/// standard suspension limit multiplier
 	var/suspension_multiplier = 1
+	/// interface to draw from if provided
+	var/datum/item_interface/interface
 	/// all beams
 	var/list/datum/beam/beams_by_entity
 	/// maximum distance
@@ -190,7 +192,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	)
 
 /obj/item/stream_projector/medichine/proc/effective_cell_datum()
-	return inserted_cartridge?.cell_datum
+	return isnull(interface)? inserted_cartridge?.cell_datum : interface.query_medichines()
 
 /obj/item/stream_projector/medichine/process(delta_time)
 	..()
@@ -205,7 +207,6 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 		drop_all_targets()
 		return
 	// todo: this is for multi-cell support; implement that.
-	// todo: this needs to work for mounts and item interfaces, so... how do we do that?
 	var/list/datum/medichine_cell/injecting_packages = list(effective_package)
 	// for each cell
 	for(var/datum/medichine_cell/injecting_package as anything in injecting_packages)
@@ -238,7 +239,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	/// what our color should be
 	var/current_color = "#ffffff"
 	/// our particles
-	var/atom/movable/particle_render/renderer
+	var/atom/movable/render/renderer
 
 /datum/component/medichine_field/Initialize()
 	if(!isatom(parent))
@@ -326,7 +327,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 /datum/component/medichine_field/proc/ensure_visuals()
 	if(!isnull(renderer))
 		return
-	renderer = new /atom/movable/particle_render/medichine_field(null)
+	renderer = new /atom/movable/render/medichine_field(null)
 	if(ismovable(parent))
 		var/atom/movable/entity = parent
 		entity.vis_contents += renderer
@@ -339,7 +340,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 
 //? VFX
 
-/atom/movable/particle_render/medichine_field
+/atom/movable/render/medichine_field
 	alpha = 200
 
 /particles/medichine_field

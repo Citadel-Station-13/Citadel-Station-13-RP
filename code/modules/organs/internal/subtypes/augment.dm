@@ -83,7 +83,7 @@
 	var/obj/item/I = source
 	I.visible_message(SPAN_NOTICE("[I] snaps back into [src]!"))
 	I.forceMove(src)
-	. = COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
+	. = COMPONENT_ITEM_INV_OP_RELOCATE | COMPONENT_ITEM_INV_OP_SUPPRESS_SOUND
 
 /obj/item/organ/internal/augment/proc/check_item_yank(obj/item/I)
 	if(I.loc != src && I.loc != owner)

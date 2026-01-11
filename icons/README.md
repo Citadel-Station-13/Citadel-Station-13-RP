@@ -41,6 +41,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
       - /clothing - clothing
       - /machinery - machinery
       - /structures - structures
+    - /overmaps - **All** overmap sprites, whether or not it's screen rendering, goes in here
   - /objects - miscellaneous objects that are not items, machinery, or structures
   - /runtime - follow similar structure inside this, treat it as a   sub-copy. icons in this are copied over for use during runtime
     - currently being deprecated; we have chosen to instead copy over all icons/sounds, so the runtime

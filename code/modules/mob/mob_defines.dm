@@ -351,7 +351,7 @@
 
 	//? Unit Tests
 	/// A mock client, provided by tests and friends
-	var/datum/client_interface/mock_client
+	var/datum/mocking/client/mock_client
 
 	//? Throwing
 	/// whether or not we're prepared to throw stuff.

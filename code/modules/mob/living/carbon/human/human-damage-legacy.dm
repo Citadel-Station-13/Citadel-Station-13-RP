@@ -310,9 +310,11 @@
 
 //Heal MANY external organs, in random order
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
+// todo: this is awful, should properly spread it out along with take_overall_damage.
 /mob/living/carbon/human/heal_overall_damage(var/brute, var/burn, var/include_robo)
 	var/list/obj/item/organ/external/parts = get_damaged_organs(brute,burn)
 
+	. = 0
 	var/update = 0
 	while(parts.len && (brute>0 || burn>0) )
 		var/obj/item/organ/external/picked = pick(parts)
@@ -324,6 +326,8 @@
 
 		brute -= (brute_was-picked.brute_dam)
 		burn -= (burn_was-picked.burn_dam)
+		// todo: this is dumb
+		. += (brute_was-picked.brute_dam) + (burn_was-picked.burn_dam)
 
 		parts -= picked
 	update_health()

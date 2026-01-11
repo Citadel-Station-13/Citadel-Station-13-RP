@@ -211,14 +211,17 @@ ColorTone(rgb, tone)
 /proc/BlendHSV(hsv1, hsv2, amount)
 	return hsv_gradient(amount, 0, hsv1, 1, hsv2, "loop")
 
-/*
-	Smooth blend between RGB colors
-
-	amount=0 is the first color
-	amount=1 is the second color
-	amount=0.5 is directly between the two colors
-
-	amount<0 or amount>1 are allowed
+/**
+ * Smooth blend between RGB colors
+ *
+ * amount=0 is the first color
+ * amount=1 is the second color
+ * amount=0.5 is directly between the two colors
+ *
+ * amount<0 or amount>1 are allowed
+ *
+ * if rgb1/rgb2 are lists, they are treated as rgb lists directly.
+ * it is up to you to not pass in dumb shit.
  */
 /proc/BlendRGB(rgb1, rgb2, amount)
 	return rgb_gradient(amount, 0, rgb1, 1, rgb2, "loop")

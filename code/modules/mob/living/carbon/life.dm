@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /mob/living/carbon/forced_metabolism(seconds)
 	. = ..()

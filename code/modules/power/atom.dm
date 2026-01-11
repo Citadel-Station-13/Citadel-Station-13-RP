@@ -1,14 +1,12 @@
 /**
  * Attempt to drain power from this atom
  *
- * *Uses universal units.*
- *
  * @params
  * - actor - thing draining, can be null
  * - amount - amount to drain in kilojoules
  * - flags
  *
- * @return Amount drained
+ * @return Amount drained in kilojoules
  */
 /atom/proc/drain_energy(datum/actor, amount, flags)
 	return 0

@@ -9,3 +9,11 @@
 #define COMSIG_MOB_ITEM_PICKUP "mob_pickup_item"
 /// A mob has just dropped an item. Called on [/mob] from base of [/obj/item/dropped()]: (/obj/item/equipped_item, inv_op_flags, new_loc)
 #define COMSIG_MOB_ITEM_DROPPED "mob_dropped_item"
+
+//* Return values for all of the above 4 signals
+//  todo: implement on dropped
+//  todo: implement on pickup
+//  todo: implement on unequipped
+//  todo: implement on equipped
+	#define COMOPNENT_MOB_INV_OP_RELOCATE				(1<<0)
+	#define COMOPNENT_MOB_INV_OP_SUPPRESS_SOUND		(1<<1)
