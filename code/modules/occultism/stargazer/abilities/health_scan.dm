@@ -5,3 +5,5 @@
 	id = "health_scan"
 	name = "Probe"
 	desc = "Attempt to sense the biological status of a mind's body."
+
+#warn impl

@@ -6,3 +6,5 @@
 	name = "Mindlink"
 	/// much like MMIs, the description hides the horrors of what this actually is.
 	desc = "Imprint your neural patterns on this mind, creating a more lasting attunement."
+
+#warn impl

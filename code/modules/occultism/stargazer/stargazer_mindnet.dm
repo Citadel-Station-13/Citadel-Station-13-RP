@@ -137,7 +137,7 @@
 /datum/stargazer_mindnet/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "misc/PrometheanMindnet")
+		ui = new(user, src, "misc/StargazerMindnet")
 		ui.set_autoupdate(TRUE)
 		ui.open()
 

@@ -93,11 +93,13 @@
 
 	abilities = list(
 		/datum/ability/species/xenochimera/regenerate,
+		// todo: remove / rework to actual thermal (temperature) vision
 		/datum/ability/species/xenochimera/thermal_sight,
 		/datum/ability/species/xenochimera/voice_mimic,
 		/datum/ability/species/xenochimera/hatch,
 		/datum/ability/species/xenochimera/commune,
 		/datum/ability/species/xenochimera/dissonant_shriek,
+		// todo: remove / rework to sonar vision
 		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_flight,
 	)

@@ -6,3 +6,6 @@
 	name = "Ping"
 	desc = "Ping the targeted mind, ascertaining if they sense you and \
 	where they are."
+
+#warn impl
+
