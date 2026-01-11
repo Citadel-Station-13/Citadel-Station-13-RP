@@ -44,6 +44,21 @@
 	var/list/status_indicators
 	var/list/status_indicator_overlays
 
+/**
+ * Intialize a mob
+ *
+ * Adds to global lists
+ * * GLOB.mob_list
+ * * dead_mob_list - if mob is dead
+ * * living_mob_list - if the mob is alive
+ *
+ * Other stuff:
+ * * Sets the mob focus to itself
+ * * Generates huds
+ * * Creates inventory
+ * * If there are any global alternate apperances apply them to this mob
+ * * Intialize the transform of the mob
+ */
 /mob/Initialize(mapload)
 	// mob lists
 	mob_list_register()
