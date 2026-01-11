@@ -23,6 +23,20 @@
 #define BODY_ZONE_MOUTH "mouth"
 #define BODY_ZONE_EYES "eyes"
 
+GLOBAL_REAL_LIST(all_body_zones) = list(
+	BODY_ZONE_HEAD,
+	BODY_ZONE_TORSO,
+	BODY_ZONE_GROIN,
+	BODY_ZONE_L_ARM,
+	BODY_ZONE_L_FOOT,
+	BODY_ZONE_L_HAND,
+	BODY_ZONE_L_LEG,
+	BODY_ZONE_R_ARM,
+	BODY_ZONE_R_FOOT,
+	BODY_ZONE_R_HAND,
+	BODY_ZONE_R_LEG,
+)
+
 /**
  * Simplify a target body zone to a more course one.
  *
