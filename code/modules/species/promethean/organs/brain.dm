@@ -13,14 +13,30 @@
 	var/owner_species
 	var/owner_base_species
 
-/obj/item/organ/internal/brain/promethean/is_open_container()
-	return TRUE
+	/**
+	 * Stargazer mindnet holder
+	 */
+	var/datum/stargazer_mindnet/promethean/mindnet
+
+	organ_actions = list(
+		/datum/action/organ_action/promethean_stargazer_mindnet_panel,
+	)
+
+	#warn organ action for mindnet
 
 /obj/item/organ/internal/brain/promethean/Initialize(mapload)
 	. = ..()
 	create_reagents(50)
 	set_owner_vars()
+	mindnet = new(src)
 	addtimer(CALLBACK(src, PROC_REF(sync_color)), 10 SECONDS)
+
+/obj/item/organ/internal/brain/promethean/Destroy()
+	QDEL_NULL(mindnet)
+	return ..()
+
+/obj/item/organ/internal/brain/promethean/is_open_container()
+	return TRUE
 
 /obj/item/organ/internal/brain/promethean/proc/set_owner_vars()
 	if(!ishuman(owner))
@@ -118,33 +134,19 @@
 	qdel(src)
 	return TRUE
 
-/**
- * The core of a Stargazer promethean.
- * * All player prometheans are currently this, unlike on main.
- *   It's just this way so you can still make the version that .. isn't this.
- * * We would use an abstract organ to do this but organ rewrite isn't done yet so this goes in brain.
- *   Plus, a slime only has brain + abstract organs anyways, so...
- */
-/obj/item/organ/internal/brain/promethean/stargazer
-	var/datum/promethean_mindnet/mindnet
+/datum/action/organ_action/promethean_stargazer_mindnet_panel
+	target_type = /obj/item/organ/internal/brain/promethean
 
-	#warn inject into here
-
-/obj/item/organ/internal/brain/promethean/stargazer/Initialize(mapload)
-	. = ..()
-	mindnet = new(src)
-
-/obj/item/organ/internal/brain/promethean/stargazer/Destroy()
-	QDEL_NULL(mindnet)
-	return ..()
-
-/datum/action/organ_action/promethean_mindnet_panel
-	target_type = /obj/item/organ/internal/brain/promethean/stargazer
-
+	#warn srpite
 	name = "Stargazer Mindlink"
 	desc = "Psychically commune with those around you."
 
-#warn impl
+/datum/action/organ_action/promethean_stargazer_mindnet_panel/invoke_target(obj/item/organ/internal/brain/promethean/target, datum/event_args/actor/actor)
+	if(!target.mindnet)
+		actor.chat_feedback(SPAN_WARNING("You don't have a mindnet anymore, somehow."))
+		return TRUE
+	target.mindnet.ui_interact(actor.initiator)
+	return TRUE
 
 /datum/chemical_reaction/promethean_brain_revival
 	name = "Promethean Revival"

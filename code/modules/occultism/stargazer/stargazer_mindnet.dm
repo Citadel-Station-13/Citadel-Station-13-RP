@@ -1,17 +1,18 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2025 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
- * State / ability holder for a Stargazer's mindnet system.
+ * State / ability holder for a Stargazer mindnet system.
  *
  * * Remember Main Server's Stargazer slimes?
- *   This is that, but as a passive thing, and heavily reworked.
+ *   This is that, but as a passive thing, and heavily reworked, and also generic.
  * * Linkage is tracked by mind, not by mob. Owner is tracked by brain, not by mind.
- *   A mirrored Promethean loses their links, but a mirrored target does not get unlinked.
+ *   A mirrored Promethean / Xenochimera / whatnot loses their links,
+ *   but a mirrored target does not get unlinked.
  *
  * ## What does this do?
  *
- * Prometheans with Stargazer capabilities are capable of what is considered
+ * Stargazers are capable of what is considered
  * 'cooperative' telepathy. They can send telepathic messages, and sometimes
  * get it back, but the receiving end has to want to; basically, no mind-reading,
  * no mind-control, no locating people who don't want to be located (outside of
@@ -50,15 +51,17 @@
  * the actual scan is based on spatial grids and only mindlinked entities can be
  * detected cross-overmap.
  */
-/datum/promethean_mindnet
-	/// owning slime core
-	/// * Nullable; mindnets can be detached / transferred in-code, even if it's impossible in game.
-	var/obj/item/organ/internal/brain/promethean/stargazer/owning_core
+/datum/stargazer_mindnet
 	/// Established mindlinks, by mind-ref
 	/// * Key is `/datum/mind_ref`
-	/// * Value is `/datum/promethean_mindlink`
+	/// * Value is `/datum/stargazer_mindlink`
 	/// * Note that one mind = one mind ref; that is why this is sound behavior to use mind-ref's as keys.
 	var/list/link_lookup
+	/// abilities by id
+	/// * Usually, things like abilities are global singletons, but for now let's
+	///   not overcomplicate.
+	var/list/ability_lookup
+	#warn generate this
 
 	/// Passive attunement always
 	/// * FOR THE LOVE OF ALL THAT IS HOLY LEAVE THIS AT ZERO
@@ -85,51 +88,60 @@
 	var/attunement_required_for_presence_sensing = 1
 
 	/// overmap pixel distance for 'same overmap'
+	/// * this applies to mindlinks as well
 	/// * null = need to be in same sector, 0 = must contact
 	var/overmap_pixel_distance_considered_same = WORLD_ICON_SIZE * 0.5
 
-/datum/promethean_mindnet/New(obj/item/organ/internal/brian/promethean/stargazer/core)
-	src.owning_core = core
-
-/datum/promethean_mindnet/Destroy()
-	if(owning_core)
-		if(owning_core.mindnet == src)
-			owning_core.mindnet = null
-		owning_core = null
-	return ..()
+	/// executing functions
+	var/list/datum/stargazer_mindnet_exec/executing
 
 
 #warn impl
 
-/datum/promethean_mindnet/proc/get_attunement_power_for_entity(mob/target)
+/datum/stargazer_mindnet/proc/get_attunement_power_for_entity(mob/target)
 	if(!istype(target))
 		return 0
 	return get_attunement_power_for_mind(target.mind)
 
-/datum/promethean_mindnet/proc/get_attunement_power_for_mind(datum/mind/mind)
+/datum/stargazer_mindnet/proc/get_attunement_power_for_mind(datum/mind/mind)
+	var/mob/resolved_mob = mind.current
+
 	. = 0
 	. += attunement_power_global
 	#warn rest
 
-	var/datum/promethean_mindlink/link = link_lookup[mind]
+	var/datum/stargazer_mindlink/link = link_lookup[mind]
 	if(link)
+
 		. += link.attunement_power_global
 
-/datum/promethean_mindnet/proc/erase_mind_link(datum/mind/mind)
-	link_lookup[mind.mind_ref()]
+/datum/stargazer_mindnet/proc/erase_mind_link(datum/mind/mind)
+	var/datum/mind_ref/mind_ref = mind.mind_ref()
+	if(!link_lookup[mind_ref])
+		return
+	link_lookup[mind_ref] = null
 	update_static_data()
 
-/datum/promethean_mindnet/proc/get_mind_link(datum/mind/mind)
+/datum/stargazer_mindnet/proc/get_mind_link(datum/mind/mind)
+	var/datum/mind_ref/mind_ref = mind.mind_ref()
+	return link_lookup[mind_ref]
 
-/datum/promethean_mindnet/proc/create_mind_link(datum/mind/mind)
+/datum/stargazer_mindnet/proc/get_or_create_mind_link(datum/mind/mind)
+	var/datum/mind_ref/mind_ref = mind.mind_ref()
+	if(link_lookup[mind_ref])
+		return link_lookup[mind_ref]
+	link_lookup[mind_ref] = new /datum/stargazer_mindlink(src, mind_ref)
+	update_static_data()
+	return link_lookup[mind_ref]
 
-/datum/promethean_mindnet/proc/get_or_create_mind_link(datum/mind/mind)
+/datum/stargazer_mindnet/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "misc/PrometheanMindnet")
+		ui.set_autoupdate(TRUE)
+		ui.open()
 
-/datum/promethean_mindnet/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
-
-
-/datum/promethean_mindnet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+/datum/stargazer_mindnet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
@@ -137,12 +149,53 @@
 		if("invoke")
 		if("rescan")
 
-/datum/promethean_mindnet/ui_data(mob/user, datum/tgui/ui)
+/datum/stargazer_mindnet/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/datum/promethean_mindnet/ui_static_data(mob/user, datum/tgui/ui)
+/datum/stargazer_mindnet/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
+/datum/stargazer_mindnet/proc/emit_raw_message_to_owner(html)
+	#warn impl
 
+/datum/stargazer_mindnet/proc/emit_message_to_owner(html)
+	emit_raw_message_to_owner(html)
+	#warn impl
 
+/**
+ * Default variant for Prometheans
+ */
+/datum/stargazer_mindnet/promethean
+	/// owning slime core
+	/// * Nullable; mindnets can be detached / transferred in-code, even if it's impossible in game.
+	var/obj/item/organ/internal/brain/promethean/owning_core
 
+/datum/stargazer_mindnet/promethean/New(obj/item/organ/internal/brian/promethean/core)
+	src.owning_core = core
+
+/datum/stargazer_mindnet/promethean/Destroy()
+	if(owning_core)
+		if(owning_core.mindnet == src)
+			owning_core.mindnet = null
+		owning_core = null
+	return ..()
+
+/**
+ * Default variant for Xenochimerae
+ */
+/datum/stargazer_mindnet/xenochimera
+	/// owning slime core
+	/// * Nullable; mindnets can be detached / transferred in-code, even if it's impossible in game.
+	var/obj/item/organ/internal/brain/xenochimera/owning_core
+
+/datum/stargazer_mindnet/xenochimera/New(obj/item/organ/internal/brian/xenochimera/core)
+	src.owning_core = core
+
+/datum/stargazer_mindnet/xenochimera/Destroy()
+	if(owning_core)
+		if(owning_core.mindnet == src)
+			owning_core.mindnet = null
+		owning_core = null
+	return ..()
+
+// TODO: abstract organ variant for adminbus
