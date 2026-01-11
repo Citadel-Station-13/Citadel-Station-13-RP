@@ -57,7 +57,8 @@
  *
  * Other stuff:
  * * Sets the mob focus to itself
- * * Generates hudsInven
+ * * Generates huds
+ * * Creates inventory
  * * If there are any global alternate apperances apply them to this mob
  * * Intialize the transform of the mob
  */
