@@ -45,6 +45,10 @@
 
 	return input
 
+/// Runs STRIP_HTML_FULL and sanitize.
+/proc/strip_html_full(text, limit = MAX_MESSAGE_LEN)
+	return sanitize(STRIP_HTML_FULL(text, limit))
+
 /**
  * standard sanitization for atom names
  *
