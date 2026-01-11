@@ -66,6 +66,7 @@ FLOOR SAFES
 	return ..()
 
 /obj/structure/safe/wrench_act(obj/item/tool, datum/event_args/actor/clickchain/e_args, flags, hint)
+	var/mob/user = e_args.performer
 	if(!open)
 		balloon_alert(user, "must be open!")
 		return TRUE
