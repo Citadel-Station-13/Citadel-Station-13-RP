@@ -3579,6 +3579,7 @@
 #include "code\modules\mapping\map_helpers\electrochromatic_linker.dm"
 #include "code\modules\mapping\map_helpers\engine_loader.dm"
 #include "code\modules\mapping\map_helpers\gear_marker.dm"
+#include "code\modules\mapping\map_helpers\multiz_helpers.dm"
 #include "code\modules\mapping\map_helpers\paint.dm"
 #include "code\modules\mapping\map_helpers\paint_stripe.dm"
 #include "code\modules\mapping\map_helpers\role_marker.dm"
