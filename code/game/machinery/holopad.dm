@@ -249,13 +249,15 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		var/obj/overmap/entity/visitable/other = get_overmap_sector(in_respects_to)
 		if(sector != other)
 			return "Anonymous"
-	return "[sector? "[sector.scanner_name || sector.name]: " : ""][get_area(src)?:name] - [holopad_uid]"
+	var/area/A = get_area(src)
+	return "[sector? "[sector.scanner_name || sector.name]: " : ""][A?.name] - [holopad_uid]"
 
 /**
  * our holocall category
  */
 /obj/machinery/holopad/proc/holocall_category()
-	return "[get_area(src)?:name]"
+	var/area/A = get_area(src)
+	return "[A?.name]"
 
 //? Holocall Helpers
 

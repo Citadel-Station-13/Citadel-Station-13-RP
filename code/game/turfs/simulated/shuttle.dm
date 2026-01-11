@@ -25,7 +25,8 @@
 	if(join_flags in GLOB.cornerdirs)	// We're joined at an angle
 		// Dynamic lighting dissolver
 		var/turf/T = get_step(src, turn(join_flags,180))
-		if(!T || !T.dynamic_lighting || !get_area(T).dynamic_lighting)
+		var/area/A = get_area(T)
+		if(!T || !T.dynamic_lighting || !A.dynamic_lighting)
 			add_overlay(antilight_cache["[join_flags]"], TRUE)
 			return
 	cut_overlay(antilight_cache["[join_flags]"], TRUE)
