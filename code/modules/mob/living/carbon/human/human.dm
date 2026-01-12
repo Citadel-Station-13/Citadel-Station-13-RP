@@ -869,9 +869,7 @@
 /mob/living/carbon/human/get_visible_gender()
 	if(wear_suit && wear_suit.inv_hide_flags & HIDEJUMPSUIT && ((head && head.inv_hide_flags & HIDEMASK) || wear_mask))
 		return PLURAL //plural is the gender-neutral default
-	if(species)
-		if(species.ambiguous_genders)
-			return PLURAL // regardless of what you're wearing, your gender can't be figured out
+	//! attention! ambiguous_genders is now handled contextually in examine.dm based on who is examining
 	return get_gender()
 
 /mob/living/carbon/human/proc/increase_germ_level(n)
