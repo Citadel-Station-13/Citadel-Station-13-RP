@@ -165,7 +165,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 	var/turf/flooring_near_beacon = list()
 	var/turf/beacon_turf = get_turf(beacon_ref.resolve())
 	for(var/turf/floor as anything in RANGE_TURFS(1, beacon_turf))
-		if(!floor.is_blocked_turf())
+		if(!is_blocked_turf(floor))
 			flooring_near_beacon += floor
 
 	if(!length(flooring_near_beacon))
