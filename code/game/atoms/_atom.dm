@@ -189,6 +189,10 @@
 	var/base_pixel_x = 0
 	/// Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
+	///Default pixel w shifting for the atom's icon.
+	var/base_pixel_w = 0
+	///Default pixel z shifting for the atom's icon.
+	var/base_pixel_z = 0
 	/// expected icon width; centering offsets will be calculated from this and our base pixel x.
 	var/icon_x_dimension = 32
 	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
