@@ -3,3 +3,4 @@
 
 /datum/prototype/robot_chassis/baseline
 	name = "Baseline"
+	id = "baseline"

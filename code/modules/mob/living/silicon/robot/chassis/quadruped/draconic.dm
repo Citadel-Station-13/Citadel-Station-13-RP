@@ -3,3 +3,4 @@
 
 /datum/prototype/robot_chassis/quadruped/draconic
 	name = "Draconic"
+	id = "draconic"

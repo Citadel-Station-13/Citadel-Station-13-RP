@@ -3,3 +3,4 @@
 
 /datum/prototype/robot_chassis/biped
 	name = "Biped"
+	id = "biped"

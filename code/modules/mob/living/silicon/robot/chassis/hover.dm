@@ -3,3 +3,4 @@
 
 /datum/prototype/robot_chassis/hover
 	name = "Hover"
+	id = "hover"

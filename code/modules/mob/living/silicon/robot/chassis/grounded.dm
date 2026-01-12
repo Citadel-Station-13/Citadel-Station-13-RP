@@ -3,3 +3,4 @@
 
 /datum/prototype/robot_chassis/grounded
 	name = "Grounded"
+	id = "grounded"

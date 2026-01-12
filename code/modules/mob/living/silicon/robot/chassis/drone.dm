@@ -3,3 +3,4 @@
 
 /datum/prototype/robot_chassis/drone
 	name = "Drone"
+	id = "drone"
