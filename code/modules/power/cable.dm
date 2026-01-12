@@ -231,7 +231,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			O.show_message("<span class='warning'>[user] cuts the cable.</span>", 1)
 
 		if(d1 == DOWN || d2 == DOWN)
-			var/turf/turf = get_vertical_step(src, DOWN)
+			var/turf/turf = get_step_multiz(src, DOWN)
 			if(turf)
 				for(var/obj/structure/cable/c in turf)
 					if(c.d1 == UP || c.d2 == UP)
@@ -434,7 +434,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		if(cable_dir == 0)
 			continue
 		var/reverse = global.reverse_dir[cable_dir]
-		T = get_vertical_step(src, cable_dir)
+		T = get_step_multiz(src, cable_dir)
 		if(T)
 			for(var/obj/structure/cable/C in T)
 				if(C.d1 == reverse || C.d2 == reverse)
