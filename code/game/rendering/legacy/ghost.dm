@@ -2,6 +2,7 @@
 	icon = 'icons/screen/hud/common/observer.dmi'
 
 /atom/movable/screen/ghost/MouseEntered(location,control,params)
+	. = ..()
 	flick(icon_state + "_anim", src)
 	openToolTip(usr, src, params, title = name, content = desc)
 
