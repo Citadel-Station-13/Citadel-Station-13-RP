@@ -1,4 +1,4 @@
-var/global/list/total_extraction_beacons = list()
+GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 // todo: this should be included in the air-support module being added later, not just a mining exclusive
 
@@ -8,12 +8,19 @@ var/global/list/total_extraction_beacons = list()
 	icon = 'icons/obj/fulton.dmi'
 	icon_state = "extraction_pack"
 	w_class = WEIGHT_CLASS_NORMAL
-	var/obj/structure/extraction_point/beacon
+	/// Beacon weakref
+	var/datum/weakref/beacon_ref
+	/// List of networks
 	var/list/beacon_networks = list("station")
+	/// Number of uses left
 	var/uses_left = 3
-	var/can_use_indoors = FALSE
-	var/safe_for_living_creatures = 1
+	/// Can be used indoors
+	var/can_use_indoors
+	/// Can be used on living creatures
+	var/safe_for_living_creatures = TRUE
 	var/stuntime = 15
+	/// Maximum force that can be used to extract
+	var/max_force_fulton = MOVE_FORCE_STRONG
 
 /obj/item/extraction_pack/wormhole
 	name = "wormhole fulton extraction pack"
@@ -27,143 +34,171 @@ var/global/list/total_extraction_beacons = list()
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "phoroncrate"
 
-/obj/item/extraction_pack/examine(mob/user, dist)
+/obj/item/extraction_pack/examine()
 	. = ..()
-	. +="It has [uses_left] use\s remaining."
+	. += SPAN_INFOPLAIN("It has [uses_left] use\s remaining.")
+
+	var/obj/structure/extraction_point/beacon = beacon_ref?.resolve()
+
+	if(isnull(beacon))
+		beacon_ref = null
+		. += SPAN_INFOPLAIN("It is not linked to a beacon.")
+		return
+
+	. += SPAN_INFOPLAIN("It is linked to [beacon.name].")
 
 /obj/item/extraction_pack/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	var/list/possible_beacons = list()
-	for(var/B in global.total_extraction_beacons)
-		var/obj/structure/extraction_point/EP = B
-		if(EP.beacon_network in beacon_networks)
-			possible_beacons += EP
+	for(var/datum/weakref/point_ref as anything in GLOB.total_extraction_beacons)
+		var/obj/structure/extraction_point/extraction_point = point_ref.resolve()
+		if(isnull(extraction_point))
+			GLOB.total_extraction_beacons.Remove(point_ref)
+			continue
+		if(extraction_point.beacon_network in beacon_networks)
+			possible_beacons += extraction_point
 
-	if(!possible_beacons.len)
-		to_chat(user, "There are no extraction beacons in existence!")
+	if(!length(possible_beacons))
+		balloon_alert(user, "no beacons")
 		return
 
-	else
-		var/A
-
-		A = input("Select a beacon to connect to", "Balloon Extraction Pack", A) as null|anything in possible_beacons
-
-		if(!A)
-			return
-		beacon = A
-		to_chat(user, "You link the extraction pack to the beacon system.")
-
-/obj/item/extraction_pack/afterattack(atom/movable/target, mob/user, clickchain_flags, list/params)
-	if(!beacon)
-		to_chat(user, "[src] is not linked to a beacon, and cannot be used.")
+	var/chosen_beacon = tgui_input_list(user, "Beacon to connect to", "Balloon Extraction Pack", sortNames(possible_beacons))
+	if(isnull(chosen_beacon))
 		return
-	if(!can_use_indoors)
-		var/turf/T = get_turf(target)
-		if(T && !T.outdoors)
-			to_chat(user, "[src] can only be used on things that are outdoors!")
-			return
+
+	beacon_ref = WEAKREF(chosen_beacon)
+	balloon_alert(user, "linked!")
+
+/obj/item/extraction_pack/afterattack(atom/interacting_with, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(!istype(target))
+	if(!ismovable(interacting_with))
 		return
-	else
-		if(!safe_for_living_creatures && check_for_living_mobs(target))
-			to_chat(user, "[src] is not safe for use with living creatures, they wouldn't survive the trip back!")
-			return
-		if(!isturf(target.loc)) // no extracting stuff inside other stuff
-			return
-		if(target.anchored)
-			return
-		to_chat(user, "<span class='notice'>You start attaching the pack to [target]...</span>")
-		if(do_after(user,50,target=target))
-			to_chat(user, "<span class='notice'>You attach the pack to [target] and activate it.</span>")
-			/* No components, sorry. No convienence for you!
-			if(loc == user && istype(user.back, /obj/item/storage/backpack))
-				var/obj/item/storage/backpack/B = user.back
-				B.SendSignal(COMSIG_TRY_STORAGE_INSERT, src, user, FALSE, FALSE)
-			*/
-			uses_left--
-			if(uses_left <= 0)
-				user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-			var/mutable_appearance/balloon
-			var/mutable_appearance/balloon2
-			var/mutable_appearance/balloon3
-			if(isliving(target))
-				var/mob/living/M = target
-				M.adjust_stunned(20 * 10) // Keep them from moving during the duration of the extraction
-				if(M.buckled)
-					M.buckled.unbuckle_mob(M)
-			else
-				target.anchored = TRUE
-				target.density = FALSE
-			var/obj/effect/extraction_holder/holder_obj = new(target.loc)
-			holder_obj.appearance = /obj/item/extraction_holdercrate
-			target.forceMove(holder_obj)
-			balloon2 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_expand")
-			balloon2.pixel_y = 18
-			balloon2.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
-			holder_obj.add_overlay(balloon2)
-			sleep(4)
-			balloon = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_balloon")
-			balloon.pixel_y = 18
-			balloon.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
-			holder_obj.cut_overlay(balloon2)
-			holder_obj.add_overlay(balloon)
-			playsound(holder_obj.loc, 'sound/items/fulext_deploy.wav', 50, 1, -3)
-			animate(holder_obj, pixel_z = 10, time = 20)
-			sleep(20)
-			animate(holder_obj, pixel_z = 15, time = 10)
-			sleep(10)
-			animate(holder_obj, pixel_z = 10, time = 10)
-			sleep(10)
-			animate(holder_obj, pixel_z = 15, time = 10)
-			sleep(10)
-			animate(holder_obj, pixel_z = 10, time = 10)
-			sleep(10)
-			playsound(holder_obj.loc, 'sound/items/fultext_launch.wav', 50, 1, -3)
-			animate(holder_obj, pixel_z = 1000, time = 30)
-			if(ishuman(target))
-				var/mob/living/carbon/L = target
-				L.adjust_stunned(20 * stuntime)
-				L.drowsyness = 0
-			sleep(30)
-			var/list/flooring_near_beacon = list()
-			for(var/turf/T in range(1, beacon))
-				if(T.density)
-					continue
-				flooring_near_beacon += T
-			if(!length(flooring_near_beacon))
-				holder_obj.forceMove(get_turf(beacon))
-			else
-				holder_obj.forceMove(pick(flooring_near_beacon))
-			animate(holder_obj, pixel_z = 10, time = 50)
-			sleep(50)
-			animate(holder_obj, pixel_z = 15, time = 10)
-			sleep(10)
-			animate(holder_obj, pixel_z = 10, time = 10)
-			sleep(10)
-			balloon3 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_retract")
-			balloon3.pixel_y = 10
-			balloon3.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
-			holder_obj.cut_overlay(balloon)
-			holder_obj.add_overlay(balloon3)
-			sleep(4)
-			holder_obj.cut_overlay(balloon3)
-			target.anchored = FALSE // An item has to be unanchored to be extracted in the first place.
-			target.density = initial(target.density)
-			animate(holder_obj, pixel_z = 0, time = 5)
-			sleep(5)
-			target.forceMove(holder_obj.loc)
-			qdel(holder_obj)
-			if(uses_left <= 0)
-				qdel(src)
+	if(!isturf(interacting_with.loc)) // no extracting stuff inside other stuff
+		return
+	var/atom/movable/thing = interacting_with
+	if(thing.anchored)
+		return
 
+	var/obj/structure/extraction_point/beacon = beacon_ref?.resolve()
+	if(isnull(beacon))
+		balloon_alert(user, "not linked!")
+		beacon_ref = null
+		return
+	var/turf/turf = get_turf(thing)
+	if(!can_use_indoors)
+		if(!turf?.outdoors)
+			balloon_alert(user, "not outdoors!")
+			return
+	if(!safe_for_living_creatures && check_for_living_mobs(thing))
+		to_chat(user, SPAN_WARNING("[src] is not safe for use with living creatures, they wouldn't survive the trip back!"))
+		balloon_alert(user, "not safe!")
+		return
+	if(thing.move_resist > max_force_fulton)
+		balloon_alert(user, "too heavy!")
+		return
+
+	balloon_alert_to_viewers("attaching...")
+	playsound(thing, 'sound/items/zip.ogg', vol = 50, vary = TRUE)
+	if(isliving(thing))
+		var/mob/living/creature = thing
+		if(creature.mind)
+			to_chat(thing, SPAN_USERDANGER("You are being extracted! Stand still to proceed."))
+
+	if(!do_after(user, 5 SECONDS, target = thing))
+		return
+
+	balloon_alert_to_viewers("extracting!")
+	// if(loc == user && ishuman(user))
+	// 	var/mob/living/carbon/human/human_user = user
+	// 	human_user.back?.atom_storage?.attempt_insert(src, user, force = STORAGE_SOFT_LOCKED)
+	uses_left--
+
+	if(uses_left <= 0)
+		user.transfer_item_to_loc(src, thing, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+
+	if(isliving(thing))
+		var/mob/living/creature = thing
+		creature.set_paralyzed(32 SECONDS) // Keep them from moving during the duration of the extraction
+		if(creature.buckled)
+			creature.buckled.unbuckle_mob(creature, TRUE) // Unbuckle them to prevent anchoring problems
+	else
+		thing.set_anchored(TRUE)
+		thing.set_density(FALSE)
+
+	var/obj/effect/extraction_holder/holder_obj = new(get_turf(thing))
+	holder_obj.appearance = thing.appearance
+	thing.forceMove(holder_obj)
+	var/mutable_appearance/balloon2 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_expand", layer = ABOVE_MOB_LAYER+0.1, appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART)
+	balloon2.pixel_z = 10
+	holder_obj.add_overlay(balloon2)
+	addtimer(CALLBACK(src, PROC_REF(create_balloon), thing, user, holder_obj, balloon2), 0.4 SECONDS)
+
+/obj/item/extraction_pack/proc/create_balloon(atom/movable/thing, mob/living/user, obj/effect/extraction_holder/holder_obj, mutable_appearance/balloon2)
+	var/mutable_appearance/balloon = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_balloon", layer = ABOVE_MOB_LAYER+0.1, appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART)
+	balloon.pixel_z = 10
+	holder_obj.cut_overlay(balloon2)
+	holder_obj.add_overlay(balloon)
+	playsound(holder_obj.loc, 'sound/items/fultext_deploy.ogg', vol = 50, vary = TRUE, extrarange = -3)
+
+	animate(holder_obj, pixel_z = 10, time = 2 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_z = 5, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_z = -5, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_z = 5, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_z = -5, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
+
+	sleep(6 SECONDS)
+
+	playsound(holder_obj.loc, 'sound/items/fultext_launch.ogg', vol = 50, vary = TRUE, extrarange = -3)
+	animate(holder_obj, pixel_z = 1000, time = 3 SECONDS, flags = ANIMATION_RELATIVE)
+
+	if(ishuman(thing))
+		var/mob/living/carbon/human/creature = thing
+		creature.set_unconscious(0)
+		creature.drowsyness = 0
+		creature.set_sleeping(0)
+
+	sleep(3 SECONDS)
+
+	var/turf/flooring_near_beacon = list()
+	var/turf/beacon_turf = get_turf(beacon_ref.resolve())
+	for(var/turf/floor as anything in RANGE_TURFS(1, beacon_turf))
+		if(!floor.is_blocked_turf())
+			flooring_near_beacon += floor
+
+	if(!length(flooring_near_beacon))
+		flooring_near_beacon += beacon_turf
+
+	holder_obj.forceMove(pick(flooring_near_beacon))
+
+	animate(holder_obj, pixel_z = -990, time = 5 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_z = 5, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_z = -5, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
+
+	sleep(7 SECONDS)
+
+	var/mutable_appearance/balloon3 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_retract", layer = ABOVE_MOB_LAYER+0.1, appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART)
+	balloon3.pixel_z = 10
+	holder_obj.cut_overlay(balloon)
+	holder_obj.add_overlay(balloon3)
+
+	sleep(0.4 SECONDS)
+
+	holder_obj.cut_overlay(balloon3)
+	thing.set_anchored(FALSE) // An item has to be unanchored to be extracted in the first place.
+	thing.set_density(initial(thing.density))
+	animate(holder_obj, pixel_z = -10, time = 0.5 SECONDS, flags = ANIMATION_RELATIVE)
+	sleep(0.5 SECONDS)
+	thing.forceMove(holder_obj.loc)
+	qdel(holder_obj)
+	if(uses_left <= 0)
+		qdel(src)
 
 /obj/item/fulton_core
-	name = "extraction beacon signaller"
-	desc = "Emits a signal which fulton recovery devices can lock onto. Activate in hand to create a beacon."
+	name = "extraction beacon assembly kit"
+	desc = "When built, emits a signal which fulton recovery devices can lock onto. Activate in hand to unfold into a beacon."
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "subspace_amplifier"
 
@@ -171,9 +206,12 @@ var/global/list/total_extraction_beacons = list()
 	. = ..()
 	if(.)
 		return
-	if(do_after(user,15,target = user) && !QDELETED(src))
-		new /obj/structure/extraction_point(get_turf(user))
-		qdel(src)
+	if(!do_after(user, 1.5 SECONDS, target = user) || QDELETED(src))
+		return
+
+	new /obj/structure/extraction_point(get_turf(user))
+	playsound(src, 'sound/items/Deconstruct.ogg', vol = 50, vary = TRUE, extrarange = -5)
+	qdel(src)
 
 /obj/structure/extraction_point
 	name = "fulton recovery beacon"
@@ -187,11 +225,16 @@ var/global/list/total_extraction_beacons = list()
 /obj/structure/extraction_point/Initialize(mapload)
 	. = ..()
 	name += " ([rand(100,999)]) ([get_area_name(src, TRUE)])"
-	global.total_extraction_beacons += src
+	GLOB.total_extraction_beacons.Add(WEAKREF(src))
 
-/obj/structure/extraction_point/Destroy()
-	global.total_extraction_beacons -= src
-	..()
+/obj/structure/extraction_point/attack_hand(mob/living/user, datum/event_args/actor/clickchain/e_args)
+	. = ..()
+	balloon_alert_to_viewers("undeploying...")
+	if(!do_after(user, 1.5 SECONDS, src))
+		return
+	new /obj/item/fulton_core(drop_location())
+	playsound(src, 'sound/items/Deconstruct.ogg', vol = 50, vary = TRUE, extrarange = -5)
+	qdel(src)
 
 /obj/effect/extraction_holder
 	name = "extraction holder"
@@ -202,17 +245,16 @@ var/global/list/total_extraction_beacons = list()
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.stat != DEAD)
-			return 1
+			return TRUE
 	for(var/thing in A.get_all_contents())
 		if(isliving(A))
 			var/mob/living/L = A
-			update_icon()
 			if(L.stat != DEAD)
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
-/obj/effect/extraction_holder/singularity_pull()
+/obj/effect/extraction_holder/singularity_act()
 	return
 
-/obj/effect/extraction_holder/singularity_pull()
+/obj/effect/extraction_holder/singularity_pull(atom/singularity, current_size)
 	return
