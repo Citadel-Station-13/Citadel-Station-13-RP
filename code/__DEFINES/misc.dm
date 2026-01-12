@@ -517,3 +517,7 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //name for blank icon states for clothing
 #define CLOTHING_BLANK_ICON_STATE "blank"
+
+#define BUTTON_SLIDE_IN (1<<0)
+#define BUTTON_FADE_IN (1<<1)
+#define BUTTON_FADE_OUT (1<<2)
