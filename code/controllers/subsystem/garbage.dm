@@ -107,8 +107,6 @@ SUBSYSTEM_DEF(garbage)
 			dellog += "\tIgnored force: [I.no_respect_force] times"
 		if (I.no_hint)
 			dellog += "\tTotal No hint: [I.no_hint] times"
-		if(LAZYLEN(I.extra_details))
-			dellog += "\tDeleted Metadata: [I.extra_details.Join("\n")]"
 
 	log_qdel(dellog.Join("\n"))
 
@@ -219,10 +217,6 @@ SUBSYSTEM_DEF(garbage)
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
 
-				var/detail = D.dump_harddel_info()
-				if(detail)
-					LAZYADD(I.extra_details, detail)
-
 				// -- CITADEL EDIT: more aggressive GC tracing --
 				do
 					var/list/trace_data = D.gc_trace_data()
@@ -288,9 +282,6 @@ SUBSYSTEM_DEF(garbage)
 	var/type = D.type
 	var/refID = ref(D)
 	var/datum/qdel_item/type_info = items[type]
-	var/detail = D.dump_harddel_info()
-	if(detail)
-		LAZYADD(type_info.extra_details, detail)
 
 	// CITADEL EDIT: trace GC
 	var/maybe_trace_data
@@ -352,7 +343,6 @@ SUBSYSTEM_DEF(garbage)
 	var/no_hint = 0 //!Number of times it's not even bother to give a qdel hint
 	var/slept_destroy = 0 //!Number of times it's slept in its destroy
 	var/qdel_flags = 0 //!Flags related to this type's trip thru qdel.
-	var/list/extra_details //!Lazylist of string metadata about the deleted objects
 
 /datum/qdel_item/New(mytype)
 	name = "[mytype]"
