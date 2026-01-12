@@ -45,17 +45,6 @@
 		..()
 	return
 
-/obj/machinery/computer/cloning/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	user.set_machine(src)
-	add_fingerprint(user)
-
-	if(machine_stat & (BROKEN|NOPOWER))
-		return
-
-	updatemodules()
-
-	nano_ui_interact(user)
-
 /obj/machinery/computer/cloning/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 

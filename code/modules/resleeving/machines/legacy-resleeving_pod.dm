@@ -87,15 +87,6 @@
 		original_occupant = occupant
 		occupant = override
 
-	//In case they already had a mind!
-	if(occupant && occupant.mind)
-		to_chat(occupant, SPAN_WARNING("You feel your mind being overwritten..."))
-		log_and_message_admins("was resleeve-wiped from their body.",occupant.mind)
-		occupant.ghostize()
-
-	MR.mind_ref.active = 1 //Well, it's about to be.
-	MR.mind_ref.transfer(occupant) //Does mind+ckey+client.
-	occupant.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.
 	if(MR.one_time)
 		var/how_long = round((world.time - MR.last_update)/10/60)
 		to_chat(occupant,SPAN_DANGER("Your mind backup was a 'one-time' backup. \

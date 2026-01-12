@@ -46,7 +46,15 @@
 	#warn impl
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_resleeve(mob/living/target, obj/item/organ/internal/mirror/mirror)
-	// human only for the love of god lol even if we technically support living for idfk cryptbiology
+	// never ever allow sleeve-wiping someone
+	if(target.mind)
+		return FALSE
+	var/datum/mind/checking_mind = mirror.recorded_mind?.mind_ref?.resolve()
+	// do not allow impersonation
+	if(target.resleeving_check_mind_belongs(checking_mind))
+		return FALSE
+
+	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
 	if(!ishuman(target))
 		return FALSE
 	var/mob/living/carbon/human/casted_human = target
@@ -54,7 +62,7 @@
 	#warn impl
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_backup_insertion_impl(mob/living/target, datum/resleeving_mind_backup/backup)
-	// human only for the love of god lol even if we technically support living for idfk cryptbiology
+	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
 	if(!ishuman(target))
 		return FALSE
 	var/mob/living/carbon/human/casted_human = target
@@ -69,10 +77,15 @@
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_mind_insertion_impl(mob/living/target, datum/mind/mind)
 
+	mind.active = TRUE
+	mind.transfer(target)
+
 
 	// - LEGACY - //
 
 	// this is legacy because this shouldn't be here
 	update_antag_icons(target.mind)
+	// this is because vore is fucking weird
+	target.apply_vore_prefs()
 
 	// - END - //

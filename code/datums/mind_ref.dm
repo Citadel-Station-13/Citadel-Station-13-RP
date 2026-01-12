@@ -20,3 +20,6 @@
 		loaded.mind_ref = null
 	loaded = null
 	return ..()
+
+/datum/mind_ref/proc/resolve() as /datum/mind
+	return loaded
