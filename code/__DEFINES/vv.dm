@@ -98,6 +98,9 @@
 #define VV_HK_TEST_MATRIXES "test_matrixes"
 #define VV_HK_EDIT_ARMOR "edit_armor"
 
+// /atom/movable
+#define VV_HK_GET_MOVABLE "get_movable"
+
 // /obj
 #define VV_HK_MASS_DEL_TYPE "mass_delete_type"
 
