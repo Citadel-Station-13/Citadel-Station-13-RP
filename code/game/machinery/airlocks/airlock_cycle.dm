@@ -7,6 +7,11 @@
  * * created for use during a discrete cycle operation
  */
 /datum/airlock_cycle
+	/// tasks running in the cycle
+	var/list/datum/airlock_task/running_tasks = list()
+
+
+#warn below
 	/// blackboard
 	///
 	/// * arbitrary k-v list for use by programs
@@ -21,13 +26,12 @@
 	var/phase_progress
 	/// phase started at
 	var/phase_started
-	/// tasks running in the cycle
-	var/list/datum/airlock_task/running_tasks
 
 	/// started side
 	var/side_cycling_from
 	/// ending side
 	var/side_cycling_to
+
 
 /datum/airlock_cycle/proc/set_phase(phase, phase_display)
 	src.phase = phase
@@ -58,5 +62,24 @@
 /datum/airlock_cycle/proc/remove_task(datum/airlock_task/task)
 	task.unassign_cycle(src)
 
+/datum/airlock_cycle/proc/setup()
+
 /datum/airlock_cycle/proc/complete()
 	#warn impl
+
+/**
+ * Simple cycles that go through a set of phases, each with tasks.
+ */
+/datum/airlock_cycle/simple
+	/// current phase
+	var/datum/airlock_phase/current
+	/// ordered pending phases
+	/// * we are done if there's none left
+	var/list/datum/airlock_phase/pending = list()
+
+/**
+ * * The reference will be owned by the cycle after this call.
+ */
+/datum/airlock_cycle/simple/proc/enqueue_phase(datum/airlock_phase/phase)
+
+#warn impl

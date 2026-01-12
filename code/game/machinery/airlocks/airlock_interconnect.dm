@@ -5,16 +5,14 @@
 
 /obj/item/airlock_interconnect
 	name = "airlock interconnect"
-	desc = "A tightly bundled and pressurized set of air conduits used to connect \
-	an airlock's air systems."
+	desc = "A tightly bundled set of conduits used to connect the parts of an airlock together."
 	#warn sprite
 
 #warn impl
 
 /obj/structure/airlock_interconnect
 	name = "airlock interconnect"
-	desc = "A tightly bundled and pressurized set of air conduits used to connect \
-	an airlock's air systems."
+	desc = "A tightly bundled set of conduits used to connect the parts of an airlock together."
 	#warn sprite
 
 	/// our pipenet

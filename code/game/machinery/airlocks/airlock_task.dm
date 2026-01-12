@@ -57,3 +57,22 @@
 /datum/airlock_task/component/Destroy()
 	component = null
 	return ..()
+
+/datum/airlock_task/compound
+	var/list/datum/airlock_task/tasks
+
+/datum/airlock_task/compound/New(list/datum/airlock_task/tasks)
+	src.tasks = tasks
+	..()
+
+/datum/airlock_task/compound/Destroy()
+	QDEL_LIST(tasks)
+	return ..()
+
+/datum/airlock_task/compound/poll()
+	for(var/datum/airlock_task/task as anything in tasks)
+		task.poll()
+
+/datum/airlock_task/compound/complete()
+	for(var/datum/airlock_task/task as anything in tasks)
+		task.complete()

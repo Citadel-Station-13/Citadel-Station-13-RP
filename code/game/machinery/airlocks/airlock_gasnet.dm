@@ -4,10 +4,6 @@
 /**
  * the simplified gasnet / control plane used for airlock handling and control
  *
- * for modularity / sake of not bloating things, this system is intentionally
- * separate from the wirenet and pipenet APIs, which are
- * used for datanet/conduits/powernets and atmospherics respectively
- *
  * * the gasnet itself is stateless.
  */
 /datum/airlock_gasnet

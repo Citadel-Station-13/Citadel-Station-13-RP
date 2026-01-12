@@ -9,6 +9,8 @@
 
 #warn DEFINE_ENUM for sensor and controller
 
+#warn below
+
 //* Airlock Program - Dynamic *//
 
 /// vacuum mode only
@@ -20,7 +22,6 @@
 #define AIRLOCK_DYNAMIC_PROGRAM_PHASE_CURTAIN_RECONCILE "reconcile"
 
 
-#warn below
 
 //* /obj/machinery/airlock_component/controller/(interior|exterior)_state
 
