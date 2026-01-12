@@ -134,7 +134,7 @@
 			node1 = target
 			break
 
-	var/turf/above = get_vertical_step(src, UP)
+	var/turf/above = get_step_multiz(src, UP)
 	if(above)
 		for(var/obj/machinery/atmospherics/target in above)
 			if(istype(target, /obj/machinery/atmospherics/pipe/zpipe/down))
@@ -167,7 +167,7 @@
 			node1 = target
 			break
 
-	var/turf/below = get_vertical_step(src, DOWN)
+	var/turf/below = get_step_multiz(src, DOWN)
 	if(below)
 		for(var/obj/machinery/atmospherics/target in below)
 			if(istype(target, /obj/machinery/atmospherics/pipe/zpipe/up))
