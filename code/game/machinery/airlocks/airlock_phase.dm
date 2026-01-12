@@ -28,7 +28,7 @@
  */
 /datum/airlock_phase/proc/tick(datum/airlock_cycle/cycle)
 	// by default, we just care that all tasks are done
-	return !length(cycle.tasks)
+	return !length(cycle.running_tasks)
 
 /**
  * Called when exiting this phase.
