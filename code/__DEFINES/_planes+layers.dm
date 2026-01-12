@@ -346,6 +346,9 @@
  */
 #define OBSERVER_PLANE 30
 
+/// Just above ghosts
+#define POINT_PLANE 31
+
 /**
  *! -- Augmented Plane
  *? Augmented-reality stuff.
