@@ -1,7 +1,7 @@
-import { BooleanLike } from "tgui-core/react";
+import { BooleanLike } from 'tgui-core/react';
 
-import { useBackend } from "../../backend";
-import { Window } from "../../layouts";
+import { useBackend } from '../../backend';
+import { Window } from '../../layouts';
 
 interface OrbitalDeploymentControllerData {
   zone: OrbitalDeploymentZoneData | null;
@@ -19,13 +19,8 @@ interface OrbitalDeploymentTargetData {
   overmapName: string;
 }
 
-interface OrbitalDeploymentFlareData extends OrbitalDeploymentTargetData {
-
-}
-
-interface OrbitalDeploymentLaserData extends OrbitalDeploymentTargetData {
-
-}
+interface OrbitalDeploymentFlareData extends OrbitalDeploymentTargetData {}
+interface OrbitalDeploymentLaserData extends OrbitalDeploymentTargetData {}
 
 interface OrbitalDeploymentZoneData {
   armed: BooleanLike;
@@ -37,9 +32,7 @@ export const OrbitalDeploymentController = (props) => {
 
   return (
     <Window>
-      <Window.Content>
-        Test
-      </Window.Content>
+      <Window.Content>Test</Window.Content>
     </Window>
   );
 };

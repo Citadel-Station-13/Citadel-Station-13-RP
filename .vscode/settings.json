@@ -28,7 +28,7 @@
 		"*.dmi": "dmiEditor.dmiEditor"
 	},
 	"[javascript][typescript][typescriptreact][javascriptreact]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features"
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"editor.formatOnSave": true
 }
