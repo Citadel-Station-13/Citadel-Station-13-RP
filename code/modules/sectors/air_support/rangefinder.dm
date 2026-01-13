@@ -7,7 +7,8 @@
 	something's probably about to fall out of it."
 	plane = ABOVE_LIGHTING_PLANE
 	layer = ABOVE_LIGHTING_LAYER_MAIN
-	#warn sprite
+	icon = 'icons/modules/sectors/air_support/rangefinder.dmi'
+	icon_state = "turf-laser"
 	/// allow weapons guidance
 	var/allow_weapons_guidance = FALSE
 	/// we are visible
@@ -109,12 +110,16 @@
 	STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
-/obj/item/rangefinder/proc/update_icon()
+/obj/item/rangefinder/update_icon()
 	cut_overlays()
 	if(active_laser_target)
 		icon_dot_color = "#ff0000"
 	else if(is_rangefinder || is_designator)
 		icon_dot_color = "#00aa00"
+	var/new_inhand_state = "[base_icon_state][currently_zoomed_in ? "_eyes" : ""]"
+	if(new_inhand_state != inhand_state)
+		inhand_state = new_inhand_state
+		update_worn_icon()
 	. = ..()
 	if(icon_dot_color)
 		var/image/dot_overlay = image(icon, "[base_icon_state]-dot")
@@ -173,15 +178,18 @@
 /obj/item/rangefinder/proc/start_zooming(mob/viewing)
 	if(currently_zoomed_in)
 		stop_zooming()
-
-	#warn comp
 	currently_zoomed_in = viewing
+	currently_zoomed_in.AddComponent(/datum/component/mob_zoom_binding, 14)
 	RegisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE, PROC_REF(on_user_examine))
+	update_icon()
 	return TRUE
 
 /obj/item/rangefinder/proc/stop_zooming()
-	#warn comp
+	if(!currently_zoomed_in)
+		return
+	currently_zoomed_in.DelComponent(/datum/component/mob_zoom_binding)
 	UnregisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE)
+	update_icon()
 
 /obj/item/rangefinder/proc/on_user_examine(mob/source, atom/target, list/examine_list)
 	SIGNAL_HANDLER

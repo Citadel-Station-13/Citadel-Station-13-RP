@@ -11,34 +11,26 @@
 
 	var/last_update
 
-	/// max zoom
-	var/max_zoom_x = WORLD_ICON_SIZE * 7
-	/// max zoom
-	var/max_zoom_y = WORLD_ICON_SIZE * 7
+	/// max zoom radius
+	var/max_zoom_px = WORLD_ICON_SIZE * 7
 
 	/// * in normal mode, this is area in center we don't zoom anywhere else while inside
-	var/detection_x = WORLD_ICON_SIZE * 2.5
-	/// * in normal mode, this is area in center we don't zoom anywhere else while inside
-	var/detection_y = WORLD_ICON_SIZE * 2.5
+	var/detection_px = WORLD_ICON_SIZE * 2.5
 
 	/// current pixel offset
 	var/current_pixel_x = 0
 	/// current pixel offset
 	var/current_pixel_y = 0
 
-/datum/component/client_freezoom_handler/Initialize(max_zoom_x, max_zoom_y, detection_x, detection_y, scrolling_mode)
+/datum/component/client_freezoom_handler/Initialize(max_zoom_px, detection_px, scrolling_mode)
 	if((. = ..()) == COMPONENT_INCOMPATIBLE)
 		return
 	if(!istype(parent, /client))
 		return COMPONENT_INCOMPATIBLE
-	if(!isnull(max_zoom_x))
-		src.max_zoom_x = max_zoom_x
-	if(!isnull(max_zoom_y))
-		src.max_zoom_y = max_zoom_y
-	if(!isnull(detection_x))
-		src.detection_x = detection_x
-	if(!isnull(detection_y))
-		src.detection_y = detection_y
+	if(!isnull(max_zoom_px))
+		src.max_zoom_px = max_zoom_px
+	if(!isnull(detection_px))
+		src.detection_px = detection_px
 	// if(!isnull(scrolling_mode))
 	// 	src.scrolling_mode = scrolling_mode
 
@@ -84,18 +76,18 @@
 	// TODO: make it 95% instead
 	var/halfway_x = client.current_viewport_width * 0.5
 	var/halfway_y = client.current_viewport_height * 0.5
-	var/ranging_x = max(0, halfway_x - detection_x)
-	var/ranging_y = max(0, halfway_y - detection_y)
+	var/ranging_x = max(0, halfway_x - detection_px)
+	var/ranging_y = max(0, halfway_y - detection_px)
 	if(ranging_x)
 		if(scr_x > halfway_x)
-			calc_x = abs(abs((scr_x - halfway_x) - detection_x) / ranging_x) * max_zoom_x
+			calc_x = abs(abs((scr_x - halfway_x) - detection_px) / ranging_x) * max_zoom_px
 		else
-			calc_x = abs(abs((scr_x - halfway_x) + detection_x) / ranging_x) * max_zoom_x
+			calc_x = abs(abs((scr_x - halfway_x) + detection_px) / ranging_x) * max_zoom_px
 	if(ranging_y)
 		if(scr_y < halfway_y)
-			calc_y = abs(abs((scr_y - halfway_y) - detection_y) / ranging_y) * max_zoom_y
+			calc_y = abs(abs((scr_y - halfway_y) - detection_py) / ranging_y) * max_zoom_px
 		else
-			calc_y = abs(abs((scr_y - halfway_y) + detection_y) / ranging_y) * max_zoom_y
+			calc_y = abs(abs((scr_y - halfway_y) + detection_py) / ranging_y) * max_zoom_px
 
 	// TODO: scrolling mode
 
@@ -106,5 +98,4 @@
 	current_pixel_y = pixel_y
 
 	var/client/scrolling = parent
-	scrolling.pixel_x = pixel_x
-	scrolling.pixel_y = pixel_y
+	animate(scrolling, pixel_x = pixel_x, pixel_y = pixel_y, time = 0.2 SECONDS, easing = SINE_EASING, flags = ANIMATION_PARALLEL)

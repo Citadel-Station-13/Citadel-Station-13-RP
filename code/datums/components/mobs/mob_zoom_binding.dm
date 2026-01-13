@@ -59,8 +59,4 @@
 	cli?.DelComponent(/datum/component/client_freezoom_handler)
 
 /datum/component/mob_zoom_binding/freezoom/proc/on_login(mob/source, client/cli)
-	cli?.AddComponent(
-		/datum/component/client_freezoom_handler,
-		range_in_tiles * WORLD_ICON_SIZE,
-		range_in_tiles * WORLD_ICON_SIZE,
-	)
+	cli?.AddComponent(/datum/component/client_freezoom_handler, range_in_tiles * WORLD_ICON_SIZE)

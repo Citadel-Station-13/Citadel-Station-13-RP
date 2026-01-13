@@ -1,14 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_controller, 28, "controller-map-automount")
+CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_controller, 28, "controller")
 /obj/machinery/orbital_deployment_controller
 	name = "orbital deployment controller"
 	desc = "A controller for an orbital base deployment system."
 	icon = 'icons/modules/sectors/air_support/orbital_deployment_controller.dmi'
-	icon_state = "controller-map"
+	icon_state = "controller"
 	base_icon_state = "controller"
-	#warn sprite
 
 	//* Init *//
 	/// search radius for orbital deployment markers (zones)
