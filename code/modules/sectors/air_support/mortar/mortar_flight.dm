@@ -40,7 +40,7 @@
 /datum/mortar_flight/proc/set_duration(time)
 	src.flight_duration = time
 
-/datum/mortar_flight/proc/run(datum/event_args/actor/firer)
+/datum/mortar_flight/proc/execute(datum/event_args/actor/firer)
 	log_mortar_shell(firer, "mortar flight started", shell.get_log_list())
 	src.fired = TRUE
 	src.fired_firer = firer

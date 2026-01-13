@@ -193,7 +193,7 @@
 	flight.set_duration(travel_time)
 	var/list/where_at_coords = SSmapping.get_virtual_coords_x_y_z(where_at)
 	flight.set_target(where_map, where_at_coords[1] + x_offset, where_at_coords[2] + y_offset, where_at_coords[3])
-	flight.run()
+	flight.execute()
 	return flight
 
 /**
