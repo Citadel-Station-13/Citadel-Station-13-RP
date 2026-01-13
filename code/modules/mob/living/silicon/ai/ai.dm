@@ -140,7 +140,7 @@ var/list/ai_verbs_default = list(
 	remove_verb(src, ai_verbs_default)
 	remove_verb(src, silicon_subsystems)
 
-/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = TRUE)
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_lawset/L, obj/item/mmi/B, safety = TRUE)
 	announcement = new()
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
@@ -166,7 +166,7 @@ var/list/ai_verbs_default = list(
 		aiCommunicator = new /obj/item/communicator/integrated(src)
 
 	if(L)
-		if (istype(L, /datum/ai_laws))
+		if (istype(L, /datum/ai_lawset))
 			laws = L
 	else
 		var/datum/map/station/loaded = (LEGACY_MAP_DATUM)
@@ -276,24 +276,6 @@ var/list/ai_verbs_default = list(
 
 
 /mob/living/silicon/ai/proc/setup_icon()
-	var/file = file2text("config/custom_sprites.txt")
-	var/lines = splittext(file, "\n")
-
-	for(var/line in lines)
-	// split & clean up
-		var/list/Entry = splittext(line, ":")
-		for(var/i = 1 to Entry.len)
-			Entry[i] = trim(Entry[i])
-
-		if(Entry.len < 2)
-			continue;
-
-		if(Entry[1] == src.ckey && Entry[2] == src.real_name)
-			icon = CUSTOM_ITEM_SYNTH
-			custom_sprite = 1
-			selected_sprite = new/datum/ai_icon("Custom", "[src.ckey]-ai", "4", "[ckey]-ai-crash", "#FFFFFF", "#FFFFFF", "#FFFFFF")
-		else
-			selected_sprite = default_ai_icon
 	updateicon()
 
 /mob/living/silicon/ai/pointed(atom/A as mob|obj|turf in view())

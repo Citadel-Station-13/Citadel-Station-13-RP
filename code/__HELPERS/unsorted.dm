@@ -730,6 +730,7 @@
 	else if (zone == "r_foot") return "right foot"
 	else                       return zone
 
+// todo: remove this this is silly and shouldn't be just called 'get'
 /proc/get(atom/loc, type)
 	while(loc)
 		if(istype(loc, type))
@@ -1190,12 +1191,12 @@ var/list/WALLITEMS = list(
 
 /// Returns an x and y value require to reverse the transformations made to center an oversized icon
 /atom/proc/get_oversized_icon_offsets()
-	if (pixel_x == 0 && pixel_y == 0)
+	if (!base_pixel_x && !base_pixel_y && !base_pixel_w && !base_pixel_z)
 		return list("x" = 0, "y" = 0)
 	var/list/icon_dimensions = get_icon_dimensions(icon)
 	var/icon_width = icon_dimensions["width"]
 	var/icon_height = icon_dimensions["height"]
 	return list(
-		"x" = icon_width > 32 && pixel_x != 0 ? (icon_width - 32) * 0.5 : 0,
-		"y" = icon_height > 32 && pixel_y != 0 ? (icon_height - 32) * 0.5 : 0,
+		"x" = icon_width > world.icon_size && (base_pixel_x || base_pixel_w) ? (icon_width - world.icon_size) * 0.5 : 0,
+		"y" = icon_height > world.icon_size && (base_pixel_y || base_pixel_z) ? (icon_height - world.icon_size) * 0.5 : 0,
 	)

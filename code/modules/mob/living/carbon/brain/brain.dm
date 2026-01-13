@@ -43,6 +43,7 @@
 	icon_state = "brain1"
 	no_vore = TRUE
 	emote_class = NONE
+	inventory = null
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/organic)
 
 /mob/living/carbon/brain/Initialize(mapload)
@@ -57,9 +58,6 @@
 			death(1)	//Brains can die again. AND THEY SHOULD AHA HA HA HA HA HA
 		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
-
-/mob/living/carbon/brain/init_inventory()
-	return
 
 /mob/living/carbon/brain/update_mobility(blocked, forced)
 	if(in_contents_of(/obj/vehicle/sealed/mecha) || istype(loc, /obj/item/mmi))
