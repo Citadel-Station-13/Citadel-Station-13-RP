@@ -33,7 +33,15 @@
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()
 	if(nutriment_amt)
-		reagents.add_reagent("nutriment",nutriment_amt,nutriment_desc)
+		var/datum/nutriment_data/nutriment_data = new
+		for(var/taste in nutriment_desc)
+			var/amount = nutriment_desc[taste]
+			nutriment_data.add_taste(taste, amount, TRUE)
+		reagents.add_reagent(
+			/datum/reagent/nutriment::id,
+			nutriment_amt,
+			nutriment_data,
+		)
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/reagent_containers/food/snacks/proc/On_Consume(mob/M)

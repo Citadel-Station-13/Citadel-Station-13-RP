@@ -359,8 +359,8 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/template_noop)
 "JH" = (
-/mob/living/simple_mob/humanoid/pirate/captain,
 /obj/effect/floor_decal/rust,
+/mob/living/simple_mob/humanoid/pirate/las,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/pirate_wreck1)
 "KU" = (

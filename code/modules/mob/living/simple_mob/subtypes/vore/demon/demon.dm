@@ -58,7 +58,7 @@
 
 /mob/living/simple_mob/vore/demon/zMove(direction)
 	if(shifted_out)
-		var/turf/destination = get_vertical_step(src, direction)
+		var/turf/destination = get_step_multiz(src, direction)
 		if(destination)
 			forceMove(destination)
 		return TRUE
