@@ -26,6 +26,11 @@
 	use_overmap = TRUE
 	overmap_size = 20
 	overmap_event_areas = 15
+	titlescreens = list(
+		/datum/cutscene/native/simple/titlescreen_clown,
+		/datum/cutscene/native/simple/titlescreen_minitest1,
+		/datum/cutscene/native/simple/titlescreen_minitest2
+	)
 
 	station_name	= "NSS Citadel Testing Facility"
 	station_short	= "NSS-CTF"

@@ -25,20 +25,10 @@ SUBSYSTEM_DEF(titlescreen)
 	set_title_scene(make_title_scene())
 
 /datum/controller/subsystem/titlescreen/proc/make_title_scene()
-	var/picked = pickweight((LEGACY_MAP_DATUM).titlescreens.Copy())
-	if(isnull(picked))
-		return
-	var/datum/cutscene/built
-	if(ispath(picked))
-		built = new picked
-	if(islist(picked))
-		var/list/arr = picked
-		var/icon/I = icon(arr[1], arr[2])
-		var/datum/cutscene/native/simple/scene = new
-		scene.icon_path = I
-		scene.icon_width = I.Width()
-		scene.icon_height = I.Height()
-		built = scene
+	var/picked = pick((LEGACY_MAP_DATUM).titlescreens)
+	if(!ispath(picked))
+		CRASH("FUCK")
+	var/datum/cutscene/built = new picked
 	built.init()
 	return built
 
