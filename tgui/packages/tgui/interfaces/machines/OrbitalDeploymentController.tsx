@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Button,
   Dimmer,
@@ -15,6 +16,7 @@ interface OrbitalDeploymentControllerData {
   zone: OrbitalDeploymentZoneData | null;
   lasers: OrbitalDeploymentLaserData[];
   flares: OrbitalDeploymentFlareData[];
+  refreshOnCooldown: BooleanLike;
 }
 
 interface OrbitalDeploymentTargetData {
@@ -37,6 +39,17 @@ interface OrbitalDeploymentZoneData {
 
 export const OrbitalDeploymentController = (props) => {
   const { act, data } = useBackend<OrbitalDeploymentControllerData>();
+  const [selectedTarget, setSelectedTarget] = useState<[string | null, string | null]>([null, null]);
+
+  // start auto-refreshing
+  useEffect(() => {
+    let t = setTimeout(() => {
+      act('refreshSignals');
+    }, 3000);
+    return () => {
+      clearTimeout(t);
+    };
+  });
 
   return (
     <Window>
@@ -61,7 +74,27 @@ export const OrbitalDeploymentController = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item grow>
-            <Section title="Signals">test</Section>
+            <Section
+              title="Signals"
+              fill
+              scrollable
+              buttons={
+                <Button
+                  icon="refresh"
+                  color="transparent"
+                  onClick={() => act('refreshSignals')}
+                  selected={data.refreshOnCooldown}
+                  iconSpin={data.refreshOnCooldown}
+                >
+                  Refresh
+                </Button>
+              }
+            >
+              <Stack vertical>
+                {data.}
+                test
+              </Stack>
+            </Section>
           </Stack.Item>
           <Stack.Item>
             <Stack fill>

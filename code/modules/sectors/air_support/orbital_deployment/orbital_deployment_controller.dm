@@ -20,6 +20,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 
 	//* UI *//
 	var/ui_last_signal_refresh
+	var/ui_signal_refresh_throttle = 3 SECONDS
 
 /obj/machinery/orbital_deployment_controller/Initialize(mapload)
 	..()
@@ -67,6 +68,10 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	if(!ui)
 		ui = new(user, src, "machines/OrbitalDeploymentController")
 		ui.open()
+
+/obj/machinery/orbital_deployment_controller/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+	.["refreshOnCooldown"] = world.time < (ui_last_signal_refresh + ui_signal_refresh_throttle)
 
 /obj/machinery/orbital_deployment_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -126,7 +131,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 		if("refreshSignals")
 			if(!linked_zone)
 				return TRUE
-			if(world.time < ui_last_signal_refresh + 5 SECONDS)
+			if(world.time < (ui_last_signal_refresh + ui_signal_refresh_throttle))
 				return TRUE
 			ui_last_signal_refresh = world.time
 			push_ui_data(data = ui_signal_data())
