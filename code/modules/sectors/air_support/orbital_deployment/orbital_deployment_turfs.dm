@@ -11,3 +11,7 @@
 	icon_state = "superstructure"
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	material_system = FALSE
+	smoothing_flags = NONE
+	material_outer = null
+	material_girder = null
+	material_reinf = null

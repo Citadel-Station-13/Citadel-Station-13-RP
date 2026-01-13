@@ -65,7 +65,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 /obj/machinery/orbital_deployment_controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "machines/OrbitalDeploymentController.tsx")
+		ui = new(user, src, "machines/OrbitalDeploymentController")
 		ui.open()
 
 /obj/machinery/orbital_deployment_controller/ui_static_data(mob/user, datum/tgui/ui)
