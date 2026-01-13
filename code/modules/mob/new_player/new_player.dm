@@ -167,7 +167,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		new_player_panel_proc()
 
 	if(href_list["observe"])
-		if (SSticker.current_state <= GAME_STATE_INIT
+		if (SSticker.current_state <= GAME_STATE_INIT)
 			to_chat(src, SPAN_BOLDANNOUNCE("You may not observe until the server is initialized."))
 			return
 		// don't lose out if we join fast
