@@ -1,9 +1,3 @@
-/*
-CONTAINS:
-RSF
-
-*/
-
 /obj/item/rsf
 	name = "\improper Rapid-Service-Fabricator"
 	desc = "A device used to rapidly deploy service items."
@@ -155,3 +149,5 @@ RSF
 	else
 		stored_matter--
 		to_chat(user,"<span class='notice'>The RSF now holds [stored_matter]/30 fabrication-units.</span>")
+
+/obj/item/rsf/loaded

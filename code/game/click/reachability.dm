@@ -193,6 +193,9 @@
 /mob/DirectAccess()
 	return ..() + get_equipped_items()
 
+/mob/living/silicon/robot/DirectAccess()
+	return ..() + robot_inventory?.provided_items
+
 /**
  * gets DirectAccess as a hashed list for quick lookups
  */

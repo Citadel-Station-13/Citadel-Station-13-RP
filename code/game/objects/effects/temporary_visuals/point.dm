@@ -1,9 +1,16 @@
 /obj/effect/temp_visual/point
-	name = "arrow"
-	desc = "It's an arrow hanging in mid-air. There may be a wizard about."
+	name = "pointer"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "arrow"
-	plane = ABOVE_PLANE
-	anchored = 1
+	plane = POINT_PLANE
+	duration = (2.5 SECONDS)
+	anchored = TRUE
 	mouse_opacity = 0
-	duration = 2 SECONDS
+
+/obj/effect/temp_visual/point/Initialize(mapload, set_invis = 0)
+	. = ..()
+	var/atom/old_loc = loc
+	abstract_move(get_turf(src))
+	pixel_x = old_loc.pixel_x
+	pixel_y = old_loc.pixel_y
+	set_invisibility(set_invis)
