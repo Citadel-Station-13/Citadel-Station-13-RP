@@ -80,18 +80,22 @@
 	bit = (1<<1)
 	d1 = SOUTH
 	d2 = WEST
+	pixel_x = -64
+	pixel_y = -64
 
 /obj/orbital_deployment_marker/corner/lower_right
 	icon_state = "lower_right"
 	bit = (1<<2)
 	d1 = NORTH
 	d2 = WEST
+	pixel_x = -64
 
 /obj/orbital_deployment_marker/corner/upper_left
 	icon_state = "upper_left"
 	bit = (1<<3)
 	d1 = SOUTH
 	d2 = EAST
+	pixel_y = -64
 
 /**
  * - ID-tags a zone.
