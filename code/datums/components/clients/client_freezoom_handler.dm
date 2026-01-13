@@ -85,9 +85,9 @@
 			calc_x = abs(abs((scr_x - halfway_x) + detection_px) / ranging_x) * max_zoom_px
 	if(ranging_y)
 		if(scr_y < halfway_y)
-			calc_y = abs(abs((scr_y - halfway_y) - detection_py) / ranging_y) * max_zoom_px
+			calc_y = abs(abs((scr_y - halfway_y) - detection_px) / ranging_y) * max_zoom_px
 		else
-			calc_y = abs(abs((scr_y - halfway_y) + detection_py) / ranging_y) * max_zoom_px
+			calc_y = abs(abs((scr_y - halfway_y) + detection_px) / ranging_y) * max_zoom_px
 
 	// TODO: scrolling mode
 

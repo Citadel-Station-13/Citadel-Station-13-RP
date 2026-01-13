@@ -4,7 +4,7 @@
 /obj/item/mortar_kit
 	name = "mortar kit"
 	desc = "A collapsed kit that can be used to deploy a stationary mortar."
-	icon = 'icons/modules/sectors/air_support/mortar'
+	icon = 'icons/modules/sectors/air_support/mortar.dmi'
 	icon_state = "mortar-jungle"
 	base_icon_state = "mortar-jungle"
 

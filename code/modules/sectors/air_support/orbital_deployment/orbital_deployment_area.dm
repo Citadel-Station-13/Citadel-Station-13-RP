@@ -3,7 +3,7 @@
 
 /area/orbital_deployment_area
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	icon = 'icons/modules/sectors/air_support/orbital_deployment_area.dmi'
+	icon = 'icons/modules/sectors/air_support/orbital_deployment_zone.dmi'
 	icon_state = "armed-tile"
 	alpha = 0
 	color = "#ffaa00"

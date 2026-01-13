@@ -4,7 +4,7 @@
 /obj/machinery/mortar
 	name = "mortar"
 	desc = "A mortar of some kind. What kind of insanity drove you to possess one?"
-	icon = 'icons/modules/sectors/air_support/mortar'
+	icon = 'icons/modules/sectors/air_support/mortar.dmi'
 	icon_state = "mortar-jungle"
 	base_icon_state = "mortar-jungle"
 
@@ -57,7 +57,7 @@
 	var/fire_sound = 'sound/modules/sectors/air_support/mortar_fire.ogg'
 	var/fire_sound_volume = 75
 	var/fire_sound_vary = FALSE
-	var/load_sound = 'sound/modules/sectors/air_support/mortar_load.ogg'
+	var/load_sound = 'sound/modules/sectors/air_support/mortar_reload.ogg'
 	var/load_sound_volume = 75
 	var/load_sound_vary = FALSE
 
@@ -222,7 +222,7 @@
 	var/adjust_time_major = 7 SECONDS
 	var/adjust_time_minor = 1.5 SECONDS
 
-/obj/machinery/mortar/basic/proc/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+/obj/machinery/mortar/basic/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
@@ -296,7 +296,6 @@
 	. = ..()
 	if(.)
 		return
-	var/datum/event_args/actor/actor = new(usr)
 	switch(action)
 		if("setTarget")
 			var/x = params["x"]

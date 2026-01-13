@@ -96,7 +96,6 @@
 
 	var/target_x = allocating.bottom_left_coords[1] + border
 	var/target_y = allocating.bottom_left_coords[2] + border
-	var/target_z = allocating.bottom_left_coords[3]
 	var/list/dst_ordered = SSgrids.get_ordered_turfs(
 		target_x,
 		target_y,
@@ -174,7 +173,6 @@
 	var/list/out_motion_flags = list()
 	var/list/out_moved_atoms = list()
 
-	var/datum/orbital_deployment_translation/translation = new(src)
 	translation.dest_lower_left = target_lower_left
 	translation.dest_upper_right = target_upper_right
 	translation.initialize()
