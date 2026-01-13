@@ -3,9 +3,12 @@
 
 //* Init *//
 
-// todo: rework this proc. what happens if it's already there? documentation?? this should probably reset the inventory maybe?
+/**
+ * Initializes, or resets our inventory.
+ */
 /mob/proc/init_inventory()
-	return
+	if(ispath(inventory))
+		inventory = new inventory(src)
 
 //* Carry Weight *//
 
@@ -393,6 +396,8 @@
  * if an item is not in us, this returns true
  */
 /mob/proc/drop_item_to_ground(obj/item/I, flags, mob/user = src)
+	if(!I)
+		return TRUE
 	// destroyed IS allowed to call these procs
 	if(I && QDELETED(I) && !QDESTROYING(I))
 		to_chat(user, SPAN_DANGER("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))

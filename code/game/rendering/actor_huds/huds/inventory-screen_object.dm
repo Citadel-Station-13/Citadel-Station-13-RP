@@ -6,7 +6,7 @@
  */
 /atom/movable/screen/actor_hud/inventory
 	name = "inventory"
-	icon = 'icons/screen/hud/midnight/inventory.dmi'
+	icon = 'icons/screen/hud/styles/midnight/inventory.dmi'
 	plane = HUD_PLANE
 	layer = HUD_LAYER_INVENTORY
 
@@ -40,7 +40,7 @@
 	plane = HUD_ITEM_PLANE
 	layer = HUD_ITEM_LAYER_BASE
 
-	var/self_icon = 'icons/screen/hud/midnight/inventory.dmi'
+	var/self_icon = 'icons/screen/hud/styles/midnight/inventory.dmi'
 	var/self_icon_state = ""
 	var/self_alpha = 255
 	var/self_color = "#ffffff"
@@ -127,24 +127,38 @@
 	var/handcuffed = FALSE
 	/// should we have the active overlay?
 	var/active = FALSE
+	/// use robot icons?
+	var/use_robot_icons = FALSE
 
-/atom/movable/screen/actor_hud/inventory/plate/hand/Initialize(mapload, datum/inventory/host, hand_index)
-	. = ..()
+/atom/movable/screen/actor_hud/inventory/plate/hand/Initialize(mapload, datum/actor_hud/inventory/host, hand_index)
 	src.hand_index = hand_index
-	sync_index(hand_index)
+	src.use_robot_icons = host.inv_held_items_use_robot_icon
+	. = ..()
+	sync_index(hand_index, host.inv_held_items_row_mode)
 	update_icon()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/sync_style(datum/hud_style/style, style_alpha, style_color)
-	self_icon = style.inventory_icons
+	if(use_robot_icons)
+		self_icon = style.robot_icons
+	else
+		self_icon = style.inventory_icons
 	..()
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/handle_inventory_click(mob/user, obj/item/with_item)
-	hud.owner.mob.swap_hand(hand_index)
+	var/datum/actor_hud/inventory/inventory_hud = hud
+	inventory_hud.owner.mob.swap_hand(hand_index)
 
-/atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index)
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND(index)
-	name = "[index % 2? "left" : "right"] hand[index > 2? " #[index]" : ""]"
-	self_icon_state = "hand-[index % 2? "left" : "right"]"
+/atom/movable/screen/actor_hud/inventory/plate/hand/proc/sync_index(index = hand_index, override_per_row = 2)
+	if(use_robot_icons)
+		name = "hand #[index]"
+		self_icon_state = "hand"
+		return
+	if(override_per_row == 2)
+		name = "[index % 2? "left" : "right"] hand[index > 2? " #[index]" : ""]"
+		self_icon_state = "hand-[index % 2? "left" : "right"]"
+	else
+		name = "hand"
+		self_icon_state = "hand-left"
 
 /atom/movable/screen/actor_hud/inventory/plate/hand/proc/set_handcuffed(state)
 	if(state == handcuffed)
@@ -167,12 +181,11 @@
 		add_overlay(active_image)
 
 /**
- * Button: 'swap hand'
+ * Button: 'open inventory slots'
  */
 /atom/movable/screen/actor_hud/inventory/drawer
 	name = "drawer"
 	icon_state = "drawer"
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_DRAWER
 
 /atom/movable/screen/actor_hud/inventory/drawer/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
@@ -180,10 +193,12 @@
 
 /atom/movable/screen/actor_hud/inventory/drawer/on_click(mob/user, list/params)
 	// todo: remote control
-	hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_DRAWER)
+	var/datum/actor_hud/inventory/inventory_hud = hud
+	inventory_hud.toggle_hidden_class(INVENTORY_HUD_CLASS_DRAWER, INVENTORY_HUD_HIDE_SOURCE_DRAWER)
 
 /atom/movable/screen/actor_hud/inventory/drawer/update_icon_state()
-	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in hud.hidden_classes) ? "drawer" : "drawer-active"]"
+	var/datum/actor_hud/inventory/inventory_hud = hud
+	icon_state = "[(INVENTORY_HUD_CLASS_DRAWER in inventory_hud.hidden_classes) ? "drawer" : "drawer-active"]"
 	return ..()
 
 /**
@@ -194,8 +209,7 @@
 	icon_state = "hand-swap"
 
 /atom/movable/screen/actor_hud/inventory/swap_hand/Initialize(mapload, datum/inventory/host, hand_count)
-	. = ..()
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_HAND_SWAP(hand_count)
+	return ..()
 
 /atom/movable/screen/actor_hud/inventory/swap_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()
@@ -213,8 +227,7 @@
 	icon_state = "button-equip"
 
 /atom/movable/screen/actor_hud/inventory/equip_hand/Initialize(mapload, datum/inventory/host, hand_count)
-	. = ..()
-	screen_loc = SCREEN_LOC_MOB_HUD_INVENTORY_EQUIP_HAND(hand_count)
+	return ..()
 
 /atom/movable/screen/actor_hud/inventory/equip_hand/sync_style(datum/hud_style/style, style_alpha, style_color)
 	..()

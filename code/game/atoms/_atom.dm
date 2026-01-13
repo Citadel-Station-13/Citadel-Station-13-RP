@@ -384,16 +384,19 @@
 			return FALSE
 		if (H.gloves)
 			if (fingerprintslast != H.key)
+				LAZYINITLIST(fingerprintshidden)
 				fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
 				fingerprintslast = H.key
 			return FALSE
 		if (!(fingerprints))
 			if (fingerprintslast != H.key)
+				LAZYINITLIST(fingerprintshidden)
 				fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
 				fingerprintslast = H.key
 			return TRUE
 	else
 		if (fingerprintslast != M.key)
+			LAZYINITLIST(fingerprintshidden)
 			fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
 			fingerprintslast = M.key
 	return
@@ -499,6 +502,7 @@
 	else
 		//Smudge up dem prints some
 		if(fingerprintslast != M.key)
+			LAZYINITLIST(fingerprintshidden)
 			fingerprintshidden += "[time_stamp()]: [key_name(M)]"
 			fingerprintslast = M.key
 

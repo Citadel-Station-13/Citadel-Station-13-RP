@@ -1,3 +1,6 @@
+/**
+ * Base definition of mob.
+ */
 /mob
 	//* Actionspeed *//
 	/// List of action speed modifiers applying to this mob
@@ -29,6 +32,11 @@
 	/// * lazy list
 	var/list/impairments_feigned
 
+	//* Inventory *//
+	/// our inventory datum, if any.
+	/// * Set to typepath to initialize.
+	var/datum/inventory/inventory
+
 	//* Movespeed *//
 	/// List of movement speed modifiers applying to this mob
 	/// * This is a lazy list.
@@ -50,6 +58,7 @@
  * Other stuff:
  * * Sets the mob focus to itself
  * * Generates huds
+ * * Creates inventory
  * * If there are any global alternate apperances apply them to this mob
  * * Intialize the transform of the mob
  */
@@ -1236,7 +1245,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * Returns whether or not we should be allowed to examine a target
  */
 /mob/proc/allow_examine(atom/A)
-	return client && (client.eye == src)
+	return (client?.eye == src) || (A in DirectAccess())
 
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()

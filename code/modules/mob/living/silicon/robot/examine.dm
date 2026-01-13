@@ -1,5 +1,5 @@
 /mob/living/silicon/robot/examine(mob/user, dist)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>[src.module && ", a [src.module.name] unit"]!")
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>, a [src.module ? module.get_display_name() : "unformatted"] unit!")
 	if(desc)
 		. += "[desc]"
 
@@ -49,7 +49,11 @@
 		if(DEAD)
 			. += SPAN_DEADSAY("It looks like its system is corrupted and requires a reset.")
 
-	. += attempt_vr(src,"examine_bellies_borg",args)
+	var/message = ""
+	for(var/belly in vore_organs)
+		var/obj/belly/B = belly
+		message += B.get_examine_msg()
+	. += message
 
 	if(showvoreprefs && ckey) //ckey so non-controlled mobs don't display it.
 		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")

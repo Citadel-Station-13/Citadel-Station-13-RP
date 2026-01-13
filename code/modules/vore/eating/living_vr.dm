@@ -369,9 +369,9 @@
 			B.owner.update_icons()
 
 	//You're in a dogborg!
-	else if(istype(loc, /obj/item/dogborg/sleeper))
+	else if(istype(loc, /obj/item/robot_builtin/dog_sleeper))
 		var/mob/living/silicon/pred = loc.loc //Thing holding the belly!
-		var/obj/item/dogborg/sleeper/belly = loc //The belly!
+		var/obj/item/robot_builtin/dog_sleeper/belly = loc //The belly!
 
 		var/confirm = alert(src, "You're in a dogborg sleeper. This is for escaping from preference-breaking or if your predator disconnects/AFKs. If your preferences were being broken, please admin-help as well.", "Confirmation", "Okay", "Cancel")
 		if(!confirm == "Okay" || loc != belly)

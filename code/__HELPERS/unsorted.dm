@@ -730,6 +730,7 @@
 	else if (zone == "r_foot") return "right foot"
 	else                       return zone
 
+// todo: remove this this is silly and shouldn't be just called 'get'
 /proc/get(atom/loc, type)
 	while(loc)
 		if(istype(loc, type))

@@ -22,10 +22,10 @@
 
 /datum/inventory/proc/trim_coverage_cache()
 	if(length(cache) > 100)
-		cache.len = 100
+		cache.Cut(1, 51)
 
 /datum/inventory/proc/invalidate_coverage_cache()
-	cache = list()
+	cache.len = 0
 
 //* Siemens Coefficient *//
 
@@ -49,7 +49,7 @@
 
 /datum/inventory/proc/trim_simple_covered_siemens_coefficient_cache()
 	if(length(cache) > 100)
-		cache.len = 100
+		cache.Cut(1, 51)
 
 /datum/inventory/proc/invalidate_simple_covered_siemens_coefficient_cache()
-	cache = list()
+	cache.len = 0
