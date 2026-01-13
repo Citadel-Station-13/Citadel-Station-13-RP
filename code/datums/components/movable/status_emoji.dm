@@ -32,8 +32,8 @@
 	align_to.get_centering_pixel_x_offset()
 
 	// we always align to their icon's top right.
-	var/align_x = (align_to.get_pixel_x_self_width() - emoji.icon_size_x) + emoji.shift_x
-	var/align_y = (align_to.get_pixel_y_self_width() - emoji.icon_size_y) + emoji.shift_y
+	var/align_x = (align_to.icon_x_dimension - emoji.icon_size_x) + emoji.shift_x
+	var/align_y = (align_to.icon_y_dimension - emoji.icon_size_y) + emoji.shift_y
 
 	overlay.pixel_x = align_x
 	overlay.pixel_y = align_y
