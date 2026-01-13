@@ -28,9 +28,15 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	/// when were we armed?
 	/// * also set when disarmed
 	var/arming_last_toggle
+	/// arming toggle cooldown
 	var/arming_cooldown = 3 SECONDS
 	/// arming requirement
 	var/arming_time = 10 SECONDS
+
+	/// last launch, if any
+	var/launch_last
+	/// launch cooldown
+	var/launch_cooldown = 2 MINUTES
 
 	/// max overmap bounds dist we can launch at
 	var/max_overmap_pixel_dist = WORLD_ICON_SIZE * 3

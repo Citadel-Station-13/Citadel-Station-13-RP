@@ -1,3 +1,11 @@
+import {
+  Button,
+  Dimmer,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Stack,
+} from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../../backend';
@@ -5,8 +13,6 @@ import { Window } from '../../layouts';
 
 interface OrbitalDeploymentControllerData {
   zone: OrbitalDeploymentZoneData | null;
-  cMinArmingTime: number;
-  cMaxOvermapsDist: number;
   lasers: OrbitalDeploymentLaserData[];
   flares: OrbitalDeploymentFlareData[];
 }
@@ -24,7 +30,9 @@ interface OrbitalDeploymentLaserData extends OrbitalDeploymentTargetData {}
 
 interface OrbitalDeploymentZoneData {
   armed: BooleanLike;
-  armedTime: number;
+  arming: BooleanLike;
+  launchOnCooldown: BooleanLike;
+  maxOvermapPixelDist: number;
 }
 
 export const OrbitalDeploymentController = (props) => {
@@ -32,7 +40,41 @@ export const OrbitalDeploymentController = (props) => {
 
   return (
     <Window>
-      <Window.Content>Test</Window.Content>
+      <Window.Content>
+        <Stack fill vertical>
+          <Stack.Item>
+            <Section title="Status">
+              {data.zone ? (
+                <LabeledList>
+                  <LabeledList.Item label="Status">
+                    {data.zone.launchOnCooldown ? 'Recharging' : 'Ready'}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Range">
+                    {data.zone.maxOvermapPixelDist}
+                  </LabeledList.Item>
+                </LabeledList>
+              ) : (
+                <Dimmer>
+                  <NoticeBox danger>Controller has no linked zone.</NoticeBox>
+                </Dimmer>
+              )}
+            </Section>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Section title="Signals">test</Section>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack fill>
+              <Stack.Item grow>
+                <Button.Confirm>Arm</Button.Confirm>
+              </Stack.Item>
+              <Stack.Item grow>
+                <Button.Confirm>Launch</Button.Confirm>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        </Stack>
+      </Window.Content>
     </Window>
   );
 };

@@ -71,12 +71,11 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 /obj/machinery/orbital_deployment_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["zone"] = linked_zone ? list(
+		"armed" = linked_zone.is_armed(),
 		"arming" = linked_zone.arming,
-		"armingLast" = linked_zone.arming_last_toggle,
+		"launchOnCooldown" = world.time < (linked_zone.launch_last + linked_zone.launch_cooldown),
+		"maxOvermapPixelDist" = OVERMAP_PIXEL_TO_DIST(linked_zone.max_overmap_pixel_dist),
 	) : null
-	.["armingTime"] = linked_zone.arming_time
-	.["armingCooldown"] = linked_zone.arming_cooldown
-	.["maxOvermapPixelDist"] = OVERMAP_PIXEL_TO_DIST(linked_zone.max_overmap_pixel_dist)
 	. += ui_signal_data()
 
 /obj/machinery/orbital_deployment_controller/proc/ui_signal_data()
@@ -92,7 +91,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 			if(!isturf(entity_in_range.loc))
 				// if they're nested, skip; they're docked.
 				continue
-			var/overmap_distance = entity_in_range.entity_overmap_distance(our_overmap_entity)
+			var/overmap_distance = entity_in_range.get_center_px_dist(our_overmap_entity)
 			// TODO: overmaps sensor update
 			var/overmap_name = entity_in_range.name
 			for(var/z in entity_in_range.location?.get_z_indices())

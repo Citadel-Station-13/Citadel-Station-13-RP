@@ -8,20 +8,20 @@
 
 /obj/overmap/entity/proc/move_p(pixloc/dest)
 	var/atom/old_loc = loc
-	Move(dest)
+	. = Move(dest)
 	var/atom/new_loc = loc
 	if(old_loc != new_loc)
 		Moved(old_loc, NONE, FALSE, null, null)
 
 /obj/overmap/entity/proc/step_p(vector/offset)
-	Move(pixloc + offset)
+	return Move(pixloc + offset)
 
 /**
  * Will call side effects.
  */
 /obj/overmap/entity/proc/force_move_p(pixloc/dest)
 	var/atom/old_loc = loc
-	force_move_p_impl(dest)
+	. = force_move_p_impl(dest)
 	var/atom/new_loc = loc
 	if(old_loc != new_loc)
 		Moved(old_loc, NONE, FALSE, null, null)
@@ -31,7 +31,7 @@
  */
 /obj/overmap/entity/proc/force_move_p_null()
 	var/atom/old_loc = loc
-	force_move_p_impl(null)
+	. = force_move_p_impl(null)
 	var/atom/new_loc = loc
 	if(old_loc != new_loc)
 		Moved(old_loc, NONE, FALSE, null, null)
@@ -42,6 +42,7 @@
 /obj/overmap/entity/proc/force_move_p_abstract(pixloc/dest)
 	var/atom/old_loc = loc
 	pixloc = dest
+	. = TRUE
 	var/atom/new_loc = loc
 	if(old_loc != new_loc)
 		Moved(old_loc, NONE, FALSE, null, null)
@@ -51,4 +52,4 @@
  */
 /obj/overmap/entity/proc/force_move_p_impl(pixloc/dest)
 	step_size = 0
-	Move(dest)
+	. = Move(dest)

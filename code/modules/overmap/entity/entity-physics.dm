@@ -41,7 +41,7 @@
 	pos_y += ddy
 	// move
 	var/old_loc = loc
-	if(!Move(loc, dir, step_x + msx, step_y + msy))
+	if(!step_p(vector(msx, msy)))
 		if(!bump_handled)
 			initialize_physics()
 			stack_trace("failed to move")
@@ -215,7 +215,16 @@
 //* Entity Ops *//
 
 /**
- * gets distance in overmap distance to other entity
+ * gets distance in pixels from our center to their center
+ * * this gets the distance from the centers of the entities, not the edges!
+ * * assumes same-overmap!
  */
-/obj/overmap/entity/proc/entity_overmap_distance(obj/overmap/entity/other)
+/obj/overmap/entity/proc/get_center_px_dist(obj/overmap/entity/other)
 	. = sqrt((src.pos_x - other.pos_x) ** 2 + (src.pos_y - other.pos_y) ** 2)
+
+/**
+ * gets distance in pixels between edges
+ * * assumes same-overmap!
+ */
+/obj/overmap/entity/proc/get_edge_px_dist(obj/overmap/entity/other)
+	return max(0, bounds_dist(src, other))
