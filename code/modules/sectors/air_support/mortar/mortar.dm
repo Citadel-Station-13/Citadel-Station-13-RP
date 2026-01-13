@@ -339,6 +339,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "machines/MortarBasic.tsx")
+		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/machinery/mortar/basic/ui_static_data(mob/user, datum/tgui/ui)
