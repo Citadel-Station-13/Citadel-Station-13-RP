@@ -3,6 +3,8 @@ SUBSYSTEM_DEF(events)
 	wait = 2 SECONDS
 	init_order = INIT_ORDER_EVENTS
 
+	runlevels = RUNLEVEL_GAME
+
 	/// Current holidays
 	var/list/holidays = list()
 
@@ -132,10 +134,10 @@ SUBSYSTEM_DEF(events)
 	if(!force && !CONFIG_GET(flag/allow_holidays))
 		return // Holiday stuff was not enabled in the config!
 
-	var/YY = text2num(time2text(world.timeofday, "YY")) // get the current year
-	var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
-	var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
-	var/DDD = time2text(world.timeofday, "DDD")	// get the current weekday
+	var/YY = text2num(time2text(world.timeofday, "YY", world.timezone)) // get the current year
+	var/MM = text2num(time2text(world.timeofday, "MM", world.timezone)) // get the current month
+	var/DD = text2num(time2text(world.timeofday, "DD", world.timezone)) // get the current day
+	var/DDD = time2text(world.timeofday, "DDD", world.timezone)	// get the current weekday
 	var/W = weekdayofthemonth()	// is this the first monday? second? etc.
 
 	for(var/H in subtypesof(/datum/holiday))

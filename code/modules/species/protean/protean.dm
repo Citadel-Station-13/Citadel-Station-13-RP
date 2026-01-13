@@ -336,7 +336,7 @@
 	owner = 1
 	if(new_name)
 		src.name += " ([new_name])"
-		desc += "\nVALID THROUGH END OF: [time2text(world.timeofday, "Month") +" "+ num2text(text2num(time2text(world.timeofday, "YYYY"))+544)]\nREGISTRANT: [new_name]"
+		desc += "\nVALID THROUGH END OF: [time2text(world.timeofday, "Month")] [CURRENT_STATION_YEAR]\nREGISTRANT: [new_name]"
 
 /mob/living/carbon/human/proc/rig_transform()
 	set name = "Modify Form - Hardsuit"

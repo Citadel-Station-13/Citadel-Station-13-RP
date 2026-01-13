@@ -51,7 +51,7 @@
 		dat += "<option value = [monthList[month]]>[month]</option>"
 	dat += "</select>"
 	dat += "<select name = 'year' style = 'float:right'>"
-	var/current_year = text2num(time2text(world.realtime, "YYYY"))
+	var/current_year = text2num(time2text(world.realtime, "YYYY", TIMEZONE_UTC))
 	var/start_year = 1920
 	for(var/year in start_year to current_year)
 		var/reverse_year = 1920 + (current_year - year)
@@ -78,8 +78,8 @@
 		return TRUE
 
 	var/current_time = world.realtime
-	var/current_month = text2num(time2text(current_time, "MM"))
-	var/current_year = text2num(time2text(current_time, "YYYY"))
+	var/current_month = text2num(time2text(current_time, "MM", TIMEZONE_UTC))
+	var/current_year = text2num(time2text(current_time, "YYYY", TIMEZONE_UTC))
 
 	var/player_total_months = (player_year * 12) + player_month
 
@@ -95,7 +95,7 @@
 			usr.client.age_gate_internal_failed()
 		else
 			//they could be 17 or 18 depending on the /day/ they were born in
-			var/current_day = text2num(time2text(current_time, "DD"))
+			var/current_day = text2num(time2text(current_time, "DD", TIMEZONE_UTC))
 			var/days_in_months = list(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 			if((player_year % 4) == 0) // leap year so february actually has 29 days
 				days_in_months[2] = 29

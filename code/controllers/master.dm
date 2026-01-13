@@ -209,7 +209,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	return MC_RESTART_RTN_SUCCESS
 
 /datum/controller/master/Recover()
-	var/msg = "## DEBUG: [time2text(world.timeofday)] MC restarted. Reports:\n"
+	var/msg = "## DEBUG: [time2text(world.timeofday, "DDD MMM DD hh:mm:ss YYYY", TIMEZONE_UTC)] MC restarted. Reports:\n"
 	var/list/master_attributes = Master.vars
 	var/list/filtered_variables = list(
 		NAMEOF(src, name),
