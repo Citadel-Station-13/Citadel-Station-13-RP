@@ -754,6 +754,23 @@ var/list/ghostteleportlocs = list()
 		if(scrubber.id_tag == id)
 			return scrubber
 
+//* Color *//
+
+/area/get_atom_color()
+	return color
+
+/area/add_atom_color(new_color)
+	color = new_color
+
+/area/copy_atom_color(atom/other)
+	color = other.get_atom_color()
+
+/area/remove_atom_color(require_color)
+	color = null
+
+/area/update_atom_color()
+	return
+
 //* Turfs *//
 
 /**

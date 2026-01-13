@@ -2,7 +2,7 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * Gets virual direction between two turfs
+ * Gets virual direction between two turfs, from A to B
  *
  * * Ignores up / down / vertical directions.
  *
@@ -41,3 +41,8 @@
 			. |= SOUTH
 		else if(A.y < B.y)
 			. |= NORTH
+	if(a_sz != b_sz)
+		if(a_sz > b_sz)
+			. |= DOWN
+		else
+			. |= UP

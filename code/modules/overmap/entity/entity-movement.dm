@@ -14,9 +14,7 @@
 		Moved(old_loc, NONE, FALSE, null, null)
 
 /obj/overmap/entity/proc/step_p(vector/offset)
-	var/atom/old_loc = loc
 	Move(pixloc + offset)
-	var/atom/new_loc = loc
 
 /**
  * Will call side effects.
