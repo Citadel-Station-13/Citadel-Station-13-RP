@@ -120,12 +120,12 @@
 	)
 
 /datum/orbital_deployment_transit/proc/land()
-	if(landing)
+	if(src.landing)
 		CRASH("already landing")
-	landing = TRUE
-	var/datum/orbital_deployment_translation/landing = new(src)
+	src.landing = TRUE
+	var/datum/orbital_deployment_translation/translation = new(src)
 	// 1. yeet zone
-	perform_chunk_translation_to_landing(landing)
+	perform_chunk_translation_to_landing(translation)
 
 	// 2. gather remaining
 	var/list/atom/movable/remaining = list()
@@ -134,10 +134,10 @@
 			if(AM.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
 				continue
 			remaining += AM
-	landing.falling_out_of_the_sky += remaining
+	translation.falling_out_of_the_sky += remaining
 
 	// 3. perform landing
-	landing.run_aftereffects(structural_area)
+	translation.run_aftereffects(structural_area)
 
 	// 4. qdel self; anything left is getting deleted. byebye!!
 	qdel(src)

@@ -145,7 +145,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			for(var/datum/controller/subsystem/ss_path as anything in subsytem_types)
 				if(ss_path.abstract_type == ss_path)
 					continue
-				var/datum/controller/subsystem/ss_instance = new I
+				var/datum/controller/subsystem/ss_instance = new ss_path
 				_subsystems += ss_instance
 		Master = src
 

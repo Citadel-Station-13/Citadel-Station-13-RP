@@ -55,7 +55,6 @@
 		var/row_max_height = 0
 		var/list/image/row_images = list()
 		for(var/i in 1 to row_size)
-			var/pos = row_start + i
 			var/datum/status_indicator/indicator_path = status_indicators[row]
 			var/datum/status_indicator/indicator = GLOB.status_indicators[indicator_path]
 			if(!indicator)
