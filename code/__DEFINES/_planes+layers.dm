@@ -416,6 +416,10 @@
 // todo: deprecate
 #define HUD_LAYER_ABOVE 8 /// Things that reside above items (highlights).
 
+#define RADIAL_BACKGROUND_LAYER 0
+///1000 is an unimportant number, it's just to normalize copied layers
+#define RADIAL_CONTENT_LAYER 1000
+
 /**
  *! -- Player HUD Plane - Items
  *? Anything rendering in HUD as itself instead of as part of HUD is here.
