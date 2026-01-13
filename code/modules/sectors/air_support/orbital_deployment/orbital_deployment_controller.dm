@@ -12,8 +12,6 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	//* Init *//
 	/// search radius for orbital deployment markers (zones)
 	var/linkage_search_radius = 10
-	/// search direction; only cardinals
-	var/linkage_search_dirs = NORTH | SOUTH | EAST | WEST
 	// TODO: `linkage_set_id` overrides all of the above for advanced uses, see /zone_tagger
 
 	//* Linkage *//
@@ -36,7 +34,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 
 /obj/machinery/orbital_deployment_controller/proc/find_zone()
 	var/datum/orbital_deployment_zone/found
-	for(var/datum/orbital_deployment_zone/zone in GLOB.orbital_deployment_zones)
+	for(var/id in GLOB.orbital_deployment_zones)
+		var/datum/orbital_deployment_zone/zone = GLOB.orbital_deployment_zones[id]
 		for(var/obj/orbital_deployment_marker/corner/corner as anything in zone.get_corners())
 			if(get_dist(corner, src) < linkage_search_radius)
 				found = zone

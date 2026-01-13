@@ -1,6 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
+/**
+ * Tracks all active orbital deployment zones.
+ * * Contents: "[zone.id]" = zone
+ */
 GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 
 /**
