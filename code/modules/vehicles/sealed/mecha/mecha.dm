@@ -241,8 +241,13 @@
 		// 7% per second
 		if(prob(7 * delta_time))
 			fault_remove(/datum/mecha_fault/temperature_control, 1)
+		// only sometimes lessen fires
+		if(prob(7 * delta_time))
+			fault_remove(/datum/mecha_fault/internal_fire, 1)
+	else
+		// no temperature controller will rapidly extinguish fires
+		fault_remove(/datum/mecha_fault/internal_fire, 1)
 	fault_process(delta_time)
-	#warn impl
 	//! LEGACY
 	// Legacy: Air temperature step, if air exists
 	if(cabin_air?.volume && !fault_check(/datum/mecha_fault/temperature_control))

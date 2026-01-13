@@ -115,6 +115,7 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 	var/max_temperature = T100C + stacks * 50
 	var/ideal_stp_temperature_change = 0.5 * stacks
 	#warn impl; damage too?
+	#warn check oxygen and use oxygen for cabin air
 	var/energy_to_add = stacks * THERMAL_ENERGY_STP_FOR_CHANGE(0.5)
 
 /datum/mecha_fault/internal_fire/on_apply(obj/vehicle/sealed/mecha/mech)

@@ -482,8 +482,6 @@
 /obj/vehicle/sealed/mecha/proc/legacy_internal_damage_step()
 	var/obj/vehicle/sealed/mecha/mecha = src
 	if(mecha.hasInternalDamage(MECHA_INT_FIRE))
-		if(!mecha.hasInternalDamage(MECHA_INT_TEMP_CONTROL) && prob(5))
-			mecha.clearInternalDamage(MECHA_INT_FIRE)
 		if(mecha.internal_tank)
 			if(mecha.internal_tank.return_pressure()>mecha.internal_tank.maximum_pressure && !(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)))
 				mecha.setInternalDamage(MECHA_INT_TANK_BREACH)

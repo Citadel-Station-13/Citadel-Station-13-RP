@@ -263,8 +263,9 @@
 	var/original_delay = delay
 	var/delay_factor = 1
 	if(isnull(progress) && !(flags & DO_AFTER_NO_PROGRESS) && (!isnull(progress_anchor || !isnull(target))))
-		#warn vehicle.occupatns is a bad input here. what do we do?
-		progress = new(vehicle.occupants, delay, progress_anchor || target)
+		// TODO: we want progress bars for every occupant, not just first
+		if(length(vehicle.occupants) >= 1)
+			progress = new(vehicle.occupants[1], delay, progress_anchor || target)
 	var/start_time = world.time
 
 	//* loop
