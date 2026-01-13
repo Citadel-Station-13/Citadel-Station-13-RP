@@ -451,6 +451,7 @@
 #include "code\__HELPERS\files\paths.dm"
 #include "code\__HELPERS\files\walk.dm"
 #include "code\__HELPERS\game\depth.dm"
+#include "code\__HELPERS\game\level_connectivity.dm"
 #include "code\__HELPERS\game\combat\arc.dm"
 #include "code\__HELPERS\game\turfs\blocks.dm"
 #include "code\__HELPERS\game\turfs\line.dm"

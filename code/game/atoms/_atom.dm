@@ -185,13 +185,23 @@
 	var/relative_layer = 0
 
 	//? Pixel Offsets
-	/// Default pixel x shifting for the atom's icon.
+	/// Base pixel x offset; this tracks non-ephemeral pixel offsets like wall-mounting
+	/// and permanent adjustment.
+	/// * Do **not** use this when calculating auto-centering; if we are a wall-mount it doesn't make sense to do so, as an example.
 	var/base_pixel_x = 0
-	/// Default pixel y shifting for the atom's icon.
+	/// Base pixel y offset; this tracks non-ephemeral pixel offsets like wall-mounting
+	/// and permanent adjustment.
+	/// * Do **not** use this when calculating auto-centering; if we are a wall-mount it doesn't make sense to do so, as an example.
 	var/base_pixel_y = 0
-	/// expected icon width; centering offsets will be calculated from this and our base pixel x.
+	/// expected icon width
+	/// * this **should**, but often is not necessarily, always set to the icon's actual file dimensions.
+	///   if an admin edits an icon this is often not set and we can't really assume alignment either way, so.
+	/// * this is not necessarily able to be used for centering unless we are actually centered in the icon.
 	var/icon_x_dimension = 32
-	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
+	/// expected icon height
+	/// * this **should**, but often is not necessarily, always set to the icon's actual file dimensions.
+	///   if an admin edits an icon this is often not set and we can't really assume alignment either way, so.
+	/// * this is not necessarily able to be used for centering unless we are actually centered in the icon.
 	var/icon_y_dimension = 32
 
 	//? Misc
@@ -815,102 +825,127 @@
 
 //? Pixel Offsets
 
-// todo: figure out exactly what we're doing here because this is a dumpster fire; we need to well-define what each of htese is supposed to do.
-// todo: at some point we need to optimize this entire chain of bullshit, proccalls are expensive yo
-
+/**
+ * Set ephemeral pixel X / Y.
+ * * Our managed pixel X / Y will be applied ontop of this.
+ * * **Rule of Three**: If this is overridden, all `set_pixel_x/y/offsets` must be overridden.
+ */
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
+/**
+ * Set ephemeral pixel X / Y.
+ * * Our managed pixel X / Y will be applied ontop of this.
+ * * **Rule of Three**: If this is overridden, all `set_pixel_x/y/offsets` must be overridden.
+ */
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
+/**
+ * Set ephemeral pixel X / Y.
+ * * Our managed pixel X / Y will be applied ontop of this.
+ * * **Rule of Three**: If this is overridden, all `set_pixel_x/y/offsets` must be overridden.
+ */
 /atom/proc/set_pixel_offsets(x, y)
 	pixel_x = x + get_managed_pixel_x()
 	pixel_y = y + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
+/**
+ * Unset ephemeral pixel X / Y
+ * * Our managed pixel X / Y will still be applied.
+ */
 /atom/proc/reset_pixel_offsets()
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /**
- * get our pixel_x to reset to
+ * Gets our managed pixel x / y, which is our natural offsets when not taking
+ * into account anything else. Things like buckling will offset us to them with this.
+ * * The advantage of this over base_pixel_x/y is that this tracks
+ *   sources inherently, at the cost of higher overhead. Things like taur offsets and
+ *   buckling go in here.
  */
 /atom/proc/get_managed_pixel_x()
-	return get_standard_pixel_x_offset()
-
-/**
- * get our pixel_y to reset to
- */
-/atom/proc/get_managed_pixel_y()
-	return get_standard_pixel_y_offset()
-
-/**
- * get the pixel_x needed to center our sprite visually with our current bounds
- */
-/atom/proc/get_standard_pixel_x_offset()
 	return base_pixel_x
 
 /**
- * get the pixel_y needed to center our sprite visually with our current bounds
+ * Gets our managed pixel x / y, which is our natural offsets when not taking
+ * into account anything else. Things like buckling will offset us to them with this.
+ * * The advantage of this over base_pixel_x/y is that this tracks
+ *   sources inherently, at the cost of higher overhead. Things like taur offsets and
+ *   buckling go in here.
  */
-/atom/proc/get_standard_pixel_y_offset()
+/atom/proc/get_managed_pixel_y()
 	return base_pixel_y
 
 /**
- * get the pixel_x needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
- *
- * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
- * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
+ * Gets the pixel offsets needed to adjust ourselves to be centered on our turf.
+ * * This defaults to only checking icon dimension x/y. User overrides can augment
+ *   or entirely replace this behavior.
+ * * It is not safe to assume this works wth all types unless a type specifically has its
+ *   behavior checked; the default center-in-icon behavior is not always what you want.
  */
 /atom/proc/get_centering_pixel_x_offset(dir)
-	return base_pixel_x + (WORLD_ICON_SIZE - icon_x_dimension) / 2
+	return (icon_x_dimension - WORLD_ICON_SIZE) / 2
 
 /**
- * get the pixel_y needed to adjust ourselves to be centered on our turf. this is used for alignment with buckles and whatnot.
- *
- * e.g. even if we are a 3x3 sprite with -32 x/y offsets, this would be 0
- * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
+ * Gets the pixel offsets needed to adjust ourselves to be centered on our turf.
+ * * This defaults to only checking icon dimension x/y. User overrides can augment
+ *   or entirely replace this behavior.
+ * * It is not safe to assume this works wth all types unless a type specifically has its
+ *   behavior checked; the default center-in-icon behavior is not always what you want.
  */
 /atom/proc/get_centering_pixel_y_offset(dir)
-	return base_pixel_y + (WORLD_ICON_SIZE - icon_y_dimension) / 2
+	return (icon_y_dimension - WORLD_ICON_SIZE) / 2
 
-/// Setter for the `base_pixel_x` variable to append behavior related to its changing.
+/**
+ * Sets base_pixel_x/y, an opaque non-ephemeral pixel offset.
+ * * Will update our pixel offsets.
+ * * **Rule of Three**: If this is overridden, all `set_base_pixel_x/y/offsets` must be overridden.
+ */
 /atom/proc/set_base_pixel_x(new_value)
 	if(base_pixel_x == new_value)
 		return
-	. = base_pixel_x
+	var/old = base_pixel_x
 	base_pixel_x = new_value
+	pixel_x = pixel_x + base_pixel_x - old
 
-	pixel_x = pixel_x + base_pixel_x - .
-
-/// Setter for the `base_pixel_y` variable to append behavior related to its changing.
+/**
+ * Sets base_pixel_x/y, an opaque non-ephemeral pixel offset.
+ * * Will update our pixel offsets.
+ * * **Rule of Three**: If this is overridden, all `set_base_pixel_x/y/offsets` must be overridden.
+ */
 /atom/proc/set_base_pixel_y(new_value)
 	if(base_pixel_y == new_value)
 		return
-	. = base_pixel_y
+	var/old = base_pixel_y
 	base_pixel_y = new_value
+	pixel_y = pixel_y + base_pixel_y - old
 
-	pixel_y = pixel_y + base_pixel_y - .
+/**
+ * Sets base_pixel_x/y, an opaque non-ephemeral pixel offset.
+ * * Will update our pixel offsets.
+ * * **Rule of Three**: If this is overridden, all `set_base_pixel_x/y/offsets` must be overridden.
+ */
+/atom/proc/set_base_pixel_offsets(new_x, new_y)
+	if(base_pixel_x == new_x && base_pixel_y == new_y)
+		return
+	var/old_x = base_pixel_x
+	var/old_y = base_pixel_y
+	base_pixel_x = new_x
+	base_pixel_y = new_y
+	pixel_x = pixel_x + base_pixel_x - old_x
+	pixel_y = pixel_y + base_pixel_y - old_y
 
-/// forcefully center us
+/**
+ * Centers us on our `loc`, assuming our `loc` is a tile.
+ * * Assumes that `get_centering_pixel_(x|y)_offset` is properly implemented;
+ *   this will trample base pixel x/y.
+ */
 /atom/proc/auto_pixel_offset_to_center()
 	set_base_pixel_y(get_centering_pixel_y_offset())
 	set_base_pixel_x(get_centering_pixel_x_offset())
-
-/**
- * Get the left-to-right lower-left to top-right width of our icon in pixels.
- * * This is used to align some overlays like HUD overlays.
- */
-/atom/proc/get_pixel_x_self_width()
-	return icon_x_dimension
-
-/**
- * Get the left-to-right lower-left to top-right width of our icon in pixels.
- * * This is used to align some overlays like HUD overlays.
- */
-/atom/proc/get_pixel_y_self_width()
-	return icon_y_dimension

@@ -28,20 +28,15 @@ calculate text size per text.
 			var/datum/reagent/R = SSchemistry.fetch_reagent(id)
 			if(!R.taste_mult)
 				continue
-			if(R.id == "nutriment") //this is ugly but apparently only nutriment (not subtypes) has taste data TODO figure out why
-				var/list/taste_data = reagent_datas?[id]
-				for(var/taste in taste_data)
-					if(taste in tastes)
-						tastes[taste] += taste_data[taste]
-					else
-						tastes[taste] = taste_data[taste]
+			if(istype(R, /datum/reagent/nutriment))
+				var/datum/nutriment_data/nutriment_data = reagent_datas?[id]
+				var/list/nutriment_tastes = nutriment_data.taste
+				for(var/taste in nutriment_tastes)
+					tastes[taste] = tastes[taste] + nutriment_tastes[taste]
 			else
 				var/taste_desc = R.taste_description
 				var/taste_amount = get_reagent_amount(R.id) * R.taste_mult
-				if(R.taste_description in tastes)
-					tastes[taste_desc] += taste_amount
-				else
-					tastes[taste_desc] = taste_amount
+				tastes[taste_desc] = tastes[taste_desc] + taste_amount
 
 		//deal with percentages
 		var/total_taste = 0
