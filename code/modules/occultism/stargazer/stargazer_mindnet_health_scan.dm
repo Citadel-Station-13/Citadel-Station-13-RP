@@ -10,6 +10,8 @@
 	var/pain_descriptor
 	/// (nullable) are they considered alive?
 	var/considered_alive
+	/// (nullable) are they considered in critical condition?
+	var/considered_critted
 	/// (nullable) are they considered conscious?
 	var/considered_conscious
 

@@ -4546,7 +4546,6 @@
 #include "code\modules\occultism\stargazer\stargazer_mindnet_ability.dm"
 #include "code\modules\occultism\stargazer\stargazer_mindnet_exec.dm"
 #include "code\modules\occultism\stargazer\stargazer_mindnet_health_scan.dm"
-#include "code\modules\occultism\stargazer\abilities\commune-old.dm"
 #include "code\modules\occultism\stargazer\abilities\commune.dm"
 #include "code\modules\occultism\stargazer\abilities\health_scan.dm"
 #include "code\modules\occultism\stargazer\abilities\mindlink.dm"
