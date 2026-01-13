@@ -1,5 +1,5 @@
 /mob/living/silicon
-	var/datum/ai_laws/laws = null
+	var/datum/ai_lawset/laws = null
 	var/list/additional_law_channels = list("State" = "")
 	var/last_law_notification = null // Avoids receiving 5+ of them at once.
 
@@ -84,7 +84,7 @@
 	window_flash(client)
 	to_chat(src, SPAN_WARNING( message))
 
-/mob/living/silicon/proc/statelaws(var/datum/ai_laws/laws)
+/mob/living/silicon/proc/statelaws(var/datum/ai_lawset/laws)
 	var/prefix = ""
 	if(MAIN_CHANNEL == lawchannel)
 		prefix = ";"
@@ -95,7 +95,7 @@
 
 	dostatelaws(lawchannel, prefix, laws)
 
-/mob/living/silicon/proc/dostatelaws(var/method, var/prefix, var/datum/ai_laws/laws)
+/mob/living/silicon/proc/dostatelaws(var/method, var/prefix, var/datum/ai_lawset/laws)
 	if(stating_laws[prefix])
 		to_chat(src, "<span class='notice'>[method]: Already stating laws using this communication method.</span>")
 		return

@@ -33,6 +33,8 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
   - /mob - mob sprites
     - /bodysets - limbs and their corrosponding sprite accessories & markings & miscellaneous.
                   used in the abstraction of limb sprite from limb definition.
+    - /robot - `/mob/living/silicon/robot` stuff
+      - /iconset - iconsets for silicon / robot mobs
     - /sprite_accessories - unconverted sprite accessories
     - /sprite_accessory - modern sprite accessory system
   - /modules - same hierarchy as `code/modules`.

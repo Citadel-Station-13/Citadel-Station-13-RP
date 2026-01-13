@@ -1630,7 +1630,7 @@
 
 /obj/item/checker
 	name = "Checker Piece"
-	icon = 'icons/mob/robots.dmi'
+	icon = 'icons/mob/robot-legacy.dmi'
 	icon_state = "zoomba-combat-shield"
 	desc = "Some sort of novelty checker piece."
 

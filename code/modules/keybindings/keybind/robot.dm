@@ -12,8 +12,7 @@
 	description = "Equips or unequips the first module"
 
 /datum/keybinding/robot/moduleone/down(client/user)
-	var/mob/living/silicon/robot/R = user.mob
-	R.toggle_module(1)
+	user.mob?.swap_hand(user.mob.active_hand == 1 ? null : 1, TRUE)
 	return TRUE
 
 /datum/keybinding/robot/moduletwo
@@ -23,8 +22,7 @@
 	description = "Equips or unequips the second module"
 
 /datum/keybinding/robot/moduletwo/down(client/user)
-	var/mob/living/silicon/robot/R = user.mob
-	R.toggle_module(2)
+	user.mob?.swap_hand(user.mob.active_hand == 2 ? null : 2, TRUE)
 	return TRUE
 
 /datum/keybinding/robot/modulethree
@@ -34,8 +32,7 @@
 	description = "Equips or unequips the third module"
 
 /datum/keybinding/robot/modulethree/down(client/user)
-	var/mob/living/silicon/robot/R = user.mob
-	R.toggle_module(3)
+	user.mob?.swap_hand(user.mob.active_hand == 3 ? null : 3, TRUE)
 	return TRUE
 
 /datum/keybinding/robot/intent_cycle
@@ -57,5 +54,5 @@
 
 /datum/keybinding/robot/unequip_module/down(client/user)
 	var/mob/living/silicon/robot/R = user.mob
-	R.uneq_active()
+	R.drop_active_held_item()
 	return TRUE
