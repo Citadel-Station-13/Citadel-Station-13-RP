@@ -154,7 +154,6 @@
 				// 	src.anchored = 1
 				// 	src.pinned += O
 
-
 // /mob/living/proc/embed(var/obj/O, var/def_zone=null)
 // 	O.loc = src
 // 	src.embedded += O

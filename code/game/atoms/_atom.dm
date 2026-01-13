@@ -193,7 +193,12 @@
 	/// and permanent adjustment.
 	/// * Do **not** use this when calculating auto-centering; if we are a wall-mount it doesn't make sense to do so, as an example.
 	var/base_pixel_y = 0
-	/// expected icon width
+	///Default pixel w shifting for the atom's icon.
+	var/base_pixel_w = 0
+	///Default pixel z shifting for the atom's icon.
+	var/base_pixel_z = 0
+
+	/// expected icon width; centering offsets will be calculated from this and our base pixel x.
 	/// * this **should**, but often is not necessarily, always set to the icon's actual file dimensions.
 	///   if an admin edits an icon this is often not set and we can't really assume alignment either way, so.
 	/// * this is not necessarily able to be used for centering unless we are actually centered in the icon.
@@ -379,16 +384,19 @@
 			return FALSE
 		if (H.gloves)
 			if (fingerprintslast != H.key)
+				LAZYINITLIST(fingerprintshidden)
 				fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
 				fingerprintslast = H.key
 			return FALSE
 		if (!(fingerprints))
 			if (fingerprintslast != H.key)
+				LAZYINITLIST(fingerprintshidden)
 				fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
 				fingerprintslast = H.key
 			return TRUE
 	else
 		if (fingerprintslast != M.key)
+			LAZYINITLIST(fingerprintshidden)
 			fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
 			fingerprintslast = M.key
 	return
@@ -494,6 +502,7 @@
 	else
 		//Smudge up dem prints some
 		if(fingerprintslast != M.key)
+			LAZYINITLIST(fingerprintshidden)
 			fingerprintshidden += "[time_stamp()]: [key_name(M)]"
 			fingerprintslast = M.key
 

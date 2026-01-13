@@ -227,7 +227,7 @@
 			var/confirm=input(user, "Are you certain you want to insert \the [W] into [src]?","Hide item") as null|anything in list("Yes","No")
 			if(!confirm || confirm == "No")
 				return
-			if (W.w_class >= w_class || is_robot_module(W))
+			if (W.w_class >= w_class)
 				return
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return

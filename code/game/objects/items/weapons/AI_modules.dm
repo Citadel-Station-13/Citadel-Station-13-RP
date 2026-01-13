@@ -8,7 +8,7 @@ AI MODULES
 
 /obj/item/aiModule
 	name = "\improper AI module"
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "std_mod"
 	desc = "An AI Module for transmitting encrypted instructions to the AI."
 	damage_force = 5.0
@@ -18,7 +18,7 @@ AI MODULES
 	throw_range = 15
 	origin_tech = list(TECH_DATA = 3)
 	preserve_item = 1
-	var/datum/ai_laws/laws = null
+	var/datum/ai_lawset/laws = null
 
 /obj/item/aiModule/proc/install(var/atom/movable/AM, var/mob/living/user)
 	if(!user.IsAdvancedToolUser() && isanimal_legacy_this_is_broken(user))
@@ -313,7 +313,7 @@ AI MODULES
 	name = "\improper 'Asimov' core AI module"
 	desc = "An 'Asimov' Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4)
-	laws = new/datum/ai_laws/asimov
+	laws = new/datum/ai_lawset/asimov
 
 /******************** Nanotrasen ********************/
 
@@ -321,7 +321,7 @@ AI MODULES
 	name = "'NT Default' Core AI Module"
 	desc = "An 'NT Default' Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4)
-	laws = new/datum/ai_laws/nanotrasen
+	laws = new/datum/ai_lawset/nanotrasen
 
 /******************** Corporate ********************/
 
@@ -329,14 +329,14 @@ AI MODULES
 	name = "\improper 'Corporate' core AI module"
 	desc = "A 'Corporate' Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4)
-	laws = new/datum/ai_laws/corporate
+	laws = new/datum/ai_lawset/corporate
 
 /******************** Drone ********************/
 /obj/item/aiModule/drone
 	name = "\improper 'Drone' core AI module"
 	desc = "A 'Drone' Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4)
-	laws = new/datum/ai_laws/drone
+	laws = new/datum/ai_lawset/drone
 
 /****************** P.A.L.A.D.I.N. **************/
 
@@ -344,7 +344,7 @@ AI MODULES
 	name = "\improper 'P.A.L.A.D.I.N.' core AI module"
 	desc = "A P.A.L.A.D.I.N. Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6)
-	laws = new/datum/ai_laws/paladin
+	laws = new/datum/ai_lawset/paladin
 
 /****************** T.Y.R.A.N.T. *****************/
 
@@ -352,7 +352,7 @@ AI MODULES
 	name = "\improper 'T.Y.R.A.N.T.' core AI module"
 	desc = "A T.Y.R.A.N.T. Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6, TECH_ILLEGAL = 2)
-	laws = new/datum/ai_laws/tyrant()
+	laws = new/datum/ai_lawset/tyrant()
 
 /******************** Freeform Core ******************/
 
@@ -423,7 +423,7 @@ AI MODULES
 	name = "\improper 'Robocop' core AI module"
 	desc = "A 'Robocop' Core AI Module: 'Reconfigures the AI's core three laws.'"
 	origin_tech = list(TECH_DATA = 4)
-	laws = new/datum/ai_laws/robocop()
+	laws = new/datum/ai_lawset/robocop()
 
 /******************** Antimov ********************/
 
@@ -431,4 +431,4 @@ AI MODULES
 	name = "\improper 'Antimov' core AI module"
 	desc = "An 'Antimov' Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = list(TECH_DATA = 4)
-	laws = new/datum/ai_laws/antimov()
+	laws = new/datum/ai_lawset/antimov()

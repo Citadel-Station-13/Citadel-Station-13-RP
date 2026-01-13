@@ -31,6 +31,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 /// * Underfloor objects (we don't want them to be interactable at all)
 /// * Abstract objects (we don't want them to be interactable at all)
 
+#define INVISIBILITY_NONE 0
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
 #define INVISIBILITY_LEVEL_TWO		45
@@ -141,9 +142,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #endif
 #ifndef CUSTOM_ITEM_MOB
 #define CUSTOM_ITEM_MOB		'icons/mob/custom_items_mob.dmi'
-#endif
-#ifndef CUSTOM_ITEM_SYNTH
-#define CUSTOM_ITEM_SYNTH	'icons/mob/custom_synthetic.dmi'
 #endif
 
 #define WALL_CAN_OPEN	1
@@ -517,3 +515,7 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //name for blank icon states for clothing
 #define CLOTHING_BLANK_ICON_STATE "blank"
+
+#define BUTTON_SLIDE_IN (1<<0)
+#define BUTTON_FADE_IN (1<<1)
+#define BUTTON_FADE_OUT (1<<2)

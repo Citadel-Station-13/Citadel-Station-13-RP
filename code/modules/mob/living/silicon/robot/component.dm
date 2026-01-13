@@ -63,7 +63,7 @@
 		powered = 0
 		return
 	if(owner.cell && owner.cell.charge >= idle_usage)
-		owner.cell_use_power(idle_usage)
+		owner.legacy_cell_use_power(idle_usage)
 		powered = 1
 	else
 		powered = 0

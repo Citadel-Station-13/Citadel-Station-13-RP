@@ -337,7 +337,7 @@
 				eject_chamber(FALSE, TRUE, drop_location(), TRUE)
 			else if(chamber_cycle_after_fire)
 				cycle_chamber(FALSE, TRUE)
-			if(magazine_auto_eject && !magazine.get_amount_remaining())
+			if(magazine_auto_eject && magazine && !magazine.get_amount_remaining())
 				remove_magazine(null, null, TRUE)
 			if(chamber_spin_after_fire && internal_magazine_revolver_mode && internal_magazine)
 				unsafe_spin_chamber_to_next()
