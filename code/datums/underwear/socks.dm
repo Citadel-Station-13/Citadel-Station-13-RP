@@ -115,6 +115,7 @@
 /datum/category_item/underwear/socks/garter
 	name = "Garters"
 	icon_state = "garter"
+	has_color = TRUE
 
 /datum/category_item/underwear/socks/uk_thigh
 	name = "Thigh, UK"

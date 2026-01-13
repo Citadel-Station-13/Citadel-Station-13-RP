@@ -20,10 +20,22 @@
 		"GCSS Vevalia Salvage Shuttle" = list ("solarsalvage"),
 	)
 
-/obj/item/radio/phone/laptop
+/obj/item/radio/entertainement
+	icon = 'icons/obj/radio.dmi'
+	icon_state = "radio"
+	broadcasting = FALSE
+	listening = TRUE
+	name = "Entertainement Radio"
+	desc = "A bit old, those radio are made to hear the entertainement frequency."
+	frequency = FREQ_ENTERTAINMENT
+	bluespace_radio = TRUE
+	canhear_range = 5
+	broadcasting = 1
+	listening = 0
+
+/obj/item/radio/laptop
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "laptop"
-	anchored = TRUE
 	broadcasting = FALSE
 	listening = TRUE
 	name = "Occulum Model.2566 Radio Computer"
