@@ -21,6 +21,7 @@
 						var/mob/living/L = target
 						if(istype(L))
 							vv_update_display(target, "real_name", L.real_name || "No real name")
+
 			if(href_list[VV_HK_BASIC_CHANGE])
 				modify_variables(target, target_var, 0)
 			if(href_list[VV_HK_BASIC_MASSEDIT])
@@ -34,51 +35,95 @@
 			if (!C)
 				return
 			if(!target)
-				to_chat(usr, "<span class='warning'>The object you tried to expose to [C] no longer exists (nulled or hard-deled)</span>")
+				to_chat(usr, SPAN_WARNING("The object you tried to expose to [C] no longer exists (nulled or hard-deled)"), confidential = TRUE)
 				return
-			message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='?_src_=vars;datumrefresh=[REF(target)]'>VV window</a>")
+			message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='byond://?_src_=vars;datumrefresh=[REF(target)]'>VV window</a>")
 			log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [target]")
-			to_chat(C, "[is_under_stealthmin() ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
+			to_chat(C, "[is_under_stealthmin() ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window", confidential = TRUE)
 			C.debug_variables(target)
 	if(check_rights(R_DEBUG))
 		if(href_list[VV_HK_DELETE])
 			usr.client.admin_delete(target)
-			if (isturf(src))	// show the turf that took its place
-				usr.client.debug_variables(src)
+			if (isturf(target)) // show the turf that took its place
+				usr.client.debug_variables(target)
 				return
-	if(href_list[VV_HK_VIEW_APPEARANCE])
-		var/appearance/A = locate(href_list[VV_HK_VIEW_APPEARANCE])
-		if(!A || !IS_APPEARANCE(A))
-			to_chat(usr, SPAN_WARNING("Invalid ref: [href_list[VV_HK_VIEW_APPEARANCE]]"))
-			return
-		usr.client.debug_variables(A)
+
 	if(href_list[VV_HK_MARK])
 		usr.client.mark_datum(target)
 	if(href_list[VV_HK_ADDCOMPONENT])
 		if(!check_rights(NONE))
 			return
 		var/list/names = list()
-		var/list/componentsubtypes = subtypesof(/datum/component)
+		var/list/componentsubtypes = sortList(subtypesof(/datum/component), GLOBAL_PROC_REF(cmp_typepaths_asc))
+		names += "---Components---"
 		names += componentsubtypes
-		names += subtypesof(/datum/element)
-		var/result = tgui_input_list(usr, "Choose a component/element to add", "better know what ur fuckin doin pal", names)
-		if(!usr || !result || result == "---Components---" || result == "---Elements---")
+		names += "---Elements---"
+		names += sortList(subtypesof(/datum/element), GLOBAL_PROC_REF(cmp_typepaths_asc))
+
+		var/result = tgui_input_list(usr, "Choose a component/element to add", "Add Component", names)
+		if(isnull(result))
 			return
+		if(!usr || result == "---Components---" || result == "---Elements---")
+			return
+
 		if(QDELETED(src))
-			to_chat(usr, "That thing doesn't exist anymore!")
+			to_chat(usr, "That thing doesn't exist anymore!", confidential = TRUE)
 			return
+
 		var/list/lst = get_callproc_args()
 		if(!lst)
 			return
-		lst.Insert(1, result)
+
 		var/datumname = "error"
+		lst.Insert(1, result)
 		if(result in componentsubtypes)
 			datumname = "component"
 			target._AddComponent(lst)
 		else
 			datumname = "element"
 			target._AddElement(lst)
-		log_admin("[key_name(usr)] has added [result] [datumname] to [key_name(src)].")
-		message_admins("<span class='notice'>[key_name_admin(usr)] has added [result] [datumname] to [target] ([ADMIN_VV(target)]).</span>")
+		log_admin("[key_name(usr)] has added [result] [datumname] to [key_name(target)].")
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] has added [result] [datumname] to [key_name_admin(target)]."))
+	if(href_list[VV_HK_REMOVECOMPONENT] || href_list[VV_HK_MASS_REMOVECOMPONENT])
+		if(!check_rights(NONE))
+			return
+		var/mass_remove = href_list[VV_HK_MASS_REMOVECOMPONENT]
+		var/list/components = target.datum_components.Copy()
+		var/list/names = list()
+		names += "---Components---"
+		if(length(components))
+			names += sortList(components, GLOBAL_PROC_REF(cmp_typepaths_asc))
+		names += "---Elements---"
+		// We have to list every element here because there is no way to know what element is on this object without doing some sort of hack.
+		names += sortList(subtypesof(/datum/element), GLOBAL_PROC_REF(cmp_typepaths_asc))
+		var/path = tgui_input_list(usr, "Choose a component/element to remove. All elements listed here may not be on the datum.", "Remove element", names)
+		if(isnull(path))
+			return
+		if(!usr || path == "---Components---" || path == "---Elements---")
+			return
+		if(QDELETED(src))
+			to_chat(usr, "That thing doesn't exist anymore!")
+			return
+		var/list/targets_to_remove_from = list(target)
+		if(mass_remove)
+			var/method = vv_subtype_prompt(target.type)
+			targets_to_remove_from = get_all_of_type(target.type, method)
+
+			if(alert(usr, "Are you sure you want to mass-delete [path] on [target.type]?", "Mass Remove Confirmation", "Yes", "No") == "No")
+				return
+
+		for(var/datum/target_to_remove_from as anything in targets_to_remove_from)
+			if(ispath(path, /datum/element))
+				var/list/lst = get_callproc_args()
+				if(!lst)
+					lst = list()
+				lst.Insert(1, path)
+				target._RemoveElement(lst)
+			else
+				var/list/components_actual = target_to_remove_from.GetComponents(path)
+				for(var/to_delete in components_actual)
+					qdel(to_delete)
+
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] has [mass_remove? "mass" : ""] removed [path] component from [mass_remove? target.type : key_name_admin(target)]."))
 	if(href_list[VV_HK_CALLPROC])
 		usr.client.callproc_datum(target)

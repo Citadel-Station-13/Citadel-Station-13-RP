@@ -16,6 +16,7 @@ FLOOR SAFES
 	icon_state = "safe"
 	anchored = TRUE
 	density = TRUE
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_LAVAPROOF | INTEGRITY_FIREPROOF | INTEGRITY_ACIDPROOF
 
 	/// The maximum combined w_class of stuff in the safe
