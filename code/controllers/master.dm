@@ -355,13 +355,15 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(subsystem.initialized)
 		return
 
-	// todo: dylib high-precision timers
-	var/rtod_start = REALTIMEOFDAY
-	var/initialize_result = subsystem.Initialize()
-	var/rtod_end = REALTIMEOFDAY
-	var/took_seconds = round((rtod_end - rtod_start) / 10, 0.01)
+	rustg_time_reset(SS_INIT_TIMER_KEY)
 
-	metric_set_nested_numerical(/datum/metric/nested_numerical/subsystem_init_time, "[subsystem.type]", took_seconds)
+	var/initialize_result = subsystem.Initialize()
+
+	// Capture end time
+	var/time = rustg_time_milliseconds(SS_INIT_TIMER_KEY)
+	var/seconds = round(time / 1000, 0.01)
+
+	SSblackbox.record_feedback("tally", "subsystem_initialize", time, subsystem.name)
 
 	// "[message_prefix] [seconds] seconds."
 	var/message_prefix
@@ -394,7 +396,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		else
 			warning("[subsystem.name] subsystem initialized, returning invalid result [initialize_result]. This is a bug.")
 
-	var/message = "[message_prefix] [took_seconds] second[took_seconds == 1 ? "" : "s"]."
+	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
 	var/chat_message = chat_warning ? SPAN_BOLDWARNING(message) : SPAN_BOLDANNOUNCE(message)
 
 	if(tell_everyone && message_prefix)

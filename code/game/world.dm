@@ -347,8 +347,6 @@ GLOBAL_LIST(topic_status_cache)
 		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting World immediately due to host request."))
 	else
 		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting world..."))
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
 		Master.Shutdown() //run SS shutdowns
 
 	#ifdef UNIT_TESTS

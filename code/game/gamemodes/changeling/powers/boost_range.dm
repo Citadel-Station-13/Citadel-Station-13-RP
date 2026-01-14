@@ -27,5 +27,5 @@
 	remove_verb(src, /mob/proc/changeling_boost_range)
 	spawn(5)
 		add_verb(src, /mob/proc/changeling_boost_range)
-	feedback_add_details("changeling_powers","RS")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Ranged Sting"))
 	return 1

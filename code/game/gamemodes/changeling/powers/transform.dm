@@ -58,5 +58,5 @@
 		add_verb(src, /mob/proc/changeling_transform)
 		src.regenerate_icons()
 
-	feedback_add_details("changeling_powers","TR")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Transform"))
 	return 1

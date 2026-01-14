@@ -29,5 +29,5 @@
 	if(add_modifier(modifier_to_use, 30 SECONDS))
 		changeling.chem_charges -= 30
 
-	feedback_add_details("changeling_powers","EN")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Enrage"))
 	return 1

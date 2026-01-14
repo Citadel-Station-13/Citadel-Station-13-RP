@@ -89,7 +89,7 @@
 		return
 
 	add_attack_logs(user,H,"Handcuffed (attempt)")
-	feedback_add_details("handcuffs","H")
+	SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 
 	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)
@@ -290,7 +290,7 @@ var/last_chew = 0
 		return
 
 	add_attack_logs(user,H,"Legcuffed (attempt)")
-	feedback_add_details("legcuffs","H")
+	SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 
 	user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 	user.do_attack_animation(H)

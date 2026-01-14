@@ -296,8 +296,8 @@ SUBSYSTEM_DEF(ticker)
 		// type filtered, we cannot risk runtimes
 		L.OnRoundstart()
 
-	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
+	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	SStime_keep.cached_round_start_time = world.time
 	SStime_keep.cached_round_start_rtod = REALTIMEOFDAY
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore, SetRoundStart))
@@ -334,6 +334,22 @@ SUBSYSTEM_DEF(ticker)
 	*/
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
+
+	// Handle database
+	if(SSdbcore.Connect())
+		var/list/to_set = list()
+		var/arguments = list()
+		if(GLOB.revdata.originmastercommit)
+			to_set += "commit_hash = :commit_hash"
+			arguments["commit_hash"] = GLOB.revdata.originmastercommit
+		if(to_set.len)
+			arguments["round_id"] = GLOB.round_id
+			var/datum/db_query/query_round_game_mode = SSdbcore.NewQuery(
+				"UPDATE [DB_PREFIX_TABLE_NAME("round")] SET [to_set.Join(", ")] WHERE id = :round_id",
+				arguments
+			)
+			query_round_game_mode.Execute()
+			qdel(query_round_game_mode)
 	return TRUE
 
 //These callbacks will fire after roundstart key transfer

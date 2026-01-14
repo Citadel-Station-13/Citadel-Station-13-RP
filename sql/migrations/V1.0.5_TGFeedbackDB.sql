@@ -8,8 +8,15 @@ ALTER TABLE `legacy_population`
   ADD COLUMN `round_id` INT(11) UNSIGNED NULL AFTER `server_port`;
 COMMIT;
 
+ALTER TABLE `round`
+  ADD COLUMN `game_mode` VARCHAR(32) NULL AFTER `commit_hash`,
+  ADD COLUMN `game_mode_result` VARCHAR(64) NULL AFTER `game_mode`,
+  ADD COLUMN `end_state` VARCHAR(64) NULL AFTER `game_mode_result`,
+  ADD COLUMN `map_name` VARCHAR(32) NULL AFTER `end_state`,
+  ADD COLUMN `station_name` VARCHAR(80) NULL AFTER `map_name`;
+
 -- for migration
-RENAME TABLE `feedback` TO `feedback_old`;
+RENAME TABLE IF EXISTS `feedback` TO `feedback_old`;
 --
 -- Table structure for table `feedback`
 --

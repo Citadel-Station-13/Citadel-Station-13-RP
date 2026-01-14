@@ -186,7 +186,6 @@
 
 /datum/component/personal_crafting/proc/construct_item(atom/a, datum/crafting_recipe/R)
 	var/list/contents = get_surroundings(a)
-	var/send_feedback = 1
 	if(check_contents(a, R, contents))
 		if(check_tools(a, R, contents))
 			//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
@@ -200,8 +199,7 @@
 			var/list/parts = del_reqs(R, a)
 			var/atom/movable/I = new R.result (get_turf(a.loc))
 			I.CheckParts(parts, R)
-			if(send_feedback)
-				blackbox.save_all_data_to_sql("tally", "object_crafted", 1, I.type)
+			SSblackbox.record_feedback("tally", "object_crafted", 1,I.type)
 			return I //Send the item back to whatever called this proc so it can handle whatever it wants to do with the new item
 		return ", missing tool."
 	return ", missing component."

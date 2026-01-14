@@ -188,7 +188,6 @@ var/datum/antagonist/raider/raiders
 
 	to_chat(world, "<span class='danger'><font size = 3>[win_type] [win_group] victory!</font></span>")
 	to_chat(world, "[win_msg]")
-	feedback_set_details("round_end_result","heist - [win_type] [win_group]")
 
 /datum/antagonist/raider/proc/is_raider_crew_safe()
 

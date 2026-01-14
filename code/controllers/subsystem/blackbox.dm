@@ -407,3 +407,8 @@ Versioning
 	if(query_report_manifest)
 		query_report_manifest.Execute(async = TRUE)
 		qdel(query_report_manifest)
+
+
+//! do not use.
+/proc/feedback_add_details(key, data)
+	SSblackbox.record_feedback("tally", key, 1, data)

@@ -58,10 +58,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	switch(controller)
 		if("Master")
 			Recreate_MC()
-			feedback_add_details("admin_verb","RMC")
+			BLACKBOX_LOG_ADMIN_VERB("Restart Master Controller")
 		if("Failsafe")
 			new /datum/controller/failsafe()
-			feedback_add_details("admin_verb","RFailsafe")
+			BLACKBOX_LOG_ADMIN_VERB("Restart Failsafe Controller")
 
 	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
 
@@ -113,6 +113,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	var/datum/D = options[pick]
 	if(!istype(D))
 		return
-	feedback_add_details("admin_verb", "DebugController")
+	BLACKBOX_LOG_ADMIN_VERB("Debug Controller")
 	message_admins("Admin [key_name_admin(mob)] is debugging the [pick] controller.")
 	debug_variables(D)
