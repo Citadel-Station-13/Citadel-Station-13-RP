@@ -105,9 +105,8 @@
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 80, 1, 1)
 
-	if(SSticker && SSticker.mode)
-		ASYNC
-			sql_report_death(src)
+	if(SSticker.HasRoundStarted())
+		SSblackbox.ReportDeath(src)
 		SSticker.mode.check_win()
 
 	if(wearing_rig)

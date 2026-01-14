@@ -117,3 +117,7 @@
 // LOG BROWSE TYPES
 #define BROWSE_ROOT_ALL_LOGS     1
 #define BROWSE_ROOT_CURRENT_LOGS 2
+
+/// Used in logging uses of admin verbs (and sometimes some non-admin or debug verbs) to the blackbox
+/// Only pass it a string key, the verb being used.
+#define BLACKBOX_LOG_ADMIN_VERB(the_verb) SSblackbox.record_feedback("tally", "admin_verb", 1, the_verb)

@@ -152,9 +152,7 @@ GLOBAL_LIST(topic_status_cache)
 	config.update_world_viewsize()	//! Since world.view is immutable, we load it here.
 	Configuration.Initialize()
 
-	// pretend these 2 ssdbcore funcs are InitializeRound()
-	SSdbcore.CheckSchemaVersion()
-	SSdbcore.SetRoundID()
+	SSdbcore.InitializeRound()
 
 	SetupLogs()
 

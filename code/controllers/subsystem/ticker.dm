@@ -102,15 +102,6 @@ SUBSYSTEM_DEF(ticker)
 
 				callHook("roundend")
 
-				if (mode.station_was_nuked)
-					feedback_set_details("end_proper","nuke")
-				else
-					feedback_set_details("end_proper","proper completion")
-
-
-				if(blackbox)
-					blackbox.save_all_data_to_sql()
-
 				send2irc("Server", "A round of [mode.name] just ended.")
 				if(CONFIG_GET(string/chat_roundend_notice_tag))
 					var/broadcastmessage = "The round has ended."
@@ -343,10 +334,6 @@ SUBSYSTEM_DEF(ticker)
 	*/
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
-
-	if(CONFIG_GET(flag/sql_enabled))
-		ASYNC // THIS REQUIRES THE ASYNC!
-			statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 	return TRUE
 
 //These callbacks will fire after roundstart key transfer
