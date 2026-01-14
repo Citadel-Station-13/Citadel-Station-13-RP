@@ -75,6 +75,8 @@
 	return data_initializer
 
 /datum/reagent/nutriment/mix_data(datum/nutriment_data/old_data, old_volume, datum/nutriment_data/new_data, new_volume, datum/reagent_holder/holder)
+	if(!old_data)
+		old_data = new /datum/nutriment_data
 	if(!istype(new_data))
 		return old_data
 	old_data.merge_from(new_data)

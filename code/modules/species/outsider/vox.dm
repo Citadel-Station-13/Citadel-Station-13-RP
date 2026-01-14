@@ -122,7 +122,7 @@
 	// ensure they have a valid mask
 	var/mask_type = /obj/item/clothing/mask/breath
 	if(for_target)
-		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask)
+		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask::id)
 		if(existing_mask?.clothing_flags & ALLOWINTERNALS)
 		else
 			if(for_target.temporarily_remove_from_inventory(existing_mask, INV_OP_FORCE | INV_OP_SILENT))

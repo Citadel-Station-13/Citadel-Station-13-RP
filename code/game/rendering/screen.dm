@@ -2,9 +2,10 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /atom/movable/screen
-	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR
 	plane = HUD_PLANE
 	layer = HUD_LAYER_BASE
+	animate_movement = SLIDE_STEPS
+	appearance_flags = APPEARANCE_UI
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
 	var/datum/hud/hud_legacy = null // A reference to the owner HUD, if any.
 	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS

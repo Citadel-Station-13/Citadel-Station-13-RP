@@ -19,7 +19,7 @@
 	. = ..()
 	// the upper will connect to the lower
 	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
-		for(var/obj/structure/ladder/L in get_vertical_step(src, DOWN))
+		for(var/obj/structure/ladder/L in get_step_multiz(src, DOWN))
 			if(L.allowed_directions & UP)
 				target_down = L
 				L.target_up = src
@@ -235,7 +235,7 @@
 	var/obj/structure/ladder_assembly/above
 
 	for(var/direction in list(DOWN, UP))
-		var/turf/T = get_vertical_step(src, direction)
+		var/turf/T = get_step_multiz(src, direction)
 		if(!T) continue
 		var/obj/structure/ladder_assembly/LA = locate(/obj/structure/ladder_assembly, T)
 		if(!LA) continue

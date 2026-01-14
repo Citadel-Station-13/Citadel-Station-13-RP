@@ -12,16 +12,20 @@
 
 	/// inventory hud
 	var/datum/actor_hud/inventory/inventory
+	/// robot inventory hud
+	var/datum/actor_hud/robot_inventory/robot_inventory
 
 /datum/actor_hud_holder/New(client/C)
 	// set owner
 	owner = C
 	// create huds
 	inventory = new(src)
+	robot_inventory = new(src)
 
 /datum/actor_hud_holder/Destroy()
 	// destroy huds
 	QDEL_NULL(inventory)
+	QDEL_NULL(robot_inventory)
 	// teardown owner
 	owner = null
 	// do rest
@@ -31,20 +35,22 @@
  * reset every hud to a mob
  */
 /datum/actor_hud_holder/proc/bind_all_to_mob(mob/target)
-	inventory.bind_to_mob(target)
+	inventory?.bind_to_mob(target)
+	robot_inventory?.bind_to_mob(target)
 
 /**
  * syncs hud preferences
  */
 /datum/actor_hud_holder/proc/sync_all_to_preferences(datum/hud_preferences/preference_set)
 	inventory?.sync_to_preferences(preference_set)
+	robot_inventory?.sync_to_preferences(preference_set)
 
 /**
  * get all screens
  */
 /datum/actor_hud_holder/proc/screens()
 	. = list()
-	for(var/datum/actor_hud/hud as anything in all_huds())
+	for(var/datum/actor_hud/hud in all_huds())
 		. += hud.screens()
 
 /**
@@ -52,7 +58,7 @@
  */
 /datum/actor_hud_holder/proc/images()
 	. = list()
-	for(var/datum/actor_hud/hud as anything in all_huds())
+	for(var/datum/actor_hud/hud in all_huds())
 		. += hud.images()
 
 /**
@@ -61,6 +67,7 @@
 /datum/actor_hud_holder/proc/all_huds()
 	return list(
 		inventory,
+		robot_inventory,
 	)
 
 /**

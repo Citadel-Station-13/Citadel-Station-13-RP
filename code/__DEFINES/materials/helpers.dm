@@ -16,8 +16,13 @@
  * * a defined `sheet_plural_name`
  * * a defined `icon`
  * * a defined `icon_stack_count`
+ *
+ * This will set `stack_type` on the material for you.
  */
 #define GENERATE_MATERIAL_STACKS(PATH_FRAGMENT) \
+/datum/prototype/material##PATH_FRAGMENT { \
+	stack_type = /obj/item/stack/material##PATH_FRAGMENT; \
+} \
 /obj/item/stack/material##PATH_FRAGMENT { \
 	name = /datum/prototype/material##PATH_FRAGMENT::name + " " + /datum/prototype/material##PATH_FRAGMENT::sheet_singular_name; \
 	icon = /datum/prototype/material##PATH_FRAGMENT::icon; \
