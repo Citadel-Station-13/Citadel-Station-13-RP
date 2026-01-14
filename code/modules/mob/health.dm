@@ -41,6 +41,9 @@
 		update_mobility()
 	update_hud_med_status()
 
+/mob/proc/on_stat_change(old_stat, new_stat)
+	return
+
 /**
  * brings a mob back to life
  *

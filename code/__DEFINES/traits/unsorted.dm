@@ -34,3 +34,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FISH_SAFE_STORAGE "fish_case"
 /// Stuff that can go inside fish cases
 #define TRAIT_FISH_CASE_COMPATIBILE "fish_case_compatibile"
+
+/// Whether or not orbiting is blocked or not
+#define TRAIT_ORBITING_FORBIDDEN "orbiting_forbidden"

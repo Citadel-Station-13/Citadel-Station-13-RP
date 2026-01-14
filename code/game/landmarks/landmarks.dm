@@ -43,11 +43,11 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 
 	switch(name)			//some of these are probably obsolete
 		if("monkey")
-			monkeystart += loc
+			// todo: legacy, we already got rid of it, audit maps
 			delete_on_roundstart = 1
 			return
 		if("start")
-			newplayer_start += loc
+			// todo: legacy, we already got rid of it, audit maps
 			delete_on_roundstart = 1
 			return
 		if("tdome1")

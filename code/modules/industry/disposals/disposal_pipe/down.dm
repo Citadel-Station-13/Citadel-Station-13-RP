@@ -21,7 +21,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 11)
-		T = get_vertical_step(src, DOWN)
+		T = get_step_multiz(src, DOWN)
 		if(!T)
 			H.forceMove(src.loc)
 			return

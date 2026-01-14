@@ -30,144 +30,6 @@
 		textr = "0[textb]"
 	return "#[textr][textg][textb]"
 
-/**
- * Returns location.  Returns null if no location was found.
- *
- *! Variables:
- *? location
- * * location where the teleport begins.
- *? target
- *  * target that will teleport.
- *? distance
- *  * distance to go.
- *? density
- *  * density checking 0/1(TRUE/FALSE).
- *? errorx
- *  * Random error in tile placement x.
- *? errory
- *  * Random error in tile placement y.
- *? eoffsetx
- *  * Random offset in tile placement x.
- *? eoffsety
- *  * Random offset in tile placement y.
- *
- *! Long-form explaination:
- * Location where the teleport begins, target that will teleport, distance to go, density checking 0/1(yes/no).
- * Random error in tile placement x, error in tile placement y, and block offset.
- * Block offset tells the proc how to place the box. Behind teleport location, relative to starting location, forward, etc.
- * Negative values for offset are accepted, think of it in relation to North, -x is west, -y is south. Error defaults to positive.
- * Turf and target are seperate in case you want to teleport some distance from a turf the target is not standing on or something.
- */
-/proc/get_teleport_loc(turf/location, mob/target, distance = 1, density = FALSE, errorx = 0, errory = 0, eoffsetx = 0, eoffsety = 0)
-
-	// Generic location finding variable.
-	var/dirx = 0
-	var/diry = 0
-
-	// Generic counter for offset location.
-	var/xoffset = 0
-	var/yoffset = 0
-
-	//Generic placing for point A in box. The lower left.
-	var/b1xerror = 0
-	var/b1yerror = 0
-
-	//Generic placing for point B in box. The upper right.
-	var/b2xerror = 0
-	var/b2yerror = 0
-
-	//Error should never be negative.
-	errorx = abs(errorx)
-	errory = abs(errory)
-
-	//Used for diagonal boxes.
-	//var/errorxy = round((errorx+errory)/2)
-
-	// This can be done through equations but switch is the simpler method. And works fast to boot.
-	switch(target.dir)
-	// Directs on what values need modifying.
-		if(1) // North
-			diry+=distance
-			yoffset+=eoffsety
-			xoffset+=eoffsetx
-			b1xerror-=errorx
-			b1yerror-=errory
-			b2xerror+=errorx
-			b2yerror+=errory
-		if(2) // South
-			diry-=distance
-			yoffset-=eoffsety
-			xoffset+=eoffsetx
-			b1xerror-=errorx
-			b1yerror-=errory
-			b2xerror+=errorx
-			b2yerror+=errory
-		if(4) // East
-			dirx+=distance
-			yoffset+=eoffsetx//Flipped.
-			xoffset+=eoffsety
-			b1xerror-=errory//Flipped.
-			b1yerror-=errorx
-			b2xerror+=errory
-			b2yerror+=errorx
-		if(8) // West
-			dirx-=distance
-			yoffset-=eoffsetx//Flipped.
-			xoffset+=eoffsety
-			b1xerror-=errory//Flipped.
-			b1yerror-=errorx
-			b2xerror+=errory
-			b2yerror+=errorx
-
-	var/turf/destination=locate(location.x+dirx,location.y+diry,location.z)
-
-	// If there is a destination.
-	if(destination)
-		// If errorx or y were specified.
-		if(errorx||errory)
-			// To add turfs to list.
-			var/destination_list[] = list()
-			//destination_list = new()
-			/**
-			 * This will draw a block around the target turf, given what the error is.
-			 * Specifying the values above will basically draw a different sort of block.
-			 * If the values are the same, it will be a square. If they are different, it will be a rectengle.
-			 * In either case, it will center based on offset. Offset is position from center.
-			 * Offset always calculates in relation to direction faced. In other words, depending on the direction of the teleport,
-			 * the offset should remain positioned in relation to destination.
-			 */
-
-			var/turf/center = locate((destination.x+xoffset),(destination.y+yoffset),location.z)//So now, find the new center.
-
-			// Now to find a box from center location and make that our destination.
-			for(var/turf/T in block(locate(center.x+b1xerror,center.y+b1yerror,location.z), locate(center.x+b2xerror,center.y+b2yerror,location.z) ))
-				if(density&&(T.density||T.contains_dense_objects()))
-					// If density was specified.
-					continue
-				if(T.x>world.maxx || T.x<1)
-					// Don't want them to teleport off the map.
-					continue
-				if(T.y>world.maxy || T.y<1)
-					continue
-				destination_list += T
-			if(destination_list.len)
-				destination = pick(destination_list)
-			else
-				return
-
-		else//Same deal here.
-			if(density&&(destination.density||destination.contains_dense_objects()))
-				return
-			if(destination.x>world.maxx || destination.x<1)
-				return
-			if(destination.y>world.maxy || destination.y<1)
-				return
-	else
-		return
-
-	return destination
-
-
 /proc/LinkBlocked(turf/A, turf/B)
 	if(A == null || B == null)
 		return TRUE
@@ -463,56 +325,6 @@
 	for(var/mob/living/voice/M in sortmob)
 		moblist.Add(M)
 	return moblist
-
-/// Returns the turf located at the map edge in the specified direction relative to A.
-/proc/get_edge_target_turf(atom/A, direction) //Used for mass driver
-
-	var/turf/target = locate(A.x, A.y, A.z)
-	if(!A || !target)
-		return 0
-		//since NORTHEAST == NORTH & EAST, etc, doing it this way allows for diagonal mass drivers in the future
-		//and isn't really any more complicated
-
-		// Note diagonal directions won't usually be accurate
-	if(direction & NORTH)
-		target = locate(target.x, world.maxy, target.z)
-	if(direction & SOUTH)
-		target = locate(target.x, 1, target.z)
-	if(direction & EAST)
-		target = locate(world.maxx, target.y, target.z)
-	if(direction & WEST)
-		target = locate(1, target.y, target.z)
-
-	return target
-
-/**
- * returns turf relative to A in given direction at set range
- * result is bounded to map size
- * note range is non-pythagorean
- */
-/proc/get_ranged_target_turf(atom/A, direction, range) //Used for disposal system
-
-	var/x = A.x
-	var/y = A.y
-	if(direction & NORTH)
-		y = min(world.maxy, y + range)
-	if(direction & SOUTH)
-		y = max(1, y - range)
-	if(direction & EAST)
-		x = min(world.maxx, x + range)
-	if(direction & WEST)
-		x = max(1, x - range)
-
-	return locate(x,y,A.z)
-
-/**
- * Returns turf relative to A offset in dx and dy tiles.
- * Bound to map limits.
- */
-/proc/get_offset_target_turf(atom/A, dx, dy)
-	var/x = min(world.maxx, max(1, A.x + dx))
-	var/y = min(world.maxy, max(1, A.y + dy))
-	return locate(x,y,A.z)
 
 /// Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
 /proc/between(var/low, var/middle, var/high)
@@ -914,6 +726,7 @@
 	else if (zone == "r_foot") return "right foot"
 	else                       return zone
 
+// todo: remove this this is silly and shouldn't be just called 'get'
 /proc/get(atom/loc, type)
 	while(loc)
 		if(istype(loc, type))
@@ -1227,60 +1040,6 @@ var/list/WALLITEMS = list(
 
 	return L
 
-/// Similar function to RANGE_TURFS(), but will search spiralling outwards from the center (like the above, but only turfs).
-/proc/spiral_range_turfs(dist = 0, center = usr, orange = 0, list/outlist = list(), tick_checked)
-	outlist.Cut()
-	if(!dist)
-		outlist += center
-		return outlist
-
-	var/turf/t_center = get_turf(center)
-	if(!t_center)
-		return outlist
-
-	var/list/L = outlist
-	var/turf/T
-	var/y
-	var/x
-	var/c_dist = 1
-
-	if(!orange)
-		L += t_center
-
-	while( c_dist <= dist )
-		y = t_center.y + c_dist
-		x = t_center.x - c_dist + 1
-		for(x in x to t_center.x+c_dist)
-			T = locate(x,y,t_center.z)
-			if(T)
-				L += T
-
-		y = t_center.y + c_dist - 1
-		x = t_center.x + c_dist
-		for(y in t_center.y-c_dist to y)
-			T = locate(x,y,t_center.z)
-			if(T)
-				L += T
-
-		y = t_center.y - c_dist
-		x = t_center.x + c_dist - 1
-		for(x in t_center.x-c_dist to x)
-			T = locate(x,y,t_center.z)
-			if(T)
-				L += T
-
-		y = t_center.y - c_dist + 1
-		x = t_center.x - c_dist
-		for(y in y to t_center.y+c_dist)
-			T = locate(x,y,t_center.z)
-			if(T)
-				L += T
-		c_dist++
-		if(tick_checked)
-			CHECK_TICK
-
-	return L
-
 #define NOT_FLAG(flag) (!(flag & use_flags))
 #define HAS_FLAG(flag) (flag & use_flags)
 
@@ -1428,12 +1187,12 @@ var/list/WALLITEMS = list(
 
 /// Returns an x and y value require to reverse the transformations made to center an oversized icon
 /atom/proc/get_oversized_icon_offsets()
-	if (pixel_x == 0 && pixel_y == 0)
+	if (!base_pixel_x && !base_pixel_y && !base_pixel_w && !base_pixel_z)
 		return list("x" = 0, "y" = 0)
 	var/list/icon_dimensions = get_icon_dimensions(icon)
 	var/icon_width = icon_dimensions["width"]
 	var/icon_height = icon_dimensions["height"]
 	return list(
-		"x" = icon_width > 32 && pixel_x != 0 ? (icon_width - 32) * 0.5 : 0,
-		"y" = icon_height > 32 && pixel_y != 0 ? (icon_height - 32) * 0.5 : 0,
+		"x" = icon_width > world.icon_size && (base_pixel_x || base_pixel_w) ? (icon_width - world.icon_size) * 0.5 : 0,
+		"y" = icon_height > world.icon_size && (base_pixel_y || base_pixel_z) ? (icon_height - world.icon_size) * 0.5 : 0,
 	)

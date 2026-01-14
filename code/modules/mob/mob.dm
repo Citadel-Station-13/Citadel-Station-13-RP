@@ -1,3 +1,6 @@
+/**
+ * Base definition of mob.
+ */
 /mob
 	//* Actionspeed *//
 	/// List of action speed modifiers applying to this mob
@@ -29,6 +32,11 @@
 	/// * lazy list
 	var/list/impairments_feigned
 
+	//* Inventory *//
+	/// our inventory datum, if any.
+	/// * Set to typepath to initialize.
+	var/datum/inventory/inventory
+
 	//* Movespeed *//
 	/// List of movement speed modifiers applying to this mob
 	/// * This is a lazy list.
@@ -52,6 +60,7 @@
  * Other stuff:
  * * Sets the mob focus to itself
  * * Generates huds
+ * * Creates inventory
  * * If there are any global alternate apperances apply them to this mob
  * * Intialize the transform of the mob
  */
@@ -385,6 +394,8 @@
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
+#define POINT_TIME (2.5 SECONDS)
+
 /**
  * Point at an atom
  *
@@ -402,26 +413,99 @@
 	set name = "Point To"
 	set category = VERB_CATEGORY_OBJECT
 
-	if(!src || !isturf(src.loc) || !(A in view(14, src)))
-		return 0
-
 	if(istype(A, /obj/effect/temp_visual/point))
-		return 0
+		return FALSE
 
-	var/tile = get_turf(A)
-	if (!tile)
-		return 0
+	// i am queued sometimes
+	_pointed(A)
 
-	var/obj/P = new /obj/effect/temp_visual/point(tile)
-	P.invisibility = invisibility
-	P.plane = ABOVE_PLANE
-	P.layer = FLY_LAYER
-	P.pixel_x = A.pixel_x + world.icon_size * (x - A.x)
-	P.pixel_y = A.pixel_y + world.icon_size * (y - A.y)
-	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
-	face_atom(A)
-	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
+/mob/proc/_pointed(atom/pointing_at)
+	if(client) //Clientless mobs can just go ahead and point
+		if(!(pointing_at in view(client.view, src)))
+			return FALSE
+	// since we dont have the datum emote for pointing, too lazy to implement! (it sets the cooldown)
+	// if(iscarbon(src)) // special interactions for carbons
+	// 	var/mob/living/carbon/our_carbon = src
+	// 	if(our_carbon.get_usable_hand_count() <= 0 || our_carbon.handcuffed /* || HAS_TRAIT(src, TRAIT_HANDS_BLOCKED)*/)
+	// 		if(!TIMER_COOLDOWN_CHECK(src, "point_verb_emote_cooldown"))
+	// 			//cooldown handled in the emote.
+	// 			our_carbon.emote("point [pointing_at]")
+	// 		else
+	// 			to_chat(src, SPAN_WARNING("You need to wait before pointing again!"))
+	// 			return FALSE
+
+	point_at(pointing_at, TRUE)
 	return 1
+
+/**
+ * Point at an atom
+ *
+ * Intended to enable and standardise the pointing animation for all atoms
+ *
+ * Not intended as a replacement for the mob verb
+ */
+/atom/movable/proc/point_at(atom/pointed_atom, intentional = FALSE)
+	if(!isturf(loc))
+		return FALSE
+
+	if (pointed_atom in src)
+		create_point_bubble(pointed_atom)
+		return FALSE
+
+	var/turf/tile = get_turf(pointed_atom)
+	if (!tile)
+		return FALSE
+
+	var/turf/our_tile = get_turf(src)
+	var/obj/visual = new /obj/effect/temp_visual/point(our_tile, invisibility)
+
+	// SEND_SIGNAL(src, COMSIG_MOVABLE_POINTED, pointed_atom, visual, intentional)
+
+	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + pointed_atom.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + pointed_atom.pixel_y, time = 1.7, easing = EASE_OUT)
+	return TRUE
+
+/mob/point_at(atom/pointed_atom, intentional = FALSE)
+	. = ..()
+	if(.)
+		face_atom(pointed_atom)
+
+/atom/movable/proc/create_point_bubble(atom/pointed_atom)
+	var/mutable_appearance/thought_bubble = mutable_appearance(
+		'icons/effects/effects.dmi',
+		"thought_bubble",
+		plane = POINT_PLANE,
+		appearance_flags = KEEP_APART,
+	)
+
+	var/mutable_appearance/pointed_atom_appearance = new(pointed_atom.appearance)
+	pointed_atom_appearance.blend_mode = BLEND_INSET_OVERLAY
+	pointed_atom_appearance.plane = FLOAT_PLANE
+	pointed_atom_appearance.layer = FLOAT_LAYER
+	pointed_atom_appearance.pixel_x = 0
+	pointed_atom_appearance.pixel_y = 0
+	thought_bubble.overlays += pointed_atom_appearance
+	// pointed_atom_appearance.remove_filter(HOVER_OUTLINE_FILTER)
+
+	thought_bubble.pixel_w = 16
+	thought_bubble.pixel_z = 32
+	thought_bubble.alpha = 200
+
+	var/mutable_appearance/point_visual = mutable_appearance(
+		'icons/mob/screen1.dmi',
+		"arrow"
+	)
+
+	thought_bubble.overlays += point_visual
+
+	add_overlay(thought_bubble)
+	// LAZYADD(update_overlays_on_z, thought_bubble)
+	addtimer(CALLBACK(src, PROC_REF(clear_point_bubble), thought_bubble), POINT_TIME)
+
+/atom/movable/proc/clear_point_bubble(mutable_appearance/thought_bubble)
+	// LAZYREMOVE(update_overlays_on_z, thought_bubble)
+	cut_overlay(thought_bubble)
+
+#undef POINT_TIME
 
 /mob/verb/set_self_relative_layer()
 	set name = "Set relative layer"
@@ -1155,7 +1239,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * Returns whether or not we should be allowed to examine a target
  */
 /mob/proc/allow_examine(atom/A)
-	return client && (client.eye == src)
+	return (client?.eye == src) || (A in DirectAccess())
 
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()

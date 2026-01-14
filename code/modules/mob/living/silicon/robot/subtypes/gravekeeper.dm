@@ -6,27 +6,17 @@
 	loot the burial sites they oversee, are often met with violence."
 	value = CATALOGUER_REWARD_MEDIUM
 
-/mob/living/silicon/robot/gravekeeper
+/mob/living/silicon/robot/preset_module/gravekeeper
 	lawupdate = 0
 	scrambledcodes = 1
 	icon_state = "drone-lost"
-	modtype = "Gravekeeper"
 	lawchannel = "State"
 	braintype = "Drone"
 	idcard_type = /obj/item/card/id
-	icon_selected = FALSE
 	can_be_antagged = FALSE
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper)
-
-/mob/living/silicon/robot/gravekeeper/init()
-	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
-
-	mmi = new /obj/item/mmi/digital/robot(src) // Explicitly a drone.
-	module = new /obj/item/robot_module/robot/gravekeeper(src)
-	cut_overlays()
-	init_id()
-
-	updatename("Gravekeeper")
-
-
-	playsound(loc, 'sound/mecha/nominalsyndi.ogg', 75, 0)
+	conf_default_lawset_type = /datum/ai_lawset/gravekeeper
+	conf_auto_ai_link = FALSE
+	conf_reboot_sound = 'sound/mecha/nominalsyndi.ogg'
+	conf_mmi_create_type = /obj/item/mmi/digital/robot
+	module = /datum/prototype/robot_module/gravekeeper

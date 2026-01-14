@@ -1,0 +1,5 @@
+author: "LetterN"
+delete-after: True
+changes:
+  - rscadd: "you can now point items inside your inventory"
+  - tweak: "update fulton"

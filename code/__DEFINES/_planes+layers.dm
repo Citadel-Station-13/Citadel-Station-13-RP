@@ -346,6 +346,9 @@
  */
 #define OBSERVER_PLANE 30
 
+/// Just above ghosts
+#define POINT_PLANE 31
+
 /**
  *! -- Augmented Plane
  *? Augmented-reality stuff.
@@ -384,6 +387,13 @@
  */
 #define SONAR_PLANE 80
 
+///--------------- FULLSCREEN RUNECHAT BUBBLES, just under hud. ------------
+
+///Popup Chat Messages
+#define RUNECHAT_PLANE 85
+/// Plane for balloon text (text that fades up)
+#define BALLOON_CHAT_PLANE 86
+
 /**
  *! -- Player HUD Plane
  *? Client UI HUD stuff.
@@ -405,6 +415,10 @@
 #define HUD_LAYER_ITEM  7 /// Things sitting on HUD items (largely irrelevant because INVENTORY_PLANE).
 // todo: deprecate
 #define HUD_LAYER_ABOVE 8 /// Things that reside above items (highlights).
+
+#define RADIAL_BACKGROUND_LAYER 0
+///1000 is an unimportant number, it's just to normalize copied layers
+#define RADIAL_CONTENT_LAYER 1000
 
 /**
  *! -- Player HUD Plane - Items
