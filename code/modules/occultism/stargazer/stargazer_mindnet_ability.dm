@@ -13,7 +13,8 @@
  * as well as the target mob.
  */
 /datum/stargazer_mindnet_ability
-	/// unique id for uis
+	/// ability ID
+	/// * Two abilities may not have the same ID on a mindnet datum.
 	var/id
 	var/name = "???"
 	var/desc = "Do something at the targeted mind."
@@ -27,6 +28,28 @@
 
 	/// the target can sense a cooperative attempt even while unconsciuos
 	var/can_be_cooperated_while_unconscious = FALSE
+
+	/// enforce distance
+	var/enforce_distance_maximum
+	/// enforce reachability
+	var/enforce_reachability
+	/// enforce pulling
+	var/enforce_pulling
+	/// enforce grab state
+	var/enforce_grab_state
+
+	#warn impl
+	/// emit default feedback message
+	var/default_feedback_emit = TRUE
+	/// default feedback message
+	/// * %%USER%% will be replaced
+	/// * %%TARGET%% will be replaced, with the target or 'something' if they're not visible.
+	var/default_feedback_visible = ACTION_DESCRIPTOR_FMT_FOR_EXAMINE("USER", "TARGET")
+
+	/// default require a do_after
+	/// * requirements & attunement will continually be checked.
+	var/default_do_after = 0 SECONDS
+	var/default_do_after_flags = DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_TARGET_MOVEMENT
 
 /datum/stargazer_mindnet_ability/proc/ui_mindnet_ability_data()
 	return list(
@@ -69,6 +92,8 @@
 /datum/stargazer_mindnet_ability/proc/exec_dedupe_key(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, list/blackboard, datum/mind/target)
 	return "[id]"
 
-/datum/stargazer_mindnet_ability/proc/check_target_valid(datum/mind/mind)
+/datum/stargazer_mindnet_ability/proc/check_target_valid(datum/mind/mind, mob/entity, datum/event_args/actor/actor, silent)
+
+/datum/stargazer_mindnet_ability/proc/check_requirements_met(datum/mind/mind, mob/entity, datum/event_args/actor/actor, silent)
 
 #warn impl

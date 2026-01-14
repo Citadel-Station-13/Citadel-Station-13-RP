@@ -7,4 +7,11 @@
 	/// much like MMIs, the description hides the horrors of what this actually is.
 	desc = "Imprint your neural patterns on this mind, creating a more lasting attunement."
 
+	// pretty much requires a full grab
+	attunement_cooperative_threshold = 60
+	enforce_grab_state = GRAB_AGGRESSIVE
+
+	default_do_after = 8 SECONDS
+	default_do_after_flags = DO_AFTER_IGNORE_MOVEMENT | DO_AFTER_IGNORE_ACTIVE_ITEM
+
 #warn impl

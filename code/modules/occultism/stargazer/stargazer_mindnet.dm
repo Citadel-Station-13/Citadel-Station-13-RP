@@ -50,12 +50,17 @@
  * for the sake of not killing the server's performance,
  * the actual scan is based on spatial grids and only mindlinked entities can be
  * detected cross-overmap.
+ *
+ * This is however, by default. The [scan_] variables control scanning behavior;
+ * the system is allowed to slow down scans if there's too many things to scan,
+ * as well as do things like only scanning players.
  */
 /datum/stargazer_mindnet
 	/// Established mindlinks, by mind-ref
 	/// * Key is `/datum/mind_ref`
-	/// * Value is `/datum/stargazer_mindlink`
+	/// * Value is `/datum/stargazer_mindnet_link`
 	/// * Note that one mind = one mind ref; that is why this is sound behavior to use mind-ref's as keys.
+	/// * mindlinks are always scanned
 	var/list/link_lookup
 	/// abilities by id
 	/// * Usually, things like abilities are global singletons, but for now let's
@@ -66,10 +71,10 @@
 	/// Passive attunement always
 	/// * FOR THE LOVE OF ALL THAT IS HOLY LEAVE THIS AT ZERO
 	var/attunement_power_global = 0
-	/// passive attunement power for someone with some view of the Promethean's body
-	var/attunement_power_visible_min = 25
-	/// passive attunement power for someone with full view of the Promethean's body
-	var/attunement_power_visible_max = 45
+	/// passive attunement power for someone with some view of the owner's body
+	var/attunement_power_visible_min = 15
+	/// passive attunement power for someone with full view of the owner's body
+	var/attunement_power_visible_max = 25
 
 	/// passive attunement power gained by contact
 	var/attunement_power_for_pull = 15
@@ -77,26 +82,48 @@
 	/// * this is major and combined with visible allows prommies to
 	///   do stuff like telepathically talk / health-scan people without them
 	///   needing to accept it
-	var/attunement_power_per_grab_level = 27.5
+	var/attunement_power_per_grab_level = 15
 
-	var/attunement_power_proximity_radius_min = 1
+	var/attunement_power_proximity_radius_min = 3
 	var/attunement_power_proximity_radius_max = 14
 	/// linear interpolated between proximity radius min/max
 	var/attunement_power_proximity_max_power = 20
 
-	/// power needed to sense a mob as being nearby at all
-	var/attunement_required_for_presence_sensing = 1
+	/// scan literally everything if TRUE
+	var/scan_global = FALSE
+	/// scan overmap range (in pixels) if non-null
+	var/scan_overmap_range = null
+	/// scan overmap entity if TRUE
+	var/scan_overmap_entity = FALSE
+	/// scan the entire map if TRUE
+	var/scan_map = FALSE
+	/// scan proximity range on same zlevel
+	/// * directly used in spatial grids to see how far we can scan
+	var/scan_level_range = 14
+
+	/// attunement required to sense someone's nearby
+	/// * this applies to mindlinks
+	var/minimum_attunement_for_presence = 15
 
 	/// overmap pixel distance for 'same overmap'
 	/// * this applies to mindlinks as well
-	/// * null = need to be in same sector, 0 = must contact
+	/// * null = need to be in same (enclosing) entity location, 0 = must contact
 	var/overmap_pixel_distance_considered_same = WORLD_ICON_SIZE * 0.5
 
 	/// executing functions
 	var/list/datum/stargazer_mindnet_exec/executing
 
+	/// cached visibility attunements
+	/// * mind_ref to number
+	/// * both our body coverage as well as their visibility will be scanned.
+	var/list/cached_visibility_attunements
+	var/cached_visibility_last_update
+	var/cached_visibility_update_interval = 3 SECONDS
 
 #warn impl
+
+/datum/stargazer_mindnet/proc/add_ability_path(path)
+	#warn impl
 
 /datum/stargazer_mindnet/proc/get_attunement_power_for_entity(mob/target)
 	if(!istype(target))
@@ -110,7 +137,7 @@
 	. += attunement_power_global
 	#warn rest
 
-	var/datum/stargazer_mindlink/link = link_lookup[mind]
+	var/datum/stargazer_mindnet_link/link = link_lookup[mind]
 	if(link)
 
 		. += link.attunement_power_global
@@ -130,7 +157,7 @@
 	var/datum/mind_ref/mind_ref = mind.mind_ref()
 	if(link_lookup[mind_ref])
 		return link_lookup[mind_ref]
-	link_lookup[mind_ref] = new /datum/stargazer_mindlink(src, mind_ref)
+	link_lookup[mind_ref] = new /datum/stargazer_mindnet_link(src, mind_ref)
 	update_static_data()
 	return link_lookup[mind_ref]
 
@@ -160,6 +187,9 @@
 
 /datum/stargazer_mindnet/proc/emit_message_to_owner(html)
 	emit_raw_message_to_owner(html)
+	#warn impl
+
+/datum/stargazer_mindnet/proc/auto_update_cached_visibility_attunement()
 	#warn impl
 
 /**

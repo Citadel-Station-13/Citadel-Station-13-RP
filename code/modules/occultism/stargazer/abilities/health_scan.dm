@@ -6,4 +6,9 @@
 	name = "Probe"
 	desc = "Attempt to sense the biological status of a mind's body."
 
+	attunement_cooperative_threshold = 20
+	attunement_forced_threshold = 45
+
+	default_do_after = 2 SECONDS
+
 #warn impl

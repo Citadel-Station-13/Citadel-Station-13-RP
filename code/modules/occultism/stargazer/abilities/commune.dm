@@ -7,6 +7,9 @@
 	desc = "Send a message to a targeted mind, potentially receiving their thoughts \
 	back towards you."
 
+	attunement_cooperative_threshold = 7.5
+	attunement_forced_threshold = 40
+
 	/// brain biologies that can be transmitted to at all
 	var/compatible_brain_biology_types = BIOLOGY_TYPES_ALL
 	/// brain biologies that results in garbled transmission

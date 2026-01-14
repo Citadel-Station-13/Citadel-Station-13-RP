@@ -4,8 +4,12 @@
 /datum/stargazer_mindnet_ability/ping
 	id = "ping"
 	name = "Ping"
-	desc = "Ping the targeted mind, ascertaining if they sense you and \
+	desc = "Ping the targeted mind to detect if they sense you and \
 	where they are."
 
-#warn impl
+	attunement_cooperative_threshold = 10
+	attunement_forced_threshold = 60
 
+	default_do_after = 1 SECONDS
+
+#warn impl
