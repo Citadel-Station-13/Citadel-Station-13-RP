@@ -3296,7 +3296,7 @@
 /area/awaymission/labs/researchdivision)
 "jH" = (
 /obj/structure/table/reinforced,
-/obj/item/borg/upgrade/vtec,
+/obj/item/robot_upgrade/vtec,
 /obj/item/cell/basic/tier_1/medium/empty,
 /turf/simulated/floor{
 	icon_state = "white"

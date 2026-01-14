@@ -23,6 +23,7 @@ Pipelines + Other Objects -> Pipe network
 	depth_projected = FALSE
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 	hides_underfloor_defaulting = FALSE
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_IGNORE_MOBILITY
 
 	//* Underfloor *//
 	/// automatically update_underlays() during update_underfloor

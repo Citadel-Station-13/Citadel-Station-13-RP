@@ -255,7 +255,7 @@
 				var/datum/robot_component/CO = borg.get_component("radio")
 				if(!CO)
 					continue //No radio component (Shouldn't happen)
-				if(!borg.is_component_functioning("radio") || !borg.cell_use_power(CO.active_usage))
+				if(!borg.is_component_functioning("radio") || !borg.legacy_cell_use_power(CO.active_usage))
 					continue //No power.
 
 			var/turf/speaker = get_turf(R)

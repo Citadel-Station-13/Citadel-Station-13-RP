@@ -32,13 +32,18 @@
 
 	return ..()
 
-/obj/item/gun/launcher/proc/launch_throwable(datum/gun_firing_cycle/cycle, atom/movable/launching)
+/**
+ * Fires the thing being thrown
+ * @return movable thrown, if any
+ */
+/obj/item/gun/launcher/proc/launch_throwable(datum/gun_firing_cycle/cycle, atom/movable/launching) as /atom/movable
 	update_release_force(launching)
 	var/turf/T = cycle.firing_atom //Unlikely if there ever is a turf that could initiate the fire, but just to be sure
 	if (!istype(T))
 		T = get_turf(cycle.firing_atom)
 	launching.forceMove(T)
 	launching.throw_at_old(cycle.original_target, throw_distance, release_force, cycle.firing_actor?.performer)
+	return launching
 
 /**
  * Returns the next /atom/movable to throw, or a GUN_FIRED_* for fail satus.

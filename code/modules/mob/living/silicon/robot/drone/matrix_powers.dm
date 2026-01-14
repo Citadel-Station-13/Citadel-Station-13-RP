@@ -10,7 +10,7 @@
 	var/datum/drone_matrix/DM = master_matrix
 
 	var/dat = ""
-	var/mob/living/silicon/robot/drone/construction/matriarch/matriarch = DM.get_matriarch()
+	var/mob/living/silicon/robot/drone/matriarch/matriarch = DM.get_matriarch()
 	if(matriarch)
 		var/drone_stat = ""
 		if(matriarch.stat == UNCONSCIOUS)
@@ -56,7 +56,7 @@
 
 	to_chat(src, SPAN_NOTICE("Matrix upgrades active on chassis: [english_list(matrix_upgrades)]"))
 
-/mob/living/silicon/robot/drone/construction/matriarch/verb/select_matrix_upgrades()
+/mob/living/silicon/robot/drone/matriarch/verb/select_matrix_upgrades()
 	set name = "Select Matrix Upgrades"
 	set desc = "Select the upgrades to apply to the drones within your matrix."
 	set category = "Matrix"

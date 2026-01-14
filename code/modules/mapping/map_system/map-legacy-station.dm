@@ -120,7 +120,7 @@
 		),
 	)
 
-	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
+	var/default_law_type = /datum/ai_lawset/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
 
 	// TODO: new map unit test system
 	// Some maps include areas for that map only and don't exist when not compiled, so Travis needs this to learn of new areas that are specific to a map.

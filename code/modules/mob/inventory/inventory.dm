@@ -2,14 +2,22 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
- * mob inventory data goes in here.
+ * # Inventory
  *
- * * this does not include hands; that's handled mob-side.
- * * this only includes inventory slots.
+ * Mob inventory is handled by inventory datums, which hold logic for:
+ * * Slots
+ * * Hands
+ * * Robot modules
+ *
+ * TODO: /datum/inventory_hud_style for overrides, instead of a bazillion held_items_xyz vars for robots.
+ *       This is also important for things like occult mobs later.
  */
 /datum/inventory
 	//* Basics *//
-	/// owning mob, if any
+
+	/// owning mob
+	/// * This must be set, it doens't make sense to have an inventory
+	///   that doesn't have an owner.
 	var/mob/owner
 
 	//* Actions *//
@@ -22,18 +30,26 @@
 
 	//* HUDs *//
 	/// Actor HUDs using us
-	///
 	/// * Lazy list
 	var/list/datum/actor_hud/inventory/huds_using
 
 	//* Inventory *//
 	/// held items
-	///
 	/// * empty indices are null
 	/// * this is also our rendered & nominal hand count
 	/// * 1, 3, 5, ... are left
 	/// * 2, 4, 6, ... are right
 	var/list/obj/item/held_items = list()
+	/// held items are rendered with this many on one row
+	/// * if set, we will not apply default left/right hand semantics!
+	/// * as num | null
+	var/held_items_row_mode = null
+	/// suppress 'swap' and 'equip' and other hand slot buttons
+	/// * used for robot module support
+	var/held_items_suppress_buttons = FALSE
+	/// use robot module icons?
+	/// * used for robot support
+	var/held_items_use_robot_icon = FALSE
 
 	//* Rendering *//
 	/// cached overlays by slot id or hand index
