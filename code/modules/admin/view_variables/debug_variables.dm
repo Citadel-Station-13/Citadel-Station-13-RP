@@ -89,8 +89,8 @@
 
 	// if it's a number, is it a bitflag?
 	var/list/valid_bitflags = list()
-	if(!isnum(name))
-		var/datum/bitfield/maybe_bitfield = fetch_bitfield(owner?.type, name)
+	if(!isnum(name) && istype(owner))
+		var/datum/bitfield/maybe_bitfield = fetch_bitfield(owner.type, name)
 		if (!maybe_bitfield)
 			return "<span class='value'>[VV_HTML_ENCODE(value)]</span>"
 		for(var/i in 1 to maybe_bitfield.get_declared_count())
