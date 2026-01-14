@@ -114,10 +114,11 @@ SUBSYSTEM_DEF(statpanels)
 	. = list()
 	//L += SSmapping.stat_map_name
 	INJECT_STATPANEL_DATA_ENTRY(., "Round ID", "[GLOB?.round_id || "ERROR"]")
+	INJECT_STATPANEL_DATA_ENTRY(., "Server Time", "[time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss", world.timezone)]")
+	INJECT_STATPANEL_DATA_ENTRY(., "Round Time", ROUND_TIME())
 	// VIRGO START
 	INJECT_STATPANEL_DATA_ENTRY(., "Station Time", stationtime2text())
 	INJECT_STATPANEL_DATA_ENTRY(., "Station Date", stationdate2text())
-	INJECT_STATPANEL_DATA_ENTRY(., "Round Duration", roundduration2text())
 	// VIRGO END
 	INJECT_STATPANEL_DATA_ENTRY(., "Time dilation", SStime_track.stat_time_text)
 	//L += SSshuttle.emergency_shuttle_stat_text

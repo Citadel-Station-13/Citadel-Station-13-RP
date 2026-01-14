@@ -232,6 +232,7 @@ var/global/list/additional_antag_types = list()
 	if(SSemergencyshuttle && auto_recall_shuttle)
 		SSemergencyshuttle.auto_recall = 1
 
+	// yikes! this should be NOW()
 	feedback_set_details("round_start","[time2text(world.realtime)]")
 	if(SSticker && SSticker.mode)
 		feedback_set_details("game_mode","[SSticker.mode]")
