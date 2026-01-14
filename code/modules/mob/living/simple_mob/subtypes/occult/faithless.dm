@@ -47,14 +47,11 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
+	movement_works_in_space = TRUE
 
 /mob/living/simple_mob/faithless/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/horror_aura/weak)
-
-
-/mob/living/simple_mob/faithless/Process_Spacemove(var/check_drift = 0)
-	return 1
 
 /mob/living/simple_mob/faithless/apply_melee_effects(var/atom/A)
 	if(isliving(A))

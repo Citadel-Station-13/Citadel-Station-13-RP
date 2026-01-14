@@ -448,88 +448,88 @@
 /datum/prototype/design/science/mecha/hydraulic_clamp
 	design_name = "Hydraulic Clamp"
 	id = "hydraulic_clamp"
-	build_path = /obj/item/vehicle_module/tool/hydraulic_clamp
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp
 
 /datum/prototype/design/science/mecha/drill
 	design_name = "Drill"
 	id = "mech_drill"
-	build_path = /obj/item/vehicle_module/tool/drill
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/drill
 
 /datum/prototype/design/science/mecha/extinguisher
 	design_name = "Extinguisher"
 	id = "extinguisher"
-	build_path = /obj/item/vehicle_module/tool/extinguisher
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/extinguisher
 
 /datum/prototype/design/science/mecha/cable_layer
 	design_name = "Cable Layer"
 	id = "mech_cable_layer"
-	build_path = /obj/item/vehicle_module/tool/cable_layer
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/cable_layer
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_PLASTIC = 1000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/flaregun
 	design_name = "Flare Launcher"
 	id = "mecha_flare_gun"
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/flare
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/flare
 	materials_base = list(MAT_STEEL = 9375 * (1 / 3))
 
 /datum/prototype/design/science/mecha/sleeper
 	design_name = "Sleeper"
 	id = "mech_sleeper"
-	build_path = /obj/item/vehicle_module/tool/sleeper
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/sleeper
 	materials_base = list(MAT_STEEL = 3750 * (1 / 3), MAT_GLASS = 7500 * (1 / 3))
 
 /datum/prototype/design/science/mecha/syringe_gun
 	design_name = "Syringe Gun"
 	id = "mech_syringe_gun"
-	build_path = /obj/item/vehicle_module/tool/syringe_gun
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/syringe_gun
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 2250 * (1 / 3), MAT_GLASS = 1500 * (1 / 3))
 
 /datum/prototype/design/science/mecha/passenger
 	design_name = "Passenger Compartment"
 	id = "mech_passenger"
-	build_path = /obj/item/vehicle_module/tool/passenger
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/passenger
 	materials_base = list(MAT_STEEL = 3750 * (1 / 3), MAT_GLASS = 3750 * (1 / 3))
 
 /datum/prototype/design/science/mecha/taser
 	design_name = "PBT \"Pacifier\" Mounted Taser"
 	id = "mech_taser"
-	build_path = /obj/item/vehicle_module/weapon/energy/taser
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/taser
 
 /datum/prototype/design/science/mecha/rigged_taser
 	design_name = "Jury-Rigged Taser"
 	id = "mech_taser-r"
-	build_path = /obj/item/vehicle_module/weapon/energy/taser/rigged
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/taser/rigged
 
 /datum/prototype/design/science/mecha/shocker
 	design_name = "Exosuit Electrifier"
 	desc = "A device to electrify the external portions of a mecha in order to increase its defensive capabilities."
 	id = "mech_shocker"
 	req_tech = list(TECH_COMBAT = 3, TECH_POWER = 6, TECH_MAGNET = 1)
-	build_path = /obj/item/vehicle_module/shocker
+	build_path = /obj/item/vehicle_module/lazy/legacy/shocker
 	materials_base = list(MAT_STEEL = 3500 * (1 / 3), MAT_GOLD = 750 * (1 / 3), MAT_GLASS = 1000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/lmg
 	design_name = "Ultra AC 2"
 	id = "mech_lmg"
-	build_path = /obj/item/vehicle_module/weapon/ballistic/lmg
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg
 
 /datum/prototype/design/science/mecha/lmg_heavy
 	design_name = "AC 10"
 	id = "mech_lmg_heavy"
-	build_path = /obj/item/vehicle_module/weapon/ballistic/lmg_heavy
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg_heavy
 	materials_base = list(MAT_STEEL = 12000 * (1 / 3), MAT_GLASS = 4000 * (1 / 3), MAT_PLASTIC = 3000 * (1 / 3), MAT_SILVER = 1500 * (1 / 3), MAT_COPPER = 4000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/gauss_rifle
 	design_name = "Gauss Rifle"
 	id = "mech_gauss_rifle"
-	build_path = /obj/item/vehicle_module/weapon/ballistic/gauss_rifle
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/gauss_rifle
 	materials_base = list(MAT_STEEL = 16000 * (1 / 3), MAT_GLASS = 8000 * (1 / 3), MAT_PLASTIC = 4000 * (1 / 3), MAT_SILVER = 3500 * (1 / 3), MAT_COPPER = 8000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/rigged_lmg
 	design_name = "Jury-Rigged Machinegun"
 	id = "mech_lmg-r"
-	build_path = /obj/item/vehicle_module/weapon/ballistic/lmg/rigged
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/lmg/rigged
 
 /datum/prototype/design/science/mecha/weapon
 	abstract_type = /datum/prototype/design/science/mecha/weapon
@@ -541,21 +541,21 @@
 	design_name = "LBX AC 10 \"Scattershot\""
 	id = "mech_scattershot"
 	req_tech = list(TECH_COMBAT = 4)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/scattershot
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3), MAT_SILVER = 2500 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/rigged_scattershot
 	design_name = "Jury-Rigged Shrapnel Cannon"
 	id = "mech_scattershot-r"
 	req_tech = list(TECH_COMBAT = 4)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/scattershot/rigged
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/scattershot/rigged
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GLASS = 2000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3), MAT_SILVER = 2000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/laser
 	design_name = "CH-PS \"Immolator\" Laser"
 	id = "mech_laser"
 	req_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 3)
-	build_path = /obj/item/vehicle_module/weapon/energy/laser
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/laser_rigged
@@ -563,126 +563,118 @@
 	desc = "Allows for the construction of a welder-laser assembly package for non-combat exosuits."
 	id = "mech_laser_rigged"
 	req_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 2)
-	build_path = /obj/item/vehicle_module/weapon/energy/riggedlaser
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/riggedlaser
 
 /datum/prototype/design/science/mecha/weapon/laser_heavy
 	design_name = "CH-LC \"Solaris\" Laser Cannon"
 	id = "mech_laser_heavy"
 	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4)
-	build_path = /obj/item/vehicle_module/weapon/energy/laser/heavy
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy
 	materials_base = list(MAT_STEEL = 10000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3), MAT_DIAMOND = 2000 * (1 / 3), MAT_OSMIUM = 5000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/rigged_laser_heavy
 	design_name = "Jury-Rigged Emitter Cannon"
 	id = "mech_laser_heavy-r"
 	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4, TECH_PHORON = 3, TECH_ILLEGAL = 1)
-	build_path = /obj/item/vehicle_module/weapon/energy/laser/heavy/rigged
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy/rigged
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GLASS = 4000 * (1 / 3), MAT_DIAMOND = 1500 * (1 / 3), MAT_OSMIUM = 4000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/laser_xray
 	design_name = "CH-XS \"Penetrator\" Laser"
 	id = "mech_laser_xray"
 	req_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_POWER = 4)
-	build_path = /obj/item/vehicle_module/weapon/energy/laser/xray
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/xray
 	materials_base = list(MAT_STEEL = 9000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3), MAT_PHORON = 1000 * (1 / 3), MAT_SILVER = 1500 * (1 / 3), MAT_GOLD = 2500 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/rigged_laser_xray
 	design_name = "Jury-Rigged Xray Rifle"
 	id = "mech_laser_xray-r"
 	req_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_POWER = 4)
-	build_path = /obj/item/vehicle_module/weapon/energy/laser/xray/rigged
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/xray/rigged
 	materials_base = list(MAT_STEEL = 8500 * (1 / 3), MAT_GLASS = 2500 * (1 / 3), MAT_PHORON = 1000 * (1 / 3), MAT_SILVER = 1250 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/phase
 	design_name = "NT-PE \"Scorpio\" Phase-Emitter"
 	id = "mech_phase"
 	req_tech = list(TECH_MATERIAL = 1, TECH_COMBAT = 2, TECH_MAGNET = 2)
-	build_path = /obj/item/vehicle_module/weapon/energy/phase
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/phase
 	materials_base = list(MAT_STEEL = 6000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3), MAT_PLASTIC = 3000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/ion
 	design_name = "MK-IV Ion Heavy Cannon"
 	id = "mech_ion"
 	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4)
-	build_path = /obj/item/vehicle_module/weapon/energy/ion
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/ion
 	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_URANIUM = 2000 * (1 / 3), MAT_SILVER = 2000 * (1 / 3), MAT_OSMIUM = 4500 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/rigged_ion
 	design_name = "Jury-Rigged Ion Cannon"
 	id = "mech_ion-r"
 	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4)
-	build_path = /obj/item/vehicle_module/weapon/energy/ion/rigged
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/ion/rigged
 	materials_base = list(MAT_STEEL = 13000 * (1 / 3), MAT_URANIUM = 1000 * (1 / 3), MAT_SILVER = 1000 * (1 / 3), MAT_OSMIUM = 3000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/sound_cannon
 	design_name = "H.O.N.K. Sound Cannon"
 	id = "mech_soundcannon"
 	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4, TECH_ILLEGAL = 3)
-	build_path = /obj/item/vehicle_module/weapon/honker
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/honker
 	materials_base = list(MAT_STEEL = 13000 * (1 / 3), MAT_SILVER = 1000 * (1 / 3), MAT_OSMIUM = 3000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3), MAT_BANANIUM = 4000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/whisper_blade
 	design_name = "Reticent Whisper Blade"
 	id = "mech_whisper"
 	req_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 4, TECH_ILLEGAL = 4)
-	build_path = /obj/item/vehicle_module/weapon/whisperblade
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/whisperblade
 	materials_base = list(MAT_STEEL = 13000 * (1 / 3), MAT_GOLD = 1000 * (1 / 3), MAT_OSMIUM = 3000 * (1 / 3), MAT_PLASTEEL = 2000 * (1 / 3), MAT_SILENCIUM = 4000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/inferno_blade
 	design_name = "Reticent Inferno Blade"
 	id = "mech_inferno"
 	req_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 4, TECH_ILLEGAL = 4)
-	build_path = /obj/item/vehicle_module/weapon/infernoblade
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/infernoblade
 	materials_base = list(MAT_STEEL = 13000 * (1 / 3), MAT_GOLD = 1000 * (1 / 3), MAT_LEAD = 3000 * (1 / 3), MAT_PLASTEEL = 2000 * (1 / 3), MAT_SILENCIUM = 4000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/grenade_launcher
 	design_name = "SGL-6 Grenade Launcher"
 	id = "mech_grenade_launcher"
 	req_tech = list(TECH_COMBAT = 3)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_PLASTIC = 3000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/rigged_grenade_launcher
 	design_name = "Jury-Rigged Pneumatic Flashlauncher"
 	id = "mech_grenade_launcher-hardsuit"
 	req_tech = list(TECH_COMBAT = 3)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/rigged
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/rigged
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3))
-
-/datum/prototype/design/science/mecha/weapon/clusterbang_launcher
-	design_name = "SOP-6 Grenade Launcher"
-	desc = "A weapon that violates the Geneva Convention at 6 rounds per minute."
-	id = "clusterbang_launcher"
-	req_tech = list(TECH_COMBAT= 5, TECH_MATERIAL = 5, TECH_ILLEGAL = 3)
-	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_GOLD = 4500 * (1 / 3), MAT_URANIUM = 4500 * (1 / 3))
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/clusterbang/limited
 
 /datum/prototype/design/science/mecha/weapon/conc_grenade_launcher
 	design_name = "SGL-9 Grenade Launcher"
 	id = "mech_grenade_launcher_conc"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 4, TECH_ILLEGAL = 1)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/concussion
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/concussion
 	materials_base = list(MAT_STEEL = 9000 * (1 / 3), MAT_GOLD = 1000 * (1 / 3), MAT_OSMIUM = 1000 * (1 / 3), MAT_PLASTIC = 3000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/frag_grenade_launcher
 	design_name = "HEP-MI 6 Grenade Launcher"
 	id = "mech_grenade_launcher_frag"
 	req_tech = list(TECH_COMBAT = 4, TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_ILLEGAL = 2)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/frag/mini
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/frag/mini
 	materials_base = list(MAT_STEEL = 10000 * (1 / 3), MAT_GOLD = 2500 * (1 / 3), MAT_URANIUM = 3000 * (1 / 3), MAT_OSMIUM = 3000 * (1 / 3), MAT_PLASTIC = 3000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/banana_launcher
 	design_name = "WSS-2 Banana Peel Launcher"
 	id = "mech_banana_launcher"
 	req_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/banana
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/banana
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_OSMIUM = 1000 * (1 / 3), MAT_PLASTIC = 5000 * (1 / 3), MAT_BANANIUM = 4000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/mousetrap_launcher
 	design_name = "WSS-5 Mouse Trap Launcher"
 	id = "mech_mousetrap_launcher"
 	req_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
-	build_path = /obj/item/vehicle_module/weapon/ballistic/missile_rack/grenade/mousetrap
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/grenade/mousetrap
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_OSMIUM = 1000 * (1 / 3), MAT_PLASTIC = 5000 * (1 / 3), MAT_BANANIUM = 4000 * (1 / 3))
 
 /datum/prototype/design/science/mecha/weapon/flamer
@@ -691,7 +683,7 @@
 	id = "mech_flamer_full"
 	req_tech = list(TECH_MATERIAL = 4, TECH_COMBAT = 6, TECH_PHORON = 4, TECH_ILLEGAL = 4)
 	materials_base = list(MAT_STEEL = 10000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_URANIUM = 3000 * (1 / 3), MAT_PHORON = 8000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/weapon/energy/flamer
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer
 
 /datum/prototype/design/science/mecha/weapon/flamer_rigged
 	design_name = "AA-CR-1 Mark 4 Flamethrower"
@@ -699,7 +691,7 @@
 	id = "mech_flamer_rigged"
 	req_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_ILLEGAL = 2)
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GOLD = 1500 * (1 / 3), MAT_SILVER = 1500 * (1 / 3), MAT_URANIUM = 2000 * (1 / 3), MAT_PHORON = 6000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/weapon/energy/flamer/rigged
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/energy/flamer/rigged
 
 /datum/prototype/design/science/mecha/weapon/flame_mg
 	design_name = "DR-AC 3 Incendiary Rotary MG"
@@ -707,7 +699,7 @@
 	id = "mech_lmg_flamer"
 	req_tech = list(TECH_MATERIAL = 4, TECH_COMBAT = 5, TECH_PHORON = 2, TECH_ILLEGAL = 1)
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_SILVER = 1750 * (1 / 3), MAT_URANIUM = 1500 * (1 / 3), MAT_PHORON = 4000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/weapon/ballistic/incendiary
+	build_path = /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/incendiary
 
 // *** Nonweapon modules
 /datum/prototype/design/science/mecha/wormhole_gen
@@ -715,14 +707,14 @@
 	desc = "An exosuit module that can generate small quasi-stable wormholes."
 	id = "mech_wormhole_gen"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 2)
-	build_path = /obj/item/vehicle_module/wormhole_generator
+	build_path = /obj/item/vehicle_module/lazy/legacy/wormhole_generator
 
 /datum/prototype/design/science/mecha/teleporter
 	design_name = "Teleporter"
 	desc = "An exosuit module that allows teleportation to any position in view."
 	id = "mech_teleporter"
 	req_tech = list(TECH_BLUESPACE = 10, TECH_MAGNET = 5)
-	build_path = /obj/item/vehicle_module/teleporter
+	build_path = /obj/item/vehicle_module/lazy/legacy/teleporter
 
 /datum/prototype/design/science/mecha/rcd
 	design_name = "RCD"
@@ -731,14 +723,14 @@
 	work = (120 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials_base = list(MAT_STEEL = 20000 * (1 / 3), MAT_PLASTIC = 10000 * (1 / 3), MAT_PHORON = 18750 * (1 / 3), MAT_SILVER = 15000 * (1 / 3), MAT_GOLD = 15000 * (1 / 3))
 	req_tech = list(TECH_MATERIAL = 4, TECH_BLUESPACE = 3, TECH_MAGNET = 4, TECH_POWER = 4, TECH_ENGINEERING = 4)
-	build_path = /obj/item/vehicle_module/tool/rcd
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/rcd
 
 /datum/prototype/design/science/mecha/gravcatapult
 	design_name = "Gravitational Catapult"
 	desc = "An exosuit-mounted gravitational catapult."
 	id = "mech_gravcatapult"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MAGNET = 3, TECH_ENGINEERING = 3)
-	build_path = /obj/item/vehicle_module/gravcatapult
+	build_path = /obj/item/vehicle_module/lazy/legacy/gravcatapult
 
 /datum/prototype/design/science/mecha/repair_droid
 	design_name = "Repair Droid"
@@ -746,7 +738,7 @@
 	id = "mech_repair_droid"
 	req_tech = list(TECH_MAGNET = 3, TECH_DATA = 3, TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_GOLD = 750 * (1 / 3), MAT_SILVER = 1500 * (1 / 3), MAT_GLASS = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/repair_droid
+	build_path = /obj/item/vehicle_module/toggled/repair_droid
 
 /datum/prototype/design/science/mecha/shield_drone
 	design_name = "Shield Drone"
@@ -754,7 +746,7 @@
 	id = "mech_shield_droid"
 	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_ILLEGAL = 4)
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_SILVER = 3000 * (1 / 3), MAT_PHORON = 5000 * (1 / 3), MAT_GLASS = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/combat_shield
+	build_path = /obj/item/vehicle_module/shield_projector/linear
 
 /datum/prototype/design/science/mecha/reticent_shield_drone
 	design_name = "Reticent Wall Projector"
@@ -762,7 +754,7 @@
 	id = "mech_reticent_shield_droid"
 	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_ILLEGAL = 4)
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_OSMIUM = 4000 * (1 / 3), MAT_SILVER = 3000 * (1 / 3), MAT_SILENCIUM = 10000 * (1 / 3), MAT_GLASS = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/combat_shield/reticent
+	build_path = /obj/item/vehicle_module/shield_projector/linear/reticent
 
 /datum/prototype/design/science/mecha/crisis_drone
 	design_name = "Crisis Drone"
@@ -770,7 +762,7 @@
 	id = "mech_med_droid"
 	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_BIO = 5, TECH_DATA = 4, TECH_ARCANE = 1)
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_SILVER = 3000 * (1 / 3), MAT_VERDANTIUM = 2500 * (1 / 3), MAT_GLASS = 3000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/crisis_drone
+	build_path = /obj/item/vehicle_module/lazy/legacy/crisis_drone
 
 /datum/prototype/design/science/mecha/rad_drone
 	design_name = "Hazmat Drone"
@@ -778,7 +770,7 @@
 	id = "mech_rad_droid"
 	req_tech = list(TECH_PHORON = 4, TECH_MAGNET = 5, TECH_BIO = 6, TECH_DATA = 4, TECH_ARCANE = 1)
 	materials_base = list(MAT_STEEL = 8000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_URANIUM = 3000 * (1 / 3), MAT_VERDANTIUM = 2500 * (1 / 3), MAT_GLASS = 3000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/crisis_drone/rad
+	build_path = /obj/item/vehicle_module/lazy/legacy/crisis_drone/rad
 
 /datum/prototype/design/science/mecha/medanalyzer
 	design_name = "Mounted Body Scanner"
@@ -786,21 +778,21 @@
 	id = "mech_med_analyzer"
 	req_tech = list(TECH_PHORON = 4, TECH_MAGNET = 5, TECH_BIO = 5, TECH_DATA = 4)
 	materials_base = list(MAT_PLASTEEL = 4500 * (1 / 3), MAT_GOLD = 2000 * (1 / 3), MAT_URANIUM = 3000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/tool/powertool/medanalyzer
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/powertool/medanalyzer
 
 /datum/prototype/design/science/mecha/jetpack
 	design_name = "Ion Jetpack"
 	desc = "Using directed ion bursts and cunning solar wind reflection technique, this device enables controlled space flight."
 	id = "mech_jetpack"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MAGNET = 4) //One less magnet than the actual got-damn teleporter.
-	build_path = /obj/item/vehicle_module/tool/jetpack
+	build_path = /obj/item/vehicle_module/toggled/jetpack/electric
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_SILVER = 300 * (1 / 3), MAT_GLASS = 600 * (1 / 3))
 
 /datum/prototype/design/science/mecha/phoron_generator
 	desc = "Phoron Reactor"
 	id = "mech_phoron_generator"
 	req_tech = list(TECH_PHORON = 2, TECH_POWER= 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/vehicle_module/generator
+	build_path = /obj/item/vehicle_module/lazy/stack_generator/phoron
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_SILVER = 375 * (1 / 3), MAT_GLASS = 750 * (1 / 3))
 
 /datum/prototype/design/science/mecha/energy_relay
@@ -808,7 +800,7 @@
 	id = "mech_energy_relay"
 	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_GOLD = 1500 * (1 / 3), MAT_SILVER = 2250 * (1 / 3), MAT_GLASS = 1500 * (1 / 3))
-	build_path = /obj/item/vehicle_module/tesla_energy_relay
+	build_path = /obj/item/vehicle_module/toggled/energy_relay
 
 /datum/prototype/design/science/mecha/ccw_armor
 	design_name = "CCW Armor Booster"
@@ -816,7 +808,7 @@
 	id = "mech_ccw_armor"
 	req_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 4)
 	materials_base = list(MAT_STEEL = 11250 * (1 / 3), MAT_SILVER = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/anticcw_armor_booster
+	build_path = /obj/item/vehicle_module/personal_shield/structural_field/concussive
 
 /datum/prototype/design/science/mecha/proj_armor
 	design_name = "Ranged Armor Booster"
@@ -824,7 +816,7 @@
 	id = "mech_proj_armor"
 	req_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 5, TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_GOLD = 3750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/antiproj_armor_booster
+	build_path = /obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
 
 /datum/prototype/design/science/mecha/diamond_drill
 	design_name = "Diamond Drill"
@@ -832,7 +824,7 @@
 	id = "mech_diamond_drill"
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_DIAMOND = 4875 * (1 / 3))
-	build_path = /obj/item/vehicle_module/tool/drill/diamonddrill
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill
 
 /datum/prototype/design/science/mecha/ground_drill
 	design_name = "Surface Bore"
@@ -840,7 +832,7 @@
 	id = "mech_ground_drill"
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 2, TECH_PHORON = 1)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_SILVER = 3000 * (1 / 3), MAT_PHORON = 2000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/tool/drill/bore
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/depth_bore
 
 /datum/prototype/design/science/mecha/orescanner
 	design_name = "Ore Scanner"
@@ -848,7 +840,7 @@
 	id = "mech_ore_scanner"
 	req_tech = list(TECH_MATERIAL = 2, TECH_MAGNET = 2, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 4000 * (1 / 3), MAT_GLASS = 1000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/tool/orescanner
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/orescanner
 
 /datum/prototype/design/science/mecha/advorescanner
 	design_name = "Advanced Ore Scanner"
@@ -856,7 +848,7 @@
 	id = "mech_ore_scanner_adv"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 4, TECH_POWER = 4, TECH_BLUESPACE = 2)
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_OSMIUM = 3000 * (1 / 3), MAT_SILVER = 1000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/tool/orescanner/advanced
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/orescanner/advanced
 
 /datum/prototype/design/science/mecha/powerwrench
 	design_name = "hydraulic wrench"
@@ -864,7 +856,7 @@
 	id = "mech_wrench"
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_PLASTIC = 2000 * (1 / 3), MAT_GLASS = 1250 * (1 / 3))
-	build_path = /obj/item/vehicle_module/tool/powertool
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/powertool
 
 /datum/prototype/design/science/mecha/powercrowbar
 	design_name = "hydraulic prybar"
@@ -872,7 +864,7 @@
 	id = "mech_crowbar"
 	req_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2, TECH_POWER = 2)
 	materials_base = list(MAT_STEEL = 4000 * (1 / 3), MAT_OSMIUM = 3000 * (1 / 3), MAT_GLASS = 1000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/tool/powertool/prybar
+	build_path = /obj/item/vehicle_module/lazy/legacy/tool/powertool/prybar
 
 /datum/prototype/design/science/mecha/generator_nuclear
 	design_name = "Nuclear Reactor"
@@ -880,7 +872,7 @@
 	id = "mech_generator_nuclear"
 	req_tech = list(TECH_POWER= 3, TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 7500 * (1 / 3), MAT_SILVER = 375 * (1 / 3), MAT_GLASS = 750 * (1 / 3))
-	build_path = /obj/item/vehicle_module/generator/nuclear
+	build_path = /obj/item/vehicle_module/lazy/stack_generator/uranium
 
 /datum/prototype/design/science/mecha/speedboost_ripley
 	design_name = "Ripley Leg Actuator Overdrive"
@@ -888,7 +880,7 @@
 	id = "mech_speedboost_ripley"
 	req_tech = list(TECH_POWER = 5, TECH_MATERIAL = 4, TECH_ENGINEERING = 4)
 	materials_base = list(MAT_STEEL = 10000 * (1 / 3), MAT_SILVER = 1000 * (1 / 3), MAT_GOLD = 1000 * (1 / 3))
-	build_path = /obj/item/vehicle_module/speedboost
+	build_path = /obj/item/vehicle_module/lazy/legacy/speedboost
 
 /datum/prototype/design/science/synthetic_flash
 	design_name = "Synthetic Flash"
@@ -909,7 +901,7 @@
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
 	lathe_type = LATHE_TYPE_MECHFAB
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GLASS = 2500 * (1 / 3))
-	build_path = /obj/item/vehicle_component/actuator
+	build_path = /obj/item/vehicle_component/mecha_actuator
 	category = "Components"
 
 /datum/prototype/design/science/mecha_component/actuator_high
@@ -917,84 +909,84 @@
 	id = "mactuatorhigh"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GLASS = 4000 * (1 / 3), MAT_GOLD = 10000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/actuator/hispeed
+	build_path = /obj/item/vehicle_component/mecha_actuator/hispeed
 
 /datum/prototype/design/science/mecha_component/armor
 	design_name = "Mecha Plating"
 	id = "marmor"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
 	materials_base = list(MAT_STEEL = 10000 * (1 / 3), MAT_GLASS = 2000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/armor
+	build_path = /obj/item/vehicle_component/plating/mecha_armor
 
 /datum/prototype/design/science/mecha_component/armor/blast
 	design_name = "Mecha Plating - Blast Resistant"
 	id = "marmorblast"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_GLASS = 500 * (1 / 3), MAT_PLASTEEL = 2000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/armor/mining
+	build_path = /obj/item/vehicle_component/plating/mecha_armor/mining
 
 /datum/prototype/design/science/mecha_component/armor/lightweight
 	design_name = "Mecha Plating - Lightweight"
 	id = "marmorlight"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_PLASTIC = 5000 * (1 / 3), MAT_GOLD = 2000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/armor/lightweight
+	build_path = /obj/item/vehicle_component/plating/mecha_armor/lightweight
 
 /datum/prototype/design/science/mecha_component/armor/reinforced
 	design_name = "Mecha Plating - Reinforced"
 	id = "marmorreinf"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6, TECH_COMBAT = 5)
 	materials_base = list(MAT_STEEL = 15000 * (1 / 3), MAT_PLASTEEL = 5000 * (1 / 3), MAT_URANIUM = 5000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/armor/reinforced
+	build_path = /obj/item/vehicle_component/plating/mecha_armor/reinforced
 
 /datum/prototype/design/science/mecha_component/electrical
 	design_name = "Mecha Electrical Harness"
 	id = "melectrical"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 3)
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GLASS = 2000 * (1 / 3), MAT_PLASTIC = 1000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/electrical
+	build_path = /obj/item/vehicle_component/mecha_electrical
 
 /datum/prototype/design/science/mecha_component/electrical/high_current
 	design_name = "Mecha Electrical Harness - High Current"
 	id = "melectricalhigh"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_POWER = 5, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 3000 * (1 / 3), MAT_GLASS = 4000 * (1 / 3), MAT_PLASTIC = 5000 * (1 / 3), MAT_GOLD = 5000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/electrical/high_current
+	build_path = /obj/item/vehicle_component/mecha_electrical/high_current
 
 /datum/prototype/design/science/mecha_component/hull
 	design_name = "Mecha Hull"
 	id = "mhull"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GLASS = 500 * (1 / 3))
-	build_path = /obj/item/vehicle_component/hull
+	build_path = /obj/item/vehicle_component/plating/mecha_hull
 
 /datum/prototype/design/science/mecha_component/hull/durable
 	design_name = "Mecha Hull - Durable"
 	id = "mhulldura"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4)
 	materials_base = list(MAT_STEEL = 7000 * (1 / 3), MAT_GLASS = 500 * (1 / 3), MAT_PLASTEEL = 10000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/hull/durable
+	build_path = /obj/item/vehicle_component/plating/mecha_hull/durable
 
 /datum/prototype/design/science/mecha_component/hull/lightweight
 	design_name = "Mecha Hull - Lightweight"
 	id = "mhulllight"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 5)
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GLASS = 500 * (1 / 3), MAT_PLASTIC = 3000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/hull/lightweight
+	build_path = /obj/item/vehicle_component/plating/mecha_hull/lightweight
 
 /datum/prototype/design/science/mecha_component/gas
 	design_name = "Mecha Life-Support"
 	id = "mgas"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2, TECH_BIO = 3)
 	materials_base = list(MAT_STEEL = 2000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/gas
+	build_path = /obj/item/vehicle_component/mecha_gas
 
 /datum/prototype/design/science/mecha_component/gas/reinforced
 	design_name = "Mecha Life-Support - Reinforced"
 	id = "mgasreinf"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_BIO = 5)
 	materials_base = list(MAT_STEEL = 5000 * (1 / 3), MAT_GLASS = 3000 * (1 / 3), MAT_SILVER = 4000 * (1 / 3))
-	build_path = /obj/item/vehicle_component/gas/reinforced
+	build_path = /obj/item/vehicle_component/mecha_gas/reinforced
 
 /*
  * Non-Mech Vehicles

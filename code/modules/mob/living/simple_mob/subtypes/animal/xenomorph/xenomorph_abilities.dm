@@ -31,7 +31,7 @@
 	for(var/distance = get_dist(src.loc, T), src.loc!=T && distance>0, distance--)
 		var/movedir = get_dir(src.loc, T)
 		var/moveturf = get_step(src.loc, movedir)
-		SelfMove(moveturf, movedir, 2)
+		self_move(moveturf, movedir, 2)
 		sleep(2 * world.tick_lag) //Speed it will move, default is two server ticks. You may want to slow it down a lot.
 	sleep((get_dist(src, T) * 2.2))
 	charging = 0
@@ -122,7 +122,7 @@
 	for(var/distance = get_dist(src.loc, T), src.loc!=T && distance>0, distance--)
 		var/movedir = get_dir(src.loc, T)
 		var/moveturf = get_step(src.loc, movedir)
-		SelfMove(moveturf, movedir, 2)
+		self_move(moveturf, movedir, 2)
 		sleep(2 * world.tick_lag) //Speed it will move, default is two server ticks. You may want to slow it down a lot.
 	sleep((get_dist(src, T) * 2.2))
 	charging = 0

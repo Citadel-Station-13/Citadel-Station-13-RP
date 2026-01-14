@@ -1,4 +1,4 @@
-//? do_after flags arg
+//* do_after() & deriviatives flags *//
 
 /// allow user movement
 #define DO_AFTER_IGNORE_USER_MOVEMENT (1<<0)
@@ -15,7 +15,20 @@
 /// no progress bar
 #define DO_AFTER_NO_PROGRESS (1<<5)
 
-//? do_after arg indices
+/// allow user movement
+#define DO_VEHICLE_IGNORE_VEHICLE_MOVEMENT (1<<0)
+/// allow target movement
+#define DO_VEHICLE_IGNORE_TARGET_MOVEMENT (1<<1)
+/// allow movement
+#define DO_VEHICLE_IGNORE_MOVEMENT (DO_VEHICLE_IGNORE_USER_MOVEMENT | DO_VEHICLE_IGNORE_TARGET_MOVEMENT)
+/// check for user turf as well instead of just exact loc
+#define DO_VEHICLE_CHECK_VEHICLE_TURF (1<<2)
+/// check for target turf as well instead of just exact loc
+#define DO_VEHICLE_CHECK_TARGET_TURF (1<<3)
+/// no progress bar
+#define DO_VEHICLE_NO_PROGRESS (1<<4)
+
+//* do_after() & deriviatives arg indices *//
 
 #define DO_AFTER_ARG_USER 1
 #define DO_AFTER_ARG_DELAY 2
@@ -25,7 +38,14 @@
 #define DO_AFTER_ARG_DIST 6
 #define DO_AFTER_ARG_CALLBACK 7
 
-//? Interaction Checks
+#define DO_VEHICLE_ARG_VEHICLE 1
+#define DO_VEHICLE_ARG_DELAY 2
+#define DO_VEHICLE_ARG_TARGET 3
+#define DO_VEHICLE_ARG_FLAGS 4
+#define DO_VEHICLE_ARG_DIST 5
+#define DO_VEHICLE_ARG_CALLBACK 6
+
+//* Interaction Checks *//
 /// checks if we're interacting with an atom
 #define INTERACTING_WITH(M, A) M.interacting_with?[A]
 /// checks if we're interacting with an atom for a certain type
@@ -41,7 +61,7 @@
 /// checks if we're interacting with *anything* for *any* reason.
 #define IS_INTERACTING_WITH_SOMETHING(M) !!length(M.interacting_with)
 
-//? Interactiong Types
+//* Interactiong Types *//
 /// Generic do after
 #define INTERACTING_FOR_DO_AFTER "do_after"
 /// Dynaimc tool usage in progress

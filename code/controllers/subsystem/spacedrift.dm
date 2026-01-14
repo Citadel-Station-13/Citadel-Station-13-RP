@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(spacedrift)
 				return
 			continue
 
-		if (!AM.loc || AM.loc != AM.inertia_last_loc || AM.Process_Spacemove(NONE))
+		if (isturf(AM.loc) || AM.loc != AM.inertia_last_loc || AM.process_spacemove(TRUE, NONE))
 			AM.inertia_dir = 0
 
 		if (!AM.inertia_dir)

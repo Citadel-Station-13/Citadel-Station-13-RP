@@ -72,7 +72,6 @@
 		return 1
 
 	qdel(G)
-	return
 
 /obj/item/tank/jetpack/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	toggle()

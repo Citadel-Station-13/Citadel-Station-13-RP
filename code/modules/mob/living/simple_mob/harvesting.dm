@@ -1,19 +1,3 @@
-/mob/living/simple_mob
-	/// What do you hit the mob with (on help) to get something from it?
-	var/obj/harvest_tool
-	/// How long do we have to wait until it's harvestable again?
-	var/harvest_cooldown = 10 MINUTES
-	/// How long does it take to harvest?
-	var/harvest_delay = 30 SECONDS
-	/// What world.time was the last harvest?
-	var/harvest_recent = 0
-	/// How many times can we roll at max on the chance table?
-	var/harvest_per_hit = 1
-	/// Verb for harvesting. "sheared" "clipped" etc.
-	var/harvest_verb = "harvested"
-	/// Associative list of paths and their chances. path = straws in the lot
-	var/list/harvest_results
-
 /mob/living/simple_mob/examine(mob/user, dist)
 	. = ..()
 	if(stat != DEAD && user && harvest_tool && (get_dist(user, src) <= 3))

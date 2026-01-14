@@ -123,9 +123,8 @@
 	..(AM)
 	if(istype(AM, /obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/mecha = AM
-		if(density && radio_connection && mecha.occupant_legacy && (src.allowed(mecha.occupant_legacy) || src.check_access_list(mecha.operation_req_access)))
+		if(density && radio_connection && mecha.occupant_legacy && allowed(mecha.occupant_legacy))
 			send_status(1)
-	return
 
 /obj/machinery/door/airlock/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)

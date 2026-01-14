@@ -32,6 +32,8 @@
 #define RAD_FALLOFF_ENGINE_SINGULARITY 0.5
 /// materials
 #define RAD_FALLOFF_MATERIALS 0.5
+/// mech reactors
+#define RAD_FALLOFF_MECH_REACTOR 0.5
 /// breached microfission cell
 #define RAD_FALLOFF_CELL_MICROFISSION 0.5
 
@@ -98,10 +100,10 @@
 #define RAD_INTENSITY_DIVISOR_SIMPLE_DOOR 3
 
 //? mecha
-/// mecha nuclear generator rad per tick
-#define RAD_INTENSITY_MECH_REACTOR_TICK 50
+/// mecha nuclear generator rad per tick if unshielded
+#define RAD_INTENSITY_MECH_REACTOR_UNSHIELDED_TICK 500
 /// phasing being cancelled by damage
-#define RAD_INTENSITY_MECH_JANUS_FORCED_UNPHASE 350
+#define RAD_INTENSITY_MECH_JANUS_FORCED_UNPHASE 750
 
 //? misc
 /// manhole cover for POI

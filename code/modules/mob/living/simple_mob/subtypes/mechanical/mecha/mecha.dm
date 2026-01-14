@@ -88,7 +88,7 @@
 /mob/living/simple_mob/mechanical/mecha/update_icon()
 	..() // Cuts everything else, so do that first.
 	if(has_repair_droid)
-		add_overlay(image(icon = 'icons/mecha/mecha_equipment.dmi', icon_state = "repair_droid"))
+		add_overlay(image(icon = 'icons/modules/vehicles/vehicle_module.dmi', icon_state = "repair_droid"))
 
 /mob/living/simple_mob/mechanical/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	. = ..()
@@ -100,16 +100,6 @@
 // Piloted mechs are controlled by (presumably) something humanoid so they are vulnerable to certain things.
 /mob/living/simple_mob/mechanical/mecha/is_sentient()
 	return pilot_type ? TRUE : FALSE
-
-/*
-// Real mechs can't turn and run at the same time. This tries to simulate that.
-// Commented out because the AI can't handle it sadly.
-/mob/living/simple_mob/mechanical/mecha/SelfMove(turf/n, direct)
-	if(direct != dir)
-		setDir(direct)
-		return FALSE // We didn't actually move, and returning FALSE means the mob can try to actually move almost immediately and not have to wait the full movement cooldown.
-	return ..()
-*/
 
 /mob/living/simple_mob/mechanical/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(deflect_chance))
