@@ -455,7 +455,7 @@ var/list/ai_verbs_default = list(
 	if(!target_turf)
 		return
 
-	if (!is_valid_z_level(ai_turf, target_turf))
+	if (!is_same_map(ai_turf, target_turf))
 		return FALSE
 
 	if (istype(loc, /obj/item/aicard))
