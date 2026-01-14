@@ -99,7 +99,7 @@ GLOBAL_VAR_INIT(refid_filter, TYPEID(filter(type="angular_blur")))
 #define isrobot(A) istype(A, /mob/living/silicon/robot)
 #define ispAI(A) istype(A, /mob/living/silicon/pai)
 #define isDrone(A) istype(A, /mob/living/silicon/robot/drone)
-#define isMatriarchDrone(A) istype(A, /mob/living/silicon/robot/drone/construction/matriarch)
+#define isMatriarchDrone(A) istype(A, /mob/living/silicon/robot/drone/matriarch)
 
 
 //Simple animals

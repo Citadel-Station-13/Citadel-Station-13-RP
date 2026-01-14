@@ -299,7 +299,7 @@
 	name = "robotic intelligence circuit"
 	desc = "The pinnacle of artifical intelligence which can be achieved using classical computer science."
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/drones)
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "mainboard"
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
@@ -371,7 +371,7 @@
 /obj/item/mmi/inert/ai_remote
 	name = "\improper AI remote interface"
 	desc = "A sophisticated board which allows for an artificial intelligence to remotely control a synthetic chassis."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "mainboard"
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_DATA = 3)

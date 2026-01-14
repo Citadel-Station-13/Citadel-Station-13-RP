@@ -97,16 +97,19 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 		start_pulling(AM)
 
 //mob verbs are faster than object verbs. See above.
-/mob/living/pointed(atom/A as mob|obj|turf in view())
+/mob/living/pointed(atom/A as mob|obj|turf in view(client.view, src))
 	if(src.stat || src.restrained())
-		return 0
+		return FALSE
 	if(src.status_flags & STATUS_FAKEDEATH)
-		return 0
-	if(!..())
-		return 0
+		return FALSE
 
-	usr.visible_message("<b>[src]</b> points to [A]")
-	return 1
+	return ..()
+
+/mob/living/_pointed(atom/pointing_at)
+	if(!..())
+		return FALSE
+	log_emote("POINTED --> at [pointing_at] ([COORD(pointing_at)]).", src)
+	visible_message(SPAN_INFOPLAIN("[SPAN_NAME("[src]")] points at [pointing_at]."), SPAN_NOTICE("You point at [pointing_at]."))
 
 /*one proc, four uses
 swapping: if it's 1, the mobs are trying to switch, if 0, non-passive is pushing passive

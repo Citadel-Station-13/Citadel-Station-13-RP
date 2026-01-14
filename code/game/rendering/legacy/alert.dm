@@ -119,8 +119,10 @@
 	owner = null
 	return ..()
 
-/atom/movable/screen/alert/MouseEntered(location,control,params)
-	openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
+/atom/movable/screen/alert/MouseEntered(location, control, params)
+	. = ..()
+	if(!QDELETED(src))
+		openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
 
 /atom/movable/screen/alert/MouseExited()
 	closeToolTip(usr)

@@ -55,7 +55,7 @@
 
 		if("law")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_the_law)
+			if (istype(R))
 				message = "shows its legal authorization barcode."
 
 				playsound(src.loc, 'sound/voice/biamthelaw.ogg', 50, 0)
@@ -65,7 +65,7 @@
 
 		if("halt")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_the_law)
+			if (istype(R))
 				message = "<B>'s</B> speakers skreech, \"Halt! Security!\"."
 
 				playsound(src.loc, 'sound/voice/halt.ogg', 50, 0)
@@ -75,7 +75,7 @@
 
 		if("bark")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_dog())
+			if (istype(R))
 				if (emote_target)
 					message = "barks at [emote_target]."
 				else
@@ -88,7 +88,7 @@
 
 		if("arfe")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_dog())
+			if (istype(R))
 				message = "lets out an A R F E."
 
 				playsound(loc, 'sound/voice/arfe.ogg', 50, 1, -1)
@@ -106,7 +106,7 @@
 
 		if("mrrp")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "mrrps."
 
 				playsound(loc, 'sound/voice/mrrp.ogg', 50, 1, -1)
@@ -116,7 +116,7 @@
 
 		if("prbt")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "prbts."
 
 				playsound(loc, 'sound/misc/prbt.ogg', 50, 1, -1)
@@ -126,7 +126,7 @@
 
 		if("hiss")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "lets out a hiss."
 
 				playsound(loc, 'sound/voice/hiss.ogg', 50, 1, -1)
@@ -136,7 +136,7 @@
 
 		if("purr")
 			var/mob/living/silicon/robot/R = src
-			if (istype(R) && R.module.is_cat())
+			if (istype(R))
 				message = "purrs softly."
 
 				playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
