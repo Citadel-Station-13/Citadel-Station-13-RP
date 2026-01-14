@@ -421,3 +421,5 @@
 
 	///List of progress bars this mob is currently seeing for actions
 	var/list/progressbars = null //for stacking do_after bars
+
+	var/interaction_range = 0 //how far a mob has to be to interact with something without caring about obsctruction, defaulted to 0 tiles

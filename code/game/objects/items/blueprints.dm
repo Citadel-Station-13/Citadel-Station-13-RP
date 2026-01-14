@@ -5,6 +5,10 @@
 	icon_state = "blueprints"
 	attack_verb = list("attacked", "bapped", "hit")
 	preserve_item = 1
+
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE | INTEGRITY_LAVAPROOF | INTEGRITY_FIREPROOF | INTEGRITY_ACIDPROOF
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_ALLOW_USER_LOCATION | INTERACT_ATOM_IGNORE_MOBILITY
+
 	var/const/AREA_ERRNONE = 0
 	var/const/AREA_STATION = 1
 	var/const/AREA_SPACE =   2
