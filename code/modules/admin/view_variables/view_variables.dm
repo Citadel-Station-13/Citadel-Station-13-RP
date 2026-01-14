@@ -1,44 +1,87 @@
-// todo: refactor number.. 4?
-// thise is all snowflakey.
-/client/proc/debug_variables(datum/D in world)
+#define ICON_STATE_CHECKED 1 /// this dmi is checked. We don't check this one anymore.
+#define ICON_STATE_NULL 2 /// this dmi has null-named icon_state, allowing it to show a sprite on vv editor.
+
+/client/proc/debug_variables(datum/thing in world)
 	set category = "Debug"
 	set name = "View Variables"
+
 	//set src in world
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
-	if(!usr.client || !usr.client.holder)		//This is usr because admins can call the proc on other clients, even if they're not admins, to show them VVs.
-		to_chat(usr, "<span class='danger'>You need to be an administrator to access this.</span>")
+	if(!usr.client || !usr.client.holder) //This is usr because admins can call the proc on other clients, even if they're not admins, to show them VVs.
+		to_chat(usr, SPAN_DANGER("You need to be an administrator to access this."), confidential = TRUE)
 		return
 
-	if(!D)
+	if(!thing)
 		return
 
-	var/vtype
-	var/type
-	var/refid = REF(D)
-	var/ref = ref(D)
-	var/list/header
-	var/title = "#unkw"
+	SSassets.send_asset_pack(usr, /datum/asset_pack/simple/vv)
+
+	if(isappearance(thing))
+		thing = get_vv_appearance(thing) // this is /mutable_appearance/our_bs_subtype
+	var/islist = islist(thing) || (!isdatum(thing) && hascall(thing, "Cut")) // Some special lists don't count as lists, but can be detected by if they have list procs
+	if(!islist && !isdatum(thing))
+		return
+
+	var/title = ""
+	var/refid = REF(thing)
+	var/icon/sprite
+	var/hash
+
+	var/type = islist ? /list : thing.type
+	var/no_icon = FALSE
+
+	if(isatom(thing))
+		sprite = get_flat_icon(thing)
+		if(!sprite)
+			no_icon = TRUE
+
+	else if(isimage(thing))
+		// icon_state=null shows first image even if dmi has no icon_state for null name.
+		// This list remembers which dmi has null icon_state, to determine if icon_state=null should display a sprite
+		// (NOTE: icon_state="" is correct, but saying null is obvious)
+		var/static/list/dmi_nullstate_checklist = list()
+		var/image/image_object = thing
+		var/icon_filename_text = "[image_object.icon]" // "icon(null)" type can exist. textifying filters it.
+		if(icon_filename_text)
+			if(image_object.icon_state)
+				sprite = icon(image_object.icon, image_object.icon_state)
+
+			else // it means: icon_state=""
+				if(!dmi_nullstate_checklist[icon_filename_text])
+					dmi_nullstate_checklist[icon_filename_text] = ICON_STATE_CHECKED
+					if(icon_exists(image_object.icon, ""))
+						// this dmi has nullstate. We'll allow "icon_state=null" to show image.
+						dmi_nullstate_checklist[icon_filename_text] = ICON_STATE_NULL
+
+				if(dmi_nullstate_checklist[icon_filename_text] == ICON_STATE_NULL)
+					sprite = icon(image_object.icon, image_object.icon_state)
+
+	var/sprite_text
+	if(sprite)
+		hash = md5(sprite)
+		src << browse_rsc(sprite, "vv[hash].png")
+		sprite_text = no_icon ? "\[NO ICON\]" : "<img src='vv[hash].png'></td><td>"
+
+	title = "[thing] ([REF(thing)]) = [type]"
+	var/formatted_type = replacetext("[type]", "/", "<wbr>/")
+
+	var/list/header = islist ? list("<b>/list</b>") : thing.vv_get_header()
+
+	var/ref_line = "@[copytext(refid, 2, -1)]" // get rid of the brackets, add a @ prefix for copy pasting in asay
+
+	var/marked_line
+	if(holder && holder.marked_datum && holder.marked_datum == thing)
+		marked_line = VV_MSG_MARKED
+	var/varedited_line
+	if(!islist && (thing.datum_flags & DF_VAR_EDITED))
+		varedited_line = VV_MSG_EDITED
+	var/deleted_line
+	if(!islist && thing.gc_destroyed)
+		deleted_line = VV_MSG_DELETED
+
 	var/list/dropdownoptions
-	// welcome to yanderedev
-	// but i assure you this is necessary unless we switch(typeid).
-	// vv refactor #4 when?
-	if(isdatum(D))
-		vtype = VVING_A_DATUM
-		type = D.type
-		header = D.vv_get_header()
-		if(refid == ref)
-			title = "[D] ([ref]) = [type]"
-		else
-			title = "[D] ([refid]/[ref]) = [type]"
-		dropdownoptions = D.vv_get_dropdown()
-		dropdownoptions += D.get_view_variables_options_legacy()
-		header += D.get_view_variables_header_legacy()
-	else if(islist(D))
-		vtype = VVING_A_LIST
-		type = /list
-		header = list("<b>/list [ref]</b>")
-		title = "/list [ref]"
+	if (islist)
 		dropdownoptions = list(
 			"---",
 			"Add Item" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ADD),
@@ -53,89 +96,38 @@
 			var/name = dropdownoptions[i]
 			var/link = dropdownoptions[name]
 			dropdownoptions[i] = "<option value[link? "='[link]'":""]>[name]</option>"
-	else if(IS_APPEARANCE(D))
-		vtype = VVING_A_APPEARANCE
-		type = /appearance
-		header = list("<b>virtual appearance [ref]</b>")
-		title = "virtual appearance [ref]"
-		dropdownoptions = list()
 	else
-		to_chat(usr, "Invalid vtype.")
-		return
-
-	var/icon/sprite
-	var/hash
-
-	var/no_icon = FALSE
-
-	if(istype(D, /atom))
-		sprite = get_flat_icon(D)
-		if(sprite)
-			hash = md5(sprite)
-			src << browse_rsc(sprite, "vv[hash].png")
-		else
-			no_icon = TRUE
-
-	var/formatted_type = replacetext("[type]", "/", "<wbr>/")
-
-	var/sprite_text
-	if(sprite)
-		sprite_text = no_icon? "\[NO ICON\]" : "<img src='vv[hash].png'></td><td>"
-
-	var/marked_line
-	if(holder && holder.marked_datum && holder.marked_datum == D)
-		marked_line = VV_MSG_MARKED
-	var/varedited_line
-	if(vtype == VVING_A_DATUM && (D.datum_flags & DF_VAR_EDITED))
-		varedited_line = VV_MSG_EDITED
-	var/deleted_line
-	if(vtype == VVING_A_DATUM && D.gc_destroyed)
-		deleted_line = VV_MSG_DELETED
+		dropdownoptions = thing.vv_get_dropdown()
 
 	var/list/names = list()
-	var/list/variable_html = list()
-	switch(vtype)
-		if(VVING_A_DATUM)
-			for(var/V in D.vars)
-				names += V
-		if(VVING_A_LIST)
-		if(VVING_A_APPEARANCE)
-			for(var/V in global._appearance_var_list)
-				names += V
-	sleep(1)
-	switch(vtype)
-		if(VVING_A_DATUM)
-			names = sortList(names)
-			for(var/V in names)
-				if(D.can_vv_get(V))
-					variable_html += D.vv_get_var(V, TRUE)
-		if(VVING_A_LIST)
-			var/list/L = D
-			for(var/i in 1 to L.len)
-				var/key = L[i]
-				var/value
-				if(IS_NORMAL_LIST(L) && IS_VALID_ASSOC_KEY(key))
-					value = L[key]
-				variable_html += debug_variable(i, value, 0, L)
-		if(VVING_A_APPEARANCE)
-			// lol, lmao
-			for(var/V in names)
-				variable_html += __appearance_v_debug(D, V)
+	if(!islist)
+		for(var/varname in thing.vars)
+			names += varname
 
+	sleep(1 TICKS)
+
+	var/list/variable_html = list()
+	if(islist)
+		var/list/list_value = thing
+		for(var/i in 1 to list_value.len)
+			var/key = list_value[i]
+			var/value
+			if(IS_NORMAL_LIST(list_value) && IS_VALID_ASSOC_KEY(key))
+				value = list_value[key]
+			variable_html += debug_variable(i, value, 0, list_value)
+	else
+		names = sortList(names)
+		for(var/varname in names)
+			if(thing.can_vv_get(varname))
+				variable_html += thing.vv_get_var(varname)
+
+	var/datum/asset_pack/simple/vv/asset = SSassets.resolve_asset_pack(/datum/asset_pack/simple/vv)
 	var/html = {"
 <html>
 	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 		<title>[title]</title>
-		<style>
-			body {
-				font-family: Verdana, sans-serif;
-				font-size: 9pt;
-			}
-			.value {
-				font-family: "Courier New", monospace;
-				font-size: 8pt;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="[asset.get_url("view_variables.css")]">
 	</head>
 	<body onload='selectTextField()' onkeydown='return handle_keydown()' onkeyup='handle_keyup()'>
 		<script type="text/javascript">
@@ -155,8 +147,8 @@
 				var ca = document.cookie.split(';');
 				for(var i=0; i<ca.length; i++) {
 					var c = ca\[i];
-					while (c.charAt(0)==' ') c = c.substring(1,c.length);
-					if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+					while (c.charAt(0) == ' ') c = c.substring(1,c.length);
+					if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
 				}
 				return "";
 			}
@@ -249,6 +241,7 @@
 						</table>
 						<div align='center'>
 							<b><font size='1'>[formatted_type]</font></b>
+							<br><b><font size='1'>[ref_line]</font></b>
 							<span id='marked'>[marked_line]</span>
 							<span id='varedited'>[varedited_line]</span>
 							<span id='deleted'>[deleted_line]</span>
@@ -256,7 +249,7 @@
 					</td>
 					<td width='50%'>
 						<div align='center'>
-							<a id='refresh_link' href='?_src_=vars;
+							<a id='refresh_link' href='byond://?_src_=vars;
 datumrefresh=[refid];[HrefToken()]'>Refresh</a>
 							<form>
 								<select name="file" size="1"
@@ -302,7 +295,11 @@ datumrefresh=[refid];[HrefToken()]'>Refresh</a>
 	</body>
 </html>
 "}
-	src << browse(html, "window=variables[refid];size=525x725")
 
-/client/proc/vv_update_display(datum/D, span, content)
-	src << output("[span]:[content]", "variables[REF(D)].browser:replace_span")
+	src << browse(html, "window=variables[refid];size=475x650")
+
+/client/proc/vv_update_display(datum/thing, span, content)
+	src << output("[span]:[content]", "variables[REF(thing)].browser:replace_span")
+
+#undef ICON_STATE_CHECKED
+#undef ICON_STATE_NULL
