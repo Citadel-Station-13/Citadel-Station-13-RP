@@ -6,6 +6,11 @@
  */
 /datum/stargazer_mindnet_exec
 	/**
+	 * Our registered key.
+	 */
+	var/dedupe_key
+
+	/**
 	 * Mindnet initiating this execution
 	 */
 	var/datum/stargazer_mindnet/mindnet
@@ -21,28 +26,10 @@
 	 */
 	var/datum/callback/on_target_valid
 	/**
-	 * Called to format what they see in chat.
-	 * * Called with (src, cooperate_link)
+	 * Called to return execution to caller.
+	 * * Called after cooperation prompt times out or is accepted.
 	 */
-	var/datum/callback/on_chat_fmt
-	/**
-	 * Called if the receiver doesn't cooperate.
-	 * * Called with (src)
-	 * * Timing out also counts.
-	 * * Callback should return TRUE to cancel the execution.
-	 */
-	var/datum/callback/on_non_cooperated
-	/**
-	 * Called if the receiver cooperates.
-	 * * Called with (src)
-	 * * Callback should return TRUE to cancel the execution.
-	 */
-	var/datum/callback/on_cooperated
-	/**
-	 * Called if target is lost.
-	 * * Called with (src)
-	 */
-	var/datum/callback/on_target_lost
+	var/datum/callback/on_prompt_finish
 
 	/**
 	 * Did the target cooperate?
@@ -52,5 +39,17 @@
 	 * How long the target has to give cooperation.
 	 */
 	var/cooperate_prompt_timeout = 15 SECONDS
+
+
+
+/datum/stargazer_mindnet_exec/New(dedupe_key)
+	src.dedupe_key = dedupe_key || num2text(rand(1, 999999), 16)
+
+/**
+ * * Passed in link should have a `%%COOPERATE%%` inside it which will be
+ *   replaced with the cooperate link in chat.
+ */
+/datum/stargazer_mindnet_exec/proc/set_chat_prompt(format)
+
 
 #warn impl

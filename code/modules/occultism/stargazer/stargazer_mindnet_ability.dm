@@ -48,6 +48,7 @@
 
 	/// default require a do_after
 	/// * requirements & attunement will continually be checked.
+	/// * this is before the prompt
 	var/default_do_after = 0 SECONDS
 	var/default_do_after_flags = DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_TARGET_MOVEMENT
 
@@ -81,9 +82,9 @@
 	var/list/blackboard = list()
 	#warn impl
 
-/datum/stargazer_mindnet_ability/proc/default_pre_prompt(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, list/blackboard, datum/mind/target)
+/datum/stargazer_mindnet_ability/proc/default_pre_prompt(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, list/blackboard, datum/mind/target, datum/stargazer_mindnet_exec/exec)
 
-/datum/stargazer_mindnet_ability/proc/default_post_prompt(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, list/blackboard, datum/mind/target, considered_cooperated)
+/datum/stargazer_mindnet_ability/proc/default_post_prompt(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, list/blackboard, datum/mind/target, datum/stargazer_mindnet_exec/exec)
 
 /**
  * Returns our execution dedupe key; the user will not be allowed to invoke two abilities
