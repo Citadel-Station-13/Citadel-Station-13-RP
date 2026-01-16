@@ -4,7 +4,7 @@
 /**
  * Minimum delay in deciseconds between fast-mouse updates like zooming and facing cursor.
  */
-GLOBAL_VAR_INIT(client_mouse_fast_update_backoff, 1.5)
+GLOBAL_VAR_INIT(client_mouse_fast_update_backoff, 1)
 
 // TODO: this is fine for now but if the server becomes highpop we may need to re-evaluate this
 /client/MouseMove(object, location, control, params)

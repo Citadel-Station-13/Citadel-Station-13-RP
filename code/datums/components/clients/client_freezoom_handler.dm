@@ -99,4 +99,4 @@
 	current_pixel_y = pixel_y
 
 	var/client/scrolling = parent
-	animate(scrolling, pixel_x = pixel_x, pixel_y = pixel_y, time = 0.15 SECONDS, easing = SINE_EASING, flags = ANIMATION_PARALLEL)
+	animate(scrolling, pixel_x = pixel_x, pixel_y = pixel_y, time = 0.1 SECONDS, easing = SINE_EASING, flags = ANIMATION_PARALLEL)
