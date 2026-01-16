@@ -47,6 +47,11 @@
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/movespeed_hyperbolic
 
+	//* Status Indicators *//
+	/// datum path = list of sources
+	var/list/status_indicators
+	var/list/status_indicator_overlays
+
 /**
  * Intialize a mob
  *
