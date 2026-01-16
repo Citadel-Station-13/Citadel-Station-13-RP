@@ -225,14 +225,14 @@
 		return
 	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		return
-	to_chat(user, rangefinder_output(user, target))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] [rangefinder_output(user, target)]"))
 
 /obj/item/rangefinder/proc/rangefinder_output(mob/user, atom/target)
 	var/turf/source_turf = get_turf(user)
 	var/turf/target_turf = get_turf(target)
 	var/list/coords = SSmapping.get_virtual_coords_x_y(target_turf)
 	var/dist = target.z == user.z ? get_turf_euclidean_dist(source_turf, target_turf) : SSmapping.get_virtual_horizontal_euclidean_dist(source_turf, target_turf)
-	return SPAN_NOTICE("[icon2html(src, user)]: rangefinder estimate [dist]m @ [coords[1]]x, [coords[2]]y")
+	return "rangefinder estimate [dist]m @ [coords[1]]x, [coords[2]]y"
 
 /obj/item/rangefinder/item_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
