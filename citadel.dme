@@ -4910,6 +4910,7 @@
 #include "code\modules\preferences\preference_setup\general\04_equipment.dm"
 #include "code\modules\preferences\preference_setup\general\05_background.dm"
 #include "code\modules\preferences\preference_setup\general\06_flavor.dm"
+#include "code\modules\preferences\preference_setup\general\07_chat.dm"
 #include "code\modules\preferences\preference_setup\global\02_settings.dm"
 #include "code\modules\preferences\preference_setup\global\03_pai.dm"
 #include "code\modules\preferences\preference_setup\global\04_ooc.dm"

@@ -199,6 +199,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/flavor_texts = list()
 	var/list/flavour_texts_robot = list()
 
+/// preferred runechat color for the blorbo; if left null, should just be random
+	var/floating_chat_color = null
+
 	var/list/body_descriptors = list()
 
 	//* ## OOC Metadata
