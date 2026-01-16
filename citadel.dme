@@ -3468,6 +3468,7 @@
 #include "code\modules\legacy_metric\department.dm"
 #include "code\modules\legacy_metric\metric.dm"
 #include "code\modules\library\book.dm"
+#include "code\modules\library\book_info.dm"
 #include "code\modules\library\lib_items.dm"
 #include "code\modules\library\lib_machines.dm"
 #include "code\modules\library\lib_readme.dm"
