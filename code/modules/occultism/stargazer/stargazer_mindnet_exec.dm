@@ -15,8 +15,7 @@
 	 */
 	var/datum/stargazer_mindnet/mindnet
 	/**
-	 * Target mind.
-	 * * Notice how the target is a mind and not a mob.
+	 * Target mind
 	 */
 	var/datum/mind/target_mind
 
@@ -26,10 +25,11 @@
 	 */
 	var/datum/callback/on_target_valid
 	/**
-	 * Called to return execution to caller.
-	 * * Called after cooperation prompt times out or is accepted.
+	 * Called with any unhandled Topic()
+	 * * Called with (src, mob/user, list/href_list)
+	 * * Make sure you sanitize input on your end.
 	 */
-	var/datum/callback/on_prompt_finish
+	var/datum/callback/on_unhandled_topic
 
 	/**
 	 * Did the target cooperate?
@@ -41,7 +41,6 @@
 	var/cooperate_prompt_timeout = 15 SECONDS
 
 
-
 /datum/stargazer_mindnet_exec/New(dedupe_key)
 	src.dedupe_key = dedupe_key || num2text(rand(1, 999999), 16)
 
@@ -51,5 +50,10 @@
  */
 /datum/stargazer_mindnet_exec/proc/set_chat_prompt(format)
 
+/**
+ * Keeps us alive for atleast this much more time.
+ * * Used to stop an exec from being qdel'd even after the cooperation prompt is done.
+ */
+/datum/stargazer_mindnet_exec/proc/keep_alive_for(time)
 
 #warn impl
