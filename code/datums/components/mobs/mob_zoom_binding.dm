@@ -14,7 +14,7 @@
 	var/datum/callback/on_start
 	var/datum/callback/on_stop
 
-/datum/component/mob_zoom_binding/Initialize(datum/callback/on_strt, datum/callback/on_stop)
+/datum/component/mob_zoom_binding/Initialize(datum/callback/on_start, datum/callback/on_stop)
 	. = ..()
 	if(. == COMPONENT_INCOMPATIBLE)
 		return
@@ -33,13 +33,14 @@
 /datum/component/mob_zoom_binding/freezoom
 	var/range_in_tiles
 
-/datum/component/mob_zoom_binding/freezoom/Initialize(datum/callback/on_stop, range_in_tiles = 7)
+/datum/component/mob_zoom_binding/freezoom/Initialize(datum/callback/on_start, datum/callback/on_stop, range_in_tiles = 7)
 	. = ..()
 	if(. == COMPONENT_INCOMPATIBLE)
 		return
 	src.range_in_tiles = range_in_tiles
 
 /datum/component/mob_zoom_binding/freezoom/RegisterWithParent()
+	..()
 	RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_login))
 	RegisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LOGOUT, PROC_REF(on_logout))
 	var/mob/m_parent = parent
@@ -54,6 +55,7 @@
 	var/mob/m_parent = parent
 	if(m_parent.client)
 		on_logout(m_parent, m_parent.client)
+	..()
 
 /datum/component/mob_zoom_binding/freezoom/proc/on_logout(mob/source, client/cli)
 	cli?.DelComponent(/datum/component/client_freezoom_handler)

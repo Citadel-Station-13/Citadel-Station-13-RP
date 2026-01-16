@@ -90,7 +90,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	var/list/assembled_lasers = list()
 	var/list/assembled_flares = list()
 
-	if(our_overmap_entity)
+	if(our_overmap_entity && linked_zone)
 		var/list/obj/overmap/entity/overmap_query_results = SSovermaps.entity_pixel_dist_query(our_overmap_entity, linked_zone.max_overmap_pixel_dist)
 		for(var/obj/overmap/entity/entity_in_range as anything in overmap_query_results)
 			if(!isturf(entity_in_range.loc))

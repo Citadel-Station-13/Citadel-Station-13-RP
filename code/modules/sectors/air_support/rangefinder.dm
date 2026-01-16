@@ -179,7 +179,7 @@
 	if(currently_zoomed_in)
 		stop_zooming()
 	currently_zoomed_in = viewing
-	currently_zoomed_in.AddComponent(/datum/component/mob_zoom_binding, 14)
+	currently_zoomed_in.AddComponent(/datum/component/mob_zoom_binding/freezoom, null, null, 14)
 	RegisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE, PROC_REF(on_user_examine))
 	update_icon()
 	return TRUE
@@ -199,7 +199,7 @@
 	var/turf/target_turf = get_turf(target)
 	var/list/coords = SSmapping.get_virtual_coords_x_y(target_turf)
 	var/dist = target.z == source.z ? get_turf_euclidean_dist(source_turf, target_turf) : SSmapping.get_virtual_horizontal_euclidean_dist(source_turf, target_turf)
-	examine_list += SPAN_NOTICE("[icon2html(src, source)]: Estimated coordinates [coords[1]]/[coords[2]], [dist] away.")
+	examine_list += SPAN_NOTICE("[icon2html(src, source)]: rangefinder estimate [dist]m @ [coords[1]]x, [coords[2]]y")
 
 /obj/item/rangefinder/item_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()

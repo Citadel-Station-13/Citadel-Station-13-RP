@@ -73,7 +73,7 @@ export const OrbitalDeploymentController = (props) => {
   });
 
   return (
-    <Window>
+    <Window title="Orbital Deployment Controller">
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
@@ -84,7 +84,7 @@ export const OrbitalDeploymentController = (props) => {
                     {data.zone.launchOnCooldown ? 'Recharging' : 'Ready'}
                   </LabeledList.Item>
                   <LabeledList.Item label="Range">
-                    {data.zone.maxOvermapPixelDist}
+                    {data.zone.maxOvermapPixelDist / 32}
                   </LabeledList.Item>
                 </LabeledList>
               ) : (
@@ -159,7 +159,7 @@ export const OrbitalDeploymentController = (props) => {
                     <Table.Cell>
                       {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
                     </Table.Cell>
-                    <Table.Cell>{f.overmapDist}</Table.Cell>
+                    <Table.Cell>{f.overmapDist / 32}</Table.Cell>
                     <Table.Cell>
                       <Button
                         icon="target"
@@ -177,45 +177,49 @@ export const OrbitalDeploymentController = (props) => {
             </Section>
           </Stack.Item>
           <Stack.Item>
-            <Stack fill>
-              <Stack.Item grow>
-                <Button.Confirm
-                  onClick={() => {
-                    if (data.zone?.arming) {
-                      act('disarm');
-                    } else {
-                      act('arm');
+            <Section>
+              <Stack fill>
+                <Stack.Item grow>
+                  <Button.Confirm
+                    fluid
+                    onClick={() => {
+                      if (data.zone?.arming) {
+                        act('disarm');
+                      } else {
+                        act('arm');
+                      }
+                    }}
+                    color={
+                      data.zone?.arming
+                        ? data.zone.armed
+                          ? 'red'
+                          : 'yellow'
+                        : 'transparent'
                     }
-                  }}
-                  color={
-                    data.zone?.arming
+                  >
+                    {data.zone?.arming
                       ? data.zone.armed
-                        ? 'red'
-                        : 'yellow'
-                      : 'transparent'
-                  }
-                >
-                  {data.zone?.arming
-                    ? data.zone.armed
-                      ? 'Armed'
-                      : 'Arming'
-                    : 'Arm'}
-                </Button.Confirm>
-              </Stack.Item>
-              <Stack.Item grow>
-                <Button.Confirm
-                  disabled={!data.zone?.armed || !targetValid}
-                  onClick={() =>
-                    act('launch', {
-                      targetType: selectedTarget?.[0],
-                      targetRef: selectedTarget?.[1],
-                    })
-                  }
-                >
-                  Launch
-                </Button.Confirm>
-              </Stack.Item>
-            </Stack>
+                        ? 'Armed'
+                        : 'Arming'
+                      : 'Arm'}
+                  </Button.Confirm>
+                </Stack.Item>
+                <Stack.Item grow>
+                  <Button.Confirm
+                    fluid
+                    disabled={!data.zone?.armed || !targetValid}
+                    onClick={() =>
+                      act('launch', {
+                        targetType: selectedTarget?.[0],
+                        targetRef: selectedTarget?.[1],
+                      })
+                    }
+                  >
+                    Launch
+                  </Button.Confirm>
+                </Stack.Item>
+              </Stack>
+            </Section>
           </Stack.Item>
         </Stack>
       </Window.Content>
