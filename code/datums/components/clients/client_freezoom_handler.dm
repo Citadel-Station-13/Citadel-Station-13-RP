@@ -12,25 +12,25 @@
 	var/last_update
 
 	/// max zoom radius
-	var/max_zoom_px = WORLD_ICON_SIZE * 7
-
+	var/max_zoom_pixels = WORLD_ICON_SIZE * 7
+	/// center ignore radius
 	/// * in normal mode, this is area in center we don't zoom anywhere else while inside
-	var/detection_px = WORLD_ICON_SIZE * 2.5
+	var/center_ignore_pixels = 0
 
 	/// current pixel offset
 	var/current_pixel_x = 0
 	/// current pixel offset
 	var/current_pixel_y = 0
 
-/datum/component/client_freezoom_handler/Initialize(max_zoom_px, detection_px, scrolling_mode)
+/datum/component/client_freezoom_handler/Initialize(max_zoom_pixels, center_ignore_pixels, scrolling_mode)
 	if((. = ..()) == COMPONENT_INCOMPATIBLE)
 		return
 	if(!istype(parent, /client))
 		return COMPONENT_INCOMPATIBLE
-	if(!isnull(max_zoom_px))
-		src.max_zoom_px = max_zoom_px
-	if(!isnull(detection_px))
-		src.detection_px = detection_px
+	if(!isnull(max_zoom_pixels))
+		src.max_zoom_pixels = max_zoom_pixels
+	if(!isnull(center_ignore_pixels))
+		src.center_ignore_pixels = center_ignore_pixels
 	// if(!isnull(scrolling_mode))
 	// 	src.scrolling_mode = scrolling_mode
 
@@ -50,15 +50,15 @@
 	if(world.time - last_update < GLOB.client_mouse_fast_update_backoff)
 		return
 	last_update = world.time
-	update_zoom(source.mouse_last_move_params)
+	update_zoom(source.get_mouse_params())
 
 /datum/component/client_freezoom_handler/proc/update_zoom(list/mouse_params)
 	var/client/client = parent
 
 	var/screen_loc = mouse_params["screen-loc"]
-	var/list/split = splittext(screen_loc, ":")
-	var/list/x_split = splittext(split[1], ",")
-	var/list/y_split = splittext(split[2], ",")
+	var/list/split = splittext(screen_loc, ",")
+	var/list/x_split = splittext(split[1], ":")
+	var/list/y_split = splittext(split[2], ":")
 	var/s_x = text2num(x_split[1])
 	var/s_px = text2num(x_split[2])
 	var/s_y = text2num(y_split[1])
@@ -74,20 +74,21 @@
 	//              the cursor's position from the edge of no-detection box
 	//              to 100% of the screen's edge
 	// TODO: make it 95% instead
-	var/halfway_x = client.current_viewport_width * 0.5
-	var/halfway_y = client.current_viewport_height * 0.5
-	var/ranging_x = max(0, halfway_x - detection_px)
-	var/ranging_y = max(0, halfway_y - detection_px)
+
+	var/halfway_x = client.current_viewport_width * WORLD_ICON_SIZE * 0.5
+	var/halfway_y = client.current_viewport_height * WORLD_ICON_SIZE * 0.5
+	var/ranging_x = max(0, halfway_x - center_ignore_pixels)
+	var/ranging_y = max(0, halfway_y - center_ignore_pixels)
 	if(ranging_x)
 		if(scr_x > halfway_x)
-			calc_x = abs(abs((scr_x - halfway_x) - detection_px) / ranging_x) * max_zoom_px
+			calc_x = max(0, (((scr_x - halfway_x) - center_ignore_pixels) / ranging_x)) * max_zoom_pixels
 		else
-			calc_x = abs(abs((scr_x - halfway_x) + detection_px) / ranging_x) * max_zoom_px
+			calc_x = -max(0, (((halfway_x - scr_x) - center_ignore_pixels) / ranging_x)) * max_zoom_pixels
 	if(ranging_y)
-		if(scr_y < halfway_y)
-			calc_y = abs(abs((scr_y - halfway_y) - detection_px) / ranging_y) * max_zoom_px
+		if(scr_y > halfway_y)
+			calc_y = max(0, (((scr_y - halfway_y) - center_ignore_pixels) / ranging_y)) * max_zoom_pixels
 		else
-			calc_y = abs(abs((scr_y - halfway_y) + detection_px) / ranging_y) * max_zoom_px
+			calc_y = -max(0, (((halfway_y - scr_y) - center_ignore_pixels) / ranging_y)) * max_zoom_pixels
 
 	// TODO: scrolling mode
 
@@ -98,4 +99,4 @@
 	current_pixel_y = pixel_y
 
 	var/client/scrolling = parent
-	animate(scrolling, pixel_x = pixel_x, pixel_y = pixel_y, time = 0.2 SECONDS, easing = SINE_EASING, flags = ANIMATION_PARALLEL)
+	animate(scrolling, pixel_x = pixel_x, pixel_y = pixel_y, time = 0.15 SECONDS, easing = SINE_EASING, flags = ANIMATION_PARALLEL)

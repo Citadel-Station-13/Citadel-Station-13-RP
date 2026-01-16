@@ -98,10 +98,6 @@
 	/// temporary view active?
 	var/using_temporary_viewsize = FALSE
 
-	//* Mouse *//
-	/// unpacked params from last time we detected a mouse move
-	var/list/mouse_last_move_params
-
 	//? Datum Menus
 	/// menu button statuses
 	var/list/menu_buttons_checked = list()

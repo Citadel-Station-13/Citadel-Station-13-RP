@@ -137,7 +137,10 @@
 	// listen no TK fuckery allowed
 	if(e_args.performer != inv_inside.owner)
 		return
-	start_zooming(inv_inside.owner)
+	if(currently_zoomed_in == e_args.performer)
+		stop_zooming()
+	else
+		start_zooming(inv_inside.owner)
 
 /obj/item/rangefinder/on_inv_unequipped(mob/wearer, datum/inventory/inventory, slot_id_or_index, inv_op_flags, datum/event_args/actor/actor)
 	stop_zooming()
@@ -180,7 +183,11 @@
 		stop_zooming()
 	currently_zoomed_in = viewing
 	currently_zoomed_in.AddComponent(/datum/component/mob_zoom_binding/freezoom, null, null, 14)
-	RegisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE, PROC_REF(on_user_examine))
+	currently_zoomed_in.visible_message(
+		SPAN_NOTICE("[currently_zoomed_in] looks through [src]."),
+		SPAN_NOTICE("You start looking through [src]."),
+		range = MESSAGE_RANGE_COMBAT_SUBTLE,
+	)
 	update_icon()
 	return TRUE
 
@@ -188,18 +195,28 @@
 	if(!currently_zoomed_in)
 		return
 	currently_zoomed_in.DelComponent(/datum/component/mob_zoom_binding)
-	UnregisterSignal(currently_zoomed_in, COMSIG_MOB_EXAMINATE)
+	currently_zoomed_in = null
+	currently_zoomed_in.visible_message(
+		SPAN_NOTICE("[currently_zoomed_in] looks up from [src]."),
+		SPAN_NOTICE("You stop looking through [src]."),
+		range = MESSAGE_RANGE_COMBAT_SUBTLE,
+	)
 	update_icon()
 
-/obj/item/rangefinder/proc/on_user_examine(mob/source, atom/target, list/examine_list)
-	SIGNAL_HANDLER
-	if(!examine_list)
+/obj/item/rangefinder/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
-	var/turf/source_turf = get_turf(source)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		return
+	to_chat(user, rangefinder_output(user, target))
+
+/obj/item/rangefinder/proc/rangefinder_output(mob/user, atom/target)
+	var/turf/source_turf = get_turf(user)
 	var/turf/target_turf = get_turf(target)
 	var/list/coords = SSmapping.get_virtual_coords_x_y(target_turf)
-	var/dist = target.z == source.z ? get_turf_euclidean_dist(source_turf, target_turf) : SSmapping.get_virtual_horizontal_euclidean_dist(source_turf, target_turf)
-	examine_list += SPAN_NOTICE("[icon2html(src, source)]: rangefinder estimate [dist]m @ [coords[1]]x, [coords[2]]y")
+	var/dist = target.z == user.z ? get_turf_euclidean_dist(source_turf, target_turf) : SSmapping.get_virtual_horizontal_euclidean_dist(source_turf, target_turf)
+	return SPAN_NOTICE("[icon2html(src, user)]: rangefinder estimate [dist]m @ [coords[1]]x, [coords[2]]y")
 
 /obj/item/rangefinder/item_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
@@ -214,6 +231,13 @@
  * this doesn't check if we're a laser designator!
  */
 /obj/item/rangefinder/proc/attempt_clickchain_laser_designate(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	// already lasing
+	if(lasing_target)
+		clickchain.chat_feedback(
+			SPAN_WARNING("[src] is busy!"),
+			target = src,
+		)
+		return
 	if(active_laser_target)
 		destroy_laser_designator_target()
 
@@ -239,6 +263,13 @@
 
 	var/effective_delay = laser_time
 
+	clickchain.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_COMBAT_SUBTLE,
+		visible = SPAN_WARNING("[currently_zoomed_in] levels [src] and begins to aim its targeting laser."),
+		otherwise_self = SPAN_WARNING("You start [src]'s target acquisition process, aiming at [target]."),
+	)
+
 	if(effective_delay > 0.5 SECONDS)
 		playsound(src, sfx_lasing_start, sfx_lasing_start_vol, sfx_lasing_start_vary, -4)
 
@@ -251,6 +282,13 @@
 	lasing_target = null
 	if(!.)
 		return
+
+	clickchain.chat_feedback(
+		// TODO: the icon2html is bad
+		SPAN_WARNING("[icon2html(src, clickchain.performer)]: Target locked, currently at [rangefinder_output(clickchain.performer, target)].")
+	)
+
+	create_laser_designator_target(target)
 
 	playsound(src, sfx_lasing_lock, sfx_lasing_lock_vol, sfx_lasing_lock_vary, -4)
 
