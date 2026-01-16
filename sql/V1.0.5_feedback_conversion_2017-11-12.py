@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #Python 3+ Script for jsonifying feedback table data as of 2017-11-12 made by Jordie0608
 #Apologies for the boilerplated and squirrely code in parts, this has been my first foray into python
 #
