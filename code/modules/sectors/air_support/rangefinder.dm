@@ -79,8 +79,12 @@
 	/// allow weapon guidance - if you turn this on without turning on laser_visible i will replace your eyelids with lemons
 	var/laser_weapons_guidance = TRUE
 
+	var/drop_laser_on_unzoom = TRUE
+	var/drop_laser_on_move = TRUE
+
 	/// active laser designator target
 	var/atom/movable/laser_designator_target/active_laser_target
+	var/turf/active_laser_last_self_turf
 
 	/// active icon dot color
 	var/icon_dot_color
@@ -103,6 +107,10 @@
 
 	var/atom/lasing_target
 	var/datum/event_args/actor/lasing_actor
+
+/obj/item/rangefinder/Initialize(mapload)
+	. = ..()
+	update_icon()
 
 /obj/item/rangefinder/Destroy()
 	QDEL_NULL(active_laser_target)
@@ -150,6 +158,7 @@
 	if(active_laser_target)
 		destroy_laser_designator_target()
 	active_laser_target = new(target, laser_weapons_guidance, laser_visible)
+	active_laser_last_self_turf = get_turf(src)
 	START_PROCESSING(SSprocessing, src)
 
 /obj/item/rangefinder/proc/destroy_laser_designator_target()
@@ -164,6 +173,11 @@
 	destroy_laser_designator_target()
 
 /obj/item/rangefinder/proc/reconsider_laser_designation()
+	if(drop_laser_on_move)
+		if(get_turf(src) != active_laser_last_self_turf)
+			destroy_laser_designator_target()
+			return
+		active_laser_last_self_turf = get_turf(src)
 	var/turf/target_turf = get_turf(active_laser_target)
 	var/list/turf/traced = trace_laser_designation(target_turf)
 	last_laser_retrace = world.time
@@ -194,13 +208,15 @@
 /obj/item/rangefinder/proc/stop_zooming()
 	if(!currently_zoomed_in)
 		return
+	if(drop_laser_on_unzoom)
+		destroy_laser_designator_target()
 	currently_zoomed_in.DelComponent(/datum/component/mob_zoom_binding)
-	currently_zoomed_in = null
 	currently_zoomed_in.visible_message(
 		SPAN_NOTICE("[currently_zoomed_in] looks up from [src]."),
 		SPAN_NOTICE("You stop looking through [src]."),
 		range = MESSAGE_RANGE_COMBAT_SUBTLE,
 	)
+	currently_zoomed_in = null
 	update_icon()
 
 /obj/item/rangefinder/afterattack(atom/target, mob/user, clickchain_flags, list/params)
