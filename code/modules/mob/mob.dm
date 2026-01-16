@@ -1474,3 +1474,24 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
 			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+///Can the mob interact() with an atom?
+/mob/proc/can_interact_with(atom/A, treat_mob_as_adjacent)
+	if(isAdminGhostAI(src))
+		return TRUE
+	//Return early. we do not need to check that we are on adjacent turfs (i.e we are inside a closet)
+	if (treat_mob_as_adjacent && src == A.loc)
+		return TRUE
+	if (Adjacent(A))
+		return TRUE
+	if((MUTATION_TELEKINESIS in mutations) && (get_dist(src, A) > tk_maxrange))
+		return TRUE
+
+	//range check
+	if(!interaction_range) // If you don't have extra length, GO AWAY
+		return FALSE
+	var/turf/our_turf = get_turf(src)
+	var/turf/their_turf = get_turf(A)
+	if (!our_turf || !their_turf)
+		return FALSE
+	return ISINRANGE(their_turf.x, our_turf.x - interaction_range, our_turf.x + interaction_range) && ISINRANGE(their_turf.y, our_turf.y - interaction_range, our_turf.y + interaction_range)

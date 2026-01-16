@@ -8,7 +8,7 @@
 	. = ..()
 	var/datum/playingcard/P
 	var/i
-	var/year = 554 + text2num(time2text(world.timeofday, "YYYY"))
+	var/year = CURRENT_STATION_YEAR // was at 554 for some reason?? so this sport event happened in the future?? (ic game starts at +544)
 	for(i=0;i<5;i++)
 		P = new()
 		if(prob(1))
