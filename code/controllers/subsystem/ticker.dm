@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
 	wait = 20
-	init_order = INIT_ORDER_TICKER
+	// init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	/// Current state of the game

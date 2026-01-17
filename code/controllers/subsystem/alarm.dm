@@ -10,7 +10,6 @@ SUBSYSTEM_DEF(alarms)
 	name = "Alarms"
 	wait = 2 SECONDS
 	priority = FIRE_PRIORITY_ALARMS
-	init_order = INIT_ORDER_ALARMS
 	var/static/list/datum/alarm/all_handlers
 	var/tmp/list/currentrun = null
 	var/static/list/active_alarm_cache = list()

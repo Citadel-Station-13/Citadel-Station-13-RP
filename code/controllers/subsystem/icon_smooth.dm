@@ -1,6 +1,8 @@
 SUBSYSTEM_DEF(icon_smooth)
 	name = "Icon Smoothing"
-	init_order = INIT_ORDER_ICON_SMOOTHING
+	dependencies = list(
+		/datum/controller/subsystem/atoms,
+	)
 	wait = 0.25 // scale up to 40 fps
 	priority = FIRE_PRIORITY_SMOOTHING
 	subsystem_flags = NONE

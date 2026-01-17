@@ -11,7 +11,7 @@
  */
 SUBSYSTEM_DEF(photography)
 	name = "Photography"
-	init_order = INIT_ORDER_PHOTOGRAPHY
+	// init_order = INIT_ORDER_PHOTOGRAPHY
 	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 	/// pictures loaded by hash as text
 	var/list/datum/picture/picture_cache = list()

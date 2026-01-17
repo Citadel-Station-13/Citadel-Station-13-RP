@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 4
-	init_order = INIT_ORDER_STATPANELS
+	// init_order = INIT_ORDER_STATPANELS
 	init_stage = INIT_STAGE_BACKEND
 	priority = FIRE_PRIORITY_STATPANELS
 	subsystem_flags = SS_NO_INIT

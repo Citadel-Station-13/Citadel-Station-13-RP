@@ -4,7 +4,7 @@
 SUBSYSTEM_DEF(titlescreen)
 	name = "Titlescreens"
 	subsystem_flags = SS_NO_FIRE
-	init_order = INIT_ORDER_TITLESCREEN
+	// init_order = INIT_ORDER_TITLESCREEN
 	init_stage = INIT_STAGE_LATE
 
 	/// our titlescreen

@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(fail2topic)
 	name = "Fail2Topic"
-	init_order = INIT_ORDER_FAIL2TOPIC
+	// init_order = INIT_ORDER_FAIL2TOPIC
 	init_stage = INIT_STAGE_BACKEND
 	subsystem_flags = SS_BACKGROUND
 	runlevels = ALL

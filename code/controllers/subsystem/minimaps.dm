@@ -1,5 +1,8 @@
 SUBSYSTEM_DEF(minimaps)
 	name = "Minimaps"
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+	)
 	subsystem_flags = SS_NO_FIRE
 	var/list/station_minimaps
 	var/datum/minimap_group/station_minimap

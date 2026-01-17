@@ -7,26 +7,18 @@
  *
  **/
 
+// See initialization order in /code/game/world.dm
 /**
  * This is the ABSOLUTE ONLY THING that should init globally like this.
  */
 GLOBAL_REAL(Master, /datum/controller/master) = new
-
-/**
- * THIS IS THE INIT ORDER
- * Master -> SSPreInit -> GLOB -> world -> config -> SSInit -> Failsafe
- * GOT IT MEMORIZED?
- */
-
 /datum/controller/master
 	name = "Master"
 
 	/// Are we processing (higher values increase the processing delay by n ticks)
 	var/processing = TRUE
-
 	/// How many times have we ran?
 	var/iteration = 0
-
 	/// Stack end detector to detect stack overflows that kill the mc's main loop
 	var/datum/stack_end_detector/stack_end_detector
 
@@ -110,6 +102,13 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	 */
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
 
+	/// Whether the Overview UI will update as fast as possible for viewers.
+	var/overview_fast_update = FALSE
+	/// Enables rolling usage averaging
+	var/use_rolling_usage = FALSE
+	/// How long to run our rolling usage averaging
+	var/rolling_usage_length = 5 SECONDS
+
 /datum/controller/master/New()
 	// Do not contaminate `usr`; if this is set, the MC main loop will have the usr of whoever called it,
 	// which results in all procs called by the MC inheriting that usr.
@@ -140,13 +139,23 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			Recover()
 			qdel(Master)
 		else
-			var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
-			tim_sort(subsytem_types, GLOBAL_PROC_REF(cmp_subsystem_init))
-			for(var/datum/controller/subsystem/ss_path as anything in subsytem_types)
-				if(ss_path.abstract_type == ss_path)
-					continue
-				var/datum/controller/subsystem/ss_instance = new ss_path
-				_subsystems += ss_instance
+			//Code used for first master on game boot or if existing master got deleted
+			var/list/subsystem_types = subtypesof(/datum/controller/subsystem)
+			tim_sort(subsystem_types, GLOBAL_PROC_REF(cmp_subsystem_init_stage))
+
+			//Find any abandoned subsystem from the previous master (if there was any)
+			var/list/existing_subsystems = list()
+			for(var/global_var in global.vars)
+				if (istype(global.vars[global_var], /datum/controller/subsystem))
+					existing_subsystems += global.vars[global_var]
+
+			//Either init a new SS or if an existing one was found use that
+			for(var/I in subsystem_types)
+				var/ss_idx = existing_subsystems.Find(I)
+				if (ss_idx)
+					_subsystems += existing_subsystems[ss_idx]
+				else
+					_subsystems += new I
 		Master = src
 
 	/**
@@ -183,6 +192,119 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		ss.Shutdown()
 
 	log_world("Shutdown complete")
+
+// ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "View the current states of the Subsystem Controllers.", ADMIN_CATEGORY_DEBUG)
+/client/proc/cmd_controller_view_ui()
+	set category = VERB_CATEGORY_DEBUG
+	set name = "Controller Overview"
+	set desc = "View the current states of the Subsystem Controllers."
+
+	if(!check_rights(R_SERVER|R_DEBUG)) return
+	Master.ui_interact(usr)
+
+/datum/controller/master/ui_status(mob/user, datum/ui_state/state)
+	if(!user.client?.holder?.check_for_rights(R_SERVER|R_DEBUG))
+		return UI_CLOSE
+	return UI_INTERACTIVE
+
+/datum/controller/master/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(isnull(ui))
+		ui = new /datum/tgui(user, src, "ControllerOverview")
+		ui.open()
+		use_rolling_usage = TRUE
+
+/datum/controller/master/on_ui_close(mob/user)
+	var/valid_found = FALSE
+	for(var/datum/tgui/open_ui as anything in open_uis)
+		if(open_ui.user == user)
+			continue
+		valid_found = TRUE
+	if(!valid_found)
+		use_rolling_usage = FALSE
+	return ..()
+
+/datum/controller/master/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/subsystem_data = list()
+	for(var/datum/controller/subsystem/subsystem as anything in subsystems)
+		var/list/rolling_usage = subsystem.rolling_usage
+		subsystem.prune_rolling_usage()
+
+		// Then we sum
+		var/sum = 0
+		for(var/i in 2 to length(rolling_usage) step 2)
+			sum += rolling_usage[i]
+		var/average = sum / DS2TICKS(rolling_usage_length)
+
+		subsystem_data += list(list(
+			"name" = subsystem.name,
+			"ref" = REF(subsystem),
+			"init_order" = subsystem.init_order,
+			"last_fire" = subsystem.last_fire,
+			"next_fire" = subsystem.next_fire,
+			"can_fire" = subsystem.can_fire,
+			"doesnt_fire" = !!(subsystem.subsystem_flags & SS_NO_FIRE),
+			"cost_ms" = subsystem.cost,
+			"tick_usage" = subsystem.tick_usage,
+			"usage_per_tick" = average,
+			"overtime" = subsystem.tick_overrun,
+			"initialized" = subsystem.initialized,
+			// "initialization_failure_message" = subsystem.initialization_failure_message,
+		))
+	data["subsystems"] = subsystem_data
+	data["world_time"] = world.time
+	data["map_cpu"] = world.map_cpu
+	data["fast_update"] = overview_fast_update
+	data["rolling_length"] = rolling_usage_length
+
+	return data
+
+/datum/controller/master/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
+
+	switch(action)
+		if("toggle_fast_update")
+			overview_fast_update = !overview_fast_update
+			return TRUE
+
+		if("set_rolling_length")
+			var/length = text2num(params["rolling_length"])
+			if(!length || length < 0)
+				return
+			rolling_usage_length = length SECONDS
+			return TRUE
+
+		if("view_variables")
+			if(!check_rights_for(ui.user.client, R_DEBUG))
+				message_admins(
+					"[key_name(ui.user)] tried to view master controller variables while having improper rights, \
+					this is potentially a malicious exploit and worth noting."
+				)
+
+			var/datum/controller/subsystem/subsystem = locate(params["ref"]) in subsystems
+			if(isnull(subsystem))
+				to_chat(ui.user, SPAN_WARNING("Failed to locate subsystem."))
+				return
+
+			ui.user.client.debug_variables(subsystem)
+			return TRUE
+
+/datum/controller/master/proc/check_and_perform_fast_update()
+	PRIVATE_PROC(TRUE)
+	set waitfor = FALSE
+
+	if(!overview_fast_update)
+		return
+
+	var/static/already_updating = FALSE
+	if(already_updating)
+		return
+	already_updating = TRUE
+	SStgui.update_uis(src)
+	already_updating = FALSE
 
 /**
  * MC reboot proc.
@@ -270,24 +392,105 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	if(delay)
 		sleep(delay)
+
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-	// Announce start
-	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
+	init_stage_completed = 0
 	var/mc_started = FALSE
 
+	// Announce start
+	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
+
 	// We want to initialize subsystems by stage, in the init_order provided for subsystems within the same stage.
-	init_stage_completed = 0
 	var/list/stage_sorted_subsystems = new(INIT_STAGE_MAX)
 	for(var/i in 1 to INIT_STAGE_MAX)
 		stage_sorted_subsystems[i] = list()
 
-	// Sort subsystems by init_order, so they initialize in the correct order.
-	tim_sort(subsystems, GLOBAL_PROC_REF(cmp_subsystem_init))
-
-	// Collect subsystems by init_stage. This has precedence over init_order.
+	var/list/type_to_subsystem = list()
 	for(var/datum/controller/subsystem/subsystem as anything in subsystems)
+		type_to_subsystem[subsystem.type] = subsystem
+
+	// Allows subsystems to declare other subsystems that must initialize after them.
+	for(var/datum/controller/subsystem/subsystem as anything in subsystems)
+		for(var/dependent_type in subsystem.dependents)
+			if(!ispath(dependent_type, /datum/controller/subsystem))
+				stack_trace("ERROR: MC: subsystem `[subsystem.type]` has an invalid dependent: `[dependent_type]`. Skipping")
+				continue
+			var/datum/controller/subsystem/dependent = type_to_subsystem[dependent_type]
+			dependent.dependencies |= subsystem.type
+		subsystem.dependents = list()
+
+	// Constructs a reverse-dependency graph.
+	for(var/datum/controller/subsystem/subsystem as anything in subsystems)
+		for(var/dependency_type in subsystem.dependencies)
+			if(!ispath(dependency_type, /datum/controller/subsystem))
+				stack_trace("ERROR: MC: subsystem `[subsystem.type]` has an invalid dependency: `[dependency_type]`. Skipping")
+				continue
+			var/datum/controller/subsystem/dependency = type_to_subsystem[dependency_type]
+			// Not a foolproof failsafe, likely to only prevent any immediate issues if this is only triggered once.
+			if(subsystem.init_stage < dependency.init_stage)
+				stack_trace("ERROR: MC: subsystem `[subsystem.type]` has an init_stage before one of its dependencies (Dependency: `[dependency.type]`, [subsystem.init_stage] < [dependency.init_stage])! Setting init_stage to [dependency.init_stage]")
+				subsystem.init_stage = dependency.init_stage
+			dependency.dependents += subsystem
+
+	// Topological sorting algorithm
+	var/list/counts = new(subsystems.len)
+	var/list/unsorted_subsystems = list()
+	var/index = 1
+	for(var/datum/controller/subsystem/subsystem as anything in subsystems)
+		counts[index] = length(subsystem.dependencies)
+		subsystem.ordering_id = index
+		if(counts[index] == 0)
+			unsorted_subsystems += subsystem
+		index += 1
+
+	var/list/sorted_subsystems = list()
+	while(length(unsorted_subsystems) > 0)
+		var/datum/controller/subsystem/sub = unsorted_subsystems[unsorted_subsystems.len]
+		unsorted_subsystems.len--
+		sorted_subsystems += sub
+		for(var/datum/controller/subsystem/dependent as anything in sub.dependents)
+			counts[dependent.ordering_id] -= 1
+			if(counts[dependent.ordering_id] == 0)
+				unsorted_subsystems += dependent
+	// Topological sorting algorithm end
+
+	if(length(subsystems) != length(sorted_subsystems))
+		var/list/circular_dependency = subsystems - sorted_subsystems
+		var/list/debug_msg = list()
+		var/list/usr_msg = list()
+		for(var/datum/controller/subsystem/subsystem as anything in circular_dependency)
+			usr_msg += subsystem.name
+
+		var/list/datum/controller/subsystem/nodes = list(circular_dependency[1])
+		var/list/loop = list()
+		while(length(nodes) > 0)
+			var/datum/controller/subsystem/node = nodes[nodes.len]
+			nodes.len--
+			if(node in loop)
+				loop += node
+				break
+			loop += node
+			for(var/datum/controller/subsystem/connected as anything in node.dependencies)
+				nodes += type_to_subsystem[connected]
+
+		var/loop_position = 0
+		for(var/datum/controller/subsystem/node in loop)
+			if(node == loop[loop.len])
+				break
+			loop_position++
+		if(loop_position != 0)
+			loop.Cut(1, loop_position + 1)
+
+		for(var/datum/controller/subsystem/subsystem as anything in loop)
+			debug_msg += "[subsystem.name]"
+
+		// Can't initialize them if they have circular dependencies, there's no real failsafe here.
+		stack_trace("ERROR: CRITICAL: MC: The following subsystems have circular dependencies: [jointext(debug_msg, " -> ")]")
+		to_chat(world, SPAN_BOLDDANGER("CRITICAL: Failed to initialize [jointext(usr_msg, ", ")]"), MESSAGE_TYPE_DEBUG)
+
+	for (var/datum/controller/subsystem/subsystem as anything in sorted_subsystems)
 		var/subsystem_init_stage = subsystem.init_stage
 		if (!isnum(subsystem_init_stage) || subsystem_init_stage < 1 || subsystem_init_stage > INIT_STAGE_MAX || round(subsystem_init_stage) != subsystem_init_stage)
 			stack_trace("ERROR: MC: subsystem `[subsystem.type]` has invalid init_stage: `[subsystem_init_stage]`. Setting to `[INIT_STAGE_MAX]`")
@@ -295,42 +498,42 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		stage_sorted_subsystems[subsystem_init_stage] += subsystem
 
 	// Sort subsystems by display setting for easy access.
+	var/evaluated_order = 1
 	tim_sort(subsystems, GLOBAL_PROC_REF(cmp_subsystem_display))
+	var/start_timeofday = REALTIMEOFDAY
+	for (var/current_init_stage in 1 to INIT_STAGE_MAX)
 
-	// Initialize subsystems. The ticker loop will be started immediately upon the first stage being done.
-	var/rtod_start = REALTIMEOFDAY
-
-	for(var/current_init_stage in 1 to INIT_STAGE_MAX)
-		for(var/datum/controller/subsystem/subsystem in stage_sorted_subsystems[current_init_stage])
-			current_initializing_subsystem = subsystem
+		// Initialize subsystems.
+		for (var/datum/controller/subsystem/subsystem in stage_sorted_subsystems[current_init_stage])
+			subsystem.init_order = evaluated_order
+			evaluated_order++
 			initialize_subsystem(subsystem)
-			current_initializing_subsystem = null
+
 			CHECK_TICK
+		current_initializing_subsystem = null
 		init_stage_completed = current_init_stage
-		if(!mc_started)
+		if (!mc_started)
 			mc_started = TRUE
-			if(!current_runlevel)
-				// intentionally not using the defines here as the MC does not care about runlevel semantics;
-				// the first runlevel is always used.
+			if (!current_runlevel)
+				 // Intentionally not using the defines here because the MC doesn't care about them
 				SetRunLevel(1)
+			// Loop.
 			Master.StartProcessing(0)
 
-	var/rtod_end = REALTIMEOFDAY
-	var/took_seconds = round((rtod_end - rtod_start) / 10, 0.01)
+	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
 	// Announce, log, and record end
-	var/msg = "Initializations complete within [took_seconds] second[took_seconds == 1 ? "" : "s"]!"
-	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
+	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
+	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"), MESSAGE_TYPE_DEBUG)
 	log_world(msg)
-
-	// Set world options.
-	world.set_fps(config_legacy.fps)
 
 	// Fire initialization toast
 	if(world.system_type == MS_WINDOWS && CONFIG_GET(flag/toast_notification_on_init) && !length(GLOB.clients))
 		world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\CS13_16.png -port [world.port]")
 
-	// Tell TGS we're initialized
+	// Set world options.
+	world.set_fps(config_legacy.fps)
+
 	if(tgs_prime)
 		world.TgsInitializationComplete()
 
@@ -351,12 +554,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
  */
 /datum/controller/master/proc/initialize_subsystem(datum/controller/subsystem/subsystem)
 	// Do not re-init already initialized subsystems if it's somehow called again.
-	if(subsystem.subsystem_flags & SS_NO_INIT)
+	if ((subsystem.subsystem_flags & SS_NO_INIT) || subsystem.initialized)
+		 // set initialized to TRUE, because the value of initialized may still be checked on SS_NO_INIT subsystems as an "is this ready" check
 		subsystem.initialized = TRUE
 		return
-	if(subsystem.initialized)
-		return
 
+	current_initializing_subsystem = subsystem
 	// todo: dylib high-precision timers
 	var/rtod_start = REALTIMEOFDAY
 	var/initialize_result = subsystem.Initialize()
@@ -393,6 +596,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			message_prefix = "Initialized [subsystem.name] subsystem within"
 			subsystem.initialized = TRUE
 		if(SS_INIT_NO_NEED)
+			// This SS is disabled or is otherwise shy.
+			return
 		else
 			warning("[subsystem.name] subsystem initialized, returning invalid result [initialize_result]. This is a bug.")
 
@@ -400,7 +605,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/chat_message = chat_warning ? SPAN_BOLDWARNING(message) : SPAN_BOLDANNOUNCE(message)
 
 	if(tell_everyone && message_prefix)
-		to_chat(world, chat_message)
+		to_chat(world, chat_message, MESSAGE_TYPE_DEBUG)
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
@@ -650,6 +855,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			if (processing * sleep_delta <= world.tick_lag)
 				current_ticklimit -= (TICK_LIMIT_RUNNING * 0.25) //reserve the tail 1/4 of the next tick for the mc if we plan on running next tick
 
+		check_and_perform_fast_update()
 		sleep(world.tick_lag * (processing * sleep_delta))
 
 /**
@@ -678,7 +884,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		if (SS_flags & SS_NO_FIRE)
 			subsystemstocheck -= SS
 			continue
-		// keep timing: do not run faster than 1.33x of base speed, to prevent catch-up from going too fast
+		// If we're keeping timing and running behind,
+		// fire at most 25% faster then normal to try and make up the gap without spamming
 		if ((SS_flags & (SS_TICKER|SS_KEEP_TIMING)) == SS_KEEP_TIMING && SS.last_fire + (SS.wait * 0.75) > world.time)
 			continue
 
@@ -767,6 +974,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node_tick_usage = TICK_USAGE
 			var/state = queue_node.ignite(queue_node_paused)
 			queue_node_tick_usage = TICK_USAGE - queue_node_tick_usage
+
+			if(use_rolling_usage)
+				queue_node.prune_rolling_usage()
+				// Rolling usage is an unrolled list that we know the order off
+				// OPTIMIZATION POSTING
+				queue_node.rolling_usage += list(DS2TICKS(world.time), queue_node_tick_usage)
 
 			switch(state)
 				if(SS_RUNNING)

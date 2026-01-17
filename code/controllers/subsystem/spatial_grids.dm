@@ -7,7 +7,9 @@
 
 SUBSYSTEM_DEF(spatial_grids)
 	name = "Spatial Grids"
-	init_order = INIT_ORDER_SPATIAL_GRIDS
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+	)
 	init_stage = INIT_STAGE_WORLD
 	subsystem_flags = SS_NO_FIRE
 

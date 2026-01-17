@@ -1,6 +1,5 @@
 SUBSYSTEM_DEF(ai)
 	name = "AI"
-	init_order = INIT_ORDER_AI
 	priority = FIRE_PRIORITY_AI
 	wait = 5 // This gets run twice a second, however this is technically two loops in one, with the second loop being run every four iterations.
 	subsystem_flags = SS_NO_INIT
