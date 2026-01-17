@@ -7,10 +7,7 @@ SUBSYSTEM_DEF(mapping)
 	name = "Mapping"
 	dependencies = list(
 		/datum/controller/subsystem/job,
-		// /datum/controller/subsystem/processing/station,
-		// /datum/controller/subsystem/processing/reagents,
 	)
-	// init_order = INIT_ORDER_MAPPING
 	subsystem_flags = SS_NO_FIRE
 
 	//* Allocation *//

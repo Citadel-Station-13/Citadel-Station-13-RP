@@ -9,10 +9,6 @@
  */
 SUBSYSTEM_DEF(characters)
 	name = "Characters"
-	// dependencies = list(
-	// 	/datum/controller/subsystem/dbcore,
-	// )
-	// init_order = INIT_ORDER_CHARACTERS
 	priority = FIRE_PRIORITY_CHARACTERS
 	subsystem_flags = SS_BACKGROUND
 	wait = 1 SECOND

@@ -3,7 +3,6 @@ SUBSYSTEM_DEF(legacy_lore)
 	dependencies = list(
 		/datum/controller/subsystem/mapping, // map name needed
 	)
-	// init_order = INIT_ORDER_LEGACY_LORE
 	subsystem_flags = SS_NO_FIRE
 
 	var/list/organizations = list()

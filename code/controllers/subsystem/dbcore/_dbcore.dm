@@ -2,7 +2,6 @@ SUBSYSTEM_DEF(dbcore)
 	name = "Database"
 	subsystem_flags = SS_BACKGROUND
 	wait = 1 MINUTES
-	// init_order = INIT_ORDER_DBCORE
 	init_stage = INIT_STAGE_BACKEND
 	var/failed_connection_timeout = 0
 

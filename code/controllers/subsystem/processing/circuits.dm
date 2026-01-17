@@ -4,7 +4,6 @@
 //
 PROCESSING_SUBSYSTEM_DEF(circuit)
 	name = "Circuit"
-	// init_order = INIT_ORDER_CIRCUIT
 	subsystem_flags = SS_NO_FIRE
 	stat_tag = "P_CIRCUIT"
 

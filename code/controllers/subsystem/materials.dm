@@ -1,7 +1,6 @@
 SUBSYSTEM_DEF(materials)
 	name = "Materials"
 	subsystem_flags = NONE
-	// init_order = INIT_ORDER_MATERIALS
 	wait = 2 SECONDS
 
 	/// material recipes
