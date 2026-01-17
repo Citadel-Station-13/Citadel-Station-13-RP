@@ -24,6 +24,12 @@
  *
  * @return list(altitude, velocity, distance, travel time), or null if failed
  */
+// TODO: This doesn't work for solving velocity from altitude and distance. That,
+//       and it goes a little too fast for things like mortars.
+//       We might be able to revive this, maybe multiply flight time by 20-30 or something,
+//       but even then it's a long shot.
+//       Investigate this later.
+/*
 /proc/math__solve_kinematic_trajectory(altitude, velocity, distance, gravity)
 	// g = gravity
 	// vx, vy = velocity
@@ -129,6 +135,7 @@
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, only got distance")
 			else
 				CRASH("kinematic trajectory requires azimuth/altitude/velocity, got none of the above")
+*/
 
 /**
  * Solves for angle needed to intercept a target when an interceptor is fired with

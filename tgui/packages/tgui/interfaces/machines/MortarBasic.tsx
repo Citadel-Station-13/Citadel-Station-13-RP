@@ -7,6 +7,7 @@ import {
   Section,
   Stack,
 } from 'tgui-core/components';
+import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../../backend';
 import { Window } from '../../layouts';
@@ -19,8 +20,8 @@ interface MortarBasicData {
   ourX: number | null;
   ourY: number | null;
   adjustMax: number;
-  kineVel: number;
-  kineGrav: number;
+  maxDistance: number | null;
+  inRange: BooleanLike;
 }
 
 export const MortarBasic = (props) => {
@@ -48,6 +49,15 @@ export const MortarBasic = (props) => {
                   {data.ourY}
                 </LabeledList.Item>
               </LabeledList>
+              {data.maxDistance !== null && (
+                <LabeledList.Item
+                  label="Maximum Range"
+                  color={data.inRange ? undefined : 'red'}
+                >
+                  {data.maxDistance}
+                  {!data.inRange && ' (Exceeded)'}
+                </LabeledList.Item>
+              )}
             </Section>
           </Stack.Item>
           <Stack.Item grow>

@@ -27,27 +27,20 @@
 	/// time to deploy
 	var/deploy_time = 7.5 SECONDS
 
-	/// launch velocity in m/s
-	/// * this should be on the shell but idgaf lol
-	var/launch_velocity = 73
-	/// hardcoded gravity constant for now
-	var/launch_gravity = 9.8
+	var/flight_time_minimum = 4 SECONDS
+	var/flight_time_per_tile = 0.1 SECONDS
+	var/flight_time_maximum = 20 SECONDS
+	var/maximum_range = 300
 
+	/// apply standard error?
+	var/use_standard_error = TRUE
 	/// in degrees std-dev
 	var/standard_azimuth_error = 3.5
 	/// in degrees, to add or subtract, going clockwise
 	var/standard_azimuth_error_static = 0
-	/// in degrees std-dev
-	var/standard_altitude_error = 3.5
-	/// in degrees, to add or subtract, going upwards towards the zenith
-	var/standard_altitude_error_static = 0
-	/// in m/s std-dev
-	var/standard_velocity_error = 0
-	/// in m/s to add/subtract
-	var/standard_velocity_error_static = 0
-
-	/// apply standard error?
-	var/use_standard_error = TRUE
+	var/standard_distance_error = 3.5
+	/// added / subtracted
+	var/standard_distance_error_static = 0
 
 	//* Sounds *//
 	var/pack_sound = 'sound/modules/sectors/air_support/mortar_unpack.ogg'
@@ -77,11 +70,9 @@
 			user_collapse(e_args)
 			return TRUE
 
-/obj/machinery/mortar/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/mortar/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
-	// TODO: proper vel / grav
-	.["kineVel"] = launch_velocity
-	.["kineGrav"] = launch_gravity
+	.["maxDistance"] = maximum_range
 
 /obj/machinery/mortar/proc/user_collapse(datum/event_args/actor/actor, delay_mod = 1, put_in_hands = TRUE) as /obj/item/mortar_kit
 	var/delay = collapse_time * delay_mod
@@ -134,42 +125,33 @@
 /obj/machinery/mortar/proc/run_firing_cycle(obj/item/ammo_casing/mortar/shell, x_offset, y_offset) as /datum/mortar_flight
 	// clockwise from north
 	var/k_azimuth = arctan(y_offset, x_offset)
-
 	var/k_distance = sqrt(x_offset ** 2 + y_offset ** 2)
-	var/k_velocity = launch_velocity
+	var/k_travel_time = get_flight_time(shell, k_distance, x_offset, y_offset)
 
-	// hardcoded for now
-	var/gravity_on_target_planet = launch_gravity
+	var/list/k_inaccurate = run_firing_kinematics(k_azimuth, k_distance, k_travel_time)
 
-	// solve for altitude
-	var/list/k_optimal = math__solve_kinematic_trajectory(null, k_velocity, k_distance, gravity_on_target_planet)
-	if(k_optimal == null)
-		return null
-	var/list/k_inaccurate = run_firing_kinematics(k_azimuth, k_optimal[1], k_velocity)
-	// solve for distance
-	var/list/k_final = math__solve_kinematic_trajectory(k_inaccurate[2], k_inaccurate[3], null, gravity_on_target_planet)
-	if(k_final == null)
-		return null
+	k_azimuth = k_inaccurate[1]
+	k_distance = k_inaccurate[2]
+	k_travel_time = k_inaccurate[3]
 
-	var/final_distance = k_final[3]
+	var/final_dx = round(sin(k_azimuth) * k_distance, 1)
+	var/final_dy = round(cos(k_azimuth) * k_distance, 1)
 
-	var/final_dx = round(sin(k_azimuth) * final_distance, 1)
-	var/final_dy = round(cos(k_azimuth) * final_distance, 1)
+	return launch(shell, final_dx, final_dy, k_travel_time)
 
-	return launch(shell, final_dx, final_dy, k_final[4])
+/obj/machinery/mortar/proc/get_flight_time(obj/item/ammo_casing/mortar/shell, distance, x_offset, y_offset)
+	return clamp(distance * flight_time_per_tile, flight_time_minimum, flight_time_maximum)
 
 /**
- * @return list(azimuth, altitude, velocity)
+ * @return list(azimuth, distance, travel_time)
  */
-/obj/machinery/mortar/proc/run_firing_kinematics(azimuth, altitude, velocity)
+/obj/machinery/mortar/proc/run_firing_kinematics(azimuth, distance, travel_time)
 	if(use_standard_error)
 		azimuth += gaussian(0, standard_azimuth_error)
 		azimuth += standard_azimuth_error_static
-		altitude += gaussian(0, standard_altitude_error)
-		altitude += standard_altitude_error_static
-		velocity += gaussian(0, standard_velocity_error)
-		velocity += standard_velocity_error_static
-	return list(azimuth, altitude, velocity)
+		distance += gaussian(0, standard_distance_error)
+		distance += standard_distance_error_static
+	return list(azimuth, distance, travel_time)
 
 /**
  * - Passing in a `shell` means losing ownership of its reference; please have unreferenced it before calling this proc.
@@ -357,6 +339,8 @@
 	.["targetY"] = target_y
 	.["adjustX"] = target_adjust_x
 	.["adjustY"] = target_adjust_y
+	var/list/our_coords = SSmapping.get_virtual_coords_x_y(get_turf(src))
+	.["inRange"] = our_coords ? (sqrt((our_coords[1] - target_x)**2 + (our_coords[2] - target_y)**2) < maximum_range) : FALSE
 
 /obj/machinery/mortar/basic/standard
 	caliber = /datum/ammo_caliber/mortar
