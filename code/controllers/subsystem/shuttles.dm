@@ -10,7 +10,6 @@ SUBSYSTEM_DEF(shuttle)
 	dependencies = list(
 		/datum/controller/subsystem/mapping,
 		/datum/controller/subsystem/atoms,
-		/datum/controller/subsystem/air,
 	)
 	priority = FIRE_PRIORITY_SHUTTLES
 	subsystem_flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
