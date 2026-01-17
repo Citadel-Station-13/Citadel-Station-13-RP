@@ -7,6 +7,8 @@
 	icon = 'icons/modules/sectors/air_support/mortar.dmi'
 	icon_state = "mortar-jungle"
 	base_icon_state = "mortar-jungle"
+	anchored = TRUE
+	density = TRUE
 
 	use_power = USE_POWER_OFF
 	active_power_usage = 0
@@ -212,10 +214,10 @@
 	/// loaded shell about to be fired
 	var/obj/item/ammo_casing/mortar/firing_shell
 
-	var/target_x
-	var/target_y
-	var/target_adjust_x
-	var/target_adjust_y
+	var/target_x = 0
+	var/target_y = 0
+	var/target_adjust_x = 0
+	var/target_adjust_y = 0
 	/// max you can do quick adjustments in any direction
 	var/adjust_offset_max = 15
 
@@ -263,7 +265,7 @@
 				target = src,
 			)
 		return FALSE
-	on_shell_loaded(firing_shell)
+	on_shell_loaded(shell)
 	return TRUE
 
 /obj/machinery/mortar/basic/proc/on_shell_loaded(obj/item/ammo_casing/mortar/shell)
@@ -338,7 +340,7 @@
 /obj/machinery/mortar/basic/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "machines/MortarBasic.tsx")
+		ui = new(user, src, "machines/MortarBasic")
 		ui.set_autoupdate(TRUE)
 		ui.open()
 

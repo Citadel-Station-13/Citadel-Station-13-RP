@@ -101,6 +101,7 @@
 
 	//* Inventory *//
 	/// active hand index - null or num. must always be in range of held_items indices!
+	/// * 1 is left, 2 is right, etc
 	var/active_hand
 
 	//* IFF *//
