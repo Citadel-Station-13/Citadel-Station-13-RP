@@ -64,11 +64,11 @@ export const OrbitalDeploymentController = (props) => {
 
   // start auto-refreshing
   useEffect(() => {
-    let t = setTimeout(() => {
+    let t = setInterval(() => {
       act('refreshSignals');
     }, 3000);
     return () => {
-      clearTimeout(t);
+      clearInterval(t);
     };
   });
 
@@ -84,7 +84,7 @@ export const OrbitalDeploymentController = (props) => {
                     {data.zone.launchOnCooldown ? 'Recharging' : 'Ready'}
                   </LabeledList.Item>
                   <LabeledList.Item label="Range">
-                    {data.zone.maxOvermapPixelDist / 32}
+                    {data.zone.maxOvermapPixelDist} Tiles
                   </LabeledList.Item>
                 </LabeledList>
               ) : (
@@ -113,10 +113,30 @@ export const OrbitalDeploymentController = (props) => {
             >
               <Table>
                 <Table.Row>
-                  <Table.Cell>Name</Table.Cell>
-                  <Table.Cell>Sector Name</Table.Cell>
-                  <Table.Cell>Sector Coords</Table.Cell>
-                  <Table.Cell>Sector Dist</Table.Cell>
+                  <Table.Cell
+                    textAlign="center"
+                    style={{ borderRight: 'solid 1px #ffffff' }}
+                  >
+                    Name
+                  </Table.Cell>
+                  <Table.Cell
+                    textAlign="center"
+                    style={{ borderRight: 'solid 1px #ffffff' }}
+                  >
+                    Sector Name
+                  </Table.Cell>
+                  <Table.Cell
+                    textAlign="center"
+                    style={{ borderRight: 'solid 1px #ffffff' }}
+                  >
+                    Sector Coords
+                  </Table.Cell>
+                  <Table.Cell
+                    textAlign="center"
+                    style={{ borderRight: 'solid 1px #ffffff' }}
+                  >
+                    Sector Dist
+                  </Table.Cell>
                   <Table.Cell />
                 </Table.Row>
               </Table>
@@ -126,13 +146,22 @@ export const OrbitalDeploymentController = (props) => {
                   selectedTarget[0] === 'flare' &&
                   selectedTarget[1] === f.ref;
                 return (
-                  <Table.Row key={f.ref}>
-                    <Table.Cell>{f.name}</Table.Cell>
-                    <Table.Cell>{f.overmapName}</Table.Cell>
-                    <Table.Cell>
+                  <Table.Row
+                    key={f.ref}
+                    style={{ borderTop: 'solid 1px #ffffff' }}
+                  >
+                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
+                      {f.name}
+                    </Table.Cell>
+                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
+                      {f.overmapName}
+                    </Table.Cell>
+                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
                       {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
                     </Table.Cell>
-                    <Table.Cell>{f.overmapDist}</Table.Cell>
+                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
+                      {f.overmapDist} Tiles
+                    </Table.Cell>
                     <Table.Cell>
                       <Button
                         icon="target"
@@ -153,13 +182,22 @@ export const OrbitalDeploymentController = (props) => {
                   selectedTarget[0] === 'laser' &&
                   selectedTarget[1] === f.ref;
                 return (
-                  <Table.Row key={f.ref}>
-                    <Table.Cell>{f.name}</Table.Cell>
-                    <Table.Cell>{f.overmapName}</Table.Cell>
-                    <Table.Cell>
+                  <Table.Row
+                    key={f.ref}
+                    style={{ borderTop: 'solid 1px #ffffff' }}
+                  >
+                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
+                      {f.name}
+                    </Table.Cell>
+                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
+                      {f.overmapName}
+                    </Table.Cell>
+                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
                       {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
                     </Table.Cell>
-                    <Table.Cell>{f.overmapDist / 32}</Table.Cell>
+                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
+                      {f.overmapDist} Tiles
+                    </Table.Cell>
                     <Table.Cell>
                       <Button
                         icon="target"
@@ -181,6 +219,7 @@ export const OrbitalDeploymentController = (props) => {
               <Stack fill>
                 <Stack.Item grow>
                   <Button.Confirm
+                    textAlign="center"
                     fluid
                     onClick={() => {
                       if (data.zone?.arming) {
@@ -206,6 +245,7 @@ export const OrbitalDeploymentController = (props) => {
                 </Stack.Item>
                 <Stack.Item grow>
                   <Button.Confirm
+                    textAlign="center"
                     fluid
                     disabled={!data.zone?.armed || !targetValid}
                     onClick={() =>

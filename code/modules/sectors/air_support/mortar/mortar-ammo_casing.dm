@@ -113,6 +113,7 @@
 	casing_caliber = /datum/ammo_caliber/mortar
 
 /obj/item/ammo_casing/mortar/standard/high_explosive
+	name = parent_type::name + " (high explosive)"
 	mortar_effects = list(
 		/datum/mortar_effect/legacy_explosion{
 			sev_1 = 1;
@@ -123,6 +124,7 @@
 	apply_stripe_color = "#ff0000"
 
 /obj/item/ammo_casing/mortar/standard/emp
+	name = parent_type::name + " (emp)"
 	mortar_effects = list(
 		/datum/mortar_effect/legacy_emp{
 			sev_1 = 3;
@@ -134,13 +136,14 @@
 	apply_stripe_color = "#00ffff"
 
 /obj/item/ammo_casing/mortar/standard/shrapnel
+	name = parent_type::name + " (shrapnel)"
 	mortar_effects = list(
 		/datum/mortar_effect/legacy_explosion{
 			sev_2 = 1;
 			sev_3 = 3;
 		},
 		/datum/mortar_effect/shrapnel{
-			pellet_count = 55;
+			pellet_count = 70;
 			pellet_type = /obj/projectile/bullet/pellet/fragment/strong;
 		},
 	)

@@ -110,6 +110,10 @@
 	damage_force = 10
 	damage_tier = 4.5
 
+/obj/projectile/bullet/pellet/fragment/strong/mortar
+	pellet_loss_start = WORLD_ICON_SIZE * 6
+	pellet_loss = 0.15 / WORLD_ICON_SIZE
+
 /obj/projectile/bullet/pellet/fragment/weak
 	damage_force = 7.5
 	damage_tier = 2.25

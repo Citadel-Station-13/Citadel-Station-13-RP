@@ -72,15 +72,15 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 /obj/machinery/orbital_deployment_controller/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["refreshOnCooldown"] = world.time < (ui_last_signal_refresh + ui_signal_refresh_throttle)
-
-/obj/machinery/orbital_deployment_controller/ui_static_data(mob/user, datum/tgui/ui)
-	. = ..()
 	.["zone"] = linked_zone ? list(
 		"armed" = linked_zone.is_armed(),
 		"arming" = linked_zone.arming,
 		"launchOnCooldown" = world.time < (linked_zone.launch_last + linked_zone.launch_cooldown),
 		"maxOvermapPixelDist" = OVERMAP_PIXEL_TO_DIST(linked_zone.max_overmap_pixel_dist),
 	) : null
+
+/obj/machinery/orbital_deployment_controller/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
 	. += ui_signal_data()
 
 /obj/machinery/orbital_deployment_controller/proc/ui_signal_data()
@@ -141,7 +141,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 		if("arm")
 			if(!linked_zone)
 				return TRUE
-			if(linked_zone.arming_cooldown > world.time - linked_zone.arming_last_toggle)
+			if(linked_zone.arming)
+				return TRUE
+			if((world.time - linked_zone.arming_last_toggle) < linked_zone.arming_cooldown)
 				return TRUE
 			linked_zone.arm()
 			log_orbital_deployment(actor, "armed zone with controller at [COORD(src)]")
@@ -154,7 +156,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 		if("disarm")
 			if(!linked_zone)
 				return TRUE
-			if(linked_zone.arming_cooldown > world.time - linked_zone.arming_last_toggle)
+			if(!linked_zone.arming)
+				return TRUE
+			if((world.time - linked_zone.arming_last_toggle) < linked_zone.arming_cooldown)
 				return TRUE
 			linked_zone.disarm()
 			actor.visible_feedback(

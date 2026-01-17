@@ -9,6 +9,7 @@
 	base_icon_state = "mortar-jungle"
 	anchored = TRUE
 	density = TRUE
+	armor_type = /datum/armor/object/heavy
 
 	use_power = USE_POWER_OFF
 	active_power_usage = 0
@@ -35,10 +36,10 @@
 	/// apply standard error?
 	var/use_standard_error = TRUE
 	/// in degrees std-dev
-	var/standard_azimuth_error = 3.5
+	var/standard_azimuth_error = 2.5
 	/// in degrees, to add or subtract, going clockwise
 	var/standard_azimuth_error_static = 0
-	var/standard_distance_error = 3.5
+	var/standard_distance_error = 2.5
 	/// added / subtracted
 	var/standard_distance_error_static = 0
 
@@ -73,6 +74,10 @@
 /obj/machinery/mortar/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["maxDistance"] = maximum_range
+
+// TODO: rework machinery power so this doesn't need to be overridden
+/obj/machinery/mortar/power_change()
+	return
 
 /obj/machinery/mortar/proc/user_collapse(datum/event_args/actor/actor, delay_mod = 1, put_in_hands = TRUE) as /obj/item/mortar_kit
 	var/delay = collapse_time * delay_mod
@@ -171,8 +176,9 @@
 		return null
 	if(!silent)
 		playsound(src, fire_sound, fire_sound_volume, fire_sound_vary, 3)
+	flick("[base_icon_state]-fire")
 	if(!suppressed)
-		shake_camera_of_nearby_players(strength = WORLD_ICON_SIZE * 0.5, iterations = 1)
+		shake_camera_of_nearby_players(src, 9, strength = WORLD_ICON_SIZE * 0.5, iterations = 1)
 		visible_message(SPAN_BOLDWARNING("[chat_html_embed_rendered()] [src] fires!"))
 
 	var/datum/mortar_flight/flight = new(shell)
@@ -271,8 +277,9 @@
 	var/obj/item/ammo_casing/mortar/firing = firing_shell
 	firing_shell = null
 
-	var/x_offset = target_x - our_turf.x + target_adjust_x
-	var/y_offset = target_y - our_turf.y + target_adjust_y
+	var/list/our_turf_coords = SSmapping.get_virtual_coords_x_y(our_turf)
+	var/x_offset = abs((target_x + target_adjust_x) - our_turf_coords[1])
+	var/y_offset = abs((target_y + target_adjust_y) - our_turf_coords[2])
 	var/datum/mortar_flight/flight = run_firing_cycle(firing, x_offset, y_offset)
 	if(!flight)
 		if(firing.loc == src)
@@ -342,8 +349,6 @@
 	.["targetY"] = target_y
 	.["adjustX"] = target_adjust_x
 	.["adjustY"] = target_adjust_y
-	var/list/our_coords = SSmapping.get_virtual_coords_x_y(get_turf(src))
-	.["inRange"] = our_coords ? (sqrt((our_coords[1] - target_x)**2 + (our_coords[2] - target_y)**2) < maximum_range) : FALSE
 
 /obj/machinery/mortar/basic/standard
 	caliber = /datum/ammo_caliber/mortar
