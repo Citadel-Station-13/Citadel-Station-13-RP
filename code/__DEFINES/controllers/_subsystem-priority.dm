@@ -49,7 +49,7 @@
 #define FIRE_PRIORITY_OVERLAYS         100
 #define FIRE_PRIORITY_SMOOTHING        100
 #define FIRE_PRIORITY_CHAT             100
-#define FIRE_PRIORITY_INPUT            100
+#define FIRE_PRIORITY_INPUT            1000
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!
@@ -59,7 +59,7 @@
 
 // DEFAULT PRIORITY IS HERE (50)
 #define FIRE_PRIORITY_DPC          100
-#define FIRE_PRIORITY_TIMER        100
+#define FIRE_PRIORITY_TIMER        105
 
 //? Special
 
