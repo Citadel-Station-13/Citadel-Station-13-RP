@@ -26,14 +26,7 @@
 /obj/item/book/eldritch/introduction
 	name = "Odd Book"
 	desc = "A enigmatic purple book made up of some sort of odd leather. It appears to be bound in a chain made of metal you've never seen before."
-	dat = {"<!DOCTYPE html>
-	<html>
-
-	<head>
-	<title></title>
-	</head>
-
-	<body style="color: rgb(0, 0, 0); background-color: rgb(133, 107, 89);">
+	starting_content = {"
 	<h1 style="text-align: center;"><em><span style="font-family: Symbol;"><u>-Mens-</u></span></em></h1>
 	<h1 style="text-align: center;"><span style="font-family: Symbol;"><u><em>-Corpus-</em></u></span></h1>
 	<h1 style="text-align: center;" class="Please set custom CSS styles in Settings"><em><span style="font-family: Symbol;"><u>-Animus-</u></span></em><br><br><em>Property of&nbsp;</em><br><em><span style="font-family: Symbol;">Ithria</span></em></h1>
@@ -48,9 +41,6 @@
 	<p style="text-align: right;"><strong><em>Note to self:&nbsp;</em></strong><br><strong><em>What needs not be forgotten hides within the south western layers of permafrost.</em></strong><br><strong><em>Approach the frost wall and mutter the chosen words,</em></strong><br><strong><em><u>Quanto magis surrexi, eo magis video.</u></em></strong><br>-----------------------------------------------<br><em><strong>Bona Fortuna,</strong></em><br><em><strong>- <span style="font-family: Symbol;">Ithria</span></strong></em></p>
 	<p style="text-align: center;"><span style='font-family: "Times New Roman", Times, serif; font-size: 18px;'><em><strong><br></strong></em></span></p>
 	<h2 style="text-align: center;"><br></h2>
-	<p><br></p>
-	</body>
-
-	</html>"}
+	<p><br></p>"}
 
 

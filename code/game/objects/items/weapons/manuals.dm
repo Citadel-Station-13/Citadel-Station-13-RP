@@ -1,115 +1,119 @@
-/*********************MANUALS (BOOKS)***********************/
+// Wiki books that are linked to the configured wiki link.
+
+/// The size of the window that the wiki books open in.
+#define BOOK_WINDOW_BROWSE_SIZE "970x710"
+/// This macro will resolve to code that will open up the associated wiki page in the window.
+#define WIKI_PAGE_IFRAME(wikiurl, link_identifier) {"
+	<html>
+	<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+	<style>
+		iframe {
+			display: none;
+		}
+	</style>
+	</head>
+	<body>
+	<script type="text/javascript">
+		function pageloaded(myframe) {
+			document.getElementById("loading").style.display = "none";
+			myframe.style.display = "inline";
+	}
+	</script>
+	<p id='loading'>You start skimming through the manual...</p>
+	<iframe width='100%' height='97%' onload="pageloaded(this)" src="[##wikiurl]/[##link_identifier]?printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+	</body>
+	</html>
+	"}
 
 /obj/item/book/manual
 	icon = 'icons/obj/library.dmi'
 	due_date = 0 // Game time in 1/10th seconds
-	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
+	unique = TRUE   // FALSE - Normal book, TRUE - Should not be treated as normal book, unable to be copied, unable to be modified
 
-/obj/item/book/manual/wiki_linked
-	name = "Wiki Linked Book"
-	author = "Buggy Coders"
-	title = "Unknown Wiki Book"
-	/// wiki page
-	var/wiki_page
+/obj/item/book/manual/wiki
+	starting_content = "Nanotrasen presently does not have any resources on this topic. If you would like to know more, contact your local Central Command representative." // safety
+	/// The ending URL of the page that we link to.
+	var/page_link = ""
 
-/obj/item/book/manual/wiki_linked/Initialize(mapload)
-	. = ..()
-	dat = {"
+/obj/item/book/manual/wiki/display_content(mob/living/user)
+	var/wiki_url = CONFIG_GET(string/wiki_page_root)
+	if(!wiki_url)
+		user.balloon_alert(user, "this book is empty!")
+		return
+	if(user.client.byond_version < 516) //Remove this once 516 is stable
+		if(tgui_alert(user, "This book's page will open in your browser. Are you sure?", "Open The Wiki", list("Yes", "No")) != "Yes")
+			return
+		DIRECT_OUTPUT(user, link("[wiki_url]/[page_link]"))
+	else
+		DIRECT_OUTPUT(user, browse(WIKI_PAGE_IFRAME(wiki_url, page_link), "window=manual;size=[BOOK_WINDOW_BROWSE_SIZE]")) // if you change this GUARANTEE that it works.
 
-		<html><head>
-		</head>
-
-		<body>
-		<iframe width='100%' height='97%' src="[CONFIG_GET(string/wiki_page_root)][wiki_page]&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
-		"}
-
-/obj/item/book/manual/wiki_linked/sop
+/obj/item/book/manual/wiki/sop
 	name = "Standard Operating Procedures"
-	author = "Nanotrasen"
-	title = "Standard Operating Procedures"
-	wiki_page = "Standard_Operating_Procedure"
+	starting_author = "Nanotrasen"
+	starting_title = "Standard Operating Procedures"
+	page_link = "Standard_Operating_Procedure"
 
+/obj/item/book/manual/wiki/engineering_construction
+	name = "Station Repairs and Construction"
+	icon_state ="bookEngineering"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Station Repairs and Construction"
+	page_link = "Guide_to_construction"
+
+/obj/item/book/manual/wiki/engineering_hacking
+	name = "Station Repairs and Construction"
+	icon_state ="bookEngineering"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Station Repairs and Construction"
+	page_link = "Hacking"
+
+/obj/item/book/manual/wiki/engineering_guide
+	name = "Engineering Textbook"
+	icon_state ="bookEngineering2"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Engineering Textbook"
+	page_link = "Guide_to_Engineering"
+
+// YIKES! have to repath all of these to use the proper wiki shit
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Station Repairs and Construction"
-
-/obj/item/book/manual/engineering_construction/Initialize(mapload)
-	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
-		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Guide_to_construction&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
-		"}
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Station Repairs and Construction"
+	// starting_content = {"
+	// 	<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Guide_to_construction&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+	// 	"}
 
 /obj/item/book/manual/engineering_particle_accelerator
 	name = "Particle Accelerator User's Guide"
 	icon_state ="bookParticleAccelerator"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Particle Accelerator User's Guide"
-
-/obj/item/book/manual/engineering_particle_accelerator/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
-				<h1>Experienced User's Guide</h1>
-
-				<h2>Setting up the accelerator</h2>
-
-				<ol>
-					<li><b>Wrench</b> all pieces to the floor</li>
-					<li>Add <b>wires</b> to all the pieces</li>
-					<li>Close all the panels with your <b>screwdriver</b></li>
-				</ol>
-
-				<h2>Using the accelerator</h2>
-
-				<ol>
-					<li>Open the control panel</li>
-					<li>Set the speed to 2</li>
-					<li>Start firing at the singularity generator</li>
-					<li><font color='red'><b>When the singularity reaches a large enough size so it starts moving on it's own set the speed down to 0, but don't shut it off</b></font></li>
-					<li>Remember to wear a radiation suit when working with this machine... we did tell you that at the start, right?</li>
-				</ol>
-
-				</body>
-			</html>
-			"}
-
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Particle Accelerator User's Guide"
+	starting_content = {"
+		<h1>Experienced User's Guide</h1>
+		<h2>Setting up the accelerator</h2>
+		<ol>
+			<li><b>Wrench</b> all pieces to the floor</li>
+			<li>Add <b>wires</b> to all the pieces</li>
+			<li>Close all the panels with your <b>screwdriver</b></li>
+		</ol>
+		<h2>Using the accelerator</h2>
+		<ol>
+			<li>Open the control panel</li>
+			<li>Set the speed to 2</li>
+			<li>Start firing at the singularity generator</li>
+			<li><font color='red'><b>When the singularity reaches a large enough size so it starts moving on it's own set the speed down to 0, but don't shut it off</b></font></li>
+			<li>Remember to wear a radiation suit when working with this machine... we did tell you that at the start, right?</li>
+		</ol>
+	"}
 
 /obj/item/book/manual/supermatter_engine
 	name = "Supermatter Engine Operating Manual"
 	icon_state = "bookSupermatter"
-	author = "Central Engineering Division"
-	title = "Supermatter Engine Operating Manual"
-
-/obj/item/book/manual/supermatter_engine/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
+	starting_author = "Central Engineering Division"
+	starting_title = "Supermatter Engine Operating Manual"
+	starting_content = {"
 				<h1><strong>Guide: Supermatter Engine</strong></h1>
 				<h2>The Engine Room</h2>
 				<p>The Engine room consists of:</p>
@@ -142,27 +146,16 @@
 				<ol>
 				<li>Max Input and Output on the Main SMES in the SMES room.</li>
 				</ol>
-			</html>"}
+			"}
 
 // TESLA Engine
 
 /obj/item/book/manual/tesla_engine
 	name = "Tesla Operating Manual"
 	icon_state ="bookTesla"
-	author = "Engineering Encyclopedia"
-	title = "Tesla Engine User's Guide"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Tesla Engine User's Guide"
+	starting_content = {"
 				<h1>OPERATING MANUAL FOR MK 2 PROTOTYPE TESLA ENGINE &apos;EDISON&apos;S BANE&apos;</h1>
 				<br>
 				<h2>OPERATING PRINCIPLES</h2>
@@ -210,20 +203,15 @@
 				<li>Do not let it escape.</li>
 				<li>Have someone ready to blame when it does escape.</li>
 				<li>Buy our forthcoming manual &quot;<i>Celebrity Grounding Rod Shelters of the Galaxy</i>&quot;</li>
-				</ol>
-				</body>
-			</html>"}
+				</ol>"}
 
 //R-UST port
 /obj/item/book/manual/rust_engine
 	name = "R-UST Operating Manual"
 	icon_state = "bookSupermatter"
-	author = "Nanotrasen Engineering Safety Board"
-	title = "R-UST Operating Manual"
-
-/obj/item/book/manual/rust_engine/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
+	starting_author = "Nanotrasen Engineering Safety Board"
+	starting_title = "R-UST Operating Manual"
+	starting_content = {"
 				<h1><strong>Guide: R-UST Fusion Reactor</strong></h1>
 				<h2>The Engine Room</h2>
 				<div>
@@ -266,29 +254,14 @@
 				<ol>
 				<li>Max Input and Output on the Main SMES in the SMES room.</li>
 				</ol>
-			</html>"}
+			"}
 
-/*/obj/item/book/manual/burn_chamber
-	name = "Burn Chamber Operating Manual"
-	icon_state = "bookSupermatter"
-	author = "Nanotrasen Engineering Safety Board"
-	title = "Burn Chamber Operating Manual"
-
-/obj/item/book/manual/burn_chamber/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-
-			</html>"}
-*/
 /obj/item/book/manual/fission_engine
 	name = "Fission Reactor Operating Manual"
 	icon_state = "bookSupermatter"
-	author = "Nanotrasen Engineering Safety Board"
-	title = "Fission Reactor Operating Manual"
-
-/obj/item/book/manual/fission_engine/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
+	starting_author = "Nanotrasen Engineering Safety Board"
+	starting_title = "Fission Reactor Operating Manual"
+	starting_content = {"
 				<h1><strong>Guide: Fission Reactor</strong></h1>
 				<h2>The Engine Room</h2>
 				<p>The Engine room consists of:</p>
@@ -334,53 +307,28 @@
 				<li>Max Input and Output on the Main SMES in the SMES room.</li>
 				<li>Use the multitool from step 6 to link the core to the computer in the control room.</li>
 				</ol>
-			</html>"}
+			"}
+
+// yikes
 /obj/item/book/manual/engineering_hacking
 	name = "Hacking"
 	icon_state ="bookHacking"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Hacking"
-
-/obj/item/book/manual/engineering_hacking/Initialize(mapload)
-	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
-		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Hacking&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
-		"}
-
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Hacking"
+	// starting_content = {"
+	// 	<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Hacking&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+	// 	"}
 
 /obj/item/book/manual/engineering_singularity_safety
 	name = "Singularity Safety in Special Circumstances"
 	icon_state ="bookEngineeringSingularitySafety"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Singularity Safety in Special Circumstances"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Singularity Safety in Special Circumstances"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = {"
 				<h1>Singularity Safety in Special Circumstances</h1>
-
 				<h2>Power outage</h2>
-
 				A power problem has made the entire station lose power? Could be station-wide wiring problems or syndicate power sinks. In any case follow these steps:
-
 				<ol>
 					<li><b><font color='red'>PANIC!</font></b></li>
 					<li>Get your ass over to engineering! <b>QUICKLY!!!</b></li>
@@ -398,37 +346,21 @@
 					<li>Go to the bar and tell the guys how you saved them all. Stop reading this guide here.</li>
 					<li><b>GET THE FUCK OUT OF THERE!!!</b></li>
 				</ol>
-
 				<h2>Shields get damaged</h2>
-
 				<ol>
 					<li><b>GET THE FUCK OUT OF THERE!!! FORGET THE WOMEN AND CHILDREN, SAVE YOURSELF!!!</b></li>
 				</ol>
-				</body>
-			</html>
 			"}
 
 
 /obj/item/book/manual/hydroponics_pod_people
 	name = "The Diona Harvest - From Seed to Market"
 	icon_state ="bookHydroponicsPodPeople"
-	author = "Farmer John"
-	title = "The Diona Harvest - From Seed to Market"
+	starting_author = "Farmer John"
+	starting_title = "The Diona Harvest - From Seed to Market"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = {"
 				<h3>Growing a Diona</h3>
-
 				Growing a Diona is easy!
 				<p>
 				<ol>
@@ -441,32 +373,16 @@
 				Note that for a successful harvest, the body from which the blood was taken from must be dead BEFORE harvesting the pod, however the pod can be growing while they are still alive. Otherwise, the soul would not be able to migrate to the new Diona body.<br><br>
 
 				It really is that easy! Good luck!
-
-				</body>
-				</html>
 				"}
 
 
 /obj/item/book/manual/medical_cloning
 	name = "Cloning Techniques of the 26th Century"
 	icon_state ="bookCloning"
-	author = "Medical Journal, volume 3"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Cloning Techniques of the 26th Century"
+	starting_author = "Medical Journal, volume 3"
+	starting_title = "Cloning Techniques of the 26th Century"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 21px; margin: 15px 0px 5px;}
-				h2 {font-size: 18px; margin: 15px 0px 5px;}
-				h3 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<H1>How to Clone People</H1>
 				So there are 50 dead people lying on the floor, chairs are spinning like no tomorrow and you haven't the foggiest idea of what to do? Not to worry!
 				This guide is intended to teach you how to clone people and how to do it right, in a simple, step-by-step process! If at any point of the guide you have a mental meltdown,
@@ -534,31 +450,16 @@
 				Once you're done, your patient is ready to go back to work! Chances are they do not have Medbay access, so you should let them out of Genetics and the Medbay main entrance.
 
 				<p>If you've gotten this far, congratulations! You have mastered the art of cloning. Now, the real problem is how to resurrect yourself after that traitor had his way with you for cloning his target.
-
-				</body>
-				</html>
 				"}
 
 
 /obj/item/book/manual/ripley_build_and_repair
 	name = "APLU \"Ripley\" Construction and Operation Manual"
 	icon_state ="book"
-	author = "Randall Varn, Einstein Engines Senior Mechanic"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "APLU \"Ripley\" Construction and Operation Manual"
+	starting_author = "Randall Varn, Einstein Engines Senior Mechanic"
+	starting_title = "APLU \"Ripley\" Construction and Operation Manual"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ul.a {list-style-type: none; margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = {"
 				<center>
 				<br>
 				<span style='font-size: 12px;'><b>Weyland-Yutani - Building Better Worlds</b></span>
@@ -612,31 +513,16 @@
 					<li>Completed mech is more resilient against fire, and is a bit more durable overall.</li>
 					<li>The Company is determined to ensure the safety of its <s>investments</s> employees.</li>
 				</ul>
-				</body>
-			</html>
 			"}
 
 
 /obj/item/book/manual/research_and_development
 	name = "Research and Development 101"
 	icon_state = "rdbook"
-	author = "Dr. L. Ight"
-	title = "Research and Development 101"
+	starting_author = "Dr. L. Ight"
+	starting_title = "Research and Development 101"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 21px; margin: 15px 0px 5px;}
-				h2 {font-size: 18px; margin: 15px 0px 5px;}
-				h3 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Science For Dummies</h1>
 				So you want to further SCIENCE? Good man/woman/thing! However, SCIENCE is a complicated process even though it's quite easy. For the most part, it's a three step process:
 				<ol>
@@ -681,31 +567,16 @@
 				If you use these parts when constructing something, its attributes may be improved.
 				For example, if you use an advanced matter bin when constructing an autolathe (rather than a regular one), it'll hold more materials. Experiment around with stock parts of various qualities to see how they affect the end results! Be warned, however:
 				Tier 3 and higher stock parts don't have 100% reliability and their low reliability may affect the reliability of the end machine.
-				</body>
-			</html>
 			"}
 
 
 /obj/item/book/manual/robotics_cyborgs
 	name = "Cyborgs for Dummies"
 	icon_state = "borgbook"
-	author = "XISC"
-	title = "Cyborgs for Dummies"
+	starting_author = "XISC"
+	starting_title = "Cyborgs for Dummies"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 21px; margin: 15px 0px 5px;}
-				h2 {font-size: 18px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Cyborgs for Dummies</h1>
 
 				<h2>Chapters</h2>
@@ -885,58 +756,30 @@
 				<h3>As a last resort</h3>
 				If all else fails in a case of cyborg-related emergency, there may be only one option. Using a Robotics Control console, you may have to remotely detonate the cyborg.
 				<h3>WARNING:</h3> Do not detonate a borg without an explicit reason for doing so. Cyborgs are expensive pieces of company equipment, and you may be punished for detonating them without reason.
-
-				</body>
-			</html>
 		"}
 
-
+// yikes
 /obj/item/book/manual/security_space_law
 	name = "Corporate Regulations"
 	desc = "A set of corporate guidelines for keeping law and order on privately-owned space stations."
 	icon_state = "bookSpaceLaw"
-	author = "The Company"
-	title = "Corporate Regulations"
+	starting_author = "The Company"
+	starting_title = "Corporate Regulations"
+	// starting_content = {"
+	// 	<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Corporate_Regulations&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+	// 	"}
 
-/obj/item/book/manual/security_space_law/Initialize(mapload)
-	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
-		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Corporate_Regulations&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
-		"}
-
-
-
+// yikes
 /obj/item/book/manual/medical_diagnostics_manual
 	name = "Medical Diagnostics Manual"
 	desc = "First, do no harm. A detailed medical practitioner's guide."
 	icon_state = "bookMedical"
-	author = "Medical Department"
-	title = "Medical Diagnostics Manual"
+	starting_author = "Medical Department"
+	starting_title = "Medical Diagnostics Manual"
 
 /obj/item/book/manual/medical_diagnostics_manual/Initialize(mapload)
 	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<br>
+	starting_content = {"
 				<h1>The Oath</h1>
 
 				<i>The Medical Oath sworn by recognised medical practitioners in the employ of [(LEGACY_MAP_DATUM).company_name]</i><br>
@@ -957,53 +800,28 @@
 				<HR COLOR="steelblue" WIDTH="60%" ALIGN="LEFT">
 
 				<iframe width='100%' height='100%' src="[config_legacy.wikiurl]Guide_to_Medicine&printable=yes&removelinks=1" frameborder="0" id="main_frame"></iframe>
-				</body>
-			</html>
-
 		"}
 
-
+// yikes
 /obj/item/book/manual/engineering_guide
 	name = "Engineering Textbook"
 	icon_state ="bookEngineering2"
-	author = "Engineering Encyclopedia"
-	title = "Engineering Textbook"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Engineering Textbook"
 
 /obj/item/book/manual/engineering_guide/Initialize(mapload)
 	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
+	starting_content = {"
 		<iframe width='100%' height='100%' src="[config_legacy.wikiurl]Guide_to_Engineering&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>		</body>
-
-		</html>
-
 		"}
-
 
 /obj/item/book/manual/chef_recipes
 	name = "Chef Recipes"
 	icon_state = "cooked_book"
-	author = "Victoria Ponsonby"
-	title = "Chef Recipes"
+	starting_author = "Victoria Ponsonby"
+	starting_title = "Chef Recipes"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Food for Dummies</h1>
 				Here is a guide on basic food recipes and also how to not poison your customers accidentally.
 
@@ -1036,33 +854,15 @@
 
 				<h3>Fries:</h3>
 				Add one potato to the processor, then bake them in the microwave.
-
-
-				</body>
-			</html>
 			"}
-
 
 /obj/item/book/manual/barman_recipes
 	name = "Barman Recipes"
 	icon_state = "barbook"
-	author = "Sir John Rose"
-	title = "Barman Recipes"
+	starting_author = "Sir John Rose"
+	starting_title = "Barman Recipes"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Drinks for Dummies</h1>
 				Here's a guide for some basic drinks.
 
@@ -1092,30 +892,15 @@
 
 				<h3>Screwdriver:</h3>
 				Mix vodka and orange juice into a glass.
-
-				</body>
-			</html>
 			"}
-
 
 /obj/item/book/manual/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
-	author = "The Company"
-	title = "The Film Noir: Proper Procedures for Investigations"
+	starting_author = "The Company"
+	starting_title = "The Film Noir: Proper Procedures for Investigations"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = {"
 				<h1>Detective Work</h1>
 
 				Between your bouts of self-narration and drinking whiskey on the rocks, you might get a case or two to solve.<br>
@@ -1137,28 +922,15 @@
 				</ol>
 				<p>
 				It really is that easy! Good luck!
-
-				</body>
-			</html>"}
+			"}
 
 /obj/item/book/manual/nuclear
 	name = "Fission Mailed: Nuclear Sabotage 101"
 	icon_state ="bookNuclear"
-	author = "Syndicate"
-	title = "Fission Mailed: Nuclear Sabotage 101"
+	starting_author = "Syndicate"
+	starting_title = "Fission Mailed: Nuclear Sabotage 101"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 21px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = {"
 				<h1>Nuclear Explosives 101</h1>
 				Hello and thank you for choosing the Syndicate for your nuclear information needs. Today's crash course will deal with the operation of a Nuclear Fission Device.<br><br>
 
@@ -1188,28 +960,14 @@
 				Intelligence Analysts believe that normal corporate procedure is for the Facility Director to secure the nuclear authentication disk.<br><br>
 
 				Good luck!
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/atmospipes
 	name = "Pipes and You: Getting To Know Your Scary Tools"
 	icon_state = "pipingbook"
-	author = "Maria Crash, Senior Atmospherics Technician"
-	title = "Pipes and You: Getting To Know Your Scary Tools"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Maria Crash, Senior Atmospherics Technician"
+	starting_title = "Pipes and You: Getting To Know Your Scary Tools"
+	starting_content = {"
 				<h1><a name="Contents">Contents</a></h1>
 				<ol>
 					<li><a href="#Foreword">Author's Foreword</a></li>
@@ -1294,30 +1052,14 @@
 				This normally shouldn't exchange with the ambient air, despite being totally exposed. Just don't ask questions.</li><BR>
 
 				That's about it for pipes. Go forth, armed with this knowledge, and try not to break, burn down, or kill anything. Please.
-
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/evaguide
 	name = "EVA Gear and You: Not Spending All Day Inside, 2nd Edition"
 	icon_state = "evabook"
-	author = "Maria Crash, Senior Atmospherics Technician"
-	title = "EVA Gear and You: Not Spending All Day Inside, 2nd Edition"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Maria Crash, Senior Atmospherics Technician"
+	starting_title = "EVA Gear and You: Not Spending All Day Inside, 2nd Edition"
+	starting_content = {"
 				<h1><a name="Foreword">EVA Gear and You: Not Spending All Day Inside, 2nd Edition</a></h1>
 				<I>Or: How not to suffocate because there's a hole in your shoes</I><BR>
 
@@ -1420,78 +1162,46 @@
 				</ul>
 
 				If you don't have any further issues, go out and do whatever is necessary.
-
-				</body>
-			</html>
 			"}
 
 //Books originally stored in manuals_vr. Consolidated.
 
+// YIKES
 /obj/item/book/manual/standard_operating_procedure
 	name = "Standard Operating Procedure"
 	desc = "A set of corporate guidelines for keeping space stations running smoothly."
 	icon_state = "sop"
-	author = "Nanotrasen"
-	title = "Standard Operating Procedure"
+	starting_author = "Nanotrasen"
+	starting_title = "Standard Operating Procedure"
 
 /obj/item/book/manual/standard_operating_procedure/Initialize(mapload)
 	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
+	starting_content = {"
 		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Standard_Operating_Procedure&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
 		"}
 
 /obj/item/book/manual/command_guide
 	name = "The Chain of Command"
 	desc = "A set of corporate guidelines outlining the entire command structure of Nanotrasen from top to bottom."
 	icon_state = "commandGuide"
-	author = "Jeremiah Acacius"
-	title = "Corporate Regulations"
+	starting_author = "Jeremiah Acacius"
+	starting_title = "Corporate Regulations"
 
 /obj/item/book/manual/command_guide/Initialize(mapload)
 	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
+	starting_content = {"
 		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Chain_of_Command&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
 		"}
 
 /obj/item/book/manual/the_humanized_mice
 	name = "The Humanized Mice"
 	icon_state = "hum_mic"
-	author = "Melora Creager"
-	title = "The Humanized Mice"
+	starting_author = "Melora Creager"
+	starting_title = "The Humanized Mice"
 
 /obj/item/book/manual/the_humanized_mice/Initialize(mapload)
 	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<br>
+	starting_content = {"
 				<h1>Excerpt: The Humanized Mice</h1>
 
 				<i>The majority of this book's pages are irreparably damaged or defaced. This mostly intact article is the only legible excerpt.</i><BR><BR>
@@ -1520,10 +1230,6 @@
 				</ul><br>
 
 				<HR COLOR="steelblue" WIDTH="60%" ALIGN="LEFT">
-
-				</body>
-			</html>
-
 		"}
 
 /////////////////////////////////////////////
@@ -1535,25 +1241,9 @@
 /obj/item/book/manual/legal/sop_vol1
 	name = "SOP Volume 1: Alert Levels"
 	icon_state = "sop_se"
-	author = "Nanotrasen"
-	title = "SOP Volume 1: Alert Levels"
-
-/obj/item/book/manual/legal/sop_vol1/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 1: Alert Levels"
+	starting_content = {"
 				<h1>Volume One: Alert Levels</h1>
 				<hr>
 				<h2>Code Green - All Clear</h2>
@@ -1636,33 +1326,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol2
 	name = "SOP Volume 2: Emergency Situations Protocol"
 	icon_state = "sop_se"
-	author = "Nanotrasen"
-	title = "SOP Volume 2: Emergency Situations Protocol"
-
-/obj/item/book/manual/legal/sop_vol2/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 2: Emergency Situations Protocol"
+	starting_content = {"
 				<h1>Volume Two: Emergency Situations Protocol</h1>
 				<hr>
 				<h2>Evacuation Procedure</h2>
@@ -1818,33 +1489,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol3
 	name = "SOP Volume 3: Legal Clauses"
 	icon_state = "sop_se"
-	author = "Nanotrasen"
-	title = "SOP Volume 3: Legal Clauses"
-
-/obj/item/book/manual/legal/sop_vol3/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 3: Legal Clauses"
+	starting_content = {"
 				<h1>Volume Three: Legal Clauses</h1>
 				<hr>
 				<h2>Corporate Labor Charter</h2>
@@ -1889,33 +1541,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol4
 	name = "SOP Volume 4: Courtesy Procedures"
 	icon_state = "sop_se"
-	author = "Nanotrasen"
-	title = "SOP Volume 4: Courtesy Procedures"
-
-/obj/item/book/manual/legal/sop_vol4/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 4: Courtesy Procedures"
+	starting_content = {"
 				<h1>Volume Four: Courtesy Procedures</h1>
 				<hr>
 				<h2>Visitors</h2>
@@ -1955,33 +1588,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_1
 	name = "SOP Volume 5.1: Department Regulations (Cargo)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.1: Department Regulations (Cargo)"
-
-/obj/item/book/manual/legal/sop_vol5_1/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.1: Department Regulations (Cargo)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Cargo)</h1>
 				<hr>
 				<h2>Cargo and Logistics</h2>
@@ -2031,33 +1645,14 @@
 				Mining crew assigned mechanized suits by the Research Department may only operate said equipment during EVA activities, or for the purpose of transportation to or from the Research Department. Weaponry or potentially hazardous utility devices mounted on mechanized suits must be detached and stored in the secure lockers provided to the department for weapons storage when they are not actively being used on the mechanized suit. The operation of an armed Mech onboard the station is unlawful and may be met with immediate lethal force.<BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_2
 	name = "SOP Volume 5.2: Department Regulations (Engineering)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.2: Department Regulations (Engineering)"
-
-/obj/item/book/manual/legal/sop_vol5_2/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.2: Department Regulations (Engineering)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Engineering)</h1>
 				<hr>
 				<h2>Construction/Repairs</h2>
@@ -2112,33 +1707,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_3
 	name = "SOP Volume 5.3: Department Regulations (Medical)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.3: Department Regulations (Medical)"
-
-/obj/item/book/manual/legal/sop_vol5_3/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.3: Department Regulations (Medical)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Medical)</h1>
 				<hr>
 				<h2>Medical Oath</h2>
@@ -2285,33 +1861,14 @@
 				<i>((OOC NOTE: THIS SHOULD ONLY BE INTERACTED WITH IN CODE DELTA OR EVACUATION SCENARIOS. YOU RISK OUT OF CHARACTER PUNISHMENT OTHERWISE.))</i><BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_4
 	name = "SOP Volume 5.4: Department Regulations (Research)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.4: Department Regulations (Research)"
-
-/obj/item/book/manual/legal/sop_vol5_4/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.4: Department Regulations (Research)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Research)</h1>
 				<hr>
 				<h2>Contraband Policy</h2>
@@ -2402,33 +1959,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_5
 	name = "SOP Volume 5.5: Department Regulations (Security)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.5: Department Regulations (Security)"
-
-/obj/item/book/manual/legal/sop_vol5_5/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.5: Department Regulations (Security)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Security)</h1>
 				<hr>
 				<h2>Permits</h2>
@@ -2656,33 +2194,14 @@
 					</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_6
 	name = "SOP Volume 5.6: Department Regulations (Command)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.6: Department Regulations (Command)"
-
-/obj/item/book/manual/legal/sop_vol5_6/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.6: Department Regulations (Command)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Command)</h1>
 				<hr>
 				<h2>Vacancy in the chain of command</h2>
@@ -2723,33 +2242,14 @@
 				Due to concerns regarding the hazardous nature of Command duties and the volatile nature of Vox biology, Central Command has determined that the following race – Vox – may not be employed on any Nanotrasen facility Command team, barring the following provisions: Vox may be employed as Chief Engineer, Chief Medical Officer, or Research Director. Prohibited Vox Command positions follow: Colony Director, Head of Security, or Head of Personnel. Transfer to the proscribed Command departments after the assignment of another Departmental role is equally unlawful. This ruling may be appealed in the future.<BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_7
 	name = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
-
-/obj/item/book/manual/legal/sop_vol5_7/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Internal Affairs)</h1>
 				<hr>
 				<h2>Impartiality Clause</h2>
@@ -2859,33 +2359,14 @@
 				If an employee wishes to reserve company property, or to invite employees to an event that does not take place on company property, Internal Affairs should help plan and coordinate with the heads of staff and Central Command in order to ensure these events run smoothly. Often times, events that have been approved by Central Command will be broadcast on the channel of the Nanotrasen Chatroom App specific to your site of employment.<BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/cr_vol1
 	name = "Corporate Regulations Volume 1: Introduction"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 1: Introduction"
-
-/obj/item/book/manual/legal/cr_vol1/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 1: Introduction"
+	starting_content = {"
 				<h1>Corporate Regulations Volume One: Introduction</h1>
 				<hr>
 				<h2>What are Corporate Regulations?</h2>
@@ -2991,34 +2472,15 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 
 /obj/item/book/manual/legal/cr_vol2
 	name = "Corporate Regulations Volume 2: Infractions (Low)"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 2: Infractions (Low)"
-
-/obj/item/book/manual/legal/cr_vol2/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 2: Infractions (Low)"
+	starting_content = {"
 				<h1>Low Level Infractions</h1>
 				<hr>
 				<h2>Definition</h2>
@@ -3251,32 +2713,15 @@
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/cr_vol3
 	name = "Corporate Regulations Volume 3: Infractions (Moderate)"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 3: Infractions (Moderate)"
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 3: Infractions (Moderate)"
 
-/obj/item/book/manual/legal/cr_vol3/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Medium Level Infractions</h1>
 
 				These Infractions carry standard punishments of up to 30 minutes, though typically around 10-15 minutes, and can be set by the arresting officer's discretion. <b>Suggested Sentence</b> values are beside the Infractions. <b>Maximum Penalties</b> can be issued by authorization of Head of Security*, Colony Director, or equivalent (Acting Colony Director), and do not require tribunals unless stated otherwise. However, it is not advisable to do so for a first offense.<BR><BR>
@@ -3449,32 +2894,15 @@
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/cr_vol4
 	name = "Corporate Regulations Volume 4: Infractions (Severe)"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 4: Infractions (Severe)"
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 4: Infractions (Severe)"
 
-/obj/item/book/manual/legal/cr_vol4/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>High Severity Infractions</h1>
 
 				These Infractions generally need to be ruled on by a tribunal as explained further below, and criminals should be held until judgment can be passed. In a few severe circumstances, permanent removal from the station may occur. Central Command must be contacted for permanent removals to be enforced.<BR><BR>
@@ -3574,32 +3002,15 @@
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/cr_vol5
 	name = "Corporate Regulations Volume 5: Supplementals"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 5: Supplementals"
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 5: Supplementals"
 
-/obj/item/book/manual/legal/cr_vol5/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Modifiers & Special Situations</h1>
 
 				These may reduce or increase your sentence depending on circumstances relating to the crimes committed.<BR><BR>
@@ -3700,32 +3111,15 @@
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sdf
 	name = "SDF SOP"
 	icon_state = "corpreg_se"
-	author = "Hadiis Folly"
-	title = "Hadiis Folly Systeme Defense Force Patrol SOP"
+	starting_author = "Hadiis Folly"
+	starting_title = "Hadiis Folly Systeme Defense Force Patrol SOP"
 
-/obj/item/book/manual/legal/sdf/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Hadiis Folly Systeme Defense Force Patrol SOP</h1>
 				<hr>
 				<h2>Introduction</h2>
@@ -3906,8 +3300,9 @@
 				All arrest and detainment are advised to be communicated to the government via reports.<BR><BR>
 
 
-				</body>
-			</html>
 			"}
 
 
+
+#undef BOOK_WINDOW_BROWSE_SIZE
+#undef WIKI_PAGE_IFRAME

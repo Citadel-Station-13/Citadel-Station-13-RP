@@ -1,25 +1,10 @@
 /obj/item/book/lore/xenomorph_castes
 	name = "About the life of a xenomorph Part 1"
 	icon_state ="book13"
-	author = "Dr. xbio. Peter Steffans"
-	title = "About the life of a xenomorph Part 1"
+	starting_author = "Dr. xbio. Peter Steffans"
+	starting_title = "About the life of a xenomorph Part 1"
 
-
-/obj/item/book/lore/xenomorph_castes/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = {"
 					<h1>About the life of a xenomorph Part 1, <em>by Dr. xbio. Peter Steffans</em></h1>
 					<p>A simplification of the lifecycle of xenomorphs, written for laymen with a general interest in Xenomorphs.</p>
 					<h2>Birth</h2>
@@ -111,7 +96,7 @@
 							<p>Not really an alternate version of the queen, the king is probably the most capable combat variation of the xenomorphs.<br>
 							It seems to have an even more devastating shrieks than the queen, shattering freshly set bones, and toppling even braced soldiers.<br>
 							Its claws rend flesh and bones apart, and it is capable of localized EMP pulses.</p>
-				</body>"}
+				"}
 
 
 

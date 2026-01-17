@@ -13,12 +13,16 @@
 	drop_sound = 'sound/items/drop/book.ogg'
 	pickup_sound = 'sound/items/pickup/book.ogg'
 
+	/// Maximum icon state number. We start at 8
+	var/maximum_book_state = 16
 	/// Game time in 1/10th seconds
 	var/due_date = 0
 	/// false - Normal book, true - Should not be treated as normal book, unable to be copied, unable to be modified
 	var/unique = FALSE
 	/// Whether or not we have been carved out.
 	var/carved = FALSE
+	/// The typepath for the storage datum we use when carved out.
+	var/carved_storage_type = /datum/object_system/storage/carved_book
 
 	/// The initial author, for use in var editing and such
 	var/starting_author
@@ -28,8 +32,6 @@
 	var/starting_title
 	/// The packet of information that describes this book
 	var/datum/book_info/book_data
-
-	var/obj/item/store	//What's in the book?
 
 /obj/item/book/Initialize(mapload)
 	. = ..()
@@ -112,37 +114,6 @@
 		return writing_utensil_act(user, tool)
 	if(is_carving_tool(tool))
 		return carving_act(user, tool)
-
-	if(istype(tool, /obj/item/barcodescanner))
-		var/obj/item/barcodescanner/scanner = tool
-		if(!scanner.computer)
-			to_chat(user, "[scanner]'s screen flashes: 'No associated computer found!'")
-		else
-			switch(scanner.mode)
-				if(0)
-					scanner.book = src
-					to_chat(user, "[scanner]'s screen flashes: 'Book stored in buffer.'")
-				if(1)
-					scanner.book = src
-					scanner.computer.buffer_book = src.name
-					to_chat(user, "[scanner]'s screen flashes: 'Book stored in buffer. Book title stored in associated computer buffer.'")
-				if(2)
-					scanner.book = src
-					for(var/datum/borrowbook/b in scanner.computer.checkouts)
-						if(b.bookname == src.name)
-							scanner.computer.checkouts.Remove(b)
-							to_chat(user, "[scanner]'s screen flashes: 'Book stored in buffer. Book has been checked in.'")
-							return
-					to_chat(user, "[scanner]'s screen flashes: 'Book stored in buffer. No active check-out record found for current title.'")
-				if(3)
-					scanner.book = src
-					for(var/obj/item/book in scanner.computer.inventory)
-						if(book == src)
-							to_chat(user, "[scanner]'s screen flashes: 'Book stored in buffer. Title already present in inventory, aborting to avoid duplicate entry.'")
-							return
-					scanner.computer.inventory.Add(src)
-					to_chat(user, "[scanner]'s screen flashes: 'Book stored in buffer. Title added to general inventory.'")
-			return CLICKCHAIN_DID_SOMETHING
 	return ..()
 
 /// Called when user clicks on the book with a writing utensil. Attempts to vandalize the book.
@@ -179,7 +150,7 @@
 
 	name = newtitle
 	book_data.set_title(html_decode(newtitle)) //Don't want to double encode here
-	playsound(src, SFX_WRITING_PEN, 50, TRUE, -9, 6 + 3, ignore_walls = FALSE)
+	// playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 	return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/book/proc/vandalize_contents(mob/living/user, obj/item/tool)
@@ -191,7 +162,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	book_data.set_content(html_decode(content))
-	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
+	// playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 	return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/book/proc/vandalize_author(mob/living/user, obj/item/tool)
@@ -203,7 +174,7 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	book_data.set_author(html_decode(author)) //Setting this encodes, don't want to double up
-	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
+	// playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 	return CLICKCHAIN_DID_SOMETHING
 
 /// Called when user clicks on the book with a carving utensil. Attempts to carve the book.
@@ -218,9 +189,18 @@
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	balloon_alert(user, "carved out")
-	playsound(src, 'sound/effects/cloth_rip.ogg', vol = 75, vary = TRUE)
-	carved = TRUE
+	// playsound(src, 'sound/effects/cloth_rip.ogg', vol = 75, vary = TRUE)
+	carve_out()
 	return CLICKCHAIN_DID_SOMETHING
+
+/// Handles setting everything a carved book needs.
+/obj/item/book/proc/carve_out()
+	carved = TRUE
+	init_storage(carved_storage_type)
+
+/// Generates a random icon state for the book
+/obj/item/book/proc/gen_random_icon_state()
+	icon_state = "book[rand(8, maximum_book_state)]"
 
 /obj/item/book/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
@@ -272,10 +252,10 @@
 			dat += "<HTML><HEAD><TITLE>Page [page]</TITLE></HEAD><BODY>[pages[page]]</BODY></HTML>"
 		user << browse(dat, "window=[name]")
 
-/obj/item/book/bundle/on_read(mob/user)
-	show_content(user)
-	add_fingerprint(usr)
-	update_icon()
+// /obj/item/book/bundle/on_read(mob/user)
+// 	show_content(user)
+// 	add_fingerprint(usr)
+// 	update_icon()
 
 /obj/item/book/bundle/Topic(href, href_list)
 	if(..())

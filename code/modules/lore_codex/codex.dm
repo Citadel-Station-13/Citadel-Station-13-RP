@@ -7,6 +7,7 @@
 	unique = TRUE
 	var/datum/codex_tree/tree = null
 	var/root_type = /datum/lore/codex/category/main_virgo_lore	//Runtimes on codex_tree.dm, line 18 with a null here
+	var/libcategory = "NOBODY_USES_THIS"
 
 /obj/item/book/codex/Initialize(mapload)
 	tree = new(src, root_type)

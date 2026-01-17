@@ -12,7 +12,8 @@
 
 	// This is the ckey of the book's author.
 	var/origkey = null
-	author = "UNKNOWN"
+	starting_author = "UNKNOWN"
+	var/libcategory = "NOBODY_USES_THIS"
 
 /obj/item/book/custom_library/fiction
 	libcategory = "Fiction"
@@ -39,7 +40,8 @@
 
 	// This is the ckey of the book's author.
 	var/origkey = null
-	author = "UNKNOWN"
+	starting_author = "UNKNOWN"
+	var/libcategory = "NOBODY_USES_THIS"
 
 	page = 1 //current page
 	pages = list() //the contents of each page

@@ -1,22 +1,11 @@
 /obj/item/book/manual/resleeving
 	name = "Resleeving, the New Cloning."
 	icon_state = "stasis"
-	author = "Allan Ben-Saull"
-	title = "Resleeving, the New Cloning."
+	starting_author = "Allan Ben-Saull"
+	starting_title = "Resleeving, the New Cloning."
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-
-				<body><h1><a name="Contents">Contents</a></h1>
+	starting_content = {"
+				<h1><a name="Contents">Contents</a></h1>
 				<ol>
 					<li><a href="#Foreword">Foreword: A Licensed Technology</a></li>
 					<li><a href="#Implant">Mindstate Backup Implant</a></li>
@@ -70,6 +59,4 @@
 				</ul>
 				Please keep these in mind while using the Nanotrasen Resleeving Technology.<br>
 				<a href="#Contents">Contents</a>
-				</body>
-				</html>
 				"}

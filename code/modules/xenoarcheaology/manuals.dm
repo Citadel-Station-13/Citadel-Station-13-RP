@@ -2,21 +2,9 @@
 /obj/item/book/manual/excavation
 	name = "Out on the Dig"
 	icon_state = "excavation"
-	author = "Professor Patrick Mason, Curator of the Antiquities Museum on Ichar VII"
-	title = "Out on the Dig"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Professor Patrick Mason, Curator of the Antiquities Museum on Ichar VII"
+	starting_title = "Out on the Dig"
+	starting_content = {"
 				<h1><a name="Contents">Contents</a></h1>
 				<ol>
 					<li><a href="#Prep">Prepping the expedition</a></li>
@@ -107,29 +95,14 @@
 							inside.</li>
 				</ul><br>
 				<a href="#Contents">Contents</a>
-
-				</body>
-				</html>
 			"}
 
 /obj/item/book/manual/mass_spectrometry
 	name = "High Power Mass Spectrometry: A Comprehensive Guide"
 	icon_state = "analysis"
-	author = "Winton Rice, Chief Mass Spectrometry Technician at the Institute of Applied Sciences on Arcadia"
-	title = "High powered mass spectrometry, a comprehensive guide"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Winton Rice, Chief Mass Spectrometry Technician at the Institute of Applied Sciences on Arcadia"
+	starting_title = "High powered mass spectrometry, a comprehensive guide"
+	starting_content = {"
 				<h1><a name="Contents">Contents</a></h1>
 				<ol>
 					<li><a href="#Terms">A note on terms</a></li>
@@ -178,29 +151,14 @@
 					so use it sparingly.<br>
 				<br>
 				<a href="#Contents">Contents</a>
-
-				</body>
-				</html>
 			"}
 
 /obj/item/book/manual/anomaly_spectroscopy
 	name = "Spectroscopy: Analysing the Anomalies of the Cosmos"
 	icon_state = "anomaly"
-	author = "Doctor Martin Boyle, Director Research at the Lower Hydrolian Sector Listening Array"
-	title = "Spectroscopy: Analysing the Anomalies of the Cosmos"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<br>
+	starting_author = "Doctor Martin Boyle, Director Research at the Lower Hydrolian Sector Listening Array"
+	starting_title = "Spectroscopy: Analysing the Anomalies of the Cosmos"
+	starting_content = {"
 				It's perhaps one of the most exciting times to be alive, with the recent breakthroughs in understanding and categorisation of things we may one day no longer call
 				'anomalies,' but rather 'infrequent or rare occurrences of certain celestial weather or phenomena.' Perhaps a little more long winded, but no less eloquent all the
 				same! Why, look at the strides we're making in piercing the walls of bluespace or our steadily improving ability to clarify and stabilise subspace emissions; it's
@@ -211,21 +169,9 @@
 /obj/item/book/manual/materials_chemistry_analysis
 	name = "Materials Analysis and the Chemical Implications"
 	icon_state = "chemistry"
-	author = "Jasper Pascal, Senior Lecturer in Materials Analysis at the University of Jol'Nar"
-	title = "Materials Analysis and the Chemical Implications"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<br>
+	starting_author = "Jasper Pascal, Senior Lecturer in Materials Analysis at the University of Jol'Nar"
+	starting_title = "Materials Analysis and the Chemical Implications"
+	starting_content = {"				<br>
 				In today's high tech research fields, leaps and bounds are being made every day. Whether it's great strides forward in our understanding of the physical universe
 				or the operation of some fancy new piece of equipment, it seems like all the cool fields are producing new toys to play with, leaving doddery old fields such as
 				materials analysis and chemistry relegated to the previous few centuries, when we were still learning the makeup and structure of the elements.<br>
@@ -238,21 +184,9 @@
 /obj/item/book/manual/anomaly_testing
 	name = "Anomalous Materials and Energies"
 	icon_state = "triangulate"
-	author = "Norman York, formerly of the Tyrolion Institute on Titan"
-	title = "Anomalous Materials and Energies"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Norman York, formerly of the Tyrolion Institute on Titan"
+	starting_title = "Anomalous Materials and Energies"
+	starting_content = {"
 				<h1><a name="Contents">Contents</a></h1>
 				<ol>
 					<li><a href="#Anomalies">Foreword: Modern attitude towards anomalies</a></li>
@@ -308,29 +242,14 @@
 				for the application and use of said energy once it is harvested, there are no doubt myriad ways we can come to benefit from such things beyond mere research,
 				such as the reconstruction of torn cartilaginous tissue that a peculiar radiation from an amphibious species on Brachis IV was found to emit.<br>
 				<a href="#Contents">Contents</a>
-
-				</body>
-				</html>
 			"}
 
 /obj/item/book/manual/stasis
 	name = "Cellular Suspension, the New Cryogenics?"
 	icon_state = "stasis"
-	author = "Elvin Schmidt"
-	title = "Cellular Suspension, the New Cryogenics?"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Elvin Schmidt"
+	starting_title = "Cellular Suspension, the New Cryogenics?"
+	starting_content = {"
 				<h1><a name="Contents">Contents</a></h1>
 				<ol>
 					<li><a href="#Foreword">Foreword: A replacement for cryosleep?</a></li>
@@ -371,7 +290,4 @@
 				</ul>
 				As an interesting aside, a carbon waveform was chosen for the field in prison suspension fields, due to it's resonance with organic matter.<br>
 				<a href="#Contents">Contents</a>
-
-				</body>
-				</html>
 			"}
