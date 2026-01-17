@@ -205,28 +205,6 @@
 	icon_state = "book-[clamp(amount, 0, 5)]"
 	return ..()
 
-/obj/structure/bookcase/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			for(var/obj/item/book/b in contents)
-				qdel(b)
-			qdel(src)
-			return
-		if(2.0)
-			for(var/obj/item/book/b in contents)
-				if (prob(50)) b.loc = (get_turf(src))
-				else qdel(b)
-			qdel(src)
-			return
-		if(3.0)
-			if (prob(50))
-				for(var/obj/item/book/b in contents)
-					b.loc = (get_turf(src))
-				qdel(src)
-			return
-		else
-	return
-
 /obj/structure/bookcase/manuals/medical
 	name = "Medical Manuals bookcase"
 
@@ -243,10 +221,10 @@
 
 /obj/structure/bookcase/manuals/engineering/Initialize(mapload)
 	. = ..()
-	new /obj/item/book/manual/engineering_construction(src)
+	new /obj/item/book/manual/wiki/engineering_construction(src)
+	new /obj/item/book/manual/wiki/engineering_hacking(src)
+	new /obj/item/book/manual/wiki/engineering_guide(src)
 	new /obj/item/book/manual/engineering_particle_accelerator(src)
-	new /obj/item/book/manual/engineering_hacking(src)
-	new /obj/item/book/manual/engineering_guide(src)
 	new /obj/item/book/manual/atmospipes(src)
 	new /obj/item/book/manual/engineering_singularity_safety(src)
 	new /obj/item/book/manual/evaguide(src)
@@ -266,8 +244,6 @@
 
 /obj/structure/bookcase/legal/sop/Initialize(mapload)
 	. = ..()
-	if(. == INITIALIZE_HINT_QDEL)
-		return
 	new /obj/item/book/manual/legal/sop_vol1
 	new /obj/item/book/manual/legal/sop_vol2
 	new /obj/item/book/manual/legal/sop_vol3
@@ -279,7 +255,7 @@
 	new /obj/item/book/manual/legal/sop_vol5_5
 	new /obj/item/book/manual/legal/sop_vol5_6
 	new /obj/item/book/manual/legal/sop_vol5_7
-	update_icon()
+	update_appearance()
 
 /obj/structure/bookcase/legal/corpreg
 	name = "Corporate Regulations bookcase"
@@ -287,14 +263,12 @@
 
 /obj/structure/bookcase/legal/corpreg/Initialize(mapload)
 	. = ..()
-	if(. == INITIALIZE_HINT_QDEL)
-		return
 	new /obj/item/book/manual/legal/cr_vol1
 	new /obj/item/book/manual/legal/cr_vol2
 	new /obj/item/book/manual/legal/cr_vol3
 	new /obj/item/book/manual/legal/cr_vol4
 	new /obj/item/book/manual/legal/cr_vol5
-	update_icon()
+	update_appearance()
 
 /obj/structure/bookcase/legal/combo
 	name = "Policy Reference bookcase"
@@ -302,8 +276,6 @@
 
 /obj/structure/bookcase/legal/combo/Initialize(mapload)
 	. = ..()
-	if(. == INITIALIZE_HINT_QDEL)
-		return
 	new /obj/item/book/manual/legal/sop_vol1
 	new /obj/item/book/manual/legal/sop_vol2
 	new /obj/item/book/manual/legal/sop_vol3
@@ -320,9 +292,9 @@
 	new /obj/item/book/manual/legal/cr_vol3
 	new /obj/item/book/manual/legal/cr_vol4
 	new /obj/item/book/manual/legal/cr_vol5
-	update_icon()
+	update_appearance()
 
-/obj/structure/bookcase/legal/update_icon()
+/obj/structure/bookcase/legal/update_icon_state()
 	if(contents.len < 5)
 		icon_state = "legalbook-[contents.len]"
 	else
@@ -335,15 +307,14 @@
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return
-	var/list/obj/item/book/lore/types = typesof(/obj/item/book/lore)
-	LAZYREMOVE(types, /obj/item/book/lore)
+	var/list/obj/item/book/lore/types = subtypesof(/obj/item/book/lore)
 	for(var/i = 5; i>= 0; i--)
 		var/t_picked = pick(types)
 		new t_picked(src)
 		LAZYREMOVE(types, t_picked)
 		if(length(types) <= 0)
 			break
-	update_icon()
+	update_appearance()
 
 #undef BOOKCASE_UNANCHORED
 #undef BOOKCASE_ANCHORED
