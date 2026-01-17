@@ -36,7 +36,7 @@ export const MortarBasic = (props) => {
   const [gAY, sAY] = useState(data.adjustY || 0);
 
   return (
-    <Window width={300} height={250} title="Mortar">
+    <Window width={300} height={280} title="Mortar">
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -48,16 +48,16 @@ export const MortarBasic = (props) => {
                 <LabeledList.Item label="Mortar Pos Y">
                   {data.ourY}
                 </LabeledList.Item>
+                {data.maxDistance !== null && (
+                  <LabeledList.Item
+                    label="Maximum Range"
+                    color={data.inRange ? undefined : 'red'}
+                  >
+                    {data.maxDistance}
+                    {!data.inRange && ' (Exceeded)'}
+                  </LabeledList.Item>
+                )}
               </LabeledList>
-              {data.maxDistance !== null && (
-                <LabeledList.Item
-                  label="Maximum Range"
-                  color={data.inRange ? undefined : 'red'}
-                >
-                  {data.maxDistance}
-                  {!data.inRange && ' (Exceeded)'}
-                </LabeledList.Item>
-              )}
             </Section>
           </Stack.Item>
           <Stack.Item grow>

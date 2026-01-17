@@ -50,7 +50,7 @@
 	var/unpack_sound_volume = 75
 	var/unpack_sound_vary = FALSE
 	var/fire_sound = 'sound/modules/sectors/air_support/mortar_fire.ogg'
-	var/fire_sound_volume = 75
+	var/fire_sound_volume = 100
 	var/fire_sound_vary = FALSE
 	var/load_sound = 'sound/modules/sectors/air_support/mortar_reload.ogg'
 	var/load_sound_volume = 75
@@ -162,14 +162,17 @@
 	if(!where_at)
 		qdel(shell)
 		return null
-	var/datum/map/where_map = SSmapping.ordered_levels[where_at.z].parent_map
+	var/datum/map_level/where_level = SSmapping.ordered_levels[where_at.z]
+	if(!where_level.is_in_struct())
+		return null
+	var/datum/map/where_map = where_level.parent_map
 	if(!where_map)
 		qdel(shell)
 		return null
 	if(!silent)
 		playsound(src, fire_sound, fire_sound_volume, fire_sound_vary, 3)
 	if(!suppressed)
-		// TODO: shake screen of those around
+		shake_camera_of_nearby_players(strength = WORLD_ICON_SIZE * 0.5, iterations = 1)
 		visible_message(SPAN_BOLDWARNING("[chat_html_embed_rendered()] [src] fires!"))
 
 	var/datum/mortar_flight/flight = new(shell)

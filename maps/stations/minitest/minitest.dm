@@ -84,3 +84,6 @@
 	)
 	base_turf = /turf/space
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
+	struct_x = 1
+	struct_y = 1
+	struct_z = 1

@@ -45,8 +45,10 @@
 	src.fired = TRUE
 	src.fired_firer = firer
 	src.fired_arrive_time = world.time + flight_duration
-	var/flight_telegraph = min(shell.pre_impact_sound_duration * 2, shell.pre_impact_sound_telegraph)
-	addtimer(CALLBACK(src, PROC_REF(impact_warning), flight_duration - flight_telegraph), flight_telegraph)
+	var/flight_telegraph_duration = min(shell.pre_impact_sound_duration * 2, shell.pre_impact_sound_telegraph)
+	var/flight_telegraph_time = max(flight_duration - flight_telegraph_duration, 0)
+	var/time_to_impact_after_telegraph = flight_duration - flight_telegraph_time
+	addtimer(CALLBACK(src, PROC_REF(impact_warning), time_to_impact_after_telegraph), flight_telegraph_time)
 	addtimer(CALLBACK(src, PROC_REF(impact)), flight_duration)
 
 /datum/mortar_flight/proc/get_players_in_radius_of_target(radius) as /list
