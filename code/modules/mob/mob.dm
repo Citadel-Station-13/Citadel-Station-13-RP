@@ -1252,50 +1252,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 //* Layer-shift verbs *//
 
-// TODO: /verbs folder these
-
-/mob/verb/set_self_relative_layer()
-	set name = "Set relative layer"
-	set desc = "Set your relative layer to other mobs on the same layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
-
-	var/new_layer = input(src, "What do you want to shift your layer to? (-100 to 100)", "Set Relative Layer", clamp(relative_layer, -100, 100))
-	new_layer = clamp(new_layer, -100, 100)
-	set_relative_layer(new_layer)
-
-/mob/verb/shift_relative_behind()
-	set name = "Move Behind"
-	set desc = "Move behind of a mob with the same base layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
-
-	if(!client.throttle_verb())
-		return
-
-	var/mob/M = tgui_input_list(src, "What mob to move behind?", "Move Behind", get_relative_shift_targets())
-
-	if(QDELETED(M))
-		return
-
-	set_relative_layer(M.relative_layer - 1)
-
-/mob/verb/shift_relative_infront()
-	set name = "Move Infront"
-	set desc = "Move infront of a mob with the same base layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
-
-	if(!client.throttle_verb())
-		return
-
-	var/mob/M = tgui_input_list(src, "What mob to move infront?", "Move Infront", get_relative_shift_targets())
-
-	if(QDELETED(M))
-		return
-
-	set_relative_layer(M.relative_layer + 1)
-
 /mob/proc/get_relative_shift_targets()
 	. = list()
 	var/us = isnull(base_layer)? layer : base_layer
