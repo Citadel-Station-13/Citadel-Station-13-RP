@@ -10,6 +10,8 @@ SUBSYSTEM_DEF(alarms)
 	name = "Alarms"
 	wait = 2 SECONDS
 	priority = FIRE_PRIORITY_ALARMS
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+
 	var/static/list/datum/alarm/all_handlers
 	var/tmp/list/currentrun = null
 	var/static/list/active_alarm_cache = list()

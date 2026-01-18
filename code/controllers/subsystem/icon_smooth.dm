@@ -5,7 +5,6 @@ SUBSYSTEM_DEF(icon_smooth)
 	)
 	wait = 0.25 // scale up to 40 fps
 	priority = FIRE_PRIORITY_SMOOTHING
-	subsystem_flags = NONE
 	runlevels = RUNLEVELS_ALL
 
 	///Blueprints assemble an image of what pipes/manifolds/wires look like on initialization, and thus should be taken after everything's been smoothed

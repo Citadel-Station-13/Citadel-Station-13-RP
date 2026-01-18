@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
 	wait = 20
+	subsystem_flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	/// Current state of the game
@@ -242,6 +243,7 @@ SUBSYSTEM_DEF(ticker)
 	if((master_mode=="random") || (master_mode=="secret"))
 		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
+			start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pregame lobby.")
 			return 0
@@ -257,6 +259,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(!src.mode)
 		current_state = GAME_STATE_PREGAME
+		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		to_chat(world, "<span class='danger'>Serious error in mode setup!</span> Reverting to pregame lobby.") //Uses setup instead of set up due to computational context.
 		return 0
@@ -269,6 +272,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!src.mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players readied, [config_legacy.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby.")
 		current_state = GAME_STATE_PREGAME
+		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		mode.fail_setup()
 		mode = null
