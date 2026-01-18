@@ -143,18 +143,18 @@
 		. += link.attunement_power_global
 
 /datum/stargazer_mindnet/proc/erase_mind_link(datum/mind/mind)
-	var/datum/mind_ref/mind_ref = mind.mind_ref()
+	var/datum/mind_ref/mind_ref = mind.get_mind_ref()
 	if(!link_lookup[mind_ref])
 		return
 	link_lookup[mind_ref] = null
 	update_static_data()
 
 /datum/stargazer_mindnet/proc/get_mind_link(datum/mind/mind)
-	var/datum/mind_ref/mind_ref = mind.mind_ref()
+	var/datum/mind_ref/mind_ref = mind.get_mind_ref()
 	return link_lookup[mind_ref]
 
 /datum/stargazer_mindnet/proc/get_or_create_mind_link(datum/mind/mind)
-	var/datum/mind_ref/mind_ref = mind.mind_ref()
+	var/datum/mind_ref/mind_ref = mind.get_mind_ref()
 	if(link_lookup[mind_ref])
 		return link_lookup[mind_ref]
 	link_lookup[mind_ref] = new /datum/stargazer_mindnet_link(src, mind_ref)
@@ -200,7 +200,7 @@
 	/// * Nullable; mindnets can be detached / transferred in-code, even if it's impossible in game.
 	var/obj/item/organ/internal/brain/promethean/owning_core
 
-/datum/stargazer_mindnet/promethean/New(obj/item/organ/internal/brian/promethean/core)
+/datum/stargazer_mindnet/promethean/New(obj/item/organ/internal/brain/promethean/core)
 	src.owning_core = core
 
 /datum/stargazer_mindnet/promethean/Destroy()
@@ -218,7 +218,7 @@
 	/// * Nullable; mindnets can be detached / transferred in-code, even if it's impossible in game.
 	var/obj/item/organ/internal/brain/xenochimera/owning_core
 
-/datum/stargazer_mindnet/xenochimera/New(obj/item/organ/internal/brian/xenochimera/core)
+/datum/stargazer_mindnet/xenochimera/New(obj/item/organ/internal/brain/xenochimera/core)
 	src.owning_core = core
 
 /datum/stargazer_mindnet/xenochimera/Destroy()

@@ -40,8 +40,21 @@
 	 */
 	var/cooperate_prompt_timeout = 15 SECONDS
 
+	/**
+	 * Is our prompt already done?
+	 */
+	var/is_prompt_finished = FALSE
+	/**
+	 * How long to not delete after being done
+	 */
+	var/keep_alive_for
+	/**
+	 * Delete-self timerid after finishing
+	 */
+	var/cleanup_timerid
 
-/datum/stargazer_mindnet_exec/New(dedupe_key)
+/datum/stargazer_mindnet_exec/New(datum/stargazer_mindnet/mindnet, dedupe_key, datum/mind/target)
+	#warn mindnet/target
 	src.dedupe_key = dedupe_key || num2text(rand(1, 999999), 16)
 
 /**
@@ -50,10 +63,24 @@
  */
 /datum/stargazer_mindnet_exec/proc/set_chat_prompt(format)
 
+/datum/stargazer_mindnet_exec/proc/run_prompt()
+
 /**
  * Keeps us alive for atleast this much more time.
  * * Used to stop an exec from being qdel'd even after the cooperation prompt is done.
+ * * Will **overwrite** a prior 'keep alive for', potentially resulting in us being deleted **sooner**.
  */
 /datum/stargazer_mindnet_exec/proc/keep_alive_for(time)
+	keep_alive_for = time
+	if(is_prompt_finished)
+		kick_cleanup_timer()
+
+/datum/stargazer_mindnet_exec/proc/kick_cleanup_timer()
+	if(cleanup_timerid)
+		deltimer(cleanup_timerid)
+	cleanup_timerid = addtimer(CALLBACK(src, PROC_REF(cleanup)), keep_alive_for, TIMER_STOPPABLE)
+
+/datum/stargazer_mindnet_exec/proc/cleanup()
+
 
 #warn impl

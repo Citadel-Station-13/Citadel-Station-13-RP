@@ -9,9 +9,7 @@
 //* that lessens the ability to tell what specifically is going on from the message alone. *//
 //*                                                                                        *//
 //* Furthermore, these are procs because some of them may have logic.                      *//
-//* The proc variants are in __HELPERS/action_descriptors.dm                               *//
+//* The #define + string_format() variants are in __DEFINES/action_descriptors.dm          *//
 
-#define ACTION_DESCRIPTOR_FOR_EXAMINE_FMTSTR(ENTITY_TAG, TARGET_TAG) \
-	SPAN_TINYNOTICE("<b>%%[ENTITY_TAG]%%</b> looks at %%[TARGET_TAG]%%.")
-#define ACTION_DESCRIPTOR_FOR_EXAMINE_FMTSTR_CONST(ENTITY_TAG, TARGET_TAG) \
-	SPAN_TINYNOTICE_CONST("<b>%%" + ENTITY_TAG + "%%</b> looks at %%" + TARGET_TAG + "%%.")
+/proc/action_descriptor_for_examine(entity, target)
+	return SPAN_TINYNOTICE_CONST("<b>[entity]</b> looks at [target].")
