@@ -33,10 +33,10 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	/// arming requirement
 	var/arming_time = 10 SECONDS
 
-	/// last launch, if any
-	var/launch_last
+	/// next launch allowed time
+	var/launch_next_ready_time
 	/// launch cooldown
-	var/launch_cooldown = 2 MINUTES
+	var/launch_cooldown = 2.5 MINUTES
 
 	/// max overmap bounds dist we can launch at
 	var/max_overmap_pixel_dist = WORLD_ICON_SIZE * 3
@@ -148,9 +148,6 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 			any_area_collision = TRUE
 			left_behind_areas |= inside.loc
 	deployment_area.take_turfs(inside_zone)
-	if(any_area_collision)
-		stack_trace("[length(left_behind_areas)] areas left behind on zone construction. \
-		A launch probably bugged out or was somehow not done properly.")
 	for(var/area/orbital_deployment_area/other_area as anything in left_behind_areas)
 		// this is probably laggy but like you shouldn't be leaving areas behind!
 		if(!length(other_area.contents))
@@ -193,6 +190,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	var/obj/overmap/entity/their_entity = SSovermaps.get_enclosing_overmap_entity(target_center)
 	if(!their_entity)
 		return null
+	launch_next_ready_time = world.time + launch_cooldown
 	var/datum/orbital_deployment_transit/transit = new(src)
 	var/list/target_corners = compute_target_corners(target_center, dir_from_north)
 	transit.target_lower_left = target_corners[1]
@@ -202,7 +200,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 		qdel(transit)
 		CRASH("failed to package transit; this shouldn't happen")
 	construct_zone()
-	var/obj/overmap/entity/orbital_deployment_transit/transit_entity = new(our_entity, src, transit)
+	var/obj/overmap/entity/orbital_deployment_transit/transit_entity = new(our_entity, null, src, transit)
 	transit_entity.launch(their_entity)
 	return transit_entity
 
@@ -215,7 +213,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	// -- check bounds --
 	var/list/target_corners = compute_target_corners(target_center, dir_from_north)
 	if(!target_corners)
-		errors_out?.Add("Out of bounds of sector or resides on border of valid atmospheric entry corridor.")
+		errors_out?.Add("out of bounds of sector or resides on border of valid atmospheric entry corridor")
 		return FALSE
 
 	// -- check area invariance --
@@ -225,7 +223,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 		var/area/A = lower_left.loc
 		if(A.special)
 			// i don't care to be IC about it too bad lol
-			errors_out?.Add("Would collide with invariant region.")
+			errors_out?.Add("would collide with invariant region")
 			return FALSE
 	}
 	while(FALSE)
@@ -233,7 +231,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 		var/area/A = upper_right.loc
 		if(A.special)
 			// i don't care to be IC about it too bad lol
-			errors_out?.Add("Would collide with invariant region.")
+			errors_out?.Add("would collide with invariant region")
 			return FALSE
 	}
 	while(FALSE)
@@ -243,7 +241,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 		var/area/A = T.loc
 		if(A.special)
 			// i don't care to be IC about it too bad lol
-			errors_out?.Add("Would collide with invariant region.")
+			errors_out?.Add("would collide with invariant region")
 			return FALSE
 	// -- check balance vectors / safety --
 

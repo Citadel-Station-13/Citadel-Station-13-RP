@@ -98,8 +98,8 @@
 	var/target_y = allocating.bottom_left_coords[2] + border
 	var/list/dst_ordered = SSgrids.get_ordered_turfs(
 		target_x,
-		target_y,
 		target_x + width - 1,
+		target_y,
 		target_y + height - 1,
 		allocating.bottom_left_coords[3],
 		NORTH,
@@ -118,6 +118,8 @@
 		testing_turf.baseturf_core(),
 		/area/space,
 	)
+
+	return TRUE
 
 /datum/orbital_deployment_transit/proc/land()
 	if(src.landing)

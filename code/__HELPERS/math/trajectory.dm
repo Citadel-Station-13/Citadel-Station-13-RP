@@ -160,31 +160,32 @@
 	var/c = offset.Dot(offset)
 
 	var/list/results = SolveQuadratic(a, b, c)
+	var/time
 
 	// we want the smaller number
 	// return null if intercept is impossible
 	switch(length(results))
 		if(1)
-			. = results[1] > 0 ? results[1] : null
+			time = results[1] > 0 ? results[1] : null
 		if(2)
 			if(results[1] < 0)
 				if(results[2] < 0)
 					// both invalid
 				else
 					// 2 valid
-					. = results[2]
+					time = results[2]
 			else
 				if(results[2] < 0)
 					// 1 valid
-					. = results[1]
+					time = results[1]
 				else
 					// both valid
-					. = results[2] < results[1] ? results[2] : results[1]
+					time = results[2] < results[1] ? results[2] : results[1]
 
 	// if we don't have a time, we will never intersect
-	if(!.)
+	if(!time)
 		return
 
 	// solve for angle
-	var/vector/intersection_point = target + target_vel * .
-	return arctan(intersection_point[2])
+	var/vector/intersection_point = target + target_vel * time
+	return list(arctan(intersection_point[2]), time)

@@ -13,7 +13,7 @@
 	var/datum/orbital_deployment_zone/zone
 	var/datum/orbital_deployment_transit/transit
 
-/obj/overmap/entity/orbital_deployment_transit/Initialize(mapload, datum/orbital_deployment_zone/zone, datum/orbital_deployment_transit/transit)
+/obj/overmap/entity/orbital_deployment_transit/Initialize(mapload, datum/overmap_location/location, datum/orbital_deployment_zone/zone, datum/orbital_deployment_transit/transit)
 	src.zone = zone
 	src.transit = transit
 	// ! WARNING THIS MOVES US OUT OF THE ENTITY !

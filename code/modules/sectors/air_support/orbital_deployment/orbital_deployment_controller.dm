@@ -76,7 +76,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 		"armed" = linked_zone.is_armed(),
 		"arming" = linked_zone.arming,
 		"armToggleOnCooldown" = world.time < (linked_zone.arming_last_toggle + linked_zone.arming_cooldown),
-		"launchOnCooldown" = world.time < (linked_zone.launch_last + linked_zone.launch_cooldown),
+		"launchOnCooldown" = world.time < linked_zone.launch_next_ready_time,
 		"maxOvermapPixelDist" = OVERMAP_PIXEL_TO_DIST(linked_zone.max_overmap_pixel_dist),
 	) : null
 
@@ -176,6 +176,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 				return TRUE
 			if(linked_zone.time_to_armed() > 0)
 				return TRUE
+			if(linked_zone.launch_next_ready_time > world.time)
+				return TRUE
 			var/atom/movable/target_ref
 			if(params["targetType"] == "laser")
 				var/atom/movable/laser_designator_target/dangerously_unchecked_target = locate(params["targetRef"])
@@ -184,7 +186,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 				if(!check_target_laser_validity(dangerously_unchecked_target))
 					return TRUE
 				target_ref = dangerously_unchecked_target
-			else if(params["targetType" == "flare"])
+			else if(params["targetType"] == "flare")
 				var/obj/item/signal_flare/dangerously_unchecked_target = locate(params["targetRef"])
 				if(!istype(dangerously_unchecked_target))
 					return TRUE
@@ -193,12 +195,17 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 				target_ref = dangerously_unchecked_target
 			var/turf/target_center = get_turf(target_ref)
 			var/dir_from_north = params["dir"]
+			// TODO: we should probably care about warnings?? the UI should show them and update automatically...
 			var/list/out_warnings = list()
 			var/list/out_errors = list()
+			var/pass = TRUE
 			if(!linked_zone.check_zone(target_center, dir_from_north, out_warnings, out_errors))
-				return TRUE
-			// TODO: emit warnings / errors as spoken output?
+				pass = FALSE
 			if(length(out_errors))
+				pass = FALSE
+			if(!pass)
+				linked_zone.arming_last_toggle = world.time - max(0, linked_zone.arming_time - linked_zone.arming_cooldown)
+				atom_say("Could not launch - [english_list(out_errors)].")
 				return TRUE
 			linked_zone.launch(target_center, dir_from_north, actor = actor)
 			return TRUE

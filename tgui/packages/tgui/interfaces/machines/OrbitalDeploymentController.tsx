@@ -48,6 +48,7 @@ export const OrbitalDeploymentController = (props) => {
   const [selectedTarget, setSelectedTarget] = useState<[string, string] | null>(
     null,
   );
+  const [launchDir, setLaunchDir] = useState(1);
 
   let targetValid = false;
   if (selectedTarget) {
@@ -78,22 +79,76 @@ export const OrbitalDeploymentController = (props) => {
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
-            <Section title="Status">
-              {data.zone ? (
-                <LabeledList>
-                  <LabeledList.Item label="Status">
-                    {data.zone.launchOnCooldown ? 'Recharging' : 'Ready'}
-                  </LabeledList.Item>
-                  <LabeledList.Item label="Range">
-                    {data.zone.maxOvermapPixelDist / 32} Tiles
-                  </LabeledList.Item>
-                </LabeledList>
-              ) : (
-                <Dimmer>
-                  <NoticeBox danger>Controller has no linked zone.</NoticeBox>
-                </Dimmer>
-              )}
-            </Section>
+            <Stack fill>
+              <Stack.Item grow>
+                <Section fill title="Status">
+                  {data.zone ? (
+                    <LabeledList>
+                      <LabeledList.Item label="Status">
+                        {data.zone.launchOnCooldown ? 'Recharging' : 'Ready'}
+                      </LabeledList.Item>
+                      <LabeledList.Item label="Range">
+                        {data.zone.maxOvermapPixelDist / 32} Tiles
+                      </LabeledList.Item>
+                    </LabeledList>
+                  ) : (
+                    <Dimmer>
+                      <NoticeBox danger>
+                        Controller has no linked zone.
+                      </NoticeBox>
+                    </Dimmer>
+                  )}
+                </Section>
+              </Stack.Item>
+              <Stack.Item grow>
+                <Section fill title="Orientation">
+                  <Stack>
+                    <Stack.Item grow={1}>
+                      <Button
+                        width="100%"
+                        content="(CW 0°)"
+                        icon="arrow-down"
+                        color="transparent"
+                        onClick={() => setLaunchDir(1)}
+                        selected={launchDir === 1}
+                      />
+                    </Stack.Item>
+                    <Stack.Item grow={1}>
+                      <Button
+                        width="100%"
+                        content="(CW 90°)"
+                        icon="arrow-left"
+                        color="transparent"
+                        onClick={() => setLaunchDir(4)}
+                        selected={launchDir === 4}
+                      />
+                    </Stack.Item>
+                  </Stack>
+                  <Stack>
+                    <Stack.Item grow={1}>
+                      <Button
+                        width="100%"
+                        content="(CW 180)"
+                        icon="arrow-up"
+                        color="transparent"
+                        onClick={() => setLaunchDir(2)}
+                        selected={launchDir === 2}
+                      />
+                    </Stack.Item>
+                    <Stack.Item grow={1}>
+                      <Button
+                        width="100%"
+                        content="(CW 270°)"
+                        icon="arrow-right"
+                        color="transparent"
+                        onClick={() => setLaunchDir(8)}
+                        selected={launchDir === 8}
+                      />
+                    </Stack.Item>
+                  </Stack>
+                </Section>
+              </Stack.Item>
+            </Stack>
           </Stack.Item>
           <Stack.Item grow>
             <Section
@@ -266,15 +321,20 @@ export const OrbitalDeploymentController = (props) => {
                   <Button.Confirm
                     textAlign="center"
                     fluid
-                    disabled={!data.zone?.armed || !targetValid}
+                    disabled={
+                      !data.zone?.armed ||
+                      !targetValid ||
+                      !data.zone.launchOnCooldown
+                    }
                     onClick={() =>
                       act('launch', {
                         targetType: selectedTarget?.[0],
                         targetRef: selectedTarget?.[1],
+                        dir: launchDir,
                       })
                     }
                   >
-                    Launch
+                    {data.zone?.launchOnCooldown ? 'Recharging' : 'Launch'}
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>

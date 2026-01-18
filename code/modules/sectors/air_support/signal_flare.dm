@@ -41,7 +41,8 @@
 	. = ..()
 	var/append
 	if(ignited)
-		append = "-active"
+		if(ready)
+			append = "-active"
 		var/image/flame = image(icon, flame_state)
 		flame.color = flame_color
 		flame.appearance_flags = KEEP_APART | RESET_COLOR
@@ -60,7 +61,13 @@
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	// TODO: log
-	#warn feedback
+	actor.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[actor.performer] ignites [src]!"),
+		otherwise_self = SPAN_WARNING("You ignite [src]!"),
+	)
+	actor.initiator.throw_mode_on()
 	ignite()
 
 /obj/item/signal_flare/proc/ignite()
