@@ -147,6 +147,12 @@ SUBSYSTEM_DEF(ticker)
 		return
 	timeLeft -= wait
 	if(timeLeft <= 0)
+		// TEMP: do not start until subsystem fully inits
+		// subsystem init is slow so this is needed to not break shit
+		if (Master.init_stage_completed != INIT_STAGE_MAX)
+			start_at = world.time + (30 SECONDS)
+			timeLeft = max(0,start_at - world.time)
+			return
 		if((how_many_players_have_readied_up() > 0) || citest || start_immediately)
 			current_state = GAME_STATE_SETTING_UP
 			Master.SetRunLevel(RUNLEVEL_SETUP)
