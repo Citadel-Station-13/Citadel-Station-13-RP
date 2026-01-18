@@ -2,6 +2,10 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/orbital_deployment_transit
+	/**
+	 * This is the lower left corner of the target landing area. This does not
+	 * include padding added to the reservation.
+	 */
 	var/turf/target_lower_left
 	var/target_dir_from_north
 
@@ -37,6 +41,11 @@
 
 	var/landing = FALSE
 
+	/**
+	 * Border added to the transit reservation.
+	 */
+	var/const/border_size = 2
+
 /datum/orbital_deployment_transit/New(datum/orbital_deployment_zone/zone)
 	src.c_impact_obj_dmg_base = zone.c_impact_obj_dmg_base
 	src.c_impact_obj_dmg_sides = zone.c_impact_obj_dmg_sides
@@ -64,7 +73,7 @@
 	ASSERT(upper_right.x >= lower_left.x && upper_right.y >= lower_left.y)
 	var/width = upper_right.x - lower_left.x + 1
 	var/height = upper_right.y - lower_left.y + 1
-	var/border = 2
+	var/border = border_size
 
 	var/datum/map_reservation/allocating = SSmapping.request_block_reservation(
 		width + border * 2,

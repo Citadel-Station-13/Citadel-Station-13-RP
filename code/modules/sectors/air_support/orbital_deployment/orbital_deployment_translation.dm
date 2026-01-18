@@ -72,6 +72,8 @@
 		turf_overlap_coord_x += to_turf.x
 		turf_overlap_coord_y += to_turf.y
 		++types_crushed[to_turf.type]
+		// get rid of it so it doesn't get stacked ontop
+		to_turf.ScrapeAway()
 
 /datum/orbital_deployment_translation/proc/on_movable_overlap(atom/movable/victim, turf/from_turf, turf/to_turf)
 	var/throw_aside_and_crush = FALSE

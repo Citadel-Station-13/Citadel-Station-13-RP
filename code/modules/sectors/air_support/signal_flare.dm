@@ -83,7 +83,6 @@
 		ignite_light_power,
 		ignite_light_color,
 	)
-	AddComponent(/datum/component/spatial_grid, SSspatial_grids.signal_flares)
 	// TODO: sound
 
 /obj/item/signal_flare/proc/ready()

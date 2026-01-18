@@ -260,8 +260,7 @@ export const OrbitalDeploymentController = (props) => {
                     }
                     onClick={() =>
                       act('launch', {
-                        targetType: selectedTarget?.[0],
-                        targetRef: selectedTarget?.[1],
+                        targetRef: selectedTarget,
                         dir: launchDir,
                       })
                     }

@@ -1,8 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-// TODO: can this be combined with the gps signal system? it's silly to have both.
-
 GLOBAL_LIST_EMPTY(high_altitude_signals)
 
 /**
@@ -59,7 +57,7 @@ GLOBAL_LIST_EMPTY(high_altitude_signals)
 /datum/component/high_altitude_signal/Initialize(visible_name = "high altitude signal")
 	if(!isatom(parent) || ((. = ..()) == COMPONENT_INCOMPATIBLE))
 		return COMPONENT_INCOMPATIBLE
-	src.gps_tag = gps_tag
+	src.visible_name = visible_name
 
 /datum/component/high_altitude_signal/RegisterWithParent()
 	. = ..()

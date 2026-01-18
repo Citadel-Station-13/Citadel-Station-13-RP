@@ -11,10 +11,6 @@
 /proc/shake_camera(atom/movable/AM, duration, strength, iterations)
 	if(!AM || isEye(AM) || isAI(AM))
 		return
-	if(ismob(AM))
-		var/mob/M = AM
-		if(!IS_CONSCIOUS(M))
-			return
 	if(!AM.self_perspective)
 		return
 	for(var/client/C in AM.self_perspective.get_clients())

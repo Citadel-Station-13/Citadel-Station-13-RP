@@ -67,8 +67,8 @@
 	var/ll_of_source_x = source_coords[1] - 1
 	var/ll_of_source_y = source_coords[2] - 1
 	var/ll_of_source_z = source_coords[3]
-	var/ll_of_target_x = transit.target_lower_left.x - 1
-	var/ll_of_target_y = transit.target_lower_left.y - 1
+	var/ll_of_target_x = transit.target_lower_left.x - transit.border_size - 1
+	var/ll_of_target_y = transit.target_lower_left.y - transit.border_size - 1
 	var/ll_of_target_z = transit.target_lower_left.z
 	// telegraph tiles that exist
 	for(var/x in 1 to transit.packaged_width)

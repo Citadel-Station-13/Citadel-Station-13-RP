@@ -22,6 +22,7 @@
 
 	var/datum/component/high_altitude_signal/signal_comp = AddComponent(/datum/component/high_altitude_signal, "rangefinding laser")
 	signal_comp.on_get_effective_turf = CALLBACK(src, PROC_REF(get_effective_turf))
+	signal_comp.require_effective_turf_high_altitude_visibility = TRUE
 
 	if(ismovable(loc))
 		var/atom/movable/thingy = loc
