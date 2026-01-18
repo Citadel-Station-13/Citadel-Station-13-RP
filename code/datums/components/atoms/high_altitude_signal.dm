@@ -53,6 +53,8 @@ GLOBAL_LIST_EMPTY(high_altitude_signals)
 	/// * Invoked with (src)
 	/// * Allowed to return null.
 	var/datum/callback/on_get_effective_turf
+	/// require high altitude visibility of the **effective** turf
+	var/require_effective_turf_high_altitude_visibility = FALSE
 
 /datum/component/high_altitude_signal/Initialize(visible_name = "high altitude signal")
 	if(!isatom(parent) || ((. = ..()) == COMPONENT_INCOMPATIBLE))
@@ -106,4 +108,9 @@ GLOBAL_LIST_EMPTY(high_altitude_signals)
 	return on_is_active ? on_is_active.invoke_no_sleep(src) : TRUE
 
 /datum/component/high_altitude_signal/proc/get_effective_turf()
-	return on_get_effective_turf ? on_get_effective_turf.invoke_no_sleep(src) : get_turf(parent)
+	var/turf/effective = on_get_effective_turf ? on_get_effective_turf.invoke_no_sleep(src) : get_turf(parent)
+	if(!effective)
+		return null
+	if(require_effective_turf_high_altitude_visibility && !SSmap_sectors.is_turf_visible_from_high_altitude(effective))
+		return null
+	return effective

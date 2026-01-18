@@ -15,24 +15,17 @@ import { Window } from '../../layouts';
 
 interface OrbitalDeploymentControllerData {
   zone: OrbitalDeploymentZoneData | null;
-  lasers: OrbitalDeploymentLaserData[];
-  flares: OrbitalDeploymentFlareData[];
+  signals: OrbitalDeploymentTargetData[];
   refreshOnCooldown: BooleanLike;
 }
 
 interface OrbitalDeploymentTargetData {
+  ref: string;
   name: string;
   // virtual x (m), virtual y (m), elevation (m)
   coords: [number, number, number];
   overmapDist: number;
   overmapName: string;
-}
-
-interface OrbitalDeploymentFlareData extends OrbitalDeploymentTargetData {
-  ref: string;
-}
-interface OrbitalDeploymentLaserData extends OrbitalDeploymentTargetData {
-  ref: string;
 }
 
 interface OrbitalDeploymentZoneData {
@@ -45,24 +38,10 @@ interface OrbitalDeploymentZoneData {
 
 export const OrbitalDeploymentController = (props) => {
   const { act, data } = useBackend<OrbitalDeploymentControllerData>();
-  const [selectedTarget, setSelectedTarget] = useState<[string, string] | null>(
-    null,
-  );
+  const [selectedTarget, setSelectedTarget] = useState<string | null>(null);
   const [launchDir, setLaunchDir] = useState(1);
 
-  let targetValid = false;
-  if (selectedTarget) {
-    if (selectedTarget[0] === 'laser') {
-      if (data.lasers.find((a) => a.ref === selectedTarget[1])) {
-        targetValid = true;
-      }
-    }
-    if (selectedTarget[0] === 'flare') {
-      if (data.flares.find((a) => a.ref === selectedTarget[1])) {
-        targetValid = true;
-      }
-    }
-  }
+  const targetValid = data.signals.find((a) => a.ref === selectedTarget);
 
   // start auto-refreshing
   useEffect(() => {
@@ -195,11 +174,8 @@ export const OrbitalDeploymentController = (props) => {
                   </Table.Cell>
                   <Table.Cell minWidth={1} />
                 </Table.Row>
-                {data.flares.map((f) => {
-                  let isSelectedTarget =
-                    selectedTarget &&
-                    selectedTarget[0] === 'flare' &&
-                    selectedTarget[1] === f.ref;
+                {data.signals.map((f) => {
+                  let isSelectedTarget = selectedTarget === f.ref;
                   return (
                     <Table.Row
                       key={f.ref}
@@ -233,51 +209,7 @@ export const OrbitalDeploymentController = (props) => {
                           onClick={() =>
                             isSelectedTarget
                               ? setSelectedTarget(null)
-                              : setSelectedTarget(['flare', f.ref])
-                          }
-                        />
-                      </Table.Cell>
-                    </Table.Row>
-                  );
-                })}
-                {data.lasers.map((f) => {
-                  let isSelectedTarget =
-                    selectedTarget &&
-                    selectedTarget[0] === 'laser' &&
-                    selectedTarget[1] === f.ref;
-                  return (
-                    <Table.Row
-                      key={f.ref}
-                      style={{ borderTop: 'solid 1px #ffffff66' }}
-                    >
-                      <Table.Cell
-                        style={{ borderRight: 'solid 1px #ffffff66' }}
-                      >
-                        {f.name}
-                      </Table.Cell>
-                      <Table.Cell
-                        style={{ borderRight: 'solid 1px #ffffff66' }}
-                      >
-                        {f.overmapName}
-                      </Table.Cell>
-                      <Table.Cell
-                        style={{ borderRight: 'solid 1px #ffffff66' }}
-                      >
-                        {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
-                      </Table.Cell>
-                      <Table.Cell
-                        style={{ borderRight: 'solid 1px #ffffff66' }}
-                      >
-                        {f.overmapDist / 32} Tiles
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Button
-                          icon="target"
-                          selected={isSelectedTarget}
-                          onClick={() =>
-                            isSelectedTarget
-                              ? setSelectedTarget(null)
-                              : setSelectedTarget(['laser', f.ref])
+                              : setSelectedTarget(f.ref)
                           }
                         />
                       </Table.Cell>

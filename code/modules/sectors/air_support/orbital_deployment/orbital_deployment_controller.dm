@@ -88,8 +88,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	. = list()
 
 	var/obj/overmap/entity/our_overmap_entity = get_overmap_sector(src)
-	var/list/assembled_lasers = list()
-	var/list/assembled_flares = list()
+	var/list/assembled_signals = list()
 
 	if(our_overmap_entity && linked_zone)
 		var/list/obj/overmap/entity/overmap_query_results = SSovermaps.entity_pixel_dist_query(our_overmap_entity, linked_zone.max_overmap_pixel_dist)
@@ -103,30 +102,21 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 			// TODO: overmaps sensor update
 			var/overmap_name = entity_in_range.name
 			for(var/z in entity_in_range.location?.get_z_indices())
-				var/list/atom/movable/laser_designator_target/lasers = SSmap_sectors.laser_designation_query(z)
-				var/list/obj/item/signal_flare/flares = SSmap_sectors.signal_flare_query(z)
-
-				for(var/atom/movable/laser_designator_target/laser as anything in lasers)
+				var/list/datum/component/high_altitude_signal/signals = SSmap_sectors.high_altitude_signal_query(z)
+				for(var/datum/component/high_altitude_signal/signal as anything in signals)
+					var/turf/effective_turf = signal.get_effective_turf()
+					if(!effective_turf)
+						continue
 					// TODO: better name identification
-					assembled_lasers[++assembled_lasers.len] = list(
-						"ref" = ref(laser),
-						"name" = "targeting laser",
-						"coords" = SSmapping.get_virtual_coords_x_y_elevation(get_turf(laser)),
-						"overmapDist" = overmap_distance,
-						"overmapName" = overmap_name,
-					)
-				for(var/obj/item/signal_flare/flare as anything in flares)
-					// TODO: better name identification
-					assembled_flares[++assembled_flares.len] = list(
-						"ref" = ref(flare),
-						"name" = "signal flare",
-						"coords" = SSmapping.get_virtual_coords_x_y_elevation(get_turf(flare)),
+					assembled_signals[++assembled_signals.len] = list(
+						"ref" = ref(signal),
+						"name" = signal.visible_name,
+						"coords" = SSmapping.get_virtual_coords_x_y_elevation(effective_turf),
 						"overmapDist" = overmap_distance,
 						"overmapName" = overmap_name,
 					)
 
-	.["lasers"] = assembled_lasers
-	.["flares"] = assembled_flares
+	.["signals"] = assembled_signals
 
 /obj/machinery/orbital_deployment_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -178,22 +168,18 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 				return TRUE
 			if(linked_zone.launch_next_ready_time > world.time)
 				return TRUE
-			var/atom/movable/target_ref
-			if(params["targetType"] == "laser")
-				var/atom/movable/laser_designator_target/dangerously_unchecked_target = locate(params["targetRef"])
+			var/datum/component/high_altitude_signal/signal_ref
+			do
+				var/datum/component/high_altitude_signal/dangerously_unchecked_target = locate(params["targetRef"])
 				if(!istype(dangerously_unchecked_target))
 					return TRUE
-				if(!check_target_laser_validity(dangerously_unchecked_target))
-					return TRUE
-				target_ref = dangerously_unchecked_target
-			else if(params["targetType"] == "flare")
-				var/obj/item/signal_flare/dangerously_unchecked_target = locate(params["targetRef"])
-				if(!istype(dangerously_unchecked_target))
-					return TRUE
-				if(!check_target_flare_validity(dangerously_unchecked_target))
-					return TRUE
-				target_ref = dangerously_unchecked_target
-			var/turf/target_center = get_turf(target_ref)
+				signal_ref = dangerously_unchecked_target
+			while(FALSE)
+			if(!signal_ref.is_active())
+				return TRUE
+			var/turf/target_center = signal_ref.get_effective_turf()
+			if(!target_center)
+				return TRUE
 			var/dir_from_north = params["dir"]
 			// TODO: we should probably care about warnings?? the UI should show them and update automatically...
 			var/list/out_warnings = list()
@@ -209,13 +195,3 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 				return TRUE
 			linked_zone.launch(target_center, dir_from_north, actor = actor)
 			return TRUE
-
-/obj/machinery/orbital_deployment_controller/proc/check_target_laser_validity(atom/movable/laser_designator_target/target)
-	if(!isturf(target.loc))
-		return
-	return SSmap_sectors.is_turf_visible_from_high_altitude(target.loc)
-
-/obj/machinery/orbital_deployment_controller/proc/check_target_flare_validity(obj/item/signal_flare/flare)
-	if(!isturf(flare.loc))
-		return
-	return flare.ready

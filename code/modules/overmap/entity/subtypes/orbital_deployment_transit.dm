@@ -49,7 +49,8 @@
 	if(!computed)
 		CRASH("failed to solve intercept trajectory for orbital launch; please don't launch at living planets!")
 	var/use_angle = computed[1]
-	var/use_time = max(computed[2], 0.5 SECONDS)
+	// yeah nah always give a telegraph time
+	var/use_time = max(computed[2], 10 SECONDS)
 	var/use_telegraph_time = max(use_time - transit.c_telegraph_time, 0)
 
 	addtimer(CALLBACK(src, PROC_REF(telegraph), use_time - use_telegraph_time), use_telegraph_time)

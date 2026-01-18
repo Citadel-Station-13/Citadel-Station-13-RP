@@ -7,26 +7,12 @@ SUBSYSTEM_DEF(map_sectors)
 
 // todo: eventual SSplanets replacement
 
-/datum/controller/subsystem/map_sectors/proc/signal_flare_query(z, requires_active = TRUE, requires_on_ground = TRUE)
+/datum/controller/subsystem/map_sectors/proc/high_altitude_signal_query(z)
 	. = list()
-	for(var/obj/item/signal_flare/flare as anything in SSspatial_grids.signal_flares.all_atoms(z))
-		if(requires_active && !flare.ready)
+	for(var/datum/component/high_altitude_signal/signal as anything in GLOB.high_altitude_signals[z])
+		if(!signal.is_active())
 			continue
-		if(requires_on_ground && !isturf(flare.loc))
-			continue
-		. += flare
-
-/datum/controller/subsystem/map_sectors/proc/laser_designation_query(z, check_los = TRUE, for_weapons = FALSE)
-	. = list()
-	for(var/atom/movable/laser_designator_target/target as anything in SSspatial_grids.laser_designations.all_atoms(z))
-		var/turf/effective_turf = target.get_effective_turf()
-		if(!effective_turf)
-			continue
-		if(check_los && !is_turf_visible_from_high_altitude(effective_turf))
-			continue
-		if(for_weapons && !target.allow_weapons_guidance)
-			continue
-		. += target
+		. += signal
 
 /datum/controller/subsystem/map_sectors/proc/is_turf_visible_from_high_altitude(turf/origin)
 	if(origin.sector_always_visible_from_high_altitude())
