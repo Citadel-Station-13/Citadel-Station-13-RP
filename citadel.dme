@@ -2296,6 +2296,7 @@
 #include "code\game\turfs\baseturfs.dm"
 #include "code\game\turfs\change_turf.dm"
 #include "code\game\turfs\simulated.dm"
+#include "code\game\turfs\turf-baseturf-helpers.dm"
 #include "code\game\turfs\turf-construction.dm"
 #include "code\game\turfs\turf-movement.dm"
 #include "code\game\turfs\turf.dm"

@@ -1,10 +1,11 @@
 /**
  * Shakes the camera of any client watching from an atom's perspective.
  * * The duration argument is treated as a suggestion.
+ * * The strength argument is in tiles.
  *
  * @params
  * * duration - how long to do it for
- * * strength - how many pixels max
+ * * strength - how much to shake max, in **tiles**
  * * iterations - forced iterations amount, otherwise automatic
  */
 /proc/shake_camera(atom/movable/AM, duration, strength, iterations)
@@ -21,10 +22,11 @@
 
 /**
  * * The duration argument is treated as a suggestion.
+ * * The strength argument is in tiles.
  */
-/proc/shake_camera_direct(client/C, duration = 0.3 SECONDS, strength = WORLD_ICON_SIZE * 0.5, iterations)
-	var/min = -WORLD_ICON_SIZE * strength
-	var/max = WORLD_ICON_SIZE * strength
+/proc/shake_camera_direct(client/C, duration = 0.3 SECONDS, strength = 0.5, iterations)
+	var/min = -strength
+	var/max = strength
 	var/old_x = C.pixel_x
 	var/old_y = C.pixel_y
 	if(!iterations)
@@ -46,6 +48,7 @@
 
 /**
  * * The duration argument is treated as a suggestion.
+ * * The strength argument is in tiles.
  */
 /proc/shake_camera_of_nearby_players(atom/center, range, duration, strength, iterations)
 	for(var/mob/maybe as anything in GLOB.player_list)

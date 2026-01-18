@@ -324,7 +324,7 @@ export const OrbitalDeploymentController = (props) => {
                     disabled={
                       !data.zone?.armed ||
                       !targetValid ||
-                      !data.zone.launchOnCooldown
+                      data.zone.launchOnCooldown
                     }
                     onClick={() =>
                       act('launch', {

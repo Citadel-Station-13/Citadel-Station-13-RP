@@ -109,13 +109,23 @@
 
 	log_orbital_deployment(launching_actor, "allocating/packaging a [width]x[height] area")
 
+	// unlike shuttles, we package **everything** that isn't the bottom of the baseturfs
+	// stack. this is technically not amazing behavior, but, uh, whatever lol?
+	// we probably should figure out some standardization of how baseturfs
+	// behave but also, not 3d engine so only so much we can do
+
+	// this loop has a null check (no as anything) because get ordered turfs can return nulls
+	for(var/turf/T in src_ordered)
+		T.insert_baseturf_above_root_if_not_exists(/turf/baseturf_skipover/orbital_deployment)
+
+	// yeet into package
 	SSgrids.translate(
 		src_ordered,
 		dst_ordered,
 		NORTH,
 		NORTH,
 		GRID_MOVE_AREA | GRID_MOVE_MOVABLES | GRID_MOVE_TURF,
-		testing_turf.baseturf_core(),
+		/turf/baseturf_skipover/orbital_deployment,
 		/area/space,
 	)
 
@@ -157,7 +167,7 @@
 	var/list/from_lower_left_coords = reservation.bottom_left_coords
 	var/list/from_turfs = SSgrids.get_ordered_turfs(
 		from_lower_left_coords[1] + packaged_border,
-		from_lower_left_coords[1] + packaged_border, packaged_width - 1,
+		from_lower_left_coords[1] + packaged_border + packaged_width - 1,
 		from_lower_left_coords[2] + packaged_border,
 		from_lower_left_coords[2] + packaged_border + packaged_height - 1,
 		from_lower_left_coords[3],
@@ -188,7 +198,7 @@
 		NORTH,
 		target_dir_from_north,
 		GRID_MOVE_AREA | GRID_MOVE_MOVABLES | GRID_MOVE_TURF,
-		reservation.turf_type,
+		/turf/baseturf_skipover/orbital_deployment,
 		reservation.area_type,
 		out_motion_flags,
 		out_moved_atoms,

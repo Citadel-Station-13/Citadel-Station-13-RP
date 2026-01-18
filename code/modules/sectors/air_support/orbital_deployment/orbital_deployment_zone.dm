@@ -141,11 +141,9 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	var/area/orbital_deployment_area/deployment_area = new(null)
 	current_area = deployment_area
 
-	var/any_area_collision = FALSE
 	var/list/area/orbital_deployment_area/left_behind_areas = list()
 	for(var/turf/inside as anything in inside_zone)
 		if(inside.loc.type == /area/orbital_deployment_area)
-			any_area_collision = TRUE
 			left_behind_areas |= inside.loc
 	deployment_area.take_turfs(inside_zone)
 	for(var/area/orbital_deployment_area/other_area as anything in left_behind_areas)
@@ -181,6 +179,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	return SSovermaps.get_enclosing_overmap_entity(lower_left)
 
 /datum/orbital_deployment_zone/proc/launch(turf/target_center, dir_from_north, dangerously_unsafe_ignore_checks, datum/event_args/actor/actor) as /obj/overmap/entity/orbital_deployment_transit
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!dangerously_unsafe_ignore_checks)
 		if(!check_zone(target_center, dir_from_north))
 			return null
@@ -202,6 +201,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	construct_zone()
 	var/obj/overmap/entity/orbital_deployment_transit/transit_entity = new(our_entity, null, src, transit)
 	transit_entity.launch(their_entity)
+	on_launch()
 	return transit_entity
 
 /**
@@ -322,7 +322,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	for(var/mob/witness as anything in witnesses)
 		witness.show_message(SPAN_WARNING("The floor lurches beneath you as a shock plows through the installation. \
 		Creaking can be heard from the walls."), SAYCODE_TYPE_ALWAYS)
-		shake_camera(witness, 0.5 SECONDS, 0.25 * WORLD_ICON_SIZE)
+		shake_camera(witness, 0.5 SECONDS, 0.25)
 
 /datum/orbital_deployment_zone/proc/contains_turf(turf/T)
 	return T.x >= lower_left.x && T.x <= upper_right.x && T.y >= lower_left.y && T.y <= upper_right.y

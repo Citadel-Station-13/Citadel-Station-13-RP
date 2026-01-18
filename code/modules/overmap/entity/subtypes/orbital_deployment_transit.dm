@@ -52,9 +52,10 @@
 	var/use_time = computed[2]
 	var/use_telegraph_time = max(use_time - transit.c_telegraph_time, 0)
 
+	addtimer(CALLBACK(src, PROC_REF(telegraph), use_time - use_telegraph_time), use_telegraph_time)
+	addtimer(CALLBACK(src, PROC_REF(land)), use_time)
+	// last line because cos/sin times something seems to break debugger (invalid opcode 387 byond 1667)
 	set_velocity(cos(use_angle) * launch_speed, sin(use_angle) * launch_speed)
-	addtimer(src, CALLBACK(PROC_REF(telegraph), use_time - use_telegraph_time), use_telegraph_time)
-	addtimer(src, CALLBACK(PROC_REF(land)), use_time)
 
 /obj/overmap/entity/orbital_deployment_transit/proc/land()
 	transit.land()

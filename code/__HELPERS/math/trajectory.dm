@@ -148,7 +148,6 @@
  *
  * @return list(angle, predicted time), or null if no solution found
  */
-#warn test this shit
 /proc/math__solve_intercept_trajectory(vector/source, vector/target, source_speed, vector/target_vel)
 	// 0 = (vt^2 - vs^2) * t^2 + 2 * (pt - ps) * vt * t + (pt - ps)^2
 	// with dot product'd as needed to convert into scalars

@@ -15,3 +15,7 @@
 	material_outer = null
 	material_girder = null
 	material_reinf = null
+
+/turf/baseturf_skipover/orbital_deployment
+	name = "orbital deployment skipover turf"
+	desc = "Acts as a marker so the deployment zone knows when a turf is broken through."
