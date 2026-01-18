@@ -114,6 +114,9 @@
 
 	// this loop has a null check (no as anything) because get ordered turfs can return nulls
 	for(var/turf/T in src_ordered)
+		// ignore space turfs and other open turfs
+		if(T.is_probably_baseturf_bottom() || ((T.mz_flags & (MZ_OPEN_BOTH)) == MZ_OPEN_BOTH))
+			continue
 		T.insert_baseturf_above_root_if_not_exists(/turf/baseturf_skipover/orbital_deployment)
 
 	// yeet into package

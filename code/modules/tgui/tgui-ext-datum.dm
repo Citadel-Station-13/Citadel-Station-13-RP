@@ -233,6 +233,7 @@
 
 	if(isobserver(user))
 		// If they turn on ghost AI control, admins can always interact.
+		// TODO: Can we move this check somewhere else? This can potentially grant access to admin UIs that an admin shouldn't have.
 		if(IsAdminGhost(user))
 			. = max(., UI_INTERACTIVE)
 
