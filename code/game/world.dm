@@ -1,35 +1,11 @@
 #define RESTART_COUNTER_PATH "data/round_counter.txt"
+/// Load byond-tracy. If USE_BYOND_TRACY is defined, then this is ignored and byond-tracy is always loaded.
+#define USE_TRACY_PARAMETER "tracy"
 
 GLOBAL_VAR(restart_counter)
 GLOBAL_VAR_INIT(hub_visibility, TRUE)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
-
-/world
-	mob = /mob/new_player
-	// TODO: replace with /turf/unallocated
-	// --           DO NOT USE THIS TURF ANYWHERE ELSE!                --
-	// -- DO NOT EVEN REFERENCE WORLD.TURF OTHER THAN TO CHECK FOR IT. --
-	turf = /turf/space/basic
-	// TODO: replace with /area/unallocated
-	area = /area/space
-	view = "15x15"
-	name = "Citadel Station 13 - Roleplay"
-	status = "ERROR: Default status"
-	/// world visibility. this should never, ever be touched.
-	/// a weird byond bug yet to be resolved is probably making this
-	/// permanently delist the server if this is disabled at any point.
-	visibility = TRUE
-	/// static value, do not change
-	hub = "Exadv1.spacestation13"
-	/// static value, do not change, except to toggle visibility
-	/// * use this instead of `visibility` to toggle, via `update_hub_visibility`
-	hub_password = "kMZy3U5jJHSiBQjr"
-	movement_mode = PIXEL_MOVEMENT_MODE
-	fps = 20
-#ifdef FIND_REF_NO_CHECK_TICK
-	loop_checks = FALSE
-#endif
 
 /**
  * WORLD INITIALIZATION
@@ -64,6 +40,49 @@ GLOBAL_LIST(topic_status_cache)
  */
 
 /**
+ * THIS !!!SINGLE!!! PROC IS WHERE ANY FORM OF INIITIALIZATION THAT CAN'T BE PERFORMED IN SUBSYSTEMS OR WORLD/NEW IS DONE
+ * NOWHERE THE FUCK ELSE
+ * I DON'T CARE HOW MANY LAYERS OF DEBUG/PROFILE/TRACE WE HAVE, YOU JUST HAVE TO DEAL WITH THIS PROC EXISTING
+ * I'M NOT EVEN GOING TO TELL YOU WHERE IT'S CALLED FROM BECAUSE I'M DECLARING THAT FORBIDDEN KNOWLEDGE
+ * SO HELP ME GOD IF I FIND ABSTRACTION LAYERS OVER THIS!
+ */
+/world/proc/Genesis(tracy_initialized = FALSE)
+	RETURN_TYPE(/datum/controller/master)
+
+	if(!tracy_initialized)
+		Tracy = new
+#ifdef USE_BYOND_TRACY
+		if(Tracy.enable("USE_BYOND_TRACY defined"))
+			Genesis(tracy_initialized = TRUE)
+			return
+#else
+		var/tracy_enable_reason
+		if(USE_TRACY_PARAMETER in params)
+			tracy_enable_reason = "world.params"
+		if(fexists(TRACY_ENABLE_PATH))
+			tracy_enable_reason ||= "enabled for round"
+			SEND_TEXT(world.log, "[TRACY_ENABLE_PATH] exists, initializing byond-tracy!")
+			fdel(TRACY_ENABLE_PATH)
+		if(!isnull(tracy_enable_reason) && Tracy.enable(tracy_enable_reason))
+			Genesis(tracy_initialized = TRUE)
+			return
+#endif
+
+	Profile(PROFILE_RESTART)
+	Profile(PROFILE_RESTART, type = "sendmaps")
+
+	// Write everything to this log file until we get to SetupLogs() later
+	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
+	// citadel edit: world runtime log removed due to world.log shunt doing that for us
+	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+
+	// Init the debugger first so we can debug Master
+	Debugger = new
+
+	// THAT'S IT, WE'RE DONE, THE. FUCKING. END.
+	Master = new
+
+/**
  * World creation
  *
  * Here is where a round itself is actually begun and setup.
@@ -90,23 +109,12 @@ GLOBAL_LIST(topic_status_cache)
  * All atoms in both compiled and uncompiled maps are initialized()
  */
 /world/New()
-#ifdef USE_BYOND_TRACY
-	#warn USE_BYOND_TRACY is enabled
-	init_byond_tracy()
-#endif
 	log_world("World loaded at [time_stamp()]!")
-
-	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
-	// citadel edit: world runtime log removed due to world.log shunt doing that for us
-	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
-
-	world.Profile(PROFILE_START)
-	setupgenetics()
-
-	GLOB.revdata = new
 
 	// First possible sleep()
 	InitTgs()
+
+	setupgenetics()
 
 	// load configuration
 	load_legacy_configuration()
@@ -377,15 +385,16 @@ GLOBAL_LIST(topic_status_cache)
 		if(do_hard_reboot)
 			log_world("World hard rebooted at [time_stamp()]")
 			shutdown_logging() // See comment below.
+			QDEL_NULL(Tracy)
+			QDEL_NULL(Debugger)
 			TgsEndProcess()
 
 	log_world("World rebooted at [time_stamp()]")
 
 	TgsReboot()
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
-
-	//! Shutdown Auxtools
-	// AUXTOOLS_SHUTDOWN(AUXTOOLS_YAML)
+	QDEL_NULL(Tracy)
+	QDEL_NULL(Debugger)
 
 	//! Finale
 	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
@@ -393,9 +402,8 @@ GLOBAL_LIST(topic_status_cache)
 	..()
 
 /world/Del()
-	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
-	if (debug_server)
-		call_ext(debug_server, "auxtools_shutdown")()
+	QDEL_NULL(Tracy)
+	QDEL_NULL(Debugger)
 	. = ..()
 
 /legacy_hook/startup/proc/loadMode()
@@ -664,3 +672,6 @@ GLOBAL_LIST(topic_status_cache)
 	var/init_result = call(library, "init")()
 	if (init_result != "0")
 		CRASH("Error initializing byond-tracy: [init_result]")
+
+#undef USE_TRACY_PARAMETER
+#undef RESTART_COUNTER_PATH
