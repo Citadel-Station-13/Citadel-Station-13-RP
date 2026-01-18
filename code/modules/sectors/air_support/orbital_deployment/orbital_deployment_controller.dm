@@ -93,6 +93,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	if(our_overmap_entity && linked_zone)
 		var/list/obj/overmap/entity/overmap_query_results = SSovermaps.entity_pixel_dist_query(our_overmap_entity, linked_zone.max_overmap_pixel_dist)
 		for(var/obj/overmap/entity/entity_in_range as anything in overmap_query_results)
+			if(entity_in_range == our_overmap_entity && !linked_zone.can_target_self_entity)
+				continue
 			if(!isturf(entity_in_range.loc))
 				// if they're nested, skip; they're docked.
 				continue

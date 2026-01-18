@@ -40,6 +40,8 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 
 	/// max overmap bounds dist we can launch at
 	var/max_overmap_pixel_dist = WORLD_ICON_SIZE * 3
+	/// can launch to same overmap entity
+	var/can_target_self_entity = FALSE
 
 	var/c_impact_obj_dmg_base = 150
 	var/c_impact_obj_dmg_sides = 150

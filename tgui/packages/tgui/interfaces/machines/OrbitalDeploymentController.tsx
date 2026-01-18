@@ -84,7 +84,7 @@ export const OrbitalDeploymentController = (props) => {
                     {data.zone.launchOnCooldown ? 'Recharging' : 'Ready'}
                   </LabeledList.Item>
                   <LabeledList.Item label="Range">
-                    {data.zone.maxOvermapPixelDist} Tiles
+                    {data.zone.maxOvermapPixelDist / 32} Tiles
                   </LabeledList.Item>
                 </LabeledList>
               ) : (
@@ -160,7 +160,7 @@ export const OrbitalDeploymentController = (props) => {
                       {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
                     </Table.Cell>
                     <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.overmapDist} Tiles
+                      {f.overmapDist / 32} Tiles
                     </Table.Cell>
                     <Table.Cell>
                       <Button
@@ -196,7 +196,7 @@ export const OrbitalDeploymentController = (props) => {
                       {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
                     </Table.Cell>
                     <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.overmapDist} Tiles
+                      {f.overmapDist / 32} Tiles
                     </Table.Cell>
                     <Table.Cell>
                       <Button

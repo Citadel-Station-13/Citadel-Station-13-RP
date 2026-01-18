@@ -176,7 +176,7 @@
 		return null
 	if(!silent)
 		playsound(src, fire_sound, fire_sound_volume, fire_sound_vary, 3)
-	flick("[base_icon_state]-fire")
+	flick(src, "[base_icon_state]-fire")
 	if(!suppressed)
 		shake_camera_of_nearby_players(src, 9, strength = WORLD_ICON_SIZE * 0.5, iterations = 1)
 		visible_message(SPAN_BOLDWARNING("[chat_html_embed_rendered()] [src] fires!"))

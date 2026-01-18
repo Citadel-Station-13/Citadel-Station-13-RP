@@ -25,4 +25,3 @@
 				"#00cc00",
 				NONE
 			), FALSE)
-	update_filters()

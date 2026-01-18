@@ -9,8 +9,8 @@
 	name = "signal flare"
 	desc = "A specialized flare used for signalling. Burns at specific frequency and projects a signal visible from high altitudes."
 	icon = 'icons/modules/sectors/air_support/signal_flare.dmi'
-	icon_state = "signal_flare"
-	base_icon_state = "signal_flare"
+	icon_state = "flare"
+	base_icon_state = "flare"
 
 	var/ignited = FALSE
 	var/ignited_at
@@ -36,6 +36,14 @@
 	else if(spent)
 		append = "-spent"
 	icon_state = "[base_icon_state][append]"
+
+/obj/item/signal_flare/on_attack_self(datum/event_args/actor/actor)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	// TODO: log
+	#warn feedback
+	ignite()
 
 /obj/item/signal_flare/proc/ignite()
 	if(ignited)
@@ -63,11 +71,11 @@
 		isnull(ready_light_power) ? ignite_light_power : ready_light_power,
 		isnull(ready_light_color) ? ignite_light_color : ready_light_color,
 	)
-	visible_message("[src] flares up, now burning at its full intensity.")
+	visible_message(SPAN_WARNING("[src] flares up, now burning at its full intensity."))
 	// TODO: sound
 
 /obj/item/signal_flare/proc/fizzle()
-	visible_message("[src] fizzles, having burnt itself out.")
+	visible_message(SPAN_WARNING("[src] fizzles, having burnt itself out."))
 	spent = TRUE
 	ignited = FALSE
 	ready = FALSE

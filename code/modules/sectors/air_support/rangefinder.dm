@@ -232,7 +232,7 @@
 	var/turf/target_turf = get_turf(target)
 	var/list/coords = SSmapping.get_virtual_coords_x_y(target_turf)
 	var/dist = target.z == user.z ? get_turf_euclidean_dist(source_turf, target_turf) : SSmapping.get_virtual_horizontal_euclidean_dist(source_turf, target_turf)
-	return "rangefinder estimate [dist]m @ [coords[1]]x, [coords[2]]y"
+	return "rangefinder estimate [round(dist, 0.1)]m @ [coords[1]]x, [coords[2]]y"
 
 /obj/item/rangefinder/item_ctrl_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
