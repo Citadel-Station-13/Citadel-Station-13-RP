@@ -9,7 +9,7 @@
 
 	// pretty much requires a full grab
 	attunement_cooperative_threshold = 60
-	enforce_grab_state = GRAB_AGGRESSIVE
+	enforce_reachability = TRUE
 
 	default_do_after = 8 SECONDS
 	default_do_after_flags = DO_AFTER_IGNORE_MOVEMENT | DO_AFTER_IGNORE_ACTIVE_ITEM

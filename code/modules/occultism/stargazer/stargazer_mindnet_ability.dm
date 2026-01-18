@@ -22,20 +22,22 @@
 	var/targeted
 
 	/// attunement required for this to work if they cooperate with the action
+	/// * only used by default for default-targeted-runs
 	var/attunement_cooperative_threshold = INFINITY
-	/// attunement required for this to work without them needing any input
+	/// attunement required for this to work without needing any input from them
+	/// * only used by default for default-targeted-runs
 	var/attunement_forced_threshold = INFINITY
 
 	/// the target can sense a cooperative attempt even while unconsciuos
 	var/can_be_cooperated_while_unconscious = FALSE
 
-	/// enforce distance
+	/// enforce distance; active if nonnull, 0 is same tile
 	var/enforce_distance_maximum
-	/// enforce reachability
-	var/enforce_reachability
-	/// enforce pulling
-	var/enforce_pulling
-	/// enforce grab state
+	/// enforce reachability; TRUE / FALSE
+	var/enforce_reachability = FALSE
+	/// enforce pulling; TRUE / FALSE
+	var/enforce_pulling = FALSE
+	/// enforce grab state; active if nonnull, uses GRAB_* state defines
 	var/enforce_grab_state
 
 	/// Cooldown for a given target.
