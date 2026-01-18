@@ -10,6 +10,7 @@
 	icon = 'icons/modules/sectors/air_support/rangefinder.dmi'
 	icon_state = "turf-laser"
 	/// allow weapons guidance
+	//  TODO: unimplemented
 	var/allow_weapons_guidance = FALSE
 	/// we are visible
 	var/visible_dot
@@ -18,7 +19,10 @@
 	src.allow_weapons_guidance = allow_weapons_guidance
 	src.visible_dot = visible_dot
 	alpha = visible_dot ? initial(alpha) : 0
-	AddComponent(/datum/component/spatial_grid, SSspatial_grids.laser_designations)
+
+	var/datum/component/high_altitude_signal/signal_comp = AddComponent(/datum/component/high_altitude_signal, "rangefinding laser")
+	signal_comp.on_get_effective_turf = CALLBACK(src, PROC_REF(get_effective_turf))
+
 	if(ismovable(loc))
 		var/atom/movable/thingy = loc
 		thingy.vis_contents += src
@@ -31,6 +35,7 @@
 	return ..()
 
 /atom/movable/laser_designator_target/proc/get_effective_turf()
+	SIGNAL_HANDLER
 	if(isturf(loc))
 		return loc
 	if(ismovable(loc) && isturf(loc.loc))

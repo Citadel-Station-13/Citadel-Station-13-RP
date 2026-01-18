@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 SUBSYSTEM_DEF(map_sectors)
 	name = "Map Sectors"

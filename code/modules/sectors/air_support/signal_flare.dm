@@ -97,6 +97,8 @@
 		isnull(ready_light_color) ? ignite_light_color : ready_light_color,
 	)
 	visible_message(SPAN_WARNING("[src] flares up, now burning at its full intensity."))
+	var/datum/component/high_altitude_signal/signal_comp = AddComponent(/datum/component/high_altitude_signal, "signal flare")
+	signal_comp.on_get_effective_turf = CALLBACK(src, PROC_REF(get_effective_turf))
 	// TODO: sound
 
 /obj/item/signal_flare/proc/fizzle()
@@ -104,5 +106,12 @@
 	spent = TRUE
 	ignited = FALSE
 	ready = FALSE
+	DelComponent(/datum/component/high_altitude_signal)
 	update_icon()
 	// TODO: sound
+
+/obj/item/signal_flare/proc/get_effective_turf()
+	SIGNAL_HANDLER
+	if(isturf(loc) || inv_inside)
+		return get_turf(loc)
+	return null
