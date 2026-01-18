@@ -39,6 +39,7 @@ interface OrbitalDeploymentZoneData {
   armed: BooleanLike;
   arming: BooleanLike;
   launchOnCooldown: BooleanLike;
+  armToggleOnCooldown: BooleanLike;
   maxOvermapPixelDist: number;
 }
 
@@ -66,14 +67,14 @@ export const OrbitalDeploymentController = (props) => {
   useEffect(() => {
     let t = setInterval(() => {
       act('refreshSignals');
-    }, 3000);
+    }, 10000);
     return () => {
       clearInterval(t);
     };
-  });
+  }, []);
 
   return (
-    <Window title="Orbital Deployment Controller">
+    <Window title="Orbital Deployment Controller" width={450} height={450}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
@@ -115,103 +116,120 @@ export const OrbitalDeploymentController = (props) => {
                 <Table.Row>
                   <Table.Cell
                     textAlign="center"
-                    style={{ borderRight: 'solid 1px #ffffff' }}
+                    style={{ borderRight: 'solid 1px #ffffff66' }}
                   >
                     Name
                   </Table.Cell>
                   <Table.Cell
                     textAlign="center"
-                    style={{ borderRight: 'solid 1px #ffffff' }}
+                    style={{ borderRight: 'solid 1px #ffffff66' }}
                   >
                     Sector Name
                   </Table.Cell>
                   <Table.Cell
                     textAlign="center"
-                    style={{ borderRight: 'solid 1px #ffffff' }}
+                    style={{ borderRight: 'solid 1px #ffffff66' }}
                   >
                     Sector Coords
                   </Table.Cell>
                   <Table.Cell
                     textAlign="center"
-                    style={{ borderRight: 'solid 1px #ffffff' }}
+                    style={{ borderRight: 'solid 1px #ffffff66' }}
                   >
                     Sector Dist
                   </Table.Cell>
-                  <Table.Cell />
+                  <Table.Cell minWidth={1} />
                 </Table.Row>
+                {data.flares.map((f) => {
+                  let isSelectedTarget =
+                    selectedTarget &&
+                    selectedTarget[0] === 'flare' &&
+                    selectedTarget[1] === f.ref;
+                  return (
+                    <Table.Row
+                      key={f.ref}
+                      style={{ borderTop: 'solid 1px #ffffff66' }}
+                    >
+                      <Table.Cell
+                        style={{ borderRight: 'solid 1px #ffffff66' }}
+                      >
+                        {f.name}
+                      </Table.Cell>
+                      <Table.Cell
+                        style={{ borderRight: 'solid 1px #ffffff66' }}
+                      >
+                        {f.overmapName}
+                      </Table.Cell>
+                      <Table.Cell
+                        style={{ borderRight: 'solid 1px #ffffff66' }}
+                      >
+                        {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
+                      </Table.Cell>
+                      <Table.Cell
+                        style={{ borderRight: 'solid 1px #ffffff66' }}
+                      >
+                        {f.overmapDist / 32} Tiles
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Button
+                          icon="bullseye"
+                          color={isSelectedTarget ? undefined : 'transparent'}
+                          selected={isSelectedTarget}
+                          onClick={() =>
+                            isSelectedTarget
+                              ? setSelectedTarget(null)
+                              : setSelectedTarget(['flare', f.ref])
+                          }
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  );
+                })}
+                {data.lasers.map((f) => {
+                  let isSelectedTarget =
+                    selectedTarget &&
+                    selectedTarget[0] === 'laser' &&
+                    selectedTarget[1] === f.ref;
+                  return (
+                    <Table.Row
+                      key={f.ref}
+                      style={{ borderTop: 'solid 1px #ffffff66' }}
+                    >
+                      <Table.Cell
+                        style={{ borderRight: 'solid 1px #ffffff66' }}
+                      >
+                        {f.name}
+                      </Table.Cell>
+                      <Table.Cell
+                        style={{ borderRight: 'solid 1px #ffffff66' }}
+                      >
+                        {f.overmapName}
+                      </Table.Cell>
+                      <Table.Cell
+                        style={{ borderRight: 'solid 1px #ffffff66' }}
+                      >
+                        {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
+                      </Table.Cell>
+                      <Table.Cell
+                        style={{ borderRight: 'solid 1px #ffffff66' }}
+                      >
+                        {f.overmapDist / 32} Tiles
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Button
+                          icon="target"
+                          selected={isSelectedTarget}
+                          onClick={() =>
+                            isSelectedTarget
+                              ? setSelectedTarget(null)
+                              : setSelectedTarget(['laser', f.ref])
+                          }
+                        />
+                      </Table.Cell>
+                    </Table.Row>
+                  );
+                })}
               </Table>
-              {data.flares.map((f) => {
-                let isSelectedTarget =
-                  selectedTarget &&
-                  selectedTarget[0] === 'flare' &&
-                  selectedTarget[1] === f.ref;
-                return (
-                  <Table.Row
-                    key={f.ref}
-                    style={{ borderTop: 'solid 1px #ffffff' }}
-                  >
-                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.name}
-                    </Table.Cell>
-                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.overmapName}
-                    </Table.Cell>
-                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
-                    </Table.Cell>
-                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.overmapDist / 32} Tiles
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        icon="target"
-                        selected={isSelectedTarget}
-                        onClick={() =>
-                          isSelectedTarget
-                            ? setSelectedTarget(null)
-                            : setSelectedTarget(['flare', f.ref])
-                        }
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                );
-              })}
-              {data.lasers.map((f) => {
-                let isSelectedTarget =
-                  selectedTarget &&
-                  selectedTarget[0] === 'laser' &&
-                  selectedTarget[1] === f.ref;
-                return (
-                  <Table.Row
-                    key={f.ref}
-                    style={{ borderTop: 'solid 1px #ffffff' }}
-                  >
-                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.name}
-                    </Table.Cell>
-                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.overmapName}
-                    </Table.Cell>
-                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.coords[0]}, {f.coords[1]}, {f.coords[2]}
-                    </Table.Cell>
-                    <Table.Cell style={{ borderRight: 'solid 1px #ffffff' }}>
-                      {f.overmapDist / 32} Tiles
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        icon="target"
-                        selected={isSelectedTarget}
-                        onClick={() =>
-                          isSelectedTarget
-                            ? setSelectedTarget(null)
-                            : setSelectedTarget(['laser', f.ref])
-                        }
-                      />
-                    </Table.Cell>
-                  </Table.Row>
-                );
-              })}
             </Section>
           </Stack.Item>
           <Stack.Item>
@@ -219,6 +237,7 @@ export const OrbitalDeploymentController = (props) => {
               <Stack fill>
                 <Stack.Item grow>
                   <Button.Confirm
+                    disabled={data.zone?.armToggleOnCooldown}
                     textAlign="center"
                     fluid
                     onClick={() => {
@@ -233,7 +252,7 @@ export const OrbitalDeploymentController = (props) => {
                         ? data.zone.armed
                           ? 'red'
                           : 'yellow'
-                        : 'transparent'
+                        : undefined
                     }
                   >
                     {data.zone?.arming

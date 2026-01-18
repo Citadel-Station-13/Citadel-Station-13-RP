@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	return arming && ((arming_last_toggle + arming_time) <= world.time)
 
 /datum/orbital_deployment_zone/proc/time_to_armed()
-	return max(0, world.time - (arming_last_toggle + arming_time))
+	return max(0, (arming_last_toggle + arming_time) - world.time)
 
 /datum/orbital_deployment_zone/proc/get_corners()
 	return list(lower_left, lower_right, upper_left, upper_right)

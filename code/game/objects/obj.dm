@@ -814,7 +814,7 @@
 	for(var/dir in GLOB.cardinal)
 		if(get_step(src, dir)?.get_wallmount_anchor())
 			src.dir = turn(dir, 180)
-			return
+			break
 	switch(dir)
 		if(NORTH)
 			set_base_pixel_x(0)

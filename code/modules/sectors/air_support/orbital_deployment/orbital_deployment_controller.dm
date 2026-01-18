@@ -75,6 +75,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 	.["zone"] = linked_zone ? list(
 		"armed" = linked_zone.is_armed(),
 		"arming" = linked_zone.arming,
+		"armToggleOnCooldown" = world.time < (linked_zone.arming_last_toggle + linked_zone.arming_cooldown),
 		"launchOnCooldown" = world.time < (linked_zone.launch_last + linked_zone.launch_cooldown),
 		"maxOvermapPixelDist" = OVERMAP_PIXEL_TO_DIST(linked_zone.max_overmap_pixel_dist),
 	) : null

@@ -79,7 +79,7 @@
 	/// allow weapon guidance - if you turn this on without turning on laser_visible i will replace your eyelids with lemons
 	var/laser_weapons_guidance = TRUE
 
-	var/drop_laser_on_unzoom = TRUE
+	var/drop_laser_on_unzoom = FALSE
 	var/drop_laser_on_move = TRUE
 
 	/// active laser designator target

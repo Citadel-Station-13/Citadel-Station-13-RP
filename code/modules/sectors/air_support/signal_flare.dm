@@ -28,11 +28,29 @@
 	var/ready_light_range
 	var/ready_light_power = 0.85
 
+	/// Greyscale flame state used; this will be added twice, once with BLEND_ADD to make it
+	/// actually look good.
+	var/flame_state = "flare-flame"
+	/// Non-blending flame color
+	var/flame_color = "#aaccaa"
+	/// BLEND_ADD'd copy color
+	var/flame_base_color = "#00aa00"
+
 /obj/item/signal_flare/update_icon()
+	cut_overlays()
 	. = ..()
 	var/append
 	if(ignited)
 		append = "-active"
+		var/image/flame = image(icon, flame_state)
+		flame.color = flame_color
+		flame.appearance_flags = KEEP_APART | RESET_COLOR
+		var/image/flame_base = image(icon, flame_state)
+		flame_base.color = flame_base_color
+		flame_base.appearance_flags = KEEP_APART | RESET_COLOR
+		flame_base.blend_mode = BLEND_ADD
+		flame.overlays += flame_base
+		add_overlay(flame)
 	else if(spent)
 		append = "-spent"
 	icon_state = "[base_icon_state][append]"
