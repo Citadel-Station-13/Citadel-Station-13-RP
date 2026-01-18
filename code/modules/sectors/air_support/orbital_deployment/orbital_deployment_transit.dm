@@ -105,8 +105,6 @@
 		NORTH,
 	)
 
-	var/turf/testing_turf = lower_left
-
 	log_orbital_deployment(launching_actor, "allocating/packaging a [width]x[height] area")
 
 	// unlike shuttles, we package **everything** that isn't the bottom of the baseturfs

@@ -31,5 +31,5 @@
 			return FALSE
 		// we assume the bottom baseturf is the root. this is actually sorta enforced
 		// by assemble_baseturfs, but..
-		baseturfs = list(baseturf_path, baseturfs)
+		baseturfs = list(baseturfs, baseturf_path)
 		return TRUE
