@@ -15,3 +15,6 @@
 ///
 /// * This must be set to the maximum INIT_STAGE.
 #define INIT_STAGE_MAX 4
+
+/// The timer key used to know how long subsystem initialization takes
+#define SS_INIT_TIMER_KEY "ss_init"

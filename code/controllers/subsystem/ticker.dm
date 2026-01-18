@@ -1,6 +1,5 @@
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
-	wait = 20
 	subsystem_flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
