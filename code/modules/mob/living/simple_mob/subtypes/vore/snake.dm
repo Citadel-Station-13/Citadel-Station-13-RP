@@ -32,7 +32,3 @@
 	base_pixel_y = -16
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/melee
-
-// Activate Noms!
-/mob/living/simple_mob/vore/aggressive/giant_snake
-	swallowTime = 2 SECONDS // Hungry little bastards.
