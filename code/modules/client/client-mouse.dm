@@ -27,3 +27,15 @@ GLOBAL_VAR_INIT(client_mouse_fast_update_backoff, 1)
 		return null
 	mouse_params_last_unpacked = params2list(mouse_params_last)
 	return mouse_params_last_unpacked
+
+// TODO: code this in so we can have proper mouse handling; replace precision drop & clickchain angle getter with this
+/**
+ * Predicts actual mouse turf and x/y on that turf from screen loc.
+ * This is done per-client due to viewport differences,
+ * and done for turfs because icon x/y is variable on atoms.
+ */
+/client/proc/predict_mouse_tile_from_screen_loc(raw_screen_loc_string)
+	// this is not implemented yet because i do not have the energy to deal with
+	// pixel x/y shift on the client, what to do if viewport isn't an odd number,
+	// and more Bullshit that I don't want to deal with.
+	CRASH("not implemented yet")
