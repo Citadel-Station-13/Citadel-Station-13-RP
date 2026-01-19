@@ -22,6 +22,8 @@
 	var/category_prob = 25
 	/// How many random books to generate.
 	var/books_to_load = 0
+	/// Skin of the bookcase to use, either book or legalbook
+	var/booktype = "book"
 
 /obj/structure/bookcase/Initialize(mapload)
 	. = ..()
@@ -199,10 +201,10 @@
 
 /obj/structure/bookcase/update_icon_state()
 	if(state == BOOKCASE_UNANCHORED || state == BOOKCASE_ANCHORED)
-		icon_state = "book-0"
+		icon_state = "[booktype]-0"
 		return ..()
 	var/amount = length(contents)
-	icon_state = "book-[clamp(amount, 0, 5)]"
+	icon_state = "[booktype]-[clamp(amount, 0, 5)]"
 	return ..()
 
 /obj/structure/bookcase/manuals/medical
@@ -237,6 +239,9 @@
 	. = ..()
 	new /obj/item/book/manual/research_and_development(src)
 	update_appearance()
+
+/obj/structure/bookcase/legal
+	booktype = "legalbook"
 
 /obj/structure/bookcase/legal/sop
 	name = "Legal Manuals bookcase"
@@ -293,12 +298,6 @@
 	new /obj/item/book/manual/legal/cr_vol4
 	new /obj/item/book/manual/legal/cr_vol5
 	update_appearance()
-
-/obj/structure/bookcase/legal/update_icon_state()
-	if(contents.len < 5)
-		icon_state = "legalbook-[contents.len]"
-	else
-		icon_state = "legalbook-5"
 
 /obj/structure/bookcase/lore
 	name = "reviewed Books bookcase"

@@ -3472,6 +3472,7 @@
 #include "code\modules\legacy_metric\count.dm"
 #include "code\modules\legacy_metric\department.dm"
 #include "code\modules\legacy_metric\metric.dm"
+#include "code\modules\library\admin_only.dm"
 #include "code\modules\library\barcode_scanner.dm"
 #include "code\modules\library\book.dm"
 #include "code\modules\library\book_info.dm"

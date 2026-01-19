@@ -1,7 +1,5 @@
-/*
- * Home of the New (NOV 1st, 2019) library books.
- */
 
+//! stop adding new books here. if it has a ckey it can be added thru the database
 /obj/item/book/custom_library
 	name = "Book"
 	desc = "A hardbound book."

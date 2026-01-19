@@ -103,6 +103,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/revokebunkerbypass,
 	/client/proc/toggle_AI_interact,
 	/client/proc/list_event_volunteers,
+	/client/proc/library_control,
 	/client/proc/set_headshot_for_user,
 	)
 
@@ -1066,3 +1067,15 @@ var/list/admin_verbs_event_manager = list(
 	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
 	popup.set_content(dat.Join(""))
 	popup.open()
+
+/client/proc/library_control()
+	set name = "Library Management"
+	set category = "Admin"
+	set desc = "List and manage the Library."
+
+	if(!check_rights(R_BAN))
+		return
+
+	if(!holder.library_manager)
+		holder.library_manager = new
+	holder.library_manager.ui_interact(usr)
