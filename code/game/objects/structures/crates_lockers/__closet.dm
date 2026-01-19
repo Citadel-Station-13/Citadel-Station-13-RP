@@ -69,6 +69,10 @@
 	if (mapload)
 		is_maploaded = TRUE
 
+	if(starts_with)
+		create_objects_in_loc(src, starts_with)
+		starts_with = null
+
 	update_appearance()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -76,9 +80,6 @@
 	if(!opened && is_maploaded)
 		take_contents()
 
-	if(starts_with)
-		create_objects_in_loc(src, starts_with)
-		starts_with = null
 	if(!use_old_icon_update && ispath(closet_appearance))
 		var/singleton/closet_appearance/app = GET_SINGLETON(closet_appearance)
 		if(app)
