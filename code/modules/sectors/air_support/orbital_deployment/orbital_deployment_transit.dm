@@ -82,6 +82,9 @@
 		/datum/map_reservation,
 		/turf/space,
 		/area/space,
+		1,
+		null,
+		CALLBACK(src, PROC_REF(make_reservation_border))
 	)
 	if(!allocating)
 		. = FALSE
@@ -227,3 +230,7 @@
 			continue
 		var/turf/dest = dst_turfs[i]
 		new /atom/movable/render/orbital_deployment_telegraph(dest, how_long)
+
+/datum/orbital_deployment_transit/proc/make_reservation_border(turf/border)
+	SHOULD_NOT_SLEEP(TRUE)
+	border.ChangeTurf(/turf/simulated/wall/orbital_deployment_superstructure)
