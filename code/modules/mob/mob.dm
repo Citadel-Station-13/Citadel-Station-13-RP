@@ -1,3 +1,6 @@
+/**
+ * Base definition of mob.
+ */
 /mob
 	//* Actionspeed *//
 	/// List of action speed modifiers applying to this mob
@@ -29,6 +32,11 @@
 	/// * lazy list
 	var/list/impairments_feigned
 
+	//* Inventory *//
+	/// our inventory datum, if any.
+	/// * Set to typepath to initialize.
+	var/datum/inventory/inventory
+
 	//* Movespeed *//
 	/// List of movement speed modifiers applying to this mob
 	/// * This is a lazy list.
@@ -38,6 +46,11 @@
 	var/list/movespeed_modifier_immunities
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/movespeed_hyperbolic
+
+	//* Status Indicators *//
+	/// datum path = list of sources
+	var/list/status_indicators
+	var/list/status_indicator_overlays
 
 /**
  * Intialize a mob
@@ -50,6 +63,7 @@
  * Other stuff:
  * * Sets the mob focus to itself
  * * Generates huds
+ * * Creates inventory
  * * If there are any global alternate apperances apply them to this mob
  * * Intialize the transform of the mob
  */
@@ -391,6 +405,8 @@
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
+#define POINT_TIME (2.5 SECONDS)
+
 /**
  * Point at an atom
  *
@@ -408,68 +424,99 @@
 	set name = "Point To"
 	set category = VERB_CATEGORY_OBJECT
 
-	if(!src || !isturf(src.loc) || !(A in view(14, src)))
-		return 0
-
 	if(istype(A, /obj/effect/temp_visual/point))
-		return 0
+		return FALSE
 
-	var/tile = get_turf(A)
-	if (!tile)
-		return 0
+	// i am queued sometimes
+	_pointed(A)
 
-	var/obj/P = new /obj/effect/temp_visual/point(tile)
-	P.invisibility = invisibility
-	P.plane = ABOVE_PLANE
-	P.layer = FLY_LAYER
-	P.pixel_x = A.pixel_x + world.icon_size * (x - A.x)
-	P.pixel_y = A.pixel_y + world.icon_size * (y - A.y)
-	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
-	face_atom(A)
-	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
+/mob/proc/_pointed(atom/pointing_at)
+	if(client) //Clientless mobs can just go ahead and point
+		if(!(pointing_at in view(client.view, src)))
+			return FALSE
+	// since we dont have the datum emote for pointing, too lazy to implement! (it sets the cooldown)
+	// if(iscarbon(src)) // special interactions for carbons
+	// 	var/mob/living/carbon/our_carbon = src
+	// 	if(our_carbon.get_usable_hand_count() <= 0 || our_carbon.handcuffed /* || HAS_TRAIT(src, TRAIT_HANDS_BLOCKED)*/)
+	// 		if(!TIMER_COOLDOWN_CHECK(src, "point_verb_emote_cooldown"))
+	// 			//cooldown handled in the emote.
+	// 			our_carbon.emote("point [pointing_at]")
+	// 		else
+	// 			to_chat(src, SPAN_WARNING("You need to wait before pointing again!"))
+	// 			return FALSE
+
+	point_at(pointing_at, TRUE)
 	return 1
 
-/mob/verb/set_self_relative_layer()
-	set name = "Set relative layer"
-	set desc = "Set your relative layer to other mobs on the same layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
+/**
+ * Point at an atom
+ *
+ * Intended to enable and standardise the pointing animation for all atoms
+ *
+ * Not intended as a replacement for the mob verb
+ */
+/atom/movable/proc/point_at(atom/pointed_atom, intentional = FALSE)
+	if(!isturf(loc))
+		return FALSE
 
-	var/new_layer = input(src, "What do you want to shift your layer to? (-100 to 100)", "Set Relative Layer", clamp(relative_layer, -100, 100))
-	new_layer = clamp(new_layer, -100, 100)
-	set_relative_layer(new_layer)
+	if (pointed_atom in src)
+		create_point_bubble(pointed_atom)
+		return FALSE
 
-/mob/verb/shift_relative_behind()
-	set name = "Move Behind"
-	set desc = "Move behind of a mob with the same base layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
+	var/turf/tile = get_turf(pointed_atom)
+	if (!tile)
+		return FALSE
 
-	if(!client.throttle_verb())
-		return
+	var/turf/our_tile = get_turf(src)
+	var/obj/visual = new /obj/effect/temp_visual/point(our_tile, invisibility)
 
-	var/mob/M = tgui_input_list(src, "What mob to move behind?", "Move Behind", get_relative_shift_targets())
+	// SEND_SIGNAL(src, COMSIG_MOVABLE_POINTED, pointed_atom, visual, intentional)
 
-	if(QDELETED(M))
-		return
+	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + pointed_atom.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + pointed_atom.pixel_y, time = 1.7, easing = EASE_OUT)
+	return TRUE
 
-	set_relative_layer(M.relative_layer - 1)
+/mob/point_at(atom/pointed_atom, intentional = FALSE)
+	. = ..()
+	if(.)
+		face_atom(pointed_atom)
 
-/mob/verb/shift_relative_infront()
-	set name = "Move Infront"
-	set desc = "Move infront of a mob with the same base layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
+/atom/movable/proc/create_point_bubble(atom/pointed_atom)
+	var/mutable_appearance/thought_bubble = mutable_appearance(
+		'icons/effects/effects.dmi',
+		"thought_bubble",
+		plane = POINT_PLANE,
+		appearance_flags = KEEP_APART,
+	)
 
-	if(!client.throttle_verb())
-		return
+	var/mutable_appearance/pointed_atom_appearance = new(pointed_atom.appearance)
+	pointed_atom_appearance.blend_mode = BLEND_INSET_OVERLAY
+	pointed_atom_appearance.plane = FLOAT_PLANE
+	pointed_atom_appearance.layer = FLOAT_LAYER
+	pointed_atom_appearance.pixel_x = 0
+	pointed_atom_appearance.pixel_y = 0
+	thought_bubble.overlays += pointed_atom_appearance
+	// pointed_atom_appearance.remove_filter(HOVER_OUTLINE_FILTER)
 
-	var/mob/M = tgui_input_list(src, "What mob to move infront?", "Move Infront", get_relative_shift_targets())
+	thought_bubble.pixel_w = 16
+	thought_bubble.pixel_z = 32
+	thought_bubble.alpha = 200
 
-	if(QDELETED(M))
-		return
+	var/mutable_appearance/point_visual = mutable_appearance(
+		'icons/mob/screen1.dmi',
+		"arrow"
+	)
 
-	set_relative_layer(M.relative_layer + 1)
+	thought_bubble.overlays += point_visual
+
+	add_overlay(thought_bubble)
+	// LAZYADD(update_overlays_on_z, thought_bubble)
+	addtimer(CALLBACK(src, PROC_REF(clear_point_bubble), thought_bubble), POINT_TIME)
+
+/atom/movable/proc/clear_point_bubble(mutable_appearance/thought_bubble)
+	// LAZYREMOVE(update_overlays_on_z, thought_bubble)
+	cut_overlay(thought_bubble)
+
+#undef POINT_TIME
 
 /mob/proc/get_relative_shift_targets()
 	. = list()
@@ -1161,7 +1208,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * Returns whether or not we should be allowed to examine a target
  */
 /mob/proc/allow_examine(atom/A)
-	return client && (client.eye == src)
+	return (client?.eye == src) || (A in DirectAccess())
 
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()
@@ -1383,3 +1430,83 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  */
 /mob/is_avoiding_ground()
 	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()
+
+///Can the mob interact() with an atom?
+/mob/proc/can_interact_with(atom/A, treat_mob_as_adjacent)
+	if(isAdminGhostAI(src))
+		return TRUE
+	//Return early. we do not need to check that we are on adjacent turfs (i.e we are inside a closet)
+	if (treat_mob_as_adjacent && src == A.loc)
+		return TRUE
+	if (Adjacent(A))
+		return TRUE
+	if((MUTATION_TELEKINESIS in mutations) && (get_dist(src, A) > tk_maxrange))
+		return TRUE
+
+	//range check
+	if(!interaction_range) // If you don't have extra length, GO AWAY
+		return FALSE
+	var/turf/our_turf = get_turf(src)
+	var/turf/their_turf = get_turf(A)
+	if (!our_turf || !their_turf)
+		return FALSE
+	return ISINRANGE(their_turf.x, our_turf.x - interaction_range, our_turf.x + interaction_range) && ISINRANGE(their_turf.y, our_turf.y - interaction_range, our_turf.y + interaction_range)
+
+/**
+ * Get the mob VV dropdown extras
+ */
+/mob/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "---------")
+	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_SPELL, "Give Spell")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_DISEASE, "Give Disease")
+	VV_DROPDOWN_OPTION(VV_HK_GODMODE, "Toggle Godmode")
+	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop Everything")
+	VV_DROPDOWN_OPTION(VV_HK_PLAYER_PANEL, "Show player panel")
+	VV_DROPDOWN_OPTION(VV_HK_BUILDMODE, "Toggle Buildmode")
+	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
+
+/mob/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(!.)
+		return
+
+	if(href_list[VV_HK_GIVE_DISEASE])
+		if(!check_rights(R_ADMIN))
+			return FALSE
+		usr.client.give_disease2(src)
+
+	if(href_list[VV_HK_PLAYER_PANEL])
+		usr.client.holder.show_player_panel(src)
+
+	if(href_list[VV_HK_GODMODE])
+		if(!check_rights(R_REJUVINATE))
+			return FALSE
+		usr.client.cmd_admin_godmode(src)
+
+	if(href_list[VV_HK_GIVE_SPELL])
+		if(!check_rights(R_ADMIN))
+			return FALSE
+		usr.client.give_spell(src)
+
+	if(href_list[VV_HK_GIB])
+		if(!check_rights(R_ADMIN))
+			return FALSE
+		usr.client.cmd_admin_gib(src)
+
+	if(href_list[VV_HK_BUILDMODE])
+		if(!check_rights(R_BUILDMODE))
+			return FALSE
+		togglebuildmode(src)
+
+	if(href_list[VV_HK_DROP_ALL])
+		if(!check_rights(R_ADMIN))
+			return FALSE
+		usr.client.cmd_admin_drop_everything(src)
+
+	if(href_list[VV_HK_DIRECT_CONTROL])
+		if(!check_rights(R_ADMIN))
+			return FALSE
+		usr.client.cmd_assume_direct_control(src)

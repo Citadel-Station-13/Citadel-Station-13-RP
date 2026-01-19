@@ -140,7 +140,7 @@ var/list/ai_verbs_default = list(
 	remove_verb(src, ai_verbs_default)
 	remove_verb(src, silicon_subsystems)
 
-/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = TRUE)
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_lawset/L, obj/item/mmi/B, safety = TRUE)
 	announcement = new()
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
@@ -166,7 +166,7 @@ var/list/ai_verbs_default = list(
 		aiCommunicator = new /obj/item/communicator/integrated(src)
 
 	if(L)
-		if (istype(L, /datum/ai_laws))
+		if (istype(L, /datum/ai_lawset))
 			laws = L
 	else
 		var/datum/map/station/loaded = (LEGACY_MAP_DATUM)
@@ -276,24 +276,6 @@ var/list/ai_verbs_default = list(
 
 
 /mob/living/silicon/ai/proc/setup_icon()
-	var/file = file2text("config/custom_sprites.txt")
-	var/lines = splittext(file, "\n")
-
-	for(var/line in lines)
-	// split & clean up
-		var/list/Entry = splittext(line, ":")
-		for(var/i = 1 to Entry.len)
-			Entry[i] = trim(Entry[i])
-
-		if(Entry.len < 2)
-			continue;
-
-		if(Entry[1] == src.ckey && Entry[2] == src.real_name)
-			icon = CUSTOM_ITEM_SYNTH
-			custom_sprite = 1
-			selected_sprite = new/datum/ai_icon("Custom", "[src.ckey]-ai", "4", "[ckey]-ai-crash", "#FFFFFF", "#FFFFFF", "#FFFFFF")
-		else
-			selected_sprite = default_ai_icon
 	updateicon()
 
 /mob/living/silicon/ai/pointed(atom/A as mob|obj|turf in view())
@@ -462,6 +444,25 @@ var/list/ai_verbs_default = list(
 	if (!camera)
 		return -1
 	return 0
+
+/mob/living/silicon/ai/can_interact_with(atom/A, treat_mob_as_adjacent)
+	. = ..()
+	if (.)
+		return
+	var/turf/ai_turf = get_turf(src)
+	var/turf/target_turf = get_turf(A)
+
+	if(!target_turf)
+		return
+
+	if (!is_same_map(ai_turf, target_turf))
+		return FALSE
+
+	if (istype(loc, /obj/item/aicard))
+		if (!ai_turf)
+			return FALSE
+		return ISINRANGE(target_turf.x, ai_turf.x - interaction_range, ai_turf.x + interaction_range) \
+			&& ISINRANGE(target_turf.y, ai_turf.y - interaction_range, ai_turf.y + interaction_range)
 
 /mob/living/silicon/ai/restrained()
 	return 0

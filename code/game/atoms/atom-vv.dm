@@ -19,7 +19,7 @@
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_FILTERS, "Edit Filters")
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_COLOR_MATRIX, "Edit Color as Matrix")
-	// VV_DROPDOWN_OPTION(VV_HK_TEST_MATRIXES, "Test Matrices")
+	VV_DROPDOWN_OPTION(VV_HK_TEST_MATRIXES, "Test Matrices")
 	// VV_DROPDOWN_OPTION(VV_HK_ADD_AI, "Add AI controller")
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_ARMOR, "Edit Armor")
 
@@ -29,14 +29,16 @@
 	if(!.)
 		return
 
-	if(href_list[VV_HK_ADD_REAGENT] && check_rights(R_VAREDIT))
+	if(href_list[VV_HK_ADD_REAGENT])
+		if(!check_rights(R_VAREDIT))
+			return
 		if(!reagents)
 			var/amount = input(usr, "Specify the reagent size of [src]", "Set Reagent Size", 50) as num|null
 			if(amount)
 				create_reagents(amount)
 		if(reagents)
 			var/chosen_id
-			switch(alert(usr, "Choose a method.", "Add Reagents", "Search", "Choose from a list", "I'm feeling lucky"))
+			switch(tgui_alert(usr, "Choose a method.", "Add Reagents", list("Search", "Choose from a list", "I'm feeling lucky")))
 				if("Search")
 					var/valid_id
 					while(!valid_id)
@@ -50,7 +52,7 @@
 						else
 							valid_id = TRUE
 						if(!valid_id)
-							to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
+							to_chat(usr, SPAN_WARNING("A reagent with that ID doesn't exist!"), confidential = TRUE)
 				if("Choose from a list")
 					chosen_id = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in sortList(subtypesof(/datum/reagent), GLOBAL_PROC_REF(cmp_typepaths_asc))
 				if("I'm feeling lucky")
@@ -68,7 +70,9 @@
 	if(href_list[VV_HK_TRIGGER_EMP] && check_rights(R_FUN))
 		usr.client.cmd_admin_emp(src)
 
-	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
+	if(href_list[VV_HK_MODIFY_TRANSFORM])
+		if(!check_rights(R_VAREDIT))
+			return
 		var/result = input(usr, "Choose the transformation to apply","Transform Mod") as null|anything in list("Scale","Translate","Rotate","Shear")
 		var/matrix/M = transform
 		if(!result)
@@ -109,8 +113,8 @@
 			num_spins = -1
 		if(!num_spins)
 			return
-		var/spin_speed = input(usr, "How fast?", "Spin Animation") as null|num
-		if(!spin_speed)
+		var/spins_per_sec = input(usr, "How many spins per second?", "Spin Animation") as null|num
+		if(!spins_per_sec)
 			return
 		var/direction = input(usr, "Which direction?", "Spin Animation") in list("Clockwise", "Counter-clockwise")
 		switch(direction)
@@ -120,7 +124,7 @@
 				direction = 0
 			else
 				return
-		SpinAnimation(spin_speed, num_spins, direction)
+		SpinAnimation(1 SECONDS / spins_per_sec, num_spins, direction)
 
 	if(href_list[VV_HK_STOP_ALL_ANIMATIONS])
 		if(!check_rights(R_VAREDIT))
@@ -130,13 +134,20 @@
 			animate(src, transform = null, flags = ANIMATION_END_NOW) // Literally just fucking stop animating entirely because admin said so
 		return
 
-	if(href_list[VV_HK_EDIT_FILTERS] && check_rights(R_VAREDIT))
-		var/client/C = usr.client
-		C?.open_filter_editor(src)
+	if(href_list[VV_HK_EDIT_FILTERS])
+		if(!check_rights(R_VAREDIT))
+			return
+		usr.client?.open_filter_editor(src)
 
-	if(href_list[VV_HK_EDIT_COLOR_MATRIX] && check_rights(R_VAREDIT))
-		var/client/C = usr.client
-		C?.open_color_matrix_editor(src)
+	if(href_list[VV_HK_EDIT_COLOR_MATRIX])
+		if(!check_rights(R_VAREDIT))
+			return
+		usr.client?.open_color_matrix_editor(src)
+
+	if(href_list[VV_HK_TEST_MATRIXES])
+		if(!check_rights(R_VAREDIT))
+			return
+		usr.client?.open_matrix_tester(src)
 
 	if(href_list[VV_HK_EDIT_ARMOR] && check_rights(R_VAREDIT))
 		// todo: tgui armor editor?
@@ -157,10 +168,10 @@
 
 /atom/vv_get_header()
 	. = ..()
-	if(!isliving(src))
-		var/refid = REF(src)
-		. += "[VV_HREF_TARGETREF_1V(refid, VV_HK_BASIC_EDIT, "<b id='name'>[src]", NAMEOF(src, name))]"
-		. += "<br><font size='1'><a href='?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"
+	var/refid = REF(src)
+	// . += "[VV_HREF_TARGETREF(refid, VV_HK_AUTO_RENAME, "<b id='name'>[src]</b>")]"
+	. += "<b id='name'>[src]</b>"
+	. += "<br><font size='1'><a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='byond://?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"
 
 /**
  * call back when a var is edited on this atom

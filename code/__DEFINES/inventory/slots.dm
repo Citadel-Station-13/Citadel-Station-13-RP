@@ -16,8 +16,14 @@
 #define SLOT_ID_RIGHT_EAR		"rear"
 #define SLOT_ID_HANDCUFFED		"handcuffed"
 #define SLOT_ID_LEGCUFFED		"legcuffed"
-/// this is an id because SLOT_ID_HANDS is used for worn_slot when something is being held :/
+
+/**
+ * 'fake' slot ID; this is used in some places if something is in hands
+ *
+ * **STOP USING THIS IN EQUIPPED/UNEQUIPPED.** new on_(un)equipped directly passes in number for hand index.
+ */
 #define SLOT_ID_HANDS			"hands"
+
 /// *ONLY USE THIS FOR RENDERING* - this is nonsensical anywhere else
 #define SLOT_ID_LEFT_HAND		"left_hand"
 /// *ONLY USE THIS FOR RENDERING* - this is nonsensical anywhere else

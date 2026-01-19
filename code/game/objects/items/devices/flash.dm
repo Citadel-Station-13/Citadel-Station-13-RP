@@ -213,7 +213,7 @@
 		var/mob/living/silicon/S = M
 		if(isrobot(S))
 			var/mob/living/silicon/robot/R = S
-			if(R.has_active_type(/obj/item/borg/combat/shield))
+			if(R.get_held_item_of_type(/obj/item/borg/combat/shield))
 				var/obj/item/borg/combat/shield/shield = locate() in R
 				if(shield)
 					if(shield.active)

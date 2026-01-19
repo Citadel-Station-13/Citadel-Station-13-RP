@@ -146,9 +146,10 @@ GLOBAL_LIST_EMPTY(player_data)
 	player_misc = list()
 	var/datum/db_query/insert
 	if(migrate_firstseen)
-		insert = SSdbcore.ExecuteQuery(
-			"INSERT INTO [DB_PREFIX_TABLE_NAME("player")] (flags, firstseen, lastseen, misc) VALUES (:flags, :fs, Now(), :misc)",
-			list(
+		insert = SSdbcore.ExecuteQuery({"
+				INSERT INTO [DB_PREFIX_TABLE_NAME("player")] (`flags`, `firstseen`, `lastseen`, `misc`)
+				VALUES (:flags, :fs, NOW(), :misc)
+			"}, list(
 				"flags" = player_flags,
 				"fs" = migrate_firstseen,
 				"misc" = safe_json_encode(player_misc),
@@ -156,14 +157,15 @@ GLOBAL_LIST_EMPTY(player_data)
 		)
 		player_first_seen = migrate_firstseen
 	else
-		insert = SSdbcore.ExecuteQuery(
-			"INSERT INTO [DB_PREFIX_TABLE_NAME("player")] (flags, firstseen, lastseen, misc) VALUES (:flags, Now(), Now(), :misc)",
-			list(
+		insert = SSdbcore.ExecuteQuery({"
+				INSERT INTO [DB_PREFIX_TABLE_NAME("player")] (`flags`, `firstseen`, `lastseen`, `misc`)
+				VALUES (:flags, NOW(), NOW(), :misc)
+			"}, list(
 				"flags" = player_flags,
 				"misc" = safe_json_encode(player_misc),
 			)
 		)
-		player_first_seen = time_stamp()
+		player_first_seen = ISOtime() // pretend i am Now()
 	var/insert_id = insert.last_insert_id
 	if(istext(insert_id))
 		insert_id = text2num(insert_id)

@@ -26,6 +26,20 @@
 		if(!safety)
 			CRASH("ran out of safety")
 
+/proc/__construct_legacy_stack_provider_material_map()
+	return list(
+		/obj/item/stack/rods = list(
+			/datum/prototype/material/steel::id = SHEET_MATERIAL_AMOUNT / 2,
+		),
+		/obj/item/stack/tile/floor = list(
+			/datum/prototype/material/steel::id = SHEET_MATERIAL_AMOUNT / 4,
+		),
+		/obj/item/stack/material/glass/reinforced = list(
+			/datum/prototype/material/glass::id = SHEET_MATERIAL_AMOUNT / 1,
+			/datum/prototype/material/steel::id = SHEET_MATERIAL_AMOUNT / 2,
+		),
+	)
+
 /**
  * Items that can stack, tracking the number of which is in it
  *
@@ -37,21 +51,39 @@
 	icon = 'icons/obj/stacks.dmi'
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
-	/// Always create this type when splitting, instead of our own type.
-	var/split_type
-	/// The type we actually are. This is what is used when things try to consume an amount of us.
-	/// * null = this current type
-	var/stack_type
+	/// Total number of states used in updating icons.
+	/// todo: all stacks should use this, remove `use_new_icon_update
+	///
+	/// * Only active when [use_new_icon_update] is set on
+	/// * This counts up from 1.
+	/// * If null, we don't do icon updates based on amount.
+	var/icon_state_count
 
-	var/singular_name
+	/// Our effective stack type. Defaults to our type.
+	/// * Used to determine our identity when calling into providers.
+	/// * Used to determine what can merge into what (so colored subtypes of cable can all be considered cable).
+	var/stack_type
+	/// What type we split into. Useful if you have an infinite stack you don't want to be split into another infinite stack.
+	/// * Use `|| stack_type || type` to default to stack type if this is not set.
+	var/split_type
+
+	/// Current amount
 	var/amount = 1
-	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
+	/// Maximum amount
 	var/max_amount = 50
-	/// Determines whether different stack types can merge.
-	var/stacktype_legacy
-	var/uses_charge = 0
-	var/list/charge_costs = null
-	var/list/datum/matter_synth/synths = null
+
+	/// this is admittedly shitcode but this allows for automatic
+	/// stack provider support for non /material stacks that are directly derived from
+	/// materials, like reinf glass and metal tiles
+	///
+	/// todo: please find a better way.
+	var/static/list/legacy_stack_provider_material_map = __construct_legacy_stack_provider_material_map()
+
+	/// explicit recipes, lazy-list. this is typelist'd
+	var/list/datum/stack_recipe/explicit_recipes
+
+	//! legacy - re-evaluate these at some point!
+	var/singular_name
 	/// Determines whether the item should update it's sprites based on amount.
 	var/no_variants = TRUE
 
@@ -61,40 +93,31 @@
 	/// * this is mandatory for all new stacks
 	var/use_new_icon_update = FALSE
 
-	/// Total number of states used in updating icons.
-	/// todo: all stacks should use this, remove `use_new_icon_update
-	///
-	/// * Only active when [use_new_icon_update] is set on
-	/// * This counts up from 1.
-	/// * If null, we don't do icon updates based on amount.
-	var/icon_state_count
-
 	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
 	var/pass_color = FALSE
 	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc).
 	var/strict_color_stacking = FALSE
-
-	/// explicit recipes, lazy-list. this is typelist'd
-	var/list/datum/stack_recipe/explicit_recipes
+	//! end
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(has_typelist(explicit_recipes))
 		explicit_recipes = get_typelist(explicit_recipes)
 	else
 		explicit_recipes = typelist(NAMEOF(src, explicit_recipes), generate_explicit_recipes())
-	if(new_amount != null)
+	if(!isnull(new_amount))
 		amount = new_amount
-	if(!stacktype_legacy)
-		stacktype_legacy = type
+	// todo: lint this to make sure everyone sets this, don't set in initialize as a safety net
+	if(!stack_type)
+		stack_type = type
 	. = ..()
 	// only merge 1. outside of mapload and 2. if we had amount
 	if(merge && !mapload && amount)
 		for(var/obj/item/stack/S in loc)
-			if(can_merge(S))
-				merge(S)
+			if(can_merge_into(S))
+				merge_into_other(S, TRUE)
 		// and if we did and no longer have amount, delete ourselves
 		if(amount == 0)
-			zero_amount()
+			return INITIALIZE_HINT_QDEL
 	update_icon()
 
 /obj/item/stack/update_icon_state()
@@ -112,6 +135,7 @@
 	if(no_variants)
 		icon_state = initial(icon_state)
 	else
+		var/amount = get_amount()
 		if(amount <= (max_amount * (1/3)))
 			icon_state = initial(icon_state)
 		else if (amount <= (max_amount * (2/3)))
@@ -122,10 +146,10 @@
 
 /obj/item/stack/examine(mob/user, dist)
 	. = ..()
-	if(!uses_charge)
-		. += "There are [amount] [singular_name]\s in the stack."
+	if(!has_stack_provider())
+		. += "There are [get_amount()] [singular_name]\s in the stack."
 	else
-		. += "There is enough charge for [get_amount()]."
+		. += "There are [get_amount()] [singular_name]\s in \the [get_provider_name()]."
 
 /**
  * Get the explicit recipes of this stack type
@@ -200,55 +224,26 @@
 	use(needed)
 
 /**
- * Return 1 if an immediate subsequent call to use() would succeed.
- * Ensures that code dealing with stacks uses the same logic
- */
-/obj/item/stack/proc/can_use(used)
-	if (get_amount() < used)
-		return FALSE
-	return TRUE
-
-/**
  * Can we merge with this stack?
  */
-/obj/item/stack/proc/can_merge(obj/item/stack/other)
+/obj/item/stack/proc/can_merge_into(obj/item/stack/other)
 	if(!istype(other))
 		return FALSE
 	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
 		return FALSE
-	return other.stacktype_legacy == stacktype_legacy
+	return can_merge_into_type(other.type)
 
+// todo: deprecated
+/obj/item/stack/proc/can_use(used)
+	return has_amount(used)
+
+// todo: deprecated
 /obj/item/stack/proc/use(used, no_delete)
-	if (!can_use(used))
-		return FALSE
-	if(!uses_charge)
-		amount -= used
-		if (amount <= 0 && !no_delete)
-			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
-		update_icon()
-		return TRUE
-	else
-		if(get_amount() < used)
-			return FALSE
-		for(var/i = 1 to uses_charge)
-			var/datum/matter_synth/S = synths[i]
-			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
-		return TRUE
+	return use_amount(used, no_delete)
 
+// todo: deprecated
 /obj/item/stack/proc/add(extra, force)
-	if(!uses_charge)
-		if((amount + extra > get_max_amount()) && !force)
-			return FALSE
-		else
-			amount += extra
-		update_icon()
-		return TRUE
-	else if(!synths || synths.len < uses_charge)
-		return FALSE
-	else
-		for(var/i = 1 to uses_charge)
-			var/datum/matter_synth/S = synths[i]
-			S.add_charge(charge_costs[i] * extra)
+	return give_amount(extra, force)
 
 /**
  * The transfer and split procs work differently than use() and add().
@@ -260,7 +255,7 @@
 /obj/item/stack/proc/transfer_to(obj/item/stack/S, tamount=null, type_verified)
 	if (!get_amount())
 		return 0
-	if (!can_merge(S) && !type_verified)
+	if (!can_merge_into(S) && !type_verified)
 		return 0
 
 	if (isnull(tamount))
@@ -283,8 +278,6 @@
 /obj/item/stack/proc/split(tamount, atom/where, force)
 	if (!amount)
 		return null
-	if (uses_charge)
-		return null
 
 	var/transfer = max(min(tamount, src.amount, force? INFINITY : initial(max_amount)), 0)
 
@@ -300,42 +293,6 @@
 		return newstack
 	return null
 
-/obj/item/stack/proc/get_amount()
-	if(uses_charge)
-		if(!synths || synths.len < uses_charge)
-			return 0
-		var/datum/matter_synth/S = synths[1]
-		. = round(S.get_charge() / charge_costs[1])
-		if(uses_charge > 1)
-			for(var/i = 2 to uses_charge)
-				S = synths[i]
-				. = min(., round(S.get_charge() / charge_costs[i]))
-		return
-	return amount
-
-/obj/item/stack/proc/get_max_amount()
-	if(uses_charge)
-		if(!synths || synths.len < uses_charge)
-			return 0
-		var/datum/matter_synth/S = synths[1]
-		. = round(S.max_energy / charge_costs[1])
-		if(uses_charge > 1)
-			for(var/i = 2 to uses_charge)
-				S = synths[i]
-				. = min(., round(S.max_energy / charge_costs[i]))
-		return
-	return max_amount
-
-/obj/item/stack/proc/add_to_stacks(mob/user)
-	for (var/obj/item/stack/item in user.loc)
-		if (item==src)
-			continue
-		var/transfer = src.transfer_to(item)
-		if (transfer)
-			to_chat(user, SPAN_NOTICE("You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."))
-		if(!amount)
-			break
-
 /obj/item/stack/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
@@ -345,25 +302,26 @@
 /obj/item/stack/Crossed(atom/movable/AM)
 	. = ..()
 	// if we're in a mob, do not automerge
-	if(!ismob(loc) && !AM.throwing && can_merge(AM))
-		merge(AM)
+	if(!ismob(loc) && !AM.throwing && can_merge_into(AM))
+		merge_into_other(AM)
 
-/// Merge src into S, as much as possible.
-/obj/item/stack/proc/merge(obj/item/stack/S, no_delete)
-	if(uses_charge)
-		return	// how about no!
-	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
+/**
+ * Merge self into other
+ *
+ * * Can delete ourselves.
+ *
+ * @return amount merged
+ */
+/obj/item/stack/proc/merge_into_other(obj/item/stack/other, no_delete)
+	if(QDELETED(other) || QDELETED(src) || (other == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()
-	if(S.uses_charge)
-		transfer = min(transfer, S.get_max_amount() - S.get_amount())
-	else
-		transfer = min(transfer, S.max_amount - S.amount)
+	transfer = min(transfer, other.max_amount - other.amount)
 	if(pulledby)
-		pulledby.start_pulling(S)
-	S.copy_evidences(src)
+		pulledby.start_pulling(other)
+	other.copy_evidences(src)
 	use(transfer, no_delete)
-	S.add(transfer)
+	other.add(transfer)
 	return transfer
 
 /obj/item/stack/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
@@ -399,30 +357,27 @@
 	return FALSE
 
 /obj/item/stack/proc/attempt_split_stack(mob/living/user)
-	if(uses_charge)
+	//get amount from user
+	var/max = get_amount()
+	var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
+	if(QDELETED(src))
 		return
-	else
-		if(zero_amount())
-			return
-		//get amount from user
-		var/max = get_amount()
-		// var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
-		var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
-		max = get_amount() // Not sure why this is done twice but whatever.
-		stackmaterial = min(max, stackmaterial)
-		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
-			return TRUE
-		else
-			change_stack(user, stackmaterial)
-			to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack"))
+	max = get_amount() // Not sure why this is done twice but whatever.
+	stackmaterial = min(max, stackmaterial)
+	if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		return TRUE
+	else
+		change_stack(user, stackmaterial)
+		to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack"))
+	return TRUE
 
 // todo: refactor and combine with /split
 /obj/item/stack/proc/change_stack(mob/user, amount)
+	var/atom/our_current_location = drop_location()
 	if(!use(amount, TRUE, FALSE))
 		return FALSE
 	var/make_type = isnull(split_type)? type : split_type
-	var/obj/item/stack/F = new make_type(user? user : drop_location(), amount, FALSE)
+	var/obj/item/stack/F = new make_type(user? user : our_current_location, amount, FALSE)
 	. = F
 	F.copy_evidences(src)
 	if(user)
@@ -430,15 +385,6 @@
 			F.forceMove(user.drop_location())
 		add_fingerprint(user)
 		F.add_fingerprint(user)
-	zero_amount()
-
-/obj/item/stack/proc/zero_amount()
-	if(uses_charge)
-		return get_amount() <= 0
-	if(amount < 1)
-		qdel(src)
-		return TRUE
-	return FALSE
 
 /obj/item/stack/proc/copy_evidences(obj/item/stack/from)
 	if(from.blood_DNA)
@@ -450,26 +396,131 @@
 	if(from.fingerprintslast)
 		fingerprintslast = from.fingerprintslast
 
-/obj/item/stack/proc/set_amount(new_amount, no_limits = FALSE)
-	if(new_amount < 0 || new_amount % 1)
+/obj/item/stack/proc/legacy_add_to_stacks_please_refactor_me(mob/user)
+	for (var/obj/item/stack/item in user.loc)
+		if (item==src)
+			continue
+		var/transfer = src.transfer_to(item)
+		if (transfer)
+			to_chat(user, SPAN_NOTICE("You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."))
+		if(!amount)
+			break
+
+//* Access *//
+
+/**
+ * Gets how many sheets we have.
+ */
+/obj/item/stack/proc/get_amount()
+	if(item_mount)
+		return check_provider_remaining()
+	return amount
+
+/**
+ * Gets how many sheets we can carry.
+ */
+/obj/item/stack/proc/get_max_amount()
+	if(item_mount)
+		return check_provider_capacity()
+	return max_amount
+
+/**
+ * Gets how many sheets we can accept.
+ */
+/obj/item/stack/proc/get_missing_amount()
+	return get_max_amount() - get_amount()
+
+/**
+ * Checks if we have an amount.
+ *
+ * @return TRUE / FALSE
+ */
+/obj/item/stack/proc/has_amount(amount)
+	return check_provider_remaining() >= amount
+
+/**
+ * Use an amount if we have the whole amount.
+ *
+ * @return amount used
+ */
+/obj/item/stack/proc/use_checked_amount(amount)
+	if(!has_amount(amount))
+		return 0
+	return use_amount(amount)
+
+/**
+ * Use an amount. Will use less if we don't have that much.
+ *
+ * @return amount used
+ */
+/obj/item/stack/proc/use_amount(amount, no_delete)
+	if(item_mount)
+		return pull_from_provider(amount)
+	if(amount <= 0)
+		return 0
+	amount = min(amount, src.amount)
+	. = amount
+	src.amount -= amount
+	update_amount(no_delete)
+
+/**
+ * Gives a number of sheets back to us.
+ *
+ * @return amount added
+ */
+/obj/item/stack/proc/give_amount(amount, force)
+	if(item_mount)
+		return push_to_provider(amount, force)
+	if(!force)
+		amount = min(amount, max_amount - src.amount)
+	if(amount <= 0)
+		return 0
+	. = amount
+	src.amount += amount
+	update_amount()
+
+/**
+ * Sets our amount to a specific amount.
+ *
+ * * If we use a stack provider, we'll push/pull automatically. This can be weird, because providers don't act the same as stacks.
+ * * Setting us to 0 will delete us immediately.
+ *
+ * @return amount changed
+ */
+/obj/item/stack/proc/set_amount(new_amount, force)
+	if(new_amount < 0 || (new_amount != floor(amount)))
 		stack_trace("Tried to set a bad stack amount: [new_amount]")
 		return 0
 
-	// Clean up the new amount
-	new_amount = max(round(new_amount), 0)
+	if(item_mount)
+		var/current_amount = check_provider_remaining()
+		var/amount_to_push_or_pull = new_amount - current_amount
 
-	// Can exceed max if you really want
-	if(new_amount > max_amount && !no_limits)
-		new_amount = max_amount
+		if(!amount_to_push_or_pull)
+			return 0
+		return amount_to_push_or_pull > 0 ? push_to_provider(amount_to_push_or_pull, force) : pull_from_provider(amount_to_push_or_pull)
 
+	if(!force)
+		new_amount = min(amount, max_amount)
+
+	. = new_amount - amount
 	amount = new_amount
 
-	// Can set it to 0 without qdel if you really want
-	if(amount == 0 && !no_limits)
-		qdel(src)
-		return FALSE
-	update_icon()
-	return TRUE
+	update_amount()
+
+/**
+ * This can destroy the stack.
+ */
+/obj/item/stack/proc/update_amount(no_delete)
+	if(QDELING(src))
+		return
+	if(item_mount)
+	else
+		if(amount <= 0)
+			if(!no_delete)
+				qdel(src)
+			return
+		update_icon()
 
 //* Getters *//
 
@@ -482,6 +533,77 @@
 	if(!icon_state_count)
 		return null
 	return CEILING(the_amount / max_amount * icon_state_count, 1)
+
+//* Stack Providers *//
+
+/obj/item/stack/proc/has_stack_provider()
+	return !!item_mount
+
+/**
+ * Get the name of our stack provider.
+ * * You must check if stack provider exists.
+ */
+/obj/item/stack/proc/get_provider_name()
+	return item_mount.stack_get_provider_name(src, null, stack_type)
+
+/**
+ * * You must check if stack provider exists.
+ * @return amount left
+ */
+/obj/item/stack/proc/check_provider_remaining()
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		. = INFINITY
+		for(var/mat_id in legacy_remap)
+			. = min(., (item_mount.material_get_amount(src, null, mat_id) / legacy_remap[mat_id]))
+	else
+		. = item_mount.stack_get_amount(src, null, stack_type)
+
+/**
+ * * You must check if stack provider exists.
+ * @return max volume
+ */
+/obj/item/stack/proc/check_provider_capacity()
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		. = INFINITY
+		for(var/mat_id in legacy_remap)
+			. = min(., (item_mount.material_get_capacity(src, null, mat_id) / legacy_remap[mat_id]))
+	else
+		. = item_mount.stack_get_capacity(src, null, stack_type)
+
+/**
+ * * You must check if stack provider exists.
+ * @return amount pushed
+ */
+/obj/item/stack/proc/push_to_provider(amount, force)
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		// we have to be atomic, so do an expensive check first
+		if(!force)
+			var/has_remaining_capacity = check_provider_capacity() - check_provider_remaining()
+			if(has_remaining_capacity <= 0)
+				return 0
+			amount = min(amount, has_remaining_capacity)
+		. = amount
+		for(var/mat_id in legacy_remap)
+			item_mount.material_give_amount(src, null, mat_id, amount * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
+	else
+		. = item_mount.stack_give_amount(src, null, stack_type, amount * SHEET_MATERIAL_AMOUNT, force)
+
+/**
+ * * You must check if stack provider exists.
+ * @return amount pulled
+ */
+/obj/item/stack/proc/pull_from_provider(amount)
+	var/list/legacy_remap = legacy_stack_provider_material_map[type]
+	if(legacy_remap)
+		// we have to be atomic, so do an expensive check first
+		var/has_remaining = check_provider_remaining()
+		for(var/mat_id in legacy_remap)
+			item_mount.material_use_amount(src, null, mat_id, has_remaining * legacy_remap[mat_id] * SHEET_MATERIAL_AMOUNT)
+	else
+		. = item_mount.stack_use_amount(src, null, stack_type, amount * SHEET_MATERIAL_AMOUNT)
 
 //* Types *//
 
@@ -499,8 +621,6 @@
 
 /**
  * Can merge into a type
- *
- * todo: use this instead of raw stacktype_legacy checks
  */
 /obj/item/stack/proc/can_merge_into_type(path)
-	CRASH("Not implemented.")
+	return path == (stack_type || type)

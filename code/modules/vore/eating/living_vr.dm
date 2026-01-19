@@ -4,7 +4,6 @@
 	var/devourable = TRUE				// Can the mob be devoured at all?
 	var/feeding = TRUE					// Can the mob be vorishly force fed or fed to others?
 	var/digest_leave_remains = FALSE	// Will this mob leave bones/skull/etc after the melty demise?
-	var/showvoreprefs = TRUE			// Determines if the mechanical vore preferences button will be displayed on the mob or not.
 	var/obj/belly/vore_selected			// Default to no vore capability.
 	var/list/vore_organs = list()		// List of vore containers inside a mob
 	var/absorbed = FALSE				// If a mob is absorbed into another
@@ -369,9 +368,9 @@
 			B.owner.update_icons()
 
 	//You're in a dogborg!
-	else if(istype(loc, /obj/item/dogborg/sleeper))
+	else if(istype(loc, /obj/item/robot_builtin/dog_sleeper))
 		var/mob/living/silicon/pred = loc.loc //Thing holding the belly!
-		var/obj/item/dogborg/sleeper/belly = loc //The belly!
+		var/obj/item/robot_builtin/dog_sleeper/belly = loc //The belly!
 
 		var/confirm = alert(src, "You're in a dogborg sleeper. This is for escaping from preference-breaking or if your predator disconnects/AFKs. If your preferences were being broken, please admin-help as well.", "Confirmation", "Okay", "Cancel")
 		if(!confirm == "Okay" || loc != belly)

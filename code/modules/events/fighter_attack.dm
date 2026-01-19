@@ -32,6 +32,7 @@
 
 /datum/event/fighter/end()
 	// var/bandits_spawn = list()
+	// var/spawn_type = pick(bandits_spawn)
 	// for(var/areapath in typesof(spawn_area_type))
 
 	// if(piratestring == "bandits")

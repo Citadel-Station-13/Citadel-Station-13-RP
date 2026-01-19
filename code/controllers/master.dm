@@ -142,9 +142,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		else
 			var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
 			tim_sort(subsytem_types, GLOBAL_PROC_REF(cmp_subsystem_init))
-			for(var/I in subsytem_types)
-				var/datum/controller/subsystem/S = new I
-				_subsystems += S
+			for(var/datum/controller/subsystem/ss_path as anything in subsytem_types)
+				if(ss_path.abstract_type == ss_path)
+					continue
+				var/datum/controller/subsystem/ss_instance = new ss_path
+				_subsystems += ss_instance
 		Master = src
 
 	/**
@@ -209,7 +211,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	return MC_RESTART_RTN_SUCCESS
 
 /datum/controller/master/Recover()
-	var/msg = "## DEBUG: [time2text(world.timeofday)] MC restarted. Reports:\n"
+	var/msg = "## DEBUG: [time2text(world.timeofday, "DDD MMM DD hh:mm:ss YYYY", TIMEZONE_UTC)] MC restarted. Reports:\n"
 	var/list/master_attributes = Master.vars
 	var/list/filtered_variables = list(
 		NAMEOF(src, name),

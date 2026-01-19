@@ -13,6 +13,7 @@
 	circuit = /obj/item/circuitboard/machine/lathe/autolathe
 	design_holder = /datum/design_holder/lathe/autolathe
 	lathe_type = LATHE_TYPE_AUTOLATHE
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
 	has_interface = TRUE
 	active_icon_state = "active"
 	print_icon_state = "print"
