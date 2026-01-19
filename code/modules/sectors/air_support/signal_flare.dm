@@ -88,6 +88,8 @@
 /obj/item/signal_flare/proc/ready()
 	if(!ignited)
 		return
+	if(ready)
+		return
 	ready = TRUE
 	update_icon()
 	set_light(

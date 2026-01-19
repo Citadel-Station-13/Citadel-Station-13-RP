@@ -137,6 +137,8 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	if((upper_right.x - lower_left.x) < 2 || (upper_right.y - lower_left.y) < 2)
 		CRASH("LL/UR markers swapped")
 
+	disarm()
+
 	var/list/turf/inside_zone = block(get_step(lower_left, NORTHEAST), get_step(upper_right, SOUTHWEST))
 	var/area/orbital_deployment_area/deployment_area = new(null)
 	current_area = deployment_area
@@ -158,6 +160,8 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	arming = TRUE
 	arming_last_toggle = world.time
 	current_area.alpha = 175
+	current_area.icon_state = "armed-tile"
+	current_area.blend_mode = BLEND_DEFAULT
 
 /datum/orbital_deployment_zone/proc/disarm()
 	if(!arming)
@@ -165,6 +169,8 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	arming = FALSE
 	arming_last_toggle = world.time
 	current_area.alpha = 0
+	current_area.icon_state = initial(current_area.icon_state)
+	current_area.blend_mode = initial(current_area.blend_mode)
 
 /datum/orbital_deployment_zone/proc/is_armed()
 	return arming && ((arming_last_toggle + arming_time) <= world.time)
@@ -191,10 +197,13 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	var/obj/overmap/entity/their_entity = SSovermaps.get_enclosing_overmap_entity(target_center)
 	if(!their_entity)
 		return null
+	// reset the area's arming
+	disarm()
 	launch_next_ready_time = world.time + launch_cooldown
 	var/datum/orbital_deployment_transit/transit = new(src)
 	var/list/target_corners = compute_target_corners(target_center, dir_from_north)
 	transit.target_lower_left = target_corners[1]
+	transit.target_upper_right = target_corners[2]
 	transit.target_dir_from_north = dir_from_north
 	transit.launching_actor = actor
 	if(!transit.allocate_and_package(locate(lower_left.x + 1, lower_left.y + 1, lower_left.z), locate(upper_right.x - 1, upper_right.y - 1, upper_right.z), current_area))
@@ -272,26 +281,36 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	// we will go northeast of relative-north, so bias northeast for uneven bits
 	// when facing north, southwest facing south, southeast facing east, northwest facing west
 	var/list/frame_dims = get_frame_dimensions()
+	var/target_width
+	var/target_height
 	switch(dir_from_north)
 		if(NORTH)
+			target_width = frame_dims[1]
+			target_height = frame_dims[2]
 			bottom_left = locate(
 				target_center.x - floor((frame_dims[1] - 1) / 2),
 				target_center.y - floor((frame_dims[2] - 1) / 2),
 				target_center.z,
 			)
 		if(SOUTH)
+			target_width = frame_dims[1]
+			target_height = frame_dims[2]
 			bottom_left = locate(
 				target_center.x - floor((frame_dims[1] - 0) / 2),
 				target_center.y - floor((frame_dims[2] - 0) / 2),
 				target_center.z,
 			)
 		if(EAST)
+			target_width = frame_dims[2]
+			target_height = frame_dims[1]
 			bottom_left = locate(
 				target_center.x - floor((frame_dims[2] - 1) / 2),
 				target_center.y - floor((frame_dims[1] - 0) / 2),
 				target_center.z,
 			)
 		if(WEST)
+			target_width = frame_dims[2]
+			target_height = frame_dims[1]
 			bottom_left = locate(
 				target_center.x - floor((frame_dims[2] - 0) / 2),
 				target_center.y - floor((frame_dims[1] - 1) / 2),
@@ -300,7 +319,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	// -- end --
 	if(!bottom_left)
 		return null
-	var/turf/top_right = locate(bottom_left.x + frame_dims[1] - 1, bottom_left.y + frame_dims[2] - 1, bottom_left.z)
+	var/turf/top_right = locate(bottom_left.x + target_width - 1, bottom_left.y + target_height - 1, bottom_left.z)
 	if(!top_right)
 		return null
 	return list(bottom_left, top_right)

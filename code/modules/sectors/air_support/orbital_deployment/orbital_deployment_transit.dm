@@ -7,6 +7,7 @@
 	 * include padding added to the reservation.
 	 */
 	var/turf/target_lower_left
+	var/turf/target_upper_right
 	var/target_dir_from_north
 
 	var/datum/map_reservation/reservation
@@ -168,32 +169,8 @@
 	ASSERT(target_lower_left)
 	ASSERT(target_dir_from_north)
 
-	var/turf/target_upper_right = locate(
-		target_lower_left.x + packaged_width - 1,
-		target_lower_left.y + packaged_height - 1,
-		target_lower_left.z,
-	)
-
-	var/list/from_lower_left_coords = reservation.bottom_left_coords
-	var/list/from_turfs = SSgrids.get_ordered_turfs(
-		from_lower_left_coords[1] + packaged_border,
-		from_lower_left_coords[1] + packaged_border + packaged_width - 1,
-		from_lower_left_coords[2] + packaged_border,
-		from_lower_left_coords[2] + packaged_border + packaged_height - 1,
-		from_lower_left_coords[3],
-		NORTH,
-	)
-	var/list/to_turfs = SSgrids.get_ordered_turfs(
-		target_lower_left.x,
-		target_upper_right.x,
-		target_lower_left.y,
-		target_upper_right.y,
-		target_lower_left.z,
-		target_dir_from_north
-	)
-
-	var/list/out_motion_flags = list()
-	var/list/out_moved_atoms = list()
+	var/list/from_turfs = get_transit_ordered_turfs()
+	var/list/to_turfs = get_target_ordered_turfs()
 
 	translation.dest_lower_left = target_lower_left
 	translation.dest_upper_right = target_upper_right
@@ -210,11 +187,43 @@
 		GRID_MOVE_AREA | GRID_MOVE_MOVABLES | GRID_MOVE_TURF,
 		/turf/baseturf_skipover/orbital_deployment,
 		reservation.area_type,
-		out_motion_flags,
-		out_moved_atoms,
+		null,
+		null,
 		turf_overlap_handler,
 		movable_overlap_handler,
 	)
 
 	translation.run_aftereffects(structural_area)
 
+/datum/orbital_deployment_transit/proc/get_transit_ordered_turfs()
+	var/list/from_lower_left_coords = reservation.bottom_left_coords.Copy()
+	from_lower_left_coords[1] += packaged_border
+	from_lower_left_coords[2] += packaged_border
+	return SSgrids.get_ordered_turfs(
+		from_lower_left_coords[1],
+		from_lower_left_coords[1] + packaged_width - 1,
+		from_lower_left_coords[2],
+		from_lower_left_coords[2] + packaged_height - 1,
+		from_lower_left_coords[3],
+		NORTH,
+	)
+
+/datum/orbital_deployment_transit/proc/get_target_ordered_turfs()
+	return SSgrids.get_ordered_turfs(
+		target_lower_left.x,
+		target_upper_right.x,
+		target_lower_left.y,
+		target_upper_right.y,
+		target_lower_left.z,
+		target_dir_from_north,
+	)
+
+/datum/orbital_deployment_transit/proc/telegraph(how_long)
+	var/list/src_turfs = get_transit_ordered_turfs()
+	var/list/dst_turfs = get_target_ordered_turfs()
+	for(var/i in 1 to length(src_turfs))
+		var/turf/source = src_turfs[i]
+		if(source.type == reservation.turf_type)
+			continue
+		var/turf/dest = dst_turfs[i]
+		new /atom/movable/render/orbital_deployment_telegraph(dest, how_long)

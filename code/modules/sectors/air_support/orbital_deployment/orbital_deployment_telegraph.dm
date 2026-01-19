@@ -6,7 +6,9 @@
 	desc = "Usually, when you see a building about to land on you from orbit, you run away. \
 	Stop gawking and start doing that."
 	icon = 'icons/modules/sectors/air_support/orbital_deployment_telegraph.dmi'
-	icon_state = "warning"
+	icon_state = "warning-blink"
+	color = "#ff3333"
+	alpha = 175
 
 /atom/movable/render/orbital_deployment_telegraph/Initialize(mapload, landing_time)
 	. = ..()

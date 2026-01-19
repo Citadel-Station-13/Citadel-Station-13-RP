@@ -8,6 +8,7 @@ import {
   Stack,
   Table,
 } from 'tgui-core/components';
+import { round } from 'tgui-core/math';
 import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../../backend';
@@ -67,7 +68,7 @@ export const OrbitalDeploymentController = (props) => {
                         {data.zone.launchOnCooldown ? 'Recharging' : 'Ready'}
                       </LabeledList.Item>
                       <LabeledList.Item label="Range">
-                        {data.zone.maxOvermapPixelDist / 32} Tiles
+                        {round(data.zone.maxOvermapPixelDist / 32, 0.1)} Tiles
                       </LabeledList.Item>
                     </LabeledList>
                   ) : (
@@ -199,7 +200,7 @@ export const OrbitalDeploymentController = (props) => {
                       <Table.Cell
                         style={{ borderRight: 'solid 1px #ffffff66' }}
                       >
-                        {f.overmapDist / 32} Tiles
+                        {round(f.overmapDist / 32, 0.1)} Tiles
                       </Table.Cell>
                       <Table.Cell>
                         <Button

@@ -246,11 +246,17 @@
 
 /datum/keybinding/mob/toggle_move_intent/down(client/user)
 	var/mob/M = user.mob
+	// no accidental move intent toggles for ghosts
+	if(isobserver(M))
+		return
 	M.toggle_move_intent()
 	return TRUE
 
 /datum/keybinding/mob/toggle_move_intent/up(client/user)
 	var/mob/M = user.mob
+	// no accidental move intent toggles for ghosts
+	if(isobserver(M))
+		return
 	M.toggle_move_intent()
 	return TRUE
 
@@ -262,6 +268,9 @@
 
 /datum/keybinding/mob/toggle_move_intent_alternative/down(client/user)
 	var/mob/M = user.mob
+	// no accidental move intent toggles for ghosts
+	if(isobserver(M))
+		return
 	M.toggle_move_intent()
 	return TRUE
 
