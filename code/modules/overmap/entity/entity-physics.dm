@@ -41,7 +41,7 @@
 	pos_y += ddy
 	// move
 	var/old_loc = loc
-	if(!Move(loc, dir, step_x + msx, step_y + msy))
+	if(!step_p(vector(msx, msy)))
 		if(!bump_handled)
 			initialize_physics()
 			stack_trace("failed to move")
@@ -78,6 +78,41 @@
 		interpolate_limiter = SSovermap_physics.global_interpolate_limit_as_per_second / interpolate_limiter
 		vel_x *= interpolate_limiter
 		vel_y *= interpolate_limiter
+
+	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
+		activate_physics()
+	else
+		deactivate_physics()
+
+	update_icon() // legacy
+
+/**
+ * * We will be physically moved to 'other', including if it is on another overmap.
+ * * If we are different in size from 'other', we will be centered.
+ */
+/obj/overmap/entity/proc/copy_physics_pos(obj/overmap/entity/other)
+	force_move_p(bound_pixloc(other, NONE))
+
+/obj/overmap/entity/proc/copy_physics_vel(obj/overmap/entity/other)
+	vel_x = other.vel_x
+	vel_y = other.vel_y
+
+	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
+		activate_physics()
+	else
+		deactivate_physics()
+
+	update_icon() // legacy
+
+/**
+ * * We will be physically moved to 'other', including if it is on another overmap.
+ * * If we are different in size from 'other', we will be centered.
+ */
+/obj/overmap/entity/proc/copy_physics_pos_vel(obj/overmap/entity/other)
+	force_move_p(bound_pixloc(other, NONE))
+
+	vel_x = other.vel_x
+	vel_y = other.vel_y
 
 	if(QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y))
 		activate_physics()
@@ -152,19 +187,44 @@
 	return y - overmap.lower_left_y + 1 + (center - (WORLD_ICON_SIZE * 0.5)) / WORLD_ICON_SIZE
 
 /**
- * gets our movement (non-angular) speed in overmaps units per second
- */
-/obj/overmap/entity/proc/get_speed()
-	return sqrt(vel_x ** 2 + vel_y ** 2)
-
-/**
  * get clockwise of N degrees heading of our cardinal velocity
  */
 /obj/overmap/entity/proc/get_heading()
 	return (arctan(vel_y, vel_x) + 360) % 360
 
 /**
- * gets distance in overmap distance to other entity
+ * gets our movement (non-angular) speed in overmaps units per second
  */
-/obj/overmap/entity/proc/entity_overmap_distance(obj/overmap/entity/other)
+/obj/overmap/entity/proc/get_abstracted_speed()
+	return sqrt(vel_x ** 2 + vel_y ** 2)
+
+/**
+ * Get our vectorized x/y velocity.
+ * * Returned vectors are in overmap units.
+ */
+/obj/overmap/entity/proc/get_abstracted_velocity_v() as /vector
+	return vector(vel_x, vel_y)
+
+/**
+ * Gets our vectorized x/y position.
+ * * Returned vectors are in overmap units.
+ */
+/obj/overmap/entity/proc/get_abstracted_position_v() as /vector
+	return vector(pos_x, pos_y)
+
+//* Entity Ops *//
+
+/**
+ * gets distance in pixels from our center to their center
+ * * this gets the distance from the centers of the entities, not the edges!
+ * * assumes same-overmap!
+ */
+/obj/overmap/entity/proc/get_center_px_dist(obj/overmap/entity/other)
 	. = sqrt((src.pos_x - other.pos_x) ** 2 + (src.pos_y - other.pos_y) ** 2)
+
+/**
+ * gets distance in pixels between edges
+ * * assumes same-overmap!
+ */
+/obj/overmap/entity/proc/get_edge_px_dist(obj/overmap/entity/other)
+	return max(0, bounds_dist(src, other))

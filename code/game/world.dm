@@ -520,6 +520,7 @@ GLOBAL_LIST(topic_status_cache)
 /world/proc/max_z_changed(old_z_count, new_z_count)
 	assert_players_by_zlevel_list()
 	assert_gps_level_list()
+	assert_high_altitude_signal_list()
 	for(var/datum/controller/subsystem/S in Master.subsystems)
 		S.on_max_z_changed(old_z_count, new_z_count)
 

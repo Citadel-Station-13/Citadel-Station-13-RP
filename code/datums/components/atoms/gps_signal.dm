@@ -1,4 +1,8 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
+
 GLOBAL_LIST_EMPTY(gps_transmitters)
+
 /**
  * handles world size updates
  */
@@ -50,7 +54,8 @@ GLOBAL_LIST_EMPTY(gps_transmitters)
 
 /datum/component/gps_signal/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_transit))
+	if(ismovable(parent))
+		RegisterSignal(parent, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_transit))
 	register_transmitter()
 
 /datum/component/gps_signal/UnregisterFromParent()

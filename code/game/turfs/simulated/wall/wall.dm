@@ -147,10 +147,10 @@
 	if(!can_melt())
 		return
 
-	src.ChangeTurf(/turf/simulated/floor/plating)
+	ScrapeAway()
 
 	var/turf/simulated/floor/F = src
-	if(!F)
+	if(!istype(F))
 		return
 	F.burn_tile()
 	F.icon_state = "wall_thermite"
@@ -222,7 +222,7 @@
 	if(material_girder.relative_integrity >= 1.5) //Strong girders will remain in place when a wall is melted.
 		dismantle_wall(1,1)
 	else
-		src.ChangeTurf(/turf/simulated/floor/plating)
+		ScrapeAway()
 
 	var/turf/simulated/floor/F = src
 	F.burn_tile()
@@ -241,7 +241,7 @@
 
 /turf/simulated/wall/proc/do_burn(temperature)
 	new /obj/structure/girder(src, material_girder.name)
-	src.ChangeTurf(/turf/simulated/floor)
+	ScrapeAway()
 	for(var/turf/simulated/wall/W in range(3,src))
 		W.burn((temperature/4))
 	for(var/obj/machinery/door/airlock/phoron/D in range(3,src))

@@ -84,7 +84,7 @@
 /atom/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	//Check if both user and atom are at the same location
-	if(!can_interact(user))
+	if(!can_interact(user) && !isAdminGhostAI(user))
 		. = min(., UI_UPDATE)
 
 /atom/movable/can_interact(mob/user)
