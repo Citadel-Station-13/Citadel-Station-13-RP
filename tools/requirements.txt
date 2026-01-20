@@ -7,4 +7,4 @@ PyYaml==6.0.1
 beautifulsoup4==4.9.3
 
 # icon cutter
-numpy==1.26.0
+numpy==2.3.3

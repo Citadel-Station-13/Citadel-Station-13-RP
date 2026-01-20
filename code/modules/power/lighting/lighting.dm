@@ -482,6 +482,8 @@ var/global/list/light_type_cache = list()
 		on = 0
 //		A.update_lights()
 	QDEL_NULL(cell)
+	// TODO: this is insane why is a machine processing in objs?
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/machinery/light/update_icon()
