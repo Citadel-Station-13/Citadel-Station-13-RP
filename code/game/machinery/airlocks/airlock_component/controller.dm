@@ -31,8 +31,6 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	var/program_path = /datum/airlock_program/vacuum_cycle
 
 	//* Network *//
-	/// our connected gasnet
-	var/datum/airlock_gasnet/network
 	/// connected peripherals
 	var/list/obj/machinery/airlock_peripheral/peripherals
 
@@ -63,6 +61,21 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	set_airlock_id(null)
 	QDEL_NULL(system)
 	return ..()
+
+/obj/machinery/airlock_component/controller/on_connect(datum/airlock_gasnet/network)
+	..()
+	if(network.controller)
+		// screaming time!
+		network.queue_recheck()
+	else
+		// don't need to recheck at all unless we make things event driven later
+		network.controller = src
+
+/obj/machinery/airlock_component/controller/on_disconnect(datum/airlock_gasnet/network)
+	..()
+	if(network.controller == src)
+		network.controller = null
+		network.queue_recheck()
 
 /**
  * @return TRUE success, FALSE failure

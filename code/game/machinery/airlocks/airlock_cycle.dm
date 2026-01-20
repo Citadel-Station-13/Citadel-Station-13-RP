@@ -7,6 +7,9 @@
  * * created for use during a discrete cycle operation
  */
 /datum/airlock_cycle
+	#warn set on new / cleanup on destroy
+	/// the controller we belong to
+	var/obj/machinery/airlock_component/controller/controller
 	/// tasks running in the cycle
 	var/list/datum/airlock_task/running_tasks = list()
 

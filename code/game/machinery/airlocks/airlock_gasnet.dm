@@ -44,6 +44,8 @@
 	/// * as plaintext
 	var/list/invalid_reasons
 
+	var/recheck_queued = FALSE
+
 	#warn hook all
 
 /datum/airlock_gasnet/New(obj/structure/airlock_interconnect/origin)
@@ -54,8 +56,14 @@
 	teardown()
 	return ..()
 
+/datum/airlock_gasnet/proc/queue_recheck()
+	if(recheck_queued)
+		return
+	recheck_queued = TRUE
+	addtimer(CALLBACK(src, PROC_REF(recheck)), 0)
 
 /datum/airlock_gasnet/proc/recheck()
+	recheck_queued = FALSE
 	#warn impl
 
 /**
@@ -70,10 +78,10 @@
 /datum/airlock_gasnet/proc/merge_into(datum/airlock_gasnet/other)
 	#warn impl
 
-/datum/airlock_gasnet/proc/add_machine(obj/machinery/airlcok_component/component)
+/datum/airlock_gasnet/proc/add_machine(obj/machinery/airlock_component/component)
 	#warn impl
 
-/datum/airlock_gasnet/proc/remove_machine(obj/machinery/airlcok_component/component)
+/datum/airlock_gasnet/proc/remove_machine(obj/machinery/airlock_component/component)
 	#warn impl
 
 /datum/airlock_gasnet/proc/teardown(queue_rebuilds = TRUE)

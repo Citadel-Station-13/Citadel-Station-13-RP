@@ -17,6 +17,13 @@
 		cycle.remove_task(src)
 	return ..()
 
+/datum/airlock_task/proc/component_still_valid(obj/machinery/airlock_component/component)
+	if(QDELETED(component) || !component.network)
+		return FALSE
+	if(component.network != cycle.controller?.network)
+		return FALSE
+	return TRUE
+
 /datum/airlock_task/proc/assign_cycle(datum/airlock_cycle/cycle)
 	ASSERT(!src.cycle)
 	src.cycle = cycle
@@ -44,6 +51,9 @@
 	return
 
 /datum/airlock_task/proc/complete()
+	completed = TRUE
+
+/datum/airlock_task/proc/fail()
 	completed = TRUE
 
 /datum/airlock_task/component

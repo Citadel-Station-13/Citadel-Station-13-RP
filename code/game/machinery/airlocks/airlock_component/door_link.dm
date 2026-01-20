@@ -16,8 +16,6 @@
 	/// are we indoors? if not, we're outdoors
 	var/is_indoors = FALSE
 
-#warn impl link
-
 /obj/machinery/airlock_component/door_linker/proc/set_is_indoors(new_is_indoors)
 	src.is_indoors = new_is_indoors
 
@@ -40,9 +38,11 @@
 		if(!maybe_airlock.unlock())
 			return FALSE
 		if(opened)
-			maybe_airlock.open()
+			ASYNC
+				maybe_airlock.open()
 		else
-			maybe_airlock.close()
+			ASYNC
+				maybe_airlock.close()
 		// open / close has delay
 		return FALSE
 	// then, see if we need to be locked
@@ -91,21 +91,10 @@
 	if(world.time < backoff_until)
 		return
 	var/obj/machinery/airlock_component/door_linker/linker = component
-	linker.set_state(target_opened, target_locked)
-	if(check_airlock())
+	if(!component_still_valid(linker))
+		fail()
+		return
+	if(linker.set_state(target_opened, target_locked))
 		complete()
 	else
 		backoff_until = world.time + 2 SECONDS
-
-/datum/airlock_task/component/door_linker/operate/proc/check_airlock()
-	var/obj/machinery/airlock_component/door_linker/linker = component
-	var/obj/machinery/door/airlock/maybe_airlock = linker?.get_airlock()
-	if(!maybe_airlock)
-		return FALSE
-	if(!isnull(target_opened))
-		if(!maybe_airlock.density != target_opened)
-			return FALSE
-	if(!isnull(target_locked))
-		if(maybe_airlock.locked != target_locked)
-			return FALSE
-	return TRUE

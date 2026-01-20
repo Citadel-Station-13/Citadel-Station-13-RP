@@ -51,6 +51,21 @@
 
 #warn impl
 
+/obj/machinery/airlock_component/handler/on_connect(datum/airlock_gasnet/network)
+	..()
+	if(network.handler)
+		// screaming time!
+		network.queue_recheck()
+	else
+		// don't need to recheck at all unless we make things event driven later
+		network.handler = src
+
+/obj/machinery/airlock_component/handler/on_disconnect(datum/airlock_gasnet/network)
+	..()
+	if(network.handler == src)
+		network.handler = null
+		network.queue_recheck()
+
 /obj/machinery/airlock_component/handler/process(delta_time)
 	. = ..()
 	#warn impl - power, atmos

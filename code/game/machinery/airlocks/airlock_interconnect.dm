@@ -50,15 +50,15 @@
 		disconnect_component(component)
 	return ..()
 
-#warn impl
-
 /obj/structure/airlock_interconnect/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	..()
 	if(loc == old_loc)
 		return
 	for(var/obj/machinery/airlock_component/component as anything in components)
 		disconnect_component(component)
+	qdel(network)
 	join_all_components_on_tile()
+	queue_rebuild()
 
 /obj/structure/airlock_interconnect/proc/rebuild()
 	rebuild_queued = FALSE
@@ -67,17 +67,30 @@
 	qdel(network)
 	new /datum/airlock_gasnet(src)
 
+/obj/structure/airlock_interconnect/proc/rebuild_if_needed()
+	rebuild_queued = FALSE
+	if(network)
+		return
+	rebuild()
+
 /obj/structure/airlock_interconnect/proc/queue_rebuild()
-	#warn impl
+	if(rebuild_queued)
+		return
+	rebuild_queued = TRUE
+	addtimer(CALLBACK(src, PROC_REF(rebuild_if_needed)), 0)
 
 /obj/structure/airlock_interconnect/proc/join_all_components_on_tile()
 	for(var/obj/machinery/airlock_component/component in loc)
 		if(!component.interconnect)
-			component.join_interconnect()
+			connect_component(component)
 
 /obj/structure/airlock_interconnect/proc/connect_component(obj/machinery/airlock_component/component)
+	if(component.interconnect)
+		component.interconnect.disconnect_component(component)
+	#warn impl
 
 /obj/structure/airlock_interconnect/proc/disconnect_component(obj/machinery/airlock_component/component)
+	#warn impl
 
 /obj/structure/airlock_interconnect/proc/get_adjacent_interconnects()
 	. = list()
