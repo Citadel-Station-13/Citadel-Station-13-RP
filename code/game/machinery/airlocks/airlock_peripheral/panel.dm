@@ -13,3 +13,6 @@
 
 #warn impl
 
+
+/obj/machinery/airlock_peripheral/panel/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE

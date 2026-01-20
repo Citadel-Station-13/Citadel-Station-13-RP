@@ -7,13 +7,6 @@
 /datum/airlock_program/vacuum_cycle
 	tgui_airlock_component = "VacuumCycle"
 
-	/// inside air --> vent, instead of waste buffer
-	/// * vacuum (non-curtain) mode only
-	var/vacuum_vent_inside_air = FALSE
-	/// outside air --> vent, instead of waste buffer
-	/// * vacuum (non-curtain) mode only
-	var/vacuum_vent_outside_air = TRUE
-
 /datum/airlock_program/vacuum_cycle/ui_program_data()
 
 /datum/airlock_program/vacuum_cycle/ui_program_act(datum/airlock_gasnet/network, datum/event_args/actor/actor, action, list/params)
@@ -25,7 +18,10 @@
 		if("cycleToInterior")
 		if("forceToExterior")
 		if("forceToInterior")
+		if("cancel")
+			// soft cancel, try to repressurize
 		if("abort")
+			// immediate abort
 
 /datum/airlock_program/vacuum_cycle/proc/ui_config_standard_reject(datum/airlock_gasnet/network, datum/event_args/actor/actor)
 	#warn reject if operating

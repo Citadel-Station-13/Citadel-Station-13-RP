@@ -10,8 +10,25 @@
 	/// tasks running in the cycle
 	var/list/datum/airlock_task/running_tasks = list()
 
+	/// current phase
+	var/datum/airlock_phase/current_phase
+	/// ordered pending phases
+	/// * we are done if there's none left
+	var/list/datum/airlock_phase/pending_phases = list()
+
+/**
+ * Called when the airlock processes to tick the cycle.
+ */
+/datum/airlock_cycle/proc/poll()
+
+/**
+ * * The reference will be owned by the cycle after this call.
+ */
+/datum/airlock_cycle/proc/enqueue_phase(datum/airlock_phase/phase)
+
 
 #warn below
+/datum/airlock_cycle
 	/// blackboard
 	///
 	/// * arbitrary k-v list for use by programs
@@ -32,14 +49,6 @@
 	/// ending side
 	var/side_cycling_to
 
-
-/datum/airlock_cycle/proc/set_phase(phase, phase_display)
-	src.phase = phase
-	src.phase_display = phase_display || "Working..."
-	src.phase_started = world.time
-
-/datum/airlock_cycle/proc/update_phase(phase_display)
-	src.phase_display = phase_display || "Working..."
 
 /datum/airlock_cycle/proc/get_phase()
 	return phase
@@ -67,19 +76,6 @@
 /datum/airlock_cycle/proc/complete()
 	#warn impl
 
-/**
- * Simple cycles that go through a set of phases, each with tasks.
- */
-/datum/airlock_cycle/simple
-	/// current phase
-	var/datum/airlock_phase/current
-	/// ordered pending phases
-	/// * we are done if there's none left
-	var/list/datum/airlock_phase/pending = list()
-
-/**
- * * The reference will be owned by the cycle after this call.
- */
-/datum/airlock_cycle/simple/proc/enqueue_phase(datum/airlock_phase/phase)
+#warn above
 
 #warn impl

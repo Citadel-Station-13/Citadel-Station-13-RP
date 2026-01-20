@@ -1,15 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/datum/airlock_cycle/simple/vacuum_cycle
+/datum/airlock_cycle/vacuum_cycle
 	var/to_side = AIRLOCK_SIDE_NEUTRAL
 
-/datum/airlock_cycle/simple/vacuum_cycle/New(set_to_side)
+/datum/airlock_cycle/vacuum_cycle/New(set_to_side)
 	if(set_to_side)
 		src.to_side = set_to_side
 	..()
 
-/datum/airlock_cycle/simple/vacuum_cycle/setup()
+/datum/airlock_cycle/vacuum_cycle/setup()
 	enqueue_phase(new /datum/airlock_phase/doors/seal)
 	switch(side_cycling_from)
 		if(AIRLOCK_SIDE_EXTERIOR)

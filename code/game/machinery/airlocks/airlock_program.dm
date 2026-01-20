@@ -3,8 +3,6 @@
 
 /**
  * A configurable airlock program.
- * * This doubles as config; this cannot be dynamically changed on the airlock. You shouldn't
- *   have to change programs unless the airlock is so different it's another specialty.
  */
 /datum/airlock_program
 	/// tgui routing string used to get the right component

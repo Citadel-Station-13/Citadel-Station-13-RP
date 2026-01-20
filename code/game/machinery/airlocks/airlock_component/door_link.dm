@@ -11,10 +11,15 @@
 /obj/machinery/airlock_component/door_linker
 	name = "airlock door linker"
 	desc = "An underfloor controller for a full cycling airlock. This will control doors placed above it."
-	#warn impl
+	#warn sprite
 
 	/// are we indoors? if not, we're outdoors
 	var/is_indoors = FALSE
+
+#warn impl link
+
+/obj/machinery/airlock_component/door_linker/proc/set_is_indoors(new_is_indoors)
+	src.is_indoors = new_is_indoors
 
 /obj/machinery/airlock_component/door_linker/proc/create_state_task(set_opened, set_locked) as /datum/airlock_task
 	return new /datum/airlock_task/component/door_linker/operate(src, set_opened, set_locked)
@@ -29,16 +34,41 @@
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/obj/machinery/door/airlock/maybe_airlock = get_airlock()
-	if(!isnull(opened))
-	else if(!isnull(locked))
-		#warn impl
+	// if we want to set opened, handle that first
+	if(!isnull(opened) && (maybe_airlock.density != opened))
+		// try to operate
+		if(!maybe_airlock.unlock())
+			return FALSE
+		if(opened)
+			maybe_airlock.open()
+		else
+			maybe_airlock.close()
+		// open / close has delay
+		return FALSE
+	// then, see if we need to be locked
+	if(!isnull(locked) && (maybe_airlock.locked != locked))
+		if(maybe_airlock.locked && !locked)
+			maybe_airlock.unlock()
+		else if(!maybe_airlock.locked && locked)
+			maybe_airlock.lock()
+		if(maybe_airlock.locked != locked)
+			return FALSE
 	return TRUE
+
+/obj/machinery/airlock_component/door_linker/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/airlock_component/door_linker/indoors
 	is_indoors = TRUE
 
+/obj/machinery/airlock_component/door_linker/indoors/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
 /obj/machinery/airlock_component/door_linker/outdoors
 	is_indoors = FALSE
+
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /datum/airlock_task/component/door_linker
 
@@ -68,7 +98,8 @@
 		backoff_until = world.time + 2 SECONDS
 
 /datum/airlock_task/component/door_linker/operate/proc/check_airlock()
-	var/obj/machinery/door/airlock/maybe_airlock = component?.get_airlock()
+	var/obj/machinery/airlock_component/door_linker/linker = component
+	var/obj/machinery/door/airlock/maybe_airlock = linker?.get_airlock()
 	if(!maybe_airlock)
 		return FALSE
 	if(!isnull(target_opened))

@@ -32,7 +32,7 @@
 /**
  * Returned air must **never** be edited!
  */
-/obj/machinery/airlock_peripheral/sensor/proc/probe_gas()
+/obj/machinery/airlock_peripheral/sensor/proc/probe_gas_immutable()
 	return return_air_immutable()
 
 /obj/machinery/airlock_peripheral/sensor/attack_ai(mob/user)
@@ -41,11 +41,17 @@
 /obj/machinery/airlock_peripheral/sensor/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
 
+/obj/machinery/airlock_peripheral/sensor/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
 /obj/machinery/airlock_peripheral/sensor/sensor_only
 	name = "airlock reader"
 	desc = "An environment analyzer for an airlock. Don't block the front!"
 	is_button = FALSE
 	is_sensor = TRUE
+
+/obj/machinery/airlock_peripheral/sensor/sensor_only/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/airlock_peripheral/sensor/button_only
 	name = "airlock button"
@@ -53,24 +59,45 @@
 	is_sensor = FALSE
 	is_button = TRUE
 
+/obj/machinery/airlock_peripheral/sensor/button_only/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
 /obj/machinery/airlock_peripheral/sensor/sensor_only/exterior
 	sidedness = AIRLOCK_SIDE_EXTERIOR
+
+/obj/machinery/airlock_peripheral/sensor/sensor_only/exterior/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only/interior
 	sidedness = AIRLOCK_SIDE_INTERIOR
 
+/obj/machinery/airlock_peripheral/sensor/sensor_only/interior/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
 /obj/machinery/airlock_peripheral/sensor/button_only/exterior
 	sidedness = AIRLOCK_SIDE_EXTERIOR
 
+/obj/machinery/airlock_peripheral/sensor/button_only/exterior/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
 /obj/machinery/airlock_peripheral/sensor/button_only/interior
 	sidedness = AIRLOCK_SIDE_INTERIOR
+
+/obj/machinery/airlock_peripheral/sensor/button_only/interior/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/machinery/airlock_peripheral/sensor/exterior
 	sidedness = AIRLOCK_SIDE_EXTERIOR
 	is_button = TRUE
 	is_sensor = TRUE
 
+/obj/machinery/airlock_peripheral/sensor/exterior/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
 /obj/machinery/airlock_peripheral/sensor/interior
 	sidedness = AIRLOCK_SIDE_INTERIOR
 	is_button = TRUE
 	is_sensor = TRUE
+
+/obj/machinery/airlock_peripheral/sensor/interior/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE

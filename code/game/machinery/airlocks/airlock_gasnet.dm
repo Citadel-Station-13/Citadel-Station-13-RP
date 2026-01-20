@@ -5,6 +5,15 @@
  * the simplified gasnet / control plane used for airlock handling and control
  *
  * * the gasnet itself is stateless.
+ *
+ * ## Linkage
+ *
+ * Unlike pipenets, components may never bridge another component. This means
+ * components never need to worry about forcing a full rebuild when they move, only
+ * when the interconnects are moved.
+ *
+ * Interconnects maintain a list of their components, but not other interconnects.
+ * Rebuilds are designed to be entirely idempotent for call order.
  */
 /datum/airlock_gasnet
 	/// all interconnects
@@ -13,16 +22,21 @@
 	var/list/obj/machinery/airlock_component/components = list()
 
 	/// controller; there can only be one
+	/// * If there is more than one, it is undefined which one will be referenced,
+	///   but 'invalid' and 'invalid reasons' will be set.
 	var/obj/machinery/airlock_component/controller/controller
 	/// handler; there can only be one
+	/// * If there is more than one, it is undefined which one will be referenced,
+	///   but 'invalid' and 'invalid reasons' will be set.
 	var/obj/machinery/airlock_component/handler/handler
 	/// cycler; there can only be one
+	/// * If there is more than one, it is undefined which one will be referenced,
+	///   but 'invalid' and 'invalid reasons' will be set.
 	var/obj/machinery/airlock_component/cycler/cycler
 	/// vent; there can only be one
+	/// * If there is more than one, it is undefined which one will be referenced,
+	///   but 'invalid' and 'invalid reasons' will be set.
 	var/obj/machinery/airlock_component/vent/vent
-
-	/// doors
-	var/list/obj/machinery/airlock_component/door_linker/doors
 
 	/// invalid setup
 	var/invalid = FALSE
@@ -40,7 +54,9 @@
 	teardown()
 	return ..()
 
-//* Networking *//
+
+/datum/airlock_gasnet/proc/recheck()
+	#warn impl
 
 /**
  * expand and consume along an interconnect
@@ -54,23 +70,38 @@
 /datum/airlock_gasnet/proc/merge_into(datum/airlock_gasnet/other)
 	#warn impl
 
-/datum/airlock_gasnet/proc/add_machine(obj/machinery/airlock_peripheral/peripheral)
+/datum/airlock_gasnet/proc/add_machine(obj/machinery/airlcok_component/component)
+	#warn impl
+
+/datum/airlock_gasnet/proc/remove_machine(obj/machinery/airlcok_component/component)
 	#warn impl
 
 /datum/airlock_gasnet/proc/teardown(queue_rebuilds = TRUE)
 	#warn impl
 
-//* Reconcile / Operations *//
-
-/// These are on /datum/airlock_gasnet
-/// because it didn't make sense to put it on the controller
-/// the tl;dr is this is technically a generic 'miniature-atmospherics'
-/// gasnet system.
-///
-/// I'm okay with people using airlock gasnets for their own purposes, therefore.
-/// You just need to understand what you're doing.
-
-
+/datum/airlock_gasnet/proc/get_door_linkers() as /list
+	. = list()
+	for(var/obj/machinery/airlock_component/door_linker/linker in components)
+		. += linker
 
 #warn impl
 
+//* cycler ops                                                               *//
+//* these are on the gasnet because we currently support only one cycler,    *//
+//* and this makes the API a lot more simple.                                *//
+//*                                                                          *//
+//* if we really need to in the future, we can make multi-cyclers a thing.   *//
+
+/datum/airlock_gasnet/proc/pump_cycler_to_vent(dt, to_pressure)
+	. = AIRLOCK_CYCLER_OP_FATAL
+
+/datum/airlock_gasnet/proc/pump_vent_to_cycler(dt, to_pressure)
+	. = AIRLOCK_CYCLER_OP_FATAL
+
+/datum/airlock_gasnet/proc/pump_cycler_to_handler_waste(dt, to_pressure)
+	. = AIRLOCK_CYCLER_OP_FATAL
+
+/datum/airlock_gasnet/proc/pump_handler_supply_to_cycler(dt, to_pressure)
+	. = AIRLOCK_CYCLER_OP_FATAL
+
+#warn impl

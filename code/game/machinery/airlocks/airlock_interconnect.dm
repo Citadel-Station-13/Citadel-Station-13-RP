@@ -8,6 +8,23 @@
 	desc = "A tightly bundled set of conduits used to connect the parts of an airlock together."
 	#warn sprite
 
+/obj/item/airlock_interconnect/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
+	. = list()
+	.[TOOL_WRENCH] = list(
+		"install",
+	)
+	return merge_double_lazy_assoc_list(..(), .)
+
+/obj/item/airlock_interconnect/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+
+/obj/item/airlock_interconnect/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
+	. = ..()
+	if(.)
+		return
+
 #warn impl
 
 /obj/structure/airlock_interconnect
@@ -17,22 +34,60 @@
 
 	/// our pipenet
 	var/datum/airlock_gasnet/network
-	/// connected machinery
-	var/list/obj/machinery/airlock_component/peripherals
-	/// connected interconnects
-	var/list/obj/structure/airlock_interconnect/interconnects
+	/// components; lazy list
+	var/list/obj/machinery/airlock_component/components
 	/// rebuild queued
 	var/rebuild_queued = FALSE
 
+/obj/structure/airlock_interconnect/Initialize(mapload)
+	. = ..()
+	queue_rebuild()
+	join_all_components_on_tile()
 
+/obj/structure/airlock_interconnect/Destroy()
+	qdel(network)
+	for(var/obj/machinery/airlock_component/component as anything in components)
+		disconnect_component(component)
+	return ..()
 
 #warn impl
 
+/obj/structure/airlock_interconnect/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	..()
+	if(loc == old_loc)
+		return
+	for(var/obj/machinery/airlock_component/component as anything in components)
+		disconnect_component(component)
+	join_all_components_on_tile()
+
 /obj/structure/airlock_interconnect/proc/rebuild()
 	rebuild_queued = FALSE
-	if(network)
+	if(QDELETED(src))
 		return
+	qdel(network)
 	new /datum/airlock_gasnet(src)
 
 /obj/structure/airlock_interconnect/proc/queue_rebuild()
 	#warn impl
+
+/obj/structure/airlock_interconnect/proc/join_all_components_on_tile()
+	for(var/obj/machinery/airlock_component/component in loc)
+		if(!component.interconnect)
+			component.join_interconnect()
+
+/obj/structure/airlock_interconnect/proc/connect_component(obj/machinery/airlock_component/component)
+
+/obj/structure/airlock_interconnect/proc/disconnect_component(obj/machinery/airlock_component/component)
+
+/obj/structure/airlock_interconnect/proc/get_adjacent_interconnects()
+	. = list()
+	for(var/obj/structure/airlock_interconnect/int in loc)
+		if(int == src)
+			continue
+		. += int
+	for(var/dir in GLOB.cardinal)
+		var/turf/int_t = get_step(src, dir)
+		if(!int_t)
+			continue
+		for(var/obj/structure/airlock_interconnect/int in int_t)
+			. += int

@@ -24,12 +24,12 @@
 	//  todo: vv hooks
 	var/layer_heat = PIPING_LAYER_AUX
 
-	/// power storage in joules
-	var/power_capacity = 1000000
+	/// power storage in kilojoules
+	var/power_capacity = 3000
+	/// power stored in kilojoules
+	var/power_stored = 3000
 	/// max power draw in kilowatts
 	var/power_io = 75
-	/// power stored in joules
-	var/power_stored = 1000000
 
 	//  todo: vv hooks
 	var/air_buffer_volume_clean = CELL_VOLUME * 4
@@ -74,10 +74,18 @@
 		ui = new(user, src, "AirlockHandler")
 		ui.open()
 
+/obj/machinery/airlock_component/handler/proc/get_clean_gas_mixture_ref() as /datum/gas_mixture
+
+/obj/machinery/airlock_component/handler/proc/get_waste_gas_mixture_ref() as /datum/gas_mixture
+
 #warn requires panel open
+
+/obj/machinery/airlock_component/handler/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /**
  * todo: refactor on atmospherics machinery update
  */
 /obj/machinery/atmospherics/component/unary/airlock_connector
 	// volume = 2000
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
