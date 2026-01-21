@@ -3,6 +3,10 @@
 
 // todo: buildable
 
+/**
+ * Internal cycling vent/scrubber for an airlock.
+ * * Little more than a gas-ref provider, for now
+ */
 /obj/machinery/airlock_component/cycler
 	name = "airlock cycler"
 	desc = "A set of machinery used for manipulating the atmosphere inside of an airlock. Doubles as a gas sensor."
@@ -25,6 +29,13 @@
 	if(network.cycler == src)
 		network.cycler = null
 		network.queue_recheck()
+
+/**
+ * Gets gas mixture to use for handler / cycler procs.
+ * * This should wake the zone as needed, because the mixture will probably be modified.
+ */
+/obj/machinery/airlock_component/cycler/proc/get_mutable_gas_mixture_ref() as /datum/gas_mixture
+	return loc.return_air_mutable()
 
 /obj/machinery/airlock_component/cycler/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

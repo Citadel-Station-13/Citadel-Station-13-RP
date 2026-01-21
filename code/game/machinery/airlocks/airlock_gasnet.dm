@@ -103,8 +103,14 @@
 /datum/airlock_gasnet/proc/pump_cycler_to_vent(dt, to_pressure)
 	. = AIRLOCK_CYCLER_OP_FATAL
 
+	var/datum/gas_mixture/source = cycler?.get_mutable_gas_mixture_ref()
+	var/datum/gas_mixture/sink = vent?.get_mutable_gas_mixture_ref()
+
 /datum/airlock_gasnet/proc/pump_vent_to_cycler(dt, to_pressure)
 	. = AIRLOCK_CYCLER_OP_FATAL
+
+	var/datum/gas_mixture/source = vent?.get_mutable_gas_mixture_ref()
+	var/datum/gas_mixture/sink = cycler?.get_mutable_gas_mixture_ref()
 
 /datum/airlock_gasnet/proc/pump_cycler_to_handler_waste(dt, to_pressure)
 	. = AIRLOCK_CYCLER_OP_FATAL
