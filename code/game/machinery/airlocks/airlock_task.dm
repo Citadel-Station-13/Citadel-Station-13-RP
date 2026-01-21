@@ -31,8 +31,8 @@
 
 /datum/airlock_task/proc/unassign_cycle(datum/airlock_cycle/cycle)
 	ASSERT(src.cycle == cycle)
+	src.cycle = null
 	cycle.running_tasks -= src
-	cycle = null
 
 /datum/airlock_task/proc/ui_task_data()
 	return list(

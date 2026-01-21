@@ -38,6 +38,11 @@
 	var/list/obj/machinery/airlock_component/components
 	/// rebuild queued
 	var/rebuild_queued = FALSE
+	/// connected directions
+	/// * built during network build
+	/// * cleared on network destruction
+	/// * update icon only fires off on network build to save CPU
+	var/connected_dirs
 
 /obj/structure/airlock_interconnect/Initialize(mapload)
 	. = ..()
