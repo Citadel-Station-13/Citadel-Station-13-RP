@@ -48,8 +48,8 @@
 
 	var/A
 
-	A = input(user, "Area to jump to", "BOOYEA", A) in teleportlocs
-	var/area/thearea = teleportlocs[A]
+	A = input(user, "Area to jump to", "BOOYEA", A) in GLOB.teleportlocs
+	var/area/thearea = GLOB.teleportlocs[A]
 
 	if (user.stat || user.restrained())
 		return

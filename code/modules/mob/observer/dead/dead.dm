@@ -337,7 +337,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		self_perspective.remove_atom_hud(/datum/atom_hud/antag, ATOM_HUD_SOURCE_OBSERVER)
 	to_chat(src,"<font color=#4F49AF><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
-/mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)
+/mob/observer/dead/proc/dead_tele(var/area/A in get_sorted_areas())
 	set category = "Ghost"
 	set name = "Teleport"
 	set desc = "Teleport to a location"
@@ -347,7 +347,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!A)
-		A = input(usr, "Select an area:", "Ghost Teleport") as null|anything in GLOB.sortedAreas
+		A = input(usr, "Select an area:", "Ghost Teleport") as null|anything in get_sorted_areas()
 	if(!A)
 		return
 

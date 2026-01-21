@@ -60,7 +60,7 @@
 
 /datum/gm_action/prison_break/start()
 	..()
-	for(var/area/A in GLOB.sortedAreas)
+	for(var/area/A in get_sorted_areas())
 		if(is_type_in_list(A,areaType) && !is_type_in_list(A,areaNotType))
 			areas += A
 

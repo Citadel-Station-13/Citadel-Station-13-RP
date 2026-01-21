@@ -60,6 +60,9 @@ GLOBAL_REAL_LIST(ccw_dir) = list( // cww_dir[dir] = counter-clockwise rotation o
 	48, 56, 52, 60, 49, 57, 53, 61, 50, 58, 54, 62, 51, 59, 55, 63  // UP+DOWN - Same as first line but +48
 )
 
+/// Just a list of all the area objects in the game
+/// Note, areas can have duplicate types
+GLOBAL_LIST_EMPTY(areas)
 /// used by jump-to-area etc. Updated by area/updateName()
 GLOBAL_LIST_EMPTY(sortedAreas)
 /// An association from typepath to area instance. Only includes areas with `unique` set.

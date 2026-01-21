@@ -37,8 +37,8 @@
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
 		var/A
-		A = input("Area to jump bombard", "Open Fire", A) in teleportlocs
-		var/area/thearea = teleportlocs[A]
+		A = input("Area to jump bombard", "Open Fire", A) in GLOB.teleportlocs
+		var/area/thearea = GLOB.teleportlocs[A]
 		if (usr.stat || usr.restrained()) return
 		if(src.reload < 180) return
 		if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
@@ -53,8 +53,8 @@
 
 /*mob/proc/openfire()
 	var/A
-	A = input("Area to jump bombard", "Open Fire", A) in teleportlocs
-	var/area/thearea = teleportlocs[A]
+	A = input("Area to jump bombard", "Open Fire", A) in GLOB.teleportlocs
+	var/area/thearea = GLOB.teleportlocs[A]
 	command_alert("Bluespace artillery fire detected. Brace for impact.")
 	spawn(30)
 	var/list/L = list()

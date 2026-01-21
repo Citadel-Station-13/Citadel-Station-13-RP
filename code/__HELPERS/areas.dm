@@ -1,16 +1,16 @@
+/proc/require_area_resort()
+	GLOB.sortedAreas = null
+
+/// Returns a sorted version of GLOB.areas, by name
+/proc/get_sorted_areas()
+	if(!GLOB.sortedAreas)
+		GLOB.sortedAreas = tim_sort(GLOB.areas.Copy(), /proc/cmp_name_asc)
+	return GLOB.sortedAreas
+
 //Repopulates sortedAreas list
 /proc/repopulate_sorted_areas()
-	GLOB.sortedAreas = list()
-
-	for(var/area/A in world)
-		GLOB.sortedAreas.Add(A)
-
-	tim_sort(GLOB.sortedAreas, GLOBAL_PROC_REF(cmp_name_asc))
-	setupTeleportLocs()		// shitcode patch to make vorecode work until we get rid of this shit meme or refactor it entirely
-
-/area/proc/addSorted()
-	GLOB.sortedAreas.Add(src)
-	tim_sort(GLOB.sortedAreas, GLOBAL_PROC_REF(cmp_name_asc))
+	require_area_resort()
+	get_sorted_areas()
 
 //Takes: Area type as a text string from a variable.
 //Returns: Instance for the area in the world.
