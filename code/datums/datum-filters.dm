@@ -51,6 +51,8 @@
 /datum/proc/update_filters(start_index = null)
 	ASSERT(isatom(src) || isimage(src))
 	var/atom/atom_cast = src // filters only work with images or atoms.
+	if(!filter_cache)
+		return
 	if (start_index)
 		filter_cache.Cut(start_index)
 	else

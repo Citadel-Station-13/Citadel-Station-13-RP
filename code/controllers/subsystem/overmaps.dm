@@ -7,7 +7,6 @@ SUBSYSTEM_DEF(overmaps)
 	init_order = INIT_ORDER_OVERMAPS
 
 	//* Overmaps *//
-
 	/// overmap by id
 	//  todo: recover
 	var/static/list/datum/overmap/overmap_by_id = list()
