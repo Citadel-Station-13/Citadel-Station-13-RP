@@ -100,6 +100,8 @@
 	/// scan proximity range on same zlevel
 	/// * directly used in spatial grids to see how far we can scan
 	var/scan_level_range = 14
+	var/scan_last
+	var/scan_interval = 3 SECONDS
 
 	/// attunement required to sense someone's nearby
 	/// * this applies to mindlinks
@@ -161,6 +163,15 @@
 	update_static_data()
 	return link_lookup[mind_ref]
 
+/datum/stargazer_mindnet/proc/create_exec(dedupe_key)
+	LAZYINITLIST(executing)
+	var/datum/stargazer_mindnet_exec/exec = new(src, dedupe_key)
+	executing[dedupe_key] = exec
+	return exec
+
+/datum/stargazer_mindnet/proc/has_ongoing_exec(dedupe_key)
+	return executing?[dedupe_key]
+
 /datum/stargazer_mindnet/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -174,6 +185,8 @@
 		return
 	switch(action)
 		if("invoke")
+			var/ability_id = params["id"]
+			var/target_ref = params["targetRef"]
 		if("rescan")
 
 /datum/stargazer_mindnet/ui_data(mob/user, datum/tgui/ui)
@@ -181,6 +194,11 @@
 
 /datum/stargazer_mindnet/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
+	var/list/serialized_abilities = list()
+	for(var/id in ability_lookup)
+		var/datum/stargazer_mindnet_ability/ability = ability_lookup[id]
+		serialized_abilities[id] = ability.ui_mindnet_ability_data()
+	.["abilities"] = serialized_abilities
 
 /datum/stargazer_mindnet/proc/emit_raw_message_to_owner(html)
 	#warn impl

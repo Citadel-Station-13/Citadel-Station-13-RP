@@ -9,23 +9,35 @@
 	 * Our registered key.
 	 */
 	var/dedupe_key
-
+	/**
+	 * Arbitrary blackboard list.
+	 */
+	var/list/blackboard = list()
 	/**
 	 * Mindnet initiating this execution
 	 */
 	var/datum/stargazer_mindnet/mindnet
 	/**
-	 * Target mind
+	 * Initiating actor.
+	 * * This doesn't necessarily match the mindnet's owner.
 	 */
-	var/datum/mind/target_mind
+	var/datum/event_args/actor/actor
 
 	/**
+	 * Target mind, if any.
+	 * * Nullable
+	 */
+	var/datum/mind/target_mind
+	/**
 	 * Called to check if target is still valid
+	 * * Nullable
 	 * * Called with (src)
 	 */
 	var/datum/callback/on_target_valid
+
 	/**
 	 * Called with any unhandled Topic()
+	 * * Nullable
 	 * * Called with (src, mob/user, list/href_list)
 	 * * Make sure you sanitize input on your end.
 	 */
@@ -39,11 +51,11 @@
 	 * How long the target has to give cooperation.
 	 */
 	var/cooperate_prompt_timeout = 15 SECONDS
-
 	/**
 	 * Is our prompt already done?
 	 */
 	var/is_prompt_finished = FALSE
+
 	/**
 	 * How long to not delete after being done
 	 */
@@ -53,8 +65,8 @@
 	 */
 	var/cleanup_timerid
 
-/datum/stargazer_mindnet_exec/New(datum/stargazer_mindnet/mindnet, dedupe_key, datum/mind/target)
-	#warn mindnet/target
+/datum/stargazer_mindnet_exec/New(datum/stargazer_mindnet/mindnet, dedupe_key)
+	#warn mindnet
 	src.dedupe_key = dedupe_key || num2text(rand(1, 999999), 16)
 
 /**

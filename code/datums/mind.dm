@@ -710,7 +710,7 @@
 	)
 	listclearnulls(.)
 
-//? Abilities
+//* Abilities *//
 
 /**
  * adds an ability to us
@@ -748,3 +748,23 @@
 		ability.disassociate(current)
 	qdel(ability)
 	return TRUE
+
+//* Mob Things *//
+
+/**
+ * Gets our active mob, if any.
+ * * Ignores observers.
+ */
+/datum/mind/proc/get_active_game_mob() as /mob
+	var/mob/maybe_active = active ? (current?.mind == src ? current : null) : null
+	if(isobserver(maybe_active))
+		return null
+	return maybe_active
+
+/**
+ * Gets our active mob, if any.
+ * * Allows observers.
+ */
+/datum/mind/proc/get_active_server_mob() as /mob
+	// TODO: observer support
+	return active ? (current?.mind == src ? current : null) : null

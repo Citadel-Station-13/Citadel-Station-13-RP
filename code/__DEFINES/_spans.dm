@@ -117,7 +117,10 @@
 #define SPAN_NZCRENTR(STR) ("<span class = 'nzcrentr'>[STR]</span>")
 #define SPAN_NZCRENTRL(STR) ("<span class = 'nzcrentr_large'>[STR]</span>")
 #define SPAN_NICEGREEN(STR) ("<span class='nicegreen'>[STR]</span>")
+
 #define SPAN_NOTICE(STR) ("<span class='notice'>[STR]</span>")
+#define SPAN_NOTICE_CONST(STR) ("<span class='notice'>" + STR + "</span>")
+
 #define SPAN_NOTICEALIEN(STR) ("<span class='noticealien'>[STR]</span>")
 #define SPAN_OOC(STR) ("<span class='ooc'>[STR]</span>")
 #define SPAN_PAPYRUS(STR) ("<span class='papyrus'>[STR]</span>")

@@ -79,69 +79,88 @@
 
 /**
  * * This will sleep.
+ * * You are responsible for making the exec datum.
  */
-/datum/stargazer_mindnet_ability/proc/run(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target)
+/datum/stargazer_mindnet_ability/proc/run(datum/stargazer_mindnet_exec/exec)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	#warn log this shit
-	on_run(actor, mindnet)
+	// TODO: find a sane way to tell osbervers. deadchat mains may have no rights, but admin ghosts exist.
+	on_run(exec)
 
 	if(cooldown_global)
 		put_on_global_cooldown(cooldown_global)
-	if(cooldown_for_given_target && target)
-		put_on_target_cooldown(cooldown_for_given_target, target)
+	if(cooldown_for_given_target && exec.target_mind)
+		put_on_target_cooldown(cooldown_for_given_target, exec.target_mind)
 
 /**
  * * This will sleep.
  */
-/datum/stargazer_mindnet_ability/proc/on_run(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target)
-	if(target)
-		default_run_targeted(actor, mindnet, target)
+/datum/stargazer_mindnet_ability/proc/on_run(datum/stargazer_mindnet_exec/exec)
+	default_run_targeted(exec)
 
 /**
  * * This will sleep.
  */
-/datum/stargazer_mindnet_ability/proc/default_run_targeted(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target)
-	var/dedupe_key = exec_dedupe_key(actor, mindnet, target, blackboard)
-	if(mindnet.executing[dedupe_key])
-		actor.chat_feedback(SPAN_WARNING("You're already invoking '[src]' in a similar manner."))
-		return
-	var/list/blackboard = list()
+/datum/stargazer_mindnet_ability/proc/default_run_targeted(datum/stargazer_mindnet_exec/exec)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!exec.target_mind)
+		return FALSE
+	if(!default_pre_run(exec))
+		return FALSE
+	#warn put this in invoke logic
+	// var/dedupe_key = exec_dedupe_key(actor, mindnet, target, blackboard)
+	// if(mindnet.executing[dedupe_key])
+	// 	actor.chat_feedback(SPAN_WARNING("You're already invoking '[src]' in a similar manner."))
+	// 	return
 
-	// exec lives through execution cycle and then is deleted
-	// can be kept alive for a period of time by calling keep_alive_for() on it
-	var/datum/stargazer_mindnet_exec/exec = new(mindnet, dedupe_key, target)
-	default_pre_prompt(actor, mindnet, target, exec, blackboard)
+	if(!default_pre_prompt(exec))
+		return FALSE
 	exec.run_prompt()
-	default_post_prompt(actor, mindnet, target, exec, blackboard)
-	exec.kick_cleanup_timer()
+	if(!default_post_prompt(exec))
+		return FALSE
+	return TRUE
+
+/**
+ * Called before anything happens, including exec dedupe / start.
+ * * This may sleep.
+ * @return FALSE to abort.
+ */
+/datum/stargazer_mindnet_ability/proc/default_pre_run(datum/stargazer_mindnet_exec/exec)
+	return TRUE
 
 /**
  * Called right before execution is passed to the exec datum for prompting
  * * This may sleep.
+ * @return FALSE to abort.
  */
-/datum/stargazer_mindnet_ability/proc/default_pre_prompt(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target, datum/stargazer_mindnet_exec/exec, list/blackboard)
-	return
+/datum/stargazer_mindnet_ability/proc/default_pre_prompt(datum/stargazer_mindnet_exec/exec)
+	return TRUE
 
 /**
  * Called right after the prompt is answered or times out
  * * This may sleep.
+ * @return FALSE to abort.
  */
-/datum/stargazer_mindnet_ability/proc/default_post_prompt(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target, datum/stargazer_mindnet_exec/exec, list/blackboard)
-	return
+/datum/stargazer_mindnet_ability/proc/default_post_prompt(datum/stargazer_mindnet_exec/exec)
+	return TRUE
 
 /**
  * Returns our execution dedupe key; the user will not be allowed to invoke two abilities
  * simutaneously with the same key until one exits.
+ * * Target is nullable.
  */
-/datum/stargazer_mindnet_ability/proc/exec_dedupe_key(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target, list/blackboard)
+/datum/stargazer_mindnet_ability/proc/exec_dedupe_key(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target)
 	SHOULD_NOT_SLEEP(TRUE)
+	if(target)
+		return "[id]-[ref(target.get_mind_ref())]"
 	return "[id]"
 
-/datum/stargazer_mindnet_ability/proc/check_target_valid(datum/mind/mind, mob/entity, datum/event_args/actor/actor, silent)
+/datum/stargazer_mindnet_ability/proc/check_target_valid(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target, silent)
 	SHOULD_NOT_SLEEP(TRUE)
+	return isliving(target.get_active_game_mob())
 
-/datum/stargazer_mindnet_ability/proc/check_requirements_met(datum/mind/mind, mob/entity, datum/event_args/actor/actor, silent)
+/datum/stargazer_mindnet_ability/proc/check_requirements_met(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, datum/mind/target, silent)
 	SHOULD_NOT_SLEEP(TRUE)
 
 #warn impl

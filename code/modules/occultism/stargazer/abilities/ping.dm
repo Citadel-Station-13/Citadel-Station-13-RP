@@ -13,3 +13,17 @@
 	default_do_after = 1 SECONDS
 
 #warn impl
+
+/datum/stargazer_mindnet_ability/ping/default_post_prompt(datum/stargazer_mindnet_exec/exec)
+	if(!exec.is_cooperative)
+		actor?.chat_feedback(
+			#warn target name?
+			SPAN_WARNING("You fail to pinpoint the presence of [target]'s consciousness.")
+		)
+		return
+	#warn ping and message
+
+/datum/stargazer_mindnet_ability/ping/proc/create_cm_style_ping(datum/stargazer_mindnet_exec/exec)
+	var/mob/locked_on = target.current
+
+	#warn impl; 'icons/effects/motion_blip.dmi', "cm-motion", "cm-motion-offscreen"

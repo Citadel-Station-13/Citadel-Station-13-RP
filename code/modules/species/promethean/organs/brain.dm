@@ -22,8 +22,6 @@
 		/datum/action/organ_action/promethean_stargazer_mindnet_panel,
 	)
 
-	#warn organ action for mindnet
-
 /obj/item/organ/internal/brain/promethean/Initialize(mapload)
 	. = ..()
 	create_reagents(50)
