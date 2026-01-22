@@ -13,7 +13,7 @@ export const file_labels = {
     filepaths: ["SQL/"],
   },
   "Map Edit": {
-    filepaths: ["_maps/"],
+    filepaths: ["maps/"],
     file_extensions: [".dmm"],
   },
   Tools: {
