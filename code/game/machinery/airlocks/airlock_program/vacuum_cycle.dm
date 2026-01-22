@@ -6,6 +6,7 @@
  */
 /datum/airlock_program/vacuum_cycle
 	tgui_airlock_component = "VacuumCycle"
+	#warn track door states?
 
 /datum/airlock_program/vacuum_cycle/ui_program_data()
 
@@ -14,8 +15,10 @@
 	if(.)
 		return
 	switch(action)
+		#warn vacuum cycle
 		if("cycleToExterior")
 		if("cycleToInterior")
+		#warn abort cycles and force doors based on states
 		if("forceToExterior")
 		if("forceToInterior")
 		if("cancel")

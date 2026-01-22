@@ -24,31 +24,21 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	/// we can access the airlock from the controller
 	var/control_panel = TRUE
 
-	//* Composition *//
+	//* Airlock *//
+
 	/// Our airlock system
 	var/datum/airlock_system/system
 	/// Starting program typepath
 	var/program_path = /datum/airlock_program/vacuum_cycle
-
-	//* Network *//
 	/// connected peripherals
 	var/list/obj/machinery/airlock_peripheral/peripherals
-
-	//* Cycling - Op *//
-	/// operation cycle; airlock cycling is async, operation cycles allow us to ensure
-	/// that an operation is still the same operation something started.
-	var/op_cycle
-	/// next operation cycle
-	var/static/op_cycle_next = 0
-	/// what to call on finish with (status: AIRLOCK_OP_STATUS_* define, why: short string reason or null)
-	var/datum/callback/op_on_finish
 
 /obj/machinery/airlock_component/controller/Initialize(mapload)
 	..()
 	// todo: we need proper tick bracket machine support & fastmos
 	STOP_MACHINE_PROCESSING(src)
 	system = new(src, new program_path)
-	set_airlock_id(src.airlock_id)
+	set_controller_id(src.airlock_id)
 
 /obj/machinery/airlock_component/controller/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
@@ -58,7 +48,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller/Destroy()
 	STOP_MACHINE_PROCESSING(src)
 	STOP_PROCESSING(SSprocess_5fps, src)
-	set_airlock_id(null)
+	set_controller_id(null)
 	QDEL_NULL(system)
 	return ..()
 
@@ -80,7 +70,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /**
  * @return TRUE success, FALSE failure
  */
-/obj/machinery/airlock_component/controller/proc/set_airlock_id(to_id)
+/obj/machinery/airlock_component/controller/proc/set_controller_id(to_id)
 	if(GLOB.airlock_controller_lookup[to_id])
 		return FALSE
 	if(!isnull(src.airlock_id))

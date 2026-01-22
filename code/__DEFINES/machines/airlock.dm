@@ -21,3 +21,11 @@
 #define AIRLOCK_CYCLER_OP_NO_GAS 3
 /// pumping against too much of a gradient
 #define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE 4
+/// literally a machine is missing
+#define AIRLOCK_CYCLER_OP_MISSING_COMPONENT 5
+
+//* airlock cycle finish status *//
+
+#define AIRLOCK_CYCLE_FIN_SUCCESS 0
+#define AIRLOCK_CYCLE_FIN_FAILED 1
+#define AIRLOCK_CYCLE_FIN_ABORTED 2

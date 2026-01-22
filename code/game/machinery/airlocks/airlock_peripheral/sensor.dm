@@ -19,14 +19,6 @@
 	/// functions as a sensor. if this is off, the airlock won't use us as the sensor.
 	var/is_sensor = FALSE
 
-/obj/machinery/airlock_peripheral/sensor/vv_edit_var(var_name, new_value, mass_edit, raw_edit)
-	switch(var_name)
-		if(NAMEOF(src, sidedness))
-			return FALSE
-		if(NAMEOF(src, is_button))
-			return FALSE
-	return ..()
-
 #warn impl
 
 /**

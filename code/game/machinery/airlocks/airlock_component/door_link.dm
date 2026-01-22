@@ -85,7 +85,7 @@
 /datum/airlock_task/component/door_linker/operate/describe_state()
 	return "Waiting on linked door"
 
-/datum/airlock_task/component/door_linker/operate/poll()
+/datum/airlock_task/component/door_linker/operate/poll(dt)
 	if(world.time < backoff_until)
 		return
 	var/obj/machinery/airlock_component/door_linker/linker = component

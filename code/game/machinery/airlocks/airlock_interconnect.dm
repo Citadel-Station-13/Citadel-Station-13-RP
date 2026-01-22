@@ -55,6 +55,20 @@
 		disconnect_component(component)
 	return ..()
 
+/obj/structure/airlock_interconnect/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
+	. = list()
+	.[TOOL_WRENCH] = list(
+		"uninstall",
+	)
+	return merge_double_lazy_assoc_list(..(), .)
+
+/obj/structure/airlock_interconnect/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
+	. = ..()
+	if(.)
+		return
+
+#warn impl
+
 /obj/structure/airlock_interconnect/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	..()
 	if(loc == old_loc)
@@ -92,10 +106,12 @@
 /obj/structure/airlock_interconnect/proc/connect_component(obj/machinery/airlock_component/component)
 	if(component.interconnect)
 		component.interconnect.disconnect_component(component)
-	#warn impl
+	LAZYADD(components)
+	network?.add_machine(component)
 
 /obj/structure/airlock_interconnect/proc/disconnect_component(obj/machinery/airlock_component/component)
-	#warn impl
+	LAZYREMOVE(components)
+	network?.remove_machine(component)
 
 /obj/structure/airlock_interconnect/proc/get_adjacent_interconnects()
 	. = list()

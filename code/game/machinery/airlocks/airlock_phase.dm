@@ -43,17 +43,15 @@
 /datum/airlock_phase/depressurize
 	display_verb = "depressurizing"
 	/// push air out of vents instead of through the handler's waste side
-	var/try_use_vent = FALSE
-	/// if no vents exist, do not pump to handler
-	var/must_use_vent = FALSE
+	var/vent_to_outside = FALSE
 	/// stop at pressure
 	var/depressurize_to_kpa = 0
 
 /datum/airlock_phase/depressurize/vent_to_outside
-	try_use_vent = TRUE
+	vent_to_outside = TRUE
 
-/datum/airlock_phase/depressurize/vent_to_outside/required
-	must_use_vent = TRUE
+/datum/airlock_phase/depressurize/drain_to_handler
+	vent_to_outside = FALSE
 
 /**
  * Repressurize airlock from handler's supply
@@ -62,6 +60,18 @@
 	display_verb = "repressurizing"
 	/// stop at pressure
 	var/pressurize_to_kpa = ONE_ATMOSPHERE
+	/// pull from exterior vent if possible
+	var/pull_from_outside_if_possible = FALSE
+	/// must pull from outside
+	/// * requires [pull_from_outside_if_possible]
+	var/pull_from_outside_required = FALSE
+
+/datum/airlock_phase/repressurize/allow_external_air
+	pull_from_outside_if_possible = TRUE
+
+/datum/airlock_phase/repressurize/require_external_air
+	pull_from_outside_if_possible = TRUE
+	pull_from_outside_required = TRUE
 
 /datum/airlock_phase/doors
 	display_verb = "operating doors"

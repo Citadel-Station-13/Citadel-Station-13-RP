@@ -106,16 +106,50 @@
 	var/datum/gas_mixture/source = cycler?.get_mutable_gas_mixture_ref()
 	var/datum/gas_mixture/sink = vent?.get_mutable_gas_mixture_ref()
 
+	if(!source || !sink)
+		return AIRLOCK_CYCLER_OP_MISSING_MACHINE
+
+
 /datum/airlock_gasnet/proc/pump_vent_to_cycler(dt, to_pressure)
 	. = AIRLOCK_CYCLER_OP_FATAL
 
-	var/datum/gas_mixture/source = vent?.get_mutable_gas_mixture_ref()
-	var/datum/gas_mixture/sink = cycler?.get_mutable_gas_mixture_ref()
+	var/datum/gas_mixture/source = cycler?.get_mutable_gas_mixture_ref()
+	var/datum/gas_mixture/sink = vent?.get_mutable_gas_mixture_ref()
+
+	if(!source || !sink)
+		return AIRLOCK_CYCLER_OP_MISSING_MACHINE
 
 /datum/airlock_gasnet/proc/pump_cycler_to_handler_waste(dt, to_pressure)
 	. = AIRLOCK_CYCLER_OP_FATAL
 
+	var/datum/gas_mixture/source = cycler?.get_mutable_gas_mixture_ref()
+	var/datum/gas_mixture/sink = handler?.get_waste_gas_mixture_ref()
+
+	if(!source || !sink)
+		return AIRLOCK_CYCLER_OP_MISSING_MACHINE
+
 /datum/airlock_gasnet/proc/pump_handler_supply_to_cycler(dt, to_pressure)
 	. = AIRLOCK_CYCLER_OP_FATAL
 
+	var/datum/gas_mixture/source = handler?.get_clean_gas_mixture_ref()
+	var/datum/gas_mixture/sink = cycler?.get_mutable_gas_mixture_ref()
+
+	if(!source || !sink)
+		return AIRLOCK_CYCLER_OP_MISSING_MACHINE
+
 #warn impl
+
+//* Tasks *//
+
+/datum/airlock_task/gasnet/pump
+	var/target_pressure = 0
+
+/datum/airlock_task/gasnet/pump/vent_to_cycler
+
+/datum/airlock_task/gasnet/pump/cycler_to_vent
+
+/datum/airlock_task/gasnet/pump/handler_supply_to_cycler
+
+/datum/airlock_task/gasnet/pump/cycler_to_handler_waste
+
+#warn impl all

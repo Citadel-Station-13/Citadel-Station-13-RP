@@ -47,7 +47,7 @@
 /**
  * this should both do things and check for completion
  */
-/datum/airlock_task/proc/poll()
+/datum/airlock_task/proc/poll(dt)
 	return
 
 /datum/airlock_task/proc/complete()
@@ -79,7 +79,7 @@
 	QDEL_LIST(tasks)
 	return ..()
 
-/datum/airlock_task/compound/poll()
+/datum/airlock_task/compound/poll(dt)
 	for(var/datum/airlock_task/task as anything in tasks)
 		task.poll()
 

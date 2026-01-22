@@ -21,12 +21,20 @@
 	/// current airlock cycle struct
 	/// * if this exists, we are cycling right now
 	var/datum/airlock_cycle/cycle
+	/// operation cycle; airlock cycling is async, operation cycles allow us to ensure
+	/// that an operation is still the same operation something started.
+	var/cycle_op_id
+	/// next operation cycle
+	var/static/cycle_op_id_next = 0
+	/// what to call on finish with (src, cycle_id: id, status: AIRLOCK_CYCLE_FIN_* define, why: short string reason or null)
+	var/datum/callback/cycle_op_on_finish
 
 /datum/airlock_system/New(obj/machinery/airlock_component/controller, datum/airlock_program/program)
 	src.controller = controller
 	src.program = program
 
 /datum/airlock_system/Destroy()
+	abort_cycle()
 	QDEL_NULL(controller)
 	QDEL_NULL(program)
 	return ..()
@@ -43,9 +51,16 @@
 /datum/airlock_system/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
+/**
+ * @return null if failed, cycle id otherwise
+ */
+/datum/airlock_system/proc/start_cycle(datum/airlock_cycle/cycle, datum/callback/on_finished)
+	if(src.cycle)
+		return FALSE
 
+/datum/airlock_system/proc/abort_cycle(cycle_id, why_str)
 
-
+/datum/airlock_system/proc/fail_cycle(cycle_id, why_str)
 
 
 #warn impl

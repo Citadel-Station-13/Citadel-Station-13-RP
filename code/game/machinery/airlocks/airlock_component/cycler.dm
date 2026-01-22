@@ -15,6 +15,11 @@
 	/// max pumping power in kw
 	var/pumping_power = 50
 
+	#warn impl this for icon update
+	var/last_pump_time
+	var/last_pump_was_out
+	var/last_pump_icon_update_time
+
 /obj/machinery/airlock_component/cycler/on_connect(datum/airlock_gasnet/network)
 	..()
 	if(network.cycler)
@@ -29,6 +34,15 @@
 	if(network.cycler == src)
 		network.cycler = null
 		network.queue_recheck()
+
+/obj/machinery/airlock_component/cycler/process(delta_time)
+	if(last_pump_time != last_pump_icon_update_time)
+		update_icon()
+		last_pump_time = world.time
+
+/obj/machinery/airlock_component/cycler/update_icon(updates)
+	. = ..()
+	#warn impl
 
 /**
  * Gets gas mixture to use for handler / cycler procs.

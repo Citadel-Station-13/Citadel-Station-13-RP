@@ -14,6 +14,11 @@
 
 	#warn sprite
 
+	#warn impl this for icon update
+	var/last_pump_time
+	var/last_pump_was_out
+	var/last_pump_icon_update_time
+
 /obj/machinery/airlock_component/vent/on_connect(datum/airlock_gasnet/network)
 	..()
 	if(network.vent)
@@ -28,6 +33,15 @@
 	if(network.vent == src)
 		network.vent = null
 		network.queue_recheck()
+
+/obj/machinery/airlock_component/vent/process(delta_time)
+	if(last_pump_time != last_pump_icon_update_time)
+		update_icon()
+		last_pump_time = world.time
+
+/obj/machinery/airlock_component/vent/update_icon(updates)
+	. = ..()
+	#warn impl
 
 /**
  * Gets gas mixture to use for handler / cycler procs.

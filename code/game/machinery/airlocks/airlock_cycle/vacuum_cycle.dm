@@ -16,11 +16,12 @@
 			// TODO: required is silly, but the majority of citrp's airlocks would horribly clog
 			//       if outside air was pumped to scrubber; that, and, most setups aren't
 			//       equipped to properly clean potentially dirty air
-			enqueue_phase(new /datum/airlock_phase/depressurize/vent_to_outside/required)
+			enqueue_phase(new /datum/airlock_phase/depressurize/vent_to_outside)
 		else
 			// If interior, always go to handler waste, not outside
-			enqueue_phase(new /datum/airlock_phase/depressurize)
-	enqueue_phase(new /datum/airlock_phase/repressurize)
+			enqueue_phase(new /datum/airlock_phase/depressurize/drain_to_handler)
+	#warn change side here?
+	enqueue_phase(new /datum/airlock_phase/repressurize/allow_external_air)
 	var/datum/airlock_phase/unseal_step
 	switch(to_side)
 		if(AIRLOCK_SIDE_EXTERIOR)
