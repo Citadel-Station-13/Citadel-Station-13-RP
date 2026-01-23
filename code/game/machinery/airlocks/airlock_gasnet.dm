@@ -71,13 +71,36 @@
  */
 /datum/airlock_gasnet/proc/build(obj/structure/airlock_interconnect/source)
 	var/list/obj/structure/airlock_interconnect/processing = list(source)
-	var/list/processed = list()
+	var/alist/processed = alist()
 	while(length(processing))
+		var/obj/structure/airlock_interconnect/current = processing[length(processing)]
+		--processing.len
+		processed[current] = TRUE
 
-	#warn impl
+		var/list/obj/structure/airlock_interconnect/adjacent = current.get_adjacent_interconnects()
+		for(var/obj/structure/airlock_interconnect/potential as anything in adjacent)
+			if(processed[potential])
+				continue
+			processing += potential
+
+		if(current.network)
+			if(current.network == src)
+				// do nothing
+			else
+				// merge them
+				current.network.merge_into(src)
+		else
+			add_interconnect(current)
 
 /datum/airlock_gasnet/proc/add_interconnect(obj/structure/airlock_interconnect/connector)
 	interconnects += connector
+	for(var/obj/machinery/airlock_component/comp as anything in connector.components)
+		add_machine(comp)
+
+/datum/airlock_gasnet/proc/remove_interconnect(obj/structure/airlock_interconnect/connector)
+	interconnects -= connector
+	for(var/obj/machinery/airlock_component/comp as anything in connector.components)
+		remove_machine(comp)
 
 /**
  * Merge into another gasnet and delete ourselves
@@ -96,20 +119,29 @@
 	qdel(src)
 
 /datum/airlock_gasnet/proc/add_machine(obj/machinery/airlock_component/component)
-	#warn impl
+	if(component.network)
+		if(component.network == src)
+			return TRUE
+		CRASH("already had network")
+	components += component
+	component.network = src
+	component.on_connect(src)
 
 /datum/airlock_gasnet/proc/remove_machine(obj/machinery/airlock_component/component)
-	#warn impl
+	if(component.network != src)
+		CRASH("mismatched network")
+	components -= component
+	component.network = null
+	component.on_disconnect(src)
 
 /datum/airlock_gasnet/proc/teardown(queue_rebuilds = TRUE)
-	#warn impl
+	for(var/obj/structure/airlock_interconnect/interconnect as anything in interconnects)
+		remove_interconnect(interconnect)
 
 /datum/airlock_gasnet/proc/get_door_linkers() as /list
 	. = list()
 	for(var/obj/machinery/airlock_component/door_linker/linker in components)
 		. += linker
-
-#warn impl
 
 //* cycler ops                                                               *//
 //* these are on the gasnet because we currently support only one cycler,    *//
