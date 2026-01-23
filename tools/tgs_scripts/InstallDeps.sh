@@ -7,13 +7,13 @@ has_curl="$(command -v curl)"
 has_cargo="$(command -v ~/.cargo/bin/cargo)"
 has_sudo="$(command -v sudo)"
 has_ytdlp="$(command -v yt-dlp)"
-has_pip3="$(command -v pip3)"
+has_uv="$(command -v ~/.local/bin/uv)"
 has_unzip="$(command -v unzip)"
 set -e
 set -x
 
 # apt packages, libssl needed by rust-g but not included in TGS barebones install
-if ! ( [ -x "$has_git" ] && [ -x "$has_curl" ] && [ -x "$has_pip3" ] && [ -x "$has_unzip" ] && [ -f "/usr/lib/i386-linux-gnu/libssl.so" ] ); then
+if ! ( [ -x "$has_git" ] && [ -x "$has_curl" ] && [ -x "$has_uv" ] && [ -x "$has_unzip" ] && [ -f "/usr/lib/i386-linux-gnu/libssl.so" ] ); then
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!!! HEY YOU THERE, READING THE TGS LOGS READ THIS!!!"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -41,12 +41,12 @@ if ! [ -x "$has_cargo" ]; then
 	. ~/.profile
 fi
 
-# install or update yt-dlp when not present, or if it is present with pip3,
+# install or update yt-dlp when not present, or if it is present with uv,
 # which we assume was used to install it
 if ! [ -x "$has_ytdlp" ]; then
-	echo "Installing yt-dlp with pip3..."
-	pip3 install yt-dlp --break-system-packages
+	echo "Installing yt-dlp with uv..."
+	~/.local/bin/uv tool install yt-dlp
 else
-	echo "Ensuring yt-dlp is up-to-date with pip3..."
-	pip3 install yt-dlp -U --break-system-packages
+	echo "Ensuring yt-dlp is up-to-date with uv..."
+	~/.local/bin/uv tool upgrade yt-dlp
 fi
