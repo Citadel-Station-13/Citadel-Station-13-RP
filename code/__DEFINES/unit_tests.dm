@@ -34,7 +34,7 @@
 	do { \
 		if(mapload) { \
 			var/turf/spawn_turf = get_turf(src); \
-			if(is_station_level(spawn_turf?.z || 0)) { \
+			if(spawn_turf?.z && SSmapping.level_has_trait(spawn_turf.z, ZTRAIT_STATION)) { \
 				var/datum/required_item/existing_value = GLOB.required_map_items[type]; \
 				if(isnull(existing_value)) { \
 					var/datum/required_item/new_value = new(type, min, max); \
