@@ -1,41 +1,49 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/**
+ * * Stateless
+ */
 /datum/airlock_phase
 	/// should be lowercase
 	var/display_verb =  "???"
-	/// set when we begin, not unset when we end
-	var/started_at
-	/// set when we end
-	var/ended_at
 
 /**
  * * can return outside of 0 to 1, which would result in something like `2` being `"200%"`.
  * @return null if not supported or number, ideally 0 to 1
  */
-/datum/airlock_phase/proc/estimate_progress_ratio()
+/datum/airlock_phase/proc/estimate_progress_ratio(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	return null
 
 /**
  * Called when entering this phase.
- * @return TRUE / FALSE success / failure; cycling is aborted if FALSE.
+ * @return AIRLOCK_PHASE_SETUP_* enum
  */
-/datum/airlock_phase/proc/setup(datum/airlock_cycle/cycle)
-	return TRUE
+/datum/airlock_phase/proc/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /**
+ * * 'dt' is in seconds
  * @return TRUE if finished, FALSE otherwise
  */
-/datum/airlock_phase/proc/tick(datum/airlock_cycle/cycle)
+/datum/airlock_phase/proc/tick(datum/airlock_system/system, datum/airlock_cycling/cycling, dt)
 	// by default, we just care that all tasks are done
-	return !length(cycle.running_tasks)
+	if(!length(cycling.running_tasks))
+		return AIRLOCK_PHASE_TICK_FINISH
+	#warn poll cycling
 
 /**
  * Called when exiting this phase.
- * @return TRUE / FALSE success / failure; cycling is aborted if FALSE.
  */
-/datum/airlock_phase/proc/cleanup(datum/airlock_cycle/cycle)
-	return TRUE
+/datum/airlock_phase/proc/cleanup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	return
+
+/datum/airlock_phase/merge_blackboard
+	var/list/merge_system_blackboard
+	var/list/merge_cycling_blackboard
+
+/datum/airlock_phase/merge_blackboard/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	#warn impl
 
 /**
  * Depressurize airlock to handler's waste buffer, or an exterior vent.
@@ -72,6 +80,8 @@
 /datum/airlock_phase/repressurize/require_external_air
 	pull_from_outside_if_possible = TRUE
 	pull_from_outside_required = TRUE
+
+/datum/airlock_phase/repressurize/from_handler_supply
 
 /datum/airlock_phase/doors
 	display_verb = "operating doors"

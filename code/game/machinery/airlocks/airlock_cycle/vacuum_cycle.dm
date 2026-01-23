@@ -4,34 +4,32 @@
 /datum/airlock_cycle/vacuum_cycle
 	var/to_side = AIRLOCK_SIDE_NEUTRAL
 
-/datum/airlock_cycle/vacuum_cycle/New(set_to_side)
-	if(set_to_side)
-		src.to_side = set_to_side
-	..()
+/datum/airlock_cycle/vacuum_cycle/create_cycling(cycle_from_side, cycle_to_side)
+	return ..()
 
-/datum/airlock_cycle/vacuum_cycle/setup()
-	enqueue_phase(new /datum/airlock_phase/doors/seal)
-	switch(side_cycling_from)
-		if(AIRLOCK_SIDE_EXTERIOR)
-			// TODO: required is silly, but the majority of citrp's airlocks would horribly clog
-			//       if outside air was pumped to scrubber; that, and, most setups aren't
-			//       equipped to properly clean potentially dirty air
-			enqueue_phase(new /datum/airlock_phase/depressurize/vent_to_outside)
-		else
-			// If interior, always go to handler waste, not outside
-			enqueue_phase(new /datum/airlock_phase/depressurize/drain_to_handler)
-	#warn change side here?
-	enqueue_phase(new /datum/airlock_phase/repressurize/allow_external_air)
-	var/datum/airlock_phase/unseal_step
-	switch(to_side)
-		if(AIRLOCK_SIDE_EXTERIOR)
-			unseal_step = new /datum/airlock_phase/doors/unseal/exterior
+/datum/airlock_cycle/vacuum_cycle/gather_phases(cycle_from_side, cycle_to_side)
+	. = list()
+	. += new /datum/airlock_phase/doors/seal
+	switch(cycle_from_side)
 		if(AIRLOCK_SIDE_INTERIOR)
-			unseal_step = new /datum/airlock_phase/doors/unseal/interior
-		if(AIRLOCK_SIDE_NEUTRAL)
-			/// this does nothing and just keeps the airlock closed, and is considered a legal
-			/// operation to perform.
+			. += new /datum/airlock_phase/depressurize/drain_to_handler
+		if(AIRLOCK_SIDE_EXTERIOR)
+			. += new /datum/airlock_phase/depressurize/vent_to_outside
 		else
-			STACK_TRACE("unknown side '[to_side]'")
-	if(unseal_step)
-		enqueue_phase(unseal_step)
+			// be conservative, assume we want to conserve air
+			. += new /datum/airlock_phase/depressurize/drain_to_handler
+	. += new /datum/airlock_phase/merge_blackboard {
+		merge_system_blackboard = list(
+			AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE = cycle_to_side,
+		);
+	}
+	switch(cycle_to_side)
+		if(AIRLOCK_SIDE_EXTERIOR)
+			. += new /datum/airlock_phase/repressurize/allow_external_air
+			. += new /datum/airlock_phase/doors/unseal/exterior
+		if(AIRLOCK_SIDE_INTERIOR)
+			. += new /datum/airlock_phase/repressurize/from_handler_supply
+			. += new /datum/airlock_phase/doors/unseal/interior
+		else
+			// be conservative, assume we want to use known-safe air
+			. += new /datum/airlock_phase/repressurize/from_handler_supply

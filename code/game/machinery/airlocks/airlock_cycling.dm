@@ -1,0 +1,86 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
+
+/**
+ * Airlock cycle state.
+ *
+ * * created for use during a discrete cycle operation
+ */
+/datum/airlock_cycling
+	/// blackboard
+	/// * arbitrary k-v list
+	var/list/blackboard = list()
+
+	#warn set on new / cleanup on destroy
+	/// the controller we belong to
+	var/obj/machinery/airlock_component/controller/controller
+	/// tasks running in the cycle
+	var/list/datum/airlock_task/running_tasks = list()
+
+	/// current phase
+	var/datum/airlock_phase/current_phase
+	/// ordered pending phases
+	/// * we are done if there's none left
+	var/list/datum/airlock_phase/pending_phases = list()
+
+/**
+ * Called when the airlock processes to tick the cycle.
+ */
+/datum/airlock_cycling/proc/poll()
+
+/**
+ * * The reference will be owned by the cycle after this call.
+ */
+/datum/airlock_cycling/proc/enqueue_phase(datum/airlock_phase/phase)
+
+
+
+
+#warn below
+/datum/airlock_cycling
+	/// operation display
+	var/operation_display = "Operating"
+	/// phase;
+	var/phase
+	/// phase; human readable;
+	var/phase_display
+	/// phase percent estimate, 0 to 100
+	var/phase_progress
+	/// phase started at
+	var/phase_started
+
+	/// started side
+	var/side_cycling_from
+	/// ending side
+	var/side_cycling_to
+
+
+/datum/airlock_cycling/proc/get_phase()
+	return phase
+
+/datum/airlock_cycling/proc/ui_cycle_data()
+	var/list/assembled_tasks = list()
+	for(var/datum/airlock_task/task as anything in running_tasks)
+		assembled_tasks[++assembled_tasks.len] = task.ui_task_data()
+	return list(
+		"operation" = operation_display,
+		"phase" = phase_display,
+		"startTime" = phase_started,
+		"progress" = phase_progress,
+		"tasks" = assembled_tasks,
+	)
+
+/datum/airlock_cycling/proc/add_task(datum/airlock_task/task)
+	task.assign_cycle(src)
+
+/datum/airlock_cycling/proc/remove_task(datum/airlock_task/task)
+	task.unassign_cycle(src)
+
+/datum/airlock_cycling/proc/setup()
+
+/datum/airlock_cycling/proc/complete()
+	#warn impl
+
+#warn above
+
+#warn impl

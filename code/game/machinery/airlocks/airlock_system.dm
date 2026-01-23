@@ -20,14 +20,19 @@
 	//* Cycling *//
 	/// current airlock cycle struct
 	/// * if this exists, we are cycling right now
-	var/datum/airlock_cycle/cycle
+	var/datum/airlock_cycling/cycling
 	/// operation cycle; airlock cycling is async, operation cycles allow us to ensure
 	/// that an operation is still the same operation something started.
-	var/cycle_op_id
+	var/cycling_op_id
 	/// next operation cycle
-	var/static/cycle_op_id_next = 0
-	/// what to call on finish with (src, cycle_id: id, status: AIRLOCK_CYCLE_FIN_* define, why: short string reason or null)
-	var/datum/callback/cycle_op_on_finish
+	var/static/cycling_op_id_next = 0
+	/// what to call on finish with (src, cycling_id: id, status: AIRLOCK_CYCLE_FIN_* define, why: short string reason or null)
+	var/datum/callback/cycling_op_on_finish
+
+	//* State *//
+	/// arbitrary blackboard
+	/// * unlike cycle blackboard, this always persists
+	var/list/blackboard = list()
 
 /datum/airlock_system/New(obj/machinery/airlock_component/controller, datum/airlock_program/program)
 	src.controller = controller
@@ -58,9 +63,9 @@
 	if(src.cycle)
 		return FALSE
 
-/datum/airlock_system/proc/abort_cycle(cycle_id, why_str)
+/datum/airlock_system/proc/abort_cycle(cycling_id, why_str)
 
-/datum/airlock_system/proc/fail_cycle(cycle_id, why_str)
+/datum/airlock_system/proc/fail_cycle(cycling_id, why_str)
 
 
 #warn impl

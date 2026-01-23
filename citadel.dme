@@ -1562,6 +1562,7 @@
 #include "code\game\machinery\wishgranter.dm"
 #include "code\game\machinery\airlocks\airlock_component.dm"
 #include "code\game\machinery\airlocks\airlock_cycle.dm"
+#include "code\game\machinery\airlocks\airlock_cycling.dm"
 #include "code\game\machinery\airlocks\airlock_gasnet.dm"
 #include "code\game\machinery\airlocks\airlock_interconnect.dm"
 #include "code\game\machinery\airlocks\airlock_peripheral.dm"
