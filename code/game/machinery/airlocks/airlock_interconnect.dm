@@ -106,11 +106,11 @@
 /obj/structure/airlock_interconnect/proc/connect_component(obj/machinery/airlock_component/component)
 	if(component.interconnect)
 		component.interconnect.disconnect_component(component)
-	LAZYADD(components)
+	LAZYADD(components, component)
 	network?.add_machine(component)
 
 /obj/structure/airlock_interconnect/proc/disconnect_component(obj/machinery/airlock_component/component)
-	LAZYREMOVE(components)
+	LAZYREMOVE(components, component)
 	network?.remove_machine(component)
 
 /obj/structure/airlock_interconnect/proc/get_adjacent_interconnects()

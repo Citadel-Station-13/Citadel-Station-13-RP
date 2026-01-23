@@ -70,13 +70,30 @@
  * expand and consume along an interconnect
  */
 /datum/airlock_gasnet/proc/build(obj/structure/airlock_interconnect/source)
+	var/list/obj/structure/airlock_interconnect/processing = list(source)
+	var/list/processed = list()
+	while(length(processing))
+
 	#warn impl
 
 /datum/airlock_gasnet/proc/add_interconnect(obj/structure/airlock_interconnect/connector)
 	interconnects += connector
 
+/**
+ * Merge into another gasnet and delete ourselves
+ */
 /datum/airlock_gasnet/proc/merge_into(datum/airlock_gasnet/other)
-	#warn impl
+	for(var/obj/structure/airlock_interconnect/interconnect as anything in interconnects)
+		interconnect.network = other
+		other.interconnects += interconnect
+	interconnects.Cut()
+	for(var/obj/machinery/airlock_component/component as anything in components)
+		component.on_disconnect(src)
+		component.network = other
+		component.on_connect(other)
+	other.components += components
+	components.Cut()
+	qdel(src)
 
 /datum/airlock_gasnet/proc/add_machine(obj/machinery/airlock_component/component)
 	#warn impl
@@ -107,7 +124,7 @@
 	var/datum/gas_mixture/sink = vent?.get_mutable_gas_mixture_ref()
 
 	if(!source || !sink)
-		return AIRLOCK_CYCLER_OP_MISSING_MACHINE
+		return AIRLOCK_CYCLER_OP_MISSING_COMPONENT
 
 
 /datum/airlock_gasnet/proc/pump_vent_to_cycler(dt, to_pressure)
@@ -117,7 +134,7 @@
 	var/datum/gas_mixture/sink = vent?.get_mutable_gas_mixture_ref()
 
 	if(!source || !sink)
-		return AIRLOCK_CYCLER_OP_MISSING_MACHINE
+		return AIRLOCK_CYCLER_OP_MISSING_COMPONENT
 
 /datum/airlock_gasnet/proc/pump_cycler_to_handler_waste(dt, to_pressure)
 	. = AIRLOCK_CYCLER_OP_FATAL
@@ -126,7 +143,7 @@
 	var/datum/gas_mixture/sink = handler?.get_waste_gas_mixture_ref()
 
 	if(!source || !sink)
-		return AIRLOCK_CYCLER_OP_MISSING_MACHINE
+		return AIRLOCK_CYCLER_OP_MISSING_COMPONENT
 
 /datum/airlock_gasnet/proc/pump_handler_supply_to_cycler(dt, to_pressure)
 	. = AIRLOCK_CYCLER_OP_FATAL
@@ -135,7 +152,7 @@
 	var/datum/gas_mixture/sink = cycler?.get_mutable_gas_mixture_ref()
 
 	if(!source || !sink)
-		return AIRLOCK_CYCLER_OP_MISSING_MACHINE
+		return AIRLOCK_CYCLER_OP_MISSING_COMPONENT
 
 #warn impl
 
