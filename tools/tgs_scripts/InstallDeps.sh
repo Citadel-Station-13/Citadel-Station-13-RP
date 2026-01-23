@@ -13,7 +13,7 @@ set -e
 set -x
 
 # apt packages, libssl needed by rust-g but not included in TGS barebones install
-if ! ( [ -x "$has_git" ] && [ -x "$has_curl" ] && [ -x "$has_uv" ] && [ -x "$has_unzip" ] && [ -f "/usr/lib/i386-linux-gnu/libssl.so" ] ); then
+if ! ( [ -x "$has_git" ] && [ -x "$has_curl" ] && [ -x "$has_unzip" ] && [ -f "/usr/lib/i386-linux-gnu/libssl.so" ] ); then
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!!! HEY YOU THERE, READING THE TGS LOGS READ THIS!!!"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -38,6 +38,12 @@ fi
 if ! [ -x "$has_cargo" ]; then
 	echo "Installing rust..."
 	curl https://sh.rustup.rs -sSf | sh -s -- -y
+	. ~/.profile
+fi
+
+if ! [ -x "$has_uv" ]; then
+	echo "Installing uv using cargo..."
+    cargo install --locked uv
 	. ~/.profile
 fi
 
