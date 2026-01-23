@@ -20,7 +20,11 @@ export const file_labels = {
     filepaths: ["tools/"],
   },
   "Config Update": {
-    filepaths: ["config/", "code/controllers/configuration/entries/"],
+    filepaths: [
+      "config/",
+      "code/controllers/configuration/entries/",
+      "code/controllers/toml_config/entries/",
+    ],
     add_only: true,
   },
   Sprites: {
