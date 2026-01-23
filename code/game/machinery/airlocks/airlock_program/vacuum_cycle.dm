@@ -19,8 +19,8 @@
 		if("cycleToExterior")
 		if("cycleToInterior")
 		#warn abort cycles and force doors based on states
-		if("forceToExterior")
-		if("forceToInterior")
+		if("forceExteriorDoors")
+		if("forceInteriorDoors")
 		if("cancel")
 			// soft cancel, try to repressurize
 		if("abort")

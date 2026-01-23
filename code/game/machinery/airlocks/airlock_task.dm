@@ -2,8 +2,8 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/airlock_task
-	/// cycle we belong to, if any
-	var/datum/airlock_cycle/cycle
+	/// cycling we belong to, if any
+	var/datum/airlock_cycling/cycling
 	/// completed?
 	var/completed = FALSE
 	/// started at time
@@ -13,26 +13,27 @@
 	started_at = world.time
 
 /datum/airlock_task/Destroy()
-	if(cycle)
-		cycle.remove_task(src)
+	if(cycling)
+		cycling.remove_task(src)
+		cycling = null
 	return ..()
 
 /datum/airlock_task/proc/component_still_valid(obj/machinery/airlock_component/component)
 	if(QDELETED(component) || !component.network)
 		return FALSE
-	if(component.network != cycle.controller?.network)
+	if(component.network != cycling.system.controller?.network)
 		return FALSE
 	return TRUE
 
-/datum/airlock_task/proc/assign_cycle(datum/airlock_cycle/cycle)
-	ASSERT(!src.cycle)
-	src.cycle = cycle
-	src.cycle.running_tasks += src
+/datum/airlock_task/proc/assign_cycle(datum/airlock_cycling/cycling)
+	ASSERT(!src.cycling)
+	src.cycling = cycling
+	src.cycling.running_tasks += src
 
-/datum/airlock_task/proc/unassign_cycle(datum/airlock_cycle/cycle)
-	ASSERT(src.cycle == cycle)
-	src.cycle = null
-	cycle.running_tasks -= src
+/datum/airlock_task/proc/unassign_cycle(datum/airlock_cycling/cycling)
+	ASSERT(src.cycling == cycling)
+	src.cycling = null
+	cycling.running_tasks -= src
 
 /datum/airlock_task/proc/ui_task_data()
 	return list(

@@ -12,51 +12,80 @@
 	var/list/blackboard = list()
 
 	#warn set on new / cleanup on destroy
-	/// the controller we belong to
-	var/obj/machinery/airlock_component/controller/controller
+	/// the system we belong to
+	var/datum/airlock_system/system
 	/// tasks running in the cycle
 	var/list/datum/airlock_task/running_tasks = list()
 
 	/// current phase
 	var/datum/airlock_phase/current_phase
+	/// world.time currenet phase started at
+	var/current_phase_started_at
+	/// current phase progress estimate, if any
+	var/current_phase_progress_estimate
 	/// ordered pending phases
 	/// * we are done if there's none left
 	var/list/datum/airlock_phase/pending_phases = list()
 
+/datum/airlock_cycling/Destroy()
+	QDEL_LIST(running_tasks)
+	current_phase = null
+	pending_phases = null
+	return ..()
+
 /**
  * Called when the airlock processes to tick the cycle.
  */
-/datum/airlock_cycling/proc/poll()
+/datum/airlock_cycling/proc/poll(dt)
+	for(var/datum/airlock_task/task as anything in running_tasks)
+		task.poll(dt)
+		if(task.completed)
+			running_tasks -= task
+	poll_or_next_phase(dt)
+	if(!current_phase && !length(pending_phases))
+		#warn finished
+
+/datum/airlock_cycling/proc/poll_or_next_phase(dt, safety = 128)
+	if(--safety <= 0)
+		STACK_TRACE("ran out of safety, aborting")
+		system.fail_cycle()
+		return
+	if(!current_phase)
+		var/datum/airlock_phase/next_phase = pending_phases[1]
+		pending_phases.Cut(1, 2)
+		switch(next_phase.setup(system, src))
+			if(AIRLOCK_PHASE_SETUP_FAIL)
+				system.fail_cycle()
+				return
+			if(AIRLOCK_PHASE_SETUP_SKIP)
+				return poll_or_next_phase(dt, safety - 1)
+			if(AIRLOCK_PHASE_SETUP_SUCCESS)
+				current_phase_started_at = world.time
+				current_phase = next_phase
+	switch(current_phase.tick(system, src))
+		if(AIRLOCK_PHASE_TICK_ERROR)
+			system.fail_cycle()
+			return
+		if(AIRLOCK_PHASE_TICK_CONTINUE)
+			current_phase_progress_estimate = current_phase.estimate_progress_ratio(system, src)
+		if(AIRLOCK_PHASE_TICK_FINISH)
+			poll_or_next_phase(dt, safety - 1)
 
 /**
  * * The reference will be owned by the cycle after this call.
  */
 /datum/airlock_cycling/proc/enqueue_phase(datum/airlock_phase/phase)
 
+/datum/airlock_cycling/proc/add_task(datum/airlock_task/task)
+	task.assign_cycle(src)
+	running_tasks += task
 
+/datum/airlock_cycling/proc/remove_task(datum/airlock_task/task)
+	task.unassign_cycle(src)
+	running_tasks -= task
 
 
 #warn below
-/datum/airlock_cycling
-	/// operation display
-	var/operation_display = "Operating"
-	/// phase;
-	var/phase
-	/// phase; human readable;
-	var/phase_display
-	/// phase percent estimate, 0 to 100
-	var/phase_progress
-	/// phase started at
-	var/phase_started
-
-	/// started side
-	var/side_cycling_from
-	/// ending side
-	var/side_cycling_to
-
-
-/datum/airlock_cycling/proc/get_phase()
-	return phase
 
 /datum/airlock_cycling/proc/ui_cycle_data()
 	var/list/assembled_tasks = list()
@@ -70,17 +99,7 @@
 		"tasks" = assembled_tasks,
 	)
 
-/datum/airlock_cycling/proc/add_task(datum/airlock_task/task)
-	task.assign_cycle(src)
-
-/datum/airlock_cycling/proc/remove_task(datum/airlock_task/task)
-	task.unassign_cycle(src)
-
 /datum/airlock_cycling/proc/setup()
-
-/datum/airlock_cycling/proc/complete()
-	#warn impl
 
 #warn above
 
-#warn impl

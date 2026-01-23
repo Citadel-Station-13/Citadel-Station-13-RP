@@ -30,7 +30,7 @@
 	// by default, we just care that all tasks are done
 	if(!length(cycling.running_tasks))
 		return AIRLOCK_PHASE_TICK_FINISH
-	#warn poll cycling
+	return AIRLOCK_PHASE_TICK_CONTINUE
 
 /**
  * Called when exiting this phase.
