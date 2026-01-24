@@ -13,6 +13,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "__odlint.dm"
 #include "_mapload\_basemap.dm"
 #include "code\___compile_options.dm"
 #include "code\__byond_version_compat.dm"

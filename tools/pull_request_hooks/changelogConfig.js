@@ -8,120 +8,120 @@
  * doesn't exist.
  */
 export const CHANGELOG_ENTRIES = [
-	[
-		["rscadd", "add", "adds"],
-		{
-			placeholders: [
-				"Added new mechanics or gameplay changes",
-				"Added more things",
-			],
-		},
-	],
+  [
+    ["rscadd", "add", "adds"],
+    {
+      placeholders: [
+        "Added new mechanics or gameplay changes",
+        "Added more things",
+      ],
+    },
+  ],
 
-	[
-		["bugfix", "fix", "fixes"],
-		{
-			placeholders: ["fixed a few things"],
-		},
-	],
+  [
+    ["bugfix", "fix", "fixes"],
+    {
+      placeholders: ["fixed a few things"],
+    },
+  ],
 
-	[
-		["rscdel", "del", "dels"],
-		{
-			placeholders: ["Removed old things"],
-		},
-	],
+  [
+    ["rscdel", "del", "dels"],
+    {
+      placeholders: ["Removed old things"],
+    },
+  ],
 
-	[
-		["tweak"],
-		{
-			placeholders: ["tweaked a few things"],
-		},
-	],
+  [
+    ["tweak"],
+    {
+      placeholders: ["tweaked a few things"],
+    },
+  ],
 
-	[
-		["qol"],
-		{
-			placeholders: ["made something easier to use"],
-		},
-	],
+  [
+    ["qol"],
+    {
+      placeholders: ["made something easier to use"],
+    },
+  ],
 
-	[
-		["soundadd"],
-		{
-			placeholders: ["added a new sound thingy"],
-		},
-	],
+  [
+    ["soundadd"],
+    {
+      placeholders: ["added a new sound thingy"],
+    },
+  ],
 
-	[
-		["sounddel"],
-		{
-			placeholders: ["removed an old sound thingy"],
-		},
-	],
+  [
+    ["sounddel"],
+    {
+      placeholders: ["removed an old sound thingy"],
+    },
+  ],
 
-	[
-		["imageadd"],
-		{
-			placeholders: ["added some icons and images"],
-		},
-	],
+  [
+    ["imageadd"],
+    {
+      placeholders: ["added some icons and images"],
+    },
+  ],
 
-	[
-		["imagedel"],
-		{
-			placeholders: ["deleted some icons and images"],
-		},
-	],
+  [
+    ["imagedel"],
+    {
+      placeholders: ["deleted some icons and images"],
+    },
+  ],
 
-	[
-		["spellcheck", "typo"],
-		{
-			placeholders: ["fixed a few typos"],
-		},
-	],
+  [
+    ["spellcheck", "typo"],
+    {
+      placeholders: ["fixed a few typos"],
+    },
+  ],
 
-	[
-		["balance"],
-		{
-			placeholders: ["rebalanced something"],
-		},
-	],
+  [
+    ["balance"],
+    {
+      placeholders: ["rebalanced something"],
+    },
+  ],
 
-	[
-		["code_imp", "code"],
-		{
-			placeholders: ["changed some code"],
-		},
-	],
+  [
+    ["code_imp", "code"],
+    {
+      placeholders: ["changed some code"],
+    },
+  ],
 
-	[
-		["refactor"],
-		{
-			placeholders: ["refactored some code"],
-		},
-	],
+  [
+    ["refactor"],
+    {
+      placeholders: ["refactored some code"],
+    },
+  ],
 
-	[
-		["config"],
-		{
-			placeholders: ["changed some config setting"],
-		},
-	],
+  [
+    ["config"],
+    {
+      placeholders: ["changed some config setting"],
+    },
+  ],
 
-	[
-		["admin"],
-		{
-			placeholders: ["messed with admin stuff"],
-		},
-	],
+  [
+    ["admin"],
+    {
+      placeholders: ["messed with admin stuff"],
+    },
+  ],
 
-	[
-		["server"],
-		{
-			placeholders: ["something server ops should know"],
-		},
-	],
+  [
+    ["server"],
+    {
+      placeholders: ["something server ops should know"],
+    },
+  ],
 ];
 
 // Valid changelog openers
