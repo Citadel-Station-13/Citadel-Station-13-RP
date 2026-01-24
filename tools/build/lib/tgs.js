@@ -8,9 +8,10 @@ import { DME_NAME } from "../build.js";
  * @param {string[]} defines
  */
 export async function prependDefines(...defines) {
-  const dmeContents = fs.readFileSync(`${DME_NAME}.dme`);
+  const fileName = `${DME_NAME}.dme`;
+  const dmeContents = fs.readFileSync(fileName);
 
   const textToWrite = defines.map((define) => `#define ${define}\n`);
-
-  await file.write(`${textToWrite.join("")}\n${dmeContents}`);
+  
+  fs.writeFileSync(fileName, `${textToWrite.join("")}\n${dmeContents}`);
 }
