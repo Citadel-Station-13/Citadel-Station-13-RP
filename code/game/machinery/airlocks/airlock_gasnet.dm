@@ -46,8 +46,6 @@
 
 	var/recheck_queued = FALSE
 
-	#warn hook all
-
 /datum/airlock_gasnet/New(obj/structure/airlock_interconnect/origin)
 	if(origin)
 		build(origin)
@@ -64,7 +62,38 @@
 
 /datum/airlock_gasnet/proc/recheck()
 	recheck_queued = FALSE
-	#warn impl
+
+	controller = null
+	handler = null
+	cycler = null
+	vent = null
+
+	invalid = FALSE
+	invalid_reasons = null
+
+	for(var/obj/machinery/airlock_component/controller/c1 in components)
+		if(controller)
+			LAZYADD(invalid_reasons, "More than one controller in network.")
+			continue
+		controller = c1
+
+	for(var/obj/machinery/airlock_component/handler/c2 in components)
+		if(handler)
+			LAZYADD(invalid_reasons, "More than one handler in network.")
+			continue
+		handler = c1
+
+	for(var/obj/machinery/airlock_component/cycler/c3 in components)
+		if(cycler)
+			LAZYADD(invalid_reasons, "More than one cycler in network.")
+			continue
+		cycler = c1
+
+	for(var/obj/machinery/airlock_component/vent/c4 in components)
+		if(vent)
+			LAZYADD(invalid_reasons, "More than one vent in network.")
+			continue
+		vent = c1
 
 /**
  * expand and consume along an interconnect
@@ -192,13 +221,50 @@
 
 /datum/airlock_task/gasnet/pump
 	var/target_pressure = 0
+	var/is_into_chamber
+
+/datum/airlock_task/gasnet/pump/proc/handle_pumping_status(cycler_status)
+	#warn impl
+	switch(cycler_status)
+		if(AIRLOCK_CYCLER_OP_FATAL)
+		if(AIRLOCK_CYCLER_OP_NO_GAS)
+		if(AIRLOCK_CYCLER_OP_NO_POWER)
+		if(AIRLOCK_CYCLER_OP_SUCCESS)
+		if(AIRLOCK_CYCLER_OP_MISSING_COMPONENT)
+		if(AIRLOCK_CYCLER_OP_HIGH_RESISTANCE)
 
 /datum/airlock_task/gasnet/pump/vent_to_cycler
+	is_into_chamber = TRUE
+
+/datum/airlock_task/gasnet/pump/vent_to_cycler/poll(dt)
+	var/status = cycling.system.controller?.network?.pump_vent_to_cycler(dt, target_pressure)
+	if(isnull(status))
+		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
+	handle_pumping_status(status)
 
 /datum/airlock_task/gasnet/pump/cycler_to_vent
+	is_into_chamber = FALSE
+
+/datum/airlock_task/gasnet/pump/cycler_to_vent/poll(dt)
+	var/status = cycling.system.controller?.network?.pump_cycler_to_vent(dt, target_pressure)
+	if(isnull(status))
+		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
+	handle_pumping_status(status)
 
 /datum/airlock_task/gasnet/pump/handler_supply_to_cycler
+	is_into_chamber = TRUE
+
+/datum/airlock_task/gasnet/pump/handler_supply_to_cycler/poll(dt)
+	var/status = cycling.system.controller?.network?.pump_handler_supply_to_cycler(dt, target_pressure)
+	if(isnull(status))
+		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
+	handle_pumping_status(status)
 
 /datum/airlock_task/gasnet/pump/cycler_to_handler_waste
+	is_into_chamber = FALSE
 
-#warn impl all
+/datum/airlock_task/gasnet/pump/cycler_to_handler_waste/poll(dt)
+	var/status = cycling.system.controller?.network?.pump_cycler_to_handler_waste(dt, target_pressure)
+	if(isnull(status))
+		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
+	handle_pumping_status(status)

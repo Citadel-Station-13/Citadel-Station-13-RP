@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/**
+ * * Stateful.
+ */
 /datum/airlock_task
 	/// cycling we belong to, if any
 	var/datum/airlock_cycling/cycling
