@@ -154,10 +154,7 @@
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
-	if (unique)
-		// todo: something is double initing reserve area god damnit...
-		// if(GLOB.areas_by_type[type])
-		// 	STACK_TRACE("duplicated unique area, someone fucked up")
+	if (unique) // TODO flag me
 		GLOB.areas_by_type[type] = src
 
 	uid = ++global_uid
@@ -170,11 +167,6 @@
 			minimap_color = I.GetPixel(1,1)
 		else // no icon state? use random.
 			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70)) // This interacts with the map loader, so it needs to be set immediately
-	return ..()
-
-/area/EarlyDestroy(force)
-	if(GLOB.areas_by_type[type] == src)
-		GLOB.areas_by_type[type] = null
 	return ..()
 
 /*
@@ -230,21 +222,12 @@
 /area/Destroy()
 	if(GLOB.areas_by_type[type] == src)
 		GLOB.areas_by_type[type] = null
-/*
-	if(base_area)
-		LAZYREMOVE(base_area, src)
-		base_area = null
-	if(sub_areas)
-		for(var/i in sub_areas)
-			var/area/A = i
-			A.base_area = null
-			sub_areas -= A
-			if(A.requires_power)
-				A.power_light = FALSE
-				A.power_equip = FALSE
-				A.power_environ = FALSE
-			INVOKE_ASYNC(A, PROC_REF(power_change))
-*/
+	//this is not initialized until get_sorted_areas() is called so we have to do a null check
+	if(!isnull(GLOB.sortedAreas))
+		GLOB.sortedAreas -= src
+	if(!isnull(GLOB.custom_areas))
+		GLOB.custom_areas -= src
+
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -650,6 +633,20 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			temp_airlock.prison_open()
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
+
+/**
+ * Setup an area (with the given name)
+ *
+ * Sets the area name, sets all status var's to false and adds the area to the sorted area list
+ */
+/area/proc/setup(a_name)
+	name = a_name
+	power_equip = FALSE
+	power_light = FALSE
+	power_environ = FALSE
+	always_unpowered = FALSE
+	// area_flags &= ~(VALID_TERRITORY|BLOBS_ALLOWED|CULT_PERMITTED)
+	// require_area_resort()
 
 /area/AllowDrop()
 	CRASH("Bad op: area/AllowDrop() called")
