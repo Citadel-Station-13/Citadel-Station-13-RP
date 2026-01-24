@@ -23,35 +23,14 @@
 		// 	E.post_implant(new_character)
 
 /mob/living/carbon/human/resleeving_get_mirror()
-	#warn impl
+	return locate(/obj/item/organ/internal/mirror) in internal_organs
 
 /mob/living/carbon/human/resleeving_remove_mirror(atom/new_loc)
-	#warn impl
-
-	// if(target_zone == BP_TORSO && imp == null)
-	// 	for(var/obj/item/organ/I in H.organs)
-	// 		for(var/obj/item/organ/internal/mirror/MI in I.contents)
-	// 			if(imp == null)
-	// 				H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
-	// 				user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
-	// 				user.do_attack_animation(H)
-	// 				var/turf/T1 = get_turf(H)
-	// 				if (T1 && ((H == user) || do_after(user, 20)))
-	// 					if(user && H && (get_turf(H) == T1) && src)
-	// 						H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
-	// 						add_attack_logs(user,H,"Mirror removed by [user]")
-	// 						src.imp = MI
-	// 						qdel(MI)
-	// else if (target_zone == BP_TORSO && imp != null)
-	// 	if (imp)
-	// 		H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
-	// 		user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
-	// 		user.do_attack_animation(H)
-	// 		var/turf/T1 = get_turf(H)
-	// 		if (T1 && ((H == user) || do_after(user, 20)))
-	// 			if(user && H && (get_turf(H) == T1) && src && src.imp)
-	// 				H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
-	// 				add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
-	// 				if(imp.handle_implant(H))
-	// 					imp.post_implant(H)
-	// 				src.imp = null
+	var/obj/item/organ/internal/mirror/located = locate() in internal_organs
+	if(!located)
+		return
+	if(new_loc)
+		located.forceMove(new_loc)
+	else
+		located.moveToNullspace()
+	return located

@@ -95,8 +95,8 @@
 
 
 // Turn to dust when gibbed
-/mob/living/simple_mob/living_statue/death_via_gib()
-	death_via_dust()
+/mob/living/simple_mob/living_statue/gib()
+	dust()
 
 //# Statue powers
 

@@ -101,5 +101,5 @@
 
 /obj/structure/closet/statue/proc/shatter(mob/user)
 	if (user)
-		user.death_via_dust()
+		user.dust()
 	visible_message("<span class='warning'>[user] shatters!.</span>")

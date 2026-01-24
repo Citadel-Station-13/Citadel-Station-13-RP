@@ -354,7 +354,7 @@
 			G.electrocute_act_parse_this(500, src, def_zone = BP_TORSO)
 			return
 		if(prob(10))
-			G.death_via_dust()
+			G.dust()
 			return
 		else
 			G.stun_effect_act_parse_this(10 , 50, BP_TORSO, src)

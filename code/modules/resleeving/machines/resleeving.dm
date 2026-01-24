@@ -1,6 +1,6 @@
 /obj/machinery/resleeving
 	name = "resleeving machinery"
-	desc = "Some kind of machinery for the Vey-Med Trans-Human Resleeving System."
+	desc = "Some kind of machinery, likely part of the Vey-Med Transhuman Resleeving System."
 	#warn sprite
 
 	var/obj/machinery/computer/resleeving/linked_console

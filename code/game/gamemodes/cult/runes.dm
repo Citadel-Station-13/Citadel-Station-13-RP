@@ -377,7 +377,7 @@ var/list/sacrificed = list()
 		body_to_sacrifice.visible_message("<span class='danger'>[body_to_sacrifice] is torn apart, a black smoke swiftly dissipating from [TT.his] remains!</span>", \
 		"<span class='danger'>You feel as your blood boils, tearing you apart.</span>", \
 		"<span class='danger'>You hear a thousand voices, all crying in pain.</span>")
-		body_to_sacrifice.death_via_gib()
+		body_to_sacrifice.gib()
 
 	// if(SSticker.mode.name == "cult")
 	// 	SSticker.mode:add_cultist(corpse_to_raise.mind)
@@ -494,7 +494,7 @@ var/list/sacrificed = list()
 		D.visible_message("<span class='danger'>[D] slowly dissipates into dust and bones.</span>", \
 		"<span class='danger'>You feel pain, as bonds formed between your soul and this homunculus break.</span>", \
 		"<span class='warning'>You hear faint rustle.</span>")
-		D.death_via_dust()
+		D.dust()
 	return
 
 
@@ -661,9 +661,9 @@ var/list/sacrificed = list()
 				if(cultsinrange.len >= 3)
 					sacrificed += H.mind
 					if(isrobot(H))
-						H.death_via_dust()//To prevent the MMI from remaining
+						H.dust()//To prevent the MMI from remaining
 					else
-						H.death_via_gib()
+						H.gib()
 					to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice, your objective is now complete.</span>")
 				else
 					to_chat(usr, "<span class='warning'>Your target's earthly bonds are too strong. You need more cultists to succeed in this ritual.</span>")
@@ -677,9 +677,9 @@ var/list/sacrificed = list()
 							to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
 							to_chat(usr, "<span class='warning'>However, this soul was not enough to gain His favor.</span>")
 						if(isrobot(H))
-							H.death_via_dust()//To prevent the MMI from remaining
+							H.dust()//To prevent the MMI from remaining
 						else
-							H.death_via_gib()
+							H.gib()
 					else
 						if(prob(40) || worth)
 							to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this [worth ? "exotic " : ""]sacrifice.</span>")
@@ -688,9 +688,9 @@ var/list/sacrificed = list()
 							to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
 							to_chat(usr, "<span class='warning'>However, a mere dead body is not enough to satisfy Him.</span>")
 						if(isrobot(H))
-							H.death_via_dust()//To prevent the MMI from remaining
+							H.dust()//To prevent the MMI from remaining
 						else
-							H.death_via_gib()
+							H.gib()
 				else
 					if(H.stat !=2)
 						to_chat(usr, "<span class='warning'>The victim is still alive, you will need more cultists chanting for the sacrifice to succeed.</span>")
@@ -703,9 +703,9 @@ var/list/sacrificed = list()
 							to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
 							to_chat(usr, "<span class='warning'>However, a mere dead body is not enough to satisfy Him.</span>")
 						if(isrobot(H))
-							H.death_via_dust()//To prevent the MMI from remaining
+							H.dust()//To prevent the MMI from remaining
 						else
-							H.death_via_gib()
+							H.gib()
 		else
 			if(cultsinrange.len >= 3)
 				if(H.stat !=2)
@@ -716,9 +716,9 @@ var/list/sacrificed = list()
 						to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
 						to_chat(usr, "<span class='warning'>However, this soul was not enough to gain His favor.</span>")
 					if(isrobot(H))
-						H.death_via_dust()//To prevent the MMI from remaining
+						H.dust()//To prevent the MMI from remaining
 					else
-						H.death_via_gib()
+						H.gib()
 				else
 					if(prob(40))
 						to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
@@ -727,9 +727,9 @@ var/list/sacrificed = list()
 						to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
 						to_chat(usr, "<span class='warning'>However, a mere dead body is not enough to satisfy Him.</span>")
 					if(isrobot(H))
-						H.death_via_dust()//To prevent the MMI from remaining
+						H.dust()//To prevent the MMI from remaining
 					else
-						H.death_via_gib()
+						H.gib()
 			else
 				if(H.stat !=2)
 					to_chat(usr, "<span class='warning'>The victim is still alive, you will need more cultists chanting for the sacrifice to succeed.</span>")
@@ -741,9 +741,9 @@ var/list/sacrificed = list()
 						to_chat(usr, "<span class='cult'>The Geometer of Blood accepts this sacrifice.</span>")
 						to_chat(usr, "<span class='warning'>However, a mere dead body is not enough to satisfy Him.</span>")
 					if(isrobot(H))
-						H.death_via_dust()//To prevent the MMI from remaining
+						H.dust()//To prevent the MMI from remaining
 					else
-						H.death_via_gib()
+						H.gib()
 
 //! SIXTEENTH RUNE
 /obj/effect/rune/proc/revealrunes(obj/W)
@@ -1002,7 +1002,7 @@ var/list/sacrificed = list()
 			victims += M
 			if(prob(5))
 				spawn(5)
-					M.death_via_gib()
+					M.gib()
 		for(var/obj/effect/rune/R in view(src))
 			if(prob(10))
 				explosion(R.loc, -1, 0, 1, 5)

@@ -745,7 +745,7 @@
 					S.harvest(assembly)
 					return
 				else
-					S.death_via_gib()
+					S.gib()
 					return
 		else
 			var/mob/living/S = target

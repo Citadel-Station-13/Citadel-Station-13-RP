@@ -199,7 +199,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 /datum/species/shapeshifter/promethean/handle_death(mob/living/carbon/human/H)
 	spawn(1)
 		if(!QDELETED(H))
-			H.death_via_gib()
+			H.gib()
 
 /datum/species/shapeshifter/promethean/get_blood_colour(mob/living/carbon/human/H)
 	return (H ? rgb(H.r_skin, H.g_skin, H.b_skin) : ..())

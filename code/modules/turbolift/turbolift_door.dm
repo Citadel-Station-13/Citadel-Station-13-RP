@@ -43,7 +43,7 @@
 							LM.visible_message("\The [LM] scurries away from the closing doors.")
 							break
 				if(!moved) // nowhere to go....
-					LM.death_via_gib()
+					LM.gib()
 			else // the mob is too big to just move, so we need to give up what we're doing
 				audible_message("\The [src]'s motors grind as they quickly reverse direction, unable to safely close.")
 				cur_command = null // the door will just keep trying otherwise

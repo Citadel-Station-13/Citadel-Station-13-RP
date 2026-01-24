@@ -215,4 +215,4 @@
 		smoke.set_up(10, 0, holder.loc)
 		for(var/i = 1 to smoke_strength)
 			smoke.start(2)
-		holder.wearer.death_via_ash()
+		holder.wearer.ash()

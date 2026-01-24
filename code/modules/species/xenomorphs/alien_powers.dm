@@ -349,11 +349,11 @@
 		var/mob/living/carbon/human/H = G.affecting
 		H.apply_damage(50,DAMAGE_TYPE_BRUTE)
 		if(H.stat == 2)
-			H.death_via_gib()
+			H.gib()
 
 	else
 		var/mob/living/M = G.affecting
 		if(!istype(M)) return //wut
 		M.apply_damage(50,DAMAGE_TYPE_BRUTE)
 		if(M.stat == 2)
-			M.death_via_gib()
+			M.gib()

@@ -52,7 +52,7 @@
 		if(M.loc == input_plate
 		)
 			M.loc = src
-			M.death_via_gib()
+			M.gib()
 
 
 /obj/machinery/gibber/Initialize(mapload)
@@ -217,7 +217,7 @@
 	spawn(gib_time)
 
 		operating = 0
-		occupant.death_via_gib()
+		occupant.gib()
 		occupant = null
 
 		playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)

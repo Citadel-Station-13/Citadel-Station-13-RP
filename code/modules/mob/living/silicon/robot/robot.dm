@@ -965,7 +965,7 @@
 			break
 
 /mob/living/silicon/robot/proc/self_destruct()
-	death_via_gib()
+	gib()
 
 /mob/living/silicon/robot/proc/UnlinkSelf()
 	disconnect_from_ai()

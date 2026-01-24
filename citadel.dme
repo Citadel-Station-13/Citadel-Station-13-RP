@@ -4266,7 +4266,6 @@
 #include "code\modules\mob\living\silicon\robot\items\robot_upgrade.dm"
 #include "code\modules\mob\living\silicon\robot\items\robot_builtin\dog_boop_module.dm"
 #include "code\modules\mob\living\silicon\robot\items\robot_builtin\dog_jaws.dm"
-#include "code\modules\mob\living\silicon\robot\items\robot_builtin\dog_mirrortool.dm"
 #include "code\modules\mob\living\silicon\robot\items\robot_builtin\dog_pounce.dm"
 #include "code\modules\mob\living\silicon\robot\items\robot_builtin\dog_sleeper.dm"
 #include "code\modules\mob\living\silicon\robot\items\robot_builtin\dog_swordtail.dm"

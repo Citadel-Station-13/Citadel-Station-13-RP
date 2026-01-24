@@ -427,7 +427,7 @@
 		if(obj_flags & OBJ_EMAGGED)
 			var/mob/living/living_user = user
 			if (istype(living_user))
-				living_user.death_via_gib()
+				living_user.gib()
 		//SSblackbox.record_feedback("nested tally", "arcade_results", 1, list("loss", "hp", (obj_flags & OBJ_EMAGGED ? "emagged":"normal")))
 
 //	if(gameover)

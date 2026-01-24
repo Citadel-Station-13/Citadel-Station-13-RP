@@ -22,7 +22,7 @@
 	invisibility = initial(invisibility)
 
 	if(!species.primitive_form) //If the creature in question has no primitive set, this is going to be messy.
-		death_via_gib()
+		gib()
 		return
 
 	set_species(species.primitive_form)

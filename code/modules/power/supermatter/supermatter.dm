@@ -495,7 +495,7 @@
 		return
 	investigate_log("Consumed [user] ([ref(user)]) potentially last touched by [user.fingerprintslast], adding [istype(user)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
 	if(istype(user))
-		user.death_via_dust()
+		user.dust()
 		power += 200
 	else
 		qdel(user)

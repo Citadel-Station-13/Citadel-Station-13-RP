@@ -291,7 +291,7 @@
 	if(!T || health <= -35 )
 		timeofdeath = world.time
 		death() //Possibly redundant, having trouble making death() cooperate.
-		death_via_gib()
+		gib()
 		return
 	..()
 

@@ -75,7 +75,7 @@
 	apply_damage(damage = bombdam, damagetype = DAMAGE_TYPE_BRUTE, def_zone = null, blocked = armor, used_weapon = null, sharp = FALSE, edge = FALSE)
 
 	if(bombdam > maxHealth)
-		death_via_gib()
+		gib()
 
 // Cold stuff.
 /mob/living/simple_mob/get_cold_protection()
@@ -169,7 +169,7 @@
 		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] disintegrates into ash!"))
-			death_via_ash()
+			ash()
 			return // No point deafening something that wont exist.
 
 // Lava
@@ -181,7 +181,7 @@
 		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] flashes into ash as the lava consumes them!"))
-			death_via_ash()
+			ash()
 
 //Acid
 /mob/living/simple_mob/acid_act()
@@ -194,7 +194,7 @@
 		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] melts into slurry!"))
-			death_via_gib()
+			gib()
 			return // No point deafening something that wont exist.
 
 // Injections.

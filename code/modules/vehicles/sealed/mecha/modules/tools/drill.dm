@@ -69,7 +69,7 @@
 				S.harvest(user)
 				return
 			else
-				S.death_via_gib()
+				S.gib()
 				return
 		else
 			S.apply_damage(drill_force)

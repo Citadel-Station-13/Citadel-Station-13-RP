@@ -111,4 +111,4 @@
 			else
 				user?.visible_message(SPAN_DANGER("[user] butchers \the [src] messily!"))
 				if(gib_on_butchery)
-					death_via_gib()
+					gib()

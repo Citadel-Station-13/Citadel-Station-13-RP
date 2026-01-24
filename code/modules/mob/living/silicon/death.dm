@@ -1,11 +1,11 @@
-/mob/living/silicon/death_via_gib()
+/mob/living/silicon/gib()
 	. = ..("gibbed-r")
 	gibs(loc, null, /obj/effect/gibspawner/robot)
 
-/mob/living/silicon/death_via_dust()
+/mob/living/silicon/dust()
 	return ..("dust-r", /obj/effect/decal/remains/robot)
 
-/mob/living/silicon/death_via_ash()
+/mob/living/silicon/ash()
 	return ..("dust-r")
 
 /mob/living/silicon/death(gibbed,deathmessage)

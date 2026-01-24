@@ -82,10 +82,10 @@ var/specops_shuttle_timeleft = 0
 			qdel(T)
 
 	for(var/mob/living/carbon/bug in end_location) // If someone somehow is still in the shuttle's docking area...
-		bug.death_via_gib()
+		bug.gib()
 
 	for(var/mob/living/simple_mob/pest in end_location) // And for the other kind of bug...
-		pest.death_via_gib()
+		pest.gib()
 
 	start_location.move_contents_to(end_location)
 

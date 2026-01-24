@@ -8,7 +8,7 @@
 	switch (severity)
 		if (1.0)
 			b_loss += 500
-			death_via_gib()
+			gib()
 			return
 
 		if (2.0)

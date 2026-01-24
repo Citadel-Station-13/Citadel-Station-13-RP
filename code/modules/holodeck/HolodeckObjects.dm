@@ -406,7 +406,7 @@
 		legacy_melee_damage_lower = initial(legacy_melee_damage_lower)
 		legacy_melee_damage_upper = initial(legacy_melee_damage_upper)
 
-/mob/living/simple_mob/animal/space/carp/holodeck/death_via_gib()
+/mob/living/simple_mob/animal/space/carp/holodeck/gib()
 	derez() //holograms can't gib
 
 /mob/living/simple_mob/animal/space/carp/holodeck/death()

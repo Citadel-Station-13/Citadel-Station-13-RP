@@ -22,4 +22,25 @@
 	remove_ghostrole() //gone too soon to realize their potential, if they had it.
 	. = ..()
 
+/mob/living/gib()
+	if(butchery_drops_organs)
+		for(var/path in internal_organs)
+			if(ispath(path))
+				var/obj/item/organ/neworg = new path(src, TRUE)
+				internal_organs -= path
+				neworg.name = "[name] [neworg.name]"
+				neworg.meat_type = meat_type
+				internal_organs |= neworg
+
+		for(var/obj/item/organ/I in internal_organs)
+			I.removed()
+			// Some organs qdel themselves or other things when removed.
+			if(isturf(I?.loc))
+				I.throw_at_old(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), 30)
+
+		for(var/obj/item/organ/external/E in src.organs)
+			if(!ispath(E))
+				E.droplimb(FALSE, DROPLIMB_EDGE, TRUE)
+	..()
+
 #warn move from mob

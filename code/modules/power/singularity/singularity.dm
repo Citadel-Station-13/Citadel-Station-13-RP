@@ -432,7 +432,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		else
 			to_chat(M, "<span class=\"danger\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 			to_chat(M, "<span class=\"danger\">You don't even have a moment to react as you are reduced to ashes by the intense radiation.</span>")
-			M.death_via_dust()
+			M.dust()
 	radiation_pulse(src, energy * 10, RAD_FALLOFF_ENGINE_SINGULARITY)
 
 /obj/singularity/proc/pulse()
