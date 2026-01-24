@@ -42,8 +42,8 @@ if ! [ -x "$has_cargo" ]; then
 fi
 
 if ! [ -x "$has_uv" ]; then
-	echo "Installing uv using cargo..."
-    cargo install --locked uv
+	echo "Installing uv using..."
+    curl https://astral.sh/uv/install.sh -LsSf | sh -s
 	. ~/.profile
 fi
 
