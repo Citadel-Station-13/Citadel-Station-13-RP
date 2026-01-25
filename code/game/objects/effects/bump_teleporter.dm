@@ -55,4 +55,4 @@
 
 /// Actually move our target atom from one position to another. Return TRUE if everything is fine. Override this proc on subtypes for specific teleportation methods.
 /obj/effect/bump_teleporter/proc/teleport_action(atom/movable/target, turf/destination)
-	target.forceMove(destination)
+	target.locationTransitForceMove(destination)
