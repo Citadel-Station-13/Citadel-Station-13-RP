@@ -84,8 +84,10 @@
 	/// what we *think* their current viewport letterboxing setting is
 	var/assumed_viewport_box
 	/// current view x - for fast access
+	/// * This is in tiles.
 	var/current_viewport_width
 	/// current view y - for fast access
+	/// * This is in tiles.
 	var/current_viewport_height
 	/// if things are manipulating the viewport we don't want other things to touch it
 	var/viewport_rwlock = TRUE	//? default block so we can release it during init_viewport
@@ -124,6 +126,16 @@
 	/// cutscene lockout: set after a browser synchronization command to delay the next one
 	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
 	var/cutscene_lockout = FALSE
+
+	//* Mouse *//
+	/// updated by MouseMove()
+	var/mouse_control_last
+	/// updated by MouseMove()
+	var/mouse_params_last
+	/// updated by MouseMove()
+	var/list/mouse_params_last_unpacked
+	/// updated by atom/MouseEntered, atom/MouseExited
+	var/atom/mouse_predicted_last_atom
 
 	//* UI - Client *//
 	/// our tooltips system

@@ -2,8 +2,14 @@
 /proc/emissive_appearance(icon, icon_state = "", layer = FLOAT_LAYER, alpha = 255, appearance_flags = NONE)
 	var/mutable_appearance/appearance = mutable_appearance(icon, icon_state, layer, EMISSIVE_PLANE, alpha, appearance_flags)
 	appearance.color = GLOB.emissive_color
+
+	//Test to make sure emissives with broken or missing icon states are created
+	if(PERFORM_ALL_TESTS(focus_only/invalid_emissives))
+		if(icon_state && !icon_exists(icon, icon_state))
+			stack_trace("An emissive appearance was added with non-existant icon_state \"[icon_state]\" in [icon]!")
+
 	return appearance
-	
+
 /// Produces a mutable appearance glued to the [EMISSIVE_PLANE] dyed to be the [EMISSIVE_BLOCKER_COLOR].
 /proc/emissive_blocking_appearance(icon, icon_state = "", layer = FLOAT_LAYER, alpha = 255, appearance_flags = NONE)
 	var/mutable_appearance/appearance = mutable_appearance(icon, icon_state, layer, EMISSIVE_PLANE, alpha, appearance_flags)

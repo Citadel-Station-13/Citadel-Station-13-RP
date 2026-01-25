@@ -44,7 +44,7 @@
 	}; \
 	do { \
 		log_admin("[key_name(usr)] invoked admin verb '[#PATH_SUFFIX]'"); \
-	}; \
+	} \
 	while(FALSE); \
 	call(usr.client, /datum/admin_verb_abstraction::verb__invoke_##PATH_SUFFIX())(arglist(list(usr.client) + args)); \
 }; \
