@@ -201,9 +201,6 @@
 /obj/item/bedsheet/browndouble,
 /turf/simulated/floor/carpet/oracarpet,
 /area/space/debrisfield/explored)
-"TP" = (
-/turf/space,
-/area/space/debrisfield/explored)
 "Xj" = (
 /obj/overmap/entity/visitable/sector/debrisfield,
 /turf/space,
@@ -3687,7 +3684,7 @@ Pa
 Pa
 Pa
 Pa
-TP
+Pa
 Pa
 Pa
 Pa
@@ -33792,7 +33789,7 @@ Pa
 Pa
 gk
 Pa
-TP
+Pa
 Pa
 Pa
 Pa

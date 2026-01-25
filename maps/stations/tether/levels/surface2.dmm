@@ -7709,6 +7709,7 @@
 	dir = 4;
 	name = "Legitmate Prosthetics Fabricator";
 	req_access = list();
+	
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
