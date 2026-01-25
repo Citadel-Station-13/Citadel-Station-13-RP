@@ -327,9 +327,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/east_mount{
-
-	},
+/obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/wood,
 /area/shuttle/bearcat/command_captain)
 "aP" = (
