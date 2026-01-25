@@ -125,6 +125,9 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/old_outdoors = outdoors
 	var/old_dangerous_objects = dangerous_objects
 
+	var/old_bp = blueprint_data
+	blueprint_data = null
+
 	// prep for change
 	var/list/old_baseturfs = baseturfs
 	var/old_type = type
@@ -180,6 +183,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(old_fire)
 		fire = old_fire
 	queue_zone_update()
+
+	new_turf.blueprint_data = old_bp
 
 	// restore lighting
 	new_turf.ao_junction = old_ao_junction

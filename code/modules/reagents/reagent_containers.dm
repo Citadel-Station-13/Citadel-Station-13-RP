@@ -29,7 +29,7 @@
 	// todo: shouldn't be settable for drinking / feeding
 	var/amount_per_transfer_from_this = 5
 	// todo: typelist?
-	var/possible_transfer_amounts = list(5,10,15,25,30)
+	var/list/possible_transfer_amounts = list(5,10,15,25,30)
 
 	// At what point we apply the different icon states
 	var/list/fill_icon_thresholds = null

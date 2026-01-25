@@ -83,7 +83,7 @@
 			qdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			S.use(1)
-			ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR)
+			PlaceOnTop(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR)
 			return
 		else
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")

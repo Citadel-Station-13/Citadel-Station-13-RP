@@ -6,6 +6,7 @@
  */
 /area/shuttle
 	unique = FALSE
+	special = TRUE
 	/// will be assigned the shuttle's ref post-init
 	var/datum/shuttle/shuttle
 

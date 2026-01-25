@@ -118,7 +118,7 @@
 		/obj/item/melee/transforming/energy/sword/ionic_rapier,
 		/obj/item/clothing/shoes/syndigaloshes,
 		/obj/item/storage/backpack/dufflebag/syndie,
-		/obj/item/binoculars,
+		/obj/item/rangefinder/laser_designator,
 		/obj/item/storage/firstaid/combat,
 		/obj/item/melee/transforming/energy/sword,
 		/obj/item/melee/telebaton,

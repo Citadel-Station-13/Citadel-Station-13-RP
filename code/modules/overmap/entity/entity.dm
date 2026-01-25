@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
  * entities
@@ -16,6 +16,7 @@
 	pixel_movement = TRUE
 	animate_movement = NONE
 	glide_size = 128
+	// always slide and do not jump
 	step_size = INFINITY
 	uses_bounds_overlay = TRUE
 
@@ -34,13 +35,20 @@
 	var/datum/overmap/overmap
 
 	//* physics *//
+
 	/// velocity x in overmap units per second
+	//  todo: after VV is reworked, change this to a /vector.
 	var/vel_x
 	/// velocity y in overmap units per second
+	//  todo: after VV is reworked, change this to a /vector.
 	var/vel_y
 	/// cached, read-only cached center x in overmap dist
+	//  todo: get rid of this if possible, this is only here for
+	//        faster virtualized pos calculation and for drift sanity checks.
 	var/pos_x
 	/// cached, read-only cached center y in overmap dist
+	//  todo: get rid of this if possible, this is only here for
+	//        faster virtualized pos calculation and for drift sanity checks.
 	var/pos_y
 	/// bump was handled
 	var/bump_handled = FALSE
