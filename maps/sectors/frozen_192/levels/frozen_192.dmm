@@ -866,7 +866,6 @@
 "Sj" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/east_mount{
-	pixel_x = 32;
 	req_access = null;
 	start_charge = 0
 	},

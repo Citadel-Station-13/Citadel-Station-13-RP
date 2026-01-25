@@ -2649,7 +2649,6 @@
 /area/sector/delerictcasino/ringforrest)
 "lW" = (
 /obj/machinery/power/apc/east_mount{
-	pixel_x = 32;
 	req_access = null;
 	start_charge = 0
 	},
@@ -7841,7 +7840,6 @@
 /area/sector/delerictcasino/dock)
 "Li" = (
 /obj/machinery/power/apc/east_mount{
-	pixel_x = 32;
 	req_access = null;
 	start_charge = 0
 	},

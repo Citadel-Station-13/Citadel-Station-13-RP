@@ -2653,8 +2653,7 @@
 "Ar" = (
 /obj/item/material/sword/sabre{
 	name = "Blacklaw's Sabre";
-	desc = "A well worn sabre, it still seems impossible sharp to this day.";
-	
+	desc = "A well worn sabre, it still seems impossible sharp to this day."
 	},
 /turf/simulated/wall/rthull,
 /area/awaymission/shipcave/ship/bridge)
@@ -2716,8 +2715,7 @@
 "Bb" = (
 /obj/item/material/sword/sabre{
 	name = "Blacklaw's Sabre";
-	desc = "A well worn sabre, it still seems impossible sharp to this day.";
-	
+	desc = "A well worn sabre, it still seems impossible sharp to this day."
 	},
 /turf/simulated/floor/flesh,
 /area/awaymission/shipcave/ship/bridge)
