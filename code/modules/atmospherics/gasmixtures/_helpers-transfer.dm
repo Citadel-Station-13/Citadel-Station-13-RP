@@ -15,6 +15,8 @@
  * * sink - mixture to pump into
  * * limit_moles - if set, only pump this many moles of gas at most
  * * limit_power - power limit in joules
+ *
+ * @return joules used
  */
 /proc/xgm_pump_gas(datum/gas_mixture/source, datum/gas_mixture/sink, limit_moles, limit_power)
 	// not enough to pump
@@ -42,7 +44,7 @@
  * * limit_moles - if set, only scrubs this many moles of gas at most
  * * limit_power - power limit in joules
  *
- * @return power draw
+ * @return joules used
  */
 /proc/xgm_scrub_gas(datum/gas_mixture/source, datum/gas_mixture/sink, list/gas_ids, gas_groups, limit_moles, limit_power)
 	// not enough to scrub
@@ -108,7 +110,7 @@
  * * limit_power - power limit in joules
  * * mole_boost - ignore limit_flow to filter atleast this many moles. This is so it doesn't take too long to scrub.
  *
- * @return power draw
+ * @return joules used
  */
 /proc/xgm_scrub_gas_volume(datum/gas_mixture/source, datum/gas_mixture/sink, list/gas_ids, gas_groups, limit_flow, limit_power, mole_boost)
 	// not enough to scrub
@@ -173,7 +175,7 @@
  * * limit_moles - if set, only scrubs this many moles of gas at most
  * * limit_power - power limit in joules
  *
- * @return power draw
+ * @return joules used
  */
 /proc/xgm_filter_gas(datum/gas_mixture/source, datum/gas_mixture/sink, datum/gas_mixture/divert, to_filter, limit_moles, limit_power)
 	// not enough to filter
@@ -247,7 +249,7 @@
  * * limit_moles - if set, only scrubs this many moles of gas at most
  * * limit_power - power limit in joules
  *
- * @return power draw
+ * @return joules used
  */
 /proc/xgm_multi_filter_gas_specific(datum/gas_mixture/source, datum/gas_mixture/sink, list/filtering, limit_moles, limit_power)
 	// not enough to filter
@@ -309,7 +311,7 @@
  * * limit_moles - if set, only scrubs this many moles of gas at most
  * * limit_power - power limit in joules
  *
- * @return power draw
+ * @return joules used
  */
 /proc/xgm_molar_filter_gas(datum/gas_mixture/source, datum/gas_mixture/sink, datum/gas_mixture/divert, lower, upper, limit_moles, limit_power)
 	// not enough to filter

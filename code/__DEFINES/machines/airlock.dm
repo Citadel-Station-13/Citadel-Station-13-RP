@@ -14,15 +14,23 @@
 /// worked
 #define AIRLOCK_CYCLER_OP_SUCCESS 0
 /// fatal error
-#define AIRLOCK_CYCLER_OP_FATAL 1
+#define AIRLOCK_CYCLER_OP_FATAL (1<<0)
 /// unpowered
-#define AIRLOCK_CYCLER_OP_NO_POWER 2
+#define AIRLOCK_CYCLER_OP_NO_POWER (1<<1)
 /// insufficient air
-#define AIRLOCK_CYCLER_OP_NO_GAS 3
+#define AIRLOCK_CYCLER_OP_NO_GAS (1<<2)
 /// pumping against too much of a gradient
-#define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE 4
+#define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE (1<<3)
 /// literally a machine is missing
-#define AIRLOCK_CYCLER_OP_MISSING_COMPONENT 5
+#define AIRLOCK_CYCLER_OP_MISSING_COMPONENT (1<<4)
+
+GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
+	"fatal error",
+	"no power",
+	"no gas",
+	"high resistance",
+	"missing machine",
+)
 
 //* airlock cycle finish status *//
 
