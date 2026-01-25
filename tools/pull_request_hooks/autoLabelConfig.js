@@ -10,7 +10,7 @@ export const file_labels = {
     filepaths: [".github/"],
   },
   SQL: {
-    filepaths: ["SQL/"],
+    filepaths: ["sql/"],
   },
   "Map Edit": {
     filepaths: ["maps/"],
