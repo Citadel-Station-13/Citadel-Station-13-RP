@@ -11,13 +11,13 @@
 	/// * arbitrary k-v list
 	var/list/blackboard = list()
 
-	#warn set on new / cleanup on destroy
 	/// the system we belong to
 	var/datum/airlock_system/system
 	/// tasks running in the cycle
 	var/list/datum/airlock_task/running_tasks = list()
 
 	/// current phase
+	/// * This is immutable and stateless from our POV; we do not own references to phases.
 	var/datum/airlock_phase/current_phase
 	/// world.time currenet phase started at
 	var/current_phase_started_at
@@ -25,13 +25,23 @@
 	var/current_phase_progress_estimate
 	/// ordered pending phases
 	/// * we are done if there's none left
+	/// * This is immutable and stateless from our POV; we do not own references to phases.
 	var/list/datum/airlock_phase/pending_phases = list()
 
 /datum/airlock_cycling/Destroy()
+	blackboard = null
+	if(system?.cycling == src)
+		system.stop_cycle(status = AIRLOCK_CYCLE_FIN_FAILED, why_str = "Unknown error.")
+	system = null
 	QDEL_LIST(running_tasks)
 	current_phase = null
 	pending_phases = null
 	return ..()
+
+/datum/airlock_cycling/proc/setup(datum/airlock_system/system)
+	ASSERT(!src.system && !system.cycling)
+	system.cycling = src
+	src.system = system
 
 /**
  * Called when the airlock processes to tick the cycle.
@@ -71,10 +81,10 @@
 		if(AIRLOCK_PHASE_TICK_FINISH)
 			poll_or_next_phase(dt, safety - 1)
 
-/**
- * * The reference will be owned by the cycle after this call.
- */
 /datum/airlock_cycling/proc/enqueue_phase(datum/airlock_phase/phase)
+	pending_phases += phase
+	if(!current_phase)
+		current_phase = phase
 
 /datum/airlock_cycling/proc/add_task(datum/airlock_task/task)
 	task.assign_cycle(src)
@@ -84,22 +94,11 @@
 	task.unassign_cycle(src)
 	running_tasks -= task
 
-
-#warn below
-
 /datum/airlock_cycling/proc/ui_cycle_data()
 	var/list/assembled_tasks = list()
 	for(var/datum/airlock_task/task as anything in running_tasks)
 		assembled_tasks[++assembled_tasks.len] = task.ui_task_data()
 	return list(
-		"operation" = operation_display,
-		"phase" = phase_display,
-		"startTime" = phase_started,
-		"progress" = phase_progress,
 		"tasks" = assembled_tasks,
+		"phaseVerb" = current_phase?.display_verb || "operating",
 	)
-
-/datum/airlock_cycling/proc/setup()
-
-#warn above
-

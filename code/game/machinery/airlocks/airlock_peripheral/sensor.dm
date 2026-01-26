@@ -19,8 +19,6 @@
 	/// functions as a sensor. if this is off, the airlock won't use us as the sensor.
 	var/is_sensor = FALSE
 
-#warn impl
-
 /**
  * Returned air must **never** be edited!
  */
@@ -29,9 +27,22 @@
 
 /obj/machinery/airlock_peripheral/sensor/attack_ai(mob/user)
 	. = ..()
+	if(.)
+		return
+	// TODO: refactor attack_ai we need a way to abort; clickchain flags?
+	on_cycle_request(new /datum/event_args/actor(user))
+	return TRUE
 
 /obj/machinery/airlock_peripheral/sensor/on_attack_hand(datum/event_args/actor/clickchain/e_args)
 	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(is_button)
+		on_cycle_request(e_args)
+		return CLICKCHAIN_DID_SOMETHING
+
+/obj/machinery/airlock_peripheral/sensor/proc/on_cycle_request(datum/event_args/actor/actor)
+	#warn impl
 
 /obj/machinery/airlock_peripheral/sensor/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

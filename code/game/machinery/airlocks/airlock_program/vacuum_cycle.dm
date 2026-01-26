@@ -6,11 +6,13 @@
  */
 /datum/airlock_program/vacuum_cycle
 	tgui_airlock_component = "VacuumCycle"
-	#warn track door states?
 
-/datum/airlock_program/vacuum_cycle/ui_program_data()
+/datum/airlock_program/vacuum_cycle/ui_program_data(datum/airlock_system/system)
+	. = ..()
+	.["interiorSealed"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_SEALED]
+	.["exteriorSealed"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_SEALED]
 
-/datum/airlock_program/vacuum_cycle/ui_program_act(datum/airlock_gasnet/network, datum/event_args/actor/actor, action, list/params)
+/datum/airlock_program/vacuum_cycle/ui_program_act(datum/airlock_system/system, datum/event_args/actor/actor, action, list/params)
 	. = ..()
 	if(.)
 		return
@@ -26,11 +28,11 @@
 		if("abort")
 			// immediate abort
 
-/datum/airlock_program/vacuum_cycle/proc/ui_config_standard_reject(datum/airlock_gasnet/network, datum/event_args/actor/actor)
-	#warn reject if operating
+/datum/airlock_program/vacuum_cycle/proc/get_currently_open_side(datum/airlock_system/system)
+	return system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE]
 
-/datum/airlock_program/vacuum_cycle/tick_cycle(datum/airlock_cycle/cycle, datum/airlock_gasnet/network)
-	// vacuum mode //
+/datum/airlock_program/vacuum_cycle/proc/set_currently_open_side(datum/airlock_system/system, side)
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE] = side
 
 #warn impl
 

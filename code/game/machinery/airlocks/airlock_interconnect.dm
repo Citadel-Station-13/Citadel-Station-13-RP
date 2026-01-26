@@ -6,7 +6,8 @@
 /obj/item/airlock_interconnect
 	name = "airlock interconnect"
 	desc = "A tightly bundled set of conduits used to connect the parts of an airlock together."
-	#warn sprite
+	icon = 'icons/machinery/airlocks/airlock_interconnect.dmi'
+	icon_state = "conduit-item"
 
 /obj/item/airlock_interconnect/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
 	. = list()
@@ -31,6 +32,8 @@
 	name = "airlock interconnect"
 	desc = "A tightly bundled set of conduits used to connect the parts of an airlock together."
 	#warn sprite
+	icon = 'icons/machinery/airlocks/airlock_interconnect.dmi'
+	icon_state = "conduit-map"
 
 	/// our pipenet
 	var/datum/airlock_gasnet/network

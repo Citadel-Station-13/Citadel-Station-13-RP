@@ -3,6 +3,19 @@
 
 GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 
+/obj/item/airlock_component/controller
+	name = /obj/machinery/airlock_component/controller::name + " (detached)"
+	desc = /obj/machinery/airlock_component/controller::desc
+	machine_type = /obj/machinery/airlock_component/controller
+	icon = /obj/machinery/airlock_component/controller::icon
+	icon_state = /obj/machinery/airlock_component/controller::icon_state
+	base_icon_state = /obj/machinery/airlock_component/controller::base_icon_state
+
+	var/datum/airlock_program/program
+	var/program_path
+
+#warn carry the program in here
+
 // todo: buildable
 
 /**
@@ -13,7 +26,11 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller
 	name = "airlock controller"
 	desc = "A self-contained controller for an airlock."
-	#warn sprite
+	icon = 'icons/machinery/airlocks/airlock_controller.dmi'
+	icon_state = "controller"
+	base_icon_state = "controller"
+
+	detached_item_type = /obj/item/airlock_component/controller
 
 	/// Airlock ID
 	/// * Controller is the wireless AP, effectively, so only controller has an ID;
@@ -29,16 +46,32 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	/// Our airlock system
 	var/datum/airlock_system/system
 	/// Starting program typepath
-	var/program_path = /datum/airlock_program/vacuum_cycle
+	var/program_path
 	/// connected peripherals
 	var/list/obj/machinery/airlock_peripheral/peripherals
+	/// our airlock program
+	var/datum/airlock_program/program
+
+	//* Icon *//
+
+	#warn impl this for icon update
+	var/last_pump_time
+	var/last_pump_was_out
+	var/last_pump_icon_update_time
+	var/last_pump_grace_period = 5 SECONDS
 
 /obj/machinery/airlock_component/controller/Initialize(mapload)
 	..()
 	// todo: we need proper tick bracket machine support & fastmos
 	STOP_MACHINE_PROCESSING(src)
-	system = new(src, new program_path)
+	if(src.program_path)
+		if(!src.program)
+			src.program = new src.program_path
 	set_controller_id(src.airlock_id)
+
+/obj/machinery/airlock_component/controller/Destroy()
+	QDEL_NULL(program)
+	return ..()
 
 /obj/machinery/airlock_component/controller/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
@@ -67,6 +100,10 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 		network.controller = null
 		network.queue_recheck()
 
+/obj/machinery/airlock_component/controller/update_icon(updates)
+	. = ..()
+	#warn impl
+
 /**
  * @return TRUE success, FALSE failure
  */
@@ -83,4 +120,10 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 #warn impl all
 
 /obj/machinery/airlock_component/controller/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
+/obj/machinery/airlock_component/controller/vacuum_cycle
+	program_path = /datum/airlock_program/vacuum_cycle
+
+/obj/machinery/airlock_component/controller/vacuum_cycle/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

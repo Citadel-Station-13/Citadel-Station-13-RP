@@ -6,6 +6,7 @@
 #define AIRLOCK_SIDE_INTERIOR "interior"
 #define AIRLOCK_SIDE_EXTERIOR "exterior"
 #define AIRLOCK_SIDE_NEUTRAL "neutral"
+#define AIRLOCK_SIDE_BOTH "both"
 
 #warn DEFINE_ENUM for sensor and controller
 
@@ -23,6 +24,8 @@
 #define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE (1<<3)
 /// literally a machine is missing
 #define AIRLOCK_CYCLER_OP_MISSING_COMPONENT (1<<4)
+
+#define AIRLOCK_CYCLER_OP_MAX_BIT 4
 
 GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
 	"fatal error",
@@ -58,6 +61,16 @@ GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
  * * Valid options are 'null', or an AIRLOCK_SIDE_* define.
  */
 #define AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE "current_side"
+/**
+ * Blackboard for if a given side's doors should be sealed.
+ * * Sealed means locked closed. Opened, or unlocked-closed is not sealed.
+ */
+#define AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_SEALED "interior-sealed"
+/**
+ * Blackboard for if a given side's doors should be sealed.
+ * * Sealed means locked closed. Opened, or unlocked-closed is not sealed.
+ */
+#define AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_SEALED "exterior-sealed"
 
 //* airlock cycling blackboard keys *//
 

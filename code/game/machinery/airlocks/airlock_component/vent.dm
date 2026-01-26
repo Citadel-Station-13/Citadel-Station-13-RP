@@ -1,7 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-// todo: buildable
+/obj/item/airlock_component/vent
+	name = /obj/machinery/airlock_component/vent::name + " (detached)"
+	desc = /obj/machinery/airlock_component/vent::desc
+	machine_type = /obj/machinery/airlock_component/vent
+	icon = /obj/machinery/airlock_component/vent::icon
+	icon_state = /obj/machinery/airlock_component/vent::icon_state
+	base_icon_state = /obj/machinery/airlock_component/vent::base_icon_state
 
 /**
  * External vent for an airlock.
@@ -11,13 +17,17 @@
 /obj/machinery/airlock_component/vent
 	name = "airlock vent"
 	desc = "A large vent used in an airlock to dispel unwanted waste gases and use as a heat source/sink."
+	icon = 'icons/machinery/airlocks/airlock_vent.dmi'
+	icon_state = "vent"
+	base_icon_state = "vent"
 
-	#warn sprite
+	detached_item_type = /obj/item/airlock_component/vent
 
 	#warn impl this for icon update
 	var/last_pump_time
 	var/last_pump_was_out
 	var/last_pump_icon_update_time
+	var/last_pump_grace_period = 5 SECONDS
 
 /obj/machinery/airlock_component/vent/on_connect(datum/airlock_gasnet/network)
 	..()

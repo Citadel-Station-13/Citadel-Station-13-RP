@@ -1,7 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-// todo: buildable
+/obj/item/airlock_component/cycler
+	name = /obj/machinery/airlock_component/cycler::name + " (detached)"
+	desc = /obj/machinery/airlock_component/cycler::desc
+	machine_type = /obj/machinery/airlock_component/cycler
+	icon = /obj/machinery/airlock_component/cycler::icon
+	icon_state = /obj/machinery/airlock_component/cycler::icon_state
+	base_icon_state = /obj/machinery/airlock_component/cycler::base_icon_state
+
+	// TODO: pumping power
 
 /**
  * Internal cycling vent/scrubber for an airlock.
@@ -10,7 +18,11 @@
 /obj/machinery/airlock_component/cycler
 	name = "airlock cycler"
 	desc = "A set of machinery used for manipulating the atmosphere inside of an airlock. Doubles as a gas sensor."
-	#warn sprite
+	icon = 'icons/machinery/airlocks/airlock_cycler.dmi'
+	icon_state = "cycler"
+	base_icon_state = "cycler"
+
+	detached_item_type = /obj/item/airlock_component/cycler
 
 	/// max pumping power in kw
 	var/pumping_power = 50
@@ -19,6 +31,7 @@
 	var/last_pump_time
 	var/last_pump_was_out
 	var/last_pump_icon_update_time
+	var/last_pump_grace_period = 5 SECONDS
 
 /obj/machinery/airlock_component/cycler/on_connect(datum/airlock_gasnet/network)
 	..()

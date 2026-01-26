@@ -86,6 +86,8 @@
 /datum/airlock_phase/doors
 	display_verb = "operating doors"
 
+#warn set X_DOOR_SEALED blackboard on these phases
+
 /datum/airlock_phase/doors/seal
 	display_verb = "sealing"
 

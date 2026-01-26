@@ -9,13 +9,6 @@
 	//* Composition *//
 	/// our airlock controller
 	var/obj/machinery/airlock_component/controller
-	/// our airlock program
-	var/datum/airlock_program/program
-
-	//* Configuration *//
-	/// security lockdown mode - all buttons and docking requests are ignored
-	/// panels can still be used to control it.
-	var/config_security_lockdown = FALSE
 
 	//* Cycling *//
 	/// current airlock cycle struct
@@ -31,17 +24,15 @@
 
 	//* State *//
 	/// arbitrary blackboard
-	/// * unlike cycle blackboard, this always persists
+	/// * unlike cycle blackboard, this always persists, except across deconstruction/reconstruction
 	var/list/blackboard = list()
 
-/datum/airlock_system/New(obj/machinery/airlock_component/controller, datum/airlock_program/program)
+/datum/airlock_system/New(obj/machinery/airlock_component/controller)
 	src.controller = controller
-	src.program = program
 
 /datum/airlock_system/Destroy()
 	abort_cycle()
 	QDEL_NULL(controller)
-	QDEL_NULL(program)
 	return ..()
 
 /datum/airlock_system/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -52,6 +43,7 @@
 
 /datum/airlock_system/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	.["cycling"] = cycling ? cycling.ui_cycle_data() : null
 
 /datum/airlock_system/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -62,6 +54,9 @@
 /datum/airlock_system/proc/start_cycle(datum/airlock_cycle/cycle, datum/callback/on_finished)
 	if(src.cycle)
 		return FALSE
+
+/datum/airlock_system/proc/stop_cycle(cycling_id, status, why_str)
+	controller.network?.reset_pumping_graphics()
 
 /datum/airlock_system/proc/abort_cycle(cycling_id, why_str)
 

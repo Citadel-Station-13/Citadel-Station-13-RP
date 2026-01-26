@@ -1,7 +1,13 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-// todo: buildable
+/obj/item/airlock_component/handler
+	name = /obj/machinery/airlock_component/handler::name + " (detached)"
+	desc = /obj/machinery/airlock_component/handler::desc
+	machine_type = /obj/machinery/airlock_component/handler
+	icon = /obj/machinery/airlock_component/handler::icon
+	icon_state = /obj/machinery/airlock_component/handler::icon_state
+	base_icon_state = /obj/machinery/airlock_component/handler::base_icon_state
 
 /**
  * interface nodes of airlock networks
@@ -10,7 +16,11 @@
 /obj/machinery/airlock_component/handler
 	name = "airlock handler"
 	desc = "A set of underfloor machinery used to interface with an atmospherics and power network."
-	#warn sprite
+	icon = 'icons/machinery/airlocks/airlock_handler.dmi'
+	icon_state = "handler"
+	base_icon_state = "handler"
+
+	detached_item_type = /obj/item/airlock_component/handler
 
 	/// pipenet connectors
 	var/list/obj/machinery/atmospherics/component/unary/airlock_connector/connectors

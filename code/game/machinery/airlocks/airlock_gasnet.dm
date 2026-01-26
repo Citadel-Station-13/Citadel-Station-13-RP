@@ -183,7 +183,7 @@
 
 	var/available_power_kj = min(cycler.pumping_power * dt, handler.power_stored)
 	if(available_power_kj < 2)
-		. = AIRLOCK_CYCLER_OP_NO_POWER
+		. |= AIRLOCK_CYCLER_OP_NO_POWER
 
 	var/before_pressure = XGM_PRESSURE(airlock_air)
 	var/desired_pressure_change = target_pressure - before_pressure
@@ -195,20 +195,20 @@
 		source = peer_air
 		sink = airlock_air
 		if(source.total_moles <= 10)
-			. = AIRLOCK_CYCLER_OP_NO_GAS
+			. |= AIRLOCK_CYCLER_OP_NO_GAS
 	else
 		source = airlock_air
 		sink = peer_air
 
 	// we assume airlock air temperature is the dominant temperature
-	var/desired_mole_change = (abs(desired_pressure_change) * XGM_VOLUME(airlock_air)) / (R_IDEAL_GAS_EQUATION * XGM_TEMPERATURE(airlock_air))
+	var/desired_mole_transfer = (abs(desired_pressure_change) * XGM_VOLUME(airlock_air)) / (R_IDEAL_GAS_EQUATION * XGM_TEMPERATURE(airlock_air))
 
 	var/moles_before = XGM_TOTAL_MOLES(airlock_air)
-	var/power_used = xgm_pump_gas(source, sink, desired_moles, available_power_kj * 1000)
+	var/power_used = xgm_pump_gas(source, sink, desired_mole_transfer, available_power_kj * 1000)
 	handler.power_stored -= power_used * 0.001
 	var/moles_after = XGM_TOTAL_MOLES(airlock_air)
-	if(abs(moles_after - moles_before) < min(desired_mole_change, 3))
-		. = AIRLOCK_CYCLER_OP_HIGH_RESISTANCE
+	if(abs(moles_after - moles_before) < min(desired_mole_transfer, 3))
+		. |= AIRLOCK_CYCLER_OP_HIGH_RESISTANCE
 
 /datum/airlock_gasnet/proc/pump_cycler_to_vent(dt, to_pressure)
 	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), vent?.get_mutable_gas_mixture_ref(), dt, to_pressure, FALSE)
@@ -221,6 +221,10 @@
 
 /datum/airlock_gasnet/proc/pump_handler_supply_to_cycler(dt, to_pressure)
 	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_clean_gas_mixture_ref(), dt, to_pressure, TRUE)
+
+/datum/airlock_gasnet/proc/reset_pumping_graphics()
+	#warn this and rest
+	cycler?.last_pump_time = 0
 
 //* Tasks *//
 
@@ -275,4 +279,23 @@
 	var/status = cycling.system.controller?.network?.pump_cycler_to_handler_waste(dt, target_pressure)
 	if(isnull(status))
 		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
+	handle_pumping_status(status)
+
+/datum/airlock_task/gasnet/pump/vent_or_handler_supply_to_cycler
+	is_into_chamber = FALSE
+
+/datum/airlock_task/gasnet/pump/vent_or_handler_supply_to_cycler/poll(dt)
+	var/status = cycling.system.controller?.network?.pump_vent_to_cycler(dt, target_pressure)
+	if(isnull(status))
+		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
+	switch(status)
+		if(AIRLOCK_CYCLER_OP_SUCCESS)
+			// keep going
+		if(AIRLOCK_CYCLER_OP_FATAL)
+			// no recovery
+		if(AIRLOCK_CYCLER_OP_NO_POWER)
+			// no recovery
+		else
+			// fallback to handler
+			status = cycling.system.controller?.network?.pump_handler_supply_to_cycler(dt, target_pressure)
 	handle_pumping_status(status)

@@ -1,6 +1,21 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+/obj/item/airlock_component
+	name = "airlock component"
+	desc = "A detached component for a modular airlock."
+	#warn impl all
+
+	var/machine_type = /obj/machinery/airlock_component
+
+/obj/item/airlock_component/Initialize(mapload, set_dir, obj/machinery/airlock_component/from_machine)
+	if(set_dir)
+		setDir(set_dir)
+	return ..()
+
+/obj/item/airlock_component/proc/create_machine(atom/location) as /obj/machinery/airlock_component
+	return new machine_type(location, src.dir, src)
+
 /**
  * gasnet connected machinery
  */
@@ -11,14 +26,22 @@
 	var/datum/airlock_gasnet/network
 	/// connected interconnect
 	var/obj/structure/airlock_interconnect/interconnect
+	/// item type
+	#warn impl all
+	var/detached_item_type = /obj/item/airlock_component
 
-/obj/machinery/airlock_component/Initialize(mapload)
+/obj/machinery/airlock_component/Initialize(mapload, set_dir, obj/item/airlock_component/from_item)
+	if(set_dir)
+		setDir(set_dir)
 	. = ..()
 	join_interconnect()
 
 /obj/machinery/airlock_component/Destroy()
 	leave_interconnect()
 	return ..()
+
+/obj/machinery/airlock_component/proc/create_detached(atom/location) as /obj/item
+	return new detached_item_type(location, src.dir, src)
 
 /**
  * Called by the network when we join it.
@@ -60,3 +83,4 @@
 	if(maybe_int)
 		maybe_int.connect_component(src)
 
+#warn detaches/reattaches; disallow detaching INDESTRUCTIBLE ones for now

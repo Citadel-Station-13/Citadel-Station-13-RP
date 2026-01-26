@@ -41,7 +41,6 @@
 /datum/airlock_task/proc/ui_task_data()
 	return list(
 		"startedAt" = started_at,
-		"completed" = completed,
 		"reason" = describe_state(),
 	)
 
