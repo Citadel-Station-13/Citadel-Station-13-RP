@@ -1,5 +1,14 @@
 import * as autoLabelConfig from "./autoLabelConfig.js";
 
+const size_labels = [
+  "size/XS",
+  "size/S",
+  "size/M",
+  "size/L",
+  "size/XL",
+  "size/XXL",
+];
+
 /**
  * Precompute a lowercase keyword → changelog label map
  */
@@ -170,16 +179,6 @@ async function check_diff_files_for_labels(github, context) {
     console.error("Error fetching paginated files:", error);
   }
 
-  const size_labels = [
-    "size/XS",
-    "size/S",
-    "size/M",
-    "size/L",
-    "size/XL",
-    "size/XXL",
-  ];
-  labels_to_remove.filter((label) => !size_labels.includes(label));
-
   return { labels_to_add, labels_to_remove };
 }
 
@@ -203,6 +202,9 @@ export async function get_updated_label_set({ github, context }) {
     const { labels_to_add, labels_to_remove } =
       await check_diff_files_for_labels(github, context);
     labels_to_add.forEach((label) => updated_labels.add(label));
+    labels_to_remove = labels_to_remove.filter(
+      (label) => !size_labels.includes(label),
+    );
     labels_to_remove.forEach((label) => updated_labels.delete(label));
   }
 
