@@ -1,6 +1,5 @@
 SUBSYSTEM_DEF(preferences)
 	name = "Preferences"
-	init_order = INIT_ORDER_PREFERENCES
 	init_stage = INIT_STAGE_EARLY
 	subsystem_flags = SS_NO_FIRE
 
