@@ -706,7 +706,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	power_environ = FALSE
 	always_unpowered = FALSE
 	// area_flags &= ~(VALID_TERRITORY|BLOBS_ALLOWED|CULT_PERMITTED)
-	// require_area_resort()
+	require_area_resort()
 
 // A hook so areas can modify the incoming args
 /**
@@ -714,26 +714,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
  */
 /area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
 	return flags
-
-/*Adding a wizard area teleport list because motherfucking lag -- Urist*/
-/*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
-
-var/list/ghostteleportlocs = list()
-
-/legacy_hook/startup/proc/setupGhostTeleportLocs()
-	for(var/area/AR in get_sorted_areas())
-		if(ghostteleportlocs.Find(AR.name)) continue
-		if(istype(AR, /area/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))
-			ghostteleportlocs += AR.name
-			ghostteleportlocs[AR.name] = AR
-		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in (LEGACY_MAP_DATUM).player_levels)
-			ghostteleportlocs += AR.name
-			ghostteleportlocs[AR.name] = AR
-
-	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
-
-	return 1
 
 //* Atmospherics *//
 

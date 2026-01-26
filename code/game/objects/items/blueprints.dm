@@ -183,7 +183,8 @@
 	var/area/area_checking = get_area(user)
 	var/static/list/outdoors_area = list(
 		/area/space,
-		/area/mine
+		/area/mine,
+		/area/triumph/surfacebase/outside,
 	)
 	if(area_checking.type in outdoors_area)
 		return AREA_OUTDOORS
@@ -196,7 +197,12 @@
 		/area/tdome,
 		/area/syndicate_station,
 		/area/wizard_station,
-		/area/prison
+		/area/prison,
+		/area/triumph/surfacebase/temple,
+		/area/triumph/surfacebase/crash,
+		/area/class_d/POIs,
+		/area/class_p/POIs,
+		/area/class_h/POIs,
 	))
 	if(area_checking.type in special_areas)
 		return AREA_SPECIAL
