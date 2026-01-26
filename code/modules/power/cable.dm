@@ -94,6 +94,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(auto_merge)
 		auto_merge()
 
+	if(isturf(loc))
+		var/turf/turf_loc = loc
+		turf_loc.add_blueprints_preround(src)
+
 // cable refactor when
 /obj/structure/cable/proc/auto_merge()
 	mergeConnectedNetworks(d1) //merge the powernets...

@@ -726,10 +726,6 @@
 /obj/effect/debris/cleanable/blood/gibs/robot/down,
 /turf/simulated/floor/tiled/dark,
 /area/class_h/POIs/AuxiliaryResearchFacility)
-"pR" = (
-/obj/structure/flora/pottedplant/large,
-/turf/simulated/floor/wood,
-/area/class_h/POIs/AuxiliaryResearchFacility)
 "qb" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/dirt,
@@ -742,10 +738,6 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/carpet/oracarpet,
-/area/class_h/POIs/AuxiliaryResearchFacility)
-"qA" = (
-/obj/structure/simple_door/wood,
-/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "qD" = (
 /obj/effect/debris/cleanable/dirt,
@@ -1793,12 +1785,7 @@
 "On" = (
 /turf/template_noop,
 /area/template_noop)
-"Oo" = (
-/obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood,
-/area/class_h/POIs/AuxiliaryResearchFacility)
 "Ow" = (
-/obj/structure/grille,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/regular/open{
@@ -2022,12 +2009,6 @@
 "Uu" = (
 /obj/structure/anomaly_container,
 /turf/simulated/floor/tiled/white,
-/area/class_h/POIs/AuxiliaryResearchFacility)
-"UI" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Vp" = (
 /obj/effect/debris/cleanable/dirt,
@@ -2253,11 +2234,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
-"YS" = (
-/obj/effect/debris/cleanable/dirt,
-/obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/wood,
-/area/class_h/POIs/AuxiliaryResearchFacility)
 "YY" = (
 /turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
@@ -2273,9 +2249,6 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "Zw" = (
 /obj/structure/table/glass,
-/turf/simulated/floor/wood,
-/area/class_h/POIs/AuxiliaryResearchFacility)
-"ZC" = (
 /turf/simulated/floor/wood,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "ZD" = (
@@ -2534,7 +2507,7 @@ Zl
 Zl
 XD
 rG
-ZC
+YY
 Zc
 Zw
 TK
@@ -2639,10 +2612,10 @@ Tu
 Zl
 Zl
 Zw
-ZC
-ZC
+YY
+YY
 Gb
-ZC
+YY
 TK
 VC
 Te
@@ -2691,7 +2664,7 @@ Bk
 Tu
 Zl
 Zl
-ZC
+YY
 pv
 LV
 Zc
@@ -2744,11 +2717,11 @@ Bk
 Tu
 Zl
 Zl
-pR
-ZC
-ZC
-ZC
-pR
+jw
+YY
+YY
+YY
+jw
 Wj
 tr
 YM
@@ -2797,11 +2770,11 @@ Bk
 Tu
 Zl
 nX
-ZC
-ZC
+YY
+YY
 LV
 LV
-ZC
+YY
 Lr
 VC
 YM
@@ -2850,11 +2823,11 @@ Bk
 Tu
 Zl
 Zl
-ZC
-ZC
+YY
+YY
 ja
 LV
-ZC
+YY
 TK
 zc
 ZH
@@ -2903,12 +2876,12 @@ Bk
 Tu
 Zl
 Zl
-ZC
+YY
 LV
 LV
 LV
-ZC
-qA
+YY
+gp
 VC
 ZH
 ZH
@@ -2956,12 +2929,12 @@ Bk
 Tu
 Zl
 Zl
-ZC
-ZC
-ZC
+YY
+YY
+YY
 LV
 sg
-qA
+gp
 JT
 Te
 ZH
@@ -3010,8 +2983,8 @@ Tu
 Zl
 Zl
 AW
-ZC
-ZC
+YY
+YY
 sg
 LV
 TK
@@ -3435,7 +3408,7 @@ Zl
 Zl
 YP
 ZP
-Oo
+LV
 YY
 jw
 Zl
@@ -3499,7 +3472,7 @@ Zl
 IY
 BA
 rx
-Oo
+LV
 Zl
 vd
 vd
@@ -3603,7 +3576,7 @@ YM
 YM
 Zl
 hr
-Oo
+LV
 YY
 hr
 Zl
@@ -3675,8 +3648,8 @@ aI
 aI
 aI
 aI
-qA
-qA
+gp
+gp
 aI
 aI
 aI
@@ -3762,7 +3735,7 @@ YM
 DM
 Zl
 up
-Oo
+LV
 VM
 RQ
 Zl
@@ -3777,14 +3750,14 @@ Bk
 XG
 XG
 aI
-Oo
-YS
-Oo
+LV
+sg
+LV
 YY
 YY
 Jy
-Oo
-Oo
+LV
+LV
 YY
 YY
 aI
@@ -3817,7 +3790,7 @@ Zl
 du
 tE
 IB
-Oo
+LV
 Zl
 fo
 VO
@@ -3831,7 +3804,7 @@ XG
 XG
 aI
 YY
-Oo
+LV
 YY
 aI
 aI
@@ -3861,13 +3834,13 @@ fI
 Rm
 xl
 Cn
-Oo
+LV
 Zl
 VC
 VC
 VC
 Zl
-YS
+sg
 CV
 hn
 qb
@@ -3883,7 +3856,7 @@ Pr
 XG
 XG
 aI
-UI
+AW
 YY
 Ht
 aI
@@ -3914,15 +3887,15 @@ YY
 HA
 qf
 ED
-Oo
+LV
 Zl
 VC
 VC
 VC
 Zl
-YS
+sg
 VH
-Oo
+LV
 VH
 Zl
 fo
@@ -3938,7 +3911,7 @@ TM
 aI
 YY
 YY
-Oo
+LV
 YY
 YY
 YY
@@ -3973,8 +3946,8 @@ VC
 VC
 VC
 gp
-YS
-Oo
+sg
+LV
 ov
 aC
 Zl
@@ -3991,7 +3964,7 @@ XG
 aI
 YY
 YY
-Oo
+LV
 ZP
 BA
 rx
@@ -4049,8 +4022,8 @@ ZP
 HA
 Fl
 ZP
-Oo
-Oo
+LV
+LV
 YY
 aI
 XG
@@ -4102,8 +4075,8 @@ ZP
 YY
 YY
 ZP
-Oo
-YS
+LV
+sg
 YY
 aI
 XG
@@ -4156,7 +4129,7 @@ hr
 YY
 YY
 YY
-Oo
+LV
 YY
 aI
 XG
@@ -4208,7 +4181,7 @@ VM
 tE
 NX
 ZP
-Oo
+LV
 YY
 YY
 aI
@@ -4364,8 +4337,8 @@ aI
 aI
 aI
 aI
-qA
-qA
+gp
+gp
 aI
 aI
 aI
@@ -4416,9 +4389,9 @@ aI
 of
 YY
 yo
-Oo
-Oo
-Oo
+LV
+LV
+LV
 YY
 yG
 YY
@@ -4469,8 +4442,8 @@ aI
 of
 YY
 Bx
-Oo
-Oo
+LV
+LV
 OG
 YY
 YY
@@ -4521,12 +4494,12 @@ XG
 aI
 of
 YY
-Oo
-YS
-YS
-YS
+LV
+sg
+sg
+sg
 YY
-Oo
+LV
 YY
 of
 aI
@@ -4574,10 +4547,10 @@ XG
 aI
 YY
 YY
-Oo
-Oo
+LV
+LV
 bF
-Oo
+LV
 YY
 Bx
 YY
@@ -4632,8 +4605,8 @@ YY
 YY
 YY
 YY
-Oo
-Oo
+LV
+LV
 Jv
 aI
 XG
@@ -4663,7 +4636,7 @@ Vt
 Wv
 VS
 Dp
-ZC
+YY
 MN
 cF
 VS
@@ -4768,8 +4741,8 @@ Ym
 Sv
 Ym
 VS
-ZC
-ZC
+YY
+YY
 Mh
 sg
 Gt
@@ -4824,7 +4797,7 @@ VS
 CL
 LV
 LV
-ZC
+YY
 gU
 ZH
 Mb

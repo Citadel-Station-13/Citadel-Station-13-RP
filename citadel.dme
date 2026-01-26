@@ -13,6 +13,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "__odlint.dm"
 #include "_mapload\_basemap.dm"
 #include "code\___compile_options.dm"
 #include "code\__byond_version_compat.dm"
@@ -400,6 +401,7 @@
 #include "code\__HELPERS\_global_objects.dm"
 #include "code\__HELPERS\_lists_tg.dm"
 #include "code\__HELPERS\_logging.dm"
+#include "code\__HELPERS\abstract_types.dm"
 #include "code\__HELPERS\animations.dm"
 #include "code\__HELPERS\areas.dm"
 #include "code\__HELPERS\atom_movables.dm"
@@ -2401,6 +2403,7 @@
 #include "code\modules\admin\news.dm"
 #include "code\modules\admin\player_notes.dm"
 #include "code\modules\admin\player_panel.dm"
+#include "code\modules\admin\spawn_menu.dm"
 #include "code\modules\admin\topic.dm"
 #include "code\modules\admin\ToRban.dm"
 #include "code\modules\admin\admin_modal\admin_modal.dm"
