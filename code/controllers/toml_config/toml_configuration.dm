@@ -7,6 +7,7 @@ GLOBAL_REAL(Configuration, /datum/controller/toml_configuration)
 // todo: /datum/controller/configuration
 // todo: needs stronger vv guarding; it still exposes list refs.
 /datum/controller/toml_configuration
+	name = "TOML Configuration" // NAME YOUR FUCKING CONTROLLERS
 	/// Entries by type.
 	VAR_PRIVATE/list/datum/toml_config_entry/typed_entries
 	/// Entries as same structure as the underlying toml/json

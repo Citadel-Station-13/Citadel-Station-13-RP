@@ -46,24 +46,46 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	usr.client.debug_variables(target)
 	message_admins("Admin [key_name_admin(usr)] is debugging the [target] [class].")
 
-
-// Debug verbs.
-/client/proc/restart_controller(controller in list("Master", "Failsafe"))
-	set category = "Debug"
-	set name = "Restart Controller"
-	set desc = "Restart one of the various periodic loop controllers for the game (be careful!)"
-
-	if(!holder)
-		return
+ADMIN_VERB(restart_controller, R_DEBUG, "Restart Controller", "Restart one of the various periodic loop controllers for the game (be careful!)", ADMIN_CATEGORY_DEBUG, controller in list("Master", "Failsafe"))
 	switch(controller)
 		if("Master")
 			Recreate_MC()
-			feedback_add_details("admin_verb","RMC")
+			// BLACKBOX_LOG_ADMIN_VERB("Restart Master Controller")
 		if("Failsafe")
 			new /datum/controller/failsafe()
-			feedback_add_details("admin_verb","RFailsafe")
+			// BLACKBOX_LOG_ADMIN_VERB("Restart Failsafe Controller")
 
-	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
+	message_admins("Admin [key_name_admin(user)] has restarted the [controller] controller.")
+
+ADMIN_VERB(debug_controller, R_DEBUG, "Debug Controller", "Debug the various periodic loop controllers for the game (be careful!)", ADMIN_CATEGORY_DEBUG)
+	var/list/controllers = list()
+	var/list/controller_choices = list()
+
+	// Please read the verb description. <- although we allow /d/c/repository lmao
+	for (var/var_key in global.vars)
+		var/datum/controller/controller = global.vars[var_key]
+		if(!istype(controller) || istype(controller, /datum/controller/subsystem))
+			continue
+		controllers[controller.name] = controller //we use an associated list to ensure clients can't hold references to controllers
+		controller_choices += controller.name
+
+	controller_choices += "INTERNAL: Gas Data"
+	controller_choices += "LEGACY: Configuration"
+	controller_choices += "LEGACY: paiController"
+	controllers["INTERNAL: Gas Data"] = global.gas_data
+	controllers["LEGACY: Configuration"] = config_legacy
+	controllers["LEGACY: paiController"] = paiController
+
+	var/datum/controller/controller_string = input("Select controller to debug", "Debug Controller") as null|anything in controller_choices
+	var/datum/controller/controller = controllers[controller_string]
+
+	if (!istype(controller))
+		return
+
+	user.debug_variables(controller)
+
+	// BLACKBOX_LOG_ADMIN_VERB("Debug Controller")
+	message_admins("Admin [key_name_admin(user)] is debugging the [controller] controller.")
 
 /client/proc/debug_antagonist_template(antag_type in GLOB.all_antag_types)
 	set category = "Debug"
@@ -74,45 +96,3 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	if(antag)
 		usr.client.debug_variables(antag)
 		message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
-
-/client/proc/debug_controller()
-	set category = "Debug"
-	set name = "Debug Controller"
-	set desc = "Debug the various subsystems/controllers for the game (be careful!)"
-
-	if(!holder)
-		return
-	var/list/options = list()
-	options["MC"] = global.Master
-	options["Failsafe"] = global.Failsafe
-	options["Global Variables"] = global.GLOB
-	options["Configuration"] = global.config
-	options["Gas Data"] = global.gas_data
-	options["Legacy Configuration"] = config_legacy
-	for(var/i in Master.subsystems)
-		var/datum/controller/subsystem/S = i
-		if(!istype(S))		//Eh, we're a debug verb, let's have typechecking.
-			continue
-		var/strtype = "SS[get_end_section_of_type(S.type)]"
-		if(options[strtype])
-			var/offset = 2
-			while(istype(options["[strtype]_[offset] - DUPE ERROR"], /datum/controller/subsystem))
-				offset++
-			options["[strtype]_[offset] - DUPE ERROR"] = S		//Something is very, very wrong.
-		else
-			options[strtype] = S
-
-	//Goon PS stuff, and other yet-to-be-subsystem things.
-	options["LEGACY: radio_controller"] = radio_controller
-	options["LEGACY: paiController"] = paiController
-	options["LEGACY: GLOB.cameranet"] = GLOB.cameranet
-
-	var/pick = input(mob, "Choose a controller to debug/view variables of.", "VV controller:") as null|anything in options
-	if(!pick)
-		return
-	var/datum/D = options[pick]
-	if(!istype(D))
-		return
-	feedback_add_details("admin_verb", "DebugController")
-	message_admins("Admin [key_name_admin(mob)] is debugging the [pick] controller.")
-	debug_variables(D)
