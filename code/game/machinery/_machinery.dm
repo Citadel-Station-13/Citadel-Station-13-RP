@@ -586,25 +586,6 @@
 /obj/machinery/proc/on_deconstruction()
 	return
 
-/**
- * Puts passed object in to user's hand
- *
- * Puts the passed object in to the users hand if they are adjacent.
- * If the user is not adjacent then place the object on top of the machine.
- *
- * Vars:
- * * object (obj) The object to be moved in to the users hand.
- * * user (mob/living) The user to recive the object
- */
-/obj/machinery/proc/try_put_in_hand(obj/object, mob/living/user)
-	if(!issilicon(user) && in_range(src, user))
-		user.grab_item_from_interacted_with(object, src)
-		// todo: probably split this proc into something that isn't try
-		// because if this fails and something nulls, something bad happens
-		// i bandaided this to drop location but that's inflexible
-	else
-		object.forceMove(drop_location())
-
 /// Adjust item drop location to a 3x3 grid inside the tile, returns slot id from 0 to 8.
 /obj/machinery/proc/adjust_item_drop_location(atom/movable/dropped_atom)
 	var/md5 = md5(dropped_atom.name) // Oh, and it's deterministic too. A specific item will always drop from the same slot.
@@ -623,3 +604,29 @@
 	. = ..()
 	// todo: rework
 	machine_stat &= ~BROKEN
+
+//* Some common inventory helpers *//
+
+/**
+ * Puts passed item in to user's hand
+ *
+ * * Puts the passed object in to the users hand if they are adjacent.
+ * * If the user is not adjacent then place the object on top of the machine.
+ * * This will always move the item out of the machine.
+ *
+ * @params
+ * * item (obj/item) The item to be moved in to the users hand.
+ * * user (mob) The user to recive the object
+ *
+ * @return TRUE if item was yanked into hands, FALSE if item was just normally removed
+ */
+/obj/machinery/proc/yank_item_out(obj/item/item, mob/user)
+	if(!issilicon(user) && in_range(src, user))
+		user.grab_item_from_interacted_with(object, src)
+		// todo: probably split this proc into something that isn't try
+		// because if this fails and something nulls, something bad happens
+		// i bandaided this to drop location but that's inflexible
+		return object.inv_inside == user.inventory
+	else
+		object.forceMove(drop_location())
+		return FALSE

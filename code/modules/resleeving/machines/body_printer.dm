@@ -9,11 +9,15 @@
 	circuit = /obj/item/circuitboard/clonepod
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
+	#warn sprite, base icon state
 	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
 
 	// 15 kilowatts :trol:
 	active_power_usage = 15000
 	idle_power_usage = 10
+
+	/// icon_state append when working
+	var/icon_state_running_append
 
 	/// can grow organic tissue
 	var/allow_organic = FALSE
@@ -22,9 +26,13 @@
 
 	/// materials container
 	var/datum/material_container/materials
+	/// materials limit, passed to materials
+	/// * if this is null, materials container is not made
+	var/materials_limit
 	/// inserted reagent containers
 	var/list/obj/item/bottles
-	var/bottles_limit = 3
+	/// max bottles, bottle support is off if this is 0
+	var/bottles_limit = 0
 
 	/// current project record
 	var/datum/resleeving_body_backup/currently_growing
@@ -46,15 +54,17 @@
 	/// ratio to regenerate per second; by default, cycle finishes in 3 minutes.
 	var/c_regen_body_health_radio_per_second = 1 / ((3 MINUTES) / (1 SECOND))
 	/// for now, just a flat cost per human mob
-	var/c_biological_biomass_cost = 30
+	var/c_biological_biomass_cost = 0
 	/// for now, just a flat cost per human mob
-	var/c_synthetic_metal_cost = 15 * SHEET_MATERIAL_AMOUNT
+	var/c_synthetic_metal_cost = 0
 	/// for now, just a flat cost per human mob
-	var/c_synthetic_glass_cost = 7.5 * SHEET_MATERIAL_AMOUNT
+	var/c_synthetic_glass_cost = 0
 	/// * only applied to non-synths for now
 	var/c_cloning_sickness_low = 15 MINUTES
 	/// * only applied to non-synths for now
 	var/c_cloning_sickness_high = 22.5 MINUTES
+	/// eject at percent of non-critical maxhealth
+	var/c_eject_at_health_ratio = 0.5
 
 	/// since when have we been without power
 	/// * null while powered
@@ -77,13 +87,10 @@
 
 /obj/machinery/resleeving/body_printer/Initialize(mapload)
 	. = ..()
-	#warn reagents / materials
-	if(!allow_organic)
-		bottles_limit = 0
-	if(allow_synthetic)
+	if(materials_limit)
 		materials = new /datum/material_container(list(
-			/datum/prototype/material/steel::id = 15 * SHEET_MATERIAL_AMOUNT * 3,
-			/datum/prototype/material/glass::id = 7.5 * SHEET_MATERIAL_AMOUNT * 3,
+			/datum/prototype/material/steel::id = materials_limit,
+			/datum/prototype/material/glass::id = materials_limit,
 		))
 	update_icon()
 
@@ -163,9 +170,13 @@
  *
  * @return TRUE on success, FALSE on failure
  */
-/obj/machinery/resleeving/body_printer/proc/start_body(datum/resleeving_body_backup/backup)
+/obj/machinery/resleeving/body_printer/proc/start_body(datum/resleeving_body_backup/backup, ignore_materials)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
+
+	if(!ignore_materials)
+		#warn check materials
+	#warn use materials
 
 	if(/datum/modifier/no_clone in backup.legacy_genetic_modifiers)
 		send_audible_system_message("Error; Body record has corrupted genetic data.")
@@ -235,6 +246,8 @@
 	// this is really stupid, transfer rest of legacy crap
 	for(var/modifier_type in backup.legacy_genetic_modifiers)
 		created_human.add_modifier(modifier_type)
+	created_human.dna.UpdateSE()
+	created_human.dna.UpdateUI()
 
 /**
  * This is what creates the actual body; the organs/whatnot should be made here.
@@ -403,6 +416,34 @@
 
 // TODO: emag behavior?
 
+/obj/machinery/resleeving/body_printer/proc/biomass_get_remaining()
+	. = 0
+	for(var/obj/item/container in bottles)
+		. += container.reagents?.reagent_volumes?[/datum/reagent/nutriment/biomass::id]
+
+/obj/machinery/resleeving/body_printer/proc/biomass_has_remaining(amt)
+	return biomass_get_remaining() >= amt
+
+/obj/machinery/resleeving/body_printer/proc/biomass_use_remaining(amt) as num
+	. = 0
+	for(var/obj/item/container in bottles)
+		var/avail = container.reagents?.reagent_volumes?[/datum/reagent/nutriment/biomass::id]
+		if(!avail)
+			continue
+		avail = min(avail, amt)
+		amt -= avail
+		container.reagents.remove_reagent(/datum/reagent/nutriment/biomass::id, avail)
+		. += avail
+
+/obj/machinery/resleeving/body_printer/proc/materials_get_amounts()
+	return materials.stored
+
+/obj/machinery/resleeving/body_printer/proc/materials_has_amounts(list/materials)
+	return materials.has_multiple(materials) >= 1
+
+/obj/machinery/resleeving/body_printer/proc/materials_use_amounts(list/materials)
+	return materials.use(materials, 1)
+
 //* ADMIN VV WRAPPERS *//
 
 // prints a body immediately if we have space
@@ -411,3 +452,4 @@
 		return FALSE
 	grow_body(INFINITY)
 	eject_body()
+	return TRUE

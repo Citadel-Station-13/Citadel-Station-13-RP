@@ -32,12 +32,13 @@
 /obj/machinery/computer/resleeving/Destroy()
 	for(var/obj/machinery/resleeving/linked as anything in linked_resleeving_machinery)
 		unlink_resleeving_machine(linked)
-	#warn drop mirror
+	remove_held_mirror(where)
 	return ..()
 
 /obj/machinery/computer/resleeving/drop_products(method, atom/where)
 	. = ..()
-	#warn drop mirror
+	remove_held_disk(where)
+	remove_held_mirror(where)
 
 /obj/machinery/computer/resleeving/proc/rescan_nearby_machines()
 	for(var/obj/machinery/resleeving/maybe_in_range in GLOB.machines)
@@ -93,10 +94,14 @@
 			var/body_ref
 		if("resleeve")
 			var/sleever_ref = params["sleeverRef"]
+		if("removeMirror")
+		if("removeDisk")
 
 /obj/machinery/computer/resleeving/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["relinkOnCooldown"] = world.time > (last_relink + last_relink_throttle)
+	.["insertedDisk"] = inserted_disk ? list() : null
+	.["insertedMirror"] = inserted_mirror ? list() : null
 
 	var/list/resleeving_pod_datas = list()
 	var/list/body_printer_datas = list()
@@ -104,5 +109,64 @@
 	for(var/obj/machinery/resleeving/machine_ref in linked_resleeving_machinery)
 		if(istype(machine_ref, /obj/machinery/resleeving/body_printer))
 		else if(istype(machine_ref, /obj/machinery/resleeving/resleeving_pod))
+
+/obj/machinery/computer/resleeving/Exited(atom/movable/AM, atom/newLoc)
+	..()
+	if(AM == inserted_mirror)
+		remove_held_mirror()
+	else if(AM == inserted_disk)
+		remove_held_disk()
+
+/obj/machinery/computer/resleeving/proc/remove_held_mirror(atom/move_to) as /obj/item/organ/internal/mirror
+	if(!inserted_mirror)
+		return
+	var/obj/item/organ/internal/mirror/removed = inserted_mirror
+	inserted_mirror = null
+	if(move_to)
+		removed.forceMove(move_to)
+	return removed
+
+/obj/machinery/computer/resleeving/proc/remove_held_disk(atom/move_to) as /obj/item/disk/data
+	if(!inserted_disk)
+		return
+	var/obj/item/disk/data/removed = inserted_disk
+	inserted_disk = null
+	if(move_to)
+		removed.forceMove(move_to)
+	return removed
+
+/obj/machinery/computer/resleeving/proc/user_yank_mirror(datum/event_args/actor/actor, put_in_hands, silent)
+	if(!inserted_mirror)
+		return FALSE
+	remove_held_mirror(actor.performer)
+	var/was_put_in_hands = yank_item_out(inserted_mirror, actor.performer)
+	if(!silent)
+		if(was_put_in_hands)
+			visible_message(
+				SPAN_NOTICE("[actor.performer] removes [inserted_mirror] from [src]."),
+			)
+		else
+			visible_message(
+				SPAN_WARNING("[src] ejects [inserted_mirror]!"),
+			)
+	return TRUE
+
+/obj/machinery/computer/resleeving/proc/user_yank_disk(datum/event_args/actor/actor, put_in_hands, silent)
+	if(!inserted_disk)
+		return FALSE
+	remove_held_disk(actor.performer)
+	var/was_put_in_hands = yank_item_out(inserted_disk, actor.performer)
+	if(!silent)
+		if(was_put_in_hands)
+			visible_message(
+				SPAN_NOTICE("[actor.performer] removes [inserted_disk] from [src]."),
+			)
+		else
+			visible_message(
+				SPAN_WARNING("[src] ejects [inserted_disk]!"),
+			)
+	inserted_disk = null
+	return TRUE
+
 
 #warn impl all
