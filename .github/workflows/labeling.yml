@@ -26,6 +26,9 @@ jobs:
               repo: context.repo.repo,
               labels: new_labels,
             });
+  size-label:
+    runs-on: ubuntu-24.04
+    steps:
       - name: size-label
         uses: pascalgn/size-label-action@v0.5.4
         env:
