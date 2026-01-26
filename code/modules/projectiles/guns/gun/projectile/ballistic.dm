@@ -321,7 +321,7 @@
 	if(bolt_simulation && !bolt_closed)
 		if(!(cycle.firing_flags & GUN_FIRING_NO_FEEDBACK))
 			cycle.firing_actor?.chat_feedback(
-				SPAN_WARNING("[src] clicks uselessly. Its bolt is open!"),
+				span_warning("[src] clicks uselessly. Its bolt is open!"),
 				target = src,
 			)
 		return GUN_FIRED_FAIL_EMPTY
@@ -361,16 +361,16 @@
 	if(interact_show_caliber_on_examine)
 		var/datum/ammo_caliber/our_caliber = resolve_caliber(caliber)
 		if(our_caliber)
-			. += SPAN_NOTICE("It uses [our_caliber.caliber][our_caliber.name ? " ([our_caliber.name])" : ""] caliber ammunition.")
+			. += span_notice("It uses [our_caliber.caliber][our_caliber.name ? " ([our_caliber.name])" : ""] caliber ammunition.")
 	if(magazine)
-		. += SPAN_NOTICE("It has \a [magazine] loaded, with [get_ammo_remaining(TRUE)] round\s remaining.")
+		. += span_notice("It has \a [magazine] loaded, with [get_ammo_remaining(TRUE)] round\s remaining.")
 	if(internal_magazine && internal_magazine_size)
 		if(internal_magazine_revolver_mode)
-			. += SPAN_NOTICE("It has [get_ammo_remaining(TRUE)] round\s chambered.")
+			. += span_notice("It has [get_ammo_remaining(TRUE)] round\s chambered.")
 		else
-			. += SPAN_NOTICE("It has [get_ammo_remaining(TRUE)] round\s remaining[chamber ? ", and a round in the chamber" : ""].")
+			. += span_notice("It has [get_ammo_remaining(TRUE)] round\s remaining[chamber ? ", and a round in the chamber" : ""].")
 	else if(chamber)
-		. += SPAN_NOTICE("It has a round chambered.")
+		. += span_notice("It has a round chambered.")
 
 //* Actions *//
 

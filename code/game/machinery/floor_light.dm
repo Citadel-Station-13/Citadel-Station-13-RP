@@ -26,18 +26,18 @@ var/list/floor_light_cache = list()
 /obj/machinery/floor_light/attackby(obj/item/W, mob/user)
 	if(W.is_screwdriver())
 		anchored = !anchored
-		visible_message(SPAN_NOTICE("\The [user] has [anchored ? "attached" : "detached"] \the [src]."))
+		visible_message(span_notice("\The [user] has [anchored ? "attached" : "detached"] \the [src]."))
 	else if(istype(W, /obj/item/weldingtool) && (damaged || (machine_stat & BROKEN)))
 		var/obj/item/weldingtool/WT = W
 		if(!WT.remove_fuel(0, user))
-			to_chat(user, SPAN_WARNING("\The [src] must be on to complete this task."))
+			to_chat(user, span_warning("\The [src] must be on to complete this task."))
 			return
 		playsound(src.loc, WT.tool_sound, 50, TRUE)
 		if(!do_after(user, 20 * WT.tool_speed))
 			return
 		if(!src || !WT.isOn())
 			return
-		visible_message(SPAN_NOTICE("\The [user] has repaired \the [src]."))
+		visible_message(span_notice("\The [user] has repaired \the [src]."))
 		machine_stat &= ~BROKEN
 		damaged = null
 		update_brightness()
@@ -46,7 +46,7 @@ var/list/floor_light_cache = list()
 		var/obj/item/multitool/MT = W
 		playsound(src.loc, MT.tool_sound, 50, TRUE)
 		if(!on)
-			to_chat(user, SPAN_WARNING("\The [src] must be on to complete this task."))
+			to_chat(user, span_warning("\The [src] must be on to complete this task."))
 			return
 		to_chat(user, "\ Enter the text name of the color. For example, green")
 		to_chat(user, "Alternatively, enter the full hex code of your desired color. For example, #28FF01")
@@ -55,7 +55,7 @@ var/list/floor_light_cache = list()
 		src.color = newcolor
 		src.light_color = newcolor
 		update_brightness()
-		visible_message(SPAN_NOTICE("\The [user] has changed \the [src] color."))
+		visible_message(span_notice("\The [user] has changed \the [src] color."))
 	else if(W.damage_force && user.a_intent == "hurt")
 		attack_hand(user)
 	return
@@ -64,11 +64,11 @@ var/list/floor_light_cache = list()
 
 	if(user.a_intent == INTENT_HARM && !issmall(user))
 		if(!isnull(damaged) && !(machine_stat & BROKEN))
-			visible_message(SPAN_DANGER("\The [user] smashes \the [src]!"))
+			visible_message(span_danger("\The [user] smashes \the [src]!"))
 			playsound(src, "shatter", 70, TRUE)
 			machine_stat |= BROKEN
 		else
-			visible_message(SPAN_DANGER("\The [user] attacks \the [src]!"))
+			visible_message(span_danger("\The [user] attacks \the [src]!"))
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, TRUE)
 			if(isnull(damaged))
 				damaged = FALSE
@@ -77,15 +77,15 @@ var/list/floor_light_cache = list()
 	else
 
 		if(!anchored)
-			to_chat(user, SPAN_WARNING("\The [src] must be screwed down first."))
+			to_chat(user, span_warning("\The [src] must be screwed down first."))
 			return
 
 		if(machine_stat & BROKEN)
-			to_chat(user, SPAN_WARNING("\The [src] is too damaged to be functional."))
+			to_chat(user, span_warning("\The [src] is too damaged to be functional."))
 			return
 
 		if(machine_stat & NOPOWER)
-			to_chat(user, SPAN_WARNING("\The [src] is unpowered."))
+			to_chat(user, span_warning("\The [src] is unpowered."))
 			return
 
 		on = !on

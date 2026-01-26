@@ -39,6 +39,6 @@
 			new type(get_turf(user), src)
 	else if(partner)
 		user.forceMove(get_turf(partner))
-		to_chat(user, SPAN_NOTICE("Your ghostly form is pulled through the rift!"))
+		to_chat(user, span_notice("Your ghostly form is pulled through the rift!"))
 	else
 		return ..()

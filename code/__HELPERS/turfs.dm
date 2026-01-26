@@ -408,7 +408,7 @@
 
 		var/turf/target = locate(dst_origin.x + x_pos, dst_origin.y + y_pos, dst_origin.z + z_pos)
 		if(!target)
-			log_debug(SPAN_DEBUGERROR("Null turf in translation @ ([dst_origin.x + x_pos], [dst_origin.y + y_pos], [dst_origin.z + z_pos] [ADMIN_JMP(dst_origin)])"))
+			log_debug(span_debug_error("Null turf in translation @ ([dst_origin.x + x_pos], [dst_origin.y + y_pos], [dst_origin.z + z_pos] [ADMIN_JMP(dst_origin)])"))
 		// If target is null, preserve that information in the turf map.
 		turf_map[source] = target
 
@@ -435,7 +435,7 @@
 
 	// You can stay, though.
 	if (istype(Origin, /turf/space))
-		log_debug(SPAN_DEBUGERROR("Tried to translate a space turf: src=[log_info_line(Origin)][ADMIN_JMP(Origin)] dst=[log_info_line(Destination)][ADMIN_JMP(Destination)]"))
+		log_debug(span_debug_error("Tried to translate a space turf: src=[log_info_line(Origin)][ADMIN_JMP(Origin)] dst=[log_info_line(Destination)][ADMIN_JMP(Destination)]"))
 		return FALSE	// TODO - Is this really okay to do nothing?
 
 	var/turf/X	// New Destination Turf

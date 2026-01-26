@@ -47,11 +47,11 @@
 	if(extra.len > extra_max)
 		var/list/truncated = extra.Copy(extra_max + 1)
 		extra.len = clamp(extra.len, 0, extra_max)
-		errors?.Add(SPAN_WARNING("truncated [english_list(truncated)] languages - too many!"))
+		errors?.Add(span_warning("truncated [english_list(truncated)] languages - too many!"))
 	for(var/id in extra)
 		if(isnull(RSlanguages.fetch(id)))
 			extra -= id
-			errors?.Add(SPAN_WARNING("removed id [id] - can't locate it."))
+			errors?.Add(span_warning("removed id [id] - can't locate it."))
 			continue
 	return extra
 
@@ -65,7 +65,7 @@
 
 /datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	if(length(data) > prefs.extraneous_languages_max())
-		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
+		errors?.Add(span_warning("You have selected too many extra languages for your species and culture."))
 		return FALSE
 	var/list/extraneous = data
 	var/datum/species/CS = prefs.character_species_datum()
@@ -73,7 +73,7 @@
 	for(var/id in extraneous)
 		var/datum/prototype/language/L = RSlanguages.fetch(id)
 		if((L.language_flags & LANGUAGE_WHITELISTED) && (!(L.id in whitelisted_ids)) && !Configuration.check_language_whitelist(L.id, prefs.client_ckey))
-			errors?.Add(SPAN_WARNING("[L] is a whitelisted language."))
+			errors?.Add(span_warning("[L] is a whitelisted language."))
 			return FALSE
 	return TRUE
 

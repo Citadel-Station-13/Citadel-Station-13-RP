@@ -222,7 +222,7 @@
 			var/turf/T = get_turf(src)
 			var/obj/item/cell/removed = obj_cell_slot.remove_cell(T)
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
-			to_chat(usr, SPAN_NOTICE("You pull \the [removed] out of \the [src]'s power supplier."))
+			to_chat(usr, span_notice("You pull \the [removed] out of \the [src]'s power supplier."))
 			return TRUE
 
 		// Circuit actions
@@ -249,9 +249,9 @@
 				if(D.accepting_refs)
 					D.afterattack(C, usr, CLICKCHAIN_HAS_PROXIMITY)
 				else
-					to_chat(usr, SPAN_WARNING("The Debugger's 'ref scanner' needs to be on."))
+					to_chat(usr, span_warning("The Debugger's 'ref scanner' needs to be on."))
 			else
-				to_chat(usr, SPAN_WARNING("You need a multitool/debugger set to 'ref' mode to do that."))
+				to_chat(usr, span_warning("You need a multitool/debugger set to 'ref' mode to do that."))
 			return TRUE
 
 		if("remove_circuit")
@@ -319,7 +319,7 @@
 	if(!check_interactivity(M))
 		return
 	if(src && input)
-		to_chat(M, SPAN_NOTICE("The machine now has a label reading '[input]'."))
+		to_chat(M, span_notice("The machine now has a label reading '[input]'."))
 		name = input
 
 /obj/item/electronic_assembly/proc/add_allowed_scanner(ckey)
@@ -366,29 +366,29 @@
 // Returns true if the circuit made it inside.
 /obj/item/electronic_assembly/proc/try_add_component(var/obj/item/integrated_circuit/IC, var/mob/user)
 	if(!opened)
-		to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar."))
+		to_chat(user, span_warning("\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar."))
 		return FALSE
 
 	if(IC.w_class > src.w_class)
-		to_chat(user, SPAN_WARNING("\The [IC] is way too big to fit into \the [src]."))
+		to_chat(user, span_warning("\The [IC] is way too big to fit into \the [src]."))
 		return FALSE
 
 	var/total_part_size = return_total_size()
 	var/total_complexity = return_total_complexity()
 
 	if((total_part_size + IC.size) > max_components)
-		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', as there's insufficient space."))
+		to_chat(user, span_warning("You can't seem to add the '[IC.name]', as there's insufficient space."))
 		return FALSE
 	if((total_complexity + IC.complexity) > max_complexity)
-		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', since this setup's too complicated for the case."))
+		to_chat(user, span_warning("You can't seem to add the '[IC.name]', since this setup's too complicated for the case."))
 		return FALSE
 	if((allowed_circuit_action_flags & IC.action_flags) != IC.action_flags)
-		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', since the case doesn't support the circuit type."))
+		to_chat(user, span_warning("You can't seem to add the '[IC.name]', since the case doesn't support the circuit type."))
 		return FALSE
 	if(!IC.forceMove(src))
 		return FALSE
 
-	to_chat(user, SPAN_NOTICE("You slide [IC] inside [src]."))
+	to_chat(user, span_notice("You slide [IC] inside [src]."))
 	playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
 	add_allowed_scanner(user.ckey)
 	investigate_log("had [IC]([IC.type]) inserted by [key_name(user)].", INVESTIGATE_CIRCUIT)
@@ -421,15 +421,15 @@
 	. = ..()
 	for(var/obj/item/integrated_circuit/input/S in assembly_components)
 		if(S.sense(target,user,(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)))
-			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
+			visible_message(span_notice("\The [user] waves \the [src] around [target]."))
 
 /obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
 	if(can_anchor && I.is_wrench())
 		if(anchored_by)
-			to_chat(user, SPAN_WARNING(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry attempts to loosen them.")))
+			to_chat(user, span_warning(pick("You fail to get purchase on [anchored_by]'s bolts.","[src]'s [anchored_by] protests!","The bolts defeat your paltry attempts to loosen them.")))
 			return
 		anchored = !anchored
-		to_chat(user, SPAN_NOTICE("You've [anchored ? "" : "un"]secured \the [src] to \the [get_turf(src)]."))
+		to_chat(user, span_notice("You've [anchored ? "" : "un"]secured \the [src] to \the [get_turf(src)]."))
 		if(anchored)
 			on_anchored()
 		else
@@ -448,11 +448,11 @@
 
 	else if(I.is_screwdriver())
 		if(panel_locked)
-			to_chat(user, SPAN_NOTICE("The screws are hidden."))
+			to_chat(user, span_notice("The screws are hidden."))
 			return FALSE
 		playsound(get_turf(src), 'sound/items/Screwdriver.ogg', 50, 1)
 		opened = !opened
-		to_chat(user, SPAN_NOTICE("You [opened ? "opened" : "closed"] \the [src]."))
+		to_chat(user, span_notice("You [opened ? "opened" : "closed"] \the [src]."))
 		update_icon()
 		return TRUE
 
@@ -460,7 +460,7 @@
 		if(opened)
 			ui_interact(user)
 		else
-			to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't fiddle with the internal components.  Try using a screwdriver."))
+			to_chat(user, span_warning("\The [src] isn't opened, so you can't fiddle with the internal components.  Try using a screwdriver."))
 		return TRUE
 
 	else if(istype(I, /obj/item/integrated_electronics/detailer))
@@ -471,15 +471,15 @@
 
 	else if(istype(I, /obj/item/integrated_electronics/analyzer))
 		if(!opened)
-			to_chat(usr, SPAN_WARNING("You need to open the [src] to analyze the contents!"))
+			to_chat(usr, span_warning("You need to open the [src] to analyze the contents!"))
 			return
 		var/save = SScircuit.save_electronic_assembly(src)
 		var/saved = "[src.name] analyzed! On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[save]</code>"
 		if(save)
-			to_chat(usr, SPAN_WARNING("You scan [src]."))
+			to_chat(usr, span_warning("You scan [src]."))
 			user << browse(HTML_SKELETON(saved), "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
 		else
-			to_chat(usr, SPAN_WARNING("[src] is not complete enough to be encoded!"))
+			to_chat(usr, span_warning("[src] is not complete enough to be encoded!"))
 		return TRUE
 	else for(var/obj/item/integrated_circuit/S in assembly_components)
 		if(S.attackby_react(I,user,user.a_intent))

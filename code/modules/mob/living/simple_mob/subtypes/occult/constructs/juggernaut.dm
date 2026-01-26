@@ -196,7 +196,7 @@
 
 	// Warm-up
 	Beam(target, icon_state = "sat_beam", time = 2 SECONDS, maxdistance = INFINITY)
-	visible_message(SPAN_WARNING( "The [src]'s eye begins to glow.!"))
+	visible_message(span_warning( "The [src]'s eye begins to glow.!"))
 	playsound(src, 'sound/hallucinations/i_see_you1.ogg', 100, 1)
 	sleep(2 SECONDS)
 
@@ -204,14 +204,14 @@
 		if(target)
 			var/turf/T = get_turf(target)
 			if(T)
-				visible_message(SPAN_WARNING( "[src] discharges a beam of concentrated energy!"))
+				visible_message(span_warning( "[src] discharges a beam of concentrated energy!"))
 				face_atom(T)
 				var/obj/projectile/beam/inversion/oblivion/beam = new(loc)
 				beam.old_style_target(T, src)
 				beam.fire()
 				sleep(0.25 SECONDS)
 
-	visible_message(SPAN_WARNING( "The [src]'s eye dims."))
+	visible_message(span_warning( "The [src]'s eye dims."))
 	playsound(src, 'sound/hallucinations/growl1.ogg', 50, 1)
 
 /obj/projectile/beam/inversion/heavy

@@ -204,8 +204,8 @@
 	currently_zoomed_in = viewing
 	currently_zoomed_in.AddComponent(/datum/component/mob_zoom_binding/freezoom, null, null, 14)
 	currently_zoomed_in.visible_message(
-		SPAN_NOTICE("[currently_zoomed_in] looks through [src]."),
-		SPAN_NOTICE("You start looking through [src]."),
+		span_notice("[currently_zoomed_in] looks through [src]."),
+		span_notice("You start looking through [src]."),
 		range = MESSAGE_RANGE_COMBAT_SUBTLE,
 	)
 	update_icon()
@@ -218,8 +218,8 @@
 		destroy_laser_designator_target()
 	currently_zoomed_in.DelComponent(/datum/component/mob_zoom_binding)
 	currently_zoomed_in.visible_message(
-		SPAN_NOTICE("[currently_zoomed_in] looks up from [src]."),
-		SPAN_NOTICE("You stop looking through [src]."),
+		span_notice("[currently_zoomed_in] looks up from [src]."),
+		span_notice("You stop looking through [src]."),
 		range = MESSAGE_RANGE_COMBAT_SUBTLE,
 	)
 	currently_zoomed_in = null
@@ -231,7 +231,7 @@
 		return
 	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		return
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] [rangefinder_output(user, target)]"))
+	to_chat(user, span_notice("[icon2html(src, user)] [rangefinder_output(user, target)]"))
 
 /obj/item/rangefinder/proc/rangefinder_output(mob/user, atom/target)
 	var/turf/source_turf = get_turf(user)
@@ -256,7 +256,7 @@
 	// already lasing
 	if(lasing_target)
 		clickchain.chat_feedback(
-			SPAN_WARNING("[src] is busy!"),
+			span_warning("[src] is busy!"),
 			target = src,
 		)
 		return
@@ -278,7 +278,7 @@
 
 	if(no_los)
 		clickchain.chat_feedback(
-			SPAN_WARNING("Your line of sight to [target] is blocked by something."),
+			span_warning("Your line of sight to [target] is blocked by something."),
 			target = src,
 		)
 		return TRUE
@@ -288,8 +288,8 @@
 	clickchain.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_COMBAT_SUBTLE,
-		visible = SPAN_WARNING("[currently_zoomed_in] levels [src] and begins to aim its targeting laser."),
-		otherwise_self = SPAN_WARNING("You start [src]'s target acquisition process, aiming at [target]."),
+		visible = span_warning("[currently_zoomed_in] levels [src] and begins to aim its targeting laser."),
+		otherwise_self = span_warning("You start [src]'s target acquisition process, aiming at [target]."),
 	)
 
 	if(effective_delay > 0.5 SECONDS)
@@ -307,7 +307,7 @@
 
 	clickchain.chat_feedback(
 		// TODO: the icon2html is bad
-		SPAN_WARNING("[icon2html(src, clickchain.performer)]: Target locked, currently at [rangefinder_output(clickchain.performer, target)].")
+		span_warning("[icon2html(src, clickchain.performer)]: Target locked, currently at [rangefinder_output(clickchain.performer, target)].")
 	)
 
 	create_laser_designator_target(target)
@@ -322,7 +322,7 @@
 	for(var/turf/T as anything in turfs)
 		if(T.has_opaque_atom)
 			lasing_actor?.chat_feedback(
-				SPAN_WARNING("Something on [T] breaks your targeting laser's beam."),
+				span_warning("Something on [T] breaks your targeting laser's beam."),
 				target = T,
 			)
 			return FALSE

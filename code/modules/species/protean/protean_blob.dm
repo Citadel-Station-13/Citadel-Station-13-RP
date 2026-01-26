@@ -102,7 +102,7 @@
 /mob/living/simple_mob/protean_blob/examine(mob/user, dist)
 	. = ..()
 	for(var/obj/item/I in get_held_items())
-		. += SPAN_INFO("[icon2html(I, user)] It is holding \a [FORMAT_TEXT_LOOKITEM(I)] in a psuedopod.")
+		. += span_info("[icon2html(I, user)] It is holding \a [FORMAT_TEXT_LOOKITEM(I)] in a psuedopod.")
 
 /mob/living/simple_mob/protean_blob/Destroy()
 	humanform = null
@@ -130,7 +130,7 @@
 	var/new_buckmax = round(new_size * 2)
 
 	if(has_buckled_mobs() && (new_buckmax < buckle_max_mobs))
-		visible_message(SPAN_WARNING("[src] sloughs off its riders!"))
+		visible_message(span_warning("[src] sloughs off its riders!"))
 		unbuckle_all_mobs(BUCKLE_OP_FORCE)
 
 	buckle_max_mobs = new_buckmax

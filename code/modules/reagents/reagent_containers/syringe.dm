@@ -123,7 +123,7 @@
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)
-						T.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
+						T.custom_pain(span_warning("The needle stings a bit."), 2, TRUE)
 
 			else //if not mob
 				if(!target.reagents.total_volume)
@@ -222,7 +222,7 @@
 				to_chat(user, "<span class='notice'>You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
 				if(ismob(target))
 					add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
-					H.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
+					H.custom_pain(span_warning("The needle stings a bit."), 2, TRUE)
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
@@ -257,7 +257,7 @@
 
 		if (target != user && H.legacy_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message(SPAN_BOLDDANGER("[user] tries to stab [target] in \the [hit_area] with [name], but the attack is deflected by armor!"), SAYCODE_TYPE_VISIBLE)
+				O.show_message(span_bolddanger("[user] tries to stab [target] in \the [hit_area] with [name], but the attack is deflected by armor!"), SAYCODE_TYPE_VISIBLE)
 			qdel(src)
 			add_attack_logs(user,target,"Syringe harmclick")
 			return

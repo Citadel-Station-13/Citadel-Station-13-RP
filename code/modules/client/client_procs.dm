@@ -587,4 +587,4 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		if("delta")
 			color = "#FF6633"
 			desc = CONFIG_GET(string/alert_desc_delta)
-	. = SPAN_NOTICE("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(get_security_level())]</font>. [desc]")
+	. = span_notice("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(get_security_level())]</font>. [desc]")

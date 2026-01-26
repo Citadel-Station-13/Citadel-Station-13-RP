@@ -90,24 +90,24 @@
 
 	if(friend)
 		if(friend == usr)
-			to_chat(L, SPAN_NOTICE("\The [src] is already your friend! Meow!"))
+			to_chat(L, span_notice("\The [src] is already your friend! Meow!"))
 			return
 		else
-			to_chat(L, SPAN_WARNING( "\The [src] ignores you."))
+			to_chat(L, span_warning( "\The [src] ignores you."))
 			return
 
 	// friend_name var checks
 	if(!friend_name || L.real_name == friend_name)
 		friend = L
 		face_atom(L)
-		to_chat(L, SPAN_NOTICE("\The [src] is now your friend! Meow."))
+		to_chat(L, span_notice("\The [src] is now your friend! Meow."))
 		visible_emote(pick("nuzzles [friend].", "brushes against [friend].", "rubs against [friend].", "purrs."))
 
 		if(has_polaris_AI())
 			var/datum/ai_holder/polaris/AI = ai_holder
 			AI.set_follow(friend)
 	else
-		to_chat(L, SPAN_NOTICE("[src] ignores you."))
+		to_chat(L, span_notice("[src] ignores you."))
 
 
 /mob/living/simple_mob/animal/passive/cat/runtime

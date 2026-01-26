@@ -17,10 +17,10 @@
 				Lines += entry
 				continue
 			if(!C.initialized)
-				entry += " - [SPAN_BOLDANNOUNCE("UNINITIALIZED!")]"
+				entry += " - [span_boldannounce("UNINITIALIZED!")]"
 				continue
 			if(isnull(C.mob))
-				entry += " - [SPAN_BOLDANNOUNCE("NULL MOB!")]"
+				entry += " - [span_boldannounce("NULL MOB!")]"
 				continue
 			entry += " - Playing as [C.mob.real_name]"
 			switch(C.mob.stat)

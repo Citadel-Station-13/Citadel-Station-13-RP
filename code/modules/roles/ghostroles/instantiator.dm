@@ -178,11 +178,11 @@
 	var/list/errors = list()
 	// todo: respect warnings; we ignore them right now so we don't block joins.
 	if(!C.prefs.spawn_checks(PREF_COPY_TO_FOR_GHOSTROLE | PREF_COPY_TO_NO_CHECK_SPECIES, errors))
-		to_chat(C, SPAN_WARNING("<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
+		to_chat(C, span_warning("<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return
 
 	if(!isnull(species_required) && species_required != C.prefs.real_species_datum().type)
-		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
+		to_chat(C, span_warning("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return
 
 	var/mob/living/carbon/human/H = ..()

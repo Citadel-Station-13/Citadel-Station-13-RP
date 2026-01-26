@@ -143,5 +143,5 @@
 /obj/machinery/vending/tool/adherent/vend(datum/stored_item/vending_product/, mob/living/carbon/user)
 	if (emagged || istype(user) && user.species.name == SPECIES_ADHERENT)
 		return ..()
-	to_chat(user, SPAN_WARNING("\The [src] emits a discordant chime."))
+	to_chat(user, span_warning("\The [src] emits a discordant chime."))
 

@@ -570,7 +570,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
-			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
+			to_chat(user, span_warning("That isn't a robotic limb."))
 			return
 
 		var/use_amt = min(src.amount, CEILING(S.burn_dam / 20, 1), 5)

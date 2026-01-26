@@ -74,7 +74,7 @@
 	update_icon()
 
 	if(!humanform) // If we somehow have a blob with no human, lets just clean up.
-		log_debug(SPAN_DEBUGINFO("Cleaning up blob with no prommie!"))
+		log_debug(span_debug_info("Cleaning up blob with no prommie!"))
 		qdel(src)
 	return
 

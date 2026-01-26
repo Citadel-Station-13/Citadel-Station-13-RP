@@ -127,21 +127,21 @@
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
 			set_body_cover_flags(initial(body_cover_flags))
 			update_worn_icon()
-			to_chat(user, SPAN_NOTICE("You roll [src] back to normal."))
+			to_chat(user, span_notice("You roll [src] back to normal."))
 			return TRUE
 		if("rolled down")
 			worn_rolled_down = UNIFORM_ROLL_TRUE
 			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
 			set_body_cover_flags(initial(body_cover_flags) & ~(UPPER_TORSO | ARMS | HANDS))
 			update_worn_icon()
-			to_chat(user, SPAN_NOTICE("You roll [src] down."))
+			to_chat(user, span_notice("You roll [src] down."))
 			return TRUE
 		if("rolled sleeves")
 			worn_rolled_down = UNIFORM_ROLL_FALSE
 			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
 			set_body_cover_flags(initial(body_cover_flags) & ~(ARMS | HANDS))
 			update_worn_icon()
-			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves."))
+			to_chat(user, span_notice("You roll [src]'s sleeves."))
 			return TRUE
 
 //! Inventory
@@ -286,8 +286,8 @@
 	switch(action)
 		if("sensors")
 			visible_message(
-				SPAN_WARNING("[user] is trying to set \the [src]'s sensors!"),
-				SPAN_WARNING("[user] is trying to set your sensors!")
+				span_warning("[user] is trying to set \the [src]'s sensors!"),
+				span_warning("[user] is trying to set your sensors!")
 			)
 			var/mob/M = get_worn_mob()
 			if(do_after(user, HUMAN_STRIP_DELAY, M, DO_AFTER_IGNORE_ACTIVE_ITEM))

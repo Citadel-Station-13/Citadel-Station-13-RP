@@ -40,7 +40,7 @@
 
 /obj/item/assembly/prox_sensor/Proximity(datum/proxfield/field, atom/movable/AM)
 	if(!istype(AM))
-		log_debug(SPAN_DEBUGINFO("DEBUG: HasProximity called with [AM] on [src] ([usr])."))
+		log_debug(span_debug_info("DEBUG: HasProximity called with [AM] on [src] ([usr])."))
 		return
 	if (istype(AM, /obj/effect/beam))
 		return
@@ -51,7 +51,7 @@
 	if((!holder && !secured) || !scanning || !process_cooldown())
 		return FALSE
 	pulse(FALSE)
-	audible_message(SPAN_INFOPLAIN("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+	audible_message(span_infoplain("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
 	for(var/CHM in get_hearers_in_view(hearing_range, src))
 		if(ismob(CHM))
 			var/mob/LM = CHM
@@ -100,7 +100,7 @@
 
 /obj/item/assembly/prox_sensor/ui_interact(mob/user, datum/tgui/ui)
 	if(!secured)
-		to_chat(user, SPAN_WARNING("[src] is unsecured!"))
+		to_chat(user, span_warning("[src] is unsecured!"))
 		return FALSE
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

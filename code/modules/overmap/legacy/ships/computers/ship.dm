@@ -26,7 +26,7 @@
 		return
 	. = attempt_hook_up_recursive(sector)
 	if(. && linked && user)
-		to_chat(user, SPAN_NOTICE("[src] reconnected to [linked]"))
+		to_chat(user, span_notice("[src] reconnected to [linked]"))
 		user << browse(null, "window=[src]") // Close reconnect dialog
 
 /obj/machinery/computer/ship/proc/attempt_hook_up_recursive(obj/overmap/entity/visitable/ship/sector)

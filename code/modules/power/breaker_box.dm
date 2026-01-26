@@ -84,7 +84,7 @@ GLOBAL_LIST_BOILERPLATE(breakerboxes, /obj/machinery/power/breakerbox)
 
 	busy = 1
 	for(var/mob/O in viewers(user))
-		O.show_message(SPAN_RED("[user] started reprogramming [src]!"), SAYCODE_TYPE_VISIBLE)
+		O.show_message(span_red("[user] started reprogramming [src]!"), SAYCODE_TYPE_VISIBLE)
 
 	if(do_after(user, 50))
 		set_state(!on)

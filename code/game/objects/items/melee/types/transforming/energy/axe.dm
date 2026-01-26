@@ -22,14 +22,14 @@
 /obj/item/melee/transforming/energy/axe/on_activate(datum/event_args/actor/actor, silent)
 	. = ..()
 	actor.chat_feedback(
-		SPAN_WARNING("You energize \the [src]."),
+		span_warning("You energize \the [src]."),
 		target = src,
 	)
 
 /obj/item/melee/transforming/energy/axe/on_deactivate(datum/event_args/actor/actor, silent)
 	. = ..()
 	actor.chat_feedback(
-		SPAN_WARNING("You de-energize \the [src]."),
+		span_warning("You de-energize \the [src]."),
 		target = src,
 	)
 

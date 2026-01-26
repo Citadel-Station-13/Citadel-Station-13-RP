@@ -48,7 +48,7 @@
 	return ..()
 
 /mob/living/simple_mob/animal/giant_spider/carrier/death()
-	visible_message(SPAN_WARNING( "\The [src]'s abdomen splits as it rolls over, spiderlings crawling from the wound.") )
+	visible_message(span_warning( "\The [src]'s abdomen splits as it rolls over, spiderlings crawling from the wound.") )
 	spawn(1)
 		var/list/new_spiders = list()
 		for(var/i = 1 to spiderling_count)

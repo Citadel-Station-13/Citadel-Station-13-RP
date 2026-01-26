@@ -59,7 +59,7 @@
 
 /obj/item/integrated_circuit/manipulation/anchoring/remove(mob/user, silent, index, force)
 	if(assembly?.anchored_by == src && !force)
-		silent ? null : to_chat(user, SPAN_WARNING("With the bolts deployed you can't remove the circuit."))
+		silent ? null : to_chat(user, span_warning("With the bolts deployed you can't remove the circuit."))
 		return
 	. = ..()
 
@@ -70,7 +70,7 @@
 
 	if(ord == 1)
 		if(assembly.anchored && assembly.anchored_by != src)
-			audible_message(SPAN_WARNING("The [assembly] whirrs and clanks!"), SPAN_NOTICE("You hear a soft whirr then a clank."))
+			audible_message(span_warning("The [assembly] whirrs and clanks!"), span_notice("You hear a soft whirr then a clank."))
 			return
 		assembly.anchored = !assembly.anchored
 		assembly.anchored ? (assembly.anchored_by = src) : (assembly.anchored_by = null)
@@ -111,7 +111,7 @@
 	if(ord == 1)
 		if(!assembly)
 			return
-		visible_message(SPAN_NOTICE("\The [assembly] whirrs.[assembly.panel_locked > 1 ? null : lock_enabled ? " The screws are now covered." : " The screws are now exposed!"]"))
+		visible_message(span_notice("\The [assembly] whirrs.[assembly.panel_locked > 1 ? null : lock_enabled ? " The screws are now covered." : " The screws are now exposed!"]"))
 		lock_enabled *= -1
 		assembly.panel_locked += lock_enabled
 		set_pin_data(IC_OUTPUT, 1, lock_enabled)
@@ -714,7 +714,7 @@
 		if(!target || busy || !target.Adjacent(assembly))
 			activate_pin(3)
 			return
-		src.assembly.visible_message(SPAN_DANGER("[assembly] starts to drill [target]!"), null, SPAN_WARNING("You hear a drill."))
+		src.assembly.visible_message(span_danger("[assembly] starts to drill [target]!"), null, span_warning("You hear a drill."))
 		drill_delay = isturf(target)? digspeed : isliving(target) ? issimplemob(target) ? 2 SECONDS : 3 SECONDS : 4 SECONDS
 		busy = TRUE
 		targetlock = target
@@ -754,7 +754,7 @@
 	if(istype(target, /turf/simulated/mineral))
 		var/turf/simulated/mineral/S = target
 		if(S.finds && S.finds.len)
-			visible_message(SPAN_WARNING("<b>[pick("There is a crunching noise","[assembly]'s [src] collides with some different rock","Part of the rock face crumbles away","Something breaks under [assembly]'s [src]")]</b>"))
+			visible_message(span_warning("<b>[pick("There is a crunching noise","[assembly]'s [src] collides with some different rock","Part of the rock face crumbles away","Something breaks under [assembly]'s [src]")]</b>"))
 		if(istype(S, /turf/simulated/mineral))
 			S.GetDrilled()
 			investigate_log("Drilled through [target]")

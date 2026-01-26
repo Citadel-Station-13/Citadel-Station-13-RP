@@ -8,7 +8,7 @@
 	if(target.translation_context?.type == /datum/translation_context/variable/learning/silicons)
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_WARNING("[target] already has an adaptive translation unit installed."),
+				span_warning("[target] already has an adaptive translation unit installed."),
 				target = target,
 			)
 		return FALSE

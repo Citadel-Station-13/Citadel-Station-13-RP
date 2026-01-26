@@ -26,18 +26,18 @@
 /obj/machinery/processor/examine(mob/user, dist)
 	. = ..()
 	if(let_slimes_pass)
-		. += SPAN_NOTICE("It looks slick enough to let slimes glide over it.")
-	. += SPAN_BOLDNOTICE("The automatic intake switch is in the [auto_mode? "On" : "Off"] position.")
+		. += span_notice("It looks slick enough to let slimes glide over it.")
+	. += span_boldnotice("The automatic intake switch is in the [auto_mode? "On" : "Off"] position.")
 
 /obj/machinery/processor/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(processing)
-		to_chat(user, SPAN_WARNING("The processor is in the process of processing!"))
+		to_chat(user, span_warning("The processor is in the process of processing!"))
 		return
 	if(to_be_processed.len)
 		spawn(1)
 			begin_processing()
 	else
-		to_chat(user, SPAN_WARNING("The processor is empty."))
+		to_chat(user, span_warning("The processor is empty."))
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
@@ -56,7 +56,7 @@
 
 /obj/machinery/processor/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(processing)
-		to_chat(user, SPAN_WARNING("The processor is in the process of processing!"))
+		to_chat(user, span_warning("The processor is in the process of processing!"))
 		return
 	if(default_deconstruction_screwdriver(user, I))
 		return
@@ -74,7 +74,7 @@
 		if(!istype(H.species, /datum/species/monkey))
 			return
 		if(!IS_DEAD(H))
-			user.action_feedback(SPAN_WARNING("[H] is still alive."), src)
+			user.action_feedback(span_warning("[H] is still alive."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!insert(H, user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -99,7 +99,7 @@
 	if(user.stat || user.incapacitated(INCAPACITATION_DISABLED) || !Adjacent(user))
 		return
 	auto_mode = !auto_mode
-	to_chat(user, SPAN_NOTICE("You turn the automatic intake [auto_mode? "On" : "Off"]."))
+	to_chat(user, span_notice("You turn the automatic intake [auto_mode? "On" : "Off"]."))
 	if(auto_mode)
 		START_PROCESSING(SSobj, src)
 	else
@@ -116,12 +116,12 @@
 	if((!Adjacent(user) && !Adjacent(AM)) || !user.Adjacent(AM))
 		return FALSE
 	if(!can_insert(AM))
-		to_chat(user, SPAN_NOTICE("\The [src] cannot process \the [AM] at this time."))
+		to_chat(user, span_notice("\The [src] cannot process \the [AM] at this time."))
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return FALSE
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
-	visible_message(SPAN_NOTICE("\the [user] places [AM] inside \the [src]."))
+	visible_message(span_notice("\the [user] places [AM] inside \the [src]."))
 	return TRUE
 
 /obj/machinery/processor/proc/auto_insert(atom/movable/AM)
@@ -129,7 +129,7 @@
 		return
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
-	visible_message(SPAN_NOTICE("[src] sucks up [AM]."))
+	visible_message(span_notice("[src] sucks up [AM]."))
 
 /obj/machinery/processor/process(delta_time)
 	if(!auto_mode)

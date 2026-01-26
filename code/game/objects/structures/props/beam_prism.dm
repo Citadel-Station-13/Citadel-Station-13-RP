@@ -235,5 +235,5 @@
 	. = ..()
 	if(I.is_wrench())
 		if(do_after(user,40 * I.tool_speed))
-			to_chat(user, SPAN_NOTICE("You [anchored ? "anchor" : "unanchor"] [src]."))
+			to_chat(user, span_notice("You [anchored ? "anchor" : "unanchor"] [src]."))
 			anchored = !anchored

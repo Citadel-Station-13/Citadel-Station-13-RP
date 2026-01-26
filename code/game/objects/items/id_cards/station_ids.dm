@@ -72,7 +72,7 @@
 	. += dat()
 	. += "</div>"
 	if(Adjacent(user))
-		. += SPAN_NOTICE("<b>Alt-click</b> to [extra_info_visible ? "close" : "open"] the confidential information flap.")
+		. += span_notice("<b>Alt-click</b> to [extra_info_visible ? "close" : "open"] the confidential information flap.")
 
 /obj/item/card/id/get_description_info()
 	. = ..()
@@ -177,12 +177,12 @@
 	dat += "<b>Rank:</b> [assignment]"
 	dat += "<b>Species:</b> [species]"
 	if(extra_info_visible)
-		dat += SPAN_NOTICE("<br>CONFIDENTIAL:")
+		dat += span_notice("<br>CONFIDENTIAL:")
 		if(length(extra_info))
 			for(var/key in extra_info) // doing a simple dat += extra_info just results in the ID displaying all the keys instead of the actual text tied to 'em
 				dat += extra_info[key]
 		else
-			dat += SPAN_NOTICE("The confidential information section is blank.")
+			dat += span_notice("The confidential information section is blank.")
 	else
 		dat += "The confidential information flap is closed."
 	return dat

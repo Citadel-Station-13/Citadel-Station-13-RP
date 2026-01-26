@@ -61,6 +61,6 @@
 
 /obj/vehicle/ridden/proc/drive_check(mob/user)
 	if(key_type && !is_key(inserted_key))
-		to_chat(user, SPAN_WARNING("[src] has no key inserted."))
+		to_chat(user, span_warning("[src] has no key inserted."))
 		return FALSE
 	return TRUE

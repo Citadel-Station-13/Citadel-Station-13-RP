@@ -600,7 +600,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!..())
 		return FALSE
 
-	visible_message(SPAN_DEADSAY("<b>[src]</b> points to [pointed_at]."))
+	visible_message(span_deadsay("<b>[src]</b> points to [pointed_at]."))
 
 /mob/observer/dead/proc/manifest(mob/user)
 	is_manifest = TRUE
@@ -840,7 +840,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(client.persistent.ligma)
 		sleep(rand(40,120))
-		to_chat(src, SPAN_WARNING("[H] denied your request."))
+		to_chat(src, span_warning("[H] denied your request."))
 		log_shadowban("[key_name(src)] SC join blocked.")
 		return
 

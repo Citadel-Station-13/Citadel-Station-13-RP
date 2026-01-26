@@ -129,7 +129,7 @@
 			next_map.deserialize(data)
 #endif
 	if(isnull(next_map))
-		to_chat(world, SPAN_DANGER("FATAL - failed to get next map."))
+		to_chat(world, span_danger("FATAL - failed to get next map."))
 		CRASH("FATAL - Failed to get next map")
 	next_station = next_map
 	subsystem_log("loaded map [next_station] ([next_station.id])")

@@ -38,12 +38,12 @@
 	if(istype(I, /obj/item/stack/material))
 		var/obj/item/stack/material/sheets = I
 		if(!user.transfer_item_to_loc(sheets, src))
-			to_chat(user, SPAN_WARNING("You fail to insert [sheets] into [src]."))
+			to_chat(user, span_warning("You fail to insert [sheets] into [src]."))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		var/inserted = take_sheets(sheets)
 		user.visible_message(
-			SPAN_NOTICE("[user] inserts [I] into [src]."),
-			SPAN_NOTICE("You insert [inserted] sheets of [I] into [src]."),
+			span_notice("[user] inserts [I] into [src]."),
+			span_notice("You insert [inserted] sheets of [I] into [src]."),
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 		)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -122,5 +122,5 @@
 				sheets_by_material -= id
 			var/obj/item/stack/material/dropped = dropping.place_sheet(null, amount)
 			usr.put_in_hands_or_drop(dropped)
-			usr.visible_message(SPAN_NOTICE("[usr] retrieves [amount] sheets of [dropping] from [src]."), range = MESSAGE_RANGE_INVENTORY_SOFT)
+			usr.visible_message(span_notice("[usr] retrieves [amount] sheets of [dropping] from [src]."), range = MESSAGE_RANGE_INVENTORY_SOFT)
 			return TRUE

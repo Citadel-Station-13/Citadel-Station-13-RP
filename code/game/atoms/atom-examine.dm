@@ -63,12 +63,12 @@
 	if(desc)
 		. += "<hr>[get_examine_desc(user, dist)]"
 	if(get_description_info() || get_description_fluff() || length(get_description_interaction(user)))
-		. += SPAN_TINYNOTICE("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
+		. += span_tinynotice("<a href='byond://winset?command=.statpanel_goto_tab \"Examine\"'>For more information, click here.</a>") //This feels VERY HACKY but eh its PROBABLY fine
 	// todo: i'm crying i hate this better software context menus whennnnnnnnnn
 	if(length(context_menu_query(new /datum/event_args/actor(user))))
-		. += SPAN_NOTICE("<b>Ctrl-shift-click</b> on this entity to show additional options.")
+		. += span_notice("<b>Ctrl-shift-click</b> on this entity to show additional options.")
 	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
-		. += SPAN_NOTICE("It doesn't look like it can be damaged through common means.")
+		. += span_notice("It doesn't look like it can be damaged through common means.")
 /*
 	if(custom_materials)
 		var/list/materials_list = list()
@@ -99,9 +99,9 @@
 				. += "Nothing."
 		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += SPAN_NOTICE("It has [reagents.total_volume] unit\s left.")
+				. += span_notice("It has [reagents.total_volume] unit\s left.")
 			else
-				. += SPAN_DANGER("It's empty.")
+				. += span_danger("It's empty.")
 
 	MATERIAL_INVOKE(src, MATERIAL_TRAIT_EXAMINE, on_examine, ., user, dist)
 

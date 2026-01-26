@@ -160,7 +160,7 @@
 				break
 		if(!resolved)
 			if(!silent)
-				actor?.chat_feedback(SPAN_WARNING("No one around you's named '[target_string]'!"))
+				actor?.chat_feedback(span_warning("No one around you's named '[target_string]'!"))
 			return FALSE
 		else
 			arbitrary[EMOTE_PARAMETER_KEY_TARGET_RESOLVED] = resolved

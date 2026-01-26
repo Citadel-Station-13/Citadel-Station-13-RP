@@ -96,29 +96,29 @@
 		if(!open)
 			if(unlocked)
 				unlocked = FALSE
-				to_chat(user, SPAN_NOTICE("You screw the battery panel in place."))
+				to_chat(user, span_notice("You screw the battery panel in place."))
 			else
 				unlocked = TRUE
-				to_chat(user, SPAN_NOTICE("You unscrew the battery panel."))
+				to_chat(user, span_notice("You unscrew the battery panel."))
 
 	if(W.is_crowbar())
 		if(unlocked)
 			if(open)
 				open = FALSE
 				cut_overlays()
-				to_chat(user, SPAN_NOTICE("You crowbar the battery panel in place."))
+				to_chat(user, span_notice("You crowbar the battery panel in place."))
 			else
 				if(unlocked)
 					open = TRUE
-					to_chat(user, SPAN_NOTICE("You remove the battery panel."))
+					to_chat(user, span_notice("You remove the battery panel."))
 
 	if(istype(W, /obj/item/cell))
 		if(open)
 			if(cell)
-				to_chat(user, SPAN_NOTICE("There is a power cell already installed."))
+				to_chat(user, span_notice("There is a power cell already installed."))
 			else
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				cell = W
-				to_chat(user, SPAN_NOTICE("You insert the power cell."))
+				to_chat(user, span_notice("You insert the power cell."))
 	update_icon()

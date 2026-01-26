@@ -166,7 +166,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/handle_no_players_ready()
 	if(!delay_explained)
-		to_chat(world, SPAN_ANNOUNCE("No Players are ready to play, delaying round start."))
+		to_chat(world, span_announce("No Players are ready to play, delaying round start."))
 		delay_explained = TRUE
 	start_at = world.time + 1 MINUTE
 	timeLeft = max(0,start_at - world.time)
@@ -181,10 +181,10 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, SPAN_BOLDANNOUNCE("An admin has delayed the round end."))
+		to_chat(world, span_boldannounce("An admin has delayed the round end."))
 		return
 
-	to_chat(world, SPAN_BOLDANNOUNCE("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
+	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time
 	//UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
@@ -192,25 +192,25 @@ SUBSYSTEM_DEF(ticker)
 		var/timeleft = delay - (world.time - start_wait)
 		// If we have less than 10 seconds left.
 		if(timeleft <= 10 SECONDS)
-			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
+			to_chat(world, span_boldannounce("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(10)
 		//If we have 30 seconds left, announce and sleep for the rest of the time.
 		if(timeleft <= 30 SECONDS)
 			var/time = timeleft - 10 SECONDS
-			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
+			to_chat(world, span_boldannounce("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(time)
 		// Otherwise, per minute.
 		else
-			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
+			to_chat(world, span_boldannounce("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(60 SECONDS)
 
 	if(delay_end && !skip_delay)
-		to_chat(world, SPAN_BOLDANNOUNCE("Reboot was cancelled by an admin."))
+		to_chat(world, span_boldannounce("Reboot was cancelled by an admin."))
 		return
 	// if(end_string)
 	// 	end_state = end_string
 
-	log_game(SPAN_BOLDANNOUNCE("Rebooting World. [reason]"))
+	log_game(span_boldannounce("Rebooting World. [reason]"))
 
 	world.Reboot()
 

@@ -122,7 +122,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 /obj/item/integrated_circuit/proc/rename_component(mob/user)
 	var/input = tgui_input_text(user, "What do you want to name this circuit?", "Rename", src.displayed_name, MAX_NAME_LEN)
 	if(input)
-		to_chat(user, SPAN_NOTICE("The circuit '[displayed_name] ([name])' is now labeled '[input]'."))
+		to_chat(user, span_notice("The circuit '[displayed_name] ([name])' is now labeled '[input]'."))
 		displayed_name = input
 		if(assembly)
 			var/index = assembly.assembly_components.Find(src)
@@ -252,7 +252,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 				if(pin)
 					debugger.write_data(pin, usr)
 			else
-				to_chat(usr, SPAN_WARNING("You can't do a whole lot without the proper tools."))
+				to_chat(usr, span_warning("You can't do a whole lot without the proper tools."))
 			return
 
 		if("scan")
@@ -261,9 +261,9 @@ a creative player the means to solve many problems.  Circuits are held inside an
 				if(D.accepting_refs)
 					D.afterattack(src, usr, CLICKCHAIN_HAS_PROXIMITY)
 				else
-					to_chat(usr, SPAN_WARNING("The Debugger's 'ref scanner' needs to be on."))
+					to_chat(usr, span_warning("The Debugger's 'ref scanner' needs to be on."))
 			else
-				to_chat(usr, SPAN_WARNING("You need a multitool/debugger set to 'ref' mode to do that."))
+				to_chat(usr, span_warning("You need a multitool/debugger set to 'ref' mode to do that."))
 			return
 
 		if("examine")
@@ -283,11 +283,11 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	var/obj/item/electronic_assembly/A = assembly
 	if(!A)
 		if(!silent)
-			to_chat(user, SPAN_WARNING("This circuit is not in an assembly!"))
+			to_chat(user, span_warning("This circuit is not in an assembly!"))
 		return
 	if(!removable && !force)
 		if(!silent)
-			to_chat(user, SPAN_WARNING("\The [src] seems to be permanently attached to the case."))
+			to_chat(user, span_warning("\The [src] seems to be permanently attached to the case."))
 		return
 	var/obj/item/electronic_assembly/ea = loc
 
@@ -307,7 +307,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		forceMove(T)
 		if(!silent)
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
-			to_chat(user, SPAN_NOTICE("You pop \the [src] out of the case, and slide it out."))
+			to_chat(user, span_notice("You pop \the [src] out of the case, and slide it out."))
 	assembly = null
 
 	if(istype(ea) && user)

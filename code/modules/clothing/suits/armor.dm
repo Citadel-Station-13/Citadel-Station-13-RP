@@ -233,7 +233,7 @@
 
 /obj/item/clothing/suit/armor/alien/mob_armorcall(mob/defending, list/shieldcall_args, fake_attack)
 	if(prob(block_chance))
-		defending.visible_message(SPAN_DANGER("[src] completely absorbs [RESOLVE_SHIELDCALL_ATTACK_TEXT(shieldcall_args)]!"))
+		defending.visible_message(span_danger("[src] completely absorbs [RESOLVE_SHIELDCALL_ATTACK_TEXT(shieldcall_args)]!"))
 		shieldcall_args[SHIELDCALL_ARG_FLAGS] |= SHIELDCALL_FLAGS_FOR_COMPLETE_BLOCK
 		return
 	return ..()

@@ -34,7 +34,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	. = is_age_verified()
 	if(!.)
-		to_chat(src, SPAN_DANGER("Age verification must be completed before doing that."))
+		to_chat(src, span_danger("Age verification must be completed before doing that."))
 
 /client/proc/prompt_age_verification()
 	var/list/dat = list("<center>")

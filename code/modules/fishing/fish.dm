@@ -120,8 +120,8 @@
 /obj/item/fish/examine(mob/user, dist)
 	. = ..()
 	// All spacemen have magic eyes of fish fish_weight perception until fish scale (get it?) is implemented.
-	. += SPAN_NOTICE("It's [size] cm long.")
-	. += SPAN_NOTICE("It weighs [fish_weight] g.")
+	. += span_notice("It's [size] cm long.")
+	. += span_notice("It weighs [fish_weight] g.")
 
 /obj/item/fish/proc/randomize_weight_and_size(modifier = 0)
 	var/size_deviation = 0.2 * average_size
@@ -192,7 +192,7 @@
 
 	if(is_deleted_inside(loc))
 		visible_message(
-			status == FISH_ALIVE? SPAN_NOTICE("[src] quickly swims back into [loc]!") : SPAN_WARNING("[src] sadly floats for a moment on [loc], before sinking to the bottom. Poor thing."),
+			status == FISH_ALIVE? span_notice("[src] quickly swims back into [loc]!") : span_warning("[src] sadly floats for a moment on [loc], before sinking to the bottom. Poor thing."),
 		)
 		qdel(src)
 		return
@@ -226,7 +226,7 @@
 
 /obj/item/fish/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(I.is_sharp())
-		user.action_feedback(SPAN_NOTICE("You start cutting [src] into fillets..."), src)
+		user.action_feedback(span_notice("You start cutting [src] into fillets..."), src)
 		if(!do_after(user, 2 SECONDS, src))
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		var/atom/dropping_where = drop_location()
@@ -246,7 +246,7 @@
 			status = FISH_DEAD
 			STOP_PROCESSING(SSobj, src)
 			stop_flopping()
-			var/message = SPAN_NOTICE("\The [name] dies.")
+			var/message = span_notice("\The [name] dies.")
 			if(istype(loc,/obj/structure/aquarium))
 				loc.visible_message(message)
 			else

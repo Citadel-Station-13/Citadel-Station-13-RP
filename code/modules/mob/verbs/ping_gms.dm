@@ -17,11 +17,11 @@
 	if(target)
 		var/is_valid_atom = isloc(target.loc) && !(target.atom_flags & (ATOM_NONWORLD|ATOM_ABSTRACT))
 		if(!is_valid_atom)
-			to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping rejected: [target] is not a valid in-world entity. --"))
+			to_chat(src, span_boldannounce("<center>-- GM ping rejected: [target] is not a valid in-world entity. --"))
 			return
 
 	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS))
-		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping is on cooldown. Slow down. --"))
+		to_chat(src, span_boldannounce("<center>-- GM ping is on cooldown. Slow down. --"))
 		return
 
 	if(client?.prefs?.muted & MUTE_PRAY)
@@ -72,11 +72,11 @@
 		return
 
 	if(length_char(input_data) < minimum_length)
-		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping rejected: Your message was too short. --"))
+		to_chat(src, span_boldannounce("<center>-- GM ping rejected: Your message was too short. --"))
 		return
 
 	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS))
-		to_chat(src, SPAN_BOLDANNOUNCE("<center>-- GM ping is on cooldown. Slow down. Your message was [SPAN_TOOLTIP(input_data, "this")] --"))
+		to_chat(src, span_boldannounce("<center>-- GM ping is on cooldown. Slow down. Your message was [span_tooltip(input_data, "this")] --"))
 		return
 
 	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_PING_GMS, 5 SECONDS)
@@ -101,10 +101,10 @@
 	log_admin("[key_name(src)] created a (UID: [creating_ping.lazy_unsafe_uid]) GM ping[target ? " with context-target '[target]' ([target.type]) ([REF(target.type)])" : ""] \
 		and content '[message_to_admins]'")
 
-	var/rendered = SPAN_TOOLTIP_DANGEROUS_HTML(SPAN_LINKIFY(sanitized), "message")
+	var/rendered = SPAN_TOOLTIP_DANGEROUS_HTML(span_linkify(sanitized), "message")
 	// TODO: make opening the panel a link.
 	message_admins("<b>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)]</b> is pinging GMs with a [rendered] at [ADMIN_COORDJMP(loc)][target ? " regarding '[target]'" : ""]. Open the GM Ping panel to interact with it.")
-	to_chat(src, SPAN_BOLDNOTICE("<center>-- You send a [rendered] to game staff. --</center>"))
+	to_chat(src, span_boldnotice("<center>-- You send a [rendered] to game staff. --</center>"))
 
 	// TODO: soundbyte this.
 	for(var/client/admin_client in GLOB.admins)

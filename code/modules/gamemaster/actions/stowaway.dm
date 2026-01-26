@@ -32,7 +32,7 @@
 	for(var/i in 1 to 10)
 		var/area/A = pick(grand_list_of_areas)
 		if(is_area_occupied(A))
-			log_debug(SPAN_DEBUGWARNING("[name] event: Rejected [A] because it is occupied."))
+			log_debug(span_debug_warning("[name] event: Rejected [A] because it is occupied."))
 			continue
 		// A good area, great! Lets try and pick a turf
 		var/list/turfs = list()
@@ -40,13 +40,13 @@
 			if(turf_clear(F))
 				turfs += F
 		if(turfs.len == 0)
-			log_debug(SPAN_DEBUGWARNING("[name] event: Rejected [A] because it has no clear turfs."))
+			log_debug(span_debug_warning("[name] event: Rejected [A] because it has no clear turfs."))
 			continue
 		target_area = A
 		target_turf = pick(turfs)
 
 	if(!target_area)
-		log_debug(SPAN_DEBUGWARNING("[name] event: Giving up after too many failures to pick target area"))
+		log_debug(span_debug_warning("[name] event: Giving up after too many failures to pick target area"))
 		return
 
 /datum/gm_action/stowaway/start()

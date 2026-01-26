@@ -186,7 +186,7 @@
 /obj/machinery/atmospherics/component/unary/cryo_cell/attackby(obj/item/G, mob/user)
 	if(istype(G, /obj/item/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
+			to_chat(user, span_warning("A beaker is already loaded into the machine."))
 			return
 		if(!user.attempt_insert_item_for_installation(G, src))
 			return
@@ -199,9 +199,9 @@
 		if(!ismob(grab.affecting))
 			return
 		if(occupant)
-			to_chat(user, SPAN_WARNING("\The [src] is already occupied by [occupant]."))
+			to_chat(user, span_warning("\The [src] is already occupied by [occupant]."))
 		if(grab.affecting.has_buckled_mobs())
-			to_chat(user, SPAN_WARNING( "\The [grab.affecting] has other entities attached to it. Remove them first."))
+			to_chat(user, span_warning( "\The [grab.affecting] has other entities attached to it. Remove them first."))
 			return
 		var/mob/M = grab.affecting
 		qdel(grab)
@@ -298,27 +298,27 @@
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
 	if(machine_stat & (NOPOWER|BROKEN))
-		to_chat(usr, SPAN_WARNING("The cryo cell is not functioning."))
+		to_chat(usr, span_warning("The cryo cell is not functioning."))
 		return
 	if(!istype(M))
-		to_chat(usr, SPAN_DANGER("The cryo cell cannot handle such a lifeform!"))
+		to_chat(usr, span_danger("The cryo cell cannot handle such a lifeform!"))
 		return
 	if(occupant)
-		to_chat(usr, SPAN_DANGER("The cryo cell is already occupied!"))
+		to_chat(usr, span_danger("The cryo cell is already occupied!"))
 		return
 	if(M.abiotic())
-		to_chat(usr, SPAN_WARNING("Subject may not have abiotic items on."))
+		to_chat(usr, span_warning("Subject may not have abiotic items on."))
 		return
 	if(M.buckled)
-		to_chat(usr, SPAN_WARNING("[M] is buckled to something!"))
+		to_chat(usr, span_warning("[M] is buckled to something!"))
 		return
 	if(!node)
-		to_chat(usr, SPAN_WARNING("The cell is not correctly connected to its pipe network!"))
+		to_chat(usr, span_warning("The cell is not correctly connected to its pipe network!"))
 		return
 	M.forceMove(src)
 	M.ExtinguishMob()
 	if(!IS_DEAD(M))
-		to_chat(M, SPAN_USERDANGER("You feel a cold liquid surround you. Your skin starts to freeze up."))
+		to_chat(M, span_userdanger("You feel a cold liquid surround you. Your skin starts to freeze up."))
 
 	occupant = M
 	occupant.update_perspective()
@@ -342,7 +342,7 @@
 	if(usr == occupant)//If the user is inside the tube...
 		if(usr.stat == 2)//and he's not dead....
 			return
-		to_chat(usr, SPAN_NOTICE("Release sequence activated. This will take two minutes."))
+		to_chat(usr, span_notice("Release sequence activated. This will take two minutes."))
 		sleep(1200)
 		if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
 			return
@@ -361,7 +361,7 @@
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, SPAN_WARNING("You have other entities attached to yourself. Remove them first."))
+			to_chat(L, span_warning("You have other entities attached to yourself. Remove them first."))
 			return
 		if(L.stat != CONSCIOUS)
 			return

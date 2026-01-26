@@ -72,8 +72,8 @@
 		return FALSE
 
 	user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
-	to_chat(user, SPAN_NOTICE("You inject \the [H] with \the [src]."))
-	H.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
+	to_chat(user, span_notice("You inject \the [H] with \the [src]."))
+	H.custom_pain(span_warning("You feel a tiny prick!"), 1, TRUE)
 
 	if(hyposound)
 		playsound(src, hyposound, 25)
@@ -82,7 +82,7 @@
 		var/contained = reagentlist()
 		var/trans = reagents.trans_to_mob(H, amount_per_transfer_from_this, CHEM_INJECT)
 		add_attack_logs(user,H,"Injected with [src.name] containing [contained], trasferred [trans] units")
-		to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
+		to_chat(user, span_notice("[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
 		return TRUE
 	return FALSE
 

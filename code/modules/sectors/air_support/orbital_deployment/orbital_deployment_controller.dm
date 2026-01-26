@@ -142,8 +142,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 			log_orbital_deployment(actor, "armed zone with controller at [COORD(src)]")
 			actor.visible_feedback(
 				target = src,
-				visible = SPAN_WARNING("[actor.performer] presses a button on [src]. Mechanical sounds permeate the air as hydraulics come to life."),
-				audible = SPAN_WARNING("You hear the mechanical sounds of hydraulics coming to life."),
+				visible = span_warning("[actor.performer] presses a button on [src]. Mechanical sounds permeate the air as hydraulics come to life."),
+				audible = span_warning("You hear the mechanical sounds of hydraulics coming to life."),
 			)
 			return TRUE
 		if("disarm")
@@ -156,8 +156,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 			linked_zone.disarm()
 			actor.visible_feedback(
 				target = src,
-				visible = SPAN_WARNING("[actor.performer] presses a button on [src]. Nearby machinery slows to a stop as the system is disarmed."),
-				audible = SPAN_WARNING("You hear heavy hydraulics slow to a stop."),
+				visible = span_warning("[actor.performer] presses a button on [src]. Nearby machinery slows to a stop as the system is disarmed."),
+				audible = span_warning("You hear heavy hydraulics slow to a stop."),
 			)
 			log_orbital_deployment(actor, "armed zone with controller at [COORD(src)]")
 			return TRUE

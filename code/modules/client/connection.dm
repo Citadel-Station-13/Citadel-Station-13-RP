@@ -66,7 +66,7 @@
 
 /client/proc/reject_on_initialization_block()
 	if(!initialized)
-		to_chat(src, SPAN_DANGER("Your client is still initializing. Wait a moment."))
+		to_chat(src, span_danger("Your client is still initializing. Wait a moment."))
 		return FALSE
 	return TRUE
 

@@ -59,7 +59,7 @@
 	slot_flags = NONE
 	if(!silent)
 		actor.chat_feedback(
-			SPAN_WARNING("You activate \the [src]."),
+			span_warning("You activate \the [src]."),
 			target = src,
 		)
 	set_light(lrange, lpower, lcolor)
@@ -69,7 +69,7 @@
 	slot_flags = SLOT_EARS
 	if(!silent)
 		actor.chat_feedback(
-			SPAN_WARNING("You collapse \the [src]."),
+			span_warning("You collapse \the [src]."),
 			target = src,
 		)
 	set_light(0)

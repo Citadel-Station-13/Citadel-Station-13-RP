@@ -95,7 +95,7 @@
 	sleep(tunnel_warning) // For the telegraphing.
 
 	// Do the dig!
-	visible_message(SPAN_DANGER("\The [src] tunnels towards \the [A]!"))
+	visible_message(span_danger("\The [src] tunnels towards \the [A]!"))
 	submerge()
 
 	if(handle_tunnel(destination) == FALSE)
@@ -116,7 +116,7 @@
 		if(L == src)
 			continue
 
-		visible_message(SPAN_DANGER("\The [src] erupts from underneath, and hits \the [L]!"))
+		visible_message(span_danger("\The [src] erupts from underneath, and hits \the [L]!"))
 		playsound(L, 'sound/weapons/heavysmash.ogg', 75, 1)
 		L.afflict_paralyze(20 * 3)
 		overshoot = FALSE
@@ -127,7 +127,7 @@
 		return TRUE
 
 	// Otherwise we need to keep going.
-	to_chat(src, SPAN_WARNING( "You overshoot your target!"))
+	to_chat(src, span_warning( "You overshoot your target!"))
 	playsound(src, 'sound/weapons/punchmiss.ogg', 75, 1)
 	var/dir_to_go = get_dir(starting_turf, destination)
 	for(var/i = 1 to rand(2, 4))
@@ -158,7 +158,7 @@
 		// Update T.
 		T = get_step(src, get_dir(src, destination))
 		if(T.check_density(ignore_mobs = TRUE))
-			to_chat(src, SPAN_CRITICAL("You hit something really solid!"))
+			to_chat(src, span_critical("You hit something really solid!"))
 			playsound(src, "punch", 75, 1)
 			afflict_paralyze(20 * 5)
 			add_modifier(/datum/modifier/tunneler_vulnerable, 10 SECONDS)

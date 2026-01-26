@@ -257,7 +257,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		node = get_exonet_node()
 
 	if(!node || !node.on || !node.allow_external_newscasters)
-		to_chat(user, SPAN_DANGER("Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
+		to_chat(user, span_danger("Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
 		contact the system administrator."))
 		return FALSE
 

@@ -11,7 +11,7 @@
 	if(target.get_emag_item_state())
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_WARNING("[target] already has scrambled equipment enabled."),
+				span_warning("[target] already has scrambled equipment enabled."),
 				target = src,
 			)
 		return FALSE

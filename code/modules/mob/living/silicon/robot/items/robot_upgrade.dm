@@ -47,7 +47,7 @@
 	var/mob/living/silicon/robot/robot_target = target
 	if(!robot_target.opened)
 		clickchain.chat_feedback(
-			SPAN_WARNING("[robot_target] needs to havea their cover opened for you to access their internals!"),
+			span_warning("[robot_target] needs to havea their cover opened for you to access their internals!"),
 			target = robot_target,
 		)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

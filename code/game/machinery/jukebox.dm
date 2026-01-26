@@ -91,7 +91,7 @@
 	if(current_track && playing)
 		media_url = current_track.url
 		media_start_time = world.time
-		visible_message(SPAN_NOTICE("\The [src] begins to play [current_track.display()]."))
+		visible_message(span_notice("\The [src] begins to play [current_track.display()]."))
 	else
 		media_url = ""
 		media_start_time = 0
@@ -117,8 +117,8 @@
 		if(playing)
 			StopPlaying()
 		user.visible_message( \
-			SPAN_WARNING("[user] has [anchored ? "un" : ""]secured \the [src]."), \
-			SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
+			span_warning("[user] has [anchored ? "un" : ""]secured \the [src]."), \
+			span_notice("You [anchored ? "un" : ""]secure \the [src]."))
 
 		anchored = !anchored
 		playsound(src, W.tool_sound, 50, TRUE)
@@ -279,7 +279,7 @@
 
 /obj/machinery/media/jukebox/proc/explode()
 	walk_to(src,0)
-	src.visible_message(SPAN_DANGER("\The [src] blows apart!"), 1)
+	src.visible_message(span_danger("\The [src] blows apart!"), 1)
 
 	explosion(src.loc, 0, 0, 1, rand(1,2), 1)
 
@@ -300,8 +300,8 @@
 		if(playing)
 			StopPlaying()
 		user.visible_message( \
-			SPAN_WARNING("[user] has [anchored ? "un" : ""]secured \the [src]."), \
-			SPAN_NOTICE("You [anchored ? "un" : ""]secure \the [src]."))
+			span_warning("[user] has [anchored ? "un" : ""]secured \the [src]."), \
+			span_notice("You [anchored ? "un" : ""]secure \the [src]."))
 
 		anchored = !anchored
 		playsound(src, W.tool_sound, 50, TRUE)
@@ -316,11 +316,11 @@
 		StopPlaying()
 	else
 		StopPlaying()
-		visible_message(SPAN_NOTICE("\The [src] abruptly stops and reboots itself, but nothing else happens."))
+		visible_message(span_notice("\The [src] abruptly stops and reboots itself, but nothing else happens."))
 		getTracksList()
 		return 1
 	if(emagged == 1)
-		visible_message(SPAN_NOTICE("\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist."))
+		visible_message(span_notice("\The [src] abruptly stops before rebooting itself. A notice flashes on the screen indicating new songs have been added to the tracklist."))
 		update_icon()
 		getTracksList()
 		return 1

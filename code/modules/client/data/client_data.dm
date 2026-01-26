@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(client_data)
 		src.ligma = TRUE
 	if(src.ligma)
 		log_shadowban("[ckey] autobanned based on [why].")
-		message_admins(SPAN_DANGER("Automatically shadowbanning [ckey] based on configuration (matched on [why]). Varedit client.persistent.ligma to change this."))
+		message_admins(span_danger("Automatically shadowbanning [ckey] based on configuration (matched on [why]). Varedit client.persistent.ligma to change this."))
 
 /datum/client_data/proc/block_on_account_age_loaded(timeout = 10 SECONDS)
 	var/timed_out = world.time + timeout

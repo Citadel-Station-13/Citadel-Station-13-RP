@@ -95,7 +95,7 @@
 		else
 			return FALSE
 	if(!damage_amount)
-		to_chat(user, SPAN_NOTICE("Nothing to fix!"))
+		to_chat(user, span_notice("Nothing to fix!"))
 		return FALSE
 
 	user.setClickCooldownLegacy(user.get_attack_speed_legacy(tool))
@@ -110,7 +110,7 @@
 			src.heal_fire_loss(repair_amount)
 
 	if(damage_desc)
-		user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [src] with [tool]."))
+		user.visible_message(span_notice("\The [user] patches [damage_desc] on [src] with [tool]."))
 
 	return TRUE
 

@@ -63,14 +63,14 @@
 			if("Stake")
 				buckle_allowed = TRUE
 				buckle_flags |= BUCKLING_REQUIRES_RESTRAINTS
-				to_chat(user, SPAN_NOTICE("You add a rod to \the [src]."))
+				to_chat(user, span_notice("You add a rod to \the [src]."))
 				var/mutable_appearance/rod_underlay = mutable_appearance('icons/obj/structures.dmi', "bonfire_rod")
 				rod_underlay.pixel_y = 16
 				rod_underlay.appearance_flags = RESET_COLOR|PIXEL_SCALE|TILE_BOUND
 				underlays += rod_underlay
 			if("Grill")
 				grill = TRUE
-				to_chat(user, SPAN_NOTICE("You add a grill to \the [src]."))
+				to_chat(user, span_notice("You add a grill to \the [src]."))
 				update_icon()
 			else
 				return ..()
@@ -102,7 +102,7 @@
 			user.visible_message("[user] dismantles down \the [src].", "You dismantle \the [src].")
 			qdel(src)
 	else
-		to_chat(user, SPAN_WARNING("\The [src] is still burning. Extinguish it first if you want to dismantle it."))
+		to_chat(user, span_warning("\The [src] is still burning. Extinguish it first if you want to dismantle it."))
 
 /obj/structure/bonfire/proc/get_fuel_amount()
 	var/F = 0
@@ -120,7 +120,7 @@
 	if(get_fuel_amount())
 		var/atom/movable/AM = pop(contents)
 		AM.forceMove(get_turf(src))
-		to_chat(user, SPAN_NOTICE("You take \the [AM] out of \the [src] before it has a chance to burn away."))
+		to_chat(user, span_notice("You take \the [AM] out of \the [src] before it has a chance to burn away."))
 		update_icon()
 
 /obj/structure/bonfire/permanent/remove_fuel(mob/user)
@@ -128,23 +128,23 @@
 
 /obj/structure/bonfire/proc/add_fuel(atom/movable/new_fuel, mob/user)
 	if(get_fuel_amount() >= 20)
-		to_chat(user, SPAN_WARNING("\The [src] already has enough fuel!"))
+		to_chat(user, span_warning("\The [src] already has enough fuel!"))
 		return FALSE
 	if(istype(new_fuel, /obj/item/stack/material/wood) || istype(new_fuel, /obj/item/stack/material/log) )
 		var/obj/item/stack/F = new_fuel
 		var/obj/item/stack/S = F.split(1, user)
 		if(S)
 			S.forceMove(src)
-			to_chat(user, SPAN_WARNING("You add \the [new_fuel] to \the [src]."))
+			to_chat(user, span_warning("You add \the [new_fuel] to \the [src]."))
 			update_icon()
 			return TRUE
 		return FALSE
 	else
-		to_chat(user, SPAN_WARNING("\The [src] needs raw wood to burn, \a [new_fuel] won't work."))
+		to_chat(user, span_warning("\The [src] needs raw wood to burn, \a [new_fuel] won't work."))
 		return FALSE
 
 /obj/structure/bonfire/permanent/add_fuel(mob/user)
-	to_chat(user, SPAN_WARNING("\The [src] has plenty of fuel and doesn't need more fuel."))
+	to_chat(user, span_warning("\The [src] has plenty of fuel and doesn't need more fuel."))
 
 /obj/structure/bonfire/proc/consume_fuel(obj/item/stack/consumed_fuel)
 	if(!istype(consumed_fuel))
@@ -176,7 +176,7 @@
 		update_icon()
 		QDEL_NULL(particles)
 		STOP_PROCESSING(SSobj, src)
-		visible_message(SPAN_NOTICE("\The [src] stops burning."))
+		visible_message(span_notice("\The [src] stops burning."))
 
 /obj/structure/bonfire/proc/ignite()
 	if(!burning && get_fuel_amount())
@@ -184,7 +184,7 @@
 		update_icon()
 		particles = new /particles/bonfire()
 		START_PROCESSING(SSobj, src)
-		visible_message(SPAN_WARNING("\The [src] starts burning!"))
+		visible_message(span_warning("\The [src] starts burning!"))
 
 /obj/structure/bonfire/proc/burn()
 	var/turf/current_location = get_turf(src)

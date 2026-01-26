@@ -59,9 +59,9 @@
 
 	if(reagents)
 		if(reagents.total_volume == reagents.maximum_volume * 0.05)
-			to_chat(owner, SPAN_NOTICE("[pick(empty_message)]"))
+			to_chat(owner, span_notice("[pick(empty_message)]"))
 		else if(reagents.total_volume == reagents.maximum_volume && before_gen < reagents.maximum_volume)
-			to_chat(owner, SPAN_WARNING("[pick(full_message)]"))
+			to_chat(owner, span_warning("[pick(full_message)]"))
 
 /obj/item/organ/internal/fruitgland/proc/do_generation()
 	owner.nutrition -= gen_cost

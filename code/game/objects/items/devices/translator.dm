@@ -46,25 +46,25 @@
 		return
 	if(!ismob(loc))
 		return
-	to_chat(loc, SPAN_NOTICE("New language detected. Beginning translation network training."))
+	to_chat(loc, span_notice("New language detected. Beginning translation network training."))
 
 /obj/item/universal_translator/examine(mob/user, dist)
 	. = ..()
 	if(cassette_translation)
-		. += SPAN_NOTICE("Use a cassette tape on this to translate the tape's contents where possible.")
+		. += span_notice("Use a cassette tape on this to translate the tape's contents where possible.")
 
 /obj/item/universal_translator/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/cassette_tape))
 		if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_TAPE_TRANSLATION))
-			user.action_feedback(SPAN_WARNING("[src] cannot translate tapes that fast."), src)
+			user.action_feedback(span_warning("[src] cannot translate tapes that fast."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/cassette_tape/T = I
 		var/datum/cassette_tape_iterator/translator/iter = T.lock_for_translation()
 		if(!iter)
-			user.action_feedback(SPAN_WARNING("Could not lock [T] for translation."), src)
+			user.action_feedback(span_warning("Could not lock [T] for translation."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		var/amt = iter.translate(context)
-		user.action_feedback(SPAN_NOTICE("Translated [amt] lines on [T]. Processor cooling down for 10 seconds."), src)
+		user.action_feedback(span_notice("Translated [amt] lines on [T]. Processor cooling down for 10 seconds."), src)
 		TIMER_COOLDOWN_START(src, CD_INDEX_TAPE_TRANSLATION, 10 SECONDS)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
@@ -76,15 +76,15 @@
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!istype(context, /datum/translation_context/variable))
-		user.action_feedback(SPAN_WARNING("[src] does not have a variable translation matrix."), src)
+		user.action_feedback(span_warning("[src] does not have a variable translation matrix."), src)
 		return
 	if(!allow_knowledge_transfer)
-		user.action_feedback(SPAN_WARNING("[src] doesn't have a data port."), src)
+		user.action_feedback(span_warning("[src] doesn't have a data port."), src)
 		return
 	var/mob/living/silicon/robot/R = target
 	var/datum/translation_context/variable/theirs = R.translation_context
 	if(!istype(theirs))
-		user.action_feedback(SPAN_WARNING("[R] does not have a variable translation matrix."), src)
+		user.action_feedback(span_warning("[R] does not have a variable translation matrix."), src)
 		return
 	var/datum/translation_context/variable/ours = context
 	ours.copy_knowledge(theirs)
@@ -102,7 +102,7 @@
 				continue
 			allowed += L
 		if(!length(allowed))
-			to_chat(user, SPAN_WARNING("There's no language you know that this can translate to."))
+			to_chat(user, span_warning("There's no language you know that this can translate to."))
 			return
 		langset = input(user,"Translate to which of your languages?","Language Selection") as null|anything in allowed
 		if(!langset)

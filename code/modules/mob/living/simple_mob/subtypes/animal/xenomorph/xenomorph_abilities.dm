@@ -77,13 +77,13 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their heavy claws!"))
+			visible_message(span_danger("\The [src] sends \the [L] flying with their heavy claws!"))
 			playsound(src, "sound/mobs/biomorphs/breaker_slam.ogg", 50, 1)
 			var/throw_dir = get_dir(src, L)
 			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
 			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
 		else
-			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
+			to_chat(L, span_warning( "\The [src] punches you with incredible force, but you remain in place."))
 
 // Monarch Charge
 
@@ -173,13 +173,13 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their heavy claws!"))
+			visible_message(span_danger("\The [src] sends \the [L] flying with their heavy claws!"))
 			playsound(src, "sound/mobs/biomorphs/breaker_slam.ogg", 50, 1)
 			var/throw_dir = get_dir(src, L)
 			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
 			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
 		else
-			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
+			to_chat(L, span_warning( "\The [src] punches you with incredible force, but you remain in place."))
 
 /mob/living/simple_mob/animal/space/xenomorph/special/burrower/should_special_attack(atom/A)
 	// Make sure its possible for the spider to reach the target so it doesn't try to go through a window.
@@ -210,7 +210,7 @@
 	sleep(tunnel_warning) // For the telegraphing.
 
 	// Do the dig!
-	visible_message(SPAN_DANGER("\The [src] tunnels towards \the [A]!"))
+	visible_message(span_danger("\The [src] tunnels towards \the [A]!"))
 	submerge()
 
 	if(handle_tunnel(destination) == FALSE)
@@ -231,7 +231,7 @@
 		if(L == src)
 			continue
 
-		visible_message(SPAN_DANGER("\The [src] erupts from underneath, and hits \the [L]!"))
+		visible_message(span_danger("\The [src] erupts from underneath, and hits \the [L]!"))
 		playsound(L, 'sound/weapons/heavysmash.ogg', 75, 1)
 		L.afflict_paralyze(20 * 3)
 		overshoot = FALSE
@@ -242,7 +242,7 @@
 		return TRUE
 
 	// Otherwise we need to keep going.
-	to_chat(src, SPAN_WARNING( "You overshoot your target!"))
+	to_chat(src, span_warning( "You overshoot your target!"))
 	playsound(src, 'sound/weapons/punchmiss.ogg', 75, 1)
 	var/dir_to_go = get_dir(starting_turf, destination)
 	for(var/i = 1 to rand(2, 4))
@@ -273,7 +273,7 @@
 		// Update T.
 		T = get_step(src, get_dir(src, destination))
 		if(T.check_density(ignore_mobs = TRUE))
-			to_chat(src, SPAN_CRITICAL("You hit something really solid!"))
+			to_chat(src, span_critical("You hit something really solid!"))
 			playsound(src, "punch", 75, 1)
 			afflict_paralyze(20 * 5)
 			add_modifier(/datum/modifier/tunneler_vulnerable, 10 SECONDS)
@@ -345,7 +345,7 @@
 
 	// Do the actual leap.
 	status_flags |= STATUS_LEAPING // Lets us pass over everything.
-	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
+	visible_message(span_danger("\The [src] leaps at \the [A]!"))
 	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 
 	sleep(5) // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
@@ -379,8 +379,8 @@
 
 	if(victim)
 		victim.afflict_paralyze(20 * 2)
-		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
-		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
+		victim.visible_message(span_danger("\The [src] knocks down \the [victim]!"))
+		to_chat(victim, span_critical("\The [src] jumps on you!"))
 		. = TRUE
 
 	set_AI_busy(FALSE)
@@ -402,7 +402,7 @@
 // Burster Explosion
 
 /mob/living/simple_mob/animal/space/xenomorph/special/burster/proc/baneling()
-    visible_message(SPAN_CRITICAL("\The [src]'s body begins to rupture!"))
+    visible_message(span_critical("\The [src]'s body begins to rupture!"))
     var/delay = rand(explosion_delay_lower, explosion_delay_upper)
     spawn(0)
         // Flash black and red as a warning.
@@ -416,7 +416,7 @@
     spawn(delay)
         // The actual boom.
         if(src && !exploded)
-            visible_message(SPAN_DANGER("\The [src]'s body detonates!"))
+            visible_message(span_danger("\The [src]'s body detonates!"))
             exploded = TRUE
             explosion(src.loc, explosion_dev_range, explosion_heavy_range, explosion_light_range, explosion_flash_range)
 

@@ -29,7 +29,7 @@
 		breather.internal = null
 		if(breather.internals)
 			breather.internals.icon_state = "internal0"
-		visible_message(SPAN_NOTICE("\The [contained] rapidly retracts just before \the [src] is destroyed!"))
+		visible_message(span_notice("\The [contained] rapidly retracts just before \the [src] is destroyed!"))
 		breather = null
 
 	if(tank)
@@ -54,21 +54,21 @@
 /obj/machinery/oxygen_pump/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if((machine_stat & MAINT) && tank)
 		user.visible_message( \
-			SPAN_NOTICE("\The [user] removes \the [tank] from \the [src]."), \
-			SPAN_NOTICE("You remove \the [tank] from \the [src]."))
+			span_notice("\The [user] removes \the [tank] from \the [src]."), \
+			span_notice("You remove \the [tank] from \the [src]."))
 		user.put_in_hands(tank)
 		src.add_fingerprint(user)
 		tank.add_fingerprint(user)
 		tank = null
 		return
 	if (!tank)
-		to_chat(user, SPAN_WARNING("There is no tank in \the [src]!"))
+		to_chat(user, span_warning("There is no tank in \the [src]!"))
 		return
 	if(breather)
 		if(tank)
 			tank.forceMove(src)
 		contained.forceMove(src)
-		visible_message(SPAN_NOTICE("\The [user] makes \the [contained] rapidly retract back into \the [src]!"))
+		visible_message(span_notice("\The [user] makes \the [contained] rapidly retract back into \the [src]!"))
 		if(breather.internals)
 			breather.internals.icon_state = "internal0"
 		breather = null
@@ -95,33 +95,33 @@
 		user = target
 	// Check target validity
 	if(!target.organs_by_name[BP_HEAD])
-		to_chat(user, SPAN_WARNING("\The [target] doesn't have a head."))
+		to_chat(user, span_warning("\The [target] doesn't have a head."))
 		return
 	if(!target.check_has_mouth())
-		to_chat(user, SPAN_WARNING("\The [target] doesn't have a mouth."))
+		to_chat(user, span_warning("\The [target] doesn't have a mouth."))
 		return
 	if(target.wear_mask && target != breather)
-		to_chat(user, SPAN_WARNING("\The [target] is already wearing a mask."))
+		to_chat(user, span_warning("\The [target] is already wearing a mask."))
 		return
 	if(target.head && (target.head.body_cover_flags & FACE))
-		to_chat(user, SPAN_WARNING("Remove their [target.head] first."))
+		to_chat(user, span_warning("Remove their [target.head] first."))
 		return
 	if(!tank)
-		to_chat(user, SPAN_WARNING("There is no tank in \the [src]."))
+		to_chat(user, span_warning("There is no tank in \the [src]."))
 		return
 	if(machine_stat & MAINT)
-		to_chat(user, SPAN_WARNING("Please close the maintenance hatch first."))
+		to_chat(user, span_warning("Please close the maintenance hatch first."))
 		return
 	if(!Adjacent(target))
-		to_chat(user, SPAN_WARNING("Please stay close to \the [src]."))
+		to_chat(user, span_warning("Please stay close to \the [src]."))
 		return
 	//when there is a breather:
 	if(breather && target != breather)
-		to_chat(user, SPAN_WARNING("The pump is already in use."))
+		to_chat(user, span_warning("The pump is already in use."))
 		return
 	//Checking if breather is still valid
 	if(target == breather && target.wear_mask != contained)
-		to_chat(user, SPAN_WARNING("\The [target] is not using the supplied [contained]."))
+		to_chat(user, span_warning("\The [target] is not using the supplied [contained]."))
 		return
 	return 1
 
@@ -129,31 +129,31 @@
 	if(W.is_screwdriver())
 		machine_stat ^= MAINT
 		user.visible_message( \
-			SPAN_NOTICE("\The [user] [(machine_stat & MAINT) ? "opens" : "closes"] \the [src]."), \
-			SPAN_NOTICE("You [(machine_stat & MAINT) ? "open" : "close"] \the [src]."))
+			span_notice("\The [user] [(machine_stat & MAINT) ? "opens" : "closes"] \the [src]."), \
+			span_notice("You [(machine_stat & MAINT) ? "open" : "close"] \the [src]."))
 
 		icon_state = (machine_stat & MAINT) ? icon_state_open : icon_state_closed
 		//TO-DO: Open icon
 	if(istype(W, /obj/item/tank) && (machine_stat & MAINT))
 		if(tank)
-			to_chat(user, SPAN_WARNING("\The [src] already has a tank installed!"))
+			to_chat(user, span_warning("\The [src] already has a tank installed!"))
 		else
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			tank = W
 			user.visible_message( \
-				SPAN_NOTICE("\The [user] installs \the [tank] into \the [src]."), \
-				SPAN_NOTICE("You install \the [tank] into \the [src]."))
+				span_notice("\The [user] installs \the [tank] into \the [src]."), \
+				span_notice("You install \the [tank] into \the [src]."))
 			src.add_fingerprint(user)
 	if(istype(W, /obj/item/tank) && !machine_stat)
-		to_chat(user, SPAN_WARNING("Please open the maintenance hatch first."))
+		to_chat(user, span_warning("Please open the maintenance hatch first."))
 
 /obj/machinery/oxygen_pump/examine(mob/user, dist)
 	. = ..()
 	if(tank)
-		. += SPAN_NOTICE("The meter shows [round(tank.air_contents.return_pressure())] kPa.")
+		. += span_notice("The meter shows [round(tank.air_contents.return_pressure())] kPa.")
 	else
-		. += SPAN_WARNING("It is missing a tank!")
+		. += span_warning("It is missing a tank!")
 
 
 /obj/machinery/oxygen_pump/process(delta_time)
@@ -162,7 +162,7 @@
 			if(tank)
 				tank.forceMove(src)
 			contained.forceMove(src)
-			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
+			src.visible_message(span_notice("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null
 			update_use_power(USE_POWER_IDLE)
 		else if(!breather.internal && tank)
@@ -288,7 +288,7 @@
 			if(tank)
 				tank.forceMove(src)
 			contained.forceMove(src)
-			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
+			src.visible_message(span_notice("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null
 			update_use_power(USE_POWER_IDLE)
 		else if(!breather.internal && tank)

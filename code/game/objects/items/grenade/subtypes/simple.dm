@@ -62,9 +62,9 @@
 
 /obj/item/grenade/simple/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("It's set to detonate after [activation_detonate_delay * 0.1] seconds.")
+	. += span_notice("It's set to detonate after [activation_detonate_delay * 0.1] seconds.")
 	if(should_simple_delay_adjust(new /datum/event_args/actor(user)))
-		. += SPAN_NOTICE("Use a screwdriver on this to change the fuse time.")
+		. += span_notice("Use a screwdriver on this to change the fuse time.")
 
 /obj/item/grenade/simple/activate(datum/event_args/actor/actor)
 	if(activated)
@@ -103,13 +103,13 @@
 	if(activation_detonate)
 		if(activation_detonate_delay)
 			actor?.chat_feedback(
-				SPAN_WARNING("You prime \the [src]![activation_detonate_delay > 0 ? " [CEILING(activation_detonate_delay * 0.1, world.tick_lag)] seconds!" : ""]"),
+				span_warning("You prime \the [src]![activation_detonate_delay > 0 ? " [CEILING(activation_detonate_delay * 0.1, world.tick_lag)] seconds!" : ""]"),
 				target = src,
 			)
 		addtimer(CALLBACK(src, PROC_REF(detonate)), activation_detonate_delay)
 	else
 		actor?.chat_feedback(
-			SPAN_WARNING("You prime \the [src]!"),
+			span_warning("You prime \the [src]!"),
 			target = src,
 		)
 	// TODO: this & throw mode should only happen on clickchain activation
@@ -152,7 +152,7 @@
 		new_index = 1
 	activation_detonate_delay = simple_activation_delay_notches[new_index]
 	actor?.chat_feedback(
-		SPAN_NOTICE("You set \the [src] for [activation_detonate_delay ? "[activation_detonate_delay * 0.1] second detonation time" : "instant detonation"]."),
+		span_notice("You set \the [src] for [activation_detonate_delay ? "[activation_detonate_delay * 0.1] second detonation time" : "instant detonation"]."),
 		target = src,
 	)
 

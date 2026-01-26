@@ -7,8 +7,8 @@
 	if((temperature > PHORON_MINIMUM_BURN_TEMPERATURE || force_burn) && (no_check ||check_recombustability(zone? zone.fuel_objs : null)))
 
 		#ifdef FIREDBG
-		log_debug(SPAN_DEBUGINFO("***************** FIREDBG *****************"))
-		log_debug(SPAN_DEBUGINFO("Burning [zone? zone.name : "zoneless gas_mixture"]!"))
+		log_debug(span_debug_info("***************** FIREDBG *****************"))
+		log_debug(span_debug_info("Burning [zone? zone.name : "zoneless gas_mixture"]!"))
 		#endif
 
 		var/gas_fuel = 0
@@ -61,13 +61,13 @@
 		var/used_oxidizers = used_fuel*(FIRE_REACTION_OXIDIZER_AMOUNT/FIRE_REACTION_FUEL_AMOUNT)
 
 		#ifdef FIREDBG
-		log_debug(SPAN_DEBUGINFO("gas_fuel = [gas_fuel], liquid_fuel = [liquid_fuel], total_oxidizers = [total_oxidizers]"))
-		log_debug(SPAN_DEBUGINFO("fuel_area = [fuel_area], total_fuel = [total_fuel], reaction_limit = [reaction_limit]"))
-		log_debug(SPAN_DEBUGINFO("firelevel -> [firelevel] (gas: [gas_firelevel], liquid: [liquid_firelevel])"))
-		log_debug(SPAN_DEBUGINFO("liquid_reaction_progress = [liquid_reaction_progress]"))
-		log_debug(SPAN_DEBUGINFO("gas_reaction_progress = [gas_reaction_progress]"))
-		log_debug(SPAN_DEBUGINFO("total_reaction_progress = [total_reaction_progress]"))
-		log_debug(SPAN_DEBUGINFO("used_fuel = [used_fuel], used_oxidizers = [used_oxidizers]; "))
+		log_debug(span_debug_info("gas_fuel = [gas_fuel], liquid_fuel = [liquid_fuel], total_oxidizers = [total_oxidizers]"))
+		log_debug(span_debug_info("fuel_area = [fuel_area], total_fuel = [total_fuel], reaction_limit = [reaction_limit]"))
+		log_debug(span_debug_info("firelevel -> [firelevel] (gas: [gas_firelevel], liquid: [liquid_firelevel])"))
+		log_debug(span_debug_info("liquid_reaction_progress = [liquid_reaction_progress]"))
+		log_debug(span_debug_info("gas_reaction_progress = [gas_reaction_progress]"))
+		log_debug(span_debug_info("total_reaction_progress = [total_reaction_progress]"))
+		log_debug(span_debug_info("used_fuel = [used_fuel], used_oxidizers = [used_oxidizers]; "))
 		#endif
 
 		//if the reaction is progressing too slow then it isn't self-sustaining anymore and burns out
@@ -95,8 +95,8 @@
 		update_values()
 
 		#ifdef FIREDBG
-		log_debug(SPAN_DEBUGINFO("used_gas_fuel = [used_gas_fuel]; used_liquid_fuel = [used_liquid_fuel]; total = [used_fuel]"))
-		log_debug(SPAN_DEBUGINFO("new temperature = [temperature]; new pressure = [return_pressure()]"))
+		log_debug(span_debug_info("used_gas_fuel = [used_gas_fuel]; used_liquid_fuel = [used_liquid_fuel]; total = [used_fuel]"))
+		log_debug(span_debug_info("new temperature = [temperature]; new pressure = [return_pressure()]"))
 		#endif
 
 		return firelevel

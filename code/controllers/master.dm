@@ -243,7 +243,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be put offline."
 				BadBoy.subsystem_flags |= SS_NO_FIRE
 		if(msg)
-			to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("[msg]"))
+			to_chat(GLOB.admins, span_boldannounce("[msg]"))
 			log_world(msg)
 
 	if (istype(Master.subsystems))
@@ -253,7 +253,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
+		to_chat(world, span_boldannounce("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
 		Initialize(20, TRUE, FALSE)
 
 /**
@@ -274,7 +274,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
 	// Announce start
-	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
+	to_chat(world, span_boldannounce("Initializing subsystems..."))
 	var/mc_started = FALSE
 
 	// We want to initialize subsystems by stage, in the init_order provided for subsystems within the same stage.
@@ -320,7 +320,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// Announce, log, and record end
 	var/msg = "Initializations complete within [took_seconds] second[took_seconds == 1 ? "" : "s"]!"
-	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
+	to_chat(world, span_boldannounce("[msg]"))
 	log_world(msg)
 
 	// Set world options.
@@ -397,7 +397,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			warning("[subsystem.name] subsystem initialized, returning invalid result [initialize_result]. This is a bug.")
 
 	var/message = "[message_prefix] [took_seconds] second[took_seconds == 1 ? "" : "s"]."
-	var/chat_message = chat_warning ? SPAN_BOLDWARNING(message) : SPAN_BOLDANNOUNCE(message)
+	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
 
 	if(tell_everyone && message_prefix)
 		to_chat(world, chat_message)

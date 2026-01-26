@@ -41,14 +41,14 @@
 		var/obj/item/weldingtool/WT = C
 		if(WT.welding == 1)
 			if(WT.remove_fuel(0, user))
-				to_chat(user, SPAN_NOTICE("Slicing lattice joints..."))
+				to_chat(user, span_notice("Slicing lattice joints..."))
 			new /obj/item/stack/rods(loc)
 			qdel(src)
 		return
 	if (istype(C, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = C
 		if(R.use(2))
-			to_chat(user, SPAN_NOTICE("You start connecting \the [R.name] to \the [name]..."))
+			to_chat(user, span_notice("You start connecting \the [R.name] to \the [name]..."))
 			if(do_after(user, 5 SECONDS))
 				src.alpha = 0 // Note: I don't know why this is set, Eris did it, just trusting for now. ~Leshana
 				new /obj/structure/catwalk(loc)

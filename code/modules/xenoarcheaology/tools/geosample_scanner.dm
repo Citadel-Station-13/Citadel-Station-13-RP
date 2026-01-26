@@ -61,7 +61,7 @@
 
 /obj/machinery/radiocarbon_spectrometer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(scanning)
-		to_chat(user, SPAN_WARNING("You can't do that while [src] is scanning!"))
+		to_chat(user, span_warning("You can't do that while [src] is scanning!"))
 	else
 		if(istype(I, /obj/item/stack/nanopaste))
 			var/choice = alert("What do you want to do with the nanopaste?","Radiometric Scanner","Scan nanopaste","Fix seal integrity")
@@ -79,22 +79,22 @@
 			if(choice == "Add coolant")
 				var/amount_transferred = min(reagents.maximum_volume - reagents.total_volume, G.reagents.total_volume)
 				var/trans = G.reagents.trans_to_obj(src, amount_transferred)
-				to_chat(user, SPAN_INFO("You empty [trans ? trans : 0]u of coolant into [src]."))
+				to_chat(user, span_info("You empty [trans ? trans : 0]u of coolant into [src]."))
 				update_coolant()
 				return
 			else if(choice == "Empty coolant")
 				var/amount_transferred = min(G.reagents.maximum_volume - G.reagents.total_volume, reagents.total_volume)
 				var/trans = reagents.trans_to(G, amount_transferred)
-				to_chat(user, SPAN_INFO("You remove [trans ? trans : 0]u of coolant from [src]."))
+				to_chat(user, span_info("You remove [trans ? trans : 0]u of coolant from [src]."))
 				update_coolant()
 				return
 		if(scanned_item)
-			to_chat(user, SPAN_WARNING("\The [src] already has \a [scanned_item] inside!"))
+			to_chat(user, span_warning("\The [src] already has \a [scanned_item] inside!"))
 			return
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		scanned_item = I
-		to_chat(user, SPAN_NOTICE("You put \the [I] into \the [src]."))
+		to_chat(user, span_notice("You put \the [I] into \the [src]."))
 
 /obj/machinery/radiocarbon_spectrometer/proc/update_coolant()
 	var/total_purity = 0
@@ -170,11 +170,11 @@
 						scanner_progress = 0
 						scanning = 1
 						t_left_radspike = pick(5,10,15)
-						to_chat(usr, SPAN_NOTICE("Scan initiated."))
+						to_chat(usr, span_notice("Scan initiated."))
 					else
-						to_chat(usr, SPAN_WARNING("Could not initiate scan, seal requires replacing."))
+						to_chat(usr, span_warning("Could not initiate scan, seal requires replacing."))
 				else
-					to_chat(usr, SPAN_WARNING("Insert an item to scan."))
+					to_chat(usr, span_warning("Insert an item to scan."))
 			return TRUE
 
 		if("maserWavelength")

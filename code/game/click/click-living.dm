@@ -14,14 +14,14 @@
 		// only warn if they're trying to click Something
 		if(active_item || clickchain.target)
 			clickchain.chat_feedback(
-				SPAN_WARNING("You can't do that while unconscious."),
+				span_warning("You can't do that while unconscious."),
 			)
 		return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE))
 		// only warn if they're trying to click Something
 		if(active_item || clickchain.target)
 			clickchain.chat_feedback(
-				SPAN_WARNING("You can't do that right now."),
+				span_warning("You can't do that right now."),
 			)
 		return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE
 	// by popular demand this is restored

@@ -106,18 +106,18 @@
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
 		if(!user.attempt_consume_item_for_construction(W))
 			return
-		to_chat(usr, SPAN_NOTICE("You put [W] back in [src]."))
+		to_chat(usr, span_notice("You put [W] back in [src]."))
 		add_fingerprint(usr)
 		return
 	else if(W.is_wrench())
 		add_fingerprint(usr)
 		if (unwrenched==0)
 			playsound(src, W.tool_sound, 50, 1)
-			to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src] from the floor..."))
+			to_chat(user, span_notice("You begin to unfasten \the [src] from the floor..."))
 			if (do_after(user, 40 * W.tool_speed))
 				user.visible_message( \
-					SPAN_NOTICE("[user] unfastens \the [src]."), \
-					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."), \
+					span_notice("[user] unfastens \the [src]."), \
+					span_notice("You have unfastened \the [src]. Now it can be pulled somewhere else."), \
 					"You hear ratchet.")
 				src.anchored = 0
 				src.machine_stat |= MAINT
@@ -126,11 +126,11 @@
 					usr << browse(null, "window=pipedispenser")
 		else /*if (unwrenched==1)*/
 			playsound(src, W.tool_sound, 50, 1)
-			to_chat(user, SPAN_NOTICE("You begin to fasten \the [src] to the floor..."))
+			to_chat(user, span_notice("You begin to fasten \the [src] to the floor..."))
 			if (do_after(user, 20 * W.tool_speed))
 				user.visible_message( \
-					SPAN_NOTICE("[user] fastens \the [src]."), \
-					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."), \
+					span_notice("[user] fastens \the [src]."), \
+					span_notice("You have fastened \the [src]. Now it can dispense pipes."), \
 					"You hear ratchet.")
 				src.anchored = 1
 				src.machine_stat &= ~MAINT
@@ -158,7 +158,7 @@
 	if (pipe.anchored)
 		return
 
-	to_chat(user, SPAN_NOTICE("You shove [pipe] back in [src]."))
+	to_chat(user, span_notice("You shove [pipe] back in [src]."))
 	qdel(pipe)
 
 //Adding a pipe dispensers that spawn unhooked from the ground

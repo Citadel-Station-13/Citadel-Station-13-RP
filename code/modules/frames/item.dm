@@ -41,13 +41,13 @@
 	. = ..()
 	if(!frame.item_deploy_requires_tool)
 		if(frame.wall_frame)
-			. += SPAN_NOTICE("Use it on a wall, window, or other 'wall-like' object to attach the frame.")
+			. += span_notice("Use it on a wall, window, or other 'wall-like' object to attach the frame.")
 		else
-			. += SPAN_NOTICE("Use it in hand to deploy it in the direction you are looking at.")
+			. += span_notice("Use it in hand to deploy it in the direction you are looking at.")
 	if(frame.item_deploy_tool)
-		. += SPAN_NOTICE("Use a <b>[frame.item_deploy_tool]</b> on it to deploy it in its current direction.")
+		. += span_notice("Use a <b>[frame.item_deploy_tool]</b> on it to deploy it in its current direction.")
 	if(frame.item_recycle_tool)
-		. += SPAN_NOTICE("Use a <b>[frame.item_recycle_tool]</b> on it to deconstruct it back into material sheets.")
+		. += span_notice("Use a <b>[frame.item_recycle_tool]</b> on it to deconstruct it back into material sheets.")
 
 /obj/item/frame2/MouseEntered(location, control, params)
 	..()
@@ -114,7 +114,7 @@
 	if(.)
 		return
 	if(frame.item_deploy_requires_tool)
-		e_args.chat_feedback(SPAN_WARNING("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
+		e_args.chat_feedback(span_warning("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
 		return TRUE
 	var/use_dir = e_args.performer.dir
 	//! shitcode for wallmounts
@@ -127,9 +127,9 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[e_args.performer] starts to deploy [src]."),
-			audible = SPAN_WARNING("You hear something being assembled."),
-			otherwise_self = SPAN_WARNING("You start to deploy [src]."),
+			visible = span_warning("[e_args.performer] starts to deploy [src]."),
+			audible = span_warning("You hear something being assembled."),
+			otherwise_self = span_warning("You start to deploy [src]."),
 		)
 		log_construction(e_args, src, "started deploying")
 	if(!do_after(e_args.performer, frame.item_deploy_time, src, mobility_flags = MOBILITY_CAN_USE))
@@ -139,9 +139,9 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[e_args.performer] deploys [src]."),
-		audible = SPAN_WARNING("You hear something finish being assembled."),
-		otherwise_self = SPAN_WARNING("You deploy [src]."),
+		visible = span_warning("[e_args.performer] deploys [src]."),
+		audible = span_warning("You hear something finish being assembled."),
+		otherwise_self = span_warning("You deploy [src]."),
 	)
 	return TRUE
 
@@ -153,14 +153,14 @@
 	var/use_dir = get_dir(user, target)
 	var/datum/event_args/actor/e_args = new(user)
 	if(IS_DIAGONAL(use_dir))
-		e_args.chat_feedback(SPAN_WARNING("You must be standing cardinally to [target] to attempt a deployment there!"), src)
+		e_args.chat_feedback(span_warning("You must be standing cardinally to [target] to attempt a deployment there!"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	//! shitcode for wallmounts
 	if(frame.wall_frame)
 		use_dir = turn(use_dir, 180)
 	//! end
 	if(frame.item_deploy_requires_tool)
-		e_args.chat_feedback(SPAN_WARNING("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
+		e_args.chat_feedback(span_warning("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!can_deploy(e_args, use_dir, e_args.performer.loc))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -168,9 +168,9 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[e_args.performer] starts to deploy [src]."),
-			audible = SPAN_WARNING("You hear something being assembled."),
-			otherwise_self = SPAN_WARNING("You start to deploy [src]."),
+			visible = span_warning("[e_args.performer] starts to deploy [src]."),
+			audible = span_warning("You hear something being assembled."),
+			otherwise_self = span_warning("You start to deploy [src]."),
 		)
 		log_construction(e_args, src, "started deploying")
 	if(!do_after(e_args.performer, frame.item_deploy_time, src, mobility_flags = MOBILITY_CAN_USE))
@@ -180,16 +180,16 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[e_args.performer] deploys [src]."),
-		audible = SPAN_WARNING("You hear something finish being assembled."),
-		otherwise_self = SPAN_WARNING("You deploy [src]."),
+		visible = span_warning("[e_args.performer] deploys [src]."),
+		audible = span_warning("You hear something finish being assembled."),
+		otherwise_self = span_warning("You deploy [src]."),
 	)
 	return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/frame2/proc/can_deploy(datum/event_args/actor/e_args, use_dir = src.dir, use_loc = src.loc, silent)
 	if(!isturf(use_loc))
 		if(!silent)
-			e_args?.chat_feedback(SPAN_WARNING("[src] must be on the floor to be deployed!"), src)
+			e_args?.chat_feedback(span_warning("[src] must be on the floor to be deployed!"), src)
 		return FALSE
 	if(!frame.deployment_checks(src, use_loc, use_dir, e_args))
 		return FALSE
@@ -217,7 +217,7 @@
 	switch(key)
 		if("deploy-frame")
 			if(!e_args.performer.Reachability(src))
-				e_args.chat_feedback(SPAN_WARNING("You can't reach [src] right now!"), src)
+				e_args.chat_feedback(span_warning("You can't reach [src] right now!"), src)
 				return TRUE
 			var/use_dir = src.dir
 			//! shitcode for wallmounts
@@ -225,7 +225,7 @@
 				use_dir = turn(use_dir, 180)
 			//! end
 			if(frame.item_deploy_requires_tool)
-				e_args.chat_feedback(SPAN_WARNING("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
+				e_args.chat_feedback(span_warning("[src] requires the use of a [frame.item_deploy_tool] to be deployed!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!can_deploy(e_args, use_dir, loc))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -233,9 +233,9 @@
 				e_args.visible_feedback(
 					target = src,
 					range = MESSAGE_RANGE_CONSTRUCTION,
-					visible = SPAN_WARNING("[e_args.performer] starts to deploy [src]."),
-					audible = SPAN_WARNING("You hear something being assembled."),
-					otherwise_self = SPAN_WARNING("You start to deploy [src]."),
+					visible = span_warning("[e_args.performer] starts to deploy [src]."),
+					audible = span_warning("You hear something being assembled."),
+					otherwise_self = span_warning("You start to deploy [src]."),
 				)
 				log_construction(e_args, src, "started deploying")
 			if(!do_after(e_args.performer, frame.item_deploy_time, src, mobility_flags = MOBILITY_CAN_USE))
@@ -253,9 +253,9 @@
 			e_args.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_WARNING("[e_args.performer] starts to recycle [src]."),
-				audible = SPAN_WARNING("You hear someone starting to disassemble something."),
-				otherwise_self = SPAN_WARNING("You start to recycle [src]."),
+				visible = span_warning("[e_args.performer] starts to recycle [src]."),
+				audible = span_warning("You hear someone starting to disassemble something."),
+				otherwise_self = span_warning("You start to recycle [src]."),
 			)
 			log_construction(e_args, src, "started recycling")
 		if(!use_tool(function, I, e_args, flags, frame.item_recycle_time, frame.item_recycle_cost))
@@ -263,9 +263,9 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[e_args.performer] disassembles [src] back into raw material."),
-			audible = SPAN_WARNING("You hear something being disassembled back into raw material."),
-			otherwise_self = SPAN_WARNING("You recycle [src] back into raw material."),
+			visible = span_warning("[e_args.performer] disassembles [src] back into raw material."),
+			audible = span_warning("You hear something being disassembled back into raw material."),
+			otherwise_self = span_warning("You recycle [src] back into raw material."),
 		)
 		log_construction(e_args, src, "recycled")
 		deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
@@ -276,9 +276,9 @@
 			e_args.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_WARNING("[e_args.performer] starts to deploy [src]."),
-				audible = SPAN_WARNING("You hear something being assembled."),
-				otherwise_self = SPAN_WARNING("You start to deploy [src]."),
+				visible = span_warning("[e_args.performer] starts to deploy [src]."),
+				audible = span_warning("You hear something being assembled."),
+				otherwise_self = span_warning("You start to deploy [src]."),
 			)
 			log_construction(e_args, src, "started deploying")
 		if(!use_tool(function, I, e_args, flags, frame.item_deploy_time, frame.item_deploy_cost))
@@ -288,9 +288,9 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[e_args.performer] deploys [src]."),
-			audible = SPAN_WARNING("You hear something finish being assembled."),
-			otherwise_self = SPAN_WARNING("You deploy [src]."),
+			visible = span_warning("[e_args.performer] deploys [src]."),
+			audible = span_warning("You hear something finish being assembled."),
+			otherwise_self = span_warning("You deploy [src]."),
 		)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

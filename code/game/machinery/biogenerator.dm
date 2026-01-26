@@ -120,10 +120,10 @@
 		return
 
 	if(beaker)
-		to_chat(user, SPAN_NOTICE("You swap out [beaker] in [src] for [inserted_beaker]."))
+		to_chat(user, span_notice("You swap out [beaker] in [src] for [inserted_beaker]."))
 		eject_beaker(user, silent = TRUE)
 	else
-		to_chat(user, SPAN_NOTICE("You add [inserted_beaker] to [src]."))
+		to_chat(user, span_notice("You add [inserted_beaker] to [src]."))
 
 	beaker = inserted_beaker
 	update_appearance()
@@ -144,10 +144,10 @@
 
 	if(user.put_in_hands(beaker))
 		if(!silent)
-			to_chat(user, SPAN_NOTICE("You eject [beaker] from [src]."))
+			to_chat(user, span_notice("You eject [beaker] from [src]."))
 	else
 		if(!silent)
-			to_chat(user, SPAN_NOTICE("You eject [beaker] from [src] onto the ground."))
+			to_chat(user, span_notice("You eject [beaker] from [src] onto the ground."))
 		beaker.forceMove(drop_location())
 
 	beaker = null
@@ -216,11 +216,11 @@
 					return
 				var/cost = round(br.cost / build_eff)
 				if(cost > points)
-					to_chat(usr, SPAN_DANGER("Insufficient biomass."))
+					to_chat(usr, span_danger("Insufficient biomass."))
 					return
 				var/amt_to_actually_dispense = round(min(beaker.reagents.available_volume(), br.reagent_amt))
 				if(amt_to_actually_dispense <= 0)
-					to_chat(usr, SPAN_DANGER("The loaded beaker is full!"))
+					to_chat(usr, span_danger("The loaded beaker is full!"))
 					return
 				points -= (cost * (amt_to_actually_dispense / br.reagent_amt))
 				beaker.reagents.add_reagent(br.reagent_id, amt_to_actually_dispense)
@@ -229,7 +229,7 @@
 
 			var/cost = round(bi.cost / build_eff)
 			if(cost > points)
-				to_chat(usr, SPAN_DANGER("Insufficient biomass."))
+				to_chat(usr, span_danger("Insufficient biomass."))
 				return
 
 			points -= cost
@@ -268,37 +268,37 @@
 	if(istype(O, /obj/item/reagent_containers/glass))
 		insert_beaker(user, O)
 	else if(processing)
-		to_chat(user, SPAN_NOTICE("\The [src] is currently processing."))
+		to_chat(user, span_notice("\The [src] is currently processing."))
 	else if(istype(O, /obj/item/storage/bag))
 		var/i = 0
 		for(var/obj/item/reagent_containers/food/snacks/grown/G in contents)
 			i++
 		if(i >= 10)
-			to_chat(user, SPAN_NOTICE("\The [src] is already full! Activate it."))
+			to_chat(user, span_notice("\The [src] is already full! Activate it."))
 		else
 			for(var/obj/item/reagent_containers/food/snacks/grown/G in O.contents)
 				O.obj_storage.remove(G)
 				G.forceMove(src)
 				i++
 				if(i >= 10)
-					to_chat(user, SPAN_NOTICE("You fill \the [src] to its capacity."))
+					to_chat(user, span_notice("You fill \the [src] to its capacity."))
 					break
 			if(i < 10)
-				to_chat(user, SPAN_NOTICE("You empty \the [O] into \the [src]."))
+				to_chat(user, span_notice("You empty \the [O] into \the [src]."))
 
 
 	else if(!istype(O, /obj/item/reagent_containers/food/snacks/grown))
-		to_chat(user, SPAN_NOTICE("You cannot put this in \the [src]."))
+		to_chat(user, span_notice("You cannot put this in \the [src]."))
 	else
 		var/i = 0
 		for(var/obj/item/reagent_containers/food/snacks/grown/G in contents)
 			i++
 		if(i >= 10)
-			to_chat(user, SPAN_NOTICE("\The [src] is full! Activate it."))
+			to_chat(user, span_notice("\The [src] is full! Activate it."))
 		else
 			if(!user.attempt_insert_item_for_installation(O, src))
 				return
-			to_chat(user, SPAN_NOTICE("You put \the [O] in \the [src]"))
+			to_chat(user, span_notice("You put \the [O] in \the [src]"))
 	update_appearance()
 
 /obj/machinery/biogenerator/proc/activate()
@@ -307,7 +307,7 @@
 	if(machine_stat) //NOPOWER etc
 		return
 	if(processing)
-		to_chat(usr, SPAN_NOTICE("The biogenerator is in the process of working."))
+		to_chat(usr, span_notice("The biogenerator is in the process of working."))
 		return
 	var/S = 0
 	for(var/obj/item/reagent_containers/food/snacks/grown/I in contents)
@@ -327,7 +327,7 @@
 		playsound(src.loc, 'sound/machines/biogenerator_end.ogg', 40, TRUE)
 		update_appearance()
 	else
-		to_chat(usr, SPAN_WARNING("Error: No growns inside. Please insert growns."))
+		to_chat(usr, span_warning("Error: No growns inside. Please insert growns."))
 	return
 
 /obj/machinery/biogenerator/RefreshParts()

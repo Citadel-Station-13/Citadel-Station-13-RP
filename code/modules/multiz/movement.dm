@@ -3,14 +3,14 @@
 	set category = VERB_CATEGORY_IC
 
 	if(zMove(UP))
-		to_chat(src, SPAN_NOTICE("You move upwards."))
+		to_chat(src, span_notice("You move upwards."))
 
 /mob/verb/down()
 	set name = "Move Downwards"
 	set category = VERB_CATEGORY_IC
 
 	if(zMove(DOWN))
-		to_chat(src, SPAN_NOTICE("You move down."))
+		to_chat(src, span_notice("You move down."))
 
 /mob/proc/zMove(direction)
 	if(eyeobj)
@@ -21,17 +21,17 @@
 		return mech.relaymove(src,direction)
 
 	if(!can_ztravel())
-		to_chat(src, SPAN_WARNING("You lack means of travel in that direction."))
+		to_chat(src, span_warning("You lack means of travel in that direction."))
 		return
 
 	var/turf/start = loc
 	if(!istype(start))
-		to_chat(src, SPAN_NOTICE("You are unable to move from here."))
+		to_chat(src, span_notice("You are unable to move from here."))
 		return FALSE
 
 	var/turf/destination = get_step_multiz(src, direction)
 	if(!destination)
-		to_chat(src, SPAN_NOTICE("There is nothing of interest in this direction."))
+		to_chat(src, span_notice("There is nothing of interest in this direction."))
 		return FALSE
 
 	if(is_incorporeal())
@@ -40,7 +40,7 @@
 
 	var/atom/obstructing = start.z_exit_obstruction(src, direction)
 	if(obstructing)
-		to_chat(src, SPAN_WARNING("\The [obstructing] is in the way."))
+		to_chat(src, span_warning("\The [obstructing] is in the way."))
 		return FALSE
 
 	if(direction == UP && has_gravity() && !can_overcome_gravity())
@@ -48,12 +48,12 @@
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
 			var/pull_up_time = max(5 SECONDS + (movement_delay() * 10), 1)
-			to_chat(src, SPAN_NOTICE("You grab \the [lattice] and start pulling yourself upward..."))
-			destination.audible_message(SPAN_NOTICE("You hear something climbing up \the [lattice]."))
+			to_chat(src, span_notice("You grab \the [lattice] and start pulling yourself upward..."))
+			destination.audible_message(span_notice("You hear something climbing up \the [lattice]."))
 			if(do_after(src, pull_up_time))
-				to_chat(src, SPAN_NOTICE("You pull yourself up."))
+				to_chat(src, span_notice("You pull yourself up."))
 			else
-				to_chat(src, SPAN_WARNING("You gave up on pulling yourself up."))
+				to_chat(src, span_warning("You gave up on pulling yourself up."))
 				return FALSE
 
 		else if(ismob(src)) // Are they a mob, and are they currently flying??
@@ -61,7 +61,7 @@
 			var/fly_time
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
-					to_chat(src, SPAN_NOTICE("You can't fly in your current state."))
+					to_chat(src, span_notice("You can't fly in your current state."))
 					H.stop_flying() //Should already be done, but just in case.
 					return FALSE
 				if(ishuman(src))
@@ -69,19 +69,19 @@
 					fly_time = 7 SECONDS * M.species.flight_mod	//flight-based species get shorter delay
 				else
 					fly_time = 7 SECONDS //Non-flight based species / simple mobs get static cooldown
-				to_chat(src, SPAN_NOTICE("You begin to fly upwards..."))
-				destination.audible_message(SPAN_NOTICE("You hear the of air moving."))
-				H.audible_message(SPAN_NOTICE("[H] begins to soar upwards!"))
+				to_chat(src, span_notice("You begin to fly upwards..."))
+				destination.audible_message(span_notice("You hear the of air moving."))
+				H.audible_message(span_notice("[H] begins to soar upwards!"))
 				if(do_after(H, fly_time) && H.flying)
-					to_chat(src, SPAN_NOTICE("You fly upwards."))
+					to_chat(src, span_notice("You fly upwards."))
 				else
-					to_chat(src, SPAN_WARNING("You stopped flying upwards."))
+					to_chat(src, span_warning("You stopped flying upwards."))
 					return FALSE
 			else
-				to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
+				to_chat(src, span_warning("Gravity stops you from moving upward."))
 				return FALSE
 		else
-			to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
+			to_chat(src, span_warning("Gravity stops you from moving upward."))
 			return FALSE
 	// todo: this should not use Move()
 	if(!Move(destination))
@@ -403,34 +403,34 @@
 	if(planetary && CanParachute())
 		if(!silent)
 			visible_message(
-				SPAN_WARNING("\The [src] glides in from above and lands on \the [landing]!"),
-				SPAN_DANGER("You land on \the [landing]!"),
-				SPAN_HEAR("You hear something land \the [landing]."),
+				span_warning("\The [src] glides in from above and lands on \the [landing]!"),
+				span_danger("You land on \the [landing]!"),
+				span_hear("You hear something land \the [landing]."),
 			)
 		return
 	else if(!planetary && softfall) // Falling one floor and falling one atmosphere are very different things
 		if(!silent)
 			visible_message(
-				SPAN_WARNING("\The [src] falls from above and lands on \the [landing]!"),
-				SPAN_DANGER("You land on \the [landing]!"),
-				SPAN_HEAR("You hear something land \the [landing]."),
+				span_warning("\The [src] falls from above and lands on \the [landing]!"),
+				span_danger("You land on \the [landing]!"),
+				span_hear("You hear something land \the [landing]."),
 			)
 		return
 	else
 		if(!silent)
 			if(planetary)
 				visible_message(
-					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into [landing]!"),
-					SPAN_USERDANGER("You fall out of the sky and crash into [landing]!"),
-					SPAN_HEAR("You hear something slam into \the [landing]."),
+					span_userdanger("\A [src] falls out of the sky and crashes into [landing]!"),
+					span_userdanger("You fall out of the sky and crash into [landing]!"),
+					span_hear("You hear something slam into \the [landing]."),
 				)
 				var/turf/T = get_turf(landing)
 				explosion(T, 0, 1, 2)
 			else
 				visible_message(
-					SPAN_WARNING("\The [src] falls from above and slams into [landing]!"),
-					SPAN_DANGER("You fall off and hit \the [landing]!"),
-					SPAN_HEAR("You hear something slam into \the [landing]."),
+					span_warning("\The [src] falls from above and slams into [landing]!"),
+					span_danger("You fall off and hit \the [landing]!"),
+					span_hear("You hear something slam into \the [landing]."),
 				)
 			playsound(loc, "punch", 25, TRUE, -1)
 
@@ -502,7 +502,7 @@
 	var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, loc)
 	if(lattice)
 		// Lattices seem a bit too flimsy to hold up a massive exosuit.
-		lattice.visible_message(SPAN_DANGER("\The [lattice] collapses under the weight of \the [src]!"))
+		lattice.visible_message(span_danger("\The [lattice] collapses under the weight of \the [src]!"))
 		qdel(lattice)
 
 	// Then call parent to have us actually fall
@@ -511,7 +511,7 @@
 /obj/vehicle/sealed/mecha/fall_impact(var/atom/hit_atom, var/damage_min = 15, var/damage_max = 30, var/silent = FALSE, var/planetary = FALSE)
 	// Anything on the same tile as the landing tile is gonna have a bad day.
 	for(var/mob/living/L in hit_atom.contents)
-		L.visible_message(SPAN_DANGER("\The [src] crushes \the [L] as it lands on them!"))
+		L.visible_message(span_danger("\The [src] crushes \the [L] as it lands on them!"))
 		L.adjustBruteLoss(rand(70, 100))
 		L.afflict_paralyze(20 * 8)
 
@@ -520,34 +520,34 @@
 	if(planetary && src.CanParachute())
 		if(!silent)
 			visible_message(
-				SPAN_WARNING("\The [src] glides in from above and lands on \the [landing]!"),
-				SPAN_DANGER("You land on \the [landing]!"),
-				SPAN_HEAR("You hear something land \the [landing]."),
+				span_warning("\The [src] glides in from above and lands on \the [landing]!"),
+				span_danger("You land on \the [landing]!"),
+				span_hear("You hear something land \the [landing]."),
 			)
 		return
 	else if(!planetary && src.softfall) // Falling one floor and falling one atmosphere are very different things
 		if(!silent)
 			visible_message(
-				SPAN_WARNING("\The [src] falls from above and lands on \the [landing]!"),
-				SPAN_DANGER("You land on \the [landing]!"),
-				SPAN_HEAR("You hear something land \the [landing]."),
+				span_warning("\The [src] falls from above and lands on \the [landing]!"),
+				span_danger("You land on \the [landing]!"),
+				span_hear("You hear something land \the [landing]."),
 			)
 		return
 	else
 		if(!silent)
 			if(planetary)
 				visible_message(
-					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into \the [landing]!"),
-					SPAN_USERDANGER("You fall out of the skiy and crash into \the [landing]!"),
-					SPAN_HEAR("You hear something slam into \the [landing]."),
+					span_userdanger("\A [src] falls out of the sky and crashes into \the [landing]!"),
+					span_userdanger("You fall out of the skiy and crash into \the [landing]!"),
+					span_hear("You hear something slam into \the [landing]."),
 				)
 				var/turf/T = get_turf(landing)
 				explosion(T, 0, 1, 2)
 			else
 				visible_message(
-					SPAN_WARNING("\The [src] falls from above and slams into \the [landing]!"),
-					SPAN_DANGER("You fall off and hit \the [landing]!"),
-					SPAN_HEAR("You hear something slam into \the [landing]."),
+					span_warning("\The [src] falls from above and slams into \the [landing]!"),
+					span_danger("You fall off and hit \the [landing]!"),
+					span_hear("You hear something slam into \the [landing]."),
 				)
 			playsound(loc, "punch", 25, TRUE, -1)
 

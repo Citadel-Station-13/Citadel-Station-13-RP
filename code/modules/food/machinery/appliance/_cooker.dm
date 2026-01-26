@@ -26,13 +26,13 @@
 	if(.)	//no need to duplicate adjacency check
 		if(!machine_stat)
 			if(temperature < min_temp)
-				. += SPAN_WARNING( "\The [src] is still heating up and is too cold to cook anything yet.")
+				. += span_warning( "\The [src] is still heating up and is too cold to cook anything yet.")
 			else
-				. += SPAN_NOTICE("It is running at [round(get_efficiency(), 0.1)]% efficiency!")
+				. += span_notice("It is running at [round(get_efficiency(), 0.1)]% efficiency!")
 			. += "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C"
 		else
 			if(machine_stat)
-				. += SPAN_WARNING( "It is switched off.")
+				. += span_warning( "It is switched off.")
 
 /obj/machinery/appliance/cooker/list_contents(var/mob/user)
 	if (cooking_objs.len)
@@ -45,7 +45,7 @@
 				string += "- [CI.container.label(num)], [report_progress(CI)]</br>"
 		to_chat(user, string)
 	else
-		to_chat(user, SPAN_NOTICE("It is empty."))
+		to_chat(user, span_notice("It is empty."))
 
 /obj/machinery/appliance/cooker/proc/get_efficiency()
 	//RefreshParts()

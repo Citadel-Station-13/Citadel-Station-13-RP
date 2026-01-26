@@ -234,7 +234,7 @@ GLOBAL_LIST(emote_lookup)
 	var/can_run = can_use(actor, arbitrary, why_not)
 	if(!can_run)
 		if(!silent)
-			actor?.chat_feedback(SPAN_WARNING("You can't '[used_binding || name]' right now; ([english_list(why_not, "unknown reason")])"))
+			actor?.chat_feedback(span_warning("You can't '[used_binding || name]' right now; ([english_list(why_not, "unknown reason")])"))
 		return FALSE
 	run_emote(actor, arbitrary, silent, used_binding)
 	return TRUE
@@ -266,5 +266,5 @@ GLOBAL_LIST(emote_lookup)
 /datum/emote/proc/loudly_reject_failure(parameter_string, datum/event_args/actor/actor, silent, reason)
 	if(!silent)
 		actor?.chat_feedback(
-			SPAN_WARNING("Failed emote parse on {[parameter_string]} - [reason]"),
+			span_warning("Failed emote parse on {[parameter_string]} - [reason]"),
 		)

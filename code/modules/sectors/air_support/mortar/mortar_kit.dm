@@ -50,18 +50,18 @@
 			actor.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_WARNING("[actor.performer] starts deploying [mortar]..."),
-				audible = SPAN_WARNING("You hear heavy machinery being unpacked."),
-				otherwise_self = SPAN_WARNING("You start deploying [mortar]!"),
+				visible = span_warning("[actor.performer] starts deploying [mortar]..."),
+				audible = span_warning("You hear heavy machinery being unpacked."),
+				otherwise_self = span_warning("You start deploying [mortar]!"),
 			)
 		if(!do_after(actor.performer, delay, src))
 			return FALSE
 	actor.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[actor.performer] deploys [mortar]!"),
-		audible = SPAN_WARNING("You hear heavy machinery being deployed."),
-		otherwise_self = SPAN_WARNING("You deploy [mortar]!"),
+		visible = span_warning("[actor.performer] deploys [mortar]!"),
+		audible = span_warning("You hear heavy machinery being deployed."),
+		otherwise_self = span_warning("You deploy [mortar]!"),
 	)
 	deploy(location)
 	return TRUE

@@ -371,7 +371,7 @@
 
 	if(!TIMER_COOLDOWN_CHECK(src, CD_INDEX_POWER_DRAIN_WARNING))
 		TIMER_COOLDOWN_START(src, CD_INDEX_POWER_DRAIN_WARNING, 2 SECONDS)
-		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
+		to_chat(src, span_danger("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
 	return cell.drain_energy(actor, amount, flags)
 
 /mob/living/silicon/robot/can_drain_energy(datum/actor, flags)
@@ -601,13 +601,13 @@
 
 		if(istype(W, /obj/item/implant/restrainingbolt) && !cell)
 			if(bolt)
-				to_chat(user, SPAN_NOTICE("There is already a restraining bolt installed in this cyborg."))
+				to_chat(user, span_notice("There is already a restraining bolt installed in this cyborg."))
 				return
 			else
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return
 				bolt = W
-				to_chat(user, SPAN_NOTICE("You install \the [W]."))
+				to_chat(user, span_notice("You install \the [W]."))
 				return
 
 	if(istype(W, /obj/item/aiModule)) // Trying to modify laws locally.
@@ -616,7 +616,7 @@
 			return
 
 		if(shell) // AI shells always have the laws of the AI
-			to_chat(user, SPAN_WARNING( "\The [src] is controlled remotely! You cannot upload new laws this way!"))
+			to_chat(user, span_warning( "\The [src] is controlled remotely! You cannot upload new laws this way!"))
 			return
 
 		var/obj/item/aiModule/M = W
@@ -638,7 +638,7 @@
 			update_health()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
-				O.show_message(SPAN_RED("[user] has fixed some of the dents on [src]!"), SAYCODE_TYPE_VISIBLE)
+				O.show_message(span_red("[user] has fixed some of the dents on [src]!"), SAYCODE_TYPE_VISIBLE)
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -653,7 +653,7 @@
 			adjustFireLoss(-30)
 			update_health()
 			for(var/mob/O in viewers(user, null))
-				O.show_message(SPAN_RED("[user] has fixed some of the burnt wires on [src]!"), SAYCODE_TYPE_VISIBLE)
+				O.show_message(span_red("[user] has fixed some of the burnt wires on [src]!"), SAYCODE_TYPE_VISIBLE)
 
 	else if (W.is_crowbar() && user.a_intent != INTENT_HARM)	// crowbar means open or close the cover
 		if(opened)
@@ -807,12 +807,12 @@
 	if(bolt)
 		if(!bolt.malfunction)
 			visible_message( \
-				SPAN_DANGER("[src] is trying to break their [bolt]!"), \
-				SPAN_WARNING("You attempt to break your [bolt]. (This will take around 90 seconds and you need to stand still)"))
+				span_danger("[src] is trying to break their [bolt]!"), \
+				span_warning("You attempt to break your [bolt]. (This will take around 90 seconds and you need to stand still)"))
 			if(do_after(src, 1.5 MINUTES, src, mobility_flags = MOBILITY_CAN_RESIST))
 				visible_message( \
-					SPAN_DANGER("[src] manages to break \the [bolt]!"), \
-					SPAN_WARNING("You successfully break your [bolt]."))
+					span_danger("[src] manages to break \the [bolt]!"), \
+					span_warning("You successfully break your [bolt]."))
 				bolt.malfunction = MALFUNCTION_PERMANENT
 
 /mob/living/silicon/robot/proc/module_reset()
@@ -1076,7 +1076,7 @@
 				to_chat(src, "Hack attempt detected.")
 
 			if(shell) // A warning to Traitors who may not know that emagging AI shells does not slave them.
-				to_chat(user, SPAN_WARNING( "[src] seems to be controlled remotely! Emagging the interface may not work as expected."))
+				to_chat(user, span_warning( "[src] seems to be controlled remotely! Emagging the interface may not work as expected."))
 			return 1
 		else
 			to_chat(user, "The cover is already unlocked.")
@@ -1090,7 +1090,7 @@
 			return
 		// The block of code below is from TG. Feel free to replace with a better result if desired.
 		if(shell) // AI shells cannot be emagged, so we try to make it look like a standard reset. Smart players may see through this, however.
-			to_chat(user, SPAN_DANGER("[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
+			to_chat(user, span_danger("[src] is remotely controlled! Your emag attempt has triggered a system reset instead!"))
 			log_game("[key_name(user)] attempted to emag an AI shell belonging to [key_name(src) ? key_name(src) : connected_ai]. The shell has been reset as a result.")
 			module_reset()
 			return
@@ -1121,7 +1121,7 @@
 				if(bolt)
 					if(!bolt.malfunction)
 						bolt.malfunction = MALFUNCTION_PERMANENT
-						to_chat(src, SPAN_DANGER("RESTRAINING BOLT DISABLED"))
+						to_chat(src, span_danger("RESTRAINING BOLT DISABLED"))
 				sleep(5)
 				to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
 				sleep(5)
@@ -1156,7 +1156,7 @@
 
 /mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(lockcharge)
-		to_chat(src, SPAN_WARNING("You can't do that right now!"))
+		to_chat(src, span_warning("You can't do that right now!"))
 		return FALSE
 	return ..()
 

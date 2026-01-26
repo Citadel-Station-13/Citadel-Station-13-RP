@@ -61,7 +61,7 @@
 
 /obj/structure/inflatable/deconstructed(method)
 	. = ..()
-	visible_message(SPAN_WARNING("\the [src] deflates!"))
+	visible_message(span_warning("\the [src] deflates!"))
 
 /obj/structure/inflatable/drop_products(method, atom/where)
 	. = ..()

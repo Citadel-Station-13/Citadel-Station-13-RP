@@ -31,7 +31,7 @@
 /obj/item/melee/transforming/energy/sword/on_activate(datum/event_args/actor/actor, silent)
 	. = ..()
 	actor.chat_feedback(
-		SPAN_WARNING("You energize \the [src]."),
+		span_warning("You energize \the [src]."),
 		target = src,
 	)
 	suit_storage_class = NONE
@@ -39,7 +39,7 @@
 /obj/item/melee/transforming/energy/sword/on_deactivate(datum/event_args/actor/actor, silent)
 	. = ..()
 	actor.chat_feedback(
-		SPAN_WARNING("You de-energize \the [src]."),
+		span_warning("You de-energize \the [src]."),
 		target = src,
 	)
 	suit_storage_class = initial(suit_storage_class)

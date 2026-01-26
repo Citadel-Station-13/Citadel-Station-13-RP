@@ -21,7 +21,7 @@
 		var/mob/living/silicon/robot/R = L
 		if (R.getBruteLoss() || R.getFireLoss())
 			if(!can_use(1))
-				to_chat(user, SPAN_WARNING("There isn't enough left."))
+				to_chat(user, span_warning("There isn't enough left."))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(do_after(user,7 * tool_speed))
 				R.adjustBruteLoss(-15)
@@ -55,7 +55,7 @@
 		var/mob/living/simple_mob/holosphere_shell/shell = L
 		if(shell.getBruteLoss() || shell.getFireLoss())
 			if(!can_use(1))
-				to_chat(user, SPAN_WARNING("There isn't enough left."))
+				to_chat(user, span_warning("There isn't enough left."))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(do_after(user,7 * tool_speed))
 				shell.adjustBruteLoss(-15)

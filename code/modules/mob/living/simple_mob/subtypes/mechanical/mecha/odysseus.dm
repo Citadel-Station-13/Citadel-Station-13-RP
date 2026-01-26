@@ -54,7 +54,7 @@
 
 		var/target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
 		if(L.can_inject(src, null, target_zone))
-			L.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
+			L.custom_pain(span_warning("You feel a tiny prick."), 1, TRUE)
 			if(L.get_poison_protection() < 1)
 				L.add_modifier(/datum/modifier/poisoned, 30 SECONDS)
 				L.inflict_poison_damage(5)
@@ -72,7 +72,7 @@
 		var/mob/living/L = target
 		if(!L.can_inject(null, null, def_zone, piercing))
 			return impact_flags | PROJECTILE_IMPACT_BLOCKED
-		L.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
+		L.custom_pain(span_warning("You feel a tiny prick!"), 1, TRUE)
 	return ..()
 
 // Fake syringe, which inflicts a long lasting modifier that slowly kills them.

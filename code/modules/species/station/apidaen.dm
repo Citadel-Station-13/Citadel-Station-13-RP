@@ -126,9 +126,9 @@
 
 	if(reagents)
 		if(reagents.total_volume == reagents.maximum_volume * 0.05)
-			to_chat(owner, SPAN_NOTICE("[pick(empty_message)]"))
+			to_chat(owner, span_notice("[pick(empty_message)]"))
 		else if(reagents.total_volume == reagents.maximum_volume && before_gen < reagents.maximum_volume)
-			to_chat(owner, SPAN_WARNING("[pick(full_message)]"))
+			to_chat(owner, span_warning("[pick(full_message)]"))
 
 /obj/item/organ/internal/honey_stomach/proc/do_generation()
 	owner.nutrition -= gen_cost
@@ -155,7 +155,7 @@
 		honey_stomach.emote_descriptor = list("nectar fresh from [honey_stomach.owner]!", "nectar from [honey_stomach.owner]!")
 
 	else
-		to_chat(src, SPAN_NOTICE("You lack the organ required to produce nectar."))
+		to_chat(src, span_notice("You lack the organ required to produce nectar."))
 		return
 
 /mob/living/carbon/human/proc/nectar_pick()
@@ -180,7 +180,7 @@
 
 	if (honey_stomach) //Do they have the stomach?
 		if(honey_stomach.reagents.total_volume < honey_stomach.transfer_amount)
-			to_chat(src, SPAN_NOTICE("[pick(honey_stomach.empty_message)]"))
+			to_chat(src, span_notice("[pick(honey_stomach.empty_message)]"))
 			return
 
 		var/nectar_item_type = /obj/item/reagent_containers/organic/waxcomb
@@ -192,8 +192,8 @@
 			return
 		else
 			visible_message(
-				SPAN_NOTICE("[src] [pick(honey_stomach.short_emote_descriptor)] nectar."),
-				SPAN_NOTICE("You [pick(honey_stomach.self_emote_descriptor)] up a bundle of waxcomb."),
+				span_notice("[src] [pick(honey_stomach.short_emote_descriptor)] nectar."),
+				span_notice("You [pick(honey_stomach.self_emote_descriptor)] up a bundle of waxcomb."),
 			)
 			honey_stomach.reagents.remove_any(honey_stomach.transfer_amount)
 

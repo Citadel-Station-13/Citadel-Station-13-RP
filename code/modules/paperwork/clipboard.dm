@@ -35,10 +35,10 @@
 /obj/item/clipboard/examine()
 	. = ..()
 	if(!integrated_pen && pen)
-		. += SPAN_NOTICE("Alt-click to remove [pen].")
+		. += span_notice("Alt-click to remove [pen].")
 	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	if(toppaper)
-		. += SPAN_NOTICE("Right-click to remove [toppaper].")
+		. += span_notice("Right-click to remove [toppaper].")
 
 /// Take out the topmost paper
 /obj/item/clipboard/proc/remove_paper(obj/item/paper/paper, mob/user)
@@ -46,7 +46,7 @@
 		return
 	paper.forceMove(user.loc)
 	user.put_in_hands(paper)
-	to_chat(user, SPAN_NOTICE("You remove [paper] from [src]."))
+	to_chat(user, span_notice("You remove [paper] from [src]."))
 	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	if(paper == toppaper)
 		UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
@@ -61,7 +61,7 @@
 /obj/item/clipboard/proc/remove_pen(mob/user)
 	pen.forceMove(user.loc)
 	user.put_in_hands(pen)
-	to_chat(user, SPAN_NOTICE("You remove [pen] from [src]."))
+	to_chat(user, span_notice("You remove [pen] from [src]."))
 	pen = null
 	update_icon()
 
@@ -74,7 +74,7 @@
 		return
 
 	if(integrated_pen)
-		to_chat(user, SPAN_WARNING("You can't seem to find a way to remove [src]'s [pen]."))
+		to_chat(user, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
 		return
 
 	remove_pen(user)
@@ -101,14 +101,14 @@
 		if(istype(weapon, /obj/item/paper)) // since we can stuff photos, only update if image
 			RegisterSignal(weapon, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 			toppaper_ref = WEAKREF(weapon)
-		to_chat(user, SPAN_NOTICE("You clip [weapon] onto [src]."))
+		to_chat(user, span_notice("You clip [weapon] onto [src]."))
 
 	else if(istype(weapon, /obj/item/pen) && !pen)
 		//Add a pen into the clipboard, attack (write) if there is already one
 		if(!usr.transfer_item_to_loc(weapon, src))
 			return
 		pen = weapon
-		to_chat(usr, SPAN_NOTICE("You slot [weapon] into [src]."))
+		to_chat(usr, span_notice("You slot [weapon] into [src]."))
 	else if(toppaper)
 		toppaper.attackby(user.get_active_held_item(), user)
 	update_appearance()
@@ -165,7 +165,7 @@
 				if(!integrated_pen)
 					remove_pen(usr)
 				else
-					to_chat(usr, SPAN_WARNING("You can't seem to find a way to remove [src]'s [pen]."))
+					to_chat(usr, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
 				. = TRUE
 		// Take paper out
 		if("remove_paper")
@@ -186,7 +186,7 @@
 			var/obj/item/paper/paper = locate(params["ref"]) in src
 			if(istype(paper))
 				toppaper_ref = WEAKREF(paper)
-				to_chat(usr, SPAN_NOTICE("You move [paper] to the top."))
+				to_chat(usr, span_notice("You move [paper] to the top."))
 				update_icon()
 				. = TRUE
 		// Rename the paper (it's a verb)
@@ -202,7 +202,7 @@
 			if(istype(photo))
 				photo.forceMove(usr.loc)
 				usr.put_in_hands(photo)
-				to_chat(usr, SPAN_NOTICE("You remove [photo] from [src]."))
+				to_chat(usr, span_notice("You remove [photo] from [src]."))
 				. = TRUE
 
 /**

@@ -139,19 +139,19 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		return
 
 	if(src.stat > max_stat)
-		to_chat(src, SPAN_WARNING("We are incapacitated."))
+		to_chat(src, span_warning("We are incapacitated."))
 		return
 
 	if(changeling.absorbed_dna.len < required_dna)
-		to_chat(src, SPAN_WARNING("We require at least [required_dna] samples of compatible DNA."))
+		to_chat(src, span_warning("We require at least [required_dna] samples of compatible DNA."))
 		return
 
 	if(changeling.chem_charges < required_chems)
-		to_chat(src, SPAN_WARNING("We require at least [required_chems] units of chemicals to do that!"))
+		to_chat(src, span_warning("We require at least [required_chems] units of chemicals to do that!"))
 		return
 
 	if(changeling.geneticdamage > max_genetic_damage)
-		to_chat(src, SPAN_WARNING("Our genomes are still reassembling. We need time to recover first."))
+		to_chat(src, span_warning("Our genomes are still reassembling. We need time to recover first."))
 		return
 
 	return changeling
@@ -214,11 +214,11 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	if(M.loc == src.loc)
 		return 1 //target and source are in the same thing
 	if(!isturf(src.loc) || !isturf(M.loc))
-		to_chat(src, SPAN_WARNING("We cannot reach \the [M] with a sting!"))
+		to_chat(src, span_warning("We cannot reach \the [M] with a sting!"))
 		return 0 //One is inside, the other is outside something.
 	// Maximum queued turfs set to 25; I don't *think* anything raises sting_range above 2, but if it does the 25 may need raising
 	if(!SSpathfinder.get_path_jps(src, get_turf(src), get_turf(M), max_path_length = 25))
-		to_chat(src, SPAN_WARNING("We cannot find a path to sting \the [M] by!"))
+		to_chat(src, span_warning("We cannot find a path to sting \the [M] by!"))
 		return 0
 	return 1
 
@@ -237,7 +237,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	if(!T)
 		return
 	if(T.isSynthetic())
-		to_chat(src, SPAN_NOTICE("We are unable to pierce the outer shell of [T]."))
+		to_chat(src, span_notice("We are unable to pierce the outer shell of [T]."))
 		return
 	if(!(T in view(changeling.sting_range)))
 		return
@@ -252,8 +252,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	spawn(10)
 		add_verb(src, verb_path)
 
-	to_chat(src, SPAN_NOTICE("We stealthily sting [T]."))
+	to_chat(src, span_notice("We stealthily sting [T]."))
 	if(!T.mind || !T.mind.changeling)
 		return T // T will be affected by the sting.
-	T.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
+	T.custom_pain(span_warning("You feel a tiny prick."), 1, TRUE)
 	return

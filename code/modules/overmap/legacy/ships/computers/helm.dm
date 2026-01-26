@@ -314,7 +314,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	if(!input_name)
 		return
 	var/sanitized_name = sanitizeSafe(input_name, MAX_NAME_LEN)
-	to_chat(usr, SPAN_NOTICE("You rename the vessel from [linked.name] to [sanitized_name]."))
+	to_chat(usr, span_notice("You rename the vessel from [linked.name] to [sanitized_name]."))
 	message_admins("[key_name_admin(usr)] has renamed vessel to [sanitized_name].")
 	log_world("[key_name(usr)] has renamed vessel to [sanitized_name].")
 	linked.name = sanitized_name

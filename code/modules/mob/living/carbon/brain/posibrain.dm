@@ -8,17 +8,17 @@
 	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 
 	/// Message sent to the user when polling ghosts
-	var/begin_activation_message = SPAN_NOTICE("You carefully locate the manual activation switch and start the positronic brain's boot process.")
+	var/begin_activation_message = span_notice("You carefully locate the manual activation switch and start the positronic brain's boot process.")
 	/// Message sent as a visible message on success
-	var/success_message = SPAN_NOTICE("The positronic brain pings, and its lights start flashing.  Success!")
+	var/success_message = span_notice("The positronic brain pings, and its lights start flashing.  Success!")
 	/// Message sent as a visible message on failure
-	var/fail_message = SPAN_NOTICE("The positronic brain buzzes quietly, and the golden lights fade away.  Perhaps you could try again?")
+	var/fail_message = span_notice("The positronic brain buzzes quietly, and the golden lights fade away.  Perhaps you could try again?")
 	/// Visible message sent when a player possesses the brain
-	var/new_mob_message = SPAN_NOTICE("The positronic brain chimes quietly.")
+	var/new_mob_message = span_notice("The positronic brain chimes quietly.")
 	/// Examine message when the posibrain has no mob
-	var/dead_message = SPAN_DEADSAY("It appears to be completely inactive.  The reset light is blinking.")
+	var/dead_message = span_deadsay("It appears to be completely inactive.  The reset light is blinking.")
 	/// Examine message when the posibrain cannot poll ghosts due to cooldown
-	var/recharge_message = SPAN_WARNING("The positronic brain isn't ready to activate again yet!  Give it some time to recharge.")
+	var/recharge_message = span_warning("The positronic brain isn't ready to activate again yet!  Give it some time to recharge.")
 
 	/// Can be set to tell ghosts what the brain will be used for
 	var/ask_role = ""
@@ -39,7 +39,7 @@
 		return
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
-		to_chat(user, SPAN_NOTICE("You carefully locate the manual activation switch and start the positronic brain's boot process."))
+		to_chat(user, span_notice("You carefully locate the manual activation switch and start the positronic brain's boot process."))
 		icon_state = "posibrain-searching"
 		searching = TRUE
 		request_player()
@@ -54,7 +54,7 @@
 		return
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE))
 		return
-	to_chat(user, SPAN_NOTICE("You set the personality seed to \"[input_seed]\"."))
+	to_chat(user, span_notice("You set the personality seed to \"[input_seed]\"."))
 	ask_role = input_seed
 	update_appearance()
 
@@ -129,12 +129,12 @@
 				if(!brainmob.client)
 					. += "It appears to be in stand-by mode." //afk
 			if(DEAD)
-				. += SPAN_DEADSAY("It appears to be completely inactive.")
+				. += span_deadsay("It appears to be completely inactive.")
 	else
 		. += "[dead_message]"
 		if(ask_role)
-			. += SPAN_NOTICE("Current consciousness seed: \"[ask_role]\"")
-		. += SPAN_BOLDNOTICE("Alt-click to set a consciousness seed, specifying what [src] will be used for. This can help generate a personality interested in that role.")
+			. += span_notice("Current consciousness seed: \"[ask_role]\"")
+		. += span_boldnotice("Alt-click to set a consciousness seed, specifying what [src] will be used for. This can help generate a personality interested in that role.")
 
 /obj/item/mmi/digital/posibrain/emp_act(severity)
 	if(!src.brainmob)

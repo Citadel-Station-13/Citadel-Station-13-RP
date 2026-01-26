@@ -27,7 +27,7 @@
 	if(isitem(target) && allow_item_pickup_replace)
 		var/obj/item/target_item = target
 		if(target_item.should_allow_pickup(e_args))
-			e_args.chat_feedback(SPAN_WARNING("You [get_host_drop_descriptor()] to pick up [target_item]."))
+			e_args.chat_feedback(span_warning("You [get_host_drop_descriptor()] to pick up [target_item]."))
 			e_args.performer.drop_item_to_ground(src)
 			target_item.attempt_pickup(e_args.performer)
 			return CLICKCHAIN_DO_NOT_PROPAGATE

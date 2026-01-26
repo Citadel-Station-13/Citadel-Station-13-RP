@@ -53,9 +53,9 @@
 
 /obj/structure/icecream_cart/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("<b>Use</b> a reagent container with an open lid on this to refill its core ingredients.")
-	. += SPAN_NOTICE("<b>Click-drag</b> a reagent container with an open lid on this to add it as a mixing source.")
-	. += SPAN_NOTICE("<b>Click</b> on this with an intact ice-cream cone to dispense a dollop of ice cream into it.")
+	. += span_notice("<b>Use</b> a reagent container with an open lid on this to refill its core ingredients.")
+	. += span_notice("<b>Click-drag</b> a reagent container with an open lid on this to add it as a mixing source.")
+	. += span_notice("<b>Click</b> on this with an intact ice-cream cone to dispense a dollop of ice cream into it.")
 
 /obj/structure/icecream_cart/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -110,17 +110,17 @@
 			usr.visible_action_feedback(
 				target = src,
 				hard_range = MESSAGE_RANGE_CONFIGURATION,
-				visible_hard = SPAN_NOTICE("[usr] removes [container] from [src]."),
+				visible_hard = span_notice("[usr] removes [container] from [src]."),
 			)
 			update_static_data()
 			return TRUE
 		if("produceCone")
 			if(!reagents.has_reagent(/datum/reagent/nutriment/flour, cone_flour_cost))
-				usr.action_feedback(SPAN_WARNING("[src] doesn't have enough flour left for a new cone."), src)
+				usr.action_feedback(span_warning("[src] doesn't have enough flour left for a new cone."), src)
 				return TRUE
 			if(!give_cone(produce_cone(), usr))
 				return TRUE
-			usr.action_feedback(SPAN_NOTICE("You create an empty waffle cone."), src)
+			usr.action_feedback(span_notice("You create an empty waffle cone."), src)
 			return TRUE
 
 /obj/structure/icecream_cart/proc/produce_cone(force)
@@ -141,10 +141,10 @@
 
 /obj/structure/icecream_cart/proc/fill_cone(obj/item/reagent_containers/food/snacks/ice_cream/cone, force, mob/user)
 	if(!reagents.has_reagent(/datum/reagent/drink/ice, scoop_ice_cost))
-		user.action_feedback(SPAN_WARNING("There is not enough ice left in [src] to make a dollop."), src)
+		user.action_feedback(span_warning("There is not enough ice left in [src] to make a dollop."), src)
 		return FALSE
 	if(!reagents.has_reagent(/datum/reagent/drink/milk, scoop_milk_cost))
-		user.action_feedback(SPAN_WARNING("There is not enough milk left in [src] to make a dollop."), src)
+		user.action_feedback(span_warning("There is not enough milk left in [src] to make a dollop."), src)
 		return FALSE
 	var/has_sugar = !reagents.has_reagent(/datum/reagent/sugar, scoop_sugar_cost)
 	reagents.remove_reagent(/datum/reagent/drink/ice, scoop_ice_cost)
@@ -162,17 +162,17 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/ice_cream))
 		var/obj/item/reagent_containers/food/snacks/ice_cream/ice_cream = I
 		if(!ice_cream.can_keep_scooping)
-			user.action_feedback(SPAN_WARNING("[ice_cream] was already bitten out of!"), src)
+			user.action_feedback(span_warning("[ice_cream] was already bitten out of!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(ice_cream.scoop_current >= ice_cream.scoop_max)
-			user.action_feedback(SPAN_WARNING("[ice_cream] is more than topped off already!"), src)
+			user.action_feedback(span_warning("[ice_cream] is more than topped off already!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!fill_cone(ice_cream, user = user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.visible_action_feedback(
 			target = src,
 			hard_range = MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] fills \the [ice_cream] with [ice_cream.scoop_current > 1? "another" : "a"] delicious dollop of ice cream from \the [src].")
+			visible_hard = span_notice("[user] fills \the [ice_cream] with [ice_cream.scoop_current > 1? "another" : "a"] delicious dollop of ice cream from \the [src].")
 		)
 		update_static_data()
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -184,7 +184,7 @@
 	if(!container.reagents)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!container.is_open_container())
-		user.action_feedback(SPAN_WARNING("[container] is not an open container. Did you try removing the lid, if it has one?"), src)
+		user.action_feedback(span_warning("[container] is not an open container. Did you try removing the lid, if it has one?"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	var/units_transferred = container.reagents.transfer_to_holder(
 		target = reagents,
@@ -196,13 +196,13 @@
 		),
 	)
 	if(!units_transferred)
-		user.action_feedback(SPAN_WARNING("[container] has no valid reagents to transfer to [src]. Did you mean to insert the container as a reagent source instead? (<b>Click-drag</b>)"), src)
+		user.action_feedback(span_warning("[container] has no valid reagents to transfer to [src]. Did you mean to insert the container as a reagent source instead? (<b>Click-drag</b>)"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	user.visible_action_feedback(
 		target = src,
 		hard_range = MESSAGE_RANGE_CONFIGURATION,
-		visible_hard = SPAN_NOTICE("[user] refills [src] with [container]."),
-		visible_self = SPAN_NOTICE("You refill [src] with [units_transferred] units of reagents from [container]."),
+		visible_hard = span_notice("[user] refills [src] with [container]."),
+		visible_self = span_notice("You refill [src] with [units_transferred] units of reagents from [container]."),
 	)
 	// todo: this doesn't need a full data push
 	update_static_data()
@@ -218,15 +218,15 @@
 	if(!container.reagents)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!container.is_open_container())
-		user.action_feedback(SPAN_WARNING("[container] is not an open container. Did you try removing the lid, if it has one?"), src)
+		user.action_feedback(span_warning("[container] is not an open container. Did you try removing the lid, if it has one?"), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(length(sources) > max_sources)
-		user.action_feedback(SPAN_WARNING("[src] already has too many containers in it. Remove one first."), src)
+		user.action_feedback(span_warning("[src] already has too many containers in it. Remove one first."), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	user.visible_action_feedback(
 		src,
 		hard_range = MESSAGE_RANGE_CONFIGURATION,
-		visible_hard = SPAN_NOTICE("[user] inserts [dropping] into one of [src]'s reagent slots."),
+		visible_hard = span_notice("[user] inserts [dropping] into one of [src]'s reagent slots."),
 	)
 	container.forceMove(src)
 	LAZYADD(sources, container)

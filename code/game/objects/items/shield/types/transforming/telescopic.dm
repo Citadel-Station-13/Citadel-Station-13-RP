@@ -24,7 +24,7 @@
 	. = ..()
 	slot_flags = SLOT_BACK
 	actor.chat_feedback(
-		SPAN_WARNING("You extend \the [src]."),
+		span_warning("You extend \the [src]."),
 		target = src,
 	)
 
@@ -32,6 +32,6 @@
 	. = ..()
 	slot_flags = NONE
 	actor.chat_feedback(
-		SPAN_WARNING("You collapse \the [src]."),
+		span_warning("You collapse \the [src]."),
 		target = src,
 	)

@@ -35,7 +35,7 @@
 
 /obj/machinery/computer/guestpass/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("Alt-click to eject the ID inside, if there is any.")
+	. += span_notice("Alt-click to eject the ID inside, if there is any.")
 
 /obj/machinery/computer/guestpass/Initialize(mapload)
 	. = ..()
@@ -45,16 +45,16 @@
 /obj/machinery/computer/guestpass/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/card/id))
 		if(istype(I, /obj/item/card/id/guest))
-			user.action_feedback(SPAN_WARNING("\the [src] will not accept other guest passes."), src)
+			user.action_feedback(span_warning("\the [src] will not accept other guest passes."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(isnull(giver))
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
 			insert_id(I)
-			user.action_feedback(SPAN_NOTICE("You insert [I] into \the [src]."), src)
+			user.action_feedback(span_notice("You insert [I] into \the [src]."), src)
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		else
-			user.action_feedback(SPAN_WARNING("There is already an ID card inside."), src)
+			user.action_feedback(span_warning("There is already an ID card inside."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
@@ -63,11 +63,11 @@
 	if(user.Adjacent(src))
 		if(!isnull(giver))
 			user.grab_item_from_interacted_with(giver, src)
-			user.visible_message(SPAN_NOTICE("[user] grabs a card out of [src]."), SPAN_NOTICE("You grab [giver] out of [src]."))
+			user.visible_message(span_notice("[user] grabs a card out of [src]."), span_notice("You grab [giver] out of [src]."))
 			eject_id(drop_location())
 			return TRUE
 		else
-			user.action_feedback(SPAN_WARNING("[src] has no ID in it!"), src)
+			user.action_feedback(span_warning("[src] has no ID in it!"), src)
 			return TRUE
 	return ..()
 
@@ -209,12 +209,12 @@
 				if(!usr.attempt_insert_item_for_installation(the_card, src))
 					return FALSE
 				insert_id(the_card)
-				usr.action_feedback(SPAN_NOTICE("You insert [the_card] into [src]."), src)
+				usr.action_feedback(span_notice("You insert [the_card] into [src]."), src)
 				return TRUE
 			var/obj/item/card/id/the_card = usr.get_active_held_item()
 			if(istype(the_card))
 				if(istype(the_card, /obj/item/card/id/guest))
-					usr.action_feedback(SPAN_NOTICE("You try to swap [the_card] into \the [src], but it won't accept guest passes."))
+					usr.action_feedback(span_notice("You try to swap [the_card] into \the [src], but it won't accept guest passes."))
 					return FALSE
 				if(!usr.attempt_void_item_for_installation(the_card))
 					return FALSE
@@ -222,13 +222,13 @@
 			eject_id()
 			if(istype(the_card))
 				insert_id(the_card)
-				usr.action_feedback(SPAN_NOTICE("You quickly swap [the_card] into \the [src]."), src)
+				usr.action_feedback(span_notice("You quickly swap [the_card] into \the [src]."), src)
 			else
-				usr.action_feedback(SPAN_NOTICE("You remove [giver] from [src]."), src)
+				usr.action_feedback(span_notice("You remove [giver] from [src]."), src)
 			return TRUE
 		if("issue")
 			if(prints_left <= 0)
-				usr.action_feedback(SPAN_WARNING("[src] cannot print another pass yet!"), src)
+				usr.action_feedback(span_warning("[src] cannot print another pass yet!"), src)
 				return TRUE
 			print(usr)
 			return TRUE

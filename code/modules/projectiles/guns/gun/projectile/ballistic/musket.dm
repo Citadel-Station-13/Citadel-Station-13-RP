@@ -31,13 +31,13 @@
 
 /obj/item/gun/projectile/ballistic/musket/special_check(mob/user)
 	if(!has_powder)
-		to_chat(user, SPAN_WARNING("\The [src] is not loaded with gunpowder!"))
+		to_chat(user, span_warning("\The [src] is not loaded with gunpowder!"))
 		return FALSE
 	if(!user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
-		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
+		to_chat(user, span_warning("You refrain from firing [src] because your intent is set to help!"))
 		return FALSE
 	if(safety_state == GUN_SAFETY_ON)
-		to_chat(user, SPAN_WARNING("You squeeze the trigger but it doesn't move!"))
+		to_chat(user, span_warning("You squeeze the trigger but it doesn't move!"))
 		return FALSE
 	else
 		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
@@ -50,7 +50,7 @@
 	..()
 	if (istype(W, /obj/item/reagent_containers))
 		if(has_powder)
-			to_chat(user, SPAN_WARNING("\The [src] is already full of gunpowder."))
+			to_chat(user, span_warning("\The [src] is already full of gunpowder."))
 			return
 		var/obj/item/reagent_containers/C = W
 		if(C.reagents.has_reagent("gunpowder", 5))
@@ -59,7 +59,7 @@
 					return
 				C.reagents.remove_reagent("gunpowder", 5)
 				has_powder = TRUE
-				to_chat(user, SPAN_NOTICE("You fill \the [src] with gunpowder."))
+				to_chat(user, span_notice("You fill \the [src] with gunpowder."))
 
 /obj/item/reagent_containers/glass/powder_horn
 	name = "powder horn"

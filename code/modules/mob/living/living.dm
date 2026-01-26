@@ -109,7 +109,7 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 	if(!..())
 		return FALSE
 	log_emote("POINTED --> at [pointing_at] ([COORD(pointing_at)]).", src)
-	visible_message(SPAN_INFOPLAIN("[SPAN_NAME("[src]")] points at [pointing_at]."), SPAN_NOTICE("You point at [pointing_at]."))
+	visible_message(span_infoplain("[span_name("[src]")] points at [pointing_at]."), span_notice("You point at [pointing_at]."))
 
 /*one proc, four uses
 swapping: if it's 1, the mobs are trying to switch, if 0, non-passive is pushing passive
@@ -738,13 +738,13 @@ default behaviour is:
 
 /mob/living/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(incapacitated())
-		to_chat(src, SPAN_WARNING("You can't do that right now!"))
+		to_chat(src, span_warning("You can't do that right now!"))
 		return FALSE
 	if(be_close && !in_range(M, src))
-		to_chat(src, SPAN_WARNING("You are too far away!"))
+		to_chat(src, span_warning("You are too far away!"))
 		return FALSE
 	if(!no_dexterity && !IsAdvancedToolUser())
-		to_chat(src, SPAN_WARNING("You don't have the dexterity to do this!"))
+		to_chat(src, span_warning("You don't have the dexterity to do this!"))
 		return FALSE
 	return TRUE
 

@@ -104,7 +104,7 @@
 	if(dist <= 1)
 		show(user)
 	else
-		. += SPAN_NOTICE("It is too far away to look at.")
+		. += span_notice("It is too far away to look at.")
 
 /obj/item/photo/proc/show(mob/user)
 	// todo: tgui?

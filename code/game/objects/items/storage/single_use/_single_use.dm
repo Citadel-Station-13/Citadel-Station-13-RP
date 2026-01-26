@@ -12,9 +12,9 @@
 		playsound(src, sfx_tear, 50, TRUE, -5)
 
 	user.visible_message(
-		SPAN_NOTICE("[user] tears open [src]'s seal."),
-		SPAN_NOTICE("You tear open [src]'s seals."),
-		SPAN_HEAR("You hear something being torn open."),
+		span_notice("[user] tears open [src]'s seal."),
+		span_notice("You tear open [src]'s seals."),
+		span_hear("You hear something being torn open."),
 	)
 
 	update_icon()

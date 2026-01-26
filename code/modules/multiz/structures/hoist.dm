@@ -15,7 +15,7 @@
 	if(.)
 		return
 	new /obj/structure/hoist (get_turf(user), user.dir)
-	user.visible_message(SPAN_WARNING( "[user] deploys the hoist kit!"), SPAN_NOTICE("You deploy the hoist kit!"), SPAN_NOTICE("You hear the sound of parts snapping into place."))
+	user.visible_message(span_warning( "[user] deploys the hoist kit!"), span_notice("You deploy the hoist kit!"), span_notice("You hear the sound of parts snapping into place."))
 	qdel(src)
 
 /obj/effect/hoist_hook
@@ -36,13 +36,13 @@
 		return
 
 	if ((AM.atom_flags & ATOM_ABSTRACT) || AM.anchored)
-		to_chat(user, SPAN_NOTICE("You can't do that."))
+		to_chat(user, span_notice("You can't do that."))
 		return
 	if (source_hoist.hoistee)
-		to_chat(user, SPAN_NOTICE("\The [source_hoist.hoistee] is already attached to \the [src]!"))
+		to_chat(user, span_notice("\The [source_hoist.hoistee] is already attached to \the [src]!"))
 		return
 	source_hoist.attach_hoistee(AM)
-	user.visible_message(SPAN_DANGER("[user] attaches \the [AM] to \the [src]."), SPAN_DANGER("You attach \the [AM] to \the [src]."), SPAN_DANGER("You hear something clamp into place."))
+	user.visible_message(span_danger("[user] attaches \the [AM] to \the [src]."), span_danger("You attach \the [AM] to \the [src]."), span_danger("You hear something clamp into place."))
 
 /obj/structure/hoist/proc/attach_hoistee(atom/movable/AM)
 	if (get_turf(AM) != get_turf(source_hook))
@@ -61,11 +61,11 @@
 		return
 
 	if (usr.incapacitated())
-		to_chat(usr, SPAN_NOTICE("You can't do that while incapacitated."))
+		to_chat(usr, span_notice("You can't do that while incapacitated."))
 		return
 
 	if (!usr.IsAdvancedToolUser())
-		to_chat(usr, SPAN_NOTICE("You stare cluelessly at \the [src]."))
+		to_chat(usr, span_notice("You stare cluelessly at \the [src]."))
 		return
 
 	if (!source_hoist.hoistee)
@@ -79,7 +79,7 @@
 
 	var/turf/desturf = dest
 	source_hoist.hoistee.forceMove(desturf)
-	usr.visible_message(SPAN_DANGER("[usr] detaches \the [source_hoist.hoistee] from the hoist clamp."), SPAN_DANGER("You detach \the [source_hoist.hoistee] from the hoist clamp."), SPAN_DANGER("You hear something unclamp."))
+	usr.visible_message(span_danger("[usr] detaches \the [source_hoist.hoistee] from the hoist clamp."), span_danger("You detach \the [source_hoist.hoistee] from the hoist clamp."), span_danger("You hear something unclamp."))
 	source_hoist.release_hoistee()
 
 // This will handle mobs unbuckling themselves.
@@ -180,25 +180,25 @@
 		return
 
 	if (user.incapacitated())
-		to_chat(user, SPAN_NOTICE("You can't do that while incapacitated."))
+		to_chat(user, span_notice("You can't do that while incapacitated."))
 		return
 
 	if (!user.IsAdvancedToolUser())
-		to_chat(user, SPAN_NOTICE("You stare cluelessly at \the [src]."))
+		to_chat(user, span_notice("You stare cluelessly at \the [src]."))
 		return
 
 	if(broken)
-		to_chat(user, SPAN_WARNING( "The hoist is broken!"))
+		to_chat(user, span_warning( "The hoist is broken!"))
 		return
 	var/can = can_move_dir(movedir)
 	var/movtext = movedir == UP ? "raise" : "lower"
 	if (!can) // If you can't...
 		movedir = movedir == UP ? DOWN : UP // switch directions!
-		to_chat(user, SPAN_NOTICE("You switch the direction of the pulley."))
+		to_chat(user, span_notice("You switch the direction of the pulley."))
 		return
 
 	if (!hoistee)
-		user.visible_message(SPAN_NOTICE("[user] begins to [movtext] the clamp."), SPAN_NOTICE("You begin to [movtext] the clamp."), SPAN_NOTICE("You hear the sound of a crank."))
+		user.visible_message(span_notice("[user] begins to [movtext] the clamp."), span_notice("You begin to [movtext] the clamp."), span_notice("You hear the sound of a crank."))
 		move_dir(movedir, 0)
 		return
 
@@ -212,7 +212,7 @@
 		var/obj/O = hoistee
 		size = O.w_class
 
-	user.visible_message(SPAN_NOTICE("[user] begins to [movtext] \the [hoistee]!"), SPAN_NOTICE("You begin to [movtext] \the [hoistee]!"), SPAN_NOTICE("You hear the sound of a crank."))
+	user.visible_message(span_notice("[user] begins to [movtext] \the [hoistee]!"), span_notice("You begin to [movtext] \the [hoistee]!"), span_notice("You hear the sound of a crank."))
 	if (do_after(user, (1 SECONDS) * size / 4, target = src))
 		move_dir(movedir, 1)
 
@@ -231,11 +231,11 @@
 	if (isobserver(usr) || usr.incapacitated())
 		return
 	if (!usr.IsAdvancedToolUser()) // thanks nanacode
-		to_chat(usr, SPAN_NOTICE("You stare cluelessly at \the [src]."))
+		to_chat(usr, span_notice("You stare cluelessly at \the [src]."))
 		return
 
 	if (hoistee)
-		to_chat(usr, SPAN_NOTICE("You cannot collapse the hoist with \the [hoistee] attached!"))
+		to_chat(usr, span_notice("You cannot collapse the hoist with \the [hoistee] attached!"))
 		return
 	collapse_kit()
 

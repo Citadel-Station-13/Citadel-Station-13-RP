@@ -65,7 +65,7 @@
 	// Updating the sun should be done sparingly.
 	if(old_light_modifier && current_weather.light_modifier != old_light_modifier)
 		our_planet.update_sun()
-	log_debug(SPAN_DEBUGINFO("[our_planet.name]'s weather is now [new_weather], with a temperature of [temperature]&deg;K ([temperature - T0C]&deg;C | [temperature * 1.8 - 459.67]&deg;F)."))
+	log_debug(span_debug_info("[our_planet.name]'s weather is now [new_weather], with a temperature of [temperature]&deg;K ([temperature - T0C]&deg;C | [temperature * 1.8 - 459.67]&deg;F)."))
 
 
 /datum/weather_holder/process(delta_time)
@@ -128,7 +128,7 @@
 			/// Get a suitable weather pattern to shift to from this one.
 			var/new_weather = get_next_weather(W)
 			forecast += new_weather
-	log_debug(SPAN_DEBUGINFO("[our_planet.name]'s weather forecast is now '[english_list(forecast, and_text = " then ", final_comma_text = ", ")]'."))
+	log_debug(span_debug_info("[our_planet.name]'s weather forecast is now '[english_list(forecast, and_text = " then ", final_comma_text = ", ")]'."))
 
 
 /**
@@ -160,7 +160,7 @@
 	wind_speed = new_wind_speed
 	wind_dir = pick(GLOB.alldirs)
 	var/message = "You feel the wind blowing [wind_speed > 2 ? "strongly ": ""]towards the <b>[dir2text(wind_dir)]</b>."
-	message_all_outdoor_players(SPAN_WARNING( message))
+	message_all_outdoor_players(span_warning( message))
 
 
 /datum/weather_holder/proc/message_all_outdoor_players(message)

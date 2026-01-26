@@ -136,7 +136,7 @@
 		return
 	if(href_list["examine_armor"])
 		if(!usr.using_perspective || get_dist(usr.using_perspective?.eye, src) > 2)
-			to_chat(usr, SPAN_WARNING("You are too far away!"))
+			to_chat(usr, span_warning("You are too far away!"))
 			return TRUE
 		var/list/assembled = fetch_armor().describe_english_list()
 		to_chat(usr, SPAN_BLOCKQUOTE("<center>--- Armor: [src] ---</center><hr>[jointext(assembled, "<br>")]", null))
@@ -159,7 +159,7 @@
 		if(slot in list(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET, SLOT_ID_SUIT_STORAGE))
 			return TRUE		// don't care, didn't ask
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(H, SPAN_DANGER("Your species cannot wear [src]."))
+			to_chat(H, span_danger("Your species cannot wear [src]."))
 		return FALSE
 
 	return TRUE
@@ -284,7 +284,7 @@
 			collated.overlays = using
 			assembled[name] = collated
 	if(!length(available))
-		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
+		to_chat(user, span_warning("[src] can only be worn one way."))
 		return
 	var/choice = show_radial_menu(user, loc == user ? user : src, assembled, radius = 48)
 	if(isnull(choice))
@@ -292,7 +292,7 @@
 	if(!style_repick_set(choice, user))
 		return
 	// todo: logging API
-	to_chat(user, SPAN_NOTICE("You set [src]'s style to [choice]."))
+	to_chat(user, span_notice("You set [src]'s style to [choice]."))
 	log_game("[key_name(user)] set [src]'s style to [choice]")
 	update_icon()
 	update_worn_icon()
@@ -305,7 +305,7 @@
 	set src in usr
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
-		usr.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+		usr.action_feedback(span_warning("You can't do that right now!"), src)
 		return
 
 	style_repick_open(usr)

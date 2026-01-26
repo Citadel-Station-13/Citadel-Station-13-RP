@@ -103,17 +103,17 @@
 	if (progress < 0.25)
 		return "It's barely started cooking."
 	if (progress < 0.75)
-		return SPAN_NOTICE("It's cooking away nicely.")
+		return span_notice("It's cooking away nicely.")
 	if (progress < 1)
-		return SPAN_NOTICE("<b>It's almost ready!</b>")
+		return span_notice("<b>It's almost ready!</b>")
 
 	var/half_overcook = (CI.overcook_mult - 1)*0.5
 	if (progress < 1+half_overcook)
-		return SPAN_SOGHUN("<b>It is done !</b>")
+		return span_soghun("<b>It is done !</b>")
 	if (progress < CI.overcook_mult)
-		return SPAN_WARNING("It looks overcooked, get it out!")
+		return span_warning("It looks overcooked, get it out!")
 	else
-		return SPAN_DANGER("It is burning!!")
+		return span_danger("It is burning!!")
 
 /obj/machinery/appliance/update_icon()
 	if (!machine_stat && cooking_objs.len)
@@ -532,7 +532,7 @@
 	new /obj/item/reagent_containers/food/snacks/badrecipe(CI.container)
 
 	// Produce nasty smoke.
-	visible_message(SPAN_DANGER("\The [src] vomits a gout of rancid smoke!"))
+	visible_message(span_danger("\The [src] vomits a gout of rancid smoke!"))
 	//TODO: True particles @Zandario
 	var/datum/effect_system/smoke_spread/bad/smoke = new /datum/effect_system/smoke_spread/bad
 	smoke.attach(src)

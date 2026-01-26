@@ -185,20 +185,20 @@
 	set desc = "This will let you evolve from baby to adult slime."
 
 	if(stat)
-		to_chat(src, SPAN_WARNING( "I must be conscious to do this..."))
+		to_chat(src, span_warning( "I must be conscious to do this..."))
 		return
 
 	if(harmless)
-		to_chat(src, SPAN_WARNING( "I have been pacified. I cannot evolve..."))
+		to_chat(src, span_warning( "I have been pacified. I cannot evolve..."))
 		return
 
 	if(!is_adult)
 		if(amount_grown >= 10)
 			make_adult()
 		else
-			to_chat(src, SPAN_WARNING( "I am not ready to evolve yet..."))
+			to_chat(src, span_warning( "I am not ready to evolve yet..."))
 	else
-		to_chat(src, SPAN_WARNING( "I have already evolved..."))
+		to_chat(src, span_warning( "I have already evolved..."))
 
 
 /mob/living/simple_mob/slime/xenobio/verb/reproduce()
@@ -206,11 +206,11 @@
 	set desc = "This will make you split into four new slimes."
 
 	if(stat)
-		to_chat(src, SPAN_WARNING( "I must be conscious to do this..."))
+		to_chat(src, span_warning( "I must be conscious to do this..."))
 		return
 
 	if(harmless)
-		to_chat(src, SPAN_WARNING( "I have been pacified. I cannot reproduce..."))
+		to_chat(src, span_warning( "I have been pacified. I cannot reproduce..."))
 		return
 
 	if(is_adult)
@@ -235,7 +235,7 @@
 					free_tiles++
 
 			if(free_tiles < split_amount-1) // Three free tiles are needed (by default), as four slimes are made and the 4th tile is from the center tile that the current slime occupies.
-				to_chat(src, SPAN_WARNING( "It is too cramped here to reproduce..."))
+				to_chat(src, span_warning( "It is too cramped here to reproduce..."))
 				return
 
 			var/list/babies = list()
@@ -250,9 +250,9 @@
 				transfer_client_to(new_slime)
 			qdel(src)
 		else
-			to_chat(src, SPAN_WARNING( "I am not ready to reproduce yet..."))
+			to_chat(src, span_warning( "I am not ready to reproduce yet..."))
 	else
-		to_chat(src, SPAN_WARNING( "I have not evolved enough to reproduce yet..."))
+		to_chat(src, span_warning( "I have not evolved enough to reproduce yet..."))
 
 // Used when reproducing or dying.
 /mob/living/simple_mob/slime/xenobio/proc/make_new_slime(var/desired_type, var/no_step)

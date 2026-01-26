@@ -14,5 +14,5 @@
 	. = ..()
 	var/msg = "HEY, LISTEN!!! Merge Conflict Marker detected at [AREACOORD(src)]! Please manually address all potential merge conflicts!!!"
 	log_mapping(msg)
-	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
+	to_chat(world, span_boldannounce("[msg]"))
 	warning(msg)

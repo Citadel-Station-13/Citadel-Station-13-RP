@@ -46,4 +46,4 @@
 
 /datum/frame_stage/proc/on_examine(obj/structure/frame2/frame, datum/event_args/actor/actor, list/examine_list, distance)
 	if(descriptor)
-		examine_list += SPAN_NOTICE("[frame] [descriptor]")
+		examine_list += span_notice("[frame] [descriptor]")

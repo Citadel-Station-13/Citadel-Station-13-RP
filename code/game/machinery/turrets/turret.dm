@@ -185,7 +185,7 @@
 
 /obj/machinery/porta_turret/can_catalogue(mob/user) // Dead turrets can't be scanned.
 	if(machine_stat & BROKEN)
-		to_chat(user, SPAN_WARNING("\The [src] was destroyed, so it cannot be scanned."))
+		to_chat(user, span_warning("\The [src] was destroyed, so it cannot be scanned."))
 		return FALSE
 	return ..()
 
@@ -282,11 +282,11 @@
 
 /obj/machinery/porta_turret/proc/isLocked(mob/user)
 	if(ailock && issilicon(user))
-		to_chat(user, SPAN_NOTICE("There seems to be a firewall preventing you from accessing this device."))
+		to_chat(user, span_notice("There seems to be a firewall preventing you from accessing this device."))
 		return TRUE
 
 	if(locked && !issilicon(user))
-		to_chat(user, SPAN_NOTICE("Controls locked."))
+		to_chat(user, span_notice("Controls locked."))
 		return TRUE
 	return FALSE
 
@@ -335,14 +335,14 @@
 
 /obj/machinery/porta_turret/CanUseTopic(mob/user)
 	if(HasController())
-		to_chat(user, SPAN_NOTICE("Turrets can only be controlled using the assigned turret controller."))
+		to_chat(user, span_notice("Turrets can only be controlled using the assigned turret controller."))
 		return UI_CLOSE
 
 	if(isLocked(user))
 		return UI_CLOSE
 
 	if(!anchored)
-		to_chat(user, SPAN_NOTICE("\The [src] has to be secured first!"))
+		to_chat(user, span_notice("\The [src] has to be secured first!"))
 		return UI_CLOSE
 
 	return ..()

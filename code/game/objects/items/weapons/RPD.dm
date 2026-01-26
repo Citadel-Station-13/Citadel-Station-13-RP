@@ -203,7 +203,7 @@
 			if (ISNOTSTUB(target_dir))
 				p_init_dir = target_dir
 			else
-				to_chat(usr, SPAN_WARNING("\The [src]'s screen flashes a warning: Can't configure a pipe to only connect in one direction."))
+				to_chat(usr, span_warning("\The [src]'s screen flashes a warning: Can't configure a pipe to only connect in one direction."))
 				playeffect = FALSE
 		if("init_reset")
 			p_init_dir = ALL_CARDINALS
@@ -231,7 +231,7 @@
 
 	. = TRUE
 	if((mode & DESTROY_MODE) && can_destroy_pipe)
-		to_chat(user, SPAN_NOTICE("You start destroying a pipe..."))
+		to_chat(user, span_notice("You start destroying a pipe..."))
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
 		if(do_after(user, 2, target = target))
 			activate()
@@ -244,7 +244,7 @@
 			var/obj/machinery/atmospherics/pipe/P = target
 			playsound(src, 'sound/machines/click.ogg', 50, 1)
 			P.change_color(pipe_colors[paint_color])
-			user.visible_message(SPAN_NOTICE("[user] paints \the [P] [paint_color]."), SPAN_NOTICE("You paint \the [P] [paint_color]."))
+			user.visible_message(span_notice("[user] paints \the [P] [paint_color]."), span_notice("You paint \the [P] [paint_color]."))
 			return
 
 	//Making pipes
@@ -255,7 +255,7 @@
 					return ..()
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
 				if(istype(recipe, /datum/pipe_info/meter))
-					to_chat(user, SPAN_NOTICE("You start building a meter..."))
+					to_chat(user, span_notice("You start building a meter..."))
 					if(do_after(user, 2, target = target))
 						activate()
 						var/obj/item/pipe_meter/PM = new /obj/item/pipe_meter(get_turf(target))
@@ -264,14 +264,14 @@
 							do_wrench(PM, user)
 				else if(istype(recipe, /datum/pipe_info/pipe))
 					if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))
-						to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
+						to_chat(user, span_notice("You can't build this object on the layer..."))
 						return ..()
 					else
 						var/datum/pipe_info/pipe/R = recipe
-						to_chat(user, SPAN_NOTICE("You start building a pipe..."))
+						to_chat(user, span_notice("You start building a pipe..."))
 						if(do_after(user, 2, target = target))
 							if(recipe.all_layers == FALSE && (piping_layer == 1 || piping_layer == 5))//double check to stop cheaters (and to not waste time waiting for something that can't be placed)
-								to_chat(user, SPAN_NOTICE("You can't build this object on the layer..."))
+								to_chat(user, span_notice("You can't build this object on the layer..."))
 								return ..()
 							activate()
 							var/obj/machinery/atmospherics/path = R.pipe_type
@@ -297,15 +297,15 @@
 					return ..()
 				target = get_turf(target)
 				if(istype(target, /turf/unsimulated))
-					to_chat(user, SPAN_WARNING("[src]'s error light flickers; there's something in the way!"))
+					to_chat(user, span_warning("[src]'s error light flickers; there's something in the way!"))
 					return
-				to_chat(user, SPAN_NOTICE("You start building a disposals pipe..."))
+				to_chat(user, span_notice("You start building a disposals pipe..."))
 				playsound(src, 'sound/machines/click.ogg', 50, 1)
 				if(do_after(user, 4, target = target))
 					var/obj/structure/disposalconstruct/C = new(target, R.pipe_type, queued_p_dir, queued_p_flipped, R.subtype)
 
 					if(!C.can_place())
-						to_chat(user, SPAN_WARNING("There's not enough room to build that here!"))
+						to_chat(user, span_warning("There's not enough room to build that here!"))
 						qdel(C)
 						return
 
@@ -358,7 +358,7 @@
 	else
 		return
 	SStgui.update_uis(src)
-	to_chat(user, SPAN_NOTICE("You set the layer to [piping_layer]."))
+	to_chat(user, span_notice("You set the layer to [piping_layer]."))
 
 #undef ATMOS_CATEGORY
 #undef DISPOSALS_CATEGORY

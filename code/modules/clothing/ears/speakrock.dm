@@ -21,7 +21,7 @@
 
     headphones_on = !headphones_on
     icon_state = "[base_icon]_[headphones_on ? "on" : "off"]"
-    to_chat(usr, SPAN_NOTICE("You turn the music [headphones_on ? "on" : "off"]."))
+    to_chat(usr, span_notice("You turn the music [headphones_on ? "on" : "off"]."))
 
     if (ismob(loc))
         var/mob/M = loc

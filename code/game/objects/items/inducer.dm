@@ -45,9 +45,9 @@
 	else
 		. += "<br><span class='notice'>Its display is dark.</span>"
 	if(opened)
-		. += SPAN_NOTICE("Its battery compartment is open, and looks like it can be closed with a <b>screwdriver</b>")
+		. += span_notice("Its battery compartment is open, and looks like it can be closed with a <b>screwdriver</b>")
 	else
-		. += SPAN_NOTICE("Its battery compartment is closed, and looks like it can be opened with a <b>screwdriver</b>")
+		. += span_notice("Its battery compartment is closed, and looks like it can be opened with a <b>screwdriver</b>")
 
 /obj/item/inducer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM)
@@ -97,13 +97,13 @@
 	var/list/targets = list()
 	var/result = A._inducer_scan(src, targets, inducer_flags)
 	if(result == INDUCER_SCAN_BLOCK || (result == INDUCER_SCAN_NORMAL && !length(targets)))
-		to_chat(user, SPAN_WARNING("Unable to interface with device."))
+		to_chat(user, span_warning("Unable to interface with device."))
 		return FALSE
 	else if(result == INDUCER_SCAN_INTERFERE)
-		to_chat(user, SPAN_WARNING("Device interference detected; Aborting."))
+		to_chat(user, span_warning("Device interference detected; Aborting."))
 		return FALSE
 	else if(result == INDUCER_SCAN_FULL)
-		to_chat(user, SPAN_NOTICE("[A] is already fully charged!"))
+		to_chat(user, span_notice("[A] is already fully charged!"))
 		return FALSE
 	if(!targets.len)
 		CRASH("Empty targets list")
@@ -113,7 +113,7 @@
 
 	var/used = 0
 
-	user.visible_message(SPAN_NOTICE("[user] starts recharging [A] with [src]."), SPAN_NOTICE("You start recharging [A] with [src]."))
+	user.visible_message(span_notice("[user] starts recharging [A] with [src]."), span_notice("You start recharging [A] with [src]."))
 	A.add_filter("inducer_outline", 1, outline_filter(1, "#22aaFF"))
 
 	var/datum/beam_legacy/charge_beam = user.Beam(A, icon_state = "rped_upgrade", time = 20 SECONDS)
@@ -142,7 +142,7 @@
 	qdel(charge_beam)
 	A.remove_filter("inducer_outline")
 	inducing = FALSE
-	user.visible_message(SPAN_NOTICE("[user] recharged [A]."), SPAN_NOTICE("Recharged [A] with [used] units of power."))
+	user.visible_message(span_notice("[user] recharged [A]."), span_notice("Recharged [A] with [used] units of power."))
 
 /obj/item/inducer/object_cell_slot_removed(obj/item/cell/cell, datum/object_system/cell_slot/slot, silent, datum/event_args/actor/actor)
 	. = ..()

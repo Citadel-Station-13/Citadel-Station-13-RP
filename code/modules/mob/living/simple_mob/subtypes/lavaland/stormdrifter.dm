@@ -87,7 +87,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		L.adjustHalLoss(10)
-		to_chat(L, SPAN_DANGER("\The [src] strikes you with a crackling tendril!"))
+		to_chat(L, span_danger("\The [src] strikes you with a crackling tendril!"))
 		playsound(L, /datum/soundbyte/sparks, 75, 1)
 
 //Stormdrifter Bulls!

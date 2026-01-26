@@ -11,7 +11,7 @@
 		return
 
 	if(!initialized)
-		to_chat(user, SPAN_WARNING("Preferences not initialized; please wait!"))
+		to_chat(user, span_warning("Preferences not initialized; please wait!"))
 		return
 
 	if(!get_mob_by_key(client_ckey))

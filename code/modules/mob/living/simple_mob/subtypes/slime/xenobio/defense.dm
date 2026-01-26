@@ -12,11 +12,11 @@
 			fail_odds = 60
 
 		if(prob(fail_odds))
-			visible_message(SPAN_WARNING( "\The [L] attempts to wrestle \the [name] off!"))
+			visible_message(span_warning( "\The [L] attempts to wrestle \the [name] off!"))
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 
 		else
-			visible_message(SPAN_WARNING( "\The [L] manages to wrestle \the [name] off!"))
+			visible_message(span_warning( "\The [L] manages to wrestle \the [name] off!"))
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 			if(prob(40))

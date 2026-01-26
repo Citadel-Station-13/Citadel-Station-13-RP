@@ -136,7 +136,7 @@
 		return
 	rabid = TRUE
 	my_slime.update_mood()
-	my_slime.visible_message(SPAN_DANGER("\The [my_slime] enrages!"))
+	my_slime.visible_message(span_danger("\The [my_slime] enrages!"))
 
 // Called to relax from being rabid (when blue slime core was used).
 /datum/ai_holder/polaris/simple_mob/xenobio_slime/proc/relax()
@@ -147,7 +147,7 @@
 		rabid = FALSE
 		my_slime.update_mood()
 		lost_target()
-		my_slime.visible_message(SPAN_NOTICE("\The [my_slime] calms down."))
+		my_slime.visible_message(span_notice("\The [my_slime] calms down."))
 
 // Called when using a pacification agent (or it's Kendrick being initalized).
 /datum/ai_holder/polaris/simple_mob/xenobio_slime/proc/pacify()

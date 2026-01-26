@@ -79,28 +79,28 @@
 	getting_up_original = get_up_delay()
 	if(isturf(loc) && !instant)
 		visible_message(
-			SPAN_NOTICE("[src] starts to get up off the ground."),
-			SPAN_NOTICE("You start pushing yourself off the ground."),
+			span_notice("[src] starts to get up off the ground."),
+			span_notice("You start pushing yourself off the ground."),
 		)
 	else
-		innate_feedback(SPAN_NOTICE("You start pushing yourself off the ground."))
+		innate_feedback(span_notice("You start pushing yourself off the ground."))
 	if(instant || do_self(src, getting_up_original, flags = DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, mobility_flags = MOBILITY_CAN_RESIST, additional_checks = CALLBACK(src, PROC_REF(_resisting_a_rest))))
 		if(isturf(loc))
 			visible_message(
-				SPAN_NOTICE("[src] gets up from the ground."),
-				SPAN_NOTICE("You get up."),
+				span_notice("[src] gets up from the ground."),
+				span_notice("You get up."),
 			)
 		else
-			innate_feedback(SPAN_NOTICE("You get up."))
+			innate_feedback(span_notice("You get up."))
 		set_resting(FALSE)
 	else
 		if(isturf(loc))
 			visible_message(
-				SPAN_NOTICE("[src] falls back down."),
-				SPAN_NOTICE("You fall back down."),
+				span_notice("[src] falls back down."),
+				span_notice("You fall back down."),
 			)
 		else
-			innate_feedback(SPAN_NOTICE("You get up."))
+			innate_feedback(span_notice("You get up."))
 	getting_up = FALSE
 	getting_up_loc = null
 

@@ -183,7 +183,7 @@
 				cut_color(target_wire)
 				. = TRUE
 			else
-				to_chat(user, SPAN_WARNING("You need wirecutters!"))
+				to_chat(user, span_warning("You need wirecutters!"))
 		// Pulse a wire.
 		if("pulse")
 			if(I?.is_multitool() || isAdminGhostAI(usr))
@@ -196,7 +196,7 @@
 					interactable(user)
 				. = TRUE
 			else
-				to_chat(user, SPAN_WARNING("You need a multitool!"))
+				to_chat(user, span_warning("You need a multitool!"))
 
 		 // Attach a signaler to a wire.
 		if("attach")

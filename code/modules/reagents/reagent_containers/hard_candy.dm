@@ -103,7 +103,7 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			user.visible_message(SPAN_DANGER("[user] attempts to feed [target] [src]."))
+			user.visible_message(span_danger("[user] attempts to feed [target] [src]."))
 			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 			if(!do_mob(user, target, 3 SECONDS))
 				return

@@ -19,7 +19,7 @@
 
 /obj/machinery/cablelayer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(!cable&&!on)
-		to_chat(user, SPAN_WARNING("\The [src] doesn't have any cable loaded."))
+		to_chat(user, span_warning("\The [src] doesn't have any cable loaded."))
 		return
 	on=!on
 	user.visible_message("\The [user] [!on?"dea":"a"]ctivates \the [src].", "You switch [src] [on? "on" : "off"]")
@@ -30,9 +30,9 @@
 
 		var/result = load_cable(O)
 		if(!result)
-			to_chat(user, SPAN_WARNING("\The [src]'s cable reel is full."))
+			to_chat(user, span_warning("\The [src]'s cable reel is full."))
 		else
-			to_chat(user, SPAN_NOTICE("You load [result] lengths of cable into [src]."))
+			to_chat(user, span_notice("You load [result] lengths of cable into [src]."))
 		return
 
 	if(O.is_wirecutter())
@@ -46,11 +46,11 @@
 				var/obj/item/stack/cable_coil/CC = new (get_turf(src))
 				CC.amount = m
 		else
-			to_chat(usr, SPAN_WARNING("There's no more cable on the reel."))
+			to_chat(usr, span_warning("There's no more cable on the reel."))
 
 /obj/machinery/cablelayer/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("\The [src]'s cable reel has [cable.amount] lengths left.")
+	. += span_notice("\The [src]'s cable reel has [cable.amount] lengths left.")
 
 /obj/machinery/cablelayer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)

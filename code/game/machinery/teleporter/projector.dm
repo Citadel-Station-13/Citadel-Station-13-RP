@@ -42,8 +42,8 @@
 
 /obj/machinery/tele_projector/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("It has [render_power(power_capacity, ENUM_POWER_SCALE_KILO)] stored, according to a meter on [src].")
-	. += SPAN_NOTICE("It is set to consume [render_power(recharge_rate, ENUM_POWER_SCALE_KILO)].")
+	. += span_notice("It has [render_power(power_capacity, ENUM_POWER_SCALE_KILO)] stored, according to a meter on [src].")
+	. += span_notice("It is set to consume [render_power(recharge_rate, ENUM_POWER_SCALE_KILO)].")
 
 /obj/machinery/tele_projector/process()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -229,7 +229,7 @@
 		update_use_power(USE_POWER_ACTIVE)
 		use_power(5000)
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_NOTICE("Teleporter engaged!"), 2)
+			O.show_message(span_notice("Teleporter engaged!"), 2)
 	add_fingerprint(usr)
 	return
 
@@ -244,7 +244,7 @@
 		pad.update_use_power(USE_POWER_IDLE)
 		update_use_power(USE_POWER_IDLE)
 		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_NOTICE("Teleporter disengaged!"), 2)
+			O.show_message(span_notice("Teleporter disengaged!"), 2)
 	add_fingerprint(usr)
 	return
 
@@ -272,16 +272,16 @@
 	visible_message("[severity]", range=10)
 	switch(severity)
 		if(1)
-			visible_message(SPAN_WARNING("The lights flicker and many devices freeze and reboot as the teleporter punches a hole through space-time."),range=10)
+			visible_message(span_warning("The lights flicker and many devices freeze and reboot as the teleporter punches a hole through space-time."),range=10)
 		if(2)
-			visible_message(SPAN_WARNING("The local APC forcibly shuts down from overload, the lights breaking, as the teleporter punches a hole through space-time."),range=10)
+			visible_message(span_warning("The local APC forcibly shuts down from overload, the lights breaking, as the teleporter punches a hole through space-time."),range=10)
 			var/obj/machinery/power/apc/P = get_area(src).get_apc()
 			P.energy_fail(rand(30,90))
 			P.overload_lighting(35)
 			for(var/obj/machinery/power/apc/A in P.terminal?.powernet?.nodes)
 				P.overload(src)
 		if(3)
-			visible_message(SPAN_WARNING("The local APC overloads as massive current spike is sent into the powernet as the teleporter punches a hole through space-time; moments later, the station is eerily quiet."),range=10)
+			visible_message(span_warning("The local APC overloads as massive current spike is sent into the powernet as the teleporter punches a hole through space-time; moments later, the station is eerily quiet."),range=10)
 			var/obj/machinery/power/apc/P = get_area(src).get_apc()
 			P.overload_lighting(100)
 			for(var/obj/machinery/power/grid_checker/G in GLOB.machines)

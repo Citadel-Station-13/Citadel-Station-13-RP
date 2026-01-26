@@ -26,7 +26,7 @@
 		return
 
 	if(check_mobility && !CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
-		usr.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+		usr.action_feedback(span_warning("You can't do that right now!"), src)
 		return
 
 	recolor(user, gear, queried)
@@ -45,7 +45,7 @@
 	set src in usr
 
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
-		usr.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+		usr.action_feedback(span_warning("You can't do that right now!"), src)
 		return
 
 	dynamic_recolor(usr, TRUE, TRUE)

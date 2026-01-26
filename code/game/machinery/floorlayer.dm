@@ -35,8 +35,8 @@
 /obj/machinery/floorlayer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	on=!on
 	user.visible_message( \
-		SPAN_NOTICE("[user] has [!on?"de":""]activated \the [src]."), \
-		SPAN_NOTICE("You [!on?"de":""]activate \the [src]."))
+		span_notice("[user] has [!on?"de":""]activated \the [src]."), \
+		span_notice("You [!on?"de":""]activate \the [src]."))
 	return
 
 /obj/machinery/floorlayer/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -45,22 +45,22 @@
 		mode[m] = !mode[m]
 		var/O = mode[m]
 		user.visible_message( \
-			SPAN_NOTICE("[usr] has set \the [src] [m] mode [!O?"off":"on"]."), \
-			SPAN_NOTICE("You set \the [src] [m] mode [!O?"off":"on"]."))
+			span_notice("[usr] has set \the [src] [m] mode [!O?"off":"on"]."), \
+			span_notice("You set \the [src] [m] mode [!O?"off":"on"]."))
 		return
 
 	if(istype(W, /obj/item/stack/tile))
-		to_chat(user, SPAN_NOTICE("\The [W] successfully loaded."))
+		to_chat(user, span_notice("\The [W] successfully loaded."))
 		TakeTile(T)
 		return
 
 	if(W.is_crowbar())
 		if(!length(contents))
-			to_chat(user, SPAN_NOTICE("\The [src] is empty."))
+			to_chat(user, span_notice("\The [src] is empty."))
 		else
 			var/obj/item/stack/tile/E = tgui_input_list(usr, "Choose remove tile type.", "Tiles", contents)
 			if(E)
-				to_chat(user, SPAN_NOTICE("You remove \the [E] from \the [src]."))
+				to_chat(user, span_notice("You remove \the [E] from \the [src]."))
 				E.loc = src.loc
 				T = null
 		return
@@ -75,7 +75,7 @@
 	var/dismantle = mode["dismantle"]
 	var/laying = mode["laying"]
 	var/collect = mode["collect"]
-	. += SPAN_NOTICE("\The [src] [!T?"don't ":""]has [!T?"":"[T.get_amount()] [T] "]tile\s, dismantle is [dismantle?"on":"off"], laying is [laying?"on":"off"], collect is [collect?"on":"off"].")
+	. += span_notice("\The [src] [!T?"don't ":""]has [!T?"":"[T.get_amount()] [T] "]tile\s, dismantle is [dismantle?"on":"off"], laying is [laying?"on":"off"], collect is [collect?"on":"off"].")
 
 /obj/machinery/floorlayer/proc/reset()
 	on=0

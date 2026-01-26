@@ -48,9 +48,9 @@
 	. = ..()
 	if(get_dist(get_turf(src), user) <= 1)
 		if(!isnull(loaded))
-			. += SPAN_NOTICE("Its vial has [loaded.reagents.total_volume] units remaining.")
+			. += span_notice("Its vial has [loaded.reagents.total_volume] units remaining.")
 		else
-			. += SPAN_NOTICE("It's unloaded.")
+			. += span_notice("It's unloaded.")
 
 /obj/item/hypospray/update_icon_state()
 	var/vial_state
@@ -73,10 +73,10 @@
 /obj/item/hypospray/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.is_holding_inactive(src))
 		if(isnull(loaded))
-			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)
+			user.action_feedback(span_warning("[src] has no vial loaded."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.put_in_hands_or_drop(loaded)
-		user.action_feedback(SPAN_NOTICE("You remove [loaded] from [src]."), src)
+		user.action_feedback(span_notice("You remove [loaded] from [src]."), src)
 		loaded = null
 		playsound(src, 'sound/weapons/empty.ogg', 50, FALSE)
 		update_icon()
@@ -87,18 +87,18 @@
 	if(istype(I, /obj/item/reagent_containers/glass/hypovial))
 		var/obj/item/reagent_containers/glass/hypovial/vial = I
 		if(istype(vial, /obj/item/reagent_containers/glass/hypovial/large) && !allow_large)
-			user.action_feedback(SPAN_WARNING("[vial] requires an advanced hypospray to use!"), src)
+			user.action_feedback(span_warning("[vial] requires an advanced hypospray to use!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.transfer_item_to_loc(vial, src))
-			user.action_feedback(SPAN_WARNING("[vial] is stuck to your hand!"), src)
+			user.action_feedback(span_warning("[vial] is stuck to your hand!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/reagent_containers/glass/hypovial/old_vial = loaded
 		loaded = vial
 		if(!isnull(old_vial))
-			user.action_feedback(SPAN_NOTICE("You quickly swap [old_vial] with [vial]."), src)
+			user.action_feedback(span_notice("You quickly swap [old_vial] with [vial]."), src)
 			user.put_in_hands_or_drop(old_vial)
 		else
-			user.action_feedback(SPAN_NOTICE("You insert [vial] into [src]."), src)
+			user.action_feedback(span_notice("You insert [vial] into [src]."), src)
 		playsound(src, 'sound/weapons/autoguninsert.ogg', 50, FALSE)
 		update_icon()
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -110,7 +110,7 @@
 	set category = VERB_CATEGORY_OBJECT
 
 	if(!inject_adjustable)
-		usr.action_feedback(SPAN_WARNING("[src] can't have its injection thresholds changed."), src)
+		usr.action_feedback(span_warning("[src] can't have its injection thresholds changed."), src)
 		return
 	var/amount = input(usr, "Set how much you want to inject per use.", "Injection Amount", inject_amount) as num|null
 	if(isnull(amount))
@@ -118,7 +118,7 @@
 	amount = round(amount, 1)
 	amount = clamp(amount, 1, inject_max)
 	inject_amount = amount
-	usr.action_feedback(SPAN_NOTICE("[src] is now set to inject [amount] per use."), src)
+	usr.action_feedback(span_notice("[src] is now set to inject [amount] per use."), src)
 
 /obj/item/hypospray/attack_self(mob/user, datum/event_args/actor/actor)
 	switch(inject_mode)
@@ -128,18 +128,18 @@
 			inject_mode = HYPOSPRAY_MODE_INJECT
 	switch(inject_mode)
 		if(HYPOSPRAY_MODE_INJECT)
-			user.action_feedback(SPAN_NOTICE("[src] is now set to subdermal injection."), src)
+			user.action_feedback(span_notice("[src] is now set to subdermal injection."), src)
 		if(HYPOSPRAY_MODE_SPRAY)
-			user.action_feedback(SPAN_NOTICE("[src] is now set to surface spray."), src)
+			user.action_feedback(span_notice("[src] is now set to surface spray."), src)
 	playsound(src, 'sound/effects/pop.ogg', 50, 0)
 
 // todo: alt click context radials?
 /obj/item/hypospray/AltClick(mob/user)
 	if(!inject_adjustable)
-		user.action_feedback(SPAN_WARNING("[src] can't have its injection thresholds changed."), src)
+		user.action_feedback(span_warning("[src] can't have its injection thresholds changed."), src)
 		return
 	inject_amount = (inject_amount + 5 > inject_max)? min(5, inject_max) : inject_amount + 5
-	user.action_feedback(SPAN_NOTICE("[src] is now set to inject [inject_amount] per use."), src)
+	user.action_feedback(span_notice("[src] is now set to inject [inject_amount] per use."), src)
 
 /obj/item/hypospray/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(injection_checks(target, user, target_zone))
@@ -151,14 +151,14 @@
 	// todo: legacy cast, get organ/etc should be on mob level maybe.
 	var/mob/living/L = target
 	if(!istype(L))
-		user.action_feedback(SPAN_WARNING("[target] isn't injectable."), src)
+		user.action_feedback(span_warning("[target] isn't injectable."), src)
 		return FALSE
 	if(!loaded?.reagents?.total_volume)
-		user.action_feedback(SPAN_WARNING("[src]'s vial is empty."), src)
+		user.action_feedback(span_warning("[src]'s vial is empty."), src)
 		return FALSE
 	var/obj/item/organ/external/limb = L.get_organ(target_zone || BP_HEAD)
 	if(isnull(limb))
-		user.action_feedback(SPAN_WARNING("[target] doesn't have that limb."), src)
+		user.action_feedback(span_warning("[target] doesn't have that limb."), src)
 		return FALSE
 	var/inject_verb
 	var/inject_message
@@ -175,25 +175,25 @@
 	var/delay = injection_time
 	if(block_flags & CLOTHING_INJECTION_PORT)
 		if(isnull(port_add_time))
-			user.action_feedback(SPAN_WARNING("[src] is not compatible with injection ports!"), src)
+			user.action_feedback(span_warning("[src] is not compatible with injection ports!"), src)
 			return FALSE
 		delay += port_add_time
 		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
-		inject_message = SPAN_NOTICE("[user] starts to search for an injection port on [target]'s [limb.name].")
+		inject_message = span_notice("[user] starts to search for an injection port on [target]'s [limb.name].")
 	else if(block_flags & CLOTHING_THICK_MATERIAL)
 		if(isnull(thick_add_time))
-			user.action_feedback(SPAN_WARNING("[src] can't [inject_verb] through something that thick!"), src)
+			user.action_feedback(span_warning("[src] can't [inject_verb] through something that thick!"), src)
 			return FALSE
 		delay += thick_add_time
 		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
-		inject_message = SPAN_WARNING("[user] starts to dig [src] up against [target]'s [limb]!")
+		inject_message = span_warning("[user] starts to dig [src] up against [target]'s [limb]!")
 	if(target.a_intent != INTENT_HELP)
 		if(isnull(resist_add_time))
-			user.action_feedback(SPAN_WARNING("[src] is not capable of aligning while [target] is resisting! (Non-help intent)"), src)
+			user.action_feedback(span_warning("[src] is not capable of aligning while [target] is resisting! (Non-help intent)"), src)
 			return FALSE
 		delay += resist_add_time
 		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
-		inject_message = SPAN_WARNING("[user] starts to intrusively align [src] up against [target]'s [limb.name]!")
+		inject_message = span_warning("[user] starts to intrusively align [src] up against [target]'s [limb.name]!")
 	if(!silent)
 		user.visible_action_feedback(
 			target = target,
@@ -222,7 +222,7 @@
 			loaded.reagents.trans_to_mob(target, inject_amount, CHEM_TOUCH)
 			where_str = "on your skin"
 	playsound(src, 'sound/items/hypospray2.ogg', 50, TRUE, -1)
-	target.tactile_feedback(SPAN_WARNING("You feel a tiny prick, and a cool sensation [where_str]."))
+	target.tactile_feedback(span_warning("You feel a tiny prick, and a cool sensation [where_str]."))
 	if(!isnull(user))
 		user.action_feedback("You inject [target] with [src]. [loaded.reagents.total_volume] units remaining.", src)
 

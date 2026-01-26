@@ -8,14 +8,14 @@
 		close()
 		log_str = "close (attempted)"
 		actor.chat_feedback(
-			SPAN_NOTICE("You send [src] a command to close."),
+			span_notice("You send [src] a command to close."),
 			target = src,
 		)
 	else
 		open()
 		log_str = "open (attempted)"
 		actor.chat_feedback(
-			SPAN_NOTICE("You send [src] a command to open."),
+			span_notice("You send [src] a command to open."),
 			target = src,
 		)
 	actor.data[ACTOR_DATA_SILICON_CONTROL_LOG] = "airlock [COORD(src)] [src] [log_str]"

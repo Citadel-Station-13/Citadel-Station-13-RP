@@ -204,7 +204,7 @@
 	return TRUE
 
 /obj/structure/window/attack_tk(mob/user)
-	user.visible_message(SPAN_NOTICE("Something knocks on [src]."))
+	user.visible_message(span_notice("Something knocks on [src]."))
 	playsound(loc, 'sound/effects/Glasshit.ogg', 50, TRUE)
 
 /obj/structure/window/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
@@ -215,9 +215,9 @@
 
 	playsound(loc, 'sound/effects/glassknock.ogg', 80, TRUE)
 	user.visible_message(
-		SPAN_NOTICE("[user.name] knocks on the [name]."),
-		SPAN_NOTICE("You knock on the [name]."),
-		SPAN_HEAR("You hear a knocking sound."),
+		span_notice("[user.name] knocks on the [name]."),
+		span_notice("You knock on the [name]."),
+		span_hear("You hear a knocking sound."),
 	)
 
 /obj/structure/window/attackby(obj/item/object, mob/user)
@@ -229,15 +229,15 @@
 		var/obj/item/weldingtool/WT = object
 		if (integrity < integrity_max)
 			if (WT.remove_fuel(1, user))
-				to_chat(user, SPAN_NOTICE("You begin repairing [src]..."))
+				to_chat(user, span_notice("You begin repairing [src]..."))
 				playsound(src, WT.tool_sound, 50, TRUE)
 				if (do_after(user, 40 * WT.tool_speed, target = src))
 					set_integrity(integrity_max)
 					// playsound(src, 'sound/items/Welder.ogg', 50, 1)
 					update_appearance()
-					to_chat(user, SPAN_NOTICE("You repair [src]."))
+					to_chat(user, span_notice("You repair [src]."))
 		else
-			to_chat(user, SPAN_WARNING("[src] is already in good condition!"))
+			to_chat(user, span_warning("[src] is already in good condition!"))
 		return
 
 	else if (istype(object, /obj/item/stack/cable_coil) && considered_reinforced && construction_state == WINDOW_STATE_UNSECURED && !istype(src, /obj/structure/window/reinforced/polarized))
@@ -245,9 +245,9 @@
 		if (C.use(1))
 			playsound(src.loc, /datum/soundbyte/sparks, 75, TRUE)
 			user.visible_message(
-				message = SPAN_NOTICE("\The [user] begins to wire \the [src] for electrochromic tinting."),
-				self_message = SPAN_NOTICE("You begin to wire \the [src] for electrochromic tinting."),
-				blind_message = SPAN_HEAR("You hear sparks."),
+				message = span_notice("\The [user] begins to wire \the [src] for electrochromic tinting."),
+				self_message = span_notice("You begin to wire \the [src] for electrochromic tinting."),
+				blind_message = span_hear("You hear sparks."),
 			)
 
 			if (do_after(user, 20 * C.tool_speed, src) && construction_state == WINDOW_STATE_UNSECURED)
@@ -283,7 +283,7 @@
 /obj/structure/window/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch (passed_mode)
 		if (RCD_DECONSTRUCT)
-			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
+			to_chat(user, span_notice("You deconstruct \the [src]."))
 			qdel(src)
 			return TRUE
 	return FALSE
@@ -308,7 +308,7 @@
 /obj/structure/window/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!allow_deconstruct)
-		e_args.initiator.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		e_args.initiator.action_feedback(span_notice("This can't be deconstructed."), src)
 		return FALSE
 
 	if (construction_state == WINDOW_STATE_UNSECURED || construction_state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
@@ -316,7 +316,7 @@
 			return
 
 		var/unsecuring = construction_state != WINDOW_STATE_UNSECURED
-		e_args.chat_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
+		e_args.chat_feedback(span_notice("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
 		if (unsecuring)
 			construction_state = WINDOW_STATE_UNSECURED
 			set_anchored(FALSE)
@@ -334,14 +334,14 @@
 		return
 
 	var/unsecuring = construction_state == WINDOW_STATE_SECURED_TO_FRAME
-	e_args.chat_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
+	e_args.chat_feedback(span_notice("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
 	construction_state = unsecuring ? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
 
 
 /obj/structure/window/crowbar_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!allow_deconstruct)
-		e_args.initiator.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		e_args.initiator.action_feedback(span_notice("This can't be deconstructed."), src)
 		return FALSE
 	if (!considered_reinforced)
 		return
@@ -350,21 +350,21 @@
 	if (!use_crowbar(I, e_args, flags))
 		return
 	var/unsecuring = construction_state == WINDOW_STATE_CROWBRARED_IN
-	e_args.chat_feedback(SPAN_NOTICE("You pry [src] [unsecuring ? "out of" : "into"] the frame."), src)
+	e_args.chat_feedback(span_notice("You pry [src] [unsecuring ? "out of" : "into"] the frame."), src)
 	construction_state = unsecuring ? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
 
 
 /obj/structure/window/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(!allow_deconstruct)
-		e_args.initiator.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		e_args.initiator.action_feedback(span_notice("This can't be deconstructed."), src)
 		return FALSE
 	if (construction_state != WINDOW_STATE_UNSECURED)
-		e_args.chat_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
+		e_args.chat_feedback(span_warning("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
 		return
 	if (!use_wrench(I, e_args, flags))
 		return
-	e_args.chat_feedback(SPAN_NOTICE("You disassemble [src]."), src)
+	e_args.chat_feedback(span_notice("You disassemble [src]."), src)
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 
@@ -510,24 +510,24 @@
 		windowtype = /obj/structure/window/phoronreinforced/full
 
 	if (!ST.can_use(required_amount))
-		to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
+		to_chat(user, span_notice("You do not have enough sheets."))
 		return
 	for(var/obj/structure/window/W in loc)
 		if(W.check_fullwindow()) //two fulltile windows
-			to_chat(user, SPAN_NOTICE("There is already a window there."))
+			to_chat(user, span_notice("There is already a window there."))
 			return
-	to_chat(user, SPAN_NOTICE("You start placing the window."))
+	to_chat(user, span_notice("You start placing the window."))
 	if(do_after(user,20))
 		for(var/obj/structure/window/W in loc)
 			if(W.check_fullwindow())
-				to_chat(user, SPAN_NOTICE("There is already a window there."))
+				to_chat(user, span_notice("There is already a window there."))
 				return
 
 		if (ST.use(required_amount))
 			var/obj/structure/window/WD = new windowtype(get_turf(loc), null, TRUE)
-			to_chat(user, SPAN_NOTICE("You place [WD]."))
+			to_chat(user, span_notice("You place [WD]."))
 		else
-			to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
+			to_chat(user, span_notice("You do not have enough sheets."))
 			return
 
 /obj/structure/window/basic
@@ -699,7 +699,7 @@
 		if (istype(MT.connectable, /obj/machinery/button/windowtint))
 			var/obj/machinery/button/windowtint/buffered_button = MT.connectable
 			id = buffered_button.id
-			to_chat(user, SPAN_NOTICE("\The [src] is linked to \the [buffered_button]."))
+			to_chat(user, span_notice("\The [src] is linked to \the [buffered_button]."))
 			return TRUE
 
 		// Otherwise fall back to asking them.
@@ -711,7 +711,7 @@
 		)
 		if (new_id && user.get_active_held_item() == object && in_range(src, user))
 			id = new_id
-			to_chat(user, SPAN_NOTICE("The new ID of \the [src] is [id]"))
+			to_chat(user, span_notice("The new ID of \the [src] is [id]"))
 			return TRUE
 	. = ..()
 

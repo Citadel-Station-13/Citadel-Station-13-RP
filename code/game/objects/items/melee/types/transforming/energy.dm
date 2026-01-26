@@ -35,7 +35,7 @@
 /obj/item/melee/transforming/energy/examine(mob/user, dist)
 	. = ..()
 	if(colorable)
-		. += SPAN_NOTICE("Alt-click to recolor it.")
+		. += span_notice("Alt-click to recolor it.")
 
 /obj/item/melee/transforming/energy/on_activate(datum/event_args/actor/actor, silent)
 	. = ..()

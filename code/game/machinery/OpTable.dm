@@ -43,7 +43,7 @@
 
 /obj/machinery/optable/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(MUTATION_HULK in usr.mutations)
-		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
+		visible_message(span_danger("\The [usr] destroys \the [src]!"))
 		density = FALSE
 		qdel(src)
 
@@ -65,7 +65,7 @@
 	if(C == user)
 		user.visible_message("[user] climbs on \the [src].","You climb on \the [src].")
 	else
-		visible_message(SPAN_NOTICE("\The [C] has been laid on \the [src] by [user]."))
+		visible_message(span_notice("\The [C] has been laid on \the [src] by [user]."))
 	C.set_intentionally_resting(TRUE)
 	C.forceMove(loc)
 	// now that we hold parts, this must be commented out to prevent dumping our parts onto our loc. not sure what this was intended to do when it was written.
@@ -114,10 +114,10 @@
 /obj/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	check_victim()
 	if(victim && get_turf(victim) == get_turf(src) && victim.lying)
-		to_chat(usr, SPAN_WARNING("\The [src] is already occupied!"))
+		to_chat(usr, span_warning("\The [src] is already occupied!"))
 		return FALSE
 	if(patient.buckled)
-		to_chat(usr, SPAN_NOTICE("Unbuckle \the [patient] first!"))
+		to_chat(usr, span_notice("Unbuckle \the [patient] first!"))
 		return FALSE
 	return TRUE
 

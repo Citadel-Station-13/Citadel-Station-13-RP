@@ -341,7 +341,7 @@ GLOBAL_LIST_EMPTY(orbital_deployment_zones)
 	var/list/mob/witnesses = our_entity.get_all_players_in_location(TRUE)
 	// TODO: standardize this on /entity
 	for(var/mob/witness as anything in witnesses)
-		witness.show_message(SPAN_WARNING("The floor lurches beneath you as a shock plows through the installation. \
+		witness.show_message(span_warning("The floor lurches beneath you as a shock plows through the installation. \
 		Creaking can be heard from the walls."), SAYCODE_TYPE_ALWAYS)
 		shake_camera(witness, 0.5 SECONDS, 0.25)
 

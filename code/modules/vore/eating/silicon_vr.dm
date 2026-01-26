@@ -20,11 +20,11 @@
 		return
 
 	if(QDELETED(prey))
-		to_chat(usr, SPAN_WARNING("Invalid mob choice!"))
+		to_chat(usr, span_warning("Invalid mob choice!"))
 		return
 
 	hologram.visible_message("[hologram] starts forming around [prey]!")
-	to_chat(src, SPAN_NOTICE("You begin forming hardlight holograms around [prey]."))
+	to_chat(src, span_notice("You begin forming hardlight holograms around [prey]."))
 
 	if(!do_after(eyeobj, 50, prey, DO_AFTER_IGNORE_ACTIVE_ITEM ))
 		return

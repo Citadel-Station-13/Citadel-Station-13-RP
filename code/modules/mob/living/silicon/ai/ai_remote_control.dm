@@ -3,19 +3,19 @@
 
 /mob/living/silicon/ai/proc/deploy_to_shell(var/mob/living/silicon/robot/target)
 	if(!config_legacy.allow_ai_shells)
-		to_chat(src, SPAN_WARNING( "AI Shells are not allowed on this server. You shouldn't have this verb because of it, so consider making a bug report."))
+		to_chat(src, span_warning( "AI Shells are not allowed on this server. You shouldn't have this verb because of it, so consider making a bug report."))
 		return
 
 	if(incapacitated())
-		to_chat(src, SPAN_WARNING( "You are incapacitated!"))
+		to_chat(src, span_warning( "You are incapacitated!"))
 		return
 
 	if(lacks_power())
-		to_chat(src, SPAN_WARNING( "Your core lacks power, wireless is disabled."))
+		to_chat(src, span_warning( "Your core lacks power, wireless is disabled."))
 		return
 
 	if(control_disabled)
-		to_chat(src, SPAN_WARNING( "Wireless networking module is offline."))
+		to_chat(src, span_warning( "Wireless networking module is offline."))
 		return
 
 	var/list/possible = list()
@@ -26,16 +26,16 @@
 			possible += R
 
 	if(!LAZYLEN(possible))
-		to_chat(src, SPAN_WARNING( "No usable AI shell beacons detected."))
+		to_chat(src, span_warning( "No usable AI shell beacons detected."))
 
 	if(!target || !(target in possible)) //If the AI is looking for a new shell, or its pre-selected shell is no longer valid
 		target = input(src, "Which body to control?") as null|anything in possible
 
 	if(!target || target.stat == DEAD || target.deployed || !(!target.connected_ai || (target.connected_ai == src) ) )
 		if(target)
-			to_chat(src, SPAN_WARNING( "It is no longer possible to deploy to \the [target]."))
+			to_chat(src, span_warning( "It is no longer possible to deploy to \the [target]."))
 		else
-			to_chat(src, SPAN_NOTICE("Deployment aborted."))
+			to_chat(src, span_notice("Deployment aborted."))
 		return
 
 	else if(mind)
@@ -53,5 +53,5 @@
 
 /mob/living/silicon/ai/proc/disconnect_shell(message = "Your remote connection has been reset!")
 	if(deployed_shell) // Forcibly call back AI in event of things such as damage, EMP or power loss.
-		message = SPAN_DANGER(message)
+		message = span_danger(message)
 		deployed_shell.undeploy(message)

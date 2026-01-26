@@ -64,15 +64,15 @@
 
 /obj/item/beartrap/user_unbuckle_mob(mob/M, flags, mob/user, semantic)
 	if(user == M)
-		user.visible_message(SPAN_WARNING("[user] begins carefully pulling themselves free of [src]!"))
+		user.visible_message(span_warning("[user] begins carefully pulling themselves free of [src]!"))
 	else
-		user.visible_message(SPAN_WARNING("[user] begins freeing [M] from [src]!"))
+		user.visible_message(span_warning("[user] begins freeing [M] from [src]!"))
 	if(!do_after(user, 5 SECONDS, src))
 		return
 	if(user == M)
-		user.visible_message(SPAN_WARNING("[user] pulls themselves free of [src]!"))
+		user.visible_message(span_warning("[user] pulls themselves free of [src]!"))
 	else
-		user.visible_message(SPAN_WARNING("[user] frees [M] from [src]!"))
+		user.visible_message(span_warning("[user] frees [M] from [src]!"))
 	return ..()
 
 /obj/item/beartrap/mob_unbuckled(mob/M, flags, mob/user, semantic)

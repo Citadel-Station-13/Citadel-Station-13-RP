@@ -109,20 +109,20 @@
 /obj/item/melee/baton/proc/user_clickchain_toggle_active(datum/event_args/actor/actor)
 	if(!update_charge())
 		actor.chat_feedback(
-			SPAN_WARNING("[src] is out of charge, or lacks a power source."),
+			span_warning("[src] is out of charge, or lacks a power source."),
 			target = src,
 		)
 		return TRUE
 	if(!active)
 		if(activate())
 			actor.chat_feedback(
-				SPAN_WARNING("[src] is now on."),
+				span_warning("[src] is now on."),
 				target = src,
 			)
 	else
 		if(deactivate())
 			actor.chat_feedback(
-				SPAN_NOTICE("[src] is now off."),
+				span_notice("[src] is now off."),
 				target = src,
 			)
 	return TRUE
@@ -148,7 +148,7 @@
 			var/mob/living/carbon/carbon_target = target
 			affecting = carbon_target.get_bodypart_for_zone(use_target_zone)
 		attacker?.visible_message(
-			SPAN_WARNING("[target] has been prodded [affecting ? "in \the [affecting]" : ""] with [src] by [attacker]. Luckily it was off."),
+			span_warning("[target] has been prodded [affecting ? "in \the [affecting]" : ""] with [src] by [attacker]. Luckily it was off."),
 		)
 		return TRUE
 	powered_melee_impact(target, attacker, actor, use_target_zone, efficiency)
@@ -189,7 +189,7 @@
 		var/mob/living/carbon/carbon_target = target
 		affecting = carbon_target.get_bodypart_for_zone(use_target_zone)
 	attacker?.visible_message(
-		SPAN_DANGER("[target] has been prodded [affecting ? "in \the [affecting]" : ""] with [src] by [attacker]."),
+		span_danger("[target] has been prodded [affecting ? "in \the [affecting]" : ""] with [src] by [attacker]."),
 	)
 	playsound(src, stun_sound, 75, TRUE)
 	target.electrocute(
@@ -226,9 +226,9 @@
 /obj/item/melee/baton/examine(mob/user, dist)
 	. = ..()
 	if(obj_cell_slot?.cell)
-		. += SPAN_NOTICE("[src] is [obj_cell_slot.cell.percent()]% charged.")
+		. += span_notice("[src] is [obj_cell_slot.cell.percent()]% charged.")
 	else
-		. += SPAN_NOTICE("[src] does not have a power source installed.")
+		. += span_notice("[src] does not have a power source installed.")
 
 /obj/item/melee/baton/loaded
 	cell_type = /obj/item/cell/basic/tier_1/weapon
@@ -404,7 +404,7 @@
 /obj/item/melee/baton/electrostaff/user_clickchain_toggle_active(datum/event_args/actor/actor)
 	if(!active && !(item_flags & ITEM_MULTIHAND_WIELDED))
 		actor.chat_feedback(
-			SPAN_WARNING("[src] needs to be wielded with both hands to be activated."),
+			span_warning("[src] needs to be wielded with both hands to be activated."),
 			target = src,
 		)
 		return TRUE

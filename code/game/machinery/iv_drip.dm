@@ -122,30 +122,30 @@
 		return
 
 	if(attached_victim)
-		visible_message(SPAN_WARNING("[attached_victim] is detached from [src]."))
+		visible_message(span_warning("[attached_victim] is detached from [src]."))
 		attached_victim = null
 		update_appearance()
 		return
 
 	if(!target.has_dna())
-		to_chat(usr, SPAN_DANGER("The drip beeps: Warning, incompatible creature!"))
+		to_chat(usr, span_danger("The drip beeps: Warning, incompatible creature!"))
 		return
 
 	if(Adjacent(target) && usr.Adjacent(target))
 		if(get_reagent_holder())
 			attach_iv(target, usr)
 		else
-			to_chat(usr, SPAN_WARNING("There's nothing attached to the IV drip!"))
+			to_chat(usr, span_warning("There's nothing attached to the IV drip!"))
 
 /obj/machinery/iv_drip/attackby(obj/item/W, mob/user, params)
 	if(is_type_in_typecache(W, drip_containers))
 		if(reagent_container)
-			to_chat(user, SPAN_WARNING("[reagent_container] is already loaded on [src]!"))
+			to_chat(user, span_warning("[reagent_container] is already loaded on [src]!"))
 			return
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		reagent_container = W
-		to_chat(user, SPAN_NOTICE("You attach [W] to [src]."))
+		to_chat(user, span_notice("You attach [W] to [src]."))
 		// user.log_message("attached_victim a [W] to [src] at [AREACOORD(src)] containing ([reagent_container.reagents.get_reagent_log_string()])", LOG_ATTACK)
 		add_fingerprint(user)
 		update_appearance()
@@ -153,9 +153,9 @@
 
 	if(W.is_screwdriver())
 		playsound(src, W.tool_sound, 50, TRUE)
-		to_chat(user, SPAN_NOTICE("You start to dismantle the IV drip."))
+		to_chat(user, span_notice("You start to dismantle the IV drip."))
 		if(do_after(user, 15))
-			to_chat(user, SPAN_NOTICE("You dismantle the IV drip."))
+			to_chat(user, span_notice("You dismantle the IV drip."))
 			var/obj/item/stack/rods/A = new /obj/item/stack/rods(src.loc)
 			A.amount = 6
 			if(reagent_container)
@@ -179,7 +179,7 @@
 		return PROCESS_KILL
 
 	if(!(get_dist(src, attached_victim) <= 1 && isturf(attached_victim.loc)))
-		to_chat(attached_victim, SPAN_USERDANGER("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
+		to_chat(attached_victim, span_userdanger("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
 		var/list/arm_zones = shuffle(list(BP_R_ARM, BP_L_ARM))
 		var/obj/item/organ/external/chosen_limb = attached_victim.get_organ(arm_zones[1]) || attached_victim.get_organ(arm_zones[2]) || attached_victim.get_organ(BP_TORSO)
 		chosen_limb.inflict_bodypart_damage(
@@ -210,12 +210,12 @@
 			// If the beaker is full, ping
 			if(!amount)
 				if(prob(5))
-					visible_message(SPAN_HEAR("[src] pings."))
+					visible_message(span_hear("[src] pings."))
 				return
 
 			// If the human is losing too much blood, beep.
 			if(attached_victim.species.blood_volume < BLOOD_VOLUME_SAFE && prob(5))
-				visible_message(SPAN_HEAR("[src] beeps loudly."))
+				visible_message(span_hear("[src] beeps loudly."))
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, TRUE)
 			var/atom/movable/target = reagent_container
 			if(attached_victim.take_blood_legacy(target, amount) > 0)
@@ -224,14 +224,14 @@
 /// Called when an IV is attached.
 /obj/machinery/iv_drip/proc/attach_iv(mob/living/target, mob/user)
 	user.visible_message(
-		SPAN_WARNING("[usr] begins attaching [src] to [target]..."),
-		SPAN_WARNING("You begin attaching [src] to [target]."),
+		span_warning("[usr] begins attaching [src] to [target]..."),
+		span_warning("You begin attaching [src] to [target]."),
 	)
 	if(!do_after(usr, 1 SECONDS, target))
 		return
 	usr.visible_message(
-		SPAN_WARNING("[usr] attaches [src] to [target]."),
-		SPAN_NOTICE("You attach [src] to [target]."),
+		span_warning("[usr] attaches [src] to [target]."),
+		span_notice("You attach [src] to [target]."),
 	)
 	// var/datum/reagent_holder/container = get_reagent_holder()
 	// log_combat(usr, target, "attached_victim", src, "containing: ([container.get_reagent_log_string()])")
@@ -265,7 +265,7 @@
 	set src in oview(1)
 
 	if(!isliving(usr))
-		to_chat(usr, SPAN_WARNING("You can't do that!"))
+		to_chat(usr, span_warning("You can't do that!"))
 		return
 	if (!usr.canUseTopic())
 		return
@@ -273,7 +273,7 @@
 		return
 	if(reagent_container)
 		if(attached_victim)
-			visible_message(SPAN_WARNING("[attached_victim] is detached from [src]."))
+			visible_message(span_warning("[attached_victim] is detached from [src]."))
 			detach_iv()
 		reagent_container.forceMove(drop_location())
 		reagent_container = null
@@ -285,14 +285,14 @@
 	set src in oview(1)
 
 	if(!isliving(usr))
-		to_chat(usr, SPAN_WARNING("You can't do that!"))
+		to_chat(usr, span_warning("You can't do that!"))
 		return
 	if (!usr.canUseTopic())
 		return
 	if(usr.incapacitated())
 		return
 	injection_mode = !injection_mode
-	to_chat(usr, SPAN_NOTICE("The IV drip is now [injection_mode ? "injecting" : "taking blood"]."))
+	to_chat(usr, span_notice("The IV drip is now [injection_mode ? "injecting" : "taking blood"]."))
 	update_appearance()
 
 /obj/machinery/iv_drip/examine(mob/user, dist)
@@ -304,11 +304,11 @@
 
 	if(reagent_container)
 		if(reagent_container.reagents?.total_volume)
-			. += SPAN_NOTICE("Attached is \a [reagent_container] with [reagent_container.reagents.total_volume] units of liquid.")
+			. += span_notice("Attached is \a [reagent_container] with [reagent_container.reagents.total_volume] units of liquid.")
 		else
-			. += SPAN_NOTICE("Attached is an empty [reagent_container.name].")
+			. += span_notice("Attached is an empty [reagent_container.name].")
 
-	. += SPAN_NOTICE("[attached_victim ? attached_victim : "No one"] is attached_victim.")
+	. += span_notice("[attached_victim ? attached_victim : "No one"] is attached_victim.")
 
 /*
 /obj/machinery/iv_drip/saline
