@@ -29,7 +29,7 @@
 /area/shuttle/specops
 	requires_power = TRUE
 	name = "\improper NDV Quicksilver"
-	icon_state = "shuttle1"
+	icon_state = "shuttle"
 
 /area/shuttle/specops/general
 	name = "\improper NDV Quicksilver Deck"

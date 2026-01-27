@@ -17,7 +17,10 @@
 		input = message
 	if(input)
 		log_emote(message,src) //Log before we add junk
-		message = "<span class='emote'><B>[src]</B> [input]</span>"
+		//If the message starts with a comma or apostrophe, no space after the name.
+		//We have to account for sanitization so we take the whole first word to see if it's a character code.
+		var/nospace = GLOB.valid_starting_punctuation.Find(input)
+		message = "<span class='emote'><B>[src]</B>[nospace ? "" : " "][input]</span>"
 	else
 		return
 
@@ -76,7 +79,7 @@
 			to_chat(src, "<span class='danger'>Deadchat is globally muted.</span>")
 			return
 
-	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+	if(SSbans.t_is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
 		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
 		return
 

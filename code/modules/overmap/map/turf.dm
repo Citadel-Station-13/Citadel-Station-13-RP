@@ -116,7 +116,7 @@
 //! LEGACY BELOW
 
 /turf/overmap/Destroy()
-	for(var/obj/overmap/entity/visitable/ship/entity in loc)
+	for(var/obj/overmap/entity/visitable/ship/entity in src)
 		Exited(entity)
 	return ..()
 

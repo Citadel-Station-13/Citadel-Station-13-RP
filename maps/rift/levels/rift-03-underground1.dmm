@@ -1897,6 +1897,17 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"eo" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "ep" = (
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
@@ -5055,7 +5066,8 @@
 /area/rift/station/fighter_bay/transport_tunnel)
 "oI" = (
 /obj/machinery/light/small/emergency/flicker,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "oJ" = (
 /obj/structure/table/rack/steel,
@@ -5410,6 +5422,12 @@
 /obj/item/airlock_electronics,
 /turf/simulated/floor,
 /area/storage/tech)
+"pF" = (
+/obj/fiftyspawner/wood,
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "pG" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -6775,6 +6793,11 @@
 /obj/machinery/crystal/ice,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"uD" = (
+/obj/structure/catwalk,
+/obj/structure/railing/grey,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "uE" = (
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal,
@@ -7727,6 +7750,12 @@
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
+"xz" = (
+/obj/structure/catwalk,
+/obj/effect/floor_decal/rust,
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "xA" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -7938,8 +7967,7 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "yb" = (
-/obj/fiftyspawner/wood,
-/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "yc" = (
@@ -8071,8 +8099,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "yu" = (
-/obj/structure/catwalk/plank,
-/turf/simulated/open/lythios43c,
+/obj/effect/floor_decal/rust,
+/obj/structure/catwalk,
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "yv" = (
 /obj/machinery/light/small{
@@ -8083,6 +8113,28 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"yw" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/table/bench/standard,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/corner/lightorange/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "yx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -8218,7 +8270,11 @@
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
 "yS" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/structure/catwalk,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "yT" = (
 /turf/simulated/floor/plating,
@@ -8588,6 +8644,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -9392,6 +9451,24 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"CX" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "CY" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
@@ -9964,6 +10041,14 @@
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
+"Fa" = (
+/obj/structure/catwalk,
+/obj/effect/floor_decal/rust,
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "Fb" = (
 /obj/machinery/atmospherics/pipe/zpipe/down{
 	dir = 1
@@ -10439,7 +10524,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
 "Gv" = (
@@ -11180,10 +11265,9 @@
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
 "IJ" = (
-/obj/machinery/light/small/emergency/flicker{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/obj/effect/floor_decal/rust,
+/obj/structure/catwalk,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "IL" = (
 /obj/structure/table/rack/shelf,
@@ -13256,11 +13340,7 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "OS" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/catwalk/plank,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "OU" = (
 /obj/structure/table/reinforced,
@@ -13502,11 +13582,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "PK" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/catwalk/plank,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/obj/structure/catwalk,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "PL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -13549,6 +13627,7 @@
 /area/engineering/atmos)
 "PT" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "PU" = (
@@ -13732,8 +13811,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "QN" = (
-/obj/structure/catwalk/plank,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "QO" = (
 /obj/structure/disposalpipe/segment{
@@ -15696,6 +15774,7 @@
 /obj/machinery/light/small/emergency/flicker{
 	dir = 1
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Xj" = (
@@ -16342,6 +16421,7 @@
 "Zt" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/mechanical,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Zv" = (
@@ -16764,10 +16844,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -16958,10 +17038,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -17152,10 +17232,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -17346,10 +17426,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -17540,10 +17620,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -17734,10 +17814,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -17928,10 +18008,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -18122,10 +18202,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -18316,10 +18396,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 td
 td
 td
@@ -18510,10 +18590,10 @@ td
 td
 td
 td
-td
-OS
-yu
-td
+yS
+Mb
+Mb
+uD
 aa
 aa
 aa
@@ -18702,13 +18782,13 @@ td
 td
 td
 td
-aa
-aa
-aa
+db
+db
+Fa
 PK
-QN
-aa
-aa
+PK
+xz
+db
 aa
 aa
 aa
@@ -18896,13 +18976,13 @@ aa
 aa
 aa
 aa
-aa
-aa
 db
+db
+eo
 IJ
-rV
-aa
-aa
+IJ
+yu
+db
 aa
 aa
 aa
@@ -19090,13 +19170,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-rV
-rV
-aa
-aa
+db
+pF
+yb
+yb
+yb
+yb
+db
 aa
 aa
 aa
@@ -19284,11 +19364,11 @@ aa
 aa
 aa
 aa
-aa
+db
 Zt
 yb
-rV
-rV
+yb
+yb
 db
 db
 db
@@ -19480,9 +19560,9 @@ db
 db
 db
 Xi
-WR
-WR
-rV
+yb
+yb
+yb
 fA
 iN
 Lt
@@ -19673,10 +19753,10 @@ aa
 db
 Qn
 Lh
-Lh
-Lh
-WR
-WR
+yb
+yb
+yb
+yb
 PT
 dZ
 dZ
@@ -19867,11 +19947,11 @@ aa
 db
 Qn
 Lh
-Lh
-Lh
-rV
-WR
-yS
+yb
+yb
+yb
+yb
+dZ
 dZ
 dZ
 dZ
@@ -20061,9 +20141,9 @@ aa
 db
 db
 db
-WR
-Lh
-rV
+yb
+yb
+yb
 oI
 db
 MD
@@ -20254,11 +20334,11 @@ aa
 aa
 aa
 aa
-aa
-WR
-rV
-rV
-rV
+db
+yb
+yb
+yb
+yb
 db
 Qf
 ma
@@ -20448,11 +20528,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-WR
-rV
-rV
+db
+db
+yb
+yb
+yb
 db
 db
 db
@@ -20642,12 +20722,12 @@ aa
 aa
 aa
 aa
-WR
-WR
-WR
-rV
-WR
 aa
+db
+db
+yb
+yb
+db
 aa
 aa
 aa
@@ -20836,12 +20916,12 @@ aa
 aa
 aa
 aa
-WR
-WR
-WR
-rV
-WR
 aa
+aa
+db
+yb
+yb
+db
 aa
 aa
 aa
@@ -21033,8 +21113,8 @@ aa
 aa
 aa
 aa
-rV
-rV
+OS
+OS
 aa
 aa
 aa
@@ -21227,7 +21307,7 @@ aa
 aa
 aa
 aa
-rV
+OS
 rV
 aa
 aa
@@ -21810,7 +21890,7 @@ aa
 aa
 aa
 WR
-rV
+OS
 aa
 aa
 aa
@@ -22196,7 +22276,7 @@ aa
 aa
 aa
 aa
-WR
+QN
 WR
 rV
 aa
@@ -22776,10 +22856,10 @@ aa
 aa
 aa
 aa
-WR
+QN
 WR
 aa
-WR
+QN
 rV
 WR
 WR
@@ -22957,24 +23037,24 @@ WR
 rV
 WR
 aa
-WR
-WR
-WR
-aa
-aa
-aa
-aa
+QN
 WR
 WR
 aa
 aa
 aa
 aa
+QN
+WR
+aa
+aa
+aa
+aa
 aa
 WR
 aa
-rV
-WR
+OS
+QN
 WR
 WR
 aa
@@ -23155,18 +23235,18 @@ rV
 rV
 rV
 rV
-WR
+QN
+OS
 rV
 rV
 rV
+QN
+WR
+WR
+rV
 rV
 WR
-WR
-WR
-rV
-rV
-WR
-WR
+QN
 rV
 WR
 WR
@@ -23344,10 +23424,8 @@ WR
 WR
 rV
 WR
-rV
-WR
-rV
-rV
+OS
+QN
 rV
 rV
 rV
@@ -23357,12 +23435,14 @@ rV
 rV
 rV
 rV
+OS
 rV
 rV
 rV
 rV
 rV
 rV
+OS
 aa
 aa
 aa
@@ -23545,16 +23625,16 @@ aa
 aa
 aa
 aa
-rV
+OS
+QN
+aa
+QN
+aa
+QN
 WR
 aa
-WR
 aa
-WR
-WR
-aa
-aa
-WR
+QN
 WR
 aa
 aa
@@ -24128,7 +24208,7 @@ aa
 aa
 aa
 WR
-rV
+OS
 aa
 aa
 aa
@@ -24709,7 +24789,7 @@ aa
 aa
 aa
 aa
-WR
+QN
 WR
 aa
 aa
@@ -24904,7 +24984,7 @@ aa
 aa
 WR
 WR
-rV
+OS
 aa
 aa
 aa
@@ -25873,7 +25953,7 @@ aa
 aa
 aa
 aa
-rV
+OS
 WR
 WR
 aa
@@ -26455,8 +26535,8 @@ aa
 aa
 aa
 aa
-WR
-rV
+QN
+OS
 aa
 aa
 aa
@@ -26650,7 +26730,7 @@ aa
 WR
 WR
 WR
-WR
+QN
 aa
 aa
 aa
@@ -27231,7 +27311,7 @@ aa
 aa
 aa
 aa
-WR
+QN
 WR
 WR
 aa
@@ -27425,7 +27505,7 @@ aa
 aa
 aa
 aa
-rV
+OS
 WR
 WR
 aa
@@ -27619,7 +27699,7 @@ Mn
 aa
 aa
 aa
-WR
+QN
 WR
 WR
 aa
@@ -28202,7 +28282,7 @@ aa
 aa
 aa
 WR
-rV
+OS
 aa
 aa
 aa
@@ -28783,7 +28863,7 @@ KY
 sa
 aa
 aa
-WR
+QN
 aa
 aa
 aa
@@ -30853,7 +30933,7 @@ ae
 bF
 bV
 ae
-df
+yw
 LC
 fQ
 gv
@@ -35121,7 +35201,7 @@ FI
 Ph
 gi
 aG
-dM
+CX
 tg
 dp
 am

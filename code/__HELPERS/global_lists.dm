@@ -38,7 +38,7 @@ var/datum/category_collection/underwear/global_underwear = new()
 //!Backpacks - The load order here is important to maintain. Don't go swapping these around.
 var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
-var/global/list/exclude_jobs = list(/datum/role/job/station/ai,/datum/role/job/station/cyborg)
+var/global/list/exclude_jobs = list(/datum/prototype/role/job/station/ai,/datum/prototype/role/job/station/cyborg)
 
 //* Visual nets
 GLOBAL_LIST_EMPTY(visual_nets)
@@ -573,7 +573,7 @@ var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
 				SPECIES_ID_GOLEM, //Some special species that may or may not be ever used in event too,
 				SPECIES_ID_SHADEKIN) //Shadefluffers just poof away
 
-/hook/startup/proc/init_vore_datum_ref_lists()
+/legacy_hook/startup/proc/init_vore_datum_ref_lists()
 	var/paths
 
 	// Custom species traits

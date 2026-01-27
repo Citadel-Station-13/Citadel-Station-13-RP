@@ -1,0 +1,4 @@
+author: "Kade"
+delete-after: True
+changes:
+  - rscadd: "Adds the new 3x3 mech class and the Quasimodo to go along with it. Also includes a weapon class (Heavy) to be used along side the 3x3 mechs."

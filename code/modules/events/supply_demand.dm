@@ -1,6 +1,6 @@
 /var/global/running_demand_events = list()
 
-/hook/sell_turf/proc/supply_demand_sell_shuttle(var/turf/T)
+/legacy_hook/sell_turf/proc/supply_demand_sell_shuttle(var/turf/T)
 	for(var/datum/event/supply_demand/E in running_demand_events)
 		E.handle_sold_shuttle(T)
 	return 1 // All hooks must return one to show success.

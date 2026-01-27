@@ -37,8 +37,15 @@
 	. = ..()
 	if(.)
 		return
-	if(state > 0) //Can't re-pair, one time only, for security reasons.
-		to_chat(user, "<span class='notice'>The [name] doesn't do anything.</span>")
+	if(state > 0) //Can't re-pair, one time only, for security reasons. But you can prematurely deactivate it if you're the owner, so you can take it off freely.
+		if(alert(user, "Would you like to permanently deactivate \the [name]?",, "Yes", "No") == "Yes")
+			if(user == owner)
+				to_chat(user, SPAN_NOTICE("\The [name] quietly crumbles into dust in your hand as its connection to you is severed."))
+				update_state(3)
+				name = "broken [initial(name)]"
+				desc = "This seems like a necklace, but the actual pendant is missing."
+				return
+		to_chat(user, SPAN_NOTICE("The [name] doesn't do anything."))
 		return 0
 
 	owner = user	//We're paired to this person
@@ -66,17 +73,17 @@
 
 /obj/item/clothing/accessory/collar/vmcrystal/proc/become_alert()
 	update_state(2)
-	audible_message(SPAN_WARNING("The [name] begins flashing red and vibrating in at a low frequency."),
-			SPAN_WARNING("The [name] begins vibrating in at a low frequency."))
+	audible_message(SPAN_WARNING("\The [name] begins flashing red and vibrating in at a low frequency."),
+			SPAN_WARNING("\The [name] begins vibrating in at a low frequency."))
 	last_vitals = world.time
 
 /obj/item/clothing/accessory/collar/vmcrystal/proc/become_calm()
 	update_state(1)
-	audible_message(SPAN_NOTICE("[src] stops flashing red and vibrating as it resyncronises with its linked owner."),
-			SPAN_NOTICE("[src] stops vibrating in at a low frequency"))
+	audible_message(SPAN_NOTICE("\The [src] stops flashing red and vibrating as it resyncronises with its linked owner."),
+			SPAN_NOTICE("\The [src] stops vibrating in at a low frequency"))
 
 /obj/item/clothing/accessory/collar/vmcrystal/proc/send_message()
-	visible_message(SPAN_WARNING("The [name] shatters into dust!"))
+	visible_message(SPAN_WARNING("\The [name] shatters into dust!"))
 	GLOB.global_announcer.autosay("[owner] has died!", "[owner]'s Life Crystal")
 	if(owner_c)
 		to_chat(owner_c, "<span class='notice'>The HAVENS system is notified of your demise via \the [name].</span>")

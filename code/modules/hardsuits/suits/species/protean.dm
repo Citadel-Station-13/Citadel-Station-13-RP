@@ -7,6 +7,7 @@
 	encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT
 	offline_encumbrance = ITEM_ENCUMBRANCE_LEGACY_RIG_LIGHT * 2
 	seal_delay = 1
+	control_overridden = TRUE //c:
 	var/mob/living/carbon/human/myprotean
 	initial_modules = list(
 		/obj/item/hardsuit_module/power_sink,

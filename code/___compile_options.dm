@@ -130,6 +130,8 @@
 	#define REFERENCE_TRACKING_DEBUG
 	#define FIND_REF_NO_CHECK_TICK
 	#define GC_FAILURE_HARD_LOOKUP
+	// Test init.
+	#define CF_ATOM_TRACE_INIT_EARLY_QDEL
 	//Ensures all early assets can actually load early
 	#define DO_NOT_DEFER_ASSETS
 	//Test at full capacity, the extra cost doesn't matter
@@ -174,6 +176,13 @@
  * If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize.
  */
 //#define DO_NOT_DEFER_ASSETS
+
+// ## Atoms
+
+/**
+ * Trace Destroy() before Initialize().
+ */
+// #define CF_ATOM_TRACE_INIT_EARLY_QDEL
 
 // ## AI Holders
 

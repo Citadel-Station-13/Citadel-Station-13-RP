@@ -99,7 +99,7 @@
 	name = "grab"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "reinforce"
-	item_flags = ITEM_ABSTRACT | ITEM_DROPDEL | ITEM_ENCUMBERS_WHILE_HELD
+	item_flags = ITEM_ABSTRACT | ITEM_DROPDEL | ITEM_ENCUMBERS_WHILE_HELD | ITEM_NO_BLUDGEON
 	atom_flags = ATOM_ABSTRACT
 	drop_sound = null
 	pickup_sound = null
@@ -108,7 +108,7 @@
 
 	var/atom/movable/screen/grab/hud = null
 	var/mob/living/affecting = null
-	var/mob/living/carbon/human/assailant = null
+	var/mob/living/assailant = null
 	var/state = GRAB_PASSIVE
 
 	var/allow_upgrade = 1
@@ -256,40 +256,91 @@
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	// TODO: don't do hard stuns, maybe have this differ for each object?
-	if(clickchain.using_intent != INTENT_HARM)
-		return
-	switch(state)
-		if(GRAB_PASSIVE)
-			clickchain.visible_feedback(
-				target = target,
-				range = MESSAGE_RANGE_COMBAT_LOUD,
-				visible = SPAN_DANGER("[clickchain.performer] shoves [affecting] against \the [target]!")
-			)
-			affecting.take_random_targeted_damage(brute = 10)
-			affecting.afflict_knockdown(0.5 SECONDS)
-		if(GRAB_AGGRESSIVE)
-			clickchain.visible_feedback(
-				target = target,
-				range = MESSAGE_RANGE_COMBAT_LOUD,
-				visible = SPAN_DANGER("[clickchain.performer] slams [affecting] against \the [target]!")
-			)
-			affecting.take_random_targeted_damage(brute = 20)
-			affecting.afflict_paralyze(1 SECONDS)
-			affecting.afflict_knockdown(2 SECONDS)
-		if(GRAB_NECK, GRAB_KILL)
-			clickchain.visible_feedback(
-				target = target,
-				range = MESSAGE_RANGE_COMBAT_LOUD,
-				visible = SPAN_DANGER("[clickchain.performer] smashes [affecting] against \the [target]!")
-			)
-			affecting.take_random_targeted_damage(brute = 30)
-			affecting.afflict_paralyze(2.75 SECONDS)
-			affecting.afflict_knockdown(3.5 SECONDS)
 
-	qdel(src)
-	clickchain.data[ACTOR_DATA_GRAB_LOG] = "slam [key_name(affecting)] ([ref(affecting)]) into [target] ([target.type]) ([ref(target)])"
-	. |= CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	if(QDELETED(src))
+		. |= CLICKCHAIN_DO_NOT_PROPAGATE
+		return
+
+	if(!affecting)
+		return
+	if(world.time < (last_action + 20))
+		return
+
+	last_action = world.time
+	reset_kill_state() //using special grab moves will interrupt choking them
+
+	//clicking on the victim while grabbing them
+	if(target == affecting)
+		if(ishuman(affecting))
+			var/mob/living/carbon/human/H = affecting
+			var/hit_zone = clickchain.target_zone
+			flick(hud.icon_state, hud)
+			switch(clickchain.using_intent)
+				if(INTENT_HELP)
+					if(force_down)
+						to_chat(assailant, "<span class='warning'>You are no longer pinning [affecting] to the ground.</span>")
+						force_down = 0
+						return
+					if(state >= GRAB_AGGRESSIVE)
+						H.apply_pressure(assailant, hit_zone)
+					else
+						inspect_organ(affecting, assailant, hit_zone)
+
+
+				if(INTENT_DISARM)
+					pin_down(affecting, assailant)
+
+				if(INTENT_GRAB)
+					jointlock(affecting, assailant, hit_zone)
+
+				if(INTENT_HARM)
+					if(hit_zone == O_EYES)
+						attack_eye(affecting, assailant)
+					else if(hit_zone == BP_HEAD)
+						headbutt(affecting, assailant)
+					else
+						dislocate(affecting, assailant, hit_zone)
+			. |= CLICKCHAIN_DID_SOMETHING
+	else
+		if(clickchain.using_intent != INTENT_HARM)
+			return
+			// TODO: don't do hard stuns, maybe have this differ for each object?
+		switch(state)
+			if(GRAB_PASSIVE)
+				clickchain.visible_feedback(
+					target = target,
+					range = MESSAGE_RANGE_COMBAT_LOUD,
+					visible = SPAN_DANGER("[clickchain.performer] shoves [affecting] against \the [target]!")
+				)
+				affecting.take_random_targeted_damage(brute = 10)
+				affecting.afflict_knockdown(0.5 SECONDS)
+			if(GRAB_AGGRESSIVE)
+				clickchain.visible_feedback(
+					target = target,
+					range = MESSAGE_RANGE_COMBAT_LOUD,
+					visible = SPAN_DANGER("[clickchain.performer] slams [affecting] against \the [target]!")
+				)
+				affecting.take_random_targeted_damage(brute = 20)
+				affecting.afflict_paralyze(1 SECONDS)
+				affecting.afflict_knockdown(2 SECONDS)
+			if(GRAB_NECK, GRAB_KILL)
+				clickchain.visible_feedback(
+					target = target,
+					range = MESSAGE_RANGE_COMBAT_LOUD,
+					visible = SPAN_DANGER("[clickchain.performer] smashes [affecting] against \the [target]!")
+				)
+				affecting.take_random_targeted_damage(brute = 30)
+				affecting.afflict_paralyze(2.75 SECONDS)
+				affecting.afflict_knockdown(3.5 SECONDS)
+		qdel(src)
+		clickchain.data[ACTOR_DATA_GRAB_LOG] = "slam [key_name(affecting)] ([ref(affecting)]) into [target] ([target.type]) ([ref(target)])"
+		. |= CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+
+	//clicking on yourself while grabbing them
+	if(target == assailant && state >= GRAB_AGGRESSIVE)
+		devour(affecting, assailant)
+
+
 
 //Updating pixelshift, position and direction
 //Gets called on process, when the grab gets upgraded or the assailant moves
@@ -407,52 +458,6 @@
 			return 0
 
 	return 1
-
-/obj/item/grab/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(QDELETED(src))
-		return
-	if(!affecting)
-		return
-	if(world.time < (last_action + 20))
-		return
-
-	last_action = world.time
-	reset_kill_state() //using special grab moves will interrupt choking them
-
-	//clicking on the victim while grabbing them
-	if(target == affecting)
-		if(ishuman(affecting))
-			var/mob/living/carbon/human/H = affecting
-			var/hit_zone = assailant.zone_sel.selecting
-			flick(hud.icon_state, hud)
-			switch(assailant.a_intent)
-				if(INTENT_HELP)
-					if(force_down)
-						to_chat(assailant, "<span class='warning'>You are no longer pinning [affecting] to the ground.</span>")
-						force_down = 0
-						return
-					if(state >= GRAB_AGGRESSIVE)
-						H.apply_pressure(assailant, hit_zone)
-					else
-						inspect_organ(affecting, assailant, hit_zone)
-
-				if(INTENT_GRAB)
-					jointlock(affecting, assailant, hit_zone)
-
-				if(INTENT_HARM)
-					if(hit_zone == O_EYES)
-						attack_eye(affecting, assailant)
-					else if(hit_zone == BP_HEAD)
-						headbutt(affecting, assailant)
-					else
-						dislocate(affecting, assailant, hit_zone)
-
-				if(INTENT_DISARM)
-					pin_down(affecting, assailant)
-
-	//clicking on yourself while grabbing them
-	if(target == assailant && state >= GRAB_AGGRESSIVE)
-		devour(affecting, assailant)
 
 /obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)

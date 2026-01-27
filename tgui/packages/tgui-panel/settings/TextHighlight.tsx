@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'common/redux';
+import { useDispatch, useSelector } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -9,7 +9,7 @@ import {
   Section,
   Stack,
   TextArea,
-} from 'tgui/components';
+} from 'tgui-core/components';
 
 import { rebuildChat } from '../chat/actions';
 import {
@@ -23,9 +23,9 @@ import {
   selectHighlightSettings,
 } from './selectors';
 
-export function TextHighlightSettings(props, context) {
-  const highlightSettings = useSelector(context, selectHighlightSettings);
-  const dispatch = useDispatch(context);
+export function TextHighlightSettings(props) {
+  const highlightSettings = useSelector(selectHighlightSettings);
+  const dispatch = useDispatch();
 
   return (
     <Section fill scrollable height="250px">
@@ -71,10 +71,10 @@ export function TextHighlightSettings(props, context) {
   );
 }
 
-function TextHighlightSetting(props, context) {
+function TextHighlightSetting(props) {
   const { id, ...rest } = props;
-  const highlightSettingById = useSelector(context, selectHighlightSettingById);
-  const dispatch = useDispatch(context);
+  const highlightSettingById = useSelector(selectHighlightSettingById);
+  const dispatch = useDispatch();
   const {
     highlightColor,
     highlightText,
@@ -157,7 +157,7 @@ function TextHighlightSetting(props, context) {
             monospace
             placeholder="#ffffff"
             value={highlightColor}
-            onInput={(e, value) =>
+            onBlur={(value) =>
               dispatch(
                 updateHighlightSetting({
                   id: id,
@@ -169,10 +169,11 @@ function TextHighlightSetting(props, context) {
         </Stack.Item>
       </Stack>
       <TextArea
+        fluid
         height="3em"
         value={highlightText}
         placeholder="Put words to highlight here. Separate terms with commas, i.e. (term1, term2, term3)"
-        onChange={(e, value) =>
+        onBlur={(value) =>
           dispatch(
             updateHighlightSetting({
               id: id,

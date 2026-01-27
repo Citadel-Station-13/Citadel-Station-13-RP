@@ -134,7 +134,7 @@ GLOBAL_LIST_EMPTY(exonet_nodes)
 // Proc: ui_act()
 // Parameters: 2 (standard ui_act arguments)
 // Description: Responds to button presses on the TGUI interface.
-/obj/machinery/exonet_node/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/exonet_node/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

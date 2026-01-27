@@ -159,6 +159,7 @@
 		/obj/item/clothing/accessory/collar/bell = 1,
 		/obj/item/clothing/accessory/collar/pink = 1,
 		/obj/item/clothing/accessory/collar/holo = 1,
+		/obj/item/bikehorn/clicker/random = 3, // i'm sorry
 	)
 	worth = 500
 
@@ -200,3 +201,28 @@
 		/obj/item/ammo_magazine/pellets,
 	)
 	worth = 75
+
+/datum/supply_pack/nanotrasen/recreation/coffee_mug
+	name = "Coffee Mug"
+	worth = 100
+	contains = list(/obj/item/reagent_containers/food/drinks/mug)
+
+/datum/supply_pack/nanotrasen/recreation/nt_mug
+	name = "Nanotrasen Coffee Mug"
+	worth = 100
+	contains = list(/obj/item/reagent_containers/food/drinks/mug/nanotrasen)
+
+/datum/supply_pack/nanotrasen/recreation/coffee_cartridge
+	name = "Coffee Cartridge"
+	worth = 100
+	contains = list(/obj/item/coffee_cartridge)
+
+/datum/supply_pack/nanotrasen/recreation/coffee_cartridge_fancy
+	name = "Fancy Coffee Cartridge"
+	worth = 200
+	contains = list(/obj/item/coffee_cartridge/fancy)
+
+/datum/supply_pack/nanotrasen/recreation/coffeepot
+	name = "Coffeepot"
+	worth = 200
+	contains = list(/obj/item/reagent_containers/food/drinks/coffeepot)

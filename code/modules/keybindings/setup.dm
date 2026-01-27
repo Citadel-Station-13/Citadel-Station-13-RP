@@ -75,10 +75,10 @@
 	apply_macro_set(SKIN_MACROSET_CLASSIC_INPUT, SSinput.macroset_classic_input)
 
 	//Reactivate any active tgui windows mouse passthroughs macros
-	for(var/datum/tgui_window/window in tgui_windows)
-		if(window.mouse_event_macro_set)
-			window.mouse_event_macro_set = FALSE
-			window.set_mouse_macro()
+	// for(var/datum/tgui_window/window in tgui_windows)
+	// 	if(window.mouse_event_macro_set)
+	// 		window.mouse_event_macro_set = FALSE
+	// 		window.set_mouse_macro()
 
 	set_hotkeys_preference()
 	set_hotkeys_button(prefs_override.is_hotkeys_mode())

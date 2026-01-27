@@ -137,6 +137,9 @@
 	/// Our actor HUD holder
 	var/datum/actor_hud_holder/actor_huds
 
+	// todo: just have a client panel, don't make this separate
+	var/datum/client_view_playtime/legacy_playtime_viewer
+
 
 		////////////////
 		//ADMIN THINGS//

@@ -179,7 +179,7 @@
 	else
 		..(signal)
 
-/obj/machinery/computer/general_air_control/large_tank_control/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/general_air_control/large_tank_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -280,7 +280,7 @@
 	else
 		..(signal)
 
-/obj/machinery/computer/general_air_control/supermatter_core/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/general_air_control/supermatter_core/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 
@@ -395,7 +395,7 @@
 	else
 		..(signal)
 
-/obj/machinery/computer/general_air_control/fuel_injection/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/general_air_control/fuel_injection/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	if(..())
 		return TRUE
 

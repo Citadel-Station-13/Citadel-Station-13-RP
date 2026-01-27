@@ -2,7 +2,7 @@
 // This file is quadruple wrapped for your pleasure
 // (
 
-/// The value of the mathematical constant 'e'
+/// The value of the mathematical constant 'e', also known as Euler's number. Not to be confused with Euler's constant.
 #define NUM_E 2.71828183
 /// The value of sqrt(2); defined for speed
 #define SQRT_2 1.414214
@@ -192,6 +192,7 @@
 	return (mean + stddev * R1)
 #undef ACCURACY
 
+// TODO: rework
 /proc/get_turf_in_angle(angle, turf/starting, increments)
 	var/pixel_x = 0
 	var/pixel_y = 0
@@ -251,3 +252,6 @@
 
 /// get highest magnitude of two numbers, magnitude is abs value
 #define BIGGER_MAGNITUDE(a, b) ((abs(a) > abs(b))? a : b)
+
+#define SI_COEFFICIENT "coefficient"
+#define SI_UNIT "unit"

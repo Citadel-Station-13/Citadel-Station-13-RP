@@ -22,10 +22,6 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/smes/batteryrack{
-	input_attempt = 1;
-	output_attempt = 1
-	},
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "f" = (
@@ -57,9 +53,6 @@
 /area/submap/debrisfield_vr/mining_outpost)
 "m" = (
 /obj/structure/cable,
-/obj/machinery/power/terminal{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "n" = (

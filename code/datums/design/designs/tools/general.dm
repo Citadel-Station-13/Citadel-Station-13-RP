@@ -64,6 +64,9 @@
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/material/knife/machete/hatchet
+	material_autodetect_tags = list(
+		"structure" = MATERIAL_TAG_BASIC_STRUCTURAL,
+	)
 
 /datum/prototype/design/tool/minihoe
 	id = "ToolMinihoe"
@@ -75,6 +78,12 @@
 	)
 	material_costs = list(
 		"tip" = 250
+	)
+	material_constraints = list(
+		"tip" = MATERIAL_CONSTRAINT_RIGID
+	)
+	material_autodetect_tags = list(
+		"tip" = MATERIAL_TAG_BASIC_STRUCTURAL,
 	)
 
 /datum/prototype/design/tool/prybar

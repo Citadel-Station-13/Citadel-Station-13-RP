@@ -37,7 +37,7 @@
 /datum/fishing_calculator/ui_data(mob/user, datum/tgui/ui)
 	return list("info" = current_table)
 
-/datum/fishing_calculator/ui_act(action, list/params, datum/tgui/ui)
+/datum/fishing_calculator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	var/mob/user = usr
 	switch(action)

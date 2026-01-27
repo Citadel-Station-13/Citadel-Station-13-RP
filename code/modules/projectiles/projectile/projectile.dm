@@ -321,6 +321,7 @@
 	 *
 	 * Accepts:
 	 * * Null - auto-detect
+	 * * PROJECTILE_IMPACT_SOUNDS_* - classifiers, will be processed by target
 	 * * List - list of files, or soundbyte path's or id's. It will be selected from at random
 	 * * Anything else - passed into get_sfx().
 	 */
@@ -444,6 +445,7 @@
 	STOP_PROCESSING(SSprojectiles, src)
 	// cleanup
 	cleanup_hitscan_tracers()
+	impacted = null
 	return ..()
 
 /obj/projectile/proc/process_legacy_penetration(atom/A)
@@ -515,7 +517,10 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	PRIVATE_PROC(TRUE)
 	// setup impact checking
-	impacted = list()
+	// this is a lazy-init to allow for an escape hatch of
+	// injecting into this to prevent clipping a mech or something
+	if(!impacted)
+		impacted = list()
 	// handle direct hit
 	if(direct_target)
 		// todo: this should make a muzzle flash
@@ -1186,7 +1191,7 @@
 		if(damage_inflict_agony)
 			target.run_damage_instance(
 				damage_inflict_agony,
-				damage_type,
+				DAMAGE_TYPE_HALLOSS,
 				damage_tier,
 				damage_flag,
 				damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),

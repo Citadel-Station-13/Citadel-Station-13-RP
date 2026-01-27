@@ -5,8 +5,9 @@ CIRCUITS BELOW
 /datum/prototype/design/circuit
 	lathe_type = LATHE_TYPE_CIRCUIT
 	req_tech = list(TECH_DATA = 2)
-	materials_base = list(MAT_GLASS = 2000)
+	materials_base = list(MAT_GLASS = 125)
 	reagents = list("sacid" = 20)
+	design_unlock = DESIGN_UNLOCK_TECHLEVEL
 	work = (5 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 
 /datum/prototype/design/circuit/generate_name(template)
@@ -128,7 +129,7 @@ CIRCUITS BELOW
 	design_name = "teleporter control console"
 	id = "teleconsole"
 	req_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 2)
-	category = DESIGN_CATEGORY_TELEPORTATION
+	category = DESIGN_CATEGORY_BLUESPACE
 	build_path = /obj/item/circuitboard/teleporter
 
 /datum/prototype/design/circuit/robocontrol
@@ -279,6 +280,14 @@ CIRCUITS BELOW
 	category = DESIGN_CATEGORY_POWER
 	subcategory = DESIGN_SUBCATEGORY_CHARGING
 	build_path = /obj/item/circuitboard/mech_recharger
+
+/datum/prototype/design/circuit/recycling_pad
+	design_name = "recycling pad"
+	id = "recycling_pad"
+	req_tech = list(TECH_DATA = 4, TECH_POWER = 3, TECH_ENGINEERING = 5)
+	category = DESIGN_CATEGORY_SCIENCE
+	subcategory = DESIGN_SUBCATEGORY_STATION
+	build_path = /obj/item/circuitboard/recycling_pad
 
 /datum/prototype/design/circuit/recharge_station
 	design_name = "cyborg recharge station"
@@ -819,3 +828,9 @@ CIRCUITS BELOW
 	category = DESIGN_CATEGORY_ENGINEERING
 	subcategory = DESIGN_SUBCATEGORY_STATION
 	build_path = /obj/item/circuitboard/massive_heat_pump
+
+/datum/prototype/design/circuit/coffeemaker
+	design_name = "coffeemaker"
+	id = "coffeemaker"
+	category = DESIGN_CATEGORY_RECREATION
+	build_path = /obj/item/circuitboard/machine/coffeemaker

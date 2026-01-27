@@ -3,8 +3,10 @@
  * @license MIT
  */
 
-import { useBackend, useLocalState } from "../../backend";
-import { Button, Input, LabeledList, NoticeBox, NumberInput, Section, Stack } from "../../components";
+import { useState } from "react";
+import { Button, Input, LabeledList, NoticeBox, NumberInput, Section, Stack } from "tgui-core/components";
+
+import { useBackend } from "../../backend";
 import { Window } from "../../layouts";
 import { Access, AccessId, AccessListMod } from "../common/Access";
 import { IDCard, IDCardOrDefault, IDSlot } from "../common/IDCard";
@@ -22,9 +24,9 @@ interface GuestPassTerminalData {
   printsLeft: number;
 }
 
-export const GuestPassTerminal = (props, context) => {
-  const { data, act } = useBackend<GuestPassTerminalData>(context);
-  const [tab, setTab] = useLocalState<number>(context, 'tab', 1);
+export const GuestPassTerminal = (props) => {
+  const { data, act } = useBackend<GuestPassTerminalData>();
+  const [tab, setTab] = useState<number>(1);
   return (
     <Window width={500} height={700}>
       <Window.Content scrollable>
@@ -39,22 +41,22 @@ export const GuestPassTerminal = (props, context) => {
               <LabeledList>
                 <LabeledList.Item label="Name">
                   <Input width="100%" value={data.guestName} placeholder="Name"
-                    onInput={(e, val) => act('name', { value: val })} />
+                    onChange={(val) => act('name', { value: val })} />
                 </LabeledList.Item>
                 <LabeledList.Item label="Reason">
                   <Input width="100%" value={data.guestReason} placeholder="Reason"
-                    onInput={(e, val) => act('reason', { value: val })} />
+                    onChange={(val) => act('reason', { value: val })} />
                 </LabeledList.Item>
                 <LabeledList.Item label="Duration (minutes)">
                   <NumberInput width="100%" step={1} value={data.duration}
                     minValue={data.durationMin} maxValue={data.durationMax}
-                    onChange={(e, val) => act('duration', { value: val })} />
+                    onChange={(val) => act('duration', { value: val })} />
                 </LabeledList.Item>
               </LabeledList>
             </Section>
           </Stack.Item>
           {!!data.auth && (
-            data.allowed.length > 0? (
+            data.allowed.length > 0 ? (
               <>
                 <Stack.Item grow>
                   <AccessListMod
@@ -68,7 +70,7 @@ export const GuestPassTerminal = (props, context) => {
                   <Section>
                     <Button.Confirm textAlign="center"
                       color="transparent" fluid disabled={data.printsLeft <= 0 || !data.auth}
-                      content={data.printsLeft > 0? "Issue" : "Printer Recharging"}
+                      content={data.printsLeft > 0 ? "Issue" : "Printer Recharging"}
                       onClick={() => act('issue')} />
                   </Section>
                 </Stack.Item>

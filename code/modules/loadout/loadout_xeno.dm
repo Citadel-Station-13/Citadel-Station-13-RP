@@ -486,7 +486,7 @@
 	path = /obj/item/clothing/head/helmet/space/void/plasman/science/explorer/alt
 	allowed_roles = list("Explorer", "Pathfinder")
 
-	
+
 
 //Accessories
 /datum/loadout_entry/xeno/phoronoid/accessories/suit_accessories
@@ -1054,3 +1054,7 @@
 /datum/loadout_entry/xeno/uniform
 	name = "Generic - Gear Harness"
 	path = /obj/item/clothing/under/gear_harness
+
+/datum/loadout_entry/xeno/suit/caparison
+	name = "Generic - Caparison"
+	path = /obj/item/clothing/suit/storage/caparison

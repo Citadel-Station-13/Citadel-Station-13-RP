@@ -88,6 +88,7 @@ em						{font-style: normal;font-weight: bold;}
 .greenteamradio			{color: #00ff00;}
 .yellowteamradio		{color: #d1ba22;}
 .gangradio				{color: #ac2ea1;}
+.sdfradio				{color: #ff9900;}
 
 //* Miscellaneous *//
 .name					{font-weight: bold;}
@@ -216,7 +217,7 @@ h1.alert, h2.alert		{color: #000000;}
 }
 
 .icon					{height: 1em;	width: auto;}
-.iconbig				{height: 32px;	width: 32px; }
+.bigicon				{height: 32px;	width: 32px; }
 
 .memo					{color: #638500;	text-align: center;}
 .memoedit				{text-align: center;	font-size: 2;}

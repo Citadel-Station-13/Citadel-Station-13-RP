@@ -6,20 +6,20 @@
  * their clothing is copied from their loadout onto a set of chameleon clothing that cannot be taken off
  */
 
-/datum/species/holosphere
+/datum/species/shapeshifter/holosphere
 	name = SPECIES_HOLOSPHERE
 	uid = SPECIES_ID_HOLOSPHERE
 	id = SPECIES_ID_HOLOSPHERE
 	category = SPECIES_CAEGORY_HOLOSPHERE
 	name_plural   = "Holospheres"
-	override_worn_legacy_bodytype = SPECIES_HUMAN
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
+	base_species = SPECIES_HOLOSPHERE
 
 	blurb = {"This species is testmerged and currently being tested - things might break, and everything about it is subject to change!
 	"}
 
-	//selects_bodytype = TRUE
+	selects_bodytype = TRUE
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR | HAS_BODY_ALPHA | HAS_HAIR_ALPHA
@@ -71,6 +71,7 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 		/mob/living/carbon/human/proc/hologram_reset_to_slot,
 		/mob/living/proc/set_size,
 	)
@@ -122,17 +123,19 @@
 
 	var/datum/component/custom_transform/transform_component
 	var/mob/living/simple_mob/holosphere_shell/holosphere_shell
-	var/hologram_death_duration = 2 SECONDS
+	var/hologram_death_duration = 4 SECONDS
 
 	// what gear slots we initialised when spawning in for our chameleon gear, so we dont try override job gear with loadout gear
 	var/list/slots_used = list()
 
 	var/actively_healing = TRUE
-	var/heal_rate = 1 // this is pretty high but they have 20 health and it costs nutrition to heal
+	heal_rate = 1 // this is pretty high but they have 20 health and it costs nutrition to heal
 
 	var/heal_nutrition_multiplier = 10 // 10 nutrition per hp healed
 
-/datum/species/holosphere/on_apply(mob/living/carbon/human/H)
+	var/last_death_time
+
+/datum/species/shapeshifter/holosphere/on_apply(mob/living/carbon/human/H)
 	. = ..()
 	RegisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY, PROC_REF(handle_hologram_overlays))
 	RegisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT, PROC_REF(handle_hologram_loadout))
@@ -146,26 +149,28 @@
 	holosphere_shell.hologram = H
 	holosphere_shell.copy_iff_factions(H)
 
-/datum/species/holosphere/on_remove(mob/living/carbon/human/H)
+/datum/species/shapeshifter/holosphere/on_remove(mob/living/carbon/human/H)
 	. = ..()
 	UnregisterSignal(H, COMSIG_CARBON_UPDATING_OVERLAY)
 	UnregisterSignal(H, COMSIG_HUMAN_EQUIPPING_LOADOUT)
 
 	remove_chameleon_gear()
 
-/datum/species/holosphere/proc/try_transform(force = FALSE)
+/datum/species/shapeshifter/holosphere/proc/try_transform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell))
 		if(holosphere_shell.hologram.incapacitated(INCAPACITATION_ALL))
 			to_chat(holosphere_shell.hologram, SPAN_WARNING("You can't do that right now!"))
 			return
 
 		holosphere_shell.name = holosphere_shell.hologram.name
+		try_exit_recharge_station()
 		if(transform_component.try_transform())
 			holosphere_shell.hologram.drop_held_items()
 			holosphere_shell.regenerate_icons()
 
-/datum/species/holosphere/proc/try_untransform(force = FALSE)
+/datum/species/shapeshifter/holosphere/proc/try_untransform(force = FALSE)
 	if(force || !IS_DEAD(holosphere_shell.hologram))
+		try_exit_recharge_station()
 		transform_component.try_untransform()
 
 /mob/living/carbon/human/proc/disable_hologram()
@@ -173,13 +178,36 @@
 	set desc = "Disable your hologram."
 	set category = VERB_CATEGORY_IC
 
-	var/datum/species/holosphere/holosphere_species = species
+	var/datum/species/shapeshifter/holosphere/holosphere_species = species
 	if(!istype(holosphere_species))
 		return
 
 	holosphere_species.try_transform()
 
-/datum/species/holosphere/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
+/datum/species/shapeshifter/holosphere/apply_survival_gear(mob/living/carbon/for_target, list/into_box, list/into_inv)
 	into_box?.Add(/obj/item/tool/prybar/red)
 	into_box?.Add(/obj/item/flashlight/flare/survival)
 	into_box?.Add(/obj/item/fbp_backup_cell)
+
+// hotfix: they're synthetic without synthetic parts, oops!
+/datum/species/shapeshifter/holosphere/get_blood_colour(mob/living/carbon/human/H)
+	if(H)
+		return blood_color
+
+/datum/species/shapeshifter/holosphere/get_valid_shapeshifter_forms()
+	return list(
+		SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL,
+		SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY, SPECIES_SERGAL,
+		SPECIES_AKULA, SPECIES_NEVREAN, SPECIES_ZORREN_HIGH,
+		SPECIES_ZORREN_FLAT, SPECIES_VULPKANIN, SPECIES_VASILISSAN,
+		SPECIES_RAPALA, SPECIES_MONKEY_SKRELL, SPECIES_MONKEY_UNATHI,
+		SPECIES_MONKEY_TAJ, SPECIES_MONKEY_AKULA, SPECIES_MONKEY_VULPKANIN,
+		SPECIES_MONKEY_SERGAL, SPECIES_MONKEY_NEVREAN,
+	)
+/datum/species/shapeshifter/holosphere/proc/try_exit_recharge_station()
+	var/obj/machinery/recharge_station/shell_station = holosphere_shell.loc
+	var/obj/machinery/recharge_station/hologram_station = holosphere_shell.hologram.loc
+	if(istype(shell_station))
+		shell_station.go_out()
+	if(istype(hologram_station))
+		hologram_station.go_out()

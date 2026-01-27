@@ -472,8 +472,22 @@
 	},
 /turf/unsimulated/wall,
 /area/space)
+"by" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/storage/belt/medical/emt,
+/obj/item/melee/baton/slime,
+/obj/item/melee/baton/slime,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops)
 "bA" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -1347,8 +1361,12 @@
 /area/centcom/command)
 "dX" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
@@ -1517,7 +1535,7 @@
 	},
 /area/centcom/specops/dock)
 "eu" = (
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/lathe/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "ew" = (
@@ -2215,7 +2233,7 @@
 	},
 /area/centcom/command)
 "gk" = (
-/obj/machinery/r_n_d/protolathe,
+/obj/machinery/lathe/r_n_d/protolathe,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "gl" = (
@@ -4639,6 +4657,12 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"mO" = (
+/obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
+/turf/unsimulated/floor{
+	name = "plating"
+	},
+/area/centcom/medical)
 "mP" = (
 /obj/item/stack/material/glass{
 	amount = 50
@@ -4968,6 +4992,18 @@
 	layer = 1
 	},
 /area/centcom/main_hall)
+"nt" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
+/turf/unsimulated/floor/techfloor_grid{
+	layer = 1
+	},
+/area/centcom/restaurant)
 "nu" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Teleporter";
@@ -5779,10 +5815,6 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
-"pA" = (
-/mob/living/simple_mob/animal/passive/maint_drone,
-/turf/simulated/wall/r_wall/prepainted,
-/area/centcom/control)
 "pC" = (
 /obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
@@ -5967,7 +5999,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_checker)
 "qb" = (
-/obj/machinery/r_n_d/circuit_imprinter,
+/obj/machinery/lathe/r_n_d/circuit_imprinter,
 /obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -6649,24 +6681,6 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/general)
-"rU" = (
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/clothing/glasses/welding/superior,
-/obj/structure/table/steel_reinforced,
-/obj/item/clothing/glasses/welding/superior,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/obj/item/grenade/simple/chemical/metalfoam,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
 "rY" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/centcom/bathroom)
@@ -8472,6 +8486,12 @@
 /obj/structure/filingcabinet/tall,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"wD" = (
+/obj/spawner/window/reinforced/full/firelocks{
+	id = "emergency_cockpit"
+	},
+/turf/simulated/floor,
+/area/shuttle/escape)
 "wE" = (
 /obj/structure/window/reinforced/holowindow{
 	dir = 8
@@ -10155,6 +10175,20 @@
 /obj/effect/floor_decal/sign/dock/one,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
+"AO" = (
+/obj/structure/table/rack/steel,
+/obj/machinery/door/window/brigdoor{
+	req_access = list(109)
+	},
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "AQ" = (
 /obj/machinery/door/window/holowindoor{
 	dir = 1;
@@ -10648,11 +10682,6 @@
 /obj/machinery/vending/mre,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
-"Cb" = (
-/turf/unsimulated/floor{
-	name = "plating"
-	},
-/area/centcom/medical)
 "Cc" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/unsimulated/floor/steel{
@@ -11884,6 +11913,18 @@
 	},
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_basic)
+"Fp" = (
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/clothing/glasses/welding/superior,
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/glasses/welding/superior,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/specops)
 "Fq" = (
 /obj/effect/floor_decal/carpet,
 /obj/effect/floor_decal/carpet{
@@ -13284,7 +13325,7 @@
 	},
 /area/centcom/control)
 "IU" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/lathe/mecha_part_fabricator/pros,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "IW" = (
@@ -14735,8 +14776,12 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/machinery/door/window/brigdoor/westright,
+/obj/machinery/door/window/brigdoor/eastleft{
+	req_access = null
+	},
+/obj/machinery/door/window/brigdoor/westright{
+	req_access = null
+	},
 /turf/unsimulated/floor/techfloor_grid{
 	layer = 1
 	},
@@ -15487,10 +15532,6 @@
 	layer = 1
 	},
 /area/shuttle/specops/general)
-"Oy" = (
-/mob/living/simple_mob/animal/passive/maint_drone,
-/turf/simulated/wall/r_wall/prepainted,
-/area/tdome/tdomeadmin)
 "OA" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -15558,9 +15599,6 @@
 	layer = 1
 	},
 /area/centcom/living)
-"OM" = (
-/turf/simulated/floor,
-/area/shuttle/escape)
 "OO" = (
 /obj/effect/floor_decal/rust/steel_decals_rusted2,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -16531,6 +16569,8 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
+/obj/item/storage/box/metalfoam,
+/obj/item/storage/box/metalfoam,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -16718,21 +16758,6 @@
 "RQ" = (
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
-"RR" = (
-/obj/item/grenade/simple/supermatter,
-/obj/structure/table/rack/steel,
-/obj/machinery/door/window/brigdoor{
-	req_access = list(109)
-	},
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
-/area/centcom/command)
 "RS" = (
 /obj/structure/closet/wardrobe/orange,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -17027,11 +17052,6 @@
 /obj/structure/sign/securearea,
 /turf/simulated/wall/r_wall/prepainted,
 /area/centcom/control)
-"SH" = (
-/obj/effect/step_trigger/lost_in_space,
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/space/transit/east,
-/area/space)
 "SI" = (
 /obj/structure/table/standard{
 	desc = "It's a table, it has something scratched on it 'I fuck the squirrel on this table'."
@@ -20078,18 +20098,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"ZY" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/obj/item/storage/belt/medical/emt,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/specops)
 "ZZ" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -22207,7 +22215,7 @@ ls
 ls
 ls
 ls
-SH
+kJ
 ls
 ls
 rA
@@ -33584,11 +33592,11 @@ om
 XM
 OB
 UI
-OM
-OM
+wD
+wD
 Uh
-OM
-OM
+wD
+wD
 UI
 OB
 XM
@@ -41709,10 +41717,10 @@ Tj
 Tj
 OX
 OX
-Cb
+mO
 ra
-Cb
-Cb
+mO
+mO
 OX
 Bs
 Bs
@@ -42306,7 +42314,7 @@ Vw
 Vw
 Vw
 Jw
-Cb
+mO
 Vw
 Kc
 eY
@@ -42500,7 +42508,7 @@ Vw
 ld
 GX
 cZ
-Cb
+mO
 Vw
 Jt
 KE
@@ -45195,7 +45203,7 @@ EW
 EW
 EW
 EW
-Oy
+Aj
 Aj
 Aj
 Tj
@@ -46365,7 +46373,7 @@ kf
 kf
 ba
 ba
-pA
+ba
 ba
 ba
 ba
@@ -49048,7 +49056,7 @@ wd
 sz
 yo
 qW
-ZY
+by
 tI
 yo
 yo
@@ -49250,7 +49258,7 @@ yo
 VI
 Ib
 nf
-rU
+Fp
 es
 ba
 bj
@@ -49305,7 +49313,7 @@ nI
 DC
 dX
 lV
-dX
+nt
 ME
 dX
 lV
@@ -56261,7 +56269,7 @@ ky
 ly
 fR
 fR
-RR
+AO
 fR
 fR
 ly

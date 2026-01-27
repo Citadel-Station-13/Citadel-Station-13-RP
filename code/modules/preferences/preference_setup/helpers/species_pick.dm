@@ -20,7 +20,7 @@
  * check if we can play a species
  */
 /datum/preferences/proc/check_character_species(datum/species/CS)
-	if((CS.species_spawn_flags & SPECIES_SPAWN_SECRET) && !CS.check_whitelist_for_ckey(client_ckey))
+	if((CS.species_spawn_flags & SPECIES_SPAWN_SECRET) && !CS.check_whitelist_for_ckey(client_ckey) && !check_rights(C = client))
 		return FALSE
 	return TRUE
 
@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	if(!QDELING(src))
 		qdel(src)
 
-/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui)
+/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	switch(action)
 		if("pick")

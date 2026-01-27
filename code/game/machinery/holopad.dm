@@ -477,7 +477,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		ringing[++ringing.len] = holocall.ui_caller_id_source()
 	.["ringing"] = ringing
 
-/obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return

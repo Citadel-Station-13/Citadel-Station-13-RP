@@ -44,11 +44,11 @@
 
 	// todo: overlays/vis contents?
 	var/image/rendering = image(weapon, loc = src)
-	flick_overlay(rendering, GLOB.clients, time)
 
 	// yeah we don't care about the mob's state, we're an animation
 	rendering.appearance_flags = KEEP_APART | RESET_ALPHA | RESET_TRANSFORM | RESET_COLOR
 	rendering.plane = MOB_PLANE
+	rendering.layer = layer + 0.01
 
 	// size down
 	rendering.transform = matrix() * 0.4
@@ -64,6 +64,8 @@
 		rendering.pixel_x = d_x
 		rendering.pixel_y = d_y
 	#undef ATTACK_ITEM_OFFSET
+
+	flick_overlay(rendering, GLOB.clients, time)
 
 	animate(rendering, alpha = 175, transform = matrix() * 0.7, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = time * (1 / 2), easing = BACK_EASING | EASE_OUT)
 	animate(alpha = 0, time = time * (1 / 2), easing = SINE_EASING | EASE_OUT)

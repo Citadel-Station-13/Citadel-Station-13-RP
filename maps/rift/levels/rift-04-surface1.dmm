@@ -658,6 +658,22 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
+"axG" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfaceone)
 "ayM" = (
 /turf/simulated/wall/wood/hardwood,
 /area/rift/surfacebase/outside/outside1)
@@ -688,7 +704,6 @@
 "aAf" = (
 /obj/structure/closet/secure_closet/psych,
 /obj/item/clothing/suit/straight_jacket,
-/obj/item/handcuffs/disruptor,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "aAu" = (
@@ -5971,6 +5986,26 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
+"dVb" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfaceone)
 "dVj" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -7876,6 +7911,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
+"fii" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = -37
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rnd/hallway)
 "fiF" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -10401,7 +10444,6 @@
 	dir = 8
 	},
 /obj/item/flashlight/lamp{
-	on = 0;
 	pixel_x = -4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -11102,7 +11144,7 @@
 	name = "Cell 3 Lock";
 	pixel_x = 7;
 	pixel_y = 30;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
@@ -13296,7 +13338,7 @@
 	dir = 4
 	},
 /obj/item/storage/box/syringegun,
-/obj/item/gun/launcher/syringe/rapid,
+/obj/item/gun/projectile/ballistic/syringe/rapid,
 /obj/structure/closet/secure_closet/CMO,
 /obj/item/clothing/accessory/poncho/roles/cloak/cmo,
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo,
@@ -13622,7 +13664,7 @@
 	},
 /obj/machinery/door/airlock/security{
 	id_tag = "cell_lock_3";
-	name = "Cell 1";
+	name = "Cell 3";
 	req_one_access = null
 	},
 /obj/map_helper/access_helper/airlock/station/security/department,
@@ -15176,6 +15218,9 @@
 /obj/structure/bed/chair/wood,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
@@ -20085,6 +20130,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "mzj" = (
@@ -21872,7 +21920,7 @@
 	name = "Cell 1 Lock";
 	pixel_x = 7;
 	pixel_y = 30;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
@@ -22083,6 +22131,24 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"nJr" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/stairwell/primary/surfaceone)
 "nJF" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -23264,9 +23330,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "ope" = (
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "opn" = (
@@ -25112,9 +25176,7 @@
 "prs" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
 "prz" = (
@@ -26120,7 +26182,7 @@
 	name = "Cell 1 Lock";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -27045,7 +27107,7 @@
 	name = "Cell 2 Lock";
 	pixel_x = 7;
 	pixel_y = 30;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/security/prison/upper)
@@ -27254,6 +27316,29 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
+"qCO" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/power/apc/west_mount,
+/obj/structure/cable/green,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/civilian_hallway_mid)
 "qCS" = (
 /obj/structure/railing{
 	dir = 4
@@ -29381,9 +29466,7 @@
 "rNP" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet,
-/obj/structure/curtain/black{
-	anchored = 1
-	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_north)
 "rNV" = (
@@ -29942,7 +30025,7 @@
 	name = "Cell 2 Lock";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -34606,7 +34689,7 @@
 	name = "Cell 3 Lock";
 	pixel_x = -24;
 	pixel_y = -8;
-	req_access = list(1,2,4,38)
+	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -35270,6 +35353,18 @@
 "uWy" = (
 /turf/simulated/wall/prepainted,
 /area/quartermaster/foyer)
+"uWN" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/civilian_hallway_mid)
 "uXi" = (
 /obj/structure/railing{
 	dir = 8
@@ -37600,7 +37695,7 @@
 /obj/item/reagent_containers/glass/bottle/stoxin,
 /obj/item/reagent_containers/glass/bottle/stoxin,
 /obj/item/storage/box/syringes,
-/obj/item/gun/launcher/syringe,
+/obj/item/gun/projectile/ballistic/syringe,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/plating,
 /area/medical/psych)
@@ -37856,6 +37951,19 @@
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
+"wzv" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/patient_wing)
 "wzP" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -38784,7 +38892,6 @@
 	power_rating = 45000
 	},
 /obj/machinery/air_alarm{
-	pixel_x = 0;
 	pixel_y = -25;
 	dir = 1
 	},
@@ -39354,6 +39461,21 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"xte" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/rift/stairwell/primary/surfaceone)
 "xtl" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -54157,7 +54279,7 @@ fYd
 wrw
 qPo
 jrC
-jrC
+xte
 hvo
 dsf
 iqR
@@ -54315,7 +54437,7 @@ vkl
 rbA
 dNN
 yja
-yja
+wzv
 yja
 yja
 yja
@@ -55133,7 +55255,7 @@ kHP
 otM
 oiR
 oiR
-pBu
+axG
 bQA
 bQA
 bQA
@@ -56704,7 +56826,7 @@ dYA
 qeb
 ctb
 tSZ
-wAv
+fii
 foD
 bnG
 wdf
@@ -57073,7 +57195,7 @@ pcC
 otM
 oiR
 oiR
-tBz
+dVb
 bQA
 bQA
 bQA
@@ -58037,7 +58159,7 @@ fYd
 spM
 oDo
 gGU
-gGU
+nJr
 hKV
 pyX
 tsg
@@ -62102,7 +62224,7 @@ sfu
 cha
 dgR
 wvd
-xUH
+qCO
 cha
 dgR
 sxm
@@ -62292,7 +62414,7 @@ gav
 bFm
 bFm
 bFm
-bFm
+uWN
 bFm
 bFm
 bFm

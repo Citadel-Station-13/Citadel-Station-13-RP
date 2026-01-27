@@ -93,6 +93,8 @@
 	issued.given_reason = guest_reason || "NOT SPECIFIED"
 	issued.registered_name = guest_name || "NOT SPECIFIED"
 	issued.rank = "Guest"
+	issued.name += " ([issued.registered_name])"
+
 	// todo: way to bypass this, maybe with hacking or emag?
 	if(!isnull(giver))
 		issued.giver_name = giver.registered_name
@@ -162,7 +164,7 @@
 	RETURN_TYPE(/list)
 	return isnull(giver)? list() : giver.access
 
-/obj/machinery/computer/guestpass/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/guestpass/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return TRUE

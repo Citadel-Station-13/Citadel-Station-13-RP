@@ -1,0 +1,190 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle2)
+"e" = (
+/obj/machinery/power/smes,
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle2)
+"f" = (
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle2)
+"k" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle2)
+"u" = (
+/turf/template_noop,
+/area/template_noop)
+"w" = (
+/obj/structure/bed/chair/comfy/green{
+	dir = 1
+	},
+/obj/item/storage/single_use/mre/random,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle2)
+"x" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/submap/osiris_field/transport_shuttle2)
+"y" = (
+/obj/structure/bed/chair/comfy/green{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle2)
+"A" = (
+/turf/simulated/wall/r_wall/prepainted/civilian,
+/area/submap/osiris_field/transport_shuttle2)
+"I" = (
+/obj/random/cash,
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle2)
+"L" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle2)
+"O" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 1
+	},
+/turf/template_noop,
+/area/submap/osiris_field/transport_shuttle2)
+"P" = (
+/obj/structure/bed/chair/comfy/green{
+	dir = 1
+	},
+/obj/random/cash,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle2)
+"S" = (
+/obj/structure/bed/chair/comfy/green{
+	dir = 1
+	},
+/obj/item/seeds/random,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/submap/osiris_field/transport_shuttle2)
+"T" = (
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/turf/simulated/floor/tiled/dark,
+/area/submap/osiris_field/transport_shuttle2)
+"U" = (
+/obj/item/storage/fish_case/random,
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle2)
+"W" = (
+/turf/simulated/floor/plating,
+/area/submap/osiris_field/transport_shuttle2)
+
+(1,1,1) = {"
+x
+W
+W
+L
+A
+A
+A
+A
+A
+A
+u
+u
+"}
+(2,1,1) = {"
+u
+x
+W
+W
+y
+f
+y
+A
+e
+A
+A
+O
+"}
+(3,1,1) = {"
+u
+x
+W
+W
+w
+f
+S
+A
+a
+k
+A
+O
+"}
+(4,1,1) = {"
+u
+u
+x
+x
+W
+W
+f
+A
+I
+k
+A
+O
+"}
+(5,1,1) = {"
+u
+u
+x
+W
+f
+W
+f
+a
+a
+T
+A
+O
+"}
+(6,1,1) = {"
+x
+W
+W
+f
+y
+U
+y
+A
+a
+T
+A
+O
+"}
+(7,1,1) = {"
+W
+f
+y
+W
+P
+W
+y
+A
+T
+A
+A
+O
+"}
+(8,1,1) = {"
+x
+W
+A
+A
+A
+A
+A
+A
+A
+A
+u
+u
+"}

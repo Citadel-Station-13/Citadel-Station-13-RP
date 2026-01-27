@@ -175,6 +175,8 @@
 
 	if(requires_power)
 		luminosity = 0
+		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
+			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	else
 		power_light = TRUE
 		power_equip = TRUE
@@ -697,7 +699,7 @@ var/list/teleportlocs = list()
 
 var/list/ghostteleportlocs = list()
 
-/hook/startup/proc/setupGhostTeleportLocs()
+/legacy_hook/startup/proc/setupGhostTeleportLocs()
 	for(var/area/AR in GLOB.sortedAreas)
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))

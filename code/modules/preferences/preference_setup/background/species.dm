@@ -21,7 +21,7 @@
 			. += SPAN_GREEN("do")
 		else
 			. += SPAN_RED("do not")
-		. += " have the whitelist to play as one."
+		. += " have the whitelist to play as one[check_rights(C = prefs.client) ? ", but have administrative override to do so" : ""]."
 	. += "</center>"
 	. += "<div class='statusDisplay'>"
 	. += "[CS.blurb]"
@@ -32,7 +32,7 @@
 	if((CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED) && !(flags & PREF_COPY_TO_NO_CHECK_SPECIES))
 		errors?.Add(SPAN_WARNING("[CS.name] is a restricted species. You cannot join as this as most normal roles."))
 		return FALSE
-	if((CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !CS.check_whitelist_for_ckey(prefs.client_ckey))
+	if((CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !CS.check_whitelist_for_ckey(prefs.client_ckey) && !check_rights(C = prefs.client))
 		errors?.Add(SPAN_WARNING("You do not have the whitelist to play as a [CS.name]."))
 		return FALSE
 	return TRUE
@@ -116,5 +116,5 @@
 /datum/preferences/proc/real_species_name()
 	return SScharacters.resolve_species_id(get_character_data(CHARACTER_DATA_REAL_SPECIES)).name
 
-/datum/preferences/proc/character_species_job_check(datum/role/job/J)
+/datum/preferences/proc/character_species_job_check(datum/prototype/role/job/J)
 	return TRUE	// todo

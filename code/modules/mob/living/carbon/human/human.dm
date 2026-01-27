@@ -71,24 +71,24 @@
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
 	if(C.statpanel_tab("Status"))
-		STATPANEL_DATA_ENTRY("Intent:", "[a_intent]")
-		STATPANEL_DATA_ENTRY("Move Mode:", "[m_intent]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Intent:", "[a_intent]")
+		INJECT_STATPANEL_DATA_ENTRY(., "Move Mode:", "[m_intent]")
 		if(SSemergencyshuttle)
 			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
 			if(eta_status)
-				STATPANEL_DATA_LINE(eta_status)
+				INJECT_STATPANEL_DATA_LINE(., eta_status)
 
 		if (internal)
 			if (!internal.air_contents)
 				qdel(internal)
 			else
-				STATPANEL_DATA_ENTRY("Internal Atmosphere Info", internal.name)
-				STATPANEL_DATA_ENTRY("Tank Pressure", internal.air_contents.return_pressure())
-				STATPANEL_DATA_ENTRY("Distribution Pressure", internal.distribute_pressure)
+				INJECT_STATPANEL_DATA_ENTRY(., "Internal Atmosphere Info", internal.name)
+				INJECT_STATPANEL_DATA_ENTRY(., "Tank Pressure", internal.air_contents.return_pressure())
+				INJECT_STATPANEL_DATA_ENTRY(., "Distribution Pressure", internal.distribute_pressure)
 
 		var/obj/item/organ/internal/xenos/plasmavessel/P = internal_organs_by_name[O_PLASMA] //Xenomorphs. Mech.
 		if(P)
-			STATPANEL_DATA_LINE("Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
+			INJECT_STATPANEL_DATA_LINE(., "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
 
 		if(back && istype(back,/obj/item/hardsuit))
@@ -96,13 +96,13 @@
 			var/cell_status = "ERROR"
 			if(suit.cell)
 				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
-			STATPANEL_DATA_ENTRY("Suit charge", "[cell_status]")
+			INJECT_STATPANEL_DATA_ENTRY(., "Suit charge", "[cell_status]")
 
 		if(mind)
 			if(mind.changeling)
-				STATPANEL_DATA_ENTRY("Chemical Storage", mind.changeling.chem_charges)
-				STATPANEL_DATA_ENTRY("Genetic Damage Time", mind.changeling.geneticdamage)
-				STATPANEL_DATA_ENTRY("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
+				INJECT_STATPANEL_DATA_ENTRY(., "Chemical Storage", mind.changeling.chem_charges)
+				INJECT_STATPANEL_DATA_ENTRY(., "Genetic Damage Time", mind.changeling.geneticdamage)
+				INJECT_STATPANEL_DATA_ENTRY(., "Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
 	if(C.statpanel_tab("Species", species?.species_statpanel))
 		. += species.statpanel_status(C, src, C.statpanel_tab("Species"))
 
@@ -580,8 +580,7 @@
 		var/obj/item/I = locate(href_list["clickitem"])
 		if(get_dist(src, get_turf(I)) > 7)
 			return
-		if(src.client)
-			src.ClickOn(I)
+		click_on(I, inject_clickchain_flags = CLICKCHAIN_FROM_HREF)
 
 	if (href_list["flavor_change"])
 		if(usr != src)
@@ -1358,12 +1357,23 @@
 		if(C.body_cover_flags & FEET)
 			feet_exposed = 0
 
-	flavor_text = ""
-	for (var/T in flavor_texts)
-		if(flavor_texts[T] && flavor_texts[T] != "")
-			if((T == "general") || (T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
-				flavor_text += flavor_texts[T]
-				flavor_text += "\n\n"
+	flavor_text = flavor_texts["general"]
+	if(head_exposed)
+		flavor_text += flavor_texts["head"]+"\n\n"
+	if(face_exposed)
+		flavor_text += flavor_texts["face"]+"\n\n"
+	if(eyes_exposed)
+		flavor_text += flavor_texts["eyes"]+"\n\n"
+	if(torso_exposed)
+		flavor_text += flavor_texts["torso"]+"\n\n"
+	if(arms_exposed)
+		flavor_text += flavor_texts["arms"]+"\n\n"
+	if(hands_exposed)
+		flavor_text += flavor_texts["hands"]+"\n\n"
+	if(legs_exposed)
+		flavor_text += flavor_texts["legs"]+"\n\n"
+	if(feet_exposed)
+		flavor_text += flavor_texts["feet"]+"\n\n"
 	if(!shrink)
 		return flavor_text
 	else
@@ -1590,12 +1600,12 @@
 
 /mob/living/carbon/human/inducer_scan(obj/item/inducer/I, list/things_to_induce = list(), inducer_flags)
 	. = ..()
-	if(isSynthetic() || fast_is_species_type(src, /datum/species/holosphere)) // for code reasons holospheres are not 'synthetic'
+	if(isSynthetic() || fast_is_species_type(src, /datum/species/shapeshifter/holosphere)) // for code reasons holospheres are not 'synthetic'
 		things_to_induce += src
 
 /mob/living/carbon/human/inducer_act(obj/item/inducer/I, amount, inducer_flags)
 	. = ..()
-	if(!isSynthetic() && !fast_is_species_type(src, /datum/species/holosphere))
+	if(!isSynthetic() && !fast_is_species_type(src, /datum/species/shapeshifter/holosphere))
 		return
 	var/needed = (species.max_nutrition - nutrition)
 	if(needed <= 0)
@@ -1628,8 +1638,3 @@
 	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
 		return
 	. += (size_multiplier * icon_scale_x) * ((dir & EAST)? 8 : -8)
-
-/mob/living/carbon/human/ClickOn(var/atom/A)
-	if(ab_handler?.process_click(src, A))
-		return
-	..()

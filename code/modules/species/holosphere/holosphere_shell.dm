@@ -66,7 +66,8 @@
 	set desc = "Enable your hologram."
 	set category = VERB_CATEGORY_IC
 
-	transform_component.try_untransform()
+	var/datum/species/shapeshifter/holosphere/S = hologram.species
+	S.try_untransform()
 
 // same way pAI space movement works in pai/mobility.dm
 /mob/living/simple_mob/holosphere_shell/Process_Spacemove(movement_dir = NONE)
@@ -113,9 +114,9 @@
 
 	return TRUE
 
-/mob/living/simple_mob/holosphere_shell/revive(force, full_heal)
+/mob/living/simple_mob/holosphere_shell/revive(force, full_heal, restore_nutrition)
 	..()
-	hologram.revive(force, full_heal)
+	hologram.revive(force, full_heal, restore_nutrition)
 
 /mob/living/simple_mob/holosphere_shell/proc/give_holosphere_actions()
 	var/datum/action/holosphere/toggle_transform/toggle_transform = new(src)

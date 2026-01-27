@@ -22,10 +22,14 @@
 		bound_overlay.setDir(ndir)
 
 /atom/movable/update_above()
-	if (!bound_overlay || !isturf(loc))
+	if (!isturf(loc))
 		return
 
 	if (MOVABLE_IS_BELOW_ZTURF(src))
+		if (!bound_overlay)
+			SSzcopy.discover_movable(src)
+			return
+
 		SSzcopy.queued_overlays += bound_overlay
 		bound_overlay.queued += 1
 	else
@@ -101,14 +105,18 @@
 
 	return ..()
 
-/atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO, use_shadower_mult = TRUE)
+/atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO)
+	if (LO.needs_update)
+		// If this LO is pending an update, avoid this update and just let it update us.
+		return
 	appearance = LO
 	layer = MIMICED_LIGHTING_LAYER_MAIN
 	plane = OPENTURF_MAX_PLANE
 	blend_mode = BLEND_MULTIPLY
 	invisibility = 0
 
-	if (use_shadower_mult)
+	var/turf/T = loc
+	if (!(T.below.mz_flags & MZ_NO_SHADOW))
 		if (icon_state == LIGHTING_BASE_ICON_STATE)
 			// We're using a color matrix, so just darken the colors across the board.
 			var/list/c_list = color

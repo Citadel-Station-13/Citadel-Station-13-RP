@@ -48,6 +48,7 @@ SUBSYSTEM_DEF(zcopy)
 	var/total_updates_turf = 0
 	var/total_updates_discovery = 0
 	var/total_updates_object = 0
+	var/deferred_discoveries = 0	// How many times did we have to recursively discover? This overlaps with the discovery total.
 
 #ifdef ZM_RECORD_STATS
 	var/list/turf_stats = list()
@@ -126,6 +127,7 @@ SUBSYSTEM_DEF(zcopy)
 		if (isturf(A))
 			T = A
 			if (T.mz_flags & MZ_MIMIC_BELOW)
+				flush_z_state(T)
 				T.update_mimic()
 				num_turfs += 1
 
@@ -151,7 +153,7 @@ SUBSYSTEM_DEF(zcopy)
 		"Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] }",
 		// In order: Total, Queued, Skipped
 		"T(O): { T: [openspace_turfs] O: [openspace_overlays] }",
-		"T(U): { T: [total_updates_turf] D: [total_updates_discovery] O: [total_updates_object] }",
+		"T(U): { T: [total_updates_turf] D: [total_updates_discovery] DDef: [deferred_discoveries] O: [total_updates_object] }",
 		"Sk: { T: [multiqueue_skips_turf] D: [multiqueue_skips_discovery] O: [multiqueue_skips_object] }",
 		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }"
 	)
@@ -396,13 +398,14 @@ SUBSYSTEM_DEF(zcopy)
 
 			// Special case: these are merged into the shadower to reduce memory usage.
 			if (object.type == /atom/movable/lighting_overlay)
-				T.shadower.copy_lighting(object, !(T.below.mz_flags & MZ_NO_SHADOW))
+				shadower_set = TRUE
+				T.shadower.copy_lighting(object)
 				continue
 
 			// If an atom already has an overlay, we probably don't need to discover it again.
 			// ...but we need to force it if the object was salvaged from another zturf.
 			if (!object.bound_overlay || object.bound_overlay.destruction_timer)
-				discover_movable(object, T)
+				discover_movable(object)
 
 		if (!shadower_set)
 			if (T.below.mz_flags & MZ_NO_SHADOW)
@@ -516,12 +519,13 @@ SUBSYSTEM_DEF(zcopy)
 
 	ZM_RECORD_START
 
+	var/atom/movable/defer
 	if (!object.bound_overlay)
 		var/atom/movable/openspace/mimic/M = new(T)
 		object.bound_overlay = M
 		M.associated_atom = object
 		if (TURF_IS_MIMICKING(M.loc))
-			.(M)
+			defer = M
 
 	var/override_depth
 	var/original_type = object.type
@@ -572,6 +576,10 @@ SUBSYSTEM_DEF(zcopy)
 
 	ZM_RECORD_STOP
 	ZM_RECORD_WRITE(discovery_stats, "Depth [OO.depth] on [OO.z]")
+
+	if (defer)
+		deferred_discoveries += 1
+		.(defer)
 
 	return FALSE
 
@@ -870,6 +878,8 @@ var/list/zmimic_fixed_planes = list(
 
 		var/atom/movable/AA = OO.associated_atom
 		var/copied_type = AA.type == OO.mimiced_type ? "[AA.type] \[direct\]" : "[AA.type], eventually [OO.mimiced_type]"
+		if (OO.mimiced_type == /atom/movable/openspace/mimic)	// This is invalid, these should always be a 'real' type.
+			copied_type += " <font color='red'>CORRUPT</font>"
 		return "[base], associated Z-level [AA.z] - [OO.type] copying [AA] ([copied_type])</li>"
 
 	else if (istype(A, /atom/movable/openspace/turf_mimic))

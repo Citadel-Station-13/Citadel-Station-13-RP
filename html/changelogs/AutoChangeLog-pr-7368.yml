@@ -1,0 +1,4 @@
+author: "Kade"
+delete-after: True
+changes:
+  - bugfix: "fixed the Marauder series of mechs not having their strafe work."

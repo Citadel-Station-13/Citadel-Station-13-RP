@@ -173,9 +173,6 @@
 /client/New(TopicData)
 	//* pre-connect-ish *//
 
-	// Byond only populates whether or not you can profile at connect. You have to give someone this
-	// before their client loads/whatever. This cannot be behind a spawn(). We will remove it from non-admins later.
-	world.SetConfig("APP/admin", ckey, "role=admin")
 	// Block client.Topic() calls from connect.
 	TopicData = null
 	// Kick invalid connections.
@@ -238,39 +235,20 @@
 	action_holder = new /datum/action_holder/client_actor(src)
 	action_drawer.register_holder(action_holder)
 
-	//* Setup admin tooling
+	//* Setup admin tooling *//
+	// Notify tickets they logged in
 	GLOB.ahelp_tickets.ClientLogin(src)
-	// var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
-	//Admin Authorisation
-	holder = admin_datums[ckey]
-	var/debug_tools_allowed = FALSE
-	if(holder)
-		GLOB.admins |= src
-		holder.owner = src
-		// connecting_admin = TRUE
-		//if(check_rights_for(src, R_DEBUG))
-		if(R_DEBUG & holder?.rights) //same wiht this, check_rights when?
-			debug_tools_allowed = TRUE
-	/*
-	else if(GLOB.deadmins[ckey])
-		add_verb(src, /client/proc/readmin)
-		connecting_admin = TRUE
-	*/
-	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
-	if(is_localhost() && CONFIG_GET(flag/enable_localhost_rank))
+	// Give them admin if they're an admin
+	// TODO: Maybe don't do it if they're deadminned..
+	var/datum/admins/maybe_holder = admin_datums[ckey]
+	maybe_holder?.associate(src)
+
+	//! TODO: This is shitcode, fix it.
+	if(is_localhost() && CONFIG_GET(flag/enable_localhost_rank) && !holder)
 		holder = new /datum/admins("!localhost!", ALL, ckey)
-		holder.owner = src
-		GLOB.admins |= src
-		//admins |= src // this makes them not have admin. what the fuck??
-		// holder.associate(ckey)
-		// connecting_admin = TRUE
-	//CITADEL EDIT
-	//if(check_rights_for(src, R_DEBUG))	//check if autoadmin gave us it
-	if(R_DEBUG & holder?.rights) //this is absolutely horrid
-		debug_tools_allowed = TRUE
-	if(!debug_tools_allowed)
-		world.SetConfig("APP/admin", ckey, null)
-	//END CITADEL EDIT
+		holder.associate(src)
+	//! END
+
 	// todo: refactor and hoist
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = GLOB.preferences_datums[ckey]
@@ -354,7 +332,7 @@
 	// run post-init 'lint'-like checks
 	// this is on a spawn() to force a separate call chain
 	spawn(0)
-		on_new_hook_stability_checks()
+		invoke_hooks__client_stability_check(src)
 
 	// todo: fuck you voreprefs
 	spawn(0)
@@ -378,17 +356,6 @@
 	// update our hub label
 	// todo: this should be a global signal that the subsystem hooks
 	SSserver_maint.queue_hub_update()
-
-/**
- * Called in the middle of new, after everything critical
- * is loaded / initialized.
- *
- * This proc should all be async; it is where you hook to ensure things are properly
- * loaded.
- */
-/client/proc/on_new_hook_stability_checks()
-	SHOULD_CALL_PARENT(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
 
 	//////////////
 	//DISCONNECT//
@@ -428,9 +395,8 @@
 		prefs.client = null
 		prefs = null
 	SSserver_maint.UpdateHubStatus()
-	if(holder)
-		holder.owner = null
-		GLOB.admins -= src //delete them on the managed one too
+
+	holder?.disassociate()
 
 	//* Cleanup rendering *//
 	if(using_perspective)

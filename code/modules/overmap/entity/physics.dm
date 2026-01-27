@@ -115,6 +115,24 @@
 	return y - overmap.lower_left_y + 1
 
 /**
+ * Get tile X with floating point where being on a tile is considered being at the center of it.
+ */
+/obj/overmap/entity/proc/get_tile_x_f()
+	if(!overmap)
+		return 0
+	var/center = bound_x + bound_width * 0.5
+	return x - overmap.lower_left_x + 1 + (center - (WORLD_ICON_SIZE * 0.5)) / WORLD_ICON_SIZE
+
+/**
+ * Get tile Y with floating point where being on a tile is considered being at the center of it.
+ */
+/obj/overmap/entity/proc/get_tile_y_f()
+	if(!overmap)
+		return 0
+	var/center = bound_y + bound_height * 0.5
+	return y - overmap.lower_left_y + 1 + (center - (WORLD_ICON_SIZE * 0.5)) / WORLD_ICON_SIZE
+
+/**
  * gets our movement (non-angular) speed in overmaps units per second
  */
 /obj/overmap/entity/proc/get_speed()

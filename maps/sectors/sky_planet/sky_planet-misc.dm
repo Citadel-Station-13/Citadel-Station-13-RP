@@ -7,7 +7,7 @@
 [i]Class[/i]: P-Class Planet, with breathable air over cloud level.
 [i]Habitability[/i]: Weak : Ground level impossible. Settlements in high atltitude, on Sky-Rigs
 [i]Population[/i]: 500
-[i]Controlling Goverment[/i]: Previously : Various small defunct corporations. Now : SDF (limited), Haddi's Folly goverment (Limited)
+[i]Controlling Goverment[/i]: Previously : Various small defunct corporations. Now : SDF (limited), haddi's folley goverment (Limited)
 [b]Relationship with NT[/b]: Nanotrasen Client Government, NT asset was authorised to land, Tajaran SDF outpost given to NT.
 [b]Relevant Contracts[/b]: Dangerous Wildlife Control, System Self Defence Assistance."}
 	icon_state = "globe"
@@ -39,6 +39,7 @@
 		"Bonnethead Racing Shuttle" = list ("voidline_bonnethead"),
 		"Udang Pari-pari Racing Shuttle" = list ("voidline_udang"),
 		"Arrowhead Racing Shuttle" = list ("voidline_arrowhead"),
+		"ORS Crescend Radio Shuttle" = list ("occulum_safehouse"),
 		)
 
 //Turfs
@@ -207,24 +208,28 @@
 	landmark_tag = "voidline_redcomet"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
+	docking_controller = "voidline_redcomet_dock"
 
 /obj/effect/shuttle_landmark/skyplanet/voidline/bonnethead
 	name = "Voidline Rig - Bonnethead Pad"
 	landmark_tag = "voidline_bonnethead"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
+	docking_controller = "voidline_bonnethead_dock"
 
 /obj/effect/shuttle_landmark/skyplanet/voidline/udang
 	name = "Voidline Rig - Udang Pari-pari Pad"
 	landmark_tag = "voidline_udang"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
+	docking_controller = "voidline_udang_dock"
 
 /obj/effect/shuttle_landmark/skyplanet/voidline/arrowhead
 	name = "Voidline Rig - Arrowhead Pad"
 	landmark_tag = "voidline_arrowhead"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/racing_station/dock
+	docking_controller = "voidline_arrowhead_dock"
 
 //Public
 
@@ -263,6 +268,13 @@
 	landmark_tag = "skyplanet_voidline_pad6"
 	base_turf = /turf/simulated/floor/reinforced
 	base_area = /area/sector/sky_planet/sky
+
+/obj/effect/shuttle_landmark/skyplanet/voidline/crescend
+	name = "Occulum Rig - Crescend Pad"
+	landmark_tag = "occulum_safehouse"
+	base_turf = /turf/simulated/floor/reinforced
+	base_area = /area/sector/sky_planet/sky
+	docking_controller = "occulum_safehouse_dock"
 
 //mobs
 

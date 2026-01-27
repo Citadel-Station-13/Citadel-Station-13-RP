@@ -33,7 +33,7 @@
 		if(WAVE_SPREAD_SHADOW_LIKE)
 			// directionals fully allowed
 			// we use our own dir bits
-			edges[T] = dir? dir : ALL_DIRECTION_BITS
+			edges[T] = dir? dir : CARDINAL_DIAGONAL_DIRECTION_BITS
 			powers[T] = power
 		if(WAVE_SPREAD_SHOCKWAVE)
 			// no directionals. we use cardinal bits, though, due to the algorithm.
