@@ -51,15 +51,6 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	var/list/obj/machinery/airlock_peripheral/peripherals
 	/// our airlock program
 	var/datum/airlock_program/program
-
-	//* Icon *//
-
-	#warn impl this for icon update
-	var/last_pump_time
-	var/last_pump_was_out
-	var/last_pump_icon_update_time
-	var/last_pump_grace_period = 5 SECONDS
-
 /obj/machinery/airlock_component/controller/Initialize(mapload)
 	..()
 	// todo: we need proper tick bracket machine support & fastmos
@@ -102,7 +93,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 
 /obj/machinery/airlock_component/controller/update_icon(updates)
 	. = ..()
-	#warn impl
+	#warn impl - operating
 
 /**
  * @return TRUE success, FALSE failure

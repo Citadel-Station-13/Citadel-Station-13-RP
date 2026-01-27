@@ -48,7 +48,7 @@
 	/// are we indoors? if not, we're outdoors
 	var/is_indoors = FALSE
 
-/obj/machinery/airlock_component/door_linker/Initialize(mapload, set_dir, obj/item/airlock_component/door_linker.from_item)
+/obj/machinery/airlock_component/door_linker/Initialize(mapload, set_dir, obj/item/airlock_component/door_linker/from_item)
 	if(from_item)
 		src.is_indoors = from_item.is_indoors
 	return ..()

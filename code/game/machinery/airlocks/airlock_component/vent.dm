@@ -23,11 +23,9 @@
 
 	detached_item_type = /obj/item/airlock_component/vent
 
-	#warn impl this for icon update
-	var/last_pump_time
+	/// TRUE for out, FALSE for in, null for neither
 	var/last_pump_was_out
-	var/last_pump_icon_update_time
-	var/last_pump_grace_period = 5 SECONDS
+	var/last_pump_applied_state
 
 /obj/machinery/airlock_component/vent/on_connect(datum/airlock_gasnet/network)
 	..()
@@ -43,15 +41,21 @@
 	if(network.vent == src)
 		network.vent = null
 		network.queue_recheck()
+	last_pump_was_out = null
 
 /obj/machinery/airlock_component/vent/process(delta_time)
-	if(last_pump_time != last_pump_icon_update_time)
+	if(last_pump_was_out != last_pump_applied_state)
 		update_icon()
-		last_pump_time = world.time
 
 /obj/machinery/airlock_component/vent/update_icon(updates)
+	cut_overlays()
 	. = ..()
-	#warn impl
+	last_pump_applied_state = last_pump_was_out
+	switch(last_pump_was_out)
+		if(TRUE)
+			add_overlay("[base_icon_state]-op-red")
+		if(FALSE)
+			add_overlay("[base_icon_state]-op-blue")
 
 /**
  * Gets gas mixture to use for handler / cycler procs.
