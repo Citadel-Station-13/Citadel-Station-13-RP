@@ -363,7 +363,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	// Capture end time
 	var/time = rustg_time_milliseconds(SS_INIT_TIMER_KEY)
-	var/seconds = round(time / 1000, 0.01)
+	var/took_seconds = round(time / 1000, 0.01)
 
 	SSblackbox.record_feedback("tally", "subsystem_initialize", time, subsystem.name)
 
@@ -398,7 +398,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		else
 			warning("[subsystem.name] subsystem initialized, returning invalid result [initialize_result]. This is a bug.")
 
-	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
+	var/message = "[message_prefix] [took_seconds] second[took_seconds == 1 ? "" : "s"]!"
 	var/chat_message = chat_warning ? SPAN_BOLDWARNING(message) : SPAN_BOLDANNOUNCE(message)
 
 	if(tell_everyone && message_prefix)
