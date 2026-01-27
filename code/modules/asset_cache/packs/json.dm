@@ -8,7 +8,7 @@
 /datum/asset_pack/json/register(generation)
 	var/filename = "data/asset-cache/assets/[name].json"
 	fdel(filename)
-	text2file(json_encode(generation), filename)
+	rustg_file_write(json_encode(generation), filename)
 	return list(
 		"[name].json" = file(filename),
 	)
