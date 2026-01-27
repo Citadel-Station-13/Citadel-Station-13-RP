@@ -34,10 +34,13 @@
 	var/datum/shuttle_controller/controller
 	/// our physical shuttle object
 	var/obj/shuttle_anchor/anchor
+	#warn don't move this snowflake-ly, only move anchor like that, this goes with grid
 	/// our physical shuttle port objects
 	var/list/obj/shuttle_port/ports
+	#warn nuke this don't need it just for loop like a normal person
 	/// port lookup by id
 	var/list/obj/shuttle_port/port_lookup
+	#warn nuke this don't need it just for loop like a normal person
 	/// our primary port, if any.
 	/// roundstart docking will use this port.
 	var/obj/shuttle_port/port_primary
