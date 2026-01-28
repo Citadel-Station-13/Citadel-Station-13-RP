@@ -27,7 +27,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	req_one_access = list(ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	clicksound = "button"
 	clickvol = 30
-	//blocks_emissive = NONE
+	//blocks_emissive = EMISSIVE_BLOCK_NONE
 	light_power = 0.25
 
 	/// The area we're registered to
