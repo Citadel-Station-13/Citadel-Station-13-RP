@@ -102,14 +102,7 @@ SUBSYSTEM_DEF(ticker)
 
 				callHook("roundend")
 
-				if (mode.station_was_nuked)
-					feedback_set_details("end_proper","nuke")
-				else
-					feedback_set_details("end_proper","proper completion")
-
-
-				if(blackbox)
-					blackbox.save_all_data_to_sql()
+				send2irc("Server", "A round of [mode.name] just ended.")
 
 				if(CONFIG_GET(string/chat_roundend_notice_tag))
 					var/broadcastmessage = "The round has ended."
@@ -304,8 +297,8 @@ SUBSYSTEM_DEF(ticker)
 		// type filtered, we cannot risk runtimes
 		L.OnRoundstart()
 
-	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
+	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	SStime_keep.cached_round_start_time = world.time
 	SStime_keep.cached_round_start_rtod = REALTIMEOFDAY
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore, SetRoundStart))
@@ -343,9 +336,21 @@ SUBSYSTEM_DEF(ticker)
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
-	if(CONFIG_GET(flag/sql_enabled))
-		ASYNC // THIS REQUIRES THE ASYNC!
-			statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
+	// Handle database
+	if(SSdbcore.Connect())
+		var/list/to_set = list()
+		var/arguments = list()
+		if(GLOB.revdata.originmastercommit)
+			to_set += "commit_hash = :commit_hash"
+			arguments["commit_hash"] = GLOB.revdata.originmastercommit
+		if(to_set.len)
+			arguments["round_id"] = GLOB.round_id
+			var/datum/db_query/query_round_game_mode = SSdbcore.NewQuery(
+				"UPDATE [DB_PREFIX_TABLE_NAME("round")] SET [to_set.Join(", ")] WHERE id = :round_id",
+				arguments
+			)
+			query_round_game_mode.Execute()
+			qdel(query_round_game_mode)
 	return TRUE
 
 //These callbacks will fire after roundstart key transfer

@@ -400,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `rp_death` (
   `fireloss` INT(11) NOT NULL ,
   `oxyloss` INT(11) NOT NULL ,
   PRIMARY KEY (`id`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_karma` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
