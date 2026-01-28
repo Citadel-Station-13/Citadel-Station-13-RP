@@ -5569,7 +5569,7 @@
 /turf/simulated/floor/water/deep/pool,
 /area/crew_quarters/pool)
 "del" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/robotics/resleeving)
 "dfR" = (
@@ -7115,7 +7115,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "eby" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -8466,7 +8466,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "eSC" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -26770,7 +26770,7 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/topairlock)
 "pWy" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/robotics/resleeving)
 "pWA" = (

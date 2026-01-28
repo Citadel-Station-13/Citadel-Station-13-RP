@@ -1,11 +1,11 @@
 /**
  * checks if characteristics system is enabled
  */
-/proc/characteristics_enabled()
-	return CONFIG_GET(flag/characteristics_enabled)
+/proc/characteristic_enabled()
+	return CONFIG_GET(flag/characteristic_enabled)
 
 /**
  * checks if characteristics system is active
  */
-/proc/characteristics_active()
-	return CONFIG_GET(flag/characteristics_active)
+/proc/characteristic_active()
+	return CONFIG_GET(flag/characteristic_active)

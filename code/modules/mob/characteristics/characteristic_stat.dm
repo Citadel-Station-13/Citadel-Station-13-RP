@@ -1,6 +1,6 @@
-GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
+GLOBAL_LIST_INIT(characteristic_stats, _create_characteristic_stats())
 
-/proc/_create_characteristics_stats()
+/proc/_create_characteristic_stats()
 	. = list()
 	for(var/datum/characteristic_stat/stat in subtypesof(/datum/characteristic_stat))
 		if(is_abstract(stat))
@@ -19,9 +19,9 @@ GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
  *
  * use typepaths whenever possible for compile time!
  */
-/proc/resolve_characteristics_stat(datum/characteristic_stat/typepath_or_id)
+/proc/resolve_characteristic_stat(datum/characteristic_stat/typepath_or_id)
 	RETURN_TYPE(/datum/characteristic_stat)
-	return GLOB.characteristics_stats[ispath(typepath_or_id)? initial(typepath_or_id.id) : typepath_or_id]
+	return GLOB.characteristic_stats[ispath(typepath_or_id)? initial(typepath_or_id.id) : typepath_or_id]
 
 /**
  * stats - basically raw skills that can theoretically hold anything

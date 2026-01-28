@@ -44,6 +44,6 @@ GENERATE_ROBOT_MODULE_PRESET(/cybersun/triage)
 			/obj/item/shockpaddles/robot/combat,
 			/obj/item/reagent_containers/dropper, // Allows borg to fix necrosis apparently
 			/obj/item/reagent_containers/syringe/unbreakable,
-			/obj/item/robot_builtin/dog_mirrortool,
+			/obj/item/mirrortool,
 			/obj/item/roller_holder,
 		)

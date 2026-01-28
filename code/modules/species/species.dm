@@ -503,6 +503,7 @@
 	var/death_sound
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 	var/knockout_message = "has been knocked unconscious!"
+	/// * only applied to organics for now
 	var/cloning_modifier = /datum/modifier/cloning_sickness
 
 	//? Primitive species
@@ -756,6 +757,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	var/obj/item/nif/our_nif = H.nif
 	if(H.nif)
 		H.nif.unimplant(H)
+	#warn mirror
 
 	// store the markings for each limb we have so we can apply them to our new limbs
 	var/list/temporary_marking_store = list()

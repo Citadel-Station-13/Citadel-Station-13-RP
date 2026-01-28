@@ -965,8 +965,6 @@
 			break
 
 /mob/living/silicon/robot/proc/self_destruct()
-	// explosion readd: back to the old days of blowing borgs lmfao who nerfed this
-	explosion(get_turf(src), 0, 0, 3)
 	gib()
 
 /mob/living/silicon/robot/proc/UnlinkSelf()

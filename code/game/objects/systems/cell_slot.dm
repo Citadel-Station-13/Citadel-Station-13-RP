@@ -208,7 +208,7 @@
 /obj/proc/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
 	return slot_opinion
 
-//? Lazy wrappers for init
+//* -- Lazy init wrapers -- *//
 
 /**
  * Creates a cell slot
