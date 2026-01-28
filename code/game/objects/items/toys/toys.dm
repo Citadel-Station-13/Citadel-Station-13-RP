@@ -1636,7 +1636,7 @@
 
 /obj/item/checker/black
 	name = "Black Checker"
-	icon_state = "zoomba-standard"
+	icon_state = "standard"
 	desc = "A Novelty checker piece in the image of a noble standard zoomba."
 
 /obj/item/checker/blackking
@@ -1646,7 +1646,7 @@
 
 /obj/item/checker/red
 	name = "Red Checker"
-	icon_state = "zoomba-security"
+	icon_state = "security"
 	desc = "A Novelty checker piece in the image of a fierce security zoomba."
 
 /obj/item/checker/redking
