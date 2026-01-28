@@ -73,7 +73,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
-	special = TRUE
 	area_limited_icon_smoothing = /area/shuttle
 
 /area/shuttle/arrival
@@ -1036,7 +1035,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	sound_env = SMALL_ENCLOSED
 	ambience = AMBIENCE_SUBSTATION
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-	
+
 /area/maintenance/substation/engineering // Probably will be connected to engineering SMES room, as wires cannot be crossed properly without them sharing powernets.
 	name = "Engineering Substation"
 
@@ -1626,7 +1625,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "toilet"
 	sound_env = SMALL_ENCLOSED
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-	
+
 /area/crew_quarters/sleep/bedrooms
 	name = "\improper Dormitory Bedroom One"
 	icon_state = "crew_quarters"
@@ -2293,7 +2292,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Secondary Storage"
 	icon_state = "medbay2"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-	
+
 /area/medical/reception
 	name = "\improper Medbay Reception"
 	icon_state = "medbay"
@@ -2313,7 +2312,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Psych Room"
 	icon_state = "medbay3"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE //Psychiatric patients deserve nighttime too
-	
+
 /area/medical/psych/psych_1
 	name = "\improper Psych Room 1"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_LEISURE

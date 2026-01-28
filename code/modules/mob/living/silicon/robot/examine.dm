@@ -55,7 +55,7 @@
 		message += B.get_examine_msg()
 	. += message
 
-	if(showvoreprefs && ckey) //ckey so non-controlled mobs don't display it.
+	if(ckey) //ckey so non-controlled mobs don't display it.
 		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
 
 	if(print_flavor_text())

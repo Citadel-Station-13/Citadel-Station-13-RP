@@ -422,15 +422,15 @@
 		switch(opcode)
 			if(/datum/cassette_opcode/next_is_audible_emote)
 				// constructed += "*[name]* --- [msg] ---"
-				constructed += "[time2text(current_time, "mm:ss")] (unrecognizable / not speech)"
+				constructed += "[time2text(current_time, "mm:ss", NO_TIMEZONE)] (unrecognizable / not speech)"
 			if(/datum/cassette_opcode/next_is_direct_broadcast)
 				constructed += "<center>[time2text(current_time, "mm:ss")]<br>[msg]</center>"
 			else
 				lang = head[3]
 				if(lang.id == LANGUAGE_ID_COMMON)
-					constructed += "[time2text(current_time, "mm:ss")] [name]: [msg]"
+					constructed += "[time2text(current_time, "mm:ss", NO_TIMEZONE)] [name]: [msg]"
 				else
-					constructed += "[time2text(current_time, "mm:ss")] [name]: (unknown language)"
+					constructed += "[time2text(current_time, "mm:ss", NO_TIMEZONE)] [name]: (unknown language)"
 	P.info = constructed.Join("<br>")
 	P.name = "Transcript"
 	print_cooldown()

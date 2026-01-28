@@ -24,6 +24,7 @@
 #define DO_AFTER_ARG_MOBILITY 5
 #define DO_AFTER_ARG_DIST 6
 #define DO_AFTER_ARG_CALLBACK 7
+#define DO_AFTER_ARG_STATUS_INDICATOR 7
 
 //? Interaction Checks
 /// checks if we're interacting with an atom

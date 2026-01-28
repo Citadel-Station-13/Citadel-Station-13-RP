@@ -12,3 +12,5 @@ GLOBAL_LIST_EMPTY(tagger_locations)
 
 /// Cache of the width and height of icon files, to avoid repeating the same expensive operation
 GLOBAL_LIST_EMPTY(icon_dimensions)
+
+GLOBAL_LIST_INIT(color_vars, list("color"))
