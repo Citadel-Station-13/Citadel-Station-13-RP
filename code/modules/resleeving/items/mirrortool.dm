@@ -30,7 +30,21 @@
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	if(istype(using, /obj/item/organ/internal/mirror))
+		if(inserted_mirror)
+			clickchain.chat_feedback(
+				SPAN_WARNING("[src] already has a mirror inside it."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		var/obj/item/organ/internal/mirror/mirror = using
+		if(!clickchain.performer.attempt_insert_item_for_installation(mirror, src))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		clickchain.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = SPAN_NOTICE("[clickchain.performer] inserts [mirror] into [src]."),
+		)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/mirrortool/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
@@ -55,7 +69,13 @@
 
 /obj/item/mirrortool/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["mirror"] = inserted_mirror ? list(
+	.["mirror"] = ui_serialize_mirror()
+
+/obj/item/mirrortool/proc/ui_update_mirror()
+	push_ui_data(data = list("mirror" = ui_serialize_mirror))
+
+/obj/item/mirrortool/proc/ui_serialize_mirror()
+	return inserted_mirror ? list(
 		"activated" = !!inserted_mirror.owner_mind_ref,
 		"body_recorded" = inserted_mirror.recorded_body ? list(
 			"gender" = inserted_mirror.recorded_body.legacy_gender || "Unknown",
@@ -87,7 +107,7 @@
 /obj/item/mirrortool/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor)
 
 /obj/item/mirrortool/proc/on_mirror_removed(obj/item/organ/internal/mirror/mirror)
-	update_static_data()
+	ui_update_mirror()
 	update_icon()
 
 /obj/item/mirrortool/proc/user_insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
@@ -96,7 +116,7 @@
 /obj/item/mirrortool/proc/insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
 
 /obj/item/mirrortool/proc/on_mirror_inserted(obj/item/organ/internal/mirror/mirror)
-	update_static_data()
+	ui_update_mirror()
 	update_icon()
 
 #warn below
@@ -143,13 +163,3 @@
 	else
 		to_chat(usr, "You must target the torso.")
 	return CLICKCHAIN_DO_NOT_PROPAGATE
-
-/obj/item/mirrortool/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/organ/internal/mirror))
-		if(imp)
-			to_chat(usr, "This mirror tool already contains a mirror.")
-			return
-		if(!user.attempt_insert_item_for_installation(I, src))
-			return
-		imp = I
-		user.visible_message("[user] inserts the [I] into the [src].", "You insert the [I] into the [src].")
