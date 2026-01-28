@@ -202,7 +202,6 @@
 		var/datum/map_level/level = SSmapping.allocate_level()
 		var/z = level.z_index
 		var/area/areaInstance = new /area/darkspace_abduction(null)
-		areaInstance.addSorted()
 		for(var/x = 1 to world.maxx)
 			for(var/y = 1 to world.maxy)
 				var/turf/T = locate(x,y,z)

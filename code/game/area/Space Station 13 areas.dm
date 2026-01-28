@@ -70,7 +70,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // All shuttles should now be under shuttle since we have smooth-wall code.
 
 /area/shuttle
-	requires_power = 0
+	requires_power = FALSE
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 	area_limited_icon_smoothing = /area/shuttle
@@ -576,7 +576,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Independent Station"
 	icon_state = "yellow"
 	requires_power = 0
-	area_flags = AREA_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_NO_TELEPORT
 	ambience = AMBIENCE_HIGHSEC
 
 /area/syndicate_station/start
@@ -631,6 +631,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Wizard's Den"
 	icon_state = "yellow"
 	requires_power = 0
+	area_flags = AREA_NO_TELEPORT
 	ambience = AMBIENCE_OTHERWORLDLY
 
 /area/skipjack_station

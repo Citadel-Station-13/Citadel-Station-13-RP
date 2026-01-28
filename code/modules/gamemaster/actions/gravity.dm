@@ -18,7 +18,7 @@
 /datum/gm_action/gravity/start()
 	..()
 	gravity_is_on = 0
-	for(var/area/A in GLOB.sortedAreas)
+	for(var/area/A in get_sorted_areas())
 		if(A.z in zLevels)
 			A.gravitychange(gravity_is_on, A)
 
@@ -26,7 +26,7 @@
 	if(!gravity_is_on)
 		gravity_is_on = 1
 
-		for(var/area/A in GLOB.sortedAreas)
+		for(var/area/A in get_sorted_areas())
 			if(A.z in zLevels)
 				A.gravitychange(gravity_is_on, A)
 
