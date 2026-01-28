@@ -75,22 +75,6 @@
 		occupant.name = occupant.real_name
 		occupant.dna.real_name = occupant.real_name
 
-	//Inform them and make them a little dizzy.
-	if(confuse_amount + blur_amount <= 16)
-		to_chat(occupant, SPAN_NOTICE("You feel a small pain in your back as you're given a new \
-		mirror implant. Oh, and a new body. \
-		Your brain will struggle for some time to relearn its neurological pathways, \
-		and you may feel disorientation, moments of confusion, and random pain or spasms. \
-		You also feel a constant disconnect, and your body feels foreign. \
-		You can't shake the final thoughts and feelings of your past life, and they linger at the \
-		forefront of your memory. "))
-
-	occupant.confused   = max(occupant.confused, confuse_amount)
-	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)
-
-	if(occupant.mind && occupant.original_player && occupant.mind.ckey != occupant.original_player)
-		log_and_message_admins("is now a cross-sleeved character. Body originally belonged to [occupant.real_name]. Mind is now [occupant.mind.name].",occupant)
-
 	if(original_occupant)
 		occupant = original_occupant
 

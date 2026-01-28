@@ -719,7 +719,7 @@
  */
 /obj/machinery/proc/yank_item_out(obj/item/item, mob/user)
 	if(!issilicon(user) && in_range(src, user))
-		user.grab_item_from_interacted_with(object, src)
+		user.grab_item_from_interacted_with(item, src)
 		// todo: probably split this proc into something that isn't try
 		// because if this fails and something nulls, something bad happens
 		// i bandaided this to drop location but that's inflexible

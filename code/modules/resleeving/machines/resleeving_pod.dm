@@ -70,6 +70,18 @@
 
 	#warn impl
 
+	// TODO: if they're not connected / whatnot can we hold onto this?
+	casted_human.Confuse(c_confuse_time / (2 SECONDS))
+	casted_human.eye_blurry = c_blur_time / (2 SECONDS)
+	var/message = SPAN_NOTICE({"
+		You feel a small pain in your back as you're given a new mirror implant. \
+		Oh, and a new body. The last moments of your past life cut away cleanly to \
+		your eyes opening in this new sleeve, lingering at the forefront of your memory. \
+		Your brain will struggle for some time to relearn its control pathways, \
+		and your body feels <i>foreign</i>, somehow.\
+	"})
+	to_chat(target, message)
+
 /obj/machinery/resleeving/resleeving_pod/proc/perform_backup_insertion_impl(mob/living/target, datum/resleeving_mind_backup/backup)
 	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
 	if(!ishuman(target))
@@ -85,10 +97,10 @@
 	return TRUE
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_mind_insertion_impl(mob/living/target, datum/mind/mind)
+	#warn logging
 
 	mind.active = TRUE
 	mind.transfer(target)
-
 
 	// - LEGACY - //
 

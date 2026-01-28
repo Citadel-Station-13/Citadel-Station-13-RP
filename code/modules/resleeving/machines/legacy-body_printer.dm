@@ -1,12 +1,6 @@
 
 #warn below
 
-/obj/machinery/resleeving/body_printer
-	/// Need to clean out it if it's full of exploded clone.
-	var/mess = FALSE
-	/// Don't eject them as soon as they are created.
-	var/eject_wait = FALSE
-
 /obj/machinery/resleeving/body_printer/grower_pod/process(delta_time)
 	if(((occupant.health >= heal_level) || (occupant.health == occupant.maxHealth)) && (!eject_wait))
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
@@ -15,43 +9,6 @@
 		locked = 0
 		go_out()
 		return
-
-/// Start growing a human clone in the pod!
-/obj/machinery/resleeving/body_printer/proc/growclone(var/datum/dna2/record/R)
-	var/datum/mind/clonemind = locate(R.mind)
-	locked = TRUE
-	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src, R.dna.species)
-	occupant = H
-
-	if(!R.dna.real_name) // To prevent null names
-		R.dna.real_name = "clone ([rand(0,999)])"
-	H.real_name = R.dna.real_name
-	H.descriptors = R.body_descriptors
-
-	if(!R.dna)
-		H.dna = new /datum/dna()
-		H.dna.real_name = H.real_name
-	else
-		H.dna = R.dna
-	H.set_cloned_appearance()
-	return 1
-
-	// //Get the DNA and generate a new mob
-	// var/datum/dna2/record/R = current_project.legacy_dna
-	// var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
-
-	// //Set the name or generate one
-	// if(!R.dna.real_name)
-	// 	R.dna.real_name = "clone ([rand(0,999)])"
-	// H.real_name = R.dna.real_name
-
-	// //Apply DNA
-	// H.dna = R.dna.Clone()
-	// for(var/trait in H.dna.species_traits)
-	// 	if(!all_traits[trait])
-	// 		continue
-	// 	var/datum/trait/T = all_traits[trait]
-	// 	T.apply(H.species, H)
 
 // Empties all of the beakers from the cloning pod, used to refill it
 /obj/machinery/resleeving/body_printer/verb/empty_beakers()

@@ -265,6 +265,12 @@
 	// this is for legacy stuff; i don't even know what uses it
 	created_human.dna.base_species = backup.legacy_dna.dna.base_species
 
+	created_human.dna = backup.legacy_dna.dna.Clone()
+	created_human.real_name = created_human.dna.real_name = backup.legacy_dna.dna.real_name || created_human.real_name
+	created_human.descriptors = backup.legacy_dna.body_descriptors.Copy()
+
+	created_human.set_cloned_appearance()
+
 	// This is the weird part. We sorta obey 'can make organic/synthetic' but .. not really?
 	// We will never make a non-viable clone, basically. Or at least try not to. This still might, who knows.
 
