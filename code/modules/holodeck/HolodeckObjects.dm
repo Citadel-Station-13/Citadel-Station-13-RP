@@ -109,11 +109,6 @@
 	base_icon = 'icons/turf/flooring/asteroid.dmi'
 	initial_flooring = null
 
-/turf/simulated/floor/holofloor/desert/Initialize(mapload)
-	. = ..()
-	if(prob(10))
-		add_overlay("asteroid[rand(0,9)]")
-
 /obj/structure/holostool
 	name = "stool"
 	desc = "Apply butt."

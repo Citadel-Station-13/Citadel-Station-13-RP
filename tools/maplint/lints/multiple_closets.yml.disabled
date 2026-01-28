@@ -1,0 +1,3 @@
+﻿/obj/structure/closet:
+  banned_neighbors:
+    - /obj/structure/closet
