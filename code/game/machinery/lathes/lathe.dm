@@ -118,9 +118,9 @@
 /obj/machinery/lathe/examine(mob/user)
 	. = ..()
 	if(recycle)
-		. += SPAN_NOTICE("You can recycle items in this by dragging a deconstructable item to it. Some items can furthermore be deconstructed by just clicking on the lathe while being held inhand.")
+		. += span_notice("You can recycle items in this by dragging a deconstructable item to it. Some items can furthermore be deconstructed by just clicking on the lathe while being held inhand.")
 	if(!has_interface)
-		. += SPAN_NOTICE("This one doesn't seem to have an interface, and is likely controlled elsewhere.")
+		. += span_notice("This one doesn't seem to have an interface, and is likely controlled elsewhere.")
 
 /obj/machinery/lathe/drop_products(method)
 	. = ..()
@@ -179,10 +179,10 @@
 		var/used = stored_materials.insert_sheets(I)
 		var/obj/item/stack/material/M = I
 		if(used)
-			user.action_feedback(SPAN_NOTICE("You insert [used] sheets of [I]."), src)
+			user.action_feedback(span_notice("You insert [used] sheets of [I]."), src)
 			ui_controller?.ui_materials_update()
 		else
-			user.action_feedback(SPAN_WARNING("[src] can't hold any more of [I]."), src)
+			user.action_feedback(span_warning("[src] can't hold any more of [I]."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!isnull(insert_icon_state_specific?[M.material.id]))
 			flick(insert_icon_state_specific[M.material.id], src)
@@ -194,13 +194,13 @@
 		if(RC.is_open_container())
 			var/amt = RC.reagents?.trans_to_holder(stored_reagents, RC.amount_per_transfer_from_this)
 			if(amt)
-				user.action_feedback(SPAN_NOTICE("You transfer [amt] units of the solution from \the [I] to [src]."), src)
+				user.action_feedback(span_notice("You transfer [amt] units of the solution from \the [I] to [src]."), src)
 				ui_controller?.ui_reagents_update()
 			else if(!RC.reagents.total_volume)
-				user.action_feedback(SPAN_WARNING("[RC] is empty!"), src)
+				user.action_feedback(span_warning("[RC] is empty!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			else
-				user.action_feedback(SPAN_WARNING("[src] can't hold any more reagents!"), src)
+				user.action_feedback(span_warning("[src] can't hold any more reagents!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else if(isitem(I) && (user.a_intent == INTENT_HELP))
@@ -217,13 +217,13 @@
 
 /obj/machinery/lathe/proc/insert_item(obj/item/I, mob/user)
 	if(LAZYLEN(stored_items) >= items_max)
-		user.action_feedback(SPAN_WARNING("[src] can't hold [items_max? "any more" : ""]items for machining."), src)
+		user.action_feedback(span_warning("[src] can't hold [items_max? "any more" : ""]items for machining."), src)
 		return FALSE
 	if(!isnull(user))
 		if(user.is_in_inventory(I) && !user.transfer_item_to_loc(I, src))
-			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+			user.action_feedback(span_warning("[I] is stuck to your hand!"), src)
 			return FALSE
-		user.action_feedback(SPAN_NOTICE("You insert [I] into [src]."), src)
+		user.action_feedback(span_notice("You insert [I] into [src]."), src)
 	I.forceMove(src)
 	LAZYADD(stored_items, I)
 	ui_controller?.ui_ingredients_update()
@@ -238,19 +238,19 @@
 	recycle_eff *= recycle_efficiency
 	var/list/materials = I?.materials_base.Copy()
 	if(!isnull(user) && !user.temporarily_remove_from_inventory(I))
-		user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+		user.action_feedback(span_warning("[I] is stuck to your hand!"), src)
 		return FALSE
 	if(!length(materials))
-		user?.action_feedback(SPAN_NOTICE("You trivially recycle \the [I] in [src]."))
+		user?.action_feedback(span_notice("You trivially recycle \the [I] in [src]."))
 		qdel(I)
 		if(insert_icon_state)
 			flick(insert_icon_state, src)
 		return TRUE
 	if(!stored_materials?.has_space(materials, recycle_eff))
-		user?.action_feedback(SPAN_WARNING("[src] has no space to store the materials in [I]."), src)
+		user?.action_feedback(span_warning("[src] has no space to store the materials in [I]."), src)
 		return FALSE
 	stored_materials.add(materials, recycle_eff)
-	user?.action_feedback(SPAN_NOTICE("You recycle [I] in [src]."), src)
+	user?.action_feedback(span_notice("You recycle [I] in [src]."), src)
 	qdel(I)
 	if(insert_icon_state)
 		flick(insert_icon_state, src)
@@ -572,7 +572,7 @@
 	if(!user.is_holding(I) && !user.Reachability(I))
 		return ..()
 	if(I.item_flags & ITEM_NO_LATHE_DECONSTRUCT)
-		user.action_feedback(SPAN_WARNING("[I] cannot be deconstructed."), src)
+		user.action_feedback(span_warning("[I] cannot be deconstructed."), src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	recycle_item(I, user)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE

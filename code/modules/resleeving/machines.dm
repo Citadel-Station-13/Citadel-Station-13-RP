@@ -483,7 +483,7 @@
 			return
 		C.removePersonality()
 		sleevecards++
-		to_chat(user, SPAN_NOTICE("You store \the [C] in \the [src]."))
+		to_chat(user, span_notice("You store \the [C] in \the [src]."))
 
 /obj/machinery/transhuman/resleever/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user)
 	if(!istype(O))
@@ -497,13 +497,13 @@
 	if(!ishuman(user) && !isrobot(user))
 		return FALSE //not a borg or human
 	if(panel_open)
-		to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
+		to_chat(user, span_notice("Close the maintenance panel first."))
 		return FALSE //panel open
 
 	if(O.buckled)
 		return FALSE
 	if(O.has_buckled_mobs())
-		to_chat(user, SPAN_WARNING( "\The [O] has other entities attached to it. Remove them first."))
+		to_chat(user, span_warning( "\The [O] has other entities attached to it. Remove them first."))
 		return
 
 	if(put_mob(O))
@@ -539,7 +539,7 @@
 
 	//In case they already had a mind!
 	if(occupant && occupant.mind)
-		to_chat(occupant, SPAN_WARNING("You feel your mind being overwritten..."))
+		to_chat(occupant, span_warning("You feel your mind being overwritten..."))
 		log_and_message_admins("was resleeve-wiped from their body.",occupant.mind)
 		occupant.ghostize()
 
@@ -553,7 +553,7 @@
 	occupant.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.
 	if(MR.one_time)
 		var/how_long = round((world.time - MR.last_update)/10/60)
-		to_chat(occupant,SPAN_DANGER("Your mind backup was a 'one-time' backup. \
+		to_chat(occupant,span_danger("Your mind backup was a 'one-time' backup. \
 		You will not be able to remember anything since the backup, [how_long] minutes ago."))
 
 	//Re-supply a NIF if one was backed up with them.
@@ -576,9 +576,9 @@
 
 	//Inform them and make them a little dizzy.
 	if(confuse_amount + blur_amount <= 16)
-		to_chat(occupant, SPAN_NOTICE("You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. "))
+		to_chat(occupant, span_notice("You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. "))
 	else
-		to_chat(occupant, SPAN_WARNING("You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  "))
+		to_chat(occupant, span_warning("You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  "))
 
 	occupant.confused   = max(occupant.confused, confuse_amount)
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)
@@ -603,10 +603,10 @@
 
 /obj/machinery/transhuman/resleever/proc/put_mob(mob/living/carbon/human/M as mob)
 	if(!ishuman(M))
-		to_chat(usr, SPAN_WARNING("\The [src] cannot hold this!"))
+		to_chat(usr, span_warning("\The [src] cannot hold this!"))
 		return
 	if(occupant)
-		to_chat(usr, SPAN_WARNING("\The [src] is already occupied!"))
+		to_chat(usr, span_warning("\The [src] is already occupied!"))
 		return
 	M.stop_pulling()
 	M.forceMove(src)

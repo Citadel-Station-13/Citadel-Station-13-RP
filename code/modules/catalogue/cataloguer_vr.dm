@@ -28,27 +28,27 @@
 	set src in usr
 
 	if(busy)
-		to_chat(usr, SPAN_WARNING( "\The [src] is currently scanning something."))
+		to_chat(usr, span_warning( "\The [src] is currently scanning something."))
 		return
 	deployed = !(deployed)
 	if(deployed)
 		set_weight_class(WEIGHT_CLASS_NORMAL)
-		to_chat(usr, SPAN_NOTICE("You flip open \the [src]."))
+		to_chat(usr, span_notice("You flip open \the [src]."))
 	else
 		set_weight_class(WEIGHT_CLASS_SMALL)
-		to_chat(usr, SPAN_NOTICE("You close \the [src]."))
+		to_chat(usr, span_notice("You close \the [src]."))
 
 	update_full_icon()
 
 /obj/item/cataloguer/compact/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!deployed)
-		to_chat(user, SPAN_WARNING( "\The [src] is closed."))
+		to_chat(user, span_warning( "\The [src] is closed."))
 		return
 	return ..()
 
 /obj/item/cataloguer/compact/pulse_scan(mob/user)
 	if(!deployed)
-		to_chat(user, SPAN_WARNING( "\The [src] is closed."))
+		to_chat(user, span_warning( "\The [src] is closed."))
 		return
 	return ..()
 

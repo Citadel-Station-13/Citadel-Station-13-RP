@@ -12,5 +12,5 @@
 	src.channel = channel
 
 /datum/announcer/radio_broadcast/SendText(source, name, message, list/affected)
-	var/msg = "[SPAN_ALERT(name)]: [message]"
+	var/msg = "[span_alert(name)]: [message]"
 	GLOB.global_announcer.autosay(msg, source, channel, location.get_affected_levels())

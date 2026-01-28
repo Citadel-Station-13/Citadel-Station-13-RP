@@ -185,12 +185,12 @@ Buildable meters
 	var/initial_flags = initial(fakeA.pipe_flags)
 	for(var/obj/machinery/atmospherics/M in loc)
 		if((M.pipe_flags & initial_flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
-			e_args.chat_feedback(SPAN_WARNING("Something is hogging the tile!"), src)
+			e_args.chat_feedback(span_warning("Something is hogging the tile!"), src)
 			return TRUE
 		if((M.piping_layer != piping_layer) && !((M.pipe_flags | initial_flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
 			continue
 		if(M.get_init_dirs() & SSmachines.get_init_dirs(pipe_type, dir))	// matches at least one direction on either type of pipe
-			e_args.chat_feedback(SPAN_WARNING("There is already a pipe at that location!"), src)
+			e_args.chat_feedback(span_warning("There is already a pipe at that location!"), src)
 			return TRUE
 	// no conflicts found
 
@@ -199,16 +199,16 @@ Buildable meters
 	// TODO - Evaluate and remove the "need at least one thing to connect to" thing ~Leshana
 	// With how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment.
 	if (QDELETED(A))
-		e_args.chat_feedback(SPAN_WARNING("There's nothing to connect this pipe section to!"), src)
+		e_args.chat_feedback(span_warning("There's nothing to connect this pipe section to!"), src)
 		return TRUE
 	transfer_fingerprints_to(A)
 
 	playsound(src, I.tool_sound, 50, 1)
 	e_args.visible_feedback(
 		target = src,
-		visible = SPAN_NOTICE("[e_args.performer] fastens \the [src]."),
-		audible = SPAN_WARNING("You hear ratcheting."),
-		otherwise_self = SPAN_NOTICE("You fasten \the [src].")
+		visible = span_notice("[e_args.performer] fastens \the [src]."),
+		audible = span_warning("You hear ratcheting."),
+		otherwise_self = span_notice("You fasten \the [src].")
 	)
 
 	qdel(src)
@@ -272,11 +272,11 @@ Buildable meters
 			pipe = P
 			break
 	if(!pipe)
-		e_args.chat_feedback(SPAN_WARNING("You need to fasten it to a pipe!"), src)
+		e_args.chat_feedback(span_warning("You need to fasten it to a pipe!"), src)
 		return TRUE
 	new /obj/machinery/meter(loc, piping_layer)
 	playsound(src, I.tool_sound, 50, 1)
-	e_args.chat_feedback(SPAN_NOTICE("You fasten the meter to the pipe."), src)
+	e_args.chat_feedback(span_notice("You fasten the meter to the pipe."), src)
 	qdel(src)
 
 /obj/item/pipe_meter/dropped(mob/user, flags, atom/newLoc)

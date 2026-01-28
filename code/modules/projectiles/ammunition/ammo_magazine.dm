@@ -248,9 +248,9 @@
 		return
 	. = TRUE
 	if(!get_amount_remaining())
-		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), src)
+		e_args.chat_feedback(span_warning("[src] is empty."), src)
 		return
-	e_args.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
+	e_args.chat_feedback(span_notice("You remove a round from [src]."), src)
 	var/obj/item/ammo_casing/casing = pop(src)
 	e_args.performer.put_in_hands_or_drop(casing)
 
@@ -264,9 +264,9 @@
 		return
 	. |= CLICKCHAIN_DID_SOMETHING
 	if(!get_amount_remaining())
-		clickchain.chat_feedback(SPAN_WARNING("[src] is empty."), src)
+		clickchain.chat_feedback(span_warning("[src] is empty."), src)
 		return
-	clickchain.chat_feedback(SPAN_NOTICE("You remove a round from [src]."), src)
+	clickchain.chat_feedback(span_notice("You remove a round from [src]."), src)
 	var/obj/item/ammo_casing/casing = pop(src)
 	clickchain.performer.put_in_hands_or_drop(casing)
 
@@ -274,29 +274,29 @@
 	if(istype(I, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/casing = I
 		if(!isnull(why_cant_load_casing(casing)))
-			to_chat(user, SPAN_WARNING("[I] doesn't fit into [src]!"))
+			to_chat(user, span_warning("[I] doesn't fit into [src]!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!get_amount_missing())
-			to_chat(user, SPAN_WARNING("[src] is full."))
+			to_chat(user, span_warning("[src] is full."))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.temporarily_remove_from_inventory(casing, user = user))
-			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
+			to_chat(user, span_warning("[I] is stuck to your hand!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!push(casing))
-			to_chat(user, SPAN_WARNING("You fail to insert [I] into [src]!"))
+			to_chat(user, span_warning("You fail to insert [I] into [src]!"))
 			return
 		// todo: variable load sounds
 		playsound(src, load_sound, 50, 1)
-		to_chat(user, SPAN_NOTICE("You put [I] into [src]"))
+		to_chat(user, span_notice("You put [I] into [src]"))
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/enemy = I
 		var/amount_transferred = enemy.transfer_rounds_to(src, update_icon = TRUE)
 		if(!amount_transferred)
-			to_chat(user, SPAN_WARNING("You fail to transfer any rounds from [I] to [src]."))
+			to_chat(user, span_warning("You fail to transfer any rounds from [I] to [src]."))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		else
-			to_chat(user, SPAN_NOTICE("You transfer [amount_transferred] rounds from [I] to [src]."))
+			to_chat(user, span_notice("You transfer [amount_transferred] rounds from [I] to [src]."))
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else
 		return ..()
@@ -315,7 +315,7 @@
 	. = 0
 	var/needed
 	if((needed = get_amount_remaining()) >= ammo_max)
-		user?.action_feedback(SPAN_WARNING("[src] is full."), src)
+		user?.action_feedback(span_warning("[src] is full."), src)
 		return
 	needed = ammo_max - needed
 	// todo: de-instantiate unmodified rounds
@@ -331,9 +331,9 @@
 		++.
 	if(.)
 		update_icon()
-		user?.action_feedback(SPAN_NOTICE("You collect [.] rounds."), src)
+		user?.action_feedback(span_notice("You collect [.] rounds."), src)
 	else
-		user?.action_feedback(SPAN_WARNING("You fail to collect anything."), src)
+		user?.action_feedback(span_warning("You fail to collect anything."), src)
 
 /obj/item/ammo_magazine/update_icon(updates)
 	if(rendering_system == GUN_RENDERING_DISABLED)

@@ -44,7 +44,7 @@
 
 /datum/component/wielding/proc/signal_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"<b>Wield Item</b>\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/multihand_wield, " ")]to toggle wielding.")
+	examine_list += span_notice("[parent] seems to be able to be used with [hands] hands. Press your \"<b>Wield Item</b>\" keybind [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/multihand_wield, " ")]to toggle wielding.")
 
 /datum/component/wielding/proc/signal_dropped(datum/source, mob/user, flags, atom/newloc)
 	unwield()
@@ -75,7 +75,7 @@
 		var/obj/item/offhand/wielding/creating = wielder.allocate_offhand(/obj/item/offhand/wielding)
 		if(!creating)
 			wielder.action_feedback(
-				SPAN_WARNING("You don't have a free hand to hold [parent] with."),
+				span_warning("You don't have a free hand to hold [parent] with."),
 				target = parent,
 			)
 			QDEL_LIST(made)
@@ -86,7 +86,7 @@
 	var/obj/item/item_parent = parent
 	item_parent.item_flags |= ITEM_MULTIHAND_WIELDED
 	src.wielder = wielder
-	to_chat(src.wielder, SPAN_WARNING("You start wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
+	to_chat(src.wielder, span_warning("You start wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
 	post_wield(src.wielder, hands)
 
 /**
@@ -115,7 +115,7 @@
 	var/mob/unwielding = wielder
 	I.item_flags &= ~ITEM_MULTIHAND_WIELDED
 	if(wielder && !gcing)
-		to_chat(wielder, SPAN_WARNING("You stop wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
+		to_chat(wielder, span_warning("You stop wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
 	wielder = null
 	post_unwield(unwielding, hands)
 

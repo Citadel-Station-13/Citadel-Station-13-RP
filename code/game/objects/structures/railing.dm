@@ -184,11 +184,11 @@
 
 /obj/structure/railing/welder_act(obj/item/I, mob/user, flags, hint)
 	if(integrity >= integrity_max)
-		user.action_feedback(SPAN_WARNING("[src] is at full health."), src)
+		user.action_feedback(span_warning("[src] is at full health."), src)
 		return FALSE
 	if(!use_welder(I, user, flags, 2 SECONDS, 1, TOOL_USAGE_REPAIR | TOOL_USAGE_BUILDING_FRAMEWORK))
 		return FALSE
-	user.visible_action_feedback(SPAN_NOTICE("[user] repairs some damage to [src]."), src, MESSAGE_RANGE_CONSTRUCTION)
+	user.visible_action_feedback(span_notice("[user] repairs some damage to [src]."), src, MESSAGE_RANGE_CONSTRUCTION)
 	heal_integrity(integrity_max * 0.2)
 	return TRUE
 

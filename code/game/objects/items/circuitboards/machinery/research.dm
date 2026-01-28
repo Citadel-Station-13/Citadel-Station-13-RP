@@ -16,18 +16,18 @@
 	if(I.is_screwdriver())
 		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message(
-			SPAN_NOTICE("\The [user] adjusts the jumper on \the [src]'s access protocol pins."),
-			SPAN_NOTICE("You adjust the jumper on the access protocol pins."),
-			SPAN_HEAR("You hear a clicking sound."),
+			span_notice("\The [user] adjusts the jumper on \the [src]'s access protocol pins."),
+			span_notice("You adjust the jumper on the access protocol pins."),
+			span_hear("You hear a clicking sound."),
 		)
 		if(build_path == /obj/machinery/r_n_d/server/core)
 			name = T_BOARD("RD Console - Robotics")
 			build_path = /obj/machinery/r_n_d/server/robotics
-			to_chat(user, SPAN_NOTICE("Access protocols set to robotics."))
+			to_chat(user, span_notice("Access protocols set to robotics."))
 		else
 			name = T_BOARD("RD Console")
 			build_path = /obj/machinery/r_n_d/server/core
-			to_chat(user, SPAN_NOTICE("Access protocols set to default."))
+			to_chat(user, span_notice("Access protocols set to default."))
 	return
 
 /obj/item/circuitboard/destructive_analyzer

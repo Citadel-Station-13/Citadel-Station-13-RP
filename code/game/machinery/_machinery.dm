@@ -299,15 +299,15 @@
 	if(IsAdminGhost(user))
 		return FALSE
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("You don't have the dexterity to do this!"))
 		return TRUE
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 55)
-			visible_message(SPAN_WARNING("[H] stares cluelessly at [src]."))
+			visible_message(span_warning("[H] stares cluelessly at [src]."))
 			return TRUE
 		else if(prob(H.getBrainLoss()))
-			to_chat(user, SPAN_WARNING("You momentarily forget how to use [src]."))
+			to_chat(user, span_warning("You momentarily forget how to use [src]."))
 			return TRUE
 
 	if(clicksound && istype(user, /mob/living/carbon))
@@ -318,7 +318,7 @@
 /obj/machinery/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/storage/part_replacer))
 		if(isnull(default_part_replacement))
-			user.action_feedback(SPAN_WARNING("[src] doesn't support part replacement."), src)
+			user.action_feedback(span_warning("[src] doesn't support part replacement."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		default_part_replacement(user, I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -343,7 +343,7 @@
 
 		if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SIGHT)
 			if(user.is_blind())
-				to_chat(user, SPAN_WARNING("This machine requires sight to use."))
+				to_chat(user, span_warning("This machine requires sight to use."))
 				return FALSE
 /*
 		if(!Adjacent(user)) // Next make sure we are next to the machine unless we have telekinesis
@@ -366,7 +366,7 @@
 
 /obj/machinery/proc/state(var/msg)
 	for(var/mob/O in hearers(src, null))
-		O.show_message("[icon2html(thing = src, target = O)] [SPAN_NOTICE(msg)]", 2)
+		O.show_message("[icon2html(thing = src, target = O)] [span_notice(msg)]", 2)
 
 /obj/machinery/proc/ping(text=null)
 	if(!text)

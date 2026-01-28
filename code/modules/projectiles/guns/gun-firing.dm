@@ -66,7 +66,7 @@
 	if(world.time < next_fire_cycle)
 		if(max(last_cooldown_message, last_fire) + 0.75 SECONDS < world.time)
 			actor?.chat_feedback(
-				SPAN_WARNING("[src] is not ready to fire again!"),
+				span_warning("[src] is not ready to fire again!"),
 				target = src,
 			)
 			last_cooldown_message = world.time
@@ -112,22 +112,22 @@
 					if(1 to 15)
 						if(prob(50))
 							cycle.firing_actor.chat_feedback(
-								SPAN_WARNING("Your aim wavers slightly."),
+								span_warning("Your aim wavers slightly."),
 								target = src,
 							)
 					if(16 to 30)
 						cycle.firing_actor.chat_feedback(
-							SPAN_WARNING("Your aim wavers as you fire [src] with just one hand."),
+							span_warning("Your aim wavers as you fire [src] with just one hand."),
 							target = src,
 						)
 					if(31 to 45)
 						cycle.firing_actor.chat_feedback(
-							SPAN_WARNING("You have trouble keeping [src] on target with just one hand."),
+							span_warning("You have trouble keeping [src] on target with just one hand."),
 							target = src,
 						)
 					if(46 to INFINITY)
 						cycle.firing_actor.chat_feedback(
-							SPAN_WARNING("You have struggle to keep [src] on target with just one hand!"),
+							span_warning("You have struggle to keep [src] on target with just one hand!"),
 							target = src,
 						)
 
@@ -287,9 +287,9 @@
 	SHOULD_CALL_PARENT(TRUE)
 	cycle.firing_actor?.visible_feedback(
 		range = silenced ? MESSAGE_RANGE_COMBAT_SILENCED : MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_DANGER("[cycle.firing_actor.performer] fires [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
-		audible = SPAN_WARNING("You hear a [fire_sound_text]"),
-		otherwise_self = SPAN_WARNING("You fire [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
+		visible = span_danger("[cycle.firing_actor.performer] fires [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
+		audible = span_warning("You hear a [fire_sound_text]"),
+		otherwise_self = span_warning("You fire [src][cycle.firing_flags & GUN_FIRING_POINT_BLANK ? " point blank at [cycle.original_target]" : ""][cycle.firing_flags & GUN_FIRING_BY_REFLEX ? " by reflex" : ""]!"),
 	)
 
 /**
@@ -326,7 +326,7 @@
 /obj/item/gun/proc/default_click_empty(datum/gun_firing_cycle/cycle)
 	var/mob/holding_us = get_worn_mob()
 	if(holding_us)
-		holding_us.visible_message(SPAN_WARNING("*click click*"), SPAN_WARNING("*click*"))
+		holding_us.visible_message(span_warning("*click click*"), span_warning("*click*"))
 	else if(isturf(loc))
-		visible_message(SPAN_WARNING("*click click*"), SPAN_WARNING("*click*"))
+		visible_message(span_warning("*click click*"), span_warning("*click*"))
 	playsound(src, 'sound/weapons/empty.ogg', 75, TRUE)

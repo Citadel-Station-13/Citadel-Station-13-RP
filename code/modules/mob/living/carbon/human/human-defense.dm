@@ -14,7 +14,7 @@
 		var/obj/item/trying_to_catch = AM
 		if(TT.speed <= THROW_SPEED_CATCHABLE && can_catch(trying_to_catch) && put_in_active_hand(trying_to_catch))
 			visible_message(
-				SPAN_WARNING("[src] catches [trying_to_catch]!"),
+				span_warning("[src] catches [trying_to_catch]!"),
 			)
 			throw_mode_off()
 			return COMPONENT_THROW_HIT_NEVERMIND

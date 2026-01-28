@@ -32,7 +32,7 @@
 	read_global_data(S, io_errors)
 	// perform migrations
 	if(savefile_version < SAVEFILE_VERSION_MIN)
-		io_errors += SPAN_DANGER("Your savefile version was [savefile_version], below minimum [SAVEFILE_VERSION_MIN]; your savefile will now be deleted and recreated.")
+		io_errors += span_danger("Your savefile version was [savefile_version], below minimum [SAVEFILE_VERSION_MIN]; your savefile will now be deleted and recreated.")
 		// todo: wipe
 		savefile_version = SAVEFILE_VERSION_MAX
 	else if(savefile_version < SAVEFILE_VERSION_MAX)
@@ -149,7 +149,7 @@
 	if(!isnum(current_version))
 		current_version = CHARACTER_VERSION_LEGACY
 	if(current_version < CHARACTER_VERSION_MIN)
-		io_errors += SPAN_DANGER("Your character version was [current_version], below minimum [CHARACTER_VERSION_MIN]; your slot will now be reset.")
+		io_errors += span_danger("Your character version was [current_version], below minimum [CHARACTER_VERSION_MIN]; your slot will now be reset.")
 		// todo: wipe slot
 		current_version = CHARACTER_VERSION_MAX
 	else if(current_version < CHARACTER_VERSION_MAX)

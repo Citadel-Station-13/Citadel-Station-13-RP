@@ -68,12 +68,12 @@
 	auto_set_particle_array(get_next_particle_array())
 	if(modular_particle_array_active)
 		actor.chat_feedback(
-			SPAN_NOTICE("You set [src] to use its [modular_particle_array_active.selection_name] emitter."),
+			span_notice("You set [src] to use its [modular_particle_array_active.selection_name] emitter."),
 			target = src,
 		)
 	else
 		actor.chat_feedback(
-			SPAN_WARNING("[src] has no particle emitters installed, or all of them are disabled by safeties!"),
+			span_warning("[src] has no particle emitters installed, or all of them are disabled by safeties!"),
 			target = src,
 		)
 	playsound(src, selector_sound, 50, TRUE)

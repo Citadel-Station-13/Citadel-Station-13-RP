@@ -22,7 +22,7 @@
 	if (machine)
 		machine.console = src
 	else
-		log_debug(SPAN_DEBUG("Ore processing machine console at [src.x], [src.y], [src.z] [ADMIN_JMP(src)] could not find its machine!"))
+		log_debug(span_debug("Ore processing machine console at [src.x], [src.y], [src.z] [ADMIN_JMP(src)] could not find its machine!"))
 		qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/Destroy()

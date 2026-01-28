@@ -98,7 +98,7 @@ var/datum/antagonist/wizard/wizards
 		break
 	if(!survivor)
 		feedback_set_details("round_end_result","loss - wizard killed")
-		to_chat(world, SPAN_ANNOUNCE("The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed by the crew!"))
+		to_chat(world, span_announce("The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed by the crew!"))
 
 /**
  * To batch-remove wizard spells. Linked to mind.dm.
@@ -126,12 +126,12 @@ var/datum/antagonist/wizard/wizards
  */
 /mob/living/carbon/human/wearing_wiz_garb()
 	if(!is_wiz_garb(src.wear_suit))
-		to_chat(src, SPAN_WARNING("I don't feel strong enough without my robe."))
+		to_chat(src, span_warning("I don't feel strong enough without my robe."))
 		return FALSE
 	if(!is_wiz_garb(src.shoes))
-		to_chat(src, SPAN_WARNING("I don't feel strong enough without my sandals."))
+		to_chat(src, span_warning("I don't feel strong enough without my sandals."))
 		return FALSE
 	if(!is_wiz_garb(src.head))
-		to_chat(src, SPAN_WARNING("I don't feel strong enough without my hat."))
+		to_chat(src, span_warning("I don't feel strong enough without my hat."))
 		return FALSE
 	return TRUE

@@ -10,7 +10,7 @@
 		using_module = selected_module
 	if(!using_module)
 		clickchain.chat_feedback(
-			SPAN_WARNING("None of your hardsuit's modules are currently the active module."),
+			span_warning("None of your hardsuit's modules are currently the active module."),
 			target = src,
 		)
 		return NONE
@@ -18,7 +18,7 @@
 	if(clickchain.performer != wearer)
 		if(!ai_can_move_suit(clickchain.performer, check_user_module = TRUE))
 			clickchain.chat_feedback(
-				SPAN_WARNING("The hardsuit rejects your input."),
+				span_warning("The hardsuit rejects your input."),
 				target = src,
 			)
 			return NONE

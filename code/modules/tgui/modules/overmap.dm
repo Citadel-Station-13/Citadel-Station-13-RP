@@ -52,7 +52,7 @@
 
 /datum/tgui_module_old/ship/proc/look(var/mob/user)
 	if(!linked)
-		to_chat(user, SPAN_DANGER("No linked ship. Something's wrong."))
+		to_chat(user, span_danger("No linked ship. Something's wrong."))
 		return
 	user.reset_perspective(linked)
 	var/list/view_size = decode_view_size(world.view)

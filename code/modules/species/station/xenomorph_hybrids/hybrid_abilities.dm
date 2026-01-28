@@ -57,7 +57,7 @@
 	. = ..()
 	var/mob/living/carbon/human/O = owner
 	if(istype(O))
-		to_chat(O, SPAN_NOTICEALIEN("We begin to mend our wounds."))
+		to_chat(O, span_noticealien("We begin to mend our wounds."))
 		O.active_regen = TRUE
 
 	if (O.getBruteLoss() == 0) //If we have no flat damage remaining, fix internal issues, and not running around
@@ -65,7 +65,7 @@
 			var/obj/item/organ/external/E = O.organs_by_name[limb_type]
 			if((E.status & ORGAN_BROKEN))
 				E.status &= ~ORGAN_BROKEN
-				to_chat(O, SPAN_NOTICEALIEN("You mend the bone in your [E]"))
+				to_chat(O, span_noticealien("You mend the bone in your [E]"))
 				return//fix one then stop, trigger again to mend more
 
 /datum/ability/species/xenomorph_hybrid/sneak

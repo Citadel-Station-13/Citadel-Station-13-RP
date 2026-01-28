@@ -9,7 +9,7 @@
 /datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force, suppressed)
 	if(!force && is_locked(actor.performer))
 		actor.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
+			msg = span_warning("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE
@@ -309,7 +309,7 @@
 		var/item_volume = item.get_weight_volume()
 		// check safety
 		if(--safety <= 0)
-			to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
+			to_chat(user, span_warning("Some items in this storage have been truncated for performance reasons."))
 			break
 		var/item_width_px = max(VOLUMETRIC_STORAGE_MINIMUM_PIXELS_PER_ITEM, item_volume * effective_pixel_volume_ratio)
 		var/space_left_px = rendering_width_px_limit - iteration_width
@@ -318,7 +318,7 @@
 		if(space_left_px < (item_width_px * 0.75))
 			// check if we're out of rows
 			if(current_row >= STORAGE_UI_MAX_ROWS)
-				to_chat(user, SPAN_WARNING("Some items in this storage have been truncated for performance reasons."))
+				to_chat(user, span_warning("Some items in this storage have been truncated for performance reasons."))
 				break
 			// do final row stuff
 			if(iteration_width > 0)

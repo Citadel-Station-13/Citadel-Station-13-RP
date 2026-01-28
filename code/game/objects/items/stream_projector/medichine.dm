@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 
 /obj/item/stream_projector/medichine/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_RED("[src] loses some efficiency based on its distance to a target.")
+	. += span_red("[src] loses some efficiency based on its distance to a target.")
 	if(isnull(inserted_cartridge))
 		. += "[src] has nothing loaded."
 	else
@@ -61,10 +61,10 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 /obj/item/stream_projector/medichine/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(user.is_holding_inactive(src))
 		if(isnull(inserted_cartridge))
-			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)
+			user.action_feedback(span_warning("[src] has no vial loaded."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.put_in_hands_or_drop(inserted_cartridge)
-		user.action_feedback(SPAN_NOTICE("You remove [inserted_cartridge] from [src]."), src)
+		user.action_feedback(span_notice("You remove [inserted_cartridge] from [src]."), src)
 		var/obj/item/medichine_cell/old_cell = inserted_cartridge
 		inserted_cartridge = null
 		playsound(src, 'sound/weapons/empty.ogg', 50, FALSE)
@@ -77,15 +77,15 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	if(istype(I, /obj/item/medichine_cell))
 		var/obj/item/medichine_cell/cell = I
 		if(!user.transfer_item_to_loc(cell, src))
-			user.action_feedback(SPAN_WARNING("[cell] is stuck to your hand!"), src)
+			user.action_feedback(span_warning("[cell] is stuck to your hand!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/medichine_cell/old_cell = inserted_cartridge
 		inserted_cartridge = cell
 		if(!isnull(old_cell))
-			user.action_feedback(SPAN_NOTICE("You quickly swap [old_cell] with [cell]."), src)
+			user.action_feedback(span_notice("You quickly swap [old_cell] with [cell]."), src)
 			user.put_in_hands_or_drop(old_cell)
 		else
-			user.action_feedback(SPAN_NOTICE("You insert [cell] into [src]."), src)
+			user.action_feedback(span_notice("You insert [cell] into [src]."), src)
 		playsound(src, 'sound/weapons/autoguninsert.ogg', 50, FALSE)
 		update_icon()
 		on_cell_swap(old_cell, cell)
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	var/datum/medichine_cell/effective_cell = effective_cell_datum()
 	if(isnull(effective_cell))
 		actor.chat_feedback(
-			SPAN_WARNING("There's no medichines loaded."),
+			span_warning("There's no medichines loaded."),
 			target = src,
 		)
 		return FALSE
@@ -105,14 +105,14 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	if(get_dist(where_we_are, where_they_are) > maximum_distance)
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("That is out of range."),
+				span_warning("That is out of range."),
 				target = src,
 			)
 		return FALSE
 	if(get_dist(where_we_are, where_they_are) <= 1 && !where_we_are.TurfAdjacency(where_they_are))
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("Something is in the way!"),
+				span_warning("Something is in the way!"),
 				target = src,
 			)
 		return FALSE
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 	if(!isnull(blocking))
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("Something is in the way!"),
+				span_warning("Something is in the way!"),
 				target = src,
 			)
 		return FALSE
@@ -391,7 +391,7 @@ GLOBAL_LIST_EMPTY(medichine_cell_datums)
 
 /obj/item/medichine_cell/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("Its gauge reads [CEILING(volume, 0.01)]/[max_volume].")
+	. += span_notice("Its gauge reads [CEILING(volume, 0.01)]/[max_volume].")
 
 /obj/item/medichine_cell/update_icon(updates)
 	cut_overlays()

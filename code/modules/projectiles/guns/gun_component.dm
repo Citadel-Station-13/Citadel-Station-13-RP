@@ -141,7 +141,7 @@
 	var/use_name = name
 	var/list/summarized = summarize_bullet_points()
 	if(!length(summarized))
-		return SPAN_TOOLTIP(desc, use_name)
+		return span_tooltip(desc, use_name)
 	var/list/transformed = list()
 	for(var/string in summarized)
 		transformed += "<li>[string]</li>"
@@ -149,4 +149,4 @@
 		[desc]
 		[jointext(transformed, "")]
 	"}
-	return SPAN_TOOLTIP(use_tooltip, use_name)
+	return span_tooltip(use_tooltip, use_name)

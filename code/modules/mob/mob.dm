@@ -378,7 +378,7 @@
 		return
 
 	if(is_blind()) //blind people see things differently (through touch)
-		to_chat(src, SPAN_WARNING("Something is there but you can't see it!"))
+		to_chat(src, span_warning("Something is there but you can't see it!"))
 		return
 
 	face_atom(A)
@@ -387,7 +387,7 @@
 			if(M == src || M.is_blind())
 				continue
 			// if(M.client && M.client.get_preference_toggle(/datum/client_preference/examine_look))
-			to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
+			to_chat(M, span_tinynotice("<b>\The [src]</b> looks at \the [A]."))
 
 	do_examinate(A)
 
@@ -440,7 +440,7 @@
 	// 			//cooldown handled in the emote.
 	// 			our_carbon.emote("point [pointing_at]")
 	// 		else
-	// 			to_chat(src, SPAN_WARNING("You need to wait before pointing again!"))
+	// 			to_chat(src, span_warning("You need to wait before pointing again!"))
 	// 			return FALSE
 
 	point_at(pointing_at, TRUE)
@@ -632,7 +632,7 @@
 	SSplaytime.queue_playtimes(client)
 
 	if(stat != DEAD)
-		to_chat(usr, SPAN_BOLDNOTICE("You must be dead to use this!"))
+		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
 
 	// Final chance to abort "respawning"

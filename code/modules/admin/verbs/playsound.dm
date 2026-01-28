@@ -77,8 +77,8 @@
 	if(length(web_sound_input))
 		web_sound_input = trim(web_sound_input)
 		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(src, SPAN_BOLDWARNING("Non-http(s) URIs are not allowed."), confidential = TRUE)
-			to_chat(src, SPAN_WARNING("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
+			to_chat(src, span_boldwarning("Non-http(s) URIs are not allowed."), confidential = TRUE)
+			to_chat(src, span_warning("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
 			return
 		web_sound(src.mob, web_sound_input)
 	else
@@ -91,7 +91,7 @@
 
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(user, SPAN_BOLDWARNING("yt-dlp was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(user, span_boldwarning("yt-dlp was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
 	var/web_sound_url = ""
@@ -105,15 +105,15 @@
 		var/stdout = output[SHELLEO_STDOUT]
 		var/stderr = output[SHELLEO_STDERR]
 		if(errorlevel)
-			to_chat(user, SPAN_BOLDWARNING("yt-dlp URL retrieval FAILED:"), confidential = TRUE)
-			to_chat(user, SPAN_WARNING("[stderr]"), confidential = TRUE)
+			to_chat(user, span_boldwarning("yt-dlp URL retrieval FAILED:"), confidential = TRUE)
+			to_chat(user, span_warning("[stderr]"), confidential = TRUE)
 			return
 		var/list/data
 		try
 			data = json_decode(stdout)
 		catch(var/exception/e)
-			to_chat(user, SPAN_BOLDWARNING("yt-dlp JSON parsing FAILED:"), confidential = TRUE)
-			to_chat(user, SPAN_WARNING("[e]: [stdout]"), confidential = TRUE)
+			to_chat(user, span_boldwarning("yt-dlp JSON parsing FAILED:"), confidential = TRUE)
+			to_chat(user, span_warning("[e]: [stdout]"), confidential = TRUE)
 			return
 		if (data["url"])
 			web_sound_url = data["url"]
@@ -146,16 +146,16 @@
 		switch(anon)
 			if("Yes")
 				if(res == "Yes")
-					to_chat(world, SPAN_BOLDANNOUNCE("[user.key] played: [webpage_url]"), confidential = TRUE)
+					to_chat(world, span_boldannounce("[user.key] played: [webpage_url]"), confidential = TRUE)
 				else
-					to_chat(world, SPAN_BOLDANNOUNCE("[user.key] played a sound"), confidential = TRUE)
+					to_chat(world, span_boldannounce("[user.key] played a sound"), confidential = TRUE)
 			if("No")
 				if(res == "Yes")
-					to_chat(world, SPAN_BOLDANNOUNCE("An admin played: [webpage_url]"), confidential = TRUE)
+					to_chat(world, span_boldannounce("An admin played: [webpage_url]"), confidential = TRUE)
 			if("Cancel", null)
 				return
 		if(credit)
-			to_chat(world, SPAN_BOLDANNOUNCE(credit), confidential = TRUE)
+			to_chat(world, span_boldannounce(credit), confidential = TRUE)
 		// SSblackbox.record_feedback("nested tally", "played_url", 1, list("[user.ckey]", "[input]"))
 		log_admin("[key_name(user)] played web sound: [input]")
 		message_admins("[key_name(user)] played web sound: [input]")
@@ -168,7 +168,7 @@
 		stop_web_sounds = TRUE
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
 		tgui_alert(user, "The media provider returned a content URL that isn't using the HTTP or HTTPS protocol. This is a security risk and the sound will not be played.", "Security Risk", list("OK"))
-		to_chat(user, SPAN_BOLDWARNING("BLOCKED: Content URL not using HTTP(S) Protocol!"), confidential = TRUE)
+		to_chat(user, span_boldwarning("BLOCKED: Content URL not using HTTP(S) Protocol!"), confidential = TRUE)
 
 		return
 	if(web_sound_url || stop_web_sounds)

@@ -21,13 +21,13 @@
 	. = ..()
 
 	if(SSmapping.level_has_trait(get_z(owner), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
-		to_chat(user, SPAN_WARNING("Sonar is being jammed on this level."))
+		to_chat(user, span_warning("Sonar is being jammed on this level."))
 		return
 
 	owner.visible_message(
-		SPAN_WARNING("[owner] emits a quiet click."),
-		SPAN_WARNING("You emit a quiet click."),
-		SPAN_WARNING("You hear a quiet, high-pitched click.")
+		span_warning("[owner] emits a quiet click."),
+		span_warning("You emit a quiet click."),
+		span_warning("You hear a quiet, high-pitched click.")
 	)
 	owner.self_perspective.set_plane_visible(/atom/movable/screen/plane_master/sonar, "sonar_pulse")
 	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
@@ -81,15 +81,15 @@
 /datum/ability/species/toggle_agility/on_enable()
 	. = ..()
 	owner.visible_message(
-	SPAN_NOTICE("[owner] seems to gain a lithe, agile gait."),
-	SPAN_NOTICE("You focus on your movement. You're able to walk over tables and similar easily.")
+	span_notice("[owner] seems to gain a lithe, agile gait."),
+	span_notice("You focus on your movement. You're able to walk over tables and similar easily.")
 	)
 	owner.pass_flags |= ATOM_PASS_TABLE
 
 /datum/ability/species/toggle_agility/on_disable()
 	. = ..()
 	owner.visible_message(
-	SPAN_NOTICE("[owner] seems to relax their stance, no longer seeming as agile."),
-	SPAN_NOTICE("Your legs tire. Tables are an obstacle once more.")
+	span_notice("[owner] seems to relax their stance, no longer seeming as agile."),
+	span_notice("Your legs tire. Tables are an obstacle once more.")
 	)
 	owner.pass_flags &= ~ATOM_PASS_TABLE

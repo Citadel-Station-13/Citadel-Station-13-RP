@@ -122,7 +122,7 @@
 				blocking = "[O]"
 				break
 	if(failed)
-		to_chat(usr, SPAN_WARNING("[blocking? "[blocking] is in the way!" : "It won't budge."]"))
+		to_chat(usr, span_warning("[blocking? "[blocking] is in the way!" : "It won't budge."]"))
 	else
 		unflip()
 

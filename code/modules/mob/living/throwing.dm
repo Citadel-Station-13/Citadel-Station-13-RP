@@ -9,7 +9,7 @@
 	if(!can_throw_item(I, target))
 		return FALSE
 	if(is_in_inventory(I) && !can_unequip(I))
-		to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
+		to_chat(src, span_warning("You fail to throw [I] at [target]."))
 		return FALSE
 	// TODO: this entire override system is a bit complicated.
 	//       can we make it better?
@@ -19,19 +19,19 @@
 	// overhand stuff
 	if(overhand)
 		var/delay = throwing.overhand_throw_delay(src)
-		visible_message(SPAN_WARNING("[src] starts preparing an overhand throw!"))
+		visible_message(span_warning("[src] starts preparing an overhand throw!"))
 		if(!do_after(src, delay))
 			return FALSE
 	// make sure they didn't bamboozle us.
 	if(QDELETED(throwing))
-		to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
+		to_chat(src, span_warning("You fail to throw [I] at [target]."))
 		return FALSE
 	// make sure there's no special behavior
 	if(!I.throw_resolve_override(throwing, src))
 		// drop item
 		if(is_in_inventory(I))
 			if(!drop_item_to_ground(I, INV_OP_SUPPRESS_SOUND))
-				to_chat(src, SPAN_WARNING("You fail to throw [I] at [target]."))
+				to_chat(src, span_warning("You fail to throw [I] at [target]."))
 				return FALSE
 		else
 			// just move it to our loc
@@ -45,9 +45,9 @@
 	// point of no return
 	// special: make message first
 	if(overhand)
-		visible_message(SPAN_WARNING("[src] throws [throwing] overhand."))
+		visible_message(span_warning("[src] throws [throwing] overhand."))
 	else
-		visible_message(SPAN_WARNING("[src] has thrown [throwing]."))
+		visible_message(span_warning("[src] has thrown [throwing]."))
 	I.throw_resolve_finalize(throwing, src)
 	// if the thing deleted itself, we didn't fail, it disappeared
 	if(QDELETED(throwing))

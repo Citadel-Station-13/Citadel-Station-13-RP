@@ -36,16 +36,16 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 /obj/item/extraction_pack/examine()
 	. = ..()
-	. += SPAN_INFOPLAIN("It has [uses_left] use\s remaining.")
+	. += span_infoplain("It has [uses_left] use\s remaining.")
 
 	var/obj/structure/extraction_point/beacon = beacon_ref?.resolve()
 
 	if(isnull(beacon))
 		beacon_ref = null
-		. += SPAN_INFOPLAIN("It is not linked to a beacon.")
+		. += span_infoplain("It is not linked to a beacon.")
 		return
 
-	. += SPAN_INFOPLAIN("It is linked to [beacon.name].")
+	. += span_infoplain("It is linked to [beacon.name].")
 
 /obj/item/extraction_pack/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 			balloon_alert(user, "not outdoors!")
 			return
 	if(!safe_for_living_creatures && check_for_living_mobs(thing))
-		to_chat(user, SPAN_WARNING("[src] is not safe for use with living creatures, they wouldn't survive the trip back!"))
+		to_chat(user, span_warning("[src] is not safe for use with living creatures, they wouldn't survive the trip back!"))
 		balloon_alert(user, "not safe!")
 		return
 	if(thing.move_resist > max_force_fulton)
@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 	if(isliving(thing))
 		var/mob/living/creature = thing
 		if(creature.mind)
-			to_chat(thing, SPAN_USERDANGER("You are being extracted! Stand still to proceed."))
+			to_chat(thing, span_userdanger("You are being extracted! Stand still to proceed."))
 
 	if(!do_after(user, 5 SECONDS, target = thing))
 		return

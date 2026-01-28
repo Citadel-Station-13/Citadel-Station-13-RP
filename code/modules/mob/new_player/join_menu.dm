@@ -192,12 +192,12 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	. = ..()
 	var/mob/new_player/N = usr
 	if(!istype(N))
-		to_chat(usr, SPAN_DANGER("You are not in the lobby."))
+		to_chat(usr, span_danger("You are not in the lobby."))
 		return
 	switch(action)
 		if("join")
 			if(!SSticker || !SSticker.IsRoundInProgress())
-				to_chat(usr, SPAN_DANGER("The round is either not ready, or has already finished..."))
+				to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
 				return
 			if(!AttemptQueue(usr))
 				return
@@ -207,25 +207,25 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 			switch(params["type"])
 				if("job")
 					if(!config_legacy.enter_allowed)
-						to_chat(usr, SPAN_NOTICE("There is an administrative lock on entering the game."))
+						to_chat(usr, span_notice("There is an administrative lock on entering the game."))
 						return
 					var/datum/prototype/role/job/J = RSroles.legacy_job_by_id(id)
 					if(!J)
-						to_chat(usr, SPAN_WARNING("Failed to find job [id]."))
+						to_chat(usr, span_warning("Failed to find job [id]."))
 						return
-					to_chat(usr, SPAN_NOTICE("Attempting to latespawn as [id] ([J.title])."))
+					to_chat(usr, span_notice("Attempting to latespawn as [id] ([J.title])."))
 					N.AttemptLateSpawn(J.title)	// todo: remove shim
 				if("ghostrole")
 					var/datum/prototype/role/ghostrole/R = get_ghostrole_datum(id)
 					if(!R)
-						to_chat(usr, SPAN_WARNING("Failed to find ghostrole [R]"))
+						to_chat(usr, span_warning("Failed to find ghostrole [R]"))
 						return
-					to_chat(usr, SPAN_WARNING("Attempting to join as ghostrole [id] ([R.name])."))
+					to_chat(usr, span_warning("Attempting to join as ghostrole [id] ([R.name])."))
 					N.close_spawn_windows()
 					var/client/C = N.client
 					var/error = R.AttemptSpawn(C)
 					if(istext(error))
-						to_chat(C, SPAN_DANGER("[error]"))
+						to_chat(C, span_danger("[error]"))
 		if("queue")
 			return
 			// AttemptQueue(usr)
@@ -241,16 +241,16 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		if(queue_position == 1)
 			if(living_player_count() < CONFIG_GET(number/hard_popcap))
 				return TRUE
-			to_chat(usr, SPAN_NOTICE("You are next in line to join the game. You will be notified when a slot opens up."))
+			to_chat(usr, span_notice("You are next in line to join the game. You will be notified when a slot opens up."))
 			return FALSE
 		else
-			to_chat(usr, SPAN_DANGER("[CONFIG_GET(string/hard_popcap_message)]"))
+			to_chat(usr, span_danger("[CONFIG_GET(string/hard_popcap_message)]"))
 			if(queue_position)
-				to_chat(usr, SPAN_NOTICE("There are [queue_position-1] players in front of you in the queue to join the game."))
+				to_chat(usr, span_notice("There are [queue_position-1] players in front of you in the queue to join the game."))
 				return FALSE
 			else
 				SSticker.queued_players += usr
-				to_chat(usr, SPAN_NOTICE("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
+				to_chat(usr, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
 				return FALSE
 */
 

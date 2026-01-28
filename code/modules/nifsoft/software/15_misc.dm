@@ -21,8 +21,8 @@
 				deactivate()
 			return FALSE
 
-		H.visible_message(SPAN_WARNING("Thin snakelike tendrils grow from [H] and connect to \the [apc]."), \
-			SPAN_NOTICE("Thin snakelike tendrils grow from you and connect to \the [apc]."))
+		H.visible_message(span_warning("Thin snakelike tendrils grow from [H] and connect to \the [apc]."), \
+			span_notice("Thin snakelike tendrils grow from you and connect to \the [apc]."))
 
 /datum/nifsoft/apc_recharge/deactivate(var/force = FALSE)
 	if((. = ..()))
@@ -39,8 +39,8 @@
 			return TRUE
 		else
 			nif.notify("APC charging has ended.")
-			H.visible_message(SPAN_WARNING("[H]'s snakelike tendrils whip back into their body from \the [apc]."), \
-				SPAN_NOTICE("The APC connector tendrils return to your body."))
+			H.visible_message(span_warning("[H]'s snakelike tendrils whip back into their body from \the [apc]."), \
+				span_notice("The APC connector tendrils return to your body."))
 			deactivate()
 			return FALSE
 
@@ -140,22 +140,22 @@
 		var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num
 
 		if (!ISINRANGE(new_size,25,200))
-			to_chat(nif.human, SPAN_NOTICE("The safety features of the NIF Program prevent you from choosing this size."))
+			to_chat(nif.human, span_notice("The safety features of the NIF Program prevent you from choosing this size."))
 			return
 		else
 			nif.human.resize(new_size/100)
-			to_chat(nif.human, SPAN_NOTICE("You set the size to [new_size]%"))
+			to_chat(nif.human, span_notice("You set the size to [new_size]%"))
 
-		nif.human.visible_message(SPAN_WARNING("Swirling grey mist envelops [nif.human] as they change size!"), SPAN_NOTICE("Swirling streams of nanites wrap around you as you change size!"))
+		nif.human.visible_message(span_warning("Swirling grey mist envelops [nif.human] as they change size!"), span_notice("Swirling streams of nanites wrap around you as you change size!"))
 		nif.human.update_icons() //Apply matrix transform asap
 		log_game("[key_name(nif.human)] was resized to [new_size / 100] scale via nifsoft.")
 
 		if (new_size < 75)
-			to_chat(nif.human, SPAN_WARNING("You get dizzy as the floor rushes up to you!"))
+			to_chat(nif.human, span_warning("You get dizzy as the floor rushes up to you!"))
 		else if(new_size > 125)
-			to_chat(nif.human, SPAN_WARNING("You feel disoriented as the floor falls away from you!"))
+			to_chat(nif.human, span_warning("You feel disoriented as the floor falls away from you!"))
 		else
-			to_chat(nif.human, SPAN_WARNING("You feel sick as your mass is rearranged!"))
+			to_chat(nif.human, span_warning("You feel sick as your mass is rearranged!"))
 		spawn(0)
 			deactivate()
 

@@ -49,9 +49,9 @@
 
 /obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")
+	. += span_notice("[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)
-		. += SPAN_NOTICE("Current charge: [charging.charge] / [charging.max_charge]")
+		. += span_notice("Current charge: [charging.charge] / [charging.max_charge]")
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(machine_stat & BROKEN)
@@ -59,11 +59,11 @@
 
 	if(istype(W, /obj/item/cell) && anchored)
 		if(!object_cell_slot_accepts(W))
-			to_chat(user, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
+			to_chat(user, span_warning("\The [src] isn't fitted for that type of cell."))
 			return
 
 		if(charging)
-			to_chat(user, SPAN_WARNING("There is already [charging] in [src]."))
+			to_chat(user, span_warning("There is already [charging] in [src]."))
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
@@ -78,7 +78,7 @@
 		update_icon()
 	else if(W.is_wrench())
 		if(charging)
-			to_chat(user, SPAN_WARNING("Remove [charging] first!"))
+			to_chat(user, span_warning("Remove [charging] first!"))
 			return
 
 		anchored = !anchored
@@ -160,7 +160,7 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, SPAN_NOTICE("You assemble and deploy the cell charger in place."))
+	to_chat(user, span_notice("You assemble and deploy the cell charger in place."))
 	playsound(user, 'sound/machines/click.ogg', 50, TRUE)
 	var/obj/machinery/cell_charger/C = new(user.loc)
 	C.add_fingerprint(user)

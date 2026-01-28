@@ -15,7 +15,7 @@
 
 	var/turf/T = get_turf(usr)
 	if(!T || !(T.z in (LEGACY_MAP_DATUM).player_levels))
-		to_chat(usr, SPAN_WARNING("<b>Unable to establish a connection</b>: You're too far away from the station!"))
+		to_chat(usr, span_warning("<b>Unable to establish a connection</b>: You're too far away from the station!"))
 		return FALSE
 
 	switch(action)
@@ -32,7 +32,7 @@
 	var/list/map_levels = (LEGACY_MAP_DATUM).get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
 
 	if(!map_levels.len)
-		to_chat(user, SPAN_WARNING("The crew monitor doesn't seem like it'll work here."))
+		to_chat(user, span_warning("The crew monitor doesn't seem like it'll work here."))
 		if(ui)
 			ui.close()
 		return null

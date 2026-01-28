@@ -59,7 +59,7 @@
 
 /obj/item/tool/crowbar/clockwork/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_BRASS("The handle feels almost frozen when moving to pry, cementing the hand grippping it to the handle, making leverage easier.")
+	. += span_brass("The handle feels almost frozen when moving to pry, cementing the hand grippping it to the handle, making leverage easier.")
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
 	name = "Precursor Alpha Object - Hard Light Pry Tool"

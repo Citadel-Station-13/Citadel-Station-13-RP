@@ -19,7 +19,7 @@
 
 
 /obj/item/integrated_circuit/input/button/ask_for_input(mob/user) //Bit misleading name for this specific use.
-	to_chat(user, SPAN_NOTICE("You press the button labeled '[src.displayed_name]'."))
+	to_chat(user, span_notice("You press the button labeled '[src.displayed_name]'."))
 	activate_pin(1)
 
 /obj/item/integrated_circuit/input/toggle_button
@@ -136,7 +136,7 @@
 		return FALSE
 
 	set_pin_data(IC_OUTPUT, 3, passkey)
-	user.visible_message(SPAN_NOTICE("\The [user] swipes \the [I] onto \the [get_object()]'s card reader."))
+	user.visible_message(span_notice("\The [user] swipes \the [I] onto \the [get_object()]'s card reader."))
 	push_data()
 	activate_pin(1)
 	return TRUE

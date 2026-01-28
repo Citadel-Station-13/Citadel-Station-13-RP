@@ -1,6 +1,6 @@
 /obj/item/modular_computer/proc/power_failure(malfunction = FALSE)
 	if(enabled) // Shut down the computer
-		visible_message(SPAN_DANGER("\The [src]'s screen flickers briefly and then goes dark."))
+		visible_message(span_danger("\The [src]'s screen flickers briefly and then goes dark."))
 		if(active_program)
 			active_program.event_powerfailure(0)
 		for(var/datum/computer_file/program/PRG in idle_threads)

@@ -509,13 +509,13 @@
 	switch(mass_gather_mode)
 		if(STORAGE_QUICK_GATHER_COLLECT_ONE)
 			mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ALL
-			to_chat(user, SPAN_NOTICE("[parent] is now collecting all items from a tile."))
+			to_chat(user, span_notice("[parent] is now collecting all items from a tile."))
 		if(STORAGE_QUICK_GATHER_COLLECT_ALL)
 			mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_SAME
-			to_chat(user, SPAN_NOTICE("[parent] is now collecting all items of a given type from a tile."))
+			to_chat(user, span_notice("[parent] is now collecting all items of a given type from a tile."))
 		if(STORAGE_QUICK_GATHER_COLLECT_SAME)
 			mass_gather_mode = STORAGE_QUICK_GATHER_COLLECT_ONE
-			to_chat(user, SPAN_NOTICE("[parent] is now collecting one item at a time."))
+			to_chat(user, span_notice("[parent] is now collecting one item at a time."))
 
 /**
  * Actor is mandatory.
@@ -525,7 +525,7 @@
 		return FALSE
 	if(is_locked(actor.performer))
 		actor?.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
+			msg = span_warning("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE
@@ -539,7 +539,7 @@
 /datum/object_system/storage/proc/auto_handle_interacted_mass_pickup(datum/event_args/actor/actor, atom/from_where)
 	if(is_locked(actor.performer))
 		actor?.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
+			msg = span_warning("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE
@@ -553,7 +553,7 @@
 /datum/object_system/storage/proc/auto_handle_interacted_mass_dumping(datum/event_args/actor/actor, atom/to_where)
 	if(is_locked(actor.performer))
 		actor?.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
+			msg = span_warning("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE

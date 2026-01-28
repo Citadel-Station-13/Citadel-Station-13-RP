@@ -27,7 +27,7 @@
 	if(isnull(new_label))
 		return
 
-	to_chat(usr, new_label? SPAN_NOTICE("You set the cartridge's label to '[new_label]'.") : SPAN_NOTICE("You erase the label on the cartridge."))
+	to_chat(usr, new_label? span_notice("You set the cartridge's label to '[new_label]'.") : span_notice("You erase the label on the cartridge."))
 
 	set_label(new_label)
 
@@ -46,10 +46,10 @@
 	if(.)
 		return
 	if(is_open_container())
-		to_chat(user, SPAN_NOTICE("You put the cap on \the [src]."))
+		to_chat(user, span_notice("You put the cap on \the [src]."))
 		atom_flags ^= OPENCONTAINER
 	else
-		to_chat(user, SPAN_NOTICE("You put the cap off of \the [src]."))
+		to_chat(user, span_notice("You put the cap off of \the [src]."))
 		atom_flags |= OPENCONTAINER
 
 

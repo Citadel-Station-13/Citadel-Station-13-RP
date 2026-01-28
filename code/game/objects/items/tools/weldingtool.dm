@@ -72,7 +72,7 @@
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
-			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
+			to_chat(user, span_warning("That isn't a robotic limb."))
 			return NONE
 
 		if(!welding)
@@ -180,12 +180,12 @@
 	if(!. || function != TOOL_WELDER)
 		return
 	if(!isOn())
-		e_args.chat_feedback(SPAN_WARNING("[src] must be on to be used to weld!"), target)
+		e_args.chat_feedback(span_warning("[src] must be on to be used to weld!"), target)
 		return FALSE
 	// floor
 	var/computed = round(cost * time * TOOL_WELDING_FUEL_PER_DS)
 	if(get_fuel() < computed)
-		e_args.chat_feedback(SPAN_WARNING("[src] doesn't have enough fuel left to do that!"), target)
+		e_args.chat_feedback(span_warning("[src] doesn't have enough fuel left to do that!"), target)
 		return FALSE
 
 /obj/item/weldingtool/used_as_tool(function, flags, datum/event_args/actor/clickchain/e_args, atom/target, time, cost, usage, success)

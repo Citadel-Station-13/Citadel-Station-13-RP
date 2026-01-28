@@ -64,7 +64,7 @@
 	if(!authing)
 		return FALSE
 	user.grab_item_from_interacted_with(authing, src)
-	user.action_feedback(SPAN_NOTICE("You remove [authing] from [src]."), src)
+	user.action_feedback(span_notice("You remove [authing] from [src]."), src)
 	authing = null
 	return TRUE
 
@@ -72,7 +72,7 @@
 	if(!editing)
 		return FALSE
 	user.grab_item_from_interacted_with(editing, src)
-	user.action_feedback(SPAN_NOTICE("You remove [editing] from [src]."), src)
+	user.action_feedback(span_notice("You remove [editing] from [src]."), src)
 	editing = null
 	return TRUE
 
@@ -82,23 +82,23 @@
 	var/obj/item/card/id/id_card = I
 	if(!authing && authed_for_edit(id_card))
 		if(!user.transfer_item_to_loc(id_card, src))
-			user.action_feedback(SPAN_WARNING("[id_card] is stuck to your hand!"))
+			user.action_feedback(span_warning("[id_card] is stuck to your hand!"))
 			return
 		authing = id_card
-		user.action_feedback(SPAN_NOTICE("You insert [id_card] into [src]."))
+		user.action_feedback(span_notice("You insert [id_card] into [src]."))
 		update_static_data()
 	else
 		if(!user.transfer_item_to_loc(id_card, src))
-			user.action_feedback(SPAN_WARNING("[id_card] is stuck to your hand!"))
+			user.action_feedback(span_warning("[id_card] is stuck to your hand!"))
 			return
 		if(isnull(editing))
 			// insert
 			editing = id_card
-			user.action_feedback(SPAN_NOTICE("You insert [id_card] into [src]."))
+			user.action_feedback(span_notice("You insert [id_card] into [src]."))
 		else
 			// swap
 			user.grab_item_from_interacted_with(editing, src)
-			user.action_feedback(SPAN_NOTICE("You swap out [editing] for [id_card]."))
+			user.action_feedback(span_notice("You swap out [editing] for [id_card]."))
 			editing = id_card
 		update_static_data()
 	return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -157,45 +157,45 @@
 		if("auth")
 			if(authing)
 				usr.grab_item_from_interacted_with(authing, src)
-				usr.action_feedback(SPAN_NOTICE("You remove [authing] from [src]."), src)
+				usr.action_feedback(span_notice("You remove [authing] from [src]."), src)
 				authing = null
 			else
 				var/obj/item/card/id/inserting = usr.get_active_held_item()
 				if(!istype(inserting))
 					return TRUE
 				if(!usr.transfer_item_to_loc(inserting, src))
-					usr.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"))
+					usr.action_feedback(span_warning("[inserting] is stuck to your hand!"))
 					return TRUE
 				authing = inserting
-				usr.action_feedback(SPAN_NOTICE("You insert [authing] into [src]."))
+				usr.action_feedback(span_notice("You insert [authing] into [src]."))
 			update_static_data()
 			return TRUE
 		if("modify")
 			if(editing)
 				usr.grab_item_from_interacted_with(editing, src)
-				usr.action_feedback(SPAN_NOTICE("You remove [editing] from [src]."), src)
+				usr.action_feedback(span_notice("You remove [editing] from [src]."), src)
 				editing = null
 			else
 				var/obj/item/card/id/inserting = usr.get_active_held_item()
 				if(!istype(inserting))
 					return TRUE
 				if(!usr.transfer_item_to_loc(inserting, src))
-					usr.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"))
+					usr.action_feedback(span_warning("[inserting] is stuck to your hand!"))
 					return TRUE
 				editing = inserting
-				usr.action_feedback(SPAN_NOTICE("You insert [editing] into [src]."))
+				usr.action_feedback(span_notice("You insert [editing] into [src]."))
 			update_static_data()
 			return TRUE
 		if("print_manifest")
 			if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_IDCONSOLE_PRINT))
-				usr.action_feedback(SPAN_WARNING("[src] is still printing something!"), src)
+				usr.action_feedback(span_warning("[src] is still printing something!"), src)
 				return
 			TIMER_COOLDOWN_START(src, CD_INDEX_IDCONSOLE_PRINT, 5 SECONDS)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/computer/card, print_manifest)), 5 SECONDS)
 			return TRUE
 		if("print_card_report")
 			if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_IDCONSOLE_PRINT))
-				usr.action_feedback(SPAN_WARNING("[src] is still printing something!"), src)
+				usr.action_feedback(span_warning("[src] is still printing something!"), src)
 				return
 			TIMER_COOLDOWN_START(src, CD_INDEX_IDCONSOLE_PRINT, 5 SECONDS)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/computer/card, print_card_report)), 5 SECONDS)
@@ -211,7 +211,7 @@
 
 /obj/machinery/computer/card/proc/print_card_report()
 	if(!editing || !authing)
-		visible_message(SPAN_NOTICE("Printing failed: Target or authenticating card removed."))
+		visible_message(span_notice("Printing failed: Target or authenticating card removed."))
 		return
 	var/obj/item/card/id/scanning = editing
 	var/obj/item/paper/P = new(loc)

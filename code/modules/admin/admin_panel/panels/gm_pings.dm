@@ -37,7 +37,7 @@
 		else
 			// UI can automatically call refreshPing to update, so don't flood.
 			if(action != "refreshPing")
-				to_chat(usr, SPAN_WARNING("Couldn't locate ping '[pRef]-[pUid]'; the ping may have been deleted."))
+				to_chat(usr, span_warning("Couldn't locate ping '[pRef]-[pUid]'; the ping may have been deleted."))
 			return TRUE
 	switch(action)
 		if("purgeAll")
@@ -64,7 +64,7 @@
 				return TRUE
 			var/mob/resolved_mob = get_turf(target_ping.originating_mob_weakref?.resolve())
 			if(!resolved_mob)
-				to_chat(owner.owner, SPAN_BOLDANNOUNCE("Couldn't locate ping context originating mob. Was it deleted?"))
+				to_chat(owner.owner, span_boldannounce("Couldn't locate ping context originating mob. Was it deleted?"))
 				return TRUE
 			owner.teleport_as_ghost_to_loc(resolved_mob)
 			return TRUE
@@ -73,7 +73,7 @@
 				return TRUE
 			var/turf/resolved_context = get_turf(target_ping.context_component?.parent)
 			if(!resolved_context)
-				to_chat(owner.owner, SPAN_BOLDANNOUNCE("Couldn't locate ping context component. Was it deleted?"))
+				to_chat(owner.owner, span_boldannounce("Couldn't locate ping context component. Was it deleted?"))
 				return TRUE
 			owner.teleport_as_ghost_to_loc(resolved_context)
 			return TRUE

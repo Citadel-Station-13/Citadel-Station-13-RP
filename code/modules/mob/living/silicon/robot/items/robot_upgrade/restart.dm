@@ -8,7 +8,7 @@
 	if(target.health < 0)
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_WARNING("You have to repair [target] before using an emergency restart module."),
+				span_warning("You have to repair [target] before using an emergency restart module."),
 				target = target,
 			)
 		return FALSE
@@ -16,7 +16,7 @@
 		if(!silent)
 			// ok this is a bit morbid but it's funny.
 			actor?.chat_feedback(
-				SPAN_WARNING("[target] is operational; only fully disabled cyborgs may be restarted."),
+				span_warning("[target] is operational; only fully disabled cyborgs may be restarted."),
 				target = target,
 			)
 		return FALSE

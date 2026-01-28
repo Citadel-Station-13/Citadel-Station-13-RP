@@ -84,17 +84,17 @@
 
 /mob/living/simple_mob/animal/passive/bird/parrot/proc/give_headset(obj/item/radio/headset/new_headset, mob/living/user)
 	if(!istype(new_headset))
-		to_chat(user, SPAN_WARNING( "\The [new_headset] isn't a headset."))
+		to_chat(user, span_warning( "\The [new_headset] isn't a headset."))
 		return
 	if(my_headset)
-		to_chat(user, SPAN_WARNING( "\The [src] is already wearing \a [my_headset]."))
+		to_chat(user, span_warning( "\The [src] is already wearing \a [my_headset]."))
 		return
 	else
 		if(!user.attempt_insert_item_for_installation(new_headset, src))
 			return
 		my_headset = new_headset
-		to_chat(user, SPAN_WARNING( "You place \a [new_headset] on \the [src]. You monster."))
-		to_chat(src, SPAN_NOTICE("\The [user] gives you \a [new_headset]. You should put it to good use immediately."))
+		to_chat(user, span_warning( "You place \a [new_headset] on \the [src]. You monster."))
+		to_chat(src, span_notice("\The [user] gives you \a [new_headset]. You should put it to good use immediately."))
 		return
 
 /mob/living/simple_mob/animal/passive/bird/parrot/proc/remove_headset(mob/living/user)
@@ -103,8 +103,8 @@
 	else
 		ISay("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
 		user.put_in_hands_or_drop(my_headset)
-		to_chat(user, SPAN_NOTICE("You take away \the [src]'s [my_headset.name]. Finally."))
-		to_chat(src, SPAN_WARNING( "\The [user] takes your [my_headset.name] away! How cruel!"))
+		to_chat(user, span_notice("You take away \the [src]'s [my_headset.name]. Finally."))
+		to_chat(src, span_warning( "\The [user] takes your [my_headset.name] away! How cruel!"))
 		my_headset = null
 
 /mob/living/simple_mob/animal/passive/bird/parrot/examine(mob/user, dist)

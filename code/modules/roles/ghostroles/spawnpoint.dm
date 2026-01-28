@@ -102,14 +102,14 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 /datum/component/ghostrole_spawnpoint/proc/GhostInteract(datum/source, mob/user)
 	var/datum/prototype/role/ghostrole/role = get_ghostrole_datum(role_type)
 	if(!role)
-		to_chat(user, SPAN_DANGER("No ghostrole datum found: [role_type]. Contact a coder!"))
+		to_chat(user, span_danger("No ghostrole datum found: [role_type]. Contact a coder!"))
 		if(!(datum_flags & DF_VAR_EDITED))
 			stack_trace("Couldn't find role. Deleting self.")
 			qdel(src)
 		return
 	else
 		if(SSticker.current_state != GAME_STATE_PLAYING)
-			to_chat(user, SPAN_BOLDWARNING("The round is not active please wait for it to start."))
+			to_chat(user, span_boldwarning("The round is not active please wait for it to start."))
 			return
 		var/choice = tgui_alert(user, "Are you certain you wish to spawn as [role_type]?", "Ghost Role Selection", list("Yes", "No"))
 		if(choice != "Yes")

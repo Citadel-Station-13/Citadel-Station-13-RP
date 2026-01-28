@@ -119,7 +119,7 @@
 					continue
 				if(AM.density)
 					if(!silent)
-						user.action_feedback(SPAN_WARNING("[AM] is in the way."))
+						user.action_feedback(span_warning("[AM] is in the way."))
 					return FALSE
 	if(!isnull(exclusitivity))
 		for(var/atom/movable/AM as anything in where)
@@ -127,7 +127,7 @@
 				continue
 			if(istype(AM, exclusitivity))
 				if(!silent && !isnull(user))
-					user.action_feedback(SPAN_WARNING("[AM] is in the way."))
+					user.action_feedback(span_warning("[AM] is in the way."))
 				return FALSE
 	return TRUE
 

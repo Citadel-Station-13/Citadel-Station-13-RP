@@ -158,14 +158,14 @@
 	if(isnull(protean_refactory))
 		return
 	protean_refactory.stored_materials[MAT_STEEL] = protean_refactory.max_storage
-	occupant.innate_feedback(SPAN_NOTICE("Your refactory chimes as your nanite reserves are refilled by the chamber."))
+	occupant.innate_feedback(span_notice("Your refactory chimes as your nanite reserves are refilled by the chamber."))
 
 /obj/machinery/nanite_chamber/proc/try_rebuild_protean(mob/user)
 	if(!check_reconstruction_costs())
-		user?.ui_feedback(SPAN_WARNING("Insufficient materials."), src)
+		user?.ui_feedback(span_warning("Insufficient materials."), src)
 		return
 	if(isnull(protean_core?.brainmob?.mind))
-		user?.ui_feedback(SPAN_WARNING("No consciousness detected."), src)
+		user?.ui_feedback(span_warning("No consciousness detected."), src)
 		return
 	consume_reconstruction_costs()
 	operate_for(30 SECONDS, 10 SECONDS, CALLBACK(src, PROC_REF(rebuild_protean)))
@@ -215,7 +215,7 @@
 /obj/machinery/nanite_chamber/proc/toggle_open(mob/user, silent = TRUE)
 	if(is_locked())
 		if(!silent)
-			user.action_feedback(SPAN_WARNING("[src] is locked!"), src)
+			user.action_feedback(span_warning("[src] is locked!"), src)
 		return FALSE
 	if(open)
 		take_contents(FALSE)
@@ -309,7 +309,7 @@
 	if(open(user))
 		return TRUE
 	if(!(world.time % 5))
-		user.selfmove_feedback(SPAN_WARNING("[src] is locked!"))
+		user.selfmove_feedback(span_warning("[src] is locked!"))
 	return FALSE
 
 /obj/machinery/nanite_chamber/contents_resist(mob/escapee)
@@ -317,10 +317,10 @@
 		return FALSE
 	if(!contents_resist_sequence(escapee, 1 MINUTE))
 		return FALSE
-	escapee.action_feedback(SPAN_WARNING("You start kicking at [src], trying to free yourself!"), src)
+	escapee.action_feedback(span_warning("You start kicking at [src], trying to free yourself!"), src)
 	visible_message(
-		SPAN_WARNING("A loud thumping sound is heard from [src]!"),
-		blind_message = SPAN_WARNING("You hear a loud thumping noise, as if someone was trying to break glass."),
+		span_warning("A loud thumping sound is heard from [src]!"),
+		blind_message = span_warning("You hear a loud thumping noise, as if someone was trying to break glass."),
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 	)
 	return TRUE
@@ -328,10 +328,10 @@
 /obj/machinery/nanite_chamber/contents_resist_finish(mob/escapee)
 	set_locked(FALSE)
 	open(escapee)
-	escapee.action_feedback(SPAN_WARNING("You kick open [src], freeing yourself!"))
+	escapee.action_feedback(span_warning("You kick open [src], freeing yourself!"))
 	visible_message(
-		SPAN_WARNING("A final kick from [escapee] finally manages to disengage [src]'s locks."),
-		blind_message = SPAN_WARNING("You hear a loud kick on glass, and the sound of mechanical locks disengaging."),
+		span_warning("A final kick from [escapee] finally manages to disengage [src]'s locks."),
+		blind_message = span_warning("You hear a loud kick on glass, and the sound of mechanical locks disengaging."),
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 	)
 	cancel_operation()

@@ -94,9 +94,9 @@
 		var/frequency = shell.pre_impact_sound_duration / duration
 		for(var/mob/victim as anything in send_to)
 			victim.show_message(
-				SPAN_BOLDWARNING("You see something flying towards your position from [dir_descriptor]!"),
+				span_boldwarning("You see something flying towards your position from [dir_descriptor]!"),
 				SAYCODE_TYPE_VISIBLE,
-				SPAN_WARNING("You hear something flying towards your position from [dir_descriptor]!"),
+				span_warning("You hear something flying towards your position from [dir_descriptor]!"),
 				SAYCODE_TYPE_AUDIBLE,
 			)
 			var/datum/map_level/their_level = SSmapping.ordered_levels[victim.z]

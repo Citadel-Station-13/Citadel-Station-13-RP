@@ -115,11 +115,11 @@ SUBSYSTEM_DEF(air)
 
 	//! Fancy blockquote of data.
 	var/list/blockquote_data = list(
-		SPAN_DEBUGINFO("<b>Total Zones:</b> [zones.len]"),
-		SPAN_DEBUGINFO("\n<b>Total Edges:</b> [edges.len]"),
-		SPAN_DEBUGINFO("\n<b>Total Active Edges:</b> [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]"),
-		SPAN_DEBUGINFO("\n<b>Total Simulated Turfs:</b> [simulated_turf_count]"),
-		SPAN_DEBUGINFO("\n<b>Total Unsimulated Turfs:</b> [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
+		span_debug_info("<b>Total Zones:</b> [zones.len]"),
+		span_debug_info("\n<b>Total Edges:</b> [edges.len]"),
+		span_debug_info("\n<b>Total Active Edges:</b> [active_edges.len ? span_danger("[active_edges.len]") : "None"]"),
+		span_debug_info("\n<b>Total Simulated Turfs:</b> [simulated_turf_count]"),
+		span_debug_info("\n<b>Total Unsimulated Turfs:</b> [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
 	)
 
 	to_chat(

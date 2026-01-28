@@ -52,21 +52,21 @@
 		return
 	if(!realistic)
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		visible_message(SPAN_WARNING( "\The [M]'s hand goes through \the [src]!"))
+		visible_message(span_warning( "\The [M]'s hand goes through \the [src]!"))
 		return
 	else
 		switch(M.a_intent)
 			if(INTENT_HELP)
 				var/datum/gender/T = GLOB.gender_datums[src.get_visible_gender()]
 				M.visible_message(
-					SPAN_NOTICE("\The [M] hugs [src] to make [T.him] feel better!"), \
-					SPAN_NOTICE("You hug [src] to make [T.him] feel better!")
+					span_notice("\The [M] hugs [src] to make [T.him] feel better!"), \
+					span_notice("You hug [src] to make [T.him] feel better!")
 					) // slightly redundant as at the moment most mobs still use the normal gender var, but it works and future-proofs it
 				playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 			if(INTENT_DISARM)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message(SPAN_DANGER("\The [M] attempted to disarm [src]!"))
+				visible_message(span_danger("\The [M] attempted to disarm [src]!"))
 				M.do_attack_animation(src)
 
 			if(INTENT_GRAB)
@@ -74,7 +74,7 @@
 
 			if(INTENT_HARM)
 				adjustBruteLoss(harm_intent_damage)
-				M.visible_message(SPAN_DANGER("\The [M] [response_harm] \the [src]"))
+				M.visible_message(span_danger("\The [M] [response_harm] \the [src]"))
 				M.do_attack_animation(src)
 
 /mob/living/simple_mob/illusion/melee_act(mob/attacker, obj/item/weapon, datum/melee_attack/weapon/style, target_zone, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -82,7 +82,7 @@
 		return ..()
 	// TODO: proper feedback procs
 	attacker?.visible_message(
-		SPAN_WARNING("[attacker]'s [weapon] passes right through [src]!"),
+		span_warning("[attacker]'s [weapon] passes right through [src]!"),
 	)
 	return clickchain_flags | CLICKCHAIN_ATTACK_MISSED
 

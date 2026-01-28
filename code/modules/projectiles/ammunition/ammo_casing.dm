@@ -72,7 +72,7 @@
 /obj/item/ammo_casing/screwdriver_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = TRUE
 	if(projectile_stored == FALSE)
-		e_args.chat_feedback(SPAN_WARNING("There is no bullet in [src] to inscribe."), src)
+		e_args.chat_feedback(span_warning("There is no bullet in [src] to inscribe."), src)
 		return
 	var/label_text = input(e_args.initiator, "Inscribe some text into [initial(projectile_stored.name)]", "Inscription", projectile_stored.name)
 	if(!e_args.performer.Adjacent(src))
@@ -82,10 +82,10 @@
 	if(!projectile_stored)
 		CRASH("projectile stored isn't instanced when it shoudl be")
 	if(!label_text)
-		e_args.chat_feedback(SPAN_NOTICE("You scratch the inscription off of [initial(projectile_stored.name)]."), src)
+		e_args.chat_feedback(span_notice("You scratch the inscription off of [initial(projectile_stored.name)]."), src)
 		projectile_stored.name = initial(projectile_stored.name)
 		return
-	e_args.chat_feedback(SPAN_NOTICE("You inscribe [label_text] into \the [initial(projectile_stored.name)]."), src)
+	e_args.chat_feedback(span_notice("You inscribe [label_text] into \the [initial(projectile_stored.name)]."), src)
 	projectile_stored.name = "[initial(projectile_stored.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images = list())

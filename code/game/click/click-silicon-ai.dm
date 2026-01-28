@@ -17,13 +17,13 @@
 /mob/living/silicon/ai/silicon_control_interaction_allowed(atom/target, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	if(!IS_CONSCIOUS(src))
 		actor.chat_feedback(
-			SPAN_WARNING("You are unconscious."),
+			span_warning("You are unconscious."),
 			target = src,
 		)
 		return FALSE
 	if(control_disabled)
 		actor.chat_feedback(
-			SPAN_WARNING("Your wireless control is disabled."),
+			span_warning("Your wireless control is disabled."),
 			target = src,
 		)
 		return FALSE

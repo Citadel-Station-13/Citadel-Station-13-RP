@@ -59,19 +59,19 @@
 			if(!gottem)
 				return
 			holomodel = make_hologram_appearance(gottem)
-			to_chat(src, SPAN_NOTICE("Hologram set."), type = MESSAGE_TYPE_INFO)
+			to_chat(src, span_notice("Hologram set."), type = MESSAGE_TYPE_INFO)
 		if("My Character")
 			var/appearance/looks = client?.prefs.render_to_appearance(
 				PREF_COPY_TO_UNRESTRICTED_LOADOUT | PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES,
 			)
 			if(!looks)
-				to_chat(src, SPAN_WARNING("Slot load-clone errored. Please report this to a coder."), type = MESSAGE_TYPE_WARNING)
+				to_chat(src, span_warning("Slot load-clone errored. Please report this to a coder."), type = MESSAGE_TYPE_WARNING)
 				return
 			holomodel = looks
-			to_chat(src, SPAN_NOTICE("Hologram set."), type = MESSAGE_TYPE_INFO)
+			to_chat(src, span_notice("Hologram set."), type = MESSAGE_TYPE_INFO)
 		if("Unique")
 			var/model = tgui_input_list(src, "Select a hologram:", "Hologram Model", GLOB.holograms)
 			if(!model)
 				return
 			holomodel = model
-			to_chat(src, SPAN_NOTICE("Hologram set."), type = MESSAGE_TYPE_INFO)
+			to_chat(src, span_notice("Hologram set."), type = MESSAGE_TYPE_INFO)

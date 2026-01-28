@@ -44,7 +44,7 @@
 			if (do_after(user, 20 * W.tool_speed))
 				src.open =! src.open
 				playsound(src, W.tool_sound, 50, 1)
-				user.show_message(SPAN_NOTICE("You [(open ? "open" : "close")] the service panel."))
+				user.show_message(span_notice("You [(open ? "open" : "close")] the service panel."))
 			return
 		if (istype(W, /obj/item/multitool) && (src.open == 1)&& (!src.l_hacking))
 			user.show_message("<span class='notice'>Now attempting to reset internal memory, please hold.</span>", 1)

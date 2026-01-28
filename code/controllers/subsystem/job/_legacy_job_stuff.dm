@@ -236,7 +236,7 @@
 		if(divide_overflows[player] == JOB_ALTERNATIVE_RETURN_LOBBY)
 			player.ready = 0
 			INVOKE_ASYNC(player, TYPE_PROC_REF(/mob/new_player, new_player_panel_proc))
-			to_chat(player, SPAN_WARNING("You have been returned to the lobby, as you do not qualify for any selected role(s)."))
+			to_chat(player, span_warning("You have been returned to the lobby, as you do not qualify for any selected role(s)."))
 			divide_unassigned -= player
 	dispose_unassigned()
 	return 1
@@ -257,7 +257,7 @@
 			var/list/spawn_props = LateSpawn(H.client, rank)
 			S = pick(spawn_props["spawnpoint"])
 			if(!S)
-				to_chat(H, SPAN_CRITICAL("You were unable to be spawned at your chosen late-join spawnpoint. Please verify your job/spawn point combination makes sense, and try another one."))
+				to_chat(H, span_critical("You were unable to be spawned at your chosen late-join spawnpoint. Please verify your job/spawn point combination makes sense, and try another one."))
 				return
 			else
 				H.forceMove(S.GetSpawnLoc())
@@ -345,16 +345,16 @@
 				W.color = R.color
 				qdel(R)
 
-	to_chat(H, SPAN_BOLD("You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank]."))
+	to_chat(H, span_bold("You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank]."))
 
 	if(job.supervisors)
-		to_chat(H, SPAN_BOLD("As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this."))
+		to_chat(H, span_bold("As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this."))
 	if(job.has_headset)
 		H.equip_to_slot_or_del(new /obj/item/radio/headset(H), SLOT_ID_LEFT_EAR)
-		to_chat(H, SPAN_BOLD("To speak on your department's radio channel use :h. For the use of other channels, examine your headset."))
+		to_chat(H, span_bold("To speak on your department's radio channel use :h. For the use of other channels, examine your headset."))
 
 	if(job.req_admin_notify)
-		to_chat(H, SPAN_BOLD("You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp."))
+		to_chat(H, span_bold("You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp."))
 
 	// EMAIL GENERATION
 	// Email addresses will be created under this domain name. Mostly for the looks.
@@ -474,10 +474,10 @@
 	if(C && C.prefs.spawnpoint)
 		if(!(C.prefs.spawnpoint in (LEGACY_MAP_DATUM).allowed_spawns))
 			if(fail_deadly)
-				to_chat(C, SPAN_WARNING("Your chosen spawnpoint is unavailable for this map and your job requires a specific spawnpoint.  Please correct your spawn point choice."))
+				to_chat(C, span_warning("Your chosen spawnpoint is unavailable for this map and your job requires a specific spawnpoint.  Please correct your spawn point choice."))
 				return
 			else
-				to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([C.prefs.spawnpoint]) is unavailable for the current map.  Spawning you at one of the enabled spawn points instead."))
+				to_chat(C, span_warning("Your chosen spawnpoint ([C.prefs.spawnpoint]) is unavailable for the current map.  Spawning you at one of the enabled spawn points instead."))
 		else
 			spawnpos = spawntypes[C.prefs.spawnpoint]
 
@@ -492,9 +492,9 @@
 			.["channel"] = spawnpos.announce_channel
 		else
 			if(fail_deadly)
-				to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job.  Please correct your spawn point choice."))
+				to_chat(C, span_warning("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job.  Please correct your spawn point choice."))
 				return
-			to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead."))
+			to_chat(C, span_warning("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead."))
 			.["spawnpoint"] = SSjob.get_latejoin_spawnpoint(J.faction)
 	else if(!fail_deadly)
 		.["spawnpoint"] = SSjob.get_latejoin_spawnpoint(J.faction)

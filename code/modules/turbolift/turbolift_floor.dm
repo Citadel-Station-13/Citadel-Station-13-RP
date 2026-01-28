@@ -13,7 +13,7 @@
 /datum/turbolift_floor/proc/set_area_ref(var/ref)
 	var/area/turbolift/A = locate(ref)
 	if(!istype(A))
-		log_debug(SPAN_DEBUGERROR("Turbolift floor area was of the wrong type: ref=[ref]"))
+		log_debug(span_debug_error("Turbolift floor area was of the wrong type: ref=[ref]"))
 		return
 
 	area_ref = ref

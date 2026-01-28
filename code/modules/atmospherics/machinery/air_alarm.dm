@@ -772,9 +772,9 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/air_alarm, 26)
 	else
 		if(allowed(usr) && !wires.is_cut(WIRE_IDSCAN))
 			locked = !locked
-			to_chat(user, SPAN_NOTICE("You [locked ? "lock" : "unlock"] the Air Alarm interface."))
+			to_chat(user, span_notice("You [locked ? "lock" : "unlock"] the Air Alarm interface."))
 		else
-			to_chat(user, SPAN_BOLDWARNING("Access denied."))
+			to_chat(user, span_boldwarning("Access denied."))
 		return
 
 /obj/machinery/air_alarm/AltClick()

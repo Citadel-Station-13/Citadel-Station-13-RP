@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(vote)
 		break
 
 	if(!players_are_in_round)
-		log_debug(SPAN_DEBUG("The crew transfer shuttle was automatically called at vote time due to no players being present."))
+		log_debug(span_debug("The crew transfer shuttle was automatically called at vote time due to no players being present."))
 		init_shift_change(null, 1)
 		return
 
@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(vote)
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
 
 	for(var/option in choices)
-		text += SPAN_NOTICE("\n[option] - [votes_by_choice[option] || 0]")
+		text += span_notice("\n[option] - [votes_by_choice[option] || 0]")
 	log_vote(text)
 	to_chat(world, "<font color='purple'>[text]</font>")
 
@@ -204,14 +204,14 @@ SUBSYSTEM_DEF(vote)
 		initiator = initiator_key
 		started_time = world.time
 		duration = time
-		var/text = SPAN_VOTENOTIFICATION("[capitalize(mode)] vote started by [initiator].")
+		var/text = span_votenotification("[capitalize(mode)] vote started by [initiator].")
 		if(mode == VOTE_CUSTOM)
-			text += SPAN_VOTENOTIFICATION("\n[question]")
+			text += span_votenotification("\n[question]")
 		if(ghost_weight_percent <= 0)
-			text += SPAN_NOTICE("\nGhosts are excluded from the vote.")
+			text += span_notice("\nGhosts are excluded from the vote.")
 		log_vote(text)
 
-		to_chat(world, SPAN_INFOPLAIN("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>"))
+		to_chat(world, span_infoplain("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>"))
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE)
 			SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3))
 

@@ -212,13 +212,13 @@
 	. = ..()
 	if(!emagged)
 		if(user)
-			to_chat(user, SPAN_NOTICE("\The [src] buzzes and beeps."))
+			to_chat(user, span_notice("\The [src] buzzes and beeps."))
 		emagged = TRUE
 		patrol_speed = 3
 		target_speed = 4
 		return TRUE
 	else
-		to_chat(user, SPAN_NOTICE("\The [src] is already corrupt."))
+		to_chat(user, span_notice("\The [src] is already corrupt."))
 
 /mob/living/bot/secbot/attackby(var/obj/item/O, var/mob/user)
 	var/curhealth = health

@@ -118,7 +118,7 @@
 			CRASH("failed to autodetect request")
 
 /datum/frame_step/proc/examine(obj/structure/frame2/frame, datum/event_args/actor/actor)
-	var/rendered_action = action_descriptor || SPAN_BOLD(name)
+	var/rendered_action = action_descriptor || span_bold(name)
 	switch(request_type)
 		if(FRAME_REQUEST_TYPE_INTERACT)
 			. = "<b>Interact</b> with [frame] using an empty hand to [rendered_action]."
@@ -146,7 +146,7 @@
 		if(FRAME_REQUEST_TYPE_TOOL)
 			var/rendered_tool = request
 			. = "Use a <b>[rendered_tool]</b> to [rendered_action]."
-	return SPAN_NOTICE(.)
+	return span_notice(.)
 
 /datum/frame_step/proc/tool_image()
 	switch(direction)
@@ -225,7 +225,7 @@
 		if(FRAME_REQUEST_TYPE_ITEM)
 			if(!actor.performer.attempt_void_item_for_installation(using_tool))
 				actor.chat_feedback(
-					SPAN_WARNING("[using_tool] is stuck to your hand!"),
+					span_warning("[using_tool] is stuck to your hand!"),
 					target = frame,
 				)
 				return FALSE

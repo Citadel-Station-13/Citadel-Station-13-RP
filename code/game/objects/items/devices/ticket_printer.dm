@@ -13,7 +13,7 @@
 	if(last_print + print_cooldown <= world.time)
 		print_a_ticket(user)
 	else
-		to_chat(user, SPAN_WARNING("\The [src] is not ready to print another ticket yet."))
+		to_chat(user, span_warning("\The [src] is not ready to print another ticket yet."))
 
 /obj/item/ticket_printer/proc/print_a_ticket(mob/user)
 

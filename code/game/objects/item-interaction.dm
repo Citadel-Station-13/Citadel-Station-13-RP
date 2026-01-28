@@ -33,7 +33,7 @@
 	if(anchored)
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"),
+				span_notice("\The [src] won't budge, you can't pick it up!"),
 				target = src,
 			)
 		return FALSE
@@ -55,7 +55,7 @@
 		return FALSE
 
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
-		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
+		user.action_feedback(span_warning("You can't do that right now."), src)
 		return FALSE
 
 	if (hasorgans(user))
@@ -94,7 +94,7 @@
 		has_to_drop_to_ground_on_fail = TRUE
 
 	if(isnull(actually_picked_up))
-		to_chat(user, SPAN_WARNING("[src] somehow slips through your grasp. What just happened?"))
+		to_chat(user, span_warning("[src] somehow slips through your grasp. What just happened?"))
 		return FALSE
 	if(!user.put_in_hands(actually_picked_up, INV_OP_NO_MERGE_STACKS, user.active_hand))
 		if(has_to_drop_to_ground_on_fail)
@@ -144,7 +144,7 @@
 			//! :) FUCK YOU.
 			//! this if check is all for you. FUCK YOU.
 			if(!isobserver(user))
-				user.visible_message(SPAN_NOTICE("[user] slides [src] over."), SPAN_NOTICE("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
+				user.visible_message(span_notice("[user] slides [src] over."), span_notice("You slide [src] over."), range = MESSAGE_RANGE_COMBAT_SUBTLE)
 			log_inventory("[user] slid [src] from [COORD(old)] to [COORD(over)]")
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
@@ -224,9 +224,9 @@
 		actor.visible_feedback(
 			target = src,
 			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[actor.performer] removes the cell from [src]."),
-			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+			visible = span_notice("[actor.performer] removes the cell from [src]."),
+			audible = span_notice("You hear fasteners falling out and something being removed."),
+			otherwise_self = span_notice("You remove the cell from [src]."),
 		)
 		log_construction(actor, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		actor.performer.put_in_hands_or_drop(obj_cell_slot.remove_cell(actor.performer))

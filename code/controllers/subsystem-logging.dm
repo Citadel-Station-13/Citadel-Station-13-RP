@@ -28,8 +28,8 @@
 
 /datum/controller/subsystem/proc/emit_init_error(msg)
 	subsystem_log("init-error: [msg]")
-	message_admins(SPAN_BOLDANNOUNCE("Init error - [src]: [msg]"))
+	message_admins(span_boldannounce("Init error - [src]: [msg]"))
 
 /datum/controller/subsystem/proc/emit_init_fatal(msg)
 	subsystem_log("init-fatal: [msg]")
-	to_chat(world, SPAN_BOLDANNOUNCE("Init fatal - [src]: [msg]"))
+	to_chat(world, span_boldannounce("Init fatal - [src]: [msg]"))

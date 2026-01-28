@@ -20,8 +20,8 @@
 
 /mob/living/carbon/human/proc/try_remove_splints(mob/user)
 	visible_message(
-		SPAN_WARNING("[user] is trying to remove [src]'s splints!"),
-		SPAN_WARNING("[user] is trying to remove your splints!")
+		span_warning("[user] is trying to remove [src]'s splints!"),
+		span_warning("[user] is trying to remove your splints!")
 	)
 	if(!do_after(user, HUMAN_STRIP_DELAY, src))
 		return FALSE
@@ -56,8 +56,8 @@
 
 /mob/living/carbon/human/proc/try_toggle_internals(mob/user)
 	visible_message(
-		SPAN_WARNING("[user] is trying to toggle [src]'s internals!"),
-		SPAN_WARNING("[user] is trying to toggle your internals!")
+		span_warning("[user] is trying to toggle [src]'s internals!"),
+		span_warning("[user] is trying to toggle your internals!")
 	)
 	if(!do_after(user, HUMAN_STRIP_DELAY, src))
 		return FALSE

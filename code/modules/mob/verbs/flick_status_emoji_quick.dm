@@ -19,7 +19,7 @@
 			picked = emoji
 			break
 		if(!picked)
-			to_chat(src, SPAN_WARNING("There's no status emoji named '[emoji_name]' ([ckey(emoji_name)])"))
+			to_chat(src, span_warning("There's no status emoji named '[emoji_name]' ([ckey(emoji_name)])"))
 			return
 	else
 		picked = tgui_input_list(
@@ -33,5 +33,5 @@
 
 	var/duration = 7.5 SECONDS
 	AddComponent(/datum/component/status_emoji, picked, duration)
-	to_chat(src, SPAN_NOTICE("You make a '[picked]' expression."))
+	to_chat(src, span_notice("You make a '[picked]' expression."))
 	log_game("[key_name(src)] flicked a status emoji: [picked]")

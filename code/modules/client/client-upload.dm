@@ -3,10 +3,10 @@
 
 /client/AllowUpload(filename, filelength)
 	if(isnull(upload_current_sizelimit) || !upload_mutex)
-		to_chat(src, SPAN_BOLDANNOUNCE("-- Something attempted to request a file upload without using client.prompt_for_x procs. Report this to a coder. --"))
+		to_chat(src, span_boldannounce("-- Something attempted to request a file upload without using client.prompt_for_x procs. Report this to a coder. --"))
 		return FALSE
 	if(filelength > upload_current_sizelimit)
-		to_chat(src, SPAN_BOLDANNOUNCE("File upload was too large. Limit: [upload_current_sizelimit / 1024]KiB."))
+		to_chat(src, span_boldannounce("File upload was too large. Limit: [upload_current_sizelimit / 1024]KiB."))
 		return FALSE
 	return TRUE
 
@@ -31,7 +31,7 @@
 
 /client/proc/prompt_for_file_or_wait(message, title, size_limit = 1024 * 1024 * 1)
 	if(upload_mutex_waiting > 10)
-		to_chat(src, SPAN_BOLDANNOUNCE("Failed to open file picker prompt: Too many prompts are queued!"))
+		to_chat(src, span_boldannounce("Failed to open file picker prompt: Too many prompts are queued!"))
 		return null
 	++upload_mutex_waiting
 	UNTIL(!upload_mutex)
@@ -59,7 +59,7 @@
 
 /client/proc/prompt_for_sound_or_wait(message, title, size_limit = 1024 * 1024 * 1)
 	if(upload_mutex_waiting > 10)
-		to_chat(src, SPAN_BOLDANNOUNCE("Failed to open file (sound) picker prompt: Too many prompts are queued!"))
+		to_chat(src, span_boldannounce("Failed to open file (sound) picker prompt: Too many prompts are queued!"))
 		return null
 	++upload_mutex_waiting
 	UNTIL(!upload_mutex)
@@ -85,7 +85,7 @@
 
 /client/proc/prompt_for_icon_or_wait(message, title, size_limit = 1024 * 1024 * 1)
 	if(upload_mutex_waiting > 10)
-		to_chat(src, SPAN_BOLDANNOUNCE("Failed to open file (icon) picker prompt: Too many prompts are queued!"))
+		to_chat(src, span_boldannounce("Failed to open file (icon) picker prompt: Too many prompts are queued!"))
 		return null
 	++upload_mutex_waiting
 	UNTIL(!upload_mutex)

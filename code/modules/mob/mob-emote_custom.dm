@@ -19,7 +19,7 @@
 /mob/proc/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type = SAYCODE_TYPE_VISIBLE, datum/event_args/actor/actor, with_overhead)
 	if(stat)
 		// TODO: tooltip with copy link.
-		to_chat(src, SPAN_WARNING("You are unable to emote."))
+		to_chat(src, span_warning("You are unable to emote."))
 		return
 	if(isnull(actor))
 		actor = new(src)
@@ -64,7 +64,7 @@
 		. = "<b>[src]</b> " + .
 	if(subtle)
 		if(anti_ghost)
-			. = SPAN_SINGING(.)
+			. = span_singing(.)
 		else
 			. = "<i>[.]</i>"
 

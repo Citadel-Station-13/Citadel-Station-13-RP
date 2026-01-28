@@ -88,7 +88,7 @@
 				return
 			var/obj/item/implant/I = locate(params["imp"])
 			if(I && I.imp_in)
-				to_chat(I.imp_in, SPAN_NOTICE("You hear a voice in your head saying: '[warning]'"))
+				to_chat(I.imp_in, span_notice("You hear a voice in your head saying: '[warning]'"))
 			. = TRUE
 
 	add_fingerprint(usr)

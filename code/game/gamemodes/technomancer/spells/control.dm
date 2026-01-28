@@ -112,7 +112,7 @@
 					to_chat(user, "<span class='danger'>\The [L] seems to resist you!</span>")
 					return 0
 				if(!L.has_polaris_AI())
-					to_chat(user, SPAN_WARNING( "\The [L] seems too dim for this to work on them."))
+					to_chat(user, span_warning( "\The [L] seems too dim for this to work on them."))
 					return FALSE
 				if(pay_energy(500))
 					select(L)

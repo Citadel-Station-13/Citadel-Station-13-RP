@@ -118,10 +118,10 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their heavy claws!"))
+			visible_message(span_danger("\The [src] sends \the [L] flying with their heavy claws!"))
 			playsound(src, "sound/mobs/biomorphs/breaker_slam.ogg", 50, 1)
 			var/throw_dir = get_dir(src, L)
 			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
 			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
 		else
-			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
+			to_chat(L, span_warning( "\The [src] punches you with incredible force, but you remain in place."))

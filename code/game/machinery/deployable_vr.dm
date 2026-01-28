@@ -42,7 +42,7 @@
 	density = FALSE
 	name = initial(name)
 	desc = initial(desc)
-	visible_message(SPAN_WARNING("[src] topples over!"))
+	visible_message(span_warning("[src] topples over!"))
 
 /obj/structure/barricade/cutout/proc/untopple()
 	if(!toppled)
@@ -52,7 +52,7 @@
 	density = TRUE
 	name = fake_name
 	desc = fake_desc
-	visible_message(SPAN_WARNING("[src] is uprighted to their proper position."))
+	visible_message(span_warning("[src] is uprighted to their proper position."))
 	set_integrity(integrity_max)
 
 /obj/structure/barricade/cutout/atom_break()
@@ -74,7 +74,7 @@
 	. = ..()
 	if(dist <= 1)
 		var/datum/prototype/material/primary = get_primary_material()
-		. += SPAN_NOTICE("... from this distance, they seem to be made of [isnull(primary)? "cardboard" : primary.name] ...")
+		. += span_notice("... from this distance, they seem to be made of [isnull(primary)? "cardboard" : primary.name] ...")
 
 /obj/structure/barricade/cutout/attackby(obj/I, mob/user)
 	if(is_type_in_list(I, painters))

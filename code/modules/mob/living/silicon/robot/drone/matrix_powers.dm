@@ -4,7 +4,7 @@
 	set category = "Matrix"
 
 	if(!master_matrix)
-		to_chat(src, SPAN_WARNING("You do not belong to a matrix!"))
+		to_chat(src, span_warning("You do not belong to a matrix!"))
 		return
 
 	var/datum/drone_matrix/DM = master_matrix
@@ -51,10 +51,10 @@
 	set category = "Matrix"
 
 	if(!LAZYLEN(matrix_upgrades))
-		to_chat(src, SPAN_WARNING("You have no matrix upgrades."))
+		to_chat(src, span_warning("You have no matrix upgrades."))
 		return
 
-	to_chat(src, SPAN_NOTICE("Matrix upgrades active on chassis: [english_list(matrix_upgrades)]"))
+	to_chat(src, span_notice("Matrix upgrades active on chassis: [english_list(matrix_upgrades)]"))
 
 /mob/living/silicon/robot/drone/matriarch/verb/select_matrix_upgrades()
 	set name = "Select Matrix Upgrades"
@@ -62,17 +62,17 @@
 	set category = "Matrix"
 
 	if(!master_matrix)
-		to_chat(src, SPAN_WARNING("You do not belong to a matrix!"))
+		to_chat(src, span_warning("You do not belong to a matrix!"))
 		return
 
 	var/datum/drone_matrix/DM = master_matrix
 	if(!DM.upgrades_remaining)
-		to_chat(src, SPAN_WARNING("The matrix cannot support more upgrades!"))
+		to_chat(src, span_warning("The matrix cannot support more upgrades!"))
 		return
 
 	var/list/selectable_upgrades = ALL_MATRIX_UPGRADES - DM.bought_upgrades
 	if(!length(selectable_upgrades))
-		to_chat(src, SPAN_WARNING("There are no more matrix upgrades to select!"))
+		to_chat(src, span_warning("There are no more matrix upgrades to select!"))
 		return
 
 	var/selected_upgrade = input(src, "Select an upgrade for your matrix drones. ([DM.upgrades_remaining] Upgrades Remaining)", "Matrix Upgrades") as null|anything in selectable_upgrades

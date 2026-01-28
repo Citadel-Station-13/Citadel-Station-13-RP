@@ -24,7 +24,7 @@
 		return TRUE
 	var/denial_reason = fish_source.reason_we_cant_fish(rod, user)
 	if(denial_reason)
-		to_chat(user, SPAN_WARNING(denial_reason))
+		to_chat(user, span_warning(denial_reason))
 		return TRUE
 	start_fishing_challenge(rod, user)
 	return TRUE

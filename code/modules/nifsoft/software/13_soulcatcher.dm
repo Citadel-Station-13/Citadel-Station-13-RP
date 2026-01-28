@@ -179,35 +179,35 @@
 
 			if("Exceptions")
 				var/assembled = islist(visibility_exceptions)? visibility_exceptions.Join("<br>") : "None!"
-				to_chat(nif.human, SPAN_NOTICE("[assembled]"))
-				to_chat(nif.human, SPAN_BOLDNOTICE("These ckeys above will always be allowed to see and request a soulcatcher join, even if visibility is off."))
+				to_chat(nif.human, span_notice("[assembled]"))
+				to_chat(nif.human, span_boldnotice("These ckeys above will always be allowed to see and request a soulcatcher join, even if visibility is off."))
 				var/toggle = input(nif.human, "What ckey do you want to add/remove to the whitelist?", "Whitelist") as text|null
 				if(!toggle)
 					return
 				toggle = ckey(toggle)
 				if(toggle in visibility_exceptions)
 					visibility_exceptions -= toggle
-					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] removed from exceptions."))
+					to_chat(nif.human, span_boldnotice("[toggle] removed from exceptions."))
 				else
 					visibility_exceptions += toggle
-					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to exceptions."))
+					to_chat(nif.human, span_boldnotice("[toggle] added to exceptions."))
 				save_settings()
 				return
 
 			if("Blacklist")
 				var/assembled = islist(visibility_blacklist)? visibility_blacklist.Join("<br>") : "None!"
-				to_chat(nif.human, SPAN_NOTICE("[assembled]"))
-				to_chat(nif.human, SPAN_BOLDNOTICE("These ckeys above will never be allowed to see your soulcatcher and request to join, even while visibility is on."))
+				to_chat(nif.human, span_notice("[assembled]"))
+				to_chat(nif.human, span_boldnotice("These ckeys above will never be allowed to see your soulcatcher and request to join, even while visibility is on."))
 				var/toggle = input(nif.human, "What ckey do you want to add/remove to the blacklist?", "Blacklist") as text|null
 				if(!toggle)
 					return
 				toggle = ckey(toggle)
 				if(toggle in visibility_blacklist)
 					visibility_blacklist -= toggle
-					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] removed from blacklist."))
+					to_chat(nif.human, span_boldnotice("[toggle] removed from blacklist."))
 				else
 					visibility_blacklist += toggle
-					to_chat(nif.human, SPAN_BOLDNOTICE("[toggle] added to blacklist."))
+					to_chat(nif.human, span_boldnotice("[toggle] added to blacklist."))
 				save_settings()
 				return
 
@@ -482,7 +482,7 @@
 			return
 		if (src.client)
 			if (client.prefs.muted & MUTE_IC)
-				to_chat(src, SPAN_WARNING("You cannot send IC messages (muted)."))
+				to_chat(src, span_warning("You cannot send IC messages (muted)."))
 				return
 		if (stat)
 			return
@@ -494,7 +494,7 @@
 
 /mob/living/carbon/brain/caught_soul/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
 	if(subtle || anti_ghost)
-		to_chat(src, SPAN_BOLDANNOUNCE("Your [SPAN_TOOLTIP(raw_html, "message")] was not sent. Soulcatchers do not currently support subtle or subtler-anti-ghost."))
+		to_chat(src, span_boldannounce("Your [span_tooltip(raw_html, "message")] was not sent. Soulcatchers do not currently support subtle or subtler-anti-ghost."))
 		return
 	soulcatcher.emote_into(raw_html, src, eyeobj, skip_name = TRUE)
 
@@ -502,7 +502,7 @@
 	set name = "Resist"
 	set category = VERB_CATEGORY_IC
 
-	to_chat(src,SPAN_WARNING("There's no way out! You're stuck in VR."))
+	to_chat(src,span_warning("There's no way out! You're stuck in VR."))
 
 /mob/living/carbon/brain/caught_soul/set_typing_indicator(state)
 	return eyeobj?.set_typing_indicator(state)
@@ -609,21 +609,21 @@
 	src.nsay_act(message)
 
 /mob/proc/nsay_act(message)
-	to_chat(src, SPAN_WARNING("You must be a humanoid with a NIF implanted to use that."))
+	to_chat(src, span_warning("You must be a humanoid with a NIF implanted to use that."))
 
 /mob/living/carbon/human/nsay_act(message)
 	if(stat != CONSCIOUS)
-		to_chat(src, SPAN_WARNING("You can't use NSay while unconscious."))
+		to_chat(src, span_warning("You can't use NSay while unconscious."))
 		return
 	if(!nif)
-		to_chat(src, SPAN_WARNING("You can't use NSay without a NIF."))
+		to_chat(src, span_warning("You can't use NSay without a NIF."))
 		return
 	var/datum/nifsoft/soulcatcher/SC = nif.imp_check(NIF_SOULCATCHER)
 	if(!SC)
-		to_chat(src, SPAN_WARNING("You need the Soulcatcher software to use NSay."))
+		to_chat(src, span_warning("You need the Soulcatcher software to use NSay."))
 		return
 	if(!SC.brainmobs.len)
-		to_chat(src, SPAN_WARNING("You need a loaded mind to use NSay."))
+		to_chat(src, span_warning("You need a loaded mind to use NSay."))
 		return
 	if(!message)
 		message = input(usr, "Type a message to say.","Speak into Soulcatcher") as message|null
@@ -639,21 +639,21 @@
 	src.nme_act(message)
 
 /mob/proc/nme_act(message)
-	to_chat(src, SPAN_WARNING("You must be a humanoid with a NIF implanted to use that."))
+	to_chat(src, span_warning("You must be a humanoid with a NIF implanted to use that."))
 
 /mob/living/carbon/human/nme_act(message)
 	if(stat != CONSCIOUS)
-		to_chat(src, SPAN_WARNING("You can't use NMe while unconscious."))
+		to_chat(src, span_warning("You can't use NMe while unconscious."))
 		return
 	if(!nif)
-		to_chat(src, SPAN_WARNING("You can't use NMe without a NIF."))
+		to_chat(src, span_warning("You can't use NMe without a NIF."))
 		return
 	var/datum/nifsoft/soulcatcher/SC = nif.imp_check(NIF_SOULCATCHER)
 	if(!SC)
-		to_chat(src, SPAN_WARNING("You need the Soulcatcher software to use NMe."))
+		to_chat(src, span_warning("You need the Soulcatcher software to use NMe."))
 		return
 	if(!SC.brainmobs.len)
-		to_chat(src, SPAN_WARNING("You need a loaded mind to use NMe."))
+		to_chat(src, span_warning("You need a loaded mind to use NMe."))
 		return
 
 	if(!message)

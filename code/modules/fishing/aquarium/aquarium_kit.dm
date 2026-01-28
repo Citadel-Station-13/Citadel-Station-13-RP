@@ -20,4 +20,4 @@
 
 /obj/item/aquarium_kit/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("There's instruction and tools necessary to build aquarium inside. All you need is to start crafting."))
+	to_chat(user, span_notice("There's instruction and tools necessary to build aquarium inside. All you need is to start crafting."))

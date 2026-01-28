@@ -79,7 +79,7 @@
 
 /obj/item/tool/wrench/clockwork/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_BRASS("Holding onto the tool makes it thrum in your hand, as if anticipating the work that needs to be done.")
+	. += span_brass("Holding onto the tool makes it thrum in your hand, as if anticipating the work that needs to be done.")
 
 /obj/item/tool/wrench/cyborg
 	name = "automatic wrench"

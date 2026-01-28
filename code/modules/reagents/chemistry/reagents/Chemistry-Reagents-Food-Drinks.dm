@@ -922,7 +922,7 @@
 	metabolism.legacy_current_holder.remove_reagent(/datum/reagent/capsaicin, 10 * removed)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
 		if(prob(5))
-			to_chat(M, SPAN_WARNING("You feel nauseous!"))
+			to_chat(M, span_warning("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -1524,7 +1524,7 @@
 			M.drowsyness = max(M.drowsyness, 60)
 	if(contains_lactose == TRUE && alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat(M, SPAN_WARNING("You feel nauseous!"))
+			to_chat(M, span_warning("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M
@@ -4563,7 +4563,7 @@
 	if (dfactor)
 		M.take_random_targeted_damage(brute = 0, brute = removed * 1.5 * dfactor)
 		if (lastburnmessage+100 < world.time	)
-			to_chat(M, SPAN_DANGER("Searing hot oil burns you, wash it off quick!"))
+			to_chat(M, span_danger("Searing hot oil burns you, wash it off quick!"))
 			lastburnmessage = world.time
 
 /datum/reagent/nutriment/triglyceride/oil/corn
@@ -4618,7 +4618,7 @@
 /datum/reagent/nutriment/protein/cheese/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism) //Cheese is a kind of milk.
 	if(alien == IS_NARAMADI)
 		if(prob(5))
-			to_chat(M, SPAN_WARNING("You feel nauseous!"))
+			to_chat(M, span_warning("You feel nauseous!"))
 			return
 		if(prob(20))
 			var/mob/living/L = M

@@ -13,11 +13,11 @@
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))
-		to_chat(usr, SPAN_WARNING("You can't do that."))
+		to_chat(usr, span_warning("You can't do that."))
 		return
 
 	if(!Adjacent(usr))
-		to_chat(usr, SPAN_WARNING("You can't reach it."))
+		to_chat(usr, span_warning("You can't reach it."))
 		return
 
 	if(enabled)
@@ -37,11 +37,11 @@
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))
-		to_chat(usr, SPAN_WARNING("You can't do that."))
+		to_chat(usr, span_warning("You can't do that."))
 		return
 
 	if(!Adjacent(usr))
-		to_chat(usr, SPAN_WARNING("You can't reach it."))
+		to_chat(usr, span_warning("You can't reach it."))
 		return
 
 	proc_eject_id(usr)
@@ -53,11 +53,11 @@
 	set src in view(1)
 
 	if(usr.incapacitated() || !istype(usr, /mob/living))
-		to_chat(usr, SPAN_WARNING("You can't do that."))
+		to_chat(usr, span_warning("You can't do that."))
 		return
 
 	if(!Adjacent(usr))
-		to_chat(usr, SPAN_WARNING("You can't reach it."))
+		to_chat(usr, span_warning("You can't reach it."))
 		return
 
 	proc_eject_usb(usr)

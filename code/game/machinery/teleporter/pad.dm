@@ -54,7 +54,7 @@
 	if(!com.locked)
 		return
 	if(!com.projector.consume_charge(M))
-		audible_message(SPAN_BOLDWARNING("[src] buzzes harshly, \"Power reserves insufficent for teleport. Lighten mass load or await recharge.\""))
+		audible_message(span_boldwarning("[src] buzzes harshly, \"Power reserves insufficent for teleport. Lighten mass load or await recharge.\""))
 		playsound(src.loc, 'sound/machines/apc_nopower.ogg', 50, 0)
 		return
 	do_teleport(M, com.locked)

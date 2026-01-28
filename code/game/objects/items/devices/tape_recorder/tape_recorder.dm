@@ -73,7 +73,7 @@
 /obj/item/tape_recorder/proc/stop_recording(mob/user, silent)
 	if(!recording)
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] isn't recording."))
+			to_chat(user, span_warning("[src] isn't recording."))
 		return
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
 	if(!writer)
@@ -83,55 +83,55 @@
 	_release_lock()
 	recording = FALSE
 	if(user && !silent)
-		to_chat(user, SPAN_NOTICE("Recording stopped."))
+		to_chat(user, span_notice("Recording stopped."))
 	update_icon()
 
 /obj/item/tape_recorder/proc/start_recording(mob/user, silent)
 	if(!tape)
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("There's no tape in [src]!"))
+			to_chat(user, span_warning("There's no tape in [src]!"))
 		return
 	if(tape.ruined)
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] makes a scratchy noise."))
+			to_chat(user, span_warning("[src] makes a scratchy noise."))
 		return
 	if(recording)
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] is already recording."))
+			to_chat(user, span_warning("[src] is already recording."))
 		return
 	if(playing)
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] can't both record and play at the same time."))
+			to_chat(user, span_warning("[src] can't both record and play at the same time."))
 		return
 	if(is_busy())
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] is busy!"))
+			to_chat(user, span_warning("[src] is busy!"))
 		return
 	if(obj_flags & OBJ_EMAGGED)
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] makes a scratchy noise."))
+			to_chat(user, span_warning("[src] makes a scratchy noise."))
 		return
 	if(tape.full())
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("The tape is full!"))
+			to_chat(user, span_warning("The tape is full!"))
 		return
 	if(!_write_lock())
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("The tape is busy."))
+			to_chat(user, span_warning("The tape is busy."))
 		return
 	var/datum/cassette_tape_iterator/write/writer = tape_iterator
 	writer.mark_start()
 	if(user && !silent)
-		to_chat(user, SPAN_NOTICE("Recording started."))
+		to_chat(user, span_notice("Recording started."))
 	recording = TRUE
 	update_icon()
 
 /obj/item/tape_recorder/proc/stop_playing(mob/user, silent, ending)
 	if(!silent)
 		if(ending)
-			audible_message("[SPAN_BOLD("[src]")]: End of recording.")
+			audible_message("[span_bold("[src]")]: End of recording.")
 		else
-			audible_message("[SPAN_BOLD("[src]")]: Playback stopped.")
+			audible_message("[span_bold("[src]")]: Playback stopped.")
 
 	if(play_timerid)
 		deltimer(play_timerid)
@@ -151,29 +151,29 @@
 /obj/item/tape_recorder/proc/start_playing(mob/user, silent)
 	if(!tape)
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("There's no tape in [src]."))
+			to_chat(user, span_warning("There's no tape in [src]."))
 		return
 	if(tape.ruined)
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] makes a scratchy noise."))
+			to_chat(user, span_warning("[src] makes a scratchy noise."))
 		return
 	if(is_recording())
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] can't playback while recording."))
+			to_chat(user, span_warning("[src] can't playback while recording."))
 		return
 	if(is_playing())
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] is already playing!"))
+			to_chat(user, span_warning("[src] is already playing!"))
 		return
 	if(!_read_lock())
 		if(user && !silent)
-			to_chat(user, SPAN_WARNING("[src] failed to lock the tape for reading."))
+			to_chat(user, span_warning("[src] failed to lock the tape for reading."))
 		return
 	if(!tape.reel || !length(tape.reel))
-		to_chat(user, SPAN_WARNING("[src] has nothing to play!"))
+		to_chat(user, span_warning("[src] has nothing to play!"))
 		return
 	if(!silent)
-		audible_message("[SPAN_BOLD("[src]")]: Playback started.")
+		audible_message("[span_bold("[src]")]: Playback started.")
 	playing = TRUE
 	update_icon()
 	_play_next()
@@ -192,15 +192,15 @@
 		var/opcode = got[CASSETTE_TAPE_DATA_OPCODE]
 		switch(opcode)
 			if(/datum/cassette_opcode/next_is_audible_emote)
-				audible_message("[SPAN_BOLD("[src]")]: *[SPAN_BOLD("-someone-")] [msg]*")
+				audible_message("[span_bold("[src]")]: *[span_bold("-someone-")] [msg]*")
 			if(/datum/cassette_opcode/next_is_direct_broadcast)
-				audible_message("[SPAN_BOLD("[src]")]: [msg]")
+				audible_message("[span_bold("[src]")]: [msg]")
 			else
-				audible_message("[SPAN_BOLD("[src]")]: [speaker] [L.speech_verb], <span class='[L.colour]'>[msg]</span>", L)
+				audible_message("[span_bold("[src]")]: [speaker] [L.speech_verb], <span class='[L.colour]'>[msg]</span>", L)
 	// delays
 	var/delay = got[CASSETTE_TAPE_DATA_DELAY]
 	if(delay > play_skip_threshold)
-		audible_message("[SPAN_BOLD("[src]")]: Skipping [round(delay * 0.1)] seconds of silence.")
+		audible_message("[span_bold("[src]")]: Skipping [round(delay * 0.1)] seconds of silence.")
 		delay = 3 SECONDS
 	play_timerid = addtimer(CALLBACK(src, PROC_REF(_play_next)), delay, TIMER_STOPPABLE)
 
@@ -351,7 +351,7 @@
 	if(usr.incapacitated())
 		return
 	if(!is_busy())
-		to_chat(usr, SPAN_WARNING("[src] isn't doing anything right now."))
+		to_chat(usr, span_warning("[src] isn't doing anything right now."))
 	stop_everything(usr)
 
 /obj/item/tape_recorder/verb/wipe_tape()
@@ -364,16 +364,16 @@
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
 	if(!tape)
-		to_chat(usr, SPAN_WARNING("The tape recorder has no tape inside."))
+		to_chat(usr, span_warning("The tape recorder has no tape inside."))
 		return
 	if(tape.ruined)
 		to_chat(usr, "<span class='warning'>The tape recorder makes a scratchy noise.</span>")
 		return
 	if(is_busy())
-		to_chat(usr, SPAN_WARNING("The tape recorder is busy!"))
+		to_chat(usr, span_warning("The tape recorder is busy!"))
 		return
 	tape.wipe()
-	to_chat(usr, SPAN_WARNING("You wipe the tape."))
+	to_chat(usr, span_warning("You wipe the tape."))
 
 /obj/item/tape_recorder/verb/print_transcript()
 	set name = "Print Transcript"
@@ -397,7 +397,7 @@
 		to_chat(usr, "<span class='notice'>You can't print the transcript while playing or recording!</span>")
 		return
 	if(!_read_lock())
-		to_chat(usr, SPAN_WARNING("The tape is busy!"))
+		to_chat(usr, span_warning("The tape is busy!"))
 		return
 
 	to_chat(usr, "<span class='notice'>Transcript printed.</span>")

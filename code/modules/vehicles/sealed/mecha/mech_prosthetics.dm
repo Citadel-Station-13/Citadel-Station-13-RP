@@ -33,11 +33,11 @@
 	if(istype(I,/obj/item/disk/species))
 		var/obj/item/disk/species/D = I
 		if(!SScharacters.resolve_species(D.species))
-			to_chat(user, SPAN_WARNING("This disk seems to be corrupted!"))
+			to_chat(user, span_warning("This disk seems to be corrupted!"))
 		else
-			to_chat(user, SPAN_NOTICE("Uploading modification files for [D.species]..."))
+			to_chat(user, span_notice("Uploading modification files for [D.species]..."))
 			if(do_after(user,50,src))
 				species_types |= D.species
-				to_chat(user, SPAN_NOTICE("Uploaded [D.species] files!"))
+				to_chat(user, span_notice("Uploaded [D.species] files!"))
 				qdel(I)
 		return

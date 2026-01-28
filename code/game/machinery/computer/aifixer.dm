@@ -18,16 +18,16 @@
 	if(I.is_screwdriver())
 		if(occupier)
 			if(machine_stat & (NOPOWER|BROKEN))
-				to_chat(user, SPAN_WARNING("The screws on [name]'s screen won't budge."))
+				to_chat(user, span_warning("The screws on [name]'s screen won't budge."))
 			else
-				to_chat(user, SPAN_WARNING("The screws on [name]'s screen won't budge and it emits a warning beep."))
+				to_chat(user, span_warning("The screws on [name]'s screen won't budge and it emits a warning beep."))
 			return
 	if(istype(I, /obj/item/aicard))
 		if(machine_stat & (NOPOWER|BROKEN))
-			to_chat(user, SPAN_WARNING("This terminal isn't functioning right now."))
+			to_chat(user, span_warning("This terminal isn't functioning right now."))
 			return
 		if(restoring)
-			to_chat(user, SPAN_DANGER("Terminal is busy restoring [occupier] right now."))
+			to_chat(user, span_danger("Terminal is busy restoring [occupier] right now."))
 			return
 
 		var/obj/item/aicard/card = I
@@ -36,7 +36,7 @@
 				occupier = null
 		else if(card.carded_ai)
 			var/mob/living/silicon/ai/new_occupant = card.carded_ai
-			to_chat(new_occupant, SPAN_NOTICE("You have been transferred into a stationary terminal. Sadly there is no remote access from here."))
+			to_chat(new_occupant, span_notice("You have been transferred into a stationary terminal. Sadly there is no remote access from here."))
 			to_chat(user, "<span class='notice'>Transfer Successful:</span> [new_occupant] placed within stationary terminal.")
 			new_occupant.forceMove(src)
 			new_occupant.cancel_camera()
@@ -45,7 +45,7 @@
 			card.clear()
 			update_icon()
 		else
-			to_chat(user, SPAN_NOTICE("There is no AI loaded onto this computer, and no AI loaded onto [I]. What exactly are you trying to do here?"))
+			to_chat(user, span_notice("There is no AI loaded onto this computer, and no AI loaded onto [I]. What exactly are you trying to do here?"))
 	return ..()
 
 /obj/machinery/computer/aifixer/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)

@@ -17,13 +17,13 @@
 			affected_mobs |= M
 			switch(rand(1,4))
 				if(1)
-					M.show_message(SPAN_NOTICE("You shudder as if cold..."), SAYCODE_TYPE_VISIBLE)
+					M.show_message(span_notice("You shudder as if cold..."), SAYCODE_TYPE_VISIBLE)
 				if(2)
-					M.show_message(SPAN_NOTICE("You feel something gliding across your back..."), SAYCODE_TYPE_VISIBLE)
+					M.show_message(span_notice("You feel something gliding across your back..."), SAYCODE_TYPE_VISIBLE)
 				if(3)
-					M.show_message(SPAN_NOTICE("Your eyes twitch, you feel like something you can't see is here..."), SAYCODE_TYPE_VISIBLE)
+					M.show_message(span_notice("Your eyes twitch, you feel like something you can't see is here..."), SAYCODE_TYPE_VISIBLE)
 				if(4)
-					M.show_message(SPAN_NOTICE("You notice something moving out of the corner of your eye, but nothing is there..."), SAYCODE_TYPE_VISIBLE)
+					M.show_message(span_notice("You notice something moving out of the corner of your eye, but nothing is there..."), SAYCODE_TYPE_VISIBLE)
 
 			for(var/obj/W in orange(5,M))
 				if(prob(25) && !W.anchored)
@@ -43,6 +43,6 @@
 
 	sleep(100)
 	for(var/mob/M in affected_mobs)
-		M.show_message(SPAN_NOTICE("The chilling wind suddenly stops..."), SAYCODE_TYPE_VISIBLE)
+		M.show_message(span_notice("The chilling wind suddenly stops..."), SAYCODE_TYPE_VISIBLE)
 	affected_mobs.Cut()
 	affected_areas.Cut()

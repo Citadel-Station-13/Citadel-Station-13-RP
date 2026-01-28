@@ -40,7 +40,7 @@
 			hardsuit.force_rest(src)
 	else
 		toggle_intentionally_resting(TRUE)
-		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
+		to_chat(src, span_notice("You are now [resting ? "resting" : "getting up"]"))
 
 	update_mobility()
 

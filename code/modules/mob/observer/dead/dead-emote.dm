@@ -3,7 +3,7 @@
 
 /mob/observer/dead/process_emote(datum/emote/emote, raw_parameter_string, datum/event_args/actor/actor, used_binding)
 	actor.chat_feedback(
-		SPAN_WARNING("Ghosts can't send normal emotes!"),
+		span_warning("Ghosts can't send normal emotes!"),
 		target = src,
 	)
 	return FALSE

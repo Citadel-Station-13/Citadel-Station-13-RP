@@ -113,7 +113,7 @@
 
 /mob/living/simple_mob/mechanical/mecha/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(prob(deflect_chance))
-		visible_message(SPAN_WARNING( "\The [proj] is deflected by \the [src]'s armor!"))
+		visible_message(span_warning( "\The [proj] is deflected by \the [src]'s armor!"))
 		spawn(-1)
 			deflect_sprite()
 		return PROJECTILE_IMPACT_BLOCKED
@@ -128,7 +128,7 @@
 
 /mob/living/simple_mob/mechanical/mecha/attackby(obj/item/I, mob/user)
 	if(prob(deflect_chance))
-		visible_message(SPAN_WARNING( "\The [user]'s [I] bounces off \the [src]'s armor!"))
+		visible_message(span_warning( "\The [user]'s [I] bounces off \the [src]'s armor!"))
 		deflect_sprite()
 		user.setClickCooldownLegacy(user.get_attack_speed_legacy(I))
 		return

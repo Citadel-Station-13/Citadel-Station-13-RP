@@ -49,7 +49,7 @@
 		return TRUE
 	// end
 	if(A in buckled_mobs)
-		to_chat(user, SPAN_WARNING("[A] is already buckled to [src]!"))
+		to_chat(user, span_warning("[A] is already buckled to [src]!"))
 		return TRUE
 	user_buckle_mob(A, BUCKLE_OP_DEFAULT_INTERACTION, user)
 	add_fingerprint(user)
@@ -106,15 +106,15 @@
 /atom/movable/proc/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)
 		M.visible_message(
-			SPAN_NOTICE("[M] was unbuckled from [src] by [user]."),
-			SPAN_NOTICE("[user] unbuckles you from [src]."),
-			SPAN_NOTICE("You hear shuffling and metal clanking.")
+			span_notice("[M] was unbuckled from [src] by [user]."),
+			span_notice("[user] unbuckles you from [src]."),
+			span_notice("You hear shuffling and metal clanking.")
 		)
 	else
 		M.visible_message(
-			SPAN_NOTICE("[M] unbuckles themselves from [src]."),
-			SPAN_NOTICE("You unbuckle yourself from [src]."),
-			SPAN_NOTICE("You hear shuffling and metal clanking.")
+			span_notice("[M] unbuckles themselves from [src]."),
+			span_notice("You unbuckle yourself from [src]."),
+			span_notice("You hear shuffling and metal clanking.")
 		)
 
 /**
@@ -142,15 +142,15 @@
 /atom/movable/proc/user_buckle_feedback(mob/M, flags, mob/user, semantic)
 	if(user != M)
 		M.visible_message(
-			SPAN_NOTICE("[user] buckles [M] to [src]."),
-			SPAN_NOTICE("[user] buckles you to [src]."),
-			SPAN_NOTICE("You hear shuffling and metal clanking.")
+			span_notice("[user] buckles [M] to [src]."),
+			span_notice("[user] buckles you to [src]."),
+			span_notice("You hear shuffling and metal clanking.")
 		)
 	else
 		M.visible_message(
-			SPAN_NOTICE("[user] buckles [M] to [src]."),
-			SPAN_NOTICE("You buckle yourself to [src]."),
-			SPAN_NOTICE("You hear shuffling and metal clanking.")
+			span_notice("[user] buckles [M] to [src]."),
+			span_notice("You buckle yourself to [src]."),
+			span_notice("You hear shuffling and metal clanking.")
 		)
 
 /**
@@ -251,19 +251,19 @@
 	if(!(flags & BUCKLE_OP_IGNORE_LOC) && !M.Adjacent(src))
 		return FALSE
 	if(length(buckled_mobs) >= buckle_max_mobs)
-		to_chat(user, SPAN_NOTICE("[src] can't buckle any more people."))
+		to_chat(user, span_notice("[src] can't buckle any more people."))
 		return FALSE
 	if(M.buckled)
 		if(M.buckled == src)
-			to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] already buckled to [src]!"))
+			to_chat(user, span_warning("[M == user? "You are" : "[M] is"] already buckled to [src]!"))
 			return FALSE
-		to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] already buckled to something!"))
+		to_chat(user, span_warning("[M == user? "You are" : "[M] is"] already buckled to something!"))
 		return FALSE
 	if((buckle_flags & BUCKLING_REQUIRES_RESTRAINTS) && !M.restrained())
-		to_chat(user, SPAN_WARNING("[M == user? "You need" : "[M] needs"] to be restrained to be buckled to [src]!"))
+		to_chat(user, span_warning("[M == user? "You need" : "[M] needs"] to be restrained to be buckled to [src]!"))
 		return FALSE
 	// if(length(M.pinned))
-	// 	to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] pinned to something!"))
+	// 	to_chat(user, span_warning("[M == user? "You are" : "[M] is"] pinned to something!"))
 	// 	return FALSE
 	return TRUE
 
@@ -312,14 +312,14 @@
 	// default restrained handling
 	if(buckle_restrained_resist_time && M.restrained())
 		M.visible_message(
-			SPAN_DANGER("[M] attempts to unbuckle themselves from [src]!"),
-			SPAN_WARNING("You attempt to unbuckle yourself. (This will take a little bit and you need to stand still.)")
+			span_danger("[M] attempts to unbuckle themselves from [src]!"),
+			span_warning("You attempt to unbuckle yourself. (This will take a little bit and you need to stand still.)")
 		)
 		if(!do_after(M, buckle_restrained_resist_time, src, mobility_flags = MOBILITY_CAN_RESIST))
 			return FALSE
 		M.visible_message(
-			SPAN_DANGER("[M] manages to unbuckle themselves."),
-			SPAN_NOTICE("You successfully unbuckle yourself.")
+			span_danger("[M] manages to unbuckle themselves."),
+			span_notice("You successfully unbuckle yourself.")
 		)
 	return TRUE
 
@@ -376,7 +376,7 @@
 	if(user.restrained())
 		return
 	unbuckle_mob(user, BUCKLE_OP_FORCE)
-	visible_message(SPAN_WARNING("[user] is freed from [src]!"))
+	visible_message(span_warning("[user] is freed from [src]!"))
 
 /**
  * get the buckle_lying field for a given mob.

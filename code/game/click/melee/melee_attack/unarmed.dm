@@ -120,7 +120,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		if(where_hit)
 			where_phrase = " in \the [where_hit]"
 	attacker.visible_message(
-		SPAN_DANGER("[target] has been [islist(verb_past_participle)? pick(verb_past_participle) : verb_past_participle][where_phrase] by [attacker]!"),
+		span_danger("[target] has been [islist(verb_past_participle)? pick(verb_past_participle) : verb_past_participle][where_phrase] by [attacker]!"),
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 	)
 	return TRUE

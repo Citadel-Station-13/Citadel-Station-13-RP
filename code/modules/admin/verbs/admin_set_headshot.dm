@@ -10,12 +10,12 @@
 		return
 	var/datum/preferences/their_prefs = SScharacters.fetch_preferences_datum(their_ckey, TRUE)
 	if(isnull(their_prefs))
-		to_chat(src, SPAN_WARNING("[their_ckey] does not exist."))
+		to_chat(src, span_warning("[their_ckey] does not exist."))
 		return
 	//! WARNING WARNING FUCKING WARNING DIRECT SAVEFILE MANIPULATIONS DO NOT TOUCH THIS UNLESS YOU KNOW WHAT YOU ARE DOING
 	//  todo: /datum/character so we don't do this atrocious shit WHEN
 	if(isnull(their_prefs.path))
-		to_chat(src, SPAN_DANGER("[their_ckey] doesn't have a valid path?? how??"))
+		to_chat(src, span_danger("[their_ckey] doesn't have a valid path?? how??"))
 		return
 	var/savefile/their_savefile = new(their_prefs.path)
 	var/list/loaded_characters = list()
@@ -43,7 +43,7 @@
 	var/chosen_original_name = loaded_characters[chosen_character][2]
 	var/input_headshot = input(src, "Enter the URL for the headshot image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
 	var/input_fullref = input(src, "Enter the URL for the full reference image. (Cancel to skip, empty string to remove)", "Reference Selection") as text|null
-	to_chat(src, SPAN_BOLDNOTICE("Setting references for [their_ckey] slot [chosen_slot] ([chosen_original_name]) to \
+	to_chat(src, span_boldnotice("Setting references for [their_ckey] slot [chosen_slot] ([chosen_original_name]) to \
 		[isnull(input_headshot)? "UNCHANGED" : (input_headshot || "EMPTY")] and [isnull(input_fullref)? "UNCHANGED" : (input_fullref || "EMPTY")]"))
 	if(alert(src, "Confirm?", "Selection", "Yes", "No") == "No")
 		return
@@ -59,7 +59,7 @@
 		[isnull(input_headshot)? "UNCHANGED" : (input_headshot || "EMPTY")] and [isnull(input_fullref)? "UNCHANGED" : (input_fullref || "EMPTY")]")
 	var/client/theyre_here = GLOB.directory[their_ckey]
 	if(!isnull(theyre_here))
-		to_chat(theyre_here, SPAN_BOLDNOTICE("[chosen_character]'s image references have been edited by an admin."))
+		to_chat(theyre_here, span_boldnotice("[chosen_character]'s image references have been edited by an admin."))
 		var/mob/their_mob = theyre_here?.mob
 		if(!isnull(their_mob) && (their_mob.real_name == chosen_original_name) && isliving(their_mob))
 			var/mob/living/casted = their_mob

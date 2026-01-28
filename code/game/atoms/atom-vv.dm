@@ -52,7 +52,7 @@
 						else
 							valid_id = TRUE
 						if(!valid_id)
-							to_chat(usr, SPAN_WARNING("A reagent with that ID doesn't exist!"), confidential = TRUE)
+							to_chat(usr, span_warning("A reagent with that ID doesn't exist!"), confidential = TRUE)
 				if("Choose from a list")
 					chosen_id = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in sortList(subtypesof(/datum/reagent), GLOBAL_PROC_REF(cmp_typepaths_asc))
 				if("I'm feeling lucky")
@@ -62,7 +62,7 @@
 				if(amount)
 					reagents.add_reagent(chosen_id, amount)
 					log_admin("[key_name(usr)] has added [amount] units of [chosen_id] to [src]")
-					message_admins(SPAN_NOTICE("[key_name(usr)] has added [amount] units of [chosen_id] to [src]"))
+					message_admins(span_notice("[key_name(usr)] has added [amount] units of [chosen_id] to [src]"))
 
 	if(href_list[VV_HK_TRIGGER_EXPLOSION] && check_rights(R_FUN))
 		usr.client.cmd_admin_explosion(src)
@@ -163,7 +163,7 @@
 			built[key] = text2num(result["values"][key])
 		set_armor(armor.overwritten(built))
 		log_admin("[key_name(usr)] modified the armor on [src] ([type]) to [armor.log_string()]")
-		message_admins(SPAN_NOTICE("[key_name_admin(usr)] modified the armor on [src] ([type]) to [armor.log_string()]"))
+		message_admins(span_notice("[key_name_admin(usr)] modified the armor on [src] ([type]) to [armor.log_string()]"))
 		// todo: proper tgui for armor mods
 
 /atom/vv_get_header()

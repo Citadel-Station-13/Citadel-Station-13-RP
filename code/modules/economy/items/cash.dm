@@ -107,7 +107,7 @@
 	return (prevent_types & PAYMENT_TYPE_CASH)? NOT_STATIC_CURRENCY : PLURAL_STATIC_CURRENCY
 
 /obj/item/spacecash/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	user.visible_message(SPAN_NOTICE("[user] inserts some cash into [target]."), SPAN_NOTICE("You insert [amount] [CURRENCY_NAME_PLURAL_PROPER] into [target]."), SPAN_NOTICE("You hear some papers shuffling."), range)
+	user.visible_message(span_notice("[user] inserts some cash into [target]."), span_notice("You insert [amount] [CURRENCY_NAME_PLURAL_PROPER] into [target]."), span_notice("You hear some papers shuffling."), range)
 
 /obj/item/spacecash/consume_static_currency(amount, force, mob/user, atom/target, range)
 	if(force)
@@ -210,7 +210,7 @@
 	return (prevent_types & PAYMENT_TYPE_CHARGE_CARD)? NOT_STATIC_CURRENCY : DISCRETE_STATIC_CURRENCY
 
 /obj/item/spacecash/ewallet/do_static_currency_feedback(amount, mob/user, atom/target, range)
-	visible_message(SPAN_NOTICE("[user] swipes [src] through [target]."), SPAN_NOTICE("You swipe [src] through [target]."), SPAN_NOTICE("You hear a card swipe."), range)
+	visible_message(span_notice("[user] swipes [src] through [target]."), span_notice("You swipe [src] through [target]."), span_notice("You hear a card swipe."), range)
 
 /obj/item/spacecash/ewallet/amount_static_currency()
 	return worth

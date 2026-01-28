@@ -141,7 +141,7 @@
 	if(!can_be_hooked(target_atom))
 		return FALSE
 	if(ismob(target_atom) && TIMER_COOLDOWN_CHECK(src, CD_INDEX_FISHING_ROD_MOB_HOOK))
-		user.action_feedback(SPAN_WARNING("You can't hook another mob so quickly."), src)
+		user.action_feedback(span_warning("You can't hook another mob so quickly."), src)
 		return TRUE
 	currently_hooked_item = target_atom
 	hooked_item_fishing_line = create_fishing_line(target_atom)
@@ -305,7 +305,7 @@
 		if(bait)
 			user.put_in_hands_or_drop(bait)
 			if(use_slot(ROD_SLOT_BAIT, user, bait))
-				user.action_feedback(SPAN_NOTICE("You take a piece of bait out of [can] and hook it onto [src]."), src)
+				user.action_feedback(span_notice("You take a piece of bait out of [can] and hook it onto [src]."), src)
 			SStgui.update_uis(src)
 		return TRUE
 	return ..()

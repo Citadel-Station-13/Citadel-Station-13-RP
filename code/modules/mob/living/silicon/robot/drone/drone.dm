@@ -401,7 +401,7 @@
 /mob/living/silicon/robot/drone/matriarch/transfer_personality(client/player)
 	. = ..()
 	assign_drone_to_matrix(src, matrix_tag)
-	master_matrix.message_drones(SPAN_NOTICE("Energy surges through your circuits. The matriarch has come online."))
+	master_matrix.message_drones(span_notice("Energy surges through your circuits. The matriarch has come online."))
 
 /mob/living/silicon/robot/drone/matriarch/ghostize(can_reenter_corpse, should_set_timer)
 	. = ..()
@@ -410,7 +410,7 @@
 	if(src in living_mob_list) // needs to exist to reopen spawn atom
 		if(master_matrix)
 			master_matrix.remove_drone(WEAKREF(src))
-			master_matrix.message_drones(SPAN_NOTICE("Your circuits dull. The matriarch has gone offline."))
+			master_matrix.message_drones(span_notice("Your circuits dull. The matriarch has gone offline."))
 			master_matrix = null
 		updatename(initial(name))
 		request_player()

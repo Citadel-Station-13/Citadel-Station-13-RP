@@ -74,7 +74,7 @@
 		if("me")
 			if(!length(raw_params))
 				actor.chat_feedback(
-					SPAN_WARNING("You can't custom emote an empty string!"),
+					span_warning("You can't custom emote an empty string!"),
 					target = src,
 				)
 				return EMOTE_INVOKE_ERRORED

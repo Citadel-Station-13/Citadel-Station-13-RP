@@ -1,6 +1,6 @@
 /datum/species/shapeshifter/holosphere/proc/try_transform(force = FALSE)
 	if(!force && holosphere_shell.hologram.incapacitated(INCAPACITATION_ALL))
-		to_chat(holosphere_shell.hologram, SPAN_WARNING("You can't do that right now!"))
+		to_chat(holosphere_shell.hologram, span_warning("You can't do that right now!"))
 		return
 	if(force || !IS_DEAD(holosphere_shell))
 		holosphere_shell.name = holosphere_shell.hologram.name

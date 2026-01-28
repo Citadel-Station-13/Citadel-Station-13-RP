@@ -363,9 +363,9 @@ GLOBAL_LIST(topic_status_cache)
 			return // no thank you
 			// log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
 			// message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
-		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting World immediately due to host request."))
+		to_chat(world, span_boldannounce("Rebooting World immediately due to host request."))
 	else
-		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting world..."))
+		to_chat(world, span_boldannounce("Rebooting world..."))
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
 		Master.Shutdown() //run SS shutdowns

@@ -362,12 +362,12 @@
 		return
 	if(!keycheck(M))
 		if(CHATSPAM_THROTTLE_DEFAULT)
-			to_chat(M, SPAN_WARNING("You must have one of the keys in your hand to drive [AM]!"))
+			to_chat(M, span_warning("You must have one of the keys in your hand to drive [AM]!"))
 		return FALSE
 	var/turf/next = get_step(AM, dir)
 	if(!_check_turf(next))
 		if(CHATSPAM_THROTTLE_DEFAULT)
-			to_chat(M, SPAN_WARNING("[parent] cannot drive onto [next]!"))
+			to_chat(M, span_warning("[parent] cannot drive onto [next]!"))
 		return FALSE
 	if(!process_spacemove(dir))
 		return FALSE
@@ -430,47 +430,47 @@
 	if(M && (flags & CF_RIDING_CHECK_RESTRAINED) && M.restrained())
 		if(notify && user)
 			if(we_are_the_vehicle)
-				to_chat(user, SPAN_WARNING("You cannot carry people while restrained!"))
+				to_chat(user, span_warning("You cannot carry people while restrained!"))
 			else if(user == AM)
-				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while restrained!"))
+				to_chat(user, span_warning("You cannot ride on [parent] while restrained!"))
 			else
-				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie restrained!"))
+				to_chat(user, span_warning("[AM] cannot ride on [parent] whlie restrained!"))
 		return FALSE
 	if(M && (flags & CF_RIDING_CHECK_UNCONSCIOUS) && !IS_CONSCIOUS(M))
 		if(notify && user)
 			if(we_are_the_vehicle)
-				to_chat(user, SPAN_WARNING("You cannot carry people while unconscious!"))
+				to_chat(user, span_warning("You cannot carry people while unconscious!"))
 			else if(user == AM)
-				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while unconscious!"))
+				to_chat(user, span_warning("You cannot ride on [parent] while unconscious!"))
 			else
-				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie unconscious!"))
+				to_chat(user, span_warning("[AM] cannot ride on [parent] whlie unconscious!"))
 		return FALSE
 	if(M && (flags & CF_RIDING_CHECK_RESTRAINED) && M.restrained())
 		if(notify && user)
 			if(we_are_the_vehicle)
-				to_chat(user, SPAN_WARNING("You cannot carry people while restrained!"))
+				to_chat(user, span_warning("You cannot carry people while restrained!"))
 			else if(user == AM)
-				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while restrained!"))
+				to_chat(user, span_warning("You cannot ride on [parent] while restrained!"))
 			else
-				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie restrained!"))
+				to_chat(user, span_warning("[AM] cannot ride on [parent] whlie restrained!"))
 		return FALSE
 	if(M && (flags & CF_RIDING_CHECK_INCAPACITATED) && M.incapacitated())
 		if(notify && user)
 			if(we_are_the_vehicle)
-				to_chat(user, SPAN_WARNING("You cannot carry people while incapacitated!"))
+				to_chat(user, span_warning("You cannot carry people while incapacitated!"))
 			else if(user == AM)
-				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while incapacitated!"))
+				to_chat(user, span_warning("You cannot ride on [parent] while incapacitated!"))
 			else
-				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie incapacitated!"))
+				to_chat(user, span_warning("[AM] cannot ride on [parent] whlie incapacitated!"))
 		return FALSE
 	if(M && (flags & CF_RIDING_CHECK_LYING) && M.lying)
 		if(notify && user)
 			if(we_are_the_vehicle)
-				to_chat(user, SPAN_WARNING("You cannot carry people while laying down!"))
+				to_chat(user, span_warning("You cannot carry people while laying down!"))
 			else if(user == AM)
-				to_chat(user, SPAN_WARNING("You cannot ride on [parent] while laying down!"))
+				to_chat(user, span_warning("You cannot ride on [parent] while laying down!"))
 			else
-				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie laying down!"))
+				to_chat(user, span_warning("[AM] cannot ride on [parent] whlie laying down!"))
 		return FALSE
 	return TRUE
 
@@ -490,8 +490,8 @@
 /datum/component/riding_handler/proc/force_dismount(mob/M, semantic)
 	var/atom/movable/AM = parent
 	AM.visible_message(
-		SPAN_WARNING("[M] falls off of [AM]!"),
-		SPAN_WARNING("You fall off of [AM]!")
+		span_warning("[M] falls off of [AM]!"),
+		span_warning("You fall off of [AM]!")
 	)
 	AM.unbuckle_mob(M, BUCKLE_OP_FORCE)
 

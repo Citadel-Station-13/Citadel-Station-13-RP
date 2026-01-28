@@ -116,7 +116,7 @@
 		speciesblurb += "a <font color='[species.get_flesh_colour(src)]'>[get_display_species()]</font>"
 
 	// The first line of the examine block.
-	. += SPAN_INFO("[icon2html(src, user)] This is <EM>[src.name]</EM>[skip_species? ". [SPAN_WARNING("You can't make out what species they are.")]" : ", [T.he] [T.is] [speciesblurb]!"]")
+	. += span_info("[icon2html(src, user)] This is <EM>[src.name]</EM>[skip_species? ". [span_warning("You can't make out what species they are.")]" : ", [T.he] [T.is] [speciesblurb]!"]")
 
 	var/extra_species_text = species.get_additional_examine_text(src)
 	if(extra_species_text)
@@ -140,19 +140,19 @@
 							accessories_visible.Add(FORMAT_TEXT_LOOKITEM(A))
 
 				if(accessories_visible.len)
-					tie_msg += SPAN_INFO(" Attached to it is [english_list(accessories_visible)].")
+					tie_msg += span_info(" Attached to it is [english_list(accessories_visible)].")
 
 		if(w_uniform.blood_DNA)
-			. += SPAN_WARNING("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing [w_uniform.gender == PLURAL ? "some" : "a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(w_uniform)]![tie_msg]")
+			. += span_warning("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing [w_uniform.gender == PLURAL ? "some" : "a"] [(w_uniform.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(w_uniform)]![tie_msg]")
 		else
-			. += SPAN_INFO("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]")
+			. += span_info("<hr>[icon2html(w_uniform, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(w_uniform)].[tie_msg]")
 
 	//head
 	if(head && !(skip_gear & EXAMINE_SKIPHELMET) && head.show_examine)
 		if(head.blood_DNA)
-			. += SPAN_WARNING("[icon2html(head, user)] [T.He] [T.is] wearing [head.gender == PLURAL ? "some" : "a"] [(head.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head!")
+			. += span_warning("[icon2html(head, user)] [T.He] [T.is] wearing [head.gender == PLURAL ? "some" : "a"] [(head.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head!")
 		else
-			. += SPAN_INFO("[icon2html(head, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head.")
+			. += span_info("[icon2html(head, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(head)] on [T.his] head.")
 
 	//suit/armour
 	if(wear_suit)
@@ -163,26 +163,26 @@
 				var/list/assembled = list()
 				for(var/obj/item/clothing/accessory/A in U.accessories)
 					assembled += FORMAT_TEXT_LOOKITEM(A)
-				tie_msg += SPAN_INFO(" Attached to it is [english_list(assembled)].")
+				tie_msg += span_info(" Attached to it is [english_list(assembled)].")
 
 		if(wear_suit.blood_DNA)
-			. += SPAN_WARNING("[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender == PLURAL ? "some" : "a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!")
+			. += span_warning("[T.He] [T.is] wearing [icon2html(thing = wear_suit, target = user)] [wear_suit.gender == PLURAL ? "some" : "a"] [(wear_suit.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_suit)][tie_msg]!")
 		else
-			. += SPAN_INFO("[icon2html(wear_suit, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_suit)].[tie_msg]")
+			. += span_info("[icon2html(wear_suit, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_suit)].[tie_msg]")
 
 		//suit/armour storage
 		if(s_store && !(skip_gear & EXAMINE_SKIPSUITSTORAGE) && s_store.show_examine)
 			if(s_store.blood_DNA)
-				. += SPAN_WARNING("[icon2html(s_store, user)] [T.He] [T.is] carrying [s_store.gender == PLURAL ? "some" : "a"] [(s_store.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)]!")
+				. += span_warning("[icon2html(s_store, user)] [T.He] [T.is] carrying [s_store.gender == PLURAL ? "some" : "a"] [(s_store.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)]!")
 			else
-				. += SPAN_INFO("[icon2html(s_store, user)] [T.He] [T.is] carrying \a [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)].")
+				. += span_info("[icon2html(s_store, user)] [T.He] [T.is] carrying \a [FORMAT_TEXT_LOOKITEM(s_store)] on [T.his] [FORMAT_TEXT_LOOKITEM(wear_suit)].")
 
 	//back
 	if(back && !(skip_gear & EXAMINE_SKIPBACKPACK) && back.show_examine)
 		if(back.blood_DNA)
-			. += SPAN_WARNING("[icon2html(back, user)] [T.He] [T.has] [back.gender == PLURAL ? "some" : "a"] [(back.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
+			. += span_warning("[icon2html(back, user)] [T.He] [T.has] [back.gender == PLURAL ? "some" : "a"] [(back.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
 		else
-			. += SPAN_INFO("[icon2html(back, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
+			. += span_info("[icon2html(back, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(back)] on [T.his] back.")
 
 	// hands
 	for(var/i in 1 to length(inventory?.held_items))
@@ -193,47 +193,47 @@
 			continue
 		var/hand_str = (i % 2)? "left hand[i > 2? " #[round(i / 2)]" : ""]" : "right hand[i > 2? " #[round(i / 2)]" : ""]"
 		if(held.blood_DNA)
-			. += SPAN_WARNING("[icon2html(held, user)] [T.He] [T.is] holding [held.gender == PLURAL ? "some" : "a"] [(held.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str]!")
+			. += span_warning("[icon2html(held, user)] [T.He] [T.is] holding [held.gender == PLURAL ? "some" : "a"] [(held.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str]!")
 		else
-			. += SPAN_INFO("[icon2html(held, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str].")
+			. += span_info("[icon2html(held, user)] [T.He] [T.is] holding \a [FORMAT_TEXT_LOOKITEM(held)] in [T.his] [hand_str].")
 
 	//gloves
 	if(gloves && !(skip_gear & EXAMINE_SKIPGLOVES) && gloves.show_examine)
 		if(gloves.blood_DNA)
-			. += SPAN_WARNING("[icon2html(gloves, user)] [T.He] [T.has] [gloves.gender == PLURAL ? "some" : "a"] [(gloves.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands!")
+			. += span_warning("[icon2html(gloves, user)] [T.He] [T.has] [gloves.gender == PLURAL ? "some" : "a"] [(gloves.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands!")
 		else
-			. += SPAN_INFO("[icon2html(gloves, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands.")
+			. += span_info("[icon2html(gloves, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(gloves)] on [T.his] hands.")
 
 	else if(blood_DNA && !(skip_body & EXAMINE_SKIPHANDS))
-		. += SPAN_WARNING("[T.He] [T.has] [(hand_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained hands!")
+		. += span_warning("[T.He] [T.has] [(hand_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained hands!")
 
 	//handcuffed?
 	if(handcuffed && handcuffed.show_examine)
 		if(istype(handcuffed, /obj/item/handcuffs/cable))
-			. += SPAN_WARNING("[icon2html(handcuffed, user)] [T.He] [T.is] restrained with cable!")
+			. += span_warning("[icon2html(handcuffed, user)] [T.He] [T.is] restrained with cable!")
 		else
-			. += SPAN_WARNING("[icon2html(handcuffed, user)] [T.He] [T.is] handcuffed!")
+			. += span_warning("[icon2html(handcuffed, user)] [T.He] [T.is] handcuffed!")
 
 	//buckled
 	if(buckled)
-		. += SPAN_WARNING("[icon2html(buckled, user)] [T.He] [T.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]!")
+		. += span_warning("[icon2html(buckled, user)] [T.He] [T.is] buckled to [FORMAT_TEXT_LOOKITEM(buckled)]!")
 
 	//belt
 	if(belt && !(skip_gear & EXAMINE_SKIPBELT) && belt.show_examine)
 		if(belt.blood_DNA)
-			. += SPAN_WARNING("[icon2html(belt, user)] [T.He] [T.has] [belt.gender == PLURAL ? "some" : "a"] [(belt.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist!")
+			. += span_warning("[icon2html(belt, user)] [T.He] [T.has] [belt.gender == PLURAL ? "some" : "a"] [(belt.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist!")
 		else
-			. += SPAN_INFO("[icon2html(belt, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist.")
+			. += span_info("[icon2html(belt, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(belt)] about [T.his] waist.")
 
 	//shoes
 	if(shoes && !(skip_gear & EXAMINE_SKIPSHOES) && shoes.show_examine)
 		if(shoes.blood_DNA)
-			. += SPAN_WARNING("[icon2html(shoes, user)] [T.He] [T.is] wearing [shoes.gender == PLURAL ? "some" : "a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet!")
+			. += span_warning("[icon2html(shoes, user)] [T.He] [T.is] wearing [shoes.gender == PLURAL ? "some" : "a"] [(shoes.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet!")
 		else
-			. += SPAN_INFO("[icon2html(shoes, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet.")
+			. += span_info("[icon2html(shoes, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(shoes)] on [T.his] feet.")
 
 	else if(feet_blood_DNA && !(skip_body & EXAMINE_SKIPHANDS))
-		. += SPAN_WARNING("[T.He] [T.has] [(feet_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained feet!")
+		. += span_warning("[T.He] [T.has] [(feet_blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained feet!")
 
 	//mask
 	if(wear_mask && !(skip_gear & EXAMINE_SKIPMASK) && wear_mask.show_examine)
@@ -242,24 +242,24 @@
 			descriptor = "in [T.his] mouth"
 
 		if(wear_mask.blood_DNA)
-			. += SPAN_WARNING("[icon2html(wear_mask, user)] [T.He] [T.has] [wear_mask.gender == PLURAL ? "some" : "a"] [(wear_mask.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]!")
+			. += span_warning("[icon2html(wear_mask, user)] [T.He] [T.has] [wear_mask.gender == PLURAL ? "some" : "a"] [(wear_mask.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor]!")
 		else
-			. += SPAN_INFO("[icon2html(wear_mask, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor].")
+			. += span_info("[icon2html(wear_mask, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(wear_mask)] [descriptor].")
 
 	//eyes
 	if(glasses && !(skip_gear & EXAMINE_SKIPEYEWEAR) && glasses.show_examine)
 		if(glasses.blood_DNA)
-			. += SPAN_WARNING("[icon2html(glasses, user)] [T.He] [T.has] [glasses.gender == PLURAL ? "some" : "a"] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes!")
+			. += span_warning("[icon2html(glasses, user)] [T.He] [T.has] [glasses.gender == PLURAL ? "some" : "a"] [(glasses.blood_color != SYNTH_BLOOD_COLOUR) ? "blood" : "oil"]-stained [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes!")
 		else
-			. += SPAN_INFO("[icon2html(glasses, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes.")
+			. += span_info("[icon2html(glasses, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(glasses)] covering [T.his] eyes.")
 
 	//left ear
 	if(l_ear && !(skip_gear & EXAMINE_SKIPEARS) && l_ear.show_examine)
-		. += SPAN_INFO("[icon2html(l_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(l_ear)] on [T.his] left ear.")
+		. += span_info("[icon2html(l_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(l_ear)] on [T.his] left ear.")
 
 	//right ear
 	if(r_ear && !(skip_gear & EXAMINE_SKIPEARS) && r_ear.show_examine)
-		. += SPAN_INFO("[icon2html(r_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(r_ear)] on [T.his] right ear.")
+		. += span_info("[icon2html(r_ear, user)] [T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(r_ear)] on [T.his] right ear.")
 
 	//ID
 	if(wear_id && wear_id.show_examine)
@@ -273,29 +273,29 @@
 		if(id && (id != real_name) && (get_dist(src, usr) <= 1) && prob(10))
 			. += "<span class='warning'>[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id] yet something doesn't seem right...</span>"
 		else*/
-		. += SPAN_INFO("[icon2html(wear_id, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_id)].")
+		. += span_info("[icon2html(wear_id, user)] [T.He] [T.is] wearing \a [FORMAT_TEXT_LOOKITEM(wear_id)].")
 
 	if(istype(src, /mob/living/carbon/human/dummy))
-		. += SPAN_INFO("[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long.")
+		. += span_info("[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long.")
 
 	//Jitters
 	if(is_jittery)
 		var/effective_jitteriness = get_effective_impairment_power_jitter()
 		if(effective_jitteriness >= 300)
-			. += SPAN_DANGER("[T.He] [T.is] convulsing violently!")
+			. += span_danger("[T.He] [T.is] convulsing violently!")
 		else if(effective_jitteriness >= 200)
-			. += SPAN_WARNING("[T.He] [T.is] extremely jittery.")
+			. += span_warning("[T.He] [T.is] extremely jittery.")
 		else if(effective_jitteriness >= 100)
-			. += SPAN_WARNING("[T.He] [T.is] twitching ever so slightly.")
+			. += span_warning("[T.He] [T.is] twitching ever so slightly.")
 
 	//splints
 	for(var/organ in BP_ALL)
 		var/obj/item/organ/external/o = get_organ(organ)
 		if(o && o.splinted && o.splinted.loc == o)
-			. += SPAN_WARNING("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
+			. += span_warning("[T.He] [T.has] \a [FORMAT_TEXT_LOOKITEM(o.splinted)] on [T.his] [o.name]!")
 
 	if(suiciding)
-		. += SPAN_WARNING("[T.He] appears to have commited suicide...  There is no hope of recovery.")
+		. += span_warning("[T.He] appears to have commited suicide...  There is no hope of recovery.")
 
 	//* I hate this. Though it's better than what it was before. -Zandario
 	var/message = FALSE
@@ -309,25 +309,25 @@
 
 		switch(weight_examine)
 			if(0 to 74)
-				message = SPAN_WARNING("[T.He] [T.is] terribly lithe and frail!")
+				message = span_warning("[T.He] [T.is] terribly lithe and frail!")
 			if(75 to 99)
-				message = SPAN_INFO("[T.He] [T.has] a very slender frame.")
+				message = span_info("[T.He] [T.has] a very slender frame.")
 			if(100 to 124)
-				message = SPAN_INFO("[T.He] [T.has] a lightweight, athletic build.")
+				message = span_info("[T.He] [T.has] a lightweight, athletic build.")
 			if(125 to 174)
-				message = SPAN_INFO("[T.He] [T.has] a healthy, average body.")
+				message = span_info("[T.He] [T.has] a healthy, average body.")
 			if(175 to 224)
-				message = SPAN_INFO("[T.He] [T.has] a thick, [t_heavy] physique.")
+				message = span_info("[T.He] [T.has] a thick, [t_heavy] physique.")
 			if(225 to 274)
-				message = SPAN_INFO("[T.He] [T.has] a plush, chubby figure.")
+				message = span_info("[T.He] [T.has] a plush, chubby figure.")
 			if(275 to 325)
-				message = SPAN_INFO("[T.He] [T.has] an especially plump body with a round potbelly and large hips.")
+				message = span_info("[T.He] [T.has] an especially plump body with a round potbelly and large hips.")
 			if(325 to 374)
-				message = SPAN_INFO("[T.He] [T.has] a very fat frame with a bulging potbelly, and very wide hips.")
+				message = span_info("[T.He] [T.has] a very fat frame with a bulging potbelly, and very wide hips.")
 			if(375 to 474)
-				message = SPAN_WARNING("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.he] would likely require two chairs to sit down comfortably!")
+				message = span_warning("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.he] would likely require two chairs to sit down comfortably!")
 			else
-				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
+				message = span_danger("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
 		. += message
 	//* End of the bs
 
@@ -343,39 +343,39 @@
 		. += attempt_vr(src,"examine_chimera",args)
 
 	if(MUTATION_DWARFISM in mutations)
-		. += SPAN_WARNING("[T.He] [T.is] very short!")
+		. += span_warning("[T.He] [T.is] very short!")
 
 	// Pulse Checking.
 	if(src.stat)
-		. += SPAN_WARNING("[T.He] [T.is]n't responding to anything around [T.him] and seems to be asleep.")
+		. += span_warning("[T.He] [T.is]n't responding to anything around [T.him] and seems to be asleep.")
 		if((stat == DEAD || src.losebreath) && get_dist(user, src) <= 3)
-			. += SPAN_WARNING("[T.He] [T.does] not appear to be breathing.")
+			. += span_warning("[T.He] [T.does] not appear to be breathing.")
 		if(istype(user, /mob/living/carbon/human) && !user.stat && Adjacent(user))
 			user.visible_message("<b>[usr]</b> checks [src]'s pulse.", "You check [src]'s pulse.")
 		spawn(15)
 			if(isobserver(user) || (Adjacent(user) && !user.stat)) // If you're a corpse then you can't exactly check their pulse, but ghosts can see anything
 				if(pulse == PULSE_NONE)
-					to_chat(user, SPAN_DEADSAY("[T.He] [T.has] no pulse[src.client ? "" : " and [T.his] soul has departed"]..."))
+					to_chat(user, span_deadsay("[T.He] [T.has] no pulse[src.client ? "" : " and [T.his] soul has departed"]..."))
 				else
-					to_chat(user, SPAN_DEADSAY("[T.He] [T.has] a pulse!"))
+					to_chat(user, span_deadsay("[T.He] [T.has] a pulse!"))
 
 	if(fire_stacks)
-		. += SPAN_WARNING("[T.He] [T.is] soaking wet.")
+		. += span_warning("[T.He] [T.is] soaking wet.")
 	if(on_fire)
-		. += SPAN_DANGER("[T.He] [T.is] on fire!.")
+		. += span_danger("[T.He] [T.is] on fire!.")
 
 	var/ssd_msg = species.get_ssd(src)
 	if(ssd_msg && (!should_have_organ("brain") || has_brain()) && stat != DEAD)
 		if(istype(src, /mob/living/carbon/human/dummy)) // mannequins arent asleep
 			return
 		if(!key)
-			. += SPAN_DEADSAY("[T.He] [T.is] [ssd_msg]. It doesn't look like [T.he] [T.is] waking up anytime soon.")
+			. += span_deadsay("[T.He] [T.is] [ssd_msg]. It doesn't look like [T.he] [T.is] waking up anytime soon.")
 		else if(!client)
-			. += SPAN_DEADSAY("[T.He] [T.is] [ssd_msg].")
+			. += span_deadsay("[T.He] [T.is] [ssd_msg].")
 		if(client && ((client.inactivity / 10) / 60 > 10)) //10 Minutes
-			. += SPAN_INFO("\[Inactive for [round((client.inactivity/10)/60)] minutes\]")
+			. += span_info("\[Inactive for [round((client.inactivity/10)/60)] minutes\]")
 		else if(disconnect_time)
-			. += SPAN_INFO("\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]")
+			. += span_info("\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]")
 
 	var/list/wound_flavor_text = list()
 	var/list/is_bleeding = list()
@@ -388,9 +388,9 @@
 
 		var/obj/item/organ/external/E = organs_by_name[organ_tag]
 		if(!E)
-			wound_flavor_text["[organ_descriptor]"] = SPAN_BOLDWARNING("[T.He] [T.is] missing [T.his] [organ_descriptor].")
+			wound_flavor_text["[organ_descriptor]"] = span_boldwarning("[T.He] [T.is] missing [T.his] [organ_descriptor].")
 		else if(E.is_stump())
-			wound_flavor_text["[organ_descriptor]"] = SPAN_BOLDWARNING("[T.He] [T.has] a stump where [T.his] [organ_descriptor] should be.")
+			wound_flavor_text["[organ_descriptor]"] = span_boldwarning("[T.He] [T.has] a stump where [T.his] [organ_descriptor] should be.")
 		else
 			continue
 
@@ -399,37 +399,37 @@
 			if((temp.organ_tag in hidden) && hidden[temp.organ_tag])
 				continue //Organ is hidden, don't talk about it
 			if(temp.status & ORGAN_DESTROYED)
-				wound_flavor_text["[temp.name]"] = SPAN_BOLDWARNING("[T.He] [T.is] missing [T.his] [temp.name].")
+				wound_flavor_text["[temp.name]"] = span_boldwarning("[T.He] [T.is] missing [T.his] [temp.name].")
 				continue
 			var/built = ""
 
 			if(!looks_synth && temp.robotic == ORGAN_ROBOT)
 				if(!(temp.brute_dam + temp.burn_dam))
-					built = SPAN_INFO("[T.He] [T.has] a [temp.name].")
+					built = span_info("[T.He] [T.has] a [temp.name].")
 				else
-					built = SPAN_WARNING("[T.He] [T.has] a [temp.name] with [temp.get_wounds_desc()]!")
+					built = span_warning("[T.He] [T.has] a [temp.name] with [temp.get_wounds_desc()]!")
 				continue
 			else if(length(temp.wounds) > 0 || temp.open)
 				if(temp.is_stump() && temp.parent_organ && organs_by_name[temp.parent_organ])
 					var/obj/item/organ/external/parent = organs_by_name[temp.parent_organ]
-					built = SPAN_WARNING("[T.He] has [temp.get_wounds_desc()] on [T.his] [parent.name].")
+					built = span_warning("[T.He] has [temp.get_wounds_desc()] on [T.his] [parent.name].")
 				else
-					built = SPAN_WARNING("[T.He] has [temp.get_wounds_desc()] on [T.his] [temp.name].")
+					built = span_warning("[T.He] has [temp.get_wounds_desc()] on [T.his] [temp.name].")
 			if(temp.dislocated == 2)
-				built += SPAN_WARNING("[T.His] [temp.joint] is dislocated!")
+				built += span_warning("[T.His] [temp.joint] is dislocated!")
 			if(temp.brute_dam > temp.min_broken_damage || (temp.status & (ORGAN_BROKEN | ORGAN_MUTATED)))
-				built += SPAN_WARNING("[T.His] [temp.name] is dented and swollen!")
+				built += span_warning("[T.His] [temp.name] is dented and swollen!")
 
 			if(temp.germ_level > INFECTION_LEVEL_TWO && !(temp.status & ORGAN_DEAD))
-				built += SPAN_WARNING("[T.His] [temp.name] looks very infected!")
+				built += span_warning("[T.His] [temp.name] looks very infected!")
 			else if(temp.status & ORGAN_DEAD)
-				built += SPAN_WARNING("[T.His] [temp.name] looks rotten!")
+				built += span_warning("[T.His] [temp.name] looks rotten!")
 
 			if(temp.status & ORGAN_BLEEDING)
-				is_bleeding["[temp.name]"] = SPAN_DANGER("[T.His] [temp.name] is bleeding!")
+				is_bleeding["[temp.name]"] = span_danger("[T.His] [temp.name] is bleeding!")
 
 			if(temp.applied_pressure == src)
-				applying_pressure = SPAN_NOTICE("[T.He] is applying pressure to [T.his] [temp.name].")
+				applying_pressure = span_notice("[T.He] is applying pressure to [T.his] [temp.name].")
 			if(length(built))
 				wound_flavor_text["[temp.name]"] = built
 
@@ -438,9 +438,9 @@
 	for(var/limb in is_bleeding)
 		. += is_bleeding[limb]
 	for(var/implant in get_visible_implants(0))
-		. += SPAN_DANGER("[src] [T.has] \a [FORMAT_TEXT_LOOKITEM(implant)] sticking out of [T.his] flesh!")
+		. += span_danger("[src] [T.has] \a [FORMAT_TEXT_LOOKITEM(implant)] sticking out of [T.his] flesh!")
 	if(digitalcamo)
-		. += SPAN_WARNING("[T.He] [T.is] repulsively uncanny!")
+		. += span_warning("[T.He] [T.is] repulsively uncanny!")
 
 	if(hasHUD(user,"security"))
 		var/perpname = name
@@ -458,8 +458,8 @@
 			if(R.fields["name"] == perpname)
 				criminal = R.fields["criminal"]
 
-		. += SPAN_BOLDNOTICE("Criminal status: <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>")
-		. += SPAN_BOLDNOTICE("Security records: <a href='?src=\ref[src];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
+		. += span_boldnotice("Criminal status: <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>")
+		. += span_boldnotice("Security records: <a href='?src=\ref[src];secrecord=`'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
 
 	if(hasHUD(user,"medical"))
 		var/perpname = name
@@ -477,11 +477,11 @@
 			if (R.fields["name"] == perpname)
 				medical = R.fields["p_stat"]
 
-		. += SPAN_BOLDNOTICE("Physical status: <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>")
-		. += SPAN_BOLDNOTICE("Medical records: <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
+		. += span_boldnotice("Physical status: <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>")
+		. += span_boldnotice("Medical records: <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
 
 	if(hasHUD(user,"best"))
-		. += SPAN_BOLDNOTICE("Employment records: <a href='?src=\ref[src];emprecord=`'>\[View\]</a>")
+		. += span_boldnotice("Employment records: <a href='?src=\ref[src];emprecord=`'>\[View\]</a>")
 
 	if(print_flavor_text())
 		. += "[print_flavor_text()]"
@@ -490,16 +490,16 @@
 
 	// Add message if gender is obscured by species differences
 	if(gender_obscured_by_species)
-		. += SPAN_INFO("<i>[T.He] [T.is] a different species. You don't have the scientific knowledge to figure out [T.his] exact gender...</i>")
+		. += span_info("<i>[T.He] [T.is] a different species. You don't have the scientific knowledge to figure out [T.his] exact gender...</i>")
 
 	var/show_descs = show_descriptors_to(user)
 	if(show_descs)
-		. += SPAN_NOTICE("[jointext(show_descs, "\n")]")
+		. += span_notice("[jointext(show_descs, "\n")]")
 
 	if(pose)
 		if(!findtext(pose, regex("\[.?!]$"))) // Will be zero if the last character is not a member of [.?!]
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
-		. += SPAN_INFO("[T.He] [pose]")
+		. += span_info("[T.He] [pose]")
 
 	// handle status effects
 	// todo: this should probably be a signal but it's not urgent, this isn't a hot path
@@ -508,7 +508,7 @@
 		effect.on_examine(.)
 
 	// send signal last so everything else prioritizes above
-	. += SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
+	. += span_boldnotice("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) //This also handles flavor texts now
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
@@ -615,21 +615,21 @@
 /mob/living/carbon/human/proc/examine_pickup_size(mob/living/H)
 	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.50)
-		message = SPAN_NOTICE("They are small enough that you could easily pick them up!")
+		message = span_notice("They are small enough that you could easily pick them up!")
 		return message
 	return FALSE
 
 /mob/living/carbon/human/proc/examine_step_size(mob/living/H)
 	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.75)
-		message = SPAN_WARNING("They are small enough that you could easily trample them!")
+		message = span_warning("They are small enough that you could easily trample them!")
 		return message
 	else
 		return FALSE
 
 /mob/living/carbon/human/proc/examine_nif(mob/living/carbon/human/H)
 	if(nif && nif.examine_msg) //If you have one set, anyway.
-		return SPAN_NOTICE("[nif.examine_msg]")
+		return span_notice("[nif.examine_msg]")
 
 /mob/living/carbon/human/proc/examine_chimera(mob/living/carbon/human/H)
 	var/t_He 	= "It" //capitalised for use at the start of each line.

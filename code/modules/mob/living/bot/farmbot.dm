@@ -79,9 +79,9 @@
 	. = ..()
 	if(!emagged)
 		if(user)
-			to_chat(user, SPAN_NOTICE("You short out [src]'s plant identifier circuits."))
+			to_chat(user, span_notice("You short out [src]'s plant identifier circuits."))
 		spawn(rand(30, 50))
-			visible_message(SPAN_WARNING("[src] buzzes oddly."))
+			visible_message(span_warning("[src] buzzes oddly."))
 			emagged = TRUE
 		return TRUE
 

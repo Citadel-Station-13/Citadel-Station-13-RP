@@ -82,7 +82,7 @@
 
 	// Do the actual leap.
 	status_flags |= STATUS_LEAPING // Lets us pass over everything.
-	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
+	visible_message(span_danger("\The [src] leaps at \the [A]!"))
 	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
 
@@ -117,8 +117,8 @@
 
 	if(victim)
 		victim.afflict_paralyze(20 * 2)
-		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
-		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
+		victim.visible_message(span_danger("\The [src] knocks down \the [victim]!"))
+		to_chat(victim, span_critical("\The [src] jumps on you!"))
 		. = TRUE
 
 	set_AI_busy(FALSE)
@@ -187,7 +187,7 @@
 		if(isliving(A))
 			var/mob/living/L = A
 			L.afflict_paralyze(20 * stealthed_weaken_amount)
-			to_chat(L, SPAN_DANGER("\The [src] ambushes you!"))
+			to_chat(L, span_danger("\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()
 	..()

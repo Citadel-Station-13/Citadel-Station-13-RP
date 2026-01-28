@@ -34,16 +34,16 @@
 /obj/structure/noticeboard/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo))
 		if(!allowed(user))
-			to_chat(user, SPAN_WARNING("You are not authorized to add notices!"))
+			to_chat(user, span_warning("You are not authorized to add notices!"))
 			return
 		if(notices < MAX_NOTICES)
 			if(!user.transfer_item_to_loc(O, src))
 				return
 			notices++
 			update_appearance(UPDATE_ICON)
-			to_chat(user, SPAN_NOTICE("You pin the [O] to the noticeboard."))
+			to_chat(user, span_notice("You pin the [O] to the noticeboard."))
 		else
-			to_chat(user, SPAN_WARNING("The notice board is full!"))
+			to_chat(user, span_warning("The notice board is full!"))
 	// else
 	// 	return ..()
 
@@ -116,7 +116,7 @@
 	item.forceMove(drop_location())
 	if(user)
 		user.put_in_hands(item)
-		to_chat(user, SPAN_NOTICE("Removed from board."))
+		to_chat(user, span_notice("Removed from board."))
 	notices--
 	update_appearance(UPDATE_ICON)
 

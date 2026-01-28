@@ -52,7 +52,7 @@
 	. = ..()
 	// give a hint about catastrophic crowding
 	if(length(loc?.contents) > TURF_CROWDING_HARD_LIMIT)
-		. += SPAN_WARNING("There's far too many things on [src] for it to move!")
+		. += span_warning("There's far too many things on [src] for it to move!")
 
 /obj/machinery/conveyor/proc/setmove()
 	if(operating == FORWARDS)

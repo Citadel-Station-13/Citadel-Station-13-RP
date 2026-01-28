@@ -531,8 +531,8 @@
 
 		//Well then break it!
 		breakout = 0
-		to_chat(escapee, SPAN_WARNING("You successfully break out!"))
-		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
+		to_chat(escapee, span_warning("You successfully break out!"))
+		visible_message(span_danger("\The [escapee] successfully broke out of \the [src]!"))
 		playsound(src, breakout_sound, 100, 1)
 		animate_shake()
 		break_open()

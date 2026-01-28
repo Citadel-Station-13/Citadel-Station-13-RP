@@ -38,18 +38,18 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[e_args.performer] starts to [panel_open? "close" : "open"] [src]'s maintenance panel."),
-			audible = SPAN_WARNING("You hear something being (un)fastened."),
-			otherwise_self = SPAN_WARNING("You start to [panel_open? "close" : "open"] [src]'s panel."),
+			visible = span_warning("[e_args.performer] starts to [panel_open? "close" : "open"] [src]'s maintenance panel."),
+			audible = span_warning("You hear something being (un)fastened."),
+			otherwise_self = span_warning("You start to [panel_open? "close" : "open"] [src]'s panel."),
 		)
 	if(!use_tool(tool_panel, tool, e_args, flags, needed_time))
 		return FALSE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[e_args.performer] [panel_open? "closes" : "opens"] [src]'s maintenance panel."),
-		audible = SPAN_WARNING("You hear something being (un)fastened."),
-		otherwise_self = SPAN_WARNING("You [panel_open? "close" : "open"] [src]'s panel."),
+		visible = span_warning("[e_args.performer] [panel_open? "closes" : "opens"] [src]'s maintenance panel."),
+		audible = span_warning("You hear something being (un)fastened."),
+		otherwise_self = span_warning("You [panel_open? "close" : "open"] [src]'s panel."),
 	)
 	set_panel_open(!panel_open)
 	return TRUE
@@ -61,18 +61,18 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[e_args.performer] starts to dismantle [src]."),
-			audible = SPAN_WARNING("You hear a series of small parts being removed from something."),
-			otherwise_self = SPAN_WARNING("You start to dismantle [src]."),
+			visible = span_warning("[e_args.performer] starts to dismantle [src]."),
+			audible = span_warning("You hear a series of small parts being removed from something."),
+			otherwise_self = span_warning("You start to dismantle [src]."),
 		)
 	if(!use_tool(tool_deconstruct, tool, e_args, flags, needed_time))
 		return FALSE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[e_args.performer] dismantles [src]."),
-		audible = SPAN_WARNING("You hear something getting dismantled."),
-		otherwise_self = SPAN_WARNING("You dismantle [src]."),
+		visible = span_warning("[e_args.performer] dismantles [src]."),
+		audible = span_warning("You hear something getting dismantled."),
+		otherwise_self = span_warning("You dismantle [src]."),
 	)
 	dismantle()
 	return TRUE
@@ -84,18 +84,18 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[e_args.performer] starts to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
-			audible = SPAN_WARNING("You hear something heavy being (un)fastened."),
-			otherwise_self = SPAN_WARNING("You start to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
+			visible = span_warning("[e_args.performer] starts to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
+			audible = span_warning("You hear something heavy being (un)fastened."),
+			otherwise_self = span_warning("You start to [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
 		)
 	if(!use_tool(tool_unanchor, tool, e_args, flags, needed_time))
 		return FALSE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[e_args.performer] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
-		audible = SPAN_WARNING("You hear something heavy being (un)fastened."),
-		otherwise_self = SPAN_WARNING("You [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
+		visible = span_warning("[e_args.performer] [anchored? "bolts" : "unbolts"] [src] [anchored? "to" : "from"] from the floor."),
+		audible = span_warning("You hear something heavy being (un)fastened."),
+		otherwise_self = span_warning("You [anchored? "unbolt" : "bolt"] [src] [anchored? "from" : "to"] the floor."),
 	)
 	set_anchored(!anchored)
 	return TRUE

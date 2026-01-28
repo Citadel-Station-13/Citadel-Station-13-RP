@@ -97,17 +97,17 @@
 	switch(action)
 		if("red_switch")
 			red_switch = !red_switch
-			to_chat(usr, SPAN_NOTICE("You flip the red switch [red_switch ? "on" : "off"]."))
+			to_chat(usr, span_notice("You flip the red switch [red_switch ? "on" : "off"]."))
 			. = TRUE
 
 		if("green_switch")
 			green_switch = !green_switch
-			to_chat(usr, SPAN_NOTICE("You flip the green switch [green_switch ? "on" : "off"]."))
+			to_chat(usr, span_notice("You flip the green switch [green_switch ? "on" : "off"]."))
 			. = TRUE
 
 		if("blue_switch")
 			blue_switch = !blue_switch
-			to_chat(usr, SPAN_NOTICE("You flip the blue switch [blue_switch ? "on" : "off"]."))
+			to_chat(usr, span_notice("You flip the blue switch [blue_switch ? "on" : "off"]."))
 			. = TRUE
 
 /mob/living/bot/cleanbot/edCLN/emag_act(var/remaining_uses, var/mob/user)

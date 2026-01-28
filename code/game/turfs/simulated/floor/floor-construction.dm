@@ -9,7 +9,7 @@
 	if(flooring)
 		return FALSE
 	if(broken || burnt)
-		e_args.chat_feedback(SPAN_WARNING("This section is too damaged to support anything. Use a welder to fix the damage"))
+		e_args.chat_feedback(span_warning("This section is too damaged to support anything. Use a welder to fix the damage"))
 		return FALSE
 	var/list/datum/prototype/flooring/possible
 	var/has_amount = 1
@@ -66,7 +66,7 @@
 					return FALSE
 	*/
 	if(trying_to_make.build_cost > has_amount)
-		e_args.chat_feedback(SPAN_WARNING("You require at least [trying_to_make.build_cost] [with_item.name] to lay down those [trying_to_make.descriptor]"))
+		e_args.chat_feedback(span_warning("You require at least [trying_to_make.build_cost] [with_item.name] to lay down those [trying_to_make.descriptor]"))
 		return FALSE
 	if(trying_to_make.build_time && !do_after(e_args.performer, trying_to_make.build_time))
 		return FALSE
@@ -119,7 +119,7 @@
  */
 /turf/simulated/floor/proc/user_dismantle_flooring(obj/item/tool, datum/event_args/actor/clickchain/e_args, silent)
 	log_actor_construction(src, e_args, "dismantled flooring via [tool] ([tool.type]) ([flooring])")
-	e_args.chat_feedback(SPAN_NOTICE("You dismantle the [flooring.descriptor] with [tool]."))
+	e_args.chat_feedback(span_notice("You dismantle the [flooring.descriptor] with [tool]."))
 	dismantle_flooring(TRUE)
 
 /**
@@ -130,5 +130,5 @@
  */
 /turf/simulated/floor/proc/user_destroy_flooring(obj/item/tool, datum/event_args/actor/clickchain/e_args, silent)
 	log_actor_construction(src, e_args, "destroyed flooring via [tool] ([tool.type]) ([flooring])")
-	e_args.chat_feedback(SPAN_WARNING("You forcefully dismantle the [flooring.descriptor] with [tool], destroying them in the process."))
+	e_args.chat_feedback(span_warning("You forcefully dismantle the [flooring.descriptor] with [tool], destroying them in the process."))
 	dismantle_flooring(FALSE)

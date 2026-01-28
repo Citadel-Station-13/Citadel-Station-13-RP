@@ -320,7 +320,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	var/datum/skin_menu_entry/E = GLOB.skin_menu_entries[id]
 	if(!E)
 		stack_trace("no entry found for [id], triggered by [src]")
-		to_chat(usr, SPAN_WARNING("error: no menu entry found; this is a bug. id: [id]"))
+		to_chat(usr, span_warning("error: no menu entry found; this is a bug. id: [id]"))
 		return
 	E.pressed(src, checked)
 

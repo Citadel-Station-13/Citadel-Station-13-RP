@@ -71,17 +71,17 @@
 	else
 		current_location = SSshuttle.get_landmark(current_location)
 	if(!istype(current_location))
-		log_debug(SPAN_DEBUGERROR("UM whoops, no initial? [src]"))
+		log_debug(span_debug_error("UM whoops, no initial? [src]"))
 		CRASH("Shuttle '[name]' could not find its starting location landmark [current_location].")
 
 	if(src.name in SSshuttle.shuttles)
-		CRASH(SPAN_DEBUGERROR("A shuttle with the name '[name]' is already defined."))
+		CRASH(span_debug_error("A shuttle with the name '[name]' is already defined."))
 	SSshuttle.shuttles[src.name] = src
 	if(flags & SHUTTLE_FLAGS_PROCESS)
 		SSshuttle.process_shuttles += src
 	if(flags & SHUTTLE_FLAGS_SUPPLY)
 		if(SSsupply.shuttle)
-			CRASH(SPAN_DEBUGERROR("A supply shuttle is already defined."))
+			CRASH(span_debug_error("A supply shuttle is already defined."))
 		SSsupply.shuttle = src
 
 /datum/shuttle/Destroy()

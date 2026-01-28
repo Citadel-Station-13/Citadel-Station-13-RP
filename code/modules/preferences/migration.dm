@@ -95,14 +95,14 @@
 		var/datum/species/RS = SScharacters.resolve_species_name(name_species)
 		if(!RS)
 			if(name_species)	// if they had any at all
-				errors?.Add(SPAN_WARNING("Species reset to human - no species found of old species name ([name_species])"))
+				errors?.Add(span_warning("Species reset to human - no species found of old species name ([name_species])"))
 			RS = SScharacters.resolve_species_path(/datum/species/human)
 			// todo: default species?
 		if(RS)
 			character[CHARACTER_DATA_REAL_SPECIES] = RS.uid
 			character[CHARACTER_DATA_CHAR_SPECIES] = RS.uid
 		else
-			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
+			errors?.Add(span_danger("Species migration failed - no species datum. Report this to a coder."))
 		// GRAB CHARACTER SPECIES - WE'LL NEED IT
 		var/datum/species/CS = SScharacters.resolve_character_species(RS.uid)
 		// MIGRATE LANGUAGES
@@ -171,28 +171,28 @@
 		var/datum/species/RS
 		switch (old_species)
 			if(SPECIES_ID_ZORREN_FLAT)
-				errors?.Add(SPAN_WARNING("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_ZORREN_FLAT]"))
+				errors?.Add(span_warning("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_ZORREN_FLAT]"))
 				RS = SScharacters.resolve_species_path(/datum/species/custom)
 				WRITE_FILE(S["custom_base"], SPECIES_ZORREN_FLAT)
 			if(SPECIES_ID_ZORREN_HIGH)
-				errors?.Add(SPAN_WARNING("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_ZORREN_HIGH]"))
+				errors?.Add(span_warning("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_ZORREN_HIGH]"))
 				RS = SScharacters.resolve_species_path(/datum/species/custom)
 				WRITE_FILE(S["custom_base"], SPECIES_ZORREN_HIGH)
 			if(SPECIES_ID_NEVREAN)
-				errors?.Add(SPAN_WARNING("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_NEVREAN]"))
+				errors?.Add(span_warning("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_NEVREAN]"))
 				RS = SScharacters.resolve_species_path(/datum/species/custom)
 				WRITE_FILE(S["custom_base"], SPECIES_NEVREAN)
 			else
 				RS = SScharacters.resolve_species_id(old_species)
 		if(!RS)
-			errors?.Add(SPAN_WARNING("Species reset to human - no species found of old species name ([old_species])"))
+			errors?.Add(span_warning("Species reset to human - no species found of old species name ([old_species])"))
 			RS = SScharacters.resolve_species_path(/datum/species/human)
 
 		if(RS)
 			character[CHARACTER_DATA_REAL_SPECIES] = RS.uid
 			character[CHARACTER_DATA_CHAR_SPECIES] = RS.uid
 		else
-			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
+			errors?.Add(span_danger("Species migration failed - no species datum. Report this to a coder."))
 	if(current_version < 5)
 		var/gear_slot
 		READ_FILE(S["gear_slot"], gear_slot)
@@ -299,7 +299,7 @@
 	// oh fuck you
 	. = 0
 	var/timer = REALTIMEOFDAY
-	to_chat(world, SPAN_DANGER("Migrating all savefiles. Please do not attempt to use character setup, lest you risk data loss."))
+	to_chat(world, span_danger("Migrating all savefiles. Please do not attempt to use character setup, lest you risk data loss."))
 	for(var/path in directory_walk(list("data/player_saves/")))
 		var/list/split = splittext(path, "/")
 		if(!split.len || (split[split.len] != "preferences.sav"))
@@ -308,11 +308,11 @@
 		SScharacters.migrate_savefile(path, what_fucked_up)
 		++.
 		if(!(. % 100))
-			to_chat(world, SPAN_DANGER("Count: [.]"))
+			to_chat(world, span_danger("Count: [.]"))
 		if(length(what_fucked_up))
 			SScharacters.subsystem_log("Migration errored for [path]:\n\t[jointext(what_fucked_up, "\n\t")]")
 		CHECK_TICK
 	var/took = REALTIMEOFDAY - timer
-	to_chat(world, SPAN_DANGER("Migrated [.] savefiles in [round(took * 0.1, 0.1)] seconds."))
+	to_chat(world, span_danger("Migrated [.] savefiles in [round(took * 0.1, 0.1)] seconds."))
 */
 

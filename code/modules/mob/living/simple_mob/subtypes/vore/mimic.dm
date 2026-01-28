@@ -103,7 +103,7 @@
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
 			L.afflict_paralyze(20 * 3)
-			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
+			L.visible_message(span_danger("\The [src] knocks down \the [L]!"))
 
 /mob/living/simple_mob/vore/aggressive/mimic/will_show_tooltip()
 	return FALSE

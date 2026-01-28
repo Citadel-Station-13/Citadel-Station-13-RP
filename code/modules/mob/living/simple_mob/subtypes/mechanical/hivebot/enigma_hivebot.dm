@@ -8,7 +8,7 @@
 // Code Stuff
 /mob/living/simple_mob/mechanical/hivebot/enigma/death()
 	..()
-	visible_message(SPAN_WARNING("\The [src] demateralizes in a flash of energy!"))
+	visible_message(span_warning("\The [src] demateralizes in a flash of energy!"))
 	new /obj/effect/debris/cleanable/blood/gibs/robot(src.loc)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
@@ -47,8 +47,8 @@
 		if(IIsAlly(SM)) // Don't resupply enemies.
 			if(!isnull(SM.special_attack_charges) && SM.special_attack_charges < initial(SM.special_attack_charges))
 				SM.special_attack_charges += 1
-				to_chat(SM, SPAN_NOTICE("\The [src] has resupplied you, and you can use your special ability one additional time."))
-				to_chat(src, SPAN_NOTICE("You have resupplied \the [SM]."))
+				to_chat(SM, span_notice("\The [src] has resupplied you, and you can use your special ability one additional time."))
+				to_chat(src, span_notice("You have resupplied \the [SM]."))
 				last_resupply = world.time
 				break // Only one resupply per pulse.
 
@@ -56,13 +56,13 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their hydraulic fists!"))
+			visible_message(span_danger("\The [src] sends \the [L] flying with their hydraulic fists!"))
 			playsound(src, 'sound/enigma/enigma_hit2.ogg', 50, 1)
 			var/throw_dir = get_dir(src, L)
 			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
 			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
 		else
-			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
+			to_chat(L, span_warning( "\The [src] punches you with incredible force, but you remain in place."))
 
 // Melee
 
@@ -458,7 +458,7 @@
 
 	// Do the actual leap.
 	status_flags |= STATUS_LEAPING // Lets us pass over everything.
-	visible_message(SPAN_DANGER("\The [src] engages its phasecoils and initializes a phaseleap at \the [A]!"))
+	visible_message(span_danger("\The [src] engages its phasecoils and initializes a phaseleap at \the [A]!"))
 	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
 
@@ -493,8 +493,8 @@
 
 	if(victim)
 		victim.afflict_paralyze(20 * 2)
-		victim.visible_message(SPAN_DANGER("\The [src] phases back in and knocks down \the [victim]!"))
-		to_chat(victim, SPAN_CRITICAL("\The [src] disengages its phase coils right ontop you and knocks you to the ground!"))
+		victim.visible_message(span_danger("\The [src] phases back in and knocks down \the [victim]!"))
+		to_chat(victim, span_critical("\The [src] disengages its phase coils right ontop you and knocks you to the ground!"))
 		. = TRUE
 
 	set_AI_busy(FALSE)
@@ -579,7 +579,7 @@
 	energy_ball.adjust_scale(0.5)
 	energy_ball.orbit(src, 32, TRUE, 1 SECOND)
 
-	visible_message(SPAN_WARNING( "\The [src] creates \an [energy_ball] around itself!"))
+	visible_message(span_warning( "\The [src] creates \an [energy_ball] around itself!"))
 
 	playsound(src.loc, 'sound/effects/lightning_chargeup.ogg', 100, 1, extrarange = 30)
 
@@ -607,7 +607,7 @@
 		sleep(1 SECOND)
 
 	// Shoot a tesla bolt, and flashes people who are looking at the mecha without sufficent eye protection.
-	visible_message(SPAN_WARNING( "\The [energy_ball] explodes in a flash of light, sending a shock everywhere!"))
+	visible_message(span_warning( "\The [energy_ball] explodes in a flash of light, sending a shock everywhere!"))
 	playsound(src.loc, 'sound/effects/lightningbolt.ogg', 100, 1, extrarange = 30)
 	tesla_zap(src.loc, 5, ELECTRIC_ZAP_POWER, FALSE)
 	for(var/mob/living/L in viewers(src))
@@ -615,7 +615,7 @@
 			continue
 		var/dir_towards_us = get_dir(L, src)
 		if(L.dir && L.dir & dir_towards_us)
-			to_chat(L, SPAN_DANGER("The flash of light blinds you briefly."))
+			to_chat(L, span_danger("The flash of light blinds you briefly."))
 			L.flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = TRUE)
 
 	// Get rid of our energy ball.
@@ -633,7 +633,7 @@
 
 	// Telegraph our next move.
 	Beam(target, icon_state = "sat_beam", time = 3.5 SECONDS, maxdistance = INFINITY)
-	visible_message(SPAN_WARNING( "\The [src] deploys a missile rack!"))
+	visible_message(span_warning( "\The [src] deploys a missile rack!"))
 	playsound(src, 'sound/effects/turret/move1.wav', 50, 1)
 	sleep(0.5 SECONDS)
 
@@ -641,7 +641,7 @@
 		if(target) // Might get deleted in the meantime.
 			var/turf/T = get_turf(target)
 			if(T)
-				visible_message(SPAN_WARNING( "\The [src] fires a rocket into the air!"))
+				visible_message(span_warning( "\The [src] fires a rocket into the air!"))
 				playsound(src, 'sound/weapons/rpg.ogg', 70, 1)
 				face_atom(T)
 				var/obj/projectile/arc/explosive_rocket/rocket = new(loc)
@@ -649,12 +649,12 @@
 				rocket.fire()
 				sleep(1 SECOND)
 
-	visible_message(SPAN_WARNING( "\The [src] retracts the missile rack."))
+	visible_message(span_warning( "\The [src] retracts the missile rack."))
 	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
 
 /mob/living/simple_mob/mechanical/hivebot/enigma/mimir/proc/launch_microsingularity(atom/target)
 	var/turf/T = get_turf(target)
-	visible_message(SPAN_WARNING( "\The [src] fires an energetic sphere into the air!"))
+	visible_message(span_warning( "\The [src] fires an energetic sphere into the air!"))
 	playsound(src, 'sound/weapons/Laser.ogg', 50, 1)
 	face_atom(T)
 	var/obj/projectile/arc/microsingulo/sphere = new(loc)

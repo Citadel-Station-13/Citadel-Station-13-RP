@@ -30,7 +30,7 @@
 /obj/item/gun/projectile/magnetic/matfed/examine(mob/user, dist)
 	. = ..()
 	if(mat_storage)
-		. += SPAN_NOTICE("It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.")
+		. += span_notice("It has [mat_storage] out of [max_mat_storage] units of [ammo_material] loaded.")
 
 /obj/item/gun/projectile/magnetic/matfed/update_overlays()
 	. = ..()

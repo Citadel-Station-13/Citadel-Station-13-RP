@@ -283,11 +283,11 @@
 	else if(href_list["id_info_toggle"])
 		var/datum/trait/trait = all_traits[text2path(href_list["id_info_toggle"])]
 		if(!istype(trait))
-			to_chat(user, SPAN_WARNING("???"))
+			to_chat(user, span_warning("???"))
 			return PREFERENCES_REFRESH
 		if(!(trait.type in pref.id_hidden_traits))
 			pref.id_hidden_traits |= trait.type
-			to_chat(user, SPAN_NOTICE("[trait.name] is now hidden from your ID."))
+			to_chat(user, span_notice("[trait.name] is now hidden from your ID."))
 		else
 			pref.id_hidden_traits -= trait.type
 			to_chat(user, "<span class='notice'>[trait.name] will now be shown on your ID. It will read as: \"</span>[trait.extra_id_info]<span class='notice'>\"</span>")

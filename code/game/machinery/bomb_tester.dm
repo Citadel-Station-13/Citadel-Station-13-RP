@@ -104,7 +104,7 @@
 				tank2 = I
 			update_icon()
 			SStgui.update_uis(src)
-			to_chat(user, SPAN_NOTICE("You connect \the [I] to \the [src]'s [I==tank1 ? "primary" : "secondary"] slot."))
+			to_chat(user, span_notice("You connect \the [I] to \the [src]'s [I==tank1 ? "primary" : "secondary"] slot."))
 			return
 	..()
 
@@ -151,7 +151,7 @@
 					text_mode = "tank transfer valve detonation"
 				if(MODE_CANISTER)
 					text_mode = "canister-assisted single gas tank detonation"
-			to_chat(usr, SPAN_NOTICE("[src] set to simulate a [text_mode]."))
+			to_chat(usr, span_notice("[src] set to simulate a [text_mode]."))
 			return TRUE
 
 		if("add_tank")
@@ -163,13 +163,13 @@
 				else if(slot == 2 && !tank2)
 					tank2 = T
 				else
-					to_chat(usr, SPAN_WARNING("Slot [slot] is full."))
+					to_chat(usr, span_warning("Slot [slot] is full."))
 					return
 				if(!usr.attempt_insert_item_for_installation(T, src))
 					return
 				return TRUE
 			else
-				to_chat(usr, SPAN_WARNING("You must be wielding a tank to insert it!"))
+				to_chat(usr, span_warning("You must be wielding a tank to insert it!"))
 
 		if("remove_tank")
 			var/obj/item/tank/T = locate(params["ref"]) in list(tank1, tank2)

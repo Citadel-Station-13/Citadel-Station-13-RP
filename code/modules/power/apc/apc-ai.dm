@@ -5,7 +5,7 @@
 	toggle_breaker()
 	actor.data[ACTOR_DATA_SILICON_CONTROL_LOG] = "apc [COORD(src)] [REF(src)] breaker [operating ? "on" : "off"]"
 	actor.chat_feedback(
-		SPAN_WARNING("You toggle [src]'s breaker <b>[operating ? "on" : "off"]</b>"),
+		span_warning("You toggle [src]'s breaker <b>[operating ? "on" : "off"]</b>"),
 		target = src,
 	)
 	return TRUE

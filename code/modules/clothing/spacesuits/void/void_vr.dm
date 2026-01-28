@@ -90,7 +90,7 @@
 		return ..()
 
 	if(is_being_worn())
-		to_chat(user, SPAN_WARNING("You cannot modify \the [src] while it is being worn."))
+		to_chat(user, span_warning("You cannot modify \the [src] while it is being worn."))
 		return
 
 	if(W.is_screwdriver())

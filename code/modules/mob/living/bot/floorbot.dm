@@ -97,7 +97,7 @@
 	if(!emagged)
 		emagged = TRUE
 		if(user)
-			to_chat(user, SPAN_NOTICE("The [src] buzzes and beeps."))
+			to_chat(user, span_notice("The [src] buzzes and beeps."))
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, FALSE)
 		return TRUE
 
@@ -377,7 +377,7 @@
 		return
 
 	if(contents.len >= 1)
-		to_chat(user, SPAN_NOTICE("They wont fit in as there is already stuff inside."))
+		to_chat(user, span_notice("They wont fit in as there is already stuff inside."))
 		return
 
 	if(T.use(10))
@@ -395,11 +395,11 @@
 		else if(istype(src, /obj/item/storage/firstaid/surgery))
 			B.skin = "surgerykit"
 		user.put_in_hands_or_drop(B)
-		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))
+		to_chat(user, span_notice("You add the tiles into the empty toolbox. They protrude from the top."))
 		B.toolbox = type
 		qdel(src)
 	else
-		to_chat(user, SPAN_WARNING("You need 10 floor tiles for a floorbot."))
+		to_chat(user, span_warning("You need 10 floor tiles for a floorbot."))
 		return
 
 /obj/item/bot_assembly/floorbot
@@ -430,7 +430,7 @@
 			if(isprox(W))
 				if(!user.attempt_consume_item_for_construction(W))
 					return
-				to_chat(user, SPAN_NOTICE("You add the proximity sensor to [src]."))
+				to_chat(user, span_notice("You add the proximity sensor to [src]."))
 				name = "incomplete floorbot assembly"
 				desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
 				add_overlay("[base_icon_state]-prox-[skin]")
@@ -442,7 +442,7 @@
 					return
 				qdel(W)
 				var/mob/living/bot/floorbot/S = new(drop_location(), skin)
-				to_chat(user, SPAN_NOTICE("You complete the Floorbot! Beep boop."))
+				to_chat(user, span_notice("You complete the Floorbot! Beep boop."))
 				S.name = created_name
 				S.toolbox = toolbox
 				S.robot_arm = robot_arm

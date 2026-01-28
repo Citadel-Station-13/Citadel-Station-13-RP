@@ -49,7 +49,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
-			visible_message(SPAN_WARNING("[C] strokes the [name], and it melts away!"))
+			visible_message(span_warning("[C] strokes the [name], and it melts away!"))
 			qdel(src)
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

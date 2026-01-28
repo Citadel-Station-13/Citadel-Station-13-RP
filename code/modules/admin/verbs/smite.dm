@@ -59,7 +59,7 @@
 		if(SMITE_DROP_LIMB_PICK)
 			var/picked_organ_tag = input("Select the limb you wanna remove of [target]","Limb Choice") as null|anything in list(BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM,BP_R_FOOT,BP_L_FOOT, BP_R_HAND, BP_L_HAND)
 			var/obj/item/organ/external/limb = target.get_organ(picked_organ_tag)
-			to_chat(target, SPAN_ALERTSYNDIE("Your sins have cost you your [limb.name]"))
+			to_chat(target, span_alertsyndie("Your sins have cost you your [limb.name]"))
 			limb?.droplimb(FALSE, pick(DROPLIMB_EDGE,DROPLIMB_BURN,DROPLIMB_BLUNT))
 
 		if(SMITE_DROP_LIMB_RANDOM)
@@ -69,13 +69,13 @@
 			rand_organ_tag = pick(BP_L_ARM, BP_R_ARM)
 			limb = target.get_organ(rand_organ_tag)
 			limb?.droplimb(FALSE, pick(DROPLIMB_EDGE,DROPLIMB_BURN,DROPLIMB_BLUNT))
-			to_chat(target, SPAN_ALERTSYNDIE("Your sins have cost you an arm and an leg"))
+			to_chat(target, span_alertsyndie("Your sins have cost you an arm and an leg"))
 
 		if(SMITE_DROP_LIMB_ALL)
 			for( var/limb_tag in list(BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM))
 				var/obj/item/organ/external/limb = target.get_organ(limb_tag)
 				limb?.droplimb(FALSE, pick(DROPLIMB_EDGE,DROPLIMB_BURN,DROPLIMB_BLUNT))
-			to_chat(target, SPAN_ALERTSYNDIE(pick("The gods have bestowed you nuggethood", "The gods crave McDonalds", "The gods have turned you into a fucknugget")))
+			to_chat(target, span_alertsyndie(pick("The gods have bestowed you nuggethood", "The gods crave McDonalds", "The gods have turned you into a fucknugget")))
 
 		if(SMITE_BLUESPACEARTILLERY)
 			bluespace_artillery(target,src)

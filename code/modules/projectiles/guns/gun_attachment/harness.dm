@@ -63,7 +63,7 @@
 	if(active)
 		return
 	set_active(TRUE, no_message = TRUE)
-	to_chat(user, SPAN_NOTICE("The [src] engages as you pick up \the [attached]."))
+	to_chat(user, span_notice("The [src] engages as you pick up \the [attached]."))
 
 /obj/item/gun_attachment/harness/magnetic/proc/snap_back_to_user(mob/user)
 	var/target_slot_phrase
@@ -81,7 +81,7 @@
 	if(!.)
 		return
 	attached.visible_message(
-		SPAN_WARNING("[attached] [harness_message] [user]'s [target_slot_phrase]!"),
+		span_warning("[attached] [harness_message] [user]'s [target_slot_phrase]!"),
 		range = MESSAGE_RANGE_COMBAT_SILENCED,
 	)
 
@@ -95,13 +95,13 @@
 		if(!no_sound)
 			playsound(src, activate_sound, 15, TRUE, -4)
 		if(!no_message)
-			actor?.chat_feedback(SPAN_NOTICE("You activate \the [src]."), target = attached)
+			actor?.chat_feedback(span_notice("You activate \the [src]."), target = attached)
 	else
 		potential_action?.set_button_active(FALSE)
 		if(!no_sound)
 			playsound(src, deactivate_sound, 15, TRUE, -4)
 		if(!no_message)
-			actor?.chat_feedback(SPAN_NOTICE("You deactivate \the [src]."), target = attached)
+			actor?.chat_feedback(span_notice("You deactivate \the [src]."), target = attached)
 
 /obj/item/gun_attachment/harness/magnetic/lanyard
 	name = "handgun lanyard"

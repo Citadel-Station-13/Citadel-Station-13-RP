@@ -89,7 +89,7 @@ GLOBAL_DATUM_INIT(zas_debug_image_mark, /image, image('icons/testing/Zone.dmi', 
 		to_chat(mob, "there's no turf in that dir.")
 		return
 	if(!istype(other_turf, /turf/simulated))
-		to_chat(mob, SPAN_RED("the other turf is unsimulated."))
+		to_chat(mob, span_red("the other turf is unsimulated."))
 
 	var/t_block = T.CanAtmosPass(other_turf, T.vertical_dir(other_turf))
 	var/o_block = other_turf.CanAtmosPass(T, other_turf.vertical_dir(T))

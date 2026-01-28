@@ -81,7 +81,7 @@
 	SIGNAL_HANDLER
 
 	var/obj/item/I = source
-	I.visible_message(SPAN_NOTICE("[I] snaps back into [src]!"))
+	I.visible_message(span_notice("[I] snaps back into [src]!"))
 	I.forceMove(src)
 	. = COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
 
@@ -139,11 +139,11 @@
 		if(last_activate + aug_cooldown <= world.time)
 			last_activate = world.time
 		else
-			to_chat(owner, SPAN_WARNING("\The [src] is still recharging."))
+			to_chat(owner, span_warning("\The [src] is still recharging."))
 			return
 
 	if(robotic && owner.get_restraining_bolt())
-		to_chat(owner, SPAN_WARNING("\The [src] doesn't respond."))
+		to_chat(owner, span_warning("\The [src] doesn't respond."))
 		return
 
 	augment_action()
@@ -154,7 +154,7 @@
 	if(owner.is_in_inventory(integrated_object))
 		// retracting
 		integrated_object.forceMove(src)
-		owner.visible_message(SPAN_NOTICE("[integrated_object] snaps back into [src]."))
+		owner.visible_message(span_notice("[integrated_object] snaps back into [src]."))
 		return
 
 	// extending
@@ -219,11 +219,11 @@
 	if(buckled)
 		var/obj/Ob = buckled
 		if(Ob.buckle_lying(src))
-			to_chat(M, SPAN_NOTICE("You cannot use your augments when restrained."))
+			to_chat(M, span_notice("You cannot use your augments when restrained."))
 			return FALSE
 
 	if((slot == /datum/inventory_slot/abstract/hand/left && get_left_held_item()) || (slot == /datum/inventory_slot/abstract/hand/right && get_right_held_item()))
-		to_chat(M, SPAN_WARNING("Your hand is full.  Drop something first."))
+		to_chat(M, span_warning("Your hand is full.  Drop something first."))
 		return FALSE
 
 	var/del_if_failure = destroy_on_drop

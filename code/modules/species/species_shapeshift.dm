@@ -512,7 +512,7 @@
 	for(var/limb in src.organs)
 		var/obj/item/organ/external/L = limb
 		L.transparent = !L.transparent
-	visible_message(SPAN_NOTICE("\The [src]'s internal composition seems to change."))
+	visible_message(span_notice("\The [src]'s internal composition seems to change."))
 	update_icons_body()
 
 /mob/living/carbon/human/proc/promethean_set_hair_transparency()
@@ -530,7 +530,7 @@
 		new_transparency = clamp(new_transparency,100,255)
 		var/obj/item/organ/external/head/H = src.get_organ(BP_HEAD)
 		H.hair_opacity = new_transparency
-		visible_message(SPAN_NOTICE("\The [src]'s \"hair\" composition seems to change."))
+		visible_message(span_notice("\The [src]'s \"hair\" composition seems to change."))
 		update_hair()
 
 /datum/species/shapeshifter/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)

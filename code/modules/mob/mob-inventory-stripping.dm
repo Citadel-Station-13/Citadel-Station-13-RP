@@ -115,7 +115,7 @@
 	var/obj/item/ours = item_by_slot_id(slot_id)
 	var/obj/item/theirs = user.get_active_held_item()
 	if(!ours && !theirs)
-		to_chat(user, SPAN_WARNING("They're not wearing anything in that slot!"))
+		to_chat(user, span_warning("They're not wearing anything in that slot!"))
 		return FALSE
 
 	if(!attempt_strip_common(ours, theirs, user, slot_id))
@@ -145,7 +145,7 @@
 	var/obj/item/theirs = user.get_active_held_item()
 
 	if(!ours && !theirs)
-		to_chat(user, SPAN_WARNING("They're not holding anything in that hand!"))
+		to_chat(user, span_warning("They're not holding anything in that hand!"))
 		return FALSE
 
 	if(!attempt_strip_common(ours, theirs, user, index))
@@ -180,50 +180,50 @@
 
 	if(removing)
 		if(!can_unequip(ours, user = user))
-			to_chat(user, SPAN_WARNING("[ours] is stuck!"))
+			to_chat(user, span_warning("[ours] is stuck!"))
 			return FALSE
 		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
 			if(hide_item)
 				visible_message(
-					SPAN_DANGER("[user] is trying to remove something from [src]!"),
-					SPAN_DANGER("[user] is trying to remove your [ours.name]!")
+					span_danger("[user] is trying to remove something from [src]!"),
+					span_danger("[user] is trying to remove your [ours.name]!")
 				)
 			else
 				visible_message(
-					SPAN_DANGER("[user] is trying to remove [src]'s [ours.name]!"),
-					SPAN_DANGER("[user] is trying to remove your [ours.name]!")
+					span_danger("[user] is trying to remove [src]'s [ours.name]!"),
+					span_danger("[user] is trying to remove your [ours.name]!")
 				)
 		else
-			to_chat(user, SPAN_WARNING("You start trying to sneakily remove [hide_item? "something" : ours.name] from [src]!"))
+			to_chat(user, span_warning("You start trying to sneakily remove [hide_item? "something" : ours.name] from [src]!"))
 	else
 		if(!user.can_unequip(theirs))
-			to_chat(user, SPAN_WARNING("[theirs] is stuck to your hand!"))
+			to_chat(user, span_warning("[theirs] is stuck to your hand!"))
 			return FALSE
 
 		// if it isn't a hand index, check semantic conflicts first so they don't waste time.
 		if(!isnum(slot_id_or_index) && !inventory_slot_semantic_conflict(theirs, slot_meta, user))
-			to_chat(user, SPAN_WARNING("[theirs] doesn't go there!"))
+			to_chat(user, span_warning("[theirs] doesn't go there!"))
 			return FALSE
 
 		if(!(view_flags & INV_VIEW_STRIP_IS_SILENT))
 			switch(slot_id_or_index)
 				if(SLOT_ID_MASK)
 					visible_message(
-						SPAN_DANGER("[user] is trying to put \a [theirs] in [src]'s mouth!"),
-						SPAN_DANGER("[user] is trying to put \a [theirs] in your mouth!")
+						span_danger("[user] is trying to put \a [theirs] in [src]'s mouth!"),
+						span_danger("[user] is trying to put \a [theirs] in your mouth!")
 					)
 				else
 					visible_message(
-						SPAN_DANGER("[user] is trying to put \a [theirs] on [src]!"),
-						SPAN_DANGER("[user] is trying to put \a [theirs] on you!")
+						span_danger("[user] is trying to put \a [theirs] on [src]!"),
+						span_danger("[user] is trying to put \a [theirs] on you!")
 					)
 		else
-			to_chat(user, SPAN_WARNING("You start trying to sneakily put \a [theirs] on [src]!"))
+			to_chat(user, span_warning("You start trying to sneakily put \a [theirs] on [src]!"))
 
 	if(!do_after(user, HUMAN_STRIP_DELAY, src, FALSE))
 		if(view_flags & INV_VIEW_STRIP_FUMBLE_ON_FAILURE)
 			// slot_meta must not be null if view_flags isn't NONE, so.
-			to_chat(src, SPAN_WARNING("You feel something being fumbled with near your [slot_meta.name]!"))
+			to_chat(src, span_warning("You feel something being fumbled with near your [slot_meta.name]!"))
 		return FALSE
 
 	if(removing)
@@ -282,14 +282,14 @@
 		// no ghost fuckery
 		return FALSE
 	if(user.incapacitated())
-		to_chat(user, SPAN_WARNING("You are incapacitated!"))
+		to_chat(user, span_warning("You are incapacitated!"))
 		close_strip_menu(user)
 		return FALSE
 	if(user.restrained())
-		to_chat(user, SPAN_WARNING("You are restrained!"))
+		to_chat(user, span_warning("You are restrained!"))
 		return FALSE
 	if(!user.Adjacent(src) && (!allow_loc || !user.Adjacent(loc)))
-		to_chat(user, SPAN_WARNING("You are too far away!"))
+		to_chat(user, span_warning("You are too far away!"))
 		close_strip_menu(user)
 		return FALSE
 	return TRUE

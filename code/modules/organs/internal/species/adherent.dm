@@ -26,7 +26,7 @@
 	if(owner.nutrition > 0)
 		owner.adjust_nutrition(-maintenance_cost)
 		active = FALSE
-		to_chat(owner, SPAN_DANGER("Your [name] [gender == PLURAL ? "are" : "is"] out of power!"))
+		to_chat(owner, span_danger("Your [name] [gender == PLURAL ? "are" : "is"] out of power!"))
 		refresh_action_button()
 
 /obj/item/organ/internal/powered/update_action_buttons()
@@ -43,11 +43,11 @@
 	if(.)
 		playsound(user, sound('sound/effects/ding.ogg'))
 		if(is_broken())
-			to_chat(owner, SPAN_WARNING("\The [src] [gender == PLURAL ? "are" : "is"] too damaged to function."))
+			to_chat(owner, span_warning("\The [src] [gender == PLURAL ? "are" : "is"] too damaged to function."))
 			active = FALSE
 		else
 			active = !active
-			to_chat(owner, SPAN_NOTICE("You are [active ? "now" : "no longer"] using your [name] to [use_descriptor]."))
+			to_chat(owner, span_notice("You are [active ? "now" : "no longer"] using your [name] to [use_descriptor]."))
 		refresh_action_button()
 
 
@@ -81,12 +81,12 @@
 		to_chat(C, "You cannot fly in this state!")
 		return
 	if(C.nutrition < 25 && !C.flying) //Don't have any food in you?" You can't fly.
-		to_chat(C, SPAN_NOTICE("You lack the energy to fly."))
+		to_chat(C, span_notice("You lack the energy to fly."))
 		return
 	owner.pass_flags ^= ATOM_PASS_TABLE
 	C.flying = !C.flying
 	C.update_floating()
-	to_chat(C, SPAN_NOTICE("You have [C.flying?"started":"stopped"] flying."))
+	to_chat(C, span_notice("You have [C.flying?"started":"stopped"] flying."))
 
 /obj/item/organ/internal/powered/jets/process(delta_time)
 	var/mob/living/carbon/human/C = src.owner
@@ -203,20 +203,20 @@
 
 	var/mob/living/carbon/human/C = src.owner
 	if(!C.flying)
-		to_chat(src, SPAN_NOTICE("You must be flying to hover!"))
+		to_chat(src, span_notice("You must be flying to hover!"))
 		return
 
 	if(C.incapacitated(INCAPACITATION_ALL))
-		to_chat(src, SPAN_NOTICE("You cannot hover in your current state!"))
+		to_chat(src, span_notice("You cannot hover in your current state!"))
 		return
 
 	// Don't have any food in you?" You can't hover, since it takes up 25 nutrition. And it's not 25 since we don't want them to immediately fall.
 	if(C.nutrition < 50 && !C.flying)
-		to_chat(C, SPAN_NOTICE("You lack the energy to fly."))
+		to_chat(C, span_notice("You lack the energy to fly."))
 		return
 
 	if(C.anchored)
-		to_chat(C, SPAN_NOTICE("You are already hovering and/or anchored in place!"))
+		to_chat(C, span_notice("You are already hovering and/or anchored in place!"))
 		return
 
 	// Not currently anchored, and not pulled by anyone.
@@ -224,7 +224,7 @@
 		C.anchored = TRUE //This is the only way to stop the inertial_drift.
 		C.nutrition -= 25
 		C.update_floating()
-		to_chat(C, SPAN_NOTICE("You hover in place."))
+		to_chat(C, span_notice("You hover in place."))
 		spawn(6) //.6 seconds.
 			C.anchored = FALSE
 	else

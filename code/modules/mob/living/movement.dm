@@ -128,14 +128,14 @@
 	// handcuffed check - can't bump past, or even force-move past (yeah sorry bad design) cuffed people
 	if(L.restrained() && L.pulledby != src)
 		if(!(world.time % 5))
-			to_chat(src, SPAN_WARNING("[L] is restrained, you cannot push past."))
+			to_chat(src, span_warning("[L] is restrained, you cannot push past."))
 		return TRUE
 
 	if(L.pulling && ismob(L.pulling))
 		var/mob/M = L.pulling
 		if(M.restrained())
 			if(!(world.time % 5))
-				to_chat(src, SPAN_WARNING("[L] is restraining [M], you cannot push past."))
+				to_chat(src, span_warning("[L] is restraining [M], you cannot push past."))
 			return TRUE
 
 	// can crawl under
@@ -153,7 +153,7 @@
 		var/mob/living/carbon/human/H = L
 		if(H.species.lightweight && prob(50))
 			H.afflict_paralyze(20 * 5)
-			H.visible_message(SPAN_WARNING("[src] bumps into [H], knocking them to the floor!"))
+			H.visible_message(span_warning("[src] bumps into [H], knocking them to the floor!"))
 			return TRUE
 
 	// if not, can we bump

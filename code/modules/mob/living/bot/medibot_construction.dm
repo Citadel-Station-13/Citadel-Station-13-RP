@@ -41,7 +41,7 @@
 				if(!user.attempt_consume_item_for_construction(target_item))
 					return
 				healthanalyzer = target_item.type
-				to_chat(user, SPAN_NOTICE("You add the health sensor to [src]."))
+				to_chat(user, span_notice("You add the health sensor to [src]."))
 				name = "First aid/robot arm/health analyzer assembly"
 				add_overlay("[base_icon_state]-scanner")
 				build_step++
@@ -53,7 +53,7 @@
 				if(!user.attempt_consume_item_for_construction(target_item))
 					return
 				var/mob/living/bot/medibot/new_medibot = new(get_turf(src), skin)
-				to_chat(user, SPAN_NOTICE("You complete the Medibot! Beep boop."))
+				to_chat(user, span_notice("You complete the Medibot! Beep boop."))
 				new_medibot.name = created_name
 				new_medibot.firstaid = firstaid
 				new_medibot.robot_arm = robot_arm
@@ -72,7 +72,7 @@
 		return
 
 	if(contents.len >= 1)
-		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))
+		to_chat(user, span_notice("You need to empty [src] out first."))
 		return
 
 	var/obj/item/bot_assembly/medibot/new_medibot = new
@@ -101,7 +101,7 @@
 		new_medibot.skin = "bezerk"
 
 	user.put_in_hands_or_drop(new_medibot)
-	to_chat(user, SPAN_NOTICE("You add [target_part] to [src]."))
+	to_chat(user, span_notice("You add [target_part] to [src]."))
 	new_medibot.robot_arm = target_part.type
 	new_medibot.firstaid = type
 	qdel(target_part)

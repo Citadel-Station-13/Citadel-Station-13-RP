@@ -25,7 +25,7 @@
 
 	if(!isnull(target.reagents))
 		if(!(target.atom_flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
-			to_chat(user, SPAN_WARNING( "\The [target] is sealed, and cannot be scanned by \the [src] until unsealed."))
+			to_chat(user, span_warning( "\The [target] is sealed, and cannot be scanned by \the [src] until unsealed."))
 			return
 
 		var/dat = ""
@@ -33,13 +33,13 @@
 			var/one_percent = target.reagents.total_volume / 100
 			for (var/id in target.reagents.reagent_volumes)
 				var/datum/reagent/R = SSchemistry.fetch_reagent(id)
-				dat += "\n \t " + SPAN_NOTICE("[R][details ? ": [target.reagents.reagent_volumes[id] / one_percent]%" : ""]")
+				dat += "\n \t " + span_notice("[R][details ? ": [target.reagents.reagent_volumes[id] / one_percent]%" : ""]")
 		if(dat)
-			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
+			to_chat(user, span_notice("Chemicals found: [dat]"))
 		else
-			to_chat(user, SPAN_NOTICE("No active chemical agents found in [target]."))
+			to_chat(user, span_notice("No active chemical agents found in [target]."))
 	else
-		to_chat(user, SPAN_NOTICE("No significant chemical agents found in [target]."))
+		to_chat(user, span_notice("No significant chemical agents found in [target]."))
 
 	return
 

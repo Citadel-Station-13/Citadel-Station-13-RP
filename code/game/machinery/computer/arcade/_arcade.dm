@@ -60,8 +60,8 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		// if(prob(0.0001)) //1 in a million
 		// 	new /obj/item/gun/projectile/energy/pulse/prize(src)
 		// 	visible_message(
-		// 		SPAN_NOTICE("[src] dispenses.. woah, a gun! Way past cool."),
-		// 		SPAN_NOTICE("You hear a chime and a shot."))
+		// 		span_notice("[src] dispenses.. woah, a gun! Way past cool."),
+		// 		span_notice("You hear a chime and a shot."))
 		// 	//user.client.give_award(/datum/award/achievement/misc/pulse, user)
 		// 	return
 
@@ -73,8 +73,8 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		var/atom/movable/the_prize = new prizeselect(get_turf(src))
 		playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
 		visible_message(
-			SPAN_NOTICE("[src] dispenses [the_prize]!"), \
-			SPAN_NOTICE("You hear a chime and a clunk."))
+			span_notice("[src] dispenses [the_prize]!"), \
+			span_notice("You hear a chime and a clunk."))
 
 /obj/machinery/computer/arcade/emp_act(severity)
 	. = ..()
@@ -105,11 +105,11 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		var/obj/item/stack/arcadeticket/T = O
 		var/amount = T.get_amount()
 		if(amount <2)
-			to_chat(user, SPAN_WARNING("You need 2 tickets to claim a prize!"))
+			to_chat(user, span_warning("You need 2 tickets to claim a prize!"))
 			return
 		prizevend(user)
 		T.pay_tickets()
 		T.update_appearance()
 		O = T
-		to_chat(user, SPAN_NOTICE("You turn in 2 tickets to \the [src] and claim a prize!"))
+		to_chat(user, span_notice("You turn in 2 tickets to \the [src] and claim a prize!"))
 		return

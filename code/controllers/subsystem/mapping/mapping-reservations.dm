@@ -6,10 +6,10 @@
  */
 /datum/controller/subsystem/mapping/proc/allocate_reserved_level()
 	if(reservation_level_count && ((world.maxx * world.maxy * (reservation_level_count + 1)) > reservation_turf_limit))
-		log_and_message_admins(SPAN_USERDANGER("Out of dynamic reservation allocations. Is there a memory leak with turf reservations?"))
+		log_and_message_admins(span_userdanger("Out of dynamic reservation allocations. Is there a memory leak with turf reservations?"))
 		return FALSE
 	if(reservation_level_count)
-		log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reservation_level_count + 1]. This is potentially not a good thing if the server is not at high load right now."))
+		log_and_message_admins(span_userdanger("Allocating new reserved level. Now at [reservation_level_count + 1]. This is potentially not a good thing if the server is not at high load right now."))
 	reservation_level_count++
 	var/datum/map_level/level_struct = allocate_level(/datum/map_level/reserved)
 	ASSERT(level_struct)

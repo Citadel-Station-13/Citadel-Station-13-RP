@@ -19,7 +19,7 @@
 	// sigh. rework bolts when?
 	if(bolt && !bolt.malfunction)
 		actor?.chat_feedback(
-			SPAN_WARNING("Your restraining bolt prevents you from doing that."),
+			span_warning("Your restraining bolt prevents you from doing that."),
 			target = src,
 		)
 		return FALSE

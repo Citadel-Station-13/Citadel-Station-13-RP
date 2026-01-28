@@ -11,7 +11,7 @@
 
 	if(TIMER_COOLDOWN_CHECK(src, TIMER_CD_INDEX_MOB_VERB_INVERT_SELF))
 		// todo: don't usr lol
-		to_chat(usr, SPAN_WARNING("You can't do that yet!"))
+		to_chat(usr, span_warning("You can't do that yet!"))
 		return
 	TIMER_COOLDOWN_START(src, TIMER_CD_INDEX_MOB_VERB_INVERT_SELF, 0.5 SECONDS)
 

@@ -121,10 +121,10 @@
 		healing_factor *= 1.2
 	if(H.active_regen)
 		if(!H.lying)
-			to_chat(H, SPAN_BOLDWARNING("You need to lie down to benefit from your enhanced regeneration"))
+			to_chat(H, span_boldwarning("You need to lie down to benefit from your enhanced regeneration"))
 			H.active_regen = FALSE
 		else if(H.nutrition < 50)
-			to_chat(H, SPAN_BOLDWARNING("You are too hungry to benefit from your enhanced regeneration"))
+			to_chat(H, span_boldwarning("You are too hungry to benefit from your enhanced regeneration"))
 			H.active_regen = FALSE
 		healing_factor *= 4
 	var/turf/T = get_turf(H)

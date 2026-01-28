@@ -61,17 +61,17 @@
 
 		var/obj/item/organ/internal/brain/B = O
 		if(!B.brainmob)
-			to_chat(user, SPAN_WARNING("You aren't sure where this brain came from, but you're pretty sure it's useless."))
+			to_chat(user, span_warning("You aren't sure where this brain came from, but you're pretty sure it's useless."))
 			return
 
 		for(var/modifier_type in B.brainmob.modifiers)	//Can't be shoved in an MMI.
 			if(istype(modifier_type, /datum/modifier/no_borg))
-				to_chat(user, SPAN_WARNING("\The [src] appears to reject this brain.  It is incompatable."))
+				to_chat(user, span_warning("\The [src] appears to reject this brain.  It is incompatable."))
 				return
 		if(!user.attempt_insert_item_for_installation(O, src))
 			return
 
-		user.visible_message(SPAN_NOTICE("\The [user] sticks \a [O] into \the [src]."))
+		user.visible_message(span_notice("\The [user] sticks \a [O] into \the [src]."))
 		B.preserve(MMI_TRAIT)
 
 		brainmob = B.brainmob
@@ -215,15 +215,15 @@
 /obj/item/mmi/digital/examine(mob/user, dist)
 	. = ..()
 	if(radio)
-		. += SPAN_NOTICE("There is a switch to toggle the radio system [radio.radio_enabled ? "off" : "on"].[brainobj ? " It is currently being covered by [brainobj]." : null]")
+		. += span_notice("There is a switch to toggle the radio system [radio.radio_enabled ? "off" : "on"].[brainobj ? " It is currently being covered by [brainobj]." : null]")
 	if(brainmob)
 		var/mob/living/carbon/brain/B = brainmob
 		if(!B.key || !B.mind || B.stat == DEAD)
-			. += SPAN_WARNING("\The [src] indicates that the brain is completely unresponsive.")
+			. += span_warning("\The [src] indicates that the brain is completely unresponsive.")
 		else if(!B.client)
-			. += SPAN_WARNING("\The [src] indicates that the brain is currently inactive; it might change.")
+			. += span_warning("\The [src] indicates that the brain is currently inactive; it might change.")
 		else
-			. += SPAN_NOTICE("\The [src] indicates that the brain is active.")
+			. += span_notice("\The [src] indicates that the brain is active.")
 
 /obj/item/mmi/digital/emp_act(severity)
 	if(!brainmob)

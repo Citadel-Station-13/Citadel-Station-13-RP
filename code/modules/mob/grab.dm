@@ -310,7 +310,7 @@
 				clickchain.visible_feedback(
 					target = target,
 					range = MESSAGE_RANGE_COMBAT_LOUD,
-					visible = SPAN_DANGER("[clickchain.performer] shoves [affecting] against \the [target]!")
+					visible = span_danger("[clickchain.performer] shoves [affecting] against \the [target]!")
 				)
 				affecting.take_random_targeted_damage(brute = 10)
 				affecting.afflict_knockdown(0.5 SECONDS)
@@ -318,7 +318,7 @@
 				clickchain.visible_feedback(
 					target = target,
 					range = MESSAGE_RANGE_COMBAT_LOUD,
-					visible = SPAN_DANGER("[clickchain.performer] slams [affecting] against \the [target]!")
+					visible = span_danger("[clickchain.performer] slams [affecting] against \the [target]!")
 				)
 				affecting.take_random_targeted_damage(brute = 20)
 				affecting.afflict_paralyze(1 SECONDS)
@@ -327,7 +327,7 @@
 				clickchain.visible_feedback(
 					target = target,
 					range = MESSAGE_RANGE_COMBAT_LOUD,
-					visible = SPAN_DANGER("[clickchain.performer] smashes [affecting] against \the [target]!")
+					visible = span_danger("[clickchain.performer] smashes [affecting] against \the [target]!")
 				)
 				affecting.take_random_targeted_damage(brute = 30)
 				affecting.afflict_paralyze(2.75 SECONDS)

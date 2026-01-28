@@ -368,7 +368,7 @@
 		return TRUE
 	else
 		change_stack(user, stackmaterial)
-		to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack"))
+		to_chat(user, span_notice("You take [stackmaterial] sheets out of the stack"))
 	return TRUE
 
 // todo: refactor and combine with /split
@@ -402,7 +402,7 @@
 			continue
 		var/transfer = src.transfer_to(item)
 		if (transfer)
-			to_chat(user, SPAN_NOTICE("You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."))
+			to_chat(user, span_notice("You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."))
 		if(!amount)
 			break
 

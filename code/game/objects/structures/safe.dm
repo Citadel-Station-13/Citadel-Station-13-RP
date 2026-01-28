@@ -59,7 +59,7 @@ FLOOR SAFES
 
 /obj/structure/safe/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The locking mechanism gears are <b>wrenched</b> in place.")
+	. += span_notice("The locking mechanism gears are <b>wrenched</b> in place.")
 
 /obj/structure/safe/update_icon_state()
 	//uses the same icon as the captain's spare safe (therefore lockable storage) so keep it in line with that
@@ -73,7 +73,7 @@ FLOOR SAFES
 		return TRUE
 
 	balloon_alert(user, "resetting lock...")
-	to_chat(user, SPAN_NOTICE("You begin resetting the lock for [src]. You'll need to set [number_of_tumblers] numbers."))
+	to_chat(user, span_notice("You begin resetting the lock for [src]. You'll need to set [number_of_tumblers] numbers."))
 
 	var/list/new_tumblers = list()
 	for(var/tumbler_index in 1 to number_of_tumblers)
@@ -92,7 +92,7 @@ FLOOR SAFES
 	tumblers = new_tumblers
 	current_tumbler_index = 1
 	dial = 0
-	to_chat(user, SPAN_NOTICE("You successfully reset the lock for [src]. The new combination is: [tumblers.Join("-")]."))
+	to_chat(user, span_notice("You successfully reset the lock for [src]. The new combination is: [tumblers.Join("-")]."))
 	balloon_alert(user, "lock set!")
 
 /obj/structure/safe/attackby(obj/item/attacking_item, mob/user, list/params)
@@ -100,18 +100,18 @@ FLOOR SAFES
 		. = TRUE //no afterattack
 		if(attacking_item.w_class + space <= maxspace)
 			if(!user.attempt_insert_item_for_installation(attacking_item, src))
-				to_chat(user, SPAN_WARNING("\The [attacking_item] is stuck to your hand, you cannot put it in the safe!"))
+				to_chat(user, span_warning("\The [attacking_item] is stuck to your hand, you cannot put it in the safe!"))
 				return
 			space += attacking_item.w_class
-			to_chat(user, SPAN_NOTICE("You put [attacking_item] in [src]."))
+			to_chat(user, span_notice("You put [attacking_item] in [src]."))
 		else
-			to_chat(user, SPAN_WARNING("[attacking_item] won't fit in [src]."))
+			to_chat(user, span_warning("[attacking_item] won't fit in [src]."))
 	else
 		if(istype(attacking_item, /obj/item/clothing/accessory/stethoscope))
 			attack_hand(user)
 			return
 		else
-			to_chat(user, SPAN_WARNING("You can't put [attacking_item] into the safe while it is closed!"))
+			to_chat(user, span_warning("You can't put [attacking_item] into the safe while it is closed!"))
 			return
 
 /obj/structure/safe/blob_act(obj/structure/blob/B)
@@ -179,9 +179,9 @@ FLOOR SAFES
 	switch(action)
 		if("open")
 			if(!check_unlocked() && !open && !(atom_flags & ATOM_BROKEN))
-				to_chat(user, SPAN_WARNING("You cannot open [src], as its lock is engaged!"))
+				to_chat(user, span_warning("You cannot open [src], as its lock is engaged!"))
 				return
-			to_chat(user, SPAN_NOTICE("You [open ? "close" : "open"] [src]."))
+			to_chat(user, span_notice("You [open ? "close" : "open"] [src]."))
 			open = !open
 			update_appearance()
 			return TRUE
@@ -189,7 +189,7 @@ FLOOR SAFES
 			if(open)
 				return
 			if(atom_flags & ATOM_BROKEN)
-				to_chat(user, SPAN_WARNING("The dial will not turn, as the mechanism is destroyed!"))
+				to_chat(user, span_warning("The dial will not turn, as the mechanism is destroyed!"))
 				return
 			var/ticks = text2num(params["num"])
 			for(var/iterate in 1 to ticks)
@@ -210,7 +210,7 @@ FLOOR SAFES
 			if(open)
 				return
 			if(atom_flags & ATOM_BROKEN)
-				to_chat(user, SPAN_WARNING("The dial will not turn, as the mechanism is destroyed!"))
+				to_chat(user, span_warning("The dial will not turn, as the mechanism is destroyed!"))
 				return
 			var/ticks = text2num(params["num"])
 			for(var/iterate in 1 to ticks)
@@ -254,7 +254,7 @@ FLOOR SAFES
 		return TRUE
 	if(current_tumbler_index > number_of_tumblers)
 		locked = FALSE
-		visible_message(SPAN_BOLDNOTICE("[pick("Spring", "Sprang", "Sproing", "Clunk", "Krunk")]!"))
+		visible_message(span_boldnotice("[pick("Spring", "Sprang", "Sproing", "Clunk", "Krunk")]!"))
 		return TRUE
 	locked = TRUE
 	return FALSE
@@ -266,7 +266,7 @@ FLOOR SAFES
 	if(!canhear)
 		return
 	if(current_tick == 2)
-		to_chat(user, SPAN_ITALICS("The sounds from [src] are too fast and blend together."))
+		to_chat(user, span_italics("The sounds from [src] are too fast and blend together."))
 	if(total_ticks == 1 || prob(SOUND_CHANCE))
 		balloon_alert(user, pick(sounds))
 
