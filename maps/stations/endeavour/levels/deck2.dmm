@@ -987,10 +987,7 @@
 /obj/effect/floor_decal/corner/lightorange/border{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = 22;
-	dir = 8
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -1363,10 +1360,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/d2afthall/endeavour)
 "aZT" = (
-/obj/machinery/power/apc/west_mount{
-	dir = 8;
-	pixel_x = 22
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -12332,11 +12326,7 @@
 /obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 1
 	},
-/obj/machinery/power/apc/west_mount{
-	dir = 2;
-	pixel_x = 0;
-	pixel_y = 21
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12822,11 +12812,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = 0;
-	pixel_y = 22;
-	dir = 2
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -15995,11 +15981,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d2amidportmaint/endeavour)
 "lnu" = (
-/obj/machinery/power/apc/west_mount{
-	dir = 2;
-	pixel_x = 0;
-	pixel_y = 21
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -16215,11 +16197,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "luU" = (
-/obj/machinery/power/apc/west_mount{
-	dir = 2;
-	pixel_x = 0;
-	pixel_y = 21
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -16758,11 +16736,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "lOB" = (
-/obj/machinery/power/apc/west_mount{
-	dir = 2;
-	pixel_x = 0;
-	pixel_y = 21
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -23267,11 +23241,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/power/apc/west_mount{
-	pixel_x = 0;
-	pixel_y = 22;
-	dir = 2
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
@@ -24654,11 +24624,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/west_mount{
-	dir = 2;
-	pixel_x = 0;
-	pixel_y = 21
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/plating,
 /area/hallway/d2fwdmaint/endeavour)
 "rnt" = (
@@ -26376,10 +26342,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d2amidportmaint/endeavour)
 "sIX" = (
-/obj/machinery/power/apc/east_mount{
-	pixel_x = -22;
-	dir = 4
-	},
+/obj/machinery/power/apc/east_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

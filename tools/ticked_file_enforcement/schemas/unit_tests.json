@@ -1,0 +1,7 @@
+{
+	"file": "code/unit_tests/_unit_tests.dm",
+	"scannable_directory": "code/unit_tests/",
+	"subdirectories": false,
+	"excluded_files": ["find_reference_sanity.dm"],
+	"forbidden_includes": []
+}

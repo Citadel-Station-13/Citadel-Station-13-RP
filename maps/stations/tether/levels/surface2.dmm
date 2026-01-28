@@ -7708,7 +7708,7 @@
 	desc = "A machine used for construction of legit prosthetics. You weren't sure if cardboard was considered an engineering material before now.";
 	dir = 4;
 	name = "Legitmate Prosthetics Fabricator";
-	req_access = list();
+	req_access = list()
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
@@ -14053,8 +14053,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/large_cell/tier_2/critical/north_mount{
-	name = "north bump";
-	pixel_y = 24
+	name = "north bump"
 	},
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
@@ -24313,9 +24312,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/large_cell/west_mount{
-	pixel_x = -28
-	},
+/obj/machinery/power/apc/large_cell/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "rWT" = (
@@ -25808,9 +25805,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/large_cell/tier_2/north_mount{
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/large_cell/tier_2/north_mount,
 /obj/machinery/button/remote/airlock{
 	id = "phoroncelldoor9";
 	name = "Phoron Cell 9 Doorlock";

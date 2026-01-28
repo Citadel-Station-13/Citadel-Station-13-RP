@@ -12156,9 +12156,6 @@
 /obj/machinery/photocopier,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
-"yy" = (
-/turf/space,
-/area/space)
 "yz" = (
 /obj/structure/disposalpipe/junction/yjunction,
 /obj/structure/cable/green{
@@ -39855,7 +39852,7 @@ gd
 gd
 gd
 gd
-yy
+ov
 ov
 ov
 ov
@@ -40049,7 +40046,7 @@ gd
 gd
 gd
 gd
-yy
+ov
 ov
 ov
 ov
@@ -41199,7 +41196,7 @@ ov
 rY
 ov
 ov
-yy
+ov
 gd
 gd
 gd
@@ -41393,7 +41390,7 @@ ov
 rY
 ov
 ov
-yy
+ov
 gd
 gd
 gd

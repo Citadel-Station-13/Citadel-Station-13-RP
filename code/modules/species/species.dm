@@ -962,7 +962,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return TRUE
 
 // Used to find a special target for falling on, such as pouncing on someone from above.
-/datum/species/proc/find_fall_target_special(src, landing)
+/datum/species/proc/find_fall_target_special(mob/living/L, landing)
 	return FALSE
 
 // Used to override normal fall behaviour. Use only when the species does fall down a level.

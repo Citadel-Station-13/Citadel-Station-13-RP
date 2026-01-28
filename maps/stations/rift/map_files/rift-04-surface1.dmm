@@ -23615,8 +23615,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/large_cell/tier_2/east_mount{
-	name = "east bump";
-	pixel_x = 24
+	name = "east bump"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10

@@ -42,11 +42,11 @@
 	set src in usr
 	bluespace_size(usr)
 
-/obj/item/clothing/under/bluespace/proc/bluespace_size(mob/usr as mob)
-	if (!ishuman(usr))
+/obj/item/clothing/under/bluespace/proc/bluespace_size(mob/M as mob)
+	if (!ishuman(M))
 		return
 
-	var/mob/living/carbon/human/H = usr
+	var/mob/living/carbon/human/H = M
 
 	if (H.stat || H.restrained())
 		return

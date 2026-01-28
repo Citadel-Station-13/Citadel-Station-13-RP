@@ -24,6 +24,14 @@
 		for(var/atom/movable/AM in old_loc)
 			AM.fall(old_loc)
 
+/obj/structure/lattice/Initialize(mapload)
+	. = ..()
+	for(var/obj/structure/lattice/LAT in loc)
+		if(LAT == src)
+			continue
+		log_mapping("multiple lattices found in ([loc.x], [loc.y], [loc.z], [get_area(LAT)])")
+		return INITIALIZE_HINT_QDEL
+
 /obj/structure/lattice/legacy_ex_act(severity)
 	switch(severity)
 		if(1)

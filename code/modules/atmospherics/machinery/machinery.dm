@@ -56,11 +56,14 @@ Pipelines + Other Objects -> Pipe network
 	var/last_power_draw_legacy = 0
 
 /obj/machinery/atmospherics/Initialize(mapload, newdir)
-	. = ..()
-	if(!icon_manager)
-		icon_manager = new()
 	if(!isnull(newdir))
 		setDir(newdir)
+	if(isturf(loc))
+		var/turf/turf_loc = loc
+		turf_loc.add_blueprints_preround(src)
+	. = ..()
+	if(!icon_manager) // old t-ray overlay
+		icon_manager = new()
 	if(!pipe_color)
 		pipe_color = color
 	color = null
@@ -68,7 +71,6 @@ Pipelines + Other Objects -> Pipe network
 	if(!pipe_color_check(pipe_color))
 		pipe_color = null
 	init_dir()
-
 // This is used to set up what directions pipes will connect to.  Should be called inside New() and whenever a dir changes.
 /obj/machinery/atmospherics/proc/init_dir()
 	return
