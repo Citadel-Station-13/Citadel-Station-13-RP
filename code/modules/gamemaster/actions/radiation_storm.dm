@@ -43,7 +43,7 @@
 	for(var/z in (LEGACY_MAP_DATUM).station_levels)
 		z_radiation(null, z, radiation_level, z_radiate_flags = Z_RADIATE_CHECK_AREA_SHIELD)
 
-	for(var/mob/living/carbon/C in living_mob_list)
+	for(var/mob/living/carbon/C in GLOB.human_list)
 		var/area/A = get_area(C)
 		if(!A)
 			continue

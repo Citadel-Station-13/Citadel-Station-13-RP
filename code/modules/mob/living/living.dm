@@ -32,6 +32,7 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 		ai_holder = new ai_holder_type(src)
 
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
+	GLOB.mob_living_list += src
 
 	//* ~~~~~~~VORE~~~~~~~ *//
 	add_verb(src, /mob/living/proc/escapeOOC)
@@ -81,6 +82,7 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 			qdel(O)
 	internal_organs.Cut()
 	profile = null
+	GLOB.mob_living_list -= src
 
 	QDEL_LIST(vore_organs)
 	if(length(vore_organs) || vore_selected)

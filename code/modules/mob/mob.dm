@@ -55,10 +55,12 @@
 /**
  * Intialize a mob
  *
+ * Sends global signal COMSIG_GLOBAL_MOB_NEW
+ *
  * Adds to global lists
  * * GLOB.mob_list
- * * dead_mob_list - if mob is dead
- * * living_mob_list - if the mob is alive
+ * * GLOB.dead_mob_list - if mob is dead
+ * * GLOB.alive_mob_list - if the mob is alive
  *
  * Other stuff:
  * * Sets the mob focus to itself
@@ -68,8 +70,14 @@
  * * Intialize the transform of the mob
  */
 /mob/Initialize(mapload)
-	// mob lists
-	mob_list_register()
+	// signal
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
+	add_to_mob_list()
+	if(stat == DEAD)
+		add_to_dead_mob_list()
+	else
+		add_to_alive_mob_list()
+
 	// actions
 	actions_controlled = new /datum/action_holder/mob_actor(src)
 	actions_innate = new /datum/action_holder/mob_actor(src)
@@ -79,8 +87,6 @@
 	prepare_huds()
 	// key focus
 	set_key_focus(src)
-	// signal
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
 	// abilities
 	init_abilities()
 	// inventory
@@ -103,7 +109,25 @@
 	init_iff()
 	return ..()
 
+/**
+ * Delete a mob
+ *
+ * Removes mob from the following global lists
+ * * GLOB.mob_list
+ * * GLOB.dead_mob_list
+ * * GLOB.alive_mob_list
+ * * GLOB.all_clockwork_mobs
+ *
+ * delete other references
+ *
+ * Parent call
+ */
 /mob/Destroy()
+	remove_from_mob_list()
+	remove_from_dead_mob_list()
+	remove_from_alive_mob_list()
+	remove_from_mob_suicide_list()
+
 	// this kicks out client
 	// this is needed to be early because we destroy stuff like inventory
 	// TODO: can we have this ran even earlier?
@@ -117,8 +141,6 @@
 		var/datum/status_effect/effect = status_effects[id]
 		qdel(effect)
 	status_effects = null
-	// mob lists
-	mob_list_unregister()
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
@@ -197,34 +219,6 @@
  */
 /mob/proc/is_potentially_important_for_logs()
 	return ckey || mind
-
-//* Mob List Registration *//
-
-/mob/proc/mob_list_register()
-	GLOB.mob_list += src
-	if(stat == DEAD)
-		dead_mob_list += src
-	else
-		living_mob_list += src
-
-/mob/proc/mob_list_unregister()
-	GLOB.mob_list -= src
-	dead_mob_list -= src
-	living_mob_list -= src
-
-/mob/proc/mob_list_update_stat(old_stat, new_stat)
-	if(old_stat == new_stat)
-		return
-	switch(old_stat)
-		if(DEAD)
-			dead_mob_list -= src
-		else
-			living_mob_list -= src
-	switch(new_stat)
-		if(DEAD)
-			dead_mob_list += src
-		else
-			living_mob_list += src
 
 /**
  * Generate the tag for this mob

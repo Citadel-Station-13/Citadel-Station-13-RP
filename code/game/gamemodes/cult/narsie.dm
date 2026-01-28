@@ -268,43 +268,38 @@ var/global/list/narsie_list = list()
 /obj/singularity/narsie/legacy_ex_act(severity) //No throwing bombs at it either. --NEO
 	return
 
-/obj/singularity/narsie/proc/pickcultist() //Narsie rewards his cultists with being devoured first, then picks a ghost to follow. --NEO
+/// Narsie rewards her cultists with being devoured first, then picks a ghost to follow.
+/obj/singularity/narsie/proc/pickcultist()
 	var/list/cultists = list()
-	for(var/datum/mind/cult_nh_mind in cult.current_antagonists)
-		if(!cult_nh_mind.current)
-			continue
-		if(cult_nh_mind.current.stat)
-			continue
-		var/turf/pos = get_turf(cult_nh_mind.current)
-		if(pos.z != src.z)
-			continue
-		cultists += cult_nh_mind.current
-	if(cultists.len)
-		acquire(pick(cultists))
-		return
-		//If there was living cultists, it picks one to follow.
-	for(var/mob/living/carbon/human/food in living_mob_list)
-		if(food.stat)
-			continue
+	var/list/noncultists = list()
+
+	for (var/mob/living/carbon/food in GLOB.alive_mob_list) //we don't care about constructs or cult-Ians or whatever. cult-monkeys are fair game i guess
 		var/turf/pos = get_turf(food)
-		if(pos.z != src.z)
+		if (!pos || (pos.z != z))
 			continue
-		cultists += food
-	if(cultists.len)
-		acquire(pick(cultists))
-		return
-		//no living cultists, pick a living human instead.
-	for(var/mob/observer/dead/ghost in GLOB.player_list)
-		if(!ghost.client)
-			continue
+
+		if (food.mind in cult.current_antagonists)
+			cultists += food
+		else
+			noncultists += food
+
+		if (cultists.len) //cultists get higher priority
+			acquire(pick(cultists))
+			return
+
+		if (noncultists.len)
+			acquire(pick(noncultists))
+			return
+
+	//no living humans, follow a ghost instead.
+	for (var/mob/observer/dead/ghost in GLOB.player_list)
 		var/turf/pos = get_turf(ghost)
-		if(pos.z != src.z)
+		if (!pos || (pos.z != z))
 			continue
 		cultists += ghost
-	if(cultists.len)
+	if (cultists.len)
 		acquire(pick(cultists))
 		return
-		//no living humans, follow a ghost instead.
 
 /obj/singularity/narsie/proc/acquire(const/mob/food)
 	var/capname = uppertext(name)

@@ -31,7 +31,10 @@
  * * send signal COMSIG_MOB_CLIENT_LOGIN
  */
 /mob/Login()
-	GLOB.player_list |= src
+	if(!client)
+		return FALSE
+
+	add_to_player_list()
 	update_Login_details()
 	world.update_status()
 
@@ -40,11 +43,16 @@
 
 	client.images = list() //remove the images such as AIs being unable to see runes
 	client.screen = list() //remove hud items just in case
+
 	if(hud_used)
 		qdel(hud_used) //remove the hud objects
+
 	hud_used = new /datum/hud(src)
 
 	next_move = 1
+
+	client.statobj = src
+
 	disconnect_time = null // Clear the disconnect time
 
 	/**
@@ -60,7 +68,9 @@
 	 * For us, (1,1,1) is a space tile. This means roughly 200,000! calls to Move()
 	 * You do not want this
 	 */
-	client.statobj = src
+
+	if(!client)
+		return FALSE
 
 	update_client_color()
 
@@ -99,6 +109,8 @@
 	//* legacy
 	// this is below reset_perspective so self perspective generates.
 	recalculate_vis()
+
+	return TRUE
 
 /mob/proc/login_cutscene()
 	client.end_cutscene()

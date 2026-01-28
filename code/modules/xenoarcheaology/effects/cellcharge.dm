@@ -29,7 +29,7 @@
 			if(get_dist(T, S) > src.effectrange)
 				continue
 			S.charge += 25
-		for (var/mob/living/silicon/robot/M in silicon_mob_list)
+		for (var/mob/living/silicon/robot/M in GLOB.silicon_mobs)
 			if(T.z != M.z)
 				continue
 			if(get_dist(T, M) > 50)
@@ -57,7 +57,7 @@
 			if(get_dist(T, S) > src.effectrange)
 				continue
 			S.charge += 250
-		for (var/mob/living/silicon/robot/M in silicon_mob_list)
+		for (var/mob/living/silicon/robot/M in GLOB.silicon_mobs)
 			if(T.z != M.z)
 				continue
 			if(get_dist(T, M) > 100)
