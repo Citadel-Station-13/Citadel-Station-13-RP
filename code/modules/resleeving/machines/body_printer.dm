@@ -152,7 +152,7 @@
 /obj/machinery/resleeving/body_printer/drop_products(method, atom/where)
 	. = ..()
 	materials.dump_everything(where)
-	#warn drop materials
+	#warn drop bottles
 
 /obj/machinery/resleeving/body_printer/Exited(atom/movable/AM, atom/newLoc)
 	..()
@@ -161,7 +161,13 @@
 		#warn handle
 
 /obj/machinery/resleeving/body_printer/proc/is_compatible_with_body(datum/resleeving_body_backup/backup)
-	#warn impl
+	if(backup.legacy_synthetic)
+		if(!allow_synthetic)
+			return FALSE
+	else
+		if(!allow_organic)
+			return FALSE
+	return TRUE
 
 /**
  * Builds the initial mob.
