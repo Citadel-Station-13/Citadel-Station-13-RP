@@ -1,10 +1,10 @@
 /datum/species/shapeshifter/holosphere/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)
 	// handle_crit does not transform the shell on crit, it does everything else (the message, stun, automatic attempt to revive)
-	if(holosphere_shell.hologram.is_in_critical())
+	if(H.is_in_critical())
 		handle_crit(H)
 
 	// handles when you are forced to change state between transformed/untransformed (i.e. due to dying or being in crit)
-	handle_transform_state()
+	handle_transform_state(H)
 
 	handle_regen(H)
 
