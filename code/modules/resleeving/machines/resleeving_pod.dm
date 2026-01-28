@@ -4,8 +4,9 @@
 	catalogue_data = list(
 		/datum/category_item/catalogue/technology/resleeving,
 	)
-	icon = 'icons/obj/machines/implantchair.dmi'
-	icon_state = "implantchair"
+	icon = 'icons/modules/resleeving/machinery/resleeving_pod.dmi'
+	icon_state = "resleever"
+	#warn resleever-occupied
 	circuit = /obj/item/circuitboard/resleeving/resleeving_pod
 	density = TRUE
 	opacity = FALSE

@@ -321,14 +321,43 @@
 
 	return ..()
 
-/obj/machinery/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/storage/part_replacer))
-		if(isnull(default_part_replacement))
-			user.action_feedback(SPAN_WARNING("[src] doesn't support part replacement."), src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		default_part_replacement(user, I)
+/obj/machinery/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(machine_occupant_pod)
+		if(machine_occupant_pod.door_via_click && machine_occupant_pod.supports_opening())
+			machine_occupant_pod.user_toggle_click(clickchain)
+			return CLICKCHAIN_DID_SOMETHING
+		else if(machine_occupant_pod.eject_via_click && machine_occupant_pod.is_occupied())
+			machine_occupant_pod.user_eject_click(clickchain)
+			return CLICKCHAIN_DID_SOMETHING
+
+/obj/machinery/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	// default machine occupant pod is checked first
+	if(machine_occupant_pod?.occupant)
+		return
+	if(!isnull(default_part_replacement) && default_part_replacement(clickchain.performer, using))
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	if(istype(using, /obj/item/grab) && machine_occupant_pod?.insert_via_grab)
+		var/obj/item/grab/casted_grab = using
+		machine_occupant_pod?.user_insert_grab(casted_grab.affecting, clickchain)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	return ..()
+
+/obj/machinery/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(machine_occupant_pod && ismob(dropping))
+		if((dropping != user) && machine_occupant_pod.insert_via_dragdrop)
+			machine_occupant_pod.user_insert_dragdrop(dropping, new /datum/event_args/actor(user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if((dropping == user) && machine_occupant_pod.enter_via_dragdrop)
+			machine_occupant_pod.user_enter_dragdrop(new /datum/event_args/actor(user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/machinery/can_interact(mob/user)
 	if((machine_stat & (NOPOWER|BROKEN|MAINT)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
@@ -608,6 +637,37 @@
 	. = ..()
 	// todo: rework
 	machine_stat &= ~BROKEN
+
+/obj/machinery/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(machine_occupant_pod)
+		if(machine_occupant_pod.door_via_context && machine_occupant_pod.supports_opening())
+			#warn impl
+		else if(machine_occupant_pod.eject_via_context && machine_occupant_pod.is_occupied())
+			#warn impl
+		else if(machine_occupant_pod.enter_via_context && !machine_occupant_pod.is_occupied())
+			#warn impl
+
+/obj/machinery/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("occupant_pod-toggle")
+			if(!machine_occupant_pod.door_via_context || !machine_occupant_pod.supports_opening())
+				return TRUE
+			#warn impl
+			return TRUE
+		if("occupant_pod-eject")
+			if(!machine_occupant_pod.eject_via_context || !machine_occupant_pod.is_occupied())
+				return TRUE
+			#warn impl
+			return TRUE
+		if("occupant_pod-enter")
+			if(!machine_occupant_pod.enter_via_context || machine_occupant_pod.is_occupied())
+				return TRUE
+			#warn impl
+			return TRUE
 
 //* Some common inventory helpers *//
 

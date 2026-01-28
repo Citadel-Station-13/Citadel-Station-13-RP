@@ -7,9 +7,9 @@
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/clonepod
-	icon = 'icons/obj/cloning.dmi'
-	icon_state = "pod_0"
-	#warn sprite, base icon state
+	icon = 'icons/modules/resleeving/machinery/body_printer.dmi'
+	icon_state = "grower"
+	base_icon_state = "grower"
 	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
 
 	// 15 kilowatts :trol:
@@ -17,7 +17,7 @@
 	idle_power_usage = 10
 
 	/// icon_state append when working
-	var/icon_state_running_append
+	var/icon_state_running_append = "-active"
 
 	/// can grow organic tissue
 	var/allow_organic = FALSE
