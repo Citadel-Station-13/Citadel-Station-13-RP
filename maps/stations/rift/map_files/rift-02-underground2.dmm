@@ -2497,8 +2497,7 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/large_cell/tier_2/north_mount{
-	name = "north bump";
-	pixel_y = 24
+	name = "north bump"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-2"

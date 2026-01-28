@@ -74,6 +74,7 @@ GLOBAL_VAR_INIT(refid_filter, TYPEID(filter(type="angular_blur")))
 
 #define is_reagent_container(O) (istype(O, /obj/item/reagent_containers))
 
+#define iseffect(O) (istype(O, /obj/effect))
 //Areas
 
 //Mobs

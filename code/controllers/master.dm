@@ -357,11 +357,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(subsystem.initialized)
 		return
 
-	// todo: dylib high-precision timers
-	var/rtod_start = REALTIMEOFDAY
+	rustg_time_reset(SS_INIT_TIMER_KEY)
 	var/initialize_result = subsystem.Initialize()
-	var/rtod_end = REALTIMEOFDAY
-	var/took_seconds = round((rtod_end - rtod_start) / 10, 0.01)
+
+	// Capture end time
+	var/time = rustg_time_milliseconds(SS_INIT_TIMER_KEY)
+	var/took_seconds = round(time / 1000, 0.01)
 
 	metric_set_nested_numerical(/datum/metric/nested_numerical/subsystem_init_time, "[subsystem.type]", took_seconds)
 

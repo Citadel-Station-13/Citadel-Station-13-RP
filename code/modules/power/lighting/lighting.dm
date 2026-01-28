@@ -306,6 +306,20 @@ var/global/list/light_type_cache = list()
 	icon_state = "tube_map"
 	#endif
 
+/obj/machinery/light/Initialize(mapload)
+	. = ..()
+
+	// Detect and scream about double stacked lights
+	if(PERFORM_ALL_TESTS(maptest_log_mapping))
+		var/turf/our_location = get_turf(src)
+		for(var/obj/machinery/light/on_turf in our_location)
+			if(on_turf == src)
+				continue
+			if(on_turf.dir != dir)
+				continue
+			log_mapping("Conflicting double stacked light [on_turf.type] found at [AREACOORD(src)]")
+			return INITIALIZE_HINT_QDEL
+
 /obj/machinery/light/flicker
 	auto_flicker = TRUE
 

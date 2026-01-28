@@ -319,16 +319,20 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		src.cell = new cell_type(src)
 		cell.charge = start_charge * cell.max_charge / 100.0 		// (convert percentage to actual value)
 
-	var/area/A = src.loc.loc
-
-	//if area isn't specified use current
-	if(isarea(A) && src.areastring == null)
-		src.area = A
-		name = "\improper [area.name] APC"
-	else
-		src.area = get_area_name(areastring)
-		name = "\improper [area.name] APC"
-	area.apc = src
+	//Assign it to its area. If mappers already assigned an area string fast load the area from it else get the current area
+	var/area/our_area = get_area(loc)
+	if(areastring)
+		area = get_area_instance_from_text(areastring)
+		if(!area)
+			area = our_area
+			stack_trace("Bad areastring path for [src], [areastring]")
+	else if(isarea(our_area) && areastring == null)
+		area = our_area
+	if(area)
+		// TODO fix dupe apcs then enable this
+		// if(area.apc)
+		// 	log_mapping("Duplicate APC created at [AREACOORD(src)] [area.type]. Original at [AREACOORD(area.apc)] [area.type].")
+		area.apc = src
 
 	if(istype(area, /area/submap))
 		alarms_hidden = TRUE
