@@ -23,6 +23,8 @@
 
 	var/eject_via_context = FALSE
 	var/eject_via_click = FALSE
+	var/eject_via_resist = FALSE
+	var/eject_via_move = FALSE
 
 	var/door_via_click = FALSE
 	var/door_via_context = FALSE
@@ -128,6 +130,7 @@
 //* -- Lazy init wrapers -- *//
 
 /obj/machinery/proc/init_occupant_pod() as /datum/machinery_system/occupant_pod
+	#warn make sure to set eject..
 
 /obj/machinery/proc/init_occupant_pod_openable() as /datum/machinery_system/occupant_pod
 

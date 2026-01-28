@@ -34,6 +34,14 @@
 	. = ..()
 	#warn drop occupant/mirror
 
+/obj/machinery/resleeving/resleeving_pod/machinery_occupant_pod_exited(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
+	..()
+	update_icon()
+
+/obj/machinery/resleeving/resleeving_pod/machinery_occupant_pod_entered(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
+	..()
+	update_icon()
+
 /**
  * @return TRUE/FALSE
  */

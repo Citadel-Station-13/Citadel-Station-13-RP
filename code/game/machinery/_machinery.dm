@@ -669,6 +669,21 @@
 			#warn impl
 			return TRUE
 
+/obj/machinery/contents_resist(mob/escapee)
+	. = ..()
+	if(.)
+		return
+	if(machine_occupant_pod)
+		if(machine_occupant_pod.eject_via_resist)
+			machine_occupant_pod.user_eject_resist(new /datum/event_args/actor(escapee))
+			return TRUE
+
+/obj/machinery/relaymove_from_contents(mob/user, direction)
+	..()
+	if(machine_occupant_pod)
+		if(machine_occupant_pod.eject_via_move)
+			machine_occupant_pod.user_eject_move(new /datum/event_args/actor(escapee))
+
 //* Some common inventory helpers *//
 
 /**

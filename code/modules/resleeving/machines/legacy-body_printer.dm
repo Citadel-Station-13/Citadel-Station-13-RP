@@ -53,39 +53,6 @@
 	// 	var/datum/trait/T = all_traits[trait]
 	// 	T.apply(H.species, H)
 
-/obj/machinery/resleeving/body_printer/verb/eject()
-	set name = "Eject Cloner"
-	set category = VERB_CATEGORY_OBJECT
-	set src in oview(1)
-
-	if(usr.stat != 0)
-		return
-	go_out()
-	add_fingerprint(usr)
-
-/obj/machinery/resleeving/body_printer/proc/go_out()
-	if(locked)
-		return
-
-	if(mess) //Clean that mess and dump those gibs!
-		mess = 0
-		gibs(src.loc)
-		update_icon()
-		return
-
-	if(!occupant)
-		return
-
-	occupant.forceMove(loc)
-	occupant.update_perspective()
-
-	eject_wait = 0 //If it's still set somehow.
-
-	occupant = null
-
-	update_icon()
-	return
-
 // Empties all of the beakers from the cloning pod, used to refill it
 /obj/machinery/resleeving/body_printer/verb/empty_beakers()
 	set name = "Eject Beakers"
@@ -110,16 +77,3 @@
 				containers -= G
 		return	1
 	return 0
-
-/obj/machinery/resleeving/body_printer/relaymove(mob/user as mob)
-	if(user.stat)
-		return
-	go_out()
-
-/obj/machinery/resleeving/body_printer/update_icon()
-	..()
-	icon_state = "pod_0"
-	if(occupant && !(machine_stat & NOPOWER))
-		icon_state = "pod_1"
-	else if(mess)
-		icon_state = "pod_g"
