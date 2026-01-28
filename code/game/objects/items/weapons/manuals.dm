@@ -1,942 +1,777 @@
-/*********************MANUALS (BOOKS)***********************/
+// Wiki books that are linked to the configured wiki link.
+
+/// The size of the window that the wiki books open in.
+#define BOOK_WINDOW_BROWSE_SIZE "970x710"
+/// This macro will resolve to code that will open up the associated wiki page in the window.
+#define WIKI_PAGE_IFRAME(wikiurl, link_identifier) {"
+	<html>
+	<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+	<style>
+		iframe {
+			display: none;
+		}
+	</style>
+	</head>
+	<body>
+	<script type="text/javascript">
+		function pageloaded(myframe) {
+			document.getElementById("loading").style.display = "none";
+			myframe.style.display = "inline";
+	}
+	</script>
+	<p id='loading'>You start skimming through the manual...</p>
+	<iframe width='100%' height='97%' onload="pageloaded(this)" src="[##wikiurl]/[##link_identifier]?printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+	</body>
+	</html>
+	"}
 
 /obj/item/book/manual
 	icon = 'icons/obj/library.dmi'
 	due_date = 0 // Game time in 1/10th seconds
-	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
+	unique = TRUE   // FALSE - Normal book, TRUE - Should not be treated as normal book, unable to be copied, unable to be modified
 
-/obj/item/book/manual/wiki_linked
-	name = "Wiki Linked Book"
-	author = "Buggy Coders"
-	title = "Unknown Wiki Book"
-	/// wiki page
-	var/wiki_page
+/obj/item/book/manual/wiki
+	starting_content = "Nanotrasen presently does not have any resources on this topic. If you would like to know more, contact your local Central Command representative." // safety
+	/// The ending URL of the page that we link to.
+	var/page_link = ""
 
-/obj/item/book/manual/wiki_linked/Initialize(mapload)
-	. = ..()
-	dat = {"
+/obj/item/book/manual/wiki/display_content(mob/living/user)
+	var/wiki_url = CONFIG_GET(string/wiki_page_root)
+	if(!wiki_url)
+		user.balloon_alert(user, "this book is empty!")
+		return
+	if(user.client.byond_version < 516) //Remove this once 516 is stable
+		if(tgui_alert(user, "This book's page will open in your browser. Are you sure?", "Open The Wiki", list("Yes", "No")) != "Yes")
+			return
+		DIRECT_OUTPUT(user, link("[wiki_url]/[page_link]"))
+	else
+		DIRECT_OUTPUT(user, browse(WIKI_PAGE_IFRAME(wiki_url, page_link), "window=manual;size=[BOOK_WINDOW_BROWSE_SIZE]")) // if you change this GUARANTEE that it works.
 
-		<html><head>
-		</head>
-
-		<body>
-		<iframe width='100%' height='97%' src="[CONFIG_GET(string/wiki_page_root)][wiki_page]&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
-		"}
-
-/obj/item/book/manual/wiki_linked/sop
+/obj/item/book/manual/wiki/sop
 	name = "Standard Operating Procedures"
-	author = "Nanotrasen"
-	title = "Standard Operating Procedures"
-	wiki_page = "Standard_Operating_Procedure"
+	starting_author = "Nanotrasen"
+	starting_title = "Standard Operating Procedures"
+	page_link = "Standard_Operating_Procedure"
 
+/obj/item/book/manual/wiki/engineering_construction
+	name = "Station Repairs and Construction"
+	icon_state ="bookEngineering"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Station Repairs and Construction"
+	page_link = "Guide_to_construction"
+
+/obj/item/book/manual/wiki/engineering_hacking
+	name = "Station Repairs and Construction"
+	icon_state ="bookEngineering"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Station Repairs and Construction"
+	page_link = "Hacking"
+
+/obj/item/book/manual/wiki/engineering_guide
+	name = "Engineering Textbook"
+	icon_state ="bookEngineering2"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Engineering Textbook"
+	page_link = "Guide_to_Engineering"
+
+// YIKES! have to repath all of these to use the proper wiki shit
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Station Repairs and Construction"
-
-/obj/item/book/manual/engineering_construction/Initialize(mapload)
-	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
-		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Guide_to_construction&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
-		"}
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Station Repairs and Construction"
+	// starting_content = {"
+	// 	<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Guide_to_construction&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+	// 	"}
 
 /obj/item/book/manual/engineering_particle_accelerator
 	name = "Particle Accelerator User's Guide"
 	icon_state ="bookParticleAccelerator"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Particle Accelerator User's Guide"
-
-/obj/item/book/manual/engineering_particle_accelerator/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
-				<h1>Experienced User's Guide</h1>
-
-				<h2>Setting up the accelerator</h2>
-
-				<ol>
-					<li><b>Wrench</b> all pieces to the floor</li>
-					<li>Add <b>wires</b> to all the pieces</li>
-					<li>Close all the panels with your <b>screwdriver</b></li>
-				</ol>
-
-				<h2>Using the accelerator</h2>
-
-				<ol>
-					<li>Open the control panel</li>
-					<li>Set the speed to 2</li>
-					<li>Start firing at the singularity generator</li>
-					<li><font color='red'><b>When the singularity reaches a large enough size so it starts moving on it's own set the speed down to 0, but don't shut it off</b></font></li>
-					<li>Remember to wear a radiation suit when working with this machine... we did tell you that at the start, right?</li>
-				</ol>
-
-				</body>
-			</html>
-			"}
-
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Particle Accelerator User's Guide"
+	starting_content = "\
+		<h1>Experienced User's Guide</h1>\
+		<h2>Setting up the accelerator</h2>\
+		<ol>\
+			<li><b>Wrench</b> all pieces to the floor</li>\
+			<li>Add <b>wires</b> to all the pieces</li>\
+			<li>Close all the panels with your <b>screwdriver</b></li>\
+		</ol>\
+		<h2>Using the accelerator</h2>\
+		<ol>\
+			<li>Open the control panel</li>\
+			<li>Set the speed to 2</li>\
+			<li>Start firing at the singularity generator</li>\
+			<li><font color='red'><b>When the singularity reaches a large enough size so it starts moving on it's own set the speed down to 0, but don't shut it off</b></font></li>\
+			<li>Remember to wear a radiation suit when working with this machine... we did tell you that at the start, right?</li>\
+		</ol>\
+	"
 
 /obj/item/book/manual/supermatter_engine
 	name = "Supermatter Engine Operating Manual"
 	icon_state = "bookSupermatter"
-	author = "Central Engineering Division"
-	title = "Supermatter Engine Operating Manual"
-
-/obj/item/book/manual/supermatter_engine/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<h1><strong>Guide: Supermatter Engine</strong></h1>
-				<h2>The Engine Room</h2>
-				<p>The Engine room consists of:</p>
-				<ol>
-				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and reinforced walls. These walls are protected by blast shutters, due to the memetic hazard of the Supermatter.</li>
-				<li>An emitter, lined up with the Supermatter crystal.</li>
-				<li>A gas filter pipeline connected to the hot loop.</li>
-				<li>A dual TEG setup, already hooked up to the loops.</li>
-				<li>Injection and Extraction ports, allowing to pump gases into and out of the loops.</li>
-				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>
-				</ol>
-				<h2>Engine Intent</h2>
-				<p>As a TEG-based engine, the Supermatter relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the Supermatter chamber. The Supermatter is, as the name implies, a fractal metamaterial that generates and radiates an immense amount of heat. When agitated energetically, the degree of heat put off by the crystal increases. The heated air in the Supermatter chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The Supermatter crystal is extremely volatile, however. If its temperature raises too high, or if it is agitated too much, it will delaminate, resulting in a catastrophic explosion.</p>
-				<h2>Basic Set-Up</h2>
-				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. Any Engineer that knows their way around Engineering mechanics will tell you that this setup is suboptimal.&nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>
-				<h3>No Hazard:</h3>
-				<ol>
-				<li>Put four cans of Phoron into the Cold Loop.</li>
-				<li>Put two cans of Phoron into the Hot loop.</li>
-				<li>Set the Filter connected to the Hot Loop to 'Phoron'.</li>
-				</ol>
-				<h3>Memetic Hazard:</h3>
-				<ol>
-				<li>Open the blast shutters.</li>
-				<li>Blast the Supermatter crystal with the emitter approximately twelve times.</li>
-				<li>Close the blast shutters.</li>
-				</ol>
-				<p><strong>Engine set!</strong></p>
-				<h3>Finalizing Touches</h3>
-				<ol>
-				<li>Max Input and Output on the Main SMES in the SMES room.</li>
-				</ol>
-			</html>"}
+	starting_author = "Central Engineering Division"
+	starting_title = "Supermatter Engine Operating Manual"
+	starting_content = "\
+				<h1><strong>Guide: Supermatter Engine</strong></h1>\
+				<h2>The Engine Room</h2>\
+				<p>The Engine room consists of:</p>\
+				<ol>\
+				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and reinforced walls. These walls are protected by blast shutters, due to the memetic hazard of the Supermatter.</li>\
+				<li>An emitter, lined up with the Supermatter crystal.</li>\
+				<li>A gas filter pipeline connected to the hot loop.</li>\
+				<li>A dual TEG setup, already hooked up to the loops.</li>\
+				<li>Injection and Extraction ports, allowing to pump gases into and out of the loops.</li>\
+				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>\
+				</ol>\
+				<h2>Engine Intent</h2>\
+				<p>As a TEG-based engine, the Supermatter relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the Supermatter chamber. The Supermatter is, as the name implies, a fractal metamaterial that generates and radiates an immense amount of heat. When agitated energetically, the degree of heat put off by the crystal increases. The heated air in the Supermatter chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The Supermatter crystal is extremely volatile, however. If its temperature raises too high, or if it is agitated too much, it will delaminate, resulting in a catastrophic explosion.</p>\
+				<h2>Basic Set-Up</h2>\
+				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. Any Engineer that knows their way around Engineering mechanics will tell you that this setup is suboptimal.&nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>\
+				<h3>No Hazard:</h3>\
+				<ol>\
+				<li>Put four cans of Phoron into the Cold Loop.</li>\
+				<li>Put two cans of Phoron into the Hot loop.</li>\
+				<li>Set the Filter connected to the Hot Loop to 'Phoron'.</li>\
+				</ol>\
+				<h3>Memetic Hazard:</h3>\
+				<ol>\
+				<li>Open the blast shutters.</li>\
+				<li>Blast the Supermatter crystal with the emitter approximately twelve times.</li>\
+				<li>Close the blast shutters.</li>\
+				</ol>\
+				<p><strong>Engine set!</strong></p>\
+				<h3>Finalizing Touches</h3>\
+				<ol>\
+				<li>Max Input and Output on the Main SMES in the SMES room.</li>\
+				</ol>\
+			"
 
 // TESLA Engine
 
 /obj/item/book/manual/tesla_engine
 	name = "Tesla Operating Manual"
 	icon_state ="bookTesla"
-	author = "Engineering Encyclopedia"
-	title = "Tesla Engine User's Guide"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<h1>OPERATING MANUAL FOR MK 2 PROTOTYPE TESLA ENGINE &apos;EDISON&apos;S BANE&apos;</h1>
-				<br>
-				<h2>OPERATING PRINCIPLES</h2>
-				<p>This big floaty ball of pure electricity can only be contained by the containment field. It periodically will discharge energy in the form of an electric shock which can be harvested for energy.</p>
-				<p>When you shoot the energy ball with the Particle Accelerator, it gains energy, and when enough energy is accumulated a mini-energy ball that orbits the big energy ball will be formed. This can happen as many times as you let it, each mini-ball will send off an extra shock when the energy ball pulses. Be warned, the more mini-balls the energy ball has, the more shocks it sends out at once and the further it can travel each move.</p>
-				<p>An energy ball will shoot bolts of electricity off at conductors, which it prioritizes in this order:
-				<ol>
-					<li>Tesla coils</li>
-					<li>Grounding rods</li>
-					<li>People and animals</li>
-					<li>Machines</li>
-				</ol>
-				</p>
-				<p>Tesla Coils will attract the energy ball&apos;s bolts. They will take half the power of the bolt (if they are connected to a wire node), pump it into the powernet it is hooked to, and then will send the other half of the power to the next available conductor, which follows the criteria listed above. Preferably, this will be another coil to harness more of the power and pump it into the grid.</p>
-				<p>Grounding Rods are safety precautions to prevent the tesla bolts from hitting machinery or personnel. If the tesla is loose, being near one will usually keep you safe from direct shocks.</p>
-				<br>
-				<h2>STARTUP PROCEDURE</h2>
-				<ol>
-				<li>Bolt and weld down the Field Generators, ensuring they form a complete square, giving no room for the tesla to move.</li>
-				<li>Bolt and weld down the Emitters, ensuring their fire will strike the corner Field Generators</li>
-				<li>Bolt down the Tesla Generator inside the rectangle formed by the Field Generators in a spot where it will be struck by fire from the Particle Accelerator</li>
-				<li>Bolt down Telsa Coils and Grounding Rods</li>
-				<li>Activate the Emitters</li>
-				<li>Activate each of the Field Generators, then wait until the containment field has completely formed.</li>
-				<li>Setup the Particle Accelerator (see our best seller <i>&quot;Particle Accelerator User&apos;s Guide&quot;</i>!) and activate it.</li>
-				<li>After a short time the Telsa Generator will create an energy ball, being consumed in the process.</li>
-				</ol>
-				<br>
-				<h2>OPERATION AND MAINTENANCE</h2>
-				<ol>
-				<li>Ensure that electrical protection and meson goggles are worn at all times while working in the engine room.</li>
-				<li>Ensure that Telsa Coils and/or Grounding Rods are placed to safely collect or ground any and all shock.</li>
-				<li>Ensure that all Emitters remain activated and have unobstructed lines of fire to the Field Generators.</li>
-				<li>Do <b>not</b> let the Emitters run out of power.</li>
-				</ol>
-				<br>
-				<h2>SHUTDOWN PROCEDURE</h2>
-				<ol>
-				<li>Set the Particle Accelerator to -1.  The energy ball will begin to shrink and lose mini-balls.</li>
-				<li>When the energy ball has completely dissipated, the Emitters can be de-activated.</li>
-				</ol>
-				<br>
-				<h2>ENERGY BALL ESCAPE PROCEDURE</h2>
-				<ol>
-				<li>Do not let it escape.</li>
-				<li>Have someone ready to blame when it does escape.</li>
-				<li>Buy our forthcoming manual &quot;<i>Celebrity Grounding Rod Shelters of the Galaxy</i>&quot;</li>
-				</ol>
-				</body>
-			</html>"}
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Tesla Engine User's Guide"
+	starting_content = "\
+				<h1>OPERATING MANUAL FOR MK 2 PROTOTYPE TESLA ENGINE &apos;EDISON&apos;S BANE&apos;</h1>\
+				<br>\
+				<h2>OPERATING PRINCIPLES</h2>\
+				<p>This big floaty ball of pure electricity can only be contained by the containment field. It periodically will discharge energy in the form of an electric shock which can be harvested for energy.</p>\
+				<p>When you shoot the energy ball with the Particle Accelerator, it gains energy, and when enough energy is accumulated a mini-energy ball that orbits the big energy ball will be formed. This can happen as many times as you let it, each mini-ball will send off an extra shock when the energy ball pulses. Be warned, the more mini-balls the energy ball has, the more shocks it sends out at once and the further it can travel each move.</p>\
+				<p>An energy ball will shoot bolts of electricity off at conductors, which it prioritizes in this order:\
+				<ol>\
+					<li>Tesla coils</li>\
+					<li>Grounding rods</li>\
+					<li>People and animals</li>\
+					<li>Machines</li>\
+				</ol>\
+				</p>\
+				<p>Tesla Coils will attract the energy ball&apos;s bolts. They will take half the power of the bolt (if they are connected to a wire node), pump it into the powernet it is hooked to, and then will send the other half of the power to the next available conductor, which follows the criteria listed above. Preferably, this will be another coil to harness more of the power and pump it into the grid.</p>\
+				<p>Grounding Rods are safety precautions to prevent the tesla bolts from hitting machinery or personnel. If the tesla is loose, being near one will usually keep you safe from direct shocks.</p>\
+				<br>\
+				<h2>STARTUP PROCEDURE</h2>\
+				<ol>\
+				<li>Bolt and weld down the Field Generators, ensuring they form a complete square, giving no room for the tesla to move.</li>\
+				<li>Bolt and weld down the Emitters, ensuring their fire will strike the corner Field Generators</li>\
+				<li>Bolt down the Tesla Generator inside the rectangle formed by the Field Generators in a spot where it will be struck by fire from the Particle Accelerator</li>\
+				<li>Bolt down Telsa Coils and Grounding Rods</li>\
+				<li>Activate the Emitters</li>\
+				<li>Activate each of the Field Generators, then wait until the containment field has completely formed.</li>\
+				<li>Setup the Particle Accelerator (see our best seller <i>&quot;Particle Accelerator User&apos;s Guide&quot;</i>!) and activate it.</li>\
+				<li>After a short time the Telsa Generator will create an energy ball, being consumed in the process.</li>\
+				</ol>\
+				<br>\
+				<h2>OPERATION AND MAINTENANCE</h2>\
+				<ol>\
+				<li>Ensure that electrical protection and meson goggles are worn at all times while working in the engine room.</li>\
+				<li>Ensure that Telsa Coils and/or Grounding Rods are placed to safely collect or ground any and all shock.</li>\
+				<li>Ensure that all Emitters remain activated and have unobstructed lines of fire to the Field Generators.</li>\
+				<li>Do <b>not</b> let the Emitters run out of power.</li>\
+				</ol>\
+				<br>\
+				<h2>SHUTDOWN PROCEDURE</h2>\
+				<ol>\
+				<li>Set the Particle Accelerator to -1.  The energy ball will begin to shrink and lose mini-balls.</li>\
+				<li>When the energy ball has completely dissipated, the Emitters can be de-activated.</li>\
+				</ol>\
+				<br>\
+				<h2>ENERGY BALL ESCAPE PROCEDURE</h2>\
+				<ol>\
+				<li>Do not let it escape.</li>\
+				<li>Have someone ready to blame when it does escape.</li>\
+				<li>Buy our forthcoming manual &quot;<i>Celebrity Grounding Rod Shelters of the Galaxy</i>&quot;</li>\
+				</ol>"
 
 //R-UST port
 /obj/item/book/manual/rust_engine
 	name = "R-UST Operating Manual"
 	icon_state = "bookSupermatter"
-	author = "Nanotrasen Engineering Safety Board"
-	title = "R-UST Operating Manual"
+	starting_author = "Nanotrasen Engineering Safety Board"
+	starting_title = "R-UST Operating Manual"
+	starting_content = "\
+				<h1><strong>Guide: R-UST Fusion Reactor</strong></h1>\
+				<h2>The Engine Room</h2>\
+				<div>\
+				</div>\
+				<p>The Engine room consists of:</p>\
+				<ol>\
+				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and reinforced walls.</li>\
+				<li>A control bay, housing the three consoles needed to control the reactor and the fuel compressor.</li>\
+				<li>A dual TEG setup, already hooked up to the loops.</li>\
+				<li>Injection and Extraction ports, allowing to pump gases into and out of the loops.</li>\
+				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>\
+				</ol>\
+				<h2>Engine Intent</h2>\
+				<p>As a TEG-based engine, the R-UST relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the R-UST chamber. The R-UST Tokamak Core is an industrial strength solenoid. When activated, the R-UST generates an immense amount of electromagnetic energy, which operates in tandem with a kinetic energy harvester. While operational, the R-UST puts off a substantial amount of heat. The heated air in the chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The R-UST's electromagnetic energies are contained by a delicately balanced containment field. If the field is breached, the R-UST will unleash a catastrophic electromagnetic pulse.</p>\
+				<h2>Basic Set-Up</h2>\
+				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. This setup is something like five times as powerful as it needs to be to run the whole station. &nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>\
+				<h3>No Hazard:</h3>\
+				<ol>\
+				<li>Maximize the Cold loop pump (Typically near the NW corner of the submap. It's color-coded cyan.).</li>\
+				<li>Grab the stacks of Deuterium ingots and use the Fuel compressor to create fuel rods, one for each fuel injector.</li>\
+				<li>Insert the rods in to the fuel injectors next to the gyrotrons.</li>\
+				</ol>\
+				<h3>Minimal Atmospheric Hazard:</h3>\
+				<ol>\
+				<li>Pump a canister of Phoron into the cold loop via the green pipeline connectors.</li>\
+				<li>Pump a canister of N2O into the hot loop via the red pipeline connectors.&nbsp;<strong>Do not use Phoron here, the R-UST will eat it and you will have no hot loop gas!</strong></li>\
+				</ol>\
+				<h3>Radiation Hazard:</h3>\
+				<ol>\
+				<li>Maximize the engine SMES(the one on the aft/left/west) in the smes room.</li>\
+				<li>Set the field strength on the rust control console to 301.&nbsp;<em>Each tile is equal to 100 on the field strength gauge. 100~ is the same tile as the RUST itself.</em></li>\
+				<li>Activate the field.</li>\
+				<li>Set the Gyrotrons to Delay 1.</li>\
+				<li>Set the Gyrotrons to Power 1.</li>\
+				<li>Start the Gyrotrons.</li>\
+				<li>Start Fuel Injection.</li>\
+				</ol>\
+				<p><strong>Engine set!</strong></p>\
+				<h3>Finalizing Touches</h3>\
+				<ol>\
+				<li>Max Input and Output on the Main SMES in the SMES room.</li>\
+				</ol>\
+			"
 
-/obj/item/book/manual/rust_engine/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<h1><strong>Guide: R-UST Fusion Reactor</strong></h1>
-				<h2>The Engine Room</h2>
-				<div>
-				</div>
-				<p>The Engine room consists of:</p>
-				<ol>
-				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and reinforced walls.</li>
-				<li>A control bay, housing the three consoles needed to control the reactor and the fuel compressor.</li>
-				<li>A dual TEG setup, already hooked up to the loops.</li>
-				<li>Injection and Extraction ports, allowing to pump gases into and out of the loops.</li>
-				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>
-				</ol>
-				<h2>Engine Intent</h2>
-				<p>As a TEG-based engine, the R-UST relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the R-UST chamber. The R-UST Tokamak Core is an industrial strength solenoid. When activated, the R-UST generates an immense amount of electromagnetic energy, which operates in tandem with a kinetic energy harvester. While operational, the R-UST puts off a substantial amount of heat. The heated air in the chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The R-UST's electromagnetic energies are contained by a delicately balanced containment field. If the field is breached, the R-UST will unleash a catastrophic electromagnetic pulse.</p>
-				<h2>Basic Set-Up</h2>
-				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. This setup is something like five times as powerful as it needs to be to run the whole station. &nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>
-				<h3>No Hazard:</h3>
-				<ol>
-				<li>Maximize the Cold loop pump (Typically near the NW corner of the submap. It's color-coded cyan.).</li>
-				<li>Grab the stacks of Deuterium ingots and use the Fuel compressor to create fuel rods, one for each fuel injector.</li>
-				<li>Insert the rods in to the fuel injectors next to the gyrotrons.</li>
-				</ol>
-				<h3>Minimal Atmospheric Hazard:</h3>
-				<ol>
-				<li>Pump a canister of Phoron into the cold loop via the green pipeline connectors.</li>
-				<li>Pump a canister of N2O into the hot loop via the red pipeline connectors.&nbsp;<strong>Do not use Phoron here, the R-UST will eat it and you will have no hot loop gas!</strong></li>
-				</ol>
-				<h3>Radiation Hazard:</h3>
-				<ol>
-				<li>Maximize the engine SMES(the one on the aft/left/west) in the smes room.</li>
-				<li>Set the field strength on the rust control console to 301.&nbsp;<em>Each tile is equal to 100 on the field strength gauge. 100~ is the same tile as the RUST itself.</em></li>
-				<li>Activate the field.</li>
-				<li>Set the Gyrotrons to Delay 1.</li>
-				<li>Set the Gyrotrons to Power 1.</li>
-				<li>Start the Gyrotrons.</li>
-				<li>Start Fuel Injection.</li>
-				</ol>
-				<p><strong>Engine set!</strong></p>
-				<h3>Finalizing Touches</h3>
-				<ol>
-				<li>Max Input and Output on the Main SMES in the SMES room.</li>
-				</ol>
-			</html>"}
-
-/*/obj/item/book/manual/burn_chamber
-	name = "Burn Chamber Operating Manual"
-	icon_state = "bookSupermatter"
-	author = "Nanotrasen Engineering Safety Board"
-	title = "Burn Chamber Operating Manual"
-
-/obj/item/book/manual/burn_chamber/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-
-			</html>"}
-*/
 /obj/item/book/manual/fission_engine
 	name = "Fission Reactor Operating Manual"
 	icon_state = "bookSupermatter"
-	author = "Nanotrasen Engineering Safety Board"
-	title = "Fission Reactor Operating Manual"
+	starting_author = "Nanotrasen Engineering Safety Board"
+	starting_title = "Fission Reactor Operating Manual"
+	starting_content = "\
+				<h1><strong>Guide: Fission Reactor</strong></h1>\
+				<h2>The Engine Room</h2>\
+				<p>The Engine room consists of:</p>\
+				<ol>\
+				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and lead walls.</li>\
+				<li>A fuel rod bay housing an assortment of reflectors and radioactive fuel rods.</li>\
+				<li>A dual TEG setup, already hooked up to the loops.</li>\
+				<li>Four radiation collectors arranged around the reactor.</li>\
+				<li>A side area where phoron tanks and a dedicated phoron canister are stored.</li>\
+				<li>An emergency freezer linked to the Engine chamber.</li>\
+				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>\
+				</ol>\
+				<h2>Engine Intent</h2>\
+				<p>As a TEG-based engine, the Fission Reactor relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the reactor chamber. Radioactive fuel rods are inserted into the hardened reactor, where reflectors bounce neutrons through the fuel to trigger fission. Instead of relying on more traditional water-cooling, the core's heat levels are instead monitored and managed directly by Engineering. The reactor utilizes the process of nuclear fission to generate an enormous amount of heat and radioactivity, allowing for the harvesting of radioactive energy via collectors in tandem with the siphoning of heated gas. The heated air in the reactor chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The Fission Reactor is sensitive to overheating, and its fuel rods decay slowly over time. If its temperature raises too high, the reactor will overload, resulting in a catastrophic radioactive explosion.</p>\
+				<h2>Basic Set-Up</h2>\
+				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. Any Engineer that knows their way around Engineering mechanics will tell you that this setup is suboptimal.&nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>\
+				<h3>No Hazard:</h3>\
+				<ol>\
+				<li>Put four cans of Phoron into the Cold Loop.</li>\
+				<li>Put two cans of Phoron into the Hot loop.</li>\
+				<li>Fill four phoron tanks up at the phoron canister.</li>\
+				</ol>\
+				<h3>Atmospheric Hazard:</h3>\
+				<ol>\
+				<li>Lift the Blast Shutters on the Core.</li>\
+				<li>Wrench the Fusion Core Down.</li>\
+				<li>Link the Fusion Core to a multitool.</li>\
+				<li>Secure the Radiation Collectors.</li>\
+				<li>Place the filled phoron tanks into the collectors.</li>\
+				</ol>\
+				<h3>Radiation Hazard:</h3>\
+				<ol>\
+				<li>Retrieve a fuel rod case and a reflector case from storage.</li>\
+				<li>Load three fuel rods into the reactor core.</li>\
+				<li>Load four reflector rods into the reactor core.</li>\
+				<li>Manually set the insertion of all reflector rods to 100%.</li>\
+				<li>Manually set the insertion of all fuel rods to 50%.&nbsp;<strong>Warning: Monitor temperature of rods and adjust insertion accordingly. This varies per fuel type. Ensure proper heat management.</strong></li>\
+				<li>Close the blast doors.</li>\
+				</ol>\
+				<p><strong>Engine set!</strong></p>\
+				<h3>Finalizing Touches</h3>\
+				<ol>\
+				<li>Max Input and Output on the Main SMES in the SMES room.</li>\
+				<li>Use the multitool from step 6 to link the core to the computer in the control room.</li>\
+				</ol>\
+			"
 
-/obj/item/book/manual/fission_engine/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<h1><strong>Guide: Fission Reactor</strong></h1>
-				<h2>The Engine Room</h2>
-				<p>The Engine room consists of:</p>
-				<ol>
-				<li>Engine chamber. The interior is 5x5, framed with heat resistant glass and lead walls.</li>
-				<li>A fuel rod bay housing an assortment of reflectors and radioactive fuel rods.</li>
-				<li>A dual TEG setup, already hooked up to the loops.</li>
-				<li>Four radiation collectors arranged around the reactor.</li>
-				<li>A side area where phoron tanks and a dedicated phoron canister are stored.</li>
-				<li>An emergency freezer linked to the Engine chamber.</li>
-				<li>Vacuum Radiator connections, where gases in the cold loop are cooled.</li>
-				</ol>
-				<h2>Engine Intent</h2>
-				<p>As a TEG-based engine, the Fission Reactor relies on the heating and cooling of gas to spin turbines. Cold Loop gas is piped along a circuitous route - typically through space - to allow it to bleed off heat and grow colder. In contrast, Hot Loop gas is fed into the reactor chamber. Radioactive fuel rods are inserted into the hardened reactor, where reflectors bounce neutrons through the fuel to trigger fission. Instead of relying on more traditional water-cooling, the core's heat levels are instead monitored and managed directly by Engineering. The reactor utilizes the process of nuclear fission to generate an enormous amount of heat and radioactivity, allowing for the harvesting of radioactive energy via collectors in tandem with the siphoning of heated gas. The heated air in the reactor chamber is siphoned out and drawn through the loop into the TEG, spinning its own turbine. The Fission Reactor is sensitive to overheating, and its fuel rods decay slowly over time. If its temperature raises too high, the reactor will overload, resulting in a catastrophic radioactive explosion.</p>
-				<h2>Basic Set-Up</h2>
-				<p>This is a baseline guide to make sure the shift doesn't go without power, and the engine doesn't explode. Any Engineer that knows their way around Engineering mechanics will tell you that this setup is suboptimal.&nbsp;<strong>It is important that the no hazard steps are finished before any other steps are completed.</strong></p>
-				<h3>No Hazard:</h3>
-				<ol>
-				<li>Put four cans of Phoron into the Cold Loop.</li>
-				<li>Put two cans of Phoron into the Hot loop.</li>
-				<li>Fill four phoron tanks up at the phoron canister.</li>
-				</ol>
-				<h3>Atmospheric Hazard:</h3>
-				<ol>
-				<li>Lift the Blast Shutters on the Core.</li>
-				<li>Wrench the Fusion Core Down.</li>
-				<li>Link the Fusion Core to a multitool.</li>
-				<li>Secure the Radiation Collectors.</li>
-				<li>Place the filled phoron tanks into the collectors.</li>
-				</ol>
-				<h3>Radiation Hazard:</h3>
-				<ol>
-				<li>Retrieve a fuel rod case and a reflector case from storage.</li>
-				<li>Load three fuel rods into the reactor core.</li>
-				<li>Load four reflector rods into the reactor core.</li>
-				<li>Manually set the insertion of all reflector rods to 100%.</li>
-				<li>Manually set the insertion of all fuel rods to 50%.&nbsp;<strong>Warning: Monitor temperature of rods and adjust insertion accordingly. This varies per fuel type. Ensure proper heat management.</strong></li>
-				<li>Close the blast doors.</li>
-				</ol>
-				<p><strong>Engine set!</strong></p>
-				<h3>Finalizing Touches</h3>
-				<ol>
-				<li>Max Input and Output on the Main SMES in the SMES room.</li>
-				<li>Use the multitool from step 6 to link the core to the computer in the control room.</li>
-				</ol>
-			</html>"}
+// yikes
 /obj/item/book/manual/engineering_hacking
 	name = "Hacking"
 	icon_state ="bookHacking"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Hacking"
-
-/obj/item/book/manual/engineering_hacking/Initialize(mapload)
-	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
-		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Hacking&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
-		"}
-
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Hacking"
+	// starting_content = {"
+	// 	<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Hacking&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+	// 	"}
 
 /obj/item/book/manual/engineering_singularity_safety
 	name = "Singularity Safety in Special Circumstances"
 	icon_state ="bookEngineeringSingularitySafety"
-	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Singularity Safety in Special Circumstances"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Singularity Safety in Special Circumstances"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<h1>Singularity Safety in Special Circumstances</h1>
-
-				<h2>Power outage</h2>
-
-				A power problem has made the entire station lose power? Could be station-wide wiring problems or syndicate power sinks. In any case follow these steps:
-
-				<ol>
-					<li><b><font color='red'>PANIC!</font></b></li>
-					<li>Get your ass over to engineering! <b>QUICKLY!!!</b></li>
-					<li>Get to the <b>Area Power Controller</b> which controls the power to the emitters.</li>
-					<li>Swipe it with your <b>ID card</b> - if it doesn't unlock, continue with step 15.</li>
-					<li>Open the console and disengage the cover lock.</li>
-					<li>Pry open the APC with a <b>Crowbar.</b></li>
-					<li>Take out the empty <b>power cell.</b></li>
-					<li>Put in the new, <b>full power cell</b> - if you don't have one, continue with step 15.</li>
-					<li>Quickly put on a <b>Radiation suit.</b></li>
-					<li>Check if the <b>singularity field generators</b> withstood the down-time - if they didn't, continue with step 15.</li>
-					<li>Since disaster was averted you now have to ensure it doesn't repeat. If it was a powersink which caused it and if the engineering APC is wired to the same powernet, which the powersink is on, you have to remove the piece of wire which links the APC to the powernet. If it wasn't a powersink which caused it, then skip to step 14.</li>
-					<li>Grab your crowbar and pry away the tile closest to the APC.</li>
-					<li>Use the wirecutters to cut the wire which is connecting the grid to the terminal. </li>
-					<li>Go to the bar and tell the guys how you saved them all. Stop reading this guide here.</li>
-					<li><b>GET THE FUCK OUT OF THERE!!!</b></li>
-				</ol>
-
-				<h2>Shields get damaged</h2>
-
-				<ol>
-					<li><b>GET THE FUCK OUT OF THERE!!! FORGET THE WOMEN AND CHILDREN, SAVE YOURSELF!!!</b></li>
-				</ol>
-				</body>
-			</html>
-			"}
-
+	starting_content = "\
+				<h1>Singularity Safety in Special Circumstances</h1>\
+				<h2>Power outage</h2>\
+				A power problem has made the entire station lose power? Could be station-wide wiring problems or syndicate power sinks. In any case follow these steps:\
+				<ol>\
+					<li><b><font color='red'>PANIC!</font></b></li>\
+					<li>Get your ass over to engineering! <b>QUICKLY!!!</b></li>\
+					<li>Get to the <b>Area Power Controller</b> which controls the power to the emitters.</li>\
+					<li>Swipe it with your <b>ID card</b> - if it doesn't unlock, continue with step 15.</li>\
+					<li>Open the console and disengage the cover lock.</li>\
+					<li>Pry open the APC with a <b>Crowbar.</b></li>\
+					<li>Take out the empty <b>power cell.</b></li>\
+					<li>Put in the new, <b>full power cell</b> - if you don't have one, continue with step 15.</li>\
+					<li>Quickly put on a <b>Radiation suit.</b></li>\
+					<li>Check if the <b>singularity field generators</b> withstood the down-time - if they didn't, continue with step 15.</li>\
+					<li>Since disaster was averted you now have to ensure it doesn't repeat. If it was a powersink which caused it and if the engineering APC is wired to the same powernet, which the powersink is on, you have to remove the piece of wire which links the APC to the powernet. If it wasn't a powersink which caused it, then skip to step 14.</li>\
+					<li>Grab your crowbar and pry away the tile closest to the APC.</li>\
+					<li>Use the wirecutters to cut the wire which is connecting the grid to the terminal. </li>\
+					<li>Go to the bar and tell the guys how you saved them all. Stop reading this guide here.</li>\
+					<li><b>GET THE FUCK OUT OF THERE!!!</b></li>\
+				</ol>\
+				<h2>Shields get damaged</h2>\
+				<ol>\
+					<li><b>GET THE FUCK OUT OF THERE!!! FORGET THE WOMEN AND CHILDREN, SAVE YOURSELF!!!</b></li>\
+				</ol>\
+			"
 
 /obj/item/book/manual/hydroponics_pod_people
 	name = "The Diona Harvest - From Seed to Market"
 	icon_state ="bookHydroponicsPodPeople"
-	author = "Farmer John"
-	title = "The Diona Harvest - From Seed to Market"
+	starting_author = "Farmer John"
+	starting_title = "The Diona Harvest - From Seed to Market"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<h3>Growing a Diona</h3>
-
-				Growing a Diona is easy!
-				<p>
-				<ol>
-					<li>Take a syringe of blood from the body you wish to turn into a Diona.</li>
-					<li>Inject 5 units of blood into the pack of dionaea-replicant seeds.</li>
-					<li>Plant the seeds.</li>
-					<li>Tend to the plants water and nutrition levels until it is time to harvest the Diona.</li>
-				</ol>
-				<p>
-				Note that for a successful harvest, the body from which the blood was taken from must be dead BEFORE harvesting the pod, however the pod can be growing while they are still alive. Otherwise, the soul would not be able to migrate to the new Diona body.<br><br>
-
-				It really is that easy! Good luck!
-
-				</body>
-				</html>
-				"}
+	starting_content = "\
+				<h3>Growing a Diona</h3>\
+				Growing a Diona is easy!\
+				<p>\
+				<ol>\
+					<li>Take a syringe of blood from the body you wish to turn into a Diona.</li>\
+					<li>Inject 5 units of blood into the pack of dionaea-replicant seeds.</li>\
+					<li>Plant the seeds.</li>\
+					<li>Tend to the plants water and nutrition levels until it is time to harvest the Diona.</li>\
+				</ol>\
+				<p>\
+				Note that for a successful harvest, the body from which the blood was taken from must be dead BEFORE harvesting the pod, however the pod can be growing while they are still alive. Otherwise, the soul would not be able to migrate to the new Diona body.<br><br>\
+				\
+				It really is that easy! Good luck!\
+				"
 
 
 /obj/item/book/manual/medical_cloning
 	name = "Cloning Techniques of the 26th Century"
 	icon_state ="bookCloning"
-	author = "Medical Journal, volume 3"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Cloning Techniques of the 26th Century"
+	starting_author = "Medical Journal, volume 3"
+	starting_title = "Cloning Techniques of the 26th Century"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 21px; margin: 15px 0px 5px;}
-				h2 {font-size: 18px; margin: 15px 0px 5px;}
-				h3 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
-				<H1>How to Clone People</H1>
-				So there are 50 dead people lying on the floor, chairs are spinning like no tomorrow and you haven't the foggiest idea of what to do? Not to worry!
-				This guide is intended to teach you how to clone people and how to do it right, in a simple, step-by-step process! If at any point of the guide you have a mental meltdown,
-				genetics probably isn't for you and you should get a job-change as soon as possible before you're sued for malpractice.
-
-				<ol>
-					<li><a href='#1'>Acquire body</a></li>
-					<li><a href='#2'>Strip body</a></li>
-					<li><a href='#3'>Put body in cloning machine</a></li>
-					<li><a href='#4'>Scan body</a></li>
-					<li><a href='#5'>Clone body</a></li>
-					<li><a href='#6'>Get clean Structural Enzymes for the body</a></li>
-					<li><a href='#7'>Put body in morgue</a></li>
-					<li><a href='#8'>Await cloned body</a></li>
-					<li><a href='#9'>Cryo and use the clean SE injector</a></li>
-					<li><a href='#10'>Give person clothes back</a></li>
-					<li><a href='#11'>Send person on their way</a></li>
-				</ol>
-
-				<a name='1'><H3>Step 1: Acquire body</H3>
-				This is pretty much vital for the process because without a body, you cannot clone it. Usually, bodies will be brought to you, so you do not need to worry so much about this step. If you already have a body, great! Move on to the next step.
-
-				<a name='2'><H3>Step 2: Strip body</H3>
-				The cloning machine does not like abiotic items. What this means is you can't clone anyone if they're wearing clothes or holding things, so take all of it off. If it's just one person, it's courteous to put their possessions in the closet.
-				If you have about seven people awaiting cloning, just leave the piles where they are, but don't mix them around and for God's sake don't let people in to steal them.
-
-				<a name='3'><h3>Step 3: Put body in cloning machine</h3>
-				Grab the body and then put it inside the DNA modifier. If you cannot do this, then you messed up at Step 2. Go back and check you took EVERYTHING off - a commonly missed item is their headset.
-
-				<a name='4'><h3>Step 4: Scan body</h3>
-				Go onto the computer and scan the body by pressing 'Scan - &lt;Subject Name Here&gt;.' If you're successful, they will be added to the records (note that this can be done at any time, even with living people,
-				so that they can be cloned without a body in the event that they are lying dead on port solars and didn't turn on their suit sensors)!
-				If not, and it says "Error: Mental interface failure.", then they have left their bodily confines and are one with the spirits. If this happens, just shout at them to get back in their body,
-				click 'Refresh' and try scanning them again. If there's no success, threaten them with gibbing.
-				Still no success? Skip over to Step 7 and don't continue after it, as you have an unresponsive body and it cannot be cloned.
-				If you got "Error: Unable to locate valid genetic data.", you are trying to clone a monkey - start over.
-
-				<a name='5'><h3>Step 5: Clone body</h3>
-				Now that the body has a record, click 'View Records,' click the subject's name, and then click 'Clone' to start the cloning process. Congratulations! You're halfway there.
-				Remember not to 'Eject' the cloning pod as this will kill the developing clone and you'll have to start the process again.
-
-				<a name='6'><h3>Step 6: Get clean SEs for body</h3>
-				Cloning is a finicky and unreliable process. Whilst it will most certainly bring someone back from the dead, they can have any number of nasty disabilities given to them during the cloning process!
-				For this reason, you need to prepare a clean, defect-free Structural Enzyme (SE) injection for when they're done. If you're a competent Geneticist, you will already have one ready on your working computer.
-				If, for any reason, you do not, then eject the body from the DNA modifier (NOT THE CLONING POD) and take it next door to the Genetics research room. Put the body in one of those DNA modifiers and then go onto the console.
-				Go into View/Edit/Transfer Buffer, find an open slot and click "SE" to save it. Then click 'Injector' to get the SEs in syringe form. Put this in your pocket or something for when the body is done.
-
-				<a name='7'><h3>Step 7: Put body in morgue</h3>
-				Now that the cloning process has been initiated and you have some clean Structural Enzymes, you no longer need the body! Drag it to the morgue and tell the Chef over the radio that they have some fresh meat waiting for them in there.
-				To put a body in a morgue bed, simply open the tray, grab the body, put it on the open tray, then close the tray again. Use one of the nearby pens to label the bed "CHEF MEAT" in order to avoid confusion.
-
-				<a name='8'><h3>Step 8: Await cloned body</h3>
-				Now go back to the lab and wait for your patient to be cloned. It won't be long now, I promise.
-
-				<a name='9'><h3>Step 9: Cryo and clean SE injector on person</h3>
-				Has your body been cloned yet? Great! As soon as the guy pops out, grab them and stick them in cryo. Clonexadone and Cryoxadone help rebuild their genetic material. Then grab your clean SE injector and jab it in them. Once you've injected them,
-				they now have clean Structural Enzymes and their defects, if any, will disappear in a short while.
-
-				<a name='10'><h3>Step 10: Give person clothes back</h3>
-				Obviously the person will be naked after they have been cloned. Provided you weren't an irresponsible little shit, you should have protected their possessions from thieves and should be able to give them back to the patient.
-				No matter how cruel you are, it's simply against protocol to force your patients to walk outside naked.
-
-				<a name='11'><h3>Step 11: Send person on their way</h3>
-				Give the patient one last check-over - make sure they don't still have any defects and that they have all their possessions. Ask them how they died, if they know, so that you can report any foul play over the radio.
-				Once you're done, your patient is ready to go back to work! Chances are they do not have Medbay access, so you should let them out of Genetics and the Medbay main entrance.
-
-				<p>If you've gotten this far, congratulations! You have mastered the art of cloning. Now, the real problem is how to resurrect yourself after that traitor had his way with you for cloning his target.
-
-				</body>
-				</html>
-				"}
-
+	starting_content = "\
+				<H1>How to Clone People</H1>\
+				So there are 50 dead people lying on the floor, chairs are spinning like no tomorrow and you haven't the foggiest idea of what to do? Not to worry!\
+				This guide is intended to teach you how to clone people and how to do it right, in a simple, step-by-step process! If at any point of the guide you have a mental meltdown,\
+				genetics probably isn't for you and you should get a job-change as soon as possible before you're sued for malpractice.\
+				\
+				<ol>\
+					<li><a href='#1'>Acquire body</a></li>\
+					<li><a href='#2'>Strip body</a></li>\
+					<li><a href='#3'>Put body in cloning machine</a></li>\
+					<li><a href='#4'>Scan body</a></li>\
+					<li><a href='#5'>Clone body</a></li>\
+					<li><a href='#6'>Get clean Structural Enzymes for the body</a></li>\
+					<li><a href='#7'>Put body in morgue</a></li>\
+					<li><a href='#8'>Await cloned body</a></li>\
+					<li><a href='#9'>Cryo and use the clean SE injector</a></li>\
+					<li><a href='#10'>Give person clothes back</a></li>\
+					<li><a href='#11'>Send person on their way</a></li>\
+				</ol>\
+				\
+				<a name='1'><H3>Step 1: Acquire body</H3>\
+				This is pretty much vital for the process because without a body, you cannot clone it. Usually, bodies will be brought to you, so you do not need to worry so much about this step. If you already have a body, great! Move on to the next step.\
+				\
+				<a name='2'><H3>Step 2: Strip body</H3>\
+				The cloning machine does not like abiotic items. What this means is you can't clone anyone if they're wearing clothes or holding things, so take all of it off. If it's just one person, it's courteous to put their possessions in the closet.\
+				If you have about seven people awaiting cloning, just leave the piles where they are, but don't mix them around and for God's sake don't let people in to steal them.\
+				\
+				<a name='3'><h3>Step 3: Put body in cloning machine</h3>\
+				Grab the body and then put it inside the DNA modifier. If you cannot do this, then you messed up at Step 2. Go back and check you took EVERYTHING off - a commonly missed item is their headset.\
+				\
+				<a name='4'><h3>Step 4: Scan body</h3>\
+				Go onto the computer and scan the body by pressing 'Scan - &lt;Subject Name Here&gt;.' If you're successful, they will be added to the records (note that this can be done at any time, even with living people,\
+				so that they can be cloned without a body in the event that they are lying dead on port solars and didn't turn on their suit sensors)!\
+				If not, and it says \"Error: Mental interface failure.\", then they have left their bodily confines and are one with the spirits. If this happens, just shout at them to get back in their body,\
+				click 'Refresh' and try scanning them again. If there's no success, threaten them with gibbing.\
+				Still no success? Skip over to Step 7 and don't continue after it, as you have an unresponsive body and it cannot be cloned.\
+				If you got \"Error: Unable to locate valid genetic data.\", you are trying to clone a monkey - start over.\
+				\
+				<a name='5'><h3>Step 5: Clone body</h3>\
+				Now that the body has a record, click 'View Records,' click the subject's name, and then click 'Clone' to start the cloning process. Congratulations! You're halfway there.\
+				Remember not to 'Eject' the cloning pod as this will kill the developing clone and you'll have to start the process again.\
+				\
+				<a name='6'><h3>Step 6: Get clean SEs for body</h3>\
+				Cloning is a finicky and unreliable process. Whilst it will most certainly bring someone back from the dead, they can have any number of nasty disabilities given to them during the cloning process!\
+				For this reason, you need to prepare a clean, defect-free Structural Enzyme (SE) injection for when they're done. If you're a competent Geneticist, you will already have one ready on your working computer.\
+				If, for any reason, you do not, then eject the body from the DNA modifier (NOT THE CLONING POD) and take it next door to the Genetics research room. Put the body in one of those DNA modifiers and then go onto the console.\
+				Go into View/Edit/Transfer Buffer, find an open slot and click \"SE\" to save it. Then click 'Injector' to get the SEs in syringe form. Put this in your pocket or something for when the body is done.\
+				\
+				<a name='7'><h3>Step 7: Put body in morgue</h3>\
+				Now that the cloning process has been initiated and you have some clean Structural Enzymes, you no longer need the body! Drag it to the morgue and tell the Chef over the radio that they have some fresh meat waiting for them in there.\
+				To put a body in a morgue bed, simply open the tray, grab the body, put it on the open tray, then close the tray again. Use one of the nearby pens to label the bed \"CHEF MEAT\" in order to avoid confusion.\
+				\
+				<a name='8'><h3>Step 8: Await cloned body</h3>\
+				Now go back to the lab and wait for your patient to be cloned. It won't be long now, I promise.\
+				\
+				<a name='9'><h3>Step 9: Cryo and clean SE injector on person</h3>\
+				Has your body been cloned yet? Great! As soon as the guy pops out, grab them and stick them in cryo. Clonexadone and Cryoxadone help rebuild their genetic material. Then grab your clean SE injector and jab it in them. Once you've injected them,\
+				they now have clean Structural Enzymes and their defects, if any, will disappear in a short while.\
+				\
+				<a name='10'><h3>Step 10: Give person clothes back</h3>\
+				Obviously the person will be naked after they have been cloned. Provided you weren't an irresponsible little shit, you should have protected their possessions from thieves and should be able to give them back to the patient.\
+				No matter how cruel you are, it's simply against protocol to force your patients to walk outside naked.\
+				\
+				<a name='11'><h3>Step 11: Send person on their way</h3>\
+				Give the patient one last check-over - make sure they don't still have any defects and that they have all their possessions. Ask them how they died, if they know, so that you can report any foul play over the radio.\
+				Once you're done, your patient is ready to go back to work! Chances are they do not have Medbay access, so you should let them out of Genetics and the Medbay main entrance.\
+				\
+				<p>If you've gotten this far, congratulations! You have mastered the art of cloning. Now, the real problem is how to resurrect yourself after that traitor had his way with you for cloning his target.\
+				"
 
 /obj/item/book/manual/ripley_build_and_repair
 	name = "APLU \"Ripley\" Construction and Operation Manual"
 	icon_state ="book"
-	author = "Randall Varn, Einstein Engines Senior Mechanic"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "APLU \"Ripley\" Construction and Operation Manual"
-
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ul.a {list-style-type: none; margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<center>
-				<br>
-				<span style='font-size: 12px;'><b>Weyland-Yutani - Building Better Worlds</b></span>
-				<h1>Autonomous Power Loader Unit \"Ripley\"</h1>
-				</center>
-				<h2>Specifications:</h2>
-				<ul class="a">
-				<li><b>Class:</b> Autonomous Power Loader</li>
-				<li><b>Scope:</b> Logistics and Construction</li>
-				<li><b>Weight:</b> 820kg (without operator and with empty cargo compartment)</li>
-				<li><b>Height:</b> 2.5m</li>
-				<li><b>Width:</b> 1.8m</li>
-				<li><b>Top speed:</b> 5km/hour</li>
-				<li><b>Operation in vacuum/hostile environment: Possible</b>
-				<li><b>Airtank volume:</b> 500 liters</li>
-				<li><b>Devices:</b>
-					<ul class="a">
-					<li>Hydraulic clamp</li>
-					<li>High-speed drill</li>
-					</ul>
-				</li>
-				<li><b>Propulsion device:</b> Powercell-powered electro-hydraulic system</li>
-				<li><b>Powercell capacity:</b> Varies</li>
-				</ul>
-
-				<h2>Construction:</h2>
-				<ol>
-					<li>Connect all exosuit parts to the chassis frame.</li>
-					<li>Connect all hydraulic fittings and tighten them up with a wrench.</li>
-					<li>Adjust the servohydraulics with a screwdriver.</li>
-					<li>Wire the chassis (Cable is not included).</li>
-					<li>Use the wirecutters to remove the excess cable if needed.</li>
-					<li>Install the central control module (Not included. Use supplied datadisk to create one).</li>
-					<li>Secure the mainboard with a screwdriver.</li>
-					<li>Install the peripherals control module (Not included. Use supplied datadisk to create one).</li>
-					<li>Secure the peripherals control module with a screwdriver.</li>
-					<li>Install the internal armor plating (Not included due to corporate regulations. Can be made using 5 metal sheets).</li>
-					<li>Secure the internal armor plating with a wrench.</li>
-					<li>Weld the internal armor plating to the chassis.</li>
-					<li>Install the external reinforced armor plating (Not included due to corporate regulations. Can be made using 5 reinforced metal sheets).</li>
-					<li>Secure the external reinforced armor plating with a wrench.</li>
-					<li>Weld the external reinforced armor plating to the chassis.</li>
-				</ol>
-
-				<h2>Additional Information:</h2>
-				<ul>
-					<li>The firefighting variation is made in a similar fashion.</li>
-					<li>A firesuit must be connected to the firefighter chassis for heat shielding.</li>
-					<li>Internal armor is plasteel for additional strength.</li>
-					<li>External armor must be installed in 2 parts, totalling 10 sheets.</li>
-					<li>Completed mech is more resilient against fire, and is a bit more durable overall.</li>
-					<li>The Company is determined to ensure the safety of its <s>investments</s> employees.</li>
-				</ul>
-				</body>
-			</html>
-			"}
+	starting_author = "Randall Varn, Einstein Engines Senior Mechanic"
+	starting_title = "APLU \"Ripley\" Construction and Operation Manual"
+	starting_content = "\
+				<center>\
+				<b style='font-size: 12px;'>Weyland-Yutani - Building Better Worlds</b>\
+				<h1>Autonomous Power Loader Unit \"Ripley\"</h1>\
+				</center>\
+				<h2>Specifications:</h2>\
+				<ul>\
+				<li><b>Class:</b> Autonomous Power Loader</li>\
+				<li><b>Scope:</b> Logistics and Construction</li>\
+				<li><b>Weight:</b> 820kg (without operator and with empty cargo compartment)</li>\
+				<li><b>Height:</b> 2.5m</li>\
+				<li><b>Width:</b> 1.8m</li>\
+				<li><b>Top speed:</b> 5km/hour</li>\
+				<li><b>Operation in vacuum/hostile environment:</b> Possible</b>\
+				<li><b>Airtank Volume:</b> 500liters</li>\
+				<li><b>Devices:</b>\
+					<ul>\
+					<li>Hydraulic Clamp</li>\
+					<li>High-speed Drill</li>\
+					</ul>\
+				</li>\
+				<li><b>Propulsion Device:</b> Power cell powered electro-hydraulic system.</li>\
+				<li><b>Power cell capacity:</b> Varies.</li>\
+				</ul>\
+				\
+				<h2>Construction:</h2>\
+				<ol>\
+				<li>Connect all exosuit parts to the chassis frame</li>\
+				<li>Connect all hydraulic fittings and tighten them up with a wrench</li>\
+				<li>Adjust the servohydraulics with a screwdriver</li>\
+				<li>Wire the chassis. (Cable is not included.)</li>\
+				<li>Use the wirecutters to remove the excess cable if needed.</li>\
+				<li>Install the central control module (Not included. Use supplied datadisk to create one).</li>\
+				<li>Secure the mainboard with a screwdriver.</li>\
+				<li>Install the peripherals control module (Not included. Use supplied datadisk to create one).</li>\
+				<li>Secure the peripherals control module with a screwdriver</li>\
+				<li>Install the internal armor plating (Not included due to Nanotrasen regulations. Can be made using 5 iron sheets.)</li>\
+				<li>Secure the internal armor plating with a wrench</li>\
+				<li>Weld the internal armor plating to the chassis</li>\
+				<li>Install the external reinforced armor plating (Not included due to Nanotrasen regulations. Can be made using 5 reinforced iron sheets.)</li>\
+				<li>Secure the external reinforced armor plating with a wrench</li>\
+				<li>Weld the external reinforced armor plating to the chassis</li>\
+				\
+				<h2>Additional Information:</h2>\
+				<ul>\
+					<li>The firefighting variation is made in a similar fashion.</li>\
+					<li>A firesuit must be connected to the firefighter chassis for heat shielding.</li>\
+					<li>Internal armor is plasteel for additional strength.</li>\
+					<li>External armor must be installed in 2 parts, totalling 10 sheets.</li>\
+					<li>Completed mech is more resilient against fire, and is a bit more durable overall.</li>\
+					<li>The Company is determined to ensure the safety of its <s>investments</s> employees.</li>\
+				</ul>\
+				<h2>Operation</h2>\
+				Please consult the Nanotrasen compendium \"Robotics for Dummies\".\
+			"
 
 
 /obj/item/book/manual/research_and_development
 	name = "Research and Development 101"
 	icon_state = "rdbook"
-	author = "Dr. L. Ight"
-	title = "Research and Development 101"
+	starting_author = "Dr. L. Ight"
+	starting_title = "Research and Development 101"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 21px; margin: 15px 0px 5px;}
-				h2 {font-size: 18px; margin: 15px 0px 5px;}
-				h3 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
-				<h1>Science For Dummies</h1>
-				So you want to further SCIENCE? Good man/woman/thing! However, SCIENCE is a complicated process even though it's quite easy. For the most part, it's a three step process:
-				<ol>
-					<li><b>Deconstruct</b> items in the Destructive Analyzer to advance technology or improve the design.</li>
-					<li><b>Build</b> unlocked designs in the Protolathe and Circuit Imprinter.</li>
-					<li><b>Repeat</b>!</li>
-				</ol>
-
-				Those are the basic steps to furthering science. What do you do science with, however? Well, you have four major tools: R&D Console, the Destructive Analyzer, the Protolathe, and the Circuit Imprinter.
-
-				<h2>The R&D Console</h2>
-				The R&D console is the cornerstone of any research lab. It is the central system from which the Destructive Analyzer, Protolathe, and Circuit Imprinter (your R&D systems) are controlled. More on those systems in their own sections.
-				On its own, the R&D console acts as a database for all your technological gains and new devices you discover. So long as the R&D console remains intact, you'll retain all that SCIENCE you've discovered. Protect it though,
-				because if it gets damaged, you'll lose your data!
-				In addition to this important purpose, the R&D console has a disk menu that lets you transfer data from the database onto disk or from the disk into the database.
-				It also has a settings menu that lets you re-sync with nearby R&D devices (if they've become disconnected), lock the console from the unworthy,
-				upload the data to all other R&D consoles in the network (all R&D consoles are networked by default), connect/disconnect from the network, and purge all data from the database.<br><br>
-
-				<b>NOTE:</b> The technology list screen, circuit imprinter, and protolathe menus are accessible by non-scientists. This is intended to allow 'public' systems for the plebians to utilize some new devices.
-
-				<h2>Destructive Analyzer</h2>
-				This is the source of all technology. Whenever you put a handheld object in it, it analyzes it and determines what sort of technological advancements you can discover from it. If the technology of the object is equal or higher then your current knowledge,
-				you can destroy the object to further those sciences.
-				Some devices (notably, some devices made from the protolathe and circuit imprinter) aren't 100% reliable when you first discover them. If these devices break down, you can put them into the Destructive Analyzer and improve their reliability rather than further science.
-				If their reliability is high enough, it'll also advance their related technologies.
-
-				<h2>Circuit Imprinter</h2>
-				This machine, along with the Protolathe, is used to actually produce new devices. The Circuit Imprinter takes glass and various chemicals (depends on the design) to produce new circuit boards to build new machines or computers. It can even be used to print AI modules.
-
-				<h2>Protolathe</h2>
-				This machine is an advanced form of the Autolathe that produce non-circuit designs. Unlike the Autolathe, it can use processed metal, glass, solid phoron, silver, gold, and diamonds along with a variety of chemicals to produce devices.
-				The downside is that, again, not all devices you make are 100% reliable when you first discover them.
-
-				<h2>Reliability and You</h2>
-				As it has been stated, many devices, when they're first discovered, do not have a 100% reliability. Instead,
-				the reliability of the device is dependent upon a base reliability value, whatever improvements to the design you've discovered through the Destructive Analyzer,
-				and any advancements you've made with the device's source technologies. To be able to improve the reliability of a device, you have to use the device until it breaks beyond repair. Once that happens, you can analyze it in a Destructive Analyzer.
-				Once the device reaches a certain minimum reliability, you'll gain technological advancements from it.
-
-				<h2>Building a Better Machine</h2>
-				Many machines produced from circuit boards inserted into a machine frames require a variety of parts to construct. These are parts like capacitors, batteries, matter bins, and so forth. As your knowledge of science improves, more advanced versions are unlocked.
-				If you use these parts when constructing something, its attributes may be improved.
-				For example, if you use an advanced matter bin when constructing an autolathe (rather than a regular one), it'll hold more materials. Experiment around with stock parts of various qualities to see how they affect the end results! Be warned, however:
-				Tier 3 and higher stock parts don't have 100% reliability and their low reliability may affect the reliability of the end machine.
-				</body>
-			</html>
-			"}
-
+	starting_content = "\
+				<h1>Science For Dummies</h1>\
+				So you want to further SCIENCE? Good man/woman/thing! However, SCIENCE is a complicated process even though it's quite easy. For the most part, it's a three step process:\
+				<ol>\
+					<li><b>Deconstruct</b> items in the Destructive Analyzer to advance technology or improve the design.</li>\
+					<li><b>Build</b> unlocked designs in the Protolathe and Circuit Imprinter.</li>\
+					<li><b>Repeat</b>!</li>\
+				</ol>\
+				\
+				Those are the basic steps to furthering science. What do you do science with, however? Well, you have four major tools: R&D Console, the Destructive Analyzer, the Protolathe, and the Circuit Imprinter.\
+				\
+				<h2>The R&D Console</h2>\
+				The R&D console is the cornerstone of any research lab. It is the central system from which the Destructive Analyzer, Protolathe, and Circuit Imprinter (your R&D systems) are controlled. More on those systems in their own sections.\
+				On its own, the R&D console acts as a database for all your technological gains and new devices you discover. So long as the R&D console remains intact, you'll retain all that SCIENCE you've discovered. Protect it though,\
+				because if it gets damaged, you'll lose your data!\
+				In addition to this important purpose, the R&D console has a disk menu that lets you transfer data from the database onto disk or from the disk into the database.\
+				It also has a settings menu that lets you re-sync with nearby R&D devices (if they've become disconnected), lock the console from the unworthy,\
+				upload the data to all other R&D consoles in the network (all R&D consoles are networked by default), connect/disconnect from the network, and purge all data from the database.<br><br>\
+				\
+				<b>NOTE:</b> The technology list screen, circuit imprinter, and protolathe menus are accessible by non-scientists. This is intended to allow 'public' systems for the plebians to utilize some new devices.\
+				\
+				<h2>Destructive Analyzer</h2>\
+				This is the source of all technology. Whenever you put a handheld object in it, it analyzes it and determines what sort of technological advancements you can discover from it. If the technology of the object is equal or higher then your current knowledge,\
+				you can destroy the object to further those sciences.\
+				Some devices (notably, some devices made from the protolathe and circuit imprinter) aren't 100% reliable when you first discover them. If these devices break down, you can put them into the Destructive Analyzer and improve their reliability rather than further science.\
+				If their reliability is high enough, it'll also advance their related technologies.\
+				\
+				<h2>Circuit Imprinter</h2>\
+				This machine, along with the Protolathe, is used to actually produce new devices. The Circuit Imprinter takes glass and various chemicals (depends on the design) to produce new circuit boards to build new machines or computers. It can even be used to print AI modules.\
+				\
+				<h2>Protolathe</h2>\
+				This machine is an advanced form of the Autolathe that produce non-circuit designs. Unlike the Autolathe, it can use processed metal, glass, solid phoron, silver, gold, and diamonds along with a variety of chemicals to produce devices.\
+				The downside is that, again, not all devices you make are 100% reliable when you first discover them.\
+				\
+				<h2>Reliability and You</h2>\
+				As it has been stated, many devices, when they're first discovered, do not have a 100% reliability. Instead,\
+				the reliability of the device is dependent upon a base reliability value, whatever improvements to the design you've discovered through the Destructive Analyzer,\
+				and any advancements you've made with the device's source technologies. To be able to improve the reliability of a device, you have to use the device until it breaks beyond repair. Once that happens, you can analyze it in a Destructive Analyzer.\
+				Once the device reaches a certain minimum reliability, you'll gain technological advancements from it.\
+				\
+				<h2>Building a Better Machine</h2>\
+				Many machines produced from circuit boards inserted into a machine frames require a variety of parts to construct. These are parts like capacitors, batteries, matter bins, and so forth. As your knowledge of science improves, more advanced versions are unlocked.\
+				If you use these parts when constructing something, its attributes may be improved.\
+				For example, if you use an advanced matter bin when constructing an autolathe (rather than a regular one), it'll hold more materials. Experiment around with stock parts of various qualities to see how they affect the end results! Be warned, however:\
+				Tier 3 and higher stock parts don't have 100% reliability and their low reliability may affect the reliability of the end machine.\
+			"
 
 /obj/item/book/manual/robotics_cyborgs
 	name = "Cyborgs for Dummies"
 	icon_state = "borgbook"
-	author = "XISC"
-	title = "Cyborgs for Dummies"
+	starting_author = "XISC"
+	starting_title = "Cyborgs for Dummies"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 21px; margin: 15px 0px 5px;}
-				h2 {font-size: 18px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = "\
+				<h1>Cyborgs for Dummies</h1>\
+				<h2>Chapters</h2>\
+				<ol>\
+					<li><a href=\"#Equipment\">Cyborg Related Equipment</a></li>\
+					<li><a href=\"#Modules\">Cyborg Modules</a></li>\
+					<li><a href=\"#Construction\">Cyborg Construction</a></li>\
+					<li><a href=\"#Maintenance\">Cyborg Maintenance</a></li>\
+					<li><a href=\"#Repairs\">Cyborg Repairs</a></li>\
+					<li><a href=\"#Emergency\">In Case of Emergency</a></li>\
+				</ol>\
+				\
+				<h2><a name=\"Equipment\">Cyborg Related Equipment</h2>\
+				\
+				<h3>Exosuit Fabricator</h3>\
+				The Exosuit Fabricator is the most important piece of equipment related to cyborgs. It allows the construction of the core cyborg parts. Without these machines, cyborgs cannot be built. It seems that they may also benefit from advanced research techniques.\
+				\
+				<h3>Cyborg Recharging Station</h3>\
+				This useful piece of equipment will suck power out of the power systems to charge a cyborg's power cell back up to full charge.\
+				\
+				<h3>Robotics Control Console</h3>\
+				This useful piece of equipment can be used to immobilize or destroy a cyborg. A word of warning: Cyborgs are expensive pieces of equipment, do not destroy them without good reason, or the Company may see to it that it never happens again.\
+				\
+				<h2><a name=\"Modules\">Cyborg Modules</h2>\
+				When a cyborg is created it picks out of an array of modules to designate its purpose. There are 6 different cyborg modules.\
+				\
+				<h3>Standard Cyborg</h3>\
+				The standard cyborg module is a multi-purpose cyborg. It is equipped with various modules, allowing it to do basic tasks.<br>A Standard Cyborg comes with:\
+				<ul>\
+				  <li>Crowbar</li>\
+				  <li>Stun Baton</li>\
+				  <li>Health Analyzer</li>\
+				  <li>Fire Extinguisher</li>\
+				</ul>\
+				\
+				<h3>Engineering Cyborg</h3>\
+				The Engineering cyborg module comes equipped with various engineering-related tools to help with engineering-related tasks.<br>An Engineering Cyborg comes with:\
+				<ul>\
+				  <li>A basic set of engineering tools</li>\
+				  <li>Metal Synthesizer</li>\
+				  <li>Reinforced Glass Synthesizer</li>\
+				  <li>An RCD</li>\
+				  <li>Wire Synthesizer</li>\
+				  <li>Fire Extinguisher</li>\
+				  <li>Built-in Optical Meson Scanners</li>\
+				</ul>\
+				\
+				<h3>Mining Cyborg</h3>\
+				The Mining Cyborg module comes equipped with the latest in mining equipment. They are efficient at mining due to no need for oxygen, but their power cells limit their time in the mines.<br>A Mining Cyborg comes with:\
+				<ul>\
+				  <li>Jackhammer</li>\
+				  <li>Shovel</li>\
+				  <li>Mining Satchel</li>\
+				  <li>Built-in Optical Meson Scanners</li>\
+				</ul>\
+				\
+				<h3>Security Cyborg</h3>\
+				The Security Cyborg module is equipped with effective security measures used to apprehend and arrest criminals without harming them a bit.<br>A Security Cyborg comes with:\
+				<ul>\
+				  <li>Stun Baton</li>\
+				  <li>Handcuffs</li>\
+				  <li>Taser</li>\
+				</ul>\
+				\
+				<h3>Janitor Cyborg</h3>\
+				The Janitor Cyborg module is equipped with various cleaning-facilitating devices.<br>A Janitor Cyborg comes with:\
+				<ul>\
+				  <li>Mop</li>\
+				  <li>Hand Bucket</li>\
+				  <li>Cleaning Spray Synthesizer and Spray Nozzle</li>\
+				</ul>\
+				\
+				<h3>Service Cyborg</h3>\
+				The service cyborg module comes ready to serve your human needs. It includes various entertainment and refreshment devices. Occasionally some service cyborgs may have been referred to as \"Bros.\"<br>A Service Cyborg comes with:\
+				<ul>\
+				  <li>Shaker</li>\
+				  <li>Industrial Dropper</li>\
+				  <li>Platter</li>\
+				  <li>Beer Synthesizer</li>\
+				  <li>Zippo Lighter</li>\
+				  <li>Rapid-Service-Fabricator (Produces various entertainment and refreshment objects)</li>\
+				  <li>Pen</li>\
+				</ul>\
+				\
+				<h2><a name=\"Construction\">Cyborg Construction</h2>\
+				Cyborg construction is a rather easy process, requiring a decent amount of metal and a few other supplies.<br>The required materials to make a cyborg are:\
+				<ul>\
+				  <li>Metal</li>\
+				  <li>Two Flashes</li>\
+				  <li>One Power Cell (Preferably rated to 15000w)</li>\
+				  <li>Some electrical wires</li>\
+				  <li>One Human Brain</li>\
+				  <li>One Man-Machine Interface</li>\
+				</ul>\
+				Once you have acquired the materials, you can start on construction of your cyborg.<br>To construct a cyborg, follow the steps below:\
+				<ol>\
+				  <li>Start the Exosuit Fabricators constructing all of the cyborg parts</li>\
+				  <li>While the parts are being constructed, take your human brain, and place it inside the Man-Machine Interface</li>\
+				  <li>Once you have a Robot Head, place your two flashes inside the eye sockets</li>\
+				  <li>Once you have your Robot Chest, wire the Robot chest, then insert the power cell</li>\
+				  <li>Attach all of the Robot parts to the Robot frame</li>\
+				  <li>Insert the Man-Machine Interface (With the Brain inside) into the Robot Body</li>\
+				  <li>Congratulations! You have a new cyborg!</li>\
+				</ol>\
+				\
+				<h2><a name=\"Maintenance\">Cyborg Maintenance</h2>\
+				Occasionally Cyborgs may require maintenance of a couple types, this could include replacing a power cell with a charged one, or possibly maintaining the cyborg's internal wiring.\
+				\
+				<h3>Replacing a Power Cell</h3>\
+				Replacing a Power cell is a common type of maintenance for cyborgs. It usually involves replacing the cell with a fully charged one, or upgrading the cell with a larger capacity cell.<br>The steps to replace a cell are as follows:\
+				<ol>\
+				  <li>Unlock the Cyborg's Interface by swiping your ID on it</li>\
+				  <li>Open the Cyborg's outer panel using a crowbar</li>\
+				  <li>Remove the old power cell</li>\
+				  <li>Insert the new power cell</li>\
+				  <li>Close the Cyborg's outer panel using a crowbar</li>\
+				  <li>Lock the Cyborg's Interface by swiping your ID on it, this will prevent non-qualified personnel from attempting to remove the power cell</li>\
+				</ol>\
+				\
+				<h3>Exposing the Internal Wiring</h3>\
+				Exposing the internal wiring of a cyborg is fairly easy to do, and is mainly used for cyborg repairs.<br>You can easily expose the internal wiring by following the steps below:\
+				<ol>\
+					<li>Follow Steps 1 - 3 of \"Replacing a Cyborg's Power Cell\"</li>\
+					<li>Open the cyborg's internal wiring panel by using a screwdriver to unsecure the panel</li>\
+				</ol>\
+				To re-seal the cyborg's internal wiring:\
+				<ol>\
+					<li>Use a screwdriver to secure the cyborg's internal panel</li>\
+					<li>Follow steps 4 - 6 of \"Replacing a Cyborg's Power Cell\" to close up the cyborg</li>\
+				</ol>\
+				\
+				<h2><a name=\"Repairs\">Cyborg Repairs</h2>\
+				Occasionally a Cyborg may become damaged. This could be in the form of impact damage from a heavy or fast-travelling object, or it could be heat damage from high temperatures, or even lasers or Electromagnetic Pulses (EMPs).\
+				\
+				<h3>Dents</h3>\
+				If a cyborg becomes damaged due to impact from heavy or fast-moving objects, it will become dented. Sure, a dent may not seem like much, but it can compromise the structural integrity of the cyborg, possibly causing a critical failure.\
+				Dents in a cyborg's frame are rather easy to repair, all you need is to apply a welding tool to the dented area, and the high-tech cyborg frame will repair the dent under the heat of the welder.\
+				\
+				<h3>Excessive Heat Damage</h3>\
+				If a cyborg becomes damaged due to excessive heat, it is likely that the internal wires will have been damaged. You must replace those wires to ensure that the cyborg remains functioning properly.<br>To replace the internal wiring follow the steps below:\
+				<ol>\
+					<li>Unlock the Cyborg's Interface by swiping your ID</li>\
+					<li>Open the Cyborg's External Panel using a crowbar</li>\
+					<li>Remove the Cyborg's Power Cell</li>\
+					<li>Using a screwdriver, expose the internal wiring of the Cyborg</li>\
+					<li>Replace the damaged wires inside the cyborg</li>\
+					<li>Secure the internal wiring cover using a screwdriver</li>\
+					<li>Insert the Cyborg's Power Cell</li>\
+					<li>Close the Cyborg's External Panel using a crowbar</li>\
+					<li>Lock the Cyborg's Interface by swiping your ID</li>\
+				</ol>\
+				These repair tasks may seem difficult, but are essential to keep your cyborgs running at peak efficiency.\
+				\
+				<h2><a name=\"Emergency\">In Case of Emergency</h2>\
+				In case of emergency, there are a few steps you can take.\
+				\
+				<h3>\"Rogue\" Cyborgs</h3>\
+				If the cyborgs seem to become \"rogue\", they may have non-standard laws. In this case, use extreme caution.\
+				To repair the situation, follow these steps:\
+				<ol>\
+					<li>Locate the nearest robotics console</li>\
+					<li>Determine which cyborgs are \"Rogue\"</li>\
+					<li>Press the lockdown button to immobilize the cyborg</li>\
+					<li>Locate the cyborg</li>\
+					<li>Expose the cyborg's internal wiring</li>\
+					<li>Check to make sure the LawSync and AI Sync lights are lit</li>\
+					<li>If they are not lit, pulse the LawSync wire using a multitool to enable the cyborg's LawSync</li>\
+					<li>Proceed to a cyborg upload console. The Company usually places these in the same location as AI upload consoles.</li>\
+					<li>Use a \"Reset\" upload moduleto reset the cyborg's laws</li>\
+					<li>Proceed to a Robotics Control console</li>\
+					<li>Remove the lockdown on the cyborg</li>\
+				</ol>\
+				\
+				<h3>As a last resort</h3>\
+				If all else fails in a case of cyborg-related emergency, there may be only one option. Using a Robotics Control console, you may have to remotely detonate the cyborg.\
+				<h3>WARNING:</h3> Do not detonate a borg without an explicit reason for doing so. Cyborgs are expensive pieces of company equipment, and you may be punished for detonating them without reason.\
+		"
 
-				<h1>Cyborgs for Dummies</h1>
-
-				<h2>Chapters</h2>
-
-				<ol>
-					<li><a href="#Equipment">Cyborg Related Equipment</a></li>
-					<li><a href="#Modules">Cyborg Modules</a></li>
-					<li><a href="#Construction">Cyborg Construction</a></li>
-					<li><a href="#Maintenance">Cyborg Maintenance</a></li>
-					<li><a href="#Repairs">Cyborg Repairs</a></li>
-					<li><a href="#Emergency">In Case of Emergency</a></li>
-				</ol>
-
-
-				<h2><a name="Equipment">Cyborg Related Equipment</h2>
-
-				<h3>Exosuit Fabricator</h3>
-				The Exosuit Fabricator is the most important piece of equipment related to cyborgs. It allows the construction of the core cyborg parts. Without these machines, cyborgs cannot be built. It seems that they may also benefit from advanced research techniques.
-
-				<h3>Cyborg Recharging Station</h3>
-				This useful piece of equipment will suck power out of the power systems to charge a cyborg's power cell back up to full charge.
-
-				<h3>Robotics Control Console</h3>
-				This useful piece of equipment can be used to immobilize or destroy a cyborg. A word of warning: Cyborgs are expensive pieces of equipment, do not destroy them without good reason, or the Company may see to it that it never happens again.
-
-
-				<h2><a name="Modules">Cyborg Modules</h2>
-				When a cyborg is created it picks out of an array of modules to designate its purpose. There are 6 different cyborg modules.
-
-				<h3>Standard Cyborg</h3>
-				The standard cyborg module is a multi-purpose cyborg. It is equipped with various modules, allowing it to do basic tasks.<br>A Standard Cyborg comes with:
-				<ul>
-				  <li>Crowbar</li>
-				  <li>Stun Baton</li>
-				  <li>Health Analyzer</li>
-				  <li>Fire Extinguisher</li>
-				</ul>
-
-				<h3>Engineering Cyborg</h3>
-				The Engineering cyborg module comes equipped with various engineering-related tools to help with engineering-related tasks.<br>An Engineering Cyborg comes with:
-				<ul>
-				  <li>A basic set of engineering tools</li>
-				  <li>Metal Synthesizer</li>
-				  <li>Reinforced Glass Synthesizer</li>
-				  <li>An RCD</li>
-				  <li>Wire Synthesizer</li>
-				  <li>Fire Extinguisher</li>
-				  <li>Built-in Optical Meson Scanners</li>
-				</ul>
-
-				<h3>Mining Cyborg</h3>
-				The Mining Cyborg module comes equipped with the latest in mining equipment. They are efficient at mining due to no need for oxygen, but their power cells limit their time in the mines.<br>A Mining Cyborg comes with:
-				<ul>
-				  <li>Jackhammer</li>
-				  <li>Shovel</li>
-				  <li>Mining Satchel</li>
-				  <li>Built-in Optical Meson Scanners</li>
-				</ul>
-
-				<h3>Security Cyborg</h3>
-				The Security Cyborg module is equipped with effective security measures used to apprehend and arrest criminals without harming them a bit.<br>A Security Cyborg comes with:
-				<ul>
-				  <li>Stun Baton</li>
-				  <li>Handcuffs</li>
-				  <li>Taser</li>
-				</ul>
-
-				<h3>Janitor Cyborg</h3>
-				The Janitor Cyborg module is equipped with various cleaning-facilitating devices.<br>A Janitor Cyborg comes with:
-				<ul>
-				  <li>Mop</li>
-				  <li>Hand Bucket</li>
-				  <li>Cleaning Spray Synthesizer and Spray Nozzle</li>
-				</ul>
-
-				<h3>Service Cyborg</h3>
-				The service cyborg module comes ready to serve your human needs. It includes various entertainment and refreshment devices. Occasionally some service cyborgs may have been referred to as "Bros."<br>A Service Cyborg comes with:
-				<ul>
-				  <li>Shaker</li>
-				  <li>Industrial Dropper</li>
-				  <li>Platter</li>
-				  <li>Beer Synthesizer</li>
-				  <li>Zippo Lighter</li>
-				  <li>Rapid-Service-Fabricator (Produces various entertainment and refreshment objects)</li>
-				  <li>Pen</li>
-				</ul>
-
-				<h2><a name="Construction">Cyborg Construction</h2>
-				Cyborg construction is a rather easy process, requiring a decent amount of metal and a few other supplies.<br>The required materials to make a cyborg are:
-				<ul>
-				  <li>Metal</li>
-				  <li>Two Flashes</li>
-				  <li>One Power Cell (Preferably rated to 15000w)</li>
-				  <li>Some electrical wires</li>
-				  <li>One Human Brain</li>
-				  <li>One Man-Machine Interface</li>
-				</ul>
-				Once you have acquired the materials, you can start on construction of your cyborg.<br>To construct a cyborg, follow the steps below:
-				<ol>
-				  <li>Start the Exosuit Fabricators constructing all of the cyborg parts</li>
-				  <li>While the parts are being constructed, take your human brain, and place it inside the Man-Machine Interface</li>
-				  <li>Once you have a Robot Head, place your two flashes inside the eye sockets</li>
-				  <li>Once you have your Robot Chest, wire the Robot chest, then insert the power cell</li>
-				  <li>Attach all of the Robot parts to the Robot frame</li>
-				  <li>Insert the Man-Machine Interface (With the Brain inside) into the Robot Body</li>
-				  <li>Congratulations! You have a new cyborg!</li>
-				</ol>
-
-				<h2><a name="Maintenance">Cyborg Maintenance</h2>
-				Occasionally Cyborgs may require maintenance of a couple types, this could include replacing a power cell with a charged one, or possibly maintaining the cyborg's internal wiring.
-
-				<h3>Replacing a Power Cell</h3>
-				Replacing a Power cell is a common type of maintenance for cyborgs. It usually involves replacing the cell with a fully charged one, or upgrading the cell with a larger capacity cell.<br>The steps to replace a cell are as follows:
-				<ol>
-				  <li>Unlock the Cyborg's Interface by swiping your ID on it</li>
-				  <li>Open the Cyborg's outer panel using a crowbar</li>
-				  <li>Remove the old power cell</li>
-				  <li>Insert the new power cell</li>
-				  <li>Close the Cyborg's outer panel using a crowbar</li>
-				  <li>Lock the Cyborg's Interface by swiping your ID on it, this will prevent non-qualified personnel from attempting to remove the power cell</li>
-				</ol>
-
-				<h3>Exposing the Internal Wiring</h3>
-				Exposing the internal wiring of a cyborg is fairly easy to do, and is mainly used for cyborg repairs.<br>You can easily expose the internal wiring by following the steps below:
-				<ol>
-					<li>Follow Steps 1 - 3 of "Replacing a Cyborg's Power Cell"</li>
-					<li>Open the cyborg's internal wiring panel by using a screwdriver to unsecure the panel</li>
-				</ol>
-				To re-seal the cyborg's internal wiring:
-				<ol>
-					<li>Use a screwdriver to secure the cyborg's internal panel</li>
-					<li>Follow steps 4 - 6 of "Replacing a Cyborg's Power Cell" to close up the cyborg</li>
-				</ol>
-
-				<h2><a name="Repairs">Cyborg Repairs</h2>
-				Occasionally a Cyborg may become damaged. This could be in the form of impact damage from a heavy or fast-travelling object, or it could be heat damage from high temperatures, or even lasers or Electromagnetic Pulses (EMPs).
-
-				<h3>Dents</h3>
-				If a cyborg becomes damaged due to impact from heavy or fast-moving objects, it will become dented. Sure, a dent may not seem like much, but it can compromise the structural integrity of the cyborg, possibly causing a critical failure.
-				Dents in a cyborg's frame are rather easy to repair, all you need is to apply a welding tool to the dented area, and the high-tech cyborg frame will repair the dent under the heat of the welder.
-
-				<h3>Excessive Heat Damage</h3>
-				If a cyborg becomes damaged due to excessive heat, it is likely that the internal wires will have been damaged. You must replace those wires to ensure that the cyborg remains functioning properly.<br>To replace the internal wiring follow the steps below:
-				<ol>
-					<li>Unlock the Cyborg's Interface by swiping your ID</li>
-					<li>Open the Cyborg's External Panel using a crowbar</li>
-					<li>Remove the Cyborg's Power Cell</li>
-					<li>Using a screwdriver, expose the internal wiring of the Cyborg</li>
-					<li>Replace the damaged wires inside the cyborg</li>
-					<li>Secure the internal wiring cover using a screwdriver</li>
-					<li>Insert the Cyborg's Power Cell</li>
-					<li>Close the Cyborg's External Panel using a crowbar</li>
-					<li>Lock the Cyborg's Interface by swiping your ID</li>
-				</ol>
-				These repair tasks may seem difficult, but are essential to keep your cyborgs running at peak efficiency.
-
-				<h2><a name="Emergency">In Case of Emergency</h2>
-				In case of emergency, there are a few steps you can take.
-
-				<h3>"Rogue" Cyborgs</h3>
-				If the cyborgs seem to become "rogue", they may have non-standard laws. In this case, use extreme caution.
-				To repair the situation, follow these steps:
-				<ol>
-					<li>Locate the nearest robotics console</li>
-					<li>Determine which cyborgs are "Rogue"</li>
-					<li>Press the lockdown button to immobilize the cyborg</li>
-					<li>Locate the cyborg</li>
-					<li>Expose the cyborg's internal wiring</li>
-					<li>Check to make sure the LawSync and AI Sync lights are lit</li>
-					<li>If they are not lit, pulse the LawSync wire using a multitool to enable the cyborg's LawSync</li>
-					<li>Proceed to a cyborg upload console. The Company usually places these in the same location as AI upload consoles.</li>
-					<li>Use a "Reset" upload moduleto reset the cyborg's laws</li>
-					<li>Proceed to a Robotics Control console</li>
-					<li>Remove the lockdown on the cyborg</li>
-				</ol>
-
-				<h3>As a last resort</h3>
-				If all else fails in a case of cyborg-related emergency, there may be only one option. Using a Robotics Control console, you may have to remotely detonate the cyborg.
-				<h3>WARNING:</h3> Do not detonate a borg without an explicit reason for doing so. Cyborgs are expensive pieces of company equipment, and you may be punished for detonating them without reason.
-
-				</body>
-			</html>
-		"}
-
-
+// yikes
 /obj/item/book/manual/security_space_law
 	name = "Corporate Regulations"
 	desc = "A set of corporate guidelines for keeping law and order on privately-owned space stations."
 	icon_state = "bookSpaceLaw"
-	author = "The Company"
-	title = "Corporate Regulations"
+	starting_author = "The Company"
+	starting_title = "Corporate Regulations"
+	// starting_content = {"
+	// 	<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Corporate_Regulations&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+	// 	"}
 
-/obj/item/book/manual/security_space_law/Initialize(mapload)
-	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
-		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Corporate_Regulations&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
-		"}
-
-
-
+// yikes
 /obj/item/book/manual/medical_diagnostics_manual
 	name = "Medical Diagnostics Manual"
 	desc = "First, do no harm. A detailed medical practitioner's guide."
 	icon_state = "bookMedical"
-	author = "Medical Department"
-	title = "Medical Diagnostics Manual"
+	starting_author = "Medical Department"
+	starting_title = "Medical Diagnostics Manual"
 
 /obj/item/book/manual/medical_diagnostics_manual/Initialize(mapload)
 	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<br>
+	starting_content = {"
 				<h1>The Oath</h1>
 
 				<i>The Medical Oath sworn by recognised medical practitioners in the employ of [(LEGACY_MAP_DATUM).company_name]</i><br>
@@ -957,53 +792,28 @@
 				<HR COLOR="steelblue" WIDTH="60%" ALIGN="LEFT">
 
 				<iframe width='100%' height='100%' src="[config_legacy.wikiurl]Guide_to_Medicine&printable=yes&removelinks=1" frameborder="0" id="main_frame"></iframe>
-				</body>
-			</html>
-
 		"}
 
-
+// yikes
 /obj/item/book/manual/engineering_guide
 	name = "Engineering Textbook"
 	icon_state ="bookEngineering2"
-	author = "Engineering Encyclopedia"
-	title = "Engineering Textbook"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Engineering Textbook"
 
 /obj/item/book/manual/engineering_guide/Initialize(mapload)
 	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
+	starting_content = {"
 		<iframe width='100%' height='100%' src="[config_legacy.wikiurl]Guide_to_Engineering&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>		</body>
-
-		</html>
-
 		"}
-
 
 /obj/item/book/manual/chef_recipes
 	name = "Chef Recipes"
 	icon_state = "cooked_book"
-	author = "Victoria Ponsonby"
-	title = "Chef Recipes"
+	starting_author = "Victoria Ponsonby"
+	starting_title = "Chef Recipes"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Food for Dummies</h1>
 				Here is a guide on basic food recipes and also how to not poison your customers accidentally.
 
@@ -1036,33 +846,15 @@
 
 				<h3>Fries:</h3>
 				Add one potato to the processor, then bake them in the microwave.
-
-
-				</body>
-			</html>
 			"}
-
 
 /obj/item/book/manual/barman_recipes
 	name = "Barman Recipes"
 	icon_state = "barbook"
-	author = "Sir John Rose"
-	title = "Barman Recipes"
+	starting_author = "Sir John Rose"
+	starting_title = "Barman Recipes"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Drinks for Dummies</h1>
 				Here's a guide for some basic drinks.
 
@@ -1092,30 +884,15 @@
 
 				<h3>Screwdriver:</h3>
 				Mix vodka and orange juice into a glass.
-
-				</body>
-			</html>
 			"}
-
 
 /obj/item/book/manual/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
-	author = "The Company"
-	title = "The Film Noir: Proper Procedures for Investigations"
+	starting_author = "The Company"
+	starting_title = "The Film Noir: Proper Procedures for Investigations"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = {"
 				<h1>Detective Work</h1>
 
 				Between your bouts of self-narration and drinking whiskey on the rocks, you might get a case or two to solve.<br>
@@ -1137,28 +914,15 @@
 				</ol>
 				<p>
 				It really is that easy! Good luck!
-
-				</body>
-			</html>"}
+			"}
 
 /obj/item/book/manual/nuclear
 	name = "Fission Mailed: Nuclear Sabotage 101"
 	icon_state ="bookNuclear"
-	author = "Syndicate"
-	title = "Fission Mailed: Nuclear Sabotage 101"
+	starting_author = "Syndicate"
+	starting_title = "Fission Mailed: Nuclear Sabotage 101"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 21px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	starting_content = {"
 				<h1>Nuclear Explosives 101</h1>
 				Hello and thank you for choosing the Syndicate for your nuclear information needs. Today's crash course will deal with the operation of a Nuclear Fission Device.<br><br>
 
@@ -1188,28 +952,14 @@
 				Intelligence Analysts believe that normal corporate procedure is for the Facility Director to secure the nuclear authentication disk.<br><br>
 
 				Good luck!
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/atmospipes
 	name = "Pipes and You: Getting To Know Your Scary Tools"
 	icon_state = "pipingbook"
-	author = "Maria Crash, Senior Atmospherics Technician"
-	title = "Pipes and You: Getting To Know Your Scary Tools"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Maria Crash, Senior Atmospherics Technician"
+	starting_title = "Pipes and You: Getting To Know Your Scary Tools"
+	starting_content = {"
 				<h1><a name="Contents">Contents</a></h1>
 				<ol>
 					<li><a href="#Foreword">Author's Foreword</a></li>
@@ -1294,30 +1044,14 @@
 				This normally shouldn't exchange with the ambient air, despite being totally exposed. Just don't ask questions.</li><BR>
 
 				That's about it for pipes. Go forth, armed with this knowledge, and try not to break, burn down, or kill anything. Please.
-
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/evaguide
 	name = "EVA Gear and You: Not Spending All Day Inside, 2nd Edition"
 	icon_state = "evabook"
-	author = "Maria Crash, Senior Atmospherics Technician"
-	title = "EVA Gear and You: Not Spending All Day Inside, 2nd Edition"
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Maria Crash, Senior Atmospherics Technician"
+	starting_title = "EVA Gear and You: Not Spending All Day Inside, 2nd Edition"
+	starting_content = {"
 				<h1><a name="Foreword">EVA Gear and You: Not Spending All Day Inside, 2nd Edition</a></h1>
 				<I>Or: How not to suffocate because there's a hole in your shoes</I><BR>
 
@@ -1420,78 +1154,46 @@
 				</ul>
 
 				If you don't have any further issues, go out and do whatever is necessary.
-
-				</body>
-			</html>
 			"}
 
 //Books originally stored in manuals_vr. Consolidated.
 
+// YIKES
 /obj/item/book/manual/standard_operating_procedure
 	name = "Standard Operating Procedure"
 	desc = "A set of corporate guidelines for keeping space stations running smoothly."
 	icon_state = "sop"
-	author = "Nanotrasen"
-	title = "Standard Operating Procedure"
+	starting_author = "Nanotrasen"
+	starting_title = "Standard Operating Procedure"
 
 /obj/item/book/manual/standard_operating_procedure/Initialize(mapload)
 	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
+	starting_content = {"
 		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Standard_Operating_Procedure&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
 		"}
 
 /obj/item/book/manual/command_guide
 	name = "The Chain of Command"
 	desc = "A set of corporate guidelines outlining the entire command structure of Nanotrasen from top to bottom."
 	icon_state = "commandGuide"
-	author = "Jeremiah Acacius"
-	title = "Corporate Regulations"
+	starting_author = "Jeremiah Acacius"
+	starting_title = "Corporate Regulations"
 
 /obj/item/book/manual/command_guide/Initialize(mapload)
 	. = ..()
-	dat = {"
-
-		<html><head>
-		</head>
-
-		<body>
+	starting_content = {"
 		<iframe width='100%' height='97%' src="[config_legacy.wikiurl]Chain_of_Command&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-		</body>
-
-		</html>
-
 		"}
 
 /obj/item/book/manual/the_humanized_mice
 	name = "The Humanized Mice"
 	icon_state = "hum_mic"
-	author = "Melora Creager"
-	title = "The Humanized Mice"
+	starting_author = "Melora Creager"
+	starting_title = "The Humanized Mice"
 
 /obj/item/book/manual/the_humanized_mice/Initialize(mapload)
 	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-				<br>
+	starting_content = {"
 				<h1>Excerpt: The Humanized Mice</h1>
 
 				<i>The majority of this book's pages are irreparably damaged or defaced. This mostly intact article is the only legible excerpt.</i><BR><BR>
@@ -1520,10 +1222,6 @@
 				</ul><br>
 
 				<HR COLOR="steelblue" WIDTH="60%" ALIGN="LEFT">
-
-				</body>
-			</html>
-
 		"}
 
 /////////////////////////////////////////////
@@ -1535,25 +1233,9 @@
 /obj/item/book/manual/legal/sop_vol1
 	name = "SOP Volume 1: Alert Levels"
 	icon_state = "sop_se"
-	author = "Nanotrasen"
-	title = "SOP Volume 1: Alert Levels"
-
-/obj/item/book/manual/legal/sop_vol1/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 1: Alert Levels"
+	starting_content = {"
 				<h1>Volume One: Alert Levels</h1>
 				<hr>
 				<h2>Code Green - All Clear</h2>
@@ -1636,33 +1318,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol2
 	name = "SOP Volume 2: Emergency Situations Protocol"
 	icon_state = "sop_se"
-	author = "Nanotrasen"
-	title = "SOP Volume 2: Emergency Situations Protocol"
-
-/obj/item/book/manual/legal/sop_vol2/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 2: Emergency Situations Protocol"
+	starting_content = {"
 				<h1>Volume Two: Emergency Situations Protocol</h1>
 				<hr>
 				<h2>Evacuation Procedure</h2>
@@ -1818,33 +1481,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol3
 	name = "SOP Volume 3: Legal Clauses"
 	icon_state = "sop_se"
-	author = "Nanotrasen"
-	title = "SOP Volume 3: Legal Clauses"
-
-/obj/item/book/manual/legal/sop_vol3/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 3: Legal Clauses"
+	starting_content = {"
 				<h1>Volume Three: Legal Clauses</h1>
 				<hr>
 				<h2>Corporate Labor Charter</h2>
@@ -1889,33 +1533,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol4
 	name = "SOP Volume 4: Courtesy Procedures"
 	icon_state = "sop_se"
-	author = "Nanotrasen"
-	title = "SOP Volume 4: Courtesy Procedures"
-
-/obj/item/book/manual/legal/sop_vol4/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 4: Courtesy Procedures"
+	starting_content = {"
 				<h1>Volume Four: Courtesy Procedures</h1>
 				<hr>
 				<h2>Visitors</h2>
@@ -1955,33 +1580,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_1
 	name = "SOP Volume 5.1: Department Regulations (Cargo)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.1: Department Regulations (Cargo)"
-
-/obj/item/book/manual/legal/sop_vol5_1/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.1: Department Regulations (Cargo)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Cargo)</h1>
 				<hr>
 				<h2>Cargo and Logistics</h2>
@@ -2031,33 +1637,14 @@
 				Mining crew assigned mechanized suits by the Research Department may only operate said equipment during EVA activities, or for the purpose of transportation to or from the Research Department. Weaponry or potentially hazardous utility devices mounted on mechanized suits must be detached and stored in the secure lockers provided to the department for weapons storage when they are not actively being used on the mechanized suit. The operation of an armed Mech onboard the station is unlawful and may be met with immediate lethal force.<BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_2
 	name = "SOP Volume 5.2: Department Regulations (Engineering)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.2: Department Regulations (Engineering)"
-
-/obj/item/book/manual/legal/sop_vol5_2/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.2: Department Regulations (Engineering)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Engineering)</h1>
 				<hr>
 				<h2>Construction/Repairs</h2>
@@ -2112,33 +1699,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_3
 	name = "SOP Volume 5.3: Department Regulations (Medical)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.3: Department Regulations (Medical)"
-
-/obj/item/book/manual/legal/sop_vol5_3/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.3: Department Regulations (Medical)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Medical)</h1>
 				<hr>
 				<h2>Medical Oath</h2>
@@ -2285,33 +1853,14 @@
 				<i>((OOC NOTE: THIS SHOULD ONLY BE INTERACTED WITH IN CODE DELTA OR EVACUATION SCENARIOS. YOU RISK OUT OF CHARACTER PUNISHMENT OTHERWISE.))</i><BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_4
 	name = "SOP Volume 5.4: Department Regulations (Research)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.4: Department Regulations (Research)"
-
-/obj/item/book/manual/legal/sop_vol5_4/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.4: Department Regulations (Research)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Research)</h1>
 				<hr>
 				<h2>Contraband Policy</h2>
@@ -2402,33 +1951,14 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_5
 	name = "SOP Volume 5.5: Department Regulations (Security)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.5: Department Regulations (Security)"
-
-/obj/item/book/manual/legal/sop_vol5_5/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.5: Department Regulations (Security)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Security)</h1>
 				<hr>
 				<h2>Permits</h2>
@@ -2656,33 +2186,14 @@
 					</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_6
 	name = "SOP Volume 5.6: Department Regulations (Command)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.6: Department Regulations (Command)"
-
-/obj/item/book/manual/legal/sop_vol5_6/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.6: Department Regulations (Command)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Command)</h1>
 				<hr>
 				<h2>Vacancy in the chain of command</h2>
@@ -2723,33 +2234,14 @@
 				Due to concerns regarding the hazardous nature of Command duties and the volatile nature of Vox biology, Central Command has determined that the following race – Vox – may not be employed on any Nanotrasen facility Command team, barring the following provisions: Vox may be employed as Chief Engineer, Chief Medical Officer, or Research Director. Prohibited Vox Command positions follow: Colony Director, Head of Security, or Head of Personnel. Transfer to the proscribed Command departments after the assignment of another Departmental role is equally unlawful. This ruling may be appealed in the future.<BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sop_vol5_7
 	name = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
 	icon_state = "sop_se_vol5"
-	author = "Nanotrasen"
-	title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
-
-/obj/item/book/manual/legal/sop_vol5_7/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
+	starting_content = {"
 				<h1>Volume Five: Department Regulations (Internal Affairs)</h1>
 				<hr>
 				<h2>Impartiality Clause</h2>
@@ -2859,33 +2351,14 @@
 				If an employee wishes to reserve company property, or to invite employees to an event that does not take place on company property, Internal Affairs should help plan and coordinate with the heads of staff and Central Command in order to ensure these events run smoothly. Often times, events that have been approved by Central Command will be broadcast on the channel of the Nanotrasen Chatroom App specific to your site of employment.<BR><BR>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Standard Operating Procedure at the time of its publication. Standing policy is that the most recent amendments to Standard Operating Procedure are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/cr_vol1
 	name = "Corporate Regulations Volume 1: Introduction"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 1: Introduction"
-
-/obj/item/book/manual/legal/cr_vol1/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 1: Introduction"
+	starting_content = {"
 				<h1>Corporate Regulations Volume One: Introduction</h1>
 				<hr>
 				<h2>What are Corporate Regulations?</h2>
@@ -2991,34 +2464,15 @@
 				</ul>
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
-
-				</body>
-			</html>
 			"}
 
 
 /obj/item/book/manual/legal/cr_vol2
 	name = "Corporate Regulations Volume 2: Infractions (Low)"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 2: Infractions (Low)"
-
-/obj/item/book/manual/legal/cr_vol2/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 2: Infractions (Low)"
+	starting_content = {"
 				<h1>Low Level Infractions</h1>
 				<hr>
 				<h2>Definition</h2>
@@ -3251,32 +2705,15 @@
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/cr_vol3
 	name = "Corporate Regulations Volume 3: Infractions (Moderate)"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 3: Infractions (Moderate)"
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 3: Infractions (Moderate)"
 
-/obj/item/book/manual/legal/cr_vol3/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Medium Level Infractions</h1>
 
 				These Infractions carry standard punishments of up to 30 minutes, though typically around 10-15 minutes, and can be set by the arresting officer's discretion. <b>Suggested Sentence</b> values are beside the Infractions. <b>Maximum Penalties</b> can be issued by authorization of Head of Security*, Colony Director, or equivalent (Acting Colony Director), and do not require tribunals unless stated otherwise. However, it is not advisable to do so for a first offense.<BR><BR>
@@ -3449,32 +2886,15 @@
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/cr_vol4
 	name = "Corporate Regulations Volume 4: Infractions (Severe)"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 4: Infractions (Severe)"
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 4: Infractions (Severe)"
 
-/obj/item/book/manual/legal/cr_vol4/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>High Severity Infractions</h1>
 
 				These Infractions generally need to be ruled on by a tribunal as explained further below, and criminals should be held until judgment can be passed. In a few severe circumstances, permanent removal from the station may occur. Central Command must be contacted for permanent removals to be enforced.<BR><BR>
@@ -3574,32 +2994,15 @@
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/cr_vol5
 	name = "Corporate Regulations Volume 5: Supplementals"
 	icon_state = "corpreg_se"
-	author = "Nanotrasen"
-	title = "Corporate Regulations Volume 5: Supplementals"
+	starting_author = "Nanotrasen"
+	starting_title = "Corporate Regulations Volume 5: Supplementals"
 
-/obj/item/book/manual/legal/cr_vol5/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Modifiers & Special Situations</h1>
 
 				These may reduce or increase your sentence depending on circumstances relating to the crimes committed.<BR><BR>
@@ -3700,32 +3103,15 @@
 				<hr>
 				<I><center><small><b>DISCLAIMER:</b> The above document is the most modern representation of the Nanotrasen Corporate Regulations at the time of its publication. Standing policy is that the most recent amendments to Corporate Regulations are the most legally valid. Therefore, in the event that this volume, or any affiliate, conflicts with the most up to date doctrine, the relevant information contained in this volume, or any affiliate, is considered void in the face of the most up to date procedure.</small></center></I>
 
-				</body>
-			</html>
 			"}
 
 /obj/item/book/manual/legal/sdf
 	name = "SDF SOP"
 	icon_state = "corpreg_se"
-	author = "Hadiis Folly"
-	title = "Hadiis Folly Systeme Defense Force Patrol SOP"
+	starting_author = "Hadiis Folly"
+	starting_title = "Hadiis Folly Systeme Defense Force Patrol SOP"
 
-/obj/item/book/manual/legal/sdf/Initialize(mapload)
-	. = ..()
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
-
+	starting_content = {"
 				<h1>Hadiis Folly Systeme Defense Force Patrol SOP</h1>
 				<hr>
 				<h2>Introduction</h2>
@@ -3906,8 +3292,9 @@
 				All arrest and detainment are advised to be communicated to the government via reports.<BR><BR>
 
 
-				</body>
-			</html>
 			"}
 
 
+
+#undef BOOK_WINDOW_BROWSE_SIZE
+#undef WIKI_PAGE_IFRAME

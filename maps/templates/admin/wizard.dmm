@@ -331,7 +331,7 @@
 /area/wizard_station)
 "aP" = (
 /obj/structure/table/woodentable,
-/obj/machinery/librarycomp{
+/obj/machinery/computer/libraryconsole/bookmanagement{
 	pixel_y = 6
 	},
 /turf/unsimulated/floor{

@@ -9237,7 +9237,7 @@
 /area/strelka/dormhallway/pool/sauna/room2)
 "HU" = (
 /obj/structure/table/carbon/reinforced,
-/obj/machinery/librarycomp,
+/obj/machinery/computer/libraryconsole/bookmanagement,
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = 22

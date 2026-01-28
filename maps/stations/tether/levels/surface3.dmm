@@ -13283,7 +13283,7 @@
 /area/rnd/robotics)
 "hYN" = (
 /obj/machinery/fire_alarm/east_mount,
-/obj/machinery/librarypubliccomp,
+/obj/machinery/computer/libraryconsole,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/library)
@@ -18612,7 +18612,7 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
 "lrz" = (
-/obj/machinery/librarycomp,
+/obj/machinery/computer/libraryconsole/bookmanagement,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet,
 /area/library)
