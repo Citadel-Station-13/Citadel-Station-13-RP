@@ -642,11 +642,29 @@
 	. = ..()
 	if(machine_occupant_pod)
 		if(machine_occupant_pod.door_via_context && machine_occupant_pod.supports_opening())
-			#warn impl
+			.["occupant_pod-toggle"] = create_context_menu_tuple(
+				"toggle open",
+				image(src),
+				1,
+				MOBILITY_CAN_USE,
+				FALSE,
+			)
 		else if(machine_occupant_pod.eject_via_context && machine_occupant_pod.is_occupied())
-			#warn impl
+			.["occupant_pod-eject"] = create_context_menu_tuple(
+				"eject",
+				image(src),
+				1,
+				MOBILITY_CAN_USE,
+				FALSE,
+			)
 		else if(machine_occupant_pod.enter_via_context && !machine_occupant_pod.is_occupied())
-			#warn impl
+			.["occupant_pod-enter"] = create_context_menu_tuple(
+				"enter",
+				image(src),
+				1,
+				MOBILITY_CAN_USE,
+				FALSE,
+			)
 
 /obj/machinery/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
@@ -656,17 +674,17 @@
 		if("occupant_pod-toggle")
 			if(!machine_occupant_pod.door_via_context || !machine_occupant_pod.supports_opening())
 				return TRUE
-			#warn impl
+			machine_occupant_pod.user_toggle_context(e_args)
 			return TRUE
 		if("occupant_pod-eject")
 			if(!machine_occupant_pod.eject_via_context || !machine_occupant_pod.is_occupied())
 				return TRUE
-			#warn impl
+			machine_occupant_pod.user_eject_context(e_args)
 			return TRUE
 		if("occupant_pod-enter")
 			if(!machine_occupant_pod.enter_via_context || machine_occupant_pod.is_occupied())
 				return TRUE
-			#warn impl
+			machine_occupant_pod.user_enter_context(e_args)
 			return TRUE
 
 /obj/machinery/contents_resist(mob/escapee)
@@ -674,15 +692,15 @@
 	if(.)
 		return
 	if(machine_occupant_pod)
-		if(machine_occupant_pod.eject_via_resist)
+		if(machine_occupant_pod.eject_via_resist && machine_occupant_pod.occupant == escapee)
 			machine_occupant_pod.user_eject_resist(new /datum/event_args/actor(escapee))
 			return TRUE
 
 /obj/machinery/relaymove_from_contents(mob/user, direction)
 	..()
 	if(machine_occupant_pod)
-		if(machine_occupant_pod.eject_via_move)
-			machine_occupant_pod.user_eject_move(new /datum/event_args/actor(escapee))
+		if(machine_occupant_pod.eject_via_move && machine_occupant_pod.occupant == user)
+			machine_occupant_pod.user_eject_move(new /datum/event_args/actor(user))
 
 //* Some common inventory helpers *//
 
@@ -705,7 +723,7 @@
 		// todo: probably split this proc into something that isn't try
 		// because if this fails and something nulls, something bad happens
 		// i bandaided this to drop location but that's inflexible
-		return object.inv_inside == user.inventory
+		return item.inv_inside == user.inventory
 	else
-		object.forceMove(drop_location())
+		item.forceMove(drop_location())
 		return FALSE

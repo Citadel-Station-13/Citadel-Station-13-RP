@@ -151,6 +151,7 @@
 
 /obj/machinery/resleeving/body_printer/drop_products(method, atom/where)
 	. = ..()
+	materials.dump_everything(where)
 	#warn drop materials
 
 /obj/machinery/resleeving/body_printer/Exited(atom/movable/AM, atom/newLoc)
@@ -436,13 +437,13 @@
 		. += avail
 
 /obj/machinery/resleeving/body_printer/proc/materials_get_amounts()
-	return materials.stored
+	return src.materials.stored
 
 /obj/machinery/resleeving/body_printer/proc/materials_has_amounts(list/materials)
-	return materials.has_multiple(materials) >= 1
+	return src.materials.has_multiple(materials) >= 1
 
 /obj/machinery/resleeving/body_printer/proc/materials_use_amounts(list/materials)
-	return materials.use(materials, 1)
+	return src.materials.use(materials, 1)
 
 //* ADMIN VV WRAPPERS *//
 

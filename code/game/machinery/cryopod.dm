@@ -440,12 +440,12 @@
 		if(W.preserve_item)
 			preserve = TRUE
 
-		if(istype(W,/obj/item/implant/health))
-			for(var/obj/machinery/computer/cloning/com in GLOB.machines)
-				for(var/datum/dna2/record/R in com.records)
-					if(locate(R.implant) == W)
-						qdel(R)
-						qdel(W)
+		// if(istype(W,/obj/item/implant/health))
+		// 	for(var/obj/machinery/computer/cloning/com in GLOB.machines)
+		// 		for(var/datum/dna2/record/R in com.records)
+		// 			if(locate(R.implant) == W)
+		// 				qdel(R)
+		// 				qdel(W)
 
 		if(!preserve)
 			qdel(W)

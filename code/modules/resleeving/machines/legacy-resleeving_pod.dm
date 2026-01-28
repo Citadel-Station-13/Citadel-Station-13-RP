@@ -23,24 +23,6 @@
 	user << browse(HTML_SKELETON(dat), "window=resleever")
 	onclose(user, "resleever")
 
-/obj/machinery/resleeving/resleeving_pod/attackby(obj/item/W, mob/user)
-	src.add_fingerprint(user)
-	if(default_deconstruction_screwdriver(user, W))
-		return
-	if(default_deconstruction_crowbar(user, W))
-		return
-	if(default_part_replacement(user, W))
-		return
-	if(istype(W, /obj/item/grab))
-		var/obj/item/grab/G = W
-		if(!ismob(G.affecting))
-			return
-		var/mob/M = G.affecting
-		if(put_mob(M))
-			qdel(G)
-			src.updateUsrDialog()
-			return //Don't call up else we'll get attack messsages
-
 /obj/machinery/resleeving/resleeving_pod/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user)
 	if(!istype(O))
 		return FALSE //not a mob
@@ -86,11 +68,6 @@
 	if(override)
 		original_occupant = occupant
 		occupant = override
-
-	if(MR.one_time)
-		var/how_long = round((world.time - MR.last_update)/10/60)
-		to_chat(occupant,SPAN_DANGER("Your mind backup was a 'one-time' backup. \
-		You will not be able to remember anything since the backup, [how_long] minutes ago."))
 
 	// If it was a custom sleeve (not owned by anyone), update namification sequences
 	if(!occupant.original_player)

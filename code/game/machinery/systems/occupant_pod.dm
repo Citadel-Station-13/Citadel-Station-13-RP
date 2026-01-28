@@ -75,7 +75,16 @@
 	return user_eject(actor, silent)
 
 /datum/machinery_system/occupant_pod/proc/user_eject(datum/event_args/actor/actor, silent)
-	#warn impl
+	if(!actor.performer.Reachability(src))
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("You can't reach [src]."),
+				target = src,
+			)
+		return FALSE
+	if(!check_mutable(actor, silent))
+		return FALSE
+	return eject(null, actor, silent)
 
 /datum/machinery_system/occupant_pod/proc/user_toggle_click(datum/event_args/actor/actor, silent)
 	return user_toggle(actor, silent)
@@ -91,41 +100,77 @@
 /datum/machinery_system/occupant_pod/proc/user_close(datum/event_args/actor/actor, silent)
 	#warn impl
 
+/datum/machinery_system/occupant_pod/proc/check_mutable(datum/event_args/actor/actor, silent)
+	. = TRUE
+	if(!parent.machinery_occupant_pod_mutable(src, ., actor, silent))
+		return FALSE
+
 /**
  * * Implicitly ejects if anyone's inside.
  */
 /datum/machinery_system/occupant_pod/proc/open(datum/event_args/actor/actor, silent)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(open_state != FALSE)
+		return FALSE
 
 /datum/machinery_system/occupant_pod/proc/on_open(datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
 
 /datum/machinery_system/occupant_pod/proc/close(datum/event_args/actor/actor, silent)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(open_state != TRUE)
+		return FALSE
 
 /datum/machinery_system/occupant_pod/proc/on_close(datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
 
 /datum/machinery_system/occupant_pod/proc/insert(mob/entity, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(occupant)
+		return FALSE
 
 /datum/machinery_system/occupant_pod/proc/on_insert(mob/entity, datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
 
 /datum/machinery_system/occupant_pod/proc/eject(atom/new_loc = host.drop_location(), datum/event_args/actor/actor, silent)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(!occupant)
+		return FALSE
 
 /datum/machinery_system/occupant_pod/proc/on_eject(mob/entity, datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
 
 #warn impl all
 
 /obj/machinery/proc/machinery_occupant_pod_opened(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/machinery/proc/machinery_occupant_pod_closed(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/machinery/proc/machinery_occupant_pod_entered(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/machinery/proc/machinery_occupant_pod_exited(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /obj/machinery/proc/machinery_occupant_pod_accepts(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * Checks if the occupant pod can be interacted with **at all** (including open/close)
  */
-/obj/machinery/proc/machinery_occupant_pod_mutable(atom/movable/entity, datum/machinery_system/occupant_pod/pod, pod_opinion, datum/event_args/actor/actor, silent)
+/obj/machinery/proc/machinery_occupant_pod_mutable(datum/machinery_system/occupant_pod/pod, pod_opinion, datum/event_args/actor/actor, silent)
+	SHOULD_NOT_SLEEP(TRUE)
 
 //* -- Lazy init wrapers -- *//
 

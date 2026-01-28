@@ -23,6 +23,7 @@
 
 /obj/item/mirrortool/update_icon_state()
 	icon_state = inserted_mirror ? "mirrortool_loaded" : "mirrortool"
+	return ..()
 
 /obj/item/mirrortool/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
@@ -59,7 +60,7 @@
 		"body_recorded" = inserted_mirror.recorded_body ? list(
 			"gender" = inserted_mirror.recorded_body.legacy_gender || "Unknown",
 			"species" = inserted_mirror.recorded_body.legacy_custom_species_name || inserted_mirror.recorded_body.legacy_species_uid || "Unknown",
-			"synthetic" = !!inserted_mirror.legacy_synthetic,
+			"synthetic" = !!inserted_mirror.recorded_body.legacy_synthetic,
 		) : null,
 		"mind_recorded" = inserted_mirror.recorded_body ? list(
 			"recorded_name" = inserted_mirror.recorded_mind.user_name,
