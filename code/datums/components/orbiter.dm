@@ -129,9 +129,9 @@
 /datum/component/orbiter/proc/end_orbit(atom/movable/orbiter, refreshing=FALSE)
 	if(!orbiter_list[orbiter])
 		return
-	UnregisterSignal(orbiter, list(COMSIG_MOVABLE_MOVED /*, COMSIG_ATOM_BEFORE_SHUTTLE_MOVE, COMSIG_ATOM_AFTER_SHUTTLE_MOVE */))
-	// SEND_SIGNAL(parent, COMSIG_ATOM_ORBIT_STOP, orbiter) // on tg used by ghost player plays
-	orbiter.SpinAnimation(0, 0)
+	UnregisterSignal(orbiter, COMSIG_MOVABLE_MOVED)
+	// SEND_SIGNAL(parent, COMSIG_ATOM_ORBIT_STOP, orbiter)
+	orbiter.SpinAnimation(0, 0, parallel = FALSE)
 	if(istype(orbiter_list[orbiter],/matrix)) //This is ugly.
 		orbiter.transform = orbiter_list[orbiter]
 	orbiter_list -= orbiter

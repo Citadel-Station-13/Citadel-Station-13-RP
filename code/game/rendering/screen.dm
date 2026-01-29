@@ -45,3 +45,9 @@
 	if(hud_legacy?.mymob && user != hud_legacy.mymob)
 		return FALSE
 	return TRUE
+
+/atom/movable/screen/examine(mob/user)
+	return list()
+
+/atom/movable/screen/orbit()
+	return

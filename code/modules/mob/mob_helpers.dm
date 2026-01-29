@@ -192,11 +192,21 @@
 		return pick(base_miss_chance)
 	return zone
 
+///Find if the message has the real name of any user mob in the mob_list
 /proc/findname(msg)
-	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == "[msg]")
-			return 1
+	if(!istext(msg))
+		msg = "[msg]"
+	for(var/i in GLOB.mob_list)
+		var/mob/M = i
+		if(M.real_name == msg)
+			return M
 	return 0
+
+///Returns a mob's real name between brackets. Useful when you want to display a mob's name alongside their real name
+/mob/proc/get_realname_string()
+	if(real_name && real_name != name)
+		return " \[[real_name]\]"
+	return ""
 
 /mob/proc/abiotic(full_body)
 	return FALSE

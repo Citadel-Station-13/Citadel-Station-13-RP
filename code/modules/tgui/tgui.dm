@@ -169,8 +169,10 @@
 	else
 		window.send_message("ping")
 	var/flush_queue = FALSE
+	// send_assets()
 	flush_queue |= window.send_asset(/datum/asset_pack/simple/fontawesome)
 	flush_queue |= window.send_asset(/datum/asset_pack/simple/tgfont)
+	flush_queue |= window.send_asset(/datum/asset_pack/json/icon_ref_map)
 	// prep assets
 	var/list/assets_immediate = list()
 	var/list/assets_deferred = list()

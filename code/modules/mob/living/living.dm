@@ -45,6 +45,7 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 			if(!QDELING(src))
 				init_vore()
 	//*        END         *//
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /mob/living/Destroy()
 	if(source_spawner)

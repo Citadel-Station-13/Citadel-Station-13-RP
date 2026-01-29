@@ -117,10 +117,10 @@
 /obj/machinery/power/supermatter/Initialize(mapload)
 	. = ..()
 	uid = gl_uid++
-
 	countdown = new(src)
 	countdown.start()
 	soundloop = new(list(src), TRUE)
+	SSpoints_of_interest.make_point_of_interest(src)
 
 	history["integrity_history"] = list()
 	history["EER_history"] = list()

@@ -35,6 +35,7 @@
 	if(. == INITIALIZE_HINT_QDEL)
 		return
 
+	SSpoints_of_interest.make_point_of_interest(src)
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
 	//! legacy: make a 1-z sector if we spawned on a level without an entity, and without a struct. !//
