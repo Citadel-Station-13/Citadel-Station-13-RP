@@ -429,7 +429,7 @@
 	var/atom/old_loc = loc
 	var/direction = get_dir(old_loc, new_loc)
 	loc = new_loc
-	Moved(old_loc, direction, TRUE, momentum_change = FALSE)
+	Moved(old_loc, direction, TRUE)
 
 /**
  * Make sure you know what you're doing if you override or call this.
