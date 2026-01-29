@@ -51,6 +51,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	var/list/obj/machinery/airlock_peripheral/peripherals
 	/// our airlock program
 	var/datum/airlock_program/program
+
 /obj/machinery/airlock_component/controller/Initialize(mapload)
 	..()
 	// todo: we need proper tick bracket machine support & fastmos
@@ -91,9 +92,12 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 		network.controller = null
 		network.queue_recheck()
 
+#warn call this on start/stop cycle
 /obj/machinery/airlock_component/controller/update_icon(updates)
+	cut_overlays()
 	. = ..()
-	#warn impl - operating
+	if(system?.cycling)
+		add_overlay("[base_icon_state]-op-green")
 
 /**
  * @return TRUE success, FALSE failure
