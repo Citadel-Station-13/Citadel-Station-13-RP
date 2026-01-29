@@ -52,6 +52,17 @@
 		return
 	if(istype(target, /obj/item/organ/internal/mirror))
 		var/obj/item/organ/internal/mirror/mirror = target
+		#warn impl
+	else if(ismob(target))
+		var/mob/casted_mob = target
+		if(casted_mob.resleeving_supports_mirrors())
+			if(casted_mob.resleeving_get_mirror())
+				#warn remove
+			else
+				#warn insert if possible
+		else
+			#warn error msg
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/mirrortool/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
@@ -61,11 +72,26 @@
 		user_remove_mirror(clickchain)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
+/obj/item/mirrortool/proc/yank_mirror_from_mob(mob/target, datum/event_args/actor/actor, silent) as /obj/item/organ/internal/mirror
+	#warn impl
+
+/obj/item/mirrortool/proc/inject_mirror_into_mob(mob/target, datum/event_args/actor/actor, silent)
+	var/obj/item/organ/internal/mirror/inserting_mirror = inserted_mirror
+	#warn impl
+
 /obj/item/mirrortool/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "items/Mirrortool")
+		ui.open()
 
 /obj/item/mirrortool/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("insert")
+		if("eject")
 
 /obj/item/mirrortool/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -75,17 +101,7 @@
 	push_ui_data(data = list("mirror" = ui_serialize_mirror))
 
 /obj/item/mirrortool/proc/ui_serialize_mirror()
-	return inserted_mirror ? list(
-		"activated" = !!inserted_mirror.owner_mind_ref,
-		"body_recorded" = inserted_mirror.recorded_body ? list(
-			"gender" = inserted_mirror.recorded_body.legacy_gender || "Unknown",
-			"species" = inserted_mirror.recorded_body.legacy_custom_species_name || inserted_mirror.recorded_body.legacy_species_uid || "Unknown",
-			"synthetic" = !!inserted_mirror.recorded_body.legacy_synthetic,
-		) : null,
-		"mind_recorded" = inserted_mirror.recorded_body ? list(
-			"recorded_name" = inserted_mirror.recorded_mind.user_name,
-		) : null,
-	) : null
+	return inserted_mirror ? inserted_mirror.ui_serialize_mirror() : null
 
 /obj/item/mirrortool/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()
@@ -121,45 +137,45 @@
 
 #warn below
 
-/obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	var/mob/living/carbon/human/H = target
-	if(user.zone_sel.selecting == BP_TORSO && imp == null)
-		if(imp == null && H.mirror)
-			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
-			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
-			user.do_attack_animation(H)
-			var/turf/T1 = get_turf(H)
-			if (T1 && ((H == user) || do_after(user, 20)))
-				if(user && H && (get_turf(H) == T1) && src)
-					H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
-					add_attack_logs(user,H,"Mirror removed by [user]")
-					src.imp = H.mirror
-					H.mirror = null
-					update_icon()
-		else
-			to_chat(usr, "This person has no mirror installed.")
+// /obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+// 	var/mob/living/carbon/human/H = target
+// 	if(user.zone_sel.selecting == BP_TORSO && imp == null)
+// 		if(imp == null && H.mirror)
+// 			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
+// 			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
+// 			user.do_attack_animation(H)
+// 			var/turf/T1 = get_turf(H)
+// 			if (T1 && ((H == user) || do_after(user, 20)))
+// 				if(user && H && (get_turf(H) == T1) && src)
+// 					H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
+// 					add_attack_logs(user,H,"Mirror removed by [user]")
+// 					src.imp = H.mirror
+// 					H.mirror = null
+// 					update_icon()
+// 		else
+// 			to_chat(usr, "This person has no mirror installed.")
 
-	else if (user.zone_sel.selecting == BP_TORSO && imp != null)
-		if (imp)
-			if(!H.client)
-				to_chat(usr, "Manual mirror transplant into mindless body not supported, please use the resleeving console.")
-				return
-			if(H.mirror)
-				to_chat(usr, "This person already has a mirror!")
-				return
-			if(!H.mirror)
-				H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
-				user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
-				user.do_attack_animation(H)
-				var/turf/T1 = get_turf(H)
-				if (T1 && ((H == user) || do_after(user, 20)))
-					if(user && H && (get_turf(H) == T1) && src && src.imp)
-						H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
-						add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
-						if(imp.handle_implant(H))
-							imp.post_implant(H)
-						src.imp = null
-						update_icon()
-	else
-		to_chat(usr, "You must target the torso.")
-	return CLICKCHAIN_DO_NOT_PROPAGATE
+// 	else if (user.zone_sel.selecting == BP_TORSO && imp != null)
+// 		if (imp)
+// 			if(!H.client)
+// 				to_chat(usr, "Manual mirror transplant into mindless body not supported, please use the resleeving console.")
+// 				return
+// 			if(H.mirror)
+// 				to_chat(usr, "This person already has a mirror!")
+// 				return
+// 			if(!H.mirror)
+// 				H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
+// 				user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
+// 				user.do_attack_animation(H)
+// 				var/turf/T1 = get_turf(H)
+// 				if (T1 && ((H == user) || do_after(user, 20)))
+// 					if(user && H && (get_turf(H) == T1) && src && src.imp)
+// 						H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
+// 						add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
+// 						if(imp.handle_implant(H))
+// 							imp.post_implant(H)
+// 						src.imp = null
+// 						update_icon()
+// 	else
+// 		to_chat(usr, "You must target the torso.")
+// 	return CLICKCHAIN_DO_NOT_PROPAGATE

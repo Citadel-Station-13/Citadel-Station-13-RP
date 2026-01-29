@@ -47,6 +47,17 @@
 	if(from_body)
 		initialize_from_body(from_body)
 
+/**
+ * Standard record for export to compatible TGUI interfaces.
+ * * Struct path: 'interfaces/common/Resleeving.tsx'
+ */
+/datum/resleeving_body_backup/proc/ui_serialize()
+	return list(
+		"gender" = recorded_body.legacy_gender || "Unknown",
+		"speciesName" = recorded_body.legacy_custom_species_name || recorded_body.legacy_species_uid || "Unknown",
+		"synthetic" = !!recorded_body.legacy_synthetic,
+	)
+
 /datum/resleeving_body_backup/proc/initialize_from_body(mob/from_body)
 	// sorry humans only for now
 	if(!ishuman(from_body))

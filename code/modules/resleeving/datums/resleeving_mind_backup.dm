@@ -28,6 +28,15 @@
 	mind_ref = null
 	return ..()
 
+/**
+ * Standard record for export to compatible TGUI interfaces.
+ * * Struct path: 'interfaces/common/Resleeving.tsx'
+ */
+/datum/resleeving_mind_backup/proc/ui_serialize()
+	return list(
+		"recordedName" = recorded_mind.user_name,
+	)
+
 /datum/resleeving_mind_backup/proc/initialize_from_mind(datum/mind/from_mind)
 	src.mind_ref = from_mind.get_mind_ref()
 

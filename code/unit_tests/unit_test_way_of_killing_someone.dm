@@ -5,38 +5,67 @@
 	var/is_ideally_gibbing = FALSE
 	var/is_potentially_destructive = FALSE
 
-/datum/unit_test_way_of_killing_someone/proc/invoke(mob/human)
+/datum/unit_test_way_of_killing_someone/proc/invoke(mob/victim)
+	return FALSE
 
 /datum/unit_test_way_of_killing_someone/a_ton_of_brute_damage
 
+/datum/unit_test_way_of_killing_someone/a_ton_of_brute_damage/invoke(mob/victim)
+
 /datum/unit_test_way_of_killing_someone/a_ton_of_burn_damage
+
+/datum/unit_test_way_of_killing_someone/a_ton_of_burn_damage/invoke(mob/victim)
 
 /datum/unit_test_way_of_killing_someone/immediate_suffocation
 
+/datum/unit_test_way_of_killing_someone/immediate_suffocation/invoke(mob/victim)
+
 /datum/unit_test_way_of_killing_someone/immediate_poisoning
+
+/datum/unit_test_way_of_killing_someone/immediate_poisoning/invoke(mob/victim)
 
 /datum/unit_test_way_of_killing_someone/drop_all_organs
 
+/datum/unit_test_way_of_killing_someone/drop_all_organs/invoke(mob/victim)
+	if(!iscarbon(victim))
+		return FALSE
+
 /datum/unit_test_way_of_killing_someone/qdel_all_organs
+
+/datum/unit_test_way_of_killing_someone/qdel_all_organs/invoke(mob/victim)
+	if(!iscarbon(victim))
+		return FALSE
 
 /datum/unit_test_way_of_killing_someone/gibbing
 	is_ideally_gibbing = TRUE
 
+/datum/unit_test_way_of_killing_someone/gibbing/invoke(mob/victim)
+
 /datum/unit_test_way_of_killing_someone/dusting
 	is_ideally_gibbing = TRUE
+
+/datum/unit_test_way_of_killing_someone/dusting/invoke(mob/victim)
 
 /datum/unit_test_way_of_killing_someone/exploding
 	is_ideally_gibbing = TRUE
 
+/datum/unit_test_way_of_killing_someone/exploding/invoke(mob/victim)
+
 /datum/unit_test_way_of_killing_someone/exploding_but_gently
 	is_ideally_gibbing = TRUE
+
+/datum/unit_test_way_of_killing_someone/exploding_but_gently/invoke(mob/victim)
 
 /datum/unit_test_way_of_killing_someone/actually_exploding
 	is_ideally_gibbing = TRUE
 	is_potentially_destructive = TRUE
 
+/datum/unit_test_way_of_killing_someone/actually_exploding/invoke(mob/victim)
+
 /datum/unit_test_way_of_killing_someone/actually_exploding_but_gently
 	is_ideally_gibbing = TRUE
 	is_potentially_destructive = TRUE
+
+/datum/unit_test_way_of_killing_someone/actually_exploding_but_gently/invoke(mob/victim)
 
 #warn impl all

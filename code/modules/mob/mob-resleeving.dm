@@ -29,6 +29,12 @@
 	return null
 
 /**
+ * inserts the given mirror
+ */
+/mob/proc/resleeving_insert_mirror(obj/item/organ/internal/mirror/mirror)
+	return FALSE
+
+/**
  * * Accepts a `/datum/mind` or `/datum/mind_ref`
  *
  * Sets `mind_resleeving_lock` to a specific mind ref.

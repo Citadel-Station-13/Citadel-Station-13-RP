@@ -25,6 +25,9 @@
 /mob/living/carbon/human/resleeving_get_mirror()
 	return locate(/obj/item/organ/internal/mirror) in internal_organs
 
+/mob/living/carbon/human/resleeving_insert_mirror(obj/item/organ/internal/mirror/mirror)
+	#warn impl
+
 /mob/living/carbon/human/resleeving_remove_mirror(atom/new_loc)
 	var/obj/item/organ/internal/mirror/located = locate() in internal_organs
 	if(!located)

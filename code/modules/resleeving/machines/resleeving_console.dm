@@ -32,7 +32,7 @@
 /obj/machinery/computer/resleeving/Destroy()
 	for(var/obj/machinery/resleeving/linked as anything in linked_resleeving_machinery)
 		unlink_resleeving_machine(linked)
-	remove_held_mirror(where)
+	remove_held_mirror(drop_location())
 	return ..()
 
 /obj/machinery/computer/resleeving/drop_products(method, atom/where)
@@ -71,8 +71,7 @@
 /obj/machinery/computer/resleeving/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "")
-		#warn ui
+		ui = new(user, src, "computers/ResleevingConsole")
 		ui.open()
 
 /obj/machinery/computer/resleeving/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
@@ -105,10 +104,36 @@
 
 	var/list/resleeving_pod_datas = list()
 	var/list/body_printer_datas = list()
+	.["sleevePods"] = resleeving_pod_datas
+	.["bodyPrinters"] = body_printer_datas
 
 	for(var/obj/machinery/resleeving/machine_ref in linked_resleeving_machinery)
 		if(istype(machine_ref, /obj/machinery/resleeving/body_printer))
+			var/obj/machinery/resleeving/body_printer/casted = machine_ref
+			body_printer_datas[++body_printer_datas.len] = list(
+				"ref" = ref(casted),
+				"name" = casted.name,
+				"busy" = casted.currently_growing ? list(
+					"record" = casted.currently_growing.ui_serialize(),
+					"progressRatio" = casted.currently_growing_progress_estimate_ratio,
+				) : null,
+				"allowOrganic" = casted.allow_organic,
+				"allowSynthetic" = casted.allow_synthetic,
+			)
 		else if(istype(machine_ref, /obj/machinery/resleeving/resleeving_pod))
+			var/obj/machinery/resleeving/resleeving_pod/casted = machine_ref
+			var/datum/mind/held_mind = casted.held_mirror?.recorded_mind?.mind_ref?.resolve()
+			var/mob/occupant = casted.machine_occupant_pod?.occupant
+			resleeving_pod_datas[++resleeving_pod_datas.len] = list(
+				"ref" = ref(casted),
+				"name" = casted.name,
+				"occupied" = occupant ? list(
+					"name" = occupant.name,
+					"hasMind" = !!occupant.mind,
+					"compatibleWithMirror" = held_mind && occupant.resleeving_check_mind_belongs(held_mind),
+				) : null,
+				"mirror" = casted.held_mirror?.ui_serialize(),
+			)
 
 /obj/machinery/computer/resleeving/Exited(atom/movable/AM, atom/newLoc)
 	..()

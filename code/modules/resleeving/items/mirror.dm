@@ -38,4 +38,15 @@
 		icon_state = "mirror_implant_f"
 	return ..()
 
+/**
+ * Standard mirror data for export to compatible TGUI interfaces.
+ * * Struct path: 'interfaces/common/Resleeving.tsx'
+ */
+/obj/item/organ/internal/mirror/proc/ui_serialize()
+	return list(
+		"activated" = !!owner_mind_ref,
+		"bodyRecord" = recorded_body?.ui_serialize(),
+		"mindRecord" = recorded_body?.ui_serialize(),
+	)
+
 #warn backup shit
