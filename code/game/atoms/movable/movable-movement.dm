@@ -398,10 +398,10 @@
  * * The old_locs is an optional argument, in case the moved movable was present in multiple locations before the movement.
  * * momentum_change represents whether this movement is due to a "new" force if TRUE or an already "existing" force if FALSE
  **/
-/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
+/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if (!inertia_moving && momentum_change && movement_dir)
+	if (!inertia_moving && movement_dir)
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(movement_dir)
 
