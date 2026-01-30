@@ -1,7 +1,7 @@
 /mob/living/silicon/robot/process_spacemove(drifting, movement_dir, just_checking)
 	// no support for just_checking yet
 	if(module && !just_checking)
-		for(var/obj/item/tank/jetpack/J in module.modules)
+		for(var/obj/item/tank/jetpack/J in get_held_items())
 			if(istype(J, /obj/item/tank/jetpack))
 				if(J.allow_thrust(0.01))
 					return TRUE
