@@ -70,7 +70,7 @@
 			running_tasks -= task
 	poll_or_next_phase(dt)
 	if(!current_phase && !length(pending_phases))
-		#warn finished
+		system.finish_cycle(op_id, "no pending tasks remain")
 
 /datum/airlock_cycling/proc/poll_or_next_phase(dt, safety = 128)
 	if(--safety <= 0)

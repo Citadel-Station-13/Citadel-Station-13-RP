@@ -22,6 +22,7 @@
 /datum/airlock_program/proc/ui_program_act(datum/airlock_system/system, datum/event_args/actor/actor, action, list/params)
 	return FALSE
 
-/datum/airlock_program/proc/on_sensor_button_press(datum/airlock_system/system, datum/event_args/actor/actor, obj/machinery/airlock_peripheral/sensor/sensor)
+/datum/airlock_program/proc/on_sensor_cycle_request(datum/airlock_system/system, obj/machinery/airlock_peripheral/sensor/sensor, datum/event_args/actor/actor)
+	return
 
 #warn base tgui

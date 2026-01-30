@@ -42,7 +42,7 @@
 		return CLICKCHAIN_DID_SOMETHING
 
 /obj/machinery/airlock_peripheral/sensor/proc/on_cycle_request(datum/event_args/actor/actor)
-	#warn impl
+	controller?.on_sensor_cycle_request(src, actor)
 
 /obj/machinery/airlock_peripheral/sensor/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

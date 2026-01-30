@@ -112,6 +112,11 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	if(!isnull(src.airlock_id))
 		GLOB.airlock_controller_lookup[src.airlock_id] = src
 
+/obj/machinery/airlock_component/controller/proc/on_sensor_cycle_request(obj/machinery/airlock_peripheral/sensor/sensor, datum/event_args/actor/actor)
+	if(!system)
+		return
+	program?.on_sensor_cycle_request(system, sensor, actor)
+
 #warn impl all
 
 /obj/machinery/airlock_component/controller/hardmapped

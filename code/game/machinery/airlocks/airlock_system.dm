@@ -32,14 +32,27 @@
 
 #warn impl ui
 /datum/airlock_system/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(src, user, ui)
+	if(!ui)
+		ui = new(src, user, "")
 	. = ..()
 
 /datum/airlock_system/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("programAct")
+			var/p_action = params["action"]
+			var/p_params = params["params"]
+			controller.program?.ui_program_act(src, actor, p_action, p_params)
+			return TRUE
 
 /datum/airlock_system/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["cycling"] = cycling ? cycling.ui_cycle_data() : null
+	.["programTgui"] = controller.program?.tgui_airlock_component
+	.["programData"] = controller.program?.ui_program_data(src)
 
 /datum/airlock_system/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
