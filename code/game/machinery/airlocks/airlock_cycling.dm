@@ -7,6 +7,18 @@
  * * created for use during a discrete cycle operation
  */
 /datum/airlock_cycling
+	/// current op id
+	/// * set by airlock system
+	var/op_id
+	/// next operation cycle
+	var/static/op_id_next = 0
+	/// finished status
+	/// * only set on finish
+	var/finished_status
+	/// finished reason description, if any
+	/// * only set on finish
+	var/finished_reason
+
 	/// blackboard
 	/// * arbitrary k-v list
 	var/list/blackboard = list()
@@ -27,6 +39,11 @@
 	/// * we are done if there's none left
 	/// * This is immutable and stateless from our POV; we do not own references to phases.
 	var/list/datum/airlock_phase/pending_phases = list()
+
+/datum/airlock_cycling/New()
+	op_id = ++op_id_next
+	if(op_id_next >= SHORT_REAL_LIMIT)
+		op_id_next = 0
 
 /datum/airlock_cycling/Destroy()
 	blackboard = null

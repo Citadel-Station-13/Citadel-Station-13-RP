@@ -14,13 +14,8 @@
 	/// current airlock cycle struct
 	/// * if this exists, we are cycling right now
 	var/datum/airlock_cycling/cycling
-	/// operation cycle; airlock cycling is async, operation cycles allow us to ensure
-	/// that an operation is still the same operation something started.
-	var/cycling_op_id
-	/// next operation cycle
-	var/static/cycling_op_id_next = 0
-	/// what to call on finish with (src, cycling_id: id, status: AIRLOCK_CYCLE_FIN_* define, why: short string reason or null)
-	var/datum/callback/cycling_op_on_finish
+	/// what to call on finish with (src, datum/airlock_cycling/cycling)
+	var/datum/callback/cycling_on_finish
 
 	//* State *//
 	/// arbitrary blackboard
@@ -35,6 +30,7 @@
 	QDEL_NULL(controller)
 	return ..()
 
+#warn impl ui
 /datum/airlock_system/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	. = ..()
 
@@ -52,15 +48,32 @@
  * @return null if failed, cycle id otherwise
  */
 /datum/airlock_system/proc/start_cycle(datum/airlock_cycle/cycle, datum/callback/on_finished)
-	if(src.cycle)
+	if(cycling)
 		return FALSE
+	cycling_on_finish = on_finished
+	#warn impl
 
+/**
+ * @return TRUE if cycling with given ID is stopped, FALSE otherwise
+ */
 /datum/airlock_system/proc/stop_cycle(cycling_id, status, why_str)
 	controller.network?.reset_pumping_graphics()
 
+	if(!cycling)
+		return FALSE
+	if(cycling_id && cycling_id != cycling.op_id)
+		return FALSE
+	cycling.finished_status = status
+	cycling.finished_reason = why_str
+	cycling_on_finish?.InvokeAsync(src, cycling)
+	QDEL_NULL(cycling)
+	return TRUE
+
 /datum/airlock_system/proc/abort_cycle(cycling_id, why_str)
+	return stop_cycle(cycling_id, AIRLOCK_CYCLE_FIN_ABORTED, why_str)
 
 /datum/airlock_system/proc/fail_cycle(cycling_id, why_str)
+	return stop_cycle(cycling_id, AIRLOCK_CYCLE_FIN_FAILED, why_str)
 
-
-#warn impl
+/datum/airlock_system/proc/finish_cycle(cycling_id, why_str)
+	return stop_cycle(cycling_id, AIRLOCK_CYCLE_FIN_SUCCESS, why_str)

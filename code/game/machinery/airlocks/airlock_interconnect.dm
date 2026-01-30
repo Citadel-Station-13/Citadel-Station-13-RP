@@ -20,13 +20,38 @@
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
+	if(isturf(target))
+		if(clickchain.performer.transfer_item_to_loc(src, target))
+			clickchain.chat_feedback(SPAN_NOTICE("You place down [src]."), target = src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
 /obj/item/airlock_interconnect/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
 	. = ..()
 	if(.)
 		return
-
-#warn impl
+	if(!isturf(loc))
+		e_args.chat_feedback(
+			SPAN_WARNING("[src] must be on the floor to be attached."),
+			target = src,
+		)
+		return TRUE
+	if(locate(/obj/structure/airlock_interconnect) in loc)
+		e_args.chat_feedback(
+			SPAN_WARNING("There's already another interconnect on [loc]."),
+			target = src,
+		)
+		return TRUE
+	if(!use_wrench(I, e_args, flags, 0, 1, TOOL_USAGE_BUILDING_FRAMEWORK))
+		return TRUE
+	e_args.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] wrenches down [src]."),
+		otherwise_self = SPAN_NOTICE("You wrench down [src]."),
+	)
+	log_construction(e_args, src, "secured at [COORD(loc)]")
+	new /obj/structure/airlock_interconnect(loc)
+	qdel(src)
 
 /obj/structure/airlock_interconnect
 	name = "airlock interconnect"
@@ -69,6 +94,20 @@
 	. = ..()
 	if(.)
 		return
+
+/obj/structure/airlock_interconnect/update_icon()
+	. = ..()
+	// TODO: proper icon smoothing pls
+	if(!connected_dirs)
+		icon_state = "conduit-0"
+	else if(connected_dirs == (NORTH|SOUTH|EAST|WEST))
+		icon_state = "conduit-4"
+	else if(ISDIAGONALDIR(connected_dirs))
+		dir = connected_dirs
+	else if((connected_dirs == (NORTH|SOUTH)) || (connected_dirs == (EAST|WEST)))
+		icon_state = "conduit-2"
+
+	if(connected_dirs )
 
 #warn impl
 
