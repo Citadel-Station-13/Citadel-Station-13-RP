@@ -94,22 +94,12 @@
 	. = ..()
 	if(.)
 		return
+#warn impl
 
 /obj/structure/airlock_interconnect/update_icon()
 	. = ..()
 	// TODO: proper icon smoothing pls
-	if(!connected_dirs)
-		icon_state = "conduit-0"
-	else if(connected_dirs == (NORTH|SOUTH|EAST|WEST))
-		icon_state = "conduit-4"
-	else if(ISDIAGONALDIR(connected_dirs))
-		dir = connected_dirs
-	else if((connected_dirs == (NORTH|SOUTH)) || (connected_dirs == (EAST|WEST)))
-		icon_state = "conduit-2"
-
-	if(connected_dirs )
-
-#warn impl
+	icon_state = "conduit-[connected_dirs]"
 
 /obj/structure/airlock_interconnect/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	..()
