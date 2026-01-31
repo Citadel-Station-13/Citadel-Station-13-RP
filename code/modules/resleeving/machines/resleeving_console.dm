@@ -130,6 +130,7 @@
 				"occupied" = occupant ? list(
 					"name" = occupant.name,
 					"hasMind" = !!occupant.mind,
+					"stat" = occupant.stat == CONSCIOUS ? "conscious" : (occupant.stat == DEAD ? "dead" : "unconscious"),
 					"compatibleWithMirror" = held_mind && occupant.resleeving_check_mind_belongs(held_mind),
 				) : null,
 				"mirror" = casted.held_mirror?.ui_serialize(),

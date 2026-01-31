@@ -20,6 +20,7 @@ interface LinkedSleever {
     name: string;
     hasMind: BooleanLike;
     compatibleWithMirror: BooleanLike;
+    stat: "conscious" | "dead" | "unconscious";
   };
   mirror: null | ResleevingMirrorData;
 };
