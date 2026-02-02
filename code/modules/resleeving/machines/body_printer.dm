@@ -474,9 +474,11 @@
 	progress_recalc_last_time = world.time
 
 	if(progress_recalc_strikes > progress_recalc_strike_limit)
-		#warn throw out
+		send_audible_system_message("Ejecting body due to lack of progress. The pod has likely stalled!")
+		eject_body()
 	else if(ratio > c_eject_at_health_ratio)
-		#warn impl
+		send_audible_system_message("Entity construction cycle complete.")
+		eject_body()
 
 /obj/machinery/resleeving/body_printer/process(delta_time)
 	if(!currently_growing)
@@ -503,8 +505,6 @@
 		// in the future we can have this be every tick if needed
 		if(elapsed > 0)
 			grow_body(elapsed * 0.1)
-
-	#warn impl
 
 // TODO: emag behavior?
 

@@ -110,7 +110,7 @@
 		if(!silent)
 			actor?.chat_feedback(
 				SPAN_WARNING("[is_self ? "[inserting]" : ""] does not fit in [src]."),
-				target = src,
+				target = parent,
  			)
 		return FALSE
 	return TRUE
@@ -178,14 +178,14 @@
 		return FALSE
 	if(!user_common_checks(actor, silent, suppressed))
 		return FALSE
-	#warn impl
+	return open(actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/user_close(datum/event_args/actor/actor, silent, suppressed)
 	if(!check_mutable(actor, silent, suppressed))
 		return FALSE
 	if(!user_common_checks(actor, silent, suppressed))
 		return FALSE
-	#warn impl
+	return close(actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/check_mutable(datum/event_args/actor/actor, silent, suppressed, ejecting)
 	. = TRUE
@@ -198,8 +198,26 @@
 /datum/machinery_system/occupant_pod/proc/open(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(open_state != FALSE)
-		return FALSE
+	switch(open_state)
+		if(null)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[parent] doesn't support being opened / closed. How did you get here?"),
+					target = parent,
+				)
+			return FALSE
+		if(TRUE)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[parent] is already open."),
+					target = parent,
+				)
+			return FALSE
+	eject(parent.drop_location(), actor, TRUE, TRUE)
+	open_state = TRUE
+	parent.machinery_occupant_pod_opened(src, actor, silent, suppressed)
+	on_open(actor, silent, suppressed)
+	return TRUE
 
 /datum/machinery_system/occupant_pod/proc/on_open(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
@@ -207,8 +225,25 @@
 /datum/machinery_system/occupant_pod/proc/close(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(open_state != TRUE)
-		return FALSE
+	switch(open_state)
+		if(null)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[parent] doesn't support being opened / closed. How did you get here?"),
+					target = parent,
+				)
+			return FALSE
+		if(FALSE)
+			if(!silent)
+				actor?.chat_feedback(
+					SPAN_WARNING("[parent] is already closed."),
+					target = parent,
+				)
+			return FALSE
+	open_state = FALSE
+	parent.machinery_occupant_pod_closed(src, actor, silent, suppressed)
+	on_close(actor, silent, suppressed)
+	return TRUE
 
 /datum/machinery_system/occupant_pod/proc/on_close(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
@@ -217,7 +252,13 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(occupant)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[parent] already has someone occupying it."),
+				target = parent,
+			)
 		return FALSE
+	#warn impl
 
 /datum/machinery_system/occupant_pod/proc/on_insert(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
@@ -226,18 +267,22 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!occupant)
+		if(!silent)
+			actor?.chat_feedback(
+				SPAN_WARNING("[parent] doesn't have anyone occupying it."),
+				target = parent,
+			)
 		return FALSE
+	#warn impl
 
 /datum/machinery_system/occupant_pod/proc/on_eject(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 
-#warn impl all with feedback
-
-/obj/machinery/proc/machinery_occupant_pod_opened(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
+/obj/machinery/proc/machinery_occupant_pod_opened(datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/obj/machinery/proc/machinery_occupant_pod_closed(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
+/obj/machinery/proc/machinery_occupant_pod_closed(datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 

@@ -22,7 +22,7 @@
 /obj/machinery/resleeving/resleeving_pod/Initialize(mapload)
 	. = ..()
 	update_icon()
-	init_occupant_pod_openable()
+	init_occupant_pod_default_openable()
 
 /obj/machinery/resleeving/resleeving_pod/Destroy()
 	if(held_mirror)
