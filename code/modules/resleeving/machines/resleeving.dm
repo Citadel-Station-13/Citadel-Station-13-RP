@@ -10,6 +10,11 @@
 	unlink_console()
 	return ..()
 
+/obj/machinery/resleeving/examine(mob/user, dist)
+	. = ..()
+	if(can_be_unanchored)
+		. += SPAN_NOTICE("[src] can be unanchored with a <b>wrench</b>.")
+
 /obj/machinery/resleeving/proc/link_console(obj/machinery/computer/resleeving/console)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(linked_console)
@@ -60,5 +65,30 @@
 		// TODO: implement on machinery base / rped
 		if(default_part_replacement(clickchain.performer, using))
 			return CLICKCHAIN_DID_SOMETHING
+
+/obj/machinery/resleeving/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args, list/hint_images)
+	. = list()
+	if(can_be_unanchored)
+		if(anchored)
+			.[TOOL_WRENCH] = list(
+				"Unsecure" = dyntool_image_backward(TOOL_WRENCH),
+			)
+		else
+			.[TOOL_WRENCH] = list(
+				"Secure" = dyntool_image_forward(TOOL_WRENCH),
+			)
+
+	return merge_double_lazy_assoc_list(., ..())
+
+/obj/machinery/resleeving/wrench_act(obj/item/I, datum/event_args/actor/clickchain/e_args, flags, hint)
+	. = ..()
+	if(.)
+		return
+	if(!can_be_unanchored)
+		e_args.chat_feedback(
+			SPAN_WARNING("[src] cannot be un/anchored."),
+			target = src,
+		)
+		return TRUE
 
 #warn impl unanchoring

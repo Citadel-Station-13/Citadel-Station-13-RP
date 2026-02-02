@@ -57,11 +57,18 @@
 		var/mob/casted_mob = target
 		if(casted_mob.resleeving_supports_mirrors())
 			if(casted_mob.resleeving_get_mirror())
-				#warn remove
+				user_yank_mirror_from_mob(target, clickchain)
+				return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 			else
-				#warn insert if possible
+				user_inject_mirror_into_mob(target, clickchain)
+				return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		else
-			#warn error msg
+			clickchain.visible_feedback(
+				target = target,
+				range = MESSAGE_RANGE_ITEM_HARD,
+				visible = SPAN_WARNING("[clickchain.performer] briefly points [src] at [target]'s spine."),
+				otherwise_self = SPAN_WARNING("[src] makes a beep as you pass it over [target]'s spine. They are not compatible with mirrors."),
+			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/mirrortool/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -71,6 +78,13 @@
 	if(clickchain.initiator.is_holding_inactive(src))
 		user_remove_mirror(clickchain)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+/obj/item/mirrortool/proc/user_yank_mirror_from_mob(mob/target, datum/event_args/actor/actor, silent) as /obj/item/organ/internal/mirror
+	#warn impl
+
+/obj/item/mirrortool/proc/user_inject_mirror_into_mob(mob/target, datum/event_args/actor/actor, silent)
+	var/obj/item/organ/internal/mirror/inserting_mirror = inserted_mirror
+	#warn impl
 
 /obj/item/mirrortool/proc/yank_mirror_from_mob(mob/target, datum/event_args/actor/actor, silent) as /obj/item/organ/internal/mirror
 	#warn impl
@@ -120,7 +134,16 @@
 /obj/item/mirrortool/proc/user_remove_mirror(datum/event_args/actor/actor, put_in_hands = TRUE)
 	#warn impl
 
-/obj/item/mirrortool/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor)
+/obj/item/mirrortool/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor) as /obj/item/organ/internal/mirror
+	if(!inserted_mirror)
+		return null
+	var/obj/item/organ/internal/mirror/old_mirror = inserted_mirror
+	#warn impl
+
+	if(old_mirror.loc == src && new_loc)
+		old_mirror.forceMove(new_loc)
+	on_mirror_removed(old_mirror)
+	return old_mirror
 
 /obj/item/mirrortool/proc/on_mirror_removed(obj/item/organ/internal/mirror/mirror)
 	ui_update_mirror()
@@ -130,6 +153,14 @@
 	#warn impl
 
 /obj/item/mirrortool/proc/insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
+	if(inserted_mirror)
+		return FALSE
+	if(mirror.loc != src)
+		mirror.forceMove(src)
+	#warn impl
+
+	on_mirror_inserted(mirror)
+	return TRUE
 
 /obj/item/mirrortool/proc/on_mirror_inserted(obj/item/organ/internal/mirror/mirror)
 	ui_update_mirror()
