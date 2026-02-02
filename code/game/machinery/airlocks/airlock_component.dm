@@ -5,6 +5,8 @@
 	name = "airlock component"
 	desc = "A detached component for a modular airlock."
 	#warn impl all
+	w_class = WEIGHT_CLASS_NORMAL
+	weight_volume = WEIGHT_VOLUME_SMALL
 
 	var/machine_type = /obj/machinery/airlock_component
 

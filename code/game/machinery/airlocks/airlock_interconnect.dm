@@ -9,6 +9,7 @@
 	icon = 'icons/machinery/airlocks/airlock_interconnect.dmi'
 	icon_state = "conduit-item"
 	w_class = WEIGHT_CLASS_NORMAL
+	weight_volume = WEIGHT_VOLUME_SMALL
 	max_amount = 30
 
 /obj/item/stack/airlock_interconnect/dynamic_tool_query(obj/item/I, datum/event_args/actor/clickchain/e_args)
@@ -60,7 +61,6 @@
 /obj/structure/airlock_interconnect
 	name = "airlock interconnect"
 	desc = "A tightly bundled set of conduits used to connect the parts of an airlock together."
-	#warn sprite
 	icon = 'icons/machinery/airlocks/airlock_interconnect.dmi'
 	icon_state = "conduit-map"
 
@@ -123,7 +123,6 @@
 
 /obj/structure/airlock_interconnect/update_icon()
 	. = ..()
-	// TODO: proper icon smoothing pls
 	icon_state = "conduit-[connected_dirs]"
 
 /obj/structure/airlock_interconnect/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
@@ -178,6 +177,7 @@
 		if(hardmapped != int.hardmapped)
 			continue
 		. += int
+	var/new_connected_dirs = NONE
 	for(var/dir in GLOB.cardinal)
 		var/turf/int_t = get_step(src, dir)
 		if(!int_t)
@@ -186,6 +186,10 @@
 			if(hardmapped != int.hardmapped)
 				continue
 			. += int
+			new_connected_dirs |= dir
+	if(new_connected_dirs != connected_dirs)
+		connected_dirs = new_connected_dirs
+		update_icon()
 
 /obj/structure/airlock_interconnect/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

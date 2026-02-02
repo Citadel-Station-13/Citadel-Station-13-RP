@@ -8,7 +8,7 @@
 #define AIRLOCK_SIDE_NEUTRAL "neutral"
 #define AIRLOCK_SIDE_BOTH "both"
 
-#warn DEFINE_ENUM for sensor and controller
+// TODO: DECLARE_ENUM for sensor / controller
 
 //* airlock cycler operation return codes *//
 

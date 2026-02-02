@@ -8,7 +8,7 @@
 /datum/airlock_system
 	//* Composition *//
 	/// our airlock controller
-	var/obj/machinery/airlock_component/controller
+	var/obj/machinery/airlock_component/controller/controller
 
 	//* Cycling *//
 	/// current airlock cycle struct
@@ -35,7 +35,7 @@
 	ui = SStgui.try_update_ui(src, user, ui)
 	if(!ui)
 		ui = new(src, user, "")
-	. = ..()
+		ui.open()
 
 /datum/airlock_system/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
