@@ -63,8 +63,8 @@
 	var/c_cloning_sickness_low = 15 MINUTES
 	/// * only applied to non-synths for now
 	var/c_cloning_sickness_high = 22.5 MINUTES
-	/// eject at percent of non-critical maxhealth
-	var/c_eject_at_health_ratio = 0.5
+	/// eject at percent of effective maxhealth
+	var/c_eject_at_health_ratio = 0.75
 
 	/// since when have we been without power
 	/// * null while powered
@@ -97,7 +97,8 @@
 /obj/machinery/resleeving/body_printer/Destroy()
 	QDEL_NULL(materials)
 	if(currently_growing_body)
-		#warn eject occupant
+		eject_body()
+	QDEL_LAZYLIST(bottles)
 	return ..()
 
 /obj/machinery/resleeving/body_printer/RefreshParts()
@@ -152,13 +153,37 @@
 /obj/machinery/resleeving/body_printer/drop_products(method, atom/where)
 	. = ..()
 	materials.dump_everything(where)
-	#warn drop bottles
+	if(bottles)
+		for(var/obj/item/I in bottles)
+			I.forceMove(where)
+		bottles = null
 
 /obj/machinery/resleeving/body_printer/Exited(atom/movable/AM, atom/newLoc)
 	..()
 	if(AM == currently_growing_body)
 		eject_body(do_not_move = TRUE)
-		#warn handle
+	if(AM in bottles)
+		bottles -= AM
+
+/obj/machinery/resleeving/body_printer/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(bottles_limit > 0)
+		.["eject-bottles"] = create_context_menu_tuple("eject beakers", image(src), 1, MOBILITY_CAN_USE, FALSE)
+
+/obj/machinery/resleeving/body_printer/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("eject-bottles")
+			var/turf/where = drop_location()
+			if(!where)
+				return TRUE
+			if(bottles)
+				for(var/obj/item/I in bottles)
+					I.forceMove(where)
+				bottles = null
+			return TRUE
 
 /obj/machinery/resleeving/body_printer/proc/is_compatible_with_body(datum/resleeving_body_backup/backup)
 	if(backup.legacy_synthetic)
@@ -182,8 +207,29 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	if(!ignore_materials)
-		#warn check materials
-	#warn use materials
+		if(backup.legacy_synthetic)
+			if(c_synthetic_glass_cost || c_synthetic_metal_cost)
+				if(!materials_has_amounts(list(
+					/datum/prototype/material/glass::id = c_synthetic_glass_cost,
+					/datum/prototype/material/steel::id = c_synthetic_metal_cost,
+				)))
+					send_audible_system_message("Error; insufficient metal/gass remaining.")
+					return FALSE
+		else
+			if(c_biological_biomass_cost)
+				if(!biomass_has_remaining(c_biological_biomass_cost))
+					send_audible_system_message("Error; insufficient biomass remaining.")
+					return FALSE
+
+	if(backup.legacy_synthetic)
+		if(c_synthetic_glass_cost || c_synthetic_metal_cost)
+			materials_use_amounts(list(
+				/datum/prototype/material/glass::id = c_synthetic_glass_cost,
+				/datum/prototype/material/steel::id = c_synthetic_metal_cost,
+			))
+	else
+		if(c_biological_biomass_cost)
+			biomass_use_remaining(c_biological_biomass_cost)
 
 	if(/datum/modifier/no_clone in backup.legacy_genetic_modifiers)
 		send_audible_system_message("Error; Body record has corrupted genetic data.")
@@ -197,15 +243,17 @@
 		var/ratio_to_damage_to = c_create_body_health_ratio
 		if(casted_human.isSynthetic())
 			// synths: yeah uhhh shit we should refactor everything because synths shouldn't die from
-			//         limb damage lol
-			var/amt = (1 - ratio_to_damage_to) * casted_human.maxHealth * 0.5
+			//         limb damage lol that way we can do more damage here
+			var/amt = (1 - ratio_to_damage_to) * (casted_human.maxHealth + 100) * 0.5
 			casted_human.take_overall_damage(amt, amt, DAMAGE_MODE_GRADUAL)
 		else
 			// organics: just cloneloss i can't be arsed
-			casted_human.adjustCloneLoss(casted_human.maxHealth * ratio_to_damage_to)
-	#warn impl
+			casted_human.adjustCloneLoss((casted_human.maxHealth + 100) * ratio_to_damage_to)
 
-	#warn staiblize them and knock them out, take it off on eject
+	ADD_TRAIT(created, TRAIT_MOB_UNCONSCIOUS, TRAIT_SOURCE_MACHINE_BODY_GROWER)
+	ADD_TRAIT(created, TRAIT_MECHANICAL_CIRCULATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
+	ADD_TRAIT(created, TRAIT_MECHANICAL_VENTILATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
+	created.update_stat()
 
 	locked = TRUE
 	progress_recalc_last_time = world.time
@@ -391,9 +439,20 @@
 /obj/machinery/resleeving/body_printer/proc/eject_body(do_not_move)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	#warn impl
+
+	if(!currently_growing_body)
+		return FALSE
+
+	REMOVE_TRAIT(currently_growing_body, TRAIT_MOB_UNCONSCIOUS, TRAIT_SOURCE_MACHINE_BODY_GROWER)
+	REMOVE_TRAIT(currently_growing_body, TRAIT_MECHANICAL_CIRCULATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
+	REMOVE_TRAIT(currently_growing_body, TRAIT_MECHANICAL_VENTILATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
+
+	if(!do_not_move)
+		currently_growing_body.forceMove(drop_location())
+	currently_growing_body = null
 
 	update_icon()
+	return TRUE
 
 /**
  * Recalculates our progress on the clone, ejecting them if they've failed to improve
@@ -401,21 +460,42 @@
  * * This can eject the body.
  */
 /obj/machinery/resleeving/body_printer/proc/handle_progress_recalc()
+	var/mob/them = currently_growing_body
+	var/ratio = 1
 
+	if(ishuman(them))
+		var/mob/living/carbon/human/casted_human = them
+		// 100 to comp for the -100 to 100 system
+		casted_human.update_health()
+		ratio = min(ratio, (casted_human.health + 100) / (casted_human.maxHealth + 100))
+
+	if(ratio < progress_recalc_last_ratio + progress_recalc_working_threshold_ratio)
+		++progress_recalc_strikes
+	progress_recalc_last_ratio = ratio
+	progress_recalc_last_time = world.time
+
+	if(progress_recalc_strikes > progress_recalc_strike_limit)
+		#warn throw out
+	else if(ratio > c_eject_at_health_ratio)
+		#warn impl
 
 /obj/machinery/resleeving/body_printer/process(delta_time)
 	if(!currently_growing)
 		return
 	if(!powered())
-		#warn depowered_autoeject_time, depowered_last
+		if(isnull(depowered_started_at))
+			depowered_started_at = world.time
+		if(depowered_started_at < world.time - depowered_autoeject_time)
+			send_audible_system_message("Ejecting body due to prolonged critical power loss.")
+			eject_body()
 		return
+	depowered_started_at = null
 
 	var/should_recalc_progress = world.time > progress_recalc_last_time + progress_recalc_delay
 
 	if(should_recalc_progress)
-		handle_progress_recalc()
 		var/elapsed = world.time - progress_recalc_last_time
-		progress_recalc_last_time = world.time
+		handle_progress_recalc()
 		if(!currently_growing)
 			// handle progress recalc kicks them out
 			return

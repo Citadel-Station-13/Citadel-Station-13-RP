@@ -1,7 +1,6 @@
 /obj/machinery/resleeving
 	name = "resleeving machinery"
 	desc = "Some kind of machinery, likely part of the Vey-Med Transhuman Resleeving System."
-	#warn sprite
 
 	can_be_unanchored = TRUE
 

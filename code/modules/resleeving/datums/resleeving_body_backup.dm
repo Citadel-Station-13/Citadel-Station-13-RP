@@ -53,9 +53,9 @@
  */
 /datum/resleeving_body_backup/proc/ui_serialize()
 	return list(
-		"gender" = recorded_body.legacy_gender || "Unknown",
-		"speciesName" = recorded_body.legacy_custom_species_name || recorded_body.legacy_species_uid || "Unknown",
-		"synthetic" = !!recorded_body.legacy_synthetic,
+		"gender" = legacy_gender || "Unknown",
+		"speciesName" = legacy_custom_species_name || legacy_species_uid || "Unknown",
+		"synthetic" = legacy_synthetic,
 	)
 
 /datum/resleeving_body_backup/proc/initialize_from_body(mob/from_body)

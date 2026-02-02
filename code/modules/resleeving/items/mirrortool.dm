@@ -98,10 +98,10 @@
 	.["mirror"] = ui_serialize_mirror()
 
 /obj/item/mirrortool/proc/ui_update_mirror()
-	push_ui_data(data = list("mirror" = ui_serialize_mirror))
+	push_ui_data(data = list("mirror" = ui_serialize_mirror()))
 
 /obj/item/mirrortool/proc/ui_serialize_mirror()
-	return inserted_mirror ? inserted_mirror.ui_serialize_mirror() : null
+	return inserted_mirror ? inserted_mirror.ui_serialize() : null
 
 /obj/item/mirrortool/context_menu_act(datum/event_args/actor/e_args, key)
 	. = ..()

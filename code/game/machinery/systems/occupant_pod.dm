@@ -32,10 +32,17 @@
 	/// occupant
 	var/mob/living/occupant
 
+/datum/machinery_system/occupant_pod/Destroy()
+	if(occupant)
+		// generally, it's invalid behavior to just qdel (presumably) players
+		eject(parent, silent = TRUE, suppressed = TRUE)
+	return ..()
+
 /datum/machinery_system/occupant_pod/proc/fits_occupant(atom/movable/entity)
 	if(!isliving(entity))
-		return FALSE
-	return TRUE
+		. = FALSE
+	. = TRUE
+	. = parent.machinery_occupant_pod_accepts(entity, src, null, null, null)
 
 /datum/machinery_system/occupant_pod/proc/supports_opening()
 	return open_state != null
@@ -57,7 +64,7 @@
 				target = parent,
 			)
 		return FALSE
-	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
+	if(!CHECK_MOBILITY(actor.performer, MOBILITY_CAN_USE))
 		if(!silent)
 			actor.chat_feedback(
 				SPAN_WARNING("You can't do that right now."),
@@ -90,12 +97,21 @@
 				target = inserting,
 			)
 		return FALSE
-	if(inserting.is_buckled())
+	if(ismob(inserting))
+		var/mob/casted_mob = inserting
+		if(casted_mob.is_buckled())
+			if(!silent)
+				actor.chat_feedback(
+					SPAN_WARNING("[is_self ? "[inserting]" : "You"] must not be buckled."),
+					target = inserting,
+				)
+			return FALSE
+	if(!fits_occupant(inserting))
 		if(!silent)
-			actor.chat_feedback(
-				SPAN_WARNING("[is_self ? "[inserting]" : "You"] must not be buckled."),
-				target = inserting,
-			)
+			actor?.chat_feedback(
+				SPAN_WARNING("[is_self ? "[inserting]" : ""] does not fit in [src]."),
+				target = src,
+ 			)
 		return FALSE
 	return TRUE
 
@@ -105,11 +121,13 @@
 	return user_enter(actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/user_enter(datum/event_args/actor/actor, silent, suppressed)
+	if(!check_mutable(actor, silent, suppressed))
+		return FALSE
 	if(!user_common_checks(actor, silent, suppressed))
 		return FALSE
 	if(!occupant_common_checks(actor.performer, actor, silent, suppressed))
 		return FALSE
-	#warn impl
+	return insert(actor.performer, actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/user_insert_dragdrop(mob/inserting, datum/event_args/actor/actor, silent, suppressed)
 	return user_insert(inserting, actor, silent, suppressed)
@@ -117,11 +135,13 @@
 	return user_insert(inserting, actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/user_insert(mob/inserting, datum/event_args/actor/actor, silent, suppressed)
+	if(!check_mutable(actor, silent, suppressed))
+		return FALSE
 	if(!user_common_checks(actor, silent, suppressed))
 		return FALSE
 	if(!occupant_common_checks(inserting, actor, silent, suppressed))
 		return FALSE
-	#warn impl; common-ize these?
+	return insert(inserting, actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/user_eject_click(datum/event_args/actor/actor, silent, suppressed)
 	return user_eject(actor, silent, suppressed)
@@ -133,6 +153,8 @@
 	return user_eject(actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/user_eject(datum/event_args/actor/actor, silent, suppressed)
+	if(!check_mutable(actor, silent, suppressed))
+		return FALSE
 	if(!user_common_checks(actor, silent, suppressed))
 		return FALSE
 	if(!check_mutable(actor, silent, suppressed))
@@ -145,23 +167,29 @@
 	return user_toggle(actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/user_toggle(datum/event_args/actor/actor, silent, suppressed)
-	if(!user_common_checks(actor, silent, suppressed))
-		return FALSE
-	#warn impl
+	// ignore open state being null it'll be handled on user open/close
+	if(open_state)
+		return user_close(actor, silent, suppressed)
+	else
+		return user_open(actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/user_open(datum/event_args/actor/actor, silent, suppressed)
+	if(!check_mutable(actor, silent, suppressed))
+		return FALSE
 	if(!user_common_checks(actor, silent, suppressed))
 		return FALSE
 	#warn impl
 
 /datum/machinery_system/occupant_pod/proc/user_close(datum/event_args/actor/actor, silent, suppressed)
+	if(!check_mutable(actor, silent, suppressed))
+		return FALSE
 	if(!user_common_checks(actor, silent, suppressed))
 		return FALSE
 	#warn impl
 
-/datum/machinery_system/occupant_pod/proc/check_mutable(datum/event_args/actor/actor, silent, suppressed)
+/datum/machinery_system/occupant_pod/proc/check_mutable(datum/event_args/actor/actor, silent, suppressed, ejecting)
 	. = TRUE
-	if(!parent.machinery_occupant_pod_mutable(src, ., actor, silent, suppressed))
+	if(!parent.machinery_occupant_pod_mutable(src, ., actor, silent, suppressed, ejecting))
 		return FALSE
 
 /**
@@ -203,7 +231,7 @@
 /datum/machinery_system/occupant_pod/proc/on_eject(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 
-#warn impl all
+#warn impl all with feedback
 
 /obj/machinery/proc/machinery_occupant_pod_opened(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
@@ -221,15 +249,18 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-/obj/machinery/proc/machinery_occupant_pod_accepts(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
+/obj/machinery/proc/machinery_occupant_pod_accepts(atom/movable/entity, datum/machinery_system/occupant_pod/pod, pod_opinion, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	return TRUE
 
 /**
  * Checks if the occupant pod can be interacted with **at all** (including open/close)
+ * * Ejecting is a special arg as trapping people inside during eject is not necessarily a good thing.
  */
-/obj/machinery/proc/machinery_occupant_pod_mutable(datum/machinery_system/occupant_pod/pod, pod_opinion, datum/event_args/actor/actor, silent, suppressed)
+/obj/machinery/proc/machinery_occupant_pod_mutable(datum/machinery_system/occupant_pod/pod, pod_opinion, datum/event_args/actor/actor, silent, suppressed, ejecting)
 	SHOULD_NOT_SLEEP(TRUE)
+	return TRUE
 
 //* -- Lazy init wrapers -- *//
 

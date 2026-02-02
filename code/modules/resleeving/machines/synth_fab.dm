@@ -9,9 +9,18 @@
 	c_synthetic_glass_cost = 12.5 * SHEET_MATERIAL_AMOUNT
 	c_synthetic_metal_cost = 25 * SHEET_MATERIAL_AMOUNT
 
-#warn synthfab-power
-#warn synthfab-panel
-
 /obj/machinery/resleeving/body_printer/synth_fab/loaded/Initialize(mapload)
 	. = ..()
-	#warn impl
+	icon_state = base_icon_state
+
+/obj/machinery/resleeving/body_printer/synth_fab/power_change()
+	. = ..()
+	if(.)
+		update_icon()
+
+/obj/machinery/resleeving/body_printer/synth_fab/update_icon(updates)
+	. = ..()
+	if(!(machine_stat & NOPOWER))
+		add_overlay("[base_icon_state]-power")
+	if(panel_open)
+		add_overlay("[base_icon_state]-power")

@@ -46,7 +46,7 @@
 	build_path = /obj/machinery/computer/resleeving
 	origin_tech = list(TECH_DATA = 5)
 
-#warn replace these with design macros
+// TODO: replace these with design macros
 
 /datum/prototype/design/circuit/transhuman_clonepod
 	design_name = "grower pod"

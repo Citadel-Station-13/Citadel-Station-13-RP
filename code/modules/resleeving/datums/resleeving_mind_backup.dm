@@ -34,7 +34,7 @@
  */
 /datum/resleeving_mind_backup/proc/ui_serialize()
 	return list(
-		"recordedName" = recorded_mind.user_name,
+		"recordedName" = user_name,
 	)
 
 /datum/resleeving_mind_backup/proc/initialize_from_mind(datum/mind/from_mind)

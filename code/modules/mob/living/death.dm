@@ -42,5 +42,3 @@
 			if(!ispath(E))
 				E.droplimb(FALSE, DROPLIMB_EDGE, TRUE)
 	..()
-
-#warn move from mob

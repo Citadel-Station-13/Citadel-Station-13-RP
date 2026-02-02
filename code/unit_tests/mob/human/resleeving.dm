@@ -10,12 +10,12 @@
 	abstract_type = /datum/unit_test/resleeving/mirror_general_testing
 	var/should_exist = TRUE
 
-/datum/unit_test/resleeving/mirror_general_testing/proc/create_character(atom/loc) as /mob
+/datum/unit_test/resleeving/mirror_general_testing/proc/create_character(atom/loc) as /mob/living
 	CRASH("unimplemented")
 
 /datum/unit_test/resleeving/mirror_general_testing/Run()
 	var/turf/where = pick(block(run_loc_floor_bottom_left, run_loc_floor_top_right))
-	var/mob/created_mob = create_character(where)
+	var/mob/living/created_mob = create_character(where)
 
 	var/api_supported = created_mob.resleeving_supports_mirrors()
 	var/obj/item/organ/internal/mirror/created = created_mob.resleeving_create_mirror()
@@ -43,6 +43,13 @@
 	else
 		if(!fetched)
 			TEST_FAIL("mirror was not made when it should be")
+			return
+
+	// make sure admin revives don't obliterate it
+	if(should_exist)
+		created_mob.revive(TRUE, TRUE, TRUE)
+		if(QDELETED(fetched))
+			TEST_FAIL("mirror was erased by admin revive")
 			return
 
 	// make sure admin deletions nuke the mirror

@@ -192,6 +192,7 @@
 		power_change()
 
 /obj/machinery/Destroy()
+	QDEL_NULL(machine_occupant_pod)
 	GLOB.machines.Remove(src)
 	if(!speed_process)
 		STOP_MACHINE_PROCESSING(src)
@@ -562,6 +563,8 @@
 
 /obj/machinery/drop_products(method, atom/where)
 	. = ..()
+	if(machine_occupant_pod?.occupant)
+		machine_occupant_pod.eject(where || drop_location(), silent = TRUE, suppressed = TRUE)
 	if(isnull(circuit))
 		return
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)

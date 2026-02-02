@@ -5311,8 +5311,6 @@
 #include "code\modules\resleeving\items\mirrortool.dm"
 #include "code\modules\resleeving\machines\body_printer.dm"
 #include "code\modules\resleeving\machines\grower_pod.dm"
-#include "code\modules\resleeving\machines\legacy-body_printer.dm"
-#include "code\modules\resleeving\machines\legacy-resleeving_pod.dm"
 #include "code\modules\resleeving\machines\resleeving.dm"
 #include "code\modules\resleeving\machines\resleeving_console.dm"
 #include "code\modules\resleeving\machines\resleeving_pod.dm"
