@@ -47,8 +47,6 @@
 /obj/machinery/resleeving/proc/send_audible_system_message(msg)
 	atom_say("[msg]")
 
-#warn impl all
-
 /obj/machinery/resleeving/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)

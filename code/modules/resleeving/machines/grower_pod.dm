@@ -11,5 +11,3 @@
 	. = ..()
 	for(var/i in 1 to bottles_limit)
 		bottles += new /obj/item/reagent_containers/glass/bottle/biomass(src)
-
-#warn impl all

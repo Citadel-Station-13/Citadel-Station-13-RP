@@ -87,14 +87,25 @@
 			rescan_nearby_machines()
 			return TRUE
 		if("unlink")
-			var/unlink_pref = params["unlinkRef"]
+			var/unlink_ref = params["unlinkRef"]
+			if(!istext(unlink_ref))
+				return TRUE
+			var/obj/machinery/resleeving/maybe_linked = locate(unlink_ref) in linked_resleeving_machinery
+			unlink_resleeving_machine(maybe_linked)
+			return TRUE
 		if("printBody")
 			var/printer_ref = params["printerRef"]
 			var/body_ref
+			#warn impl
 		if("resleeve")
 			var/sleever_ref = params["sleeverRef"]
+			#warn impl
 		if("removeMirror")
+			user_yank_mirror(actor, TRUE)
+			return TRUE
 		if("removeDisk")
+			user_yank_disk(actor, TRUE)
+			return TRUE
 
 /obj/machinery/computer/resleeving/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -193,6 +204,3 @@
 			)
 	inserted_disk = null
 	return TRUE
-
-
-#warn impl all

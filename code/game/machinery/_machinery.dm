@@ -713,6 +713,7 @@
  * * Puts the passed object in to the users hand if they are adjacent.
  * * If the user is not adjacent then place the object on top of the machine.
  * * This will always move the item out of the machine.
+ * * This does not check the item actually is in ourselves.
  *
  * @params
  * * item (obj/item) The item to be moved in to the users hand.

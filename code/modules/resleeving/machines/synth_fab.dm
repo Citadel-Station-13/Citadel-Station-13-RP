@@ -24,3 +24,13 @@
 		add_overlay("[base_icon_state]-power")
 	if(panel_open)
 		add_overlay("[base_icon_state]-power")
+
+/obj/machinery/resleeving/body_printer/synth_fab/loaded
+
+/obj/machinery/resleeving/body_printer/synth_fab/loaded/Initialize(mapload)
+	. = ..()
+	materials.add(list(
+		/datum/prototype/material/glass::id = materials_limit,
+		/datum/prototype/material/steel::id = materials_limit,
+	))
+

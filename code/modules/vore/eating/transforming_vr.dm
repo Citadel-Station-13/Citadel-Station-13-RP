@@ -216,8 +216,6 @@
 
 	remove_verb(M, M.species.inherent_verbs)	//Take away their unique stuff
 
-	#warn how do we deal with mirrors
-
 	if(color_action == 1)
 		M.set_species(O.species.name, example = M)
 	else if(color_action == 2)

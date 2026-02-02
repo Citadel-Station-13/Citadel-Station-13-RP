@@ -26,20 +26,21 @@
 /obj/item/implant/proc/activate()
 	return
 
-#warn hook these
 /**
  * Called on insertion to a bodypart.
  */
-/obj/item/implant/proc/on_inserted(obj/item/organ/external/bodypart)
-	SHOULD_CALL_PARENT(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
+// TODO: implement these, replace 'post_implant' with this
+// /obj/item/implant/proc/on_inserted(obj/item/organ/external/bodypart)
+// 	SHOULD_CALL_PARENT(TRUE)
+// 	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * Called on removal from a bodypart.
  */
-/obj/item/implant/proc/on_removed(obj/item/organ/external/bodypart)
-	SHOULD_CALL_PARENT(TRUE)
-	SHOULD_NOT_SLEEP(TRUE)
+// TODO: implement these, replace 'post_implant' with this
+// /obj/item/implant/proc/on_removed(obj/item/organ/external/bodypart)
+// 	SHOULD_CALL_PARENT(TRUE)
+// 	SHOULD_NOT_SLEEP(TRUE)
 
 // Moves the implant where it needs to go, and tells it if there's more to be done in post_implant
 /obj/item/implant/proc/handle_implant(var/mob/source, var/target_zone = BP_TORSO)

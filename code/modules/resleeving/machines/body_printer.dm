@@ -310,6 +310,7 @@
 /obj/machinery/resleeving/body_printer/proc/create_body_impl(datum/resleeving_body_backup/backup) as /mob/living
 	// backups are always human right now
 	var/mob/living/carbon/human/created_human = new(src)
+	. = created_human
 
 	// set gender first; legacy set species code might blow up less. we need a helper at some point.
 	created_human.gender = backup.legacy_gender
@@ -385,9 +386,6 @@
 				// no good way to do it yet
 				stack_trace("attempted to clone a nanite organ; obliterating...")
 
-
-	#warn impl
-
 /**
  * Continues to grow the mob.
  * * Will change `currently_growing_xyz` variables.
@@ -401,7 +399,8 @@
 
 	if(currently_growing_body.stat == DEAD)
 		eject_body()
-		#warn error message
+		send_audible_system_message("Contained body deceased; resetting...")
+		return TRUE
 
 	grow_body_impl(dt)
 

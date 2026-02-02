@@ -265,8 +265,24 @@
 //* -- Lazy init wrapers -- *//
 
 /obj/machinery/proc/init_occupant_pod() as /datum/machinery_system/occupant_pod
-	#warn make sure to set eject..
+	if(!machine_occupant_pod)
+		machine_occupant_pod = new
+	return machine_occupant_pod
 
-/obj/machinery/proc/init_occupant_pod_openable() as /datum/machinery_system/occupant_pod
+/obj/machinery/proc/init_occupant_pod_default() as /datum/machinery_system/occupant_pod
+	var/datum/machinery_system/occupant_pod/pod = init_occupant_pod()
+	pod.insert_via_dragdrop = TRUE
+	pod.insert_via_grab = TRUE
+	pod.enter_via_context = TRUE
+	pod.enter_via_dragdrop = TRUE
+	pod.eject_via_context = TRUE
+	pod.eject_via_resist = TRUE
+	pod.eject_via_move = TRUE
+	return pod
 
-#warn impl all
+/obj/machinery/proc/init_occupant_pod_default_openable() as /datum/machinery_system/occupant_pod
+	var/datum/machinery_system/occupant_pod/pod = init_occupant_pod_default()
+	pod.door_via_click = TRUE
+	pod.door_via_context = TRUE
+	pod.open_state = FALSE
+	return pod
