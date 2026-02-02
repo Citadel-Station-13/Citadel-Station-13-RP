@@ -40,16 +40,11 @@
 	. = ..()
 	if(.)
 		return
-	if(params["__routeModule"])
-		var/obj/item/vehicle_module/t_route = locate(params["__routeComponent"]) in vehicle.modules
-		t_route.vehicle_ui_module_act(action, params, actor)
-		return TRUE
-	if(params["__routeComponent"])
-		var/obj/item/vehicle_component/t_route = locate(params["__routeComponent"]) in vehicle.components
-		t_route.vehicle_ui_component_act(action, params, actor)
-		return TRUE
 	switch(action)
 		if("removeModule")
+			if(!vehicle.maint_panel_open)
+				#warn reject
+				return TRUE
 			var/ref = params["ref"]
 			if(!istext(ref) || !length(ref))
 				return TRUE
@@ -59,6 +54,9 @@
 			#warn impl
 			return TRUE
 		if("removeComponent")
+			if(!vehicle.maint_panel_open)
+				#warn reject
+				return TRUE
 			var/ref = params["ref"]
 			if(!istext(ref) || !length(ref))
 				return TRUE
@@ -68,9 +66,21 @@
 			#warn impl
 			return TRUE
 		if("closePanel")
+			if(!vehicle.maint_panel_open)
+				return TRUE
+			#warn impl
 		if("openPanel")
+			if(vehicle.maint_panel_open)
+				return TRUE
+			#warn impl
 		if("unlockPanel")
+			if(!vehicle.maint_panel_locked)
+				return TRUE
+			#warn impl
 		if("lockPanel")
+			if(vehicle.maint_panel_locked)
+				return TRUE
+			#warn impl
 		if("accessMaintWipe")
 			var/category = params["cat"]
 			if(!category)

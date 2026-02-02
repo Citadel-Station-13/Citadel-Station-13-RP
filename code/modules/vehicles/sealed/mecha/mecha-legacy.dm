@@ -264,29 +264,12 @@
 	playsound(src, 'sound/mecha/gasdisconnected.ogg', 50, 1)
 	return 1
 
-/obj/vehicle/sealed/mecha/verb/connect_to_port()
-	set name = "Connect to port"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-
-	if(!occupant_legacy)
-		return
-
-	if(usr != occupant_legacy)
-		return
-
-	var/obj/item/vehicle_component/mecha_gas/GC = internal_components[MECH_GAS]
-	if(!GC)
-		return
-
+/obj/vehicle/sealed/mecha/proc/connect_to_port()
 	for(var/turf/T in locs)
 		var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector) in T
 		if(possible_port)
 			if(connect(possible_port))
 				occupant_message("<span class='notice'>\The [name] connects to the port.</span>")
-				add_obj_verb(src, /obj/vehicle/sealed/mecha/verb/disconnect_from_port)
-				remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/connect_to_port)
 				return
 			else
 				occupant_message("<span class='danger'>\The [name] failed to connect to the port.</span>")
@@ -294,31 +277,11 @@
 		else
 			occupant_message("Nothing happens")
 
-/obj/vehicle/sealed/mecha/verb/disconnect_from_port()
-	set name = "Disconnect from port"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-
-	if(!occupant_legacy)
-		return
-
-	if(usr != occupant_legacy)
-		return
-
+/obj/vehicle/sealed/mecha/proc/disconnect_from_port()
 	if(disconnect())
 		occupant_message("<span class='notice'>[name] disconnects from the port.</span>")
-		remove_obj_verb(src, /obj/vehicle/sealed/mecha/verb/disconnect_from_port)
-		add_obj_verb(src, /obj/vehicle/sealed/mecha/verb/connect_to_port)
 	else
 		occupant_message("<span class='danger'>[name] is not connected to the port at the moment.</span>")
-
-/obj/vehicle/sealed/mecha/verb/toggle_internal_tank()
-	set name = "Toggle internal airtank usage"
-	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
-	internal_tank()
 
 /obj/vehicle/sealed/mecha/proc/internal_tank()
 	if(usr != src.occupant_legacy)
@@ -387,16 +350,6 @@
 
 /obj/vehicle/sealed/mecha/Topic(href, href_list)
 	..()
-	if (href_list["toggle_zoom"])
-		src.zoom()
-	if(href_list["phasing"])
-		src.phasing()
-	if(href_list["port_disconnect"])
-		src.disconnect_from_port()
-		return
-	if (href_list["port_connect"])
-		src.connect_to_port()
-		return
 	if(href_list["set_internal_tank_valve"] && state >=MECHA_BOLTS_SECURED)
 		if(!in_range(src, usr))	return
 		var/mob/user = top_filter.getMob("user")
@@ -405,32 +358,6 @@
 			if(new_pressure)
 				internal_tank_valve = new_pressure
 				to_chat(user, "The internal pressure valve has been set to [internal_tank_valve]kPa.")
-	if(href_list["remove_passenger"] && state >= MECHA_BOLTS_SECURED)
-		var/mob/user = top_filter.getMob("user")
-		var/list/passengers = list()
-		for (var/obj/item/vehicle_module/lazy/legacy/tool/passenger/P in contents)
-			if (P.occupant_legacy)
-				passengers["[P.occupant_legacy]"] = P
-
-		if (!passengers)
-			to_chat(user, "<span class='warning'>There are no passengers to remove.</span>")
-			return
-
-		var/pname = input(user, "Choose a passenger to forcibly remove.", "Forcibly Remove Passenger") as null|anything in passengers
-
-		if (!pname)
-			return
-
-		var/obj/item/vehicle_module/lazy/legacy/tool/passenger/P = passengers[pname]
-		var/mob/occupant_legacy = P.occupant_legacy
-
-		user.visible_message("<span class='notice'>\The [user] begins opening the hatch on \the [P]...</span>", "<span class='notice'>You begin opening the hatch on \the [P]...</span>")
-		if (!do_after(user, 40))
-			return
-
-		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant_legacy]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant_legacy]!</span>")
-		P.go_out()
-		return
 
 //* STOP USING THIS. *//
 /obj/vehicle/sealed/mecha/proc/has_charge(amount)

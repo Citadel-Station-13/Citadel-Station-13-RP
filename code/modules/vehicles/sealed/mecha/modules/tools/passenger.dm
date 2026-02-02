@@ -79,6 +79,8 @@
 /obj/item/vehicle_module/lazy/legacy/tool/passenger/render_ui()
 	..()
 	l_ui_select("lock", "Hatch Lock", list("Locked", "Unlocked"), door_locked ? "Locked" : "Unlocked")
+	l_ui_html("Occupant", occupant_legacy ? "None" : "[occupant_legacy]")
+	l_ui_button("eject", "Eject", "Forcefully Eject Occupant", FALSE, !occupant_legacy, TRUE)
 
 /obj/item/vehicle_module/lazy/legacy/tool/passenger/on_l_ui_select(datum/event_args/actor/actor, key, name)
 	. = ..()
@@ -101,6 +103,23 @@
 					#warn log
 					#warn chassis / occupant message?
 					return TRUE
+		if("eject")
+			if(!occupant_legacy)
+				return TRUE
+			vehicle.visible_message(
+				SPAN_WARNING("[vehicle] begins opening the door on [src]..."),
+			)
+			if(!vehicle_do_after(actor, 5 SECONDS, vehicle))
+				return TRUE
+			if(!occupant_legacy)
+				return TRUE
+			vehicle.visible_message(
+				SPAN_WARNING("[vehicle] opens the door on its [src] and ejects [occupant_legacy]!"),
+			)
+			vehicle_log_for_admins(actor, "ejected", list("occupant" = key_name(occupant_legacy)))
+			go_out()
+			occupant_message("Ejected [occupant_legacy].")
+			return TRUE
 
 // TODO: nuke this stupid fucking verb / proc and make it a managed action / context menu thing.
 #define LOCKED 1

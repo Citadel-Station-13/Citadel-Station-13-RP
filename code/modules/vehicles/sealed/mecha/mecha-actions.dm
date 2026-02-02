@@ -6,6 +6,8 @@
 	background_icon_state = "mecha"
 	button_icon = 'icons/screen/actions/mecha.dmi'
 
+#warn sprites for this shit and all subtypes;
+
 /datum/action/vehicle/mecha/eject
 	name = "Eject"
 	desc = "Eject from your mecha."
@@ -54,8 +56,10 @@
 	. = ..()
 	if(.)
 		return
-
-#warn impl
+	target.internal_tank()
+	button_icon_state = "mech_internals_[target.use_internal_tank ? "on" : "off"]"
+	update_buttons()
+	return TRUE
 
 //* legacy crap *//
 
@@ -74,6 +78,10 @@
 	. = ..()
 	if(.)
 		return
+	target.phasing()
+	button_icon_state = "mech_phasing_[target.phasing ? "on" : "off"]"
+	update_buttons()
+	return TRUE
 
 /datum/action/vehicle/mecha/legacy/zoom
 	name = "Toggle Zoom"
@@ -85,6 +93,7 @@
 	. = ..()
 	if(.)
 		return
-
-#warn impl all
-
+	target.zoom()
+	button_icon_state = "mech_zoom_[target.zoom ? "on" : "off"]"
+	update_buttons()
+	return TRUE

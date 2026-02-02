@@ -7,6 +7,8 @@
 
 /datum/vehicle_ui_controller/mecha/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
+	.["portConnected"] = !!casted_vehicle.connected_port
 
 /datum/vehicle_ui_controller/mecha/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -62,10 +64,10 @@
 			#warn impl; call internal_tank()
 			return TRUE
 		if("connectAtmosPort")
-			#warn feedback & log
+			casted_vehicle.connect_to_port()
 			return TRUE
 		if("disconnectAtmosPort")
-			#warn feedback & log
+			casted_vehicle.disconnect_from_port()
 			return TRUE
 		if("toggleIdUploadLock")
 			#warn feedback & log
