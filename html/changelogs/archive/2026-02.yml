@@ -125,6 +125,8 @@
   - tweak: update fulton
   - code_imp: updated WrapAdminProcCall so it doesnt sleep (remove the waiting feature)
   - tweak: you can now see how many people are orbiting something
+  - code_imp: if you see this, that means that changelog is working again
+  - soundadd: one new elevator music track from tg
   MarsM0nd:
   - bugfix: Actuator enhancement is actually an enhancement again.
   - tweak: drone upgrades only get applied once
@@ -356,6 +358,8 @@
       ingame) and delete the unneeded ones. Despite some of the tags, changelogs should
       generally represent how a player might be affected by the changes rather than
       a summary of the PR''s contents. -->'
+  - bugfix: fixes holosphere crew sensors showing they're alive when dead
+  - bugfix: fixes being able to transform while dead
   washikarasu:
   - rscdel: grey railing sprite
   - tweak: greyscaled railing sprite and added colour

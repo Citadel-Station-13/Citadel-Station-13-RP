@@ -1,5 +1,0 @@
-author: "timothyteakettle"
-delete-after: True
-changes:
-  - bugfix: "fixes holosphere crew sensors showing they're alive when dead"
-  - bugfix: "fixes being able to transform while dead"
