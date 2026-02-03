@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-// TODO: buildable
+// TODO: buildable; may require new frame system as some of these are sided / wall-mounted
 
 /**
  * Base peripheral system for things that connect to controllers
@@ -11,6 +11,8 @@
 	var/obj/machinery/airlock_component/controller/controller
 	/// airlock ID to link to; will be automatically mangled
 	var/controller_autolink_id
+	/// hardmapped?
+	var/hardmapped = FALSE
 
 /obj/machinery/airlock_peripheral/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()

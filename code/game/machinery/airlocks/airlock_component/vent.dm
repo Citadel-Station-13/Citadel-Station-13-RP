@@ -66,3 +66,4 @@
 
 /obj/machinery/airlock_component/vent/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE

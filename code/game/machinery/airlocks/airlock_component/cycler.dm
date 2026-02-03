@@ -9,7 +9,7 @@
 	icon_state = /obj/machinery/airlock_component/cycler::icon_state
 	base_icon_state = /obj/machinery/airlock_component/cycler::base_icon_state
 
-	// TODO: pumping power carry-over
+	// TODO: pumping power carry-over maybe?
 
 /**
  * Internal cycling vent/scrubber for an airlock.
@@ -70,3 +70,4 @@
 
 /obj/machinery/airlock_component/cycler/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE

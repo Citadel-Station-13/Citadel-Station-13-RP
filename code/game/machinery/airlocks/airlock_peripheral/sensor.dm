@@ -46,6 +46,7 @@
 
 /obj/machinery/airlock_peripheral/sensor/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only
 	name = "airlock reader"
@@ -55,6 +56,7 @@
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_peripheral/sensor/button_only
 	name = "airlock button"
@@ -64,30 +66,35 @@
 
 /obj/machinery/airlock_peripheral/sensor/button_only/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only/exterior
 	sidedness = AIRLOCK_SIDE_EXTERIOR
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only/exterior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only/interior
 	sidedness = AIRLOCK_SIDE_INTERIOR
 
 /obj/machinery/airlock_peripheral/sensor/sensor_only/interior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_peripheral/sensor/button_only/exterior
 	sidedness = AIRLOCK_SIDE_EXTERIOR
 
 /obj/machinery/airlock_peripheral/sensor/button_only/exterior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_peripheral/sensor/button_only/interior
 	sidedness = AIRLOCK_SIDE_INTERIOR
 
 /obj/machinery/airlock_peripheral/sensor/button_only/interior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_peripheral/sensor/exterior
 	sidedness = AIRLOCK_SIDE_EXTERIOR
@@ -96,6 +103,7 @@
 
 /obj/machinery/airlock_peripheral/sensor/exterior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_peripheral/sensor/interior
 	sidedness = AIRLOCK_SIDE_INTERIOR
@@ -104,3 +112,4 @@
 
 /obj/machinery/airlock_peripheral/sensor/interior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE

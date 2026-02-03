@@ -54,9 +54,6 @@
 	.["programTgui"] = controller.program?.tgui_airlock_component
 	.["programData"] = controller.program?.ui_program_data(src)
 
-/datum/airlock_system/ui_static_data(mob/user, datum/tgui/ui)
-	. = ..()
-
 /**
  * @return null if failed, cycle id otherwise
  */

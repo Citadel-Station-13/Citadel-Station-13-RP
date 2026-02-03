@@ -94,18 +94,21 @@
 
 /obj/machinery/airlock_component/door_linker/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_component/door_linker/indoors
 	is_indoors = TRUE
 
 /obj/machinery/airlock_component/door_linker/indoors/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_component/door_linker/outdoors
 	is_indoors = FALSE
 
 /obj/machinery/airlock_component/door_linker/outdoors/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /datum/airlock_task/component/door_linker
 

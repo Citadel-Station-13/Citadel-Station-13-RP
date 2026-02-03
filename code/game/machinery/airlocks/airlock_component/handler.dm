@@ -107,6 +107,7 @@
 
 /obj/machinery/airlock_component/handler/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /**
  * todo: refactor on atmospherics machinery update

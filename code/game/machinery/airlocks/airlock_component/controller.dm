@@ -14,9 +14,17 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	var/datum/airlock_program/program
 	var/program_path
 
-#warn carry the program in here
+/obj/item/airlock_component/controller/Initialize(mapload, set_dir, obj/machinery/airlock_component/controller/from_machine)
+	. = ..()
+	if(from_machine)
+		program = from_machine.program
+		program_path = from_machine.program_path
+		// only one may own the reference at any given time
+		from_machine.program = null
 
-// todo: buildable
+/obj/item/airlock_component/controller/Destroy()
+	QDEL_NULL(program)
+	return ..()
 
 /**
  * Airlock controllers
@@ -45,36 +53,37 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 
 	/// Our airlock system
 	var/datum/airlock_system/system
+	/// our airlock program
+	var/datum/airlock_program/program
 	/// Starting program typepath
 	var/program_path
 	/// connected peripherals
 	var/list/obj/machinery/airlock_peripheral/peripherals
-	/// our airlock program
-	var/datum/airlock_program/program
-
-/obj/machinery/airlock_component/controller/Initialize(mapload)
-	..()
-	// todo: we need proper tick bracket machine support & fastmos
-	STOP_MACHINE_PROCESSING(src)
-	if(src.program_path)
-		if(!src.program)
-			src.program = new src.program_path
-	set_controller_id(src.airlock_id)
-
-/obj/machinery/airlock_component/controller/Destroy()
-	QDEL_NULL(program)
-	return ..()
 
 /obj/machinery/airlock_component/controller/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	if(airlock_id)
 		airlock_id = SSmapping.mangled_round_local_id(airlock_id, context.mangling_id)
 
-/obj/machinery/airlock_component/controller/Destroy()
+/obj/machinery/airlock_component/controller/Initialize(mapload, set_dir, obj/item/airlock_component/controller/from_item)
+	..()
+	// todo: we need proper tick bracket machine support & fastmos
 	STOP_MACHINE_PROCESSING(src)
+	set_controller_id(src.airlock_id)
+	if(from_item)
+		program = from_item.program
+		program_path = from_item.program_path
+		// only one may own the reference at any given time
+		from_item.program = null
+	if(!src.program && src.program_path)
+		src.program = new src.program_path
+
+/obj/machinery/airlock_component/controller/Destroy()
+	QDEL_NULL(program)
 	STOP_PROCESSING(SSprocess_5fps, src)
 	set_controller_id(null)
 	QDEL_NULL(system)
+	#warn get rid of peripherals
 	return ..()
 
 /obj/machinery/airlock_component/controller/on_connect(datum/airlock_gasnet/network)
@@ -108,7 +117,6 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	if(!isnull(src.airlock_id))
 		GLOB.airlock_controller_lookup -= src.airlock_id
 	src.airlock_id = to_id
-	#warn unlink peripherals if they're on our ID
 	if(!isnull(src.airlock_id))
 		GLOB.airlock_controller_lookup[src.airlock_id] = src
 
@@ -121,9 +129,11 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 
 /obj/machinery/airlock_component/controller/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
 
 /obj/machinery/airlock_component/controller/vacuum_cycle
 	program_path = /datum/airlock_program/vacuum_cycle
 
 /obj/machinery/airlock_component/controller/vacuum_cycle/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE

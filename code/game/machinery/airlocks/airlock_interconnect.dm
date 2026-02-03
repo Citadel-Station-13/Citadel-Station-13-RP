@@ -48,6 +48,12 @@
 		return TRUE
 	if(!use_wrench(I, e_args, flags, 0, 1, TOOL_USAGE_BUILDING_FRAMEWORK | TOOL_USAGE_CONSTRUCT))
 		return TRUE
+	if(!isturf(loc))
+		e_args.chat_feedback(
+			SPAN_WARNING("[src] must be on the floor to be attached."),
+			target = src,
+		)
+		return TRUE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
