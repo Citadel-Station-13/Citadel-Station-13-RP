@@ -258,7 +258,26 @@
 				target = parent,
 			)
 		return FALSE
-	#warn impl
+
+	// TODO: contents holder separate from parent maybe?
+	entity.forceMove(parent)
+	occupant = entity
+	ejecting.update_perspective()
+
+	if(!suppressed && actor)
+		if(entity == actor.performer)
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_COMBAT_SUBTLE,
+				visible = SPAN_NOTICE("[actor.performer] climbs into [parent]."),
+			)
+		else
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_COMBAT_SUBTLE,
+				visible = SPAN_WARNING("[actor.performer] puts [entity] into [parent]."),
+			)
+	return TRUE
 
 /datum/machinery_system/occupant_pod/proc/on_insert(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
@@ -273,7 +292,27 @@
 				target = parent,
 			)
 		return FALSE
-	#warn impl
+
+	var/mob/living/ejecting = occupant
+	// TODO: contents holder separate from parent maybe?
+	if(ejecting.loc == parent)
+		ejecting.forceMove(new_loc)
+		ejecting.update_perspective()
+
+	if(!suppressed && actor)
+		if(ejecting == actor.performer)
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_COMBAT_SUBTLE,
+				visible = SPAN_NOTICE("[actor.performer] pops out of [parent]."),
+			)
+		else
+			actor.visible_feedback(
+				target = src,
+				range = MESSAGE_RANGE_COMBAT_SUBTLE,
+				visible = SPAN_WARNING("[actor.performer] pulls [ejecting] out of [parent]."),
+			)
+	return TRUE
 
 /datum/machinery_system/occupant_pod/proc/on_eject(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)

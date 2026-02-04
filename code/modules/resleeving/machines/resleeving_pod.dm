@@ -46,6 +46,23 @@
 	. = ..()
 	icon_state = "[base_icon_state][machine_occupant_pod?.occupant ? "-occupied" : ""]"
 
+/obj/machinery/resleeving/resleeving_pod/examine(mob/user, dist)
+	. = ..()
+	if(held_mirror)
+		. += SPAN_NOTICE("It seems to have a mirror held in its receptacle.")
+
+/obj/machinery/resleeving/resleeving_pod/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	.["remove-mirror"] = create_context_menu_tuple("remove mirror", image(src), 1, MOBILITY_CAN_USE, FALSE)
+
+/obj/machinery/resleeving/resleeving_pod/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("remove-mirror")
+	#warn impl
+
 /**
  * @return TRUE/FALSE
  */

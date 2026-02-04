@@ -360,6 +360,11 @@
 			machine_occupant_pod.user_enter_dragdrop(new /datum/event_args/actor(user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
+/obj/machinery/Exited(atom/movable/AM, atom/newLoc)
+	..()
+	if(machine_occupant_pod && AM == machine_occupant_pod.occupant)
+		machine_occupant_pod.eject(suppressed = TRUE)
+
 /obj/machinery/can_interact(mob/user)
 	if((machine_stat & (NOPOWER|BROKEN|MAINT)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
