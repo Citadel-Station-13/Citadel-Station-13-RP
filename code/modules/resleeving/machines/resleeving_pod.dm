@@ -106,7 +106,7 @@
 		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = SPAN_WARNING("[actor.performer] removes [mirror] from [src]."),
+			visible = SPAN_WARNING("[actor.performer] removes [removed] from [src]."),
 		)
 	return TRUE
 

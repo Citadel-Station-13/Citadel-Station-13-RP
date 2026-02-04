@@ -262,7 +262,7 @@
 	// TODO: contents holder separate from parent maybe?
 	entity.forceMove(parent)
 	occupant = entity
-	ejecting.update_perspective()
+	entity.update_perspective()
 
 	if(!suppressed && actor)
 		if(entity == actor.performer)
