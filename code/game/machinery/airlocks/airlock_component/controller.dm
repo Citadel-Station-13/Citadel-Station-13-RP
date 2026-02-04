@@ -86,6 +86,27 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	#warn get rid of peripherals
 	return ..()
 
+/obj/machinery/airlock_component/controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	// TODO: clickchain support?
+	if(!system)
+		to_chat(user, SPAN_WARNING("[src] is not initialized."))
+		return
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "machines/airlock/AirlockSystem")
+		ui.open()
+
+/obj/machinery/airlock_component/controller/ui_data(mob/user, datum/tgui/ui)
+	return system ? controller.system.ui_data(arglist(args)) : list()
+
+/obj/machinery/airlock_component/controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	return system ? controller.system.ui_act(arglist(args)) : TRUE
+
+/obj/machinery/airlock_component/controller/ui_status(mob/user, datum/ui_state/state)
+	if(!system)
+		return UI_CLOSE
+	return ..()
+
 /obj/machinery/airlock_component/controller/on_connect(datum/airlock_gasnet/network)
 	..()
 	if(network.controller)

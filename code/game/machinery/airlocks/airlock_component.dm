@@ -29,7 +29,7 @@
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
 	if(isturf(target))
-		if(lickchain.performer.transfer_item_to_loc(src, target))
+		if(clickchain.performer.transfer_item_to_loc(src, target))
 			clickchain.chat_feedback(SPAN_NOTICE("You place down [src]."), target = src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 
@@ -86,7 +86,6 @@
 	/// connected interconnect
 	var/obj/structure/airlock_interconnect/interconnect
 	/// item type
-	#warn impl all
 	var/detached_item_type = /obj/item/airlock_component
 	/// hardmapped?
 	var/hardmapped = FALSE

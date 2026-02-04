@@ -19,7 +19,7 @@
 
 	//* State *//
 	/// arbitrary blackboard
-	/// * unlike cycle blackboard, this always persists, except across deconstruction/reconstruction
+	/// * unlike cycle blackboard, this always persists, except across deconstruction/reconstruction of the controller.
 	var/list/blackboard = list()
 
 /datum/airlock_system/New(obj/machinery/airlock_component/controller)
@@ -27,15 +27,12 @@
 
 /datum/airlock_system/Destroy()
 	abort_cycle()
-	QDEL_NULL(controller)
+	if(controller)
+		if(controller.system == src)
+			controller.system = null
+		controller = null
+	blackboard = list()
 	return ..()
-
-#warn impl ui
-/datum/airlock_system/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	ui = SStgui.try_update_ui(src, user, ui)
-	if(!ui)
-		ui = new(src, user, "")
-		ui.open()
 
 /datum/airlock_system/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
