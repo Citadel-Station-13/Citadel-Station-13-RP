@@ -90,5 +90,20 @@
 			target = src,
 		)
 		return TRUE
-
-#warn impl unanchoring
+	var/was_anchored = anchored
+	e_args.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] starts to [was_anchored ? "unanchor" : "anchor"] [src]."),
+	)
+	if(!use_wrench(I, e_args, flags, 3 SECONDS, 1, TOOL_USAGE_BUILDING_FURNISHINGS | (was_anchored ? TOOL_USAGE_DECONSTRUCT : TOOL_USAGE_CONSTRUCT)))
+		return TRUE
+	if(was_anchored != anchored)
+		return TRUE
+	e_args.visible_feedback(
+		target = src,
+		range = MESSAGE_RANGE_CONSTRUCTION,
+		visible = SPAN_NOTICE("[e_args.performer] [was_anchored ? "unanchors" : "anchors"] [src]."),
+	)
+	anchored = !was_anchored
+	return TRUE

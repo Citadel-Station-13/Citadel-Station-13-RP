@@ -29,6 +29,11 @@
 		remove_mirror(drop_location())
 	return ..()
 
+/obj/machinery/resleeving/resleeving_pod/Exited(atom/movable/AM, atom/newLoc)
+	..()
+	if(AM == held_mirror)
+		held_mirror = null
+
 /obj/machinery/resleeving/resleeving_pod/drop_products(method, atom/where)
 	. = ..()
 	if(held_mirror)
@@ -61,19 +66,67 @@
 		return
 	switch(key)
 		if("remove-mirror")
-	#warn impl
+			if(!e_args.check_performer_reachability(src))
+				return TRUE
+			user_remove_mirror(e_args, TRUE)
+			return TRUE
+
+/obj/machinery/resleeving/resleeving_pod/proc/user_insert_mirror(datum/event_args/actor/actor, obj/item/organ/internal/mirror/mirror, silent, suppressed)
+	if(held_mirror)
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("There's already a mirror in [src]."),
+				target = src,
+			)
+		return FALSE
+	if(!insert_mirror(mirror, actor, silent))
+		return FALSE
+	if(!suppressed)
+		actor.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = SPAN_NOTICE("[actor.performer] inserts [mirror] into [src]."),
+		)
+	return TRUE
+
+/obj/machinery/resleeving/resleeving_pod/proc/user_remove_mirror(datum/event_args/actor/actor, put_in_hands, silent, suppressed)
+	var/obj/item/organ/internal/mirror/removed = remove_mirror(src, actor, silent)
+	if(!removed)
+		if(!silent)
+			actor.chat_feedback(
+				SPAN_WARNING("There's no mirror in [src]."),
+				target = src,
+			)
+		return FALSE
+	if(put_in_hands)
+		actor.performer.put_in_hands_or_drop(removed)
+	else
+		removed.forceMove(drop_location())
+	if(!suppressed)
+		actor.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = SPAN_WARNING("[actor.performer] removes [mirror] from [src]."),
+		)
+	return TRUE
 
 /**
  * @return TRUE/FALSE
  */
 /obj/machinery/resleeving/resleeving_pod/proc/insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor, silent)
-	#warn impl
+	if(held_mirror)
+		return FALSE
+	held_mirror = mirror
+	return TRUE
 
 /**
- * @return TRUE/FALSE
+ * @return mirror or null
  */
-/obj/machinery/resleeving/resleeving_pod/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor, silent)
-	#warn impl
+/obj/machinery/resleeving/resleeving_pod/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor, silent) as /obj/item/organ/internal/mirror
+	if(!held_mirror)
+		return
+	. = held_mirror
+	held_mirror = null
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_resleeve(mob/living/target, obj/item/organ/internal/mirror/mirror)
 	if(!mirror?.recorded_mind?.mind_ref)
