@@ -6,6 +6,7 @@
 import { BooleanLike } from "tgui-core/react";
 import { ResleevingBodyRecord, ResleevingMirrorData } from "../common/Resleeving"
 import { Window } from "../../layouts";
+import { useBackend } from "../../backend";
 
 interface ResleevingDiskData {
   valid: BooleanLike;
@@ -53,6 +54,7 @@ interface ResleevingConsoleContext {
 };
 
 export const ResleevingConsole = (props) => {
+  const {act, data} = useBackend<ResleevingConsoleContext>();
   return (
     <Window>
       <Window.Content>

@@ -21,6 +21,16 @@
 	QDEL_NULL(inserted_mirror)
 	return ..()
 
+/obj/item/mirrortool/drop_products(method, atom/where)
+	. = ..()
+	inserted_mirror?.forceMove(where)
+
+/obj/item/mirrortool/Exited(atom/movable/AM, atom/newLoc)
+	..()
+	if(AM == inserted_mirror)
+		inserted_mirror = null
+		ui_update_mirror()
+
 /obj/item/mirrortool/update_icon_state()
 	icon_state = inserted_mirror ? "mirrortool_loaded" : "mirrortool"
 	return ..()
@@ -105,7 +115,17 @@
 		return
 	switch(action)
 		if("insert")
+			var/obj/item/organ/internal/mirror/held_mirror = actor.performer.get_active_held_item()
+			if(!held_mirror)
+				actor.chat_feedback(SPAN_WARNING("You aren't holding a mirror in your active hand."), target = src)
+				return TRUE
+			user_insert_mirror(held_mirror, actor)
+			return TRUE
 		if("eject")
+			if(!inserted_mirror)
+				return TRUE
+			user_remove_mirror(actor, actor.check_performer_reachability(src))
+			return TRUE
 
 /obj/item/mirrortool/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -132,14 +152,24 @@
 		.["eject-mirror"] = create_context_menu_tuple("eject mirror", image(src), 0, MOBILITY_CAN_USE, FALSE)
 
 /obj/item/mirrortool/proc/user_remove_mirror(datum/event_args/actor/actor, put_in_hands = TRUE)
-	#warn impl
+	if(!inserted_mirror)
+		actor.chat_feedback(
+			SPAN_WARNING("[src] doesn't have a mirror inserted."),
+			target = src,
+		)
+		return TRUE
+	var/obj/item/organ/internal/mirror/removed = remove_mirror(src, actor)
+	if(put_in_hands)
+		actor.performer.put_in_hands_or_drop(removed)
+	else
+		removed.forceMove(drop_location())
+	return TRUE
 
 /obj/item/mirrortool/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor) as /obj/item/organ/internal/mirror
 	if(!inserted_mirror)
 		return null
 	var/obj/item/organ/internal/mirror/old_mirror = inserted_mirror
-	#warn impl
-
+	inserted_mirror = null
 	if(old_mirror.loc == src && new_loc)
 		old_mirror.forceMove(new_loc)
 	on_mirror_removed(old_mirror)
@@ -150,15 +180,26 @@
 	update_icon()
 
 /obj/item/mirrortool/proc/user_insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
-	#warn impl
+	if(inserted_mirror)
+		actor.chat_feedback(
+			SPAN_WARNING("[src] already has a mirror."),
+			target = src,
+		)
+		return FALSE
+	if(!insert_mirror(mirror, actor))
+		return FALSE
+	actor.chat_feedback(
+		SPAN_NOTICE("You insert [mirror] into [src]."),
+		target = src,
+	)
+	return TRUE
 
 /obj/item/mirrortool/proc/insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
 	if(inserted_mirror)
 		return FALSE
 	if(mirror.loc != src)
 		mirror.forceMove(src)
-	#warn impl
-
+	inserted_mirror = mirror
 	on_mirror_inserted(mirror)
 	return TRUE
 
