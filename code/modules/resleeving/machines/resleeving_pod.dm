@@ -129,22 +129,28 @@
 	held_mirror = null
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_resleeve(mob/living/target, obj/item/organ/internal/mirror/mirror)
+	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
+	if(!ishuman(target))
+		return FALSE
+	var/mob/living/carbon/human/casted_human = target
 	if(!mirror?.recorded_mind?.mind_ref)
 		return FALSE
 	// never ever allow sleeve-wiping someone
 	if(target.mind)
+		send_audible_system_message("Occupant has another consciousness.")
 		return FALSE
-	var/datum/mind/checking_mind = mirror.recorded_mind.mind_ref?.resolve()
+	var/datum/resleeving_mind_backup/using_backup = mirror.recorded_mind
+	var/datum/mind/using_mind = using_backup.mind_ref?.resolve()
 	if(!checking_mind)
 		return FALSE
 	// do not allow impersonation
 	if(target.resleeving_check_mind_belongs(checking_mind))
 		return FALSE
-
-	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
-	if(!ishuman(target))
+	// -- POINT OF NO RETURN AFTER THIS CALL --
+	if(!perform_mind_insertion_impl(target, using_mind))
 		return FALSE
-	var/mob/living/carbon/human/casted_human = target
+	if(!perform_backup_insertion_impl(target, using_backup))
+		STACK_TRACE("Failed to perform backup insertion after mind insertion call.")
 
 	var/obj/item/organ/internal/mirror/old_mirror = casted_human.resleeving_remove_mirror(src)
 	casted_human.resleeving_insert_mirror(mirror)
@@ -175,7 +181,6 @@
 		return FALSE
 	var/mob/living/carbon/human/casted_human = target
 	casted_human.identifying_gender = backup.legacy_identifying_gender
-	#warn impl
 
 	for(var/langauge_id in backup.legacy_language_ids)
 		var/datum/prototype/language/resolved_language = RSlanguages.fetch_local_or_throw(langauge_id)
@@ -184,8 +189,7 @@
 	return TRUE
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_mind_insertion_impl(mob/living/target, datum/mind/mind)
-	#warn logging
-
+	log_game("Resleeving pod at [COORD(src)] called by [key_name(usr)] (or unmanned if no key) inserted mind [mind.name] into [key_name(target)] ([REF(target)]).")
 	mind.active = TRUE
 	mind.transfer(target)
 
