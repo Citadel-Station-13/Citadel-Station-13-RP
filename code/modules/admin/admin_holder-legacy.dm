@@ -22,6 +22,7 @@ GLOBAL_PROTECT(href_token)
 	var/href_token
 
 	var/datum/filter_editor/filteriffic
+	var/datum/spawn_menu/spawn_menu
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)

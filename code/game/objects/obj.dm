@@ -786,22 +786,48 @@
 /**
  * Standard wallmount orientation: face away
  */
-/obj/proc/auto_orient_wallmount_single()
+/obj/proc/auto_orient_wallmount_single(shift_amount)
 	for(var/dir in GLOB.cardinal)
 		if(get_step(src, dir)?.get_wallmount_anchor())
 			setDir(turn(dir, 180))
 			return
+	switch(dir)
+		if(SOUTH)
+			set_base_pixel_x(0)
+			set_base_pixel_y(shift_amount)
+		if(NORTH)
+			set_base_pixel_x(0)
+			set_base_pixel_y(-shift_amount)
+		if(WEST)
+			set_base_pixel_x(shift_amount)
+			set_base_pixel_y(0)
+		if(EAST)
+			set_base_pixel_x(-shift_amount)
+			set_base_pixel_y(0)
 
 /**
  * Standard wallmount orientation: face away
  *
  * Directly sets dir without setDir()
  */
-/obj/proc/auto_orient_wallmount_single_preinit()
+/obj/proc/auto_orient_wallmount_single_preinit(shift_amount)
 	for(var/dir in GLOB.cardinal)
 		if(get_step(src, dir)?.get_wallmount_anchor())
 			src.dir = turn(dir, 180)
-			return
+			break
+	switch(dir)
+		if(SOUTH)
+			set_base_pixel_x(0)
+			set_base_pixel_y(shift_amount)
+		if(NORTH)
+			set_base_pixel_x(0)
+			set_base_pixel_y(-shift_amount)
+		if(WEST)
+			set_base_pixel_x(shift_amount)
+			set_base_pixel_y(0)
+		if(EAST)
+			set_base_pixel_x(-shift_amount)
+			set_base_pixel_y(0)
 
 //* Resists *//
 

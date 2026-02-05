@@ -1501,11 +1501,7 @@
 /turf/simulated/floor/tiled,
 /area/station/exploration/hallway_aft/endeavour)
 "bci" = (
-/obj/machinery/power/apc/west_mount{
-	dir = 2;
-	pixel_x = 0;
-	pixel_y = 21
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -5089,9 +5085,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d1aftmaint/endeavour)
 "dJb" = (
-/obj/machinery/power/apc/auto_mount{
-	pixel_y = 22
-	},
+/obj/machinery/power/apc/auto_mount,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -19941,9 +19935,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/power/apc/auto_mount{
-	pixel_y = 22
-	},
+/obj/machinery/power/apc/auto_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -33807,9 +33799,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/endeavour/general)
 "yeZ" = (
-/obj/machinery/power/apc/auto_mount{
-	pixel_y = 22
-	},
+/obj/machinery/power/apc/auto_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},

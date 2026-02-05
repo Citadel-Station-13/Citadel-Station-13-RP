@@ -537,11 +537,7 @@
 /area/rift/surfacebase/underground/under2)
 "yS" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/power/apc/south_mount{
-	dir = 8;
-	pixel_y = 0;
-	pixel_x = 17
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},

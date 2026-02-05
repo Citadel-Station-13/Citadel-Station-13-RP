@@ -331,6 +331,23 @@ GLOBAL_LIST(topic_status_cache)
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
 
+/// Returns TRUE if the world should do a TGS hard reboot.
+/world/proc/check_hard_reboot()
+	if(!TgsAvailable())
+		return FALSE
+	var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
+	switch(ruhr)
+		if(-1)
+			return FALSE
+		if(0)
+			return TRUE
+		else
+			if(GLOB.restart_counter >= ruhr)
+				return TRUE
+			else
+				text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
+				return FALSE
+
 /**
  * byond reboot proc
  *
@@ -358,38 +375,26 @@ GLOBAL_LIST(topic_status_cache)
 	return
 	#endif
 
-	if(TgsAvailable())
-		var/do_hard_reboot
-		// check the hard reboot counter
-		var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
-		switch(ruhr)
-			if(-1)
-				do_hard_reboot = FALSE
-			if(0)
-				do_hard_reboot = TRUE
-			else
-				if(GLOB.restart_counter >= ruhr)
-					do_hard_reboot = TRUE
-				else
-					text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
-					do_hard_reboot = FALSE
-
-		if(do_hard_reboot)
-			log_world("World hard rebooted at [time_stamp()]")
-			shutdown_logging() // See comment below.
-			TgsEndProcess()
+	if(check_hard_reboot())
+		log_world("World hard rebooted at [time_stamp()]")
+		shutdown_logging() // See comment below.
+		TgsEndProcess()
+		return ..()
 
 	log_world("World rebooted at [time_stamp()]")
 
-	TgsReboot()
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+
+	TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
+
 
 	//! Shutdown Auxtools
 	// AUXTOOLS_SHUTDOWN(AUXTOOLS_YAML)
 
 	//! Finale
 	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
-	sleep(1 SECONDS)
+	// sleep(1 SECONDS) no, rustg should cease beyond this point (no logging)
+
 	..()
 
 /world/Del()
@@ -520,6 +525,7 @@ GLOBAL_LIST(topic_status_cache)
 /world/proc/max_z_changed(old_z_count, new_z_count)
 	assert_players_by_zlevel_list()
 	assert_gps_level_list()
+	assert_high_altitude_signal_list()
 	for(var/datum/controller/subsystem/S in Master.subsystems)
 		S.on_max_z_changed(old_z_count, new_z_count)
 
