@@ -97,10 +97,11 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 		ui.open()
 
 /obj/machinery/airlock_component/controller/ui_data(mob/user, datum/tgui/ui)
-	return system ? controller.system.ui_data(arglist(args)) : list()
+	return system ? system.ui_data(arglist(args)) : list()
 
 /obj/machinery/airlock_component/controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
-	return system ? controller.system.ui_act(arglist(args)) : TRUE
+	SHOULD_CALL_PARENT(FALSE)
+	return system ? system.ui_act(arglist(args)) : TRUE
 
 /obj/machinery/airlock_component/controller/ui_status(mob/user, datum/ui_state/state)
 	if(!system)

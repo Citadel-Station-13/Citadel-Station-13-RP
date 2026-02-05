@@ -26,6 +26,7 @@
 	return controller?.system ? controller.system.ui_data(arglist(args)) : list()
 
 /obj/machinery/airlock_peripheral/panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	SHOULD_CALL_PARENT(FALSE)
 	return controller?.system ? controller.system.ui_act(arglist(args)) : TRUE
 
 /obj/machinery/airlock_peripheral/panel/ui_status(mob/user, datum/ui_state/state)
