@@ -95,11 +95,30 @@
 			return TRUE
 		if("printBody")
 			var/printer_ref = params["printerRef"]
-			var/body_ref
-			#warn impl
+			var/body_ref = params["bodyRef"]
+			if(!istext(printer_ref) || istext(body_ref))
+				return TRUE
+			var/obj/machinery/resleeving/body_printer/printer = locate(printer_ref) in linked_resleeving_machinery
+			if(!printer)
+				return TRUE
+			var/datum/resleeving_body_backup/body = locate_stored_body_ref(body_ref)
+			if(!body)
+				return TRUE
+			printer.start_body(body)
+			return TRUE
 		if("resleeve")
 			var/sleever_ref = params["sleeverRef"]
-			#warn impl
+			if(!istext(sleever_ref))
+				return TRUE
+			var/obj/machinery/resleeving/resleeving_pod/sleever = locate(sleever_ref) in linked_resleeving_machinery
+			if(!sleever)
+				return TRUE
+			if(!sleever.held_mirror)
+				return TRUE
+			if(!sleever.machine_occupant_pod?.occupant)
+				return TRUE
+			sleever.perform_resleeve(sleever.machine_occupant_pod.occupant, sleever.held_mirror)
+			return TRUE
 		if("removeMirror")
 			user_yank_mirror(actor, TRUE)
 			return TRUE
@@ -111,7 +130,33 @@
 	. = ..()
 	.["relinkOnCooldown"] = world.time > (last_relink + last_relink_throttle)
 	.["insertedDisk"] = inserted_disk ? list() : null
-	.["insertedMirror"] = inserted_mirror ? list() : null
+	.["insertedMirror"] = inserted_mirror?.ui_serialize()
+
+	/**
+	 * Special format;
+	 * name: str
+	 * synthetic: booleanlike
+	 * ref: str
+	 * source: str
+	 */
+	var/list/body_record_datas = list()
+	.["bodyRecords"] = body_record_datas
+	if(inserted_disk)
+		if(inserted_disk.buf.dna)
+			body_record_datas[++body_record_datas.len] = list(
+				"name" = inserted_disk.buf.dna.real_name,
+				"synthetic" = FALSE,
+				"ref" = ref(inserted_disk),
+				"source" = "DNA Disk (Console)",
+			)
+	if(inserted_mirror?.recorded_body)
+		var/datum/resleeving_body_backup/body_rec = inserted_mirror?.recorded_body
+		body_record_datas[++body_record_datas.len] = list(
+			"name" = body_rec.legacy_dna.name || "Unknown",
+			"synthetic" = body_rec.legacy_synthetic,
+			"ref" = ref(inserted_mirror),
+			"source" = "Mirror (Console)"
+		)
 
 	var/list/resleeving_pod_datas = list()
 	var/list/body_printer_datas = list()
@@ -204,3 +249,26 @@
 			)
 	inserted_disk = null
 	return TRUE
+
+/obj/machinery/computer/resleeving/proc/locate_stored_body_ref(ref_text)
+	// sometimes i think about the fact that this is just memory address checks lmfao
+	// maybe we should stop leaking refs to players but i don't really care
+	// what are they gonna do, topic() bomb/brute force?? just don't take ref input
+	// from players 4head..
+	if(inserted_mirror && ref_text == ref(inserted_mirror))
+		// is mirror body, just use it
+		return inserted_mirror.recorded_body
+	if(inserted_disk && ref_text == ref(inserted_disk))
+		// is inserted disk, we need to create one with it
+		return attempt_adapt_old_dna2_disk_to_body_record(inserted_disk)
+
+/obj/machinery/computer/resleeving/proc/attempt_adapt_old_dna2_disk_to_body_record(obj/item/disk/data/disk)
+	var/datum/dna2/record/buffer = disk.buf
+	if(!buffer)
+		return
+	var/datum/resleeving_body_backup/transforming = new
+	transforming.legacy_dna = buffer
+	var/datum/species/resolved_species = SScharacters.resolve_species_name(buffer.dna.species) || SScharacters.resolve_species_path(/datum/species/human)
+	transforming.legacy_species_uid = resolved_species.uid
+	transforming.legacy_gender = buffer.gender || MALE
+	return transforming

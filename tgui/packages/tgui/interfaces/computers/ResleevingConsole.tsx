@@ -36,10 +36,18 @@ interface LinkedPrinter {
   allowSynthetic: BooleanLike;
 };
 
+interface BodyRecord {
+  name: string;
+  synthetic: BooleanLike;
+  ref: string;
+  source: string;
+};
+
 interface ResleevingConsoleContext {
   insertedMirror: ResleevingMirrorData | null;
   insertedDisk: ResleevingDiskData | null;
   relinkOnCooldown: BooleanLike;
+  bodyRecords: BodyRecord[];
   sleevePods: LinkedSleever[];
   bodyPrinters: LinkedPrinter[];
 };
