@@ -7,7 +7,7 @@
 	icon = 'icons/machinery/airlocks/map_helpers.dmi'
 	icon_state = "linker"
 	late = TRUE
-	maptext = MAPTEXT_CENTER("Airlock Linker")
+	maptext = MAPTEXT_CENTER_CONST("Airlock Linker")
 	maptext_y = 32
 
 	/// airlock ID to link to; will be automatically mangled
