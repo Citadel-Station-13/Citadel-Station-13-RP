@@ -4,8 +4,11 @@
 /obj/map_helper/airlock_peripheral_linker
 	name = "airlock peripheral linker"
 	desc = "Sets airlock ID on airlock peripherals"
-	#warn sprite
+	icon = 'icons/machinery/airlocks/map_helpers.dmi'
+	icon_state = "linker"
 	late = TRUE
+	maptext = MAPTEXT_CENTER("Airlock Linker")
+	maptext_y = 32
 
 	/// airlock ID to link to; will be automatically mangled
 	var/set_controller_id
