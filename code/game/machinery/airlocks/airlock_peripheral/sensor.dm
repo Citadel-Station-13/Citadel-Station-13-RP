@@ -3,6 +3,7 @@
 
 // todo: buildable
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor, 22)
 /obj/machinery/airlock_peripheral/sensor
 	name = "airlock sensor"
 	desc = "A multi-purpose environment analyzer for an airlock. Doubles as a button for when you need to get in or out."
@@ -60,21 +61,13 @@
 /obj/machinery/airlock_peripheral/sensor/proc/on_cycle_request(datum/event_args/actor/actor)
 	controller?.on_sensor_cycle_request(src, actor)
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/hardmapped, 22)
 /obj/machinery/airlock_peripheral/sensor/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE
 
-/obj/machinery/airlock_peripheral/sensor/sensor_only
-	name = "airlock reader"
-	desc = "An environment analyzer for an airlock. Don't block the front!"
-	is_button = FALSE
-	is_sensor = TRUE
-
-/obj/machinery/airlock_peripheral/sensor/sensor_only/hardmapped
-	integrity_flags = INTEGRITY_INDESTRUCTIBLE
-	hardmapped = TRUE
-
-/obj/machinery/airlock_peripheral/sensor/button_only
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/button, 22)
+/obj/machinery/airlock_peripheral/sensor/button
 	name = "airlock button"
 	desc = "A cycle button for an airlock."
 	is_sensor = FALSE
@@ -82,52 +75,47 @@
 	icon_state = "button"
 	base_icon_state = "button"
 
-/obj/machinery/airlock_peripheral/sensor/button_only/hardmapped
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/button/hardmapped, 22)
+/obj/machinery/airlock_peripheral/sensor/button/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE
 
-/obj/machinery/airlock_peripheral/sensor/sensor_only/exterior
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/button/exterior, 22)
+/obj/machinery/airlock_peripheral/sensor/button/exterior
 	sidedness = AIRLOCK_SIDE_EXTERIOR
 
-/obj/machinery/airlock_peripheral/sensor/sensor_only/exterior/hardmapped
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/button/exterior/hardmapped, 22)
+/obj/machinery/airlock_peripheral/sensor/button/exterior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE
 
-/obj/machinery/airlock_peripheral/sensor/sensor_only/interior
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/button/interior, 22)
+/obj/machinery/airlock_peripheral/sensor/button/interior
 	sidedness = AIRLOCK_SIDE_INTERIOR
 
-/obj/machinery/airlock_peripheral/sensor/sensor_only/interior/hardmapped
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/button/interior/hardmapped, 22)
+/obj/machinery/airlock_peripheral/sensor/button/interior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE
 
-/obj/machinery/airlock_peripheral/sensor/button_only/exterior
-	sidedness = AIRLOCK_SIDE_EXTERIOR
-
-/obj/machinery/airlock_peripheral/sensor/button_only/exterior/hardmapped
-	integrity_flags = INTEGRITY_INDESTRUCTIBLE
-	hardmapped = TRUE
-
-/obj/machinery/airlock_peripheral/sensor/button_only/interior
-	sidedness = AIRLOCK_SIDE_INTERIOR
-
-/obj/machinery/airlock_peripheral/sensor/button_only/interior/hardmapped
-	integrity_flags = INTEGRITY_INDESTRUCTIBLE
-	hardmapped = TRUE
-
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/exterior, 22)
 /obj/machinery/airlock_peripheral/sensor/exterior
 	sidedness = AIRLOCK_SIDE_EXTERIOR
 	is_button = TRUE
 	is_sensor = TRUE
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/exterior/hardmapped, 22)
 /obj/machinery/airlock_peripheral/sensor/exterior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/interior, 22)
 /obj/machinery/airlock_peripheral/sensor/interior
 	sidedness = AIRLOCK_SIDE_INTERIOR
 	is_button = TRUE
 	is_sensor = TRUE
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor/interior/hardmapped, 22)
 /obj/machinery/airlock_peripheral/sensor/interior/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE

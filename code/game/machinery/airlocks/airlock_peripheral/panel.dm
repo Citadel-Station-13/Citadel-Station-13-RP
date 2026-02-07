@@ -3,6 +3,7 @@
 
 // todo: buildable
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/panel, 24)
 /obj/machinery/airlock_peripheral/panel
 	name = "airlock panel"
 	desc = "A control panel for an airlock, linked to its main controller."
@@ -23,7 +24,7 @@
 		icon_state = "[base_icon_state]-off"
 	else
 		icon_state = "[base_icon_state]"
-	// todo: handle 'operating'
+	// todo: handle 'operating' as "[base_icon_state]-active"
 
 /obj/machinery/airlock_peripheral/panel/on_controller_leave(obj/machinery/airlock_component/controller/controller)
 	..()
@@ -51,6 +52,7 @@
 		return UI_CLOSE
 	return ..()
 
+CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/panel/hardmapped, 24)
 /obj/machinery/airlock_peripheral/panel/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE

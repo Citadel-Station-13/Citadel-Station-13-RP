@@ -2919,6 +2919,12 @@
 /obj/landmark/spawnpoint/overflow/station,
 /turf/simulated/floor/tiled,
 /area/bridge)
+"il" = (
+/obj/machinery/light,
+/obj/map_helper/airlock_peripheral_linker,
+/obj/machinery/airlock_peripheral/sensor/interior/hardmapped/south_mount,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "iw" = (
 /obj/structure/railing,
 /obj/structure/railing,
@@ -2941,6 +2947,9 @@
 /obj/orbital_deployment_marker/corner/lower_right,
 /turf/space,
 /area/space)
+"ko" = (
+/turf/simulated/wall,
+/area/bridge)
 "kU" = (
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/green,
@@ -3088,6 +3097,8 @@
 /area/ai_monitored/storage/eva)
 "rq" = (
 /obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_peripheral_linker,
+/obj/machinery/airlock_peripheral/panel/hardmapped/north_mount,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "ru" = (
@@ -3292,7 +3303,9 @@
 /area/bridge)
 "yh" = (
 /obj/structure/airlock_interconnect/hardmapped,
-/obj/machinery/airlock_component/controller,
+/obj/machinery/airlock_component/controller{
+	airlock_id = "test-1"
+	},
 /turf/simulated/floor/tiled,
 /area/bridge)
 "yF" = (
@@ -3909,6 +3922,11 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"Ur" = (
+/obj/map_helper/airlock_peripheral_linker,
+/obj/machinery/airlock_peripheral/sensor/exterior/hardmapped/auto_mount,
+/turf/space,
+/area/space)
 "UY" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Cafe";
@@ -6438,8 +6456,8 @@ gf
 gf
 gf
 fY
-Ys
-Ys
+ko
+ko
 Ys
 nY
 nY
@@ -6542,7 +6560,7 @@ gf
 vd
 YE
 gf
-Ys
+ko
 nY
 nY
 nY
@@ -6644,8 +6662,8 @@ gf
 Aj
 yh
 gf
-Ys
-nY
+ko
+Ur
 nY
 nY
 nY
@@ -6742,8 +6760,8 @@ gf
 gf
 gf
 gf
-gE
-fY
+il
+ko
 rq
 gf
 Ys
