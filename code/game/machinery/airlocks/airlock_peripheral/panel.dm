@@ -6,7 +6,24 @@
 /obj/machinery/airlock_peripheral/panel
 	name = "airlock panel"
 	desc = "A control panel for an airlock, linked to its main controller."
-	#warn sprite
+	icon = 'icons/machinery/airlocks/airlock_panel.dmi'
+	icon_state = "panel"
+	base_icon_state = "panel"
+
+// TODO: on_power_change
+/obj/machinery/airlock_peripheral/panel/power_change()
+	. = ..()
+	if(!.)
+		return
+	update_icon()
+
+/obj/machinery/airlock_peripheral/panel/update_icon(updates)
+	. = ..()
+	if(machine_stat & NOPOWER)
+		icon_state = "[base_icon_state]-off"
+	else
+		icon_state = "[base_icon_state]"
+	// todo: handle 'operating'
 
 /obj/machinery/airlock_peripheral/panel/on_controller_leave(obj/machinery/airlock_component/controller/controller)
 	..()

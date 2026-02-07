@@ -6,9 +6,9 @@
 /obj/machinery/airlock_peripheral/sensor
 	name = "airlock sensor"
 	desc = "A multi-purpose environment analyzer for an airlock. Doubles as a button for when you need to get in or out."
-
-	#warn sprite
-	#warn impl
+	icon = 'icons/machinery/airlocks/airlock_sensor.dmi'
+	icon_state = "sensor"
+	base_icon_state = "sensor"
 
 	/// if set, autodetect airlocks will consider this to be the authoritative sensor for that side.
 	/// only one active inside / outside sensor each are allowed.
@@ -18,6 +18,22 @@
 	var/is_button = FALSE
 	/// functions as a sensor. if this is off, the airlock won't use us as the sensor.
 	var/is_sensor = FALSE
+
+// TODO: on_power_change
+/obj/machinery/airlock_peripheral/sensor/power_change()
+	. = ..()
+	if(!.)
+		return
+	update_icon()
+
+/obj/machinery/airlock_peripheral/sensor/update_icon(updates)
+	. = ..()
+	if(machine_stat & NOPOWER)
+		icon_state = "[base_icon_state]-off"
+	else
+		icon_state = "[base_icon_state]"
+	// todo: handle 'operating' as "[base_icon_state]-active"
+	// todo: handle 'alert' if 'is_sensor' as "[base_icon_state]-alert"
 
 /**
  * Returned air must **never** be edited!
@@ -63,6 +79,8 @@
 	desc = "A cycle button for an airlock."
 	is_sensor = FALSE
 	is_button = TRUE
+	icon_state = "button"
+	base_icon_state = "button"
 
 /obj/machinery/airlock_peripheral/sensor/button_only/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
