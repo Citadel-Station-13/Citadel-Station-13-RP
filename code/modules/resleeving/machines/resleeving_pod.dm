@@ -134,6 +134,7 @@
 		return FALSE
 	var/mob/living/carbon/human/casted_human = target
 	if(!mirror?.recorded_mind?.mind_ref)
+		send_audible_system_message("Mirror is empty.")
 		return FALSE
 	// never ever allow sleeve-wiping someone
 	if(target.mind)
@@ -141,10 +142,10 @@
 		return FALSE
 	var/datum/resleeving_mind_backup/using_backup = mirror.recorded_mind
 	var/datum/mind/using_mind = using_backup.mind_ref?.resolve()
-	if(!checking_mind)
+	if(!using_mind)
 		return FALSE
 	// do not allow impersonation
-	if(target.resleeving_check_mind_belongs(checking_mind))
+	if(target.resleeving_check_mind_belongs(using_mind))
 		return FALSE
 	// -- POINT OF NO RETURN AFTER THIS CALL --
 	if(!perform_mind_insertion_impl(target, using_mind))

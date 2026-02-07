@@ -55,8 +55,11 @@
 
 /**
  * Checks if a mind should be accepted.
+ * * Accepts null minds.
  */
 /mob/proc/resleeving_check_mind_belongs(datum/mind/use_mind)
+	if(!use_mind)
+		return FALSE
 	if(!mind_resleeving_lock)
 		return TRUE
 	return use_mind.mind_ref == mind_resleeving_lock

@@ -62,11 +62,35 @@
 		return
 	if(istype(target, /obj/item/organ/internal/mirror))
 		var/obj/item/organ/internal/mirror/mirror = target
-		#warn impl
+		if(inserted_mirror)
+			clickchain.chat_feedback(
+				SPAN_WARNING("[src] already has an inserted mirror."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(mirror.inv_inside)
+			if(!mirror.inv_inside.owner.transfer_item_to_loc(mirror, src))
+				clickchain.chat_feedback(
+					SPAN_WARNING("[src] is stuck to [mirror.inv_inside.owner == clickchain.performer ? "your" : "[mirror.inv_inside.owner]'s"] hands."),
+					target = src,
+				)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		else
+			mirror.forceMove(src)
+		if(!user_insert_mirror(mirror, clickchain))
+			mirror.forceMove(drop_location())
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(ismob(target))
 		var/mob/casted_mob = target
 		if(casted_mob.resleeving_supports_mirrors())
-			if(casted_mob.resleeving_get_mirror())
+			clickchain.visible_feedback(
+				target = target,
+				range = MESSAGE_RANGE_COMBAT_LOUD,
+				visible = SPAN_WARNING("[clickchain.performer] aligns [src] with [target]'s spine..."),
+			)
+			if(!do_after(clickchain.performer, 3 SECONDS, target))
+				return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!inserted_mirror)
 				user_yank_mirror_from_mob(target, clickchain)
 				return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 			else
@@ -90,18 +114,108 @@
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/mirrortool/proc/user_yank_mirror_from_mob(mob/target, datum/event_args/actor/actor, silent) as /obj/item/organ/internal/mirror
-	#warn impl
+	if(inserted_mirror)
+		actor.visible_feedback(
+			target = target,
+			range = MESSAGE_RANGE_COMBAT_LOUD,
+			otherwise_self = SPAN_WARNING("[src] already has a mirror in it."),
+			visible = SPAN_WARNING("[src] makes a beep and disengages."),
+		)
+		return FALSE
+	if(!target.resleeving_get_mirror())
+		actor.visible_feedback(
+			target = target,
+			range = MESSAGE_RANGE_COMBAT_LOUD,
+			otherwise_self = SPAN_WARNING("[target] doesn't have a mirror."),
+			visible = SPAN_WARNING("[src] makes a beep and disengages."),
+		)
+		return FALSE
+	actor.visible_feedback(
+		target = target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[actor.performer] starts extracting [target]'s mirror with [src]!"),
+	)
+	if(!do_after(actor.performer, IS_DEAD(target) ? 2.5 SECONDS : 7.5 SECONDS, target))
+		return FALSE
+	if(inserted_mirror)
+		return FALSE
+	var/obj/item/organ/internal/mirror/removed = target.resleeving_remove_mirror()
+	if(!removed)
+		return FALSE
+	log_game("[actor.actor_log_string()] removed [key_name(target)]'s mirror with [src].")
+	if(!insert_mirror(removed, actor))
+		return FALSE
+	actor.visible_feedback(
+		target = target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[actor.performer] extracts [target]'s mirror with src!"),
+	)
+	return TRUE
 
 /obj/item/mirrortool/proc/user_inject_mirror_into_mob(mob/target, datum/event_args/actor/actor, silent)
 	var/obj/item/organ/internal/mirror/inserting_mirror = inserted_mirror
-	#warn impl
+	if(!inserted_mirror)
+		actor.visible_feedback(
+			target = target,
+			range = MESSAGE_RANGE_COMBAT_LOUD,
+			otherwise_self = SPAN_WARNING("[src] doesn't have a mirror in it."),
+			visible = SPAN_WARNING("[src] makes a beep and disengages."),
+		)
+		return FALSE
+	if(target.resleeving_get_mirror())
+		actor.visible_feedback(
+			target = target,
+			range = MESSAGE_RANGE_COMBAT_LOUD,
+			otherwise_self = SPAN_WARNING("[target] already has a mirror."),
+			visible = SPAN_WARNING("[src] makes a beep and disengages."),
+		)
+		return FALSE
+	actor.visible_feedback(
+		target = target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[actor.performer] starts injecting something with [src] into the base of [target]'s neck!"),
+	)
+	if(!do_after(actor.performer, IS_DEAD(target) ? 2.5 SECONDS : 7.5 SECONDS, target))
+		return FALSE
+	if(!inserted_mirror)
+		return FALSE
+	if(target.resleeving_get_mirror())
+		return FALSE
+	var/mirror_descriptor
+	if(!inserted_mirror.owner_mind_ref)
+		mirror_descriptor = "mirror was empty"
+	else if(target.resleeving_check_mind_belongs(inserted_mirror.owner_mind_ref.resolve))
+		mirror_descriptor = "mirror is mismatched"
+	else
+		mirror_descriptor = "mirror seems to match"
+	if(!target.resleeving_insert_mirror(inserted_mirror))
+		inserted_mirror.forceMove(drop_location())
+		STACK_TRACE("mirror insert failed after PNR")
+		return FALSE
+	log_game("[actor.actor_log_string()] inserted a mirror into [key_name(target)] [src]; [mirror_descriptor].")
+	if(!insert_mirror(removed, actor))
+		return FALSE
+	actor.visible_feedback(
+		target = target,
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+		visible = SPAN_WARNING("[actor.performer] injects a mirror into the base of [target]'s neck!"),
+	)
+	return TRUE
 
 /obj/item/mirrortool/proc/yank_mirror_from_mob(mob/target, datum/event_args/actor/actor, silent) as /obj/item/organ/internal/mirror
-	#warn impl
+	if(inserted_mirror)
+		return null
+	var/obj/item/organ/internal/mirror/removed = target.resleeving_remove_mirror(src)
+	if(!removed)
+		return null
+	insert_mirror(removed, actor)
+	return removed
 
 /obj/item/mirrortool/proc/inject_mirror_into_mob(mob/target, datum/event_args/actor/actor, silent)
 	var/obj/item/organ/internal/mirror/inserting_mirror = inserted_mirror
-	#warn impl
+	if(!target.resleeving_insert_mirror(inserting_mirror))
+		return FALSE
+	return TRUE
 
 /obj/item/mirrortool/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -206,48 +320,3 @@
 /obj/item/mirrortool/proc/on_mirror_inserted(obj/item/organ/internal/mirror/mirror)
 	ui_update_mirror()
 	update_icon()
-
-#warn below
-
-// /obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-// 	var/mob/living/carbon/human/H = target
-// 	if(user.zone_sel.selecting == BP_TORSO && imp == null)
-// 		if(imp == null && H.mirror)
-// 			H.visible_message("<span class='warning'>[user] is attempting remove [H]'s mirror!</span>")
-// 			user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
-// 			user.do_attack_animation(H)
-// 			var/turf/T1 = get_turf(H)
-// 			if (T1 && ((H == user) || do_after(user, 20)))
-// 				if(user && H && (get_turf(H) == T1) && src)
-// 					H.visible_message("<span class='warning'>[user] has removed [H]'s mirror.</span>")
-// 					add_attack_logs(user,H,"Mirror removed by [user]")
-// 					src.imp = H.mirror
-// 					H.mirror = null
-// 					update_icon()
-// 		else
-// 			to_chat(usr, "This person has no mirror installed.")
-
-// 	else if (user.zone_sel.selecting == BP_TORSO && imp != null)
-// 		if (imp)
-// 			if(!H.client)
-// 				to_chat(usr, "Manual mirror transplant into mindless body not supported, please use the resleeving console.")
-// 				return
-// 			if(H.mirror)
-// 				to_chat(usr, "This person already has a mirror!")
-// 				return
-// 			if(!H.mirror)
-// 				H.visible_message("<span class='warning'>[user] is attempting to implant [H] with a mirror.</span>")
-// 				user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN)
-// 				user.do_attack_animation(H)
-// 				var/turf/T1 = get_turf(H)
-// 				if (T1 && ((H == user) || do_after(user, 20)))
-// 					if(user && H && (get_turf(H) == T1) && src && src.imp)
-// 						H.visible_message("<span class='warning'>[H] has been implanted by [user].</span>")
-// 						add_attack_logs(user,H,"Implanted with [imp.name] using [name]")
-// 						if(imp.handle_implant(H))
-// 							imp.post_implant(H)
-// 						src.imp = null
-// 						update_icon()
-// 	else
-// 		to_chat(usr, "You must target the torso.")
-// 	return CLICKCHAIN_DO_NOT_PROPAGATE
