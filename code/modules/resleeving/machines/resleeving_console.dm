@@ -129,7 +129,10 @@
 /obj/machinery/computer/resleeving/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["relinkOnCooldown"] = world.time > (last_relink + last_relink_throttle)
-	.["insertedDisk"] = inserted_disk ? list() : null
+	.["insertedDisk"] = inserted_disk ? list(
+		"name" = inserted_disk.name,
+		"valid" = attempt_adapt_old_dna2_disk_to_body_record(inserted_disk),
+	) : null
 	.["insertedMirror"] = inserted_mirror?.ui_serialize()
 
 	/**
