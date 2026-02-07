@@ -22,6 +22,7 @@ import {
 } from 'tgui-core/components';
 import { useState } from 'react';
 import { recallWindowGeometry } from '../../drag';
+import { round } from 'tgui-core/math';
 
 interface ResleevingDiskData {
   valid: BooleanLike;
@@ -144,14 +145,28 @@ export const ResleevingConsole = (props) => {
                         <Box>
                           <Stack vertical>
                             <Stack.Item>
-                          <LabeledList>
-                            <LabeledList.Item label="Name">{rec.name}</LabeledList.Item>
-                            <LabeledList.Item label="Source">{rec.source}</LabeledList.Item>
-                            <LabeledList.Item label="Type">{rec.synthetic ? "Synthetic" : "Organic"}</LabeledList.Item>
-                          </LabeledList>
+                              <LabeledList>
+                                <LabeledList.Item label="Name">
+                                  {rec.name}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Source">
+                                  {rec.source}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Type">
+                                  {rec.synthetic ? 'Synthetic' : 'Organic'}
+                                </LabeledList.Item>
+                              </LabeledList>
                             </Stack.Item>
                             <Stack.Item>
-                              <Button onClick={() => setSelectedBodyRecord(rec.ref)} selected={selectedBodyRecord === rec.ref} fluid>{selectedBodyRecord === rec.ref ? "Selected" : "Select"}</Button>
+                              <Button
+                                onClick={() => setSelectedBodyRecord(rec.ref)}
+                                selected={selectedBodyRecord === rec.ref}
+                                fluid
+                              >
+                                {selectedBodyRecord === rec.ref
+                                  ? 'Selected'
+                                  : 'Select'}
+                              </Button>
                             </Stack.Item>
                           </Stack>
                         </Box>
@@ -173,34 +188,111 @@ export const ResleevingConsole = (props) => {
             >
               <Stack vertical fill>
                 {data.bodyPrinters.map((printer) => {
-                  return <Stack.Item key={printer.ref}>Test</Stack.Item>;
+                  return (
+                    <Stack.Item key={printer.ref}>
+                      <Box
+                        style={{
+                          borderLeft: '1px solid #ffffff',
+                          borderRight: '1px solid #ffffff',
+                        }}
+                      >
+                        <Stack vertical fill>
+                          <Stack.Item>
+                            <h3 style={{ textAlign: 'center' }}>
+                              {printer.name}
+                            </h3>
+                          </Stack.Item>
+                          <Stack.Item>
+                            <LabeledList>
+                              <LabeledList.Item label="Status">
+                                {printer.busy
+                                  ? `Producing record of species ${printer.busy.record.speciesName} %${round(printer.busy.progressRatio * 100, 0.1)}`
+                                  : 'Standby'}
+                              </LabeledList.Item>
+                              <LabeledList.Item label="Supports Organics">
+                                {printer.allowOrganic ? 'Yes' : 'No'}
+                              </LabeledList.Item>
+                              <LabeledList.Item label="Supports Syntehtics">
+                                {printer.allowSynthetic ? 'Yes' : 'No'}
+                              </LabeledList.Item>
+                            </LabeledList>
+                          </Stack.Item>
+                          <Stack.Item>
+                            <Button.Confirm
+                              fluid
+                              disabled={
+                                !!printer.busy || !isSelectedBodyRecordValid
+                              }
+                            >
+                              {printer.busy
+                                ? 'Busy'
+                                : !isSelectedBodyRecordValid
+                                  ? 'Select Body Record'
+                                  : 'Print'}
+                            </Button.Confirm>
+                          </Stack.Item>
+                        </Stack>
+                      </Box>
+                    </Stack.Item>
+                  );
                 })}
                 {data.sleevePods.map((pod) => {
-                  return <Stack.Item key={pod.ref}>
-                    <Box style={{borderLeft: "1px solid #ffffff", borderRight: "1px solid #ffffff"}}>
-                      <Stack vertical fill>
-                        <Stack.Item>
-                      <h3 style={{textAlign: "center"}}>{pod.name}</h3>
-                        </Stack.Item>
-                        <Stack.Item>
-                          {pod.occupied ? (
-                            <LabeledList>
-<LabeledList.Item label="Occupant">{pod.occupied.name}</LabeledList.Item>
-<LabeledList.Item label="Mind Imprinted">{pod.occupied.hasMind ? "Active" : "Empty"}</LabeledList.Item>
-<LabeledList.Item label="Supports Mirrors">{pod.occupied.compatibleWithMirror ? "Yes" : "No"}</LabeledList.Item>
-<LabeledList.Item label="Status">{pod.occupied.stat === 'conscious' ? "Conscious" : (pod.occupied.stat === 'dead' ? "Dead" : "Unconscious")}</LabeledList.Item>
-                            </LabeledList>
-                          ) : (
-                            <Dimmer><NoticeBox>No inserted occupant</NoticeBox></Dimmer>
-                          )}
-
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Button.Confirm fluid disabled={!pod.mirror || !pod.occupied}>{!pod.mirror ? "Insert Mirror" : (!pod.occupied ? "Insert Occupant" : "Sleeve")}</Button.Confirm>
-                        </Stack.Item>
-                      </Stack>
+                  return (
+                    <Stack.Item key={pod.ref}>
+                      <Box
+                        style={{
+                          borderLeft: '1px solid #ffffff',
+                          borderRight: '1px solid #ffffff',
+                        }}
+                      >
+                        <Stack vertical fill>
+                          <Stack.Item>
+                            <h3 style={{ textAlign: 'center' }}>{pod.name}</h3>
+                          </Stack.Item>
+                          <Stack.Item>
+                            {pod.occupied ? (
+                              <LabeledList>
+                                <LabeledList.Item label="Occupant">
+                                  {pod.occupied.name}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Mind Imprinted">
+                                  {pod.occupied.hasMind ? 'Active' : 'Empty'}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Supports Mirrors">
+                                  {pod.occupied.compatibleWithMirror
+                                    ? 'Yes'
+                                    : 'No'}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Status">
+                                  {pod.occupied.stat === 'conscious'
+                                    ? 'Conscious'
+                                    : pod.occupied.stat === 'dead'
+                                      ? 'Dead'
+                                      : 'Unconscious'}
+                                </LabeledList.Item>
+                              </LabeledList>
+                            ) : (
+                              <Dimmer>
+                                <NoticeBox>No inserted occupant</NoticeBox>
+                              </Dimmer>
+                            )}
+                          </Stack.Item>
+                          <Stack.Item>
+                            <Button.Confirm
+                              fluid
+                              disabled={!pod.mirror || !pod.occupied}
+                            >
+                              {!pod.mirror
+                                ? 'Insert Mirror'
+                                : !pod.occupied
+                                  ? 'Insert Occupant'
+                                  : 'Sleeve'}
+                            </Button.Confirm>
+                          </Stack.Item>
+                        </Stack>
                       </Box>
-                  </Stack.Item>;
+                    </Stack.Item>
+                  );
                 })}
               </Stack>
             </Section>
