@@ -54,6 +54,7 @@
 /obj/item/organ/internal/mirror/replaced(mob/living/carbon/human/target, obj/item/organ/external/affected)
 	. = ..()
 	try_backup_process()
+	last_auto_backup = world.time
 
 /obj/item/organ/internal/mirror/removed(mob/living/user, ignore_vital)
 	..()
@@ -91,8 +92,8 @@
 	if(state != STATE_ACTIVE)
 		return
 
-	recorded_body = new(owner)
-	recorded_mind = new(owner)
+	recorded_body = new(target)
+	recorded_mind = new(target)
 
 /obj/item/organ/internal/mirror/update_icon_state()
 	if(owner_mind_ref && recorded_body && recorded_mind)

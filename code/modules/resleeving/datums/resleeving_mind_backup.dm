@@ -43,11 +43,12 @@
 	do
 		// sigh, grab their languages from their mob
 		src.legacy_language_ids = list()
-		for(var/lang_name in from_mind.current?.languages)
-			var/datum/prototype/language/lang = RSlanguages.legacy_resolve_language_name(lang_name)
+		for(var/datum/prototype/language/lang as anything in from_mind.current?.languages)
+			if(!istype(lang))
+				STACK_TRACE("non-language-datum '[lang]' found")
 			src.legacy_language_ids += lang.id
 	while(FALSE)
 
 	if(ishuman(from_mind.current))
-		var/mob/living/carbon/human/casted_current_human = from_mind.current
+		qvar/mob/living/carbon/human/casted_current_human = from_mind.current
 		legacy_identifying_gender = casted_current_human.identifying_gender
