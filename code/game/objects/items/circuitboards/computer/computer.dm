@@ -82,11 +82,6 @@
 	build_path = /obj/machinery/computer/drone_control
 	origin_tech = list(TECH_DATA = 3)
 
-/obj/item/circuitboard/cloning
-	name = T_BOARD("cloning control console")
-	build_path = /obj/machinery/computer/cloning
-	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
-
 /obj/item/circuitboard/arcade/amputation
 	name = T_BOARD("mediborg's amputation adventure")
 	build_path = /obj/machinery/computer/arcade/amputation

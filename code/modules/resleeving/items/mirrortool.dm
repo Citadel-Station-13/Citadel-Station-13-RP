@@ -1,4 +1,3 @@
-// TODO: /mirror_tool
 /obj/item/mirrortool
 	name = "Mirror Installation Tool"
 	desc = "A tool for the installation and removal of Mirrors. The tool has a set of barbs for removing Mirrors from a body, and a slot for depositing it directly into a resleeving console."
@@ -181,20 +180,21 @@
 		return FALSE
 	if(target.resleeving_get_mirror())
 		return FALSE
+	var/obj/item/organ/internal/mirror/inserting = remove_mirror(target, actor)
+	if(!inserting)
+		return FALSE
 	var/mirror_descriptor
-	if(!inserted_mirror.owner_mind_ref)
+	if(!inserting.owner_mind_ref)
 		mirror_descriptor = "mirror was empty"
-	else if(target.resleeving_check_mind_belongs(inserted_mirror.owner_mind_ref.resolve))
+	else if(target.resleeving_check_mind_belongs(inserting.owner_mind_ref.resolve()))
 		mirror_descriptor = "mirror is mismatched"
 	else
 		mirror_descriptor = "mirror seems to match"
-	if(!target.resleeving_insert_mirror(inserted_mirror))
-		inserted_mirror.forceMove(drop_location())
+	if(!target.resleeving_insert_mirror(inserting))
+		inserting.forceMove(drop_location())
 		STACK_TRACE("mirror insert failed after PNR")
 		return FALSE
 	log_game("[actor.actor_log_string()] inserted a mirror into [key_name(target)] [src]; [mirror_descriptor].")
-	if(!insert_mirror(removed, actor))
-		return FALSE
 	actor.visible_feedback(
 		target = target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,

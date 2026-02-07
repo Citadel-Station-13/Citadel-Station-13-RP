@@ -4,7 +4,7 @@
  */
 
 import { BooleanLike } from "tgui-core/react";
-import { ResleevingBodyRecord, ResleevingMirrorData } from "../common/Resleeving"
+import { ResleevingBodyRecordData, ResleevingMirrorData } from "../common/Resleeving"
 import { Window } from "../../layouts";
 import { useBackend } from "../../backend";
 
@@ -30,7 +30,7 @@ interface LinkedPrinter {
   ref: string;
   name: string;
   busy: null | {
-    record: ResleevingBodyRecord;
+    record: ResleevingBodyRecordData;
     progressRatio: number;
   }
   allowOrganic: BooleanLike;

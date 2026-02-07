@@ -282,7 +282,7 @@
 /datum/machinery_system/occupant_pod/proc/on_insert(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 
-/datum/machinery_system/occupant_pod/proc/eject(atom/new_loc = host.drop_location(), datum/event_args/actor/actor, silent, suppressed)
+/datum/machinery_system/occupant_pod/proc/eject(atom/new_loc = parent.drop_location(), datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!occupant)

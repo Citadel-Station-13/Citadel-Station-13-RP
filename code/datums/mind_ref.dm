@@ -16,7 +16,7 @@
 	if(!force)
 		STACK_TRACE("Tried to qdel a mind_ref; just toss its reference.")
 		return QDEL_HINT_LETMELIVE
-	if(loaded.mind_ref = src)
+	if(loaded.mind_ref == src)
 		loaded.mind_ref = null
 	loaded = null
 	return ..()

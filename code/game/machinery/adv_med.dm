@@ -166,7 +166,6 @@
 		/obj/item/implant/tracking,
 		/obj/item/implant/language,
 		/obj/item/implant/language/eal,
-		/obj/item/implant/backup,
 		/obj/item/nif,
 		/obj/item/organ/internal/mirror,
 	)
