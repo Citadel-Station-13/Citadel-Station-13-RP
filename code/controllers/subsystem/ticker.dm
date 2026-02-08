@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(ticker)
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
 	var/atom/movable/screen/cinematic = null
 
-	var/static/round_start_time
+	var/round_start_time
 	var/static/list/round_start_events
 	var/static/list/round_end_events
 
@@ -75,7 +75,8 @@ SUBSYSTEM_DEF(ticker)
 	if(!syndicate_code_response)
 		syndicate_code_response = generate_code_phrase()
 
-	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * (1 SECONDS))
+	round_start_time = start_at // May be changed later, but prevents the time from jumping back when the round actually starts
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
@@ -140,11 +141,15 @@ SUBSYSTEM_DEF(ticker)
 #endif
 	if(isnull(timeLeft))
 		timeLeft = max(0,start_at - world.time)
+
 	if(start_immediately)
 		timeLeft = 0
+
+	//countdown
 	if(timeLeft < 0)
 		return
 	timeLeft -= wait
+
 	if(timeLeft <= 0)
 		if((how_many_players_have_readied_up() > 0) || citest || start_immediately)
 			current_state = GAME_STATE_SETTING_UP
@@ -153,7 +158,6 @@ SUBSYSTEM_DEF(ticker)
 				fire()
 		else
 			handle_no_players_ready()
-			return
 
 /datum/controller/subsystem/ticker/proc/how_many_players_have_readied_up()
 	var/ready = FALSE
@@ -168,6 +172,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, SPAN_ANNOUNCE("No Players are ready to play, delaying round start."))
 		delay_explained = TRUE
 	start_at = world.time + 1 MINUTE
+	round_start_time = start_at // well ok you CAN move back
 	timeLeft = max(0,start_at - world.time)
 
 /datum/controller/subsystem/ticker/proc/Reboot(reason, end_string, delay)
@@ -218,6 +223,18 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/IsRoundInProgress()
 	return current_state == GAME_STATE_PLAYING
+
+/datum/controller/subsystem/ticker/Recover()
+	current_state = SSticker.current_state
+	force_ending = SSticker.force_ending
+
+	minds = SSticker.minds
+
+	delay_end = SSticker.delay_end
+
+	timeLeft = SSticker.timeLeft
+
+	round_start_time = SSticker.round_start_time
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))
