@@ -27,6 +27,11 @@
 
 /obj/machinery/computer/resleeving/Initialize(mapload)
 	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/resleeving/LateInitialize()
 	rescan_nearby_machines()
 
 /obj/machinery/computer/resleeving/Destroy()
@@ -128,7 +133,7 @@
 
 /obj/machinery/computer/resleeving/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
-	.["relinkOnCooldown"] = world.time > (last_relink + last_relink_throttle)
+	.["relinkOnCooldown"] = world.time < (last_relink + last_relink_throttle)
 	.["insertedDisk"] = inserted_disk ? list(
 		"name" = inserted_disk.name,
 		"valid" = attempt_adapt_old_dna2_disk_to_body_record(inserted_disk),

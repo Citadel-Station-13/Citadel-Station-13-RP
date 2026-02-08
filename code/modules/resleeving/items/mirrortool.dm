@@ -1,5 +1,5 @@
 /obj/item/mirrortool
-	name = "Mirror Installation Tool"
+	name = "mirror tool"
 	desc = "A tool for the installation and removal of Mirrors. The tool has a set of barbs for removing Mirrors from a body, and a slot for depositing it directly into a resleeving console."
 	icon = 'icons/obj/mirror.dmi'
 	icon_state = "mirrortool"
@@ -53,6 +53,9 @@
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = SPAN_NOTICE("[clickchain.performer] inserts [mirror] into [src]."),
 		)
+		if(!user_insert_mirror(mirror, clickchain))
+			clickchain.performer.put_in_hands_or_drop(mirror)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/mirrortool/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -147,12 +150,11 @@
 	actor.visible_feedback(
 		target = target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_WARNING("[actor.performer] extracts [target]'s mirror with src!"),
+		visible = SPAN_WARNING("[actor.performer] extracts [target]'s mirror with [src]!"),
 	)
 	return TRUE
 
 /obj/item/mirrortool/proc/user_inject_mirror_into_mob(mob/target, datum/event_args/actor/actor, silent)
-	var/obj/item/organ/internal/mirror/inserting_mirror = inserted_mirror
 	if(!inserted_mirror)
 		actor.visible_feedback(
 			target = target,

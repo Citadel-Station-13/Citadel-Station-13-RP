@@ -50,5 +50,5 @@
 	while(FALSE)
 
 	if(ishuman(from_mind.current))
-		qvar/mob/living/carbon/human/casted_current_human = from_mind.current
+		var/mob/living/carbon/human/casted_current_human = from_mind.current
 		legacy_identifying_gender = casted_current_human.identifying_gender

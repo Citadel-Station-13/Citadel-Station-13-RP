@@ -24,6 +24,7 @@
 		if(linked_console)
 			return FALSE
 	linked_console = console
+	LAZYADD(linked_console.linked_resleeving_machines, src)
 	if(!console)
 		return TRUE
 	on_console_linked(console)
@@ -34,6 +35,7 @@
 	if(!linked_console)
 		return TRUE
 	var/old_linked_console = linked_console
+	LAZYADD(linked_console.linked_resleeving_machines, src)
 	linked_console = null
 	on_console_unlinked(old_linked_console)
 	return TRUE
