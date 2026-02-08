@@ -5851,7 +5851,6 @@
 #include "code\modules\vehicles\sealed\mecha\mecha-power.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha-ui_controller.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha.dm"
-#include "code\modules\vehicles\sealed\mecha\mecha_actions-legacy.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha_appearance.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha_construction_paths.dm"
 #include "code\modules\vehicles\sealed\mecha\mecha_control_console.dm"
