@@ -52,11 +52,6 @@
 
 	var/wreckage
 
-	var/static/image/radial_image_eject = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_eject")
-	var/static/image/radial_image_airtoggle = image(icon= 'icons/mob/radial.dmi', icon_state = "radial_airtank")
-	var/static/image/radial_image_lighttoggle = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_light")
-	var/static/image/radial_image_statpanel = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine2")
-
 	//* Legacy - Actions *//
 	var/datum/mini_hud/mech/minihud
 
@@ -347,17 +342,6 @@
 
 /obj/vehicle/sealed/mecha/proc/occupant_message(message)
 	occupant_send_default_chat(message)
-
-/obj/vehicle/sealed/mecha/Topic(href, href_list)
-	..()
-	if(href_list["set_internal_tank_valve"] && state >=MECHA_BOLTS_SECURED)
-		if(!in_range(src, usr))	return
-		var/mob/user = top_filter.getMob("user")
-		if(user)
-			var/new_pressure = input(user,"Input new output pressure","Pressure setting",internal_tank_valve) as num
-			if(new_pressure)
-				internal_tank_valve = new_pressure
-				to_chat(user, "The internal pressure valve has been set to [internal_tank_valve]kPa.")
 
 //* STOP USING THIS. *//
 /obj/vehicle/sealed/mecha/proc/has_charge(amount)
