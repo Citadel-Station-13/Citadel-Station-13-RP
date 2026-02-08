@@ -100,7 +100,7 @@ export const ResleevingConsole = (props) => {
                       data={data.insertedMirror}
                     ></ResleevingMirror>
                   ) : (
-                      <NoticeBox>No mirror inserted</NoticeBox>
+                    <NoticeBox>No mirror inserted</NoticeBox>
                   )}
                 </Section>
               </Stack.Item>
@@ -172,7 +172,7 @@ export const ResleevingConsole = (props) => {
                         </LabeledList>
                       </Box>
                     ) : (
-                        <NoticeBox>No DNA disk inserted</NoticeBox>
+                      <NoticeBox>No DNA disk inserted</NoticeBox>
                     )}
                   </Section>
                 </Stack.Item>
@@ -189,7 +189,8 @@ export const ResleevingConsole = (props) => {
                       Relink
                     </Button.Confirm>
                   }
-                 scrollable>
+                  scrollable
+                >
                   <Stack vertical>
                     {data.bodyPrinters.map((printer) => {
                       return (

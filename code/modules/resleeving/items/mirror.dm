@@ -110,5 +110,5 @@
 	return list(
 		"activated" = !!owner_mind_ref,
 		"bodyRecord" = recorded_body?.ui_serialize(),
-		"mindRecord" = recorded_body?.ui_serialize(),
+		"mindRecord" = recorded_mind?.ui_serialize(),
 	)

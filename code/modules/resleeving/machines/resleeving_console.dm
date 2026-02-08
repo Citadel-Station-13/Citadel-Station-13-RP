@@ -37,13 +37,13 @@
 /obj/machinery/computer/resleeving/Destroy()
 	for(var/obj/machinery/resleeving/linked as anything in linked_resleeving_machinery)
 		unlink_resleeving_machine(linked)
-	remove_held_mirror(drop_location())
+	remove_mirror(drop_location())
 	return ..()
 
 /obj/machinery/computer/resleeving/drop_products(method, atom/where)
 	. = ..()
-	remove_held_disk(where)
-	remove_held_mirror(where)
+	remove_mirror(where)
+	remove_disk(where)
 
 /obj/machinery/computer/resleeving/proc/rescan_nearby_machines()
 	for(var/obj/machinery/resleeving/maybe_in_range in GLOB.machines)
@@ -203,32 +203,14 @@
 /obj/machinery/computer/resleeving/Exited(atom/movable/AM, atom/newLoc)
 	..()
 	if(AM == inserted_mirror)
-		remove_held_mirror()
+		remove_mirror()
 	else if(AM == inserted_disk)
-		remove_held_disk()
-
-/obj/machinery/computer/resleeving/proc/remove_held_mirror(atom/move_to) as /obj/item/organ/internal/mirror
-	if(!inserted_mirror)
-		return
-	var/obj/item/organ/internal/mirror/removed = inserted_mirror
-	inserted_mirror = null
-	if(move_to)
-		removed.forceMove(move_to)
-	return removed
-
-/obj/machinery/computer/resleeving/proc/remove_held_disk(atom/move_to) as /obj/item/disk/data
-	if(!inserted_disk)
-		return
-	var/obj/item/disk/data/removed = inserted_disk
-	inserted_disk = null
-	if(move_to)
-		removed.forceMove(move_to)
-	return removed
+		remove_disk()
 
 /obj/machinery/computer/resleeving/proc/user_yank_mirror(datum/event_args/actor/actor, put_in_hands, silent)
 	if(!inserted_mirror)
 		return FALSE
-	remove_held_mirror(actor.performer)
+	remove_mirror()
 	var/was_put_in_hands = yank_item_out(inserted_mirror, actor.performer)
 	if(!silent)
 		if(was_put_in_hands)
@@ -244,7 +226,7 @@
 /obj/machinery/computer/resleeving/proc/user_yank_disk(datum/event_args/actor/actor, put_in_hands, silent)
 	if(!inserted_disk)
 		return FALSE
-	remove_held_disk(actor.performer)
+	remove_disk()
 	var/was_put_in_hands = yank_item_out(inserted_disk, actor.performer)
 	if(!silent)
 		if(was_put_in_hands)
@@ -280,3 +262,173 @@
 	transforming.legacy_species_uid = resolved_species.uid
 	transforming.legacy_gender = buffer.gender || MALE
 	return transforming
+
+/obj/machinery/computer/resleeving/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("eject-mirror")
+			user_remove_mirror(e_args)
+			return TRUE
+		if("eject-disk")
+			user_remove_disk(e_args)
+			return TRUE
+
+/obj/machinery/computer/resleeving/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(inserted_mirror)
+		.["eject-mirror"] = create_context_menu_tuple("eject mirror", image(src), 0, MOBILITY_CAN_USE, FALSE)
+	if(inserted_disk)
+		.["eject-disk"] = create_context_menu_tuple("eject disk", image(src), 0, MOBILITY_CAN_USE, FALSE)
+
+/obj/machinery/computer/resleeving/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(istype(using, /obj/item/organ/internal/mirror))
+		if(inserted_mirror)
+			clickchain.chat_feedback(
+				SPAN_WARNING("[src] already has a mirror inside it."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		var/obj/item/organ/internal/mirror/mirror = using
+		if(!clickchain.performer.attempt_insert_item_for_installation(mirror, src))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		clickchain.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = SPAN_NOTICE("[clickchain.performer] inserts [mirror] into [src]."),
+		)
+		if(!user_insert_mirror(mirror, clickchain))
+			clickchain.performer.put_in_hands_or_drop(mirror)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	if(istype(using, /obj/item/disk/data))
+		if(inserted_disk)
+			clickchain.chat_feedback(
+				SPAN_WARNING("[src] already has a disk inside it."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		var/obj/item/disk/data/disk = using
+		if(!clickchain.performer.attempt_insert_item_for_installation(disk, src))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		clickchain.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = SPAN_NOTICE("[clickchain.performer] inserts [disk] into [src]."),
+		)
+		if(!user_insert_disk(disk, clickchain))
+			clickchain.performer.put_in_hands_or_drop(disk)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
+/obj/machinery/computer/resleeving/proc/user_remove_mirror(datum/event_args/actor/actor, put_in_hands = TRUE)
+	if(!inserted_mirror)
+		actor.chat_feedback(
+			SPAN_WARNING("[src] doesn't have a mirror inserted."),
+			target = src,
+		)
+		return TRUE
+	var/obj/item/organ/internal/mirror/removed = remove_mirror(src, actor)
+	if(put_in_hands)
+		actor.performer.put_in_hands_or_drop(removed)
+	else
+		removed.forceMove(drop_location())
+	return TRUE
+
+/obj/machinery/computer/resleeving/proc/remove_mirror(atom/new_loc, datum/event_args/actor/actor) as /obj/item/organ/internal/mirror
+	if(!inserted_mirror)
+		return null
+	var/obj/item/organ/internal/mirror/old_mirror = inserted_mirror
+	inserted_mirror = null
+	if(old_mirror.loc == src && new_loc)
+		old_mirror.forceMove(new_loc)
+	on_mirror_removed(old_mirror)
+	return old_mirror
+
+/obj/machinery/computer/resleeving/proc/on_mirror_removed(obj/item/organ/internal/mirror/mirror)
+	return
+
+/obj/machinery/computer/resleeving/proc/user_insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
+	if(inserted_mirror)
+		actor.chat_feedback(
+			SPAN_WARNING("[src] already has a mirror."),
+			target = src,
+		)
+		return FALSE
+	if(!insert_mirror(mirror, actor))
+		return FALSE
+	actor.chat_feedback(
+		SPAN_NOTICE("You insert [mirror] into [src]."),
+		target = src,
+	)
+	return TRUE
+
+/obj/machinery/computer/resleeving/proc/insert_mirror(obj/item/organ/internal/mirror/mirror, datum/event_args/actor/actor)
+	if(inserted_mirror)
+		return FALSE
+	if(mirror.loc != src)
+		mirror.forceMove(src)
+	inserted_mirror = mirror
+	on_mirror_inserted(mirror)
+	return TRUE
+
+/obj/machinery/computer/resleeving/proc/on_mirror_inserted(obj/item/organ/internal/mirror/mirror)
+	return
+
+/obj/machinery/computer/resleeving/proc/user_remove_disk(datum/event_args/actor/actor, put_in_hands = TRUE)
+	if(!inserted_disk)
+		actor.chat_feedback(
+			SPAN_WARNING("[src] doesn't have a disk inserted."),
+			target = src,
+		)
+		return TRUE
+	var/obj/item/disk/data/removed = remove_disk(src, actor)
+	if(put_in_hands)
+		actor.performer.put_in_hands_or_drop(removed)
+	else
+		removed.forceMove(drop_location())
+	return TRUE
+
+/obj/machinery/computer/resleeving/proc/remove_disk(atom/new_loc, datum/event_args/actor/actor) as /obj/item/disk/data
+	if(!inserted_disk)
+		return null
+	var/obj/item/disk/data/old_disk = inserted_disk
+	inserted_disk = null
+	if(old_disk.loc == src && new_loc)
+		old_disk.forceMove(new_loc)
+	on_disk_removed(old_disk)
+	return old_disk
+
+/obj/machinery/computer/resleeving/proc/on_disk_removed(obj/item/disk/data/disk)
+	return
+
+/obj/machinery/computer/resleeving/proc/user_insert_disk(obj/item/disk/data/disk, datum/event_args/actor/actor)
+	if(inserted_disk)
+		actor.chat_feedback(
+			SPAN_WARNING("[src] already has a disk."),
+			target = src,
+		)
+		return FALSE
+	if(!insert_disk(disk, actor))
+		return FALSE
+	actor.chat_feedback(
+		SPAN_NOTICE("You insert [disk] into [src]."),
+		target = src,
+	)
+	return TRUE
+
+/obj/machinery/computer/resleeving/proc/insert_disk(obj/item/disk/data/disk, datum/event_args/actor/actor)
+	if(inserted_disk)
+		return FALSE
+	if(disk.loc != src)
+		disk.forceMove(src)
+	inserted_disk = disk
+	on_disk_inserted(disk)
+	return TRUE
+
+/obj/machinery/computer/resleeving/proc/on_disk_inserted(obj/item/disk/data/disk)
+	return

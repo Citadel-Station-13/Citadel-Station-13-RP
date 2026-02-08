@@ -40,6 +40,9 @@
 /datum/resleeving_mind_backup/proc/initialize_from_mind(datum/mind/from_mind)
 	src.mind_ref = from_mind.get_mind_ref()
 
+	// TODO: this shouldn't read from mind incase they want to lie. we need a better way.
+	user_name = from_mind.name
+
 	do
 		// sigh, grab their languages from their mob
 		src.legacy_language_ids = list()
