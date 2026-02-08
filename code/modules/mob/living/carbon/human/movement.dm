@@ -138,7 +138,12 @@
 			mod = (lumcount * species.light_slowdown) + (LERP(species.dark_slowdown, 0, lumcount))
 		. += mod
 
-/mob/living/carbon/human/Process_Spacemove(dir)
+/mob/living/carbon/human/process_spacemove(drifting, movement_dir, just_checking)
+	if(flying)
+		return TRUE
+	. = ..()
+	if(.)
+		return
 	//Do we have a working jetpack?
 	// TODO: please for the love of god rework this utter dumpster fire
 	var/obj/item/tank/jetpack/thrust
@@ -152,18 +157,14 @@
 			for(var/obj/item/hardsuit_module/maneuvering_jets/module in hardsuit.installed_modules)
 				thrust = module.jets
 				break
-
-	if(thrust && !lying)
+	// no support for just_checking yet
+	if(!just_checking && thrust && !lying)
 		if(dir != NONE)
 			if(thrust.allow_thrust(0.01, src))
 				return TRUE
 		else
 			if(thrust.stabilization_on && thrust.allow_thrust(0.01, src))
 				return TRUE
-	if(flying)
-		return TRUE
-
-	return ..()
 
 // Handle footstep sounds
 /mob/living/carbon/human/handle_footstep(turf/T)
@@ -219,7 +220,7 @@
 	if(buckled || lying || throwing)
 		return // people flying, lying down or sitting do not step
 
-	if(!has_gravity(src) && prob(75))
+	if(!in_gravity && prob(75))
 		return // Far less likely to make noise in no gravity
 
 	playsound(T, S, volume, FALSE)

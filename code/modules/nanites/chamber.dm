@@ -1,5 +1,5 @@
 #define RAISE_ANIMATE_TIME 20
-#define FALL_ANIMATE_TIME 20
+#define ZFALL_ANIMATE_TIME 20
 
 /obj/item/circuitboard/machine/nanite_chamber
 	name = T_BOARD("nanite chamber")
@@ -123,7 +123,7 @@
 	operating = TRUE
 	update_icon()
 	flick("[base_icon_state]_raising", src)
-	FLICK_IN("[base_icon_state]_falling", src, max(time - FALL_ANIMATE_TIME, 0))
+	FLICK_IN("[base_icon_state]_falling", src, max(time - ZFALL_ANIMATE_TIME, 0))
 	addtimer(effects_callback, min(effects_in, time))
 	addtimer(CALLBACK(src, PROC_REF(finish_operating)), time)
 
@@ -141,7 +141,7 @@
 		deltimer(operation_effects_timerid)
 	flick("[base_icon_state]_falling", src)
 	if(!immediate)
-		addtimer(CALLBACK(src, PROC_REF(do_cancel_operation)), FALL_ANIMATE_TIME)
+		addtimer(CALLBACK(src, PROC_REF(do_cancel_operation)), ZFALL_ANIMATE_TIME)
 	else
 		do_cancel_operation()
 
@@ -337,4 +337,4 @@
 	cancel_operation()
 
 #undef RAISE_ANIMATE_TIME
-#undef FALL_ANIMATE_TIME
+#undef ZFALL_ANIMATE_TIME

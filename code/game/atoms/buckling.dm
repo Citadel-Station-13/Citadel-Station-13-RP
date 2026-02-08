@@ -190,7 +190,6 @@
 	M.setDir(dir)
 	M.update_mobility()
 	// todo: refactor the below
-	M.update_floating(M.Check_Dense_Object())
 	if(isliving(M))
 		var/mob/living/L = M
 		L.update_lying()
@@ -225,7 +224,6 @@
 	UNSETEMPTY(buckled_mobs)
 	M.update_mobility()
 	// todo: refactor the below
-	M.update_floating(M.Check_Dense_Object())
 	if(isliving(M))
 		var/mob/living/L = M
 		L.update_lying()

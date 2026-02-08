@@ -12,3 +12,18 @@
 	. = ..()
 	. += "human"
 	. += "human-species-id-[species.uid]"
+
+/mob/living/carbon/can_overcome_gravity()
+	if(flying)
+		return TRUE
+	return ..()
+
+/mob/living/carbon/process_overcome_gravity(time_required, mob/emit_feedback_to)
+	if(flying)
+		return standard_process_overcome_gravity(time_required, emit_feedback_to)
+	return ..()
+
+/mob/living/carbon/process_spacemove(drifting, movement_dir, just_checking)
+	if(flying)
+		return TRUE
+	return ..()

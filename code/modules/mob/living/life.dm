@@ -32,7 +32,6 @@
 
 	//Check if we're on fire
 	handle_fire()
-	update_gravity(mob_has_gravity())
 	update_pulling()
 
 	for(var/obj/item/grab/G in src)

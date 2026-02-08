@@ -107,45 +107,8 @@ GLOBAL_REAL_LIST(armor_types) = list(
 //? These are defined values so if we want to scale them nonlinearly/whatever later,
 //? we don't need to replace everything.
 
-/// tierdiff is tier difference of armor against attack; positive = armor is higher tier.
-/// * see https://www.desmos.com/calculator/6uu1djsawl
-/// * armor at or below 0 (added damage) are passed back without change
-/proc/ARMOR_TIER_CALC(armor, tierdiff)
-	if(armor <= 0)
-		return 0
-	if(!tierdiff)
-		return armor
-	if(tierdiff > 0)
-		var/a = armor * (tierdiff + 1)
-		return max(a / sqrt(2 + a ** 2), armor)
-	else
-		return armor / (1 + (((-tierdiff) ** 17.5) / 1.75))
-
 #define ARMOR_TIER_FLOOR 0
 #define ARMOR_TIER_DEFAULT 3
-
-/proc/ARMOR_TIER_BLUNT_CHANCE(tierdiff)
-	switch(tierdiff)
-		if(-INFINITY to -2)
-			return 0
-		if(-2 to -1)
-			return 15
-		if(-1 to -0.5)
-			return 22.5
-		if(-0.5 to -0.3)
-			return 30
-		if(-0.3 to 0)
-			return 45.5
-		if(0 to 0.3)
-			return 57.5
-		if(0.3 to 0.6)
-			return 70
-		if(0.6 to 1)
-			return 85
-		if(1 to 2)
-			return 90
-		else
-			return 99 // tf2 critsound.ogg
 
 //?  -- armor tiers - melee --
 

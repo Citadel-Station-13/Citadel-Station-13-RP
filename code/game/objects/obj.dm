@@ -7,9 +7,6 @@
 	integrity_enabled = TRUE
 	armor_type = /datum/armor/object/default
 
-	// Name says everything. I'm crying.
-	var/temporary_legacy_dont_auto_handle_obj_damage_for_mechs = FALSE
-
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
@@ -696,30 +693,6 @@
 			AM.clean_radiation(str, mul, cheap)
 	return ..()
 
-/obj/on_contents_item_new(obj/item/item)
-	. = ..()
-	if(!isnull(obj_storage?.indirection))
-		return
-	obj_storage?.on_contents_item_new(item)
-
-/obj/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	. = ..()
-	if(!isnull(obj_storage?.indirection))
-		return
-	obj_storage?.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
-
-/obj/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	. = ..()
-	if(!isnull(obj_storage?.indirection))
-		return
-	obj_storage?.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
-
-/obj/on_contents_weight_change(obj/item/item, old_weight, new_weight)
-	. = ..()
-	if(!isnull(obj_storage?.indirection))
-		return
-	obj_storage?.on_contents_weight_change(item, old_weight, new_weight)
-
 /**
  * Returns stuff considered to be inside this object's inventory.
  *
@@ -735,7 +708,7 @@
 /obj/examine(mob/user, dist)
 	. = ..()
 	if(integrity_examine)
-		. += examine_integrity(user)
+		. += examine_render_integrity(new /datum/event_args/examine(user))
 	var/list/parts = get_material_parts()
 	for(var/key in parts)
 		var/datum/prototype/material/mat = parts[key]
@@ -750,24 +723,26 @@
 	if(dist <= 1)
 		obj_storage?.handle_storage_examine(.)
 
-/obj/proc/examine_integrity(mob/user)
-	. = list()
+/**
+ * @return list or string
+ */
+/obj/proc/examine_render_integrity(datum/event_args/examine/examine)
 	if(!integrity_enabled)
 		return
 	if(integrity == integrity_max)
-		. += SPAN_NOTICE("It looks fully intact.")
+		. =  SPAN_NOTICE("It looks fully intact.")
 	else if(atom_flags & ATOM_BROKEN)
-		. += SPAN_BOLDWARNING("It's broken and falling apart!")
+		. =  SPAN_BOLDWARNING("It's broken and falling apart!")
 	else
-		var/perc = percent_integrity()
+		var/perc = integrity_failure < integrity_max ? (integrity - integrity_failure) / (integrity_max - integrity_failure) : 1
 		if(perc > 0.75)
-			. += SPAN_NOTICE("It looks a bit dented.")
+			. =  SPAN_NOTICE("It looks a bit dented.")
 		else if(perc > 0.5)
-			. += SPAN_WARNING("It looks damaged.")
+			. =  SPAN_WARNING("It looks damaged.")
 		else if(perc > 0.25)
-			. += SPAN_RED("It looks severely damaged.")
+			. =  SPAN_RED("It looks severely damaged.")
 		else
-			. += SPAN_BOLDWARNING("It's barely able to hold itself together!")
+			. =  SPAN_BOLDWARNING("It's barely able to hold itself together!")
 
 //* Movement *//
 

@@ -97,5 +97,6 @@
 
 	else if(istype(AM,/obj/vehicle/sealed/mecha))
 		var/obj/vehicle/sealed/mecha/M = AM
-		if(istype(M.selected,/obj/item/vehicle_module/tool/drill))
-			M.selected.action(src)
+		var/obj/item/vehicle_module/lazy/legacy/tool/drill/maybe_drill = locate() in M.modules
+		if(maybe_drill)
+			maybe_drill.action(src)

@@ -273,7 +273,7 @@
 	else if(istype(A, /obj/vehicle/sealed/mecha))
 		visible_message(SPAN_DANGER("\The [src] rakes its claws against \the [A]."))
 		var/obj/vehicle/sealed/mecha/M = A
-		M.take_damage_legacy(damage_to_apply)
+		M.run_damage_instance(damage_to_apply, DAMAGE_TYPE_BRUTE, 4.5, ARMOR_MELEE, DAMAGE_MODE_EDGE | DAMAGE_MODE_SHRED)
 		if(prob(3) && M.occupant_legacy && do_after(src, 5))
 			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant_legacy] out!"))
 			M.mob_exit(M.occupant_legacy)

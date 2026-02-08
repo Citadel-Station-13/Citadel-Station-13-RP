@@ -30,22 +30,20 @@
 	special_attack_max_range = 7
 	special_attack_cooldown = 1 SECONDS
 
-	var/obj/item/shield_projector/shields = null
+	movement_works_in_space = TRUE
 
-/mob/living/simple_mob/mechanical/derelict/sentinel/Initialize(mapload)
-	shields = new /obj/item/shield_projector/rectangle/automatic/advanced(src)
-	return ..()
-
-/mob/living/simple_mob/mechanical/derelict/sentinel/Destroy()
-	QDEL_NULL(shields)
-	return ..()
+	make_shield_comp = TRUE
+	make_shield_comp_health = 250
+	make_shield_comp_recharge_delay = 7 SECONDS
+	make_shield_comp_recharge_rate = 30
+	make_shield_comp_recharge_rebuild_rate = 30
+	make_shield_comp_recharge_rebuild_restore_ratio = 0
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
+	make_shield_comp_color_full = "#808080"
+	make_shield_comp_color_depleted = "#202020"
 
 /mob/living/simple_mob/mechanical/derelict/sentinel/death()
 	..(null,"suddenly crashes to the ground, translucent blue blood leaking from a broken thruster.")
-
-
-/mob/living/simple_mob/mechanical/derelict/sentinel/Process_Spacemove(var/check_drift = 0)
-	return TRUE
 
 /obj/item/shield_projector/rectangle/automatic/advanced
 	shield_health = 300

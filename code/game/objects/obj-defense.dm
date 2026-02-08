@@ -21,31 +21,32 @@
 	if(TT.throw_flags & THROW_AT_IS_GENTLE)
 		return
 	// todo: /atom/movable/proc/throw_impact_attack(atom/target)
-	if(temporary_legacy_dont_auto_handle_obj_damage_for_mechs)
-		return
-	var/inflicted_damage
+	var/list/damage_instance_results
 	var/snowflake_what_we_would_inflict_if_we_werent_indestructible
 	if(isitem(AM))
 		var/obj/item/I = AM
 		snowflake_what_we_would_inflict_if_we_werent_indestructible = I.throw_force * TT.get_damage_multiplier(src)
-		inflicted_damage = inflict_atom_damage(
+		damage_instance_results = run_damage_instance(
 			I.throw_force * TT.get_damage_multiplier(src),
 			TT.get_damage_tier(src),
 			I.damage_flag,
 			I.damage_mode,
 			ATTACK_TYPE_THROWN,
 			AM,
+			SHIELDCALL_FLAG_SECOND_CALL,
 		)
 	else
 		snowflake_what_we_would_inflict_if_we_werent_indestructible = AM.throw_force * TT.get_damage_multiplier(src)
-		inflicted_damage = inflict_atom_damage(
+		damage_instance_results = run_damage_instance(
 			snowflake_what_we_would_inflict_if_we_werent_indestructible,
 			TT.get_damage_tier(src),
 			ARMOR_MELEE,
 			null,
 			ATTACK_TYPE_THROWN,
 			AM,
+			SHIELDCALL_FLAG_SECOND_CALL,
 		)
+	var/inflicted_damage = damage_instance_results[SHIELDCALL_ARG_DAMAGE]
 	if(inflicted_damage || ((integrity_flags & INTEGRITY_INDESTRUCTIBLE) && (snowflake_what_we_would_inflict_if_we_werent_indestructible > 5)))
 		playsound(src, hitsound_throwhit(AM), 75)
 	// if we got destroyed

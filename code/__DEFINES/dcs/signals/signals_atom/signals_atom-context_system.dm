@@ -45,3 +45,9 @@
 /// when used as distance, telekinetics and other things do not count as adjacency
 //  todo: currently not implemented
 #define ATOM_CONTEXT_FORCE_PHYSICAL_ADJACENCY null
+
+#define ATOM_CONTEXT_TUPLE_INDEX_NAME 1
+#define ATOM_CONTEXT_TUPLE_INDEX_APPEARANCE 2
+#define ATOM_CONTEXT_TUPLE_INDEX_DISTANCE 3
+#define ATOM_CONTEXT_TUPLE_INDEX_MOBILITY 4
+#define ATOM_CONTEXT_TUPLE_INDEX_DEFAULTABLE 5

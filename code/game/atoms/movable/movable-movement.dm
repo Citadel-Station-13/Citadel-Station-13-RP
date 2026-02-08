@@ -486,18 +486,14 @@
 /atom/movable/Uncrossed(atom/movable/AM)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSSED, AM)
 
-/atom/movable/Bump(atom/A)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
-
-	. = ..()
-
+/atom/movable/Bump(atom/obstacle)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, obstacle)
 	if(throwing)
-		throwing.bump_into(A)
-		if(QDELETED(src) || QDELETED(A))
+		throwing.bump_into(obstacle)
+		if(QDELETED(src) || QDELETED(obstacle))
 			return TRUE
-
-	A.last_bumped = world.time
-	A.Bumped(src)
+	obstacle.last_bumped = world.time
+	obstacle.Bumped(src)
 
 /**
   * forceMove but it brings along pulling/buckled stuff
@@ -713,47 +709,110 @@
 	return blocker_opinion
 
 /**
-  * Called whenever an object moves and by mobs when they attempt to move themselves through space
-  * And when an object or action applies a force on src, see [newtonian_move][/atom/movable/proc/newtonian_move]
-  *
-  * Return 0 to have src start/keep drifting in a no-grav area and 1 to stop/not start drifting
-  *
-  * Mobs should return 1 if they should be able to move of their own volition, see [/client/Move]
-  *
-  * Arguments:
-  * * movement_dir - 0 when stopping or any dir when trying to move
-  */
-/atom/movable/proc/Process_Spacemove(movement_dir = NONE)
-	if(has_gravity(src))
+ * Called to find something to grab onto when moving in nograv.
+ *
+ * * This should only be called if there's no gravity.
+ * * This is allowed to have side effects.
+ *
+ * @params
+ * * drifting - (optional) set if we're drifting (ergo this is trying to check if we should stop drifting)
+ * * movement_dir - (optional) which dir we're moving in, up/down is valid. if this is just a check this is null / NONE.
+ *
+ * @return /atom or null
+ */
+/atom/movable/proc/process_spacemove_support(drifting, movement_dir) as /atom
+	if(locate(/obj/structure/lattice) in oview(1, src))
 		return TRUE
-
-	if(pulledby)
+	if(locate(/obj/structure/catwalk) in oview(1, src))
 		return TRUE
-
-	if(throwing)
-		return TRUE
-
-	if(!isturf(loc))
-		return TRUE
-
-	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
-		return TRUE
-
 	return FALSE
 
-/// Only moves the object if it's under no gravity
-/atom/movable/proc/newtonian_move(direction)
-	if(!loc || Process_Spacemove(NONE))
+/**
+ * Called when attempting to move in a direction in space.
+ *
+ * * This doesn't actually move us; if this returns TRUE, the movement will succeed.
+ * * This should only be called if there's no gravity.
+ * * This is allowed to have side effects.
+ * * This will either return FALSE for 'no support', or TRUE for 'supported'
+ *
+ * @params
+ * * drifting - (optional) set if we're drifting (ergo this is trying to check if we should stop drifting)
+ * * movement_dir - (optional) which dir we're moving in, up/down is valid. NONE for stopping in place
+ * * just_checking - (optional) just checking don't use thrust
+ *
+ * @return TRUE, FALSE
+ */
+/atom/movable/proc/process_spacemove(drifting, movement_dir, just_checking)
+	// someone is pulling us, stop
+	if(pulledby)
+		return TRUE
+	// we're being thrown, we don't care for silly things like Newton's laws of motion
+	if(throwing)
+		return TRUE
+	var/atom/grabbed_onto = process_spacemove_support(drifting, movement_dir)
+	if(grabbed_onto)
+		if(!just_checking)
+			// shitcode galore lmfao
+			if(movement_dir && (movement_dir & (NORTH|WEST|EAST|SOUTH)) && ismovable(grabbed_onto))
+				var/atom/movable/pushing = grabbed_onto
+				if(pushing.newtonian_step(turn(movement_dir & (NORTH|WEST|EAST|SOUTH), 180)))
+					// only if they move.
+					if(ismob(src))
+						var/mob/casted_src = src
+						casted_src.selfmove_feedback(SPAN_WARNING("You push yourself off of [grabbed_onto]!"))
+			else
+				if(ismob(src))
+					var/mob/casted_src = src
+					if(drifting)
+						casted_src.selfmove_feedback(SPAN_WARNING("You reflexively grab onto [grabbed_onto]!"))
+		return TRUE
+	return FALSE
+
+/**
+ * Starts drifting ourselves with an immediate move under spacedrift if we don't have gravity.
+ * * Like [newtonian_move] but actually pushes this entity.
+ * * Fails if we have nowhere to go / bump against something solid.
+ * * Undefined behavior results if 'direction' has UP|DOWN in it.
+ * @return TRUE if we moved and are now drifting, FALSE otherwise
+ */
+/atom/movable/proc/newtonian_step(direction)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(has_gravity())
+		return FALSE
+	if(!loc || process_spacemove(TRUE))
 		inertia_dir = NONE
 		return FALSE
-
 	inertia_dir = direction
 	if(!direction)
-		return TRUE
+		return FALSE
+	if(!step(src, direction))
+		inertia_dir = NONE
+		return FALSE
 	inertia_last_loc = loc
 	SSspacedrift.processing[src] = src
 	return TRUE
 
+/**
+ * Starts drifting ourselves under spacedrift if we don't have gravity.
+ * * Still succeeds even if we're against a wall; we 'stop moving' on the next subsystem tick.
+ * * Undefined behavior results if 'direction' has UP|DOWN in it.
+ * @return TRUE if we are now drifting, FALSE otherwise
+ */
+/atom/movable/proc/newtonian_move(direction)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(has_gravity())
+		return FALSE
+	if(!loc || process_spacemove(TRUE))
+		inertia_dir = NONE
+		return FALSE
+	inertia_dir = direction
+	if(!direction)
+		return FALSE
+	inertia_last_loc = loc
+	SSspacedrift.processing[src] = src
+	return TRUE
 
 //? Move Force
 // todo: this system is shit
@@ -854,20 +913,14 @@
 	if(pixel_movement)	 // shoo
 		return
 
-	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
-	glide_size = new_glide_size
-
-	if(!recursive)
-		return
-
-	for(var/m in buckled_mobs)
-		var/mob/buckled_mob = m
-		buckled_mob.set_glide_size(glide_size)
+	if(recursive)
 		recursive_glidesize_update()
+	else
+		SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
+		glide_size = new_glide_size
 
 /**
   * Sets our glide size back to our standard glide size.
   */
-
 /atom/movable/proc/reset_glide_size()
 	set_glide_size(isnull(default_glide_size)? GLOB.default_glide_size : default_glide_size)

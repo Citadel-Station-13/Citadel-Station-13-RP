@@ -73,9 +73,3 @@
 	if(integrity_flags & INTEGRITY_TESLAPROOF)
 		return
 	explode()
-
-/obj/vehicle/sealed/mecha/tesla_act(power)
-	..()
-	if(integrity_flags & INTEGRITY_TESLAPROOF)
-		return
-	take_damage_legacy(power / 200, "energy") // A surface lightning strike will do 100 damage.

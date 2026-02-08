@@ -274,10 +274,26 @@
 		visible_message("<span class='danger'>[src] grabs hold of [C]!</span>")
 		tripanim()
 		C.afflict_stun(20 * 2)
-		C.adjustBruteLoss(rand(5,10))
+		// todo: make sure this works with parry
+		C.run_damage_instance(
+			rand(10, 12.5),
+			DAMAGE_TYPE_BRUTE,
+			4.5,
+			ARMOR_MELEE,
+			NONE,
+			ATTACK_TYPE_MELEE,
+		)
 		latched = TRUE
-	for(var/obj/vehicle/sealed/mecha/M in loc)
-		M.take_damage_legacy(20, DAMAGE_TYPE_BRUTE, null, null, null, 25)
+	for(var/obj/vehicle/vehicle in loc)
+		// todo: make sure this works with parry
+		vehicle.run_damage_instance(
+			20,
+			DAMAGE_TYPE_BRUTE,
+			4.5,
+			ARMOR_MELEE,
+			NONE,
+			ATTACK_TYPE_MELEE,
+		)
 	if(!latched)
 		retract()
 	else

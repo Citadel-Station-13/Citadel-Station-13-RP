@@ -25,6 +25,7 @@
 
 	projectiletype = /obj/projectile/beam
 	base_attack_cooldown = 2 SECONDS
+	movement_works_in_space = TRUE
 
 	var/datum/effect_system/ion_trail_follow/ion_trail
 
@@ -40,6 +41,3 @@
 
 /mob/living/simple_mob/mechanical/mecha/hoverpod/manned
 	pilot_type = /mob/living/simple_mob/humanoid/merc/ranged
-
-/mob/living/simple_mob/mechanical/mecha/hoverpod/Process_Spacemove(var/check_drift = 0)
-	return TRUE

@@ -4,12 +4,27 @@
 	icon_state = "firefighter"
 	initial_icon = "firefighter"
 	max_temperature = 65000
-	integrity = 250
-	lights_power = 8
-	damage_absorption = list("fire"=0.5,"bullet"=0.8,"bomb"=0.5)
+	integrity = 1.35 * /obj/vehicle/sealed/mecha/working/ripley::integrity
+	integrity_max = 1.35 * /obj/vehicle/sealed/mecha/working/ripley::integrity_max
+	floodlight_range = 8
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley/firefighter
-	max_hull_equip = 2
-	max_weapon_equip = 0
-	max_utility_equip = 2
-	max_universal_equip = 1
-	max_special_equip = 1
+
+/obj/effect/decal/mecha_wreckage/ripley/firefighter
+	name = "Firefighter wreckage"
+	icon_state = "firefighter-broken"
+
+/obj/effect/decal/mecha_wreckage/ripley/firefighter/New()
+	..()
+	var/list/parts = list(
+		/obj/item/vehicle_part/ripley_torso,
+		/obj/item/vehicle_part/ripley_left_arm,
+		/obj/item/vehicle_part/ripley_right_arm,
+		/obj/item/vehicle_part/ripley_left_leg,
+		/obj/item/vehicle_part/ripley_right_leg,
+		/obj/item/clothing/suit/fire,
+	)
+	for(var/i=0;i<2;i++)
+		if(!!length(parts) && prob(40))
+			var/part = pick(parts)
+			welder_salvage += part
+			parts -= part

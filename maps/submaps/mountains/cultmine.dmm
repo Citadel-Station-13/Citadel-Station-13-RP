@@ -127,7 +127,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "ay" = (
-/obj/item/vehicle_module/tool/hydraulic_clamp,
+/obj/item/vehicle_module/lazy/legacy/tool/hydraulic_clamp,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/cave/cultmine)
@@ -265,7 +265,7 @@
 /turf/simulated/wall,
 /area/submap/cave/cultmine)
 "ba" = (
-/obj/item/vehicle_module/generator,
+/obj/item/vehicle_module/lazy/stack_generator/phoron,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "bb" = (
@@ -409,7 +409,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bD" = (
-/obj/item/vehicle_module/tool/drill,
+/obj/item/vehicle_module/lazy/legacy/tool/drill,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bE" = (

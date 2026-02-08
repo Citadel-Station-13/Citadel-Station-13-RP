@@ -601,7 +601,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	for(var/mob/M in A)
 		if(has_gravity)
 			thunk(M)
-		M.update_floating( M.Check_Dense_Object() )
+		M.update_gravity()
 
 /area/proc/thunk(mob)
 	if(istype(get_turf(mob), /turf/space)) // Can't fall onto nothing.

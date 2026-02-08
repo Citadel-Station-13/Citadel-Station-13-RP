@@ -1,2 +1,2 @@
-/mob/living/silicon/ai/SelfMove(turf/n, direct)
+/mob/living/silicon/ai/self_move(turf/n, direct)
 	return 0

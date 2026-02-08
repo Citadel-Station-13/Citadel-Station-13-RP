@@ -11,3 +11,7 @@
 	. = ..()
 	. += "robot"
 	// TODO: 'robot-module-[module id]'
+
+// all robots get the grip
+/mob/living/silicon/robot/Check_Shoegrip()
+	return TRUE

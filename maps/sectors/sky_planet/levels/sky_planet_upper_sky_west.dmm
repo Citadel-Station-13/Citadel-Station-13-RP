@@ -3398,7 +3398,7 @@
 /area/sector/sky_planet/outpost/medical)
 "pJ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
+/obj/vehicle/sealed/mecha/fighter/pinnace/equipped/equipped{
 	dir = 4
 	},
 /obj/machinery/mech_recharger,
@@ -5185,7 +5185,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/vehicle/sealed/mecha/combat/fighter/cludge,
+/obj/vehicle/sealed/mecha/fighter/cludge,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock2)
 "xR" = (
@@ -5520,7 +5520,7 @@
 /area/sector/sky_planet/outpost/medical)
 "zs" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/vehicle/sealed/mecha/combat/fighter/cludge,
+/obj/vehicle/sealed/mecha/fighter/cludge,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/racing_station/dock2)
 "zt" = (
@@ -6426,7 +6426,7 @@
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
 	},
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
+/obj/vehicle/sealed/mecha/fighter/pinnace/equipped/equipped,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/occulum)
 "Ds" = (

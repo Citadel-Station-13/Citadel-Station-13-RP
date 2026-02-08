@@ -34,10 +34,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	/// sound when missing
 	var/miss_sound = 'sound/weapons/punchmiss.ogg'
 
-	//? Visuals
-	/// ATTACK_ANIMATION_X enum
-	var/animation_type = ATTACK_ANIMATION_PUNCH
-
 	//? Text
 
 	/// past participle verb form describing the attack
@@ -86,7 +82,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 		damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 		ATTACK_TYPE_MELEE,
 		clickchain,
-		NONE,
+		SHIELDCALL_FLAG_SECOND_CALL,
 		clickchain.target_zone,
 	)
 	if(ismob(attacker))

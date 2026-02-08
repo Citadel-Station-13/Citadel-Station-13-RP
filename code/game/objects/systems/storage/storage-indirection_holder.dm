@@ -34,13 +34,17 @@
 		parent.on_item_entered(AM)
 
 /atom/movable/storage_indirection/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
+	SHOULD_CALL_PARENT(FALSE)
 	parent.on_contents_weight_class_change(item, old_weight_class, new_weight_class)
 
 /atom/movable/storage_indirection/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
+	SHOULD_CALL_PARENT(FALSE)
 	parent.on_contents_weight_volume_change(item, old_weight_volume, new_weight_volume)
 
 /atom/movable/storage_indirection/on_contents_weight_change(obj/item/item, old_weight, new_weight)
+	SHOULD_CALL_PARENT(FALSE)
 	parent.on_contents_weight_change(item, old_weight, new_weight)
 
 /atom/movable/storage_indirection/on_contents_item_new(obj/item/item)
+	SHOULD_CALL_PARENT(FALSE)
 	parent.on_contents_item_new(item)

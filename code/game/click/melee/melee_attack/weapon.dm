@@ -17,7 +17,7 @@
 		weapon.damage_mode | (DAMAGE_MODE_REQUEST_ARMOR_BLUNTING | DAMAGE_MODE_REQUEST_ARMOR_RANDOMIZATION),
 		ATTACK_TYPE_MELEE,
 		clickchain,
-		NONE,
+		SHIELDCALL_FLAG_SECOND_CALL,
 		clickchain.target_zone,
 	)
 	clickchain.data[ACTOR_DATA_MELEE_DAMAGE_INSTANCE_RESULTS] = results

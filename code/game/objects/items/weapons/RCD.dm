@@ -223,6 +223,7 @@
 			to_chat(user, SPAN_WARNING( "\The [src] lacks the required material to finish the operation."))
 			return FALSE
 		if(A.rcd_act(user, src, rcd_results[RCD_VALUE_MODE]))
+			#warn log
 			consume_resources(rcd_results[RCD_VALUE_COST])
 			playsound(get_turf(A), 'sound/items/deconstruct.ogg', 50, 1)
 			return TRUE
@@ -318,6 +319,7 @@
 /obj/item/rcd/electric/mounted/get_cell(inducer)
 	return get_external_power_supply()
 
+// TODO: use item mounts
 /obj/item/rcd/electric/mounted/proc/get_external_power_supply()
 	if(isrobot(loc)) // In a borg.
 		var/mob/living/silicon/robot/R = loc
@@ -327,11 +329,10 @@
 		if(module.holder) // Is it attached to a HARDSUIT?
 			return module.holder.cell
 	if(istype(loc, /obj/item/vehicle_module)) // In a mech.
-		var/obj/item/vehicle_module/ME = loc
+		var/obj/item/vehicle_module/lazy/legacy/ME = loc
 		if(ME.chassis) // Is the part attached to a mech?
-			return ME.chassis.cell
+			return ME.chassis.power_cell
 	return null
-
 
 // RCDs for borgs.
 /obj/item/rcd/electric/mounted/borg

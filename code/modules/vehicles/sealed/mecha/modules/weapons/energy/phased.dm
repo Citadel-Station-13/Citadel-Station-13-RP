@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/weapon/energy/phase
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase
 	equip_cooldown = 6
 	name = "\improper NT-PE \"Scorpio\" phase-emitter"
 	desc = "A specialist energy weapon intended for use against hostile wildlife."
@@ -8,6 +8,6 @@
 	projectile = /obj/projectile/energy/phase/heavy
 	fire_sound = 'sound/weapons/Taser.ogg'
 
-	equip_type = EQUIP_UTILITY
+	module_slot = VEHICLE_MODULE_SLOT_UTILITY
 
 	origin_tech = list(TECH_MATERIAL = 1, TECH_COMBAT = 2, TECH_MAGNET = 2)

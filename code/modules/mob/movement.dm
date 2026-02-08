@@ -112,31 +112,20 @@
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
 		mob.ghostize()
 		return FALSE
-	// don't move if there's a forced movement datum on us
-/*
-	if(mob.force_moving)
-		return FALSE
-*/
+
 	// already istype'd earlier ; cast for checks
 	var/mob/living/L = mob
 	// check for incorpmove aka move through walls
 	if(L.incorporeal_move)
 		Process_Incorpmove(direct)
 		return FALSE
+
 	// todo: proper relaymove system
-	// remote controlling something; relay move to that
-/*
-	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
-		return mob.remote_control.relaymove(mob, direct)
-*/
+
 	// we have an eye; relay to that
 	if(mob.eyeobj)
 		return mob.EyeMove(n,direct)
-	// ai move specials
-/*
-	if(isAI(mob))
-		return AIMove(n,direct,mob)
-*/
+
 	//! WARNING: LEGACY CODE START
 	// unzoom
 	// todo: component/element/signal/datum/anything but this
@@ -164,12 +153,6 @@
 	if(!CHECK_MOBILITY(mob, MOBILITY_CAN_MOVE))
 		return
 
-	// new mobility flags check todo
-/*
-	if(!(L.mobility_flags & MOBILITY_CAN_MOVE))
-		return FALSE
-*/
-
 	// todo: proper relaymove handling
 	// machine might process relaymove
 	if(mob.machine)
@@ -185,8 +168,9 @@
 
 	// todo: this should probably be on mob or something
 	// check for gravity
-	if(!mob.Process_Spacemove(direct))
-		return FALSE
+	if(!mob.has_gravity())
+		if(!mob.process_spacemove(FALSE, direct))
+			return FALSE
 
 	//! WARNING: SHITCODE
 	// .... why
@@ -255,7 +239,7 @@
 				if(M)
 					if ((get_dist(mob, M) <= 1 || M.loc == mob.loc))
 						var/turf/T = mob.loc
-						. = mob.SelfMove(n, direct)
+						. = mob.self_move(n, direct)
 						if (isturf(M.loc))
 							var/diag = get_dir(mob, M)
 							if ((diag - 1) & diag)
@@ -290,7 +274,7 @@
 						to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
-		. = mob.SelfMove(n, direct)
+		. = mob.self_move(n, direct)
 	//! End
 
 	//! WARNING: MORE LEGACY CODE
@@ -321,15 +305,7 @@
 		mob.move_delay = world.time + add_delay
 
 	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(add_delay))
-
 	mob.last_self_move = world.time
-
-/mob/proc/SelfMove(turf/T, dir)
-	in_selfmove = TRUE
-	. = Move(T, dir)
-	in_selfmove = FALSE
-	if(.)
-		throwing?.terminate()
 
 ///Process_Incorpmove
 ///Called by client/Move()
@@ -401,55 +377,31 @@
 /mob/proc/Post_Incorpmove()
 	return
 
-///Process_Spacemove
-///Called by /client/Move()
-///For moving in space
-///Return 1 for movement 0 for none
-/mob/Process_Spacemove(direction)
+#warn update floating for process spacemove??
+
+/mob/process_spacemove_support(drifting, movement_dir)
 	. = ..()
 	if(.)
 		return
-	if(Check_Dense_Object())
-		update_floating(TRUE)
-		return TRUE
-
-/mob/proc/Check_Dense_Object() //checks for anything to push off in the vicinity. also handles magboots on gravity-less floors tiles
-
-	var/dense_object = 0
-	var/shoegrip
-
-	for(var/turf/turf in oview(1,src))
-		if(istype(turf,/turf/space))
+	var/has_shoegrip
+	// magboots & walls
+	for(var/turf/potential in oview(1, src))
+		if(potential.density)
+			return potential
+		if(istype(potential, /turf/space))
 			continue
-
-		if(istype(turf,/turf/simulated/floor)) // Floors don't count if they don't have gravity
-			var/area/A = turf.loc
-			if(istype(A) && A.has_gravity == 0)
-				if(shoegrip == null)
-					shoegrip = Check_Shoegrip() //Shoegrip is only ever checked when a zero-gravity floor is encountered to reduce load
-				if(!shoegrip)
-					continue
-
-		dense_object++
-		break
-
-	if(!dense_object && (locate(/obj/structure/lattice) in oview(1, src)))
-		dense_object++
-
-	if(!dense_object && (locate(/obj/structure/catwalk) in oview(1, src)))
-		dense_object++
-
-
-	//Lastly attempt to locate any dense objects we could push off of
-	//TODO: If we implement objects drifing in space this needs to really push them
-	//Due to a few issues only anchored and dense objects will now work.
-	if(!dense_object)
-		for(var/obj/O in oview(1, src))
-			if((O) && (O.density) && (O.anchored))
-				dense_object++
-				break
-
-	return dense_object
+		// todo: check for ferromagnetic :troll:
+		if(istype(potential, /turf/simulated/floor))
+			if(isnull(has_shoegrip))
+				has_shoegrip = Check_Shoegrip()
+			else if(has_shoegrip)
+				return potential
+	if(!drifting)
+		// objects but only if not drifting / to be used as impulse
+		for(var/obj/potential in oview(1, src))
+			if(!potential.density)
+				continue
+			return potential
 
 /mob/proc/Check_Shoegrip()
 	if(flying)	// Checks to see if they are flying.
@@ -573,19 +525,6 @@
 		return FALSE
 	if(shift_pixel_y > -16)
 		adjust_pixel_shift_y(-1)
-
-//? Gravity
-
-/mob/proc/update_gravity()
-	var/has_gravity = has_gravity()
-	if(has_gravity == in_gravity)
-		return
-	var/old_gravity = in_gravity
-	in_gravity = has_gravity
-	on_gravity_change(has_gravity, old_gravity)
-
-/mob/proc/on_gravity_change(old_gravity, new_gravity)
-	update_movespeed()
 
 //? Movement Intercepts
 

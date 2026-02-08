@@ -41,15 +41,20 @@
 /**
  * called to drop the products of deconstruction
  *
+ * TODO: separate to drop_products() and on_drop_products() to enforce providing 'where'
+ *       and provide a callback to invoke on dropped entities.
+ *
  * @params
  * * method - how we were deconstructed
- * * where - where to drop products; set in base if null to drop_location().
+ * * where - (optional) where to drop products
  */
-/atom/proc/drop_products(method, atom/where = drop_location())
+/atom/proc/drop_products(method, atom/where)
 	return
 
 /**
  * called to move a product to a place
+ *
+ * TODO: remove and replace with callback system in drop_products() / on_drop_products().
  *
  * @params
  * * method - how we were deconstructed

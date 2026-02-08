@@ -90,17 +90,7 @@
 	name = "\improper Hoverpod assembly crate"
 	desc = "It comes in a box for the fabricator's sake. Where does the wood come from? ... And why is it lighter?"
 	icon_state = "mulecrate"
-
-/obj/structure/largecrate/hoverpod/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_crowbar())
-		var/obj/item/vehicle_module/ME
-		var/obj/vehicle/sealed/mecha/working/hoverpod/H = new (loc)
-
-		ME = new /obj/item/vehicle_module/tool/hydraulic_clamp
-		ME.attach(H)
-		ME = new /obj/item/vehicle_module/tool/passenger
-		ME.attach(H)
-	..()
+	starts_with = list(/obj/vehicle/sealed/mecha/working/hoverpod/equipped)
 
 /obj/structure/largecrate/vehicle
 	name = "vehicle crate"

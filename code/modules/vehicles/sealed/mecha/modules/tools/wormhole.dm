@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/wormhole_generator
+/obj/item/vehicle_module/lazy/legacy/wormhole_generator
 	name = "wormhole generator"
 	desc = "An exosuit module that allows generating of small quasi-stable wormholes."
 	icon_state = "mecha_wholegen"
@@ -7,9 +7,9 @@
 	energy_drain = 300
 	range = RANGED
 
-	equip_type = EQUIP_SPECIAL
+	module_slot = VEHICLE_MODULE_SLOT_SPECIAL
 
-/obj/item/vehicle_module/wormhole_generator/action(atom/target)
+/obj/item/vehicle_module/lazy/legacy/wormhole_generator/action(atom/target)
 	if(!action_checks(target) || src.loc.z == 2) return
 	var/list/theareas = list()
 	for(var/area/AR in orange(100, chassis))

@@ -56,47 +56,35 @@
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting/threatening
 	say_list_type = /datum/say_list/malf_drone
+	movement_works_in_space = TRUE
+
+	make_shield_comp = TRUE
+	make_shield_comp_health = 150
+	make_shield_comp_recharge_delay = 7 SECONDS
+	make_shield_comp_recharge_rate = 10
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
 
 	var/datum/effect_system/ion_trail_follow/ion_trail = null
-	var/obj/item/shield_projector/shields = null
 
 /mob/living/simple_mob/mechanical/combat_drone/Initialize(mapload)
 	ion_trail = new
 	ion_trail.set_up(src)
 	ion_trail.start()
-
-	shields = new /obj/item/shield_projector/rectangle/automatic/drone(src)
 	return ..()
 
 /mob/living/simple_mob/mechanical/combat_drone/Destroy()
 	QDEL_NULL(ion_trail)
-	QDEL_NULL(shields)
 	return ..()
 
 /mob/living/simple_mob/mechanical/combat_drone/death()
 	..(null,"suddenly breaks apart.")
 	qdel(src)
 
-/mob/living/simple_mob/mechanical/combat_drone/Process_Spacemove(var/check_drift = 0)
-	return TRUE
-
-/obj/projectile/beam/drone
-	damage_force = 10
-
-/obj/item/shield_projector/rectangle/automatic/drone
-	shield_health = 150
-	max_shield_health = 150
-	shield_regen_delay = 10 SECONDS
-	shield_regen_amount = 10
-	size_x = 1
-	size_y = 1
-
 // A slightly easier drone, for POIs.
 // Difference is that it should not be faster than you.
 /mob/living/simple_mob/mechanical/combat_drone/lesser
 	desc = "An automated combat drone with an aged apperance."
 	movement_base_speed = 10 / 10
-
 
 // This one is the type spawned by the random event.
 // It won't wander away from its spawn point

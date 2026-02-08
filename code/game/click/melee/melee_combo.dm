@@ -119,7 +119,8 @@
 			damage_mode,
 			ATTACK_TYPE_MELEE,
 			clickchain,
-			hit_zone = target_zone,
+			SHIELDCALL_FLAG_SECOND_CALL,
+			target_zone,
 		)
 	return TRUE
 

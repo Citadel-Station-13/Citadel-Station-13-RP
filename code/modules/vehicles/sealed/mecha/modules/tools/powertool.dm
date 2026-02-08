@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/tool/powertool
+/obj/item/vehicle_module/lazy/legacy/tool/powertool
 	name = "pneumatic wrench"
 	desc = "An exosuit-mounted hydraulic wrench."
 	icon_state = "mecha_wrench"
@@ -6,25 +6,23 @@
 	equip_cooldown = 3
 	energy_drain = 15
 	range = MELEE
-	equip_type = EQUIP_UTILITY
 	ready_sound = 'sound/items/Ratchet.ogg'
-	required_type = list(/obj/vehicle/sealed/mecha/working/ripley)
 
 	var/obj/item/my_tool = null
 	var/tooltype = /obj/item/tool/wrench/power
 
-/obj/item/vehicle_module/tool/powertool/Initialize(mapload)
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/Initialize(mapload)
 	my_tool = new tooltype(src)
 	my_tool.name = name
 	my_tool.anchored = TRUE
 	ADD_TRAIT(my_tool, TRAIT_ITEM_NODROP, GENERIC_TRAIT)
 	return ..()
 
-/obj/item/vehicle_module/tool/powertool/Destroy()
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/Destroy()
 	QDEL_NULL(my_tool)
 	return ..()
 
-/obj/item/vehicle_module/tool/powertool/action(var/atom/target)
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/action(var/atom/target)
 	if(!action_checks(target))
 		return FALSE
 
@@ -33,23 +31,32 @@
 
 	target.attackby(my_tool,chassis.occupant_legacy)
 
-/obj/item/vehicle_module/tool/powertool/prybar
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/prybar
 	name = "pneumatic prybar"
 	desc = "An exosuit-mounted pneumatic prybar."
 	icon_state = "mecha_crowbar"
 	tooltype = /obj/item/tool/crowbar/power
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
 
-/obj/item/vehicle_module/tool/powertool/cutter
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/cutter
 	name = "pneumatic cablecutter"
 	desc = "An exosuit-mounted pneumatic cablecutter."
 	icon_state = "mecha_cablecutter"
 	tooltype = /obj/item/tool/wirecutters/power
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
 
-/obj/item/vehicle_module/tool/powertool/screwdriver
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/screwdriver
 	name = "pneumatic screwdriver"
 	desc = "An exosuit-mounted pneumatic screwdriver."
 	icon_state = "mecha_screwdriver"
 	tooltype = /obj/item/tool/screwdriver/power
 	ready_sound = 'sound/mecha/gasdisconnected.ogg'
+
+/obj/item/vehicle_module/lazy/legacy/tool/powertool/medanalyzer
+	name = "mounted humanoid scanner"
+	desc = "An exosuit-mounted scanning device."
+	icon_state = "mecha_analyzer_health"
+	equip_cooldown = 5 SECONDS
+	energy_drain = 100
+	ready_sound = 'sound/weapons/flash.ogg'
+	tooltype = /obj/item/healthanalyzer/advanced

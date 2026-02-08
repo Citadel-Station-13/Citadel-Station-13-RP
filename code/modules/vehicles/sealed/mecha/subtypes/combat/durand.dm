@@ -1,70 +1,56 @@
+/datum/armor/vehicle/mecha/combat/durand
+	melee = 0.45
+	melee_tier = 4
+	bullet = 0.45
+	bullet_tier = 4
+	laser = 0.45
+	laser_tier = 4
+	energy = 0.35
+	bomb = 0.5
+
 /obj/vehicle/sealed/mecha/combat/durand
-	desc = "An aging combat exosuit utilized by many corporations. Originally developed to combat hostile alien lifeforms."
 	name = "Durand"
+	desc = "An aging combat exosuit utilized by many corporations. Originally developed to combat hostile alien lifeforms."
+	description_fluff = {"
+		The Durand is an aging combat exosuit designed during the Rye-Egress War.
+		Once considered the most durable exosuit ever developed by Humanity, this platform has long since lost that title.
+		In spite of its age, the Durand remains one of the most well built and armored exosuits on the market.
+		Standing at a towering 12'(3.5m), the exosuit boasts depleted uranium armor paneling and a
+		robust electrical harness capable of powering some of the most fearsome weaponry still in use today.
+		Although modern militaries - both Galactic and Corporate - have since moved on to more contemporary models,
+		the Durand continues to see usage with smaller mercenary bands and SysDef elements.
+	"}
 	icon_state = "durand"
 	initial_icon = "durand"
-	step_in = 4
+
+	armor_type = /datum/armor/vehicle/mecha/combat/durand
+	integrity = 1.25 * /obj/vehicle/sealed/mecha/combat::integrity
+	integrity_max = 1.25 * /obj/vehicle/sealed/mecha/combat::integrity_max
+	base_movement_speed = 2.5
+
+	comp_hull_relative_thickness = 1.5 * /obj/vehicle/sealed/mecha/combat::comp_hull_relative_thickness
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/durable
+	comp_armor_relative_thickness = 1.5 * /obj/vehicle/sealed/mecha/combat::comp_armor_relative_thickness
+	comp_armor = /obj/item/vehicle_component/plating/mecha_armor/military
+
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_HULL = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+		VEHICLE_MODULE_SLOT_UTILITY = 4,
+	)
+	modules_intrinsic = list(
+		/obj/item/vehicle_module/personal_shield/deflector/durand,
+	)
+
 	dir_in = 1 //Facing North.
-	integrity = 300
-	integrity_max = 300			//Don't forget to update the /old variant if  you change this number.
-	deflect_chance = 20
-	damage_absorption = list("brute"=0.5,"fire"=1.1,"bullet"=0.65,"laser"=0.85,"energy"=0.9,"bomb"=0.8)
 	max_temperature = 30000
-	infra_luminosity = 8
-	force = 40
 	wreckage = /obj/effect/decal/mecha_wreckage/durand
 
-	damage_minimum = 15			//Big stompy
-	minimum_penetration = 25
-
-	max_hull_equip = 2
-	max_weapon_equip = 1
-	max_utility_equip = 2
-	max_universal_equip = 1
-	max_special_equip = 1
-
-	starting_components = list(
-		/obj/item/vehicle_component/hull/durable,
-		/obj/item/vehicle_component/actuator,
-		/obj/item/vehicle_component/armor/military,
-		/obj/item/vehicle_component/gas,
-		/obj/item/vehicle_component/electrical
-		)
-
-	defence_mode_possible = 1
+	melee_standard_force = 40
 
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5
-
-//This is for the Mech stats / Menu system. To be moved later on.
-/obj/vehicle/sealed/mecha/combat/durand/get_commands()
-	var/output = {"<div class='wr'>
-						<div class='header'>Special</div>
-						<div class='links'>
-						<a href='?src=\ref[src];toggle_defence_mode=1'>Toggle defence mode</a>
-						</div>
-						</div>
-						"}
-	output += ..()
-	return output
-
-
-//Not needed anymore but left for reference.
-/*
-/obj/vehicle/sealed/mecha/combat/durand/get_stats_part()
-	var/output = ..()
-	output += "<b>Defence mode: [defence?"on":"off"]</b>"
-	return output
-*/
-
-/*
-
-/obj/vehicle/sealed/mecha/combat/durand/Topic(href, href_list)
-	..()
-	if (href_list["toggle_defence_mode"])
-		src.defence_mode()
-	return
-*/
 
 //Meant for random spawns.
 /obj/vehicle/sealed/mecha/combat/durand/old
@@ -74,4 +60,4 @@
 	. = ..()
 	integrity = 25
 	integrity_max = 250	//Just slightly worse.
-	cell.charge = rand(0, (cell.charge/2))
+	power_cell.charge = rand(0, (power_cell.charge/2))
