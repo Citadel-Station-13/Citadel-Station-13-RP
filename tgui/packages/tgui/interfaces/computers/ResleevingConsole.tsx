@@ -231,13 +231,14 @@ export const ResleevingConsole = (props) => {
                                   <LabeledList.Item label="Supports Organics">
                                     {printer.allowOrganic ? 'Yes' : 'No'}
                                   </LabeledList.Item>
-                                  <LabeledList.Item label="Supports Syntehtics">
+                                  <LabeledList.Item label="Supports Synthetics">
                                     {printer.allowSynthetic ? 'Yes' : 'No'}
                                   </LabeledList.Item>
                                 </LabeledList>
                               </Stack.Item>
                               <Stack.Item>
                                 <Button.Confirm
+                                textAlign="center"
                                   fluid
                                   disabled={
                                     !!printer.busy || !isSelectedBodyRecordValid
@@ -307,15 +308,14 @@ export const ResleevingConsole = (props) => {
                                     </LabeledList.Item>
                                   </LabeledList>
                                 ) : (
-                                  <Dimmer>
-                                    <NoticeBox>No inserted occupant</NoticeBox>
-                                  </Dimmer>
+                                  <NoticeBox>No inserted occupant</NoticeBox>
                                 )}
                               </Stack.Item>
                               <Stack.Item>
                                 <Button.Confirm
                                   fluid
                                   disabled={!pod.mirror || !pod.occupied}
+                                  textAlign="Center"
                                 >
                                   {!pod.mirror
                                     ? 'Insert Mirror'

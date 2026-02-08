@@ -158,9 +158,9 @@
 				"source" = "DNA Disk (Console)",
 			)
 	if(inserted_mirror?.recorded_body)
-		var/datum/resleeving_body_backup/body_rec = inserted_mirror?.recorded_body
+		var/datum/resleeving_body_backup/body_rec = inserted_mirror.recorded_body
 		body_record_datas[++body_record_datas.len] = list(
-			"name" = body_rec.legacy_dna.name || "Unknown",
+			"name" = body_rec.legacy_dna?.name || "Unknown",
 			"synthetic" = body_rec.legacy_synthetic,
 			"ref" = ref(inserted_mirror),
 			"source" = "Mirror (Console)"

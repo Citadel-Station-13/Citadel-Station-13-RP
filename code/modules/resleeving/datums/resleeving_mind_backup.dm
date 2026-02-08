@@ -1,5 +1,6 @@
 /**
  * * Considered immutable once created; many datums may be shared!
+ * * Variables in this should **never** point back to it, or you will cause a memory leak!
  */
 /datum/resleeving_mind_backup
 	/// mind reference; this is what actually stores the player's soul

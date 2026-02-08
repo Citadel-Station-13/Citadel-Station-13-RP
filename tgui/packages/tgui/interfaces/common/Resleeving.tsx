@@ -10,6 +10,7 @@ export interface ResleevingBodyRecordData {
   gender: string | null;
   speciesName: string | null;
   synthetic: BooleanLike;
+  name: string | null;
 }
 
 export interface ResleevingMindRecordData {
@@ -63,6 +64,9 @@ export const ResleevingMirror = (props: { data: ResleevingMirrorData }) => {
         </LabeledList.Item>
         {props.data.bodyRecord && (
           <>
+            <LabeledList.Item label="Name">
+              {props.data.bodyRecord.name}
+            </LabeledList.Item>
             <LabeledList.Item label="Gender">
               {props.data.bodyRecord.gender}
             </LabeledList.Item>

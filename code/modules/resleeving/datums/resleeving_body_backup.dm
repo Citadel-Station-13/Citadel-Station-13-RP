@@ -1,5 +1,6 @@
 /**
  * * Considered immutable once created; many datums may be shared!
+ * * Variables in this should **never** point back to it, or you will cause a memory leak!
  */
 /datum/resleeving_body_backup
 	/// mind ref.
@@ -56,6 +57,7 @@
 		"gender" = legacy_gender || "Unknown",
 		"speciesName" = legacy_custom_species_name || legacy_species_uid || "Unknown",
 		"synthetic" = legacy_synthetic,
+		"name" = legacy_dna?.name || "Unknown",
 	)
 
 /datum/resleeving_body_backup/proc/initialize_from_body(mob/from_body)
