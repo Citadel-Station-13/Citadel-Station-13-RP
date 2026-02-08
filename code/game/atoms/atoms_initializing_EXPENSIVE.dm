@@ -20,7 +20,6 @@
 	#ifdef UNIT_TESTS
 	if(start_tick != world.time)
 		BadInitializeCalls[the_type] |= BAD_INIT_SLEPT
-		stack_trace("[A] ([A.type]) slept during init.")
 	#endif
 
 	var/qdeleted = FALSE

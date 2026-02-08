@@ -23374,13 +23374,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room8)
-"lje" = (
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
-/obj/structure/cable/yellow,
-/turf/simulated/floor/wood,
-/area/tradeport/commons)
 "ljp" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood,
@@ -55460,7 +55453,7 @@ aYQ
 aOR
 aYQ
 ahb
-lje
+ahr
 atu
 aIX
 aRE

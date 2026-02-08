@@ -7,4 +7,4 @@
 	if(!istype(holosphere_species))
 		return
 
-	holosphere_species.try_transform()
+	holosphere_species.try_transform(src)

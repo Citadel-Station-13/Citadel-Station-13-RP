@@ -388,7 +388,7 @@
  * Do not do anything that will re-move the atom, or bad things happen.
  * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
  *
- * todo: old_locs is not actually real used right now
+ * todo: old_locs is not actually really used right now
  * todo: momentum_change is not actually used right now
  *
  * @params
@@ -849,7 +849,8 @@
  */
 /atom/movable/proc/on_changed_z_level(old_z, new_z)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
-	for(var/atom/movable/AM as anything in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
+	// Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
+	for(var/atom/movable/AM as anything in src)
 		AM.on_changed_z_level(old_z, new_z)
 
 //? Anchored

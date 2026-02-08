@@ -1,4 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes:
-  - rscdel: "Removed the not working autohiss traits (character setting stays, just the traits)"

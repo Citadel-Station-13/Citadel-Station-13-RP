@@ -27,7 +27,8 @@
 		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/cataloguer,
-		/obj/item/binoculars)
+		/obj/item/rangefinder,
+	)
 
 /obj/structure/closet/secure_closet/explorer/Initialize(mapload)
 	if(prob(50))
@@ -75,7 +76,7 @@
 		/obj/item/geiger_counter,
 		/obj/item/bodybag/cryobag,
 		/obj/item/cataloguer/compact,
-		/obj/item/binoculars,
+		/obj/item/rangefinder,
 		/obj/item/gun/projectile/ballistic/shotgun/flare/paramed,
 		/obj/item/storage/box/flashshells/large)
 
@@ -110,7 +111,8 @@
 		/obj/item/radio,
 		/obj/item/gps/explorer,
 		/obj/item/cataloguer/compact,
-		/obj/item/binoculars)
+		/obj/item/rangefinder/laser_designator,
+	)
 
 /obj/structure/closet/secure_closet/pilot/Initialize(mapload)
 	if(prob(50))
@@ -157,7 +159,8 @@
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/point_redemption_voucher/preloaded/survey/c300,
 		/obj/item/cataloguer/compact/pathfinder,
-		/obj/item/binoculars)
+		/obj/item/rangefinder/laser_designator,
+	)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)
 	if(prob(50))

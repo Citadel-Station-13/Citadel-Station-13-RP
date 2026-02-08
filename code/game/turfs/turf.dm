@@ -116,6 +116,8 @@
 	/// For if you explicitly want a turf to not be affected by shield generators
 	var/noshield = FALSE
 
+	var/list/image/blueprint_data //for the station blueprints, images of objects eg: pipes
+
 	// Some quick notes on the vars below: is_outside should be left set to OUTSIDE_AREA unless you
 	// EXPLICITLY NEED a turf to have a different outside state to its area (ie. you have used a
 	// roofing tile). By default, it will ask the area for the state to use, and will update on
@@ -215,9 +217,10 @@
 		for(var/A in B.contents)
 			qdel(A)
 		return
+
 	// SSair.remove_from_active(src)
 	// visibilityChanged()
-	// QDEL_LIST(blueprint_data)
+	QDEL_LIST(blueprint_data)
 	atom_flags &= ~ATOM_INITIALIZED
 	// requires_activation = FALSE
 
@@ -231,11 +234,11 @@
 	if (mimic_proxy)
 		QDEL_NULL(mimic_proxy)
 
+	..()
+
 	// clear vis contents here instead of in Init
 	if(length(vis_contents))
 		vis_contents.Cut()
-
-	..()
 
 /// WARNING WARNING
 /// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
@@ -364,6 +367,21 @@
 		sleep(2)
 		M.update_transform()
 
+/// Call to move a turf from its current area to a new one
+/turf/proc/change_area(area/old_area, area/new_area)
+	//don't waste our time
+	if(old_area == new_area)
+		return
+
+	//move the turf
+	// LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, z, list())
+	// LISTASSERTLEN(new_area.turfs_by_zlevel, z, list())
+	// old_area.turfs_to_uncontain_by_zlevel[z] += src
+	// new_area.turfs_by_zlevel[z] += src
+	new_area.contents += src
+	// SEND_SIGNAL(src, COMSIG_TURF_AREA_CHANGED, old_area)
+	// SEND_SIGNAL(new_area, COMSIG_AREA_TURF_ADDED, src, old_area)
+	// SEND_SIGNAL(old_area, COMSIG_AREA_TURF_REMOVED, src, new_area)
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
 	return
@@ -396,6 +414,25 @@
 		return cost
 	else
 		return get_dist(src,t)
+
+/turf/proc/add_blueprints(atom/movable/AM)
+	var/image/I = new
+	I.appearance = AM.appearance
+	I.appearance_flags = RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
+	// apparently setting appearance before these layers & planes cause it to inherit apperance values
+	I.plane = ABOVE_PLANE // close to "game plane"
+	I.layer = OBJ_LAYER
+	I.loc = src
+	I.setDir(AM.dir)
+	I.alpha = 128
+	LAZYADD(blueprint_data, I)
+
+/turf/proc/add_blueprints_preround(atom/movable/AM)
+	if(!SSicon_smooth.initialized)
+		if(AM.layer == WIRE_LAYER) //wires connect to adjacent positions after its parent init, meaning we need to wait (in this case, until smoothing) to take its image
+			SSicon_smooth.blueprint_queue += AM
+		else
+			add_blueprints(AM)
 
 /turf/proc/AdjacentTurfsSpace()
 	var/L[] = new()
@@ -651,6 +688,19 @@
  */
 /turf/proc/sector_set_temperature(temperature)
 	return
+
+/**
+ * blocks laser designators and similar from propagating up through us
+ * * does not check the current level!
+ */
+/turf/proc/sector_block_high_altitude_observation_to_below()
+	return !(mz_flags & (MZ_MIMIC_BELOW | MZ_ALLOW_LIGHTING))
+
+/**
+ * always visible from high altitude
+ */
+/turf/proc/sector_always_visible_from_high_altitude()
+	return FALSE
 
 //* Radiation *//
 

@@ -16,7 +16,7 @@
 SUBSYSTEM_DEF(time_keep)
 	name = "Time Keeping"
 	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
-	var/galactic_year_offset = 544
+	var/galactic_year_offset = STATION_YEAR_OFFSET
 	var/static/galactic_time_offset = null
 
 	var/list/possible_roundstart_offsets = list(
@@ -54,13 +54,13 @@ SUBSYSTEM_DEF(time_keep)
 	//       in date rendering code.
 	MIDNIGHT_ROLLOVER_CHECK_STANDALONE
 	if(manual_offset)
-		var/use_time = galactic_time_offset + manual_offset - (global.midnight_rollovers DAYS)
-		return "[num2text(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
+		var/use_time = galactic_time_offset + manual_offset - (GLOB.midnight_rollovers DAYS)
+		return "[num2text(time2text(use_time, "YYYY", NO_TIMEZONE)) + galactic_year_offset]-[time2text(use_time, "MM-DD", NO_TIMEZONE)]"
 	else
-		var/use_time = galactic_time_offset + world.time - (global.midnight_rollovers DAYS)
+		var/use_time = galactic_time_offset + world.time - (GLOB.midnight_rollovers DAYS)
 		var/rollovers = floor(use_time / (1 DAY))
 		if(rollovers != cached_galactic_date_rollovers)
-			cached_galactic_date = "[text2num(time2text(use_time, "YYYY")) + galactic_year_offset]-[time2text(use_time, "MM-DD", 0)]"
+			cached_galactic_date = "[text2num(time2text(use_time, "YYYY", NO_TIMEZONE)) + galactic_year_offset]-[time2text(use_time, "MM-DD", NO_TIMEZONE)]"
 		return cached_galactic_date
 
 /**
@@ -70,10 +70,10 @@ SUBSYSTEM_DEF(time_keep)
 /datum/controller/subsystem/time_keep/proc/render_galactic_time(manual_offset)
 	if(manual_offset)
 		// TODO: slow path that doesn't cache
-		return time2text(galactic_time_offset + manual_offset, "hh:mm:ss", 0)
+		return time2text(galactic_time_offset + manual_offset, "hh:mm:ss", NO_TIMEZONE)
 	else
 		// TODO: cache fast path
-		return time2text(galactic_time_offset + world.time, "hh:mm:ss", 0)
+		return time2text(galactic_time_offset + world.time, "hh:mm:ss", NO_TIMEZONE)
 
 /**
  * Returns time from start of current round. Default offset is current time.
@@ -82,10 +82,10 @@ SUBSYSTEM_DEF(time_keep)
 /datum/controller/subsystem/time_keep/proc/render_galactic_time_short(manual_offset)
 	if(manual_offset)
 		// TODO: slow path that doesn't cache
-		return time2text(galactic_time_offset + manual_offset, "hh:mm", 0)
+		return time2text(galactic_time_offset + manual_offset, "hh:mm", NO_TIMEZONE)
 	else
 		// TODO: cache fast path
-		return time2text(galactic_time_offset + world.time, "hh:mm", 0)
+		return time2text(galactic_time_offset + world.time, "hh:mm", NO_TIMEZONE)
 
 /**
  * * **warning**: this proc return should never be used to render date. BYOND is weird.

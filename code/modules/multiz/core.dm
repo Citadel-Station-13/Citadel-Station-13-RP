@@ -29,11 +29,3 @@
 		return get_dir(AT, BT) | UP
 	else if(BT.z == SSmapping.cached_level_down[AT.z])
 		return get_dir(AT, BT) | DOWN
-
-/**
- * This is the full get multiz step.
- * It will look across lateral transitions and other struct magic.
- */
-/proc/get_virtual_step(atom/A, dir)
-	var/turf/T = get_turf(A)
-	return SSmapping.get_virtual_step(T, dir)

@@ -138,11 +138,11 @@ SUBSYSTEM_DEF(ipintel)
 
 /datum/controller/subsystem/ipintel/proc/ipintel_cache_fetch_impl(address)
 	PRIVATE_PROC(TRUE)
-	var/datum/db_query/fetch = SSdbcore.NewQuery(
-		"SELECT date, intel, TIMESTAMPDIFF(MINUTE,date,NOW()) FROM [DB_PREFIX_TABLE_NAME("ipintel")] WHERE ip = INET_ATON(:ip)",
-		list(
-			"ip" = address,
-		)
+	var/datum/db_query/fetch = SSdbcore.NewQuery({"
+		SELECT date, intel, TIMESTAMPDIFF(MINUTE,date,NOW())
+		FROM [DB_PREFIX_TABLE_NAME("ipintel")]
+		WHERE ip = INET_ATON(:ip)
+		"}, list("ip" = address)
 	)
 	fetch.Execute()
 	if(fetch.NextRow())
@@ -195,7 +195,7 @@ SUBSYSTEM_DEF(ipintel)
 	var/cached_realtime
 
 /datum/ipintel/New()
-	cached_timestamp = time_stamp()
+	cached_timestamp = ISOtime()
 	cached_realtime = world.realtime
 
 /datum/ipintel/proc/is_valid()

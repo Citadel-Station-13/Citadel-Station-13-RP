@@ -51,6 +51,9 @@
 	 *
 	 * If this is FALSE, this is instead just a regular area that groups turfs and any system can spawn any amount of it (if not unique)
 	 * for any reason.
+	 *
+	 * * Setting this to TRUE acts as an invariant check for things like orbital drops; we will not allow
+	 *   overwriting areas with this enabled.
 	 */
 	var/special = FALSE
 
@@ -151,10 +154,7 @@
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
-	if (unique)
-		// todo: something is double initing reserve area god damnit...
-		// if(GLOB.areas_by_type[type])
-		// 	STACK_TRACE("duplicated unique area, someone fucked up")
+	if (unique) // TODO flag me
 		GLOB.areas_by_type[type] = src
 
 	uid = ++global_uid
@@ -167,11 +167,6 @@
 			minimap_color = I.GetPixel(1,1)
 		else // no icon state? use random.
 			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70)) // This interacts with the map loader, so it needs to be set immediately
-	return ..()
-
-/area/EarlyDestroy(force)
-	if(GLOB.areas_by_type[type] == src)
-		GLOB.areas_by_type[type] = null
 	return ..()
 
 /*
@@ -227,21 +222,12 @@
 /area/Destroy()
 	if(GLOB.areas_by_type[type] == src)
 		GLOB.areas_by_type[type] = null
-/*
-	if(base_area)
-		LAZYREMOVE(base_area, src)
-		base_area = null
-	if(sub_areas)
-		for(var/i in sub_areas)
-			var/area/A = i
-			A.base_area = null
-			sub_areas -= A
-			if(A.requires_power)
-				A.power_light = FALSE
-				A.power_equip = FALSE
-				A.power_environ = FALSE
-			INVOKE_ASYNC(A, PROC_REF(power_change))
-*/
+	//this is not initialized until get_sorted_areas() is called so we have to do a null check
+	if(!isnull(GLOB.sortedAreas))
+		GLOB.sortedAreas -= src
+	if(!isnull(GLOB.custom_areas))
+		GLOB.custom_areas -= src
+
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -648,6 +634,20 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
 
+/**
+ * Setup an area (with the given name)
+ *
+ * Sets the area name, sets all status var's to false and adds the area to the sorted area list
+ */
+/area/proc/setup(a_name)
+	name = a_name
+	power_equip = FALSE
+	power_light = FALSE
+	power_environ = FALSE
+	always_unpowered = FALSE
+	// area_flags &= ~(VALID_TERRITORY|BLOBS_ALLOWED|CULT_PERMITTED)
+	// require_area_resort()
+
 /area/AllowDrop()
 	CRASH("Bad op: area/AllowDrop() called")
 
@@ -705,7 +705,7 @@ var/list/ghostteleportlocs = list()
 
 	return 1
 
-//* Atmospherics
+//* Atmospherics *//
 
 /area/proc/register_scrubber(obj/machinery/atmospherics/component/unary/vent_scrubber/instance)
 	LAZYADD(vent_scrubbers, instance)
@@ -750,6 +750,23 @@ var/list/ghostteleportlocs = list()
 	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/scrubber as anything in vent_scrubbers)
 		if(scrubber.id_tag == id)
 			return scrubber
+
+//* Color *//
+
+/area/get_atom_color()
+	return color
+
+/area/add_atom_color(new_color)
+	color = new_color
+
+/area/copy_atom_color(atom/other)
+	color = other.get_atom_color()
+
+/area/remove_atom_color(require_color)
+	color = null
+
+/area/update_atom_color()
+	return
 
 //* Turfs *//
 

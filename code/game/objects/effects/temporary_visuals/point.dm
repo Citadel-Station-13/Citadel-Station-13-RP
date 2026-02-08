@@ -4,8 +4,6 @@
 	icon_state = "arrow"
 	plane = POINT_PLANE
 	duration = (2.5 SECONDS)
-	anchored = TRUE
-	mouse_opacity = 0
 
 /obj/effect/temp_visual/point/Initialize(mapload, set_invis = 0)
 	. = ..()

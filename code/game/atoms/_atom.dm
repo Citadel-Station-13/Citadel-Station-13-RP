@@ -793,6 +793,7 @@
  * * **Rule of Three**: If this is overridden, all `set_pixel_x/y/offsets` must be overridden.
  */
 /atom/proc/set_pixel_x(val)
+	SHOULD_NOT_SLEEP(TRUE)
 	pixel_x = val + get_managed_pixel_x()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
@@ -802,6 +803,7 @@
  * * **Rule of Three**: If this is overridden, all `set_pixel_x/y/offsets` must be overridden.
  */
 /atom/proc/set_pixel_y(val)
+	SHOULD_NOT_SLEEP(TRUE)
 	pixel_y = val + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
@@ -811,6 +813,7 @@
  * * **Rule of Three**: If this is overridden, all `set_pixel_x/y/offsets` must be overridden.
  */
 /atom/proc/set_pixel_offsets(x, y)
+	SHOULD_NOT_SLEEP(TRUE)
 	pixel_x = x + get_managed_pixel_x()
 	pixel_y = y + get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
@@ -820,6 +823,7 @@
  * * Our managed pixel X / Y will still be applied.
  */
 /atom/proc/reset_pixel_offsets()
+	SHOULD_NOT_SLEEP(TRUE)
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
@@ -870,6 +874,7 @@
  * * **Rule of Three**: If this is overridden, all `set_base_pixel_x/y/offsets` must be overridden.
  */
 /atom/proc/set_base_pixel_x(new_value)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(base_pixel_x == new_value)
 		return
 	var/old = base_pixel_x
@@ -882,6 +887,7 @@
  * * **Rule of Three**: If this is overridden, all `set_base_pixel_x/y/offsets` must be overridden.
  */
 /atom/proc/set_base_pixel_y(new_value)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(base_pixel_y == new_value)
 		return
 	var/old = base_pixel_y

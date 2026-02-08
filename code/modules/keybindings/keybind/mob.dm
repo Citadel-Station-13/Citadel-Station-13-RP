@@ -176,8 +176,71 @@
 	var/obj/item/I = M.get_active_held_item()
 	if(!I)
 		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
-	else
-		M.drop_item_to_ground(I)
+		return FALSE
+	M.drop_item_to_ground(I)
+	return TRUE
+
+/datum/keybinding/mob/drop_item_precisely
+	hotkey_keys = list("CtrlQ")
+	name = "drop_item_precisely"
+	full_name = "Drop Item Precisely"
+	description = "No description provided."
+
+/datum/keybinding/mob/drop_item_precisely/down(client/user)
+	if(isrobot(user.mob)) //cyborgs can't drop items
+		return FALSE
+	var/mob/M = user.mob
+	var/obj/item/I = M.get_active_held_item()
+	if(!I)
+		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
+		return FALSE
+	// WELCOME TO THE IF PYRAMID OF DOOM
+	// check if they're over a valid object
+	if(!(user.mouse_predicted_last_atom?.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD)) && \
+		(user.mouse_predicted_last_atom != I))
+		// attempt to resolve current mouse params
+		var/list/maybe_mouse_params
+		var/turf/maybe_last_turf
+		if((maybe_last_turf = get_turf(user.mouse_predicted_last_atom)) && \
+			(maybe_mouse_params = user.get_mouse_params()))
+			// we can attempt to resolve
+			// JUST DECODE IT FOR US WHEN, BYOND??????
+			// TODO: neither of these fully works, because byond is fucking insane
+			//       and dealing with mouse handling in it is honestly just a fucking
+			//       exercise in masochism at this point
+			// if(maybe_mouse_params["icon-x"] && maybe_mouse_params["icon-y"])
+			// 	var/rpx = text2num(maybe_mouse_params["icon-x"])
+			// 	var/rpy = text2num(maybe_mouse_params["icon-y"])
+			// 	var/px = rpx - (WORLD_ICON_SIZE * 0.5)
+			// 	var/py = rpy - (WORLD_ICON_SIZE * 0.5)
+			// 	M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
+			// 	return TRUE
+			var/list/decoded = splittext(maybe_mouse_params["screen-loc"], ",")
+			if(length(decoded) == 2)
+				var/list/dpx = splittext(decoded[1], ":")
+				var/list/dpy = splittext(decoded[2], ":")
+				var/rpx = text2num(dpx[2])
+				var/rpy = text2num(dpy[2])
+				// if it's 1 or WORLD_ICON_SIZE, shit gets wacky
+				// don't ask why, it just does and i don't know why
+				// TODO: Found out why. This fixes tables but breaks tiles. It's because
+				//       things bigger than one exact tile or clipping onto others
+				//       causes problems. There's absolutely nothing I can do
+				//       about this until client/proc/predict_mouse_tile_from_screen_loc
+				//       is done, so deal with it. Sorry.
+				// if(rpx == 1)
+				// 	maybe_last_turf = get_step(maybe_last_turf, EAST)
+				// else if(rpx == WORLD_ICON_SIZE)
+				// 	maybe_last_turf = get_step(maybe_last_turf, WEST)
+				// if(rpy == 1)
+				// 	maybe_last_turf = get_step(maybe_last_turf, NORTH)
+				// else if(rpy == WORLD_ICON_SIZE)
+				// 	maybe_last_turf = get_step(maybe_last_turf, SOUTH)
+				var/px = rpx - (WORLD_ICON_SIZE * 0.5)
+				var/py = rpy - (WORLD_ICON_SIZE * 0.5)
+				M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
+				return TRUE
+	to_chat(user, SPAN_WARNING("Your mouse isn't hovering in a place [I] can be dropped to!"))
 	return TRUE
 
 /datum/keybinding/mob/toggle_gun_mode
@@ -198,11 +261,17 @@
 
 /datum/keybinding/mob/toggle_move_intent/down(client/user)
 	var/mob/M = user.mob
+	// no accidental move intent toggles for ghosts
+	if(isobserver(M))
+		return
 	M.toggle_move_intent()
 	return TRUE
 
 /datum/keybinding/mob/toggle_move_intent/up(client/user)
 	var/mob/M = user.mob
+	// no accidental move intent toggles for ghosts
+	if(isobserver(M))
+		return
 	M.toggle_move_intent()
 	return TRUE
 
@@ -214,6 +283,9 @@
 
 /datum/keybinding/mob/toggle_move_intent_alternative/down(client/user)
 	var/mob/M = user.mob
+	// no accidental move intent toggles for ghosts
+	if(isobserver(M))
+		return
 	M.toggle_move_intent()
 	return TRUE
 

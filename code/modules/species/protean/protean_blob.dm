@@ -400,8 +400,8 @@
 	return blob
 
 //For some reason, there's no way to force drop all the mobs grabbed. This ought to fix that. And be moved elsewhere. Call with caution, doesn't handle cycles.
-/proc/remove_micros(var/src, var/mob/root)
-	for(var/obj/item/I in src)
+/proc/remove_micros(this, mob/root)
+	for(var/obj/item/I in this)
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
 			I.forceMove(root.drop_location())

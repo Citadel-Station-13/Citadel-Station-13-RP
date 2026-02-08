@@ -1,5 +1,0 @@
-author: "AlphaM01"
-delete-after: True
-changes:
-  - tweak: "tweaked 43a western z-level structure to reduce movement issues for players and mobs."
-  - tweak: "adjusted spawned loot in 43a western z-level."

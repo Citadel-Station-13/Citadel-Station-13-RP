@@ -1,4 +1,0 @@
-author: "GySgtMurphy"
-delete-after: True
-changes:
-  - bugfix: "Fixed access buttons in the brig so that people can actually use them to bolt and unbolt the doors"

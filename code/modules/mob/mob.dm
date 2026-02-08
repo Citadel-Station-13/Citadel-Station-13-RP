@@ -52,6 +52,11 @@
 	/// being next to a wall.
 	var/in_gravity_tethered
 
+	//* Status Indicators *//
+	/// datum path = list of sources
+	var/list/status_indicators
+	var/list/status_indicator_overlays
+
 /**
  * Intialize a mob
  *
@@ -110,6 +115,8 @@
 	//       ideally we want to preserve as much state as possible so
 	//       we don't want to run further-down behavior before this
 	ghostize()
+	// key focus
+	set_key_focus(null)
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
@@ -117,49 +124,6 @@
 	status_effects = null
 	// mob lists
 	mob_list_unregister()
-	// key focus
-	set_key_focus(null)
-	// todo: remove machine
-	unset_machine()
-	// hud
-	for(var/alert in alerts)
-		clear_alert(alert)
-	// abilities
-	QDEL_NULL(ability_master)
-	// spells
-	QDEL_LIST(spell_list)
-	QDEL_LIST(spell_masters)
-	// cleanup screen objects
-	QDEL_NULL(hands)
-	QDEL_NULL(pullin)
-	QDEL_NULL(purged)
-	QDEL_NULL(internals)
-	QDEL_NULL(oxygen)
-	QDEL_NULL(i_select)
-	QDEL_NULL(m_select)
-	QDEL_NULL(toxin)
-	QDEL_NULL(fire)
-	QDEL_NULL(bodytemp)
-	QDEL_NULL(healths)
-	QDEL_NULL(throw_icon)
-	QDEL_NULL(nutrition_icon)
-	QDEL_NULL(pressure)
-	QDEL_NULL(pain)
-	QDEL_NULL(item_use_icon)
-	QDEL_NULL(gun_move_icon)
-	QDEL_NULL(gun_setting_icon)
-	QDEL_NULL(spell_masters)
-	QDEL_NULL(zone_sel)
-	// mind
-	if(!isnull(mind))
-		if(mind.current == src)
-			// mind is ours, let it disassociate
-			// todo: legacy spell
-			spellremove(src)
-			mind?.disassociate()
-		else
-			// mind is not ours, null it out
-			mind = null
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
@@ -169,6 +133,50 @@
 	// actions
 	QDEL_NULL(actions_controlled)
 	QDEL_NULL(actions_innate)
+	// run legacy actions
+	do
+		// todo: remove machine
+		unset_machine()
+		// hud
+		for(var/alert in alerts)
+			clear_alert(alert)
+		// mind
+		if(!isnull(mind))
+			if(mind.current == src)
+				// mind is ours, let it disassociate
+				// todo: legacy spell
+				spellremove(src)
+				mind?.disassociate()
+			else
+				// mind is not ours, null it out
+				mind = null
+		// abilities
+		QDEL_NULL(ability_master)
+		// spells
+		QDEL_LIST(spell_list)
+		QDEL_LIST(spell_masters)
+		// cleanup screen objects
+		QDEL_NULL(hands)
+		QDEL_NULL(pullin)
+		QDEL_NULL(purged)
+		QDEL_NULL(internals)
+		QDEL_NULL(oxygen)
+		QDEL_NULL(i_select)
+		QDEL_NULL(m_select)
+		QDEL_NULL(toxin)
+		QDEL_NULL(fire)
+		QDEL_NULL(bodytemp)
+		QDEL_NULL(healths)
+		QDEL_NULL(throw_icon)
+		QDEL_NULL(nutrition_icon)
+		QDEL_NULL(pressure)
+		QDEL_NULL(pain)
+		QDEL_NULL(item_use_icon)
+		QDEL_NULL(gun_move_icon)
+		QDEL_NULL(gun_setting_icon)
+		QDEL_NULL(spell_masters)
+		QDEL_NULL(zone_sel)
+	while(FALSE)
 	// get rid of our shit and nullspace everything first..
 	..()
 	// rendering
@@ -184,6 +192,16 @@
 	// actionspeed
 	actionspeed_modifiers = null
 	return QDEL_HINT_QUEUE
+
+/**
+ * Checks if we're relatively important for logging
+ * * As a rule of thumb, if a player is attacking or being attacked, something should be logged.
+ *   This checks if we're important enough to invoke logs whether on the sending or receiving sides.
+ *
+ * @return truth-y or false-y value, not necessarily TRUE / FALSE
+ */
+/mob/proc/is_potentially_important_for_logs()
+	return ckey || mind
 
 //* Mob List Registration *//
 
@@ -220,21 +238,6 @@
  */
 /mob/generate_tag()
 	tag = "mob_[++next_mob_id]"
-
-/**
- * Prepare the huds for this atom
- *
- * Goes through hud_possible list and adds the images to the hud_list variable (if not already
- * cached)
- *
- * todo: this should be atom level but uhh lmao lol
- */
-/mob/proc/prepare_huds()
-	if(!atom_huds_to_initialize)
-		return
-	for(var/hud in atom_huds_to_initialize)
-		update_atom_hud_provider(src, hud)
-	atom_huds_to_initialize = null
 
 /mob/statpanel_data(client/C)
 	. = ..()
@@ -402,8 +405,8 @@
 	if(client)
 		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A, result, game_range_to(src, A))
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
-	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 #define POINT_TIME (2.5 SECONDS)
 
@@ -518,58 +521,6 @@
 
 #undef POINT_TIME
 
-/mob/verb/set_self_relative_layer()
-	set name = "Set relative layer"
-	set desc = "Set your relative layer to other mobs on the same layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
-
-	var/new_layer = input(src, "What do you want to shift your layer to? (-100 to 100)", "Set Relative Layer", clamp(relative_layer, -100, 100))
-	new_layer = clamp(new_layer, -100, 100)
-	set_relative_layer(new_layer)
-
-/mob/verb/shift_relative_behind()
-	set name = "Move Behind"
-	set desc = "Move behind of a mob with the same base layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
-
-	if(!client.throttle_verb())
-		return
-
-	var/mob/M = tgui_input_list(src, "What mob to move behind?", "Move Behind", get_relative_shift_targets())
-
-	if(QDELETED(M))
-		return
-
-	set_relative_layer(M.relative_layer - 1)
-
-/mob/verb/shift_relative_infront()
-	set name = "Move Infront"
-	set desc = "Move infront of a mob with the same base layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
-
-	if(!client.throttle_verb())
-		return
-
-	var/mob/M = tgui_input_list(src, "What mob to move infront?", "Move Infront", get_relative_shift_targets())
-
-	if(QDELETED(M))
-		return
-
-	set_relative_layer(M.relative_layer + 1)
-
-/mob/proc/get_relative_shift_targets()
-	. = list()
-	var/us = isnull(base_layer)? layer : base_layer
-	for(var/mob/M in range(1, src))
-		if(M.plane != plane)
-			continue
-		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
-			. += M
-	. -= src
-
 /**
  * Get the notes of this mob
  *
@@ -635,13 +586,6 @@
 			return "<font color=#4F49AF>[msg]</font>"
 		else
 			return "<font color=#4F49AF>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
-
-/*
-/mob/verb/help()
-	set name = "Help"
-	src << browse('html/help.html', "window=help")
-	return
-*/
 
 /mob/proc/set_respawn_timer(var/time)
 	// Try to figure out what time to use
@@ -860,12 +804,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && (e.splinted in e.contents) && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
 	return 0
-
-/mob/OnMouseDrop(atom/over, mob/user, proximity, params)
-	. = ..()
-	if(over != user)
-		return
-	. |= mouse_drop_strip_interaction(user)
 
 /mob/proc/can_use_hands()
 	return
@@ -1297,6 +1235,100 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		else
 			setDir(WEST)
 
+//! Misc
+/**
+ * Whether the mob can use Topic to interact with machines
+ *
+ * Args:
+ * be_close - Whether you need to be next to/on top of M
+ * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
+ * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
+ * need_hands - Whether you need hands to use this
+ * floor_okay - Whether mobility flags should be checked for MOBILITY_CAN_UI to use.
+ */
+/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	return
+
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/mob/is_avoiding_ground()
+	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()
+
+//* Layer-shift verbs *//
+
+/mob/proc/get_relative_shift_targets()
+	. = list()
+	var/us = isnull(base_layer)? layer : base_layer
+	for(var/mob/M in range(1, src))
+		if(M.plane != plane)
+			continue
+		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
+			. += M
+	. -= src
+
+//* Abilities *//
+
+/mob/proc/init_abilities()
+	var/list/built = list()
+	var/list/registering = list()
+	for(var/datum/ability/ability_path as anything in abilities)
+		if(istype(ability_path))
+			built += ability_path // don't re-associate existing ones.
+		else if(ispath(ability_path, /datum/ability))
+			registering += new ability_path
+	abilities = built
+	for(var/datum/ability/ability as anything in registering)
+		ability.associate(src)
+
+/mob/proc/dispose_abilities()
+	for(var/datum/ability/ability in abilities)
+		ability.disassociate(src)
+	abilities = null
+
+/**
+ * mob side registration of abilities. must be called from /datum/ability/proc/associate!
+ */
+/mob/proc/register_ability(datum/ability/ability)
+	LAZYINITLIST(abilities)
+	abilities += ability
+
+/**
+ * mob side unregistration of abilities. must be called from /datum/ability/proc/disassociate!
+ */
+/mob/proc/unregister_ability(datum/ability/ability)
+	LAZYREMOVE(abilities, ability)
+
+//* Atom HUDs *//
+
+/**
+ * Initializes all atom HUDs for us
+ * todo: this should be atom level but uhh lmao lol don't call it on atom/Initialize() either
+ */
+/mob/proc/prepare_huds()
+	if(!atom_huds_to_initialize)
+		return
+	for(var/hud in atom_huds_to_initialize)
+		update_atom_hud_provider(src, hud)
+	atom_huds_to_initialize = null
+
+//* Radioactivity *//
+
+/mob/clean_radiation(str, mul, cheap)
+	. = ..()
+	if(cheap)
+		return
+	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
+		I.clean_radiation(str, mul, cheap)
+
+//* Reachability *//
+
+/mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
 //* Pixel Offsets *//
 
 /mob/proc/get_buckled_pixel_x_offset()
@@ -1404,71 +1436,23 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
-//? Reachability
+///Can the mob interact() with an atom?
+/mob/proc/can_interact_with(atom/A, treat_mob_as_adjacent)
+	if(isAdminGhostAI(src))
+		return TRUE
+	//Return early. we do not need to check that we are on adjacent turfs (i.e we are inside a closet)
+	if (treat_mob_as_adjacent && src == A.loc)
+		return TRUE
+	if (Adjacent(A))
+		return TRUE
+	if((MUTATION_TELEKINESIS in mutations) && (get_dist(src, A) > tk_maxrange))
+		return TRUE
 
-/mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return FALSE
-
-/mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return FALSE
-
-//? Radioactivity
-
-/mob/clean_radiation(str, mul, cheap)
-	. = ..()
-	if(cheap)
-		return
-	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
-		I.clean_radiation(str, mul, cheap)
-
-//? Abilities
-
-/mob/proc/init_abilities()
-	var/list/built = list()
-	var/list/registering = list()
-	for(var/datum/ability/ability_path as anything in abilities)
-		if(istype(ability_path))
-			built += ability_path // don't re-associate existing ones.
-		else if(ispath(ability_path, /datum/ability))
-			registering += new ability_path
-	abilities = built
-	for(var/datum/ability/ability as anything in registering)
-		ability.associate(src)
-
-/mob/proc/dispose_abilities()
-	for(var/datum/ability/ability in abilities)
-		ability.disassociate(src)
-	abilities = null
-
-/**
- * mob side registration of abilities. must be called from /datum/ability/proc/associate!
- */
-/mob/proc/register_ability(datum/ability/ability)
-	LAZYINITLIST(abilities)
-	abilities += ability
-
-/**
- * mob side unregistration of abilities. must be called from /datum/ability/proc/disassociate!
- */
-/mob/proc/unregister_ability(datum/ability/ability)
-	LAZYREMOVE(abilities, ability)
-
-//! Misc
-/**
- * Whether the mob can use Topic to interact with machines
- *
- * Args:
- * be_close - Whether you need to be next to/on top of M
- * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
- * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
- * need_hands - Whether you need hands to use this
- * floor_okay - Whether mobility flags should be checked for MOBILITY_CAN_UI to use.
- */
-/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
-	return
-
-/**
- * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
- */
-/mob/is_avoiding_ground()
-	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()
+	//range check
+	if(!interaction_range) // If you don't have extra length, GO AWAY
+		return FALSE
+	var/turf/our_turf = get_turf(src)
+	var/turf/their_turf = get_turf(A)
+	if (!our_turf || !their_turf)
+		return FALSE
+	return ISINRANGE(their_turf.x, our_turf.x - interaction_range, our_turf.x + interaction_range) && ISINRANGE(their_turf.y, our_turf.y - interaction_range, our_turf.y + interaction_range)

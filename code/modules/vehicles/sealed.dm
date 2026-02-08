@@ -5,6 +5,9 @@
  * Vehicles where ocucpants are inside / in contents, rather than buckled
  */
 /obj/vehicle/sealed
+	enclosed = TRUE // you're in a sealed vehicle dont get dinked idiot
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_IGNORE_MOBILITY
+
 	//* Occupants - Actions *//
 	occupant_actions = list(
 		/datum/action/vehicle/sealed/climb_out,

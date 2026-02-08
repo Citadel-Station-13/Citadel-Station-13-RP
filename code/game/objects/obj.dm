@@ -761,22 +761,48 @@
 /**
  * Standard wallmount orientation: face away
  */
-/obj/proc/auto_orient_wallmount_single()
+/obj/proc/auto_orient_wallmount_single(shift_amount)
 	for(var/dir in GLOB.cardinal)
 		if(get_step(src, dir)?.get_wallmount_anchor())
 			setDir(turn(dir, 180))
 			return
+	switch(dir)
+		if(SOUTH)
+			set_base_pixel_x(0)
+			set_base_pixel_y(shift_amount)
+		if(NORTH)
+			set_base_pixel_x(0)
+			set_base_pixel_y(-shift_amount)
+		if(WEST)
+			set_base_pixel_x(shift_amount)
+			set_base_pixel_y(0)
+		if(EAST)
+			set_base_pixel_x(-shift_amount)
+			set_base_pixel_y(0)
 
 /**
  * Standard wallmount orientation: face away
  *
  * Directly sets dir without setDir()
  */
-/obj/proc/auto_orient_wallmount_single_preinit()
+/obj/proc/auto_orient_wallmount_single_preinit(shift_amount)
 	for(var/dir in GLOB.cardinal)
 		if(get_step(src, dir)?.get_wallmount_anchor())
 			src.dir = turn(dir, 180)
-			return
+			break
+	switch(dir)
+		if(SOUTH)
+			set_base_pixel_x(0)
+			set_base_pixel_y(shift_amount)
+		if(NORTH)
+			set_base_pixel_x(0)
+			set_base_pixel_y(-shift_amount)
+		if(WEST)
+			set_base_pixel_x(shift_amount)
+			set_base_pixel_y(0)
+		if(EAST)
+			set_base_pixel_x(-shift_amount)
+			set_base_pixel_y(0)
 
 //* Resists *//
 
@@ -1019,3 +1045,51 @@
 	switch(var_name)
 		if(NAMEOF(src, hides_underfloor))
 			set_hides_underfloor(var_value)
+
+/obj/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "---")
+	VV_DROPDOWN_OPTION(VV_HK_MASS_DEL_TYPE, "Delete all of type")
+
+/obj/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(!.)
+		return
+
+	if(href_list[VV_HK_MASS_DEL_TYPE])
+		if(!check_rights(R_DEBUG|R_SERVER))
+			return
+		var/action_type = tgui_alert(usr, "Strict type ([type]) or type and all subtypes?",,list("Strict type","Type and subtypes","Cancel"))
+		if(action_type == "Cancel" || !action_type)
+			return
+		if(tgui_alert(usr, "Are you really sure you want to delete all objects of type [type]?",,list("Yes","No")) != "Yes")
+			return
+		if(tgui_alert(usr, "Second confirmation required. Delete?",,list("Yes","No")) != "Yes")
+			return
+		var/O_type = type
+		switch(action_type)
+			if("Strict type")
+				var/i = 0
+				for(var/obj/Obj in world)
+					if(Obj.type == O_type)
+						i++
+						qdel(Obj)
+					CHECK_TICK
+				if(!i)
+					to_chat(usr, "No objects of this type exist")
+					return
+				log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
+				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
+			if("Type and subtypes")
+				var/i = 0
+				for(var/obj/Obj in world)
+					if(istype(Obj,O_type))
+						i++
+						qdel(Obj)
+					CHECK_TICK
+				if(!i)
+					to_chat(usr, "No objects of this type exist")
+					return
+				log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
+				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))

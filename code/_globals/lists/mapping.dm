@@ -1,8 +1,44 @@
-GLOBAL_LIST_INIT(cardinal, list(NORTH, SOUTH, EAST, WEST))
-GLOBAL_LIST_INIT(cardinalz, list(NORTH, SOUTH, EAST, WEST, UP, DOWN))
+GLOBAL_LIST_INIT(cardinal, list(
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+))
+GLOBAL_LIST_INIT(cardinalz, list(
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+	UP,
+	DOWN,
+))
 GLOBAL_LIST_INIT(cornerdirs, list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
+// TODO: remove
 GLOBAL_LIST_INIT(cornerdirsz, list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST, NORTH|UP, EAST|UP, WEST|UP, SOUTH|UP, NORTH|DOWN, EAST|DOWN, WEST|DOWN, SOUTH|DOWN))
+// TODO: remove
 GLOBAL_LIST_INIT(alldirs, list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
+
+
+/**
+ * Cardinal dirs
+ */
+GLOBAL_REAL_LIST(cardinals) = list(NORTH, SOUTH, EAST, WEST)
+/**
+ * Cardinal dirs plus up/down
+ */
+GLOBAL_REAL_LIST(cardinalsz) = list(NORTH, SOUTH, EAST, WEST, UP, DOWN)
+/**
+ * Diagonal dirs
+ */
+GLOBAL_REAL_LIST(cornerdirs) = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+/**
+ * Diagonal dirs and up/down with each of the cardinals, resulting in a 'checkerboard' pattern
+ */
+GLOBAL_REAL_LIST(cornerdirsz) = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST, NORTH|UP, EAST|UP, WEST|UP, SOUTH|UP, NORTH|DOWN, EAST|DOWN, WEST|DOWN, SOUTH|DOWN)
+/**
+ * All cardinal + intercardinal (so horizontal) dirs
+ */
+GLOBAL_REAL_LIST(alldirs) = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
 //* Real var for speed *//
 GLOBAL_REAL_LIST(reverse_dir) = list( // reverse_dir[dir] = reverse of dir
@@ -19,14 +55,14 @@ GLOBAL_REAL_LIST(flip_dir) = list( // flip_dir[dir] = 180 degree rotation of dir
 	48, 50, 49, 51, 56, 58, 57, 59, 52, 54, 53, 55, 60, 62, 61, 63  // UP+DOWN - Same as first line but +48
 )
 
-GLOBAL_REAL_LIST(cw_dir) = list( // cw_dir[dir] = clockwise rotation of dir. Unlike reverse_dir, UP remains UP & DOWN remains DOWN.
+GLOBAL_REAL_LIST(cw_dir) = list( // cw_dir[dir] = clockwise rotation of dir by 90 deg. Unlike reverse_dir, UP remains UP & DOWN remains DOWN.
 	     4,  8, 12,  2,  6, 10, 14,  1,  5,  9, 13,  3,  7, 11, 15,
 	16, 20, 24, 28, 18, 22, 26, 30, 17, 21, 25, 19, 29, 23, 27, 31, // UP - Same as first line but +16
 	32, 36, 40, 44, 34, 38, 42, 46, 33, 37, 41, 45, 35, 39, 43, 47, // DOWN - Same as first line but +32
 	48, 52, 56, 40, 50, 54, 58, 62, 49, 53, 57, 61, 51, 55, 59, 63  // UP+DOWN - Same as first line but +48
 )
 
-GLOBAL_REAL_LIST(ccw_dir) = list( // cww_dir[dir] = counter-clockwise rotation of dir. Unlike reverse_dir, UP remains UP & DOWN remains DOWN.
+GLOBAL_REAL_LIST(ccw_dir) = list( // cww_dir[dir] = counter-clockwise rotation of dir by 90 deg. Unlike reverse_dir, UP remains UP & DOWN remains DOWN.
 	     8,  4, 12,  1,  9,  5, 13,  2, 10,  6, 14,  3, 11,  7, 15,
 	16, 24, 20, 28, 17, 25, 21, 29, 18, 26, 22, 30, 19, 27, 23, 31, // UP - Same as first line but +16
 	32, 40, 36, 44, 33, 41, 37, 45, 34, 42, 38, 46, 35, 43, 39, 47, // DOWN - Same as first line but +32
@@ -37,6 +73,8 @@ GLOBAL_REAL_LIST(ccw_dir) = list( // cww_dir[dir] = counter-clockwise rotation o
 GLOBAL_LIST_EMPTY(sortedAreas)
 /// An association from typepath to area instance. Only includes areas with `unique` set.
 GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
+/// A list of player-created areas.
+GLOBAL_LIST_EMPTY_TYPED(custom_areas, /area)
 
 GLOBAL_LIST_INIT(ore_types, list(
 		MAT_HEMATITE = /obj/item/stack/ore/iron,
