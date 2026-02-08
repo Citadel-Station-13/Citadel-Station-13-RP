@@ -86,7 +86,7 @@
 
 	switch(action)
 		if("relink")
-			if(world.time > (last_relink + last_relink_throttle))
+			if(world.time < (last_relink + last_relink_throttle))
 				return TRUE
 			last_relink = world.time
 			rescan_nearby_machines()
