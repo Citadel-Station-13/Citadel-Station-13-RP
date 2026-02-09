@@ -238,10 +238,16 @@ export const ResleevingConsole = (props) => {
                               </Stack.Item>
                               <Stack.Item>
                                 <Button.Confirm
-                                textAlign="center"
+                                  textAlign="center"
                                   fluid
                                   disabled={
                                     !!printer.busy || !isSelectedBodyRecordValid
+                                  }
+                                  onClick={() =>
+                                    act('printBody', {
+                                      printerRef: printer.ref,
+                                      bodyRef: selectedBodyRecord,
+                                    })
                                   }
                                 >
                                   {printer.busy
@@ -316,6 +322,9 @@ export const ResleevingConsole = (props) => {
                                   fluid
                                   disabled={!pod.mirror || !pod.occupied}
                                   textAlign="Center"
+                                  onClick={() =>
+                                    act('resleeve', { sleeverRef: pod.ref })
+                                  }
                                 >
                                   {!pod.mirror
                                     ? 'Insert Mirror'

@@ -101,7 +101,7 @@
 		if("printBody")
 			var/printer_ref = params["printerRef"]
 			var/body_ref = params["bodyRef"]
-			if(!istext(printer_ref) || istext(body_ref))
+			if(!istext(printer_ref) || !istext(body_ref))
 				return TRUE
 			var/obj/machinery/resleeving/body_printer/printer = locate(printer_ref) in linked_resleeving_machinery
 			if(!printer)

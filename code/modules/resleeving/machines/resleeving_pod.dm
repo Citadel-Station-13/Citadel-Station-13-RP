@@ -71,6 +71,30 @@
 			user_remove_mirror(e_args, TRUE)
 			return TRUE
 
+/obj/machinery/resleeving/resleeving_pod/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(istype(using, /obj/item/organ/internal/mirror))
+		if(held_mirror)
+			clickchain.chat_feedback(
+				SPAN_WARNING("[src] already has a mirror inside it."),
+				target = src,
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		var/obj/item/organ/internal/mirror/mirror = using
+		if(!clickchain.performer.attempt_insert_item_for_installation(mirror, src))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		clickchain.visible_feedback(
+			target = src,
+			range = MESSAGE_RANGE_INVENTORY_SOFT,
+			visible = SPAN_NOTICE("[clickchain.performer] inserts [mirror] into [src]."),
+		)
+		if(!user_insert_mirror(mirror, clickchain))
+			clickchain.performer.put_in_hands_or_drop(mirror)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
 /obj/machinery/resleeving/resleeving_pod/proc/user_insert_mirror(datum/event_args/actor/actor, obj/item/organ/internal/mirror/mirror, silent, suppressed)
 	if(held_mirror)
 		if(!silent)
