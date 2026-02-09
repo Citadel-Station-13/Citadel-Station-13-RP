@@ -488,6 +488,11 @@
 		// 100 to comp for the -100 to 100 system
 		casted_human.update_health()
 		ratio = min(ratio, (casted_human.health + 100) / (casted_human.maxHealth + 100))
+		if(allow_synthetic)
+			for(var/obj/item/organ/external/external_organ as anything in casted_human.get_external_organs())
+				if(external_organ.robotic < ORGAN_ROBOT)
+					continue
+				ratio = min(ratio, (external_organ.max_damage - (external_organ.brute_dam + external_organ.burn_dam)) / external_organ.max_damage)
 
 	if(ratio < progress_recalc_last_ratio + progress_recalc_working_threshold_ratio)
 		++progress_recalc_strikes
