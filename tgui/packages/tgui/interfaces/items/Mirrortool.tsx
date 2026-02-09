@@ -15,10 +15,11 @@ interface MirrortoolContext {
 export const Mirrortool = (props) => {
   const { act, data } = useBackend<MirrortoolContext>();
   return (
-    <Window title="Mirror Tool" width={225} height={200}>
+    <Window title="Mirror Tool" width={225} height={225}>
       <Window.Content>
         <Section
           fill
+          scrollable
           title="Mirror"
           buttons={
             <Button onClick={() => act(data.mirror ? 'eject' : 'insert')}>

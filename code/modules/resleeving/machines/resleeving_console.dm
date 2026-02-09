@@ -210,16 +210,18 @@
 /obj/machinery/computer/resleeving/proc/user_yank_mirror(datum/event_args/actor/actor, put_in_hands, silent)
 	if(!inserted_mirror)
 		return FALSE
-	remove_mirror()
-	var/was_put_in_hands = yank_item_out(inserted_mirror, actor.performer)
+	var/obj/item/organ/internal/mirror/removed = remove_mirror()
+	if(!removed)
+		return FALSE
+	var/was_put_in_hands = yank_item_out(removed, actor.performer)
 	if(!silent)
 		if(was_put_in_hands)
 			visible_message(
-				SPAN_NOTICE("[actor.performer] removes [inserted_mirror] from [src]."),
+				SPAN_NOTICE("[actor.performer] removes [removed] from [src]."),
 			)
 		else
 			visible_message(
-				SPAN_WARNING("[src] ejects [inserted_mirror]!"),
+				SPAN_WARNING("[src] ejects [removed]!"),
 			)
 	return TRUE
 

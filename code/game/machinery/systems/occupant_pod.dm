@@ -350,7 +350,7 @@
 
 /obj/machinery/proc/init_occupant_pod() as /datum/machinery_system/occupant_pod
 	if(!machine_occupant_pod)
-		machine_occupant_pod = new
+		machine_occupant_pod = new(src)
 	return machine_occupant_pod
 
 /obj/machinery/proc/init_occupant_pod_default() as /datum/machinery_system/occupant_pod
