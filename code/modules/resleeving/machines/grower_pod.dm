@@ -6,6 +6,7 @@
 	circuit = /obj/item/circuitboard/resleeving/grower_pod
 	bottles_limit = 3
 	c_biological_biomass_cost = 30
+	allow_organic = TRUE
 
 /obj/machinery/resleeving/body_printer/grower_pod/loaded/Initialize(mapload)
 	. = ..()

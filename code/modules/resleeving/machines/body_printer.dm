@@ -248,7 +248,10 @@
 
 	var/mob/living/created = create_body_impl(backup)
 
-	currently_growing = TRUE
+	if(!created)
+		return FALSE
+
+	currently_growing = backup
 	currently_growing_body = created
 	currently_growing_progress_estimate_ratio = 0
 
@@ -289,6 +292,7 @@
 		return
 	if(!ishuman(created_human))
 		CRASH("expected human, got [created_human.type]")
+	. = created_human
 
 	// copy ooc notes / flavor text manually
 	created_human.ooc_notes = backup.legacy_ooc_notes || ""

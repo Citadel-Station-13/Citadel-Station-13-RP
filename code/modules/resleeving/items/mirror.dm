@@ -71,11 +71,11 @@
 	if(!owner?.mind)
 		// in the future we shouldn't hard-require mind ref, but for now, we do
 		return
-	var/datum/mind/target = owner.mind
+	var/datum/mind/target_mind = owner.mind
 	// check that mind matches
 	if(owner_mind_ref)
 		var/datum/mind/locked = owner_mind_ref.resolve()
-		if(target != locked)
+		if(target_mind != locked)
 			if(state != STATE_MISMATCH)
 				state = STATE_MISMATCH
 				to_chat(owner, SPAN_BOLDDANGER("You feel a harsh buzz from something implanted at the base of your neck. Your mirror has rejected your consciousness as foreign."))
@@ -85,15 +85,15 @@
 				to_chat(owner, SPAN_NOTICE("You feel a faint click from something implanted at the base of your neck. Your mirror has reactivated upon detecting your consciousness."))
 	else
 		// bind
-		owner_mind_ref = target.get_mind_ref()
+		owner_mind_ref = target_mind.get_mind_ref()
 		state = STATE_ACTIVE
 		to_chat(owner, SPAN_NOTICE("You feel a series of clicks from something implanted at the base of your neck. Your mirror is attuning to your consciousness and performing an initial backup."))
 
 	if(state != STATE_ACTIVE)
 		return
 
-	recorded_body = new(target)
-	recorded_mind = new(target)
+	recorded_body = new(owner)
+	recorded_mind = new(target_mind)
 
 /obj/item/organ/internal/mirror/update_icon_state()
 	if(owner_mind_ref && recorded_body && recorded_mind)
