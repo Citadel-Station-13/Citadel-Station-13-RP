@@ -109,7 +109,7 @@
 			var/datum/resleeving_body_backup/body = locate_stored_body_ref(body_ref)
 			if(!body)
 				return TRUE
-			printer.start_body(body)
+			printer.try_start_body(body)
 			return TRUE
 		if("resleeve")
 			var/sleever_ref = params["sleeverRef"]
@@ -259,6 +259,7 @@
 	if(!buffer)
 		return
 	var/datum/resleeving_body_backup/transforming = new
+	// this is not legal but 'buffer' is being thrown out / immutable ref'd anyways so whatever lol
 	transforming.legacy_dna = buffer
 	var/datum/species/resolved_species = SScharacters.resolve_species_name(buffer.dna.species) || SScharacters.resolve_species_path(/datum/species/human)
 	transforming.legacy_species_uid = resolved_species.uid

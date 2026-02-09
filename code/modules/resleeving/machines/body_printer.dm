@@ -194,6 +194,28 @@
 			return FALSE
 	return TRUE
 
+/obj/machinery/resleeving/body_printer/proc/try_start_body(datum/resleeving_body_backup/backup)
+	if(!is_compatible_with_body(backup))
+		send_audible_system_message("Error; body is not compatible with printer.")
+		return FALSE
+	if(currently_growing_body || currently_growing)
+		send_audible_system_message("Error; system busy!")
+		return FALSE
+	if(backup.legacy_synthetic)
+		if(c_synthetic_glass_cost || c_synthetic_metal_cost)
+			if(!materials_has_amounts(list(
+				/datum/prototype/material/glass::id = c_synthetic_glass_cost,
+				/datum/prototype/material/steel::id = c_synthetic_metal_cost,
+			)))
+				send_audible_system_message("Error; insufficient metal/gass remaining.")
+				return FALSE
+	else
+		if(c_biological_biomass_cost)
+			if(!biomass_has_remaining(c_biological_biomass_cost))
+				send_audible_system_message("Error; insufficient biomass remaining.")
+				return FALSE
+	return start_body(backup)
+
 /**
  * Builds the initial mob.
  * * Will set `currently_growing_xyz` variables.
@@ -202,24 +224,13 @@
  *
  * @return TRUE on success, FALSE on failure
  */
-/obj/machinery/resleeving/body_printer/proc/start_body(datum/resleeving_body_backup/backup, ignore_materials)
+/obj/machinery/resleeving/body_printer/proc/start_body(datum/resleeving_body_backup/backup)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	if(!ignore_materials)
-		if(backup.legacy_synthetic)
-			if(c_synthetic_glass_cost || c_synthetic_metal_cost)
-				if(!materials_has_amounts(list(
-					/datum/prototype/material/glass::id = c_synthetic_glass_cost,
-					/datum/prototype/material/steel::id = c_synthetic_metal_cost,
-				)))
-					send_audible_system_message("Error; insufficient metal/gass remaining.")
-					return FALSE
-		else
-			if(c_biological_biomass_cost)
-				if(!biomass_has_remaining(c_biological_biomass_cost))
-					send_audible_system_message("Error; insufficient biomass remaining.")
-					return FALSE
+	if(currently_growing_body || currently_growing)
+		send_audible_system_message("Error; system busy!")
+		return FALSE
 
 	if(backup.legacy_synthetic)
 		if(c_synthetic_glass_cost || c_synthetic_metal_cost)
@@ -236,6 +247,14 @@
 		return FALSE
 
 	var/mob/living/created = create_body_impl(backup)
+
+	currently_growing = TRUE
+	currently_growing_body = created
+	currently_growing_progress_estimate_ratio = 0
+
+	locked = TRUE
+	progress_recalc_last_time = world.time
+	progress_recalc_strikes = 0
 
 	if(ishuman(created))
 		var/mob/living/carbon/human/casted_human = created
@@ -254,10 +273,6 @@
 	ADD_TRAIT(created, TRAIT_MECHANICAL_CIRCULATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
 	ADD_TRAIT(created, TRAIT_MECHANICAL_VENTILATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
 	created.update_stat()
-
-	locked = TRUE
-	progress_recalc_last_time = world.time
-	progress_recalc_strikes = 0
 
 	update_icon()
 	return TRUE

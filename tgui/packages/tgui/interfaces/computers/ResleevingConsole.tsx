@@ -70,11 +70,11 @@ interface ResleevingConsoleContext {
 
 export const ResleevingConsole = (props) => {
   const { act, data } = useBackend<ResleevingConsoleContext>();
-  const [selectedBodyRecord, setSelectedBodyRecord] = useState<string | null>(
+  const [selectedBodyRecordRef, setSelectedBodyRecordRef] = useState<string | null>(
     null,
   );
-  const isSelectedBodyRecordValid = !!data.bodyRecords.find(
-    (v) => v.ref === selectedBodyRecord,
+  const selectedBodyRecord = data.bodyRecords.find(
+    (v) => v.ref === selectedBodyRecordRef,
   );
   return (
     <Window title="Resleeving Console" width={500} height={400}>
@@ -126,11 +126,11 @@ export const ResleevingConsole = (props) => {
                             </Stack.Item>
                             <Stack.Item>
                               <Button
-                                onClick={() => setSelectedBodyRecord(rec.ref)}
-                                selected={selectedBodyRecord === rec.ref}
+                                onClick={() => setSelectedBodyRecordRef(rec.ref)}
+                                selected={selectedBodyRecordRef === rec.ref}
                                 fluid
                               >
-                                {selectedBodyRecord === rec.ref
+                                {selectedBodyRecordRef === rec.ref
                                   ? 'Selected'
                                   : 'Select'}
                               </Button>
@@ -193,6 +193,16 @@ export const ResleevingConsole = (props) => {
                 >
                   <Stack vertical>
                     {data.bodyPrinters.map((printer) => {
+                      let cannotPrintBecause: string | null = null;
+                      if(!selectedBodyRecord) {
+                        cannotPrintBecause = "Select body record";
+                      } else {
+                        if(selectedBodyRecord.synthetic && !printer.allowSynthetic) {
+                          cannotPrintBecause = "Cannot print synths";
+                        } else if(!selectedBodyRecord.synthetic && !printer.allowOrganic) {
+                          cannotPrintBecause = "Cannot print organics";
+                        }
+                      }
                       return (
                         <Stack.Item key={printer.ref}>
                           <Box
@@ -241,19 +251,19 @@ export const ResleevingConsole = (props) => {
                                   textAlign="center"
                                   fluid
                                   disabled={
-                                    !!printer.busy || !isSelectedBodyRecordValid
+                                    !!printer.busy || !!cannotPrintBecause
                                   }
                                   onClick={() =>
                                     act('printBody', {
                                       printerRef: printer.ref,
-                                      bodyRef: selectedBodyRecord,
+                                      bodyRef: selectedBodyRecordRef,
                                     })
                                   }
                                 >
                                   {printer.busy
                                     ? 'Busy'
-                                    : !isSelectedBodyRecordValid
-                                      ? 'Select Body Record'
+                                    : !!cannotPrintBecause
+                                      ? cannotPrintBecause
                                       : 'Print'}
                                 </Button.Confirm>
                               </Stack.Item>

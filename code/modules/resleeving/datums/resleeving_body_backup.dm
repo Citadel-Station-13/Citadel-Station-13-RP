@@ -19,11 +19,11 @@
 	//
 	// or better, put the WIP body in the other machine and have it automatically
 	// fabricate the missing things if it's possible for it to print
-	var/legacy_synthetic
+	var/legacy_synthetic = FALSE
 	// legacy because species should be a /prototype reference once
 	// species are made stateless and global singletons
-	var/legacy_species_uid
-	var/legacy_gender
+	var/legacy_species_uid = /datum/species/human::uid
+	var/legacy_gender = PLURAL
 	var/legacy_ooc_notes
 	// key: BP_XYZ tag
 	// value: 0 for missing, 1 for present, text string for /datum/robolimb company
