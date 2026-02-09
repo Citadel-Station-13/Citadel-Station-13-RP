@@ -270,7 +270,7 @@
 			casted_human.take_overall_damage(amt, amt, DAMAGE_MODE_GRADUAL)
 		else
 			// organics: just cloneloss i can't be arsed
-			casted_human.adjustCloneLoss((casted_human.maxHealth + 100) * ratio_to_damage_to)
+			casted_human.adjustCloneLoss((casted_human.maxHealth + 100) * (1 - ratio_to_damage_to))
 
 	ADD_TRAIT(created, TRAIT_MOB_UNCONSCIOUS, TRAIT_SOURCE_MACHINE_BODY_GROWER)
 	ADD_TRAIT(created, TRAIT_MECHANICAL_CIRCULATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
@@ -341,7 +341,7 @@
 
 	created_human.dna = backup.legacy_dna.dna.Clone()
 	created_human.real_name = created_human.dna.real_name = backup.legacy_dna.dna.real_name || created_human.real_name
-	created_human.descriptors = backup.legacy_dna.body_descriptors.Copy()
+	created_human.descriptors = backup.legacy_dna.body_descriptors?.Copy()
 
 	created_human.set_cloned_appearance()
 
@@ -458,8 +458,10 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	if(!currently_growing_body)
+	if(!currently_growing_body && !currently_growing)
 		return FALSE
+
+	currently_growing = null
 
 	REMOVE_TRAIT(currently_growing_body, TRAIT_MOB_UNCONSCIOUS, TRAIT_SOURCE_MACHINE_BODY_GROWER)
 	REMOVE_TRAIT(currently_growing_body, TRAIT_MECHANICAL_CIRCULATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)

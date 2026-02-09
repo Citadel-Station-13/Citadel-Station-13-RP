@@ -77,7 +77,7 @@ export const ResleevingConsole = (props) => {
     (v) => v.ref === selectedBodyRecordRef,
   );
   return (
-    <Window title="Resleeving Console" width={500} height={400}>
+    <Window title="Resleeving Console" width={500} height={550}>
       <Window.Content>
         <Stack fill>
           <Stack.Item grow={1}>
