@@ -149,6 +149,9 @@ SUBSYSTEM_DEF(ticker)
 		if((how_many_players_have_readied_up() > 0) || citest || start_immediately)
 			current_state = GAME_STATE_SETTING_UP
 			Master.SetRunLevel(RUNLEVEL_SETUP)
+			round_start_time = world.time
+			SStime_keep.cached_round_start_time = world.time
+			SStime_keep.cached_round_start_rtod = REALTIMEOFDAY
 			if(start_immediately)
 				fire()
 		else
@@ -305,9 +308,6 @@ SUBSYSTEM_DEF(ticker)
 		L.OnRoundstart()
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
-	round_start_time = world.time
-	SStime_keep.cached_round_start_time = world.time
-	SStime_keep.cached_round_start_rtod = REALTIMEOFDAY
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore, SetRoundStart))
 
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
