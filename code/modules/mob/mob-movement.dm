@@ -39,3 +39,15 @@
 				MOVESPEED_PARAM_MOD_MULTIPLY_SPEED = 0.01,
 				MOVESPEED_PARAM_LIMIT_TPS_MIN = Configuration.get_entry(/datum/toml_config_entry/game/movement/walk_speed),
 			))
+
+/**
+ * Turns to a direction ourselves
+ */
+/mob/proc/self_turn(to_dir, ignore_delay)
+	if(dir == to_dir)
+		return
+	if(!ignore_delay)
+		if(last_self_turn > world.time + turn_delay)
+			return
+	last_self_turn = world.time
+	setDir(to_dir)

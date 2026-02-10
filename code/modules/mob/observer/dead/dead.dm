@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(ghost_list)
 	mobility_flags = NONE
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
 	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
 
 	/// Were we admin-ghosted?
@@ -363,10 +364,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!istype(target))
 		return
 
-	//Attempt to orbit based on target size
-	var/icon/I = icon(target.icon,target.icon_state,target.dir)
-
-	var/orbitsize = (I.Width()+I.Height())*0.5
+	var/list/icon_dimensions = get_icon_dimensions(target.icon)
+	var/orbitsize = (icon_dimensions["width"] + icon_dimensions["height"]) * 0.5
 	orbitsize -= (orbitsize/world.icon_size)*(world.icon_size*0.25)
 
 	orbit(target, orbitsize)
@@ -378,10 +377,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
 	. = ..()
 	//restart our floating animation after orbit is done.
-	pixel_y = 0
-	pixel_x = 0
-	transform = null
-	animate(src, pixel_y = 2, time = 10, loop = -1)
+	pixel_y = base_pixel_y
+	// if we were autoobserving, reset perspective
+	if (!isnull(client) && !isnull(client.eye))
+		reset_perspective(null)
 
 /mob/observer/dead/verb/jumptomob(input in getmobs_ghost_follow()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"

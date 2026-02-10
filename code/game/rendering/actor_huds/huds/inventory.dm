@@ -277,6 +277,16 @@
 	var/row = ceil(index / per_row) - 1
 	// get column; this starts at 0.
 	var/col = ((index - 1) % per_row)
+	// this is dumb; this is because left side of screen is right and right is left, which is
+	// out of order but since the rest of fucking ss13 does this i guess i'm doing it too
+	// why, guys
+	// why
+	if(per_row == 2)
+		switch(col)
+			if(0)
+				col = 1
+			if(1)
+				col = 0
 	return "CENTER:[-half_total_width + (col * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE * 0.5)],BOTTOM+[row]:5"
 
 /datum/actor_hud/inventory/proc/screen_loc_for_hand_swap(number_of_hands)

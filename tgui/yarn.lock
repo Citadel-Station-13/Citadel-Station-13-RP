@@ -6733,6 +6733,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-yaml@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "js-yaml@npm:4.1.1"
+  dependencies:
+    argparse: "npm:^2.0.1"
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: 10c0/561c7d7088c40a9bb53cc75becbfb1df6ae49b34b5e6e5a81744b14ae8667ec564ad2527709d1a6e7d5e5fa6d483aa0f373a50ad98d42fde368ec4a190d4fae7
+  languageName: node
+  linkType: hard
+
 "jsdom@npm:^26.0.0":
   version: 26.1.0
   resolution: "jsdom@npm:26.1.0"
@@ -10067,7 +10078,7 @@ __metadata:
     highlight.js: "npm:^11.11.1"
     jest: "npm:^29.7.0"
     jotai: "npm:^2.12.4"
-    js-yaml: "npm:^4.1.0"
+    js-yaml: "npm:^4.1.1"
     marked: "npm:^15.0.11"
     marked-base-url: "npm:^1.1.6"
     marked-smartypants: "npm:^1.1.9"
@@ -10474,9 +10485,9 @@ __metadata:
   linkType: hard
 
 "undici@npm:^6.19.5":
-  version: 6.21.3
-  resolution: "undici@npm:6.21.3"
-  checksum: 10c0/294da109853fad7a6ef5a172ad0ca3fb3f1f60cf34703d062a5ec967daf69ad8c03b52e6d536c5cba3bb65615769bf08e5b30798915cbccdddaca01045173dda
+  version: 6.23.0
+  resolution: "undici@npm:6.23.0"
+  checksum: 10c0/d846b3fdfd05aa6081ba1eab5db6bbc21b283042c7a43722b86d1ee2bf749d7c990ceac0c809f9a07ffd88b1b0f4c0f548a8362c035088cb1997d63abdda499c
   languageName: node
   linkType: hard
 

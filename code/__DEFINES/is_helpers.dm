@@ -17,19 +17,28 @@
 
 #define isatom(A) (isloc(A))
 
-#define isdatum(D) (istype(D, /datum))
-
-#define ismutableappearance(D) (istype(D, /mutable_appearance))
-
-#define isimage(D) (istype(D, /image))
+#define isdatum(thing) (istype(thing, /datum))
 
 #define isweakref(D) (istype(D, /datum/weakref))
+
+#define isimage(thing) (istype(thing, /image))
+
+GLOBAL_VAR_INIT(magic_appearance_detecting_image, new /image) // appearances are awful to detect safely, but this seems to be the best way ~ninjanomnom
+#define isappearance(thing) (!isimage(thing) && !ispath(thing) && istype(GLOB.magic_appearance_detecting_image, thing))
+
+// The filters list has the same ref type id as a filter, but isnt one and also isnt a list, so we have to check if the thing has Cut() instead
+GLOBAL_VAR_INIT(refid_filter, TYPEID(filter(type="angular_blur")))
+#define isfilter(thing) (!hascall(thing, "Cut") && TYPEID(thing) == GLOB.refid_filter)
+
+#define ismutableappearance(D) (istype(D, /mutable_appearance))
 
 //Datums
 
 #define isTaurTail(A)	istype(A, /datum/sprite_accessory/tail/legacy_taur)
 
 //Turfs
+
+//#define isturf(A) (istype(A, /turf)) This is actually a byond built-in. Added here for completeness sake.
 
 #define isfloorturf(A) (istype(A, /turf/simulated/floor))
 
@@ -39,9 +48,10 @@
 
 #define ismineralturf(A) istype(A, /turf/simulated/mineral)
 
-//Objs
+//Objects
 ///override the byond proc because it returns true on children of /atom/movable that aren't objs
 #define isobj(A) istype(A, /obj)
+
 #define isitem(A) (istype(A, /obj/item))
 
 #define isclothing(A) (istype(A, /obj/item/clothing))
@@ -64,53 +74,55 @@
 
 #define is_reagent_container(O) (istype(O, /obj/item/reagent_containers))
 
+#define iseffect(O) (istype(O, /obj/effect))
 //Areas
 
 //Mobs
 
-#define isAI(A) istype(A, /mob/living/silicon/ai)
-
-#define isalien(A) istype(A, /mob/living/carbon/alien)
-
-#define isanimal_legacy_this_is_broken(A) istype(A, /mob/living/simple_animal)
+#define isliving(A) istype(A, /mob/living)
 
 #define isbrain(A) istype(A, /mob/living/carbon/brain)
 
+//Carbon mobs
+
 #define iscarbon(A) istype(A, /mob/living/carbon)
-
-#define iscorgi(A) istype(A, /mob/living/simple_mob/animal/passive/dog/corgi)
-
-#define isDrone(A) istype(A, /mob/living/silicon/robot/drone)
-
-#define isEye(A) istype(A, /mob/observer/eye)
 
 #define ishuman(A) istype(A, /mob/living/carbon/human)
 
-#define isliving(A) istype(A, /mob/living)
+#define isdummy(A) (istype(A, /mob/living/carbon/human/dummy))
 
+//More carbon mobs
+#define isalien(A) istype(A, /mob/living/carbon/alien)
+
+//Silicon mobs
+#define issilicon(A) istype(A, /mob/living/silicon)
+#define isAI(A) istype(A, /mob/living/silicon/ai)
+#define isrobot(A) istype(A, /mob/living/silicon/robot)
+#define ispAI(A) istype(A, /mob/living/silicon/pai)
+#define isDrone(A) istype(A, /mob/living/silicon/robot/drone)
 #define isMatriarchDrone(A) istype(A, /mob/living/silicon/robot/drone/matriarch)
 
-#define ismouse(A) istype(A, /mob/living/simple_mob/animal/passive/mouse/)
+
+//Simple animals
+#define issimplemob(A) istype(A, /mob/living/simple_mob)
+#define isanimal_legacy_this_is_broken(A) istype(A, /mob/living/simple_animal)
+
+#define iscorgi(A) istype(A, /mob/living/simple_mob/animal/passive/dog/corgi)
+#define ismouse(A) istype(A, /mob/living/simple_mob/animal/passive/mouse)
+#define isslime(A) istype(A, /mob/living/simple_mob/slime)
+#define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
+
+//Eye mobs
+#define isEye(A) istype(A, /mob/observer/eye)
+
+//Dead mobs
+#define isobserver(A) istype(A, /mob/observer/dead)
 
 #define isnewplayer(A) istype(A, /mob/new_player)
 
-#define isobserver(A) istype(A, /mob/observer/dead)
-
-#define ispAI(A) istype(A, /mob/living/silicon/pai)
-
-#define isrobot(A) istype(A, /mob/living/silicon/robot)
-
-#define issilicon(A) istype(A, /mob/living/silicon)
-
-#define isvoice(A) istype(A, /mob/living/voice)
-
-#define isslime(A) istype(A, /mob/living/simple_mob/slime)
-
+//Misc mobs
 #define isbot(A) istype(A, /mob/living/bot)
-
-#define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
-
-#define issimplemob(A) istype(A, /mob/living/simple_mob)
+#define isvoice(A) istype(A, /mob/living/voice)
 
 /proc/is_species_type(atom/A, path)
 	if(!istype(A, /mob/living/carbon/human))

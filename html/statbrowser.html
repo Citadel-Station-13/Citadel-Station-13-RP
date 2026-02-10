@@ -699,7 +699,7 @@ function transmit_href(action, _data) {
 			assembled += key + "=" + ((_data[key] == undefined)? "1" : _data[key]) + ";"
 		}
 	}
-	window.location.href = "?_src_=stat;act=" + action + ";" + assembled;
+	window.location.href = "byond://?_src_=stat;act=" + action + ";" + assembled;
 }
 
 /// flushes queue
@@ -997,7 +997,7 @@ function draw_tab(tab) {
 				var a = document.createElement("a");
 				a.innerHTML = entry[1];
 				// todo: token
-				a.href = "?_src_=stat;act=stat_click;ref=" + entry[2];
+				a.href = "byond://?_src_=stat;act=stat_click;ref=" + entry[2];
 				tdv.appendChild(a);
 			}
 			tr.appendChild(tdk);

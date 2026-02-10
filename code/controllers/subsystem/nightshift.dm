@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(nightshift)
 	if(resumed)
 		update_nightshift(resumed = TRUE)
 		return
-	if(round_duration_in_ds < nightshift_first_check)
+	if(STATION_TIME_PASSED() < nightshift_first_check)
 		return
 	check_nightshift()
 
@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(nightshift)
 	//nightshift_end_time = 207,000 deciseconds after midnight (7:30 AM)
 	//if time is greater than start time (between 7:30pm and 11:59pm) OR less than end time (between midnight and 7:29am) it should turn on.
 	//If time rolls over to midnight, station_time will keep incrementing so there is no need for a special case.
-	var/time = station_time_in_ds	
+	var/time = station_time_in_ds
 	var/night_time = (time > nightshift_start_time) || (time < nightshift_end_time)
 
 	if(high_security_mode != emergency)
@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(nightshift)
 		currentrun -= APC
 		if (APC.area && (APC.z in (LEGACY_MAP_DATUM).station_levels))
 			APC.set_nightshift(nightshift_active && (APC.area.nightshift_level & nightshift_level), TRUE)
-		
+
 		//TODO: redo below logic: as-is, it does not allow the nightshift subsystem to actually finish processing
 
 		//if(MC_TICK_CHECK && !forced) // subsystem will be in state SS_IDLE if forced by an admin

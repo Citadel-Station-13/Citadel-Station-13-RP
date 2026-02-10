@@ -1,12 +1,13 @@
-//Used to process objects.
-
+/**
+ * Base of processing subsystems.
+ * This is a generic processing subsystem that ticks once per second.
+ */
 SUBSYSTEM_DEF(processing)
-	name = "Processing - 1 FPS"
 	priority = FIRE_PRIORITY_PROCESS
 	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING|SS_NO_INIT
 	wait = 1 SECONDS
 
-	var/stat_tag = "P1" //Used for logging
+	var/stat_tag = "P_DEF" //Used for logging
 	var/list/processing = list()
 	var/list/currentrun = list()
 

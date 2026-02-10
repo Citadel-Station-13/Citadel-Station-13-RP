@@ -32,6 +32,38 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 
 /**
+ * WORLD INITIALIZATION
+ * THIS IS THE INIT ORDER:
+ *
+ * BYOND =>
+ * - (secret init native) =>
+ *   - world.init_byond_tracy()
+ *   - (Start native profiling)
+ *   - Master => <- gets initialized as soon as we enter the master = new block
+ *     - config *unloaded
+ *     - (all subsystems) PreInit()
+ *     - GLOB =>
+ *       - make_datum_reference_lists()
+ *   - (/static variable inits, reverse declaration order)
+ * - (all pre-mapped atoms) /atom/New()
+ * - config.Load()
+ * - world.InitTgs() =>
+ *   - TgsNew() *may sleep
+ *   - GLOB.rev_data.load_tgs_info()
+ * - world.ConfigLoaded() =>
+ *   - SSdbcore.InitializeRound()
+ *   - world.SetupLogs()
+ *   - load_admins()
+ *   - ...
+ * - Master.Initialize() =>
+ *   - (all subsystems) Initialize()
+ *   - Master.StartProcessing() =>
+ *     - Master.Loop() =>
+ *       - Failsafe
+ * - world.RunUnattendedFunctions()
+ */
+
+/**
  * World creation
  *
  * Here is where a round itself is actually begun and setup.
@@ -62,42 +94,28 @@ GLOBAL_LIST(topic_status_cache)
 	#warn USE_BYOND_TRACY is enabled
 	init_byond_tracy()
 #endif
-	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
+	log_world("World loaded at [time_stamp()]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	// citadel edit: world runtime log removed due to world.log shunt doing that for us
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
 	world.Profile(PROFILE_START)
-	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 	setupgenetics()
 
 	GLOB.revdata = new
 
+	// First possible sleep()
 	InitTgs()
 
 	// load configuration
 	load_legacy_configuration()
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
-	config.update_world_viewsize()	//! Since world.view is immutable, we load it here.
-	Configuration.Initialize()
 
-	//SetupLogs depends on the RoundID, so lets check
-	//DB schema and set RoundID if we can
-	SSdbcore.CheckSchemaVersion()
-	SSdbcore.SetRoundID()
-	SetupLogs()
+	ConfigLoaded()
 
 	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
 	shunt_redirected_log()
-
-	if(config && config_legacy.server_name != null && config_legacy.server_suffix && world.port > 0)
-		// dumb and hardcoded but I don't care~
-		config_legacy.server_name += " #[(world.port % 1000) / 100]"
-
-	// TODO - Figure out what this is. Can you assign to world.log?
-	// if(config && Configuration.get_entry(/datum/toml_config_entry/backend/logging/toggles/runtime))
-	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
 	callHook("startup")
 	//Emergency Fix
@@ -105,6 +123,9 @@ GLOBAL_LIST(topic_status_cache)
 	//end-emergency fix
 
 	src.update_status()
+
+	// Someone make it so this call isn't necessary
+	make_datum_reference_lists()
 
 	. = ..()
 
@@ -114,24 +135,52 @@ GLOBAL_LIST(topic_status_cache)
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
-	if(fexists(RESTART_COUNTER_PATH))
-		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
-		fdel(RESTART_COUNTER_PATH)
-
 	if(NO_INIT_PARAMETER in params)
 		return
 
 	Master.Initialize(10, FALSE, TRUE)
 
-	#ifdef UNIT_TESTS
-	HandleTestRun()
-	#endif
-	if(config_legacy.ToRban)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
+	RunUnattendedFunctions()
 
+/// Initializes TGS and loads the returned revising info into GLOB.revdata
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
+
+/// Runs after config is loaded but before Master is initialized
+/world/proc/ConfigLoaded()
+	config.update_world_viewsize()	//! Since world.view is immutable, we load it here.
+	Configuration.Initialize()
+
+	// pretend these 2 ssdbcore funcs are InitializeRound()
+	SSdbcore.CheckSchemaVersion()
+	SSdbcore.SetRoundID()
+
+	SetupLogs()
+
+	load_admins()
+
+	// legacy shit
+	if(config && config_legacy.server_name != null && config_legacy.server_suffix && world.port > 0)
+		// dumb and hardcoded but I don't care~
+		config_legacy.server_name += " #[(world.port % 1000) / 100]"
+
+	if(fexists(RESTART_COUNTER_PATH))
+		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
+		fdel(RESTART_COUNTER_PATH)
+
+/// Runs after the call to Master.Initialize, but before the delay kicks in. Used to turn the world execution into some single function then exit
+/world/proc/RunUnattendedFunctions()
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
+
+	#ifdef PERFORMANCE_TESTS
+	queue_performance_tests()
+	#endif
+	// this is horrible
+	if(config_legacy.ToRban)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ToRban_autoupdate)), 5 MINUTES)
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -146,16 +195,35 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), cb, 10 SECONDS))
 
+/world/proc/queue_performance_tests()
+	//trigger things to run the whole process
+	Master.sleep_offline_after_initializations = FALSE
+	SSticker.start_immediately = TRUE
+	var/datum/callback/cb = CALLBACK(src, PROC_REF(run_performance_tests))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), cb, 10 SECONDS))
+
+/// Stub proc intended to be filled with code that does some test, profiles it, and logs that test.
+/// Intended to be used with line by line macros, but you should live your truth
+/world/proc/run_performance_tests()
+	// In case we do somethin that could otherwise end the round
+	SSticker.delay_end = TRUE
+	// Your code goes here
+
+	// Logging goes here
+	// (sample line by line) stat_tracking_export_to_csv_later("file_name.csv", GLOB.cost_list, GLOB.count_list)
+	SSticker.delay_end = FALSE
+	shutdown()
+
 /world/proc/SetupLogs()
 	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
 	if(!override_dir)
 		var/realtime = world.realtime
-		var/texttime = time2text(realtime, "YYYY/MM/DD")
+		var/texttime = time2text(realtime, "YYYY/MM/DD", TIMEZONE_UTC)
 		GLOB.log_directory = "data/logs/[texttime]/round-"
 		if(GLOB.round_id)
 			GLOB.log_directory += "[GLOB.round_id]"
 		else
-			var/timestamp = replacetext(TIME_STAMP("hh:mm:ss", FALSE), ":", ".")
+			var/timestamp = replacetext(time_stamp(), ":", ".")
 			GLOB.log_directory += "[timestamp]"
 	else
 		GLOB.log_directory = "data/logs/[override_dir]"
@@ -187,8 +255,9 @@ GLOBAL_LIST(topic_status_cache)
 	start_log(GLOB.tgui_log)
 	start_log(GLOB.subsystem_log)
 
-	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM", TIMEZONE_UTC) + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
+
 	if(fexists(GLOB.config_error_log))
 		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
 		fdel(GLOB.config_error_log)
@@ -202,6 +271,13 @@ GLOBAL_LIST(topic_status_cache)
 	log_runtime(GLOB.revdata.get_log_message())
 
 	global.event_logger.setup_logger(GLOB.log_directory)
+
+#ifndef USE_CUSTOM_ERROR_HANDLER
+	world.log = file("[GLOB.log_directory]/dd.log")
+#else
+	if (TgsAvailable()) // why
+		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+#endif
 
 /world/proc/_setup_logs_boilerplate()
 
@@ -255,6 +331,23 @@ GLOBAL_LIST(topic_status_cache)
 	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
 	qdel(src) //shut it down
 
+/// Returns TRUE if the world should do a TGS hard reboot.
+/world/proc/check_hard_reboot()
+	if(!TgsAvailable())
+		return FALSE
+	var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
+	switch(ruhr)
+		if(-1)
+			return FALSE
+		if(0)
+			return TRUE
+		else
+			if(GLOB.restart_counter >= ruhr)
+				return TRUE
+			else
+				text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
+				return FALSE
+
 /**
  * byond reboot proc
  *
@@ -282,38 +375,26 @@ GLOBAL_LIST(topic_status_cache)
 	return
 	#endif
 
-	if(TgsAvailable())
-		var/do_hard_reboot
-		// check the hard reboot counter
-		var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
-		switch(ruhr)
-			if(-1)
-				do_hard_reboot = FALSE
-			if(0)
-				do_hard_reboot = TRUE
-			else
-				if(GLOB.restart_counter >= ruhr)
-					do_hard_reboot = TRUE
-				else
-					text2file("[++GLOB.restart_counter]", RESTART_COUNTER_PATH)
-					do_hard_reboot = FALSE
-
-		if(do_hard_reboot)
-			log_world("World hard rebooted at [time_stamp()]")
-			shutdown_logging() // See comment below.
-			TgsEndProcess()
+	if(check_hard_reboot())
+		log_world("World hard rebooted at [time_stamp()]")
+		shutdown_logging() // See comment below.
+		TgsEndProcess()
+		return ..()
 
 	log_world("World rebooted at [time_stamp()]")
 
-	TgsReboot()
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+
+	TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
+
 
 	//! Shutdown Auxtools
 	// AUXTOOLS_SHUTDOWN(AUXTOOLS_YAML)
 
 	//! Finale
 	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
-	sleep(1 SECONDS)
+	// sleep(1 SECONDS) no, rustg should cease beyond this point (no logging)
+
 	..()
 
 /world/Del()
@@ -444,6 +525,7 @@ GLOBAL_LIST(topic_status_cache)
 /world/proc/max_z_changed(old_z_count, new_z_count)
 	assert_players_by_zlevel_list()
 	assert_gps_level_list()
+	assert_high_altitude_signal_list()
 	for(var/datum/controller/subsystem/S in Master.subsystems)
 		S.on_max_z_changed(old_z_count, new_z_count)
 
@@ -522,6 +604,7 @@ GLOBAL_LIST(topic_status_cache)
 //* Log Shunter *//
 
 //! LOG SHUNTER STUFF, LEAVE THIS ALONE
+// well maybe have a genisis proc so master is 100% initialized (with globals) which makes it impossible to not exist when we are new()ing stuff
 /**
  * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
  * which is really bad?? because we kind of need it??

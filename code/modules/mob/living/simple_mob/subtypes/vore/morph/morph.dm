@@ -39,8 +39,6 @@
 
 	meat_amount = 2
 
-	showvoreprefs = 0
-
 	var/morphed = FALSE
 	var/tooltip = TRUE
 	var/melee_damage_disguised = 0
