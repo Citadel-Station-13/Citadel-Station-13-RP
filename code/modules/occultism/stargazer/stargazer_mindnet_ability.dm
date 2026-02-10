@@ -71,10 +71,10 @@
 		"targeted" = targeted,
 	)
 
-/datum/stargazer_mindnet_ability/proc/put_on_global_cooldown(for_how_long)
+/datum/stargazer_mindnet_ability/proc/put_on_global_cooldown(datum/stargazer_mindnet_exec/exec, for_how_long)
 	#warn impl
 
-/datum/stargazer_mindnet_ability/proc/put_on_target_cooldown(for_how_long, datum/mind/target)
+/datum/stargazer_mindnet_ability/proc/put_on_target_cooldown(datum/stargazer_mindnet_exec/exec, for_how_long, datum/mind/target)
 	#warn impl
 
 /**
@@ -89,9 +89,9 @@
 	on_run(exec)
 
 	if(cooldown_global)
-		put_on_global_cooldown(cooldown_global)
+		put_on_global_cooldown(exec, cooldown_global)
 	if(cooldown_for_given_target && exec.target_mind)
-		put_on_target_cooldown(cooldown_for_given_target, exec.target_mind)
+		put_on_target_cooldown(exec, cooldown_for_given_target, exec.target_mind)
 
 /**
  * * This will sleep.

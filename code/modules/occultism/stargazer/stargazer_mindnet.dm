@@ -66,6 +66,10 @@
 	/// * Usually, things like abilities are global singletons, but for now let's
 	///   not overcomplicate.
 	var/list/ability_lookup
+
+	/// mind_ref by string name
+	/// * if null / doesn't exist, we generate a description.
+	var/list/named_presences
 	#warn generate this
 
 	/// Passive attunement always

@@ -16,7 +16,7 @@
 
 /datum/stargazer_mindnet_ability/ping/default_post_prompt(datum/stargazer_mindnet_exec/exec)
 	if(!exec.is_cooperative)
-		actor?.chat_feedback(
+		exec.actor?.chat_feedback(
 			#warn target name?
 			SPAN_WARNING("You fail to pinpoint the presence of [target]'s consciousness.")
 		)
