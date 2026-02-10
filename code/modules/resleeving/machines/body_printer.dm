@@ -101,6 +101,13 @@
 	QDEL_LAZYLIST(bottles)
 	return ..()
 
+/obj/machinery/resleeving/body_printer/update_icon()
+	. = ..()
+	if(currently_growing)
+		icon_state = "[base_icon_state][icon_state_running_append]"
+	else
+		icon_state = "[base_icon_state]"
+
 /obj/machinery/resleeving/body_printer/RefreshParts()
 	var/scanner_amt = 0
 	var/scanner_tot = 0
@@ -246,7 +253,7 @@
 		send_audible_system_message("Error; Body record has corrupted genetic data.")
 		return FALSE
 
-	var/mob/living/created = create_body_impl(backup)
+	var/mob/living/created = create_body(backup)
 
 	if(!created)
 		return FALSE
@@ -277,6 +284,7 @@
 	ADD_TRAIT(created, TRAIT_MECHANICAL_VENTILATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
 	created.update_stat()
 
+	send_audible_system_message("Beginning pod-reconstruction cycle; prepare to triage incoming patient...")
 	update_icon()
 	return TRUE
 
@@ -496,7 +504,7 @@
 
 	if(ratio < progress_recalc_last_ratio + progress_recalc_working_threshold_ratio)
 		++progress_recalc_strikes
-	progress_recalc_last_ratio = ratio
+	progress_recalc_last_ratio = currently_growing_progress_estimate_ratio = ratio
 	progress_recalc_last_time = world.time
 
 	if(progress_recalc_strikes > progress_recalc_strike_limit)

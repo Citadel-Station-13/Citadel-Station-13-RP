@@ -57,7 +57,7 @@
 	return !!occupant
 
 /datum/machinery_system/occupant_pod/proc/user_common_checks(datum/event_args/actor/actor, silent, suppressed)
-	if(!actor.performer.Reachability(src))
+	if(!actor.check_performer_reachability(parent))
 		if(!silent)
 			actor.chat_feedback(
 				SPAN_WARNING("You can't reach [src]!"),
@@ -76,7 +76,7 @@
 /datum/machinery_system/occupant_pod/proc/occupant_common_checks(atom/movable/inserting, datum/event_args/actor/actor, silent, suppressed)
 	var/is_self = inserting == actor.performer
 	if(!is_self)
-		if(!actor.performer.Reachability(inserting))
+		if(!actor.check_performer_reachability(parent))
 			if(!silent)
 				actor.chat_feedback(
 					SPAN_WARNING("You need to be able to reach [inserting] to shove them into [src]."),
@@ -221,6 +221,7 @@
 
 /datum/machinery_system/occupant_pod/proc/on_open(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
+	parent.machinery_occupant_pod_opened(entity, src, actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/close(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -247,6 +248,7 @@
 
 /datum/machinery_system/occupant_pod/proc/on_close(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
+	parent.machinery_occupant_pod_closed(entity, src, actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/insert(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -281,6 +283,7 @@
 
 /datum/machinery_system/occupant_pod/proc/on_insert(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
+	parent.machinery_occupant_pod_entered(entity, src, actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/eject(atom/new_loc = parent.drop_location(), datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -294,6 +297,7 @@
 		return FALSE
 
 	var/mob/living/ejecting = occupant
+	occupant = null
 	// TODO: contents holder separate from parent maybe?
 	if(ejecting.loc == parent)
 		ejecting.forceMove(new_loc)
@@ -316,6 +320,7 @@
 
 /datum/machinery_system/occupant_pod/proc/on_eject(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
+	parent.machinery_occupant_pod_exited(entity, src, actor, silent, suppressed)
 
 /obj/machinery/proc/machinery_occupant_pod_opened(datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)

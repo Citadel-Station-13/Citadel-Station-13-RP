@@ -12,6 +12,8 @@
 
 /obj/machinery/resleeving/examine(mob/user, dist)
 	. = ..()
+	. += SPAN_NOTICE("This machine is controlled by a central resleeving control console. Link it to \
+	a nearby console by rescanning from said console to perform operations.")
 	if(can_be_unanchored)
 		. += SPAN_NOTICE("[src] can be unanchored with a <b>wrench</b>.")
 

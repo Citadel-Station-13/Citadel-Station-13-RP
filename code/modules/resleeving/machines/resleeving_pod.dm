@@ -90,7 +90,7 @@
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = SPAN_NOTICE("[clickchain.performer] inserts [mirror] into [src]."),
 		)
-		if(!user_insert_mirror(mirror, clickchain))
+		if(!user_insert_mirror(clickchain, mirror))
 			clickchain.performer.put_in_hands_or_drop(mirror)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
@@ -199,6 +199,7 @@
 
 	// TODO: variable sound
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 75, TRUE)
+	send_audible_system_message("Inserting mirror and initiating neural re-imaging...")
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_backup_insertion_impl(mob/living/target, datum/resleeving_mind_backup/backup)
 	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on

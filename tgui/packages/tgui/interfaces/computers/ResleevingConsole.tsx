@@ -77,7 +77,7 @@ export const ResleevingConsole = (props) => {
     (v) => v.ref === selectedBodyRecordRef,
   );
   return (
-    <Window title="Resleeving Console" width={500} height={550}>
+    <Window title="Resleeving Console" width={600} height={475}>
       <Window.Content>
         <Stack fill>
           <Stack.Item grow={1}>
@@ -104,50 +104,7 @@ export const ResleevingConsole = (props) => {
                   )}
                 </Section>
               </Stack.Item>
-              <Stack.Item grow={1}>
-                <Section fill title="Available Body Records" scrollable>
-                  <Stack vertical>
-                    {data.bodyRecords.map((rec) => (
-                      <Stack.Item key={rec.ref}>
-                        <Box>
-                          <Stack vertical>
-                            <Stack.Item>
-                              <LabeledList>
-                                <LabeledList.Item label="Name">
-                                  {rec.name}
-                                </LabeledList.Item>
-                                <LabeledList.Item label="Source">
-                                  {rec.source}
-                                </LabeledList.Item>
-                                <LabeledList.Item label="Type">
-                                  {rec.synthetic ? 'Synthetic' : 'Organic'}
-                                </LabeledList.Item>
-                              </LabeledList>
-                            </Stack.Item>
-                            <Stack.Item>
-                              <Button
-                                onClick={() => setSelectedBodyRecordRef(rec.ref)}
-                                selected={selectedBodyRecordRef === rec.ref}
-                                fluid
-                              >
-                                {selectedBodyRecordRef === rec.ref
-                                  ? 'Selected'
-                                  : 'Select'}
-                              </Button>
-                            </Stack.Item>
-                          </Stack>
-                        </Box>
-                      </Stack.Item>
-                    ))}
-                  </Stack>
-                </Section>
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item grow={1}>
-            <Stack vertical fill>
               <Stack.Item>
-                <Stack.Item>
                   <Section
                     fill
                     title="Inserted Disk"
@@ -175,8 +132,50 @@ export const ResleevingConsole = (props) => {
                       <NoticeBox>No DNA disk inserted</NoticeBox>
                     )}
                   </Section>
-                </Stack.Item>
               </Stack.Item>
+              <Stack.Item grow={1}>
+                <Section fill title="Available Body Records" scrollable>
+                  <Stack vertical>
+                    {data.bodyRecords.map((rec) => (
+                      <Stack.Item key={rec.ref}>
+                        <Box>
+                          <Stack vertical>
+                            <Stack.Item>
+                              <LabeledList>
+                                <LabeledList.Item label="Name">
+                                  {rec.name}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Source">
+                                  {rec.source}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Type">
+                                  {rec.synthetic ? 'Synthetic' : 'Organic'}
+                                </LabeledList.Item>
+                              </LabeledList>
+                            </Stack.Item>
+                            <Stack.Item>
+                              <Button
+                                textAlign="center"
+                                onClick={() => setSelectedBodyRecordRef(rec.ref)}
+                                selected={selectedBodyRecordRef === rec.ref}
+                                fluid
+                              >
+                                {selectedBodyRecordRef === rec.ref
+                                  ? 'Selected'
+                                  : 'Select'}
+                              </Button>
+                            </Stack.Item>
+                          </Stack>
+                        </Box>
+                      </Stack.Item>
+                    ))}
+                  </Stack>
+                </Section>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow={1}>
+            <Stack vertical fill>
               <Stack.Item grow>
                 <Section
                   fill
@@ -235,7 +234,7 @@ export const ResleevingConsole = (props) => {
                                 <LabeledList>
                                   <LabeledList.Item label="Status">
                                     {printer.busy
-                                      ? `Producing record of species ${printer.busy.record.speciesName} %${round(printer.busy.progressRatio * 100, 0.1)}`
+                                      ? `Producing record of species ${printer.busy.record.speciesName} - ${round(printer.busy.progressRatio * 100, 0.1)}%`
                                       : 'Standby'}
                                   </LabeledList.Item>
                                   <LabeledList.Item label="Supports Organics">
