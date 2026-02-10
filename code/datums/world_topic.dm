@@ -255,7 +255,7 @@
 		.["active_players"] = get_active_player_count()
 
 	.["security_level"] = get_security_level()
-	.["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+	.["round_duration"] = SSticker ? round(STATION_TIME_PASSED() / 10) : 0
 	// Amount of world's ticks in seconds, useful for calculating round duration
 
 	.["stationtime"] = stationtime2text()
