@@ -26,9 +26,6 @@
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
-"l" = (
-/turf/simulated/wall/sandstone,
-/area/class_h/POIs/tomb)
 "m" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -178,8 +175,8 @@ a
 n
 n
 n
-l
-l
+e
+e
 e
 e
 L
@@ -200,7 +197,7 @@ n
 n
 n
 n
-l
+e
 Z
 e
 Y

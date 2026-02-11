@@ -1,19 +1,22 @@
 //temporary visual effects
 /obj/effect/temp_visual
-	icon = 'icons/effects/effects.dmi'
 	icon_state = "nothing"
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
-	mouse_opacity = 0
-	var/duration = 10 //in deciseconds
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	///time, in deciseconds, that this object will exist
+	var/duration = 10
+	///if true, will pick a random direction when created.
 	var/randomdir = TRUE
+	///id of the deletion timer
 	var/timerid
 
 /obj/effect/temp_visual/Initialize(mapload)
 	. = ..()
 	if(randomdir)
-		dir = pick(list(NORTH, SOUTH, EAST, WEST))
-	timerid = QDEL_IN(src, duration)
+		setDir(pick(GLOB.cardinal))
+
+	timerid = QDEL_IN_STOPPABLE(src, duration)
 
 /obj/effect/temp_visual/Destroy()
 	. = ..()
@@ -22,17 +25,13 @@
 /obj/effect/temp_visual/singularity_act()
 	return
 
-/obj/effect/temp_visual/singularity_pull()
-	return
-
-/obj/effect/temp_visual/legacy_ex_act()
+/obj/effect/temp_visual/singularity_pull(atom/singularity, current_size)
 	return
 
 /obj/effect/temp_visual/dir_setting
 	randomdir = FALSE
 
-/obj/effect/temp_visual/dir_setting/Initialize(mapload, setDir)
-	if(setDir)
-		dir = setDir
-	return ..()
-
+/obj/effect/temp_visual/dir_setting/Initialize(mapload, set_dir)
+	if(set_dir)
+		setDir(set_dir)
+	. = ..()

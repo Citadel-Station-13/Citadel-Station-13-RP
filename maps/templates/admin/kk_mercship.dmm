@@ -56,8 +56,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - West";
-	pixel_x = -24
+	name = "Merc APC - West"
 	},
 /obj/machinery/air_alarm/alarms_hidden{
 	dir = 1;
@@ -584,8 +583,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - North";
-	pixel_y = 24
+	name = "Merc APC - North"
 	},
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/techfloor{
@@ -631,8 +629,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - North";
-	pixel_y = 24
+	name = "Merc APC - North"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-4"
@@ -1807,8 +1804,7 @@
 "iQ" = (
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - East";
-	pixel_x = 24
+	name = "Merc APC - East"
 	},
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -1890,8 +1886,7 @@
 "jg" = (
 /obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - North";
-	pixel_y = 24
+	name = "Merc APC - North"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -2433,8 +2428,7 @@
 /obj/item/bedsheet/hos,
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - East";
-	pixel_x = 24
+	name = "Merc APC - East"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -2684,8 +2678,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - East";
-	pixel_x = 24
+	name = "Merc APC - East"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -2956,8 +2949,7 @@
 "ov" = (
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - East";
-	pixel_x = 24
+	name = "Merc APC - East"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-8"
@@ -3210,8 +3202,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - East";
-	pixel_x = 24
+	name = "Merc APC - East"
 	},
 /obj/effect/catwalk_plated/dark,
 /obj/structure/cable/orange{
@@ -4714,8 +4705,7 @@
 "xv" = (
 /obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - West";
-	pixel_x = -24
+	name = "Merc APC - West"
 	},
 /obj/structure/cable/orange,
 /turf/simulated/floor/plating,
@@ -5546,8 +5536,7 @@
 "Bk" = (
 /obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - West";
-	pixel_x = -24
+	name = "Merc APC - West"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -8275,8 +8264,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - North";
-	pixel_y = 24
+	name = "Merc APC - North"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-4"
@@ -8294,8 +8282,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - West";
-	pixel_x = -24
+	name = "Merc APC - West"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -8786,8 +8773,7 @@
 /obj/item/bedsheet/hos,
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - East";
-	pixel_x = 24
+	name = "Merc APC - East"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-2"
@@ -9918,8 +9904,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - North";
-	pixel_y = 24
+	name = "Merc APC - North"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-4"
@@ -10108,8 +10093,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "Merc APC - East";
-	pixel_x = 24
+	name = "Merc APC - East"
 	},
 /obj/structure/cable/orange{
 	icon_state = "0-8"

@@ -1,0 +1,365 @@
+2026-02-03:
+  AlphaM01:
+  - rscadd: Added several new pieces of PMD uniform and accessories
+  - bugfix: Corrected a few typos in existing PMD items
+  - tweak: tweaked 43a western z-level structure to reduce movement issues for players
+      and mobs.
+  - tweak: adjusted spawned loot in 43a western z-level.
+  - rscadd: Added Field Medic Voidsuit.
+  - tweak: Old Exploration Voidsuit no longer spawns in the Search and Rescue Suit
+      Storage unit.
+  Athena148:
+  - balance: lowers Monarch's burn resist, makes charge not instant.
+  - bugfix: Removes any reference to the Monarch spawning naturally, probable or not.
+  - rscadd: Heretical stuff. More to come.
+  - rscadd: Event code and maps
+  Bhijn and Myr:
+  - tweak: Pallet jacks are now capable of coming in random colors!
+  - bugfix: You can now see entities with complex overlay setups, such as humans,
+      via sonar again.
+  - code_imp: Minor cleanup in sonar code
+  Bhijn and Myr, plus Keekenox for sprites:
+  - rscadd: Added pallet jacks! These have fairly peculiar movement quirks, being
+      fairly reminiscent of push/pull sokoban puzzles.
+  BlueWildrose:
+  - bugfix: Fridge sprites and wall locker sprites are proper.
+  CharlesWedge:
+  - rscadd: 4 types discoverable objects in space.
+  - bugfix: Tether now uses proper transitions
+  - imageadd: icons for new overmap objs
+  - rscadd: 3 New Paracasual mobs
+  - tweak: Sprites for Gammawraith and Door Mimic, Lythios POI spawn budget.
+  - tweak: 2 existing POIs, western Rift maps
+  Chelxox:
+  - bugfix: Fixes NT shotguns' icon path
+  - bugfix: Species which gender definition is unknown/undefinable to outsiders now
+      display their proper pronouns when examined by members of their own species,
+      ghosts and silicons, whilst maintaining "they" pronouns to those who don't are
+      not members of the same species.
+  - bugfix: Fixes cropped_hoodie and cropped_sweater's icon paths
+  Colfer1:
+  - rscadd: Adds Love, Menacing, Idea, Nervous to the flick-status-emoji verb
+  - rscadd: Adds new fruits to the alraune menu, Coconuts, Peas, Bentars, Cersut,
+      Disho Juhtak, Jurlmah, Messa tears, Nettles, Pokelea, Shimash, Sendar hand,
+      Telriis, Taro, Whitewabback
+  - rscadd: Adds new 'buildable' plants to the grass tile construction list
+  - rscadd: Adds the antrumite plushy, based off expies from scav prototype
+  - bugfix: The cell loaded medigun crate no longer ships with the abstract concept
+      of a projectile
+  Dimasw99:
+  - rscadd: Added proc to get an atom before the turf
+  - bugfix: Held integrated circuit guns no longer shooting into nullspace
+  FreeStylaLT:
+  - rscadd: Added a brain jar head prosthetic
+  - soundadd: New Subtler Sound
+  GySgtMurphy:
+  - bugfix: Fixed access buttons in the brig so that people can actually use them
+      to bolt and unbolt the doors
+  - rscadd: Added guest pass terminals, and fixed the air tanks on Deck three leading
+      to solars.
+  - tweak: fixes area on Explo shuttle on Endeavour, replaces turrets to make them
+      consistent.
+  - bugfix: fixed disposals break in Sci.
+  - rscdel: deleted a random APC in Sec lobby.
+  - bugfix: fixed a superfluous glass wall in Sec prep.
+  - bugfix: fixed bad wall placements of buttons & equipment in Robotics.
+  - tweak: adjusts areas on Deck 4 to break up some too-large hallways.
+  - balance: pulled overpowered boss mob from debris field POI, added multiple less
+      powerful mobs as bosses as replacement.
+  - bugfix: A bunch of little fixes here and there
+  - rscadd: Traveler.dm to voidsuits lists, with downgraded syndie suits and helmets
+      for travelers to use
+  - tweak: upped the prices on the suits in the vendor on Nebula to more reasonable
+      levels
+  - rscadd: added a new armor class for traveler suits
+  - tweak: upped the armor values for Exploration suits
+  - tweak: rebalanced the RHR on Lythious 43a to a more reasonable weapon
+  - tweak: fixed airlocks on Vevalia shuttle and syndie suit displays to the traveler
+      variant
+  - tweak: adjusts Explo shuttle cockpit on Endeavour, removes extra atmo retention
+      field from the interior airlock.
+  - tweak: Removes an excess amount of defense turrets on Decks 1, 2, & 3.
+  - rscadd: New Explo Shuttle for Endeavour
+  - rscdel: Original Explo shuttle from Endeavour
+  - rscdel: old endeavour_areas
+  - rscadd: Takes areas and puts into a single file for Endeavour, added a number
+      of additional areas
+  - bugfix: fixed some disposals pipes near medical, and added a bunch of missing
+      APCs
+  - bugfix: button sprite/icons for mass driver buttons in chapels
+  - rscadd: door control to the chapel mass driver
+  - rscadd: cremetoriam activation button
+  - bugfix: engineering access into Sec via main engineering trunk
+  - bugfix: button access for cargo's pinnace
+  - bugfix: button access for auxiliary docking bay on deck 4
+  - tweak: explo shuttle profile to add cyborg charger
+  - tweak: repositioned some lights and cameras on deck 4
+  - rscadd: cameras to the bridge
+  - rscdel: extra air alarms to bridge
+  - tweak: changed name of door on Bridge
+  - rscadd: windoor to Janitorial
+  - rscadd: powernet sensors that were missing or misnamed
+  - rscadd: orbital deployment bay to Deck 4 Engineering
+  - rscadd: FIghter parking forward on deck 4
+  - rscadd: pipe dispensers in Atmos
+  - rscadd: some more clocks and such around the halls
+  - rscadd: shield dispersers in front of Sec's fighter bay
+  Kade:
+  - tweak: Changes the Hazard Bypass Voidsuit to be lighter.
+  - rscadd: Adds the new 3x3 mech class and the Quasimodo to go along with it. Also
+      includes a weapon class (Heavy) to be used along side the 3x3 mechs.
+  - bugfix: fixed the Marauder series of mechs not having their strafe work.
+  LetterN:
+  - tweak: safes are 20% more cooler, also you can break it open with 3 large-sized
+      explosives
+  - code_imp: add baloon alerts
+  - code_imp: update stoplag
+  - code_imp: unbox sorts (back to 1 file)
+  - bugfix: chat panel flickering
+  - code_imp: update filters
+  - rscadd: new adminbuse view matrix editor
+  - code_imp: cleanup legacy stuff & moved them into their own respective dropdown
+      option
+  - code_imp: use tg display-mutable-appearance
+  - rscadd: you can now point items inside your inventory
+  - tweak: update fulton
+  - code_imp: updated WrapAdminProcCall so it doesnt sleep (remove the waiting feature)
+  - tweak: you can now see how many people are orbiting something
+  - code_imp: if you see this, that means that changelog is working again
+  - soundadd: one new elevator music track from tg
+  MarsM0nd:
+  - bugfix: Actuator enhancement is actually an enhancement again.
+  - tweak: drone upgrades only get applied once
+  - bugfix: items don't bash the recharger on insert
+  - bugfix: disruptor cuffs stop disrupting if removed
+  - bugfix: real blindfolds actually blind
+  - bugfix: janiquad floor scrubber
+  - tweak: there is no forced slowdown in the belts
+  - rscadd: Caparisons, a body covering for taurs
+  - bugfix: Able to escape every storage
+  - bugfix: vore resist belly interactions
+  - bugfix: augment cooldowns
+  - bugfix: Cigar, chocolate, and crayon/marker/chalk boxes don't become (partly)
+      invisible
+  - bugfix: resonate analyzer can be used
+  - tweak: plant analyzer is now small
+  MediHound:
+  - rscadd: Check to see if the turf is a space turf.
+  - tweak: Degeneration values replaced with minor regeneration. (Only affects Admin
+      Shadekin.)
+  Putnam3145:
+  - bugfix: Various glass airlocks are now actually buildable
+  - bugfix: circuit powernet connector actually works
+  - bugfix: Fixes the "random camera off" event not to infinitely recurse on nets
+      with no working camera
+  - bugfix: No more infinite funny vine stacks
+  - bugfix: made protean dropvore(?) not check the exact opposite pref it should
+  - code_imp: Made flavor text loop-switch into a series of if statements instead
+  Shadowcat:
+  - rscadd: Added Ripped pants and fishnets clothing item.
+  Shadowtail117:
+  - tweak: More areas will now respect the nightshift on the Atlas.
+  - bugfix: Added a missing APC to the secondary civilian hallway on the Atlas.
+  - bugfix: Added missing lights to the virology dorms on the Atlas.
+  - tweak: Small lightbulbs and fairy lights now respect the nightshift.
+  - tweak: The nightshift color is now warm instead of cold.
+  - tweak: Adjusted the RCON labels of the substations and breaker boxes on the NSB
+      Atlas.
+  - tweak: Adjusted aim mode to not automatically shoot people for every single click
+      and instead be more reasonable.
+  - rscadd: You can now deactivate a life crystal by using it in your hand.
+  - bugfix: Ghosts can no longer brew coffee.
+  - bugfix: Bleeding now respects a species' blood color (including custom blood color).
+  - admin: Admins can now view the authentication codes for all nuclear devices in
+      the Secrets panel.
+  - rscadd: Added storage belts for Miaphus SDF soldiers.
+  - tweak: You can no longer see a phased shadekin using hud glasses.
+  - tweak: Added navigation screens to the NSB Atlas.
+  - bugfix: Fixed the nightshift to start and end at the actual times.
+  - tweak: The Strelka will now be affected by the nightshift.
+  - bugfix: The stripe on guest passes will now turn red when they expire.
+  - tweak: The examine text on a guest pass is now formatted correctly.
+  - tweak: Guest passes will now show the issued person's name on them, similar to
+      an ID.
+  - tweak: Changed around the FD's office on the Atlas map, and added a new lounge
+      area outside of it.
+  - bugfix: Fixed the surgery hallway not obeying the nightshift setting.
+  - bugfix: Fixed the APC in the library hallway on Atlas not being connected properly.
+  - rscadd: The nightshift will now work again, both automatically and manually.
+  - bugfix: Fixed wrong usage of the station name when a shuttle bumps into the screaming
+      signals overmap hazard.
+  - bugfix: Fixed erroneous space when starting a me message with a comma or apostrophe.
+  - bugfix: Your character will now cry in pain when trying to hold something with
+      a broken hand.
+  Sorrowfulwinds:
+  - bugfix: fixed gaia, triumph, tether, skyplanet map errors.
+  - code_imp: changed stairs, catwalks, SMES warnings to verbose CRASHs.
+  - bugfix: removes a dead branch in blood.dm
+  - bugfix: removes all uses of datum[varname]
+  - bugfix: Add parens to clarify if statement in language.dm
+  - bugfix: fix some bad \the's in text
+  - bugfix: fixed space dust
+  - code_imp: adds a string sort to the cargo order subsystem to sort the categories
+      and items.
+  - bugfix: fixed bad in loop
+  - bugfix: fixed readme typos
+  - bugfix: Fix a bad use of rgb()
+  - bugfix: fixed missing semicolons
+  - bugfix: fix fuzzy cuff & sinew cuff sprites
+  - bugfix: fixed catwalk dupe error on Rift
+  SpartanKadence:
+  - rscadd: Adds the Recycling Pad! (Reinvented the Recycler.)
+  TheLordME:
+  - bugfix: fix delayed reboot happening immidetly
+  - bugfix: fix haste and slowdown traits
+  - rscdel: Removed unused variables that held over from vorestation
+  - rscdel: Removed Vore belly transform to egg options
+  - rscdel: Removed audible hunger noises
+  - tweak: tweaked feral to be a chimera specific variable, instead of a mob variable
+      thats only used by chimera
+  - tweak: Xenohybrid subspecies now work with the xenohybrid WL
+  - rscdel: Removed the not working autohiss traits (character setting stays, just
+      the traits)
+  - bugfix: fixed a runtime in the playtime subsystem
+  - tweak: tweaked akula to have water stealth
+  - tweak: prevent ghostroles from spawning before round start
+  - bugfix: xenohybrid whitelist
+  - tweak: shuttle landing spot selection is now tgui
+  - tweak: shuttles no longer prepend sector name to a landing spot
+  - bugfix: fix occasional runtime related to blood mixture merging
+  - bugfix: fixed a runtime in fit viewport
+  - bugfix: fixed /obj/hitsound_throwhit() runtiming when src has marterial_primary
+      set to "DISABLED"
+  - tweak: Tweaked the strealka to use R-UST
+  - rscadd: Added a bunch of COMSIGnals to make the later work.
+  - rscadd: Added new stealth ability for xenomorph hybrids
+  - rscadd: Added Stealthy Xenohybrid Subspecies "Xenomorph Hybrid Hunter"
+  - rscadd: Added Tanky Xenohybrid Subspecies "Xenomorph Hybrid Warrior"
+  VinJackson:
+  - bugfix: 'req_access set to "null" on both sliding secure doors. Otherwise, I literally
+      have 0 idea what the other changes are in code or why they''re occurring.
+
+      :cl:
+
+      ![image](https://github.com/user-attachments/assets/9918f50a-692b-4396-8f5a-ee08c7c90ae1)
+
+      <!-- Both :cl:''s are required for the changelog to work! You can put your name
+      to the right of the first :cl: if you want to overwrite your GitHub username
+      as author ingame. -->
+
+      <!-- You can use multiple of the same prefix (they''re only used for the icon
+      ingame) and delete the unneeded ones. Despite some of the tags, changelogs should
+      generally represent how a player might be affected by the changes rather than
+      a summary of the PR''s contents. -->'
+  Zandario:
+  - bugfix: Ghosts can no longer screw with TGUI panels they shouldn't be able to.
+  - bugfix: Ghost can now see TGUI interfaces on objects. Finally.
+  _Shadowcat_:
+  - refactor: refactors under clothing to new render system
+  ifanyoneme:
+  - rscadd: Added plastic demo charge to exploration vendor list @ 100 point cost
+  iliyaxox:
+  - bugfix: Fixed invisible churro sprite
+  - bugfix: Fixed bone hook's icon not being set properly
+  its-helvi:
+  - bugfix: A dye shortage caused by excessive use of ColorMates to paint Teshari
+      may have caused printing errors with several batches of garters and their corresponding
+      stockings, according to recent reports.
+  - tweak: Set-Pose and Set-Pose (Temporary) will now display your covered-under-warranty
+      definitely-non-canon definitely-not-submissive positions. Silicons be glad that
+      I didn't use the pillow biting pose instead.
+  - bugfix: Synth arm implanting now works.
+  lolman360:
+  - rscadd: some new straw hats and beachwear!
+  - imageadd: icons for new straw hats and beachwear.
+  - bugfix: aguments can into robot now :D
+  seekssss:
+  - balance: nerfed sprinter module
+  - bugfix: ghost shuttle renaming fix
+  - rscadd: You can now rename vessels to have a different name. Please play nice
+      with this.
+  - rscadd: ball map
+  - rscadd: add ticket printing
+  silicons:
+  - tweak: jetpacks now work from suit storage
+  - refactor: completely reworked suit storage allowed lists
+  - balance: a lot more suit-slot items can now fit a lot more things
+  timothyteakettle:
+  - bugfix: fix sofa corners layering
+  - rscadd: ports coffee makers from TG
+  - rscadd: adds large shark tails
+  - rscadd: 'add support for holiday locked vending machine products
+
+      :cl:'
+  - bugfix: fix moth gaiters being giant black squares
+  - refactor: refactor holosphere revive code
+  - bugfix: fixes holospheres being unable to revive at a later point when dying without
+      having enough nutrition to initially revive
+  - bugfix: fix being unable to select moth as a species
+  - rscadd: add a way for admins to allow objects to emote
+  - rscadd: gives holospheres the reset to slot and set size verbs
+  - rscadd: let holospheres change species (verb and via char customization)
+  - bugfix: makes tails respect the hide tail flag on clothing
+  - bugfix: holospheres should have their clothing render correctly for their currently
+      displayed species
+  - bugfix: make sure holosphere's shell is alive when reviving the hologram
+  - rscadd: ports wendigo sprites
+  - rscadd: ports some cat tails
+  - rscadd: ports some kitsune tails
+  - bugfix: fixes sprite accessories being layered wrong
+  - bugfix: fix /obj/item/clothing/under/pmd icon direction
+  - bugfix: chameleon items appearing blank now support teshari
+  - bugfix: biomatter magazines now have their icon
+  - bugfix: fix xenohybrid alternate sprites
+  - bugfix: fixes instantly reviving
+  - bugfix: fixes reviving not taking nutrition
+  - bugfix: fixes chameleon jumpsuits ignoring species sprites
+  - bugfix: fixes transforming when in a recharge station
+  - bugfix: fixes reviving resetting you to the current slot
+  - balance: reduces the amount of nutrition to revive
+  - balance: increased time until you can revive to 4 seconds
+  - bugfix: fix two sprite accessories sharing an id
+  - bugfix: 'fixed icons for: reindeer hat, 12.7mm ammo, green marker beacon (this
+      isnt a thing, it''s just the olive option)'
+  - bugfix: fixed roast beef spawning waffle trash instead of plate trash
+  - bugfix: 'fixed initial defib paddles sprite
+
+      :cl:'
+  - bugfix: fixes holospheres getting their camera stuck when untransforming while
+      held
+  - rscadd: holospheres regen now works with robo limbs
+  - rscadd: 'holospheres transform on crit instead of on death, max hp is 200 and
+      they go into crit at 180
+
+      :cl:
+
+      <!-- Both :cl:''s are required for the changelog to work! You can put your name
+      to the right of the first :cl: if you want to overwrite your GitHub username
+      as author ingame. -->
+
+      <!-- You can use multiple of the same prefix (they''re only used for the icon
+      ingame) and delete the unneeded ones. Despite some of the tags, changelogs should
+      generally represent how a player might be affected by the changes rather than
+      a summary of the PR''s contents. -->'
+  - bugfix: adds a bandaid fix for micro taur scaling
+  - bugfix: fixes a lot of old broken tails
+  - bugfix: fix shapeshifters horns not updating correctly when changed via the verb
+  - bugfix: fix skrell icons being used for prometheans
+  - bugfix: loadout items with a changed name/desc should no longer double sanitize
+  - bugfix: 'collars don''t reset their name when you apply a tag now
+
+      :cl:
+
+      <!-- Both :cl:''s are required for the changelog to work! You can put your name
+      to the right of the first :cl: if you want to overwrite your GitHub username
+      as author ingame. -->
+
+      <!-- You can use multiple of the same prefix (they''re only used for the icon
+      ingame) and delete the unneeded ones. Despite some of the tags, changelogs should
+      generally represent how a player might be affected by the changes rather than
+      a summary of the PR''s contents. -->'
+  - bugfix: fixes holosphere crew sensors showing they're alive when dead
+  - bugfix: fixes being able to transform while dead
+  washikarasu:
+  - rscdel: grey railing sprite
+  - tweak: greyscaled railing sprite and added colour

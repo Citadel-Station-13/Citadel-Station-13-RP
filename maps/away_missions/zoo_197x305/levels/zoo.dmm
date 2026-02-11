@@ -47,9 +47,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
-"ai" = (
-/turf/space,
-/area/space)
 "aj" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -63779,7 +63776,7 @@ ac
 aa
 aa
 aa
-ai
+aa
 aa
 aa
 aa

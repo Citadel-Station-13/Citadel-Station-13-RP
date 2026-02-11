@@ -1,4 +1,5 @@
 /datum/component/custom_transform
+	registered_type = /datum/component/custom_transform
 	var/atom/movable/transformed
 	var/transform_text
 	var/untransform_text
@@ -109,3 +110,11 @@
 	if(M.loc == transformed)
 		return STATE_TRANSFORMED
 	return STATE_UNKNOWN_TRANSFORM
+
+/datum/component/custom_transform/proc/get_current_stat()
+	var/state = get_current_transform_state()
+	if(state == STATE_NOT_TRANSFORMED || !ismob(transformed))
+		var/mob/M = parent
+		return M.stat
+	var/mob/M = transformed
+	return M.stat
