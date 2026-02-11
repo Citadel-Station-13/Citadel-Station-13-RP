@@ -221,7 +221,7 @@
 
 /datum/machinery_system/occupant_pod/proc/on_open(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
-	parent.machinery_occupant_pod_opened(entity, src, actor, silent, suppressed)
+	parent.machinery_occupant_pod_opened(src, actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/close(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -248,7 +248,7 @@
 
 /datum/machinery_system/occupant_pod/proc/on_close(datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
-	parent.machinery_occupant_pod_closed(entity, src, actor, silent, suppressed)
+	parent.machinery_occupant_pod_closed(src, actor, silent, suppressed)
 
 /datum/machinery_system/occupant_pod/proc/insert(mob/entity, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -279,6 +279,7 @@
 				range = MESSAGE_RANGE_COMBAT_SUBTLE,
 				visible = SPAN_WARNING("[actor.performer] puts [entity] into [parent]."),
 			)
+	on_insert(entity, actor, silent, suppressed)
 	return TRUE
 
 /datum/machinery_system/occupant_pod/proc/on_insert(mob/entity, datum/event_args/actor/actor, silent, suppressed)
@@ -316,6 +317,7 @@
 				range = MESSAGE_RANGE_COMBAT_SUBTLE,
 				visible = SPAN_WARNING("[actor.performer] pulls [ejecting] out of [parent]."),
 			)
+	on_eject(ejecting, actor, silent, suppressed)
 	return TRUE
 
 /datum/machinery_system/occupant_pod/proc/on_eject(mob/entity, datum/event_args/actor/actor, silent, suppressed)
@@ -326,9 +328,13 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	set_density(FALSE)
+
 /obj/machinery/proc/machinery_occupant_pod_closed(datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+
+	set_density(TRUE)
 
 /obj/machinery/proc/machinery_occupant_pod_entered(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
@@ -369,9 +375,10 @@
 	pod.eject_via_move = TRUE
 	return pod
 
-/obj/machinery/proc/init_occupant_pod_default_openable() as /datum/machinery_system/occupant_pod
+/obj/machinery/proc/init_occupant_pod_default_openable(start_opened) as /datum/machinery_system/occupant_pod
 	var/datum/machinery_system/occupant_pod/pod = init_occupant_pod_default()
 	pod.door_via_click = TRUE
 	pod.door_via_context = TRUE
-	pod.open_state = FALSE
+	pod.open_state = start_opened
+	set_density(!start_opened)
 	return pod

@@ -70,9 +70,9 @@ interface ResleevingConsoleContext {
 
 export const ResleevingConsole = (props) => {
   const { act, data } = useBackend<ResleevingConsoleContext>();
-  const [selectedBodyRecordRef, setSelectedBodyRecordRef] = useState<string | null>(
-    null,
-  );
+  const [selectedBodyRecordRef, setSelectedBodyRecordRef] = useState<
+    string | null
+  >(null);
   const selectedBodyRecord = data.bodyRecords.find(
     (v) => v.ref === selectedBodyRecordRef,
   );
@@ -105,33 +105,33 @@ export const ResleevingConsole = (props) => {
                 </Section>
               </Stack.Item>
               <Stack.Item>
-                  <Section
-                    fill
-                    title="Inserted Disk"
-                    buttons={
-                      <Button.Confirm
-                        disabled={!data.insertedDisk}
-                        onClick={() => act('removeDisk')}
-                      >
-                        Eject
-                      </Button.Confirm>
-                    }
-                  >
-                    {data.insertedDisk ? (
-                      <Box>
-                        <LabeledList>
-                          <LabeledList.Item label="Name">
-                            {data.insertedDisk.name}
-                          </LabeledList.Item>
-                          <LabeledList.Item label="Printable">
-                            {data.insertedDisk.valid}
-                          </LabeledList.Item>
-                        </LabeledList>
-                      </Box>
-                    ) : (
-                      <NoticeBox>No DNA disk inserted</NoticeBox>
-                    )}
-                  </Section>
+                <Section
+                  fill
+                  title="Inserted Disk"
+                  buttons={
+                    <Button.Confirm
+                      disabled={!data.insertedDisk}
+                      onClick={() => act('removeDisk')}
+                    >
+                      Eject
+                    </Button.Confirm>
+                  }
+                >
+                  {data.insertedDisk ? (
+                    <Box>
+                      <LabeledList>
+                        <LabeledList.Item label="Name">
+                          {data.insertedDisk.name}
+                        </LabeledList.Item>
+                        <LabeledList.Item label="Printable">
+                          {data.insertedDisk.valid}
+                        </LabeledList.Item>
+                      </LabeledList>
+                    </Box>
+                  ) : (
+                    <NoticeBox>No DNA disk inserted</NoticeBox>
+                  )}
+                </Section>
               </Stack.Item>
               <Stack.Item grow={1}>
                 <Section fill title="Available Body Records" scrollable>
@@ -156,7 +156,9 @@ export const ResleevingConsole = (props) => {
                             <Stack.Item>
                               <Button
                                 textAlign="center"
-                                onClick={() => setSelectedBodyRecordRef(rec.ref)}
+                                onClick={() =>
+                                  setSelectedBodyRecordRef(rec.ref)
+                                }
                                 selected={selectedBodyRecordRef === rec.ref}
                                 fluid
                               >
@@ -193,13 +195,19 @@ export const ResleevingConsole = (props) => {
                   <Stack vertical>
                     {data.bodyPrinters.map((printer) => {
                       let cannotPrintBecause: string | null = null;
-                      if(!selectedBodyRecord) {
-                        cannotPrintBecause = "Select body record";
+                      if (!selectedBodyRecord) {
+                        cannotPrintBecause = 'Select body record';
                       } else {
-                        if(selectedBodyRecord.synthetic && !printer.allowSynthetic) {
-                          cannotPrintBecause = "Cannot print synths";
-                        } else if(!selectedBodyRecord.synthetic && !printer.allowOrganic) {
-                          cannotPrintBecause = "Cannot print organics";
+                        if (
+                          selectedBodyRecord.synthetic &&
+                          !printer.allowSynthetic
+                        ) {
+                          cannotPrintBecause = 'Cannot print synths';
+                        } else if (
+                          !selectedBodyRecord.synthetic &&
+                          !printer.allowOrganic
+                        ) {
+                          cannotPrintBecause = 'Cannot print organics';
                         }
                       }
                       return (
@@ -299,6 +307,19 @@ export const ResleevingConsole = (props) => {
                                 </Stack>
                               </Stack.Item>
                               <Stack.Item>
+                                <h2 style={{ textAlign: 'center' }}>Mirror</h2>
+                                {pod.mirror ? (
+                                  <ResleevingMirror
+                                    data={pod.mirror}
+                                  ></ResleevingMirror>
+                                ) : (
+                                  <NoticeBox>No inserted mirror</NoticeBox>
+                                )}
+                              </Stack.Item>
+                              <Stack.Item>
+                                <h2 style={{ textAlign: 'center' }}>
+                                  Occupant
+                                </h2>
                                 {pod.occupied ? (
                                   <LabeledList>
                                     <LabeledList.Item label="Occupant">
