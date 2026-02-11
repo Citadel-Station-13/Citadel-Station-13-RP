@@ -34,6 +34,11 @@
 	/// linear interpolated between proximity radius min/max
 	var/attunement_power_proximity_max_power = 150
 
+	var/attunement_power_see_target_min
+	var/attunement_power_see_target_max
+	var/attunement_power_see_owner_max
+	var/attunement_power_see_owner_min
+
 	var/tmp/cached_attunement_power
 	var/tmp/cached_attunement_last_update
 	var/tmp/cached_attunement_update_interval = 3 SECONDS
@@ -42,10 +47,14 @@
 	src.mind_ref = mind_ref
 	src.mindnet = mindnet
 
+/datum/stargazer_mindnet_link/proc/get_attunement_power(force_update)
+	update_attunement(force_update)
+	return cached_attunement_power
+
 /**
  * Gets current attunement with the target.
  *
- * @return TRUE if updated, FALSe otherwise
+ * @return TRUE if updated, FALSE otherwise
  */
 /datum/stargazer_mindnet_link/proc/update_attunement(force_update)
 	SHOULD_NOT_OVERRIDE(TRUE)

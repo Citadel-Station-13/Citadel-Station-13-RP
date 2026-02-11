@@ -107,7 +107,7 @@
 	/// * directly used in spatial grids to see how far we can scan
 	var/scan_level_range = 14
 	var/scan_last
-	var/scan_interval = 3 SECONDS
+	var/scan_throttle = 3 SECONDS
 	/// list of mind_ref's associated to attunements
 	var/tmp/list/scan_results
 	var/tmp/scan_parent_turf
@@ -148,27 +148,55 @@
  * @return TRUE if scanned, FALSE otherwise
  */
 /datum/stargazer_mindnet/proc/scan(force_update)
-	scan_parent_turf = get_parent_turf()
-	var/list/mob/scanning = scan_collect_minds()
 	#warn impl
 
-/datum/stargazer_mindnet/proc/scan_collect_minds()
-	. = list()
+/datum/stargazer_mindnet/proc/scan_impl()
+	scan_parent_turf = get_parent_turf()
+	var/list/mob/scanning = scan_collect_mobs()
 	#warn impl
+
+/**
+ * * This will only get /living (path) and non-dead (status) mobs.
+ */
+/datum/stargazer_mindnet/proc/scan_collect_mobs()
+	. = list()
 	var/turf/our_turf = scan_parent_turf
 	if(scan_global)
+		for(var/mob/living/target in GLOB.mob_list)
+			if(IS_DEAD(target))
+				continue
+			. += target
 	else if(scan_overmap_range)
-		if(parent_turf)
+		if(our_turf)
+			var/obj/overmap/entity/our_entity = SSovermaps.get_enclosing_overmap_entity(our_turf)
+			if(our_entity)
+				for(var/obj/overmap/entity/entity as anything in SSspatial_grids.overmap_entities.pixel_query(our_entity, scan_overmap_range))
+					for(var/z in entity.location?.get_z_indices())
+						for(var/mob/living/target as anything in SSspatial_grids.living.z_all_atoms(level.z_index))
+							if(IS_DEAD(target))
+								continue
+							. += target
 	else if(scan_overmap_entity)
-		if(parent_turf)
+		if(our_turf)
+			var/obj/overmap/entity/our_entity = SSovermaps.get_enclosing_overmap_entity(our_turf)
+			if(our_entity)
+				for(var/z in our_entity.location?.get_z_indices())
+					for(var/mob/living/target as anything in SSspatial_grids.living.z_all_atoms(level.z_index))
+						if(IS_DEAD(target))
+							continue
+						. += target
 	else if(scan_map)
-		if(parent_turf)
-			for(var/datum/map_level/level as anything in SSmapping.ordered_levels[parent_turf.z].parent_map?.levels)
-				for(var/mob/target as anything in SSspatial_grids.living.z_all_atoms(level.z_index))
+		if(our_turf)
+			for(var/datum/map_level/level as anything in SSmapping.ordered_levels[our_turf.z].parent_map?.levels)
+				for(var/mob/living/target as anything in SSspatial_grids.living.z_all_atoms(level.z_index))
+					if(IS_DEAD(target))
+						continue
 					. += target
 	else if(scan_level_range)
-		if(parent_turf)
-			for(var/mob/target as anything in SSspatial_grids.living.range_query(our_turf, scan_level_range))
+		if(our_turf)
+			for(var/mob/livingtarget as anything in SSspatial_grids.living.range_query(our_turf, scan_level_range))
+				if(IS_DEAD(target))
+					continue
 				. += target
 
 /datum/stargazer_mindnet/proc/scan_target(datum/mind_ref/target, defer_update)
@@ -201,14 +229,15 @@
 /datum/stargazer_mindnet/proc/get_attunement_power_for_mind(datum/mind/mind)
 	var/mob/resolved_mob = mind.current
 
+	update_cached_visibility()
+
 	. = 0
 	. += attunement_power_global
 	#warn rest
 
 	var/datum/stargazer_mindnet_link/link = link_lookup[mind]
 	if(link)
-
-		. += link.attunement_power_global
+		. += link.get_attunement_power()
 
 /datum/stargazer_mindnet/proc/erase_mind_link(datum/mind/mind)
 	var/datum/mind_ref/mind_ref = mind.get_mind_ref()
@@ -272,11 +301,12 @@
 	#warn impl
 
 /datum/stargazer_mindnet/proc/emit_message_to_owner(html)
-	emit_raw_message_to_owner(html)
+	emit_raw_message_to_owner(SPAN_ALIEN("MINDNET: [html]"))
+
+/datum/stargazer_mindnet/proc/update_cached_visibility(force_update)
 	#warn impl
 
-/datum/stargazer_mindnet/proc/auto_update_cached_visibility_attunement()
-	#warn impl
+/datum/stargazer_mindnet/proc/update_cached_visibility_impl()
 
 /**
  * Default variant for Prometheans
