@@ -1,5 +1,0 @@
-author: "LetterN"
-delete-after: True
-changes:
-  - code_imp: "updated WrapAdminProcCall so it doesnt sleep (remove the waiting feature)"
-  - tweak: "you can now see how many people are orbiting something"

@@ -1,5 +1,0 @@
-author: "washikarasu"
-delete-after: True
-changes:
-  - rscdel: "grey railing sprite"
-  - tweak: "greyscaled railing sprite and added colour"

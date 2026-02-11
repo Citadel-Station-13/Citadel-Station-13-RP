@@ -1,0 +1,2 @@
+/obj/machinery/power/apc/@SUBTYPES{pixel_y = @ANY} : @OLD{@OLD;pixel_y=@SKIP;dir=@SKIP}
+/obj/machinery/power/apc/@SUBTYPES{pixel_x = @ANY} : @OLD{@OLD;pixel_x=@SKIP;dir=@SKIP}

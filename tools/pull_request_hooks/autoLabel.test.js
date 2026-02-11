@@ -57,3 +57,21 @@ const title_label_set = await get_updated_label_set({
   context: { payload: title_pr },
 });
 assert.ok(title_label_set.includes("Logging"), "Logging label should be added");
+
+const size_label_pr = {
+  action: "opened",
+  pull_request: {
+    body: "DONT REMOVE THE SIZE LABEL AAAAA",
+    title: "Pr with size labels",
+    mergeable: true,
+  },
+};
+const size_label_set = await get_updated_label_set({
+  github: null,
+  context: { payload: size_label_pr },
+  labels: ["size/XXL"],
+});
+assert.ok(
+  size_label_set.includes("size/XXL"),
+  "Size label shouldnt get deleted",
+);

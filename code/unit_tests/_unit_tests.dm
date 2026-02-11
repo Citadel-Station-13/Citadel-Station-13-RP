@@ -107,6 +107,7 @@
 #include "get_turf_pixel.dm"
 #include "initialize_sanity.dm"
 // #include "keybinding_init.dm" // this works
+#include "mapping.dm"
 #include "map_template_paths.dm"
 // #include "missing_icons.dm" // there is a lot
 // #include "pills.dm"
