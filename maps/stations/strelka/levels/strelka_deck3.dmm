@@ -522,6 +522,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/strelka/cargo/mining)
+"bU" = (
+/obj/machinery/botany/extractor,
+/obj/machinery/light/small/old,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobotany)
 "bV" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1213,7 +1218,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/main)
 "ei" = (
-/obj/structure/closet/firecloset/full,
 /obj/machinery/light/small/old{
 	dir = 4;
 	light_power = 1
@@ -2460,6 +2464,7 @@
 /obj/structure/flora/grass/event/reed_bush1{
 	pixel_x = 13
 	},
+/obj/structure/flora/grass/event/bright_flowers1,
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
 "ic" = (
@@ -8732,6 +8737,7 @@
 /area/rnd/strelka/science/main)
 "Cd" = (
 /obj/structure/event/prop/wire,
+/obj/structure/flora/grass/event/lavender_grass1,
 /turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck3)
 "Cg" = (
@@ -9369,20 +9375,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
-"DU" = (
-/obj/structure/closet/secure_closet/hydroponics{
-	name = "Xenobotanist's locker";
-	req_access = list();
-	req_one_access = list(30,35,47,77)
-	},
-/obj/item/clothing/suit/beekeeper,
-/obj/item/clothing/suit/beekeeper,
-/obj/machinery/light/small/old{
-	dir = 4;
-	light_power = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/rnd/strelka/xenobotany)
 "DV" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee,
 /turf/simulated/floor/carpet/purcarpet,
@@ -12622,6 +12614,14 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka/robotics)
+"Oc" = (
+/obj/structure/closet/firecloset/full,
+/obj/machinery/light/small/old{
+	dir = 4;
+	light_power = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rnd/strelka/xenobotany)
 "Od" = (
 /turf/simulated/wall/r_wall/prepainted,
 /area/bridge/strelka/deck3)
@@ -31352,7 +31352,7 @@ Lt
 AH
 tp
 ZS
-XG
+bU
 VA
 mF
 mF
@@ -31739,7 +31739,7 @@ Vk
 kJ
 JN
 La
-DU
+mh
 VA
 VA
 lZ
@@ -31933,7 +31933,7 @@ kJ
 kJ
 vd
 La
-VA
+Oc
 VA
 VA
 EP
@@ -32691,7 +32691,7 @@ Ao
 yI
 jf
 yf
-Nq
+jP
 vx
 TS
 tQ
@@ -35206,7 +35206,7 @@ kn
 Vm
 qc
 kK
-Nq
+vT
 Ri
 iB
 Db
@@ -37736,7 +37736,7 @@ jM
 xN
 lD
 oK
-Nq
+vT
 wj
 iN
 In
@@ -38124,7 +38124,7 @@ jM
 VY
 oK
 oK
-Nq
+jP
 pn
 WJ
 yK

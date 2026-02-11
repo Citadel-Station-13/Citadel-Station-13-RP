@@ -1340,9 +1340,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "dE" = (
@@ -1517,7 +1514,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/engineering/hallway/strelka/engineering)
 "eg" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
@@ -2051,9 +2048,6 @@
 	dir = 4
 	},
 /obj/machinery/camera/network/security{
-	dir = 4
-	},
-/obj/structure/sign/christmas/wreath{
 	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
@@ -2731,9 +2725,6 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount,
-/obj/structure/sign/christmas/lights{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "hx" = (
@@ -2822,7 +2813,6 @@
 "hL" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/item/clothing/gloves/yellow,
-/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "hM" = (
@@ -2840,7 +2830,7 @@
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/engineering/hallway/strelka/engineering)
 "hO" = (
 /obj/structure/cable/white{
@@ -2914,9 +2904,6 @@
 /obj/machinery/light/small/old{
 	dir = 1;
 	light_power = 1
-	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -3044,7 +3031,7 @@
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/engineering/hallway/strelka/engineering)
 "io" = (
 /obj/structure/cable/orange{
@@ -3105,18 +3092,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood/indoors,
-/area/engineering/hallway/strelka/engineering)
-"it" = (
-/obj/structure/flora/grass/event/purple_flowers1,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
 /area/engineering/hallway/strelka/engineering)
 "iu" = (
 /obj/effect/floor_decal/spline/plain{
@@ -3708,9 +3683,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
 	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
@@ -4462,9 +4434,6 @@
 /area/hallway/strelka/deck2)
 "mc" = (
 /obj/machinery/recharge_station,
-/obj/structure/sign/christmas/wreath{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway/strelka/engineering)
 "md" = (
@@ -4524,9 +4493,6 @@
 	light_power = 1
 	},
 /obj/structure/flora/pottedplant/hedge,
-/obj/structure/sign/christmas/wreath{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway/strelka/engineering)
 "mm" = (
@@ -4782,12 +4748,6 @@
 /obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway/strelka/engineering)
-"mT" = (
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/strelka/storage)
 "mV" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -5000,7 +4960,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/engineering/hallway/strelka/engineering)
 "nu" = (
 /obj/machinery/door/blast/regular{
@@ -5306,9 +5266,6 @@
 /obj/structure/poster/preset/nanotrasen/nt_9{
 	pixel_x = 31
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "oe" = (
@@ -5588,9 +5545,6 @@
 	pixel_x = -24;
 	pixel_y = 1
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "oC" = (
@@ -5848,13 +5802,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/hallway)
-"po" = (
-/obj/structure/table/bench/wooden,
-/obj/structure/sign/christmas/lights{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/hallway/strelka/engineering)
 "pp" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 8
@@ -6206,9 +6153,6 @@
 	dir = 4;
 	light_power = 1
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "qs" = (
@@ -6258,9 +6202,6 @@
 /obj/machinery/light/small/old{
 	dir = 8;
 	light_power = 1
-	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
@@ -7603,13 +7544,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/engineering/strelka/nacelle2)
-"tM" = (
-/obj/structure/table/wooden_reinforced,
-/obj/structure/sign/christmas/lights{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/hallway/strelka/engineering)
 "tN" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -7619,9 +7553,6 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
-	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
 	},
 /obj/item/radio/intercom/west_mount{
 	dir = 8;
@@ -7727,21 +7658,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway/strelka/engineering)
-"tZ" = (
-/obj/structure/closet/crate,
-/obj/item/circuitboard/smes,
-/obj/item/smes_coil,
-/obj/item/smes_coil,
-/obj/item/smes_coil/super_capacity,
-/obj/item/smes_coil/super_capacity,
-/obj/item/smes_coil/super_io,
-/obj/item/smes_coil/super_io,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/sign/christmas/lights{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/strelka/storage)
 "ub" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/reinforced,
@@ -8104,9 +8020,6 @@
 	dir = 4;
 	light_power = 1
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "uV" = (
@@ -8193,9 +8106,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "vf" = (
@@ -8242,9 +8152,6 @@
 "vj" = (
 /obj/machinery/requests_console/preset/engineering{
 	pixel_y = -30
-	},
-/obj/structure/sign/christmas/wreath{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
@@ -8347,9 +8254,6 @@
 /obj/machinery/computer/power_monitor{
 	dir = 8
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "vC" = (
@@ -8426,9 +8330,6 @@
 "vP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "vQ" = (
@@ -8933,7 +8834,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/engineering/hallway/strelka/engineering)
 "xb" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -9328,13 +9229,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/emt/strelka/main)
-"ye" = (
-/obj/structure/railing/grey,
-/obj/structure/sign/christmas/lights{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/strelka/storage)
 "yf" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/oxygen_pump/anesthetic{
@@ -9533,8 +9427,7 @@
 	dir = 8
 	},
 /obj/structure/window/phoronreinforced,
-/obj/structure/snowman,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/engineering/hallway/strelka/engineering)
 "yF" = (
 /obj/machinery/computer/guestpass{
@@ -10368,9 +10261,6 @@
 	dir = 8;
 	light_power = 1
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "Ar" = (
@@ -10853,9 +10743,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 4
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "Bw" = (
@@ -11245,9 +11132,6 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "Cw" = (
@@ -11405,9 +11289,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/structure/sign/christmas/wreath{
 	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
@@ -11766,7 +11647,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/engineering/hallway/strelka/engineering)
 "DJ" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -11952,7 +11833,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/event/point_bush1,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/engineering/hallway/strelka/engineering)
 "Eo" = (
 /obj/structure/cable/blue{
@@ -12527,7 +12408,6 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 30
 	},
-/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "FM" = (
@@ -12549,9 +12429,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/structure/sign/christmas/wreath{
 	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
@@ -13120,9 +12997,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 8
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "Hq" = (
@@ -13401,9 +13275,6 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/air_alarm/west_mount,
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "Ib" = (
@@ -14064,9 +13935,6 @@
 /area/bridge/strelka/ce)
 "Ke" = (
 /obj/structure/closet/secure_closet/atmos_personal,
-/obj/structure/sign/christmas/wreath{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "Kg" = (
@@ -14409,9 +14277,6 @@
 	dir = 8;
 	light_power = 1
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 4
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "Lb" = (
@@ -14677,9 +14542,6 @@
 	dir = 8;
 	light_power = 1
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "LN" = (
@@ -14805,9 +14667,6 @@
 	},
 /obj/machinery/holopad,
 /obj/landmark/spawnpoint/job/security_officer,
-/obj/structure/sign/christmas/lights{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "Mg" = (
@@ -15042,12 +14901,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/emt/strelka/main)
-"MF" = (
-/obj/structure/sign/christmas/wreath{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/strelka/storage)
 "MG" = (
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 1;
@@ -15309,9 +15162,6 @@
 /obj/landmark/spawnpoint/job/atmospheric_technician,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
-	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
@@ -17216,9 +17066,6 @@
 /obj/structure/filingcabinet{
 	pixel_x = -10
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "RJ" = (
@@ -17336,9 +17183,6 @@
 	},
 /obj/structure/cable/blue{
 	icon_state = "1-4"
-	},
-/obj/structure/sign/christmas/wreath{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -17524,9 +17368,6 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
 "Sz" = (
@@ -17553,9 +17394,6 @@
 /obj/machinery/camera/network/security,
 /obj/fiftyspawner/phoronglass,
 /obj/fiftyspawner/phoronrglass,
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
 "SB" = (
@@ -17610,9 +17448,6 @@
 /obj/item/folder/red{
 	pixel_x = 7;
 	pixel_y = 14
-	},
-/obj/structure/sign/christmas/lights{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -17860,9 +17695,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/blue{
 	icon_state = "1-2"
-	},
-/obj/structure/sign/christmas/wreath{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/reception)
@@ -18380,9 +18212,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 8
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "UN" = (
@@ -18720,19 +18549,6 @@
 /obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/board)
-"VO" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/machinery/air_alarm/west_mount,
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
-/turf/simulated/floor/wood/indoors,
-/area/engineering/hallway/strelka/engineering)
 "VP" = (
 /obj/machinery/suit_cycler/exploration,
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -19031,9 +18847,6 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/structure/sign/christmas/wreath{
-	dir = 4
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "Wu" = (
@@ -19444,14 +19257,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway/strelka/engineering)
-"Xt" = (
-/obj/machinery/shieldwallgen,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/sign/christmas/lights{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/strelka/storage)
 "Xu" = (
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /obj/machinery/light,
@@ -19584,9 +19389,6 @@
 	dir = 4;
 	light_power = 1
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/hallway/strelka/engineering)
 "XR" = (
@@ -19665,9 +19467,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 8
-	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
 "XZ" = (
@@ -19729,9 +19528,6 @@
 /obj/machinery/light/small/old{
 	dir = 1;
 	light_power = 1
-	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/strelka/storage)
@@ -19878,9 +19674,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/structure/sign/christmas/wreath{
-	dir = 4
 	},
 /turf/simulated/floor/wood/indoors,
 /area/engineering/hallway/strelka/engineering)
@@ -34544,7 +34337,7 @@ vd
 Nr
 xU
 CS
-VO
+nn
 vd
 La
 DZ
@@ -35320,8 +35113,8 @@ UI
 mc
 cV
 ml
-po
-tM
+aT
+kv
 XP
 mE
 is
@@ -35717,7 +35510,7 @@ jA
 Pp
 DI
 ef
-it
+yE
 Pp
 TJ
 TJ
@@ -36486,7 +36279,7 @@ xg
 Vp
 Vp
 ab
-MF
+Tx
 gs
 Ab
 Ab
@@ -36871,9 +36664,9 @@ vF
 Af
 YF
 qz
-mT
-mT
-mT
+Tx
+Tx
+Tx
 Tx
 Tx
 Tx
@@ -37647,9 +37440,9 @@ AZ
 Af
 yo
 uU
-Xt
-ye
-tZ
+yo
+TS
+AK
 ss
 Tx
 Ke
