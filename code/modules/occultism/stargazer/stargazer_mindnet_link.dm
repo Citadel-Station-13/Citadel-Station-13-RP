@@ -4,7 +4,7 @@
 /**
  * Encapsulates a single link between a Stargazer and another entity.
  * * This is **mind-based**, **not** mob-based. If you are reading this and go,
- *   "won't this result in some really weird situations", the answer is yes.
+ *   "won't this result in some really weird situations", the answer is yes, as that's intended.
  */
 /datum/stargazer_mindnet_link
 	/// Target mind
@@ -34,6 +34,10 @@
 	/// linear interpolated between proximity radius min/max
 	var/attunement_power_proximity_max_power = 150
 
+	var/tmp/cached_attunement_power
+	var/tmp/cached_attunement_last_update
+	var/tmp/cached_attunement_update_interval = 3 SECONDS
+
 /datum/stargazer_mindnet_link/New(datum/stargazer_mindnet/mindnet, datum/mind_ref/mind_ref)
 	src.mind_ref = mind_ref
 	src.mindnet = mindnet
@@ -41,9 +45,9 @@
 /**
  * Gets current attunement with the target.
  *
- * @return number, or null if target is no longer valid.
+ * @return TRUE if updated, FALSe otherwise
  */
-/datum/stargazer_mindnet_link/proc/check_attunement()
+/datum/stargazer_mindnet_link/proc/update_attunement(force_update)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
@@ -51,7 +55,7 @@
  * * Please keep in mind that 'resolved_mob' very much may be an observer or something, or even null.
  *   This system targets **minds**, not **mobs**, for a reason.
  */
-/datum/stargazer_mindnet_link/proc/check_attunement_impl(mob/resolved_mob)
+/datum/stargazer_mindnet_link/proc/update_attunement_impl(mob/resolved_mob)
 
 
 #warn impl

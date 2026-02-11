@@ -62,6 +62,7 @@
 	/// * Note that one mind = one mind ref; that is why this is sound behavior to use mind-ref's as keys.
 	/// * mindlinks are always scanned
 	var/list/link_lookup
+	var/link_type = /datum/stargazer_mindnet_link
 	/// abilities by id
 	/// * Usually, things like abilities are global singletons, but for now let's
 	///   not overcomplicate.
@@ -70,15 +71,16 @@
 	/// mind_ref by string name
 	/// * if null / doesn't exist, we generate a description.
 	var/list/named_presences
-	#warn generate this
 
 	/// Passive attunement always
 	/// * FOR THE LOVE OF ALL THAT IS HOLY LEAVE THIS AT ZERO
 	var/attunement_power_global = 0
 	/// passive attunement power for someone with some view of the owner's body
-	var/attunement_power_visible_min = 15
+	var/attunement_power_see_owner_min = 15
 	/// passive attunement power for someone with full view of the owner's body
-	var/attunement_power_visible_max = 25
+	var/attunement_power_see_owner_max = 25
+	var/attunement_power_see_target_min = 0
+	var/attunement_power_see_target_max = 0
 
 	/// passive attunement power gained by contact
 	var/attunement_power_for_pull = 15
@@ -106,9 +108,12 @@
 	var/scan_level_range = 14
 	var/scan_last
 	var/scan_interval = 3 SECONDS
+	/// list of mind_ref's associated to attunements
+	var/tmp/list/scan_results
+	var/tmp/scan_parent_turf
 
 	/// attunement required to sense someone's nearby
-	/// * this applies to mindlinks
+	/// * this applies to mindlinks as well; mindlinks are in 'unknown' state if this isn't met
 	var/minimum_attunement_for_presence = 15
 
 	/// overmap pixel distance for 'same overmap'
@@ -120,16 +125,73 @@
 	var/list/datum/stargazer_mindnet_exec/executing
 
 	/// cached visibility attunements
-	/// * mind_ref to number
-	/// * both our body coverage as well as their visibility will be scanned.
-	var/list/cached_visibility_attunements
-	var/cached_visibility_last_update
-	var/cached_visibility_update_interval = 3 SECONDS
+	/// * mind_ref to ratio from 0 to 1
+	/// * 0 = owner cannot see them but they can see owner, 1 = owner can see them very well
+	var/tmp/list/cached_visibility
+	/// ratio owner is considered seen
+	/// * 0 to 1
+	var/tmp/cached_visibility_owner_ratio
+	var/tmp/cached_visibility_last_update
+	var/tmp/cached_visibility_update_interval = 3 SECONDS
 
 #warn impl
 
 /datum/stargazer_mindnet/proc/add_ability_path(path)
 	#warn impl
+
+/**
+ * Rescan for nearby mobs.
+ *
+ * @params
+ * * force_update - ignore delay. Very dangerous.
+ *
+ * @return TRUE if scanned, FALSE otherwise
+ */
+/datum/stargazer_mindnet/proc/scan(force_update)
+	scan_parent_turf = get_parent_turf()
+	var/list/mob/scanning = scan_collect_minds()
+	#warn impl
+
+/datum/stargazer_mindnet/proc/scan_collect_minds()
+	. = list()
+	#warn impl
+	var/turf/our_turf = scan_parent_turf
+	if(scan_global)
+	else if(scan_overmap_range)
+		if(parent_turf)
+	else if(scan_overmap_entity)
+		if(parent_turf)
+	else if(scan_map)
+		if(parent_turf)
+			for(var/datum/map_level/level as anything in SSmapping.ordered_levels[parent_turf.z].parent_map?.levels)
+				for(var/mob/target as anything in SSspatial_grids.living.z_all_atoms(level.z_index))
+					. += target
+	else if(scan_level_range)
+		if(parent_turf)
+			for(var/mob/target as anything in SSspatial_grids.living.range_query(our_turf, scan_level_range))
+				. += target
+
+/datum/stargazer_mindnet/proc/scan_target(datum/mind_ref/target, defer_update)
+	#warn impl
+
+/datum/stargazer_mindnet/proc/scan_remove_target(datum/mind_ref/target, defer_update)
+	#warn impl
+
+/datum/stargazer_mindnet/proc/scan_remove_all(defer_update)
+	#warn impl
+
+/datum/stargazer_mindnet/proc/push_scan_results()
+	#warn impl
+
+/datum/stargazer_mindnet/proc/push_scan_target_add(datum/mind_ref/target)
+	#warn impl
+
+/datum/stargazer_mindnet/proc/push_scan_target_update(datum/mind_ref/target)
+	#warn impl
+
+/datum/stargazer_mindnet/proc/push_scan_target_remove(datum/mind_ref/target)
+	#warn impl
+
 
 /datum/stargazer_mindnet/proc/get_attunement_power_for_entity(mob/target)
 	if(!istype(target))
@@ -163,7 +225,7 @@
 	var/datum/mind_ref/mind_ref = mind.get_mind_ref()
 	if(link_lookup[mind_ref])
 		return link_lookup[mind_ref]
-	link_lookup[mind_ref] = new /datum/stargazer_mindnet_link(src, mind_ref)
+	link_lookup[mind_ref] = new link_type(src, mind_ref)
 	update_static_data()
 	return link_lookup[mind_ref]
 
@@ -195,6 +257,7 @@
 
 /datum/stargazer_mindnet/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	#warn impl
 
 /datum/stargazer_mindnet/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -203,6 +266,7 @@
 		var/datum/stargazer_mindnet_ability/ability = ability_lookup[id]
 		serialized_abilities[id] = ability.ui_mindnet_ability_data()
 	.["abilities"] = serialized_abilities
+	#warn impl
 
 /datum/stargazer_mindnet/proc/emit_raw_message_to_owner(html)
 	#warn impl
