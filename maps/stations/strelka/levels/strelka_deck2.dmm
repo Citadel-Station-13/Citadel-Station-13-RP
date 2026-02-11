@@ -467,7 +467,7 @@
 /area/engineering/atmos/strelka/engineering/atmos)
 "bn" = (
 /obj/machinery/fire_alarm/east_mount,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
 "bq" = (
 /obj/machinery/computer/ship/navigation/telescreen{
@@ -2774,14 +2774,6 @@
 "hC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-4";
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-4";
-	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -6547,9 +6539,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/machinery/drone_fabricator/matriarch,
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
@@ -7289,7 +7278,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
 "sY" = (
 /obj/structure/window/phoronreinforced,
@@ -10800,7 +10789,7 @@
 	name = "Powernet Sensor - Engineering";
 	name_tag = "Deck2 - Engineering"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
 "Bm" = (
 /obj/structure/cable{
@@ -18344,9 +18333,14 @@
 /area/engineering/strelka/atmos/storage)
 "UF" = (
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "1-4";
+	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/cable{
+	icon_state = "1-4";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
 "UG" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -18897,17 +18891,17 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/engineering/strelka/gas)
 "Wg" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Solar Farm"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/cable{
 	icon_state = "0-10"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Solar Farm"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
 /area/maintenance/strelka/eva)
 "Wh" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -19794,6 +19788,12 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/explo)
+"Yn" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/strelka/eva)
 "Yo" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -33173,7 +33173,7 @@ Wf
 Oi
 xL
 Mo
-rG
+Mo
 Bl
 rG
 WM
@@ -33368,7 +33368,7 @@ ps
 px
 aU
 Wg
-rG
+Yn
 wl
 WM
 DT
@@ -33562,7 +33562,7 @@ tb
 Ki
 DB
 rk
-rG
+yR
 gQ
 WM
 ts
@@ -33755,8 +33755,8 @@ Wf
 eX
 hs
 Mo
+Mo
 yR
-rG
 th
 WM
 fY

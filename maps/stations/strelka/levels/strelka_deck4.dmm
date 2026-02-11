@@ -1191,8 +1191,8 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/fernybush,
-/obj/structure/flora/tree/fey/small_tree/tree3{
-	pixel_x = -31
+/obj/structure/flora/tree/fey/small_tree/tree1{
+	icon_state = "tree_cherry"
 	},
 /turf/simulated/floor/fey/forest_grass,
 /area/hydroponics/strelka/hallway/botany)
@@ -4823,7 +4823,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "rB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5959,7 +5959,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "vI" = (
 /obj/structure/flora/ausbushes/leafybush,
@@ -6333,7 +6333,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "xb" = (
 /obj/structure/grille,
@@ -9806,7 +9806,7 @@
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "JJ" = (
 /obj/machinery/power/smes/buildable{
@@ -10516,8 +10516,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/obj/structure/snowman/borg,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "Mp" = (
 /obj/machinery/light{
@@ -11663,7 +11662,7 @@
 	},
 /obj/structure/flora/grass/event/purple_flowers1,
 /obj/structure/flora/grass/event/reed_bush1,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "QC" = (
 /obj/structure/table/hardwoodtable,
@@ -11864,7 +11863,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/event/ferny_bush1,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "Rp" = (
 /obj/landmark/spawnpoint/job/chef,
@@ -12019,7 +12018,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "RR" = (
 /obj/machinery/atmospheric_field_generator/perma,
@@ -12173,7 +12172,7 @@
 	dir = 4
 	},
 /obj/structure/flora/grass/event/leafy_bush2,
-/turf/simulated/floor/outdoors/snow/noblend/indoors/strelka,
+/turf/simulated/floor/fey/forest_grass,
 /area/hallway/strelka/deck4)
 "SB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
