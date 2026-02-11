@@ -1,4 +1,0 @@
-author: "iliyaxox"
-delete-after: True
-changes:
-  - bugfix: "Fixed bone hook's icon not being set properly"

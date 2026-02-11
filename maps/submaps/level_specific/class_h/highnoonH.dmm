@@ -199,16 +199,8 @@
 /obj/random/medical/pillbottle,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
-"GF" = (
-/obj/machinery/light/small,
-/turf/simulated/floor/wood,
-/area/class_h/POIs/WW_Town)
 "GS" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/class_h/POIs/WW_Town)
-"IV" = (
-/mob/living/simple_mob/animal/giant_spider,
-/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "KK" = (
 /obj/structure/bed/chair/wood{
@@ -233,9 +225,6 @@
 /obj/structure/closet/wardrobe/red,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
-"PE" = (
-/turf/simulated/floor/wood,
-/area/class_h/POIs/WW_Town)
 "PP" = (
 /obj/structure/table/woodentable,
 /obj/random/firstaid,
@@ -249,10 +238,6 @@
 "QP" = (
 /mob/living/simple_mob/animal/giant_spider/webslinger,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/class_h/POIs/WW_Town)
-"Rw" = (
-/obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "RG" = (
 /obj/random/multiple/corp_crate/no_weapons,
@@ -275,10 +260,6 @@
 "SU" = (
 /obj/structure/table/rack/shelf,
 /obj/item/ammo_magazine/a7_62mm/clip/ap,
-/turf/simulated/floor/wood,
-/area/class_h/POIs/WW_Town)
-"SX" = (
-/obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
 /area/class_h/POIs/WW_Town)
 "Tk" = (
@@ -346,7 +327,7 @@ Xx
 Xx
 Xx
 ou
-PE
+Bf
 RG
 Ao
 ou
@@ -356,8 +337,8 @@ GS
 GS
 ou
 oU
-IV
-SX
+ai
+PR
 Xx
 QP
 Xx
@@ -379,8 +360,8 @@ GS
 GS
 Xx
 Xx
-SX
-PE
+PR
+Bf
 Ab
 RG
 ou
@@ -399,7 +380,7 @@ Xx
 ou
 ou
 ou
-PE
+Bf
 ou
 GS
 "}
@@ -425,23 +406,23 @@ GS
 ou
 oU
 qh
-PE
-SX
+Bf
+PR
 Xx
 Xx
 Xx
 bT
 ou
 SP
-PE
+Bf
 ou
 GS
 "}
 (9,1,1) = {"
 GS
 ou
-PE
-PE
+Bf
+Bf
 dv
 ou
 GS
@@ -450,14 +431,14 @@ Xx
 Xx
 ou
 ou
-SX
+PR
 ou
 GS
 "}
 (10,1,1) = {"
 GS
 ou
-PE
+Bf
 qh
 qh
 ou
@@ -467,14 +448,14 @@ Xx
 Xx
 ou
 qh
-IV
+ai
 ou
 GS
 "}
 (11,1,1) = {"
 GS
 ou
-PE
+Bf
 wL
 yT
 ou
@@ -484,15 +465,15 @@ Xx
 oL
 ou
 wL
-PE
+Bf
 ou
 GS
 "}
 (12,1,1) = {"
 GS
-SX
-PE
-PE
+PR
+Bf
+Bf
 nG
 ou
 GS
@@ -500,7 +481,7 @@ Xx
 Xx
 Xx
 PR
-PE
+Bf
 nG
 ou
 GS
@@ -544,8 +525,8 @@ GS
 ou
 GA
 KK
-PE
-SX
+Bf
+PR
 Xx
 Xx
 GS
@@ -560,8 +541,8 @@ GS
 GS
 ou
 PP
-PE
-PE
+Bf
+Bf
 ou
 GS
 Xx
@@ -569,7 +550,7 @@ Xx
 PR
 Bf
 hP
-GF
+nG
 ou
 GS
 "}
@@ -578,7 +559,7 @@ GS
 ou
 oU
 tN
-PE
+Bf
 ou
 oL
 Xx
@@ -680,7 +661,7 @@ GS
 ou
 NK
 TN
-Rw
+yT
 ou
 GS
 Xx

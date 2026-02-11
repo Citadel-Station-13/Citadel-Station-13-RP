@@ -1,9 +1,7 @@
-//TODO: rewrite and standardise all controller datums to the datum/controller type
-//TODO: allow all controllers to be deleted for clean restarts (see WIP master controller stuff) - MC done - lighting done
-
 // Clickable stat() button.
 /obj/effect/statclick
 	name = "Initializing..."
+	blocks_emissive = EMISSIVE_BLOCK_NONE
 	icon = null
 	var/target
 
@@ -13,16 +11,20 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	. = ..()
 	name = text
 	src.target = target
+	if(isdatum(target)) //Harddel man bad
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 
 /obj/effect/statclick/Destroy()
 	target = null
 	return ..()
 
+/obj/effect/statclick/proc/cleanup()
+	SIGNAL_HANDLER
+	qdel(src)
+
 /obj/effect/statclick/proc/update(text)
-	if(name == text)
-		return src	// let's ont change for no reason shall we
 	name = text
-	return name
+	return src
 
 /obj/effect/statclick/statpanel_click(client/C, action)
 	Click()

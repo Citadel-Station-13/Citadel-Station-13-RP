@@ -245,8 +245,18 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	WRITE_LOG(GLOB.config_error_log, text)
 	SEND_TEXT(world.log, text)
 
-/proc/log_mapping(text)
+/// Logging for mapping errors
+/proc/log_mapping(text, skip_world_log)
+#ifdef UNIT_TESTS
+	GLOB.unit_test_mapping_logs += text
+#endif
+#ifdef MAP_TEST
+	message_admins("Mapping: [text]")
+#endif
 	WRITE_LOG(GLOB.world_map_error_log, text)
+	if(skip_world_log)
+		return
+	SEND_TEXT(world.log, text)
 
 /**
  * For logging round startup.
