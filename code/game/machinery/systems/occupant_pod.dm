@@ -299,9 +299,8 @@
 			)
 		return FALSE
 
-	log_game("[key_name(entity)] ejected from occupant pod of [parent] ([REF(parent)]) by [actor ? actor.actor_log_string() : "-no actor-"]")
-
 	var/mob/living/ejecting = occupant
+	log_game("[key_name(ejecting)] ejected from occupant pod of [parent] ([REF(parent)]) by [actor ? actor.actor_log_string() : "-no actor-"]")
 	occupant = null
 	// TODO: contents holder separate from parent maybe?
 	if(ejecting.loc == parent)
