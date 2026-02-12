@@ -60,7 +60,7 @@
 	if(!actor.check_performer_reachability(parent))
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("You can't reach [src]!"),
+				SPAN_WARNING("You can't reach [parent]!"),
 				target = parent,
 			)
 		return FALSE
@@ -76,10 +76,10 @@
 /datum/machinery_system/occupant_pod/proc/occupant_common_checks(atom/movable/inserting, datum/event_args/actor/actor, silent, suppressed)
 	var/is_self = inserting == actor.performer
 	if(!is_self)
-		if(!actor.check_performer_reachability(parent))
+		if(!actor.check_performer_reachability(inserting))
 			if(!silent)
 				actor.chat_feedback(
-					SPAN_WARNING("You need to be able to reach [inserting] to shove them into [src]."),
+					SPAN_WARNING("You need to be able to reach [inserting] to shove them into [parent]."),
 					target = inserting,
 				)
 			return FALSE
@@ -109,7 +109,7 @@
 	if(!fits_occupant(inserting))
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_WARNING("[is_self ? "[inserting]" : ""] does not fit in [src]."),
+				SPAN_WARNING("[is_self ? "[inserting]" : ""] does not fit in [parent]."),
 				target = parent,
  			)
 		return FALSE
@@ -261,6 +261,8 @@
 			)
 		return FALSE
 
+	log_game("[key_name(entity)] entered occupant pod of [parent] ([REF(parent)]) by [actor ? actor.actor_log_string() : "-no actor-"]")
+
 	// TODO: contents holder separate from parent maybe?
 	entity.forceMove(parent)
 	occupant = entity
@@ -296,6 +298,8 @@
 				target = parent,
 			)
 		return FALSE
+
+	log_game("[key_name(entity)] ejected from occupant pod of [parent] ([REF(parent)]) by [actor ? actor.actor_log_string() : "-no actor-"]")
 
 	var/mob/living/ejecting = occupant
 	occupant = null

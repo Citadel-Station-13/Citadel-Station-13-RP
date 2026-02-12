@@ -407,6 +407,7 @@
 	REMOVE_TRAIT(currently_growing_body, TRAIT_MOB_UNCONSCIOUS, TRAIT_SOURCE_MACHINE_BODY_GROWER)
 	REMOVE_TRAIT(currently_growing_body, TRAIT_MECHANICAL_CIRCULATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
 	REMOVE_TRAIT(currently_growing_body, TRAIT_MECHANICAL_VENTILATION, TRAIT_SOURCE_MACHINE_BODY_GROWER)
+	currently_growing_body.update_stat()
 
 	if(!do_not_move)
 		currently_growing_body.forceMove(drop_location())
@@ -463,15 +464,14 @@
 
 	if(should_recalc_progress)
 		var/elapsed = world.time - progress_recalc_last_time
-		handle_progress_recalc()
-		if(!currently_growing)
-			// handle progress recalc kicks them out
-			return
-
 		// we only grow body on progress recalc for now
 		// in the future we can have this be every tick if needed
 		if(elapsed > 0)
 			grow_body(elapsed * 0.1)
+		handle_progress_recalc()
+		if(!currently_growing)
+			// handle progress recalc kicks them out
+			return
 
 // TODO: emag behavior?
 

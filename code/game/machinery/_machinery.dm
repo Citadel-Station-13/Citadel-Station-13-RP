@@ -352,7 +352,7 @@
 	. = ..()
 	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
 		return
-	if(machine_occupant_pod && ismob(dropping))
+	if(machine_occupant_pod && ismob(dropping) && user.Reachability(src))
 		if((dropping != user) && machine_occupant_pod.insert_via_dragdrop)
 			machine_occupant_pod.user_insert_dragdrop(dropping, new /datum/event_args/actor(user))
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

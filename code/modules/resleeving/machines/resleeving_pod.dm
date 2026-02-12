@@ -188,6 +188,9 @@
 	if(!perform_backup_insertion_impl(target, using_backup))
 		STACK_TRACE("Failed to perform backup insertion after mind insertion call.")
 
+	// unclear the down bad flag
+	mirror.died_from_vore = FALSE
+
 	var/obj/item/organ/internal/mirror/old_mirror = casted_human.resleeving_remove_mirror(src)
 	casted_human.resleeving_insert_mirror(mirror)
 	if(old_mirror)
@@ -212,9 +215,6 @@
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 75, TRUE)
 	send_audible_system_message("Inserting mirror and initiating neural re-imaging...")
 
-	// unclear the down bad flag
-	mirror.died_from_vore = FALSE
-
 /obj/machinery/resleeving/resleeving_pod/proc/perform_backup_insertion_impl(mob/living/target, datum/resleeving_mind_backup/backup)
 	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
 	if(!ishuman(target))
@@ -232,6 +232,7 @@
 	log_game("Resleeving pod at [COORD(src)] called by [key_name(usr)] (or unmanned if no key) inserted mind [mind.name] into [key_name(target)] ([REF(target)]).")
 	mind.active = TRUE
 	mind.transfer(target)
+	. = TRUE
 
 	// - LEGACY - //
 
