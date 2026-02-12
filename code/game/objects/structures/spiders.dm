@@ -5,8 +5,6 @@
 	icon = 'icons/effects/effects.dmi'
 	anchored = TRUE
 	density = FALSE
-	integrity_enabled = TRUE
-	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 	integrity = 15
 	integrity_max = 15
 	armor_type = /datum/armor/none

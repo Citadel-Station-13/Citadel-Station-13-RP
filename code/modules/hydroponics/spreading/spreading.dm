@@ -33,8 +33,6 @@
 	opacity = 0
 	density = 0
 	color = DEAD_PLANT_COLOUR
-	integrity_enabled = TRUE
-	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 
 /obj/structure/dead_plant/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	qdel(src)
@@ -54,9 +52,7 @@
 	icon = 'icons/obj/hydroponics_growing.dmi'
 	icon_state = "bush4-1"
 	pass_flags = ATOM_PASS_TABLE
-	mouse_opacity = 2
-	integrity_enabled = TRUE
-	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 
 	integrity = 15
 	integrity_max = 110
@@ -87,7 +83,7 @@
 /obj/structure/plant/single
 	spread_chance = 0
 
-/obj/structure/plant/Initialize(mapload, datum/seed/newseed, obj/effect/plant/newparent)
+/obj/structure/plant/Initialize(mapload, datum/seed/newseed, obj/structure/plant/newparent)
 	. = ..()
 	if(!newparent)
 		parent = src
@@ -266,7 +262,7 @@
 	return ..()
 
 //handles being overrun by vines - note that attacker_parent may be null in some cases
-/obj/structure/plant/proc/vine_overrun(datum/seed/attacker_seed, obj/effect/plant/attacker_parent)
+/obj/structure/plant/proc/vine_overrun(datum/seed/attacker_seed, obj/structure/plant/attacker_parent)
 	var/aggression = 0
 	aggression += (attacker_seed.get_trait(TRAIT_CARNIVOROUS) - seed.get_trait(TRAIT_CARNIVOROUS))
 	aggression += (attacker_seed.get_trait(TRAIT_SPREAD) - seed.get_trait(TRAIT_SPREAD))
