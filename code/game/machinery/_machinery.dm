@@ -374,7 +374,7 @@
 		return FALSE
 
 	if((interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SIGHT) && user.is_blind())
-		to_chat(user, span_warning("This machine requires sight to use."))
+		to_chat(user, SPAN_WARNING("This machine requires sight to use."))
 		return FALSE
 
 	// machines have their own lit up display screens and LED buttons so we don't need to check for light
