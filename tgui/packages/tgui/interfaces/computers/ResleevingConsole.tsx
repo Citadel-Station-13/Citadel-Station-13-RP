@@ -3,26 +3,25 @@
  * @license MIT
  */
 
-import { BooleanLike } from 'tgui-core/react';
-import {
-  ResleevingBodyRecordData,
-  ResleevingMirror,
-  ResleevingMirrorData,
-} from '../common/Resleeving';
-import { Window } from '../../layouts';
-import { useBackend } from '../../backend';
+import { useState } from 'react';
 import {
   Box,
   Button,
-  Dimmer,
   LabeledList,
   NoticeBox,
   Section,
   Stack,
 } from 'tgui-core/components';
-import { useState } from 'react';
-import { recallWindowGeometry } from '../../drag';
 import { round } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../../backend';
+import { Window } from '../../layouts';
+import {
+  ResleevingBodyRecordData,
+  ResleevingMirror,
+  ResleevingMirrorData,
+} from '../common/Resleeving';
 
 interface ResleevingDiskData {
   valid: BooleanLike;
@@ -98,7 +97,7 @@ export const ResleevingConsole = (props) => {
                   {data.insertedMirror ? (
                     <ResleevingMirror
                       data={data.insertedMirror}
-                    ></ResleevingMirror>
+                     />
                   ) : (
                     <NoticeBox>No mirror inserted</NoticeBox>
                   )}
@@ -234,7 +233,7 @@ export const ResleevingConsole = (props) => {
                                         })
                                       }
                                       icon="trash"
-                                    ></Button.Confirm>
+                                     />
                                   </Stack.Item>
                                 </Stack>
                               </Stack.Item>
@@ -269,7 +268,7 @@ export const ResleevingConsole = (props) => {
                                 >
                                   {printer.busy
                                     ? 'Busy'
-                                    : !!cannotPrintBecause
+                                    : cannotPrintBecause
                                       ? cannotPrintBecause
                                       : 'Print'}
                                 </Button.Confirm>
@@ -302,7 +301,7 @@ export const ResleevingConsole = (props) => {
                                         act('unlink', { unlinkRef: pod.ref })
                                       }
                                       icon="trash"
-                                    ></Button.Confirm>
+                                     />
                                   </Stack.Item>
                                 </Stack>
                               </Stack.Item>
@@ -311,7 +310,7 @@ export const ResleevingConsole = (props) => {
                                 {pod.mirror ? (
                                   <ResleevingMirror
                                     data={pod.mirror}
-                                  ></ResleevingMirror>
+                                   />
                                 ) : (
                                   <NoticeBox>No inserted mirror</NoticeBox>
                                 )}

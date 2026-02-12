@@ -3,10 +3,11 @@
  * @license MIT
  */
 
-import { ResleevingMirror, ResleevingMirrorData } from '../common/Resleeving';
-import { Window } from '../../layouts';
 import { Button, Dimmer, NoticeBox, Section } from 'tgui-core/components';
+
 import { useBackend } from '../../backend';
+import { Window } from '../../layouts';
+import { ResleevingMirror, ResleevingMirrorData } from '../common/Resleeving';
 
 interface MirrortoolContext {
   mirror: ResleevingMirrorData;
@@ -28,7 +29,7 @@ export const Mirrortool = (props) => {
           }
         >
           {data.mirror ? (
-            <ResleevingMirror data={data.mirror}></ResleevingMirror>
+            <ResleevingMirror data={data.mirror} />
           ) : (
             <Dimmer>
               <NoticeBox>Mirror slot empty</NoticeBox>

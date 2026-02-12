@@ -79,11 +79,9 @@ export const ResleevingMirror = (props: { data: ResleevingMirrorData }) => {
           </>
         )}
         {props.data.mindRecord && (
-          <>
-            <LabeledList.Item label="Name">
+          <LabeledList.Item label="Name">
               {props.data.mindRecord.recordedName}
-            </LabeledList.Item>
-          </>
+          </LabeledList.Item>
         )}
       </LabeledList>
     </Box>
