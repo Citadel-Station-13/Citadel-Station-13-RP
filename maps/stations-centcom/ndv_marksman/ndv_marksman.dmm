@@ -9882,12 +9882,6 @@
 /area/centcom/bathroom)
 "Ah" = (
 /obj/structure/table/glass,
-/obj/item/backup_implanter{
-	pixel_y = -8
-	},
-/obj/item/backup_implanter{
-	pixel_y = 8
-	},
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},

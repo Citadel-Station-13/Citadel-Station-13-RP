@@ -420,18 +420,6 @@
 /area/tether_away/beach/resort)
 "eW" = (
 /obj/structure/table/glass,
-/obj/item/backup_implanter{
-	pixel_y = 9
-	},
-/obj/item/backup_implanter{
-	pixel_y = 2
-	},
-/obj/item/backup_implanter{
-	pixel_y = -5
-	},
-/obj/item/backup_implanter{
-	pixel_y = -12
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},

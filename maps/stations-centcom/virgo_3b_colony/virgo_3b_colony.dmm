@@ -4516,12 +4516,6 @@
 /area/holodeck/holodorm/source_space)
 "JX" = (
 /obj/structure/table/glass,
-/obj/item/backup_implanter{
-	pixel_y = -8
-	},
-/obj/item/backup_implanter{
-	pixel_y = 8
-	},
 /obj/machinery/light{
 	dir = 8
 	},
