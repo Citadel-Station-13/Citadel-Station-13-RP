@@ -5069,7 +5069,6 @@
 /obj/item/backup_implanter{
 	pixel_y = 8
 	},
-/obj/item/backup_implanter,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -6130,7 +6129,7 @@
 /area/centcom/simulated/medical)
 "sn" = (
 /obj/structure/table/steel,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/camera{
 	name = "Autopsy Camera";
 	pixel_x = -2;

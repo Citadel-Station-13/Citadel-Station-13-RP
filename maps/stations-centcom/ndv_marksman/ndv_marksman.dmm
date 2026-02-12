@@ -317,7 +317,6 @@
 	},
 /obj/machinery/computer/resleeving,
 /obj/item/book/manual/resleeving,
-/obj/item/storage/box/backup_kit,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "aZ" = (
@@ -9889,7 +9888,6 @@
 /obj/item/backup_implanter{
 	pixel_y = 8
 	},
-/obj/item/backup_implanter,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},

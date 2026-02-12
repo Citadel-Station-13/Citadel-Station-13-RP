@@ -22686,7 +22686,6 @@
 /area/medical/medbay4)
 "pUT" = (
 /obj/structure/closet/secure_closet/CMO,
-/obj/item/cmo_disk_holder,
 /obj/item/flashlight/pen,
 /obj/item/storage/belt/medical,
 /obj/item/clothing/glasses/hud/health,

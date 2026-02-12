@@ -1531,7 +1531,7 @@
 /area/tether/surfacebase/security/detective/officeb)
 "bgP" = (
 /obj/structure/table/steel,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/camera{
 	name = "Autopsy Camera";
 	pixel_x = -2;
@@ -13124,7 +13124,6 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/defib_kit/compact/combat/loaded,
-/obj/item/cmo_disk_holder,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},

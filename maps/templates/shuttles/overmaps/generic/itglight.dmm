@@ -6210,7 +6210,7 @@
 /obj/item/clothing/accessory/collar/lifecrystal,
 /obj/item/clothing/accessory/collar/lifecrystal,
 /obj/item/clothing/accessory/collar/lifecrystal,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "Rb" = (
@@ -6714,7 +6714,7 @@
 /area/itglight/portengi)
 "UY" = (
 /obj/structure/table/glass,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/book/manual/resleeving,
 /obj/item/clothing/accessory/collar/lifecrystal,
 /obj/item/clothing/accessory/collar/lifecrystal,

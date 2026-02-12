@@ -12222,7 +12222,6 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/item/storage/belt/medical,
 /obj/item/flashlight/pen,
-/obj/item/cmo_disk_holder,
 /obj/structure/window/reinforced{
 	dir = 8
 	},

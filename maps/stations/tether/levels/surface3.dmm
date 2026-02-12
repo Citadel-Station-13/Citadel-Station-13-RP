@@ -12524,7 +12524,7 @@
 	info = "Bodies designed on the design console must be saved to a disk, provided on the front desk counter, then placed into the resleeving console for printing.";
 	name = "Body Designer Note"
 	},
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -22310,7 +22310,7 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/storage/box/nifsofts_medical{
 	pixel_x = 7;
 	pixel_y = 7
