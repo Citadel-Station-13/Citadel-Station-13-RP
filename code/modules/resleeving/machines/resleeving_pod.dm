@@ -42,10 +42,12 @@
 /obj/machinery/resleeving/resleeving_pod/machinery_occupant_pod_exited(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
 	..()
 	update_icon()
+	set_density(FALSE)
 
 /obj/machinery/resleeving/resleeving_pod/machinery_occupant_pod_entered(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent)
 	..()
 	update_icon()
+	set_density(TRUE)
 
 /obj/machinery/resleeving/resleeving_pod/update_icon(updates)
 	. = ..()
@@ -155,6 +157,7 @@
 /obj/machinery/resleeving/resleeving_pod/proc/perform_resleeve(mob/living/target, obj/item/organ/internal/mirror/mirror)
 	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
 	if(!ishuman(target))
+		send_audible_system_message("Target must be human.")
 		return FALSE
 	var/mob/living/carbon/human/casted_human = target
 	if(!mirror?.recorded_mind?.mind_ref)
@@ -167,12 +170,19 @@
 	var/datum/resleeving_mind_backup/using_backup = mirror.recorded_mind
 	var/datum/mind/using_mind = using_backup.mind_ref?.resolve()
 	if(!using_mind)
+		send_audible_system_message("Mental interface failure.")
+		return FALSE
+	if(!IS_DEAD(using_mind.current))
+		// ah, the duplicate-mind problem.
+		send_audible_system_message("Failed to initiate mind transference.")
 		return FALSE
 	// do not allow impersonation
 	if(target.resleeving_check_mind_belongs(using_mind))
+		send_audible_system_message("Stored consciousness does not match recipient's neural patterns.")
 		return FALSE
 	// -- POINT OF NO RETURN AFTER THIS CALL --
 	if(!perform_mind_insertion_impl(target, using_mind))
+		send_audible_system_message("Failed to initiate mind transference.")
 		return FALSE
 	if(!perform_backup_insertion_impl(target, using_backup))
 		STACK_TRACE("Failed to perform backup insertion after mind insertion call.")

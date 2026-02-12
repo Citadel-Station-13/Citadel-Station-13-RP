@@ -328,13 +328,9 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	set_density(FALSE)
-
 /obj/machinery/proc/machinery_occupant_pod_closed(datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
-
-	set_density(TRUE)
 
 /obj/machinery/proc/machinery_occupant_pod_entered(atom/movable/entity, datum/machinery_system/occupant_pod/pod, datum/event_args/actor/actor, silent, suppressed)
 	SHOULD_CALL_PARENT(TRUE)
@@ -373,6 +369,7 @@
 	pod.eject_via_context = TRUE
 	pod.eject_via_resist = TRUE
 	pod.eject_via_move = TRUE
+	pod.eject_via_click = TRUE
 	return pod
 
 /obj/machinery/proc/init_occupant_pod_default_openable(start_opened) as /datum/machinery_system/occupant_pod
@@ -380,5 +377,4 @@
 	pod.door_via_click = TRUE
 	pod.door_via_context = TRUE
 	pod.open_state = start_opened
-	set_density(!start_opened)
 	return pod
