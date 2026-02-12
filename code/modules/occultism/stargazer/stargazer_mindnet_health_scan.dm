@@ -15,6 +15,10 @@
 	/// (nullable) are they considered conscious?
 	var/considered_conscious
 
+/datum/stargazer_mindnet_health_scan
 
+/datum/stargazer_mindnet_health_scan
+
+/datum/stargazer_mindnet_health_scan
 
 #warn impl

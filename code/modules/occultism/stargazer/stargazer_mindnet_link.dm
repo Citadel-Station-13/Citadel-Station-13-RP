@@ -60,6 +60,15 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	if(cached_attunement_last_update > world.time - cached_attunement_update_interval)
+		return FALSE
+	var/mob/resolved = mind_ref.resolve()?.current
+	if(!resolved)
+		return FALSE
+	cached_attunement_last_update = world.time
+	update_attunement_impl(resolved)
+	return TRUE
+
 /**
  * * Please keep in mind that 'resolved_mob' very much may be an observer or something, or even null.
  *   This system targets **minds**, not **mobs**, for a reason.

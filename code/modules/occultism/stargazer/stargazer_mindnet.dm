@@ -148,7 +148,12 @@
  * @return TRUE if scanned, FALSE otherwise
  */
 /datum/stargazer_mindnet/proc/scan(force_update)
-	#warn impl
+	if(scan_last > world.time - scan_throttle)
+		return FALSE
+	scan_last = world.time
+	scan_impl()
+	push_scan_results()
+	return TRUE
 
 /datum/stargazer_mindnet/proc/scan_impl()
 	scan_parent_turf = get_parent_turf()
@@ -194,7 +199,7 @@
 					. += target
 	else if(scan_level_range)
 		if(our_turf)
-			for(var/mob/livingtarget as anything in SSspatial_grids.living.range_query(our_turf, scan_level_range))
+			for(var/mob/living/target as anything in SSspatial_grids.living.range_query(our_turf, scan_level_range))
 				if(IS_DEAD(target))
 					continue
 				. += target
@@ -266,6 +271,9 @@
 
 /datum/stargazer_mindnet/proc/has_ongoing_exec(dedupe_key)
 	return executing?[dedupe_key]
+
+/datum/stargazer_mindnet/proc/get_mind_presence_name(datum/mind/target)
+	#warn impl
 
 /datum/stargazer_mindnet/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -94,5 +94,7 @@
 
 /datum/stargazer_mindnet_exec/proc/cleanup()
 
+/datum/stargazer_mindnet_exec/proc/get_target_name()
+	return target_mind ? mindnet.get_mind_presence_name(target_mind) : null
 
 #warn impl
