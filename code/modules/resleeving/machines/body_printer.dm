@@ -302,116 +302,19 @@
 		CRASH("expected human, got [created_human.type]")
 	. = created_human
 
-	// copy ooc notes / flavor text manually
-	created_human.ooc_notes = backup.legacy_ooc_notes || ""
-	created_human.flavor_texts = backup.legacy_dna?.flavor?.Copy() || list()
-	// other legacy properties
-	created_human.resize(backup.legacy_sizemult)
-	created_human.weight = backup.legacy_weight
-	if(backup.legacy_custom_species_name)
-		created_human.custom_species = backup.legacy_custom_species_name
-	// sleevelock them
-	created_human.resleeving_place_mind_lock(backup.mind_ref)
-
-	// full rebuild icons and whatnot
-	// arguably all this shouldn't be needed but whatever
-	created_human.UpdateAppearance()
-	created_human.sync_organ_dna()
-	created_human.regenerate_icons()
-
 	// apply cloning sickness to non-synths; this should be a status effect
 	if(!created_human.isSynthetic() && created_human.species?.cloning_modifier)
 		created_human.add_modifier(created_human.species.cloning_modifier, rand(c_cloning_sickness_low, c_cloning_sickness_high))
 	// add cloned modifier to everyone; this should be a status effect
 	created_human.add_modifier(/datum/modifier/cloned)
 
-	// this is really stupid, transfer rest of legacy crap
-	for(var/modifier_type in backup.legacy_genetic_modifiers)
-		created_human.add_modifier(modifier_type)
-	created_human.dna.UpdateSE()
-	created_human.dna.UpdateUI()
-
 /**
  * This is what creates the actual body; the organs/whatnot should be made here.
  */
 /obj/machinery/resleeving/body_printer/proc/create_body_impl(datum/resleeving_body_backup/backup) as /mob/living
-	// backups are always human right now
-	var/mob/living/carbon/human/created_human = new(src)
-	. = created_human
-
-	// set gender first; legacy set species code might blow up less. we need a helper at some point.
-	created_human.gender = backup.legacy_gender
-
-	// honestly not sure if this works properly for synths buuuuut..
-	created_human.set_species(backup.legacy_species_uid)
-	// this is for legacy stuff; i don't even know what uses it
-	created_human.dna.base_species = backup.legacy_dna.dna.base_species
-
-	created_human.dna = backup.legacy_dna.dna.Clone()
-	created_human.real_name = created_human.dna.real_name = backup.legacy_dna.dna.real_name || created_human.real_name
-	created_human.descriptors = backup.legacy_dna.body_descriptors?.Copy()
-
+	var/mob/living/carbon/human/created_human = backup.create_body(src, sleeve_lock = TRUE)
 	created_human.set_cloned_appearance()
-
-	// This is the weird part. We sorta obey 'can make organic/synthetic' but .. not really?
-	// We will never make a non-viable clone, basically. Or at least try not to. This still might, who knows.
-
-	// -- patch external organs --
-	for(var/bp_tag in backup.legacy_limb_data)
-		var/status = backup.legacy_limb_data[bp_tag]
-		var/obj/item/organ/external/limb = created_human.organs_by_name[bp_tag]
-		switch(status)
-			if(null)
-				// ignore
-			if(0)
-				// missing
-				if(bp_tag != BP_TORSO)
-					limb.remove_rejuv()
-			if(1)
-				// normal
-				if(allow_organic)
-					// TODO: organic-ize it if needed
-				else
-					// obliterate if we don't support it
-					if(bp_tag != BP_TORSO)
-						limb.remove_rejuv()
-			else
-				// robolimb manufacturer
-				if(allow_synthetic)
-					// robotize it
-					limb.robotize(status)
-				else
-					// obliterate it if we don't support it
-					if(bp_tag != BP_TORSO)
-						limb.remove_rejuv()
-
-	// -- patch internal organs --
-	// we currently ignore if we can actually make robotic organs because
-	// it can cause serious issues if we don't due to legacy code
-	// in the future, this should only robotize if it can / replace with robot organs if
-	// it needs to, etc.
-	for(var/organ_tag in backup.legacy_organ_data)
-		var/status = backup.legacy_organ_data[organ_tag]
-		var/obj/item/organ/internal/organ = created_human.internal_organs_by_name[organ_tag]
-		switch(status)
-			if(null)
-				// ignore
-			if(0)
-				// organic
-			if(1)
-				// assisted
-				organ.mechassist()
-			if(2)
-				// mechanical
-				organ.robotize()
-			if(3)
-				// digital
-				organ.digitize()
-			if(4)
-				// nanite ; do not make under any circumstances
-				// this is hardcoded not for lore enforcement reasons but because we have
-				// no good way to do it yet
-				stack_trace("attempted to clone a nanite organ; obliterating...")
+	return created_human
 
 /**
  * Continues to grow the mob.

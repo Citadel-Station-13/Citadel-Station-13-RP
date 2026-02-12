@@ -129,4 +129,105 @@
 		else
 			legacy_organ_data[legacy_organ_tag] = found.robotic
 
+/datum/resleeving_body_backup/proc/create_body(atom/where, sleeve_lock = TRUE) as /mob/living
+	// backups are always human right now
+	var/mob/living/carbon/human/created_human = new(where)
+	. = created_human
 
+	if(sleeve_lock)
+		// sleevelock them
+		created_human.resleeving_place_mind_lock(mind_ref)
+
+	// set gender first; legacy set species code might blow up less. we need a helper at some point.
+	created_human.gender = legacy_gender
+
+	// honestly not sure if this works properly for synths buuuuut..
+	created_human.set_species(legacy_species_uid)
+	// this is for legacy stuff; i don't even know what uses it
+	created_human.dna.base_species = legacy_dna.dna.base_species
+
+	created_human.dna = legacy_dna.dna.Clone()
+	created_human.real_name = created_human.dna.real_name = legacy_dna.dna.real_name || created_human.real_name
+	created_human.descriptors = legacy_dna.body_descriptors?.Copy()
+
+	// This is the weird part. We sorta obey 'can make organic/synthetic' but .. not really?
+	// We will never make a non-viable clone, basically. Or at least try not to. This still might, who knows.
+
+	// -- patch external organs --
+	for(var/bp_tag in legacy_limb_data)
+		var/status = legacy_limb_data[bp_tag]
+		var/obj/item/organ/external/limb = created_human.organs_by_name[bp_tag]
+		switch(status)
+			if(null)
+				// ignore
+			if(0)
+				// missing
+				if(bp_tag != BP_TORSO)
+					limb.remove_rejuv()
+			if(1)
+				// normal
+				if(allow_organic)
+					// TODO: organic-ize it if needed
+				else
+					// obliterate if we don't support it
+					if(bp_tag != BP_TORSO)
+						limb.remove_rejuv()
+			else
+				// robolimb manufacturer
+				if(allow_synthetic)
+					// robotize it
+					limb.robotize(status)
+				else
+					// obliterate it if we don't support it
+					if(bp_tag != BP_TORSO)
+						limb.remove_rejuv()
+
+	// -- patch internal organs --
+	// we currently ignore if we can actually make robotic organs because
+	// it can cause serious issues if we don't due to legacy code
+	// in the future, this should only robotize if it can / replace with robot organs if
+	// it needs to, etc.
+	for(var/organ_tag in legacy_organ_data)
+		var/status = legacy_organ_data[organ_tag]
+		var/obj/item/organ/internal/organ = created_human.internal_organs_by_name[organ_tag]
+		switch(status)
+			if(null)
+				// ignore
+			if(0)
+				// organic
+			if(1)
+				// assisted
+				organ.mechassist()
+			if(2)
+				// mechanical
+				organ.robotize()
+			if(3)
+				// digital
+				organ.digitize()
+			if(4)
+				// nanite ; do not make under any circumstances
+				// this is hardcoded not for lore enforcement reasons but because we have
+				// no good way to do it yet
+				stack_trace("attempted to clone a nanite organ; obliterating...")
+
+	// copy ooc notes / flavor text manually
+	created_human.ooc_notes = legacy_ooc_notes || ""
+	created_human.flavor_texts = legacy_dna?.flavor?.Copy() || list()
+	// other legacy properties
+	created_human.resize(legacy_sizemult)
+	created_human.weight = legacy_weight
+	if(legacy_custom_species_name)
+		created_human.custom_species = legacy_custom_species_name
+
+	// this is really stupid, transfer rest of legacy crap
+	for(var/modifier_type in legacy_genetic_modifiers)
+		created_human.add_modifier(modifier_type)
+
+	// full rebuild icons and whatnot
+	// arguably all this shouldn't be needed but whatever
+	created_human.UpdateAppearance()
+	created_human.sync_organ_dna()
+	created_human.regenerate_icons()
+
+	created_human.dna.UpdateSE()
+	created_human.dna.UpdateUI()
