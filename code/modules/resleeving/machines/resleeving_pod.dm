@@ -165,7 +165,7 @@
 		send_audible_system_message("Mirror is empty.")
 		return FALSE
 	// never ever allow sleeve-wiping someone
-	if(target.mind)
+	if(target.mind && target.mind.current == target && target.mind.active)
 		send_audible_system_message("Occupant has another consciousness.")
 		return FALSE
 	var/datum/resleeving_mind_backup/using_backup = mirror.recorded_mind
@@ -173,7 +173,7 @@
 	if(!using_mind)
 		send_audible_system_message("Mental interface failure.")
 		return FALSE
-	if(!IS_DEAD(using_mind.current))
+	if(using_mind.current && !IS_DEAD(using_mind.current))
 		// ah, the duplicate-mind problem.
 		send_audible_system_message("Failed to initiate mind transference.")
 		return FALSE

@@ -438,7 +438,7 @@
 
 	if(ratio < progress_recalc_last_ratio + progress_recalc_working_threshold_ratio)
 		++progress_recalc_strikes
-	progress_recalc_last_ratio = currently_growing_progress_estimate_ratio = ratio
+	progress_recalc_last_ratio = currently_growing_progress_estimate_ratio = round(ratio, 0.1)
 	progress_recalc_last_time = world.time
 
 	if(progress_recalc_strikes > progress_recalc_strike_limit)
