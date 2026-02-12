@@ -166,21 +166,10 @@
 					limb.remove_rejuv()
 			if(1)
 				// normal
-				if(allow_organic)
-					// TODO: organic-ize it if needed
-				else
-					// obliterate if we don't support it
-					if(bp_tag != BP_TORSO)
-						limb.remove_rejuv()
 			else
 				// robolimb manufacturer
-				if(allow_synthetic)
-					// robotize it
-					limb.robotize(status)
-				else
-					// obliterate it if we don't support it
-					if(bp_tag != BP_TORSO)
-						limb.remove_rejuv()
+				// robotize it
+				limb.robotize(status)
 
 	// -- patch internal organs --
 	// we currently ignore if we can actually make robotic organs because

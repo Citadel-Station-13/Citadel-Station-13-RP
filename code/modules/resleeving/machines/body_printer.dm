@@ -314,6 +314,36 @@
 /obj/machinery/resleeving/body_printer/proc/create_body_impl(datum/resleeving_body_backup/backup) as /mob/living
 	var/mob/living/carbon/human/created_human = backup.create_body(src, sleeve_lock = TRUE)
 	created_human.set_cloned_appearance()
+
+	// -- patch external organs --
+	for(var/bp_tag in backup.legacy_limb_data)
+		var/status = backup.legacy_limb_data[bp_tag]
+		var/obj/item/organ/external/limb = created_human.organs_by_name[bp_tag]
+		switch(status)
+			if(null)
+				// ignore
+			if(0)
+				// missing
+				if(bp_tag != BP_TORSO)
+					limb.remove_rejuv()
+			if(1)
+				// normal
+				if(allow_organic)
+					// TODO: organic-ize it if needed
+				else
+					// obliterate if we don't support it
+					if(bp_tag != BP_TORSO)
+						limb.remove_rejuv()
+			else
+				// robolimb manufacturer
+				if(allow_synthetic)
+					// robotize it
+					limb.robotize(status)
+				else
+					// obliterate it if we don't support it
+					if(bp_tag != BP_TORSO)
+						limb.remove_rejuv()
+
 	return created_human
 
 /**
