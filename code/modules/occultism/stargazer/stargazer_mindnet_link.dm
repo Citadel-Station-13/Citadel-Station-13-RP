@@ -26,8 +26,14 @@
 	///   to non-0 will allow a Promethean to sense someone / talk to them
 	///   from across the overmap depending on how high it is.
 	var/attunement_power_global = 0
+
 	/// Passive attunement from same-overmap
-	var/attunement_power_same_overmap = 20
+	var/attunement_power_same_overmap = 0
+
+	/// in pixels, LERP between low/high
+	var/attunement_power_overmap_distance = WORLD_ICON_SIZE * 14
+	var/attunement_power_overmap_low = 5
+	var/attunement_power_overmap_high = 25
 
 	var/attunement_power_proximity_radius_min = 9
 	var/attunement_power_proximity_radius_max = 48
@@ -74,6 +80,16 @@
  *   This system targets **minds**, not **mobs**, for a reason.
  */
 /datum/stargazer_mindnet_link/proc/update_attunement_impl(mob/resolved_mob)
+	. = attunement_power_global
 
+	var/turf/their_turf = get_turf(resolved_mob)
+	var/turf/our_turf = mindnet.get_parent_turf()
+
+
+	. += LERP(attunement_power_see_target_min, attunement_power_see_target_max, mindnet.cached_visibility)
+	if(owner in viewers(resolved_mob))
+		. += LERP(attunement_power_see_owner_min, attunement_power_see_owner_max, mindnet.cached_visbility_owner_ratio)
+
+	cached_attunement_power = .
 
 #warn impl

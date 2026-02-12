@@ -7,6 +7,7 @@
 	desc = "Send a message to a targeted mind, potentially receiving their thoughts \
 	back towards you."
 
+	can_be_cooperated_while_unconscious = TRUE
 	attunement_cooperative_threshold = 7.5
 	attunement_forced_threshold = 40
 

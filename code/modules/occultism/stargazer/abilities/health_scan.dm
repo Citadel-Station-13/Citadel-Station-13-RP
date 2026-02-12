@@ -6,6 +6,7 @@
 	name = "Probe"
 	desc = "Attempt to sense the biological status of a mind's body."
 
+	can_be_cooperated_while_unconscious = TRUE
 	attunement_cooperative_threshold = 20
 	attunement_forced_threshold = 45
 

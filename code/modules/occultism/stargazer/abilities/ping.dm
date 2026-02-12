@@ -7,6 +7,7 @@
 	desc = "Ping the targeted mind to detect if they sense you and \
 	where they are."
 
+	can_be_cooperated_while_unconscious = TRUE
 	attunement_cooperative_threshold = 10
 	attunement_forced_threshold = 60
 

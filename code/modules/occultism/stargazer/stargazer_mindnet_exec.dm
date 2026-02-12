@@ -97,4 +97,9 @@
 /datum/stargazer_mindnet_exec/proc/get_target_name()
 	return target_mind ? mindnet.get_mind_presence_name(target_mind) : null
 
+/datum/stargazer_mindnet_exec/proc/resolve_target_mob() as /mob
+	if(!isliving(target_mind.current))
+		return null
+	return target_mind.current
+
 #warn impl

@@ -134,6 +134,22 @@
  * * This may sleep.
  * @return FALSE to abort.
  */
+/datum/stargazer_mindnet_ability/proc/default_pre_do_after(datum/stargazer_mindnet_exec/exec)
+	return TRUE
+
+/**
+ * Called right after the prompt is answered or times out
+ * * This may sleep.
+ * @return FALSE to abort.
+ */
+/datum/stargazer_mindnet_ability/proc/default_post_do_after(datum/stargazer_mindnet_exec/exec)
+	return TRUE
+
+/**
+ * Called right before execution is passed to the exec datum for prompting
+ * * This may sleep.
+ * @return FALSE to abort.
+ */
 /datum/stargazer_mindnet_ability/proc/default_pre_prompt(datum/stargazer_mindnet_exec/exec)
 	return TRUE
 
