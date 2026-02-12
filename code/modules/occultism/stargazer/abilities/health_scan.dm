@@ -13,3 +13,18 @@
 	default_do_after = 2 SECONDS
 
 #warn impl
+
+/**
+ * @return a datum with info, or null to reject.
+ */
+/datum/stargazer_mindnet_ability/health_scan/proc/run_scan(datum/stargazer_mindnet_exec/exec) as /datum/stargazer_mindnet_health_scan
+	var/mob/resolved = exec.resolve_target_mob()
+	if(!isliving(resolved))
+		return null
+	var/datum/stargazer_mindnet_health_scan/scan = new
+
+
+	#warn impl
+
+
+	return scan

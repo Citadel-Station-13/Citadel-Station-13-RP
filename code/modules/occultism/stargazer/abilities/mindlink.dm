@@ -29,8 +29,6 @@
 
 	cooldown_global = 15 SECONDS
 
-#warn impl
-
 /datum/stargazer_mindnet_ability/mindlink/default_pre_do_after(datum/stargazer_mindnet_exec/exec)
 	. = ..()
 	if(!.)
