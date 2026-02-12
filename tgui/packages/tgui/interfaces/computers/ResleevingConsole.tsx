@@ -329,7 +329,7 @@ export const ResleevingConsole = (props) => {
                                         ? 'Active'
                                         : 'Empty'}
                                     </LabeledList.Item>
-                                    <LabeledList.Item label="Supports Mirrors">
+                                    <LabeledList.Item label="Inserted Mirror Belongs">
                                       {pod.occupied.compatibleWithMirror
                                         ? 'Yes'
                                         : 'No'}

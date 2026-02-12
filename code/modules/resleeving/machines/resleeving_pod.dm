@@ -1,12 +1,13 @@
 /obj/machinery/resleeving/resleeving_pod
 	name = "resleeving pod"
 	desc = "Used to combine mind and body into one unit.\n <span class='notice'>\[Accepts Upgrades\]</span>"
-	catalogue_data = list(
-		/datum/category_item/catalogue/technology/resleeving,
-	)
 	icon = 'icons/modules/resleeving/machinery/resleeving_pod.dmi'
 	icon_state = "resleever"
 	base_icon_state = "resleever"
+	density = FALSE
+	catalogue_data = list(
+		/datum/category_item/catalogue/technology/resleeving,
+	)
 	circuit = /obj/item/circuitboard/resleeving/resleeving_pod
 	density = TRUE
 	opacity = FALSE
@@ -177,7 +178,7 @@
 		send_audible_system_message("Failed to initiate mind transference.")
 		return FALSE
 	// do not allow impersonation
-	if(target.resleeving_check_mind_belongs(using_mind))
+	if(!target.resleeving_check_mind_belongs(using_mind))
 		send_audible_system_message("Stored consciousness does not match recipient's neural patterns.")
 		return FALSE
 	// -- POINT OF NO RETURN AFTER THIS CALL --
