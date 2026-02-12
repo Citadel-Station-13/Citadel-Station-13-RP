@@ -29,7 +29,7 @@
 		src.visible_message("<span class='notice'>\the [src] weaves a web from their spinneret silk.</span>")
 		nutrition -= 500
 		spawn(30) //3 seconds to form
-		new /obj/effect/spider/stickyweb(src.loc)
+		new /obj/structure/spider/stickyweb(src.loc)
 	else
 		to_chat(src, "You do not have enough nutrition to create webbing!")
 */

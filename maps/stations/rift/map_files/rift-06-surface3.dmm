@@ -38,7 +38,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aag" = (
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "aaj" = (
@@ -5931,7 +5931,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "asH" = (
-/obj/effect/spider/cocoon,
+/obj/structure/spider/cocoon,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "asI" = (
@@ -6492,7 +6492,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "auw" = (
-/obj/effect/spider/spiderling/virgo,
+/obj/structure/spider/spiderling/virgo,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "aux" = (
@@ -6649,7 +6649,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "avc" = (
-/obj/effect/spider/spiderling/virgo,
+/obj/structure/spider/spiderling/virgo,
 /obj/random/maintenance/security,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
@@ -11689,7 +11689,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "aKi" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "aKk" = (

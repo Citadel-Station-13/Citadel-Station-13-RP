@@ -23,6 +23,6 @@
 
 	while((spawncount >= 1) && vents.len)
 		var/obj/vent = pick(vents)
-		new /obj/effect/spider/spiderling/virgo(vent.loc)
+		new /obj/structure/spider/spiderling/virgo(vent.loc)
 		vents -= vent
 		spawncount--

@@ -1,5 +1,5 @@
-//generic procs copied from obj/structure/alien
-/obj/effect/spider
+// TODO: probably rework how these work, this is all pretty awful.
+/obj/structure/spider
 	name = "web"
 	desc = "it's stringy and sticky"
 	icon = 'icons/effects/effects.dmi'
@@ -11,24 +11,24 @@
 	integrity_max = 15
 	armor_type = /datum/armor/none
 
-/obj/effect/spider/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/structure/spider/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300 + T0C)
 		damage_integrity(5)
 
-/obj/effect/spider/process_damage_instance(list/shieldcall_args, filter_zone)
+/obj/structure/spider/process_damage_instance(list/shieldcall_args, filter_zone)
 	. = ..()
 	if(shieldcall_args[SHIELDCALL_ARG_DAMAGE_TYPE])
 		shieldcall_args[SHIELDCALL_ARG_DAMAGE] *= 2
 
-/obj/effect/spider/stickyweb
+/obj/structure/spider/stickyweb
 	icon_state = "stickyweb1"
 
-/obj/effect/spider/stickyweb/Initialize(mapload)
+/obj/structure/spider/stickyweb/Initialize(mapload)
 	if(prob(50))
 		icon_state = "stickyweb2"
 	return ..()
 
-/obj/effect/spider/stickyweb/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/spider/stickyweb/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(istype(mover, /mob/living/simple_mob/animal/giant_spider))
 		return TRUE
@@ -40,26 +40,26 @@
 		return prob(30)
 	return TRUE
 
-/obj/effect/spider/eggcluster
+/obj/structure/spider/eggcluster
 	name = "egg cluster"
 	desc = "They seem to pulse slightly with an inner life"
 	icon_state = "eggs"
 	var/amount_grown = 0
 	var/spiders_min = 6
 	var/spiders_max = 24
-	var/spider_type = /obj/effect/spider/spiderling
+	var/spider_type = /obj/structure/spider/spiderling
 
-/obj/effect/spider/eggcluster/Initialize(mapload)
+/obj/structure/spider/eggcluster/Initialize(mapload)
 	pixel_x = rand(3,-3)
 	pixel_y = rand(3,-3)
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/spider/eggcluster/Initialize(mapload, atom/parent)
+/obj/structure/spider/eggcluster/Initialize(mapload, atom/parent)
 	. = ..()
 	get_light_and_color(parent)
 
-/obj/effect/spider/eggcluster/Destroy()
+/obj/structure/spider/eggcluster/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	if(istype(loc, /obj/item/organ/external))
 		var/obj/item/organ/external/O = loc
@@ -67,7 +67,7 @@
 
 	return ..()
 
-/obj/effect/spider/eggcluster/process(delta_time)
+/obj/structure/spider/eggcluster/process(delta_time)
 	amount_grown += rand(0,2)
 	if(amount_grown >= 100)
 		var/num = rand(spiders_min, spiders_max)
@@ -81,14 +81,14 @@
 				O.implants += spiderling
 		qdel(src)
 
-/obj/effect/spider/eggcluster/small
+/obj/structure/spider/eggcluster/small
 	spiders_min = 1
 	spiders_max = 3
 
-/obj/effect/spider/eggcluster/small/frost
-	spider_type = /obj/effect/spider/spiderling/frost
+/obj/structure/spider/eggcluster/small/frost
+	spider_type = /obj/structure/spider/spiderling/frost
 
-/obj/effect/spider/spiderling
+/obj/structure/spider/spiderling
 	name = "spiderling"
 	desc = "It never stays still for long."
 	icon_state = "spiderling"
@@ -104,10 +104,10 @@
 
 	var/stunted = FALSE
 
-/obj/effect/spider/spiderling/frost
+/obj/structure/spider/spiderling/frost
 	grow_as = list(/mob/living/simple_mob/animal/giant_spider/frost)
 
-/obj/effect/spider/spiderling/Initialize(mapload, atom/parent)
+/obj/structure/spider/spiderling/Initialize(mapload, atom/parent)
 	. = ..()
 	pixel_x = rand(6,-6)
 	pixel_y = rand(6,-6)
@@ -117,12 +117,12 @@
 		amount_grown = 1
 	get_light_and_color(parent)
 
-/obj/effect/spider/spiderling/Destroy()
+/obj/structure/spider/spiderling/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	walk(src, 0) // Because we might have called walk_to, we must stop the walk loop or BYOND keeps an internal reference to us forever.
 	return ..()
 
-/obj/effect/spider/spiderling/Bump(atom/A)
+/obj/structure/spider/spiderling/Bump(atom/A)
 	. = ..()
 	if(istype(A, /obj/structure/table))
 		var/still_here = loc
@@ -133,12 +133,12 @@
 			if(loc == still_here)
 				forceMove(A.loc)
 
-/obj/effect/spider/spiderling/atom_destruction()
+/obj/structure/spider/spiderling/atom_destruction()
 	visible_message("<span class='alert'>[src] dies!</span>")
 	new /obj/effect/debris/cleanable/spiderling_remains(src.loc)
 	return ..()
 
-/obj/effect/spider/spiderling/process(delta_time)
+/obj/structure/spider/spiderling/process(delta_time)
 	if(travelling_in_vent)
 		if(istype(src.loc, /turf))
 			travelling_in_vent = 0
@@ -204,7 +204,7 @@
 	if(amount_grown >= 0)
 		amount_grown += rand(0,2)
 
-/obj/effect/spider/spiderling/proc/skitter()
+/obj/structure/spider/spiderling/proc/skitter()
 	if(isturf(loc))
 		if(prob(25))
 			var/list/nearby = trange(5, src) - loc
@@ -232,9 +232,9 @@
 			qdel(src)
 
 //Rather than kneecap all spiderlings, I figure I'll just make a spiderling cousin that doesn't have the ability.
-/obj/effect/spider/spiderling/no_crawl
+/obj/structure/spider/spiderling/no_crawl
 
-/obj/effect/spider/spiderling/no_crawl/skitter()
+/obj/structure/spider/spiderling/no_crawl/skitter()
 	if(isturf(loc))
 		if(prob(25))
 			var/list/nearby = trange(5, src) - loc
@@ -262,7 +262,7 @@
 			qdel(src)
 
 
-/obj/effect/spider/spiderling/stunted
+/obj/structure/spider/spiderling/stunted
 	stunted = TRUE
 
 	grow_as = list(/mob/living/simple_mob/animal/giant_spider, /mob/living/simple_mob/animal/giant_spider/hunter)
@@ -273,18 +273,18 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenshatter"
 
-/obj/effect/spider/cocoon
+/obj/structure/spider/cocoon
 	name = "cocoon"
 	desc = "Something wrapped in silky spider web"
 	icon_state = "cocoon1"
 	integrity = 30
 	integrity_max = 30
 
-/obj/effect/spider/cocoon/Initialize(mapload)
+/obj/structure/spider/cocoon/Initialize(mapload)
 	. = ..()
 	icon_state = pick("cocoon1","cocoon2","cocoon3")
 
-/obj/effect/spider/cocoon/Destroy()
+/obj/structure/spider/cocoon/Destroy()
 	src.visible_message("<span class='warning'>\The [src] splits open.</span>")
 	for(var/atom/movable/A in contents)
 		A.loc = src.loc

@@ -355,7 +355,7 @@
 	display_name = "chanterelle mushrooms"
 	mutants = list("reishi","amanita","plumphelmet")
 	chems = list("nutriment" = list(1,25))
-	splat_type = /obj/effect/plant
+	splat_type = /obj/structure/plant
 	kitchen_tag = "mushroom"
 
 /datum/seed/mushroom/New()

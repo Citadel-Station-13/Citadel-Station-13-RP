@@ -56,7 +56,7 @@
 /area/submap/BoomBase)
 "an" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/spider,
+/obj/structure/spider,
 /obj/item/material/shard,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
@@ -85,7 +85,7 @@
 /turf/simulated/floor/plating,
 /area/submap/BoomBase)
 "at" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/submap/BoomBase)
 "au" = (
@@ -132,7 +132,7 @@
 /area/submap/BoomBase)
 "aE" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aF" = (
@@ -209,17 +209,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aU" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/item/material/shard,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aV" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/random/mob/spider/mutant,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aW" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/tiled/steel{
 	icon_state = "burned1"

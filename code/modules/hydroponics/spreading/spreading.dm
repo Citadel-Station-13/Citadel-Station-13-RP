@@ -19,7 +19,7 @@
 			seed.display_name = "strange plants" //more thematic for the vine infestation event
 
 			//make vine zero start off fully matured
-			var/obj/effect/plant/vine = new(T,seed)
+			var/obj/structure/plant/vine = new(T,seed)
 			vine.integrity = vine.integrity_max
 			vine.mature_time = 0
 			vine.process()
@@ -28,7 +28,7 @@
 			return
 		message_admins("<span class='notice'>Event: Spacevines failed to find a viable turf.</span>")
 
-/obj/effect/dead_plant
+/obj/structure/dead_plant
 	anchored = 1
 	opacity = 0
 	density = 0
@@ -36,16 +36,16 @@
 	integrity_enabled = TRUE
 	obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 
-/obj/effect/dead_plant/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+/obj/structure/dead_plant/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	qdel(src)
 
-/obj/effect/dead_plant/attackby()
+/obj/structure/dead_plant/attackby()
 	..()
-	for(var/obj/effect/plant/neighbor in range(1))
+	for(var/obj/structure/plant/neighbor in range(1))
 		neighbor.update_neighbors()
 	qdel(src)
 
-/obj/effect/plant
+/obj/structure/plant
 	name = "plant"
 	anchored = TRUE
 	buckle_allowed = TRUE
@@ -65,7 +65,7 @@
 	var/growth_type = 1
 	var/max_growth = 0
 	var/list/neighbors = list()
-	var/obj/effect/plant/parent
+	var/obj/structure/plant/parent
 	var/datum/seed/seed
 	var/sampled = 0
 	var/floor = 0
@@ -76,18 +76,18 @@
 	var/last_tick = 0
 	var/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/plant
 
-/obj/effect/plant/Destroy()
+/obj/structure/plant/Destroy()
 	QDEL_NULL(plant)
 	parent = null
 	SSplants.remove_plant(src)
-	for(var/obj/effect/plant/neighbor in orange(1, src))
+	for(var/obj/structure/plant/neighbor in orange(1, src))
 		SSplants.add_plant(neighbor)
 	return ..()
 
-/obj/effect/plant/single
+/obj/structure/plant/single
 	spread_chance = 0
 
-/obj/effect/plant/Initialize(mapload, datum/seed/newseed, obj/effect/plant/newparent)
+/obj/structure/plant/Initialize(mapload, datum/seed/newseed, obj/effect/plant/newparent)
 	. = ..()
 	if(!newparent)
 		parent = src
@@ -119,21 +119,21 @@
 	spread_distance = ((growth_type>0) ? round(spread_chance*0.77) : round(spread_chance*0.6))
 	update_icon()
 
-/obj/effect/plant/heal_integrity(amount, gradual, do_not_fix)
+/obj/structure/plant/heal_integrity(amount, gradual, do_not_fix)
 	. = ..()
 	refresh_icon()
 
-/obj/effect/plant/damage_integrity(amount, gradual, do_not_break)
+/obj/structure/plant/damage_integrity(amount, gradual, do_not_break)
 	. = ..()
 	refresh_icon()
 	SSplants.add_plant(src)
 
-/obj/effect/plant/atom_destruction()
+/obj/structure/plant/atom_destruction()
 	die_off(TRUE)
 	return ..()
 
 // Plants will sometimes be spawned in the turf adjacent to the one they need to end up in, for the sake of correct dir/etc being set.
-/obj/effect/plant/proc/finish_spreading()
+/obj/structure/plant/proc/finish_spreading()
 	setDir(calc_dir())
 	update_icon()
 	SSplants.add_plant(src)
@@ -143,7 +143,7 @@
 		var/P = prob(80)? 3 : 2
 		LEGACY_EX_ACT(T, P, null)
 
-/obj/effect/plant/update_icon()
+/obj/structure/plant/update_icon()
 	//TODO: should really be caching this.
 	refresh_icon()
 	if(growth_type == 0 && !floor)
@@ -172,7 +172,7 @@
 	else
 		set_light(0)
 
-/obj/effect/plant/proc/refresh_icon()
+/obj/structure/plant/proc/refresh_icon()
 	var/growth = min(max_growth,round(integrity / growth_threshold))
 	var/at_fringe = get_dist(src,parent)
 	if(spread_distance > 5)
@@ -204,7 +204,7 @@
 		set_base_layer(initial(layer))
 		density = 0
 
-/obj/effect/plant/proc/calc_dir()
+/obj/structure/plant/proc/calc_dir()
 	set background = 1
 	var/turf/T = get_turf(src)
 	if(!istype(T)) return
@@ -216,7 +216,7 @@
 		if(newTurf.density)
 			direction |= wallDir
 
-	for(var/obj/effect/plant/shroom in T.contents)
+	for(var/obj/structure/plant/shroom in T.contents)
 		if(shroom == src)
 			continue
 		if(shroom.floor) //special
@@ -240,7 +240,7 @@
 	floor = 1
 	return 1
 
-/obj/effect/plant/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+/obj/structure/plant/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(I.is_wirecutter() || istype(I, /obj/item/surgical/scalpel))
@@ -266,7 +266,7 @@
 	return ..()
 
 //handles being overrun by vines - note that attacker_parent may be null in some cases
-/obj/effect/plant/proc/vine_overrun(datum/seed/attacker_seed, obj/effect/plant/attacker_parent)
+/obj/structure/plant/proc/vine_overrun(datum/seed/attacker_seed, obj/effect/plant/attacker_parent)
 	var/aggression = 0
 	aggression += (attacker_seed.get_trait(TRAIT_CARNIVOROUS) - seed.get_trait(TRAIT_CARNIVOROUS))
 	aggression += (attacker_seed.get_trait(TRAIT_SPREAD) - seed.get_trait(TRAIT_SPREAD))
@@ -290,5 +290,5 @@
 	if(aggression > 0)
 		damage_integrity(aggression * 5)
 
-/obj/effect/plant/proc/is_mature()
+/obj/structure/plant/proc/is_mature()
 	return percent_integrity() >= (1/3) && world.time > mature_time

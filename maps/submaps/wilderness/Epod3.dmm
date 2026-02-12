@@ -20,7 +20,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod3)
 "g" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/template_noop,
 /area/submap/Epod3)
 "h" = (
@@ -75,7 +75,7 @@
 /turf/simulated/shuttle/wall,
 /area/submap/Epod3)
 "l" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod3)
 "m" = (
@@ -86,7 +86,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/Epod3)
 "n" = (
-/obj/effect/spider/eggcluster/small/frost,
+/obj/structure/spider/eggcluster/small/frost,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod3)
 "o" = (
@@ -96,8 +96,8 @@
 /turf/template_noop,
 /area/submap/Epod3)
 "p" = (
-/obj/effect/spider/stickyweb,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/template_noop,
 /area/submap/Epod3)
 "q" = (

@@ -198,7 +198,7 @@
 		if(istype(thing, /obj/effect/debris/cleanable/spiderling_remains)) // Dead spiderlings are a bit spooky.
 			fear_amount += 1
 
-		if(istype(thing, /obj/effect/spider/spiderling)) // Live spiderlings are also spooky.
+		if(istype(thing, /obj/structure/spider/spiderling)) // Live spiderlings are also spooky.
 			fear_amount += 2
 
 		if(istype(thing, /obj/item/toy/plushie/spider)) // Plushies are spooky so people can be assholes with them.
