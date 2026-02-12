@@ -40,6 +40,16 @@
 
 	// TODO: is there a way to hook death but before say, gibbing, so we back up before they die?
 
+	/**
+	 * *Sigh.*
+	 * Tracks if the person died from a vorny death.
+	 * This should be the **only** exception to the general vore-code-isolation we have going on,
+	 * at time of writing.
+	 *
+	 * This allows for people to be revived differently if they died from vore.
+	 */
+	var/died_from_vore = FALSE
+
 /obj/item/organ/internal/mirror/New()
 	state = STATE_EMPTY
 	..()
@@ -65,6 +75,12 @@
 	if(last_auto_backup > world.time - auto_backup_interval)
 		last_auto_backup = world.time
 		try_backup_process()
+
+/**
+ * Checks if they probably died from vore.
+ */
+/obj/item/organ/internal/mirror/proc/considered_died_of_vore()
+	return died_from_vore
 
 // TODO: if they are logged out, don't toss the messages
 /obj/item/organ/internal/mirror/proc/try_backup_process()

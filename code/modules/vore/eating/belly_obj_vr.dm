@@ -399,6 +399,10 @@
 	if(M.ckey)
 		log_game("[key_name(owner)] has digested [key_name(M)] in their [lowertext(name)] ([owner ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[owner.x];Y=[owner.y];Z=[owner.z]'>JMP</a>" : "null"])")
 
+	// set the DOWN BAD FLAG on their mirror
+	var/obj/item/organ/internal/mirror/their_mirror = M.resleeving_remove_mirror(src)
+	their_mirror?.died_from_vore = TRUE
+
 	// If digested prey is also a pred... anyone inside their bellies gets moved up.
 	if(is_vore_predator(M))
 		M.release_vore_contents(include_absorbed = TRUE, silent = TRUE)

@@ -201,6 +201,9 @@
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 75, TRUE)
 	send_audible_system_message("Inserting mirror and initiating neural re-imaging...")
 
+	// unclear the down bad flag
+	mirror.died_from_vore = FALSE
+
 /obj/machinery/resleeving/resleeving_pod/proc/perform_backup_insertion_impl(mob/living/target, datum/resleeving_mind_backup/backup)
 	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
 	if(!ishuman(target))
