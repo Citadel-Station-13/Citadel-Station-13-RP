@@ -26,6 +26,8 @@
 	var/api_supported = created_mob.resleeving_supports_mirrors()
 	if(!api_supported)
 		// For now, API support does not actually enforce not creating it.
+		if(should_exist)
+			TEST_FAIL("resleeving API not supported when it should exist.")
 		return
 
 	var/obj/item/organ/internal/mirror/created = created_mob.resleeving_create_mirror()
@@ -131,6 +133,15 @@
 
 /datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/proc/invoke_death_and_check_victim_recoverable(datum/unit_test_way_of_killing_someone/method)
 	CRASH("unimplemented")
+
+/datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/synth
+
+/datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/synth/create_character(atom/loc)
+	var/mob/living/carbon/human/created = new /mob/living/carbon/human(loc)
+	var/obj/item/organ/internal/brain/brain = locate() in created.internal_organs
+	brain.robotize()
+	ASSERT(locate(/obj/item/organ/internal/mmi_holder) in created.internal_organs)
+	return created
 
 /datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/protean
 
