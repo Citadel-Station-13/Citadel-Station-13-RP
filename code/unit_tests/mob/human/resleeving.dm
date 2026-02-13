@@ -7,6 +7,11 @@
 	abstract_type = /datum/unit_test/resleeving
 	reset_room_after = TRUE
 
+	// can't recover them from organs if we just delete their organs now can we
+	var/static/list/excluded_death_exec_types = list(
+		/datum/unit_test_way_of_killing_someone/qdel_all_organs,
+	)
+
 /datum/unit_test/resleeving/mirror_general_testing
 	abstract_type = /datum/unit_test/resleeving/mirror_general_testing
 	var/should_exist = TRUE
@@ -61,7 +66,7 @@
 	created = null
 
 	// and now, for the destructive tests
-	for(var/datum/unit_test_way_of_killing_someone/death_typepath as anything in subtypesof(/datum/unit_test_way_of_killing_someone))
+	for(var/datum/unit_test_way_of_killing_someone/death_typepath as anything in subtypesof(/datum/unit_test_way_of_killing_someone) - excluded_death_exec_types)
 		if(death_typepath.abstract_type == death_typepath)
 			continue
 		var/datum/unit_test_way_of_killing_someone/death = new death_typepath
@@ -114,11 +119,8 @@
 	var/turf/where = pick(block(run_loc_floor_bottom_left, run_loc_floor_top_right))
 
 	// and now, for the destructive tests
-	for(var/datum/unit_test_way_of_killing_someone/death_typepath as anything in subtypesof(/datum/unit_test_way_of_killing_someone))
+	for(var/datum/unit_test_way_of_killing_someone/death_typepath as anything in subtypesof(/datum/unit_test_way_of_killing_someone) - excluded_death_exec_types)
 		if(death_typepath.abstract_type == death_typepath)
-			continue
-		// how the fuck do you intend to get their shit back if you directly qdel?
-		if(death_typepath == /datum/unit_test_way_of_killing_someone/qdel_all_organs)
 			continue
 		var/datum/unit_test_way_of_killing_someone/death = new death_typepath
 		var/mob/victim = create_character(where)

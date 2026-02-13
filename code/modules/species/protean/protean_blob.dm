@@ -141,6 +141,9 @@
 		//Set the max
 		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
 		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
+		if(!E)
+			// somehow.
+			return
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
 		movement_base_speed = 10 / 0.5 + max(0, (maxHealth - health) - 100) / 50
