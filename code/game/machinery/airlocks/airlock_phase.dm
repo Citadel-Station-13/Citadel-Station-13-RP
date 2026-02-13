@@ -34,6 +34,14 @@
 
 /**
  * Called when exiting this phase.
+ * * Only called when successful.
+ */
+/datum/airlock_phase/proc/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	return
+
+/**
+ * Called when exiting this phase.
+ * * Only called when successful, for now.
  */
 /datum/airlock_phase/proc/cleanup(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	return
@@ -43,7 +51,11 @@
 	var/list/merge_cycling_blackboard
 
 /datum/airlock_phase/merge_blackboard/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
-	#warn impl
+	if(merge_system_blackboard)
+		system.blackboard ||= merge_system_blackboard
+	if(merge_cycling_blackboard)
+		cycling.blackboard ||= merge_cycling_blackboard
+	return AIRLOCK_PHASE_SETUP_SKIP
 
 /**
  * Depressurize airlock to handler's waste buffer, or an exterior vent.
@@ -54,6 +66,10 @@
 	var/vent_to_outside = FALSE
 	/// stop at pressure
 	var/depressurize_to_kpa = 0
+
+/datum/airlock_phase/depressurize/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	#warn impl
+	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/depressurize/vent_to_outside
 	vent_to_outside = TRUE
@@ -74,6 +90,10 @@
 	/// * requires [pull_from_outside_if_possible]
 	var/pull_from_outside_required = FALSE
 
+/datum/airlock_phase/repressurize/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	#warn impl
+	return AIRLOCK_PHASE_SETUP_SUCCESS
+
 /datum/airlock_phase/repressurize/allow_external_air
 	pull_from_outside_if_possible = TRUE
 
@@ -86,14 +106,19 @@
 /datum/airlock_phase/doors
 	display_verb = "operating doors"
 
-#warn set X_DOOR_SEALED blackboard on these phases
-
 /datum/airlock_phase/doors/seal
 	display_verb = "sealing"
 
 /datum/airlock_phase/doors/seal/interior
 
 /datum/airlock_phase/doors/seal/exterior
+
+/datum/airlock_phase/doors/seal/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	#warn impl
+	return AIRLOCK_PHASE_SETUP_SUCCESS
+
+/datum/airlock_phase/doors/seal/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
+#warn set X_DOOR_SEALED blackboard on these phases
 
 /datum/airlock_phase/doors/unseal
 	display_verb = "unsealing"
@@ -102,5 +127,9 @@
 
 /datum/airlock_phase/doors/unseal/exterior
 
+/datum/airlock_phase/doors/unseal/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	#warn impl
+	return AIRLOCK_PHASE_SETUP_SUCCESS
 
-#warn impl
+/datum/airlock_phase/doors/unseal/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
+#warn set X_DOOR_SEALED blackboard on these phases
