@@ -99,6 +99,6 @@
 /datum/unit_test_way_of_killing_someone/actually_exploding_but_gently/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
 		if(!QDELETED(victim) && !IS_DEAD(victim))
-			explosion(victim.loc, 0, 0, 0, 4, FALSE)
+			explosion(victim.loc, 0, 0, 4, 0, FALSE)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")

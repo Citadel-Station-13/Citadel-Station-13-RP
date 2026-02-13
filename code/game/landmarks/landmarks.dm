@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(landmarks_keyed)
 	anchored = TRUE
 	layer = MID_LANDMARK_LAYER
 	invisibility = INVISIBILITY_MAXIMUM
-	integrity = INTEGRITY_INDESTRUCTIBLE
+	integrity_enabled = FALSE
 
 	/// important landmarks get registered by id. not vv hooked, admins usually shouldn't mess with this.
 	var/landmark_key
