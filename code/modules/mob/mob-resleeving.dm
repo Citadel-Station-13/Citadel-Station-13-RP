@@ -12,6 +12,7 @@
 
 /**
  * Ensures the target has a mirror.
+ * * This does NOT check for API support!
  */
 /mob/proc/resleeving_create_mirror() as /obj/item/organ/internal/mirror
 	return null

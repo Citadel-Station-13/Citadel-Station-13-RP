@@ -569,7 +569,11 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		new_character.dna.SetSEState(DNABLOCK_GLASSES,1,0)
 		new_character.disabilities |= DISABILITY_NEARSIGHTED
 	if(client.prefs.mirror == TRUE)
-		new_character.resleeving_create_mirror()
+		// Check API support. In the future, prefs should handle this and this should throw / warn
+		// if it's not there when prefs says it should be.
+		// When this is done, the user will be able to see in prefs if their species supports it.
+		if(new_character.resleeving_supports_mirrors())
+			new_character.resleeving_create_mirror()
 
 	// And uncomment this, too.
 	//new_character.dna.UpdateSE()

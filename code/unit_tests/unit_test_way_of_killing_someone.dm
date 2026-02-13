@@ -67,9 +67,10 @@
 
 /datum/unit_test_way_of_killing_someone/exploding/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
-		if(!QDELETED(victim) && !IS_DEAD(victim))
-			victim.legacy_ex_act(1)
-			victim.Life(2, 1)
+		if(QDELETED(victim) || IS_DEAD(victim))
+			continue
+		victim.legacy_ex_act(1)
+		victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")
 
@@ -78,9 +79,10 @@
 
 /datum/unit_test_way_of_killing_someone/exploding_but_gently/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
-		if(!QDELETED(victim) && !IS_DEAD(victim))
-			victim.legacy_ex_act(3)
-			victim.Life(2, 1)
+		if(QDELETED(victim) || IS_DEAD(victim))
+			continue
+		victim.legacy_ex_act(3)
+		victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (kill-only) an immortal mob?")
 
@@ -90,9 +92,10 @@
 
 /datum/unit_test_way_of_killing_someone/actually_exploding/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
-		if(!QDELETED(victim) && !IS_DEAD(victim))
-			explosion(victim.loc, 4, 0, 0, 0, FALSE)
-			victim.Life(2, 1)
+		if(QDELETED(victim) || IS_DEAD(victim))
+			continue
+		explosion(victim.loc, 4, 0, 0, 0, FALSE)
+		victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")
 
@@ -102,8 +105,9 @@
 
 /datum/unit_test_way_of_killing_someone/actually_exploding_but_gently/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
-		if(!QDELETED(victim) && !IS_DEAD(victim))
-			explosion(victim.loc, 0, 0, 4, 0, FALSE)
-			victim.Life(2, 1)
+		if(QDELETED(victim) || IS_DEAD(victim))
+			continue
+		explosion(victim.loc, 0, 0, 4, 0, FALSE)
+		victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")

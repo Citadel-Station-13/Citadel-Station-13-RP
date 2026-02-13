@@ -19,13 +19,13 @@
 	var/mob/living/created_mob = create_character(where)
 
 	var/api_supported = created_mob.resleeving_supports_mirrors()
-	var/obj/item/organ/internal/mirror/created = created_mob.resleeving_create_mirror()
-
-	// make sure api support isn't lying
-	if(!api_supported && created)
-		TEST_FAIL("resleeving API not supported but mirror was made anyways")
+	if(!api_supported)
+		// For now, API support does not actually enforce not creating it.
 		return
-	else if(api_supported && !created)
+
+	var/obj/item/organ/internal/mirror/created = created_mob.resleeving_create_mirror()
+	// make sure api support isn't lying
+	if(api_supported && !created)
 		TEST_FAIL("resleeving API supported but mirror was not made")
 		return
 
@@ -116,6 +116,9 @@
 	// and now, for the destructive tests
 	for(var/datum/unit_test_way_of_killing_someone/death_typepath as anything in subtypesof(/datum/unit_test_way_of_killing_someone))
 		if(death_typepath.abstract_type == death_typepath)
+			continue
+		// how the fuck do you intend to get their shit back if you directly qdel?
+		if(death_typepath == /datum/unit_test_way_of_killing_someone/qdel_all_organs)
 			continue
 		var/datum/unit_test_way_of_killing_someone/death = new death_typepath
 		var/mob/victim = create_character(where)
