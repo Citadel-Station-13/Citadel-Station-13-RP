@@ -177,7 +177,7 @@
 			if(our_entity)
 				for(var/obj/overmap/entity/entity as anything in SSspatial_grids.overmap_entities.pixel_query(our_entity, scan_overmap_range))
 					for(var/z in entity.location?.get_z_indices())
-						for(var/mob/living/target as anything in SSspatial_grids.living.all_atoms(level.z_index))
+						for(var/mob/living/target as anything in SSspatial_grids.living.all_atoms(z))
 							if(IS_DEAD(target))
 								continue
 							. += target
@@ -186,7 +186,7 @@
 			var/obj/overmap/entity/our_entity = SSovermaps.get_enclosing_overmap_entity(our_turf)
 			if(our_entity)
 				for(var/z in our_entity.location?.get_z_indices())
-					for(var/mob/living/target as anything in SSspatial_grids.living.all_atoms(level.z_index))
+					for(var/mob/living/target as anything in SSspatial_grids.living.all_atoms(z))
 						if(IS_DEAD(target))
 							continue
 						. += target
@@ -316,6 +316,9 @@
 
 /datum/stargazer_mindnet/proc/update_cached_visibility_impl()
 
+/datum/stargazer_mindnet/proc/get_parent_turf() as /turf
+	return null
+
 /**
  * Default variant for Prometheans
  */
@@ -334,6 +337,9 @@
 		owning_core = null
 	return ..()
 
+/datum/stargazer_mindnet/promethean/get_parent_turf()
+	return get_turf(owning_core)
+
 /**
  * Default variant for Xenochimerae
  */
@@ -351,5 +357,8 @@
 			owning_core.mindnet = null
 		owning_core = null
 	return ..()
+
+/datum/stargazer_mindnet/xenochimera/get_parent_turf()
+	return get_turf(owning_core)
 
 // TODO: abstract organ variant for adminbus

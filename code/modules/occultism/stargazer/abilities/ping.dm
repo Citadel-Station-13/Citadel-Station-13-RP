@@ -26,7 +26,10 @@
 	#warn ping and message
 
 /datum/stargazer_mindnet_ability/ping/proc/create_cm_style_ping(datum/stargazer_mindnet_exec/exec)
-	var/mob/locked_on = target.current
+	var/mob/locked_on = exec.resolve_target_mob()
+	if(!locked_on)
+		return FALSE
 
+	return TRUE
 
 	#warn impl; 'icons/effects/motion_blip.dmi', "cm-motion", "cm-motion-offscreen"

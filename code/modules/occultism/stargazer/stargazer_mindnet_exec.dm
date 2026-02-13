@@ -51,6 +51,8 @@
 	 * How long the target has to give cooperation.
 	 */
 	var/cooperate_prompt_timeout = 15 SECONDS
+	var/cooperate_prompt_text = "You feel an eerie presence in your mind; it seems to be reaching out to you. \
+	%%COOPERATE%%"
 	/**
 	 * Is our prompt already done?
 	 */
@@ -76,6 +78,8 @@
 /datum/stargazer_mindnet_exec/proc/set_chat_prompt(format)
 
 /datum/stargazer_mindnet_exec/proc/run_prompt()
+	var/link = "<a href='?src=[REF(src)]&cooperate=1'>"
+	var/prompt = string_format(cooperate_prompt_text, list("COOPERATE" = link))
 
 /**
  * Keeps us alive for atleast this much more time.

@@ -3866,7 +3866,6 @@
 #include "code\modules\mob\mob-emote_custom.dm"
 #include "code\modules\mob\mob-examine.dm"
 #include "code\modules\mob\mob-hands.dm"
-#include "code\modules\mob\mob-health.dm"
 #include "code\modules\mob\mob-iff.dm"
 #include "code\modules\mob\mob-interaction.dm"
 #include "code\modules\mob\mob-inventory-abstraction.dm"

@@ -13,8 +13,13 @@
 
 	var/overlay_text
 
-#warn default icon/icon state, use_text
-/datum/component/perspective_screen_tracking_ping/Initialize(atom/movable/target, use_icon, use_onscreen_icon_state, use_offscreen_icon_state, use_text)
+/datum/component/perspective_screen_tracking_ping/Initialize(
+	atom/movable/target,
+	use_icon = 'icons/effects/motion_blip.dmi',
+	use_onscreen_icon_state = "cm-motion",
+	use_offscreen_icon_state = "cm-motion-offscreen",
+	use_text,
+)
 	if(!istype(parent, /datum/perspective))
 		return COMPONENT_INCOMPATIBLE
 	if((. = ..()) == COMPONENT_INCOMPATIBLE)
@@ -22,6 +27,9 @@
 	if(!ismovable(target))
 		return COMPONENT_INCOMPATIBLE
 	src.target = target
+	src.overlay_text = use_text
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(on_target_del))
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_target_move))
 
 /datum/component/perspective_screen_tracking_ping/RegisterWithParent()
 	..()

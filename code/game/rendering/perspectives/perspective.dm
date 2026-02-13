@@ -728,6 +728,7 @@
 
 /datum/perspective/proc/recompute_view_size()
 	view_dirty = FALSE
+	#warn signal on this
 	if(isnum(default_view_size))
 		cached_view_height = default_view_size + augment_view_width
 		cached_view_width = default_view_size + augment_view_height
