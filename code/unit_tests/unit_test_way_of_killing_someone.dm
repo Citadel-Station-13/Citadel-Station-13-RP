@@ -86,10 +86,11 @@
 
 /datum/unit_test_way_of_killing_someone/exploding_but_gently/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
+		victim.Life(2, 1)
 		if(QDELETED(victim) || IS_DEAD(victim))
 			continue
 		victim.legacy_ex_act(3)
-		victim.Life(2, 1)
+		sleep(1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (kill-only) an immortal mob?")
 
@@ -114,10 +115,10 @@
 
 /datum/unit_test_way_of_killing_someone/actually_exploding_but_gently/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
+		victim.Life(2, 1)
 		if(QDELETED(victim) || IS_DEAD(victim))
 			continue
 		explosion(victim.loc, 0, 0, 4, 0, FALSE)
 		sleep(1)
-		victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (kill-only) an immortal mob?")

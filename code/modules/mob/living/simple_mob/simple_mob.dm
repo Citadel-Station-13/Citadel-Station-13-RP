@@ -279,6 +279,7 @@
 	return ..()
 
 /mob/living/simple_mob/Destroy()
+	release_vore_contents()
 	default_language = null
 	QDEL_NULL(access_card)
 

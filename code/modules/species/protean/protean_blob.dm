@@ -376,8 +376,10 @@
 	blob.update_icon() //Will remove the collapse anim
 
 	//Transfer vore organs
-	blob.vore_organs = vore_organs
+	blob.vore_organs = vore_organs?.Copy() || list()
+	vore_organs = null
 	blob.vore_selected = vore_selected
+	vore_selected = null
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly
 		B.forceMove(blob)
@@ -508,6 +510,9 @@
 
 	//Transfer vore organs
 	vore_selected = blob.vore_selected
+	blob.vore_selected = null
+	vore_organs = blob.vore_organs?.Copy() || list()
+	blob.vore_organs = null
 	for(var/belly in blob.vore_organs)
 		var/obj/belly/B = belly
 		B.forceMove(src)

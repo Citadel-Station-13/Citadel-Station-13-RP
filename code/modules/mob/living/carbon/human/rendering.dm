@@ -516,7 +516,7 @@
 			continue
 		if(part)
 			icon_key += "[part.name]"
-			icon_key += "[part.species.get_race_key(part.owner)]"
+			icon_key += "[part.species.get_race_key(src)]"
 			icon_key += "[part.dna.GetUIState(DNA_UI_GENDER)]"
 			icon_key += "[part.s_tone]"
 			if(part.s_col && part.s_col.len >= 3)
