@@ -38,7 +38,7 @@
 		// TODO: organ update, auto remove on yank
 		organ.removed()
 		organ.forceMove(casted.loc)
-		qdel(organ)
+		organ.inflict_atom_damage(99999, DAMAGE_TYPE_BRUTE, 6, ARMOR_BOMB)
 
 /datum/unit_test_way_of_killing_someone/qdel_all_organs
 
@@ -47,7 +47,8 @@
 		return FALSE
 	var/mob/living/carbon/casted = victim
 	for(var/obj/item/organ/organ as anything in casted.internal_organs)
-		qdel(organ)
+		if(!organ.integrity_enabled || (organ.integrity_flags & INTEGRITY_INDESTRUCTIBLE))
+			qdel(organ)
 
 /datum/unit_test_way_of_killing_someone/gibbing
 	is_ideally_gibbing = TRUE
@@ -68,6 +69,7 @@
 	for(var/i in 1 to 100)
 		if(!QDELETED(victim) && !IS_DEAD(victim))
 			victim.legacy_ex_act(1)
+			victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")
 
@@ -78,6 +80,7 @@
 	for(var/i in 1 to 100)
 		if(!QDELETED(victim) && !IS_DEAD(victim))
 			victim.legacy_ex_act(3)
+			victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (kill-only) an immortal mob?")
 
@@ -89,6 +92,7 @@
 	for(var/i in 1 to 100)
 		if(!QDELETED(victim) && !IS_DEAD(victim))
 			explosion(victim.loc, 4, 0, 0, 0, FALSE)
+			victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")
 
@@ -100,5 +104,6 @@
 	for(var/i in 1 to 100)
 		if(!QDELETED(victim) && !IS_DEAD(victim))
 			explosion(victim.loc, 0, 0, 4, 0, FALSE)
+			victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")
