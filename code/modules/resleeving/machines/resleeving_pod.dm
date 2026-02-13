@@ -156,6 +156,9 @@
 	held_mirror = null
 
 /obj/machinery/resleeving/resleeving_pod/proc/perform_resleeve(mob/living/target, obj/item/organ/internal/mirror/mirror)
+	if(!target.resleeving_supports_mirrors())
+		send_audible_system_message("Target's physiology does not support mirrors.")
+		return FALSE
 	// human only for the love of god lol even if we technically support living for idfk cryptbiology later on
 	if(!ishuman(target))
 		send_audible_system_message("Target must be human.")

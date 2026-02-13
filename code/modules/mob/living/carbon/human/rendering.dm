@@ -464,6 +464,11 @@
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/update_icons_body()
+	var/obj/item/organ/external/chest = get_organ(BP_TORSO)
+	if(!chest)
+		// can happen during deletion sometimes
+		return
+
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
 
@@ -548,8 +553,7 @@
 		base_icon = GLOB.human_icon_cache[icon_key]
 	else
 		//BEGIN CACHED ICON GENERATION.
-		var/obj/item/organ/external/chest = get_organ(BP_TORSO)
-		base_icon = chest?.get_icon()
+		base_icon = chest.get_icon()
 
 		for(var/obj/item/organ/external/part in organs)
 			if(part.is_stump() || part.is_hidden_by_tail())
