@@ -104,6 +104,8 @@
 	name = "positronic brain interface"
 	brain_type = /obj/item/mmi/digital/posibrain
 	robotic = ORGAN_ROBOT
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	compatible_with_mirrors = FALSE
 
 /obj/item/organ/internal/mmi_holder/posibrain/update_from_mmi()
 	..()
@@ -116,6 +118,8 @@
 	name = "digital brain interface"
 	brain_type = /obj/item/mmi/digital/robot
 	robotic = ORGAN_ROBOT
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	compatible_with_mirrors = FALSE
 
 /obj/item/organ/internal/mmi_holder/robot/update_from_mmi()
 	..()

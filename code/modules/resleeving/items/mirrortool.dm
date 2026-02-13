@@ -103,7 +103,7 @@
 				target = target,
 				range = MESSAGE_RANGE_ITEM_HARD,
 				visible = SPAN_WARNING("[clickchain.performer] briefly points [src] at [target]'s spine."),
-				otherwise_self = SPAN_WARNING("[src] makes a beep as you pass it over [target]'s spine. They are not compatible with mirrors."),
+				otherwise_self = SPAN_WARNING("[src] makes a beep as you pass it over [target]'s spine. They (or their mind) are not compatible with mirrors."),
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 

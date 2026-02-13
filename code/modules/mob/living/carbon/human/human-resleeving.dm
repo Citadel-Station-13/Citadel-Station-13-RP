@@ -4,6 +4,16 @@
 //* helpers / API for the resleeving module *//
 
 /mob/living/carbon/human/resleeving_supports_mirrors()
+	// TODO: organ rewrite, organ keys
+	var/obj/item/organ/internal/brain/brain = locate() in internal_organs
+	if(brain)
+		if(!brain.compatible_with_mirrors)
+			return FALSE
+	else
+		var/obj/item/organ/internal/mmi_holder/mmi_brain = locate() in internal_organs
+		if(mmi_brain)
+			if(!mmi_brain.compatible_with_mirrors)
+				return FALSE
 	return TRUE
 
 /mob/living/carbon/human/resleeving_create_mirror()
@@ -32,5 +42,3 @@
 	else
 		located.moveToNullspace()
 	return located
-
-// #warn don't let proteans resleeve
