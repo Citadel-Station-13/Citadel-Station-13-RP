@@ -110,7 +110,7 @@
 	created.set_species(/datum/species/shapeshifter/promethean)
 	return created
 
-/datum/unit_test/resleeving/mirror_general_testing/human/promethean
+/datum/unit_test/resleeving/mirror_general_testing/human/protean
 	should_exist = FALSE
 
 /datum/unit_test/resleeving/mirror_general_testing/human/protean/create_character(atom/loc)
@@ -149,7 +149,7 @@
 	created.set_species(/datum/species/shapeshifter/promethean)
 	return created
 
-/datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/promethean
+/datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/synth
 
 /datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/synth/create_character(atom/loc)
 	var/mob/living/carbon/human/created = new /mob/living/carbon/human(loc)
