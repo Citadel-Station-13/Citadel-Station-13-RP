@@ -197,7 +197,8 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 
 /datum/unit_test/proc/reset_room()
 	var/list/turf/interior = block(get_turf(run_loc_floor_bottom_left), get_turf(run_loc_floor_top_right))
-	interior.empty(/turf/simulated/floor/tiled)
+	for(var/turf/T as anything in interior)
+		T.empty(/turf/simulated/floor/tiled)
 
 /proc/RunUnitTest(datum/unit_test/test_path, list/test_results)
 	if(ispath(test_path, /datum/unit_test/focus_only))
