@@ -107,8 +107,6 @@
 /mob/living/simple_mob/protean_blob/Destroy()
 	humanform = null
 	refactory = null
-	vore_organs = null
-	vore_selected = null
 	if(healing)
 		healing.expire()
 	return ..()

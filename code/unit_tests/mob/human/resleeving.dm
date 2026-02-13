@@ -94,6 +94,7 @@
 	return new /mob/living/carbon/human(loc)
 
 /datum/unit_test/resleeving/mirror_general_testing/human/synth
+	should_exist = TRUE
 
 /datum/unit_test/resleeving/mirror_general_testing/human/synth/create_character(atom/loc)
 	var/mob/living/carbon/human/created = ..()
@@ -103,7 +104,7 @@
 	return created
 
 /datum/unit_test/resleeving/mirror_general_testing/human/promethean
-	should_exist = FALSE
+	should_exist = TRUE
 
 /datum/unit_test/resleeving/mirror_general_testing/human/promethean/create_character(atom/loc)
 	var/mob/living/carbon/human/created = ..()
