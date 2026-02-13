@@ -15,11 +15,14 @@
 	animation.master = src
 
 	flick(anim, animation)
-	if(do_gibs) gibs(loc, dna)
+	if(do_gibs)
+		gibs(loc, dna)
 
 	spawn(15)
-		if(animation)	qdel(animation)
-		if(src)			qdel(src)
+		if(animation)
+			qdel(animation)
+		if(src)
+			qdel(src)
 
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.

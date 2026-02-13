@@ -23,6 +23,7 @@
 	. = ..()
 
 /mob/living/gib()
+	resleeving_remove_mirror(drop_location())
 	if(butchery_drops_organs)
 		for(var/path in internal_organs)
 			if(ispath(path))
@@ -41,4 +42,8 @@
 		for(var/obj/item/organ/external/E in src.organs)
 			if(!ispath(E))
 				E.droplimb(FALSE, DROPLIMB_EDGE, TRUE)
+	..()
+
+/mob/living/dust(anim, remains)
+	resleeving_remove_mirror(drop_location())
 	..()

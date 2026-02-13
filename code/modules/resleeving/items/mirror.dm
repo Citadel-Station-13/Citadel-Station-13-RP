@@ -15,6 +15,12 @@
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	organ_tag = ORGAN_TAG_MIRROR
 	parent_organ = BP_TORSO
+	// make it more obvious
+	light_range = 0.5
+	light_power = 1
+	light_color = "#ffff00"
+
+	// TODO: properly emissive-ify these. maybe a blinking indicator.
 
 	/// The 'real mind' of.. us.
 	/// * Cannot be erased without admin intervention; usually set on implant.
