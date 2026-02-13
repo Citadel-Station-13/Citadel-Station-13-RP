@@ -5,6 +5,7 @@
 
 /datum/unit_test/resleeving
 	abstract_type = /datum/unit_test/resleeving
+	reset_room_after = TRUE
 
 /datum/unit_test/resleeving/mirror_general_testing
 	abstract_type = /datum/unit_test/resleeving/mirror_general_testing
