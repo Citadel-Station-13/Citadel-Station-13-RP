@@ -1,15 +1,27 @@
-// Longer paths should come after shorter ones
+/**
+ * List of fancy type replacements.
+ * * Longer paths should come after shorter ones.
+ * * Unfortunately, all paths must be included in some way, hence 'DATUM' existing. Otherwise shit breaks.
+ */
 GLOBAL_LIST_INIT(fancy_type_replacements, list(
+	/datum = "DATUM",
+
+	/atom = "ATOM",
 	/atom/movable = "MOVABLE",
+
+	/turf = "TURF",
 	/turf/simulated = "SIMULATED",
 	/turf/simulated/floor = "FLOOR",
 
+	/mob = "MOB",
 	/mob/living = "LIVING",
 	/mob/living/carbon = "CARBON",
 	/mob/living/carbon/human = "HUMAN",
 	/mob/living/simple_mob = "SIMPLE_MOB",
 	/mob/living/silicon = "SILICON",
 	/mob/living/silicon/robot = "ROBOT",
+
+	/obj = "OBJ",
 
 	/obj/item = "ITEM",
 	/obj/item/organ = "ORGAN",
@@ -32,7 +44,6 @@ GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	/obj/item/reagent_containers/pill/patch = "PATCH",
 	/obj/item/reagent_containers/food = "FOOD",
 	/obj/item/reagent_containers/food/drinks = "DRINKS",
-	/obj/effect/decal/cleanable = "CLEANABLE",
 	/obj/item/radio/headset = "HEADSET",
 	/obj/item/clothing = "CLOTHING",
 	/obj/item/storage = "STORAGE",
@@ -62,8 +73,13 @@ GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	/obj/machinery/vending = "VENDING",
 
 	/obj/effect = "EFFECT",
+	/obj/effect/decal/cleanable = "CLEANABLE",
 	/obj/effect/debris = "DEBRIS",
 	/obj/projectile = "PROJECTILE",
+
+	/obj/overmap = "OVERMAP",
+	/obj/overmap/entity = "OVERMAP-ENTITY",
+	/obj/overmap/tiled = "OVERMAP-TILE",
 ))
 
 /proc/make_types_fancy(list/types)
@@ -74,7 +90,7 @@ GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	if(!types_to_replacement)
 		// ignore_root_path so we can draw the root normally
 		var/list/fancy_type_cache = GLOB.fancy_type_replacements
-		var/list/local_replacements = zebra_typecacheof(fancy_type_cache, ignore_root_path = TRUE)
+		var/list/local_replacements = zebra_typecacheof(fancy_type_cache)
 		var/list/local_texts = list()
 		for(var/key in fancy_type_cache)
 			local_texts[local_replacements[key]] = "[key]"
