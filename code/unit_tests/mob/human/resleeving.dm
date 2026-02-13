@@ -107,7 +107,7 @@
 
 /datum/unit_test/resleeving/mirror_general_testing/human/promethean/create_character(atom/loc)
 	var/mob/living/carbon/human/created = ..()
-	created.set_species(/datum/species/promethean)
+	created.set_species(/datum/species/shapeshifter/promethean)
 	return created
 
 /datum/unit_test/resleeving/mirror_general_testing/human/promethean
@@ -146,7 +146,7 @@
 
 /datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/promethean/create_character(atom/loc)
 	var/mob/living/carbon/human/created = new /mob/living/carbon/human(loc)
-	created.set_species(/datum/species/promethean)
+	created.set_species(/datum/species/shapeshifter/promethean)
 	return created
 
 /datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/promethean
