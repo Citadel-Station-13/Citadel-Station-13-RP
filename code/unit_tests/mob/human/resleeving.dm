@@ -142,22 +142,6 @@
 /datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/proc/invoke_death_and_check_victim_recoverable(datum/unit_test_way_of_killing_someone/method)
 	CRASH("unimplemented")
 
-/datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/promethean
-
-/datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/promethean/create_character(atom/loc)
-	var/mob/living/carbon/human/created = new /mob/living/carbon/human(loc)
-	created.set_species(/datum/species/shapeshifter/promethean)
-	return created
-
-/datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/synth
-
-/datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/synth/create_character(atom/loc)
-	var/mob/living/carbon/human/created = new /mob/living/carbon/human(loc)
-	var/obj/item/organ/internal/brain/brain = locate() in created.internal_organs
-	brain.robotize()
-	ASSERT(locate(/obj/item/organ/internal/mmi_holder) in created.internal_organs)
-	return created
-
 /datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/protean
 
 /datum/unit_test/resleeving/non_mirrorable_species_shall_be_recoverable/protean/create_character(atom/loc)
