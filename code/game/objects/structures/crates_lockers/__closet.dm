@@ -407,10 +407,6 @@
 	add_fingerprint(user)
 	return
 
-/obj/structure/closet/attack_robot(mob/user)
-	if(Adjacent(user))
-		attack_hand(user)
-
 /obj/structure/closet/relaymove(mob/user as mob)
 	if(user.stat || !isturf(loc))
 		return
