@@ -345,7 +345,6 @@
 	icon_state = "posibrain-searching"
 	..()
 
-
 /obj/item/mmi/digital/posibrain/transfer_identity(var/mob/living/carbon/H)
 	..()
 	if(brainmob.mind)

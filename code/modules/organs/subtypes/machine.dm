@@ -38,8 +38,9 @@
 	robotic = ORGAN_ASSISTED
 	butcherable = FALSE
 
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	// TODO: /obj/item/organ/internal/consciousness_holder or something, this is just copypaste
-	var/compatible_with_mirrors = TRUE
+	var/compatible_with_mirrors = FALSE
 
 /obj/item/organ/internal/mmi_holder/Destroy()
 	if(stored_mmi && (stored_mmi.loc == src))
