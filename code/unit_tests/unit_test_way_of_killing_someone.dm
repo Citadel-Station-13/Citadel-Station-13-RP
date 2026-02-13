@@ -95,6 +95,7 @@
 		if(QDELETED(victim) || IS_DEAD(victim))
 			continue
 		explosion(victim.loc, 4, 0, 0, 0, FALSE)
+		sleep(1)
 		victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")
@@ -108,6 +109,7 @@
 		if(QDELETED(victim) || IS_DEAD(victim))
 			continue
 		explosion(victim.loc, 0, 0, 4, 0, FALSE)
+		sleep(1)
 		victim.Life(2, 1)
 	if(!QDELETED(victim) && !IS_DEAD(victim))
 		stack_trace("why did you try to explode (gib) an immortal mob?")
