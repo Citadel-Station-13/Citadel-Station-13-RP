@@ -86,6 +86,8 @@
 
 /datum/unit_test_way_of_killing_someone/exploding_but_gently/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
+		if(QDELETED(victim) || IS_DEAD(victim))
+			continue
 		victim.Life(2, 1)
 		if(QDELETED(victim) || IS_DEAD(victim))
 			continue
@@ -115,6 +117,8 @@
 
 /datum/unit_test_way_of_killing_someone/actually_exploding_but_gently/invoke(mob/living/victim)
 	for(var/i in 1 to 100)
+		if(QDELETED(victim) || IS_DEAD(victim))
+			continue
 		victim.Life(2, 1)
 		if(QDELETED(victim) || IS_DEAD(victim))
 			continue
