@@ -127,18 +127,36 @@
 	src.exterior_locked = exterior_locked
 
 /datum/airlock_phase/doors/assert_state/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
-	#warn impl
+	var/list/datum/airlock_task/door_tasks = list()
+	for(var/obj/machinery/airlock_component/door_linker/linker as anything in system.controller.network.get_door_linkers())
+		if(linker.is_indoors)
+			door_tasks += linker.create_state_task(interior_open, interior_locked)
+		else
+			door_tasks += linker.create_state_task(exterior_open, exterior_locked)
+	cycling.add_task(new /datum/airlock_task/compound("Operating doors" door_tasks))
 	return AIRLOCK_PHASE_SETUP_SUCCESS
+
+/datum/airlock_phase/assert_state/seal/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	if(interior_locked && !isnull(interior_open))
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = interior_open
+	if(exterior_locked && !isnull(exterior_open))
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = interior_open
 
 /datum/airlock_phase/doors/seal
 	display_verb = "sealing"
 
 /datum/airlock_phase/doors/seal/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
-	#warn impl
+	var/list/datum/airlock_task/door_tasks = list()
+	for(var/obj/machinery/airlock_component/door_linker/linker as anything in system.controller.network.get_door_linkers())
+		door_tasks += linker.create_state_task(FALSE, TRUE)
+	cycling.add_task(new /datum/airlock_task/compound("Operating doors" door_tasks))
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/doors/seal/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
-#warn set X_DOOR_LOCKED_STATE blackboard on these phases
+	if(interior)
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = FALSE
+	if(exterior)
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = FALSE
 
 /datum/airlock_phase/doors/lock_open
 	display_verb = "opening doors"
@@ -156,11 +174,20 @@
 	exterior = TRUE
 
 /datum/airlock_phase/doors/lock_open/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
-	#warn impl
-	return AIRLOCK_PHASE_SETUP_SUCCESS
+	var/list/datum/airlock_task/door_tasks = list()
+	for(var/obj/machinery/airlock_component/door_linker/linker as anything in system.controller.network.get_door_linkers())
+		if(linker.is_indoors)
+			if(interior)
+				door_tasks += linker.create_state_task(TRUE, TRUE)
+		else if(exterior)
+			door_tasks += linker.create_state_task(TRUE, TRUE)
+	cycling.add_task(new /datum/airlock_task/compound("Operating doors" door_tasks))	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/doors/lock_open/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
-#warn set X_DOOR_LOCKED_STATE blackboard on these phases
+	if(interior)
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = TRUE
+	if(exterior)
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = TRUE
 
 /datum/airlock_phase/doors/lock_closed
 	display_verb = "closing doors"
@@ -178,8 +205,17 @@
 	exterior = TRUE
 
 /datum/airlock_phase/doors/lock_closed/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
-	#warn impl
+	var/list/datum/airlock_task/door_tasks = list()
+	for(var/obj/machinery/airlock_component/door_linker/linker as anything in system.controller.network.get_door_linkers())
+		if(linker.is_indoors)
+			if(interior)
+				door_tasks += linker.create_state_task(TRUE, TRUE)
+		else if(exterior)
+			door_tasks += linker.create_state_task(TRUE, TRUE)
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/doors/lock_closed/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
-#warn set X_DOOR_LOCKED_STATE blackboard on these phases
+	if(interior)
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = FALSE
+	if(exterior)
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = FALSE

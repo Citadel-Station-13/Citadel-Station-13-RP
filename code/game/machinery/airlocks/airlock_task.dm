@@ -72,11 +72,16 @@
 	return ..()
 
 /datum/airlock_task/compound
+	var/desc
 	var/list/datum/airlock_task/tasks
 
-/datum/airlock_task/compound/New(list/datum/airlock_task/tasks)
+/datum/airlock_task/compound/New(desc, list/datum/airlock_task/tasks)
+	src.desc = desc
 	src.tasks = tasks
 	..()
+
+/datum/airlock_task/compound/describe_state()
+	return "desc"
 
 /datum/airlock_task/compound/Destroy()
 	QDEL_LIST(tasks)
