@@ -12,9 +12,7 @@
 		to_chat(src, "<span class='danger'>You have no genomes, not even your own, and cannot revive.</span>")
 		return 0
 
-	if(src.stat == DEAD)
-		dead_mob_list -= src
-		living_mob_list += src
+	// update_stat() from revive.
 
 	revive(force = TRUE, full_heal = TRUE)
 	remove_all_restraints()

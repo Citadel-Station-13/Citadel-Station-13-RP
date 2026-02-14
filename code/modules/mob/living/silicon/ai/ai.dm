@@ -31,7 +31,7 @@ var/list/ai_verbs_default = list(
 /proc/AutoUpdateAI(obj/subject)
 	var/is_in_use = 0
 	if (subject!=null)
-		for(var/A in ai_list)
+		for(var/A in GLOB.ai_list)
 			var/mob/living/silicon/ai/M = A
 			if ((M.client && M.machine == subject))
 				is_in_use = 1
@@ -203,13 +203,13 @@ var/list/ai_verbs_default = list(
 	spawn(5)
 		new /obj/machinery/ai_powersupply(src)
 
-	ai_list += src
+	GLOB.ai_list += src
 	return ..()
 
 /mob/living/silicon/ai/proc/on_mob_init()
-	to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
-	to_chat(src, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
-	to_chat(src, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
+	to_chat(src, SPAN_BOLD("You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras)."))
+	to_chat(src, SPAN_BOLD("To look at other parts of the station, click on yourself to get a camera menu."))
+	to_chat(src, SPAN_BOLD("While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc."))
 	to_chat(src, "To use something, simply click on it.")
 	to_chat(src, "Use <B>say #b</B> to speak to your cyborgs through binary. Use say :h to speak from an active holopad.")
 	to_chat(src, "For department channels, use the following say commands:")
@@ -232,13 +232,13 @@ var/list/ai_verbs_default = list(
 
 	if(malf && !(mind in malf.current_antagonists))
 		show_laws()
-		to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
+		to_chat(src, SPAN_BOLD("These laws may be changed by other players, random events, or by you becoming malfunctioning."))
 
 	job = "AI"
 	setup_icon()
 
 /mob/living/silicon/ai/Destroy()
-	ai_list -= src
+	GLOB.ai_list -= src
 
 	QDEL_NULL(announcement)
 	QDEL_NULL(eyeobj)
@@ -750,14 +750,6 @@ var/list/ai_verbs_default = list(
 //Special subtype kept around for global announcements
 /mob/living/silicon/ai/announcer
 	is_dummy = 1
-
-/mob/living/silicon/ai/announcer/Initialize(mapload)
-	. = ..()
-	GLOB.mob_list -= src
-	living_mob_list -= src
-	dead_mob_list -= src
-	ai_list -= src
-	silicon_mob_list -= src
 
 /mob/living/silicon/ai/announcer/Life(seconds, times_fired)
 	SHOULD_CALL_PARENT(FALSE)

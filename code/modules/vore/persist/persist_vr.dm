@@ -15,7 +15,7 @@
 
 // Handle people leaving due to round ending.
 /legacy_hook/roundend/proc/persist_locations()
-	for(var/mob/Player in human_mob_list)
+	for(var/mob/Player in GLOB.player_list)
 		if(!Player.mind || isnewplayer(Player))
 			continue // No mind we can do nothing, new players we care not for
 		else if(Player.stat == DEAD)

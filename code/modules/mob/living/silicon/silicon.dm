@@ -57,8 +57,8 @@
 	var/translation_context_type = /datum/translation_context/simple/silicons
 
 /mob/living/silicon/Initialize(mapload)
-	silicon_mob_list |= src
 	. = ..()
+	GLOB.silicon_mobs += src
 	add_language(LANGUAGE_GALCOM)
 	set_default_language(RSlanguages.fetch_local_or_throw(/datum/prototype/language/common))
 	create_translation_context()
@@ -71,9 +71,9 @@
 	add_language(LANGUAGE_EAL)
 
 /mob/living/silicon/Destroy()
-	silicon_mob_list -= src
 	for(var/datum/alarm_handler/AH in SSalarms.all_handlers)
 		AH.unregister_alarm(src)
+	GLOB.silicon_mobs -= src
 	return ..()
 
 /mob/living/silicon/proc/init_id()

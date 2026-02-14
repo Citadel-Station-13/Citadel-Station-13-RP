@@ -175,7 +175,7 @@
 
 /datum/weather/lavaland/ash_storm/process_effects()
 	..()
-	for(var/thing in living_mob_list)
+	for(var/thing in GLOB.mob_living_list)
 		var/mob/living/L = thing
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)

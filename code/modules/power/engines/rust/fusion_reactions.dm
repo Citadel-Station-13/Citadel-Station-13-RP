@@ -126,7 +126,7 @@ var/list/fusion_reactions
 
 	radiation_pulse(holder, 7500, RAD_FALLOFF_ENGINE_FUSION)
 
-	for(var/mob/living/mob in living_mob_list)
+	for(var/mob/living/mob in GLOB.human_list)
 		var/turf/T = get_turf(mob)
 		if(T && (holder.z == T.z))
 			if(istype(mob, /mob/living/carbon/human))

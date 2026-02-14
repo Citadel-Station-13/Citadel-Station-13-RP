@@ -29,29 +29,17 @@
  * should only be called internally by update_stat().
  */
 /mob/proc/set_stat(new_stat, update_mobility = TRUE)
-	if(stat == new_stat)
-		return FALSE
-	var/was_dead = IS_DEAD(src)
-	var/old_stat = stat
+	if(new_stat == stat)
+		return
+	. = stat
 	stat = new_stat
-	if(old_stat != new_stat)
-		mob_list_update_stat(old_stat, new_stat)
-	var/is_dead = IS_DEAD(src)
+
 	mobility_flags = (mobility_flags & ~(MOBILITY_IS_CONSCIOUS)) | (STAT_IS_CONSCIOUS(new_stat)? MOBILITY_IS_CONSCIOUS : NONE)
 	if(!STAT_IS_CONSCIOUS(new_stat))
 		facing_dir = null
-	if(was_dead != is_dead)
-		if(was_dead && !is_dead)
-			living_mob_list += src
-			dead_mob_list -= src
-		else if(!was_dead && is_dead)
-			living_mob_list -= src
-			dead_mob_list += src
-	on_stat_change(old_stat, new_stat)
 	if(update_mobility)
 		update_mobility()
 	update_hud_med_status()
-	return TRUE
 
 /mob/proc/on_stat_change(old_stat, new_stat)
 	return
@@ -64,6 +52,9 @@
  * * full_heal - fix everything we need to live
  */
 /mob/proc/revive(force, full_heal, restore_nutrition)
+	if(QDELETED(src))
+		// Bro just like, don't ok
+		return FALSE
 	// full heal if requested
 	if(full_heal)
 		rejuvenate(TRUE, restore_nutrition = restore_nutrition)

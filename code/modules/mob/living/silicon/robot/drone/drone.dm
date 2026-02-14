@@ -407,7 +407,8 @@
 	. = ..()
 	if(can_reenter_corpse || stat == DEAD)
 		return
-	if(src in living_mob_list) // needs to exist to reopen spawn atom
+	// TODO wow this fucking sucks!
+	if(src in GLOB.mob_living_list) // needs to exist to reopen spawn atom
 		if(master_matrix)
 			master_matrix.remove_drone(WEAKREF(src))
 			master_matrix.message_drones(SPAN_NOTICE("Your circuits dull. The matriarch has gone offline."))

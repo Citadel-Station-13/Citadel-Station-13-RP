@@ -13,8 +13,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass)
 	var/grass_chance = 20
 
 	var/list/grass_types = list(
-		/obj/structure/flora/ausbushes/sparsegrass,
-		/obj/structure/flora/ausbushes/fullgrass,
+		/obj/structure/flora/ausbushes/sparsegrass = 1,
+		/obj/structure/flora/ausbushes/fullgrass = 1,
 	)
 
 /datum/category_item/catalogue/flora/sif_grass
@@ -51,7 +51,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/grass)
 		//edge_blending_priority++
 
 	if(grass_chance && prob(grass_chance) && !check_density())
-		var/grass_type = pickweight(grass_types)
+		var/grass_type = pickweight_one_default(grass_types)
 		new grass_type(src)
 	. = ..()
 

@@ -174,7 +174,7 @@
 
 /datum/weather/virgo3b/light_snow/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -211,7 +211,7 @@
 
 /datum/weather/virgo3b/snow/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -254,7 +254,7 @@
 
 /datum/weather/virgo3b/blizzard/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -296,7 +296,7 @@
 
 /datum/weather/virgo3b/rain/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -351,7 +351,7 @@
 
 /datum/weather/virgo3b/storm/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -435,7 +435,7 @@
 
 /datum/weather/virgo3b/hail/process_effects()
 	..()
-	for(var/humie in living_mob_list)
+	for(var/humie in GLOB.mob_living_list)
 		var/mob/living/H = humie
 		if(H.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(H)
