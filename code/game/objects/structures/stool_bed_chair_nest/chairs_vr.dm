@@ -40,6 +40,14 @@
 	base_icon = "onestar_chair_red"
 	material_color = 0
 
+/obj/structure/bed/chair/heartstool
+	name = "heart stool"
+	desc = "A heart-shaped cushion for heart-shaped rumps. Has enough room for two, if their figures are modest enough."
+	icon_state = "stoolheart_base"
+	color = "#d33f3f"
+	base_icon = "stoolheart_base"
+	material_color = TRUE
+
 // Baystation12 chairs with their larger update_icons proc
 /obj/structure/bed/chair/bay/update_icon()
 	// todo: this should call parent
