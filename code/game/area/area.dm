@@ -28,7 +28,7 @@
  * A grouping of tiles into a logical space, mostly used by map editors
  */
 /area
-	name = "Space"
+	name = "unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	layer = AREA_LAYER
@@ -173,7 +173,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
  */
 /proc/process_teleport_locs()
 	for(var/area/AR as anything in get_sorted_areas())
-		if(istype(AR, /area/shuttle) || AR.area_flags & AREA_NO_TELEPORT)
+		if(istype(AR, /area/shuttle))
 			continue
 		if(GLOB.teleportlocs[AR.name])
 			continue
