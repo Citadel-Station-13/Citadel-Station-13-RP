@@ -12,6 +12,10 @@
 /// Secondary / tiered effects from EMP blast
 #define EMP_TRAIT_N(n) "emp_[n]"
 
+//* Datums - Stargazer Mindnets *//
+#define TRAIT_SOURCE_STARGAZER_MINDNET "stargazer-mindnet"
+#define TRAIT_SOURCE_STARGAZER_MINDNET_ABILITY(ID) "stargazer-mindnet-ability-[ID]"
+
 //? Item Sources
 
 /// From a flashbulb

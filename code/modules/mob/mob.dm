@@ -382,12 +382,21 @@
 		return
 
 	face_atom(A)
+
+	var/target_is_probably_visible = FALSE
+	if(isturf(A.loc))
+		target_is_probably_visible = TRUE
+	else if(isitem(A))
+		var/obj/item/target_item = A
+		if(target_item.inv_inside)
+			target_is_probably_visible = TRUE
+
 	if(!isobserver(src) && !isturf(A) && (get_top_level_atom(A) != src) && get_turf(A))
 		for(var/mob/M in viewers(4, src))
 			if(M == src || M.is_blind())
 				continue
 			// if(M.client && M.client.get_preference_toggle(/datum/client_preference/examine_look))
-			to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
+			to_chat(M, action_descriptor_for_examine(src, target_is_probably_visible ? A : "something"))
 
 	do_examinate(A)
 
