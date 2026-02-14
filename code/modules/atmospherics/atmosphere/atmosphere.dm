@@ -13,12 +13,24 @@
 /datum/atmosphere
 	/// don't initialize abstract datums.
 	abstract_type = /datum/atmosphere
+
 	/// generated gas string. do not modify.
 	var/gas_string
+	/// generated gas pressure. do not modify.
+	var/gas_pressure
+	/// generated gas temperature. do not modify.
+	var/gas_temperature
+	/// generated gas moles. do not modify.
+	var/gas_moles
+	/// generated gas ratios. do not modify.
+	var/list/gas_ratios
+
 	/// unique id. defaults to typepath.
 	var/id
 
 	/// target volume, incase we want to generate for something that isn't a tile, this lets you set it.
+	///
+	/// * Warning: This must match what you're generating it for, otherwise you'll get the wrong moles/pressure / it'll be all skewed.
 	var/volume = CELL_VOLUME
 
 	var/pressure_gaussian = FALSE
@@ -112,4 +124,14 @@
 		total_moles += moles_this_step
 
 	gas_string = get_gas_string(target_gases, target_temperature)
+
+	var/list/ratios = list()
+	for(var/id in target_gases)
+		ratios[id] = target_gases[id] / total_moles
+
+	gas_moles = total_moles
+	gas_pressure = (gas_moles * R_IDEAL_GAS_EQUATION * target_temperature) / volume
+	gas_temperature = target_temperature
+	gas_ratios = ratios
+
 

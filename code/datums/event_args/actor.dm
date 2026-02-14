@@ -53,8 +53,8 @@
 // todo: rework these awful ass feedback/message procs below wtf
 
 // proposal:
-// visible_feedback(visible, audible, self, range, target)
-// visible_proximity_feedback(visible_far, visible_near, audible_far, audible_near, self, range_far, range_near, target)
+// visible_feedback(visible, audible, self, them, range, target)
+// visible_proximity_feedback(visible_far, visible_near, audible_far, audible_near, self, them, range_far, range_near, target)
 
 /**
  * It is highly recommended to use named parameters with this.

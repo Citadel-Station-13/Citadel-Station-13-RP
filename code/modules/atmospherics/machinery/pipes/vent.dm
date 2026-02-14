@@ -12,7 +12,7 @@
 
 	dir = SOUTH
 	initialize_directions = SOUTH
-	pipe_flags = PIPING_DEFAULT_LAYER_ONLY
+	pipe_flags = PIPE_FLAG_DEFAULT_LAYER_ONLY
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "passive vent"
 	hides_underfloor_defaulting = FALSE
