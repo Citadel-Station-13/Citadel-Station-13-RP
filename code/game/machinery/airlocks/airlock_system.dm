@@ -51,14 +51,30 @@
 	.["programTgui"] = controller.program?.tgui_airlock_component
 	.["programData"] = controller.program?.ui_program_data(src)
 
+/datum/airlock_system/process(delta_time)
+	if(!cycling)
+		STOP_PROCESSING(SSprocess_5fps, controller)
+		STACK_TRACE("system was processing despite no cycling; killing")
+		return PROCESS_KILL
+	cycling.poll(delta_time)
+
 /**
+ * Begins an airlock cycle.
+ * * `cycling`'s reference should belong to the system after being passed in.
  * @return null if failed, cycle id otherwise
  */
-/datum/airlock_system/proc/start_cycle(datum/airlock_cycle/cycle, datum/callback/on_finished)
-	if(cycling)
-		return FALSE
-	cycling_on_finish = on_finished
-	#warn impl
+/datum/airlock_system/proc/start_cycle(datum/airlock_cycling/cycling, datum/callback/on_finished)
+	if(src.cycling)
+		return null
+	src.cycling_on_finish = on_finished
+	src.cycling = cycling
+
+	cycling.setup(src)
+	// immediately poll once
+	cycling.poll(0)
+	return cycling.op_id
+
+#warn inform controller of start/stop so it can start/stop processing and update icon
 
 /**
  * @return TRUE if cycling with given ID is stopped, FALSE otherwise

@@ -147,6 +147,11 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 		return
 	program?.on_sensor_cycle_request(system, sensor, actor)
 
+/obj/machinery/airlock_component/controller/process(delta_time)
+	if(!system)
+		return PROCESS_KILL
+	system.process(delta_time)
+
 #warn impl all
 
 /obj/machinery/airlock_component/controller/hardmapped

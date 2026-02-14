@@ -7,6 +7,9 @@
 /datum/airlock_program/vacuum_cycle
 	tgui_airlock_component = "VacuumCycle"
 
+	var/reassert_doors_every = 3 SECONDS
+
+
 /datum/airlock_program/vacuum_cycle/ui_program_data(datum/airlock_system/system)
 	. = ..()
 	.["interiorSealed"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_SEALED]
@@ -16,16 +19,22 @@
 	. = ..()
 	if(.)
 		return
+	#warn vacuum cycle
 	switch(action)
-		#warn vacuum cycle
 		if("cycleToExterior")
+			pass()
 		if("cycleToInterior")
-		#warn abort cycles and force doors based on states
+			#warn abort cycles and force doors based on states
+			pass()
 		if("forceExteriorDoors")
+			pass()
 		if("forceInteriorDoors")
+			pass()
 		if("cancel")
+			pass()
 			// soft cancel, try to repressurize
 		if("abort")
+			pass()
 			// immediate abort
 
 /datum/airlock_program/vacuum_cycle/proc/get_currently_open_side(datum/airlock_system/system)

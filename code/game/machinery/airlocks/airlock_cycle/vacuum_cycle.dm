@@ -2,7 +2,6 @@
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/airlock_cycle/vacuum_cycle
-	var/to_side = AIRLOCK_SIDE_NEUTRAL
 
 /datum/airlock_cycle/vacuum_cycle/create_cycling(cycle_from_side, cycle_to_side)
 	return ..()
@@ -18,11 +17,13 @@
 		else
 			// be conservative, assume we want to conserve air
 			. += new /datum/airlock_phase/depressurize/drain_to_handler
-	. += new /datum/airlock_phase/merge_blackboard {
-		merge_system_blackboard = list(
-			AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE = cycle_to_side,
-		);
-	}
+
+	var/datum/airlock_phase/merge_blackboard/side_change_marker = new
+	side_change_marker.merge_system_blackboard = list(
+		AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE = cycle_to_side,
+	)
+	. += side_change_marker
+
 	switch(cycle_to_side)
 		if(AIRLOCK_SIDE_EXTERIOR)
 			. += new /datum/airlock_phase/repressurize/allow_external_air

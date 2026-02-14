@@ -416,12 +416,3 @@
 
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "fleshclosed"
-
-//* Airlock API *//
-
-/**
- * Called when an airlock requests we set our state to something
- */
-/obj/machinery/door/proc/airlock_set(open, lock)
-	return FALSE
-	#warn impl on /airlock
