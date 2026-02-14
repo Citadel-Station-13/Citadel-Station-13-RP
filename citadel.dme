@@ -4011,6 +4011,7 @@
 #include "code\modules\mob\living\carbon\carbon-blood.dm"
 #include "code\modules\mob\living\carbon\carbon-cpr.dm"
 #include "code\modules\mob\living\carbon\carbon-damage.dm"
+#include "code\modules\mob\living\carbon\carbon-death.dm"
 #include "code\modules\mob\living\carbon\carbon-defense.dm"
 #include "code\modules\mob\living\carbon\carbon-emote.dm"
 #include "code\modules\mob\living\carbon\carbon-hands.dm"
