@@ -1,4 +1,4 @@
-var/global/datum/ntnet/ntnet_global = new()
+var/global/datum/ntnet/ntnet_global
 
 
 // This is the NTNet datum. There can be only one NTNet datum in game at once. Modular computers read data from this.
@@ -31,6 +31,8 @@ var/global/datum/ntnet/ntnet_global = new()
 /datum/ntnet/New()
 	if(ntnet_global && (ntnet_global != src))
 		ntnet_global = src // There can be only one.
+
+/datum/ntnet/proc/initialize_ntnet()
 	for(var/obj/machinery/ntnet_relay/R in GLOB.machines)
 		relays.Add(R)
 		R.NTNet = src

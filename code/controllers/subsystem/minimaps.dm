@@ -23,4 +23,5 @@ SUBSYSTEM_DEF(minimaps)
 		*/
 		var/name = "[z] - Station"
 		station_minimaps += new /datum/minimap(z, name = name)
+		CHECK_TICK
 	station_minimap = new(station_minimaps, "Station")
