@@ -5,7 +5,7 @@
 #define ROUND_TIME(...) ( "[STATION_TIME_PASSED() > MIDNIGHT_ROLLOVER ? "[round(STATION_TIME_PASSED()/MIDNIGHT_ROLLOVER)]:[gameTimestamp(wtime = STATION_TIME_PASSED())]" : gameTimestamp(wtime = STATION_TIME_PASSED())]" )
 
 ///Returns the time that has passed since the game started
-#define STATION_TIME_PASSED(...) (world.time - SSticker.round_start_time)
+#define STATION_TIME_PASSED(...) (SSticker.HasRoundStarted() ? (world.time - SSticker.round_start_time) : 0)
 
 /// Define that just has the current in-universe year for use in whatever context you might want to display that in. (For example, 2022 -> 2562 given a 540 year offset)
 #define CURRENT_STATION_YEAR (GLOB.year_integer + STATION_YEAR_OFFSET)

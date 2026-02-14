@@ -22,7 +22,7 @@ var/global/list/severity_to_string = list("Mundane", "Moderate", "Major")
 	var/last_world_time = 0
 
 /datum/event_container/process(delta_time)
-	if(!SSticker.round_start_time)
+	if(!SSticker.HasRoundStarted())
 		return //don't do events if the round hasn't even started yet
 
 	if(!next_event_time)
