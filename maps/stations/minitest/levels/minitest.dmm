@@ -2523,6 +2523,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/airlock_component/door_linker/indoors/hardmapped,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gl" = (
@@ -2534,9 +2535,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gm" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/map_helper/network_builder/power_cable/auto,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gn" = (
@@ -2572,12 +2571,10 @@
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "gt" = (
@@ -2837,6 +2834,9 @@
 	layer = 3.1;
 	pixel_y = 28
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/map_helper/network_builder/power_cable/auto,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "hq" = (
@@ -2917,6 +2917,12 @@
 /area/shuttle/overmapdemo)
 "hH" = (
 /obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled,
+/area/bridge)
+"ii" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/map_helper/network_builder/power_cable/auto,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "il" = (
@@ -3095,6 +3101,16 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
+"ra" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/map_helper/network_builder/power_cable/auto,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "rq" = (
 /obj/structure/airlock_interconnect/hardmapped,
 /obj/map_helper/airlock_peripheral_linker,
@@ -3109,6 +3125,10 @@
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/tiled,
 /area/medical/medbay)
+"rV" = (
+/obj/machinery/airlock_component/door_linker/indoors/hardmapped,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "sc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
@@ -3178,6 +3198,7 @@
 	},
 /obj/structure/airlock_interconnect/hardmapped,
 /obj/machinery/door/airlock/glass/civilian,
+/obj/map_helper/network_builder/power_cable/knot,
 /turf/simulated/floor/tiled,
 /area/bridge)
 "vl" = (
@@ -3501,6 +3522,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
+"EJ" = (
+/obj/landmark/spawnpoint/latejoin/station/elevator,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/map_helper/network_builder/power_cable/auto,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "Fa" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -4000,6 +4028,13 @@
 /obj/map_helper/paint_stripe/copper,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
+"YB" = (
+/obj/structure/grille,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/map_helper/network_builder/power_cable/auto,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "YE" = (
 /obj/machinery/airlock_component/cycler/hardmapped,
 /obj/structure/airlock_interconnect/hardmapped,
@@ -6339,7 +6374,7 @@ eM
 eM
 fZ
 gk
-gf
+rV
 gr
 gf
 gf
@@ -6543,20 +6578,20 @@ eO
 eO
 gb
 gm
-gf
-gt
-gf
-gf
-gx
-gA
+gm
+ra
+ii
+ii
+EJ
+YB
 hp
-gf
-gf
-gf
-gf
-gf
-gf
-gf
+ii
+ii
+ii
+ii
+ii
+ii
+ii
 vd
 YE
 gf

@@ -80,6 +80,7 @@
  */
 /obj/machinery/airlock_component
 	armor_type = /datum/armor/object/heavy
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 
 	/// conencted gasnet
 	var/datum/airlock_gasnet/network

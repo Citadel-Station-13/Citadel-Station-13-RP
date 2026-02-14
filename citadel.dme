@@ -1589,7 +1589,7 @@
 #include "code\game\machinery\airlocks\airlock_task.dm"
 #include "code\game\machinery\airlocks\airlock_component\controller.dm"
 #include "code\game\machinery\airlocks\airlock_component\cycler.dm"
-#include "code\game\machinery\airlocks\airlock_component\door_link.dm"
+#include "code\game\machinery\airlocks\airlock_component\door_linker.dm"
 #include "code\game\machinery\airlocks\airlock_component\handler.dm"
 #include "code\game\machinery\airlocks\airlock_component\vent.dm"
 #include "code\game\machinery\airlocks\airlock_cycle\vacuum_cycle.dm"
