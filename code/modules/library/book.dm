@@ -1,130 +1,206 @@
 /obj/item/book
 	name = "book"
+	desc = "Crack it open, inhale the musk of its pages, and learn something new."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "book"
 	throw_speed = 1
 	throw_range = 5
-	atom_flags = NOCONDUCT
-	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	w_class = WEIGHT_CLASS_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
 	attack_verb = list("bashed", "whacked", "educated")
-	var/dat			 // Actual page content
-	var/due_date = 0 // Game time in 1/10th seconds
-	var/author		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	var/libcategory = "Miscellaneous"	// The library category this book sits in. "Fiction", "Non-Fiction", "Adult", "Reference", "Religion"
-	var/unique = 0   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
-	var/title		 // The real name of the book.
-	var/carved = 0	 // Has the book been hollowed out for use as a secret storage item?
-	var/obj/item/store	//What's in the book?
+	atom_flags = NOCONDUCT
+	integrity_flags = INTEGRITY_FLAMMABLE
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	drop_sound = 'sound/items/drop/book.ogg'
 	pickup_sound = 'sound/items/pickup/book.ogg'
 
-/obj/item/book/attack_self(mob/user, datum/event_args/actor/actor)
+	/// Maximum icon state number. We start at 8
+	var/maximum_book_state = 16
+	/// Game time in 1/10th seconds
+	var/due_date = 0
+	/// false - Normal book, true - Should not be treated as normal book, unable to be copied, unable to be modified
+	var/unique = FALSE
+	/// Whether or not we have been carved out.
+	var/carved = FALSE
+	/// The typepath for the storage datum we use when carved out.
+	var/carved_storage_type = /datum/object_system/storage/carved_book
+
+	/// The initial author, for use in var editing and such
+	var/starting_author
+	/// The initial bit of content, for use in var editing and such
+	var/starting_content
+	/// The initial title, for use in var editing and such
+	var/starting_title
+	/// The packet of information that describes this book
+	var/datum/book_info/book_data
+
+/obj/item/book/Initialize(mapload)
 	. = ..()
-	if(.)
+	book_data = new(starting_title, starting_author, starting_content)
+
+/obj/item/book/examine(mob/user)
+	. = ..()
+	if(carved)
+		. += SPAN_NOTICE("[src] has been hollowed out.")
+
+/obj/item/book/ui_static_data(mob/user)
+	var/list/data = list()
+	data["author"] = book_data.get_author()
+	data["title"] = book_data.get_title()
+	data["content"] = book_data.get_content()
+	return data
+
+/obj/item/book/ui_interact(mob/living/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MarkdownViewer", name)
+		ui.open()
+
+/// Proc that handles sending the book information to the user, as well as some housekeeping stuff.
+/obj/item/book/proc/display_content(mob/living/user)
+	ui_interact(user)
+
+/// Proc that checks if the user is capable of reading the book, for UI interactions and otherwise. Returns TRUE if they can, FALSE if they can't.
+/obj/item/book/proc/can_read_book(mob/living/user)
+	if(user.is_blind())
+		to_chat(user, SPAN_WARNING("You are blind and can't read anything!"))
+		return FALSE
+
+	// if(!user.can_read(src))
+	// 	return FALSE
+
+	if(carved)
+		balloon_alert(user, "book is carved out!")
+		return FALSE
+
+	if(!length(book_data.get_content()))
+		balloon_alert(user, "book is blank!")
+		return FALSE
+
+	return TRUE
+
+/obj/item/book/attack_self(mob/user)
+	if(!can_read_book(user))
 		return
-	on_read(user)
 
-/obj/item/book/proc/on_read(mob/user)
-	if(carved)
-		if(store)
-			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
-			store.forceMove(drop_location())
-			store = null
-			return
-		else
-			to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
-			return
-	if(src.dat)
-		user << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
-		user.visible_message("[user] opens a book titled \"[src.title]\" and begins reading intently.")
-		onclose(user, "book")
-	else
-		to_chat(user, "This book is completely blank!")
+	user.visible_message(SPAN_NOTICE("[user] opens a book titled \"[book_data.title]\" and begins reading intently."))
+	display_content(user)
 
-/obj/item/book/attackby(obj/item/W, mob/user)
+/obj/item/book/proc/is_carving_tool(obj/item/tool)
+	PRIVATE_PROC(TRUE)
+	if(tool.is_sharp())
+		return TRUE
+	if(tool.is_wirecutter())
+		return TRUE
+	return FALSE
+
+/// Checks for whether we can vandalize this book, to ensure we still can after each input.
+/// Uses to_chat over balloon alerts to give more detailed information as to why.
+/obj/item/book/proc/can_vandalize(mob/living/user, obj/item/tool)
+	// if(!user.can_perform_action(src) || !user.can_write(tool, TRUE))
+	// 	return FALSE
+	if(user.is_blind())
+		to_chat(user, SPAN_WARNING("As you are trying to write on the book, you suddenly feel very stupid!"))
+		return FALSE
+	if(unique)
+		to_chat(user, SPAN_WARNING("These pages don't seem to take the ink well! Looks like you can't modify it."))
+		return FALSE
 	if(carved)
-		if(!store)
-			if(W.w_class < WEIGHT_CLASS_BULKY)
-				if(!user.attempt_insert_item_for_installation(W, src))
-					return
-				store = W
-				to_chat(user, "<span class='notice'>You put [W] in [title].</span>")
-				return
-			else
-				to_chat(user, "<span class='notice'>[W] won't fit in [title].</span>")
-				return
-		else
-			to_chat(user, "<span class='notice'>There's already something in [title]!</span>")
-			return
-	if(istype(W, /obj/item/pen))
-		if(unique)
-			to_chat(user, "These pages don't seem to take the ink well. Looks like you can't modify it.")
-			return
-		var/choice = input("What would you like to change?") in list("Title", "Contents", "Author", "Cancel")
-		switch(choice)
-			if("Title")
-				var/newtitle = reject_bad_text(sanitizeSafe(input("Write a new title:")))
-				if(!newtitle)
-					to_chat(usr, "The title is invalid.")
-					return
-				else
-					src.name = newtitle
-					src.title = newtitle
-			if("Contents")
-				var/content = sanitize(input("Write your book's contents (HTML NOT allowed):") as message|null, MAX_BOOK_MESSAGE_LEN)
-				if(!content)
-					to_chat(usr, "The content is invalid.")
-					return
-				else
-					src.dat += content
-			if("Author")
-				var/newauthor = sanitize(input(usr, "Write the author's name:"))
-				if(!newauthor)
-					to_chat(usr, "The name is invalid.")
-					return
-				else
-					src.author = newauthor
-			else
-				return
-	else if(istype(W, /obj/item/barcodescanner))
-		var/obj/item/barcodescanner/scanner = W
-		if(!scanner.computer)
-			to_chat(user, "[W]'s screen flashes: 'No associated computer found!'")
-		else
-			switch(scanner.mode)
-				if(0)
-					scanner.book = src
-					to_chat(user, "[W]'s screen flashes: 'Book stored in buffer.'")
-				if(1)
-					scanner.book = src
-					scanner.computer.buffer_book = src.name
-					to_chat(user, "[W]'s screen flashes: 'Book stored in buffer. Book title stored in associated computer buffer.'")
-				if(2)
-					scanner.book = src
-					for(var/datum/borrowbook/b in scanner.computer.checkouts)
-						if(b.bookname == src.name)
-							scanner.computer.checkouts.Remove(b)
-							to_chat(user, "[W]'s screen flashes: 'Book stored in buffer. Book has been checked in.'")
-							return
-					to_chat(user, "[W]'s screen flashes: 'Book stored in buffer. No active check-out record found for current title.'")
-				if(3)
-					scanner.book = src
-					for(var/obj/item/book in scanner.computer.inventory)
-						if(book == src)
-							to_chat(user, "[W]'s screen flashes: 'Book stored in buffer. Title already present in inventory, aborting to avoid duplicate entry.'")
-							return
-					scanner.computer.inventory.Add(src)
-					to_chat(user, "[W]'s screen flashes: 'Book stored in buffer. Title added to general inventory.'")
-	else if(istype(W, /obj/item/material/knife) || W.is_wirecutter())
-		if(carved)	return
-		to_chat(user, "<span class='notice'>You begin to carve out [title].</span>")
-		if(do_after(user, 30))
-			to_chat(user, "<span class='notice'>You carve out the pages from [title]! You didn't want to read it anyway.</span>")
-			carved = 1
-			return
-	else
-		..()
+		to_chat(user, SPAN_WARNING("The book has been carved out! There is nothing to be vandalized."))
+		return FALSE
+	return TRUE
+
+/obj/item/book/attackby(obj/item/tool, mob/user)
+	if(istype(tool, /obj/item/pen))
+		return writing_utensil_act(user, tool)
+	if(is_carving_tool(tool))
+		return carving_act(user, tool)
+	return ..()
+
+/// Called when user clicks on the book with a writing utensil. Attempts to vandalize the book.
+/obj/item/book/proc/writing_utensil_act(mob/living/user, obj/item/tool)
+	if(!can_vandalize(user, tool))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	var/choice = tgui_input_list(usr, "What would you like to change?", "Book Alteration", list("Title", "Contents", "Author", "Cancel"))
+	if(isnull(choice))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!can_vandalize(user, tool))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	switch(choice)
+		if("Title")
+			return vandalize_title(user, tool)
+		if("Contents")
+			return vandalize_contents(user, tool)
+		if("Author")
+			return vandalize_author(user, tool)
+
+	return NONE
+
+/obj/item/book/proc/vandalize_title(mob/living/user, obj/item/tool)
+	var/newtitle = reject_bad_text(tgui_input_text(user, "Write a new title", "Book Title", max_length = 30))
+	if(!newtitle)
+		balloon_alert(user, "invalid input!")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(length_char(newtitle) > 30)
+		balloon_alert(user, "too long!")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!can_vandalize(user, tool))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	name = newtitle
+	book_data.set_title(html_decode(newtitle)) //Don't want to double encode here
+	// playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
+	return CLICKCHAIN_DID_SOMETHING
+
+/obj/item/book/proc/vandalize_contents(mob/living/user, obj/item/tool)
+	var/content = tgui_input_text(user, "Write your book's contents (HTML NOT allowed)", "Book Contents", max_length = 5000, multiline = TRUE)
+	if(!content)
+		balloon_alert(user, "invalid input!")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!can_vandalize(user, tool))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	book_data.set_content(html_decode(content))
+	// playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
+	return CLICKCHAIN_DID_SOMETHING
+
+/obj/item/book/proc/vandalize_author(mob/living/user, obj/item/tool)
+	var/author = tgui_input_text(user, "Write the author's name", "Author Name", max_length = MAX_NAME_LEN)
+	if(!author)
+		balloon_alert(user, "invalid input!")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!can_vandalize(user, tool))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	book_data.set_author(html_decode(author)) //Setting this encodes, don't want to double up
+	// playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
+	return CLICKCHAIN_DID_SOMETHING
+
+/// Called when user clicks on the book with a carving utensil. Attempts to carve the book.
+/obj/item/book/proc/carving_act(mob/living/user, obj/item/tool)
+	if(carved)
+		balloon_alert(user, "already carved!")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	balloon_alert(user, "carving out...")
+	if(!do_after(user, 3 SECONDS, target = src))
+		balloon_alert(user, "interrupted!")
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+
+	balloon_alert(user, "carved out")
+	// playsound(src, 'sound/effects/cloth_rip.ogg', vol = 75, vary = TRUE)
+	carve_out()
+	return CLICKCHAIN_DID_SOMETHING
+
+/// Handles setting everything a carved book needs.
+/obj/item/book/proc/carve_out()
+	carved = TRUE
+	init_storage(carved_storage_type)
+
+/// Generates a random icon state for the book
+/obj/item/book/proc/gen_random_icon_state()
+	icon_state = "book[rand(8, maximum_book_state)]"
 
 /obj/item/book/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
@@ -132,7 +208,7 @@
 	if(user.zone_sel.selecting == O_EYES)
 		user.visible_message("<span class='notice'>You open up the book and show it to [target]. </span>", \
 			"<span class='notice'> [user] opens up a book and shows it to [target]. </span>")
-		target << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
+		display_content(target)
 		user.setClickCooldownLegacy(DEFAULT_QUICK_COOLDOWN) //to prevent spam
 
 /*
@@ -176,10 +252,10 @@
 			dat += "<HTML><HEAD><TITLE>Page [page]</TITLE></HEAD><BODY>[pages[page]]</BODY></HTML>"
 		user << browse(dat, "window=[name]")
 
-/obj/item/book/bundle/on_read(mob/user)
-	show_content(user)
-	add_fingerprint(usr)
-	update_icon()
+// /obj/item/book/bundle/on_read(mob/user)
+// 	show_content(user)
+// 	add_fingerprint(usr)
+// 	update_icon()
 
 /obj/item/book/bundle/Topic(href, href_list)
 	if(..())

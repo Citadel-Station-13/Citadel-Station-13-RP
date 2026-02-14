@@ -157,7 +157,7 @@
 			to_chat(usr, "<span class='notice'>The solution does nothing. Whatever this is, it isn't normal ink.</span>")
 			return
 		var/obj/item/book/affectedbook = O
-		affectedbook.dat = null
+		affectedbook.book_data.set_content("")
 		to_chat(usr, "<span class='notice'>The solution dissolves the ink on the book.</span>")
 	return
 

@@ -17739,7 +17739,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/prison/upper)
 "lcb" = (
-/obj/machinery/librarycomp,
+/obj/machinery/computer/libraryconsole/bookmanagement,
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/light/small{
 	dir = 1
@@ -19903,7 +19903,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tether/station/public_meeting_room)
 "msU" = (
-/obj/machinery/librarypubliccomp,
+/obj/machinery/computer/libraryconsole,
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
