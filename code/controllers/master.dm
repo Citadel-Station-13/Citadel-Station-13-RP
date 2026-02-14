@@ -591,6 +591,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 			chat_warning = TRUE
 			// Since this is an explicit failure, shut its ticking off. We also will not set its initialized variable.
 			subsystem.subsystem_flags |= SS_NO_FIRE
+			subsystem.can_fire = FALSE
 		if(SS_INIT_NONE)
 			message_prefix = "Initialized [subsystem.name] ([subsystem.type]) subsystem with errors within"
 			tell_everyone = TRUE
@@ -606,6 +607,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 			subsystem.initialized = TRUE
 		if(SS_INIT_NO_NEED)
 			// This SS is disabled or is otherwise shy.
+			subsystem.initialized = TRUE // kevin u fucking idiot this is also init (result != SS_INIT_FAILURE)
 			return
 		else
 			warning("[subsystem.name] subsystem initialized, returning invalid result [initialize_result]. This is a bug.")

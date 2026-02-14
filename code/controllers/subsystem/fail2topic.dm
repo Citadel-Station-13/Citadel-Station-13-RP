@@ -19,15 +19,17 @@ SUBSYSTEM_DEF(fail2topic)
 	rule_name = CONFIG_GET(string/fail2topic_rule_name)
 	enabled = CONFIG_GET(flag/fail2topic_enabled)
 
+	if (world.system_type == UNIX)
+		if (enabled)
+			subsystem_log("DISABLED - UNIX systems are not supported.")
+		enabled = FALSE
+		can_fire = FALSE // this is enough instead of nofire
+		return SS_INIT_NO_NEED // early return here since DropFirewallRule runs the command on linux
+
 	DropFirewallRule() // Clear the old bans if any still remain
 
-	if (world.system_type == UNIX && enabled)
-		enabled = FALSE
-		subsystem_log("DISABLED - UNIX systems are not supported.")
 	if(!enabled)
-		subsystem_flags |= SS_NO_FIRE
 		can_fire = FALSE
-
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/fail2topic/fire()
