@@ -35,6 +35,9 @@ SUBSYSTEM_DEF(atoms)
 	InitializeAtoms()
 	atom_init_status = ATOM_INIT_IN_NEW_REGULAR
 
+	// HACK: fucking overmaps r so stupid (cant move its order to front of atoms YET)
+	SSovermaps.rebuild_helm_computers()
+	// end hack
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/atoms/proc/InitializeAtoms(list/atoms, list/atoms_to_return)

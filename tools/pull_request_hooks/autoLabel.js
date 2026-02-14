@@ -202,10 +202,9 @@ export async function get_updated_label_set({ github, context }) {
     const { labels_to_add, labels_to_remove } =
       await check_diff_files_for_labels(github, context);
     labels_to_add.forEach((label) => updated_labels.add(label));
-    labels_to_remove = labels_to_remove.filter(
-      (label) => !size_labels.includes(label),
-    );
-    labels_to_remove.forEach((label) => updated_labels.delete(label));
+    labels_to_remove
+      .filter((label) => !size_labels.includes(label))
+      .forEach((label) => updated_labels.delete(label));
   }
 
   // Always check body/title (otherwise we can lose the changelog labels)
