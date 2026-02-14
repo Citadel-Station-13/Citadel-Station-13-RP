@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 
@@ -68,7 +68,6 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller/Initialize(mapload, set_dir, obj/item/airlock_component/controller/from_item)
 	..()
 	// todo: we need proper tick bracket machine support & fastmos
-	STOP_MACHINE_PROCESSING(src)
 	set_controller_id(src.airlock_id)
 	if(from_item)
 		program = from_item.program
@@ -80,7 +79,6 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 
 /obj/machinery/airlock_component/controller/Destroy()
 	QDEL_NULL(program)
-	STOP_PROCESSING(SSprocess_5fps, src)
 	set_controller_id(null)
 	QDEL_NULL(system)
 	#warn get rid of peripherals
@@ -148,9 +146,8 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	program?.on_sensor_cycle_request(system, sensor, actor)
 
 /obj/machinery/airlock_component/controller/process(delta_time)
-	if(!system)
-		return PROCESS_KILL
-	system.process(delta_time)
+	system?.process(delta_time)
+	program?.process(delta_time)
 
 #warn impl all
 

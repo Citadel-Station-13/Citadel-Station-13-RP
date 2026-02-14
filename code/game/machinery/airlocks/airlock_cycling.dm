@@ -1,10 +1,12 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
  * Airlock cycle state.
  *
  * * created for use during a discrete cycle operation
+ *
+ * TODO: Track stuckage time and cancel if airlock is stuck to save CPU.
  */
 /datum/airlock_cycling
 	/// current op id

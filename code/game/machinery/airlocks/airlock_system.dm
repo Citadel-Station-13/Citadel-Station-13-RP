@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
  * Holds the UI & handling, despite the controller physically holding state.
@@ -52,11 +52,7 @@
 	.["programData"] = controller.program?.ui_program_data(src)
 
 /datum/airlock_system/process(delta_time)
-	if(!cycling)
-		STOP_PROCESSING(SSprocess_5fps, controller)
-		STACK_TRACE("system was processing despite no cycling; killing")
-		return PROCESS_KILL
-	cycling.poll(delta_time)
+	cycling?.poll(delta_time)
 
 /**
  * Begins an airlock cycle.

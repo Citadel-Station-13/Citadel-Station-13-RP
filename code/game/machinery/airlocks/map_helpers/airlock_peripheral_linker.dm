@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 /obj/map_helper/airlock_peripheral_linker
 	name = "airlock peripheral linker"

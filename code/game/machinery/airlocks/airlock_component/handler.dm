@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 /obj/item/airlock_component/handler
 	name = /obj/machinery/airlock_component/handler::name + " (detached)"
@@ -79,25 +79,6 @@
 /obj/machinery/airlock_component/handler/process(delta_time)
 	. = ..()
 	#warn impl - power, atmos
-
-/obj/machinery/airlock_component/handler/ui_act(action, list/params, datum/tgui/ui)
-	. = ..()
-	if(.)
-		return
-
-	#warn impl
-
-/obj/machinery/airlock_component/handler/ui_static_data(mob/user, datum/tgui/ui)
-	. = ..()
-
-/obj/machinery/airlock_component/handler/ui_data(mob/user, datum/tgui/ui)
-	. = ..()
-
-/obj/machinery/airlock_component/handler/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "AirlockHandler")
-		ui.open()
 
 /obj/machinery/airlock_component/handler/proc/get_clean_gas_mixture_ref() as /datum/gas_mixture
 

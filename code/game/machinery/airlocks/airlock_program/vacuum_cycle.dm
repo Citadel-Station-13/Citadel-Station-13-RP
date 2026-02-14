@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
  * Default airlock program. Can handle quite a lot, but not everything.
@@ -7,8 +7,13 @@
 /datum/airlock_program/vacuum_cycle
 	tgui_airlock_component = "VacuumCycle"
 
-	var/reassert_doors_every = 3 SECONDS
-
+	/**
+	 * Every this-much time, we will check if our doors are 'correct'.
+	 * If not, the airlock is activated to shut the doors, if possible.
+	 * This allows airlocks to be self-repairing to an extent.
+	 */
+	var/reassert_doors_every = 90 SECONDS
+	var/reassert_doors_last
 
 /datum/airlock_program/vacuum_cycle/ui_program_data(datum/airlock_system/system)
 	. = ..()
