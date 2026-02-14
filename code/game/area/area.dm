@@ -39,8 +39,6 @@
 	//* System *//
 	/// General flag for area properties
 	var/area_flags = NONE
-	/// Flag for mapping related area properties (such as cavegen)
-	var/area_flags_mapping = NONE // UNIQUE_AREA
 
 	/**
 	 * If false, loading multiple maps with this area type will create multiple instances.
