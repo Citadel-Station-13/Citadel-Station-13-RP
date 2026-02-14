@@ -136,6 +136,7 @@
 #include "code\__DEFINES\admin\bans.dm"
 #include "code\__DEFINES\admin\keybindings.dm"
 #include "code\__DEFINES\admin\verbs.dm"
+#include "code\__DEFINES\admin\verbs_tg.dm"
 #include "code\__DEFINES\ai\ai_holder.dm"
 #include "code\__DEFINES\ai\debug.dm"
 #include "code\__DEFINES\assets\medical.dm"
