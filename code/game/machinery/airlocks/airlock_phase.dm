@@ -68,7 +68,10 @@
 	var/depressurize_to_kpa = 0
 
 /datum/airlock_phase/depressurize/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
-	#warn impl
+	if(vent_to_outside)
+		cycling.add_task(new /datum/airlock_task/gasnet/pump/cycler_to_vent)
+	else
+		cycling.add_task(new /datum/airlock_task/gasnet/pump/cycler_to_handler_waste)
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/depressurize/vent_to_outside
@@ -91,7 +94,12 @@
 	var/pull_from_outside_required = FALSE
 
 /datum/airlock_phase/repressurize/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
-	#warn impl
+	if(pull_from_outside_required)
+		cycling.add_task(new /datum/airlock_task/gasnet/pump/handler_supply_to_cycler)
+	else if(pull_from_outside_if_possible)
+		cycling.add_task(new /datum/airlock_task/gasnet/pump/vent_or_handler_supply_to_cycler)
+	else
+		cycling.add_task(new /datum/airlock_task/gasnet/pump/vent_to_cycler)
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/repressurize/allow_external_air

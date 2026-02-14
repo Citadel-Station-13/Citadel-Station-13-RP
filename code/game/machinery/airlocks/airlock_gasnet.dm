@@ -239,6 +239,9 @@
 	var/is_into_chamber
 	var/last_status
 
+/datum/airlock_task/gasnet/pump/New(target_pressure)
+	src.target_pressure = target_pressure
+
 /datum/airlock_task/gasnet/pump/describe_state()
 	if(!last_status)
 		return "Operating Cycler"
