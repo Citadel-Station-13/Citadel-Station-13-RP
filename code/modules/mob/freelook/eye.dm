@@ -26,6 +26,10 @@
 	var/ghostimage = null
 	var/datum/visualnet/visualnet
 
+/mob/observer/eye/Initialize(mapload)
+	. = ..()
+	SSpoints_of_interest.make_point_of_interest(src)
+
 /mob/observer/eye/Destroy()
 	if(owner)
 		if(owner.eyeobj == src)

@@ -22,6 +22,7 @@ var/list/blob_cores = list()
 	. = ..()
 	blob_cores += src
 	START_PROCESSING(SSobj, src)
+	SSpoints_of_interest.make_point_of_interest(src)
 	update_icon() //so it atleast appears
 	if(!placed && !overmind)
 		INVOKE_ASYNC(src, PROC_REF(create_overmind), new_overmind)

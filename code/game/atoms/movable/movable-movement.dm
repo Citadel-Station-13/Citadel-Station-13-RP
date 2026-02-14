@@ -401,14 +401,14 @@
 /atom/movable/proc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if (!inertia_moving)
+	if (!inertia_moving && movement_dir)
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(movement_dir)
 
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, movement_dir, forced, old_locs, momentum_change)
+
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(src)
-
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, movement_dir, forced, old_locs, momentum_change)
 
 	if(old_loc)
 		SEND_SIGNAL(old_loc, COMSIG_ATOM_ABSTRACT_EXITED, src)

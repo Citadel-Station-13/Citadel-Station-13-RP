@@ -289,9 +289,6 @@
 
 	return creatures
 
-/proc/getmobs_ghost_follow()
-	return getmobs(TRUE)
-
 /// Orders mobs by type then by name.
 /proc/sortmobs()
 	var/list/moblist = list()
@@ -730,7 +727,7 @@
 	else if (zone == "r_foot") return "right foot"
 	else                       return zone
 
-// todo: remove this this is silly and shouldn't be just called 'get'
+/// Returns the atom type in the specified loc
 /proc/get(atom/loc, type)
 	while(loc)
 		if(istype(loc, type))

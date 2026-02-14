@@ -24,21 +24,23 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 	switch(action)
 		if("orbit")
 			var/ref = params["ref"]
-			// not implemented
+			// still not implemented
 			// var/auto_observe = params["auto_observe"]
-			// no sspoi :(
-			var/atom/poi = locate(ref) in GLOB.mob_list
+			var/atom/poi = SSpoints_of_interest.get_poi_atom_by_ref(ref)
 
-			if (poi == null)
-				poi = locate(ref) in SSshuttle.ships
-			if (poi == null)
-				. = TRUE
-				return
+			if((ismob(poi) && !SSpoints_of_interest.is_valid_poi(poi, CALLBACK(src, PROC_REF(validate_mob_poi)))) \
+				|| !SSpoints_of_interest.is_valid_poi(poi)
+			)
+				to_chat(usr, SPAN_NOTICE("That point of interest is no longer valid."))
+				return TRUE
 
 			var/mob/observer/dead/user = usr
 			user.ManualFollow(poi)
 			user.reset_perspective(null)
 			user.orbiting_ref = ref
+			// if (auto_observe)
+			// 	if (poi != user)
+			// 		user.do_observe(poi)
 			return TRUE
 		if ("refresh")
 			ui.send_full_update()
@@ -55,6 +57,8 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 	return data
 
 /datum/orbit_menu/ui_static_data(mob/user)
+	var/list/new_mob_pois = SSpoints_of_interest.get_mob_pois(CALLBACK(src, PROC_REF(validate_mob_poi)), append_dead_role = FALSE)
+	var/list/new_other_pois = SSpoints_of_interest.get_other_pois()
 	var/is_admin = user?.client?.holder
 
 	var/list/alive = list()
@@ -66,22 +70,10 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 	var/list/misc = list()
 	var/list/npcs = list()
 
-	// sortmobs is a generic list
-	for(var/mobthing in sortmobs())
+	for(var/name in new_mob_pois)
 		var/list/serialized = list()
-		var/mob/mob_poi = mobthing
+		var/mob/mob_poi = new_mob_pois[name]
 		var/number_of_orbiters = length(mob_poi.get_all_orbiters())
-
-		// ignore magical objects
-		if (isEye(mob_poi) || isvoice(mob_poi))
-			continue
-
-		var/name = mob_poi.real_name || mob_poi.name
-		if(mob_poi.stat == DEAD)
-			if(isobserver(mob_poi))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
 
 		serialized["ref"] = REF(mob_poi)
 		serialized["full_name"] = name
@@ -118,7 +110,9 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 		alive += list(serialized)
 
-	for(var/atom/movable/atom_poi as anything in SSshuttle.ships)
+	for(var/name in new_other_pois)
+		var/atom/atom_poi = new_other_pois[name]
+
 		var/list/other_data = get_misc_data(atom_poi)
 		var/misc_data = list(other_data[1])
 
@@ -148,16 +142,14 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 	if(isnull(user.orbiting_ref))
 		return
 
-	// double locate since we dont hold the ref directly
-	var/atom/poi = locate(user.orbiting_ref) in GLOB.mob_list
-	if (isnull(poi))
-		poi = locate(user.orbiting_ref) in SSshuttle.ships
-
+	var/atom/poi = SSpoints_of_interest.get_poi_atom_by_ref(user.orbiting_ref)
 	if(isnull(poi))
 		user.orbiting_ref = null
 		return
 
-	if (ismob(poi) && (isEye(poi) || isvoice(poi)))
+	if((ismob(poi) && !SSpoints_of_interest.is_valid_poi(poi, CALLBACK(src, PROC_REF(validate_mob_poi)))) \
+		|| !SSpoints_of_interest.is_valid_poi(poi)
+	)
 		user.orbiting_ref = null
 		return
 
@@ -251,11 +243,31 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		var/obj/overmap/entity/visitable/ship/shuttle = atom_poi
 		// see shuttle.get_scan_data
 		if (!shuttle.is_moving())
-			misc["extra"] = "Ship is stationary."
+			misc["extra"] = "Status: Ship is stationary"
 		else
-			misc["extra"] = "Heading: [shuttle.get_heading()] Velocity: [shuttle.get_speed_legacy() * 1000]"
+			misc["extra"] = "Status: Heading: [shuttle.get_heading()] Velocity: [shuttle.get_speed_legacy() * 1000]"
 
-		// TODO somehow figure out the station ship & its shuttle then flag it as critical
 		return list(misc, critical)
 
 	return list(misc, critical)
+
+/**
+ * Helper POI validation function passed as a callback to various SSpoints_of_interest procs.
+ *
+ * Provides extended validation above and beyond standard, limiting mob POIs without minds or ckeys
+ * unless they're mobs, eye mobs or megafauna. Also allows exceptions for mobs that are deadchat controlled.
+ *
+ * If they satisfy that requirement, falls back to default validation for the POI.
+ */
+/datum/orbit_menu/proc/validate_mob_poi(datum/point_of_interest/mob_poi/potential_poi)
+	var/mob/potential_mob_poi = potential_poi.target
+	if(!potential_mob_poi.mind && !potential_mob_poi.ckey)
+		if(!mob_allowed_typecache)
+			mob_allowed_typecache = typecacheof(list(
+				/mob/observer/eye,
+			))
+		if(!is_type_in_typecache(potential_mob_poi, mob_allowed_typecache) /*  && !potential_mob_poi.GetComponent(/datum/component/deadchat_control) no deadchat plays */)
+			return FALSE
+
+	return potential_poi.validate()
+

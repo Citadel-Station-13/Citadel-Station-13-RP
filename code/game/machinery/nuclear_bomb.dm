@@ -42,6 +42,7 @@ var/bomb_set
 	w -= timing_wire
 	safety_wire = pick(w)
 	w -= safety_wire
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/machinery/nuclearbomb/process(delta_time)
 	if(timing)
@@ -412,14 +413,13 @@ var/bomb_set
 				return
 	return
 
+/obj/item/disk/nuclear
+	name = "nuclear authentication disk"
+	desc = "Better keep this safe."
+	icon_state = "nucleardisk"
+	item_state = "card-id"
+	w_class = WEIGHT_CLASS_SMALL
+
 /obj/item/disk/nuclear/Initialize(mapload)
 	. = ..()
-	nuke_disks |= src
-
-/obj/item/disk/nuclear/Destroy()
-	if(!nuke_disks.len && blobstart.len > 0)
-		var/obj/D = new /obj/item/disk/nuclear(pick(blobstart))
-		message_admins("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
-		log_game("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
-	nuke_disks -= src
-	return ..()
+	SSpoints_of_interest.make_point_of_interest(src)

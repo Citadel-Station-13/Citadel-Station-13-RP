@@ -2,8 +2,6 @@
 	MERCENARY ROUNDTYPE
 */
 
-var/list/nuke_disks = list()
-
 /datum/game_mode/nuclear
 	name = "Mercenary"
 	round_description = "A mercenary strike force is approaching the station!"
@@ -20,23 +18,12 @@ var/list/nuke_disks = list()
 	var/syndies_didnt_escape = 0 //Used for tracking if the syndies got the shuttle off of the z-level
 	antag_tags = list(MODE_MERCENARY)
 
-//delete all nuke disks not on a station zlevel
-/datum/game_mode/nuclear/proc/check_nuke_disks()
-	for(var/obj/item/disk/nuclear/N in nuke_disks)
-		if(isNotStationLevel(N.z)) qdel(N)
-
-//checks if L has a nuke disk on their person
-/datum/game_mode/nuclear/proc/check_mob(mob/living/L)
-	for(var/obj/item/disk/nuclear/N in nuke_disks)
-		return N.depth_inside_atom(L) != INFINITY
-	return 0
-
 /datum/game_mode/nuclear/declare_completion()
 	if(config_legacy.objectives_disabled)
 		..()
 		return
 	var/disk_rescued = 1
-	for(var/obj/item/disk/nuclear/D in nuke_disks)
+	for(var/obj/item/disk/nuclear/D as anything in SSpoints_of_interest.real_nuclear_disks)
 		var/disk_area = get_area(D)
 		if(!is_type_in_list(disk_area, centcom_areas))
 			disk_rescued = 0
