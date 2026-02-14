@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	if(peripheral.controller)
 		peripheral.disconnect_from_controller()
 	peripheral.controller = src
-	LAZYADD(peripherals, periperhal)
+	LAZYADD(peripherals, peripheral)
 	peripheral.on_controller_join(src)
 	return TRUE
 
@@ -172,8 +172,6 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller/process(delta_time)
 	system?.process(delta_time)
 	program?.process(delta_time)
-
-#warn impl all
 
 /obj/machinery/airlock_component/controller/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

@@ -27,10 +27,10 @@
 	switch(cycle_to_side)
 		if(AIRLOCK_SIDE_EXTERIOR)
 			. += new /datum/airlock_phase/repressurize/allow_external_air
-			. += new /datum/airlock_phase/doors/unseal/exterior
+			. += new /datum/airlock_phase/doors/lock_open/exterior
 		if(AIRLOCK_SIDE_INTERIOR)
 			. += new /datum/airlock_phase/repressurize/from_handler_supply
-			. += new /datum/airlock_phase/doors/unseal/interior
+			. += new /datum/airlock_phase/doors/lock_open/interior
 		else
 			// be conservative, assume we want to use known-safe air
 			. += new /datum/airlock_phase/repressurize/from_handler_supply

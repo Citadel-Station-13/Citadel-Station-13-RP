@@ -30,36 +30,39 @@
 	/// layer used for intake
 	//  todo: vv hooks
 	var/layer_intake = PIPING_LAYER_SUPPLY
-	/// layer used for heat exchange
-	//  todo: vv hooks
-	var/layer_heat = PIPING_LAYER_AUX
 
 	/// power storage in kilojoules
-	var/power_capacity = 3000
+	var/power_capacity = STATIC_CELL_UNITS_TO_KJ(POWER_CELL_CAPACITY_LARGE)
 	/// power stored in kilojoules
-	var/power_stored = 3000
+	var/power_stored = STATIC_CELL_UNITS_TO_KJ(POWER_CELL_CAPACITY_LARGE)
 	/// max power draw in kilowatts
 	var/power_io = 75
-
-	//  todo: vv hooks
-	var/air_buffer_volume_clean = CELL_VOLUME * 4
-	//  todo: vv hooks
-	var/air_buffer_volume_dirty = CELL_VOLUME * 4
-
 	/// pumping power in kilowatts
-	var/pumping_power = 30000
+	var/power_rating = 150
 
-	/// our clean gas mixture
-	var/datum/gas_mixture/air_buffer_clean
-	/// our dirty gas mixture
-	var/datum/gas_mixture/air_buffer_dirty
+	var/obj/machinery/atmospherics/component/unary/airlock_connector/conn_eject
+	var/obj/machinery/atmospherics/component/unary/airlock_connector/conn_intake
 
 /obj/machinery/airlock_component/handler/Initialize(mapload)
 	. = ..()
-	air_buffer_clean = new(air_buffer_volume_clean)
-	air_buffer_dirty = new(air_buffer_volume_dirty)
+	create_or_update_conn_eject()
+	create_or_update_conn_intake()
 
-#warn impl
+/obj/machinery/airlock_component/handler/examine(mob/user, dist)
+	. = ..()
+	. += SPAN_NOTICE("This handler will connect to layers [piping_layer_to_numbered_name(layer_intake)] for intake and [piping_layer_to_numbered_name(layer_eject)] for ejection.")
+
+/obj/machinery/airlock_component/handler/Destroy()
+	QDEL_NULL(conn_eject)
+	QDEL_NULL(conn_intake)
+	return ..()
+
+/obj/machinery/airlock_component/handler/Moved(atom/old_loc, direction, forced, list/old_locs, momentum_change)
+	..()
+	if(old_loc == loc)
+		return
+	create_or_update_conn_eject()
+	create_or_update_conn_intake()
 
 /obj/machinery/airlock_component/handler/on_connect(datum/airlock_gasnet/network)
 	..()
@@ -81,18 +84,16 @@
 	#warn impl - power, atmos
 
 /obj/machinery/airlock_component/handler/proc/get_clean_gas_mixture_ref() as /datum/gas_mixture
+	return conn_intake?.air_contents
 
 /obj/machinery/airlock_component/handler/proc/get_waste_gas_mixture_ref() as /datum/gas_mixture
-
-#warn requires panel open
+	return conn_eject?.air_contents
 
 /obj/machinery/airlock_component/handler/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE
 
-/**
- * todo: refactor on atmospherics machinery update
- */
 /obj/machinery/atmospherics/component/unary/airlock_connector
-	// volume = 2000
+	volume = 2000
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	atom_flags = ATOM_ABSTRACT | ATOM_NONWORLD

@@ -13,7 +13,7 @@
 	layer = EXPOSED_PIPE_LAYER
 	dir = SOUTH
 	initialize_directions = SOUTH
-	pipe_flags = PIPING_DEFAULT_LAYER_ONLY
+	pipe_flags = PIPE_FLAG_DEFAULT_LAYER_ONLY
 	density = TRUE
 	hides_underfloor_underlays = TRUE
 	hides_underfloor_defaulting = FALSE

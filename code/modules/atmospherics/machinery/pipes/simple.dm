@@ -13,7 +13,7 @@
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
 
-	pipe_flags = PIPING_CARDINAL_AUTONORMALIZE
+	pipe_flags = PIPE_FLAG_CARDINAL_AUTONORMALIZE
 	construction_type = /obj/item/pipe/binary/bendable
 	pipe_state = "simple"
 
