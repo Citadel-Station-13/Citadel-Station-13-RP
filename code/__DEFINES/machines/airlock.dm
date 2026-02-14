@@ -62,15 +62,15 @@ GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
  */
 #define AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE "current_side"
 /**
- * Blackboard for if a given side's doors should be sealed.
- * * Sealed means locked closed. Opened, or unlocked-closed is not sealed.
+ * Blackboard for if a given side's doors should be locked open / closed
+ * * TRUE = open, FALSE = closed, null = not locked
  */
-#define AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_SEALED "interior-sealed"
+#define AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE "interior_locked_val"
 /**
- * Blackboard for if a given side's doors should be sealed.
- * * Sealed means locked closed. Opened, or unlocked-closed is not sealed.
+ * Blackboard for if a given side's doors should be locked open / closed
+ * * TRUE = open, FALSE = closed, null = not locked
  */
-#define AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_SEALED "exterior-sealed"
+#define AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE "exterior_locked_val"
 
 //* airlock cycling blackboard keys *//
 

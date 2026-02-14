@@ -68,9 +68,8 @@
 	cycling.setup(src)
 	// immediately poll once
 	cycling.poll(0)
+	controller.on_cycle_begin()
 	return cycling.op_id
-
-#warn inform controller of start/stop so it can start/stop processing and update icon
 
 /**
  * @return TRUE if cycling with given ID is stopped, FALSE otherwise
@@ -86,6 +85,7 @@
 	cycling.finished_reason = why_str
 	cycling_on_finish?.InvokeAsync(src, cycling)
 	QDEL_NULL(cycling)
+	controller.on_cycle_end()
 	return TRUE
 
 /datum/airlock_system/proc/abort_cycle(cycling_id, why_str)

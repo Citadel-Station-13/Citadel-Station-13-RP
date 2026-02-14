@@ -37,13 +37,14 @@
 	disconnect_from_controller()
 	return ..()
 
-#warn impl all
-
 /obj/machinery/airlock_peripheral/proc/on_controller_join(obj/machinery/airlock_component/controller/controller)
+	return
 
 /obj/machinery/airlock_peripheral/proc/on_controller_leave(obj/machinery/airlock_component/controller/controller)
+	return
 
 /obj/machinery/airlock_peripheral/proc/connect_to_controller(obj/machinery/airlock_component/controller/controller)
+	return controller.add_peripheral(src)
 
 /obj/machinery/airlock_peripheral/proc/disconnect_from_controller()
-
+	return controller.remove_peripheral(src)

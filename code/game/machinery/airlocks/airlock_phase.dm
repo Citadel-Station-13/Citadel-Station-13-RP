@@ -106,30 +106,72 @@
 /datum/airlock_phase/doors
 	display_verb = "operating doors"
 
+/datum/airlock_phase/doors/assert_state
+	var/interior_open
+	var/interior_locked
+	var/exterior_open
+	var/exterior_locked
+
+/datum/airlock_phase/doors/assert_state/New(interior_open, interior_locked, exterior_open, exterior_locked)
+	src.interior_open = interior_open
+	src.interior_locked = interior_locked
+	src.exterior_open = exterior_open
+	src.exterior_locked = exterior_locked
+
+/datum/airlock_phase/doors/assert_state/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	#warn impl
+	return AIRLOCK_PHASE_SETUP_SUCCESS
+
 /datum/airlock_phase/doors/seal
 	display_verb = "sealing"
-
-/datum/airlock_phase/doors/seal/interior
-
-/datum/airlock_phase/doors/seal/exterior
 
 /datum/airlock_phase/doors/seal/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	#warn impl
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/doors/seal/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
-#warn set X_DOOR_SEALED blackboard on these phases
+#warn set X_DOOR_LOCKED_STATE blackboard on these phases
 
-/datum/airlock_phase/doors/unseal
-	display_verb = "unsealing"
+/datum/airlock_phase/doors/lock_open
+	display_verb = "opening doors"
+	var/interior = FALSE
+	var/exterior = FALSE
 
-/datum/airlock_phase/doors/unseal/interior
+/datum/airlock_phase/doors/lock_open/interior
+	interior = TRUE
 
-/datum/airlock_phase/doors/unseal/exterior
+/datum/airlock_phase/doors/lock_open/exterior
+	exterior = TRUE
 
-/datum/airlock_phase/doors/unseal/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+/datum/airlock_phase/doors/lock_open/everything
+	interior = TRUE
+	exterior = TRUE
+
+/datum/airlock_phase/doors/lock_open/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	#warn impl
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
-/datum/airlock_phase/doors/unseal/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
-#warn set X_DOOR_SEALED blackboard on these phases
+/datum/airlock_phase/doors/lock_open/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
+#warn set X_DOOR_LOCKED_STATE blackboard on these phases
+
+/datum/airlock_phase/doors/lock_closed
+	display_verb = "closing doors"
+	var/interior = FALSE
+	var/exterior = FALSE
+
+/datum/airlock_phase/doors/lock_closed/interior
+	interior = TRUE
+
+/datum/airlock_phase/doors/lock_closed/exterior
+	exterior = TRUE
+
+/datum/airlock_phase/doors/lock_closed/everything
+	interior = TRUE
+	exterior = TRUE
+
+/datum/airlock_phase/doors/lock_closed/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
+	#warn impl
+	return AIRLOCK_PHASE_SETUP_SUCCESS
+
+/datum/airlock_phase/doors/lock_closed/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
+#warn set X_DOOR_LOCKED_STATE blackboard on these phases

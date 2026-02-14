@@ -81,7 +81,8 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	QDEL_NULL(program)
 	set_controller_id(null)
 	QDEL_NULL(system)
-	#warn get rid of peripherals
+	for(var/obj/machinery/airlock_peripheral/peri as anything in peripherals)
+		remove_peripheral(peri)
 	return ..()
 
 /obj/machinery/airlock_component/controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -121,12 +122,35 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 		network.controller = null
 		network.queue_recheck()
 
-#warn call this on start/stop cycle
+/obj/machinery/airlock_component/controller/proc/on_cycle_begin()
+	update_icon()
+
+/obj/machinery/airlock_component/controller/proc/on_cycle_end()
+	update_icon()
+
 /obj/machinery/airlock_component/controller/update_icon(updates)
 	cut_overlays()
 	. = ..()
 	if(system?.cycling)
 		add_overlay("[base_icon_state]-op-green")
+
+/obj/machinery/airlock_component/controller/proc/add_peripheral(obj/machinery/airlock_peripheral/peripheral)
+	if(peripheral.controller == src)
+		return TRUE
+	if(peripheral.controller)
+		peripheral.disconnect_from_controller()
+	peripheral.controller = src
+	LAZYADD(peripherals, periperhal)
+	peripheral.on_controller_join(src)
+	return TRUE
+
+/obj/machinery/airlock_component/controller/proc/remove_peripheral(obj/machinery/airlock_peripheral/peripheral)
+	if(peripheral.controller != src)
+		return FALSE
+	peripheral.controller = null
+	LAZYREMOVE(peripherals, peripheral)
+	peripheral.on_controller_leave()
+	return TRUE
 
 /**
  * @return TRUE success, FALSE failure

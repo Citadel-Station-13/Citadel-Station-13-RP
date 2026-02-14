@@ -7,10 +7,9 @@
  */
 /datum/airlock_cycle/undock
 
-#warn impl
-
 /datum/airlock_cycle/undock/create_cycling(datum/airlock_system/system)
 	return ..()
 
 /datum/airlock_cycle/undock/gather_phases(datum/airlock_system/system)
 	. = list()
+	. += new /datum/airlock_phase/doors/lock_closed/exterior
