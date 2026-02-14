@@ -235,6 +235,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/dsay,
 	/client/proc/admin_ghost,			//allows us to ghost/reenter body at will,
 	/datum/admins/proc/view_runtimes,
+	/client/proc/debug_mc_dependencies,
+	/client/proc/cmd_controller_view_ui,
 	/client/proc/show_gm_status,
 	/datum/admins/proc/change_weather,
 	/datum/admins/proc/change_time,

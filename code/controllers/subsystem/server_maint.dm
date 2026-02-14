@@ -5,7 +5,6 @@ SUBSYSTEM_DEF(server_maint)
 	wait = 6
 	subsystem_flags = SS_POST_FIRE_TIMING
 	priority = FIRE_PRIORITY_SERVER_MAINT
-	init_order = INIT_ORDER_SERVER_MAINT
 	init_stage = INIT_STAGE_EARLY
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 	var/list/currentrun
@@ -54,6 +53,7 @@ SUBSYSTEM_DEF(server_maint)
 
 	var/list/currentrun = src.currentrun
 	var/round_started = SSticker.HasRoundStarted()
+
 	var/kick_inactive = !!config_legacy.kick_inactive
 	var/afk_period
 	if(kick_inactive)

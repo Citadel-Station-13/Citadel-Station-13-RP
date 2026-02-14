@@ -1,6 +1,10 @@
 SUBSYSTEM_DEF(supply)
 	name = "Supply"
 	wait = 300
+	dependencies = list(
+		/datum/controller/subsystem/atoms,
+		/datum/controller/subsystem/air,
+	)
 
 
 	// Supply Points

@@ -3,8 +3,10 @@
 
 SUBSYSTEM_DEF(overmaps)
 	name = "Overmaps"
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+	)
 	subsystem_flags = SS_NO_FIRE
-	init_order = INIT_ORDER_OVERMAPS
 
 	//* Overmaps *//
 	/// overmap by id

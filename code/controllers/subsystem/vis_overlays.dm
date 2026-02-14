@@ -1,17 +1,12 @@
 SUBSYSTEM_DEF(vis_overlays)
 	name = "Vis contents overlays"
 	wait = 1 MINUTES
+	subsystem_flags = SS_NO_INIT
 	priority = FIRE_PRIORITY_VIS
-	init_order = INIT_ORDER_VIS
 
-	var/list/vis_overlay_cache
-	var/list/unique_vis_overlays
+	var/list/vis_overlay_cache = list()
+	var/list/unique_vis_overlays = list()
 	var/list/currentrun
-
-/datum/controller/subsystem/vis_overlays/Initialize()
-	vis_overlay_cache = list()
-	unique_vis_overlays = list()
-	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/vis_overlays/fire(resumed = FALSE)
 	if(!resumed)
