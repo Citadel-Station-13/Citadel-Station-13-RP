@@ -132,7 +132,7 @@ SUBSYSTEM_DEF(plants)
 	var/list/currentrun = src.currentrun
 
 	while(currentrun.len)
-		var/obj/effect/plant/P = currentrun[currentrun.len]
+		var/obj/structure/plant/P = currentrun[currentrun.len]
 		--currentrun.len
 		if(!P || QDELETED(P))
 			continue
@@ -141,13 +141,13 @@ SUBSYSTEM_DEF(plants)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/plants/proc/add_plant(var/obj/effect/plant/plant)
+/datum/controller/subsystem/plants/proc/add_plant(var/obj/structure/plant/plant)
 	// todo: shouldn't need this but here for now for gc check reasons
 	if(QDELING(plant))
 		CRASH("tried to add a qdestroying plant")
 	processing |= plant
 
-/datum/controller/subsystem/plants/proc/remove_plant(var/obj/effect/plant/plant)
+/datum/controller/subsystem/plants/proc/remove_plant(var/obj/structure/plant/plant)
 	processing -= plant
 
 ///Debug Verb for testing seed genes.

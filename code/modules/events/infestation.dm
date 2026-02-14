@@ -96,7 +96,7 @@
 			spawn_types = list(/mob/living/simple_mob/animal/passive/lizard)
 			vermstring = "lizards"
 		if(VERM_SPIDERS)
-			spawn_types = list(/obj/effect/spider/spiderling/no_crawl)
+			spawn_types = list(/obj/structure/spider/spiderling/no_crawl)
 			vermstring = "spiders"
 		if(VERM_ROACHES)
 			spawn_types = list(/mob/living/simple_mob/animal/roach/roachling)
@@ -121,7 +121,7 @@
 
 			/*	//This prevents spiderlings from maturing into hostile spiders. I'm disabling it because this event has no stakes otherwise.
 			if(vermin == VERM_SPIDERS)
-				var/obj/effect/spider/spiderling/S = new(T)
+				var/obj/structure/spider/spiderling/S = new(T)
 				S.amount_grown = -1
 			else
 				var/spawn_type = pick(spawn_types)

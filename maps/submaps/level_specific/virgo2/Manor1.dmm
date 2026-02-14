@@ -120,7 +120,7 @@
 /area/submap/virgo2/Manor1)
 "aA" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aC" = (
@@ -158,11 +158,11 @@
 /area/submap/virgo2/Manor1)
 "aI" = (
 /obj/structure/flora/pottedplant/dead,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aJ" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "aL" = (
@@ -397,12 +397,12 @@
 /obj/item/material/kitchen/utensil/spoon,
 /obj/item/material/kitchen/utensil/spoon,
 /obj/item/material/kitchen/utensil/spoon,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bF" = (
 /obj/structure/table/standard,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bG" = (
@@ -424,7 +424,7 @@
 "bJ" = (
 /obj/structure/table/standard,
 /obj/item/material/kitchen/rollingpin,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "bK" = (
@@ -633,7 +633,7 @@
 /area/submap/virgo2/Manor1)
 "cz" = (
 /obj/effect/debris/cleanable/cobweb2,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "cA" = (
@@ -647,7 +647,7 @@
 /area/submap/virgo2/Manor1)
 "cC" = (
 /obj/effect/debris/cleanable/spiderling_remains,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/virgo2/Manor1)
 "cD" = (

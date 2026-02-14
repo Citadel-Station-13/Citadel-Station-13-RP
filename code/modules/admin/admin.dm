@@ -1083,7 +1083,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 	if(!seedtype || !SSplants.seeds[seedtype])
 		return
-	new /obj/effect/plant(get_turf(usr), SSplants.seeds[seedtype])
+	new /obj/structure/plant(get_turf(usr), SSplants.seeds[seedtype])
 	log_admin("[key_name(usr)] spawned [seedtype] vines at ([usr.x],[usr.y],[usr.z])")
 
 /datum/admins/proc/show_traitor_panel(var/mob/M in GLOB.mob_list)

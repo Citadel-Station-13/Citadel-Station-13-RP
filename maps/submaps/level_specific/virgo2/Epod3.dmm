@@ -20,7 +20,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/virgo2/Epod3)
 "g" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/template_noop,
 /area/submap/virgo2/Epod3)
 "h" = (
@@ -65,7 +65,7 @@
 /obj/item/clothing/shoes/dress,
 /obj/item/clothing/glasses/sunglasses,
 /obj/random/multiple/gun/projectile/handgun,
-/obj/effect/spider/eggcluster/small/frost,
+/obj/structure/spider/eggcluster/small/frost,
 /turf/simulated/shuttle/floor,
 /area/submap/virgo2/Epod3)
 "k" = (
@@ -76,7 +76,7 @@
 /turf/simulated/shuttle/wall,
 /area/submap/virgo2/Epod3)
 "l" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/virgo2/Epod3)
 "m" = (
@@ -87,8 +87,8 @@
 /turf/simulated/shuttle/floor,
 /area/submap/virgo2/Epod3)
 "p" = (
-/obj/effect/spider/stickyweb,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/template_noop,
 /area/submap/virgo2/Epod3)
 "r" = (

@@ -60,8 +60,8 @@
 		if(udder && prob(5))
 			udder.add_reagent("milk", rand(5, 10))
 
-		if(locate(/obj/effect/plant) in loc)
-			var/obj/effect/plant/SV = locate() in loc
+		if(locate(/obj/structure/plant) in loc)
+			var/obj/structure/plant/SV = locate() in loc
 			SV.die_off(1)
 
 		if(locate(/obj/machinery/portable_atmospherics/hydroponics/soil/invisible) in loc)
@@ -69,8 +69,8 @@
 			qdel(SP)
 
 		if(!pulledby)
-			var/obj/effect/plant/food
-			food = locate(/obj/effect/plant) in oview(5,loc)
+			var/obj/structure/plant/food
+			food = locate(/obj/structure/plant) in oview(5,loc)
 			if(food)
 				var/step = get_step_to(src, food, 0)
 				Move(step)
@@ -78,7 +78,7 @@
 /mob/living/simple_mob/animal/goat/Move()
 	..()
 	if(!stat)
-		for(var/obj/effect/plant/SV in loc)
+		for(var/obj/structure/plant/SV in loc)
 			SV.die_off(1)
 
 /mob/living/simple_mob/animal/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)

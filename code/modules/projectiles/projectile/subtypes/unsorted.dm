@@ -242,10 +242,10 @@
 		return
 
 	if(isturf(target.loc))
-		var/obj/effect/spider/stickyweb/W = locate() in get_turf(target)
+		var/obj/structure/spider/stickyweb/W = locate() in get_turf(target)
 		if(!W && prob(75))
 			visible_message("<span class='danger'>\The [src] splatters a layer of web on \the [target]!</span>")
-			new /obj/effect/spider/stickyweb(target.loc)
+			new /obj/structure/spider/stickyweb(target.loc)
 
 /obj/projectile/beam/tungsten
 	name = "core of molten tungsten"

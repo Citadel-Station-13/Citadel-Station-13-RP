@@ -81,7 +81,7 @@
 	if(O.integrity_flags & (INTEGRITY_INDESTRUCTIBLE | INTEGRITY_ACIDPROOF))
 		return
 	// todo: newacid
-	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (allocated > meltdose))
+	if((istype(O, /obj/item) || istype(O, /obj/structure/plant)) && (allocated > meltdose))
 		var/obj/effect/debris/cleanable/molten_item/I = new/obj/effect/debris/cleanable/molten_item(O.loc)
 		I.desc = "Looks like this was \an [O] some time ago."
 		for(var/mob/M in viewers(5, O))

@@ -59,7 +59,7 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/invisible/Destroy()
 	// Check if we're masking a decal that needs to be visible again.
-	for(var/obj/effect/plant/plant in get_turf(src))
+	for(var/obj/structure/plant/plant in get_turf(src))
 		if(plant.invisibility == INVISIBILITY_MAXIMUM)
 			plant.invisibility = initial(plant.invisibility)
 	..()

@@ -6549,14 +6549,14 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "sq" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/hunter{
 	iff_factions = "!bind-map"
 	},
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sr" = (
-/obj/effect/spider/cocoon{
+/obj/structure/spider/cocoon{
 	icon_state = "cocoon_large2"
 	},
 /mob/living/simple_mob/animal/giant_spider/hunter{
@@ -6565,7 +6565,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "ss" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider{
 	iff_factions = "!bind-map"
 	},
@@ -6644,10 +6644,10 @@
 	},
 /area/awaymission/zoo)
 "sA" = (
-/obj/effect/spider/stickyweb{
+/obj/structure/spider/stickyweb{
 	icon_state = "stickyweb2"
 	},
-/obj/effect/spider/cocoon{
+/obj/structure/spider/cocoon{
 	icon_state = "cocoon3"
 	},
 /mob/living/simple_mob/animal/giant_spider/hunter{
@@ -6656,7 +6656,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sB" = (
-/obj/effect/spider/stickyweb{
+/obj/structure/spider/stickyweb{
 	icon_state = "cobweb1"
 	},
 /mob/living/simple_mob/animal/giant_spider/hunter{
@@ -6665,7 +6665,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sC" = (
-/obj/effect/spider/cocoon{
+/obj/structure/spider/cocoon{
 	icon_state = "cocoon2"
 	},
 /mob/living/simple_mob/animal/giant_spider/nurse{
@@ -6674,7 +6674,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sD" = (
-/obj/effect/spider/stickyweb{
+/obj/structure/spider/stickyweb{
 	icon_state = "cobweb2"
 	},
 /mob/living/simple_mob/animal/giant_spider{
@@ -6683,10 +6683,10 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sE" = (
-/obj/effect/spider/stickyweb{
+/obj/structure/spider/stickyweb{
 	icon_state = "stickyweb2"
 	},
-/obj/effect/spider/cocoon{
+/obj/structure/spider/cocoon{
 	icon_state = "cocoon_large1"
 	},
 /mob/living/simple_mob/animal/giant_spider{
@@ -6699,7 +6699,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "sH" = (
-/obj/effect/spider/cocoon{
+/obj/structure/spider/cocoon{
 	icon_state = "cocoon_large3"
 	},
 /mob/living/simple_mob/animal/giant_spider/hunter{
@@ -6733,7 +6733,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "sO" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sP" = (
@@ -6763,13 +6763,13 @@
 	},
 /area/awaymission/zoo)
 "sR" = (
-/obj/effect/spider/stickyweb{
+/obj/structure/spider/stickyweb{
 	icon_state = "stickyweb2"
 	},
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sS" = (
-/obj/effect/spider/stickyweb{
+/obj/structure/spider/stickyweb{
 	icon_state = "cobweb2"
 	},
 /turf/simulated/floor/holofloor/desert,
@@ -6809,7 +6809,7 @@
 	},
 /area/awaymission/zoo)
 "sX" = (
-/obj/effect/spider/stickyweb{
+/obj/structure/spider/stickyweb{
 	icon_state = "cobweb1"
 	},
 /turf/simulated/floor/holofloor/desert,

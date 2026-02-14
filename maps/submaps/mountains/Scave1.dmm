@@ -6,14 +6,14 @@
 /turf/simulated/mineral/ignore_mapgen,
 /area/submap/cave/Scave1)
 "c" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "d" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "e" = (
-/obj/effect/spider/spiderling/frost,
+/obj/structure/spider/spiderling/frost,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "f" = (
@@ -61,8 +61,8 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "p" = (
-/obj/effect/spider/stickyweb,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/Scave1)
 "q" = (

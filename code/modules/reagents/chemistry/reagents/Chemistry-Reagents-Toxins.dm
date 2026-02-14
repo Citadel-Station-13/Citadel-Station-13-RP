@@ -373,7 +373,7 @@
 /datum/reagent/toxin/plantbgone/on_touch_obj(obj/target, remaining, allocated, data)
 	. = ..()
 	var/obj/O = target
-	if(istype(O, /obj/effect/plant))
+	if(istype(O, /obj/structure/plant))
 		qdel(O)
 	else if(istype(O, /obj/structure/alien/weeds))
 		var/obj/structure/alien/weeds/alien_weeds = O

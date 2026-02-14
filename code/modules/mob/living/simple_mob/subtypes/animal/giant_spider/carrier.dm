@@ -37,7 +37,7 @@
 	If a spider emerges, you will be placed in control of it."
 
 	var/spiderling_count = 0
-	var/spiderling_type = /obj/effect/spider/spiderling
+	var/spiderling_type = /obj/structure/spider/spiderling
 	var/swarmling_type = /mob/living/simple_mob/animal/giant_spider/hunter
 	var/swarmling_faction = "spiders"
 	var/swarmling_prob = 10 // Odds that a spiderling will be a swarmling instead.
@@ -66,7 +66,7 @@
 				swarmling.adjust_scale(0.75)
 				new_spiders += swarmling
 			else if(src)
-				var/obj/effect/spider/spiderling/child = new spiderling_type(src.loc)
+				var/obj/structure/spider/spiderling/child = new spiderling_type(src.loc)
 				child.skitter()
 			else // We might've gibbed or got deleted.
 				break

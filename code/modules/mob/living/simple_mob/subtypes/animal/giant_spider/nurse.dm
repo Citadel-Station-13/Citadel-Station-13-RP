@@ -50,8 +50,8 @@
 	var/fed = 0 // Counter for how many egg laying 'charges' the spider has.
 	var/laying_eggs = FALSE	// Only allow one set of eggs to be laid at once.
 	var/egg_inject_chance = 25 // One in four chance to get eggs.
-	var/egg_type = /obj/effect/spider/eggcluster/small
-	var/web_type = /obj/effect/spider/stickyweb/dark
+	var/egg_type = /obj/structure/spider/eggcluster/small
+	var/web_type = /obj/structure/spider/stickyweb/dark
 
 /datum/ai_holder/polaris/simple_mob/melee/nurse_spider
 	mauling = TRUE		// The nurse puts mobs into webs by attacking, so it needs to attack in crit
@@ -64,7 +64,7 @@
 		var/obj/item/organ/external/O = H.get_organ(target_zone)
 		if(O)
 			var/eggcount = 0
-			for(var/obj/effect/spider/eggcluster/E in O.implants)
+			for(var/obj/structure/spider/eggcluster/E in O.implants)
 				eggcount++
 			if(!eggcount)
 				var/eggs = new egg_type(O, src)
@@ -121,7 +121,7 @@
 		return FALSE
 
 	// Finally done with the checks.
-	var/obj/effect/spider/cocoon/C = new(AM.loc)
+	var/obj/structure/spider/cocoon/C = new(AM.loc)
 	var/large_cocoon = FALSE
 	for(var/mob/living/L in C.loc)
 		if(istype(L, /mob/living/simple_mob/animal/giant_spider)) // Cannibalism is bad.
@@ -159,7 +159,7 @@
 	if(!istype(T))
 		return FALSE
 
-	var/obj/effect/spider/stickyweb/W = locate() in T
+	var/obj/structure/spider/stickyweb/W = locate() in T
 	if(W)
 		return FALSE // Already got webs here.
 
@@ -188,7 +188,7 @@
 	if(!fed)
 		return FALSE
 
-	var/obj/effect/spider/eggcluster/E = locate() in T
+	var/obj/structure/spider/eggcluster/E = locate() in T
 	if(E)
 		return FALSE // Already got eggs here.
 
@@ -223,7 +223,7 @@
 
 // Variant that 'blocks' light (by being a negative light source).
 // This is done to make webbed rooms scary and allow for spiders on the other side of webs to see prey.
-/obj/effect/spider/stickyweb/dark
+/obj/structure/spider/stickyweb/dark
 	name = "dense web"
 	desc = "It's sticky, and blocks a lot of light."
 	light_color = "#FFFFFF"
