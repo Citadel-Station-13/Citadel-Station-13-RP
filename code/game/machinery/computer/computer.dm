@@ -12,6 +12,7 @@
 	icon_state = "computer"
 	/// allow clicking through computers because they are often used in a way that blocks a corner tile
 	pass_flags = /obj/machinery::pass_flags | ATOM_PASS_CLICK
+	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -87,7 +88,7 @@
 	add_overlay(to_add_overlays)
 
 /obj/machinery/computer/power_change()
-	..()
+	. = ..()
 	update_icon()
 	if(machine_stat & NOPOWER)
 		set_light(0)

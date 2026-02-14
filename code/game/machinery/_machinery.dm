@@ -280,17 +280,40 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
+/obj/machinery/attack_robot(mob/user)
+	if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON) && !isAdminGhostAI(user))
+		return FALSE
+
+	if(!Adjacent(user) || !has_buckled_mobs()) //so that borgs (but not AIs, sadly (perhaps in a future PR?)) can unbuckle people from machines
+		return _try_interact(user)
+
+	if(length(buckled_mobs) <= 1)
+		if(user_unbuckle_mob(buckled_mobs[1],user))
+			return TRUE
+
+	var/unbuckled = tgui_input_list(user, "Who do you wish to unbuckle?", "Unbuckle", sortNames(buckled_mobs))
+	if(isnull(unbuckled))
+		return FALSE
+	if(user_unbuckle_mob(unbuckled, NONE, user))
+		return TRUE
+
+	return _try_interact(user)
+
 /obj/machinery/attack_ai(mob/user)
-	if(IsAdminGhost(user))
-		interact(user)
-		return
-	if(isrobot(user))
-		// For some reason attack_robot doesn't work
+	if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON) && !isAdminGhostAI(user))
+		return FALSE
+	if(isrobot(user))// For some reason attack_robot doesn't work
 		// This is to stop robots from using cameras to remotely control machines.
 		if(user.client && user.client.eye == user)
-			return attack_hand(user)
-	else
-		return attack_hand(user)
+			return attack_robot(user)
+	return _try_interact(user)
+
+/obj/machinery/_try_interact(mob/user)
+	if((interaction_flags_machine & INTERACT_MACHINE_WIRES_IF_OPEN) && panel_open)
+		return TRUE
+	// if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_INTERACT)
+	// 	return TRUE
+	return ..()
 
 // todo: refactor
 /obj/machinery/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
@@ -325,37 +348,52 @@
 	return ..()
 
 /obj/machinery/can_interact(mob/user)
+	if(QDELETED(user))
+		return FALSE
+
 	if((machine_stat & (NOPOWER|BROKEN|MAINT)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
-	var/silicon = issilicon(user)
-	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN)) // Check if we can interact with an open panel machine, if the panel is open
-		if(!silicon || !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
-			return FALSE
-	// check silicon, but cyborgs can interact if within reach.
-	// todo: refactor interaction flags, fuck.
-	if(silicon && (!isrobot(user) || !user.Reachability(src))) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
+
+	if(isAdminGhostAI(user))
+		return TRUE //the Gods have unlimited power and do not care for things such as range or blindness
+
+	if(!isliving(user))
+		return FALSE //no ghosts allowed, sorry
+
+	if(issilicon(user)) // If we are a silicon, make sure the machine allows silicons to interact with it
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
-	else if(isliving(user)) // If we are a living human
-		var/mob/living/L = user
-		if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SILICON) // First make sure the machine doesn't require silicon interaction
+
+		if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN) && !(interaction_flags_machine & INTERACT_MACHINE_OPEN_SILICON))
 			return FALSE
 
-		if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SIGHT)
-			if(user.is_blind())
-				to_chat(user, SPAN_WARNING("This machine requires sight to use."))
-				return FALSE
-/*
-		if(!Adjacent(user)) // Next make sure we are next to the machine unless we have telekinesis
-			var/mob/living/carbon/H = L
-			if(!(istype(H) && H.has_dna() && H.dna.check_mutation(MUTATION_TELEKINESIS)))
-				return FALSE
-*/
-		if(L.incapacitated()) // Finally make sure we aren't incapacitated
-			return FALSE
-	else // If we aren't a silicon, living, or admin ghost, bad!
+		return user.can_interact_with(src) //AIs don't care about petty mortal concerns like needing to be next to a machine to use it, but borgs do care somewhat
+
+	. = ..()
+	if(!.)
 		return FALSE
-	return TRUE // If we pass all these checks, woohoo! We can interact
+
+	if((interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SIGHT) && user.is_blind())
+		to_chat(user, SPAN_WARNING("This machine requires sight to use."))
+		return FALSE
+
+	// machines have their own lit up display screens and LED buttons so we don't need to check for light
+	// if((interaction_flags_machine & INTERACT_MACHINE_REQUIRES_LITERACY) && !user.can_read(src, READING_CHECK_LITERACY))
+	// 	return FALSE
+
+	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN))
+		return FALSE
+
+	if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SILICON) //if the user was a silicon, we'd have returned out earlier, so the user must not be a silicon
+		return FALSE
+
+	if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_STANDING)
+		var/mob/living/living_user = user
+		if(!(living_user.mobility_flags & MOBILITY_IS_STANDING))
+			return FALSE
+
+	return TRUE // If we passed all of those checks, woohoo! We can interact with this machine.
+
 
 /obj/machinery/proc/RefreshParts() //Placeholder proc for machines that are built using frames.
 	return
