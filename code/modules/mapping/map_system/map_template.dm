@@ -204,7 +204,7 @@
 
 	// todo: inefficient as shit
 	if(SSmapping.initialized)
-		repopulate_sorted_areas()
+		require_area_resort()
 	// end
 
 	return context

@@ -458,7 +458,7 @@
 	var/list/areas_with_intercom = list()
 	var/list/areas_with_camera = list()
 
-	for(var/area/A in GLOB.sortedAreas)
+	for(var/area/A in get_sorted_areas())
 		if(!(A.type in areas_all))
 			areas_all.Add(A.type)
 

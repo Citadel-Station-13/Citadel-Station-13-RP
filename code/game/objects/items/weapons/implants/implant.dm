@@ -528,7 +528,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			else
 				GLOB.global_announcer.autosay("[mobname] has died in [t.name]!", "[mobname]'s Death Alarm")
 		if ("emp")
-			var/name = prob(50) ? t.name : pick(teleportlocs)
+			var/name = prob(50) ? t.name : pick(GLOB.teleportlocs)
 			GLOB.global_announcer.autosay("[mobname] has died in [name]!", "[mobname]'s Death Alarm")
 		else
 			GLOB.global_announcer.autosay("[mobname] has died-zzzzt in-in-in...", "[mobname]'s Death Alarm")

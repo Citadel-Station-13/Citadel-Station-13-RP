@@ -127,7 +127,7 @@
 		newA.setup(str)
 		// newA.default_gravity = oldA.default_gravity
 		GLOB.custom_areas[newA] = TRUE
-		// require_area_resort() //new area registered. resort the names
+		require_area_resort() //new area registered. resort the names
 	else
 		newA = area_choice
 
@@ -172,19 +172,14 @@
 
 #undef BP_MAX_ROOM_SIZE
 
-//Repopulates sortedAreas list
-/proc/repopulate_sorted_areas()
-	GLOB.sortedAreas = list()
+/proc/require_area_resort()
+	GLOB.sortedAreas = null
 
-	for(var/area/A in world)
-		GLOB.sortedAreas.Add(A)
-
-	tim_sort(GLOB.sortedAreas, GLOBAL_PROC_REF(cmp_name_asc))
-	setupTeleportLocs()		// shitcode patch to make vorecode work until we get rid of this shit meme or refactor it entirely
-
-/area/proc/addSorted()
-	GLOB.sortedAreas.Add(src)
-	tim_sort(GLOB.sortedAreas, GLOBAL_PROC_REF(cmp_name_asc))
+/// Returns a sorted version of GLOB.areas, by name
+/proc/get_sorted_areas()
+	if(!GLOB.sortedAreas)
+		GLOB.sortedAreas = tim_sort(GLOB.areas.Copy(), /proc/cmp_name_asc)
+	return GLOB.sortedAreas
 
 //Takes: Area type as a text string from a variable.
 //Returns: Instance for the area in the world.
@@ -207,16 +202,22 @@
 	var/list/areas = list()
 	if(subtypes)
 		var/list/cache = typecacheof(areatype)
-		for(var/V in GLOB.sortedAreas)
-			var/area/A = V
-			if(cache[A.type])
-				areas += V
+		for(var/area/area_to_check as anything in GLOB.areas)
+			if(cache[area_to_check.type])
+				areas += area_to_check
 	else
-		for(var/V in GLOB.sortedAreas)
-			var/area/A = V
-			if(A.type == areatype)
-				areas += V
+		for(var/area/area_to_check as anything in GLOB.areas)
+			if(area_to_check.type == areatype)
+				areas += area_to_check
 	return areas
+
+/// Iterates over all turfs in the target area and returns the first non-dense one
+/proc/get_first_open_turf_in_area(area/target)
+	if(!target)
+		return
+	for(var/turf/turf in target)
+		if(!turf.density)
+			return turf
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all turfs in areas of that type of that type in the world.
@@ -237,7 +238,7 @@
 	var/list/turfs = list()
 	if(subtypes)
 		var/list/cache = typecacheof(areatype)
-		for(var/V in GLOB.sortedAreas)
+		for(var/V in GLOB.areas)
 			var/area/A = V
 			if(!cache[A.type])
 				continue
@@ -245,7 +246,7 @@
 				if(target_z == 0 || target_z == T.z)
 					turfs += T
 	else
-		for(var/V in GLOB.sortedAreas)
+		for(var/V in GLOB.areas)
 			var/area/A = V
 			if(A.type != areatype)
 				continue
@@ -266,7 +267,7 @@
 	var/prevname = "[area_to_rename.name]"
 	set_area_machinery_title(area_to_rename, new_name, prevname)
 	area_to_rename.name = new_name
-	// require_area_resort() //area renamed so resort the names
+	require_area_resort() //area renamed so resort the names
 
 	// if(LAZYLEN(area_to_rename.firedoors))
 	// 	for(var/obj/machinery/door/firedoor/area_firedoors as anything in area_to_rename.firedoors)

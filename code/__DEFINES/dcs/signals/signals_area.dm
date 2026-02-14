@@ -5,6 +5,8 @@
  */
 
 //! /area signals
+///from base of area/proc/power_change(): ()
+#define COMSIG_AREA_POWER_CHANGE "area_power_change"
 /// From base of area/Entered(): (atom/movable/arrived, area/old_area)
 #define COMSIG_AREA_ENTERED "area_entered"
 /// From base of area/Exited(): (atom/movable/gone, direction)

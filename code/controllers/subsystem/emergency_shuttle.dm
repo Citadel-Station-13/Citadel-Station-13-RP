@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 	evac = 1
 	emergency_shuttle_called.Announce(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
-	for(var/area/A in GLOB.sortedAreas)
+	for(var/area/A in get_sorted_areas())
 		if(istype(A, /area/hallway))
 			A.readyalert()
 	if(SSlegacy_atc.squelched == FALSE)
@@ -124,7 +124,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	if (evac)
 		emergency_shuttle_recalled.Announce((LEGACY_MAP_DATUM).emergency_shuttle_recall_message)
 
-		for(var/area/A in GLOB.sortedAreas)
+		for(var/area/A in get_sorted_areas())
 			if(istype(A, /area/hallway))
 				A.readyreset()
 		evac = 0
