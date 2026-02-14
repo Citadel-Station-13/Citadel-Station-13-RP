@@ -1,3 +1,9 @@
+/**
+ * Ammo system.
+ *
+ * TODO: indirect projectile_effects_add to projectile_effects list on `/datum/prototype/ammo_shell`
+ *       for serialization.
+ */
 /obj/item/ammo_casing
 	name = "bullet casing"
 	desc = "A bullet casing."

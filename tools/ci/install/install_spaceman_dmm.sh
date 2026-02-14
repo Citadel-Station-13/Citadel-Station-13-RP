@@ -1,8 +1,4 @@
 #!/bin/bash
-## This script installs SpacemanDMM
-## It will be linked to the provided filename (argument 1), in the user's home directory
-## todo: is this good behavior? should we standardize the location somewhere?
-
 set -euo pipefail
 
 source dependencies.sh

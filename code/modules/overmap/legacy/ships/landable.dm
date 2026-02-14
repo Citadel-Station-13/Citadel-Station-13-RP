@@ -187,7 +187,10 @@
 
 /obj/overmap/entity/visitable/ship/landable/proc/on_takeoff(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
 	if(!isturf(loc))
-		forceMove(get_turf(loc))
+		if(istype(loc, /obj/overmap/entity))
+			copy_physics_pos_vel(loc)
+		else
+			forceMove(get_turf(loc))
 		unhalt()
 
 /obj/overmap/entity/visitable/ship/landable/get_landed_info()

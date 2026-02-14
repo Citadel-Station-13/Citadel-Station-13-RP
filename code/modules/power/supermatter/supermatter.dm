@@ -104,17 +104,24 @@
 	/// Cooldown tracker for accent sounds,
 	var/last_accent_sound = 0
 
-	var/datum/looping_sound/supermatter/soundloop
-
 	var/list/history = list()
 	var/record_size = 60
 	var/record_interval = 20
 	var/next_record = 0
 
+	///An effect we show to admins and ghosts the percentage of delam we're at
+	var/obj/effect/countdown/supermatter/countdown
+
+	var/datum/looping_sound/supermatter/soundloop
+
 /obj/machinery/power/supermatter/Initialize(mapload)
 	. = ..()
 	uid = gl_uid++
+
+	countdown = new(src)
+	countdown.start()
 	soundloop = new(list(src), TRUE)
+
 	history["integrity_history"] = list()
 	history["EER_history"] = list()
 	history["temperature_history"] = list()
@@ -123,6 +130,7 @@
 
 /obj/machinery/power/supermatter/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(countdown)
 	QDEL_NULL(soundloop)
 	return ..()
 
@@ -472,6 +480,8 @@
 	spawn(0)
 		if(their_loc != bumped_atom.loc)
 			return
+		if(bumped_atom.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
+			return
 		if(istype(bumped_atom, /obj/effect))
 			return
 		if(istype(bumped_atom, /mob/living))
@@ -486,19 +496,22 @@
 
 		Consume(bumped_atom)
 
-/obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
+/obj/machinery/power/supermatter/proc/Consume(atom/movable/nom)
 	// todo: rework the fucking supermatter so we don't need this
 	// todo: also rework shit to not keep references to deleted things; LOOKING AT YOU CYBORGS
 	// tl;dr cyborgs keep refs to shit that's deleted and keep letting you use them
 	// so we add a sanity check here
-	if(QDELETED(user))
+	if(QDELETED(nom))
 		return
-	investigate_log("Consumed [user] ([ref(user)]) potentially last touched by [user.fingerprintslast], adding [istype(user)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
-	if(istype(user))
-		user.dust()
+	if(nom & (ATOM_ABSTRACT | ATOM_NONWORLD))
+		return
+	investigate_log("Consumed [nom] ([ref(nom)]) potentially last touched by [nom.fingerprintslast], adding [istype(nom)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
+	if(ismob(nom))
+		var/mob/M = nom
+		M.dust()
 		power += 200
 	else
-		qdel(user)
+		qdel(nom)
 
 	power += 200
 

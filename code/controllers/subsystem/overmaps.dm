@@ -9,7 +9,6 @@ SUBSYSTEM_DEF(overmaps)
 	subsystem_flags = SS_NO_FIRE
 
 	//* Overmaps *//
-
 	/// overmap by id
 	//  todo: recover
 	var/static/list/datum/overmap/overmap_by_id = list()
@@ -77,7 +76,7 @@ SUBSYSTEM_DEF(overmaps)
 
 // queues a rebuild_helm_computers(), as it's very expensive to run.
 /datum/controller/subsystem/overmaps/proc/queue_helm_computer_rebuild()
-	if(!initialized)
+	if(!initialized || !SSatoms.initialized) // see ssatoms init.
 		return
 	addtimer(CALLBACK(src, PROC_REF(rebuild_helm_computers)), 0, TIMER_UNIQUE)
 

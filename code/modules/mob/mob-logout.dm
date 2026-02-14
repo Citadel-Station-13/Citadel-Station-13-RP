@@ -6,6 +6,8 @@
  * * much like Logout(), this is only called if we have a client.
  */
 /mob/proc/pre_logout()
+	SHOULD_NOT_SLEEP(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_PRE_LOGOUT, client)
 	if(!client)
 		return
 	if(client.action_drawer)

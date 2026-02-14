@@ -45,6 +45,7 @@
 	var/locked = FALSE
 	var/use_old_icon_update = FALSE
 
+	var/is_maploaded = FALSE
 
 	var/obj/item/electronics/airlock/lockerelectronics //Installed electronics
 	var/lock_in_use = FALSE //Someone is doing some stuff with the lock here, better not proceed further
@@ -53,38 +54,38 @@
 	//! legacy
 	/// override attackby and anything else closet-like
 	var/not_actually_a_closet = FALSE
-	/// was made at mapload
-	var/was_made_at_mapload
 	//! end
 
 /obj/structure/closet/Initialize(mapload, singleton/closet_appearance/use_closet_appearance)
 	. = ..()
-	if(mapload && !opened)
-		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
+
 	if(!isnull(use_closet_appearance))
 		src.closet_appearance = use_closet_appearance
 	legacy_spawn_contents()
-	was_made_at_mapload = mapload
-	/*
-	if(secure)
-		lockerelectronics = new(src)
-		lockerelectronics.accesses = req_access
-	*/
-	// Closets need to come later because of spawners potentially creating objects during init.
-	return INITIALIZE_HINT_LATELOAD
 
-/obj/structure/closet/LateInitialize()
+	// Closets need to come later because of spawners potentially creating objects during init.
+
+	// if closed, any item at the crate's loc is put in the contents
+	if (mapload)
+		is_maploaded = TRUE
+
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
+
+	update_appearance()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/closet/LateInitialize()
+	if(!opened && is_maploaded)
+		take_contents()
+
 	if(!use_old_icon_update && ispath(closet_appearance))
 		var/singleton/closet_appearance/app = GET_SINGLETON(closet_appearance)
 		if(app)
 			icon = app.icon
 			color = null
 			update_icon()
-	if(was_made_at_mapload && !opened)
-		take_contents()
 
 /obj/structure/closet/proc/update_icon_old()
 	if(!opened)
@@ -405,10 +406,6 @@
 		user.show_viewers("<span class='danger'>[user] stuffs [O] into [src]!</span>")
 	add_fingerprint(user)
 	return
-
-/obj/structure/closet/attack_robot(mob/user)
-	if(Adjacent(user))
-		attack_hand(user)
 
 /obj/structure/closet/relaymove(mob/user as mob)
 	if(user.stat || !isturf(loc))

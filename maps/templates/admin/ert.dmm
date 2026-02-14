@@ -283,8 +283,7 @@
 /obj/machinery/meter,
 /obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
-	name = "VB APC - North";
-	pixel_y = 24
+	name = "VB APC - North"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -776,8 +775,7 @@
 "gR" = (
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -790,8 +788,7 @@
 /obj/item/vehicle_module/shocker,
 /obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
-	name = "VB APC - North";
-	pixel_y = 24
+	name = "VB APC - North"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -1878,8 +1875,7 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -3029,8 +3025,7 @@
 /obj/item/gun/projectile/energy/ionrifle,
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -3386,8 +3381,7 @@
 "Af" = (
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow,
 /obj/machinery/embedded_controller/radio/docking_port_multi{
@@ -3420,8 +3414,7 @@
 "An" = (
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -3663,8 +3656,7 @@
 "Cn" = (
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/machinery/vending/nifsoft_shop{
 	categories = 111;
@@ -3884,8 +3876,7 @@
 /obj/item/extinguisher/mini,
 /obj/machinery/power/apc/large_cell/tier_3/north_mount{
 	alarms_hidden = 1;
-	name = "VB APC - North";
-	pixel_y = 24
+	name = "VB APC - North"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -4085,8 +4076,7 @@
 /obj/item/storage/box/frags,
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -4520,8 +4510,7 @@
 "Ip" = (
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -5168,8 +5157,7 @@
 	},
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -5754,8 +5742,7 @@
 "Qc" = (
 /obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	alarms_hidden = 1;
-	name = "VB APC - West";
-	pixel_x = -24
+	name = "VB APC - West"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -6071,8 +6058,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -6603,8 +6589,7 @@
 "Yq" = (
 /obj/machinery/power/apc/large_cell/tier_3/east_mount{
 	alarms_hidden = 1;
-	name = "VB APC - East";
-	pixel_x = 24
+	name = "VB APC - East"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"

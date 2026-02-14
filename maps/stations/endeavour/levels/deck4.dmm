@@ -3524,9 +3524,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 8
-	},
+/obj/orbital_deployment_marker/corner/upper_right,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "dhh" = (
@@ -9969,6 +9967,7 @@
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 4
 	},
+/obj/orbital_deployment_marker/corner/lower_left,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "iTa" = (
@@ -10312,9 +10311,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 8
-	},
+/obj/orbital_deployment_marker/corner/lower_right,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "jio" = (
@@ -11603,7 +11600,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/starboardnacelle)
 "krA" = (
-/obj/structure/salvageable/autolathe,
+/obj/machinery/orbital_deployment_controller/auto_mount,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "krH" = (
@@ -11881,10 +11878,6 @@
 /obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"kGP" = (
-/obj/structure/salvageable/console_broken_os,
-/turf/simulated/floor/plating,
-/area/hallway/d4aftstrbdmaint/endeavour)
 "kGS" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -25680,9 +25673,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 4
-	},
+/obj/orbital_deployment_marker/corner/upper_left,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "xCw" = (
@@ -34947,7 +34938,7 @@ kkQ
 uUN
 cdS
 kkQ
-krA
+kkQ
 kkQ
 kkQ
 kkQ
@@ -35146,7 +35137,7 @@ kkQ
 kkQ
 kkQ
 kkQ
-krA
+kkQ
 aXZ
 uUN
 jNg
@@ -35529,11 +35520,11 @@ kkQ
 uUN
 cdS
 kkQ
-kGP
 kkQ
 kkQ
 kkQ
-krA
+kkQ
+kkQ
 kkQ
 aXZ
 uUN
@@ -35725,7 +35716,7 @@ cdS
 kkQ
 kkQ
 kkQ
-krA
+kkQ
 kkQ
 kkQ
 kkQ
@@ -36110,13 +36101,13 @@ hjB
 kkQ
 uUN
 cdS
-kGP
 kkQ
 kkQ
 kkQ
 kkQ
 kkQ
-kGP
+kkQ
+kkQ
 aXZ
 uUN
 jNg
@@ -36496,12 +36487,12 @@ fpa
 kkQ
 hjB
 kkQ
-kkQ
+krA
 gbL
 gbL
 gbL
 gbL
-kkQ
+gbL
 gbL
 gbL
 gbL

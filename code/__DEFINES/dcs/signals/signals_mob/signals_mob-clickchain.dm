@@ -1,6 +1,16 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
+//* low level clickchain *//
+
+/// fired with (target, location, control, params)
+#define COMSIG_MOB_CLICK_ON_OVERRIDE "mob-click-on-override"
+/// fired with (target, location, control, params)
+#define COMSIG_MOB_CLICK_ON_SPECIAL "mob-click-on-special"
+
+/// common return for all COMSIG_MOB_CLICK_ON_*
+#define SIGNAL_RAISE_MOB_CLICK_HANDLED (1<<0)
+
 //* dynamic hooks *//
 
 /**

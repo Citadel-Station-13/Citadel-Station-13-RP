@@ -74,6 +74,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 			/obj/item/t_scanner,
 			/obj/item/rcd/electric/mounted/borg,
 			/obj/item/atmos_analyzer,
+			/obj/item/blueprints/cyborg,
 			/obj/item/barrier_tape_roll/engineering,
 			/obj/item/inflatable_dispenser/robot,
 			/obj/item/pickaxe/plasmacutter,

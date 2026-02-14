@@ -1,4 +1,0 @@
-author: "Chelxox"
-delete-after: True
-changes:
-  - bugfix: "Fixes cropped_hoodie and cropped_sweater's icon paths"
