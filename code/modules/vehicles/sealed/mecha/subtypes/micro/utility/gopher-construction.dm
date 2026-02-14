@@ -240,5 +240,5 @@
 
 /datum/construction/reversible/mecha/gopher/spawn_result()
 	..()
-	feedback_inc("mecha_gopher_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Gopher")
 	return

@@ -358,13 +358,14 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		return
 
 	rustg_time_reset(SS_INIT_TIMER_KEY)
+
 	var/initialize_result = subsystem.Initialize()
 
 	// Capture end time
 	var/time = rustg_time_milliseconds(SS_INIT_TIMER_KEY)
 	var/took_seconds = round(time / 1000, 0.01)
 
-	metric_set_nested_numerical(/datum/metric/nested_numerical/subsystem_init_time, "[subsystem.type]", took_seconds)
+	SSblackbox.record_feedback("tally", "subsystem_initialize", time, subsystem.name)
 
 	// "[message_prefix] [seconds] seconds."
 	var/message_prefix
@@ -397,7 +398,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		else
 			warning("[subsystem.name] subsystem initialized, returning invalid result [initialize_result]. This is a bug.")
 
-	var/message = "[message_prefix] [took_seconds] second[took_seconds == 1 ? "" : "s"]."
+	var/message = "[message_prefix] [took_seconds] second[took_seconds == 1 ? "" : "s"]!"
 	var/chat_message = chat_warning ? SPAN_BOLDWARNING(message) : SPAN_BOLDANNOUNCE(message)
 
 	if(tell_everyone && message_prefix)

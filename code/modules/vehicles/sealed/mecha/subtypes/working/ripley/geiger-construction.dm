@@ -214,5 +214,5 @@
 
 /datum/construction/reversible/mecha/geiger/spawn_result()
 	..()
-	feedback_inc("mecha_geiger_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Geiger")
 	return

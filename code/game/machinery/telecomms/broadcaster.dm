@@ -298,51 +298,9 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		var/part_b = "</span> <span class='message'>" // Tweaked for security headsets -- TLE
 		var/part_c = "</span></span>"
 
-
-		// --- Filter the message; place it in quotes apply a verb ---
-		var/quotedmsg = null
-		if(M)
-			quotedmsg = "[M.say_quote(message)], \"[message]\""
-		else
-			quotedmsg = "says, \"[message]\""
-
-		// --- This following recording is intended for research and feedback in the use of department radio channels ---
-
-		var/part_blackbox_b = "</span><b> \[[freq_text]\]</b> <span class='message'>" // Tweaked for security headsets -- TLE
-		var/blackbox_msg = "[part_a][name][part_blackbox_b][quotedmsg][part_c]"
-		//var/blackbox_admin_msg = "[part_a][M.name] (Real name: [M.real_name])[part_blackbox_b][quotedmsg][part_c]"
-
-		//BR.messages_admin += blackbox_admin_msg
-		if(istype(blackbox))
-			switch(display_freq)
-				if(FREQ_COMMON)
-					blackbox.msg_common += blackbox_msg
-				if(FREQ_SCIENCE)
-					blackbox.msg_science += blackbox_msg
-				if(FREQ_COMMAND)
-					blackbox.msg_command += blackbox_msg
-				if(FREQ_MEDICAL)
-					blackbox.msg_medical += blackbox_msg
-				if(FREQ_ENGINEERING)
-					blackbox.msg_engineering += blackbox_msg
-				if(FREQ_SECURITY)
-					blackbox.msg_security += blackbox_msg
-				if(FREQ_DEATH_SQUAD)
-					blackbox.msg_deathsquad += blackbox_msg
-				if(FREQ_SYNDICATE)
-					blackbox.msg_syndicate += blackbox_msg
-				if(FREQ_RAIDER)
-					blackbox.msg_raider += blackbox_msg
-				if(FREQ_SUPPLY)
-					blackbox.msg_cargo += blackbox_msg
-				if(FREQ_SERVICE)
-					blackbox.msg_service += blackbox_msg
-				if(FREQ_EXPLORER)
-					blackbox.msg_explorer += blackbox_msg
-				else
-					blackbox.messages += blackbox_msg
-
-		//End of research and feedback code.
+		// This following recording is intended for research and feedback in the use of department radio channels
+		if(length(receive))
+			SSblackbox.LogBroadcast(freq)
 
 	 /* ###### Send the message ###### */
 	  	/* --- Process all the mobs that heard a masked voice (understood) --- */
@@ -481,40 +439,10 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		var/obj/item/radio/headset/radio = new
 
 		var/part_b = "</span><b> [icon2html(radio, world)]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
-		var/part_blackbox_b = "</span><b> \[[freq_text]\]</b> <span class='message'>" // Tweaked for security headsets -- TLE
 		var/part_c = "</span></span>"
 
-		var/blackbox_msg = "[part_a][source][part_blackbox_b]\"[text]\"[part_c]"
-
-		//BR.messages_admin += blackbox_admin_msg
-		if(istype(blackbox))
-			switch(display_freq)
-				if(FREQ_COMMON)
-					blackbox.msg_common += blackbox_msg
-				if(FREQ_SCIENCE)
-					blackbox.msg_science += blackbox_msg
-				if(FREQ_COMMAND)
-					blackbox.msg_command += blackbox_msg
-				if(FREQ_MEDICAL)
-					blackbox.msg_medical += blackbox_msg
-				if(FREQ_ENGINEERING)
-					blackbox.msg_engineering += blackbox_msg
-				if(FREQ_SECURITY)
-					blackbox.msg_security += blackbox_msg
-				if(FREQ_DEATH_SQUAD)
-					blackbox.msg_deathsquad += blackbox_msg
-				if(FREQ_SYNDICATE)
-					blackbox.msg_syndicate += blackbox_msg
-				if(FREQ_RAIDER)
-					blackbox.msg_raider += blackbox_msg
-				if(FREQ_SUPPLY)
-					blackbox.msg_cargo += blackbox_msg
-				if(FREQ_SERVICE)
-					blackbox.msg_service += blackbox_msg
-				else
-					blackbox.messages += blackbox_msg
-
-		//End of research and feedback code.
+		if(length(receive))
+			SSblackbox.LogBroadcast(frequency)
 
 	 /* ###### Send the message ###### */
 
