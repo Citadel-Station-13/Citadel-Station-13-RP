@@ -376,14 +376,14 @@
 	blob.update_icon() //Will remove the collapse anim
 
 	//Transfer vore organs
-	blob.vore_organs = vore_organs?.Copy() || list()
-	vore_organs = null
-	blob.vore_selected = vore_selected
-	vore_selected = null
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly
 		B.forceMove(blob)
 		B.owner = blob
+	blob.vore_organs = vore_organs?.Copy() || list()
+	vore_organs = null
+	blob.vore_selected = vore_selected
+	vore_selected = null
 
 	var/datum/vore_preferences/P = blob.client?.prefs_vr
 
@@ -509,14 +509,14 @@
 		client.statpanel = SPECIES_PROTEAN
 
 	//Transfer vore organs
-	vore_selected = blob.vore_selected
-	blob.vore_selected = null
-	vore_organs = blob.vore_organs?.Copy() || list()
-	blob.vore_organs = null
 	for(var/belly in blob.vore_organs)
 		var/obj/belly/B = belly
 		B.forceMove(src)
 		B.owner = src
+	vore_selected = blob.vore_selected
+	blob.vore_selected = null
+	vore_organs = blob.vore_organs?.Copy() || list()
+	blob.vore_organs = null
 
 	for(var/obj/item/held in blob.get_held_items())
 		put_in_hands_or_drop(held, null, get_turf(src))

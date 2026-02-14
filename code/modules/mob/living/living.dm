@@ -84,7 +84,7 @@ TYPE_REGISTER_SPATIAL_GRID(/mob/living, SSspatial_grids.living)
 
 	QDEL_LIST(vore_organs)
 	if(length(vore_organs) || vore_selected)
-		stack_trace("vore is being very stupid and not gcing again")
+		stack_trace("vore is being very stupid and not gcing again ([length(vore_organs)] VO-L [vore_selected] ([REF(vore_selected)]) SEL)")
 
 	return ..()
 
