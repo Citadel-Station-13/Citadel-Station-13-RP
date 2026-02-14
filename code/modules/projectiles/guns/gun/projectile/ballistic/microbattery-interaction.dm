@@ -15,7 +15,7 @@
 /obj/item/gun/projectile/ballistic/microbattery/proc/user_switch_microbattery_group(datum/event_args/actor/e_args)
 	if(!cycle_microbattery_group())
 		e_args?.chat_feedback(
-			SPAN_WARNING("[src] isn't using a magazine that supports cycling ammunition on the fly."),
+			span_warning("[src] isn't using a magazine that supports cycling ammunition on the fly."),
 			target = src,
 		)
 		return TRUE
@@ -28,7 +28,7 @@
 	else
 		new_mode_name = maybe_microbattery_casing.microbattery_mode_name
 	e_args?.chat_feedback(
-		SPAN_NOTICE("[src] is now set to </b>'[new_mode_name]'</b>."),
+		span_notice("[src] is now set to </b>'[new_mode_name]'</b>."),
 		target = src,
 	)
 	playsound(src, selector_sound, 50, TRUE)

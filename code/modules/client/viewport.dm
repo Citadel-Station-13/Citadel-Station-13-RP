@@ -427,10 +427,10 @@ GLOBAL_VAR(lock_client_view_y)
 	set category = "Debug"
 
 	if(!isnum(n) || n < 0)
-		to_chat(usr, SPAN_WARNING("invalid number"))
+		to_chat(usr, span_warning("invalid number"))
 		return
 	if(viewport_rwlock)
-		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
+		to_chat(usr, span_warning("Viewport is rwlocked; try again later."))
 		return
 	winset(src, SKIN_MAP_ID_VIEWPORT, "zoom=[n]")
 	assumed_viewport_zoom = n
@@ -442,7 +442,7 @@ GLOBAL_VAR(lock_client_view_y)
 	set category = "Debug"
 
 	if(viewport_rwlock)
-		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
+		to_chat(usr, span_warning("Viewport is rwlocked; try again later."))
 		return
 	n = !!n	// force bool
 	winset(src, SKIN_MAP_ID_VIEWPORT, "letterbox=[n? "true" : "false"]")
@@ -455,7 +455,7 @@ GLOBAL_VAR(lock_client_view_y)
 	set category = "Debug"
 
 	if(viewport_rwlock)
-		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
+		to_chat(usr, span_warning("Viewport is rwlocked; try again later."))
 		return
 	request_viewport_update()
 

@@ -240,7 +240,7 @@
 				var/py = rpy - (WORLD_ICON_SIZE * 0.5)
 				M.drop_item_to_ground_precisely(I, target_loc = maybe_last_turf, target_px = px, target_py = py)
 				return TRUE
-	to_chat(user, SPAN_WARNING("Your mouse isn't hovering in a place [I] can be dropped to!"))
+	to_chat(user, span_warning("Your mouse isn't hovering in a place [I] can be dropped to!"))
 	return TRUE
 
 /datum/keybinding/mob/toggle_gun_mode

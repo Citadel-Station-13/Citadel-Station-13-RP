@@ -72,13 +72,13 @@
 		playsound(src, W.tool_sound, 50, 1)
 		if(disable)
 			user.visible_message( \
-				SPAN_WARNING("[user] has disabled \the [src]!"), \
-				SPAN_WARNING("You disable the connection to \the [src]."))
+				span_warning("[user] has disabled \the [src]!"), \
+				span_warning("You disable the connection to \the [src]."))
 			icon_state = "[base_state]-d"
 		if(!disable)
 			user.visible_message( \
-				SPAN_WARNING("[user] has reconnected \the [src]!"), \
-				SPAN_WARNING("You fix the connection to \the [src]."))
+				span_warning("[user] has reconnected \the [src]!"), \
+				span_warning("You fix the connection to \the [src]."))
 			if(powered())
 				icon_state = "[base_state]"
 			else

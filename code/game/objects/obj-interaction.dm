@@ -7,19 +7,19 @@
 	if(istype(using, /obj/item/cell) && obj_cell_slot?.insert_via_usage && isnull(obj_cell_slot.cell) && obj_cell_slot.interaction_active(clickchain.performer))
 		if(!obj_cell_slot.accepts_cell(using))
 			clickchain.chat_feedback(
-				SPAN_WARNING("[src] does not accept [using]."),
+				span_warning("[src] does not accept [using]."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!clickchain.performer.transfer_item_to_loc(using, src))
-			clickchain.chat_feedback(SPAN_WARNING("[using] is stuck to your hand!"), target = src)
+			clickchain.chat_feedback(span_warning("[using] is stuck to your hand!"), target = src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		clickchain.visible_dual_feedback(
 			target = src,
 			range_hard = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[clickchain.performer] inserts [using] into [src]."),
-			audible_hard = SPAN_NOTICE("You hear something being slotted in."),
-			visible_self = SPAN_NOTICE("You insert [using] into [src]."),
+			visible_hard = span_notice("[clickchain.performer] inserts [using] into [src]."),
+			audible_hard = span_notice("You hear something being slotted in."),
+			visible_self = span_notice("You insert [using] into [src]."),
 		)
 		obj_cell_slot.user_insert_cell(using, actor = clickchain)
 		clickchain.performer.trigger_aiming(TARGET_CAN_CLICK)
@@ -38,9 +38,9 @@
 		clickchain.performer.visible_action_feedback(
 			target = src,
 			hard_range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[clickchain.performer] removes the cell from [src]."),
-			audible_hard = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			visible_self = SPAN_NOTICE("You remove the cell from [src]."),
+			visible_hard = span_notice("[clickchain.performer] removes the cell from [src]."),
+			audible_hard = span_notice("You hear fasteners falling out and something being removed."),
+			visible_self = span_notice("You remove the cell from [src]."),
 		)
 		log_construction(clickchain, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		clickchain.performer.put_in_hands_or_drop(obj_cell_slot.user_remove_cell(clickchain.performer, actor = clickchain))
@@ -54,14 +54,14 @@
 		if(!obj_cell_slot.interaction_active(e_args.performer))
 			return TRUE
 		if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
-			e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+			e_args.initiator.action_feedback(span_warning("You can't do that right now!"), src)
 			return TRUE
 		if(isnull(obj_cell_slot.cell))
-			e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+			e_args.initiator.action_feedback(span_warning("[src] doesn't have a cell installed."))
 			return TRUE
 		if(!I.tool_check(obj_cell_slot.remove_tool_behavior, e_args, src, NONE, NONE))
 			e_args.chat_feedback(
-				SPAN_WARNING("You need to be holding some kind of [tool_behavior_name(obj_cell_slot.remove_tool_behavior)] in your active hand to remove [src]'s cell."),
+				span_warning("You need to be holding some kind of [tool_behavior_name(obj_cell_slot.remove_tool_behavior)] in your active hand to remove [src]'s cell."),
 				target = src,
 			)
 			return TRUE
@@ -70,9 +70,9 @@
 		e_args.visible_feedback(
 			target = src,
 			range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
-			audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-			otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+			visible = span_notice("[e_args.performer] removes the cell from [src]."),
+			audible = span_notice("You hear fasteners falling out and something being removed."),
+			otherwise_self = span_notice("You remove the cell from [src]."),
 		)
 		log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 		var/obj/item/cell/removed = obj_cell_slot.user_remove_cell(src, actor = e_args)
@@ -136,21 +136,21 @@
 			if(!obj_cell_slot.interaction_active(e_args.performer))
 				return TRUE
 			if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
-				e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+				e_args.initiator.action_feedback(span_warning("You can't do that right now!"), src)
 				return TRUE
 			if(obj_cell_slot.cell)
-				e_args.initiator.action_feedback(SPAN_WARNING("[src] already has a cell installed."))
+				e_args.initiator.action_feedback(span_warning("[src] already has a cell installed."))
 				return TRUE
 			var/obj/item/cell/cell = e_args.performer.get_active_held_item()
 			if(!istype(cell))
 				e_args.chat_feedback(
-					SPAN_WARNING("You must be holding a cell in your active hand to insert it into [src]."),
+					span_warning("You must be holding a cell in your active hand to insert it into [src]."),
 					target = src,
 				)
 				return TRUE
 			if(!e_args.performer.transfer_item_to_loc(cell, src))
 				e_args.chat_feedback(
-					SPAN_WARNING("[cell] is stuck to your hand!"),
+					span_warning("[cell] is stuck to your hand!"),
 					target = src,
 				)
 				return TRUE
@@ -158,9 +158,9 @@
 			e_args.visible_feedback(
 				target = src,
 				range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_NOTICE("[e_args.performer] inserts [cell] into [src]."),
-				audible = SPAN_NOTICE("You hear something clicking into place and fasteners being secured."),
-				otherwise_self = SPAN_NOTICE("You remove insert [cell] into [src]."),
+				visible = span_notice("[e_args.performer] inserts [cell] into [src]."),
+				audible = span_notice("You hear something clicking into place and fasteners being secured."),
+				otherwise_self = span_notice("You remove insert [cell] into [src]."),
 			)
 			log_construction(e_args, src, "inserted cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 			return TRUE
@@ -171,16 +171,16 @@
 			if(!obj_cell_slot.interaction_active(e_args.performer))
 				return TRUE
 			if(!CHECK_MOBILITY(e_args.performer, MOBILITY_CAN_USE))
-				e_args.initiator.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+				e_args.initiator.action_feedback(span_warning("You can't do that right now!"), src)
 				return TRUE
 			if(isnull(obj_cell_slot.cell))
-				e_args.initiator.action_feedback(SPAN_WARNING("[src] doesn't have a cell installed."))
+				e_args.initiator.action_feedback(span_warning("[src] doesn't have a cell installed."))
 				return TRUE
 			if(obj_cell_slot.remove_tool_behavior)
 				var/obj/item/held = e_args.performer.get_active_held_item()
 				if(!held?.tool_check(obj_cell_slot.remove_tool_behavior, e_args, src, NONE, NONE))
 					e_args.chat_feedback(
-						SPAN_WARNING("You need to be holding some kind of [tool_behavior_name(obj_cell_slot.remove_tool_behavior)] in your active hand to remove [src]'s cell."),
+						span_warning("You need to be holding some kind of [tool_behavior_name(obj_cell_slot.remove_tool_behavior)] in your active hand to remove [src]'s cell."),
 						target = src,
 					)
 					return TRUE
@@ -189,9 +189,9 @@
 			e_args.visible_feedback(
 				target = src,
 				range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
-				audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-				otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+				visible = span_notice("[e_args.performer] removes the cell from [src]."),
+				audible = span_notice("You hear fasteners falling out and something being removed."),
+				otherwise_self = span_notice("You remove the cell from [src]."),
 			)
 			log_construction(e_args, src, "removed cell [obj_cell_slot.cell] ([obj_cell_slot.cell.type])")
 			var/obj/item/cell/removed = obj_cell_slot.user_remove_cell(src, actor = e_args)

@@ -36,7 +36,7 @@
 			variations += variation
 	if(length(variations) <= 1)
 		actor.chat_feedback(
-			SPAN_WARNING("Your chassis has no resting variations to pick from."),
+			span_warning("Your chassis has no resting variations to pick from."),
 			target = target,
 		)
 		return TRUE

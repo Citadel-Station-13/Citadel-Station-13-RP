@@ -247,7 +247,7 @@
 		alert("Invalid mob")
 	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(src)] has granted [M.key] full access.")
-	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] has granted [M.key] full access."))
+	message_admins(span_adminnotice("[key_name_admin(usr)] has granted [M.key] full access."))
 
 /client/proc/cmd_debug_mob_lists()
 	set category = VERB_CATEGORY_DEBUG
@@ -370,17 +370,17 @@
 	if(!check_rights(R_DEBUG)) return
 
 	if(src.byond_version < 516)
-		to_chat(src, SPAN_WARNING("Browser Inspection is not supported in this version of BYOND, please update to 516 or later."))
+		to_chat(src, span_warning("Browser Inspection is not supported in this version of BYOND, please update to 516 or later."))
 		return
 
 	var/browser_options = winget(src, null, "browser-options")
 
 	if(findtext(browser_options, "devtools"))
 		winset(src, null, list("browser-options" = "-devtools"))
-		to_chat(src, SPAN_NOTICE("You can no longer right click to use inspect on browsers."))
+		to_chat(src, span_notice("You can no longer right click to use inspect on browsers."))
 	else
 		winset(src, null, list("browser-options" = "+devtools"))
-		to_chat(src, SPAN_NOTICE("You can now right click to use inspect on browsers."))
+		to_chat(src, span_notice("You can now right click to use inspect on browsers."))
 
 
 /client/proc/cmd_admin_clear_mobs()

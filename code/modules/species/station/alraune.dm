@@ -357,7 +357,7 @@
 		remove_verb(src, /mob/living/carbon/human/proc/alraune_fruit_select)
 		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.owner]!", "a fruit from [fruit_gland.owner]!")
 	else
-		to_chat(src, SPAN_NOTICE("You lack the organ required to produce fruit."))
+		to_chat(src, span_notice("You lack the organ required to produce fruit."))
 
 /mob/living/carbon/human/proc/alraune_fruit_pick()
 	set name = "Pick Fruit"
@@ -379,7 +379,7 @@
 			break
 	if (fruit_gland) //Do they have the gland?
 		if(fruit_gland.reagents.total_volume < fruit_gland.transfer_amount)
-			to_chat(src, SPAN_NOTICE("[pick(fruit_gland.empty_message)]"))
+			to_chat(src, span_notice("[pick(fruit_gland.empty_message)]"))
 			return
 
 		var/datum/seed/S = SSplants.seeds["[fruit_gland.fruit_type]"]
@@ -392,13 +392,13 @@
 			var/verb_desc = fruit_gland.verb_descriptor[index]
 			var/self_verb_desc = fruit_gland.self_verb_descriptor[index]
 			usr.visible_message(
-				SPAN_NOTICE("[usr] [verb_desc] [emote]"),
-				SPAN_NOTICE("You [self_verb_desc] [emote]"),
+				span_notice("[usr] [verb_desc] [emote]"),
+				span_notice("You [self_verb_desc] [emote]"),
 			)
 		else
 			visible_message(
-				SPAN_NOTICE("[src] [pick(fruit_gland.short_emote_descriptor)] a fruit."),
-				SPAN_NOTICE("You [pick(fruit_gland.self_emote_descriptor)] a fruit."),
+				span_notice("[src] [pick(fruit_gland.short_emote_descriptor)] a fruit."),
+				span_notice("You [pick(fruit_gland.self_emote_descriptor)] a fruit."),
 			)
 
 		fruit_gland.reagents.remove_any(fruit_gland.transfer_amount)

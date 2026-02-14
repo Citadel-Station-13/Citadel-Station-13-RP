@@ -34,19 +34,19 @@
 	var/ability_cost = 100
 
 	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
-		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
+		to_chat(src, span_warning("Only a shadekin can use that!"))
 		return FALSE
 	else if(stat)
-		to_chat(src, SPAN_WARNING("Can't use that ability in your state!"))
+		to_chat(src, span_warning("Can't use that ability in your state!"))
 		return FALSE
 	else if(shadekin_get_energy() < ability_cost && !(ability_flags & AB_PHASE_SHIFTED))
-		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
+		to_chat(src, span_warning("Not enough energy for that ability!"))
 		return FALSE
 
 	var/darkness = 1
 	var/turf/T = get_turf(src)
 	if(!T)
-		to_chat(src, SPAN_WARNING("You can't use that here!"))
+		to_chat(src, span_warning("You can't use that here!"))
 		return FALSE
 
 	var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
@@ -62,14 +62,14 @@
 	if(watcher>0)
 		ability_cost = ability_cost + ( 15 * watcher )
 	if(!(ability_flags & AB_PHASE_SHIFTED))
-		log_debug(SPAN_DEBUGWARNING("[src] attempted to shift with [watcher] visible Carbons with a  cost of [ability_cost] in a darkness level of [darkness]"))
+		log_debug(span_debug_warning("[src] attempted to shift with [watcher] visible Carbons with a  cost of [ability_cost] in a darkness level of [darkness]"))
 
 	if(!(ability_flags & AB_PHASE_SHIFTED))
 		shadekin_adjust_energy(-ability_cost)
 	playsound(src, 'sound/effects/stealthoff.ogg', 75, TRUE)
 
 	if(!T.CanPass(src,T) || loc != T)
-		to_chat(src, SPAN_WARNING("You can't use that here!"))
+		to_chat(src, span_warning("You can't use that here!"))
 		return FALSE
 
 	if(!(ability_flags & AB_PHASE_SHIFTED))
@@ -124,7 +124,7 @@
 				var/mob/living/target = pick(potentials)
 				if(istype(target) && vore_selected)
 					target.forceMove(vore_selected)
-					to_chat(target, SPAN_WARNING("\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!"))
+					to_chat(target, span_warning("\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!"))
 
 		//Affect nearby lights
 		var/destroy_lights = 0

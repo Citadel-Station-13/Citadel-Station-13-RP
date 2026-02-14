@@ -69,7 +69,7 @@
 /datum/client_statpanel/proc/check_initialized()
 	if(ready)
 		return
-	to_chat(client, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];statpanel=reload'>here</a> to reload the panel "))
+	to_chat(client, span_userdanger("Statpanel failed to load, click <a href='?src=[REF(src)];statpanel=reload'>here</a> to reload the panel "))
 
 //* Internal API *//
 

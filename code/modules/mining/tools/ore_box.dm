@@ -15,7 +15,7 @@
 	if (istype(I, /obj/item/stack/ore))
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
-		user.visible_message(SPAN_NOTICE("[user] drops [I] into [src]."), SPAN_NOTICE("You drop [I] into [src]."))
+		user.visible_message(span_notice("[user] drops [I] into [src]."), span_notice("You drop [I] into [src]."))
 	else if (istype(I, /obj/item/storage/bag/ore)) //it works differently now
 		var/offloaded = FALSE
 		for(var/obj/item/stack/ore/ore in I)
@@ -23,7 +23,7 @@
 			offloaded = TRUE
 		I.obj_storage?.ui_queue_refresh()
 		if(offloaded)
-			user.visible_message(SPAN_NOTICE("[user] offloads ores from [I] into [src]."), SPAN_NOTICE("You offload the ores in [I] into [src]."))
+			user.visible_message(span_notice("[user] offloads ores from [I] into [src]."), span_notice("You offload the ores in [I] into [src]."))
 	else if (istype(I, /obj/item/storage))
 		var/obj/item/storage/S = I
 		if(!S.contents.len)
@@ -31,17 +31,17 @@
 		S.obj_storage?.hide(user)
 		for(var/obj/item/stack/ore/O in S.contents)
 			S.forceMove(src)
-		user.visible_message(SPAN_NOTICE("[user] offloads ores from [I] into [src]."), SPAN_NOTICE("You offload the ores in [I] into [src]."))
+		user.visible_message(span_notice("[user] offloads ores from [I] into [src]."), span_notice("You offload the ores in [I] into [src]."))
 
 /obj/structure/ore_box/examine(mob/user, dist)
 	. = ..()
 	if(isEmpty())
-		. += SPAN_NOTICE("It is empty.")
+		. += span_notice("It is empty.")
 		return
-	. += SPAN_NOTICE("It holds:")
+	. += span_notice("It holds:")
 	for(var/ore in stored_ore)
 		var/obj/item/stack/ore/O = ore
-		. += SPAN_NOTICE("- [stored_ore[ore]] [initial(O.name)]")
+		. += span_notice("- [stored_ore[ore]] [initial(O.name)]")
 
 /// Sigh.
 /obj/structure/ore_box/Entered(atom/movable/AM, atom/oldLoc)
@@ -101,20 +101,20 @@
 	add_fingerprint(usr)
 
 	if(isEmpty())
-		to_chat(usr, SPAN_WARNING("[src] is empty."))
+		to_chat(usr, span_warning("[src] is empty."))
 		return
 
 	var/mob/living/user = usr
-	to_chat(user, SPAN_NOTICE("You begin emptying [src]."))
+	to_chat(user, span_notice("You begin emptying [src]."))
 
 	if(do_after(usr,10,src))
 		while(!isEmpty())
 			if(!do_after(user, 2, src))
-				to_chat(user,SPAN_NOTICE("You stop emptying [src]."))
+				to_chat(user,span_notice("You stop emptying [src]."))
 				return
 			var/atom/A = drop_location()
 			if(!A || (length(A.contents) > 200))
-				to_chat(user, SPAN_WARNING("The area under [src] is too full."))
+				to_chat(user, span_warning("The area under [src] is too full."))
 				return
 			deposit(A,50)
-		to_chat(user,SPAN_NOTICE("You finish emptying [src]."))
+		to_chat(user,span_notice("You finish emptying [src]."))

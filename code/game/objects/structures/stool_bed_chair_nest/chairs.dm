@@ -35,17 +35,17 @@
 	if(!Adjacent(over, FALSE)) // they're not adjacent
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(has_buckled_mobs())
-		to_chat(user, SPAN_NOTICE("You cannot fold the chair while someone is buckled to it!"))
+		to_chat(user, span_notice("You cannot fold the chair while someone is buckled to it!"))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(stacked_size)
-		to_chat(user, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
+		to_chat(user, span_notice("You cannot fold a chair while its stacked!"))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	var/obj/item/material/twohanded/folded_metal_chair/C = new picked_up_item
 	if(!user.put_in_hands(C))
-		to_chat(user, SPAN_NOTICE("You need a free hand to fold up the chair."))
+		to_chat(user, span_notice("You need a free hand to fold up the chair."))
 		qdel(C)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-	to_chat(user, SPAN_NOTICE("You fold up the chair."))
+	to_chat(user, span_notice("You fold up the chair."))
 	playsound(src, 'sound/machines/crate_close.ogg', 20, 1)
 	qdel(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -55,7 +55,7 @@
 		return ..()
 	var/obj/item/material/twohanded/folded_metal_chair/F = new(loc)
 	user.put_in_active_hand(F)
-	to_chat(user, SPAN_NOTICE("You take a chair off the stack."))
+	to_chat(user, span_notice("You take a chair off the stack."))
 	stacked_size--
 	update_overlays()
 	playsound(src, 'sound/items/drop/toolbox.ogg', 20, 1)
@@ -69,7 +69,7 @@
 	if(!padding_material && istype(I, /obj/item/assembly/shock_kit) && !stacked_size)
 		var/obj/item/assembly/shock_kit/SK = I
 		if(!SK.status)
-			to_chat(user, SPAN_NOTICE("\The [SK] is not ready to be attached!"))
+			to_chat(user, span_notice("\The [SK] is not ready to be attached!"))
 			return
 		if(!user.attempt_void_item_for_installation(SK))
 			return
@@ -82,11 +82,11 @@
 		qdel(src)
 
 	if(istype(I, /obj/item/tool/wrench) && stacked_size)
-		to_chat(user, SPAN_NOTICE("You'll need to unstack the chairs before you can take one apart."))
+		to_chat(user, span_notice("You'll need to unstack the chairs before you can take one apart."))
 		return FALSE
 	if(istype(I, /obj/item/material/twohanded/folded_metal_chair) && picked_up_item)
 		if(locate(/mob/living) in loc)
-			to_chat(user, SPAN_NOTICE("There's someone in the way!"))
+			to_chat(user, span_notice("There's someone in the way!"))
 			return FALSE
 		qdel(I)
 		stacked_size++
@@ -100,7 +100,7 @@
 			return FALSE
 
 		if(stacked_size > 8)
-			to_chat(user, SPAN_WARNING("The stack of chairs looks unstable!"))
+			to_chat(user, span_warning("The stack of chairs looks unstable!"))
 			if(prob(sqrt(50 * stacked_size)))
 				stack_collapse()
 				return FALSE
@@ -170,7 +170,7 @@
 	src.setDir(turn(src.dir, 270))
 
 /obj/structure/bed/chair/proc/stack_collapse()
-	visible_message(SPAN_DANGER("The stack of chairs collapses!!!"))
+	visible_message(span_danger("The stack of chairs collapses!!!"))
 	var/turf/starting_turf = get_turf(src)
 	playsound(starting_turf, 'sound/effects/metal_chair_crash.ogg', 30, 1, 30)
 	var/list/turf/candidates = range(min(7, round(stacked_size / 2)), starting_turf) - starting_turf
@@ -619,7 +619,7 @@
 	var/turf/T = target
 	for(var/atom/movable/AM as anything in T.contents) // no typecheck
 		if(AM.density || istype(AM, /obj/structure/bed))
-			to_chat(user, SPAN_WARNING("You can't unfold the chair here, [AM] blocks the way."))
+			to_chat(user, span_warning("You can't unfold the chair here, [AM] blocks the way."))
 			return
 	var/obj/O = new placed_object(T)
 	playsound(src, 'sound/machines/closet_open.ogg', 20, 1)

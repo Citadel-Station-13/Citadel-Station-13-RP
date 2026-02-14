@@ -21,7 +21,7 @@
 
 /atom/Click(location, control, params)
 	if(!(atom_flags & ATOM_INITIALIZED))
-		to_chat(usr, SPAN_WARNING("[src] ([type]) not yet initialized; please contact a coder with this message."))
+		to_chat(usr, span_warning("[src] ([type]) not yet initialized; please contact a coder with this message."))
 		return
 	var/signal_returns = SEND_SIGNAL(src, COMSIG_ATOM_CLICK, usr, location, control, params)
 	if(signal_returns & RAISE_ATOM_CLICK_DROP)
@@ -30,7 +30,7 @@
 
 /atom/DblClick(location, control, params)
 	if(!(atom_flags & ATOM_INITIALIZED))
-		to_chat(usr, SPAN_WARNING("[src] ([type]) not yet initialized; please contact a coder with this message."))
+		to_chat(usr, span_warning("[src] ([type]) not yet initialized; please contact a coder with this message."))
 		return
 	usr.double_click_on(src, location, control, params)
 

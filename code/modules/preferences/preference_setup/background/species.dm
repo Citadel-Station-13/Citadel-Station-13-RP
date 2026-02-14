@@ -14,13 +14,13 @@
 	. += "<center>"
 	. += "<b>Species</b><br>[CS.name] - \[[href_simple(prefs, "change", "CHANGE")]\]"
 	if(CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED)
-		. += "<br>This is a [SPAN_RED("restricted")] species. You cannot join as this outside of special circumstances."
+		. += "<br>This is a [span_red("restricted")] species. You cannot join as this outside of special circumstances."
 	else if(CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 		. += "<br>This is a whitelisted species. You "
 		if(CS.check_whitelist_for_ckey(prefs.client_ckey))
-			. += SPAN_GREEN("do")
+			. += span_green("do")
 		else
-			. += SPAN_RED("do not")
+			. += span_red("do not")
 		. += " have the whitelist to play as one[check_rights(C = prefs.client) ? ", but have administrative override to do so" : ""]."
 	. += "</center>"
 	. += "<div class='statusDisplay'>"
@@ -30,10 +30,10 @@
 /datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors, list/warnings)
 	var/datum/species/CS = SScharacters.resolve_character_species(data)
 	if((CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED) && !(flags & PREF_COPY_TO_NO_CHECK_SPECIES))
-		errors?.Add(SPAN_WARNING("[CS.name] is a restricted species. You cannot join as this as most normal roles."))
+		errors?.Add(span_warning("[CS.name] is a restricted species. You cannot join as this as most normal roles."))
 		return FALSE
 	if((CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !CS.check_whitelist_for_ckey(prefs.client_ckey) && !check_rights(C = prefs.client))
-		errors?.Add(SPAN_WARNING("You do not have the whitelist to play as a [CS.name]."))
+		errors?.Add(span_warning("You do not have the whitelist to play as a [CS.name]."))
 		return FALSE
 	return TRUE
 

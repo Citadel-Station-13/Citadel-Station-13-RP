@@ -20,7 +20,7 @@
 			stack_trace("couldn't find bindings middleware?")
 		else
 			bindings_middleware.handle_reset(joining.preferences)
-			to_chat(joining, SPAN_BOLDANNOUNCE("BUG: Your keybindings were forcefully reset due to not being detected as initialized 5 seconds after connection. Report this to a coder."))
+			to_chat(joining, span_boldannounce("BUG: Your keybindings were forcefully reset due to not being detected as initialized 5 seconds after connection. Report this to a coder."))
 			message_admins("[joining]'s keybindings were forcefully reset due to not being initialized 5 seconds after connection. Yell at coders.")
 		if(!QDELETED(joining))
 			joining.set_macros(joining.preferences)
@@ -123,18 +123,18 @@
 		if(!sql_state_desynced)
 			return
 		if(active)
-			to_chat(active, SPAN_BOLDANNOUNCE("The server's SQL database has reconnected and your preferences were changed during the lapse. Your preferences has been automatically flushed to database."))
+			to_chat(active, span_boldannounce("The server's SQL database has reconnected and your preferences were changed during the lapse. Your preferences has been automatically flushed to database."))
 		save_to_sql()
 		return
 	// load from sql if we can; SQL is authoritative
 	if(load_from_sql())
 		if(active)
-			to_chat(active, SPAN_BOLDANNOUNCE("The server's SQL database has reconnected and your preferences were found to be fully desynced from the copy in the database. Your preferences has been automatically reloaded from the database. Please ensure all settings are workable."))
+			to_chat(active, span_boldannounce("The server's SQL database has reconnected and your preferences were found to be fully desynced from the copy in the database. Your preferences has been automatically reloaded from the database. Please ensure all settings are workable."))
 		return
 	// otherwise, save our current changes to SQL
 	save_to_sql()
 	if(active)
-		to_chat(active, SPAN_BOLDANNOUNCE("The server's SQL database has reconnected and your preferences were not found in them. Your preferences have been automatically saved to database."))
+		to_chat(active, span_boldannounce("The server's SQL database has reconnected and your preferences were not found in them. Your preferences have been automatically saved to database."))
 
 /datum/game_preferences/proc/perform_legacy_migration()
 	if(is_guest)
@@ -404,7 +404,7 @@
 /datum/game_preferences/proc/load_from_sql()
 	var/datum/player_data/player_data = resolve_player_data(ckey)
 	if(!player_data.block_on_available(10 SECONDS))
-		message_admins(SPAN_BOLDANNOUNCE("failed to resolve player data during prefs op for [ckey]. ping maintainers."))
+		message_admins(span_boldannounce("failed to resolve player data during prefs op for [ckey]. ping maintainers."))
 		CRASH("failed to grab player data while loading via sql. something bad has happened!")
 	authoritative_player_id = player_data.player_id
 
@@ -448,7 +448,7 @@
 /datum/game_preferences/proc/save_to_sql()
 	var/datum/player_data/player_data = resolve_player_data(ckey)
 	if(!player_data.block_on_available(10 SECONDS))
-		message_admins(SPAN_BOLDANNOUNCE("failed to resolve player data during prefs op for [ckey]. ping maintainers."))
+		message_admins(span_boldannounce("failed to resolve player data during prefs op for [ckey]. ping maintainers."))
 		CRASH("failed to grab player data while loading via sql. something bad has happened!")
 	authoritative_player_id = player_data.player_id
 
@@ -571,7 +571,7 @@
 // (confusion when people add code with side effects like shocking people on touch in it.)
 /datum/game_preferences/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(!initialized)
-		to_chat(user, SPAN_BOLDANNOUNCE("Your preferences are still being loaded. Please wait."))
+		to_chat(user, span_boldannounce("Your preferences are still being loaded. Please wait."))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(isnull(ui))

@@ -13,9 +13,9 @@
 	var/mob/living/carbon/c_user = user
 	if(!c_user.get_organ(BP_L_ARM) && !c_user.get_organ(BP_R_ARM))
 		return
-	to_chat(c_user, SPAN_WARNING("You move your hand towards the machine, and begin to hesitate as a bloodied guillotine emerges from inside of it..."))
+	to_chat(c_user, span_warning("You move your hand towards the machine, and begin to hesitate as a bloodied guillotine emerges from inside of it..."))
 	if(do_after(c_user, 50, target = src))
-		to_chat(c_user, SPAN_USERDANGER("The guillotine drops on your arm, and the machine sucks it in!"))
+		to_chat(c_user, span_userdanger("The guillotine drops on your arm, and the machine sucks it in!"))
 		playsound(loc, 'sound/weapons/slice.ogg', 25, TRUE, -1)
 		var/which_hand = BP_L_ARM
 		if(!(c_user.get_active_held_item() % 2))
@@ -27,7 +27,7 @@
 		playsound(loc, 'sound/arcade/win.ogg', 50, TRUE)
 		prizevend(user, rand(3,5))
 	else
-		to_chat(c_user, SPAN_NOTICE("You (wisely) decide against putting your hand in the machine."))
+		to_chat(c_user, span_notice("You (wisely) decide against putting your hand in the machine."))
 
 /obj/machinery/computer/arcade/amputation/festive //dispenses wrapped gifts instead of arcade prizes, also known as the ancap christmas tree
 	name = "Mediborg's Festive Amputation Adventure"

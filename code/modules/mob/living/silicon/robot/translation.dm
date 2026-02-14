@@ -11,11 +11,11 @@
 		// expensive full sync
 		theirs.copy_knowledge(ours)
 		ours.copy_knowledge(theirs)
-		to_chat(src, SPAN_NOTICE("Adaptive translator synced to master AI."))
+		to_chat(src, span_notice("Adaptive translator synced to master AI."))
 		return
 	// partial sync - give, not receive
 	if(!theirs.translated_list_detached || !ours.translated_list_detached)
 		return	// full sync didn't happen yet
 	if(!theirs.translated_ids[L.id])
-		to_chat(connected_ai, SPAN_NOTICE("New language received from connected units: [L.name]. Adaptive translation started."))
+		to_chat(connected_ai, span_notice("New language received from connected units: [L.name]. Adaptive translation started."))
 	theirs.translated_ids[L.id] = max(ours.translated_ids[L.id], theirs.translated_ids[L.id])

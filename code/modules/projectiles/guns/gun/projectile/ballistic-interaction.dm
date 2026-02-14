@@ -32,16 +32,16 @@
 			if(!no_message)
 				actor.visible_feedback(
 					target = src,
-					visible = SPAN_WARNING("[actor.performer] slides [src]'s bolt back."),
-					otherwise_self = SPAN_WARNING("You slide [src]'s bolt back."),
+					visible = span_warning("[actor.performer] slides [src]'s bolt back."),
+					otherwise_self = span_warning("You slide [src]'s bolt back."),
 				)
 		else
 			close_bolt()
 			if(!no_message)
 				actor.visible_feedback(
 					target = src,
-					visible = SPAN_WARNING("[actor.performer] slides [src]'s bolt forwards."),
-					otherwise_self = SPAN_WARNING("You slide [src]'s bolt forwards."),
+					visible = span_warning("[actor.performer] slides [src]'s bolt forwards."),
+					otherwise_self = span_warning("You slide [src]'s bolt forwards."),
 				)
 	else
 		if(!COOLDOWN_FINISHED(src, CD_INDEX_GUN_RACK_CHAMBER))
@@ -51,8 +51,8 @@
 		if(!no_message)
 			actor.visible_feedback(
 				target = src,
-				visible = SPAN_WARNING("[actor.performer] racks [src]'s slide."),
-				otherwise_self = SPAN_WARNING("You rack [src]'s slide."),
+				visible = span_warning("[actor.performer] racks [src]'s slide."),
+				otherwise_self = span_warning("You rack [src]'s slide."),
 			)
 	update_icon()
 	return CLICKCHAIN_DID_SOMETHING
@@ -88,7 +88,7 @@
 	if(!accepts_speedloader(magazine))
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[magazine] doesn't fit [src] for speedloading."),
+				span_warning("[magazine] doesn't fit [src] for speedloading."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -96,7 +96,7 @@
 	if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src]'s bolt must be open to access its internal magazine."),
+				span_warning("[src]'s bolt must be open to access its internal magazine."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -104,14 +104,14 @@
 	if(is_internal_magazine_full())
 		if(!no_message)
 			actor?.chat_feedback(
-				SPAN_WARNING("[src] is full!"),
+				span_warning("[src] is full!"),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
 	if(!magazine.get_amount_remaining())
 		if(!no_message)
 			actor?.chat_feedback(
-				SPAN_WARNING("[magazine] is empty!"),
+				span_warning("[magazine] is empty!"),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -126,12 +126,12 @@
 			actor.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_INVENTORY_SOFT,
-				visible = SPAN_NOTICE("[actor.performer] reloads [src] with [magazine]."),
-				otherwise_self = SPAN_NOTICE("You load [loaded] rounds from [magazine] into [src]."),
+				visible = span_notice("[actor.performer] reloads [src] with [magazine]."),
+				otherwise_self = span_notice("You load [loaded] rounds from [magazine] into [src]."),
 			)
 		else
 			actor.chat_feedback(
-				SPAN_WARNING("You fail to load any rounds from [magazine] into [src]."),
+				span_warning("You fail to load any rounds from [magazine] into [src]."),
 				target = src,
 			)
 
@@ -144,7 +144,7 @@
 	if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src]'s bolt must be open to access its internal magazine."),
+				span_warning("[src]'s bolt must be open to access its internal magazine."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -152,7 +152,7 @@
 	if(is_internal_magazine_full())
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src] is full!"),
+				span_warning("[src] is full!"),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -160,7 +160,7 @@
 	if(!magazine.get_amount_remaining())
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[magazine] is empty!"),
+				span_warning("[magazine] is empty!"),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -175,7 +175,7 @@
 		if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
 			if(!no_message)
 				actor.chat_feedback(
-					SPAN_WARNING("[src]'s bolt must be open to access its internal magazine."),
+					span_warning("[src]'s bolt must be open to access its internal magazine."),
 					target = src,
 				)
 			break
@@ -193,12 +193,12 @@
 			actor.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_INVENTORY_SOFT,
-				visible = SPAN_NOTICE("[actor.performer] loads some rounds into [src] with [magazine]."),
-				otherwise_self = SPAN_NOTICE("You load [loaded] rounds from [magazine] into [src]."),
+				visible = span_notice("[actor.performer] loads some rounds into [src] with [magazine]."),
+				otherwise_self = span_notice("You load [loaded] rounds from [magazine] into [src]."),
 			)
 		else
 			actor.chat_feedback(
-				SPAN_WARNING("You fail to load any rounds from [magazine] into [src]."),
+				span_warning("You fail to load any rounds from [magazine] into [src]."),
 				target = src,
 			)
 
@@ -208,14 +208,14 @@
 	if(internal_magazine)
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src] doesn't accept magazines."),
+				span_warning("[src] doesn't accept magazines."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
 	if(!accepts_magazine(magazine))
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[magazine] cannot fit in [src]."),
+				span_warning("[magazine] cannot fit in [src]."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -239,7 +239,7 @@
 	if(src.magazine)
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src] already has a magazine inserted."),
+				span_warning("[src] already has a magazine inserted."),
 				target = src,
 			)
 		put_back_in_hand?.forceMove(drop_location())
@@ -256,7 +256,7 @@
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = "[actor.performer] inserts [magazine] into [src][tactical_reload_append].",
-			otherwise_self = SPAN_NOTICE("You insert [magazine] into [src][tactical_reload_append]."),
+			otherwise_self = span_notice("You insert [magazine] into [src][tactical_reload_append]."),
 		)
 	if(put_back_in_hand)
 		if(actor)
@@ -288,28 +288,28 @@
 	if(!internal_magazine)
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src] doesn't have an internal magazine."),
+				span_warning("[src] doesn't have an internal magazine."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
 	if(bolt_simulation && bolt_closed && bolt_blocks_internal_magazine)
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src]'s bolt must be open to access its internal magazine."),
+				span_warning("[src]'s bolt must be open to access its internal magazine."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
 	if(!accepts_casing(casing))
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[casing] doesn't fit into [src]."),
+				span_warning("[casing] doesn't fit into [src]."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
 	if(is_internal_magazine_full())
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src]'s internal magazine is full."),
+				span_warning("[src]'s internal magazine is full."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -322,8 +322,8 @@
 		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_COMBAT_SUBTLE,
-			visible = SPAN_NOTICE("[actor.performer] loads a round into [src]."),
-			otherwise_self = SPAN_NOTICE("You load [casing] ."),
+			visible = span_notice("[actor.performer] loads a round into [src]."),
+			otherwise_self = span_notice("You load [casing] ."),
 		)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -338,14 +338,14 @@
 	if(chamber)
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src]'s chamber is full."),
+				span_warning("[src]'s chamber is full."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
 	if(bolt_simulation && bolt_closed)
 		if(!no_message)
 			actor.chat_feedback(
-				SPAN_WARNING("[src]'s bolt must be open to access its chamber."),
+				span_warning("[src]'s bolt must be open to access its chamber."),
 				target = src,
 			)
 		return CLICKCHAIN_DID_SOMETHING
@@ -356,8 +356,8 @@
 		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_COMBAT_SUBTLE,
-			visible = SPAN_NOTICE("[actor.performer] loads a round into [src]."),
-			otherwise_self = SPAN_NOTICE("You load [casing] into [src]."),
+			visible = span_notice("[actor.performer] loads a round into [src]."),
+			otherwise_self = span_notice("You load [casing] into [src]."),
 		)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -390,7 +390,7 @@
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = "[actor.performer] removes [unloaded] from [src].",
-			otherwise_self = SPAN_NOTICE("You remove [unloaded] from [src]."),
+			otherwise_self = span_notice("You remove [unloaded] from [src]."),
 		)
 	return CLICKCHAIN_DID_SOMETHING
 
@@ -409,7 +409,7 @@
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = "[actor.performer] removes [unloaded] from [src].",
-			otherwise_self = SPAN_NOTICE("You remove [unloaded] from [src]."),
+			otherwise_self = span_notice("You remove [unloaded] from [src]."),
 		)
 	return CLICKCHAIN_DID_SOMETHING
 
@@ -428,7 +428,7 @@
 			target = src,
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = "[actor.performer] removes [unloaded] from [src].",
-			otherwise_self = SPAN_NOTICE("You remove [unloaded] from [src]."),
+			otherwise_self = span_notice("You remove [unloaded] from [src]."),
 		)
 	return CLICKCHAIN_DID_SOMETHING
 
@@ -447,9 +447,9 @@
 	if(!no_message)
 		actor.visible_feedback(
 			target = src,
-			visible = SPAN_WARNING("[actor.performer] spins the chamber of \the [src]!"),
-			audible = SPAN_WARNING("You hear something metallic spin and click."),
-			otherwise_self = SPAN_WARNING("You spin [src]'s chamber."),
+			visible = span_warning("[actor.performer] spins the chamber of \the [src]!"),
+			audible = span_warning("You hear something metallic spin and click."),
+			otherwise_self = span_warning("You spin [src]'s chamber."),
 		)
 	if(!no_sound)
 		// todo: variable for this somewhere

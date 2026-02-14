@@ -65,7 +65,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(size_multiplier == new_size)
 		return 1
 	if(!ignore_cooldown && last_special > world.time)
-		to_chat(src, SPAN_WARNING("You are trying to resize to fast!"))
+		to_chat(src, span_warning("You are trying to resize to fast!"))
 		return 0
 	var/change = new_size - size_multiplier
 	size_multiplier = new_size //Change size_multiplier so that other items can interact with them
@@ -125,22 +125,22 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(!istype(M) || !M.has_hands())
 		return FALSE
 	if(M.get_active_held_item() && !istype(M.get_active_held_item(), /obj/item/grab)) //scooper's hand is holding something that isn't a grab.
-		to_chat(M, SPAN_WARNING("You can't pick up someone with your occupied hand."))
+		to_chat(M, span_warning("You can't pick up someone with your occupied hand."))
 		return TRUE
 	if(M.buckled)
-		to_chat(usr, SPAN_NOTICE("You have to unbuckle \the [M] before you pick them up."))
+		to_chat(usr, span_notice("You have to unbuckle \the [M] before you pick them up."))
 		return FALSE
 	if(size_diff >= 0.50)
 		// if the person being scooped up is past a set size limit then the pickup pref is applied
 		if(get_effective_size() >= RESIZE_PREF_LIMIT && !permit_size_pickup)
 			if(M.check_grab(src)) //requires a grab of any kind before they can commence a "fair gameplay" scoopup. about the same prereqs as a fireman carry
-				to_chat(M, SPAN_NOTICE("You attempt to scoop up \the [src]."))
-				to_chat(src, SPAN_USERDANGER("[M] is attempting to scoop you up!")) //big red text so they know they're about to get bad-touched
+				to_chat(M, span_notice("You attempt to scoop up \the [src]."))
+				to_chat(src, span_userdanger("[M] is attempting to scoop you up!")) //big red text so they know they're about to get bad-touched
 				if(!do_after(M, 3 SECONDS, src))
 					return TRUE
 			else
 				var/datum/gender/G = GLOB.gender_datums[src.get_visible_gender()]
-				to_chat(M, SPAN_WARNING("[src] is far too skittish to casually scoop up. Try grabbing [G.him] first."))
+				to_chat(M, span_warning("[src] is far too skittish to casually scoop up. Try grabbing [G.him] first."))
 				return FALSE
 		holder_type = /obj/item/holder/micro
 		if(M.get_active_held_item()) //drop the grab before scooping - should be the only item that passes at this point

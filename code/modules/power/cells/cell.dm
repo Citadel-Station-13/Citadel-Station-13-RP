@@ -238,8 +238,8 @@
 			clickchain.visible_feedback(
 				target = casted_mob,
 				range = MESSAGE_RANGE_INVENTORY_SOFT,
-				visible = SPAN_NOTICE("[clickchain.performer] touches their fingers to [src] and starts to drain power from it."),
-				otherwise_self = SPAN_NOTICE("You touch your fingers to [src] and start pulling power from it."),
+				visible = span_notice("[clickchain.performer] touches their fingers to [src] and starts to drain power from it."),
+				otherwise_self = span_notice("You touch your fingers to [src] and start pulling power from it."),
 			)
 			var/flow_per_second = casted_mob.synth_cell_charging_max_power_flow()
 			var/transferred_energy = 0
@@ -258,7 +258,7 @@
 			STOP_INTERACTING_WITH(casted_mob, src, "synth-cell-self-charging")
 			if(transferred_energy > 0)
 				clickchain.chat_feedback(
-					SPAN_NOTICE("Siphoned [round(transferred_energy * 0.001, 0.1)]kJ from [src]."),
+					span_notice("Siphoned [round(transferred_energy * 0.001, 0.1)]kJ from [src]."),
 					target = src,
 				)
 			return CLICKCHAIN_DO_NOT_PROPAGATE  | CLICKCHAIN_DID_SOMETHING

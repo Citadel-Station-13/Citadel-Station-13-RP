@@ -15,7 +15,7 @@
 		to_chat(src, "<span class='warning'>You don't have anything in your hands to give to \the [target].</span>")
 		return
 
-	to_chat(src,SPAN_NOTICE("You offer \the [I] to \the [target]."))
+	to_chat(src,span_notice("You offer \the [I] to \the [target]."))
 
 	if(alert(target,"[src] wants to give you \a [I]. Will you accept it?","Item Offer","Yes","No") == "No")
 		target.visible_message("<span class='notice'>\The [src] tried to hand \the [I] to \the [target], \

@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(feign_impairment_types, init_feign_impairment_types())
 
 	if(new_active)
 		if(GetComponent(impairment.component_type))
-			to_chat(src, SPAN_WARNING("You are already pretending to be [impairment.adjective]."))
+			to_chat(src, span_warning("You are already pretending to be [impairment.adjective]."))
 			return
 		power = tgui_input_number(
 			src,
@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(feign_impairment_types, init_feign_impairment_types())
 	else
 		qdel(GetComponent(impairment.component_type))
 
-	to_chat(src, SPAN_NOTICE("You are now <b>[new_active ? "pretending" : "no longer pretending"]</b> to be [impairment.adjective]. This will be automatically reset should you lose consciousness."))
+	to_chat(src, span_notice("You are now <b>[new_active ? "pretending" : "no longer pretending"]</b> to be [impairment.adjective]. This will be automatically reset should you lose consciousness."))
 
 /mob/proc/clear_feign_impairment()
 	QDEL_LIST_ASSOC_VAL(impairments_feigned)

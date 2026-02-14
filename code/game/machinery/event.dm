@@ -74,19 +74,19 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 		if(do_after(user, 15))
 			on = FALSE
 			user.visible_message( \
-				SPAN_NOTICE("[user] closes the valves of \the [src]."), \
-				SPAN_NOTICE("You close the valves of \the [src]."))
+				span_notice("[user] closes the valves of \the [src]."), \
+				span_notice("You close the valves of \the [src]."))
 			update_icon()
 	else
 		visible_message( \
-			SPAN_NOTICE("You start opening the valves on the \the [src]."), \
-			SPAN_NOTICE("[usr] starts opening the valves on \the [src]."))
+			span_notice("You start opening the valves on the \the [src]."), \
+			span_notice("[usr] starts opening the valves on \the [src]."))
 
 		if(do_after(user, 15))
 			on = TRUE
 			user.visible_message( \
-				SPAN_NOTICE("[user] opens the valves of \the [src]."), \
-				SPAN_NOTICE("You open the valves of \the [src]."))
+				span_notice("[user] opens the valves of \the [src]."), \
+				span_notice("You open the valves of \the [src]."))
 
 			update_icon()
 	return
@@ -113,7 +113,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 /obj/structure/broken_pump/attackby(obj/item/I as obj, mob/user)
 	if(istype(I, /obj/item/weldingtool) && !sliced)
 		var/obj/item/weldingtool/W = I
-		to_chat(user, SPAN_NOTICE("You begin cutting through the exterior plating of \the [src]."))
+		to_chat(user, span_notice("You begin cutting through the exterior plating of \the [src]."))
 		if(do_after(user,30) || W.remove_fuel(5, user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 50, TRUE)
 			var/turf/T = get_turf(src)
@@ -124,7 +124,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 			return
 	if(istype(I, /obj/item/tool/crowbar) && sliced)
 		var/turf/T = get_turf(src)
-		to_chat(user, SPAN_NOTICE("You begin prying out any salvageable components from \the [src]."))
+		to_chat(user, span_notice("You begin prying out any salvageable components from \the [src]."))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, TRUE)
 		if(do_after(user, 30))
 			switch(rand(1,10))
@@ -142,7 +142,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 			return
 	if(istype(I, /obj/item/weldingtool) && gutted)
 		var/obj/item/weldingtool/W = I
-		to_chat(user, SPAN_NOTICE("You begin deconstructing the housing of \the [src]."))
+		to_chat(user, span_notice("You begin deconstructing the housing of \the [src]."))
 		if(do_after(user,30) || W.remove_fuel(5, user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 50, TRUE)
 			var/turf/T = get_turf(src)
@@ -217,25 +217,25 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 /obj/machinery/magma_reservoir/interact(mob/user)
 	if(on)
 		visible_message( \
-			SPAN_NOTICE("You start the draining sequence for \the [src].", \
-			SPAN_NOTICE("[usr] starts the draining sequence for \the [src]."))
+			span_notice("You start the draining sequence for \the [src].", \
+			span_notice("[usr] starts the draining sequence for \the [src]."))
 
 		if(do_after(user, 15))
 			on = FALSE
 			user.visible_message( \
-				SPAN_NOTICE("[user] finishes the draining sequence for \the [src]."), \
-				SPAN_NOTICE("You finish the draining sequence for \the [src]."))
+				span_notice("[user] finishes the draining sequence for \the [src]."), \
+				span_notice("You finish the draining sequence for \the [src]."))
 			update_icon()
 	else
 		visible_message( \
-			SPAN_NOTICE("You start the filling sequence for \the [src]."), \
-			SPAN_NOTICE("[usr] starts the filling sequence for the [src]."))
+			span_notice("You start the filling sequence for \the [src]."), \
+			span_notice("[usr] starts the filling sequence for the [src]."))
 
 		if(do_after(user, 15))
 			on = TRUE
 			user.visible_message(
-				SPAN_NOTICE("[user] completes the fill sequence of \the [src]."), \
-				SPAN_NOTICE("You complete the fill sequence of \the [src]."))
+				span_notice("[user] completes the fill sequence of \the [src]."), \
+				span_notice("You complete the fill sequence of \the [src]."))
 			update_icon()
 	return
 
@@ -261,7 +261,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 /obj/structure/broken_reservoir/attackby(obj/item/I as obj, mob/user)
 	if(istype(I, /obj/item/weldingtool) && !sliced)
 		var/obj/item/weldingtool/W = I
-		to_chat(user, SPAN_NOTICE("You begin cutting through the thick glass of the [src]."))
+		to_chat(user, span_notice("You begin cutting through the thick glass of the [src]."))
 		if(do_after(user,30) || W.remove_fuel(5, user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 50, TRUE)
 			var/turf/T = get_turf(src)
@@ -272,7 +272,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 			return
 	if(istype(I, /obj/item/tool/crowbar) && sliced)
 		var/turf/T = get_turf(src)
-		to_chat(user, SPAN_NOTICE("You begin prying out any salvageable components from \the [src]."))
+		to_chat(user, span_notice("You begin prying out any salvageable components from \the [src]."))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, TRUE)
 		if(do_after(user, 30))
 			switch(rand(1,10))
@@ -290,7 +290,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 			return
 	if(istype(I, /obj/item/weldingtool) && gutted)
 		var/obj/item/weldingtool/W = I
-		to_chat(user, SPAN_NOTICE("You begin deconstructing the housing of \the [src]."))
+		to_chat(user, span_notice("You begin deconstructing the housing of \the [src]."))
 		if(do_after(user,30) || W.remove_fuel(5, user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 50, TRUE)
 			var/turf/T = get_turf(src)

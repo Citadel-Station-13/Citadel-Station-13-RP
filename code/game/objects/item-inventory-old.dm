@@ -228,7 +228,7 @@
 		var/their_bodytype = casted_bodytype_check.species.get_effective_bodytype(casted_bodytype_check, src, slot)
 		if(!worn_bodytypes?.contains(their_bodytype) && !worn_bodytypes_fallback?.contains(their_bodytype))
 			if(!(flags & INV_OP_SILENT))
-				to_chat(user || M, SPAN_WARNING("[src] doesn't fit on you."))
+				to_chat(user || M, span_warning("[src] doesn't fit on you."))
 			return FALSE
 	return TRUE
 
@@ -278,22 +278,22 @@
 		if(SLOT_ID_LEFT_POCKET, SLOT_ID_RIGHT_POCKET)
 			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
-					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
+					to_chat(H, span_warning("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_WORN_ID)
 			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
-					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
+					to_chat(H, span_warning("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_BELT)
 			if(H.semantically_has_slot(SLOT_ID_UNIFORM) && !H.item_by_slot_id(SLOT_ID_UNIFORM))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
-					to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach [src]."))
+					to_chat(H, span_warning("You need a jumpsuit before you can attach [src]."))
 				return FALSE
 		if(SLOT_ID_SUIT_STORAGE)
 			if(H.semantically_has_slot(SLOT_ID_SUIT) && !H.item_by_slot_id(SLOT_ID_SUIT))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
-					to_chat(H, SPAN_WARNING("You need a suit before you can attach [src]."))
+					to_chat(H, span_warning("You need a suit before you can attach [src]."))
 				return FALSE
 	return TRUE
 
@@ -335,7 +335,7 @@
  */
 /obj/item/proc/equip_on_worn_over_insert(mob/M, slot, mob/user, obj/item/I, flags)
 	if(!(flags & INV_OP_SUPPRESS_WARNING))
-		to_chat(M, SPAN_NOTICE("You slip [src] over [I]."))
+		to_chat(M, span_notice("You slip [src] over [I]."))
 
 /**
  * call when we unfit us over something - item should already be out of us

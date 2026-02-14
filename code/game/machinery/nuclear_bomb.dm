@@ -220,7 +220,7 @@ var/bomb_set
 	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 	if(!usr.IsAdvancedToolUser())
-		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
+		to_chat(usr, span_warning("You don't have the dexterity to do this!"))
 		return TRUE
 
 	if(deployable)

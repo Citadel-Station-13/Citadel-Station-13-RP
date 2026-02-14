@@ -88,7 +88,7 @@
 				return
 		else if(istype(G, /obj/item/cell))
 			if(!object_cell_slot_accepts(G))
-				to_chat(clickchain.performer, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
+				to_chat(clickchain.performer, span_warning("\The [src] isn't fitted for that type of cell."))
 				return
 		else if(istype(G, /obj/item/modular_computer))
 			var/obj/item/modular_computer/C = G

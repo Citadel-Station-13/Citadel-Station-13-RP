@@ -768,6 +768,6 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(control_disabled)
-		to_chat(src, SPAN_WARNING("You can't do that right now!"))
+		to_chat(src, span_warning("You can't do that right now!"))
 		return FALSE
 	return can_see(M) && ..() //stop AIs from leaving windows open and using then after they lose vision

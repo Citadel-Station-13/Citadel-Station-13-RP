@@ -114,7 +114,7 @@
 			overflow[instanced] = use_slot
 		else
 			if(!(flags & PREF_COPY_TO_SILENT))
-				to_chat(character, SPAN_NOTICE("Equipping you with \the [instanced]"))
+				to_chat(character, span_notice("Equipping you with \the [instanced]"))
 
 	// second pass
 	for(var/obj/item/instance as anything in overflow)
@@ -124,7 +124,7 @@
 		if(character.equip_to_slot_if_possible(instance, slot, INV_OP_SILENT | INV_OP_FLUFFLESS))
 			overflow -= instance
 			if(!(flags & PREF_COPY_TO_SILENT))
-				to_chat(character, SPAN_NOTICE("Equipping you with \the [instance]"))
+				to_chat(character, span_notice("Equipping you with \the [instance]"))
 			continue
 
 	// storage?
@@ -133,7 +133,7 @@
 			if(character.force_equip_to_slot(instance, /datum/inventory_slot/abstract/put_in_backpack))
 				overflow -= instance
 				if(!(flags & PREF_COPY_TO_SILENT))
-					to_chat(character, SPAN_NOTICE("Putting \the [instance] into your backpack."))
+					to_chat(character, span_notice("Putting \the [instance] into your backpack."))
 				continue
 
 	// failed, reject or delete
@@ -155,7 +155,7 @@
 			if(character.force_equip_to_slot(instance, /datum/inventory_slot/abstract/put_in_backpack, INV_OP_SILENT))
 				instances -= instance
 				if(!(flags & PREF_COPY_TO_SILENT))
-					to_chat(character, SPAN_NOTICE("Putting \the [instance] into your backpack."))
+					to_chat(character, span_notice("Putting \the [instance] into your backpack."))
 				continue
 
 	// failed, reject or delete

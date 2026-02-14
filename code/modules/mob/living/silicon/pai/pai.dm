@@ -502,7 +502,7 @@
 
 /mob/living/silicon/pai/proc/prompt_hologram_placement()
 	if(length(active_holograms) >= MAX_HOLOGRAMS)
-		to_chat(src, SPAN_NOTICE("You cannot have more than [MAX_HOLOGRAMS] holograms active!"))
+		to_chat(src, span_notice("You cannot have more than [MAX_HOLOGRAMS] holograms active!"))
 		return
 
 	var/scanned_item_to_show = tgui_input_list(usr, "Select Scanned Object", "Scanned Objects", scanned_objects)

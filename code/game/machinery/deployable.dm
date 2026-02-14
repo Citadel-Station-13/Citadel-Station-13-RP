@@ -46,7 +46,7 @@
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(2, 1, src)
 				s.start()
-				visible_message(SPAN_WARNING("BZZzZZzZZzZT"))
+				visible_message(span_warning("BZZzZZzZZzZT"))
 				return
 		return
 	else if(I.is_wrench())
@@ -54,12 +54,12 @@
 			set_integrity(integrity_max)
 			emagged = FALSE
 			req_access = list(ACCESS_SECURITY_EQUIPMENT)
-			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
+			visible_message(span_warning("[user] repairs \the [src]!"))
 			return
 		else if(emagged > 0)
 			emagged = 0
 			req_access = list(ACCESS_SECURITY_EQUIPMENT)
-			visible_message(SPAN_WARNING("[user] repairs \the [src]!"))
+			visible_message(span_warning("[user] repairs \the [src]!"))
 			return
 		return
 	return ..()
@@ -74,7 +74,7 @@
 
 /obj/machinery/deployable/barrier/proc/explode()
 
-	visible_message(SPAN_DANGER("[src] blows apart!"))
+	visible_message(span_danger("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 /*	var/obj/item/stack/rods/ =*/
@@ -97,7 +97,7 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 1, src)
 		s.start()
-		visible_message(SPAN_WARNING("BZZzZZzZZzZT"))
+		visible_message(span_warning("BZZzZZzZZzZT"))
 		return 1
 	else if(emagged == 1)
 		emagged = 2
@@ -105,5 +105,5 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 1, src)
 		s.start()
-		visible_message(SPAN_WARNING("BZZzZZzZZzZT"))
+		visible_message(span_warning("BZZzZZzZZzZT"))
 		return 1

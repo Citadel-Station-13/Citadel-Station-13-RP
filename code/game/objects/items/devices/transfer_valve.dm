@@ -26,20 +26,20 @@
 	if(istype(item, /obj/item/tank))
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(tank_one && tank_two)
-			to_chat(user, SPAN_WARNING("There are already two tanks attached, remove one first!"))
+			to_chat(user, span_warning("There are already two tanks attached, remove one first!"))
 			return
 
 		if(!tank_one)
 			if(!user.attempt_insert_item_for_installation(item, src))
 				return
 			tank_one = item
-			to_chat(user, SPAN_NOTICE("You attach the tank to the transfer valve."))
+			to_chat(user, span_notice("You attach the tank to the transfer valve."))
 
 		else if(!tank_two)
 			if(!user.attempt_insert_item_for_installation(item, src))
 				return
 			tank_two = item
-			to_chat(user, SPAN_NOTICE("You attach the tank to the transfer valve."))
+			to_chat(user, span_notice("You attach the tank to the transfer valve."))
 
 			message_admins("[key_name_admin(user)] attached both tanks to a transfer valve. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 			log_game("[key_name_admin(user)] attached both tanks to a transfer valve.")
@@ -51,15 +51,15 @@
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/assembly/A = item
 		if(A.secured)
-			to_chat(user, SPAN_NOTICE("The device is secured."))
+			to_chat(user, span_notice("The device is secured."))
 			return
 		if(attached_device)
-			to_chat(user, SPAN_WARNING("There is already a device attached to the valve, remove it first!"))
+			to_chat(user, span_warning("There is already a device attached to the valve, remove it first!"))
 			return
 		if(!user.attempt_insert_item_for_installation(item, src))
 			return
 		attached_device = A
-		to_chat(user, SPAN_NOTICE("You attach the [item] to the valve controls and secure it."))
+		to_chat(user, span_notice("You attach the [item] to the valve controls and secure it."))
 		//A.on_attach()
 		A.holder = src
 		A.toggle_secure() //This calls update_appearance(), which calls update_appearance() on the holder (i.e. the bomb).

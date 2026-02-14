@@ -86,18 +86,18 @@
 			actor.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_WARNING("[actor.performer] collapsing [src]..."),
-				audible = SPAN_WARNING("You hear heavy machinery being taken apart."),
-				otherwise_self = SPAN_WARNING("You start deploying [src]!"),
+				visible = span_warning("[actor.performer] collapsing [src]..."),
+				audible = span_warning("You hear heavy machinery being taken apart."),
+				otherwise_self = span_warning("You start deploying [src]!"),
 			)
 		if(!do_after(actor.performer, delay, src))
 			return null
 	actor.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[actor.performer] collapses [src]!"),
-		audible = SPAN_WARNING("You hear heavy machinery being packed."),
-		otherwise_self = SPAN_WARNING("You collapse [src]!"),
+		visible = span_warning("[actor.performer] collapses [src]!"),
+		audible = span_warning("You hear heavy machinery being packed."),
+		otherwise_self = span_warning("You collapse [src]!"),
 	)
 	var/atom/drop_loc = drop_location()
 	var/obj/item/mortar_kit/drop_result
@@ -179,7 +179,7 @@
 	flick(src, "[base_icon_state]-fire")
 	if(!suppressed)
 		shake_camera_of_nearby_players(src, 9, strength = WORLD_ICON_SIZE * 0.5, iterations = 1)
-		visible_message(SPAN_BOLDWARNING("[chat_html_embed_rendered()] [src] fires!"))
+		visible_message(span_boldwarning("[chat_html_embed_rendered()] [src] fires!"))
 
 	var/datum/mortar_flight/flight = new(shell)
 	flight.set_origin(where_at)
@@ -228,7 +228,7 @@
 	if(!actor.performer.can_unequip(shell))
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("[shell] is stuck to your hand!"),
+				span_warning("[shell] is stuck to your hand!"),
 				target = src,
 			)
 		return FALSE
@@ -237,8 +237,8 @@
 			actor.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_WARNING("[actor.performer] starts loading [shell] into [src]..."),
-				audible = SPAN_WARNING("You hear someone loading something..."),
+				visible = span_warning("[actor.performer] starts loading [shell] into [src]..."),
+				audible = span_warning("You hear someone loading something..."),
 			)
 		if(!do_after(actor.performer, time_to_load, src))
 			return FALSE
@@ -246,13 +246,13 @@
 		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[actor.performer] loads [shell] into [src]!"),
-			audible = SPAN_WARNING("You hear someone load something into a machine!"),
+			visible = span_warning("[actor.performer] loads [shell] into [src]!"),
+			audible = span_warning("You hear someone load something into a machine!"),
 		)
 	if(!actor.performer.transfer_item_to_loc(shell, src))
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("[shell] is stuck to your hand!"),
+				span_warning("[shell] is stuck to your hand!"),
 				target = src,
 			)
 		return FALSE
@@ -283,7 +283,7 @@
 	var/datum/mortar_flight/flight = run_firing_cycle(firing, x_offset, y_offset)
 	if(!flight)
 		if(firing.loc == src)
-			visible_message(SPAN_WARNING("A hiss is heard from [src] as [firing] falls out of it, having failed to fire."))
+			visible_message(span_warning("A hiss is heard from [src] as [firing] falls out of it, having failed to fire."))
 			firing.forceMove(drop_location())
 
 /obj/machinery/mortar/basic/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
@@ -316,16 +316,16 @@
 			actor.visible_feedback(
 				target = src,
 				range = MESSAGE_RANGE_CONSTRUCTION,
-				visible = SPAN_WARNING("[actor.performer] starts [phrase] [src]..."),
-				audible = SPAN_WARNING("You hear someone reconfiguring heavy machinery."),
+				visible = span_warning("[actor.performer] starts [phrase] [src]..."),
+				audible = span_warning("You hear someone reconfiguring heavy machinery."),
 			)
 		if(!do_after(actor.performer, delay, src))
 			return FALSE
 	actor.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[actor.performer] [done_phrase] [src]!"),
-		audible = SPAN_WARNING("You hear heavy machinery being reconfigured."),
+		visible = span_warning("[actor.performer] [done_phrase] [src]!"),
+		audible = span_warning("You hear heavy machinery being reconfigured."),
 	)
 	return TRUE
 

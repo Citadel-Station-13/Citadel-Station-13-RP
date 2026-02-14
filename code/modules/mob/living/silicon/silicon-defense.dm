@@ -19,7 +19,7 @@
 		spark_emitter.set_up(5, 1, loc)
 		spark_emitter.start()
 		visible_message(
-			SPAN_WARNING("[src] emits a burst of sparks[source ? " as they make contact with [source]" : ""]!"),
-			SPAN_DANGER("Energy pulse detected[source ? " from [source]" : ""]!"),
-			SPAN_WARNING("You hear an electrical crack."),
+			span_warning("[src] emits a burst of sparks[source ? " as they make contact with [source]" : ""]!"),
+			span_danger("Energy pulse detected[source ? " from [source]" : ""]!"),
+			span_warning("You hear an electrical crack."),
 		)

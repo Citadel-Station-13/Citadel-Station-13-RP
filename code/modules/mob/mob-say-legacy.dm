@@ -18,7 +18,7 @@
 		return
 
 	if(SSbans.t_is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
-		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
+		to_chat(src, span_warning("You are banned from OOC and deadchat."))
 		return
 
 	message = emoji_parse(say_emphasis(message))

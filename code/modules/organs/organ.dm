@@ -652,9 +652,9 @@
 		return
 
 	user.visible_message(
-		SPAN_BOLDWARNING("[user] takes an experimental bite out of \the [src]!"),
-		SPAN_BOLDWARNING("You take an experimental bite out of \the [src]!"),
-		SPAN_WARNING("You hear a sickening chewing sound."),
+		span_boldwarning("[user] takes an experimental bite out of \the [src]!"),
+		span_boldwarning("You take an experimental bite out of \the [src]!"),
+		span_warning("You hear a sickening chewing sound."),
 		MESSAGE_RANGE_INVENTORY_HARD,
 	)
 	blood_splatter_legacy(get_turf(src), reagents.reagent_datas?[/datum/reagent/blood::id], TRUE)
@@ -714,10 +714,10 @@
 
 /obj/item/organ/proc/butcher(var/obj/item/O, var/mob/living/user, var/atom/newtarget)
 	if(robotic >= ORGAN_ROBOT)
-		user?.visible_message(SPAN_NOTICE("[user] disassembles \the [src]."))
+		user?.visible_message(span_notice("[user] disassembles \the [src]."))
 
 	else
-		user?.visible_message(SPAN_NOTICE("[user] butchers \the [src]."))
+		user?.visible_message(span_notice("[user] butchers \the [src]."))
 
 	if(!newtarget)
 		newtarget = get_turf(src)

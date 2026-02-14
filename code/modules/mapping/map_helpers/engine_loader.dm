@@ -65,7 +65,7 @@
 
 	SSmapping.subsystem_log("initializing engine [chosen.name] at [COORD(T)]")
 	if(!SSmapping.initialized)
-		to_chat(world, SPAN_DANGER("Engine loaded: [chosen.display_name]"))
+		to_chat(world, span_danger("Engine loaded: [chosen.display_name]"))
 
 	annihilate_bounds(lx, ly, lz, ldir)
 	chosen.load(T, orientation = ldir)

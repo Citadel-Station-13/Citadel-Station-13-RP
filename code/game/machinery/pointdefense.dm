@@ -209,7 +209,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(W?.is_multitool())
 		var/new_ident = input(user, "Enter a new ident tag.", "[src]", id_tag) as null|text
 		if(new_ident && new_ident != id_tag && user.Adjacent(src) && CanInteract(user, GLOB.physical_state))
-			to_chat(user, SPAN_NOTICE("You register [src] with \the [new_ident] network."))
+			to_chat(user, span_notice("You register [src] with \the [new_ident] network."))
 			id_tag = new_ident
 		return
 	if(default_deconstruction_screwdriver(user, W))

@@ -41,7 +41,7 @@
 			if(!id)
 				return
 			if(!O.check_species_id(prefs.character_species_id()))
-				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this citizenship."))
+				to_chat(user, span_warning("[prefs.character_species_name()] cannot pick this citizenship."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
 			prefs.sanitize_background_lore()	// update
@@ -50,7 +50,7 @@
 			var/cat = params["category"]
 			var/list/datum/lore/character_background/citizenship/citizenships = SScharacters.available_citizenships(prefs.character_species_id(), cat)
 			if(!length(citizenships))
-				to_chat(user, SPAN_WARNING("No citizenships in that category have been found; this might be an error."))
+				to_chat(user, span_warning("No citizenships in that category have been found; this might be an error."))
 				return PREFERENCES_NOACTION
 			var/datum/lore/character_background/citizenship/first = citizenships[1]
 			write(prefs, first.id)

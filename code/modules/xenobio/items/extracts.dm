@@ -23,16 +23,16 @@
 /obj/item/slime_extract/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/slimepotion/enhancer))
 		if(enhanced)
-			to_chat(user, SPAN_WARNING("You cannot enhance this extract further!"))
+			to_chat(user, span_warning("You cannot enhance this extract further!"))
 			return ..()
-		to_chat(user, SPAN_NOTICE("You apply the enhancer to the slime extract. It may now be reused one more time."))
+		to_chat(user, span_notice("You apply the enhancer to the slime extract. It may now be reused one more time."))
 		playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 		uses += 2
 		enhanced = TRUE
 		name = initial(name) // To remove the 'inert' part of the name.
 		qdel(O)
 	else if(istype(O, /obj/item/slimepotion/reinvigoration))
-		to_chat(user, SPAN_NOTICE("You apply the reinvigorator to the slime extract. It rapidly expands, creating a brand new slime!"))
+		to_chat(user, span_notice("You apply the reinvigorator to the slime extract. It rapidly expands, creating a brand new slime!"))
 		playsound(src, 'sound/effects/bubbles.ogg', 50, 1)
 		new slime_type(get_turf(src))
 		qdel(O)
@@ -68,7 +68,7 @@
 /datum/chemical_reaction/slime/proc/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
 	extract.uses--
 	if(extract.uses <= 0)
-		extract.visible_message("[icon2html(thing = extract, target = world)] [SPAN_NOTICE("\The [extract] goes inert.")]")
+		extract.visible_message("[icon2html(thing = extract, target = world)] [span_notice("\The [extract] goes inert.")]")
 		extract.name = "inert [initial(extract.name)]"
 
 // ***************
@@ -90,7 +90,7 @@
 	required_container_path = /obj/item/slime_extract/grey
 
 /datum/chemical_reaction/slime/grey_new_slime/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
-	holder.my_atom.visible_message(SPAN_WARNING("Infused with phoron, the core begins to quiver and grow, and soon a new baby slime emerges from it!"))
+	holder.my_atom.visible_message(span_warning("Infused with phoron, the core begins to quiver and grow, and soon a new baby slime emerges from it!"))
 	var/mob/living/simple_mob/slime/xenobio/S = new(get_turf(holder.my_atom))
 	S.afflict_paralyze(20 * 10)
 	..()
@@ -228,12 +228,12 @@
 		S.remove_modifiers_of_type(/datum/modifier/berserk)
 
 		if(S.client) // Player slimes always have free will.
-			to_chat(S, SPAN_WARNING("An intense wave of relaxing calm is felt from inside, but you remain in control of yourself."))
+			to_chat(S, span_warning("An intense wave of relaxing calm is felt from inside, but you remain in control of yourself."))
 
 	for(var/mob/living/carbon/human/H in view(get_turf(holder.my_atom)))
 		if(H.species.name == SPECIES_PROMETHEAN)
 			H.remove_modifiers_of_type(/datum/modifier/berserk)
-			to_chat(H, SPAN_WARNING("An intense wave of relaxing calm is felt from inside, but you remain in control of yourself."))
+			to_chat(H, span_warning("An intense wave of relaxing calm is felt from inside, but you remain in control of yourself."))
 
 	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 75, 1)
 	..()
@@ -323,7 +323,7 @@
 
 /datum/chemical_reaction/slime/orange_fire/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
 	log_and_message_admins("Orange extract reaction (fire) has been activated in [get_area(holder.my_atom)].  Last fingerprints: [holder.my_atom.fingerprintslast]")
-	holder.my_atom.visible_message(SPAN_WARNING("\The [src] begins to vibrate violently!"))
+	holder.my_atom.visible_message(span_warning("\The [src] begins to vibrate violently!"))
 	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 75, 1)
 	spawn(5 SECONDS)
 		if(holder && holder.my_atom)
@@ -381,9 +381,9 @@
 				H.bodytemperature = between(50, (H.bodytemperature - ((H.bodytemperature + 50) * cold_factor) ), H.bodytemperature)
 
 			if(protection < 0.7)
-				to_chat(L, SPAN_WARNING("A scalding wave of heat overwhelms you!"))
+				to_chat(L, span_warning("A scalding wave of heat overwhelms you!"))
 			else
-				to_chat(L, SPAN_WARNING("A scalding wave of heat passes by you, as your armor protects you from it."))
+				to_chat(L, span_warning("A scalding wave of heat passes by you, as your armor protects you from it."))
 			continue
 
 	// Now make it very cold.
@@ -441,7 +441,7 @@
 
 /datum/chemical_reaction/slime/yellow_lightning/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
 	log_and_message_admins("Yellow extract reaction (lightning) has been activated in [get_area(holder.my_atom)].  Last fingerprints: [holder.my_atom.fingerprintslast]")
-	holder.my_atom.visible_message(SPAN_DANGER("\The [src] begins to vibrate violently!"))
+	holder.my_atom.visible_message(span_danger("\The [src] begins to vibrate violently!"))
 	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 75, 1)
 	spawn(5 SECONDS)
 		if(holder && holder.my_atom)
@@ -468,7 +468,7 @@
 
 /datum/chemical_reaction/slime/yellow_emp/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
 	log_and_message_admins("Yellow extract reaction (emp) has been activated in [get_area(holder.my_atom)].  Last fingerprints: [holder.my_atom.fingerprintslast]")
-	holder.my_atom.visible_message(SPAN_DANGER("\The [src] begins to vibrate violently!"))
+	holder.my_atom.visible_message(span_danger("\The [src] begins to vibrate violently!"))
 	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 75, 1)
 	spawn(5 SECONDS)
 		if(holder && holder.my_atom)
@@ -714,10 +714,10 @@
 		if(istype(L, /mob/living/simple_mob/slime))
 			var/mob/living/simple_mob/slime/S = L
 			if(S.cold_resist >= 1) // Immune to cold.
-				to_chat(S, SPAN_WARNING("A chill is felt around you, however it cannot harm you."))
+				to_chat(S, span_warning("A chill is felt around you, however it cannot harm you."))
 				continue
 			if(S.client) // Don't instantly kill player slimes.
-				to_chat(S, SPAN_DANGER("You feel your body crystalize as an intense chill overwhelms you!"))
+				to_chat(S, span_danger("You feel your body crystalize as an intense chill overwhelms you!"))
 				S.inflict_cold_damage(100)
 			else
 				S.inflict_cold_damage(200) // Metal slimes can survive this 'slime nuke'.
@@ -732,9 +732,9 @@
 				H.bodytemperature = between(50, (H.bodytemperature - ((H.bodytemperature - 50) * cold_factor) ), H.bodytemperature)
 
 			if(protection < 0.7)
-				to_chat(L, SPAN_DANGER("A chilling wave of cold overwhelms you!"))
+				to_chat(L, span_danger("A chilling wave of cold overwhelms you!"))
 			else
-				to_chat(L, SPAN_WARNING("A chilling wave of cold passes by you, as your armor protects you from it."))
+				to_chat(L, span_warning("A chilling wave of cold passes by you, as your armor protects you from it."))
 			continue
 
 	// Now make it very cold.
@@ -837,12 +837,12 @@
 		S.add_modifier(/datum/modifier/berserk, 30 SECONDS)
 
 		if(S.client) // Player slimes always have free will.
-			to_chat(S, SPAN_WARNING("An intense wave of rage is felt from inside, but you remain in control of yourself."))
+			to_chat(S, span_warning("An intense wave of rage is felt from inside, but you remain in control of yourself."))
 
 	for(var/mob/living/carbon/human/H in view(get_turf(holder.my_atom)))
 		if(H.species.get_species_id() == SPECIES_ID_PROMETHEAN)
 			H.add_modifier(/datum/modifier/berserk, 30 SECONDS)
-			to_chat(H, SPAN_WARNING("An intense wave of rage is felt from inside, but you remain in control of yourself."))
+			to_chat(H, span_warning("An intense wave of rage is felt from inside, but you remain in control of yourself."))
 
 	log_and_message_admins("Red extract reaction (enrage) has been activated in [get_area(holder.my_atom)].  Last fingerprints: [holder.my_atom.fingerprintslast]")
 
@@ -889,7 +889,7 @@
 
 /datum/chemical_reaction/slime/green_radpulse/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
 	log_and_message_admins("Green extract reaction (radiation pulse) has been activated in [get_area(holder.my_atom)].  Last fingerprints: [holder.my_atom.fingerprintslast]")
-	holder.my_atom.visible_message(SPAN_DANGER("\The [holder.my_atom] begins to vibrate violently!"))
+	holder.my_atom.visible_message(span_danger("\The [holder.my_atom] begins to vibrate violently!"))
 	spawn(5 SECONDS)
 		radiation_pulse(src, 30, 7, TRUE)
 	..()
@@ -973,7 +973,7 @@
 
 /datum/chemical_reaction/slime/pink_heal_pulse/on_extract_reaction(datum/reagent_holder/holder, multiplier, obj/item/slime_extract/extract)
 	for(var/mob/living/carbon/C in viewers(get_turf(holder.my_atom), null))
-		to_chat(C, SPAN_NICEGREEN("A wave of energy suddenly invigorates you.</span>"))
+		to_chat(C, span_nicegreen("A wave of energy suddenly invigorates you.</span>"))
 		C.adjustBruteLoss(-25)
 		C.adjustFireLoss(-25)
 		C.adjustToxLoss(-25)
@@ -1040,7 +1040,7 @@
 	E.uses = 0
 
 	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 75, 1)
-	holder.my_atom.visible_message(SPAN_WARNING("\The [holder.my_atom] begins to vibrate violently!"))
+	holder.my_atom.visible_message(span_warning("\The [holder.my_atom] begins to vibrate violently!"))
 	log_and_message_admins("Oil extract reaction (explosion) has been activated in [get_area(holder.my_atom)].  Last fingerprints: [holder.my_atom.fingerprintslast]")
 
 	spawn(5 SECONDS)

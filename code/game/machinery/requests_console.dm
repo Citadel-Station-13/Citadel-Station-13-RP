@@ -261,7 +261,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(inoperable(MAINT)) return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/card/id/T = O
-			msgVerified = SPAN_BOLDNICEGREEN("Verified by [T.registered_name] ([T.assignment])")
+			msgVerified = span_boldnicegreen("Verified by [T.registered_name] ([T.assignment])")
 			updateUsrDialog()
 		if(screen == RCS_ANNOUNCE)
 			var/obj/item/card/id/ID = O

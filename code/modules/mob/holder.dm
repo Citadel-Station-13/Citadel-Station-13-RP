@@ -89,19 +89,19 @@
 	var/mob/M = loc
 	if(istype(M))
 		M.drop_item_to_ground(src, INV_OP_FORCE)
-		to_chat(M, SPAN_WARNING("\The [escapee] wriggles out of your grip!"))
-		to_chat(escapee, SPAN_WARNING("You wiggle out of [M]'s grip!"))
+		to_chat(M, span_warning("\The [escapee] wriggles out of your grip!"))
+		to_chat(escapee, span_warning("You wiggle out of [M]'s grip!"))
 	else if(istype(loc, /obj/item/clothing/accessory/holster))
 		var/obj/item/clothing/accessory/holster/holster = loc
 		if(holster.holstered == src)
 			holster.clear_holster()
-		to_chat(escapee, SPAN_WARNING("You extricate yourself from [holster]."))
+		to_chat(escapee, span_warning("You extricate yourself from [holster]."))
 		escapee.forceMove(get_turf(escapee))
 	else if(isitem(loc))
-		to_chat(escapee, SPAN_WARNING("You struggle free of [loc]."))
+		to_chat(escapee, span_warning("You struggle free of [loc]."))
 		escapee.forceMove(get_turf(escapee))
 	else if(istype(loc, /atom/movable/storage_indirection) && loc.loc) //Second type how an item can have storage
-		to_chat(escapee, SPAN_WARNING("You struggle free of [loc.loc]."))
+		to_chat(escapee, span_warning("You struggle free of [loc.loc]."))
 		escapee.forceMove(get_turf(escapee))
 
 

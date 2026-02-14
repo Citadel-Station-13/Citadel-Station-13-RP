@@ -363,9 +363,9 @@
 /obj/item/gun/examine(mob/user, dist)
 	. = ..()
 	if(should_attack_self_switch_firemodes())
-		. += SPAN_NOTICE("Press '<b>Activate In Hand</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/activate_inhand, " ")]while holding this gun in your active hand to swap its firing configuration.")
+		. += span_notice("Press '<b>Activate In Hand</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/activate_inhand, " ")]while holding this gun in your active hand to swap its firing configuration.")
 	if(should_unique_action_rack_chamber())
-		. += SPAN_NOTICE("Press '<b>Unique Action</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/unique_action, " ")]while holding this gun in your active hand to rack its chamber.")
+		. += span_notice("Press '<b>Unique Action</b>' [user?.client?.print_keys_for_keybind_with_prefs_link(/datum/keybinding/item/unique_action, " ")]while holding this gun in your active hand to rack its chamber.")
 	if(!no_pin_required)
 		if(pin)
 			. += "It has \a [pin] installed."
@@ -374,7 +374,7 @@
 	if(firemode)
 		. += "The fire selector is set to [firemode.name]."
 	if(safety_state != GUN_NO_SAFETY)
-		. += SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"].")
+		. += span_notice("The safety is [check_safety() ? "on" : "off"].")
 	if(obj_cell_slot)
 		if(!obj_cell_slot.cell)
 			. += "Its cell slot is <b>empty</b>."
@@ -436,7 +436,7 @@
 		return
 
 	if(user?.client?.get_preference_toggle(/datum/game_preference_toggle/game/help_intent_firing) && user.a_intent == INTENT_HELP)
-		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
+		to_chat(user, span_warning("You refrain from firing [src] because your intent is set to help!"))
 		return
 
 	var/shitty_legacy_params = list2params(params)
@@ -548,7 +548,7 @@
 		pin.emag_act(remaining_charges, user)
 
 /obj/item/gun/proc/handle_click_safety(mob/user)
-	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
+	user.visible_message(span_warning("[user] squeezes the trigger of \the [src] but it doesn't move!"), span_warning("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
 /obj/item/gun/proc/toggle_scope(var/zoom_amount=2.0)
 	//looking through a scope limits your periphereal vision
@@ -592,10 +592,10 @@
 /obj/item/gun/proc/toggle_safety(mob/user)
 	if(user)
 		if(user.stat || user.restrained() || user.incapacitated(INCAPACITATION_DISABLED))
-			to_chat(user, SPAN_WARNING("You can't do that right now."))
+			to_chat(user, span_warning("You can't do that right now."))
 			return
 	if(safety_state == GUN_NO_SAFETY)
-		to_chat(user, SPAN_WARNING("[src] has no safety."))
+		to_chat(user, span_warning("[src] has no safety."))
 		return
 	var/current = check_safety()
 	switch(safety_state)
@@ -605,9 +605,9 @@
 			safety_state = GUN_SAFETY_ON
 	if(user)
 		user.visible_message(
-			SPAN_WARNING("[user] switches the safety of \the [src] [current ? "off" : "on"]."),
-			SPAN_NOTICE("You switch the safety of \the [src] [current ? "off" : "on"]."),
-			SPAN_WARNING("You hear a switch being clicked."),
+			span_warning("[user] switches the safety of \the [src] [current ? "off" : "on"]."),
+			span_notice("You switch the safety of \the [src] [current ? "off" : "on"]."),
+			span_warning("You hear a switch being clicked."),
 			MESSAGE_RANGE_COMBAT_SUBTLE
 		)
 	update_appearance()

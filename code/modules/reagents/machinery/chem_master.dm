@@ -113,7 +113,7 @@
 	if(is_reagent_container(I) && !(I.item_flags & ATOM_ABSTRACT) && I.is_open_container())
 		. = TRUE // no afterattack
 		if(panel_open)
-			to_chat(user, SPAN_WARNING("You can't use the [src.name] while its panel is opened!"))
+			to_chat(user, span_warning("You can't use the [src.name] while its panel is opened!"))
 			return
 		if(src.beaker)
 			to_chat(user, "\A [beaker] is already loaded into the machine.")
@@ -124,18 +124,18 @@
 			return
 
 		replace_beaker(user, B)
-		to_chat(user, SPAN_NOTICE("You add [B] to [src]."))
+		to_chat(user, span_notice("You add [B] to [src]."))
 		ui_interact(user)
 		update_appearance()
 
 	else if(!condi && istype(I, /obj/item/storage/pill_bottle))
 		if(pill_bottle)
-			to_chat(user, SPAN_WARNING("A pill pill_bottle is already loaded into [src]!"))
+			to_chat(user, span_warning("A pill pill_bottle is already loaded into [src]!"))
 			return
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		pill_bottle = I
-		to_chat(user, SPAN_NOTICE("You add [I] into the dispenser slot."))
+		to_chat(user, span_notice("You add [I] into the dispenser slot."))
 		ui_interact(user)
 	else
 		return ..()

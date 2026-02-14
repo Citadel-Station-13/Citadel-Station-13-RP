@@ -15,7 +15,7 @@ AUTO_FRAME_DATUM(/datum/frame2/apc, apc, 'icons/machinery/power/apc.dmi')
 	if(!istype(location, /turf/simulated))
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("[entity] must be placed on normal flooring."),
+				span_warning("[entity] must be placed on normal flooring."),
 				target = entity,
 			)
 		return FALSE
@@ -23,27 +23,27 @@ AUTO_FRAME_DATUM(/datum/frame2/apc, apc, 'icons/machinery/power/apc.dmi')
 	if(!area)
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("Missing area. Report this to coders with a screenshot of your screen. How did you get here?"),
+				span_warning("Missing area. Report this to coders with a screenshot of your screen. How did you get here?"),
 				target = entity,
 			)
 		return FALSE
 	if(!area.requires_power || area.always_unpowered)
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("[location] doesn't require power, or is externally powered."),
+				span_warning("[location] doesn't require power, or is externally powered."),
 				target = entity,
 			)
 		return FALSE
 	if(area.get_apc())
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("[location] is part of an area that already has an APC."),
+				span_warning("[location] is part of an area that already has an APC."),
 				target = entity,
 			)
 		return FALSE
 	for(var/obj/machinery/power/terminal/T in location)
 		actor.chat_feedback(
-			SPAN_WARNING("There is another powernet terminal here."),
+			span_warning("There is another powernet terminal here."),
 			target = entity,
 		)
 		return FALSE

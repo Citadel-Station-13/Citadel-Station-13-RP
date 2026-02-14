@@ -34,7 +34,7 @@
 	if(drop_all_targets_on_attack_self && length(active_targets))
 		drop_all_targets()
 		e_args.chat_feedback(
-			SPAN_NOTICE("You disengage [src] from all locked targets."),
+			span_notice("You disengage [src] from all locked targets."),
 			target = src,
 		)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

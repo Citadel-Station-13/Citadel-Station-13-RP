@@ -169,26 +169,26 @@
 		precision = max(rand(1,100)*bagholding.len,100)
 		if(istype(teleatom, /mob/living))
 			var/mob/living/MM = teleatom
-			to_chat(MM, SPAN_DANGER("The Bluespace interface on your [teleatom] interferes with the teleport!"))
+			to_chat(MM, span_danger("The Bluespace interface on your [teleatom] interferes with the teleport!"))
 	return TRUE
 
 /datum/teleport/instant/science/teleportChecks()
 	if(istype(teleatom, /obj/item/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
-		teleatom.visible_message(SPAN_DANGER("\The [teleatom] bounces off of the portal!"))
+		teleatom.visible_message(span_danger("\The [teleatom] bounces off of the portal!"))
 		return FALSE
 
 	if(!!length(teleatom.search_contents_for(/obj/item/disk/nuclear)))
 		if(istype(teleatom, /mob/living))
 			var/mob/living/MM = teleatom
-			MM.visible_message(SPAN_DANGER("\The [MM] bounces off of the portal!"), SPAN_WARNING("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
+			MM.visible_message(span_danger("\The [MM] bounces off of the portal!"), span_warning("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
 		else
-			teleatom.visible_message(SPAN_DANGER("\The [teleatom] bounces off of the portal!"))
+			teleatom.visible_message(span_danger("\The [teleatom] bounces off of the portal!"))
 		return FALSE
 	var/obstructed = 0
 	var/turf/dest_turf = get_turf(destination)
 	if(local && !(dest_turf.z in (LEGACY_MAP_DATUM).player_levels))
 		if(istype(teleatom, /mob/living))
-			to_chat(teleatom, SPAN_WARNING("The portal refuses to carry you that far away!"))
+			to_chat(teleatom, span_warning("The portal refuses to carry you that far away!"))
 		return FALSE
 	else if(istype(destination.loc, /obj/belly))
 		var/obj/belly/destination_belly = destination.loc
@@ -203,7 +203,7 @@
 		obstructed = 1
 	else if(!((isturf(destination) && !destination.density) || (isturf(destination.loc) && !destination.loc.density)) || !destination.x || !destination.y || !destination.z)	//If we're inside something or outside universe
 		obstructed = 1
-		to_chat(teleatom, SPAN_WARNING("Something is blocking way on the other side!"))
+		to_chat(teleatom, span_warning("Something is blocking way on the other side!"))
 	if(obstructed)
 		return FALSE
 	else

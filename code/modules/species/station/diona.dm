@@ -156,7 +156,7 @@
 		H.mind.transfer(S)
 
 	if(H.isSynthetic())
-		H.visible_message(SPAN_DANGER("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))
+		H.visible_message(span_danger("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))
 		H.set_species(SScharacters.resolve_species_path(/datum/species/human), skip = TRUE, force = TRUE)
 
 		for(var/obj/item/organ/internal/diona/Org in H.internal_organs) // Remove Nymph organs.
@@ -175,9 +175,9 @@
 			qdel(D)
 
 	H.visible_message(
-		SPAN_DANGER("\The [H] splits apart with a wet slithering noise!"),
-		SPAN_NOTICE("You split apart with a wet slithering noise!"),
-		SPAN_HEAR("You hear a wet slithering noise!"),
+		span_danger("\The [H] splits apart with a wet slithering noise!"),
+		span_notice("You split apart with a wet slithering noise!"),
+		span_hear("You hear a wet slithering noise!"),
 	)
 
 /datum/species/diona/handle_environment_special(mob/living/carbon/human/H, datum/gas_mixture/environment, dt)

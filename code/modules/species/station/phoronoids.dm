@@ -101,9 +101,9 @@
 		enviroment_bad = TRUE
 		if(!H.on_fire && enviroment_bad)
 			H.visible_message(
-				SPAN_DANGER("[H]'s body reacts with the atmosphere and bursts into flames!"),
-				SPAN_USERDANGER("Your body reacts with the atmosphere and bursts into flames!"),
-				SPAN_HEAR("You hear something combust into flames!")
+				span_danger("[H]'s body reacts with the atmosphere and bursts into flames!"),
+				span_userdanger("Your body reacts with the atmosphere and bursts into flames!"),
+				span_hear("You hear something combust into flames!")
 			)
 			H.IgniteMob()
 	enviroment_bad = FALSE

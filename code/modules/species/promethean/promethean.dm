@@ -192,8 +192,8 @@ var/datum/species/shapeshifter/promethean/prometheans
 				t_him = "her"
 
 	H.visible_message(
-		SPAN_NOTICE("\The [H] glomps [target] to make [t_him] feel better!"),
-		SPAN_NOTICE("You glomp [target] to make [t_him] feel better!"),
+		span_notice("\The [H] glomps [target] to make [t_him] feel better!"),
+		span_notice("You glomp [target] to make [t_him] feel better!"),
 	)
 
 /datum/species/shapeshifter/promethean/handle_death(mob/living/carbon/human/H)
@@ -224,13 +224,13 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 // 	switch(stored_shock_by_ref["\ref[H]"])
 // 		if(1 to 10)
-// 			return SPAN_NOTICE("[t_she] flickering gently with a little electrical activity.")
+// 			return span_notice("[t_she] flickering gently with a little electrical activity.")
 // 		if(11 to 20)
-// 			return SPAN_NOTICE("[t_she] glowing gently with moderate levels of electrical activity.\n")
+// 			return span_notice("[t_she] glowing gently with moderate levels of electrical activity.\n")
 // 		if(21 to 35)
-// 			return SPAN_WARNING("[t_she] glowing brightly with high levels of electrical activity.")
+// 			return span_warning("[t_she] glowing brightly with high levels of electrical activity.")
 // 		if(35 to INFINITY)
-// 			return SPAN_DANGER("[t_she] radiating massive levels of electrical activity!")
+// 			return span_danger("[t_she] radiating massive levels of electrical activity!")
 
 /mob/living/carbon/human/proc/prommie_blobform()
 	set name = "Toggle Blobform"
@@ -240,12 +240,12 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	var/atom/movable/to_locate = temporary_form || src
 	if(!isturf(to_locate.loc))
-		to_chat(to_locate, SPAN_WARNING("You need more space to perform this action!"))
+		to_chat(to_locate, span_warning("You need more space to perform this action!"))
 		return
 
 	//Human form
 	else if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || restrained())
-		to_chat(src, SPAN_WARNING("You can only do this while not stunned."))
+		to_chat(src, span_warning("You can only do this while not stunned."))
 		return
 	else
 		prommie_intoblob()

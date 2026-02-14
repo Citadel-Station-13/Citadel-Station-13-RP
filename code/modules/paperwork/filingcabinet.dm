@@ -41,12 +41,12 @@
 
 /obj/structure/filingcabinet/attackby(obj/item/P, mob/living/user, params)
 	if(P.is_wrench() && user.a_intent != INTENT_HELP)
-		to_chat(user, SPAN_NOTICE("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
+		to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
 		if(P.use_tool(src, user, 20, volume=50))
-			to_chat(user, SPAN_NOTICE("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
+			to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
 			set_anchored(!anchored)
 	else if(P.is_screwdriver() && user.a_intent != INTENT_HELP)
-		to_chat(user, SPAN_NOTICE("You begin taking the [name] apart."))
+		to_chat(user, span_notice("You begin taking the [name] apart."))
 		playsound(src, P.tool_sound, 50, 1)
 		if(do_after(user, 10 * P.tool_speed))
 			playsound(loc, P.tool_sound, 50, 1)
@@ -55,12 +55,12 @@
 	else if(P.w_class < WEIGHT_CLASS_NORMAL)
 		if(!user.transfer_item_to_loc(P, src))
 			return
-		to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
+		to_chat(user, span_notice("You put [P] in [src]."))
 		icon_state = "[initial(icon_state)]-open"
 		sleep(0.5 SECONDS)
 		icon_state = initial(icon_state)
 	else if(user.a_intent == INTENT_HELP || (P.item_flags & ITEM_NO_BLUDGEON))
-		to_chat(user, SPAN_WARNING("You can't put [P] in [src]!"))
+		to_chat(user, span_warning("You can't put [P] in [src]!"))
 	else
 		return ..()
 
@@ -113,9 +113,9 @@
 			I.forceMove(loc)
 			if(prob(25))
 				step_rand(I)
-			to_chat(user, SPAN_NOTICE("You pull \a [I] out of [src] at random."))
+			to_chat(user, span_notice("You pull \a [I] out of [src] at random."))
 			return
-	to_chat(user, SPAN_NOTICE("You find nothing in [src]."))
+	to_chat(user, span_notice("You find nothing in [src]."))
 
 /*
  * Security Record Cabinets

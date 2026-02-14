@@ -84,7 +84,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug(SPAN_DEBUG("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed."))
+					log_debug(span_debug("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed."))
 
 			///// If user clicked on their grabbed target
 			else if((src == G.affecting) && (attacker.a_intent == INTENT_GRAB) && (attacker.zone_sel.selecting == BP_TORSO) && (is_vore_predator(G.affecting)))
@@ -95,7 +95,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug(SPAN_DEBUG("[attacker] attempted to feed [user] to [G.affecting] ([G.affecting.type]) but it failed."))
+					log_debug(span_debug("[attacker] attempted to feed [user] to [G.affecting] ([G.affecting.type]) but it failed."))
 
 			///// If user clicked on anyone else but their grabbed target
 			else if((src != G.affecting) && (src != G.assailant) && (is_vore_predator(src)))
@@ -113,7 +113,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug(SPAN_DEBUG("[attacker] attempted to feed [G.affecting] to [src] ([src.type]) but it failed."))
+					log_debug(span_debug("[attacker] attempted to feed [G.affecting] to [src] ([src.type]) but it failed."))
 
 	//Handle case: /obj/item/holder
 	else if(istype(I,/obj/item/holder))
@@ -129,7 +129,7 @@
 						H.held_mob = null
 			return TRUE //return TRUE to exit upper procs
 		else
-			log_debug(SPAN_DEBUG("[attacker] attempted to feed [H.contents] to [src] ([src.type]) but it failed."))
+			log_debug(span_debug("[attacker] attempted to feed [H.contents] to [src] ([src.type]) but it failed."))
 
 	//Handle case: /obj/item/radio/beacon
 	else if(istype(I,/obj/item/radio/beacon))
@@ -420,7 +420,7 @@
 		return
 	//Sanity
 	if(!user || !prey || !pred || !istype(belly) || !(belly in pred.vore_organs))
-		log_debug(SPAN_DEBUG("[user] attempted to feed [prey] to [pred], via [lowertext(belly.name)] but it went wrong."))
+		log_debug(span_debug("[user] attempted to feed [prey] to [pred], via [lowertext(belly.name)] but it went wrong."))
 		return
 
 	// The belly selected at the time of noms
@@ -436,11 +436,11 @@
 
 	// Prepare messages
 	if(user == pred) //Feeding someone to yourself
-		attempt_msg = SPAN_WARNING("[pred] is attempting to [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
-		success_msg = SPAN_WARNING("[pred] manages to [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
+		attempt_msg = span_warning("[pred] is attempting to [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
+		success_msg = span_warning("[pred] manages to [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
 	else //Feeding someone to another person
-		attempt_msg = SPAN_WARNING("[user] is attempting to make [pred] [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
-		success_msg = SPAN_WARNING("[user] manages to make [pred] [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
+		attempt_msg = span_warning("[user] is attempting to make [pred] [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
+		success_msg = span_warning("[user] manages to make [pred] [lowertext(belly.vore_verb)] [prey] into their [lowertext(belly.name)]!")
 
 	// Announce that we start the attempt!
 	user.visible_message(attempt_msg)

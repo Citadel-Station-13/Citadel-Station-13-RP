@@ -108,7 +108,7 @@
 
 	if(L.can_inject(user, 1, ignore_thickness = bypass_protection))
 		to_chat(user, "<span class='notice'>You inject [L] with the injector.</span>")
-		L.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
+		L.custom_pain(span_warning("You feel a tiny prick!"), 1, TRUE)
 
 		if(L.reagents)
 			var/t = min(amount_per_transfer_from_this, reagent_volumes[reagent_ids[mode]])

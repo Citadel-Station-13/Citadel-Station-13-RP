@@ -82,7 +82,7 @@
 	switch(var_name)
 		if(NAMEOF(src, inverted), NAMEOF(src, values))
 			if(!mass_edit)
-				to_chat(usr, SPAN_DANGER("VV: /datum/bodytypes cannot have its contents edited. Create a new one with a proccall, please!"))
+				to_chat(usr, span_danger("VV: /datum/bodytypes cannot have its contents edited. Create a new one with a proccall, please!"))
 			return FALSE
 	return ..()
 

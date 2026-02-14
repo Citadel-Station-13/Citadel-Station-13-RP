@@ -914,11 +914,11 @@
 	last_special = world.time + 50 //No spamming!
 
 	if(stat == DEAD || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
-		to_chat(src, SPAN_NOTICE("You cannot do that while in your current state."))
+		to_chat(src, span_notice("You cannot do that while in your current state."))
 		return
 
 	if(!(src.vore_selected))
-		to_chat(src, SPAN_NOTICE("No selected belly found."))
+		to_chat(src, span_notice("No selected belly found."))
 		return
 
 
@@ -937,7 +937,7 @@
 					targets += L
 
 	if(!(targets.len))
-		to_chat(src, SPAN_NOTICE("No eligible targets found."))
+		to_chat(src, span_notice("No eligible targets found."))
 		return
 
 	var/mob/living/target = tgui_input_list(src, "Please select a target.", "Victim", targets)
@@ -945,17 +945,17 @@
 	if(!target)
 		return
 
-	to_chat(target, SPAN_CRITICAL("Something begins to circle around you in the water!")) //Dun dun...
+	to_chat(target, span_critical("Something begins to circle around you in the water!")) //Dun dun...
 	var/starting_loc = target.loc
 
 	if(do_after(src, 50))
 		if(target.loc != starting_loc)
-			to_chat(target, SPAN_WARNING("You got away from whatever that was..."))
-			to_chat(src, SPAN_NOTICE("They got away."))
+			to_chat(target, span_warning("You got away from whatever that was..."))
+			to_chat(src, span_notice("They got away."))
 			return
 		if(target.buckled) //how are you buckled in the water?!
 			target.buckled.unbuckle_mob()
-		target.visible_message(SPAN_WARNING("\The [target] suddenly disappears, being dragged into the water!"),\
-			SPAN_DANGER("You are dragged below the water and feel yourself slipping directly into \the [src]'s [lowertext(vore_selected)]!"))
-		to_chat(src, SPAN_NOTICE("You successfully drag \the [target] into the water, slipping them into your [lowertext(vore_selected)]."))
+		target.visible_message(span_warning("\The [target] suddenly disappears, being dragged into the water!"),\
+			span_danger("You are dragged below the water and feel yourself slipping directly into \the [src]'s [lowertext(vore_selected)]!"))
+		to_chat(src, span_notice("You successfully drag \the [target] into the water, slipping them into your [lowertext(vore_selected)]."))
 		target.forceMove(src.vore_selected)

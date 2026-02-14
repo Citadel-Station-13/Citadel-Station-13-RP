@@ -46,9 +46,9 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 		return
 	e_args.visible_feedback(
 		target = src,
-		visible = SPAN_NOTICE("[e_args.performer] reprograms the network on [src]."),
+		visible = span_notice("[e_args.performer] reprograms the network on [src]."),
 		range = MESSAGE_RANGE_CONFIGURATION,
-		otherwise_self = SPAN_NOTICE("You reprogram the network on [src]."),
+		otherwise_self = span_notice("You reprogram the network on [src]."),
 	)
 	change_network(new_network)
 
@@ -64,10 +64,10 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 		var/mob/living/carbon/human/H = user
 		if(istype(H.species, /datum/species/xenos))
 			if(!network_key)
-				to_chat(H, SPAN_WARNING("[src] is already de-programmed."))
+				to_chat(H, span_warning("[src] is already de-programmed."))
 			else
 				change_network(null)
-				H.visible_message(SPAN_WARNING("[H] violently tears apart [src]'s wires."))
+				H.visible_message(span_warning("[H] violently tears apart [src]'s wires."))
 			return
 	return ..()
 

@@ -134,7 +134,7 @@
 	if(try_load_materials(user, W))
 		return
 	else
-		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
+		to_chat(user, span_notice("You cannot insert this item into \the [src]!"))
 		return
 
 /obj/machinery/atmospherics/component/binary/algae_farm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)

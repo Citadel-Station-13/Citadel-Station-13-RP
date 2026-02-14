@@ -74,7 +74,7 @@
 					inflict_atom_damage(40, damage_flag = ARMOR_MELEE)
 					if(QDELETED(src))
 						// got broken
-						visible_message(SPAN_DANGER("[src] shatters under the impact!"))
+						visible_message(span_danger("[src] shatters under the impact!"))
 						var/limit = 3
 						for(var/obj/item/material/shard/S in old_loc)
 							if(prob(50))

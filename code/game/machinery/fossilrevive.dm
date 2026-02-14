@@ -20,16 +20,16 @@
 	if(!istype(using, /obj/item/fossil))
 		return
 	if(reviving)
-		to_chat(clickchain.performer, SPAN_NOTICE("The machine is processing!"))
+		to_chat(clickchain.performer, span_notice("The machine is processing!"))
 		return CLICKCHAIN_DID_SOMETHING
 	var/obj/item/fossil/mosquito = using
 	if(mosquito.processable == "seed")
 		addtimer(CALLBACK(src, PROC_REF(findsaway), "seed"), 100)
-		to_chat(clickchain.performer, SPAN_NOTICE("[src] begins processing [mosquito]."))
+		to_chat(clickchain.performer, span_notice("[src] begins processing [mosquito]."))
 		reviving = TRUE
 		mosquito.processable = FALSE
 	else
-		to_chat(clickchain.performer, SPAN_WARNING("That fossil has either already been processed, or does not contain valid genetic material."))
+		to_chat(clickchain.performer, span_warning("That fossil has either already been processed, or does not contain valid genetic material."))
 	return CLICKCHAIN_DID_SOMETHING
 
 /obj/machinery/fossilrevive/proc/findsaway(generatetype)
@@ -38,6 +38,6 @@
 		flick("pod_g", src)
 		new /obj/item/seeds/random(droploc)
 		visible_message( \
-			SPAN_NOTICE("The [src] shudders and spits out a seed!"), \
-			SPAN_NOTICE("You hear a whirr."))
+			span_notice("The [src] shudders and spits out a seed!"), \
+			span_notice("You hear a whirr."))
 		reviving = FALSE

@@ -95,7 +95,7 @@ GLOBAL_PROTECT(AdminProcCallHandler)
 				return
 			target = value["value"]
 			if(!istype(target))
-				to_chat(usr, SPAN_DANGER("Invalid target."), confidential = TRUE)
+				to_chat(usr, span_danger("Invalid target."), confidential = TRUE)
 				return
 		if("No")
 			target = null
@@ -115,12 +115,12 @@ GLOBAL_PROTECT(AdminProcCallHandler)
 
 	if(targetselected)
 		if(!hascall(target, procname))
-			to_chat(usr, SPAN_WARNING("Error: callproc(): type [target.type] has no [proctype] named [procpath]."), confidential = TRUE)
+			to_chat(usr, span_warning("Error: callproc(): type [target.type] has no [proctype] named [procpath]."), confidential = TRUE)
 			return
 	else
 		procpath = "/[proctype]/[procname]"
 		if(!text2path(procpath))
-			to_chat(usr, SPAN_WARNING("Error: callproc(): [procpath] does not exist."), confidential = TRUE)
+			to_chat(usr, span_warning("Error: callproc(): [procpath] does not exist."), confidential = TRUE)
 			return
 
 	var/list/lst = get_callproc_args()
@@ -181,7 +181,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 		CRASH("WrapAdminProcCall with no ckey: [target] [procname] [english_list(arguments)]")
 
 	if(!is_remote_handler && current_caller && current_caller != user_identifier)
-		to_chat(usr, SPAN_ADMINNOTICE("Another set of admin called procs are still running. Try again later."), confidential = TRUE)
+		to_chat(usr, span_adminnotice("Another set of admin called procs are still running. Try again later."), confidential = TRUE)
 		return
 
 	GLOB.LastAdminCalledProc = procname
@@ -233,7 +233,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 		return
 
 	if(!thing || !is_valid_src(thing))
-		to_chat(usr, SPAN_WARNING("Error: callproc_datum(): owner of proc no longer exists."), confidential = TRUE)
+		to_chat(usr, span_warning("Error: callproc_datum(): owner of proc no longer exists."), confidential = TRUE)
 		return
 	log_admin("[key_name(usr)] called [thing]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
 	var/msg = "[key_name(usr)] called [thing]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."

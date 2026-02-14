@@ -120,7 +120,7 @@
 	if(ishuman(AM))
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] Squeek!"))
+			M.visible_message(span_notice("[icon2html(thing = src, target = world)] Squeek!"))
 			playsound(src, 'sound/effects/mouse_squeak.ogg', 35, 1)
 	..()
 
@@ -412,7 +412,7 @@
 		if(isliving(A))
 			var/mob/living/L = A
 			L.afflict_paralyze(20 * stealthed_weaken_amount)
-			to_chat(L, SPAN_DANGER("\The [src] ambushes you!"))
+			to_chat(L, span_danger("\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()
 	..() // For the poison.

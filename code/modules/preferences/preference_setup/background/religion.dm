@@ -41,7 +41,7 @@
 			if(!id)
 				return
 			if(!O.check_species_id(prefs.character_species_id()))
-				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this religion."))
+				to_chat(user, span_warning("[prefs.character_species_name()] cannot pick this religion."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
 			prefs.sanitize_background_lore()	// update
@@ -50,7 +50,7 @@
 			var/cat = params["category"]
 			var/list/datum/lore/character_background/religion/religions = SScharacters.available_religions(prefs.character_species_id(), cat)
 			if(!length(religions))
-				to_chat(user, SPAN_WARNING("No religions in that category have been found; this might be an error."))
+				to_chat(user, span_warning("No religions in that category have been found; this might be an error."))
 				return PREFERENCES_NOACTION
 			var/datum/lore/character_background/religion/first = religions[1]
 			write(prefs, first.id)

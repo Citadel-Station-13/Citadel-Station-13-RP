@@ -44,7 +44,7 @@
 
 /obj/machinery/lathe/mecha_part_fabricator/examine(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("<b>Alt-click</b> to synchronize research data with a local computer.")
+	. += span_notice("<b>Alt-click</b> to synchronize research data with a local computer.")
 
 /obj/machinery/lathe/mecha_part_fabricator/AltClick(mob/user)
 	..() //comsig

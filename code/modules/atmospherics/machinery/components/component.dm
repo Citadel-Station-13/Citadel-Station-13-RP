@@ -113,7 +113,7 @@
 /obj/machinery/atmospherics/component/interact(mob/user)
 	// todo: interact needs a refactor; doing it like this stops fingerprints from applying.
 	if(!allowed(user))
-		user.action_feedback(SPAN_WARNING("Access denied."), src)
+		user.action_feedback(span_warning("Access denied."), src)
 		return FALSE
 	if(!default_access_interface)
 		return FALSE
@@ -138,13 +138,13 @@
 	if(isnull(default_multitool_hijack))
 		return FALSE
 	if(hijack_require_exposed && is_hidden_underfloor())
-		e_args.chat_feedback(SPAN_WARNING("You can't reach the controls of [src] while it's covered by flooring."), src)
+		e_args.chat_feedback(span_warning("You can't reach the controls of [src] while it's covered by flooring."), src)
 		return TRUE
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONFIGURATION,
-		visible = SPAN_WARNING("[e_args.performer] starts tinkering with [src] using their [I]!"),
-		otherwise_self = SPAN_WARNING("You start tinkering with [src] using your [I]..."),
+		visible = span_warning("[e_args.performer] starts tinkering with [src] using their [I]!"),
+		otherwise_self = span_warning("You start tinkering with [src] using your [I]..."),
 	)
 	if(!do_after(
 		e_args.performer,

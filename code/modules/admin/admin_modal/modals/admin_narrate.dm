@@ -279,7 +279,7 @@
 		view_target_to_list += "[key_name(viewing)]"
 	tim_sort(view_target_to_list, /proc/cmp_text_asc)
 	var/view_target_list = jointext(view_target_to_list, ", ")
-	message_admins("[key_name(owner.owner.mob)] sent a [SPAN_TOOLTIP("[html_encode(emit)]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
+	message_admins("[key_name(owner.owner.mob)] sent a [span_tooltip("[html_encode(emit)]", "global narrate")] to [span_tooltip("[view_target_list]", "[length(targets)] target(s)")].")
 	log_admin("[key_name(owner.owner.mob)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
 
 	for(var/mob/viewing in targets)
@@ -331,7 +331,7 @@
 				"<hr>",
 				SPAN_BLOCKQUOTE(emit, null),
 				"<hr>",
-				"<center>[SPAN_ADMIN("^^^ Narrate Preview; [length(rendered_viewers) ? SPAN_TOOLTIP(rendered_viewers, "Viewers..."): "No Viewers!"] ^^^")]</center>",
+				"<center>[span_admin("^^^ Narrate Preview; [length(rendered_viewers) ? span_tooltip(rendered_viewers, "Viewers..."): "No Viewers!"] ^^^")]</center>",
 			)
 			to_chat(owner.owner, jointext(html, ""))
 			return TRUE

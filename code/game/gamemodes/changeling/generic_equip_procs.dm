@@ -17,9 +17,9 @@
 	//First, check if we're already wearing the armor, and if so, take it off.
 	if(istype(M.wear_suit, armor_type) || istype(M.head, helmet_type) || istype(M.shoes, boot_type))
 		M.visible_message(
-			SPAN_WARNING("[M] casts off their [M.wear_suit.name]!"),
-			SPAN_WARNING("We cast off our [M.wear_suit.name]"),
-			SPAN_HEAR("You hear the organic matter ripping and tearing!"),
+			span_warning("[M] casts off their [M.wear_suit.name]!"),
+			span_warning("We cast off our [M.wear_suit.name]"),
+			span_hear("You hear the organic matter ripping and tearing!"),
 		)
 		if(istype(M.wear_suit, armor_type))
 			qdel(M.wear_suit)
@@ -34,7 +34,7 @@
 		return 1
 
 	if(M.head || M.wear_suit) //Make sure our slots aren't full
-		to_chat(src, SPAN_WARNING("We require nothing to be on our head, and we cannot wear any external suits, or shoes."))
+		to_chat(src, span_warning("We require nothing to be on our head, and we cannot wear any external suits, or shoes."))
 		return 0
 
 	var/obj/item/clothing/suit/A = new armor_type(src)
@@ -123,16 +123,16 @@
 		if(success)
 			playsound(src, 'sound/effects/splat.ogg', 30, 1)
 			visible_message(
-				SPAN_WARNING("[src] pulls on their clothes, peeling it off along with parts of their skin attached!"),
-				SPAN_NOTICE("We remove and deform our equipment."),
-				SPAN_HEAR("You hear the horrible sound of ripping skin."),
+				span_warning("[src] pulls on their clothes, peeling it off along with parts of their skin attached!"),
+				span_notice("We remove and deform our equipment."),
+				span_hear("You hear the horrible sound of ripping skin."),
 			)
 		M.mind.changeling.armor_deployed = 0
 		return success
 
 	else
 
-		to_chat(M, SPAN_NOTICE("We begin growing our new equipment..."))
+		to_chat(M, span_notice("We begin growing our new equipment..."))
 		playsound(src, 'sound/effects/blobattack.ogg', 30, TRUE)
 
 		var/list/grown_items_list = list()
@@ -225,7 +225,7 @@
 
 		var/feedback = english_list(grown_items_list, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 
-		to_chat(M, SPAN_NOTICE("We have grown [feedback]."))
+		to_chat(M, span_notice("We have grown [feedback]."))
 
 		if(success)
 			M.mind.changeling.armor_deployed = 1
@@ -244,7 +244,7 @@
 	var/mob/living/carbon/human/M = src
 
 	if(M.are_usable_hands_full()) //Make sure our hands aren't full.
-		to_chat(src, SPAN_WARNING("Our hands are full.  Drop something first."))
+		to_chat(src, span_warning("Our hands are full.  Drop something first."))
 		return 0
 
 	var/obj/item/W = new weapon_type(src)

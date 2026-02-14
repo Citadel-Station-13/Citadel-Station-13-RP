@@ -46,7 +46,7 @@
 	if(istype(Item))
 		Item.forceMove(user.loc)
 		user.put_in_hands(Item)
-		to_chat(user, SPAN_NOTICE("You remove [Item] from [src]."))
+		to_chat(user, span_notice("You remove [Item] from [src]."))
 		update_icon()
 
 /obj/item/folder/update_overlays()
@@ -59,7 +59,7 @@
 		//Add paper, photo or documents into the folder
 		if(!user.transfer_item_to_loc(weapon, src))
 			return
-		to_chat(user, SPAN_NOTICE("You put [weapon] into [src]."))
+		to_chat(user, span_notice("You put [weapon] into [src]."))
 		update_appearance()
 	else if(istype(weapon, /obj/item/pen))
 		rename(user, weapon)

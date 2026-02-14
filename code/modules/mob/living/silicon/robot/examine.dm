@@ -11,32 +11,32 @@
 	// 	. += effects_exam
 	if (getBruteLoss())
 		if (getBruteLoss() < maxHealth*0.5)
-			. += SPAN_WARNING("It looks slightly dented.")
+			. += span_warning("It looks slightly dented.")
 		else
-			. += SPAN_DANGER("It looks severely dented!")
+			. += span_danger("It looks severely dented!")
 	if (getFireLoss() || getToxLoss())
 		var/overall_fireloss = getFireLoss() + getToxLoss()
 		if (overall_fireloss < maxHealth * 0.5)
-			. += SPAN_WARNING("It looks slightly charred.")
+			. += span_warning("It looks slightly charred.")
 		else
-			. += SPAN_DANGER("It looks severely burnt and heat-warped!")
+			. += span_danger("It looks severely burnt and heat-warped!")
 	if (health < -maxHealth*0.5)
-		. += SPAN_WARNING("It looks barely operational.")
+		. += span_warning("It looks barely operational.")
 	if (fire_stacks < 0)
-		. += SPAN_WARNING("It's covered in water.")
+		. += span_warning("It's covered in water.")
 	else if (fire_stacks > 0)
-		. += SPAN_WARNING("It's coated in something flammable.")
+		. += span_warning("It's coated in something flammable.")
 
 	if(opened)
-		. += SPAN_WARNING("Its cover is open and the power cell is [cell ? "installed" : "missing"].")
+		. += span_warning("Its cover is open and the power cell is [cell ? "installed" : "missing"].")
 	else
 		. += "Its cover is closed[locked ? "" : ", and looks unlocked"]."
 
 	if(cell && cell.charge <= 0)
-		. += SPAN_WARNING("Its battery indicator is blinking red!")
+		. += span_warning("Its battery indicator is blinking red!")
 
 	// if(is_servant_of_ratvar(src) && get_dist(user, src) <= 1 && !stat) //To counter pseudo-stealth by using headlamps
-	// 	. += SPAN_WARNING("Its eyes are glowing a blazing yellow!")
+	// 	. += span_warning("Its eyes are glowing a blazing yellow!")
 
 	switch(stat)
 		if(CONSCIOUS)
@@ -45,9 +45,9 @@
 			else if(!client)
 				. += "It appears to be in stand-by mode." //afk
 		if(UNCONSCIOUS)
-			. += SPAN_WARNING("It doesn't seem to be responding.")
+			. += span_warning("It doesn't seem to be responding.")
 		if(DEAD)
-			. += SPAN_DEADSAY("It looks like its system is corrupted and requires a reset.")
+			. += span_deadsay("It looks like its system is corrupted and requires a reset.")
 
 	var/message = ""
 	for(var/belly in vore_organs)
@@ -56,11 +56,11 @@
 	. += message
 
 	if(ckey) //ckey so non-controlled mobs don't display it.
-		. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
+		. += span_boldnotice("<a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a>")
 
 	if(print_flavor_text())
 		. += "\n[print_flavor_text()]\n"
-	. += SPAN_BOLDNOTICE("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
+	. += span_boldnotice("Character Profile: <a href='?src=\ref[src];character_profile=1'>\[View\]</a>")
 
 	if(pose)
 		if(findtext(pose, ".", length(pose)) == 0 && findtext(pose, "!", length(pose)) == 0 && findtext(pose, "?", length(pose)) == 0)

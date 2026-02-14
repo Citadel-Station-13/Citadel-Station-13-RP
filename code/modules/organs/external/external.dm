@@ -545,22 +545,22 @@
 			return FALSE
 
 	if(!damage_amount)
-		to_chat(user, SPAN_NOTICE("Nothing to fix!"))
+		to_chat(user, span_notice("Nothing to fix!"))
 		return FALSE
 
 	// Makes robotic limb damage scalable.
 	if(brute_dam + burn_dam >= min_broken_damage)
-		to_chat(user, SPAN_DANGER("The damage is far too severe to patch over externally."))
+		to_chat(user, span_danger("The damage is far too severe to patch over externally."))
 		return FALSE
 
 	if(user == src.owner)
 		if(owner.get_hand_organ(owner.get_held_index(tool)) == src)
-			to_chat(user, SPAN_WARNING("You can't reach your [src] while holding [tool] in the same hand!"))
+			to_chat(user, span_warning("You can't reach your [src] while holding [tool] in the same hand!"))
 			return FALSE
 
 	user.setClickCooldownLegacy(user.get_attack_speed_legacy(tool))
 	if(!do_mob(user, owner, 10))
-		to_chat(user, SPAN_WARNING("You must stand still to do that."))
+		to_chat(user, span_warning("You must stand still to do that."))
 		return FALSE
 
 	switch(damage_type)
@@ -574,9 +574,9 @@
 	if(damage_desc)
 		if(user == src.owner)
 			var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
-			user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [T.his] [src.name] with [tool]."))
+			user.visible_message(span_notice("\The [user] patches [damage_desc] on [T.his] [src.name] with [tool]."))
 		else
-			user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [owner]'s [src.name] with [tool]."))
+			user.visible_message(span_notice("\The [user] patches [damage_desc] on [owner]'s [src.name] with [tool]."))
 
 	return TRUE
 

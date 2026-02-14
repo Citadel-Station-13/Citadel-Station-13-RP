@@ -117,11 +117,11 @@
 	var/obj/item/equipped = item_by_slot_id(slot_like.id)
 	if(isnull(equipped))
 		if(!silent)
-			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_preposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
+			to_chat(initiator, span_warning("There is nothing worn [slot_like.display_preposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
 		return FALSE
 	if(!equipped.obj_storage)
 		if(!silent)
-			to_chat(initiator, SPAN_WARNING("[equipped] doesn't have accessible storage."))
+			to_chat(initiator, span_warning("[equipped] doesn't have accessible storage."))
 		return FALSE
 	if(!equipped.obj_storage.auto_handle_interacted_insertion(inserting, new /datum/event_args/actor(src, initiator), silent))
 		return FALSE
@@ -135,11 +135,11 @@
 	var/obj/item/equipped = item_by_slot_id(slot_like.id)
 	if(isnull(equipped))
 		if(!silent)
-			to_chat(initiator, SPAN_WARNING("There is nothing worn [slot_like.display_preposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
+			to_chat(initiator, span_warning("There is nothing worn [slot_like.display_preposition] [initiator == src? "your" : "their"] [slot_like.display_name]."))
 		return FALSE
 	if(isnull(equipped.obj_storage))
 		if(!silent)
-			to_chat(initiator, SPAN_WARNING("[equipped] doesn't have accessible storage."))
+			to_chat(initiator, span_warning("[equipped] doesn't have accessible storage."))
 			return FALSE
 	return attempt_grab_item_out_of_storage(equipped, silent, initiator)
 
@@ -149,14 +149,14 @@
 /mob/proc/attempt_grab_item_out_of_storage(obj/storage, silent, mob/initiator = src)
 	if(get_active_held_item())
 		if(!silent)
-			to_chat(initiator, SPAN_WARNING("[initiator == src? "You" : "They"] already have something held in [initiator == src? "your" : "their"] hand."))
+			to_chat(initiator, span_warning("[initiator == src? "You" : "They"] already have something held in [initiator == src? "your" : "their"] hand."))
 		return FALSE
 	if(isnull(storage.obj_storage))
 		return FALSE
 	var/obj/item/removing = storage.obj_storage.top_entity_in_contents()
 	if(isnull(removing))
 		if(!silent)
-			to_chat(initiator, SPAN_WARNING("[initiator == src? "Your" : "Their"] [storage] is empty!"))
+			to_chat(initiator, span_warning("[initiator == src? "Your" : "Their"] [storage] is empty!"))
 		return FALSE
 	var/datum/event_args/actor/actor = new(src, initiator)
 	if(storage.obj_storage.check_on_found_hooks(actor))
@@ -174,17 +174,17 @@
 	if(isnull(in_slot) || isnull(in_slot.obj_storage))
 		if(isnull(holding))
 			if(isnull(in_slot))
-				to_chat(initiator, SPAN_WARNING("[initiator == src? "You" : "They"] have nothing held in [slot_like.display_name]!"))
+				to_chat(initiator, span_warning("[initiator == src? "You" : "They"] have nothing held in [slot_like.display_name]!"))
 				return FALSE
 			if(put_in_active_hand(in_slot))
-				to_chat(initiator, SPAN_NOTICE("You draw [in_slot] from your [slot_like.display_name]."))
+				to_chat(initiator, span_notice("You draw [in_slot] from your [slot_like.display_name]."))
 				return TRUE
 			else
-				to_chat(initiator, SPAN_WARNING("You fail to draw [in_slot] from your [slot_like.display_name]!"))
+				to_chat(initiator, span_warning("You fail to draw [in_slot] from your [slot_like.display_name]!"))
 				return FALSE
 		else
 			if(equip_to_slot_if_possible(holding, slot_like, user = initiator))
-				to_chat(initiator, SPAN_NOTICE("You tuck [holding] away [slot_like.display_preposition] your [slot_like.display_name]."))
+				to_chat(initiator, span_notice("You tuck [holding] away [slot_like.display_preposition] your [slot_like.display_name]."))
 				return TRUE
 			else
 				return FALSE

@@ -104,13 +104,13 @@
 
 /obj/structure/aquarium/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("Alt-click to [panel_open ? "close" : "open"] the control panel.")
+	. += span_notice("Alt-click to [panel_open ? "close" : "open"] the control panel.")
 
 /obj/structure/aquarium/AltClick(mob/user)
 	if(!user.Reachability(src))
 		return ..()
 	if(user.incapacitated(INCAPACITATION_KNOCKDOWN))
-		user.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+		user.action_feedback(span_warning("You can't do that right now!"), src)
 		return TRUE
 	panel_open = !panel_open
 	update_appearance()
@@ -130,9 +130,9 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[e_args.performer] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."),
-			audible = SPAN_WARNING("You hear bolts being [anchored? "fastened" : "unfastened"]"),
-			otherwise_self = SPAN_NOTICE("You [anchored? "fasten" : "unfasten"] [src]."),
+			visible = span_notice("[e_args.performer] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."),
+			audible = span_warning("You hear bolts being [anchored? "fastened" : "unfastened"]"),
+			otherwise_self = span_notice("You [anchored? "fasten" : "unfasten"] [src]."),
 		)
 		return TRUE
 	return ..()
@@ -143,9 +143,9 @@
 		var/obj/item/stack/material/glass/glass = I
 		if(istype(glass))
 			if(glass.get_amount() < 2)
-				to_chat(user, SPAN_WARNING("You need two glass sheets to fix the case!"))
+				to_chat(user, span_warning("You need two glass sheets to fix the case!"))
 				return
-			user.action_feedback(SPAN_NOTICE("You start fixing [src]..."), src)
+			user.action_feedback(span_notice("You start fixing [src]..."), src)
 			if(do_after(user, 2 SECONDS, target = src))
 				glass.use(2)
 				heal_integrity(integrity_max)
@@ -153,7 +153,7 @@
 			return CLICKCHAIN_DID_SOMETHING
 	else
 		if(istype(I, /obj/item/fish_feed))
-			user.action_feedback(SPAN_NOTICE("You feed the fish."), src)
+			user.action_feedback(span_notice("You feed the fish."), src)
 			for(var/obj/item/fish/fish in src)
 				fish.on_feeding(I.reagents)
 			return CLICKCHAIN_DID_SOMETHING
@@ -181,12 +181,12 @@
 		return
 	var/mob/living/living_pulled = user.pulling
 	if(living_pulled.buckled || living_pulled.has_buckled_mobs())
-		user.action_feedback(SPAN_WARNING("[living_pulled] is attached to something!"))
+		user.action_feedback(span_warning("[living_pulled] is attached to something!"))
 		return
 	user.visible_action_feedback(
 		target = src,
-		visible_hard = SPAN_WARNING("[user] starts to put [living_pulled] into [src]!"),
-		visible_soft = SPAN_WARNING("[user] starts to put something into [src]!")
+		visible_hard = span_warning("[user] starts to put [living_pulled] into [src]!"),
+		visible_soft = span_warning("[user] starts to put something into [src]!")
 	)
 	if(!do_after(user, 10 SECONDS, target = src))
 		return
@@ -197,15 +197,15 @@
 		return
 	user.visible_action_feedback(
 		target = src,
-		visible_hard = SPAN_WARNING("[user] stuffs [living_pulled] into [src]!"),
-		visible_soft = SPAN_WARNING("[user] stuffs something into [src]!"),
+		visible_hard = span_warning("[user] stuffs [living_pulled] into [src]!"),
+		visible_soft = span_warning("[user] stuffs something into [src]!"),
 	)
 	living_pulled.forceMove(src)
 	update_appearance()
 
 ///Apply mood bonus depending on aquarium status
 /obj/structure/aquarium/proc/admire(mob/living/user)
-	to_chat(user, SPAN_NOTICE("You take a moment to watch [src]."))
+	to_chat(user, span_notice("You take a moment to watch [src]."))
 	if(do_after(user, 2 SECONDS, target = src))
 		var/alive_fish = 0
 		var/dead_fish = 0
@@ -215,9 +215,9 @@
 			else
 				dead_fish++
 		if(alive_fish > 0)
-			to_chat(user, SPAN_NOTICE("Aww! There's living fish!"))
+			to_chat(user, span_notice("Aww! There's living fish!"))
 		else if(dead_fish > 0)
-			to_chat(user, SPAN_WARNING("The fish are all dead!"))
+			to_chat(user, span_warning("The fish are all dead!"))
 
 /obj/structure/aquarium/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -262,7 +262,7 @@
 					user.put_in_hands_or_drop(inside)
 				else
 					inside.forceMove(get_turf(src))
-				user.action_feedback(SPAN_NOTICE("You take out [inside] from [src]."), src)
+				user.action_feedback(span_notice("You take out [inside] from [src]."), src)
 
 /obj/structure/aquarium/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	. = ..()

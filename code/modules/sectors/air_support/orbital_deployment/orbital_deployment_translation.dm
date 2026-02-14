@@ -166,7 +166,7 @@
 	to_notify_mobs -= to_damage_mobs
 
 	for(var/mob/notifying in to_notify_mobs)
-		to_chat(notifying, SPAN_DANGER("You feel the ground lurch beneath you as a massive structure lands from orbit!"))
+		to_chat(notifying, span_danger("You feel the ground lurch beneath you as a massive structure lands from orbit!"))
 		shake_camera(notifying, 2 SECONDS, 0.5)
 
 	// turfs that shouldn't be there result in a small explosion

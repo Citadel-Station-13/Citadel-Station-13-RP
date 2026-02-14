@@ -47,12 +47,12 @@
 
 			// This is not a status display message, since it's something the character
 			// themselves is meant to see BEFORE putting the money in
-			to_chat(usr, "[icon2base64(cashmoney)] [SPAN_WARNING("That is not enough money.")]")
+			to_chat(usr, "[icon2base64(cashmoney)] [span_warning("That is not enough money.")]")
 			return FALSE
 
 		if(istype(cashmoney, /obj/item/spacecash))
 
-			visible_message(SPAN_INFO("\The [usr] inserts some cash into \the [src]."))
+			visible_message(span_info("\The [usr] inserts some cash into \the [src]."))
 			cashmoney.worth -= gameprice
 
 			if(cashmoney.worth <= 0)
@@ -66,16 +66,16 @@
 
 	if(emagged)
 		playsound(src, 'sound/arcade/steal.ogg', 50, TRUE, extrarange = -3, falloff = 0.1, ignore_walls = FALSE)
-		to_chat(user, SPAN_INFO("It doesn't seem to accept that! Seem you'll need to swipe a valid ID."))
+		to_chat(user, span_info("It doesn't seem to accept that! Seem you'll need to swipe a valid ID."))
 
 
 ///// Ewallet
 /obj/machinery/computer/arcade/clawmachine/proc/pay_with_ewallet(obj/item/spacecash/ewallet/wallet)
 	if(!emagged)
-		visible_message(SPAN_INFO("\The [usr] swipes \the [wallet] through \the [src]."))
+		visible_message(span_info("\The [usr] swipes \the [wallet] through \the [src]."))
 		playsound(src, 'sound/machines/id_swipe.ogg', 50, TRUE)
 		if(gameprice > wallet.worth)
-			visible_message(SPAN_INFO("Insufficient funds."))
+			visible_message(span_info("Insufficient funds."))
 			return FALSE
 		else
 			wallet.worth -= gameprice
@@ -84,22 +84,22 @@
 
 	if(emagged)
 		playsound(src, 'sound/arcade/steal.ogg', 50, TRUE, extrarange = -3, falloff = 0.1, ignore_walls = FALSE)
-		to_chat(usr, SPAN_INFO("It doesn't seem to accept that! Seem you'll need to swipe a valid ID."))
+		to_chat(usr, span_info("It doesn't seem to accept that! Seem you'll need to swipe a valid ID."))
 
 ///// ID
 /obj/machinery/computer/arcade/clawmachine/proc/pay_with_card(obj/item/card/id/I, obj/item/ID_container)
 	if(I==ID_container || ID_container == null)
-		visible_message(SPAN_INFO("\The [usr] swipes \the [I] through \the [src]."))
+		visible_message(span_info("\The [usr] swipes \the [I] through \the [src]."))
 	else
-		visible_message(SPAN_INFO("\The [usr] swipes \the [ID_container] through \the [src]."))
+		visible_message(span_info("\The [usr] swipes \the [ID_container] through \the [src]."))
 	playsound(src, 'sound/machines/id_swipe.ogg', 50, 1)
 	var/datum/money_account/customer_account = get_account(I.associated_account_number)
 	if(!customer_account)
-		visible_message(SPAN_WARNING("Error: Unable to access account. Please contact technical support if problem persists."))
+		visible_message(span_warning("Error: Unable to access account. Please contact technical support if problem persists."))
 		return FALSE
 
 	if(customer_account.suspended)
-		visible_message(SPAN_BOLDWARNING("Unable to access account: account suspended."))
+		visible_message(span_boldwarning("Unable to access account: account suspended."))
 		return FALSE
 
 	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
@@ -109,11 +109,11 @@
 		customer_account = attempt_account_access(I.associated_account_number, attempt_pin, 2)
 
 		if(!customer_account)
-			visible_message(SPAN_WARNING("Unable to access account: incorrect credentials."))
+			visible_message(span_warning("Unable to access account: incorrect credentials."))
 			return FALSE
 
 	if(gameprice > customer_account.money)
-		visible_message(SPAN_WARNING("Insufficient funds in account."))
+		visible_message(span_warning("Insufficient funds in account."))
 		return FALSE
 	else
 		// Okay to move the money at this point
@@ -236,7 +236,7 @@
 
 /obj/machinery/computer/arcade/clawmachine/emag_act(mob/user)
 	if(!emagged)
-		to_chat(user, SPAN_NOTICE("You modify the claw of the machine. The next one is sure to win! You just have to pay..."))
+		to_chat(user, span_notice("You modify the claw of the machine. The next one is sure to win! You just have to pay..."))
 		name = "AlliCo Snag-A-Prize"
 		desc = "Get some goodies, all for you!"
 		instructions = "Swipe a card to play!"

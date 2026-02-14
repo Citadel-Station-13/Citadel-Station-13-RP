@@ -88,7 +88,7 @@
 	spawn(delay)
 		// The actual boom.
 		if(src && !exploded)
-			visible_message(SPAN_COLOSSUS("\The [src] violently explodes in a flash of blinding energy!"))
+			visible_message(span_colossus("\The [src] violently explodes in a flash of blinding energy!"))
 			exploded = TRUE
 			explosion(src.loc, explosion_dev_range, explosion_heavy_range, explosion_light_range, explosion_flash_range)
 
@@ -104,7 +104,7 @@
 	return ..()
 
 /mob/living/simple_mob/mechanical/derelict/broodmother/death()
-    visible_message(SPAN_COLOSSUS("\The [src] emits a agonized shriek as its reactor begins to overload! GET BACK!"))
+    visible_message(span_colossus("\The [src] emits a agonized shriek as its reactor begins to overload! GET BACK!"))
     baneling()
 
 /mob/living/simple_mob/mechanical/derelict/broodmother/Process_Spacemove(var/check_drift = 0)

@@ -137,7 +137,7 @@
 			color_to_use = color_matrix_hsv(build_hue, build_sat, build_val)
 			color_matrix_last = color_to_use
 	if(!color_to_use)
-		to_chat(user, SPAN_NOTICE("Invalid color."))
+		to_chat(user, span_notice("Invalid color."))
 		return FALSE
 	var/atom/movable/color_target = get_color_target()
 	color_target.add_atom_color(color_to_use)

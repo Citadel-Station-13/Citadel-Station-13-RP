@@ -81,7 +81,7 @@
  */
 /datum/tgui_panel/proc/on_initialize_timed_out()
 	// Currently does nothing but sending a message to old chat.
-	SEND_TEXT(client, SPAN_USERDANGER("Failed to load fancy chat, click <a href='byond://?src=[REF(src)];reload_tguipanel=1'>HERE</a> to attempt to reload it."))
+	SEND_TEXT(client, span_userdanger("Failed to load fancy chat, click <a href='byond://?src=[REF(src)];reload_tguipanel=1'>HERE</a> to attempt to reload it."))
 
 /**
  * private
@@ -112,7 +112,7 @@
 
 	if(type == "audio/protected")
 		if(!admins_warned)
-			message_admins(SPAN_NOTICE("Audio returned a protected playback error, likely due to being copyrighted."))
+			message_admins(span_notice("Audio returned a protected playback error, likely due to being copyrighted."))
 			admins_warned = TRUE
 			addtimer(VARSET_CALLBACK(src, admins_warned, FALSE), 10 SECONDS)
 		return TRUE

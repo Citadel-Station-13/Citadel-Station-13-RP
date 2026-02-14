@@ -31,7 +31,7 @@
 			inserted_battery = I
 			SStgui.update_uis(src)
 		else
-			to_chat(user, SPAN_DANGER("There is already a battery in [src]."))
+			to_chat(user, span_danger("There is already a battery in [src]."))
 	else
 		return..()
 

@@ -21,7 +21,7 @@
 		return
 
 	if(SSbans.t_is_role_banned_ckey(ckey, role = BAN_ROLE_OOC) && IS_DEAD(mob))
-		to_chat(src, SPAN_WARNING("You are banned from typing in LOOC while dead, and deadchat."))
+		to_chat(src, span_warning("You are banned from typing in LOOC while dead, and deadchat."))
 		return
 
 	// -- HTML ENCODE HERE --

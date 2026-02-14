@@ -67,7 +67,7 @@
 			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 			var/to_send = "<blockquote class ='notice'>"
 			src.visible_message("[src] examines [T.himself].", \
-				SPAN_NOTICE("You check yourself for injuries."))
+				span_notice("You check yourself for injuries."))
 
 			for(var/obj/item/organ/external/org in H.organs)
 				var/list/status = list()
@@ -118,24 +118,24 @@
 		else if (on_fire)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 			if (M.on_fire)
-				M.visible_message(SPAN_WARNING("[M] tries to pat out [src]'s flames, but to no avail!"),
-					SPAN_WARNING("You try to pat out [src]'s flames, but to no avail! Put yourself out first!"))
+				M.visible_message(span_warning("[M] tries to pat out [src]'s flames, but to no avail!"),
+					span_warning("You try to pat out [src]'s flames, but to no avail! Put yourself out first!"))
 			else
-				M.visible_message(SPAN_WARNING("[M] tries to pat out [src]'s flames!"),
-					SPAN_WARNING("You try to pat out [src]'s flames! Hot!"))
+				M.visible_message(span_warning("[M] tries to pat out [src]'s flames!"),
+					span_warning("You try to pat out [src]'s flames! Hot!"))
 				if(do_mob(M, src, 15))
 					src.adjust_fire_stacks(-0.5)
 					if (prob(10) && (M.fire_stacks <= 0))
 						M.adjust_fire_stacks(1)
 					M.IgniteMob()
 					if (M.on_fire)
-						M.visible_message(SPAN_DANGER("The fire spreads from [src] to [M]!"),
-							SPAN_DANGER("The fire spreads to you as well!"))
+						M.visible_message(span_danger("The fire spreads from [src] to [M]!"),
+							span_danger("The fire spreads to you as well!"))
 					else
 						src.adjust_fire_stacks(-0.5) //Less effective than stop, drop, and roll - also accounting for the fact that it takes half as long.
 						if (src.fire_stacks <= 0)
-							M.visible_message(SPAN_WARNING("[M] successfully pats out [src]'s flames."),
-								SPAN_WARNING("You successfully pat out [src]'s flames."))
+							M.visible_message(span_warning("[M] successfully pats out [src]'s flames."),
+								span_warning("You successfully pat out [src]'s flames."))
 							src.ExtinguishMob()
 							src.fire_stacks = 0
 		else
@@ -152,14 +152,14 @@
 				adjust_unconscious(-2 SECONDS)
 				if(H)
 					H.in_stasis = 0
-				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
-					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
+				M.visible_message(span_notice("[M] shakes [src] trying to wake [T.him] up!"),
+					span_notice("You shake [src] trying to wake [T.him] up!"))
 			else
 				var/mob/living/carbon/human/hugger = M
 				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				if(M.resting == 1) //Are they resting on the ground?
-					M.visible_message(SPAN_NOTICE("[M] grabs onto [src] and pulls [TM.himself] up."),
-						SPAN_NOTICE("You grip onto [src] and pull yourself up off the ground!"))
+					M.visible_message(span_notice("[M] grabs onto [src] and pulls [TM.himself] up."),
+						span_notice("You grip onto [src] and pull yourself up off the ground!"))
 					if(M.fire_stacks >= (src.fire_stacks + 3)) //Fire checks.
 						src.adjust_fire_stacks(1)
 						M.adjust_fire_stacks(-1)
@@ -170,8 +170,8 @@
 				else if(istype(hugger))
 					hugger.species.hug(hugger,src)
 				else
-					M.visible_message(SPAN_NOTICE("[M] hugs [src] to make [T.him] feel better!"),
-						SPAN_NOTICE("You hug [src] to make [T.him] feel better!"))
+					M.visible_message(span_notice("[M] hugs [src] to make [T.him] feel better!"),
+						span_notice("You hug [src] to make [T.him] feel better!"))
 				if(M.fire_stacks >= (src.fire_stacks + 3))
 					src.adjust_fire_stacks(1)
 					M.adjust_fire_stacks(-1)

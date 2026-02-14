@@ -92,9 +92,9 @@
 	. = ..()
 	var/biomass = get_biomass_volume()
 	if(biomass)
-		. += SPAN_INFO("It is loaded with [biomass] units of biomass.")
+		. += span_info("It is loaded with [biomass] units of biomass.")
 	else
-		. += SPAN_INFO("It is not loaded with any biomass.")
+		. += span_info("It is not loaded with any biomass.")
 
 /obj/machinery/organ_printer/RefreshParts()
 	// Print Delay updating
@@ -131,11 +131,11 @@
 		return
 
 	if(panel_open)
-		to_chat(user, SPAN_WARNING("Close the panel first!"))
+		to_chat(user, span_warning("Close the panel first!"))
 		return
 
 	if(printing)
-		to_chat(user, SPAN_NOTICE("\The [src] is busy!"))
+		to_chat(user, span_notice("\The [src] is busy!"))
 		return
 
 	if(container)
@@ -143,7 +143,7 @@
 		if(response == "Print Limbs")
 			printing_menu(user)
 	else
-		to_chat(user, SPAN_WARNING("\The [src] can't operate without a reagent reservoir!"))
+		to_chat(user, span_warning("\The [src] can't operate without a reagent reservoir!"))
 
 /obj/machinery/organ_printer/proc/printing_menu(mob/user)
 	var/list/possible_list = list()
@@ -170,7 +170,7 @@
 	printing = TRUE
 	update_appearance()
 
-	visible_message(SPAN_NOTICE("\The [src] begins churning."))
+	visible_message(span_notice("\The [src] begins churning."))
 
 	sleep(print_delay)
 
@@ -211,12 +211,12 @@
 /obj/machinery/organ_printer/proc/can_print(choice, biomass_needed = 0)
 	var/biomass = get_biomass_volume()
 	if(biomass < biomass_needed)
-		visible_message(SPAN_INFO("\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'"))
+		visible_message(span_info("\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'"))
 		return FALSE
 
 	var/datum/blood_fragment/using_fragment = loaded_blood_mixture.unsafe_get_fragment_ref(1)
 	if(!using_fragment)
-		visible_message(SPAN_INFO("\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'"))
+		visible_message(span_info("\The [src] displays a warning: 'No DNA saved. Insert a blood sample.'"))
 		return FALSE
 	return TRUE
 
@@ -288,7 +288,7 @@
 	var/obj/item/organ/O = ..()
 
 	playsound(src.loc, 'sound/machines/ding.ogg', 50, TRUE)
-	visible_message(SPAN_INFO("\The [src] dings, then spits out \a [O]."))
+	visible_message(span_info("\The [src] dings, then spits out \a [O]."))
 	return O
 
 /obj/machinery/organ_printer/flesh/attackby(obj/item/W, mob/user)
@@ -298,12 +298,12 @@
 		var/datum/blood_mixture/mixture = S.reagents?.reagent_datas[/datum/reagent/blood::id]
 		if((loaded_blood_mixture = mixture))
 			S.reagents.del_reagent(/datum/reagent/blood)
-			to_chat(user, SPAN_INFO("You scan the blood sample into the bioprinter."))
+			to_chat(user, span_info("You scan the blood sample into the bioprinter."))
 		return
 	else if(istype(W,/obj/item/reagent_containers/glass))
 		var/obj/item/reagent_containers/glass/G = W
 		if(container)
-			to_chat(user, SPAN_WARNING("\The [src] already has a container loaded!"))
+			to_chat(user, span_warning("\The [src] already has a container loaded!"))
 			return
 		else if(do_after(user, 1 SECOND))
 			if(!user.attempt_insert_item_for_installation(G, src))

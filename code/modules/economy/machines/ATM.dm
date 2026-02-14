@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 	//Display a message to the user
 	var/response = pick("Initiating withdraw. Have a nice day!", "CRITICAL ERROR: Activating cash chamber panic siphon.","PIN Code accepted! Emptying account balance.", "Jackpot!")
-	to_chat(user, SPAN_WARNING("[icon2html(thing = src, target = user)] The [src] beeps: \"[response]\""))
+	to_chat(user, span_warning("[icon2html(thing = src, target = user)] The [src] beeps: \"[response]\""))
 	return TRUE
 
 /obj/machinery/atm/attackby(obj/item/I, mob/user)
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 	if(istype(I, /obj/item/card))
 		if(emagged > 0)
 			//prevent inserting id into an emagged ATM
-			to_chat(user, SPAN_CAUTION("[icon2html(thing = src, target = user)] CARD READER ERROR. This system has been compromised!"))
+			to_chat(user, span_caution("[icon2html(thing = src, target = user)] CARD READER ERROR. This system has been compromised!"))
 			return
 
 		var/obj/item/card/id/idcard = I
@@ -314,7 +314,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 /obj/machinery/atm/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if(istype(user, /mob/living/silicon))
-		to_chat (user, SPAN_WARNING("A firewall prevents you from interfacing with this device!"))
+		to_chat (user, span_warning("A firewall prevents you from interfacing with this device!"))
 		return
 	ui_interact(user)
 

@@ -89,7 +89,7 @@
 	if(!item_storage.contents.len)
 		return GUN_FIRED_FAIL_EMPTY
 	if (!tank)
-		cycle.firing_actor?.chat_feedback(SPAN_WARNING("There's no gas tank in [src]!"), src)
+		cycle.firing_actor?.chat_feedback(span_warning("There's no gas tank in [src]!"), src)
 		return GUN_FIRED_FAIL_INERT
 
 	var/environment_pressure = 10
@@ -102,7 +102,7 @@
 	fire_pressure = (tank.air_contents.return_pressure() - environment_pressure)*pressure_setting/100
 	if(fire_pressure < 10)
 		// todo: ughhhh this should misfire not do this
-		cycle.firing_actor?.chat_feedback(SPAN_WARNING("There's not enough gas in the tank to fire [src]!"), src)
+		cycle.firing_actor?.chat_feedback(span_warning("There's not enough gas in the tank to fire [src]!"), src)
 		return GUN_FIRED_FAIL_INERT
 
 	var/obj/item/launched = item_storage.contents[1]

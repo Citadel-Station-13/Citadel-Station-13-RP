@@ -45,7 +45,7 @@
 		return
 
 	// if(!runechat_prefs_check(viewer, EMOTE_MESSAGE))
-	// 	to_chat(viewer, SPAN_EMOTE("[icon2html(src, viewer)] [src.name]: [text]"))
+	// 	to_chat(viewer, span_emote("[icon2html(src, viewer)] [src.name]: [text]"))
 	// 	return
 
 	var/image/balloon_alert = image(loc = isturf(src) ? src : get_atom_on_turf(src), layer = ABOVE_MOB_LAYER)

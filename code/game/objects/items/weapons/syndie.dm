@@ -111,6 +111,6 @@
 		detonator_mode = !detonator_mode
 		playsound(src, W.tool_sound, 50, 1)
 		if(detonator_mode)
-			to_chat(user, SPAN_NOTICE("You unscrew the top panel of \the [src] revealing a button."))
+			to_chat(user, span_notice("You unscrew the top panel of \the [src] revealing a button."))
 		else
-			to_chat(user, SPAN_NOTICE("You fasten the top panel again, hidding the button."))
+			to_chat(user, span_notice("You fasten the top panel again, hidding the button."))

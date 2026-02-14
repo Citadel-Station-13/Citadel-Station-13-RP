@@ -120,7 +120,7 @@
 	H.update_health()
 
 	clonemind.transfer(H)
-	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
+	to_chat(H, span_bolddanger("Consciousness slowly creeps over you as your body regenerates.<br>") + span_userdanger("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + span_notice(span_rose("So this is what cloning feels like?")))
 
 	// -- Mode/mind specific stuff goes here
 	callHook("clone", list(H))
@@ -230,19 +230,19 @@
 			return
 	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
 		if(!check_access(W))
-			to_chat(user, SPAN_WARNING("Access Denied."))
+			to_chat(user, span_warning("Access Denied."))
 			return
 		if((!locked) || (isnull(occupant)))
 			return
 		if((occupant.health < -20) && (occupant.stat != 2))
-			to_chat(user, SPAN_WARNING("Access Refused."))
+			to_chat(user, span_warning("Access Refused."))
 			return
 		else
 			locked = FALSE
 			to_chat(user, "System unlocked.")
 	else if(istype(W,/obj/item/reagent_containers/glass))
 		if(LAZYLEN(containers) >= container_limit)
-			to_chat(user, SPAN_WARNING("\The [src] has too many containers loaded!"))
+			to_chat(user, span_warning("\The [src] has too many containers loaded!"))
 		else if(do_after(user, 1 SECOND))
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
@@ -251,7 +251,7 @@
 		return
 	else if(W.is_wrench())
 		if(locked && (anchored || occupant))
-			to_chat(user, SPAN_WARNING("Can not do that while [src] is in use."))
+			to_chat(user, span_warning("Can not do that while [src] is in use."))
 		else
 			if(anchored)
 				anchored = FALSE
@@ -267,7 +267,7 @@
 	else if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		M.connecting = src
-		to_chat(user, SPAN_NOTICE("You load connection data from [src] to [M]."))
+		to_chat(user, span_notice("You load connection data from [src] to [M]."))
 		M.update_icon()
 		return
 	else

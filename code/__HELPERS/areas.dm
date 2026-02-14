@@ -87,7 +87,7 @@
 	else if(turf_count > BP_MAX_ROOM_SIZE)
 		error = "The room you're in is too big. It is [turf_count >= BP_MAX_ROOM_SIZE *2 ? "more than 100" : ((turf_count / BP_MAX_ROOM_SIZE)-1)*100]% larger than allowed."
 	if(error)
-		to_chat(creator, SPAN_WARNING(error))
+		to_chat(creator, span_warning(error))
 		return
 
 	var/list/apc_map = list()
@@ -106,13 +106,13 @@
 		if(!isnull(place.apc))
 			apc_map[place.name] = place.apc
 		if(length(apc_map) > 1) // When merging 2 or more areas make sure we arent merging their apc into 1 area
-			to_chat(creator, SPAN_WARNING("Multiple APC's detected in the vicinity. only 1 is allowed."))
+			to_chat(creator, span_warning("Multiple APC's detected in the vicinity. only 1 is allowed."))
 			return
 		areas[place.name] = place
 
 	var/area_choice = tgui_input_list(creator, "Choose an area to expand or make a new area", "Area Expansion", areas)
 	if(isnull(area_choice))
-		to_chat(creator, SPAN_WARNING("No choice selected. The area remains undefined."))
+		to_chat(creator, span_warning("No choice selected. The area remains undefined."))
 		return
 	area_choice = areas[area_choice]
 
@@ -133,7 +133,7 @@
 
 	//we haven't done anything. let's get outta here
 	if(newA == oldA)
-		to_chat(creator, SPAN_WARNING("Selected choice is same as the area your standing in. No area changes were requested."))
+		to_chat(creator, span_warning("Selected choice is same as the area your standing in. No area changes were requested."))
 		return
 
 	/**
@@ -153,7 +153,7 @@
 	// for(var/area_name in affected_areas)
 	// 	area_list += affected_areas[area_name]
 	// SEND_GLOBAL_SIGNAL(COMSIG_AREA_CREATED, newA, area_list, creator)
-	to_chat(creator, SPAN_NOTICE("You have created a new area, named [newA.name]. It is now weather proof, and constructing an APC will allow it to be powered."))
+	to_chat(creator, span_notice("You have created a new area, named [newA.name]. It is now weather proof, and constructing an APC will allow it to be powered."))
 	// creator.log_message("created a new area: [AREACOORD(creator)] (previously \"[oldA.name]\")", LOG_GAME)
 
 	//purge old areas that had all their turfs merged into the new one i.e. old empty areas. also recompute fire doors

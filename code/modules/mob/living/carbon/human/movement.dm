@@ -234,16 +234,16 @@
 		return
 	crawling_under_someone = other
 	if(is_grabbed())
-		selfmove_feedback(SPAN_WARNING("You can't crawl under [other] while grabbed!"))
+		selfmove_feedback(span_warning("You can't crawl under [other] while grabbed!"))
 		crawling_under_someone = null
 		return FALSE
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
-		selfmove_feedback(SPAN_WARNING("You can't crawl under [other] right now!"))
+		selfmove_feedback(span_warning("You can't crawl under [other] right now!"))
 		crawling_under_someone = null
 		return FALSE
 	visible_message(
-		SPAN_NOTICE("[src] is attempting to crawl under [other]."),
-		SPAN_NOTICE("You are now attempting to crawl under [other].")
+		span_notice("[src] is attempting to crawl under [other]."),
+		span_notice("You are now attempting to crawl under [other].")
 	)
 	if(!do_self(src, 2 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM, MOBILITY_CAN_MOVE))
 		crawling_under_someone = null

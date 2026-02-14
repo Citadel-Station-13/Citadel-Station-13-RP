@@ -21,7 +21,7 @@
 		if(!holopad.relay_inbound_say(src, name, message, speaking, using_verb = verb))
 			to_chat(src, "Failed to relay to holopad.")
 			return FALSE
-		to_chat(src, "Holopad voice relayed: [SPAN_NAME(name)]: [message]")
+		to_chat(src, "Holopad voice relayed: [span_name(name)]: [message]")
 		log_say("(HPAD) [message]", src)
 	else //This shouldn't occur, but better safe then sorry.
 		to_chat(src, "No holopad connected.")
@@ -39,7 +39,7 @@
 		if(!holopad.relay_inbound_emote(src, name, message, hologram))
 			to_chat(src, "Failed to relay to holopad.")
 			return FALSE
-		to_chat(src, "Holopad action relayed: [SPAN_NAME(name)] [message]")
+		to_chat(src, "Holopad action relayed: [span_name(name)] [message]")
 		log_emote("(HPAD) [message]", src)
 	else //This shouldn't occur, but better safe then sorry.
 		to_chat(src, "No holopad connected.")

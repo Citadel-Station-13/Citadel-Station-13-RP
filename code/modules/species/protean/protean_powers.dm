@@ -171,7 +171,7 @@
 			regenerate_icons() //Probably worth it, yeah.
 			var/obj/item/organ/internal/nano/refactory/new_refactory = locate() in internal_organs
 			if(!new_refactory)
-				log_debug(SPAN_DEBUGWARNING("[src] protean-regen'd but lacked a refactory when done."))
+				log_debug(span_debug_warning("[src] protean-regen'd but lacked a refactory when done."))
 			else
 				new_refactory.stored_materials = holder
 			to_chat(src, "<span class='notice'>Your refactoring is complete.</span>") //Guarantees the message shows no matter how bad the timing.
@@ -413,7 +413,7 @@
 	last_special = world.time + 20 SECONDS
 
 	visible_message("<span class='warning'>[src] deforms and contorts strangely...</span>")
-	
+
 	if(!do_after(src, 50)) //5 seconds
 		return FALSE
 

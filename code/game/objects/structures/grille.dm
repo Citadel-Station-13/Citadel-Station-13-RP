@@ -160,12 +160,12 @@
 	if(ST.in_use)
 		return
 	if(ST.get_amount() < 2)
-		to_chat(user, SPAN_WARNING("You need at least two rods to do this."))
+		to_chat(user, span_warning("You need at least two rods to do this."))
 		return
-	user.visible_message(SPAN_NOTICE("\The [user] begins assembling a grille."))
+	user.visible_message(span_notice("\The [user] begins assembling a grille."))
 	if(do_after(user, 1 SECOND, ST) && ST.use(2))
 		var/obj/structure/grille/F = new(loc)
-		user.visible_message(SPAN_NOTICE("\The [user] finishes building \a [F]."))
+		user.visible_message(span_notice("\The [user] finishes building \a [F]."))
 
 /obj/structure/grille/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
@@ -188,13 +188,13 @@
 /obj/structure/grille/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
+			to_chat(user, span_notice("You deconstruct \the [src]."))
 			qdel(src)
 			return TRUE
 		if(RCD_WINDOWGRILLE)
 			if(locate(/obj/structure/window) in loc)
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You construct a window."))
+			to_chat(user, span_notice("You construct a window."))
 			var/obj/structure/window/WD = new the_rcd.window_type(loc)
 			WD.anchored = TRUE
 			return TRUE

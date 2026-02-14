@@ -127,7 +127,7 @@
 	if(default_part_replacement(user, W))
 		return
 	else
-		to_chat(user, SPAN_NOTICE("You cannot insert this item into \the [src]!"))
+		to_chat(user, span_notice("You cannot insert this item into \the [src]!"))
 		return
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/update_icon()
@@ -177,7 +177,7 @@
 		return
 	add_fingerprint(usr)
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, span_warning("Access denied."))
 		return
 	ui_interact(user)
 

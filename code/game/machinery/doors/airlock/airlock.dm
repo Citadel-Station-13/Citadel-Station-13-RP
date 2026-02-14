@@ -760,14 +760,14 @@ About the new airlock wires panel:
 				loseMainPower()
 				update_icon()
 			else
-				to_chat(usr, SPAN_WARNING("Main power is already offline."))
+				to_chat(usr, span_warning("Main power is already offline."))
 			. = TRUE
 		if("disrupt-backup")
 			if(!backup_power_lost_until)
 				loseBackupPower()
 				update_icon()
 			else
-				to_chat(usr, SPAN_WARNING("Backup power is already offline."))
+				to_chat(usr, span_warning("Backup power is already offline."))
 			. = TRUE
 		if("shock-restore")
 			electrify(0, 1)
@@ -822,27 +822,27 @@ About the new airlock wires panel:
 	if(!user_allowed(user))
 		return
 	if(wires.is_cut(WIRE_DOOR_BOLTS))
-		to_chat(user, SPAN_WARNING("The door bolt drop wire is cut - you can't toggle the door bolts."))
+		to_chat(user, span_warning("The door bolt drop wire is cut - you can't toggle the door bolts."))
 		return
 	if(locked)
 		if(!arePowerSystemsOn())
-			to_chat(user, SPAN_WARNING("The door has no power - you can't raise the door bolts."))
+			to_chat(user, span_warning("The door has no power - you can't raise the door bolts."))
 		else
 			unlock()
-			to_chat(user, SPAN_NOTICE("The door bolts have been raised."))
+			to_chat(user, span_notice("The door bolts have been raised."))
 			// log_combat(user, src, "unbolted")
 	else
 		lock()
-		to_chat(user, SPAN_WARNING("The door bolts have been dropped."))
+		to_chat(user, span_warning("The door bolts have been dropped."))
 		// log_combat(user, src, "bolted")
 
 /obj/machinery/door/airlock/proc/user_toggle_open(mob/user)
 	if(!user_allowed(user))
 		return
 	if(welded)
-		to_chat(user, SPAN_WARNING("The airlock has been welded shut!"))
+		to_chat(user, span_warning("The airlock has been welded shut!"))
 	else if(locked)
-		to_chat(user, SPAN_WARNING("The door bolts are down!"))
+		to_chat(user, span_warning("The door bolts are down!"))
 	else if(!density)
 		close()
 	else
@@ -1227,7 +1227,7 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
+			to_chat(user, span_notice("You deconstruct \the [src]."))
 			qdel(src)
 			return TRUE
 	return FALSE

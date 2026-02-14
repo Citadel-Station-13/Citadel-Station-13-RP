@@ -214,10 +214,10 @@
 /// Placeholders for light tiles and rglass.
 /datum/prototype/material/proc/build_rod_product(mob/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
 	if(!rod_product)
-		to_chat(user, SPAN_WARNING("You cannot make anything out of \the [target_stack]."))
+		to_chat(user, span_warning("You cannot make anything out of \the [target_stack]."))
 		return
 	if(used_stack.get_amount() < 1 || target_stack.get_amount() < 1)
-		to_chat(user, SPAN_WARNING("You need one rod and one sheet of [display_name] to make anything useful."))
+		to_chat(user, span_warning("You need one rod and one sheet of [display_name] to make anything useful."))
 		return
 	used_stack.use(1)
 	target_stack.use(1)
@@ -227,15 +227,15 @@
 
 /datum/prototype/material/proc/build_wired_product(mob/living/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
 	if(!wire_product)
-		to_chat(user, SPAN_WARNING("You cannot make anything out of \the [target_stack]."))
+		to_chat(user, span_warning("You cannot make anything out of \the [target_stack]."))
 		return
 	if(used_stack.get_amount() < 5 || target_stack.get_amount() < 1)
-		to_chat(user, SPAN_WARNING("You need five wires and one sheet of [display_name] to make anything useful."))
+		to_chat(user, span_warning("You need five wires and one sheet of [display_name] to make anything useful."))
 		return
 
 	used_stack.use(5)
 	target_stack.use(1)
-	to_chat(user, SPAN_NOTICE("You attach wire to the [name]."))
+	to_chat(user, span_notice("You attach wire to the [name]."))
 	var/obj/item/product = new wire_product(get_turf(user))
 	user.put_in_hands(product)
 

@@ -45,7 +45,7 @@
 	def_zone = proj.process_zone_miss(src, def_zone, proj.distance_travelled, TRUE)
 	if(!def_zone)
 		if(!proj.silenced)
-			visible_message(SPAN_WARNING("\The [proj] misses [src] narrowly!"))
+			visible_message(span_warning("\The [proj] misses [src] narrowly!"))
 			playsound(src, pick(proj.miss_sounds), 60, TRUE)
 		add_attack_logs(
 			proj.firer,
@@ -76,9 +76,9 @@
 	// emit feedback
 	if(!(impact_flags & PROJECTILE_IMPACT_BLOCKED))
 		if(proj.silenced)
-			to_chat(src, SPAN_DANGER("You've been hit in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])] with \the [proj]!"))
+			to_chat(src, span_danger("You've been hit in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])] with \the [proj]!"))
 		else
-			visible_message(SPAN_DANGER("\The [src] is hit by [proj] in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])]"))
+			visible_message(span_danger("\The [src] is hit by [proj] in the [parse_zone(bullet_act_args[BULLET_ACT_ARG_ZONE])]"))
 
 	//! LEGACY
 	//Being hit while using a deadman switch
@@ -134,7 +134,7 @@
 		var/miss_chance = 5 + min(90, (TT.dist_travelled - 2 * 5))
 		if(prob(miss_chance))
 			AM.visible_message(
-				SPAN_WARNING("[AM] misses [src] narrowly!"),
+				span_warning("[AM] misses [src] narrowly!"),
 			)
 			return COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND
 	var/hit_zone = ran_zone(TT.target_zone || BP_TORSO, 75)
@@ -156,7 +156,7 @@
 		return sc_pierce? COMPONENT_THROW_HIT_PIERCE | COMPONENT_THROW_HIT_NEVERMIND : NONE
 
 	visible_message(
-		SPAN_RED("[src] has been hit by [AM]."),
+		span_red("[src] has been hit by [AM]."),
 	)
 
 	// - legacy code for reaction
@@ -203,8 +203,8 @@
 	if(momentum_transfer_amount >= THROWNOBJ_KNOCKBACK_SPEED)
 		var/dir = angle2dir(TT.get_current_angle())
 		visible_message(
-			SPAN_RED("[src] staggers under the impact!"),
-			SPAN_RED("You stagger under the impact!"),
+			span_red("[src] staggers under the impact!"),
+			span_red("You stagger under the impact!"),
 		)
 		throw_at(get_edge_target_turf(src, dir), 1, momentum_transfer_amount / 3, THROW_AT_DO_NOT_SPIN)
 
@@ -226,15 +226,15 @@
 			playsound(src, /datum/soundbyte/sparks, 50, TRUE, -1)
 			if(damage * efficiency > 15)
 				visible_message(
-					SPAN_WARNING("[src] was electrocuted[source ? " by [source]" : ""]!"),
-					SPAN_DANGER("You feel a powerful shock course through your body[source ? " as you make contact with [source]" : ""]!"),
-					SPAN_WARNING("You hear a heavy electrical crack."),
+					span_warning("[src] was electrocuted[source ? " by [source]" : ""]!"),
+					span_danger("You feel a powerful shock course through your body[source ? " as you make contact with [source]" : ""]!"),
+					span_warning("You hear a heavy electrical crack."),
 				)
 			else
 				visible_message(
-					SPAN_WARNING("[src] was shocked[source ? " by [source]" : ""]!"),
-					SPAN_DANGER("You feel a shock course through your body[source ? " as you make contact with [source]" : ""]!"),
-					SPAN_WARNING("You hear an electrical crack."),
+					span_warning("[src] was shocked[source ? " by [source]" : ""]!"),
+					span_danger("You feel a shock course through your body[source ? " as you make contact with [source]" : ""]!"),
+					span_warning("You hear an electrical crack."),
 				)
 		if(!(flags & ELECTROCUTE_ACT_FLAG_CONTAINED))
 			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread

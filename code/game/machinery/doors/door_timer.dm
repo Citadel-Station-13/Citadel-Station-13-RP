@@ -235,7 +235,7 @@
 	. = TRUE
 
 	if(!allowed(usr))
-		to_chat(usr, SPAN_WARNING("Access denied."))
+		to_chat(usr, span_warning("Access denied."))
 		return FALSE
 
 	switch(action)

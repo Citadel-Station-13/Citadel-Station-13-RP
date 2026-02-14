@@ -769,7 +769,7 @@ var/list/admin_verbs_event_manager = list(
 		deadmin()
 		to_chat(src, "<span class='interface'>You are now a normal player.</span>")
 		if(deadmin_holder?.fakekey)
-			to_chat(src, SPAN_RED(SPAN_BIG(SPAN_ANNOUNCE("Your ckey is still obfuscated as '[deadmin_holder.fakekey]' due to de-adminning while stealthed."))))
+			to_chat(src, span_red(span_big(span_announce("Your ckey is still obfuscated as '[deadmin_holder.fakekey]' due to de-adminning while stealthed."))))
 		add_verb(src, /client/proc/readmin_self)
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

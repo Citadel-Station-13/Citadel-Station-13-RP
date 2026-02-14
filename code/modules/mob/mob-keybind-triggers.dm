@@ -95,7 +95,7 @@
 	// i don't care though, this is such a small feature
 	var/obj/item/I = get_active_held_item()
 	if(!I)
-		actor?.chat_feedback(SPAN_WARNING("You are not holding anything to wield."))
+		actor?.chat_feedback(span_warning("You are not holding anything to wield."))
 		return
 	if(istype(I, /obj/item/offhand/wielding))
 		var/obj/item/offhand/wielding/unwield_this_offhand = I
@@ -103,7 +103,7 @@
 		return
 	var/datum/component/wielding/comp = I.GetComponent(/datum/component/wielding)
 	if(!comp)
-		actor?.chat_feedback(SPAN_WARNING("That can't be wielded."))
+		actor?.chat_feedback(span_warning("That can't be wielded."))
 		return
 	if(comp.wielder)
 		comp.unwield()

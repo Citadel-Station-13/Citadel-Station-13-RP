@@ -29,9 +29,9 @@
 		if(!amount)
 			continue
 		any_found = TRUE
-		. += SPAN_NOTICE("There's [amount] [key] equipment redemption point[amount > 1 ? "s" : ""] loaded on this card.")
+		. += span_notice("There's [amount] [key] equipment redemption point[amount > 1 ? "s" : ""] loaded on this card.")
 	if(!any_found)
-		. += SPAN_NOTICE("There's no equipment redemption points loaded on this voucher.")
+		. += span_notice("There's no equipment redemption points loaded on this voucher.")
 
 /obj/item/point_redemption_voucher/using_as_item(atom/target, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
 	. = ..()
@@ -52,7 +52,7 @@
 /obj/item/point_redemption_voucher/proc/transfer_to_card(obj/item/card/id/to_id_card, datum/event_args/actor/actor)
 	if(!length(stored_redemption_points))
 		actor?.chat_feedback(
-			SPAN_NOTICE("[src] has no stored redemption points."),
+			span_notice("[src] has no stored redemption points."),
 			target = src,
 		)
 		return
@@ -60,7 +60,7 @@
 		var/amount = stored_redemption_points[key]
 		to_id_card.adjust_redemption_points(key, amount)
 		actor?.chat_feedback(
-			SPAN_NOTICE("You transfer [amount] [key] points to [to_id_card] from [src]."),
+			span_notice("You transfer [amount] [key] points to [to_id_card] from [src]."),
 		)
 	stored_redemption_points = null
 

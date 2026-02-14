@@ -120,7 +120,7 @@
 	set category = VERB_CATEGORY_OBJECT
 
 	if(shoes_under_pants == -1)
-		to_chat(usr, SPAN_NOTICE("\The [src] cannot be worn under your pants"))
+		to_chat(usr, span_notice("\The [src] cannot be worn under your pants"))
 		return
 	shoes_under_pants = !shoes_under_pants
 	update_icon()

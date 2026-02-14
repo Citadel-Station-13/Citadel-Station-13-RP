@@ -283,7 +283,7 @@
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		if(!user.attempt_insert_item_for_installation(W, loc))
-			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+			to_chat(user, span_warning("[W] is stuck to your hand!"))
 			return
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
@@ -295,9 +295,9 @@
 			return TRUE
 		if(prob(50))
 			I.forceMove(loc)
-			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
+			visible_message(span_notice("Swish! \the [I] lands in \the [src]."), 3)
 		else
-			visible_message(SPAN_WARNING( "\The [I] bounces off of \the [src]'s rim!"), 3)
+			visible_message(span_warning( "\The [I] bounces off of \the [src]'s rim!"), 3)
 		return FALSE
 	return ..()
 

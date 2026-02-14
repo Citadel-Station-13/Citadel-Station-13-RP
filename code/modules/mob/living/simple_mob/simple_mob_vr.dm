@@ -120,7 +120,7 @@
 	set category = VERB_CATEGORY_IC
 
 	if(isnull(mob_radio))
-		to_chat(usr, SPAN_WARNING("You don't have a radio."))
+		to_chat(usr, span_warning("You don't have a radio."))
 		return
 
 	mob_radio.ui_interact(usr)

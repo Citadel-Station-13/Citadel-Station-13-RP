@@ -210,7 +210,7 @@
 				handled = FALSE
 			if(PAYMENT_INSUFFICIENT)
 				handled = TRUE
-				to_chat(user, SPAN_WARNING("That is not enough money!"))
+				to_chat(user, span_warning("That is not enough money!"))
 			else
 				handled = TRUE
 				paid = amount == currently_vending.price

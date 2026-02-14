@@ -35,12 +35,12 @@
 	for (var/possible_type in insertable)
 		if (istype(I, possible_type))
 			if (!can_fit(I))
-				to_chat(user, SPAN_WARNING("There's no more space in the [src] for that!"))
+				to_chat(user, span_warning("There's no more space in the [src] for that!"))
 				return 0
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
 			I.forceMove(src)
-			to_chat(user, SPAN_NOTICE("You put the [I] into the [src]"))
+			to_chat(user, span_notice("You put the [I] into the [src]"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
@@ -66,13 +66,13 @@
 		return
 
 	if (!contents.len)
-		user << SPAN_WARNING( "There's nothing in the [src] you can remove!")
+		user << span_warning( "There's nothing in the [src] you can remove!")
 		return
 
 	for (var/atom/movable/A in contents)
 		A.forceMove(get_turf(src))
 
-	user << SPAN_NOTICE("You remove all the solid items from the [src].")
+	user << span_notice("You remove all the solid items from the [src].")
 
 /obj/item/reagent_containers/cooking_container/proc/check_contents()
 	if (contents.len == 0)

@@ -268,7 +268,7 @@
 	if(!emagged)
 		playsound(src.loc, /datum/soundbyte/sparks, 75, TRUE)
 		emagged = TRUE
-		to_chat(user, SPAN_NOTICE("You you disable the security protocols."))
+		to_chat(user, span_notice("You you disable the security protocols."))
 		SStgui.update_uis(src)
 		return TRUE
 

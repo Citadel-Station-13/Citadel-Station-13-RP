@@ -51,15 +51,15 @@
 		clickchain.visible_feedback(
 			target = target,
 			range = MESSAGE_RANGE_COMBAT_LOUD,
-			visible = SPAN_WARNING("[attacker] harmlessly taps [target] with [weapon]."),
-			visible_them = SPAN_WARNING("[attacker] harmlessly taps you with [weapon]."),
-			visible_self = SPAN_WARNING("You harmlessly tap [target] with [weapon].")
+			visible = span_warning("[attacker] harmlessly taps [target] with [weapon]."),
+			visible_them = span_warning("[attacker] harmlessly taps you with [weapon]."),
+			visible_self = span_warning("You harmlessly tap [target] with [weapon].")
 		)
 	else
 		clickchain.visible_feedback(
 			target = target,
 			range = MESSAGE_RANGE_COMBAT_LOUD,
-			visible = SPAN_DANGER("[target] has been [islist(weapon.attack_verb)? pick(weapon.attack_verb) : weapon.attack_verb] with [weapon] by [attacker]!")
+			visible = span_danger("[target] has been [islist(weapon.attack_verb)? pick(weapon.attack_verb) : weapon.attack_verb] with [weapon] by [attacker]!")
 		)
 
 /datum/melee_attack/weapon/estimate_damage(atom/movable/attacker, atom/target, obj/item/weapon)

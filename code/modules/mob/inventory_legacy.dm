@@ -6,7 +6,7 @@
 		return TRUE
 	if(equip_to_slot_if_possible(I, /datum/inventory_slot/abstract/put_in_storage_try_active, INV_OP_SUPPRESS_WARNING))
 		return TRUE
-	to_chat(src, SPAN_WARNING("You have nowhere to put [I]!"))
+	to_chat(src, span_warning("You have nowhere to put [I]!"))
 	return FALSE
 
 /**
@@ -15,12 +15,12 @@
 /mob/proc/attempt_smart_equip(obj/item/I = get_active_held_item(), silent = FALSE)
 	if(!I)
 		if(!silent)
-			to_chat(src, SPAN_WARNING("You are not holding anything to equip!"))
+			to_chat(src, span_warning("You are not holding anything to equip!"))
 		return FALSE
 
 	if(!is_holding(I))
 		if(!silent)
-			to_chat(src, SPAN_WARNING("You must be holding [I] to equip it!"))
+			to_chat(src, span_warning("You must be holding [I] to equip it!"))
 		return FALSE
 
 	return smart_equip(I)

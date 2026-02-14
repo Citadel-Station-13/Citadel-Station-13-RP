@@ -142,12 +142,12 @@
 	var/list/reasons_we_cant = why_hand_manipulation_insufficient(index, manipulation)
 	if(actor)
 		actor.chat_feedback(
-			SPAN_WARNING("You can't do that right now! ([length(reasons_we_cant) ? english_list(reasons_we_cant) : "hand nonfunctional for unknown reason"])"),
+			span_warning("You can't do that right now! ([length(reasons_we_cant) ? english_list(reasons_we_cant) : "hand nonfunctional for unknown reason"])"),
 			target = target,
 		)
 	else
 		action_feedback(
-			SPAN_WARNING("You can't do that right now! ([length(reasons_we_cant) ? english_list(reasons_we_cant) : "hand nonfunctional for unknown reason"])"),
+			span_warning("You can't do that right now! ([length(reasons_we_cant) ? english_list(reasons_we_cant) : "hand nonfunctional for unknown reason"])"),
 			target = target,
 		)
 	return FALSE

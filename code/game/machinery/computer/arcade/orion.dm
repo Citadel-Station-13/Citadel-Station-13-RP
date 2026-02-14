@@ -478,7 +478,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 /obj/machinery/computer/arcade/orion_trail/emag_act(mob/user)
 	if(obj_flags & OBJ_EMAGGED)
 		return
-	to_chat(user, SPAN_NOTICE("You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode."))
+	to_chat(user, span_notice("You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode."))
 	name = "The Orion Trail: Realism Edition"
 	desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
 	newgame()
@@ -500,9 +500,9 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 
 /obj/item/orion_ship/examine(mob/user, dist)
 	if(!active)
-		. += SPAN_NOTICE("There's a little switch on the bottom. It's flipped down.")
+		. += span_notice("There's a little switch on the bottom. It's flipped down.")
 	else
-		. += SPAN_NOTICE("There's a little switch on the bottom. It's flipped up.")
+		. += span_notice("There's a little switch on the bottom. It's flipped up.")
 
 /obj/item/orion_ship/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -514,17 +514,17 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 	message_admins("[key_name_admin(usr)] primed an explosive Orion ship for detonation.")
 	log_game("[key_name(usr)] primed an explosive Orion ship for detonation.")
 
-	to_chat(user, SPAN_WARNING( "You flip the switch on the underside of [src]."))
+	to_chat(user, span_warning( "You flip the switch on the underside of [src]."))
 	active = 1
-	src.visible_message(SPAN_NOTICE("[src] softly beeps and whirs to life!"))
+	src.visible_message(span_notice("[src] softly beeps and whirs to life!"))
 	src.audible_message("<b>\The [src]</b> says, 'This is ship ID #[rand(1,1000)] to Orion Port Authority. We're coming in for landing, over.'")
 	sleep(20)
-	src.visible_message(SPAN_WARNING( "[src] begins to vibrate..."))
+	src.visible_message(span_warning( "[src] begins to vibrate..."))
 	src.audible_message("<b>\The [src]</b> says, 'Uh, Port? Having some issues with our reactor, could you check it out? Over.'")
 	sleep(30)
 	src.audible_message("<b>\The [src]</b> says, 'Oh, God! Code Eight! CODE EIGHT! IT'S GONNA BL-'")
 	sleep(3.6)
-	src.visible_message(SPAN_DANGER("[src] explodes!"))
+	src.visible_message(span_danger("[src] explodes!"))
 	explosion(src.loc, 0,0,2)
 	qdel(src)
 

@@ -76,18 +76,18 @@
 		var/mob/living/simple_mob/holosphere_shell/shell = target
 		// can't revive them if they are not dead
 		if(shell.stat != DEAD)
-			to_chat(clickchain.performer, SPAN_NOTICE("[target] does not need to be rebooted!"))
+			to_chat(clickchain.performer, span_notice("[target] does not need to be rebooted!"))
 			return CLICKCHAIN_DID_SOMETHING
 		// can't revive them if they are not full hp
 		if(shell.health == shell.maxHealth)
-			to_chat(clickchain.performer, SPAN_NOTICE("You begin rebooting [target] using \the [src]"))
+			to_chat(clickchain.performer, span_notice("You begin rebooting [target] using \the [src]"))
 			if(do_after(clickchain.performer, 10 SECONDS))
 				// make sure they're still dead and full hp
 				if(shell.stat != DEAD || shell.health != shell.maxHealth)
-					to_chat(clickchain.performer, SPAN_NOTICE("[target] is no longer in a condition where you can reboot them."))
+					to_chat(clickchain.performer, span_notice("[target] is no longer in a condition where you can reboot them."))
 					return CLICKCHAIN_DID_SOMETHING
 				// revive the holosphere shell
-				visible_message(SPAN_NOTICE("[clickchain.performer] successfully reboots [target] using \the [src]."))
+				visible_message(span_notice("[clickchain.performer] successfully reboots [target] using \the [src]."))
 				shell.revive(full_heal = TRUE, restore_nutrition = FALSE)
 				return CLICKCHAIN_DID_SOMETHING
 	return ..()

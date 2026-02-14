@@ -136,7 +136,7 @@
 				icon_state = "borgcharger0(old)"
 
 		else if(prob(5))
-			visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] [src] [pick("clicks","whizzes","whirrs","whooshes","clanks","clongs","clonks","bangs")]."))
+			visible_message(span_notice("[icon2html(thing = src, target = world)] [src] [pick("clicks","whizzes","whirrs","whooshes","clanks","clongs","clonks","bangs")]."))
 
 	last_process_time = world.time
 
@@ -164,9 +164,9 @@
 			if(key in construction)
 				if(LAZYLEN(stored_materials) > LAZYLEN(spawning_types))
 					if(LAZYLEN(spawning_types))
-						visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] a [pick("light","dial","display","meter","pad")] on [src]'s front [pick("blinks","flashes")] [pick("red","yellow","blue","orange","purple","green","white")]."))
+						visible_message(span_notice("[icon2html(thing = src, target = world)] a [pick("light","dial","display","meter","pad")] on [src]'s front [pick("blinks","flashes")] [pick("red","yellow","blue","orange","purple","green","white")]."))
 					else
-						visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] [src]'s front compartment slides shut."))
+						visible_message(span_notice("[icon2html(thing = src, target = world)] [src]'s front compartment slides shut."))
 					spawning_types.Add(construction[key])
 					spawn_progress_time = 0
 					update_use_power(USE_POWER_ACTIVE)
@@ -178,4 +178,4 @@
 	if(!user.attempt_insert_item_for_installation(W, src))
 		return
 	stored_materials.Add(W)
-	visible_message(SPAN_NOTICE("\The [user] inserts \the [W] into \the [src]."))
+	visible_message(span_notice("\The [user] inserts \the [W] into \the [src]."))

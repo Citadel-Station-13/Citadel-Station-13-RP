@@ -178,7 +178,7 @@
 	if(!t)
 		return
 
-	visible_message(SPAN_WARNING("[src] is trying to inject [victim]!"))
+	visible_message(span_warning("[src] is trying to inject [victim]!"))
 	if(declare_treatment)
 		var/area/location = get_area(src)
 		GLOB.global_announcer.autosay("[src] is treating <b>[victim]</b> in <b>[location]</b>", "[src]", "Medical")
@@ -189,7 +189,7 @@
 			reagent_glass.reagents.trans_to_mob(victim, injection_amount, CHEM_INJECT)
 		else
 			victim.reagents.add_reagent(t, injection_amount)
-		visible_message(SPAN_WARNING("[src] injects [victim] with the syringe!"))
+		visible_message(span_warning("[src] injects [victim] with the syringe!"))
 
 	if(victim.stat == DEAD) //This is down here because this proc won't be called again due to losing a target because of parent AI loop.
 		target = null
@@ -230,9 +230,9 @@
 		return
 	if(attacker.a_intent == INTENT_DISARM && !is_tipped)
 		attacker.visible_message(
-			SPAN_DANGER("[attacker] begins tipping over [src]."),
-			SPAN_WARNING("You begin tipping over [src]..."),
-			SPAN_HEAR("You hear a loud clunk.")
+			span_danger("[attacker] begins tipping over [src]."),
+			span_warning("You begin tipping over [src]..."),
+			span_hear("You hear a loud clunk.")
 		)
 
 		if(world.time > last_tipping_action_voice + 15 SECONDS)
@@ -253,9 +253,9 @@
 
 	else if(attacker.a_intent == INTENT_HELP && is_tipped)
 		attacker.visible_message(
-			SPAN_NOTICE("[attacker] begins righting [src]."),
-			SPAN_NOTICE("You begin righting [src]..."),
-			SPAN_HEAR("You hear a loud clunk.")
+			span_notice("[attacker] begins righting [src]."),
+			span_notice("You begin righting [src]..."),
+			span_hear("You hear a loud clunk.")
 		)
 		if(do_after(attacker, 3 SECONDS, target=src))
 			set_right(attacker)
@@ -297,15 +297,15 @@
 /mob/living/bot/medibot/attackby(obj/item/target_item, mob/user)
 	if(istype(target_item, /obj/item/reagent_containers/glass))
 		if(locked)
-			to_chat(user, SPAN_NOTICE("You cannot insert a beaker because the panel is locked."))
+			to_chat(user, span_notice("You cannot insert a beaker because the panel is locked."))
 			return
 		if(!isnull(reagent_glass))
-			to_chat(user, SPAN_NOTICE("There is already a beaker loaded."))
+			to_chat(user, span_notice("There is already a beaker loaded."))
 			return
 		if(!user.attempt_insert_item_for_installation(target_item, src))
 			return
 		reagent_glass = target_item
-		to_chat(user, SPAN_NOTICE("You insert [target_item]."))
+		to_chat(user, span_notice("You insert [target_item]."))
 		return
 	else
 		..()
@@ -360,8 +360,8 @@
 	. = ..()
 	if(!emagged)
 		if(user)
-			to_chat(user, SPAN_WARNING("You short out [src]'s reagent synthesis circuits."))
-		visible_message(SPAN_WARNING("[src] buzzes oddly!"))
+			to_chat(user, span_warning("You short out [src]'s reagent synthesis circuits."))
+		visible_message(span_warning("[src] buzzes oddly!"))
 		flick("[base_icon_state]-light-spark", src)
 		target = null
 		busy = FALSE
@@ -373,7 +373,7 @@
 
 /mob/living/bot/medibot/explode()
 	on = FALSE
-	visible_message(SPAN_DANGER("[src] blows apart!"))
+	visible_message(span_danger("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/storage/firstaid(Tsec)
@@ -404,9 +404,9 @@
 /mob/living/bot/medibot/proc/tip_over(mob/horrible_human_being)
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 50)
 	horrible_human_being.visible_message(
-		SPAN_DANGER("[horrible_human_being] tips over [src]!"),
-		SPAN_DANGER("You tip [src] over!"),
-		SPAN_HEAR("You hear a loud clunk."),
+		span_danger("[horrible_human_being] tips over [src]!"),
+		span_danger("You tip [src] over!"),
+		span_hear("You hear a loud clunk."),
 	)
 	is_tipped = TRUE
 	tipper_name = horrible_human_being.name
@@ -417,9 +417,9 @@
 	var/list/messagevoice
 	if(wonderful_human_being)
 		wonderful_human_being.visible_message(
-			SPAN_NOTICE("[wonderful_human_being] sets [src] right-side up!"),
-			SPAN_GREEN("You set [src] right-side up!"),
-			SPAN_HEAR("You hear a loud clunk."),
+			span_notice("[wonderful_human_being] sets [src] right-side up!"),
+			span_green("You set [src] right-side up!"),
+			span_hear("You hear a loud clunk."),
 		)
 		// TODO: Small chance for the bot to not forgive you. @Zandario
 		if (wonderful_human_being.name == tipper_name) // The false prophet has been forgiven.
@@ -433,7 +433,7 @@
 			)
 	else
 		visible_message(
-			SPAN_NOTICE("[src] manages to [pick("writhe", "wriggle", "wiggle")] enough to right itself."),
+			span_notice("[src] manages to [pick("writhe", "wriggle", "wiggle")] enough to right itself."),
 		)
 		messagevoice = list(
 			"Fuck you." = 'sound/voice/medibot/fuck_you.ogg',
@@ -505,9 +505,9 @@
 		if(MEDIBOT_PANIC_MED to MEDIBOT_PANIC_HIGH)
 			. += "They are tipped over and appear visibly distressed."
 		if(MEDIBOT_PANIC_HIGH to MEDIBOT_PANIC_FUCK)
-			. += SPAN_WARNING("They are tipped over and visibly panicking!")
+			. += span_warning("They are tipped over and visibly panicking!")
 		if(MEDIBOT_PANIC_FUCK to INFINITY)
-			. += SPAN_BOLDWARNING("They are freaking out from being tipped over!")
+			. += span_boldwarning("They are freaking out from being tipped over!")
 
 /mob/living/bot/medibot/confirmTarget(mob/living/carbon/human/victim)
 	if(!..())

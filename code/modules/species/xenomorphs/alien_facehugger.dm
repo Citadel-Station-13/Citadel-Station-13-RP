@@ -146,13 +146,13 @@ var/const/MAX_ACTIVE_TIME = 400
 		// i'm sorry for i have sinned ~silicons
 		var/obj/item/snowflake_but_also_what_about_head = target.item_by_slot_id(SLOT_ID_HEAD)
 		if(istype(snowflake_but_also_what_about_head, /obj/item/clothing/head/helmet/space))
-			visible_message(SPAN_DANGER("[src] smashes against [target]'s [snowflake_but_also_what_about_head], but bounces off!"))
+			visible_message(span_danger("[src] smashes against [target]'s [snowflake_but_also_what_about_head], but bounces off!"))
 			Die()
 			return
 		else if(istype(snowflake_but_also_what_about_head, /obj/item/clothing/head/welding))
 			var/obj/item/clothing/head/welding/WH = snowflake_but_also_what_about_head
 			if(!WH.up)
-				visible_message(SPAN_DANGER("[src] smashes against [target]'s [snowflake_but_also_what_about_head], but bounces off!"))
+				visible_message(span_danger("[src] smashes against [target]'s [snowflake_but_also_what_about_head], but bounces off!"))
 				Die()
 				return
 
@@ -166,7 +166,7 @@ var/const/MAX_ACTIVE_TIME = 400
 			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!</b></span>")
 
 		if(target.isSynthetic())
-			visible_message(SPAN_DANGER("[src] tears across [target]'s body, but recoils!"))
+			visible_message(span_danger("[src] tears across [target]'s body, but recoils!"))
 			target.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_HEAD)
 			target.apply_damage(10, DAMAGE_TYPE_BRUTE, BP_TORSO)
 			return		// atleast you don't get gibbed

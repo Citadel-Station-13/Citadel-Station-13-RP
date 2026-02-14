@@ -150,8 +150,8 @@
 		return TRUE
 	// let's not do that if it's deleted!
 	if(QDELETED(I))
-		to_chat(src, SPAN_DANGER("A deleted item [I] ([REF(I)]) was sent into inventory hand procs with flags [flags]. Report this line to coders immediately."))
-		to_chat(src, SPAN_DANGER("The inventory system will attempt to reject the bad equip. Glitches may occur."))
+		to_chat(src, span_danger("A deleted item [I] ([REF(I)]) was sent into inventory hand procs with flags [flags]. Report this line to coders immediately."))
+		to_chat(src, span_danger("The inventory system will attempt to reject the bad equip. Glitches may occur."))
 		return FALSE
 
 	if(length(inventory?.held_items) < index)

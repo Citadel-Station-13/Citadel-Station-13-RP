@@ -31,7 +31,7 @@
 	if(istype(loc, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = loc
 		if((H._item_by_slot(SLOT_ID_SUIT) == src) && istype(H.species, /datum/species/phoronoid))
-			. += SPAN_NOTICE("Free phoron depletion in surface tissues is currently [H.getOxyLoss()]%.")
+			. += span_notice("Free phoron depletion in surface tissues is currently [H.getOxyLoss()]%.")
 
 /obj/item/clothing/head/helmet/space/void/plasman
 	name = "phoronoid environmental protection helmet"
@@ -48,12 +48,12 @@
 
 /obj/item/clothing/head/helmet/space/void/plasman/examine()
 	. = ..()
-	. += SPAN_NOTICE("<b>Alt-click</b> to enable the atmospheric analysis suite.")
+	. += span_notice("<b>Alt-click</b> to enable the atmospheric analysis suite.")
 
 /obj/item/clothing/head/helmet/space/void/plasman/AltClick(mob/user)
 	. = ..()
 	analyzing = !analyzing
-	to_chat(user, SPAN_NOTICE("The atmospheric analysis suite has been <b>[analyzing ? "enabled" : "disabled"]</b>."))
+	to_chat(user, span_notice("The atmospheric analysis suite has been <b>[analyzing ? "enabled" : "disabled"]</b>."))
 
 /obj/item/clothing/head/helmet/space/void/plasman/equipped(mob/user, slot, flags)
 	..()

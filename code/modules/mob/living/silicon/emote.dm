@@ -42,7 +42,7 @@
 			m_type = 1
 			if(has_buckled_mobs())
 				for(var/mob/living/L in buckled_mobs)
-					L.visible_message(SPAN_BOLDWARNING("[L] is hurled off of [src]!"))
+					L.visible_message(span_boldwarning("[L] is hurled off of [src]!"))
 					unbuckle_mob(L, BUCKLE_OP_FORCE)
 					L.throw_at(get_edge_target_turf(get_turf(src), dir), 7, 1, THROW_AT_IS_GENTLE, src)
 			spin(15, 1)

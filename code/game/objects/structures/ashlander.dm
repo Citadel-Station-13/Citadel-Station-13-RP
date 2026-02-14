@@ -38,9 +38,9 @@
 				if(attempt_consume(O, user, O.amount))
 					inserted += O.amount
 		if(inserted)
-			user.action_feedback(SPAN_NOTICE("You insert [inserted] units of material from [B] into [src]. [msg]"), src)
+			user.action_feedback(span_notice("You insert [inserted] units of material from [B] into [src]. [msg]"), src)
 		else
-			user.action_feedback(SPAN_WARNING("You fail to insert anything from [B] into [src]."), src)
+			user.action_feedback(span_warning("You fail to insert anything from [B] into [src]."), src)
 	else if(attempt_consume(I, user)) //is this really needed when attempt_consume only asks for ores???
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
@@ -61,7 +61,7 @@
 
     /// Ensure the ore is able to be put in if it's being held / in inventory
 	if(!isnull(user) && user.is_holding(O) && !O.use(amount))
-		user.action_feedback(SPAN_WARNING("[O] doesn't exist! Likely some stack bug. Yell at coderbus."), src)
+		user.action_feedback(span_warning("[O] doesn't exist! Likely some stack bug. Yell at coderbus."), src)
 		return FALSE
 
 	for (var/ty in ore_mapping)

@@ -321,7 +321,7 @@
 				attack_descriptor = "[mob_holding_item]'s [item_source_descriptor]"
 
 	defending.visible_message(
-		SPAN_DANGER("[defending] [parry_verb] [attack_descriptor][tool_text && " with \the [tool_text]"]!"),
+		span_danger("[defending] [parry_verb] [attack_descriptor][tool_text && " with \the [tool_text]"]!"),
 	)
 
 /**

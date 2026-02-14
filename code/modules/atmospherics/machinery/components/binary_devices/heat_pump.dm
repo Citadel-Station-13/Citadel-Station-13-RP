@@ -39,7 +39,7 @@
 			on = !on
 			update_icon()
 		else
-			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
+			to_chat(user, span_warning("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/component/binary/heat_pump/CtrlShiftClick(mob/user)
 	if(Adjacent(user))
@@ -48,7 +48,7 @@
 			to_chat(user, "You set the target temperature of the [src] to default.")
 			target_temp = T20C
 		else
-			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
+			to_chat(user, span_warning("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/component/binary/heat_pump/AltClick(mob/user)
 	if(Adjacent(user))
@@ -57,7 +57,7 @@
 			to_chat(user, "You set the target temperature of the [src] to [TCMB] Kelvin.")
 			target_temp = TCMB
 		else
-			to_chat(user, SPAN_WARNING("There doesn't seem to be any power."))
+			to_chat(user, span_warning("There doesn't seem to be any power."))
 
 /obj/machinery/atmospherics/component/binary/heat_pump/Initialize(mapload)
 	. = ..()
@@ -114,7 +114,7 @@
 		return
 	src.add_fingerprint(usr)
 	if(!src.allowed(user))
-		to_chat(user, SPAN_BOLDWARNING("Access denied."))
+		to_chat(user, span_boldwarning("Access denied."))
 		return
 	usr.set_machine(src)
 	ui_interact(user)

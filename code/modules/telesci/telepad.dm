@@ -34,7 +34,7 @@
 		if(istype(W, /obj/item/multitool))
 			var/obj/item/multitool/M = W
 			M.connectable = src
-			to_chat(user, SPAN_CAUTION("You save the data in the [M.name]'s buffer."))
+			to_chat(user, span_caution("You save the data in the [M.name]'s buffer."))
 			return TRUE
 
 	return ..()

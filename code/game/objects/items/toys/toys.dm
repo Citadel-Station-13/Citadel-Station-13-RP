@@ -132,7 +132,7 @@
 					if(!istype(M,/mob/living)) continue
 					if(M == user) continue
 					for(var/mob/O in viewers(world.view, D))
-						O.show_message(SPAN_WARNING("\The [M] was hit by the foam dart!"), 1)
+						O.show_message(span_warning("\The [M] was hit by the foam dart!"), 1)
 					new /obj/item/toy/ammo/crossbow(M.loc)
 					qdel(D)
 					return
@@ -154,7 +154,7 @@
 	else if (bullets == 0)
 		user.afflict_paralyze(20 * 5)
 		for(var/mob/O in viewers(world.view, user))
-			O.show_message(SPAN_WARNING("\The [user] realized they were out of ammo and starting scrounging for some!"), 1)
+			O.show_message(span_warning("\The [user] realized they were out of ammo and starting scrounging for some!"), 1)
 
 
 /obj/item/toy/crossbow/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -167,8 +167,8 @@
 
 		for(var/mob/O in viewers(target, null))
 			if(O.client)
-				O.show_message(SPAN_DANGER("\The [user] casually lines up a shot with [target]'s head and pulls the trigger!"), 1, SPAN_WARNING("You hear the sound of foam against skull"), 2)
-				O.show_message(SPAN_WARNING("\The [target] was hit in the head by the foam dart!"), 1)
+				O.show_message(span_danger("\The [user] casually lines up a shot with [target]'s head and pulls the trigger!"), 1, span_warning("You hear the sound of foam against skull"), 2)
+				O.show_message(span_warning("\The [target] was hit in the head by the foam dart!"), 1)
 
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
 		new /obj/item/toy/ammo/crossbow(target.loc)
@@ -176,7 +176,7 @@
 	else if (target.lying && src.bullets == 0)
 		for(var/mob/O in viewers(target, null))
 			if (O.client)
-				O.show_message(SPAN_DANGER("\The [user] casually lines up a shot with [target]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!"), 1, SPAN_WARNING("You hear someone fall"), 2)
+				O.show_message(span_danger("\The [user] casually lines up a shot with [target]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!"), 1, span_warning("You hear someone fall"), 2)
 		user.afflict_paralyze(20 * 5)
 
 /obj/item/toy/ammo/crossbow
@@ -237,13 +237,13 @@
 	set_weight_class(WEIGHT_CLASS_BULKY)
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
-	to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
+	to_chat(user, span_notice("You extend the plastic blade with a quick flick of your wrist."))
 
 /obj/item/toy/sword/proc/deactivate(mob/living/user)
 	if(!active)
 		return
 	playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
-	to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
+	to_chat(user, span_notice("You push the plastic blade back down into the handle."))
 	item_state = "[icon_state]"
 	active = 0
 	set_weight_class(initial(w_class))
@@ -322,9 +322,9 @@
 	s.start()
 	new /obj/effect/debris/cleanable/ash(src.loc)
 	src.visible_message(
-		SPAN_WARNING("The [src.name] explodes!"),
-		SPAN_WARNING("You hear a snap!"),
-		SPAN_HEAR("You hear a snap!"),
+		span_warning("The [src.name] explodes!"),
+		span_warning("You hear a snap!"),
+		span_hear("You hear a snap!"),
 	)
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	qdel(src)

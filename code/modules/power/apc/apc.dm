@@ -583,7 +583,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 			return
 		var/obj/item/cell/casted_cell = W
 		if(!object_cell_slot_accepts(casted_cell))
-			to_chat(usr, SPAN_WARNING("[casted_cell] won't fit in [src]'s cell slot."))
+			to_chat(usr, span_warning("[casted_cell] won't fit in [src]'s cell slot."))
 			return
 		if (machine_stat & MAINT)
 			to_chat(user,"<span class='warning'>You need to install the wiring and electronics first.</span>")
@@ -1146,7 +1146,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/power/apc, 22)
 		main_status = 2
 
 	if(debug)
-		log_debug(SPAN_DEBUGINFO("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"))
+		log_debug(span_debug_info("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"))
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area

@@ -324,8 +324,8 @@
 				return
 			add_attack_logs(user, M,  "Started to detach [choice] from [src]")
 			M.visible_message(
-				SPAN_WARNING("[user] starts to deatch \the [A] from [M]'s [src]!"),
-				SPAN_WARNING("[user] starts to detach \the [A] from your [src]!")
+				span_warning("[user] starts to deatch \the [A] from [M]'s [src]!"),
+				span_warning("[user] starts to detach \the [A] from your [src]!")
 			)
 			if(!strip_menu_standard_do_after(user, HUMAN_STRIP_DELAY))
 				return
@@ -334,13 +334,13 @@
 			add_attack_logs(user, get_worn_mob(),  "Detached [choice] from [src]")
 			if(istype(A, /obj/item/clothing/accessory/badge) || istype(A, /obj/item/clothing/accessory/medal))
 				M.visible_message(
-					SPAN_WARNING("[user] tears \the [A] off of [M]'s [src]!"),
-					SPAN_WARNING("[user] tears \the [A] off of your [src]!")
+					span_warning("[user] tears \the [A] off of [M]'s [src]!"),
+					span_warning("[user] tears \the [A] off of your [src]!")
 				)
 			else
 				M.visible_message(
-					SPAN_WARNING("[user] detaches \the [A] from [M]'s [src]!"),
-					SPAN_WARNING("[user] detaches \the [A] from your [src]!")
+					span_warning("[user] detaches \the [A] from [M]'s [src]!"),
+					span_warning("[user] detaches \the [A] from your [src]!")
 				)
 			A.on_removed(user)
 			accessories -= A

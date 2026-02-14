@@ -576,7 +576,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 			if(isnull(outgoing_call))
 				return TRUE
 			if(!isAI(usr) && usr.loc != loc)
-				to_chat(usr, SPAN_WARNING("You have to be standing on [src] to use remote telepresence!"))
+				to_chat(usr, span_warning("You have to be standing on [src] to use remote telepresence!"))
 				return TRUE
 			outgoing_call.initiate_remote_presence(usr)
 			return TRUE
@@ -661,7 +661,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	for(var/mob/living/silicon/ai/AI in living_mob_list)
 		if(!AI.client)
 			continue
-		to_chat(AI, SPAN_INFO("Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>."))
+		to_chat(AI, span_info("Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>."))
 
 /**
  * is request ai available
@@ -793,8 +793,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/prototype/language/using_language, sign_lang = FALSE, using_verb = "says", obj/machinery/holopad/source, list/heard = list())
 	. = TRUE
 	var/scrambled = stars(msg)
-	var/for_knowers = "[source && "[SPAN_NOTICE(source.holocall_name(src))]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
-	var/for_not_knowers = "[source && "[SPAN_NOTICE(source.holocall_name(src))]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
+	var/for_knowers = "[source && "[span_notice(source.holocall_name(src))]: "][span_name(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
+	var/for_not_knowers = "[source && "[span_notice(source.holocall_name(src))]: "][span_name(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
 	for(var/atom/movable/AM as anything in get_hearers_in_view(world.view, src))
 		if(heard[AM])
 			continue
@@ -954,14 +954,14 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	if(remoting)
 		cleanup_remote_presence()
 	if(!isAI(user) && user.loc != source.loc)
-		user.action_feedback(SPAN_WARNING("You have to be standing on the holopad!"), source)
+		user.action_feedback(span_warning("You have to be standing on the holopad!"), source)
 		return FALSE
 	if(!user.request_movement_intercept(src))
-		user.action_feedback(SPAN_WARNING("You're already controlling something else!"), source)
+		user.action_feedback(span_warning("You're already controlling something else!"), source)
 		return FALSE
 	if(!user.shunt_perspective(remote_perspective()))
 		user.clear_movement_intercept()
-		user.action_feedback(SPAN_WARNING("You're already focusing somewhere else!"), source)
+		user.action_feedback(span_warning("You're already focusing somewhere else!"), source)
 		return FALSE
 	remoting = user
 	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, PROC_REF(cleanup_remote_presence))
@@ -1207,7 +1207,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
 /obj/effect/overlay/hologram/proc/relay_speech(speaker_name, message, datum/prototype/language/lang)
 	// TODO: ATOM SAY(), not janky ass atom_say().
-	atom_say("[SPAN_NAME(speaker_name)] says, [message]", lang)
+	atom_say("[span_name(speaker_name)] says, [message]", lang)
 
 /obj/effect/overlay/hologram/proc/relay_emote(speaker_name, message)
 	visible_message("[message]")
@@ -1271,9 +1271,9 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/effect/overlay/hologram/holopad/ai/examine(mob/user, dist)
 	. = ..()
 	//If you need an ooc_notes copy paste, this is NOT the one to use.
-	. += SPAN_BOLDNOTICE("Character Profile: <a href='?owner=\ref[src];character_profile=1'>\[View\]</a>")
+	. += span_boldnotice("Character Profile: <a href='?owner=\ref[src];character_profile=1'>\[View\]</a>")
 	if(vored)
-		. += SPAN_WARNING("It seems to have [vored] inside of it!")
+		. += span_warning("It seems to have [vored] inside of it!")
 
 /obj/effect/overlay/hologram/holopad/ai/on_out_of_bounds()
 	owner?.terminate_holopad_connection()
@@ -1284,8 +1284,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	playsound('sound/effects/stealthoff.ogg', 50, 0)
 	vored = victim
 	victim.forceMove(src)
-	visible_message(SPAN_BOLDWARNING("[src] suddenly materializes around [victim], entirely engulfing them!"))
-	to_chat(user, SPAN_NOTICE("You completely engulf [victim] with your hardlight hologram."))
+	visible_message(span_boldwarning("[src] suddenly materializes around [victim], entirely engulfing them!"))
+	to_chat(user, span_notice("You completely engulf [victim] with your hardlight hologram."))
 	pass_flags = NONE
 	pass_flags_self = NONE
 	color = HOLO_VORE_COLOR
@@ -1298,7 +1298,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	playsound('sound/effects/stealthoff.ogg', 50, 0)
 	vored.forceMove(drop_location())
 	vored.afflict_paralyze(20)
-	visible_message(SPAN_BOLDWARNING("[vored] flops out of [src]."))
+	visible_message(span_boldwarning("[vored] flops out of [src]."))
 	vored = null
 	pass_flags = initial(pass_flags)
 	pass_flags_self = initial(pass_flags_self)

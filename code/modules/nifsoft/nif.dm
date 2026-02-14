@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 		if(human)
 			notify("Danger! General system insta#^!($",TRUE)
-			to_chat(human, SPAN_BOLDDANGER("Your NIF vision overlays disappear and your head suddenly seems very quiet..."))
+			to_chat(human, span_bolddanger("Your NIF vision overlays disappear and your head suddenly seems very quiet..."))
 
 //Repair update/check proc
 /obj/item/nif/proc/repair(var/repair = 0)
@@ -246,7 +246,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 /obj/item/nif/attackby(obj/item/W, mob/user as mob)
 	if(open == 0 && W.is_screwdriver())
 		if(do_after(user, 4 SECONDS, src) && open == 0)
-			user.visible_message("[user] unscrews and pries open \the [src].", SPAN_NOTICE("You unscrew and pry open \the [src]."))
+			user.visible_message("[user] unscrews and pries open \the [src].", span_notice("You unscrew and pry open \the [src]."))
 			playsound(user, 'sound/items/Screwdriver.ogg', 50, 1)
 			open = 1
 			update_icon()
@@ -404,7 +404,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	last_notification = message //TGUI Hook
 
 	to_chat(human,"<b>\[[icon2html(thing = src.big_icon, target = human)]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
-	if(prob(1)) human.visible_message(SPAN_NOTICE("\The [human.real_name] [pick(look_messages)]."))
+	if(prob(1)) human.visible_message(span_notice("\The [human.real_name] [pick(look_messages)]."))
 	if(alert)
 		SEND_SOUND(human, bad_sound)
 	else

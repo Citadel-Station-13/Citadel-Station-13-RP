@@ -50,7 +50,7 @@
 				smoke_puff.start()
 			while(FALSE)
 			robot.visible_message(
-				SPAN_NOTICE("With a series of mechanical whirrs, [robot] specializes into \a [resolved_module.get_visible_name()] module."),
+				span_notice("With a series of mechanical whirrs, [robot] specializes into \a [resolved_module.get_visible_name()] module."),
 			)
 			qdel(src)
 			return TRUE

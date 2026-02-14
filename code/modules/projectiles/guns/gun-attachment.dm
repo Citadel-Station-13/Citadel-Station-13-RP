@@ -8,14 +8,14 @@
 	if(!attachment.attachment_slot || !attachment_alignment?[attachment.attachment_slot])
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_WARNING("[attachment] won't fit anywhere on [src]!"),
+				span_warning("[attachment] won't fit anywhere on [src]!"),
 				target = src,
 			)
 		return FALSE
 	if(attachment.attachment_type & attachment_type_blacklist)
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_WARNING("[attachment] doesn't work with [src]!"),
+				span_warning("[attachment] doesn't work with [src]!"),
 				target = src,
 			)
 		return FALSE
@@ -23,14 +23,14 @@
 		if(existing.attachment_slot == attachment.attachment_slot)
 			if(!silent)
 				actor?.chat_feedback(
-					SPAN_WARNING("[src] already has [existing] installed on its [existing.attachment_slot]!"),
+					span_warning("[src] already has [existing] installed on its [existing.attachment_slot]!"),
 					target = src,
 				)
 			return FALSE
 		if(existing.attachment_type & attachment.attachment_type)
 			if(!silent)
 				actor?.chat_feedback(
-					SPAN_WARNING("[src]'s [existing] conflicts with [attachment]!"),
+					span_warning("[src]'s [existing] conflicts with [attachment]!"),
 					target = src,
 				)
 			return FALSE
@@ -46,7 +46,7 @@
 		if(actor.performer && actor.performer.is_in_inventory(attachment))
 			if(!actor.performer.can_unequip(attachment, attachment.worn_slot))
 				actor.chat_feedback(
-					SPAN_WARNING("[attachment] is stuck to your hand!"),
+					span_warning("[attachment] is stuck to your hand!"),
 					target = src,
 				)
 				return FALSE
@@ -71,7 +71,7 @@
 	if(!silent)
 		actor?.visible_feedback(
 			target = src,
-			visible = SPAN_NOTICE("[actor.performer] attaches [attachment] to [src]'s [attachment.attachment_slot]."),
+			visible = span_notice("[actor.performer] attaches [attachment] to [src]'s [attachment.attachment_slot]."),
 			range = MESSAGE_RANGE_CONFIGURATION,
 		)
 	if(attachment.loc != src)
@@ -93,7 +93,7 @@
 /obj/item/gun/proc/user_uninstall_attachment(obj/item/gun_attachment/attachment, datum/event_args/actor/actor, put_in_hands)
 	if(!attachment.can_detach)
 		actor?.chat_feedback(
-			SPAN_WARNING("[attachment] is not removable."),
+			span_warning("[attachment] is not removable."),
 			target = src,
 		)
 		return FALSE
@@ -129,7 +129,7 @@
 	if(!silent)
 		actor?.visible_feedback(
 			target = src,
-			visible = SPAN_NOTICE("[actor.performer] detaches [attachment] from [src]'s [attachment.attachment_slot]."),
+			visible = span_notice("[actor.performer] detaches [attachment] from [src]'s [attachment.attachment_slot]."),
 			range = MESSAGE_RANGE_CONFIGURATION,
 		)
 	return deleting ? null : attachment.uninstall_product_transform(src)

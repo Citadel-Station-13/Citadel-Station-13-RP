@@ -5,7 +5,7 @@
  */
 /client/proc/throttle_verb(time = world.tick_lag)
 	if(verb_throttle > world.time)
-		to_chat(src, SPAN_WARNING("Verb on cooldown."))
+		to_chat(src, span_warning("Verb on cooldown."))
 		return FALSE
 	verb_throttle = world.time + time
 	return TRUE

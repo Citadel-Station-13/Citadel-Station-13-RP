@@ -109,7 +109,7 @@
 				spawn_types[xeno_type]--
 
 /datum/event/xeno_infestation/proc/log_this()
-	log_debug(SPAN_DEBUGINFO("Xenomorph Infestation Event: Spawned the following: [spawn_types[MOTHER]] Queen Mother(s), [spawn_types[EMPRESS]] Empress(es), [spawn_types[QUEEN]] Queen(s), [spawn_types[PRAE]] Preatorian(s), [spawn_types[SENTINEL]] Sentinel(s), [spawn_types[DRONE]] Drone(s), and [spawn_types[HUNTER]] Hunter(s). Spawning in [locstring]"))
+	log_debug(span_debug_info("Xenomorph Infestation Event: Spawned the following: [spawn_types[MOTHER]] Queen Mother(s), [spawn_types[EMPRESS]] Empress(es), [spawn_types[QUEEN]] Queen(s), [spawn_types[PRAE]] Preatorian(s), [spawn_types[SENTINEL]] Sentinel(s), [spawn_types[DRONE]] Drone(s), and [spawn_types[HUNTER]] Hunter(s). Spawning in [locstring]"))
 
 
 /datum/event/xeno_infestation/proc/fill_spawn_type()

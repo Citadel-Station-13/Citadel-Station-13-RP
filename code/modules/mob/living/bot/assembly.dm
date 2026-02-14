@@ -28,7 +28,7 @@
 
 /obj/item/bot_assembly/proc/can_finish_build(obj/item/I, mob/user)
 	if(contents.len >= 1)
-		to_chat(user, SPAN_WARNING("You need to empty [src] out first."))
+		to_chat(user, span_warning("You need to empty [src] out first."))
 		return FALSE
 	return TRUE
 

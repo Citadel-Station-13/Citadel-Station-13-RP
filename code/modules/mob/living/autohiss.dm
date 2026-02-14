@@ -91,13 +91,13 @@
 	switch(autohiss_mode)
 		if(AUTOHISS_OFF)
 			autohiss_mode = AUTOHISS_BASIC
-			to_chat(src, SPAN_NOTICE("Autohiss changed to basic."))
+			to_chat(src, span_notice("Autohiss changed to basic."))
 		if(AUTOHISS_BASIC)
 			autohiss_mode = AUTOHISS_FULL
-			to_chat(src, SPAN_NOTICE("Autohiss changed to full."))
+			to_chat(src, span_notice("Autohiss changed to full."))
 		if(AUTOHISS_FULL)
 			autohiss_mode = AUTOHISS_OFF
-			to_chat(src, SPAN_NOTICE("Autohiss disabled."))
+			to_chat(src, span_notice("Autohiss disabled."))
 
 
 /mob/living/carbon/human/verb/toggle_autohiss_type()
@@ -110,10 +110,10 @@
 	switch(new_autohiss_type)
 		if("None")
 			autohiss_type = AUTOHISS_TYPE_NONE
-			to_chat(src, SPAN_NOTICE("Autohiss disabled."))
+			to_chat(src, span_notice("Autohiss disabled."))
 		if(SPECIES_UNATHI)
 			autohiss_type = AUTOHISS_TYPE_UNATHI
-			to_chat(src, SPAN_NOTICE("Autohiss type changed to unathi."))
+			to_chat(src, span_notice("Autohiss type changed to unathi."))
 		if("Tajaran")
 			autohiss_type = AUTOHISS_TYPE_TAJARAN
-			to_chat(src, SPAN_NOTICE("Autohiss type changed to tajaran."))
+			to_chat(src, span_notice("Autohiss type changed to tajaran."))

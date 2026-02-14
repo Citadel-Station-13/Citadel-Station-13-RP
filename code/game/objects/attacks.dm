@@ -29,7 +29,7 @@
 	cleave_visual(user, target)
 
 	if(hit_mobs)
-		to_chat(user, SPAN_DANGER("You used \the [src] to attack [hit_mobs] other thing\s!"))
+		to_chat(user, span_danger("You used \the [src] to attack [hit_mobs] other thing\s!"))
 	cleaving = FALSE // We're done now.
 	return hit_mobs > 0 // Returns TRUE if anything got hit.
 

@@ -524,23 +524,23 @@
 		return FALSE
 
 	if(!N.held_mob.client || N.held_mob.stat >= DEAD)
-		to_chat(user, SPAN_DANGER("That nymph is not viable."))
+		to_chat(user, span_danger("That nymph is not viable."))
 		return SURGERY_FAILURE
 
 	if(!(affected.robotic >= ORGAN_ROBOT))
-		to_chat(user, SPAN_DANGER("You cannot install a nymph into a meat puppet.")) // No meat muppet for you.
+		to_chat(user, span_danger("You cannot install a nymph into a meat puppet.")) // No meat muppet for you.
 		return SURGERY_FAILURE
 
 	if(!(affected.model != "Skrellian Exoskeleton"))
-		to_chat(user, SPAN_DANGER("You're fairly certain a nymph can't pilot a normal robot.<"))
+		to_chat(user, span_danger("You're fairly certain a nymph can't pilot a normal robot.<"))
 		return SURGERY_FAILURE
 
 	if(!target.should_have_organ("brain"))
-		to_chat(user, SPAN_DANGER("You're pretty sure [target.species.name_plural] don't normally have a brain."))
+		to_chat(user, span_danger("You're pretty sure [target.species.name_plural] don't normally have a brain."))
 		return SURGERY_FAILURE
 
 	if(!isnull(target.internal_organs["brain"]))
-		to_chat(user, SPAN_DANGER("Your subject already has a cephalon."))
+		to_chat(user, span_danger("Your subject already has a cephalon."))
 		return SURGERY_FAILURE
 
 	return TRUE
@@ -548,17 +548,17 @@
 /datum/surgery_step/robotics/install_nymph/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message(
-		SPAN_NOTICE("[user] starts setting \the [tool] into [target]'s [affected.name]."),
-		SPAN_NOTICE("You start setting \the [tool] into [target]'s [affected.name]."),
-		SPAN_HEAR("You hear something being placed inside something."),
+		span_notice("[user] starts setting \the [tool] into [target]'s [affected.name]."),
+		span_notice("You start setting \the [tool] into [target]'s [affected.name]."),
+		span_hear("You hear something being placed inside something."),
 	)
 	..()
 
 /datum/surgery_step/robotics/install_nymph/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message(
-		SPAN_NOTICE("[user] has installed \the [tool] into [target]'s [affected.name]."),
-		SPAN_NOTICE("You have installed \the [tool] into [target]'s [affected.name]."),
+		span_notice("[user] has installed \the [tool] into [target]'s [affected.name]."),
+		span_notice("You have installed \the [tool] into [target]'s [affected.name]."),
 	)
 
 	var/obj/item/holder/diona/N = tool
@@ -595,6 +595,6 @@
 
 /datum/surgery_step/robotics/install_nymph/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message(
-		SPAN_WARNING("[user]'s hand slips."),
-		SPAN_WARNING("Your hand slips."),
+		span_warning("[user]'s hand slips."),
+		span_warning("Your hand slips."),
 	)

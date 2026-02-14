@@ -14,8 +14,8 @@
 
 /mob/living/silicon/proc/translation_train_hook(datum/translation_context/context, datum/prototype/language/L, old_efficiency)
 	if(!old_efficiency)
-		to_chat(src, SPAN_NOTICE("Identifying new language . . ."))
-		to_chat(src, SPAN_NOTICE("New language identified: [L.name]. Registering and beginning adaptive translation."))
+		to_chat(src, span_notice("Identifying new language . . ."))
+		to_chat(src, span_notice("New language identified: [L.name]. Registering and beginning adaptive translation."))
 	sync_translation_context(L)
 
 /mob/living/silicon/proc/create_translation_context(path = translation_context_type)

@@ -18,7 +18,7 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if (!ishuman(target))
-		to_chat(user, SPAN_WARNING("\The [target] does not seem to be compatible with this device."))
+		to_chat(user, span_warning("\The [target] does not seem to be compatible with this device."))
 		flick("[icon_state]0",src)
 		return
 
@@ -61,27 +61,27 @@
 	add_fingerprint(user)
 
 	if(!(do_after(user, 1 SECOND)))
-		to_chat(user, SPAN_WARNING("You must remain still for the device to complete its work."))
+		to_chat(user, span_warning("You must remain still for the device to complete its work."))
 		return FALSE
 
 	//General
 	if ((!target.fingerprints || !target.fingerprints.len) && !target.suit_fibers && !target.blood_DNA)
 		user.visible_message("\The [user] scans \the [target] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
-		SPAN_NOTICE("Unable to locate any fingerprints, materials, fibers, or blood on [target]!"),\
+		span_notice("Unable to locate any fingerprints, materials, fibers, or blood on [target]!"),\
 		"You hear a faint hum of electrical equipment.")
 		flick("[icon_state]0",src)
 		return FALSE
 
 	if(add_data(target))
-		to_chat(user, SPAN_NOTICE("Object already in internal memory. Consolidating data..."))
+		to_chat(user, span_notice("Object already in internal memory. Consolidating data..."))
 		flick("[icon_state]1",src)
 		return
 
 	//PRINTS
 	if(target.fingerprints && target.fingerprints.len)
-		to_chat(user, SPAN_NOTICE("Isolated [target.fingerprints.len] fingerprints:"))
+		to_chat(user, span_notice("Isolated [target.fingerprints.len] fingerprints:"))
 		if(!reveal_incompletes)
-			to_chat(user, SPAN_WARNING("Rapid Analysis Imperfect: Scan samples with H.R.F.S. equipment to determine nature of incomplete prints."))
+			to_chat(user, span_warning("Rapid Analysis Imperfect: Scan samples with H.R.F.S. equipment to determine nature of incomplete prints."))
 		var/list/complete_prints = list()
 		var/list/incomplete_prints = list()
 		for(var/i in target.fingerprints)
@@ -91,38 +91,38 @@
 			else
 				incomplete_prints += print
 		if(complete_prints.len < 1)
-			to_chat(user, SPAN_NOTICE("No intact prints found"))
+			to_chat(user, span_notice("No intact prints found"))
 		else
-			to_chat(user, SPAN_NOTICE("Found [complete_prints.len] intact prints"))
+			to_chat(user, span_notice("Found [complete_prints.len] intact prints"))
 			if(reveal_fingerprints)
 				for(var/i in complete_prints)
-					to_chat(user, SPAN_NOTICE("&nbsp;&nbsp;&nbsp;&nbsp;[i]"))
+					to_chat(user, span_notice("&nbsp;&nbsp;&nbsp;&nbsp;[i]"))
 
-		to_chat(user, SPAN_NOTICE("Found [incomplete_prints.len] incomplete prints"))
+		to_chat(user, span_notice("Found [incomplete_prints.len] incomplete prints"))
 		if(reveal_incompletes)
 			for(var/i in incomplete_prints)
-				to_chat(user, SPAN_NOTICE("&nbsp;&nbsp;&nbsp;&nbsp;[i]"))
+				to_chat(user, span_notice("&nbsp;&nbsp;&nbsp;&nbsp;[i]"))
 
 
 	//FIBERS
 	if(target.suit_fibers && target.suit_fibers.len)
-		to_chat(user, SPAN_NOTICE("Fibers/Materials detected.[reveal_fibers ? " Analysing..." : " Acquisition of fibers for H.R.F.S. analysis advised."]"))
+		to_chat(user, span_notice("Fibers/Materials detected.[reveal_fibers ? " Analysing..." : " Acquisition of fibers for H.R.F.S. analysis advised."]"))
 		flick("[icon_state]1",src)
 		if(reveal_fibers && do_after(user, 5 SECONDS))
-			to_chat(user, SPAN_NOTICE("Apparel samples scanned:"))
+			to_chat(user, span_notice("Apparel samples scanned:"))
 			for(var/sample in target.suit_fibers)
 				to_chat(user," - <span class='notice'>[sample]</span>")
 
 	//Blood
 	if (target.blood_DNA && target.blood_DNA.len)
-		to_chat(user, SPAN_NOTICE("Blood detected.[reveal_blood ? " Analysing..." : " Acquisition of swab for H.R.F.S. analysis advised."]"))
+		to_chat(user, span_notice("Blood detected.[reveal_blood ? " Analysing..." : " Acquisition of swab for H.R.F.S. analysis advised."]"))
 		if(reveal_blood && do_after(user, 5 SECONDS))
 			flick("[icon_state]1",src)
 			for(var/blood in target.blood_DNA)
 				to_chat(user,"Blood type: <span class='warning'>[target.blood_DNA[blood]]</span> DNA: <span class='warning'>[blood]</span>")
 
 	user.visible_message("\The [user] scans \the [target] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
-	SPAN_NOTICE("You finish scanning \the [target]."),\
+	span_notice("You finish scanning \the [target]."),\
 	"You hear a faint hum of electrical equipment.")
 	flick("[icon_state]1",src)
 	return FALSE
@@ -154,7 +154,7 @@
 			var/list/fibers = F.fields["fibers"]
 			var/list/bloods = F.fields["blood"]
 
-			to_chat(user, SPAN_NOTICE("Data for: [F.fields["name"]]"))
+			to_chat(user, span_notice("Data for: [F.fields["name"]]"))
 
 			if(reveal_fingerprints)
 				var/list/complete_prints = list()
@@ -168,20 +168,20 @@
 						incomplete_prints += print
 
 				if(complete_prints.len < 1)
-					to_chat(user, SPAN_NOTICE("No intact prints found."))
+					to_chat(user, span_notice("No intact prints found."))
 
 				if(reveal_incompletes)
 					for(var/print in incomplete_prints)
 						to_chat(user, " - <span class='notice'>[print]</span>")
 
 			if(fibers && fibers.len)
-				to_chat(user, SPAN_NOTICE("[fibers.len] samples of material were present."))
+				to_chat(user, span_notice("[fibers.len] samples of material were present."))
 				if(reveal_fibers)
 					for(var/sample in fibers)
 						to_chat(user," - <span class='notice'>[sample]</span>")
 
 			if(bloods && bloods.len)
-				to_chat(user, SPAN_NOTICE("[bloods.len] samples of blood were present."))
+				to_chat(user, span_notice("[bloods.len] samples of blood were present."))
 				if(reveal_blood)
 					for(var/bloodsample in bloods)
 						to_chat(user, " - <span class='warning'>[bloodsample]</span> Type: [bloods[bloodsample]]")
@@ -193,7 +193,7 @@
 
 	if (alert("Are you sure you want to wipe all data from [src]?",,"Yes","No") == "Yes")
 		stored = list()
-		to_chat(usr, SPAN_NOTICE("Forensic data erase complete."))
+		to_chat(usr, span_notice("Forensic data erase complete."))
 
 /obj/item/detective_scanner/advanced
 	name = "advanced forensic scanner"

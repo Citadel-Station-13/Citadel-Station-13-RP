@@ -7,7 +7,7 @@
 			L.rejuvenate()
 			L.maxHealth = max(200,L.maxHealth) //sapient mobs have a higher will to live - makes more fragile mobs... less fragile.
 			L.add_language(LANGUAGE_GALCOM) //talking dogs are real. thank you science.
-			L.visible_message(SPAN_NOTICE("[created] shudders slightly as they seem to grow more aware of their surroundings!"))
+			L.visible_message(span_notice("[created] shudders slightly as they seem to grow more aware of their surroundings!"))
 			L.remove_ghostrole() //this feels dumb but I'm paranoid
 	. = ..()
 

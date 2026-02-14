@@ -89,7 +89,7 @@
 	var/obj/overmap/entity/visitable/ship/landable/champagne/newship = new(start_loc, shuttle_name, shuttle_name)
 	// It automatically registers itself with SSshuttle
 
-	log_debug(SPAN_DEBUGINFO("Created new ship [newship] for shuttle [shuttle] at landmark [starting_landmark]"))
+	log_debug(span_debug_info("Created new ship [newship] for shuttle [shuttle] at landmark [starting_landmark]"))
 	return shuttle
 
 //

@@ -115,9 +115,9 @@
 			"<span class='notice'>You hear squelching...</span>")
 	else
 		user.visible_message(
-			SPAN_WARNING("[user] tears free of [src]."),
-			SPAN_WARNING("You tear free of [src]."),
-			SPAN_WARNING("You hear squelching...")
+			span_warning("[user] tears free of [src]."),
+			span_warning("You tear free of [src]."),
+			span_warning("You hear squelching...")
 		)
 
 /obj/structure/bed/hybrid_nest/user_buckle_mob(mob/M, flags, mob/user, semantic)
@@ -171,7 +171,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
-			visible_message(SPAN_WARNING("[C] strokes the [name], and it melts away!"))
+			visible_message(span_warning("[C] strokes the [name], and it melts away!"))
 			qdel(src)
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()

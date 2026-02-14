@@ -57,16 +57,16 @@
 	. = ..()
 	. += "This guest pass provides time-limited access to an area, similar to an ID card. Use it in your hand on harm intent to prematurely deactivate it.<br><br>"
 	if (expired)
-		. += SPAN_NOTICE("This pass expired at [worldtime2stationtime(expire_time)].<br>")
+		. += span_notice("This pass expired at [worldtime2stationtime(expire_time)].<br>")
 	else
-		. += SPAN_NOTICE("This pass expires at [worldtime2stationtime(expire_time)].<br>")
-	. += SPAN_NOTICE("It grants access to following areas:<br>")
+		. += span_notice("This pass expires at [worldtime2stationtime(expire_time)].<br>")
+	. += span_notice("It grants access to following areas:<br>")
 	for (var/A in access)
-		. += SPAN_NOTICE("[get_access_desc(A)].<br>")
+		. += span_notice("[get_access_desc(A)].<br>")
 	. += "<br>"
-	. += SPAN_NOTICE("Issuing reason: [given_reason].<br>")
-	. += SPAN_NOTICE("Issuer name: [giver_name]<br>")
-	. += SPAN_NOTICE("Issuer rank: [giver_rank]<br>")
+	. += span_notice("Issuing reason: [given_reason].<br>")
+	. += span_notice("Issuer name: [giver_name]<br>")
+	. += span_notice("Issuer rank: [giver_rank]<br>")
 
 /obj/item/card/id/guest/attack_self(mob/user, datum/event_args/actor/actor)
 	if(user.a_intent == INTENT_HARM)

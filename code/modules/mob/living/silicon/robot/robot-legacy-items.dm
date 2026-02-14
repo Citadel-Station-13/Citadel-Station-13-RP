@@ -95,7 +95,7 @@
 		I.loc = src
 		loaded_item = I
 		for(var/mob/M in viewers())
-			M.show_message(SPAN_NOTICE("[user] adds the [I] to the [src]."), SAYCODE_TYPE_VISIBLE)
+			M.show_message(span_notice("[user] adds the [I] to the [src]."), SAYCODE_TYPE_VISIBLE)
 		desc = initial(desc) + "<br>It is holding \the [loaded_item]."
 		flick("portable_analyzer_load", src)
 		icon_state = "portable_analyzer_full"
@@ -115,7 +115,7 @@
 		var/obj/item/I = target
 		if(do_after(user, 5 SECONDS * I.w_class, target))
 			for(var/mob/M in viewers())
-				M.show_message(SPAN_NOTICE("[user] sweeps \the [src] over \the [I]."), SAYCODE_TYPE_VISIBLE)
+				M.show_message(span_notice("[user] sweeps \the [src] over \the [I]."), SAYCODE_TYPE_VISIBLE)
 			flick("[initial(icon_state)]-scan", src)
 			if(I.origin_tech && I.origin_tech.len)
 				for(var/T in I.origin_tech)

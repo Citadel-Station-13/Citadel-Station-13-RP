@@ -150,7 +150,7 @@
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
-			to_chat(user, SPAN_NOTICE("There is nothing to recover from storage."))
+			to_chat(user, span_notice("There is nothing to recover from storage."))
 			return
 
 		var/obj/item/I = tgui_input_list(usr, "Please choose which object to retrieve.", "Object recovery", frozen_items)
@@ -158,10 +158,10 @@
 			return
 
 		if(!(I in frozen_items))
-			to_chat(user, SPAN_NOTICE("\The [I] is no longer in storage."))
+			to_chat(user, span_notice("\The [I] is no longer in storage."))
 			return
 
-		visible_message(SPAN_NOTICE("The console beeps happily as it disgorges \the [I]."), 3)
+		visible_message(span_notice("The console beeps happily as it disgorges \the [I]."), 3)
 
 		I.forceMove(get_turf(src))
 		frozen_items -= I
@@ -170,10 +170,10 @@
 		if(!allow_items) return
 
 		if(frozen_items.len == 0)
-			to_chat(user, SPAN_NOTICE("There is nothing to recover from storage."))
+			to_chat(user, span_notice("There is nothing to recover from storage."))
 			return
 
-		visible_message(SPAN_NOTICE("The console beeps happily as it disgorges the desired objects."), 3)
+		visible_message(span_notice("The console beeps happily as it disgorges the desired objects."), 3)
 
 		for(var/obj/item/I in frozen_items)
 			I.forceMove(get_turf(src))
@@ -464,7 +464,7 @@
 		// them win or lose based on cryo is silly so we remove the objective.
 		if(O.target == to_despawn.mind)
 			if(O.owner && O.owner.current)
-				to_chat(O.owner.current, SPAN_WARNING("You get the feeling your target is no longer within your reach..."))
+				to_chat(O.owner.current, span_warning("You get the feeling your target is no longer within your reach..."))
 			qdel(O)
 
 	// Resleeving.
@@ -513,8 +513,8 @@
 		//Make an announcement and log the person entering storage.
 		control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
 		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, (LEGACY_MAP_DATUM).get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
-		//visible_message(SPAN_NOTICE("\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage."), 3)
-		visible_message(SPAN_NOTICE("\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2]."), 3)
+		//visible_message(span_notice("\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage."), 3)
+		visible_message(span_notice("\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2]."), 3)
 	control_computer._admin_logs += "[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) at [stationtime2text()]"
 	log_and_message_admins("[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) entered cryostorage.")
 
@@ -534,7 +534,7 @@
 
 		var/obj/item/grab/grab = G
 		if(occupant)
-			to_chat(user, SPAN_NOTICE("\The [src] is in use."))
+			to_chat(user, span_notice("\The [src] is in use."))
 			return
 
 		if(!ismob(grab.affecting))
@@ -577,13 +577,13 @@
 		return
 
 	if(occupant)
-		to_chat(usr, SPAN_BOLDNOTICE("\The [src] is in use."))
+		to_chat(usr, span_boldnotice("\The [src] is in use."))
 		return
 
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, SPAN_WARNING("You have other entities attached to yourself. Remove them first."))
+			to_chat(L, span_warning("You have other entities attached to yourself. Remove them first."))
 			return
 
 	visible_message("[usr] [on_enter_visible_message] [src].", 3)
@@ -593,7 +593,7 @@
 			return
 
 		if(occupant)
-			to_chat(usr, SPAN_BOLDNOTICE("\The [src] is in use."))
+			to_chat(usr, span_boldnotice("\The [src] is in use."))
 			return
 
 		usr.stop_pulling()
@@ -608,8 +608,8 @@
 
 		icon_state = occupied_icon_state
 
-		to_chat(usr, SPAN_NOTICE("[on_enter_occupant_message]"))
-		to_chat(usr, SPAN_BOLDNOTICE("If you ghost, log out or close your client now, your character will shortly be permanently removed from the round."))
+		to_chat(usr, span_notice("[on_enter_occupant_message]"))
+		to_chat(usr, span_boldnotice("If you ghost, log out or close your client now, your character will shortly be permanently removed from the round."))
 
 		time_entered = world.time
 		add_fingerprint(usr)
@@ -647,7 +647,7 @@
 	if(!M)
 		return
 	if(occupant)
-		to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
+		to_chat(user, span_warning("\The [src] is already occupied."))
 		return
 
 	var/willing = null //We don't want to allow people to be forced into despawning.
@@ -667,7 +667,7 @@
 
 		if(do_after(user, 20))
 			if(occupant)
-				to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
+				to_chat(user, span_warning("\The [src] is already occupied."))
 				return
 			M.forceMove(src)
 			M.update_perspective()
@@ -676,8 +676,8 @@
 
 		icon_state = occupied_icon_state
 
-		to_chat(M, SPAN_NOTICE("[on_enter_occupant_message]"))
-		to_chat(M, SPAN_BOLDNOTICE("If you ghost, log out or close your client now, your character will shortly be permanently removed from the round."))
+		to_chat(M, span_notice("[on_enter_occupant_message]"))
+		to_chat(M, span_boldnotice("If you ghost, log out or close your client now, your character will shortly be permanently removed from the round."))
 		set_occupant(M)
 		time_entered = world.time
 		if(ishuman(M) && applies_stasis)
@@ -689,7 +689,7 @@
 		// Book keeping!
 		var/turf/location = get_turf(src)
 		log_admin("[key_name_admin(M)] has entered a stasis pod. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
-		message_admins(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod."))
+		message_admins(span_notice("[key_name_admin(M)] has entered a stasis pod."))
 
 		//Despawning occurs when process() is called with an occupant without a client.
 		add_fingerprint(M)

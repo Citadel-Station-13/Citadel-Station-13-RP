@@ -49,7 +49,7 @@ GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 
 /datum/gm_ping/proc/chat_output()
 	var/rendered = say_emphasis(html_encode(unsanitized_message))
-	return "[lazy_unsafe_uid] @ [context_component?.parent] - From '[originating_ckey]', a '[SPAN_TOOLTIP(rendered, "[length_char(unsanitized_message)] character message")]'"
+	return "[lazy_unsafe_uid] @ [context_component?.parent] - From '[originating_ckey]', a '[span_tooltip(rendered, "[length_char(unsanitized_message)] character message")]'"
 
 /datum/gm_ping/proc/link_context(atom/target)
 	if(context_component)

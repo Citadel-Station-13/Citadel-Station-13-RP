@@ -102,9 +102,9 @@
 
 /obj/structure/sculpting_block/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("It is made out of <b>[isnull(material)? "nothing?!": "[material.display_name]."]</b>")
-	. += SPAN_NOTICE("Use a <b>wrench</b> to un/fasten the anchoring bolts.")
-	. += SPAN_NOTICE("Use a <b>welder</b> to slice it apart.")
+	. += span_notice("It is made out of <b>[isnull(material)? "nothing?!": "[material.display_name]."]</b>")
+	. += span_notice("Use a <b>wrench</b> to un/fasten the anchoring bolts.")
+	. += span_notice("Use a <b>welder</b> to slice it apart.")
 
 /obj/structure/sculpting_block/proc/reset_sculpting()
 	sculpting_line = icon_y_dimension
@@ -141,9 +141,9 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[e_args.performer] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		audible = SPAN_WARNING("You hear bolts being [anchored? "unfastened" : "fastened"]."),
-		otherwise_self = SPAN_NOTICE("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		visible = span_notice("[e_args.performer] starts [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		audible = span_warning("You hear bolts being [anchored? "unfastened" : "fastened"]."),
+		otherwise_self = span_notice("You start [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 	)
 	log_construction(e_args, src, "started [anchored? "unanchoring" : "anchoring"]")
 	if(!use_wrench(I, e_args, flags, 3 SECONDS))
@@ -151,9 +151,9 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[e_args.performer] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
-		audible = SPAN_WARNING("You hear bolts [anchored? "falling out" : "clicking into place"]."),
-		otherwise_self = SPAN_NOTICE("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		visible = span_notice("[e_args.performer] finishes [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
+		audible = span_warning("You hear bolts [anchored? "falling out" : "clicking into place"]."),
+		otherwise_self = span_notice("You finish [anchored? "unbolting [src] from the floor" : "bolting [src] to the floor"]."),
 	)
 	log_construction(e_args, src, "[anchored? "unanchored" : "anchored"]")
 	set_anchored(!anchored)
@@ -166,9 +166,9 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[e_args.performer] starts slicing [src] apart."),
-		audible = SPAN_WARNING("You hear the sound of a welding torch being used on something metallic."),
-		otherwise_self = SPAN_NOTICE("You start slicing [src] apart."),
+		visible = span_notice("[e_args.performer] starts slicing [src] apart."),
+		audible = span_warning("You hear the sound of a welding torch being used on something metallic."),
+		otherwise_self = span_notice("You start slicing [src] apart."),
 	)
 	log_construction(e_args, src, "started deconstructing")
 	if(!use_welder(I, e_args, flags, 7 SECONDS))
@@ -176,9 +176,9 @@
 	e_args.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[e_args.performer] slices [src] apart."),
-		audible = SPAN_WARNING("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
-		otherwise_self = SPAN_NOTICE("You slice [src] apart."),
+		visible = span_notice("[e_args.performer] slices [src] apart."),
+		audible = span_warning("You hear the sound of a welding torch moving back into open air, and a few pieces of metal falling apart."),
+		otherwise_self = span_notice("You slice [src] apart."),
 	)
 	log_construction(e_args, src, "deconstructed")
 	set_anchored(!anchored)
@@ -207,22 +207,22 @@
 /obj/structure/sculpting_block/proc/initiate_sculpting(mob/user, silent, atom/movable/forced_target, obj/item/tool)
 	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_SCULPTING_COOLDOWN))
 		if(!silent)
-			user?.action_feedback(SPAN_WARNING("[src] was worked on too recently.."), src)
+			user?.action_feedback(span_warning("[src] was worked on too recently.."), src)
 		return FALSE
 	if(finished)
 		if(!silent)
-			user?.action_feedback(SPAN_WARNING("[src] is finished."), src)
+			user?.action_feedback(span_warning("[src] is finished."), src)
 		return FALSE
 	if(sculpting)
 		if(!silent)
-			user?.action_feedback(SPAN_WARNING("Someone's already working on [src]."), src)
+			user?.action_feedback(span_warning("Someone's already working on [src]."), src)
 		return FALSE
 	if(isnull(tool))
 		tool = user.get_active_held_item()
 	var/tool_multiplier = is_sculpting_tool(tool)
 	if(isnull(tool_multiplier))
 		if(!silent)
-			user?.action_feedback(SPAN_WARNING("You must be holding a valid sculpting tool."), src)
+			user?.action_feedback(span_warning("You must be holding a valid sculpting tool."), src)
 		return FALSE
 	var/atom/movable/target = isnull(forced_target)? ask_for_target(user) : forced_target
 	if(isnull(target))
@@ -231,11 +231,11 @@
 		return FALSE
 	if(finished)
 		if(!silent)
-			user?.action_feedback(SPAN_WARNING("[src] is finished."), src)
+			user?.action_feedback(span_warning("[src] is finished."), src)
 		return FALSE
 	if(sculpting)
 		if(!silent)
-			user?.action_feedback(SPAN_WARNING("Someone's already working on [src]."), src)
+			user?.action_feedback(span_warning("Someone's already working on [src]."), src)
 		return FALSE
 	if(!user.Adjacent(src))
 		return FALSE
@@ -249,7 +249,7 @@
 	var/model_height = model.Height()
 	if(model_height > icon_y_dimension)
 		if(!silent)
-			user.action_feedback(SPAN_WARNING("[target] is too tall."), src)
+			user.action_feedback(span_warning("[target] is too tall."), src)
 		sculpting = FALSE
 		return FALSE
 	// align
@@ -297,7 +297,7 @@
 	user.visible_action_feedback(
 		target = src,
 		hard_range = MESSAGE_RANGE_CONSTRUCTION,
-		visible_hard = SPAN_NOTICE("[user] starts chiselling at [src]..."),
+		visible_hard = span_notice("[user] starts chiselling at [src]..."),
 	)
 
 	// deciseconds progress
@@ -376,7 +376,7 @@
 		user.visible_action_feedback(
 			target = src,
 			hard_range = MESSAGE_RANGE_CONSTRUCTION,
-			visible_hard = SPAN_NOTICE("[user] finishes chiselling at [src] with a flourish."),
+			visible_hard = span_notice("[user] finishes chiselling at [src] with a flourish."),
 		)
 
 	sculpting = FALSE
