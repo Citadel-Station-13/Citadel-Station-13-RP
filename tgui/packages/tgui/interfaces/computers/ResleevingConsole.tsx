@@ -1,0 +1,379 @@
+/**
+ * @file
+ * @license MIT
+ */
+
+import { useState } from 'react';
+import {
+  Box,
+  Button,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Stack,
+} from 'tgui-core/components';
+import { round } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../../backend';
+import { Window } from '../../layouts';
+import {
+  ResleevingBodyRecordData,
+  ResleevingMirror,
+  ResleevingMirrorData,
+} from '../common/Resleeving';
+
+interface ResleevingDiskData {
+  valid: BooleanLike;
+  name: string;
+}
+
+interface LinkedSleever {
+  ref: string;
+  name: string;
+  occupied: null | {
+    name: string;
+    hasMind: BooleanLike;
+    compatibleWithMirror: BooleanLike;
+    stat: 'conscious' | 'dead' | 'unconscious';
+  };
+  mirror: null | ResleevingMirrorData;
+}
+
+interface LinkedPrinter {
+  ref: string;
+  name: string;
+  busy: null | {
+    record: ResleevingBodyRecordData;
+    progressRatio: number;
+  };
+  allowOrganic: BooleanLike;
+  allowSynthetic: BooleanLike;
+}
+
+interface BodyRecord {
+  name: string;
+  synthetic: BooleanLike;
+  ref: string;
+  source: string;
+}
+
+interface ResleevingConsoleContext {
+  insertedMirror: ResleevingMirrorData | null;
+  insertedDisk: ResleevingDiskData | null;
+  relinkOnCooldown: BooleanLike;
+  bodyRecords: BodyRecord[];
+  sleevePods: LinkedSleever[];
+  bodyPrinters: LinkedPrinter[];
+}
+
+export const ResleevingConsole = (props) => {
+  const { act, data } = useBackend<ResleevingConsoleContext>();
+  const [selectedBodyRecordRef, setSelectedBodyRecordRef] = useState<
+    string | null
+  >(null);
+  const selectedBodyRecord = data.bodyRecords.find(
+    (v) => v.ref === selectedBodyRecordRef,
+  );
+  return (
+    <Window title="Resleeving Console" width={600} height={475}>
+      <Window.Content>
+        <Stack fill>
+          <Stack.Item grow={1}>
+            <Stack vertical fill>
+              <Stack.Item>
+                <Section
+                  fill
+                  title="Inserted Mirror"
+                  buttons={
+                    <Button.Confirm
+                      disabled={!data.insertedMirror}
+                      onClick={() => act('removeMirror')}
+                    >
+                      Eject
+                    </Button.Confirm>
+                  }
+                >
+                  {data.insertedMirror ? (
+                    <ResleevingMirror
+                      data={data.insertedMirror}
+                     />
+                  ) : (
+                    <NoticeBox>No mirror inserted</NoticeBox>
+                  )}
+                </Section>
+              </Stack.Item>
+              <Stack.Item>
+                <Section
+                  fill
+                  title="Inserted Disk"
+                  buttons={
+                    <Button.Confirm
+                      disabled={!data.insertedDisk}
+                      onClick={() => act('removeDisk')}
+                    >
+                      Eject
+                    </Button.Confirm>
+                  }
+                >
+                  {data.insertedDisk ? (
+                    <Box>
+                      <LabeledList>
+                        <LabeledList.Item label="Name">
+                          {data.insertedDisk.name}
+                        </LabeledList.Item>
+                        <LabeledList.Item label="Printable">
+                          {data.insertedDisk.valid}
+                        </LabeledList.Item>
+                      </LabeledList>
+                    </Box>
+                  ) : (
+                    <NoticeBox>No DNA disk inserted</NoticeBox>
+                  )}
+                </Section>
+              </Stack.Item>
+              <Stack.Item grow={1}>
+                <Section fill title="Available Body Records" scrollable>
+                  <Stack vertical>
+                    {data.bodyRecords.map((rec) => (
+                      <Stack.Item key={rec.ref}>
+                        <Box>
+                          <Stack vertical>
+                            <Stack.Item>
+                              <LabeledList>
+                                <LabeledList.Item label="Name">
+                                  {rec.name}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Source">
+                                  {rec.source}
+                                </LabeledList.Item>
+                                <LabeledList.Item label="Type">
+                                  {rec.synthetic ? 'Synthetic' : 'Organic'}
+                                </LabeledList.Item>
+                              </LabeledList>
+                            </Stack.Item>
+                            <Stack.Item>
+                              <Button
+                                textAlign="center"
+                                onClick={() =>
+                                  setSelectedBodyRecordRef(rec.ref)
+                                }
+                                selected={selectedBodyRecordRef === rec.ref}
+                                fluid
+                              >
+                                {selectedBodyRecordRef === rec.ref
+                                  ? 'Selected'
+                                  : 'Select'}
+                              </Button>
+                            </Stack.Item>
+                          </Stack>
+                        </Box>
+                      </Stack.Item>
+                    ))}
+                  </Stack>
+                </Section>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow={1}>
+            <Stack vertical fill>
+              <Stack.Item grow>
+                <Section
+                  fill
+                  title="Machines"
+                  buttons={
+                    <Button.Confirm
+                      disabled={data.relinkOnCooldown}
+                      onClick={() => act('relink')}
+                    >
+                      Relink
+                    </Button.Confirm>
+                  }
+                  scrollable
+                >
+                  <Stack vertical>
+                    {data.bodyPrinters.map((printer) => {
+                      let cannotPrintBecause: string | null = null;
+                      if (!selectedBodyRecord) {
+                        cannotPrintBecause = 'Select body record';
+                      } else {
+                        if (
+                          selectedBodyRecord.synthetic &&
+                          !printer.allowSynthetic
+                        ) {
+                          cannotPrintBecause = 'Cannot print synths';
+                        } else if (
+                          !selectedBodyRecord.synthetic &&
+                          !printer.allowOrganic
+                        ) {
+                          cannotPrintBecause = 'Cannot print organics';
+                        }
+                      }
+                      return (
+                        <Stack.Item key={printer.ref}>
+                          <Box
+                            style={{
+                              borderLeft: '1px solid #ffffff',
+                              borderRight: '1px solid #ffffff',
+                            }}
+                          >
+                            <Stack vertical fill>
+                              <Stack.Item>
+                                <Stack>
+                                  <Stack.Item grow>
+                                    <h3 style={{ textAlign: 'center' }}>
+                                      {printer.name}
+                                    </h3>
+                                  </Stack.Item>
+                                  <Stack.Item>
+                                    <Button.Confirm
+                                      onClick={() =>
+                                        act('unlink', {
+                                          unlinkRef: printer.ref,
+                                        })
+                                      }
+                                      icon="trash"
+                                     />
+                                  </Stack.Item>
+                                </Stack>
+                              </Stack.Item>
+                              <Stack.Item>
+                                <LabeledList>
+                                  <LabeledList.Item label="Status">
+                                    {printer.busy
+                                      ? `Producing record of species ${printer.busy.record.speciesName} - ${round(printer.busy.progressRatio * 100, 0.1)}%`
+                                      : 'Standby'}
+                                  </LabeledList.Item>
+                                  <LabeledList.Item label="Supports Organics">
+                                    {printer.allowOrganic ? 'Yes' : 'No'}
+                                  </LabeledList.Item>
+                                  <LabeledList.Item label="Supports Synthetics">
+                                    {printer.allowSynthetic ? 'Yes' : 'No'}
+                                  </LabeledList.Item>
+                                </LabeledList>
+                              </Stack.Item>
+                              <Stack.Item>
+                                <Button.Confirm
+                                  textAlign="center"
+                                  fluid
+                                  disabled={
+                                    !!printer.busy || !!cannotPrintBecause
+                                  }
+                                  onClick={() =>
+                                    act('printBody', {
+                                      printerRef: printer.ref,
+                                      bodyRef: selectedBodyRecordRef,
+                                    })
+                                  }
+                                >
+                                  {printer.busy
+                                    ? 'Busy'
+                                    : cannotPrintBecause
+                                      ? cannotPrintBecause
+                                      : 'Print'}
+                                </Button.Confirm>
+                              </Stack.Item>
+                            </Stack>
+                          </Box>
+                        </Stack.Item>
+                      );
+                    })}
+                    {data.sleevePods.map((pod) => {
+                      return (
+                        <Stack.Item key={pod.ref}>
+                          <Box
+                            style={{
+                              borderLeft: '1px solid #ffffff',
+                              borderRight: '1px solid #ffffff',
+                            }}
+                          >
+                            <Stack vertical fill>
+                              <Stack.Item>
+                                <Stack>
+                                  <Stack.Item grow>
+                                    <h3 style={{ textAlign: 'center' }}>
+                                      {pod.name}
+                                    </h3>
+                                  </Stack.Item>
+                                  <Stack.Item>
+                                    <Button.Confirm
+                                      onClick={() =>
+                                        act('unlink', { unlinkRef: pod.ref })
+                                      }
+                                      icon="trash"
+                                     />
+                                  </Stack.Item>
+                                </Stack>
+                              </Stack.Item>
+                              <Stack.Item>
+                                <h2 style={{ textAlign: 'center' }}>Mirror</h2>
+                                {pod.mirror ? (
+                                  <ResleevingMirror
+                                    data={pod.mirror}
+                                   />
+                                ) : (
+                                  <NoticeBox>No inserted mirror</NoticeBox>
+                                )}
+                              </Stack.Item>
+                              <Stack.Item>
+                                <h2 style={{ textAlign: 'center' }}>
+                                  Occupant
+                                </h2>
+                                {pod.occupied ? (
+                                  <LabeledList>
+                                    <LabeledList.Item label="Occupant">
+                                      {pod.occupied.name}
+                                    </LabeledList.Item>
+                                    <LabeledList.Item label="Mind Imprinted">
+                                      {pod.occupied.hasMind
+                                        ? 'Active'
+                                        : 'Empty'}
+                                    </LabeledList.Item>
+                                    <LabeledList.Item label="Inserted Mirror Belongs">
+                                      {pod.occupied.compatibleWithMirror
+                                        ? 'Yes'
+                                        : 'No'}
+                                    </LabeledList.Item>
+                                    <LabeledList.Item label="Status">
+                                      {pod.occupied.stat === 'conscious'
+                                        ? 'Conscious'
+                                        : pod.occupied.stat === 'dead'
+                                          ? 'Dead'
+                                          : 'Unconscious'}
+                                    </LabeledList.Item>
+                                  </LabeledList>
+                                ) : (
+                                  <NoticeBox>No inserted occupant</NoticeBox>
+                                )}
+                              </Stack.Item>
+                              <Stack.Item>
+                                <Button.Confirm
+                                  fluid
+                                  disabled={!pod.mirror || !pod.occupied}
+                                  textAlign="Center"
+                                  onClick={() =>
+                                    act('resleeve', { sleeverRef: pod.ref })
+                                  }
+                                >
+                                  {!pod.mirror
+                                    ? 'Insert Mirror'
+                                    : !pod.occupied
+                                      ? 'Insert Occupant'
+                                      : 'Sleeve'}
+                                </Button.Confirm>
+                              </Stack.Item>
+                            </Stack>
+                          </Box>
+                        </Stack.Item>
+                      );
+                    })}
+                  </Stack>
+                </Section>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        </Stack>
+      </Window.Content>
+    </Window>
+  );
+};

@@ -158,7 +158,17 @@
 //Body Scan Console
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/scanner
-	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif, /obj/item/implant/mirror)
+	var/known_implants = list(
+		/obj/item/implant/health,
+		/obj/item/implant/chem,
+		/obj/item/implant/death_alarm,
+		/obj/item/implant/loyalty,
+		/obj/item/implant/tracking,
+		/obj/item/implant/language,
+		/obj/item/implant/language/eal,
+		/obj/item/nif,
+		/obj/item/organ/internal/mirror,
+	)
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
@@ -337,7 +347,7 @@
 					implantSubData["name"] = I.name
 					if(is_type_in_list(I, known_implants))
 						implantSubData["known"] = 1
-					for(var/obj/item/implant/mirror/P in E.implants)
+					for(var/obj/item/organ/internal/mirror/P in E.implants)
 						mirror = P
 
 					implantData.Add(list(implantSubData))
@@ -421,17 +431,6 @@
 			P.name = "Body Scan - [href_list["name"]] ([worldtime2stationtime(world.time)])"
 			printing = null
 			printing_text = null
-
-	if (href_list["backup"])
-		if(mirror != null)
-			var/obj/item/implant/mirror/E = mirror
-			E.post_implant(scanner.occupant)
-			visible_message(SPAN_NOTICE("Manual backup complete."))
-		else
-			visible_message(SPAN_NOTICE("No mirror detected!"))
-		return
-
-
 
 /obj/machinery/body_scanconsole/proc/generate_printing_text()
 	var/dat = ""

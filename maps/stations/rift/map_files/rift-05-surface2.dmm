@@ -569,7 +569,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
 "avx" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -9730,7 +9730,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "gjP" = (
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -10639,7 +10639,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "gFH" = (
-/obj/machinery/clonepod/transhuman,
+/obj/machinery/resleeving/body_printer/grower_pod,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -21975,7 +21975,7 @@
 	dir = 8;
 	pixel_x = 32
 	},
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -23754,7 +23754,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 5
 	},
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "oIx" = (
@@ -30080,7 +30080,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4
 	},
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "sIy" = (

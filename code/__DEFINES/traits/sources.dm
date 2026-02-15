@@ -21,6 +21,8 @@
 
 /// cryotube
 #define CRYO_TUBE_TRAIT "cryotube"
+/// resleeving body grower
+#define TRAIT_SOURCE_MACHINE_BODY_GROWER "machine-body-grower"
 
 //? Mob Sources
 

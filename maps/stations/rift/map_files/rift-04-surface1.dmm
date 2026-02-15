@@ -13348,7 +13348,6 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/item/storage/belt/medical,
 /obj/item/flashlight/pen,
-/obj/item/cmo_disk_holder,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/cmo)
 "ixM" = (

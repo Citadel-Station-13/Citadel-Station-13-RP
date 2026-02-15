@@ -464,6 +464,11 @@
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/update_icons_body()
+	var/obj/item/organ/external/chest = get_organ(BP_TORSO)
+	if(!chest)
+		// can happen during deletion sometimes
+		return
+
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
 
@@ -511,7 +516,7 @@
 			continue
 		if(part)
 			icon_key += "[part.name]"
-			icon_key += "[part.species.get_race_key(part.owner)]"
+			icon_key += "[part.species.get_race_key(src)]"
 			icon_key += "[part.dna.GetUIState(DNA_UI_GENDER)]"
 			icon_key += "[part.s_tone]"
 			if(part.s_col && part.s_col.len >= 3)
@@ -548,11 +553,10 @@
 		base_icon = GLOB.human_icon_cache[icon_key]
 	else
 		//BEGIN CACHED ICON GENERATION.
-		var/obj/item/organ/external/chest = get_organ(BP_TORSO)
 		base_icon = chest.get_icon()
 
 		for(var/obj/item/organ/external/part in organs)
-			if(isnull(part) || part.is_stump() || part.is_hidden_by_tail())
+			if(part.is_stump() || part.is_hidden_by_tail())
 				continue
 			var/icon/temp = part.get_icon(skeleton)
 			//That part makes left and right legs drawn topmost and lowermost when human looks WEST or EAST

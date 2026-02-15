@@ -43,9 +43,9 @@
  *
  * @params
  * * method - how we were deconstructed
- * * where - where to drop products; set in base if null to drop_location().
+ * * where - where to drop products
  */
-/atom/proc/drop_products(method, atom/where = drop_location())
+/atom/proc/drop_products(method, atom/where)
 	return
 
 /**

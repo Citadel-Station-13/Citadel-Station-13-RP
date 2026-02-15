@@ -37,6 +37,9 @@
 		O_STOMACH, \
 		O_INTESTINE)
 
+// REWORK ON ORGAN REFACTOR!
+// Organ tag for mirrors.
+#define ORGAN_TAG_MIRROR "mirror"
 
 //* AUGMENTS *//
 #define O_AUG_EYES "occular augment"

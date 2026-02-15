@@ -214,7 +214,7 @@
 		to_chat(B, deathmsg)
 	else if(!gibbed)
 		to_chat(H, deathmsg)
-	ASYNC
+	spawn(0)
 		if(!QDELETED(H))
 			H.gib()
 

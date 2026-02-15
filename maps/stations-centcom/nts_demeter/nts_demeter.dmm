@@ -5063,13 +5063,6 @@
 /area/centcom/simulated/bathroom)
 "pb" = (
 /obj/structure/table/glass,
-/obj/item/backup_implanter{
-	pixel_y = -8
-	},
-/obj/item/backup_implanter{
-	pixel_y = 8
-	},
-/obj/item/backup_implanter,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -5961,7 +5954,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "rQ" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -6086,7 +6079,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sd" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -6130,7 +6123,7 @@
 /area/centcom/simulated/medical)
 "sn" = (
 /obj/structure/table/steel,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/camera{
 	name = "Autopsy Camera";
 	pixel_x = -2;
@@ -6155,7 +6148,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/centcom/simulated/medical)
 "sr" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -6260,7 +6253,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sN" = (
-/obj/machinery/clonepod/transhuman/full,
+/obj/machinery/resleeving/body_printer/grower_pod/loaded,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
 	},

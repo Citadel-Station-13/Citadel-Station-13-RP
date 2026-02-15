@@ -145,8 +145,6 @@
 	var/ssd_visible = FALSE
 
 	//? unsorted / legacy
-	var/datum/mind/mind
-
 	var/next_move = null // For click delay, despite the misleading name.
 
 	var/atom/movable/screen/hands = null

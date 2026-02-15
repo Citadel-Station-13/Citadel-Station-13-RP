@@ -10,7 +10,7 @@
  * @return TRUE/FALSE
  */
 /mob/proc/has_characteristic_talent(datum/characteristic_talent/typepath_or_id)
-	if(!characteristics_active())
+	if(!characteristic_active())
 		return FALSE
 	return mind?.characteristics?.has_talent(typepath_or_id)
 
@@ -23,8 +23,8 @@
  * @return raw value
  */
 /mob/proc/get_characteristic_stat(datum/characteristic_stat/typepath_or_id)
-	if(!characteristics_active())
-		typepath_or_id = resolve_characteristics_stat(typepath_or_id)
+	if(!characteristic_active())
+		typepath_or_id = resolve_characteristic_stat(typepath_or_id)
 		return typepath_or_id.baseline_value
 	return mind?.characteristics?.get_stat(typepath_or_id)
 
@@ -37,8 +37,8 @@
  * @return skill level
  */
 /mob/proc/get_characteristic_skill(datum/characteristic_skill/typepath_or_id)
-	if(!characteristics_active())
-		typepath_or_id = resolve_characteristics_stat(typepath_or_id)
+	if(!characteristic_active())
+		typepath_or_id = resolve_characteristic_stat(typepath_or_id)
 		return typepath_or_id.baseline_value
 	return mind?.characteristics?.get_skill(typepath_or_id)
 
@@ -92,7 +92,7 @@
 /**
  * get or create characteristics holder
  */
-/mob/proc/characteristics_holder()
+/mob/proc/characteristic_holder()
 	if(!mind)
 		mind_initialize()
-	return mind.characteristics_holder()
+	return mind.characteristic_holder()

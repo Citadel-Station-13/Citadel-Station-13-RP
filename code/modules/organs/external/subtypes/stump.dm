@@ -11,7 +11,7 @@
 		joint = limb.joint
 		parent_organ = limb.parent_organ
 		wounds = limb.wounds
-	..(mapload, internal)
+	. = ..(mapload, internal)
 	if(istype(limb))
 		max_damage = limb.max_damage
 		if((limb.robotic >= ORGAN_ROBOT) && (!parent || (parent.robotic >= ORGAN_ROBOT)))

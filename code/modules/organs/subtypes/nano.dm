@@ -160,6 +160,10 @@
 
 	brain_type = /obj/item/mmi/digital/posibrain/nano
 
+	// who needs mirrors? we are our own mirror...
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	compatible_with_mirrors = FALSE
+
 /obj/item/organ/internal/mmi_holder/posibrain/nano/robotize()
 	. = ..()
 	icon_state = "posi1"
@@ -183,6 +187,9 @@
 	desc = "A more advanced version of the standard posibrain, typically found in protean bodies."
 	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "posi"
+
+	// who needs mirrors? we are our own mirror...
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/item/mmi/digital/posibrain/nano/Initialize(mapload)
 	. = ..()

@@ -503,6 +503,7 @@
 	var/death_sound
 	var/death_message = "seizes up and falls limp, their eyes dead and lifeless..."
 	var/knockout_message = "has been knocked unconscious!"
+	/// * only applied to organics for now
 	var/cloning_modifier = /datum/modifier/cloning_sickness
 
 	//? Primitive species
@@ -756,6 +757,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	var/obj/item/nif/our_nif = H.nif
 	if(H.nif)
 		H.nif.unimplant(H)
+	// snowflake: preserve mirror
+	var/obj/item/organ/internal/mirror/our_mirror = H.resleeving_remove_mirror()
 
 	// store the markings for each limb we have so we can apply them to our new limbs
 	var/list/temporary_marking_store = list()
@@ -807,6 +810,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			QDEL_NULL(our_nif)
 		else
 			our_nif.quick_implant(H)
+	if(our_mirror)
+		H.resleeving_insert_mirror(our_mirror)
 
 	if(base_color)
 		H.r_skin = hex2num(copytext(base_color,2,4))

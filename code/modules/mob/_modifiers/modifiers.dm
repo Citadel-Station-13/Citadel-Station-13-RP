@@ -2,6 +2,8 @@
  * This is a datum that tells the mob that something is affecting them.
  * The advantage of using this datum verses just setting a variable on the mob directly, is that there is no risk of two different procs overwriting
  * each other, or other weirdness.  An excellent example is adjusting max health.
+ *
+ * TODO: use status effects and physiology mods
  */
 /datum/modifier
 	/// Mostly used to organize, might show up on the UI in the Future(tm)

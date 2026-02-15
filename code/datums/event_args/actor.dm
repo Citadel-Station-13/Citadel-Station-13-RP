@@ -90,3 +90,17 @@
 		visible_them = visible_them,
 		otherwise_them = otherwise_them,
 	)
+
+//* Reachability *//
+
+/**
+ * Checks if 'performer' can reach an atom
+ */
+/datum/event_args/actor/proc/check_performer_reachability(atom/target)
+	return check_default_performer_reachability(target)
+
+/**
+ * Checks if 'performer' can reach an atom by default
+ */
+/datum/event_args/actor/proc/check_default_performer_reachability(atom/target)
+	return performer.Reachability(target)

@@ -530,7 +530,7 @@
 		selected = NB
 
 	if(href_list["bellypick"])
-		selected = locate(href_list["bellypick"])
+		selected = locate(href_list["bellypick"]) in user.vore_organs
 		user.vore_selected = selected
 
 	////

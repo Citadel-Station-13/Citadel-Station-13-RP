@@ -1,5 +1,5 @@
-/datum/config_entry/flag/characteristics_enabled
+/datum/config_entry/flag/characteristic_enabled
 	config_entry_value = TRUE
 
-/datum/config_entry/flag/characteristics_active
+/datum/config_entry/flag/characteristic_active
 	config_entry_value = FALSE

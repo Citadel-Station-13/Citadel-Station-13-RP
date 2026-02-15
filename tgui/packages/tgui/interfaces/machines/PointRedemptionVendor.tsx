@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { Box, Button, LabeledList, Section, Stack, Tooltip } from "tgui-core/components";
 
 import { useBackend } from "../../backend";

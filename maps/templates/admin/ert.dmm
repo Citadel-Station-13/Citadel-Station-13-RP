@@ -567,8 +567,6 @@
 "eX" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/storage/box/backup_kit,
-/obj/item/storage/box/backup_kit,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "ff" = (

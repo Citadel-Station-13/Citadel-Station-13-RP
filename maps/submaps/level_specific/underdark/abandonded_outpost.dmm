@@ -216,7 +216,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "aZ" = (
-/obj/machinery/clonepod/transhuman,
+/obj/machinery/resleeving/body_printer/grower_pod,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "ba" = (

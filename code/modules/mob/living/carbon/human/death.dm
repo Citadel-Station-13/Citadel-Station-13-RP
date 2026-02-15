@@ -22,11 +22,6 @@
 		if(istype(loc,/turf))
 			I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 
-	//mirror should drop on gib
-	if(mirror)
-		mirror.forceMove(drop_location())
-		mirror.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/mirror.w_class))
-
 	for(var/obj/item/organ/external/E in src.organs)
 		E.droplimb(0,DROPLIMB_EDGE,1)
 
@@ -40,23 +35,12 @@
 	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))
 
 /mob/living/carbon/human/dust()
-
-	//mirror should drop on dust
-	if(mirror)
-		mirror.forceMove(drop_location())
-		mirror = null
-
 	if(species)
 		return ..(species.dusted_anim, species.remains_type)
 	else
 		return ..()
 
 /mob/living/carbon/human/ash()
-
-	//mirror should drop on ash
-	if(mirror)
-		mirror.forceMove(drop_location())
-
 	if(species)
 		..(species.dusted_anim)
 	else

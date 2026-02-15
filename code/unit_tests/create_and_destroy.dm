@@ -3,6 +3,7 @@
 /datum/unit_test/create_and_destroy
 	//You absolutely must run after (almost) everything else
 	priority = TEST_CREATE_AND_DESTROY
+	reset_room_after = TRUE
 
 // GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 /datum/unit_test/create_and_destroy/Run()

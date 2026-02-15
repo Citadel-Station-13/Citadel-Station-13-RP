@@ -569,14 +569,11 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		new_character.dna.SetSEState(DNABLOCK_GLASSES,1,0)
 		new_character.disabilities |= DISABILITY_NEARSIGHTED
 	if(client.prefs.mirror == TRUE)
-		if((client.prefs.organ_data[O_BRAIN] != null))
-			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)
-			F.handle_implant(new_character)
-			F.post_implant(new_character)
-		else
-			var/obj/item/implant/mirror/E = new /obj/item/implant/mirror(new_character)
-			E.handle_implant(new_character)
-			E.post_implant(new_character)
+		// Check API support. In the future, prefs should handle this and this should throw / warn
+		// if it's not there when prefs says it should be.
+		// When this is done, the user will be able to see in prefs if their species supports it.
+		if(new_character.resleeving_supports_mirrors())
+			new_character.resleeving_create_mirror()
 
 	// And uncomment this, too.
 	//new_character.dna.UpdateSE()
@@ -585,6 +582,9 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	new_character.force_update_limbs()
 	new_character.update_icons_body()
 	new_character.update_eyes()
+
+	// store their round-local body backup
+	SSresleeving.store_round_local_body_backup(new_character.mind, new_character)
 
 	transfer_client_to(new_character)
 
@@ -645,11 +645,6 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 /mob/new_player/proc/spawn_checks_vr() //Custom spawn checks.
 	var/pass = TRUE
-
-	//Are they on the VERBOTEN LIST?
-	if (prevent_respawns.Find(client.prefs.real_name))
-		to_chat(src,"<span class='warning'>You've already quit the round as this character. You can't go back now that you've free'd your job slot. Play another character, or wait for the next round.</span>")
-		pass = FALSE
 
 	//Do they have their scale properly setup?
 	if(!client.prefs.size_multiplier)

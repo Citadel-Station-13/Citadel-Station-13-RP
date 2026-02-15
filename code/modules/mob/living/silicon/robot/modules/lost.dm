@@ -27,7 +27,7 @@ GENERATE_ROBOT_MODULE_PRESET(/lost)
 			/obj/item/healthanalyzer,
 			/obj/item/reagent_containers/borghypo/lost,
 			/obj/item/shockpaddles/robot/hound,
-			/obj/item/robot_builtin/dog_mirrortool,
+			/obj/item/mirrortool,
 
 			// Engi
 			/obj/item/weldingtool/electric/mounted,

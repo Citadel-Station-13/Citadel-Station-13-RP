@@ -1531,7 +1531,7 @@
 /area/tether/surfacebase/security/detective/officeb)
 "bgP" = (
 /obj/structure/table/steel,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/camera{
 	name = "Autopsy Camera";
 	pixel_x = -2;
@@ -3461,7 +3461,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/resleeving)
 "cwF" = (
@@ -10833,7 +10833,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/staircase/secondfloor)
 "hQV" = (
-/obj/machinery/clonepod/transhuman,
+/obj/machinery/resleeving/body_printer/grower_pod,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -13124,7 +13124,6 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/defib_kit/compact/combat/loaded,
-/obj/item/cmo_disk_holder,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -14508,7 +14507,7 @@
 /turf/simulated/open,
 /area/tether/surfacebase/surface_two_hall)
 "kyn" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 4
 	},
 /obj/machinery/light{
