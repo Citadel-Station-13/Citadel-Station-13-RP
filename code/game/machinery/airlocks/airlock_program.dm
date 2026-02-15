@@ -25,16 +25,14 @@
 		system = null
 	return ..()
 
-/datum/airlock_program/proc/ui_program_data(datum/airlock_system/system)
+/datum/airlock_program/proc/ui_program_data()
 	return list()
 
-/datum/airlock_program/proc/ui_program_push(datum/airlock_system/system, list/data)
-	return // do nothing for now, we're currently polled by controller
+/datum/airlock_program/proc/ui_program_push(list/data)
+	return // no way to do this yet, needs to have program under nested-data
 
-/datum/airlock_program/proc/ui_program_act(datum/airlock_system/system, datum/event_args/actor/actor, action, list/params)
+/datum/airlock_program/proc/ui_program_act(datum/event_args/actor/actor, action, list/params)
 	return FALSE
 
-/datum/airlock_program/proc/on_sensor_cycle_request(datum/airlock_system/system, obj/machinery/airlock_peripheral/sensor/sensor, datum/event_args/actor/actor)
+/datum/airlock_program/proc/on_sensor_cycle_request(obj/machinery/airlock_peripheral/sensor/sensor, datum/event_args/actor/actor)
 	return
-
-#warn base tgui

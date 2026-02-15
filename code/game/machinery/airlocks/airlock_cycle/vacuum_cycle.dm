@@ -4,7 +4,9 @@
 /datum/airlock_cycle/vacuum_cycle
 
 /datum/airlock_cycle/vacuum_cycle/create_cycling(cycle_from_side, cycle_to_side)
-	return ..()
+	var/datum/airlock_cycling/cycling = ..()
+
+	return cycling
 
 /datum/airlock_cycle/vacuum_cycle/gather_phases(cycle_from_side, cycle_to_side)
 	. = list()

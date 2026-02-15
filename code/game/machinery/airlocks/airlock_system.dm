@@ -38,13 +38,15 @@
 	return ..()
 
 /datum/airlock_system/proc/create_program(program_path = /datum/airlock_program/vacuum_cycle)
-	#warn impl
+	set_program(new program_path)
 
 /**
  * * Old program will be obliterated.
  */
 /datum/airlock_system/proc/set_program(datum/airlock_program/program)
-	#warn impl
+	QDEL_NULL(src.program)
+	src.program = program
+	src.program.system = src
 
 /datum/airlock_system/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -54,14 +56,14 @@
 		if("programAct")
 			var/p_action = params["action"]
 			var/p_params = params["params"]
-			program?.ui_program_act(src, actor, p_action, p_params)
+			program?.ui_program_act(actor, p_action, p_params)
 			return TRUE
 
 /datum/airlock_system/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["cycling"] = cycling ? cycling.ui_cycle_data() : null
 	.["programTgui"] = program?.tgui_airlock_component
-	.["programData"] = program?.ui_program_data(src)
+	.["programData"] = program?.ui_program_data()
 
 /datum/airlock_system/process(delta_time)
 	cycling?.poll(delta_time)

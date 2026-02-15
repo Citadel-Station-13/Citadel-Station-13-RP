@@ -74,4 +74,10 @@ GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
 
 //* airlock cycling blackboard keys *//
 
-// none yet //
+/**
+ * Blackboard key for if a cycling operation is 'cancelling' or otherwise
+ * started for one.
+ */
+#define AIRLOCK_CYCLING_BLACKBOARD_IS_CANCEL_OP "is_cancel_op"
+#define AIRLOCK_CYCLING_BLACKBOARD_FROM_SIDE "from_side"
+#define AIRLOCK_CYCLING_BLACKBOARD_TO_SIDE "to_side"

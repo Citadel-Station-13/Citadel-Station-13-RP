@@ -7,10 +7,10 @@
  */
 /datum/airlock_cycle/dock
 
-/datum/airlock_cycle/dock/create_cycling(datum/airlock_system/system)
+/datum/airlock_cycle/dock/create_cycling()
 	return ..()
 
-/datum/airlock_cycle/dock/gather_phases(datum/airlock_system/system)
+/datum/airlock_cycle/dock/gather_phases()
 	. = list()
 	. += new /datum/airlock_phase/doors/lock_closed/exterior
 	. += new /datum/airlock_phase/repressurize/allow_external_air

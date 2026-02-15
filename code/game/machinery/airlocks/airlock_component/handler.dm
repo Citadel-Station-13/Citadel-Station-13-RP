@@ -80,8 +80,15 @@
 		network.queue_recheck()
 
 /obj/machinery/airlock_component/handler/process(delta_time)
-	. = ..()
-	#warn impl - power, atmos
+	// attempt recharge
+	if(power_stored < power_capacity)
+		for(var/obj/structure/cable/cable in loc)
+			if(cable.d1 != 0)
+				continue
+			var/datum/powernet/network = cable.powernet
+			var/desired = min(power_io, (power_capacity - power_stored) * (1 / delta_time))
+			var/drawn = network.draw_power(desired)
+			power_stored += drawn * delta_time
 
 /obj/machinery/airlock_component/handler/proc/get_clean_gas_mixture_ref() as /datum/gas_mixture
 	return conn_intake?.air_contents
@@ -100,6 +107,16 @@
 	update_conn_entity(conn_intake, layer_intake)
 
 /obj/machinery/airlock_component/handler/proc/update_conn_entity(obj/machinery/atmospherics/component/unary/airlock_connector/connector, wanted_layer)
+	var/static/layer_to_connect = list(
+		CONNECT_TYPE_FUEL,
+		CONNECT_TYPE_SUPPLY,
+		CONNECT_TYPE_REGULAR,
+		CONNECT_TYPE_SCRUBBER,
+		CONNECT_TYPE_AUX,
+	)
+	// TODO: this might not work properly, atmos pipes needs a rewrite
+	connector.piping_layer = wanted_layer
+	connector.connect_types = layer_to_connect[wanted_layer]
 	if(isturf(src.loc))
 		if(connector.loc != src.loc)
 			connector.forceMove(src.loc)
@@ -107,8 +124,6 @@
 		if(connector.loc != null)
 			connector.forceMove(null)
 	connector.setDir(src.dir)
-
-#warn impl layer ?
 
 /obj/machinery/airlock_component/handler/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

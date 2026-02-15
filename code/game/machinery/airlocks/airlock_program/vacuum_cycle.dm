@@ -15,43 +15,95 @@
 	var/reassert_doors_every = 90 SECONDS
 	var/reassert_doors_last
 
-/datum/airlock_program/vacuum_cycle/ui_program_data(datum/airlock_system/system)
+/datum/airlock_program/vacuum_cycle/ui_program_data()
 	. = ..()
 	.["interiorSealed"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE]
 	.["exteriorSealed"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE]
 	.["side"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE]
+	if(system.cycling)
+		var/datum/airlock_cycling/cycling = system.cycling
+		.["cycling"] = list(
+			"fromSide" = cycling.blackboard[AIRLOCK_CYCLING_BLACKBOARD_FROM_SIDE],
+			"toSide" = cycling.blackboard[AIRLOCK_CYCLING_BLACKBOARD_TO_SIDE],
+		)
+	else
+		.["cycling"] = null
+	.["canceling"] = system.cycling?.blackboard[AIRLOCK_CYCLING_BLACKBOARD_IS_CANCEL_OP]
 
-/datum/airlock_program/vacuum_cycle/ui_program_act(datum/airlock_system/system, datum/event_args/actor/actor, action, list/params)
+/datum/airlock_program/vacuum_cycle/ui_program_act(datum/event_args/actor/actor, action, list/params)
 	. = ..()
 	if(.)
 		return
-	#warn vacuum cycle
 	switch(action)
 		if("cycleToExterior")
-			pass()
+			if(system.cycling)
+				return TRUE
+			start_cycling_towards(AIRLOCK_SIDE_EXTERIOR)
+			return TRUE
 		if("cycleToInterior")
-			#warn abort cycles and force doors based on states
-			pass()
+			if(system.cycling)
+				return TRUE
+			start_cycling_towards(AIRLOCK_SIDE_INTERIOR)
+			return TRUE
 		if("forceExteriorDoors")
-			pass()
+			force_exterior_doors(!system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE])
+			return TRUE
 		if("forceInteriorDoors")
-			pass()
+			force_interior_doors(!system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE])
+			return TRUE
 		if("cancel")
-			pass()
-			// soft cancel, try to repressurize
+			if(is_cancelling())
+				return TRUE
+			graceful_abort()
+			return TRUE
 		if("abort")
-			pass()
-			// immediate abort
+			hard_abort()
+			return TRUE
 
-/datum/airlock_program/vacuum_cycle/proc/get_currently_open_side(datum/airlock_system/system)
+#warn tgui
+
+/**
+ * @return truthy, or falsy value
+ */
+/datum/airlock_program/vacuum_cycle/proc/is_cancelling()
+	return system.cycling?.blackboard[AIRLOCK_CYCLING_BLACKBOARD_IS_CANCEL_OP]
+
+/datum/airlock_program/vacuum_cycle/proc/get_currently_cycled_side()
 	return system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE]
 
-/datum/airlock_program/vacuum_cycle/proc/set_currently_open_side(datum/airlock_system/system, side)
+/datum/airlock_program/vacuum_cycle/proc/set_currently_cycled_side(side)
 	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE] = side
 
 /datum/airlock_program/vacuum_cycle/process(delta_time)
 	..()
+	if(reassert_doors_last < world.time - reassert_doors_every)
+		if(system.cycling)
+			// don't interrupt cycle
+			return
+		reassert_doors()
 
-#warn impl
+/datum/airlock_program/vacuum_cycle/proc/reassert_doors()
+	reassert_doors_last = world.time
+	system.stop_cycle()
+	var/datum/airlock_cycle/cycle = new /datum/airlock_cycle/reassert_doors
+	system.start_cycle(cycle.create_cycling(
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE],
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE],
+	))
 
-#warn tgui
+/datum/airlock_program/vacuum_cycle/proc/force_interior_doors(to_opened)
+
+/datum/airlock_program/vacuum_cycle/proc/force_exterior_doors(to_opened)
+
+/datum/airlock_program/vacuum_cycle/proc/start_cycling_towards(side)
+#warn impl all
+
+/datum/airlock_program/vacuum_cycle/proc/graceful_abort()
+	system.stop_cycle()
+	var/datum/airlock_cycle/cycle = new /datum/airlock_cycle/cancel_and_restore
+	system.start_cycle(cycle.create_cycling(get_currently_cycled_side()))
+	return TRUE
+
+/datum/airlock_program/vacuum_cycle/proc/hard_abort()
+	system.stop_cycle()
+	return TRUE

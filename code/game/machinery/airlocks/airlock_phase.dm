@@ -133,7 +133,7 @@
 			door_tasks += linker.create_state_task(interior_open, interior_locked)
 		else
 			door_tasks += linker.create_state_task(exterior_open, exterior_locked)
-	cycling.add_task(new /datum/airlock_task/compound("Operating doors" door_tasks))
+	cycling.add_task(new /datum/airlock_task/compound("Operating doors", door_tasks))
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/doors/assert_state/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
@@ -151,7 +151,7 @@
 	var/list/datum/airlock_task/door_tasks = list()
 	for(var/obj/machinery/airlock_component/door_linker/linker as anything in system.controller.network.get_door_linkers())
 		door_tasks += linker.create_state_task(FALSE, TRUE)
-	cycling.add_task(new /datum/airlock_task/compound("Operating doors" door_tasks))
+	cycling.add_task(new /datum/airlock_task/compound("Operating doors", door_tasks))
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/doors/seal/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
@@ -183,7 +183,8 @@
 				door_tasks += linker.create_state_task(TRUE, TRUE)
 		else if(exterior)
 			door_tasks += linker.create_state_task(TRUE, TRUE)
-	cycling.add_task(new /datum/airlock_task/compound("Operating doors" door_tasks))	return AIRLOCK_PHASE_SETUP_SUCCESS
+	cycling.add_task(new /datum/airlock_task/compound("Operating doors", door_tasks))
+	return AIRLOCK_PHASE_SETUP_SUCCESS
 
 /datum/airlock_phase/doors/lock_open/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	if(interior)
