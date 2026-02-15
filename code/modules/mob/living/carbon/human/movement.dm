@@ -31,7 +31,7 @@
 	if (m_intent == MOVE_INTENT_RUN && hungry >= 70)//You can walk while hungry, but you cant run so fast while hungry
 		tally += (hungry/50)*species.hunger_slowdown_multiplier
 
-	if(reagents.has_reagent("numbenzyme"))
+	if(reagents?.has_reagent("numbenzyme"))
 		tally += 1.5 //A tad bit of slowdown.
 
 	if (feral >= 10) //crazy feral animals give less and less of a shit about pain and hunger as they get crazier
