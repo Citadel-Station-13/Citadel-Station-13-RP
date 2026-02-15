@@ -7,7 +7,9 @@
 /datum/airlock_cycle/cancel_and_restore
 
 /datum/airlock_cycle/cancel_and_restore/create_cycling(was_on_side)
-	return ..()
+	var/datum/airlock_cycling/cycling = ..()
+	cycling.blackboard[AIRLOCK_CYCLING_BLACKBOARD_IS_CANCEL_OP] = TRUE
+	return cycling
 
 /datum/airlock_cycle/cancel_and_restore/gather_phases(was_on_side)
 	. = list()

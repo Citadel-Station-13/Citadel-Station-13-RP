@@ -41,12 +41,10 @@ export const AirlockSystem = (props) => {
             </Section>
           </Stack.Item>
           {!!data.programTgui && (
-            <Stack.Item grow>
-              <AirlockProgramRender
-                programComp={data.programTgui}
-                programData={data.programData}
-              ></AirlockProgramRender>
-            </Stack.Item>
+            <AirlockProgramRender
+              programComp={data.programTgui}
+              programData={data.programData}
+            ></AirlockProgramRender>
           )}
         </Stack>
       </Window.Content>
@@ -54,6 +52,11 @@ export const AirlockSystem = (props) => {
   );
 };
 
+/**
+ * @details The enclosed program is responsible for wrapping itself in Stack.Item's as needed.
+ * @param props
+ * @returns
+ */
 const AirlockProgramRender = (props: {
   programComp: string;
   programData: any;
