@@ -17,6 +17,6 @@ export interface AirlockCyclingData {
 export enum AirlockSide {
   Interior = 'interior',
   Exterior = 'exterior',
-  Neutral = 'neutral',
+  Neither = 'neither',
   Both = 'both',
 }

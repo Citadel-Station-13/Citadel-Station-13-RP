@@ -45,8 +45,46 @@ export const AirlockVacuumCycleProgram = (
           <Stack vertical>
             <Stack.Item>
               <Stack>
-                <Stack.Item grow={1}></Stack.Item>
-                <Stack.Item grow={1}>Test</Stack.Item>
+                <Stack.Item grow={1}>
+                  <Button
+                    disabled={data.airlock_disabled}
+                    icon="arrow-left"
+                    content="Cycle to Exterior"
+                    onClick={() => act('cycle_ext')}
+                  />
+                </Stack.Item>
+                <Stack.Item grow={1}>
+                  <Button
+                    disabled={data.airlock_disabled}
+                    icon="arrow-right"
+                    content="Cycle to Interior"
+                    onClick={() => act('cycle_int')}
+                  />
+                </Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>
+              <Stack>
+                <Stack.Item grow={1}>
+                  <Button.Confirm
+                    disabled={data.airlock_disabled}
+                    color={externalForceSafe ? '' : 'bad'}
+                    icon="exclamation-triangle"
+                    confirmIcon="exclamation-triangle"
+                    content="Force Exterior Door"
+                    onClick={() => act('force_ext')}
+                  />
+                </Stack.Item>
+                <Stack.Item grow={1}>
+                  <Button.Confirm
+                    disabled={data.airlock_disabled}
+                    color={internalForceSafe ? '' : 'bad'}
+                    icon="exclamation-triangle"
+                    confirmIcon="exclamation-triangle"
+                    content="Force Interior Door"
+                    onClick={() => act('force_int')}
+                  />
+                </Stack.Item>
               </Stack>
             </Stack.Item>
             <Stack.Item>
@@ -56,7 +94,7 @@ export const AirlockVacuumCycleProgram = (
                 </Button.Confirm>
               ) : (
                 <Button fluid disabled={!props.data.cycling}>
-                  Cancel
+                  Graceful Abort
                 </Button>
               )}
             </Stack.Item>

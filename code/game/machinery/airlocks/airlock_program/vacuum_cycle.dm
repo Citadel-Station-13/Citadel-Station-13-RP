@@ -89,7 +89,27 @@
 	system.start_cycle(cycle.create_cycling(
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE],
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE],
-	))
+	), PROC_REF(on_resserted_doors))
+
+/datum/airlock_program/vacuum_cycle/proc/on_reasserted_doors()
+	set_active_side_based_on_doors()
+
+/datum/airlock_program/vacuum_cycle/proc/set_active_side_based_on_doors()
+	// note: these specifically check for 'bolted closed'.
+	// open or unlocked counts as open.
+	if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] != FALSE)
+		if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] != FALSE)
+			// both open
+			set_currently_cycled_side(AIRLOCK_SIDE_BOTH)
+		else
+			// interior open
+			set_currently_cycled_side(AIRLOCK_SIDE_EXTERIOR)
+	if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] != FALSE)
+		// exterior open
+		set_currently_cycled_side(AIRLOCK_SIDE_INTERIOR)
+	else
+		// neither is open
+		set_currently_cycled_side(AIRLOCK_SIDE_NEITHER)
 
 /datum/airlock_program/vacuum_cycle/proc/force_interior_doors(to_opened)
 	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = to_opened

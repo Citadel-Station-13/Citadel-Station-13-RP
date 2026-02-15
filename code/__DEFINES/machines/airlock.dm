@@ -3,9 +3,13 @@
 
 //* airlock sides *//
 
+/// last was interior
 #define AIRLOCK_SIDE_INTERIOR "interior"
+/// last was exterior
 #define AIRLOCK_SIDE_EXTERIOR "exterior"
-#define AIRLOCK_SIDE_NEUTRAL "neutral"
+/// last was fully sealed and neither
+#define AIRLOCK_SIDE_NEITHER "neither"
+/// last was both open
 #define AIRLOCK_SIDE_BOTH "both"
 
 // TODO: DECLARE_ENUM for sensor / controller
