@@ -19,6 +19,7 @@
 	. = ..()
 	.["interiorSealed"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE]
 	.["exteriorSealed"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE]
+	.["side"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE]
 
 /datum/airlock_program/vacuum_cycle/ui_program_act(datum/airlock_system/system, datum/event_args/actor/actor, action, list/params)
 	. = ..()
@@ -47,6 +48,9 @@
 
 /datum/airlock_program/vacuum_cycle/proc/set_currently_open_side(datum/airlock_system/system, side)
 	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE] = side
+
+/datum/airlock_program/vacuum_cycle/process(delta_time)
+	..()
 
 #warn impl
 

@@ -18,6 +18,8 @@
 	var/datum/callback/cycling_on_finish
 
 	//* State *//
+	/// our airlock program
+	var/datum/airlock_program/program
 	/// arbitrary blackboard
 	/// * unlike cycle blackboard, this always persists, except across deconstruction/reconstruction of the controller.
 	var/list/blackboard = list()
@@ -32,7 +34,17 @@
 			controller.system = null
 		controller = null
 	blackboard = list()
+	QDEL_NULL(program)
 	return ..()
+
+/datum/airlock_system/proc/create_program(program_path = /datum/airlock_program/vacuum_cycle)
+	#warn impl
+
+/**
+ * * Old program will be obliterated.
+ */
+/datum/airlock_system/proc/set_program(datum/airlock_program/program)
+	#warn impl
 
 /datum/airlock_system/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()

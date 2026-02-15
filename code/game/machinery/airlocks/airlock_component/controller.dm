@@ -11,19 +11,20 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	icon_state = /obj/machinery/airlock_component/controller::icon_state
 	base_icon_state = /obj/machinery/airlock_component/controller::base_icon_state
 
-	var/datum/airlock_program/program
-	var/program_path
+	var/datum/airlock_system/system
+	var/default_program_path
 
 /obj/item/airlock_component/controller/Initialize(mapload, set_dir, obj/machinery/airlock_component/controller/from_machine)
 	. = ..()
 	if(from_machine)
-		program = from_machine.program
-		program_path = from_machine.program_path
-		// only one may own the reference at any given time
-		from_machine.program = null
+		system = from_machine.system
+		from_machine.system = null
+		if(system)
+			system.controller = null
+		default_program_path = from_machine.default_program_path
 
 /obj/item/airlock_component/controller/Destroy()
-	QDEL_NULL(program)
+	QDEL_NULL(system)
 	return ..()
 
 /**
@@ -53,10 +54,8 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 
 	/// Our airlock system
 	var/datum/airlock_system/system
-	/// our airlock program
-	var/datum/airlock_program/program
 	/// Starting program typepath
-	var/program_path
+	var/default_program_path
 	/// connected peripherals
 	var/list/obj/machinery/airlock_peripheral/peripherals
 
@@ -70,15 +69,17 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	// todo: we need proper tick bracket machine support & fastmos
 	set_controller_id(src.airlock_id)
 	if(from_item)
-		program = from_item.program
-		program_path = from_item.program_path
-		// only one may own the reference at any given time
-		from_item.program = null
-	if(!src.program && src.program_path)
-		src.program = new src.program_path
+		system = from_item.system
+		from_item.system = null
+		if(system)
+			system.controller = src
+		default_program_path = from_item.default_program_path
+	if(!system)
+		system = new(src)
+	if(!system.program && default_program_path)
+		system.create_program(default_program_path)
 
 /obj/machinery/airlock_component/controller/Destroy()
-	QDEL_NULL(program)
 	set_controller_id(null)
 	QDEL_NULL(system)
 	for(var/obj/machinery/airlock_peripheral/peri as anything in peripherals)
@@ -178,7 +179,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	hardmapped = TRUE
 
 /obj/machinery/airlock_component/controller/vacuum_cycle
-	program_path = /datum/airlock_program/vacuum_cycle
+	default_program_path = /datum/airlock_program/vacuum_cycle
 
 /obj/machinery/airlock_component/controller/vacuum_cycle/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

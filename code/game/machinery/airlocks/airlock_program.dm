@@ -9,9 +9,21 @@
  *   manner. A tick hook system will be added if / when absolutely needed.
  */
 /datum/airlock_program
+	/// owning system
+	var/datum/airlock_system/system
 	/// tgui routing string used to get the right component
 	/// * the config interface is `[component]Config`.
 	var/tgui_airlock_component
+
+/datum/airlock_program/New(datum/airlock_system/system)
+	src.system = system
+
+/datum/airlock_program/Destroy()
+	if(system)
+		if(system.program == src)
+			system.program = null
+		system = null
+	return ..()
 
 /datum/airlock_program/proc/ui_program_data(datum/airlock_system/system)
 	return list()
