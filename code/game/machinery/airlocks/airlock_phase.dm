@@ -136,7 +136,7 @@
 	cycling.add_task(new /datum/airlock_task/compound("Operating doors" door_tasks))
 	return AIRLOCK_PHASE_SETUP_SUCCESS
 
-/datum/airlock_phase/assert_state/seal/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
+/datum/airlock_phase/doors/assert_state/finished(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	if(interior_locked && !isnull(interior_open))
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = interior_open
 	if(exterior_locked && !isnull(exterior_open))
@@ -144,6 +144,8 @@
 
 /datum/airlock_phase/doors/seal
 	display_verb = "sealing"
+	var/interior = TRUE
+	var/exterior = TRUE
 
 /datum/airlock_phase/doors/seal/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	var/list/datum/airlock_task/door_tasks = list()
@@ -160,8 +162,8 @@
 
 /datum/airlock_phase/doors/lock_open
 	display_verb = "opening doors"
-	var/interior = FALSE
-	var/exterior = FALSE
+	var/interior = TRUE
+	var/exterior = TRUE
 
 /datum/airlock_phase/doors/lock_open/interior
 	interior = TRUE
@@ -191,8 +193,8 @@
 
 /datum/airlock_phase/doors/lock_closed
 	display_verb = "closing doors"
-	var/interior = FALSE
-	var/exterior = FALSE
+	var/interior = TRUE
+	var/exterior = TRUE
 
 /datum/airlock_phase/doors/lock_closed/interior
 	interior = TRUE

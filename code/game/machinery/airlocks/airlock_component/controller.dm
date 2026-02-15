@@ -168,11 +168,10 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller/proc/on_sensor_cycle_request(obj/machinery/airlock_peripheral/sensor/sensor, datum/event_args/actor/actor)
 	if(!system)
 		return
-	program?.on_sensor_cycle_request(system, sensor, actor)
+	system?.program?.on_sensor_cycle_request(system, sensor, actor)
 
 /obj/machinery/airlock_component/controller/process(delta_time)
 	system?.process(delta_time)
-	program?.process(delta_time)
 
 /obj/machinery/airlock_component/controller/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

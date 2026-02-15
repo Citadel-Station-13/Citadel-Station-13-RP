@@ -54,17 +54,18 @@
 		if("programAct")
 			var/p_action = params["action"]
 			var/p_params = params["params"]
-			controller.program?.ui_program_act(src, actor, p_action, p_params)
+			program?.ui_program_act(src, actor, p_action, p_params)
 			return TRUE
 
 /datum/airlock_system/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["cycling"] = cycling ? cycling.ui_cycle_data() : null
-	.["programTgui"] = controller.program?.tgui_airlock_component
-	.["programData"] = controller.program?.ui_program_data(src)
+	.["programTgui"] = program?.tgui_airlock_component
+	.["programData"] = program?.ui_program_data(src)
 
 /datum/airlock_system/process(delta_time)
 	cycling?.poll(delta_time)
+	program?.process(delta_time)
 
 /**
  * Begins an airlock cycle.
