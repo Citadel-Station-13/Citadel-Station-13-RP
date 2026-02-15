@@ -68,6 +68,12 @@
 /obj/machinery/airlock_component/cycler/proc/get_mutable_gas_mixture_ref() as /datum/gas_mixture
 	return loc.return_air_mutable()
 
+/**
+ * Gets gas mixture to use for handler / cycler procs.
+ */
+/obj/machinery/airlock_component/cycler/proc/get_immutable_gas_mixture_ref() as /datum/gas_mixture
+	return loc.return_air_immutable()
+
 /obj/machinery/airlock_component/cycler/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE

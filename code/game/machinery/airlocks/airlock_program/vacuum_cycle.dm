@@ -29,6 +29,8 @@
 	else
 		.["cycling"] = null
 	.["canceling"] = system.cycling?.blackboard[AIRLOCK_CYCLING_BLACKBOARD_IS_CANCEL_OP]
+	var/datum/gas_mixture/interior_air = system.controller?.network?.cycler?.get_immutable_gas_mixture_ref()
+	.["pressure"] = interior_air ? XGM_PRESSURE(interior_air) : null
 
 /datum/airlock_program/vacuum_cycle/ui_program_act(datum/event_args/actor/actor, action, list/params)
 	. = ..()
@@ -60,8 +62,6 @@
 			hard_abort()
 			return TRUE
 
-#warn tgui
-
 /**
  * @return truthy, or falsy value
  */
@@ -92,11 +92,23 @@
 	))
 
 /datum/airlock_program/vacuum_cycle/proc/force_interior_doors(to_opened)
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = to_opened
+	reassert_doors()
+	return TRUE
 
 /datum/airlock_program/vacuum_cycle/proc/force_exterior_doors(to_opened)
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = to_opened
+	reassert_doors()
+	return TRUE
 
 /datum/airlock_program/vacuum_cycle/proc/start_cycling_towards(side)
-#warn impl all
+	system.stop_cycle()
+	var/datum/airlock_cycle/cycle = new /datum/airlock_cycle/vacuum_cycle
+	system.start_cycle(cycle.create_cycling(
+		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE],
+		side,
+	))
+	return TRUE
 
 /datum/airlock_program/vacuum_cycle/proc/graceful_abort()
 	system.stop_cycle()

@@ -41,6 +41,7 @@
 /datum/airlock_task/proc/ui_task_data()
 	return list(
 		"startedAt" = started_at,
+		"ref" = ref(src),
 		"reason" = describe_state(),
 	)
 
@@ -81,7 +82,7 @@
 	..()
 
 /datum/airlock_task/compound/describe_state()
-	return "desc"
+	return desc
 
 /datum/airlock_task/compound/Destroy()
 	QDEL_LIST(tasks)

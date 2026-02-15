@@ -3,14 +3,52 @@
  * @license MIT
  */
 
-import { Window } from "../../../layouts";
-import { AirlockVacuumCycleProgram } from "./programs/AirlockVacuumCycleProgram";
+import { LabeledList, Section, Stack } from 'tgui-core/components';
+import { Window } from '../../../layouts';
+import { AirlockVacuumCycleProgram } from './programs/AirlockVacuumCycleProgram';
+import { useBackend } from '../../../backend';
+import { capitalize } from 'tgui-core/string';
+import { AirlockCyclingData } from './types';
+
+interface AirlockSystemData {
+  cycling: AirlockCyclingData | null;
+  programTgui: string | null;
+  programData: null | any;
+}
 
 export const AirlockSystem = (props) => {
+  const { act, data } = useBackend<AirlockSystemData>();
   return (
     <Window>
       <Window.Content>
-        Test
+        <Stack vertical fill>
+          <Stack.Item>
+            <Section title="System">
+              <LabeledList>
+                <LabeledList.Item label="Status">
+                  {capitalize(data.cycling?.phaseVerb || 'Idle')}
+                  {data.cycling && (
+                    <>
+                      {data.cycling.tasks.map((t) => (
+                        <LabeledList.Item key={t.ref}>
+                          {t.reason}
+                        </LabeledList.Item>
+                      ))}
+                    </>
+                  )}
+                </LabeledList.Item>
+              </LabeledList>
+            </Section>
+          </Stack.Item>
+          {!!data.programTgui && (
+            <Stack.Item grow>
+              <AirlockProgramRender
+                programComp={data.programTgui}
+                programData={data.programData}
+              ></AirlockProgramRender>
+            </Stack.Item>
+          )}
+        </Stack>
       </Window.Content>
     </Window>
   );
@@ -20,8 +58,12 @@ const AirlockProgramRender = (props: {
   programComp: string;
   programData: any;
 }) => {
+  const { act } = useBackend();
   switch (props.programComp) {
     case 'VacuumCycle':
-      return AirlockVacuumCycleProgram({ data: props.programData });
+      return AirlockVacuumCycleProgram({
+        data: props.programData,
+        act: (a, p) => act('programAct', { action: a, params: p }),
+      });
   }
 };
