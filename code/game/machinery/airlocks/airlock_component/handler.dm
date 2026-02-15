@@ -89,11 +89,32 @@
 /obj/machinery/airlock_component/handler/proc/get_waste_gas_mixture_ref() as /datum/gas_mixture
 	return conn_eject?.air_contents
 
+/obj/machinery/airlock_component/handler/proc/create_or_update_conn_eject()
+	if(!conn_eject)
+		conn_eject = new(null, dir)
+	update_conn_entity(conn_eject, layer_eject)
+
+/obj/machinery/airlock_component/handler/proc/create_or_update_conn_intake()
+	if(!conn_intake)
+		conn_intake = new(null, dir)
+	update_conn_entity(conn_intake, layer_intake)
+
+/obj/machinery/airlock_component/handler/proc/update_conn_entity(obj/machinery/atmospherics/component/unary/airlock_connector/connector, wanted_layer)
+	if(isturf(src.loc))
+		if(connector.loc != src.loc)
+			connector.forceMove(src.loc)
+	else
+		if(connector.loc != null)
+			connector.forceMove(null)
+	connector.setDir(src.dir)
+
+#warn impl layer ?
+
 /obj/machinery/airlock_component/handler/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE
 
 /obj/machinery/atmospherics/component/unary/airlock_connector
-	volume = 2000
+	air_volume = 2000
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	atom_flags = ATOM_ABSTRACT | ATOM_NONWORLD
