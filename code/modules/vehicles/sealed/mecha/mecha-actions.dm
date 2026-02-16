@@ -3,10 +3,8 @@
 
 /datum/action/vehicle/mecha
 	target_type = /obj/vehicle/sealed/mecha
-	background_icon_state = "mecha"
+	background_icon_state = "tech_green"
 	button_icon = 'icons/screen/actions/mecha.dmi'
-
-#warn sprites for this shit and all subtypes;
 
 /datum/action/vehicle/mecha/eject
 	name = "Eject"

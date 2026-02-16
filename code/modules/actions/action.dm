@@ -79,7 +79,7 @@
 	/// are we active?
 	var/button_active = FALSE
 	/// overlay to add to background if active
-	var/button_active_overlay = "active-1"
+	var/button_active_background_overlay = "inner_border_green"
 
 	#warn how do we do this
 	/// ask for confirmation
@@ -193,8 +193,8 @@
 	generating.plane = HUD_PLANE
 	generating.layer = HUD_LAYER_BASE
 
-	if(button_active && button_active_overlay)
-		generating.overlays += button_active_overlay
+	if(button_active && button_active_background_overlay)
+		generating.overlays += button_active_background_overlay
 	if(background_additional_overlay)
 		generating.overlays += background_additional_overlay
 

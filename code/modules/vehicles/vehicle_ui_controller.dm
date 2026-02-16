@@ -40,10 +40,14 @@
 		return
 	if(params["__routeModule"])
 		var/obj/item/vehicle_module/t_route = locate(params["__routeComponent"]) in vehicle.modules
+		if(!t_route)
+			return TRUE
 		t_route.vehicle_ui_module_act(action, params, actor)
 		return TRUE
 	if(params["__routeComponent"])
 		var/obj/item/vehicle_component/t_route = locate(params["__routeComponent"]) in vehicle.components
+		if(!t_route)
+			return TRUE
 		t_route.vehicle_ui_component_act(action, params, actor)
 		return TRUE
 	switch(action)

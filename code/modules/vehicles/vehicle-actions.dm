@@ -5,9 +5,9 @@
 /datum/action/vehicle
 	target_type = /obj/vehicle
 	check_mobility_flags = MOBILITY_CAN_USE
+	background_icon_state = "tech_green"
 	button_icon = 'icons/screen/actions/vehicles.dmi'
-	button_icon_state = "eject"
-	#warn iconstate; render the vehicle please
+	button_active_background_overlay = "tech_green_on"
 
 	/// required control flags
 	var/required_control_flags = NONE
@@ -63,6 +63,7 @@
 	name = "Climb Out"
 	desc = "Climb out of your vehicle!"
 	button_icon_state = "eject"
+	#warn iconstate; render the vehicle please
 
 	required_control_flags = VEHICLE_CONTROL_EXIT
 

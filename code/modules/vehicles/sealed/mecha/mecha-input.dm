@@ -16,8 +16,19 @@
 	target = ..()
 	var/stacks = fault_check(/datum/mecha_fault/calibration_lost)
 	if(stacks)
-		if(min(45, prob(stacks) * 5))
-			#warn need a random targetable or a floor / wall
+		if(prob(min(45, stacks * 5)))
+			// shitty but whatever
+			var/turf/original_target_turf = get_turf(target)
+			for(var/i in 1 to 10)
+				// yes this means you can hit yourself
+				// "it hurt itself in its confusion!"
+				// lol, lmao
+				target = pick(view(1, original_target_turf))
+				if(target.atom_flags & (ATOM_NONWORLD | ATOM_ABSTRACT))
+					continue
+				if(!target.is_melee_targetable(clickchain, clickchain_flags))
+					continue
+				break
 
 /obj/vehicle/sealed/mecha/request_click_angle_scrambling(angle, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	angle = ..()
