@@ -363,3 +363,6 @@
   washikarasu:
   - rscdel: grey railing sprite
   - tweak: greyscaled railing sprite and added colour
+2026-02-16:
+  FreeStylaLT:
+  - rscadd: Added Valentine stools
