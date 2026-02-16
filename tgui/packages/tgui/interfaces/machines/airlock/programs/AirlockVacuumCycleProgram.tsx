@@ -6,7 +6,11 @@
 import { Button, LabeledList, Section, Stack } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
 import { ActFunctionType } from '../../../../backend';
-import { AirlockSide } from '../types';
+import {
+  airlockSealedStateToName,
+  AirlockSide,
+  airlockSideToName,
+} from '../types';
 
 export interface AirlockVacuumCycleProgramData {
   interiorSealed: BooleanLike;
@@ -28,15 +32,22 @@ export interface AirlockVacuumCycleProgramContext {
 export const AirlockVacuumCycleProgram = (
   props: AirlockVacuumCycleProgramContext,
 ) => {
+  const act = props.act;
   return (
     <>
       <Stack.Item>
         <Section title="Information">
           <LabeledList>
             <LabeledList.Item label="Pressure">Test</LabeledList.Item>
-            <LabeledList.Item label="Interior Doors">Test</LabeledList.Item>
-            <LabeledList.Item label="Exterior Doors">Test</LabeledList.Item>
-            <LabeledList.Item label="Active Side">Test</LabeledList.Item>
+            <LabeledList.Item label="Interior Doors">
+              {airlockSealedStateToName(props.data.exteriorSealed)}
+            </LabeledList.Item>
+            <LabeledList.Item label="Exterior Doors">
+              {airlockSealedStateToName(props.data.exteriorSealed)}
+            </LabeledList.Item>
+            <LabeledList.Item label="Active Side">
+              {airlockSideToName(props.data.side)}
+            </LabeledList.Item>
           </LabeledList>
         </Section>
       </Stack.Item>
@@ -47,19 +58,25 @@ export const AirlockVacuumCycleProgram = (
               <Stack>
                 <Stack.Item grow={1}>
                   <Button
-                    disabled={data.airlock_disabled}
+                    disabled={!!props.data.cycling}
                     icon="arrow-left"
-                    content="Cycle to Exterior"
-                    onClick={() => act('cycle_ext')}
-                  />
+                    onClick={() => act('cycleToInterior')}
+                    textAlign="center"
+                    fluid
+                  >
+                    Cycle to Interior
+                  </Button>
                 </Stack.Item>
                 <Stack.Item grow={1}>
                   <Button
-                    disabled={data.airlock_disabled}
+                    disabled={!!props.data.cycling}
                     icon="arrow-right"
-                    content="Cycle to Interior"
-                    onClick={() => act('cycle_int')}
-                  />
+                    onClick={() => act('cycleToExterior')}
+                    textAlign="center"
+                    fluid
+                  >
+                    Cycle to Exterior
+                  </Button>
                 </Stack.Item>
               </Stack>
             </Stack.Item>
@@ -67,33 +84,48 @@ export const AirlockVacuumCycleProgram = (
               <Stack>
                 <Stack.Item grow={1}>
                   <Button.Confirm
-                    disabled={data.airlock_disabled}
-                    color={externalForceSafe ? '' : 'bad'}
+                    disabled={!!props.data.cycling}
+                    color="bad"
                     icon="exclamation-triangle"
                     confirmIcon="exclamation-triangle"
-                    content="Force Exterior Door"
-                    onClick={() => act('force_ext')}
-                  />
+                    onClick={() => act('forceInteriorDoors')}
+                    textAlign="center"
+                    fluid
+                  >
+                    Force Interior Door
+                  </Button.Confirm>
                 </Stack.Item>
                 <Stack.Item grow={1}>
                   <Button.Confirm
-                    disabled={data.airlock_disabled}
-                    color={internalForceSafe ? '' : 'bad'}
+                    disabled={!!props.data.cycling}
+                    color="bad"
                     icon="exclamation-triangle"
                     confirmIcon="exclamation-triangle"
-                    content="Force Interior Door"
-                    onClick={() => act('force_int')}
-                  />
+                    fluid
+                    textAlign="center"
+                    onClick={() => act('forceExteriorDoors')}
+                  >
+                    Force Exterior Door
+                  </Button.Confirm>
                 </Stack.Item>
               </Stack>
             </Stack.Item>
             <Stack.Item>
               {props.data.cancelling ? (
-                <Button.Confirm fluid disabled={!props.data.cycling}>
+                <Button.Confirm
+                  fluid
+                  color="bad"
+                  textAlign="center"
+                  disabled={!props.data.cycling}
+                >
                   Emergency Stop
                 </Button.Confirm>
               ) : (
-                <Button fluid disabled={!props.data.cycling}>
+                <Button
+                  fluid
+                  textAlign="center"
+                  disabled={!props.data.cycling || props.data.cancelling}
+                >
                   Graceful Abort
                 </Button>
               )}
