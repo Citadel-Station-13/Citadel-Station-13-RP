@@ -19,7 +19,6 @@
 	name = "Open Control Panel"
 	desc = "Open the vehicle's control panel."
 	button_icon_state = "panel"
-	#warn iconstate
 
 /datum/action/vehicle/control_panel/invoke_target(obj/vehicle/target, datum/event_args/actor/actor)
 	. = ..()
@@ -34,7 +33,8 @@
 
 /datum/action/vehicle/cycle_active_module/pre_render_hook()
 	..()
-	#warn render the active module
+	var/obj/vehicle/casted_target = target
+	button_additional_overlay = casted_target.module_active_click
 
 /datum/action/vehicle/cycle_active_module/invoke_target(obj/vehicle/target, datum/event_args/actor/actor)
 	. = ..()
@@ -63,9 +63,15 @@
 	name = "Climb Out"
 	desc = "Climb out of your vehicle!"
 	button_icon_state = "eject"
-	#warn iconstate; render the vehicle please
 
 	required_control_flags = VEHICLE_CONTROL_EXIT
+
+/datum/action/vehicle/sealed/climb_out/pre_render_hook()
+	..()
+	var/obj/vehicle/casted_target = target
+	var/mutable_appearance/app_clone = mutable_appearance(casted_target)
+	app_clone.dir = SOUTH
+	button_additional_overlay = app_clone
 
 /datum/action/vehicle/sealed/climb_out/invoke_target(obj/vehicle/sealed/target, datum/event_args/actor/actor)
 	. = ..()
