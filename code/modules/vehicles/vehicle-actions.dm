@@ -65,6 +65,7 @@
 	button_icon_state = "eject"
 
 	required_control_flags = VEHICLE_CONTROL_EXIT
+	ask_confirm = TRUE
 
 /datum/action/vehicle/sealed/climb_out/pre_render_hook()
 	..()

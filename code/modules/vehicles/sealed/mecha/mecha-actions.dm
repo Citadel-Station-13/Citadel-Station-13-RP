@@ -6,25 +6,15 @@
 	background_icon_state = "tech_green"
 	button_icon = 'icons/screen/actions/mecha.dmi'
 
-/datum/action/vehicle/mecha/eject
-	name = "Eject"
-	desc = "Eject from your mecha."
-	button_icon_state = "eject"
-
-	required_control_flags = VEHICLE_CONTROL_EXIT
-	ask_confirm = TRUE
-
-/datum/action/vehicle/mecha/eject/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
-	. = ..()
-	if(.)
-		return
-	target.mob_try_exit(actor.performer, actor)
-
 /datum/action/vehicle/mecha/strafing
 	name = "Toggle Strafing"
 	desc = "Toggle strafing movement on/off."
 	button_icon_state = "strafing"
-	#warn iconstate
+
+/datum/action/vehicle/mecha/strafing/pre_render_hook()
+	..()
+	var/obj/vehicle/sealed/mecha/casted_target = target
+	set_button_active(casted_target.strafing, TRUE)
 
 /datum/action/vehicle/mecha/strafing/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()
@@ -36,7 +26,11 @@
 	name = "Toggle Floodlights"
 	desc = "Toggle floodlights on/off."
 	button_icon_state = "floodlights"
-	#warn iconstate
+
+/datum/action/vehicle/mecha/floodlight/pre_render_hook()
+	..()
+	var/obj/vehicle/sealed/mecha/casted_target = target
+	set_button_active(casted_target.floodlight_active, TRUE)
 
 /datum/action/vehicle/mecha/floodlight/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()
@@ -48,14 +42,17 @@
 	name = "Toggle Internals"
 	desc = "Toggle cabin air supply between environmental and our internal tank."
 	button_icon_state = "internals"
-	#warn iconstate
+
+/datum/action/vehicle/mecha/toggle_internals/pre_render_hook()
+	..()
+	var/obj/vehicle/sealed/mecha/casted_target = target
+	set_button_active(casted_target.use_internal_tank, TRUE)
 
 /datum/action/vehicle/mecha/toggle_internals/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	target.internal_tank()
-	button_icon_state = "mech_internals_[target.use_internal_tank ? "on" : "off"]"
 	update_buttons()
 	return TRUE
 
@@ -70,14 +67,18 @@
 	name = "Toggle Phasing"
 	desc = "Toggle phasing, if your mech supports it"
 	button_icon_state = "phasing"
-	#warn iconstate
+	button_active_background_overlay = "tech_green_on_blue"
+
+/datum/action/vehicle/mecha/legacy/phasing/pre_render_hook()
+	..()
+	var/obj/vehicle/sealed/mecha/casted_target = target
+	set_button_active(casted_target.phasing, TRUE)
 
 /datum/action/vehicle/mecha/legacy/phasing/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	target.phasing()
-	button_icon_state = "mech_phasing_[target.phasing ? "on" : "off"]"
 	update_buttons()
 	return TRUE
 
@@ -85,13 +86,17 @@
 	name = "Toggle Zoom"
 	desc = "Toggle zoom mode, if your mech supports it"
 	button_icon_state = "zoom"
-	#warn iconstate
+	button_active_background_overlay = "tech_green_on_red"
+
+/datum/action/vehicle/mecha/legacy/zoom/pre_render_hook()
+	..()
+	var/obj/vehicle/sealed/mecha/casted_target = target
+	set_button_active(casted_target.zoom, TRUE)
 
 /datum/action/vehicle/mecha/legacy/zoom/invoke_target(obj/vehicle/sealed/mecha/target, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	target.zoom()
-	button_icon_state = "mech_zoom_[target.zoom ? "on" : "off"]"
 	update_buttons()
 	return TRUE
