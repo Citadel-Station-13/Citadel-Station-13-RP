@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 					target.drop_item_to_ground(knocked_away)
 					. +=  "disarmed [knocked_away] left"
 			if(BP_R_ARM, BP_R_HAND)
-				var/obj/item/knocked_away = target.get_left_held_item()
+				var/obj/item/knocked_away = target.get_right_held_item()
 				if (knocked_away)
 					// Disarm right hand
 					target.visible_message("<span class='danger'>\The [knocked_away] was knocked right out of [target]'s grasp!</span>")
