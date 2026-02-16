@@ -4705,6 +4705,7 @@
 #include "code\modules\occultism\stargazer\abilities\health_scan.dm"
 #include "code\modules\occultism\stargazer\abilities\mindlink.dm"
 #include "code\modules\occultism\stargazer\abilities\ping.dm"
+#include "code\modules\occultism\stargazer\abilities\remove_mindlink.dm"
 #include "code\modules\organs\organ.dm"
 #include "code\modules\organs\external\external.dm"
 #include "code\modules\organs\external\external_icons.dm"

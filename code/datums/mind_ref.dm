@@ -22,10 +22,6 @@ GLOBAL_LIST_EMPTY(mind_ref_weakref_by_id)
 
 	src.loaded = from_mind
 
-/datum/mind_ref/Destroy()
-	GLOB.mind_ref_weakref_by_id -= src.id
-	return ..()
-
 /datum/mind_ref/Destroy(force)
 	if(!force)
 		STACK_TRACE("Tried to qdel a mind_ref; just toss its reference.")
@@ -33,4 +29,8 @@ GLOBAL_LIST_EMPTY(mind_ref_weakref_by_id)
 	if(loaded.mind_ref = src)
 		loaded.mind_ref = null
 	loaded = null
+	GLOB.mind_ref_weakref_by_id -= src.id
 	return ..()
+
+/datum/mind_ref/proc/resolve()
+	return loaded

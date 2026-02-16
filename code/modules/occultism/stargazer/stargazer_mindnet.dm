@@ -79,8 +79,6 @@
 	var/attunement_power_see_owner_min = 15
 	/// passive attunement power for someone with full view of the owner's body
 	var/attunement_power_see_owner_max = 25
-	var/attunement_power_see_target_min = 0
-	var/attunement_power_see_target_max = 0
 
 	/// passive attunement power gained by contact
 	var/attunement_power_for_pull = 15
@@ -125,10 +123,10 @@
 	var/list/datum/stargazer_mindnet_exec/executing
 
 	/// cached visibility attunements
-	/// * mind_ref to ratio from 0 to 1
-	/// * 0 = owner cannot see them but they can see owner, 1 = owner can see them very well
+	/// * mind_ref to non-null value
 	var/tmp/list/cached_visibility
 	/// ratio owner is considered seen
+	/// * pretty much just based on clothing
 	/// * 0 to 1
 	var/tmp/cached_visibility_owner_ratio
 	var/tmp/cached_visibility_last_update
@@ -277,11 +275,20 @@
 		if("invoke")
 			var/ability_id = params["id"]
 			var/target_ref = params["targetRef"]
+			#warn impl
 		if("rescan")
+			if(is_scan_on_cooldown())
+				return TRUE
+			#warn impl
+		if("setPresenceName")
+			#warn throttle this, list len wise
 
 /datum/stargazer_mindnet/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
-	#warn impl
+	.["scanOnCooldown"] = is_scan_on_cooldown()
+
+/datum/stargazer_mindnet/proc/is_scan_on_cooldown()
+	return scan_last > world.time - scan_throttle
 
 /datum/stargazer_mindnet/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()

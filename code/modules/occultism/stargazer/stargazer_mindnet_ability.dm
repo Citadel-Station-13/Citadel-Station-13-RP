@@ -20,6 +20,8 @@
 	var/desc = "Do something at the targeted mind."
 	/// targeted at minds
 	var/targeted
+	/// require mindlink to even show up
+	var/require_mindlink = FALSE
 
 	/// attunement required for this to work if they cooperate with the action
 	/// * only used by default for default-targeted-runs
@@ -63,12 +65,11 @@
 
 /datum/stargazer_mindnet_ability/proc/ui_mindnet_ability_data()
 	return list(
+		"id" = id,
 		"name" = name,
 		"desc" = desc,
-		"attCoopThres" = attunement_cooperative_threshold,
-		"attForceThres" = attunement_forced_threshold,
-		"cooperateUnconscious" = can_be_cooperated_while_unconscious,
 		"targeted" = targeted,
+		"requireMindlink" = require_mindlink,
 	)
 
 /datum/stargazer_mindnet_ability/proc/put_on_global_cooldown(datum/stargazer_mindnet_exec/exec, for_how_long)
