@@ -206,7 +206,7 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 					. +=  "flew backwards"
 			if(BP_GROIN)
 				if(!target.isSynthetic())
-					target.visible_message("<span class='warning'>[target] looks like [TT.he] [TT.is] in pain!</span>", "<span class='warning'>[(target.gender=="female") ? "Oh god that hurt!" : "Oh no, not your[pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>") // """""""I see no easy way to fix this for non-organic or neuter characters.""""""" - original coder
+					target.visible_message("<span class='warning'>[target] looks like [TT.he] [TT.is] in pain!</span>", "<span class='warning'>[(target.gender!=MALE) ? "Oh god that hurt!" : "Oh no, not your [pick("testicles", "crown jewels", "clockweights", "family jewels", "marbles", "bean bags", "teabags", "sweetmeats", "goolies")]!"]</span>") // """""""I see no easy way to fix this for non-organic or neuter characters.""""""" - original coder
 					target.apply_effects(stutter = attack_damage * 2, agony = attack_damage* 3, blocked = armour)
 					. +=  "dick punched"
 			if("l_leg", "l_foot", "r_leg", "r_foot")
