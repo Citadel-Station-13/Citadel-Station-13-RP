@@ -213,19 +213,6 @@
 /datum/stargazer_mindnet/proc/scan_remove_all(defer_update)
 	#warn impl
 
-/datum/stargazer_mindnet/proc/push_scan_results()
-	#warn impl
-
-/datum/stargazer_mindnet/proc/push_scan_target_add(datum/mind_ref/target)
-	#warn impl
-
-/datum/stargazer_mindnet/proc/push_scan_target_update(datum/mind_ref/target)
-	#warn impl
-
-/datum/stargazer_mindnet/proc/push_scan_target_remove(datum/mind_ref/target)
-	#warn impl
-
-
 /datum/stargazer_mindnet/proc/get_attunement_power_for_entity(mob/target)
 	if(!istype(target))
 		return 0
@@ -303,6 +290,19 @@
 		var/datum/stargazer_mindnet_ability/ability = ability_lookup[id]
 		serialized_abilities[id] = ability.ui_mindnet_ability_data()
 	.["abilities"] = serialized_abilities
+
+	#warn impl
+
+/datum/stargazer_mindnet/proc/push_scan_results()
+	#warn impl
+
+/datum/stargazer_mindnet/proc/push_scan_target_add(datum/mind_ref/target)
+	#warn impl
+
+/datum/stargazer_mindnet/proc/push_scan_target_update(datum/mind_ref/target)
+	#warn impl
+
+/datum/stargazer_mindnet/proc/push_scan_target_remove(datum/mind_ref/target)
 	#warn impl
 
 /datum/stargazer_mindnet/proc/emit_raw_message_to_owner(html)
