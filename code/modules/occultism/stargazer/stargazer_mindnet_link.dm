@@ -40,8 +40,6 @@
 	/// linear interpolated between proximity radius min/max
 	var/attunement_power_proximity_max_power = 150
 
-	var/attunement_power_see_target_min
-	var/attunement_power_see_target_max
 	var/attunement_power_see_owner_max
 	var/attunement_power_see_owner_min
 
@@ -86,9 +84,8 @@
 	var/turf/our_turf = mindnet.get_parent_turf()
 
 
-	. += LERP(attunement_power_see_target_min, attunement_power_see_target_max, mindnet.cached_visibility)
-	if(owner in viewers(resolved_mob))
-		. += LERP(attunement_power_see_owner_min, attunement_power_see_owner_max, mindnet.cached_visbility_owner_ratio)
+	if(!isnull(mindnet.cached_visibility[mind_ref]))
+		. += LERP(attunement_power_see_owner_min, attunement_power_see_owner_max, mindnet.cached_visibility)
 
 	cached_attunement_power = .
 

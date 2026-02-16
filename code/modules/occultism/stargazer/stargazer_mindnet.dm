@@ -212,7 +212,7 @@
 	#warn impl
 
 /datum/stargazer_mindnet/proc/get_attunement_power_for_entity(mob/target)
-	if(!istype(target))
+	if(!istype(target) || !target.mind)
 		return 0
 	return get_attunement_power_for_mind(target.mind)
 
@@ -301,19 +301,23 @@
 	#warn impl
 
 /datum/stargazer_mindnet/proc/push_scan_results()
-	#warn impl
+	// TODO: im lazy sue me
+	update_static_data()
 
 /datum/stargazer_mindnet/proc/push_scan_target_add(datum/mind_ref/target)
-	#warn impl
+	// TODO: im lazy sue me
+	update_static_data()
 
 /datum/stargazer_mindnet/proc/push_scan_target_update(datum/mind_ref/target)
-	#warn impl
+	// TODO: im lazy sue me
+	update_static_data()
 
 /datum/stargazer_mindnet/proc/push_scan_target_remove(datum/mind_ref/target)
-	#warn impl
+	// TODO: im lazy sue me
+	update_static_data()
 
 /datum/stargazer_mindnet/proc/emit_raw_message_to_owner(html)
-	#warn impl
+	return // implement on subtypes please
 
 /datum/stargazer_mindnet/proc/emit_message_to_owner(html)
 	emit_raw_message_to_owner(SPAN_ALIEN("MINDNET: [html]"))
@@ -347,6 +351,11 @@
 /datum/stargazer_mindnet/promethean/get_parent_turf()
 	return get_turf(owning_core)
 
+/datum/stargazer_mindnet/promethean/emit_raw_message_to_owner(html)
+	if(!owning_core?.owner)
+		return
+	to_chat(owning_core.owner, html)
+
 /**
  * Default variant for Xenochimerae
  */
@@ -367,5 +376,10 @@
 
 /datum/stargazer_mindnet/xenochimera/get_parent_turf()
 	return get_turf(owning_core)
+
+/datum/stargazer_mindnet/xenochimera/emit_raw_message_to_owner(html)
+	if(!owning_core?.owner)
+		return
+	to_chat(owning_core.owner, html)
 
 // TODO: abstract organ variant for adminbus
