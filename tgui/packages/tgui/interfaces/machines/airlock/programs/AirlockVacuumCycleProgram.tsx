@@ -3,7 +3,13 @@
  * @license MIT
  */
 
-import { Button, LabeledList, Section, Stack } from 'tgui-core/components';
+import {
+  Button,
+  LabeledList,
+  ProgressBar,
+  Section,
+  Stack,
+} from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
 import { ActFunctionType } from '../../../../backend';
 import {
@@ -38,7 +44,22 @@ export const AirlockVacuumCycleProgram = (
       <Stack.Item>
         <Section title="Information">
           <LabeledList>
-            <LabeledList.Item label="Pressure">Test</LabeledList.Item>
+            <LabeledList.Item label="Pressure">
+              {props.data.pressure ? (
+                <ProgressBar
+                  value={props.data.pressure}
+                  minValue={0}
+                  maxValue={101}
+                  color={
+                    props.data.pressure < 66 || props.data.pressure > 130
+                      ? 'bad'
+                      : 'good'
+                  }
+                ></ProgressBar>
+              ) : (
+                'Unknown'
+              )}
+            </LabeledList.Item>
             <LabeledList.Item label="Interior Doors">
               {airlockSealedStateToName(props.data.exteriorSealed)}
             </LabeledList.Item>
