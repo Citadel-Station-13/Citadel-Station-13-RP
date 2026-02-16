@@ -99,6 +99,7 @@
 		burning_time_left = burning_background_at = burning_type = burning_is_extinguished = null
 
 /obj/item/vehicle_module/lazy/stack_generator/process()
+	#warn impl
 
 /obj/item/vehicle_module/lazy/stack_generator/proc/accepts_stack_type(obj/item/stack/stack_or_type)
 	if(!ispath(stack_or_type.type, /obj/item/stack))
@@ -128,7 +129,10 @@
 		)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	var/sheets_loaded = attempt_load(casted)
-	#warn feedback
+	clickchain.chat_feedback(
+		SPAN_NOTICE("[src] ingests [sheets_loaded] sheets of [casted]."),
+		target = casted,
+	)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/vehicle_module/lazy/stack_generator/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -145,7 +149,10 @@
 		)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	var/sheets_loaded = attempt_load(casted)
-	#warn feedback
+	clickchain.chat_feedback(
+		SPAN_NOTICE("[src] ingests [sheets_loaded] sheets of [casted]."),
+		target = casted,
+	)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/vehicle_module/lazy/stack_generator/proc/attempt_load(obj/item/stack/stack, limit = INFINITY)
@@ -216,7 +223,7 @@
 	. = TRUE
 	// give them a 10% grace period
 	// if failure is over max skip the runtime error and go for 100% damage lmfao
-	var/damage_ratio = ((integrity_failure > integrity_max) && 1) || \
+	var/damage_ratio = ((integrity_failure >= integrity_max) && 1) || \
 		(1 - ((integrity - integrity_failure + 0.1 * integrity) / (integrity_max - integrity_failure)))
 	if(damage_ratio > 0)
 		radiation_pulse(src, uncontained_radiation_strength, uncontained_radiation_falloff, TRUE, TRUE)

@@ -92,6 +92,8 @@ GLOBAL_LIST_INIT(mecha_faults, init_mecha_faults())
 
 /datum/mecha_fault/tank_breach/on_tick(obj/vehicle/sealed/mecha/mech, stacks, dt)
 	..()
+	if(!mech.internal_tank)
+		return
 	// this is a somewhat serious fault as you need to fix it from maint panel, so.
 	// lose less air.
 	var/lose_ratio = stacks * 0.001

@@ -90,6 +90,6 @@
 		if("imtguiButton")
 			on_l_ui_button(actor, params["key"])
 		if("imtguiSelect")
-			on_l_ui_button(actor, params["key"], params["name"])
+			on_l_ui_select(actor, params["key"], params["name"])
 		if("imtguiMultiselect")
-			on_l_ui_button(actor, params["key"], params["name"], params["enabled"])
+			on_l_ui_multiselect(actor, params["key"], params["name"], params["enabled"])

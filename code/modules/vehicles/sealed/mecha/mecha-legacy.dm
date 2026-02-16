@@ -313,33 +313,6 @@
 			else//Everyone else gets the normal noise
 				who << sound('sound/mecha/nominal.ogg',volume=50)
 
-#warn nuke this
-/obj/vehicle/sealed/mecha/proc/report_internal_damage()
-	var/output = null
-	if(return_pressure() > WARNING_HIGH_PRESSURE)
-		output += "<font color='red'><b>DANGEROUSLY HIGH CABIN PRESSURE</b></font><br />"
-	return output
-
-/obj/vehicle/sealed/mecha/proc/get_stats_part()
-	var/integrity = src.integrity/initial(src.integrity)*100
-	var/cell_charge = get_charge()
-	var/tank_pressure = internal_tank ? round(internal_tank.return_pressure(),0.01) : "None"
-	var/tank_temperature = internal_tank ? internal_tank.return_temperature() : "Unknown"
-	var/cabin_pressure = round(return_pressure(),0.01)
-
-	var/output_text = {"[report_internal_damage()]
-						<b>Powercell charge: </b>[isnull(cell_charge)?"No powercell installed":"[cell.percent()]%"]<br>
-						<b>Air source: </b>[use_internal_tank?"Internal Airtank":"Environment"]<br>
-						<b>Airtank pressure: </b>[tank_pressure]kPa<br>
-						<b>Airtank temperature: </b>[tank_temperature]K|[tank_temperature - T0C]&deg;C<br>
-						<b>Cabin pressure: </b>[cabin_pressure>WARNING_HIGH_PRESSURE ? "<font color='red'>[cabin_pressure]</font>": cabin_pressure]kPa<br>
-						<b>Cabin temperature: </b> [return_temperature()]K|[return_temperature() - T0C]&deg;C<br>
-						<b>Lights: </b>[lights?"on":"off"]<br>
-					"}
-
-	output_text += "</div>"
-	return output_text
-
 /obj/vehicle/sealed/mecha/proc/occupant_message(message)
 	occupant_send_default_chat(message)
 

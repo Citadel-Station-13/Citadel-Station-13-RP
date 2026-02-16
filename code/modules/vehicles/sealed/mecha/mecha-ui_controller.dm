@@ -10,6 +10,14 @@
 	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
 	.["portConnected"] = !!casted_vehicle.connected_port
 
+	#warn impl
+	// <b>Powercell charge: </b>[isnull(cell_charge)?"No powercell installed":"[obj_cell_slot?.cell?.percent()]%"]<br>
+	// <b>Air source: </b>[use_internal_tank?"Internal Airtank":"Environment"]<br>
+	// <b>Airtank pressure: </b>[tank_pressure]kPa<br>
+	// <b>Airtank temperature: </b>[tank_temperature]K|[tank_temperature - T0C]&deg;C<br>
+	// <b>Cabin pressure: </b>[cabin_pressure>WARNING_HIGH_PRESSURE ? "<font color='red'>[cabin_pressure]</font>": cabin_pressure]kPa<br>
+	// <b>Cabin temperature: </b> [return_temperature()]K|[return_temperature() - T0C]&deg;C<br>
+
 /datum/vehicle_ui_controller/mecha/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
@@ -33,29 +41,29 @@
 	var/obj/vehicle/sealed/mecha/casted_vehicle = vehicle
 	switch(action)
 		if("toggleStrafing")
-			#warn this
+			casted_vehicle.user_set_strafing(actor, !casted_vehicle.strafing)
 			return TRUE
 		if("toggleLights")
-			#warn this
+			casted_vehicle.user_set_floodlights(actor, !casted_vehicle.floodlight_active)
 			return TRUE
 		if("toggleRadioBroadcast")
 			if(!casted_vehicle.radio)
 				return TRUE
 			casted_vehicle.radio.broadcasting = !casted_vehicle.radio.broadcasting
-			#warn log
+			casted_vehicle.vehicle_log_for_admins(actor, "radio-broadcast", list("active" = casted_vehicle.radio.broadcasting))
 			return TRUE
 		if("toggleRadioReceive")
 			if(!casted_vehicle.radio)
 				return TRUE
 			casted_vehicle.radio.listening = !casted_vehicle.radio.listening
-			#warn log
+			casted_vehicle.vehicle_log_for_admins(actor, "radio-listen", list("active" = casted_vehicle.radio.broadcasting))
 			return TRUE
 		if("setRadioFreq")
 			if(!casted_vehicle.radio)
 				return TRUE
 			var/new_freq = sanitize_frequency(params["freq"])
 			casted_vehicle.radio.set_frequency(new_freq)
-			#warn log
+			casted_vehicle.vehicle_log_for_admins(actor, "radio-freq", list("freq" = casted_vehicle.radio.frequency))
 			return TRUE
 		if("setAirtankActive")
 			var/desired = params["active"]

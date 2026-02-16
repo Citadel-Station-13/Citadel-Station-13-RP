@@ -52,6 +52,22 @@
 
 #warn impl
 
+/obj/item/vehicle_module/personal_shield/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	. = ..()
+
+/obj/item/vehicle_module/personal_shield/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	. = ..()
+
+/obj/item/vehicle_module/personal_shield/process(delta_time)
+	. = ..()
+
+/obj/item/vehicle_module/personal_shield/proc/set_active(new_state, datum/event_args/actor/actor, silent)
+
+/obj/item/vehicle_module/personal_shield/proc/on_activate(datum/event_args/actor/actor, silent)
+
+/obj/item/vehicle_module/personal_shield/proc/on_deactivate(datum/event_args/actor/actor, silent)
+
+
 /obj/item/vehicle_module/personal_shield/proc/fetch_routing_armor() as /datum/armor
 
 /obj/item/vehicle_module/personal_shield/proc/process_vehicle_damage_instance(SHIELDCALL_PROC_HEADER)
@@ -76,6 +92,23 @@
 	disallow_duplicates_match_type = /obj/item/vehicle_module/personal_shield/structural_field
 
 	works_on_melee = TRUE
+
+	var/atom/movable/render/active_overlay
+
+/obj/item/vehicle_module/personal_shield/structural_field/on_deactivate(datum/event_args/actor/actor, silent)
+	..()
+	dispose_overlay()
+
+/obj/item/vehicle_module/personal_shield/structural_field/on_activate(datum/event_args/actor/actor, silent)
+	..()
+	create_overlay()
+
+/obj/item/vehicle_module/personal_shield/structural_field/proc/create_overlay()
+
+/obj/item/vehicle_module/personal_shield/structural_field/proc/dispose_overlay()
+
+
+#warn image?
 
 /obj/item/vehicle_module/personal_shield/structural_field/hyperkinetic
 	name = "exterior damping field (ranged)"

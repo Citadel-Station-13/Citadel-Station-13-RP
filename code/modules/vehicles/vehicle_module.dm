@@ -239,7 +239,6 @@
 
 //* Occupants / Feedback *//
 
-#warn does this work icon wise?
 /obj/item/vehicle_module/proc/vehicle_occupant_send_default_chat(html)
 	vehicle?.occupant_send_default_chat("<img src=\"\ref[src]\"> [html]")
 

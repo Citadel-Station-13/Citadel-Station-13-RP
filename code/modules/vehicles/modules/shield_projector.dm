@@ -11,8 +11,8 @@
 	var/active = FALSE
 
 	var/shield_pattern = /datum/directional_shield_pattern
-	var/shield_health = 200
-	var/shield_health_max = 200
+	var/shield_health = 350
+	var/shield_health_max = 350
 
 	var/shield_color_empty = "#ff0000"
 	var/shield_color_full = "#44cccc"

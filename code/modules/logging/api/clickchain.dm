@@ -14,5 +14,5 @@
 	)
 	if(clickchain.performer != clickchain.initiator)
 		data["initiator"] = key_name(clickchain.initiator)
-	WRITE_LOG(GLOB.click_log , json_encode(data))
+	WRITE_LOG(GLOB.click_log, json_encode(data))
 	// global.event_logger.log__clickchain(clickchain, clickchain_flags)

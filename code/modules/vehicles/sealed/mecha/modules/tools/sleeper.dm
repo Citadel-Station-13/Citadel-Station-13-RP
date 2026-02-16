@@ -15,6 +15,8 @@
 	var/pumping = FALSE
 	var/dialysis_reagent_filter_flags = ~REAGENT_FILTER_NO_COMMON_BIOANALYSIS
 
+#warn sigh. this.
+
 /obj/item/vehicle_module/lazy/legacy/tool/sleeper/Destroy()
 	// TODO: admin delete wrapper for mechs that drop mobs, we shouldn't be dropping shit on Destroy().
 	for(var/atom/movable/AM in src)

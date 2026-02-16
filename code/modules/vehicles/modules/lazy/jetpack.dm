@@ -43,7 +43,8 @@
 /**
  * Power-consuming only jetpacks.
  *
- * This will eventually be replaced with gas and hybrid-gas ion jetpacks, but for now,
+ * This will eventually be replaced (for acessible ones anyways)
+ * with gas and hybrid-gas ion jetpacks, but for now,
  * I'll allow it to continue.
  */
 /obj/item/vehicle_module/lazy/jetpack/electric

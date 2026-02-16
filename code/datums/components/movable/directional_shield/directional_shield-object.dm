@@ -11,7 +11,8 @@
 	opacity = FALSE
 	anchored = FALSE
 	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF
-	#warn plane / layer
+	plane = MOB_PLANE
+	layer = BELOW_MOB_LAYER
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
