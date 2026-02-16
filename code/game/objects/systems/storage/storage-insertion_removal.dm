@@ -12,7 +12,7 @@
 		return FALSE
 	if(is_locked(actor.performer))
 		actor.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
+			msg = span_warning("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE
@@ -44,7 +44,7 @@
 /datum/object_system/storage/proc/auto_handle_inventory_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
 	if(is_locked(actor.performer))
 		actor.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
+			msg = span_warning("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE
@@ -73,7 +73,7 @@
 	if(actor && (inserting.get_worn_mob() == actor.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer)))
 		if(!silent)
 			actor?.chat_feedback(
-				msg = SPAN_WARNING("[inserting] is stuck to your hand / body!"),
+				msg = span_warning("[inserting] is stuck to your hand / body!"),
 				target = parent,
 			)
 		return FALSE
@@ -84,7 +84,7 @@
 	if(!check_insertion_filters(inserting))
 		if(!silent)
 			actor?.chat_feedback(
-				msg = SPAN_WARNING("[parent] can't hold [inserting]!"),
+				msg = span_warning("[parent] can't hold [inserting]!"),
 				target = parent,
 			)
 		return FALSE
@@ -92,7 +92,7 @@
 	if(why_insufficient_space)
 		if(!silent)
 			actor?.chat_feedback(
-				msg = SPAN_WARNING("[parent] can't fit [inserting]! ([why_insufficient_space])"),
+				msg = span_warning("[parent] can't fit [inserting]! ([why_insufficient_space])"),
 				target = parent,
 			)
 		return FALSE
@@ -146,7 +146,7 @@
 /datum/object_system/storage/proc/auto_handle_interacted_removal(obj/item/removing, datum/event_args/actor/actor, silent, suppressed, put_in_hands)
 	if(is_locked(actor.performer))
 		actor.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
+			msg = span_warning("[parent] is locked."),
 			target = parent,
 		)
 		return TRUE

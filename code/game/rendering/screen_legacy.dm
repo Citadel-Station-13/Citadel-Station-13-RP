@@ -186,7 +186,7 @@
 				var/mob/living/silicon/robot/R = usr
 				if(!R.module)
 					if(!R.can_repick_module)
-						to_chat(usr, SPAN_WARNING("You can't repick your module, despite not having one. \
+						to_chat(usr, span_warning("You can't repick your module, despite not having one. \
 						Something probably got bugged."))
 					else
 						open_tgui_actor_modal(

@@ -107,7 +107,7 @@
 
 /obj/item/gps/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("Alt-click to switch it [on? "off" : "on"].")
+	. += span_notice("Alt-click to switch it [on? "off" : "on"].")
 
 /obj/item/gps/on_alt_click_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags, obj/item/active_item)
 	. = ..()
@@ -136,12 +136,12 @@
 			return
 		var/max_to_transfer = min(length(needed), transfer_to.waypoints_max - (transfer_to.waypoints))
 		if(max_to_transfer <= 0)
-			user.action_feedback(SPAN_WARNING("[transfer_to] has no more room to store waypoints."), src)
+			user.action_feedback(span_warning("[transfer_to] has no more room to store waypoints."), src)
 			return
 		if(max_to_transfer < length(needed))
-			user.action_feedback(SPAN_WARNING("Waypoints partially transferred: insffucient space."), src)
+			user.action_feedback(span_warning("Waypoints partially transferred: insffucient space."), src)
 		else
-			user.action_feedback(SPAN_NOTICE("Waypoints transferred."), src)
+			user.action_feedback(span_notice("Waypoints transferred."), src)
 		LAZYINITLIST(transfer_to.waypoints)
 		transfer_to.waypoints += needed
 		transfer_to.push_waypoint_data()
@@ -154,7 +154,7 @@
 	if(emp_timerid)
 		deltimer(emp_timerid)
 	else
-		visible_message(SPAN_WARNING("[src] overloads!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
+		visible_message(span_warning("[src] overloads!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 	emp_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/gps, reset_emped)), 5 MINUTES / severity, TIMER_STOPPABLE)
 
 /obj/item/gps/proc/reset_emped()
@@ -163,7 +163,7 @@
 	emped = FALSE
 	update_emit()
 	update_icon()
-	visible_message(SPAN_WARNING("[src] clicks, resetting itself from the electromagnetic interference."))
+	visible_message(span_warning("[src] clicks, resetting itself from the electromagnetic interference."))
 
 /obj/item/gps/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -174,7 +174,7 @@
 
 /obj/item/gps/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(emped)
-		to_chat(user, SPAN_WARNING("[src] is still spitting out gibberish!"))
+		to_chat(user, span_warning("[src] is still spitting out gibberish!"))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -296,16 +296,16 @@
 	if(new_state)
 		if(emped)
 			if(user)
-				to_chat(user, SPAN_WARNING("The GPS is spouting gibberish."))
+				to_chat(user, span_warning("The GPS is spouting gibberish."))
 			return
 		if(user)
-			to_chat(user, SPAN_NOTICE("[src] is now active, and visible to other GPS devices."))
+			to_chat(user, span_notice("[src] is now active, and visible to other GPS devices."))
 		on = TRUE
 		update_emit()
 		update_icon()
 	else
 		if(user)
-			to_chat(user, SPAN_NOTICE("[src] is now inactive, and invisible to other GPS devices."))
+			to_chat(user, span_notice("[src] is now inactive, and invisible to other GPS devices."))
 		on = FALSE
 		update_emit()
 		update_icon()

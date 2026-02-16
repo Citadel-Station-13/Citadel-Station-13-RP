@@ -60,10 +60,10 @@
 
 /obj/machinery/mining/drill/examine()
 	. += ..()
-	. += SPAN_NOTICE("It looks like the storage cache can fit about [capacity - orecount] more ores before it reaches capacity.")
-	. += SPAN_NOTICE("The charge meter for the cell in the drill reads about [round(cell.percent())]%.")
-	. += SPAN_INFO("Alt-click to empty the drill's cache, if you have an ore satchel on you or an ore box nearby.")
-	. += SPAN_INFO("Use a multitool to change the drill's ID.")
+	. += span_notice("It looks like the storage cache can fit about [capacity - orecount] more ores before it reaches capacity.")
+	. += span_notice("The charge meter for the cell in the drill reads about [round(cell.percent())]%.")
+	. += span_info("Alt-click to empty the drill's cache, if you have an ore satchel on you or an ore box nearby.")
+	. += span_info("Use a multitool to change the drill's ID.")
 
 /obj/machinery/mining/drill/get_cell(inducer)
 	return cell
@@ -347,8 +347,8 @@
 /obj/machinery/mining/brace/examine(mob/user)
 	. = ..()
 	if(brace_tier >= 3)
-		. += SPAN_NOTICE("The internals of the brace look resilient enough to support a drill by itself.")
-	. += SPAN_INFO("Alt-click to rotate the brace.")
+		. += span_notice("The internals of the brace look resilient enough to support a drill by itself.")
+	. += span_info("Alt-click to rotate the brace.")
 
 /obj/machinery/mining/brace/Initialize()
 	. = ..()
@@ -434,9 +434,9 @@
 	if(user.stat || !user.Adjacent(src)) return
 
 	if (src.anchored)
-		to_chat(user, SPAN_WARNING("[src] is anchored in place!"))
+		to_chat(user, span_warning("[src] is anchored in place!"))
 		return 0
 
-	to_chat(user, SPAN_NOTICE("You rotate [src] clockwise."))
+	to_chat(user, span_notice("You rotate [src] clockwise."))
 	src.setDir(turn(src.dir, 270))
 	return 1

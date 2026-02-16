@@ -46,8 +46,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		L.inflict_heat_damage(is_adult ? 10 : 5)
-		to_chat(src, SPAN_NOTICE("You burn \the [L]."))
-		to_chat(L, SPAN_DANGER("You've been burned by \the [src]!"))
+		to_chat(src, span_notice("You burn \the [L]."))
+		to_chat(L, span_danger("You've been burned by \the [src]!"))
 		L.adjust_fire_stacks(1)
 		if(prob(12))
 			L.IgniteMob()
@@ -144,8 +144,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		L.inflict_shock_damage_legacy(is_adult ? 10 : 5)
-		to_chat(src, SPAN_NOTICE("You shock \the [L]."))
-		to_chat(L, SPAN_DANGER("You've been shocked by \the [src]!"))
+		to_chat(src, span_notice("You shock \the [L]."))
+		to_chat(L, span_danger("You've been shocked by \the [src]!"))
 
 /mob/living/simple_mob/slime/xenobio/yellow/handle_special()
 	if(stat == CONSCIOUS)
@@ -178,7 +178,7 @@
 		)
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/ignite()
-	visible_message(SPAN_CRITICAL("\The [src] erupts in an inferno!"))
+	visible_message(span_critical("\The [src] erupts in an inferno!"))
 	for(var/turf/simulated/target_turf in get_ignition_turfs(25, 2))
 		target_turf.assume_gas(GAS_ID_PHORON, 30, 1500+T0C)
 		spawn(0)
@@ -258,8 +258,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		chill(L)
-		to_chat(src, SPAN_NOTICE("You chill \the [L]."))
-		to_chat(L, SPAN_DANGER("You've been chilled by \the [src]!"))
+		to_chat(src, span_notice("You chill \the [L]."))
+		to_chat(L, span_danger("You've been chilled by \the [src]!"))
 
 
 /mob/living/simple_mob/slime/xenobio/dark_blue/proc/chill(mob/living/L)
@@ -287,7 +287,7 @@
 
 /mob/living/simple_mob/slime/xenobio/silver/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
 	if(istype(proj,/obj/projectile/beam) || istype(proj, /obj/projectile/energy))
-		visible_message(SPAN_DANGER("\The [src] reflects \the [proj]!"))
+		visible_message(span_danger("\The [src] reflects \the [proj]!"))
 
 		// Find a turf near or on the original location to bounce to
 		var/new_x = proj.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
@@ -326,7 +326,7 @@
 /mob/living/simple_mob/slime/xenobio/bluespace/do_special_attack(atom/A)
 	// Teleport attack.
 	if(!A)
-		to_chat(src, SPAN_WARNING( "There's nothing to teleport to."))
+		to_chat(src, span_warning( "There's nothing to teleport to."))
 		return FALSE
 
 	var/list/nearby_things = range(1, A)
@@ -347,7 +347,7 @@
 	var/turf/target_turf = pick(valid_turfs)
 
 	if(!target_turf)
-		to_chat(src, SPAN_WARNING( "There wasn't an unoccupied spot to teleport to."))
+		to_chat(src, span_warning( "There wasn't an unoccupied spot to teleport to."))
 		return FALSE
 
 	var/datum/effect_system/spark_spread/s1 = new /datum/effect_system/spark_spread
@@ -356,14 +356,14 @@
 	s2.set_up(5, 1, target_turf)
 
 
-	T.visible_message(SPAN_NOTICE("\The [src] vanishes!"))
+	T.visible_message(span_notice("\The [src] vanishes!"))
 	s1.start()
 
 	forceMove(target_turf)
 	playsound(target_turf, 'sound/effects/phasein.ogg', 50, 1)
-	to_chat(src, SPAN_NOTICE("You teleport to \the [target_turf]."))
+	to_chat(src, span_notice("You teleport to \the [target_turf]."))
 
-	target_turf.visible_message(SPAN_WARNING( "\The [src] appears!"))
+	target_turf.visible_message(span_warning( "\The [src] appears!"))
 	s2.start()
 
 	if(Adjacent(A))
@@ -402,13 +402,13 @@
 	if(isliving(A) && a_intent == INTENT_HARM)
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with the impact!"))
+			visible_message(span_danger("\The [src] sends \the [L] flying with the impact!"))
 			playsound(src, "punch", 50, 1)
 			L.afflict_paralyze(20 * 1)
 			var/throwdir = get_dir(src, L)
 			L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 		else
-			to_chat(L, SPAN_WARNING( "\The [src] hits you with incredible force, but you remain in place."))
+			to_chat(L, span_warning( "\The [src] hits you with incredible force, but you remain in place."))
 
 
 /mob/living/simple_mob/slime/xenobio/amber

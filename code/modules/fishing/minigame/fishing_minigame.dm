@@ -79,7 +79,7 @@
 	ADD_TRAIT(user, TRAIT_MOB_IS_FISHING, REF(src))
 	RegisterSignal(used_rod, COMSIG_FISHING_ROD_REEL, PROC_REF(handle_reel))
 	start_baiting_phase()
-	user.action_feedback(SPAN_NOTICE("You start fishing..."), src)
+	user.action_feedback(span_notice("You start fishing..."), src)
 	playsound(lure, 'sound/effects/splash.ogg', 100)
 
 /datum/fishing_challenge/proc/handle_reel()

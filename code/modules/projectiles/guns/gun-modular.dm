@@ -13,7 +13,7 @@
 	if(!modular_component_slots?[component.component_slot])
 		if(!silent)
 			actor?.chat_feedback(
-				SPAN_WARNING("[component] doesn't go on [src]s!"),
+				span_warning("[component] doesn't go on [src]s!"),
 				target = src,
 			)
 		return FALSE
@@ -23,14 +23,14 @@
 		if(existing.component_conflict & component.component_conflict)
 			if(!silent)
 				actor?.chat_feedback(
-					SPAN_WARNING("[existing] conflicts with [component] due to being too similar!"),
+					span_warning("[existing] conflicts with [component] due to being too similar!"),
 					target = src,
 				)
 			return FALSE
 		if((existing.component_type || existing.type) == (component.component_type || component.type))
 			if(!silent)
 				actor?.chat_feedback(
-					SPAN_WARNING("[existing] conflicts with [component] due to being too similar!"),
+					span_warning("[existing] conflicts with [component] due to being too similar!"),
 					target = src,
 				)
 			return FALSE
@@ -53,7 +53,7 @@
 		if(actor.performer && actor.performer.is_in_inventory(component))
 			if(!actor.performer.can_unequip(component, component.worn_slot))
 				actor.chat_feedback(
-					SPAN_WARNING("[component] is stuck to your hand!"),
+					span_warning("[component] is stuck to your hand!"),
 					target = src,
 				)
 				return FALSE
@@ -69,7 +69,7 @@
 
 	if(!component.can_remove)
 		actor?.chat_feedback(
-			SPAN_WARNING("[component] is not removable."),
+			span_warning("[component] is not removable."),
 			target = src,
 		)
 		return FALSE
@@ -97,7 +97,7 @@
 	if(!silent)
 		actor?.visible_feedback(
 			target = src,
-			visible = SPAN_NOTICE("[actor.performer] installs [component] into [src]."),
+			visible = span_notice("[actor.performer] installs [component] into [src]."),
 			range = MESSAGE_RANGE_CONFIGURATION,
 		)
 	if(component.loc != src)
@@ -137,7 +137,7 @@
 	if(!silent)
 		actor?.visible_feedback(
 			target = src,
-			visible = SPAN_NOTICE("[actor.performer] pulls [component] out of [src]."),
+			visible = span_notice("[actor.performer] pulls [component] out of [src]."),
 			range = MESSAGE_RANGE_CONFIGURATION,
 		)
 

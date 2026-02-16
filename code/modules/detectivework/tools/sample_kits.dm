@@ -85,7 +85,7 @@
 		return ..()
 	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(evidence && evidence.len)
-		user.action_feedback(SPAN_WARNING("[src] is full!"), src)
+		user.action_feedback(span_warning("[src] is full!"), src)
 		return
 
 	var/mob/living/carbon/human/H = target

@@ -56,7 +56,7 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if(!isnull(M.client) && !TIMER_COOLDOWN_CHECK(M, CD_INDEX_SONAR_NOISE))
-			to_chat(M, SPAN_WARNING("You hear a quiet click."))
+			to_chat(M, span_warning("You hear a quiet click."))
 			TIMER_COOLDOWN_START(M, CD_INDEX_SONAR_NOISE, 7.5 SECONDS)
 		// todo: M.provoke() for AI...
 	var/image/overlay = AM.make_sonar_image(resolution)

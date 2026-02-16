@@ -216,7 +216,7 @@
 
 		for(var/obj/effect/shield/S in startends)
 			var/adjacent = startends[S]
-			log_debug(SPAN_DEBUGINFO("Processing startend [S] at [S?.x],[S?.y] adjacent=[adjacent]"))
+			log_debug(span_debug_info("Processing startend [S] at [S?.x],[S?.y] adjacent=[adjacent]"))
 			var/turf/T = get_step(S, adjacent)
 			var/obj/effect/shield/SO = locate() in T
 			S.setDir(SO.dir)

@@ -104,4 +104,4 @@
 			if(!ispath(A))
 				continue
 			nice_list += list("[req_components[A]] [initial(A.name)]")
-		. += SPAN_NOTICE("Required components: [english_list(nice_list)].")
+		. += span_notice("Required components: [english_list(nice_list)].")

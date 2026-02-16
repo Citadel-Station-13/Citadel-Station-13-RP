@@ -51,7 +51,7 @@
 						// however, unaffected by armor for now
 						// TODO: is rng knockout still acceptable?
 						afflict_unconscious(20 SECONDS * clickchain.attack_melee_multiplier)
-						visible_message(SPAN_DANGER("[src] has been knocked unconscious!"))
+						visible_message(span_danger("[src] has been knocked unconscious!"))
 					if(they_should_bleed)
 						// TODO: it should be obvious why this is bad
 						var/mob/living/carbon/human/cast_to_human = src
@@ -67,7 +67,7 @@
 					if(resultant_damage > 4 && prob(resultant_damage + 10))
 						// nerfed from 12 seconds to 2 baseline
 						afflict_paralyze(2 SECONDS * clickchain.attack_melee_multiplier)
-						visible_message(SPAN_DANGER("[src] has been brutally knocked down!"))
+						visible_message(span_danger("[src] has been brutally knocked down!"))
 					if(they_should_bleed)
 						// TODO: it should be obvious why this is bad
 						var/mob/living/carbon/human/cast_to_human = src
@@ -150,7 +150,7 @@
 	. = ..()
 	if(buckled)
 		return 0
-	tactile_feedback(SPAN_WARNING("You slipped on \the [source]!"))
+	tactile_feedback(span_warning("You slipped on \the [source]!"))
 	// todo: sound should be on component / tile?
 	playsound(src, 'sound/misc/slip.ogg', 50, TRUE, -3)
 	afflict_paralyze(hard_strength)

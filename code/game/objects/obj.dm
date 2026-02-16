@@ -451,13 +451,13 @@
 	if(!istype(climber))
 		return FALSE
 	if(!allow_climb_on(climber))
-		climber.action_feedback(SPAN_WARNING("You can't climb onto [src]!"), src)
+		climber.action_feedback(span_warning("You can't climb onto [src]!"), src)
 		return FALSE
 	if(INTERACTING_WITH_FOR(climber, src, INTERACTING_FOR_CLIMB))
 		return FALSE
 	climber.visible_action_feedback(
 		target = src,
-		visible_hard = SPAN_WARNING("[climber] starts climbing onto \the [src]!"),
+		visible_hard = span_warning("[climber] starts climbing onto \the [src]!"),
 		hard_range = MESSAGE_RANGE_COMBAT_LOUD)
 	START_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
 	LAZYDISTINCTADD(climbing, climber)
@@ -467,7 +467,7 @@
 	LAZYREMOVE(climbing, climber)
 	STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
 	if(!. || !allow_climb_on(climber))
-		climber.action_feedback(SPAN_WARNING("You couldn't climb onto [src]!"), src)
+		climber.action_feedback(span_warning("You couldn't climb onto [src]!"), src)
 		return FALSE
 	do_climb_on(climber)
 
@@ -481,7 +481,7 @@
 	return TRUE
 
 /obj/proc/do_climb_on(mob/living/climber)
-	climber.visible_message(SPAN_WARNING("[climber] climbs onto \the [src]!"))
+	climber.visible_message(span_warning("[climber] climbs onto \the [src]!"))
 	// all this effort just to avoid a splurtstation railing spare ID speedrun incident
 	var/old_depth = climber.depth_current
 	if(climber.depth_current < depth_level)
@@ -501,7 +501,7 @@
 	if(.)
 		return
 	if(length(climbing) && user.a_intent == INTENT_DISARM)
-		user.visible_message(SPAN_WARNING("[user] slams against \the [src]!"))
+		user.visible_message(span_warning("[user] slams against \the [src]!"))
 		user.do_attack_animation(src)
 		shake_climbers()
 		return TRUE
@@ -509,7 +509,7 @@
 /obj/proc/shake_climbers()
 	for(var/mob/living/climber as anything in climbing)
 		climber.afflict_knockdown(1 SECONDS)
-		climber.visible_message(SPAN_WARNING("[climber] is toppled off of \the [src]!"))
+		climber.visible_message(span_warning("[climber] is toppled off of \the [src]!"))
 		STOP_INTERACTING_WITH(climber, src, INTERACTING_FOR_CLIMB)
 	climbing = null
 
@@ -743,10 +743,10 @@
 			continue
 		. += "Its [key] is made out of [mat.display_name]"
 	if((obj_persist_dynamic_id || obj_persist_static_id) && !(obj_persist_status & OBJ_PERSIST_STATUS_NO_EXAMINE))
-		. += SPAN_BOLDNOTICE("This entity is a persistent entity; it may be preserved into future rounds.")
+		. += span_boldnotice("This entity is a persistent entity; it may be preserved into future rounds.")
 	// todo: context + construction (tool) examines at some point need a better system
 	if(obj_rotation_flags & OBJ_ROTATION_ENABLED)
-		. += SPAN_NOTICE("This entity can be rotated[(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK)? "" : " while unanchored"] via context menu (alt click while adjacent).")
+		. += span_notice("This entity can be rotated[(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK)? "" : " while unanchored"] via context menu (alt click while adjacent).")
 	if(dist <= 1)
 		obj_storage?.handle_storage_examine(.)
 
@@ -755,19 +755,19 @@
 	if(!integrity_enabled)
 		return
 	if(integrity == integrity_max)
-		. += SPAN_NOTICE("It looks fully intact.")
+		. += span_notice("It looks fully intact.")
 	else if(atom_flags & ATOM_BROKEN)
-		. += SPAN_BOLDWARNING("It's broken and falling apart!")
+		. += span_boldwarning("It's broken and falling apart!")
 	else
 		var/perc = percent_integrity()
 		if(perc > 0.75)
-			. += SPAN_NOTICE("It looks a bit dented.")
+			. += span_notice("It looks a bit dented.")
 		else if(perc > 0.5)
-			. += SPAN_WARNING("It looks damaged.")
+			. += span_warning("It looks damaged.")
 		else if(perc > 0.25)
-			. += SPAN_RED("It looks severely damaged.")
+			. += span_red("It looks severely damaged.")
 		else
-			. += SPAN_BOLDWARNING("It's barely able to hold itself together!")
+			. += span_boldwarning("It's barely able to hold itself together!")
 
 //* Movement *//
 
@@ -908,14 +908,14 @@
 	if(!(obj_rotation_flags & OBJ_ROTATION_NO_ANCHOR_CHECK) && anchored)
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("[src] is anchored to the ground!"),
+				span_warning("[src] is anchored to the ground!"),
 				target = src,
 			)
 		return FALSE
 	if(!(obj_rotation_flags & OBJ_ROTATION_BIDIRECTIONAL) && (clockwise ^ !(obj_rotation_flags & OBJ_ROTATION_CCW)))
 		if(!silent)
 			actor.chat_feedback(
-				SPAN_WARNING("[src] doesn't rotate in that direction."),
+				span_warning("[src] doesn't rotate in that direction."),
 				target = src,
 			)
 		return FALSE
@@ -929,9 +929,9 @@
 		actor.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[actor.performer] rotates [src]."),
-			audible = SPAN_NOTICE("You hear something being pivoted."),
-			visible_self = SPAN_NOTICE("You spin [src] [clockwise? "clockwise" : "counterclockwise"]."),
+			visible = span_notice("[actor.performer] rotates [src]."),
+			audible = span_notice("You hear something being pivoted."),
+			visible_self = span_notice("You spin [src] [clockwise? "clockwise" : "counterclockwise"]."),
 		)
 	return TRUE
 
@@ -948,15 +948,15 @@
 	if(isnull(obj_cell_slot) || (obj_cell_slot.remove_tool_behavior != function) || !obj_cell_slot.interaction_active(e_args.performer))
 		return ..()
 	if(isnull(obj_cell_slot.cell))
-		e_args.chat_feedback(SPAN_WARNING("[src] has no cell in it."))
+		e_args.chat_feedback(span_warning("[src] has no cell in it."))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	log_construction(e_args, src, "removing cell")
 	e_args.visible_feedback(
 		target = src,
 		range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[e_args.performer] starts removing the cell from [src]."),
-		audible = SPAN_NOTICE("You hear fasteners being undone."),
-		otherwise_self = SPAN_NOTICE("You start removing the cell from [src]."),
+		visible = span_notice("[e_args.performer] starts removing the cell from [src]."),
+		audible = span_notice("You hear fasteners being undone."),
+		otherwise_self = span_notice("You start removing the cell from [src]."),
 	)
 	if(!use_tool(function, I, e_args, flags, obj_cell_slot.remove_tool_time, 1))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -964,9 +964,9 @@
 	e_args.visible_feedback(
 		target = src,
 		range = obj_cell_slot.remove_is_discrete? 0 : MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_NOTICE("[e_args.performer] removes the cell from [src]."),
-		audible = SPAN_NOTICE("You hear fasteners falling out and something being removed."),
-		otherwise_self = SPAN_NOTICE("You remove the cell from [src]."),
+		visible = span_notice("[e_args.performer] removes the cell from [src]."),
+		audible = span_notice("You hear fasteners falling out and something being removed."),
+		otherwise_self = span_notice("You remove the cell from [src]."),
 	)
 	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
@@ -1105,7 +1105,7 @@
 					to_chat(usr, "No objects of this type exist")
 					return
 				log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
-				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
+				message_admins(span_notice("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
 			if("Type and subtypes")
 				var/i = 0
 				for(var/obj/Obj in world)
@@ -1117,4 +1117,4 @@
 					to_chat(usr, "No objects of this type exist")
 					return
 				log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
-				message_admins(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
+				message_admins(span_notice("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))

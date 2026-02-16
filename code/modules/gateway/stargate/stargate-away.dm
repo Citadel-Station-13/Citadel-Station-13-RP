@@ -49,7 +49,7 @@
 	if(!ready)			return
 	if(linked.len != 8)	return
 	if(!stationgate || !calibrated)
-		to_chat(user, SPAN_NOTICE("Error: No destination found. Please calibrate gateway."))
+		to_chat(user, span_notice("Error: No destination found. Please calibrate gateway."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)

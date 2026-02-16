@@ -26,7 +26,7 @@
 				if(cell.use(power_use))
 					M.afflict_paralyze(20 * 3)
 					if(prob(5))
-						to_chat(M, SPAN_WARNING("[pick("You feel tingly","You feel like floating","It is hard to speak","You can barely move")]."))
+						to_chat(M, span_warning("[pick("You feel tingly","You feel like floating","It is hard to speak","You can barely move")]."))
 				else
 					deactivate()
 
@@ -74,7 +74,7 @@
 					if(anchored)
 						activate()
 					else
-						to_chat(usr, SPAN_WARNING("You are unable to activate [src] until it is properly secured on the ground."))
+						to_chat(usr, span_warning("You are unable to activate [src] until it is properly secured on the ground."))
 			else
 				deactivate()
 			return TRUE
@@ -94,19 +94,19 @@
 			else
 				anchored = TRUE
 			playsound(loc, W.tool_sound, 50, 1)
-			to_chat(user, SPAN_NOTICE("You wrench the stabilising legs [anchored ? "into place" : "up against the body"]."))
+			to_chat(user, span_notice("You wrench the stabilising legs [anchored ? "into place" : "up against the body"]."))
 			if(anchored)
 				desc = "It is resting securely on four stubby legs."
 			else
 				desc = "It has stubby legs bolted up against it's body for stabilising."
 		else
-			to_chat(user, SPAN_WARNING("You are unable to unsecure [src] while it is active!"))
+			to_chat(user, span_warning("You are unable to unsecure [src] while it is active!"))
 	else
 		if(check_access(W))
 			locked = !locked
-			to_chat(user, SPAN_NOTICE("You [locked ? "lock" : "unlock"] [src]."))
+			to_chat(user, span_notice("You [locked ? "lock" : "unlock"] [src]."))
 		else
-			to_chat(user, SPAN_WARNING("[src] flashes \'<i>Access denied.</i>\'"))
+			to_chat(user, span_warning("[src] flashes \'<i>Access denied.</i>\'"))
 	return ..()
 
 /obj/machinery/suspension_gen/emag_act(var/remaining_charges, var/mob/user)
@@ -121,10 +121,10 @@
 
 	for(var/mob/living/M in T)
 		M.afflict_paralyze(20 * 5)
-		M.visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] [M] begins to float in the air!"),"You feel tingly and light, but it is difficult to move.")
+		M.visible_message(span_notice("[icon2html(thing = src, target = world)] [M] begins to float in the air!"),"You feel tingly and light, but it is difficult to move.")
 
 	suspension_field = new(T)
-	visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] [src] activates with a low hum."))
+	visible_message(span_notice("[icon2html(thing = src, target = world)] [src] activates with a low hum."))
 	icon_state = "suspension3"
 
 	for(var/obj/item/I in T)
@@ -134,7 +134,7 @@
 	if(collected)
 		suspension_field.icon_state = "energynet"
 		suspension_field.add_overlay("shield2")
-		visible_message(SPAN_NOTICE("[icon2html(thing = suspension_field, target = world)] [suspension_field] gently absconds [collected > 1 ? "something" : "several things"]."))
+		visible_message(span_notice("[icon2html(thing = suspension_field, target = world)] [suspension_field] gently absconds [collected > 1 ? "something" : "several things"]."))
 	else
 		if(istype(T,/turf/simulated/mineral) || istype(T,/turf/simulated/wall))
 			suspension_field.icon_state = "shieldsparkles"
@@ -146,10 +146,10 @@
 	var/turf/T = get_turf(suspension_field)
 
 	for(var/mob/living/M in T)
-		to_chat(M, SPAN_INFO("You no longer feel like floating."))
+		to_chat(M, span_info("You no longer feel like floating."))
 		M.afflict_paralyze(20 * 3)
 
-	visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] [src] deactivates with a gentle shudder."))
+	visible_message(span_notice("[icon2html(thing = src, target = world)] [src] deactivates with a gentle shudder."))
 	qdel(suspension_field)
 	suspension_field = null
 	icon_state = "suspension2"
@@ -164,7 +164,7 @@
 	set category = VERB_CATEGORY_OBJECT
 
 	if(anchored)
-		to_chat(usr, SPAN_DANGER("You cannot rotate [src], it has been firmly fixed to the floor."))
+		to_chat(usr, span_danger("You cannot rotate [src], it has been firmly fixed to the floor."))
 		return
 	setDir(turn(dir, 90))
 
@@ -174,7 +174,7 @@
 	set category = VERB_CATEGORY_OBJECT
 
 	if(anchored)
-		to_chat(usr, SPAN_DANGER("You cannot rotate [src], it has been firmly fixed to the floor."))
+		to_chat(usr, span_danger("You cannot rotate [src], it has been firmly fixed to the floor."))
 		return
 	setDir(turn(dir, 270))
 

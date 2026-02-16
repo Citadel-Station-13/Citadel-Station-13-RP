@@ -71,7 +71,7 @@
 
 /obj/machinery/portable_atmospherics/interact(mob/user)
 	if(!default_access_interface)
-		user.action_feedback(SPAN_WARNING("You can't directly interact with [src]. Use an area atmospherics control computer, if there is one."), src)
+		user.action_feedback(span_warning("You can't directly interact with [src]. Use an area atmospherics control computer, if there is one."), src)
 		return FALSE
 	ui_interact(user)
 	return TRUE
@@ -129,7 +129,7 @@
  * Called on tank ejection
  */
 /obj/machinery/portable_atmospherics/proc/on_eject(obj/item/tank/tank, mob/user)
-	usr.action_feedback(SPAN_NOTICE("You remove [holding] from [src]."), src)
+	usr.action_feedback(span_notice("You remove [holding] from [src]."), src)
 	usr.grab_item_from_interacted_with(holding, src)
 	holding = null
 	update_icon()
@@ -212,7 +212,7 @@
 		var/obj/item/tank/T = I
 		if(holding)
 			user.grab_item_from_interacted_with(holding, src)
-			to_chat(user, SPAN_NOTICE("You quickly swap the tanks with the quick release valve."))
+			to_chat(user, span_notice("You quickly swap the tanks with the quick release valve."))
 		holding = T
 		update_icon()
 		return
@@ -256,7 +256,7 @@
 		return 0 //not a borg or human
 
 	if(O.has_buckled_mobs())
-		to_chat(user, SPAN_WARNING( "\The [O] has other entities attached to it. Remove them first."))
+		to_chat(user, span_warning( "\The [O] has other entities attached to it. Remove them first."))
 		return
 
 	if(O == user)

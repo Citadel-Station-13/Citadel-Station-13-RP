@@ -96,7 +96,7 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/examine_integrity(mob/user)
 	. = list()
 	if(atom_flags & ATOM_BROKEN)
-		. += SPAN_WARNING("Whatever nefarious purpose this one once had, it's broken now.")
+		. += span_warning("Whatever nefarious purpose this one once had, it's broken now.")
 
 /obj/effect/trap/atom_break()
 	. = ..()
@@ -471,7 +471,7 @@ Add those other swinging traps you mentioned above!
 
 		if(WT.remove_fuel(0, user))
 			if(integrity < integrity_max)
-				to_chat(user, SPAN_NOTICE("You begin repairing \the [src.name] with \the [WT].>"))
+				to_chat(user, span_notice("You begin repairing \the [src.name] with \the [WT].>"))
 			if(do_after(user, 20, src))
 				set_integrity(integrity_max)
 		return
@@ -479,7 +479,7 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/pop_up/atom_break()
 	. = ..()
-	visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
+	visible_message(span_danger("\The [src] breaks! It was a trap!"))
 
 /obj/effect/trap/pop_up/update_icon_state()
 	if(!tripped)

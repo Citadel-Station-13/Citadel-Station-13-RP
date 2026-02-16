@@ -27,7 +27,7 @@
 		src.transfer_fingerprints_to(joined)
 		joined.set_integrity(joined.integrity_max * ((src.integrity + joining.integrity) + (src.integrity_max + joining.integrity_max)))
 		joined.set_charge(joined.max_charge * ((src.charge + joining.charge) / (src.max_charge + joining.max_charge)))
-		clickchain.chat_feedback(SPAN_NOTICE("You squeeze both [src]\s together, forming a [joined]."), target = src)
+		clickchain.chat_feedback(span_notice("You squeeze both [src]\s together, forming a [joined]."), target = src)
 		qdel(using)
 		qdel(src)
 		// TODO: check telekinesis
@@ -52,7 +52,7 @@
 		var/split_charge = split1.max_charge * (charge / max_charge)
 		split1.set_charge(split_charge)
 		split2.set_charge(split_charge)
-		clickchain.chat_feedback(SPAN_NOTICE("You squeeze through [src]'s middle, splitting it into two [split1]\s."), target = src)
+		clickchain.chat_feedback(span_notice("You squeeze through [src]'s middle, splitting it into two [split1]\s."), target = src)
 		qdel(src)
 		// TODO: check telekinesis
 		clickchain.performer.put_in_hands_or_drop(split1)

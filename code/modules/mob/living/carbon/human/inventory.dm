@@ -221,7 +221,7 @@
 
 	if(!semantically_has_slot(slot))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] have nowhere to put that!"))
+			to_chat(user, span_warning("[self_equip? "You" : "They"] have nowhere to put that!"))
 		return FALSE
 
 	// then, check bodyparts
@@ -244,20 +244,20 @@
 		if(SLOT_ID_HANDCUFFED, SLOT_ID_GLOVES)
 			if(allow_single)
 				has_part = has_organ(BP_L_HAND) || has_organ(BP_R_HAND)
-				override_text = SPAN_WARNING("[self_equip? "You" : "They"] need a hand!")
+				override_text = span_warning("[self_equip? "You" : "They"] need a hand!")
 			else
 				has_part = has_organ(BP_L_HAND) && has_organ(BP_R_HAND)
-				override_text = SPAN_WARNING("[self_equip? "You" : "They"] are missing a hand!")
+				override_text = span_warning("[self_equip? "You" : "They"] are missing a hand!")
 		if(SLOT_ID_LEGCUFFED, SLOT_ID_SHOES)
 			if(allow_single)
 				has_part = has_organ(BP_L_FOOT) || has_organ(BP_R_FOOT)
-				override_text = SPAN_WARNING("[self_equip? "You" : "They"] need a foot!")
+				override_text = span_warning("[self_equip? "You" : "They"] need a foot!")
 			else
 				has_part = has_organ(BP_L_FOOT) && has_organ(BP_R_FOOT)
-				override_text = SPAN_WARNING("[self_equip? "You" : "They"] are missing a foot!")
+				override_text = span_warning("[self_equip? "You" : "They"] are missing a foot!")
 
 	if(!has_part)
-		to_chat(user, override_text || SPAN_WARNING("[self_equip? "You" : "They"] are missing [self_equip? "your" : "their"] [part_text]!"))
+		to_chat(user, override_text || span_warning("[self_equip? "You" : "They"] are missing [self_equip? "your" : "their"] [part_text]!"))
 		return FALSE
 	return TRUE
 

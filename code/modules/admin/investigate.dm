@@ -20,7 +20,7 @@
 	var/subject = input(usr, "Choose a subject", "Investigate") as null|anything in subjects
 
 	if(!(subject in subjects))
-		to_chat(src, SPAN_DANGER("Invalid subject: [subject]"))
+		to_chat(src, span_danger("Invalid subject: [subject]"))
 		return
 	var/F = investigate_subject2file(subject)
 	if(!F)

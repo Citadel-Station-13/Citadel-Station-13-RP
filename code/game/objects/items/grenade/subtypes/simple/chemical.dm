@@ -45,15 +45,15 @@
 /obj/item/grenade/simple/chemical/examine(mob/user, dist)
 	. = ..()
 	if(detonator)
-		. += SPAN_NOTICE("It has a [detonator] attached to its assembly.")
+		. += span_notice("It has a [detonator] attached to its assembly.")
 	if(secured)
-		. += SPAN_NOTICE("This one is secured. Open its panel with a screwdriver to access the internals.")
+		. += span_notice("This one is secured. Open its panel with a screwdriver to access the internals.")
 		return
 	if(wired)
-		. += SPAN_NOTICE("It's wired and ready for assembly.")
+		. += span_notice("It's wired and ready for assembly.")
 	else
-		. += SPAN_WARNING("It's missing a detonation mechanism. Use some wires to fix that.")
-	. += SPAN_NOTICE("It has [length(beakers)] containers inserted, with room for [beakers_max - length(beakers)] more.")
+		. += span_warning("It's missing a detonation mechanism. Use some wires to fix that.")
+	. += span_notice("It has [length(beakers)] containers inserted, with room for [beakers_max - length(beakers)] more.")
 
 /obj/item/grenade/simple/chemical/update_icon_state()
 	icon_state = "[base_icon_state || initial(icon_state)][wired ? (secured ? "-locked" : "-wired") : ""]"
@@ -99,16 +99,16 @@
 				return TRUE
 			if(!use_screwdriver(e_args.performer.get_active_held_item(), e_args, NONE, 0))
 				e_args?.chat_feedback(
-					SPAN_WARNING("You must be holding a screwdriver in your active hand to unsecure [src]."),
+					span_warning("You must be holding a screwdriver in your active hand to unsecure [src]."),
 					target = src,
 				)
 				return TRUE
 			secured = FALSE
 			e_args?.visible_feedback(
 				target = src,
-				visible = SPAN_NOTICE("[e_args.performer] [secured ? "secures" : "unsecures"] the cover of [src]."),
-				otherwise_self = SPAN_NOTICE("You [secured ? "secure" : "unsecure"] [src]'s cover."),
-				audible = SPAN_NOTICE("You hear something being [secured ? "fastened" : "unfastened"]."),
+				visible = span_notice("[e_args.performer] [secured ? "secures" : "unsecures"] the cover of [src]."),
+				otherwise_self = span_notice("You [secured ? "secure" : "unsecure"] [src]'s cover."),
+				audible = span_notice("You hear something being [secured ? "fastened" : "unfastened"]."),
 				range = MESSAGE_RANGE_ITEM_SOFT,
 			)
 			update_appearance()
@@ -122,7 +122,7 @@
 		return TRUE
 	if(!wired)
 		actor?.chat_feedback(
-			SPAN_WARNING("You press the activation mechanism of [src], but nothing happens."),
+			span_warning("You press the activation mechanism of [src], but nothing happens."),
 			target = src,
 		)
 		return TRUE
@@ -145,7 +145,7 @@
 		return ..()
 	if(detonator)
 		e_args.performer.grab_item_from_interacted_with(detonator, src)
-		e_args.chat_feedback(SPAN_NOTICE("You remove [detonator] from [src]."), src)
+		e_args.chat_feedback(span_notice("You remove [detonator] from [src]."), src)
 		detonator = null
 		return CLICKCHAIN_DID_SOMETHING
 	else if(length(beakers))
@@ -154,13 +154,13 @@
 			removed = removable
 			break
 		if(!removed)
-			e_args.chat_feedback(SPAN_WARNING("There's no removable reagent container in [src]."), target = src)
+			e_args.chat_feedback(span_warning("There's no removable reagent container in [src]."), target = src)
 			return CLICKCHAIN_DID_SOMETHING
 		e_args.performer.grab_item_from_interacted_with(removed, src)
-		e_args.chat_feedback(SPAN_NOTICE("You remove [removed] from [src]."), src)
+		e_args.chat_feedback(span_notice("You remove [removed] from [src]."), src)
 		return CLICKCHAIN_DID_SOMETHING
 	else
-		e_args.chat_feedback(SPAN_WARNING("[src] is empty."), target = src)
+		e_args.chat_feedback(span_warning("[src] is empty."), target = src)
 		return CLICKCHAIN_DID_SOMETHING
 
 /obj/item/grenade/simple/chemical/using_item_on(obj/item/using, datum/event_args/actor/clickchain/e_args, clickchain_flags, datum/callback/reachability_check)
@@ -170,32 +170,32 @@
 	if(istype(using, /obj/item/stack/cable_coil))
 		if(activated)
 			e_args.chat_feedback(
-				SPAN_WARNING("[src] is already primed! Are you crazy?"),
+				span_warning("[src] is already primed! Are you crazy?"),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(wired)
 			e_args.chat_feedback(
-				SPAN_WARNING("[src] is already wired."),
+				span_warning("[src] is already wired."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(secured)
 			e_args.chat_feedback(
-				SPAN_WARNING("You can't do anything to [src] while it's secured."),
+				span_warning("You can't do anything to [src] while it's secured."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		var/obj/item/stack/cable_coil/casted_coil = using
 		if(!casted_coil.use(5))
 			e_args.chat_feedback(
-				SPAN_WARNING("[casted_coil] doesn't have enough cable. (need 5)"),
+				span_warning("[casted_coil] doesn't have enough cable. (need 5)"),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		wired = TRUE
 		e_args.chat_feedback(
-			SPAN_NOTICE("You wire [src]."),
+			span_notice("You wire [src]."),
 			target = src,
 		)
 		// TODO: logging
@@ -204,26 +204,26 @@
 	if(istype(using, /obj/item/assembly_holder))
 		if(activated)
 			e_args.chat_feedback(
-				SPAN_WARNING("[src] is already primed! Are you crazy?"),
+				span_warning("[src] is already primed! Are you crazy?"),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(detonator)
 			e_args.chat_feedback(
-				SPAN_WARNING("[src] already has a detonator assembly attached."),
+				span_warning("[src] already has a detonator assembly attached."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(secured)
 			e_args.chat_feedback(
-				SPAN_WARNING("You can't do anything to [src] while it's secured."),
+				span_warning("You can't do anything to [src] while it's secured."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		var/obj/item/assembly_holder/casted_assembly_holder = using
 		if(!casted_assembly_holder.secured)
 			e_args.chat_feedback(
-				SPAN_WARNING("[casted_assembly_holder] must be secured before insertion."),
+				span_warning("[casted_assembly_holder] must be secured before insertion."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -233,9 +233,9 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_ITEM_SOFT,
-			visible = SPAN_WARNING("[e_args.performer] slots [using] into [src]'s casing, wiring it up to the detonation mechanism."),
-			audible = SPAN_WARNING("You hear something being slotted in."),
-			otherwise_self = SPAN_WARNING("You insert [using] into [src] and wire it into the detonation mechanism."),
+			visible = span_warning("[e_args.performer] slots [using] into [src]'s casing, wiring it up to the detonation mechanism."),
+			audible = span_warning("You hear something being slotted in."),
+			otherwise_self = span_warning("You insert [using] into [src] and wire it into the detonation mechanism."),
 		)
 		playsound(src, 'sound/items/Screwdriver2.ogg', 25, TRUE, -3)
 		// TODO: logging
@@ -244,19 +244,19 @@
 	if(is_type_in_list(using, allowed_containers))
 		if(activated)
 			e_args.chat_feedback(
-				SPAN_WARNING("[src] is already primed! Are you crazy?"),
+				span_warning("[src] is already primed! Are you crazy?"),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(secured)
 			e_args.chat_feedback(
-				SPAN_WARNING("You can't do anything to [src] while it's secured."),
+				span_warning("You can't do anything to [src] while it's secured."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(length(beakers) > beakers_max)
 			e_args.chat_feedback(
-				SPAN_WARNING("[src] cannot hold more reagent containers."),
+				span_warning("[src] cannot hold more reagent containers."),
 				target = src,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -265,9 +265,9 @@
 		e_args.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_ITEM_SOFT,
-			visible = SPAN_WARNING("[e_args.performer] inserts [using] into [src]."),
-			audible = SPAN_WARNING("You hear something being slotted in."),
-			otherwise_self = SPAN_WARNING("You insert [using] into [src]."),
+			visible = span_warning("[e_args.performer] inserts [using] into [src]."),
+			audible = span_warning("You hear something being slotted in."),
+			otherwise_self = span_warning("You insert [using] into [src]."),
 		)
 		beakers += using
 		playsound(src, 'sound/items/Screwdriver2.ogg', 25, TRUE, -3)
@@ -282,7 +282,7 @@
 	. = TRUE
 	if(activated)
 		e_args?.chat_feedback(
-			SPAN_WARNING("[src] is already primed! Are you crazy?"),
+			span_warning("[src] is already primed! Are you crazy?"),
 			target = src,
 		)
 		return
@@ -291,9 +291,9 @@
 	secured = !secured
 	e_args?.visible_feedback(
 		target = src,
-		visible = SPAN_NOTICE("[e_args.performer] [secured ? "secures" : "unsecures"] the cover of [src]."),
-		otherwise_self = SPAN_NOTICE("You [secured ? "secure" : "unsecure"] [src]'s cover."),
-		audible = SPAN_NOTICE("You hear something being [secured ? "fastened" : "unfastened"]."),
+		visible = span_notice("[e_args.performer] [secured ? "secures" : "unsecures"] the cover of [src]."),
+		otherwise_self = span_notice("You [secured ? "secure" : "unsecure"] [src]'s cover."),
+		audible = span_notice("You hear something being [secured ? "fastened" : "unfastened"]."),
 		range = MESSAGE_RANGE_ITEM_SOFT,
 	)
 	update_appearance()

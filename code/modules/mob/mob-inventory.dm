@@ -123,8 +123,8 @@
 /mob/proc/can_equip(obj/item/I, slot, flags, mob/user, denest_to)
 	// let's NOT.
 	if(I && QDELETED(I))
-		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_equip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
-		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
+		to_chat(user, span_danger("A deleted [I] was checked in can_equip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
+		to_chat(user, span_danger("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
 		return FALSE
 
 	var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
@@ -176,24 +176,24 @@
 	switch(conflict_result)
 		if(CAN_EQUIP_SLOT_CONFLICT_HARD)
 			if(!(flags & INV_OP_SUPPRESS_WARNING))
-				to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
+				to_chat(user, span_warning("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
 			return FALSE
 		if(CAN_EQUIP_SLOT_CONFLICT_SOFT)
 			if(!(flags & INV_OP_FORCE))
 				if(!(flags & INV_OP_SUPPRESS_WARNING))
-					to_chat(user, SPAN_WARNING("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
+					to_chat(user, span_warning("[self_equip? "You" : "They"] are already [slot_meta.display_plural? "holding too many things" : "wearing something"] [slot_meta.display_preposition] [self_equip? "your" : "their"] [slot_meta.display_name]."))
 				return FALSE
 
 	if(!inventory_slot_semantic_conflict(I, slot, user) && !(flags & INV_OP_FORCE))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(user, SPAN_WARNING("[I] doesn't fit there."))
+			to_chat(user, span_warning("[I] doesn't fit there."))
 		return FALSE
 
 	var/blocked_by
 
 	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !(flags & (INV_OP_FORCE | INV_OP_IGNORE_REACHABILITY)))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(user, SPAN_WARNING("\the [blocked_by] is in the way!"))
+			to_chat(user, span_warning("\the [blocked_by] is in the way!"))
 		return FALSE
 
 	// lastly, check item's opinion
@@ -269,7 +269,7 @@
 		if(equip_to_slot_if_possible(I, slot, flags | INV_OP_SUPPRESS_WARNING, user))
 			return TRUE
 	if(!(flags & INV_OP_SUPPRESS_WARNING))
-		to_chat(user, user == src? SPAN_WARNING("You can't find somewhere to equip [I] to!") : SPAN_WARNING("[src] has nowhere to equip [I] to!"))
+		to_chat(user, user == src? span_warning("You can't find somewhere to equip [I] to!") : span_warning("[src] has nowhere to equip [I] to!"))
 	return FALSE
 
 /**
@@ -345,8 +345,8 @@
 /mob/proc/can_unequip(obj/item/I, slot, flags, mob/user = src)
 	// destroyed IS allowed to call these procs
 	if(I && QDELETED(I) && !QDESTROYING(I))
-		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
-		to_chat(user, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
+		to_chat(user, span_danger("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
+		to_chat(user, span_danger("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
 		return TRUE
 
 	if(!slot)
@@ -355,13 +355,13 @@
 	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_ITEM_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			var/datum/inventory_slot/slot_meta = resolve_inventory_slot(slot)
-			to_chat(user, SPAN_WARNING("[I] is stubbornly stuck [slot_meta.display_preposition] your [slot_meta.display_name]!"))
+			to_chat(user, span_warning("[I] is stubbornly stuck [slot_meta.display_preposition] your [slot_meta.display_name]!"))
 		return FALSE
 
 	var/blocked_by
 	if((blocked_by = inventory_slot_reachability_conflict(I, slot, user)) && !(flags & (INV_OP_FORCE | INV_OP_IGNORE_REACHABILITY)))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
-			to_chat(user, SPAN_WARNING("\the [blocked_by] is in the way!"))
+			to_chat(user, span_warning("\the [blocked_by] is in the way!"))
 		return FALSE
 
 	// lastly, check item's opinion
@@ -406,8 +406,8 @@
 		return TRUE
 	// destroyed IS allowed to call these procs
 	if(I && QDELETED(I) && !QDESTROYING(I))
-		to_chat(user, SPAN_DANGER("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))
-		to_chat(user, SPAN_DANGER("Drop item to ground will now proceed, ignoring the bugged state. Errors may ensue."))
+		to_chat(user, span_danger("A deleted item [I] was used in drop_item_to_ground(). Report the entire line to coders. Debugging information: [I] ([REF(I)]) flags [flags] user [user]"))
+		to_chat(user, span_danger("Drop item to ground will now proceed, ignoring the bugged state. Errors may ensue."))
 	else if(!is_in_inventory(I))
 		return TRUE
 	return _unequip_item(I, flags | INV_OP_DIRECTLY_DROPPING, drop_location(), user)

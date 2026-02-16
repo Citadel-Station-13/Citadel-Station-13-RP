@@ -64,7 +64,7 @@
 /obj/item/pen/crayon/examine(mob/user, dist)
 	. = ..()
 	if(dist <= 1 && !isnull(remaining))
-		. += SPAN_NOTICE("It has [remaining] left.")
+		. += span_notice("It has [remaining] left.")
 
 /obj/item/pen/crayon/update_name(updates)
 	name = "[crayon_color_name] [initial(name)]"
@@ -109,7 +109,7 @@
 			if(!cappable)
 				return TRUE
 			set_capped(!capped)
-			usr.visible_message(SPAN_NOTICE("[usr] [capped? "caps" : "uncaps"] [src]."), range = MESSAGE_RANGE_ITEM_SOFT)
+			usr.visible_message(span_notice("[usr] [capped? "caps" : "uncaps"] [src]."), range = MESSAGE_RANGE_ITEM_SOFT)
 			return TRUE
 		if("angle")
 			current_graffiti_angle = text2num(params["angle"])
@@ -162,7 +162,7 @@
 		datapack = GLOB.crayon_data_lookup_by_string_icon_path[current_graffiti_icon_string_path]
 		if(isnull(datapack))
 			actor.chat_feedback(
-				SPAN_WARNING("Pick a stencil first!"),
+				span_warning("Pick a stencil first!"),
 				src,
 			)
 			return FALSE
@@ -173,13 +173,13 @@
 
 	if(!has_remaining(cost))
 		actor.chat_feedback(
-			SPAN_WARNING("There isn't enough left of [src] to draw graffiti."),
+			span_warning("There isn't enough left of [src] to draw graffiti."),
 			src,
 		)
 		return FALSE
 	if(capped)
 		actor.chat_feedback(
-			SPAN_WARNING("[src] is capped."),
+			span_warning("[src] is capped."),
 			src,
 		)
 		return FALSE
@@ -187,29 +187,29 @@
 	if(debris_time)
 		actor.visible_feedback(
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_WARNING("[actor.performer] starts to draw on [target] with [src]!"),
-			visible_self = SPAN_WARNING("You start to draw on [target] with [src]!"),
+			visible = span_warning("[actor.performer] starts to draw on [target] with [src]!"),
+			visible_self = span_warning("You start to draw on [target] with [src]!"),
 		)
 		if(!do_after(actor.performer, debris_time, target, mobility_flags = MOBILITY_CAN_USE | MOBILITY_CAN_HOLD))
 			return FALSE
 		if(capped)
 			actor.chat_feedback(
-				SPAN_WARNING("[src] is capped."),
+				span_warning("[src] is capped."),
 				src,
 			)
 			return FALSE
 
 	if(!use_remaining(cost))
 		actor.chat_feedback(
-			SPAN_WARNING("There isn't enough left of [src] to draw graffiti."),
+			span_warning("There isn't enough left of [src] to draw graffiti."),
 			src,
 		)
 		return FALSE
 
 	actor.visible_feedback(
 		range = MESSAGE_RANGE_CONSTRUCTION,
-		visible = SPAN_WARNING("[actor.performer] draws some graffiti on [target]!"),
-		visible_self = SPAN_WARNING("You draw some graffiti on [target]!"),
+		visible = span_warning("[actor.performer] draws some graffiti on [target]!"),
+		visible_self = span_warning("You draw some graffiti on [target]!"),
 	)
 
 	playsound(src, crayon_sound, 50, TRUE, -1)
@@ -241,7 +241,7 @@
 		return ..()
 	if(crayon_edible && iscarbon(user) && target == user)
 		var/mob/living/carbon/eater = user
-		to_chat(user, SPAN_WARNING("You take a bite out of [src] and swallow it. Was that a good idea?"))
+		to_chat(user, span_warning("You take a bite out of [src] and swallow it. Was that a good idea?"))
 		// todo: logging
 		reagents.trans_to(eater.ingested, 1 / 5 * reagents.maximum_volume)
 		if(!reagents.total_volume)

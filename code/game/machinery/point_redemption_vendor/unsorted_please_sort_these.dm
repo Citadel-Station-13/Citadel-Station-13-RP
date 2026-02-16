@@ -33,7 +33,7 @@
 
 /obj/item/engineering_voucher/proc/redeem(var/mob/user)
 	if(!redeemable_for)
-		to_chat(user, SPAN_WARNING("[src] has already been used"))
+		to_chat(user, span_warning("[src] has already been used"))
 		return
 	var/datum/supply_order/order = new /datum/supply_order
 

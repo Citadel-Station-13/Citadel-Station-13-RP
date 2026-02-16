@@ -123,7 +123,7 @@
 	if(current_track && playing)
 		media_url = current_track.url
 		media_start_time = world.time
-		to_chat(usr, SPAN_NOTICE("\The [src] begins to play [current_track.display()]."))
+		to_chat(usr, span_notice("\The [src] begins to play [current_track.display()]."))
 	else
 		media_url = ""
 		media_start_time = 0

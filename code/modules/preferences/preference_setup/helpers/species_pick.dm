@@ -31,7 +31,7 @@
 /datum/preferences/proc/species_pick_finalize(uid, mob/user)
 	var/datum/species/CS = SScharacters.resolve_character_species(uid)
 	if(!CS)
-		to_chat(user, SPAN_WARNING("No species by id [uid] found; this is likely a bug!"))
+		to_chat(user, span_warning("No species by id [uid] found; this is likely a bug!"))
 		return TRUE // close window; it shouldn't be letting us select null species
 	if(!check_character_species(CS, user))
 		return TRUE	// close window; it shouldn't be letting us select whitelisted speices

@@ -369,7 +369,7 @@
 		if (prompt != "Yes")
 			return
 		if(!thing)
-			to_chat(usr, SPAN_WARNING("The object you tried to expose to [C] no longer exists (GC'd)"))
+			to_chat(usr, span_warning("The object you tried to expose to [C] no longer exists (GC'd)"))
 			return
 		message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='?_src_=vars;datumrefresh=\ref[thing]'>VV window</a>")
 		log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [src]")

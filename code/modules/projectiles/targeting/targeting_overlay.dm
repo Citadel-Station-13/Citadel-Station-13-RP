@@ -176,7 +176,7 @@
 
 	if(owner.client)
 		owner.client.add_gun_icons()
-	to_chat(target, SPAN_BIG(SPAN_DANGER("You have a gun pointed at you. No sudden movements!")))
+	to_chat(target, span_big(span_danger("You have a gun pointed at you. No sudden movements!")))
 	aiming_with = thing
 	aiming_at = target
 	if(istype(aiming_with, /obj/item/gun))

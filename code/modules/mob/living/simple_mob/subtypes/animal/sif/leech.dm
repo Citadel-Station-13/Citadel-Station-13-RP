@@ -157,14 +157,14 @@
 		alpha = 5
 		if(host.reagents.has_reagent("cordradaxon") && !docile)	// Overwhelms the leech with food.
 			var/message = "We feel the rush of cardiac pluripotent cells in your host's blood, lulling us into docility."
-			to_chat(src, SPAN_WARNING( message))
+			to_chat(src, span_warning( message))
 			docile = TRUE
 			if(chemicals + 5 <= max_chemicals)
 				chemicals += 5
 
 		else if(docile)
 			var/message = "We shake off our lethargy as the pluripotent cell count declines in our host's blood."
-			to_chat(src, SPAN_NOTICE(message))
+			to_chat(src, span_notice(message))
 			docile = FALSE
 
 		if(!host.reagents.has_reagent(passive_reagent))
@@ -226,18 +226,18 @@
 	set desc = "Infest a suitable humanoid host."
 
 	if(docile)
-		to_chat(src, SPAN_NOTICEALIEN("We are too tired to do this..."))
+		to_chat(src, span_noticealien("We are too tired to do this..."))
 		return
 
 	do_infest(usr)
 
 /mob/living/simple_mob/animal/sif/leech/proc/do_infest(var/mob/living/user, var/mob/living/target = null)
 	if(host)
-		to_chat(user, SPAN_ALIEN("We are already within a host."))
+		to_chat(user, span_alien("We are already within a host."))
 		return
 
 	if(stat)
-		to_chat(user, SPAN_WARNING("We cannot infest a target in your current state."))
+		to_chat(user, span_warning("We cannot infest a target in your current state."))
 		return
 
 	var/mob/living/carbon/M = target
@@ -249,7 +249,7 @@
 				choices += C
 
 		if(!choices.len)
-			to_chat(user, SPAN_WARNING("There are no viable hosts within range..."))
+			to_chat(user, span_warning("There are no viable hosts within range..."))
 			return
 
 		M = input(src,"Who do we wish to infest?") in null|choices
@@ -272,24 +272,24 @@
 		var/list/covering_clothing = E.get_covering_clothing()
 		for(var/obj/item/clothing/C in covering_clothing)
 			if(C.fetch_armor().get_mitigation(ARMOR_MELEE) * 100 >= 20 + attack_armor_pen + attack_armor_pen)
-				to_chat(user, SPAN_NOTICE("We cannot get through that host's protective gear."))
+				to_chat(user, span_notice("We cannot get through that host's protective gear."))
 				return
 
 	if(!do_after(src,2))
-		to_chat(user, SPAN_NOTICE("As [M] moves away, we are dislodged and fall to the ground."))
+		to_chat(user, span_notice("As [M] moves away, we are dislodged and fall to the ground."))
 		return
 
 	if(!M || !src)
 		return
 
 	if(src.stat)
-		to_chat(user, SPAN_WARNING("We cannot infest a target in your current state."))
+		to_chat(user, span_warning("We cannot infest a target in your current state."))
 		return
 
 	if(M in view(1, src))
-		to_chat(user,SPAN_ALIEN("We burrow into [M]'s flesh."))
+		to_chat(user,span_alien("We burrow into [M]'s flesh."))
 		if(!M.stat)
-			to_chat(M, SPAN_CRITICAL("You feel a sharp pain as something digs into your flesh!"))
+			to_chat(M, span_critical("You feel a sharp pain as something digs into your flesh!"))
 
 		src.host = M
 		src.forceMove(M)
@@ -305,7 +305,7 @@
 
 		return
 	else
-		to_chat(user, SPAN_NOTICE("They are no longer in range."))
+		to_chat(user, span_notice("They are no longer in range."))
 		return
 
 /mob/living/simple_mob/animal/sif/leech/verb/uninfest()
@@ -314,7 +314,7 @@
 	set desc = "Leave your current host."
 
 	if(docile)
-		to_chat(src, SPAN_NOTICEALIEN("We are too tired to do this..."))
+		to_chat(src, span_noticealien("We are too tired to do this..."))
 		return
 
 	leave_host()
@@ -341,7 +341,7 @@
 	set desc = "Inject an organic host with an incredibly painful mixture of chemicals."
 
 	if(docile)
-		to_chat(src, SPAN_NOTICEALIEN("We are too tired to do this..."))
+		to_chat(src, span_noticealien("We are too tired to do this..."))
 		return
 
 	var/mob/living/carbon/M
@@ -352,7 +352,7 @@
 				choices += C
 
 		if(!choices.len)
-			to_chat(src, SPAN_WARNING("There are no viable hosts within range..."))
+			to_chat(src, span_warning("There are no viable hosts within range..."))
 			return
 
 		M = input(src,"Who do we wish to inject?") in null|choices
@@ -369,7 +369,7 @@
 	var/mob/living/carbon/human/H = L
 
 	if(!istype(H) || H.isSynthetic())
-		to_chat(user, SPAN_WARNING("You cannot inject this target..."))
+		to_chat(user, span_warning("You cannot inject this target..."))
 
 	var/obj/item/organ/external/E = H.organs_by_name[infest_target]
 	if(!E || E.is_stump() || E.robotic >= ORGAN_ROBOT)
@@ -378,7 +378,7 @@
 	var/list/covering_clothing = E.get_covering_clothing()
 	for(var/obj/item/clothing/C in covering_clothing)
 		if(C.fetch_armor().get_mitigation(ARMOR_MELEE) * 100 >= 40 + attack_armor_pen)
-			to_chat(user, SPAN_NOTICE("You cannot get through that host's protective gear."))
+			to_chat(user, span_notice("You cannot get through that host's protective gear."))
 			return
 
 	H.add_modifier(/datum/modifier/poisoned/paralysis, 15 SECONDS)
@@ -389,11 +389,11 @@
 	set desc = "Inject your host with possibly beneficial chemicals, to keep the blood flowing."
 
 	if(docile)
-		to_chat(src, SPAN_NOTICEALIEN("We are too tired to do this..."))
+		to_chat(src, span_noticealien("We are too tired to do this..."))
 		return
 
 	if(!host || chemicals <= 50)
-		to_chat(usr, SPAN_ALIEN("We cannot produce any chemicals right now."))
+		to_chat(usr, span_alien("We cannot produce any chemicals right now."))
 		return
 
 	if(host)
@@ -404,7 +404,7 @@
 	if(host)
 		chemicals = max(1, chemicals - 50)
 		host.reagents.add_reagent(chem, 5)
-		to_chat(src, SPAN_ALIEN("We injected \the [host] with five units of [chem]."))
+		to_chat(src, span_alien("We injected \the [host] with five units of [chem]."))
 
 /mob/living/simple_mob/animal/sif/leech/verb/feed_on_organ()
 	set category = "Abilities"
@@ -412,7 +412,7 @@
 	set desc = "Extend probosci to feed on a piece of your host's organs."
 
 	if(docile)
-		to_chat(src, SPAN_NOTICEALIEN("We are too tired to do this..."))
+		to_chat(src, span_noticealien("We are too tired to do this..."))
 		return
 
 	if(host && world.time >= last_feeding + feeding_delay)
@@ -426,7 +426,7 @@
 		if(client)
 			target = input("Select an organ to feed on.", "Organs") as null|anything in host_internal_organs
 			if(!target)
-				to_chat(src, SPAN_ALIEN("We decide not to feed."))
+				to_chat(src, span_alien("We decide not to feed."))
 				return
 
 		if(!target)
@@ -436,13 +436,13 @@
 			bite_organ(target)
 
 	else
-		to_chat(src, SPAN_WARNING("We cannot feed now."))
+		to_chat(src, span_warning("We cannot feed now."))
 
 /mob/living/simple_mob/animal/sif/leech/proc/bite_organ(var/obj/item/organ/internal/O)
 	last_feeding = world.time
 
 	if(O)
-		to_chat(src, SPAN_ALIEN("We feed on [O]."))
+		to_chat(src, span_alien("We feed on [O]."))
 		O.take_damage(2,silent=prob(10))
 		chemicals = min(max_chemicals, chemicals + 60)
 		host.add_modifier(/datum/modifier/grievous_wounds, 60 SECONDS)

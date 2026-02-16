@@ -71,56 +71,56 @@
 /obj/machinery/coffeemaker/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += SPAN_WARNING("You're too far away to examine [src]'s contents and display!")
+		. += span_warning("You're too far away to examine [src]'s contents and display!")
 		return
 
 	if(brewing)
-		. += SPAN_WARNING("\The [src] is brewing.")
+		. += span_warning("\The [src] is brewing.")
 		return
 
 	if(panel_open)
-		. += SPAN_NOTICE("[src]'s maintenance hatch is open!")
+		. += span_notice("[src]'s maintenance hatch is open!")
 		return
 
 	if(coffeepot || cartridge)
-		. += SPAN_NOTICE("\The [src] contains:")
+		. += span_notice("\The [src] contains:")
 		if(coffeepot)
-			. += SPAN_NOTICE("- \A [coffeepot].")
+			. += span_notice("- \A [coffeepot].")
 		if(cartridge)
-			. += SPAN_NOTICE("- \A [cartridge].")
+			. += span_notice("- \A [cartridge].")
 		return
 
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		. += "[SPAN_NOTICE("The status display reads:")]\n"+\
-		SPAN_NOTICE("- Brewing coffee at <b>[speed*100]%</b>.")
+		. += "[span_notice("The status display reads:")]\n"+\
+		span_notice("- Brewing coffee at <b>[speed*100]%</b>.")
 		if(coffeepot)
 			for(var/id as anything in coffeepot.reagents.reagent_volumes)
-				. += SPAN_NOTICE("- [coffeepot.reagents.reagent_volumes[id]] units of coffee in pot.")
+				. += span_notice("- [coffeepot.reagents.reagent_volumes[id]] units of coffee in pot.")
 		if(cartridge)
 			if(cartridge.charges < 1)
-				. += SPAN_NOTICE("- grounds cartridge is empty.")
+				. += span_notice("- grounds cartridge is empty.")
 			else
-				. += SPAN_NOTICE("- grounds cartridge has [cartridge.charges] charges remaining.")
+				. += span_notice("- grounds cartridge has [cartridge.charges] charges remaining.")
 
 	if (coffee_cups >= 1)
-		. += SPAN_NOTICE("There [coffee_cups == 1 ? "is" : "are"] [coffee_cups] coffee cup[coffee_cups != 1 && "s"] left.")
+		. += span_notice("There [coffee_cups == 1 ? "is" : "are"] [coffee_cups] coffee cup[coffee_cups != 1 && "s"] left.")
 	else
-		. += SPAN_NOTICE("There are no cups left.")
+		. += span_notice("There are no cups left.")
 
 	if (sugar_packs >= 1)
-		. += SPAN_NOTICE("There [sugar_packs == 1 ? "is" : "are"] [sugar_packs] packet[sugar_packs != 1 && "s"] of sugar left.")
+		. += span_notice("There [sugar_packs == 1 ? "is" : "are"] [sugar_packs] packet[sugar_packs != 1 && "s"] of sugar left.")
 	else
-		. += SPAN_NOTICE("There is no sugar left.")
+		. += span_notice("There is no sugar left.")
 
 	if (sweetener_packs >= 1)
-		. += SPAN_NOTICE("There [sweetener_packs == 1 ? "is" : "are"] [sweetener_packs] packet[sweetener_packs != 1 && "s"] of sweetener left.")
+		. += span_notice("There [sweetener_packs == 1 ? "is" : "are"] [sweetener_packs] packet[sweetener_packs != 1 && "s"] of sweetener left.")
 	else
-		. += SPAN_NOTICE("There is no sweetener left.")
+		. += span_notice("There is no sweetener left.")
 
 	if (creamer_packs > 1)
-		. += SPAN_NOTICE("There [creamer_packs == 1 ? "is" : "are"] [creamer_packs] packet[creamer_packs != 1 && "s"] of creamer left.")
+		. += span_notice("There [creamer_packs == 1 ? "is" : "are"] [creamer_packs] packet[creamer_packs != 1 && "s"] of creamer left.")
 	else
-		. += SPAN_NOTICE("There is no creamer left.")
+		. += span_notice("There is no creamer left.")
 
 /obj/machinery/coffeemaker/AltClick(mob/user)
 	..()
@@ -202,10 +202,10 @@
 	if (istype(attack_item, /obj/item/reagent_containers/food/drinks/coffee_cup) && attack_item.is_open_container())
 		var/obj/item/reagent_containers/food/drinks/coffee_cup/new_cup = attack_item
 		if(new_cup.reagents.total_volume > 0)
-			to_chat(user, SPAN_NOTICE("The cup must be full!"))
+			to_chat(user, span_notice("The cup must be full!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(coffee_cups >= max_coffee_cups)
-			to_chat(user, SPAN_NOTICE("The cup holder is full!"))
+			to_chat(user, span_notice("The cup holder is full!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		attack_item.forceMove(src)
 		coffee_cups++
@@ -215,10 +215,10 @@
 	if (istype(attack_item, /obj/item/reagent_containers/food/condiment/small/packet/sugar))
 		var/obj/item/reagent_containers/food/condiment/small/packet/sugar/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
-			to_chat(user, SPAN_NOTICE("The pack must be full!"))
+			to_chat(user, span_notice("The pack must be full!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(sugar_packs >= max_sugar_packs)
-			to_chat(user, SPAN_NOTICE("The sugar compartment is full!"))
+			to_chat(user, span_notice("The sugar compartment is full!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		attack_item.forceMove(src)
 		sugar_packs++
@@ -228,10 +228,10 @@
 	if (istype(attack_item, /obj/item/reagent_containers/food/condiment/small/packet/creamer))
 		var/obj/item/reagent_containers/food/condiment/small/packet/creamer/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
-			to_chat(user, SPAN_NOTICE("The pack be full!"))
+			to_chat(user, span_notice("The pack be full!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(creamer_packs >= max_creamer_packs)
-			to_chat(user, SPAN_NOTICE("The creamer compartment is full!"))
+			to_chat(user, span_notice("The creamer compartment is full!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		attack_item.forceMove(src)
 		creamer_packs++
@@ -241,10 +241,10 @@
 	if (istype(attack_item, /obj/item/reagent_containers/food/condiment/small/packet/astrotame))
 		var/obj/item/reagent_containers/food/condiment/small/packet/astrotame/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
-			to_chat(user, SPAN_NOTICE("The pack must be full!"))
+			to_chat(user, span_notice("The pack must be full!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(sweetener_packs >= max_sweetener_packs)
-			to_chat(user, SPAN_NOTICE("The sweetener compartment is full!"))
+			to_chat(user, span_notice("The sweetener compartment is full!"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		attack_item.forceMove(src)
 		sweetener_packs++
@@ -260,19 +260,19 @@
 
 /obj/machinery/coffeemaker/proc/try_brew()
 	if(!cartridge)
-		to_chat(usr, SPAN_NOTICE("There is no coffee cartridge installed!"))
+		to_chat(usr, span_notice("There is no coffee cartridge installed!"))
 		return FALSE
 	if(cartridge.charges < 1)
-		to_chat(usr, SPAN_NOTICE("The coffee cartridge is empty!"))
+		to_chat(usr, span_notice("The coffee cartridge is empty!"))
 		return FALSE
 	if(!coffeepot)
-		to_chat(usr, SPAN_NOTICE("There's no coffeepot!"))
+		to_chat(usr, span_notice("There's no coffeepot!"))
 		return FALSE
 	if(machine_stat & (NOPOWER|BROKEN))
-		to_chat(usr, SPAN_NOTICE("The machnine isn't powered!"))
+		to_chat(usr, span_notice("The machnine isn't powered!"))
 		return FALSE
 	if(coffeepot.reagents.total_volume >= coffeepot.reagents.maximum_volume)
-		to_chat(usr, SPAN_NOTICE("The coffeepot is already full!"))
+		to_chat(usr, span_notice("The coffeepot is already full!"))
 		return FALSE
 	return TRUE
 
@@ -352,7 +352,7 @@
 
 /obj/machinery/coffeemaker/proc/take_cup(mob/user)
 	if(!coffee_cups) //shouldn't happen, but we all know how stuff manages to break
-		to_chat(user, SPAN_NOTICE("There are no cups left!"))
+		to_chat(user, span_notice("There are no cups left!"))
 		return
 	var/obj/item/reagent_containers/food/drinks/coffee_cup/new_cup = new(get_turf(src))
 	user.put_in_hands(new_cup)
@@ -361,7 +361,7 @@
 
 /obj/machinery/coffeemaker/proc/take_sugar(mob/user)
 	if(!sugar_packs)
-		to_chat(user, SPAN_NOTICE("There is no sugar left"))
+		to_chat(user, span_notice("There is no sugar left"))
 		return
 	var/obj/item/reagent_containers/food/condiment/small/packet/sugar/new_pack = new(get_turf(src))
 	user.put_in_hands(new_pack)
@@ -370,7 +370,7 @@
 
 /obj/machinery/coffeemaker/proc/take_sweetener(mob/user)
 	if(!sweetener_packs)
-		to_chat(user, SPAN_NOTICE("There is no sweetener left"))
+		to_chat(user, span_notice("There is no sweetener left"))
 		return
 	var/obj/item/reagent_containers/food/condiment/small/packet/astrotame/new_pack = new(get_turf(src))
 	user.put_in_hands(new_pack)
@@ -379,7 +379,7 @@
 
 /obj/machinery/coffeemaker/proc/take_creamer(mob/user)
 	if(!creamer_packs)
-		to_chat(user, SPAN_NOTICE("There is no creamer left"))
+		to_chat(user, span_notice("There is no creamer left"))
 		return
 	var/obj/item/reagent_containers/food/condiment/small/packet/creamer/new_pack = new(drop_location())
 	user.put_in_hands(new_pack)
@@ -418,9 +418,9 @@
 /obj/item/coffee_cartridge/examine(mob/user)
 	. = ..()
 	if(charges)
-		. += SPAN_WARNING("The cartridge has [charges] portions of grounds remaining.")
+		. += span_warning("The cartridge has [charges] portions of grounds remaining.")
 	else
-		. += SPAN_WARNING("The cartridge has no unspent grounds remaining.")
+		. += span_warning("The cartridge has no unspent grounds remaining.")
 
 /obj/item/coffee_cartridge/fancy
 	name = "coffeemaker cartridge - Caffè Fantasioso"

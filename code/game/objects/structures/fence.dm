@@ -76,29 +76,29 @@
 		return ..()
 	if(W.is_wirecutter())
 		if(!cuttable)
-			to_chat(user, SPAN_WARNING( "This section of the fence can't be cut."))
+			to_chat(user, span_warning( "This section of the fence can't be cut."))
 			return
 		if(invulnerable)
-			to_chat(user, SPAN_WARNING( "This fence is too strong to cut through."))
+			to_chat(user, span_warning( "This fence is too strong to cut through."))
 			return
 		var/current_stage = hole_size
 		if(current_stage >= MAX_HOLE_SIZE)
-			to_chat(user, SPAN_NOTICE("This fence has too much cut out of it already."))
+			to_chat(user, span_notice("This fence has too much cut out of it already."))
 			return
 
-		user.visible_message(SPAN_DANGER("\The [user] starts cutting through \the [src] with \the [W]."),\
-		SPAN_DANGER("You start cutting through \the [src] with \the [W]."))
+		user.visible_message(span_danger("\The [user] starts cutting through \the [src] with \the [W]."),\
+		span_danger("You start cutting through \the [src] with \the [W]."))
 		playsound(src, W.tool_sound, 50, 1)
 
 		if(do_after(user, CUT_TIME * W.tool_speed, target = src))
 			if(current_stage == hole_size)
 				switch(++hole_size)
 					if(MEDIUM_HOLE)
-						visible_message(SPAN_NOTICE("\The [user] cuts into \the [src] some more."))
-						to_chat(user, SPAN_NOTICE("You could probably fit yourself through that hole now. Although climbing through would be much faster if you made it even bigger."))
+						visible_message(span_notice("\The [user] cuts into \the [src] some more."))
+						to_chat(user, span_notice("You could probably fit yourself through that hole now. Although climbing through would be much faster if you made it even bigger."))
 					if(LARGE_HOLE)
-						visible_message(SPAN_NOTICE("\The [user] completely cuts through \the [src]."))
-						to_chat(user, SPAN_NOTICE("The hole in \the [src] is now big enough to walk through."))
+						visible_message(span_notice("\The [user] completely cuts through \the [src]."))
+						to_chat(user, span_notice("The hole in \the [src] is now big enough to walk through."))
 				update_cut_status()
 		return TRUE
 
@@ -148,17 +148,17 @@
 	if(can_open(user))
 		toggle(user)
 	else
-		to_chat(user, SPAN_WARNING( "\The [src] is [!open ? "locked" : "stuck open"]."))
+		to_chat(user, span_warning( "\The [src] is [!open ? "locked" : "stuck open"]."))
 
 	return TRUE
 
 /obj/structure/fence/door/proc/toggle(mob/user)
 	switch(open)
 		if(FALSE)
-			visible_message(SPAN_NOTICE("\The [user] opens \the [src]."))
+			visible_message(span_notice("\The [user] opens \the [src]."))
 			open = TRUE
 		if(TRUE)
-			visible_message(SPAN_NOTICE("\The [user] closes \the [src]."))
+			visible_message(span_notice("\The [user] closes \the [src]."))
 			open = FALSE
 
 	update_door_status()

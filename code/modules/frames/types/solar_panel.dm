@@ -27,7 +27,7 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/machinery/power/
 	if(istype(item, /obj/item/tracker_electronics))
 		if(frame.get_context("tracker"))
 			click.chat_feedback(
-				SPAN_WARNING("[frame] already has tracker electronics installed."),
+				span_warning("[frame] already has tracker electronics installed."),
 				target = frame,
 			)
 			return TRUE
@@ -36,7 +36,7 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/machinery/power/
 		click.visible_feedback(
 			target = src,
 			range = MESSAGE_RANGE_CONSTRUCTION,
-			visible = SPAN_NOTICE("[click.performer] inserts [item] into [frame].")
+			visible = span_notice("[click.performer] inserts [item] into [frame].")
 		)
 		// todo: context system proper?
 		frame.set_context("tracker", TRUE)
@@ -53,9 +53,9 @@ AUTO_FRAME_DATUM(/datum/frame2/solar_panel, solar_panel, 'icons/machinery/power/
 	. = ..()
 	// todo: context system proper?
 	if(!frame.get_context("tracker"))
-		. += SPAN_NOTICE("Add <b>tracker electronics</b> to make this a solar tracker assembly.")
+		. += span_notice("Add <b>tracker electronics</b> to make this a solar tracker assembly.")
 	else
-		. += SPAN_NOTICE("This assembly is wired to be a <b>solar tracker</b>.")
+		. += span_notice("This assembly is wired to be a <b>solar tracker</b>.")
 
 /obj/structure/frame2/solar_panel/anchored
 	anchored = TRUE

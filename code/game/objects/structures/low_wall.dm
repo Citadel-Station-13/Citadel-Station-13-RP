@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	if(istype(I, /obj/item/stack/rods))
 		for(var/obj/structure/window/WINDOW in loc)
 			if(WINDOW.dir == get_dir(src, user))
-				to_chat(user, SPAN_WARNING("There is a window in the way."))
+				to_chat(user, span_warning("There is a window in the way."))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 		place_grille(user, loc, I)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

@@ -13,12 +13,12 @@
 	if(!no_automatic_sanity_checks)
 		if(!isturf(where) || isspaceturf(where))
 			if(!silent && !isnull(user))
-				user.action_feedback(SPAN_WARNING("Railings must be built on a floor."))
+				user.action_feedback(span_warning("Railings must be built on a floor."))
 				return FALSE
 		for(var/obj/structure/railing/R in where)
 			if(R.dir == use_dir)
 				if(!silent && !isnull(user))
-					user.action_feedback(SPAN_WARNING("There's no room for a railing here facing [dir2text(use_dir)]."))
+					user.action_feedback(span_warning("There's no room for a railing here facing [dir2text(use_dir)]."))
 				return FALSE
 	return TRUE
 

@@ -89,7 +89,7 @@
 				The map will be loaded anyways due to this being a subsystem-level mapload call, \
 				but this round will probably break in some spectacular manner."
 			STACK_TRACE(validation_fail_msg)
-			to_chat(world, SPAN_BOLDANNOUNCE("SSmapping: [validation_fail_msg]"))
+			to_chat(world, span_boldannounce("SSmapping: [validation_fail_msg]"))
 
 		if(!loading_map.construct())
 			emit_init_fatal("load - could not construct map id '[loading_map.id]'; skipping")
@@ -112,7 +112,7 @@
 			if(isnull(level_context))
 				emit_fatal_log("load - failed to load level '[level.id]' in map '[instance.id]")
 				stack_trace("unable to load level [level] ([level.id])")
-				to_chat(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
+				to_chat(world, span_danger("PANIC: Unable to load level [level] ([level.id])"))
 				continue
 			loaded_lockstep_levels += level
 			loaded_lockstep_contexts += level_context

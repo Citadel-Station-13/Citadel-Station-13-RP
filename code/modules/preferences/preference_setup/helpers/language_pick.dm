@@ -11,15 +11,15 @@
 /datum/preferences/proc/language_pick_finalize(id, mob/user)
 	var/datum/prototype/language/L = RSlanguages.fetch(id)
 	if(!L)
-		to_chat(user, SPAN_WARNING("BUG: Invalid language ID: [id]"))
+		to_chat(user, span_warning("BUG: Invalid language ID: [id]"))
 		return TRUE
 	if(extraneous_language_ids().len > extraneous_languages_max())
-		to_chat(user, SPAN_WARNING("You cannot select another language!"))
+		to_chat(user, span_warning("You cannot select another language!"))
 		return TRUE
 	var/datum/species/CS = character_species_datum()
 	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
 	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in whitelisted_ids) || Configuration.check_language_whitelist(L.id, client_ckey)))
-		to_chat(user, SPAN_WARNING("[L] is a whitelisted language!"))
+		to_chat(user, span_warning("[L] is a whitelisted language!"))
 		return FALSE
 	var/list/current = get_character_data(CHARACTER_DATA_LANGUAGES)
 	current += L.id

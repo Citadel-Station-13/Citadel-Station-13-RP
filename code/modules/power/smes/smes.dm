@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(smeses)
 /obj/machinery/power/smes/examine(user)
 	. = ..()
 	if(!terminal)
-		. += SPAN_WARNING("This [src] has no power terminal!")
+		. += span_warning("This [src] has no power terminal!")
 
 /obj/machinery/power/smes/drain_energy(datum/actor, amount, flags)
 	var/wanted = min(charge, KJ_TO_KWM(amount))

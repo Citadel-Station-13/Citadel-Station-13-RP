@@ -160,7 +160,7 @@
 	if(owner.is_in_inventory(integrated_object))
 		// retracting
 		integrated_object.forceMove(src)
-		owner.visible_message(SPAN_NOTICE("[integrated_object] snaps back into [src]."))
+		owner.visible_message(span_notice("[integrated_object] snaps back into [src]."))
 		return
 	if(length(options) == 1)
 		for(var/key in options)

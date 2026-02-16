@@ -132,7 +132,7 @@
 	var/obj/machinery/sleeper/S = sleeper
 
 	if(usr == S.occupant)
-		to_chat(usr, SPAN_WARNING("You can't reach the controls from the inside."))
+		to_chat(usr, span_warning("You can't reach the controls from the inside."))
 		return
 
 	if(href_list["eject"])
@@ -300,9 +300,9 @@
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
 			beaker = I
-			user.visible_message(SPAN_NOTICE("\The [user] adds \a [I] to \the [src]."), SPAN_NOTICE("You add \a [I] to \the [src]."))
+			user.visible_message(span_notice("\The [user] adds \a [I] to \the [src]."), span_notice("You add \a [I] to \the [src]."))
 		else
-			to_chat(user, SPAN_WARNING("\The [src] has a beaker already."))
+			to_chat(user, span_warning("\The [src] has a beaker already."))
 		return
 	else
 		..()
@@ -316,7 +316,7 @@
 			if(DEAD)
 				return
 			if(UNCONSCIOUS)
-				to_chat(usr, SPAN_NOTICE("You struggle through the haze to hit the eject button. This will take a couple of minutes..."))
+				to_chat(usr, span_notice("You struggle through the haze to hit the eject button. This will take a couple of minutes..."))
 				if(do_after(usr, 2 MINUTES, src))
 					go_out()
 			if(CONSCIOUS)
@@ -369,13 +369,13 @@
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(occupant)
-		to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
+		to_chat(user, span_warning("\The [src] is already occupied."))
 		return
 	if(!ishuman(M))
-		to_chat(user, SPAN_WARNING("\The [src] is not designed for that organism!"))
+		to_chat(user, span_warning("\The [src] is not designed for that organism!"))
 		return
 	if(M.buckled)
-		to_chat(user, SPAN_WARNING("[M == user? "You are" : "[M] is"] buckled to something!"))
+		to_chat(user, span_warning("[M == user? "You are" : "[M] is"] buckled to something!"))
 		return
 	if(M == user)
 		visible_message("\The [user] starts climbing into \the [src].")
@@ -384,7 +384,7 @@
 
 	if(do_after(user, 20))
 		if(occupant)
-			to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
+			to_chat(user, span_warning("\The [src] is already occupied."))
 			return
 		M.forceMove(src)
 		update_use_power(USE_POWER_ACTIVE)

@@ -415,12 +415,12 @@
 	. = list()
 	update_values()
 	if(!total_moles)
-		. += SPAN_WARNING("Pressure: 0 kPa")
+		. += span_warning("Pressure: 0 kPa")
 		return
 	var/pressure = return_pressure()
-	. += SPAN_NOTICE("Pressure: [round(pressure, 0.001)] kPa")
-	. += SPAN_NOTICE("Volume: [round(volume, 0.001)] L")
-	. += SPAN_NOTICE("Temperature: [round(temperature, 0.001)]&deg;K ([round(temperature - T0C, 0.001)]&deg;C)")
+	. += span_notice("Pressure: [round(pressure, 0.001)] kPa")
+	. += span_notice("Volume: [round(volume, 0.001)] L")
+	. += span_notice("Temperature: [round(temperature, 0.001)]&deg;K ([round(temperature - T0C, 0.001)]&deg;C)")
 	var/reagents = 0
 	var/other = 0
 	var/unknown = 0
@@ -439,22 +439,22 @@
 			unknown += gas[id]
 			trace_unknown_masses += id
 		else
-			. += SPAN_NOTICE("[global.gas_data.names[id]]: [exact? "[XGM_QUANTIZE(gas[id])] mol @ " : ""][round(gas[id] / total_moles * 100, 0.01)]%[molar_masses? " ([global.gas_data.molar_masses[id]] g/mol)" : ""]")
+			. += span_notice("[global.gas_data.names[id]]: [exact? "[XGM_QUANTIZE(gas[id])] mol @ " : ""][round(gas[id] / total_moles * 100, 0.01)]%[molar_masses? " ([global.gas_data.molar_masses[id]] g/mol)" : ""]")
 	if(reagents)
-		. += SPAN_NOTICE("Reagents: [exact? "[XGM_QUANTIZE(reagents)] mol @ " : ""][round(reagents / total_moles * 100, 0.01)]%")
+		. += span_notice("Reagents: [exact? "[XGM_QUANTIZE(reagents)] mol @ " : ""][round(reagents / total_moles * 100, 0.01)]%")
 		if(molar_masses)
 			for(var/id in trace_reagent_masses)
-				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
+				. += span_notice("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
 	if(other)
-		. += SPAN_NOTICE("Other: [exact? "[XGM_QUANTIZE(other)] mol @ " : ""][round(other / total_moles * 100, 0.01)]%")
+		. += span_notice("Other: [exact? "[XGM_QUANTIZE(other)] mol @ " : ""][round(other / total_moles * 100, 0.01)]%")
 		if(molar_masses)
 			for(var/id in trace_other_masses)
-				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
+				. += span_notice("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
 	if(unknown)
-		. += SPAN_NOTICE("Unknown: [exact? "[XGM_QUANTIZE(unknown)] mol @ " : ""][round(unknown / total_moles * 100, 0.01)]%")
+		. += span_notice("Unknown: [exact? "[XGM_QUANTIZE(unknown)] mol @ " : ""][round(unknown / total_moles * 100, 0.01)]%")
 		if(molar_masses)
 			for(var/id in trace_unknown_masses)
-				. += SPAN_NOTICE("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
+				. += span_notice("[FOURSPACES] - [global.gas_data.names[id]] ([global.gas_data.molar_masses[id]] g/mol)")
 
 
 /datum/gas_mixture/proc/tgui_analyzer_scan(group_together, molar_masses)

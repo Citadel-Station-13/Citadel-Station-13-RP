@@ -226,10 +226,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 				subspace_transmission = !subspace_transmission
 				if(!subspace_transmission)
 					channels = list()
-					to_chat(usr, SPAN_NOTICE("Subspace Transmission is disabled"))
+					to_chat(usr, span_notice("Subspace Transmission is disabled"))
 				else
 					recalculateChannels()
-					to_chat(usr, SPAN_NOTICE("Subspace Transmission is enabled"))
+					to_chat(usr, span_notice("Subspace Transmission is enabled"))
 				. = TRUE
 		if("toggleLoudspeaker")
 			if(!subspace_switchable)
@@ -237,9 +237,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			loudspeaker = !loudspeaker
 
 			if(loudspeaker)
-				to_chat(usr, SPAN_NOTICE("Loadspeaker enabled."))
+				to_chat(usr, span_notice("Loadspeaker enabled."))
 			else
-				to_chat(usr, SPAN_NOTICE("Loadspeaker disabled."))
+				to_chat(usr, span_notice("Loadspeaker disabled."))
 			. = TRUE
 
 	if(. && iscarbon(usr))
@@ -477,14 +477,14 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	if(bluespace_radio)
 		//Nothing to transmit to
 		if(!bs_tx_weakref)
-			to_chat(loc, SPAN_WARNING("\The [src] buzzes to inform you of the lack of a functioning connection."))
+			to_chat(loc, span_warning("\The [src] buzzes to inform you of the lack of a functioning connection."))
 			return FALSE
 
 		var/obj/machinery/telecomms/tx_to = bs_tx_weakref.resolve()
 		//Was linked, now destroyed or something
 		if(!tx_to)
 			bs_tx_weakref = null
-			to_chat(loc, SPAN_WARNING("\The [src] buzzes to inform you of the lack of a functioning connection."))
+			to_chat(loc, span_warning("\The [src] buzzes to inform you of the lack of a functioning connection."))
 			return FALSE
 
 		//Transmitted in the blind. If we get a message back, cool. If not, oh well.
@@ -496,7 +496,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		var/list/jamming = is_jammed(src)
 		if(jamming)
 			var/distance = jamming["distance"]
-			to_chat(M, SPAN_DANGER("[icon2html(src, world)] You hear the [distance <= 2 ? "loud hiss" : "soft hiss"] of static."))
+			to_chat(M, span_danger("[icon2html(src, world)] You hear the [distance <= 2 ? "loud hiss" : "soft hiss"] of static."))
 			return FALSE
 
 		// First, we want to generate a new radio signal
@@ -515,7 +515,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 			return TRUE //Huzzah, sent via subspace
 
 		else if(adhoc_fallback) //Less huzzah, we have to fallback
-			to_chat(loc, SPAN_WARNING("\The [src] pings as it falls back to local radio transmission."))
+			to_chat(loc, span_warning("\The [src] pings as it falls back to local radio transmission."))
 			subspace_transmission = FALSE
 
 		else //Oh well
@@ -543,7 +543,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 		if(signal.data["done"] && (pos_z in signal.data["level"]))
 			if(adhoc_fallback)
-				to_chat(loc, SPAN_NOTICE("\The [src] pings as it reestablishes subspace communications."))
+				to_chat(loc, span_notice("\The [src] pings as it reestablishes subspace communications."))
 				subspace_transmission = TRUE
 			// we're done here.
 			return TRUE
@@ -620,9 +620,9 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	. = ..()
 	if ((in_range(src, user) || loc == user))
 		if (b_stat)
-			. += SPAN_NOTICE("\The [src] can be attached and modified!")
+			. += span_notice("\The [src] can be attached and modified!")
 		else
-			. += SPAN_NOTICE("\The [src] can not be modified or attached!")
+			. += span_notice("\The [src] can not be modified or attached!")
 	return
 
 /obj/item/radio/attackby(obj/item/W as obj, mob/user as mob)
@@ -633,9 +633,9 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	b_stat = !( b_stat )
 	if(!istype(src, /obj/item/radio/beacon))
 		if (b_stat)
-			user.show_message(SPAN_NOTICE("\The [src] can now be attached and modified!"))
+			user.show_message(span_notice("\The [src] can now be attached and modified!"))
 		else
-			user.show_message(SPAN_NOTICE("\The [src] can no longer be modified or attached!"))
+			user.show_message(span_notice("\The [src] can no longer be modified or attached!"))
 		updateDialog()
 		return
 

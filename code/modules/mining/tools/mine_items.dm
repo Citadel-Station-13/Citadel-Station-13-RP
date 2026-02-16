@@ -236,7 +236,7 @@
 			reagents.remove_reagent("fuel", 1)
 	if(jam_chance && active)
 		if(prob(jam_chance))
-			user.action_feedback(SPAN_WARNING("\The [src] jolts as it stalls out!"))
+			user.action_feedback(span_warning("\The [src] jolts as it stalls out!"))
 			turnOff()
 		else
 			return
@@ -257,7 +257,7 @@
 		reagents.remove_reagent("fuel", 1)
 		playsound(src, 'sound/weapons/chainsaw_turnoff.ogg',15,1)
 	if(get_fuel() <= 0)
-		visible_message(SPAN_WARNING("\The [src] sputters to a stop!"))
+		visible_message(span_warning("\The [src] sputters to a stop!"))
 		turnOff()
 
 /obj/item/pickaxe/tyrmalin/proc/get_fuel()

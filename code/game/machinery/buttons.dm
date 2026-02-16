@@ -67,10 +67,10 @@
 			)
 			if (new_id && user.get_active_held_item() != object && in_range(src, user))
 				id = new_id
-				to_chat(user, SPAN_NOTICE("The new ID of \the [src] is [id]"))
+				to_chat(user, span_notice("The new ID of \the [src] is [id]"))
 		if (id)
 			// It already has an ID (or they just set one), buffer it for copying to windows.
-			to_chat(user, SPAN_NOTICE("You store \the [src] in \the [MT]'s buffer!"))
+			to_chat(user, span_notice("You store \the [src] in \the [MT]'s buffer!"))
 			MT.connectable = src
 			MT.update_appearance()
 		return TRUE

@@ -39,7 +39,7 @@
 	. = ..()
 	if(locked)
 		var/turf/T = get_turf(locked)
-		to_chat(user, SPAN_NOTICE("The console is locked on to \[[T.loc.name]\]."))
+		to_chat(user, span_notice("The console is locked on to \[[T.loc.name]\]."))
 
 /obj/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data))
@@ -76,7 +76,7 @@
 				//
 			else
 				for(var/mob/O in hearers(src, null))
-					O.show_message(SPAN_NOTICE("Locked In"), 2)
+					O.show_message(span_notice("Locked In"), 2)
 				locked = L
 				one_time_use = TRUE
 
@@ -185,12 +185,12 @@
 		return
 
 	if(!destination)
-		audible_message(SPAN_BOLDWARNING("[src] buzzes, \"Destination Invalid.\""), hearing_distance = 5)
+		audible_message(span_boldwarning("[src] buzzes, \"Destination Invalid.\""), hearing_distance = 5)
 		playsound(get_turf(src), 'sound/machines/buzz-sigh.ogg', 50, 0)
 		return
 
 	locked = destination
-	audible_message(SPAN_BOLDNOTICE("[src] chimes, \"Destination Locked.\""), hearing_distance = 5)
+	audible_message(span_boldnotice("[src] chimes, \"Destination Locked.\""), hearing_distance = 5)
 	playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 0)
 
 /obj/machinery/computer/teleporter/verb/set_id(t as text)

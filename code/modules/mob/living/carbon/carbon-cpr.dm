@@ -2,7 +2,7 @@
 //* Copyright (c) 2023 Citadel Station Developers           *//
 
 /mob/living/carbon/proc/attempt_cpr(atom/actor, delay_mod = 1)
-	actor.visible_message(SPAN_NOTICE("[actor] is trying to perform CPR on [src]!"))
+	actor.visible_message(span_notice("[actor] is trying to perform CPR on [src]!"))
 
 	ADD_TRAIT(src, TRAIT_CPR_IN_PROGRESS, GENERIC_TRAIT)
 	if(!do_after(actor, CPR_ACTION_TIME, src))
@@ -11,8 +11,8 @@
 	REMOVE_TRAIT(src, TRAIT_CPR_IN_PROGRESS, GENERIC_TRAIT)
 
 	actor.visible_message(
-		SPAN_BOLDNOTICE("[actor] performs CPR on [src]!"),
-		SPAN_BOLDNOTICE("You perform CPR on [src]. Repeat at least every [CPR_NOMINAL_COOLDOWN * 0.1] seconds.")
+		span_boldnotice("[actor] performs CPR on [src]!"),
+		span_boldnotice("You perform CPR on [src]. Repeat at least every [CPR_NOMINAL_COOLDOWN * 0.1] seconds.")
 	)
 
 	cpr_act(actor)
@@ -50,10 +50,10 @@
 	cpr_invoke_forced_metabolism(clipping? CPR_FORCED_METABOLISM_STRENGTH_CLIPPED : CPR_FORCED_METABOLISM_STRENGTH_NOMINAL)
 
 	if(!IS_DEAD(src))
-		to_chat(src, SPAN_NOTICE("You feel a breath of fresh air enter your lungs. It feels good."))
+		to_chat(src, span_notice("You feel a breath of fresh air enter your lungs. It feels good."))
 
 	if(clipping)
-		to_chat(actor, SPAN_WARNING("Too fast! Wait [(CPR_NOMINAL_COOLDOWN - CPR_ACTION_TIME) * 0.1] seconds after finishing a set of compressions to start another!"))
+		to_chat(actor, span_warning("Too fast! Wait [(CPR_NOMINAL_COOLDOWN - CPR_ACTION_TIME) * 0.1] seconds after finishing a set of compressions to start another!"))
 
 	addtimer(CALLBACK(src, PROC_REF(cpr_invoke_ventilation_end)), CPR_VENTILATION_TIME, TIMER_OVERRIDE | TIMER_UNIQUE)
 	addtimer(CALLBACK(src, PROC_REF(cpr_invoke_off_cooldown)), CPR_NOMINAL_COOLDOWN, TIMER_OVERRIDE | TIMER_UNIQUE)

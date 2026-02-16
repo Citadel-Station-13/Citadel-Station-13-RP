@@ -361,7 +361,7 @@
 	var/atom/container = holder.my_atom
 	if(container)
 		if(reaction_message_instant)
-			container.visible_message(SPAN_NOTICE(reaction_message_instant))
+			container.visible_message(span_notice(reaction_message_instant))
 		if(reaction_sound_instant)
 			playsound(container, reaction_sound_instant, 75, TRUE)
 

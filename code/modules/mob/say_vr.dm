@@ -23,7 +23,7 @@
 
 	if(input)
 		log_subtle_vore(message,src)
-		message = "<B>[src]</B> " + SPAN_SINGING(input)
+		message = "<B>[src]</B> " + span_singing(input)
 	else
 		return
 

@@ -47,7 +47,7 @@
 		if(!clickchain.performer.attempt_insert_item_for_installation(using, src))
 			return TRUE
 		syringe = using
-		clickchain.chat_feedback(SPAN_NOTICE("You carefully insert [using] into [src]"), target = src)
+		clickchain.chat_feedback(span_notice("You carefully insert [using] into [src]"), target = src)
 		damage_mode |= DAMAGE_MODE_SHARP
 		update_icon()
 		return TRUE
@@ -60,7 +60,7 @@
 		return
 	if(!syringe)
 		return
-	clickchain.chat_feedback(SPAN_NOTICE("You remove [syringe] from [src]."))
+	clickchain.chat_feedback(span_notice("You remove [syringe] from [src]."))
 	clickchain.performer.grab_item_from_interacted_with(syringe, src)
 	syringe = null
 	playsound(src, 'sound/weapons/empty.ogg', 50, TRUE)

@@ -59,10 +59,10 @@
 	switch(action)
 		if("scan")
 			if(!network_key)
-				visible_message(SPAN_WARNING("[icon2html(src, world)] flashes a message, \"No network set.\""))
+				visible_message(span_warning("[icon2html(src, world)] flashes a message, \"No network set.\""))
 				return
 			if(on_cooldown())
-				visible_message(SPAN_WARNING("[icon2html(src, world)] flashes a message, \"Bioscan still on cooldown.\""))
+				visible_message(span_warning("[icon2html(src, world)] flashes a message, \"Bioscan still on cooldown.\""))
 				return
 			last_scan = world.time
 			atom_say("Commencing signature scan and updating buffers...")

@@ -53,7 +53,7 @@
 
 /obj/item/vehicle_module/examine(mob/user, dist)
 	. = ..()
-	. += SPAN_NOTICE("[src] will fill [equip_type?"a [equip_type]":"any"] slot.")
+	. += span_notice("[src] will fill [equip_type?"a [equip_type]":"any"] slot.")
 
 /obj/item/vehicle_module/proc/add_equip_overlay(obj/vehicle/sealed/mecha/M as obj)
 	return
@@ -102,7 +102,7 @@
 		if(chassis.selected == src)
 			chassis.selected = null
 		src.update_chassis_page()
-		chassis.occupant_message(SPAN_DANGER("The [src] is destroyed!"))
+		chassis.occupant_message(span_danger("The [src] is destroyed!"))
 		chassis.log_append_to_last("[src] is destroyed.",1)
 		if(istype(src, /obj/item/vehicle_module/weapon))//Gun
 			switch(chassis.mech_faction)

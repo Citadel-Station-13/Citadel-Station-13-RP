@@ -27,8 +27,8 @@
 	add_fingerprint(L)
 	if(!do_after(L, NEST_RESIST_TIME, src, DO_AFTER_IGNORE_ACTIVE_ITEM, MOBILITY_CAN_RESIST))
 		L.visible_message(
-			SPAN_WARNING("[L] fails to break out of [src]!"),
-			SPAN_WARNING("You fail to break out of [src].")
+			span_warning("[L] fails to break out of [src]!"),
+			span_warning("You fail to break out of [src].")
 		)
 		return FALSE
 
@@ -40,9 +40,9 @@
 			"<span class='notice'>You hear squelching...</span>")
 	else
 		user.visible_message(
-			SPAN_WARNING("[user] tears free of [src]."),
-			SPAN_WARNING("You tear free of [src]."),
-			SPAN_WARNING("You hear squelching...")
+			span_warning("[user] tears free of [src]."),
+			span_warning("You tear free of [src]."),
+			span_warning("You hear squelching...")
 		)
 
 /obj/structure/bed/nest/user_buckle_mob(mob/M, flags, mob/user, semantic)

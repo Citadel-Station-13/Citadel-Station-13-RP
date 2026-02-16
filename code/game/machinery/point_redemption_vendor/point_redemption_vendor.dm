@@ -51,7 +51,7 @@
 		update_icon()
 	if(!powered() && inserted_id)
 		visible_message(
-			SPAN_NOTICE("The ID slot indicator light on [src] flickers as it spits out [inserted_id]."),
+			span_notice("The ID slot indicator light on [src] flickers as it spits out [inserted_id]."),
 		)
 		inserted_id.forceMove(drop_location())
 
@@ -78,14 +78,14 @@
 		return FALSE
 	if(inserted_id)
 		actor.chat_feedback(
-			SPAN_WARNING("[src] already has an inserted ID."),
+			span_warning("[src] already has an inserted ID."),
 			target = src,
 		)
 		return TRUE
 	if(!actor.performer.attempt_insert_item_for_installation(maybe_id, src))
 		return TRUE
 	actor.chat_feedback(
-		SPAN_NOTICE("You insert [maybe_id] into [src]'s card slot."),
+		span_notice("You insert [maybe_id] into [src]'s card slot."),
 		target = src,
 	)
 	inserted_id = maybe_id
@@ -102,7 +102,7 @@
 				actor.visible_feedback(
 					target = src,
 					range = MESSAGE_RANGE_INVENTORY_SOFT,
-					visible = SPAN_NOTICE("[actor.performer] retrieves [inserted_id] from [src]."),
+					visible = span_notice("[actor.performer] retrieves [inserted_id] from [src]."),
 				)
 				actor.performer.put_in_hands_or_drop(inserted_id)
 				inserted_id = null

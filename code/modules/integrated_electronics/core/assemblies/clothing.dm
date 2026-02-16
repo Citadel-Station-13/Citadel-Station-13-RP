@@ -78,7 +78,7 @@
 			src.EA = null
 			EA.clothing = null
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
-			to_chat(usr, SPAN_NOTICE("You pull the circuitry out of \the [src]."))
+			to_chat(usr, span_notice("You pull the circuitry out of \the [src]."))
 			return clickchain_flags | CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		return ..()
@@ -153,7 +153,7 @@
 			EA.clothing = src
 			src.icon_state = "circuitry"
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
+			to_chat(user, span_notice("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return
 		return
@@ -180,7 +180,7 @@
 			EA.clothing = src
 			src.icon_state = "circuitry"
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
+			to_chat(user, span_notice("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return
 		return
@@ -211,7 +211,7 @@
 			EA.clothing = src
 			src.icon_state = "communicator"
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
+			to_chat(user, span_notice("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return
 		return
@@ -241,7 +241,7 @@
 			EA.clothing = src
 			src.icon_state = "circuitry"
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
+			to_chat(user, span_notice("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return
 		return
@@ -271,7 +271,7 @@
 			EA.clothing = src
 			src.icon_state = "circuitry"
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
+			to_chat(user, span_notice("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return
 		return
@@ -301,7 +301,7 @@
 			EA.clothing = src
 			src.icon_state = "circuitry"
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
+			to_chat(user, span_notice("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return
 		return
@@ -332,7 +332,7 @@
 			EA.clothing = src
 			src.icon_state = "circuitry"
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
+			to_chat(user, span_notice("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return
 		return
@@ -362,7 +362,7 @@
 			EA.clothing = src
 			src.icon_state = "circuitry"
 			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
+			to_chat(user, span_notice("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return
 		return

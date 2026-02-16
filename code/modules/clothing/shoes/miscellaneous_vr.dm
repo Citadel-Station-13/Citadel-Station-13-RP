@@ -29,12 +29,12 @@
 		return // User is already being thrown
 
 	if(recharging_time > world.time)
-		to_chat(user, SPAN_WARNING("The boot's internal propulsion needs to recharge still!"))
+		to_chat(user, span_warning("The boot's internal propulsion needs to recharge still!"))
 		return
 
 	var/atom/target = get_edge_target_turf(user, user.dir) //gets the user's direction
 
 	playsound(src, 'sound/effects/stealthoff.ogg', 50, 1, 1)
-	user.visible_message(SPAN_WARNING("[user] dashes forward into the air!"))
+	user.visible_message(span_warning("[user] dashes forward into the air!"))
 	user.throw_at_old(target, jumpdistance, jumpspeed)
 	recharging_time = world.time + recharging_rate

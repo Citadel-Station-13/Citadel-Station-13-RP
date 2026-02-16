@@ -61,13 +61,13 @@
 	if (usr.stat != 0)
 		return
 	if (!ishuman(usr) && !issmall(usr)) //Make sure they're a mob that has dna
-		to_chat(usr, SPAN_NOTICE("Try as you might, you can not climb up into the scanner."))
+		to_chat(usr, span_notice("Try as you might, you can not climb up into the scanner."))
 		return
 	if (src.occupant)
-		to_chat(usr, SPAN_WARNING("The scanner is already occupied!"))
+		to_chat(usr, span_warning("The scanner is already occupied!"))
 		return
 	if (usr.abiotic())
-		to_chat(usr, SPAN_WARNING("The subject cannot have abiotic items on."))
+		to_chat(usr, span_warning("The subject cannot have abiotic items on."))
 		return
 	usr.stop_pulling()
 	usr.forceMove(src)
@@ -80,7 +80,7 @@
 /obj/machinery/dna_scannernew/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/reagent_containers/glass))
 		if(beaker)
-			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
+			to_chat(user, span_warning("A beaker is already loaded into the machine."))
 			return
 		if(!user.attempt_insert_item_for_installation(item, src))
 			return
@@ -90,7 +90,7 @@
 
 	else if(istype(item, /obj/item/organ/internal/brain))
 		if (src.occupant)
-			to_chat(user, SPAN_WARNING("The scanner is already occupied!"))
+			to_chat(user, span_warning("The scanner is already occupied!"))
 			return
 		var/obj/item/organ/internal/brain/brain = item
 		if(brain.clone_source)
@@ -109,10 +109,10 @@
 	if (!ismob(G.affecting))
 		return
 	if (src.occupant)
-		to_chat(user, SPAN_WARNING("The scanner is already occupied!"))
+		to_chat(user, span_warning("The scanner is already occupied!"))
 		return
 	if (G.affecting.abiotic())
-		to_chat(user, SPAN_WARNING("The subject cannot have abiotic items on."))
+		to_chat(user, span_warning("The subject cannot have abiotic items on."))
 		return
 	put_in(G.affecting)
 	src.add_fingerprint(user)

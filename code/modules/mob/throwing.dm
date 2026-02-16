@@ -42,7 +42,7 @@
 
 /mob/proc/can_throw_item(obj/item/I, atom/target)
 	if(incapacitated())
-		to_chat(src, SPAN_WARNING("You can't throw things right now!"))
+		to_chat(src, span_warning("You can't throw things right now!"))
 		return FALSE
 	return TRUE
 

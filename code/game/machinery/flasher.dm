@@ -45,12 +45,12 @@
 		disable = !disable
 		if(disable)
 			user.visible_message( \
-				SPAN_WARNING("[user] has disconnected the [src]'s flashbulb!"), \
-				SPAN_WARNING("You disconnect the [src]'s flashbulb!"))
+				span_warning("[user] has disconnected the [src]'s flashbulb!"), \
+				span_warning("You disconnect the [src]'s flashbulb!"))
 		if(!disable)
 			user.visible_message( \
-				SPAN_WARNING("[user] has connected the [src]'s flashbulb!"), \
-				SPAN_WARNING("You connect the [src]'s flashbulb!"))
+				span_warning("[user] has connected the [src]'s flashbulb!"), \
+				span_warning("You connect the [src]'s flashbulb!"))
 	else
 		..()
 
@@ -119,11 +119,11 @@
 		anchored = !anchored
 
 		if(!anchored)
-			user.show_message(SPAN_WARNING("[src] can now be moved."))
+			user.show_message(span_warning("[src] can now be moved."))
 			cut_overlays()
 
 		else if(anchored)
-			user.show_message(SPAN_WARNING("[src] is now secured."))
+			user.show_message(span_warning("[src] is now secured."))
 			add_overlay("[base_state]-s")
 
 /obj/machinery/button/flasher

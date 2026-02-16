@@ -179,10 +179,10 @@
  */
 /datum/ability/proc/check_trigger(mob/user, toggling, feedback)
 	if(!isnull(last_used) && (isnull(toggling) || toggling || (!toggling && cooldown_for_deactivation)) && (cooldown + last_used > world.time))
-		to_chat(user, SPAN_WARNING("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
+		to_chat(user, span_warning("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
 		return FALSE
 	if(!available_check())
-		to_chat(user, SPAN_WARNING(unavailable_reason()))
+		to_chat(user, span_warning(unavailable_reason()))
 		return FALSE
 	return TRUE
 

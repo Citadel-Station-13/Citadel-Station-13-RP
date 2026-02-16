@@ -173,5 +173,5 @@
 		if(contents.len == 0)
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
-			to_chat(user, SPAN_WARNING("You install [W] in [src]."))
+			to_chat(user, span_warning("You install [W] in [src]."))
 	update_icon()

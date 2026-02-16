@@ -144,12 +144,12 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/fire_alarm/alarms_hidden, 21)
 			detecting = !(detecting)
 			if(detecting)
 				user.visible_message( \
-					SPAN_NOTICE("\The [user] has reconnected [src]'s detecting unit!"), \
-					SPAN_NOTICE("You have reconnected [src]'s detecting unit."))
+					span_notice("\The [user] has reconnected [src]'s detecting unit!"), \
+					span_notice("You have reconnected [src]'s detecting unit."))
 			else
 				user.visible_message( \
-					SPAN_NOTICE("\The [user] has disconnected [src]'s detecting unit!"), \
-					SPAN_NOTICE("You have disconnected [src]'s detecting unit."))
+					span_notice("\The [user] has disconnected [src]'s detecting unit!"), \
+					span_notice("You have disconnected [src]'s detecting unit."))
 		return
 
 	alarm(manual = TRUE)

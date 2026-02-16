@@ -55,14 +55,14 @@ var/global/list/drone_matrices = list()
 
 /datum/drone_matrix/proc/handle_death(mob/living/silicon/robot/drone/D)
 	if(isMatriarchDrone(D))
-		message_drones(SPAN_DANGER("A cold wave washes over your circuits. The matriarch is dead!"))
+		message_drones(span_danger("A cold wave washes over your circuits. The matriarch is dead!"))
 	else
-		message_drones(SPAN_DANGER("Your circuits spark. Drone [D.name] has died."))
+		message_drones(span_danger("Your circuits spark. Drone [D.name] has died."))
 
 /datum/drone_matrix/proc/buy_upgrade(var/upgrade_type)
 	LAZYADD(bought_upgrades, upgrade_type)
 	upgrades_remaining--
-	message_drones(SPAN_NOTICE("A new matrix upgrade is available, visit a recharging staion to install: [upgrade_type]"))
+	message_drones(span_notice("A new matrix upgrade is available, visit a recharging staion to install: [upgrade_type]"))
 
 /datum/drone_matrix/proc/apply_upgrades(mob/living/silicon/robot/drone/D)
 	var/list/applied_upgrades = list()
@@ -71,7 +71,7 @@ var/global/list/drone_matrices = list()
 			applied_upgrades += upgrade
 			set_upgrade(D, upgrade)
 	if(length(applied_upgrades))
-		to_chat(D, SPAN_NOTICE("Matrix upgrades applied to chassis: [english_list(applied_upgrades)]"))
+		to_chat(D, span_notice("Matrix upgrades applied to chassis: [english_list(applied_upgrades)]"))
 
 /datum/drone_matrix/proc/set_upgrade(mob/living/silicon/robot/drone/D, var/upgrade_type)
 	switch(upgrade_type)

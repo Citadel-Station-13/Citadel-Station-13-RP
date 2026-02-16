@@ -87,13 +87,13 @@
 	//* melee_hook_for_legacy_mob_behaviors() forces this to be here. *//
 	if(clickchain.target == clickchain.performer && clickchain.using_intent != INTENT_HARM)
 		clickchain.chat_feedback(
-			SPAN_WARNING("You refrain from hitting yourself with [src], as your intent is not set to harm."),
+			span_warning("You refrain from hitting yourself with [src], as your intent is not set to harm."),
 			src,
 		)
 		return NONE
 	if((item_flags & ITEM_CAREFUL_BLUDGEON) && clickchain.using_intent == INTENT_HELP)
 		clickchain.chat_feedback(
-			SPAN_WARNING("You refrain from hitting [clickchain.target] with [src], as your intent is set to help."),
+			span_warning("You refrain from hitting [clickchain.target] with [src], as your intent is set to help."),
 			src,
 		)
 		return NONE

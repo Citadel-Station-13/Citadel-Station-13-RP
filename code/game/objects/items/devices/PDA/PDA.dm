@@ -468,7 +468,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				)
 			else
 				icon = 'icons/obj/pda_old.dmi'
-				log_debug(SPAN_DEBUG("Invalid switch for PDA, defaulting to old PDA icons. [pdachoice] chosen."))
+				log_debug(span_debug("Invalid switch for PDA, defaulting to old PDA icons. [pdachoice] chosen."))
 
 
 /obj/item/pda/proc/can_use()
@@ -1359,35 +1359,35 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if(1)
 
 				for (var/mob/O in viewers(C, null))
-					O.show_message(SPAN_WARNING("\The [user] has analyzed [C]'s vitals!"), SAYCODE_TYPE_VISIBLE)
-				user.show_message(SPAN_NOTICE("Analyzing Results for [C]:"))
-				user.show_message(SPAN_NOTICE("[FOURSPACES]Overall Status: [C.stat > 1 ? "dead" : "[C.health - C.halloss]% healthy"]"), SAYCODE_TYPE_VISIBLE)
+					O.show_message(span_warning("\The [user] has analyzed [C]'s vitals!"), SAYCODE_TYPE_VISIBLE)
+				user.show_message(span_notice("Analyzing Results for [C]:"))
+				user.show_message(span_notice("[FOURSPACES]Overall Status: [C.stat > 1 ? "dead" : "[C.health - C.halloss]% healthy"]"), SAYCODE_TYPE_VISIBLE)
 				user.show_message(
 					"<span class='notice'>[FOURSPACES]Damage Specifics:</span> <span class='[(C.getOxyLoss() > 50) ? "warning" : ""]'>[C.getOxyLoss()]</span>-<span class='[(C.getToxLoss() > 50) ? "warning" : ""]'>[C.getToxLoss()]</span>-<span class='[(C.getFireLoss() > 50) ? "warning" : ""]'>[C.getFireLoss()]</span>-<span class='[(C.getBruteLoss() > 50) ? "warning" : ""]'>[C.getBruteLoss()]</span>",
 					SAYCODE_TYPE_VISIBLE
 				)
-				user.show_message(SPAN_NOTICE("[FOURSPACES]Key: Suffocation/Toxin/Burns/Brute"), 1)
-				user.show_message(SPAN_NOTICE("[FOURSPACES]Body Temperature: [C.bodytemperature-T0C]&deg;C ([C.bodytemperature*1.8-459.67]&deg;F)"), SAYCODE_TYPE_VISIBLE)
+				user.show_message(span_notice("[FOURSPACES]Key: Suffocation/Toxin/Burns/Brute"), 1)
+				user.show_message(span_notice("[FOURSPACES]Body Temperature: [C.bodytemperature-T0C]&deg;C ([C.bodytemperature*1.8-459.67]&deg;F)"), SAYCODE_TYPE_VISIBLE)
 				if(C.tod && (C.stat == DEAD || (C.status_flags & STATUS_FAKEDEATH)))
-					user.show_message(SPAN_NOTICE("[FOURSPACES]Time of Death: [C.tod]"))
+					user.show_message(span_notice("[FOURSPACES]Time of Death: [C.tod]"))
 				if(istype(C, /mob/living/carbon/human))
 					var/mob/living/carbon/human/H = C
 					var/list/damaged = H.get_damaged_organs(1,1)
-					user.show_message(SPAN_NOTICE("Localized Damage, Brute/Burn:"), SAYCODE_TYPE_VISIBLE)
+					user.show_message(span_notice("Localized Damage, Brute/Burn:"), SAYCODE_TYPE_VISIBLE)
 					if(length(damaged)>0)
 						for(var/obj/item/organ/external/org in damaged)
 							user.show_message(
-								SPAN_NOTICE("[FOURSPACES][capitalize(org.name)]: <span class='[(org.brute_dam > 0) ? "warning" : "notice"]'>[org.brute_dam]</span>-<span class='[(org.burn_dam > 0) ? "warning" : "notice"]'>[org.burn_dam]</span>"),
+								span_notice("[FOURSPACES][capitalize(org.name)]: <span class='[(org.brute_dam > 0) ? "warning" : "notice"]'>[org.brute_dam]</span>-<span class='[(org.burn_dam > 0) ? "warning" : "notice"]'>[org.burn_dam]</span>"),
 								SAYCODE_TYPE_VISIBLE
 							)
 					else
-						user.show_message(SPAN_NOTICE("[FOURSPACES]Limbs are OK."), SAYCODE_TYPE_VISIBLE)
+						user.show_message(span_notice("[FOURSPACES]Limbs are OK."), SAYCODE_TYPE_VISIBLE)
 
 			if(2)
 				if (!istype(C.dna, /datum/dna))
 					to_chat(user, "<span class='notice'>No fingerprints found on [C]</span>")
 				else
-					to_chat(user, SPAN_NOTICE("\The [C]'s Fingerprints: [md5(C.dna.uni_identity)]"))
+					to_chat(user, span_notice("\The [C]'s Fingerprints: [md5(C.dna.uni_identity)]"))
 				if ( !(C:blood_DNA) )
 					to_chat(user, "<span class='notice'>No blood found on [C]</span>")
 					if(C:blood_DNA)

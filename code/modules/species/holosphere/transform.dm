@@ -1,6 +1,6 @@
 /datum/species/shapeshifter/holosphere/proc/try_transform(var/mob/living/carbon/human/H, force = FALSE)
 	if(!force && H.incapacitated(INCAPACITATION_ALL))
-		to_chat(H, SPAN_WARNING("You can't do that right now!"))
+		to_chat(H, span_warning("You can't do that right now!"))
 		return
 	if(force || !IS_DEAD(holosphere_shell))
 		holosphere_shell.name = H.name

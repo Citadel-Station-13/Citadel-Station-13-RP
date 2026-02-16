@@ -48,25 +48,25 @@
 			var/mob/living/carbon/human/H = target
 			var/obj/item/organ/external/affecting = H.get_organ(check_zone(L.zone_sel.selecting))
 			if(!affecting)
-				to_chat(user, SPAN_WARNING("The limb is missing!"))
+				to_chat(user, span_warning("The limb is missing!"))
 				return
 			if(affecting.robotic >= ORGAN_ROBOT)
-				to_chat(user, SPAN_WARNING("\The [src] won't work on a robotic limb!"))
+				to_chat(user, span_warning("\The [src] won't work on a robotic limb!"))
 				return
 			if(affecting.behaviour_flags & BODYPART_NO_PATCH)
-				to_chat(user, SPAN_WARNING("\The [src] won't work on this limb!"))
+				to_chat(user, span_warning("\The [src] won't work on this limb!"))
 				return
 
 			if(!H.can_inject(user, FALSE, L.zone_sel.selecting, pierce_material))
-				to_chat(user, SPAN_NOTICE("\The [src] can't be applied through such a thick material!"))
+				to_chat(user, span_notice("\The [src] can't be applied through such a thick material!"))
 				return
 
 			if(affecting.open)// you cant place Bandaids on open surgeries, why chemical patches.
-				to_chat(user, SPAN_NOTICE("The [affecting.name] is cut open, you'll need more than a bandage!"))
+				to_chat(user, span_notice("The [affecting.name] is cut open, you'll need more than a bandage!"))
 				return
 
 
-			to_chat(H, SPAN_NOTICE("\The [src] is placed on your [affecting]."))
+			to_chat(H, span_notice("\The [src] is placed on your [affecting]."))
 			target.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 			if(reagents.total_volume)
 				reagents.trans_to_mob(target, reagents.total_volume, CHEM_TOUCH)
@@ -86,37 +86,37 @@
 		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/affecting = H.get_organ(check_zone(L.zone_sel.selecting))
 		if(!affecting)
-			to_chat(user, SPAN_WARNING("The limb is missing!"))
+			to_chat(user, span_warning("The limb is missing!"))
 			return
 
 		if(affecting.robotic >= ORGAN_ROBOT)
-			to_chat(user, SPAN_NOTICE("\The [src] won't work on a robotic limb!"))
+			to_chat(user, span_notice("\The [src] won't work on a robotic limb!"))
 			return
 
 		if(!H.can_inject(user, FALSE, L.zone_sel.selecting, pierce_material))
-			to_chat(user, SPAN_NOTICE("\The [src] can't be applied through such a thick material!"))
+			to_chat(user, span_notice("\The [src] can't be applied through such a thick material!"))
 			return
 		if(affecting.open)// you cant place Bandaids on open surgeries, why chemical patches.
-			to_chat(user, SPAN_NOTICE("The [affecting.name] is cut open, you'll need more than a bandage!"))
+			to_chat(user, span_notice("The [affecting.name] is cut open, you'll need more than a bandage!"))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] attempts to place \the [src] onto [H]`s [affecting]."))
+		user.visible_message(span_warning("[user] attempts to place \the [src] onto [H]`s [affecting]."))
 
 		user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 		if(!do_mob(user, target))
 			return
 
 		user.temporarily_remove_from_inventory(src, INV_OP_FORCE)
-		user.visible_message(SPAN_WARNING("[user] applies \the [src] to [H]."))
+		user.visible_message(span_warning("[user] applies \the [src] to [H]."))
 		user.visible_message(
-			SPAN_NOTICE("[user] applies \the [src] to [H]."),
-			SPAN_NOTICE("You apply \the [src] to [H]."),
+			span_notice("[user] applies \the [src] to [H]."),
+			span_notice("You apply \the [src] to [H]."),
 		)
 
 		var/contained = reagentlist()
 		add_attack_logs(user, target, "Applied a patch containing [contained]")
 
-		to_chat(H, SPAN_NOTICE("\The [src] is placed on your [affecting]."))
+		to_chat(H, span_notice("\The [src] is placed on your [affecting]."))
 		target.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 
 		if(reagents.total_volume)

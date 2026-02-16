@@ -58,19 +58,19 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 		var/obj/item/stack/nanopaste/S = I
 		if(b_stat)
 			if(S.use(1))
-				to_chat(user, SPAN_NOTICE("You pour some of \the [S] over \the [src]'s circuitry."))
+				to_chat(user, span_notice("You pour some of \the [S] over \the [src]'s circuitry."))
 				if(prob(repair_fail_chance))
 					flick("[initial(icon_state)]_flickon", src)
-					visible_message(SPAN_WARNING("The [src]'s lights come back on briefly, then die out again."))
+					visible_message(span_warning("The [src]'s lights come back on briefly, then die out again."))
 				else
-					visible_message(SPAN_NOTICE("\The [src]'s lights come back on."))
+					visible_message(span_notice("\The [src]'s lights come back on."))
 					functioning = TRUE
 					repair_fail_chance += pick(5, 10, 10, 15)
 					update_icon()
 			else
-				to_chat(user, SPAN_WARNING("There's not enough of \the [S] left to fix \the [src]."))
+				to_chat(user, span_warning("There's not enough of \the [S] left to fix \the [src]."))
 		else
-			to_chat(user, SPAN_WARNING("You can't work on \the [src] until its been opened up."))
+			to_chat(user, span_warning("You can't work on \the [src] until its been opened up."))
 
 // Probably a better way of doing this, I'm lazy.
 /obj/item/radio/beacon/bacon/proc/digest_delay()
@@ -89,7 +89,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	if(.)
 		return
 	if(user)
-		to_chat(user, SPAN_NOTICE("Locked In"))
+		to_chat(user, span_notice("Locked In"))
 		new /obj/machinery/power/singularity_beacon/syndicate(user.loc)
 		playsound(src, 'sound/effects/pop.ogg', 100, 1, 1)
 		qdel(src)

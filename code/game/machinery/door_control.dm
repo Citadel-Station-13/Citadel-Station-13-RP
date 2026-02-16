@@ -42,7 +42,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1))
-		to_chat(user, SPAN_WARNING("Access Denied"))
+		to_chat(user, span_warning("Access Denied"))
 		flick("doorctrl-denied",src)
 		return
 

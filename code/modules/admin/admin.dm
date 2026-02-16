@@ -5,7 +5,7 @@ var/global/floorIsLava = 0
 
 ////////////////////////////////
 /proc/message_admins(msg)
-	msg = SPAN_ADMIN("<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span>")
+	msg = span_admin("<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span>")
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINLOG,
 		html = msg,
@@ -850,11 +850,11 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 		var/msg = ""
 		if(SSticker.current_state == GAME_STATE_INIT)
 			msg = " (The server is still setting up, but the round will be started as soon as possible.)"
-		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the game.[msg]"))
+		message_admins(span_adminnotice("[usr.key] has started the game.[msg]"))
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return 1
 	else
-		to_chat(usr, SPAN_WARNING("Error: Start Now: Game has already started."))
+		to_chat(usr, span_warning("Error: Start Now: Game has already started."))
 		return 0
 
 /datum/admins/proc/toggleenter()

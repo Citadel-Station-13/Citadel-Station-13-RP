@@ -223,7 +223,7 @@
 			charging = !charging
 			return TRUE
 		if("guide")
-			usr.action_feedback(SPAN_WARNING("The Reagent Guidebook is currently under construction. Please check back later."), src)
+			usr.action_feedback(span_warning("The Reagent Guidebook is currently under construction. Please check back later."), src)
 			// GLOB.guidebook.open(usr, list(/datum/prototype/guidebook_section/reagents))
 			return TRUE
 		if("reagent")
@@ -287,7 +287,7 @@
 			usr.grab_item_from_interacted_with(inserted, src)
 			usr.visible_action_feedback(
 				target = src,
-				visible_soft = SPAN_NOTICE("[usr] ejects [inserted] from [src]."),
+				visible_soft = span_notice("[usr] ejects [inserted] from [src]."),
 				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
 			)
 			investigate_log("[key_name(usr)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
@@ -309,7 +309,7 @@
 			usr.grab_item_from_interacted_with(cart, src)
 			usr.visible_action_feedback(
 				target = src,
-				visible_soft = SPAN_NOTICE("[usr] removes [cart] from [src]."),
+				visible_soft = span_notice("[usr] removes [cart] from [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
 			)
 			update_static_data()
@@ -322,7 +322,7 @@
 			usr.grab_item_from_interacted_with(cell, src)
 			usr.visible_action_feedback(
 				target = src,
-				visible_soft = SPAN_NOTICE("[usr] removes [cell] from [src]."),
+				visible_soft = span_notice("[usr] removes [cell] from [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
 			)
 			component_parts -= cell
@@ -365,7 +365,7 @@
 		if("add_macro")
 			var/list/raw = params["data"]
 			if(length(raw) > MAX_MACRO_STEPS)
-				to_chat(usr, SPAN_WARNING("This macro is too long. Discarding. Max: [MAX_MACRO_STEPS] steps."))
+				to_chat(usr, span_warning("This macro is too long. Discarding. Max: [MAX_MACRO_STEPS] steps."))
 				return TRUE
 			var/name = params["name"]
 			if(isnull(name))
@@ -400,20 +400,20 @@
 		if(istype(I, /obj/item/reagent_containers/cartridge/dispenser))
 			var/obj/item/reagent_containers/cartridge/dispenser/cart = I
 			if(!cart.label)
-				user.action_feedback(SPAN_WARNING("[I] has no label!"), src)
+				user.action_feedback(span_warning("[I] has no label!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(length(cartridges) >= cartridges_max)
-				user.action_feedback(SPAN_WARNING("[src] has no more room for cartridges."), src)
+				user.action_feedback(span_warning("[src] has no more room for cartridges."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!user.attempt_insert_item_for_installation(I, src))
-				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
+				user.action_feedback(span_warning("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!insert_cartridge(I))
 				I.forceMove(drop_location())
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			user.visible_action_feedback(
 				target = src,
-				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				visible_soft = span_notice("[user] inserts [I] into [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -422,31 +422,31 @@
 			if(synth.reagents_group)
 				for(var/obj/item/reagent_synth/other as anything in synthesizers)
 					if(other.reagents_group == synth.reagents_group)
-						user.action_feedback(SPAN_WARNING("[src] already has a synthesis module of this type."), src)
+						user.action_feedback(span_warning("[src] already has a synthesis module of this type."), src)
 						return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!user.attempt_insert_item_for_installation(I, src))
-				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
+				user.action_feedback(span_warning("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			LAZYADD(synthesizers, synth)
 			user.visible_action_feedback(
 				target = src,
-				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				visible_soft = span_notice("[user] inserts [I] into [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
 			)
 			update_static_data()
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(istype(I, /obj/item/cell))
 			if(cell)
-				user.action_feedback(SPAN_WARNING("[src] already has a cell."), src)
+				user.action_feedback(span_warning("[src] already has a cell."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!user.attempt_insert_item_for_installation(I, src))
-				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
+				user.action_feedback(span_warning("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			cell = I
 			component_parts |= cell
 			user.visible_action_feedback(
 				target = src,
-				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				visible_soft = span_notice("[user] inserts [I] into [src]."),
 				soft_range = MESSAGE_RANGE_CONSTRUCTION,
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -455,31 +455,31 @@
 		var/obj/item/reagent_containers/container = I
 		// trying to insert
 		if(!container.is_open_container())
-			user.action_feedback(SPAN_WARNING("[I] can't be directly filled."), src)
+			user.action_feedback(span_warning("[I] can't be directly filled."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// check
 		if(istype(container, /obj/item/reagent_containers/cartridge))
 			// always fine
 		else if(istype(container, /obj/item/reagent_containers/food) && !allow_drinking)
-			user.action_feedback(SPAN_WARNING("[src] doesn't accept non-beakers."), src)
+			user.action_feedback(span_warning("[src] doesn't accept non-beakers."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// insert
 		if(!user.transfer_item_to_loc(I, src))
-			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
+			user.action_feedback(span_warning("[I] is stuck to your hand."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// process swap?
 		if(inserted)
 			investigate_log("[key_name(user)] ejected [ref_name_path(inserted)]", INVESTIGATE_REAGENTS)
 			user.visible_action_feedback(
 				target = src,
-				visible_soft = SPAN_NOTICE("[user] quickly swaps [src]'s [inserted] for [I]."),
+				visible_soft = span_notice("[user] quickly swaps [src]'s [inserted] for [I]."),
 				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
 			)
 			user.put_in_hands_or_drop(inserted)
 		else
 			user.visible_action_feedback(
 				target = src,
-				visible_soft = SPAN_NOTICE("[user] inserts [I] into [src]."),
+				visible_soft = span_notice("[user] inserts [I] into [src]."),
 				soft_range = MESSAGE_RANGE_INVENTORY_SOFT,
 			)
 		investigate_log("[key_name(user)] inserted [ref_name_path(I)]", INVESTIGATE_REAGENTS)

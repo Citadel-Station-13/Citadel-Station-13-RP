@@ -310,10 +310,10 @@
 	if(istype(I,/obj/item/reagent_containers))
 		analyzing = TRUE
 		update_icon()
-		to_chat(user, SPAN_NOTICE("Analyzing \the [I], please stand by..."))
+		to_chat(user, span_notice("Analyzing \the [I], please stand by..."))
 
 		if(!do_after(user, 2 SECONDS, src))
-			to_chat(user, SPAN_WARNING( "Sample moved outside of scan range, please try again and remain still."))
+			to_chat(user, span_warning( "Sample moved outside of scan range, please try again and remain still."))
 			analyzing = FALSE
 			update_icon()
 			return
@@ -330,14 +330,14 @@
 			for(var/datum/reagent/R in I.reagents.get_reagent_datums())
 				if(!R.name)
 					continue
-				to_chat(user, SPAN_NOTICE("Contains [I.reagents.get_reagent_amount(R)]u of <b>[R.name]</b>.<br>[R.description]<br>"))
+				to_chat(user, span_notice("Contains [I.reagents.get_reagent_amount(R)]u of <b>[R.name]</b>.<br>[R.description]<br>"))
 
 		// Last, unseal it if it's an autoinjector.
 		if(istype(I,/obj/item/reagent_containers/hypospray/autoinjector/biginjector) && !(I.atom_flags & OPENCONTAINER))
 			I.atom_flags |= OPENCONTAINER
-			to_chat(user, SPAN_NOTICE("Sample container unsealed.<br>"))
+			to_chat(user, span_notice("Sample container unsealed.<br>"))
 
-		to_chat(user, SPAN_NOTICE("Scanning of \the [I] complete."))
+		to_chat(user, span_notice("Scanning of \the [I] complete."))
 		analyzing = FALSE
 		update_icon()
 		return

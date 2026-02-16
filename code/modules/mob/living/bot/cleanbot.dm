@@ -120,7 +120,7 @@
 
 /mob/living/bot/cleanbot/explode()
 	on = FALSE
-	visible_message(SPAN_DANGER("[src] blows apart!"))
+	visible_message(span_danger("[src] blows apart!"))
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/reagent_containers/glass/bucket(Tsec)
@@ -189,19 +189,19 @@
 
 		if("wet_floors")
 			wet_floors = !wet_floors
-			to_chat(usr, SPAN_NOTICE("You twiddle the screw."))
+			to_chat(usr, span_notice("You twiddle the screw."))
 			. = TRUE
 
 		if("spray_blood")
 			spray_blood = !spray_blood
-			to_chat(usr, SPAN_NOTICE("You press the weird button."))
+			to_chat(usr, span_notice("You press the weird button."))
 			. = TRUE
 
 /mob/living/bot/cleanbot/emag_act(var/remaining_uses, var/mob/user)
 	. = ..()
 	if(!wet_floors || !spray_blood)
 		if(user)
-			to_chat(user, SPAN_NOTICE("The [src] buzzes and beeps."))
+			to_chat(user, span_notice("The [src] buzzes and beeps."))
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, FALSE)
 		spray_blood = TRUE
 		wet_floors = TRUE

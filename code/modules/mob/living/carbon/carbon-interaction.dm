@@ -8,13 +8,13 @@
 			if(!hand_organ)
 				if(!silent)
 					clickchain.chat_feedback(
-						SPAN_WARNING("You are missing that hand!"),
+						span_warning("You are missing that hand!"),
 					)
 				return FALSE
 			if(!hand_organ.is_usable())
 				if(!silent)
 					clickchain.chat_feedback(
-						SPAN_WARNING("You can't use your [hand_organ.name] right now!"),
+						span_warning("You can't use your [hand_organ.name] right now!"),
 					)
 				return FALSE
 	return ..()
@@ -42,11 +42,11 @@
 	if(!is_in_critical() && !IS_DEAD(src))
 		return FALSE
 	if(!check_has_mouth())
-		to_chat(user, SPAN_WARNING("[src] has no mouth."))
+		to_chat(user, span_warning("[src] has no mouth."))
 		return
 	var/mob/living/carbon/human/H = user
 	if(!istype(H) || !H.check_has_mouth())
-		to_chat(user, SPAN_WARNING("You are either not human, or have no mouth."))
+		to_chat(user, span_warning("You are either not human, or have no mouth."))
 		return
 	var/obj/item/in_the_way
 	for(in_the_way as anything in get_equipped_items_in_slots(
@@ -55,7 +55,7 @@
 	))
 		if(!(in_the_way.body_cover_flags & FACE))
 			continue
-		to_chat(user, SPAN_WARNING("[src]'s [in_the_way] is in the way!"))
+		to_chat(user, span_warning("[src]'s [in_the_way] is in the way!"))
 		return
 	for(in_the_way as anything in user.get_equipped_items_in_slots(
 		SLOT_ID_HEAD,
@@ -63,9 +63,9 @@
 	))
 		if(!(in_the_way.body_cover_flags & FACE))
 			continue
-		to_chat(user, SPAN_WARNING("Your [in_the_way] is in the way!"))
+		to_chat(user, span_warning("Your [in_the_way] is in the way!"))
 		return
 	if(HAS_TRAIT(src, TRAIT_CPR_IN_PROGRESS))
-		to_chat(user, SPAN_WARNING("Someone is already doing CPR on [src]!"))
+		to_chat(user, span_warning("Someone is already doing CPR on [src]!"))
 		return
 	INVOKE_ASYNC(src, PROC_REF(attempt_cpr), user)

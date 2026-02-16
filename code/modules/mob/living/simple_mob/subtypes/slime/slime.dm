@@ -187,7 +187,7 @@
 
 	// Otherwise they're probably fighting the slime.
 	if(prob(25) && can_miss)
-		visible_message(SPAN_WARNING( "\The [user]'s [I] passes right through \the [src]!"))
+		visible_message(span_warning( "\The [user]'s [I] passes right through \the [src]!"))
 		user.setClickCooldownLegacy(user.get_attack_speed_legacy(I))
 		return
 	..()
@@ -200,16 +200,16 @@
 // Hat simulator
 /mob/living/simple_mob/slime/proc/give_hat(var/obj/item/clothing/head/new_hat, var/mob/living/user)
 	if(!istype(new_hat))
-		to_chat(user, SPAN_WARNING( "\The [new_hat] isn't a hat."))
+		to_chat(user, span_warning( "\The [new_hat] isn't a hat."))
 		return
 	if(hat)
-		to_chat(user, SPAN_WARNING( "\The [src] is already wearing \a [hat]."))
+		to_chat(user, span_warning( "\The [src] is already wearing \a [hat]."))
 		return
 	else
 		if(!user.attempt_insert_item_for_installation(new_hat, src))
 			return
 		hat = new_hat
-		to_chat(user, SPAN_NOTICE("You place \a [new_hat] on \the [src].  How adorable!"))
+		to_chat(user, span_notice("You place \a [new_hat] on \the [src].  How adorable!"))
 		update_icon()
 		return
 

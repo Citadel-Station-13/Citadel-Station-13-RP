@@ -408,12 +408,12 @@
 /obj/structure/closet/crate/bin/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() && !opened)
 		if(anchored)
-			user.show_message(SPAN_NOTICE("[src] can now be moved."))
+			user.show_message(span_notice("[src] can now be moved."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 
 		else if(!anchored)
-			user.show_message(SPAN_NOTICE("[src] is now secured."))
+			user.show_message(span_notice("[src] is now secured."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	else

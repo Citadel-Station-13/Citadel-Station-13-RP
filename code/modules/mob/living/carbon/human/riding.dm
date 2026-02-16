@@ -12,13 +12,13 @@
 	if(buckling == user)
 		// prechecks
 		if((buckling.get_effective_size() - get_effective_size()) >= 0.5)
-			to_chat(buckling, SPAN_WARNING("How do you intend on mounting [src] when you are that big?"))
+			to_chat(buckling, span_warning("How do you intend on mounting [src] when you are that big?"))
 			return FALSE
 		if(!isTaurTail(tail_style))
 			if(a_intent != INTENT_HELP || buckling.a_intent != INTENT_HELP)
 				return FALSE
 			if(check_grab(buckling) != GRAB_PASSIVE)
-				to_chat(user, SPAN_WARNING("[src] must be grabbing you passively for you to climb on."))
+				to_chat(user, span_warning("[src] must be grabbing you passively for you to climb on."))
 				return TRUE
 		if(lying || buckling.lying)
 			return FALSE
@@ -26,15 +26,15 @@
 	else if(user == src)
 		// prechecks
 		if((buckling.get_effective_size() - get_effective_size()) >= 0.5)
-			to_chat(user, SPAN_WARNING("How do you intend on carrying [buckling] when you are that small?"))
+			to_chat(user, span_warning("How do you intend on carrying [buckling] when you are that small?"))
 			return FALSE
 		if(a_intent != INTENT_GRAB)
 			return FALSE
 		if(!buckling.lying)
-			to_chat(user, SPAN_WARNING("[buckling] must be laying down if you want to carry them!"))
+			to_chat(user, span_warning("[buckling] must be laying down if you want to carry them!"))
 			return TRUE
 		if(check_grab(buckling) != GRAB_PASSIVE)
-			to_chat(user, SPAN_WARNING("You must be grabbing [buckling] passively to carry them."))
+			to_chat(user, span_warning("You must be grabbing [buckling] passively to carry them."))
 			return TRUE
 		carry_fireman(buckling)
 	return FALSE
@@ -78,8 +78,8 @@
 	for(var/mob/M in buckled_mobs)
 		if(buckled_mobs[M] == BUCKLE_SEMANTIC_HUMAN_PIGGYBACK)
 			M.visible_message(
-				SPAN_NOTICE("[src] bucks and throws [M] of their back."),
-				SPAN_WARNING("[src] bucks and throws you of their back!")
+				span_notice("[src] bucks and throws [M] of their back."),
+				span_warning("[src] bucks and throws you of their back!")
 				)
 			unbuckle_mob(M, BUCKLE_OP_FORCE, src, buckled_mobs[M])
 
@@ -87,32 +87,32 @@
 	if(loc_check && !Adjacent(other))
 		return FALSE
 	other.visible_message(
-		SPAN_NOTICE("[other] starts climbing onto [src]!"),
-		SPAN_NOTICE("You start climbing onto [src]!")
+		span_notice("[other] starts climbing onto [src]!"),
+		span_notice("You start climbing onto [src]!")
 	)
 	if(!instant && !do_after(other, HUMAN_PIGGYBACK_DELAY * delay_mod, src, FALSE))
 		return FALSE
 	drop_grab(other)
 	user_buckle_mob(other, BUCKLE_OP_DEFAULT_INTERACTION | BUCKLE_OP_SILENT, other, BUCKLE_SEMANTIC_HUMAN_PIGGYBACK)
 	other.visible_message(
-		SPAN_NOTICE("[other] climbs onto [src]!"),
-		SPAN_NOTICE("You climb onto [src]!")
+		span_notice("[other] climbs onto [src]!"),
+		span_notice("You climb onto [src]!")
 	)
 
 /mob/living/carbon/human/proc/carry_fireman(mob/living/carbon/other, instant = FALSE, delay_mod = 1, loc_check = TRUE)
 	if(loc_check && !Adjacent(other))
 		return FALSE
 	visible_message(
-		SPAN_NOTICE("[src] starts picking up [other] over [p_their()] shoulders!"),
-		SPAN_NOTICE("You start picking up [other] over your shoulders!")
+		span_notice("[src] starts picking up [other] over [p_their()] shoulders!"),
+		span_notice("You start picking up [other] over your shoulders!")
 	)
 	if(!instant && !do_after(src, HUMAN_FIREMAN_DELAY * delay_mod, other, FALSE))
 		return FALSE
 	drop_grab(other)
 	user_buckle_mob(other, BUCKLE_OP_DEFAULT_INTERACTION | BUCKLE_OP_SILENT, other, BUCKLE_SEMANTIC_HUMAN_FIREMAN)
 	visible_message(
-		SPAN_NOTICE("[src] picks [other] up over [p_their()] shoulders!"),
-		SPAN_NOTICE("You pick [other] up over your shoulders!")
+		span_notice("[src] picks [other] up over [p_their()] shoulders!"),
+		span_notice("You pick [other] up over your shoulders!")
 	)
 
 /mob/living/carbon/human/buckle_lying(mob/M)

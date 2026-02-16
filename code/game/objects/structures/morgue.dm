@@ -80,7 +80,7 @@
 
 /obj/structure/morgue/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	if (!anchored)
-		user.show_message(SPAN_WARNING("You can't open [src] while it's unanchored."))
+		user.show_message(span_warning("You can't open [src] while it's unanchored."))
 		return
 	if (src.connected)
 		close()
@@ -130,14 +130,14 @@
 			src.name = "Morgue"
 	if(istype(W, /obj/item/tool/wrench))
 		if(connected)
-			user.show_message(SPAN_WARNING("You can't move [src] while it's open."))
+			user.show_message(span_warning("You can't move [src] while it's open."))
 			return
 		if(anchored)
-			user.show_message(SPAN_NOTICE("[src] can now be moved."))
+			user.show_message(span_notice("[src] can now be moved."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 		else if(!anchored)
-			user.show_message(SPAN_NOTICE("[src] is now secured."))
+			user.show_message(span_notice("[src] is now secured."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	src.add_fingerprint(user)

@@ -110,7 +110,7 @@
 	return COMPONENT_THROW_HIT_TERMINATE
 
 /obj/item/reagent_containers/food/snacks/ice_cream/proc/smash()
-	visible_message(SPAN_WARNING("[src] falls, getting smushed in the process."))
+	visible_message(span_warning("[src] falls, getting smushed in the process."))
 	new /obj/effect/debris/cleanable/ice_cream(drop_location(), src)
 	qdel(src)
 

@@ -26,11 +26,11 @@
 
 /obj/machinery/dnaforensics/attackby(obj/item/W, mob/user)
 	if(bloodsamp)
-		to_chat(user, SPAN_WARNING("There is a sample in the machine."))
+		to_chat(user, span_warning("There is a sample in the machine."))
 		return
 
 	if(scanning)
-		to_chat(user, SPAN_WARNING("[src] is busy scanning right now."))
+		to_chat(user, span_warning("[src] is busy scanning right now."))
 		return
 
 	if(default_deconstruction_screwdriver(user, W))
@@ -44,10 +44,10 @@
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		bloodsamp = swab
-		to_chat(user, SPAN_NOTICE("You insert [W] into [src]."))
+		to_chat(user, span_notice("You insert [W] into [src]."))
 		update_icon()
 	else
-		to_chat(user, SPAN_WARNING("\The [src] only accepts used swabs."))
+		to_chat(user, span_warning("\The [src] only accepts used swabs."))
 		return
 
 /obj/machinery/dnaforensics/ui_interact(mob/user, datum/tgui/ui)
@@ -87,10 +87,10 @@
 				if(bloodsamp)
 					scanner_progress = 0
 					scanning = TRUE
-					to_chat(usr, SPAN_NOTICE("Scan initiated."))
+					to_chat(usr, span_notice("Scan initiated."))
 					update_icon()
 				else
-					to_chat(usr, SPAN_WARNING("Insert an item to scan."))
+					to_chat(usr, span_warning("Insert an item to scan."))
 			. = TRUE
 
 		if("ejectItem")
@@ -115,7 +115,7 @@
 	last_process_worldtime = world.time
 
 /obj/machinery/dnaforensics/proc/complete_scan()
-	visible_message(SPAN_NOTICE("[icon2html(thing = src, target = world)] makes an insistent chime."), 2)
+	visible_message(span_notice("[icon2html(thing = src, target = world)] makes an insistent chime."), 2)
 	update_icon()
 	if(bloodsamp)
 		var/obj/item/paper/P = new(src)

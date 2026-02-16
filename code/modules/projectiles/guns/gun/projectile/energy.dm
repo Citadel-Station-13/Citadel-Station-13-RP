@@ -328,12 +328,12 @@
 	lethal_safety = !lethal_safety
 	if(lethal_safety)
 		actor.chat_feedback(
-			SPAN_NOTICE("You enable [src]'s lethal-mode safety."),
+			span_notice("You enable [src]'s lethal-mode safety."),
 			target = src,
 		)
 	else
 		actor.chat_feedback(
-			SPAN_WARNING("You disable [src]'s lethal-mode safety."),
+			span_warning("You disable [src]'s lethal-mode safety."),
 			target = src,
 		)
 

@@ -844,7 +844,7 @@
 		return
 
 	if(IsRemoteViewing())
-		to_chat(src, SPAN_NOTICE("You stop looking through another perspective."))
+		to_chat(src, span_notice("You stop looking through another perspective."))
 		remoteview_target = null
 		reset_perspective()
 		return
@@ -1563,7 +1563,7 @@
 		if(NEUTER, PLURAL)
 			return "[looksSynthetic() ? "Synthetic [species_name]" : species_name]"
 		else
-			return SPAN_WARNING("Unknown")
+			return span_warning("Unknown")
 
 /mob/living/carbon/human/get_nametag_name(mob/user)
 	return name //Could do fancy stuff here?

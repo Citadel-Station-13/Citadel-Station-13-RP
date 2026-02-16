@@ -180,7 +180,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	initiator_ckey = initiator.ckey
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket)	//This is a bug
-		log_debug(SPAN_DEBUG("Multiple ahelp current_tickets"))
+		log_debug(span_debug("Multiple ahelp current_tickets"))
 		initiator.current_ticket.AddInteraction("Ticket erroneously left open by code")
 		initiator.current_ticket.Close()
 	initiator.current_ticket = src
@@ -246,9 +246,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 //won't bug irc
 /datum/admin_help/proc/MessageNoRecipient(msg)
 	var/ref_src = "\ref[src]"
-	var/chat_msg = SPAN_ADMINNOTICE("<span class='adminhelp'>Ticket [TicketHref(SPAN_TOOLTIP("Open the ticket in a new window.","#[id]"), ref_src)]</span><b>: [SPAN_TOOLTIP("Open a prompt to reply to this ticket.","[LinkedReplyName(ref_src)]")] [FullMonty(ref_src)]:</b> [msg]")
+	var/chat_msg = span_adminnotice("<span class='adminhelp'>Ticket [TicketHref(span_tooltip("Open the ticket in a new window.","#[id]"), ref_src)]</span><b>: [span_tooltip("Open a prompt to reply to this ticket.","[LinkedReplyName(ref_src)]")] [FullMonty(ref_src)]:</b> [msg]")
 
-	AddInteraction(SPAN_DANGER("[SPAN_TOOLTIP("Open a prompt to reply to this ticket.","[LinkedReplyName(ref_src)]")]: [msg]"))
+	AddInteraction(span_danger("[span_tooltip("Open a prompt to reply to this ticket.","[LinkedReplyName(ref_src)]")]: [msg]"))
 	//send this msg to all admins
 
 	for(var/client/X in GLOB.admins)

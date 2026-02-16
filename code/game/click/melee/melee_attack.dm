@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(melee_attack_singletons)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(missed)
 		attacker.visible_message(
-			SPAN_WARNING("[attacker] swings for [target], but misses!"),
+			span_warning("[attacker] swings for [target], but misses!"),
 			range = MESSAGE_RANGE_COMBAT_LOUD,
 		)
 		return TRUE

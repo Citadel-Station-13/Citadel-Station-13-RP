@@ -68,9 +68,9 @@
 	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	if(concealed_blade)
 		user.visible_message(
-			SPAN_WARNING("[user] has unsheathed \a [concealed_blade] from [T.his] [src]!"),
-			SPAN_WARNING("You unsheathe \the [concealed_blade] from \the [src]."),
-			SPAN_HEAR("You hear a blade being drawn."),
+			span_warning("[user] has unsheathed \a [concealed_blade] from [T.his] [src]!"),
+			span_warning("You unsheathe \the [concealed_blade] from \the [src]."),
+			span_hear("You hear a blade being drawn."),
 		)
 		// Calling drop/put in hands to properly call item drop/pickup procs
 		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
@@ -86,9 +86,9 @@
 		concealed_blade = W
 		var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message(
-			SPAN_WARNING("[user] has sheathed \a [W] into [T.his] [src]!"),
-			SPAN_WARNING("You sheathe \the [W] into \the [src]."),
-			SPAN_HEAR("You hear a blade being sheathed."),
+			span_warning("[user] has sheathed \a [W] into [T.his] [src]!"),
+			span_warning("You sheathe \the [W] into \the [src]."),
+			span_hear("You hear a blade being sheathed."),
 		)
 		update_icon()
 	else
@@ -112,7 +112,7 @@
 
 /obj/item/cane/whitecane/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HELP)
-		user.visible_message(SPAN_NOTICE("\The [user] has lightly tapped [target] on the ankle with their white cane!"))
+		user.visible_message(span_notice("\The [user] has lightly tapped [target] on the ankle with their white cane!"))
 		return
 	return ..()
 
@@ -139,9 +139,9 @@
 	LAZYINITLIST(item_state_slots)
 	if(on)
 		user.visible_message(
-			SPAN_NOTICE("\The [user] extends the white cane."),
-			SPAN_WARNING("You extend the white cane."),
-			SPAN_HEAR("You hear an ominous click."),
+			span_notice("\The [user] extends the white cane."),
+			span_warning("You extend the white cane."),
+			span_hear("You hear an ominous click."),
 		)
 		icon_state = "whitecane1out"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = "whitecane", SLOT_ID_LEFT_HAND = "whitecane")
@@ -150,9 +150,9 @@
 		attack_verb = list("smacked", "struck", "cracked", "beaten")
 	else
 		user.visible_message(
-			SPAN_NOTICE("\The [user] collapses the white cane."),
-			SPAN_WARNING("You collapse the white cane."),
-			SPAN_HEAR("You hear a click."),
+			span_notice("\The [user] collapses the white cane."),
+			span_warning("You collapse the white cane."),
+			span_hear("You hear a click."),
 		)
 		icon_state = "whitecane1in"
 		item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
@@ -197,7 +197,7 @@
 
 /obj/item/caution/attackby(obj/item/D, mob/user)
 	if(D.is_wirecutter())
-		to_chat(user, SPAN_NOTICE("You snap the handle of \the [src] with \the [D].  It's too warped to stand on its own now."))
+		to_chat(user, span_notice("You snap the handle of \the [src] with \the [D].  It's too warped to stand on its own now."))
 		user.put_in_hands(new /obj/item/clothing/suit/armor/caution)
 		qdel(src)
 	else

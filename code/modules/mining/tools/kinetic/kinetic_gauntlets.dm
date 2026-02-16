@@ -228,8 +228,8 @@
 	clickchain.visible_feedback(
 		target = target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_WARNING("[clickchain.performer] slams [target] with a kinetic blow from their gauntlets."),
-		audible = SPAN_WARNING("You hear a detonation from a proto-kinetic impact."),
+		visible = span_warning("[clickchain.performer] slams [target] with a kinetic blow from their gauntlets."),
+		audible = span_warning("You hear a detonation from a proto-kinetic impact."),
 	)
 	target.animate_hit_by_attack(ATTACK_ANIMATION_SMASH)
 	if(istype(target, /turf/simulated/mineral))
@@ -281,8 +281,8 @@
 	clickchain.visible_feedback(
 		target = clickchain.target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_WARNING("[clickchain.performer] strikes [clickchain.target] with a resonating blast!"),
-		audible = SPAN_WARNING("You hear a resonating crack of metal against some kind of energy field."),
+		visible = span_warning("[clickchain.performer] strikes [clickchain.target] with a resonating blast!"),
+		audible = span_warning("You hear a resonating crack of metal against some kind of energy field."),
 	)
 	clickchain.performer.animate_swing_at_target(clickchain.target)
 	clickchain.target?.animate_hit_by_attack(ATTACK_ANIMATION_DISARM)
@@ -304,6 +304,6 @@
 	clickchain.visible_feedback(
 		target = clickchain.target,
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_WARNING("[clickchain.performer] clumsily slaps [clickchain.target], collapsing their kinetic resonance field!"),
-		audible = SPAN_WARNING("You hear an energy field fizzling out."),
+		visible = span_warning("[clickchain.performer] clumsily slaps [clickchain.target], collapsing their kinetic resonance field!"),
+		audible = span_warning("You hear an energy field fizzling out."),
 	)

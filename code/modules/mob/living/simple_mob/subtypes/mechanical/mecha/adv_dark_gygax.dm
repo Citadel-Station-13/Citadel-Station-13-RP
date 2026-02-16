@@ -147,7 +147,7 @@
 	energy_ball.adjust_scale(0.5)
 	energy_ball.orbit(src, 32, TRUE, 1 SECOND)
 
-	visible_message(SPAN_WARNING( "\The [src] creates \an [energy_ball] around itself!"))
+	visible_message(span_warning( "\The [src] creates \an [energy_ball] around itself!"))
 
 	playsound(src.loc, 'sound/effects/lightning_chargeup.ogg', 100, 1, extrarange = 30)
 
@@ -175,7 +175,7 @@
 		sleep(1 SECOND)
 
 	// Shoot a tesla bolt, and flashes people who are looking at the mecha without sufficent eye protection.
-	visible_message(SPAN_WARNING( "\The [energy_ball] explodes in a flash of light, sending a shock everywhere!"))
+	visible_message(span_warning( "\The [energy_ball] explodes in a flash of light, sending a shock everywhere!"))
 	playsound(src.loc, 'sound/effects/lightningbolt.ogg', 100, 1, extrarange = 30)
 	tesla_zap(src.loc, 5, ELECTRIC_ZAP_POWER, FALSE)
 	for(var/mob/living/L in viewers(src))
@@ -183,7 +183,7 @@
 			continue
 		var/dir_towards_us = get_dir(L, src)
 		if(L.dir && L.dir & dir_towards_us)
-			to_chat(L, SPAN_DANGER("The flash of light blinds you briefly."))
+			to_chat(L, span_danger("The flash of light blinds you briefly."))
 			L.flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = TRUE)
 
 	// Get rid of our energy ball.
@@ -201,7 +201,7 @@
 
 	// Telegraph our next move.
 	Beam(target, icon_state = "sat_beam", time = 3.5 SECONDS, maxdistance = INFINITY)
-	visible_message(SPAN_WARNING( "\The [src] deploys a missile rack!"))
+	visible_message(span_warning( "\The [src] deploys a missile rack!"))
 	playsound(src, 'sound/effects/turret/move1.wav', 50, 1)
 	sleep(0.5 SECONDS)
 
@@ -209,7 +209,7 @@
 		if(target) // Might get deleted in the meantime.
 			var/turf/T = get_turf(target)
 			if(T)
-				visible_message(SPAN_WARNING( "\The [src] fires a rocket into the air!"))
+				visible_message(span_warning( "\The [src] fires a rocket into the air!"))
 				playsound(src, 'sound/weapons/rpg.ogg', 70, 1)
 				face_atom(T)
 				var/obj/projectile/arc/explosive_rocket/rocket = new(loc)
@@ -217,12 +217,12 @@
 				rocket.fire()
 				sleep(1 SECOND)
 
-	visible_message(SPAN_WARNING( "\The [src] retracts the missile rack."))
+	visible_message(span_warning( "\The [src] retracts the missile rack."))
 	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/dark/advanced/proc/launch_microsingularity(atom/target)
 	var/turf/T = get_turf(target)
-	visible_message(SPAN_WARNING( "\The [src] fires an energetic sphere into the air!"))
+	visible_message(span_warning( "\The [src] fires an energetic sphere into the air!"))
 	playsound(src, 'sound/weapons/Laser.ogg', 50, 1)
 	face_atom(T)
 	var/obj/projectile/arc/microsingulo/sphere = new(loc)

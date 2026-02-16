@@ -187,8 +187,8 @@
 			if(length(get_offhands_of_rider(M)) < rider_offhands_needed(M, AM.buckled_mobs[M]))
 				// kick off if not enough
 				M.visible_message(
-					SPAN_NOTICE("[M] slides off [AM]."),
-					SPAN_NOTICE("You slide off [AM].")
+					span_notice("[M] slides off [AM]."),
+					span_notice("You slide off [AM].")
 				)
 				AM.unbuckle_mob(M, BUCKLE_OP_FORCE)
 

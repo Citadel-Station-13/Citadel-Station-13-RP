@@ -66,7 +66,7 @@
 		(firemodes_use_radial ? user_firemode_radial(actor) : get_next_firemode())
 	set_firemode(switch_to)
 	actor.chat_feedback(
-		SPAN_NOTICE("[src] is now set to [switch_to.name]."),
+		span_notice("[src] is now set to [switch_to.name]."),
 		target = src,
 	)
 	playsound(src, selector_sound, 50, TRUE)

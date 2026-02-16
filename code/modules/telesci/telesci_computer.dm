@@ -49,25 +49,25 @@
 /obj/machinery/computer/telescience/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/bluespace_crystal))
 		if(crystals.len >= max_crystals)
-			to_chat(user, SPAN_WARNING("There are not enough crystal slots."))
+			to_chat(user, span_warning("There are not enough crystal slots."))
 			return
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		crystals += W
-		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", SPAN_NOTICE("You insert [W] into \the [src]'s crystal slot."))
+		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", span_notice("You insert [W] into \the [src]'s crystal slot."))
 		updateDialog()
 	else if(istype(W, /obj/item/gps))
 		if(!inserted_gps)
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			inserted_gps = W
-			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", SPAN_NOTICE("You insert [W] into \the [src]'s GPS device slot."))
+			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", span_notice("You insert [W] into \the [src]'s GPS device slot."))
 	else if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		if(M.connectable && istype(M.connectable, /obj/machinery/telepad))
 			telepad = M.connectable
 			M.connectable = null
-			to_chat(user, SPAN_CAUTION("You upload the data from the [W.name]'s buffer."))
+			to_chat(user, span_caution("You upload the data from the [W.name]'s buffer."))
 	else
 		return ..()
 

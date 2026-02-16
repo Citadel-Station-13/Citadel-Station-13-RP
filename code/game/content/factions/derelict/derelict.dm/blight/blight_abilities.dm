@@ -17,7 +17,7 @@
 
 	// Do the actual leap.
 	status_flags |= STATUS_LEAPING // Lets us pass over everything.
-	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
+	visible_message(span_danger("\The [src] leaps at \the [A]!"))
 	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 
 	sleep(5) // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
@@ -51,8 +51,8 @@
 
 	if(victim)
 		victim.afflict_paralyze(20 * 2)
-		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
-		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
+		victim.visible_message(span_danger("\The [src] knocks down \the [victim]!"))
+		to_chat(victim, span_critical("\The [src] jumps on you!"))
 		. = TRUE
 
 	set_AI_busy(FALSE)
@@ -62,26 +62,26 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their clubbed arms!"))
+			visible_message(span_danger("\The [src] sends \the [L] flying with their clubbed arms!"))
 			playsound(src, "sound/mobs/biomorphs/breaker_slam.ogg", 50, 1)
 			var/throw_dir = get_dir(src, L)
 			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
 			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
 		else
-			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
+			to_chat(L, span_warning( "\The [src] punches you with incredible force, but you remain in place."))
 
 
 /mob/living/simple_mob/animal/space/blight/melee/zenith/apply_melee_effects(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with their scythed claws!"))
+			visible_message(span_danger("\The [src] sends \the [L] flying with their scythed claws!"))
 			playsound(src, "sound/mobs/biomorphs/breaker_slam.ogg", 50, 1)
 			var/throw_dir = get_dir(src, L)
 			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
 			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
 		else
-			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))
+			to_chat(L, span_warning( "\The [src] punches you with incredible force, but you remain in place."))
 
 
 /mob/living/simple_mob/animal/space/blight/melee/zenith/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)

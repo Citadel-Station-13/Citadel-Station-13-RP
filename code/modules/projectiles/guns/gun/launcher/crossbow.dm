@@ -75,7 +75,7 @@
 /obj/item/gun/launcher/crossbow/start_firing_cycle(atom/firer, angle, firing_flags, datum/firemode/firemode, atom/target, datum/event_args/actor/actor)
 	if(tension <= 0)
 		actor?.chat_feedback(
-			SPAN_WARNING("The bolt on [src] isn't drawn back!"),
+			span_warning("The bolt on [src] isn't drawn back!"),
 			target = src,
 		)
 		return FALSE

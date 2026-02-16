@@ -23,7 +23,7 @@
 
 /obj/effect/gibspawner/proc/Gib(atom/location, datum/dna/MobDNA = null)
 	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
-		to_chat(world, SPAN_WARNING("Gib list length mismatch!"))
+		to_chat(world, span_warning("Gib list length mismatch!"))
 		return
 
 	var/obj/effect/debris/cleanable/blood/gibs/gib = null

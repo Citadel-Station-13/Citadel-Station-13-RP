@@ -255,7 +255,7 @@
 /mob/proc/can_speak(datum/prototype/language/speaking)
 //Prevents someone from speaking a null language.
 	if(!speaking)
-		log_debug(SPAN_DEBUG("[src] attempted to speak a null language."))
+		log_debug(span_debug("[src] attempted to speak a null language."))
 		return 0
 
 	if(speaking == RSlanguages.legacy_resolve_language_name("Noise"))

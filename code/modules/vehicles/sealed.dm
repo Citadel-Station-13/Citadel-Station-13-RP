@@ -91,7 +91,7 @@
 	if(!mob_can_enter(entering, actor, silent, suppressed))
 		return FALSE
 	if(enter_delay && !suppressed)
-		entering.visible_message(SPAN_NOTICE("[entering] starts to climb into [src]."))
+		entering.visible_message(span_notice("[entering] starts to climb into [src]."))
 	if(do_after(entering, enter_delay, src, NONE, MOBILITY_CAN_USE))
 		return mob_enter(entering)
 	return FALSE

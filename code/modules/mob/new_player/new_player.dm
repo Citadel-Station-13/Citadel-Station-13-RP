@@ -169,7 +169,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 	if(href_list["observe"])
 		if (SSticker.current_state <= GAME_STATE_INIT)
-			to_chat(src, SPAN_BOLDANNOUNCE("You may not observe until the server is initialized."))
+			to_chat(src, span_boldannounce("You may not observe until the server is initialized."))
 			return
 		// don't lose out if we join fast
 		SSplaytime.queue_playtimes(client)
@@ -197,10 +197,10 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 			close_spawn_windows()
 			var/obj/landmark/L = pick_landmark_by_key(/obj/landmark/observer_spawn)
 			if(L)
-				to_chat(src, SPAN_NOTICE("Now teleporting."))
+				to_chat(src, span_notice("Now teleporting."))
 				observer.forceMove(L.loc)
 			else
-				to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
+				to_chat(src, span_danger("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 
 			announce_ghost_joinleave(src)
 
@@ -418,7 +418,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	var/datum/prototype/role/job/J = RSroles.legacy_job_by_title(rank)
 	var/reason
 	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
-		to_chat(src, SPAN_WARNING("[rank] is not available: [J.get_availability_reason(client, reason)]"))
+		to_chat(src, span_warning("[rank] is not available: [J.get_availability_reason(client, reason)]"))
 		return FALSE
 	if(!spawn_checks_vr())
 		return FALSE
@@ -448,7 +448,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	close_spawn_windows()
 
 	if(!SSjob.AssignRole(src, rank, 1))
-		to_chat(src, SPAN_WARNING("SSjob.AssignRole failed; something is seriously wrong. Attempted: [rank]."))
+		to_chat(src, span_warning("SSjob.AssignRole failed; something is seriously wrong. Attempted: [rank]."))
 		. = FALSE
 		CRASH("AssignRole failed; something is seriously wrong!")
 
@@ -515,7 +515,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	var/list/errors = list()
 	// warnings ignored for now.
 	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors))
-		to_chat(src, SPAN_WARNING("<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
+		to_chat(src, span_warning("<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return FALSE
 	spawning = 1
 	close_spawn_windows()
@@ -654,7 +654,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 	//Do they have their scale properly setup?
 	if(!client.prefs.size_multiplier)
 		pass = FALSE
-		to_chat(src, SPAN_WARNING("You have not set your scale yet.  Do this on the Species Customization tab in character setup."))
+		to_chat(src, span_warning("You have not set your scale yet.  Do this on the Species Customization tab in character setup."))
 
 	//Custom species checks
 	if (client && client.prefs && client.prefs.real_species_name() == SPECIES_CUSTOM)
@@ -662,7 +662,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		//Didn't name it
 		if(!client.prefs.custom_species)
 			pass = FALSE
-			to_chat(src, SPAN_WARNING("You have to name your custom species.  Do this on the Species Customization tab in character setup."))
+			to_chat(src, span_warning("You have to name your custom species.  Do this on the Species Customization tab in character setup."))
 
 		//Check traits/costs
 		var/list/megalist = client.prefs.pos_traits + client.prefs.neu_traits + client.prefs.neg_traits
@@ -685,7 +685,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		//Went into negatives
 		if(points_left < 0 || traits_left < 0)
 			pass = FALSE
-			to_chat(src, SPAN_WARNING("Your custom species is not playable.  Reconfigure your traits on the Species Customization tab."))
+			to_chat(src, span_warning("Your custom species is not playable.  Reconfigure your traits on the Species Customization tab."))
 
 	//Final popup notice
 	if (!pass)

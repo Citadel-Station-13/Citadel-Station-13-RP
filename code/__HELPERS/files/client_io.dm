@@ -58,7 +58,7 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 /client/proc/file_spam_check()
 	var/time_to_wait = GLOB.fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, SPAN_RED("Error: file_spam_check(): Spam. Please wait [DisplayTimeText(time_to_wait)]."))
+		to_chat(src, span_red("Error: file_spam_check(): Spam. Please wait [DisplayTimeText(time_to_wait)]."))
 		return TRUE
 	var/delay = FTPDELAY
 	if(holder)

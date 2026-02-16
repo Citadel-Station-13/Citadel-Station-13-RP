@@ -42,7 +42,7 @@
 	if(missed) // Most likely we have a slow attack and they dodged it or we somehow got moved.
 		add_attack_logs(src, A, "Animal-attacked (dodged)", admin_notify = FALSE)
 		playsound(src, 'sound/weapons/punchmiss.ogg', 75, 1)
-		visible_message(SPAN_WARNING( "\The [src] misses their attack."))
+		visible_message(span_warning( "\The [src] misses their attack."))
 		return FALSE
 
 	var/damage_to_do = rand(legacy_melee_damage_lower, legacy_melee_damage_upper)

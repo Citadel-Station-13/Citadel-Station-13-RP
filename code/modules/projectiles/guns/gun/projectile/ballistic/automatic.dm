@@ -273,7 +273,7 @@
 /obj/item/gun/projectile/ballistic/automatic/lmg/user_clickchain_apply_magazine(obj/item/ammo_magazine/magazine, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(!cover_open)
 		actor?.chat_feedback(
-			SPAN_RADIO("You need to open the cover to be able to load [src]."),
+			span_radio("You need to open the cover to be able to load [src]."),
 			target = src,
 		)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
@@ -282,7 +282,7 @@
 /obj/item/gun/projectile/ballistic/automatic/lmg/user_clickchain_unload_magazine(datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, no_sound, no_message)
 	if(!cover_open)
 		actor?.chat_feedback(
-			SPAN_RADIO("You need to open the cover to be able to load [src]."),
+			span_radio("You need to open the cover to be able to load [src]."),
 			target = src,
 		)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING

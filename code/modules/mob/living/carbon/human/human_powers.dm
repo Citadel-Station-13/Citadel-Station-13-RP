@@ -7,14 +7,14 @@
 	set category = VERB_CATEGORY_IC
 
 	if(incapacitated())
-		to_chat(src, SPAN_WARNING("You can't mess with your hair right now!"))
+		to_chat(src, span_warning("You can't mess with your hair right now!"))
 		return
 
 	if(h_style)
 		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
 		var/selected_string
 		if(!(hair_style.hair_flags & HAIR_TIEABLE))
-			to_chat(src, SPAN_WARNING("Your hair isn't long enough to tie."))
+			to_chat(src, span_warning("Your hair isn't long enough to tie."))
 			return
 		else
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
@@ -24,14 +24,14 @@
 					valid_hairstyles.Add(hair_string)
 			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles
 		if(incapacitated())
-			to_chat(src, SPAN_WARNING("You can't mess with your hair right now!"))
+			to_chat(src, span_warning("You can't mess with your hair right now!"))
 			return
 		else if(selected_string && h_style != selected_string)
 			h_style = selected_string
 			regenerate_icons()
-			visible_message(SPAN_NOTICE("[src] pauses a moment to style their hair."))
+			visible_message(span_notice("[src] pauses a moment to style their hair."))
 		else
-			to_chat(src, SPAN_NOTICE("You're already using that style."))
+			to_chat(src, span_notice("You're already using that style."))
 
 /mob/living/carbon/human/proc/tackle()
 	set category = "Abilities"
@@ -90,7 +90,7 @@
 			if(M in stomach_contents)
 				stomach_contents.Remove(M)
 				M.loc = loc
-		src.visible_message(SPAN_BOLDDANGER("[src] hurls out the contents of their stomach!"))
+		src.visible_message(span_bolddanger("[src] hurls out the contents of their stomach!"))
 	return
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
@@ -104,14 +104,14 @@
 			var/msg = sanitize(input("Whisper Message:", "Psychic Whisper") as text|null)
 			if(msg)
 				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-				to_chat(M, SPAN_GREEN("You hear a strange, alien voice in your head... <i>[msg]</i>"))
-				to_chat(src, SPAN_GREEN("You said: \"[msg]\" to [M]"))
+				to_chat(M, span_green("You hear a strange, alien voice in your head... <i>[msg]</i>"))
+				to_chat(src, span_green("You said: \"[msg]\" to [M]"))
 		if ("Projection")
 			var/msg = sanitize(input("Projection Message:", "Psychic Whisper") as message|null)
 			if(msg)
 				log_say("(PWHISPER to [key_name(M)]) [msg]", src)
-				to_chat(M, SPAN_GREEN("A strange, alien Projection appears in your head... <i>[msg]</i>"))
-				to_chat(src, SPAN_GREEN("You projected: \"[msg]\" to [M]"))
+				to_chat(M, span_green("A strange, alien Projection appears in your head... <i>[msg]</i>"))
+				to_chat(src, span_green("You projected: \"[msg]\" to [M]"))
 	return
 
 /mob/living/carbon/human/proc/diona_split_nymph()
@@ -153,7 +153,7 @@
 	var/obj/item/organ/external/Chest = organs_by_name[BP_TORSO]
 
 	if(Chest.robotic >= 2)
-		visible_message(SPAN_WARNING("\The [src] shudders slightly, then ejects a cluster of nymphs with a wet slithering noise."))
+		visible_message(span_warning("\The [src] shudders slightly, then ejects a cluster of nymphs with a wet slithering noise."))
 		set_species(/datum/species/human, skip = TRUE, force = TRUE) // This is hard-set to default the body to a normal FBP, without changing anything.
 
 		// Bust it
@@ -170,7 +170,7 @@
 			E.droplimb(TRUE)
 
 	else
-		visible_message(SPAN_WARNING("\The [src] quivers slightly, then splits apart with a wet slithering noise."))
+		visible_message(span_warning("\The [src] quivers slightly, then splits apart with a wet slithering noise."))
 		qdel(src)
 
 /mob/living/carbon/human/proc/self_diagnostics()
@@ -180,10 +180,10 @@
 
 	if(stat == DEAD) return
 
-	to_chat(src, SPAN_NOTICE("Performing self-diagnostic, please wait..."))
+	to_chat(src, span_notice("Performing self-diagnostic, please wait..."))
 
 	spawn(50)
-		var/output = SPAN_NOTICE("Self-Diagnostic Results:\n")
+		var/output = span_notice("Self-Diagnostic Results:\n")
 
 		output += "Internal Temperature: [convert_k2c(bodytemperature)] Degrees Celsius\n"
 
@@ -193,23 +193,23 @@
 		if(isSynthetic())
 			var/toxDam = getToxLoss()
 			if(toxDam)
-				output += "System Instability: [SPAN_WARNING("[toxDam > 25 ? "Severe" : "Moderate"]")]. Seek charging station for cleanup.\n"
+				output += "System Instability: [span_warning("[toxDam > 25 ? "Severe" : "Moderate"]")]. Seek charging station for cleanup.\n"
 			else
-				output += "System Instability: [SPAN_GREEN("OK\n")]"
+				output += "System Instability: [span_green("OK\n")]"
 
 		for(var/obj/item/organ/external/EO in organs)
 			if(EO.robotic >= ORGAN_ASSISTED)
 				if(EO.brute_dam || EO.burn_dam)
-					output += "[EO.name] - [SPAN_WARNING("[EO.burn_dam + EO.brute_dam > EO.min_broken_damage ? "Heavy Damage" : "Light Damage"]")]\n"
+					output += "[EO.name] - [span_warning("[EO.burn_dam + EO.brute_dam > EO.min_broken_damage ? "Heavy Damage" : "Light Damage"]")]\n"
 				else
-					output += "[EO.name] - [SPAN_GREEN("OK\n")]"
+					output += "[EO.name] - [span_green("OK\n")]"
 
 		for(var/obj/item/organ/IO in internal_organs)
 			if(IO.robotic >= ORGAN_ASSISTED)
 				if(IO.damage)
-					output += "[IO.name] - [SPAN_WARNING("[IO.damage > 10 ? "Heavy Damage" : "Light Damage"]")]\n"
+					output += "[IO.name] - [span_warning("[IO.damage > 10 ? "Heavy Damage" : "Light Damage"]")]\n"
 				else
-					output += "[IO.name] - [SPAN_GREEN("OK\n")]"
+					output += "[IO.name] - [span_green("OK\n")]"
 
 
 		to_chat(src,output)
@@ -223,12 +223,12 @@
 
 	var/obj/item/organ/external/head/E = organs_by_name[BP_HEAD]
 	if(!E)
-		to_chat(src, SPAN_WARNING("You don't seem to have a head!"))
+		to_chat(src, span_warning("You don't seem to have a head!"))
 		return
 
 	var/datum/robolimb/robohead = GLOB.all_robolimbs[E.model]
 	if(!robohead.monitor_styles || !robohead.monitor_icon)
-		to_chat(src, SPAN_WARNING("Your head doesn't have a monitor, or it doesn't support being changed!"))
+		to_chat(src, span_warning("Your head doesn't have a monitor, or it doesn't support being changed!"))
 		return
 
 	var/list/states
@@ -238,7 +238,7 @@
 	if(choice)
 		E.eye_icon_location = robohead.monitor_icon
 		E.eye_icon = states[choice]
-		to_chat(src, SPAN_WARNING("You set your monitor to display [choice]!"))
+		to_chat(src, span_warning("You set your monitor to display [choice]!"))
 		update_icons_body()
 
 /mob/living/carbon/human/proc/regenerate()
@@ -247,11 +247,11 @@
 	set category = "Abilities"
 
 	if(nutrition < 250)
-		to_chat(src, SPAN_WARNING("You lack the biomass to begin regeneration!"))
+		to_chat(src, span_warning("You lack the biomass to begin regeneration!"))
 		return
 
 	if(active_regen)
-		to_chat(src, SPAN_WARNING("You are already regenerating tissue!"))
+		to_chat(src, span_warning("You are already regenerating tissue!"))
 		return
 	else
 		active_regen = TRUE
@@ -267,7 +267,7 @@
 			if(I.damage > 0)
 				I.damage = max(I.damage - 30, 0) //Repair functionally half of a dead internal organ.
 				I.status = 0	// Wipe status, as it's being regenerated from possibly dead.
-				to_chat(src, SPAN_NOTICE("You feel a soothing sensation within your [I.name]..."))
+				to_chat(src, span_notice("You feel a soothing sensation within your [I.name]..."))
 
 		// Replace completely missing limbs.
 		for(var/limb_type in src.species.has_limbs)
@@ -284,7 +284,7 @@
 				var/limb_path = organ_data["path"]
 				var/obj/item/organ/O = new limb_path(src)
 				organ_data["descriptor"] = O.name
-				to_chat(src, SPAN_NOTICE("You feel a slithering sensation as your [O.name] reform."))
+				to_chat(src, span_notice("You feel a slithering sensation as your [O.name] reform."))
 
 				var/agony_to_apply = round(0.66 * O.max_damage) // 66% of the limb's health is converted into pain.
 				src.apply_damage(agony_to_apply, DAMAGE_TYPE_HALLOSS)
@@ -301,7 +301,7 @@
 		update_icons_body()
 		active_regen = FALSE
 	else
-		to_chat(src, SPAN_NOTICE("Your regeneration is interrupted!"))
+		to_chat(src, span_notice("Your regeneration is interrupted!"))
 		nutrition -= 75
 		active_regen = FALSE
 
@@ -317,11 +317,11 @@
 	set category = VERB_CATEGORY_IC
 
 	if(stat)
-		to_chat(src, SPAN_WARNING("You must be awake and standing to perform this action!"))
+		to_chat(src, span_warning("You must be awake and standing to perform this action!"))
 		return
 	var/obj/item/organ/external/head/vr/H = organs_by_name[BP_HEAD]
 	if(!H)
-		to_chat(src, SPAN_WARNING("You don't seem to have a head!"))
+		to_chat(src, span_warning("You don't seem to have a head!"))
 		return
 
 	H.eyes_over_markings = !H.eyes_over_markings
@@ -329,7 +329,7 @@
 
 	var/datum/robolimb/robohead = GLOB.all_robolimbs[H.model]
 	if(robohead.monitor_styles && robohead.monitor_icon)
-		to_chat(src, SPAN_NOTICE("You reconfigure the rendering order of your facial display."))
+		to_chat(src, span_notice("You reconfigure the rendering order of your facial display."))
 
 	return TRUE
 
@@ -397,7 +397,7 @@
 	if(tail_style && !tail_style.can_be_hidden)
 		return
 	hiding_tail = !hiding_tail
-	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_tail ? "hiding" : "showing"] your tail."))
+	to_chat(usr, span_smallnotice("You are now [hiding_tail ? "hiding" : "showing"] your tail."))
 	render_spriteacc_tail()
 
 /mob/living/carbon/human/proc/hide_wings()
@@ -408,7 +408,7 @@
 	if(wing_style && !wing_style.can_be_hidden)
 		return
 	hiding_wings = !hiding_wings
-	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_wings ? "hiding" : "showing"] your wings."))
+	to_chat(usr, span_smallnotice("You are now [hiding_wings ? "hiding" : "showing"] your wings."))
 	render_spriteacc_wings()
 
 /mob/living/carbon/human/proc/hide_horns()
@@ -419,5 +419,5 @@
 	if(horn_style && !horn_style.can_be_hidden)
 		return
 	hiding_horns = !hiding_horns
-	to_chat(usr, SPAN_SMALLNOTICE("You are now [hiding_horns ? "hiding" : "showing"] your horns."))
+	to_chat(usr, span_smallnotice("You are now [hiding_horns ? "hiding" : "showing"] your horns."))
 	update_hair()

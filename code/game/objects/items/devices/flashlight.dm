@@ -56,7 +56,7 @@
 
 	if(brightness_level && power_usage)
 		if(cell.use(power_usage) != power_usage) //We weren't able to use our full power_usage amount!
-			visible_message(SPAN_WARNING("\The [src] flickers before going dull."))
+			visible_message(span_warning("\The [src] flickers before going dull."))
 			set_light(FALSE)
 			playsound(src.loc, /datum/soundbyte/sparks, 10, 1, -3) //Small cue that your light went dull in your pocket.
 			on = FALSE
@@ -74,7 +74,7 @@
 	if(choice)
 		brightness_level = choice
 		power_usage = brightness_levels[choice]
-		to_chat(user, SPAN_NOTICE("You set the brightness level on \the [src] to [brightness_level]."))
+		to_chat(user, span_notice("You set the brightness level on \the [src] to [brightness_level]."))
 		update_appearance()
 
 /obj/item/flashlight/proc/set_flashlight()
@@ -154,29 +154,29 @@
 		var/mob/living/carbon/human/H = L	//mob has protective eyewear
 		if(istype(H))
 			for(var/obj/item/C in H.inventory.query_coverage(EYES))
-				to_chat(user, SPAN_WARNING("You're going to need to remove [C.name] first."))
+				to_chat(user, span_warning("You're going to need to remove [C.name] first."))
 				return
 
 			var/obj/item/organ/vision
 			if(H.species.vision_organ)
 				vision = H.internal_organs_by_name[H.species.vision_organ]
 			if(!vision)
-				to_chat(user, SPAN_WARNING("You can't find any [H.species.vision_organ ? H.species.vision_organ : "eyes"] on [H]!"))
+				to_chat(user, span_warning("You can't find any [H.species.vision_organ ? H.species.vision_organ : "eyes"] on [H]!"))
 
-			user.visible_message(SPAN_NOTICE("\The [user] directs [src] to [L]'s eyes."), \
-							 	 SPAN_NOTICE("You direct [src] to [L]'s eyes."))
+			user.visible_message(span_notice("\The [user] directs [src] to [L]'s eyes."), \
+							 	 span_notice("You direct [src] to [L]'s eyes."))
 			if(H != user)	//can't look into your own eyes buster
 				if(L.stat == DEAD || L.has_status_effect(/datum/status_effect/sight/blindness))	//mob is dead or fully blind
-					to_chat(user, SPAN_WARNING("\The [L]'s pupils do not react to the light!"))
+					to_chat(user, span_warning("\The [L]'s pupils do not react to the light!"))
 					return
 				if(MUTATION_XRAY in L.mutations)
-					to_chat(user, SPAN_NOTICE("\The [L] pupils give an eerie glow!"))
+					to_chat(user, span_notice("\The [L] pupils give an eerie glow!"))
 				if(vision.is_bruised())
-					to_chat(user, SPAN_WARNING("There's visible damage to [L]'s [vision.name]!"))
+					to_chat(user, span_warning("There's visible damage to [L]'s [vision.name]!"))
 				else if(L.eye_blurry)
-					to_chat(user, SPAN_NOTICE("\The [L]'s pupils react slower than normally."))
+					to_chat(user, span_notice("\The [L]'s pupils react slower than normally."))
 				if(L.getBrainLoss() > 15)
-					to_chat(user, SPAN_NOTICE("There's visible lag between left and right pupils' reactions."))
+					to_chat(user, span_notice("There's visible lag between left and right pupils' reactions."))
 
 				// todo: reagent effects.
 				var/static/list/reagents_that_cause_constriction = list(
@@ -188,11 +188,11 @@
 					/datum/reagent/mindbreaker,
 				)
 				if(L.reagents.has_any(reagents_that_cause_constriction) || H.ingested.has_any(reagents_that_cause_constriction))
-					to_chat(user, SPAN_NOTICE("\The [L]'s pupils are already pinpoint and cannot narrow any more."))
+					to_chat(user, span_notice("\The [L]'s pupils are already pinpoint and cannot narrow any more."))
 				else if(L.reagents.has_any(reagents_that_cause_dilation) || H.ingested.has_any(reagents_that_cause_dilation))
-					to_chat(user, SPAN_NOTICE("\The [L]'s pupils narrow slightly, but are still very dilated."))
+					to_chat(user, span_notice("\The [L]'s pupils narrow slightly, but are still very dilated."))
 				else
-					to_chat(user, SPAN_NOTICE("\The [L]'s pupils narrow."))
+					to_chat(user, span_notice("\The [L]'s pupils narrow."))
 
 			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src)) //can be used offensively
 			L.flash_eyes()
@@ -263,7 +263,7 @@
 		var/obj/item/gun_attachment/flashlight/maglight/test_attach = get_test_attachment()
 		if(gun_target.can_install_attachment(test_attach, clickchain))
 			if(!clickchain.performer.temporarily_remove_from_inventory(src))
-				clickchain.chat_feedback(SPAN_WARNING("[src] is stuck to your hands!"), src)
+				clickchain.chat_feedback(span_warning("[src] is stuck to your hands!"), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			var/obj/item/gun_attachment/flashlight/maglight/attaching = new
 			if(!gun_target.install_attachment(attaching, clickchain))
@@ -367,7 +367,7 @@
 
 	// Usual checks
 	if(!fuel)
-		to_chat(user, SPAN_NOTICE("It's out of fuel."))
+		to_chat(user, span_notice("It's out of fuel."))
 		return
 	if(on)
 		return
@@ -375,7 +375,7 @@
 	. = ..()
 	// All good, turn it on.
 	if(.)
-		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
+		user.visible_message(span_notice("[user] activates the flare."), span_notice("You pull the cord on the flare, activating it!"))
 		src.damage_force = on_damage
 		src.damage_type = DAMAGE_TYPE_BURN
 		START_PROCESSING(SSobj, src)
@@ -426,14 +426,14 @@
 /obj/item/flashlight/glowstick/attack_self(mob/user, datum/event_args/actor/actor)
 
 	if(!fuel)
-		to_chat(user, SPAN_NOTICE("The glowstick has already been turned on."))
+		to_chat(user, span_notice("The glowstick has already been turned on."))
 		return
 	if(on)
 		return
 
 	. = ..()
 	if(.)
-		user.visible_message(SPAN_NOTICE("[user] cracks and shakes the glowstick."), SPAN_NOTICE("You crack and shake the glowstick, turning it on!"))
+		user.visible_message(span_notice("[user] cracks and shakes the glowstick."), span_notice("You crack and shake the glowstick, turning it on!"))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/glowstick/red

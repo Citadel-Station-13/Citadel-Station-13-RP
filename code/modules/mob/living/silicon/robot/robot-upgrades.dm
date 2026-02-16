@@ -14,7 +14,7 @@
 			if(istype(other, check_type))
 				if(!silent)
 					actor?.chat_feedback(
-						SPAN_WARNING("There's already an upgrade of the same type in [src]."),
+						span_warning("There's already an upgrade of the same type in [src]."),
 						target = src,
 					)
 				return FALSE
@@ -31,7 +31,7 @@
 		if(actor.performer && actor.performer.is_in_inventory(upgrade))
 			if(!actor.performer.can_unequip(upgrade, upgrade.worn_slot))
 				actor.chat_feedback(
-					SPAN_WARNING("[upgrade] is stuck to your hand!"),
+					span_warning("[upgrade] is stuck to your hand!"),
 					target = src,
 				)
 				return FALSE
@@ -65,7 +65,7 @@
 	if(!silent)
 		actor?.visible_feedback(
 			target = src,
-			visible = SPAN_NOTICE("[actor.performer] slots [upgrade] into [src]."),
+			visible = span_notice("[actor.performer] slots [upgrade] into [src]."),
 			range = MESSAGE_RANGE_CONFIGURATION,
 		)
 
@@ -102,7 +102,7 @@
 	if(!silent)
 		actor?.visible_feedback(
 			target = src,
-			visible = SPAN_NOTICE("[actor.performer] pulls [upgrade] out of [src]."),
+			visible = span_notice("[actor.performer] pulls [upgrade] out of [src]."),
 			range = MESSAGE_RANGE_CONFIGURATION,
 		)
 

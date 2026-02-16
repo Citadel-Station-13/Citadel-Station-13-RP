@@ -148,7 +148,7 @@
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
 
-			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
+			user.visible_message(span_danger("[user] attempts to feed [M] [src]."))
 			user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 			if(!do_mob(user, M, 3 SECONDS))
 				return
@@ -4023,7 +4023,7 @@ END CITADEL CHANGE */
 		return 0
 
 	if (coating_holder.reagent_volumes?[C.id] < req)
-		to_chat(user, SPAN_WARNING( "There's not enough [C.name] to coat the [src]!"))
+		to_chat(user, span_warning( "There's not enough [C.name] to coat the [src]!"))
 		return 0
 
 	//First make sure there's space for our batter
@@ -4052,7 +4052,7 @@ END CITADEL CHANGE */
 	add_overlay(coating_image)
 
 	if (user)
-		user.visible_message(SPAN_NOTICE("[user] dips \the [src] into \the [coating.name]"), SPAN_NOTICE("You dip \the [src] into \the [coating.name]"))
+		user.visible_message(span_notice("[user] dips \the [src] into \the [coating.name]"), span_notice("You dip \the [src] into \the [coating.name]"))
 
 	return 1
 

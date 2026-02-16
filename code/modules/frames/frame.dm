@@ -408,11 +408,11 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 /datum/frame2/proc/standard_progress_step(obj/structure/frame2/frame, datum/event_args/actor/actor, obj/item/using_item, datum/frame_step/frame_step, time_needed)
 	var/stage_we_were_in = frame.stage
 	if(frame_step.stage == FRAME_STAGE_FINISH && !frame.anchored && requires_anchored_to_finish)
-		actor.chat_feedback(SPAN_WARNING("[frame] needs to be anchored to be finished."), frame)
+		actor.chat_feedback(span_warning("[frame] needs to be anchored to be finished."), frame)
 		return FALSE
 	if((isnull(frame_step.requires_anchored)? requires_anchored : frame_step.requires_anchored) && !frame.anchored)
 		var/rendered = frame_step.action_descriptor || "<[frame_step.name]>"
-		actor.chat_feedback(SPAN_WARNING("[frame] needs to be anchored in order for you to [rendered]."), frame)
+		actor.chat_feedback(span_warning("[frame] needs to be anchored in order for you to [rendered]."), frame)
 		return FALSE
 	if(!frame_step.check_consumption(actor, using_item, src, frame))
 		return FALSE
@@ -461,7 +461,7 @@ GLOBAL_LIST_INIT(frame_datum_lookup, init_frame_datums())
 		var/turf/checking = get_step(location, turn(dir, 180))
 		if(!checking.get_wallmount_anchor())
 			actor.chat_feedback(
-				SPAN_WARNING("[checking] isn't a valid anchor for this wall mount!"),
+				span_warning("[checking] isn't a valid anchor for this wall mount!"),
 				target = frame,
 			)
 			return FALSE

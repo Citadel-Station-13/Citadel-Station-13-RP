@@ -407,8 +407,8 @@
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
 			target.visible_message(
-				SPAN_DANGER("[src] pulls the tendrils out!"),
-				SPAN_WARNING("The sensation fades. You feel made anew."),
+				span_danger("[src] pulls the tendrils out!"),
+				span_warning("The sensation fades. You feel made anew."),
 			)
 
 
@@ -512,8 +512,8 @@
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
 			target.visible_message(
-				SPAN_DANGER("[src] pulls the tendrils out!"),
-				SPAN_WARNING("The sensation fades. You feel made anew."),
+				span_danger("[src] pulls the tendrils out!"),
+				span_warning("The sensation fades. You feel made anew."),
 			)
 
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
@@ -568,8 +568,8 @@
 				infect_virus2(target, virus2)
 				log_and_message_admins("Infected [target] with a virus. (Xenochimera)", src)
 			target.visible_message(
-				SPAN_DANGER("[src] pulls the tendrils out!"),
-				SPAN_WARNING("The sensation fades. You feel made anew."),
+				span_danger("[src] pulls the tendrils out!"),
+				span_warning("The sensation fades. You feel made anew."),
 			)
 
 /mob/living/carbon/human/proc/hemophagic_biomorph() //just toggle the is_vampire flag.
@@ -973,7 +973,7 @@
 	var/distance = get_dist(M.loc,owner.loc)
 
 	var/delay = clamp((distance / 2), 1, 8) SECONDS
-	owner.visible_message(SPAN_WARNING("[owner] seems to focus for a few seconds."),"You begin to seek [target] out. This may take a while.")
+	owner.visible_message(span_warning("[owner] seems to focus for a few seconds."),"You begin to seek [target] out. This may take a while.")
 
 	if(do_after(owner, delay))
 		log_and_message_admins("COMMUNED to [key_name(M)]) [text]", owner)
@@ -981,8 +981,8 @@
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.get_species_id() == SPECIES_ID_XENOCHIMERA)	//thing to thing communication
-				to_chat(H, SPAN_DANGER("You feel an alien, yet familiar thought seep into your collective consciousness: " + SPAN_NOTICE("<b>[text]</b>")))
+				to_chat(H, span_danger("You feel an alien, yet familiar thought seep into your collective consciousness: " + span_notice("<b>[text]</b>")))
 				return
-			to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: ") + SPAN_NOTICE("<b>[text]</b>"))
-			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
+			to_chat(M, span_interface("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: ") + span_notice("<b>[text]</b>"))
+			to_chat(H, span_danger("Your nose begins to bleed..."))
 			H.drip(1)

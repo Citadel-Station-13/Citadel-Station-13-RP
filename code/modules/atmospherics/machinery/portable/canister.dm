@@ -269,7 +269,7 @@
 
 /obj/machinery/portable_atmospherics/canister/on_eject(obj/item/tank/tank, mob/user)
 	if (valve_open)
-		user.action_feedback(SPAN_WARNING("[src]'s valve closes automatically as you yank \the [tank] out. That was close."), src)
+		user.action_feedback(span_warning("[src]'s valve closes automatically as you yank \the [tank] out. That was close."), src)
 	valve_open = FALSE
 	return ..()
 

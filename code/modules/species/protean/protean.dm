@@ -381,16 +381,16 @@
 		if(suit.myprotean == src)
 			suit.reset()
 			suit.forceMove(src)
-			to_chat(src, SPAN_WARNING("You retract your nanosuit."))
+			to_chat(src, span_warning("You retract your nanosuit."))
 			return
 
 	for(var/obj/item/hardsuit/protean/suit in contents)
 		force_equip_to_slot(suit, /datum/inventory_slot/inventory/back)
-		to_chat(src, SPAN_WARNING("You deploy your nanosuit."))
+		to_chat(src, span_warning("You deploy your nanosuit."))
 		suit.toggle_seals(src, TRUE)
 		return
 
-	to_chat(src, SPAN_WARNING("You don't have a nanocluster RIG. Somehow."))
+	to_chat(src, span_warning("You don't have a nanocluster RIG. Somehow."))
 
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK

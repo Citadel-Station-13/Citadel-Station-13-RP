@@ -99,11 +99,11 @@ SUBSYSTEM_DEF(lighting)
 
 	var/time = (REALTIMEOFDAY - starttime) / 10
 	var/list/blockquote_data = list(
-		SPAN_BOLDANNOUNCE("[overlay_blurb]\n"),
-		SPAN_BOLDANNOUNCE("Lighting pre-bake completed within [time] second[time == 1 ? "" : "s"]!<hr>"),
-		SPAN_DEBUGINFO("Processed [processed_lights] light sources."),
-		SPAN_DEBUGINFO("\nProcessed [processed_corners] light corners."),
-		SPAN_DEBUGINFO("\nProcessed [processed_overlays] light overlays."),
+		span_boldannounce("[overlay_blurb]\n"),
+		span_boldannounce("Lighting pre-bake completed within [time] second[time == 1 ? "" : "s"]!<hr>"),
+		span_debug_info("Processed [processed_lights] light sources."),
+		span_debug_info("\nProcessed [processed_corners] light corners."),
+		span_debug_info("\nProcessed [processed_overlays] light overlays."),
 	)
 
 	to_chat(

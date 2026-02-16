@@ -5,14 +5,14 @@
 	afflict_paralyze(20)
 	spin(32,2)
 	visible_message(
-		SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
-		SPAN_NOTICE("You stop, drop, and roll!")
+		span_danger("[src] rolls on the floor, trying to put themselves out!"),
+		span_notice("You stop, drop, and roll!")
 		)
 	sleep(30)
 	if(fire_stacks <= 0)
 		visible_message(
-			SPAN_DANGER("[src] has successfully extinguished themselves!"),
-			SPAN_NOTICE("You extinguish yourself.")
+			span_danger("[src] has successfully extinguished themselves!"),
+			span_notice("You extinguish yourself.")
 			)
 		ExtinguishMob()
 	return TRUE
@@ -47,15 +47,15 @@
 
 	if(cuff_break)
 		visible_message(
-			SPAN_DANGER("[src] is trying to break [I]!"),
-			SPAN_WARNING("You attempt to break your [I]. (This will take around 5 seconds and you need to stand still)"))
+			span_danger("[src] is trying to break [I]!"),
+			span_warning("You attempt to break your [I]. (This will take around 5 seconds and you need to stand still)"))
 
 		if(do_after(src, 5 SECONDS, target = src, mobility_flags = MOBILITY_CAN_RESIST))
 			if(!I || buckled)
 				return
 			visible_message(
-				SPAN_DANGER("[src] manages to break [I]!"),
-				SPAN_WARNING("You successfully break your [I]."))
+				span_danger("[src] manages to break [I]!"),
+				span_warning("You successfully break your [I]."))
 			say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 
 			if(I == handcuffed)
@@ -69,16 +69,16 @@
 
 			qdel(I)
 		else
-			to_chat(src, SPAN_WARNING("You fail to break [I]."))
+			to_chat(src, span_warning("You fail to break [I]."))
 		return
 
 	visible_message(
-		SPAN_DANGER("[src] attempts to remove [I]!"),
-		SPAN_WARNING("You attempt to remove [I]. (This will take around [displaytime] seconds and you need to stand still)"))
+		span_danger("[src] attempts to remove [I]!"),
+		span_warning("You attempt to remove [I]. (This will take around [displaytime] seconds and you need to stand still)"))
 	if(do_after(src, breakouttime, target = src, mobility_flags = MOBILITY_CAN_RESIST))
 		visible_message(
-			SPAN_DANGER("[src] manages to remove [I]!"),
-			SPAN_NOTICE("You successfully remove [I]."))
+			span_danger("[src] manages to remove [I]!"),
+			span_notice("You successfully remove [I]."))
 		drop_item_to_ground(I, INV_OP_FORCE)
 
 /mob/living/carbon/proc/can_break_cuffs()

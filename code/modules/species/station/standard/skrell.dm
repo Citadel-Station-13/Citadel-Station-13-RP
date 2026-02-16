@@ -147,7 +147,7 @@
 		T.clean(T, owner, 1)
 
 		owner.visible_message(
-		SPAN_WARNING("[owner] secretes a lot of liquid, wetting the floor underneath!"),
-		SPAN_NOTICE("You strain all of your glands, releasing a splash of liquid right underneath you.")
+		span_warning("[owner] secretes a lot of liquid, wetting the floor underneath!"),
+		span_notice("You strain all of your glands, releasing a splash of liquid right underneath you.")
 		)
 		playsound(T, 'sound/effects/slosh.ogg', 25, 1)

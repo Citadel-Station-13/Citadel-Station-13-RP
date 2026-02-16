@@ -64,8 +64,8 @@
 	actor.visible_feedback(
 		target = src,
 		range = MESSAGE_RANGE_COMBAT_LOUD,
-		visible = SPAN_WARNING("[actor.performer] ignites [src]!"),
-		otherwise_self = SPAN_WARNING("You ignite [src]!"),
+		visible = span_warning("[actor.performer] ignites [src]!"),
+		otherwise_self = span_warning("You ignite [src]!"),
 	)
 	actor.initiator.throw_mode_on()
 	ignite()
@@ -97,13 +97,13 @@
 		isnull(ready_light_power) ? ignite_light_power : ready_light_power,
 		isnull(ready_light_color) ? ignite_light_color : ready_light_color,
 	)
-	visible_message(SPAN_WARNING("[src] flares up, now burning at its full intensity."))
+	visible_message(span_warning("[src] flares up, now burning at its full intensity."))
 	var/datum/component/high_altitude_signal/signal_comp = AddComponent(/datum/component/high_altitude_signal, "signal flare")
 	signal_comp.on_get_effective_turf = CALLBACK(src, PROC_REF(get_effective_turf))
 	// TODO: sound
 
 /obj/item/signal_flare/proc/fizzle()
-	visible_message(SPAN_WARNING("[src] fizzles, having burnt itself out."))
+	visible_message(span_warning("[src] fizzles, having burnt itself out."))
 	spent = TRUE
 	ignited = FALSE
 	ready = FALSE

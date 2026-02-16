@@ -114,7 +114,7 @@
 /obj/item/plant_analyzer/proc/print_report(var/mob/living/user)
 	var/datum/seed/grown_seed = locate(last_seed)
 	if(!istype(grown_seed))
-		to_chat(user, SPAN_WARNING("There is no scan data to print."))
+		to_chat(user, span_warning("There is no scan data to print."))
 		return
 
 	var/form_title = "[grown_seed.seed_name] (#[grown_seed.uid])"

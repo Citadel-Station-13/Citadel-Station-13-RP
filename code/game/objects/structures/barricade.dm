@@ -36,10 +36,10 @@
 		if(INTERACTING_WITH(user, src))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(stack.material.id != get_primary_material_id())
-			user.action_feedback(SPAN_WARNING("[stack] is not the right material to fix this!"), src)
+			user.action_feedback(span_warning("[stack] is not the right material to fix this!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(integrity == integrity_max)
-			user.action_feedback(SPAN_WARNING("[src] does not need repairs!"), src)
+			user.action_feedback(span_warning("[src] does not need repairs!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.visible_action_feedback(
 			target = src,
@@ -63,7 +63,7 @@
 	switch(method)
 		if(ATOM_DECONSTRUCT_DISASSEMBLED)
 		else
-			visible_message(SPAN_WARNING("[src] falls apart."))
+			visible_message(span_warning("[src] falls apart."))
 
 /obj/structure/barricade/drop_products(method, atom/where)
 	. = ..()

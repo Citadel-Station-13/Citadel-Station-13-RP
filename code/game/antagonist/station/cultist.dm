@@ -69,7 +69,7 @@ var/datum/antagonist/cultist/cult
 	)))
 		return
 	if(!player.force_equip_to_slot_or_del(T, /datum/inventory_slot/abstract/put_in_storage, INV_OP_SILENT))
-		to_chat(player, SPAN_WARNING("Failed to equip you with a talismen. Ahelp."))
+		to_chat(player, span_warning("Failed to equip you with a talismen. Ahelp."))
 
 /datum/antagonist/cultist/greet(var/datum/mind/player)
 	if(!..())

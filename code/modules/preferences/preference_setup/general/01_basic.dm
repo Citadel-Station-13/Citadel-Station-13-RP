@@ -166,7 +166,7 @@
 			if(alert(user, "Do you want to unset your headshot URL? An admin must set it again.", "Unset Headshot", "No", "Yes") == "Yes")
 				pref.headshot_url = null
 		else
-			to_chat(user, SPAN_BOLDWARNING("You must join the Discord and open a ticket in order to have your headshot URL set!"))
+			to_chat(user, span_boldwarning("You must join the Discord and open a ticket in order to have your headshot URL set!"))
 		return PREFERENCES_REFRESH
 
 	else if(href_list["fullref"])
@@ -174,12 +174,12 @@
 			if(alert(user, "Do you want to unset your headshot URL? An admin must set it again.", "Unset Headshot", "No", "Yes") == "Yes")
 				pref.full_ref_url = null
 		else
-			to_chat(user, SPAN_BOLDWARNING("You must join the Discord and open a ticket in order to have your full reference URL set!"))
+			to_chat(user, span_boldwarning("You must join the Discord and open a ticket in order to have your full reference URL set!"))
 		return PREFERENCES_REFRESH
 
 	else if(href_list["fullref_toggle"])
 		pref.full_ref_toggle = !pref.full_ref_toggle
-		to_chat(user, SPAN_NOTICE("Now showing your [pref.full_ref_toggle ? "full reference": "headshot"] in your character profile."))
+		to_chat(user, span_notice("Now showing your [pref.full_ref_toggle ? "full reference": "headshot"] in your character profile."))
 		return PREFERENCES_REFRESH
 
 	return ..()

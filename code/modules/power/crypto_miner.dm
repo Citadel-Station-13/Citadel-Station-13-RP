@@ -51,7 +51,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
     if(!check_right_atmos())
         temperature_damage++
-        src.visible_message(SPAN_NOTICE("[src] beeps as it is unable to work in this atmosphere."))
+        src.visible_message(span_notice("[src] beeps as it is unable to work in this atmosphere."))
 
     power_level=clamp(power_level,0,1e30) // sorry bud we're capping you at a quettawatt
     process_thermal_properties()//calculates damage and efficiency
@@ -74,7 +74,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     if(istype(W, /obj/item/card/id))
         var/obj/item/card/id/used_id = W
         used_id.adjust_redemption_points(POINT_REDEMPTION_TYPE_ENGINEERING, points_stored)
-        to_chat(user, SPAN_NOTICE("You transfer [points_stored] points to your ID"))
+        to_chat(user, span_notice("You transfer [points_stored] points to your ID"))
         points_stored = 0
         return
     if(W.is_wrench())
@@ -125,15 +125,15 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
 /obj/machinery/power/crypto_miner/proc/repair(var/mob/user,var/delay,var/damage_repaired)
     if(temperature_damage)
-        to_chat(user, SPAN_NOTICE("You start to fix some damage on the [src]'s circuit"))
+        to_chat(user, span_notice("You start to fix some damage on the [src]'s circuit"))
         if(do_after(user,delay,src))
             temperature_damage = max(temperature_damage-damage_repaired,0)
             if(temperature_damage)
-                to_chat(user, SPAN_NOTICE("You fix some damage on the [src]'s circuit"))
+                to_chat(user, span_notice("You fix some damage on the [src]'s circuit"))
             else
-                to_chat(user, SPAN_NOTICE("You completely restore the [src]'s circuit"))
+                to_chat(user, span_notice("You completely restore the [src]'s circuit"))
     else
-        to_chat(user, SPAN_NOTICE("There is no damage on the [src]'s circuit"))
+        to_chat(user, span_notice("There is no damage on the [src]'s circuit"))
 
 /obj/machinery/power/crypto_miner/proc/check_right_atmos()
 	var/datum/gas_mixture/env = loc.return_air()
