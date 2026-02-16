@@ -23,10 +23,10 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_1, /basic/tier_
 
 /datum/prototype/design/generated/power_cell/basic/tier_1
 	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_1
-GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/small, /power_cell/basic/tier_1/small, "powercell-basic-tier_1-small")
-GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/medium, /power_cell/basic/tier_1/medium, "powercell-basic-tier_1-medium")
-GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/large, /power_cell/basic/tier_1/large, "powercell-basic-tier_1-large")
-GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/weapon, /power_cell/basic/tier_1/weapon, "powercell-basic-tier_1-weapon")
+GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/small/empty, /power_cell/basic/tier_1/small, "powercell-basic-tier_1-small")
+GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/medium/empty, /power_cell/basic/tier_1/medium, "powercell-basic-tier_1-medium")
+GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/large/empty, /power_cell/basic/tier_1/large, "powercell-basic-tier_1-large")
+GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_1/weapon/empty, /power_cell/basic/tier_1/weapon, "powercell-basic-tier_1-weapon")
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_2, /basic/tier_2, "basic-t2")
 /datum/prototype/power_cell/basic/tier_2
@@ -45,10 +45,10 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_2, /basic/tier_
 
 /datum/prototype/design/generated/power_cell/basic/tier_2
 	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_2
-GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/small, /power_cell/basic/tier_2/small, "powercell-basic-tier_2-small")
-GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/medium, /power_cell/basic/tier_2/medium, "powercell-basic-tier_2-medium")
-GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/large, /power_cell/basic/tier_2/large, "powercell-basic-tier_2-large")
-GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/weapon, /power_cell/basic/tier_2/weapon, "powercell-basic-tier_2-weapon")
+GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/small/empty, /power_cell/basic/tier_2/small, "powercell-basic-tier_2-small")
+GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/medium/empty, /power_cell/basic/tier_2/medium, "powercell-basic-tier_2-medium")
+GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/large/empty, /power_cell/basic/tier_2/large, "powercell-basic-tier_2-large")
+GENERATE_DESIGN_FOR_NT_AUTOLATHE(/obj/item/cell/basic/tier_2/weapon/empty, /power_cell/basic/tier_2/weapon, "powercell-basic-tier_2-weapon")
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_3, /basic/tier_3, "basic-t3")
 /datum/prototype/power_cell/basic/tier_3
@@ -70,10 +70,10 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_3, /basic/tier_
 
 /datum/prototype/design/generated/power_cell/basic/tier_3
 	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_3
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/small, /power_cell/basic/tier_3/small, "powercell-basic-tier_3-small")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/medium, /power_cell/basic/tier_3/medium, "powercell-basic-tier_3-medium")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/large, /power_cell/basic/tier_3/large, "powercell-basic-tier_3-large")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/weapon, /power_cell/basic/tier_3/weapon, "powercell-basic-tier_3-weapon")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/small/empty, /power_cell/basic/tier_3/small, "powercell-basic-tier_3-small")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/medium/empty, /power_cell/basic/tier_3/medium, "powercell-basic-tier_3-medium")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/large/empty, /power_cell/basic/tier_3/large, "powercell-basic-tier_3-large")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_3/weapon/empty, /power_cell/basic/tier_3/weapon, "powercell-basic-tier_3-weapon")
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_4, /basic/tier_4, "basic-t4")
 /datum/prototype/power_cell/basic/tier_4
@@ -95,10 +95,10 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_4, /basic/tier_
 
 /datum/prototype/design/generated/power_cell/basic/tier_4
 	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_4
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/small, /power_cell/basic/tier_4/small, "powercell-basic-tier_4-small")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/medium, /power_cell/basic/tier_4/medium, "powercell-basic-tier_4-medium")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/large, /power_cell/basic/tier_4/large, "powercell-basic-tier_4-large")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/weapon, /power_cell/basic/tier_4/weapon, "powercell-basic-tier_4-weapon")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/small/empty, /power_cell/basic/tier_4/small, "powercell-basic-tier_4-small")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/medium/empty, /power_cell/basic/tier_4/medium, "powercell-basic-tier_4-medium")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/large/empty, /power_cell/basic/tier_4/large, "powercell-basic-tier_4-large")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_4/weapon/empty, /power_cell/basic/tier_4/weapon, "powercell-basic-tier_4-weapon")
 
 POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_5, /basic/tier_5, "basic-t5")
 /datum/prototype/power_cell/basic/tier_5
@@ -120,7 +120,7 @@ POWER_CELL_GENERATE_TYPES(/datum/prototype/power_cell/basic/tier_5, /basic/tier_
 
 /datum/prototype/design/generated/power_cell/basic/tier_5
 	abstract_type = /datum/prototype/design/generated/power_cell/basic/tier_5
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/small, /power_cell/basic/tier_5/small, "powercell-basic-tier_5-small")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/medium, /power_cell/basic/tier_5/medium, "powercell-basic-tier_5-medium")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/large, /power_cell/basic/tier_5/large, "powercell-basic-tier_5-large")
-GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/weapon, /power_cell/basic/tier_5/weapon, "powercell-basic-tier_5-weapon")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/small/empty, /power_cell/basic/tier_5/small, "powercell-basic-tier_5-small")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/medium/empty, /power_cell/basic/tier_5/medium, "powercell-basic-tier_5-medium")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/large/empty, /power_cell/basic/tier_5/large, "powercell-basic-tier_5-large")
+GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/cell/basic/tier_5/weapon/empty, /power_cell/basic/tier_5/weapon, "powercell-basic-tier_5-weapon")

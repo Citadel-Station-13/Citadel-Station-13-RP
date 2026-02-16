@@ -261,7 +261,7 @@
 					SPAN_NOTICE("Siphoned [round(transferred_energy * 0.001, 0.1)]kJ from [src]."),
 					target = src,
 				)
-		return CLICKCHAIN_DO_NOT_PROPAGATE  | CLICKCHAIN_DID_SOMETHING
+			return CLICKCHAIN_DO_NOT_PROPAGATE  | CLICKCHAIN_DID_SOMETHING
 
 //* Main *//
 

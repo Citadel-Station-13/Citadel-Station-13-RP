@@ -182,7 +182,7 @@
 /datum/supply_pack/nanotrasen/munitions/pcellammo
 	name = "Ammunition - Power cell"
 	contains = list(
-		/obj/item/cell/basic/tier_3/weapon = 3,
+		/obj/item/cell/basic/tier_2/weapon = 3,
 	)
 	container_access = list()
 
