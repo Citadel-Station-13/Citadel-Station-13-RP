@@ -9,7 +9,6 @@
 /obj/item/vehicle_module/lazy/stack_generator
 	name = "abstract concept of a generator"
 	desc = "Generates power for a vehicle, presumably."
-	#warn sprite
 	icon_state = "tesla"
 
 	/// stack type or types to accept

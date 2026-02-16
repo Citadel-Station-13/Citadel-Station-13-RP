@@ -4,7 +4,7 @@
 /obj/item/vehicle_component/mecha_actuator
 	name = "mecha actuator"
 	desc = "An actuator for an exosuit's movement subsystem."
-	icon = 'icons/mecha/mech_component.dmi'
+	icon = 'icons/modules/vehicles/vehicle_component.dmi'
 	icon_state = "motor"
 	w_class = WEIGHT_CLASS_HUGE
 	materials_base = list(MAT_STEEL = 2500, MAT_GLASS = 1200)

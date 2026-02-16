@@ -4,7 +4,8 @@
 /obj/item/vehicle_module/shield_projector
 	name = "vehicle shield projector"
 	desc = "A shield projector that forms a deflector shield some distance away from the vehicle."
-	#warn sprite
+	icon = 'icons/modules/vehicles/vehicle_module/shields.dmi'
+	icon_state = "shield"
 
 	module_slot = VEHICLE_MODULE_SLOT_HULL
 
@@ -67,7 +68,7 @@
 /obj/item/vehicle_module/shield_projector/omnidirectional/reticence
 	name = /obj/item/vehicle_module/shield_projector::name + " (omnidirectional)"
 	desc = "A perfected Silencium combat shield. The manner by which it distorts the air is the only way to tell it's there at all."
-	#warn sprite
+	icon_state = "shield_mime"
 	shield_color_full = "#CFCFCF"
 	shield_color_empty = "#FFC2C2"
 
@@ -79,7 +80,6 @@
 /obj/item/vehicle_module/shield_projector/linear/reticent
 	name = /obj/item/vehicle_module/shield_projector::name + " (linear)"
 	desc = "A Silencium infused linear combat shield. Its faint presence cannot be easily detected."
-	#warn sprite
 	icon_state = "shield_mime"
 	shield_color_full = "#CFCFCF"
 	shield_color_empty = "#FFC2C2"

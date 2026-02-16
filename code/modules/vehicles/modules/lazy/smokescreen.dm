@@ -4,7 +4,7 @@
 /obj/item/vehicle_module/lazy/smokescreen
 	name = /obj/item/vehicle_module::name + " (smokescreen emitter)"
 	desc = "A mounted smokescreen emitter for vehicles. Useful to provide some mediocre cover in a pinch."
-	#warn sprite
+	icon_state = "tesla"
 	var/charges_max = 5
 	var/charges = 5
 	var/cooldown = 10 SECONDS

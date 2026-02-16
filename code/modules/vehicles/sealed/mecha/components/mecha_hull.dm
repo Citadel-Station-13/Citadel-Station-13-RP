@@ -40,7 +40,7 @@
  */
 /obj/item/vehicle_component/plating/mecha_hull
 	name = "mecha hull"
-	icon = 'icons/mecha/mech_component.dmi'
+	icon = 'icons/modules/vehicles/vehicle_component.dmi'
 	icon_state = "hull"
 	w_class = WEIGHT_CLASS_HUGE
 	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)

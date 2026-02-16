@@ -3,7 +3,7 @@
  */
 /obj/item/vehicle_component/mecha_electrical
 	name = "mecha electrical harness"
-	icon = 'icons/mecha/mech_component.dmi'
+	icon = 'icons/modules/vehicles/vehicle_component.dmi'
 	icon_state = "board"
 	w_class = WEIGHT_CLASS_HUGE
 	materials_base = list(MAT_STEEL = 2500, MAT_GLASS = 1000)
