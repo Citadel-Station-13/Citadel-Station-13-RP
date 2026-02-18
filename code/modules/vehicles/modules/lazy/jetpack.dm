@@ -9,6 +9,7 @@
 	//       support
 
 	/// Whether or not this jetpack is active.
+	/// * At time of writing, this is set on the vehicle side.
 	var/active = FALSE
 
 /obj/item/vehicle_module/lazy/jetpack/render_ui()
@@ -24,18 +25,19 @@
 			switch(name)
 				if("Enable")
 				if("Disable")
+					#warn impl
 
-/obj/item/vehicle_module/lazy/jetpack/proc/set_active(new_state)
+/obj/item/vehicle_module/lazy/jetpack/proc/set_active(new_state, datum/event_args/actor/actor, silent)
 	#warn impl
 
-/obj/item/vehicle_module/lazy/jetpack/proc/on_activate()
+/obj/item/vehicle_module/lazy/jetpack/proc/on_activate(datum/event_args/actor/actor, silent)
 	return
 
-/obj/item/vehicle_module/lazy/jetpack/proc/on_deactivate()
+/obj/item/vehicle_module/lazy/jetpack/proc/on_deactivate(datum/event_args/actor/actor, silent)
 	return
 
 /obj/item/vehicle_module/lazy/jetpack/proc/handle_process_spacemove(drifting, movement_dir, just_checking)
-	#warn impl
+	return TRUE
 
 // TODO: IOU /obj/item/vehicle_module/lazy/jetpack/gas
 // TODO: IOU /obj/item/vehicle_module/lazy/jetpack/gas/ion
@@ -68,11 +70,11 @@
 	if(ion_trail)
 		QDEL_NULL(ion_trail)
 
-/obj/item/vehicle_module/lazy/jetpack/electric/on_activate()
+/obj/item/vehicle_module/lazy/jetpack/electric/on_activate(datum/event_args/actor/actor, silent)
 	..()
 	ion_trail.start()
 
-/obj/item/vehicle_module/lazy/jetpack/electric/on_deactivate()
+/obj/item/vehicle_module/lazy/jetpack/electric/on_deactivate(datum/event_args/actor/actor, silent)
 	..()
 	ion_trail.stop()
 

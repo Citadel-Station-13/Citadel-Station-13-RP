@@ -117,5 +117,7 @@
 	if(.)
 		return
 	for(var/obj/item/vehicle_module/lazy/jetpack/jetpack in modules)
+		if(!jetpack.active)
+			continue
 		if(jetpack.handle_process_spacemove(drifting, movement_dir, just_checking))
 			return TRUE
