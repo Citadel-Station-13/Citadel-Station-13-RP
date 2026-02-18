@@ -1602,7 +1602,7 @@
 	},
 /area/awaymission/snow_outpost/outside)
 "gl" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -1622,7 +1622,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside)
 "gp" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/snow_outpost/outside)
 "gq" = (
@@ -1762,7 +1762,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "gK" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
@@ -2028,11 +2028,11 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/snow_outpost/dark)
 "hM" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hN" = (
-/obj/effect/spider/spiderling/frost,
+/obj/structure/spider/spiderling/frost,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/outside)
 "hO" = (
@@ -2076,8 +2076,8 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hX" = (
-/obj/effect/spider/stickyweb,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hY" = (
@@ -2162,7 +2162,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/snow_outpost/outside)
 "ip" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside)
 "iq" = (
@@ -2187,7 +2187,7 @@
 /turf/simulated/shuttle/wall,
 /area/awaymission/snow_outpost/outside)
 "iv" = (
-/obj/effect/spider/eggcluster/small/frost,
+/obj/structure/spider/eggcluster/small/frost,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside)
 "iw" = (
@@ -2240,8 +2240,8 @@
 /turf/simulated/shuttle/floor,
 /area/awaymission/snow_outpost/outside)
 "iC" = (
-/obj/effect/spider/stickyweb,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside)
 "iD" = (
@@ -2428,7 +2428,7 @@
 	},
 /area/awaymission/snow_outpost/powered)
 "xN" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/snow_outpost/dark)
 "yt" = (
@@ -2444,7 +2444,7 @@
 /turf/simulated/wall/r_wall,
 /area/awaymission/snow_outpost/powered)
 "yY" = (
-/obj/effect/spider/spiderling/frost,
+/obj/structure/spider/spiderling/frost,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "za" = (

@@ -10,7 +10,7 @@
 /area/class_h/explored)
 "d" = (
 /obj/random/mob/spider/nurse,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "e" = (
@@ -23,7 +23,7 @@
 	lit = 1
 	},
 /obj/item/clothing/ears/earring/dangle/glass,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "m" = (
@@ -55,7 +55,7 @@
 	lit = 1
 	},
 /obj/item/clothing/gloves/ring/material/iron,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "H" = (
@@ -75,7 +75,7 @@
 /turf/simulated/wall/sandstonediamond,
 /area/class_h/POIs/tomb)
 "N" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "O" = (
@@ -90,7 +90,7 @@
 	lit = 1
 	},
 /obj/item/clothing/ears/skrell/chain,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "T" = (
@@ -117,7 +117,7 @@
 /area/class_h/POIs/tomb)
 "Y" = (
 /obj/random/mob/spider/mutant,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
 /area/class_h/POIs/tomb)
 "Z" = (

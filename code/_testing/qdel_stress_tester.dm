@@ -106,7 +106,7 @@ GLOBAL_REAL_VAR(__qdel_stress_tester) = new /datum/__qdel_stress_tester
 		/obj/item/clothing/suit/armor/pcarrier/ballistic,
 		/obj/effect/temp_visual/explosion/fast,
 		/obj/effect/temporary_effect/cleave_attack,
-		/obj/effect/plant,
+		/obj/structure/plant,
 		/obj/effect/floormimic,
 		/obj/effect/forcefield/cult,
 		/obj/item/vehicle_module/cloak,

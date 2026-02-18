@@ -13,7 +13,7 @@
 /turf/simulated/wall,
 /area/submap/skyplanet/poi/nest)
 "I" = (
-/obj/effect/spider/eggcluster,
+/obj/structure/spider/eggcluster,
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/nest)
 "M" = (

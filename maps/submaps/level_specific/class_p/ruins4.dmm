@@ -7,7 +7,7 @@
 /turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "m" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "n" = (
@@ -17,12 +17,12 @@
 /turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "s" = (
-/obj/effect/spider/cocoon,
+/obj/structure/spider/cocoon,
 /obj/random/triumph/uncertain,
 /turf/simulated/floor/plating/outdoors,
 /area/class_p/ruins)
 "t" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/structure/closet/crate/secure/loot,
 /turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
@@ -42,7 +42,7 @@
 /turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 "S" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/snow/no_tree,
 /area/class_p/ruins)
 

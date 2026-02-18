@@ -7,7 +7,7 @@
 
 	var/spawncount = 1
 
-	var/spawntype = /obj/effect/spider/spiderling
+	var/spawntype = /obj/structure/spider/spiderling
 
 /datum/gm_action/spider_infestation/set_up()
 	severity = pick_weight(mundande_weight = max(1,(12 - (3 * metric.count_people_in_department(DEPARTMENT_SECURITY)))),
@@ -17,11 +17,11 @@
 
 	switch(severity)
 		if(EVENT_LEVEL_MUNDANE)
-			spawntype = /obj/effect/spider/spiderling/stunted
+			spawntype = /obj/structure/spider/spiderling/stunted
 		if(EVENT_LEVEL_MODERATE)
-			spawntype = /obj/effect/spider/spiderling
+			spawntype = /obj/structure/spider/spiderling
 		if(EVENT_LEVEL_MAJOR)
-			spawntype = /obj/effect/spider/spiderling
+			spawntype = /obj/structure/spider/spiderling
 
 	spawncount = rand(4 * severity, 6 * severity)
 
@@ -42,7 +42,7 @@
 
 	while((spawncount >= 1) && vents.len)
 		var/obj/vent = pick(vents)
-		new /obj/effect/spider/spiderling(vent.loc)
+		new /obj/structure/spider/spiderling(vent.loc)
 		vents -= vent
 		spawncount--
 

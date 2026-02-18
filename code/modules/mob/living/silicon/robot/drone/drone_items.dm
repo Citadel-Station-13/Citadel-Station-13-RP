@@ -58,7 +58,7 @@
 		//Different classes of items give different commodities.
 		if(istype(W,/obj/item/cigbutt))
 			item_mount?.material_give_amount(src, null, /datum/prototype/material/plastic::id, 500)
-		else if(istype(W,/obj/effect/spider/spiderling))
+		else if(istype(W,/obj/structure/spider/spiderling))
 			item_mount?.material_give_amount(src, null, /datum/prototype/material/wood_plank::id, 2000)
 			item_mount?.material_give_amount(src, null, /datum/prototype/material/plastic::id, 2000)
 		else if(istype(W,/obj/item/light))
