@@ -1,3 +1,5 @@
+GLOBAL_REAL(world_init_options, /datum/world_init_options)
+
 /datum/world_init_options
 	/**
 	 * If enabled, will force only loading the given station map and nothing else.

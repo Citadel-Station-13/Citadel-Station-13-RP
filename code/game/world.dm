@@ -47,8 +47,6 @@ GLOBAL_LIST(topic_status_cache)
  * SO HELP ME GOD IF I FIND ABSTRACTION LAYERS OVER THIS!
  */
 /world/proc/Genesis(tracy_initialized = FALSE)
-	RETURN_TYPE(/datum/controller/master)
-
 	if(!tracy_initialized)
 		Tracy = new
 #ifdef USE_BYOND_TRACY
@@ -68,6 +66,12 @@ GLOBAL_LIST(topic_status_cache)
 			return
 #endif
 
+	// Init the debugger first because are you insane ofcourse you initialize the DEBUGGER first
+	global.Debugger = new
+	// Logs and shit
+	global.world_log_shunter = new
+	global.world_init_options = new
+
 	Profile(PROFILE_RESTART)
 	Profile(PROFILE_RESTART, type = "sendmaps")
 
@@ -75,9 +79,6 @@ GLOBAL_LIST(topic_status_cache)
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	// citadel edit: world runtime log removed due to world.log shunt doing that for us
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
-
-	// Init the debugger first so we can debug Master
-	Debugger = new
 
 	// THAT'S IT, WE'RE DONE, THE. FUCKING. END.
 	Master = new
