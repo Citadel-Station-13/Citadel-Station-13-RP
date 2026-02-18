@@ -65,6 +65,11 @@ SUBSYSTEM_DEF(ticker)
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
 	var/atom/movable/screen/cinematic = null
 
+	/**
+	 * The time the round started at.
+	 * * If the round has not started yet, this is null and should not be read.
+	 * * Use STATION_TIME_PASSED() to get round time in deciseconds instead.
+	 */
 	var/static/round_start_time
 	var/static/list/round_start_events
 	var/static/list/round_end_events
