@@ -69,6 +69,7 @@
 	desc = "A tightly bundled set of conduits used to connect the parts of an airlock together."
 	icon = 'icons/machinery/airlocks/airlock_interconnect.dmi'
 	icon_state = "conduit-map"
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 
 	/// our pipenet
 	var/datum/airlock_gasnet/network

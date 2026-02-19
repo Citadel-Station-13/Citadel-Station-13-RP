@@ -34,7 +34,7 @@
 		for(var/obj/structure/cable/C in T)
 			if((C.d1 == opp || C.d2 == opp) && C.color == cable_color)
 				. |= i
-				continue
+				break
 
 /obj/map_helper/network_builder/power_cable/build()
 	if(!network_directions)
