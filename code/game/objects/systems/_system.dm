@@ -17,3 +17,7 @@
 
 /datum/object_system/New(obj/parent)
 	src.parent = parent
+
+/datum/object_system/Destroy()
+	parent = null
+	return ..()

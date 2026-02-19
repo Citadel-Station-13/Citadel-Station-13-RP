@@ -306,6 +306,20 @@ var/global/list/light_type_cache = list()
 	icon_state = "tube_map"
 	#endif
 
+/obj/machinery/light/Initialize(mapload)
+	. = ..()
+
+	// Detect and scream about double stacked lights
+	if(PERFORM_ALL_TESTS(maptest_log_mapping))
+		var/turf/our_location = get_turf(src)
+		for(var/obj/machinery/light/on_turf in our_location)
+			if(on_turf == src)
+				continue
+			if(on_turf.dir != dir)
+				continue
+			log_mapping("Conflicting double stacked light [on_turf.type] found at [AREACOORD(src)]")
+			return INITIALIZE_HINT_QDEL
+
 /obj/machinery/light/flicker
 	auto_flicker = TRUE
 
@@ -482,6 +496,8 @@ var/global/list/light_type_cache = list()
 		on = 0
 //		A.update_lights()
 	QDEL_NULL(cell)
+	// TODO: this is insane why is a machine processing in objs?
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/machinery/light/update_icon()
@@ -669,7 +685,7 @@ var/global/list/light_type_cache = list()
 		if(LIGHT_BROKEN)
 			. += "[desc] The [fitting] has been smashed."
 	if(cell)
-		to_chat(user, "Its backup power charge meter reads [round((cell.charge / cell.maxcharge) * 100, 0.1)]%.")
+		to_chat(user, "Its backup power charge meter reads [round((cell.charge / cell.max_charge) * 100, 0.1)]%.")
 
 /obj/machinery/light/proc/get_fitting_name()
 	var/obj/item/light/L = light_type
@@ -838,7 +854,7 @@ var/global/list/light_type_cache = list()
 		status = LIGHT_BURNED
 		return FALSE
 	cell.use(pwr)
-	set_light(brightness_range * bulb_emergency_brightness_mul, max(bulb_emergency_pow_min, bulb_emergency_pow_mul * (cell.charge / cell.maxcharge)), bulb_emergency_colour)
+	set_light(brightness_range * bulb_emergency_brightness_mul, max(bulb_emergency_pow_min, bulb_emergency_pow_mul * (cell.charge / cell.max_charge)), bulb_emergency_colour)
 	return TRUE
 
 
@@ -989,9 +1005,9 @@ var/global/list/light_type_cache = list()
 	if(has_power())
 		emergency_mode = FALSE
 		update(FALSE)
-		if(cell.charge == cell.maxcharge)
+		if(cell.charge == cell.max_charge)
 			return PROCESS_KILL
-		cell.charge = min(cell.maxcharge, cell.charge + LIGHT_EMERGENCY_POWER_USE*2) //Recharge emergency power automatically while not using it
+		cell.charge = min(cell.max_charge, cell.charge + LIGHT_EMERGENCY_POWER_USE*2) //Recharge emergency power automatically while not using it
 	if(emergency_mode && !use_emergency_power(LIGHT_EMERGENCY_POWER_USE))
 		update(FALSE) //Disables emergency mode and sets the color to normal
 

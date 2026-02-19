@@ -23,6 +23,7 @@ Pipelines + Other Objects -> Pipe network
 	depth_projected = FALSE
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
 	hides_underfloor_defaulting = FALSE
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_IGNORE_MOBILITY
 
 	//* Underfloor *//
 	/// automatically update_underlays() during update_underfloor
@@ -30,8 +31,8 @@ Pipelines + Other Objects -> Pipe network
 
 	///The color of the pipe
 	var/pipe_color
-	///The flags of the pipe/component (PIPING_ALL_LAYER | PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE)
-	var/pipe_flags = PIPING_DEFAULT_LAYER_ONLY
+	///The flags of the pipe/component (PIPE_FLAG_ALL_LAYER | PIPE_FLAG_ONE_PER_TURF | PIPE_FLAG_DEFAULT_LAYER_ONLY | PIPE_FLAG_CARDINAL_AUTONORMALIZE)
+	var/pipe_flags = PIPE_FLAG_DEFAULT_LAYER_ONLY
 	///What pipe layer can this connect to.
 	var/connect_types = CONNECT_TYPE_REGULAR
 	///What layer the pipe is in (from 1 to 5, default 3)
@@ -55,11 +56,14 @@ Pipelines + Other Objects -> Pipe network
 	var/last_power_draw_legacy = 0
 
 /obj/machinery/atmospherics/Initialize(mapload, newdir)
-	. = ..()
-	if(!icon_manager)
-		icon_manager = new()
 	if(!isnull(newdir))
 		setDir(newdir)
+	if(isturf(loc))
+		var/turf/turf_loc = loc
+		turf_loc.add_blueprints_preround(src)
+	. = ..()
+	if(!icon_manager) // old t-ray overlay
+		icon_manager = new()
 	if(!pipe_color)
 		pipe_color = color
 	color = null
@@ -218,7 +222,7 @@ Pipelines + Other Objects -> Pipe network
 
 // This sets our piping layer.  Hopefully its cool.
 /obj/machinery/atmospherics/proc/setPipingLayer(new_layer)
-	if(pipe_flags & (PIPING_DEFAULT_LAYER_ONLY|PIPING_ALL_LAYER))
+	if(pipe_flags & (PIPE_FLAG_DEFAULT_LAYER_ONLY|PIPE_FLAG_ALL_LAYER))
 		new_layer = PIPING_LAYER_DEFAULT
 	piping_layer = new_layer
 	switch(piping_layer)
@@ -242,7 +246,7 @@ Pipelines + Other Objects -> Pipe network
 			connect_types = CONNECT_TYPE_AUX
 			layer = PIPES_AUX_LAYER
 			icon_connect_type = "-aux"
-	if(pipe_flags & PIPING_ALL_LAYER)
+	if(pipe_flags & PIPE_FLAG_ALL_LAYER)
 		connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY|CONNECT_TYPE_SCRUBBER|CONNECT_TYPE_FUEL|CONNECT_TYPE_AUX
 	// Or if we were to do it the TG way...
 	// pixel_x = PIPE_PIXEL_OFFSET_X(piping_layer)

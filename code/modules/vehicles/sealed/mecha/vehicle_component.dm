@@ -130,10 +130,13 @@
 		if(internal_damage_flag && chassis.hasInternalDamage(internal_damage_flag))	// If the module has been removed, it's kind of unfair to keep it causing problems by being damaged. It's nonfunctional either way.
 			chassis.clearInternalDamage(internal_damage_flag)
 
-		forceMove(get_turf(chassis))
+		if(!isloc(chassis.loc))
+			if(!QDELING(src))
+				qdel(src)
+		else
+			forceMove(get_turf(chassis))
 	chassis = null
 	return TRUE
-
 
 /obj/item/vehicle_component/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack/nanopaste))

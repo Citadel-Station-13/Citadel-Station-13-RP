@@ -5,7 +5,7 @@
  */
 
 //! /area signals
-/// From base of area/Entered(): (atom/movable/M)
+/// From base of area/Entered(): (atom/movable/arrived, area/old_area)
 #define COMSIG_AREA_ENTERED "area_entered"
-/// From base of area/Exited(): (atom/movable/M)
+/// From base of area/Exited(): (atom/movable/gone, direction)
 #define COMSIG_AREA_EXITED "area_exited"

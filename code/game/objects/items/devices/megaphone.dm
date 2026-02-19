@@ -4,6 +4,8 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "megaphone"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	var/spamcheck = 0
 	var/emagged = 0

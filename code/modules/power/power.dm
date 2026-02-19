@@ -15,6 +15,12 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
+/obj/machinery/power/Initialize(mapload)
+	. = ..()
+	if(isturf(loc))
+		var/turf/turf_loc = loc
+		turf_loc.add_blueprints_preround(src)
+
 /obj/machinery/power/Destroy()
 	disconnect_from_network()
 	disconnect_terminal()

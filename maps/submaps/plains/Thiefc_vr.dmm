@@ -110,10 +110,10 @@
 /area/submap/Thiefc)
 "o" = (
 /obj/structure/closet/crate,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
 /obj/item/perfect_tele/one_beacon,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0

@@ -436,10 +436,14 @@
 	job_access_type = null
 	access = list(ACCESS_SECURITY_GENPOP_ENTER)
 
-/obj/item/card/id/prisoner/New()
-	. = ..()
+/obj/item/card/id/prisoner/Initialize(mapload)
 	START_PROCESSING(SSprocessing, src)
 	registered_name = "Prisoner #13-[rand(100,999)]"
+	return ..()
+
+/obj/item/card/id/prisoner/Destroy()
+	STOP_PROCESSING(SSprocessing, src)
+	return ..()
 
 /obj/item/card/id/prisoner/process()
 	if (sentence > 0 && served > (sentence * 60)) //FREEDOM!

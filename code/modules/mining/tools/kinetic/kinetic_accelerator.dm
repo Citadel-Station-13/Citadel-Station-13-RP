@@ -20,12 +20,13 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
-	cell_type = /obj/item/cell/device/weapon/empproof
+	cell_type = /obj/item/cell/kinetic_capacitor
 	clothing_flags = NONE
 	charge_meter = FALSE
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	projectile_type = /obj/projectile/kinetic
-	charge_cost = 1200
+	charge_cost = /obj/item/cell/kinetic_capacitor::max_charge
 	legacy_battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	render_use_legacy_by_default = FALSE
@@ -61,15 +62,6 @@
 /obj/item/gun/projectile/energy/kinetic_accelerator/on_firing_cycle_end(datum/gun_firing_cycle/cycle)
 	. = ..()
 	attempt_reload()
-
-/*
-/obj/item/gun/projectile/energy/kinetic_accelerator/premiumka
-	name = "premium accelerator"
-	desc = "A premium kinetic accelerator fitted with an extended barrel and increased pressure tank."
-	icon_state = "premiumgun"
-	item_state = "premiumgun"
-	projectile_type = /obj/projectile/kinetic/premium
-*/
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/examine(mob/user, dist)
 	. = ..()
@@ -188,7 +180,7 @@
 	return
 
 /obj/item/gun/projectile/energy/kinetic_accelerator/proc/reload()
-	obj_cell_slot.cell.give(obj_cell_slot.cell.maxcharge)
+	obj_cell_slot.cell.give(obj_cell_slot.cell.max_charge)
 	// process_chamber()
 	// if(!suppressed)
 	playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)
@@ -274,8 +266,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "modkit"
 	w_class = WEIGHT_CLASS_SMALL
-	var/require_module = 1
-	// module_type = list(/obj/item/robot_module/miner)
+	// module_type = list(/obj/item/robot_module_legacy/miner)
 	var/denied_type = null
 	var/maximum_of_type = 1
 	var/cost = 30
@@ -384,7 +375,7 @@
 	name = "minebot cooldown decrease"
 	desc = "Decreases the cooldown of a kinetic accelerator. Only rated for minebot use."
 	icon_state = "door_electronics"
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	denied_type = /obj/item/ka_modkit/cooldown/minebot
 	modifier = 10
 	cost = 0

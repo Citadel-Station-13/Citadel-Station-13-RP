@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
 /**
  * entities
  *
@@ -13,6 +16,7 @@
 	pixel_movement = TRUE
 	animate_movement = NONE
 	glide_size = 128
+	// always slide and do not jump
 	step_size = INFINITY
 	uses_bounds_overlay = TRUE
 
@@ -22,18 +26,29 @@
 	/// next id
 	var/static/id_next = 0
 
+	//* location *//
+	/// our location, if any
+	var/datum/overmap_location/location
+
 	//* overmap *//
 	/// if we're currently in an overmap; if so, which?
 	var/datum/overmap/overmap
 
 	//* physics *//
+
 	/// velocity x in overmap units per second
+	//  todo: after VV is reworked, change this to a /vector.
 	var/vel_x
 	/// velocity y in overmap units per second
+	//  todo: after VV is reworked, change this to a /vector.
 	var/vel_y
 	/// cached, read-only cached center x in overmap dist
+	//  todo: get rid of this if possible, this is only here for
+	//        faster virtualized pos calculation and for drift sanity checks.
 	var/pos_x
 	/// cached, read-only cached center y in overmap dist
+	//  todo: get rid of this if possible, this is only here for
+	//        faster virtualized pos calculation and for drift sanity checks.
 	var/pos_y
 	/// bump was handled
 	var/bump_handled = FALSE
@@ -52,8 +67,14 @@
 	id = "[GLOB.round_id? "[GLOB.round_id]_" : ""][num2text(++id_next, 999)]"
 	return ..()
 
-/obj/overmap/entity/Initialize(mapload)
+/obj/overmap/entity/Initialize(mapload, datum/overmap_location/location)
 	. = ..()
+	// bind location
+	if(location)
+		set_location(location)
+	// join overmap
+	if(isturf(loc) && !overmap && istype(loc.loc, /area/overmap))
+		loc.loc.Entered(src)
 	// init physics
 	initialize_physics()
 	update_velocity_ticking()
@@ -63,6 +84,8 @@
 /obj/overmap/entity/Destroy()
 	// stop physics
 	deactivate_physics()
+	// unbind location
+	QDEL_NULL(location)
 	return ..()
 
 /obj/overmap/entity/set_glide_size(new_glide_size, recursive)
@@ -85,15 +108,3 @@
 
 /obj/overmap/entity/get_bounds_overlay()
 	return SSovermaps.entity_bounds_overlay(bound_x, bound_y, bound_width, bound_height)
-
-/**
- * called when we join an overmap
- */
-/obj/overmap/entity/proc/on_overmap_join(datum/overmap/map)
-	src.overmap = map
-
-/**
- * called when we leave an overmap
- */
-/obj/overmap/entity/proc/on_overmap_leave(datum/overmap/map)
-	src.overmap = map

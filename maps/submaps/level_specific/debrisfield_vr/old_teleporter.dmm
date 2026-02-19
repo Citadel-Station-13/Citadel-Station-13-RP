@@ -22,8 +22,7 @@
 	cell_type = null;
 	coverlocked = 0;
 	locked = 0;
-	opened = 1;
-	pixel_y = 24
+	opened = 1
 	},
 /obj/structure/cable{
 	icon_state = "0-2"

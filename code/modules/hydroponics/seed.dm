@@ -65,8 +65,8 @@
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.25)         // Plant eats this much per tick.
 	set_trait(TRAIT_PLANT_COLOUR,         "#46B543")    // Colour of the plant icon.
 
-	spawn(5)
-		sleep(-1)
+	spawn(0)
+		UNTIL(SSplants.initialized)
 		update_growth_stages()
 
 /datum/seed/proc/get_trait(var/trait)

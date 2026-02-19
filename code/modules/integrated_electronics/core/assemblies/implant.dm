@@ -10,6 +10,11 @@
 	max_complexity = IC_COMPLEXITY_BASE / 2
 	var/obj/item/implant/integrated_circuit/implant = null
 
+/obj/item/electronic_assembly/implant/Destroy()
+	if(implant.IC == src)
+		implant.IC = null
+	return ..()
+
 /obj/item/electronic_assembly/implant/ui_host()
 	return implant.ui_host()
 

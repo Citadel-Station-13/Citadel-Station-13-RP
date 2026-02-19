@@ -59,6 +59,13 @@
 	. += create_stack_recipe_datum(name = "lush grass", product = /obj/structure/flora/ausbushes/grassybush, cost = 1)
 	. += create_stack_recipe_datum(name = "grass", product = /obj/structure/flora/ausbushes/fullgrass, cost = 1)
 	. += create_stack_recipe_datum(name = "sparse grass", product = /obj/structure/flora/ausbushes/sparsegrass, cost = 1)
+	. += create_stack_recipe_datum(name = "soil bed", product = /obj/machinery/portable_atmospherics/hydroponics/soil/grassy, cost = 15)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Foliage", product = /obj/structure/flora/grass/fey/bush/florarandom, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Bush", product = /obj/structure/flora/grass/fey/bush/bushrandom, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Low Bush", product = /obj/structure/flora/grass/fey/bush/lowbushrandom, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Big Fey Grass", product = /obj/structure/flora/fey/large/randombush, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Grass", product = /obj/structure/flora/grass/fey/bush/grassrandom, cost = 1)
+	. += create_stack_recipe_datum(category = "fey flora", name = "Fey Sparce Grass", product = /obj/structure/flora/grass/fey/bush/sparcegrassrandom, cost = 1)
 
 /*
  * Wood
@@ -81,14 +88,6 @@
 	singular_name = "alien wood tile"
 	desc = "An easy to fit wooden floor tile. It's blue!"
 	icon_state = "tile-sifwood"
-
-/obj/item/stack/tile/wood/cyborg
-	name = "wood floor tile synthesizer"
-	desc = "A device that makes wood floor tiles."
-	uses_charge = 1
-	charge_costs = list(250)
-	stack_type = /obj/item/stack/tile/wood
-	stacktype_legacy = /obj/item/stack/tile/wood
 
 /*
  * Carpets
@@ -291,16 +290,6 @@
 	materials_base = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
-/obj/item/stack/tile/floor/cyborg
-	name = "floor tile synthesizer"
-	desc = "A device that makes floor tiles."
-	gender = NEUTER
-	materials_base = null
-	uses_charge = 1
-	charge_costs = list(250)
-	stack_type = /obj/item/stack/tile/floor
-	stacktype_legacy = /obj/item/stack/tile/floor
-
 /obj/item/stack/tile/floor/sandstone
 	name = "sandstone tile"
 	singular_name = "sandstone tile"
@@ -347,14 +336,6 @@
 	singular_name = "roofing"
 	desc = "A section of roofing material. You can use it to repair the ceiling, or expand it."
 	icon_state = "techtile_grid"
-
-/obj/item/stack/tile/roofing/cyborg
-	name = "roofing synthesizer"
-	desc = "A device that makes roofing tiles."
-	uses_charge = 1
-	charge_costs = list(250)
-	stack_type = /obj/item/stack/tile/roofing
-	stacktype_legacy = /obj/item/stack/tile/roofing
 
 /obj/item/stack/tile/roofing/wood
 	name = "wood roofing"

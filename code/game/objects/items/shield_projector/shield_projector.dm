@@ -305,6 +305,11 @@
 	var/obj/vehicle/sealed/mecha/my_mecha = null
 	var/obj/item/vehicle_module/combat_shield/my_tool = null
 
+/obj/item/shield_projector/line/exosuit/Destroy()
+	my_mecha = null
+	my_tool = null
+	return ..()
+
 /obj/item/shield_projector/line/exosuit/process()
 	..()
 	if((my_tool && loc != my_tool) && (my_mecha && loc != my_mecha))

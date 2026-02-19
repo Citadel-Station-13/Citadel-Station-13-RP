@@ -8,7 +8,7 @@
 	icon_state = "screwdriver"
 	item_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	tool_behaviour = TOOL_SCREWDRIVER
+	tool_behavior = TOOL_SCREWDRIVER
 	damage_force = 6
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 5

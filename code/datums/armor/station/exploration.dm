@@ -1,7 +1,7 @@
 /datum/armor/exploration/soft
 	melee = 0.35
 	melee_tier = 2.75
-	bullet = 0.2
+	bullet = 0.25
 	bullet_tier = 2.75
 	laser = 0.25
 	laser_tier = 2.75
@@ -15,10 +15,10 @@
 /datum/armor/exploration/space
 	melee = 0.3
 	melee_tier = 3.5
-	bullet = 0.2
+	bullet = 0.32
 	bullet_tier = 3.5
-	laser = 0.25
-	laser_tier = 3.5
+	laser = 0.3
+	laser_tier = 3.25
 	energy = 0.3
 	bomb = 0.35
 	bio = 0.7

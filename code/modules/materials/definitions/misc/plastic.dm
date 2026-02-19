@@ -34,7 +34,7 @@
 	)
 	. += create_stack_recipe_datum(
 		name = "plastic bag",
-		product = /obj/item/storage/bag/plasticbag,
+		product = /obj/item/storage/bag/trash/plasticbag,
 		cost = 3,
 	)
 	. += create_stack_recipe_datum(

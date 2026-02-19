@@ -5,7 +5,6 @@
 	name = "suit"
 	var/fire_resist = T0C+100
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	allowed = list(/obj/item/tank/emergency/oxygen)
 	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"

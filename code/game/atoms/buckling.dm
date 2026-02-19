@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /atom/movable/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
 	if(drag_drop_buckle_interaction(dropping, user))

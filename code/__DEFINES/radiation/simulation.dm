@@ -32,6 +32,8 @@
 #define RAD_FALLOFF_ENGINE_SINGULARITY 0.5
 /// materials
 #define RAD_FALLOFF_MATERIALS 0.5
+/// breached microfission cell
+#define RAD_FALLOFF_CELL_MICROFISSION 0.5
 
 //! Pulse - Z Falloff
 //* Keep in mind that these are low because things are usually really far away and the point of Z rad is to hit most things.
@@ -53,6 +55,10 @@
 #define RAD_INTENSITY_STANDALONE_DEFIB 100
 /// standalone shockpaddles - fail tick
 #define RAD_INTENSITY_STANDALONE_DEFIB_FAIL 150
+/// minimum intensity of a breached microfission cell
+#define RAD_INTENSITY_CELL_MICROFISSION_LEAK_MINIMUM 75
+/// maximum intensity of a breached microfission cell
+#define RAD_INTENSITY_CELL_MICROFISSION_LEAK_MAXIMUM 350
 
 //? machines
 /// gravity generator grav per tick while charging/discharging

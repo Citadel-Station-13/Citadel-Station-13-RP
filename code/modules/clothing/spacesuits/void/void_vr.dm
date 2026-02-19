@@ -18,7 +18,6 @@
 		SPECIES_ZORREN_FLAT = 'icons/obj/clothing/species/fennec/hats.dmi',
 		SPECIES_ZORREN_HIGH = 'icons/obj/clothing/species/fox/hats.dmi',
 		SPECIES_VULPKANIN   = 'icons/obj/clothing/species/vulpkanin/hats.dmi',
-		SPECIES_PROMETHEAN  = 'icons/obj/clothing/species/skrell/hats.dmi',
 		SPECIES_XENOHYBRID  = 'icons/obj/clothing/species/unathi/hats.dmi',
 		SPECIES_VOX         = 'icons/obj/clothing/species/vox/hats.dmi',
 		)
@@ -27,7 +26,6 @@
 	sprite_sheets_obj = list(
 		SPECIES_AKULA       = 'icons/obj/clothing/species/akula/suits.dmi',
 		SPECIES_NEVREAN     = 'icons/obj/clothing/species/nevrean/suits.dmi',
-		SPECIES_PROMETHEAN  = 'icons/obj/clothing/species/skrell/suits.dmi',
 		SPECIES_SERGAL      = 'icons/obj/clothing/species/sergal/suits.dmi',
 		SPECIES_SKRELL      = 'icons/obj/clothing/species/skrell/suits.dmi',
 		SPECIES_TAJ         = 'icons/obj/clothing/species/tajaran/suits.dmi',

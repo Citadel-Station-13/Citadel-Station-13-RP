@@ -52,7 +52,7 @@
 
 /obj/machinery/computer/card/AltClick(mob/user)
 	. = ..()
-	if(.)
+	if(. != "keep-going")
 		return
 	// todo: mobility flags
 	if(user.stat || user.lying)

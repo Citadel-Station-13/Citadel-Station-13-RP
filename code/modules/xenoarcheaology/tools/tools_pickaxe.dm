@@ -12,6 +12,8 @@
 	drill_sound = 'sound/weapons/thudswoosh.ogg'
 	drill_verb = "brushing"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/pickaxe/one_pick
 	name = "2cm pick"
@@ -25,6 +27,8 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/pickaxe/two_pick
 	name = "4cm pick"
@@ -38,6 +42,8 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/pickaxe/three_pick
 	name = "6cm pick"
@@ -51,6 +57,8 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/pickaxe/four_pick
 	name = "8cm pick"
@@ -64,6 +72,8 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/pickaxe/five_pick
 	name = "10cm pick"
@@ -77,6 +87,8 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/pickaxe/six_pick
 	name = "12cm pick"
@@ -90,6 +102,8 @@
 	drill_sound = 'sound/items/Screwdriver.ogg'
 	drill_verb = "delicately picking"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/pickaxe/hand
 	name = "hand pickaxe"
@@ -103,6 +117,8 @@
 	drill_sound = 'sound/items/Crowbar.ogg'
 	drill_verb = "clearing"
 	w_class = WEIGHT_CLASS_SMALL
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pack for holding pickaxes
@@ -115,14 +131,17 @@
 	item_state = "syringe_kit"
 	max_items = 7
 	w_class = WEIGHT_CLASS_SMALL
-	insertion_whitelist = list(/obj/item/pickaxe/brush,
-	/obj/item/pickaxe/one_pick,
-	/obj/item/pickaxe/two_pick,
-	/obj/item/pickaxe/three_pick,
-	/obj/item/pickaxe/four_pick,
-	/obj/item/pickaxe/five_pick,
-	/obj/item/pickaxe/six_pick,
-	/obj/item/pickaxe/hand)
+	belt_storage_class = BELT_CLASS_SMALL
+	insertion_whitelist = list(
+		/obj/item/pickaxe/brush,
+		/obj/item/pickaxe/one_pick,
+		/obj/item/pickaxe/two_pick,
+		/obj/item/pickaxe/three_pick,
+		/obj/item/pickaxe/four_pick,
+		/obj/item/pickaxe/five_pick,
+		/obj/item/pickaxe/six_pick,
+		/obj/item/pickaxe/hand,
+	)
 	max_combined_volume = WEIGHT_VOLUME_SMALL * 9
 	max_single_weight_class = WEIGHT_CLASS_SMALL
 	allow_mass_gather = TRUE
@@ -151,6 +170,7 @@
 	w_class = 2
 	attack_verb = list("drilled")
 	worth_intrinsic = 250 // this is gonna be very useful/powerful later
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/pickaxe/excavationdrill/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()

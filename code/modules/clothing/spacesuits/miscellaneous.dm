@@ -24,7 +24,6 @@
 	permeability_coefficient = 0.02
 	clothing_flags = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/projectile/energy, /obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/ammo_casing, /obj/item/melee/baton,/obj/item/handcuffs)
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT
 	weight = ITEM_WEIGHT_VOIDSUIT
 	armor_type = /datum/armor/station/tactical
@@ -72,7 +71,6 @@
 	weight = ITEM_WEIGHT_BASELINE
 	encumbrance = ITEM_ENCUMBRANCE_BASELINE
 	clothing_flags = NONE
-	allowed = list(/obj/item) //for stuffing exta special presents
 
 //Space pirate outfit
 /obj/item/clothing/head/helmet/space/pirate
@@ -92,7 +90,6 @@
 	desc = "Yarr."
 	icon_state = "pirate"
 	w_class = WEIGHT_CLASS_NORMAL
-	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen)
 	weight = ITEM_WEIGHT_BASELINE
 	encumbrance = ITEM_ENCUMBRANCE_BASELINE
 	armor_type = /datum/armor/pirate/medium

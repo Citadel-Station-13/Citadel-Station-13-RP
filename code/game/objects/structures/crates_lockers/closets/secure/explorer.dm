@@ -17,7 +17,8 @@
 		/obj/item/gps/explorer,
 		/obj/item/storage/box/flare,
 		/obj/item/geiger_counter,
-		/obj/item/cell/device,
+		/obj/item/cell/basic/tier_2/small,
+		/obj/item/cell/basic/tier_2/weapon,
 		/obj/item/radio,
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/storage/box/survival_knife,
@@ -26,7 +27,8 @@
 		/obj/item/reagent_containers/food/snacks/liquid,
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/cataloguer,
-		/obj/item/binoculars)
+		/obj/item/rangefinder,
+	)
 
 /obj/structure/closet/secure_closet/explorer/Initialize(mapload)
 	if(prob(50))
@@ -74,7 +76,7 @@
 		/obj/item/geiger_counter,
 		/obj/item/bodybag/cryobag,
 		/obj/item/cataloguer/compact,
-		/obj/item/binoculars,
+		/obj/item/rangefinder,
 		/obj/item/gun/projectile/ballistic/shotgun/flare/paramed,
 		/obj/item/storage/box/flashshells/large)
 
@@ -104,11 +106,13 @@
 		/obj/item/storage/box/flare,
 		/obj/item/gun/projectile/ballistic/shotgun/flare/explo,
 		/obj/item/storage/box/flashshells,
-		/obj/item/cell/device,
+		/obj/item/cell/basic/tier_2/small,
+		/obj/item/cell/basic/tier_2/weapon,
 		/obj/item/radio,
 		/obj/item/gps/explorer,
 		/obj/item/cataloguer/compact,
-		/obj/item/binoculars)
+		/obj/item/rangefinder/laser_designator,
+	)
 
 /obj/structure/closet/secure_closet/pilot/Initialize(mapload)
 	if(prob(50))
@@ -139,7 +143,8 @@
 		/obj/item/storage/box/flare,
 		/obj/item/storage/box/explorerkeys,
 		/obj/item/geiger_counter,
-		/obj/item/cell/device,
+		/obj/item/cell/basic/tier_2/small,
+		/obj/item/cell/basic/tier_2/weapon,
 		/obj/item/radio,
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/storage/box/survival_knife,
@@ -154,7 +159,8 @@
 		/obj/item/reagent_containers/food/snacks/liquid/protein,
 		/obj/item/point_redemption_voucher/preloaded/survey/c300,
 		/obj/item/cataloguer/compact/pathfinder,
-		/obj/item/binoculars)
+		/obj/item/rangefinder/laser_designator,
+	)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)
 	if(prob(50))

@@ -24,7 +24,6 @@
 	var/isbroken = 0
 	light_range = 5
 	light_color = "#3e0000"
-	var/obj/item/wepon = null
 
 	var/shatter_message = "The pylon shatters!"
 	var/impact_sound = 'sound/effects/Glasshit.ogg'
@@ -36,6 +35,10 @@
 /obj/structure/cult/pylon/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
+
+/obj/structure/cult/pylon/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/structure/cult/pylon/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	attackpylon(user, 5)

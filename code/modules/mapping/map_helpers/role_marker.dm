@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /**
  * denotes a potential role spawn
@@ -11,7 +11,7 @@
 	/// role tag
 	var/role_tag
 
-/obj/map_helper/role_marker/preloading_instance(datum/dmm_context/context)
+/obj/map_helper/role_marker/preloading_from_mapload(datum/dmm_context/context)
 	LAZYINITLIST(context.role_markers_by_tag[role_tag])
 	context.role_markers_by_tag[role_tag] += src
 	return ..()

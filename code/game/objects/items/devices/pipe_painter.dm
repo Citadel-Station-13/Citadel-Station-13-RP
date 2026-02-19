@@ -2,6 +2,7 @@
 	name = "pipe painter"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
 	var/list/modes
 	var/mode
 

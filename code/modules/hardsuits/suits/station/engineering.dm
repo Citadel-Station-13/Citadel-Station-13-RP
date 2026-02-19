@@ -10,18 +10,8 @@
 	siemens_coefficient= 0.75
 	seal_delay = 24 //Should be slightly faster than other hardsuits, giving Engineering faster response time for emergencies.
 
-
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/eva
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/eva
-
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/storage/briefcase/inflatable,
-		/obj/item/t_scanner,
-		/obj/item/rcd
-		)
 
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
@@ -72,17 +62,6 @@
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/ce
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/ce
 	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/ce
-
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/storage/bag/ore,
-		/obj/item/t_scanner,
-		/obj/item/pickaxe,
-		/obj/item/rcd,
-		/obj/item/bluespace_radio,
-	)
 
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 

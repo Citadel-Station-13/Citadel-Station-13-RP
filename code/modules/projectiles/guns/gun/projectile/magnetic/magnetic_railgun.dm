@@ -14,7 +14,7 @@
 	loaded = /obj/item/rcd_ammo/large
 	weight = ITEM_WEIGHT_GUN_BULKY
 	encumbrance = ITEM_ENCUMBRANCE_GUN_BULKY
-	cell_type = /obj/item/cell/hyper
+	cell_type = /obj/item/cell/basic/tier_4/medium
 
 	var/initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
 	var/empty_sound = 'sound/machines/twobeep.ogg'
@@ -83,7 +83,7 @@
 	icon_state = "flechette_gun"
 	item_state = "z8carbine"
 
-	cell_type = /obj/item/cell/hyper
+	cell_type = /obj/item/cell/basic/tier_3/medium
 	initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
 
 	slot_flags = SLOT_BACK
@@ -112,7 +112,7 @@
 
 	removable_components = TRUE
 
-	cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_3/medium
 	initial_capacitor_type = /obj/item/stock_parts/capacitor
 	slot_flags = SLOT_BACK
 
@@ -141,7 +141,7 @@
 
 	w_class = WEIGHT_CLASS_NORMAL
 
-	cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_3/medium
 	initial_capacitor_type = /obj/item/stock_parts/capacitor
 
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
@@ -170,7 +170,7 @@
 	icon_state = "railgun_sifguard"
 	item_state = "z8carbine"
 
-	cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_3/medium
 	initial_capacitor_type = /obj/item/stock_parts/capacitor/adv
 
 	slot_flags = SLOT_BACK

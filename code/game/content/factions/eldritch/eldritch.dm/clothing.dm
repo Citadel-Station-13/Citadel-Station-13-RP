@@ -11,7 +11,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	clothing_flags = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/projectile/energy, /obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/ammo_casing, /obj/item/melee/baton,/obj/item/handcuffs, /obj/item/eldritch/blade, /obj/item/eldritch/prop/codex)
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 	armor_type = /datum/armor/eldritch/robes
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
@@ -45,7 +45,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	clothing_flags = 0
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	allowed = list(/obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/projectile/energy, /obj/item/gun/projectile/ballistic, /obj/item/ammo_magazine, /obj/item/ammo_casing, /obj/item/melee/baton,/obj/item/handcuffs, /obj/item/eldritch/blade, /obj/item/eldritch/prop/codex)
+	suit_storage_class_allow = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
 	armor_type = /datum/armor/eldritch/robes/godmode
 	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	cold_protection_cover = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS

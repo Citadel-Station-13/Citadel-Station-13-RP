@@ -126,7 +126,7 @@
 	if (!Adjacent(user))
 		return 0
 
-	if (isanimal(user))
+	if (isanimal_legacy_this_is_broken(user))
 		return 0
 
 	return 1

@@ -16,13 +16,13 @@
 
 	equip_type = EQUIP_HULL
 
+/obj/item/vehicle_module/omni_shield/Destroy()
+	QDEL_NULL(shields)
+	return ..()
+
 /obj/item/vehicle_module/omni_shield/critfail()
 	..()
 	shields.adjust_health(-200)
-
-/obj/item/vehicle_module/omni_shield/Destroy()
-	QDEL_NULL(shields)
-	..()
 
 /obj/item/vehicle_module/omni_shield/attach(obj/vehicle/sealed/mecha/M as obj)
 	. = ..()
@@ -79,6 +79,10 @@
 	my_mech = loc
 	RegisterSignal(my_mech, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/obj/item/shield_projector, update_shield_positions))
 	update_shift(my_mech)
+
+/obj/item/shield_projector/rectangle/mecha/Destroy()
+	my_mech = null
+	return ..()
 
 /obj/item/shield_projector/rectangle/mecha/proc/update_shift(atom/movable/mech)
 	var/icon/my_icon = icon(mech.icon) //holy heck

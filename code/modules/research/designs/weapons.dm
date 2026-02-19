@@ -10,18 +10,6 @@
 	subcategory = DESIGN_SUBCATEGORY_ENERGY
 	abstract_type = /datum/prototype/design/science/weapon/energy
 
-/datum/prototype/design/science/weapon/energy/stunrevolver
-	id = "stunrevolver"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials_base = list(MAT_STEEL = 1750)
-	build_path = /obj/item/gun/projectile/energy/stunrevolver
-
-/datum/prototype/design/science/weapon/energy/nuclear_gun
-	id = "nuclear_gun"
-	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_POWER = 3)
-	materials_base = list(MAT_STEEL = 3750, MAT_GLASS = 1250, MAT_URANIUM = 500)
-	build_path = /obj/item/gun/projectile/energy/gun/nuclear
-
 /datum/prototype/design/science/weapon/energy/phoronpistol
 	id = "ppistol"
 	req_tech = list(TECH_COMBAT = 5, TECH_PHORON = 4)

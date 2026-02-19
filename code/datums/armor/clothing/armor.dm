@@ -59,14 +59,26 @@
 	acid = 0.5
 
 /datum/armor/general/space/armored
-	melee = 0.4
+	melee = 0.40
 	melee_tier = 3.25
 	bullet = 0.15
 	bullet_tier = 3.5
 	laser = 0.25
-	laser_tier = 3.75
-	energy = 0.15
+	laser_tier = 3.25
+	energy = 0.2
+	bomb = 0.4
+	rad = 0.65
+
+/datum/armor/general/space/traveler
+	melee = 0.4
+	melee_tier = 3.5
+	bullet = 0.38
+	bullet_tier = 3.5
+	laser = 0.35
+	laser_tier = 3.25
+	energy = 0.20
 	bomb = 0.35
+	rad = 0.50
 
 /datum/armor/general/bone
 	melee = 0.45

@@ -1,3 +1,5 @@
+//Originally coded by ISaidNo, later modified by Kelenius. Ported from Baystation12.
+
 /obj/structure/closet/crate/secure/loot
 	name = "abandoned crate"
 	desc = "What could be inside?"
@@ -9,6 +11,7 @@
 	var/attempts = 10
 	var/codelen = 4
 	locked = 1
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND
 
 /obj/structure/closet/crate/secure/loot/Initialize(mapload)
 	. = ..()

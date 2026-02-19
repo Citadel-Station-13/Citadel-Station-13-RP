@@ -10,6 +10,7 @@
 	item_state = "autopsy_scanner"
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+	belt_storage_class = BELT_CLASS_SMALL
 	var/list/datum/autopsy_data_scanner/wdata = list()
 	var/list/datum/autopsy_data_scanner/chemtraces = list()
 	var/target_name = null

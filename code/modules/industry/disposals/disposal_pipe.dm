@@ -1,5 +1,4 @@
 // Disposal pipes
-/// todo: /obj/structure/disposal_pipe
 /obj/structure/disposalpipe
 	icon = 'icons/obj/pipes/disposal.dmi'
 	name = "disposal pipe"
@@ -27,8 +26,13 @@
 /obj/structure/disposalpipe/Initialize(mapload, dir)
 	. = ..()
 	base_icon_state = icon_state
+
 	if(!isnull(dir))
 		setDir(dir)
+
+	if(isturf(loc))
+		var/turf/turf_loc = loc
+		turf_loc.add_blueprints_preround(src)
 
 // pipe is deleted
 // ensure if holder is present, it is expelled

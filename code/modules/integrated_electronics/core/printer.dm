@@ -125,7 +125,7 @@
 		if(!EA.opened)
 			to_chat(user, SPAN_WARNING("You can't reach [EA]'s components to remove them!"))
 			return
-		if(EA.battery)
+		if(EA.obj_cell_slot?.cell)
 			to_chat(user, SPAN_WARNING("Remove [EA]'s power cell first!"))
 			return
 		var/inc = 0

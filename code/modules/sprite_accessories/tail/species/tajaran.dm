@@ -18,6 +18,7 @@
 	id = "tail_tajaran_short"
 	icon_state = "tajtail_damaged_s"
 	species_allowed = list(SPECIES_TAJ)
+	do_colouration = 1
 	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/special/tajaran_stubby
@@ -25,6 +26,7 @@
 	id = "tail_tajarna_stubby"
 	icon_state = "tajtail_stubby_s"
 	species_allowed = list(SPECIES_TAJ)
+	do_colouration = 1
 	legacy_use_additive_color_matrix = TRUE
 
 /datum/sprite_accessory/tail/stripey

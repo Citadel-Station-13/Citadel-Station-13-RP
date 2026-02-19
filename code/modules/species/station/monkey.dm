@@ -222,13 +222,13 @@
 //Also, M was added to the end of the spawn names to signify that it's a monkey, since some names were conflicting.
 
 /mob/living/carbon/human/sharkm/Initialize(mapload)
-	..(mapload, SPECIES_MONKEY_AKULA)
+	return ..(mapload, SPECIES_MONKEY_AKULA)
 
 /mob/living/carbon/human/sergallingm/Initialize(mapload)
-	..(mapload, SPECIES_MONKEY_SERGAL)
+	return ..(mapload, SPECIES_MONKEY_SERGAL)
 
 /mob/living/carbon/human/sparram/Initialize(mapload)
-	..(mapload, SPECIES_MONKEY_NEVREAN)
+	return ..(mapload, SPECIES_MONKEY_NEVREAN)
 
 /mob/living/carbon/human/wolpin/Initialize(mapload)
-	..(mapload, SPECIES_MONKEY_VULPKANIN)
+	return ..(mapload, SPECIES_MONKEY_VULPKANIN)

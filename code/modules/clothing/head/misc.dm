@@ -275,7 +275,6 @@
 	name = "fedora"
 	desc = "A brown fedora - either the cornerstone of a reporter's style or a poor attempt at looking cool, depending on the person wearing it."
 	icon_state = "detective"
-	allowed = list(/obj/item/reagent_containers/food/snacks/candy_corn, /obj/item/pen)
 
 /obj/item/clothing/head/fedora/grey
 	icon_state = "detective2"
@@ -549,7 +548,7 @@
 /obj/item/clothing/head/reindeer
 	name = "reindeer antlers"
 	desc = "A set of costume antlers with a glowing red nose, an Old Earth favorite."
-	icon_state = "reindeer0"
+	icon_state = "reindeer"
 	item_action_name = "Toggle Nose"
 
 /obj/item/clothing/head/reindeer/attack_self(mob/user, datum/event_args/actor/actor)

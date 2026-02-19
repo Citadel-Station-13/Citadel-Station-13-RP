@@ -297,6 +297,10 @@
 	held_blade.storing_module = src
 	RegisterSignal(held_blade, COMSIG_ITEM_DROPPED, PROC_REF(magnetic_catch))
 
+/obj/item/hardsuit_module/armblade/Destroy()
+	QDEL_NULL(held_blade)
+	return ..()
+
 /obj/item/hardsuit_module/armblade/proc/magnetic_catch(datum/source)
 	var/obj/item/I = source
 	if(I != held_blade)

@@ -54,7 +54,7 @@
 	if(!.)
 		return
 	set_target(target)
-	src.narrate_visual_color = rgb(arglist(hsl2rgb(rand(0, 360), rand(0, 360), rand(125, 360))))
+	src.narrate_visual_color = rgb(rand(0, 360), rand(0, 360), rand(125, 360), space = COLORSPACE_HSL)
 
 	var/list/possible_modes = resolve_modes()
 	if(length(possible_modes))

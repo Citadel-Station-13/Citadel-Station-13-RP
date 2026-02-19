@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* human overlay enums for standing_overlays
 #define HUMAN_OVERLAY_BODY "body"
@@ -78,6 +78,8 @@
 //! legacy - species skin
 #define HUMAN_LAYER_SKIN (FLOAT_LAYER - 900)
 
+#define HUMAN_LAYER_BODY (FLOAT_LAYER - 925)
+
 #define HUMAN_LAYER_SPRITEACC_HORNS_BEHIND (FLOAT_LAYER - 950)
 #define HUMAN_LAYER_SPRITEACC_EARS_BEHIND (FLOAT_LAYER - 951)
 #define HUMAN_LAYER_SPRITEACC_HAIR_BEHIND (FLOAT_LAYER - 952)
@@ -88,7 +90,6 @@
 //! legacy - genetics
 #define HUMAN_LAYER_MUTATIONS (FLOAT_LAYER - 998)
 
-#define HUMAN_LAYER_BODY (FLOAT_LAYER - 999)
 
 //* Helpers *//
 

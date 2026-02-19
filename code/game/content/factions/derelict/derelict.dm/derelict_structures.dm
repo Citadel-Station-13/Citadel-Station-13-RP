@@ -1,11 +1,24 @@
 /datum/prototype/material/alienalloy/derelictalloy
-	id = "derelictalloy"
-	name = "derelictalloy"
+	id = "derelict-alloy"
+	name = "derelict-alloy"
 
 	// Becomes "[display_name] wall" in the UI.
 	display_name = "derelict alloy"
 
 	icon_base = 'code/game/content/factions/derelict/derelict.dmi/derelict_walls.dmi'
+	icon_colour = "#413c3c"
+	wall_stripe_icon = null // leave null
+
+	door_icon_base = "derelict" // For doors.
+
+/datum/prototype/material/alienalloy/derelictalloy/window
+	id = "derelict-alloy-glass"
+	name = "derelict-alloy-glass"
+
+	// Becomes "[display_name] wall" in the UI.
+	display_name = "derelict alloy"
+
+	icon_base = 'code/game/content/factions/derelict/derelict.dmi/derelict_windows.dmi'
 	icon_colour = "#413c3c"
 	wall_stripe_icon = null // leave null
 
@@ -18,9 +31,42 @@
 	material_outer = /datum/prototype/material/alienalloy/derelictalloy
 	name = "derelict wall"
 	desc = "A wall made up of some sort of strange alloy... It has lots of pipes, tubes and other utility structure on full display."
-	description_info = "Maybe it's best NOT to compromise a excavation site due to curiosity?"
 	block_tele = TRUE
 	integrity_enabled = 0
+
+// Windows
+
+/turf/simulated/wall/event/derelict_window
+	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_windows.dmi'
+	material_outer = /datum/prototype/material/alienalloy/derelictalloy/window
+	name = "derelict window"
+	desc = "A window, seemingly made out of some type of nigh indestructible material. Looks old."
+	block_tele = TRUE
+	integrity_enabled = 0
+	opacity = 0
+
+// Doors
+
+/obj/machinery/door/airlock/derelict
+	name = "Ancient Airlock"
+	explosion_resistance = 20
+	secured_wires = TRUE
+	hackProof = TRUE
+	opacity = 1
+	door_color = "none"
+	airlock_type = "standard"
+	assembly_type = /obj/structure/door_assembly/voidcraft
+	req_one_access = list(ACCESS_FACTION_ALIEN)
+	open_sound_powered = 'sound/machines/door/scp1o.ogg'
+	close_sound_powered = 'sound/machines/door/scp1c.ogg'
+	open_sound_unpowered = 'sound/machines/door/hatchforced.ogg'
+	icon = 'icons/obj/doors/derelict/door.dmi'
+	icon_state = "closed"
+	bolts_file = 'icons/obj/doors/derelict/lights_bolts.dmi'
+	lights_file = 'icons/obj/doors/derelict/lights_green.dmi'
+	panel_file = 'icons/obj/doors/derelict/panel.dmi'
+	welded_file = 'icons/obj/doors/derelict/welded.dmi'
+	emag_file = 'icons/obj/doors/hatch/emag.dmi'
 
 // Floors
 
@@ -28,6 +74,7 @@
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_tiles.dmi'
 	icon_state = "derelict_pillar_dir"
 	integrity_enabled = 0
+	color = "#808080"
 
 /turf/simulated/floor/event/derelict_hull
 	icon = 'code/game/content/factions/derelict/derelict.dmi/derelict_tiles.dmi'

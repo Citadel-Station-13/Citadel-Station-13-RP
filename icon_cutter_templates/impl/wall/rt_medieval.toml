@@ -1,7 +1,7 @@
 template = "impl/wall_default.toml"
 
 output_name = "wall"
-smooth_diagonally = false
+output_type = "Cardinal"
 
 [positions]
 convex = 0

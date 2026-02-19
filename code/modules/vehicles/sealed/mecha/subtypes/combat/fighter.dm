@@ -52,6 +52,10 @@
 	ion_trail.set_up(src)
 	ion_trail.stop()
 
+/obj/vehicle/sealed/mecha/combat/fighter/Destroy()
+	QDEL_NULL(ion_trail)
+	return ..()
+
 /obj/vehicle/sealed/mecha/combat/fighter/add_cell(var/obj/item/cell/C=null)
 	if(C)
 		C.forceMove(src)
@@ -59,7 +63,7 @@
 		return
 	cell = new(src)
 	cell.charge = 30000
-	cell.maxcharge = 30000
+	cell.max_charge = 30000
 
 /obj/vehicle/sealed/mecha/combat/fighter/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
@@ -136,19 +140,20 @@
 		var/amplitude = 2 //maximum displacement from original position
 		var/period = 36 //time taken for the mob to go up >> down >> original position, in deciseconds. Should be multiple of 4
 
-		var/top = get_standard_pixel_y_offset() + amplitude
-		var/bottom = get_standard_pixel_y_offset() - amplitude
+		var/nominal_pixel_y = get_managed_pixel_y()
+		var/top = nominal_pixel_y + amplitude
+		var/bottom = nominal_pixel_y - amplitude
 		var/half_period = period / 2
 		var/quarter_period = period / 4
 
 		animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING | EASE_OUT, loop = -1)		//up
 		animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1)						//down
-		animate(pixel_y = get_standard_pixel_y_offset(), time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
+		animate(pixel_y = nominal_pixel_y, time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
 
 /obj/vehicle/sealed/mecha/combat/fighter/proc/stop_hover()
 	if(ion_trail.on)
 		ion_trail.stop()
-		animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
+		animate(src, pixel_y = get_managed_pixel_y(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 
 /obj/vehicle/sealed/mecha/combat/fighter/check_for_support()
 	if (has_charge(step_energy_drain) && landing_gear_raised)

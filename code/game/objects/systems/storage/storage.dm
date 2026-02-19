@@ -11,10 +11,16 @@
 	//* Access *//
 
 	/// if set, limit allowable random access to first n items
-	var/limited_random_access_stack_amount
+	var/limited_random_access_amount
+	/// if set, limit allowable random access to first n items with this max weight class
+	/// * requires [limited_random_access_amount] to be set
+	var/limited_random_access_total_weight_class = INFINITY
+	/// if set, limit allowable random access to first n items with this max weight volume
+	/// * requires [limited_random_access_amount] to be set
+	var/limited_random_access_total_weight_volume = INFINITY
 	/// if set, limit allowable random access goes from bottom up, not top down
 	/// * top down is from end of contents list, bottom up is from start of contents list
-	var/limited_random_access_stack_bottom_first = FALSE
+	var/limited_random_access_bottom_first = FALSE
 
 	//* Actions *//
 
@@ -27,7 +33,7 @@
 	/// use the setter, do not change this manually.
 	var/weight_propagation = TRUE
 	/// carry weight in us prior to mitigation
-	var/weight_cached = 0
+	var/tmp/weight_cached = 0
 	/// carry weight mitigation, static. applied after multiplicative
 	var/weight_subtract = 0
 	/// carry weight mitigation, multiplicative.
@@ -80,11 +86,11 @@
 	var/insert_preposition = "in"
 
 	/// allow quick empty at all
-	var/allow_quick_empty = FALSE
+	var/allow_quick_empty = TRUE
 	/// allow quick empty via clickdrag
 	var/allow_quick_empty_via_clickdrag = TRUE
 	/// allow quick empty via attack self
-	var/allow_quick_empty_via_attack_self = TRUE
+	var/allow_quick_empty_via_attack_self = FALSE
 
 	/// allow inbound mass transfers
 	var/allow_inbound_mass_transfer = TRUE
@@ -140,6 +146,8 @@
 
 	/// mutex to prevent mass operation spam
 	var/mass_operation_interaction_mutex = FALSE
+	/// max items dropped per second for mass dumping
+	var/mass_operation_dumping_limit_per_second = INFINITY
 
 	//* Redirection *//
 
@@ -194,11 +202,19 @@
 	/// ui force slot mode.
 	var/ui_force_slot_mode = FALSE
 	/// show minimum number of slots necessary, expand as needed
-	/// currently only works for slot mode
-	var/ui_expand_when_needed = FALSE
+	/// * currently only works for slot mode
+	/// * this should be set to a number to determine how many minimum slots to show despite this
+	///   setting; the minimum enabled number of '1' just shows a single slot.
+	var/ui_expand_when_needed = 0
+	/// used to hint the number of minimum items to assume we have. useful for pill bottles.
+	var/ui_expand_volumetric_minimum_items
 	/// ui update queued?
 	//  todo: this is only needed because redirection is halfassed.
 	var/ui_refresh_queued = FALSE
+	/// Queued a reconsider_mob_viewable?
+	/// * Done because moving diagonally is weird and we're technically 'detached'
+	///   for a moment.
+	var/ui_move_reconsideration_queued = FALSE
 
 /datum/object_system/storage/New(obj/parent)
 	src.parent = parent
@@ -219,32 +235,44 @@
 //* Access *//
 
 /**
- * do not mutate returned list
- */
-/datum/object_system/storage/proc/dangerously_accessible_items_immutable(random_access = TRUE)
-	var/atom/redirection = real_contents_loc()
-	if(random_access)
-		if(limited_random_access_stack_amount)
-			var/contents_length = length(redirection.contents)
-			if(limited_random_access_stack_bottom_first)
-				return redirection.contents.Copy(1, min(contents_length + 1, limited_random_access_stack_bottom_first + 1))
-			else
-				return redirection.contents.Copy(max(1, contents_length - limited_random_access_stack_amount + 1), contents_length + 1)
-	return redirection.contents
-
-/**
  * you may mutate returned list
  */
-/datum/object_system/storage/proc/accessible_items(random_access = TRUE)
+/datum/object_system/storage/proc/get_accessible_items(random_access = TRUE)
 	var/atom/redirection = real_contents_loc()
-	if(random_access)
-		if(limited_random_access_stack_amount)
-			var/contents_length = length(redirection.contents)
-			if(limited_random_access_stack_bottom_first)
-				return redirection.contents.Copy(1, min(contents_length + 1, limited_random_access_stack_bottom_first + 1))
+	if(!length(redirection.contents))
+		return list()
+	if(random_access && limited_random_access_amount)
+		var/list/copied_contents = . = list()
+		if(limited_random_access_amount)
+			var/original_contents_length = length(redirection.contents)
+			var/lra_start
+			var/lra_end
+			var/lra_step
+			if(limited_random_access_bottom_first)
+				lra_start = 1
+				lra_end = min(limited_random_access_amount, original_contents_length)
+				lra_step = 1
 			else
-				return redirection.contents.Copy(max(1, contents_length - limited_random_access_stack_amount + 1), contents_length + 1)
-	return redirection.contents.Copy()
+				lra_start = original_contents_length
+				lra_end = max(1, original_contents_length - limited_random_access_amount + 1)
+				lra_step = -1
+			var/list/lra_ref = redirection.contents
+			var/lra_twc = 0
+			var/lra_twv = 0
+			for(var/i in lra_start to lra_end step lra_step)
+				var/obj/item/maybe_item = lra_ref[i]
+				// it is valid albeit silly to have non-items in a storage object
+				if(!istype(maybe_item))
+					continue
+				lra_twc += maybe_item.w_class
+				lra_twv += maybe_item.weight_volume
+				if(lra_twc > limited_random_access_total_weight_class)
+					break
+				if(lra_twv > limited_random_access_total_weight_volume)
+					break
+				copied_contents += maybe_item
+	else
+		. = redirection.contents.Copy()
 
 /**
  * Recursively return all inventory in this or nested storage (without indirection)
@@ -301,11 +329,20 @@
 //* Caches *//
 
 /datum/object_system/storage/proc/rebuild_caches()
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	var/atom/indirection = real_contents_loc()
+	rebuild_caches_impl(indirection ? indirection.contents : list())
+
+/datum/object_system/storage/proc/rebuild_caches_impl(list/atom/movable/entities)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
 	cached_combined_volume = 0
 	cached_combined_weight_class = 0
 	var/old_weight = weight_cached
 	weight_cached = 0
-	for(var/obj/item/item in real_contents_loc())
+	for(var/obj/item/item in entities)
 		cached_combined_volume += item.get_weight_volume()
 		cached_combined_weight_class += item.get_weight_class()
 		weight_cached += item.get_weight()
@@ -361,13 +398,25 @@
 	else
 		rebuild_caches()
 
+//* Examine *//
+
+/datum/object_system/storage/proc/handle_storage_examine(list/examine_list)
+	// TODO: proper examine. implement on /stack storage too
+
 //* Hooks *//
 
 /**
  * Hooked into obj/Moved().
  */
 /datum/object_system/storage/proc/on_parent_moved(atom/old_loc, forced)
-	reconsider_mob_viewable()
+	if(ui_move_reconsideration_queued)
+		return
+	ui_move_reconsideration_queued = TRUE
+	spawn(0)
+		ui_move_reconsideration_queued = FALSE
+		if(QDELETED(src))
+			return
+		reconsider_mob_viewable()
 
 /datum/object_system/storage/proc/on_pickup(mob/user)
 	grant_buttons(user)
@@ -421,260 +470,6 @@
 		if(thing.on_containing_storage_opening(actor, src))
 			return TRUE
 	return FALSE
-
-//* Insertion & Removal *//
-
-/**
- * todo: refactor?
- *
- * @return TRUE / FALSE; if true, caller should stop clickchain.
- */
-/datum/object_system/storage/proc/auto_handle_interacted_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
-	if(!actor.performer.is_holding(inserting))
-		// something probably yanked it, don't bother
-		return FALSE
-	if(is_locked(actor.performer))
-		actor.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
-			target = parent,
-		)
-		return TRUE
-	if(!actor.performer.Reachability(indirection || parent))
-		return TRUE
-	if(!try_insert(inserting, actor, silent, suppressed))
-		return TRUE
-	// sound
-	// todo: put this in interacted_insert()..?
-	if(!suppressed && !isnull(actor))
-		if(sfx_insert)
-			// todo: variable sound
-			playsound(actor.performer, sfx_insert, 50, 1, -5)
-		actor.visible_feedback(
-			target = parent,
-			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = "[actor.performer] puts [inserting] into [parent].",
-			visible_self = "You put [inserting] into [parent]",
-		)
-	return TRUE
-
-/**
- * Called by inventory procs; skips some checks of interacted insertion.
- *
- * todo: refactor?
- *
- * @return TRUE on success, FALSE on failure.
- */
-/datum/object_system/storage/proc/auto_handle_inventory_insertion(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed)
-	if(is_locked(actor.performer))
-		actor.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
-			target = parent,
-		)
-		return TRUE
-	if(!actor.performer.Reachability(indirection || parent))
-		return TRUE
-	if(!try_insert(inserting, actor, silent, suppressed))
-		return TRUE
-	// sound
-	// todo: put this in interacted_insert()..?
-	if(!suppressed && !isnull(actor))
-		if(sfx_insert)
-			// todo: variable sound
-			playsound(actor.performer, sfx_insert, 50, 1, -5)
-		actor.visible_feedback(
-			target = parent,
-			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = "[actor.performer] puts [inserting] into [parent].",
-			visible_self = "You put [inserting] into [parent]",
-		)
-	return TRUE
-
-/datum/object_system/storage/proc/try_insert(obj/item/inserting, datum/event_args/actor/actor, silent, suppressed, no_update)
-	if(!can_be_inserted(inserting, actor, silent))
-		return FALSE
-	// point of no return
-	if(actor && (inserting.get_worn_mob() == actor.performer && !actor.performer.temporarily_remove_from_inventory(inserting, user = actor.performer)))
-		if(!silent)
-			actor?.chat_feedback(
-				msg = SPAN_WARNING("[inserting] is stuck to your hand / body!"),
-				target = parent,
-			)
-		return FALSE
-	// point of no return (real)
-	return insert(inserting, actor, suppressed, no_update)
-
-/datum/object_system/storage/proc/can_be_inserted(obj/item/inserting, datum/event_args/actor/actor, silent)
-	if(!check_insertion_filters(inserting))
-		if(!silent)
-			actor?.chat_feedback(
-				msg = SPAN_WARNING("[parent] can't hold [inserting]!"),
-				target = parent,
-			)
-		return FALSE
-	var/why_insufficient_space = why_failed_insertion_limits(inserting)
-	if(why_insufficient_space)
-		if(!silent)
-			actor?.chat_feedback(
-				msg = SPAN_WARNING("[parent] can't fit [inserting]! ([why_insufficient_space])"),
-				target = parent,
-			)
-		return FALSE
-	return TRUE
-
-/**
- * inserts something
- *
- * @params
- * * inserting - thing being inserted
- * * actor - who's inserting it
- * * suppressed - suppress sounds
- * * no_update - do not update uis
- * * no_move - much more than not moving; basically makes an abstract contents operation without otherwise doing normal logic. use with care.
- */
-/datum/object_system/storage/proc/insert(obj/item/inserting, datum/event_args/actor/actor, suppressed, no_update, no_move)
-	physically_insert_item(inserting, no_move)
-
-	if(!no_update)
-		if(update_icon_on_item_change)
-			update_icon()
-		refresh()
-
-	return TRUE
-
-/**
- * handle moving an item in
- *
- * we can assume this proc will do potentially literally anything with the item, so.
- */
-/datum/object_system/storage/proc/physically_insert_item(obj/item/inserting, no_move, from_hook)
-	inserting.item_flags |= ITEM_IN_STORAGE
-	if(!no_move)
-		inserting.forceMove(real_contents_loc())
-	inserting.vis_flags |= VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
-	inserting.reset_pixel_offsets()
-	inserting.on_enter_storage(src)
-	if(weight_propagation)
-		var/inserting_weight = inserting.get_weight()
-		if(inserting_weight)
-			weight_cached += inserting_weight
-			update_containing_weight(inserting_weight)
-	cached_combined_volume += inserting.get_weight_volume()
-	cached_combined_weight_class += inserting.get_weight_class()
-
-/**
- * @return TRUE / FALSE
- */
-/datum/object_system/storage/proc/auto_handle_interacted_removal(obj/item/removing, datum/event_args/actor/actor, silent, suppressed, put_in_hands)
-	if(is_locked(actor.performer))
-		actor.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
-			target = parent,
-		)
-		return TRUE
-	if(!actor.performer.Reachability(parent))
-		return TRUE
-	if(!try_remove(removing, actor.performer, actor, silent, suppressed))
-		return TRUE
-	if(put_in_hands)
-		actor.performer.put_in_hands_or_drop(removing)
-	else
-		removing.forceMove(actor.performer.drop_location())
-	// todo: put this in interacted_insert()..?
-	if(!suppressed && !isnull(actor))
-		if(sfx_remove)
-			// todo: variable sound
-			playsound(actor.performer, sfx_remove, 50, 1, -5)
-		actor.visible_feedback(
-			target = parent,
-			range = MESSAGE_RANGE_INVENTORY_SOFT,
-			visible = "[actor.performer] takes [removing] out of [parent].",
-			visible_self = "You take [removing] out of [parent]",
-		)
-	return TRUE
-
-/**
- * try to remove item from self
- *
- * @return item removed; not necessarily the item passed in.
- */
-/datum/object_system/storage/proc/try_remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent, suppressed, no_update)
-	return remove(removing, to_where, actor, suppressed, no_update)
-
-/datum/object_system/storage/proc/can_be_removed(obj/item/removing, atom/to_where, datum/event_args/actor/actor, silent)
-	return TRUE
-
-/**
- * remove item from self
- *
- * @return item removed; not necessarily the item passed in.
- */
-/datum/object_system/storage/proc/remove(obj/item/removing, atom/to_where, datum/event_args/actor/actor, suppressed, no_update, no_move)
-	. = physically_remove_item(removing, to_where, no_move)
-	if(isnull(.))
-		return
-
-	if(!no_update)
-		if(update_icon_on_item_change)
-			update_icon()
-		refresh()
-
-/**
- * handle moving an item out
- *
- * we can assume this proc will do potentially literally anything with the item, so..
- */
-/datum/object_system/storage/proc/physically_remove_item(obj/item/removing, atom/to_where, no_move, from_hook)
-	removing.item_flags &= ~ITEM_IN_STORAGE
-	if(!no_move)
-		if(to_where == null)
-			removing.moveToNullspace()
-		else
-			removing.forceMove(to_where)
-	removing.vis_flags = (removing.vis_flags & ~(VIS_INHERIT_LAYER | VIS_INHERIT_LAYER)) | (initial(removing.vis_flags) & (VIS_INHERIT_LAYER | VIS_INHERIT_PLANE))
-	removing.on_exit_storage(src)
-	// we might have set maptext in render_numerical_display
-	removing.maptext = null
-	if(weight_propagation)
-		var/removing_weight = removing.get_weight()
-		if(removing_weight)
-			weight_cached -= removing_weight
-			update_containing_weight(-removing_weight)
-	cached_combined_volume -= removing.get_weight_volume()
-	cached_combined_weight_class -= removing.get_weight_class()
-	return removing
-
-//* Limits *//
-
-/**
- * generally a bad idea to call, tbh.
- *
- * uses max single weight class
- * uses combined volume
- *
- * can use type whitelist
- * if type_whitelist is FALSE, this just wipes all type whitelists.
- */
-/datum/object_system/storage/proc/fit_to_contents(type_whitelist = FALSE, no_shrink = FALSE)
-	var/scanned_max_single_weight_class = WEIGHT_CLASS_TINY
-	var/scanned_max_combined_volume = 0
-
-	if(!no_shrink)
-		max_single_weight_class = scanned_max_single_weight_class
-		max_combined_volume = scanned_max_combined_volume
-
-	var/list/types = list()
-	for(var/obj/item/item in real_contents_loc())
-		if(type_whitelist)
-			types |= item.type
-		scanned_max_single_weight_class = max(max_single_weight_class, item.w_class)
-		scanned_max_combined_volume += item.get_weight_volume()
-
-	max_single_weight_class = max(max_single_weight_class, scanned_max_single_weight_class)
-	max_combined_volume = max(max_combined_volume, scanned_max_combined_volume)
-
-	set_insertion_whitelist(type_whitelist? types : null)
-	set_insertion_blacklist(null)
-	set_insertion_allow(null)
 
 //* Locking *//
 
@@ -1030,9 +825,13 @@
 	var/atom/indirection = real_contents_loc()
 	var/i = length(things)
 	. = TRUE
+	// we're driven on 0.5 second ticks; we want to pause after half a MODLPS
+	// might want to adjust this later and use a parameter or something lol
+	var/pause_after = mass_operation_dumping_limit_per_second * 0.5
+	var/transferred = 0
 	while(i > 0)
 		// stop if overtaxed
-		if(TICK_CHECK)
+		if(TICK_CHECK || (transferred > pause_after))
 			break
 		var/obj/item/transferring = things[i]
 		// make sure they're still there
@@ -1054,6 +853,10 @@
 		if(removed == transferring)
 			// but only go down if we got rid of the real item
 			i--
+		// always count the cycle as transferred,
+		// if you have invalid objects and it gets in the way of MODLPS
+		// then that's on you, stop powergaming.
+		transferred++
 	things.Cut(i + 1, length(things) + 1)
 	return . && length(things)
 
@@ -1071,75 +874,6 @@
 /datum/object_system/storage/proc/drop_everything_at(atom/where)
 	for(var/obj/item/I in real_contents_loc())
 		I.forceMove(where)
-
-//* UI *//
-
-/**
- * @return TRUE if we did something (to interrupt clickchain)
- */
-/datum/object_system/storage/proc/auto_handle_interacted_open(datum/event_args/actor/actor, force, suppressed)
-	if(!force && is_locked(actor.performer))
-		actor.chat_feedback(
-			msg = SPAN_WARNING("[parent] is locked."),
-			target = parent,
-		)
-		return TRUE
-	if(check_on_found_hooks(actor))
-		return TRUE
-	if(!suppressed && !isnull(actor) && sfx_open)
-		// todo: variable sound
-		playsound(actor.performer, sfx_open, 50, 1, -5)
-	// todo: jiggle animation
-	show(actor.initiator)
-	return TRUE
-
-/datum/object_system/storage/proc/show(mob/viewer)
-	if(viewer.active_storage == src)
-		refresh_ui(viewer)
-		return TRUE
-
-	viewer.active_storage?.hide(viewer)
-	viewer.active_storage = src
-
-	create_ui(viewer)
-
-	parent.object_storage_opened(viewer)
-
-/**
- * if user not specified, it is 'all'.
- */
-/datum/object_system/storage/proc/hide(mob/viewer)
-	if(isnull(viewer))
-		for(var/mob/iterating as anything in ui_by_mob)
-			hide(iterating)
-		return
-
-	if(viewer.active_storage != src)
-		stack_trace("viewer didn't have active storage set right, wtf?")
-	else
-		viewer.active_storage = null
-
-	cleanup_ui(viewer)
-
-	parent.object_storage_closed(viewer)
-
-/datum/object_system/storage/proc/refresh(mob/viewer)
-	ui_refresh_queued = FALSE
-	if(isnull(viewer))
-		for(var/mob/iterating as anything in ui_by_mob)
-			refresh_ui(iterating)
-		return
-	refresh_ui(viewer)
-
-
-/datum/object_system/storage/proc/reconsider_mob_viewable(mob/user)
-	if(isnull(user))
-		for(var/mob/viewer as anything in ui_by_mob)
-			reconsider_mob_viewable(viewer)
-		return
-	if(accessible_by_mob(user))
-		return
-	hide(user)
 
 //? Action
 

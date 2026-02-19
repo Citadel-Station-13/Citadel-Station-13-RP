@@ -1,5 +1,5 @@
 /datum/passive_parry/melee
-	parry_arc = 155
+	parry_arc = 180
 	parry_arc_round_down = TRUE
 
 /**
@@ -20,3 +20,4 @@
 	passive_parry = /datum/passive_parry{
 		parry_chance_melee = 5;
 	}
+	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR

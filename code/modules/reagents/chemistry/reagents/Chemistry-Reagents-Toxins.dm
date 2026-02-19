@@ -1102,6 +1102,14 @@
 	M.adjustBruteLoss(40 * removed)
 	M.adjustOxyLoss(40 * removed)
 
+/datum/reagent/nanite/shredding/fast
+	id = "fast_shredding_nanites"
+	metabolism_rate = 0.3
+
+/datum/reagent/nanite/shredding/fast/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	M.adjustBruteLoss(2 * removed)
+	M.adjustOxyLoss(4 * removed)
+
 /datum/reagent/nanite/irradiated
 	name = "Irradiated Nanites"
 	id = "irradiated_nanites"
@@ -1127,6 +1135,10 @@
 	radiation_pulse(M, RAD_INTENSITY_CHEM_IRRADIATED_NANITES)
 	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
+/datum/reagent/nanite/irradiated/fast
+	id = "fast_irradiated_nanites"
+	metabolism_rate = 0.3
+
 /datum/reagent/nanite/neurophage
 	name = "Neurophage Nanites"
 	id = "neurophage_nanites"
@@ -1150,6 +1162,16 @@
 /datum/reagent/nanite/neurophage/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.adjustBrainLoss(20 * removed)
 	M.adjustBruteLoss(20 * removed)
+	M.ingested?.remove_reagent(/datum/reagent/alkysine, removed * 10)
+	M.bloodstr?.remove_reagent(/datum/reagent/alkysine, removed * 10)
+
+/datum/reagent/nanite/neurophage/fast
+	id = "fast_neurophage_nanites"
+	metabolism_rate = 0.3
+
+/datum/reagent/nanite/neurophage/fast/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	M.adjustBrainLoss(2 * removed)	// Alkysine can outheal it, however since mrate is so slow you need 5 times the Alky to fully heal through it
+	M.adjustBruteLoss(5 * removed)
 	M.ingested?.remove_reagent(/datum/reagent/alkysine, removed * 10)
 	M.bloodstr?.remove_reagent(/datum/reagent/alkysine, removed * 10)
 

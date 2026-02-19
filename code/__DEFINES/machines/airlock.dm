@@ -1,124 +1,87 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* /obj/machinery/airlock_controller/config_cycle_mode
+//* airlock sides *//
 
-/// 'classic' airlock behavior; siphon all air and replace as needed
-///
-/// the least non-deterministic at not wasting gas, because all gas
-/// is allowed to go through the reclamation cycle.
-#define AIRLOCK_CONFIG_MODE_CLASSIC "classic"
-/// 'dynamic' airlocks; shunts air towards desired state
-///
-/// allows the usage of interior / exterior toggles, and minimum tolerable
-/// pressures, but is a heuristic algorithm
-///
-/// not recommended for use in air-constrained environments.
-#define AIRLOCK_CONFIG_MODE_DYNAMIC "dynamic"
-
-#warn DEFINE_ENUM
-
-//* /obj/machinery/airlock_controller/(interior|exterior)_environment_mode
-
-/// detect atmos on tile; autodetects and sets to manual after
-#define AIRLOCK_ENVIRONMENT_AUTODETECT "detect"
-/// manually specify environment
-#define AIRLOCK_ENVIRONMENT_MANUAL "manual"
-/// adaptive; continually matches the environment when possible.
-#define AIRLOCK_ENVIRONMENT_ADAPTIVE "adaptive"
-/// ignore the atmos entirely
-#define AIRLOCK_ENVIRONMENT_IGNORE "ignore"
-
-#warn DEFINE_ENUM
-
-//* /obj/machinery/airlock_controller/config_dynamic_(interior|exterior)_toggles
-
-/// cycle gas ratios; implies EXPEL_UNWANTED_GAS
-#define AIRLOCK_CONFIG_TOGGLE_MATCH_GAS_RATIOS (1<<0)
-/// expel bad gases
-#define AIRLOCK_CONFIG_TOGGLE_EXPEL_UNWANTED_GAS (1<<1)
-/// match pressure; implies REGULATE_PRESSURE
-#define AIRLOCK_CONFIG_TOGGLE_MATCH_PRESSURE (1<<2)
-/// prevent pressure mismatches that result in people dying/flying around
-#define AIRLOCK_CONFIG_TOGGLE_REGULATE_PRESSURE (1<<3)
-/// match temperature; implies REGULATE_TEMPERATURE
-#define AIRLOCK_CONFIG_TOGGLE_MATCH_TEMPERATURE (1<<4)
-/// prevent temperature mismatches that result in people dying/severe area temperature changes
-#define AIRLOCK_CONFIG_TOGGLE_REGULATE_TEMPERATURE (1<<5)
-
-#warn DEFINE_BITFIELD
-
-//* /obj/machinery/airlock_controller/(interior|exterior)_state
-
-/// locked open
-#define AIRLOCK_STATE_LOCKED_OPEN 1
-/// locked closed
-#define AIRLOCK_STATE_LOCKED_CLOSED 2
-/// unlocked
-#define AIRLOCK_STATE_UNLOCKED 3
-
-#warn DEFINE_ENUM
-
-//* Airlock Sides
-
+/// last was interior
 #define AIRLOCK_SIDE_INTERIOR "interior"
+/// last was exterior
 #define AIRLOCK_SIDE_EXTERIOR "exterior"
+/// last was fully sealed and neither
+#define AIRLOCK_SIDE_NEITHER "neither"
+/// last was both open
+#define AIRLOCK_SIDE_BOTH "both"
 
-//* /obj/machinery/airlock_controller/(cycle_state|aborted_state)
+// TODO: DECLARE_ENUM for sensor / controller
 
-#define AIRLOCK_CYCLE_INACTIVE "inactive"
+//* airlock cycler operation return codes *//
 
-// for classic / replace //
-
-/// currently draining existing air
-#define AIRLOCK_CYCLE_CLASSIC_DRAIN "classic-drain"
-/// currently refilling with desired air
-#define AIRLOCK_CYCLE_CLASSIC_REPLACE "classic-fill"
-
-// for dynamic //
-
-/// currently equalizing air
-#define AIRLOCK_CYCLE_DYNAMIC_EQUALIZATION "dynamic"
-
-#warn DEFINE_ENUM
-
-//* callback inputs for /obj/machinery/airlock_controller/var/datum/callback/on_finish
-
-#define AIRLOCK_OP_STATUS_FINISHED 1
-#define AIRLOCK_OP_STATUS_ABORTED 2
-#define AIRLOCK_OP_STATUS_FAILED 3
-
-//* returns from airlock peripherals on cycling operations to communicate if it is working
-
-/// keep cycling
-#define AIRLOCK_CYCLER_OP_CONTINUE 1
-/// finished
-#define AIRLOCK_CYCLER_OP_FINISHED 2
-/// unpowered
-#define AIRLOCK_CYCLER_OP_NO_POWER 3
-/// insufficient air
-#define AIRLOCK_CYCLER_OP_NO_GAS 4
-/// pumping against too much of a gradient
-#define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE 5
+/// worked
+#define AIRLOCK_CYCLER_OP_SUCCESS 0
 /// fatal error
-#define AIRLOCK_CYCLER_OP_FATAL 6
+#define AIRLOCK_CYCLER_OP_FATAL (1<<0)
+/// unpowered
+#define AIRLOCK_CYCLER_OP_NO_POWER (1<<1)
+/// insufficient air
+#define AIRLOCK_CYCLER_OP_NO_GAS (1<<2)
+/// pumping against too much of a gradient
+#define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE (1<<3)
+/// literally a machine is missing
+#define AIRLOCK_CYCLER_OP_MISSING_COMPONENT (1<<4)
 
-#warn eval below
+#define AIRLOCK_CYCLER_OP_MAX_BIT 4
 
-//* /obj/machinery/airlock_controller/dock_state
+GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
+	"fatal error",
+	"no power",
+	"no gas",
+	"high resistance",
+	"missing machine",
+)
 
-/// we don't have a dock
-#define AIRLOCK_DOCK_NONE 0
-/// we are undocked
-#define AIRLOCK_DOCK_UNDOCKED 1
-/// we are docked
-#define AIRLOCK_DOCK_DOCKED 2
-/// we are undocking
-#define AIRLOCK_DOCK_UNDOCKING 3
-/// we are docking
-#define AIRLOCK_DOCK_DOCKING 4
-/// we are in an invalid / aborted state
-#define AIRLOCK_DOCK_UNKNOWN 5
-/// we are overridden
-#define AIRLOCK_DOCK_OVERRIDDN 6
+//* airlock cycle finish status *//
 
+#define AIRLOCK_CYCLE_FIN_SUCCESS 0
+#define AIRLOCK_CYCLE_FIN_FAILED 1
+#define AIRLOCK_CYCLE_FIN_ABORTED 2
+
+//* airlock phase setup status *//
+
+#define AIRLOCK_PHASE_SETUP_FAIL 0
+#define AIRLOCK_PHASE_SETUP_SUCCESS 1
+#define AIRLOCK_PHASE_SETUP_SKIP 2
+
+// * airlock phase tick status *//
+
+#define AIRLOCK_PHASE_TICK_ERROR 0
+#define AIRLOCK_PHASE_TICK_CONTINUE 1
+#define AIRLOCK_PHASE_TICK_FINISH 2
+
+//* airlock system blackboard keys *//
+
+/**
+ * Blackboard for currently cycled-to side, so that programs
+ * know to seal / drain from / to the correct side on cycle.
+ * * Valid options are 'null', or an AIRLOCK_SIDE_* define.
+ */
+#define AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE "current_side"
+/**
+ * Blackboard for if a given side's doors should be locked open / closed
+ * * TRUE = open, FALSE = closed, null = not locked
+ */
+#define AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE "interior_locked_val"
+/**
+ * Blackboard for if a given side's doors should be locked open / closed
+ * * TRUE = open, FALSE = closed, null = not locked
+ */
+#define AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE "exterior_locked_val"
+
+//* airlock cycling blackboard keys *//
+
+/**
+ * Blackboard key for if a cycling operation is 'cancelling' or otherwise
+ * started for one.
+ */
+#define AIRLOCK_CYCLING_BLACKBOARD_IS_CANCEL_OP "is_cancel_op"
+#define AIRLOCK_CYCLING_BLACKBOARD_FROM_SIDE "from_side"
+#define AIRLOCK_CYCLING_BLACKBOARD_TO_SIDE "to_side"

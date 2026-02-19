@@ -1,5 +1,5 @@
 /// all player ghosts
-GLOBAL_LIST_EMPTY(observer_list)
+GLOBAL_LIST_EMPTY(ghost_list)
 
 /mob/observer/dead
 	name = "ghost"
@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 	mobility_flags = NONE
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
 	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
 
 	/// Were we admin-ghosted?
@@ -101,15 +102,15 @@ GLOBAL_LIST_EMPTY(observer_list)
 	//For a better follow selection:
 
 /mob/observer/dead/Initialize(mapload)
-	GLOB.observer_list += src
+	GLOB.ghost_list += src
 	var/mob/body = loc
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
 	plane = OBSERVER_PLANE //Why doesn't the var above work...???
 	add_verb(src, /mob/observer/dead/proc/dead_tele)
 
-	var/turf/T
 	if(ismob(body))
+		var/turf/T
 		T = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
 
@@ -142,11 +143,11 @@ GLOBAL_LIST_EMPTY(observer_list)
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
-	if(!T)
-		T = SSjob.get_latejoin_spawnpoint()
-	if(!T)
-		T = locate(1,1,1)
-	forceMove(T)
+		if(!T)
+			T = SSjob.get_latejoin_spawnpoint()
+		if(!T)
+			T = locate(1,1,1)
+		forceMove(T)
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
@@ -154,7 +155,7 @@ GLOBAL_LIST_EMPTY(observer_list)
 	return ..()
 
 /mob/observer/dead/Destroy()
-	GLOB.observer_list -= src
+	GLOB.ghost_list -= src
 	return ..()
 
 /mob/observer/dead/Topic(href, href_list)
@@ -363,10 +364,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!istype(target))
 		return
 
-	//Attempt to orbit based on target size
-	var/icon/I = icon(target.icon,target.icon_state,target.dir)
-
-	var/orbitsize = (I.Width()+I.Height())*0.5
+	var/list/icon_dimensions = get_icon_dimensions(target.icon)
+	var/orbitsize = (icon_dimensions["width"] + icon_dimensions["height"]) * 0.5
 	orbitsize -= (orbitsize/world.icon_size)*(world.icon_size*0.25)
 
 	orbit(target, orbitsize)
@@ -378,10 +377,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
 	. = ..()
 	//restart our floating animation after orbit is done.
-	pixel_y = 0
-	pixel_x = 0
-	transform = null
-	animate(src, pixel_y = 2, time = 10, loop = -1)
+	pixel_y = base_pixel_y
+	// if we were autoobserving, reset perspective
+	if (!isnull(client) && !isnull(client.eye))
+		reset_perspective(null)
 
 /mob/observer/dead/verb/jumptomob(input in getmobs_ghost_follow()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
@@ -595,11 +594,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		W.add_hiddenprint(src)
 		W.visible_message("<font color='red'>Invisible fingers crudely paint something in blood on [T]...</font>")
 
-/mob/observer/dead/pointed(atom/A as mob|obj|turf in view())
+/mob/observer/dead/_pointed(atom/pointed_at)
 	if(!..())
-		return 0
-	usr.visible_message("<span class='deadsay'><b>[src]</b> points to [A]</span>")
-	return 1
+		return FALSE
+
+	visible_message(SPAN_DEADSAY("<b>[src]</b> points to [pointed_at]."))
 
 /mob/observer/dead/proc/manifest(mob/user)
 	is_manifest = TRUE
@@ -790,7 +789,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(sound)
 		SEND_SOUND(src, sound(sound))
 
-/mob/dead/observer/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+/mob/observer/dead/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	return isAdminGhostAI(usr)
 
 /mob/observer/dead/verb/nifjoin()

@@ -24,21 +24,29 @@
 	if(islist(descriptor))
 		switch(descriptor[1])
 			if(MOB_IFF_FACTION_BIND_TO_LEVEL)
+				if(!loc)
+					return null
 				// if get z returns null it works as an assoc lookup returning null
 				var/prepend = SSmapping.ordered_levels[get_z(src)]?.id || "unkw"
 				return "[prepend]-[descriptor[descriptor[1]]]"
 			if(MOB_IFF_FACTION_BIND_TO_MAP)
 				// if get z returns null it works as an assoc lookup returning null
+				if(!loc)
+					return null
 				var/datum/map_level/level = SSmapping.ordered_levels[get_z(src)]
 				var/prepend = level?.parent_map?.id || level?.id || "unkw"
 				return "bind-[prepend]-[descriptor[descriptor[1]]]"
 	switch(descriptor)
 		if(MOB_IFF_FACTION_BIND_TO_LEVEL)
 			// if get z returns null it works as an assoc lookup returning null
+			if(!loc)
+				return null
 			var/prepend = SSmapping.ordered_levels[get_z(src)]?.id || "unkw"
 			return "bind-[prepend]"
 		if(MOB_IFF_FACTION_BIND_TO_MAP)
 			// if get z returns null it works as an assoc lookup returning null
+			if(!loc)
+				return null
 			var/datum/map_level/level = SSmapping.ordered_levels[get_z(src)]
 			var/prepend = level?.parent_map?.id || level?.id || "unkw"
 			return "bind-[prepend]"

@@ -39,10 +39,11 @@
 	var/timeofhostdeath = 0
 	var/emp_damage = 0//Handles a type of MMI damage
 	var/alert = null
-	use_me = 0 //Can't use the me verb, it's a freaking immobile brain
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "brain1"
 	no_vore = TRUE
+	emote_class = NONE
+	inventory = null
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/organic)
 
 /mob/living/carbon/brain/Initialize(mapload)
@@ -58,15 +59,11 @@
 		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
 
-/mob/living/carbon/brain/init_inventory()
-	return
-
 /mob/living/carbon/brain/update_mobility(blocked, forced)
 	if(in_contents_of(/obj/vehicle/sealed/mecha) || istype(loc, /obj/item/mmi))
 		. = ..(blocked, forced)
 	else
 		. = ..(MOBILITY_FLAGS_REAL, forced)
-	use_me = !!(. & MOBILITY_IS_CONSCIOUS)
 
 /mob/living/carbon/brain/isSynthetic()
 	return istype(loc, /obj/item/mmi)

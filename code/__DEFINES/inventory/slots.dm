@@ -16,8 +16,14 @@
 #define SLOT_ID_RIGHT_EAR		"rear"
 #define SLOT_ID_HANDCUFFED		"handcuffed"
 #define SLOT_ID_LEGCUFFED		"legcuffed"
-/// this is an id because SLOT_ID_HANDS is used for worn_slot when something is being held :/
+
+/**
+ * 'fake' slot ID; this is used in some places if something is in hands
+ *
+ * **STOP USING THIS IN EQUIPPED/UNEQUIPPED.** new on_(un)equipped directly passes in number for hand index.
+ */
 #define SLOT_ID_HANDS			"hands"
+
 /// *ONLY USE THIS FOR RENDERING* - this is nonsensical anywhere else
 #define SLOT_ID_LEFT_HAND		"left_hand"
 /// *ONLY USE THIS FOR RENDERING* - this is nonsensical anywhere else
@@ -76,15 +82,15 @@ DEFINE_BITFIELD(inventory_slot_flags, list(
 /// specially handled value
 #define INV_FILTER_HANDS (1<<23)
 
-DEFINE_BITFIELD_NEW(inv_slot_filter, list(
+DEFINE_BITFIELD_NAMED(inv_slot_filter, list(
 	/datum/inventory_slot = list(
 		NAMEOF_TYPE(/datum/inventory_slot, inventory_filter_flags),
 	),
 ), list(
-	BITFIELD_NEW("Unknown", INV_FILTER_UNKNOWN),
-	BITFIELD_NEW("Equipment", INV_FILTER_EQUIPMENT),
-	BITFIELD_NEW("Restraints", INV_FILTER_RESTRAINTS),
-	BITFIELD_NEW("Hands", INV_FILTER_HANDS),
+	BITFIELD_NAMED("Unknown", INV_FILTER_UNKNOWN),
+	BITFIELD_NAMED("Equipment", INV_FILTER_EQUIPMENT),
+	BITFIELD_NAMED("Restraints", INV_FILTER_RESTRAINTS),
+	BITFIELD_NAMED("Hands", INV_FILTER_HANDS),
 ))
 
 //! slot flags

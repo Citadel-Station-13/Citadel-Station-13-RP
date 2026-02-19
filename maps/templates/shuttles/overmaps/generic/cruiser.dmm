@@ -2062,10 +2062,10 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
@@ -5184,14 +5184,14 @@
 "lI" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/cell_charger,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "lJ" = (
@@ -5793,14 +5793,14 @@
 /obj/item/gun/projectile/energy/laser,
 /obj/item/gun/projectile/energy/laser,
 /obj/item/gun/projectile/energy/laser,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(103)
 	},
@@ -5827,14 +5827,14 @@
 /obj/item/gun/projectile/energy/nt_pulse/rifle,
 /obj/item/gun/projectile/energy/nt_pulse/rifle,
 /obj/item/gun/projectile/energy/nt_pulse/rifle,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /obj/item/gun/projectile/energy/gun,
 /obj/item/gun/projectile/energy/gun,
 /turf/simulated/floor/tiled/steel_grid,
@@ -5919,23 +5919,19 @@
 	empty = 1;
 	name = "First-Aid (empty)"
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_3/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -6159,14 +6155,14 @@
 /obj/item/gun/projectile/energy/gun,
 /obj/item/gun/projectile/energy/gun,
 /obj/item/gun/projectile/energy/gun,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(103)
 	},

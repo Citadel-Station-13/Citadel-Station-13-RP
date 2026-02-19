@@ -38,6 +38,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define INVISIBILITY_LEVEL_TWO		45
 #define INVISIBILITY_OBSERVER		60
 #define INVISIBILITY_EYE			61
+/// for various map helpers that should be able to be seen in certain cases
+#define INVISIBILITY_MAP_HELPER     70
 
 #define SEE_INVISIBLE_MINIMUM		5
 #define SEE_INVISIBLE_NOLIGHTING	15
@@ -111,9 +113,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #endif
 #ifndef CUSTOM_ITEM_MOB
 #define CUSTOM_ITEM_MOB		'icons/mob/custom_items_mob.dmi'
-#endif
-#ifndef CUSTOM_ITEM_SYNTH
-#define CUSTOM_ITEM_SYNTH	'icons/mob/custom_synthetic.dmi'
 #endif
 
 #define WALL_CAN_OPEN	1
@@ -234,9 +233,6 @@ var/list/economy_station_departments = list(
 /// Not really needed but consistancy I guess.
 #define TSC_XION	"Xion"
 #define TSC_ZH		"Zeng-Hu"
-
-///The number of deciseconds in a day
-#define MIDNIGHT_ROLLOVER		864000
 
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
@@ -487,3 +483,7 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //name for blank icon states for clothing
 #define CLOTHING_BLANK_ICON_STATE "blank"
+
+#define BUTTON_SLIDE_IN (1<<0)
+#define BUTTON_FADE_IN (1<<1)
+#define BUTTON_FADE_OUT (1<<2)

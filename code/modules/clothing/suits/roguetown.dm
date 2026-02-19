@@ -93,8 +93,6 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	armor_type = /datum/armor/station/padded
 	hoodtype = /obj/item/clothing/hood/roguetown/hide
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/eldritch/prop/codex)
 
 /obj/item/clothing/suit/storage/hooded/roguetown/cloth
 	name = "cloth cloak"
@@ -106,9 +104,6 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	hoodtype = /obj/item/clothing/hood/roguetown/cloth
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/eldritch/prop/codex)
-
 
 // Outer wear
 

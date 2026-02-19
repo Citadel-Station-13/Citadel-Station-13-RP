@@ -1,5 +1,7 @@
 /mob/living/carbon/alien/emote(var/act,var/m_type=1,var/message = null)
-
+	. = ..()
+	if(. == "stop")
+		return
 	var/param = null
 	if (findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
@@ -11,21 +13,6 @@
 	var/muzzled = is_muzzled()
 
 	switch(act)
-		if ("me")
-			if(silent)
-				return
-			if (src.client)
-				if (client.prefs.muted & MUTE_IC)
-					to_chat(src, "<font color='red'>You cannot send IC messages (muted).</font>")
-					return
-			if (stat)
-				return
-			if(!(message))
-				return
-			return custom_emote(m_type, message)
-
-		if ("custom")
-			return custom_emote(m_type, message)
 		if("sign")
 			if (!src.restrained())
 				message = "<B>The alien</B> signs[(text2num(param) ? " the number [text2num(param)]" : null)]."
@@ -70,20 +57,11 @@
 		if("nod")
 			message = "<B>The [src.name]</B> nods its head."
 			m_type = 1
-//		if("sit")
-//			message = "<B>The [src.name]</B> sits down." //Larvan can't sit down, /N
-//			m_type = 1
 		if("sway")
 			message = "<B>The [src.name]</B> sways around dizzily."
 			m_type = 1
 		if("sulk")
 			message = "<B>The [src.name]</B> sulks down sadly."
-			m_type = 1
-		if("twitch")
-			message = "<B>The [src.name]</B> twitches."
-			m_type = 1
-		if("twitch_v")
-			message = "<B>The [src.name]</B> twitches violently."
 			m_type = 1
 		if("dance")
 			if (!src.restrained())
@@ -103,9 +81,6 @@
 		if("jump")
 			message = "<B>The [src.name]</B> jumps!"
 			m_type = 1
-		if("hiss_")
-			message = "<B>The [src.name]</B> hisses softly."
-			m_type = 1
 		if("collapse")
 			afflict_unconscious(20 * 2)
 			message = "<B>[src]</B> collapses!"
@@ -115,7 +90,7 @@
 			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
 			m_type = 2
 		if("help")
-			to_chat(src, "burp, chirp, choke, collapse, dance, drool, gasp, shiver, gnarl, jump, moan, nod, roll, scratch,\nscretch, shake, sign-#, sulk, sway, tail, twitch, whimper")
+			to_chat(src, "burp, chirp, choke, collapse, dance, drool, gasp, shiver, gnarl, jump, moan, nod, roll, scratch,\nscretch, shake, sign-#, sulk, sway, tail, whimper")
 		else
 			to_chat(src, "Invalid Emote: [act]")
 	if ((message && src.stat == 0))
@@ -128,4 +103,3 @@
 			for(var/mob/O in hearers(src, null))
 				O.show_message(message, m_type)
 				//Foreach goto(746)
-	return

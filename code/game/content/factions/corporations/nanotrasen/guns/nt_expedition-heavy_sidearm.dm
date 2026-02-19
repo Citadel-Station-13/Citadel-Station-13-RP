@@ -57,6 +57,7 @@
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	ammo_max = 6
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader/update_icon(updates)
@@ -80,6 +81,7 @@
 	base_icon_state = "magazine"
 	rendering_static_overlay = "magazine-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	ammo_max = 10
 
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
@@ -87,6 +89,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	name = "smg magazine (NT-9-LR)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	rendering_static_overlay = "smg-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 20
@@ -124,6 +127,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/pistol
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/revolver
 	name = "heavy revolver"
@@ -138,6 +142,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	internal_magazine = TRUE
 	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader::ammo_max
 	icon_state = "revolver"
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 /datum/firemode/nt_expedition_heavy_smg
 	abstract_type = /datum/firemode/nt_expedition_heavy_smg
@@ -178,6 +183,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		/datum/firemode/nt_expedition_heavy_smg/semi_auto,
 		/datum/firemode/nt_expedition_heavy_smg/three_burst,
 	)
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg/no_pin

@@ -3,9 +3,9 @@
 	var/obj/machinery/atmospherics/mains_pipe/parent_pipe
 	var/list/obj/machinery/atmospherics/pipe/mains_component/nodes = new()
 
-/obj/machinery/atmospherics/pipe/mains_component/New(loc)
-	..(loc)
+/obj/machinery/atmospherics/pipe/mains_component/Initialize(mapload, newdir)
 	parent_pipe = loc
+	return ..()
 
 /obj/machinery/atmospherics/pipe/mains_component/check_pressure(pressure)
 	var/datum/gas_mixture/environment = loc.loc.return_air()
@@ -65,6 +65,12 @@
 	aux = new(src)
 	aux.volume = volume
 	aux.nodes.len = nodes.len
+
+/obj/machinery/atmospherics/mains_pipe/Destroy()
+	QDEL_NULL(supply)
+	QDEL_NULL(scrubbers)
+	QDEL_NULL(aux)
+	return ..()
 
 /obj/machinery/atmospherics/mains_pipe/proc/burst()
 	for(var/obj/machinery/atmospherics/pipe/mains_component/pipe in contents)
@@ -309,6 +315,10 @@
 	. = ..()
 	initialize_mains_directions = turn(dir, 90) | turn(dir, -90)
 	initialize_directions = dir // actually have a normal connection too
+
+/obj/machinery/atmospherics/mains_pipe/split/Destroy()
+	QDEL_NULL(split_node)
+	return ..()
 
 /obj/machinery/atmospherics/mains_pipe/split/atmos_init()
 	var/node1_dir

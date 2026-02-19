@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 #define testing_profile_local_output(NAME) testing_profile_output(NAME, _timer_system)
 #define testing_profile_local_output_all testing_profile_output_all(_timer_system)
 
-#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM) || defined(INCLUDE_UNIT_TESTS)
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 /proc/log_test(text)
 	WRITE_LOG(GLOB.test_log, text)
 	SEND_TEXT(world.log, text)
@@ -245,8 +245,18 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	WRITE_LOG(GLOB.config_error_log, text)
 	SEND_TEXT(world.log, text)
 
-/proc/log_mapping(text)
+/// Logging for mapping errors
+/proc/log_mapping(text, skip_world_log)
+#ifdef UNIT_TESTS
+	GLOB.unit_test_mapping_logs += text
+#endif
+#ifdef MAP_TEST
+	message_admins("Mapping: [text]")
+#endif
 	WRITE_LOG(GLOB.world_map_error_log, text)
+	if(skip_world_log)
+		return
+	SEND_TEXT(world.log, text)
 
 /**
  * For logging round startup.

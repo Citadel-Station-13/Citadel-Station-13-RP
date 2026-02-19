@@ -3,6 +3,7 @@
 // todo: target still makes message of being hit even if they weren't
 // todo: just handle message in this file lmao
 // todo: better description; this type does have an excuse to have special behavior.
+// TODO: move to subtypes/bullet
 /obj/projectile/bullet/pellet
 	name = "shrapnel" //'shrapnel' sounds more dangerous (i.e. cooler) than 'pellet'
 
@@ -97,10 +98,6 @@
 	else
 		. |= PROJECTILE_IMPACT_PIERCE
 
-// todo: this is only needed because process_damage_instance isn't used for structured right now!
-/obj/projectile/bullet/pellet/get_structure_damage()
-	return ..() * pellets
-
 //Explosive grenade projectile, borrowed from fragmentation grenade code.
 /obj/projectile/bullet/pellet/fragment
 	damage_force = 10
@@ -112,6 +109,10 @@
 /obj/projectile/bullet/pellet/fragment/strong
 	damage_force = 10
 	damage_tier = 4.5
+
+/obj/projectile/bullet/pellet/fragment/strong/mortar
+	pellet_loss_start = WORLD_ICON_SIZE * 6
+	pellet_loss = 0.15 / WORLD_ICON_SIZE
 
 /obj/projectile/bullet/pellet/fragment/weak
 	damage_force = 7.5

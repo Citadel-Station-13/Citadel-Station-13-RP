@@ -6,7 +6,7 @@
 	appearance_flags = APPEARANCE_UI | KEEP_TOGETHER | TILE_BOUND
 	plane = HUD_PLANE
 	layer = HUD_LAYER_STORAGE
-	icon = 'icons/screen/hud/common/storage.dmi'
+	icon = 'icons/screen/hud/styles/common/storage.dmi'
 
 /atom/movable/screen/storage/closer
 	name = "close"
@@ -15,18 +15,20 @@
 /atom/movable/screen/storage/closer/Click()
 	usr.active_storage?.hide(usr)
 
+INITIALIZE_IMMEDIATE(/atom/movable/screen/storage/item)
 /atom/movable/screen/storage/item
 	plane = HUD_ITEM_PLANE
 	layer = HUD_ITEM_LAYER_BASE
 	var/obj/item/item
 
-/atom/movable/screen/storage/item/New(newloc, obj/item/from_item)
+/atom/movable/screen/storage/item/Initialize(mapload, obj/item/from_item)
 	item = from_item
 	bind(from_item)
 	return ..()
 
 /atom/movable/screen/storage/item/Destroy()
 	item = null
+	vis_contents.len = 0
 	return ..()
 
 /atom/movable/screen/storage/item/MouseEntered(location, control, params)
@@ -83,6 +85,7 @@
 
 /**
  * we are centered.
+ * * this includes the border, but not the padding.
  */
 /atom/movable/screen/storage/item/volumetric/proc/set_pixel_width(width)
 	overlays.len = 0

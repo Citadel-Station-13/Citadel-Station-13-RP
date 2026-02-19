@@ -36,6 +36,10 @@
 	. = ..()
 	update_icon()
 
+/obj/machinery/recharge_station/Destroy()
+	QDEL_NULL(cell)
+	return ..()
+
 /obj/machinery/recharge_station/proc/has_cell_power()
 	return cell && cell.percent() > 0
 
@@ -76,11 +80,9 @@
 /obj/machinery/recharge_station/proc/process_occupant()
 	if(isrobot(occupant))
 		var/mob/living/silicon/robot/R = occupant
-
-		if(R.module)
-			R.module.respawn_consumable(R, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1) / 250) //consumables are magical, apparently
+		R.regenerate_resources_from_charger(2, 1)
 		if(R.cell && !R.cell.fully_charged())
-			var/diff = min(R.cell.maxcharge - R.cell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
+			var/diff = min(R.cell.max_charge - R.cell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
 			var/charge_used = cell.use(diff)
 			R.cell.give(charge_used)
 
@@ -89,6 +91,8 @@
 			R.adjustBruteLoss(-weld_rate)
 		if(wire_rate && R.getFireLoss() && cell.checked_use(DYNAMIC_W_TO_CELL_UNITS(wire_power_use * wire_rate, 1)))
 			R.adjustFireLoss(-wire_rate)
+		R.resources?.regen_provisioned(2)
+		R.module?.legacy_custom_regenerate_resources(R, 2, 1)
 
 	//Handles drone matrix upgrades
 	if(isDrone(occupant))
@@ -125,7 +129,7 @@
 					storedmod.damage = 0
 			var/obj/item/cell/rigcell = wornrig.get_cell()
 			if(rigcell)
-				var/diff = min(rigcell.maxcharge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
+				var/diff = min(rigcell.max_charge - rigcell.charge, DYNAMIC_W_TO_CELL_UNITS(charging_power, 1)) // Capped by charging_power / tick
 				var/charge_used = cell.use(diff)
 				rigcell.give(charge_used)
 

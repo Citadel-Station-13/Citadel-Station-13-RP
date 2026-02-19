@@ -50,7 +50,7 @@
 	. = "keep-going"
 
 /atom/movable/CtrlClick(var/mob/user)
-	if(Adjacent(user))
+	if(user.Reachability(src) && isliving(user) && IS_CONSCIOUS(user))
 		user.start_pulling(src)
 	else
 		return ..()

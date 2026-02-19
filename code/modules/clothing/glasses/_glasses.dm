@@ -17,6 +17,7 @@ BLIND     // can't see anything
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_EYES
 	active_slots = list(SLOT_ID_GLASSES)
+	belt_storage_class = BELT_CLASS_SMALL
 	var/prescription = 0
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'

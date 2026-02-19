@@ -107,6 +107,8 @@
 
 /atom/movable/screen/alert/Initialize(mapload)
 	. = ..()
+	if(PERFORM_ALL_TESTS(focus_only/screen_alert_overlay) && background_state && !icon_exists(background_icon, background_state))
+		stack_trace("background_state: \"[background_state || "null"]\" that couldn't be found background_icon: \"[background_icon || "null"]\"")
 	update_icon()
 
 /atom/movable/screen/alert/update_icon(updates)
@@ -119,8 +121,10 @@
 	owner = null
 	return ..()
 
-/atom/movable/screen/alert/MouseEntered(location,control,params)
-	openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
+/atom/movable/screen/alert/MouseEntered(location, control, params)
+	. = ..()
+	if(!QDELETED(src))
+		openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
 
 /atom/movable/screen/alert/MouseExited()
 	closeToolTip(usr)

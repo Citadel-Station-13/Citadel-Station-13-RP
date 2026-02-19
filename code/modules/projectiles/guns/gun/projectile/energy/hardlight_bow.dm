@@ -6,13 +6,13 @@
 	icon_state = "bow_hardlight"
 	item_state = "bow_pipe"
 	slot_flags = SLOT_BACK | SLOT_BELT
-	charge_cost = 1200
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 1
 	legacy_battery_lock = 1
 	pin = /obj/item/firing_pin/explorer
 	projectile_type = /obj/projectile/ion
 
 	var/recharging = 0
-	var/phase_power = 150
+	var/phase_power = POWER_CELL_CAPACITY_WEAPON / 4
 
 /obj/item/gun/projectile/energy/hardlight_bow/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()

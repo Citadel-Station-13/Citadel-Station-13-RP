@@ -27,8 +27,8 @@
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
 
-/obj/item/storage/box/bodybags/New()
-	..()
+/obj/item/storage/box/bodybags/Initialize(mapload, empty)
+	. = ..()
 	new /obj/item/bodybag(src)
 	new /obj/item/bodybag(src)
 	new /obj/item/bodybag(src)
@@ -136,12 +136,17 @@
 
 	var/obj/item/reagent_containers/syringe/syringe
 
+/obj/item/bodybag/cryobag/Destroy()
+	QDEL_NULL(syringe)
+	return ..()
+
 /obj/item/bodybag/cryobag/create_bag(atom/where)
 	var/obj/structure/closet/body_bag/cryobag/bag = ..()
 	if(!istype(bag))
 		return
-	if(!isnull(syringe))
+	if(syringe)
 		bag.syringe = syringe
+		syringe.forceMove(bag)
 		syringe = null
 	return bag
 
@@ -160,7 +165,7 @@
 
 /obj/structure/closet/body_bag/cryobag/Initialize(mapload)
 	tank = new tank_type(null) //It's in nullspace to prevent ejection when the bag is opened.
-	..()
+	return ..()
 
 /obj/structure/closet/body_bag/cryobag/Destroy()
 	QDEL_NULL(syringe)
@@ -171,6 +176,7 @@
 	. = ..()
 	if(. && syringe)
 		var/obj/item/bodybag/cryobag/folded = .
+		syringe.forceMove(folded)
 		folded.syringe = syringe
 		syringe = null
 

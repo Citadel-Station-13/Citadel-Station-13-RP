@@ -202,8 +202,8 @@
 	return
 
 /obj/machinery/button/remote/driver/update_icon_state()
-	if(!active || (machine_stat & NOPOWER))
-		icon_state = "launcherbtt"
-	else
-		icon_state = "launcheract"
-	return ..()
+    .=..()
+    if(!active || (machine_stat & NOPOWER))
+        icon_state = "launcherbtt"
+    else
+        icon_state = "launcheract"

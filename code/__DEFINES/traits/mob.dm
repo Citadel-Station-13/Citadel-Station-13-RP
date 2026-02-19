@@ -52,8 +52,17 @@ DATUM_TRAIT(/mob, TRAIT_MOB_SLEEPING)
 #define TRAIT_MOB_FORCED_STANDING "mob_forced_standing"
 DATUM_TRAIT(/mob, TRAIT_MOB_FORCED_STANDING)
 
-//? misc
+//* UI *//
 
+/// actor modal open of type with ourselves as the initiator
+#define TRAIT_MOB_ACTOR_MODAL_INITIATOR(TYPE, INITIATOR, PERFORMER) "[type]-[REF(initiator)]-[REF(PERFORMER)]"
+
+//* Misc *//
+
+/// Emote cooldown trait
+#define TRAIT_EMOTE_COOLDOWN(KEY) "emote-cd-[KEY]"
+/// Emote cooldown trait
+#define TRAIT_EMOTE_GLOBAL_COOLDOWN "emote-cd"
 /// Tracks whether you're a mime or not.
 #define TRAIT_MIMING "miming"
 DATUM_TRAIT(/mob, TRAIT_MIMING)

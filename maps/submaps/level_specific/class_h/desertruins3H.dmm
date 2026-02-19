@@ -104,9 +104,6 @@
 /obj/structure/simple_door/sandstone,
 /turf/simulated/mineral/floor,
 /area/class_h/POIs/temple)
-"K" = (
-/turf/simulated/wall/sandstone,
-/area/class_h/POIs/temple)
 "N" = (
 /mob/living/simple_mob/construct/shade,
 /turf/simulated/floor/plating,
@@ -179,27 +176,27 @@ a
 "}
 (2,1,1) = {"
 a
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
 a
 "}
 (3,1,1) = {"
 a
-K
+q
 m
 X
 X
@@ -214,12 +211,12 @@ p
 m
 X
 T
-K
+q
 a
 "}
 (4,1,1) = {"
 a
-K
+q
 X
 S
 Y
@@ -234,12 +231,12 @@ X
 X
 X
 z
-K
+q
 a
 "}
 (5,1,1) = {"
 a
-K
+q
 X
 m
 m
@@ -254,12 +251,12 @@ W
 q
 X
 m
-K
+q
 a
 "}
 (6,1,1) = {"
 a
-K
+q
 X
 q
 q
@@ -274,12 +271,12 @@ P
 q
 E
 X
-K
+q
 a
 "}
 (7,1,1) = {"
 a
-K
+q
 X
 q
 Z
@@ -294,12 +291,12 @@ q
 q
 I
 q
-K
+q
 a
 "}
 (8,1,1) = {"
 a
-K
+q
 X
 q
 s
@@ -310,16 +307,16 @@ n
 Q
 s
 o
-K
+q
 k
 s
-K
+q
 x
 x
 "}
 (9,1,1) = {"
 a
-K
+q
 X
 I
 V
@@ -339,7 +336,7 @@ a
 "}
 (10,1,1) = {"
 a
-K
+q
 X
 q
 s
@@ -350,16 +347,16 @@ n
 o
 s
 o
-K
+q
 Z
 s
-K
+q
 a
 x
 "}
 (11,1,1) = {"
 a
-K
+q
 X
 q
 k
@@ -374,12 +371,12 @@ q
 q
 I
 q
-K
+q
 a
 "}
 (12,1,1) = {"
 a
-K
+q
 X
 q
 q
@@ -394,12 +391,12 @@ P
 q
 X
 X
-K
+q
 a
 "}
 (13,1,1) = {"
 a
-K
+q
 m
 X
 m
@@ -414,12 +411,12 @@ W
 q
 m
 j
-K
+q
 a
 "}
 (14,1,1) = {"
 a
-K
+q
 X
 l
 X
@@ -434,12 +431,12 @@ X
 X
 z
 m
-K
+q
 a
 "}
 (15,1,1) = {"
 a
-K
+q
 X
 u
 X
@@ -454,27 +451,27 @@ R
 X
 N
 X
-K
+q
 a
 "}
 (16,1,1) = {"
 a
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
-K
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
+q
 a
 "}
 (17,1,1) = {"

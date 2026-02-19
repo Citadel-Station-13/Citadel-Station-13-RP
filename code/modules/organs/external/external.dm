@@ -157,17 +157,20 @@
 	addtimer(CALLBACK(src, PROC_REF(get_icon)), 1)
 
 /obj/item/organ/external/Destroy()
-
-	if(parent && parent.children)
-		parent.children -= src
+	if(parent)
+		if(parent.children)
+			parent.children -= src
+		parent = null
 
 	if(children)
 		for(var/obj/item/organ/external/C in children)
 			qdel(C)
+		children = null
 
 	if(internal_organs)
 		for(var/obj/item/organ/O in internal_organs)
 			qdel(O)
+		internal_organs = null
 
 	if(splinted && splinted.loc == src)
 		qdel(splinted)
@@ -180,7 +183,7 @@
 		while(null in owner.organs)
 			owner.organs -= null
 
-	implants.Cut() // Remove these too!
+	QDEL_LIST_NULL(implants)
 
 	return ..()
 

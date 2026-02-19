@@ -22,11 +22,6 @@
 #define DM_TRANSFORM_KEEP_GENDER					"Transform (Keep Gender)"
 #define DM_TRANSFORM_REPLICA						"Transform (Replica Of Self)"
 #define DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR		"Transform (Change Species and Taur)"
-#define DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR_EGG	"Transform (Change Species and Taur) (EGG)"
-#define DM_TRANSFORM_REPLICA_EGG					"Transform (Replica Of Self) (EGG)"
-#define DM_TRANSFORM_KEEP_GENDER_EGG				"Transform (Keep Gender) (EGG)"
-#define DM_TRANSFORM_MALE_EGG						"Transform (Male) (EGG)"
-#define DM_TRANSFORM_FEMALE_EGG						"Transform (Female) (EGG)"
 
 //Addon mode flags
 #define DM_FLAG_NUMBING			0x1

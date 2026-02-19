@@ -154,6 +154,7 @@
 
 GLOBAL_LIST_EMPTY(buildholders)
 
+INITIALIZE_IMMEDIATE(/obj/effect/bmode/buildholder)
 /obj/effect/bmode/buildholder
 	density = 0
 	anchored = 1
@@ -165,7 +166,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 	var/atom/movable/throw_atom = null
 	var/list/selected_mobs = list()
 
-/obj/effect/bmode/buildholder/New()
+/obj/effect/bmode/buildholder/Initialize(mapload)
 	GLOB.buildholders += src
 	return ..()
 
@@ -318,7 +319,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 			if(istype(object,/turf) && pa.Find("left") && !pa.Find("alt") && !pa.Find("ctrl") )
 				var/turf/T = object
 				if(istype(object,/turf/space) || istype(object, /turf/simulated/open))
-					T.ChangeTurf(/turf/simulated/floor/plating)
+					T.PlaceOnTop(/turf/simulated/floor/plating)
 					log_admin("[key_name(usr)] created 1 plating at [COORD(T)]")
 					return
 				else if(T.outdoors)
@@ -376,6 +377,10 @@ GLOBAL_LIST_EMPTY(buildholders)
 					if(T.density) // T is dense, we likely want to replace it as it's likely a wall
 						T.ChangeTurf(holder.buildmode.objholder)
 					else if(initial(making_path.density)) // thing we're placing is dense but not existing turf, place on top
+						T.PlaceOnTop(holder.buildmode.objholder)
+					else if(istype(T, /turf/space) || length(T.baseturfs) <= 1)
+						// is space or only one baseturf (non-list counts as 0)
+						// we likely want to place on top
 						T.PlaceOnTop(holder.buildmode.objholder)
 					else // densities match / other cases just changeturf.
 						T.ChangeTurf(holder.buildmode.objholder)
@@ -617,13 +622,15 @@ GLOBAL_LIST_EMPTY(buildholders)
 	for(var/i = low_bound_x, i <= high_bound_x, i++)
 		for(var/j = low_bound_y, j <= high_bound_y, j++)
 			var/turf/T = locate(i, j, z_level)
+			if(isturf(floor_type))
+				if(T.is_probably_baseturf_bottom())
+					T.PlaceOnTop(floor_type)
+				else
+					T.ChangeTurf(floor_type)
+			else
+				new floor_type(T)
 			if(i == low_bound_x || i == high_bound_x || j == low_bound_y || j == high_bound_y)
 				if(isturf(wall_type))
-					T.ChangeTurf(wall_type)
+					T.PlaceOnTop(wall_type)
 				else
 					new wall_type(T)
-			else
-				if(isturf(floor_type))
-					T.ChangeTurf(floor_type)
-				else
-					new floor_type(T)

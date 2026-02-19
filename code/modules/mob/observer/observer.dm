@@ -10,3 +10,9 @@
 
 	/// Our darksight
 	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/observer
+
+/mob/observer/Reachability(atom/target, depth, range, obj/item/tool)
+	return FALSE // you're not reaching shit
+
+/mob/observer/CheapReachability(atom/target, depth, range, obj/item/tool)
+	return FALSE // you're not reaching shit

@@ -22,6 +22,7 @@ GLOBAL_PROTECT(href_token)
 	var/href_token
 
 	var/datum/filter_editor/filteriffic
+	var/datum/spawn_menu/spawn_menu
 
 	/// our game panel
 	var/datum/admin_panel/game_panel/game_panel = new

@@ -21,6 +21,23 @@
 	// todo: rework launchers to maaaybe have a similar chambering system to ballistics.....?
 	var/atom/movable/chambered
 
+/obj/item/gun/launcher/grenade/consume_next_throwable(datum/gun_firing_cycle/cycle)
+	if(!chambered)
+		return GUN_FIRED_FAIL_EMPTY
+	. = chambered
+	grenades?.Remove(chambered)
+	chambered = null
+
+/obj/item/gun/launcher/grenade/launch_throwable(datum/gun_firing_cycle/cycle, atom/movable/launching)
+	var/obj/item/grenade/grenade = . = ..()
+	if(!istype(grenade))
+		return
+	// sigh just to be nice, make it fast
+	if(istype(grenade, /obj/item/grenade/simple))
+		var/obj/item/grenade/simple/simple_casted = grenade
+		simple_casted.activation_detonate_delay = 1 SECONDS
+	grenade.activate_shot_from_gun(src, cycle)
+
 //revolves the magazine, allowing players to choose between multiple grenade types
 /obj/item/gun/launcher/grenade/proc/pump(mob/M as mob)
 	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)

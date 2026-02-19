@@ -95,3 +95,12 @@
 	icon_state = "lab"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
+
+//? hyena
+/datum/sprite_accessory/ears/hyena
+	name = "hyena ears, dual-color"
+	id = "ears_hyena_dual"
+	icon_state = "hyena"
+	do_colouration = 1
+	legacy_use_additive_color_matrix = FALSE
+	extra_overlay = "hyena-inner"

@@ -22,11 +22,13 @@
 	name = "Sector - Lavaland West"
 	display_name = "Surt - West"
 	path = "maps/sectors/surt/levels/surt_west.dmm"
-	link_east = /datum/map_level/sector/surt/east
+	struct_x = 0
+	struct_y = 0
+	struct_z = 0
 
-/datum/map_level/sector/surt/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/surt/base/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
-	additional_generation?.Add(
+	out_generation_callbacks?.Add(
 		CALLBACK(
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),
@@ -45,11 +47,13 @@
 	name = "Sector - Lavaland East"
 	display_name = "Surt - East"
 	path = "maps/sectors/surt/levels/surt_east.dmm"
-	link_west = /datum/map_level/sector/surt/base
+	struct_x = 1
+	struct_y = 0
+	struct_z = 0
 
-/datum/map_level/sector/surt/east/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+/datum/map_level/sector/surt/east/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
-	additional_generation?.Add(
+	out_generation_callbacks?.Add(
 		CALLBACK(
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),

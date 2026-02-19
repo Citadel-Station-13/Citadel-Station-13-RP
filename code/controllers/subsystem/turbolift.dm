@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(turbolifts)
 	name = "Turbolifts"
 	subsystem_flags = SS_NO_INIT
-	wait = 10
+	wait = 1 SECONDS
 	var/static/list/moving_lifts = list()
 	var/list/currentrun
 
@@ -34,4 +34,7 @@ SUBSYSTEM_DEF(turbolifts)
 			return
 
 /datum/controller/subsystem/turbolifts/proc/lift_is_moving(datum/turbolift/lift, floor_delay)
-	moving_lifts["[REF(lift)]"] = world.time + floor_delay
+	var/lift_ref = "[REF(lift)]"
+	moving_lifts[lift_ref] = world.time + floor_delay
+	if(currentrun[lift_ref])
+		currentrun[lift_ref] = world.time + floor_delay

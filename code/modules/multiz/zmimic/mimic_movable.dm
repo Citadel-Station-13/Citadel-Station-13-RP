@@ -62,7 +62,7 @@
 // This is an abstract object, we don't care about the move stack or throwing events.
 /atom/movable/openspace/Move()
 	if (bound_overlay)
-		bound_overlay.forceMove(get_vertical_step(src, UP))
+		bound_overlay.forceMove(get_step_multiz(src, UP))
 		// forceMove could've deleted our overlay
 		if (bound_overlay && bound_overlay.dir != dir)
 			bound_overlay.setDir(dir)

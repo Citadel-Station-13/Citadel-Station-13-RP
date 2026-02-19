@@ -28,14 +28,18 @@
 
 	var/datum/effect_system/ion_trail_follow/ion_trail
 
-/mob/living/simple_mob/mechanical/mecha/hoverpod/manned
-	pilot_type = /mob/living/simple_mob/humanoid/merc/ranged
-
 /mob/living/simple_mob/mechanical/mecha/hoverpod/Initialize(mapload)
 	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
 	ion_trail.start()
 	return ..()
+
+/mob/living/simple_mob/mechanical/mecha/hoverpod/Destroy()
+	QDEL_NULL(ion_trail)
+	return ..()
+
+/mob/living/simple_mob/mechanical/mecha/hoverpod/manned
+	pilot_type = /mob/living/simple_mob/humanoid/merc/ranged
 
 /mob/living/simple_mob/mechanical/mecha/hoverpod/Process_Spacemove(var/check_drift = 0)
 	return TRUE

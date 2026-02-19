@@ -13,6 +13,14 @@
 /atom/proc/is_melee_targetable(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	return FALSE
 
+/**
+ * Checks if we should be targetable by a throw impact
+ * * This is for explicit target impacts when something is in our turf but not impacting on cross.
+ *   Crossed impacts will ignore this entirely, meaning density / blockage implies targetability.
+ */
+/atom/proc/is_throw_explicit_targetable(datum/thrownthing/throw_datum)
+	return FALSE
+
 //* External API / Damage Receiving *//
 
 /**

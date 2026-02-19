@@ -1,4 +1,4 @@
-GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
+GLOBAL_DATUM(catalogue_data, /datum/category_collection/catalogue)
 
 // The collection holds everything together and is GLOB accessible.
 /datum/category_collection/catalogue

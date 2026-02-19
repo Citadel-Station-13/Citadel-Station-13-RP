@@ -11,7 +11,7 @@
 	base_icon_state = "normal"
 
 	w_class = WEIGHT_CLASS_NORMAL
-	weight_volume = WEIGHT_VOLUME_SMALL
+	weight_volume = WEIGHT_VOLUME_NORMAL
 	slot_flags = SLOT_GLOVES
 
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

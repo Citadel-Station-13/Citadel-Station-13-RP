@@ -17,7 +17,7 @@
 /// overmap distance quantization
 #define OVERMAP_DISTANCE_ACCURACY 0.0001
 /// duplicate of world icon size. don't lie to yourself, we aren't getting 64x64 ss13.
-#define OVERMAP_WORLD_ICON_SIZE 32
+#define OVERMAP_WORLD_ICON_SIZE WORLD_ICON_SIZE
 /// overmap coordinate distance in a tile
 #define OVERMAP_DISTANCE_TILE (OVERMAP_WORLD_ICON_SIZE * OVERMAP_DISTANCE_PIXEL)
 /// overmap distance quantize helper

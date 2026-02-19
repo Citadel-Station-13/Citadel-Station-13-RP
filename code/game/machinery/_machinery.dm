@@ -100,11 +100,15 @@
 /obj/machinery
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
+	desc = "Some kind of machine."
+	abstract_type = /obj/machinery
 	w_class = WEIGHT_CLASS_HUGE
 	layer = UNDER_JUNK_LAYER
 	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
 	// todo: wow rad contents is a weird system
 	rad_flags = RAD_BLOCK_CONTENTS
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
 	//* Construction / Deconstruction
@@ -202,6 +206,7 @@
 				M.update_perspective()
 			else
 				qdel(A)
+	QDEL_NULL(circuit)
 	return ..()
 
 /obj/machinery/process(delta_time)//If you dont use process or power why are you here
@@ -214,7 +219,7 @@
 
 /obj/machinery/emp_act(severity)
 	if(use_power && machine_stat == NONE)
-		use_power(7500/severity)
+		use_power(7500 / severity)
 
 		var/obj/effect/overlay/pulse2 = new /obj/effect/overlay(src.loc)
 		pulse2.icon = 'icons/effects/effects.dmi'
@@ -562,8 +567,10 @@
 	A.pixel_y = pixel_y
 	A.update_desc()
 	A.update_appearance()
-	M.loc = null
+	M.forceMove(A)
 	M.after_deconstruct(src)
+	// release circuit
+	circuit = null
 
 // todo: kill this shit, this is legacy
 /obj/machinery/proc/dismantle()

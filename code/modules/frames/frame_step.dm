@@ -35,6 +35,7 @@
 	/// * /datum/prototype/material path
 	/// * /obj/item/stack path
 	/// * /obj/item path
+	/// * TOOL_BEHAVIOR function
 	var/request
 	/// * stacks: amount
 	/// * items: amount; if 0, we just apply the item to it
@@ -110,7 +111,7 @@
 		else if(ispath(request, /obj/item))
 			request_type = FRAME_REQUEST_TYPE_ITEM
 		else if(istext(request))
-			if(request in global.all_tool_functions)
+			if(request in global.tool_behaviors_hardcoded)
 				request_type = FRAME_REQUEST_TYPE_TOOL
 				detected = TRUE
 		else if(!detected)

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station developers.          *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //*                 IFF Factions                  *//
 
@@ -117,6 +117,13 @@
 #define MOB_IFF_FACTION_MONSTER_MOLE "mole"
 // bugs, bug and more bugs! (bugs)
 #define MOB_IFF_FACTION_MONSTER_BUG "bugs"
+
+// some secrets were meant to never be uncovered (derelict)
+#define MOB_IFF_FACTION_DERELICT "derelict"
+// ancient automatons that still prowl the ruins of something once mighty... (automatons)
+#define MOB_IFF_FACTION_DERELICT_AUTOMATONS "derelict automatons"
+// they are many, and you are so.. so few (blight)
+#define MOB_IFF_FACTION_DERELICT_BLIGHT "blight"
 
 //? Human factions ?//
 

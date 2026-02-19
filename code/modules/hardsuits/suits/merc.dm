@@ -28,18 +28,6 @@
 	siemens_coefficient = 0.3
 	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/eva
 	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/merc
-	allowed = list(
-		/obj/item/flashlight,
-		/obj/item/tank,
-		/obj/item/suit_cooling_unit,
-		/obj/item/gun,
-		/obj/item/ammo_magazine,
-		/obj/item/ammo_casing,
-		/obj/item/melee/baton,
-		/obj/item/melee/transforming/energy/sword,
-		/obj/item/handcuffs,
-		/obj/item/bluespace_radio,
-	)
 
 	initial_modules = list(
 		/obj/item/hardsuit_module/mounted,

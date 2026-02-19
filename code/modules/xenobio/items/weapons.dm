@@ -8,7 +8,7 @@
 	active_color = "#33CCFF"
 	origin_tech = list(TECH_COMBAT = 2, TECH_BIO = 2)
 	description_info = "This baton will stun a slime or other slime-based lifeform for about five seconds, if hit with it while on."
-	charge_cost = /obj/item/cell/device::maxcharge / 10
+	charge_cost = /obj/item/cell/basic/tier_1/weapon::max_charge / 10
 	stun_power = 10
 
 	var/extra_slime_stun_power = 40
@@ -32,7 +32,7 @@
 				)
 
 /obj/item/melee/baton/slime/loaded
-	cell_type = /obj/item/cell/device
+	cell_type = /obj/item/cell/basic/tier_1/weapon
 
 // Research borg's version
 /obj/item/melee/baton/slime/robot
@@ -52,7 +52,7 @@
 	While marketed towards handling slimes, it may be useful for other creatures."
 	icon_state = "taserold"
 	fire_sound = 'sound/weapons/taser2.ogg'
-	charge_cost = 120 // Twice as many shots.
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 24
 	no_pin_required = 1
 	accuracy = 30 // Make it a bit easier to hit the slimes.
 	description_info = "This gun will stun a slime or other lesser slimy lifeform for about two seconds, if hit with the projectile it fires."

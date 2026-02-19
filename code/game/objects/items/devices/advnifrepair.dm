@@ -15,10 +15,13 @@
 	var/datum/reagent_holder/supply
 	var/efficiency = 15 //How many units reagent per 1 unit nanopaste
 
-
 /obj/item/nifrepairer/Initialize(mapload)
 	. = ..()
 	supply = new(max = 60, A = src)
+
+/obj/item/nifrepairer/Destroy()
+	QDEL_NULL(supply)
+	return ..()
 
 /obj/item/nifrepairer/attackby(obj/W, mob/user)
 	if(istype(W,/obj/item/stack/nanopaste))

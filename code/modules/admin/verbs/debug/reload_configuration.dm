@@ -9,4 +9,4 @@
 		log_and_message_admins("[key_name(usr)] reloaded server configuration.")
 		config.admin_reload()
 		Configuration.admin_reload()
-		load_configuration()		//for legacy
+		load_legacy_configuration()		//for legacy

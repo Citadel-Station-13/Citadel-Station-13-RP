@@ -70,7 +70,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 	for(var/mobthing in sortmobs())
 		var/list/serialized = list()
 		var/mob/mob_poi = mobthing
-		// var/number_of_orbiters = length(mob_poi.get_all_orbiters())
+		var/number_of_orbiters = length(mob_poi.get_all_orbiters())
 
 		// ignore magical objects
 		if (isEye(mob_poi) || isvoice(mob_poi))
@@ -85,12 +85,15 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 		serialized["ref"] = REF(mob_poi)
 		serialized["full_name"] = name
-		// if(number_of_orbiters)
-		// 	serialized["orbiters"] = number_of_orbiters
+		if(number_of_orbiters)
+			serialized["orbiters"] = number_of_orbiters
+
+		if (is_admin)
+			serialized["ckey"] = mob_poi.ckey
 
 		if(isobserver(mob_poi))
-			// TODO what does this mean? invismin???
-			if(mob_poi.invisibility >= INVISIBILITY_MAXIMUM)
+			// TODO remove this, go use TRAIT_ORBITING_FORBIDDEN
+			if(mob_poi.invisibility >= INVISIBILITY_MAXIMUM) // invismin
 				continue
 			ghosts += list(serialized)
 			continue
@@ -109,9 +112,6 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 		serialized["client"] = !!mob_poi.client
 		serialized["name"] = mob_poi.real_name
-
-		if (is_admin)
-			serialized["ckey"] = mob_poi.ckey
 
 		if(isliving(mob_poi))
 			serialized += get_living_data(mob_poi)
@@ -138,11 +138,6 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		"npcs" = npcs,
 		"can_observe" = FALSE, // autoobserve
 	)
-
-// do we need it immediately? nah
-// /datum/orbit_menu/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
-// 	immediate += /datum/asset_pack/simple/orbit
-// 	return ..()
 
 /// Shows the UI to the specified user.
 /datum/orbit_menu/proc/show(mob/user)
@@ -198,7 +193,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 	var/obj/item/card/id/id_card = player.GetIdCard()
 	serialized["job"] = id_card?.assignment || id_card?.rank
-	serialized["icon"] = "hudunknown" //id_card?
+	serialized["icon"] = ckey(id_card?.GetJobName() || "unknown")  // ckey for formatting
 
 	var/job = player.mind?.assigned_role
 	if (isnull(job))
@@ -229,6 +224,24 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		misc["extra"] = "Integrity: [integrity]%"
 
 		if(integrity < 10)
+			critical = TRUE
+
+		return list(misc, critical)
+
+	// Display the holder if its a nuke disk
+	if(istype(atom_poi, /obj/item/disk/nuclear))
+		var/obj/item/disk/nuclear/disk = atom_poi
+		var/mob/holder = disk.pulledby || get(disk, /mob)
+		misc["extra"] = "Location: [holder?.real_name || "Unsecured"]"
+
+		return list(misc, critical)
+
+	// Display singuloths if they exist
+	if(istype(atom_poi, /obj/singularity))
+		var/obj/singularity/singulo = atom_poi
+		misc["extra"] = "Energy: [round(singulo.energy)]"
+
+		if(singulo.current_size > 2)
 			critical = TRUE
 
 		return list(misc, critical)

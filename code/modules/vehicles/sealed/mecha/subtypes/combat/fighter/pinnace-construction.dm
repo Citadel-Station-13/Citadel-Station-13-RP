@@ -4,10 +4,9 @@
 
 	origin_tech = list(TECH_MATERIAL = 2)
 
-/obj/item/vehicle_chassis/fighter/pinnace/New()
-	..()
+/obj/item/vehicle_chassis/fighter/pinnace/Initialize(mapload)
 	construct = new /datum/construction/mecha/fighter/pinnace_chassis(src)
-
+	return ..()
 
 /obj/item/vehicle_part/fighter/pinnace_core
 	name="\improper Pinnace Core"

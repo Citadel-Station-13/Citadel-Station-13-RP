@@ -1,0 +1,3 @@
+﻿help: "Please replace it with a proper area path."
+/area:
+  banned_variables: true

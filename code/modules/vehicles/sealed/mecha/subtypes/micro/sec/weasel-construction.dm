@@ -2,9 +2,9 @@
 	name = "Weasel Chassis"
 	icon_state = "weasel-chassis"
 
-/obj/item/vehicle_chassis/micro/weasel/New()
-	..()
+/obj/item/vehicle_chassis/micro/weasel/Initialize(mapload)
 	construct = new /datum/construction/mecha/weasel_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/micro/weasel_torso
 	name="Weasel Torso"

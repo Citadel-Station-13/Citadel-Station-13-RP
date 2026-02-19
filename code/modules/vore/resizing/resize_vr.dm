@@ -85,9 +85,13 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(atom_huds)
 		//it lowers lesser than it raises when it comes to micros v. macros else the medHUD would bury the micro
 		var/new_y_offset = (size_multiplier < 1 ? 27 : 32) * (size_multiplier - 1)
-		for(var/id in atom_huds)
-			var/image/image = atom_huds[id]
-			image.pixel_y = new_y_offset
+		// TODO: please make a better way of doing this holy shit
+		spawn(0)
+			var/timeout = world.time + 5 SECONDS
+			for(var/id in atom_huds)
+				UNTIL((world.time > timeout) || atom_huds?[id])
+				var/image/image = atom_huds[id]
+				image?.pixel_y = new_y_offset
 
 // Optimize mannequins - never a point to animating or doing HUDs on these.
 /mob/living/carbon/human/dummy/mannequin/resize(var/new_size, var/animate = TRUE)

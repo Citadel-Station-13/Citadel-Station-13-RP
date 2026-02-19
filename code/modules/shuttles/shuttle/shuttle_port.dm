@@ -66,7 +66,7 @@
 	/// are we moving right now?
 	var/tmp/port_moving = FALSE
 
-/obj/shuttle_port/preloading_instance(with_id)
+/obj/shuttle_port/preloading_from_mapload(with_id)
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
 

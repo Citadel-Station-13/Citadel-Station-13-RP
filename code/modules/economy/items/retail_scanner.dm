@@ -8,6 +8,7 @@
 	req_access = list(ACCESS_COMMAND_BRIDGE)
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MATERIAL = 1)
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 
 	var/locked = 1
 	var/emagged = 0

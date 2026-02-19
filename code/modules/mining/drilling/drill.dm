@@ -54,7 +54,7 @@
 		new /obj/item/stock_parts/matter_bin(src),
 		new /obj/item/stock_parts/capacitor(src),
 		new /obj/item/stock_parts/micro_laser(src),
-		new /obj/item/cell/high(src)
+		new /obj/item/cell/basic/tier_1/large(src)
 	)
 	RefreshParts()
 

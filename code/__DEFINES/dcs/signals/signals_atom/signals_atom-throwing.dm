@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /// from /atom/movable/proc/_throw_do_hit: (impactor, thrownthing)
 #define COMSIG_ATOM_THROW_IMPACTED				"throw_impacted"

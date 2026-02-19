@@ -8,7 +8,7 @@
 	malfunction_probability = 1
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	var/battery_rating = 750
-	var/obj/item/cell/battery = /obj/item/cell
+	var/obj/item/cell/battery = /obj/item/cell/basic/tier_1/small
 
 /obj/item/computer_hardware/battery_module/advanced
 	name = "advanced battery"
@@ -55,17 +55,17 @@
 	icon_state = "battery_lambda"
 	hardware_size = 1
 	battery_rating = 30000
-	battery = /obj/item/cell/infinite
+	battery = /obj/item/cell/infinite/small
 
 /obj/item/computer_hardware/battery_module/diagnostics(var/mob/user)
 	..()
-	to_chat(user, "Internal battery charge: [battery.charge]/[battery.maxcharge] CU")
+	to_chat(user, "Internal battery charge: [battery.charge]/[battery.max_charge] CU")
 
 /obj/item/computer_hardware/battery_module/Initialize(mapload)
 	if(ispath(battery))
 		battery = new battery
 	if(battery)
-		battery.maxcharge = battery_rating
+		battery.max_charge = battery_rating
 		battery.charge = 0
 	return ..()
 
@@ -76,4 +76,4 @@
 
 /obj/item/computer_hardware/battery_module/proc/charge_to_full()
 	if(battery)//nolonger checks for a valid path, instead checks if battery is set.
-		battery.charge = battery.maxcharge
+		battery.charge = battery.max_charge

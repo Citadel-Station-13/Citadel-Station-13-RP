@@ -731,7 +731,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/high/south_mount,
+/obj/machinery/power/apc/large_cell/south_mount,
 /turf/simulated/floor/plating,
 /area/sector/surt/mining_base/common)
 "sA" = (
@@ -2095,7 +2095,7 @@
 	},
 /obj/structure/table/steel,
 /obj/machinery/cell_charger,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_2/medium,
 /turf/simulated/floor/tiled,
 /area/sector/surt/mining_base/common)
 "VX" = (

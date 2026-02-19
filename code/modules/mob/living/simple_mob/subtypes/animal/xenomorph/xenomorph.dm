@@ -273,10 +273,10 @@
 	health = 1500
 	maxHealth = 1500
 	armor_legacy_mob = list(
-		"melee" = 60,
+		"melee" = 40,
 		"bullet" = 50,
-		"laser" = 80,
-		"energy" = 80,
+		"laser" = 15,
+		"energy" = 20,
 		"bomb" = 20,
 		"bio" = 100,
 		"rad" = 100,
@@ -299,8 +299,8 @@
 	special_attack_max_range = 12 //Normal view range is 7 this can begin charging from outside normal view You may expand it.
 	special_attack_cooldown = 15 SECONDS
 	var/charging = 0
-	var/charging_warning = 0 SECONDS
-	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_SHARP ///You may want to change this
+	var/charging_warning = 2 SECONDS
+	var/charge_damage_mode = DAMAGE_MODE_PIERCE | DAMAGE_MODE_PIERCE ///You may want to change this
 	var/charge_damage_flag = ARMOR_MELEE
 	var/charge_damage_tier = 4.5
 	var/charge_damage = 60

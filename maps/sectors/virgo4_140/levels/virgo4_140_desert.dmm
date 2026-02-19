@@ -112,11 +112,6 @@
 	outdoors = 1
 	},
 /area/tether_away/beach/desert/explored)
-"zN" = (
-/turf/simulated/floor/water/shoreline{
-	dir = 6
-	},
-/area/tether_away/beach/desert/explored)
 "zQ" = (
 /obj/item/bone/skull/tajaran,
 /turf/simulated/floor/plating/outdoors,
@@ -17753,7 +17748,7 @@ gz
 gz
 XZ
 EJ
-zN
+iL
 of
 of
 od

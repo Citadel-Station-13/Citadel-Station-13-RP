@@ -25,14 +25,12 @@ fundamental differences
 	. = ..()
 	cooking_objs += new /datum/cooking_item(new /obj/item/reagent_containers/cooking_container(src))
 	cooking = 0
-	selected_option = pick(output_options)
-
+	selected_option = SAFEPICK(output_options)
 	mixer_loop = new(list(src), FALSE)
 
 /obj/machinery/appliance/mixer/Destroy()
-	. = ..()
-
 	QDEL_NULL(mixer_loop)
+	return ..()
 
 //Mixers cannot-not do combining mode. So the default option is removed from this. A combine target must be chosen
 /obj/machinery/appliance/mixer/choose_output()

@@ -265,7 +265,6 @@
 	desc = "A case containing a restraining bolt."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/restrainingbolt/New()
+/obj/item/implantcase/restrainingbolt/Initialize(mapload)
 	src.imp = new /obj/item/implant/restrainingbolt( src )
-	..()
-	return
+	return ..()

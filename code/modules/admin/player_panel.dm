@@ -248,7 +248,7 @@
 					else
 						M_job = "Silicon-based"
 
-				else if(isanimal(M)) //simple animals
+				else if(isanimal_legacy_this_is_broken(M)) //simple animals
 					if(iscorgi(M))
 						M_job = "Corgi"
 					else

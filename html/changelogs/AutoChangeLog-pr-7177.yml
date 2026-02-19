@@ -1,4 +1,0 @@
-author: "_Shadowcat_"
-delete-after: True
-changes:
-  - refactor: "refactors under clothing to new render system"

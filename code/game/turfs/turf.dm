@@ -53,6 +53,8 @@
 	//* Flags
 	/// turf flags
 	var/turf_flags = NONE
+	/// turf spawning flags
+	var/turf_spawn_flags = TURF_SPAWN_FLAG_BUILDMODE | TURF_SPAWN_FLAG_FILLABLE | TURF_SPAWN_FLAG_LEVEL_TURF
 	/// multiz flags
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
@@ -93,9 +95,6 @@
 	/// Does this turf contain air/let air through?
 	var/blocks_air = FALSE
 
-
-	var/holy = 0
-
 	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
 
@@ -116,6 +115,8 @@
 	var/list/dangerous_objects
 	/// For if you explicitly want a turf to not be affected by shield generators
 	var/noshield = FALSE
+
+	var/list/image/blueprint_data //for the station blueprints, images of objects eg: pipes
 
 	// Some quick notes on the vars below: is_outside should be left set to OUTSIDE_AREA unless you
 	// EXPLICITLY NEED a turf to have a different outside state to its area (ie. you have used a
@@ -157,7 +158,6 @@
 	assemble_baseturfs()
 
 	SETUP_SMOOTHING()
-
 	QUEUE_SMOOTH(src)
 
 	//atom color stuff
@@ -217,9 +217,10 @@
 		for(var/A in B.contents)
 			qdel(A)
 		return
+
 	// SSair.remove_from_active(src)
 	// visibilityChanged()
-	// QDEL_LIST(blueprint_data)
+	QDEL_LIST(blueprint_data)
 	atom_flags &= ~ATOM_INITIALIZED
 	// requires_activation = FALSE
 
@@ -233,11 +234,11 @@
 	if (mimic_proxy)
 		QDEL_NULL(mimic_proxy)
 
+	..()
+
 	// clear vis contents here instead of in Init
 	if(length(vis_contents))
 		vis_contents.Cut()
-
-	..()
 
 /// WARNING WARNING
 /// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
@@ -348,7 +349,7 @@
 		return
 	if(!isturf(O.loc) || !isturf(user.loc))
 		return
-	if(isanimal(user) && O != user)
+	if(isanimal_legacy_this_is_broken(user) && O != user)
 		return
 	if(M.pulledby || M.is_grabbed())
 		return
@@ -366,6 +367,21 @@
 		sleep(2)
 		M.update_transform()
 
+/// Call to move a turf from its current area to a new one
+/turf/proc/change_area(area/old_area, area/new_area)
+	//don't waste our time
+	if(old_area == new_area)
+		return
+
+	//move the turf
+	// LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, z, list())
+	// LISTASSERTLEN(new_area.turfs_by_zlevel, z, list())
+	// old_area.turfs_to_uncontain_by_zlevel[z] += src
+	// new_area.turfs_by_zlevel[z] += src
+	new_area.contents += src
+	// SEND_SIGNAL(src, COMSIG_TURF_AREA_CHANGED, old_area)
+	// SEND_SIGNAL(new_area, COMSIG_AREA_TURF_ADDED, src, old_area)
+	// SEND_SIGNAL(old_area, COMSIG_AREA_TURF_REMOVED, src, new_area)
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
 	return
@@ -398,6 +414,25 @@
 		return cost
 	else
 		return get_dist(src,t)
+
+/turf/proc/add_blueprints(atom/movable/AM)
+	var/image/I = new
+	I.appearance = AM.appearance
+	I.appearance_flags = RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
+	// apparently setting appearance before these layers & planes cause it to inherit apperance values
+	I.plane = ABOVE_PLANE // close to "game plane"
+	I.layer = OBJ_LAYER
+	I.loc = src
+	I.setDir(AM.dir)
+	I.alpha = 128
+	LAZYADD(blueprint_data, I)
+
+/turf/proc/add_blueprints_preround(atom/movable/AM)
+	if(!SSicon_smooth.initialized)
+		if(AM.layer == WIRE_LAYER) //wires connect to adjacent positions after its parent init, meaning we need to wait (in this case, until smoothing) to take its image
+			SSicon_smooth.blueprint_queue += AM
+		else
+			add_blueprints(AM)
 
 /turf/proc/AdjacentTurfsSpace()
 	var/L[] = new()
@@ -507,7 +542,7 @@
 			//? length check
 			return TRUE
 */
-	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+	return SSmapping.level_has_trait(z, ZTRAIT_GRAVITY)
 
 /* // TODO: Implement this. @Zandario
 /turf/proc/update_weather(obj/abstract/weather_system/new_weather, force_update_below = FALSE)
@@ -640,6 +675,19 @@
  */
 /turf/proc/sector_set_temperature(temperature)
 	return
+
+/**
+ * blocks laser designators and similar from propagating up through us
+ * * does not check the current level!
+ */
+/turf/proc/sector_block_high_altitude_observation_to_below()
+	return !(mz_flags & (MZ_MIMIC_BELOW | MZ_ALLOW_LIGHTING))
+
+/**
+ * always visible from high altitude
+ */
+/turf/proc/sector_always_visible_from_high_altitude()
+	return FALSE
 
 //* Radiation *//
 

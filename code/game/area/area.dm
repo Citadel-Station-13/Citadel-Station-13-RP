@@ -46,6 +46,16 @@
 	 * This is not a flag because you probably should not be touching this at runtime!
 	 */
 	var/unique = TRUE
+	/**
+	 * If this is TRUE, this is a special area with functionality. This means it shouldn't be randomly instantiated by admins.
+	 *
+	 * If this is FALSE, this is instead just a regular area that groups turfs and any system can spawn any amount of it (if not unique)
+	 * for any reason.
+	 *
+	 * * Setting this to TRUE acts as an invariant check for things like orbital drops; we will not allow
+	 *   overwriting areas with this enabled.
+	 */
+	var/special = FALSE
 
 	//* Defaults - Turfs *//
 	/// outdoors by default?
@@ -144,10 +154,7 @@
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
-	if (unique)
-		// todo: something is double initing reserve area god damnit...
-		// if(GLOB.areas_by_type[type])
-		// 	STACK_TRACE("duplicated unique area, someone fucked up")
+	if (unique) // TODO flag me
 		GLOB.areas_by_type[type] = src
 
 	uid = ++global_uid
@@ -165,8 +172,7 @@
 /*
  * Initalize this area
  *
- * intializes the dynamic area lighting and also registers the area with the z level via
- * reg_in_areas_in_z
+ * intializes the dynamic area lighting
  *
  * returns INITIALIZE_HINT_LATELOAD
  */
@@ -192,8 +198,6 @@
 
 	. = ..()
 
-	reg_in_areas_in_z()
-
 	blend_mode = BLEND_MULTIPLY // Putting this in the constructor so that it stops the icons being screwed up in the map editor.
 
 	if(!IS_DYNAMIC_LIGHTING(src))
@@ -208,23 +212,6 @@
 	power_change() // all machines set to current power level, also updates lighting icon
 
 /**
- * Register this area as belonging to a z level
- *
- * Ensures the item is added to the SSmapping.areas_in_z list for this z
- */
-/area/proc/reg_in_areas_in_z()
-	if(!length(contents))
-		return
-	var/list/areas_in_z = SSmapping.areas_in_z
-	// update_areasize()
-	if(!z)
-		WARNING("No z found for [src]")
-		return
-	if(!areas_in_z["[z]"])
-		areas_in_z["[z]"] = list()
-	areas_in_z["[z]"] += src
-
-/**
  * Destroy an area and clean it up
  *
  * Removes the area from GLOB.areas_by_type and also stops it processing on SSobj
@@ -235,21 +222,12 @@
 /area/Destroy()
 	if(GLOB.areas_by_type[type] == src)
 		GLOB.areas_by_type[type] = null
-/*
-	if(base_area)
-		LAZYREMOVE(base_area, src)
-		base_area = null
-	if(sub_areas)
-		for(var/i in sub_areas)
-			var/area/A = i
-			A.base_area = null
-			sub_areas -= A
-			if(A.requires_power)
-				A.power_light = FALSE
-				A.power_equip = FALSE
-				A.power_environ = FALSE
-			INVOKE_ASYNC(A, PROC_REF(power_change))
-*/
+	//this is not initialized until get_sorted_areas() is called so we have to do a null check
+	if(!isnull(GLOB.sortedAreas))
+		GLOB.sortedAreas -= src
+	if(!isnull(GLOB.custom_areas))
+		GLOB.custom_areas -= src
+
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -657,6 +635,20 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
 
+/**
+ * Setup an area (with the given name)
+ *
+ * Sets the area name, sets all status var's to false and adds the area to the sorted area list
+ */
+/area/proc/setup(a_name)
+	name = a_name
+	power_equip = FALSE
+	power_light = FALSE
+	power_environ = FALSE
+	always_unpowered = FALSE
+	// area_flags &= ~(VALID_TERRITORY|BLOBS_ALLOWED|CULT_PERMITTED)
+	// require_area_resort()
+
 /area/AllowDrop()
 	CRASH("Bad op: area/AllowDrop() called")
 
@@ -760,6 +752,23 @@ var/list/ghostteleportlocs = list()
 		if(scrubber.id_tag == id)
 			return scrubber
 
+//* Color *//
+
+/area/get_atom_color()
+	return color
+
+/area/add_atom_color(new_color)
+	color = new_color
+
+/area/copy_atom_color(atom/other)
+	color = other.get_atom_color()
+
+/area/remove_atom_color(require_color)
+	color = null
+
+/area/update_atom_color()
+	return
+
 //* Turfs *//
 
 /**
@@ -767,11 +776,35 @@ var/list/ghostteleportlocs = list()
  */
 /area/proc/take_turfs(list/turf/turfs)
 	for(var/turf/T in turfs)
+		if(T.loc == src)
+			continue
 		ChangeArea(T, src)
+
+/**
+ * take turfs into ourselves
+ */
+/area/proc/take_turfs_checking_tick(list/turf/turfs)
+	for(var/turf/T in turfs)
+		if(T.loc == src)
+			continue
+		ChangeArea(T, src)
+		CHECK_TICK
 
 /**
  * give turfs to other area
  */
 /area/proc/give_turfs(list/turf/turfs, area/give_to)
 	for(var/turf/T in turfs)
+		if(T.loc != src)
+			stack_trace("give_turfs found a turf not in source area.")
 		ChangeArea(T, give_to)
+
+/**
+ * give turfs to other area
+ */
+/area/proc/give_turfs_checking_tick(list/turf/turfs, area/give_to)
+	for(var/turf/T in turfs)
+		if(T.loc != src)
+			stack_trace("give_turfs found a turf not in source area.")
+		ChangeArea(T, give_to)
+		CHECK_TICK

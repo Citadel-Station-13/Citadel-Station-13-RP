@@ -43,6 +43,5 @@
 	use_cell = TRUE
 	hitcost = 120
 
-/obj/item/melee/transforming/energy/axe/charge/loaded/Initialize(mapload)
-	. = ..()
-	bcell = new/obj/item/cell/device/weapon(src)
+/obj/item/melee/transforming/energy/axe/charge/loaded
+	cell_type = /obj/item/cell/basic/tier_1/weapon

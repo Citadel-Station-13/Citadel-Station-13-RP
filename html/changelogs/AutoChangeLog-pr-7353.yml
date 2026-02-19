@@ -1,4 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes:
-  - bugfix: "fixed a runtime in the playtime subsystem"

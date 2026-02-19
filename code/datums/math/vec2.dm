@@ -53,9 +53,9 @@
  * vertices are vec2
  * edges are connections
  */
-/proc/vec2_delaunay_triangulation_to_graph(list/datum/vec2/points)
-	var/encoded = rustg_geometry_delaunay_triangulate_to_graph(vec2_serialize_to_rustg_call_string(points))
-	return graph_deserialize_from_rustg_call_string(encoded, points)
+// /proc/vec2_delaunay_triangulation_to_graph(list/datum/vec2/points)
+// 	var/encoded = rustg_geometry_delaunay_triangulate_to_graph(vec2_serialize_to_rustg_call_string(points))
+// 	return graph_deserialize_from_rustg_call_string(encoded, points)
 
 /**
  * returns a /datum/graph,
@@ -69,25 +69,25 @@
  * * area - populate area
  * * cell - populate cell
  */
-/proc/vec2_dual_delaunay_voronoi_graph(list/datum/vec2/points, bounding_margin = 0, area = TRUE, cell = FALSE)
-	var/encoded = rustg_geometry_delaunay_voronoi_graph(json_encode(list(
-		"area" = area,
-		"cell" = cell,
-		"points" = vec2_serialize_to_rustg_call_list(points),
-		"margin" = bounding_margin,
-	)))
-	var/list/decoded = json_decode(encoded)
-	var/count = length(points)
-	var/list/areas = decoded["areas"] || new /list(count)
-	var/list/cells = decoded["cells"] || new /list(count)
-	for(var/i in 1 to length(points))
-		var/datum/vec2/point = points[i]
-		point.voronoi_area = areas[i]
-		point.voronoi_cells = cells[i]
-		if(!isnull(point.voronoi_cells))
-			var/list/datum/vec2/decoded_cell_vec2 = list()
-			for(var/list/data_list as anything in point.voronoi_cells)
-				decoded_cell_vec2 += new /datum/vec2(data_list["x"], data_list["y"])
-			point.voronoi_cells = decoded_cell_vec2
-	var/datum/graph/constructed = graph_deserialize_from_rustg_call_list(decoded["graph"], points)
-	return constructed
+// /proc/vec2_dual_delaunay_voronoi_graph(list/datum/vec2/points, bounding_margin = 0, area = TRUE, cell = FALSE)
+// 	var/encoded = rustg_geometry_delaunay_voronoi_graph(json_encode(list(
+// 		"area" = area,
+// 		"cell" = cell,
+// 		"points" = vec2_serialize_to_rustg_call_list(points),
+// 		"margin" = bounding_margin,
+// 	)))
+// 	var/list/decoded = json_decode(encoded)
+// 	var/count = length(points)
+// 	var/list/areas = decoded["areas"] || new /list(count)
+// 	var/list/cells = decoded["cells"] || new /list(count)
+// 	for(var/i in 1 to length(points))
+// 		var/datum/vec2/point = points[i]
+// 		point.voronoi_area = areas[i]
+// 		point.voronoi_cells = cells[i]
+// 		if(!isnull(point.voronoi_cells))
+// 			var/list/datum/vec2/decoded_cell_vec2 = list()
+// 			for(var/list/data_list as anything in point.voronoi_cells)
+// 				decoded_cell_vec2 += new /datum/vec2(data_list["x"], data_list["y"])
+// 			point.voronoi_cells = decoded_cell_vec2
+// 	var/datum/graph/constructed = graph_deserialize_from_rustg_call_list(decoded["graph"], points)
+// 	return constructed

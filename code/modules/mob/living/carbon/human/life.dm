@@ -1096,11 +1096,6 @@
 				hydration_reduction *= mod.metabolism_percent
 		adjust_hydration(-hydration_reduction)
 
-	if(noisy == TRUE && nutrition < 250 && prob(10))
-		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
-		var/growlmultiplier = 100 - (nutrition / 250 * 100)
-		playsound(src, growlsound, vol = growlmultiplier, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/game_preference_toggle/vore_sounds/digestion_noises)
-
 	// TODO: stomach and bloodstream organ.
 	if(!isSynthetic())
 		handle_trace_chems()
@@ -1599,7 +1594,7 @@
 
 		//! shitcode ahead
 		if(get_z(src))
-			if(SSmapping.level_trait(get_z(src), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
+			if(SSmapping.level_has_trait(get_z(src), ZTRAIT_BLOCK_LEGACY_WALLHACKS))
 				RemoveSightSelf(SEE_OBJS | SEE_MOBS | SEE_TURFS)
 		//! end
 

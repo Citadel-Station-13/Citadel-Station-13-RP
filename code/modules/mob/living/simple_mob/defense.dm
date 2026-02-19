@@ -31,7 +31,6 @@
 			L.put_in_active_hand(G)
 
 			G.affecting = src
-			LAssailant = L
 
 			L.visible_message("<span class='warning'>\The [L] has grabbed [src] passively!</span>")
 			L.do_attack_animation(src)

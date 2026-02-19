@@ -169,23 +169,25 @@
  * * In the future, we'll want to track active hand, attack intents, etc, by operator, instead of by mob.
  * * This is so remote control abstraction works.
  */
-/mob/proc/swap_hand(to_index)
+/mob/proc/swap_hand(to_index, allow_deselect)
 	if(active_hand == to_index)
-		return
+		return TRUE
 	var/hand_count = get_nominal_hand_count()
 	var/obj/item/was_active = get_active_held_item()
 	var/old_index = active_hand || 1
 
-	if(isnull(to_index))
+	if(isnull(to_index) && !allow_deselect)
 		if(active_hand >= hand_count)
-			active_hand = hand_count? 1 : null
+			to_index = hand_count? 1 : null
 		else
-			++active_hand
+			to_index = active_hand + 1
 	else
 		if(to_index > hand_count)
 			return FALSE
-		active_hand = to_index
-	to_index = active_hand
+
+	if(active_hand == to_index)
+		return TRUE
+	active_hand = to_index
 
 	. = TRUE
 

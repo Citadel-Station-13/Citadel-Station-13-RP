@@ -10,7 +10,7 @@
 	anchored = 1
 	use_power = USE_POWER_OFF
 	idle_power_usage = 5			// 5 Watts for thermostat related circuitry
-	pipe_flags = PIPING_ONE_PER_TURF
+	pipe_flags = PIPE_FLAG_ONE_PER_TURF
 	connect_types = CONNECT_TYPE_AUX
 	var/env_temp
 

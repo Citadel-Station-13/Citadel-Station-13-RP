@@ -38,6 +38,11 @@
 	icon_state = "facial_neckfluff"
 	random_generation_gender = null
 
+/datum/sprite_accessory/facial_hair/legacy/neck_fluff/cryptid
+	name = "Neck Fluff (Cryptid)"
+	id = "fhair_neckfluff_cryptid"
+	icon_state = "facial_neckfluff_cryptid"
+
 /datum/sprite_accessory/facial_hair/legacy/watson
 	name = "Watson Mustache"
 	id = "fhair_watson"

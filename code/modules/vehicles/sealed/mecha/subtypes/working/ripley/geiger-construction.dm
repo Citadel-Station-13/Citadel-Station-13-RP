@@ -1,9 +1,9 @@
 /obj/item/vehicle_chassis/geiger
 	name = "Lightweight APLU Chassis"
 
-/obj/item/vehicle_chassis/geiger/New()
-	..()
+/obj/item/vehicle_chassis/geiger/Initialize(mapload)
 	construct = new /datum/construction/mecha/geiger_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/geiger_torso
 	name="Lightweight APLU Torso"

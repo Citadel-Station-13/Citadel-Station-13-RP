@@ -1,4 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes:
-  - bugfix: "fix delayed reboot happening immidetly"

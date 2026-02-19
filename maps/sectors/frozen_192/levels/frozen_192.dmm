@@ -540,9 +540,6 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor,
 /area/class_p/unexplored)
-"Dv" = (
-/turf/simulated/floor,
-/area/class_p/unexplored)
 "DH" = (
 /obj/structure/table/standard,
 /obj/structure/table/standard,
@@ -869,7 +866,6 @@
 "Sj" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/east_mount{
-	pixel_x = 32;
 	req_access = null;
 	start_charge = 0
 	},
@@ -28640,8 +28636,8 @@ Hb
 qb
 rK
 yW
-Dv
-Dv
+ml
+ml
 iL
 iL
 iL
@@ -28834,8 +28830,8 @@ rK
 Cj
 rK
 yW
-Dv
-Dv
+ml
+ml
 iL
 iL
 iL
@@ -29028,8 +29024,8 @@ ml
 Hb
 rK
 yW
-Dv
-Dv
+ml
+ml
 iL
 iL
 iL
@@ -29222,8 +29218,8 @@ Hb
 Hb
 ml
 yW
-Dv
-Dv
+ml
+ml
 iL
 Pz
 iL
@@ -29416,8 +29412,8 @@ Cj
 Cj
 ml
 yW
-Dv
-Dv
+ml
+ml
 iL
 iL
 iL
@@ -29610,10 +29606,10 @@ rK
 rK
 ml
 yW
-Dv
-Dv
-Dv
-Dv
+ml
+ml
+ml
+ml
 iL
 bs
 iL
@@ -29804,10 +29800,10 @@ ml
 Hb
 Cj
 yW
-Dv
-Dv
-Dv
-Dv
+ml
+ml
+ml
+ml
 iL
 bs
 iL

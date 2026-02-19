@@ -1,5 +1,6 @@
 /turf/simulated
 	name = "station"
+	turf_spawn_flags = TURF_SPAWN_FLAGS_ALLOW_ALL
 	var/wet = 0
 	var/image/wet_overlay = null
 
@@ -130,7 +131,9 @@
 				bloodDNA = null
 
 		if(src.wet)
-			process_slip(M)
+			spawn(0)
+				if(AM.loc == src)
+					process_slip(M)
 
 /turf/simulated/proc/process_slip(mob/living/M)
 	if(M.buckled || (src.wet == 1 && M.m_intent == "walk"))

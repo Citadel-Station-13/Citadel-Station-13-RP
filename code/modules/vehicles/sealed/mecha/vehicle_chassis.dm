@@ -6,6 +6,10 @@
 	w_class = WEIGHT_CLASS_HUGE
 	var/datum/construction/construct
 
+/obj/item/vehicle_chassis/Destroy()
+	QDEL_NULL(construct)
+	return ..()
+
 /obj/item/vehicle_chassis/attackby(obj/item/W, mob/user)
 	if(!construct || !construct.action(W, user))
 		..()

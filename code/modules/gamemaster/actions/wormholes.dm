@@ -6,11 +6,11 @@
 	severity = 1
 
 /datum/gm_action/wormholes/set_up()	// 1 out of 5 will be full-duration wormholes, meaning up to a minute long.
-	severity = pickweight(list(
-		3 = 5,
-		2 = 7,
-		1 = 13
-		))
+	severity = text2num(pickweight(list(
+		"3" = 5,
+		"2" = 7,
+		"1" = 13
+		)))
 
 /datum/gm_action/wormholes/start()
 	..()

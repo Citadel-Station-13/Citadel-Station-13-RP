@@ -106,7 +106,7 @@
 		to_chat(user, "<span class='danger'>Transfer failed:</span> Existing AI found on remote device. Remove existing AI to install a new one.")
 		return 0
 
-	if(!user.IsAdvancedToolUser() && isanimal(user))
+	if(!user.IsAdvancedToolUser() && isanimal_legacy_this_is_broken(user))
 		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
 			return 0

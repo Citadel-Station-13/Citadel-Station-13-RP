@@ -184,47 +184,19 @@
 		if("module")
 			if(isrobot(usr))
 				var/mob/living/silicon/robot/R = usr
-//				if(R.module)
-//					R.hud_used.toggle_show_robot_modules()
-//					return 1
-				R.pick_module()
-
-		if("inventory")
-			if(isrobot(usr))
-				var/mob/living/silicon/robot/R = usr
-				if(R.module)
-					R.hud_used.toggle_show_robot_modules()
-					return 1
-				else
-					to_chat(R, "You haven't selected a module yet.")
+				if(!R.module)
+					if(!R.can_repick_module)
+						to_chat(usr, SPAN_WARNING("You can't repick your module, despite not having one. \
+						Something probably got bugged."))
+					else
+						open_tgui_actor_modal(
+							/datum/tgui_actor_modal/robot_module_picker,
+							actor = new /datum/event_args/actor(R),
+						)
 
 		if("radio")
 			if(issilicon(usr))
 				usr:radio_menu()
-		if("panel")
-			if(issilicon(usr))
-				usr:installed_modules()
-
-		if("store")
-			if(isrobot(usr))
-				var/mob/living/silicon/robot/R = usr
-				if(R.module)
-					R.uneq_active()
-					R.hud_used.update_robot_modules_display()
-				else
-					to_chat(R, "You haven't selected a module yet.")
-
-		if("module1")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(1)
-
-		if("module2")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(2)
-
-		if("module3")
-			if(istype(usr, /mob/living/silicon/robot))
-				usr:toggle_module(3)
 
 		if("AI Core")
 			if(isAI(usr))
@@ -320,20 +292,21 @@
 		if("danger level")
 			var/mob/living/carbon/human/H = usr
 			if(istype(H) && istype(H.species, /datum/species/shapeshifter/xenochimera))
-				if(H.feral > 50)
+				var/datum/species/shapeshifter/xenochimera/species = H.species
+				if(species.feral > 50)
 					to_chat(usr, "<span class='warning'>You are currently <b>completely feral.</b></span>")
-				else if(H.feral > 10)
+				else if(species.feral > 10)
 					to_chat(usr, "<span class='warning'>You are currently <b>crazed and confused.</b></span>")
-				else if(H.feral > 0)
+				else if(species.feral > 0)
 					to_chat(usr, "<span class='warning'>You are currently <b>acting on instinct.</b></span>")
 				else
 					to_chat(usr, "<span class='notice'>You are currently <b>calm and collected.</b></span>")
-				if(H.feral > 0)
+				if(species.feral > 0)
 					var/feral_passing = TRUE
 					if(H.traumatic_shock > min(60, H.nutrition/10))
 						to_chat(usr, "<span class='warning'>Your pain prevents you from regaining focus.</span>")
 						feral_passing = FALSE
-					if(H.feral + H.nutrition < 150)
+					if(species.feral + H.nutrition < 150)
 						to_chat(usr, "<span class='warning'>Your hunger prevents you from regaining focus.</span>")
 						feral_passing = FALSE
 					if(H.jitteriness >= 100)

@@ -5,6 +5,7 @@
 	icon_state = "beacon"
 	item_state = "beacon"
 	base_icon_state = "beacon"
+	belt_storage_class = BELT_CLASS_SMALL
 	var/code = "electronic"
 	var/functioning = TRUE
 	var/identifier

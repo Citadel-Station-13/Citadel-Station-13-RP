@@ -12,6 +12,7 @@
 
 	w_class = WEIGHT_CLASS_TINY
 	active_weight_class = WEIGHT_CLASS_BULKY
+	belt_storage_class = BELT_CLASS_SMALL
 
 	throw_force = 5.0
 	throw_speed = 1

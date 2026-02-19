@@ -42,7 +42,6 @@
 	ME.attach(src)
 	ME = new /obj/item/vehicle_module/weapon/ballistic/lmg(src)
 	ME.attach(src)
-	return
 
 /obj/vehicle/sealed/mecha/combat/gorilla/mechstep(direction)
 	var/result = step(src,direction)

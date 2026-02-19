@@ -47,6 +47,10 @@
  * As of right now, the functionality is equivalent; on_item_swapped() is just more efficient.
  */
 /datum/inventory/proc/on_item_swapped(obj/item/item, datum/inventory_slot/from_slot_or_index, datum/inventory_slot/to_slot_or_index)
+	ASSERT(item.inv_inside == src)
+	if(item.inv_slot_or_index != isnum(from_slot_or_index) ? from_slot_or_index : from_slot_or_index.id)
+		stack_trace("slot mismatch in inventory itemswap hook")
+	item.inv_slot_or_index = isnum(to_slot_or_index) ? to_slot_or_index : to_slot_or_index.id
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_EXITED, from_slot_or_index)
 	SEND_SIGNAL(src, COMSIG_INVENTORY_ITEM_ENTERED, to_slot_or_index)
 	invalidate_cache()

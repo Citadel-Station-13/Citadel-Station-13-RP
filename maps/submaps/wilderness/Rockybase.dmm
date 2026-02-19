@@ -321,7 +321,7 @@
 /obj/structure/table/rack,
 /obj/item/storage/box/shotgunshells,
 /obj/item/storage/box/shotgunshells,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_3/weapon,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/Rockybase)
 "bi" = (
@@ -890,7 +890,6 @@
 /area/submap/Rockybase)
 "de" = (
 /obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super;
 	name = "Unknown APC"
 	},
 /obj/structure/cable/green{

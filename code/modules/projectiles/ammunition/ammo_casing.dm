@@ -1,3 +1,9 @@
+/**
+ * Ammo system.
+ *
+ * TODO: indirect projectile_effects_add to projectile_effects list on `/datum/prototype/ammo_shell`
+ *       for serialization.
+ */
 /obj/item/ammo_casing
 	name = "bullet casing"
 	desc = "A bullet casing."
@@ -9,6 +15,9 @@
 	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
+	belt_storage_class = BELT_CLASS_SMALL
+	belt_storage_size = BELT_SIZE_FOR_AMMO_CASING
+	weight_volume = ITEM_VOLUME_AMMO_CASING
 
 	//* Casing *//
 	/// casing flags - see __DEFINES/projectiles/ammo_casing.dm

@@ -29,7 +29,6 @@
 	icon_state = "cespace_suit"
 	item_state = "cespace_suit"
 	armor_type = /datum/armor/general/biosuit/anomaly
-	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/pickaxe)
 	encumbrance = ITEM_ENCUMBRANCE_VOIDSUIT_ANOMALY
 	weight = ITEM_WEIGHT_VOIDSUIT_ANOMALY
 	// Pressure protection inherited from space suits

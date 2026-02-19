@@ -17,7 +17,7 @@
 	var/liketype_edges = 0
 	for(var/D in GLOB.cardinal)
 		var/turf/T = get_step(src, D)
-		for(var/C in T.contents)
+		for(var/C in T?.contents)
 			if(istype(C, src.type))
 				liketype_edges++
 	if(liketype_edges != 4) //checking cardinal dirs only

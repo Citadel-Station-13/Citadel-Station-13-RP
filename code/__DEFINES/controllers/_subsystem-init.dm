@@ -64,6 +64,7 @@
 #define INIT_ORDER_PLANTS          25
 #define INIT_ORDER_ALARMS          20
 #define INIT_ORDER_RESEARCH        17
+#define INIT_ORDER_OVERMAPS        16
 #define INIT_ORDER_ATOMS           15
 #define INIT_ORDER_MACHINES        10
 #define INIT_ORDER_SHUTTLES        3
@@ -75,7 +76,6 @@
 #define INIT_ORDER_HOLOMAPS           -5
 #define INIT_ORDER_ICON_SMOOTHING -6
 #define INIT_ORDER_EVENTS         -10
-#define INIT_ORDER_OVERMAPS       -20
 #define INIT_ORDER_TICKER         -30
 #define INIT_ORDER_LIGHTING       -40
 #define INIT_ORDER_ZMIMIC         -45
@@ -89,3 +89,6 @@
 #define INIT_ORDER_OVERLAY               200
 #define INIT_ORDER_TITLESCREEN           150
 #define INIT_ORDER_CHAT                 -100  //! Should be last to ensure chat remains smooth during init.
+
+/// The timer key used to know how long subsystem initialization takes
+#define SS_INIT_TIMER_KEY "ss_init"

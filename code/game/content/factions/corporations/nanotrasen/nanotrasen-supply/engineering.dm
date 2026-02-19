@@ -20,8 +20,9 @@
 	contains = list(
 		/obj/item/storage/toolbox/electrical = 2,
 		/obj/item/clothing/gloves/yellow = 2,
-		/obj/item/cell = 2,
-		/obj/item/cell/high = 2,
+		/obj/item/cell/basic/tier_2/small = 2,
+		/obj/item/cell/basic/tier_2/medium = 2,
+		/obj/item/cell/basic/tier_2/large = 2,
 	)
 	worth = 300
 	container_type = /obj/structure/closet/crate/engineering/electrical

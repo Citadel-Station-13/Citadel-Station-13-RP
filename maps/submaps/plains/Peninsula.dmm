@@ -25,8 +25,8 @@
 /area/submap/Peninsula)
 "h" = (
 /obj/structure/table/woodentable,
-/obj/item/cell/device,
-/obj/item/cell/device,
+/obj/item/cell/basic/tier_3/small,
+/obj/item/cell/basic/tier_3/small,
 /turf/template_noop,
 /area/submap/Peninsula)
 "i" = (

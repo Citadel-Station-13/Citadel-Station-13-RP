@@ -27,7 +27,7 @@
 	 * This line prevents that, and has never appeared to cause any ill effects, while saving us an extra
 	 * pain to think about
 	 *
-	 * This line is widely considered black fucking magic, and the fact it works is a puzzle to everyone
+	 * This line is widely considdered black fucking magic, and the fact it works is a puzzle to everyone
 	 * involved, including the current engine developer, lummox
 	 *
 	 * If you are a future developer and the engine source is now available and you can explain why this
@@ -84,8 +84,10 @@
 	/// what we *think* their current viewport letterboxing setting is
 	var/assumed_viewport_box
 	/// current view x - for fast access
+	/// * This is in tiles.
 	var/current_viewport_width
 	/// current view y - for fast access
+	/// * This is in tiles.
 	var/current_viewport_height
 	/// if things are manipulating the viewport we don't want other things to touch it
 	var/viewport_rwlock = TRUE	//? default block so we can release it during init_viewport
@@ -125,11 +127,23 @@
 	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
 	var/cutscene_lockout = FALSE
 
+	//* Mouse *//
+	/// updated by MouseMove()
+	var/mouse_control_last
+	/// updated by MouseMove()
+	var/mouse_params_last
+	/// updated by MouseMove()
+	var/list/mouse_params_last_unpacked
+	/// updated by atom/MouseEntered, atom/MouseExited
+	var/atom/mouse_predicted_last_atom
+
 	//* UI - Client *//
 	/// our tooltips system
 	var/datum/tooltip/tooltips
 	/// statpanel
 	var/datum/client_statpanel/tgui_stat
+	// todo: just have a client panel, don't make this separate
+	var/datum/client_view_playtime/legacy_playtime_viewer
 
 	//* UI - Map *//
 	/// Our action drawer
@@ -137,9 +151,13 @@
 	/// Our actor HUD holder
 	var/datum/actor_hud_holder/actor_huds
 
-	// todo: just have a client panel, don't make this separate
-	var/datum/client_view_playtime/legacy_playtime_viewer
-
+	//* Upload *//
+	/// currently prompting for upload
+	VAR_PRIVATE/upload_mutex = FALSE
+	/// How many things are waiting for upload?
+	VAR_PRIVATE/upload_mutex_waiting = 0
+	/// current upload prompt's max file size
+	VAR_PRIVATE/upload_current_sizelimit
 
 		////////////////
 		//ADMIN THINGS//

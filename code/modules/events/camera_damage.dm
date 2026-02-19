@@ -21,16 +21,14 @@
 				if(prob(5*severity))
 					cam.wires.cut(WIRE_CAM_ALARM)
 
-/datum/event/camera_damage/proc/acquire_random_camera(var/remaining_attempts = 5)
+/datum/event/camera_damage/proc/acquire_random_camera(var/attempts = 5)
 	if(!GLOB.cameranet.cameras.len)
 		return
-	if(!remaining_attempts)
-		return
 
-	var/obj/machinery/camera/C = pick(GLOB.cameranet.cameras)
-	if(is_valid_camera(C))
-		return C
-	return acquire_random_camera(remaining_attempts--)
+	for(var/i in 1 to attempts)
+		var/obj/machinery/camera/C = pick(GLOB.cameranet.cameras)
+		if(is_valid_camera(C))
+			return C
 
 /datum/event/camera_damage/proc/is_valid_camera(var/obj/machinery/camera/C)
 	// Only return a functional camera, not installed in a silicon/hardsuit/circuit/etc, and that exists somewhere players have access

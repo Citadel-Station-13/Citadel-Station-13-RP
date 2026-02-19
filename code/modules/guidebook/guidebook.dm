@@ -58,10 +58,9 @@ GLOBAL_DATUM_INIT(guidebook, /datum/guidebook, new)
 	if(isnull(ui))
 		ui = new(user, src, "TGUIGuidebook")
 		ui.set_autoupdate(FALSE)
-		ui.open(data = list("sections" = lookup), modules = built)
+		ui.open(data = list("sections" = lookup), nested_data = built)
 	else
-		push_ui_nested_data(user, updates = built)
-		push_ui_data(user, data = list("sections" = lookup))
+		push_ui_data(user, data = list("sections" = lookup), nested_data = built)
 
 /client/verb/access_guidebook()
 	set name = "Access Guidebook"

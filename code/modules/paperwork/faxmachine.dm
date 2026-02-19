@@ -32,6 +32,10 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	if(!(("[department]" in alldepartments) || ("[department]" in admin_departments())) )
 		alldepartments |= department
 
+/obj/machinery/photocopier/faxmachine/Destroy()
+	allfaxes -= src
+	return ..()
+
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 	user.set_machine(src)
 

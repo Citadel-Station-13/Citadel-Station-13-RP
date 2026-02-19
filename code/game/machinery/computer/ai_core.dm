@@ -5,7 +5,7 @@
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "0"
 	var/state = 0
-	var/datum/ai_laws/laws = new /datum/ai_laws/nanotrasen
+	var/datum/ai_lawset/laws = new /datum/ai_lawset/nanotrasen
 	var/obj/item/circuitboard/circuit = null
 	var/obj/item/mmi/brain = null
 
@@ -191,7 +191,7 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 	state = 20//So it doesn't interact based on the above. Not really necessary.
 
 //! temporary hack to detect improper usage
-/obj/structure/AIcore/deactivated/New()
+/obj/structure/AIcore/deactivated/Initialize(mapload)
 	if(loc == null)
 		CRASH("attempted to spawn deactivated aicore at null loc")
 	return ..()

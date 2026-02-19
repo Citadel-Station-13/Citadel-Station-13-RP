@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /*
 ATTENTION! This file is dedicated to all "modern hair sprites"; that only require white/
@@ -175,3 +175,17 @@ they are. This code is a mess.
 	icon_state = "highlander"
 	icon_add_legacy = null
 	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/long_mane
+	name = "Long Mane"
+	id = "hair-mane-long"
+	icon = 'icons/mob/sprite_accessory/hair/hair.dmi'
+	icon_state = "mane_long"
+	icon_add_legacy = null
+
+/datum/sprite_accessory/hair/short_mane
+	name = "Short Mane"
+	id = "hair-mane-short"
+	icon = 'icons/mob/sprite_accessory/hair/hair.dmi'
+	icon_state = "mane_short"
+	icon_add_legacy = null

@@ -60,6 +60,7 @@ var/list/overminds = list()
 			BM.update_icons()
 
 	overminds -= src
+	blob_core = null
 	return ..()
 
 /mob/observer/blob/statpanel_data(client/C)

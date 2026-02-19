@@ -8,7 +8,7 @@
 	icon_state = "wrench"
 	item_state = "wrench"
 	slot_flags = SLOT_BELT
-	tool_behaviour = TOOL_WRENCH
+	tool_behavior = TOOL_WRENCH
 	damage_force = 6
 	throw_force = 7
 	w_class = WEIGHT_CLASS_SMALL

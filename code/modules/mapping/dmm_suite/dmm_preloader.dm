@@ -56,9 +56,10 @@ GLOBAL_REAL_VAR(dmm_preloader_target)
 
 	// handle post processing, so things like directions on subtypes don't break.
 	// only do everything if necessary.
+	// TODO: look over the rotation block, it's inefficient and frankly a mess.
 	var/datum/dmm_context/loading_context_local = preloader_local.loading_context
 	var/turn_angle = loading_context_local.loaded_orientation_turn_angle
-	if(turn_angle && what.preloading_dir(loading_context_local))
+	if(turn_angle && what.preloading_from_mapload_rotation(loading_context_local))
 		var/multi_tile = ismovable(what) && ((what:bound_width > WORLD_ICON_SIZE) || (what:bound_height > WORLD_ICON_SIZE)) && (what.appearance_flags & TILE_MOVER)
 		var/invert_x = loading_context_local.loaded_orientation_invert_x
 		var/invert_y = loading_context_local.loaded_orientation_invert_y
@@ -66,7 +67,7 @@ GLOBAL_REAL_VAR(dmm_preloader_target)
 
 		if(multi_tile)
 			// normal multi tile rotation can only handle things that are 'centered' on their bound width/height
-			// if something needs to change that every rotation, it needs to override preloading_dir
+			// if something needs to change that every rotation, it needs to override preloading_from_mapload_rotation
 			var/atom/movable/casted = what
 			// deal with their bounds
 			var/bx = casted.bound_x
@@ -104,5 +105,5 @@ GLOBAL_REAL_VAR(dmm_preloader_target)
 		what.pixel_x = px
 		what.pixel_y = py
 
-	what.preloading_instance(loading_context_local)
+	what.preloading_from_mapload(loading_context_local)
 

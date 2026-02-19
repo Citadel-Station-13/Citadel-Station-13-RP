@@ -16,6 +16,7 @@
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_ILLEGAL = 2, TECH_MAGNET = 4)
 	w_class = WEIGHT_CLASS_BULKY
 	cell_system = TRUE
+	cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 
 	var/obj/item/stock_parts/capacitor/capacitor        // Installed capacitor. Higher rating == faster charge between shots.
 	var/obj/item/stock_parts/manipulator/manipulator    // Installed manipulator. Mostly for Phoron Bore, higher rating == less mats consumed upon firing
@@ -41,12 +42,12 @@
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
 	. = ..()
-	obj_cell_slot.legacy_use_device_cells = FALSE
 	// todo : dont update icon here
 	update_icon()
 
 /obj/item/gun/projectile/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(manipulator)
 	QDEL_NULL(loaded)
 	QDEL_NULL(capacitor)
 	. = ..()
@@ -89,7 +90,7 @@
 	show_ammo(user)
 
 	if(obj_cell_slot.cell)
-		. += "<span class='notice'>The installed [obj_cell_slot.cell.name] has a charge level of [round((obj_cell_slot.cell.charge/obj_cell_slot.cell.maxcharge)*100)]%.</span>"
+		. += "<span class='notice'>The installed [obj_cell_slot.cell.name] has a charge level of [round((obj_cell_slot.cell.charge/obj_cell_slot.cell.max_charge)*100)]%.</span>"
 	if(capacitor)
 		. += "<span class='notice'>The installed [capacitor.name] has a charge level of [round((capacitor.charge/capacitor.max_charge)*100)]%.</span>"
 
@@ -209,7 +210,7 @@
 
 	power_cost = 500
 
-	cell_type = /obj/item/cell/high
+	cell_type = /obj/item/cell/basic/tier_1/medium
 
 /obj/item/gun/projectile/magnetic/fuelrod/Initialize(mapload)
 	capacitor = new /obj/item/stock_parts/capacitor

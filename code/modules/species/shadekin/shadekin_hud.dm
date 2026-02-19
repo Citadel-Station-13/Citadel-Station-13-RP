@@ -1,6 +1,6 @@
 /atom/movable/screen/shadekin
 	name = "shadekin status"
-	icon = 'icons/screen/hud/common/shadekin.dmi'
+	icon = 'icons/screen/hud/styles/common/shadekin.dmi'
 	invisibility = 101
 
 /atom/movable/screen/movable/ability_master/shadekin

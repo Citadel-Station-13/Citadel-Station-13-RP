@@ -1,6 +1,11 @@
 /obj/effect/overlay
 	name = "overlay"
-	integrity_flags = INTEGRITY_ACIDPROOF | INTEGRITY_FIREPROOF | INTEGRITY_LAVAPROOF | INTEGRITY_INDESTRUCTIBLE
+
+/obj/effect/overlay/singularity_act()
+	return
+
+/obj/effect/overlay/singularity_pull(atom/singularity, current_size)
+	return
 
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"

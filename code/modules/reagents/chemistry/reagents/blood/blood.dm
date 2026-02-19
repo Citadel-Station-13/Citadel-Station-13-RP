@@ -64,10 +64,6 @@
 					M.adjustToxLoss(removed)
 		if(IS_SLIME)
 			nutritionvalue = 20
-			if(data["species"] == M.species.name) //just 'inject' the blood if it happens to be promethean "blood".
-				M.regen_blood(metabolism.legacy_volume_remaining * volume_mod)
-				metabolism.legacy_current_holder.remove_reagent(id, metabolism.legacy_current_holder)
-				return
 		if(IS_TESHARI) //birb.
 			nutritionvalue = 30
 		if(IS_UNATHI) //carnivorous lizord...
@@ -89,8 +85,8 @@
 		if(effective_dose >= 20 && prob(10))
 			M.vomit(FALSE, FALSE) //Drinking blood makes you vomit, due to the high iron content and unpleasant consistency
 
-	if(data && data["virus2"])
-		var/list/vlist = data["virus2"]
+	if(data && data.legacy_virus2)
+		var/list/vlist = data.legacy_virus2
 		if(vlist.len)
 			for(var/ID in vlist)
 				var/datum/disease2/disease/V = vlist[ID]
@@ -106,15 +102,15 @@
 	if(alien == IS_SLIME)
 		legacy_affect_ingest(M, alien, removed, metabolism)
 		return
-	if(data && data["virus2"])
-		var/list/vlist = data["virus2"]
+	if(data && data.legacy_virus2)
+		var/list/vlist = data.legacy_virus2
 		if(vlist.len)
 			for(var/ID in vlist)
 				var/datum/disease2/disease/V = vlist[ID]
 				if(V.spreadtype == "Contact")
 					infect_virus2(M, V.getcopy())
-	if(data && data["antibodies"])
-		M.antibodies |= data["antibodies"]
+	if(data && data.legacy_antibodies)
+		M.antibodies |= data.legacy_antibodies
 
 /datum/reagent/blood/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_SLIME) //They don't have blood, so it seems weird that they would instantly 'process' the chemical like another species does.

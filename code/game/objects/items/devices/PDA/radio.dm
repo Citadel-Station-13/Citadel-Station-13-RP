@@ -1,7 +1,7 @@
 /obj/item/integated_radio
 	name = "\improper PDA radio module"
 	desc = "An electronic radio system."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "power_mod"
 	var/obj/item/pda/hostpda = null
 
@@ -143,7 +143,7 @@
 		return
 	last_transmission = world.time
 
-	var/time = time2text(world.realtime,"hh:mm:ss")
+	var/time = time2text(world.realtime,"hh:mm:ss", NO_TIMEZONE)
 	var/turf/T = get_turf(src)
 	lastsignalers.Add("[time] <B>:</B> [usr.key] used [src] @ location ([T.x],[T.y],[T.z]) <B>:</B> [format_frequency(frequency)]/[code]")
 

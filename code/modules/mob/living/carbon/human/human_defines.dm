@@ -269,9 +269,6 @@
 	// ignore ssd status
 	var/override_ssd = FALSE
 
-	//? movement
-	/// are we trying to crawl under someone? mob if true
-	var/mob/crawling_under_someone
 	var/hiding_wings = FALSE
 	var/hiding_tail = FALSE
 	var/hiding_horns = FALSE
@@ -280,3 +277,4 @@
 
 	var/body_alpha = 255
 	var/hair_alpha = 255
+	var/datum/immune_system/immune_system

@@ -38,11 +38,6 @@
 				to_chat(src, "<span class='warning'>Somebody has a grip on them!</span>")
 				return
 
-		if(!iscarbon(src))
-			M.LAssailant = null
-		else
-			M.LAssailant = usr
-
 	else if(isobj(AM))
 		var/obj/I = AM
 		if(!can_pull_size || can_pull_size < I.w_class)
@@ -99,10 +94,6 @@
 			M.visible_message("<span class='warning'>[src] starts to pull [M] [(zone_sel.selecting == "l_hand" || zone_sel.selecting == "r_hand" && ishuman(M))? "by their hands":"passively"]!</span>", \
 							"<span class='warning'>[src] starts to pull you [(zone_sel.selecting == "l_hand" || zone_sel.selecting == "r_hand" && ishuman(M))? "by your hands":"passively"]!</span>")//, null, null, src)
 			//to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
-		if(!iscarbon(src))
-			M.LAssailant = null
-		else
-			M.LAssailant = usr
 /*
 		if(isliving(M))
 			var/mob/living/L = M

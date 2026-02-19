@@ -20,6 +20,10 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 	if(ntos)
 		tgui_id = "Ntos" + tgui_id
 
+/datum/tgui_module_old/Destroy()
+	host = null
+	return ..()
+
 /datum/tgui_module_old/ui_host()
 	return host ? host.ui_host() : src
 

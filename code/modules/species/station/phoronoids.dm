@@ -113,7 +113,7 @@
 	var/mask_type = /obj/item/clothing/mask/breath
 
 	if(for_target)
-		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask)
+		var/obj/item/existing_mask = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/mask::id)
 		if(existing_mask?.clothing_flags & ALLOWINTERNALS)
 		else
 			if(!isnull(existing_mask))
@@ -234,8 +234,8 @@
 	into_inv?.Add(/obj/item/extinguisher/mini/plasman)
 
 	if(for_target)
-		var/obj/item/existing_head_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/head)
-		var/obj/item/existing_suit_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/suit)
+		var/obj/item/existing_head_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/head::id)
+		var/obj/item/existing_suit_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/suit::id)
 		var/obj/item/creating_suit_slot = new suit_path
 		if(existing_head_slot)
 			if(for_target.temporarily_remove_from_inventory(existing_head_slot, INV_OP_FORCE | INV_OP_SILENT | INV_OP_FLUFFLESS))

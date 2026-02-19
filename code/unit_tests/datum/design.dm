@@ -3,12 +3,6 @@
 	for(var/datum/prototype/design/path as anything in subtypesof(/datum/prototype/design))
 		if(initial(path.abstract_type) == path)
 			continue
-		if(!initial(path.id))
-			Fail("no id on [path].")
-			continue
-		if(lookup[initial(path.id)])
-			Fail("collision on [initial(path.id)] between [path] and [lookup[initial(path.id)]:type]")
-			continue
 		var/datum/prototype/design/instance = new path
 		lookup[initial(path.id)] = instance
 		if(!length(instance.materials_base) && !length(instance.material_costs) && !length(instance.reagents) && !length(instance.ingredients) && !(instance.design_flags & DESIGN_IGNORE_RESOURCE_SANITY))

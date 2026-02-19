@@ -41,7 +41,7 @@
 		needs_update = TRUE
 		SSlighting.overlay_queue += src
 
-/atom/movable/lighting_overlay/Destroy(force = FALSE)
+/atom/movable/lighting_overlay/Destroy(force)
 	if (!force)
 		return QDEL_HINT_LETMELIVE	// STOP DELETING ME
 

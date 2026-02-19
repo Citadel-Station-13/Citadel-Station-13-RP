@@ -98,7 +98,7 @@
 "q" = (
 /obj/structure/table/standard,
 /obj/random/toolbox,
-/obj/item/cell/super,
+/obj/item/cell/basic/tier_4/medium,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/virgo2/Lab1)
 "r" = (
@@ -117,8 +117,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/virgo2/Lab1)
 "u" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/hyper;
+/obj/machinery/power/apc/large_cell/tier_3/west_mount{
 	name = "Unknown APC";
 	operating = 0
 	},
@@ -204,7 +203,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/virgo2/Lab1)
 "I" = (
-/obj/item/cell/super,
+/obj/item/cell/basic/tier_4/medium,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/virgo2/Lab1)
 "J" = (

@@ -9,7 +9,7 @@
 	initialize_directions = SOUTH
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "connector"
-	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
+	pipe_flags = PIPE_FLAG_DEFAULT_LAYER_ONLY|PIPE_FLAG_ONE_PER_TURF
 	hides_underfloor_underlays = TRUE
 
 	var/obj/machinery/portable_atmospherics/connected_device
@@ -25,14 +25,14 @@
 	icon_state = "map_connector-fuel"
 	pipe_state = "connector-fuel"
 	icon_connect_type = "-fuel"
-	pipe_flags = PIPING_ONE_PER_TURF
+	pipe_flags = PIPE_FLAG_ONE_PER_TURF
 	connect_types = CONNECT_TYPE_FUEL
 
 /obj/machinery/atmospherics/portables_connector/aux
 	icon_state = "map_connector-aux"
 	pipe_state = "connector-aux"
 	icon_connect_type = "-aux"
-	pipe_flags = PIPING_ONE_PER_TURF
+	pipe_flags = PIPE_FLAG_ONE_PER_TURF
 	connect_types = CONNECT_TYPE_AUX
 
 /obj/machinery/atmospherics/portables_connector/init_dir()

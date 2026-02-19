@@ -139,8 +139,6 @@
 		holder.IMove(get_step(holder, pick(GLOB.alldirs)))
 		holder.face_atom(A)
 
-
-
 // This AI hits something, then runs away for awhile.
 // It will (almost) always flee if they are uncloaked, AND their target is not stunned.
 /datum/ai_holder/polaris/simple_mob/melee/hit_and_run
@@ -154,7 +152,6 @@
 			return !L.incapacitated(INCAPACITATION_DISABLED) // Don't flee if our target is stunned in some form, even if uncloaked. This is so the mob keeps attacking a stunned opponent.
 		return TRUE // We're out in the open, uncloaked, and our target isn't stunned, so lets flee.
 	return FALSE
-
 
 // Simple mobs that aren't hostile, but will fight back.
 /datum/ai_holder/polaris/simple_mob/retaliate

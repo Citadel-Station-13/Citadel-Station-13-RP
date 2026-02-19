@@ -1,0 +1,13 @@
+﻿/obj/machinery/disposal:
+  required_neighbors:
+    - /obj/structure/disposalpipe/trunk
+  # remove when fixed
+  skip_files:
+    - maps/stations/rift/map_files/rift-04-surface1.dmm
+    - maps/stations/rift/map_files/rift-05-surface1.dmm
+    - maps/stations/tether/levels/surface1.dmm
+    - maps/stations/endeavour/levels/deck1.dmm
+    - maps/stations/endeavour/levels/deck2.dmm
+    - maps/stations/endeavour/levels/deck3.dmm
+    - maps/stations/rift/map_files/rift-05-surface2.dmm
+    - maps/templates/shuttles/overmaps/generic/cruiser.dmm

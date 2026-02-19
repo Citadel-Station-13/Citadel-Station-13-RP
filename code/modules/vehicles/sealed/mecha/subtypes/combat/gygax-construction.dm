@@ -1,9 +1,9 @@
 /obj/item/vehicle_chassis/gygax
 	name = "Gygax Chassis"
 
-/obj/item/vehicle_chassis/gygax/New()
-	..()
+/obj/item/vehicle_chassis/gygax/Initialize(mapload)
 	construct = new /datum/construction/mecha/gygax_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/gygax_torso
 	name="Gygax Torso"

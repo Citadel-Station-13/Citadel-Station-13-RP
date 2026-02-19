@@ -21,6 +21,7 @@
 	name = "magazine (Compressed Biomatter)"
 	desc = "An advanced matter compression unit, used to feed biomass into a Rapid On-board Fabricator. Accepts biomass globules."
 
+	icon = 'icons/modules/projectiles/magazines/bio.dmi'
 	icon_state = "bio-4"
 	base_icon_state = "bio"
 	rendering_system = GUN_RENDERING_STATES
@@ -29,9 +30,6 @@
 	ammo_caliber = /datum/ammo_caliber/biomatter
 	ammo_preload = /obj/item/ammo_casing/biomatter
 	materials_base = list("flesh" = 1000)
-	ammo_max = 10
-
-/obj/item/ammo_magazine/biomatter
 	ammo_max = 10
 
 /obj/item/ammo_magazine/biomatter/large

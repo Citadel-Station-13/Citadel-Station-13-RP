@@ -10,7 +10,7 @@
 /area/shuttle/nanotrasen/sci_vector/service)
 "aZ" = (
 /obj/structure/handrail,
-/turf/space/basic,
+/turf/space,
 /area/shuttle/nanotrasen/sci_vector/excursion)
 "bF" = (
 /obj/machinery/power/smes,
@@ -90,7 +90,7 @@
 /area/shuttle/nanotrasen/sci_vector/service)
 "lE" = (
 /obj/machinery/atmospherics/component/unary/engine/bigger,
-/turf/space/basic,
+/turf/space,
 /area/shuttle/nanotrasen/sci_vector/service)
 "mY" = (
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -106,7 +106,7 @@
 /turf/simulated/floor/plating/indoors,
 /area/shuttle/nanotrasen/sci_vector/crew)
 "oG" = (
-/turf/space/basic,
+/turf/space,
 /area/shuttle/nanotrasen/sci_vector/service)
 "pj" = (
 /obj/structure/closet/secure_closet/xenoarchaeologist,
@@ -283,7 +283,7 @@
 /area/shuttle/nanotrasen/sci_vector/cockpit)
 "Gt" = (
 /obj/effect/decal/warning_stripes,
-/turf/space/basic,
+/turf/space,
 /area/shuttle/nanotrasen/sci_vector/engineering)
 "GQ" = (
 /obj/machinery/artifact_harvester,
@@ -320,14 +320,14 @@
 /area/shuttle/nanotrasen/sci_vector/service)
 "Lv" = (
 /obj/effect/decal/warning_stripes,
-/turf/space/basic,
+/turf/space,
 /area/shuttle/nanotrasen/sci_vector/service)
 "LZ" = (
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/indoors,
 /area/shuttle/nanotrasen/sci_vector/excursion)
 "Mz" = (
-/turf/space/basic,
+/turf/space,
 /area/space)
 "Ps" = (
 /turf/simulated/wall/r_wall/prepainted/science,
@@ -340,7 +340,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/turf/space/basic,
+/turf/space,
 /area/shuttle/nanotrasen/sci_vector/service)
 "Qc" = (
 /obj/structure/table/reinforced,
@@ -383,7 +383,7 @@
 /area/shuttle/nanotrasen/sci_vector/engineering)
 "Vu" = (
 /obj/effect/decal/warning_stripes,
-/turf/space/basic,
+/turf/space,
 /area/shuttle/nanotrasen/sci_vector/excursion)
 "Wl" = (
 /obj/machinery/door/airlock/external/glass,

@@ -98,8 +98,6 @@
 			while(spawn_types[xeno_type] > 0)
 				var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 				switch(xeno_type)
-					if(QUEEN)
-						new /mob/living/simple_mob/animal/space/xenomorph/monarch(V.loc)
 					if(PRAE)
 						new /mob/living/simple_mob/animal/space/xenomorph/vanguard(V.loc)
 					if(SENTINEL)

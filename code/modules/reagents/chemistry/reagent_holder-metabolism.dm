@@ -14,6 +14,10 @@
 	if(istype(parent_mob))
 		parent = parent_mob
 
+/datum/reagent_holder/metabolism/Destroy()
+	parent = null
+	return ..()
+
 /datum/reagent_holder/metabolism/proc/metabolize(speed_mult = 1, force_allow_dead)
 
 	var/metabolism_type = 0 //non-human mobs

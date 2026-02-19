@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
 	priority = FIRE_PRIORITY_RADIATION
 	subsystem_flags = SS_NO_INIT | SS_BACKGROUND
-	wait = 1 SECONDS
+	wait = 0.5 SECONDS
 
 	/// stage
 	var/stage = SSRADIATION_EMIT
@@ -81,10 +81,10 @@ SUBSYSTEM_DEF(radiation)
 		while(length(waves))
 			wave = waves[length(waves)]
 			// tick to completion
-			while(!wave.iterate(Master.current_ticklimit))
-				if(MC_TICK_CHECK)
-					return
-			qdel(wave)
+			if(wave.iterate(Master.current_ticklimit))
+				qdel(wave)
+			if(MC_TICK_CHECK)
+				return
 
 /datum/controller/subsystem/radiation/on_max_z_changed(old_z_count, new_z_count)
 	var/old = z_listeners.len

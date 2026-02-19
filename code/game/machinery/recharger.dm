@@ -9,8 +9,25 @@
 	idle_power_usage = 4
 	active_power_usage = 40000	//10 kW
 	var/efficiency = 10000 //will provide the modified power rate when upgraded
+
 	var/obj/item/charging = null
-	var/list/allowed_devices = list(/obj/item/gun/projectile/energy, /obj/item/melee/baton, /obj/item/modular_computer, /obj/item/computer_hardware/battery_module, /obj/item/cell, /obj/item/flashlight, /obj/item/electronic_assembly, /obj/item/weldingtool/electric, /obj/item/flash, /obj/item/ammo_casing/microbattery, /obj/item/shield_diffuser, /obj/item/ammo_magazine/microbattery, /obj/item/gun/projectile/ballistic/microbattery)
+	/// starting path
+	var/charging_start_path
+
+	var/list/allowed_devices = list(
+		/obj/item/gun/projectile/energy,
+		/obj/item/melee/baton,
+		/obj/item/modular_computer,
+		/obj/item/computer_hardware/battery_module,
+		/obj/item/cell, /obj/item/flashlight,
+		/obj/item/electronic_assembly,
+		/obj/item/weldingtool/electric,
+		/obj/item/flash,
+		/obj/item/ammo_casing/microbattery,
+		/obj/item/shield_diffuser,
+		/obj/item/ammo_magazine/microbattery,
+		/obj/item/gun/projectile/ballistic/microbattery,
+	)
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -19,13 +36,31 @@
 	var/base_power_draw = 20000
 	circuit = /obj/item/circuitboard/recharger
 
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_MEDIUM | CELL_TYPE_LARGE | CELL_TYPE_WEAPON
+	/// accept cells with no CELL_TYPE field
+	/// * for shit like gunsword
+	var/cell_accept_nonstandard = TRUE
+
+/obj/machinery/recharger/Initialize(mapload)
+	. = ..()
+	if(charging_start_path)
+		charging = new charging_start_path
+		update_icon()
+
+/obj/machinery/recharger/Destroy()
+	QDEL_NULL(charging)
+	return ..()
+
+/obj/machinery/recharger/object_cell_slot_accepts(obj/item/cell/cell, datum/object_system/cell_slot/slot, slot_opinion, silent, datum/event_args/actor/actor)
+	return cell.cell_type ? (cell.cell_type & cell_accept) : cell_accept_nonstandard
+
 /obj/machinery/recharger/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"
 	if(charging)
 		var/obj/item/cell/C = charging.get_cell()
 		if(C)
-			. += "<span class = 'notice'>Current charge: [C.charge] / [C.maxcharge]</span>"
+			. += "<span class = 'notice'>Current charge: [C.charge] / [C.max_charge]</span>"
 
 /obj/machinery/recharger/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()
@@ -50,6 +85,10 @@
 			var/obj/item/gun/projectile/energy/E = G
 			if(E.self_recharge)
 				to_chat(clickchain.performer, "<span class='notice'>\The [E] has no recharge port.</span>")
+				return
+		else if(istype(G, /obj/item/cell))
+			if(!object_cell_slot_accepts(G))
+				to_chat(clickchain.performer, SPAN_WARNING("\The [src] isn't fitted for that type of cell."))
 				return
 		else if(istype(G, /obj/item/modular_computer))
 			var/obj/item/modular_computer/C = G
@@ -238,9 +277,9 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	base_power_draw = 30000
-	allowed_devices = list(/obj/item/gun/projectile/energy, /obj/item/gun/projectile/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/microbattery, /obj/item/gun/projectile/ballistic/microbattery)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"
 	portable = 0
 	circuit = /obj/item/circuitboard/recharger/wrecharger
+	cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON

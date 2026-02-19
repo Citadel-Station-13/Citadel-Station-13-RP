@@ -613,7 +613,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 	msg2 = replacetext(replacetext(msg2, "\proper", ""), "\improper", "")
 	world.TgsTargetedChatBroadcast("[msg] | [msg2]", TRUE)
 
-/proc/ircadminwho()
+/proc/tgsadminwho()
 	var/list/message = list("Admins: ")
 	var/list/admin_keys = list()
 	for(var/adm in GLOB.admins)
@@ -621,7 +621,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 		admin_keys += "[C][C.holder.fakekey ? "(Stealth)" : ""][C.is_afk() ? "(AFK)" : ""]"
 
 	for(var/admin in admin_keys)
-		if(LAZYLEN(admin_keys) > 1)
+		if(LAZYLEN(message) > 1)
 			message += ", [admin]"
 		else
 			message += "[admin]"

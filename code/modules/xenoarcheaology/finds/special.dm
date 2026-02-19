@@ -170,6 +170,10 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
+/obj/effect/shadow_wight/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
 /obj/effect/shadow_wight/process(delta_time)
 	if(loc)
 		loc = get_turf(pick(orange(1,src)))

@@ -11,6 +11,7 @@
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/mask/gas
+	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
 	worth_intrinsic = 50
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE)

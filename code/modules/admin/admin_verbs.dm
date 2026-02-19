@@ -158,7 +158,6 @@ var/list/admin_verbs_spawn = list(
 
 var/list/admin_verbs_server = list(
 	/datum/admins/proc/capture_map,
-	/client/proc/Set_Holiday,
 	/client/proc/ToRban,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
@@ -297,7 +296,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/make_sound,
 	/client/proc/toggle_random_events,
 	/client/proc/cmd_admin_add_random_ai_law,
-	/client/proc/Set_Holiday,
 	/client/proc/ToRban,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
@@ -395,7 +393,6 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/cmd_admin_delete,
 	/datum/admins/proc/delay_start,
 	/datum/admins/proc/delay_end,
-	/client/proc/Set_Holiday,
 	/client/proc/make_sound,
 	/client/proc/toggle_random_events,
 	/datum/admins/proc/cmd_admin_dress,
@@ -419,10 +416,7 @@ var/list/admin_verbs_event_manager = list(
 		if(holder.rights & R_BAN)			add_verb(src, admin_verbs_ban)
 		if(holder.rights & R_FUN)			add_verb(src, admin_verbs_fun)
 		if(holder.rights & R_SERVER)		add_verb(src, admin_verbs_server)
-		if(holder.rights & R_DEBUG)
-			add_verb(src, admin_verbs_debug)
-			if(config_legacy.debugparanoid && !(holder.rights & R_ADMIN))
-				remove_verb(src, admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
+		if(holder.rights & R_DEBUG)			add_verb(src, admin_verbs_debug)
 		if(holder.rights & R_POSSESS)		add_verb(src, admin_verbs_possess)
 		if(holder.rights & R_PERMISSIONS)	add_verb(src, admin_verbs_permissions)
 		if(holder.rights & R_STEALTH)		add_verb(src, /client/proc/stealth)

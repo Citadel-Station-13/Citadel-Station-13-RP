@@ -38,7 +38,6 @@
 	used = TRUE
 	return TRUE
 
-
 // This type is triggered manually by a player discovering the pod and deciding to open it.
 /obj/structure/ghost_pod/manual
 	var/confirm_before_open = FALSE // Recommended to be TRUE if the pod contains a surprise.
@@ -54,6 +53,7 @@
 	if(Adjacent(user))
 		attack_hand(user) // Borgs can open pods.
 
+// TODO: refactor / improve ghostrole spawners???
 // This type is triggered on a timer, as opposed to needing another player to 'open' the pod.  Good for away missions.
 /obj/structure/ghost_pod/automatic
 	var/delay_to_self_open = 10 MINUTES // How long to wait for first attempt.  Note that the timer by default starts when the pod is created.
@@ -61,18 +61,13 @@
 
 /obj/structure/ghost_pod/automatic/Initialize(mapload)
 	. = ..()
-	spawn(delay_to_self_open)
-		if(src)
-			trigger()
+	addtimer(CALLBACK(src, PROC_REF(trigger)), delay_to_self_open)
 
 /obj/structure/ghost_pod/automatic/trigger()
 	. = ..()
 	if(. == FALSE) // If we failed to get a volunteer, try again later if allowed to.
 		if(delay_to_try_again)
-			spawn(delay_to_try_again)
-				if(src)
-					trigger()
-
+			addtimer(CALLBACK(src, PROC_REF(trigger)), delay_to_try_again)
 
 // This type is triggered by a ghost clicking on it, as opposed to a living player.  A ghost query type isn't needed.
 /obj/structure/ghost_pod/ghost_activated

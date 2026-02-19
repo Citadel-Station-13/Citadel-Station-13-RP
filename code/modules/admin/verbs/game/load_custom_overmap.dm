@@ -15,7 +15,7 @@ ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a cust
 	if(are_you_sure != "Yes")
 		return
 
-	var/map = input(invoking, "Select overmap .dmm", "Instantiate Overmap") as file|null
+	var/map = invoking.prompt_for_file_or_null("Select overmap .dmm", "Instantiate Overmap")
 	if(!map)
 		return
 

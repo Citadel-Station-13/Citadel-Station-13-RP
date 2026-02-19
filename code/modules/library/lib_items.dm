@@ -100,8 +100,10 @@
 /obj/structure/bookcase/manuals/medical
 	name = "Medical Manuals bookcase"
 
-/obj/structure/bookcase/manuals/medical/New()
-	..()
+/obj/structure/bookcase/manuals/medical/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	new /obj/item/book/manual/medical_cloning(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
@@ -112,8 +114,10 @@
 /obj/structure/bookcase/manuals/engineering
 	name = "Engineering Manuals bookcase"
 
-/obj/structure/bookcase/manuals/engineering/New()
-	..()
+/obj/structure/bookcase/manuals/engineering/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	new /obj/item/book/manual/engineering_construction(src)
 	new /obj/item/book/manual/engineering_particle_accelerator(src)
 	new /obj/item/book/manual/engineering_hacking(src)
@@ -126,8 +130,10 @@
 /obj/structure/bookcase/manuals/research_and_development
 	name = "R&D Manuals bookcase"
 
-/obj/structure/bookcase/manuals/research_and_development/New()
-	..()
+/obj/structure/bookcase/manuals/research_and_development/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	new /obj/item/book/manual/research_and_development(src)
 	update_icon()
 
@@ -135,8 +141,10 @@
 	name = "Legal Manuals bookcase"
 	icon_state = "legalbook-0"
 
-/obj/structure/bookcase/legal/sop/New()
-	..()
+/obj/structure/bookcase/legal/sop/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	new /obj/item/book/manual/legal/sop_vol1
 	new /obj/item/book/manual/legal/sop_vol2
 	new /obj/item/book/manual/legal/sop_vol3
@@ -154,8 +162,10 @@
 	name = "Corporate Regulations bookcase"
 	icon_state = "legalbook-0"
 
-/obj/structure/bookcase/legal/corpreg/New()
-	..()
+/obj/structure/bookcase/legal/corpreg/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	new /obj/item/book/manual/legal/cr_vol1
 	new /obj/item/book/manual/legal/cr_vol2
 	new /obj/item/book/manual/legal/cr_vol3
@@ -167,8 +177,10 @@
 	name = "Policy Reference bookcase"
 	icon_state = "legalbook-0"
 
-/obj/structure/bookcase/legal/combo/New()
-	..()
+/obj/structure/bookcase/legal/combo/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	new /obj/item/book/manual/legal/sop_vol1
 	new /obj/item/book/manual/legal/sop_vol2
 	new /obj/item/book/manual/legal/sop_vol3
@@ -196,8 +208,10 @@
 /obj/structure/bookcase/lore
 	name = "reviewed Books bookcase"
 
-/obj/structure/bookcase/lore/New()
-	..()
+/obj/structure/bookcase/lore/Initialize(mapload)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	var/list/obj/item/book/lore/types = typesof(/obj/item/book/lore)
 	LAZYREMOVE(types, /obj/item/book/lore)
 	for(var/i = 5; i>= 0; i--)

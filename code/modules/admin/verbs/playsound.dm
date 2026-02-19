@@ -1,7 +1,12 @@
-/client/proc/play_sound(S as sound)
+/client/proc/play_sound()
 	set category = "Fun"
 	set name = "Play Global Sound"
+
 	if(!check_rights(R_SOUNDS))
+		return
+
+	var/S = prompt_for_sound_or_null("Pick a sound", "Play Global Sound", 2 * 1024 * 1024)
+	if(!S)
 		return
 
 	var/vol = input(usr, "What volume would you like the sound to play at?",, 100) as null|num
@@ -40,10 +45,15 @@
 
 	feedback_add_details("admin_verb","PGS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/play_local_sound(S as sound)
+/client/proc/play_local_sound()
 	set category = "Fun"
 	set name = "Play Local Sound"
+
 	if(!check_rights(R_SOUNDS))
+		return
+
+	var/S = prompt_for_sound_or_null("Pick a sound", "Play Local Sound", 2 * 1024 * 1024)
+	if(!S)
 		return
 
 	log_admin("[key_name(src)] played a local sound [S]")
@@ -221,19 +231,7 @@
 
 	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Manual Play Internet Sound")
 	feedback_add_details("admin_verb","MPIS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-/*
-/client/proc/set_round_end_sound(S as sound)
-	set category = "Fun"
-	set name = "Set Round End Sound"
-	if(!check_rights(R_SOUNDS))
-		return
 
-	SSticker.SetRoundEndSound(S)
-
-	log_admin("[key_name(src)] set the round end sound to [S]")
-	message_admins("[key_name_admin(src)] set the round end sound to [S]")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Round End Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-*/
 /client/proc/stop_sounds()
 	set category = "Debug"
 	set name = "Stop All Playing Sounds"

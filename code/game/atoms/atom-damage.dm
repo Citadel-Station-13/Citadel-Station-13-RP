@@ -87,10 +87,28 @@
  * decodes damage type to what it should actually do
  *
  * * this is for hybrid / semantic damage types like bio-acid and searing damage to work
+ * * for the love of god make sure you are not infinite looping here; never use a compound damage type in this.
+ * * this gets a direct reference to args; you can just modify it and pass it back.
+ *
+ * TODO: can we datumize damage types already?
  *
  * @return TRUE to handle the damage type.
  */
 /atom/proc/inflict_damage_type_special(list/shieldcall_args)
+	switch(shieldcall_args[SHIELDCALL_ARG_DAMAGE_TYPE])
+		if(DAMAGE_TYPE_BIOACID)
+			// hand it back
+			shieldcall_args[SHIELDCALL_ARG_DAMAGE_TYPE] = DAMAGE_TYPE_BURN
+			return FALSE
+		if(DAMAGE_TYPE_SEARING)
+			// split to two and call
+			var/list/new_args = shieldcall_args.Copy()
+			new_args[SHIELDCALL_ARG_DAMAGE] /= 2
+			new_args[SHIELDCALL_ARG_DAMAGE_TYPE] = DAMAGE_TYPE_BRUTE
+			inflict_damage_instance(arglist(new_args))
+			new_args[SHIELDCALL_ARG_DAMAGE_TYPE] = DAMAGE_TYPE_BURN
+			inflict_damage_instance(arglist(new_args))
+			return TRUE
 	return FALSE
 
 //* Damage Processing API *//
@@ -148,12 +166,15 @@
  * * amount - how much
  * * gradual - burst or gradual? if you want to play a sound or something, you usually want to check this.
  * * do_not_break - skip calling atom_break
+ *
+ * @return amount damaged
  */
 /atom/proc/damage_integrity(amount, gradual, do_not_break)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	var/was_working = integrity > integrity_failure
-	integrity = max(0, integrity - amount)
+	. = min(integrity, amount)
+	integrity -= .
 	if(was_working && integrity <= integrity_failure && !do_not_break)
 		atom_break()
 	if(integrity <= 0)

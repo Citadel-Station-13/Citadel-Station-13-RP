@@ -9,8 +9,7 @@
 	var/glass = TRUE
 	var/launched = FALSE
 
-// In case we're annihilated by a meteor
-/obj/structure/panic_button/Destroy()
+/obj/structure/panic_button/atom_destruction()
 	if(!launched)
 		launch()
 	return ..()

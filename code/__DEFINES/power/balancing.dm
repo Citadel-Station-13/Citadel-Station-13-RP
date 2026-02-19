@@ -2,6 +2,8 @@
 
 //* Cells
 
+#define CELLRATE_DEFAULT 0.5
+
 /**
  * current calculations
  * cellrate 0.5 = 0.5 kj/unit
@@ -17,6 +19,31 @@
 
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
 GLOBAL_VAR_INIT(cellrate, 0.5)
+
+/// Divisible by 1, 2, 3.
+#define POWER_CELL_CAPACITY_BASE 1200
+
+/// base
+/// * this is a default; power cell datums can override this
+#define POWER_CELL_MULTIPLIER_SMALL 2
+/// vs small is 100% space-efficient
+/// * this is a default; power cell datums can override this
+#define POWER_CELL_MULTIPLIER_WEAPON 4
+/// vs weapon is 125% space-efficient
+/// * this is a default; power cell datums can override this
+#define POWER_CELL_MULTIPLIER_MEDIUM 10
+/// vs medium is 150% space-efficient
+/// * this is a default; power cell datums can override this
+#define POWER_CELL_MULTIPLIER_LARGE 30
+
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_SMALL (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_SMALL)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_MEDIUM (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_MEDIUM)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_LARGE (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_LARGE)
+/// * only provided for completeness; many cell types have more capacity than this.
+#define POWER_CELL_CAPACITY_WEAPON (POWER_CELL_CAPACITY_BASE * POWER_CELL_MULTIPLIER_WEAPON)
 
 //* Computers
 
@@ -52,13 +79,35 @@ GLOBAL_VAR_INIT(cellrate, 0.5)
 #define THERMOREGULATOR_CHEAT_FACTOR					5
 
 // todo: move to own file
-//* Thermodynamic Efficiencies *//
+
+//*             ------- Thermodynamic Efficiencies -------            *//
 /// tl;dr enforcement to ensure you can't make infinite power machines
 /// or at the very least have a harder time
 
-/// towards / with gradient
-#define THERMODYNAMICS_AIRLOCK_HEAT_PUMP_EFFICIENCY_FAVORABLE 20
-/// against gradient
+/// carnot cycle efficiency
+/// * this is the irl thermodynamics efficiency limit on heat engines.
+///   this is obviously more punishing than most of the game's fake limits.
+/// * applying this per tick and changing temperature is technically a bad idea.
+///   this applies to constant temperature reservoirs, of which most of our atmos
+///   mixtures are not. still, we do what we can.
+/// * this only makes sense if `T_HOT` is greater than `T_COLD`.
+#define THERMODYNAMICS_CARNOT_EFFICIENCY_POWER_GENERATION(T_COLD, T_HOT) (1 - (T_COLD / T_HOT))
+/// theoretical maximum heat pump efficiency when pumping against gradient
+/// * this is the irl thermodynamics efficiency limit on heat pumps,
+///   derived from the carnot limit on heat engines.
+///   this is obviously more punishing than most of the game's fake limits.
+/// * applying this per tick and changing temperature is technically a bad idea.
+///   this applies to constant temperature reservoirs, of which most of our atmos
+///   mixtures are not. still, we do what we can.
+/// * this only makes sense if `T_HOT` is greater than `T_COLD`. pumping towards the gradient
+///   doesn't take power here (or at least isn't computed by this formula).
+#define THERMODYNAMICS_CARNOT_EFFICIENCY_HEAT_PUMP(T_COLD, T_HOT) (T_HOT / (T_HOT - T_COLD))
+
+/// COP (coefficient of performance) when against against gradient
+/// * breaks the laws of thermodynamics. too bad! (maximum CARNOT_EFFICIENCY_HEAT_PUMP)
+/// TODO: currently unused; waiting for implementation of rift's airlocks on new system
 #define THERMODYNAMICS_AIRLOCK_HEAT_PUMP_EFFICIENCY_UNFAVORABLE 10
 /// electrical heating
+/// * breaks the laws of thermodynamics. too bad! (maximum 1)
+/// TODO: currently unused; waiting for implementation of rift's airlocks on new system
 #define THERMODYNAMICS_AIRLOCK_ELECTRIC_HEATING_EFFICIENCY 5

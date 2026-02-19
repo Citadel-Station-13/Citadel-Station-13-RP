@@ -233,7 +233,6 @@
 						/mob/living/simple_mob/vore/aggressive/dino,
 						/mob/living/simple_mob/animal/space/xenomorph/drone,
 						/mob/living/simple_mob/animal/space/xenomorph/neurotoxin_spitter,
-						/mob/living/simple_mob/animal/space/xenomorph/monarch,
 						/mob/living/simple_mob/vore/aggressive/corrupthound))
 	return ..()
 

@@ -236,8 +236,8 @@
 			prob(2);list(
 				/obj/item/melee/baton/cattleprod,
 				/obj/item/melee/baton/cattleprod,
-				/obj/item/cell/high,
-				/obj/item/cell/high,
+				/obj/item/cell/basic/tier_1/medium,
+				/obj/item/cell/basic/tier_1/medium,
 				/obj/structure/closet/crate
 			),
 			prob(2);list(
@@ -570,7 +570,7 @@
 				/obj/item/module/power_control,
 				/obj/item/stack/cable_coil,
 				/obj/item/frame2/apc,
-				/obj/item/cell/high,
+				/obj/item/cell/basic/tier_1/large,
 				/obj/structure/closet/crate/corporate/focalpoint //FOCAL APC
 			),
 			prob(5);list(
@@ -808,16 +808,16 @@
 			prob(2);list(
 				/obj/random/energy,
 				/obj/random/energy,
-				/obj/item/cell/device/weapon,
-				/obj/item/cell/device/weapon,
-				/obj/item/cell/device/weapon,
-				/obj/item/cell/device/weapon,
+				/obj/item/cell/basic/tier_1/weapon,
+				/obj/item/cell/basic/tier_1/weapon,
+				/obj/item/cell/basic/tier_1/weapon,
+				/obj/item/cell/basic/tier_1/weapon,
 				/obj/random/energy,
 				/obj/random/energy,
-				/obj/item/cell/device/weapon,
-				/obj/item/cell/device/weapon,
-				/obj/item/cell/device/weapon,
-				/obj/item/cell/device/weapon,
+				/obj/item/cell/basic/tier_1/weapon,
+				/obj/item/cell/basic/tier_1/weapon,
+				/obj/item/cell/basic/tier_1/weapon,
+				/obj/item/cell/basic/tier_1/weapon,
 				/obj/structure/closet/crate/large/secure/corporate/heph //HEPH ENERGY
 			),
 			prob(2);list(

@@ -154,8 +154,6 @@
 	return active()
 
 /datum/global_iterator/Destroy()
-	. = ..()
 	arg_list.Cut()
 	stop()
-	return QDEL_HINT_LETMELIVE
-	//Do not call ..()
+	return ..()

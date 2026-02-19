@@ -1177,7 +1177,7 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/obj/item/cell/crap,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "fo" = (
