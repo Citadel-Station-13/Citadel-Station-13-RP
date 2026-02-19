@@ -11,6 +11,7 @@ import {
   Stack,
 } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
+
 import { ActFunctionType } from '../../../../backend';
 import {
   airlockSealedStateToName,
@@ -55,7 +56,7 @@ export const AirlockVacuumCycleProgram = (
                       ? 'bad'
                       : 'good'
                   }
-                ></ProgressBar>
+                 />
               ) : (
                 'Unknown'
               )}

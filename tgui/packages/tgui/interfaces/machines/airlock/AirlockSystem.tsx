@@ -4,10 +4,11 @@
  */
 
 import { LabeledList, Section, Stack } from 'tgui-core/components';
+import { capitalize } from 'tgui-core/string';
+
+import { useBackend } from '../../../backend';
 import { Window } from '../../../layouts';
 import { AirlockVacuumCycleProgram } from './programs/AirlockVacuumCycleProgram';
-import { useBackend } from '../../../backend';
-import { capitalize } from 'tgui-core/string';
 import { AirlockCyclingData } from './types';
 
 interface AirlockSystemData {
@@ -44,7 +45,7 @@ export const AirlockSystem = (props) => {
             <AirlockProgramRender
               programComp={data.programTgui}
               programData={data.programData}
-            ></AirlockProgramRender>
+             />
           )}
         </Stack>
       </Window.Content>
