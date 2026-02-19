@@ -44,7 +44,8 @@
 		for(var/i in GLOB.cardinal)
 			if(!(network_directions & i))
 				continue
-			new /obj/structure/cable(loc, capitalize(cable_color), 0, i, TRUE)
+			var/obj/structure/cable/made = new /obj/structure/cable(loc, capitalize(cable_color), 0, i, TRUE)
+			made.set_hides_underfloor(OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 	else
 		var/last
 		for(var/i in GLOB.cardinal)
@@ -53,7 +54,8 @@
 			if(isnull(last))
 				last = i
 				continue
-			new /obj/structure/cable(loc, capitalize(cable_color), last, i, TRUE)
+			var/obj/structure/cable/made = new /obj/structure/cable(loc, capitalize(cable_color), last, i, TRUE)
+			made.set_hides_underfloor(OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP)
 			last = i
 
 /obj/map_helper/network_builder/power_cable/proc/detect_knot()
