@@ -89,7 +89,7 @@
 	system.start_cycle(cycle.create_cycling(
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE],
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE],
-	), PROC_REF(on_resserted_doors))
+	), PROC_REF(on_reasserted_doors))
 
 /datum/airlock_program/vacuum_cycle/proc/on_reasserted_doors()
 	set_active_side_based_on_doors()
