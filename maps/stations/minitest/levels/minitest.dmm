@@ -3328,7 +3328,7 @@
 /area/bridge)
 "yh" = (
 /obj/structure/airlock_interconnect/hardmapped,
-/obj/machinery/airlock_component/controller{
+/obj/machinery/airlock_component/controller/vacuum_cycle/hardmapped{
 	airlock_id = "test-1"
 	},
 /turf/simulated/floor/tiled,

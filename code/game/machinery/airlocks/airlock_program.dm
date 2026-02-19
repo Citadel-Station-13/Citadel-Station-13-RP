@@ -12,7 +12,6 @@
 	/// owning system
 	var/datum/airlock_system/system
 	/// tgui routing string used to get the right component
-	/// * the config interface is `[component]Config`.
 	var/tgui_airlock_component
 
 /datum/airlock_program/New(datum/airlock_system/system)

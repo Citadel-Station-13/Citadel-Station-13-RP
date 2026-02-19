@@ -80,6 +80,8 @@
 		system.fail_cycle()
 		return
 	if(!current_phase)
+		if(!length(pending_phases))
+			return
 		var/datum/airlock_phase/next_phase = pending_phases[1]
 		pending_phases.Cut(1, 2)
 		switch(next_phase.setup(system, src))

@@ -70,6 +70,8 @@
 	icon = 'icons/machinery/airlocks/airlock_interconnect.dmi'
 	icon_state = "conduit-map"
 	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
+	plane = /obj/machinery/airlock_component::plane
+	layer = /obj/machinery/airlock_component::layer - 0.01
 
 	/// our pipenet
 	var/datum/airlock_gasnet/network

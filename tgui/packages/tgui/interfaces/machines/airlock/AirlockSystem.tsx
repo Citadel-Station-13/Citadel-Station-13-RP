@@ -20,11 +20,11 @@ interface AirlockSystemData {
 export const AirlockSystem = (props) => {
   const { act, data } = useBackend<AirlockSystemData>();
   return (
-    <Window>
+    <Window title="Airlock System">
       <Window.Content>
         <Stack vertical fill>
-          <Stack.Item>
-            <Section title="System">
+          <Stack.Item grow={1} shrink={1}>
+            <Section fill title="System">
               <LabeledList>
                 <LabeledList.Item label="Status">
                   {capitalize(data.cycling?.phaseVerb || 'Idle')}
@@ -45,7 +45,7 @@ export const AirlockSystem = (props) => {
             <AirlockProgramRender
               programComp={data.programTgui}
               programData={data.programData}
-             />
+            />
           )}
         </Stack>
       </Window.Content>

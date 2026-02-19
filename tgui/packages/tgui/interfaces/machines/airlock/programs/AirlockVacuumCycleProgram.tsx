@@ -42,7 +42,7 @@ export const AirlockVacuumCycleProgram = (
   const act = props.act;
   return (
     <>
-      <Stack.Item>
+      <Stack.Item grow={1}>
         <Section title="Information">
           <LabeledList>
             <LabeledList.Item label="Pressure">
@@ -56,7 +56,7 @@ export const AirlockVacuumCycleProgram = (
                       ? 'bad'
                       : 'good'
                   }
-                 />
+                />
               ) : (
                 'Unknown'
               )}

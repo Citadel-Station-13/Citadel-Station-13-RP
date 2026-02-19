@@ -77,10 +77,9 @@
 /datum/airlock_system/proc/start_cycle(datum/airlock_cycling/cycling, datum/callback/on_finished)
 	if(src.cycling)
 		return null
-	src.cycling_on_finish = on_finished
-	src.cycling = cycling
 
 	cycling.setup(src)
+	src.cycling_on_finish = on_finished
 	// immediately poll once
 	cycling.poll(0)
 	controller.on_cycle_begin()

@@ -13,7 +13,15 @@
 	 * This allows airlocks to be self-repairing to an extent.
 	 */
 	var/reassert_doors_every = 90 SECONDS
+	/**
+	 * Last time we reasserted doors.
+	 */
 	var/reassert_doors_last
+
+/datum/airlock_program/vacuum_cycle/New()
+	..()
+	// Immediately reassert.
+	reassert_doors_last = world.time - reassert_doors_every
 
 /datum/airlock_program/vacuum_cycle/ui_program_data()
 	. = ..()

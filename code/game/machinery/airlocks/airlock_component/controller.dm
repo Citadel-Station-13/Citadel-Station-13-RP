@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 		airlock_id = SSmapping.mangled_round_local_id(airlock_id, context.mangling_id)
 
 /obj/machinery/airlock_component/controller/Initialize(mapload, set_dir, obj/item/airlock_component/controller/from_item)
-	..()
+	. = ..()
 	// todo: we need proper tick bracket machine support & fastmos
 	set_controller_id(src.airlock_id)
 	if(from_item)
