@@ -138,6 +138,8 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	. = ..()
 	if(system?.cycling)
 		add_overlay("[base_icon_state]-op-green")
+	for(var/obj/machinery/airlock_peripheral/peripheral as anything in peripherals)
+		peripheral.update_icon()
 
 /obj/machinery/airlock_component/controller/proc/add_peripheral(obj/machinery/airlock_peripheral/peripheral)
 	if(peripheral.controller == src)

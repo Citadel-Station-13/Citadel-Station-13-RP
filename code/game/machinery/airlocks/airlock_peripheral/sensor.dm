@@ -31,6 +31,8 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED(/obj/machinery/airlock_peripheral/sensor, 22)
 	. = ..()
 	if(machine_stat & NOPOWER)
 		icon_state = "[base_icon_state]-off"
+	else if(controller.system?.cycling)
+		icon_state = "[base_icon_state]-active"
 	else
 		icon_state = "[base_icon_state]"
 	// todo: handle 'operating' as "[base_icon_state]-active"

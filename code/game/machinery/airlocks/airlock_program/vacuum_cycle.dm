@@ -25,6 +25,8 @@
 
 /datum/airlock_program/vacuum_cycle/on_system_rebuild()
 	..()
+	// start inside
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE] = AIRLOCK_SIDE_INTERIOR
 	// lock both sides closed
 	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = FALSE
 	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = FALSE
@@ -80,6 +82,16 @@
 		if("abort")
 			hard_abort()
 			return TRUE
+
+/datum/airlock_program/vacuum_cycle/on_sensor_cycle_request(obj/machinery/airlock_peripheral/sensor/sensor, datum/event_args/actor/actor)
+	// technically this still blocks on reassert doors but that shouldn't
+	// take too long if the airlock is operational anyways...
+	if(system.cycling)
+		return
+	if(sensor.is_indoors)
+		start_cycling_towards(AIRLOCK_SIDE_INTERIOR)
+	else
+		start_cycling_towards(AIRLOCK_SIDE_EXTERIOR)
 
 /**
  * @return truthy, or falsy value
