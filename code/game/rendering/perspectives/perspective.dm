@@ -725,10 +725,10 @@
 	else
 		for(var/client/_C as anything in clients)
 			update_view_size(_C)
+	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_VIEWSIZE_UPDATE)
 
 /datum/perspective/proc/recompute_view_size()
 	view_dirty = FALSE
-	#warn signal on this
 	if(isnum(default_view_size))
 		cached_view_height = default_view_size + augment_view_width
 		cached_view_width = default_view_size + augment_view_height
@@ -737,13 +737,14 @@
 		cached_view_width = GLOB.max_client_view_x + augment_view_width
 		cached_view_height = GLOB.max_client_view_y + augment_view_height
 		return
+	// is text
 	var/list/parsed = splittext(default_view_size, "x")
 	if(length(parsed) != 2)
 		cached_view_width = GLOB.max_client_view_x + augment_view_width
 		cached_view_height = GLOB.max_client_view_y + augment_view_height
-		return
-	cached_view_width = parsed[1] + augment_view_width
-	cached_view_height = parsed[2] + augment_view_height
+	else
+		cached_view_width = parsed[1] + augment_view_width
+		cached_view_height = parsed[2] + augment_view_height
 
 /datum/perspective/proc/suppress_view(source)
 	var/was = LAZYLEN(view_suppression)

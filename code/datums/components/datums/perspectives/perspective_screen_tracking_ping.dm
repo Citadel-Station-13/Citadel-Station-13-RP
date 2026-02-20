@@ -13,6 +13,9 @@
 
 	var/overlay_text
 
+	var/cached_view_x
+	var/cached_view_y
+
 /datum/component/perspective_screen_tracking_ping/Initialize(
 	atom/movable/target,
 	use_icon = 'icons/effects/motion_blip.dmi',
@@ -31,27 +34,45 @@
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(on_target_del))
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_target_move))
 
+/datum/component/perspective_screen_tracking_ping/Destroy()
+	QDEL_NULL(generated_image)
+	return ..()
+
 /datum/component/perspective_screen_tracking_ping/RegisterWithParent()
 	..()
+	var/datum/perspective/joining = parent
+	RegisterSignal(joining, COMSIG_PERSPECTIVE_VIEWSIZE_UPDATE, PROC_REF(on_viewsize_update))
+	on_viewsize_update()
 	generate_image_if_not_exists()
 	update_image()
-	var/datum/perspective/joining = parent
-	joining.add_image(generated_image)
+	if(generated_image)
+		joining.add_image(generated_image)
 
 /datum/component/perspective_screen_tracking_ping/UnregisterFromParent()
 	..()
 	var/datum/perspective/leaving = parent
-	leaving.remove_image(generated_image)
+	if(generated_image)
+		leaving.remove_image(generated_image)
+	UnregisterSignal(leaving, COMSIG_PERSPECTIVE_VIEWSIZE_UPDATE)
+
+/datum/component/perspective_screen_tracking_ping/proc/on_viewsize_update()
+	var/datum/perspective/casted = parent
+	cached_view_x = casted.cached_view_width
+	cached_view_y = casted.cached_view_height
+	update_image()
 
 /datum/component/perspective_screen_tracking_ping/proc/on_target_move()
 	update_image()
 
 /datum/component/perspective_screen_tracking_ping/proc/generate_image_if_not_exists()
+	#warn impl
 
 /datum/component/perspective_screen_tracking_ping/proc/on_target_del()
 	qdel(src)
 
 /datum/component/perspective_screen_tracking_ping/proc/update_image()
+	if(!generated_image)
+		return
 	var/atom/movable/target = src.target
 
 #warn impl; motion sensor state by default

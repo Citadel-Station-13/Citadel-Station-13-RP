@@ -1,4 +1,6 @@
-//
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
+
 /// sent upon a mob being added:				(mob)
 #define COMSIG_PERSPECTIVE_MOB_ADD				"perspective_add_mob"
 /// sent upon a mob beiing removed:				(mob, switching)
@@ -9,3 +11,5 @@
 #define COMSIG_PERSPECTIVE_CLIENT_UNREGISTER	"perspective_del_client"
 /// sent upon calling Update()
 #define COMSIG_PERSPECTIVE_CLIENT_UPDATE		"perspective_update_client"
+/// sent on view size change
+#define COMSIG_PERSPECTIVE_VIEWSIZE_UPDATE      "perspective_update_viewsize"
