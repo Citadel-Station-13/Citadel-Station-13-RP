@@ -172,10 +172,13 @@
 	if(component.interconnect)
 		component.interconnect.disconnect_component(component)
 	LAZYADD(components, component)
+	component.interconnect = src
 	network?.add_machine(component)
 
 /obj/structure/airlock_interconnect/proc/disconnect_component(obj/machinery/airlock_component/component)
+	ASSERT(component.interconnect == src)
 	LAZYREMOVE(components, component)
+	component.interconnect = null
 	network?.remove_machine(component)
 
 /obj/structure/airlock_interconnect/proc/get_adjacent_interconnects()

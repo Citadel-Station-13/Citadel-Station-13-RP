@@ -100,7 +100,7 @@
  */
 /datum/airlock_gasnet/proc/build(obj/structure/airlock_interconnect/source)
 	var/list/obj/structure/airlock_interconnect/processing = list(source)
-	var/alist/processed = alist()
+	var/list/processed = list()
 	while(length(processing))
 		var/obj/structure/airlock_interconnect/current = processing[length(processing)]
 		--processing.len
@@ -122,12 +122,16 @@
 			add_interconnect(current)
 
 /datum/airlock_gasnet/proc/add_interconnect(obj/structure/airlock_interconnect/connector)
+	ASSERT(connector.network == null)
 	interconnects += connector
+	connector.network = src
 	for(var/obj/machinery/airlock_component/comp as anything in connector.components)
 		add_machine(comp)
 
 /datum/airlock_gasnet/proc/remove_interconnect(obj/structure/airlock_interconnect/connector)
+	ASSERT(connector.network == src)
 	interconnects -= connector
+	connector.network = null
 	for(var/obj/machinery/airlock_component/comp as anything in connector.components)
 		remove_machine(comp)
 
