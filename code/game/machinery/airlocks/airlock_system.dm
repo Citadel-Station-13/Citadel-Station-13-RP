@@ -28,7 +28,8 @@
 	src.controller = controller
 
 /datum/airlock_system/Destroy()
-	abort_cycle()
+	// don't even call abort in destroy logic just throw out
+	QDEL_NULL(cycling)
 	if(controller)
 		if(controller.system == src)
 			controller.system = null
@@ -97,8 +98,10 @@
 		return FALSE
 	cycling.finished_status = status
 	cycling.finished_reason = why_str
-	cycling_on_finish?.InvokeAsync(src, cycling)
-	QDEL_NULL(cycling)
+	if(!QDELETED(cycling))
+		// if cycling is being deleted we don't even consider it a real finish
+		cycling_on_finish?.InvokeAsync(src, cycling)
+		QDEL_NULL(cycling)
 	controller.on_cycle_end()
 	return TRUE
 

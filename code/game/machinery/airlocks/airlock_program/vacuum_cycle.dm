@@ -23,6 +23,17 @@
 	// Immediately reassert.
 	reassert_doors_last = world.time - reassert_doors_every
 
+/datum/airlock_program/vacuum_cycle/on_system_rebuild()
+	..()
+	// lock both sides closed
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = FALSE
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = FALSE
+	// just reassert door now
+	reassert_doors()
+	// pray it works instantly, which it should if the
+	// doors spawn in with the right configurations
+	system.cycling?.poll(1 SECONDS)
+
 /datum/airlock_program/vacuum_cycle/ui_program_data()
 	. = ..()
 	.["interiorSealed"] = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE]
@@ -97,7 +108,7 @@
 	system.start_cycle(cycle.create_cycling(
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE],
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE],
-	), PROC_REF(on_reasserted_doors))
+	), CALLBACK(src, PROC_REF(on_reasserted_doors)))
 
 /datum/airlock_program/vacuum_cycle/proc/on_reasserted_doors()
 	set_active_side_based_on_doors()

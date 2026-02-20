@@ -78,6 +78,10 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 		system = new(src)
 	if(!system.program && default_program_path)
 		system.create_program(default_program_path)
+	// TODO: can we have a better way to call this?
+	//       this is needed to immediately lock airlocks as we can.
+	if(system?.program)
+		addtimer(CALLBACK(system.program, TYPE_PROC_REF(/datum/airlock_program, on_system_rebuild)), 0)
 
 /obj/machinery/airlock_component/controller/Destroy()
 	set_controller_id(null)

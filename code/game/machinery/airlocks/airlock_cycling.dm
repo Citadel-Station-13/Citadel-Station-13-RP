@@ -66,10 +66,6 @@
  * Called when the airlock processes to tick the cycle.
  */
 /datum/airlock_cycling/proc/poll(dt)
-	for(var/datum/airlock_task/task as anything in running_tasks)
-		task.poll(dt)
-		if(task.completed)
-			running_tasks -= task
 	poll_or_next_phase(dt)
 	if(!current_phase && !length(pending_phases))
 		system.finish_cycle(op_id, "no pending tasks remain")
@@ -93,6 +89,11 @@
 			if(AIRLOCK_PHASE_SETUP_SUCCESS)
 				current_phase_started_at = world.time
 				current_phase = next_phase
+	// poll running tasks in this loop rather than outside
+	for(var/datum/airlock_task/task as anything in running_tasks)
+		task.poll(dt)
+		if(task.completed)
+			running_tasks -= task
 	switch(current_phase.tick(system, src))
 		if(AIRLOCK_PHASE_TICK_ERROR)
 			system.fail_cycle()
@@ -100,6 +101,7 @@
 		if(AIRLOCK_PHASE_TICK_CONTINUE)
 			current_phase_progress_estimate = current_phase.estimate_progress_ratio(system, src)
 		if(AIRLOCK_PHASE_TICK_FINISH)
+			current_phase = null
 			poll_or_next_phase(dt, safety - 1)
 
 /datum/airlock_cycling/proc/enqueue_phase(datum/airlock_phase/phase)
@@ -109,11 +111,9 @@
 
 /datum/airlock_cycling/proc/add_task(datum/airlock_task/task)
 	task.assign_cycle(src)
-	running_tasks += task
 
 /datum/airlock_cycling/proc/remove_task(datum/airlock_task/task)
 	task.unassign_cycle(src)
-	running_tasks -= task
 
 /datum/airlock_cycling/proc/ui_cycle_data()
 	var/list/assembled_tasks = list()
