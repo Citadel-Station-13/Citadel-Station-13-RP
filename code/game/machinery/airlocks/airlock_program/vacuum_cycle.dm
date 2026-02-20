@@ -88,9 +88,9 @@
 	// take too long if the airlock is operational anyways...
 	if(system.cycling)
 		return
-	if(sensor.is_indoors)
+	if(sensor.sidedness == AIRLOCK_SIDE_INTERIOR)
 		start_cycling_towards(AIRLOCK_SIDE_INTERIOR)
-	else
+	else if(sensor.sidedness == AIRLOCK_SIDE_EXTERIOR)
 		start_cycling_towards(AIRLOCK_SIDE_EXTERIOR)
 
 /**
