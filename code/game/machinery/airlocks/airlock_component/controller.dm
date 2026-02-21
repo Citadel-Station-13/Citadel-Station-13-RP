@@ -58,6 +58,8 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	var/default_program_path
 	/// connected peripherals
 	var/list/obj/machinery/airlock_peripheral/peripherals
+	/// ... sigh.
+	var/system_rebuild_triggered = FALSE
 
 /obj/machinery/airlock_component/controller/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
@@ -78,10 +80,6 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 		system = new(src)
 	if(!system.program && default_program_path)
 		system.create_program(default_program_path)
-	// TODO: can we have a better way to call this?
-	//       this is needed to immediately lock airlocks as we can.
-	if(system?.program)
-		addtimer(CALLBACK(system.program, TYPE_PROC_REF(/datum/airlock_program, on_system_rebuild)), 0)
 
 /obj/machinery/airlock_component/controller/Destroy()
 	set_controller_id(null)
@@ -89,6 +87,25 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 	for(var/obj/machinery/airlock_peripheral/peri as anything in peripherals)
 		remove_peripheral(peri)
 	return ..()
+
+/obj/machinery/airlock_component/controller/on_connect(datum/airlock_gasnet/network)
+	..()
+	if(!system_rebuild_triggered)
+		// allow the entire network to build please
+		addtimer(CALLBACK(src, PROC_REF(trigger_system_rebuild_if_needed)), 0)
+
+/obj/machinery/airlock_component/controller/proc/trigger_system_rebuild_if_needed()
+	if(!system_rebuild_triggered)
+		system_rebuild_triggered = TRUE
+		// TODO: can we have a better way to call this?
+		//       this is needed to immediately lock airlocks as we can.
+		if(system?.program)
+			addtimer(CALLBACK(system.program, TYPE_PROC_REF(/datum/airlock_program, on_system_rebuild)), 0)
+
+/obj/machinery/airlock_component/controller/leave_interconnect()
+	..()
+	// only when the controller itself is yanked do we trigger a rebuild on next connect
+	system_rebuild_triggered = FALSE
 
 /obj/machinery/airlock_component/controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	// TODO: clickchain support?
@@ -174,7 +191,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller/proc/on_sensor_cycle_request(obj/machinery/airlock_peripheral/sensor/sensor, datum/event_args/actor/actor)
 	if(!system)
 		return
-	system?.program?.on_sensor_cycle_request(system, sensor, actor)
+	system?.program?.on_sensor_cycle_request(sensor, actor)
 
 /obj/machinery/airlock_component/controller/process(delta_time)
 	system?.process(delta_time)

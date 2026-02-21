@@ -27,6 +27,7 @@ export const AirlockSystem = (props) => {
             <Section fill title="System">
               <LabeledList>
                 <LabeledList.Item label="Status">
+                  {/* TODO: cyclingDesc */}
                   {capitalize(data.cycling?.phaseVerb || 'Idle')}
                   {data.cycling && (
                     <>

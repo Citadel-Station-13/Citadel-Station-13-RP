@@ -5,6 +5,8 @@
  * * Stateless
  */
 /datum/airlock_cycle
+	/// Desc to set
+	var/initial_desc
 	/// Phases to copy
 	/// * Phases are stateless
 	var/list/datum/airlock_phase/initial_phases = list()
@@ -13,6 +15,8 @@
 
 /datum/airlock_cycle/proc/create_cycling(...)
 	var/datum/airlock_cycling/cycling = new
+	if(!isnull(initial_desc))
+		cycling.desc = initial_desc
 	cycling.pending_phases = gather_phases(arglist(args.Copy()))
 	cycling.blackboard = gather_blackboard(arglist(args.Copy()))
 	return cycling

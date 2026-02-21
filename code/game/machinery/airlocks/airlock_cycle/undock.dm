@@ -6,6 +6,7 @@
  * * Will just lock doors and treat airlock as now-interior.
  */
 /datum/airlock_cycle/undock
+	initial_desc = "Undocking"
 
 /datum/airlock_cycle/undock/create_cycling()
 	return ..()

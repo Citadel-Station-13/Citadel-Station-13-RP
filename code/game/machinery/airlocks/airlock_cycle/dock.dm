@@ -6,6 +6,7 @@
  * * Will fill air fully before opening.
  */
 /datum/airlock_cycle/dock
+	initial_desc = "Docking"
 
 /datum/airlock_cycle/dock/create_cycling()
 	return ..()

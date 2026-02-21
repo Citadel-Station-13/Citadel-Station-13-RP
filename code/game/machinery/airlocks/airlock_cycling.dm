@@ -9,6 +9,11 @@
  * TODO: Track stuckage time and cancel if airlock is stuck to save CPU.
  */
 /datum/airlock_cycling
+	/**
+	 * UI desc for what we're actually doing
+	 */
+	var/desc = "Operating"
+
 	/// current op id
 	/// * set by airlock system
 	var/op_id
@@ -66,6 +71,9 @@
  * Called when the airlock processes to tick the cycle.
  */
 /datum/airlock_cycling/proc/poll(dt)
+	if(!system.controller.network)
+		// It's unsound to run while network isn't up.
+		return
 	poll_or_next_phase(dt)
 	if(!current_phase && !length(pending_phases))
 		system.finish_cycle(op_id, "no pending tasks remain")
@@ -121,5 +129,6 @@
 		assembled_tasks[++assembled_tasks.len] = task.ui_task_data()
 	return list(
 		"tasks" = assembled_tasks,
-		"phaseVerb" = current_phase?.display_verb || "operating",
+		"cyclingDesc" = desc,
+		"phaseVerb" = current_phase?.display_verb,
 	)

@@ -5,6 +5,7 @@
  * A program to restore state when cancelling
  */
 /datum/airlock_cycle/cancel_and_restore
+	initial_desc = "Cancelling"
 
 /datum/airlock_cycle/cancel_and_restore/create_cycling(was_on_side)
 	var/datum/airlock_cycling/cycling = ..()

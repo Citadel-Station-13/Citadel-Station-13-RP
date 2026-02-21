@@ -14,6 +14,7 @@ export interface AirlockTaskData {
 export interface AirlockCyclingData {
   tasks: AirlockTaskData[];
   phaseVerb: string;
+  cyclingDesc: string;
 }
 
 export enum AirlockSide {

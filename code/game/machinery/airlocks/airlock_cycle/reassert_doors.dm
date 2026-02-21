@@ -7,6 +7,7 @@
  *   if an airlock is idle.
  */
 /datum/airlock_cycle/reassert_doors
+	initial_desc = "Reasserting Doors"
 
 /datum/airlock_cycle/reassert_doors/create_cycling(interior_lock_state, exterior_lock_state)
 	return ..()

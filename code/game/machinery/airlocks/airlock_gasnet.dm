@@ -251,7 +251,7 @@
 		return "Operating Cycler"
 	var/list/descriptors = list()
 	for(var/i in 1 to AIRLOCK_CYCLER_OP_MAX_BIT)
-		if(last_status & i)
+		if(last_status & (1<<i))
 			descriptors += global.airlock_cycler_op_desc_lookup[i]
 	return "Cycler Error ([english_list(descriptors)])"
 
