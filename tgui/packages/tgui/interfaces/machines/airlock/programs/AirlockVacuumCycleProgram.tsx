@@ -139,6 +139,7 @@ export const AirlockVacuumCycleProgram = (
                   color="bad"
                   textAlign="center"
                   disabled={!props.data.cycling}
+                  onClick={() => act('abort')}
                 >
                   Emergency Stop
                 </Button.Confirm>
@@ -146,7 +147,10 @@ export const AirlockVacuumCycleProgram = (
                 <Button
                   fluid
                   textAlign="center"
-                  disabled={!props.data.cycling || props.data.cancelling}
+                  color="yellow"
+                  icon="stop"
+                  onClick={() => act('cancel')}
+                  disabled={!props.data.cycling}
                 >
                   Graceful Abort
                 </Button>
