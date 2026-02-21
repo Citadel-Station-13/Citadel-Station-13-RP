@@ -74,7 +74,32 @@ export const AirlockVacuumCycleProgram = (
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Controls">
+        <Section
+          title="Operations"
+          buttons={
+            <>
+              <Button.Confirm
+                color="bad"
+                textAlign="center"
+                icon="exclamation-triangle"
+                confirmIcon="exclamation-triangle"
+                disabled={!props.data.cycling}
+                onClick={() => act('abort')}
+              >
+                Abort
+              </Button.Confirm>
+              <Button
+                textAlign="center"
+                color="yellow"
+                icon="stop"
+                onClick={() => act('cancel')}
+                disabled={!props.data.cycling || props.data.cancelling}
+              >
+                Cancel
+              </Button>
+            </>
+          }
+        >
           <Stack vertical>
             <Stack.Item>
               <Stack>
@@ -131,30 +156,6 @@ export const AirlockVacuumCycleProgram = (
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>
-            </Stack.Item>
-            <Stack.Item>
-              {props.data.cancelling ? (
-                <Button.Confirm
-                  fluid
-                  color="bad"
-                  textAlign="center"
-                  disabled={!props.data.cycling}
-                  onClick={() => act('abort')}
-                >
-                  Emergency Stop
-                </Button.Confirm>
-              ) : (
-                <Button
-                  fluid
-                  textAlign="center"
-                  color="yellow"
-                  icon="stop"
-                  onClick={() => act('cancel')}
-                  disabled={!props.data.cycling}
-                >
-                  Graceful Abort
-                </Button>
-              )}
             </Stack.Item>
           </Stack>
         </Section>

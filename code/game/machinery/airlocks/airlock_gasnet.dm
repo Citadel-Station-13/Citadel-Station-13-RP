@@ -226,11 +226,11 @@
 
 /datum/airlock_gasnet/proc/pump_cycler_to_handler_waste(dt, to_pressure)
 	cycler?.last_pump_was_out = FALSE
-	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_waste_gas_mixture_ref(), dt, to_pressure, FALSE)
+	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_mutable_waste_gas_mixture_ref(), dt, to_pressure, FALSE)
 
 /datum/airlock_gasnet/proc/pump_handler_supply_to_cycler(dt, to_pressure)
 	cycler?.last_pump_was_out = TRUE
-	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_clean_gas_mixture_ref(), dt, to_pressure, TRUE)
+	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_mutable_clean_gas_mixture_ref(), dt, to_pressure, TRUE)
 
 /datum/airlock_gasnet/proc/reset_pumping_graphics()
 	cycler?.last_pump_was_out = null

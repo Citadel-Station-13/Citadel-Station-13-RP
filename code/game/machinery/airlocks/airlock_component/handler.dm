@@ -90,11 +90,23 @@
 			var/drawn = network.draw_power(desired)
 			power_stored += drawn * delta_time
 
-/obj/machinery/airlock_component/handler/proc/get_clean_gas_mixture_ref() as /datum/gas_mixture
+/obj/machinery/airlock_component/handler/proc/get_immutable_clean_gas_mixture_ref() as /datum/gas_mixture
 	return conn_intake?.air_contents
 
-/obj/machinery/airlock_component/handler/proc/get_waste_gas_mixture_ref() as /datum/gas_mixture
+/obj/machinery/airlock_component/handler/proc/get_immutable_waste_gas_mixture_ref() as /datum/gas_mixture
 	return conn_eject?.air_contents
+
+/obj/machinery/airlock_component/handler/proc/get_mutable_clean_gas_mixture_ref() as /datum/gas_mixture
+	if(!conn_eject)
+		return null
+	conn_eject.network?.update = TRUE
+	return conn_intake.air_contents
+
+/obj/machinery/airlock_component/handler/proc/get_mutable_waste_gas_mixture_ref() as /datum/gas_mixture
+	if(!conn_eject)
+		return null
+	conn_eject.network?.update = TRUE
+	return conn_eject.air_contents
 
 /obj/machinery/airlock_component/handler/proc/create_or_update_conn_eject()
 	if(!conn_eject)
@@ -130,6 +142,22 @@
 	hardmapped = TRUE
 
 /obj/machinery/atmospherics/component/unary/airlock_connector
+	name = null
 	air_volume = 2000
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	atom_flags = ATOM_ABSTRACT | ATOM_NONWORLD
+
+	var/obj/machinery/airlock_component/handler/owner
+
+/obj/machinery/atmospherics/component/unary/airlock_connector/Initialize(mapload, newdir, obj/machinery/airlock_component/handler/new_owner)
+	owner = new_owner
+	return ..()
+
+/obj/machinery/atmospherics/component/unary/airlock_connector/Destroy()
+	if(owner)
+		if(src == owner.conn_eject)
+			owner.conn_eject = null
+		if(src == owner.conn_intake)
+			owner.conn_intake = null
+		owner = null
+	return ..()

@@ -24,7 +24,7 @@ export const AirlockSystem = (props) => {
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow={1} shrink={1}>
-            <Section fill title="System">
+            <Section title="System" scrollable>
               <LabeledList>
                 {data.cycling ? (
                   <>
@@ -34,8 +34,11 @@ export const AirlockSystem = (props) => {
                     <LabeledList.Item label="Operation">
                       {capitalize(data.cycling.phaseVerb)}
                     </LabeledList.Item>
-                    {data.cycling.tasks.map((t) => (
-                      <LabeledList.Item key={t.ref}>
+                    {data.cycling.tasks.map((t, i) => (
+                      <LabeledList.Item
+                        key={t.ref}
+                        label={i === 0 ? 'Tasks' : ''}
+                      >
                         {t.reason}
                       </LabeledList.Item>
                     ))}

@@ -39,7 +39,7 @@
 
 	var/datum/airlock_phase/merge_blackboard/side_change_marker = new
 	side_change_marker.merge_system_blackboard = list(
-		AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE = cycle_to_side,
+		AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE = effective_result_side,
 	)
 	. += side_change_marker
 
