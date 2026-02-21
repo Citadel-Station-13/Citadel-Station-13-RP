@@ -43,7 +43,7 @@ export const AirlockVacuumCycleProgram = (
   return (
     <>
       <Stack.Item grow={1}>
-        <Section title="Information">
+        <Section title="Information" fill>
           <LabeledList>
             <LabeledList.Item label="Pressure">
               {props.data.pressure ? (

@@ -69,7 +69,8 @@
 
 /datum/airlock_phase/depressurize/New(to_pressure)
 	..()
-	src.depressurize_to_kpa = to_pressure
+	if(!isnull(to_pressure))
+		src.depressurize_to_kpa = to_pressure
 
 /datum/airlock_phase/depressurize/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	if(vent_to_outside)
@@ -99,7 +100,8 @@
 
 /datum/airlock_phase/repressurize/New(to_pressure)
 	..()
-	src.pressurize_to_kpa = to_pressure
+	if(!isnull(to_pressure))
+		src.pressurize_to_kpa = to_pressure
 
 /datum/airlock_phase/repressurize/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	if(pull_from_outside_required)

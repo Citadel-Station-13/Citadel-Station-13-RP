@@ -20,25 +20,29 @@ interface AirlockSystemData {
 export const AirlockSystem = (props) => {
   const { act, data } = useBackend<AirlockSystemData>();
   return (
-    <Window title="Airlock System">
+    <Window title="Airlock System" width={400} height={400}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow={1} shrink={1}>
             <Section fill title="System">
               <LabeledList>
-                <LabeledList.Item label="Status">
-                  {/* TODO: cyclingDesc */}
-                  {capitalize(data.cycling?.phaseVerb || 'Idle')}
-                  {data.cycling && (
-                    <>
-                      {data.cycling.tasks.map((t) => (
-                        <LabeledList.Item key={t.ref}>
-                          {t.reason}
-                        </LabeledList.Item>
-                      ))}
-                    </>
-                  )}
-                </LabeledList.Item>
+                {data.cycling ? (
+                  <>
+                    <LabeledList.Item label="Status">
+                      {capitalize(data.cycling.cyclingDesc)}
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Operation">
+                      {capitalize(data.cycling.phaseVerb)}
+                    </LabeledList.Item>
+                    {data.cycling.tasks.map((t) => (
+                      <LabeledList.Item key={t.ref}>
+                        {t.reason}
+                      </LabeledList.Item>
+                    ))}
+                  </>
+                ) : (
+                  <LabeledList.Item label="Status">Idle</LabeledList.Item>
+                )}
               </LabeledList>
             </Section>
           </Stack.Item>
