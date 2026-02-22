@@ -29,7 +29,7 @@
 /// literally a machine is missing
 #define AIRLOCK_CYCLER_OP_MISSING_COMPONENT (1<<4)
 
-#define AIRLOCK_CYCLER_OP_MAX_BIT 4
+#define AIRLOCK_CYCLER_OP_MAX_BIT 5
 
 GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
 	"fatal error",

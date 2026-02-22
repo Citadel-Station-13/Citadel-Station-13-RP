@@ -101,7 +101,7 @@
 	for(var/datum/airlock_task/task as anything in running_tasks)
 		task.poll(dt)
 		if(task.completed)
-			running_tasks -= task
+			task.unassign_cycle(src)
 	switch(current_phase.tick(system, src))
 		if(AIRLOCK_PHASE_TICK_ERROR)
 			system.fail_cycle()

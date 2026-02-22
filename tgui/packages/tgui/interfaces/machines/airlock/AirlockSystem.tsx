@@ -24,7 +24,7 @@ export const AirlockSystem = (props) => {
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow={1} shrink={1}>
-            <Section title="System" scrollable>
+            <Section title="System" scrollable fill>
               <LabeledList>
                 {data.cycling ? (
                   <>

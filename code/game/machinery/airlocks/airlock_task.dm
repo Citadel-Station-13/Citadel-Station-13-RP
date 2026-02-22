@@ -81,17 +81,22 @@
 	src.tasks = tasks
 	..()
 
+/datum/airlock_task/compound/Destroy()
+	QDEL_LIST(tasks)
+	return ..()
+
 /datum/airlock_task/compound/assign_cycle(datum/airlock_cycling/cycling)
 	..()
 	for(var/datum/airlock_task/task as anything in tasks)
 		task.assign_cycle(cycling)
 
+/datum/airlock_task/compound/unassign_cycle(datum/airlock_cycling/cycling)
+	..()
+	for(var/datum/airlock_task/task as anything in tasks)
+		task.unassign_cycle(cycling)
+
 /datum/airlock_task/compound/describe_state()
 	return desc
-
-/datum/airlock_task/compound/Destroy()
-	QDEL_LIST(tasks)
-	return ..()
 
 /datum/airlock_task/compound/poll(dt)
 	var/all_complete = TRUE

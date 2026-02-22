@@ -185,8 +185,9 @@
 /datum/airlock_gasnet/proc/pump_impl(datum/gas_mixture/airlock_air, datum/gas_mixture/peer_air, dt, target_pressure, pumping_in)
 	. = AIRLOCK_CYCLER_OP_SUCCESS
 
-	var/available_power_kj = min(cycler.pumping_power * dt, handler.power_stored)
-	if(available_power_kj < 2)
+	var/desired_power_kj = cycler.pumping_power * dt
+	var/available_power_kj = min(desired_power_kj, handler.power_stored)
+	if(available_power_kj < 2 && available_power_kj < desired_power_kj) // handle 0 second poll times
 		. |= AIRLOCK_CYCLER_OP_NO_POWER
 
 	var/before_pressure = XGM_PRESSURE(airlock_air)
@@ -210,6 +211,13 @@
 	var/moles_before = XGM_TOTAL_MOLES(airlock_air)
 	var/power_used = xgm_pump_gas(source, sink, desired_mole_transfer, available_power_kj * 1000)
 	handler.power_stored -= power_used * 0.001
+
+	// short circuit: if done, just return success
+	if(abs(XGM_PRESSURE(airlock_air) - target_pressure) <= 0.05)
+		// 0.05 should be enough to drain almost all potentially harmful gases
+		// enough that they won't have enough moles to do anything
+		return AIRLOCK_CYCLER_OP_SUCCESS
+
 	var/moles_after = XGM_TOTAL_MOLES(airlock_air)
 	if(abs(moles_after - moles_before) < min(desired_mole_transfer, 3))
 		. |= AIRLOCK_CYCLER_OP_HIGH_RESISTANCE
@@ -251,9 +259,9 @@
 		return "Operating Cycler"
 	var/list/descriptors = list()
 	for(var/i in 1 to AIRLOCK_CYCLER_OP_MAX_BIT)
-		if(last_status & (1<<i))
+		if(last_status & (1 << (i - 1)))
 			descriptors += global.airlock_cycler_op_desc_lookup[i]
-	return "Cycler Error ([english_list(descriptors)])"
+	return "Operating Cycler - [english_list(descriptors)]"
 
 /datum/airlock_task/gasnet/pump/proc/handle_pumping_status(cycler_status)
 	last_status = cycler_status
@@ -303,7 +311,11 @@
 		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
 	switch(status)
 		if(AIRLOCK_CYCLER_OP_SUCCESS)
-			// keep going
+			// check if we're done
+			var/datum/gas_mixture/probing = cycling.system.controller.network.cycler.get_immutable_gas_mixture_ref()
+			if(abs(XGM_PRESSURE(probing) - target_pressure) <= 0.05)
+				// done
+				complete()
 		if(AIRLOCK_CYCLER_OP_FATAL)
 			// no recovery
 		if(AIRLOCK_CYCLER_OP_NO_POWER)
