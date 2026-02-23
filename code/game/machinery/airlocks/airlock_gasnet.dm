@@ -323,14 +323,9 @@
 	var/status = cycling.system.controller?.network?.pump_vent_to_cycler(dt, target_pressure)
 	if(isnull(status))
 		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
-	switch(status)
-		if(AIRLOCK_CYCLER_OP_SUCCESS)
-			// everything's fine
-		if(AIRLOCK_CYCLER_OP_FATAL)
-			// no recovery
-		if(AIRLOCK_CYCLER_OP_NO_POWER)
-			// no recovery
-		else
-			// fallback to handler
-			status = cycling.system.controller?.network?.pump_handler_supply_to_cycler(dt, target_pressure)
+	if(status & (AIRLOCK_CYCLER_OP_SUCCESS | AIRLOCK_CYCLER_OP_FATAL | AIRLOCK_CYCLER_OP_NO_POWER))
+		// no recovery / everything is fine
+	else
+		// fallback to handler
+		status = cycling.system.controller?.network?.pump_handler_supply_to_cycler(dt, target_pressure)
 	handle_pumping_status(status)

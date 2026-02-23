@@ -104,11 +104,14 @@
 			remove_task(task)
 	switch(current_phase.tick(system, src))
 		if(AIRLOCK_PHASE_TICK_ERROR)
+			current_phase.cleanup(system, src)
 			system.fail_cycle()
 			return
 		if(AIRLOCK_PHASE_TICK_CONTINUE)
 			current_phase_progress_estimate = current_phase.estimate_progress_ratio(system, src)
 		if(AIRLOCK_PHASE_TICK_FINISH)
+			current_phase.finished(system, src)
+			current_phase.cleanup(system, src)
 			current_phase = null
 			poll_or_next_phase(dt, safety - 1)
 

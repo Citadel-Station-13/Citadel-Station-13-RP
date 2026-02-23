@@ -3,6 +3,9 @@
 
 /**
  * Default airlock program. Can handle quite a lot, but not everything.
+ *
+ * TODO: cannot handle anything but vacuum of space right now. sorry!
+ *       the system's logic need supgrades
  */
 /datum/airlock_program/vacuum_cycle
 	tgui_airlock_component = "VacuumCycle"
@@ -124,10 +127,12 @@
 
 /datum/airlock_program/vacuum_cycle/proc/set_active_side_based_on_doors()
 	var/result_side = AIRLOCK_SIDE_NEITHER
-	switch(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE])
+	var/interior_state = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE]
+	var/exterior_state = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE]
+	switch(interior_state)
 		if(TRUE)
 			// inside bolted open
-			switch(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE])
+			switch(exterior_state)
 				if(TRUE)
 					// exterior bolted open
 					result_side = AIRLOCK_SIDE_BOTH
@@ -139,7 +144,7 @@
 					result_side = AIRLOCK_SIDE_BOTH
 		if(FALSE)
 			// inside bolted closed
-			switch(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE])
+			switch(exterior_state)
 				if(TRUE)
 					// exterior bolted open
 					result_side = AIRLOCK_SIDE_EXTERIOR
@@ -151,7 +156,7 @@
 					result_side = AIRLOCK_SIDE_EXTERIOR
 		if(null)
 			// inside not bolted
-			switch(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE])
+			switch(exterior_state)
 				if(TRUE)
 					// exterior bolted open
 					result_side = AIRLOCK_SIDE_BOTH
@@ -179,13 +184,17 @@
 	system.start_cycle(cycle.create_cycling(
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE],
 		side,
+		0,
 	))
 	return TRUE
 
 /datum/airlock_program/vacuum_cycle/proc/graceful_abort()
 	system.stop_cycle()
 	var/datum/airlock_cycle/cycle = new /datum/airlock_cycle/cancel_and_restore
-	system.start_cycle(cycle.create_cycling(get_currently_cycled_side()))
+	system.start_cycle(cycle.create_cycling(
+		get_currently_cycled_side(),
+		0,
+	))
 	return TRUE
 
 /datum/airlock_program/vacuum_cycle/proc/hard_abort()

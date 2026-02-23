@@ -96,6 +96,8 @@
 		return FALSE
 	if(cycling_id && cycling_id != cycling.op_id)
 		return FALSE
+	// TODO: this all should be called by cycling, not here :(
+	cycling.current_phase?.cleanup(src, cycling)
 	cycling.finished_status = status
 	cycling.finished_reason = why_str
 	if(!QDELETED(cycling))

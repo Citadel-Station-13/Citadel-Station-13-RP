@@ -1,10 +1,11 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
+// TODO: need a better way of specifying what interior / exterior / neutral environment is.
 /datum/airlock_cycle/vacuum_cycle
 	initial_desc = "Cycling"
 
-/datum/airlock_cycle/vacuum_cycle/create_cycling(cycle_from_side, cycle_to_side)
+/datum/airlock_cycle/vacuum_cycle/create_cycling(cycle_from_side, cycle_to_side, assumed_external_pressure)
 	var/datum/airlock_cycling/cycling = ..()
 	switch(cycle_to_side)
 		if(AIRLOCK_SIDE_EXTERIOR)
@@ -15,7 +16,7 @@
 			cycling.desc = "Cycling to Interior (Locked)"
 	return cycling
 
-/datum/airlock_cycle/vacuum_cycle/gather_phases(cycle_from_side, cycle_to_side)
+/datum/airlock_cycle/vacuum_cycle/gather_phases(cycle_from_side, cycle_to_side, assumed_external_pressure)
 	. = list()
 	. += new /datum/airlock_phase/doors/seal
 
@@ -27,15 +28,16 @@
 		effective_result_side = cycle_to_side
 
 	// only depressurize fully if we are changing sides
-	var/depressurize_to_kpa = (cycle_from_side == cycle_to_side) ? ONE_ATMOSPHERE : 0
-	switch(cycle_from_side)
-		if(AIRLOCK_SIDE_INTERIOR)
-			. += new /datum/airlock_phase/depressurize/drain_to_handler(depressurize_to_kpa)
-		if(AIRLOCK_SIDE_EXTERIOR)
-			. += new /datum/airlock_phase/depressurize/vent_to_outside(depressurize_to_kpa)
-		else
-			// be conservative, assume we want to conserve air
-			. += new /datum/airlock_phase/depressurize/drain_to_handler(depressurize_to_kpa)
+	if(cycle_from_side != cycle_to_side)
+		var/depressurize_to_kpa = 0
+		switch(cycle_from_side)
+			if(AIRLOCK_SIDE_INTERIOR)
+				. += new /datum/airlock_phase/depressurize/drain_to_handler(depressurize_to_kpa)
+			if(AIRLOCK_SIDE_EXTERIOR)
+				. += new /datum/airlock_phase/depressurize/vent_to_outside(depressurize_to_kpa)
+			else
+				// be conservative, assume we want to conserve air
+				. += new /datum/airlock_phase/depressurize/drain_to_handler(depressurize_to_kpa)
 
 	var/datum/airlock_phase/merge_blackboard/side_change_marker = new
 	side_change_marker.merge_system_blackboard = list(
@@ -45,7 +47,7 @@
 
 	switch(cycle_to_side)
 		if(AIRLOCK_SIDE_EXTERIOR)
-			. += new /datum/airlock_phase/repressurize/allow_external_air
+			. += new /datum/airlock_phase/repressurize/require_external_air(assumed_external_pressure)
 			. += new /datum/airlock_phase/doors/lock_open/exterior
 		if(AIRLOCK_SIDE_INTERIOR)
 			. += new /datum/airlock_phase/repressurize/from_handler_supply

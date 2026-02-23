@@ -62,7 +62,7 @@ export const AirlockVacuumCycleProgram = (
               )}
             </LabeledList.Item>
             <LabeledList.Item label="Interior Doors">
-              {airlockSealedStateToName(props.data.exteriorSealed)}
+              {airlockSealedStateToName(props.data.interiorSealed)}
             </LabeledList.Item>
             <LabeledList.Item label="Exterior Doors">
               {airlockSealedStateToName(props.data.exteriorSealed)}
