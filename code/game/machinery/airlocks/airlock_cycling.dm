@@ -101,7 +101,7 @@
 	for(var/datum/airlock_task/task as anything in running_tasks)
 		task.poll(dt)
 		if(task.completed)
-			task.unassign_cycle(src)
+			remove_task(task)
 	switch(current_phase.tick(system, src))
 		if(AIRLOCK_PHASE_TICK_ERROR)
 			system.fail_cycle()
@@ -118,10 +118,12 @@
 		current_phase = phase
 
 /datum/airlock_cycling/proc/add_task(datum/airlock_task/task)
+	running_tasks += task
 	task.assign_cycle(src)
 
 /datum/airlock_cycling/proc/remove_task(datum/airlock_task/task)
 	task.unassign_cycle(src)
+	running_tasks -= task
 
 /datum/airlock_cycling/proc/ui_cycle_data()
 	var/list/assembled_tasks = list()

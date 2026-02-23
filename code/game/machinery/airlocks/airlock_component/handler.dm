@@ -97,9 +97,9 @@
 	return conn_eject?.air_contents
 
 /obj/machinery/airlock_component/handler/proc/get_mutable_clean_gas_mixture_ref() as /datum/gas_mixture
-	if(!conn_eject)
+	if(!conn_intake)
 		return null
-	conn_eject.network?.update = TRUE
+	conn_intake.network?.update = TRUE
 	return conn_intake.air_contents
 
 /obj/machinery/airlock_component/handler/proc/get_mutable_waste_gas_mixture_ref() as /datum/gas_mixture

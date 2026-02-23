@@ -32,9 +32,6 @@
 	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = FALSE
 	// just reassert door now
 	reassert_doors()
-	// pray it works instantly, which it should if the
-	// doors spawn in with the right configurations
-	system.cycling?.poll(1 SECONDS)
 
 /datum/airlock_program/vacuum_cycle/ui_program_data()
 	. = ..()
@@ -126,21 +123,45 @@
 	set_active_side_based_on_doors()
 
 /datum/airlock_program/vacuum_cycle/proc/set_active_side_based_on_doors()
-	// note: these specifically check for 'bolted closed'.
-	// open or unlocked counts as open.
-	if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] != FALSE)
-		if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] != FALSE)
-			// both open
-			set_currently_cycled_side(AIRLOCK_SIDE_BOTH)
-		else
-			// interior open
-			set_currently_cycled_side(AIRLOCK_SIDE_EXTERIOR)
-	if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] != FALSE)
-		// exterior open
-		set_currently_cycled_side(AIRLOCK_SIDE_INTERIOR)
-	else
-		// neither is open
-		set_currently_cycled_side(AIRLOCK_SIDE_NEITHER)
+	var/result_side = AIRLOCK_SIDE_NEITHER
+	switch(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE])
+		if(TRUE)
+			// inside bolted open
+			switch(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE])
+				if(TRUE)
+					// exterior bolted open
+					result_side = AIRLOCK_SIDE_BOTH
+				if(FALSE)
+					// exterior bolted closed
+					result_side = AIRLOCK_SIDE_INTERIOR
+				if(null)
+					// exterior not bolted
+					result_side = AIRLOCK_SIDE_BOTH
+		if(FALSE)
+			// inside bolted closed
+			switch(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE])
+				if(TRUE)
+					// exterior bolted open
+					result_side = AIRLOCK_SIDE_EXTERIOR
+				if(FALSE)
+					// exterior bolted closed - keep current side
+					result_side = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE]
+				if(null)
+					// exterior not bolted
+					result_side = AIRLOCK_SIDE_EXTERIOR
+		if(null)
+			// inside not bolted
+			switch(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE])
+				if(TRUE)
+					// exterior bolted open
+					result_side = AIRLOCK_SIDE_BOTH
+				if(FALSE)
+					// exterior bolted closed
+					result_side = AIRLOCK_SIDE_INTERIOR
+				if(null)
+					// exterior not bolted
+					result_side = AIRLOCK_SIDE_BOTH
+	set_currently_cycled_side(result_side)
 
 /datum/airlock_program/vacuum_cycle/proc/force_interior_doors(to_opened)
 	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = to_opened

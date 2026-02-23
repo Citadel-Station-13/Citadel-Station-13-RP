@@ -3,6 +3,7 @@
  * This is a generic processing subsystem that ticks once per second.
  */
 SUBSYSTEM_DEF(processing)
+	name = "Processing - 1 fps"
 	priority = FIRE_PRIORITY_PROCESS
 	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING|SS_NO_INIT
 	wait = 1 SECONDS

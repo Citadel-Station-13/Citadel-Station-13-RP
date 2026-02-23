@@ -27,7 +27,7 @@
 		effective_result_side = cycle_to_side
 
 	// only depressurize fully if we are changing sides
-	var/depressurize_to_kpa = cycle_from_side == cycle_to_side ? ONE_ATMOSPHERE : 0
+	var/depressurize_to_kpa = (cycle_from_side == cycle_to_side) ? ONE_ATMOSPHERE : 0
 	switch(cycle_from_side)
 		if(AIRLOCK_SIDE_INTERIOR)
 			. += new /datum/airlock_phase/depressurize/drain_to_handler(depressurize_to_kpa)

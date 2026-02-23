@@ -197,11 +197,17 @@
 	var/datum/gas_mixture/sink
 
 	if(pumping_in)
+		if(before_pressure >= target_pressure)
+			// already overshot
+			return AIRLOCK_CYCLER_OP_SUCCESS
 		source = peer_air
 		sink = airlock_air
 		if(source.total_moles <= 10)
 			. |= AIRLOCK_CYCLER_OP_NO_GAS
 	else
+		if(before_pressure <= target_pressure)
+			// already overshot
+			return AIRLOCK_CYCLER_OP_SUCCESS
 		source = airlock_air
 		sink = peer_air
 
@@ -223,21 +229,21 @@
 		. |= AIRLOCK_CYCLER_OP_HIGH_RESISTANCE
 
 /datum/airlock_gasnet/proc/pump_cycler_to_vent(dt, to_pressure)
-	cycler?.last_pump_was_out = FALSE
+	cycler?.last_pump_was_out = TRUE
 	vent?.last_pump_was_out = TRUE
 	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), vent?.get_mutable_gas_mixture_ref(), dt, to_pressure, FALSE)
 
 /datum/airlock_gasnet/proc/pump_vent_to_cycler(dt, to_pressure)
-	cycler?.last_pump_was_out = TRUE
+	cycler?.last_pump_was_out = FALSE
 	vent?.last_pump_was_out = FALSE
 	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), vent?.get_mutable_gas_mixture_ref(), dt, to_pressure, TRUE)
 
 /datum/airlock_gasnet/proc/pump_cycler_to_handler_waste(dt, to_pressure)
-	cycler?.last_pump_was_out = FALSE
+	cycler?.last_pump_was_out = TRUE
 	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_mutable_waste_gas_mixture_ref(), dt, to_pressure, FALSE)
 
 /datum/airlock_gasnet/proc/pump_handler_supply_to_cycler(dt, to_pressure)
-	cycler?.last_pump_was_out = TRUE
+	cycler?.last_pump_was_out = FALSE
 	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_mutable_clean_gas_mixture_ref(), dt, to_pressure, TRUE)
 
 /datum/airlock_gasnet/proc/reset_pumping_graphics()
@@ -261,9 +267,17 @@
 	for(var/i in 1 to AIRLOCK_CYCLER_OP_MAX_BIT)
 		if(last_status & (1 << (i - 1)))
 			descriptors += global.airlock_cycler_op_desc_lookup[i]
-	return "Operating Cycler - [english_list(descriptors)]"
+	return "Operating Cycler ([english_list(descriptors)])"
 
 /datum/airlock_task/gasnet/pump/proc/handle_pumping_status(cycler_status)
+	// check if we're done
+	var/datum/gas_mixture/probing = cycling.system.controller.network.cycler.get_immutable_gas_mixture_ref()
+	// overshooting is possible, handle that
+	var/remaining_kpa = is_into_chamber ? (target_pressure - XGM_PRESSURE(probing)) : (XGM_PRESSURE(probing) - target_pressure)
+	if(remaining_kpa < 0.05)
+		// done
+		complete()
+	// set last status
 	last_status = cycler_status
 
 /datum/airlock_task/gasnet/pump/vent_to_cycler
@@ -311,11 +325,7 @@
 		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
 	switch(status)
 		if(AIRLOCK_CYCLER_OP_SUCCESS)
-			// check if we're done
-			var/datum/gas_mixture/probing = cycling.system.controller.network.cycler.get_immutable_gas_mixture_ref()
-			if(abs(XGM_PRESSURE(probing) - target_pressure) <= 0.05)
-				// done
-				complete()
+			// everything's fine
 		if(AIRLOCK_CYCLER_OP_FATAL)
 			// no recovery
 		if(AIRLOCK_CYCLER_OP_NO_POWER)

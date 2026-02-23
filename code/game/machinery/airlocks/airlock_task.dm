@@ -17,8 +17,9 @@
 
 /datum/airlock_task/Destroy()
 	if(cycling)
-		cycling.remove_task(src)
-		cycling = null
+		if(src in cycling.running_tasks)
+			// this is false if we're a nested / compound task.
+			cycling.remove_task(src)
 	return ..()
 
 /datum/airlock_task/proc/component_still_valid(obj/machinery/airlock_component/component)
@@ -31,12 +32,10 @@
 /datum/airlock_task/proc/assign_cycle(datum/airlock_cycling/cycling)
 	ASSERT(!src.cycling)
 	src.cycling = cycling
-	src.cycling.running_tasks += src
 
 /datum/airlock_task/proc/unassign_cycle(datum/airlock_cycling/cycling)
 	ASSERT(src.cycling == cycling)
 	src.cycling = null
-	cycling.running_tasks -= src
 
 /datum/airlock_task/proc/ui_task_data()
 	return list(
