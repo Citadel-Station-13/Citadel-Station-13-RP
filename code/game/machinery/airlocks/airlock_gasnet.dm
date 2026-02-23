@@ -267,7 +267,7 @@
 	for(var/i in 1 to AIRLOCK_CYCLER_OP_MAX_BIT)
 		if(last_status & (1 << (i - 1)))
 			descriptors += global.airlock_cycler_op_desc_lookup[i]
-	return "Operating Cycler ([english_list(descriptors)])"
+	return "Operating Cycler ([english_list(descriptors, and_text = "")])"
 
 /datum/airlock_task/gasnet/pump/proc/handle_pumping_status(cycler_status)
 	// check if we're done

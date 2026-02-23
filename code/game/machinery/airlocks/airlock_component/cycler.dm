@@ -56,9 +56,9 @@
 	. = ..()
 	last_pump_applied_state = last_pump_was_out
 	switch(last_pump_was_out)
-		if(TRUE)
-			add_overlay("[base_icon_state]-op-red")
 		if(FALSE)
+			add_overlay("[base_icon_state]-op-red")
+		if(TRUE)
 			add_overlay("[base_icon_state]-op-blue")
 
 /**

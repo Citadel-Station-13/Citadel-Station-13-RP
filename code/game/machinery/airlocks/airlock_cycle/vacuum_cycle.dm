@@ -21,7 +21,7 @@
 	. += new /datum/airlock_phase/doors/seal
 
 	var/effective_result_side
-	if(cycle_to_side != AIRLOCK_SIDE_INTERIOR || cycle_to_side != AIRLOCK_SIDE_EXTERIOR)
+	if(cycle_to_side != AIRLOCK_SIDE_INTERIOR && cycle_to_side != AIRLOCK_SIDE_EXTERIOR)
 		// non-interior/exterior semantically means 'interior-locked'.
 		effective_result_side = AIRLOCK_SIDE_INTERIOR
 	else
