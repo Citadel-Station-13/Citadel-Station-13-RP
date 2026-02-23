@@ -1,0 +1,4 @@
+author: "timothyteakettle"
+delete-after: True
+changes:
+  - bugfix: "fix the security wintercoat not showing in the loadout\n:cl:"
