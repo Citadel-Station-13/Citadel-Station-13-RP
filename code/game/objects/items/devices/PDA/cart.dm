@@ -403,7 +403,7 @@ var/list/civilian_cartridges = list(
 		var/mulebotsData[0]
 		var/count = 0
 
-		for(var/mob/living/bot/mulebot/M in living_mob_list)
+		for(var/mob/living/bot/mulebot/M in GLOB.mob_living_list)
 			if(!M.on)
 				continue
 			++count

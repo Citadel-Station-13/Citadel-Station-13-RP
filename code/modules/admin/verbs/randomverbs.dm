@@ -872,7 +872,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/mob/M = tgui_input_list(src.mob, "Which player would you like to cryo?", "Pick to cryo", living_mob_list)
+	var/mob/M = tgui_input_list(src.mob, "Which player would you like to cryo?", "Pick to cryo", GLOB.mob_living_list)
 
 
 	if(!M)

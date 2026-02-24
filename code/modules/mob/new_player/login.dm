@@ -13,7 +13,6 @@
 		mind.current = src
 
 	loc = null
-	GLOB.player_list |= src
 
 	new_player_panel()
 	spawn(40)

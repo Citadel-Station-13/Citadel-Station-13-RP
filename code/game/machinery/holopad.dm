@@ -658,7 +658,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/request_ai(mob/user)
 	last_ai_request = world.time
 	var/area/area = get_area(src)
-	for(var/mob/living/silicon/ai/AI in living_mob_list)
+	for(var/mob/living/silicon/ai/AI in GLOB.ai_list)
 		if(!AI.client)
 			continue
 		to_chat(AI, SPAN_INFO("Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>."))

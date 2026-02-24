@@ -39,7 +39,7 @@
 		var/name = lowertext(initial(path.name))
 		potential_filtered[path] = isnum(probabilities[name])? probabilities[name] : 1
 
-	var/picked_path = pickweightAllowZero(potential_filtered)
+	var/picked_path = pickweight(potential_filtered)
 
 	if(isnull(picked_path))
 		STACK_TRACE("no chosen engine")

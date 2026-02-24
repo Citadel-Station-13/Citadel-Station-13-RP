@@ -383,12 +383,12 @@ SUBSYSTEM_DEF(ticker)
 	var/obj/structure/bed/temp_buckle = new(src)
 	//Incredibly hackish. It creates a bed within the gameticker (lol) to stop mobs running around
 	if(station_missed)
-		for(var/mob/living/M in living_mob_list)
+		for(var/mob/living/M in GLOB.mob_living_list)
 			M.buckled = temp_buckle				//buckles the mob so it can't do anything
 			if(M.client)
 				M.client.screen += cinematic	//show every client the cinematic
 	else	//nuke kills everyone on z-level 1 to prevent "hurr-durr I survived"
-		for(var/mob/living/M in living_mob_list)
+		for(var/mob/living/M in GLOB.mob_living_list)
 			M.buckled = temp_buckle
 			if(M.client)
 				M.client.screen += cinematic
@@ -455,7 +455,7 @@ SUBSYSTEM_DEF(ticker)
 					flick("station_explode_fade_red", cinematic)
 					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
-			for(var/mob/living/M in living_mob_list)
+			for(var/mob/living/M in GLOB.mob_living_list)
 				if(M.loc.z in (LEGACY_MAP_DATUM).station_levels)
 					M.death()//No mercy
 	//If its actually the end of the round, wait for it to end.
@@ -477,7 +477,8 @@ SUBSYSTEM_DEF(ticker)
 	if(!S)
 		log_and_message_admins("Unable to get overflow spawnpoint; roundstart is going to lag.")
 	//! END
-	for(var/mob/new_player/player in GLOB.player_list)
+	for(var/i in GLOB.new_player_list)
+		var/mob/new_player/player = i
 		if(!player.mind)
 			continue
 
@@ -485,6 +486,7 @@ SUBSYSTEM_DEF(ticker)
 			player.new_player_panel_proc()
 			continue
 
+		GLOB.joined_player_list += player.ckey
 		if(player.mind.assigned_role=="AI")
 			player.close_spawn_windows()
 			player.AIize()
@@ -497,6 +499,7 @@ SUBSYSTEM_DEF(ticker)
 				qdel(player)
 			if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
 				data_core.manifest_inject(new_char)
+		CHECK_TICK
 
 
 /datum/controller/subsystem/ticker/proc/collect_minds()

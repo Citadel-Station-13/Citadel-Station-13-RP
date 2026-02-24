@@ -161,7 +161,7 @@
 
 /datum/weather/classm/rain/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
@@ -213,7 +213,7 @@
 
 /datum/weather/classm/storm/process_effects()
 	..()
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in GLOB.mob_living_list)
 		if(L.z in holder.our_planet.expected_z_levels)
 			var/turf/T = get_turf(L)
 			if(!T.outdoors)
