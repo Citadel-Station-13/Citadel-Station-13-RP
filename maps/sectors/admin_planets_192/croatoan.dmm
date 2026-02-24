@@ -7872,7 +7872,6 @@
 /area/admin_planet/croatoan/sec_forensics_lab)
 "BA" = (
 /obj/structure/closet/secure_closet/CMO,
-/obj/item/cmo_disk_holder,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/admin_planet/croatoan/med_cmo_office)

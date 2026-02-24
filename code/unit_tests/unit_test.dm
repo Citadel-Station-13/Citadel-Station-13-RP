@@ -53,6 +53,9 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	var/list/allocated
 	var/list/fail_reasons
 
+	/// If TRUE, room is reset after. Useful for things that blow shit up.
+	var/reset_room_after = FALSE
+
 	/// List of atoms that we don't want to ever initialize in an agnostic context, like for Create and Destroy. Stored on the base datum for usability in other relevant tests that need this data.
 	var/static/list/uncreatables = null
 
@@ -74,9 +77,6 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 
 	run_loc_floor_bottom_left = get_turf(locate(/obj/landmark/unit_test_bottom_left) in GLOB.landmarks_list)
 	run_loc_floor_top_right = get_turf(locate(/obj/landmark/unit_test_top_right) in GLOB.landmarks_list)
-
-	if(priority > TEST_CREATE_AND_DESTROY) //the create and destroy test WILL wreck havok in the unit test room. You CANNOT stop the inevitable.
-		return
 
 	//Make sure that the top and bottom locations in the diagonal are floors. Anything else may get in the way of several tests.
 	TEST_ASSERT(isfloorturf(run_loc_floor_bottom_left), "run_loc_floor_bottom_left was not a floor ([run_loc_floor_bottom_left])")
@@ -195,6 +195,11 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	usr = clicker // bypass check
 	clicker.click_on(clicked_on, raw_params = list2params(passed_params))
 
+/datum/unit_test/proc/reset_room()
+	var/list/turf/interior = block(get_turf(run_loc_floor_bottom_left), get_turf(run_loc_floor_top_right))
+	for(var/turf/T as anything in interior)
+		T.empty(/turf/simulated/floor/tiled)
+
 /proc/RunUnitTest(datum/unit_test/test_path, list/test_results)
 	if(ispath(test_path, /datum/unit_test/focus_only))
 		return
@@ -212,6 +217,8 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	log_world("::group::[test_path]")
 
 	test.Run()
+	if(test.reset_room_after)
+		test.reset_room()
 	// if(test.priority < TEST_CREATE_AND_DESTROY) //We shouldn't care about restoring atmos after create_and_destroy.
 	// 	test.restore_atmos()
 

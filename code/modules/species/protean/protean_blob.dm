@@ -107,8 +107,6 @@
 /mob/living/simple_mob/protean_blob/Destroy()
 	humanform = null
 	refactory = null
-	vore_organs = null
-	vore_selected = null
 	if(healing)
 		healing.expire()
 	return ..()
@@ -141,6 +139,9 @@
 		//Set the max
 		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
 		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
+		if(!E)
+			// somehow.
+			return
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
 		movement_base_speed = 10 / 0.5 + max(0, (maxHealth - health) - 100) / 50
@@ -375,12 +376,14 @@
 	blob.update_icon() //Will remove the collapse anim
 
 	//Transfer vore organs
-	blob.vore_organs = vore_organs
-	blob.vore_selected = vore_selected
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly
 		B.forceMove(blob)
 		B.owner = blob
+	blob.vore_organs = vore_organs?.Copy() || list()
+	vore_organs = null
+	blob.vore_selected = vore_selected
+	vore_selected = null
 
 	var/datum/vore_preferences/P = blob.client?.prefs_vr
 
@@ -506,11 +509,14 @@
 		client.statpanel = SPECIES_PROTEAN
 
 	//Transfer vore organs
-	vore_selected = blob.vore_selected
 	for(var/belly in blob.vore_organs)
 		var/obj/belly/B = belly
 		B.forceMove(src)
 		B.owner = src
+	vore_selected = blob.vore_selected
+	blob.vore_selected = null
+	vore_organs = blob.vore_organs?.Copy() || list()
+	blob.vore_organs = null
 
 	for(var/obj/item/held in blob.get_held_items())
 		put_in_hands_or_drop(held, null, get_turf(src))

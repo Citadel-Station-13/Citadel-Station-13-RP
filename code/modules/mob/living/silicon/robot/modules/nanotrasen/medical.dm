@@ -68,7 +68,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/medical)
 			/obj/item/reagent_containers/dropper, // Allows surgeon borg to fix necrosis
 			/obj/item/reagent_containers/syringe/unbreakable,
 			/obj/item/roller_holder,
-			/obj/item/robot_builtin/dog_mirrortool,
+			/obj/item/mirrortool,
 		)
 	if(emag_out)
 		var/obj/item/reagent_containers/spray/acid_spray = new

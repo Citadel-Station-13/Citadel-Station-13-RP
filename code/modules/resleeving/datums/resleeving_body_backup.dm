@@ -1,0 +1,222 @@
+/**
+ * * Considered immutable once created; many datums may be shared!
+ * * Variables in this should **never** point back to it, or you will cause a memory leak!
+ */
+/datum/resleeving_body_backup
+	/// mind ref.
+	/// * used to prevent impersonation; printed bodies get imprinted with this
+	var/datum/mind_ref/mind_ref
+
+	//* legacy - in the future we want to have the same structures as prefs *//
+	//* it might seem ridiculous to mark an entire datum as legacy but      *//
+	//* that is unironically where we're at                                 *//
+
+	var/datum/dna2/record/legacy_dna
+	// prevents synthfabs from printing organics and vice versa
+	//
+	// considered legacy because this shoud realistically just be a torso examination tbh
+	// and invalid parts just don't get printed lol lmao
+	//
+	// or better, put the WIP body in the other machine and have it automatically
+	// fabricate the missing things if it's possible for it to print
+	var/legacy_synthetic = FALSE
+	// legacy because species should be a /prototype reference once
+	// species are made stateless and global singletons
+	var/legacy_species_uid = /datum/species/human::uid
+	var/legacy_gender = PLURAL
+	var/legacy_ooc_notes
+	// key: BP_XYZ tag
+	// value: 0 for missing, 1 for present, text string for /datum/robolimb company
+	var/list/legacy_limb_data = list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO)
+	// key: O_XYZ tag
+	// value: 0 for normal, 1 for assisted, 2 for mechanical, 3 for digital, 4 for nanite
+	var/list/legacy_organ_data = list(O_HEART, O_EYES, O_LUNGS, O_BRAIN)
+	var/list/legacy_genetic_modifiers = list()
+	var/legacy_sizemult
+	var/legacy_weight
+	var/legacy_custom_species_name
+
+/datum/resleeving_body_backup/Destroy()
+	// might be referenced by other stuff
+	legacy_dna = null
+	legacy_limb_data = null
+	legacy_organ_data = null
+	legacy_genetic_modifiers = null
+	return ..()
+
+/datum/resleeving_body_backup/New(mob/from_body)
+	if(from_body)
+		initialize_from_body(from_body)
+
+/**
+ * Standard record for export to compatible TGUI interfaces.
+ * * Struct path: 'interfaces/common/Resleeving.tsx'
+ */
+/datum/resleeving_body_backup/proc/ui_serialize()
+	return list(
+		"gender" = legacy_gender || "Unknown",
+		"speciesName" = legacy_custom_species_name || legacy_species_uid || "Unknown",
+		"synthetic" = legacy_synthetic,
+		"name" = legacy_dna?.name || "Unknown",
+	)
+
+/datum/resleeving_body_backup/proc/initialize_from_body(mob/from_body)
+	// sorry humans only for now
+	if(!ishuman(from_body))
+		return
+
+	var/mob/living/carbon/human/from_human = from_body
+
+	// mind ref only gets set if the body has a mind.
+	mind_ref = from_human.mind?.get_mind_ref()
+
+	legacy_synthetic = from_human.isSynthetic()
+	legacy_species_uid = from_human.species.uid
+	legacy_gender = from_human.gender
+	legacy_sizemult = from_human.size_multiplier
+	legacy_weight = from_human.weight
+	legacy_ooc_notes = from_human.ooc_notes
+	legacy_custom_species_name = from_human.custom_species
+
+	var/datum/dna2/record/cloning_dna = new
+	legacy_dna = cloning_dna
+
+	cloning_dna.dna = from_human.dna.Clone()
+	cloning_dna.ckey = from_human.ckey
+	// what the hell is this??? just for old cloners, really
+	cloning_dna.id = copytext(md5(from_human.real_name), 2, 6)
+	cloning_dna.name = from_human.dna.real_name
+	cloning_dna.types = DNA2_BUF_SE | DNA2_BUF_UE | DNA2_BUF_UI
+	cloning_dna.flavor = from_human.flavor_texts.Copy()
+
+	// TODO: this obviously doesn't preserve it properly. this won't stack /modifier/cloned.
+	//       we will need a way to clone status effects when we shift stuff there so some can persist.
+	for(var/datum/modifier/modifier in from_human.modifiers)
+		if(modifier.flags & MODIFIER_GENETIC)
+			legacy_genetic_modifiers += modifier.type
+
+	for(var/legacy_bodypart_tag in legacy_limb_data)
+		var/obj/item/organ/external/found = from_human.organs_by_name[legacy_bodypart_tag]
+		if(!found)
+			// gone, set to 0
+			legacy_limb_data[legacy_bodypart_tag] = 0
+		else if(found.model)
+			// set to model for prosthetic
+			legacy_limb_data[legacy_bodypart_tag] = found.model
+		else
+			legacy_limb_data[legacy_bodypart_tag] = 1
+
+	for(var/legacy_organ_tag in legacy_organ_data)
+		var/obj/item/organ/internal/found = from_human.internal_organs_by_name[legacy_organ_tag]
+		if(!found)
+			// don't override
+			continue
+		// snowflake handling for brains
+		if(legacy_organ_tag == O_BRAIN)
+			switch(found.type)
+				if(/obj/item/organ/internal/mmi_holder)
+					legacy_organ_data[legacy_organ_tag] = ORGAN_ASSISTED
+				if(/obj/item/organ/internal/mmi_holder/posibrain)
+					legacy_organ_data[legacy_organ_tag] = ORGAN_ROBOT
+				if(/obj/item/organ/internal/mmi_holder/posibrain/nano)
+					legacy_organ_data[legacy_organ_tag] = ORGAN_NANOFORM
+				if(/obj/item/organ/internal/mmi_holder/robot)
+					// this is technically wrong as originally '3' was 'digital',
+					// whatever the fuck that means
+					legacy_organ_data[legacy_organ_tag] = ORGAN_LIFELIKE
+				else
+					legacy_organ_data[legacy_organ_tag] = ORGAN_FLESH
+		else
+			legacy_organ_data[legacy_organ_tag] = found.robotic
+
+/datum/resleeving_body_backup/proc/create_body(atom/where, sleeve_lock = TRUE) as /mob/living
+	// backups are always human right now
+	var/mob/living/carbon/human/created_human = new(where)
+	. = created_human
+
+	if(sleeve_lock)
+		// sleevelock them
+		created_human.resleeving_place_mind_lock(mind_ref)
+
+	// set gender first; legacy set species code might blow up less. we need a helper at some point.
+	created_human.gender = legacy_gender
+
+	// honestly not sure if this works properly for synths buuuuut..
+	created_human.set_species(legacy_species_uid)
+	// this is for legacy stuff; i don't even know what uses it
+	created_human.dna.base_species = legacy_dna.dna.base_species
+
+	created_human.dna = legacy_dna.dna.Clone()
+	created_human.real_name = created_human.dna.real_name = legacy_dna.dna.real_name || created_human.real_name
+	created_human.descriptors = legacy_dna.body_descriptors?.Copy()
+
+	// This is the weird part. We sorta obey 'can make organic/synthetic' but .. not really?
+	// We will never make a non-viable clone, basically. Or at least try not to. This still might, who knows.
+
+	// -- patch external organs --
+	for(var/bp_tag in legacy_limb_data)
+		var/status = legacy_limb_data[bp_tag]
+		var/obj/item/organ/external/limb = created_human.organs_by_name[bp_tag]
+		switch(status)
+			if(null)
+				// ignore
+			if(0)
+				// missing
+				if(bp_tag != BP_TORSO)
+					limb.remove_rejuv()
+			if(1)
+				// normal
+			else
+				// robolimb manufacturer
+				// robotize it
+				limb.robotize(status)
+
+	// -- patch internal organs --
+	// we currently ignore if we can actually make robotic organs because
+	// it can cause serious issues if we don't due to legacy code
+	// in the future, this should only robotize if it can / replace with robot organs if
+	// it needs to, etc.
+	for(var/organ_tag in legacy_organ_data)
+		var/status = legacy_organ_data[organ_tag]
+		var/obj/item/organ/internal/organ = created_human.internal_organs_by_name[organ_tag]
+		switch(status)
+			if(null)
+				// ignore
+			if(0)
+				// organic
+			if(1)
+				// assisted
+				organ.mechassist()
+			if(2)
+				// mechanical
+				organ.robotize()
+			if(3)
+				// digital
+				organ.digitize()
+			if(4)
+				// nanite ; do not make under any circumstances
+				// this is hardcoded not for lore enforcement reasons but because we have
+				// no good way to do it yet
+				stack_trace("attempted to clone a nanite organ; obliterating...")
+
+	// copy ooc notes / flavor text manually
+	created_human.ooc_notes = legacy_ooc_notes || ""
+	created_human.flavor_texts = legacy_dna?.flavor?.Copy() || list()
+	// other legacy properties
+	created_human.resize(legacy_sizemult)
+	created_human.weight = legacy_weight
+	if(legacy_custom_species_name)
+		created_human.custom_species = legacy_custom_species_name
+
+	// this is really stupid, transfer rest of legacy crap
+	for(var/modifier_type in legacy_genetic_modifiers)
+		created_human.add_modifier(modifier_type)
+
+	// full rebuild icons and whatnot
+	// arguably all this shouldn't be needed but whatever
+	created_human.UpdateAppearance()
+	created_human.sync_organ_dna()
+	created_human.regenerate_icons()
+
+	created_human.dna.UpdateSE()
+	created_human.dna.UpdateUI()

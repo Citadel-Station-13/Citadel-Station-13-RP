@@ -9,7 +9,7 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/abductor/interior)
 "bP" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "cF" = (
@@ -201,7 +201,7 @@
 /area/abductor/interior)
 "pa" = (
 /obj/structure/closet/alien,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/flash,
 /obj/item/storage/firstaid/toxin,
 /turf/simulated/shuttle/floor/alien,
@@ -304,7 +304,7 @@
 /obj/structure/table/alien,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/handcuffs,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "tI" = (

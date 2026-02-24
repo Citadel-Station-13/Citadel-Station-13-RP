@@ -1,9 +1,14 @@
-// Longer paths should come after shorter ones
+/**
+ * List of fancy type replacements.
+ * * Longer paths should come after shorter ones.
+ * * Unfortunately, all paths must be included in some way, hence 'DATUM' existing. Otherwise shit breaks.
+ */
 GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	/datum = "DATUM",
-	/area = "AREA",
+
+	/atom = "ATOM",
 	/atom/movable = "MOVABLE",
-	/obj = "OBJ",
+
 	/turf = "TURF",
 	/turf/simulated = "SIMULATED",
 	/turf/simulated/floor = "FLOOR",
@@ -11,10 +16,12 @@ GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	/mob = "MOB",
 	/mob/living = "LIVING",
 	/mob/living/carbon = "CARBON",
-	/mob/living/carbon/human = "HUMANOID",
-	/mob/living/simple_mob = "SIMPLE",
+	/mob/living/carbon/human = "HUMAN",
+	/mob/living/simple_mob = "SIMPLE_MOB",
 	/mob/living/silicon = "SILICON",
-	/mob/living/silicon/robot = "CYBORG",
+	/mob/living/silicon/robot = "ROBOT",
+
+	/obj = "OBJ",
 
 	/obj/item = "ITEM",
 	/obj/item/organ = "ORGAN",
@@ -22,34 +29,24 @@ GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	/obj/item/gun/projectile/ballistic = "GUN_BALLISTIC",
 	/obj/item/gun/projectile/energy = "GUN_ENERGY",
 	/obj/item/gun/projectile/magnetic = "GUN_MAGNETIC",
-	/obj/item/ammo_casing = "AMMO",
-	/obj/item/ammo_magazine = "MAGAZINE",
-	/obj/item/gun_attachment = "GUN_ATTATCHMENT",
+	/obj/item/ammo_casing = "AMMO_CASING",
+	/obj/item/ammo_magazine = "AMMO_MAGAZINE",
+	/obj/item/gun_attachment = "GUN_ATTACHMENT",
 	/obj/item/gun_component = "GUN_COMPONENT",
 	/obj/item/stack/material = "MATERIAL",
 	/obj/item/stack/ore = "ORE",
-	/obj/item/aiModule = "AI_LAW_MODULE",
+	/obj/item/aiModule = "AIMODULE",
 	/obj/item/circuitboard = "CIRCUITBOARD",
-	/obj/item/circuitboard/machine = "MACHINE_BOARD",
-	/obj/item/circuitboard/computer = "COMPUTER_BOARD",
+	/obj/item/circuitboard/machine = "MACHINE-BOARD",
+	/obj/item/circuitboard/computer = "COMPUTER-BOARD",
 	/obj/item/reagent_containers = "REAGENT_CONTAINERS",
 	/obj/item/reagent_containers/pill = "PILL",
-	/obj/item/reagent_containers/pill/patch = "MEDPATCH",
+	/obj/item/reagent_containers/pill/patch = "PATCH",
 	/obj/item/reagent_containers/food = "FOOD",
-	/obj/item/reagent_containers/food/drinks = "DRINK",
-	/obj/effect/decal/cleanable = "CLEANABLE",
+	/obj/item/reagent_containers/food/drinks = "DRINKS",
 	/obj/item/radio/headset = "HEADSET",
 	/obj/item/clothing = "CLOTHING",
-	/obj/item/clothing/accessory = "ACCESSORY",
-	/obj/item/clothing/mask/gas = "GASMASK",
-	/obj/item/clothing/mask = "MASK",
-	/obj/item/clothing/gloves = "GLOVES",
-	/obj/item/clothing/shoes = "SHOES",
-	/obj/item/clothing/under = "JUMPSUIT",
-	/obj/item/clothing/suit/armor = "ARMOR",
-	/obj/item/clothing/suit = "SUIT",
-	/obj/item/clothing/head/helmet = "HELMET",
-	/obj/item/clothing/head = "HEAD",
+	/obj/item/storage = "STORAGE",
 	/obj/item/storage/backpack = "BACKPACK",
 	/obj/item/storage/belt = "BELT",
 	/obj/item/storage/pill_bottle = "PILL_BOTTLE",
@@ -66,8 +63,6 @@ GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	/obj/structure = "STRUCTURE",
 	/obj/structure/closet = "CLOSET",
 	/obj/structure/closet/crate = "CRATE",
-	/obj/structure/closet/crate/secure = "LOCKED_CRATE",
-	/obj/structure/closet/secure_closet = "LOCKED_CLOSET",
 
 	/obj/machinery = "MACHINERY",
 	/obj/machinery/atmospherics = "ATMOS_MECH",
@@ -78,8 +73,13 @@ GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	/obj/machinery/vending = "VENDING",
 
 	/obj/effect = "EFFECT",
+	/obj/effect/decal/cleanable = "CLEANABLE",
 	/obj/effect/debris = "DEBRIS",
 	/obj/projectile = "PROJECTILE",
+
+	/obj/overmap = "OVERMAP",
+	/obj/overmap/entity = "OVERMAP-ENTITY",
+	/obj/overmap/tiled = "OVERMAP-TILE",
 ))
 
 /proc/make_types_fancy(list/types)
@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(fancy_type_replacements, list(
 	if(!types_to_replacement)
 		// ignore_root_path so we can draw the root normally
 		var/list/fancy_type_cache = GLOB.fancy_type_replacements
-		var/list/local_replacements = zebra_typecacheof(fancy_type_cache, ignore_root_path = TRUE)
+		var/list/local_replacements = zebra_typecacheof(fancy_type_cache)
 		var/list/local_texts = list()
 		for(var/key in fancy_type_cache)
 			local_texts[local_replacements[key]] = "[key]"

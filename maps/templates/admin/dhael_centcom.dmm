@@ -3055,13 +3055,12 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /obj/item/book/manual/resleeving,
-/obj/item/storage/box/backup_kit,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "hM" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "hN" = (
@@ -3069,7 +3068,7 @@
 	dir = 4
 	},
 /obj/machinery/light,
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "hO" = (
@@ -4686,7 +4685,7 @@
 	},
 /area/centcom/medical)
 "nY" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -4710,7 +4709,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -4725,7 +4724,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -4747,7 +4746,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/clonepod/transhuman/full,
+/obj/machinery/resleeving/body_printer/grower_pod/loaded,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -6982,13 +6981,6 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/item/backup_implanter{
-	pixel_y = -8
-	},
-/obj/item/backup_implanter{
-	pixel_y = 8
-	},
-/obj/item/backup_implanter,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},

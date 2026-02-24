@@ -409,6 +409,9 @@
 /mob/living/carbon/human/handle_breath(datum/gas_mixture/breath)
 	if(status_flags & STATUS_GODMODE)
 		return
+	// don't breathe in nullspace
+	if(!get_turf(src))
+		return
 
 	if(suiciding)
 		failed_last_breath = 1

@@ -274,9 +274,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(usr, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
-	if(prevent_respawns.Find(mind.name))
-		to_chat(usr,"<span class='warning'>You already quit this round as this character, sorry!</span>")
-		return
 	if(mind.current.ajourn && mind.current.stat != DEAD) //check if the corpse is astral-journeying (it's client ghosted using a cultist rune).
 		var/found_rune
 		for(var/obj/effect/rune/R in mind.current.loc)   //whilst corpse is alive, we can only reenter the body if it's on the rune
@@ -865,21 +862,3 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		mind.active = TRUE
 
 		SC.catch_mob(src) //This will result in us being deleted so...
-
-/mob/observer/dead/verb/backup_ping()
-	set category = "Ghost"
-	set name = "Notify Transcore"
-	set desc = "If your past-due backup notification was missed or ignored, you can use this to send a new one."
-
-	if(src.mind.name in SStranscore.backed_up)
-		var/datum/transhuman/mind_record/record = SStranscore.backed_up[src.mind.name]
-		if(!(record.dead_state == MR_DEAD))
-			to_chat(src, "<span class='warning'>Your backup is not past-due yet.</span>")
-		else if((world.time - record.last_notification) < 10 MINUTES)
-			to_chat(src, "<span class='warning'>Too little time has passed since your last notification.</span>")
-		else
-			SStranscore.notify(record.mindname, TRUE)
-			record.last_notification = world.time
-			to_chat(src, "<span class='notice'>New notification has been sent.</span>")
-	else
-		to_chat(src, "<span class='warning'>No mind record found!</span>")
