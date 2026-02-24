@@ -6,6 +6,6 @@
 	shuttle_template_path = /datum/shuttle_template##TYPEPATH; \
 	maptext = MAPTEXT_CENTER_CONST("Shuttle Preloader\n" + "(" + /datum/shuttle_template##TYPEPATH::id + ")"); \
 }; \
-/datum/shuttle_template/##TYPEPATH
+/datum/shuttle_template##TYPEPATH
 
 #define DECLARE_SHUTTLE_TEMPLATE(TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(TYPEPATH)

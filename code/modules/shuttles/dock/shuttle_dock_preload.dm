@@ -21,8 +21,17 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_preloads)
 	invisibility = INVISIBILITY_NONE
 #endif
 
+	maptext_height = 64
+	maptext_width = 256 + 32
+	maptext_x = -128
+
 	/// already loaded data into dock?
 	var/loaded_into_dock = FALSE
+
+	/// template typepath to preload
+	var/shuttle_template_path
+
+	// TODO: ID-based instead?
 
 /obj/shuttle_dock_preload/New()
 	GLOB.uninitialized_shuttle_dock_preloads += src
