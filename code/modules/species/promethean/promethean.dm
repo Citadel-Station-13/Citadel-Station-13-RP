@@ -89,7 +89,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	unarmed_types = list(/datum/melee_attack/unarmed/slime_glomp)
 
 	has_organ = list(
-		O_BRAIN    = /obj/item/organ/internal/brain/slime,
+		O_BRAIN    = /obj/item/organ/internal/brain/promethean/stargazer,
 		O_HEART    = /obj/item/organ/internal/heart/grey/colormatch/slime,
 		O_REGBRUTE = /obj/item/organ/internal/regennetwork,
 		O_REGBURN  = /obj/item/organ/internal/regennetwork/burn,

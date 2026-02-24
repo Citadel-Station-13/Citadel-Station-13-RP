@@ -21,11 +21,6 @@
 	name = "filtration fungi"
 	icon_state = "xenoch_kidneys"
 
-/obj/item/organ/internal/brain/xenochimera
-	name = "neural colony"
-	icon_state = "xenoch_brain"
-	parent_organ = BP_TORSO
-
 /obj/item/organ/internal/eyes/xenochimera
 	name = "photosensitive nodules"
 	icon_state = "xenoch_eyes"

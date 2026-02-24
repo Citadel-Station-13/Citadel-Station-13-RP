@@ -46,7 +46,7 @@
 	return FALSE
 /obj/item/perfect_tele_beacon/digest_act(var/atom/movable/item_storage = null)
 	return FALSE //Sorta important to not digest your own beacons.
-/obj/item/organ/internal/brain/slime/digest_act(var/atom/movable/item_storage = null)
+/obj/item/organ/internal/brain/promethean/digest_act(var/atom/movable/item_storage = null)
 	return FALSE //so prometheans can be recovered
 
 /////////////

@@ -308,7 +308,7 @@
 		cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds))
 		return
 	// todo: PROMETHEANS - refactor this shit
-	var/obj/item/organ/internal/brain/slime/core = locate() in internal_organs
+	var/obj/item/organ/internal/brain/promethean/core = locate() in internal_organs
 	if(core)
 		return
 
