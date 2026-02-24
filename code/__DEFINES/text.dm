@@ -108,3 +108,4 @@
 */
 /// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
 #define MAPTEXT_CENTER(text) {"<span class='maptext center'>[##text]</span>"}
+#define MAPTEXT_CENTER_CONST(text) "<span class='maptext center'>" + text + "</span>"

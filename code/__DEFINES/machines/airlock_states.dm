@@ -1,3 +1,6 @@
+// --- THIS IS FOR OLD AIRLOCKS, NOT NEW AIRLOCKS   --- //
+// --- OLD AIRLOCKS WILL BE REMOVED SOMEDAY.        --- //
+
 #define STATE_UNDEFINED -1 //Manual overrides
 #define STATE_CLOSED 0 //Both doors closed
 #define STATE_OPEN_IN 1 //Interior doors open, exterior closed

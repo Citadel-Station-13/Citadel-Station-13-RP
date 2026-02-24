@@ -400,13 +400,13 @@
 
 /proc/atmos_pipe_flags_str(pipe_flags)
 	var/list/dat = list()
-	if(pipe_flags & PIPING_ALL_LAYER)
+	if(pipe_flags & PIPE_FLAG_ALL_LAYER)
 		dat += "ALL_LAYER"
-	if(pipe_flags & PIPING_ONE_PER_TURF)
+	if(pipe_flags & PIPE_FLAG_ONE_PER_TURF)
 		dat += "ONE_PER_TURF"
-	if(pipe_flags & PIPING_DEFAULT_LAYER_ONLY)
+	if(pipe_flags & PIPE_FLAG_DEFAULT_LAYER_ONLY)
 		dat += "DEFAULT_LAYER_ONLY"
-	if(pipe_flags & PIPING_CARDINAL_AUTONORMALIZE)
+	if(pipe_flags & PIPE_FLAG_CARDINAL_AUTONORMALIZE)
 		dat += "CARDINAL_AUTONORMALIZE"
 	return dat.Join("|")
 

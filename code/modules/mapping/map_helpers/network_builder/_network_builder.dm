@@ -45,7 +45,6 @@
 
 /obj/map_helper/network_builder/proc/teardown()
 	for(var/atom/movable/AM as anything in duplicates())
-		ASSERT(istype(AM))
 		qdel(AM)
 
 /obj/map_helper/network_builder/proc/rebuild(propagate = TRUE)
