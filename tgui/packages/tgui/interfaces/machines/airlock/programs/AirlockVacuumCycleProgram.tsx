@@ -46,7 +46,7 @@ export const AirlockVacuumCycleProgram = (
         <Section title="Information" fill>
           <LabeledList>
             <LabeledList.Item label="Pressure">
-              {props.data.pressure ? (
+              {props.data.pressure !== null ? (
                 <ProgressBar
                   value={props.data.pressure}
                   minValue={0}

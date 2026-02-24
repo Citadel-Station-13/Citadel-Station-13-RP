@@ -45,15 +45,21 @@
 /datum/airlock_phase/proc/cleanup(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	return
 
+/**
+ * Just merge-overwrites blackboards.
+ * * This isn't recursive and only goes one deep.
+ */
 /datum/airlock_phase/merge_blackboard
 	var/list/merge_system_blackboard
 	var/list/merge_cycling_blackboard
 
 /datum/airlock_phase/merge_blackboard/setup(datum/airlock_system/system, datum/airlock_cycling/cycling)
 	if(merge_system_blackboard)
-		system.blackboard ||= merge_system_blackboard
+		for(var/key in src.merge_system_blackboard)
+			system.blackboard[key] = src.merge_system_blackboard[key]
 	if(merge_cycling_blackboard)
-		cycling.blackboard ||= merge_cycling_blackboard
+		for(var/key in src.merge_cycling_blackboard)
+			cycling.blackboard[key] = src.merge_cycling_blackboard[key]
 	return AIRLOCK_PHASE_SETUP_SKIP
 
 /**

@@ -4,7 +4,7 @@
  */
 
 import { LabeledList, Section, Stack } from 'tgui-core/components';
-import { capitalize } from 'tgui-core/string';
+import { capitalizeFirst } from 'tgui-core/string';
 
 import { useBackend } from '../../../backend';
 import { Window } from '../../../layouts';
@@ -29,10 +29,10 @@ export const AirlockSystem = (props) => {
                 {data.cycling ? (
                   <>
                     <LabeledList.Item label="Status">
-                      {capitalize(data.cycling.cyclingDesc)}
+                      {capitalizeFirst(data.cycling.cyclingDesc)}
                     </LabeledList.Item>
                     <LabeledList.Item label="Operation">
-                      {capitalize(data.cycling.phaseVerb)}
+                      {capitalizeFirst(data.cycling.phaseVerb)}
                     </LabeledList.Item>
                     {data.cycling.tasks.map((t, i) => (
                       <LabeledList.Item

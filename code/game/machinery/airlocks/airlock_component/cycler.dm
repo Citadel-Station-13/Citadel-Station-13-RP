@@ -61,6 +61,14 @@
 		if(TRUE)
 			add_overlay("[base_icon_state]-op-blue")
 
+/obj/machinery/airlock_component/cycler/proc/is_zone_valid()
+	// check for zone validity
+	// otherwise we might only update one tile's worth of air.
+	if(istype(loc, /turf/simulated))
+		var/turf/simulated/casted = loc
+		return casted.zone && !casted.zone.invalid
+	return TRUE
+
 /**
  * Gets gas mixture to use for handler / cycler procs.
  * * This should wake the zone as needed, because the mixture will probably be modified.

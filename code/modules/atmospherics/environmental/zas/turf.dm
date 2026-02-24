@@ -1,6 +1,3 @@
-/turf
-	var/needs_air_update = FALSE
-
 /turf/proc/has_valid_zone()
 	return FALSE
 
@@ -14,6 +11,7 @@
 	return zone && !zone.invalid
 
 /turf/proc/update_air_properties()
+	SHOULD_NOT_SLEEP(TRUE)
 	var/block = CanAtmosPass(src, NONE)
 	if(block == ATMOS_PASS_AIR_BLOCKED)
 		//dbg(blocked)
