@@ -67,7 +67,7 @@ DECLARE_ENUM(shuttle_transit_stages, list(
 	ENUM_NAMED("Docking", SHUTTLE_TRANSIT_STAGE_DOCK),
 ))
 
-ASSIGN_ENUM(shuttle_transit_stages, /datum/shuttle_transit_cycle, "stage")
+ASSIGN_ENUM(shuttle_transit_stages, /datum/shuttle_transit_cycle, stage)
 
 //* transit flags
 
@@ -87,7 +87,7 @@ DECLARE_BITFIELD(shuttle_transit_flags, list(
 	BITFIELD_NAMED("Disallow Abort in Transit", SHUTTLE_TRANSIT_FLAG_NO_TRANSIT_ABORT),
 	BITFIELD_NAMED("No Exclusive Lock on Target Dock", SHUTTLE_TRANSIT_FLAG_NO_DOCK_MUTEX),
 ))
-ASSIGN_BITFIELD(shuttle_transit_flags, /datum/shuttle_transit_cycle, "transit_flags")
+ASSIGN_BITFIELD(shuttle_transit_flags, /datum/shuttle_transit_cycle, transit_flags)
 
 //* traversal flags
 
@@ -145,8 +145,8 @@ DECLARE_BITFIELD(shuttle_traversal_flags, list(
 	BITFIELD_NAMED("Force Docking / Undocking on timeout", SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_ON_TIMEOUT),
 	BITFIELD_NAMED("Force Docking / Undocking safety", SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_SAFETY),
 ))
-ASSIGN_BITFIELD(shuttle_traversal_flags, /datum/shuttle_transit_cycle, "source_traversal_flags")
-ASSIGN_BITFIELD(shuttle_traversal_flags, /datum/shuttle_transit_cycle, "target_traversal_flags")
+ASSIGN_BITFIELD(shuttle_traversal_flags, /datum/shuttle_transit_cycle, traversal_flags_source)
+ASSIGN_BITFIELD(shuttle_traversal_flags, /datum/shuttle_transit_cycle, traversal_flags_target)
 
 //* 'lazy' target resolution hints
 

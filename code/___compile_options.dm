@@ -301,3 +301,4 @@
 
 #ifdef CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
 	#warn Shuttle bounding box visualizations enabled.
+#endif
