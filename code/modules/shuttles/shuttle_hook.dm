@@ -6,7 +6,7 @@
  *
  * Remember: **If you block an operation, you must unblock it later!**
  *
- * * this is used for both shuttle docks and the shuttles
+ * * this is used for both shuttle docks and shuttles themselves.
  */
 /datum/shuttle_hook
 	/// Player-facing name for what we are (what they're waiting on)

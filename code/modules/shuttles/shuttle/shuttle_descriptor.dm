@@ -33,3 +33,5 @@
 
 	clone.jump_charging_time = jump_charging_time
 	clone.jump_move_time = jump_move_time
+
+	return clone

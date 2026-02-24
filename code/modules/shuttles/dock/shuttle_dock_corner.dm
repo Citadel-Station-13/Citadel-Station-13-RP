@@ -4,9 +4,9 @@
 GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 
 /**
- * put them on the corners of a bounding box to form a bounding box
- *
- * the /obj/shuttle_dock must be inside one of these
+ * Put them on the corners of a bounding box to form a bounding box
+ * * This includes the edge, on the visual, so don't put it outside the edge.
+ * * The /obj/shuttle_dock must be inside one of these.
  */
 /obj/shuttle_dock_corner
 	name = "dock corner"

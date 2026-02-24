@@ -139,9 +139,11 @@ SUBSYSTEM_DEF(overmaps)
 		CRASH("couldn't get area?")
 	if(istype(their_area, /area/shuttle))
 		var/area/shuttle/their_shuttle_area = their_area
-		if(istype(their_shuttle_area.shuttle, /datum/shuttle/autodock/overmap))
-			var/datum/shuttle/autodock/overmap/i_hate_legacy_systems = their_shuttle_area.shuttle
-			return i_hate_legacy_systems.myship
+		var/datum/shuttle/their_shuttle = their_shuttle_area.shuttle
+		// TODO: better API?
+		if(their_shuttle && istype(their_shuttle.controller, /datum/shuttle_controller/overmap))
+			var/datum/shuttle_controller/overmap/overmap_controller = their_shuttle.controller
+			return overmap_controller.entity
 	var/their_z = get_z(target)
 	var/datum/overmap_location/level_location = location_enclosed_levels[their_z]
 	if(!level_location)

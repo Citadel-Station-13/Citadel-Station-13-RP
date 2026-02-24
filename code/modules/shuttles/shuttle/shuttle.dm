@@ -23,45 +23,53 @@
 	var/being_deleted = FALSE
 	/// our globally persistent-unique identifier string
 	var/id
-	/// our unique template id; this is *not* our ID and is *not* unique!
+	/// our unique template id; this is *not* our ID and should not be used as an unique-key
+	/// lookup.
 	var/template_id
 	/// our descriptor instance; this is what determines how we act
 	/// to our controller, as well as things like overmaps.
+	/// * This should be owned by the shuttle datum. Clone it if you need to assign one.
 	var/datum/shuttle_descriptor/descriptor
 
 	//* Composition *//
 	/// our shuttle controller
+	/// * Nullable.
+	/// * Docking / transit behaviors are mostly in here. Shuttles just go from point A to
+	///   point B (usually another dock); controllers are what handles most of the logic.
 	var/datum/shuttle_controller/controller
 	/// our physical shuttle object
+	/// * Moved manually by shuttle calculations; the grid is then moved in respects
+	///   to the anchor.
 	var/obj/shuttle_anchor/anchor
 	#warn don't move this snowflake-ly, only move anchor like that, this goes with grid
 	/// our physical shuttle port objects
+	/// * Moved by grid-mvoe.
 	var/list/obj/shuttle_port/ports
 	#warn nuke this don't need it just for loop like a normal person
 	/// port lookup by id
+	/// * Moved by grid-mvoe.
 	var/list/obj/shuttle_port/port_lookup
-	#warn nuke this don't need it just for loop like a normal person
-	/// our primary port, if any.
-	/// roundstart docking will use this port.
-	var/obj/shuttle_port/port_primary
 	/// the areas in our shuttle, associated to a truthy value
+	/// * Used for grid-move lookups.
 	var/list/area/shuttle/areas
 
 	//* Docking *//
 	/// where we are docked, if any
+	/// * Nullable. Shuttles may move without a dock.
 	var/obj/shuttle_dock/docked
-	/// the port we're using
+	/// the port we're using in the current dock.
+	/// * Should only be set if [docked] is set.
 	var/obj/shuttle_port/docked_via_port
 
 	//* Movement - Ephemeral / In-Move *//
 	/// current direction of motion, used to calculate things like visuals and roadkill
-	var/translating_physics_direction
+	var/tmp/translating_physics_direction
 	/// corrosponds, index-wise, to the left-to-right strip of clear turfs in front of the shuttle in the direction of motion
-	var/list/translating_forwards_lookup
+	var/tmp/list/translating_forwards_lookup
 	/// corrosponds, index-wise, to the forwards-to-backwards strip of clear turfs left of the direction of motion
-	var/list/translating_left_lookup
+	var/tmp/list/translating_left_lookup
 	/// corrosponds, index-wise, to the forwards-to-backwards strip of clear turfs right of the direction of motion
-	var/list/translating_right_lookup
+	var/tmp/list/translating_right_lookup
 	/// used to calculate forward lookup index by adding to the:
 	///
 	/// * x-value of turf if north/south
@@ -69,7 +77,7 @@
 	///
 	/// this value is to be applied to things in the **destination**
 	/// bounding box!!
-	var/translating_forward_offset
+	var/tmp/translating_forward_offset
 	/// used to calculate side lookup index by adding to the:
 	///
 	/// * y-value of turf if north/south
@@ -77,11 +85,11 @@
 	///
 	/// this value is to be applied to things in the **destination**
 	/// bounding box!!
-	var/translating_side_offset
+	var/tmp/translating_side_offset
 	/// current width of front
-	var/translating_forward_width
+	var/tmp/translating_forward_width
 	/// current length of side
-	var/translating_side_length
+	var/tmp/translating_side_length
 
 	//* Hooks *//
 	/// registered shuttle hooks
@@ -112,15 +120,15 @@
 
 	//* Transit *//
 
-	//? This is in shuttle, not controller, because
-	//? we cannot afford a memory leak in transit and therefore
-	//? shuttle-side will ensure things are cleaned up as needed.
-	//?
-	//? Note that our 'transit' is physically managing transit
-	//? and the dock / reservation.
-	//?
-	//? Shuttle controller 'transit' is the actual act of moving from
-	//? one place to another.
+	//? This is in shuttle, not controller, because                    ?//
+	//? we cannot afford a memory leak in transit and therefore        ?//
+	//? shuttle-side will ensure things are cleaned up as needed.      ?//
+	//?                                                                ?//
+	//? Note that our 'transit' is physically managing transit         ?//
+	//? and the dock / reservation.                                    ?//
+	//?                                                                ?//
+	//? Shuttle controller 'transit' is the actual act of moving from  ?//
+	//? one place to another.                                          ?//
 
 	/// Shuttle is in transit
 	var/in_transit = FALSE

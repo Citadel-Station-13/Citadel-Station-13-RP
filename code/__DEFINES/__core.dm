@@ -18,6 +18,8 @@
 /// * call a new proc so the originating trace isn't from the original file anymore
 /// * put the stack trace in stack trace storage
 #define stack_trace(message) _stack_trace(message, __FILE__, __LINE__)
+/// Used in stack traces.
+#define WORKAROUND_IDENTIFIER "%//%"
 
 //* Function Calls *//
 
