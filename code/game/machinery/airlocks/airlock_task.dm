@@ -17,8 +17,9 @@
 
 /datum/airlock_task/Destroy()
 	if(cycling)
-		cycling.remove_task(src)
-		cycling = null
+		if(src in cycling.running_tasks)
+			// this is false if we're a nested / compound task.
+			cycling.remove_task(src)
 	return ..()
 
 /datum/airlock_task/proc/component_still_valid(obj/machinery/airlock_component/component)
@@ -31,12 +32,10 @@
 /datum/airlock_task/proc/assign_cycle(datum/airlock_cycling/cycling)
 	ASSERT(!src.cycling)
 	src.cycling = cycling
-	src.cycling.running_tasks += src
 
 /datum/airlock_task/proc/unassign_cycle(datum/airlock_cycling/cycling)
 	ASSERT(src.cycling == cycling)
 	src.cycling = null
-	cycling.running_tasks -= src
 
 /datum/airlock_task/proc/ui_task_data()
 	return list(
@@ -81,17 +80,34 @@
 	src.tasks = tasks
 	..()
 
-/datum/airlock_task/compound/describe_state()
-	return desc
-
 /datum/airlock_task/compound/Destroy()
 	QDEL_LIST(tasks)
 	return ..()
 
-/datum/airlock_task/compound/poll(dt)
+/datum/airlock_task/compound/assign_cycle(datum/airlock_cycling/cycling)
+	..()
 	for(var/datum/airlock_task/task as anything in tasks)
-		task.poll()
+		task.assign_cycle(cycling)
+
+/datum/airlock_task/compound/unassign_cycle(datum/airlock_cycling/cycling)
+	..()
+	for(var/datum/airlock_task/task as anything in tasks)
+		task.unassign_cycle(cycling)
+
+/datum/airlock_task/compound/describe_state()
+	return desc
+
+/datum/airlock_task/compound/poll(dt)
+	var/all_complete = TRUE
+	for(var/datum/airlock_task/task as anything in tasks)
+		if(!task.completed)
+			task.poll()
+		if(all_complete)
+			all_complete = task.completed
+	if(all_complete)
+		complete()
 
 /datum/airlock_task/compound/complete()
+	..()
 	for(var/datum/airlock_task/task as anything in tasks)
 		task.complete()

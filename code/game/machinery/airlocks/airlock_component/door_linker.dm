@@ -70,9 +70,10 @@
 
 	var/obj/machinery/door/airlock/maybe_airlock = get_airlock()
 	// if we want to set opened, handle that first
-	if(!isnull(opened) && (maybe_airlock.density != opened))
+	// density == opened because density 1 is not opened
+	if(!isnull(opened) && (maybe_airlock.density == opened))
 		// try to operate
-		if(!maybe_airlock.unlock())
+		if(maybe_airlock.locked && !maybe_airlock.unlock())
 			return FALSE
 		if(opened)
 			ASYNC

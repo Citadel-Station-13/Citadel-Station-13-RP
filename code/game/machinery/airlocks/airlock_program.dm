@@ -12,7 +12,6 @@
 	/// owning system
 	var/datum/airlock_system/system
 	/// tgui routing string used to get the right component
-	/// * the config interface is `[component]Config`.
 	var/tgui_airlock_component
 
 /datum/airlock_program/New(datum/airlock_system/system)
@@ -24,6 +23,12 @@
 			system.program = null
 		system = null
 	return ..()
+
+/**
+ * Called whenever the controller decides that the airlock should be rebuilt.
+ */
+/datum/airlock_program/proc/on_system_rebuild()
+	return
 
 /datum/airlock_program/proc/ui_program_data()
 	return list()

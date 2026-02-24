@@ -28,7 +28,8 @@
 	src.controller = controller
 
 /datum/airlock_system/Destroy()
-	abort_cycle()
+	// don't even call abort in destroy logic just throw out
+	QDEL_NULL(cycling)
 	if(controller)
 		if(controller.system == src)
 			controller.system = null
@@ -77,10 +78,9 @@
 /datum/airlock_system/proc/start_cycle(datum/airlock_cycling/cycling, datum/callback/on_finished)
 	if(src.cycling)
 		return null
-	src.cycling_on_finish = on_finished
-	src.cycling = cycling
 
 	cycling.setup(src)
+	src.cycling_on_finish = on_finished
 	// immediately poll once
 	cycling.poll(0)
 	controller.on_cycle_begin()
@@ -96,10 +96,14 @@
 		return FALSE
 	if(cycling_id && cycling_id != cycling.op_id)
 		return FALSE
+	// TODO: this all should be called by cycling, not here :(
+	cycling.current_phase?.cleanup(src, cycling)
 	cycling.finished_status = status
 	cycling.finished_reason = why_str
-	cycling_on_finish?.InvokeAsync(src, cycling)
-	QDEL_NULL(cycling)
+	if(!QDELETED(cycling))
+		// if cycling is being deleted we don't even consider it a real finish
+		cycling_on_finish?.InvokeAsync(src, cycling)
+		QDEL_NULL(cycling)
 	controller.on_cycle_end()
 	return TRUE
 

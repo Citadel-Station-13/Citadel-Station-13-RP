@@ -95,6 +95,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(_d1 || _d2)
 		d1 = _d1
 		d2 = _d2
+		icon_state = "[d1]-[d2]"
 	else
 		// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 		var/dash = findtext(icon_state, "-")
@@ -270,15 +271,11 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		coil.cable_join(src, user)
 
 	else if(istype(W, /obj/item/multitool))
-
 		if(powernet && (powernet.avail > 0))		// is it powered?
 			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
-
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
-
 		shock(user, 5, 0.2)
-
 	else
 		if(!(W.atom_flags & NOCONDUCT))
 			shock(user, 50, 0.7)

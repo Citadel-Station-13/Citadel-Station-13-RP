@@ -100,7 +100,7 @@
  */
 /datum/airlock_gasnet/proc/build(obj/structure/airlock_interconnect/source)
 	var/list/obj/structure/airlock_interconnect/processing = list(source)
-	var/alist/processed = alist()
+	var/list/processed = list()
 	while(length(processing))
 		var/obj/structure/airlock_interconnect/current = processing[length(processing)]
 		--processing.len
@@ -122,12 +122,16 @@
 			add_interconnect(current)
 
 /datum/airlock_gasnet/proc/add_interconnect(obj/structure/airlock_interconnect/connector)
+	ASSERT(connector.network == null)
 	interconnects += connector
+	connector.network = src
 	for(var/obj/machinery/airlock_component/comp as anything in connector.components)
 		add_machine(comp)
 
 /datum/airlock_gasnet/proc/remove_interconnect(obj/structure/airlock_interconnect/connector)
+	ASSERT(connector.network == src)
 	interconnects -= connector
+	connector.network = null
 	for(var/obj/machinery/airlock_component/comp as anything in connector.components)
 		remove_machine(comp)
 
@@ -179,10 +183,13 @@
 //* if we really need to in the future, we can make multi-cyclers a thing.   *//
 
 /datum/airlock_gasnet/proc/pump_impl(datum/gas_mixture/airlock_air, datum/gas_mixture/peer_air, dt, target_pressure, pumping_in)
+	if(!airlock_air || !peer_air)
+		return AIRLOCK_CYCLER_OP_FATAL
 	. = AIRLOCK_CYCLER_OP_SUCCESS
 
-	var/available_power_kj = min(cycler.pumping_power * dt, handler.power_stored)
-	if(available_power_kj < 2)
+	var/desired_power_kj = cycler.pumping_power * dt
+	var/available_power_kj = min(desired_power_kj, handler.power_stored)
+	if(available_power_kj < 2 && available_power_kj < desired_power_kj) // handle 0 second poll times
 		. |= AIRLOCK_CYCLER_OP_NO_POWER
 
 	var/before_pressure = XGM_PRESSURE(airlock_air)
@@ -192,11 +199,17 @@
 	var/datum/gas_mixture/sink
 
 	if(pumping_in)
+		if(before_pressure >= target_pressure)
+			// already overshot
+			return AIRLOCK_CYCLER_OP_SUCCESS
 		source = peer_air
 		sink = airlock_air
 		if(source.total_moles <= 10)
 			. |= AIRLOCK_CYCLER_OP_NO_GAS
 	else
+		if(before_pressure <= target_pressure)
+			// already overshot
+			return AIRLOCK_CYCLER_OP_SUCCESS
 		source = airlock_air
 		sink = peer_air
 
@@ -206,27 +219,42 @@
 	var/moles_before = XGM_TOTAL_MOLES(airlock_air)
 	var/power_used = xgm_pump_gas(source, sink, desired_mole_transfer, available_power_kj * 1000)
 	handler.power_stored -= power_used * 0.001
+
+	// short circuit: if done, just return success
+	if(abs(XGM_PRESSURE(airlock_air) - target_pressure) <= 0.2)
+		// this should be enough to drain almost all potentially harmful gases
+		// enough that they won't have enough moles to do anything
+		return AIRLOCK_CYCLER_OP_SUCCESS
+
 	var/moles_after = XGM_TOTAL_MOLES(airlock_air)
 	if(abs(moles_after - moles_before) < min(desired_mole_transfer, 3))
 		. |= AIRLOCK_CYCLER_OP_HIGH_RESISTANCE
 
 /datum/airlock_gasnet/proc/pump_cycler_to_vent(dt, to_pressure)
-	cycler?.last_pump_was_out = FALSE
+	if(!cycler.is_zone_valid())
+		return AIRLOCK_CYCLER_OP_WAIT_STATE
+	cycler?.last_pump_was_out = TRUE
 	vent?.last_pump_was_out = TRUE
 	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), vent?.get_mutable_gas_mixture_ref(), dt, to_pressure, FALSE)
 
 /datum/airlock_gasnet/proc/pump_vent_to_cycler(dt, to_pressure)
-	cycler?.last_pump_was_out = TRUE
+	if(!cycler.is_zone_valid())
+		return AIRLOCK_CYCLER_OP_WAIT_STATE
+	cycler?.last_pump_was_out = FALSE
 	vent?.last_pump_was_out = FALSE
 	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), vent?.get_mutable_gas_mixture_ref(), dt, to_pressure, TRUE)
 
 /datum/airlock_gasnet/proc/pump_cycler_to_handler_waste(dt, to_pressure)
-	cycler?.last_pump_was_out = FALSE
-	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_waste_gas_mixture_ref(), dt, to_pressure, FALSE)
+	if(!cycler.is_zone_valid())
+		return AIRLOCK_CYCLER_OP_WAIT_STATE
+	cycler?.last_pump_was_out = TRUE
+	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_mutable_waste_gas_mixture_ref(), dt, to_pressure, FALSE)
 
 /datum/airlock_gasnet/proc/pump_handler_supply_to_cycler(dt, to_pressure)
-	cycler?.last_pump_was_out = TRUE
-	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_clean_gas_mixture_ref(), dt, to_pressure, TRUE)
+	if(!cycler.is_zone_valid())
+		return AIRLOCK_CYCLER_OP_WAIT_STATE
+	cycler?.last_pump_was_out = FALSE
+	return pump_impl(cycler?.get_mutable_gas_mixture_ref(), handler?.get_mutable_clean_gas_mixture_ref(), dt, to_pressure, TRUE)
 
 /datum/airlock_gasnet/proc/reset_pumping_graphics()
 	cycler?.last_pump_was_out = null
@@ -247,11 +275,19 @@
 		return "Operating Cycler"
 	var/list/descriptors = list()
 	for(var/i in 1 to AIRLOCK_CYCLER_OP_MAX_BIT)
-		if(last_status & i)
+		if(last_status & (1 << (i - 1)))
 			descriptors += global.airlock_cycler_op_desc_lookup[i]
-	return "Cycler Error ([english_list(descriptors)])"
+	return "Operating Cycler ([english_list(descriptors, and_text = ", ")])"
 
 /datum/airlock_task/gasnet/pump/proc/handle_pumping_status(cycler_status)
+	// check if we're done
+	var/datum/gas_mixture/probing = cycling.system.controller.network.cycler.get_immutable_gas_mixture_ref()
+	// overshooting is possible, handle that
+	var/remaining_kpa = is_into_chamber ? (target_pressure - XGM_PRESSURE(probing)) : (XGM_PRESSURE(probing) - target_pressure)
+	if(remaining_kpa < 0.2)
+		// done
+		complete()
+	// set last status
 	last_status = cycler_status
 
 /datum/airlock_task/gasnet/pump/vent_to_cycler
@@ -297,14 +333,9 @@
 	var/status = cycling.system.controller?.network?.pump_vent_to_cycler(dt, target_pressure)
 	if(isnull(status))
 		status = AIRLOCK_CYCLER_OP_MISSING_COMPONENT
-	switch(status)
-		if(AIRLOCK_CYCLER_OP_SUCCESS)
-			// keep going
-		if(AIRLOCK_CYCLER_OP_FATAL)
-			// no recovery
-		if(AIRLOCK_CYCLER_OP_NO_POWER)
-			// no recovery
-		else
-			// fallback to handler
-			status = cycling.system.controller?.network?.pump_handler_supply_to_cycler(dt, target_pressure)
+	if(status & (AIRLOCK_CYCLER_OP_SUCCESS | AIRLOCK_CYCLER_OP_FATAL | AIRLOCK_CYCLER_OP_NO_POWER))
+		// no recovery / everything is fine
+	else
+		// fallback to handler
+		status = cycling.system.controller?.network?.pump_handler_supply_to_cycler(dt, target_pressure)
 	handle_pumping_status(status)

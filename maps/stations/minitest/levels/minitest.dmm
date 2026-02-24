@@ -2909,7 +2909,9 @@
 /area/bridge)
 "il" = (
 /obj/machinery/light,
-/obj/map_helper/airlock_peripheral_linker,
+/obj/map_helper/airlock_peripheral_linker{
+	set_controller_id = "test-1"
+	},
 /obj/machinery/airlock_peripheral/sensor/interior/hardmapped/south_mount,
 /turf/simulated/floor/tiled,
 /area/bridge)
@@ -3092,7 +3094,9 @@
 /area/bridge)
 "rq" = (
 /obj/structure/airlock_interconnect/hardmapped,
-/obj/map_helper/airlock_peripheral_linker,
+/obj/map_helper/airlock_peripheral_linker{
+	set_controller_id = "test-1"
+	},
 /obj/machinery/airlock_peripheral/panel/hardmapped/north_mount,
 /turf/simulated/floor/tiled,
 /area/bridge)
@@ -3303,7 +3307,7 @@
 /area/bridge)
 "yh" = (
 /obj/structure/airlock_interconnect/hardmapped,
-/obj/machinery/airlock_component/controller{
+/obj/machinery/airlock_component/controller/vacuum_cycle/hardmapped{
 	airlock_id = "test-1"
 	},
 /turf/simulated/floor/tiled,

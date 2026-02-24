@@ -186,7 +186,9 @@
 	debug_gas_archive = gas?.Copy()
 	#endif
 
-//Copies gas and temperature from another gas_mixture.
+/**
+ * Copies gas / temperature from another gas mixture. Assumes we are the same size as them.
+ */
 /datum/gas_mixture/proc/copy_from(const/datum/gas_mixture/sample)
 	gas = sample.gas.Copy()
 	temperature = sample.temperature

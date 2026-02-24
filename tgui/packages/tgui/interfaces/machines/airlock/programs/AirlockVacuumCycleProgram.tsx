@@ -11,6 +11,7 @@ import {
   Stack,
 } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
+
 import { ActFunctionType } from '../../../../backend';
 import {
   airlockSealedStateToName,
@@ -41,11 +42,11 @@ export const AirlockVacuumCycleProgram = (
   const act = props.act;
   return (
     <>
-      <Stack.Item>
-        <Section title="Information">
+      <Stack.Item grow={1}>
+        <Section title="Information" fill>
           <LabeledList>
             <LabeledList.Item label="Pressure">
-              {props.data.pressure ? (
+              {props.data.pressure !== null ? (
                 <ProgressBar
                   value={props.data.pressure}
                   minValue={0}
@@ -55,13 +56,13 @@ export const AirlockVacuumCycleProgram = (
                       ? 'bad'
                       : 'good'
                   }
-                ></ProgressBar>
+                />
               ) : (
                 'Unknown'
               )}
             </LabeledList.Item>
             <LabeledList.Item label="Interior Doors">
-              {airlockSealedStateToName(props.data.exteriorSealed)}
+              {airlockSealedStateToName(props.data.interiorSealed)}
             </LabeledList.Item>
             <LabeledList.Item label="Exterior Doors">
               {airlockSealedStateToName(props.data.exteriorSealed)}
@@ -73,7 +74,32 @@ export const AirlockVacuumCycleProgram = (
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Controls">
+        <Section
+          title="Operations"
+          buttons={
+            <>
+              <Button.Confirm
+                color="bad"
+                textAlign="center"
+                icon="exclamation-triangle"
+                confirmIcon="exclamation-triangle"
+                disabled={!props.data.cycling}
+                onClick={() => act('abort')}
+              >
+                Abort
+              </Button.Confirm>
+              <Button
+                textAlign="center"
+                color="yellow"
+                icon="stop"
+                onClick={() => act('cancel')}
+                disabled={!props.data.cycling || props.data.cancelling}
+              >
+                Cancel
+              </Button>
+            </>
+          }
+        >
           <Stack vertical>
             <Stack.Item>
               <Stack>
@@ -130,26 +156,6 @@ export const AirlockVacuumCycleProgram = (
                   </Button.Confirm>
                 </Stack.Item>
               </Stack>
-            </Stack.Item>
-            <Stack.Item>
-              {props.data.cancelling ? (
-                <Button.Confirm
-                  fluid
-                  color="bad"
-                  textAlign="center"
-                  disabled={!props.data.cycling}
-                >
-                  Emergency Stop
-                </Button.Confirm>
-              ) : (
-                <Button
-                  fluid
-                  textAlign="center"
-                  disabled={!props.data.cycling || props.data.cancelling}
-                >
-                  Graceful Abort
-                </Button>
-              )}
             </Stack.Item>
           </Stack>
         </Section>

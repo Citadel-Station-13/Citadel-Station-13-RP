@@ -41,7 +41,8 @@
 	SHOULD_CALL_PARENT(FALSE)
 	var/let_me_live = FALSE
 	if(!was_in_mapload)
-		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
+		if(early)
+			message_admins("a map helper with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
 		let_me_live = TRUE
 	atom_flags |= ATOM_INITIALIZED
 	if(late)

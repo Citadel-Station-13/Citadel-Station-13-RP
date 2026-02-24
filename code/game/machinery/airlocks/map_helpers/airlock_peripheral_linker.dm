@@ -6,7 +6,6 @@
 	desc = "Sets airlock ID on airlock peripherals"
 	icon = 'icons/machinery/airlocks/map_helpers.dmi'
 	icon_state = "linker"
-	late = TRUE
 	maptext = MAPTEXT_CENTER_CONST("Airlock Linker")
 	maptext_y = 32
 

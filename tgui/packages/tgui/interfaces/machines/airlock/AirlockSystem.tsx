@@ -4,10 +4,11 @@
  */
 
 import { LabeledList, Section, Stack } from 'tgui-core/components';
+import { capitalizeFirst } from 'tgui-core/string';
+
+import { useBackend } from '../../../backend';
 import { Window } from '../../../layouts';
 import { AirlockVacuumCycleProgram } from './programs/AirlockVacuumCycleProgram';
-import { useBackend } from '../../../backend';
-import { capitalize } from 'tgui-core/string';
 import { AirlockCyclingData } from './types';
 
 interface AirlockSystemData {
@@ -19,24 +20,32 @@ interface AirlockSystemData {
 export const AirlockSystem = (props) => {
   const { act, data } = useBackend<AirlockSystemData>();
   return (
-    <Window>
+    <Window title="Airlock System" width={400} height={400}>
       <Window.Content>
         <Stack vertical fill>
-          <Stack.Item>
-            <Section title="System">
+          <Stack.Item grow={1} shrink={1}>
+            <Section title="System" scrollable fill>
               <LabeledList>
-                <LabeledList.Item label="Status">
-                  {capitalize(data.cycling?.phaseVerb || 'Idle')}
-                  {data.cycling && (
-                    <>
-                      {data.cycling.tasks.map((t) => (
-                        <LabeledList.Item key={t.ref}>
-                          {t.reason}
-                        </LabeledList.Item>
-                      ))}
-                    </>
-                  )}
-                </LabeledList.Item>
+                {data.cycling ? (
+                  <>
+                    <LabeledList.Item label="Status">
+                      {capitalizeFirst(data.cycling.cyclingDesc)}
+                    </LabeledList.Item>
+                    <LabeledList.Item label="Operation">
+                      {capitalizeFirst(data.cycling.phaseVerb)}
+                    </LabeledList.Item>
+                    {data.cycling.tasks.map((t, i) => (
+                      <LabeledList.Item
+                        key={t.ref}
+                        label={i === 0 ? 'Tasks' : ''}
+                      >
+                        {t.reason}
+                      </LabeledList.Item>
+                    ))}
+                  </>
+                ) : (
+                  <LabeledList.Item label="Status">Idle</LabeledList.Item>
+                )}
               </LabeledList>
             </Section>
           </Stack.Item>
@@ -44,7 +53,7 @@ export const AirlockSystem = (props) => {
             <AirlockProgramRender
               programComp={data.programTgui}
               programData={data.programData}
-            ></AirlockProgramRender>
+            />
           )}
         </Stack>
       </Window.Content>

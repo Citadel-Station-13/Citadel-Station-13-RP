@@ -69,6 +69,9 @@
 	desc = "A tightly bundled set of conduits used to connect the parts of an airlock together."
 	icon = 'icons/machinery/airlocks/airlock_interconnect.dmi'
 	icon_state = "conduit-map"
+	hides_underfloor = OBJ_UNDERFLOOR_UNLESS_PLACED_ONTOP
+	plane = /obj/machinery/airlock_component::plane
+	layer = /obj/machinery/airlock_component::layer - 0.01
 
 	/// our pipenet
 	var/datum/airlock_gasnet/network
@@ -169,10 +172,13 @@
 	if(component.interconnect)
 		component.interconnect.disconnect_component(component)
 	LAZYADD(components, component)
+	component.interconnect = src
 	network?.add_machine(component)
 
 /obj/structure/airlock_interconnect/proc/disconnect_component(obj/machinery/airlock_component/component)
+	ASSERT(component.interconnect == src)
 	LAZYREMOVE(components, component)
+	component.interconnect = null
 	network?.remove_machine(component)
 
 /obj/structure/airlock_interconnect/proc/get_adjacent_interconnects()

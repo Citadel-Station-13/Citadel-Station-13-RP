@@ -28,8 +28,10 @@
 #define AIRLOCK_CYCLER_OP_HIGH_RESISTANCE (1<<3)
 /// literally a machine is missing
 #define AIRLOCK_CYCLER_OP_MISSING_COMPONENT (1<<4)
+/// wait
+#define AIRLOCK_CYCLER_OP_WAIT_STATE (1<<5)
 
-#define AIRLOCK_CYCLER_OP_MAX_BIT 4
+#define AIRLOCK_CYCLER_OP_MAX_BIT 5
 
 GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
 	"fatal error",
@@ -37,6 +39,7 @@ GLOBAL_REAL_LIST(airlock_cycler_op_desc_lookup) = list(
 	"no gas",
 	"high resistance",
 	"missing machine",
+	"waiting to stabilize",
 )
 
 //* airlock cycle finish status *//

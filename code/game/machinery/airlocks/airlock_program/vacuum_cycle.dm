@@ -3,6 +3,9 @@
 
 /**
  * Default airlock program. Can handle quite a lot, but not everything.
+ *
+ * TODO: cannot handle anything but vacuum of space right now. sorry!
+ *       the system's logic need supgrades
  */
 /datum/airlock_program/vacuum_cycle
 	tgui_airlock_component = "VacuumCycle"
@@ -13,7 +16,25 @@
 	 * This allows airlocks to be self-repairing to an extent.
 	 */
 	var/reassert_doors_every = 90 SECONDS
+	/**
+	 * Last time we reasserted doors.
+	 */
 	var/reassert_doors_last
+
+/datum/airlock_program/vacuum_cycle/New()
+	..()
+	// Immediately reassert.
+	reassert_doors_last = world.time - reassert_doors_every
+
+/datum/airlock_program/vacuum_cycle/on_system_rebuild()
+	..()
+	// start inside
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE] = AIRLOCK_SIDE_INTERIOR
+	// lock both sides closed
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = FALSE
+	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] = FALSE
+	// just reassert door now
+	reassert_doors()
 
 /datum/airlock_program/vacuum_cycle/ui_program_data()
 	. = ..()
@@ -62,6 +83,16 @@
 			hard_abort()
 			return TRUE
 
+/datum/airlock_program/vacuum_cycle/on_sensor_cycle_request(obj/machinery/airlock_peripheral/sensor/sensor, datum/event_args/actor/actor)
+	// technically this still blocks on reassert doors but that shouldn't
+	// take too long if the airlock is operational anyways...
+	if(system.cycling)
+		return
+	if(sensor.sidedness == AIRLOCK_SIDE_INTERIOR)
+		start_cycling_towards(AIRLOCK_SIDE_INTERIOR)
+	else if(sensor.sidedness == AIRLOCK_SIDE_EXTERIOR)
+		start_cycling_towards(AIRLOCK_SIDE_EXTERIOR)
+
 /**
  * @return truthy, or falsy value
  */
@@ -89,27 +120,53 @@
 	system.start_cycle(cycle.create_cycling(
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE],
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE],
-	), PROC_REF(on_reasserted_doors))
+	), CALLBACK(src, PROC_REF(on_reasserted_doors)))
 
 /datum/airlock_program/vacuum_cycle/proc/on_reasserted_doors()
 	set_active_side_based_on_doors()
 
 /datum/airlock_program/vacuum_cycle/proc/set_active_side_based_on_doors()
-	// note: these specifically check for 'bolted closed'.
-	// open or unlocked counts as open.
-	if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] != FALSE)
-		if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] != FALSE)
-			// both open
-			set_currently_cycled_side(AIRLOCK_SIDE_BOTH)
-		else
-			// interior open
-			set_currently_cycled_side(AIRLOCK_SIDE_EXTERIOR)
-	if(system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE] != FALSE)
-		// exterior open
-		set_currently_cycled_side(AIRLOCK_SIDE_INTERIOR)
-	else
-		// neither is open
-		set_currently_cycled_side(AIRLOCK_SIDE_NEITHER)
+	var/result_side = AIRLOCK_SIDE_NEITHER
+	var/interior_state = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE]
+	var/exterior_state = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_EXTERIOR_DOOR_LOCKED_STATE]
+	switch(interior_state)
+		if(TRUE)
+			// inside bolted open
+			switch(exterior_state)
+				if(TRUE)
+					// exterior bolted open
+					result_side = AIRLOCK_SIDE_BOTH
+				if(FALSE)
+					// exterior bolted closed
+					result_side = AIRLOCK_SIDE_INTERIOR
+				if(null)
+					// exterior not bolted
+					result_side = AIRLOCK_SIDE_BOTH
+		if(FALSE)
+			// inside bolted closed
+			switch(exterior_state)
+				if(TRUE)
+					// exterior bolted open
+					result_side = AIRLOCK_SIDE_EXTERIOR
+				if(FALSE)
+					// exterior bolted closed - keep current side
+					result_side = system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE]
+				if(null)
+					// exterior not bolted
+					result_side = AIRLOCK_SIDE_EXTERIOR
+		if(null)
+			// inside not bolted
+			switch(exterior_state)
+				if(TRUE)
+					// exterior bolted open
+					result_side = AIRLOCK_SIDE_BOTH
+				if(FALSE)
+					// exterior bolted closed
+					result_side = AIRLOCK_SIDE_INTERIOR
+				if(null)
+					// exterior not bolted
+					result_side = AIRLOCK_SIDE_BOTH
+	set_currently_cycled_side(result_side)
 
 /datum/airlock_program/vacuum_cycle/proc/force_interior_doors(to_opened)
 	system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_INTERIOR_DOOR_LOCKED_STATE] = to_opened
@@ -127,13 +184,17 @@
 	system.start_cycle(cycle.create_cycling(
 		system.blackboard[AIRLOCK_SYSTEM_BLACKBOARD_CURRENT_SIDE],
 		side,
+		0,
 	))
 	return TRUE
 
 /datum/airlock_program/vacuum_cycle/proc/graceful_abort()
 	system.stop_cycle()
 	var/datum/airlock_cycle/cycle = new /datum/airlock_cycle/cancel_and_restore
-	system.start_cycle(cycle.create_cycling(get_currently_cycled_side()))
+	system.start_cycle(cycle.create_cycling(
+		get_currently_cycled_side(),
+		0,
+	))
 	return TRUE
 
 /datum/airlock_program/vacuum_cycle/proc/hard_abort()
