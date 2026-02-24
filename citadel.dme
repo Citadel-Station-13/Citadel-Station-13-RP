@@ -102,7 +102,6 @@
 #include "code\__DEFINES\spaceman_dmm.dm"
 #include "code\__DEFINES\spans.dm"
 #include "code\__DEFINES\spells.dm"
-#include "code\__DEFINES\stack_trace.dm"
 #include "code\__DEFINES\stat_tracking.dm"
 #include "code\__DEFINES\statpanel.dm"
 #include "code\__DEFINES\supply.dm"

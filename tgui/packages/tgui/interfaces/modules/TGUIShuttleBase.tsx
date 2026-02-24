@@ -3,6 +3,8 @@
  * @license MIT
  */
 
+import { BooleanLike } from 'tgui-core/react';
+
 enum ShuttleDockAlignmentQueryDirs {
   North = 1,
   South = 2,

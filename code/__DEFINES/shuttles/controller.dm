@@ -58,18 +58,16 @@
 /// docking
 #define SHUTTLE_TRANSIT_STAGE_DOCK 5
 
-DEFINE_ENUM("shuttle_transit_stages", list(
-	/datum/shuttle_transit_cycle = list(
-		"stage",
-	),
-), list(
-	ENUM("Idle", SHUTTLE_TRANSIT_STAGE_IDLE),
-	ENUM("Undocking", SHUTTLE_TRANSIT_STAGE_UNDOCK),
-	ENUM("Takeoff", SHUTTLE_TRANSIT_STAGE_TAKEOFF),
-	ENUM("Transit", SHUTTLE_TRANSIT_STAGE_FLIGHT),
-	ENUM("Landing", SHUTTLE_TRANSIT_STAGE_LANDING),
-	ENUM("Docking", SHUTTLE_TRANSIT_STAGE_DOCK),
+DECLARE_ENUM(shuttle_transit_stages, list(
+	ENUM_NAMED("Idle", SHUTTLE_TRANSIT_STAGE_IDLE),
+	ENUM_NAMED("Undocking", SHUTTLE_TRANSIT_STAGE_UNDOCK),
+	ENUM_NAMED("Takeoff", SHUTTLE_TRANSIT_STAGE_TAKEOFF),
+	ENUM_NAMED("Transit", SHUTTLE_TRANSIT_STAGE_FLIGHT),
+	ENUM_NAMED("Landing", SHUTTLE_TRANSIT_STAGE_LANDING),
+	ENUM_NAMED("Docking", SHUTTLE_TRANSIT_STAGE_DOCK),
 ))
+
+ASSIGN_ENUM(shuttle_transit_stages, /datum/shuttle_transit_cycle, "stage")
 
 //* transit flags
 
@@ -84,15 +82,12 @@ DEFINE_ENUM("shuttle_transit_stages", list(
 /// * not doing this is very silly of you, but sometimes it's necessary
 #define SHUTTLE_TRANSIT_FLAG_NO_DOCK_MUTEX (1<<2)
 
-DEFINE_BITFIELD_NEW("shuttle_transit_flags", list(
-	/datum/shuttle_transit_cycle = list(
-		"transit_flags",
-	),
-), list(
+DECLARE_BITFIELD(shuttle_transit_flags, list(
 	BITFIELD_NAMED("Disallow Abort", SHUTTLE_TRANSIT_FLAG_NO_ABORT),
 	BITFIELD_NAMED("Disallow Abort in Transit", SHUTTLE_TRANSIT_FLAG_NO_TRANSIT_ABORT),
 	BITFIELD_NAMED("No Exclusive Lock on Target Dock", SHUTTLE_TRANSIT_FLAG_NO_DOCK_MUTEX),
 ))
+ASSIGN_BITFIELD(shuttle_transit_flags, /datum/shuttle_transit_cycle, "transit_flags")
 
 //* traversal flags
 
@@ -140,12 +135,7 @@ DEFINE_BITFIELD_NEW("shuttle_transit_flags", list(
 	SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_TIMEOUT \
 )
 
-DEFINE_BITFIELD_NEW("shuttle_traversal_flags", list(
-	/datum/shuttle_transit_cycle = list(
-		"source_traversal_flags",
-		"target_traversal_flags",
-	),
-), list(
+DECLARE_BITFIELD(shuttle_traversal_flags, list(
 	BITFIELD_NAMED("Force Takeoff / Landing", SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL),
 	BITFIELD_NAMED("Force Takeoff / Landing on fail", SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_FAIL),
 	BITFIELD_NAMED("Force Takeoff / Landing on timeout", SHUTTLE_TRAVERSAL_FLAG_FORCE_TRAVERSAL_ON_TIMEOUT),
@@ -155,6 +145,8 @@ DEFINE_BITFIELD_NEW("shuttle_traversal_flags", list(
 	BITFIELD_NAMED("Force Docking / Undocking on timeout", SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_ON_TIMEOUT),
 	BITFIELD_NAMED("Force Docking / Undocking safety", SHUTTLE_TRAVERSAL_FLAG_FORCE_DOCKING_SAFETY),
 ))
+ASSIGN_BITFIELD(shuttle_traversal_flags, /datum/shuttle_transit_cycle, "source_traversal_flags")
+ASSIGN_BITFIELD(shuttle_traversal_flags, /datum/shuttle_transit_cycle, "target_traversal_flags")
 
 //* 'lazy' target resolution hints
 
