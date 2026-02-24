@@ -1,5 +1,3 @@
-// todo: rework a variant of this for our storytelelrs
-
 /obj/item/pinpointer
 	name = "pinpointer"
 	icon = 'icons/obj/device.dmi'

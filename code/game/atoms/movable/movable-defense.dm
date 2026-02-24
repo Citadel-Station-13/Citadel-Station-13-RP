@@ -11,5 +11,5 @@
  * * annihilate - shuttle has nowhere to put us, we should get destroyed
  */
 /atom/movable/proc/shuttle_crushed(datum/shuttle/shuttle, turf/target, annihilate)
-	forceMove(target)
+	return
 	#warn impl on obj and mob - don't forget throw lmao
