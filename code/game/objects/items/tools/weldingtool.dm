@@ -690,7 +690,7 @@
 	desc = "If you're seeing this, someone did a dum-dum."
 
 /obj/item/weldingtool/electric/mounted/exosuit
-	var/obj/item/vehicle_module/equip_mount = null
+	var/obj/item/vehicle_module/lazy/legacy/equip_mount = null
 	flame_intensity = 1
 	eye_safety_modifier = 2
 	always_process = TRUE
@@ -706,7 +706,7 @@
 
 	if(equip_mount && equip_mount.chassis)
 		var/obj/vehicle/sealed/mecha/M = equip_mount.chassis
-		if(M.selected == equip_mount && get_fuel())
+		if(M.module_active_click == equip_mount && get_fuel())
 			setWelding(TRUE, M.occupant_legacy)
 		else
 			setWelding(FALSE, M.occupant_legacy)

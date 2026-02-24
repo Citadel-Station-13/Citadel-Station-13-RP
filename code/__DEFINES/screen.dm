@@ -159,6 +159,5 @@
 #define ui_mech_pwr "LEFT+1:-7,BOTTOM+9"
 #define ui_mech_health "LEFT+1:-7,BOTTOM+9"
 #define ui_mech_air "LEFT+1:-7,BOTTOM+8"
-#define ui_mech_airtoggle "LEFT+1:-7,BOTTOM+8"
 #define ui_mech_deco1_f "LEFT+2:-7,BOTTOM+8"
 #define ui_mech_deco2_f "LEFT+2:-7,BOTTOM+9"

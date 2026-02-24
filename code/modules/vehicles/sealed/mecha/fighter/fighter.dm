@@ -1,0 +1,177 @@
+/datum/armor/vehicle/mecha/fighter
+	melee = 0.3
+	melee_tier = 4
+	melee_deflect = 5
+	bullet = 0.3
+	bullet_tier = 4
+	bullet_deflect = 2.5
+	laser = 0.3
+	laser_tier = 4
+	laser_deflect = 2.5
+	energy = 0.2
+	bomb = 0.35
+
+/obj/vehicle/sealed/mecha/fighter
+	name = "Delete me, nerd!!"
+	desc = "The base type of fightercraft. Don't spawn this one!"
+	opacity = FALSE
+	//See ATTRIBUTIONS.md for details on license
+	icon = 'icons/mecha/fighters64x64.dmi'
+
+	icon_state = ""
+	initial_icon = ""
+
+	dir_in = null //Don't reset direction when empty
+
+	armor_type = /datum/armor/vehicle/mecha/fighter
+	integrity = 1.5 * /obj/vehicle/sealed/mecha::integrity
+	integrity_max = 1.5 * /obj/vehicle/sealed/mecha::integrity_max
+	base_movement_speed = 5
+
+	comp_armor_relative_thickness = 1.25
+	comp_hull = /obj/item/vehicle_component/plating/mecha_hull/lightweight
+	comp_hull_relative_thickness = 1.25
+
+	wreckage = /obj/effect/decal/mecha_wreckage/gunpod
+
+	move_sound = 'sound/mecha/fighter/engine_mid_fighter_move.ogg'
+	turn_sound = 'sound/mecha/fighter/engine_mid_boost_01.ogg'
+
+	bound_height = 64
+	bound_width = 64
+
+	module_slots = list(
+		VEHICLE_MODULE_SLOT_HULL = 2,
+		VEHICLE_MODULE_SLOT_WEAPON = 2,
+		VEHICLE_MODULE_SLOT_UTILITY = 3,
+		VEHICLE_MODULE_SLOT_SPECIAL = 1,
+	)
+
+	/// fighters don't have hands we're not actually at the gundam phase of mech implementation yet
+	melee_attacks = null
+
+	/// We're FLYYYYING
+	var/flight_mode = FALSE
+	/// Can fly in gravity
+	var/flight_works_in_gravity = TRUE
+	/// base speed on ground
+	var/ground_base_movement_speed = 2
+	/// base speed in air
+	var/flight_base_movement_speed = 5
+	/// Flight mode energy cost in joules per second
+	var/flight_energy_cost = 500
+
+	var/flight_move_sound = 'sound/mecha/fighter/engine_mid_fighter_move.ogg'
+	var/flight_turn_sound = 'sound/mecha/fighter/engine_mid_boost_01.ogg'
+	var/ground_move_sound = 'sound/effects/roll.ogg'
+	var/ground_turn_sound = 'sound/effects/roll.ogg'
+
+	/// legacy: ion trail when flying
+	var/datum/effect_system/ion_trail_follow/ion_trail
+
+/obj/vehicle/sealed/mecha/fighter/Initialize(mapload)
+	. = ..()
+	ion_trail = new /datum/effect_system/ion_trail_follow()
+	ion_trail.set_up(src)
+	ion_trail.stop()
+
+/obj/vehicle/sealed/mecha/fighter/process(delta_time)
+	..()
+	if(flight_mode)
+		if(flight_energy_cost)
+			if(!draw_sourced_power_oneoff("thrusters", "thrusters", flight_energy_cost * delta_time))
+				occupant_send_default_chat("Power lost to thrusters.")
+				disable_flight(null, null, TRUE)
+
+// TODO: have the fighter crash if no one's piloting and there's no autopilot so we don't just have auto-loitering fighters lol
+
+/obj/vehicle/sealed/mecha/fighter/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
+	..()
+	update_gravity()
+
+/obj/vehicle/sealed/mecha/fighter/occupant_removed(mob/removing, datum/event_args/actor/actor, control_flags, silent)
+	..()
+	update_gravity()
+
+/obj/vehicle/sealed/mecha/fighter/process_spacemove_support(drifting, movement_dir)
+	// with what hands?
+	return null
+
+/obj/vehicle/sealed/mecha/fighter/process_spacemove(drifting, movement_dir, just_checking)
+	if(flight_mode)
+		return TRUE
+	return ..()
+
+/obj/vehicle/sealed/mecha/fighter/can_overcome_gravity(mob/emit_feedback_to)
+	if(flight_mode)
+		return TRUE
+	return ..()
+
+/obj/vehicle/sealed/mecha/fighter/process_overcome_gravity(time_required, mob/emit_feedback_to)
+	if(flight_mode)
+		time_required *= 0.25
+		if(time_required >= 1 SECONDS)
+			#warn burn sound / noise for everyone around
+		if(do_vehicle(src, time_required))
+			return TRUE
+		return FALSE
+	return ..()
+
+/obj/vehicle/sealed/mecha/fighter/proc/on_start_flying()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	move_sound = flight_move_sound
+	turn_sound = flight_turn_sound
+
+/obj/vehicle/sealed/mecha/fighter/proc/on_stop_flying()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	move_sound = ground_move_sound
+	turn_sound = ground_turn_sound
+
+#warn hovering
+
+/obj/vehicle/sealed/mecha/fighter/proc/start_hover()
+	if(!ion_trail.on) //We'll just use this to store if we're floating or not
+		ion_trail.start()
+		var/amplitude = 2 //maximum displacement from original position
+		var/period = 36 //time taken for the mob to go up >> down >> original position, in deciseconds. Should be multiple of 4
+
+		var/top = get_managed_pixel_y() + amplitude
+		var/bottom = get_managed_pixel_y() - amplitude
+		var/half_period = period / 2
+		var/quarter_period = period / 4
+
+		animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING | EASE_OUT, loop = -1)		//up
+		animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1)						//down
+		animate(pixel_y = get_managed_pixel_y(), time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
+
+/obj/vehicle/sealed/mecha/fighter/proc/stop_hover()
+	if(ion_trail.on)
+		ion_trail.stop()
+		animate(src, pixel_y = get_managed_pixel_y(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
+
+/obj/vehicle/sealed/mecha/fighter/proc/user_enable_flight(datum/event_args/actor/actor, silent)
+	#warn log this and that
+
+/obj/vehicle/sealed/mecha/fighter/proc/user_disable_flight(datum/event_args/actor/actor, silent)
+
+/obj/vehicle/sealed/mecha/fighter/proc/enable_flight(datum/event_args/actor/actor, silent)
+	#warn impl
+
+	var/datum/vehicle_ui_controller/mecha/fighter/ui_controller = src.ui_controller
+	ui_controller?.update_ui_flight()
+	on_start_flying()
+
+/**
+ * @params
+ * * actor
+ * * silent
+ * * involuntary - set to TRUE if running out of power, pilot ejecting without autopilot, etc
+ */
+/obj/vehicle/sealed/mecha/fighter/proc/disable_flight(datum/event_args/actor/actor, silent, involuntary)
+	#warn impl
+
+	var/datum/vehicle_ui_controller/mecha/fighter/ui_controller = src.ui_controller
+	ui_controller?.update_ui_flight()
+	on_stop_flying()

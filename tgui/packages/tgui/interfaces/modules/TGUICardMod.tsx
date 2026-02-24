@@ -104,7 +104,7 @@ export const TGUICardMod = (props: CardModProps) => {
           uid={props.id}
           access={modifiable}
           selected={data.granted || (new Array<number>())}
-          set={(id) => act('toggle', { access: id })}
+          toggle={(id) => act('toggle', { access: id })}
           grant={(cat) => act('grant', { cat: cat })}
           deny={(cat) => act('deny', { cat: cat })} />
       )}

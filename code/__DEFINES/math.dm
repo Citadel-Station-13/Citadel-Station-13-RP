@@ -157,6 +157,14 @@
 		dec += 360
 	. = inc > dec? -dec : inc
 
+/**
+ * * doesn't need to respect floating points
+ * * accurate down to 1 degree
+ */
+/proc/closer_angle_difference_approximate(a, b)
+	// TODO: faster variant of proc
+	return closer_angle_difference(a, b)
+
 //A logarithm that converts an integer to a number scaled between 0 and 1.
 //Currently, this is used for hydroponics-produce sprite transforming, but could be useful for other transform functions.
 #define TRANSFORM_USING_VARIABLE(input, max) ( sin((90*(input))/(max))**2 )

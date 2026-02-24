@@ -20,8 +20,6 @@ var/global/list/listening_objects = list()
 var/global/list/cable_list = list()
 /// List of all medical sideeffects types by thier names.
 var/global/list/side_effects = list()
-/// List of all mechs. Used by hostile mobs target tracking.
-var/global/list/mechas_list = list()
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")

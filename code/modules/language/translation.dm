@@ -167,7 +167,7 @@
 				translating = FALSE
 		else
 			// nay!
-			// scrmable string
+			// scramble string
 			words[i] = L.scramble_word(str)
 			// see if we should translate again
 			if(prob(current_efficiency))

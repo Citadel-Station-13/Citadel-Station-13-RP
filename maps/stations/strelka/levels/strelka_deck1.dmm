@@ -513,9 +513,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "ch" = (
-/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded{
-	dir = 4
-	},
+/obj/vehicle/sealed/mecha/combat/fighter/pinnace/loaded,
 /obj/machinery/mech_recharger,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -911,8 +909,8 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/item/vehicle_module/weapon/energy/taser,
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbaysec)
 "dD" = (
@@ -5163,7 +5161,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/vehicle_module/weapon/energy/laser/heavy,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/laser/heavy,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
 "vG" = (
@@ -8040,8 +8038,8 @@
 	light_power = 1
 	},
 /obj/structure/railing,
-/obj/item/vehicle_module/weapon/energy/taser,
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbaysec)
 "Io" = (
@@ -9080,8 +9078,8 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/item/vehicle_module/weapon/energy/taser,
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "MM" = (
@@ -10169,8 +10167,8 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/item/vehicle_module/weapon/energy/taser,
-/obj/item/vehicle_module/weapon/energy/phase,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/taser,
+/obj/item/vehicle_module/lazy/legacy/weapon/energy/phase,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "Ru" = (

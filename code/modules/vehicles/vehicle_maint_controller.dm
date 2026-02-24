@@ -1,0 +1,157 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
+
+/datum/vehicle_maint_controller
+	#warn hook
+	var/vehicle_expected_type = /obj/vehicle
+	var/obj/vehicle/vehicle
+	/// UI interface path
+	var/vehicle_ui_path = "vehicle/VehicleMaintController"
+
+	var/queued_component_ref_update = FALSE
+	var/queued_module_ref_update = FALSE
+
+/datum/vehicle_maint_controller/New(obj/vehicle/vehicle)
+	src.vehicle = vehicle
+
+/datum/vehicle_maint_controller/Destroy()
+	if(vehicle.maint_controller == src)
+		vehicle.maint_controller = null
+	return ..()
+
+#warn impl all
+
+/datum/vehicle_maint_controller/ui_data(mob/user, datum/tgui/ui)
+	. = ..()
+	.["integrity"] = vehicle.integrity
+	.["integrityMax"] = vehicle.integrity_max
+	.["name"] = vehicle.name
+	.["panelOpen"] = vehicle.maint_panel_open
+	.["panelBroken"] = !vehicle.maint_panel || (vehicle.maint_panel.atom_flags & ATOM_BROKEN)
+	.["panelLocked"] = vehicle.maint_panel_locked
+
+/datum/vehicle_maint_controller/ui_static_data(mob/user, datum/tgui/ui)
+	. = ..()
+	.["moduleRefs"] = encode_module_refs()
+	.["componentRefs"] = encode_component_refs()
+	#warn send maint panel access
+
+/datum/vehicle_maint_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("removeModule")
+			if(!vehicle.maint_panel_open)
+				#warn reject
+				return TRUE
+			var/ref = params["ref"]
+			if(!istext(ref) || !length(ref))
+				return TRUE
+			var/obj/item/vehicle_module/to_eject = locate(ref) in vehicle.modules
+			if(!to_eject)
+				return TRUE
+			#warn impl
+			return TRUE
+		if("removeComponent")
+			if(!vehicle.maint_panel_open)
+				#warn reject
+				return TRUE
+			var/ref = params["ref"]
+			if(!istext(ref) || !length(ref))
+				return TRUE
+			var/obj/item/vehicle_component/to_eject = locate(ref) in vehicle.components
+			if(!to_eject)
+				return TRUE
+			#warn impl
+			return TRUE
+		if("closePanel")
+			if(!vehicle.maint_panel_open)
+				return TRUE
+			#warn impl
+		if("openPanel")
+			if(vehicle.maint_panel_open)
+				return TRUE
+			#warn impl
+		if("unlockPanel")
+			if(!vehicle.maint_panel_locked)
+				return TRUE
+			#warn impl
+		if("lockPanel")
+			if(vehicle.maint_panel_locked)
+				return TRUE
+			#warn impl
+		if("accessMaintWipe")
+			var/category = params["cat"]
+			if(!category)
+				vehicle.access_maint_req_all = null
+				vehicle.access_maint_req_one = null
+			else
+				var/list/access_ids = SSjob.access_ids_of_category(category)
+				LAZYREMOVE(vehicle.access_maint_req_one, access_ids)
+				LAZYREMOVE(vehicle.access_maint_req_all, access_ids)
+			return TRUE
+		if("accessMaintToggle")
+			var/access = params["id"]
+			var/mode_all = params["mode"] == "all"
+			if(!access || !SSjob.access_id_lookup[params["id"]])
+				return
+			if(!mode_all)
+				if(access in vehicle.access_maint_req_one)
+					LAZYREMOVE(vehicle.access_maint_req_one, access)
+				else
+					LAZYDISTINCTADD(vehicle.access_maint_req_one, access)
+			else
+				if(access in vehicle.access_maint_req_all)
+					LAZYREMOVE(vehicle.access_maint_req_all, access)
+				else
+					LAZYDISTINCTADD(vehicle.access_maint_req_all, access)
+			return TRUE
+	#warn impl all
+
+/datum/vehicle_maint_controller/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, vehicle_ui_path)
+		ui.open()
+
+/datum/vehicle_maint_controller/ui_nested_data(mob/user, datum/tgui/ui)
+	. = ..()
+	for(var/obj/item/vehicle_module/encoding as anything in vehicle.modules)
+		.[ref(encoding)] = encoding.vehicle_ui_module_data()
+	for(var/obj/item/vehicle_component/encoding as anything in vehicle.components)
+		.[ref(encoding)] = encoding.vehicle_ui_component_data()
+
+/datum/vehicle_maint_controller/ui_state(mob/user)
+	. = ..()
+	#warn impl
+
+/datum/vehicle_maint_controller/proc/queue_update_component_refs()
+	if(queued_component_ref_update)
+		return
+	queued_component_ref_update = TRUE
+	addtimer(CALLBACK(src, PROC_REF(update_component_refs)), 0)
+
+/datum/vehicle_maint_controller/proc/update_component_refs()
+	queued_component_ref_update = FALSE
+	push_ui_data(data = list("componentRefs" = encode_component_refs()))
+
+/datum/vehicle_maint_controller/proc/queue_update_module_refs()
+	if(queued_module_ref_update)
+		return
+	queued_module_ref_update = TRUE
+	addtimer(CALLBACK(src, PROC_REF(update_module_refs)), 0)
+
+/datum/vehicle_maint_controller/proc/update_module_refs()
+	queued_module_ref_update = FALSE
+	push_ui_data(data = list("moduleRefs" = encode_module_refs()))
+
+/datum/vehicle_maint_controller/proc/encode_component_refs()
+	. = list()
+	for(var/obj/item/vehicle_component/encoding as anything in vehicle.components)
+		. += ref(encoding)
+
+/datum/vehicle_maint_controller/proc/encode_module_refs()
+	. = list()
+	for(var/obj/item/vehicle_module/encoding as anything in vehicle.modules)
+		. += ref(encoding)

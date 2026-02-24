@@ -687,23 +687,6 @@
 /atom/proc/generate_tag()
 	return
 
-/**
- * Returns true if this atom has gravity for the passed in turf
- *
- * Gravity situations:
- * * No gravity if you're not in a turf
- * * No gravity if this atom is in is a space turf
- * * Gravity if the area it's in always has gravity
- * * Gravity if there's a gravity generator on the z level
- * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
- * * otherwise no gravity
- */
-/atom/proc/has_gravity(turf/T = get_turf(src))
-	if(!T)
-		return FALSE
-
-	return T.has_gravity()
-
 // todo: annihilate this in favor of ATOM_PASS_INCORPOREAL
 /atom/proc/is_incorporeal()
 	return FALSE
@@ -722,7 +705,6 @@
 
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
-
 
 /atom/proc/get_cell(inducer)
 	return
@@ -757,31 +739,6 @@
 /// Resets the atom's color to null, and then sets it to the highest priority colour available
 /atom/proc/update_atom_color()
 	CRASH("base proc hit")
-
-//* Deletions *//
-
-// /**
-//  * Called when something in our contents is being Destroy()'d, before they get moved.
-//  */
-// /atom/proc/handle_contents_del(atom/movable/deleting)
-// 	return
-
-//* Inventory *//
-
-/atom/proc/on_contents_weight_class_change(obj/item/item, old_weight_class, new_weight_class)
-	return
-
-/atom/proc/on_contents_weight_volume_change(obj/item/item, old_weight_volume, new_weight_volume)
-	return
-
-/atom/proc/on_contents_weight_change(obj/item/item, old_weight, new_weight)
-	return
-
-/**
- * called when an /obj/item Initialize()s in us.
- */
-/atom/proc/on_contents_item_new(obj/item/item)
-	return
 
 //? Layers
 

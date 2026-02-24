@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2025 Citadel Station Developers           *//
 
 //! Global balancing numbers; everything should derive off of these so we can adjust everything at once.
 /// global default multiplier for falloff factor

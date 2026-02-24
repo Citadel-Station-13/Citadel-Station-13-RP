@@ -1,3 +1,5 @@
+/obj/vehicle/sealed/mecha/micro/sec
+
 /obj/vehicle/sealed/mecha/micro/sec/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	if(adding.client)

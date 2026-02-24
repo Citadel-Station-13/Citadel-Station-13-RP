@@ -117,18 +117,17 @@
 
 /obj/vehicle/sealed/mecha/combat/honker/cluwne/Initialize(mapload)
 	. = ..()
-	var/obj/item/vehicle_module/ME = new /obj/item/vehicle_module/weapon/energy/pulse
+	var/obj/item/vehicle_module/lazy/legacy/ME = new /obj/item/vehicle_module/lazy/legacy/weapon/energy/pulse
 	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/explosive
+	ME = new /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/ballistic/missile_rack/banana_mortar
+	ME = new /obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/banana_mortar
 	ME.attach(src)
-	ME = new /obj/item/vehicle_module/weapon/honker
+	ME = new /obj/item/vehicle_module/lazy/legacy/weapon/honker
 	ME.attach(src)
 
-/obj/item/vehicle_module/weapon/ballistic/missile_rack/banana_mortar
-	name = "Banana Mortar"
-	icon = 'icons/mecha/mecha_equipment_vr.dmi'
+/obj/item/vehicle_module/lazy/legacy/weapon/ballistic/missile_rack/banana_mortar
+	name = "Banana Mortar"'
 	icon_state = "mecha_bananamrtr"
 	projectile = /obj/item/bananapeel
 	fire_sound = 'sound/items/bikehorn.ogg'
@@ -142,9 +141,8 @@
 			return 0
 		return ..()
 
-/obj/item/vehicle_module/weapon/honker
-	name = "\improper HoNkER BlAsT 5000"
-	icon = 'icons/mecha/mecha_equipment_vr.dmi'
+/obj/item/vehicle_module/lazy/legacy/weapon/honker
+	name = "\improper HoNkER BlAsT 5000"'
 	icon_state = "mecha_honker"
 	energy_drain = 200
 	equip_cooldown = 150

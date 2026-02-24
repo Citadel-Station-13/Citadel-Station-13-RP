@@ -276,6 +276,7 @@ steam.start() -- spawns the effect
 		return
 	if(!ismovable(holder))
 		return
+	oldposition = get_turf(holder)
 	START_PROCESSING(SSprocess_5fps, src)
 	on = TRUE
 

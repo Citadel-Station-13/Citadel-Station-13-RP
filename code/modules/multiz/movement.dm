@@ -126,56 +126,11 @@
 			currentpipe.ventcrawl_to(src, currentpipe.node2, direction)
 	return ..()
 
-/mob/observer/can_ztravel()
-	return TRUE
-
-/mob/living/can_ztravel()
-	if(incapacitated())
-		return FALSE
-	return (hovering || is_incorporeal())
-
-/mob/living/carbon/human/can_ztravel()
-	if(incapacitated())
-		return FALSE
-
-	if(hovering || is_incorporeal())
-		return TRUE
-
-	if(flying) // Allows movement up/down with wings.
-		return 1
-	if(Process_Spacemove())
-		return TRUE
-
-	if(Check_Shoegrip())	//scaling hull with magboots
-		for(var/turf/simulated/T in trange(1,src))
-			if(T.density)
-				return TRUE
-
-/mob/living/silicon/robot/can_ztravel()
-	if(incapacitated() || is_dead())
-		return FALSE
-
-	if(hovering)
-		return TRUE
-
-	if(Process_Spacemove()) //Checks for active jetpack
-		return TRUE
-
-	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"
-		if(T.density)
-			return TRUE
-
-// TODO - Leshana Experimental
-
-//Execution by grand piano!
-/atom/movable/proc/get_fall_damage()
-	return 42
+#warn obliterate this shit
 
 //If atom stands under open space, it can prevent fall, or not
 /atom/proc/can_prevent_fall(var/atom/movable/mover, var/turf/coming_from)
 	return (!CanPass(mover, coming_from))
-
-////////////////////////////
 
 //FALLING STUFF
 // todo: refactor
@@ -365,7 +320,7 @@
 /atom/proc/CheckFall(atom/movable/falling_atom)
 	if(density && !(atom_flags & ATOM_BORDER))
 		return TRUE
-	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
+	return prevent_z_fall(falling_atom, 0, NONE) & (ZFALL_TERMINATED | ZFALL_BLOCKED)
 
 /**
  * If you are hit: how is it handled.
@@ -462,7 +417,6 @@
 /atom/movable/proc/isParachute()
 	return parachute
 
-
 /**
  * This is what makes the parachute items know they've been used.
  * I made it /atom/movable so it can be retooled for other things (mobs, mechs, etc), though it's only currently called in human/CanParachute().
@@ -495,74 +449,6 @@
 		return TRUE
 	else
 		return parachuting
-
-// Mech Code
-/obj/vehicle/sealed/mecha/handle_fall(turf/landing)
-	// First things first, break any lattice
-	var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, loc)
-	if(lattice)
-		// Lattices seem a bit too flimsy to hold up a massive exosuit.
-		lattice.visible_message(SPAN_DANGER("\The [lattice] collapses under the weight of \the [src]!"))
-		qdel(lattice)
-
-	// Then call parent to have us actually fall
-	return ..()
-
-/obj/vehicle/sealed/mecha/fall_impact(var/atom/hit_atom, var/damage_min = 15, var/damage_max = 30, var/silent = FALSE, var/planetary = FALSE)
-	// Anything on the same tile as the landing tile is gonna have a bad day.
-	for(var/mob/living/L in hit_atom.contents)
-		L.visible_message(SPAN_DANGER("\The [src] crushes \the [L] as it lands on them!"))
-		L.adjustBruteLoss(rand(70, 100))
-		L.afflict_paralyze(20 * 8)
-
-	var/turf/landing = get_turf(hit_atom)
-
-	if(planetary && src.CanParachute())
-		if(!silent)
-			visible_message(
-				SPAN_WARNING("\The [src] glides in from above and lands on \the [landing]!"),
-				SPAN_DANGER("You land on \the [landing]!"),
-				SPAN_HEAR("You hear something land \the [landing]."),
-			)
-		return
-	else if(!planetary && src.softfall) // Falling one floor and falling one atmosphere are very different things
-		if(!silent)
-			visible_message(
-				SPAN_WARNING("\The [src] falls from above and lands on \the [landing]!"),
-				SPAN_DANGER("You land on \the [landing]!"),
-				SPAN_HEAR("You hear something land \the [landing]."),
-			)
-		return
-	else
-		if(!silent)
-			if(planetary)
-				visible_message(
-					SPAN_USERDANGER("\A [src] falls out of the sky and crashes into \the [landing]!"),
-					SPAN_USERDANGER("You fall out of the skiy and crash into \the [landing]!"),
-					SPAN_HEAR("You hear something slam into \the [landing]."),
-				)
-				var/turf/T = get_turf(landing)
-				explosion(T, 0, 1, 2)
-			else
-				visible_message(
-					SPAN_WARNING("\The [src] falls from above and slams into \the [landing]!"),
-					SPAN_DANGER("You fall off and hit \the [landing]!"),
-					SPAN_HEAR("You hear something slam into \the [landing]."),
-				)
-			playsound(loc, "punch", 25, TRUE, -1)
-
-	// And now to hurt the mech.
-	if(!planetary)
-		take_damage_legacy(rand(damage_min, damage_max))
-	else
-		for(var/atom/movable/A in src.contents)
-			A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)
-		qdel(src)
-
-	// And hurt the floor.
-	if(istype(hit_atom, /turf/simulated/floor))
-		var/turf/simulated/floor/ground = hit_atom
-		ground.break_tile()
 
 // todo: rewrite this entire file
 /mob/CheckFall(atom/movable/falling_atom)

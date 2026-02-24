@@ -70,24 +70,17 @@ Warning: While there is no regulation regarding visiting and scavenging operatio
 	movement_base_speed = 10 / 10
 	iff_factions = MOB_IFF_FACTION_CASINO
 
+	make_shield_comp = TRUE
+	make_shield_comp_health = 80
+	make_shield_comp_recharge_delay = 20 SECONDS
+	make_shield_comp_recharge_rate = 10
+	make_shield_comp_pattern = /datum/directional_shield_pattern/square/r_3x3
+
 /mob/living/simple_mob/mechanical/combat_drone/lesser/casino/Initialize(mapload)
 	ion_trail = new
 	ion_trail.set_up(src)
 	ion_trail.start()
-
-	shields = new /obj/item/shield_projector/rectangle/automatic/drone/casino(src)
 	return ..()
-
-/obj/projectile/beam/drone
-	damage_force = 10
-
-/obj/item/shield_projector/rectangle/automatic/drone/casino
-	shield_health = 80
-	max_shield_health = 80
-	shield_regen_delay = 20 SECONDS
-	shield_regen_amount = 10
-	size_x = 1
-	size_y = 1
 
 /mob/living/simple_mob/animal/space/bear/brown/casino
 	icon = 'icons/mob/vore.dmi'

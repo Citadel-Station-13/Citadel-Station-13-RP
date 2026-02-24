@@ -578,7 +578,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cE" = (
-/obj/item/vehicle_module/tool/drill/diamonddrill,
+/obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cG" = (
@@ -2068,7 +2068,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hV" = (
-/obj/item/vehicle_module/tool/drill/diamonddrill,
+/obj/item/vehicle_module/lazy/legacy/tool/drill/diamonddrill,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "hW" = (
@@ -2419,7 +2419,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "wl" = (
-/obj/vehicle/sealed/mecha/combat/marauder/mauler{
+/obj/vehicle/sealed/mecha/combat/marauder/equipped/mauler{
 	operation_req_access = list()
 	},
 /turf/simulated/floor/bluegrid{

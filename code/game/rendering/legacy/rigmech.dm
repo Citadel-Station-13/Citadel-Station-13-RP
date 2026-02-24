@@ -93,7 +93,6 @@
 	var/atom/movable/screen/mech/power/power
 	var/atom/movable/screen/mech/health/health
 	var/atom/movable/screen/mech/air/air
-	var/atom/movable/screen/mech/airtoggle/airtoggle
 
 	needs_processing = TRUE
 
@@ -102,9 +101,8 @@
 	power = new ()
 	health = new ()
 	air = new ()
-	airtoggle = new ()
 
-	screenobjs = list(power, health, air, airtoggle)
+	screenobjs = list(power, health, air)
 	screenobjs += new /atom/movable/screen/mech/deco1
 	screenobjs += new /atom/movable/screen/mech/deco2
 	screenobjs += new /atom/movable/screen/mech/deco1_f
@@ -126,7 +124,7 @@
 		qdel(src)
 		return
 
-	var/obj/item/cell/mechcell = owner_mech.cell
+	var/obj/item/cell/mechcell = owner_mech.power_cell
 	var/obj/machinery/portable_atmospherics/canister/mechtank = owner_mech.internal_tank
 
 	var/charge_percentage = mechcell ? mechcell.charge / mechcell.max_charge : 0
@@ -137,7 +135,6 @@
 	power.icon_state = "pwr[round(charge_percentage / 0.2, 1)]"
 	air.icon_state = "air[round(air_percentage / 0.2, 1)]"
 	health.icon_state = "health[round(health_percentage / 0.2, 1)]"
-	airtoggle.icon_state = "airon[air_on]"
 
 // Screen objects
 /atom/movable/screen/hardsuit
@@ -229,20 +226,6 @@
 	name = "Air Storage"
 	icon_state = "air5"
 	screen_loc = ui_mech_air
-
-/atom/movable/screen/mech/airtoggle
-	name = "Toggle Air"
-	icon_state = "airoff"
-	screen_loc = ui_mech_airtoggle
-
-/atom/movable/screen/mech/airtoggle/Click()
-	var/mob/living/carbon/human/user = usr
-	if(!istype(user) || user.stat || user.incapacitated())
-		return
-	var/obj/vehicle/sealed/mecha/owner_mech = master
-	if(user != owner_mech.occupant_legacy)
-		return
-	owner_mech.toggle_internal_tank()
 
 /*
 /mob/observer/dead/create_mob_hud(datum/hud/HUD, apply_to_client = TRUE)

@@ -1,4 +1,4 @@
-/obj/item/vehicle_module/tool/passenger
+/obj/item/vehicle_module/lazy/legacy/tool/passenger
 	name = "passenger compartment"
 	desc = "A mountable passenger compartment for exosuits. Rather cramped."
 	icon_state = "mecha_passenger"
@@ -7,22 +7,18 @@
 	range = MELEE
 	equip_cooldown = 20
 	var/mob/living/carbon/occupant_legacy = null
-	var/door_locked = 1
-	salvageable = 0
-	allow_duplicate = TRUE
+	var/door_locked = TRUE
 
-	equip_type = EQUIP_HULL
-
-/obj/item/vehicle_module/tool/passenger/destroy()
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/destroy()
 	for(var/atom/movable/AM in src)
 		AM.forceMove(get_turf(src))
 		to_chat(AM, "<span class='danger'>You tumble out of the destroyed [src.name]!</span>")
 	return ..()
 
-/obj/item/vehicle_module/tool/passenger/Exit(atom/movable/O)
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/Exit(atom/movable/O)
 	return 0
 
-/obj/item/vehicle_module/tool/passenger/proc/move_inside(var/mob/user)
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/proc/move_inside(var/mob/user)
 	if (chassis)
 		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
 
@@ -36,7 +32,6 @@
 				user.update_perspective()
 			add_verb(user, /mob/proc/verb_eject_mech_passenger)
 			occupant_legacy = user
-			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
 		else if(src.occupant_legacy != user)
 			to_chat(user, "<span class='warning'>[src.occupant_legacy] was faster. Try harder next time, loser.</span>")
@@ -49,7 +44,7 @@
 	set category = "Exosuit Interface"
 	set src = usr
 
-	var/obj/item/vehicle_module/tool/passenger/pod = loc
+	var/obj/item/vehicle_module/lazy/legacy/tool/passenger/pod = loc
 	if(!istype(pod))
 		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
@@ -60,10 +55,9 @@
 	to_chat(src, "You climb out from \the [src].")
 	pod.go_out()
 	pod.occupant_message("[pod.occupant_legacy] disembarked.")
-	pod.log_message("[pod.occupant_legacy] disembarked.")
 	pod.add_fingerprint(src)
 
-/obj/item/vehicle_module/tool/passenger/proc/go_out()
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/proc/go_out()
 	if(!occupant_legacy)
 		return
 	remove_verb(occupant_legacy, /mob/proc/verb_eject_mech_passenger)
@@ -72,33 +66,64 @@
 	occupant_legacy = null
 	return
 
-/obj/item/vehicle_module/tool/passenger/attach()
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/on_install(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
 	..()
-	if (chassis)
-		add_obj_verb(chassis, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
+	add_obj_verb(vehicle, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
 
-/obj/item/vehicle_module/tool/passenger/detach()
-	if(occupant_legacy)
-		occupant_message("Unable to detach [src] - equipment occupied.")
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/on_uninstall(obj/vehicle/vehicle, datum/event_args/actor/actor, silent)
+	go_out()
+	..()
+	if(!(locate(/obj/item/vehicle_module/lazy/legacy/tool/passenger) in vehicle.modules))
+		remove_verb(vehicle, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
+
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/render_ui()
+	..()
+	l_ui_select("lock", "Hatch Lock", list("Locked", "Unlocked"), door_locked ? "Locked" : "Unlocked")
+	l_ui_html("Occupant", occupant_legacy ? "None" : "[occupant_legacy]")
+	l_ui_button("eject", "Eject", "Forcefully Eject Occupant", FALSE, !occupant_legacy, TRUE)
+
+/obj/item/vehicle_module/lazy/legacy/tool/passenger/on_l_ui_select(datum/event_args/actor/actor, key, name)
+	. = ..()
+	if(.)
 		return
+	switch(key)
+		if("lock")
+			switch(name)
+				if("Locked")
+					if(door_locked)
+						return TRUE
+					door_locked = TRUE
+					#warn log
+					#warn chassis / occupant message?
+					return TRUE
+				if("Unlocked")
+					if(!door_locked)
+						return TRUE
+					door_locked = FALSE
+					#warn log
+					#warn chassis / occupant message?
+					return TRUE
+		if("eject")
+			if(!occupant_legacy)
+				return TRUE
+			vehicle.visible_message(
+				SPAN_WARNING("[vehicle] begins opening the door on [src]..."),
+			)
+			vehicle_log_for_admins(actor, "began-ejecting", list("occupant" = key_name(occupant_legacy)))
+			ASYNC
+				if(!vehicle_do_after(actor, 5 SECONDS, vehicle))
+					return TRUE
+				if(!occupant_legacy)
+					return TRUE
+				vehicle.visible_message(
+					SPAN_WARNING("[vehicle] opens the door on its [src] and ejects [occupant_legacy]!"),
+				)
+				vehicle_log_for_admins(actor, "ejected", list("occupant" = key_name(occupant_legacy)))
+				go_out()
+				occupant_message("Ejected [occupant_legacy].")
+			return TRUE
 
-	var/obj/vehicle/sealed/mecha/M = chassis
-	..()
-	if (M && !(locate(/obj/item/vehicle_module/tool/passenger) in M))
-		remove_obj_verb(M, /obj/vehicle/sealed/mecha/proc/move_inside_passenger)
-
-/obj/item/vehicle_module/tool/passenger/get_equip_info()
-	return "[..()] <br />[occupant_legacy? "\[Occupant: [occupant_legacy]\]|" : ""]Exterior Hatch: <a href='?src=\ref[src];toggle_lock=1'>Toggle Lock</a>"
-
-/obj/item/vehicle_module/tool/passenger/Topic(href,href_list)
-	..()
-	if (href_list["toggle_lock"])
-		door_locked = !door_locked
-		occupant_message("Passenger compartment hatch [door_locked? "locked" : "unlocked"].")
-		if (chassis)
-			chassis.visible_message("The hatch on \the [chassis] [door_locked? "locks" : "unlocks"].", "You hear something latching.")
-
-
+// TODO: nuke this stupid fucking verb / proc and make it a managed action / context menu thing.
 #define LOCKED 1
 #define OCCUPIED 2
 
@@ -132,12 +157,15 @@
 
 	//search for a valid passenger compartment
 	var/feedback = 0 //for nicer user feedback
-	for(var/obj/item/vehicle_module/tool/passenger/P in src)
+	for(var/obj/item/vehicle_module/lazy/legacy/tool/passenger/P in src)
+		var/didnt_pass = FALSE
 		if (P.occupant_legacy)
 			feedback |= OCCUPIED
-			continue
+			didnt_pass = TRUE
 		if (P.door_locked)
 			feedback |= LOCKED
+			didnt_pass = TRUE
+		if(didnt_pass)
 			continue
 
 		//found a boardable compartment

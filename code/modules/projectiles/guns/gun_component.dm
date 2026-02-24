@@ -71,7 +71,7 @@
  * * silent - do not emit message to user on fail
  */
 /obj/item/gun_component/proc/fits_on_gun(obj/item/gun/gun, gun_opinion, gun_is_full, datum/event_args/actor/actor, silent)
-	return TRUE
+	return gun_opinion && !gun_is_full
 
 /**
  * called on attach
