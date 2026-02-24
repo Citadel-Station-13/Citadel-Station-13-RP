@@ -171,7 +171,7 @@
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "gH" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
 "gL" = (
@@ -823,7 +823,7 @@
 /turf/simulated/floor,
 /area/sector/sky_planet/ground)
 "Ez" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/structure/table/rack/shelf/steel,
 /obj/random/action_figure/supplypack,
 /obj/item/reagent_containers/glass/beaker/vial/random,

@@ -32,8 +32,8 @@
 		contains = 2
 		update_icon()
 		return
-	else if(istype(target, /obj/effect/spider/spiderling))
-		var/obj/effect/spider/spiderling/S = target
+	else if(istype(target, /obj/structure/spider/spiderling))
+		var/obj/structure/spider/spiderling/S = target
 		user.visible_message("<span class='notice'>[user] scoops [S] into \the [src].</span>", "<span class='notice'>You scoop [S] into \the [src].</span>")
 		S.loc = src
 		STOP_PROCESSING(SSobj, S) // No growing inside jars
@@ -61,7 +61,7 @@
 			update_icon()
 			return
 		if(3)
-			for(var/obj/effect/spider/spiderling/S in src)
+			for(var/obj/structure/spider/spiderling/S in src)
 				S.forceMove(user.loc)
 				user.visible_message("<span class='notice'>[user] releases [S] from \the [src].</span>", "<span class='notice'>You release [S] from \the [src].</span>")
 				START_PROCESSING(SSobj, S) // They can grow after being let out though
@@ -112,7 +112,7 @@
 				name = "glass jar with [M]"
 				desc = "A small jar with [M] inside."
 		if(3)
-			for(var/obj/effect/spider/spiderling/S in src)
+			for(var/obj/structure/spider/spiderling/S in src)
 				var/image/victim = image(S.icon, S.icon_state)
 				underlays += victim
 				name = "glass jar with [S]"

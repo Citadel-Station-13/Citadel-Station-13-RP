@@ -1,6 +1,6 @@
 #define NEIGHBOR_REFRESH_TIME 50
 
-/obj/effect/plant/proc/get_cardinal_neighbors()
+/obj/structure/plant/proc/get_cardinal_neighbors()
 	var/list/cardinal_neighbors = list()
 	for(var/check_dir in GLOB.cardinal)
 		var/turf/simulated/T = get_step(get_turf(src), check_dir)
@@ -8,7 +8,7 @@
 			cardinal_neighbors |= T
 	return cardinal_neighbors
 
-/obj/effect/plant/proc/update_neighbors()
+/obj/structure/plant/proc/update_neighbors()
 	// Update our list of valid neighboring turfs.
 	neighbors = list()
 	for(var/turf/simulated/floor in get_cardinal_neighbors())
@@ -16,7 +16,7 @@
 			continue
 
 		var/blocked = 0
-		for(var/obj/effect/plant/other in floor.contents)
+		for(var/obj/structure/plant/other in floor.contents)
 			if(other.seed == src.seed)
 				blocked = 1
 				break
@@ -37,11 +37,11 @@
 
 	// Update all of our friends.
 	var/turf/T = get_turf(src)
-	for(var/obj/effect/plant/neighbor in range(1,src))
+	for(var/obj/structure/plant/neighbor in range(1,src))
 		if(neighbor.seed == src.seed)
 			neighbor.neighbors -= T
 
-/obj/effect/plant/process(delta_time)
+/obj/structure/plant/process(delta_time)
 
 	// Something is very wrong, kill ourselves.
 	if(!seed)
@@ -106,7 +106,7 @@
 				if(seed.get_trait(TRAIT_SPREAD) >= 2 && (M.lying || prob(round(seed.get_trait(TRAIT_POTENCY)))))
 					entangle(M)
 	if(is_mature())
-		for(var/obj/effect/plant/thing in loc)
+		for(var/obj/structure/plant/thing in loc)
 			if(thing != src)
 				if(thing.seed != seed)
 					thing.vine_overrun(src,src)
@@ -129,8 +129,8 @@
 
 //spreading vines aren't created on their final turf.
 //Instead, they are created at their parent and then move to their destination.
-/obj/effect/plant/proc/spread_to(turf/target_turf)
-	var/obj/effect/plant/child = new(get_turf(src),seed,parent)
+/obj/structure/plant/proc/spread_to(turf/target_turf)
+	var/obj/structure/plant/child = new(get_turf(src),seed,parent)
 
 	spawn(1) // This should do a little bit of animation.
 		if(QDELETED(child))
@@ -144,13 +144,13 @@
 
 		//see if anything is there
 		for(var/thing in child.loc)
-			if(thing != child && istype(thing, /obj/effect/plant))
-				var/obj/effect/plant/other = thing
+			if(thing != child && istype(thing, /obj/structure/plant))
+				var/obj/structure/plant/other = thing
 				if(other.seed != child.seed)
 					other.vine_overrun(child.seed, src) //vine fight
 				qdel(child)
 				return
-			if(istype(thing, /obj/effect/dead_plant))
+			if(istype(thing, /obj/structure/dead_plant))
 				qdel(thing)
 				qdel(child)
 				return
@@ -160,23 +160,23 @@
 				return
 
 		// Update neighboring squares.
-		for(var/obj/effect/plant/neighbor in range(1, child.loc)) //can use the actual final child loc now
+		for(var/obj/structure/plant/neighbor in range(1, child.loc)) //can use the actual final child loc now
 			if(child.seed == neighbor.seed) //neighbors of different seeds will continue to try to overrun each other
 				neighbor.neighbors -= target_turf
 
 		child.finish_spreading()
 
-/obj/effect/plant/Cross(atom/movable/AM)
+/obj/structure/plant/Cross(atom/movable/AM)
 	// we check here to prevent plants from stacking up from zlevel falling
 	// since zfall obstructions check Cross()ing
-	if(istype(AM, /obj/effect/plant)) // no stackies!!
-		var/obj/effect/plant/enemy = AM
+	if(istype(AM, /obj/structure/plant)) // no stackies!!
+		var/obj/structure/plant/enemy = AM
 		if(enemy.seed != seed)
 			return TRUE // yes vines, battle to the death!!
 		return FALSE
 	return ..()
 
-/obj/effect/plant/proc/die_off(destroying)
+/obj/structure/plant/proc/die_off(destroying)
 	// Kill off our plant.
 	if(plant)
 		plant.die()
@@ -184,7 +184,7 @@
 	for(var/turf/simulated/check_turf in get_cardinal_neighbors())
 		if(!istype(check_turf))
 			continue
-		for(var/obj/effect/plant/neighbor in check_turf.contents)
+		for(var/obj/structure/plant/neighbor in check_turf.contents)
 			neighbor.neighbors |= check_turf
 			SSplants.add_plant(neighbor)
 	if(!destroying)

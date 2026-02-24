@@ -91,7 +91,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "nN" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/carpet/bcarpet/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "nY" = (
@@ -128,7 +128,7 @@
 /area/submap/lythios/west_caves/buried_structure)
 "rT" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "te" = (
@@ -150,7 +150,7 @@
 /obj/machinery/door/airlock/external,
 /obj/effect/overlay/snow/airlock,
 /obj/structure/catwalk,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "tW" = (
@@ -174,7 +174,7 @@
 /area/submap/lythios/west_caves/buried_structure)
 "xM" = (
 /obj/structure/catwalk,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "yj" = (
@@ -305,7 +305,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "Jz" = (
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /obj/structure/table/rack,
 /obj/item/pickaxe,
 /obj/item/pickaxe,
@@ -372,7 +372,7 @@
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "Qb" = (
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "Qo" = (
@@ -415,7 +415,7 @@
 /obj/machinery/door/airlock{
 	icon_state = "door_open"
 	},
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "Vh" = (
@@ -433,7 +433,7 @@
 	dir = 8;
 	light_range = 12
 	},
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wood/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "We" = (
@@ -446,7 +446,7 @@
 /area/submap/lythios/west_caves/buried_structure)
 "WO" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wood/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "WQ" = (
@@ -462,7 +462,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/wood/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "Xo" = (

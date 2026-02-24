@@ -10,7 +10,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "ad" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/shuttle/plating,
 /area/submap/CrashedMedShuttle)
 "ae" = (
@@ -50,7 +50,7 @@
 /obj/structure/sign/warning/airlock{
 	pixel_x = 32
 	},
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/shuttle/plating,
 /area/submap/CrashedMedShuttle)
 "ak" = (
@@ -107,7 +107,7 @@
 /area/submap/CrashedMedShuttle)
 "au" = (
 /obj/structure/closet/secure_closet/personal/patient,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "av" = (
@@ -173,13 +173,13 @@
 /area/submap/CrashedMedShuttle)
 "aI" = (
 /obj/structure/table/standard,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aJ" = (
 /obj/structure/table/standard,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aK" = (
@@ -187,7 +187,7 @@
 /obj/item/material/shard{
 	icon_state = "medium"
 	},
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aL" = (
@@ -210,7 +210,7 @@
 /obj/item/material/shard{
 	icon_state = "medium"
 	},
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/carrier,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
@@ -219,7 +219,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aQ" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aR" = (
@@ -234,7 +234,7 @@
 "aT" = (
 /obj/machinery/light,
 /obj/structure/table/standard,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aU" = (
@@ -246,7 +246,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aV" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aW" = (
@@ -262,7 +262,7 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/CrashedMedShuttle)
 "aZ" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/CrashedMedShuttle)
 "ba" = (
@@ -270,7 +270,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/CrashedMedShuttle)
 "bb" = (
-/obj/effect/spider/cocoon,
+/obj/structure/spider/cocoon,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/CrashedMedShuttle)
 "bc" = (
@@ -284,7 +284,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "be" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/structure/girder/displaced,
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/rocks,
@@ -324,7 +324,7 @@
 /area/submap/CrashedMedShuttle)
 "bj" = (
 /obj/item/material/shard,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/item/beartrap{
 	anchored = 1;
 	deployed = 1;
@@ -339,7 +339,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bl" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/item/material/shard,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
@@ -352,7 +352,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bo" = (
-/obj/effect/spider/cocoon,
+/obj/structure/spider/cocoon,
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
@@ -371,7 +371,7 @@
 /area/submap/CrashedMedShuttle)
 "bs" = (
 /obj/effect/debris/cleanable/blood/drip,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/webslinger,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/CrashedMedShuttle)
@@ -386,7 +386,7 @@
 /area/submap/CrashedMedShuttle)
 "bv" = (
 /obj/effect/debris/cleanable/blood/oil,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bw" = (
@@ -485,7 +485,7 @@
 /area/submap/CrashedMedShuttle)
 "bN" = (
 /obj/effect/debris/cleanable/blood/gibs/robot,
-/obj/effect/spider/cocoon,
+/obj/structure/spider/cocoon,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "bO" = (
@@ -510,7 +510,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "bQ" = (
-/obj/effect/spider/cocoon,
+/obj/structure/spider/cocoon,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "bR" = (
@@ -558,7 +558,7 @@
 /area/submap/CrashedMedShuttle)
 "bZ" = (
 /obj/structure/table/standard,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/random/medical,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
@@ -611,7 +611,7 @@
 "ch" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/syringes,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)

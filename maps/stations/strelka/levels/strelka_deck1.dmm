@@ -124,7 +124,6 @@
 /obj/machinery/light/small/old{
 	light_power = 1
 	},
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "aP" = (
@@ -711,29 +710,6 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/civvie/strelka)
-"cX" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 5
-	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/structure/cable/blue{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/plain,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/obj/structure/sign/christmas/wreath{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/strelka/deck1)
 "dc" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/personalmicro3)
@@ -1824,10 +1800,6 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/shuttle/personalmicro1)
-"hE" = (
-/obj/structure/sign/christmas/lights,
-/turf/simulated/floor/tiled/techfloor,
-/area/hallway/strelka/deck1)
 "hG" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/grass_edge/corner{
@@ -2577,7 +2549,6 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "kl" = (
@@ -2963,9 +2934,6 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloorblack,
-/obj/structure/sign/christmas/wreath{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "lS" = (
@@ -5092,9 +5060,6 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /obj/item/radio/intercom/north_mount{
 	dir = 1;
 	pixel_y = 18
@@ -5141,7 +5106,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "vn" = (
@@ -5453,9 +5417,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/structure/sign/christmas/wreath{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
@@ -6171,7 +6132,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "zM" = (
@@ -6834,7 +6794,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "CW" = (
@@ -6916,16 +6875,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/toolstorage)
-"Dl" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 10
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/structure/sign/christmas/wreath,
-/turf/simulated/floor/tiled/techfloor,
-/area/hallway/strelka/deck1)
 "Dm" = (
 /obj/vehicle/sealed/mecha/combat/fighter/baron/sec/loaded{
 	dir = 4
@@ -8593,9 +8542,6 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "Ki" = (
@@ -8647,7 +8593,6 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "Ky" = (
@@ -8789,7 +8734,6 @@
 	dir = 1;
 	light_power = 1
 	},
-/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "KZ" = (
@@ -9039,9 +8983,6 @@
 /obj/structure/sign/deck/first{
 	pixel_y = 31
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "Mq" = (
@@ -9097,7 +9038,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/plain,
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "MF" = (
@@ -9202,7 +9142,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/grass_edge,
-/obj/structure/sign/christmas/wreath,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "MU" = (
@@ -9653,9 +9592,6 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -30
 	},
-/obj/structure/sign/christmas/wreath{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "OP" = (
@@ -9693,9 +9629,6 @@
 /area/hallway/strelka/deck1)
 "Pa" = (
 /obj/machinery/fire_alarm/north_mount,
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "Pc" = (
@@ -9725,9 +9658,6 @@
 /area/security/strelka/armory2)
 "Pi" = (
 /obj/machinery/computer/timeclock/premade/north,
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "Pk" = (
@@ -10275,9 +10205,6 @@
 /obj/machinery/air_alarm{
 	pixel_y = 22
 	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "Rz" = (
@@ -10730,7 +10657,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/strelka/deck1)
 "Tt" = (
@@ -10987,7 +10913,6 @@
 /obj/effect/floor_decal/grass_edge{
 	dir = 1
 	},
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
 "Ut" = (
@@ -11955,9 +11880,6 @@
 	},
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
-	},
-/obj/structure/sign/christmas/lights{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hallway/strelka/deck1)
@@ -32135,7 +32057,7 @@ QF
 EC
 MT
 VJ
-cX
+wE
 Re
 Vg
 Dh
@@ -33491,7 +33413,7 @@ Db
 oV
 zR
 ji
-Dl
+cm
 VW
 OJ
 VN
@@ -35628,7 +35550,7 @@ Pa
 cm
 Mn
 TA
-hE
+oy
 ml
 in
 BC
@@ -35822,7 +35744,7 @@ Pi
 Yb
 Mn
 TA
-hE
+oy
 ml
 cO
 ro

@@ -52,7 +52,7 @@
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "s" = (
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /obj/structure/outcrop/gold,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
@@ -66,28 +66,28 @@
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "y" = (
-/obj/effect/spider/stickyweb/dark,
-/obj/effect/spider/eggcluster,
-/obj/effect/spider/cocoon,
+/obj/structure/spider/stickyweb/dark,
+/obj/structure/spider/eggcluster,
+/obj/structure/spider/cocoon,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "z" = (
 /obj/random/mob/spider/nurse,
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "A" = (
-/obj/effect/spider/stickyweb,
-/obj/effect/spider/cocoon,
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/cocoon,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "B" = (
-/obj/effect/spider/stickyweb,
-/obj/effect/spider/eggcluster,
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/eggcluster,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "C" = (
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "E" = (
@@ -121,12 +121,12 @@
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "M" = (
-/obj/effect/spider/stickyweb/dark,
-/obj/effect/spider/cocoon,
+/obj/structure/spider/stickyweb/dark,
+/obj/structure/spider/cocoon,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "O" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /obj/structure/outcrop/gold,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
@@ -136,11 +136,11 @@
 /area/class_h/POIs/goldmine)
 "R" = (
 /obj/random/mob/spider/nurse,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "S" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "U" = (
@@ -152,8 +152,8 @@
 /area/class_h/POIs/goldmine)
 "W" = (
 /obj/random/mob/spider/nurse,
-/obj/effect/spider/stickyweb,
-/obj/effect/spider/cocoon,
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/cocoon,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "X" = (
@@ -161,7 +161,7 @@
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)
 "Z" = (
-/obj/effect/spider/stickyweb/dark,
+/obj/structure/spider/stickyweb/dark,
 /obj/random/multiple/miningdrills,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/POIs/goldmine)

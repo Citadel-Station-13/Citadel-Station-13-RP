@@ -45,6 +45,6 @@
 		return
 	..()
 	if(target)
-		if(istype(target,/obj/effect/plant))
-			var/obj/effect/plant/P = target
+		if(istype(target,/obj/structure/plant))
+			var/obj/structure/plant/P = target
 			P.die_off()

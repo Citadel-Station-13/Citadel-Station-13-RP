@@ -510,11 +510,11 @@
 	path = /obj/item/clothing/suit/storage/toggle/necroagent
 	allowed_roles = list("Detective")
 
-/datum/loadout_entry/restricted/security/suit/wintercoat
+/datum/loadout_entry/restricted/security/suit/wintercoat/sec
 	name = "Security Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security
 
-/datum/loadout_entry/restricted/security/suit/wintercoat
+/datum/loadout_entry/restricted/security/suit/wintercoat/hos
 	name = "Head of Securitys Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
 	allowed_roles = list("Head of Security")
