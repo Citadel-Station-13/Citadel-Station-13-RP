@@ -20631,7 +20631,7 @@
 /area/maintenance/tool_storage)
 "oTD" = (
 /obj/structure/table/woodentable,
-/obj/machinery/librarycomp,
+/obj/machinery/computer/libraryconsole/bookmanagement,
 /turf/simulated/floor/wood,
 /area/library)
 "oUi" = (

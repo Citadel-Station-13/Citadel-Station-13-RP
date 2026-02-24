@@ -1,7 +1,5 @@
-/*
- * Home of the New (NOV 1st, 2019) library books.
- */
 
+//! stop adding new books here. if it has a ckey it can be added thru the database
 /obj/item/book/custom_library
 	name = "Book"
 	desc = "A hardbound book."
@@ -12,7 +10,8 @@
 
 	// This is the ckey of the book's author.
 	var/origkey = null
-	author = "UNKNOWN"
+	starting_author = "UNKNOWN"
+	var/libcategory = "NOBODY_USES_THIS"
 
 /obj/item/book/custom_library/fiction
 	libcategory = "Fiction"
@@ -39,7 +38,8 @@
 
 	// This is the ckey of the book's author.
 	var/origkey = null
-	author = "UNKNOWN"
+	starting_author = "UNKNOWN"
+	var/libcategory = "NOBODY_USES_THIS"
 
 	page = 1 //current page
 	pages = list() //the contents of each page
