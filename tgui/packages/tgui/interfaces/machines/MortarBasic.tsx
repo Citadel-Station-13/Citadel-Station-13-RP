@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 /* eslint-disable react/jsx-max-depth */
 import { useState } from 'react';
 import {

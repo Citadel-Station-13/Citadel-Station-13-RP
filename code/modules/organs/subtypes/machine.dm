@@ -38,6 +38,10 @@
 	robotic = ORGAN_ASSISTED
 	butcherable = FALSE
 
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	// TODO: /obj/item/organ/internal/consciousness_holder or something, this is just copypaste
+	var/compatible_with_mirrors = TRUE
+
 /obj/item/organ/internal/mmi_holder/Destroy()
 	if(stored_mmi && (stored_mmi.loc == src))
 		qdel(stored_mmi)
@@ -101,6 +105,8 @@
 	name = "positronic brain interface"
 	brain_type = /obj/item/mmi/digital/posibrain
 	robotic = ORGAN_ROBOT
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	compatible_with_mirrors = TRUE
 
 /obj/item/organ/internal/mmi_holder/posibrain/update_from_mmi()
 	..()
@@ -113,6 +119,8 @@
 	name = "digital brain interface"
 	brain_type = /obj/item/mmi/digital/robot
 	robotic = ORGAN_ROBOT
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	compatible_with_mirrors = TRUE
 
 /obj/item/organ/internal/mmi_holder/robot/update_from_mmi()
 	..()

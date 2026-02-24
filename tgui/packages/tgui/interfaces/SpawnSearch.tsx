@@ -60,7 +60,7 @@ export const SpawnSearch = () => {
     abstractTypes: [],
     fancyTypes: {},
   });
-  const [selected, setSelected] = useState<number>(0);
+  const [selected, setSelected] = useState<number | null>(null);
   const [query, setQuery] = useState<string>(
     (regexSearch ? 're:' : '') + (initValue || ''),
   );
@@ -199,7 +199,7 @@ export const SpawnSearch = () => {
 
   // Grabs the cursor when no search bar is visible.
   if (!searchBarVisible) {
-    setTimeout(() => document!.getElementById(selected.toString())?.focus(), 1);
+    setTimeout(() => selected !== null && document!.getElementById(selected.toString())?.focus(), 1);
   }
 
   return (
@@ -258,7 +258,9 @@ export const SpawnSearch = () => {
 
             if (keyCode === KEY_ENTER) {
               event.preventDefault();
-              onSelected(filteredItems[selected]);
+              if(selected) {
+                onSelected(filteredItems[selected]);
+              }
             }
 
             if (keyCode === KEY_ESCAPE) {
@@ -364,7 +366,7 @@ export const SpawnSearch = () => {
                 autoFocus
                 autoSelect
                 fluid
-                onEnter={() => onSelected(filteredItems[selected])}
+                onEnter={() => selected !== null && onSelected(filteredItems[selected])}
                 onChange={onSearch}
                 placeholder="Search..."
                 value={query}

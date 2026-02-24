@@ -1755,7 +1755,6 @@
 "qX" = (
 /obj/structure/closet/crate,
 /obj/item/storage/box/bloodpacks,
-/obj/item/storage/box/backup_kit,
 /obj/item/storage/box/gloves,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/awaymission/shipcave/ship/medical)

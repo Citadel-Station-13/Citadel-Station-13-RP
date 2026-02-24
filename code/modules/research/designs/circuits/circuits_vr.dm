@@ -71,32 +71,6 @@
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/mecha/weasel/targeting
 
-/datum/prototype/design/circuit/transhuman_clonepod
-	design_name = "grower pod"
-	id = "transhuman_clonepod"
-	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
-	build_path = /obj/item/circuitboard/transhuman_clonepod
-
-/datum/prototype/design/circuit/transhuman_synthprinter
-	design_name = "SynthFab 3000"
-	id = "transhuman_synthprinter"
-	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
-	build_path = /obj/item/circuitboard/transhuman_synthprinter
-
-/datum/prototype/design/circuit/transhuman_resleever
-	design_name = "Resleeving pod"
-	id = "transhuman_resleever"
-	req_tech = list(TECH_ENGINEERING = 4, TECH_BIO = 4)
-	build_path = /obj/item/circuitboard/transhuman_resleever
-
-// Resleeving
-
-/datum/prototype/design/circuit/resleeving_control
-	design_name = "Resleeving control console"
-	id = "resleeving_control"
-	req_tech = list(TECH_DATA = 5)
-	build_path = /obj/item/circuitboard/resleeving_control
-
 // Telesci stuff
 
 /datum/prototype/design/circuit/telesci_console

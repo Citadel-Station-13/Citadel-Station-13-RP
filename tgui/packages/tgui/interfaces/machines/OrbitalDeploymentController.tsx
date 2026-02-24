@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { useEffect, useState } from 'react';
 import {
   Button,

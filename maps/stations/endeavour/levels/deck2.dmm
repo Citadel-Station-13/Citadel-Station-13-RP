@@ -13635,7 +13635,7 @@
 /turf/simulated/floor/wood/sif/indoors,
 /area/medical/reception)
 "jyA" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /obj/machinery/camera/network/research{
 	dir = 8;
 	network = list("Research","Toxins  Test  Area")
@@ -22686,7 +22686,6 @@
 /area/medical/medbay4)
 "pUT" = (
 /obj/structure/closet/secure_closet/CMO,
-/obj/item/cmo_disk_holder,
 /obj/item/flashlight/pen,
 /obj/item/storage/belt/medical,
 /obj/item/clothing/glasses/hud/health,
@@ -27698,7 +27697,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d2amidportmaint/endeavour)
 "tAO" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -30599,7 +30598,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "vMB" = (
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/light{
 	dir = 1
@@ -31218,7 +31217,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "whs" = (
-/obj/machinery/computer/transhuman/resleeving{
+/obj/machinery/computer/resleeving{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -31418,7 +31417,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "wnk" = (
-/obj/machinery/clonepod/transhuman,
+/obj/machinery/resleeving/body_printer/grower_pod,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled,
 /area/medical/resleeving)
@@ -33264,7 +33263,7 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 6
 	},
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/robotics)
 "xvN" = (

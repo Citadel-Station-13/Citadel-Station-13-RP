@@ -216,13 +216,6 @@
 
 	remove_verb(M, M.species.inherent_verbs)	//Take away their unique stuff
 
-	var/list/backup_implants = list()
-	for(var/obj/item/organ/I in M.organs)
-		for(var/obj/item/implant/backup/BI in I.contents)
-			backup_implants += BI
-	if(backup_implants.len)
-		for(var/obj/item/implant/backup/BI in backup_implants)
-			BI.forceMove(src)
 	if(color_action == 1)
 		M.set_species(O.species.name, example = M)
 	else if(color_action == 2)
@@ -233,13 +226,6 @@
 
 	M.update_icons_body()
 	M.render_spriteacc_tail()
-
-	if(backup_implants.len)
-		var/obj/item/organ/external/torso = M.get_organ(BP_TORSO)
-		for(var/obj/item/implant/backup/BI in backup_implants)
-			BI.forceMove(torso)
-			torso.implants += BI
-
 
 	if(message)
 		to_chat(M, "<span class='notice'>You lose sensation of your body, feeling only the warmth of everything around you... </span>")

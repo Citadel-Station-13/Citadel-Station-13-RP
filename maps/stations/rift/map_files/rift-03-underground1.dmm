@@ -8020,7 +8020,7 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/circuitboard/transhuman_resleever{
+/obj/item/circuitboard/resleeving/resleeving_pod{
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -10472,15 +10472,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Gm" = (
-/obj/item/circuitboard/resleeving_control{
+/obj/item/circuitboard/resleeving_console{
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/item/circuitboard/transhuman_clonepod{
+/obj/item/circuitboard/resleeving/grower_pod{
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/item/circuitboard/transhuman_synthprinter{
+/obj/item/circuitboard/resleeving/synth_printer{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -13042,7 +13042,7 @@
 "NX" = (
 /obj/structure/table/rack/steel,
 /obj/item/slime_scanner,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/robotanalyzer,
 /obj/item/reagent_scanner,
 /obj/item/healthanalyzer,

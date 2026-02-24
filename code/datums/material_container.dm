@@ -178,7 +178,8 @@
 /datum/material_container/proc/checked_use(list/using, multiplier = 1)
 	if(!has(using, multiplier))
 		return FALSE
-	return use(using, multiplier)
+	use(using, multiplier)
+	return TRUE
 
 /**
  * uses the given resources
@@ -194,7 +195,6 @@
 		if(isnull(stored[key]))
 			continue
 		stored[key] = max(0, stored[key] - using[key] * multiplier)
-	return TRUE
 
 /**
  * checks if we have the given resources
@@ -205,7 +205,7 @@
  */
 /datum/material_container/proc/has(list/wanted, multiplier = 1)
 	if(isnull(stored))
-		return
+		return FALSE
 	for(var/key in wanted)
 		if(stored[key] < wanted[key] * multiplier)
 			return FALSE
