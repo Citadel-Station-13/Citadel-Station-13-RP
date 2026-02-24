@@ -1,4 +1,45 @@
 
+// The 'shuttle'
+/datum/shuttle/autodock/overmap/gecko_sh
+	name = "Gecko Stationhopper"
+	current_location = "omship_spawn_gecko_sh"
+	docking_controller_tag = "geck_sh_docking"
+	shuttle_area = list(/area/shuttle/gecko_sh,/area/shuttle/gecko_sh_cockpit,/area/shuttle/gecko_sh_engineering)
+	defer_initialisation = TRUE //We're not loaded until an admin does it
+	fuel_consumption = 7.5
+	ceiling_type = /turf/simulated/floor/reinforced/airless
+
+/datum/shuttle/autodock/overmap/gecko_cr
+	name = "Gecko Cargo Hauler"
+	current_location = "omship_spawn_gecko_cr"
+	docking_controller_tag = "geck_cr_docking"
+	shuttle_area = list(/area/shuttle/gecko_cr,/area/shuttle/gecko_cr_cockpit,/area/shuttle/gecko_cr_engineering)
+	defer_initialisation = TRUE //We're not loaded until an admin does it
+	fuel_consumption = 7.5
+	ceiling_type = /turf/simulated/floor/reinforced/airless
+
+/datum/shuttle/autodock/overmap/gecko_cr_wreck
+	name = "Wrecked Gecko Cargo Hauler"
+	current_location = "omship_spawn_gecko_cr_wreck"
+	docking_controller_tag = "geck_cr_wreck_docking"
+	shuttle_area = list(/area/shuttle/gecko_cr_wreck,/area/shuttle/gecko_cr_cockpit_wreck,/area/shuttle/gecko_cr_engineering_wreck)
+	defer_initialisation = TRUE //We're not loaded until an admin does it
+	fuel_consumption = 7.5
+	ceiling_type = /turf/simulated/floor/reinforced/airless
+
+// A shuttle lateloader landmark
+/obj/effect/shuttle_landmark/shuttle_initializer/gecko_sh
+	name = "ITV Gecko I"
+	shuttle_type = /datum/shuttle/autodock/overmap/gecko_sh
+
+/obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr
+	name = "ITV Gecko II"
+	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr
+
+/obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr_wreck
+	name = "ITV Gecko III"
+	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr_wreck
+
 // Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/gecko_stationhopper
 	name = "OM Ship - Gecko Stationhopper (new Z)"
@@ -72,47 +113,6 @@
 	icon_state = "purple"
 	requires_power = 1
 	has_gravity = 0
-
-// The 'shuttle'
-/datum/shuttle/autodock/overmap/gecko_sh
-	name = "Gecko Stationhopper"
-	current_location = "omship_spawn_gecko_sh"
-	docking_controller_tag = "geck_sh_docking"
-	shuttle_area = list(/area/shuttle/gecko_sh,/area/shuttle/gecko_sh_cockpit,/area/shuttle/gecko_sh_engineering)
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-	fuel_consumption = 7.5
-	ceiling_type = /turf/simulated/floor/reinforced/airless
-
-/datum/shuttle/autodock/overmap/gecko_cr
-	name = "Gecko Cargo Hauler"
-	current_location = "omship_spawn_gecko_cr"
-	docking_controller_tag = "geck_cr_docking"
-	shuttle_area = list(/area/shuttle/gecko_cr,/area/shuttle/gecko_cr_cockpit,/area/shuttle/gecko_cr_engineering)
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-	fuel_consumption = 7.5
-	ceiling_type = /turf/simulated/floor/reinforced/airless
-
-/datum/shuttle/autodock/overmap/gecko_cr_wreck
-	name = "Wrecked Gecko Cargo Hauler"
-	current_location = "omship_spawn_gecko_cr_wreck"
-	docking_controller_tag = "geck_cr_wreck_docking"
-	shuttle_area = list(/area/shuttle/gecko_cr_wreck,/area/shuttle/gecko_cr_cockpit_wreck,/area/shuttle/gecko_cr_engineering_wreck)
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-	fuel_consumption = 7.5
-	ceiling_type = /turf/simulated/floor/reinforced/airless
-
-// A shuttle lateloader landmark
-/obj/effect/shuttle_landmark/shuttle_initializer/gecko_sh
-	name = "ITV Gecko I"
-	shuttle_type = /datum/shuttle/autodock/overmap/gecko_sh
-
-/obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr
-	name = "ITV Gecko II"
-	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr
-
-/obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr_wreck
-	name = "ITV Gecko III"
-	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr_wreck
 
 // The 'ship'
 /obj/overmap/entity/visitable/ship/landable/gecko_sh

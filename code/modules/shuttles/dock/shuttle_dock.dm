@@ -96,6 +96,7 @@
 	/// docking code, if any
 	var/docking_code
 	/// requires docking code to dock
+	/// * This usually should be FALSE.
 	var/docking_code_required = FALSE
 
 	//* docking (registration)
@@ -150,7 +151,8 @@
 	/// * if you don't want shuttles to do that to this dock, the shuttle side should specify DO_NOT_MUTEX as a transit flag.
 	var/datum/shuttle/inbound
 	/// starting shuttle template typepath or id
-	/// only loaded on mapload, not if it's persistence loaded or anything for now
+	/// * Only loaded on mapload, not if it's persistence loaded or anything for now
+	/// * You usually want to use `/obj/shuttle_dock_preload` to set this.
 	var/starting_shuttle_template
 	/// load starting shuttle centered instead of aligned to its primary port
 	///
@@ -175,7 +177,7 @@
 	#warn hook
 
 /obj/shuttle_dock/preloading_instance(with_id)
-	. = ..()
+	..()
 	dock_id = SSmapping.mangled_persistent_id(dock_id, with_id)
 
 /**
@@ -423,6 +425,12 @@
 	return
 
 //* bounding box *//
+
+/obj/shuttle_dock/proc/is_in_bounds(atom/A)
+	var/turf/T = get_turf(A)
+	if(!T)
+		return FALSE
+	#warn impl
 
 /obj/shuttle_dock/proc/check_bounds()
 	if(QDELING(src) || !loc)
