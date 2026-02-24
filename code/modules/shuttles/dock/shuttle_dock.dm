@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
  * lets us use named arguments.
@@ -8,9 +8,11 @@
 	return new /obj/shuttle_dock(loc, with_id, with_dir, sx_sy_ox_oy, lx_ly_hx_hy)
 
 /**
- * Shuttle docking points.
+ * Shuttle dock objects.
  *
- * When a shuttle docks, the shuttle aligns its docking port with our shuttle dock with some Magic Bullshit Math.
+ * * When a shuttle docks, the shuttle aligns its docking port with our shuttle dock with some Magic Bullshit Math.
+ * * These are agnostic to the kind of controller a shuttle uses. Shuttles may be web-based,
+ *   overmap based (usually the case), or use a special point to point controller.
  */
 /obj/shuttle_dock
 	name = "shuttle dock"
