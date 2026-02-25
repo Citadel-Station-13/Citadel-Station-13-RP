@@ -1,5 +1,3 @@
-//! if you see this, go code proper droppods, not this crap
-
 /obj/machinery/transportpod
 	name = "Ballistic Transportation Pod"
 	desc = "A fast transit ballistic pod used to get from one place to the next. Batteries not included!"
