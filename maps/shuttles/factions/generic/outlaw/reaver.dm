@@ -1,3 +1,8 @@
+DECLARE_SHUTTLE_TEMPLATE(/generic/outlaw/reaveer)
+
+
+#warn below
+
 /datum/shuttle/autodock/overmap/reaver
 	name = "Reaver-Class Shuttle"
 	warmup_time = 3

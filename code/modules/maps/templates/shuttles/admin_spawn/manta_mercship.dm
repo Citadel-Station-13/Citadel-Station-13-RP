@@ -1,5 +1,7 @@
 
 
+#warn impl
+
 // Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/manta_ship
 	name = "OM Ship - Mercenary Cruiser Manta Class (New Z)"
@@ -138,18 +140,6 @@
 
 /obj/effect/shuttle_landmark/premade/manta_ship_star
 	name = "SAARE Cruiser - Starboard Airlock"
-
-/obj/effect/shuttle_landmark/premade/manta_ship_near_fore
-	name = "Near SAARE Cruiser (Fore)"
-
-/obj/effect/shuttle_landmark/premade/manta_ship_near_aft
-	name = "Near SAARE Cruiser (Aft)"
-
-/obj/effect/shuttle_landmark/premade/manta_ship_near_port
-	name = "Near SAARE Cruiser (Port)"
-
-/obj/effect/shuttle_landmark/premade/manta_ship_near_star
-	name = "Near SAARE Cruiser (Starboard)"
 
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/manta_ship_boat

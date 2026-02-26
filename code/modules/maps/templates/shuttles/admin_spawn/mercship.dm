@@ -1,4 +1,6 @@
 
+#warn impl
+
 // Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/syndicatecarrier
 	name = "OM Ship - Mercenary Ship (New Z)"

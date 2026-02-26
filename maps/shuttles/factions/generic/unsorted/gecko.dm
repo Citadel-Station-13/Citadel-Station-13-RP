@@ -1,3 +1,10 @@
+DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_sh)
+
+DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr)
+
+DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr_wreck)
+
+#warn below
 
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/gecko_sh

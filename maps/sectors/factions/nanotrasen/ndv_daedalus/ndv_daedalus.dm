@@ -1,4 +1,6 @@
 
+#warn below
+
 //////// Mothership areas ////////
 /area/mothership
 	requires_power = 1

@@ -1,3 +1,8 @@
+DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/bearcat)
+
+
+#warn below
+
 // -- Datums -- //
 /datum/map_template/shuttle/overmap/generic/bearcat
 	name = "OM Ship - Bearcat (New Z)"

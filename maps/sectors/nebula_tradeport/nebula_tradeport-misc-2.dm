@@ -48,20 +48,6 @@
 		"GCSS Vevalia Salvage Shuttle" = list("tradeport_scavenging")
 		)
 
-/* // Old Restricted list. Leaving commented out for reference - Bloop
-	initial_restricted_waypoints = list(
-		"Beruang Trade Ship" = list("tradeport_hangar"),
-		"Mining Shuttle" = list("nebula_pad_2"),
-		"Excursion Shuttle" = list("nebula_pad_3"),
-		"Pirate Skiff" = list("nebula_pad_4"),
-		"Dart EMT Shuttle" = list("nebula_pad_5"),
-		"Civilian Transport" = list("nebula_pad_6")
-		)
-*/
-
-///////////////////////////
-//// Spawning and despawning
-
 /datum/spawnpoint/trade
 	display_name = "Beruang Trading Corp Cryo"
 	restrict_job = list("Trader")

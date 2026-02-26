@@ -1,3 +1,6 @@
+
+#warn below
+
 // Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/cruise_ship
 	name = "OM Ship - Cruise Shuttle"
