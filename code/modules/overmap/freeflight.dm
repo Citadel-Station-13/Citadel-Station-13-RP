@@ -18,7 +18,7 @@
 	/// the leader's dock
 	var/obj/shuttle_dock/freeflight/leader_dock
 
-/datum/map_level/freeflight/New(datum/map/parent_map)
+/datum/map_level/freeflight/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	..()
 	dangerously_make_selflooping()
 

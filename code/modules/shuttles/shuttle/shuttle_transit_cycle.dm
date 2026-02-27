@@ -3,10 +3,6 @@
 
 /**
  * stores data about the current transit cycle
- *
- * * we currently use spinlocks and executes with timerless fashion
- *
- * todo: this, and docking, should maybe be on SSshuttles instead of spinlocks?
  */
 /datum/shuttle_transit_cycle
 	//* state / processing *//
@@ -293,6 +289,7 @@
 	running = TRUE
 	controller.on_transit_begin(src, redirected)
 
+	#warn no more spinlocks...
 	spawn(0)
 		perform_the_circus()
 

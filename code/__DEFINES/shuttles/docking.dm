@@ -19,7 +19,7 @@
 
 /// clear
 #define SHUTTLE_DOCKING_BOUNDING_CLEAR 0
-/// hard fault - there's another shuttle / something important in the way we can't overwrite
+/// hard fault - there's another shuttle / something important in the way that we can't overwrite
 #define SHUTTLE_DOCKING_BOUNDING_HARD_FAULT 1
 /// soft fault - we can trample it, but the shuttle requests that we shouldn't
 #define SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT 2

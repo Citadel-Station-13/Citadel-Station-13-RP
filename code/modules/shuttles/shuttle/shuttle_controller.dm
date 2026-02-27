@@ -17,7 +17,7 @@
 	/// * keys are datums
 	/// * values are reasons
 	/// * unlike shuttle hooks, these are always hard blockers that cannot be overridden.
-	/// * therefore it's safe to use this for backend purposes like when a zone is regenerating for beltmining.
+	/// * these should not be used for backend purposes automatically; admins can still overrule this.
 	///
 	/// todo: some kind of /datum/tgui_descriptive_text or something idfk for better error messages
 	var/list/blocked_from_moving
@@ -35,9 +35,9 @@
 	var/docking_cycle = 0
 	/// list of callbacks to invoke on end of docking cycle
 	///
-	/// * callbacks are invoked with (src, status: SHUTTLE_DOKCING_STATUS_*, state: SHUTTLE_DOCKING_STATE_*)
+	/// * callbacks are invoked with (src, status: SHUTTLE_DOCKING_STATUS_*, state: SHUTTLE_DOCKING_STATE_*)
 	/// * 'state' in the third argument is the state that we were interrupted from; so if state is DOCKING, this was an interrupted docking.
-	/// * 'state' will either be DOCKING, or UNDOCKING; never UNKNOWN, DOCKED, or UNDOCKED
+	/// * 'state' will be DOCKED / UNDOCKED on success, DOCKING / UNDOCKING otherwise.
 	var/list/datum/callback/docking_callbacks
 	/// docking state
 	var/docking_state = SHUTTLE_DOCKING_STATE_UNKNOWN
@@ -340,9 +340,11 @@
 
 /**
  * returns a list of name-to-turf of valid jump points on a given zlevel
+ * * these should be centered, ideally
  */
 /datum/shuttle_controller/proc/manual_landing_beacons(zlevel)
-	#warn impl
+	. = list()
+	.["-- Level Center --"] = locate(floor(world.maxx * 0.5), floor(world.maxy * 0.5), zlevel)
 
 /**
  * returns a list of valid name-to-zlevel-index for manual landing

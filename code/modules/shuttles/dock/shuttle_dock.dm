@@ -296,7 +296,7 @@
 			if(T.loc == base_area)
 				continue
 			turfs -= T
-		var/area/world_base_area = dynamic_area_of_type(SSmapping.level_base_area(z))
+		var/area/world_base_area = dynamic_area_of_type(SSmapping.level_get_basearea(z))
 		world_base_area.take_turfs(turfs)
 		qdel(base_area)
 	return ..()
@@ -368,7 +368,7 @@
  */
 /obj/shuttle_dock/proc/base_area_instance()
 	if(!istype(base_area))
-		base_area = dynamic_area_of_type(base_area || SSmapping.level_base_area(z))
+		base_area = dynamic_area_of_type(base_area || SSmapping.level_get_basearea(z))
 	return base_area
 
 /**

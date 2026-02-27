@@ -1,8 +1,11 @@
 DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_sh)
+	id = "generic-gecko_sh"
 
 DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr)
+	id = "generic-gecko_cr"
 
 DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr_wreck)
+	id = "generic-gecko_cr_wreck"
 
 #warn below
 

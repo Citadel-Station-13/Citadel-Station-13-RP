@@ -40,7 +40,7 @@
 	if(!linked)
 		return
 	for(var/obj/machinery/shipsensors/S in GLOB.machines)
-		if(get_overmap_entity(S) == linked)
+		if(SSovermaps.get_overmap_entity(S) == linked)
 			sensors = S
 			break
 

@@ -78,12 +78,6 @@
 			color = null
 			desc = "Scan this to find out more information."
 
-		LAZYADD(SSshuttle.sectors_to_initialize, src) //Queued for further init. Will populate the waypoint lists; waypoints not spawned yet will be added in as they spawn.
-		SSshuttle.process_init_queues()
-
-//This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
-/obj/overmap/entity/visitable/proc/populate_sector_objects()
-
 /obj/overmap/entity/visitable/get_scan_data()
 	if(!known)
 		known = TRUE

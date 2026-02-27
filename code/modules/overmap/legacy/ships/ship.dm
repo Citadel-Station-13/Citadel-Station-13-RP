@@ -210,22 +210,15 @@
 		. = min(., OVERMAP_PIXEL_TO_DIST(vel_y > 0? WORLD_ICON_SIZE - offset : offset) / vel_y * 10)
 	. = max(., 0)
 
+// TODO: what does this do
 /obj/overmap/entity/visitable/ship/proc/halt()
 	initialize_physics()
 	halted = 1
 
+// TODO: what does this do
 /obj/overmap/entity/visitable/ship/proc/unhalt()
-	if(!SSovermaps.overmap_halted)
+	if(!SSovermap_physics.overmap_halted)
 		halted = 0
-
-#warn make sure these still work lmao
-/obj/overmap/entity/visitable/ship/populate_sector_objects()
-	..()
-	for(var/obj/machinery/computer/ship/S in GLOB.machines)
-		S.attempt_hook_up(src)
-	for(var/datum/ship_engine/E in ship_engines)
-		if(get_overmap_entity(E.holder) == src)
-			engines |= E
 
 /obj/overmap/entity/visitable/ship/proc/get_landed_info()
 	return "This ship cannot land."
