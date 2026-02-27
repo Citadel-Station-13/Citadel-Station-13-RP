@@ -5658,6 +5658,7 @@
 #include "code\modules\sprite_accessories\hair\species\vulpkanin.dm"
 #include "code\modules\sprite_accessories\hair\species\xenomorph.dm"
 #include "code\modules\sprite_accessories\markings\_markings.dm"
+#include "code\modules\sprite_accessories\markings\body_parts.dm"
 #include "code\modules\sprite_accessories\markings\diona_stuff.dm"
 #include "code\modules\sprite_accessories\markings\eye_stuff.dm"
 #include "code\modules\sprite_accessories\markings\panda.dm"
