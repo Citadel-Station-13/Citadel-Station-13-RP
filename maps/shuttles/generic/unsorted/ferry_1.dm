@@ -1,5 +1,6 @@
-/// Temporarilly adding this in here so if someone tick's tether's dm file virgo 2's shuttle will still function. Eventually just need to have virgo 2 on both triumph and tether
-/// but this is a temporary fix to get triumph working. - Bloop
+
+#warn impl
+
 /datum/shuttle/autodock/ferry/aerostat
 	name = "Aerostat Ferry"
 	shuttle_area = /area/shuttle/aerostat
@@ -14,3 +15,6 @@
 
 /obj/effect/shuttle_landmark/premade/virgo2_surface
 	name = "Virgo 2 Surface"
+
+
+#warn map

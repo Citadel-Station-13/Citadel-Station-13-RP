@@ -18,6 +18,9 @@ SUBSYSTEM_DEF(overmaps)
 
 	/// Initialize queue of callbacks
 	var/list/datum/callback/entity_initialize_queue = list()
+	/// legacy ship lookup
+	//  TODO: obliterate this
+	var/list/obj/overmap/entity/visitable/ship/legacy_ships = list()
 
 	//*                    Global Tuning                       *//
 	//* Balance tuning goes in here; not sim                   *//

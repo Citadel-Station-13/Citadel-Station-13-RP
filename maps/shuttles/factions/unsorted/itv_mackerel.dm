@@ -1,3 +1,4 @@
+#warn impl
 
 
 // Map template for spawning the shuttle
@@ -196,3 +197,5 @@
 	vessel_mass = 1000
 	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Light Cargo II"
+
+#warn map

@@ -96,7 +96,7 @@
 	. = ..()
 
 /obj/machinery/atmospherics/component/unary/engine/proc/link_to_ship()
-	for(var/ship in SSovermaps.ships)
+	for(var/ship in SSovermaps.legacy_ships)
 		var/obj/overmap/entity/visitable/ship/S = ship
 		if(get_overmap_entity(src) == S)
 			S.engines |= controller

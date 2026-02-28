@@ -49,10 +49,10 @@
 	// rotation support
 	if(dir != NORTH)
 		fore_dir = turn(fore_dir, -dir2angle(dir))
-	SSovermaps.ships += src
+	SSovermaps.legacy_ships += src
 
 /obj/overmap/entity/visitable/ship/Destroy()
-	SSovermaps.ships -= src
+	SSovermaps.legacy_ships -= src
 	. = ..()
 
 //? todo why tf is this relaymove

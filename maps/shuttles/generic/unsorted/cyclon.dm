@@ -1,3 +1,4 @@
+#warn impl
 // -- Datums -- //
 /datum/map_template/shuttle/overmap/generic/paper_clipper
 	name = "OM Ship - Paper Clipper (Cylon) (New Z)"
@@ -57,3 +58,5 @@
 
 /area/shuttle/paper_clipper/right_wing/shuttle_hanger
 	name = "\improper Right Wing Shuttle Hanger"
+
+#warn map

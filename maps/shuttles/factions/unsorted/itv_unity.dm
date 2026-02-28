@@ -1,3 +1,4 @@
+#warn impl
 
 
 // Map template for spawning the shuttle
@@ -188,3 +189,5 @@ stay safe out there and always double check who you sign with<br>\
 rest of the cargo is covered by insurance anyway, so help yourself/ves i guess<br>\
 <br>\
 -M"}
+
+#warn map
