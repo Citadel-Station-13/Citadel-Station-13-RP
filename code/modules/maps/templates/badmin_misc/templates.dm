@@ -15,21 +15,6 @@
 	desc = "Modest trader ship."
 	map_path = "maps/templates/shuttles/overmaps/generic/salamander.dmm"
 
-/datum/map_template/admin_use/mercenary
-	name = "Special Area - Merc Ship"
-	desc = "Prepare tae be boarded, arr!"
-	map_path = 'maps/templates/admin/kk_mercship.dmm'
-
-/datum/map_template/admin_use/old_mercenary
-	name = "Special Area - Old Merc Base"
-	desc = "So much red!"
-	map_path = 'maps/templates/admin/mercbase.dmm'
-
-/datum/map_template/admin_use/skipjack
-	name = "Special Area - Skipjack Base"
-	desc = "Stinky!"
-	map_path = 'maps/templates/admin/skipjack.dmm'
-
 /datum/map_template/admin_use/thunderdome
 	name = "Special Area - Thunderdome"
 	desc = "Thunderrrrdomeee"

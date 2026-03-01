@@ -1,4 +1,5 @@
 
+#warn impl
 
 // Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/hybrid
@@ -41,3 +42,5 @@
 	vessel_mass = 1000
 	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Private Vessel"
+
+#warn map
