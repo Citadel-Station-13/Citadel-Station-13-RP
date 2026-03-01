@@ -35,6 +35,7 @@
 
 // ERT Shuttle can be found at '/maps/overmap/shuttles/specialops.dm'
 
+#warn this?
 // EXCLUSIVE NAV POINT FOR DOCKING INSIDE (ERT SHUTTLE ONLY)
 /obj/effect/shuttle_landmark/specops/hangar
 	name = "NT Special Operations Hangar"

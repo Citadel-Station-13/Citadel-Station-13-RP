@@ -5,12 +5,10 @@
 	suffix = "abductor.dmm"
 
 /area/abductor
-	requires_power = 0
-	icon_state = "purple"
-
-/area/abductor/
 	name = "Abductor Ship"
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
+	requires_power = 0
+	icon_state = "purple"
 
 /area/abductor/interior
 	name = "Abductor Ship Interior"

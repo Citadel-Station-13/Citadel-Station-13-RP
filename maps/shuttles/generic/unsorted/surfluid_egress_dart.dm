@@ -1,5 +1,7 @@
 
 
+#warn fun fluff for this!
+
 // Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/escapepod
 	name = "OM Ship - Escape Pod"
