@@ -32,4 +32,4 @@
 	sound_env = SMALL_ENCLOSED
 
 
-#warn map
+#warn map; these are on strelka

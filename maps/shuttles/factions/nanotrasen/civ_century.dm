@@ -10,6 +10,7 @@ DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/civ_century)
 		overmap_legacy_name = "Century Shuttle";
 		overmap_legacy_desc = "Is it... A replica ? Or... the real deal ? This shuttle, based on the shuttles from earth's old days. No teasing, this shuttle is a replica, but still a old and crapy ship.";
 	}
+	facing_dir = NORTH
 
 #warn map, obliterate
 /area/shuttle/oldcentury

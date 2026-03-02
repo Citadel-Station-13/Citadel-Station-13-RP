@@ -54,6 +54,12 @@
 /area/shuttle/auto/named/cargo
 	descriptor = "Cargo Bay"
 
+/area/shuttle/auto/named/engine
+	descriptor = "Engine"
+
+/area/shuttle/auto/named/deck
+	descriptor = "Deck"
+
 /area/shuttle/auto/named/airlock
 	descriptor = "Airlock"
 

@@ -116,11 +116,7 @@
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/itglightshuttle
 	name = "ITG Shuttlecraft"
-	current_location = "omship_spawn_itglightshuttle"
-	docking_controller_tag = "itglightshuttle_docker"
 	shuttle_area = /area/shuttle/itglightshuttle
-	fuel_consumption = 0
-	defer_initialisation = TRUE
 
 /obj/machinery/photocopier/faxmachine/itglight
 	department = "ITG Dauntless"

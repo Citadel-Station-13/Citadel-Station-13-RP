@@ -14,6 +14,7 @@ DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/civ_decades_old)
 [i]Transponder[/i]: Transmitting (CIV), Registered with NT."};
 		overmap_icon_color = "#7fbd27";
 	}
+	facing_dir = NORTH
 
 #warn obliterate, map
 /area/shuttle/civvie/strelka

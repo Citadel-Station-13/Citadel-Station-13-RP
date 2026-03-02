@@ -12,6 +12,7 @@ DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/exp_hopper)
 
 	// lame but for now
 	display_name = "Excursion Shuttle"
+	facing_dir = WEST
 
 #warn map
 #warn this is rift's btw

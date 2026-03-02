@@ -1689,11 +1689,6 @@
 	name = "\improper Mercenary Shuttle"
 	icon_state = "shuttle2"
 
-//Vox shuttle
-/area/shuttle/skipjack
-	name = "\improper Skipjack"
-	icon_state = "shuttle2"
-
 //Ninja shuttle
 /area/shuttle/ninja
 	name = "\improper Ninjacraft"

@@ -1,3 +1,6 @@
+
+#warn impl
+
 // ERT SHIP
 //This vessel needs an overmap presence, mostly so we can stop using the shitcode old variant. CentCom will need to become notionally visitable as part of this change.
 //Look into figuring out a way to spawn an OM destination adjacent to another - that way CC can always orbit Lythios, instead of being mysteriously across the map out of orbit.
@@ -12,6 +15,13 @@
 	move_time = 5
 	defer_initialisation = TRUE
 
+#warn ncv_oracle, ndv_marksman, nts_demeter, obliterate, map
+
+/area/shuttle/specops
+/area/shuttle/specops/general
+/area/shuttle/specops/cockpit
+/area/shuttle/specops/engine
+
 // The 'ship' of the shuttle
 /obj/overmap/entity/visitable/ship/landable/specops
 	name = "NDV Quicksilver"
@@ -23,18 +33,3 @@
 /obj/effect/shuttle_landmark/shuttle_initializer/specops
 	name = "Special Operations Dock"
 	shuttle_type = /datum/shuttle/autodock/overmap/specops
-
-// Spec Ops Areas
-/area/shuttle/specops
-	requires_power = TRUE
-	name = "\improper NDV Quicksilver"
-	icon_state = "shuttle"
-
-/area/shuttle/specops/general
-	name = "\improper NDV Quicksilver Deck"
-
-/area/shuttle/specops/cockpit
-	name = "\improper NDV Quicksilver Cockpit"
-
-/area/shuttle/specops/engine
-	name = "\improper NDV Quicksilver Engine"

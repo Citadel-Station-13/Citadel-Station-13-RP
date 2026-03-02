@@ -74,9 +74,7 @@
 	vessel_mass = 2000
 	shuttle = "Tour Bus"
 
-////////////////////////////////////////
-////////      Medivac      /////////////
-////////////////////////////////////////
+#warn move all?
 /datum/shuttle/autodock/overmap/medivac
 	name = "Medivac Shuttle"
 	warmup_time = 0

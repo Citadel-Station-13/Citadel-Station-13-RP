@@ -346,11 +346,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/mercenary
 	name = "\improper Mercenary Shuttle"
 
-//Vox shuttle
-/area/shuttle/skipjack
-	name = "\improper Skipjack"
-	icon_state = "shuttle2"
-
 //Ninja shuttle
 /area/shuttle/ninja
 	name = "\improper Ninjacraft"
