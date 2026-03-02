@@ -22,7 +22,6 @@
 	color = "#ff9900"
 	fore_dir = WEST
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "SDF Interrupted-The-Speech"
 
 /obj/machinery/computer/shuttle_control/explore/sdf

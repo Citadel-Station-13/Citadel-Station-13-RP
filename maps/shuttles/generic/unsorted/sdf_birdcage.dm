@@ -26,7 +26,6 @@
 \[i\]Transponder\[/i\]: Transmitting (MIL), Weak Signal
 \[b\]Notice\[/b\]: Registration Expired"}
 	vessel_mass = 12000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Debris Carrier"
 	fore_dir = WEST
 

@@ -28,7 +28,6 @@
 	desc = "A rather old design of shuttle, but still being produced today ! And this one is brand new !"
 	fore_dir = EAST
 	vessel_mass = 11000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Javelot Shuttle"
 	scanner_name = "Excursion Javelot Shuttle"
 	scanner_desc = @{"[i]Registration[/i]: ---

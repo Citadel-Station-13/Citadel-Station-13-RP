@@ -52,7 +52,6 @@
 [b]Notice[/b]: Small private vessel"}
 	color = "#01A9DB"
 	vessel_mass = 2000
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Cura"
 
 #warn map

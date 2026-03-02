@@ -151,7 +151,6 @@
 [b]Notice[/b]: Small private vessel"}
 	color = "#3366FF"
 	vessel_mass = 1000
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Stationhopper"
 
 /obj/overmap/entity/visitable/ship/landable/mackerel_lc
@@ -162,7 +161,6 @@
 [b]Notice[/b]: Small private vessel"}
 	color = "#0099FF"
 	vessel_mass = 1000
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Light Cargo"
 
 /obj/overmap/entity/visitable/ship/landable/mackerel_hc
@@ -173,7 +171,6 @@
 [b]Notice[/b]: Small private vessel"}
 	color = "#33CCCC"
 	vessel_mass = 1500
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Heavy Cargo"
 
 /obj/overmap/entity/visitable/ship/landable/mackerel_hc_skel
@@ -184,7 +181,6 @@
 [b]Notice[/b]: Small private vessel"}
 	color = "#33CCCC"
 	vessel_mass = 1500
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Heavy Cargo Spartan"
 
 /obj/overmap/entity/visitable/ship/landable/mackerel_lc_wreck
@@ -195,7 +191,6 @@
 [b]Notice[/b]: Critical Damage Sustained"}
 	color = "#0099FF"
 	vessel_mass = 1000
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Light Cargo II"
 
 #warn map

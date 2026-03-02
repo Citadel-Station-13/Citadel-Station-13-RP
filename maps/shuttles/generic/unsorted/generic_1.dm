@@ -40,7 +40,6 @@
 [i]Transponder[/i]: Transmitting (CIV), non-hostile
 [b]Notice[/b]: Small private vessel"}
 	vessel_mass = 1000
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Private Vessel"
 
 #warn map

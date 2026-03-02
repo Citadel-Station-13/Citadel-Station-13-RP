@@ -9,9 +9,9 @@
  */
 /datum/shuttle_descriptor
 	//* Flight (overmaps / web) *//
-	/// mass in kilotons
+	/// mass in tons
 	//  todo: in-game mass calculations? only really relevant for drone tbh
-	var/mass = 5
+	var/mass = 10000
 	/// if set to false, this is absolute-ly unable to land on a planet
 	var/allow_atmospheric_landing = TRUE
 	/// preferred flight orientation
@@ -25,6 +25,18 @@
 	var/jump_charging_time = 5 SECONDS
 	/// time spent in transit when performing a move
 	var/jump_move_time = 5 SECONDS
+
+	//* Overmaps *//
+	#warn impl all
+	var/overmap_icon
+	var/overmap_icon_state
+	#warn impl
+	// Legacy because sensor update will get rid of hard-coded names.
+	var/overmap_legacy_name = "Century Shuttle"
+	// Legacy because sensor update will get rid of hard-coded scan results.
+	#warn is this desc?
+	var/overmap_legacy_desc
+	var/overmap_legacy_color = "#4cad73" //Greyish green
 
 /datum/shuttle_descriptor/clone()
 	var/datum/shuttle_descriptor/clone = ..()

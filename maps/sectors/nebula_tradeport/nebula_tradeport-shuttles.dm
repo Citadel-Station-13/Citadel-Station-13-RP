@@ -15,7 +15,6 @@
 	color = "#754116" //Brown
 	fore_dir = WEST
 	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beruang Trade Ship"
 
 /obj/machinery/computer/shuttle_control/explore/trade
@@ -50,7 +49,6 @@
 	color = "#a66d45" //Orange Brownish
 	fore_dir = EAST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Udang Transport Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/trade/udang
@@ -87,7 +85,6 @@
 	color = "#ff811a" //Orange
 	fore_dir = WEST
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Scoophead trade Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/trade/scoophead
@@ -133,7 +130,6 @@
 	color = "#002d75" //Darkblue
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Arrowhead Racing Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/arrowhead
@@ -170,7 +166,6 @@
 	color = "#8f6f4b" //Brown
 	fore_dir = WEST
 	vessel_mass = 3000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Spacena Caravan Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/caravan
@@ -202,7 +197,6 @@
 	color = "#323f55" //Blue grey
 	fore_dir = WEST
 	vessel_mass = 3000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Spacena Adventurer Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/adventurer
@@ -234,7 +228,6 @@
 	color = "#6b6d52"
 	fore_dir = WEST
 	vessel_mass = 5000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Cargo Tug Hauler Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/tug
@@ -266,7 +259,6 @@
 	color = "#6b6d52"
 	fore_dir = WEST
 	vessel_mass = 1000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Utility Micro Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/utilitymicro
@@ -298,7 +290,6 @@
 	color = "#aa499b"
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Teshari Runabout Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/runabout
@@ -333,7 +324,6 @@
 	color = "#71831f"
 	fore_dir = EAST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "GCSS Vevalia Salvage Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/salvager

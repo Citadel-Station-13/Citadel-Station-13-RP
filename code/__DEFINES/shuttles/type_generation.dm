@@ -18,3 +18,9 @@
 /obj/shuttle_dock/preset##TYPEPATH
 
 #define DECLARE_SHUTTLE_DOCK_MAP_PRESET(MAP_FRAGMENT, TYPEPATH, NAME) DECLARE_SHUTTLE_DOCK_PRESET(/map_specific/##MAP_FRAGMENT##TYPEPATH)
+
+/**
+ * Boilerplate for shuttle areas.
+ */
+#define DECLARE_SHUTTLE_AREA(TYPEPATH) \
+/area/shuttle##TYPEPATH

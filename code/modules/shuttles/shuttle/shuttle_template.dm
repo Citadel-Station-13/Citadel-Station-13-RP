@@ -21,6 +21,10 @@
 	var/desc
 	/// lore fluff
 	var/fluff
+	/// Category
+	var/category
+	/// Subcategory, if any
+	var/subcategory
 
 	//* File *//
 	/// Absolute path to the map .dmm file.

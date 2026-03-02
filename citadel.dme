@@ -6134,6 +6134,7 @@
 #include "maps\sectors\virgo4_140\virgo4_140.dm"
 #include "maps\sectors\wasteland_192\wasteland_192.dm"
 #include "maps\shuttles\factions\independent\itv_dauntless_shuttle.dm"
+#include "maps\shuttles\factions\nanotrasen\_nanotrasen.dm"
 #include "maps\shuttles\generic\backend\escape_pod.dm"
 #include "maps\shuttles\generic\backend\escape_pod_large.dm"
 #include "maps\shuttles\generic\backend\escape_shuttle.dm"

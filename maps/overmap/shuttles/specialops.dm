@@ -18,7 +18,6 @@
 	desc = "A Nanotrasen ST-ERT rapid response vessel."
 	fore_dir = EAST
 	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "NDV Quicksilver"
 
 /obj/effect/shuttle_landmark/shuttle_initializer/specops

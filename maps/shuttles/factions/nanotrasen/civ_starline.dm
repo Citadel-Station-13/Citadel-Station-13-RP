@@ -16,7 +16,6 @@
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = NORTH
 	vessel_mass = 12000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Civilian Transport"
 
 /area/shuttle/civvie

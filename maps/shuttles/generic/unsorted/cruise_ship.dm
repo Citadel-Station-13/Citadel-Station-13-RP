@@ -45,6 +45,5 @@
 	color = "#b4a90a" //Gold baybeee
 	vessel_mass = 3000
 	fore_dir = WEST
-	vessel_size = SHIP_SIZE_SMALL
 	initial_generic_waypoints = list("cruise_ship_port", "curose_ship_starboard")
 	shuttle = "UKN Aerondight"

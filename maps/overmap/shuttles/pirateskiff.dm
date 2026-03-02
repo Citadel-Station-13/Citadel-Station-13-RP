@@ -17,7 +17,6 @@
 	color = "#751713" //Dark Red
 	fore_dir = WEST
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Pirate Skiff"
 
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate

@@ -19,7 +19,6 @@
 	color = "#ab0000" //Crimson. Makes shuttle go 3 times faster (no). Beside, You solely, are responsible for this.
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Red Comet Racing Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/redcomet
@@ -55,7 +54,6 @@
 	color = "#edac14" //orange
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Bonnethead Racing Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/bonnethead
@@ -91,7 +89,6 @@
 	color = "#3adf1d" //green
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Udang Pari-pari Racing Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/paripari
@@ -127,7 +124,6 @@
 	color = "#bcfbff" //sky blue
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "ORS Crescend Radio Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/crescend

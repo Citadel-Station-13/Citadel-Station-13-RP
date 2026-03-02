@@ -30,7 +30,6 @@
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = WEST
 	vessel_mass = 9000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Decades Old civilian Transport"
 	scanner_name = "Decades Old civilian Transport"
 	scanner_desc = @{"[i]Registration[/i]: ---

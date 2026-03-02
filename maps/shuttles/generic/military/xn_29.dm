@@ -37,7 +37,6 @@
 [b]Notice[/b]: Experimental vessel"}
 	color = "#00aaff" //Bluey
 	vessel_mass = 3000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "XN-29 Prototype Shuttle"
 
 #map

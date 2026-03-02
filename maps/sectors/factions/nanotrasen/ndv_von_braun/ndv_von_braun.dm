@@ -109,7 +109,6 @@
 [b]Notice[/b]: Impeding or interfering with emergency response vessels is a breach of numerous interstellar codes. Approach with caution."}
 	color = "#9999ff" //Blue
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_LARGE
 	fore_dir = EAST
 	initial_generic_waypoints = list("ert_ship_near_fore", "ert_ship_near_aft", "ert_ship_near_port", "ert_ship_near_star", "ert_ship_port", "ert_ship_star", "ert_ship_base_dock", "omship_spawn_ert_lander")
 //	initial_restricted_waypoints = list("NRV Von Braun's Bay" = list("omship_spawn_ert_lander"))

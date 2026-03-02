@@ -61,7 +61,6 @@ DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/bearcat)
 	color = "#ee3333" //Reddish, so it looks kinda rusty and beat up
 //	initial_generic_waypoints = list("bearcat_dock_w", "bearcat_dock_e")
 	vessel_mass = 3500
-	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Bearcat"
 
 // -- Objs -- //

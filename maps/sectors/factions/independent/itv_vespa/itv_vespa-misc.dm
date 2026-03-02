@@ -129,6 +129,5 @@
 [b]Notice[/b]: Corporate vessel"}
 	color = "#4cad73" //Green
 	vessel_mass = 12000
-	vessel_size = SHIP_SIZE_LARGE
 	initial_generic_waypoints = list("ghostship_port", "ghostship_starboard")
 	fore_dir = 4

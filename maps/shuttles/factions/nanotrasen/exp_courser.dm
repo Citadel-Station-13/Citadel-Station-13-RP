@@ -17,7 +17,6 @@
 	color = "#af3e97" //Pinkish Purple
 	fore_dir = EAST
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Courser Scouting Vessel"
 
 /area/shuttle/courser

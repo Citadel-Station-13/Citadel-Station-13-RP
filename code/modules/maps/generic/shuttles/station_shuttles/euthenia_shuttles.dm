@@ -14,7 +14,6 @@
 	color = "#754116" //Brown
 	fore_dir = WEST
 	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beruang Trade Ship"
 
 /area/shuttle/trade_ship

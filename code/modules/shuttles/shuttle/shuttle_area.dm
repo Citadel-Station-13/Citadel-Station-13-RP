@@ -5,8 +5,13 @@
  * shuttle areas
  */
 /area/shuttle
+	icon_state = "shuttle"
 	unique = FALSE
 	special = TRUE
+	requires_power = TRUE
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	/// will be assigned the shuttle's ref post-init
 	var/datum/shuttle/shuttle
 

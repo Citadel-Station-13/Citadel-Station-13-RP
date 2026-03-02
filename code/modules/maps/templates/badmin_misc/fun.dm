@@ -221,7 +221,6 @@
 [i]Transponder[/i]: REPLACE ME
 [b]Notice[/b]: REPLACE ME"}
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_LARGE //Mostly so it's obviously visible on the map.
 	fore_dir = NORTH //You may need to edit this ingame if you want your ship to fly correctly!
 	start_x = 2
 	start_y = 2

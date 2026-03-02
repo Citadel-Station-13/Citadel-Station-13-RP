@@ -37,5 +37,4 @@
 [i]Transponder[/i]: Transmitting (CIV), non-hostile
 [b]Notice[/b]: Emergency Transponder Active"}
 	vessel_mass = 1000
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Escape Pod"

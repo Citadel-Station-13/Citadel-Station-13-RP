@@ -42,7 +42,6 @@
 	color = "#4b768f"
 	fore_dir = WEST
 	vessel_mass = 3000
-	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Colonial Liner"
 
 /obj/machinery/computer/shuttle_control/explore/colonial
@@ -85,7 +84,6 @@
 	color = "#646464"
 	fore_dir = WEST
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Wrecked Mercenary Vessel Andromeda"
 
 /obj/machinery/computer/shuttle_control/explore/battlestar
@@ -129,7 +127,6 @@
 	color = "#a2c118"
 	fore_dir = WEST
 	vessel_mass = 3000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Spacena Cargoravana Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/cargoravana

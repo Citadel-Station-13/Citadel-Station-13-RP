@@ -22,8 +22,6 @@
 
 	/// Tonnes, arbitrary number, affects acceleration provided by engines.
 	var/vessel_mass = 10000
-	/// Arbitrary number, affects how likely are we to evade meteors.
-	var/vessel_size = SHIP_SIZE_LARGE
 
 	/// Worldtime when ship last acceleated.
 	var/last_burn = 0

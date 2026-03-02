@@ -30,7 +30,6 @@
 [b]Notice[/b]: Deep scans detect unknown power signatures, and onboard transporter technology."}
 	color = "#11414c" //STEALTH
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
 	initial_generic_waypoints = list("abductor_port", "abductor_starboard")
 	fore_dir = NORTH
 

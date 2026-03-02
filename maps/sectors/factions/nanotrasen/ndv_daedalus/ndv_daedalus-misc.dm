@@ -131,7 +131,6 @@
 [b]Notice[/b]: Military vessel, do not approach"}
 	color = "#0033ff" //Bluey
 	vessel_mass = 15000
-	vessel_size = SHIP_SIZE_LARGE
 	initial_generic_waypoints = list("cruiser_fore", "cruiser_aft", "cruiser_port", "cruiser_starboard", "ws_port_dock_1", "ws_port_dock_2", "ws_starboard_dock_1", "ws_starboard_dock_2")
 
 	skybox_icon = 'cruiser.dmi' //Art by Gwyvern, see ATTRIBUTIONS.md

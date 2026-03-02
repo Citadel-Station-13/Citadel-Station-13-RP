@@ -18,7 +18,6 @@
 	color = "#b91a14" //Vibrant Red
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Hammerhead Patrol Barge"
 
 /area/shuttle/hammerhead

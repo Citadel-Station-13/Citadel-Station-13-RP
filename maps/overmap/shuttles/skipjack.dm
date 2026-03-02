@@ -38,5 +38,4 @@
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
 	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Skipjack Shuttle"

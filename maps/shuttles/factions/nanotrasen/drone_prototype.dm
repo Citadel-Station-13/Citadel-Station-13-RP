@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/drone/nts_v1_sensor)
+DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/drone_prototype)
 	name = "NT-S V1 Sensor Drone"
 	desc = "Nanotrasen's V1 Prototype Sensor Drone intended for unmanned sector scans in the depths of space. Not habitable."
 	fluff = "The rather blandly named V1 sensor drone. A prototype design, it is an unmanned craft used \
@@ -8,10 +8,10 @@ DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/drone/nts_v1_sensor)
 	path = "maps/shuttles/factions/corporations/nanotrasen/drone_prototype.dmm"
 
 	descriptor = /datum/shuttle_descriptor{
-		mass = 5;
+		mass = 5000;
 	}
 
-// todo: finish map
+#warn finish map
 
-/area/shuttle/nanotrasen/drone_prototype
+DECLARE_SHUTTLE_AREA(/nanotrasen/drone_prototype)
 	name = "V1 Sensor Drone"

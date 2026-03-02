@@ -138,7 +138,6 @@
 [b]Notice[/b]: Multirole independent vessel"}
 	color = "#00AA00" //green, because money
 	vessel_mass = 4500
-	vessel_size = SHIP_SIZE_LARGE
 	fore_dir = EAST
 	shuttle = "Salamander"
 
@@ -166,7 +165,6 @@
 [b]Notice[/b]: Damage to hull is consistent with intentional scuttling procedures, no distress call logged"}
 	color = "#008800" //green, because money
 	vessel_mass = 4500
-	vessel_size = SHIP_SIZE_LARGE
 	fore_dir = EAST
 	shuttle = "Salamander Wreckage"
 

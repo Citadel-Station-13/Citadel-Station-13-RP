@@ -36,7 +36,6 @@
 	color = "#292636"
 	vessel_mass = 1000
 	known = FALSE
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Cylon"
 
 // The shuttle's 'shuttle' computer

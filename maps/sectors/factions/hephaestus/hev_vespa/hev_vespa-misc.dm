@@ -124,7 +124,6 @@
 [b]Notice[/b]: Corporate vessel"}
 	color = "#4cad73" //Green
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_LARGE
 	initial_generic_waypoints = list("hpv_port", "hpv_starboard", "hpv_hangar")
 	fore_dir = 4
 

@@ -8,10 +8,10 @@ DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/science/nts_vector)
 	path = "maps/shuttles/factions/corporations/nanotrasen/sci_vector.dmm"
 
 	descriptor = /datum/shuttle_descriptor{
-		mass = 25;
+		mass = 15000;
 	}
 
-// todo: finish map
+#warn finish map
 
 /area/shuttle/nanotrasen/sci_vector
 

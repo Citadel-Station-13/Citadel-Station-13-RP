@@ -29,7 +29,6 @@
 [b]Notice[/b]: Independent trader vessel"}
 	color = "#aacccc"
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_LARGE
 	initial_generic_waypoints = list("talon_fore", "talon_aft", "talon_port", "talon_starboard")
 	initial_restricted_waypoints = list("Talon's boat" = list("offmap_spawn_talonboat"), "Talon lifeboat" = list("offmap_spawn_talon_lifeboat"))
 
@@ -62,7 +61,6 @@
 	name = "Talon lifeboat"
 	desc = "A tiny engineless lifeboat from the ITV Talon."
 	vessel_mass = 1000
-	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Talon lifeboat"
 
 /*

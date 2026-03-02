@@ -92,7 +92,6 @@
 [b]Notice[/b]: May carry passengers"}
 	color = "#d98c1a" //orng
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
 	initial_generic_waypoints = list("itglight_fore", "itglight_aft", "itglight_port", "itglight_starboard", "itglight_port_dock", "itglight_starboard_dock")
 	initial_restricted_waypoints = list("ITG Shuttlecraft" = list("omship_spawn_itglightshuttle"))
 	fore_dir = NORTH

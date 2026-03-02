@@ -30,7 +30,6 @@
 	desc = "A shuttle combining EMT search and rescue work, with security like work. The best of 2 worlds."
 	fore_dir = EAST
 	vessel_mass = 11000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Hammerdart Interception and Rescue Shuttle"
 	scanner_name = "Hammerdart Interception and Rescue Shuttle"
 	scanner_desc = @{"[i]Registration[/i]: ---

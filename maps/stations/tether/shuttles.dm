@@ -53,7 +53,6 @@
 	desc = "The traditional Excursion Shuttle. NT Approved!"
 	fore_dir = NORTH
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
 
 ////////////////////////////////////////
@@ -73,7 +72,6 @@
 	name = "Tour Bus"
 	desc = "A small 'space bus', if you will."
 	vessel_mass = 2000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Tour Bus"
 
 ////////////////////////////////////////
@@ -93,7 +91,6 @@
 	name = "Medivac Shuttle"
 	desc = "A medical evacuation shuttle."
 	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Medivac Shuttle"
 	fore_dir = EAST
 
@@ -111,6 +108,5 @@
 	name = "Securiship Shuttle"
 	desc = "A security transport ship."
 	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Securiship Shuttle"
 	fore_dir = EAST

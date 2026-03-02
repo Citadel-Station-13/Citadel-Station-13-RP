@@ -18,7 +18,6 @@ DECLARE_SHUTTLE_TEMPLATE(/generic/outlaw/reaveer)
 	color = "#751713" //Dark Red
 	fore_dir = WEST
 	vessel_mass = 7000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Reaver-Class Shuttle"
 
 /obj/machinery/computer/shuttle_control/explore/reaver

@@ -133,7 +133,6 @@ DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr_wreck)
 [b]Notice[/b]: Medium personnel transport vessel"}
 	color = "#3366FF"
 	vessel_mass = 6500
-	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Gecko Stationhopper"
 
 /obj/overmap/entity/visitable/ship/landable/gecko_cr
@@ -144,7 +143,6 @@ DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr_wreck)
 [b]Notice[/b]: Medium cargo transport vessel"}
 	color = "#3366FF"
 	vessel_mass = 6500
-	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Gecko Cargo Hauler"
 
 /obj/overmap/entity/visitable/ship/landable/gecko_cr_wreck
@@ -155,5 +153,4 @@ DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr_wreck)
 [b]Notice[/b]: Medium cargo transport vessel, significant damage inflicted"}
 	color = "#3366FF"
 	vessel_mass = 6500
-	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Wrecked Gecko Cargo Hauler"

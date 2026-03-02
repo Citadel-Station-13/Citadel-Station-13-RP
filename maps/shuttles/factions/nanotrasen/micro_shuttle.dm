@@ -16,7 +16,6 @@
 	color = "#78cf56"
 	fore_dir = WEST
 	vessel_mass = 1000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Personal Micro Shuttle 1"
 	scanner_name = "Strelka Personal Transport 1"
 	scanner_desc = @{"[i]Registration[/i]: ---

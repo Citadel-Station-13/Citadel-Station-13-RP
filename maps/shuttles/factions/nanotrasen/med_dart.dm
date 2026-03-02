@@ -16,7 +16,6 @@
 	color = "#69b9de" //Light Blue
 	fore_dir = NORTH
 	vessel_mass = 9000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Dart EMT Shuttle"
 
 /area/shuttle/emt

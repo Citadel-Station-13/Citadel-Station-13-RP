@@ -17,7 +17,6 @@
 	color = "#72388d" //Purple
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
 
 #warn map
