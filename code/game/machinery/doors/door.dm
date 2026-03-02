@@ -405,12 +405,3 @@
 			bound_height = width * world.icon_size
 
 	update_nearby_tiles()
-
-//* Airlock API *//
-
-/**
- * Called when an airlock requests we set our state to something
- */
-/obj/machinery/door/proc/airlock_set(open, lock)
-	return FALSE
-	#warn impl on /airlock

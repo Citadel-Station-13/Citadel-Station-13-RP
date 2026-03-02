@@ -176,9 +176,9 @@
 
 	#warn hook
 
-/obj/shuttle_dock/preloading_instance(with_id)
-	..()
-	dock_id = SSmapping.mangled_persistent_id(dock_id, with_id)
+/obj/shuttle_dock/preloading_from_mapload(datum/dmm_context/context)
+	. = ..()
+	dock_id = SSmapping.mangled_persistent_id(dock_id, context.mangling_id)
 
 /**
  * @params

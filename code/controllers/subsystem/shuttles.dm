@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(shuttle)
 	//* Shuttles
 	/// All shuttles by id
 	//  todo: non-static, recover()?
-	var/static/list/datum/shuttle/shuttle_id_registry = list()
+	var/static/list/datum/shuttle/shuttle_registry = list()
 
 	//* Templates
 	/// templates by path
@@ -106,8 +106,9 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/register_shuttle(datum/shuttle/shuttle)
 	ASSERT(istext(shuttle.id))
-	ASSERT(isnull(shuttle_id_registry[shuttle.id]))
-	shuttle_id_registry[shuttle.id] = shuttle
+	ASSERT(isnull(shuttle_registry[shuttle.id]))
+	shuttle_registry[shuttle.id] = shuttle
+	#warn impl; how to unregister / delete
 
 //* Shuttle Templates *//
 
@@ -122,7 +123,8 @@ SUBSYSTEM_DEF(shuttle)
 		return templatelike
 	CRASH("what?")
 
-/datum/controller/subsystem/shuttle/proc/load_shuttle_template(datum/shuttle_template/template)
+/datum/controller/subsystem/shuttle/proc/load_shuttle_template(datum/shuttle_template/template) as /datum/shuttle_template
+	#warn dupe check
 	templates_by_id[template.id] = template
 	return template
 

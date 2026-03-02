@@ -4,6 +4,8 @@
 /**
  * while /datum/shuttle_template describes the physical shuttle, this describes features
  * like mass.
+ *
+ * * When a shuttle template is loaded, this is cloned into the shuttle datum.
  */
 /datum/shuttle_descriptor
 	//* Flight (overmaps / web) *//
@@ -20,9 +22,9 @@
 	//* Jumps (ferry & moving to/from overmaps) *//
 	/// engine charging time when starting a move
 	//  todo: should have support for being based on in game machinery (?)
-	var/jump_charging_time = 10 SECONDS
+	var/jump_charging_time = 5 SECONDS
 	/// time spent in transit when performing a move
-	var/jump_move_time = 10 SECONDS
+	var/jump_move_time = 5 SECONDS
 
 /datum/shuttle_descriptor/clone()
 	var/datum/shuttle_descriptor/clone = ..()
