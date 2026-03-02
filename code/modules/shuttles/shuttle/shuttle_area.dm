@@ -47,3 +47,21 @@
 /area/shuttle/auto/one_single_area
 	count = ""
 	descriptor = ""
+
+/area/shuttle/auto/named/cockpit
+	descriptor = "Cockpit"
+
+/area/shuttle/auto/named/cargo
+	descriptor = "Cargo Bay"
+
+/area/shuttle/auto/named/airlock
+	descriptor = "Airlock"
+
+/area/shuttle/auto/named/airlock/primary
+	count = "Primary"
+
+/area/shuttle/auto/named/airlock/secondary
+	count = "Secondary"
+
+/area/shuttle/auto/named/airlock/tertiary
+	count = "Tertiary"

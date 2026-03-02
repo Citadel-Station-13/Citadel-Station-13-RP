@@ -96,6 +96,7 @@ SUBSYSTEM_DEF(shuttle)
 //* Shuttles *//
 
 /**
+ * * The shuttle will initially be
  * @return /datum/shuttle
  */
 /datum/controller/subsystem/shuttle/proc/create_shuttle(datum/shuttle_template/templatelike, shuttle_type_override, list/datum/map_injection/map_injections)

@@ -8,7 +8,7 @@ DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/drone_prototype)
 	path = "maps/shuttles/factions/corporations/nanotrasen/drone_prototype.dmm"
 
 	descriptor = /datum/shuttle_descriptor{
-		mass = 5000;
+		mass = 750;
 	}
 
 #warn finish map

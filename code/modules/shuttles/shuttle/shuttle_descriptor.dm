@@ -30,13 +30,21 @@
 	#warn impl all
 	var/overmap_icon
 	var/overmap_icon_state
+	var/overmap_icon_color = "#4cad73" //Greyish green
 	#warn impl
+	// legacy because sensor update will change how this works
+	var/overmap_legacy_start_unknown = TRUE
 	// Legacy because sensor update will get rid of hard-coded names.
-	var/overmap_legacy_name = "Century Shuttle"
+	var/overmap_legacy_name
 	// Legacy because sensor update will get rid of hard-coded scan results.
 	#warn is this desc?
 	var/overmap_legacy_desc
-	var/overmap_legacy_color = "#4cad73" //Greyish green
+	// Legacy because sensor update will get rid of hard-coded scan results
+	// * defaults to name
+	var/overmap_legacy_scan_name
+	// Legacy because sensor update will get rid of hard-coded scan results
+	// * defaults to desc
+	var/overmap_legacy_scan_desc
 
 /datum/shuttle_descriptor/clone()
 	var/datum/shuttle_descriptor/clone = ..()

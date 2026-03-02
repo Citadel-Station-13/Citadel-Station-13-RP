@@ -204,7 +204,7 @@
 	name = "\improper Primary Surface EVA"
 	sound_env = SMALL_ENCLOSED
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
-	
+
 /area/rift/surfaceeva/airlock/main
 	name = "\improper Primary Surface Airlock"
 
@@ -223,7 +223,7 @@
 
 /area/rift/surfaceeva/aa/surface_north
 	name = "\improper Surface One - North Anti-Air Battery"
-	
+
 /area/rift/surfaceeva/aa/surface_south
 	name = "\improper Surface One - South Anti-Air Battery"
 
@@ -568,7 +568,7 @@
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-	
+
 /area/medical/virologymorgue
 	name = "\improper Virology Morgue"
 	icon_state = "virology"
@@ -685,6 +685,7 @@
 
 // Exploration Shuttle stuff //
 
+#warn obliterate; ensure other maps aren't using it too
 /area/shuttle/excursion
 	name = "\improper Excursion Shuttle"
 	icon_state = "shuttle2"

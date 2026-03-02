@@ -19,7 +19,12 @@
 	var/name
 	/// Full description
 	var/desc
+	/// display name for players
+	/// * may be visible ic
+	/// * defaults to name
+	var/display_name
 	/// lore fluff
+	/// * may be visible ic
 	var/fluff
 	/// Category
 	var/category
@@ -122,6 +127,8 @@
 
 	// set vars on shuttle
 	instance.template_id = id
+
+	#warn ok but register the instance anyways because otherwise it's a dangling ref with a reservation that can't easily be cleaned up
 
 	return instance
 
