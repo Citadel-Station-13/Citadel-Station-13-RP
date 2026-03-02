@@ -6138,6 +6138,7 @@
 #include "maps\shuttles\generic\backend\escape_shuttle.dm"
 #include "maps\shuttles\generic\backend\escape_tram.dm"
 #include "maps\shuttles\generic\backend\supply_shuttle.dm"
+#include "maps\shuttles\generic\military\_military.dm"
 #include "maps\shuttles\generic\outlaw\_outlaw.dm"
 #include "maps\shuttles\generic\outlaw\pirate_skiff.dm"
 #include "maps\shuttles\generic\outlaw\reaver.dm"

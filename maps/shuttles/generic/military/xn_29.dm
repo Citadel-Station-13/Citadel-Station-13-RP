@@ -1,5 +1,6 @@
-#warn impl
+DECLARE_SHUTTLE_TEMPLATE(/generic/military/xn_29)
 
+#warn impl
 
 // Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/hybrid
@@ -10,10 +11,6 @@
 
 // The shuttle's area(s)
 /area/shuttle/blue_fo
-	name = "\improper Hybrid Shuttle"
-	icon_state = "shuttle2"
-	requires_power = 1
-
 // A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/hybridshuttle
 	name = "Origin - Hybrid Shuttle"
@@ -39,4 +36,4 @@
 	vessel_mass = 3000
 	shuttle = "XN-29 Prototype Shuttle"
 
-#map
+#warn map
