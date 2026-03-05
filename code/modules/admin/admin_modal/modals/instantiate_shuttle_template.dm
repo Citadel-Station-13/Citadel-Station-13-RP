@@ -2,61 +2,58 @@
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
- * Modal to upload a new shuttle template
+ * Modal to instantiate a new shuttle template
  */
-/datum/admin_modal/load_shuttle_template
-	name = "Load Shuttle Template"
-	tgui_interface = "LoadShuttleTemplate"
+/datum/admin_modal/instantiate_shuttle_template
+	name = "Instantiate Shuttle Template"
+	tgui_interface = "InstantiateShuttleTemplate"
 	tgui_update = FALSE
 
-#warn impl al;l
-
-	/// file buffer
-	var/file_buffer
-	/// parse buffer
-	/// * never carried over by ref to anything else; this ref will always be owned
-	var/datum/dmm_parsed/parse_buffer
 	/// checks passed?
 	var/checks_passed = FALSE
 	/// already loaded?
 	var/finalized = FALSE
 
-	var/chosen_id
-	var/chosen_name
-	var/chosen_desc
-	var/chosen_fluff
+	var/chosen_shuttle_template_id
+	var/chosen_overmap_icon
+	var/chosen_overmap_icon_state
+	var/chosen_overmap_name
+	var/chosen_overmap_desc
+	var/chosen_overmap_scanner_name
+	var/chosen_overmap_scanner_desc
+	var/chosen_overmap_unknown
 	/// * never carried over by ref to anything else; this ref will always be owned
 	var/datum/shuttle_descriptor/chosen_descriptor
 
-/datum/admin_modal/load_shuttle_template/Initialize()
-	// no uploading new shuttle templates while MC is initializing.
+#warn impl al;l
+
+/datum/admin_modal/instantiate_shuttle_template/Initialize()
+	// no making new shuttles while MC is initializing.
 	if(!MC_INITIALIZED())
-		loud_rejection("Cannot upload new shuttle templates while the server is initializing.")
+		loud_rejection("Cannot instantiate new shuttle templates while the server is initializing.")
 		return FALSE
-	chosen_descriptor = new
 	return ..()
 
-/datum/admin_modal/load_shuttle_template/Destroy()
+/datum/admin_modal/instantiate_shuttle_template/Destroy()
 	QDEL_NULL(chosen_descriptor)
-	QDEL_NULL(parse_buffer)
 	return ..()
 
 #warn impl
 
-/datum/admin_modal/load_shuttle_template/ui_data(mob/user, datum/tgui/ui)
+/datum/admin_modal/instantiate_shuttle_template/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/datum/admin_modal/load_shuttle_template/ui_static_data(mob/user, datum/tgui/ui)
+/datum/admin_modal/instantiate_shuttle_template/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 
-/datum/admin_modal/load_shuttle_template/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
+/datum/admin_modal/instantiate_shuttle_template/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
 
-/datum/admin_modal/load_shuttle_template/proc/attempt_parse_and_check_buffer()
+/datum/admin_modal/instantiate_shuttle_template/proc/attempt_parse_and_check_buffer()
 
-/datum/admin_modal/load_shuttle_template/proc/attempt_finalize()
+/datum/admin_modal/instantiate_shuttle_template/proc/attempt_finalize()
 
-// /datum/admin_modal/load_shuttle_template/ui_data(mob/user, datum/tgui/ui)
+// /datum/admin_modal/instantiate_shuttle_template/ui_data(mob/user, datum/tgui/ui)
 // 	. = ..()
 // 	var/load_status = "waiting"
 // 	if(load_ready)
@@ -68,23 +65,23 @@
 // 	.["status"] = load_status
 // 	.["levels"] = length(buffer.levels)
 
-// /datum/admin_modal/load_shuttle_template/ui_nested_data(mob/user, datum/tgui/ui)
+// /datum/admin_modal/instantiate_shuttle_template/ui_nested_data(mob/user, datum/tgui/ui)
 // 	. = ..()
 // 	.["map"] = ui_map_data()
 // 	for(var/index in 1 to length(buffer.levels))
 // 		.["level-[index]"] = ui_level_index_data(index)
 
-// /datum/admin_modal/load_shuttle_template/ui_static_data(mob/user, datum/tgui/ui)
+// /datum/admin_modal/instantiate_shuttle_template/ui_static_data(mob/user, datum/tgui/ui)
 // 	. = ..()
 // 	.["const_airVacuum"] = GAS_STRING_VACUUM
 // 	.["const_airHabitable"] = GAS_STRING_STP
 
-// /datum/admin_modal/load_shuttle_template/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+// /datum/admin_modal/instantiate_shuttle_template/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
 // 	. = ..()
 // 	deferred += /datum/asset_pack/json/MapSystem
 // 	deferred += /datum/asset_pack/json/WorldTypepaths
 
-// /datum/admin_modal/load_shuttle_template/ui_act(action, list/params, datum/tgui/ui)
+// /datum/admin_modal/instantiate_shuttle_template/ui_act(action, list/params, datum/tgui/ui)
 // 	. = ..()
 // 	if(.)
 // 		return
@@ -243,7 +240,7 @@
 
 // 	mark_dirty()
 
-// /datum/admin_modal/load_shuttle_template/proc/ui_map_data()
+// /datum/admin_modal/instantiate_shuttle_template/proc/ui_map_data()
 // 	var/list/serialized_overmap_initializer = null
 // 	serialized_overmap_initializer = list(
 // 		"x" = buffer_overmap_initializer.manual_position_x,
@@ -258,14 +255,14 @@
 // 		"overmap" = serialized_overmap_initializer,
 // 	)
 
-// /datum/admin_modal/load_shuttle_template/proc/update_ui_map_data()
+// /datum/admin_modal/instantiate_shuttle_template/proc/update_ui_map_data()
 // 	push_ui_data(
 // 		nested_data = list(
 // 			"map" = ui_map_data(),
 // 		),
 // 	)
 
-// /datum/admin_modal/load_shuttle_template/proc/ui_level_index_data(index)
+// /datum/admin_modal/instantiate_shuttle_template/proc/ui_level_index_data(index)
 // 	var/datum/map_level/level = buffer.levels[index]
 // 	return list(
 // 		"id" = level.id,
@@ -285,18 +282,18 @@
 // 		"fileName" = "[level.path]",
 // 	)
 
-// /datum/admin_modal/load_shuttle_template/proc/update_ui_level_index_data(index)
+// /datum/admin_modal/instantiate_shuttle_template/proc/update_ui_level_index_data(index)
 // 	push_ui_data(
 // 		nested_data = list(
 // 			"level-[index]" = ui_level_index_data(index),
 // 		),
 // 	)
 
-// /datum/admin_modal/load_shuttle_template/proc/update_all_ui_level_datas()
+// /datum/admin_modal/instantiate_shuttle_template/proc/update_all_ui_level_datas()
 // 	for(var/i in 1 to length(buffer.levels))
 // 		update_ui_level_index_data(i)
 
-// /datum/admin_modal/load_shuttle_template/proc/validate_and_ready()
+// /datum/admin_modal/instantiate_shuttle_template/proc/validate_and_ready()
 // 	var/list/errors_out = list()
 
 // 	var/passed = buffer.validate(TRUE, errors_out)
@@ -313,12 +310,12 @@
 
 // 	update_ui_data()
 
-// /datum/admin_modal/load_shuttle_template/proc/validate_additional_map(datum/map/map, list/errors_out)
+// /datum/admin_modal/instantiate_shuttle_template/proc/validate_additional_map(datum/map/map, list/errors_out)
 // 	. = TRUE
 // 	for(var/datum/map_level/level as anything in map.levels)
 // 		. = . && validate_additional_level(level, map, errors_out)
 
-// /datum/admin_modal/load_shuttle_template/proc/validate_additional_level(datum/map_level/level, datum/map/map, list/errors_out)
+// /datum/admin_modal/instantiate_shuttle_template/proc/validate_additional_level(datum/map_level/level, datum/map/map, list/errors_out)
 // 	. = TRUE
 // 	if(!SSair.validate_gas_string(level.air_indoors))
 // 		errors_out?.Add("Level with ID [level.id] had invalid air_indoors gas string [level.air_indoors]")
@@ -327,11 +324,11 @@
 // 		errors_out?.Add("Level with ID [level.id] had invalid air_outdoors gas string [level.air_outdoors]")
 // 		. = FALSE
 
-// /datum/admin_modal/load_shuttle_template/proc/mark_dirty()
+// /datum/admin_modal/instantiate_shuttle_template/proc/mark_dirty()
 // 	load_ready = FALSE
 // 	update_ui_data()
 
-// /datum/admin_modal/load_shuttle_template/proc/load()
+// /datum/admin_modal/instantiate_shuttle_template/proc/load()
 // 	if(load_started || load_finished)
 // 		return TRUE
 // 	load_started = TRUE
@@ -349,12 +346,12 @@
 // 	// TODO: show feedback in UI before closing?
 // 	qdel(src)
 
-// /datum/admin_modal/load_shuttle_template/proc/do_load()
+// /datum/admin_modal/instantiate_shuttle_template/proc/do_load()
 // 	if(buffer_overmap_active)
 // 		buffer.overmap_initializer = buffer_overmap_initializer
 // 	return SSmapping.load_map(buffer)
 
-// /datum/admin_modal/load_shuttle_template/proc/create_level()
+// /datum/admin_modal/instantiate_shuttle_template/proc/create_level()
 // 	var/datum/map_level/appending = new(buffer)
 // 	appending.name = "Custom Level"
 // 	appending.display_name = "Unknown Sector"
@@ -362,7 +359,7 @@
 // 	update_ui_level_index_data(length(buffer.levels))
 // 	update_ui_data()
 
-// /datum/admin_modal/load_shuttle_template/proc/delete_level_index(target_level_index)
+// /datum/admin_modal/instantiate_shuttle_template/proc/delete_level_index(target_level_index)
 // 	var/datum/map_level/obliterating = buffer.levels[target_level_index]
 // 	buffer.levels.Cut(target_level_index, target_level_index + 1)
 // 	QDEL_NULL(obliterating)

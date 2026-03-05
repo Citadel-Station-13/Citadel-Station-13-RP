@@ -57,6 +57,9 @@
 /area/shuttle/auto/named/engine
 	descriptor = "Engine"
 
+/area/shuttle/auto/named/medbay
+	descriptor = "Medbay"
+
 /area/shuttle/auto/named/deck
 	descriptor = "Deck"
 
