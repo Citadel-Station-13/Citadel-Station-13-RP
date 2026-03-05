@@ -7,111 +7,95 @@
 /datum/sprite_accessory/marking/body_parts/r_torso_f
 	name = "Half-Torso Female (Right)"
 	id = "marking_female_halftorso_right"
-	icon_state = "right_torso_f"
+	icon_state = "right_f"
 	body_parts = list(BP_TORSO)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/l_torso_f
 	name = "Half-Torso Female (Left)"
 	id = "marking_female_halftorso_left"
-	icon_state = "left_torso_f"
+	icon_state = "left_f"
 	body_parts = list(BP_TORSO)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/r_torso_m
 	name = "Half-Torso Male (Right)"
 	id = "marking_male_halftorso_right"
-	icon_state = "right_torso_m"
+	icon_state = "right_m"
 	body_parts = list(BP_TORSO)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/l_torso_m
 	name = "Half-Torso Male (Left)"
 	id = "marking_male_halftorso_left"
-	icon_state = "left_torso_m"
+	icon_state = "left_m"
 	body_parts = list(BP_TORSO)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/r_head_f
 	name = "Half-Head Female (Right)"
 	id = "marking_female_halfhead_right"
-	icon_state = "right_head_f"
+	icon_state = "right_f"
 	body_parts = list(BP_HEAD)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/l_head_f
 	name = "Half-Head Female (Left)"
 	id = "marking_female_halfhead_left"
-	icon_state = "left_head_f"
+	icon_state = "left_f"
 	body_parts = list(BP_HEAD)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/r_head_m
 	name = "Half-Head Male (Right)"
 	id = "marking_male_halfhead_right"
-	icon_state = "right_head_m"
+	icon_state = "right_m"
 	body_parts = list(BP_HEAD)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/l_head_m
 	name = "Half-Head Male (Left)"
 	id = "marking_male_halfhead_left"
-	icon_state = "left_head_m"
+	icon_state = "left_m"
 	body_parts = list(BP_HEAD)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/r_arm
 	name = "Arm (Right)"
 	id = "marking_arm_right"
-	icon_state = "right_arm"
+	icon_state = "full"
 	body_parts = list(BP_R_ARM)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/l_arm
 	name = "Arm (Left)"
 	id = "marking_arm_left"
-	icon_state = "left_arm"
+	icon_state = "full"
 	body_parts = list(BP_L_ARM)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/r_hand
 	name = "Hand (Right)"
 	id = "marking_hand_right"
-	icon_state = "right_hand"
+	icon_state = "full"
 	body_parts = list(BP_R_HAND)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/l_hand
 	name = "Hand (Left)"
 	id = "marking_hand_left"
-	icon_state = "left_hand"
+	icon_state = "full"
 	body_parts = list(BP_L_HAND)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/r_leg
 	name = "Leg (Right)"
 	id = "marking_leg_right"
-	icon_state = "right_leg"
+	icon_state = "full"
 	body_parts = list(BP_R_LEG)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/l_leg
 	name = "Leg (Left)"
 	id = "marking_leg_left"
-	icon_state = "left_leg"
+	icon_state = "full"
 	body_parts = list(BP_L_LEG)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/r_foot
 	name = "Foot (Right)"
 	id = "marking_foot_right"
-	icon_state = "right_foot"
+	icon_state = "full"
 	body_parts = list(BP_R_FOOT)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
 
 /datum/sprite_accessory/marking/body_parts/l_foot
 	name = "Foot (Left)"
 	id = "marking_foot_left"
-	icon_state = "left_foot"
+	icon_state = "full"
 	body_parts = list(BP_L_FOOT)
-	icon = "icons/mob/sprite_accessories/markings/halves.dmi"
