@@ -6,8 +6,8 @@
  */
 /datum/shuttle_transit_cycle
 	//* state / processing *//
-	/// current stage
-	var/stage = SHUTTLE_TRANSIT_STAGE_IDLE
+	/// current transit stage, if any
+	var/datum/shuttle_transit_stage/stage
 	/// behavior flags
 	var/transit_flags = NONE
 	/// the controller we're executing on

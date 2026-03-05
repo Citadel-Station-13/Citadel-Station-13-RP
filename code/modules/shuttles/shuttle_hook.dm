@@ -14,13 +14,8 @@
 	/// are we obfuscated (they get told something's blocking them, but not what)
 	var/obfuscated = FALSE
 
-	/// we're currently blocking these operations
-	///
-	/// this is the only place where a shuttle event may be referenced outside of the shuttle itself!
-	///
-	/// this is safe to reference like this because shuttles never are in more than one dock
-	/// at the same time.
-	var/list/datum/event_args/shuttle/blocking
+	/// we're currently with these active blockers
+	var/list/datum/shuttle_transit_blocker/blocking
 
 /datum/shuttle_hook/Destroy()
 	release_all()
