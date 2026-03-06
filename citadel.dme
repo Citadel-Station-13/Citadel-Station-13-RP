@@ -6180,7 +6180,7 @@
 #include "maps\stations\endeavour\endeavour-overmap.dm"
 #include "maps\stations\endeavour\endeavour-papers.dm"
 #include "maps\stations\endeavour\endeavour-sectors.dm"
-#include "maps\stations\endeavour\endeavour-shuttle-landmarks.dm"
+#include "maps\stations\endeavour\endeavour-shuttles.dm"
 #include "maps\stations\endeavour\endeavour-turbolifts.dm"
 #include "maps\stations\endeavour\endeavour.dm"
 #include "maps\stations\endeavour\engines.dm"
