@@ -140,28 +140,27 @@
 
 #warn above
 
-DECLARE_SHUTTLE_DOCK_MAP_PRESET(sky_planet, /westrig1, "NT Outpost Hyades - West Rig 1")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET(sky_planet, /westrig2, "NT Outpost Hyades - West Rig 2")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /westrig1, "NT Outpost Hyades - West Rig 1")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /westrig2, "NT Outpost Hyades - West Rig 2")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /southrig1, "NT Outpost Hyades - South Rig 1")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /southrig3, "NT Outpost Hyades - South Rig 3")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /northrig2, "NT Outpost Hyades - North Rig 2")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /northrig2_hammerhead, "NT Outpost Hyades - North Rig 2 - Hammerhead")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /northrig3, "NT Outpost Hyades - North Rig 3")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /eastrig1, "NT Outpost Hyades - East Rig 1")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /eastrig3, "NT Outpost Hyades - East Rig 3")
 
 #warn obliterate below
 
 /obj/effect/shuttle_landmark/skyplanet/westrig1
 /obj/effect/shuttle_landmark/skyplanet/westrig2
 /obj/effect/shuttle_landmark/skyplanet/southrig1
-	name = "NT Outpost Hyades - South Rig 1"
 /obj/effect/shuttle_landmark/skyplanet/southrig3
-	name = "NT Outpost Hyades - South Rig 3"
 /obj/effect/shuttle_landmark/skyplanet/northrig2
-	name = "NT Outpost Hyades - North Rig 2"
 /obj/effect/shuttle_landmark/skyplanet/northrig3
-	name = "NT Outpost Hyades - North Rig 3"
 /obj/effect/shuttle_landmark/skyplanet/eastrig1
-	name = "NT Outpost Hyades - East Rig 1"
 /obj/effect/shuttle_landmark/skyplanet/eastrig3
-	name = "NT Outpost Hyades - East Rig 3"
 /obj/effect/shuttle_landmark/skyplanet/northrig2/hammerhead
-	name = "NT Outpost Hyades - North Rig 2 (Hammerhead)"
-
 //voidline
 
 /obj/effect/shuttle_landmark/skyplanet/voidline/redcomet
