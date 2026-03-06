@@ -11,7 +11,9 @@
 	var/ferry_away_id
 
 /obj/shuttle_dock/ferry_start/init_shuttle(datum/shuttle/shuttle)
-	. = ..()
+	..()
 
 	var/datum/shuttle_controller/ferry/controller = new(dock_id, ferry_away_id)
 	shuttle.bind_controller(controller)
+
+#warn helpers? checks? etc?

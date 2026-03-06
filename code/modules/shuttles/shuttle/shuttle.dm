@@ -40,15 +40,11 @@
 	/// our physical shuttle object
 	/// * Moved manually by shuttle calculations; the grid is then moved in respects
 	///   to the anchor.
-	var/obj/shuttle_anchor/anchor
+	var/obj/shuttle_aligner/master/anchor
 	#warn don't move this snowflake-ly, only move anchor like that, this goes with grid
 	/// our physical shuttle port objects
 	/// * Moved by grid-mvoe.
-	var/list/obj/shuttle_port/ports
-	#warn nuke this don't need it just for loop like a normal person
-	/// port lookup by id
-	/// * Moved by grid-mvoe.
-	var/list/obj/shuttle_port/port_lookup
+	var/list/obj/shuttle_aligner/port/ports
 	/// the areas in our shuttle, associated to a truthy value
 	/// * Used for grid-move lookups.
 	var/list/area/shuttle/areas
@@ -59,7 +55,7 @@
 	var/obj/shuttle_dock/docked
 	/// the port we're using in the current dock.
 	/// * Should only be set if [docked] is set.
-	var/obj/shuttle_port/docked_via_port
+	var/obj/shuttle_aligner/port/docked_via_port
 
 	//* Movement - Ephemeral / In-Move *//
 	/// current direction of motion, used to calculate things like visuals and roadkill
@@ -181,6 +177,7 @@
 
 //* Initialization *//
 
+#warn how are we going to do buildable shuttles?
 /**
  * Called after all areas are made and all turfs are there,
  * but before atoms initialization.
@@ -217,18 +214,18 @@
 		// new /obj/shuttle_structure(scanning)
 		// todo: probably make sure baseturfs are fine
 		var/static/list/cared_about_typecache = typecacheof(list(
-			/obj/shuttle_anchor,
-			/obj/shuttle_port,
+			/obj/shuttle_aligner/master,
+			/obj/shuttle_aligner/port,
 		))
 		for(var/atom/movable/AM as anything in scanning.contents)
 			if(!cared_about_typecache[AM.type])
 				continue
-			if(istype(AM, /obj/shuttle_anchor))
+			if(istype(AM, /obj/shuttle_aligner/master))
 				if(!isnull(anchor))
 					stack_trace("duplicate anchor during init scan")
 				anchor = AM
-			else if(istype(AM, /obj/shuttle_port))
-				var/obj/shuttle_port/port = AM
+			else if(istype(AM, /obj/shuttle_aligner/port))
+				var/obj/shuttle_aligner/port/port = AM
 				ports += port
 				if(port.primary_port)
 					if(!port_primary)
@@ -256,7 +253,7 @@
 		anchor = new(center)
 	anchor.calculate_bounds(bottomleft_x, bottomleft_y, topright_x, topright_y, from_template.facing_dir)
 	anchor.before_bounds_initializing(src, from_reservation, from_template)
-	for(var/obj/shuttle_port/port in ports)
+	for(var/obj/shuttle_aligner/port/port in ports)
 		port.before_bounds_initializing(src, from_reservation, from_template)
 
 /**
@@ -571,7 +568,7 @@
  *
  * @return TRUE / FALSE on success / failure
  */
-/datum/shuttle/proc/dock(obj/shuttle_dock/dock, obj/shuttle_port/align_with_port, centered, direction, list/use_before_turfs, list/use_after_turfs)
+/datum/shuttle/proc/dock(obj/shuttle_dock/dock, obj/shuttle_aligner/port/align_with_port, centered, direction, list/use_before_turfs, list/use_after_turfs)
 	if(dock.inbound && dock.inbound != src)
 		return FALSE
 	if(dock.docked)
@@ -579,16 +576,18 @@
 	#warn impl
 
 /**
- * immediate shuttle move, undocking from any docked ports in the process
+ * Performs an immediate translation, aligning either our anchor or a port with a given turf and direction.
  *
+ * * The shuttle controller will not have any hooks fired off, except for undocking.
+ * * `use_before_turfs` and `use_after_turfs` may be passed in to stop us from unnecessarily grabbing them again.
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
- * * does not fire off shuttle hooks; shuttle transit cycles and controllers do that.
- * * DO NOT USE THIS FOR DOCKING. It only handles undocking, not docking!
+ * * does not fire off docking/traversal shuttle hooks; shuttle transit cycles and controllers do that.
+ * * does not dock properly, use `dock()` for that.
  *
  * @return TRUE / FALSE on success / failure
  */
-/datum/shuttle/proc/aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
+/datum/shuttle/proc/aligned_translation(turf/move_to, direction, obj/shuttle_aligner/port/align_with_port, list/use_before_turfs, list/use_after_turfs)
 	#warn unbind from dock
 
 	// get ordered turfs
@@ -619,7 +618,7 @@
  * respecting all necessary offsets.
  * ports should generally be centered.
  */
-/datum/shuttle/proc/unsafe_aligned_translation(turf/move_to, direction, obj/shuttle_port/align_with_port, list/use_before_turfs, list/use_after_turfs)
+/datum/shuttle/proc/unsafe_aligned_translation(turf/move_to, direction, obj/shuttle_aligner/port/align_with_port, list/use_before_turfs, list/use_after_turfs)
 	PRIVATE_PROC(TRUE)
 	// cache old data
 	var/turf/move_from = get_turf(anchor)
@@ -655,7 +654,7 @@
 		new_anchor_location = list(move_to.x, move_to.y, move_to.z, direction)
 
 	// we then resolve new port locations via new anchor location
-	for(var/obj/shuttle_port/port as anything in ports)
+	for(var/obj/shuttle_aligner/port/port as anything in ports)
 		new_port_locations[port] = port.calculate_motion_with_respect_to(
 			old_anchor_location,
 			new_anchor_location,
@@ -676,7 +675,7 @@
 	anchor.anchor_moving = TRUE
 	anchor.setDir(new_anchor_location[4])
 	anchor.anchor_moving = FALSE
-	for(var/obj/shuttle_port/port as anything in new_port_locations)
+	for(var/obj/shuttle_aligner/port/port as anything in new_port_locations)
 		var/list/motion_tuple = new_port_locations[port]
 		port.port_moving = TRUE
 		port.abstract_move(locate(motion_tuple[1], motion_tuple[2], motion_tuple[3]))
@@ -801,7 +800,7 @@
  * * hard_checks_only - only check for hard faults. this is usually set to TRUE for dock landings, because docks are consdiered protected!
  * * use_ordered_turfs - pass in ordered turfs to use instead of the normal bounds check
  */
-/datum/shuttle/proc/check_docking_bounds(obj/shuttle_dock/dock, obj/shuttle_port/with_port, hard_checks_only, list/turf/use_ordered_turfs)
+/datum/shuttle/proc/check_docking_bounds(obj/shuttle_dock/dock, obj/shuttle_aligner/port/with_port, hard_checks_only, list/turf/use_ordered_turfs)
 	if(isnull(hard_checks_only))
 		hard_checks_only = dock.trample_bounding_box
 	#warn impl
@@ -981,7 +980,7 @@
  * this is only used in roundstart loading.
  */
 /datum/shuttle/proc/get_primary_port()
-	for(var/obj/shuttle_port/port in ports)
+	for(var/obj/shuttle_aligner/port/port in ports)
 		if(port.primary_port)
 			return port
 	if(!length(ports))
@@ -1064,7 +1063,7 @@
 /datum/shuttle/proc/ui_docking_alignment_query(obj/shuttle_dock/dock)
 	var/list/matching_ports = list()
 	for(var/id in port_lookup)
-		var/obj/shuttle_port/port = port_lookup[id]
+		var/obj/shuttle_aligner/port/port = port_lookup[id]
 		var/port_results = port.check_dock_seal(dock)
 		if(port_results == SHUTTLE_DOCKING_SEAL_FAULT)
 			continue

@@ -25,12 +25,13 @@ SUBSYSTEM_DEF(shuttle)
 	var/static/list/docks_by_level = list()
 
 	//* Controllers & Maps
+	// TODO: recreate web shuttles
 	/// Web maps by path
 	//  todo: non-static, recover()?
-	var/static/list/shuttle_web_map_type_registry = list()
+	// var/static/list/shuttle_web_map_type_registry = list()
 	/// Web nodes by path
 	//  todo: non-static, recover()?
-	var/static/list/shuttle_web_node_type_registry = list()
+	// var/static/list/shuttle_web_node_type_registry = list()
 
 	//* Shuttles
 	/// All shuttles by id
@@ -129,20 +130,21 @@ SUBSYSTEM_DEF(shuttle)
 	templates_by_id[template.id] = template
 	return template
 
-//* Shuttle Webs *//
+//* Web Shuttles *//
 
-/datum/controller/subsystem/shuttle/proc/fetch_or_load_shuttle_web_node_type(type)
-	if(isnull(shuttle_web_node_type_registry[type]))
-		var/datum/shuttle_web_node/node = new type
-		shuttle_web_node_type_registry[type] = node
-		node.initialize()
-	return shuttle_web_node_type_registry[type]
+// TODO: recreate web shuttles
+// /datum/controller/subsystem/shuttle/proc/fetch_or_load_shuttle_web_node_type(type)
+// 	if(isnull(shuttle_web_node_type_registry[type]))
+// 		var/datum/shuttle_web_node/node = new type
+// 		shuttle_web_node_type_registry[type] = node
+// 		node.initialize()
+// 	return shuttle_web_node_type_registry[type]
 
-/datum/controller/subsystem/shuttle/proc/fetch_or_load_shuttle_web_map_type(type)
-	if(isnull(shuttle_web_map_type_registry[type]))
-		var/datum/shuttle_web_map/map = new type
-		shuttle_web_map_type_registry[type] = map
-	return shuttle_web_map_type_registry[type]
+// /datum/controller/subsystem/shuttle/proc/fetch_or_load_shuttle_web_map_type(type)
+// 	if(isnull(shuttle_web_map_type_registry[type]))
+// 		var/datum/shuttle_web_map/map = new type
+// 		shuttle_web_map_type_registry[type] = map
+// 	return shuttle_web_map_type_registry[type]
 
 //* Transit *//
 

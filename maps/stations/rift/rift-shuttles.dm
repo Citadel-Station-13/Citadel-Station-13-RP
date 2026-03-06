@@ -23,14 +23,10 @@
 /obj/effect/shuttle_landmark/rift/deck3/scoophead
 	name = "NSB Atlas - Scoophead Pad"
 	landmark_tag = "rift_scoophead_dock"
-	base_turf = /turf/simulated/floor/reinforced/lythios43c
-	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck3/udang
 	name = "NSB Atlas - Udang Pad"
 	landmark_tag = "rift_udang_dock"
-	base_turf = /turf/simulated/floor/reinforced/lythios43c
-	base_area = /area/rift/surfacebase/outside/outside3
 
 /obj/effect/shuttle_landmark/rift/deck3/specops
 	name = "NSB Atlas - Special Operations Pad"

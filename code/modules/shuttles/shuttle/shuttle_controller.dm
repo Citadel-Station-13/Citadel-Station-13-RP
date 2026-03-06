@@ -410,7 +410,7 @@
  */
 /datum/shuttle_controller/proc/perform_immediate_transit(
 	obj/shuttle_dock/dock,
-	obj/shuttle_port/align_with_port,
+	obj/shuttle_aligner/port/align_with_port,
 	centered,
 	direction,
 	transit_flags,
@@ -442,7 +442,7 @@
  */
 /datum/shuttle_controller/proc/transit_towards_dock(
 	obj/shuttle_dock/dock,
-	obj/shuttle_port/align_with_port,
+	obj/shuttle_aligner/port/align_with_port,
 	centered,
 	direction,
 	transit_flags,

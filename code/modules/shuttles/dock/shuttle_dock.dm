@@ -44,16 +44,16 @@
 	var/trample_bounding_box = TRUE
 	/// set the bounding box's area to a given area
 	var/create_bounding_box_area = TRUE
-	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
+	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
 	/// set to null for autodetect via /obj/shuttle_dock_corner
 	var/size_x
-	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
+	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
 	/// set to null for autodetect via /obj/shuttle_dock_corner
 	var/size_y
-	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
+	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
 	/// set to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_x
-	/// see /obj/shuttle_anchor for how this works; it works the same as the shuttle variant
+	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
 	/// set to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_y
 
@@ -78,7 +78,7 @@
 	/// ^XX
 	///
 	/// the shuttle will align itself, in both direction and location, by
-	/// placing itself so that the /obj/shuttle_port aligns to this /obj/shuttle_dock
+	/// placing itself so that the /obj/shuttle_aligner/port aligns to this /obj/shuttle_dock
 	var/dock_width = 1
 	/// offset the dock right in the width
 	///

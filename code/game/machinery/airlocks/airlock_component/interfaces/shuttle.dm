@@ -26,7 +26,7 @@
 #warn impl all
 
 /obj/machinery/airlock_component/interface/shuttle/port
-	var/obj/shuttle_port/bound_port
+	var/obj/shuttle_aligner/port/bound_port
 	var/bind_range = 0
 
 
@@ -36,11 +36,11 @@
 /obj/machinery/airlock_component/interface/shuttle/port/Destroy()
 	return ..()
 
-/obj/machinery/airlock_component/interface/shuttle/port/proc/bind(obj/shuttle_port/port)
+/obj/machinery/airlock_component/interface/shuttle/port/proc/bind(obj/shuttle_aligner/port/port)
 
 /obj/machinery/airlock_component/interface/shuttle/port/proc/unbind()
 
-/obj/machinery/airlock_component/interface/shuttle/port/proc/detect_port_To_bind() as /obj/shuttle_port
+/obj/machinery/airlock_component/interface/shuttle/port/proc/detect_port_To_bind() as /obj/shuttle_aligner/port
 
 /obj/machinery/airlock_component/interface/shuttle/port/proc/rebind()
 

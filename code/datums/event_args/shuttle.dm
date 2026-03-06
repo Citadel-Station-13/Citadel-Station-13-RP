@@ -120,7 +120,7 @@
 	/// controller ref
 	var/datum/shuttle_controller/controller
 	/// shuttle port being used, if any
-	var/obj/shuttle_port/shuttle_port
+	var/obj/shuttle_aligner/port/shuttle_port
 	/// the dock in question, if any
 	var/obj/shuttle_dock/dock
 	/// hint: how much time does the shuttle have left to leaving / needing the next step?
@@ -132,7 +132,7 @@
 	/// so things that require checking elapsed time work
 	var/started_at
 
-/datum/event_args/shuttle/dock/New(datum/shuttle/shuttle, obj/shuttle_dock/dock, obj/shuttle_port/port)
+/datum/event_args/shuttle/dock/New(datum/shuttle/shuttle, obj/shuttle_dock/dock, obj/shuttle_aligner/port/port)
 	..()
 	src.controller = shuttle.controller
 	src.dock = dock

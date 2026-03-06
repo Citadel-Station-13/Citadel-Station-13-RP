@@ -3,6 +3,7 @@
 
 /**
  * Shuttle custom docking handler
+ * * Always provides alignment via the master (anchor) aligner.
  */
 /datum/shuttle_docker
 	/// our host shuttle

@@ -1,6 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
+#warn audit file
 //* authorization flags
 
 /// can do literally anything; admin panels have this. if you manually vet an input you can have this too.

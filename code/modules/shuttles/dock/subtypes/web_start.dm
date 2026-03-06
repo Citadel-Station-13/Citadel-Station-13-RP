@@ -8,11 +8,12 @@
  *
  * we'll use the web datum we're joined on via web_node_type to join the shuttle.
  */
-/obj/shuttle_dock/web_start
+// TODO: recreate web shuttles
+// /obj/shuttle_dock/web_start
 
-/obj/shuttle_dock/web_start/init_shuttle(datum/shuttle/shuttle)
-	. = ..()
+// /obj/shuttle_dock/web_start/init_shuttle(datum/shuttle/shuttle)
+// 	..()
 
-	#warn impl init
-	var/datum/shuttle_controller/web/controller = new()
-	shuttle.bind_controller(controller)
+// 	#warn impl init
+// 	var/datum/shuttle_controller/web/controller = new()
+// 	shuttle.bind_controller(controller)

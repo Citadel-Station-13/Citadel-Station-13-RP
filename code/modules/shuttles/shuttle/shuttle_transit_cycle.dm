@@ -101,11 +101,11 @@
 	/// which direction should we land, for centered?
 	var/target_direction
 	/// if not centered, are we aligning with a specific port?
-	var/obj/shuttle_port/target_port
+	var/obj/shuttle_aligner/port/target_port
 
 /datum/shuttle_transit_cycle/New(
 	obj/shuttle_dock/dock,
-	obj/shuttle_port/with_port,
+	obj/shuttle_aligner/port/with_port,
 	centered,
 	direction,
 	transit_flags,
@@ -170,7 +170,7 @@
  *
  * * it is not allowed to call this when our stage is already 'landing' or 'docking'!
  */
-/datum/shuttle_transit_cycle/proc/set_target(obj/shuttle_dock/dock, obj/shuttle_port/with_port, centered, direction)
+/datum/shuttle_transit_cycle/proc/set_target(obj/shuttle_dock/dock, obj/shuttle_aligner/port/with_port, centered, direction)
 	#warn check for in-transit
 	#warn check dock 'inbound' if mutex enabled
 	src.target_resolved = TRUE

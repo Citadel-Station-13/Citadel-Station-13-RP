@@ -5469,7 +5469,6 @@
 #include "code\modules\shuttles\shuttle\shuttle_controller.dm"
 #include "code\modules\shuttles\shuttle\shuttle_descriptor.dm"
 #include "code\modules\shuttles\shuttle\shuttle_docker.dm"
-#include "code\modules\shuttles\shuttle\shuttle_port.dm"
 #include "code\modules\shuttles\shuttle\shuttle_template.dm"
 #include "code\modules\shuttles\shuttle\shuttle_transit_blocker.dm"
 #include "code\modules\shuttles\shuttle\shuttle_transit_cycle.dm"
