@@ -1,5 +1,5 @@
 DECLARE_SHUTTLE_TEMPLATE(/generic/outlaw/pirate_skiff)
-	id = "outlaw_pirate_skiff"
+	id = "outlaw-pirate_skiff"
 
 	descriptor = /datum/shuttle_descriptor{
 		mass = 8000;

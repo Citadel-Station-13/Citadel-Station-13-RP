@@ -3,5 +3,4 @@
 
 /datum/shuttle_template/nanotrasen
 	abstract_type = /datum/shuttle_template/nanotrasen
-	category = "Factions"
-	subcategory = "Nanotrasen"
+	category = "Nanotrasen"

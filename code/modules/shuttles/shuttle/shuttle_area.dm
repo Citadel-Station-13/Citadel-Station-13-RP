@@ -51,6 +51,9 @@
 /area/shuttle/auto/named/cockpit
 	descriptor = "Cockpit"
 
+/area/shuttle/auto/named/ready_room
+	descriptor = "Ready Room"
+
 /area/shuttle/auto/named/cargo
 	descriptor = "Cargo Bay"
 

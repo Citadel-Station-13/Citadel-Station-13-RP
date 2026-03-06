@@ -3,5 +3,4 @@
 
 /datum/shuttle_template/vey_med
 	abstract_type = /datum/shuttle_template/vey_med
-	category = "Factions"
-	subcategory = "Vey-Med"
+	category = "Vey-Med"
