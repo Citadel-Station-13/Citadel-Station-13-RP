@@ -76,11 +76,6 @@
 /area/itglight/portsolars
 	name = "Dauntless - Port Solars"
 
-/area/shuttle/itglightshuttle
-	name = "ITG Shuttlecraft"
-	requires_power = 1
-	dynamic_lighting = 1
-
 // The 'Dauntless'
 /obj/overmap/entity/visitable/ship/itglight
 	name = "spacecraft"
@@ -106,17 +101,6 @@
 	if(!cached_skybox_image)
 		return
 	cached_skybox_image.add_overlay("glow")
-
-
-// A shuttle lateloader landmark
-/obj/effect/shuttle_landmark/shuttle_initializer/itglightshuttle
-	name = "ITG Dauntless - Shuttle Bay"
-	shuttle_type = /datum/shuttle/autodock/overmap/itglightshuttle
-
-// The 'shuttle'
-/datum/shuttle/autodock/overmap/itglightshuttle
-	name = "ITG Shuttlecraft"
-	shuttle_area = /area/shuttle/itglightshuttle
 
 /obj/machinery/photocopier/faxmachine/itglight
 	department = "ITG Dauntless"

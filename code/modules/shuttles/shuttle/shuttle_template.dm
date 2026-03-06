@@ -149,3 +149,9 @@
 
 /datum/map_template/shuttle
 	abstract_type = /datum/map_template/shuttle
+
+/**
+ * Supertype of templates that are map-specific.
+ */
+/datum/shuttle_template/map_specific
+	abstract_type = /datum/shuttle_template/map_specific

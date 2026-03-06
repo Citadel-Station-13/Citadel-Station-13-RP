@@ -1,4 +1,5 @@
 DECLARE_SHUTTLE_TEMPLATE(/generic/military/xn_29)
+	id = "military-xn_29"
 
 #warn impl
 
