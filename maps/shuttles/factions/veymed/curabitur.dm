@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/vey_med/curabitur)
+DECLARE_SHUTTLE_TEMPLATE(/factions/vey_med/curabitur)
 	id = "vey_med-curabitur"
 	name = "Curabitur Rescue"
 

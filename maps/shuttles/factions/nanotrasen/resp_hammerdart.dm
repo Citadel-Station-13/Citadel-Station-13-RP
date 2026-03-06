@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/resp_hammerdart)
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/resp_hammerdart)
 	id = "nanotrasen-resp_hammerdart"
 	name = "RESP - Hammerdart"
 	display_name = "Hammerdart Response Shuttle"

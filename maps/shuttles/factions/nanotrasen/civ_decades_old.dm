@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/civ_decades_old)
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/civ_decades_old)
 	id = "nanotrasen-civ_decades_old"
 	name = "CIV - Decades Old"
 	display_name = "Decades Old"

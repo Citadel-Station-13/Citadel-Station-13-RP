@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/exp_hopper)
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/exp_hopper)
 	id = "nanotrasen-exp_hopper"
 	name = "EXP - 'Hopper'"
 

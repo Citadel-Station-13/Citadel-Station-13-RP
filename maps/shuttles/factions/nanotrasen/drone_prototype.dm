@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/drone_prototype)
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/drone_prototype)
 	name = "NT-S V1 Sensor Drone"
 	desc = "Nanotrasen's V1 Prototype Sensor Drone intended for unmanned sector scans in the depths of space. Not habitable."
 	fluff = "The rather blandly named V1 sensor drone. A prototype design, it is an unmanned craft used \

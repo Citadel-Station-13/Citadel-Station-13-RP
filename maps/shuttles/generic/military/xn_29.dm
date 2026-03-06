@@ -16,16 +16,6 @@ DECLARE_SHUTTLE_TEMPLATE(/generic/military/xn_29)
 /obj/effect/shuttle_landmark/shuttle_initializer/hybridshuttle
 	name = "Origin - Hybrid Shuttle"
 	shuttle_type = /datum/shuttle/autodock/overmap/hybridshuttle
-
-// The 'shuttle'
-/datum/shuttle/autodock/overmap/hybridshuttle
-	name = "XN-29 Prototype Shuttle"
-	current_location = "omship_spawn_hybridshuttle"
-	docking_controller_tag = "hybrid_shuttle_docker"
-	shuttle_area = /area/shuttle/blue_fo
-	fuel_consumption = 0
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-
 // The 'ship'
 /obj/overmap/entity/visitable/ship/landable/hybridshuttle
 	scanner_name = "XN-29 Prototype Shuttle"

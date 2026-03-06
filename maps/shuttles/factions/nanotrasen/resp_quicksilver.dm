@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/resp_quicksilver)
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/resp_quicksilver)
 	id = "nanotrasen-resp_quicksilver"
 	name = "RESP - Quicksilver"
 	display_name = "NDV Quicksilver"

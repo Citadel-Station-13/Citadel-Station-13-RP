@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/exp_recon)
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/exp_recon)
 	id = "nanotrasen-exp_recon"
 	name = "EXP - Recon Dropship"
 	display_name = "Recon Dropship"

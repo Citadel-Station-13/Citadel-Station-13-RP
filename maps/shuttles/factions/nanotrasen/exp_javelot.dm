@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/exp_javelot)
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/exp_javelot)
 	id = "nanotrasen-exp_javelot"
 	name = "EXP - Javelot"
 	display_name = "Javelot Shuttle"

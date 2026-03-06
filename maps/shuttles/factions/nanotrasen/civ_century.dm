@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/nanotrasen/civ_century)
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/civ_century)
 	id = "nanotrasen-civ_century"
 	name = "CIV - Century Shuttle"
 	display_name = "Century Shuttle"
