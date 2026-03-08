@@ -24,10 +24,6 @@
 	vessel_mass = 8000
 	shuttle = "SDF Interrupted-The-Speech"
 
-/obj/machinery/computer/shuttle_control/explore/sdf
-	name = "short jump console"
-	shuttle_tag = "SDF Interrupted-The-Speech"
-
 /area/shuttle/miaphus/sdf
 	name = "SDF Interrupted-The-Speech"
 	requires_power = 1
@@ -36,9 +32,7 @@
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 
+#warn obliterate, restrict dock?
+/obj/effect/shuttle_landmark/premade/miaphus/piratehideout
 /obj/effect/shuttle_landmark/miaphus/sdf
 	name = "Outpost 12"
-	landmark_tag = "sdf_outpost"
-	docking_controller = "sdf_outpost_dock"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/dirtlight
-	base_area = /area/sector/miaphus/beach/jungle

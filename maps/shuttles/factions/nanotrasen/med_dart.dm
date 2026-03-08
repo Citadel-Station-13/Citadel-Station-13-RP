@@ -1,25 +1,21 @@
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/med_dart)
+	id = "nanotrasen-med_dart"
+	name = "MED - Dart"
+	desc = "The budget didn't allow for flashing lights."
+	display_name = "Dart Rescue Shuttle"
+
+	descriptor = /datum/shuttle_descriptor{
+		mass = 8500;
+		overmap_icon_color = color = "#69b9de";
+		overmap_legacy_name = "Dart Rescue Shuttle";
+		preferred_orientation = NORTH;
+	}
+	facing_dir = NORTH
+
+	#warn fore dir / preferred orientation
 
 #warn impl
 
-/datum/shuttle/autodock/overmap/emt/endeavour
-	name = "Dart EMT Shuttle"
-	warmup_time = 5
-	shuttle_area = list(/area/shuttle/emt/general, /area/shuttle/emt/cockpit)
-	current_location = "endeavour_emt_dock"
-	docking_controller_tag = "emt_shuttle_docker"
-	landmark_transition = "nav_transit_emt"
-	move_time = 20
-
-/obj/overmap/entity/visitable/ship/landable/emt
-	name = "Dart EMT Shuttle"
-	desc = "The budget didn't allow for flashing lights."
-	color = "#69b9de" //Light Blue
-	fore_dir = NORTH
-	vessel_mass = 9000
-	shuttle = "Dart EMT Shuttle"
-
 /area/shuttle/emt
-	name = "Dart EMT Shuttle"
-	icon_state = "shuttle"
 
 #warn map

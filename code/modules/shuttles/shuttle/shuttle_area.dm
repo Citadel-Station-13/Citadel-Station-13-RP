@@ -12,6 +12,9 @@
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	#warn this doesn't work for multi area shuttles, fix it
+	// don't smooth with any other shuttle but ourselves
+	area_limited_icon_smoothing = /area/no_smooth_marker
 	/// will be assigned the shuttle's ref post-init
 	var/datum/shuttle/shuttle
 

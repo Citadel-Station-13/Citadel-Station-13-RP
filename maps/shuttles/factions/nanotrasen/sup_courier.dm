@@ -1,17 +1,16 @@
+DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/sup_courier)
+	id = "nanotrasen-sup_courier"
+	name = "SUP - Courier"
+	display_name = "Courier Shuttle"
+
+	descriptor = /datum/shuttle_descriptor{
+		overmap_legacy_name = "Courier Shuttle";
+	}
+
+	#warn fore dir / preferred orientation
 
 #warn impl
 
-/datum/shuttle/autodock/overmap/mining/endeavour
-	name = "Mining Shuttle"
-	warmup_time = 10
-	shuttle_area = list(/area/shuttle/mining_ship/general)
-	current_location = "endeavour_mining_port"
-	docking_controller_tag = "mining_docker"
-	landmark_transition = "nav_transit_mining"
-	move_time = 30
-
 /area/shuttle/mining
-	name = "Mining Shuttle"
-	icon_state = "shuttle"
 
 #warn map

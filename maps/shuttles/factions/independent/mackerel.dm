@@ -1,4 +1,4 @@
-DECLARE_SHUTTLE_TEMPLATE(/factions/)
+DECLARE_SHUTTLE_TEMPLATE(/factions/independent/)
 #warn impl
 
 

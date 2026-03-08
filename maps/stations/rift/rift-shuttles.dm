@@ -8,36 +8,12 @@ DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/rift, /udang_pad, "Udang Pad")
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/rift, /spec_ops_pad, "Special Operations Pad")
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/rift, /wilderness_pad, "Wilderness Pad")
 
-#warn restrain these to shuttle
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/rift, /courser_hanger, "Courser Hanger")
+	docking_restrict_to_starting = TRUE
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/rift, /hammerhead_hanger, "Hammerhead Hanger")
+	docking_restrict_to_starting = TRUE
 
 // TODO: readd a way to fly into the sky
-
-#warn impl all
-// Exclusive landmark for docking at the station
-/obj/effect/shuttle_landmark/rift/deck3/excursion
-	name = "NSB Atlas - Exploration Shuttle Pad"
-/obj/effect/shuttle_landmark/rift/deck3/civvie
-	name = "NSB Atlas - Civilian Transport Pad"
-/obj/effect/shuttle_landmark/rift/deck3/oldcentury
-	name = "NSB Atlas - Secondary Civilian Transport Pad"
-/obj/effect/shuttle_landmark/rift/deck3/emt
-	name = "NSB Atlas - EMT Shuttle Pad"
-/obj/effect/shuttle_landmark/rift/deck3/trade
-	name = "NSB Atlas - Trade Pad"
-/obj/effect/shuttle_landmark/rift/deck3/scoophead
-	name = "NSB Atlas - Scoophead Pad"
-/obj/effect/shuttle_landmark/rift/deck3/udang
-	name = "NSB Atlas - Udang Pad"
-/obj/effect/shuttle_landmark/rift/deck3/specops
-	name = "NSB Atlas - Special Operations Pad"
-/obj/effect/shuttle_landmark/rift/deck3/pirate
-	name = "NSB Atlas - Pirate Landing Pad"
-/obj/effect/shuttle_landmark/rift/deck3/courser
-	name = "NSB Atlas - Courser Hangar"
-/obj/effect/shuttle_landmark/rift/deck2/hammerhead
-	name = "NSB Atlas - Hammerhead Hangar"
 
 #warn below
 

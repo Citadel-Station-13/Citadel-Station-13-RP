@@ -115,24 +115,25 @@
 	var/register_by_type = FALSE
 	/// registered shuttle hooks
 	var/list/datum/shuttle_hook/hooks
+	// TODO: web shuttles
 	/// shuttle web node to initialize on, if applicable; this must be a typepath.
 	/// todo: data-defined web nodes, aka allow strings and de/serialization.
-	var/web_node_type
+	// var/web_node_type
 	/// the shuttle web node we belong to, if any
-	var/datum/shuttle_web_node/web_node
+	// var/datum/shuttle_web_node/web_node
 
 	//* docking (protection)
-	/// only allow a hardcoded shuttle of this id (or these ids) to dock
-	///
-	/// this, if set, does not automatically include our starting template
-	/// unless docking_hard_restrict_to_starting is also set!
-	/// we can have the starting template locked out due to that.
-	///
-	/// set to typepath / list of typepaths of shuttle templates if you want to automatically resolve these.
-	var/docking_hard_restrict
+	/**
+	 * Only allow a shuttle of this ID (or these IDs if a list) to dock.
+	 * * These are shuttle IDs, not template IDs. Do not set them to a template ID.
+	 * * May be a string or list of strings.
+	 */
+	var/docking_restrict_ids
 	#warn hook
-	/// automatically lock to the type of our starting shuttle template
-	var/docking_hard_restrict_to_starting = FALSE
+	/**
+	 * Automatically set [docking_hard_restrict_shuttle_id] to the starting shuttle.
+	 */
+	var/docking_restrict_to_starting = FALSE
 	#warn hook
 
 	//* identity
@@ -163,7 +164,7 @@
 	/// if a shuttle still cannot fit when centered,
 	/// uhh,
 	/// idk lol i'll just call it 'undefined behavior' when shit explodes
-	///p
+	///
 	/// note: centered docking counts as 'nonaligned docking',
 	///       meanining shuttle hooks like airlocks won't count it as docked.
 	var/starting_shuttle_always_center = FALSE
@@ -268,11 +269,6 @@
 	if(starting_shuttle_template)
 		if(!(loaded = load_shuttle()))
 			stack_trace("shuttle dock at [COORD(src)] failed to load its roundstart shuttle; something is seriously wrong!")
-			to_chat(
-				target = world,
-				html = FORMAT_SERVER_FATAL("Shuttle dock at [COORD(src)] failed to load its starting template. Please contact coders if you see this message."),
-				type = MESSAGE_TYPE_SERVER_FATAL,
-			)
 		else
 			init_shuttle(loaded)
 			ready_shuttle(loaded)
@@ -289,16 +285,22 @@
 	inbound = null
 	// unregister from SSshuttles
 	unregister_dock()
-	// cleanup our area
-	if(create_bounding_box_area && base_area?.unique)
-		var/list/turfs = bounding_north_ordered_turfs()
-		for(var/turf/T in turfs)
-			if(T.loc == base_area)
-				continue
-			turfs -= T
-		var/area/world_base_area = dynamic_area_of_type(SSmapping.level_get_basearea(z))
-		world_base_area.take_turfs(turfs)
-		qdel(base_area)
+	if(create_bounding_box_area)
+		// cleanup our area if it's unique; otherwise, we just orphan it
+		// as otherwise we might blow up apcs or something that rely on the area
+		// being there
+		if(base_area?.unique)
+			var/list/turfs = bounding_north_ordered_turfs()
+			for(var/turf/T in turfs)
+				if(T.loc == base_area)
+					continue
+				turfs -= T
+			var/area/world_base_area = dynamic_area_of_type(SSmapping.level_get_basearea(z))
+			world_base_area.take_turfs(turfs)
+			qdel(base_area)
+		// allow deletion as otherwise moveToNullspace() will fail
+		// as doMove() hook prevents movement if we're making areas.
+		create_bounding_box_area = FALSE
 	return ..()
 
 /obj/shuttle_dock/proc/register_dock()

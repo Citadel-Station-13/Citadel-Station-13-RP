@@ -1,17 +1,28 @@
+DECLARE_SHUTTLE_TEMPLATE(/generic/backend/escape_pod_large)
+	id = "backend-large_escape_pod"
+	name = "Large Escape Pod"
+
 
 #warn impl
 
-/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1/tether
-	name = "Large Escape Pod 1"
-	location = FERRY_LOCATION_STATION
-	shuttle_area = /area/shuttle/large_escape_pod1
-	warmup_time = 0
-	landmark_station = "escapepod1_station"
-	landmark_offsite = "escapepod1_cc"
-	landmark_transition = "escapepod1_transit"
-	docking_controller_tag = "large_escape_pod_1"
-	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
-	move_direction = EAST
+#warn deal with theses
+/area/shuttle/arrival
+	name = "\improper Arrival Shuttle"
+	ambience = AMBIENCE_ARRIVALS
 
+/area/shuttle/supply
+	name = "\improper Supply Shuttle"
+	icon_state = "shuttle2"
+
+#warn how to name escape pods so it's obvious which one someone's in?
+/area/shuttle/escape
+/area/shuttle/escape_pod1
+/area/shuttle/escape_pod2
+/area/shuttle/escape_pod3
+/area/shuttle/escape_pod4
+/area/shuttle/escape_pod5
+/area/shuttle/escape_pod6
+/area/shuttle/large_escape_pod1
+/area/shuttle/large_escape_pod2
 #warn map
 
