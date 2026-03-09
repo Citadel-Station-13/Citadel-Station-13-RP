@@ -1,35 +1,18 @@
-
-
-#warn impl
-
-/datum/shuttle/autodock/overmap/trade
-	name = "Beruang Trade Ship"
-	warmup_time = 0
-	shuttle_area = list(/area/shuttle/trade_ship/cockpit, /area/shuttle/trade_ship/general)
-	current_location = "tradeport_hangar"
-	docking_controller_tag = "tradeport_hangar_docker"
-	fuel_consumption = 5
-	move_time = 10
-
-/obj/overmap/entity/visitable/ship/landable/trade
+DECLARE_SHUTTLE_TEMPLATE(/factions/ftu/beruang)
+	id = "ftu-beruang"
 	name = "Beruang Trade Ship"
 	desc = "You know our motto: 'We deliver!'"
-	color = "#754116" //Brown
-	fore_dir = WEST
-	vessel_mass = 4000
-	shuttle = "Beruang Trade Ship"
+	display_name = "Beruang Trade Ship"
 
-/obj/machinery/computer/shuttle_control/explore/trade
-	name = "short jump console"
-	shuttle_tag = "Beruang Trade Ship"
+	descriptor = /datum/shuttle_descriptor{
+		mass = 15000;
+		overmap_icon_color = "#754116"; //Brown
+		overmap_legacy_scan_name = "Beruang Trade Ship";
+		overmap_legacy_scan_desc = "You know our motto: 'We deliver!'";
+	}
+	facing_dir = WEST
 
-/area/shuttle/trade_ship
-	requires_power = 1
-	icon_state = "shuttle2"
-	area_flags = AREA_RAD_SHIELDED
-
+#warn impl
+/obj/overmap/entity/visitable/ship/landable/trade
 /area/shuttle/trade_ship/general
-	name = "\improper Beruang Trade Shuttle"
-
 /area/shuttle/trade_ship/cockpit
-	name = "\improper Beruang Trade Shuttle Cockpit"

@@ -1,142 +1,3 @@
-//RED COMET
-/datum/shuttle/autodock/overmap/voidline/redcomet
-	name = "Red Comet Racing Shuttle"
-	warmup_time = 8
-	shuttle_area = list(/area/shuttle/redcomet)
-	current_location = "voidline_redcomet"
-	docking_controller_tag = "voidline_redcomet_docker"
-	fuel_consumption = 5
-	move_time = 10
-
-/obj/overmap/entity/visitable/ship/landable/trade/redcomet
-	name = "Red Comet Racing Shuttle"
-	desc = "A racing shuttle, that arrived second during the 2542 Voidline shuttle race."
-	scanner_name = "Red Comet Racing Shuttle"
-	scanner_desc = @{"[i]Registration[/i]: ---
-[i]Class[/i]: Racing Shuttle
-[i]Transponder[/i]: Transmitting (CIV), Registered with the Lythios 43a Voidline Racing Sky Rig, non-hostile
-[b]Notice[/b]: Racing shuttle, arrived second during the 2542 Voidline."}
-	color = "#ab0000" //Crimson. Makes shuttle go 3 times faster (no). Beside, You solely, are responsible for this.
-	fore_dir = WEST
-	vessel_mass = 10000
-	shuttle = "Red Comet Racing Shuttle"
-
-/obj/machinery/computer/shuttle_control/explore/redcomet
-	name = "short jump console"
-	shuttle_tag = "Red Comet Racing Shuttle"
-
-/area/shuttle/redcomet
-	name = "Red Comet"
-	requires_power = 1
-	icon_state = "shuttle2"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
-
-//BONNETHEAD
-/datum/shuttle/autodock/overmap/voidline/bonnethead
-	name = "Bonnethead Racing Shuttle"
-	warmup_time = 8
-	shuttle_area = list(/area/shuttle/bonnethead)
-	current_location = "voidline_bonnethead"
-	docking_controller_tag = "voidline_bonnethead_docker"
-	fuel_consumption = 5
-	move_time = 10
-
-/obj/overmap/entity/visitable/ship/landable/trade/bonnethead
-	name = "Bonnethead Racing Shuttle"
-	desc = "A racing shuttle, that arrived third during the 2542 Voidline shuttle race."
-	scanner_name = "Bonnethead Racing Shuttle"
-	scanner_desc = @{"[i]Registration[/i]: ---
-[i]Class[/i]: Racing Shuttle
-[i]Transponder[/i]: Transmitting (CIV), Registered with the Lythios 43a Voidline Racing Sky Rig, non-hostile
-[b]Notice[/b]: Racing shuttle, arrived third during the 2542 Voidline."}
-	color = "#edac14" //orange
-	fore_dir = WEST
-	vessel_mass = 10000
-	shuttle = "Bonnethead Racing Shuttle"
-
-/obj/machinery/computer/shuttle_control/explore/bonnethead
-	name = "short jump console"
-	shuttle_tag = "Bonnethead Racing Shuttle"
-
-/area/shuttle/bonnethead
-	name = "Bonnethead"
-	requires_power = 1
-	icon_state = "shuttle2"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
-
-//Udang Pari-pari
-/datum/shuttle/autodock/overmap/voidline/paripari
-	name = "Udang Pari-pari Racing Shuttle"
-	warmup_time = 8
-	shuttle_area = list(/area/shuttle/paripari)
-	current_location = "voidline_udang"
-	docking_controller_tag = "voidline_udang_docker"
-	fuel_consumption = 5
-	move_time = 10
-
-/obj/overmap/entity/visitable/ship/landable/trade/paripari
-	name = "Udang Pari-pari Racing Shuttle"
-	desc = "A racing shuttle, that arrived last during the 2542 Voidline shuttle race."
-	scanner_name = "Udang Pari-pari Racing Shuttle"
-	scanner_desc = @{"[i]Registration[/i]: ---
-[i]Class[/i]: Racing Shuttle
-[i]Transponder[/i]: Transmitting (CIV), Registered with the Lythios 43a Voidline Racing Sky Rig, non-hostile
-[b]Notice[/b]: Racing shuttle, arrived last during the 2542 Voidline, altho won prior races in skrell and oricon space while being used to make deliveries."}
-	color = "#3adf1d" //green
-	fore_dir = WEST
-	vessel_mass = 10000
-	shuttle = "Udang Pari-pari Racing Shuttle"
-
-/obj/machinery/computer/shuttle_control/explore/paripari
-	name = "short jump console"
-	shuttle_tag = "Udang Pari-pari Racing Shuttle"
-
-/area/shuttle/paripari
-	name = "Udang pari-pari"
-	requires_power = 1
-	icon_state = "shuttle2"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
-
-//Radio shuttle
-/datum/shuttle/autodock/overmap/voidline/crescend
-	name = "ORS Crescend Radio Shuttle"
-	warmup_time = 8
-	shuttle_area = list(/area/shuttle/crescend)
-	current_location = "occulum_safehouse"
-	docking_controller_tag = "occulum_safehouse_docker"
-	fuel_consumption = 5
-	move_time = 10
-
-/obj/overmap/entity/visitable/ship/landable/trade/crescend
-	name = "ORS Crescend Radio Shuttle"
-	desc = "A racing shuttle, that arrived last during the 2542 Voidline shuttle race."
-	scanner_name = "ORS Crescend Radio Shuttle"
-	scanner_desc = @{"[i]Registration[/i]: ORS Crescend
-[i]Class[/i]: Radio Shuttle
-[i]Transponder[/i]: Transmitting (CIV), Registered with the Occulum News network
-[b]Notice[/b]: A occulum vessel, based on a Teshari design."}
-	color = "#bcfbff" //sky blue
-	fore_dir = WEST
-	vessel_mass = 10000
-	shuttle = "ORS Crescend Radio Shuttle"
-
-/obj/machinery/computer/shuttle_control/explore/crescend
-	name = "short jump console"
-	shuttle_tag = "ORS Crescend Radio Shuttle"
-
-/area/shuttle/crescend
-	name = "Crescend"
-	requires_power = 1
-	icon_state = "shuttle2"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
 
 #warn above
 
@@ -150,6 +11,20 @@ DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /northrig3, "NT Outpost Hya
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /eastrig1, "NT Outpost Hyades - East Rig 1")
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /eastrig3, "NT Outpost Hyades - East Rig 3")
 
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/redcomet, "Voidline Rig - Red Comet Pad")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/bonnethead, "Voidline Rig - Bonnethead Pad")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/udang, "Voidline Rig - Udang Pari-pari Pad")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/arrowhead, "Voidline Rig - Arrowhead Pad")
+
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_1, "Voidline Rig - Pad 1")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_2, "Voidline Rig - Pad 2")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_3, "Voidline Rig - Pad 3")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_4, "Voidline Rig - Pad 4")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_5, "Voidline Rig - Pad 5")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_6, "Voidline Rig - Pad 6")
+
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/crescend, "Occulum Rig - Crescend Pad")
+
 #warn obliterate below
 
 /obj/effect/shuttle_landmark/skyplanet/westrig1
@@ -161,29 +36,15 @@ DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /eastrig3, "NT Outpost Hyad
 /obj/effect/shuttle_landmark/skyplanet/eastrig1
 /obj/effect/shuttle_landmark/skyplanet/eastrig3
 /obj/effect/shuttle_landmark/skyplanet/northrig2/hammerhead
-//voidline
-
 /obj/effect/shuttle_landmark/skyplanet/voidline/redcomet
-	name = "Voidline Rig - Red Comet Pad"
 /obj/effect/shuttle_landmark/skyplanet/voidline/bonnethead
-	name = "Voidline Rig - Bonnethead Pad"
 /obj/effect/shuttle_landmark/skyplanet/voidline/udang
-	name = "Voidline Rig - Udang Pari-pari Pad"
 /obj/effect/shuttle_landmark/skyplanet/voidline/arrowhead
-	name = "Voidline Rig - Arrowhead Pad"
-//Public
 
 /obj/effect/shuttle_landmark/skyplanet/voidline
-	name = "Voidline Rig - pad 1"
 /obj/effect/shuttle_landmark/skyplanet/voidline2
-	name = "Voidline Rig - pad 2"
 /obj/effect/shuttle_landmark/skyplanet/voidline3
-	name = "Voidline Rig - pad 3"
 /obj/effect/shuttle_landmark/skyplanet/voidline4
-	name = "Voidline Rig - pad 4"
 /obj/effect/shuttle_landmark/skyplanet/voidline5
-	name = "Voidline Rig - pad 5"
 /obj/effect/shuttle_landmark/skyplanet/voidline6
-	name = "Voidline Rig - pad 6"
 /obj/effect/shuttle_landmark/skyplanet/voidline/crescend
-	name = "Occulum Rig - Crescend Pad"
