@@ -37,56 +37,6 @@
 	skybox_pixel_x = 270
 	skybox_pixel_y = 60
 
-// A shuttle lateloader landmark
-/obj/effect/shuttle_landmark/shuttle_initializer/talonboat
-	name = "Talon's boat bay"
-	shuttle_type = /datum/shuttle/autodock/overmap/talonboat
-
-// The talon's boat
-
-/datum/shuttle/autodock/overmap/talonboat
-	name = "Talon's boat"
-	current_location = "offmap_spawn_talonboat"
-	docking_controller_tag = "talonboat_docker"
-	shuttle_area = /area/shuttle/talonboat
-	fuel_consumption = 2
-	defer_initialisation = TRUE
-
-/area/shuttle/talonboat
-	name = "Talon's Boat"
-
-///////////////////////////
-//// The Lifeboat
-/obj/overmap/entity/visitable/ship/landable/talon_lifeboat
-	name = "Talon lifeboat"
-	desc = "A tiny engineless lifeboat from the ITV Talon."
-	vessel_mass = 1000
-	shuttle = "Talon lifeboat"
-
-/*
-/obj/overmap/entity/visitable/ship/talon_lifeboat/landable/get_skybox_representation()
-	var/image/I = image('aro.dmi', "skybox")
-	I.pixel_x = 200
-	I.pixel_y = 200
-	return I
-*/
-
-// A shuttle lateloader landmark
-/obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat
-	name = "Talon lifeboat dock"
-	shuttle_type = /datum/shuttle/autodock/overmap/talon_lifeboat
-
-// The talon's boat
-
-/datum/shuttle/autodock/overmap/talon_lifeboat
-	name = "Talon lifeboat"
-	current_location = "offmap_spawn_talon_lifeboat"
-	docking_controller_tag = "talonlifeboat_docker"
-	shuttle_area = /area/talon/decktwo/lifeboat
-	fuel_consumption = 0
-	defer_initialisation = TRUE
-
-
 ///////////////////////////
 //// The Various Machines
 /obj/machinery/telecomms/allinone/talon

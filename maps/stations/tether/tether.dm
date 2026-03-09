@@ -33,19 +33,6 @@
 
 	//* LEGACY BELOW *//
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/ferry/emergency/escape/tether,
-		/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1/tether,
-		/datum/shuttle/autodock/ferry/supply/cargo/tether,
-		/datum/shuttle/autodock/ferry/tether_backup,
-		/datum/shuttle/autodock/ferry/surface_mining_outpost,
-		/datum/shuttle/autodock/overmap/excursion/tether,
-		/datum/shuttle/autodock/overmap/tourbus,
-		/datum/shuttle/autodock/overmap/medivac,
-		/datum/shuttle/autodock/overmap/securiship,
-		/datum/shuttle/autodock/ferry/belter,
-	)
-
 	full_name = "NSB Adephagia"
 	use_overmap = TRUE
 	overmap_size = 50

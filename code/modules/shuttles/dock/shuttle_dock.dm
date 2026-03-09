@@ -12,7 +12,7 @@
  *
  * * When a shuttle docks, the shuttle aligns its docking port with our shuttle dock with some Magic Bullshit Math.
  * * These are agnostic to the kind of controller a shuttle uses. Shuttles may be web-based,
- *   overmap based (usually the case), or use a special point to point controller.
+ *   overmap based (usually the case), or use a special point to point ferry controller.
  */
 /obj/shuttle_dock
 	name = "shuttle dock"
@@ -45,16 +45,16 @@
 	/// set the bounding box's area to a given area
 	var/create_bounding_box_area = TRUE
 	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
-	/// set to null for autodetect via /obj/shuttle_dock_corner
+	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/size_x
 	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
-	/// set to null for autodetect via /obj/shuttle_dock_corner
+	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/size_y
 	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
-	/// set to null for autodetect via /obj/shuttle_dock_corner
+	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_x
 	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
-	/// set to null for autodetect via /obj/shuttle_dock_corner
+	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_y
 
 	//* docking (backend)
@@ -145,6 +145,7 @@
 	//* shuttle
 	/// the docked shuttle
 	var/datum/shuttle/docked
+	#warn this should be an advisory lock
 	/// the shuttle that's currently inbound while in transit
 	/// if set, **we are a protected dock, and no other shuttle should arrive during this time!**
 	///

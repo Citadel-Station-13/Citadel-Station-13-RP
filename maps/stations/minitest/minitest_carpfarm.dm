@@ -17,3 +17,9 @@
 	base_turf = /turf/simulated/floor/plating
 	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
 
+
+/obj/overmap/entity/visitable/sector/citadel_minitest/carpfarm
+	name = "Carp Farm"
+	desc = "Abandond space carp farming facility."
+	start_x = 12
+	start_y = 7

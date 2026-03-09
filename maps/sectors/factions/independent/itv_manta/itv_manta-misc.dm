@@ -134,37 +134,6 @@
 	initial_generic_waypoints = list("manta_ship_near_fore", "manta_ship_near_aft", "manta_ship_near_port", "manta_ship_near_star", "manta_ship_port", "manta_ship_star", "manta_ship_base_dock", "omship_spawn_manta_lander")
 //	initial_restricted_waypoints = list("Mercenary Cruiser's Bay" = list("omship_spawn_manta_lander"))
 
-/obj/effect/shuttle_landmark/premade/manta_ship_port
-	name = "SAARE Cruiser - Port Airlock"
-
-/obj/effect/shuttle_landmark/premade/manta_ship_star
-	name = "SAARE Cruiser - Starboard Airlock"
-
-// A shuttle lateloader landmark
-/obj/effect/shuttle_landmark/shuttle_initializer/manta_ship_boat
-	name = "Mercenary Cruiser's Bay"
-	shuttle_type = /datum/shuttle/autodock/overmap/manta_ship_boat
-
-/datum/shuttle/autodock/overmap/manta_ship_boat
-	name = "Boarding Craft"
-	current_location = "omship_spawn_manta_lander"
-	docking_controller_tag = "manta_boarding_shuttle"
-	shuttle_area = /area/shuttle/manta_ship_boat
-	fuel_consumption = 0 //this thing is too big already, let's just handwave everything
-	defer_initialisation = TRUE
-
-/obj/overmap/entity/visitable/ship/landable/manta_ship_boat
-	scanner_name = "SAARE Landing Craft"
-	desc = "Spacefaring vessel. Broadcasting Private Military Contractor IFF."
-	scanner_desc = @{"[i]Registration[/i]: SAARE Mercenary Cruiser Typhon Four-Niner's Lander
-[i]Class[/i]: Unknown Shuttle-approximate
-[i]Transponder[/i]: Broadcasting (PMC)
-[b]Notice[/b]: SAARE are unlikely to tolerate civilian or corporate personnel interfering with their affairs. Approach with caution."}
-	color = "#3366FF"
-	color = "#333333" //TACTICAL BLACK
-	vessel_mass = 500
-	shuttle = "Boarding Craft"
-
 /obj/machinery/cryopod/manta_ship
 	announce_channel = "Mercenary"
 	on_store_message = "has entered cryogenic storage."

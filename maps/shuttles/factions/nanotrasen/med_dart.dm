@@ -6,7 +6,7 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/med_dart)
 
 	descriptor = /datum/shuttle_descriptor{
 		mass = 8500;
-		overmap_icon_color = color = "#69b9de";
+		overmap_icon_color = "#69b9de";
 		overmap_legacy_name = "Dart Rescue Shuttle";
 		preferred_orientation = NORTH;
 	}
