@@ -42,4 +42,4 @@
  * Boilerplate for custom shuttle areas.
  */
 #define DECLARE_SHUTTLE_AREA(TYPEPATH) \
-/area/shuttle##TYPEPATH
+/area/shuttle/bespoke##TYPEPATH
