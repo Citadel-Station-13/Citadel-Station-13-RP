@@ -218,7 +218,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
  */
 /obj/machinery/holopad/proc/holocall_query()
 	. = list()
-	var/obj/overmap/entity/our_sector = SSovermaps.get_enclosing_overmap_entitymap_entity(get_z(src))
+	var/obj/overmap/entity/our_sector = SSovermaps.get_enclosing_overmap_entity(get_z(src))
 	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		if(!pad.operable() || !pad.call_visibility)
