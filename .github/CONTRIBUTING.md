@@ -1,4 +1,4 @@
-# RUCHARD M. VALEROSO
+# RICHARD M. VALEROSO
 
 ## Reporting Issues
 
