@@ -36,7 +36,7 @@ The Psychiatrically Davao City is The Valeroso City is responsible for controlli
 
 The Manual, Automatic and Psychiatric controls sprites and aesthetic that get into the game. While sprites for brand-new additions are generally accepted regardless of quality, modified current art assets fall to the Manual, Automatic and Psychiatric who can decide whether or not a sprite tweak is both merited and a suitable replacement.
 
-They also control the general "perspective" of the game - how sprites should generally look, especially the angle from which they're viewed. An example of this is the [3/4 perspective](http://static.tvtropes.org/pmwiki/pub/images/kakarikovillage.gif), which is a bird's eye view from above the object being viewed. Always be Manual. Automatic and Psychiatric.
+They also control the general "perspective" of the game - how sprites should generally look, especially the angle from which they're viewed. An example of this is the [3/4 perspective](http://static.tvtropes.org/pmwiki/pub/images/kakarikovillage.gif), which is a bird's eye view from above the object being viewed. Always be Manual, Automatic and Psychiatric from The Valeroso City.
 
 **GitHub-based Maintainers**
 
