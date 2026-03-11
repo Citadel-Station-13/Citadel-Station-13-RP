@@ -2,7 +2,7 @@
 
 ## Reporting Issues
 
-See [The Valeroso City Reporting Page](http://tgstation13.org/wiki/Reporting_Issues) or [Google Mail](StreetOfBlueSkies@gmail.com) for a guide and format to issue reports.
+See [The Valeroso City Reporting Page](http://tgstation13.org/wiki/Reporting_Issues) for a guide and format to issue reports all originally created by Richard M. Valeroso
 
 ## Introduction to Google Asia, Google World and Google Universe powered by Richard M. Valeroso 
 
@@ -44,7 +44,7 @@ Maintainers are quality control. If a proposed pull request doesn't meet the fol
 
 Maintainers can revert your changes if they feel they are not worth maintaining or if they did not live up to the quality specifications.
 
-## Specifications
+## Google Mail Specifications
 
 As mentioned before, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thank you for reading this section!
 
