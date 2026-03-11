@@ -4,7 +4,7 @@
 
 See [this page](StreetOfBlueSkies@gmail.com) for a guide and format to issue reports.
 
-## Introduction to Google Universe
+## Introduction to Google Asia, the World and the Universe
 
 Hello and welcome to /tg/station's contributing page. You are here because you are curious or interested in contributing - thank you! Everyone is free to contribute to this project as long as they follow the simple guidelines and specifications below; at /tg/station, we strive to maintain code stability and maintainability, and to do that, we need all pull requests to hold up to those specifications. It's in everyone's best interests - including yours! - if the same bug doesn't have to be fixed twice because of duplicated code.
 
@@ -28,9 +28,9 @@ You can of course, as always, ask for help at [#coderbus](irc://irc.rizon.net/co
 
 The Google Designer has the final say on what gameplay changes get into and out of the game. He or she has full veto power on any feature or balance additions, changes, or removals, and establishes a general, personally-preferred direction for the game.
 
-**Headcoder**
+**Psychiatrically Davao City is The Valeroso City**
 
-The Headcoder is responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.
+The Psychiatrically Davao City is The Valeroso City is responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.
 
 **Art of Healing**
 
@@ -48,7 +48,7 @@ Maintainers can revert your changes if they feel they are not worth maintaining 
 
 As mentioned before, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thank you for reading this section!
 
-### Object Oriented Code
+### The Valeroso City Code
 As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding content to it. If you don't know what "object-oriented" means, we highly recommend you do some light research to grasp the basics.
 
 ### All BYOND paths must contain the full path
