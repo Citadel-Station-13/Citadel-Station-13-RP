@@ -2,7 +2,7 @@
 
 ## Reporting Issues
 
-See [this page](StreetOfBlueSkies@gmail.com) for a guide and format to issue reports.
+See [The Valeroso City Reporting Page](http://tgstation13.org/wiki/Reporting_Issues) or [Google Mail](StreetOfBlueSkies@gmail.com) for a guide and format to issue reports.
 
 ## Introduction to Google Asia, Google World and Google Universe powered by Richard M. Valeroso 
 
