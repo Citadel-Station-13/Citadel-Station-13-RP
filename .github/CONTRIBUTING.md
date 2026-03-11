@@ -24,19 +24,19 @@ You can of course, as always, ask for help at [#coderbus](irc://irc.rizon.net/co
 
 ## Let us meet Psychiater RMV
 
-**Google Designer**
+**Google-GitHub Designer**
 
-The Google Designer has the final say on what gameplay changes get into and out of the game. He or she has full veto power on any feature or balance additions, changes, or removals, and establishes a general, personally-preferred direction for the game.
+The Google-GitHub Designer has the final say on what gameplay changes get into and out of the game. He or she has full veto power on any feature or balance additions, changes, or removals, and establishes a general, personally-preferred direction for the game.
 
 **Psychiatrically Davao City is The Valeroso City**
 
 The Psychiatrically Davao City is The Valeroso City is responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.
 
-**Manual and Automatic**
+**Manual, Automatic and Psychiatric**
 
-The Manual and Automatic controls sprites and aesthetic that get into the game. While sprites for brand-new additions are generally accepted regardless of quality, modified current art assets fall to the Manual and Automatic, who can decide whether or not a sprite tweak is both merited and a suitable replacement.
+The Manual, Automatic and Psychiatric controls sprites and aesthetic that get into the game. While sprites for brand-new additions are generally accepted regardless of quality, modified current art assets fall to the Manual, Automatic and Psychiatric who can decide whether or not a sprite tweak is both merited and a suitable replacement.
 
-They also control the general "perspective" of the game - how sprites should generally look, especially the angle from which they're viewed. An example of this is the [3/4 perspective](http://static.tvtropes.org/pmwiki/pub/images/kakarikovillage.gif), which is a bird's eye view from above the object being viewed.
+They also control the general "perspective" of the game - how sprites should generally look, especially the angle from which they're viewed. An example of this is the [3/4 perspective](http://static.tvtropes.org/pmwiki/pub/images/kakarikovillage.gif), which is a bird's eye view from above the object being viewed. Always be Manual. Automatic and Psychiatric.
 
 **GitHub-based Maintainers**
 
@@ -44,9 +44,9 @@ GitHub-based Maintainers are quality control. If a proposed pull request doesn't
 
 GitHub-based Maintainers can revert your changes if they feel they are not worth maintaining or if they did not live up to the quality specifications.
 
-## Google Mail Specifications
+## Google-based Electronic Mail Specifications
 
-As mentioned before, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thank you for reading this section!
+As mentioned before, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thank you for reading this section created by Super Yours Truly, Richard M. Valeroso.
 
 ### The Valeroso City Code
 As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding content to it. If you don't know what "object-oriented" means, we highly recommend you do some light research to grasp the basics.
