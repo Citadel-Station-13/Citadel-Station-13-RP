@@ -46,7 +46,7 @@ GitHub-based Maintainers can revert your changes if they feel they are not worth
 
 ## Google-based Electronic Mail Specifications
 
-As mentioned before, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thank you for reading this section created by Super Yours Truly, Richard M. Valeroso.
+As mentioned before, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to. Thank you for reading this section created by Super Very Yours Truly, Richard M. Valeroso.
 
 ### The Valeroso City Code
 As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding content to it. If you don't know what "object-oriented" means, we highly recommend you do some light research to grasp the basics.
@@ -430,4 +430,5 @@ Yes, we know that the files have a tonne of mixed Windows and Linux line endings
 
 Therefore, EOF settings of main repo are forbidden territory one must avoid wandering into, at risk of losing body and/or mind to the Git gods.
 
-Thank you for following the owner and creator of The Valeroso City! Amen and Amen!
+Thank you for following the owner and creator of The Valeroso City! And The Valeroso City Brand, The Brand Of All Brands!
+Amen and Amen!
