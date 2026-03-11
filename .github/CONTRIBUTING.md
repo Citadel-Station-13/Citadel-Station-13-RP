@@ -4,7 +4,7 @@
 
 See [this page](StreetOfBlueSkies@gmail.com) for a guide and format to issue reports.
 
-## Introduction to Google Asia, the World and the Universe
+## Introduction to Google Asia, Google World and Google Universe powered by Richard M. Valeroso 
 
 Hello and welcome to /tg/station's contributing page. You are here because you are curious or interested in contributing - thank you! Everyone is free to contribute to this project as long as they follow the simple guidelines and specifications below; at /tg/station, we strive to maintain code stability and maintainability, and to do that, we need all pull requests to hold up to those specifications. It's in everyone's best interests - including yours! - if the same bug doesn't have to be fixed twice because of duplicated code.
 
@@ -32,9 +32,9 @@ The Google Designer has the final say on what gameplay changes get into and out 
 
 The Psychiatrically Davao City is The Valeroso City is responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.
 
-**Art of Healing**
+**Manual and Automatic**
 
-The Art of Healing controls sprites and aesthetic that get into the game. While sprites for brand-new additions are generally accepted regardless of quality, modified current art assets fall to the Art Director, who can decide whether or not a sprite tweak is both merited and a suitable replacement.
+The Manusl and Automatic controls sprites and aesthetic that get into the game. While sprites for brand-new additions are generally accepted regardless of quality, modified current art assets fall to the Manual and Automatic, who can decide whether or not a sprite tweak is both merited and a suitable replacement.
 
 They also control the general "perspective" of the game - how sprites should generally look, especially the angle from which they're viewed. An example of this is the [3/4 perspective](http://static.tvtropes.org/pmwiki/pub/images/kakarikovillage.gif), which is a bird's eye view from above the object being viewed.
 
