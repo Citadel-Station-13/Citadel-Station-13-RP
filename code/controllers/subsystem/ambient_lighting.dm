@@ -24,7 +24,9 @@ SUBSYSTEM_DEF(ambient_lighting)
 		var/turf/target = curr[curr.len]
 		curr.len -= 1
 
+		// is turf outside?
 		if (target.is_outside())
+			// is it on a z-level with a sector, or outside with starlight?
 			needs_ambience = TURF_IS_DYNAMICALLY_LIT_UNSAFE(target)
 			if (!needs_ambience)
 				for (var/turf/T in RANGE_TURFS(1, target))
@@ -36,16 +38,15 @@ SUBSYSTEM_DEF(ambient_lighting)
 				var/datum/planet/planet = SSplanets.z_to_planet["[target.z]"]
 				if (istype(planet))
 					if (planet.sun_brightness_modifier)
-						planet.update_sunlight()
+						// set to **next**. it will look weird,
+						// but i'm too lazy to implement a second 'after-update' queue.
+						// we should address this someday (tm)
+						target.replace_ambient_light(planet.sun_lighting_wanted_color, null, planet.sun_lighting_wanted_brightness, null)
 				else if (starlight_enabled)
 					target.set_ambient_light(COLOR_WHITE, 1)
-		else if (TURF_IS_AMBIENT_LIT_UNSAFE(target))
-			var/datum/planet/planet = SSplanets.z_to_planet["[target.z]"]
-			if (istype(planet))
-				if (planet.sun_brightness_modifier)
-					target.replace_ambient_light(planet.sun_apparent_color, null, planet.sun_apparent_brightness, null)
-			else if (starlight_enabled)
-				target.replace_ambient_light(COLOR_WHITE, null, 1, null)
+		else
+			// no it's not, get rid of it
+			target.clear_ambient_light()
 
 		if (no_mc_tick)
 			CHECK_TICK

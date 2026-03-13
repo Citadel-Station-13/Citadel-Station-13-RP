@@ -89,7 +89,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 		our_planet = SSplanets.z_to_planet[z]
 
 	if(our_planet && istype(our_planet))
-		solar_brightness = our_planet.sun_apparent_brightness * 1.3
+		// we use wanted incase current is lagging
+		solar_brightness = our_planet.sun_lighting_wanted_brightness * 1.3
 		var/time_num = text2num(our_planet.current_time.show_time("hh")) + text2num(our_planet.current_time.show_time("mm")) / 60
 		var/hours_in_day = our_planet.current_time.seconds_in_day / (1 HOURS)
 		var/sunangle_by_time = (time_num / hours_in_day) * 360 // day as progress from 0 to 1 * 360

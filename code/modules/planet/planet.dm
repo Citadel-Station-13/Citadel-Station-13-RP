@@ -1,6 +1,7 @@
 // This holds information about a specific 'planetside' area, such as its time, weather, etc.  This will most likely be used to model Sif,
 // but away missions may also have use for this.
 
+// todo: /datum/sector
 /datum/planet
 	var/name = "a rock"
 	var/desc = "Someone neglected to write a nice description for this poor rock."
@@ -11,19 +12,6 @@
 
 	var/datum/weather_holder/weather_holder
 
-	/// 0 means midnight, 1 means noon.
-	var/sun_position = 0
-	/// This a multiplier used to apply to the brightness of ambient lighting.  0.3 means 30% of the brightness of the sun.
-	var/sun_brightness_modifier = 0.5
-
-	/// The color currently applied to the sun.
-	var/sun_apparent_color
-	var/sun_apparent_brightness
-	var/sun_updating = FALSE
-	var/sun_next_color
-	var/sun_next_brightness
-
-	var/list/datum/lighting_corner/sunlit_corners = list()
 	// todo: KILL THIS WITH FIRE
 	var/list/expected_z_levels = list()
 
@@ -36,6 +24,32 @@
 
 	var/moon_name = null // Purely for flavor. Null means no moon exists.
 	var/moon_phase = null // Set if above is defined.
+
+	//* Sunlight *//
+
+	/// 0 means midnight, 1 means noon.
+	var/sun_position = 0
+	/// This a multiplier used to apply to the brightness of ambient lighting.  0.3 means 30% of the brightness of the sun.
+	var/sun_brightness_modifier = 0.5
+
+	#warn impl
+	/// Set when we enqueue an update.
+	/// * will always be set before current
+	var/sun_lighting_wanted_color
+	/// Set when we enqueue an update.
+	/// * will always be set before current
+	var/sun_lighting_wanted_brightness
+	/// Set when we perform an update
+	var/sun_lighting_current_color
+	/// Set when we perform an update
+	var/sun_lighting_current_brightness
+	/// Is sunlight currently updating? Do not begin another ambient lighting update if so.
+	/// * A global lock is used as well, but this keeps us from waiting on it
+	///   if our own lock is already held, as our locking system is far more efficient
+	///   when it comes to handling too many calls.
+	var/sun_lighting_update_running = FALSE
+	/// Has sunlight been modified and requires an update?
+	var/sun_lighting_update_dirty = FALSE
 
 /datum/planet/New()
 	..()
@@ -73,29 +87,49 @@
 	if(weather_holder)
 		weather_holder.process()
 
-/datum/planet/proc/update_sun_deferred(new_brightness, new_color)
-	set waitfor = FALSE
-	ASSERT(args.len < 3)
-	// Delta updates: changing the sun while it's still updating will permanently corrupt ambient lights (short of resetting them globally)
-	UNTIL(!sun_updating)
-	sun_updating = TRUE
+/datum/planet/proc/set_sun_lighting(new_brightness, new_color)
+	sun_lighting_wanted_color = new_color
+	sun_lighting_wanted_brightness = new_brightness
+	sun_lighting_update_dirty = TRUE
 
-	sun_next_brightness = new_brightness
-	sun_next_color = new_color
+/**
+ * Immediately runs a sunlight udpate.
+ * * Only one of these may run, globally, at a time.
+ * * Only one of these may be *enqueued or running*, on a planet, at a time.
+ */
+/datum/planet/proc/update_sun_lighting()
+	if(sun_lighting_update_running)
+		return
+	sun_lighting_update_running = TRUE
 
-	needs_work |= PLANET_PROCESS_SUN
+	var/ran_times = 0
+	while(sun_lighting_update_dirty)
+		if(ran_times > 10)
+			stack_trace("ran loop too many times; stop boiling the planet with lighting updates!")
+			break
+		sun_lighting_update_dirty = FALSE
+		update_sunlight_blocking_impl()
 
-// TODO: subsystemize this proc
-/datum/planet/proc/update_sunlight()
-	if (sun_next_brightness == sun_apparent_brightness && sun_next_color == sun_apparent_color)
-		log_debug("update_sunlight(): apparent == next, not bothering")
+	sun_lighting_update_running = FALSE
+
+/datum/planet/proc/update_sun_lighting_impl()
+	if(sun_lighting_current_brightness == sun_lighting_wanted_brightness && \
+		sun_lighting_current_color == sun_lighting_wanted_color)
 		return
 
-	for (var/turf/simulated/T as anything in planet_floors)
-		T.replace_ambient_light(sun_apparent_color, sun_next_color, sun_apparent_brightness, sun_next_brightness)
+	var/current_color = sun_lighting_current_color
+	var/current_brightness = sun_lighting_current_brightness
+	var/wanted_color = sun_lighting_wanted_color
+	var/wanted_brightness = sun_lighting_wanted_brightness
 
+	sun_lighting_wanted_brightness = sun_lighting_current_brightness
+	sun_lighting_wanted_color = sun_lighting_current_color
+
+	for(var/turf/simulated/T as anything in planet_floors)
+		T.replace_ambient_light(
+			current_color,
+			wanted_color,
+			current_brightness,
+			wanted_brightness,
+		)
 		CHECK_TICK
-
-	sun_apparent_color = sun_next_color
-	sun_apparent_brightness = sun_next_brightness
-	sun_updating = FALSE
