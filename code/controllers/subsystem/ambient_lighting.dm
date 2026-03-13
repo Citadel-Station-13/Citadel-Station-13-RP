@@ -38,10 +38,12 @@ SUBSYSTEM_DEF(ambient_lighting)
 				var/datum/planet/planet = SSplanets.z_to_planet["[target.z]"]
 				if (istype(planet))
 					if (planet.sun_brightness_modifier)
-						// set to **next**. it will look weird,
-						// but i'm too lazy to implement a second 'after-update' queue.
-						// we should address this someday (tm)
-						target.replace_ambient_light(planet.sun_lighting_wanted_color, null, planet.sun_lighting_wanted_brightness, null)
+						// current is set immediately when the update starts
+						// on the planet so this is safe
+						target.set_ambient_light(
+							planet.sun_lighting_current_color,
+							planet.sun_lighting_current_brightness,
+						)
 				else if (starlight_enabled)
 					target.set_ambient_light(COLOR_WHITE, 1)
 		else

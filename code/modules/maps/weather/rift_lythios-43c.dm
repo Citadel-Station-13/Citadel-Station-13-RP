@@ -17,6 +17,7 @@
 	current_time = new /datum/time/lythios43c()
 	weather_holder = /datum/weather_holder/lythios43c
 
+// TODO: this is broken.
 /datum/planet/lythios43c/update_sun()
 	..()
 	var/datum/time/time = current_time

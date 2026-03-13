@@ -78,7 +78,7 @@
 	update_weather() // We update this first, because some weather types decease the brightness of the sun.
 	if(sun_last_process <= world.time - sun_process_interval)
 		update_sun()
-
+// TODO: update_sun() is almost globally fucked across most planets. needs a refactor.
 // This changes the position of the sun on the planet.
 /datum/planet/proc/update_sun()
 	sun_last_process = world.time
@@ -122,8 +122,8 @@
 	var/wanted_color = sun_lighting_wanted_color
 	var/wanted_brightness = sun_lighting_wanted_brightness
 
-	sun_lighting_wanted_brightness = sun_lighting_current_brightness
-	sun_lighting_wanted_color = sun_lighting_current_color
+	sun_lighting_current_brightness = sun_lighting_wanted_brightness
+	sun_lighting_current_color = sun_lighting_wanted_color
 
 	for(var/turf/simulated/T as anything in planet_floors)
 		T.replace_ambient_light(
