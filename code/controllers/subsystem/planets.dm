@@ -111,6 +111,7 @@ SUBSYSTEM_DEF(planets)
 		return
 	var/list/curr = new_outdoor_turfs
 	while(curr.len)
+		var/turf/unsimulated/wall/planetary/S = curr[curr.len]
 		S.turf_flags &= ~TURF_PLANET_QUEUED
 		S.turf_flags |= TURF_PLANET_REGISTERED
 		curr.len--

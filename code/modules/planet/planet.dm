@@ -108,7 +108,7 @@
 			stack_trace("ran loop too many times; stop boiling the planet with lighting updates!")
 			break
 		sun_lighting_update_dirty = FALSE
-		update_sunlight_blocking_impl()
+		update_sun_lighting_impl()
 
 	sun_lighting_update_running = FALSE
 
