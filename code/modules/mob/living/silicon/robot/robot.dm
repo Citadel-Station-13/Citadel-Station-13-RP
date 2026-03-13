@@ -997,6 +997,11 @@
 		state = 1
 	lockdown = state
 	lockcharge = state
+	if(lockdown)
+		// we still need a better way of prying shit out of these guys
+		// but for now this is fine
+		for(var/obj/item/gripper/gripper in get_equipped_items())
+			gripper.drop_item()
 	update_mobility()
 
 /mob/living/silicon/robot/proc/sensor_mode() //Medical/Security HUD controller for borgs

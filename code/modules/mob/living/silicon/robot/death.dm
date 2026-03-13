@@ -12,9 +12,9 @@
 /mob/living/silicon/robot/death(gibbed)
 	if(camera)
 		camera.status = 0
-	var/obj/item/gripper/G = locate(/obj/item/gripper) in contents
-	if(G)
-		G.drop_item()
+	// drop all gripper items
+	for(var/obj/item/gripper/gripper in get_equipped_items())
+		gripper.drop_item()
 	var/obj/item/robot_builtin/dog_sleeper/S = locate(/obj/item/robot_builtin/dog_sleeper) in contents
 	if(S)
 		S.go_out()
