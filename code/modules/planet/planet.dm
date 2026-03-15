@@ -32,7 +32,6 @@
 	/// This a multiplier used to apply to the brightness of ambient lighting.  0.3 means 30% of the brightness of the sun.
 	var/sun_brightness_modifier = 0.5
 
-	#warn impl
 	/// Set when we enqueue an update.
 	/// * will always be set before current
 	var/sun_lighting_wanted_color
