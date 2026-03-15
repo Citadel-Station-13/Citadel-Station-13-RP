@@ -47,7 +47,7 @@
 	var/lim = 1
 	while(i < lim)
 		var/atom/A = processing[++i]
-		if(!filter_typecache[A.type])
+		if(filter_typecache[A.type])
 			processing += A.contents
 			lim = processing.len
 			. += A
