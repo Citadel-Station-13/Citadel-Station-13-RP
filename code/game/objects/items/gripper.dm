@@ -20,8 +20,6 @@
 
 	var/conf_inject_clickchain_flags
 
-#warn this is causing invariant failures with inventroy :/
-
 /obj/item/gripper/examine(mob/user, dist)
 	. = ..()
 	if(wrapped)
@@ -41,6 +39,47 @@
 			return TRUE
 	return FALSE
 
+/obj/item/gripper/inv_slot_attached()
+	if(wrapped)
+		return list(wrapped, src)
+	return src
+
+//! WARNING WARNING GRIPPERS ARE STILL SHITCODE !//
+//! This exact combination of hooks will make it work as expected. !//
+//! It's realistically still pretty shitty.                        !//
+
+/obj/item/gripper/pickup(...)
+	. = ..()
+	wrapped?.pickup(arglist(args))
+
+/obj/item/gripper/dropped(...)
+	. = ..()
+	wrapped?.dropped(arglist(args))
+
+/obj/item/gripper/equipped(...)
+	. = ..()
+	wrapped?.equipped(arglist(args))
+
+/obj/item/gripper/unequipped(...)
+	. = ..()
+	wrapped?.unequipped(arglist(args))
+
+/obj/item/gripper/on_inv_equipped(...)
+	. = ..()
+	wrapped?.on_inv_equipped(arglist(args))
+
+/obj/item/gripper/on_inv_unequipped(...)
+	. = ..()
+	wrapped?.on_inv_unequipped(arglist(args))
+
+/obj/item/gripper/on_inv_pickup(...)
+	. = ..()
+	wrapped?.on_inv_pickup(arglist(args))
+
+/obj/item/gripper/on_inv_dropped(...)
+	. = ..()
+	wrapped?.on_inv_dropped(arglist(args))
+
 /obj/item/gripper/proc/insert_item(obj/item/I)
 	if(QDELETED(I))
 		return
@@ -48,6 +87,11 @@
 		remove_item(drop_location())
 	wrapped = I
 	I.forceMove(src)
+	// forcemove will have removed them from inv if they were inside
+	if(worn_slot)
+		I.pickup(inv_inside.owner, NONE, null)
+		I.equipped(inv_inside.owner, isnum(inv_slot_or_index) ? SLOT_ID_HANDS : inv_slot_or_index, NONE)
+		I.on_inv_equipped(inv_inside.owner, inv_inside, inv_slot_or_index, NONE, null)
 	RegisterSignals(I, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED), PROC_REF(unwrap_hook))
 
 /**
@@ -59,6 +103,8 @@
 	var/obj/item/old = wrapped
 	UnregisterSignal(wrapped, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	wrapped = null
+	// in theory the below should pull it out of inventory properly
+	// as worn_slot is set, which allows inventory hooks to fire.
 	switch(newloc)
 		if(null)
 			old.moveToNullspace()
@@ -195,7 +241,7 @@
 
 	can_hold = list(
 		/obj/item/cell,
-		/obj/item/stock_partsk,
+		/obj/item/stock_parts,
 	)
 
 /obj/item/gripper/security

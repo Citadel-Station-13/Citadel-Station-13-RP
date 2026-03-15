@@ -136,7 +136,7 @@
 	if(module_provisioning)
 		QDEL_NULL(module_provisioning)
 	if(module_legacy)
-		module_legacy.Reset()
+		module_legacy.Reset(src)
 		QDEL_NULL(module_legacy)
 	// set
 	src.module = module

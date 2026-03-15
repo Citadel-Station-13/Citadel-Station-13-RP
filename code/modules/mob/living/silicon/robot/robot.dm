@@ -957,7 +957,7 @@
 						cleaned_human.clean_blood(1)
 						to_chat(cleaned_human, "<font color='red'>[src] cleans your face!</font>")
 
-	for(var/obj/item/storage/bag/ore/ore_bag in inventory.get_held_items())
+	for(var/obj/item/storage/bag/ore/ore_bag in inventory?.get_held_items())
 		if(ore_bag)
 			if(isturf(loc))
 				var/turf/tile = loc
