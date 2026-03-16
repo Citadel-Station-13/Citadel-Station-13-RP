@@ -11,6 +11,16 @@
 	var/light_y = 0
 	cooking_power = 0
 
+/obj/machinery/appliance/cooker/Initialize(mapload, newdir)
+	. = ..()
+	loss = (active_power_usage / resistance)*0.5
+	cooking_objs = list()
+	for (var/i = 0, i < max_contents, i++)
+		cooking_objs.Add(new /datum/cooking_item/(new container_type(src)))
+	cooking = 0
+
+	update_icon() // this probably won't cause issues, but Aurora used SSIcons and update_icon() instead
+
 /obj/machinery/appliance/cooker/examine(var/mob/user)
 	. = ..()
 	if(.)	//no need to duplicate adjacency check
@@ -40,16 +50,6 @@
 /obj/machinery/appliance/cooker/proc/get_efficiency()
 	//RefreshParts()
 	return (cooking_power / optimal_power) * 100
-
-/obj/machinery/appliance/cooker/Initialize(mapload, newdir)
-	. = ..()
-	loss = (active_power_usage / resistance)*0.5
-	cooking_objs = list()
-	for (var/i = 0, i < max_contents, i++)
-		cooking_objs.Add(new /datum/cooking_item/(new container_type(src)))
-	cooking = 0
-
-	update_icon() // this probably won't cause issues, but Aurora used SSIcons and update_icon() instead
 
 /obj/machinery/appliance/cooker/update_icon()
 	cut_overlays()

@@ -3,6 +3,8 @@ SUBSYSTEM_DEF(events)
 	wait = 2 SECONDS
 	init_order = INIT_ORDER_EVENTS
 
+	runlevels = RUNLEVEL_GAME
+
 	/// Current holidays
 	var/list/holidays = list()
 
@@ -132,10 +134,10 @@ SUBSYSTEM_DEF(events)
 	if(!force && !CONFIG_GET(flag/allow_holidays))
 		return // Holiday stuff was not enabled in the config!
 
-	var/YY = text2num(time2text(world.timeofday, "YY")) // get the current year
-	var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
-	var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
-	var/DDD = time2text(world.timeofday, "DDD")	// get the current weekday
+	var/YY = text2num(time2text(world.timeofday, "YY", world.timezone)) // get the current year
+	var/MM = text2num(time2text(world.timeofday, "MM", world.timezone)) // get the current month
+	var/DD = text2num(time2text(world.timeofday, "DD", world.timezone)) // get the current day
+	var/DDD = time2text(world.timeofday, "DDD", world.timezone)	// get the current weekday
 	var/W = weekdayofthemonth()	// is this the first monday? second? etc.
 
 	for(var/H in subtypesof(/datum/holiday))
@@ -146,7 +148,7 @@ SUBSYSTEM_DEF(events)
 		else
 			qdel(holiday)
 
-	tim_sort(holidays, GLOBAL_PROC_REF(cmp_holiday_priority))
+	tim_sort(holidays, GLOBAL_PROC_REF(cmp_holiday_priority), associative = TRUE)
 	// // regenerate station name because holiday prefixes.
 	// set_station_name(new_station_name())
 	// world.update_status()
@@ -155,6 +157,24 @@ SUBSYSTEM_DEF(events)
 	for(var/name in holidays)
 		var/datum/holiday/holiday = holidays[name]
 		holiday.OnRoundstart()
+
+	// handle announcing holidays where needed
+	if(SSevents.holidays.len != 0)
+		var/list/holiday_names = list()
+		var/list/holiday_blurbs = list()
+		for(var/holiday_name in SSevents.holidays)
+			var/datum/holiday/H = SSevents.holidays[holiday_name]
+			if(H.announce)
+				holiday_names.Add(holiday_name)
+				holiday_blurbs.Add("[H.desc]")
+		if(!length(holiday_names))
+			return
+		var/holidays_string = english_list(holiday_names, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
+		to_chat(world, "<font color=#4F49AF>and...</font>")
+		to_chat(world, "<h4>Happy [holidays_string] Everybody!</h4>")
+		if(holiday_blurbs.len != 0)
+			for(var/blurb in holiday_blurbs)
+				to_chat(world, "<div align='center'><font color=#4F49AF>[blurb]</font></div>")
 
 /proc/IsHoliday(name)
 	return SSevents.holidays[name]? TRUE : FALSE

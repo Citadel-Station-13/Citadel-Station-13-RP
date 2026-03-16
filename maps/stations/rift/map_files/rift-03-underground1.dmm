@@ -5989,7 +5989,7 @@
 /area/maintenance/substation/engineering)
 "rC" = (
 /obj/item/storage/toolbox/mechanical,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_2/medium,
 /obj/structure/table/rack/shelf,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -6897,9 +6897,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "uV" = (
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -8022,7 +8020,7 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/circuitboard/transhuman_resleever{
+/obj/item/circuitboard/resleeving/resleeving_pod{
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -10474,15 +10472,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Gm" = (
-/obj/item/circuitboard/resleeving_control{
+/obj/item/circuitboard/resleeving_console{
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/item/circuitboard/transhuman_clonepod{
+/obj/item/circuitboard/resleeving/grower_pod{
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/item/circuitboard/transhuman_synthprinter{
+/obj/item/circuitboard/resleeving/synth_printer{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -13044,7 +13042,7 @@
 "NX" = (
 /obj/structure/table/rack/steel,
 /obj/item/slime_scanner,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/robotanalyzer,
 /obj/item/reagent_scanner,
 /obj/item/healthanalyzer,
@@ -13749,9 +13747,7 @@
 /area/hallway/primary/underone)
 "Qt" = (
 /obj/structure/table/steel,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil,
 /obj/machinery/cell_charger{
 	pixel_y = 5

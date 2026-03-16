@@ -100,14 +100,19 @@
 /obj/machinery
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
+	desc = "Some kind of machine."
+	abstract_type = /obj/machinery
 	w_class = WEIGHT_CLASS_HUGE
 	layer = UNDER_JUNK_LAYER
 	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
 	// todo: wow rad contents is a weird system
 	rad_flags = RAD_BLOCK_CONTENTS
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	// todo: anchored / unanchored should be replaced by movement force someday, how to handle that?
 
-	//* Construction / Deconstruction
+	//* Construction / Deconstruction *//
+
 	/// allow default part replacement. null for disallowed, number for time.
 	var/default_part_replacement = 0
 	/// Can be constructed / deconstructed by players by default. null for off, number for time needed. Panel must be open.
@@ -130,6 +135,11 @@
 	var/panel_icon_state
 	/// is the maintenance panel open?
 	var/panel_open = FALSE
+
+	//* Machinery Systems *//
+
+	/// Occupant pod system, if any
+	var/datum/machinery_system/occupant_pod/machine_occupant_pod
 
 	//* unsorted
 	var/machine_stat = 0
@@ -182,6 +192,7 @@
 		power_change()
 
 /obj/machinery/Destroy()
+	QDEL_NULL(machine_occupant_pod)
 	GLOB.machines.Remove(src)
 	if(!speed_process)
 		STOP_MACHINE_PROCESSING(src)
@@ -202,6 +213,7 @@
 				M.update_perspective()
 			else
 				qdel(A)
+	QDEL_NULL(circuit)
 	return ..()
 
 /obj/machinery/process(delta_time)//If you dont use process or power why are you here
@@ -214,7 +226,7 @@
 
 /obj/machinery/emp_act(severity)
 	if(use_power && machine_stat == NONE)
-		use_power(7500/severity)
+		use_power(7500 / severity)
 
 		var/obj/effect/overlay/pulse2 = new /obj/effect/overlay(src.loc)
 		pulse2.icon = 'icons/effects/effects.dmi'
@@ -310,14 +322,48 @@
 
 	return ..()
 
-/obj/machinery/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/storage/part_replacer))
-		if(isnull(default_part_replacement))
-			user.action_feedback(SPAN_WARNING("[src] doesn't support part replacement."), src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
-		default_part_replacement(user, I)
+/obj/machinery/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(machine_occupant_pod)
+		if(machine_occupant_pod.door_via_click && machine_occupant_pod.supports_opening())
+			machine_occupant_pod.user_toggle_click(clickchain)
+			return CLICKCHAIN_DID_SOMETHING
+		else if(machine_occupant_pod.eject_via_click && machine_occupant_pod.is_occupied())
+			machine_occupant_pod.user_eject_click(clickchain)
+			return CLICKCHAIN_DID_SOMETHING
+
+/obj/machinery/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	// default machine occupant pod is checked first
+	if(machine_occupant_pod?.occupant)
+		return
+	if(!isnull(default_part_replacement) && default_part_replacement(clickchain.performer, using))
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	if(istype(using, /obj/item/grab) && machine_occupant_pod?.insert_via_grab)
+		var/obj/item/grab/casted_grab = using
+		machine_occupant_pod?.user_insert_grab(casted_grab.affecting, clickchain)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
-	return ..()
+
+/obj/machinery/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(machine_occupant_pod && ismob(dropping) && user.Reachability(src))
+		if((dropping != user) && machine_occupant_pod.insert_via_dragdrop)
+			machine_occupant_pod.user_insert_dragdrop(dropping, new /datum/event_args/actor(user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if((dropping == user) && machine_occupant_pod.enter_via_dragdrop)
+			machine_occupant_pod.user_enter_dragdrop(new /datum/event_args/actor(user))
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+
+/obj/machinery/Exited(atom/movable/AM, atom/newLoc)
+	..()
+	if(machine_occupant_pod && AM == machine_occupant_pod.occupant)
+		machine_occupant_pod.eject(suppressed = TRUE)
 
 /obj/machinery/can_interact(mob/user)
 	if((machine_stat & (NOPOWER|BROKEN|MAINT)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
@@ -522,6 +568,8 @@
 
 /obj/machinery/drop_products(method, atom/where)
 	. = ..()
+	if(machine_occupant_pod?.occupant)
+		machine_occupant_pod.eject(where || drop_location(), silent = TRUE, suppressed = TRUE)
 	if(isnull(circuit))
 		return
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
@@ -562,8 +610,10 @@
 	A.pixel_y = pixel_y
 	A.update_desc()
 	A.update_appearance()
-	M.loc = null
+	M.forceMove(A)
 	M.after_deconstruct(src)
+	// release circuit
+	circuit = null
 
 // todo: kill this shit, this is legacy
 /obj/machinery/proc/dismantle()
@@ -576,25 +626,6 @@
 //called on deconstruction before the final deletion
 /obj/machinery/proc/on_deconstruction()
 	return
-
-/**
- * Puts passed object in to user's hand
- *
- * Puts the passed object in to the users hand if they are adjacent.
- * If the user is not adjacent then place the object on top of the machine.
- *
- * Vars:
- * * object (obj) The object to be moved in to the users hand.
- * * user (mob/living) The user to recive the object
- */
-/obj/machinery/proc/try_put_in_hand(obj/object, mob/living/user)
-	if(!issilicon(user) && in_range(src, user))
-		user.grab_item_from_interacted_with(object, src)
-		// todo: probably split this proc into something that isn't try
-		// because if this fails and something nulls, something bad happens
-		// i bandaided this to drop location but that's inflexible
-	else
-		object.forceMove(drop_location())
 
 /// Adjust item drop location to a 3x3 grid inside the tile, returns slot id from 0 to 8.
 /obj/machinery/proc/adjust_item_drop_location(atom/movable/dropped_atom)
@@ -614,3 +645,94 @@
 	. = ..()
 	// todo: rework
 	machine_stat &= ~BROKEN
+
+/obj/machinery/context_menu_query(datum/event_args/actor/e_args)
+	. = ..()
+	if(machine_occupant_pod)
+		if(machine_occupant_pod.door_via_context && machine_occupant_pod.supports_opening())
+			.["occupant_pod-toggle"] = create_context_menu_tuple(
+				"toggle open",
+				image(src),
+				1,
+				MOBILITY_CAN_USE,
+				FALSE,
+			)
+		else if(machine_occupant_pod.eject_via_context && machine_occupant_pod.is_occupied())
+			.["occupant_pod-eject"] = create_context_menu_tuple(
+				"eject",
+				image(src),
+				1,
+				MOBILITY_CAN_USE,
+				FALSE,
+			)
+		else if(machine_occupant_pod.enter_via_context && !machine_occupant_pod.is_occupied())
+			.["occupant_pod-enter"] = create_context_menu_tuple(
+				"enter",
+				image(src),
+				1,
+				MOBILITY_CAN_USE,
+				FALSE,
+			)
+
+/obj/machinery/context_menu_act(datum/event_args/actor/e_args, key)
+	. = ..()
+	if(.)
+		return
+	switch(key)
+		if("occupant_pod-toggle")
+			if(!machine_occupant_pod.door_via_context || !machine_occupant_pod.supports_opening())
+				return TRUE
+			machine_occupant_pod.user_toggle_context(e_args)
+			return TRUE
+		if("occupant_pod-eject")
+			if(!machine_occupant_pod.eject_via_context || !machine_occupant_pod.is_occupied())
+				return TRUE
+			machine_occupant_pod.user_eject_context(e_args)
+			return TRUE
+		if("occupant_pod-enter")
+			if(!machine_occupant_pod.enter_via_context || machine_occupant_pod.is_occupied())
+				return TRUE
+			machine_occupant_pod.user_enter_context(e_args)
+			return TRUE
+
+/obj/machinery/contents_resist(mob/escapee)
+	. = ..()
+	if(.)
+		return
+	if(machine_occupant_pod)
+		if(machine_occupant_pod.eject_via_resist && machine_occupant_pod.occupant == escapee)
+			machine_occupant_pod.user_eject_resist(new /datum/event_args/actor(escapee))
+			return TRUE
+
+/obj/machinery/relaymove_from_contents(mob/user, direction)
+	..()
+	if(machine_occupant_pod)
+		if(machine_occupant_pod.eject_via_move && machine_occupant_pod.occupant == user)
+			machine_occupant_pod.user_eject_move(new /datum/event_args/actor(user))
+
+//* Some common inventory helpers *//
+
+/**
+ * Puts passed item in to user's hand
+ *
+ * * Puts the passed object in to the users hand if they are adjacent.
+ * * If the user is not adjacent then place the object on top of the machine.
+ * * This will always move the item out of the machine.
+ * * This does not check the item actually is in ourselves.
+ *
+ * @params
+ * * item (obj/item) The item to be moved in to the users hand.
+ * * user (mob) The user to recive the object
+ *
+ * @return TRUE if item was yanked into hands, FALSE if item was just normally removed
+ */
+/obj/machinery/proc/yank_item_out(obj/item/item, mob/user)
+	if(!issilicon(user) && in_range(src, user))
+		user.grab_item_from_interacted_with(item, src)
+		// todo: probably split this proc into something that isn't try
+		// because if this fails and something nulls, something bad happens
+		// i bandaided this to drop location but that's inflexible
+		return item.inv_inside == user.inventory
+	else
+		item.forceMove(drop_location())
+		return FALSE

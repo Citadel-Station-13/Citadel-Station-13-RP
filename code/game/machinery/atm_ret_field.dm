@@ -24,6 +24,43 @@
 	var/field_type = /obj/structure/atmospheric_retention_field
 	circuit = /obj/item/circuitboard/arf_generator
 
+/obj/machinery/atmospheric_field_generator/Initialize(mapload)
+	. = ..()
+	//Delete ourselves if we find extra mapped in arfgs
+	for(var/obj/machinery/atmospheric_field_generator/F in loc)
+		if(F != src)
+			log_debug(SPAN_DEBUG("Duplicate ARFGS at [x],[y],[z]"))
+			return INITIALIZE_HINT_QDEL
+
+	var/area/A = get_area(src)
+	ASSERT(istype(A))
+
+	LAZYADD(A.all_arfgs, src)
+	areas_added = list(A)
+
+	for(var/direction in GLOB.cardinal)
+		A = get_area(get_step(src,direction))
+		if(istype(A) && !(A in areas_added))
+			LAZYADD(A.all_arfgs, src)
+			areas_added += A
+
+/obj/machinery/atmospheric_field_generator/Destroy()
+	var/area/A = get_area(src)
+	LAZYREMOVE(A.all_arfgs, src)
+	disable_field()
+	return ..()
+
+/obj/machinery/atmospheric_field_generator/Moved(atom/old_loc, direction, forced, list/old_locs, momentum_change)
+	var/area/old_area = get_area(old_loc)
+	..()
+	var/area/new_area = get_area(src)
+	if(old_area == new_area)
+		return
+	if(old_area)
+		LAZYREMOVE(old_area.all_arfgs, src)
+	if(new_area)
+		LAZYADD(new_area.all_arfgs, src)
+
 /obj/machinery/atmospheric_field_generator/impassable
 	desc = "An older model of ARF-G that generates an impassable retention field. Works just as well as the modern variety, but is slightly more energy-efficient.<br><br>Note: prolonged immersion in active atmospheric retention fields may have negative long-term health consequences."
 	active_power_usage = 800
@@ -145,26 +182,6 @@
 		update_use_power(USE_POWER_IDLE)
 		isactive = 0
 	return
-
-/obj/machinery/atmospheric_field_generator/Initialize(mapload)
-	. = ..()
-	//Delete ourselves if we find extra mapped in arfgs
-	for(var/obj/machinery/atmospheric_field_generator/F in loc)
-		if(F != src)
-			log_debug(SPAN_DEBUG("Duplicate ARFGS at [x],[y],[z]"))
-			return INITIALIZE_HINT_QDEL
-
-	var/area/A = get_area(src)
-	ASSERT(istype(A))
-
-	LAZYADD(A.all_arfgs, src)
-	areas_added = list(A)
-
-	for(var/direction in GLOB.cardinal)
-		A = get_area(get_step(src,direction))
-		if(istype(A) && !(A in areas_added))
-			LAZYADD(A.all_arfgs, src)
-			areas_added += A
 
 /obj/structure/atmospheric_retention_field
 	name = "atmospheric retention field"

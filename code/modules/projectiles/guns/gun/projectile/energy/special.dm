@@ -25,7 +25,7 @@
 	damage_force = 5
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	heavy = FALSE
-	charge_cost = 480
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 8
 	projectile_type = /obj/projectile/ion/pistol
 
 /obj/item/gun/projectile/energy/ionrifle/weak
@@ -47,7 +47,7 @@
 	projectile_type = /obj/projectile/energy/floramut
 	origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3, TECH_POWER = 3)
 	modifystate = "floramut"
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	no_pin_required = 1
 	legacy_battery_lock = 1
 	var/singleton/plantgene/gene = null
@@ -95,7 +95,7 @@
 	heavy = TRUE
 	projectile_type = /obj/projectile/meteor
 	cell_type = /obj/item/cell/potato
-	charge_cost = 100
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 8
 	self_recharge = 1
 	recharge_time = 5 //Time it takes for shots to recharge (in ticks)
 	charge_meter = 0
@@ -138,10 +138,10 @@
 	icon_state = "staff"
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
-	charge_cost = 480
+	charge_cost = /obj/item/cell/regen/weapon::max_charge / 10
 	projectile_type = /obj/projectile/change
 	origin_tech = null
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	charge_meter = 0
 
@@ -213,9 +213,9 @@
 	wielded_item_state = "dakkalaser-wielded"
 	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
-	charge_cost = 24 // 100 shots, it's a spray and pray (to RNGesus) weapon.
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 120
 	projectile_type = /obj/projectile/energy/blue_pellet
-	cell_type = /obj/item/cell/device/weapon/recharge
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	accuracy = 75 // Suppressive weapons don't work too well if there's no risk of being hit.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_ILLEGAL = 6)
@@ -238,10 +238,10 @@
 	w_class = WEIGHT_CLASS_HUGE
 	heavy = TRUE
 
-	charge_cost = 10000 // Uses large cells, can at max have 3 shots.
+	charge_cost = 7500
 	projectile_type = /obj/projectile/beam/tungsten
-	cell_type = /obj/item/cell/high
-	cell_system_legacy_use_device = FALSE
+	cell_type = /obj/item/cell/basic/tier_1/large
+	cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM | CELL_TYPE_LARGE
 
 	accuracy = 75
 	charge_meter = 0
@@ -334,9 +334,8 @@
 	fire_sound = 'sound/weapons/eluger.ogg'
 
 	projectile_type = /obj/projectile/beam/medigun
+	cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON | CELL_TYPE_MEDIUM | CELL_TYPE_LARGE
 
-	cell_system_legacy_use_device = FALSE
-	cell_type = /obj/item/cell/high
 	charge_cost = 2500
 
 /obj/item/gun/projectile/energy/puzzle_key
@@ -351,9 +350,9 @@
 	firemodes = /datum/firemode/energy{
 		projectile_type = /obj/projectile/beam/emitter;
 		cycle_cooldown = 1 SECONDS;
-		charge_cost = 2400 / 3;
+		charge_cost = POWER_CELL_CAPACITY_WEAPON / 3;
 	}
-	cell_type = /obj/item/cell/device/weapon/recharge/captain
+	cell_type = /obj/item/cell/regen/weapon
 	legacy_battery_lock = 1
 	one_handed_penalty = 0
 
@@ -366,9 +365,8 @@
 	firemodes = /datum/firemode/energy{
 		cycle_cooldown = 2 SECONDS;
 	}
-	charge_cost = 900
-	cell_type = /obj/item/cell
-	cell_system_legacy_use_device = FALSE
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 6
+	cell_accept = CELL_TYPE_MEDIUM | CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
@@ -392,10 +390,10 @@
 	firemodes = /datum/firemode/energy{
 		projectile_type = /obj/projectile/bullet/cyanideround/jezzail;
 		cycle_cooldown = 2 SECONDS;
-		charge_cost = 2400 / 4;
+		charge_cost = POWER_CELL_CAPACITY_WEAPON / 8;
 	}
-	cell_type = /obj/item/cell/device/weapon
 	legacy_battery_lock = 1
+	cell_type = /obj/item/cell/regen/weapon
 	slot_flags = SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE
@@ -408,11 +406,11 @@
 
 /datum/firemode/energy/plasma/normal
 	name = "standard"
-	legacy_direct_varedits = list(projectile_type=/obj/projectile/plasma, charge_cost = 350)
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/plasma, charge_cost = POWER_CELL_CAPACITY_WEAPON / 12)
 
 /datum/firemode/energy/plasma/high
 	name = "high power"
-	legacy_direct_varedits = list(projectile_type=/obj/projectile/plasma/hot, charge_cost = 370)
+	legacy_direct_varedits = list(projectile_type=/obj/projectile/plasma/hot, charge_cost = POWER_CELL_CAPACITY_WEAPON / 6)
 
 //Plasma Guns Plasma Guns!
 /obj/item/gun/projectile/energy/plasma
@@ -421,8 +419,6 @@
 	icon_state = "prifle"
 	item_state = null
 	projectile_type = /obj/projectile/plasma
-	charge_cost = 400
-	cell_type = /obj/item/cell/device/weapon
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	heavy = TRUE

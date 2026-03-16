@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /datum/controller/subsystem/persistence/proc/build_prototype_id_lookup()
 	var/list/constructing = list()

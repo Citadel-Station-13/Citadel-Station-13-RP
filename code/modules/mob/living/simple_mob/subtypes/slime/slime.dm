@@ -33,6 +33,9 @@
 
 	response_help = "pets"
 
+	base_attack_cooldown = 2 SECONDS
+	composition_reagent = "slimejelly"
+
 	// Atmos stuff.
 	minbodytemp = T0C-30
 	heat_damage_per_tick = 0
@@ -53,7 +56,6 @@
 
 	legacy_melee_damage_lower = 10
 	legacy_melee_damage_upper = 15
-	base_attack_cooldown = 10 // One attack a second.
 	attack_sound = 'sound/weapons/bite.ogg'
 	attacktext = list("glomped")
 	speak_emote = list("chirps")
@@ -70,13 +72,12 @@
 	var/reagent_injected = null // Some slimes inject reagents on attack.  This tells the game what reagent to use.
 	var/injection_amount = 5 // This determines how much.
 	var/mood = ":3" // Icon to use to display 'mood', as an overlay.
+	var/allowed_attack_types = list(
+		/obj/item/melee/baton/slime,
+		/obj/item/slimepotion,
+	)
 
 	can_enter_vent_with = list(/obj/item/clothing/head)
-
-/datum/say_list/slime
-	speak = list("Blorp...", "Blop...", "Blorble...")
-	emote_see = list("bounces", "jiggles", "sways")
-	emote_hear = list("squishes")
 
 /mob/living/simple_mob/slime/Initialize(mapload)
 	add_verb(src, /mob/living/proc/ventcrawl)
@@ -87,9 +88,13 @@
 	return ..()
 
 /mob/living/simple_mob/slime/Destroy()
-	if(hat)
-		drop_hat()
+	QDEL_NULL(hat)
 	return ..()
+
+/datum/say_list/slime
+	speak = list("Blorp...", "Blop...", "Blorble...")
+	emote_see = list("bounces", "jiggles", "sways")
+	emote_hear = list("squishes")
 
 /mob/living/simple_mob/slime/set_stat(new_stat, update_mobility)
 	. = ..()

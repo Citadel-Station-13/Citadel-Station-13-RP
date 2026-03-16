@@ -11,41 +11,41 @@
 "af" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -478,26 +478,26 @@
 /area/centcom/specops)
 "bu" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -979,18 +979,18 @@
 "cM" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2166,12 +2166,8 @@
 /area/centcom/control)
 "fl" = (
 /obj/structure/table/standard,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /obj/machinery/cell_charger,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/purple/border,
@@ -2314,8 +2310,7 @@
 /obj/structure/closet{
 	name = "robotics parts"
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -2327,18 +2322,15 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
-/obj/item/cell/high{
-	maxcharge = 15000;
+/obj/item/cell/basic/tier_4/medium{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -3063,13 +3055,12 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /obj/item/book/manual/resleeving,
-/obj/item/storage/box/backup_kit,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "hM" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "hN" = (
@@ -3077,7 +3068,7 @@
 	dir = 4
 	},
 /obj/machinery/light,
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "hO" = (
@@ -3165,15 +3156,15 @@
 "iE" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/cell/device/weapon{
+/obj/item/cell/basic/tier_4/weapon{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -4694,7 +4685,7 @@
 	},
 /area/centcom/medical)
 "nY" = (
-/obj/machinery/transhuman/synthprinter,
+/obj/machinery/resleeving/body_printer/synth_fab,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -4718,7 +4709,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/computer/transhuman/resleeving,
+/obj/machinery/computer/resleeving,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -4733,7 +4724,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/transhuman/resleever,
+/obj/machinery/resleeving/resleeving_pod,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -4755,7 +4746,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/machinery/clonepod/transhuman/full,
+/obj/machinery/resleeving/body_printer/grower_pod/loaded,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -6990,13 +6981,6 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/item/backup_implanter{
-	pixel_y = -8
-	},
-/obj/item/backup_implanter{
-	pixel_y = 8
-	},
-/obj/item/backup_implanter,
 /turf/unsimulated/floor/steel{
 	icon_state = "white"
 	},
@@ -10098,18 +10082,18 @@
 /area/centcom/living)
 "Ez" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

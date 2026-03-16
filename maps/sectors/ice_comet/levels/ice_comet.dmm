@@ -133,6 +133,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"ei" = (
+/obj/random/crystal/ice,
+/turf/simulated/floor/water{
+	color = "#8BBBD5"
+	},
+/area/sector/ice_comet)
 "er" = (
 /obj/structure/bed/chair/bay/chair/padded/blue{
 	dir = 1
@@ -217,6 +223,11 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"hf" = (
+/obj/machinery/door/airlock/voidcraft/survival_pod,
+/obj/structure/fans/tiny,
+/turf/simulated/floor,
+/area/sector/ice_comet/facility)
 "hz" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -232,6 +243,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
+"hH" = (
+/mob/living/simple_mob/animal/space/whaleshark,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/sector/ice_comet/facility)
 "hR" = (
 /obj/structure/event/prop/white_barrel,
 /obj/structure/event/prop/red_barrel{
@@ -241,10 +256,6 @@
 	color = "#6A97B0"
 	},
 /area/sector/ice_comet)
-"hU" = (
-/obj/machinery/crypod,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/ice_comet/facility)
 "id" = (
 /obj/structure/event/prop/yellow_barrel,
 /turf/simulated/floor/outdoors/rocks{
@@ -663,17 +674,6 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
-"vh" = (
-/mob/living/simple_mob/animal/giant_spider/frost{
-	iff_factions = "mutant"
-	},
-/mob/living/simple_mob/animal/giant_spider/frost{
-	iff_factions = "mutant"
-	},
-/turf/simulated/floor/outdoors/rocks{
-	color = "#6A97B0"
-	},
-/area/sector/ice_comet)
 "vC" = (
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled/techmaint,
@@ -761,13 +761,6 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/sector/ice_comet)
-"ym" = (
-/obj/machinery/crypod,
-/obj/machinery/light/spot{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/ice_comet/facility)
 "yS" = (
 /obj/structure/metal_edge,
 /obj/structure/cryofeed{
@@ -1064,6 +1057,11 @@
 	color = "#6A97B0"
 	},
 /area/sector/ice_comet)
+"Gu" = (
+/turf/simulated/floor/water{
+	color = "#8BBBD5"
+	},
+/area/sector/ice_comet)
 "Gv" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -1169,17 +1167,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/ice_comet/facility)
-"Jf" = (
-/obj/machinery/crypod,
-/obj/machinery/light/spot{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/ice_comet/facility)
-"Jo" = (
-/mob/living/simple_mob/aggressive/whaleshark/hostile,
-/turf/simulated/floor/water/deep/indoors/lythios43c,
-/area/sector/ice_comet)
 "Jt" = (
 /obj/structure/bed,
 /obj/item/fishing_hook,
@@ -1201,11 +1188,21 @@
 "JZ" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/ice_comet/facility)
+"Kn" = (
+/mob/living/simple_mob/animal/space/whaleshark/hostile,
+/turf/simulated/floor/water{
+	color = "#8BBBD5"
+	},
+/area/sector/ice_comet)
 "Kz" = (
 /obj/structure/flora/rock/alternative_1,
 /turf/simulated/floor/outdoors/rocks{
 	color = "#6A97B0"
 	},
+/area/sector/ice_comet)
+"KJ" = (
+/mob/living/simple_mob/animal/space/whaleshark/hostile,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
 /area/sector/ice_comet)
 "KR" = (
 /obj/machinery/light/spot{
@@ -1233,6 +1230,11 @@
 /obj/item/storage/box/wormcan/sickly,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/sector/ice_comet)
+"Ml" = (
+/obj/machinery/door/airlock/voidcraft/survival_pod,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techmaint,
+/area/sector/ice_comet/facility)
 "Mu" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -1269,10 +1271,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/ice_comet/facility)
-"Oi" = (
-/obj/machinery/crypod,
-/turf/simulated/floor/tiled/techmaint,
-/area/sector/ice_comet/facility)
 "OM" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/ice_comet/facility)
@@ -1300,11 +1298,6 @@
 "Qm" = (
 /turf/space,
 /area/space)
-"QU" = (
-/obj/machinery/crypod,
-/obj/machinery/crypod,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/sector/ice_comet/facility)
 "Ri" = (
 /obj/structure/event/prop/measure,
 /turf/simulated/floor/outdoors/rocks{
@@ -1417,14 +1410,8 @@
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/ice_comet/facility)
-"Uw" = (
-/mob/living/simple_mob/aggressive/whaleshark,
-/turf/simulated/floor/water/deep/indoors/lythios43c,
-/area/sector/ice_comet)
 "UU" = (
-/mob/living/simple_mob/animal/giant_spider/frost{
-	iff_factions = "mutant"
-	},
+/mob/living/simple_mob/animal/space/bear/polar,
 /turf/simulated/floor/outdoors/rocks{
 	color = "#6A97B0"
 	},
@@ -1526,6 +1513,12 @@
 	color = "#6A97B0"
 	},
 /area/sector/ice_comet)
+"WW" = (
+/obj/structure/flora/rock/ice/alternative_1,
+/turf/simulated/floor/water{
+	color = "#8BBBD5"
+	},
+/area/sector/ice_comet)
 "Xb" = (
 /obj/effect/floor_decal/corner/purple/border,
 /obj/effect/floor_decal/corner/purple/border{
@@ -1565,10 +1558,12 @@
 /turf/simulated/floor,
 /area/sector/ice_comet/facility)
 "XE" = (
-/mob/living/simple_mob/animal/giant_spider/frost{
-	iff_factions = "mutant"
-	},
+/mob/living/simple_mob/animal/space/bear/polar,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
+/area/sector/ice_comet)
+"XK" = (
+/mob/living/simple_mob/animal/space/whaleshark,
+/turf/simulated/floor/water/deep/indoors/lythios43c,
 /area/sector/ice_comet)
 "XQ" = (
 /obj/structure/railing/grey,
@@ -9265,8 +9260,8 @@ le
 Rn
 lm
 lm
-lm
-Rn
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -9460,8 +9455,8 @@ Rn
 Rn
 lm
 lm
-Rn
-Rn
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -9652,11 +9647,11 @@ YE
 YE
 YE
 lm
-Rn
+Gu
 lm
-Rn
-Rn
-Rn
+Gu
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -9845,13 +9840,13 @@ YE
 ut
 YE
 YE
-Rn
+Gu
+Gu
 lm
-lm
-gM
-Rn
-Rn
-Rn
+WW
+Gu
+Gu
+Gu
 Yv
 Rn
 Rn
@@ -10039,14 +10034,14 @@ YE
 YE
 YE
 YE
-Rn
-lm
-lm
-Rn
-Rn
-Rn
-Rn
-Rn
+Gu
+Gu
+Gu
+Kn
+Gu
+Gu
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -10232,17 +10227,17 @@ Wq
 YE
 lm
 YE
-Rn
-Rn
-lm
-lm
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -10426,13 +10421,13 @@ YE
 lm
 lm
 YE
-Rn
-SR
+Gu
+ei
 lm
-lm
-Rn
-Rn
-Rn
+Gu
+Gu
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -10620,12 +10615,12 @@ lm
 lm
 lm
 Rn
-lm
-Rn
-Rn
-lm
-Rn
-Rn
+Gu
+Gu
+Gu
+Gu
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -10807,16 +10802,16 @@ YE
 Wq
 YE
 YE
-UU
 YE
 YE
+YE
 lm
 YE
 lm
-lm
-lm
-lm
-Rn
+Gu
+Gu
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -11007,8 +11002,8 @@ lm
 lm
 YE
 lm
-Rn
-SR
+Gu
+ei
 lm
 Rn
 Rn
@@ -11391,7 +11386,7 @@ Gt
 YE
 lm
 lm
-Uw
+lm
 YE
 lm
 lm
@@ -11780,7 +11775,7 @@ YE
 lm
 YE
 lm
-Jo
+lm
 lm
 lm
 lm
@@ -12160,7 +12155,7 @@ HR
 YE
 YE
 ut
-UU
+YE
 YE
 YE
 lm
@@ -12421,7 +12416,7 @@ lm
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -12615,7 +12610,7 @@ SR
 lm
 lm
 Rn
-lm
+XK
 lm
 lm
 lm
@@ -12792,7 +12787,7 @@ Rn
 Rn
 lm
 lm
-Rn
+Gu
 Rn
 Ec
 Rn
@@ -12985,8 +12980,8 @@ Rn
 Rn
 Rn
 lm
-Rn
-Rn
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -13179,8 +13174,8 @@ Rn
 lm
 lm
 lm
-Rn
-Rn
+Gu
+Gu
 Ec
 Rn
 lm
@@ -13373,9 +13368,9 @@ lm
 lm
 Rn
 lm
-Rn
-Rn
-Rn
+Gu
+Gu
+Gu
 lm
 lm
 lm
@@ -13565,11 +13560,11 @@ lm
 lm
 lm
 lm
+KJ
 lm
-lm
-Rn
-Rn
-Rn
+Gu
+Gu
+Gu
 lm
 lm
 lm
@@ -13714,9 +13709,9 @@ lm
 Rn
 Rn
 nz
-po
+Ml
 nz
-po
+Ml
 nz
 Rn
 lm
@@ -13761,14 +13756,14 @@ lm
 lm
 lm
 Vb
-Rn
-Ec
-Rn
-lm
+Gu
+Gu
+Gu
+Gu
 ZL
 lm
 lm
-lm
+KJ
 lm
 lm
 lm
@@ -13785,7 +13780,7 @@ Rn
 Rn
 SR
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -13955,10 +13950,10 @@ lm
 lm
 lm
 HR
-Rn
-Ec
-Rn
-lm
+Gu
+Gu
+Gu
+Gu
 lm
 lm
 lm
@@ -14127,10 +14122,7 @@ lm
 lm
 Rn
 lm
-lm
-lm
-lm
-Rn
+KJ
 lm
 lm
 Rn
@@ -14139,20 +14131,23 @@ lm
 Rn
 lm
 lm
-lm
-lm
-lm
-lm
-lm
-lm
-lm
-lm
 Rn
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+Gu
+Gu
 HR
-Rn
-Ec
-Rn
-lm
+Gu
+Gu
+Gu
+Gu
 lm
 lm
 lm
@@ -14329,7 +14324,6 @@ lm
 Rn
 lm
 lm
-Jo
 lm
 lm
 lm
@@ -14340,13 +14334,14 @@ lm
 lm
 lm
 lm
-Rn
+Gu
+Gu
 Rn
 HR
-Rn
-Ec
-Rn
-lm
+Gu
+Gu
+Gu
+Gu
 lm
 lm
 TB
@@ -14515,15 +14510,9 @@ Rn
 Rn
 lm
 lm
-Jo
+lm
 lm
 Rn
-lm
-Rn
-lm
-Rn
-lm
-lm
 lm
 Rn
 lm
@@ -14531,16 +14520,22 @@ Rn
 lm
 lm
 lm
-lm
-lm
-Rn
-Rn
-Rn
-Rn
-Rn
-Rn
 Rn
 lm
+Rn
+lm
+lm
+lm
+lm
+Gu
+Gu
+Rn
+Rn
+Rn
+Gu
+Gu
+Gu
+Gu
 lm
 lm
 lm
@@ -14724,17 +14719,17 @@ lm
 lm
 lm
 lm
-lm
-Rn
-Rn
+Gu
+Gu
+Gu
 Rn
 Rn
 Rn
 HR
 Rn
-Ec
-Rn
-lm
+Gu
+Gu
+Gu
 lm
 lm
 lm
@@ -14757,7 +14752,7 @@ Rn
 Rn
 lm
 lm
-lm
+XK
 lm
 lm
 lm
@@ -14886,30 +14881,20 @@ lz
 lm
 lm
 lm
-lm
-lm
-Rn
-Rn
-Rn
-lm
-Rn
+XK
 lm
 Rn
 Rn
-lm
-lm
-lm
-lm
-lm
-lm
-lm
-lm
-lm
+Rn
 lm
 Rn
 lm
-lm
 Rn
+Rn
+lm
+lm
+lm
+lm
 lm
 lm
 lm
@@ -14917,8 +14902,18 @@ lm
 lm
 lm
 Rn
+lm
+lm
 Rn
-Rn
+lm
+lm
+lm
+lm
+Gu
+Gu
+Gu
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -14926,8 +14921,8 @@ Rn
 Rn
 HR
 Rn
-Rn
-Rn
+Gu
+Gu
 lm
 lm
 Rn
@@ -15080,6 +15075,11 @@ aR
 lm
 lm
 lm
+XK
+lm
+lm
+Rn
+lm
 lm
 lm
 lm
@@ -15088,11 +15088,6 @@ lm
 lm
 lm
 lm
-Rn
-lm
-lm
-lm
-lm
 lm
 lm
 lm
@@ -15107,8 +15102,8 @@ lm
 lm
 lm
 lm
-Rn
-Rn
+Gu
+Gu
 Rn
 Rn
 Rn
@@ -15316,22 +15311,22 @@ HR
 Rn
 Rn
 Rn
-Rn
-lm
-lm
-lm
-Rn
-lm
-lm
-lm
-lm
-lm
-lm
+Gu
+Gu
 lm
 lm
 Rn
 lm
-Uw
+lm
+lm
+XK
+lm
+lm
+lm
+lm
+Rn
+lm
+lm
 lm
 Rn
 lm
@@ -15512,7 +15507,7 @@ Ec
 Rn
 Rn
 Rn
-lm
+Gu
 lm
 Rn
 lm
@@ -15706,7 +15701,7 @@ Ec
 Rn
 Rn
 Rn
-lm
+Gu
 lm
 lm
 lm
@@ -15744,7 +15739,7 @@ pG
 Vr
 Er
 FQ
-Er
+hf
 Rn
 Rn
 Qm
@@ -15901,7 +15896,7 @@ Rn
 Rn
 Rn
 Rn
-lm
+Gu
 lm
 lm
 lm
@@ -16035,7 +16030,7 @@ Rn
 Rn
 lm
 lm
-lm
+XK
 lm
 lm
 lm
@@ -16060,7 +16055,7 @@ lm
 lm
 lm
 lm
-lm
+XK
 lm
 Rn
 Rn
@@ -16095,7 +16090,7 @@ Rn
 gM
 Rn
 Rn
-lm
+Gu
 lm
 Rn
 lm
@@ -16229,7 +16224,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -16237,7 +16232,7 @@ lm
 lm
 nz
 kq
-lR
+hH
 jf
 nz
 Pi
@@ -16290,7 +16285,7 @@ Rn
 Rn
 Rn
 lm
-lm
+Gu
 lm
 lm
 Rn
@@ -16484,7 +16479,7 @@ Rn
 Rn
 Rn
 lm
-Rn
+Gu
 lm
 lm
 lm
@@ -17209,9 +17204,9 @@ mR
 AQ
 CQ
 mO
-Jf
+Ta
 YL
-Oi
+Vr
 YL
 nz
 nz
@@ -17671,7 +17666,7 @@ lm
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -17773,7 +17768,7 @@ lm
 lm
 TB
 lm
-lm
+KJ
 lm
 Rn
 lm
@@ -17983,9 +17978,9 @@ MT
 OM
 OM
 OM
-hU
-hU
-hU
+OM
+OM
+OM
 OM
 OM
 OM
@@ -18369,13 +18364,13 @@ CE
 Ai
 qd
 OM
-hU
+OM
 XQ
 BH
 lR
 BH
 GI
-QU
+OM
 GG
 er
 OM
@@ -18391,7 +18386,7 @@ rP
 po
 Ta
 Vr
-po
+Ml
 FX
 YE
 YE
@@ -18438,7 +18433,7 @@ lm
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -18563,13 +18558,13 @@ CE
 Ai
 tA
 OM
-hU
+OM
 SN
 lR
-lR
+hH
 lR
 eB
-hU
+OM
 GG
 OM
 OM
@@ -18629,7 +18624,7 @@ Rn
 Rn
 lm
 lm
-lm
+XK
 lm
 lm
 lm
@@ -18757,13 +18752,13 @@ CE
 Ai
 qd
 OM
-hU
+OM
 zm
 BH
 lR
 BH
 GI
-hU
+OM
 GG
 er
 OM
@@ -18779,7 +18774,7 @@ uS
 po
 ZG
 Vr
-po
+Ml
 FX
 YE
 YE
@@ -18938,7 +18933,7 @@ lm
 lm
 lm
 Rn
-Uw
+lm
 lm
 lm
 lm
@@ -19147,9 +19142,9 @@ MT
 OM
 OM
 OM
-hU
-hU
-QU
+OM
+OM
+OM
 OM
 OM
 OM
@@ -19211,7 +19206,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -19925,9 +19920,9 @@ VI
 Vg
 Vu
 rP
-ym
+ZG
 YL
-Oi
+Vr
 YL
 nz
 nz
@@ -20516,7 +20511,7 @@ lm
 lm
 lm
 lm
-lm
+XK
 lm
 Rn
 Rn
@@ -20699,7 +20694,7 @@ lm
 lm
 nz
 RH
-lR
+hH
 wQ
 nz
 Pi
@@ -20902,7 +20897,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -20977,7 +20972,7 @@ lm
 lm
 lm
 lm
-lm
+XK
 lm
 Rn
 lm
@@ -21170,7 +21165,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 Rn
@@ -21271,7 +21266,7 @@ lm
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 Rn
@@ -21355,7 +21350,7 @@ lm
 lm
 lm
 lm
-lm
+KJ
 lm
 Rn
 lm
@@ -21464,7 +21459,7 @@ Rn
 lm
 lm
 lm
-lm
+XK
 lm
 lm
 lm
@@ -22155,7 +22150,7 @@ Rn
 lm
 Rn
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -22546,7 +22541,7 @@ lm
 lm
 lm
 lm
-lm
+XK
 lm
 lm
 Rn
@@ -22645,7 +22640,7 @@ lm
 Rn
 lm
 lm
-lm
+KJ
 Rn
 Rn
 lm
@@ -23502,7 +23497,7 @@ Rn
 lm
 lm
 lm
-Uw
+lm
 lm
 lm
 lm
@@ -23884,7 +23879,7 @@ lm
 lm
 lm
 Rn
-Uw
+lm
 lm
 lm
 lm
@@ -24079,7 +24074,7 @@ lm
 lm
 lm
 lm
-lm
+XK
 lm
 lm
 SR
@@ -24386,7 +24381,7 @@ YE
 Rn
 Rn
 lm
-Jo
+lm
 Rn
 Rn
 Rn
@@ -24572,9 +24567,9 @@ Rn
 TB
 Rn
 nz
-po
+Ml
 nz
-po
+Ml
 nz
 YE
 YE
@@ -24587,7 +24582,7 @@ Rn
 Rn
 lm
 lm
-Uw
+XK
 lm
 lm
 lm
@@ -25169,7 +25164,7 @@ Rn
 Rn
 lm
 lm
-Jo
+lm
 Rn
 lm
 lm
@@ -25545,7 +25540,7 @@ YE
 ut
 YE
 YE
-vh
+YE
 YE
 YE
 lm
@@ -27873,7 +27868,7 @@ YE
 Rn
 YE
 YE
-UU
+YE
 YE
 YE
 VD
@@ -30259,7 +30254,7 @@ Rn
 Rn
 Rn
 lm
-lm
+KJ
 lm
 TB
 Rn
@@ -30457,7 +30452,7 @@ lm
 lm
 Rn
 lm
-lm
+XK
 lm
 lm
 Rn

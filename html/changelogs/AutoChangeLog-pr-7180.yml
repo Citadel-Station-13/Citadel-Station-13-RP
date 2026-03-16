@@ -1,4 +1,0 @@
-author: "timothyteakettle"
-delete-after: True
-changes:
-  - bugfix: "fixes holospheres getting their camera stuck when untransforming while held"

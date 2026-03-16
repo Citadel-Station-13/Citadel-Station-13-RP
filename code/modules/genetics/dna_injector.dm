@@ -4,6 +4,7 @@
 	desc = "This injects the person with DNA."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "dnainjector"
+	belt_storage_class = BELT_CLASS_SMALL
 	var/block=0
 	var/datum/dna2/record/buf
 	var/s_time = 10.0
@@ -144,9 +145,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/hulkmut/New()
+/obj/item/dnainjector/hulkmut/Initialize(mapload)
 	block = DNABLOCK_HULK
-	..()
+	return ..()
 
 /obj/item/dnainjector/antihulk
 	name = "\improper DNA injector (Anti-Hulk)"
@@ -155,9 +156,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antihulk/New()
+/obj/item/dnainjector/antihulk/Initialize(mapload)
 	block = DNABLOCK_HULK
-	..()
+	return ..()
 
 /obj/item/dnainjector/xraymut
 	name = "\improper DNA injector (Xray)"
@@ -166,9 +167,9 @@
 	value = 0xFFF
 	//block = 8
 
-/obj/item/dnainjector/xraymut/New()
+/obj/item/dnainjector/xraymut/Initialize(mapload)
 	block = DNABLOCK_XRAY
-	..()
+	return ..()
 
 /obj/item/dnainjector/antixray
 	name = "\improper DNA injector (Anti-Xray)"
@@ -177,9 +178,9 @@
 	value = 0x001
 	//block = 8
 
-/obj/item/dnainjector/antixray/New()
+/obj/item/dnainjector/antixray/Initialize(mapload)
 	block = DNABLOCK_XRAY
-	..()
+	return ..()
 
 /obj/item/dnainjector/firemut
 	name = "\improper DNA injector (Fire)"
@@ -188,9 +189,9 @@
 	value = 0xFFF
 	//block = 10
 
-/obj/item/dnainjector/firemut/New()
+/obj/item/dnainjector/firemut/Initialize(mapload)
 	block = DNABLOCK_FIRE
-	..()
+	return ..()
 
 /obj/item/dnainjector/antifire
 	name = "\improper DNA injector (Anti-Fire)"
@@ -199,9 +200,9 @@
 	value = 0x001
 	//block = 10
 
-/obj/item/dnainjector/antifire/New()
+/obj/item/dnainjector/antifire/Initialize(mapload)
 	block = DNABLOCK_FIRE
-	..()
+	return ..()
 
 /obj/item/dnainjector/telemut
 	name = "\improper DNA injector (Tele.)"
@@ -210,9 +211,9 @@
 	value = 0xFFF
 	//block = 12
 
-/obj/item/dnainjector/telemut/New()
+/obj/item/dnainjector/telemut/Initialize(mapload)
 	block = DNABLOCK_TELE
-	..()
+	return ..()
 
 /obj/item/dnainjector/antitele
 	name = "\improper DNA injector (Anti-Tele.)"
@@ -221,9 +222,9 @@
 	value = 0x001
 	//block = 12
 
-/obj/item/dnainjector/antitele/New()
+/obj/item/dnainjector/antitele/Initialize(mapload)
 	block = DNABLOCK_TELE
-	..()
+	return ..()
 
 /obj/item/dnainjector/nobreath
 	name = "\improper DNA injector (No Breath)"
@@ -232,9 +233,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/nobreath/New()
+/obj/item/dnainjector/nobreath/Initialize(mapload)
 	block = DNABLOCK_NOBREATH
-	..()
+	return ..()
 
 /obj/item/dnainjector/antinobreath
 	name = "\improper DNA injector (Anti-No Breath)"
@@ -243,9 +244,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antinobreath/New()
+/obj/item/dnainjector/antinobreath/Initialize(mapload)
 	block = DNABLOCK_NOBREATH
-	..()
+	return ..()
 
 /obj/item/dnainjector/remoteview
 	name = "\improper DNA injector (Remote View)"
@@ -254,9 +255,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/remoteview/New()
+/obj/item/dnainjector/remoteview/Initialize(mapload)
 	block = DNABLOCK_REMOTEVIEW
-	..()
+	return ..()
 
 /obj/item/dnainjector/antiremoteview
 	name = "\improper DNA injector (Anti-Remote View)"
@@ -265,9 +266,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antiremoteview/New()
+/obj/item/dnainjector/antiremoteview/Initialize(mapload)
 	block = DNABLOCK_REMOTEVIEW
-	..()
+	return ..()
 
 /obj/item/dnainjector/regenerate
 	name = "\improper DNA injector (Regeneration)"
@@ -276,9 +277,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/regenerate/New()
+/obj/item/dnainjector/regenerate/Initialize(mapload)
 	block = DNABLOCK_REGENERATE
-	..()
+	return ..()
 
 /obj/item/dnainjector/antiregenerate
 	name = "\improper DNA injector (Anti-Regeneration)"
@@ -287,9 +288,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antiregenerate/New()
+/obj/item/dnainjector/antiregenerate/Initialize(mapload)
 	block = DNABLOCK_REGENERATE
-	..()
+	return ..()
 
 /obj/item/dnainjector/runfast
 	name = "\improper DNA injector (Increase Run)"
@@ -298,9 +299,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/runfast/New()
+/obj/item/dnainjector/runfast/Initialize(mapload)
 	block = DNABLOCK_INCREASERUN
-	..()
+	return ..()
 
 /obj/item/dnainjector/antirunfast
 	name = "\improper DNA injector (Anti-Increase Run)"
@@ -309,9 +310,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antirunfast/New()
+/obj/item/dnainjector/antirunfast/Initialize(mapload)
 	block = DNABLOCK_INCREASERUN
-	..()
+	return ..()
 
 /obj/item/dnainjector/morph
 	name = "\improper DNA injector (Morph)"
@@ -320,9 +321,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/morph/New()
+/obj/item/dnainjector/morph/Initialize(mapload)
 	block = DNABLOCK_MORPH
-	..()
+	return ..()
 
 /obj/item/dnainjector/antimorph
 	name = "\improper DNA injector (Anti-Morph)"
@@ -331,9 +332,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antimorph/New()
+/obj/item/dnainjector/antimorph/Initialize(mapload)
 	block = DNABLOCK_MORPH
-	..()
+	return ..()
 
 /* No COLDBLOCK on bay
 /obj/item/dnainjector/cold
@@ -343,9 +344,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/cold/New()
+/obj/item/dnainjector/cold/Initialize(mapload)
 	block = COLDBLOCK
-	..()
+	return ..()
 
 /obj/item/dnainjector/anticold
 	name = "\improper DNA injector (Anti-Cold)"
@@ -354,9 +355,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/anticold/New()
+/obj/item/dnainjector/anticold/Initialize(mapload)
 	block = COLDBLOCK
-	..()
+	return ..()
 */
 
 /obj/item/dnainjector/noprints
@@ -366,9 +367,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/noprints/New()
+/obj/item/dnainjector/noprints/Initialize(mapload)
 	block = DNABLOCK_NOPRINTS
-	..()
+	return ..()
 
 /obj/item/dnainjector/antinoprints
 	name = "\improper DNA injector (Anti-No Prints)"
@@ -377,9 +378,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antinoprints/New()
+/obj/item/dnainjector/antinoprints/Initialize(mapload)
 	block = DNABLOCK_NOPRINTS
-	..()
+	return ..()
 
 /obj/item/dnainjector/insulation
 	name = "\improper DNA injector (Shock Immunity)"
@@ -388,9 +389,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/insulation/New()
-		block = DNABLOCK_NOSHOCK
-		..()
+/obj/item/dnainjector/insulation/Initialize(mapload)
+	block = DNABLOCK_NOSHOCK
+	return ..()
 
 /obj/item/dnainjector/antiinsulation
 	name = "\improper DNA injector (Anti-Shock Immunity)"
@@ -399,9 +400,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antiinsulation/New()
+/obj/item/dnainjector/antiinsulation/Initialize(mapload)
 	block = DNABLOCK_NOSHOCK
-	..()
+	return ..()
 
 /obj/item/dnainjector/drarfism
 	name = "\improper DNA injector (Small Size)"
@@ -410,9 +411,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/drarfism/New()
-		block = DNABLOCK_DWARFISM
-		..()
+/obj/item/dnainjector/drarfism/Initialize(mapload)
+	block = DNABLOCK_DWARFISM
+	return ..()
 
 /obj/item/dnainjector/antidrarfism
 	name = "\improper DNA injector (Anti-Small Size)"
@@ -421,9 +422,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antidrarfism/New()
+/obj/item/dnainjector/antidrarfism/Initialize(mapload)
 	block = DNABLOCK_DWARFISM
-	..()
+	return ..()
 
 /////////////////////////////////////
 /obj/item/dnainjector/antiglasses
@@ -433,9 +434,9 @@
 	value = 0x001
 	//block = 1
 
-/obj/item/dnainjector/antiglasses/New()
+/obj/item/dnainjector/antiglasses/Initialize(mapload)
 	block = DNABLOCK_GLASSES
-	..()
+	return ..()
 
 /obj/item/dnainjector/glassesmut
 	name = "\improper DNA injector (Glasses)"
@@ -444,9 +445,9 @@
 	value = 0xFFF
 	//block = 1
 
-/obj/item/dnainjector/glassesmut/New()
+/obj/item/dnainjector/glassesmut/Initialize(mapload)
 	block = DNABLOCK_GLASSES
-	..()
+	return ..()
 
 /obj/item/dnainjector/epimut
 	name = "\improper DNA injector (Epi.)"
@@ -455,9 +456,9 @@
 	value = 0xFFF
 	//block = 3
 
-/obj/item/dnainjector/epimut/New()
+/obj/item/dnainjector/epimut/Initialize(mapload)
 	block = DNABLOCK_HEADACHE
-	..()
+	return ..()
 
 /obj/item/dnainjector/antiepi
 	name = "\improper DNA injector (Anti-Epi.)"
@@ -466,9 +467,9 @@
 	value = 0x001
 	//block = 3
 
-/obj/item/dnainjector/antiepi/New()
+/obj/item/dnainjector/antiepi/Initialize(mapload)
 	block = DNABLOCK_HEADACHE
-	..()
+	return ..()
 
 /obj/item/dnainjector/anticough
 	name = "\improper DNA injector (Anti-Cough)"
@@ -477,9 +478,9 @@
 	value = 0x001
 	//block = 5
 
-/obj/item/dnainjector/anticough/New()
+/obj/item/dnainjector/anticough/Initialize(mapload)
 	block = DNABLOCK_COUGH
-	..()
+	return ..()
 
 /obj/item/dnainjector/coughmut
 	name = "\improper DNA injector (Cough)"
@@ -488,9 +489,9 @@
 	value = 0xFFF
 	//block = 5
 
-/obj/item/dnainjector/coughmut/New()
+/obj/item/dnainjector/coughmut/Initialize(mapload)
 	block = DNABLOCK_COUGH
-	..()
+	return ..()
 
 /obj/item/dnainjector/clumsymut
 	name = "\improper DNA injector (Clumsy)"
@@ -499,9 +500,9 @@
 	value = 0xFFF
 	//block = 6
 
-/obj/item/dnainjector/clumsymut/New()
+/obj/item/dnainjector/clumsymut/Initialize(mapload)
 	block = DNABLOCK_CLUMSY
-	..()
+	return ..()
 
 /obj/item/dnainjector/anticlumsy
 	name = "\improper DNA injector (Anti-Clumy)"
@@ -510,9 +511,9 @@
 	value = 0x001
 	//block = 6
 
-/obj/item/dnainjector/anticlumsy/New()
+/obj/item/dnainjector/anticlumsy/Initialize(mapload)
 	block = DNABLOCK_CLUMSY
-	..()
+	return ..()
 
 /obj/item/dnainjector/antitour
 	name = "\improper DNA injector (Anti-Tour.)"
@@ -521,9 +522,9 @@
 	value = 0x001
 	//block = 7
 
-/obj/item/dnainjector/antitour/New()
+/obj/item/dnainjector/antitour/Initialize(mapload)
 	block = DNABLOCK_TWITCH
-	..()
+	return ..()
 
 /obj/item/dnainjector/tourmut
 	name = "\improper DNA injector (Tour.)"
@@ -532,9 +533,9 @@
 	value = 0xFFF
 	//block = 7
 
-/obj/item/dnainjector/tourmut/New()
+/obj/item/dnainjector/tourmut/Initialize(mapload)
 	block = DNABLOCK_TWITCH
-	..()
+	return ..()
 
 /obj/item/dnainjector/stuttmut
 	name = "\improper DNA injector (Stutt.)"
@@ -543,9 +544,9 @@
 	value = 0xFFF
 	//block = 9
 
-/obj/item/dnainjector/stuttmut/New()
+/obj/item/dnainjector/stuttmut/Initialize(mapload)
 	block = DNABLOCK_NERVOUS
-	..()
+	return ..()
 
 /obj/item/dnainjector/antistutt
 	name = "\improper DNA injector (Anti-Stutt.)"
@@ -554,9 +555,9 @@
 	value = 0x001
 	//block = 9
 
-/obj/item/dnainjector/antistutt/New()
+/obj/item/dnainjector/antistutt/Initialize(mapload)
 	block = DNABLOCK_NERVOUS
-	..()
+	return ..()
 
 /obj/item/dnainjector/blindmut
 	name = "\improper DNA injector (Blind)"
@@ -565,9 +566,9 @@
 	value = 0xFFF
 	//block = 11
 
-/obj/item/dnainjector/blindmut/New()
+/obj/item/dnainjector/blindmut/Initialize(mapload)
 	block = DNABLOCK_BLIND
-	..()
+	return ..()
 
 /obj/item/dnainjector/antiblind
 	name = "\improper DNA injector (Anti-Blind)"
@@ -576,9 +577,9 @@
 	value = 0x001
 	//block = 11
 
-/obj/item/dnainjector/antiblind/New()
+/obj/item/dnainjector/antiblind/Initialize(mapload)
 	block = DNABLOCK_BLIND
-	..()
+	return ..()
 
 /obj/item/dnainjector/deafmut
 	name = "\improper DNA injector (Deaf)"
@@ -587,9 +588,9 @@
 	value = 0xFFF
 	//block = 13
 
-/obj/item/dnainjector/deafmut/New()
+/obj/item/dnainjector/deafmut/Initialize(mapload)
 	block = DNABLOCK_DEAF
-	..()
+	return ..()
 
 /obj/item/dnainjector/antideaf
 	name = "\improper DNA injector (Anti-Deaf)"
@@ -598,9 +599,9 @@
 	value = 0x001
 	//block = 13
 
-/obj/item/dnainjector/antideaf/New()
+/obj/item/dnainjector/antideaf/Initialize(mapload)
 	block = DNABLOCK_DEAF
-	..()
+	return ..()
 
 /obj/item/dnainjector/hallucination
 	name = "\improper DNA injector (Halluctination)"
@@ -609,9 +610,9 @@
 	value = 0xFFF
 	//block = 2
 
-/obj/item/dnainjector/hallucination/New()
+/obj/item/dnainjector/hallucination/Initialize(mapload)
 	block = DNABLOCK_HALLUCINATION
-	..()
+	return ..()
 
 /obj/item/dnainjector/antihallucination
 	name = "\improper DNA injector (Anti-Hallucination)"
@@ -620,9 +621,9 @@
 	value = 0x001
 	//block = 2
 
-/obj/item/dnainjector/antihallucination/New()
+/obj/item/dnainjector/antihallucination/Initialize(mapload)
 	block = DNABLOCK_HALLUCINATION
-	..()
+	return ..()
 
 /obj/item/dnainjector/h2m
 	name = "\improper DNA injector (Human > Monkey)"
@@ -631,9 +632,9 @@
 	value = 0xFFF
 	//block = 14
 
-/obj/item/dnainjector/h2m/New()
+/obj/item/dnainjector/h2m/Initialize(mapload)
 	block = DNABLOCK_MONKEY
-	..()
+	return ..()
 
 /obj/item/dnainjector/m2h
 	name = "\improper DNA injector (Monkey > Human)"
@@ -642,6 +643,6 @@
 	value = 0x001
 	//block = 14
 
-/obj/item/dnainjector/m2h/New()
+/obj/item/dnainjector/m2h/Initialize(mapload)
 	block = DNABLOCK_MONKEY
-	..()
+	return ..()

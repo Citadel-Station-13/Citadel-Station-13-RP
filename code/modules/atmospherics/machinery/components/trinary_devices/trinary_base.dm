@@ -2,7 +2,7 @@
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|WEST
 	use_power = USE_POWER_OFF
-	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
+	pipe_flags = PIPE_FLAG_DEFAULT_LAYER_ONLY|PIPE_FLAG_ONE_PER_TURF
 	hides_underfloor_underlays = TRUE
 
 	var/mirrored = FALSE

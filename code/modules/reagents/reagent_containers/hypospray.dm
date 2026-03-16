@@ -18,6 +18,7 @@
 	pickup_sound = 'sound/items/pickup/gun.ogg'
 	preserve_item = 1
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	var/filled = 0
 	var/list/filled_reagents = list()
 	var/hyposound	// What sound do we play on use?

@@ -131,7 +131,7 @@
 				<link rel='stylesheet' href='food.css' />\
 				</head>"
 
-	html += "<html><body><h3>Food Recipes (as of [time2text(world.realtime,"MMM DD, YYYY")])</h3><br>"
+	html += "<html><body><h3>Food Recipes (as of [time2text(world.realtime,"MMM DD, YYYY", NO_TIMEZONE)])</h3><br>"
 	html += "<table class='recipes'>"
 	html += "<tr><th>Icon</th><th>Name</th><th>Appliance</th><th>Ingredients</th></tr>"
 	for(var/Rp in food_recipes)
@@ -201,7 +201,7 @@
 			<link rel='stylesheet' href='drinks.css' />\
 			</head>"
 
-	html += "<html><body><h3>Drink Recipes (as of [time2text(world.realtime,"MMM DD, YYYY")])</h3><br>"
+	html += "<html><body><h3>Drink Recipes (as of [time2text(world.realtime,"MMM DD, YYYY", NO_TIMEZONE)])</h3><br>"
 	html += "<table class='recipes'>"
 	html += "<tr><th>Name</th><th>Ingredients</th></tr>"
 	for(var/Rp in drink_recipes)

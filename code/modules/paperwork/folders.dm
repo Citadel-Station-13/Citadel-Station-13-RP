@@ -4,6 +4,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "folder"
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
 	pressure_resistance = 2
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'

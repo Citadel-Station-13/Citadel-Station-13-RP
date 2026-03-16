@@ -61,9 +61,7 @@ const interfaceSubdirectories = [
 ];
 
 const interfacePaths = (name: string) => {
-  let built: [string?] = [
-    name,
-  ];
+  let built: [string?] = [name];
   for (let i = 0; i < interfaceSubdirectories.length; i++) {
     let dir = interfaceSubdirectories[i];
     built.push(`${dir}/${name}.jsx`);
@@ -118,8 +116,9 @@ export function getComponentForRoute(name: string) {
 
   // citadel edit: we prefer using folders and therefore directly /route/to/Folder.tsx,
   //               so it needs to remove the path segments.
-  const nameHasABackslash = name.lastIndexOf("/");
-  const realName = nameHasABackslash === -1 ? name : name.substring(nameHasABackslash + 1);
+  const nameHasABackslash = name.lastIndexOf('/');
+  const realName =
+    nameHasABackslash === -1 ? name : name.substring(nameHasABackslash + 1);
   const Component = esModule[realName];
   if (!Component) {
     return routingError('missingExport', name);

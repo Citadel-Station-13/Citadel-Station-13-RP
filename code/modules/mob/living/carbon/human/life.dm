@@ -409,6 +409,9 @@
 /mob/living/carbon/human/handle_breath(datum/gas_mixture/breath)
 	if(status_flags & STATUS_GODMODE)
 		return
+	// don't breathe in nullspace
+	if(!get_turf(src))
+		return
 
 	if(suiciding)
 		failed_last_breath = 1
@@ -1095,11 +1098,6 @@
 			if(!isnull(mod.metabolism_percent)) //Metabolism affects thirst too in this weird world.
 				hydration_reduction *= mod.metabolism_percent
 		adjust_hydration(-hydration_reduction)
-
-	if(noisy == TRUE && nutrition < 250 && prob(10))
-		var/sound/growlsound = sound(get_sfx("hunger_sounds"))
-		var/growlmultiplier = 100 - (nutrition / 250 * 100)
-		playsound(src, growlsound, vol = growlmultiplier, vary = 1, falloff = 0.1, ignore_walls = TRUE, preference = /datum/game_preference_toggle/vore_sounds/digestion_noises)
 
 	// TODO: stomach and bloodstream organ.
 	if(!isSynthetic())

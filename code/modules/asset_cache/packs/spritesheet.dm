@@ -68,7 +68,7 @@
 
 	var/fname = "tmp/assets/spritesheets/[name].css"
 	fdel(fname)
-	text2file(generate_css(), fname)
+	rustg_file_write(generate_css(), fname)
 	var/res_name = "spritesheet_[name].css"
 	.[res_name] = fname
 
@@ -92,8 +92,8 @@
 
 	for (var/size_id in sizes)
 		var/size = sizes[size_id]
-		var/icon/tiny = size[SPRSZ_ICON]
-		out += ".[name][size_id]{display:inline-block;width:[tiny.Width()]px;height:[tiny.Height()]px;background:url('[get_background_url("[name]_[size_id].png")]') no-repeat;}"
+		var/list/dimensions = get_icon_dimensions(size[SPRSZ_ICON])
+		out += ".[name][size_id]{display:inline-block;width:[dimensions["width"]]px;height:[dimensions["height"]]px;background:url('[get_background_url("[name]_[size_id].png")]') no-repeat;}"
 
 	for (var/sprite_id in sprites)
 		var/sprite = sprites[sprite_id]
@@ -101,11 +101,12 @@
 		var/idx = sprite[SPR_IDX]
 		var/size = sizes[size_id]
 
-		var/icon/tiny = size[SPRSZ_ICON]
+		var/list/tiny_dimensions = get_icon_dimensions(size[SPRSZ_ICON])
 		var/icon/big = size[SPRSZ_STRIPPED]
-		var/per_line = big.Width() / tiny.Width()
-		var/x = (idx % per_line) * tiny.Width()
-		var/y = round(idx / per_line) * tiny.Height()
+		// big width won't be cached ever
+		var/per_line = big.Width() / tiny_dimensions["width"]
+		var/x = (idx % per_line) * tiny_dimensions["width"]
+		var/y = round(idx / per_line) * tiny_dimensions["height"]
 
 		out += ".[name][size_id].[sprite_id]{background-position:-[x]px -[y]px;}"
 
@@ -123,14 +124,21 @@
  *
  * neither prefixes nor states may have spaces!
  */
-/datum/asset_pack/spritesheet/proc/do_insert(sprite_name, icon/I, icon_state = "", dir = SOUTH, frame = 1, moving = FALSE, skip_checks)
-	I = icon(I, icon_state, dir, frame, moving)
+/datum/asset_pack/spritesheet/proc/do_insert(sprite_name, icon/inserted_icon, icon_state = "", dir = SOUTH, frame = 1, moving = FALSE, skip_checks)
+// #ifdef UNIT_TESTS
+// 	if (inserted_icon && icon_state && !icon_exists(inserted_icon, icon_state)) // check the base icon prior to extracting the state we want
+// 		stack_trace("Tried to insert nonexistent icon_state '[icon_state]' from [inserted_icon] into spritesheet [name] ([type])")
+// 		return
+// #endif
+	inserted_icon = icon(inserted_icon, icon_state, dir, frame, moving)
 	// Check that it exists.
-	if(!skip_checks && !length(adaptive_icon_states(I)))
+	if(!skip_checks && !length(adaptive_icon_states(inserted_icon)))
 		return
+
 	// Any sprite modifications we want to do (aka, coloring a greyscaled asset)
-	I = modify_inserted(I)
-	var/size_id = "[I.Width()]x[I.Height()]"
+	inserted_icon = modify_inserted(inserted_icon)
+	var/list/dimensions = get_icon_dimensions(inserted_icon)
+	var/size_id = "[dimensions["width"]]x[dimensions["height"]]"
 	var/size = sizes[size_id]
 
 	if (sprites[sprite_name])
@@ -141,11 +149,11 @@
 		var/icon/sheet = size[SPRSZ_ICON]
 		var/icon/sheet_copy = icon(sheet)
 		size[SPRSZ_STRIPPED] = null
-		sheet_copy.Insert(I, icon_state=sprite_name)
+		sheet_copy.Insert(inserted_icon, icon_state=sprite_name)
 		size[SPRSZ_ICON] = sheet_copy
 		sprites[sprite_name] = list(size_id, position)
 	else
-		sizes[size_id] = size = list(1, I, null)
+		sizes[size_id] = size = list(1, inserted_icon, null)
 		sprites[sprite_name] = list(size_id, 0)
 
 /**

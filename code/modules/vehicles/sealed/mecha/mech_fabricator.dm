@@ -13,6 +13,7 @@
 	circuit = /obj/item/circuitboard/mechfab
 	lathe_type = LATHE_TYPE_MECHFAB | LATHE_TYPE_PROSTHETICS
 
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
 	has_interface = TRUE
 	var/datum/research/files
 
@@ -22,7 +23,9 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/lathe/mecha_part_fabricator/LateInitialize()
-	for(var/obj/machinery/computer/rdconsole/RDC in get_area(src))
+	for(var/obj/machinery/computer/rdconsole/RDC in GLOB.rdconsoles)
+		if(get_area(RDC) != get_area(src))
+			continue
 		if(!RDC.sync)
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)

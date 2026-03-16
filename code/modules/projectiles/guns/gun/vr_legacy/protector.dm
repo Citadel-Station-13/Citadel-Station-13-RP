@@ -56,22 +56,12 @@
 	var/list/overlays_to_add = list()
 	var/ratio = 0
 
-	/* Don't have one for this gun
-	var/itemState = null
-	if(!initial(item_state))
-		itemState = icon_state
-	*/
-
 	var/iconState = "[icon_state]_charge"
 	if (modifystate)
 		overlays_to_add += "[icon_state]_[modifystate]"
 		iconState += "_[modifystate]"
-		/* Don't have one for this gun
-		if(itemState)
-			itemState += "[modifystate]"
-		*/
 	if(obj_cell_slot.cell)
-		ratio = CEILING(((obj_cell_slot.cell.charge / obj_cell_slot.cell.maxcharge) * charge_sections), 1)
+		ratio = CEILING(((obj_cell_slot.cell.charge / obj_cell_slot.cell.max_charge) * charge_sections), 1)
 
 		if(obj_cell_slot.cell.charge < charge_cost)
 			overlays_to_add += "[icon_state]_empty"
@@ -83,12 +73,6 @@
 					overlays_to_add += charge_overlay
 			else
 				overlays_to_add += "[icon_state]_[modifystate][ratio]"
-
-	/* Don't have one for this gun
-	if(itemState)
-		itemState += "[ratio]"
-		item_state = itemState
-	*/
 
 	// todo: burn this entire proc to the ground, because the writer deserves to have their eyelids replaced with lemons
 	// "this goodd system but i'm going to snowflake it for one gun"

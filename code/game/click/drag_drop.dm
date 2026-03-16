@@ -104,14 +104,6 @@
 
 /client/MouseUp(object, location, control, params)
 
-//Please don't roast me too hard
-/client/MouseMove(object,location,control,params)
-	mouseParams = params
-	mouseLocation = location
-	mouseObject = object
-	mouseControlObject = control
-	..()
-
 /client/MouseDrag(src_object,atom/over_object,src_location,over_location,src_control,over_control,params)
 	var/list/L = params2list(params)
 	if (L["middle"])

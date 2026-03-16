@@ -1,3 +1,61 @@
+//* Pipe Layers *//
+
+// We are based on the three named layers of supply, regular, and scrubber.
+#define PIPING_LAYER_FUEL		1
+#define PIPING_LAYER_SUPPLY		2
+#define PIPING_LAYER_REGULAR	3
+#define PIPING_LAYER_SCRUBBER	4
+#define PIPING_LAYER_AUX		5
+
+#define PIPING_LAYER_MIN 1
+#define PIPING_LAYER_MAX 5
+#define PIPING_LAYER_DEFAULT PIPING_LAYER_REGULAR
+
+/// Do not change these unles you also change sprites of everything to match this.
+#define PIPING_LAYER_P_X 5
+/// Do not change these unles you also change sprites of everything to match this.
+#define PIPING_LAYER_P_Y 5
+#define PIPING_LAYER_LCHANGE 0.05
+
+#define PIPES_FUEL_LAYER		(PIPE_LAYER - PIPING_LAYER_LCHANGE * 2)
+#define PIPES_SUPPLY_LAYER		(PIPE_LAYER - PIPING_LAYER_LCHANGE * 1)
+#define PIPES_SCRUBBER_LAYER	(PIPE_LAYER + PIPING_LAYER_LCHANGE * 1)
+#define PIPES_AUX_LAYER			(PIPE_LAYER + PIPING_LAYER_LCHANGE * 2)
+#define PIPES_HE_LAYER			(EXPOSED_PIPE_LAYER + PIPING_LAYER_LCHANGE)
+
+GLOBAL_REAL_LIST(piping_layer_names) = list(
+	"Fuel",
+	"Supply",
+	"Regular",
+	"Scrubber",
+	"Aux",
+)
+
+/proc/piping_layer_to_name(layer)
+	return global.piping_layer_names[layer]
+
+/proc/piping_layer_to_numbered_name(layer)
+	return "[global.piping_layer_names[layer]] ([layer])"
+
+//* Pipe Flags *//
+
+/// intended to connect with all layers, check for all instead of just one.
+#define PIPE_FLAG_ALL_LAYER (1<<0)
+/// can only be built if nothing else with this flag is on the tile already.
+#define PIPE_FLAG_ONE_PER_TURF (1<<1)
+/// can only exist at PIPING_LAYER_DEFAULT
+#define PIPE_FLAG_DEFAULT_LAYER_ONLY (1<<2)
+/// north/south east/west doesn't matter, auto normalize on build.
+#define PIPE_FLAG_CARDINAL_AUTONORMALIZE (1<<3)
+/// intended to connect with everything, both layers and colors
+//#define PIPING_ALL_COLORS (1<<4)
+/// can bridge over pipenets
+//#define PIPING_BRIDGE (1<<5)
+
+// TODO: define bitfield the above
+
+// ----- legacy below ------
+
 //PIPES
 //Defines for pipe bitmasking
 ///also just NORTH
@@ -65,20 +123,6 @@
 /// Additional information of the tank.
 #define TANK_RESULTS_MISC 2
 
-//PIPE FLAGS
-/// intended to connect with all layers, check for all instead of just one.
-#define PIPING_ALL_LAYER (1<<0)
-/// can only be built if nothing else with this flag is on the tile already.
-#define PIPING_ONE_PER_TURF (1<<1)
-/// can only exist at PIPING_LAYER_DEFAULT
-#define PIPING_DEFAULT_LAYER_ONLY (1<<2)
-/// north/south east/west doesn't matter, auto normalize on build.
-#define PIPING_CARDINAL_AUTONORMALIZE (1<<3)
-/// intended to connect with everything, both layers and colors
-//#define PIPING_ALL_COLORS (1<<4)
-/// can bridge over pipenets
-//#define PIPING_BRIDGE (1<<5)
-
 // Ventcrawling bitflags, handled in var/vent_movement
 ///Allows for ventcrawling to occur. All atmospheric machines have this flag on by default. Cryo is the exception
 #define VENTCRAWL_ALLOWED	(1<<0)
@@ -86,3 +130,47 @@
 #define VENTCRAWL_ENTRANCE_ALLOWED (1<<1)
 ///Used to check if a machinery is visible. Called by update_pipe_vision(). On by default for all except cryo.
 #define VENTCRAWL_CAN_SEE	(1<<2)
+
+//
+// Pipe Construction
+//
+
+//Construction Orientation Types - Each of these categories has a different selection of how pipes can rotate and flip. Used for RPD.
+/// 2 directions: N/S, E/W
+#define PIPE_STRAIGHT			0
+/// 6 directions: N/S, E/W, N/E, N/W, S/E, S/W
+#define PIPE_BENDABLE			1
+/// 4 directions: N/E/S, E/S/W, S/W/N, W/N/E
+#define PIPE_TRINARY			2
+/// 8 directions: N->S+E, S->N+E, N->S+W, S->N+W, E->W+S, W->E+S, E->W+N, W->E+N
+#define PIPE_TRIN_M				3
+/// 4 directions: N, S, E, W
+#define PIPE_DIRECTIONAL		4
+/// 1 direction: N/S/E/W
+#define PIPE_ONEDIR				5
+/// 8 directions: N, S, E, W, N-flipped, S-flipped, E-flipped, W-flipped
+#define PIPE_UNARY_FLIPPABLE	6
+/// 8 directions: N->S+E, S->N+E, N->S+W, S->N+W, E->W+S, W->E+S, E->W+N, W->E+N
+#define PIPE_TRIN_T				7
+// Pipe connectivity bit flags
+/// Center of tile, 'normal'
+#define CONNECT_TYPE_REGULAR	1
+/// Atmos air supply pipes
+#define CONNECT_TYPE_SUPPLY		2
+/// Atmos air scrubber pipes
+#define CONNECT_TYPE_SCRUBBER	4
+/// Heat exchanger pipes
+#define CONNECT_TYPE_HE			8
+/// Fuel pipes for overmap ships
+#define CONNECT_TYPE_FUEL		16
+/// Aux pipes for 'other' things (airlocks, etc)
+#define CONNECT_TYPE_AUX		32
+
+/// Macro for easy use of boilerplate code for searching for a valid node connection.
+#define STANDARD_ATMOS_CHOOSE_NODE(node_num, direction) \
+	for(var/obj/machinery/atmospherics/target in get_step(src, direction)) { \
+		if(can_be_node(target, node_num)) { \
+			node##node_num = target; \
+			break; \
+		} \
+	}

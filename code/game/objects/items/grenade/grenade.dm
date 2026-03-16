@@ -15,6 +15,7 @@
 	throw_range = 20
 	slot_flags = SLOT_MASK|SLOT_BELT
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	// todo: legacy var
 	var/loadable = TRUE

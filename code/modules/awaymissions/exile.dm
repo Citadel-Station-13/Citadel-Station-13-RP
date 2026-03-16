@@ -27,23 +27,22 @@
 	icon_state = "implantcase-r"
 
 
-/obj/item/implantcase/exile/New()
-	src.imp = new /obj/item/implant/exile( src )
-	..()
-	return
-
+/obj/item/implantcase/exile/Initialize(mapload)
+	QDEL_NULL(imp)
+	imp = new /obj/item/implant/exile(src)
+	return ..()
 
 /obj/structure/closet/secure_closet/exile
 	name = "Exile Implants"
 	req_access = list(ACCESS_SECURITY_HOS)
 
-/obj/structure/closet/secure_closet/exile/New()
-	..()
-	sleep(2)
+/obj/structure/closet/secure_closet/exile/Initialize(mapload, singleton/closet_appearance/use_closet_appearance)
+	. = ..()
+	if(. == INITIALIZE_HINT_QDEL)
+		return
 	new /obj/item/implanter/exile(src)
 	new /obj/item/implantcase/exile(src)
 	new /obj/item/implantcase/exile(src)
 	new /obj/item/implantcase/exile(src)
 	new /obj/item/implantcase/exile(src)
 	new /obj/item/implantcase/exile(src)
-	return

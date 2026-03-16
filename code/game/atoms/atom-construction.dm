@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* Deconstruction *//
 
@@ -43,9 +43,9 @@
  *
  * @params
  * * method - how we were deconstructed
- * * where - where to drop products; set in base if null to drop_location().
+ * * where - where to drop products
  */
-/atom/proc/drop_products(method, atom/where = drop_location())
+/atom/proc/drop_products(method, atom/where)
 	return
 
 /**

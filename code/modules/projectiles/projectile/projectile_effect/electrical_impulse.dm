@@ -14,5 +14,12 @@
 	var/shock_flags = NONE
 
 /datum/projectile_effect/electrical_impulse/on_impact(obj/projectile/proj, atom/target, impact_flags, def_zone)
-	target.electrocute(shock_energy, shock_damage, shock_agony, shock_flags, def_zone, proj)
+	target.electrocute(
+		shock_energy * proj.projectile_effect_multiplier,
+		shock_damage * proj.projectile_effect_multiplier,
+		shock_agony * proj.projectile_effect_multiplier,
+		shock_flags,
+		def_zone,
+		proj,
+	)
 	return impact_flags

@@ -225,7 +225,7 @@
 /datum/crafting_recipe/goldenbox
 	name = "Gold Plated Toolbox"
 	result = /obj/item/storage/toolbox/gold_fake
-	tools = list(/obj/item/cell/high,
+	tools = list(/obj/item/cell,
 				/obj/item/reagent_containers/glass/beaker)
 	reqs = list(/obj/item/stack/material/cardboard = 1, //so we dont null items in crafting
 				/obj/item/stack/cable_coil = 10,
@@ -276,7 +276,7 @@
 
 /datum/crafting_recipe/brass_driver
 	name = "Brass Screwdriver"
-	tools = list(/obj/item/cell/high,
+	tools = list(/obj/item/cell,
 				/obj/item/reagent_containers/glass/beaker)
 	result = /obj/item/tool/screwdriver/brass
 	reqs = list(/obj/item/tool/screwdriver = 1,
@@ -291,7 +291,7 @@
 
 /datum/crafting_recipe/brass_welder
 	name = "Brass Welding Tool"
-	tools = list(/obj/item/cell/high,
+	tools = list(/obj/item/cell,
 				/obj/item/reagent_containers/glass/beaker)
 	result = /obj/item/weldingtool/brass
 	reqs = list(/obj/item/weldingtool = 1,
@@ -306,7 +306,7 @@
 
 /datum/crafting_recipe/clockwelder
 	name = "Replica Clockwork Welding Tool"
-	tools = list(/obj/item/cell/high,
+	tools = list(/obj/item/cell,
 				/obj/item/reagent_containers/glass/beaker)
 	result = /obj/item/weldingtool/experimental/brass
 	reqs = list(/obj/item/weldingtool/experimental = 1,
@@ -321,7 +321,7 @@
 
 /datum/crafting_recipe/brass_wirecutters
 	name = "Brass Wirecutters"
-	tools = list(/obj/item/cell/high,
+	tools = list(/obj/item/cell,
 				/obj/item/reagent_containers/glass/beaker)
 	result = /obj/item/tool/wirecutters/brass
 	reqs = list(/obj/item/tool/wirecutters = 1,
@@ -336,7 +336,7 @@
 
 /datum/crafting_recipe/brass_crowbar
 	name = "Brass Crowbar"
-	tools = list(/obj/item/cell/high,
+	tools = list(/obj/item/cell,
 				/obj/item/reagent_containers/glass/beaker)
 	result = /obj/item/tool/crowbar/brass
 	reqs = list(/obj/item/tool/crowbar = 1,
@@ -351,7 +351,7 @@
 
 /datum/crafting_recipe/brass_wrench
 	name = "Brass Wrench"
-	tools = list(/obj/item/cell/high,
+	tools = list(/obj/item/cell,
 				/obj/item/reagent_containers/glass/beaker)
 	result = /obj/item/tool/wrench/brass
 	reqs = list(/obj/item/tool/wrench = 1,

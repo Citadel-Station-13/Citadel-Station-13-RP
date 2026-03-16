@@ -3,6 +3,10 @@
 // E.g.  Glasses have less room than something worn over the chest.
 // Note that the electronic assembly is INSIDE the object that actually gets worn, in a similar way to implants.
 
+// TODO: ACTUALLY FUCK THIS BULLSHIT INTEGRATED ELECTRONICS ARE A PIT OF
+//       DOOM CODE I DONT CARE HOW MUCH SCIENCE PLAYERS LIKE IT THIS IS A BAD FUCKING JOKE
+//       REWRITE EVERYTHING ASAP
+
 /obj/item/electronic_assembly/clothing
 	name = "electronic clothing parts"
 	icon_state = "setup_small_simple"
@@ -11,6 +15,13 @@
 	max_components = IC_COMPONENTS_BASE
 	max_complexity = IC_COMPLEXITY_BASE
 	var/obj/item/clothing/clothing = null
+
+/obj/item/electronic_assembly/clothing/Destroy()
+	if(clothing)
+		if(clothing.EA == src)
+			clothing.EA = null
+		clothing = null
+	return ..()
 
 /obj/item/electronic_assembly/clothing/ui_host()
 	return clothing.ui_host()
@@ -33,12 +44,19 @@
 	max_complexity = IC_COMPLEXITY_BASE * 2
 	w_class = WEIGHT_CLASS_NORMAL
 
-
 // This is defined higher up, in /clothing to avoid lots of copypasta.
 /obj/item/clothing
 	var/obj/item/electronic_assembly/clothing/EA = null
 	var/obj/item/integrated_circuit/built_in/action_button/action_circuit = null // This gets pulsed when someone clicks the button on the hud.
 	var/EA_Installed = null
+
+/obj/item/clothing/Destroy()
+	QDEL_NULL(action_circuit)
+	if(EA)
+		QDEL_NULL(EA)
+		if(EA)
+			stack_trace("didn't clear a ref to EA")
+	return ..()
 
 /obj/item/clothing/emp_act(severity)
 	if(EA)
@@ -75,10 +93,12 @@
 		..()
 
 /obj/item/clothing/Moved(oldloc)
-	EA ? EA.on_loc_moved(oldloc) : ..()
+	..()
+	EA?.on_loc_moved(oldloc)
 
 /obj/item/clothing/on_loc_moved(oldloc)
-	EA ? EA.on_loc_moved(oldloc) : ..()
+	..()
+	EA?.on_loc_moved(oldloc)
 
 /obj/item/clothing/ui_action_click(datum/action/action, datum/event_args/actor/actor)
 	. = ..()

@@ -38,6 +38,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
+	belt_storage_class = BELT_CLASS_SMALL
 
 	/// scribble on the back
 	var/scribble

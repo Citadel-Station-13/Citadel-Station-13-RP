@@ -299,11 +299,13 @@
 	name = "robotic intelligence circuit"
 	desc = "The pinnacle of artifical intelligence which can be achieved using classical computer science."
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/drones)
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "mainboard"
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/drone_brain
+	// we ARE the mirror
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/item/mmi/digital/robot/Initialize(mapload)
 	. = ..()
@@ -336,11 +338,12 @@
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/posi_brain
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/posibrain)
+	// we ARE the mirror
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 
 /obj/item/mmi/digital/posibrain/request_player()
 	icon_state = "posibrain-searching"
 	..()
-
 
 /obj/item/mmi/digital/posibrain/transfer_identity(var/mob/living/carbon/H)
 	..()
@@ -371,7 +374,7 @@
 /obj/item/mmi/inert/ai_remote
 	name = "\improper AI remote interface"
 	desc = "A sophisticated board which allows for an artificial intelligence to remotely control a synthetic chassis."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/items/circuits.dmi'
 	icon_state = "mainboard"
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2, TECH_BLUESPACE = 2, TECH_DATA = 3)

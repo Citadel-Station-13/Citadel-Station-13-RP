@@ -7,16 +7,15 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "phaser", SLOT_ID_LEFT_HAND = "phaser", "SLOT_ID_BELT" = "phaser")
 	fire_sound = /datum/soundbyte/guns/energy/laser_3/rifle
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_POWER = 4)
-	charge_cost = 300
 	legacy_battery_lock = 1
 
 	var/recharging = 0
-	var/phase_power = 75
+	var/phase_power = POWER_CELL_CAPACITY_WEAPON / 16
 
 	projectile_type = /obj/projectile/beam
 	firemodes = list(
-		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, charge_cost = 300),
-		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = 60),
+		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, charge_cost = POWER_CELL_CAPACITY_WEAPON / 8),
+		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, charge_cost = POWER_CELL_CAPACITY_WEAPON / 40),
 	)
 
 /obj/item/gun/projectile/energy/frontier/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
@@ -69,8 +68,8 @@
 
 	modifystate = "carbinekill"
 	firemodes = list(
-		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, modifystate="carbinekill", charge_cost = 300),
-		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = 60),
+		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, modifystate="carbinekill", charge_cost = POWER_CELL_CAPACITY_WEAPON / 8),
+		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = POWER_CELL_CAPACITY_WEAPON / 40),
 
 	)
 
@@ -85,12 +84,11 @@
 	phase_power = 100
 
 	w_class = WEIGHT_CLASS_SMALL
-	charge_cost = 600
 	modifystate = "holdoutkill"
 	firemodes = list(
-		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, modifystate="holdoutkill", charge_cost = 600),
-		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="holdoutstun", charge_cost = 120),
-		list(mode_name="stun", fire_delay=12, projectile_type=/obj/projectile/beam/stun/med, modifystate="holdoutshock", charge_cost = 300),
+		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, modifystate="holdoutkill", charge_cost = POWER_CELL_CAPACITY_WEAPON / 4),
+		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="holdoutstun", charge_cost = POWER_CELL_CAPACITY_WEAPON / 8),
+		list(mode_name="stun", fire_delay=12, projectile_type=/obj/projectile/beam/stun/med, modifystate="holdoutshock", charge_cost = POWER_CELL_CAPACITY_WEAPON / 8),
 	)
 
 /obj/item/gun/projectile/energy/frontier/taj
@@ -100,13 +98,12 @@
 	icon_state = "phaser-taj"
 	item_state = "phaser-taj"
 	wielded_item_state = "phaser-taj"
-	charge_cost = 600
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 8
 
 	projectile_type = /obj/projectile/beam/midlaser
 
 
-	firemodes = list(
-	)
+	firemodes = list()
 
 /obj/item/gun/projectile/energy/frontier/taj/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	. = ..()

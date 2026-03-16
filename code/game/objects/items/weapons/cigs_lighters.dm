@@ -587,6 +587,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = WEIGHT_CLASS_TINY
 	throw_force = 4
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
 	var/base_state

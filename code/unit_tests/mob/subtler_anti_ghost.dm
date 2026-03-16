@@ -23,6 +23,8 @@
 	var/mob/observer/dead/the_myth_of_consensual_handholding = allocate(/mob/observer/dead)
 
 	src.speaker = speaker
+	// because otherwise they won't be shown to ghosts due to optimizations
+	speaker.key = "FakeKey128"
 	RegisterSignal(listener, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, PROC_REF(on_intended_hear))
 	RegisterSignal(the_myth_of_consensual_handholding, COMSIG_MOB_ON_RECEIVE_CUSTOM_EMOTE, PROC_REF(on_unintended_hear))
 

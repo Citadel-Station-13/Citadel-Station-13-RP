@@ -10,7 +10,7 @@
 	hides_underfloor_update_icon = TRUE
 	hides_underfloor_defaulting = TRUE
 
-	pipe_flags = NONE // Does not have PIPING_DEFAULT_LAYER_ONLY flag.
+	pipe_flags = NONE // Does not have PIPE_FLAG_DEFAULT_LAYER_ONLY flag.
 
 	#ifdef IN_MAP_EDITOR
 	alpha = 128 // Set for the benefit of mapping.

@@ -30,6 +30,10 @@
 	cash_stored = rand(10, 70)*10
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
+/obj/machinery/cash_register/Destroy()
+	GLOB.transaction_devices -= src
+	return ..()
+
 /obj/machinery/cash_register/examine(mob/user, dist)
 	. = ..()
 	if(cash_open)

@@ -18,6 +18,7 @@
 	see_in_dark = 7
 	plane = OBSERVER_PLANE
 	status_flags = STATUS_GODMODE
+	interaction_range = INFINITY
 
 	var/mob/owner = null
 	var/list/visibleChunks = list()

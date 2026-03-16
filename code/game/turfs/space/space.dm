@@ -20,7 +20,7 @@
 	var/forced_dirs = 0
 
 /**
- * - DO NOT MAP THIS IN!!!!!
+ * * -- DO NOT MAP THIS IN!!!!! --
  */
 /turf/space/basic
 	atom_flags = ATOM_INITIALIZED
@@ -29,8 +29,15 @@
 	// Do not convert to Initialize
 	// This is used to optimize the map loader
 	SHOULD_CALL_PARENT(FALSE)
-	// turn preloader off so it doesn't hit something else
-	global.dmm_preloader_active = FALSE
+
+	// TODO: put this behind compile flag for aggressive asserts
+	if(global.dmm_preloader_active)
+		// this shouldn't happen, because people aren't supposed to map this in
+		global.dmm_preloader_active = FALSE
+		var/static/warned = FALSE
+		if(!warned)
+			warned = TRUE
+			stack_trace("turf space basic had preloader active, shouldn't happen")
 
 /**
  * Space Initialize
@@ -113,7 +120,7 @@
 			qdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			S.use(1)
-			ChangeTurf(/turf/simulated/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+			PlaceOnTop(/turf/simulated/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			return
 		else
 			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
@@ -135,7 +142,7 @@
 
 				if(R.use(1))	// Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
-					T.ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR)
+					T.PlaceOnTop(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 					user.visible_message("<span class='notice'>[user] expands the ceiling.</span>", "<span class='notice'>You expand the ceiling.</span>")
 			else
@@ -145,6 +152,13 @@
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
 
+//* Sector API *//
+
+/turf/space/sector_block_high_altitude_observation_to_below()
+	return FALSE
+
+/turf/space/sector_always_visible_from_high_altitude()
+	return TRUE
 
 //// Special variants used in various maps ////
 

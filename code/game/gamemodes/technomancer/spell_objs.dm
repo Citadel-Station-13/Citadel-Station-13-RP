@@ -130,7 +130,7 @@
 // Parameters: 0
 // Description: Nulls object references so it can qdel() cleanly.
 /obj/item/spell/Destroy()
-	owner.unref_spell(src)
+	owner?.unref_spell(src)
 	owner = null
 	core = null
 	return ..()

@@ -18,6 +18,7 @@
 	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	materials_base = list(MAT_STEEL = 200, MAT_GLASS = 100)
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	var/grace = RAD_GRACE_PERIOD
 	var/datum/looping_sound/geiger/soundloop
@@ -179,7 +180,7 @@
 		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] Target is free of radioactive contamination."))
 
 /obj/item/geiger_counter/attackby(obj/item/I, mob/user, params)
-	if(I.tool_behaviour == TOOL_SCREWDRIVER && (obj_flags & OBJ_EMAGGED))
+	if(I.tool_behavior == TOOL_SCREWDRIVER && (obj_flags & OBJ_EMAGGED))
 		if(scanning)
 			to_chat(user, SPAN_WARNING("Turn off [src] before you perform this action!"))
 			return FALSE

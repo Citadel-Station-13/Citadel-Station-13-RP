@@ -112,6 +112,7 @@
 	delete_storages()
 	if(design_holder?.owner == src)
 		QDEL_NULL(design_holder)
+	QDEL_NULL(ui_controller)
 	return ..()
 
 /obj/machinery/lathe/examine(mob/user)
@@ -279,12 +280,9 @@
 	stored_items = null
 
 /obj/machinery/lathe/proc/delete_storages()
-	if(stored_materials)
-		QDEL_NULL(stored_materials)
-	if(stored_reagents)
-		QDEL_NULL(stored_reagents)
-	if(stored_items)
-		QDEL_LIST_NULL(stored_items)
+	QDEL_NULL(stored_materials)
+	QDEL_NULL(stored_reagents)
+	QDEL_LIST_NULL(stored_items)
 
 /obj/machinery/lathe/proc/has_design(datum/prototype/design/id_or_instance)
 	return design_holder.has_id(istext(id_or_instance)? id_or_instance : id_or_instance.id)

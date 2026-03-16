@@ -410,13 +410,13 @@
 
 /obj/item/cassette_tape/proc/record_speech(text)
 	timestamp += used_capacity
-	storedinfo += "\[[time2text(used_capacity*10,"mm:ss")]\] [text]"
+	storedinfo += "\[[time2text(used_capacity*10,"mm:ss", NO_TIMEZONE)]\] [text]"
 
 
 //shows up on the printed transcript as (Unrecognized sound)
 /obj/item/cassette_tape/proc/record_noise(text)
 	timestamp += used_capacity
-	storedinfo += "*\[[time2text(used_capacity*10,"mm:ss")]\] [text]"
+	storedinfo += "*\[[time2text(used_capacity*10,"mm:ss", NO_TIMEZONE)]\] [text]"
 
 
 /obj/item/cassette_tape/attackby(obj/item/I, mob/user, params)

@@ -8,6 +8,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	slot_flags = SLOT_BELT
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	throw_force = 5
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
@@ -273,7 +274,7 @@ var/last_chew = 0
 	if(!H.can_equip(src, SLOT_ID_LEGCUFFED, user = user))
 		return FALSE
 
-	if(istype(H.inventory.get_slot(/datum/inventory_slot/inventory/shoes), /obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
+	if(istype(H.inventory.get_slot(/datum/inventory_slot/inventory/shoes::id), /obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
 		return 0
 

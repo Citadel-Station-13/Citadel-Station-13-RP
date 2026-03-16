@@ -136,6 +136,8 @@ var/global/list/datum/gene/dna_genes[0]
 
 	var/s_base = ""
 
+/datum/dna/clone()
+	return Clone()
 
 /**
  * Make a copy of this strand.
@@ -598,4 +600,3 @@ var/global/list/datum/gene/dna_genes[0]
 	ResetSE()
 
 	unique_enzymes = md5(character.real_name)
-	reg_dna[unique_enzymes] = character.real_name

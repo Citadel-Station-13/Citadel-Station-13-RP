@@ -55,6 +55,9 @@
 /// Simply removes the < and > characters, and limits the length of the message.
 #define STRIP_HTML_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext(text, 1, limit), ""))
 
+/// Removes everything enclose in < and > inclusive of the bracket, and limits the length of the message.
+#define STRIP_HTML_FULL(text, limit) (GLOB.html_tags.Replace(copytext(text, 1, limit), ""))
+
 /*
 ///Index access defines for paper/var/add_info_style
 #define ADD_INFO_COLOR 1
@@ -105,3 +108,4 @@
 */
 /// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
 #define MAPTEXT_CENTER(text) {"<span class='maptext center'>[##text]</span>"}
+#define MAPTEXT_CENTER_CONST(text) "<span class='maptext center'>" + text + "</span>"

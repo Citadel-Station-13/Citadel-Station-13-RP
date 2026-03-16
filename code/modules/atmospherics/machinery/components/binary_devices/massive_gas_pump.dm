@@ -17,7 +17,7 @@
 
 	icon = 'icons/obj/machines/massive_pumps.dmi'
 	icon_state = "pump"
-	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
+	pipe_flags = PIPE_FLAG_DEFAULT_LAYER_ONLY|PIPE_FLAG_ONE_PER_TURF
 	anchored = 1
 	density = 1
 	circuit = /obj/item/circuitboard/massive_gas_pump

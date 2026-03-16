@@ -135,11 +135,11 @@
 		return
 	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
-	var/maybe_sender_name = skip_name ? "" : "<b>[sender_name]</b> "
+	var/maybe_sender_name = skip_name ? "" : "<b>[sender_name]</b>[message[1] == "'" ? "" : " "]"
 
 	//AR Projecting
 	if(eyeobj)
-		sender.eyeobj.visible_message("[sender_name] [message]")
+		sender.eyeobj.visible_message("[maybe_sender_name][message]")
 
 	//Not AR Projecting
 	else
@@ -319,7 +319,6 @@
 		brainmob.dna = H.dna
 		brainmob.ooc_notes = H.ooc_notes
 		brainmob.timeofhostdeath = H.timeofdeath
-		SStranscore.m_backup(brainmob.mind,0) //It does ONE, so medical will hear about it.
 
 	//Else maybe they're a joining ghost
 	else if(isobserver(M))
@@ -389,9 +388,6 @@
 
 	if((. = ..()))
 		return
-
-	if(!parent_mob && !transient &&(life_tick % 150 == 0) && soulcatcher.setting_flags & NIF_SC_BACKUPS)
-		SStranscore.m_backup(mind,0) //Passed 0 means "Don't touch the nif fields on the mind record"
 
 	life_tick++
 

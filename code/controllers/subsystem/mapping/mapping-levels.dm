@@ -239,7 +239,7 @@
 
 	var/datum/dmm_context/loaded_context
 
-	if(instance.base_area != world.area)
+	if(instance.base_area)
 		var/area/level_area_type = instance.base_area
 		var/area/level_area_instance
 		if(level_area_type.unique)
@@ -248,10 +248,10 @@
 			level_area_instance = new(null)
 		level_area_instance.take_turfs(Z_TURFS(instance.z_index))
 		CHECK_TICK
-	if(instance.base_turf != world.turf)
+	if(instance.base_turf)
 		var/list/turf/to_change = Z_TURFS(instance.z_index)
 		for(var/turf/T as anything in to_change)
-			T.ChangeTurf(instance.base_turf)
+			T.ChangeTurf(instance.base_turf, list(/turf/baseturf_bottom))
 			CHECK_TICK
 
 	if(instance.has_map_path())

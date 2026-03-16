@@ -6,6 +6,7 @@
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 	throw_force = 3
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 5

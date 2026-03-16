@@ -15,11 +15,14 @@
 	animation.master = src
 
 	flick(anim, animation)
-	if(do_gibs) gibs(loc, dna)
+	if(do_gibs)
+		gibs(loc, dna)
 
 	spawn(15)
-		if(animation)	qdel(animation)
-		if(src)			qdel(src)
+		if(animation)
+			qdel(animation)
+		if(src)
+			qdel(src)
 
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
@@ -59,7 +62,7 @@
 /mob/proc/death(gibbed, deathmessage = "seizes up and falls limp...")
 	if(stat == DEAD)
 		return 0
-	if(istype(loc, /obj/belly) || istype(loc, /obj/item/dogborg/sleeper))
+	if(istype(loc, /obj/belly) || istype(loc, /obj/item/robot_builtin/dog_sleeper))
 		deathmessage = "no message" // Prevents death messages from inside mobs
 	facing_dir = null
 
@@ -89,8 +92,6 @@
 	timeofdeath = world.time
 	if(mind)
 		mind.store_memory("Time of death: [stationtime2text()]", 0)
-	living_mob_list -= src
-	dead_mob_list |= src
 
 	set_respawn_timer()
 	updateicon()
@@ -101,3 +102,9 @@
 		SSticker.mode.check_win()
 
 	return 1
+
+/**
+ * helper proc used to compose death procs
+ * pretty much for "drop all internal organs"
+ */
+/mob/proc/death__drop_internal_composition() as /list

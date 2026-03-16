@@ -41,8 +41,4 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-// Activate Noms!
-/mob/living/simple_mob/vore/aggressive/dino
-	swallowTime = 1 SECOND // Hungry little bastards.
-
 /mob/living/simple_mob/vore/aggressive/dino/virgo3b

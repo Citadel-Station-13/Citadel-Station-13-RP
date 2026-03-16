@@ -84,7 +84,9 @@ GLOBAL_LIST(bitfields_by_var)
 	for(var/datum/bitfield/bitfield as anything in GLOB.bitfields_by_var[var_name])
 		for(var/match in bitfield.paths)
 			if(ispath(path, match))
-				return bitfield
+				var/list/var_maybe = bitfield.paths[match]
+				if(islist(var_maybe) ? (var_name in var_maybe) : (var_name == var_maybe))
+					return bitfield
 
 /**
  * Bitfield datums used to reflect bitfield values in the game's code.

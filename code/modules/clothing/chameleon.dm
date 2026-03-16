@@ -461,7 +461,7 @@
 	fire_sound = 'sound/weapons/Gunshot1.ogg'
 	projectile_type = /obj/projectile/chameleon
 	charge_meter = 0
-	charge_cost = 48 //uses next to no power, since it's just holograms
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 160
 	legacy_battery_lock = 1
 
 	var/obj/projectile/copy_projectile

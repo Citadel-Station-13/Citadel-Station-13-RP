@@ -1,0 +1,4 @@
+﻿/obj/machinery:
+  banned_neighbors:
+    /obj/machinery:
+      identical: true

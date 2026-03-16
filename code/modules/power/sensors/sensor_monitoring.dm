@@ -24,6 +24,10 @@
 	. = ..()
 	power_monitor = new(src)
 
+/obj/machinery/computer/power_monitor/Destroy()
+	QDEL_NULL(power_monitor)
+	return ..()
+
 // Checks the sensors for alerts. If change (alerts cleared or detected) occurs, calls for icon update.
 /obj/machinery/computer/power_monitor/process(delta_time)
 	var/alert = check_warnings()

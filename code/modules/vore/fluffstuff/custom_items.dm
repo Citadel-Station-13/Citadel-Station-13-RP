@@ -555,8 +555,8 @@
 	w_class = WEIGHT_CLASS_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
-	var/cell_type = /obj/item/cell/device/weapon
-	var/obj/item/cell/power_source
+	var/cell_type = /obj/item/cell/basic/tier_1/weapon
+	var/cell_accept = CELL_TYPE_SMALL | CELL_TYPE_WEAPON
 	var/charge_cost = 800 // cell/device/weapon has 2400
 
 	var/list/beacons = list()
@@ -569,11 +569,8 @@
 	var/list/logged_events = list()
 
 /obj/item/perfect_tele/Initialize(mapload)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
 	. = ..()
-	if(cell_type)
-		power_source = new cell_type(src)
-	else
-		power_source = new /obj/item/cell/device(src)
 	spk = new(src)
 	spk.set_up(5, 0, src)
 	spk.attach(src)
@@ -583,11 +580,11 @@
 	for(var/obj/item/perfect_tele_beacon/B in beacons)
 		B.tele_hand = null
 	beacons.Cut()
-	QDEL_NULL(power_source)
 	QDEL_NULL(spk)
 	return ..()
 
 /obj/item/perfect_tele/update_icon()
+	var/obj/item/cell/power_source = get_cell()
 	if(!power_source)
 		icon_state = "[initial(icon_state)]_o"
 	else if(ready && (power_source.check_charge(charge_cost) || power_source.fully_charged()))
@@ -596,15 +593,6 @@
 		icon_state = "[initial(icon_state)]_w"
 
 	..()
-
-/obj/item/perfect_tele/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
-	if(user.get_inactive_held_item() == src && power_source)
-		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
-		user.put_in_hands(power_source)
-		power_source = null
-		update_icon()
-	else
-		return ..()
 
 /obj/item/perfect_tele/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
@@ -655,15 +643,7 @@
 			return
 
 /obj/item/perfect_tele/attackby(obj/W, mob/user)
-	if(istype(W,cell_type) && !power_source)
-		if(!user.attempt_insert_item_for_installation(W, src))
-			return
-		power_source = W
-		power_source.update_icon() //Why doesn't a cell do this already? :|
-		to_chat(user,"<span class='notice'>You insert \the [power_source] into \the [src].</span>")
-		update_icon()
-
-	else if(istype(W,/obj/item/perfect_tele_beacon))
+	if(istype(W,/obj/item/perfect_tele_beacon))
 		var/obj/item/perfect_tele_beacon/tb = W
 		if(tb.tele_name in beacons)
 			if(!user.attempt_consume_item_for_construction(tb))
@@ -678,6 +658,7 @@
 		..()
 
 /obj/item/perfect_tele/proc/teleport_checks(mob/living/target,mob/living/user)
+	var/obj/item/cell/power_source = get_cell()
 	//Uhhuh, need that power source
 	if(!power_source)
 		to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")
@@ -734,6 +715,7 @@
 
 /obj/item/perfect_tele/afterattack(mob/living/target, mob/user, clickchain_flags, list/params)
 	//No, you can't teleport people from over there.
+	var/obj/item/cell/power_source = get_cell()
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
@@ -894,7 +876,7 @@
 	desc = "A more limited translocator with a single beacon, useful for some things, like setting the mining department on fire accidentally. Legal for use in the pursuit of Nanotrasen interests, namely mining and exploration."
 	icon_state = "minitrans"
 	beacons_left = 1 //Just one
-	cell_type = /obj/item/cell/device
+	cell_type = /obj/item/cell/basic/tier_1/small
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5)
 
 /*
@@ -910,12 +892,13 @@
 	name = "alien translocator"
 	desc = "This strange device allows one to teleport people and objects across large distances."
 
-	cell_type = /obj/item/cell/device/weapon/recharge/alien
+	cell_type = /obj/item/cell/regen/weapon
 	charge_cost = 400
 	beacons_left = 6
 	failure_chance = 0 //Percent
 
 /obj/item/perfect_tele/admin/teleport_checks(mob/living/target,mob/living/user)
+	var/obj/item/cell/power_source = get_cell()
 	//Uhhuh, need that power source
 	if(!power_source)
 		to_chat(user,"<span class='warning'>\The [src] has no power source!</span>")

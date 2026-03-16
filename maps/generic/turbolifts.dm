@@ -125,9 +125,3 @@
 		/area/turbolift/cargo/EutheniaDeck3,
 		/area/turbolift/cargo/EutheniaDeck4
 		)
-
-// I love finding these kevvy
-/* SHUT UP
-/datum/turbolift
-	music = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')  // Woo elevator music!
-*/

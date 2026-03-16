@@ -167,9 +167,7 @@
 /obj/item/assembly_holder/timer_igniter
 	name = "timer-igniter assembly"
 
-/obj/item/assembly_holder/timer_igniter/New()
-	..()
-
+/obj/item/assembly_holder/timer_igniter/Initialize(mapload)
 	var/obj/item/assembly/igniter/ign = new(src)
 	ign.secured = 1
 	ign.holder = src
@@ -184,3 +182,4 @@
 	secured = 1
 	update_icon()
 	name = initial(name) + " ([tmr.time] secs)"
+	return ..()

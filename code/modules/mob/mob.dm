@@ -1,3 +1,6 @@
+/**
+ * Base definition of mob.
+ */
 /mob
 	//* Actionspeed *//
 	/// List of action speed modifiers applying to this mob
@@ -6,10 +9,6 @@
 	/// List of action speed modifiers ignored by this mob. List -> List (id) -> List (sources)
 	/// * Lazy list, see mob_movespeed.dm
 	var/list/actionspeed_modifier_immunities
-
-	//* HUD (Atom) *//
-	/// HUDs to initialize, typepaths
-	var/list/atom_huds_to_initialize
 
 	//* Buckling *//
 	/// Atom we're buckled to
@@ -24,10 +23,39 @@
 	/// our default emote classes
 	var/emote_class = EMOTE_CLASS_IS_BODY
 
+	//* HUD (Atom) *//
+	/// HUDs to initialize, typepaths
+	var/list/atom_huds_to_initialize
+
 	//* Impairments *//
 	/// active feign_impairment types
 	/// * lazy list
 	var/list/impairments_feigned
+
+	//* Mind *//
+	/// Our owning mind.
+	/// * Minds are what a 'character' is, or perhaps the soul or whatever you want to call it.
+	///   A player / character is recoverable in-round as long as something can still reference the mind.
+	/// * Generally, if you want to reference a body, reference this mob; if you want to reference
+	///   a character, reference the mind if you plan to keep it around for cloning or ghost creation
+	///   or something, and reference the mind's `mind_ref` via `get_mind_ref()` if you're just
+	///   using it for checks.
+	var/datum/mind/mind
+	/// Last owning mind.
+	/// * Set by inbound mind transfers but not cleared by outbound.
+	///   Code can use this to get a reference (if the mind still exists)
+	///   to the last inhabiting player / character / whatever of this mob.
+	var/datum/mind_ref/mind_last
+	/// 'Locking' mind ref.
+	/// * Generally only set on players; Mind transfers will not clear this.
+	///   Resleeving reads this to prevent body impersonation.
+	/// * Should be treated as volatile. Non-IC (or even special antag things) can clear this.
+	var/datum/mind_ref/mind_resleeving_lock
+
+	//* Inventory *//
+	/// our inventory datum, if any.
+	/// * Set to typepath to initialize.
+	var/datum/inventory/inventory
 
 	//* Movespeed *//
 	/// List of movement speed modifiers applying to this mob
@@ -38,6 +66,11 @@
 	var/list/movespeed_modifier_immunities
 	/// The calculated mob speed slowdown based on the modifiers list
 	var/movespeed_hyperbolic
+
+	//* Status Indicators *//
+	/// datum path = list of sources
+	var/list/status_indicators
+	var/list/status_indicator_overlays
 
 /**
  * Intialize a mob
@@ -50,12 +83,13 @@
  * Other stuff:
  * * Sets the mob focus to itself
  * * Generates huds
+ * * Creates inventory
  * * If there are any global alternate apperances apply them to this mob
  * * Intialize the transform of the mob
  */
 /mob/Initialize(mapload)
 	// mob lists
-	mob_list_register(stat)
+	mob_list_register()
 	// actions
 	actions_controlled = new /datum/action_holder/mob_actor(src)
 	actions_innate = new /datum/action_holder/mob_actor(src)
@@ -63,6 +97,7 @@
 	init_physiology()
 	// atom HUDs
 	prepare_huds()
+	// key focus
 	set_key_focus(src)
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_NEW, src)
@@ -89,47 +124,78 @@
 	return ..()
 
 /mob/Destroy()
+	// this kicks out client
+	// this is needed to be early because we destroy stuff like inventory
+	// TODO: can we have this ran even earlier?
+	//       ideally we want to preserve as much state as possible so
+	//       we don't want to run further-down behavior before this
+	ghostize()
+	// key focus
+	set_key_focus(null)
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
 		qdel(effect)
 	status_effects = null
 	// mob lists
-	mob_list_unregister(stat)
-	// todo: remove machine
-	unset_machine()
-	// hud
-	for(var/alert in alerts)
-		clear_alert(alert)
-	if(client)
-		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
-			qdel(spell_master)
-		remove_screen_obj_references()
-		client.screen = list()
-	// mind
-	if(!isnull(mind))
-		if(mind.current == src)
-			// mind is ours, let it disassociate
-			// todo: legacy spell
-			spellremove(src)
-			mind?.disassociate()
-		else
-			// mind is not ours, null it out
-			mind = null
+	mob_list_unregister()
 	// signal
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MOB_DEL, src)
 	// abilities
 	dispose_abilities()
+	// inventory
+	QDEL_NULL(inventory)
 	// actions
 	QDEL_NULL(actions_controlled)
 	QDEL_NULL(actions_innate)
-	// this kicks out client
-	ghostize()
+	// run legacy actions
+	do
+		// todo: remove machine
+		unset_machine()
+		// hud
+		for(var/alert in alerts)
+			clear_alert(alert)
+		// mind
+		if(!isnull(mind))
+			if(mind.current == src)
+				// mind is ours, let it disassociate
+				// todo: legacy spell
+				spellremove(src)
+				mind?.disassociate()
+			else
+				// mind is not ours, null it out
+				mind = null
+		// abilities
+		QDEL_NULL(ability_master)
+		// spells
+		QDEL_LIST(spell_list)
+		QDEL_LIST(spell_masters)
+		// cleanup screen objects
+		QDEL_NULL(hands)
+		QDEL_NULL(pullin)
+		QDEL_NULL(purged)
+		QDEL_NULL(internals)
+		QDEL_NULL(oxygen)
+		QDEL_NULL(i_select)
+		QDEL_NULL(m_select)
+		QDEL_NULL(toxin)
+		QDEL_NULL(fire)
+		QDEL_NULL(bodytemp)
+		QDEL_NULL(healths)
+		QDEL_NULL(throw_icon)
+		QDEL_NULL(nutrition_icon)
+		QDEL_NULL(pressure)
+		QDEL_NULL(pain)
+		QDEL_NULL(item_use_icon)
+		QDEL_NULL(gun_move_icon)
+		QDEL_NULL(gun_setting_icon)
+		QDEL_NULL(spell_masters)
+		QDEL_NULL(zone_sel)
+	while(FALSE)
 	// get rid of our shit and nullspace everything first..
 	..()
 	// rendering
-	if(hud_used)
-		QDEL_NULL(hud_used)
+	QDEL_NULL(hud_used)
 	dispose_rendering()
 	// perspective; it might be gone now because self perspective is destroyed in ..()
 	using_perspective?.remove_mob(src, TRUE)
@@ -140,27 +206,45 @@
 	movespeed_modifiers = null
 	// actionspeed
 	actionspeed_modifiers = null
-	return QDEL_HINT_HARDDEL
+	return QDEL_HINT_QUEUE
+
+/**
+ * Checks if we're relatively important for logging
+ * * As a rule of thumb, if a player is attacking or being attacked, something should be logged.
+ *   This checks if we're important enough to invoke logs whether on the sending or receiving sides.
+ *
+ * @return truth-y or false-y value, not necessarily TRUE / FALSE
+ */
+/mob/proc/is_potentially_important_for_logs()
+	return ckey || mind
 
 //* Mob List Registration *//
 
-/mob/proc/mob_list_register(for_stat)
+/mob/proc/mob_list_register()
 	GLOB.mob_list += src
-	if(for_stat == DEAD)
+	if(stat == DEAD)
 		dead_mob_list += src
 	else
 		living_mob_list += src
 
-/mob/proc/mob_list_unregister(for_stat)
+/mob/proc/mob_list_unregister()
 	GLOB.mob_list -= src
-	if(for_stat == DEAD)
-		dead_mob_list -= src
-	else
-		living_mob_list -= src
+	dead_mob_list -= src
+	living_mob_list -= src
 
 /mob/proc/mob_list_update_stat(old_stat, new_stat)
-	mob_list_unregister(old_stat)
-	mob_list_register(new_stat)
+	if(old_stat == new_stat)
+		return
+	switch(old_stat)
+		if(DEAD)
+			dead_mob_list -= src
+		else
+			living_mob_list -= src
+	switch(new_stat)
+		if(DEAD)
+			dead_mob_list += src
+		else
+			living_mob_list += src
 
 /**
  * Generate the tag for this mob
@@ -169,43 +253,6 @@
  */
 /mob/generate_tag()
 	tag = "mob_[++next_mob_id]"
-
-/**
- * Prepare the huds for this atom
- *
- * Goes through hud_possible list and adds the images to the hud_list variable (if not already
- * cached)
- *
- * todo: this should be atom level but uhh lmao lol
- */
-/mob/proc/prepare_huds()
-	if(!atom_huds_to_initialize)
-		return
-	for(var/hud in atom_huds_to_initialize)
-		update_atom_hud_provider(src, hud)
-	atom_huds_to_initialize = null
-
-/mob/proc/remove_screen_obj_references()
-	hands = null
-	pullin = null
-	purged = null
-	internals = null
-	oxygen = null
-	i_select = null
-	m_select = null
-	toxin = null
-	fire = null
-	bodytemp = null
-	healths = null
-	throw_icon = null
-	nutrition_icon = null
-	pressure = null
-	pain = null
-	item_use_icon = null
-	gun_move_icon = null
-	gun_setting_icon = null
-	spell_masters = null
-	zone_sel = null
 
 /mob/statpanel_data(client/C)
 	. = ..()
@@ -373,8 +420,10 @@
 	if(client)
 		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A, result, game_range_to(src, A))
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
-	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
+
+#define POINT_TIME (2.5 SECONDS)
 
 /**
  * Point at an atom
@@ -393,78 +442,99 @@
 	set name = "Point To"
 	set category = VERB_CATEGORY_OBJECT
 
-	if(!src || !isturf(src.loc) || !(A in view(14, src)))
-		return 0
-
 	if(istype(A, /obj/effect/temp_visual/point))
-		return 0
+		return FALSE
 
-	var/tile = get_turf(A)
-	if (!tile)
-		return 0
+	// i am queued sometimes
+	_pointed(A)
 
-	var/obj/P = new /obj/effect/temp_visual/point(tile)
-	P.invisibility = invisibility
-	P.plane = ABOVE_PLANE
-	P.layer = FLY_LAYER
-	P.pixel_x = A.pixel_x + world.icon_size * (x - A.x)
-	P.pixel_y = A.pixel_y + world.icon_size * (y - A.y)
-	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
-	face_atom(A)
-	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
+/mob/proc/_pointed(atom/pointing_at)
+	if(client) //Clientless mobs can just go ahead and point
+		if(!(pointing_at in view(client.view, src)))
+			return FALSE
+	// since we dont have the datum emote for pointing, too lazy to implement! (it sets the cooldown)
+	// if(iscarbon(src)) // special interactions for carbons
+	// 	var/mob/living/carbon/our_carbon = src
+	// 	if(our_carbon.get_usable_hand_count() <= 0 || our_carbon.handcuffed /* || HAS_TRAIT(src, TRAIT_HANDS_BLOCKED)*/)
+	// 		if(!TIMER_COOLDOWN_CHECK(src, "point_verb_emote_cooldown"))
+	// 			//cooldown handled in the emote.
+	// 			our_carbon.emote("point [pointing_at]")
+	// 		else
+	// 			to_chat(src, SPAN_WARNING("You need to wait before pointing again!"))
+	// 			return FALSE
+
+	point_at(pointing_at, TRUE)
 	return 1
 
-/mob/verb/set_self_relative_layer()
-	set name = "Set relative layer"
-	set desc = "Set your relative layer to other mobs on the same layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
+/**
+ * Point at an atom
+ *
+ * Intended to enable and standardise the pointing animation for all atoms
+ *
+ * Not intended as a replacement for the mob verb
+ */
+/atom/movable/proc/point_at(atom/pointed_atom, intentional = FALSE)
+	if(!isturf(loc))
+		return FALSE
 
-	var/new_layer = input(src, "What do you want to shift your layer to? (-100 to 100)", "Set Relative Layer", clamp(relative_layer, -100, 100))
-	new_layer = clamp(new_layer, -100, 100)
-	set_relative_layer(new_layer)
+	if (pointed_atom in src)
+		create_point_bubble(pointed_atom)
+		return FALSE
 
-/mob/verb/shift_relative_behind()
-	set name = "Move Behind"
-	set desc = "Move behind of a mob with the same base layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
+	var/turf/tile = get_turf(pointed_atom)
+	if (!tile)
+		return FALSE
 
-	if(!client.throttle_verb())
-		return
+	var/turf/our_tile = get_turf(src)
+	var/obj/visual = new /obj/effect/temp_visual/point(our_tile, invisibility)
 
-	var/mob/M = tgui_input_list(src, "What mob to move behind?", "Move Behind", get_relative_shift_targets())
+	// SEND_SIGNAL(src, COMSIG_MOVABLE_POINTED, pointed_atom, visual, intentional)
 
-	if(QDELETED(M))
-		return
+	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + pointed_atom.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + pointed_atom.pixel_y, time = 1.7, easing = EASE_OUT)
+	return TRUE
 
-	set_relative_layer(M.relative_layer - 1)
+/mob/point_at(atom/pointed_atom, intentional = FALSE)
+	. = ..()
+	if(.)
+		face_atom(pointed_atom)
 
-/mob/verb/shift_relative_infront()
-	set name = "Move Infront"
-	set desc = "Move infront of a mob with the same base layer as yourself"
-	set src = usr
-	set category = VERB_CATEGORY_IC
+/atom/movable/proc/create_point_bubble(atom/pointed_atom)
+	var/mutable_appearance/thought_bubble = mutable_appearance(
+		'icons/effects/effects.dmi',
+		"thought_bubble",
+		plane = POINT_PLANE,
+		appearance_flags = KEEP_APART,
+	)
 
-	if(!client.throttle_verb())
-		return
+	var/mutable_appearance/pointed_atom_appearance = new(pointed_atom.appearance)
+	pointed_atom_appearance.blend_mode = BLEND_INSET_OVERLAY
+	pointed_atom_appearance.plane = FLOAT_PLANE
+	pointed_atom_appearance.layer = FLOAT_LAYER
+	pointed_atom_appearance.pixel_x = 0
+	pointed_atom_appearance.pixel_y = 0
+	thought_bubble.overlays += pointed_atom_appearance
+	// pointed_atom_appearance.remove_filter(HOVER_OUTLINE_FILTER)
 
-	var/mob/M = tgui_input_list(src, "What mob to move infront?", "Move Infront", get_relative_shift_targets())
+	thought_bubble.pixel_w = 16
+	thought_bubble.pixel_z = 32
+	thought_bubble.alpha = 200
 
-	if(QDELETED(M))
-		return
+	var/mutable_appearance/point_visual = mutable_appearance(
+		'icons/mob/screen1.dmi',
+		"arrow"
+	)
 
-	set_relative_layer(M.relative_layer + 1)
+	thought_bubble.overlays += point_visual
 
-/mob/proc/get_relative_shift_targets()
-	. = list()
-	var/us = isnull(base_layer)? layer : base_layer
-	for(var/mob/M in range(1, src))
-		if(M.plane != plane)
-			continue
-		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
-			. += M
-	. -= src
+	add_overlay(thought_bubble)
+	// LAZYADD(update_overlays_on_z, thought_bubble)
+	addtimer(CALLBACK(src, PROC_REF(clear_point_bubble), thought_bubble), POINT_TIME)
+
+/atom/movable/proc/clear_point_bubble(mutable_appearance/thought_bubble)
+	// LAZYREMOVE(update_overlays_on_z, thought_bubble)
+	cut_overlay(thought_bubble)
+
+#undef POINT_TIME
 
 /**
  * Get the notes of this mob
@@ -531,13 +601,6 @@
 			return "<font color=#4F49AF>[msg]</font>"
 		else
 			return "<font color=#4F49AF>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
-
-/*
-/mob/verb/help()
-	set name = "Help"
-	src << browse('html/help.html', "window=help")
-	return
-*/
 
 /mob/proc/set_respawn_timer(var/time)
 	// Try to figure out what time to use
@@ -756,12 +819,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && (e.splinted in e.contents) && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
 	return 0
-
-/mob/OnMouseDrop(atom/over, mob/user, proximity, params)
-	. = ..()
-	if(over != user)
-		return
-	. |= mouse_drop_strip_interaction(user)
 
 /mob/proc/can_use_hands()
 	return
@@ -1146,7 +1203,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * Returns whether or not we should be allowed to examine a target
  */
 /mob/proc/allow_examine(atom/A)
-	return client && (client.eye == src)
+	return (client?.eye == src) || (A in DirectAccess())
 
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()
@@ -1192,6 +1249,100 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			setDir(EAST)
 		else
 			setDir(WEST)
+
+//! Misc
+/**
+ * Whether the mob can use Topic to interact with machines
+ *
+ * Args:
+ * be_close - Whether you need to be next to/on top of M
+ * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
+ * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
+ * need_hands - Whether you need hands to use this
+ * floor_okay - Whether mobility flags should be checked for MOBILITY_CAN_UI to use.
+ */
+/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	return
+
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/mob/is_avoiding_ground()
+	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()
+
+//* Layer-shift verbs *//
+
+/mob/proc/get_relative_shift_targets()
+	. = list()
+	var/us = isnull(base_layer)? layer : base_layer
+	for(var/mob/M in range(1, src))
+		if(M.plane != plane)
+			continue
+		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
+			. += M
+	. -= src
+
+//* Abilities *//
+
+/mob/proc/init_abilities()
+	var/list/built = list()
+	var/list/registering = list()
+	for(var/datum/ability/ability_path as anything in abilities)
+		if(istype(ability_path))
+			built += ability_path // don't re-associate existing ones.
+		else if(ispath(ability_path, /datum/ability))
+			registering += new ability_path
+	abilities = built
+	for(var/datum/ability/ability as anything in registering)
+		ability.associate(src)
+
+/mob/proc/dispose_abilities()
+	for(var/datum/ability/ability in abilities)
+		ability.disassociate(src)
+	abilities = null
+
+/**
+ * mob side registration of abilities. must be called from /datum/ability/proc/associate!
+ */
+/mob/proc/register_ability(datum/ability/ability)
+	LAZYINITLIST(abilities)
+	abilities += ability
+
+/**
+ * mob side unregistration of abilities. must be called from /datum/ability/proc/disassociate!
+ */
+/mob/proc/unregister_ability(datum/ability/ability)
+	LAZYREMOVE(abilities, ability)
+
+//* Atom HUDs *//
+
+/**
+ * Initializes all atom HUDs for us
+ * todo: this should be atom level but uhh lmao lol don't call it on atom/Initialize() either
+ */
+/mob/proc/prepare_huds()
+	if(!atom_huds_to_initialize)
+		return
+	for(var/hud in atom_huds_to_initialize)
+		update_atom_hud_provider(src, hud)
+	atom_huds_to_initialize = null
+
+//* Radioactivity *//
+
+/mob/clean_radiation(str, mul, cheap)
+	. = ..()
+	if(cheap)
+		return
+	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
+		I.clean_radiation(str, mul, cheap)
+
+//* Reachability *//
+
+/mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
 
 //* Pixel Offsets *//
 
@@ -1300,71 +1451,23 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
-//? Reachability
+///Can the mob interact() with an atom?
+/mob/proc/can_interact_with(atom/A, treat_mob_as_adjacent)
+	if(isAdminGhostAI(src))
+		return TRUE
+	//Return early. we do not need to check that we are on adjacent turfs (i.e we are inside a closet)
+	if (treat_mob_as_adjacent && src == A.loc)
+		return TRUE
+	if (Adjacent(A))
+		return TRUE
+	if((MUTATION_TELEKINESIS in mutations) && (get_dist(src, A) > tk_maxrange))
+		return TRUE
 
-/mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return FALSE
-
-/mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
-	return FALSE
-
-//? Radioactivity
-
-/mob/clean_radiation(str, mul, cheap)
-	. = ..()
-	if(cheap)
-		return
-	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
-		I.clean_radiation(str, mul, cheap)
-
-//? Abilities
-
-/mob/proc/init_abilities()
-	var/list/built = list()
-	var/list/registering = list()
-	for(var/datum/ability/ability_path as anything in abilities)
-		if(istype(ability_path))
-			built += ability_path // don't re-associate existing ones.
-		else if(ispath(ability_path, /datum/ability))
-			registering += new ability_path
-	abilities = built
-	for(var/datum/ability/ability as anything in registering)
-		ability.associate(src)
-
-/mob/proc/dispose_abilities()
-	for(var/datum/ability/ability in abilities)
-		ability.disassociate(src)
-	abilities = null
-
-/**
- * mob side registration of abilities. must be called from /datum/ability/proc/associate!
- */
-/mob/proc/register_ability(datum/ability/ability)
-	LAZYINITLIST(abilities)
-	abilities += ability
-
-/**
- * mob side unregistration of abilities. must be called from /datum/ability/proc/disassociate!
- */
-/mob/proc/unregister_ability(datum/ability/ability)
-	LAZYREMOVE(abilities, ability)
-
-//! Misc
-/**
- * Whether the mob can use Topic to interact with machines
- *
- * Args:
- * be_close - Whether you need to be next to/on top of M
- * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
- * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
- * need_hands - Whether you need hands to use this
- * floor_okay - Whether mobility flags should be checked for MOBILITY_CAN_UI to use.
- */
-/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
-	return
-
-/**
- * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
- */
-/mob/is_avoiding_ground()
-	return ..() || hovering || flying || (buckled?.buckle_flags & BUCKLING_GROUND_HOIST) || buckled?.is_avoiding_ground()
+	//range check
+	if(!interaction_range) // If you don't have extra length, GO AWAY
+		return FALSE
+	var/turf/our_turf = get_turf(src)
+	var/turf/their_turf = get_turf(A)
+	if (!our_turf || !their_turf)
+		return FALSE
+	return ISINRANGE(their_turf.x, our_turf.x - interaction_range, our_turf.x + interaction_range) && ISINRANGE(their_turf.y, our_turf.y - interaction_range, our_turf.y + interaction_range)

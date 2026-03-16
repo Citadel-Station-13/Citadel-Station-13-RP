@@ -14,7 +14,7 @@
 	depth_projected = TRUE
 	depth_level = 12
 	anchored = FALSE
-	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
+	pipe_flags = PIPE_FLAG_DEFAULT_LAYER_ONLY|PIPE_FLAG_ONE_PER_TURF
 	default_deconstruct = null
 
 	var/kinetic_efficiency = 0.04 //combined kinetic and kinetic-to-electric efficiency

@@ -31,6 +31,10 @@
 	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
 
+/obj/vehicle/sealed/mecha/working/hoverpod/Destroy()
+	QDEL_NULL(ion_trail)
+	return ..()
+
 /obj/vehicle/sealed/mecha/working/hoverpod/occupant_added(mob/adding, datum/event_args/actor/actor, control_flags, silent)
 	. = ..()
 	ion_trail.start()

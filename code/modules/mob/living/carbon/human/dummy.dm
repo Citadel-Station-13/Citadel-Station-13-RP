@@ -89,3 +89,24 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	if(istype(dummy))
 		GLOB.dummy_mob_list -= dummy
 		qdel(dummy)
+
+/// Provides a dummy for unit_tests that functions like a normal human, but with a standardized appearance
+/// Copies the stock dna setup from the dummy/consistent type
+/mob/living/carbon/human/consistent
+	ssd_visible = FALSE
+
+// make it "consistent" enough
+/mob/living/carbon/human/consistent/Initialize(mapload, datum/species/specieslike)
+	. = ..()
+	set_species(/datum/species/human, force = TRUE, regen_icons = FALSE)
+	real_name = "John Doe"
+	name = "John Doe"
+
+	nutrition = 400
+	hydration = 400
+
+	// retrigger dna creation since its name based
+	if(dna)
+		dna.ready_dna(src)
+		dna.real_name = real_name
+		sync_organ_dna()

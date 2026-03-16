@@ -42,11 +42,3 @@
 		return get_dir(src, other) | UP
 	else if(other.z == SSmapping.cached_level_down[z])
 		return get_dir(src, other) | DOWN
-
-/**
- * This is the full get multiz step.
- * It will look across lateral transitions and other struct magic.
- */
-/turf/proc/virtual_step(dir)
-	RETURN_TYPE(/turf)
-	return SSmapping.get_virtual_step(src, dir)

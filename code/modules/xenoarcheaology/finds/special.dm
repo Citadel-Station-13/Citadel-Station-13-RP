@@ -76,7 +76,7 @@
 	//use up stored charges
 	if(charges >= 10)
 		charges -= 10
-		new /obj/effect/spider/eggcluster(pick(RANGE_TURFS(1, src)))
+		new /obj/structure/spider/eggcluster(pick(RANGE_TURFS(1, src)))
 
 	if(charges >= 3)
 		if(prob(5))
@@ -169,6 +169,10 @@
 /obj/effect/shadow_wight/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
+
+/obj/effect/shadow_wight/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/effect/shadow_wight/process(delta_time)
 	if(loc)

@@ -53,8 +53,8 @@
 // todo: rework these awful ass feedback/message procs below wtf
 
 // proposal:
-// visible_feedback(visible, audible, self, range, target)
-// visible_proximity_feedback(visible_far, visible_near, audible_far, audible_near, self, range_far, range_near, target)
+// visible_feedback(visible, audible, self, them, range, target)
+// visible_proximity_feedback(visible_far, visible_near, audible_far, audible_near, self, them, range_far, range_near, target)
 
 /**
  * It is highly recommended to use named parameters with this.
@@ -90,3 +90,17 @@
 		visible_them = visible_them,
 		otherwise_them = otherwise_them,
 	)
+
+//* Reachability *//
+
+/**
+ * Checks if 'performer' can reach an atom
+ */
+/datum/event_args/actor/proc/check_performer_reachability(atom/target)
+	return check_default_performer_reachability(target)
+
+/**
+ * Checks if 'performer' can reach an atom by default
+ */
+/datum/event_args/actor/proc/check_default_performer_reachability(atom/target)
+	return performer.Reachability(target)

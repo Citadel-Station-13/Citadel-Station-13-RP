@@ -4,6 +4,7 @@
 	icon_state = "mousetrap"
 	origin_tech = list(TECH_COMBAT = 1)
 	materials_base = list(MAT_STEEL = 100)
+	belt_storage_class = BELT_CLASS_SMALL
 	var/armed = 0
 
 

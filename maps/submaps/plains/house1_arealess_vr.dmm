@@ -231,9 +231,9 @@
 "aU" = (
 /obj/structure/table/rack,
 /obj/item/clothing/under/explorer,
-/obj/item/cell/device,
-/obj/item/cell/device,
-/obj/item/cell/device,
+/obj/item/cell/basic/tier_3/small,
+/obj/item/cell/basic/tier_3/small,
+/obj/item/cell/basic/tier_3/small,
 /turf/simulated/floor/wood,
 /area/template_noop)
 "aV" = (

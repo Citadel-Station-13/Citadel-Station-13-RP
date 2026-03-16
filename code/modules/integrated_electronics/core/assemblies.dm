@@ -10,15 +10,14 @@
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 	show_messages = TRUE
 	datum_flags = DF_USE_TAG
-	var/list/assembly_components = list()
+	var/list/obj/item/integrated_circuit/assembly_components = list()
 	var/list/ui_circuit_props = list()
 	/// Players who built the circuit can scan it as a ghost.
 	var/list/ckeys_allowed_to_scan = list()
 	var/max_components = IC_COMPONENTS_BASE
 	var/max_complexity = IC_COMPLEXITY_BASE
 	var/opened = FALSE
-	/// Internal cell which most circuits need to work.
-	var/obj/item/cell/device/battery = null
+
 	/// Set every tick, to display how much power is being drawn in total.
 	var/net_power = 0
 	/// Can it be charged in a recharger?
@@ -53,6 +52,38 @@
 	var/detail_color = COLOR_ASSEMBLY_BLACK
 	/// Cost set to default during init if unset.
 	var/cost = 0
+
+	var/cell_type = /obj/item/cell/basic/tier_1/small
+	var/cell_accept = CELL_TYPE_SMALL
+
+/obj/item/electronic_assembly/Initialize(mapload)
+	init_cell_slot_easy_tool(cell_type, cell_accept)
+	src.max_components = round(max_components)
+	src.max_complexity = round(max_complexity)
+	if(!cost)
+		cost = IC_ASSEMBLY_COST(src)
+	START_PROCESSING(SSobj, src)
+/* TBI //sets up diagnostic hud view
+	prepare_huds()
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+		diag_hud.add_to_hud(src)
+	diag_hud_set_circuithealth()
+	diag_hud_set_circuitcell()
+	diag_hud_set_circuitstat()
+	diag_hud_set_circuittracking()
+*/
+	return ..()
+
+/obj/item/electronic_assembly/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	collw = null
+	for(var/obj/item/integrated_circuit/circuit in assembly_components)
+		QDEL_NULL(circuit)
+	if(length(assembly_components))
+		stack_trace("failed to clear all assembly component refs")
+//	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+// TBI		diag_hud.remove_from_hud(src)
+	return ..()
 
 /obj/item/electronic_assembly/generate_tag()
 	tag = "assembly_[next_assembly_id++]"
@@ -90,31 +121,6 @@
 		if(D.check_access(src))
 			D.open()
 
-/obj/item/electronic_assembly/Initialize(mapload)
-	battery = new(src)
-	src.max_components = round(max_components)
-	src.max_complexity = round(max_complexity)
-	if(!cost)
-		cost = IC_ASSEMBLY_COST(src)
-	START_PROCESSING(SSobj, src)
-/* TBI //sets up diagnostic hud view
-	prepare_huds()
-	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.add_to_hud(src)
-	diag_hud_set_circuithealth()
-	diag_hud_set_circuitcell()
-	diag_hud_set_circuitstat()
-	diag_hud_set_circuittracking()
-*/
-	return ..()
-
-/obj/item/electronic_assembly/Destroy()
-	battery = null // It will be qdel'd by ..() if still in our contents
-	STOP_PROCESSING(SSobj, src)
-//	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-// TBI		diag_hud.remove_from_hud(src)
-	return ..()
-
 /obj/item/electronic_assembly/process(delta_time)
 	handle_idle_power()
 	check_pulling()
@@ -146,9 +152,6 @@
 /obj/item/electronic_assembly/proc/check_interactivity(mob/user)
 	return ui_status(user, GLOB.physical_state) == UI_INTERACTIVE
 
-/obj/item/electronic_assembly/get_cell(inducer)
-	return battery
-
 // TGUI
 /obj/item/electronic_assembly/ui_state()
 	return GLOB.physical_state
@@ -160,6 +163,7 @@
 		ui.open()
 
 /obj/item/electronic_assembly/ui_data(mob/user, datum/tgui/ui)
+	var/obj/item/cell/battery = get_cell()
 	var/list/data = ..()
 
 	var/total_parts = 0
@@ -175,7 +179,7 @@
 	data["max_complexity"] = max_complexity
 
 	data["battery_charge"] = round(battery?.charge, 0.1)
-	data["battery_max"] = round(battery?.maxcharge, 0.1)
+	data["battery_max"] = round(battery?.max_charge, 0.1)
 	data["net_power"] = DYNAMIC_CELL_UNITS_TO_W(net_power, 1)
 	data["circuit_props"] = ui_circuit_props
 	// This works because lists are always passed by reference in BYOND, so modifying unremovable_circuits
@@ -213,11 +217,12 @@
 			return TRUE
 
 		if("remove_cell")
+			if(!obj_cell_slot?.cell)
+				return TRUE
 			var/turf/T = get_turf(src)
-			battery.forceMove(T)
+			var/obj/item/cell/removed = obj_cell_slot.remove_cell(T)
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
-			to_chat(usr, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
-			battery = null
+			to_chat(usr, SPAN_NOTICE("You pull \the [removed] out of \the [src]'s power supplier."))
 			return TRUE
 
 		// Circuit actions
@@ -393,11 +398,13 @@
 
 // Actually puts the circuit inside, doesn't perform any checks.
 /obj/item/electronic_assembly/proc/add_component(var/obj/item/integrated_circuit/IC)
+	if(IC in assembly_components)
+		return
 	IC.forceMove(get_object())
 	IC.assembly = src
 	// Build TGUI lists here for efficiency.  We don't need to do that every time the UI updates.
 	ui_circuit_props.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC),"removable" = IC.removable,"input" = IC.can_be_asked_input)))
-	assembly_components |= IC
+	assembly_components += IC
 	/* TBI	diag hud
 	//increment numbers for diagnostic hud
 	if(component.action_flags & IC_ACTION_COMBAT)
@@ -439,18 +446,6 @@
 		else
 			I.forceMove(drop_location())
 
-	else if(I.is_crowbar())
-		if(!opened)
-			return FALSE
-		if(!battery)
-			to_chat(usr, SPAN_WARNING("There's no power cell to remove from \the [src]."))
-			return FALSE
-		battery.forceMove(get_turf(src))
-		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
-		to_chat(user, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
-		battery = null
-		return TRUE
-
 	else if(I.is_screwdriver())
 		if(panel_locked)
 			to_chat(user, SPAN_NOTICE("The screws are hidden."))
@@ -474,26 +469,6 @@
 		update_icon()
 		return TRUE
 
-	else if(istype(I, /obj/item/cell/device))
-		if(!opened)
-			to_chat(user, SPAN_WARNING("\The [src] isn't opened, so you can't put anything inside.  Try using a crowbar."))
-			for(var/obj/item/integrated_circuit/input/S in assembly_components)
-				S.attackby_react(I,user,user.a_intent)
-			return FALSE
-		if(battery)
-			to_chat(user, SPAN_WARNING("\The [src] already has \a [battery] inside.  Remove it first if you want to replace it."))
-			for(var/obj/item/integrated_circuit/input/S in assembly_components)
-				S.attackby_react(I,user,user.a_intent)
-			return FALSE
-		var/obj/item/cell/device/cell = I
-		if(!user.attempt_insert_item_for_installation(cell, src))
-			return
-		battery = cell
-		// TBI diag_hud_set_circuitstat() //update diagnostic hud
-		playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
-		to_chat(user, SPAN_NOTICE("You slot \the [cell] inside \the [src]'s power supplier."))
-		ui_interact(user)
-		return TRUE
 	else if(istype(I, /obj/item/integrated_electronics/analyzer))
 		if(!opened)
 			to_chat(usr, SPAN_WARNING("You need to open the [src] to analyze the contents!"))
@@ -534,6 +509,7 @@
 
 // Returns true if power was successfully drawn.
 /obj/item/electronic_assembly/proc/draw_power(amount)
+	var/obj/item/cell/battery = get_cell()
 	if(battery)
 		var/lost = battery.use(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
@@ -542,6 +518,7 @@
 
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power(amount)
+	var/obj/item/cell/battery = get_cell()
 	if(battery)
 		var/gained = battery.give(DYNAMIC_W_TO_CELL_UNITS(amount, 1))
 		net_power += gained
@@ -550,6 +527,7 @@
 
 // Returns true if power was successfully drawn.
 /obj/item/electronic_assembly/proc/draw_power_kw(amount)
+	var/obj/item/cell/battery = get_cell()
 	if(battery)
 		var/lost = battery.use(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power -= lost
@@ -558,6 +536,7 @@
 
 // Ditto for giving.
 /obj/item/electronic_assembly/proc/give_power_kw(amount)
+	var/obj/item/cell/battery = get_cell()
 	if(battery)
 		var/gained = battery.give(DYNAMIC_KW_TO_CELL_UNITS(amount, 1))
 		net_power += gained

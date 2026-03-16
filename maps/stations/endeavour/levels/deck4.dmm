@@ -1946,9 +1946,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4afthall/endeavour)
 "bLm" = (
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -3526,9 +3524,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 8
-	},
+/obj/orbital_deployment_marker/corner/upper_right,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "dhh" = (
@@ -5284,9 +5280,7 @@
 /area/crew_quarters/sleep/engi_wash)
 "eKh" = (
 /obj/structure/table/steel,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil,
 /obj/machinery/camera/network/engineering{
 	dir = 8
@@ -8800,21 +8794,11 @@
 /area/hallway/d4fwdportmaint/endeavour)
 "hPd" = (
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
@@ -9712,7 +9696,7 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/circuitboard/transhuman_synthprinter{
+/obj/item/circuitboard/resleeving/synth_printer{
 	pixel_x = -3;
 	pixel_y = 4
 	},
@@ -9983,6 +9967,7 @@
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 4
 	},
+/obj/orbital_deployment_marker/corner/lower_left,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "iTa" = (
@@ -10326,9 +10311,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 8
-	},
+/obj/orbital_deployment_marker/corner/lower_right,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "jio" = (
@@ -11617,7 +11600,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/starboardnacelle)
 "krA" = (
-/obj/structure/salvageable/autolathe,
+/obj/machinery/orbital_deployment_controller/auto_mount,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "krH" = (
@@ -11895,10 +11878,6 @@
 /obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"kGP" = (
-/obj/structure/salvageable/console_broken_os,
-/turf/simulated/floor/plating,
-/area/hallway/d4aftstrbdmaint/endeavour)
 "kGS" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -14392,21 +14371,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -15465,9 +15434,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "nJc" = (
-/obj/machinery/power/apc/south_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -19671,9 +19638,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/west_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/west_mount,
 /turf/simulated/floor/tiled/white,
 /area/engineering/shield_gen)
 "rZh" = (
@@ -20228,11 +20193,11 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/circuitboard/transhuman_clonepod{
+/obj/item/circuitboard/resleeving/grower_pod{
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/obj/item/circuitboard/resleeving_control{
+/obj/item/circuitboard/resleeving_console{
 	pixel_y = 1
 	},
 /obj/item/circuitboard/med_data{
@@ -23301,9 +23266,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/d4portafthall/endeavour)
 "vtv" = (
-/obj/machinery/power/apc/north_mount{
-	cell_type = /obj/item/cell/super
-	},
+/obj/machinery/power/apc/north_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -23555,7 +23518,7 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
-/obj/item/circuitboard/transhuman_resleever{
+/obj/item/circuitboard/resleeving/resleeving_pod{
 	pixel_x = 5;
 	pixel_y = -5
 	},
@@ -25710,9 +25673,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 4
-	},
+/obj/orbital_deployment_marker/corner/upper_left,
 /turf/simulated/floor/plating,
 /area/hallway/d4aftstrbdmaint/endeavour)
 "xCw" = (
@@ -34977,7 +34938,7 @@ kkQ
 uUN
 cdS
 kkQ
-krA
+kkQ
 kkQ
 kkQ
 kkQ
@@ -35176,7 +35137,7 @@ kkQ
 kkQ
 kkQ
 kkQ
-krA
+kkQ
 aXZ
 uUN
 jNg
@@ -35559,11 +35520,11 @@ kkQ
 uUN
 cdS
 kkQ
-kGP
 kkQ
 kkQ
 kkQ
-krA
+kkQ
+kkQ
 kkQ
 aXZ
 uUN
@@ -35755,7 +35716,7 @@ cdS
 kkQ
 kkQ
 kkQ
-krA
+kkQ
 kkQ
 kkQ
 kkQ
@@ -36140,13 +36101,13 @@ hjB
 kkQ
 uUN
 cdS
-kGP
 kkQ
 kkQ
 kkQ
 kkQ
 kkQ
-kGP
+kkQ
+kkQ
 aXZ
 uUN
 jNg
@@ -36526,12 +36487,12 @@ fpa
 kkQ
 hjB
 kkQ
-kkQ
+krA
 gbL
 gbL
 gbL
 gbL
-kkQ
+gbL
 gbL
 gbL
 gbL

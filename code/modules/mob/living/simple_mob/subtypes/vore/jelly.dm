@@ -30,10 +30,6 @@
 	say_list_type = /datum/say_list/jelly
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/retaliate/jelly
 
-// Activate Noms!
-/mob/living/simple_mob/animal/space/jelly
-	swallowTime = 2 SECONDS // Hungry little bastards.
-
 /datum/say_list/jelly
 	emote_hear = list("squishes","spluts","splorts","sqrshes","makes slime noises")
 	emote_see = list("undulates quietly")

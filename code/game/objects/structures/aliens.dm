@@ -72,24 +72,30 @@
 
 	anchored = 1
 	density = 0
+	color = "#332342"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	integrity = 20
 	integrity_max = 20
 	var/obj/structure/alien/weeds/node/linked_node = null
 	var/static/list/weedImageCache
-	color = "#332342"
+
+/obj/structure/alien/weeds/Initialize(mapload, node)
+	. = ..()
+	if(istype(loc, /turf/space))
+		return INITIALIZE_HINT_QDEL
+	linked_node = node
+	if(icon_state == "weeds")
+		icon_state = pick("weeds", "weeds1", "weeds2")
+
+	fullUpdateWeedOverlays()
 
 /obj/structure/alien/weeds/Destroy()
 	var/turf/T = get_turf(src)
-	// To not mess up the overlay updates.
-	loc = null
-
+	linked_node = null
+	. = ..()
 	for (var/obj/structure/alien/weeds/W in range(1,T))
 		W.updateWeedOverlays()
-
-	linked_node = null
-	..()
 
 /obj/structure/alien/weeds/node
 	icon_state = "weednode"
@@ -97,8 +103,8 @@
 	desc = "Weird purple octopus-like thing."
 	layer = ABOVE_TURF_LAYER+0.01
 	light_range = NODERANGE
-	var/node_range = NODERANGE
 
+	var/node_range = NODERANGE
 	var/set_color = null
 
 /obj/structure/alien/weeds/node/Initialize(mapload)
@@ -109,18 +115,11 @@
 
 /obj/structure/alien/weeds/node/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
-
-/obj/structure/alien/weeds/Initialize(mapload, node)
-	. = ..()
-	if(istype(loc, /turf/space))
-		qdel(src)
-		return
-	linked_node = node
-	if(icon_state == "weeds")
-		icon_state = pick("weeds", "weeds1", "weeds2")
-
-	fullUpdateWeedOverlays()
+	// todo: this is bad and is a nuclear option
+	for(var/obj/structure/alien/weeds/W in range(node_range, src))
+		if(W.linked_node == src)
+			W.linked_node = null
+	return ..()
 
 /obj/structure/alien/weeds/proc/updateWeedOverlays()
 
@@ -325,14 +324,22 @@ Alien plants should do something if theres a lot of poison
 	integrity_failure = 40
 
 	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
+	var/datum/proxfield/detector
 
 /obj/structure/alien/egg/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	new /datum/proxfield/basic/square(src, 1)
-	spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
-		if((status == GROWING) && (BURST == 0))
-			Grow()
+	detector = new /datum/proxfield/basic/square(src, 1)
+	addtimer(CALLBACK(src, PROC_REF(try_grow)), rand(MIN_GROWTH_TIME, MAX_GROWTH_TIME))
+
+/obj/structure/alien/egg/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(detector)
+	return ..()
+
+/obj/structure/alien/egg/proc/try_grow()
+	if(status == GROWING)
+		Grow()
 
 /obj/structure/alien/egg/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
 
@@ -360,7 +367,6 @@ Alien plants should do something if theres a lot of poison
 	icon_state = "egg"
 	status = GROWN
 	new /obj/item/clothing/mask/facehugger(src)
-	return
 
 /obj/structure/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
 	if(status == GROWN || status == GROWING)
@@ -390,8 +396,7 @@ Alien plants should do something if theres a lot of poison
 	if(exposed_temperature > 500 + T0C)
 		damage_integrity(5, TRUE)
 
-/*/obj/structure/alien/egg/HasProximity(atom/movable/AM as mob|obj)
-
+/obj/structure/alien/egg/Proximity(datum/proxfield/field, atom/movable/AM)
 	if(status == GROWN)
 		if(!CanHug(AM))
 			return
@@ -400,7 +405,7 @@ Alien plants should do something if theres a lot of poison
 		if(C.stat == CONSCIOUS && C.status_flags & TRAIT_XENO_HOST)
 			return
 
-		Burst(0)*/
+		Burst(0)
 
 /obj/structure/alien/egg/process()
 	if(GROWN)

@@ -43,8 +43,8 @@ interface ModalLevelData {
   displayName: string;
   traits: string[] | null;
   attributes: Record<string, string | number> | null;
-  baseTurf: string;
-  baseArea: string;
+  baseTurf: string | null;
+  baseArea: string | null;
   structX: number | null;
   structY: number | null;
   structZ: number | null;
@@ -307,6 +307,7 @@ const MapLevelProperties = (props: {
           onSelectPath={(path) => {
             levelAct('levelBaseTurf', { type: path });
           }}
+          allowDeselect
           filter={{
             turfs: {
               enabled: true,
@@ -321,6 +322,7 @@ const MapLevelProperties = (props: {
           onSelectPath={(path) => {
             levelAct('levelBaseArea', { type: path });
           }}
+          allowDeselect
           filter={{
             areas: {
               enabled: true,

@@ -442,7 +442,6 @@
 	armor_type = /datum/armor/station/heavy
 	encumbrance = ITEM_ENCUMBRANCE_ARMOR_HEAVY
 	weight = ITEM_WEIGHT_ARMOR_HEAVY
-	max_combined_volume = WEIGHT_VOLUME_SMALL * 4
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
 	name = "officer heavy armor vest"

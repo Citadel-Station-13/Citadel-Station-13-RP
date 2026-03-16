@@ -42,13 +42,13 @@
 	var/raw_html = process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
 	if(!raw_html)
 		return
-	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
+	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, actor)
 
-/mob/observer/dead/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
+/mob/observer/dead/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
 	. = emote_text
 	. = html_encode(emote_text)
 	. = say_emphasis(.)
 	. = SPAN_DEADSAY(emoji_parse(.))
 
-/mob/observer/dead/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead)
+/mob/observer/dead/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
 	say_dead_direct(raw_html, src)

@@ -95,7 +95,7 @@
  * get speed in tiles / decisecond
  */
 /obj/overmap/entity/visitable/ship/proc/get_speed_legacy()
-	return OVERMAP_DIST_TO_PIXEL(get_speed()) / (WORLD_ICON_SIZE * 10)
+	return OVERMAP_DIST_TO_PIXEL(get_abstracted_speed()) / (WORLD_ICON_SIZE * 10)
 
 // Get heading in BYOND dir bits
 /obj/overmap/entity/visitable/ship/proc/get_heading_direction()

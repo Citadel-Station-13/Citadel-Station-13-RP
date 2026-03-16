@@ -216,6 +216,7 @@
 					to_chat(user, "<span class='notice'>Mop attached.</span>")
 
 		if(8)
+			// TODO: have them run off cells after lol
 			if(istype(W, /obj/item/cell))
 				if(!user.attempt_insert_item_for_installation(W, src))
 					return

@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2023 Citadel Station developers.          *//
 
+/**
+ * Makes standard wall-mount types. Things will point **away** from their wall.
+ */
 #define CREATE_WALL_MOUNTING_TYPES(TYPE) \
 ##TYPE/north_mount{ \
 	dir = SOUTH; \
@@ -42,21 +45,25 @@
 ##TYPE/north_mount{ \
 	dir = SOUTH; \
 	pixel_y = SHIFT; \
+	base_pixel_y = SHIFT; \
 } \
 ##TYPE/south_mount{ \
 	dir = NORTH; \
 	pixel_y = -SHIFT; \
+	base_pixel_y = -SHIFT; \
 } \
 ##TYPE/east_mount{ \
 	dir = WEST; \
 	pixel_x = SHIFT; \
+	base_pixel_x = SHIFT; \
 } \
 ##TYPE/west_mount{ \
 	dir = EAST; \
 	pixel_x = -SHIFT; \
+	base_pixel_x = -SHIFT; \
 } \
 ##TYPE/auto_mount/Initialize(){ \
-	auto_orient_wallmount_single_preinit(); \
+	auto_orient_wallmount_single_preinit(SHIFT); \
 	return ..(); \
 }
 
@@ -64,21 +71,25 @@
 ##TYPE/north_mount{ \
 	dir = SOUTH; \
 	pixel_y = SHIFT; \
+	base_pixel_y = SHIFT; \
 } \
 ##TYPE/south_mount{ \
 	dir = NORTH; \
 	pixel_y = -SHIFT; \
+	base_pixel_y = -SHIFT; \
 } \
 ##TYPE/east_mount{ \
 	dir = WEST; \
 	pixel_x = SHIFT; \
+	base_pixel_x = SHIFT; \
 } \
 ##TYPE/west_mount{ \
 	dir = EAST; \
 	pixel_x = -SHIFT; \
+	base_pixel_x = -SHIFT; \
 } \
 ##TYPE/auto_mount { icon_state = AUTOSPRITE } \
 ##TYPE/auto_mount/Initialize(){ \
-	auto_orient_wallmount_single_preinit(); \
+	auto_orient_wallmount_single_preinit(SHIFT); \
 	return ..(); \
 }

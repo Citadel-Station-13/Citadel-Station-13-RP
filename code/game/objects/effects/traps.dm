@@ -341,10 +341,9 @@ Add those other swinging traps you mentioned above!
 
 	//This needs to check dirs, projectiles, accuracy, reload/recharge. It's kinda gonna suck. Consult Turret code.
 
-/obj/effect/trap/launcher/Initialize(mapload)
-	. = ..()
-	simple_network_register(id)
-	START_PROCESSING(SSobj, src)
+/obj/effect/trap/launcher/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/effect/trap/launcher/fire()
 	update_icon()

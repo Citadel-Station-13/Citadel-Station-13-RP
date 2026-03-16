@@ -28,6 +28,8 @@
 			var/direct = pick(GLOB.alldirs)
 			for(i=0, i<pick(1;25,2;50,3,4;200), i++)
 				sleep(1)
+				if(QDELETED(expl))
+					break
 				step(expl,direct)
 
 /obj/effect/explosion

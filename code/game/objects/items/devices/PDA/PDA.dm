@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	slot_flags = SLOT_ID | SLOT_BELT
 	rad_flags = RAD_BLOCK_CONTENTS
 	item_flags = ITEM_NO_BLUDGEON
+	belt_storage_class = BELT_CLASS_SMALL
 
 	//Main variables
 	var/pdachoice = 1
@@ -1542,8 +1543,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pdabox"
 
-/obj/item/storage/box/PDAs/New()
-	..()
+/obj/item/storage/box/PDAs/Initialize(mapload, empty)
+	. = ..()
 	new /obj/item/pda(src)
 	new /obj/item/pda(src)
 	new /obj/item/pda(src)

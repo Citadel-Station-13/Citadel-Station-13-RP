@@ -191,6 +191,7 @@
 	RETURN_TYPE(/datum/prototype)
 	// todo: optimize
 	if(isnull(type_or_id))
+		// null is valid
 		return
 	else if(istext(type_or_id))
 		if(init_reverse_lookup_shim)
@@ -229,7 +230,7 @@
  *
  * prototypes returned should never, ever be modified
  *
- * @return prototype instance or null
+ * @return prototype instance, null, or REPOSITORY_FETCH_DEFER
  */
 /datum/controller/repository/proc/fetch_or_defer(datum/prototype/type_or_id) as /datum/prototype
 	RETURN_TYPE(/datum/prototype)

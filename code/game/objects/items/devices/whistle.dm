@@ -7,6 +7,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_EARS
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR | SUIT_STORAGE_CLASS_HARDWEAR
+	belt_storage_class = BELT_CLASS_SMALL
 
 	var/use_message = "Halt! Security!"
 	var/spamcheck = 0

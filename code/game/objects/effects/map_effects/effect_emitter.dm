@@ -13,7 +13,7 @@
 	configure_effects()
 	return ..()
 
-/obj/effect/map_effect/interval/effect_emitter/interval/Destroy()
+/obj/effect/map_effect/interval/effect_emitter/Destroy()
 	QDEL_NULL(effect_system)
 	return ..()
 

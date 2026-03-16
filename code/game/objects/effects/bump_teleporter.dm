@@ -1,34 +1,58 @@
-var/list/obj/effect/bump_teleporter/BUMP_TELEPORTERS = list()
-
+/// Abstract effect, that when a mob touches it, it will forceMove them to the teleporter-exit point (that matches the ID set map-side).
 /obj/effect/bump_teleporter
-	name = "bump-teleporter"
+	name = "bump teleporter (forceMove)"
+	desc = "Use me when you want to move every single mob without any exceptions."
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x2"
-	var/id = null			//id of this bump_teleporter.
-	var/id_target = null	//id of bump_teleporter which this moves you to.
-	invisibility = 101 		//nope, can't see this
-	anchored = 1
-	density = 1
-	opacity = 0
+	invisibility = INVISIBILITY_ABSTRACT //nope, can't see this
+	anchored = TRUE
+	density = TRUE
+	opacity = FALSE
+	/// id of this bump_teleporter.
+	var/id = null
+	/// id of bump_teleporter which this moves you to.
+	var/id_target = null
+	/// List of all teleporters in the world.
+	var/static/list/AllTeleporters
 
 /obj/effect/bump_teleporter/Initialize(mapload)
 	. = ..()
-	BUMP_TELEPORTERS += src
+	LAZYADD(AllTeleporters, src)
 
 /obj/effect/bump_teleporter/Destroy()
-	BUMP_TELEPORTERS -= src
+	LAZYREMOVE(AllTeleporters, src)
 	return ..()
 
-/obj/effect/bump_teleporter/Bumped(atom/user)
-	if(!ismob(user))
-		//user.loc = src.loc	//Stop at teleporter location
+/obj/effect/bump_teleporter/singularity_act()
+	return
+
+/obj/effect/bump_teleporter/singularity_pull(atom/singularity, current_size)
+	return
+
+/obj/effect/bump_teleporter/Bumped(atom/movable/bumper)
+	if(!validate_setup(bumper))
 		return
+
+	for(var/obj/effect/bump_teleporter/teleporter in AllTeleporters)
+		if(teleporter.id == id_target)
+			teleport_action(bumper, get_turf(teleporter)) //Teleport to location with correct id.
+			return
+
+	stack_trace("Bump_teleporter [src] could not find a teleporter with id [id_target]!")
+
+/// Check to see if our teleporter was set up correctly mapside. Return TRUE if everything is fine, FALSE if not.
+/obj/effect/bump_teleporter/proc/validate_setup(atom/movable/checkable)
+	if(!ismob(checkable))
+		return FALSE
 
 	if(!id_target)
-		//user.loc = src.loc	//Stop at teleporter location, there is nowhere to teleport to.
-		return
+		var/message = "Bump teleporter [src] at [AREACOORD(src)] has no id_target set."
+		stack_trace(message)
+		log_mapping(message)
+		return FALSE
 
-	for(var/obj/effect/bump_teleporter/BT in BUMP_TELEPORTERS)
-		if(BT.id == src.id_target)
-			usr.loc = BT.loc	//Teleport to location with correct id.
-			return
+	return TRUE
+
+/// Actually move our target atom from one position to another. Return TRUE if everything is fine. Override this proc on subtypes for specific teleportation methods.
+/obj/effect/bump_teleporter/proc/teleport_action(atom/movable/target, turf/destination)
+	target.locationTransitForceMove(destination)

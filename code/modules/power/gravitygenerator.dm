@@ -153,6 +153,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			qdel(O)
 	return ..()
 
+// TODO: violates GC
 /obj/machinery/gravity_generator/main/proc/setup_parts()
 	var/turf/our_turf = get_turf(src)
 	// 9x9 block obtained from the bottom middle of the block

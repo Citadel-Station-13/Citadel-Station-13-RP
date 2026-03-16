@@ -190,7 +190,7 @@
 	if(!length(turfs))
 		next()
 	++cycles
-	return !length(turfs) && cycles < RAD_MAXIMUM_CYCLES
+	return !length(turfs) || cycles >= RAD_MAXIMUM_CYCLES
 
 /datum/radiation_wave/proc/next()
 	turfs = turfs_next

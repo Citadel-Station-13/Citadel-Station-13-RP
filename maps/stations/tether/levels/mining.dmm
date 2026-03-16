@@ -270,8 +270,8 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/obj/item/cell/high,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "hF" = (

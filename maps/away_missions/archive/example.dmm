@@ -400,8 +400,7 @@
 /area/awaymission/example)
 "bG" = (
 /obj/machinery/door/airlock{
-	name = "Unisex Restrooms";
-	
+	name = "Unisex Restrooms"
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/example)
@@ -615,7 +614,7 @@
 /area/awaymission/example)
 "cw" = (
 /obj/structure/table/standard,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_1/medium,
 /turf/simulated/floor,
 /area/awaymission/example)
 "cy" = (

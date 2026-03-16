@@ -116,12 +116,12 @@
 /area/submap/Manor1)
 "aA" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aB" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
@@ -160,16 +160,16 @@
 /area/submap/Manor1)
 "aI" = (
 /obj/structure/flora/pottedplant/dead,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aJ" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aK" = (
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "aL" = (
@@ -407,12 +407,12 @@
 /obj/item/material/kitchen/utensil/spoon,
 /obj/item/material/kitchen/utensil/spoon,
 /obj/item/material/kitchen/utensil/spoon,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bF" = (
 /obj/structure/table/standard,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bG" = (
@@ -434,7 +434,7 @@
 "bJ" = (
 /obj/structure/table/standard,
 /obj/item/material/kitchen/rollingpin,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "bK" = (
@@ -521,8 +521,8 @@
 /area/submap/Manor1)
 "cc" = (
 /obj/structure/closet/cabinet,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
+/obj/item/cell/basic/tier_4/weapon,
+/obj/item/cell/basic/tier_4/weapon,
 /obj/random/medical,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
@@ -643,7 +643,7 @@
 /area/submap/Manor1)
 "cz" = (
 /obj/effect/debris/cleanable/cobweb2,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "cA" = (
@@ -657,7 +657,7 @@
 /area/submap/Manor1)
 "cC" = (
 /obj/effect/debris/cleanable/spiderling_remains,
-/obj/effect/spider/stickyweb,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/holofloor/wood,
 /area/submap/Manor1)
 "cD" = (

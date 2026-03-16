@@ -87,3 +87,6 @@
 #define CONICAL_NORTHWEST_BITS	(NORTH_BIT	|	WEST_BIT		|	NORTHWEST_BIT	)
 #define CONICAL_SOUTHWEST_BITS	(SOUTH_BIT	|	SOUTHWEST_BIT	|	WEST_BIT		)
 #define CONICAL_SOUTHEAST_BITS	(SOUTH_BIT	|	SOUTHEAST_BIT	|	EAST_BIT		)
+
+/// Inverse direction, taking into account UP|DOWN if necessary.
+#define REVERSE_DIR(dir) ( ((dir & 85) << 1) | ((dir & 170) >> 1) )

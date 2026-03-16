@@ -166,12 +166,15 @@
  * * amount - how much
  * * gradual - burst or gradual? if you want to play a sound or something, you usually want to check this.
  * * do_not_break - skip calling atom_break
+ *
+ * @return amount damaged
  */
 /atom/proc/damage_integrity(amount, gradual, do_not_break)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	var/was_working = integrity > integrity_failure
-	integrity = max(0, integrity - amount)
+	. = min(integrity, amount)
+	integrity -= .
 	if(was_working && integrity <= integrity_failure && !do_not_break)
 		atom_break()
 	if(integrity <= 0)

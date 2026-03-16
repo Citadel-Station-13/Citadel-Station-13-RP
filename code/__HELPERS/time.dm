@@ -1,28 +1,127 @@
-GLOBAL_VAR_INIT(startup_year, text2num(time2text(world.time, "YYYY")))
-GLOBAL_VAR_INIT(startup_month, text2num(time2text(world.time, "MM")))
-GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
+// HEY! this doesnt return date now since this is used in logs, and logs already have date hints. also roundid exists which is bound to a date in the db
+/// Returns UTC timestamp with the specifified format and optionally deciseconds
+/proc/time_stamp(format = "hh:mm:ss", show_ds)
+	var/time_string = time2text(world.timeofday, format, TIMEZONE_UTC)
+	return show_ds ? "[time_string]:[world.timeofday % 10]" : time_string
 
-#define TimeOfGame (get_game_time())
-#define TimeOfTick (TICK_USAGE*0.01*world.tick_lag)
+/// Returns timestamp since the server started, for use with world.time
+/proc/gameTimestamp(format = "hh:mm:ss", wtime=world.time)
+	return time2text(wtime, format, NO_TIMEZONE)
 
-/proc/get_game_time()
-	var/global/time_offset = 0
-	var/global/last_time = 0
-	var/global/last_usage = 0
+///returns timestamp in a sql and a not-quite-compliant ISO 8601 friendly format. Do not use for SQL, use NOW() instead
+/proc/ISOtime(timevar)
+	return time2text(timevar || world.timeofday, "YYYY-MM-DD hh:mm:ss", world.timezone)
 
-	var/wtime = world.time
-	var/wusage = TICK_USAGE * 0.01
+GLOBAL_VAR_INIT(midnight_rollovers, 0)
+GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
+/proc/update_midnight_rollover()
+	if (world.timeofday < GLOB.rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
+		GLOB.midnight_rollovers++
+	GLOB.rollovercheck_last_timeofday = world.timeofday
+	return GLOB.midnight_rollovers
 
-	if(last_time < wtime && last_usage > 1)
-		time_offset += last_usage - 1
+///Returns a string day as an integer in ISO format 1 (Monday) - 7 (Sunday)
+/proc/weekday_to_iso(ddd)
+	switch (ddd)
+		if (MONDAY)
+			return 1
+		if (TUESDAY)
+			return 2
+		if (WEDNESDAY)
+			return 3
+		if (THURSDAY)
+			return 4
+		if (FRIDAY)
+			return 5
+		if (SATURDAY)
+			return 6
+		if (SUNDAY)
+			return 7
 
-	last_time = wtime
-	last_usage = wusage
+///Returns an integer in ISO format 1 (Monday) - 7 (Sunday) as a string day
+/proc/iso_to_weekday(ddd)
+	switch (ddd)
+		if (1)
+			return MONDAY
+		if (2)
+			return TUESDAY
+		if (3)
+			return WEDNESDAY
+		if (4)
+			return THURSDAY
+		if (5)
+			return FRIDAY
+		if (6)
+			return SATURDAY
+		if (7)
+			return SUNDAY
 
-	return wtime + (time_offset + wusage) * world.tick_lag
+/// Returns the day (mon, tues, wen...) in number format, 1 (monday) - 7 (sunday) from the passed in date (year, month, day)
+/// All inputs are expected indexed at 1
+/proc/day_of_month(year, month, day)
+	// https://en.wikipedia.org/wiki/Zeller%27s_congruence
+	var/m = month < 3 ? month + 12 : month // month (march = 3, april = 4...february = 14)
+	var/K = year % 100 // year of century
+	var/J = round(year / 100) // zero-based century
+	// day 0-6 saturday to friday:
+	var/h = (day + round(13 * (m + 1) / 5) + K + round(K / 4) + round(J / 4) - 2 * J) % 7
+	//convert to ISO 1-7 monday first format
+	return ((h + 5) % 7) + 1
+
+/proc/first_day_of_month(year, month)
+	return day_of_month(year, month, 1)
+
+/**
+ * Takes a value of time in deciseconds.
+ * Returns a text value of that number in hours, minutes, or seconds.
+ */
+/proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
+	var/second = FLOOR(time_value * 0.1, round_seconds_to)
+	if(!second)
+		return "right now"
+	if(second < 60)
+		return "[second] second[(second != 1)? "s":""]"
+	var/minute = FLOOR(second / 60, 1)
+	second = FLOOR(MODULUS_F(second, 60), round_seconds_to)
+	var/secondT
+	if(second)
+		secondT = " and [second] second[(second != 1)? "s":""]"
+	if(minute < 60)
+		return "[minute] minute[(minute != 1)? "s":""][secondT]"
+	var/hour = FLOOR(minute / 60, 1)
+	minute = MODULUS_F(minute, 60)
+	var/minuteT
+	if(minute)
+		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
+	if(hour < 24)
+		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
+	var/day = FLOOR(hour / 24, 1)
+	hour = MODULUS_F(hour, 24)
+	var/hourT
+	if(hour)
+		hourT = " and [hour] hour[(hour != 1)? "s":""]"
+	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
+
+/proc/daysSince(realtimev)
+	return round((world.realtime - realtimev) / (24 HOURS))
+
+/**
+ * Converts a time expressed in deciseconds (like world.time) to the 12-hour time format.
+ * the format arg is the format passed down to time2text() (e.g. "hh:mm" is hours and minutes but not seconds).
+ * the timezone is the time value offset from the local time. It's to be applied outside time2text() to get the AM/PM right.
+ */
+/proc/time_to_twelve_hour(time, format = "hh:mm:ss", timezone = TIMEZONE_UTC)
+	time = MODULUS_F(time + (timezone * (1 HOURS)), 24 HOURS)
+	var/am_pm = "AM"
+	if(time > 12 HOURS)
+		am_pm = "PM"
+		if(time > 13 HOURS)
+			time -= 12 HOURS // e.g. 4:16 PM but not 00:42 PM
+	else if (time < 1 HOURS)
+		time += 12 HOURS // e.g. 12.23 AM
+	return "[time2text(time, format)] [am_pm]"
 
 #define worldtime2stationtime(time) SStime_keep.render_galactic_time_short(time)
-#define round_duration_in_ds (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
 #define station_time_in_ds (world.time + SStime_keep.get_galactic_time_offset())
 
 // TODO: remove
@@ -32,33 +131,6 @@ GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 // TODO: remove
 /proc/stationdate2text()
 	return SStime_keep.render_galactic_date()
-
-/// ISO 8601
-/proc/time_stamp()
-	var/date_portion = time2text(world.timeofday, "YYYY-MM-DD")
-	var/time_portion = time2text(world.timeofday, "hh:mm:ss")
-	return "[date_portion]T[time_portion]"
-
-/proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
-	if(!wtime)
-		wtime = world.time
-	return time2text(wtime, format, 0)
-
-/**
- * Returns 1 if it is the selected month and day.
- */
-/proc/isDay(var/month, var/day)
-	if(isnum(month) && isnum(day))
-		/// Get the current month.
-		var/MM = text2num(time2text(world.timeofday, "MM"))
-		/// Get the current day.
-		var/DD = text2num(time2text(world.timeofday, "DD"))
-		if(month == MM && day == DD)
-			return TRUE
-
-		// Uncomment this out when debugging!
-		// else
-		// 	return TRUE
 
 /var/next_duration_update = 0
 /var/last_round_duration = 0
@@ -71,7 +143,7 @@ GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 		return last_round_duration
 
 	/// 1/10 of a second, not real milliseconds but whatever.
-	var/mills = round_duration_in_ds
+	var/mills = STATION_TIME_PASSED()
 	/// Not really needed, but I'll leave it here for refrence.. or something.
 	//var/secs = ((mills % 36000) % 600) / 10
 	var/mins = round((mills % 36000) / 600)
@@ -98,37 +170,3 @@ GLOBAL_VAR_INIT(startup_day, text2num(time2text(world.time, "DD")))
 			return 5
 		else
 			return 1
-
-/**
- * Takes a value of time in deciseconds.
- * Returns a text value of that number in hours, minutes, or seconds.
- */
-/proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
-	var/second = FLOOR(time_value * 0.1, round_seconds_to)
-	if(!second)
-		return "right now"
-	if(second < 60)
-		return "[second] second[(second != 1)? "s":""]"
-	var/minute = FLOOR(second / 60, 1)
-	second = MODULUS_F(second, 60)
-	var/secondT
-	if(second)
-		secondT = " and [second] second[(second != 1)? "s":""]"
-	if(minute < 60)
-		return "[minute] minute[(minute != 1)? "s":""][secondT]"
-	var/hour = FLOOR(minute / 60, 1)
-	minute = MODULUS_F(minute, 60)
-	var/minuteT
-	if(minute)
-		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
-	if(hour < 24)
-		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
-	var/day = FLOOR(hour / 24, 1)
-	hour = MODULUS_F(hour, 24)
-	var/hourT
-	if(hour)
-		hourT = " and [hour] hour[(hour != 1)? "s":""]"
-	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
-
-/proc/daysSince(realtimev)
-	return round((world.realtime - realtimev) / (24 HOURS))

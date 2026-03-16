@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { useState } from "react";
 import { Box, Button, NumberInput, Section, Stack } from "tgui-core/components";
 

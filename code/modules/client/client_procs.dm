@@ -44,9 +44,14 @@
 	If you have any  questions about this stuff feel free to ask. ~Carn
 	*/
 
-/client/Topic(href, href_list, hsrc)
+/client/Topic(href, href_list, hsrc, hsrc_command)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
+
+#ifndef TESTING
+	if (lowertext(hsrc_command) == "_debug") //disable the integrated byond vv in the client side debugging tools since it doesn't respect vv read protections
+		return
+#endif
 
 	// Rate limiting
 	var/mtl = config_legacy.minute_topic_limit		//CONFIG_GET(number/minute_topic_limit)
@@ -216,7 +221,6 @@
 	// Instantiate cutscene system
 	spawn(1)
 		init_cutscene_system()
-	tooltips = new(src)
 
 	//* Setup on-map HUDs *//
 	action_drawer = new(src)
@@ -278,8 +282,9 @@
 	tgui_panel.initialize()
 	// initialize cutscene browser
 	// - (we don't, the JS does it for us.) -
-	// Initialize tooltips
-	tooltips.initialize()
+	//This is down here because of the browse() calls in tooltip/New()
+	if(!tooltips)
+		tooltips = new /datum/tooltip(src)
 
 	connection_time = world.time
 	connection_realtime = world.realtime

@@ -2,9 +2,9 @@
 	name = "Gopher Chassis"
 	icon_state = "gopher-chassis"
 
-/obj/item/vehicle_chassis/micro/gopher/New()
-	..()
+/obj/item/vehicle_chassis/micro/gopher/Initialize(mapload)
 	construct = new /datum/construction/mecha/gopher_chassis(src)
+	return ..()
 
 /obj/item/vehicle_part/micro/gopher_torso
 	name="Gopher Torso"

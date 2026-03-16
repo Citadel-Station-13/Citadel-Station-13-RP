@@ -103,7 +103,8 @@
 	var/list/children = list()
 	/// Internal organs of this body part
 	var/list/internal_organs = list()
-	/// Currently implanted objects.
+	/// Implanted entities.
+	/// * Not necessarily `/obj/item/implant`, or even an `/obj/item`.
 	var/list/implants = list()
 	/// Relative size of the organ.
 	var/organ_rel_size = 25
@@ -157,17 +158,20 @@
 	addtimer(CALLBACK(src, PROC_REF(get_icon)), 1)
 
 /obj/item/organ/external/Destroy()
-
-	if(parent && parent.children)
-		parent.children -= src
+	if(parent)
+		if(parent.children)
+			parent.children -= src
+		parent = null
 
 	if(children)
 		for(var/obj/item/organ/external/C in children)
 			qdel(C)
+		children = null
 
 	if(internal_organs)
 		for(var/obj/item/organ/O in internal_organs)
 			qdel(O)
+		internal_organs = null
 
 	if(splinted && splinted.loc == src)
 		qdel(splinted)
@@ -180,7 +184,7 @@
 		while(null in owner.organs)
 			owner.organs -= null
 
-	implants.Cut() // Remove these too!
+	QDEL_LIST_NULL(implants)
 
 	return ..()
 
@@ -380,7 +384,7 @@
 
 	// todo: lol this is shit
 	// legacy: jostle if broken
-	if(is_broken() && brute && !(damage_mode & DAMAGE_MODE_GRADUAL))
+	if(is_broken() && brute && !(damage_mode & DAMAGE_MODE_GRADUAL) && owner)
 		jostle_bone(brute)
 		if(organ_can_feel_pain() && IS_CONSCIOUS(owner) && prob(40))
 			spawn(-1)
@@ -423,7 +427,8 @@
 			else
 				create_wound( WOUND_TYPE_BRUISE, damage_anyways_brute )
 			// rest goes into shock
-			owner.shock_stage += overflow_brute * 0.33
+			if(owner)
+				owner.shock_stage += overflow_brute * 0.33
 	if(burn)
 		var/can_inflict_burn = max(0, max_damage - burn_dam)
 		if(can_inflict_burn >= burn)
@@ -436,7 +441,8 @@
 			overflow_burn -= damage_anyways_burn
 			create_wound(WOUND_TYPE_BURN, damage_anyways_burn + can_inflict_burn)
 			// rest goes into shock
-			owner.shock_stage += overflow_burn * 0.33
+			if(owner)
+				owner.shock_stage += overflow_burn * 0.33
 
 	// sync the organ's damage with its wounds
 	update_damages()

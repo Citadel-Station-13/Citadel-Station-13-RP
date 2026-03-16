@@ -33,7 +33,15 @@
 /obj/item/reagent_containers/food/snacks/Initialize(mapload)
 	. = ..()
 	if(nutriment_amt)
-		reagents.add_reagent("nutriment",nutriment_amt,nutriment_desc)
+		var/datum/nutriment_data/nutriment_data = new
+		for(var/taste in nutriment_desc)
+			var/amount = nutriment_desc[taste]
+			nutriment_data.add_taste(taste, amount, TRUE)
+		reagents.add_reagent(
+			/datum/reagent/nutriment::id,
+			nutriment_amt,
+			nutriment_data,
+		)
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/reagent_containers/food/snacks/proc/On_Consume(mob/M)
@@ -219,7 +227,7 @@
 			var/confirm=input(user, "Are you certain you want to insert \the [W] into [src]?","Hide item") as null|anything in list("Yes","No")
 			if(!confirm || confirm == "No")
 				return
-			if (W.w_class >= w_class || is_robot_module(W))
+			if (W.w_class >= w_class)
 				return
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
@@ -260,7 +268,7 @@
 /// FOOD END
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_containers/food/snacks/attack_generic(var/mob/living/user)
-	if(!isanimal(user) && !isalien(user))
+	if(!isanimal_legacy_this_is_broken(user) && !isalien(user))
 		return
 	user.visible_message("<b>[user]</b> nibbles away at \the [src].","You nibble away at \the [src].")
 	bitecount++
@@ -561,10 +569,12 @@
 /obj/item/reagent_containers/food/snacks/donut
 	name = "donut"
 	desc = "Goes great with Robust Coffee."
+	description_fluff = "These donuts claim to be made fresh daily in a boutique bakery in New Reykjavik and delivered to Nanotrasen's hardworking asset protection crew. They're probably synthesized."
 	icon_state = "donut1"
 	filling_color = "#D9C386"
 	var/overlay_state = "box-donut1"
 	nutriment_desc = list("sweetness", "donut")
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/reagent_containers/food/snacks/donut/normal
 	name = "donut"
@@ -4114,17 +4124,14 @@ END CITADEL CHANGE */
 /mob/living/carbon/alien/diona
 	composition_reagent = "nutriment"//Dionae are plants, so eating them doesn't give animal protein
 
-/mob/living/simple_mob/slime
-	composition_reagent = "slimejelly"
+// /mob/living/simple_animal
+// 	var/kitchen_tag = "animal" //Used for cooking with animals
 
-/mob/living/simple_animal
-	var/kitchen_tag = "animal" //Used for cooking with animals
+// /mob/living/simple_animal/mouse
+// 	kitchen_tag = "rodent"
 
-/mob/living/simple_animal/mouse
-	kitchen_tag = "rodent"
-
-/mob/living/simple_animal/lizard
-	kitchen_tag = "lizard"
+// /mob/living/simple_animal/lizard
+// 	kitchen_tag = "lizard"
 
 /obj/item/reagent_containers/food/snacks/sliceable/cheesewheel
 	slices_num = 8
@@ -5727,11 +5734,6 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 15)
-	bitesize = 5
-
 /obj/item/reagent_containers/food/snacks/slice/sushi/crab/filled
 	name = "piece of sushi (crab)"
 	desc = "A slice of a larger sushi roll, ready to devour."
@@ -5751,11 +5753,6 @@ END CITADEL CHANGE */
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
 
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 15)
-	bitesize = 5
-
 /obj/item/reagent_containers/food/snacks/slice/sushi/horse/filled
 	name = "piece of sushi (horse)"
 	desc = "A slice of a larger sushi roll, ready to devour."
@@ -5774,11 +5771,6 @@ END CITADEL CHANGE */
 	slices_num = 5
 	nutriment_desc = list("rice" = 5, "fish" = 5)
 	nutriment_amt = 20
-
-/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 15)
-	bitesize = 5
 
 /obj/item/reagent_containers/food/snacks/slice/sushi/mystery/filled
 	name = "piece of sushi (???)"
@@ -5832,7 +5824,7 @@ END CITADEL CHANGE */
 	name = "roast beef"
 	desc = "It's beef. It's roasted. It's been a staple of dining tradition for centuries."
 	icon_state = "roastbeef"
-	trash = /obj/item/trash/waffles
+	trash = /obj/item/trash/plate
 	nutriment_amt = 8
 	nutriment_desc = list("cooked meat" = 5)
 

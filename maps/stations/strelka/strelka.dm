@@ -43,6 +43,10 @@
 		/datum/shuttle/autodock/ferry/supply/cargo/strelka,
 		/datum/shuttle/autodock/overmap/emt/strelka,
 		/datum/shuttle/autodock/overmap/civvie/strelka,
+		/datum/shuttle/autodock/overmap/trade/personalmicro1,
+		/datum/shuttle/autodock/overmap/trade/personalmicro2,
+		/datum/shuttle/autodock/overmap/trade/personalmicro3,
+		/datum/shuttle/autodock/overmap/trade/personalmicro4,
 		/datum/shuttle/autodock/ferry/belter,
 	)
 
@@ -69,9 +73,9 @@
 	company_short	= "NT"
 	starsys_name	= "Lythios-43"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the NEV Strelka. The scheduled NCS Herrera II shuttle flight has docked with the NSV Strelka. Departing crew should board the shuttle within %ETD%."
+	shuttle_docked_message = "This is the %dock_name% calling to the NEV Strelka. The scheduled NCS Herrera II shuttle flight has docked with the NEV Strelka. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "This is the %dock_name% calling to the NSV Strelka. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
+	shuttle_called_message = "This is the %dock_name% calling to the NEV Strelka. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "NCS Herrera II"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
@@ -147,7 +151,7 @@
 	id = "StrelkaDeck4"
 	name = "strelka - Deck 4"
 	display_id = "strelka-deck-4"
-	display_name = "NSV strelka - Deck 4"
+	display_name = "NEV Strelka - Deck 4"
 	path = "maps/stations/strelka/levels/strelka_deck4.dmm"
 	traits = list(
 		ZTRAIT_STATION,
@@ -163,7 +167,7 @@
 	id = "StrelkaDeck3"
 	name = "strelka - Deck 3"
 	display_id = "strelka-deck-3"
-	display_name = "NSV strelka - Deck 3"
+	display_name = "NEV Strelka - Deck 3"
 	path = "maps/stations/strelka/levels/strelka_deck3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
@@ -180,7 +184,7 @@
 	id = "StrelkaDeck2"
 	name = "strelka - Deck 2"
 	display_id = "strelka-deck-2"
-	display_name = "NSV strelka - Deck 2"
+	display_name = "NEV Strelka - Deck 2"
 	path = "maps/stations/strelka/levels/strelka_deck2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
@@ -196,7 +200,7 @@
 	id = "StrelkaDeck1"
 	name = "strelka - Deck 1"
 	display_id = "strelka-deck-1"
-	display_name = "NSV strelka - Deck 1"
+	display_name = "NEV Strelka - Deck 1"
 	path ="maps/stations/strelka/levels/strelka_deck1.dmm"
 	traits = list(
 		ZTRAIT_STATION,

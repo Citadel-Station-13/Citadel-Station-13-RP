@@ -3,16 +3,18 @@
 
 /**
  * * `ID` must be unique and in `snake_case`
- * * `BIT_TO_NAME` should be an list() with `BITFIELD_NEW()`'s inside it.
+ * * `BIT_TO_NAME` should be an list() with `BITFIELD_NAMED()`'s inside it.
  */
 #define DECLARE_BITFIELD(ID, BIT_TO_NAME); \
 /datum/bitfield/##ID/get_bit_constants() { \
 	return BIT_TO_NAME; \
 }
 
+/// BIT: must be the define, name will be the define itself.
+#define BITFIELD(BIT) #BIT = BIT
 /// NAME: must be a string
 /// VALUE: the actual enum value, whatever it is
-#define BITFIELD_NEW(NAME, VALUE) NAME = ##VALUE
+#define BITFIELD_NAMED(NAME, VALUE) NAME = ##VALUE
 
 /**
  * * `ID` the same in `DECLARE_BITFIELD`
@@ -33,4 +35,3 @@
 		paths[PATH] = list(NAMEOF_TYPE(PATH, VARNAME)); \
 	} \
 }
-

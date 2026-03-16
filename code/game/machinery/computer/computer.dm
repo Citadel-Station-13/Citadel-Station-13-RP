@@ -20,7 +20,7 @@
 	depth_level = 8
 	depth_projected = TRUE
 	climb_allowed = TRUE
-	//blocks_emissive = FALSE
+	//blocks_emissive = EMISSIVE_BLOCK_NONE
 	var/processing = FALSE
 
 	var/icon_keyboard = "generic_key"

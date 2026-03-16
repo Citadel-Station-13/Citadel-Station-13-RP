@@ -5,13 +5,15 @@
 	clickchain.target.attack_robot(src)
 	// TODO: better hiddenprint/tracing system that's actor-aware
 	clickchain.target.add_hiddenprint(usr)
-	return CLICKCHAIN_DO_NOT_PROPAGATE
+	// we use inventory system now :)
+	return ..()
 
 /mob/living/silicon/robot/ranged_interaction_chain(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	clickchain.target.attack_robot(src)
 	// TODO: better hiddenprint/tracing system that's actor-aware
 	clickchain.target.add_hiddenprint(usr)
-	return CLICKCHAIN_DO_NOT_PROPAGATE
+	// we use inventory system now :)
+	return ..()
 
 /mob/living/silicon/robot/silicon_control_interaction_allowed(atom/target, datum/event_args/actor/actor, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
 	// sigh. rework bolts when?

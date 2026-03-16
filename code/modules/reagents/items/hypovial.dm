@@ -14,6 +14,7 @@
 	/// how many [state][#] overlays we have for reagents remaining
 	var/overlay_count = 3
 	item_flags = ITEM_CAREFUL_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD | ITEM_EASY_LATHE_DECONSTRUCT
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/hypovial/update_icon(updates)
 	cut_overlays()

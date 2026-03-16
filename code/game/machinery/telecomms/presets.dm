@@ -59,10 +59,10 @@
 	freq_listening = list(FREQ_AI_PRIVATE, FREQ_SCIENCE, FREQ_MEDICAL, FREQ_SUPPLY, FREQ_SERVICE, FREQ_COMMAND, FREQ_ENGINEERING, FREQ_SECURITY, FREQ_ENTERTAINMENT)
 
 /// Common and other radio frequencies for people to freely use.
-/obj/machinery/telecomms/receiver/preset_right/New()
+/obj/machinery/telecomms/receiver/preset_right/Initialize(mapload)
 	for(var/i = MIN_FREQ, i < MAX_FREQ, i += 2)
 		freq_listening |= i
-	..()
+	return ..()
 
 /obj/machinery/telecomms/receiver/preset_cent
 	id = "CentCom Receiver"

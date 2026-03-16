@@ -24,6 +24,7 @@
 	unequip_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
 	material_factoring = 0
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/clothing/gloves/get_fibers()
 	return "material from a pair of [name]."

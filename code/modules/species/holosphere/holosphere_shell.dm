@@ -166,6 +166,7 @@
 	hologram.adjust_nutrition(got)
 	return (got * SYNTHETIC_NUTRITION_KJ_PER_UNIT) / GLOB.cellrate / SYNTHETIC_NUTRITION_INDUCER_CHEAT_FACTOR
 
+// support the shell having accents (hissing) if the hologram has it
 /mob/living/simple_mob/holosphere_shell/proc/handle_hologram_shell_speech(datum/source, list/message_args)
 	var/message = message_args["message"]
 	var/language_name = message_args["language_name"]

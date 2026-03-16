@@ -45,7 +45,7 @@
 	//Digest mode addon flags
 	var/tmp/static/list/mode_flag_list = list("Numbing" = DM_FLAG_NUMBING, "Stripping" = DM_FLAG_STRIPPING, "Leave Remains" = DM_FLAG_LEAVEREMAINS, "Muffles" = DM_FLAG_THICKBELLY)
 	//Transformation modes
-	var/tmp/static/list/transform_modes = list(DM_TRANSFORM_MALE,DM_TRANSFORM_FEMALE,DM_TRANSFORM_KEEP_GENDER,DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR,DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR_EGG,DM_TRANSFORM_REPLICA,DM_TRANSFORM_REPLICA_EGG,DM_TRANSFORM_KEEP_GENDER_EGG,DM_TRANSFORM_MALE_EGG,DM_TRANSFORM_FEMALE_EGG, DM_EGG)
+	var/tmp/static/list/transform_modes = list(DM_TRANSFORM_MALE,DM_TRANSFORM_FEMALE,DM_TRANSFORM_KEEP_GENDER,DM_TRANSFORM_CHANGE_SPECIES_AND_TAUR)
 	//Item related modes
 	var/tmp/static/list/item_digest_modes = list(IM_HOLD,IM_DIGEST_FOOD,IM_DIGEST)
 
@@ -164,14 +164,19 @@
 	. = ..()
 	//If not, we're probably just in a prefs list or something.
 	if(isliving(loc))
+		if(QDELING(loc))
+			CRASH("tried to make a belly in a qdeleting/qdeleted mob, what the fuck")
 		owner = loc
 		owner.vore_organs |= src
 		SSbellies.belly_list += src
 
 /obj/belly/Destroy()
 	SSbellies.belly_list -= src
-	if(owner?.vore_organs)
-		owner.vore_organs -= src
+	if(owner)
+		if(owner.vore_organs)
+			owner.vore_organs -= src
+		if(owner.vore_selected == src)
+			owner.vore_selected = null
 		owner = null
 	. = ..()
 
@@ -394,6 +399,10 @@
 	if(M.ckey)
 		log_game("[key_name(owner)] has digested [key_name(M)] in their [lowertext(name)] ([owner ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[owner.x];Y=[owner.y];Z=[owner.z]'>JMP</a>" : "null"])")
 
+	// set the DOWN BAD FLAG on their mirror
+	var/obj/item/organ/internal/mirror/their_mirror = M.resleeving_remove_mirror(src)
+	their_mirror?.died_from_vore = TRUE
+
 	// If digested prey is also a pred... anyone inside their bellies gets moved up.
 	if(is_vore_predator(M))
 		M.release_vore_contents(include_absorbed = TRUE, silent = TRUE)
@@ -410,7 +419,7 @@
 			if(istype(W,/obj/item/organ/external/chest))
 				var/obj/item/organ/external/chest/C = W
 				for (var/obj/item/I in C.implants)
-					if(istype(I,/obj/item/implant/mirror))
+					if(istype(I,/obj/item/organ/internal/mirror))
 						I.forceMove(src)
 						items_preserved += I // these are undigestable anyway so just add them regardless
 			for(var/slot in slots)
@@ -454,8 +463,6 @@
 	M.absorbed = 1
 	to_chat(M,"<span class='notice'>[owner]'s [lowertext(name)] absorbs your body, making you part of them.</span>")
 	to_chat(owner,"<span class='notice'>Your [lowertext(name)] absorbs [M]'s body, making them part of you.</span>")
-	if(M.noisy) //Mute drained absorbee hunger if enabled.
-		M.noisy = FALSE
 
 	if(ishuman(M) && ishuman(owner))
 		var/mob/living/carbon/human/Prey = M

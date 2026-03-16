@@ -24,6 +24,12 @@
 	moveToNullspace()
 	verbs.Cut()
 
+/obj/aiming_overlay/Destroy()
+	owner = null
+	aiming_at = null
+	aiming_with = null
+	return ..()
+
 /obj/aiming_overlay/proc/toggle_permission(var/perm)
 
 	if(target_permissions & perm)

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /// from base of _tool_act: (I, user, function, flags, hint) where I = item, e_args = clickchain data, function = tool behaviour, flags = tool operation flags, hint = set by dynamic tool system
 /// return CLICKCHAIN_COMPONENT_SIGNAL_HANDLED to abort normal tool_act handling.

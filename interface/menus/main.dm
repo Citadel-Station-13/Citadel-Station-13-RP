@@ -47,6 +47,11 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 		72,
 		96,
 		128,
+		// for the 4k gamers out there
+		192,
+		256,
+		384,
+		512,
 	)
 	for(var/size in auto_sizes)
 		entries += new /datum/skin_menu_entry/zoom/specific(src, size)

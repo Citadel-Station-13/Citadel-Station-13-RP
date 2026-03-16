@@ -189,16 +189,17 @@
 	if(_last_dir == dir && !force)
 		return
 	_last_dir = dir
-	var/ppx = AM.get_centering_pixel_x_offset(dir)
-	var/ppy = AM.get_centering_pixel_y_offset(dir)
+	// the ridden mob is assumed to be centered in their icon dimensions!
+	var/self_center_px = AM.get_centering_pixel_x_offset(dir)
+	var/self_center_py = AM.get_centering_pixel_y_offset(dir)
 	var/resizeX = 1
 	var/resizeY = 1
 	if(isliving(AM))
 		var/mob/living/mounted = AM
 		resizeX *= mounted.size_multiplier * mounted.icon_scale_x
 		resizeY *= mounted.size_multiplier * mounted.icon_scale_y
-		ppx = 2*mounted.shift_pixel_x - ppx //Jank to negate the offset, while following the shift
-		ppy = 2*mounted.shift_pixel_y - ppy
+		self_center_px = 2*mounted.shift_pixel_x - self_center_px //Jank to negate the offset, while following the shift
+		self_center_py = 2*mounted.shift_pixel_y - self_center_py
 	var/list/offsets
 	var/i
 	var/mob/M
@@ -216,8 +217,12 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + resizeX * offsets[1]
-				M.pixel_y = ppy + M.get_standard_pixel_y_offset() + M.get_centering_pixel_y_offset(dir) + resizeY * offsets[2]
+				// riders are assumed centered to their icon dim x/y's
+				// we still take into account managed pixel x/y for whatever reason, mostly because
+				// we assume things like taur / up/down shifting is in there
+				// maybe we should look into this
+				M.pixel_x = self_center_px + M.get_managed_pixel_x() + M.get_centering_pixel_x_offset() + resizeX * offsets[1]
+				M.pixel_y = self_center_py + M.get_managed_pixel_y() + M.get_centering_pixel_y_offset() + resizeY * offsets[2]
 		if(CF_RIDING_OFFSETS_DIRECTIONAL)
 			var/list/relevant
 			switch(dir)
@@ -238,8 +243,12 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + resizeX * offsets[1]
-				M.pixel_y = ppy + M.get_standard_pixel_y_offset() + M.get_centering_pixel_y_offset(dir) + resizeY * offsets[2]
+				// riders are assumed centered to their icon dim x/y's
+				// we still take into account managed pixel x/y for whatever reason, mostly because
+				// we assume things like taur / up/down shifting is in there
+				// maybe we should look into this
+				M.pixel_x = self_center_px + M.get_managed_pixel_x() + M.get_centering_pixel_x_offset() + resizeX * offsets[1]
+				M.pixel_y = self_center_py + M.get_managed_pixel_y() + M.get_centering_pixel_y_offset() + resizeY * offsets[2]
 		if(CF_RIDING_OFFSETS_ENUMERATED)
 			var/list/relevant
 			var/rider_offsets_len = length(rider_offsets)
@@ -262,8 +271,12 @@
 					M.setDir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
-				M.pixel_x = ppx + M.get_standard_pixel_x_offset() + M.get_centering_pixel_x_offset(dir) + resizeX * offsets[1]
-				M.pixel_y = ppy + M.get_standard_pixel_y_offset() + M.get_centering_pixel_y_offset(dir) + resizeY * offsets[2]
+				// riders are assumed centered to their icon dim x/y's
+				// we still take into account managed pixel x/y for whatever reason, mostly because
+				// we assume things like taur / up/down shifting is in there
+				// maybe we should look into this
+				M.pixel_x = self_center_px + M.get_managed_pixel_x() + M.get_centering_pixel_x_offset() + resizeX * offsets[1]
+				M.pixel_y = self_center_py + M.get_managed_pixel_y() + M.get_centering_pixel_y_offset() + resizeY * offsets[2]
 
 /**
  * returns transformed rider offset list

@@ -80,6 +80,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(_d1 || _d2)
 		d1 = _d1
 		d2 = _d2
+		icon_state = "[d1]-[d2]"
 	else
 		// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 		var/dash = findtext(icon_state, "-")
@@ -93,6 +94,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	cable_list += src //add it to the global cable list
 	if(auto_merge)
 		auto_merge()
+
+	if(isturf(loc))
+		var/turf/turf_loc = loc
+		turf_loc.add_blueprints_preround(src)
 
 // cable refactor when
 /obj/structure/cable/proc/auto_merge()
@@ -231,7 +236,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			O.show_message("<span class='warning'>[user] cuts the cable.</span>", 1)
 
 		if(d1 == DOWN || d2 == DOWN)
-			var/turf/turf = get_vertical_step(src, DOWN)
+			var/turf/turf = get_step_multiz(src, DOWN)
 			if(turf)
 				for(var/obj/structure/cable/c in turf)
 					if(c.d1 == UP || c.d2 == UP)
@@ -251,15 +256,11 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		coil.cable_join(src, user)
 
 	else if(istype(W, /obj/item/multitool))
-
 		if(powernet && (powernet.avail > 0))		// is it powered?
 			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
-
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
-
 		shock(user, 5, 0.2)
-
 	else
 		if(!(W.atom_flags & NOCONDUCT))
 			shock(user, 50, 0.7)
@@ -434,7 +435,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		if(cable_dir == 0)
 			continue
 		var/reverse = global.reverse_dir[cable_dir]
-		T = get_vertical_step(src, cable_dir)
+		T = get_step_multiz(src, cable_dir)
 		if(T)
 			for(var/obj/structure/cable/C in T)
 				if(C.d1 == reverse || C.d2 == reverse)
@@ -524,17 +525,14 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 // Definitions
 ////////////////////////////////
 
-#define MAXCOIL 30
-
 /obj/item/stack/cable_coil
 	name = "cable coil"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "coil"
-	amount = MAXCOIL
-	max_amount = MAXCOIL
 	color = COLOR_RED
 	desc = "A coil of power cable."
 	throw_force = 10
+	belt_storage_class = BELT_CLASS_SMALL
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 2
 	throw_range = 5
@@ -542,20 +540,14 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
-	stacktype_legacy = /obj/item/stack/cable_coil
+	amount = 30
+	max_amount = 30
+	stack_type = /obj/item/stack/cable_coil
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	stack_type = /obj/item/stack/cable_coil
 
-/obj/item/stack/cable_coil/cyborg
-	name = "cable coil synthesizer"
-	desc = "A device that makes cable."
-	gender = NEUTER
-	materials_base = null
-	uses_charge = 1
-	charge_costs = list(1)
-
-/obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
+/obj/item/stack/cable_coil/Initialize(mapload, new_amount, merge, param_color)
 	. = ..()
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
 		add_atom_color(param_color)
@@ -665,15 +657,13 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return
 	..()
 
-/obj/item/stack/cable_coil/use(used)
+/obj/item/stack/cable_coil/use(used, no_delete)
 	. = ..()
 	update_appearance()
-	return
 
 /obj/item/stack/cable_coil/add()
 	. = ..()
 	update_appearance()
-	return
 
 ///////////////////////////////////////////////
 // Cable laying procedures
@@ -840,10 +830,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		C.denode()// this call may have disconnected some cables that terminated on the centre of the turf, if so split the powernets.
 		return
 
-//////////////////////////////
-// Misc.
-/////////////////////////////
-
 /obj/item/stack/cable_coil/cut
 	item_state = "coil2"
 
@@ -856,90 +842,68 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	update_wclass()
 
 /obj/item/stack/cable_coil/yellow
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_YELLOW
 
 /obj/item/stack/cable_coil/blue
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_BLUE
 
 /obj/item/stack/cable_coil/green
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_LIME
 
 /obj/item/stack/cable_coil/pink
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_PINK
 
 /obj/item/stack/cable_coil/orange
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_ORANGE
 
 /obj/item/stack/cable_coil/cyan
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_CYAN
 
 /obj/item/stack/cable_coil/white
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_WHITE
 
 /obj/item/stack/cable_coil/silver
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_SILVER
 
 /obj/item/stack/cable_coil/gray
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_GRAY
 
 /obj/item/stack/cable_coil/black
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_BLACK
 
 /obj/item/stack/cable_coil/maroon
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_MAROON
 
 /obj/item/stack/cable_coil/olive
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_OLIVE
 
 /obj/item/stack/cable_coil/lime
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_LIME
 
 /obj/item/stack/cable_coil/teal
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_TEAL
 
 /obj/item/stack/cable_coil/navy
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_NAVY
 
 /obj/item/stack/cable_coil/purple
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_PURPLE
 
 /obj/item/stack/cable_coil/beige
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_BEIGE
 
 /obj/item/stack/cable_coil/brown
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = COLOR_BROWN
 
 /obj/item/stack/cable_coil/random/Initialize(mapload, new_amount, merge)
 	. = ..()
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
 
 /obj/item/stack/cable_coil/random_belt/Initialize(mapload, new_amount, merge)
-	. = ..()
-	stacktype_legacy = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
-	amount = 30
+	return ..()
 
 //Endless alien cable coil
-
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wire
 	name = "Precursor Alpha Object - Recursive Spool"
@@ -962,8 +926,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wire)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "coil"
-	amount = MAXCOIL
-	max_amount = MAXCOIL
 	color = COLOR_SILVER
 	throw_force = 10
 	w_class = WEIGHT_CLASS_SMALL
@@ -972,7 +934,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	materials_base = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
-	stacktype_legacy = null
 	split_type = /obj/item/stack/cable_coil
 	tool_speed = 0.25
 
@@ -987,7 +948,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/item/stack/cable_coil/alien/can_use(var/used)
 	return 1
 
-/obj/item/stack/cable_coil/alien/use()	//It's endless
+/obj/item/stack/cable_coil/alien/use(used, no_delete)	//It's endless
 	return TRUE
 
 /obj/item/stack/cable_coil/alien/add()	//Still endless
@@ -995,3 +956,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
+
+/obj/item/stack/cable_coil/alien/can_merge_into(obj/item/stack/other)
+	return FALSE

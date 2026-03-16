@@ -14,7 +14,7 @@
 		var/datum/species/shapeshifter/holosphere/S = H.species
 		if(!istype(S))
 			return
-		S.try_transform()
+		S.try_transform(H)
 	else if(is_holosphere_shell(M))
 		//Are a sphere, being held in an inventory, and the inventory is the AI container, don't break it, by breaking out of that
 		if(istype(M.loc, /obj/item/holder/holosphere_shell) && istype(M.loc.loc, /obj/item/hardsuit_module/ai_container))
@@ -24,7 +24,7 @@
 		var/datum/species/shapeshifter/holosphere/S = H.hologram.species
 		if(!istype(S))
 			return
-		S.try_untransform()
+		S.try_untransform(H)
 
 /// Change appearance to selected loadout slot
 /datum/action/holosphere/change_loadout

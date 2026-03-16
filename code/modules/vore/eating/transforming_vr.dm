@@ -216,13 +216,6 @@
 
 	remove_verb(M, M.species.inherent_verbs)	//Take away their unique stuff
 
-	var/list/backup_implants = list()
-	for(var/obj/item/organ/I in M.organs)
-		for(var/obj/item/implant/backup/BI in I.contents)
-			backup_implants += BI
-	if(backup_implants.len)
-		for(var/obj/item/implant/backup/BI in backup_implants)
-			BI.forceMove(src)
 	if(color_action == 1)
 		M.set_species(O.species.name, example = M)
 	else if(color_action == 2)
@@ -234,29 +227,8 @@
 	M.update_icons_body()
 	M.render_spriteacc_tail()
 
-	if(backup_implants.len)
-		var/obj/item/organ/external/torso = M.get_organ(BP_TORSO)
-		for(var/obj/item/implant/backup/BI in backup_implants)
-			BI.forceMove(torso)
-			torso.implants += BI
-
-
 	if(message)
 		to_chat(M, "<span class='notice'>You lose sensation of your body, feeling only the warmth of everything around you... </span>")
 		to_chat(O, "<span class='notice'>Your body shifts as you make dramatic changes to your captive's body.</span>")
 
-/obj/belly/proc/put_in_egg(var/atom/movable/M, message=0)
-	var/mob/living/carbon/human/O = owner
-	var/egg_path = /obj/structure/closet/secure_closet/egg
-	var/egg_name = "odd egg"
 
-	if(O.vore_egg_type in tf_vore_egg_types)
-		egg_path = tf_vore_egg_types[O.vore_egg_type]
-		egg_name = "[O.vore_egg_type] egg"
-
-	var/obj/structure/closet/secure_closet/egg/egg = new egg_path(src)
-	M.forceMove(egg)
-	egg.name = egg_name
-	if(message)
-		to_chat(M, "<span class='notice'>You lose sensation of your body, feeling only the warmth around you as you're encased in an egg.</span>")
-		to_chat(O, "<span class='notice'>Your body shifts as you encase [M] in an egg.</span>")

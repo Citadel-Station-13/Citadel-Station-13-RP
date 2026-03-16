@@ -17,10 +17,10 @@ SUBSYSTEM_DEF(transfer)
 
 /datum/controller/subsystem/transfer/fire(resumed)
 	currenttick = currenttick + 1
-	if(round_duration_in_ds >= shift_hard_end - 1 MINUTE)
+	if(STATION_TIME_PASSED() >= shift_hard_end - 1 MINUTE)
 		init_shift_change(null, 1)
 		shift_hard_end = timerbuffer + config_legacy.vote_autotransfer_interval //If shuttle somehow gets recalled, let's force it to call again next time a vote would occur.
 		timerbuffer = timerbuffer + config_legacy.vote_autotransfer_interval //Just to make sure a vote doesn't occur immediately afterwords.
-	else if(round_duration_in_ds >= timerbuffer - 1 MINUTE)
+	else if(STATION_TIME_PASSED() >= timerbuffer - 1 MINUTE)
 		SSvote.autotransfer()
 		timerbuffer = timerbuffer + config_legacy.vote_autotransfer_interval

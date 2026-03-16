@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(ghost_list)
 	mobility_flags = NONE
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER
+	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
 	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
 
 	/// Were we admin-ghosted?
@@ -273,9 +274,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
 		to_chat(usr, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
-	if(prevent_respawns.Find(mind.name))
-		to_chat(usr,"<span class='warning'>You already quit this round as this character, sorry!</span>")
-		return
 	if(mind.current.ajourn && mind.current.stat != DEAD) //check if the corpse is astral-journeying (it's client ghosted using a cultist rune).
 		var/found_rune
 		for(var/obj/effect/rune/R in mind.current.loc)   //whilst corpse is alive, we can only reenter the body if it's on the rune
@@ -363,10 +361,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!istype(target))
 		return
 
-	//Attempt to orbit based on target size
-	var/icon/I = icon(target.icon,target.icon_state,target.dir)
-
-	var/orbitsize = (I.Width()+I.Height())*0.5
+	var/list/icon_dimensions = get_icon_dimensions(target.icon)
+	var/orbitsize = (icon_dimensions["width"] + icon_dimensions["height"]) * 0.5
 	orbitsize -= (orbitsize/world.icon_size)*(world.icon_size*0.25)
 
 	orbit(target, orbitsize)
@@ -378,10 +374,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
 	. = ..()
 	//restart our floating animation after orbit is done.
-	pixel_y = 0
-	pixel_x = 0
-	transform = null
-	animate(src, pixel_y = 2, time = 10, loop = -1)
+	pixel_y = base_pixel_y
+	// if we were autoobserving, reset perspective
+	if (!isnull(client) && !isnull(client.eye))
+		reset_perspective(null)
 
 /mob/observer/dead/verb/jumptomob(input in getmobs_ghost_follow()) //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
@@ -595,11 +591,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		W.add_hiddenprint(src)
 		W.visible_message("<font color='red'>Invisible fingers crudely paint something in blood on [T]...</font>")
 
-/mob/observer/dead/pointed(atom/A as mob|obj|turf in view())
+/mob/observer/dead/_pointed(atom/pointed_at)
 	if(!..())
-		return 0
-	usr.visible_message("<span class='deadsay'><b>[src]</b> points to [A]</span>")
-	return 1
+		return FALSE
+
+	visible_message(SPAN_DEADSAY("<b>[src]</b> points to [pointed_at]."))
 
 /mob/observer/dead/proc/manifest(mob/user)
 	is_manifest = TRUE
@@ -866,21 +862,3 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		mind.active = TRUE
 
 		SC.catch_mob(src) //This will result in us being deleted so...
-
-/mob/observer/dead/verb/backup_ping()
-	set category = "Ghost"
-	set name = "Notify Transcore"
-	set desc = "If your past-due backup notification was missed or ignored, you can use this to send a new one."
-
-	if(src.mind.name in SStranscore.backed_up)
-		var/datum/transhuman/mind_record/record = SStranscore.backed_up[src.mind.name]
-		if(!(record.dead_state == MR_DEAD))
-			to_chat(src, "<span class='warning'>Your backup is not past-due yet.</span>")
-		else if((world.time - record.last_notification) < 10 MINUTES)
-			to_chat(src, "<span class='warning'>Too little time has passed since your last notification.</span>")
-		else
-			SStranscore.notify(record.mindname, TRUE)
-			record.last_notification = world.time
-			to_chat(src, "<span class='notice'>New notification has been sent.</span>")
-	else
-		to_chat(src, "<span class='warning'>No mind record found!</span>")

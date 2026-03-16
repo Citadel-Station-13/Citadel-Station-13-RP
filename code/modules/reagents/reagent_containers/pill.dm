@@ -12,9 +12,12 @@
 	pickup_sound = 'sound/items/pickup/food.ogg'
 	rad_flags = RAD_NO_CONTAMINATE
 	suit_storage_class = SUIT_STORAGE_CLASS_SOFTWEAR
+	belt_storage_class = BELT_CLASS_SMALL
+	belt_storage_size = BELT_SIZE_FOR_PILL
 
 	possible_transfer_amounts = null
 	w_class = WEIGHT_CLASS_TINY
+	weight_volume = ITEM_VOLUME_PILL
 	slot_flags = SLOT_EARS
 	volume = 60
 

@@ -157,7 +157,7 @@
 	if(!user)
 		return FALSE
 	if(coffeepot)
-		try_put_in_hand(coffeepot, user)
+		yank_item_out(coffeepot, user)
 	if(new_coffeepot)
 		coffeepot = new_coffeepot
 	update_appearance(UPDATE_OVERLAYS)
@@ -167,7 +167,7 @@
 	if(!user)
 		return FALSE
 	if(cartridge)
-		try_put_in_hand(cartridge, user)
+		yank_item_out(cartridge, user)
 	if(new_cartridge)
 		cartridge = new_cartridge
 	update_appearance(UPDATE_OVERLAYS)

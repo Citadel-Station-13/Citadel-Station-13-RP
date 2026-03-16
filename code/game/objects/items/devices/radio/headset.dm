@@ -8,6 +8,7 @@
 	subspace_transmission = 1
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
+	belt_storage_class = BELT_CLASS_SMALL
 
 	var/translate_binary = 0
 	var/translate_hive = 0

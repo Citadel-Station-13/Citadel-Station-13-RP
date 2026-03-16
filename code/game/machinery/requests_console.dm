@@ -74,19 +74,6 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	light_range = 0
 	var/datum/legacy_announcement/announcement = new
 
-/obj/machinery/requests_console/power_change()
-	..()
-	update_icon()
-
-/obj/machinery/requests_console/update_icon_state()
-	if(machine_stat & NOPOWER)
-		if(icon_state != "req_comp_off")
-			icon_state = "req_comp_off"
-	else
-		if(icon_state == "req_comp_off")
-			icon_state = "req_comp[newmessagepriority]"
-	return ..()
-
 /obj/machinery/requests_console/Initialize(mapload, newdir)
 	. = ..()
 
@@ -95,17 +82,19 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 
 	name = "[department] requests console"
 	allConsoles += src
-	if(departmentType & RC_ASSIST)
-		req_console_assistance |= department
-	if(departmentType & RC_SUPPLY)
-		req_console_supplies |= department
-	if(departmentType & RC_INFO)
-		req_console_information |= department
+	if(departmentType)
+		if(departmentType & RC_ASSIST)
+			req_console_assistance |= department
+		if(departmentType & RC_SUPPLY)
+			req_console_supplies |= department
+		if(departmentType & RC_INFO)
+			req_console_information |= department
 
 	set_light(1)
 
 /obj/machinery/requests_console/Destroy()
 	allConsoles -= src
+	QDEL_NULL(announcement)
 	var/lastDeptRC = 1
 	for (var/obj/machinery/requests_console/Console in allConsoles)
 		if(Console.department == department)
@@ -118,6 +107,19 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			req_console_supplies -= department
 		if(departmentType & RC_INFO)
 			req_console_information -= department
+	return ..()
+
+/obj/machinery/requests_console/power_change()
+	..()
+	update_icon()
+
+/obj/machinery/requests_console/update_icon_state()
+	if(machine_stat & NOPOWER)
+		if(icon_state != "req_comp_off")
+			icon_state = "req_comp_off"
+	else
+		if(icon_state == "req_comp_off")
+			icon_state = "req_comp[newmessagepriority]"
 	return ..()
 
 /obj/machinery/requests_console/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
@@ -306,7 +308,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 /obj/machinery/requests_console/preset
 	name = ""
 	department = ""
-	departmentType = ""
+	departmentType = NONE
 	announcementConsole = 0
 
 // Departments

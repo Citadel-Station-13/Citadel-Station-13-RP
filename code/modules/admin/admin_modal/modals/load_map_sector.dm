@@ -208,15 +208,12 @@
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelBaseTurf")
-			target_level.base_turf = text2path(params["type"]) || world.turf
-			if(!ispath(target_level.base_turf, /turf))
-				target_level.base_turf = world.turf
+			target_level.base_turf = text2path(params["type"])
 			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelBaseArea")
-			target_level.base_area = text2path(params["type"]) || world.turf
-			if(!ispath(target_level.base_turf, /area))
-				target_level.base_area = world.area
+			target_level.base_area = text2path(params["type"])
+			update_ui_level_index_data(target_level_index)
 			. = TRUE
 		if("levelStructX")
 			target_level.struct_x = params["val"]

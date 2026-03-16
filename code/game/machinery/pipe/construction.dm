@@ -71,7 +71,7 @@ Buildable meters
 
 /obj/item/pipe/proc/setPipingLayer(new_layer = PIPING_LAYER_DEFAULT)
 	var/obj/machinery/atmospherics/fakeA = pipe_type
-	if(initial(fakeA.pipe_flags) & (PIPING_ALL_LAYER|PIPING_DEFAULT_LAYER_ONLY))
+	if(initial(fakeA.pipe_flags) & (PIPE_FLAG_ALL_LAYER|PIPE_FLAG_DEFAULT_LAYER_ONLY))
 		new_layer = PIPING_LAYER_DEFAULT
 	piping_layer = new_layer
 	switch(piping_layer)
@@ -184,10 +184,10 @@ Buildable meters
 	var/obj/machinery/atmospherics/fakeA = pipe_type
 	var/initial_flags = initial(fakeA.pipe_flags)
 	for(var/obj/machinery/atmospherics/M in loc)
-		if((M.pipe_flags & initial_flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
+		if((M.pipe_flags & initial_flags & PIPE_FLAG_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
 			e_args.chat_feedback(SPAN_WARNING("Something is hogging the tile!"), src)
 			return TRUE
-		if((M.piping_layer != piping_layer) && !((M.pipe_flags | initial_flags) & PIPING_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
+		if((M.piping_layer != piping_layer) && !((M.pipe_flags | initial_flags) & PIPE_FLAG_ALL_LAYER)) // Pipes on different layers can't block each other unless they are ALL_LAYER
 			continue
 		if(M.get_init_dirs() & SSmachines.get_init_dirs(pipe_type, dir))	// matches at least one direction on either type of pipe
 			e_args.chat_feedback(SPAN_WARNING("There is already a pipe at that location!"), src)

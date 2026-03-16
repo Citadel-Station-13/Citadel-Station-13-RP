@@ -361,7 +361,8 @@
 		owner.internal_organs -= src
 
 		var/obj/item/organ/external/affected = owner.get_organ(parent_organ)
-		if(affected) affected.internal_organs -= src
+		if(affected)
+			affected.internal_organs -= src
 
 		forceMove(owner.drop_location())
 		rejecting = null
@@ -399,7 +400,7 @@
 		transplant_data["blood_DNA"] =  use_fragment.legacy_blood_dna
 
 	owner = target
-	loc = owner
+	forceMove(owner)
 	target.internal_organs |= src
 	affected.internal_organs |= src
 	target.internal_organs_by_name[organ_tag] = src

@@ -723,9 +723,9 @@
 /area/shuttle/trade)
 "bU" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/cell/high,
-/obj/item/cell/high,
-/obj/item/cell/hyper,
+/obj/item/cell/basic/tier_5/medium,
+/obj/item/cell/basic/tier_5/medium,
+/obj/item/cell/basic/tier_5/medium,
 /obj/item/cell/potato,
 /obj/structure/window/reinforced,
 /turf/simulated/shuttle/floor/black,

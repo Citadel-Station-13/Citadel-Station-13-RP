@@ -10,9 +10,6 @@
 /obj/item/reagent_containers/food/snacks/bagged/chips
   description_fluff = "Actual potatos haven't been used in potato chips for centuries. They're mostly a denatured nutrient slurry pressed into a chip-shaped mold and salted. Still tastes the same."
 
-/obj/item/reagent_containers/food/snacks/donut
-  description_fluff = "These donuts claim to be made fresh daily in a boutique bakery in New Reykjavik and delivered to Nanotrasen's hardworking asset protection crew. They're probably synthesized."
-
 /obj/item/reagent_containers/food/snacks/donkpocket
   description_fluff = "DONKpockets were originally a Nanotrasen product, an attempt to break into the food market controlled by Centauri Provisions. Somehow, Centauri wound up with the rights to the DONK brand, ending Nanotrasen's ambitions. They taste pretty okay."
 

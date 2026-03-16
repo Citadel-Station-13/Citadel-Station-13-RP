@@ -36,17 +36,6 @@
 	icon_scale_x = 1.5
 	icon_scale_y = 1.5
 
-/*
-/obj/vehicle/sealed/mecha/combat/durand/New()
-	..()
-	weapons += new /datum/mecha_weapon/ballistic/lmg(src)
-	weapons += new /datum/mecha_weapon/ballistic/scattershot(src)
-	selected_weapon = weapons[1]
-	return
-*/
-
-
-
 //This is for the Mech stats / Menu system. To be moved later on.
 /obj/vehicle/sealed/mecha/combat/durand/get_commands()
 	var/output = {"<div class='wr'>

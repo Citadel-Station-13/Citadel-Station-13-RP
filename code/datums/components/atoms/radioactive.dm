@@ -23,8 +23,6 @@
 
 	if(istype(parent, /atom))
 		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(rad_examine))
-		// TODO: 516 added assoc filters; touch-up the datum filter procs and stop doing this.
-		RegisterSignal(parent, COMSIG_ATOM_RELOAD_FILTERS, PROC_REF(reload_filters))
 	else
 		. = COMPONENT_INCOMPATIBLE
 		CRASH("Something that wasn't an atom was given /datum/component/radioactive")
@@ -32,17 +30,16 @@
 	if(strength > RAD_MINIMUM_CONTAMINATION)
 		SSradiation.warn(src)
 
-	//Let's make er glow
-	//This relies on parent not being a turf or something. IF YOU CHANGE THAT, CHANGE THIS
-	var/atom/movable/master = parent
-	master.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#14fff714", "size" = 2))
-	addtimer(CALLBACK(src, PROC_REF(glow_loop), master), rand(1,19))//Things should look uneven
+	create_glow()
+
 	SSradiation.sources += src
 
 /datum/component/radioactive/Destroy()
+	var/atom/movable/parent_movable = parent
+	if (istype(parent_movable))
+		parent_movable.remove_filter("rad_glow")
+
 	SSradiation.sources -= src
-	var/atom/movable/master = parent
-	master.remove_filter("rad_glow")
 	return ..()
 
 /datum/component/radioactive/proc/emit(ds)
@@ -66,15 +63,21 @@
 	if(!(datum_flags & DF_ISPROCESSING))	// keep going
 		SSradiation.sources += src
 
-/datum/component/radioactive/proc/reload_filters(datum/source)
-	SIGNAL_HANDLER
-	glow_loop(source)
+/datum/component/radioactive/proc/create_glow()
+	var/atom/movable/parent_movable = parent
+	if (!istype(parent_movable))
+		return
 
-/datum/component/radioactive/proc/glow_loop(atom/movable/master)
-	var/filter = master.get_filter("rad_glow")
-	if(filter)
-		animate(filter, alpha = 75, time = 15, loop = -1)
-		animate(alpha = 25, time = 25)
+	parent_movable.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#14fff714", "size" = 2))
+	addtimer(CALLBACK(src, PROC_REF(start_glow_loop), parent_movable), rand(0.1 SECONDS, 1.9 SECONDS)) // Things should look uneven
+
+/datum/component/radioactive/proc/start_glow_loop(atom/movable/parent_movable)
+	var/filter = parent_movable.get_filter("rad_glow")
+	if (!filter)
+		return
+
+	animate(filter, alpha = 110, time = 1.5 SECONDS, loop = -1)
+	animate(alpha = 40, time = 2.5 SECONDS)
 
 /datum/component/radioactive/InheritComponent(datum/component/C, i_am_original, _strength, _source, _half_life, _can_contaminate)
 	if(!i_am_original)

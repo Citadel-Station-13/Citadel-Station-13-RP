@@ -12,6 +12,7 @@
 	icon_state = "multitool"
 	damage_force = 5.0
 	w_class = WEIGHT_CLASS_SMALL
+	belt_storage_class = BELT_CLASS_SMALL
 	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
@@ -26,13 +27,13 @@
 
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 	var/obj/machinery/telecomms/buffer // simple machine buffer for device linkage
-	var/obj/machinery/clonepod/connecting //same for cryopod linkage
+	var/obj/machinery/resleeving/body_printer/connecting //same for cryopod linkage
 	var/obj/machinery/connectable	//Used to connect machinery.
 	var/datum/weakref_wiring //Used to store weak references for integrated circuitry. This is now the Omnitool.
 	var/colorable = 1
 	var/color_overlay = null
 	tool_speed = 1
-	tool_behaviour = TOOL_MULTITOOL
+	tool_behavior = TOOL_MULTITOOL
 	tool_sound = 'sound/weapons/empty.ogg'
 
 /obj/item/multitool/Initialize(mapload)

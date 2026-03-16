@@ -401,7 +401,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/osiris_field/pirate_wreck3)
 "yD" = (
-/mob/living/simple_mob/humanoid/pirate/captain,
+/mob/living/simple_mob/humanoid/pirate/mate/ranged,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/pirate_wreck3)
 "ze" = (
@@ -510,11 +510,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/submap/osiris_field/pirate_wreck3)
-"Kh" = (
-/obj/structure/bed/chair/bay/comfy/red,
-/mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun,
-/turf/simulated/floor/tiled/techfloor,
 /area/submap/osiris_field/pirate_wreck3)
 "Kl" = (
 /obj/effect/floor_decal/techfloor{
@@ -1631,7 +1626,7 @@ Bt
 lw
 Bt
 NQ
-Kh
+gR
 Ff
 Ff
 ur
@@ -1796,7 +1791,7 @@ LY
 LY
 Ff
 Ff
-yD
+Ff
 Ff
 ur
 PN
@@ -1888,11 +1883,11 @@ PN
 Bt
 Ff
 Ff
+lw
 Rp
 Rp
 Rp
-Rp
-Rp
+lw
 Rp
 Rp
 Rp
@@ -1973,7 +1968,7 @@ Ff
 Bt
 Bt
 Bt
-Rp
+lw
 Bt
 Bt
 Bt

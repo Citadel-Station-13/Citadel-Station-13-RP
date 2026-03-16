@@ -37,7 +37,7 @@
 
 	// Case 1: In working order
 	if(B.top == T && M.bottom == B && T.bottom == B && \
-			get_turf(M) == get_step(B, B.dir) && O == get_vertical_step(B, UP) && get_turf(T) == get_vertical_step(M, UP))
+			get_turf(M) == get_step(B, B.dir) && O == get_step_multiz(B, UP) && get_turf(T) == get_step_multiz(M, UP))
 		return TRUE
 
 	// Case 2: The top is linked to someone else
@@ -75,7 +75,7 @@
 /obj/structure/stairs/proc/common_prechecks(atom/movable/AM, atom/oldLoc)
 	if(!isturf(AM.loc))		// maybe don't yank things out that're being picked up huh
 		return
-	if(oldLoc && ((get_turf(oldLoc) == get_destination_turf()) || (get_turf(oldLoc) == get_vertical_step(src, DOWN))))
+	if(oldLoc && ((get_turf(oldLoc) == get_destination_turf()) || (get_turf(oldLoc) == get_step_multiz(src, DOWN))))
 		return FALSE
 	if(isobserver(AM))
 		return FALSE
@@ -107,7 +107,7 @@
 
 /obj/structure/stairs/bottom/Initialize(mapload)
 	. = ..()
-	if(!get_vertical_step(src, UP))
+	if(!get_step_multiz(src, UP))
 		CRASH("Stair created without level above: [audit_loc()].")
 
 /obj/structure/stairs/bottom/Destroy()
@@ -126,19 +126,19 @@
 	// In the case where we're provided all the pieces, just try connecting them.
 	// In order: all exist, they are appropriately adjacent, and they can connect
 	if(istype(B) && istype(M) && istype(T) && istype(O) && \
-			B.Adjacent(M) && (get_vertical_step(O, DOWN) == get_turf(B)) && T.Adjacent(O) && \
+			B.Adjacent(M) && (get_step_multiz(O, DOWN) == get_turf(B)) && T.Adjacent(O) && \
 			..())
 		return TRUE
 
 	// If we're already configured, just check those
 	else if(istype(top) && istype(middle))
-		O = locate(/turf/simulated/open) in get_vertical_step(src, UP)
+		O = locate(/turf/simulated/open) in get_step_multiz(src, UP)
 		if(..(src, middle, top, O))
 			return TRUE
 
 	var/turf/B2 = get_step(src, src.dir)
-	O = get_vertical_step(src, UP)
-	var/turf/T2 = get_vertical_step(B2, UP)
+	O = get_step_multiz(src, UP)
+	var/turf/T2 = get_step_multiz(B2, UP)
 
 	// T1 is the same regardless of B1's dir, so we can enforce it here
 	if(!istype(O))
@@ -155,7 +155,7 @@
 	// Else, we have to look in other directions
 	for(var/dir in GLOB.cardinal - src.dir)
 		B2 = get_step(src, dir)
-		T2 = get_vertical_step(B2, UP)
+		T2 = get_step_multiz(B2, UP)
 		if(!istype(B2) || !istype(T2))
 			continue
 
@@ -198,7 +198,7 @@
 
 /obj/structure/stairs/middle/Initialize(mapload)
 	. = ..()
-	if(!get_vertical_step(src, UP))
+	if(!get_step_multiz(src, UP))
 		CRASH("Stair created without level above: [audit_loc()].")
 
 /obj/structure/stairs/middle/Destroy()
@@ -217,18 +217,18 @@
 	// In the  case where we're provided all the pieces, just try connecting them.
 	// In order: all exist, they are appropriately adjacent, and they can connect
 	if(istype(B) && istype(M) && istype(T) && istype(O) && \
-			B.Adjacent(M) && (get_vertical_step(O, DOWN) == B.loc) && T.Adjacent(O) && \
+			B.Adjacent(M) && (get_step_multiz(O, DOWN) == B.loc) && T.Adjacent(O) && \
 			..())
 		return TRUE
 
 	else if(istype(top) && istype(bottom))
-		O = locate(/turf/simulated/open) in get_vertical_step(bottom, UP)
+		O = locate(/turf/simulated/open) in get_step_multiz(bottom, UP)
 		if(..(bottom, src, top, O))
 			return TRUE
 
 	var/turf/B1 = get_step(src, turn(src.dir, 180))
-	O = get_vertical_step(B1, UP)
-	var/turf/T2 = get_vertical_step(src, UP)
+	O = get_step_multiz(B1, UP)
+	var/turf/T2 = get_step_multiz(src, UP)
 
 	B = locate(/obj/structure/stairs/bottom) in B1
 	T = locate(/obj/structure/stairs/top)    in T2
@@ -245,7 +245,7 @@
 	// Else, we have to look in other directions
 	for(var/dir in GLOB.cardinal - src.dir)
 		B1 = get_step(src, turn(dir, 180))
-		O = get_vertical_step(B1, UP)
+		O = get_step_multiz(B1, UP)
 		if(!istype(B1) || !istype(O))
 			continue
 
@@ -280,7 +280,7 @@
 
 /obj/structure/stairs/top/Initialize(mapload)
 	. = ..()
-	if(!get_vertical_step(src, DOWN))
+	if(!get_step_multiz(src, DOWN))
 		CRASH("Stair created without level below: [audit_loc()].")
 
 /obj/structure/stairs/top/Destroy()
@@ -299,19 +299,19 @@
 	// In the  case where we're provided all the pieces, just try connecting them.
 	// In order: all exist, they are appropriately adjacent, and they can connect
 	if(istype(B) && istype(M) && istype(T) && istype(O) && \
-			B.Adjacent(M) && (get_vertical_step(O, DOWN) == B.loc) && T.Adjacent(O) && \
+			B.Adjacent(M) && (get_step_multiz(O, DOWN) == B.loc) && T.Adjacent(O) && \
 			(. = ..()))
 		return
 
 	else if(istype(middle) && istype(bottom))
-		O = locate(/turf/simulated/open) in get_vertical_step(bottom, UP)
+		O = locate(/turf/simulated/open) in get_step_multiz(bottom, UP)
 		if(..(bottom, middle, src, O))
 			return TRUE
 
 
 	O = get_step(src, turn(src.dir, 180))
-	var/turf/B1 = get_vertical_step(O, DOWN)
-	var/turf/B2 = get_vertical_step(src, DOWN)
+	var/turf/B1 = get_step_multiz(O, DOWN)
+	var/turf/B2 = get_step_multiz(src, DOWN)
 
 	B = locate(/obj/structure/stairs/bottom) in B1
 	M = locate(/obj/structure/stairs/middle) in B2
@@ -328,7 +328,7 @@
 	// Else, we have to look in other directions
 	for(var/dir in GLOB.cardinal - src.dir)
 		O = get_step(src, turn(dir, 180))
-		B1 = get_vertical_step(O, DOWN)
+		B1 = get_step_multiz(O, DOWN)
 		if(!istype(B1) || !istype(O))
 			continue
 
@@ -369,8 +369,8 @@
 	..()
 	var/turf/B1 = get_step(get_turf(src), turn(dir, 180))
 	var/turf/B2 = get_turf(src)
-	var/turf/T1 = get_vertical_step(B1, UP)
-	var/turf/T2 = get_vertical_step(B2, UP)
+	var/turf/T1 = get_step_multiz(B1, UP)
+	var/turf/T2 = get_step_multiz(B2, UP)
 
 	if(!istype(B1) || !istype(B2))
 		CRASH("Stair created at invalid loc: [audit_loc()].")

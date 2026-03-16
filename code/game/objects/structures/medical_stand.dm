@@ -89,10 +89,6 @@
 		QDEL_NULL(beaker)
 	return ..()
 
-/obj/structure/medical_stand/attack_robot(var/mob/user)
-	if(Adjacent(user))
-		attack_hand(user)
-
 /obj/structure/medical_stand/OnMouseDropLegacy(var/mob/living/carbon/human/target, src_location, over_location)
 	..()
 	if(istype(target))

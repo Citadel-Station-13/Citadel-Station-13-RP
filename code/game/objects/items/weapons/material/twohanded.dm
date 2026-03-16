@@ -83,7 +83,7 @@
 /obj/item/material/twohanded/fireaxe/melee_attack(datum/event_args/actor/clickchain/clickchain, clickchain_flags, datum/melee_attack/weapon/attack_style)
 	if(istype(clickchain.target, /obj/structure/window))
 		clickchain.attack_melee_multiplier *= 2
-	else if(istype(clickchain.target, /obj/effect/plant))
+	else if(istype(clickchain.target, /obj/structure/plant))
 		clickchain.attack_melee_multiplier *= 2
 	return ..()
 
@@ -224,7 +224,7 @@
 	material_color = 0
 
 /obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
-	..(mapload,"bone")
+	return ..(mapload,"bone")
 
 /obj/item/material/twohanded/spear/plasteel
 	material_parts = /datum/prototype/material/plasteel
@@ -243,7 +243,7 @@
 
 
 /obj/item/material/twohanded/spear/bronze/Initialize(mapload, material_key)
-	..(mapload,"bronze")
+	return ..(mapload,"bronze")
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 

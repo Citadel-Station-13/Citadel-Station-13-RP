@@ -41,7 +41,6 @@
 		laname = sanitizeSQL(H.lastattacker:real_name)
 		lakey = sanitizeSQL(H.lastattacker:key)
 
-	var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
 	var/coord = "[H.x], [H.y], [H.z]"
 
 	if(!SSdbcore.Connect())
@@ -49,14 +48,13 @@
 	else
 		var/datum/db_query/query = SSdbcore.NewQuery(
 			"INSERT INTO [DB_PREFIX_TABLE_NAME("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
-			(:name, :key, :job, :special, :pod, :time, :laname, :lakey, :gender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
+			(:name, :key, :job, :special, :pod, NOW(), :laname, :lakey, :gender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
 			list(
 				"name" = sqlname,
 				"key" = sqlkey,
 				"job" = sqljob,
 				"special" = sqlspecial,
 				"pod" = sqlpod,
-				"time" = sqltime,
 				"laname" = laname,
 				"lakey" = lakey,,
 				"gender" = H.gender,
@@ -91,7 +89,6 @@
 	if(H.lastattacker)
 		laname = sanitizeSQL(H.lastattacker:real_name)
 		lakey = sanitizeSQL(H.lastattacker:key)
-	var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
 	var/coord = "[H.x], [H.y], [H.z]"
 
 	if(!SSdbcore.Connect())
@@ -99,14 +96,13 @@
 	else
 		var/datum/db_query/query = SSdbcore.NewQuery(
 			"INSERT INTO [DB_PREFIX_TABLE_NAME("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
-			(:name, :key, :job, :special, :pod, :time, :laname, :lakey, :geender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
+			(:name, :key, :job, :special, :pod, NOW(), :laname, :lakey, :geender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
 			list(
 				"name" = sqlname,
 				"key" = sqlkey,
 				"job" = sqljob,
 				"special" = sqlspecial,
 				"pod" = sqlpod,
-				"time" = sqltime,
 				"laname" = laname,
 				"lakey" = lakey,,
 				"gender" = H.gender,

@@ -47,6 +47,7 @@
 
 /obj/machinery/appliance/Initialize(mapload, newdir)
 	. = ..()
+	// tODO: what??
 	component_parts = list()
 	component_parts += /obj/item/circuitboard/cooking
 	component_parts += /obj/item/stock_parts/capacitor
@@ -565,7 +566,7 @@
 	if (!Adjacent(user))
 		return FALSE
 
-	if (isanimal(user))
+	if (isanimal_legacy_this_is_broken(user))
 		return FALSE
 
 	return TRUE
@@ -645,9 +646,9 @@
 	if (victim.reagents)
 		victim.reagents.trans_to_holder(result.reagents, victim.reagents.total_volume)
 
-	if (isanimal(victim))
-		var/mob/living/simple_animal/SA = victim
-		result.kitchen_tag = SA.kitchen_tag
+	// if (issimplemob(victim))
+	// 	var/mob/living/simple_animal/SA = victim
+	// 	result.kitchen_tag = SA.kitchen_tag
 
 	result.appearance = victim
 

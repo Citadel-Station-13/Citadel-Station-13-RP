@@ -603,14 +603,14 @@
 	desc = "A robust hardsuit-integrated sprint module."
 	icon_state = "sprinter"
 
-	var/sprint_speed = 1
+	var/sprint_speed = 0.5
 
 	toggleable = 1
 	disruptable = 1
 	disruptive = 0
 
 	use_power_cost = 0
-	active_power_cost = 5
+	active_power_cost = 15
 	passive_power_cost = 0
 	module_cooldown = 30
 

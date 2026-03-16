@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2023 Citadel Station developers.          *//
+//* Copyright (c) 2023 Citadel Station Developers           *//
 
 /**
  * just the base type of object systems
@@ -17,3 +17,7 @@
 
 /datum/object_system/New(obj/parent)
 	src.parent = parent
+
+/datum/object_system/Destroy()
+	parent = null
+	return ..()

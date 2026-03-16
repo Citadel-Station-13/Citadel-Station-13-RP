@@ -7,11 +7,6 @@
 
 	var/obj/item/radio/headset/mob_headset/mob_radio		//Adminbus headset for simplemob shenanigans.
 
-// Release belly contents before being gc'd!
-/mob/living/simple_mob/Destroy()
-	release_vore_contents()
-	return ..()
-
 //For all those ID-having mobs
 /mob/living/simple_mob/GetIdCard()
 	if(access_card)

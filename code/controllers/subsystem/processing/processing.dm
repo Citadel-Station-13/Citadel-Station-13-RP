@@ -1,12 +1,14 @@
-//Used to process objects.
-
+/**
+ * Base of processing subsystems.
+ * This is a generic processing subsystem that ticks once per second.
+ */
 SUBSYSTEM_DEF(processing)
-	name = "Processing - 1 FPS"
+	name = "Processing - 1 fps"
 	priority = FIRE_PRIORITY_PROCESS
 	subsystem_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING|SS_NO_INIT
 	wait = 1 SECONDS
 
-	var/stat_tag = "P1" //Used for logging
+	var/stat_tag = "P_DEF" //Used for logging
 	var/list/processing = list()
 	var/list/currentrun = list()
 
@@ -28,6 +30,13 @@ SUBSYSTEM_DEF(processing)
 		var/datum/thing = current_run[current_run.len]
 		current_run.len--
 		if(QDELETED(thing))
+			log_world("GC-TRACE: Deleted entity found in [src] - [thing ? thing.type : "-- null value --"]")
+			if(thing)
+				var/list/trace = thing.gc_trace_data()
+				trace["type"] = thing.type
+				trace["refcount"] = refcount(thing)
+				log_world("GC-TRACE: From [src], [thing.type] had trace: [json_encode(trace)]")
+			stack_trace("deleted entity found in [src]; check logs.")
 			processing -= thing
 		else if(thing.process(dt) == PROCESS_KILL)
 			// fully stop so that a future START_PROCESSING will work

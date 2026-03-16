@@ -1,13 +1,12 @@
 /**
  * Returns a GUID like identifier (using a mostly made up record format)
  * GUIDs are not on their own suitable for access or security tokens, as most of their bits are predictable.
- *
  * (But may make a nice salt to one)
  */
 /proc/GUID()
 	var/const/GUID_VERSION = "b"
 	var/const/GUID_VARIANT = "d"
-	var/node_id = copytext(md5("[rand() * rand(1, 9999999)][world.name][world.hub][world.hub_password][world.internet_address][world.address][world.contents.len][world.status][world.port][rand() * rand(1,9999999)]"), 1, 13)
+	var/node_id = copytext_char(md5("[rand() * rand(1, 9999999)][world.name][world.hub][world.hub_password][world.internet_address][world.address][world.contents.len][world.status][world.port][rand() * rand(1,9999999)]"), 1, 13)
 
 	var/time_high = "[num2hex(text2num(time2text(world.realtime,"YYYY")), 2)][num2hex(world.realtime, 6)]"
 

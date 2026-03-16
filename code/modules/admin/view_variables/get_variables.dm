@@ -11,6 +11,8 @@
 	else if(istext(var_value))
 		if(findtext(var_value, "\n"))
 			. = VV_MESSAGE
+		else if(findtext(var_value, GLOB.is_color))
+			. = VV_COLOR
 		else
 			. = VV_TEXT
 
@@ -26,7 +28,10 @@
 	else if(istype(var_value, /client))
 		. = VV_CLIENT
 
-	else if(istype(var_value, /datum))
+	else if(isweakref(var_value))
+		. = VV_WEAKREF
+
+	else if(isdatum(var_value))
 		. = VV_DATUM_REFERENCE
 
 	else if(ispath(var_value))
@@ -38,7 +43,11 @@
 			. = VV_TYPE
 
 	else if(islist(var_value))
-		. = VV_LIST
+		if(var_name in GLOB.color_vars)
+			. = VV_COLOR_MATRIX
+		else
+			. = VV_LIST
+
 	else if(isalist(var_value))
 		. = VV_ALIST
 
@@ -56,6 +65,8 @@
 				VV_TEXT,
 				VV_MESSAGE,
 				VV_ICON,
+				VV_COLOR,
+				VV_COLOR_MATRIX,
 				VV_ATOM_REFERENCE,
 				VV_DATUM_REFERENCE,
 				VV_MOB_REFERENCE,
@@ -70,9 +81,11 @@
 				VV_NEW_LIST,
 				VV_NEW_ALIST,
 				VV_NULL,
+				VV_INFINITY,
 				VV_RESTORE_DEFAULT,
 				VV_TEXT_LOCATE,
 				VV_PROCCALL_RETVAL,
+				VV_WEAKREF,
 				)
 
 		var/markstring
@@ -178,6 +191,19 @@
 				return
 			.["value"] = things[value]
 
+		if(VV_WEAKREF)
+			var/type = pick_closest_path(FALSE, get_fancy_list_of_datum_types())
+			var/subtypes = vv_subtype_prompt(type)
+			if(subtypes == null)
+				.["class"] = null
+				return
+			var/list/things = vv_reference_list(type, subtypes)
+			var/value = input("Select reference:", "Reference", current_value) as null|anything in things
+			if(!value)
+				.["class"] = null
+				return
+			.["value"] = WEAKREF(things[value])
+
 		if(VV_CLIENT)
 			.["value"] = input("Select reference:", "Reference", current_value) as null|anything in GLOB.clients
 			if(.["value"] == null)
@@ -250,8 +276,22 @@
 			.["value"] = newguy
 
 		if(VV_NEW_LIST)
-			.["value"] = list()
 			.["type"] = /list
+			var/list/value = list()
+
+			var/expectation = alert("Would you like to populate the list", "Populate List?", "Yes", "No")
+			if(!expectation || expectation == "No")
+				.["value"] = value
+				return .
+
+			var/list/insert = null
+			while(TRUE)
+				insert = vv_get_value(restricted_classes = list(VV_RESTORE_DEFAULT))
+				if(!insert["class"])
+					break
+				value += LIST_VALUE_WRAP_LISTS(insert["value"])
+
+			.["value"] = value
 
 		if(VV_NEW_ALIST)
 			.["value"] = alist()
@@ -265,14 +305,25 @@
 					break
 				D = locate(ref)
 				if(!D)
-					alert("Invalid ref!")
-					continue
-				if(!istype(D))
-					alert("Not a datum.")
+					tgui_alert(usr,"Invalid ref!")
 					continue
 				if(!D.can_vv_mark())
-					alert("Datum can not be marked!")
+					tgui_alert(usr,"Datum can not be marked!")
 					continue
 			while(!D)
 			.["type"] = D.type
 			.["value"] = D
+
+		if(VV_COLOR)
+			.["value"] = input("Enter new color:", "Color", current_value) as color|null
+			if(.["value"] == null)
+				.["class"] = null
+				return
+
+		if(VV_COLOR_MATRIX)
+			.["value"] = open_color_matrix_editor()
+			if(.["value"] == COLOR_MATRIX_IDENTITY) //identity is equivalent to null
+				.["class"] = null
+
+		if(VV_INFINITY)
+			.["value"] = INFINITY

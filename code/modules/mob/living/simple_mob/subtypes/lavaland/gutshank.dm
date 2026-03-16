@@ -77,15 +77,20 @@
 	var/amount_grown = 1
 	var/list/grow_as = list(/mob/living/simple_mob/animal/shank)
 
-/datum/say_list/gutshank
-	emote_hear = list("rubs its mandibles together.", "skitters around.", "trills.")
-	emote_see = list ("clacks its mandibles.", "shudders and jerks.")
-
 /mob/living/simple_mob/animal/gutshank/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	shank_gland = new(50)
 	shank_gland.my_atom = src
+
+/mob/living/simple_mob/animal/gutshank/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(shank_gland)
+	return ..()
+
+/datum/say_list/gutshank
+	emote_hear = list("rubs its mandibles together.", "skitters around.", "trills.")
+	emote_see = list ("clacks its mandibles.", "shudders and jerks.")
 
 /mob/living/simple_mob/animal/gutshank/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O

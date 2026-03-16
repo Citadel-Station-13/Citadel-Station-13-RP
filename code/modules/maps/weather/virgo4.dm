@@ -492,11 +492,3 @@
 		return
 	if(T.outdoors)
 		radiation_pulse(T, rand(fallout_rad_low, fallout_rad_high))
-
-/obj/machinery/power/smes/buildable/offmap_spawn/empty/New()
-	..(1)
-	charge = 0
-	RCon = TRUE
-	input_level = input_level_max
-	output_level = output_level_max
-	input_attempt = TRUE

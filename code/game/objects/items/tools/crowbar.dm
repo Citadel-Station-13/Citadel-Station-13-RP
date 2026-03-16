@@ -9,7 +9,7 @@
 	icon_state = "crowbar"
 	item_state = "crowbar"
 	slot_flags = SLOT_BELT
-	tool_behaviour = TOOL_CROWBAR
+	tool_behavior = TOOL_CROWBAR
 	damage_force = 6
 	throw_force = 7
 	pry = 1

@@ -342,7 +342,7 @@
 				var/turf/neighbor = get_step(src, direction); \
 				var/can_area_smooth; \
 					CAN_AREAS_SMOOTH(src, neighbor, can_area_smooth); \
-					if(neighbor && can_area_smooth) { \
+					if((neighbor?.atom_flags & ATOM_INITIALIZED) && can_area_smooth) { \
 						var/neighbor_smoothing_groups = neighbor.smoothing_groups; \
 						if(neighbor_smoothing_groups) { \
 							for(var/target in canSmoothWith) { \
@@ -355,7 +355,7 @@
 						if(smooth_obj) { \
 							for(var/atom/movable/thing as anything in neighbor) { \
 								var/thing_smoothing_groups = thing.smoothing_groups; \
-								if(!thing.anchored || isnull(thing_smoothing_groups)) { \
+								if(!(thing.atom_flags & ATOM_INITIALIZED) || !thing.anchored || isnull(thing_smoothing_groups)) { \
 									continue; \
 								}; \
 								for(var/target in canSmoothWith) { \

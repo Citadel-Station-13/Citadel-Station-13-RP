@@ -2398,9 +2398,7 @@
 /area/tether/station/dock_one)
 "eT" = (
 /obj/structure/table/steel,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil,
 /obj/machinery/cell_charger{
 	pixel_y = 5
@@ -9428,7 +9426,7 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/circuitboard/transhuman_resleever{
+/obj/item/circuitboard/resleeving/resleeving_pod{
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -12158,9 +12156,6 @@
 /obj/machinery/photocopier,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
-"yy" = (
-/turf/space,
-/area/space)
 "yz" = (
 /obj/structure/disposalpipe/junction/yjunction,
 /obj/structure/cable/green{
@@ -13925,15 +13920,15 @@
 /area/maintenance/station/eng_upper)
 "Cj" = (
 /obj/structure/table/rack/steel,
-/obj/item/circuitboard/resleeving_control{
+/obj/item/circuitboard/resleeving_console{
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/item/circuitboard/transhuman_clonepod{
+/obj/item/circuitboard/resleeving/grower_pod{
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/item/circuitboard/transhuman_synthprinter{
+/obj/item/circuitboard/resleeving/synth_printer{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -14060,7 +14055,7 @@
 	},
 /obj/structure/table/rack/steel,
 /obj/item/slime_scanner,
-/obj/item/sleevemate,
+/obj/item/mirrortool,
 /obj/item/robotanalyzer,
 /obj/item/reagent_scanner,
 /obj/item/healthanalyzer,
@@ -20832,12 +20827,8 @@
 "Qx" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
-/obj/item/cell/high{
-	maxcharge = 15000
-	},
+/obj/item/cell/basic/tier_3/medium,
+/obj/item/cell/basic/tier_3/medium,
 /obj/item/stack/cable_coil{
 	pixel_x = 3;
 	pixel_y = -7
@@ -39861,7 +39852,7 @@ gd
 gd
 gd
 gd
-yy
+ov
 ov
 ov
 ov
@@ -40055,7 +40046,7 @@ gd
 gd
 gd
 gd
-yy
+ov
 ov
 ov
 ov
@@ -41205,7 +41196,7 @@ ov
 rY
 ov
 ov
-yy
+ov
 gd
 gd
 gd
@@ -41399,7 +41390,7 @@ ov
 rY
 ov
 ov
-yy
+ov
 gd
 gd
 gd

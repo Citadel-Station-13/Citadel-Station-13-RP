@@ -1,10 +1,9 @@
 /obj/structure/disposalpipe/up
 	icon_state = "pipe-u"
 
-/obj/structure/disposalpipe/up/New()
-	..()
-	dpdir = dir
-	return
+/obj/structure/disposalpipe/up/Initialize(mapload, dir)
+	. = ..()
+	dpdir = src.dir
 
 /obj/structure/disposalpipe/up/nextdir(fromdir)
 	var/nextdir
@@ -22,7 +21,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 12)
-		T = get_vertical_step(src, UP)
+		T = get_step_multiz(src, UP)
 		if(!T)
 			H.forceMove(loc)
 			return

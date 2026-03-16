@@ -14,6 +14,6 @@
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/he3/New()
-	..()
-	reagents.add_reagent("helium-3",1000)
+/obj/structure/reagent_dispensers/he3/Initialize(mapload)
+	. = ..()
+	reagents?.add_reagent("helium-3",1000)

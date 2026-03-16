@@ -381,16 +381,9 @@
 /// Also make sure there is a valid control computer
 /obj/machinery/cryopod/robot/despawn_occupant(mob/to_despawn)
 	var/mob/living/silicon/robot/R = to_despawn
-	if(!istype(R)) return ..()
-
+	if(!istype(R))
+		return ..()
 	qdel(R.mmi)
-	for(var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
-		for(var/mob/M in I)			despawn_occupant(M)
-		for(var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
-			O.forceMove(R)
-		qdel(I)
-	qdel(R.module)
-
 	return ..()
 
 /obj/machinery/cryopod/robot/door/gateway/despawn_occupant()
@@ -404,9 +397,6 @@
 	//Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
-	if(to_despawn.mind && ishuman(to_despawn))
-		var/mob/living/carbon/human/H = to_despawn
-		SStranscore.m_backup(H.mind, H.nif, TRUE)
 	if(isliving(to_despawn))
 		var/mob/living/L = to_despawn
 		for(var/belly in L.vore_organs)
@@ -450,12 +440,12 @@
 		if(W.preserve_item)
 			preserve = TRUE
 
-		if(istype(W,/obj/item/implant/health))
-			for(var/obj/machinery/computer/cloning/com in GLOB.machines)
-				for(var/datum/dna2/record/R in com.records)
-					if(locate(R.implant) == W)
-						qdel(R)
-						qdel(W)
+		// if(istype(W,/obj/item/implant/health))
+		// 	for(var/obj/machinery/computer/cloning/com in GLOB.machines)
+		// 		for(var/datum/dna2/record/R in com.records)
+		// 			if(locate(R.implant) == W)
+		// 				qdel(R)
+		// 				qdel(W)
 
 		if(!preserve)
 			qdel(W)
@@ -473,15 +463,6 @@
 			if(O.owner && O.owner.current)
 				to_chat(O.owner.current, SPAN_WARNING("You get the feeling your target is no longer within your reach..."))
 			qdel(O)
-
-	// Resleeving.
-	if(to_despawn.mind)
-		if(to_despawn.mind.name in SStranscore.backed_up)
-			var/datum/transhuman/mind_record/MR = SStranscore.backed_up[to_despawn.mind.name]
-			SStranscore.stop_backup(MR)
-		if(to_despawn.mind.name in SStranscore.body_scans) //This uses mind names to avoid people cryo'ing a printed body to delete body scans.
-			var/datum/transhuman/body_record/BR = SStranscore.body_scans[to_despawn.mind.name]
-			SStranscore.remove_body(BR)
 
 	//Handle job slot/tater cleanup.
 	var/job = to_despawn.mind.assigned_role
@@ -763,14 +744,8 @@
 	var/item_name = item.name
 
 	// Best effort key aquisition
-	if(ishuman(to_despawn))
-		var/mob/living/carbon/human/H = to_despawn
-		if(H.original_player)
-			loaded_from_key = H.original_player
-
 	if(!loaded_from_key && to_despawn.mind && to_despawn.mind.loaded_from_ckey)
 		loaded_from_key = to_despawn.mind.loaded_from_ckey
-
 	else
 		loaded_from_key = "INVALID"
 

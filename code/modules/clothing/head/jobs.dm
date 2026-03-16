@@ -187,6 +187,7 @@
 	icon_state = "surgcap_blue"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_blue", SLOT_ID_LEFT_HAND = "beret_blue")
 	inv_hide_flags = BLOCKHEADHAIR
+	belt_storage_class = BELT_CLASS_SMALL
 
 /obj/item/clothing/head/surgery/purple
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is deep purple."

@@ -397,11 +397,7 @@
 /area/engineering/engine_room)
 "sm" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/power/apc/south_mount{
-	dir = 8;
-	pixel_y = 0;
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/south_mount,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},

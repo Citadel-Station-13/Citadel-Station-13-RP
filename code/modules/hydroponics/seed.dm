@@ -65,8 +65,8 @@
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.25)         // Plant eats this much per tick.
 	set_trait(TRAIT_PLANT_COLOUR,         "#46B543")    // Colour of the plant icon.
 
-	spawn(5)
-		sleep(-1)
+	spawn(0)
+		UNTIL(SSplants.initialized)
 		update_growth_stages()
 
 /datum/seed/proc/get_trait(var/trait)
@@ -171,8 +171,8 @@
 
 //Splatter a turf.
 /datum/seed/proc/splatter(var/turf/T,var/obj/item/thrown)
-	if(splat_type && !(locate(/obj/effect/plant) in T))
-		var/obj/effect/plant/splat = new splat_type(T, src)
+	if(splat_type && !(locate(/obj/structure/plant) in T))
+		var/obj/structure/plant/splat = new splat_type(T, src)
 		if(!istype(splat)) // Plants handle their own stuff.
 			splat.name = "[thrown.name] [pick("smear","smudge","splatter")]"
 			if(get_trait(TRAIT_BIOLUM))

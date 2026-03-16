@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 silicons                             *//
+//* Copyright (c) 2024 Citadel Station Developers           *//
 
 /*
 ATTENTION! This file is dedicated to all "modern hair sprites"; that only require white/

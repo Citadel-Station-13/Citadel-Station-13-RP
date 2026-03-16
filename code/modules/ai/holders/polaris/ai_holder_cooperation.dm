@@ -18,8 +18,8 @@
 		build_faction_friends()
 
 /datum/ai_holder/polaris/Destroy()
-	if(faction_friends.len) //This list is shared amongst the faction
-		faction_friends -= src
+	if(faction_friends)
+		faction_friends -= holder
 	return ..()
 
 // Handles everything about that list.
@@ -27,7 +27,7 @@
 /datum/ai_holder/polaris/proc/build_faction_friends()
 	if(faction_friends.len) // Already have a list.
 		// Assume we're moving to a new faction.
-		faction_friends -= src   // Get us out of the current list shared by everyone else.
+		faction_friends -= holder   // Get us out of the current list shared by everyone else.
 		faction_friends = list() // Then make our list empty and unshared in case we become a loner.
 
 	// Find another AI-controlled mob in the same faction if possible.

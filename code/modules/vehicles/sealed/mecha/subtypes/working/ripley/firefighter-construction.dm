@@ -1,9 +1,9 @@
 /obj/item/vehicle_chassis/firefighter
 	name = "Firefighter Chassis"
 
-/obj/item/vehicle_chassis/firefighter/New()
-	..()
+/obj/item/vehicle_chassis/firefighter/Initialize(mapload)
 	construct = new /datum/construction/mecha/firefighter_chassis(src)
+	return ..()
 
 /datum/construction/mecha/firefighter_chassis
 	steps = list(list("key"=/obj/item/vehicle_part/ripley_torso),//1

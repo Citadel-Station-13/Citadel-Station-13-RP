@@ -296,8 +296,6 @@
 			dellog += "<li>Sleeps: [I.slept_destroy]</li>"
 		if (I.no_respect_force)
 			dellog += "<li>Ignored force: [I.no_respect_force]</li>"
-		if (I.no_hint)
-			dellog += "<li>No hint: [I.no_hint]</li>"
 		dellog += "</ul></li>"
 
 	dellog += "</ol>"

@@ -29,8 +29,8 @@
 "i" = (
 /obj/structure/loot_pile/maint/technical,
 /obj/item/gps/internal/poi,
-/obj/item/cell/device/weapon/empty,
-/obj/item/cell/device/weapon/empty,
+/obj/item/cell/basic/tier_4/weapon/empty,
+/obj/item/cell/basic/tier_4/weapon/empty,
 /turf/simulated/floor/plating,
 /area/submap/SupplyDrop2)
 "j" = (

@@ -96,6 +96,7 @@
 	icon_state = "pistol-5"
 	base_icon_state = "pistol"
 	rendering_system = GUN_RENDERING_STATES
+	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	rendering_count = 5
 	rendering_static_overlay = "pistol-stripe"
 	ammo_max = 14
@@ -105,6 +106,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	name = "smg magazine (NT-9)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	rendering_static_overlay = "smg-stripe"
@@ -144,6 +146,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_sidearm/pistol
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 //* SMG *//
 
@@ -185,6 +188,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 		/datum/firemode/nt_expedition_light_smg/semi_auto,
 		/datum/firemode/nt_expedition_light_smg/two_burst,
 	)
+	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin

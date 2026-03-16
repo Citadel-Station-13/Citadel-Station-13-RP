@@ -381,7 +381,7 @@
 /area/submap/Diner)
 "bn" = (
 /obj/structure/table/woodentable,
-/obj/item/cell/high,
+/obj/item/cell/basic/tier_3/medium,
 /turf/simulated/floor/lino,
 /area/submap/Diner)
 "bo" = (

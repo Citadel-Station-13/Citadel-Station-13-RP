@@ -130,6 +130,10 @@
 /obj/random/trash,
 /turf/simulated/mineral/ignore_mapgen,
 /area/sector/miaphus/beach/desert/explored)
+"uq" = (
+/obj/machinery/point_redemption_vendor/smuggle/illegal/miaphus,
+/turf/simulated/floor/wood,
+/area/sector/miaphus/beach/desert/explored)
 "uY" = (
 /turf/simulated/floor/water/shoreline{
 	dir = 1
@@ -332,10 +336,6 @@
 "NW" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/beach/sand/desert,
-/area/sector/miaphus/beach/desert/explored)
-"Og" = (
-/obj/machinery/point_redemption_vendor/smuggle/illegal/miaphus,
-/turf/simulated/floor/wood,
 /area/sector/miaphus/beach/desert/explored)
 "OI" = (
 /turf/simulated/floor/tiled/outdoors,
@@ -31802,7 +31802,7 @@ UP
 UP
 UP
 Ev
-Og
+uq
 Dc
 lf
 lf

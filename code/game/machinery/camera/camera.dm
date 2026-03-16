@@ -125,7 +125,7 @@ CREATE_WALL_MOUNTING_TYPES(/obj/machinery/camera)
 		destroy()
 
 /obj/machinery/camera/attack_generic(mob/user as mob)
-	if(isanimal(user))
+	if(isanimal_legacy_this_is_broken(user))
 		var/mob/living/simple_mob/S = user
 		set_status(0)
 		S.do_attack_animation(src)

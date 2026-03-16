@@ -74,7 +74,6 @@
 /mob/living/simple_mob/animal/space/carp/event
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event
 
-
 /mob/living/simple_mob/animal/space/carp/large
 	name = "elder carp"
 	desc = "An older, more matured carp. Few survive to this age due to their aggressiveness."

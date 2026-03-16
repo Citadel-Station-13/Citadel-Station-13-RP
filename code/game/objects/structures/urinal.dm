@@ -28,7 +28,7 @@
 	icon_state = "urinalcake"
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/reagent_containers/food/urinalcake/New()
+/obj/item/reagent_containers/food/urinalcake/Initialize(mapload, cooked)
 	. = ..()
 	reagents.add_reagent("chlorine", 3)
 	reagents.add_reagent("ammonia", 1)
