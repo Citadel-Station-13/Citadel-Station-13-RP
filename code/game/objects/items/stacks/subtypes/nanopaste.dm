@@ -20,7 +20,7 @@
 	if (istype(L,/mob/living/silicon/robot))	//Repairing cyborgs
 		var/mob/living/silicon/robot/R = L
 		if (R.getBruteLoss() || R.getFireLoss())
-			if(!can_use(1))
+			if(get_amount() < 1)
 				to_chat(user, SPAN_WARNING("There isn't enough left."))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(do_after(user,7 * tool_speed))
@@ -39,7 +39,7 @@
 		if (S && (S.robotic >= ORGAN_ROBOT))
 			if(!S.get_damage())
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
-			else if(can_use(1))
+			else if(get_amount() >= 1)
 				user.setClickCooldownLegacy(user.get_attack_speed_legacy(src))
 				if(S.open >= 2)
 					if(do_after(user,5 * tool_speed))
@@ -54,7 +54,7 @@
 	if (is_holosphere_shell(L))
 		var/mob/living/simple_mob/holosphere_shell/shell = L
 		if(shell.getBruteLoss() || shell.getFireLoss())
-			if(!can_use(1))
+			if(get_amount() < 1)
 				to_chat(user, SPAN_WARNING("There isn't enough left."))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(do_after(user,7 * tool_speed))

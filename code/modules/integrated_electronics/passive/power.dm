@@ -210,7 +210,7 @@
 	IO.disconnect_from_network()
 
 /obj/item/integrated_circuit/passive/power/powernet/make_energy()
-	var/obj/item/cell/battery = get_cell()
+	var/obj/item/cell/battery = assembly?.get_cell()
 	if(assembly && assembly.anchored && battery)
 		var/should_act = get_pin_data(IC_INPUT, 1) // Even if this is false, we still need to update the output pins with powernet information.
 		var/drawing = get_pin_data(IC_INPUT, 2)

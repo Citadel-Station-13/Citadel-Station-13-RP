@@ -581,8 +581,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		if(S.robotic < ORGAN_ROBOT)
 			user.visible_message(SPAN_WARNING("That isn't a robotic limb."))
 			return
-		if(S.open == 3)
-			user.visible_message(SPAN_WARNING("Close the panels first!"))
+		if(S.open == 3) // someone's doing surgery
 			return
 		var/use_amt = min(src.amount, CEILING(S.burn_dam / 5, 1), 5)
 		if(get_amount() >= use_amt)
@@ -709,7 +708,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	var/end_dir = 0
 	if(istype(F, /turf/simulated/open))
-		if(!can_use(2))
+		if(get_amount() < 2)
 			to_chat(user, "You don't have enough cable to do this!")
 			return
 		end_dir = DOWN
