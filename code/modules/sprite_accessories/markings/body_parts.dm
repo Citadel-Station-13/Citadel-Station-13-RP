@@ -13,8 +13,8 @@
 /datum/sprite_accessory/marking/body_parts/center_f
 	name = "Center-line Torso Female"
 	id = "marking_female_centerline"
-	icon_state = "f_center"
-	body_parts = list(BP_TORSO)
+	icon_state = "female_center"
+	body_parts = list(BP_TORSO, BP_GROIN)
 
 /datum/sprite_accessory/marking/body_parts/torso_m
 	name = "Half-Torso Male"
@@ -25,8 +25,8 @@
 /datum/sprite_accessory/marking/body_parts/center_m
 	name = "Center-line Torso Male"
 	id = "marking_male_centerline"
-	icon_state = "m_center"
-	body_parts = list(BP_TORSO)
+	icon_state = "male_center"
+	body_parts = list(BP_TORSO, BP_GROIN)
 
 /datum/sprite_accessory/marking/body_parts/head_f
 	name = "Half-Head Female"
