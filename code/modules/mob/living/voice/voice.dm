@@ -102,6 +102,9 @@
 			return TRUE
 	return ..()
 
+/mob/living/voice/death(gibbed, deathmessage = "no message") // and god taketh away
+	. = ..(gibbed, deathmessage)
+
 // Proc: say()
 // Parameters: 4 (generic say() arguments)
 // Description: Adds a speech bubble to the communicator device, then calls ..() to do the real work.

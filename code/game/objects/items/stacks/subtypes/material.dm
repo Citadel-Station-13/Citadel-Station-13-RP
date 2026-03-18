@@ -65,7 +65,7 @@
 	update_strings()
 
 /obj/item/stack/material/get_materials(respect_multiplier)
-	return list(src, null, material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
+	return list(material.id = (respect_multiplier? material_multiplier : 1) * SHEET_MATERIAL_AMOUNT)
 
 /obj/item/stack/material/update_icon()
 	if(material.icon_stack_count)
