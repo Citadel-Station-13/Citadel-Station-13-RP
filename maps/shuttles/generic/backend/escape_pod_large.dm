@@ -1,9 +1,10 @@
+#warn rename to specific size
 DECLARE_SHUTTLE_TEMPLATE(/generic/backend/escape_pod_large)
 	id = "backend-large_escape_pod"
 	name = "Large Escape Pod"
 
 
-#warn impl
+#warn impl; these are on tether
 
 #warn deal with theses
 /area/shuttle/arrival

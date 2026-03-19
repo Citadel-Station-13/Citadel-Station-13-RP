@@ -1,156 +1,56 @@
 DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_sh)
 	id = "generic-gecko_sh"
+	name = "Gecko Stationhopper"
+	descriptor = /datum/shuttle_descriptor{
+		mass = 10000;
+		overmap_icon_color = "#3366FF";
+		overmap_legacy_name = "Gecko Stationhopper";
+		overmap_legacy_desc = "A medium personnel transport shuttle.";
+	}
 
 DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr)
 	id = "generic-gecko_cr"
+	name = "Gecko Cargo Hauler"
+	descriptor = /datum/shuttle_descriptor{
+		mass = 10000;
+		overmap_icon_color = "#3366FF";
+		overmap_legacy_name = "Gecko Cargo Hauler";
+		overmap_legacy_desc = "A medium supply transport shuttle.";
+	}
 
 DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/gecko_cr_wreck)
 	id = "generic-gecko_cr_wreck"
-
-#warn below
-
-// The 'shuttle'
-/datum/shuttle/autodock/overmap/gecko_sh
-	name = "Gecko Stationhopper"
-	current_location = "omship_spawn_gecko_sh"
-	docking_controller_tag = "geck_sh_docking"
-	shuttle_area = list(/area/shuttle/gecko_sh,/area/shuttle/gecko_sh_cockpit,/area/shuttle/gecko_sh_engineering)
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-	fuel_consumption = 7.5
-	ceiling_type = /turf/simulated/floor/reinforced/airless
-
-/datum/shuttle/autodock/overmap/gecko_cr
-	name = "Gecko Cargo Hauler"
-	current_location = "omship_spawn_gecko_cr"
-	docking_controller_tag = "geck_cr_docking"
-	shuttle_area = list(/area/shuttle/gecko_cr,/area/shuttle/gecko_cr_cockpit,/area/shuttle/gecko_cr_engineering)
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-	fuel_consumption = 7.5
-	ceiling_type = /turf/simulated/floor/reinforced/airless
-
-/datum/shuttle/autodock/overmap/gecko_cr_wreck
 	name = "Wrecked Gecko Cargo Hauler"
-	current_location = "omship_spawn_gecko_cr_wreck"
-	docking_controller_tag = "geck_cr_wreck_docking"
-	shuttle_area = list(/area/shuttle/gecko_cr_wreck,/area/shuttle/gecko_cr_cockpit_wreck,/area/shuttle/gecko_cr_engineering_wreck)
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-	fuel_consumption = 7.5
-	ceiling_type = /turf/simulated/floor/reinforced/airless
+	descriptor = /datum/shuttle_descriptor{
+		mass = 10000;
+		overmap_icon_color = "#3366FF";
+		overmap_legacy_name = "Wrecked Gecko Cargo Hauler";
+		overmap_legacy_desc = "A wrecked medium supply transport shuttle.";
+	}
 
-// A shuttle lateloader landmark
+#warn below, map
+
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_sh
-	name = "ITV Gecko I"
-	shuttle_type = /datum/shuttle/autodock/overmap/gecko_sh
-
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr
-	name = "ITV Gecko II"
-	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr
-
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr_wreck
-	name = "ITV Gecko III"
-	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr_wreck
-
-// Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/gecko_stationhopper
 	name = "OM Ship - Gecko Stationhopper (new Z)"
 	desc = "A medium personnel transport shuttle."
-	suffix = "gecko_sh.dmm"
-	annihilate = TRUE
-
 /datum/map_template/shuttle/overmap/generic/gecko_cargohauler
 	name = "OM Ship - Gecko Cargo Hauler (new Z)"
 	desc = "A medium supply transport shuttle."
-	suffix = "gecko_cr.dmm"
-	annihilate = TRUE
-
 /datum/map_template/shuttle/overmap/generic/gecko_cargohauler_wreck
 	name = "OM Ship - Wrecked Gecko Cargo Hauler (new Z)"
 	desc = "A wrecked medium supply transport shuttle."
-	map_path = "maps/submaps/level_specific/debrisfield_vr/gecko_cr_wreck.dmm"
-	annihilate = TRUE
-
-// The shuttle's area(s)
 /area/shuttle/gecko_sh
-	name = "\improper Gecko Stationhopper"
-	icon_state = "green"
-	requires_power = 1
-	has_gravity = 0
-
 /area/shuttle/gecko_sh_engineering
-	name = "\improper Gecko Stationhopper Engineering"
-	icon_state = "yellow"
-	requires_power = 1
-	has_gravity = 0
-
 /area/shuttle/gecko_sh_cockpit
-	name = "\improper Gecko Stationhopper Cockpit"
-	icon_state = "purple"
-	requires_power = 1
-	has_gravity = 0
-
 /area/shuttle/gecko_cr
-	name = "\improper Gecko Cargo Hauler Bay"
-	icon_state = "green"
-	requires_power = 1
-	has_gravity = 0
-
 /area/shuttle/gecko_cr_engineering
-	name = "\improper Gecko Cargo Hauler Aft"
-	icon_state = "yellow"
-	requires_power = 1
-	has_gravity = 0
-
 /area/shuttle/gecko_cr_cockpit
-	name = "\improper Gecko Cargo Hauler Fore"
-	icon_state = "purple"
-	requires_power = 1
-	has_gravity = 0
-
 /area/shuttle/gecko_cr_wreck
-	name = "\improper Wrecked Gecko Cargo Hauler Bay"
-	icon_state = "green"
-	requires_power = 1
-	has_gravity = 0
-
 /area/shuttle/gecko_cr_engineering_wreck
-	name = "\improper Wrecked Gecko Cargo Hauler Aft"
-	icon_state = "yellow"
-	requires_power = 1
-	has_gravity = 0
-
 /area/shuttle/gecko_cr_cockpit_wreck
-	name = "\improper Wrecked Gecko Cargo Hauler Fore"
-	icon_state = "purple"
-	requires_power = 1
-	has_gravity = 0
-
-// The 'ship'
 /obj/overmap/entity/visitable/ship/landable/gecko_sh
-	scanner_name = "Gecko-class Transport"
-	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Fingers
-[i]Class[/i]: Medium Shuttle
-[i]Transponder[/i]: Transmitting (CIV), non-hostile
-[b]Notice[/b]: Medium personnel transport vessel"}
-	color = "#3366FF"
-	vessel_mass = 6500
-	shuttle = "Gecko Stationhopper"
-
 /obj/overmap/entity/visitable/ship/landable/gecko_cr
-	scanner_name = "Gecko-class Transport"
-	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Business
-[i]Class[/i]: Medium Shuttle
-[i]Transponder[/i]: Transmitting (CIV), non-hostile
-[b]Notice[/b]: Medium cargo transport vessel"}
-	color = "#3366FF"
-	vessel_mass = 6500
-	shuttle = "Gecko Cargo Hauler"
-
 /obj/overmap/entity/visitable/ship/landable/gecko_cr_wreck
-	scanner_name = "Wrecked Gecko-class Transport"
-	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Situation
-[i]Class[/i]: Medium Shuttle
-[i]Transponder[/i]: Weakly transmitting (CIV), non-hostile
-[b]Notice[/b]: Medium cargo transport vessel, significant damage inflicted"}
-	color = "#3366FF"
-	vessel_mass = 6500
-	shuttle = "Wrecked Gecko Cargo Hauler"

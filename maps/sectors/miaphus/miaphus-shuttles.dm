@@ -1,38 +1,6 @@
-
-#warn below sigh
-
-//SDF
-/datum/shuttle/autodock/overmap/miaphus/sdf
-	name = "SDF Interrupted-The-Speech"
-	warmup_time = 8
-	shuttle_area = list(/area/shuttle/miaphus/sdf)
-	docking_controller_tag = "sdf_docker"
-	fuel_consumption = 3
-	move_time = 10
-	current_location = "sdf_outpost"
-
-/obj/overmap/entity/visitable/ship/landable/miaphus/sdf
-	name = "SDF Interrupted-The-Speech"
-	desc = "A patrol military vessel."
-	scanner_name = "SDF Interrupted-The-Speech"
-	scanner_desc = @{"[i]Registration[/i]: ---
-[i]Class[/i]: Andromeda BS2002
-[i]Transponder[/i]: Transmitting (SDF)
-[b]Notice[/b]: A SDF corvette, patrolling the sector."}
-	color = "#ff9900"
-	fore_dir = WEST
-	vessel_mass = 8000
-	shuttle = "SDF Interrupted-The-Speech"
-
-/area/shuttle/miaphus/sdf
-	name = "SDF Interrupted-The-Speech"
-	requires_power = 1
-	icon_state = "shuttle2"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
+DECLARE_SHUTTLE_DOCK_PRESET_CENTERED(/miaphus, /pirate_hideout, "Pirate Hideout")
+DECLARE_SHUTTLE_DOCK_PRESET_CENTERED(/miaphus, /sdf_base, "SDF Base")
 
 #warn obliterate, restrict dock?
 /obj/effect/shuttle_landmark/premade/miaphus/piratehideout
 /obj/effect/shuttle_landmark/miaphus/sdf
-	name = "Outpost 12"

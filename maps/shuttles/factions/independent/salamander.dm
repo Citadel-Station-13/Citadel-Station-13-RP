@@ -1,173 +1,74 @@
+DECLARE_SHUTTLE_TEMPLATE(/factions/independent/salamander)
+	id = "independent-salamander"
+	name = "ITV Salamander-class Corvette"
+
+	descriptor = /datum/shuttle_descriptor{
+		preferred_orientation = EAST;
+		mass = 12500;
+		overmap_icon_color = "#00AA00";
+		overmap_legacy_name = "Salamander-class Corvette";
+		overmap_legacy_desc = "A medium multirole spacecraft, commonly used by independent operators.";
+	}
+
+	display_name = "Salamander-class Corvette"
+	facing_dir = EAST
+
+DECLARE_SHUTTLE_TEMPLATE(/factions/independent/salamander_wreck)
+	id = "independent-salamander_wreck"
+	name = "ITV Salamander-class Corvette (Wrecked)"
+
+	descriptor = /datum/shuttle_descriptor{
+		preferred_orientation = EAST;
+		mass = 12500;
+		overmap_icon_color = "#008800";
+		overmap_legacy_name = "Wrecked Salamander-class Corvette";
+		overmap_legacy_desc = "A medium multirole spacecraft, or at least what's left of it.";
+	}
+
+	display_name = "Salamander-class Corvette"
+	facing_dir = EAST
+
 #warn impl
 
+DECLARE_SHUTTLE_AREA(/salamander)
+	icon = 'icons/turf/areas_vr_talon.dmi'
+	has_gravity = FALSE
 
-// Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/generic/salamander
-	name = "OM Ship - Salamander Corvette"
-	desc = "A medium multirole spacecraft."
-	suffix = "salamander.dmm"
-	annihilate = TRUE
-
-// Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/generic/salamander_wreck
-	name = "OM Ship - Salamander Corvette Wreckage"
-	desc = "A medium multirole spacecraft, or at least what's left of it."
-	map_path = "maps/submaps/level_specific/debrisfield_vr/salamander_wreck.dmm"
-	annihilate = TRUE
-
-// The shuttle's area(s)
-/area/shuttle/salamander
+DECLARE_SHUTTLE_AREA(/salamander/cabin)
 	name = "\improper Salamander Cabin"
-	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray"
-	requires_power = 1
-	has_gravity = 0
 
-/area/shuttle/salamander_engineering
+DECLARE_SHUTTLE_AREA(/salamander/engineering)
 	name = "\improper Salamander Engineering"
-	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "yellow"
-	requires_power = 1
-	has_gravity = 0
 
-/area/shuttle/salamander_cockpit
+DECLARE_SHUTTLE_AREA(/salamander/cockpit)
 	name = "\improper Salamander Cockpit"
-	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "blue"
-	requires_power = 1
-	has_gravity = 0
 
-/area/shuttle/salamander_q1
+DECLARE_SHUTTLE_AREA(/salamander/q1)
 	name = "\improper Salamander Quarters 1"
-	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray-p"
-	requires_power = 1
-	has_gravity = 0
 
-/area/shuttle/salamander_q2
+DECLARE_SHUTTLE_AREA(/salamander/q2)
 	name = "\improper Salamander Quarters 2"
-	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "gray-p"
-	requires_power = 1
-	has_gravity = 0
 
-/area/shuttle/salamander_galley
+DECLARE_SHUTTLE_AREA(/salamander/galley)
 	name = "\improper Salamander Galley"
-	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "dark-s"
-	requires_power = 1
-	has_gravity = 0
 
-/area/shuttle/salamander_head
+DECLARE_SHUTTLE_AREA(/salamander/head)
 	name = "\improper Salamander Head"
-	icon = 'icons/turf/areas_vr_talon.dmi'
 	icon_state = "dark-p"
-	requires_power = 1
-	has_gravity = 0
 
-/area/shuttle/salamander_wreck
-	name = "\improper Wrecked Salamander Cabin"
-	icon = 'icons/turf/areas_vr_talon.dmi'
-	icon_state = "gray"
-	requires_power = 1
-	has_gravity = 0
-
-/area/shuttle/salamander_wreck_engineering
-	name = "\improper Wrecked Salamander Engineering"
-	icon = 'icons/turf/areas_vr_talon.dmi'
-	icon_state = "yellow"
-	requires_power = 1
-	has_gravity = 0
-
-/area/shuttle/salamander_wreck_cockpit
-	name = "\improper Wrecked Salamander Cockpit"
-	icon = 'icons/turf/areas_vr_talon.dmi'
-	icon_state = "blue"
-	requires_power = 1
-	has_gravity = 0
-
-/area/shuttle/salamander_wreck_q1
-	name = "\improper Wrecked Salamander Quarters 1"
-	icon = 'icons/turf/areas_vr_talon.dmi'
-	icon_state = "gray-p"
-	requires_power = 1
-	has_gravity = 0
-
-/area/shuttle/salamander_wreck_q2
-	name = "\improper Wrecked Salamander Quarters 2"
-	icon = 'icons/turf/areas_vr_talon.dmi'
-	icon_state = "gray-p"
-	requires_power = 1
-	has_gravity = 0
-
-/area/shuttle/salamander_wreck_galley
-	name = "\improper Wrecked Salamander Galley"
-	icon = 'icons/turf/areas_vr_talon.dmi'
-	icon_state = "dark-s"
-	requires_power = 1
-	has_gravity = 0
-
-/area/shuttle/salamander_wreck_head
-	name = "\improper Wrecked Salamander Head"
-	icon = 'icons/turf/areas_vr_talon.dmi'
-	icon_state = "dark-p"
-	requires_power = 1
-	has_gravity = 0
-
-// The 'shuttle'
-/datum/shuttle/autodock/overmap/salamander
-	name = "Salamander"
-	current_location = "omship_spawn_salamander"
-	docking_controller_tag = "salamander_docking"
-	shuttle_area = list(/area/shuttle/salamander,/area/shuttle/salamander_cockpit,/area/shuttle/salamander_engineering,/area/shuttle/salamander_q1,/area/shuttle/salamander_q2,/area/shuttle/salamander_galley,/area/shuttle/salamander_head)
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-	fuel_consumption = 5
-	ceiling_type = /turf/simulated/floor/reinforced/airless
-
-// A shuttle lateloader landmark
+#warn below
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander
-	name = "ITV Salamander"
-	shuttle_type = /datum/shuttle/autodock/overmap/salamander
-
-// The 'ship'
 /obj/overmap/entity/visitable/ship/landable/salamander
-	scanner_name = "Salamander-class Corvette"
-	scanner_desc = @{"[i]Registration[/i]: ITV Independence
-[i]Class[/i]: Corvette
-[i]Transponder[/i]: Transmitting (CIV), non-hostile
-[b]Notice[/b]: Multirole independent vessel"}
-	color = "#00AA00" //green, because money
-	vessel_mass = 4500
-	fore_dir = EAST
-	shuttle = "Salamander"
-
-// The 'shuttle'
-/datum/shuttle/autodock/overmap/salamander_wreck
-	name = "Salamander Wreckage"
-	current_location = "omship_spawn_salamander_wreck"
-	docking_controller_tag = "salamander_docking_wreck"
-	shuttle_area = list(/area/shuttle/salamander_wreck,/area/shuttle/salamander_wreck_cockpit,/area/shuttle/salamander_wreck_engineering,/area/shuttle/salamander_wreck_q1,/area/shuttle/salamander_wreck_q2,/area/shuttle/salamander_wreck_galley,/area/shuttle/salamander_wreck_head)
-	defer_initialisation = TRUE //We're not loaded until an admin does it
-	fuel_consumption = 5
-	ceiling_type = /turf/simulated/floor/reinforced/airless
-
-// A shuttle lateloader landmark
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander_wreck
-	name = "ITV Unity"
-	shuttle_type = /datum/shuttle/autodock/overmap/salamander_wreck
-
-// The 'ship'
 /obj/overmap/entity/visitable/ship/landable/salamander_wreck
-	scanner_name = "Wrecked Salamander-class Corvette"
-	scanner_desc = @{"[i]Registration[/i]: ITV Unity
-[i]Class[/i]: Corvette
-[i]Transponder[/i]: Not Transmitting
-[b]Notice[/b]: Damage to hull is consistent with intentional scuttling procedures, no distress call logged"}
-	color = "#008800" //green, because money
-	vessel_mass = 4500
-	fore_dir = EAST
-	shuttle = "Salamander Wreckage"
 
+// todo: move this somewhere else or maybe just varedit it on map?
 /obj/item/paper/unity_notice
 	name = "hastily-scrawled missive"
 	info = {"<i>The writing on this scrap of paper is barely legible. Whoever wrote it was clearly in a hurry.</i><br>\

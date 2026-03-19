@@ -4,7 +4,7 @@
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "aK" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
@@ -15,7 +15,7 @@
 	pixel_y = 11
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "aL" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander,
 /obj/overmap/entity/visitable/ship/landable/salamander,
@@ -34,17 +34,17 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "bk" = (
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "br" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_head)
+/area/shuttle/salamander/head)
 "bu" = (
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -55,17 +55,17 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "bA" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "bH" = (
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "bI" = (
 /obj/structure/bed/chair/bay/chair,
 /obj/structure/handrail,
@@ -81,20 +81,20 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "bK" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "bL" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/hatch{
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "bN" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/air_alarm/alarms_hidden{
@@ -104,7 +104,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_head)
+/area/shuttle/salamander/head)
 "bP" = (
 /obj/structure/sink{
 	dir = 4;
@@ -118,7 +118,7 @@
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_head)
+/area/shuttle/salamander/head)
 "bY" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -130,7 +130,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "ci" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -140,7 +140,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "cq" = (
 /obj/structure/handrail{
 	dir = 1
@@ -157,7 +157,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_head)
+/area/shuttle/salamander/head)
 "cC" = (
 /obj/machinery/shower{
 	dir = 1
@@ -167,29 +167,29 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_head)
+/area/shuttle/salamander/head)
 "cX" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "cY" = (
 /obj/structure/fitness/weightlifter,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "dj" = (
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "dm" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "dn" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -204,7 +204,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "dO" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -216,31 +216,31 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_head)
+/area/shuttle/salamander/head)
 "dT" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "ee" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "eg" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "ey" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "eB" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	dir = 4;
@@ -250,11 +250,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "eG" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "eJ" = (
 /obj/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/airlock_sensor{
@@ -266,7 +266,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "eP" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
@@ -280,7 +280,7 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_head)
+/area/shuttle/salamander/head)
 "fh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -294,29 +294,29 @@
 	name = "Uniform Locker"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "fn" = (
 /obj/machinery/atmospherics/component/unary/engine/bigger{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "fB" = (
 /obj/machinery/light,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "fC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 9
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "fD" = (
 /obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "fE" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -325,7 +325,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "fG" = (
 /obj/structure/handrail{
 	dir = 4
@@ -335,7 +335,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "fP" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -343,7 +343,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/railing/grey,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "fR" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -352,11 +352,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "fX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "fZ" = (
 /obj/item/suit_cooling_unit,
 /obj/item/tank/air,
@@ -368,7 +368,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "gl" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -380,7 +380,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "gv" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -400,11 +400,11 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/west_mount,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "gC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "gD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/railing/grey{
@@ -417,7 +417,7 @@
 	start_pressure = 8000.25
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "gL" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/catwalk,
@@ -425,7 +425,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "gM" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -437,7 +437,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "hh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -446,7 +446,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "hn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -463,7 +463,7 @@
 	name = "Uniform Locker"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "hp" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -471,13 +471,13 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "hr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "hC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/railing/grey,
@@ -485,7 +485,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "hO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -498,7 +498,7 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "if" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -510,14 +510,14 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "ii" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "im" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -526,7 +526,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "is" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -538,7 +538,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "iC" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -547,7 +547,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "iJ" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -559,11 +559,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "iK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "iL" = (
 /obj/machinery/door/window/brigdoor/eastleft{
 	req_access = list();
@@ -576,7 +576,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "iS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -586,7 +586,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "iW" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -595,7 +595,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "jl" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -604,7 +604,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "jq" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -628,7 +628,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "jT" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -645,7 +645,7 @@
 	},
 /obj/effect/catwalk_plated,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "jV" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -661,21 +661,21 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "ks" = (
 /obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "kx" = (
 /obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "kK" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "kL" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -688,7 +688,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "kU" = (
 /obj/machinery/suit_cycler/vintage/omni,
 /obj/machinery/light{
@@ -698,7 +698,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "kZ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -710,7 +710,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "lc" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -719,7 +719,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "ld" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
@@ -733,7 +733,7 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "ll" = (
 /obj/structure/handrail{
 	dir = 1
@@ -759,14 +759,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "lo" = (
 /obj/machinery/computer/ship/engines{
 	dir = 1;
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "lt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
@@ -781,23 +781,23 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "lw" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "lC" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "lK" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "lV" = (
 /obj/machinery/power/terminal{
 	dir = 4
@@ -819,12 +819,12 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "ma" = (
 /obj/structure/cable,
 /obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "mg" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
@@ -834,13 +834,13 @@
 	pixel_y = -11
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "mm" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "mE" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -862,7 +862,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "mJ" = (
 /obj/structure/handrail{
 	dir = 1
@@ -881,7 +881,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "mO" = (
 /obj/machinery/light,
 /obj/random/firstaid,
@@ -898,16 +898,16 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "mR" = (
 /turf/simulated/wall/shull,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "mY" = (
 /obj/machinery/computer/ship/sensors{
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "nB" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -919,24 +919,24 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "nE" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "nH" = (
 /turf/simulated/wall/shull,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "nP" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "nX" = (
 /obj/structure/closet/crate{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "oa" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -944,34 +944,34 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/portable_atmospherics/canister/empty,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "oc" = (
 /obj/machinery/door/airlock/hatch{
 	req_one_access = list(160)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "oe" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "oi" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "ot" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "oC" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "oF" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
@@ -980,17 +980,17 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "oI" = (
 /obj/structure/closet/walllocker/autolok_wall{
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "oL" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "pf" = (
 /obj/structure/handrail,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1000,7 +1000,7 @@
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "px" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 1
@@ -1010,7 +1010,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "pG" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -1028,7 +1028,7 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "pH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8
@@ -1036,7 +1036,7 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/closet/walllocker/emerglocker/east,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "qg" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1048,14 +1048,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "qh" = (
 /obj/machinery/computer/shuttle_control{
 	dir = 8;
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "qn" = (
 /obj/structure/bed/chair/bay/chair,
 /obj/structure/handrail,
@@ -1071,7 +1071,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/north_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "qu" = (
 /obj/structure/table/steel,
 /obj/machinery/light_switch{
@@ -1081,25 +1081,25 @@
 /obj/item/pizzabox,
 /obj/structure/closet/walllocker_double/kitchen/south,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "qx" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "qE" = (
 /obj/structure/handrail{
 	dir = 1
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "qM" = (
 /obj/structure/closet/crate{
 	dir = 8
 	},
 /obj/random/multiple/voidsuit/vintage,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "qQ" = (
 /obj/structure/closet/crate{
 	dir = 8
@@ -1108,7 +1108,7 @@
 /obj/random/material,
 /obj/random/toolbox,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "ri" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -1116,7 +1116,7 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "rj" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -1125,7 +1125,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "rt" = (
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
@@ -1137,14 +1137,14 @@
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "rw" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "ry" = (
 /obj/machinery/door/window/brigdoor/eastright{
 	req_access = list();
@@ -1157,7 +1157,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "sb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1172,7 +1172,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "ub" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1181,7 +1181,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "ur" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -1191,7 +1191,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "vi" = (
 /obj/structure/table/steel,
 /obj/machinery/microwave,
@@ -1201,7 +1201,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "vI" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1210,14 +1210,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "wF" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "xL" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1234,7 +1234,7 @@
 	name = "Uniform Locker"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "yv" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1252,7 +1252,7 @@
 	name = "Uniform Locker"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "zO" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1264,18 +1264,18 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "zQ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "AD" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/fuel,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "AN" = (
 /obj/structure/handrail{
 	dir = 1
@@ -1292,7 +1292,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "Bf" = (
 /obj/machinery/light{
 	dir = 1
@@ -1312,21 +1312,21 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "BW" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Df" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 4
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "DB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1335,13 +1335,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "DK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/wall/shull,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "DM" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -1351,14 +1351,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "ES" = (
 /obj/structure/closet/crate,
 /obj/random/material,
 /obj/random/material,
 /obj/random/toolbox,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Fu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -1374,7 +1374,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "FL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1383,14 +1383,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Gj" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "HG" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1402,7 +1402,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "HR" = (
 /obj/machinery/shipsensors{
 	dir = 4
@@ -1411,7 +1411,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "IL" = (
 /obj/item/suit_cooling_unit,
 /obj/item/tank/air,
@@ -1427,7 +1427,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "IQ" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -1436,20 +1436,20 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "IR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Jq" = (
 /obj/machinery/computer/ship/helm{
 	dir = 8;
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "Kn" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/door/blast/shutters{
@@ -1469,7 +1469,7 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Kw" = (
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -1481,7 +1481,7 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "KX" = (
 /obj/structure/handrail,
 /obj/random/tech_supply/nofail,
@@ -1499,16 +1499,16 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Lf" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "LU" = (
 /obj/structure/closet/crate,
 /obj/random/multiple/voidsuit/vintage,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "No" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -1520,7 +1520,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "NR" = (
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
@@ -1533,7 +1533,7 @@
 	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "OI" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -1551,31 +1551,31 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "ON" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "OU" = (
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_cockpit)
+/area/shuttle/salamander/cockpit)
 "Pc" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Pk" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "PN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1585,10 +1585,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Qn" = (
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Qq" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
@@ -1602,7 +1602,7 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "Rd" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -1623,7 +1623,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "RO" = (
 /obj/structure/bed/pod,
 /obj/item/bedsheet/blue,
@@ -1632,13 +1632,13 @@
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "RU" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_galley)
+/area/shuttle/salamander/galley)
 "Sb" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/door/blast/shutters{
@@ -1662,12 +1662,12 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Sp" = (
 /obj/structure/table/steel,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "Td" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -1683,10 +1683,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "Tg" = (
 /turf/simulated/wall/shull,
-/area/shuttle/salamander_head)
+/area/shuttle/salamander/head)
 "Tl" = (
 /obj/item/suit_cooling_unit,
 /obj/item/tank/air,
@@ -1708,7 +1708,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "TG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -1718,12 +1718,12 @@
 	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "UT" = (
 /obj/machinery/door/airlock/glass_external/public,
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Vh" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -1733,14 +1733,14 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "Vs" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Vz" = (
 /turf/simulated/wall/shull,
-/area/shuttle/salamander_q2)
+/area/shuttle/salamander/q2)
 "VK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -1753,24 +1753,24 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "VT" = (
 /turf/simulated/wall/shull,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "VW" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Wj" = (
 /turf/simulated/wall/shull,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "Wv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "WN" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1787,7 +1787,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "WP" = (
 /turf/template_noop,
 /area/template_noop)
@@ -1797,7 +1797,7 @@
 	},
 /obj/random/multiple/voidsuit/vintage,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Xc" = (
 /obj/item/suit_cooling_unit,
 /obj/item/tank/air,
@@ -1817,7 +1817,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Xn" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -1838,13 +1838,13 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Xr" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/structure/catwalk,
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "Xs" = (
 /obj/machinery/power/port_gen/pacman/mrs{
 	anchored = 1
@@ -1860,19 +1860,19 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander_engineering)
+/area/shuttle/salamander/engineering)
 "XJ" = (
 /obj/structure/handrail,
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "ZK" = (
 /obj/structure/closet/walllocker/autolok_wall{
 	dir = 1;
 	pixel_y = -32
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 "ZU" = (
 /obj/machinery/embedded_controller/radio/docking_port_multi{
 	child_names_txt = "Port Airlock Control;Starboard Airlock Control";
@@ -1889,7 +1889,7 @@
 	},
 /obj/machinery/power/apc/alarms_hidden/east_mount,
 /turf/simulated/floor/tiled/techfloor,
-/area/shuttle/salamander)
+/area/shuttle/salamander/cabin)
 
 (1,1,1) = {"
 WP
