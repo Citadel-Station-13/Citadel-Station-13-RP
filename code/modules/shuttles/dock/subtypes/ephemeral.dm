@@ -18,3 +18,6 @@
  * manual dock
  */
 /obj/shuttle_dock/ephemeral/manual
+	protect_bounding_box = TRUE
+	// no boxing someone in now!
+	protect_bounding_box_extra_radius = 3

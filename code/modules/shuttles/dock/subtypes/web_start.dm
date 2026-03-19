@@ -8,7 +8,7 @@
  *
  * we'll use the web datum we're joined on via web_node_type to join the shuttle.
  */
-// TODO: recreate web shuttles
+// TODO: recreate web shuttles; proabbly with a macro for dock generation
 // /obj/shuttle_dock/web_start
 
 // /obj/shuttle_dock/web_start/init_shuttle(datum/shuttle/shuttle)

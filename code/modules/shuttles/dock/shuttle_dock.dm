@@ -29,7 +29,16 @@
 	invisibility = INVISIBILITY_NONE
 #endif
 
-	//* bounding box
+	/// is the dock initialized and ready?
+	var/dock_initialized = FALSE
+
+	//* bounding box *//
+	/// image used to render our bounding box; attached to self
+	/// * If 'CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES' is defined, this is a pretty render.
+	///   Otherwise, this is just going to be a translucent color or something to
+	///   visualize the bounding box for manual docking API / UI
+	#warn hook
+	var/image/bounding_box_image
 	/// allow docking inside bounding box as long as a shuttle fits, even if the dock doesn't align
 	var/centered_landing_allowed = TRUE
 	/// only allow landing inside bounding box, centered, if not manually landing; used for landing pads
@@ -39,6 +48,9 @@
 	/// protect our bounding box from manual landing
 	var/protect_bounding_box = FALSE
 	#warn hook
+	/// additional radius to protect bounding box on all sides
+	var/protect_bounding_box_extra_radius = 0
+	#warn hook all
 	/// shuttles are clear to land in our bounding box without the normal obstruction checks
 	/// this should usually be TRUE so people can't block off areas
 	var/trample_bounding_box = TRUE
@@ -57,7 +69,7 @@
 	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_y
 
-	//* docking (backend)
+	//* docking (backend) *//
 	/// base area to leave behind when something takes off; null for zlevel default
 	///
 	/// this should be an unique area, like /area/space
@@ -69,7 +81,7 @@
 	/// if zlevel default isn't found, defaults to world.area
 	var/area/base_area
 
-	//* docking (alignment)
+	//* docking (alignment) *//
 	/// how wide this dock's non-airtight region is.
 	///
 	/// the dock is left-aligned to this region,
@@ -92,14 +104,14 @@
 	/// this is tiles like walls that are still considered airtight / sealed
 	var/dock_margin = 1
 
-	//* docking (control)
+	//* docking (control) *//
 	/// docking code, if any
 	var/docking_code
 	/// requires docking code to dock
 	/// * This usually should be FALSE.
 	var/docking_code_required = FALSE
 
-	//* docking (registration)
+	//* docking (registration) *//
 	/// dock id - must be unique per map instance
 	/// the maploader will handle ID scrambling to ensure it is unique globally, across rounds.
 	/// * if this doesn't exist, stuff that need to hook it won't work.
@@ -122,7 +134,7 @@
 	/// the shuttle web node we belong to, if any
 	// var/datum/shuttle_web_node/web_node
 
-	//* docking (protection)
+	//* docking (protection) *//
 	/**
 	 * Only allow a shuttle of this ID (or these IDs if a list) to dock.
 	 * * These are shuttle IDs, not template IDs. Do not set them to a template ID.
@@ -136,13 +148,13 @@
 	var/docking_restrict_to_starting = FALSE
 	#warn hook
 
-	//* identity
+	//* identity *//
 	/// display name - visible to everyone at all times; if null, we use name.
 	var/display_name
 	/// display desc - visible to everyone at all times; if null, we use desc.
 	var/display_desc
 
-	//* shuttle
+	//* shuttle *//
 	/// the docked shuttle
 	var/datum/shuttle/docked
 	#warn this should be an advisory lock
@@ -190,6 +202,7 @@
  * * sx_sy_ox_oy - size x, size y, offset x, offset y; used to force our bounds to something.
  * * lx_ly_hx_hy - low x, low y, high x, high y; used to force our bounds to a set of absolute coordinates. we must be inside this range or we will runtime.
  */
+#warn consider using /datum/bounds2
 /obj/shuttle_dock/Initialize(mapload, with_id, with_dir, list/sx_sy_ox_oy, list/lx_ly_hx_hy)
 	if(!isnull(with_dir))
 		src.dir = with_dir
@@ -266,6 +279,8 @@
 		qdel(src)
 		return
 	#warn CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES
+	// enable bounding box protection
+	set_bounding_box_protection(protect_bounding_box, protect_bounding_box_extra_radius)
 	var/datum/shuttle/loaded
 	if(starting_shuttle_template)
 		if(!(loaded = load_shuttle()))
@@ -273,6 +288,7 @@
 		else
 			init_shuttle(loaded)
 			ready_shuttle(loaded)
+	dock_initialized = TRUE
 
 /obj/shuttle_dock/Destroy()
 	// if inbound, and it has a controller,
@@ -419,7 +435,12 @@
  * initializes our roundstart shuttle (usually by giving it a controller)
  */
 /obj/shuttle_dock/proc/init_shuttle(datum/shuttle/shuttle)
-	return
+	init_shuttle_controller(shuttle)
+
+/obj/shuttle_dock/proc/init_shuttle_controller(datum/shuttle/shuttle)
+	// Default behavior: bind to overmaps
+	var/datum/shuttle_controller/overmap/controller = new()
+	shuttle.bind_controller(controller)
 
 /**
  * called after our initial shuttle is loaded and initialized
@@ -598,6 +619,11 @@
 	augmenting += round(augmenting[2] + (augmenting[4] - augmenting[2]) / 2) // 6
 	return augmenting
 
+/obj/shuttle_dock/proc/set_bounding_box_protection(active, extra_radius)
+	protect_bounding_box = active
+	protect_bounding_box_extra_radius = extra_radius
+	#warn handle
+
 /obj/shuttle_dock/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	// these aren't security issues
 	if(!raw_edit)
@@ -612,6 +638,12 @@
 			unregister_dock()
 		if(NAMEOF(src, register_by_type))
 			return FALSE // **no.**
+		if(NAMEOF(src, protect_bounding_box))
+			set_bounding_box_protection(var_value, protect_bounding_box_extra_radius)
+			return TRUE
+		if(NAMEOF(src, protect_bounding_box_extra_radius))
+			set_bounding_box_protection(protect_bounding_box, var_value)
+			return TRUE
 	. = ..()
 	switch(var_name)
 		if(NAMEOF(src, dock_id))

@@ -37,6 +37,10 @@
 	maptext = MAPTEXT_CENTER_CONST("Shuttle Dock\n" + "(" + NAME + ")"); \
 }; \
 /obj/shuttle_dock/preset##TYPEPATH
+// /obj/shuttle_dock/landing_pad
+// 	icon_state = "dock_center"
+// 	centered_landing_only = TRUE
+// 	centered_landing_allowed = TRUE
 
 #define DECLARE_SHUTTLE_DOCK_PRESET_ALIGNED(TYPEPATH, NAME) DECLARE_SHUTTLE_DOCK_PRESET_IMPL(TYPEPATH, NAME, TRUE)
 #define DECLARE_SHUTTLE_DOCK_PRESET_CENTERED(TYPEPATH, NAME) DECLARE_SHUTTLE_DOCK_PRESET_IMPL(TYPEPATH, NAME, FALSE)

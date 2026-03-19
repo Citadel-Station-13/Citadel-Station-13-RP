@@ -64,5 +64,5 @@
 	trample_bounding_box = TRUE
 	// no one can block us
 	protect_bounding_box = TRUE
-
-#warn protect bounding box for larger area than usual
+	// do not allow parking turret shuttles next to a freeflight shuttle
+	protect_bounding_box_extra_radius = 14
