@@ -5,22 +5,30 @@
 /obj/shuttle_dock_preload/generated##TYPEPATH { \
 	shuttle_template_path = /datum/shuttle_template##TYPEPATH; \
 	maptext = MAPTEXT_CENTER_CONST("Shuttle Preloader\n" + "(" + /datum/shuttle_template##TYPEPATH::id + ")"); \
-}; \
+};
+
+#define DECLARE_SHUTTLE_TEMPLATE(TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(TYPEPATH) \
 /datum/shuttle_template##TYPEPATH
 
-#define DECLARE_SHUTTLE_TEMPLATE(TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(TYPEPATH)
 /**
  * * Binds to /datum/map/sector's
  */
 #define DECLARE_SECTOR_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/sector##MAP_PATH/##TYPEPATH) \
-	category = "Map-Specific";
+/datum/shuttle_template/map_specific/sector##MAP_PATH/##TYPEPATH { \
+	category = "Map-Specific"; \
+}; \
+/datum/shuttle_template/map_specific/sector##MAP_PATH/##TYPEPATH
+
 /**
  * * Binds to /datum/map/station's
  */
-#define DECLARE_STATION_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/station##MAP_PATH/##TYPEPATH)\
-	category = "Map-Specific";
+#define DECLARE_STATION_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/station##MAP_PATH/##TYPEPATH) \
+/datum/shuttle_template/map_specific/station##MAP_PATH/##TYPEPATH { \
+	category = "Map-Specific"; \
+}; \
+/datum/shuttle_template/map_specific/station##MAP_PATH/##TYPEPATH
 
-#warn sector / station name above, bind?
+#warn sector / station name above, bind for subcat?
 
 #warn aligned?
 #define DECLARE_SHUTTLE_DOCK_PRESET_IMPL(TYPEPATH, NAME, ALIGNED) \
