@@ -12,11 +12,15 @@
 /**
  * * Binds to /datum/map/sector's
  */
-#define DECLARE_SECTOR_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/sector##MAP_PATH/##TYPEPATH)
+#define DECLARE_SECTOR_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/sector##MAP_PATH/##TYPEPATH) \
+	category = "Map-Specific";
 /**
  * * Binds to /datum/map/station's
  */
-#define DECLARE_STATION_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/station##MAP_PATH/##TYPEPATH)
+#define DECLARE_STATION_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/station##MAP_PATH/##TYPEPATH)\
+	category = "Map-Specific";
+
+#warn sector / station name above, bind?
 
 #warn aligned?
 #define DECLARE_SHUTTLE_DOCK_PRESET_IMPL(TYPEPATH, NAME, ALIGNED) \
