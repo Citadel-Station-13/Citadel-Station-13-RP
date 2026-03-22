@@ -36,7 +36,7 @@
 			to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
 			return
 	if(src.dat)
-		user << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
+		user << browse(HTML_SKELETON("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]"), "window=book")
 		user.visible_message("[user] opens a book titled \"[src.title]\" and begins reading intently.")
 		onclose(user, "book")
 	else
