@@ -1589,59 +1589,6 @@
 	sound_env = STANDARD_STATION
 	ambience = AMBIENCE_GENERIC
 
-/area/shuttle/excursion
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/excursion/general
-	name = "\improper Excursion Shuttle"
-
-/area/shuttle/excursion/cockpit
-	name = "\improper Excursion Shuttle Cockpit"
-
-/area/shuttle/excursion/cargo
-	name = "\improper Excursion Shuttle Cargo"
-
-/area/shuttle/tourbus
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/tourbus/general
-	name = "\improper Tour Bus"
-
-/area/shuttle/tourbus/cockpit
-	name = "\improper Tour Bus Cockpit"
-
-/area/shuttle/tourbus/engines
-	name = "\improper Tour Bus Engines"
-
-/area/shuttle/medivac
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/medivac/general
-	name = "\improper Medivac"
-
-/area/shuttle/medivac/cockpit
-	name = "\improper Medivac Cockpit"
-
-/area/shuttle/medivac/engines
-	name = "\improper Medivac Engines"
-
-/area/shuttle/securiship
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/securiship/general
-	name = "\improper Securiship"
-
-/area/shuttle/securiship/cockpit
-	name = "\improper Securiship Cockpit"
-
-/area/shuttle/securiship/engines
-	name = "\improper Securiship Engines"
-
-//TFF 5/4/20 - Mining Ops move
 // Asteroid Mining belter and Mining Outpost shuttles and refinery/gear areas
 /area/quartermaster/belterdock
 	name = "\improper Cargo Belter Access"
@@ -1709,18 +1656,6 @@
 
 /area/security/nuke_storage
 	area_flags = AREA_FLAG_BLUE_SHIELDED
-
-/area/supply
-
-// Add rad shielding to maintenance and construction sites
-/area/vacant
-	area_flags = AREA_RAD_SHIELDED
-
-/area/maintenance
-	area_flags = AREA_RAD_SHIELDED
-
-/area/rnd/research_storage	//Located entirely in maint under public access, so why not that too
-	area_flags = AREA_RAD_SHIELDED
 
 // New shuttles
 /area/shuttle/administration/transit

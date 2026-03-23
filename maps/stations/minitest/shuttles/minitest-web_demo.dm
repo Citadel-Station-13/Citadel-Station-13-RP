@@ -1,5 +1,8 @@
 // TODO: web shuttles
 
+DECLARE_STATION_SHUTTLE_TEMPLATE(/minitest, /web_demo)
+	id = "minitest-web_demo"
+
 #warn impl + make the map but don't do the web hookup
 
 /area/shuttle/webdemo

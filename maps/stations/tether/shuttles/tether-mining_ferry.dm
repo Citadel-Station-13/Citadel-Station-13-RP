@@ -1,12 +1,10 @@
+DECLARE_STATION_SHUTTLE_TEMPLATE(/tether, /mining_ferry)
+	id = "tether-mining_ferry"
+	name = "Mining Ferry"
+	display_name = "Mining Ferry"
 
-#warn impl
-/datum/shuttle/autodock/ferry/surface_mining_outpost
-	name = "Mining Outpost"
-	location = FERRY_LOCATION_STATION
-	warmup_time = 5
-	shuttle_area = /area/shuttle/mining_outpost
-	landmark_station = "mining_station"
-	landmark_offsite = "mining_outpost"
-	docking_controller_tag = "mining_docking"
-	move_direction = NORTH
+	descriptor = /datum/shuttle_descriptor{
+		preferred_orientation = NORTH;
+	}
 
+#warn impl, map
