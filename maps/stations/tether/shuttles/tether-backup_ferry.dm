@@ -4,3 +4,4 @@ DECLARE_STATION_SHUTTLE_TEMPLATE(/tether, /backup_ferry)
 	display_name = "Tether Backup Ferry"
 
 #warn impl
+
