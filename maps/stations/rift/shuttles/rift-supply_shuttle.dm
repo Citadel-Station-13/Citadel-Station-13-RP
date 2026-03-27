@@ -4,8 +4,8 @@ DECLARE_STATION_SHUTTLE_TEMPLATE(/rift, /supply_shuttle)
 
 	descriptor = /datum/shuttle_descriptor{
 		mass = 12500;
-		legacy_overmap_scan_name = "Rift Supply Shuttle";
-		legacy_overmap_color = "#a890ac";
+		overmap_legacy_scan_name = "Rift Supply Shuttle";
+		overmap_legacy_color = "#a890ac";
 	}
 
 	display_name = "Supply Shuttle"

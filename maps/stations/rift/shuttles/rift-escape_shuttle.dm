@@ -4,8 +4,8 @@ DECLARE_STATION_SHUTTLE_TEMPLATE(/rift, /escape_shuttle)
 
 	descriptor = /datum/shuttle_descriptor{
 		mass = 12500;
-		legacy_overmap_scan_name = "Rift Escape Shuttle";
-		legacy_overmap_color = "#a890ac";
+		overmap_legacy_scan_name = "Rift Escape Shuttle";
+		overmap_legacy_color = "#a890ac";
 	}
 
 	display_name = "Escape Shuttle"

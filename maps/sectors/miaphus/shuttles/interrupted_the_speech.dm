@@ -1,4 +1,4 @@
-DECLARE_SECTOR_SHUTTLE_TEMPLATE(/miaphus/interrupted_the_speech)
+DECLARE_SECTOR_SHUTTLE_TEMPLATE(/miaphus, /interrupted_the_speech)
 	id = "miaphus-interrupted_the_speech"
 	name = "SDF Interrupted-The-Speech"
 	desc = "A patrol military vessel."

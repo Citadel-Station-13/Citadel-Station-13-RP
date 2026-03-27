@@ -2,7 +2,7 @@
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
- * stores data about the current transit cycle
+ * Stores data about the current transit cycle
  */
 /datum/shuttle_transit_cycle
 	//* state / processing *//

@@ -5,9 +5,9 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/exp_javelot)
 
 	descriptor = /datum/shuttle_descriptor{
 		mass = 12500;
-		legacy_overmap_scan_name = "Javelot";
-		legacy_overmap_color = "#a890ac";
-		legacy_overmap_scan_desc = @{"[i]Registration[/i]: ---
+		overmap_legacy_scan_name = "Javelot";
+		overmap_legacy_color = "#a890ac";
+		overmap_legacy_scan_desc = @{"[i]Registration[/i]: ---
 	[i]Class[/i]: Javelot Exploration Shuttle
 	[i]Transponder[/i]: Transmitting (CIV), Designed by NT. It is also a fighter carrier vessel."}
 		preferred_orientation = EAST
