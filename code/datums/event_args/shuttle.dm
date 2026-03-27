@@ -29,84 +29,86 @@
  * Shuttle docking event
  *
  * * Fired by shuttle controllers. This is not a low-level hook.
+ *   The only exception is 'dock departed', 'dock undocked'; a shuttle will always
+ *   trigger this when they move away, even if the controller doesn't exist, as
+ *   aligned translation will tell the dock to do this.
  * * This will be fired on both the shuttle and dock sides.
  * * Direct shuttle translation calls will not call this.
  * * For things that reference each other / connect to a shuttle, please hook translation hooks to ensure disconnection.
- *
- * ## Order of Operations
- *
- * Docking
- * * Docking fired
- * * On success, post-docking is fired
- * * On failure, post-undocking is fired with recovery
- *
- * Undocking
- * * Undocking fired
- * * On success, post-undocking is fired
- * * On failure, post-docking is fired with recovery
- *
- * Takeoff
- * * Takeoff fired
- * * On success, post-takeoff is fired
- * * On failure, post-landing is fired on the dock the shuttle was taking off from with recovery.
- * * On failure, post-takeoff is fired on the dock the shuttle was landing on with recovery.
- *
- * Landing
- * * Landing fired
- * * On success, post-landing is fired
- * * On failure, post-takeoff is fired on the dock the shuttle was landing onwith recovery.
- * * On failure, post-landing is fired on the dock the shuttle was taking off from with recovery.
+ *   While these events *usually* have well-defined correlation to each other, nothing is promised
+ *   as docking is a social construct but unironically.
  */
-#warn how to deal with takeoff/landing?
 /datum/event_args/shuttle/dock
 	/// controller ref
 	var/datum/shuttle_controller/controller
-	/// shuttle port being used, if any
-	var/obj/shuttle_aligner/port/shuttle_port
-	/// the dock in question, if any
+	/// transit stage
+	var/datum/shuttle_transit_stage/stage
+	/// the dock in question
 	var/obj/shuttle_dock/dock
-	/// hint: how much time does the shuttle have left to leaving / needing the next step?
-	///
-	/// e.g. if takeoff_time is 3 seconds, you set this to 3 seconds for 'departing'
-	/// so things like hanger doors open only before the end
-	var/duration_to_next
-	/// for the above, the world.time we were fired
-	/// so things that require checking elapsed time work
-	var/started_at
-	/// if this is a recovery from a failed transit or docking, this will be set to true
-	var/recovery = FALSE
+	/// shuttle port being used, if any
+	var/obj/shuttle_aligner/port/port
 
-/datum/event_args/shuttle/dock/New(datum/shuttle/shuttle, obj/shuttle_dock/dock, obj/shuttle_aligner/port/port)
+/datum/event_args/shuttle/dock/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, obj/shuttle_dock/dock, obj/shuttle_aligner/port/port)
 	..()
 	src.controller = shuttle.controller
 	src.dock = dock
 	src.shuttle_port = port
+	src.stage = stage
 
 /datum/event_args/shuttle/dock/Destroy()
 	controller = null
+	dock = null
+	port = null
+	stage = null
 	return ..()
 
-#warn transit cycle?
-
-/datum/event_args/shuttle/dock/begin(timeout, spool_duration)
-	. = ..()
-	started_at = world.time
-	duration_to_next = spool_duration
+/**
+ * Fired when a shuttle is attempting to perform traversal into the dock.
+ * * Shuttles will be in a holding pattern, but inside the overmap entity, while this
+ *   occurs.
+ */
+/datum/event_args/shuttle/dock/arriving
 
 /**
- * negative returns mean that we have overshot the available time
+ * Fired when a shuttle has traversed into the dock's bounding box to dock.
+ * * Docking only occurs if docking codes are valid.
  */
-/datum/event_args/shuttle/dock/proc/time_to_next()
-	return duration_to_next - (world.time - started_at)
-
-/datum/event_args/shuttle/dock/docking
-/datum/event_args/shuttle/dock/undocking
-/datum/event_args/shuttle/dock/docked
-/datum/event_args/shuttle/dock/undocked
-/datum/event_args/shuttle/dock/departing
-/datum/event_args/shuttle/dock/departed
-/datum/event_args/shuttle/dock/arriving
 /datum/event_args/shuttle/dock/arrived
+
+/**
+ * Fired when a shuttle is attempting to perform traversal out of the dock.
+ * * Shuttles will not move until this happens. They will be in a holding pattern,
+ *   inside the last overmap entity, while this occurs.
+ */
+/datum/event_args/shuttle/dock/departing
+/**
+ * Fired when a shuttle has traversed out of the dock's bounding box.
+ * * Undocking only occurs if a shuttle was successfully docked in the first place.
+ * * The backend promises that this will always be called if a shuttle was in the dock,
+ *   even if the shuttle controller doesn't exist.
+ */
+/datum/event_args/shuttle/dock/departed
+
+/**
+ * Fired when a shuttle is attempting to dock.
+ * * At this point, the shuttle already moved onto the dock. This is for stuff like airlocks.
+ */
+/datum/event_args/shuttle/dock/docking
+
+/**
+ * Fired when a shuttle is attempting to undock.
+ */
+/datum/event_args/shuttle/dock/undocking
+
+/**
+ * Fired when a shuttle has successfully docked.
+ */
+/datum/event_args/shuttle/dock/docked
+
+/**
+ * Fired when a shuttle has successfully undocked.
+ */
+/datum/event_args/shuttle/dock/undocked
 
 /**
  * * Fired by shuttle controllers. This is not a low-level hook.
@@ -128,6 +130,18 @@
 /datum/event_args/shuttle/traversal
 	/// controller ref
 	var/datum/shuttle_controller/controller
+	/// transit stage
+	var/datum/shuttle_transit_stage/stage
+
+/datum/event_args/shuttle/traversal/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage)
+	..()
+	src.controller = shuttle.controller
+	src.stage = stage
+
+/datum/event_args/shuttle/traversal/Destroy()
+	controller = null
+	stage = null
+	return ..()
 
 /datum/event_args/shuttle/traversal/web
 	/// old node
@@ -137,7 +151,7 @@
 	var/datum/shuttle_web_node/to_node
 	/// * nullable
 
-/datum/event_args/shuttle/traversal/web/New(datum/shuttle/shuttle, datum/shuttle_web_node/from_node, datum/shuttle_web_node/to_node)
+/datum/event_args/shuttle/traversal/web/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, datum/shuttle_web_node/from_node, datum/shuttle_web_node/to_node)
 	#warn impl
 
 /datum/event_args/shuttle/traversal/web/ingress
@@ -153,7 +167,7 @@
 
 	#warn impl
 
-/datum/event_args/shuttle/traversal/overmap/New(datum/shuttle/shuttle, obj/overmap/entity/old_inside_entity, obj/overmap/entity/new_inside_entity)
+/datum/event_args/shuttle/traversal/overmap/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, obj/overmap/entity/old_inside_entity, obj/overmap/entity/new_inside_entity)
 
 	#warn impl
 

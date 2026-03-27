@@ -26,14 +26,29 @@
 /// * This MUST be 0, because things can use truthy checks against get_transit_stage()!
 #define SHUTTLE_TRANSIT_STAGE_IDLE 0
 /// undocking
+/// * Fires undocking / undocked event
+/// * Cancelling here goes to re-dock at the same dock.
 #define SHUTTLE_TRANSIT_STAGE_UNDOCK 1
 /// taking off
+/// * Fires takeoff / post-takeoff event
+/// * Cancelling here goes to re-dock at the same dock, firing post-landing.
 #define SHUTTLE_TRANSIT_STAGE_TAKEOFF 2
 /// in transit
+/// * Fires traversal events when the move happens.
+/// * Cancelling here invokes controller-specific behavior. This can return the shuttle, kick it to freeflight, etc.
+/// * If the original dock isn't dockable anymore, the shuttle is orphaned / in limbo.
+///   It is up to you to handle cancel behaviors on the controller to ensure this doesn't happen.
 #define SHUTTLE_TRANSIT_STAGE_FLIGHT 3
 /// landing
+/// * Fires landing / post-landing event
+/// * Cancelling here invokes controller-specific behavior. This can return the shuttle, kick it to freeflight, etc.
+/// * If the original dock isn't dockable anymore, the shuttle is orphaned / in limbo.
+///   It is up to you to handle cancel behaviors on the controller to ensure this doesn't happen.
 #define SHUTTLE_TRANSIT_STAGE_LANDING 4
 /// docking
+/// * Fires docking / docked event
+/// * Cancelling here simply doesn't dock the shuttle, as it's already landed and landing
+///   is separate from docking.
 #define SHUTTLE_TRANSIT_STAGE_DOCK 5
 
 DECLARE_ENUM(shuttle_transit_stages, list(

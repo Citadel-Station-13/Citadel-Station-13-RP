@@ -5,6 +5,8 @@
  * Stores data about a transit stage like docking / undocking / takeoff / landing
  */
 /datum/shuttle_transit_stage
+	/// owning cycle
+	var/datum/shuttle_transit_cycle/cycle
 	/// stage enum
 	var/stage = SHUTTLE_TRANSIT_STAGE_IDLE
 	/**
