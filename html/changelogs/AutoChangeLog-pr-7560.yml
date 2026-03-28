@@ -1,0 +1,7 @@
+author: "its-helvi"
+delete-after: True
+changes:
+  - bugfix: "Power network interface circuits work again."
+  - bugfix: "You can now heal prosthetics with cables again."
+  - bugfix: "Protolathes should no longer bluescreen when destructively analyzing material sheets."
+  - bugfix: "Destructively analyzing advanced TTS circuits is no longer morally dubious."
