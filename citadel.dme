@@ -1053,6 +1053,7 @@
 #include "code\datums\soundbytes\guns\ballistic.dm"
 #include "code\datums\soundbytes\guns\energy.dm"
 #include "code\datums\soundbytes\guns\magnetic.dm"
+#include "code\datums\spatial\bounds2.dm"
 #include "code\datums\status_effects\grouped.dm"
 #include "code\datums\status_effects\stacking.dm"
 #include "code\datums\status_effects\status_effect.dm"
