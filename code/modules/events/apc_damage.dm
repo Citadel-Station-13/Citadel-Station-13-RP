@@ -50,4 +50,4 @@
 
 /datum/event/apc_damage/proc/is_valid_apc(var/obj/machinery/power/apc/apc)
 	var/turf/T = get_turf(apc)
-	return !apc.is_critical && !apc.emagged && T && (T.z in (LEGACY_MAP_DATUM).player_levels)
+	return !apc.is_critical && !apc.emagged && T && (T.z in (LEGACY_MAP_DATUM).station_levels)

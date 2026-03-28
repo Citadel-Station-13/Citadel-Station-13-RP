@@ -6,7 +6,7 @@
 /mob/living/silicon/ai/var/stored_locations[0]
 
 /proc/InvalidPlayerTurf(turf/T as turf)
-	return !(T && (T.z in (LEGACY_MAP_DATUM).player_levels))
+	return !(T && (T.z in (LEGACY_MAP_DATUM).station_levels))
 
 /mob/living/silicon/ai/proc/get_camera_list()
 	if(src.stat == 2)

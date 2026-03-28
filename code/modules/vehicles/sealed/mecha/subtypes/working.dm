@@ -9,7 +9,7 @@
 /obj/vehicle/sealed/mecha/working/Initialize(mapload)
 	. = ..()
 	var/turf/T = get_turf(src)
-	if(isPlayerLevel(T.z))
+	if(isStationLevel(T.z))
 		new /obj/item/vehicle_tracking_beacon(src)
 
 /obj/vehicle/sealed/mecha/working/range_action(atom/target as obj|mob|turf)
