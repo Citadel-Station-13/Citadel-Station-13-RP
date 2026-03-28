@@ -28,10 +28,7 @@
 /**
  * Shuttle docking event
  *
- * * Fired by shuttle controllers. This is not a low-level hook.
- *   The only exception is 'dock departed', 'dock undocked'; a shuttle will always
- *   trigger this when they move away, even if the controller doesn't exist, as
- *   aligned translation will tell the dock to do this.
+ * * Fired by shuttle controllers. This is not a low-level hook. Do not rely on them always firing.
  * * This will be fired on both the shuttle and dock sides.
  * * Direct shuttle translation calls will not call this.
  * * For things that reference each other / connect to a shuttle, please hook translation hooks to ensure disconnection.
@@ -52,7 +49,7 @@
 	..()
 	src.controller = shuttle.controller
 	src.dock = dock
-	src.shuttle_port = port
+	src.port = port
 	src.stage = stage
 
 /datum/event_args/shuttle/dock/Destroy()
@@ -84,8 +81,6 @@
 /**
  * Fired when a shuttle has traversed out of the dock's bounding box.
  * * Undocking only occurs if a shuttle was successfully docked in the first place.
- * * The backend promises that this will always be called if a shuttle was in the dock,
- *   even if the shuttle controller doesn't exist.
  */
 /datum/event_args/shuttle/dock/departed
 
@@ -114,6 +109,7 @@
  * * Fired by shuttle controllers. This is not a low-level hook.
  * * This will be fired on both the shuttle and dock sides.
  * * The role of this is to be able to hook move events for things like point defense to fire at the shuttle.
+ * * Generally this is fired anytime the shuttle logically moves in/out of a place, on relevant things; not just docks.
  *
  * Order of operations:
  * * undock
@@ -126,7 +122,6 @@
  * if traversal fails **befores** leaving the old location, the opposite event is called on the old location with 'recovery'
  * if traversal fails or is cancelled **after** leaving the old location, the opposite is called on the old location with 'recovery'
  */
-#warn finalize what the fuck this is / is going to be
 /datum/event_args/shuttle/traversal
 	/// controller ref
 	var/datum/shuttle_controller/controller
@@ -152,7 +147,14 @@
 	/// * nullable
 
 /datum/event_args/shuttle/traversal/web/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, datum/shuttle_web_node/from_node, datum/shuttle_web_node/to_node)
-	#warn impl
+	..()
+	src.from_node = from_node
+	src.to_node = to_node
+
+/datum/event_args/shuttle/traversal/web/Destroy()
+	from_node = null
+	to_node = null
+	return ..()
 
 /datum/event_args/shuttle/traversal/web/ingress
 /datum/event_args/shuttle/traversal/web/egress
@@ -165,11 +167,15 @@
 	/// * nullable; if null, is freeflight
 	var/obj/overmap/entity/new_inside_entity
 
-	#warn impl
-
 /datum/event_args/shuttle/traversal/overmap/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, obj/overmap/entity/old_inside_entity, obj/overmap/entity/new_inside_entity)
+	..()
+	src.old_inside_entity = old_inside_entity
+	src.new_inside_entity = new_inside_entity
 
-	#warn impl
+/datum/event_args/shuttle/traversal/overmap/Destroy()
+	old_inside_entity = null
+	new_inside_entity = null
+	return ..()
 
 /datum/event_args/shuttle/traversal/overmap/ingress
 /datum/event_args/shuttle/traversal/overmap/egress

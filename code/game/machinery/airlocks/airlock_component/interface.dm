@@ -4,10 +4,11 @@
 /obj/item/airlock_component/interface
 	name = /obj/machinery/airlock_component/interface::name + " (detached)"
 	desc = /obj/machinery/airlock_component/interface::desc
-	machine_type = /obj/machinery/airlock_component/interface
 	icon = /obj/machinery/airlock_component/interface::icon
 	icon_state = /obj/machinery/airlock_component/interface::icon_state
 	base_icon_state = /obj/machinery/airlock_component/interface::base_icon_state
+
+	machine_type = /obj/machinery/airlock_component/interface
 
 
 #warn impl all

@@ -2,15 +2,18 @@
  * The return of the king.
  */
 /datum/map/sector/itv_talon
+	id = "itv_talon
 	name = "ITV Talon"
 
 /datum/map_level/sector/itv_talon
 	abstract_type = /datum/map_level/sector/itv_talon
 
 /datum/map_level/sector/itv_talon/deck_1
+	id = "itv_talon-deck_1"
 	link_above_id = /datum/map_level/sector/itv_talon/deck_2::id
 
 /datum/map_level/sector/itv_talon/deck_2
+	id = "itv_talon-deck_2"
 	link_below_id = /datum/map_level/sector/itv_talon/deck_1::id
 
 #warn impl

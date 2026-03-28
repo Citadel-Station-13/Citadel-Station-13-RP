@@ -223,12 +223,11 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 //returns 1 if the shuttle is not idle at centcom
 /datum/controller/subsystem/emergencyshuttle/proc/online()
-	if(!shuttle)
-		return FALSE
 	if(!GLOB.legacy_emergency_shuttle_controller.is_at_home())
+		return TRUE
 	if (wait_for_launch || GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to the station
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_station()
