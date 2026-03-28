@@ -4,12 +4,11 @@
 /obj/item/airlock_component/interface/shuttle
 	name = /obj/machinery/airlock_component/interface/shuttle::name + " (detached)"
 	desc = /obj/machinery/airlock_component/interface/shuttle::desc
-	machine_type = /obj/machinery/airlock_component/interface/shuttle
 	icon = /obj/machinery/airlock_component/interface/shuttle::icon
 	icon_state = /obj/machinery/airlock_component/interface/shuttle::icon_state
 	base_icon_state = /obj/machinery/airlock_component/interface/shuttle::base_icon_state
 
-#warn impl all
+	machine_type = /obj/machinery/airlock_component/interface/shuttle
 
 /**
  * Interface entity; allows airlocks to be controlled by external factors, like docking.
@@ -40,7 +39,7 @@
 
 /obj/machinery/airlock_component/interface/shuttle/port/proc/unbind()
 
-/obj/machinery/airlock_component/interface/shuttle/port/proc/detect_port_To_bind() as /obj/shuttle_aligner/port
+/obj/machinery/airlock_component/interface/shuttle/port/proc/detect_port_to_bind() as /obj/shuttle_aligner/port
 
 /obj/machinery/airlock_component/interface/shuttle/port/proc/rebind()
 

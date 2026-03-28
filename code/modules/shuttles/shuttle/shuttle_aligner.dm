@@ -6,8 +6,11 @@
  *
  * * Aligners are used to do aligned docking; generally, you align an aligner
  *   with respect to a shuttle dock.
+ * * Aligners are moved manually, as they don't require a turf underneath them to go with the shuttle.
  */
 /obj/shuttle_aligner
+	/// shuttle datum
+	var/tmp/datum/shuttle/shuttle
 
 /obj/shuttle_aligner/shuttle_aligner/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
 	shuttle = from_shuttle
@@ -25,35 +28,54 @@
 /obj/shuttle_aligner/proc/aabb_ordered_turfs_here()
 	return aabb_ordered_turfs_at(loc)
 
+#warn can we default these to aligning iwth anchor?
+/**
+ * @return turfs in square box, unfiltered
+ */
+/obj/shuttle_aligner/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
+	CRASH("base function called")
+
 /**
  * get the width of the shuttle, aka
  * the perpendicular axis to the direction of parking/travel
  */
 /obj/shuttle_aligner/proc/overall_width(direction)
-	switch(direction)
-		if(NORTH)
-			return size_x
-		if(SOUTH)
-			return size_x
-		if(EAST)
-			return size_y
-		if(WEST)
-			return size_y
-
+	CRASH("base function called")
 /**
  * get the height of the shuttle, aka
  * the parallel axis to the direction of parking/travel
  */
 /obj/shuttle_aligner/proc/overall_height(direction)
-	switch(direction)
-		if(NORTH)
-			return size_y
-		if(SOUTH)
-			return size_y
-		if(EAST)
-			return size_x
-		if(WEST)
-			return size_x
+	CRASH("base function called")
+
+//* Regular Movement *//
+
+/obj/shuttle_aligner/forceMove()
+	CRASH("attempted to forceMove a shuttle aligner")
+
+/obj/shuttle_aligner/setDir(ndir)
+	if(!currently_moving)
+		CRASH("attempted to setDir a shuttle aligner")
+	return ..()
+
+/obj/shuttle_aligner/abstract_move(atom/new_loc)
+	if(!currently_moving)
+		CRASH("attempted to abstract_move a shuttle aligner")
+	return ..()
+
+//* Grid Hooks ; Shuttle manually moves us. *//
+
+/obj/shuttle_aligner/grid_move(grid_flags, turf/new_turf)
+	return
+
+/obj/shuttle_aligner/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
+	return
+
+/obj/shuttle_aligner/grid_collect(grid_flags, turf/new_turf, loc_opinion)
+	return NONE
+
+/obj/shuttle_aligner/handle_grid_overlap(grid_flags)
+	. = TRUE
 
 /**
  * the physical shuttle object
@@ -142,9 +164,6 @@
 	invisibility = INVISIBILITY_NONE
 #endif
 
-	/// shuttle datum
-	var/tmp/datum/shuttle/shuttle
-
 	/// see main documentation
 	var/tmp/size_x
 	/// see main documentation
@@ -154,8 +173,27 @@
 	/// see main documentation
 	var/tmp/offset_y
 
-	/// are we moving right now?
-	var/tmp/anchor_moving = FALSE
+/obj/shuttle_aligner/master/overall_width(direction)
+	switch(direction)
+		if(NORTH)
+			return size_x
+		if(SOUTH)
+			return size_x
+		if(EAST)
+			return size_y
+		if(WEST)
+			return size_y
+
+/obj/shuttle_aligner/master/overall_height(direction)
+	switch(direction)
+		if(NORTH)
+			return size_y
+		if(SOUTH)
+			return size_y
+		if(EAST)
+			return size_x
+		if(WEST)
+			return size_x
 
 /obj/shuttle_aligner/master/proc/calculate_bounds(bottomleft_x, bottomleft_y, topright_x, topright_y, initial_direction)
 	ASSERT(bottomleft_x && bottomleft_y && topright_x && topright_y && initial_direction)
@@ -574,7 +612,7 @@
 	)
 
 /**
- * checks if we'll clip a zlevel edge or another shtutle at a location
+ * checks if we'll clip a zlevel edge or another shuttle at a location
  *
  * the weird return is for optimization reasons.
  *
@@ -678,38 +716,6 @@
 
 	return shuttle.aligned_translation(location, direction, use_after_turfs = new_ordered_turfs)
 
-//* Movement Hooks ; We don't allow normal movement. *//
-
-/obj/shuttle_aligner/master/forceMove()
-	CRASH("attempted to forcemove a shuttle anchor")
-
-/obj/shuttle_aligner/master/setDir(ndir)
-	if(!anchor_moving)
-		CRASH("attempted to setDir an anchor")
-	return ..()
-
-/obj/shuttle_aligner/master/abstract_move(atom/new_loc)
-	if(!anchor_moving)
-		CRASH("attempted to abstract_move a shuttle anchor")
-	return ..()
-
-//* Grid Hooks ; Shuttle manually moves us. *//
-
-/obj/shuttle_aligner/master/grid_move(grid_flags, turf/new_turf)
-	return
-
-/obj/shuttle_aligner/master/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
-	return
-
-/obj/shuttle_aligner/master/grid_collect(grid_flags, turf/new_turf, loc_opinion)
-	return
-
-/obj/shuttle_aligner/master/grid_finished(grid_flags, rotation_angle)
-	return
-
-//* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2026 Citadel Station Developers           *//
-
 /**
  * shuttle-side docking port; put this on airlocks
  */
@@ -729,9 +735,6 @@
 #else
 	invisibility = INVISIBILITY_NONE
 #endif
-
-	/// shuttle datum
-	var/tmp/datum/shuttle/shuttle
 
 	/// dock width - this is how wide the airlock/otherwise opening is.
 	///
@@ -770,20 +773,22 @@
 
 	/// is this the primary port?
 	/// if it is, this is what we align with for roundstart loading.
+	/// * if there is more than one primary port, one will win, the others will lose.
+	///   the victor is undefined.
+	/// * there can be no primary port.
 	var/primary_port = FALSE
-
-	/// are we moving right now?
-	var/tmp/port_moving = FALSE
 
 /obj/shuttle_aligner/port/preloading_from_mapload(with_id)
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
 
-/obj/shuttle_aligner/port/proc/overall_width(direction)
-	return shuttle.anchor.overall_width(direction)
+// /obj/shuttle_aligner/port/proc/overall_width(direction)
+// 	return shuttle.anchor.overall_width(direction)
 
-/obj/shuttle_aligner/port/proc/overall_height(direction)
-	return shuttle.anchor.overall_height(direction)
+// /obj/shuttle_aligner/port/proc/overall_height(direction)
+// 	return shuttle.anchor.overall_height(direction)
+
+#warn below, two functions above
 
 /**
  * get rotated coordinates and direction when moved with another location on the shuttle
@@ -796,15 +801,15 @@
  *
  * @return list(x, y, z, dir)
  */
-/obj/shuttle_aligner/port/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
-	return calculate_entity_motion_with_respect_to_moving_point(
-		list(src.x, src.y, src.z),
-		src.dir,
-		old_coords,
-		new_coords,
-		old_dir,
-		new_dir,
-	)
+// /obj/shuttle_aligner/port/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
+// 	return calculate_entity_motion_with_respect_to_moving_point(
+// 		list(src.x, src.y, src.z),
+// 		src.dir,
+// 		old_coords,
+// 		new_coords,
+// 		old_dir,
+// 		new_dir,
+// 	)
 
 /**
  * @params
@@ -813,29 +818,29 @@
  *
  * @return turfs in square box, unfiltered. turfs that don't exist will be nulls.
  */
-/obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
-	// unpack
-	var/new_x
-	var/new_y
-	var/new_z
+// /obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
+// 	// unpack
+// 	var/new_x
+// 	var/new_y
+// 	var/new_z
 
-	if(islist(location))
-		new_x = location[1]
-		new_y = location[2]
-		new_z = location[3]
-	else
-		new_x = location.x
-		new_y = location.y
-		new_z = location.z
+// 	if(islist(location))
+// 		new_x = location[1]
+// 		new_y = location[2]
+// 		new_z = location[3]
+// 	else
+// 		new_x = location.x
+// 		new_y = location.y
+// 		new_z = location.z
 
-	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
-		list(src.x, src.y, src.z),
-		list(new_x, new_y, new_z),
-		src.dir,
-		direction,
-	)
+// 	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
+// 		list(src.x, src.y, src.z),
+// 		list(new_x, new_y, new_z),
+// 		src.dir,
+// 		direction,
+// 	)
 
-	return shuttle.anchor.aabb_ordered_turfs_at(anchor_motion, anchor_motion[4])
+// 	return shuttle.anchor.aabb_ordered_turfs_at(anchor_motion, anchor_motion[4])
 
 /**
  * checks if we'll clip a zlevel edge or another shuttle at a location
@@ -848,29 +853,29 @@
  *
  * @return null if we will clip, list(ordered turfs) if we won't clip
  */
-/obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
-	// unpack
-	var/new_x
-	var/new_y
-	var/new_z
+// /obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
+// 	// unpack
+// 	var/new_x
+// 	var/new_y
+// 	var/new_z
 
-	if(islist(location))
-		new_x = location[1]
-		new_y = location[2]
-		new_z = location[3]
-	else
-		new_x = location.x
-		new_y = location.y
-		new_z = location.z
+// 	if(islist(location))
+// 		new_x = location[1]
+// 		new_y = location[2]
+// 		new_z = location[3]
+// 	else
+// 		new_x = location.x
+// 		new_y = location.y
+// 		new_z = location.z
 
-	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
-		list(src.x, src.y, src.z),
-		list(new_x, new_y, new_z),
-		src.dir,
-		direction,
-	)
+// 	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
+// 		list(src.x, src.y, src.z),
+// 		list(new_x, new_y, new_z),
+// 		src.dir,
+// 		direction,
+// 	)
 
-	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
+// 	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
 
 /**
  * can we form an airtight seal at a given dock?
@@ -908,35 +913,6 @@
 		has_mismatch = TRUE
 
 	return has_mismatch? SHUTTLE_DOCKING_SEAL_INCONVENIENT : SHUTTLE_DOCKING_SEAL_NOMINAL
-
-//* Regular Movement *//
-
-/obj/shuttle_aligner/port/forceMove()
-	CRASH("attempted to forceMove a shuttle port")
-
-/obj/shuttle_aligner/port/setDir(ndir)
-	if(!port_moving)
-		CRASH("attempted to setDir a shuttle port")
-	return ..()
-
-/obj/shuttle_aligner/port/abstract_move(atom/new_loc)
-	if(!port_moving)
-		CRASH("attempted to abstract_move a shuttle port")
-	return ..()
-
-//* Grid Hooks ; Shuttle manually moves us. *//
-
-/obj/shuttle_aligner/port/grid_move(grid_flags, turf/new_turf)
-	return
-
-/obj/shuttle_aligner/port/grid_after(grid_flags, rotation_angle, list/late_call_hooks)
-	return
-
-/obj/shuttle_aligner/port/grid_collect(grid_flags, turf/new_turf, loc_opinion)
-	return
-
-/obj/shuttle_aligner/port/grid_finished(grid_flags, rotation_angle)
-	return
 
 #define SHUTTLE_PORT_PATH(PATH) \
 /obj/shuttle_aligner/port/##PATH/primary { \

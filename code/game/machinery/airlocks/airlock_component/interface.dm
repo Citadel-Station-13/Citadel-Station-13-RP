@@ -10,8 +10,7 @@
 
 	machine_type = /obj/machinery/airlock_component/interface
 
-
-#warn impl all
+	// TODO: what needs to be carried over?
 
 /**
  * Interface entity; allows airlocks to be controlled by external factors, like docking.
@@ -19,7 +18,6 @@
 /obj/machinery/airlock_component/interface
 	name = "airlock interface"
 	desc = "An adapter for an airlock that integrates it with an external source of control."
-	#warn sprite
 	icon = 'icons/machinery/airlocks/airlock_interface.dmi'
 	icon_state = "interface"
 	base_icon_state = "interface"
@@ -40,8 +38,6 @@
 	if(network.interface == src)
 		network.interface = null
 		network.queue_recheck()
-
-#warn impl all
 
 /obj/machinery/airlock_component/interface/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

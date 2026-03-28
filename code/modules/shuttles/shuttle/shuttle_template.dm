@@ -133,13 +133,17 @@
 	return instance
 
 /datum/shuttle_template/proc/instance_descriptor()
+	var/datum/shuttle_descriptor/cloned
 	if(istype(descriptor))
-		return descriptor.clone()
+		cloned = descriptor.clone()
 	else if(IS_ANONYMOUS_TYPEPATH(descriptor))
-		return new descriptor
+		cloned = new descriptor
 	else if(ispath(descriptor, /datum/shuttle_descriptor))
-		return new descriptor
-	CRASH("what? [descriptor] ([REF(descriptor)])")
+		cloned = new descriptor
+	else
+		CRASH("what? [descriptor] ([REF(descriptor)])")
+	cloned.display_name ||= display_name
+	return cloned
 
 /datum/shuttle_template/proc/generate_mangling_id()
 	var/static/notch = 0

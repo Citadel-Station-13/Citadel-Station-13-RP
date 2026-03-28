@@ -8,6 +8,11 @@
  * * When a shuttle template is loaded, this is cloned into the shuttle datum.
  */
 /datum/shuttle_descriptor
+	//* Identity *//
+	/// The name used on areas and other player-facing things.
+	/// * Defaults to shuttle name if unset.
+	var/display_name
+
 	//* Flight (overmaps / web) *//
 	/// mass in tons
 	//  todo: in-game mass calculations? only really relevant for drone tbh

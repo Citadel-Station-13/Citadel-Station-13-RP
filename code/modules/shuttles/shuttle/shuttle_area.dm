@@ -36,7 +36,7 @@
 
 /area/shuttle/auto/proc/auto_name_instance(real_name, display_name)
 	src.name = "[real_name][count && " [count]"][descriptor && " [descriptor]"]"
-	src.display_name = display_name
+	src.display_name = "[display_name || real_name][count && " [count]"][descriptor && " [descriptor]"]"
 
 /area/shuttle/auto/primary
 	count = "Primary"
