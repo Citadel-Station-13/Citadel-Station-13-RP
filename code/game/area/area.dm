@@ -28,22 +28,21 @@
  * A grouping of tiles into a logical space, mostly used by map editors
  */
 /area
-	name = "Unknown"
+	name = "unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
+	layer = AREA_LAYER
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = INVISIBILITY_LIGHTING
 
 	//* System *//
-	/// area flags
+	/// General flag for area properties
 	var/area_flags = NONE
-	/// stores the next uid to use
-	var/global/global_uid = 0
-	/// our uid
-	var/uid
+
 	/**
 	 * If false, loading multiple maps with this area type will create multiple instances.
-	 * This is not a flag because you probably should not be touching this at runtime!
+	 * ! will swapover this to area mapping flags
 	 */
 	var/unique = TRUE
 	/**
@@ -146,6 +145,41 @@
 
 	var/tmp/is_outside = OUTSIDE_NO
 
+	// legacy
+	/// stores the next uid to use
+	var/global/global_uid = 0
+	/// our uid
+	var/uid
+
+
+/**
+ * A list of teleport locations
+ *
+ * Adding a wizard area teleport list because motherfucking lag -- Urist
+ * I am far too lazy to make it a proper list of areas so I'll just make it run the usual teleport routine at the start of the game
+ */
+GLOBAL_LIST_EMPTY(teleportlocs)
+
+/**
+ * Generate a list of turfs you can teleport to from the areas list
+ *
+ * Includes areas if they're not a shuttle or not not teleport or have no contents
+ *
+ * The chosen turf is the first item in the areas contents that is a station level
+ *
+ * The returned list of turfs is sorted by name
+ */
+/proc/process_teleport_locs()
+	for(var/area/AR as anything in get_sorted_areas())
+		if(istype(AR, /area/shuttle))
+			continue
+		if(GLOB.teleportlocs[AR.name])
+			continue
+		// if (!AR.has_contained_turfs())
+		// 	continue
+		if (isStationLevel(AR.z))
+			GLOB.teleportlocs[AR.name] = AR
+
 /**
  * Called when an area loads
  *
@@ -156,6 +190,7 @@
 	// rather than waiting for atoms to initialize.
 	if (unique) // TODO flag me
 		GLOB.areas_by_type[type] = src
+	GLOB.areas += src
 
 	uid = ++global_uid
 
@@ -225,11 +260,141 @@
 	//this is not initialized until get_sorted_areas() is called so we have to do a null check
 	if(!isnull(GLOB.sortedAreas))
 		GLOB.sortedAreas -= src
+	//just for sanity sake cause why not
+	if(!isnull(GLOB.areas))
+		GLOB.areas -= src
 	if(!isnull(GLOB.custom_areas))
 		GLOB.custom_areas -= src
-
+	//machinery cleanup
 	STOP_PROCESSING(SSobj, src)
+	//parent cleanup
 	return ..()
+
+/**
+ * Update the icon of the area (overridden to always be null for space
+ */
+/area/space/update_icon_state()
+	SHOULD_CALL_PARENT(FALSE)
+	icon_state = null
+
+/**
+ * Returns int 1 or 0 if the area has power for the given channel
+ *
+ * evalutes a mixture of variables mappers can set, requires_power, always_unpowered and then
+ * per channel power_equip, power_light, power_environ
+ */
+/area/proc/powered(chan) // return true if the area has power to given channel
+
+	if(!requires_power)
+		return TRUE
+	if(always_unpowered)
+		return FALSE
+	switch(chan)
+		if(EQUIP)
+			return power_equip
+		if(LIGHT)
+			return power_light
+		if(ENVIRON)
+			return power_environ
+
+	return FALSE
+
+/**
+ * Space is not powered ever, so this returns false
+ */
+/area/space/powered(chan) //Nope.avi
+	return FALSE
+
+/**
+ * Called when the area power status changes
+ *
+ * Updates the area icon, calls power change on all machinees in the area, and sends the `COMSIG_AREA_POWER_CHANGE` signal.
+ */
+/area/proc/power_change()
+	// SEND_SIGNAL(src, COMSIG_AREA_POWER_CHANGE) // slightly better since no istype check in area. not implemented in this pr!
+	for(var/obj/machinery/M in src)	// for each machine in the area
+		M.power_change() // reverify power status (to update icons etc.)
+	update_appearance()
+
+/**
+ * Clear all non-static power usage in area
+ *
+ * Clears all power used for the dynamic equipment, light and environment channels
+ */
+/area/proc/clear_usage()
+	oneoff_equip = 0
+	oneoff_light = 0
+	oneoff_environ = 0
+
+/area/proc/usage(chan, include_static = TRUE)
+	var/used = 0
+	switch(chan)
+		if(LIGHT)
+			used += oneoff_light + (include_static * static_light)
+		if(EQUIP)
+			used += oneoff_equip + (include_static * static_equip)
+		if(ENVIRON)
+			used += oneoff_environ + (include_static * static_environ)
+		if(TOTAL)
+			used += oneoff_light + (include_static * static_light)
+			used += oneoff_equip + (include_static * static_equip)
+			used += oneoff_environ + (include_static * static_environ)
+	return used
+
+/**
+ * Add a power value amount to the stored used_x variables
+ */
+/area/proc/use_power_oneoff(amount, chan)
+	switch(chan)
+		if(EQUIP)
+			oneoff_equip += amount
+		if(LIGHT)
+			oneoff_light += amount
+		if(ENVIRON)
+			oneoff_environ += amount
+	return amount
+
+/// This is used by machines to properly update the area of power changes.
+/area/proc/power_use_change(old_amount, new_amount, chan)
+	use_power_static(new_amount - old_amount, chan) // Simultaneously subtract old_amount and add new_amount.
+
+/// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
+/area/proc/use_power_static(amount, chan)
+	switch(chan)
+		if(EQUIP)
+			static_equip += amount
+		if(LIGHT)
+			static_light += amount
+		if(ENVIRON)
+			static_environ += amount
+
+/// This recomputes the continued power usage; can be used for testing or error recovery, but is not called every tick.
+/area/proc/retally_power()
+	static_equip = 0
+	static_light = 0
+	static_environ = 0
+	for(var/obj/machinery/M in src)
+		switch(M.power_channel)
+			if(EQUIP)
+				static_equip += M.get_power_usage()
+			if(LIGHT)
+				static_light += M.get_power_usage()
+			if(ENVIRON)
+				static_environ += M.get_power_usage()
+
+/**
+ * Causes a runtime error
+ */
+/area/AllowDrop()
+	CRASH("Bad op: area/AllowDrop() called")
+
+/**
+ * Causes a runtime error
+ */
+/area/drop_location()
+	CRASH("Bad op: area/drop_location() called")
+
+// TODO: port alarm manager
 
 /**
  * Changes the area of T to A. Do not do this manually.
@@ -429,114 +594,6 @@
 	//	new lighting behaviour with obj lights
 		icon_state = null
 
-
-/*
-#define EQUIP 1
-#define LIGHT 2
-#define ENVIRON 3
-*/
-
-
-/**
- * Returns int 1 or 0 if the area has power for the given channel
- *
- * evalutes a mixture of variables mappers can set, requires_power, always_unpowered and then
- * per channel power_equip, power_light, power_environ
- */
-/area/proc/powered(chan) // return true if the area has power to given channel
-
-	if(!requires_power)
-		return 1
-	if(always_unpowered)
-		return 0
-	switch(chan)
-		if(EQUIP)
-			return power_equip
-		if(LIGHT)
-			return power_light
-		if(ENVIRON)
-			return power_environ
-
-	return FALSE
-
-/**
- * Called when the area power status changes
- *
- * Updates the area icon, calls power change on all machinees in the area, and sends the `COMSIG_AREA_POWER_CHANGE` signal.
- */
-/area/proc/power_change()
-	for(var/obj/machinery/M in src)	// for each machine in the area
-		M.power_change() // reverify power status (to update icons etc.)
-	if (fire || eject || party)
-		update_appearance()
-
-/area/proc/usage(var/chan, var/include_static = TRUE)
-	var/used = 0
-	switch(chan)
-		if(LIGHT)
-			used += oneoff_light + (include_static * static_light)
-		if(EQUIP)
-			used += oneoff_equip + (include_static * static_equip)
-		if(ENVIRON)
-			used += oneoff_environ + (include_static * static_environ)
-		if(TOTAL)
-			used += oneoff_light + (include_static * static_light)
-			used += oneoff_equip + (include_static * static_equip)
-			used += oneoff_environ + (include_static * static_environ)
-	return used
-
-/**
- * Clear all non-static power usage in area
- *
- * Clears all power used for the dynamic equipment, light and environment channels
- */
-/area/proc/clear_usage()
-	oneoff_equip = 0
-	oneoff_light = 0
-	oneoff_environ = 0
-
-/**
- * Add a power value amount to the stored used_x variables
- */
-/area/proc/use_power_oneoff(var/amount, var/chan)
-	switch(chan)
-		if(EQUIP)
-			oneoff_equip += amount
-		if(LIGHT)
-			oneoff_light += amount
-		if(ENVIRON)
-			oneoff_environ += amount
-	return amount
-
-/// This is used by machines to properly update the area of power changes.
-/area/proc/power_use_change(old_amount, new_amount, chan)
-	use_power_static(new_amount - old_amount, chan) // Simultaneously subtract old_amount and add new_amount.
-
-/// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
-/area/proc/use_power_static(var/amount, var/chan)
-	switch(chan)
-		if(EQUIP)
-			static_equip += amount
-		if(LIGHT)
-			static_light += amount
-		if(ENVIRON)
-			static_environ += amount
-
-/// This recomputes the continued power usage; can be used for testing or error recovery, but is not called every tick.
-/area/proc/retally_power()
-	static_equip = 0
-	static_light = 0
-	static_environ = 0
-	for(var/obj/machinery/M in src)
-		switch(M.power_channel)
-			if(EQUIP)
-				static_equip += M.get_power_usage()
-			if(LIGHT)
-				static_light += M.get_power_usage()
-			if(ENVIRON)
-				static_environ += M.get_power_usage()
-
-
 //////////////////////////////////////////////////////////////////
 
 /area/vv_get_dropdown()
@@ -568,6 +625,7 @@
 
 //////////////////////////////////////////////////////////////////
 
+// TODO ssambience
 GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/play_ambience(var/mob/living/L)
@@ -646,13 +704,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	power_environ = FALSE
 	always_unpowered = FALSE
 	// area_flags &= ~(VALID_TERRITORY|BLOBS_ALLOWED|CULT_PERMITTED)
-	// require_area_resort()
-
-/area/AllowDrop()
-	CRASH("Bad op: area/AllowDrop() called")
-
-/area/drop_location()
-	CRASH("Bad op: area/drop_location() called")
+	require_area_resort()
 
 // A hook so areas can modify the incoming args
 /**
@@ -660,50 +712,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
  */
 /area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
 	return flags
-
-/*Adding a wizard area teleport list because motherfucking lag -- Urist*/
-/*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
-
-// TODO: nuke this entire system from orbit and rewrite from scratch ~silicons
-// "i am far too lazy" WELL GUESS WHAT IM DEALING WITH YOUR STUPID SHIT NOW
-var/list/teleportlocs = list()
-
-/proc/setupTeleportLocs()
-	for(var/area/AR in GLOB.sortedAreas)
-		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station))
-			continue
-		if(teleportlocs.Find(AR.name))
-			continue
-		var/station = FALSE
-		for(var/turf/T in AR.contents)
-			if(T.z in (LEGACY_MAP_DATUM).station_levels)
-				station = TRUE
-				break
-			else
-				break
-		if(station)
-			teleportlocs[AR.name] = AR
-
-	teleportlocs = tim_sort(teleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
-
-	return 1
-
-var/list/ghostteleportlocs = list()
-
-/legacy_hook/startup/proc/setupGhostTeleportLocs()
-	for(var/area/AR in GLOB.sortedAreas)
-		if(ghostteleportlocs.Find(AR.name)) continue
-		if(istype(AR, /area/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))
-			ghostteleportlocs += AR.name
-			ghostteleportlocs[AR.name] = AR
-		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in (LEGACY_MAP_DATUM).player_levels)
-			ghostteleportlocs += AR.name
-			ghostteleportlocs[AR.name] = AR
-
-	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
-
-	return 1
 
 //* Atmospherics *//
 

@@ -34,8 +34,8 @@
 		to_chat(user, "<span class='danger'>\The [src] has ran out of uses, and is now useless to you!</span>")
 		return
 	else
-		var/area_wanted = input(user, "Area to teleport to", "Teleportation") in teleportlocs
-		var/area/A = teleportlocs[area_wanted]
+		var/area_wanted = input(user, "Area to teleport to", "Teleportation") in GLOB.teleportlocs
+		var/area/A = GLOB.teleportlocs[area_wanted]
 		if(!A)
 			return
 

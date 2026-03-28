@@ -26,11 +26,11 @@
 	var/A = null
 
 	if(!randomise_selection)
-		A = input("Area to teleport to", "Teleport", A) in teleportlocs
+		A = input("Area to teleport to", "Teleport", A) in GLOB.teleportlocs
 	else
-		A = pick(teleportlocs)
+		A = pick(GLOB.teleportlocs)
 
-	var/area/thearea = teleportlocs[A]
+	var/area/thearea = GLOB.teleportlocs[A]
 
 	return list(thearea)
 

@@ -41,7 +41,7 @@
 
 	var/list/zs_to_test = (LEGACY_MAP_DATUM).unit_test_z_levels || list(1) //Either you set it, or you just get z1
 
-	for(var/area/A in GLOB.sortedAreas)
+	for(var/area/A in get_sorted_areas())
 		if((A.z in zs_to_test) && !(A.type in exempt_areas))
 			area_test_count++
 			var/area_good = 1

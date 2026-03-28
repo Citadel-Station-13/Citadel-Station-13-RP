@@ -124,8 +124,7 @@ SUBSYSTEM_DEF(mapping)
 	populate_spawn_points()
 
 	// finalize
-	// todo: refactor
-	repopulate_sorted_areas()
+	process_teleport_locs() //Sets up the wizard teleport locations
 
 	return SS_INIT_SUCCESS
 
