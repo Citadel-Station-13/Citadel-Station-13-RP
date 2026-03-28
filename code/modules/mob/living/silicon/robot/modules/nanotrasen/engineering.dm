@@ -81,7 +81,7 @@ GENERATE_ROBOT_MODULE_PRESET(/nanotrasen/engineering)
 			/obj/item/geiger_counter/cyborg,
 			/obj/item/pipe_painter,
 			/obj/item/floor_painter,
-			/obj/item/gripper,
+			/obj/item/gripper/engineering,
 			/obj/item/gripper/no_use/loader,
 			/obj/item/pipe_dispenser,
 			/obj/item/gripper/circuit,

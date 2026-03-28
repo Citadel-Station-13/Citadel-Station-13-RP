@@ -34,7 +34,7 @@
 			/obj/item/tool/wirecutters/cyborg,
 			/obj/item/multitool,
 			/obj/item/lightreplacer,
-			/obj/item/gripper,
+			/obj/item/gripper/engineering,
 			/obj/item/mop,
 			/obj/item/gripper/no_use/loader,
 			/obj/item/extinguisher,

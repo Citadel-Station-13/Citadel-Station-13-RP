@@ -1,7 +1,9 @@
-// todo: this shouldn't be a robot item, this is generic.
-
-//Simple borg hand.
-//Limited use.
+/**
+ * Dynamic way to allow holding another item in an inventory slot / hand slot
+ * with a single static item of the item itself.
+ *
+ * Useful for cyborgs and rigsuits and more.
+ */
 /obj/item/gripper
 	name = "magnetic gripper"
 	desc = "A simple grasping tool specialized in construction and engineering work."
@@ -11,22 +13,8 @@
 	icon_state = "gripper"
 	item_flags = ITEM_NO_BLUDGEON | ITEM_ENCUMBERS_WHILE_HELD
 
-	//Has a list of items that it can hold.
-	var/list/can_hold = list(
-		/obj/item/cell,
-		/obj/item/airlock_electronics,
-		/obj/item/tracker_electronics,
-		/obj/item/module/power_control,
-		/obj/item/stock_parts,
-		/obj/item/frame,
-		/obj/item/camera_assembly,
-		/obj/item/tank,
-		/obj/item/circuitboard,
-		/obj/item/smes_coil,
-		/obj/item/fuelrod/,
-		/obj/item/fuel_assembly/
-		)
-
+	/// Has a list of items that it can hold.
+	var/list/can_hold
 	/// currently held item
 	VAR_PRIVATE/obj/item/wrapped
 
@@ -42,6 +30,56 @@
 	remove_item(drop_location())
 	return ..()
 
+/**
+ * Checks if an item should be able to be held in here.
+ */
+/obj/item/gripper/proc/can_hold(obj/item/item)
+	for(var/typepath in can_hold)
+		if(istype(item,typepath))
+			return TRUE
+	return FALSE
+
+/obj/item/gripper/inv_slot_attached()
+	if(wrapped)
+		return list(wrapped, src)
+	return src
+
+//! WARNING WARNING GRIPPERS ARE STILL SHITCODE !//
+//! This exact combination of hooks will make it work as expected. !//
+//! It's realistically still pretty shitty.                        !//
+
+/obj/item/gripper/pickup(...)
+	. = ..()
+	wrapped?.pickup(arglist(args))
+
+/obj/item/gripper/dropped(...)
+	. = ..()
+	wrapped?.dropped(arglist(args))
+
+/obj/item/gripper/equipped(...)
+	. = ..()
+	wrapped?.equipped(arglist(args))
+
+/obj/item/gripper/unequipped(...)
+	. = ..()
+	wrapped?.unequipped(arglist(args))
+
+/obj/item/gripper/on_inv_equipped(...)
+	. = ..()
+	wrapped?.on_inv_equipped(arglist(args))
+
+/obj/item/gripper/on_inv_unequipped(...)
+	. = ..()
+	wrapped?.on_inv_unequipped(arglist(args))
+
+/obj/item/gripper/on_inv_pickup(...)
+	. = ..()
+	wrapped?.on_inv_pickup(arglist(args))
+
+/obj/item/gripper/on_inv_dropped(...)
+	. = ..()
+	wrapped?.on_inv_dropped(arglist(args))
+
 /obj/item/gripper/proc/insert_item(obj/item/I)
 	if(QDELETED(I))
 		return
@@ -49,6 +87,11 @@
 		remove_item(drop_location())
 	wrapped = I
 	I.forceMove(src)
+	// forcemove will have removed them from inv if they were inside
+	if(worn_slot)
+		I.pickup(inv_inside.owner, NONE, null)
+		I.equipped(inv_inside.owner, isnum(inv_slot_or_index) ? SLOT_ID_HANDS : inv_slot_or_index, NONE)
+		I.on_inv_equipped(inv_inside.owner, inv_inside, inv_slot_or_index, NONE, null)
 	RegisterSignals(I, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED), PROC_REF(unwrap_hook))
 
 /**
@@ -60,6 +103,8 @@
 	var/obj/item/old = wrapped
 	UnregisterSignal(wrapped, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	wrapped = null
+	// in theory the below should pull it out of inventory properly
+	// as worn_slot is set, which allows inventory hooks to fire.
 	switch(newloc)
 		if(null)
 			old.moveToNullspace()
@@ -84,7 +129,6 @@
 		return
 	if(wrapped)
 		return wrapped.attack_self(user)
-	return ..()
 
 /obj/item/gripper/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	// todo: items should have a melee_receive_chain or something that
@@ -125,11 +169,7 @@
 			return
 
 		//Check if the item is blacklisted.
-		var/grab = 0
-		for(var/typepath in can_hold)
-			if(istype(I,typepath))
-				grab = 1
-				break
+		var/grab = can_hold(I)
 
 		//We can grab the item, finally.
 		if(grab)
@@ -171,10 +211,27 @@
 	desc = "A strange grasping tool that can hold anything a human can, but still maintains the limitations of application its more limited cousins have."
 	icon_state = "gripper-omni"
 
-	can_hold = list(/obj/item) // Testing and Event gripper.
+/obj/item/gripper/omni/can_hold(obj/item/item)
+	return TRUE
 
 /obj/item/gripper/omni/no_attack
 	conf_inject_clickchain_flags = CLICKCHAIN_DO_NOT_ATTACK
+
+/obj/item/gripper/engineering
+	can_hold = list(
+		/obj/item/cell,
+		/obj/item/airlock_electronics,
+		/obj/item/tracker_electronics,
+		/obj/item/module/power_control,
+		/obj/item/stock_parts,
+		/obj/item/frame,
+		/obj/item/camera_assembly,
+		/obj/item/tank,
+		/obj/item/circuitboard,
+		/obj/item/smes_coil,
+		/obj/item/fuelrod,
+		/obj/item/fuel_assembly,
+	)
 
 // VEEEEERY limited version for mining borgs. Basically only for swapping cells and upgrading the drills.
 /obj/item/gripper/miner
@@ -183,8 +240,8 @@
 	icon_state = "gripper-mining"
 
 	can_hold = list(
-	/obj/item/cell,
-	/obj/item/stock_parts
+		/obj/item/cell,
+		/obj/item/stock_parts,
 	)
 
 /obj/item/gripper/security
@@ -193,14 +250,14 @@
 	icon_state = "gripper-sec"
 
 	can_hold = list(
-	/obj/item/paper,
-	/obj/item/paper_bundle,
-	/obj/item/pen,
-	/obj/item/sample,
-	/obj/item/forensics/sample_kit,
-	/obj/item/tape_recorder,
-	/obj/item/barrier_tape_roll,
-	/obj/item/uv_light
+		/obj/item/paper,
+		/obj/item/paper_bundle,
+		/obj/item/pen,
+		/obj/item/sample,
+		/obj/item/forensics/sample_kit,
+		/obj/item/tape_recorder,
+		/obj/item/barrier_tape_roll,
+		/obj/item/uv_light,
 	)
 
 /obj/item/gripper/paperwork
@@ -213,8 +270,8 @@
 		/obj/item/paper_bundle,
 		/obj/item/card/id,
 		/obj/item/book,
-		/obj/item/newspaper
-		)
+		/obj/item/newspaper,
+	)
 
 /obj/item/gripper/medical
 	name = "medical gripper"
@@ -227,8 +284,8 @@
 		/obj/item/reagent_containers/blood,
 		/obj/item/stack/material/phoron,
 		/obj/item/implant,
-		/obj/item/nif
-		)
+		/obj/item/nif,
+	)
 
 /obj/item/gripper/research //A general usage gripper, used for toxins/robotics/xenobio/etc
 	name = "scientific gripper"
@@ -253,9 +310,8 @@
 		/obj/item/slimepotion,
 		/obj/item/slime_extract,
 		/obj/item/reagent_containers/food/snacks/monkeycube,
-		/obj/item/nif
-
-		)
+		/obj/item/nif,
+	)
 
 /obj/item/gripper/circuit
 	name = "circuit assembly gripper"
@@ -274,9 +330,8 @@
 		/obj/item/clothing/ears/circuitry,
 		/obj/item/clothing/suit/circuitry,
 		/obj/item/implant/integrated_circuit,
-		/obj/item/integrated_circuit
-
-		)
+		/obj/item/integrated_circuit,
+	)
 
 /obj/item/gripper/service //Used to handle food, drinks, and seeds.
 	name = "service gripper"
@@ -292,8 +347,8 @@
 		/obj/item/plantspray,
 		/obj/item/reagent_containers/glass,
 		/obj/item/reagent_containers/food/drinks,
-		/obj/item/storage/box/wings
-		)
+		/obj/item/storage/box/wings,
+	)
 
 /obj/item/gripper/gravekeeper	//Used for handling grave things, flowers, etc.
 	name = "grave gripper"
@@ -303,8 +358,22 @@
 	can_hold = list(
 		/obj/item/seeds,
 		/obj/item/grown,
-		/obj/item/material/gravemarker
-		)
+		/obj/item/material/gravemarker,
+	)
+
+/obj/item/gripper/no_use //Used when you want to hold and put items in other things, but not able to 'use' the item
+
+/obj/item/gripper/no_use/attack_self(mob/user, datum/event_args/actor/actor)
+	return
+
+/obj/item/gripper/no_use/organ
+	name = "organ gripper"
+	icon_state = "gripper-flesh"
+	desc = "A specialized grasping tool used to preserve and manipulate organic material."
+
+	can_hold = list(
+		/obj/item/organ,
+	)
 
 /obj/item/gripper/no_use/organ/Entered(var/atom/movable/AM)
 	..()
@@ -318,11 +387,6 @@
 		var/obj/item/organ/O = AM
 		O.unpreserve(GRIPPER_TRAIT)
 
-/obj/item/gripper/no_use //Used when you want to hold and put items in other things, but not able to 'use' the item
-
-/obj/item/gripper/no_use/attack_self(mob/user, datum/event_args/actor/actor)
-	return
-
 /obj/item/gripper/no_use/organ/robotics
 	name = "robotics organ gripper"
 	icon_state = "gripper-flesh"
@@ -332,8 +396,8 @@
 		/obj/item/organ/external,
 		/obj/item/organ/internal/brain, //to insert into MMIs,
 		/obj/item/organ/internal/cell,
-		/obj/item/organ/internal/eyes/robot
-		)
+		/obj/item/organ/internal/eyes/robot,
+	)
 
 /obj/item/gripper/no_use/mech
 	name = "exosuit gripper"
@@ -344,8 +408,8 @@
 		/obj/item/vehicle_part,
 		/obj/item/vehicle_part/micro,
 		/obj/item/vehicle_module,
-		/obj/item/vehicle_tracking_beacon
-		)
+		/obj/item/vehicle_tracking_beacon,
+	)
 
 /obj/item/gripper/no_use/loader //This is used to disallow building with metal.
 	name = "sheet loader"
@@ -353,14 +417,5 @@
 	icon_state = "gripper-sheet"
 
 	can_hold = list(
-		/obj/item/stack/material
-		)
-
-/obj/item/gripper/no_use/organ
-	name = "organ gripper"
-	icon_state = "gripper-flesh"
-	desc = "A specialized grasping tool used to preserve and manipulate organic material."
-
-	can_hold = list(
-		/obj/item/organ
-		)
+		/obj/item/stack/material,
+	)
