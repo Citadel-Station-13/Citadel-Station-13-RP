@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
  * the shuttle templates in charge of holding definitions of shuttles.
@@ -19,8 +19,17 @@
 	var/name
 	/// Full description
 	var/desc
+	/// display name for players
+	/// * may be visible ic
+	/// * defaults to name
+	var/display_name
 	/// lore fluff
+	/// * may be visible ic
 	var/fluff
+	/// Category
+	var/category
+	/// Subcategory, if any
+	var/subcategory
 
 	//* File *//
 	/// Absolute path to the map .dmm file.
@@ -108,27 +117,33 @@
 	instance.descriptor = instance_descriptor()
 
 	// let shuttle do black magic first
-	// instance.before_bounds_init(reservation, src)
+	instance.before_bounds_init(reservation, src)
 
 	// init the bounds
 	SSatoms.init_map_bounds(loaded_bounds)
 
 	// let shuttle do post-init things
-	// instance.after_bounds_init(reservation, src)
+	instance.after_bounds_init(reservation, src)
 
 	// set vars on shuttle
 	instance.template_id = id
 
+	#warn ok but register the instance anyways because otherwise it's a dangling ref with a reservation that can't easily be cleaned up
+
 	return instance
 
 /datum/shuttle_template/proc/instance_descriptor()
+	var/datum/shuttle_descriptor/cloned
 	if(istype(descriptor))
-		return descriptor.clone()
+		cloned = descriptor.clone()
 	else if(IS_ANONYMOUS_TYPEPATH(descriptor))
-		return new descriptor
+		cloned = new descriptor
 	else if(ispath(descriptor, /datum/shuttle_descriptor))
-		return new descriptor
-	CRASH("what? [descriptor] ([REF(descriptor)])")
+		cloned = new descriptor
+	else
+		CRASH("what? [descriptor] ([REF(descriptor)])")
+	cloned.display_name ||= display_name
+	return cloned
 
 /datum/shuttle_template/proc/generate_mangling_id()
 	var/static/notch = 0
@@ -138,3 +153,9 @@
 
 /datum/map_template/shuttle
 	abstract_type = /datum/map_template/shuttle
+
+/**
+ * Supertype of templates that are map-specific.
+ */
+/datum/shuttle_template/map_specific
+	abstract_type = /datum/shuttle_template/map_specific

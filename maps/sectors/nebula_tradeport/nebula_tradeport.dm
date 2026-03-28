@@ -6,18 +6,6 @@
 	levels = list(
 		/datum/map_level/sector/nebula_tradeport,
 	)
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/trade,
-		/datum/shuttle/autodock/overmap/trade/udang,
-		/datum/shuttle/autodock/overmap/trade/scoophead,
-		/datum/shuttle/autodock/overmap/trade/arrowhead,
-		/datum/shuttle/autodock/overmap/trade/caravan,
-		/datum/shuttle/autodock/overmap/trade/adventurer,
-		/datum/shuttle/autodock/overmap/trade/tug,
-		/datum/shuttle/autodock/overmap/trade/utilitymicro,
-		/datum/shuttle/autodock/overmap/trade/runabout,
-		/datum/shuttle/autodock/overmap/trade/salvager,
-	)
 
 /datum/map_level/sector/nebula_tradeport
 	id = "NebulaTradeport"

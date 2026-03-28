@@ -42,17 +42,6 @@
 
 	//* LEGACY BELOW *//
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/ferry/emergency/escape,
-		/datum/shuttle/autodock/overmap/excursion/rift,
-		/datum/shuttle/autodock/overmap/courser,
-		/datum/shuttle/autodock/overmap/hammerhead,
-		/datum/shuttle/autodock/overmap/civvie,
-		/datum/shuttle/autodock/overmap/emt,
-		/datum/shuttle/autodock/ferry/supply/cargo,
-		/datum/shuttle/autodock/ferry/belter,
-		/datum/shuttle/autodock/overmap/oldcentury,
-	)
 	full_name = "NSB Atlas"
 	use_overmap = TRUE
 	overmap_size = 60
@@ -360,7 +349,6 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	struct_x = -1
 	struct_y = 0

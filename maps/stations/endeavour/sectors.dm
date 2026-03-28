@@ -8,7 +8,6 @@
 	color = "#72388d" //Purple
 	fore_dir = WEST
 	vessel_mass = 10000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
 
 //Courser Shuttle Data
@@ -18,7 +17,6 @@
 	color = "#af3e97" //Pinkish Purple
 	fore_dir = EAST
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Courser Scouting Vessel"
 
 // Public Civilian Shuttle
@@ -28,7 +26,6 @@
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = EAST
 	vessel_mass = 15000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Civilian Transport"
 
 
@@ -41,7 +38,6 @@
 	color = "#ba7d4b" //Tan
 	fore_dir = WEST
 	vessel_mass = 7000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Mining Shuttle"
 
 //EMT Shuttle
@@ -52,5 +48,4 @@
 	color = "#00a5f2" //Light Blue
 	fore_dir = EAST
 	vessel_mass = 9000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Dart EMT Shuttle"

@@ -14,12 +14,7 @@
 	color = "#754116" //Brown
 	fore_dir = WEST
 	vessel_mass = 4000
-	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Beruang Trade Ship"
-
-/obj/machinery/computer/shuttle_control/explore/trade
-	name = "short jump console"
-	shuttle_tag = "Beruang Trade Ship"
 
 /area/shuttle/trade_ship
 	requires_power = 1

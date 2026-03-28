@@ -4,6 +4,8 @@
 #define GENERIC_TRAIT "generic"
 /// Trait is from ourselves (src)
 #define INNATE_TRAIT "innate"
+/// for lazy BS
+#define TRAIT_SOURCE_LAZY_REF(DATUM, PREFIX) "[PREFIX]-[REF(DATUM)]"
 
 //? Automata / AoE effect sources
 

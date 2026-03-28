@@ -30,7 +30,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 			var/atom/poi = locate(ref) in GLOB.mob_list
 
 			if (poi == null)
-				poi = locate(ref) in SSshuttle.ships
+				poi = locate(ref) in SSovermaps.legacy_ships
 			if (poi == null)
 				. = TRUE
 				return
@@ -118,7 +118,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 		alive += list(serialized)
 
-	for(var/atom/movable/atom_poi as anything in SSshuttle.ships)
+	for(var/atom/movable/atom_poi as anything in SSshuttle.legacy_ships)
 		var/list/other_data = get_misc_data(atom_poi)
 		var/misc_data = list(other_data[1])
 
@@ -151,7 +151,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 	// double locate since we dont hold the ref directly
 	var/atom/poi = locate(user.orbiting_ref) in GLOB.mob_list
 	if (isnull(poi))
-		poi = locate(user.orbiting_ref) in SSshuttle.ships
+		poi = locate(user.orbiting_ref) in SSshuttle.legacy_ships
 
 	if(isnull(poi))
 		user.orbiting_ref = null

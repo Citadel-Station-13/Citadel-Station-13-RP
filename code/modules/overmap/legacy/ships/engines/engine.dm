@@ -39,7 +39,8 @@ var/list/ship_engines = list()
 
 /datum/ship_engine/Destroy()
 	ship_engines -= src
-	for(var/obj/overmap/entity/visitable/ship/S in SSshuttle.ships)
+	// TODO: UH OH, THIS DOESNT WORK!
+	for(var/obj/overmap/entity/visitable/ship/S in SSovermaps.legacy_ships)
 		S.engines -= src
 	holder = null
 	. = ..()
