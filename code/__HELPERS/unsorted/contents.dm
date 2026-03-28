@@ -24,6 +24,10 @@
 			lim = processing_list.len
 		return processing_list
 
+/**
+ * Gets all contents of an atom ignoring the given typecache.
+ * * Ignored atoms will not be iterated into.
+ */
 /atom/proc/get_all_contents_ignoring(list/ignore_typecache)
 	if(!length(ignore_typecache))
 		return get_all_contents()
@@ -36,4 +40,23 @@
 		if(!ignore_typecache[A.type])
 			processing += A.contents
 			lim = processing.len
+			. += A
+
+/**
+ * Gets all contents of an atom matching the given typecache filter.
+ * * Unlike `get_all_contents_ignoring`, non-matching atoms will
+ *   still be iterated into, as their contents may contain matches.
+ */
+/atom/proc/get_all_contents_filtered(list/filter_typecache)
+	. = list()
+	if(!length(filter_typecache))
+		return
+	var/list/processing = list(src)
+	var/i = 0
+	var/lim = 1
+	while(i < lim)
+		var/atom/A = processing[++i]
+		processing += A.contents
+		lim = processing.len
+		if(filter_typecache[A.type])
 			. += A
