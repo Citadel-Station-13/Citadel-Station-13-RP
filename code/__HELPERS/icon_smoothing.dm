@@ -30,10 +30,10 @@
 
 /**
  * Stole this from @DaedalusDock - @Zandario
- * Checks if `thing` (an atom) can smooth with `turf`, based on the [/area/var/area_limited_icon_smoothing] variable of their areas.
+ * Checks if `thing` (an atom) can smooth with `turf`, based on the [/area/var/area_icon_smoothing_restrict] variable of their areas.
  *
  * * If `thing` doesn't have an area (E.g. the edge of the z level), return `FALSE`.
- * * If one area has `area_limited_icon_smoothing` set, and the other area's type doesn't match it, return `FALSE`.
+ * * If one area has `area_icon_smoothing_restrict` set, and the other area's restrict value doesn't match it, return `FALSE`.
  * * Else, return `TRUE`.
  * * An area can always smooth with itself.
  *
@@ -58,10 +58,8 @@
 			val = TRUE; \
 			break; \
 		}; \
-		if(target_area.area_limited_icon_smoothing && !istype(source_area, target_area.area_limited_icon_smoothing)) { \
-			break; \
-		}; \
-		if(source_area.area_limited_icon_smoothing && !istype(target_area, source_area.area_limited_icon_smoothing)) { \
+		if((target_area.area_icon_smoothing_restrict || source_area.area_icon_smoothing_restrict) \
+			&& (source_area.area_icon_smoothing_restrict != target_area.area_icon_smoothing_restrict)) { \
 			break; \
 		}; \
 		val = TRUE; \

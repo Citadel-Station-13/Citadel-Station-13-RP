@@ -91,6 +91,7 @@
 
 	//* Hooks *//
 	/// registered shuttle hooks
+	/// * Hooks registered here will have 'translation', 'traversal', and 'dock' events fired.
 	var/list/datum/shuttle_hook/hooks
 
 	//* Identity *//
@@ -155,8 +156,6 @@
 	QDEL_NULL(descriptor)
 	QDEL_NULL(controller)
 	QDEL_LIST(ports)
-	port_lookup = null
-	port_primary = null
 	QDEL_NULL(anchor)
 	#warn areas
 	#warn hooks

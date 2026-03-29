@@ -589,7 +589,7 @@
  *
  * @return turfs in square box, unfiltered
  */
-/obj/shuttle_aligner/master/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
+/obj/shuttle_aligner/master/aabb_ordered_turfs_at(turf/location, direction = src.dir)
 	var/real_llx
 	var/real_lly
 	var/real_urx
@@ -769,6 +769,7 @@
 	var/port_id
 
 	/// registered shuttle hooks
+	/// * Hooks registered here will have 'translation', 'traversal', and 'dock' events fired.
 	var/tmp/list/datum/shuttle_hook/hooks
 
 	/// is this the primary port?

@@ -2,7 +2,7 @@
  * The return of the king.
  */
 /datum/map/sector/itv_talon
-	id = "itv_talon
+	id = "itv_talon"
 	name = "ITV Talon"
 
 /datum/map_level/sector/itv_talon

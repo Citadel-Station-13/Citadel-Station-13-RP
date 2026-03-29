@@ -8,6 +8,7 @@
  */
 /datum/event_args/shuttle
 	/// shuttle ref
+	/// * Required
 	var/datum/shuttle/shuttle
 
 /datum/event_args/shuttle/New(datum/shuttle/shuttle)
@@ -37,12 +38,16 @@
  */
 /datum/event_args/shuttle/dock
 	/// controller ref
+	/// * Nullable
 	var/datum/shuttle_controller/controller
 	/// transit stage
+	/// * Nullable
 	var/datum/shuttle_transit_stage/stage
 	/// the dock in question
+	/// * Required
 	var/obj/shuttle_dock/dock
 	/// shuttle port being used, if any
+	/// * Nullable
 	var/obj/shuttle_aligner/port/port
 
 /datum/event_args/shuttle/dock/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, obj/shuttle_dock/dock, obj/shuttle_aligner/port/port)
@@ -125,8 +130,10 @@
 /datum/event_args/shuttle/traversal
 	/// controller ref
 	var/datum/shuttle_controller/controller
+	/// * Nullable
 	/// transit stage
 	var/datum/shuttle_transit_stage/stage
+	/// * Nullable
 
 /datum/event_args/shuttle/traversal/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage)
 	..()
@@ -138,47 +145,49 @@
 	stage = null
 	return ..()
 
-/datum/event_args/shuttle/traversal/web
-	/// old node
-	/// * nullable
-	var/datum/shuttle_web_node/from_node
-	/// new node
-	var/datum/shuttle_web_node/to_node
-	/// * nullable
+// TODO: web shuttles
+// /datum/event_args/shuttle/traversal/web
+// 	/// old node
+// 	/// * nullable
+// 	var/datum/shuttle_web_node/from_node
+// 	/// new node
+// 	var/datum/shuttle_web_node/to_node
+// 	/// * nullable
 
-/datum/event_args/shuttle/traversal/web/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, datum/shuttle_web_node/from_node, datum/shuttle_web_node/to_node)
-	..()
-	src.from_node = from_node
-	src.to_node = to_node
+// /datum/event_args/shuttle/traversal/web/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, datum/shuttle_web_node/from_node, datum/shuttle_web_node/to_node)
+// 	..()
+// 	src.from_node = from_node
+// 	src.to_node = to_node
 
-/datum/event_args/shuttle/traversal/web/Destroy()
-	from_node = null
-	to_node = null
-	return ..()
+// /datum/event_args/shuttle/traversal/web/Destroy()
+// 	from_node = null
+// 	to_node = null
+// 	return ..()
 
-/datum/event_args/shuttle/traversal/web/ingress
-/datum/event_args/shuttle/traversal/web/egress
+// /datum/event_args/shuttle/traversal/web/ingress
+// /datum/event_args/shuttle/traversal/web/egress
 
-/datum/event_args/shuttle/traversal/overmap
-	/// old location
-	/// * nullable; if null, is freeflight
-	var/obj/overmap/entity/old_inside_entity
-	/// new location
-	/// * nullable; if null, is freeflight
-	var/obj/overmap/entity/new_inside_entity
+// TODO: implement
+// /datum/event_args/shuttle/traversal/overmap
+// 	/// old location
+// 	/// * nullable; if null, is freeflight
+// 	var/obj/overmap/entity/old_inside_entity
+// 	/// new location
+// 	/// * nullable; if null, is freeflight
+// 	var/obj/overmap/entity/new_inside_entity
 
-/datum/event_args/shuttle/traversal/overmap/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, obj/overmap/entity/old_inside_entity, obj/overmap/entity/new_inside_entity)
-	..()
-	src.old_inside_entity = old_inside_entity
-	src.new_inside_entity = new_inside_entity
+// /datum/event_args/shuttle/traversal/overmap/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, obj/overmap/entity/old_inside_entity, obj/overmap/entity/new_inside_entity)
+// 	..()
+// 	src.old_inside_entity = old_inside_entity
+// 	src.new_inside_entity = new_inside_entity
 
-/datum/event_args/shuttle/traversal/overmap/Destroy()
-	old_inside_entity = null
-	new_inside_entity = null
-	return ..()
+// /datum/event_args/shuttle/traversal/overmap/Destroy()
+// 	old_inside_entity = null
+// 	new_inside_entity = null
+// 	return ..()
 
-/datum/event_args/shuttle/traversal/overmap/ingress
-/datum/event_args/shuttle/traversal/overmap/egress
+// /datum/event_args/shuttle/traversal/overmap/ingress
+// /datum/event_args/shuttle/traversal/overmap/egress
 
 /**
  * Shuttle translation
@@ -196,8 +205,10 @@
  */
 /datum/event_args/shuttle/translation
 	/// list(x, y, z, dir) of anchor pre-move
+	/// * Required
 	var/list/old_anchor_location
 	/// list(x, y, z, dir) of anchor post-move
+	/// * Required
 	var/list/new_anchor_location
 
 /**

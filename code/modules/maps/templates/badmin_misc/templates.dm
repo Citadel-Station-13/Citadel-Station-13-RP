@@ -1,10 +1,5 @@
 /// These all prolly need updating to proper overmap shuttles
 
-/datum/map_template/admin_use/ert
-	name = "Special Area - ERT"
-	desc = "It's the ERT ship! Lorge."
-	map_path = 'maps/templates/admin/ert.dmm'
-
 /datum/map_template/admin_use/trader
 	name = "Special Area - Trader"
 	desc = "Big trader ship."

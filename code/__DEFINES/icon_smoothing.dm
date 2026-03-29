@@ -162,3 +162,8 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_INDUSTRIAL_LIFT              S_OBJ(30) // /obj/structure/industrial_lift
 
 #define SMOOTH_GROUP_GAS_TANK                     S_OBJ(31)
+
+//! Area Icon Smoothing Restrict
+
+#define AREA_ICON_SMOOTHING_RESTRICT_TURBOLIFT "turbolift"
+#define AREA_ICON_SMOOTHING_RESTRICT_SHUTTLE(ID) ("shuttle-" + ID)

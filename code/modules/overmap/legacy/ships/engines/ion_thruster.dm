@@ -56,16 +56,14 @@
 /obj/machinery/ion_engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
-	SSovermaps.ion_engines += src
 	link_to_ship()
 
 /obj/machinery/ion_engine/Destroy()
 	QDEL_NULL(controller)
-	SSovermaps.ion_engines -= src
 	. = ..()
 
 /obj/machinery/ion_engine/proc/link_to_ship()
-	var/obj/overmap/entity/visitable/ship/our_entity = get_overmap_entity(src)
+	var/obj/overmap/entity/visitable/ship/our_entity = SSovermaps.get_overmap_entity(src)
 	if(isnull(our_entity))
 		return
 	our_entity.engines |= controller

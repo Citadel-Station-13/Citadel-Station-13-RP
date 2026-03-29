@@ -3364,7 +3364,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	sound_env = SMALL_ENCLOSED
 	forced_ambience = list('sound/music/elevator/elevator1.ogg', 'sound/music/elevator/elevator2.ogg', 'sound/music/elevator/robocop-short.ogg')
 	requires_power = FALSE
-	area_limited_icon_smoothing = /area/turbolift
+	area_icon_smoothing_restrict = AREA_ICON_SMOOTHING_RESTRICT_TURBOLIFT
 
 	var/lift_floor_label = null
 	var/lift_floor_name = null

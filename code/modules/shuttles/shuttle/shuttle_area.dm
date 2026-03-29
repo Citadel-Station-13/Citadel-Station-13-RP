@@ -12,14 +12,12 @@
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	#warn this doesn't work for multi area shuttles, fix it
-	// don't smooth with any other shuttle but ourselves
-	area_limited_icon_smoothing = /area/no_smooth_marker
 	/// will be assigned the shuttle's ref post-init
 	var/datum/shuttle/shuttle
 
 /area/shuttle/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/map_reservation/from_reservation, datum/shuttle_template/from_template)
 	shuttle = from_shuttle
+	area_icon_smoothing_restrict = AREA_ICON_SMOOTHING_RESTRICT_SHUTTLE(from_shuttle.id)
 
 /**
  * autodetecting area
@@ -32,7 +30,7 @@
 
 /area/shuttle/auto/before_bounds_initializing(datum/shuttle/from_shuttle, datum/map_reservation/from_reservation, datum/shuttle_template/from_template)
 	. = ..()
-	auto_name_instance(shuttle.name, shuttle.display_name)
+	auto_name_instance(shuttle.name, shuttle.descriptor.display_name)
 
 /area/shuttle/auto/proc/auto_name_instance(real_name, display_name)
 	src.name = "[real_name][count && " [count]"][descriptor && " [descriptor]"]"

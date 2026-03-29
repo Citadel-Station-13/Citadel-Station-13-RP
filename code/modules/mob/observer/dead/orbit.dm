@@ -118,14 +118,15 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 		alive += list(serialized)
 
-	for(var/atom/movable/atom_poi as anything in SSshuttle.legacy_ships)
-		var/list/other_data = get_misc_data(atom_poi)
-		var/misc_data = list(other_data[1])
+	// TODO: add shuttles to orbit menu. maybe a POI on their 'master' aligner?
+	// for(var/atom/movable/atom_poi as anything in SSshuttle.legacy_ships)
+	// 	var/list/other_data = get_misc_data(atom_poi)
+	// 	var/misc_data = list(other_data[1])
 
-		misc += misc_data
+	// 	misc += misc_data
 
-		if(other_data[2]) // Critical = TRUE
-			critical += misc_data
+	// 	if(other_data[2]) // Critical = TRUE
+	// 		critical += misc_data
 
 	return list(
 		"alive" = alive,
@@ -150,8 +151,6 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 	// double locate since we dont hold the ref directly
 	var/atom/poi = locate(user.orbiting_ref) in GLOB.mob_list
-	if (isnull(poi))
-		poi = locate(user.orbiting_ref) in SSshuttle.legacy_ships
 
 	if(isnull(poi))
 		user.orbiting_ref = null

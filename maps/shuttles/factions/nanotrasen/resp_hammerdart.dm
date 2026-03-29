@@ -6,7 +6,7 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/resp_hammerdart)
 	descriptor = /datum/shuttle_descriptor{
 		mass = 12500;
 		preferred_orientation = EAST;
-		overmap_legacy_color = "#2613d1";
+		overmap_icon_color = "#2613d1";
 		overmap_legacy_scan_name = "Hammerdart Interception and Rescue Shuttle";
 		overmap_legacy_scan_desc = @{"
 			[i]Registration[/i]: ---

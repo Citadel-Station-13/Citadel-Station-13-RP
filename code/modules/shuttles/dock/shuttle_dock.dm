@@ -126,6 +126,7 @@
 	/// if we want to reference this dock by type, we must set this to TRUE.
 	var/register_by_type = FALSE
 	/// registered shuttle hooks
+	/// * Hooks registered here will only have 'dock' events fired.
 	var/list/datum/shuttle_hook/hooks
 	// TODO: web shuttles
 	/// shuttle web node to initialize on, if applicable; this must be a typepath.
@@ -369,11 +370,10 @@
 //* docking - authorization *//
 
 /obj/shuttle_dock/proc/shuttle_docking_authorization(datum/shuttle/shuttle)
-	if(docking_hard_restrict)
-		#warn redo
-		if(islist(docking_hard_restrict) && !(shuttle.type in docking_hard_restrict))
+	if(docking_restrict_ids)
+		if(islist(docking_restrict_ids) && !(shuttle.id in docking_restrict_ids))
 			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
-		else if(shuttle.type != docking_hard_restrict)
+		else if(!islist(docking_restrict_ids) && shuttle.id != docking_restrict_ids)
 			return SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED
 	var/valid = shuttle.has_codes_for(src)
 	if(valid)

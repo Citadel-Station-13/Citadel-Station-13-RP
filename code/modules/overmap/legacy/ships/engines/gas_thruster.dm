@@ -85,26 +85,20 @@
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles()
-	SSovermaps.unary_engines += src
 	if(SSshuttle.initialized)
 		link_to_ship()
 
 /obj/machinery/atmospherics/component/unary/engine/Destroy()
 	QDEL_NULL(controller)
-	SSovermaps.unary_engines -= src
 	update_nearby_tiles()
 	. = ..()
 
 /obj/machinery/atmospherics/component/unary/engine/proc/link_to_ship()
-	for(var/ship in SSovermaps.legacy_ships)
-		var/obj/overmap/entity/visitable/ship/S = ship
-		if(get_overmap_entity(src) == S)
-			S.engines |= controller
-			if(dir != S.fore_dir)
-				set_broken(TRUE)
-			else
-				set_broken(FALSE)
-			linked = TRUE
+	var/obj/overmap/entity/visitable/ship/our_entity = SSovermaps.get_overmap_entity
+	if(isnull(our_entity))
+		return
+	our_entity.engines |= controller
+	linked = TRUE
 
 /obj/machinery/atmospherics/component/unary/engine/proc/get_status()
 	. = list()

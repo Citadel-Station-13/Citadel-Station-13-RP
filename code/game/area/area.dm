@@ -141,10 +141,13 @@
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
 
-	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
-	var/area/area_limited_icon_smoothing
-
 	var/tmp/is_outside = OUTSIDE_NO
+
+	//* Icon Smoothing *//
+	/// Limits areas this area may smooth with.
+	/// * This may be null, for 'smooth with all' behavior
+	/// * This may be a string ID, which requires an exact match.
+	var/area_icon_smoothing_restrict
 
 /**
  * Called when an area loads
