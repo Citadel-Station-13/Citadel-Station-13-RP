@@ -17,6 +17,7 @@
 	current_time = new /datum/time/lythios43c()
 	weather_holder = /datum/weather_holder/lythios43c
 
+// TODO: this is broken.
 /datum/planet/lythios43c/update_sun()
 	..()
 	var/datum/time/time = current_time
@@ -93,7 +94,7 @@
 
 		new_color = rgb(new_r, new_g, new_b)
 
-	update_sun_deferred(new_brightness, new_color)
+	set_sun_lighting(new_brightness, new_color)
 
 
 /datum/weather_holder/lythios43c
