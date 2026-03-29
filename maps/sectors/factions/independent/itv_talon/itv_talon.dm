@@ -10,11 +10,15 @@
 
 /datum/map_level/sector/itv_talon/deck_1
 	id = "itv_talon-deck_1"
-	link_above_id = /datum/map_level/sector/itv_talon/deck_2::id
+	struct_x = 0
+	struct_y = 0
+	struct_z = 0
 
 /datum/map_level/sector/itv_talon/deck_2
 	id = "itv_talon-deck_2"
-	link_below_id = /datum/map_level/sector/itv_talon/deck_1::id
+	struct_x = 0
+	struct_y = 0
+	struct_z = 1
 
 #warn impl
 

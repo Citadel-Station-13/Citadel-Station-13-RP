@@ -76,7 +76,7 @@
 
 /**
  * Do not directly use. Use create_shuttle() on SSshuttles!
- * This will not automatically register the shuttle with the subsystem.
+ * * Automatically registers the shuttle.
  */
 /datum/shuttle_template/proc/instance(list/datum/map_injection/map_injections)
 	RETURN_TYPE(/datum/shuttle)
@@ -88,6 +88,9 @@
 			src.parsed_map = parsed_map
 
 	var/datum/shuttle/instance = new shuttle_type
+	instance.id = SSshuttle.generate_shuttle_id()
+	SSshuttle.register_shuttle(instance)
+
 	var/width = parsed_map.width
 	var/height = parsed_map.height
 
@@ -127,8 +130,6 @@
 
 	// set vars on shuttle
 	instance.template_id = id
-
-	#warn ok but register the instance anyways because otherwise it's a dangling ref with a reservation that can't easily be cleaned up
 
 	return instance
 

@@ -1,12 +1,6 @@
 
 #warn below
 
-// Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/generic/itglight
-	name = "OM Ship - ITG Dauntless (New Z)"
-	desc = "A small, well armed interstellar cargo ship!!"
-	suffix = "itglight.dmm"
-
 /area/itglight
 	requires_power = 1
 	icon_state = "purple"
@@ -91,7 +85,7 @@
 	initial_restricted_waypoints = list("ITG Shuttlecraft" = list("omship_spawn_itglightshuttle"))
 	fore_dir = NORTH
 
-	skybox_icon = 'itglight.dmi'
+	skybox_icon = 'maps/sectors/factions/independent/itv_dauntless/itv_dauntless-skybox.dmi'
 	skybox_icon_state = "skybox"
 	skybox_pixel_x = 425
 	skybox_pixel_y = 200

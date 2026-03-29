@@ -102,8 +102,8 @@ SUBSYSTEM_DEF(shuttle)
  */
 /datum/controller/subsystem/shuttle/proc/create_shuttle(datum/shuttle_template/templatelike, shuttle_type_override, list/datum/map_injection/map_injections)
 	var/datum/shuttle_template/template = fetch_template(templatelike)
+	// .instance will register it
 	var/datum/shuttle/created = template.instance(map_injections)
-	register_shuttle(created)
 	return created
 
 /datum/controller/subsystem/shuttle/proc/register_shuttle(datum/shuttle/shuttle)
@@ -111,6 +111,13 @@ SUBSYSTEM_DEF(shuttle)
 	ASSERT(isnull(shuttle_registry[shuttle.id]))
 	shuttle_registry[shuttle.id] = shuttle
 	#warn impl; how to unregister / delete
+
+/datum/controller/subsystem/shuttle/proc/generate_shuttle_id()
+	var/static/notch = 0
+	if(notch >= SHORT_REAL_LIMIT)
+		stack_trace("how the hell are we at this number?")
+		notch = (-SHORT_REAL_LIMIT) + 1
+	return "shuttle-[SSmapping.round_global_descriptor]-[++notch]"
 
 //* Shuttle Templates *//
 

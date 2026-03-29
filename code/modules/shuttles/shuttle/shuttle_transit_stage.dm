@@ -13,6 +13,10 @@
 	 * List of blockers
 	 */
 	var/list/datum/shuttle_transit_blocker/blockers
+	/// attempt to ignore blockers
+	var/forcing = FALSE
+	/// attempt to ignore blockers that could be dangerous to ignore (hanger doors, point defense, etc)
+	var/dangerously_forcing = FALSE
 
 	/// timeout set on us
 	/// * this isn't actually enforced on our side; it's enforced on the shuttle controller's side.
