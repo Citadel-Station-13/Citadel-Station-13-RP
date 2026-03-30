@@ -111,8 +111,8 @@
 		AnnounceJoin(M, J, C)
 
 /datum/controller/subsystem/job/proc/AnnounceJoin(mob/M, datum/prototype/role/job/J, client/C)
-	if(istype(get_area(M), /area/shuttle/arrival) && SSshuttle.arrivals)
-		SSshuttle.arrivals.QueueAnnounce(M, J.title)
+	if(istype(get_area(M), /area/shuttle/arrival) && SSshuttles.arrivals)
+		SSshuttles.arrivals.QueueAnnounce(M, J.title)
 	else
 		AnnounceArrival(M, J.title)
 /**

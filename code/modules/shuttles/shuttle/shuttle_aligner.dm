@@ -783,6 +783,11 @@
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
 
+/obj/shuttle_aligner/port/proc/fire_hooks(datum/event_args/shuttle/event)
+	SHOULD_NOT_SLEEP(TRUE)
+	for(var/datum/shuttle_hook/hook as anything in hooks)
+		hook.on_event(event)
+
 // /obj/shuttle_aligner/port/proc/overall_width(direction)
 // 	return shuttle.anchor.overall_width(direction)
 

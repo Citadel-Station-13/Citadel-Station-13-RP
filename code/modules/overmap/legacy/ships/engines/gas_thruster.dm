@@ -85,7 +85,7 @@
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles()
-	if(SSshuttle.initialized)
+	if(SSshuttles.initialized)
 		link_to_ship()
 
 /obj/machinery/atmospherics/component/unary/engine/Destroy()
@@ -94,7 +94,7 @@
 	. = ..()
 
 /obj/machinery/atmospherics/component/unary/engine/proc/link_to_ship()
-	var/obj/overmap/entity/visitable/ship/our_entity = SSovermaps.get_overmap_entity
+	var/obj/overmap/entity/visitable/ship/our_entity = SSovermaps.get_overmap_entity(src)
 	if(isnull(our_entity))
 		return
 	our_entity.engines |= controller

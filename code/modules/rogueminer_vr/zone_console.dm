@@ -116,7 +116,7 @@
 
 	// Break the shuttle temporarily.
 	GLOB.legacy_belter_shuttle_controller.register_movement_block(
-		SSshuttle,
+		SSshuttles,
 		"zone-rebuild",
 	)
 
@@ -125,7 +125,7 @@
 
 	// Re-enable shuttle.
 	GLOB.legacy_belter_shuttle_controller.unregister_movement_block(
-		SSshuttle,
+		SSshuttles,
 	)
 
 	// Update rm_previous

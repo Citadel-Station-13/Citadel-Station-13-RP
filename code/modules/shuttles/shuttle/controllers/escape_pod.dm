@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-// todo: all this should be in SSshuttles maybe?
+// todo: all this should be in SSshuttless maybe?
 
 GLOBAL_LIST_EMPTY(escape_pod_controllers)
 

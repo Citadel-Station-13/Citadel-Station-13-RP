@@ -27,7 +27,7 @@
 
 #warn impl al;l
 
-/datum/admin_modal/instantiate_shuttle_template/Initialize()
+/datum/admin_modal/instantiate_shuttle_template/Initialize(datum/shuttle_template/template)
 	// no making new shuttles while MC is initializing.
 	if(!MC_INITIALIZED())
 		loud_rejection("Cannot instantiate new shuttle templates while the server is initializing.")

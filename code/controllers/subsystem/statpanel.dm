@@ -121,7 +121,7 @@ SUBSYSTEM_DEF(statpanels)
 	INJECT_STATPANEL_DATA_ENTRY(., "Station Date", stationdate2text())
 	// VIRGO END
 	INJECT_STATPANEL_DATA_ENTRY(., "Time dilation", SStime_track.stat_time_text)
-	//L += SSshuttle.emergency_shuttle_stat_text
+	//L += SSshuttles.emergency_shuttle_stat_text
 	var/shuttle_eta = SSemergencyshuttle.get_status_panel_eta()
 	if(shuttle_eta)
 		INJECT_STATPANEL_DATA_ENTRY(., "Shuttle", shuttle_eta)

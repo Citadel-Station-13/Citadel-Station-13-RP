@@ -75,7 +75,7 @@
 	return isfile(path)? path : file(path)
 
 /**
- * Do not directly use. Use create_shuttle() on SSshuttles!
+ * Do not directly use. Use create_shuttle() on SSshuttless!
  * * Automatically registers the shuttle.
  */
 /datum/shuttle_template/proc/instance(list/datum/map_injection/map_injections)
@@ -88,8 +88,12 @@
 			src.parsed_map = parsed_map
 
 	var/datum/shuttle/instance = new shuttle_type
-	instance.id = SSshuttle.generate_shuttle_id()
-	SSshuttle.register_shuttle(instance)
+
+	instance.id = SSshuttles.generate_shuttle_id()
+	instance.descriptor = instance_descriptor()
+	instance.template_id = id
+
+	SSshuttles.register_shuttle(instance)
 
 	var/width = parsed_map.width
 	var/height = parsed_map.height
@@ -116,9 +120,6 @@
 	)
 	var/list/loaded_bounds = loaded_context.loaded_bounds
 
-	// set descriptor
-	instance.descriptor = instance_descriptor()
-
 	// let shuttle do black magic first
 	instance.before_bounds_init(reservation, src)
 
@@ -127,9 +128,6 @@
 
 	// let shuttle do post-init things
 	instance.after_bounds_init(reservation, src)
-
-	// set vars on shuttle
-	instance.template_id = id
 
 	return instance
 

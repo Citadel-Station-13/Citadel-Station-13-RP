@@ -1,5 +1,5 @@
 //
-// SSshuttle subsystem - Handles initialization and processing of shuttles.
+// SSshuttles subsystem - Handles initialization and processing of shuttles.
 //
 // Also handles initialization and processing of overmap sectors.	// For... some reason...
 //

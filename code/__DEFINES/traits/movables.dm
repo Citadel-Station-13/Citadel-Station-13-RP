@@ -52,3 +52,19 @@ DATUM_TRAIT(/atom/movable, TRAIT_MOVABLE_FREEFLIGHT_PERMEANCE)
 	REMOVE_TRAIT(src, TRAIT_MOVABLE_FREEFLIGHT_PERMEANCE, source)
 	if(!HAS_TRAIT(src, TRAIT_MOVABLE_FREEFLIGHT_PERMEANCE))
 		movable_flags &= ~MOVABLE_NO_LOST_IN_SPACE
+
+/// Freeflight levels should not obliterate this, but recursively
+/// * This propagates the trait up recursively to the top-level movable with
+///   components. This is usually what you want if you want to set-and-forget.
+/// * That said, if your thing will never be contained in another atom, do not use this,
+///   as this has a cost to it.
+#define TRAIT_MOVABLE_RECURSIVE_FREEFLIGHT_PERMEANCE "recursive_freeflight_permeance"
+
+/atom/movable/proc/add_movable_recursive_freeflight_permeance(source)
+	ADD_TRAIT(src, TRAIT_MOVABLE_RECURSIVE_FREEFLIGHT_PERMEANCE, source)
+	LoadComponent(/datum/component/recursive_freeflight_permeance)
+
+/atom/movable/proc/remove_movable_recursive_freeflight_permeance(source)
+	REMOVE_TRAIT(src, TRAIT_MOVABLE_RECURSIVE_FREEFLIGHT_PERMEANCE, source)
+	if(!HAS_TRAIT(src, TRAIT_MOVABLE_RECURSIVE_FREEFLIGHT_PERMEANCE))
+		DelComponent(/datum/component/recursive_freeflight_permeance)

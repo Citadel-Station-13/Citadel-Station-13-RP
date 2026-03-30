@@ -251,24 +251,24 @@
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		visible_message("<span class='notice'>Authentication Disk Locator active.</span>")
 		return
-	if(!home)
-		home = locate()
-		if(!home)
-			icon_state = "pinonnull"
-			return
-	if(loc.z != home.z)	//If you are on a different z-level from the shuttle
-		icon_state = "pinonnull"
-	else
-		setDir(get_dir(src, home))
-		switch(get_dist(src, home))
-			if(0)
-				icon_state = "pinondirect"
-			if(1 to 8)
-				icon_state = "pinonclose"
-			if(9 to 16)
-				icon_state = "pinonmedium"
-			if(16 to INFINITY)
-				icon_state = "pinonfar"
+	// if(!home)
+	// 	home = locate()
+	// 	if(!home)
+	// 		icon_state = "pinonnull"
+	// 		return
+	// if(loc.z != home.z)	//If you are on a different z-level from the shuttle
+	// 	icon_state = "pinonnull"
+	// else
+	// 	setDir(get_dir(src, home))
+	// 	switch(get_dist(src, home))
+	// 		if(0)
+	// 			icon_state = "pinondirect"
+	// 		if(1 to 8)
+	// 			icon_state = "pinonclose"
+	// 		if(9 to 16)
+	// 			icon_state = "pinonmedium"
+	// 		if(16 to INFINITY)
+	// 			icon_state = "pinonfar"
 
 	spawn(5) .()
 
@@ -296,10 +296,10 @@
 		return
 
 	if(!our_shuttle)
-		for(var/obj/machinery/computer/shuttle_control/S in GLOB.machines)
-			if(S.shuttle_tag == shuttle_comp_id) // Shuttle tags are used so that it will work if the computer path changes, as it does on the southern cross map.
-				our_shuttle = S
-				break
+		// for(var/obj/machinery/computer/shuttle_control/S in GLOB.machines)
+		// 	if(S.shuttle_tag == shuttle_comp_id) // Shuttle tags are used so that it will work if the computer path changes, as it does on the southern cross map.
+		// 		our_shuttle = S
+		// 		break
 
 		if(!our_shuttle)
 			icon_state = "pinonnull"

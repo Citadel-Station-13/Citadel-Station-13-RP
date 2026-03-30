@@ -31,7 +31,7 @@
 
 	//* Docking - State
 	/// current docking cycle
-	//  todo: docking is currently on a spinlock system. should we put it on SSshuttles instead?
+	//  todo: docking is currently on a spinlock system. should we put it on SSshuttless instead?
 	var/docking_cycle = 0
 	/// list of callbacks to invoke on end of docking cycle
 	///

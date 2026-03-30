@@ -70,7 +70,7 @@
 	. = list(
 		"-- Center --" = locate(world.maxx / 2, world.maxy / 2, zlevel),
 	)
-	for(var/obj/shuttle_dock/dock as anything in SSshuttle.docks_by_level[zlevel])
+	for(var/obj/shuttle_dock/dock as anything in SSshuttles.docks_by_level[zlevel])
 		var/i = 0
 		if(!dock.manual_docking_beacon)
 			continue

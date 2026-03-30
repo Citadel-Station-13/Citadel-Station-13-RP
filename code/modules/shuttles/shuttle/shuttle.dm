@@ -228,19 +228,19 @@
 			else if(istype(AM, /obj/shuttle_aligner/port))
 				var/obj/shuttle_aligner/port/port = AM
 				ports += port
+				var/found_primary = FALSE
 				if(port.primary_port)
-					if(!port_primary)
+					if(!found_primary)
 						port_primary = port
 					else
-						stack_trace("duplicate primary port during init scan")
-						port.primary_port = FALSE
+						stack_trace("duplicate primary port during init scan at [COORD(port)] for shuttle([id]) ([template_id])")
 				if(!port.port_id)
 					var/hex
 					do
 						hex = num2hex(rand(1, 65535), 4)
 					while(port_lookup[hex])
 				if(port_lookup[port.port_id])
-					stack_trace("id collision on port id [port.port_id] (mangled)")
+					stack_trace("id collision on port id [port.port_id] (mangled) at [COORD(port)] for shuttle([id]) ([template_id])")
 					port.port_id = null
 				else
 					port_lookup[port.port_id] = port
@@ -314,9 +314,11 @@
 /**
  * immediate shuttle move, undocking from any docked ports in the process and docking with the destination port
  *
+ * * `use_before_turfs` and `use_after_turfs` may be passed in to stop us from unnecessarily grabbing them again.
+ *   You however, must, ensure they are valid (no hard backend conflicts / areas will be overwritten).
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
- * * does not fire off shuttle hooks; shuttle transit cycles and controllers do that.
+ * * does not fire off non-translation shuttle hooks; shuttle transit cycles and controllers do that.
  *
  * @params
  * * dock - the dock to use
@@ -340,9 +342,10 @@
  *
  * * The shuttle controller will not have any hooks fired off, except for undocking.
  * * `use_before_turfs` and `use_after_turfs` may be passed in to stop us from unnecessarily grabbing them again.
+ *   You however, must, ensure they are valid (no hard backend conflicts / areas will be overwritten).
  * * both use_before_turfs and use_after_turfs must be axis-aligned bounding-box turfs, in order.
  * * both use_before_turfs and use_after_turfs must include all turfs, without filtering!
- * * does not fire off docking/traversal shuttle hooks; shuttle transit cycles and controllers do that.
+ * * does not fire off non-translation shuttle hooks; shuttle transit cycles and controllers do that.
  * * does not dock properly, use `dock()` for that.
  *
  * @return TRUE / FALSE on success / failure
@@ -425,10 +428,8 @@
 	// - POINT OF NO RETURN -//
 
 	// fire premove hook
-	var/datum/event_args/shuttle/translation/pre_move/pre_move_event = new
-	pre_move_event.old_location = old_anchor_location
-	pre_move_event.new_location = new_anchor_location
-	fire_translation_hooks(pre_move_event)
+	var/datum/event_args/shuttle/translation/pre_move/pre_move_event = new(src, old_anchor_location, new_anchor_location)
+	fire_hooks(pre_move_event)
 
 	// move ports and anchors
 	anchor.abstract_move(locate(new_anchor_location[1], new_anchor_location[2], new_anchor_location[3]))
@@ -540,10 +541,8 @@
 		= null
 
 	// fire postmove hook
-	var/datum/event_args/shuttle/translation/post_move/post_move_event = new
-	post_move_event.old_location = old_anchor_location
-	post_move_event.new_location = new_anchor_location
-	fire_translation_hooks(post_move_event)
+	var/datum/event_args/shuttle/translation/post_move/post_move_event = new(src, old_anchor_location, new_anchor_location)
+	fire_hooks(post_move_event)
 
 	// -- Finished -- //
 
@@ -584,7 +583,7 @@
 		return SHUTTLE_DOCKING_BOUNDING_HARD_FAULT
 	if(hard_checks_only)
 		return SHUTTLE_DOCKING_BOUNDING_CLEAR
-	for(var/obj/shuttle_dock/enemy_dock in SSshuttle.docks_by_level[location.z])
+	for(var/obj/shuttle_dock/enemy_dock in SSshuttles.docks_by_level[location.z])
 		if(enemy_dock == docking_at)
 			continue
 		if(!enemy_dock.should_protect_bounding_box())
@@ -664,15 +663,16 @@
 
 //* Hooks *//
 
-/datum/shuttle/proc/fire_translation_hooks(datum/event_args/shuttle/translation/event)
+/**
+ * Fires an event off to all hooks
+ * * Does not fire events off to our dock!
+ */
+/datum/shuttle/proc/fire_hooks(datum/event_args/shuttle/event)
 	SHOULD_NOT_SLEEP(TRUE)
 	for(var/datum/shuttle_hook/hook as anything in hooks)
-		hook.on_translation_event(event)
-
-/datum/shuttle/proc/fire_docking_hooks(datum/event_args/shuttle/dock/event)
-	SHOULD_NOT_SLEEP(TRUE)
-	for(var/datum/shuttle_hook/hook as anything in hooks)
-		hook.on_dock_event(event)
+		hook.on_event(event)
+	for(var/obj/shuttle_aligner/port/port as anything in ports)
+		port.fire_hooks(event)
 
 //* Location *//
 
@@ -783,7 +783,7 @@
 
 /**
  * tears down our transit reservation
- * you usually want to call this after we lave
+ * you usually want to call this after we leave
  *
  * if handlers are not provided,
  *

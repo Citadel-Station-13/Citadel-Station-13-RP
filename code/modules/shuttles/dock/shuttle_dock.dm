@@ -301,7 +301,7 @@
 			inbound.controller.terminate_transit()
 	// alright bye
 	inbound = null
-	// unregister from SSshuttles
+	// unregister from SSshuttless
 	unregister_dock()
 	if(create_bounding_box_area)
 		// cleanup our area if it's unique; otherwise, we just orphan it
@@ -322,10 +322,10 @@
 	return ..()
 
 /obj/shuttle_dock/proc/register_dock()
-	return SSshuttle.register_dock(src)
+	return SSshuttles.register_dock(src)
 
 /obj/shuttle_dock/proc/unregister_dock()
-	return SSshuttle.unregister_dock(src)
+	return SSshuttles.unregister_dock(src)
 
 /obj/shuttle_dock/Move(...)
 	return FALSE
@@ -364,6 +364,14 @@
  */
 /obj/shuttle_dock/proc/on_shuttle_undocked(datum/shuttle/shuttle, datum/event_args/shuttle/dock/undocked/e_args)
 	return
+
+/**
+ * Fire an event off to all hooks
+ */
+/obj/shuttle_dock/proc/fire_hooks(datum/event_args/shuttle/event)
+	SHOULD_NOT_SLEEP(TRUE)
+	for(var/datum/shuttle_hook/hook as anything in hooks)
+		hook.on_event(event)
 
 #warn hook above 4
 
@@ -631,7 +639,7 @@
 	// begin intercepts of dock id/registration
 	switch(var_name)
 		if(NAMEOF(src, dock_id))
-			if(SSshuttle.dock_id_registry[var_value] && SSshuttle.dock_id_registry[var_value] != src)
+			if(SSshuttles.dock_id_registry[var_value] && SSshuttles.dock_id_registry[var_value] != src)
 				if(!mass_edit)
 					to_chat(usr, FORMAT_SERVER_ERROR("You cannot edit [src]'s dock id to [var_value] because another dock already has it."))
 				return FALSE

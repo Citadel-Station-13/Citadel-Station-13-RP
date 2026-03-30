@@ -2,7 +2,7 @@
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
 /datum/component/recursive_freeflight_permeance
-	dupe_mode = COMPONENT_DUPE_SELECTIVE
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 	registered_type = /datum/component/recursive_freeflight_permeance
 
 /datum/component/recursive_freeflight_permeance/Initialize()
@@ -24,7 +24,7 @@
 		RegisterSignal(root, COMSIG_MOVABLE_MOVED, PROC_REF(update))
 		last = root
 		root = root.loc
-	ADD_TRAIT(last, TRAIT_MOVABLE_FREEFLIGHT_PERMEANCE, TRAIT_SOURCE_LAZY_REF(src, "component"))
+	last.add_movable_freeflight_permeance(TRAIT_SOURCE_LAZY_REF(src, "component"))
 
 /datum/component/recursive_freeflight_permeance/proc/teardown(atom/root = parent)
 	var/atom/movable/last = root
@@ -32,7 +32,7 @@
 		UnregisterSignal(root, COMSIG_MOVABLE_MOVED)
 		last = root
 		root = root.loc
-	REMOVE_TRAIT(last, TRAIT_MOVABLE_FREEFLIGHT_PERMEANCE, TRAIT_SOURCE_LAZY_REF(src, "component"))
+	last.remove_movable_freeflight_permeance(TRAIT_SOURCE_LAZY_REF(src, "component"))
 
 /datum/component/recursive_freeflight_permeance/proc/update(atom/movable/source, atom/oldloc)
 	var/atom/newloc = source.loc

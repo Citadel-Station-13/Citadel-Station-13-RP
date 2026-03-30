@@ -119,7 +119,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		alive += list(serialized)
 
 	// TODO: add shuttles to orbit menu. maybe a POI on their 'master' aligner?
-	// for(var/atom/movable/atom_poi as anything in SSshuttle.legacy_ships)
+	// for(var/atom/movable/atom_poi as anything in SSshuttles.legacy_ships)
 	// 	var/list/other_data = get_misc_data(atom_poi)
 	// 	var/misc_data = list(other_data[1])
 

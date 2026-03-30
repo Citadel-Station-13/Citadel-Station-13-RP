@@ -55,7 +55,7 @@
  */
 /datum/shuttle_controller/ferry/proc/transit_towards_home(time, list/datum/callback/on_transit_callbacks)
 	return transit_towards_dock(
-		SSshuttle.resolve_dock(dock_home_id),
+		SSshuttles.resolve_dock(dock_home_id),
 		time,
 		on_transit_callbacks = on_transit_callbacks,
 	)
@@ -65,7 +65,7 @@
  */
 /datum/shuttle_controller/ferry/proc/transit_towards_away(time, list/datum/callback/on_transit_callbacks)
 	return transit_towards_dock(
-		SSshuttle.resolve_dock(dock_away_id),
+		SSshuttles.resolve_dock(dock_away_id),
 		time,
 		on_transit_callbacks = on_transit_callbacks,
 	)

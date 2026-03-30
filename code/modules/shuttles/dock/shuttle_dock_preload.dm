@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_preloads)
  * * Use these over trying to VV.
  */
 /obj/shuttle_dock_preload
-	name = "dock corner"
+	name = "dock preloader"
 	desc = "Why do you see this? Report it."
 	icon = 'icons/modules/shuttles/preload_marker.dmi'
 	#warn sprite
