@@ -36,8 +36,6 @@
 	var/engines_state = 0
 	/// Global thrust limit for all engines, 0..1
 	var/thrust_limit = 1
-	/// Admin halt or other stop.
-	var/halted = 0
 	/// Skill needed to steer it without going in random dir.
 	var/skill_needed = SKILL_NONE //We don't like skills.
 	var/operator_skill
@@ -190,6 +188,7 @@
 		. += E.get_thrust() * SSovermaps.global_thrust_multiplier
 
 /obj/overmap/entity/visitable/ship/proc/can_burn()
+	#warn halted
 	if(halted)
 		return 0
 	if (world.time < last_burn + burn_delay)
@@ -207,16 +206,6 @@
 		var/offset = step_y
 		. = min(., OVERMAP_PIXEL_TO_DIST(vel_y > 0? WORLD_ICON_SIZE - offset : offset) / vel_y * 10)
 	. = max(., 0)
-
-// TODO: what does this do
-/obj/overmap/entity/visitable/ship/proc/halt()
-	initialize_physics()
-	halted = 1
-
-// TODO: what does this do
-/obj/overmap/entity/visitable/ship/proc/unhalt()
-	if(!SSovermap_physics.overmap_halted)
-		halted = 0
 
 /obj/overmap/entity/visitable/ship/proc/get_landed_info()
 	return "This ship cannot land."

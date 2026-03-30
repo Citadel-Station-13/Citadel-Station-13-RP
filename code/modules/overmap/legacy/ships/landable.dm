@@ -149,6 +149,3 @@
 			return ..()
 		else
 			return FALSE
-
-/obj/overmap/entity/visitable/ship/landable/check_ownership(obj/object)
-	return get_overmap_entity(object) == src

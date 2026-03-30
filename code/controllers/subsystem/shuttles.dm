@@ -97,13 +97,21 @@ SUBSYSTEM_DEF(shuttle)
 //* Shuttles *//
 
 /**
- * * The shuttle will initially be
- * @return /datum/shuttle
+ * * The shuttle will initially be in a map reservation.
+ *
+ * @params
+ * * template_like - a shuttle-template resolvable (type, id, instance, null)
+ * * merge_in_descriptor - a shuttle descriptor whose non-null values will override the template's defaults; optional, default null
+ * * map_injections - a list of map injections to apply to the shuttle's map;
+ *
+ * @return /datum/shuttle on success
  */
-/datum/controller/subsystem/shuttle/proc/create_shuttle(datum/shuttle_template/templatelike, shuttle_type_override, list/datum/map_injection/map_injections)
-	var/datum/shuttle_template/template = fetch_template(templatelike)
-	// .instance will register it
-	var/datum/shuttle/created = template.instance(map_injections)
+/datum/controller/subsystem/shuttle/proc/create_shuttle(datum/shuttle_template/template_like, datum/shuttle_descriptor/merge_in_descriptor, list/datum/map_injection/map_injections)
+	var/datum/shuttle_template/template = fetch_template(template_like)
+	if(!template)
+		return null
+	// template.instance() will register it
+	var/datum/shuttle/created = template.instance(merge_in_descriptor, map_injections)
 	return created
 
 /datum/controller/subsystem/shuttle/proc/register_shuttle(datum/shuttle/shuttle)
@@ -121,15 +129,15 @@ SUBSYSTEM_DEF(shuttle)
 
 //* Shuttle Templates *//
 
-/datum/controller/subsystem/shuttle/proc/fetch_template(datum/shuttle_template/templatelike)
-	if(ispath(templatelike, /datum/shuttle_template))
-		if(isnull(templates_by_path[templatelike]))
-			templates_by_path[templatelike] = load_shuttle_template(new templatelike)
-		return templates_by_path[templatelike]
-	else if(istext(templatelike))
-		return templates_by_id[templatelike]
-	else if(istype(templatelike))
-		return templatelike
+/datum/controller/subsystem/shuttle/proc/fetch_template(datum/shuttle_template/template_like)
+	if(ispath(template_like, /datum/shuttle_template))
+		if(isnull(templates_by_path[template_like]))
+			templates_by_path[template_like] = load_shuttle_template(new template_like)
+		return templates_by_path[template_like]
+	else if(istext(template_like))
+		return templates_by_id[template_like]
+	else if(istype(template_like))
+		return template_like
 	CRASH("what?")
 
 /datum/controller/subsystem/shuttle/proc/load_shuttle_template(datum/shuttle_template/template) as /datum/shuttle_template

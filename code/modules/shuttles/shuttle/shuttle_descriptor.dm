@@ -54,11 +54,55 @@
 /datum/shuttle_descriptor/clone()
 	var/datum/shuttle_descriptor/clone = ..()
 
-	clone.mass = mass
-	clone.allow_atmospheric_landing = allow_atmospheric_landing
-	clone.preferred_orientation = preferred_orientation
+	clone.display_name = src.display_name
 
-	clone.jump_charging_time = jump_charging_time
-	clone.jump_move_time = jump_move_time
+	clone.mass = src.mass
+	clone.allow_atmospheric_landing = src.allow_atmospheric_landing
+	clone.preferred_orientation = src.preferred_orientation
+
+	clone.jump_charging_time = src.jump_charging_time
+	clone.jump_move_time = src.jump_move_time
+
+	clone.overmap_icon = src.overmap_icon
+	clone.overmap_icon_state = src.overmap_icon_state
+	clone.overmap_icon_color = src.overmap_icon_color
+	clone.overmap_legacy_start_unknown = src.overmap_legacy_start_unknown
+	clone.overmap_legacy_name = src.overmap_legacy_name
+	clone.overmap_legacy_desc = src.overmap_legacy_desc
+	clone.overmap_legacy_scan_name = src.overmap_legacy_scan_name
+	clone.overmap_legacy_scan_desc = src.overmap_legacy_scan_desc
 
 	return clone
+
+/datum/shuttle_descriptor/merge_from(datum/shuttle_descriptor/other)
+	if(!isnull(other.display_name))
+		src.display_name = other.display_name
+
+	if(!isnull(other.mass))
+		src.mass = other.mass
+	if(!isnull(other.allow_atmospheric_landing))
+		src.allow_atmospheric_landing = other.allow_atmospheric_landing
+	if(!isnull(other.preferred_orientation))
+		src.preferred_orientation = other.preferred_orientation
+
+	if(!isnull(other.jump_charging_time))
+		src.jump_charging_time = other.jump_charging_time
+	if(!isnull(other.jump_move_time))
+		src.jump_move_time = other.jump_move_time
+
+	if(!isnull(other.overmap_icon))
+		src.overmap_icon = other.overmap_icon
+	if(!isnull(other.overmap_icon_state))
+		src.overmap_icon_state = other.overmap_icon_state
+	if(!isnull(other.overmap_icon_color))
+		src.overmap_icon_color = other.overmap_icon_color
+	if(!isnull(other.overmap_legacy_start_unknown))
+		src.overmap_legacy_start_unknown = other.overmap_legacy_start_unknown
+	if(!isnull(other.overmap_legacy_name))
+		src.overmap_legacy_name = other.overmap_legacy_name
+	if(!isnull(other.overmap_legacy_desc))
+		src.overmap_legacy_desc = other.overmap_legacy_desc
+	if(!isnull(other.overmap_legacy_scan_name))
+		src.overmap_legacy_scan_name = other.overmap_legacy_scan_name
+	if(!isnull(other.overmap_legacy_scan_desc))
+		src.overmap_legacy_scan_desc = other.overmap_legacy_scan_desc

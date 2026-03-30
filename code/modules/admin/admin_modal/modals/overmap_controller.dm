@@ -5,6 +5,12 @@
 	var/obj/overmap/entity/target
 	tgui_interface = "OvermapController"
 
+/datum/admin_modal/overmap_controller/Initialize(obj/overmap/entity/target)
+	if(!istype(target))
+		return FALSE
+	src.target = target
+	return TRUE
+
 /datum/admin_modal/overmap_controller/on_ui_open(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 
@@ -42,6 +48,8 @@
 	if(.)
 		return
 
+	var/datum/admins/admin_holder = usr.client.holder
+
 	if(istype(target.location, /datum/overmap_location/shuttle))
 		switch(action)
 			if("openShuttleController")
@@ -51,5 +59,9 @@
 		if("setPos")
 		if("yankToHere")
 		if("narrate")
+			// special behavior; target shuttle specifically
+			// rather than overmap entity if it's a shuttle
+		if("halt")
+		if("unhalt")
 
 #warn impl

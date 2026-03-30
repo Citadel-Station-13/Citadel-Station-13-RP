@@ -39,3 +39,9 @@
 	ASSERT(freeflight)
 	refresh_level_locks()
 	return freeflight
+
+/datum/overmap_location/shuttle/contains_atom(atom/A)
+	var/area/their_area = get_area(A)
+	if(!their_area)
+		return FALSE
+	return shuttle.areas[their_area]

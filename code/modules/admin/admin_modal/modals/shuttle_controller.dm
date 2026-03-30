@@ -4,6 +4,12 @@
 /datum/admin_modal/shuttle_controller
 	var/datum/shuttle/target
 
+/datum/admin_modal/shuttle_controller/Initialize(datum/shuttle/target)
+	if(!istype(target))
+		return FALSE
+	src.target = target
+	return TRUE
+
 /datum/admin_modal/shuttle_controller/on_ui_open(mob/user, datum/tgui/ui, embedded)
 	. = ..()
 
@@ -25,19 +31,25 @@
 	if(.)
 		return
 
+	var/datum/admins/admin_holder = usr.client.holder
+
 	if(istype(target.controller, /datum/shuttle_controller/overmap))
 		switch(action)
 			if("openOvermapController")
+			if("yankToOvermapHere")
 
 	switch(action)
-		if("previewYankToHere")
-		if("yankToHere")
-		if("beginYankPreview")
-		if("cancelYankPreview")
+		if("beginYank")
+		if("anchorYank")
+		if("cancelYank")
+		if("confirmYank")
 		if("dockAt")
 		if("internment")
 			// athena, the tireless one
-		if("")
+		if("obliterate")
 
+		if("narrate")
+			admin_holder.open_admin_modal(/datum/admin_modal/narrate, target)
+			return TRUE
 
 #warn impl

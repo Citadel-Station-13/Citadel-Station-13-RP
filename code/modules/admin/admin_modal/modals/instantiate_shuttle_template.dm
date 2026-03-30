@@ -48,6 +48,21 @@
 
 /datum/admin_modal/instantiate_shuttle_template/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
+	if(.)
+		return
+
+	var/datum/admins/admin_holder = usr.client.holder
+
+	switch(action)
+		if("ready")
+		if("finalize")
+			var/datum/shuttle/created = SSshuttle.create_shuttle()
+			#warn impl
+
+			return TRUE
+
+	#warn impl a;;
+
 
 /datum/admin_modal/instantiate_shuttle_template/proc/attempt_parse_and_check_buffer()
 

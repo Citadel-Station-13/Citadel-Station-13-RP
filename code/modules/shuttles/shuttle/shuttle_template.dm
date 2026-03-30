@@ -78,7 +78,7 @@
  * Do not directly use. Use create_shuttle() on SSshuttless!
  * * Automatically registers the shuttle.
  */
-/datum/shuttle_template/proc/instance(list/datum/map_injection/map_injections)
+/datum/shuttle_template/proc/instance(datum/shuttle_descriptor/merge_in_descriptor, list/datum/map_injection/map_injections)
 	RETURN_TYPE(/datum/shuttle)
 
 	var/datum/dmm_parsed/parsed_map = src.parsed_map
@@ -91,6 +91,8 @@
 
 	instance.id = SSshuttles.generate_shuttle_id()
 	instance.descriptor = instance_descriptor()
+	if(merge_in_descriptor)
+		instance.descriptor.merge_from(merge_in_descriptor)
 	instance.template_id = id
 
 	SSshuttles.register_shuttle(instance)

@@ -28,6 +28,8 @@
 	var/const/M_RANGE = "range"
 	var/const/M_DIRECT = "direct"
 	var/const/M_LOBBY = "lobby"
+	#warn shuttle mode
+	var/const/M_SHUTTLE = "shuttle"
 
 	/// text to send (raw html)
 	var/unsafe_raw_html_to_send
@@ -115,7 +117,7 @@
 		var/datum/map_level/casted = resolved
 		. += /datum/admin_modal/admin_narrate::M_LEVEL
 		. += /datum/admin_modal/admin_narrate::M_SECTOR
-		if(get_overmap_sector(locate(1, 1, casted.z_index)))
+		if(SSovermaps.get_enclosing_overmap_entity(locate(1, 1, casted.z_index)))
 			. += /datum/admin_modal/admin_narrate::M_OVERMAP
 	else if(istype(resolved, /datum/map))
 		. += /datum/admin_modal/admin_narrate::M_SECTOR
@@ -152,10 +154,10 @@
 			if(istype(resolved, /obj/overmap/entity))
 				resolved_entity = resolved
 			else if(istype(resolved, /atom))
-				resolved_entity = get_overmap_sector(get_turf(resolved))
+				resolved_entity = SSovermaps.get_enclosing_overmap_entity(get_turf(resolved))
 			else if(istype(resolved, /datum/map_level))
 				var/datum/map_level/casted = resolved
-				resolved_entity = get_overmap_sector(locate(1, 1, casted.z_index))
+				resolved_entity = SSovermaps.get_enclosing_overmap_entity(locate(1, 1, casted.z_index))
 				// TODO: do something
 			else if(istype(resolved, /datum/map))
 				pass()
@@ -164,7 +166,7 @@
 				return null
 			for(var/client/C as anything in GLOB.clients)
 				var/turf/maybe_turf = get_turf(C.mob)
-				var/obj/overmap/entity/maybe_entity = get_overmap_sector(maybe_turf)
+				var/obj/overmap/entity/maybe_entity = SSovermaps.get_enclosing_overmap_entity(maybe_turf)
 				if(maybe_entity == resolved_entity)
 					. += C.mob
 		if(M_LEVEL)
@@ -233,7 +235,7 @@
 		maybe_level = SSmapping.ordered_levels[maybe_turf.z]
 		if(maybe_level)
 			maybe_map = maybe_level.parent_map
-		maybe_entity = get_overmap_sector(maybe_turf)
+		maybe_entity = SSovermaps.get_enclosing_overmap_entity(maybe_turf)
 
 	. = list()
 	if(maybe_turf)
