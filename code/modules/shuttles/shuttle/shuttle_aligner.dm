@@ -614,7 +614,8 @@
 /**
  * checks if we'll clip a zlevel edge or another shuttle at a location
  *
- * the weird return is for optimization reasons.
+ * * this returns axis-aligned-bounding-box turfs, as name implies; it doesn't filter.
+ * * the weird return is for optimization reasons.
  *
  * @params
  * * location - a turf, or a tuple of list(x, y, z)

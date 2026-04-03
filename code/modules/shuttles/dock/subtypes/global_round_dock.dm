@@ -2,21 +2,12 @@
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
 /**
- * Can only be one of a given type.
- * Used for hardcoded backend purposes like escape shuttles and cargo shuttles.
+ * Declarations for global round docks.
+ * * These are technically against 'server design' but like, the server's still unfortunately
+ *   round based.
  */
-/obj/shuttle_dock/global_round_dock
 
-/obj/shuttle_dock/global_round_dock/escape_shuttle
-
-/obj/shuttle_dock/global_round_dock/escape_shuttle/station
-
-/obj/shuttle_dock/global_round_dock/escape_shuttle/centcom
-
-/obj/shuttle_dock/global_round_dock/supply_shuttle
-
-/obj/shuttle_dock/global_round_dock/supply_shuttle/station
-
-/obj/shuttle_dock/global_round_dock/supply_shuttle/centcom
-
-#warn helpers? checks? etc?
+DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_ALIGNED(/escape_shuttle, "escape_shuttle", "Escape Shuttle")
+DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_BINDINGS(escape_shuttle, /escape_shuttle)
+DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_ALIGNED(/supply_shuttle, "supply_shuttle", "Supply Shuttle")
+DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_BINDINGS(supply_shuttle, /supply_shuttle)

@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_bounds)
 	while(T)
 		T = get_step(T, dir)
 		var/obj/shuttle_dock_corner/found
-		if(found = (locate(wanted_type) in T))
+		if(found == (locate(wanted_type) in T))
 			injecting[found.type] = found
 			return
 

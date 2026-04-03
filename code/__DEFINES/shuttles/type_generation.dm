@@ -51,8 +51,37 @@
 #warn ferry pairs
 #define DECLARE_SHUTTLE_FERRY_DOCK_MAP_PAIR_ALIGNED(MAP_PATH, TYPEPATH, ID, NAME)
 #define DECLARE_SHUTTLE_FERRY_DOCK_MAP_PAIR_CENTERED(MAP_PATH, TYPEPATH, ID, NAME)
+
 #define DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_ALIGNED(TYPEPATH, ID, NAME)
 #define DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_CENTERED(TYPEPATH, ID, NAME)
+#define DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_BINDINGS(VARIABLE_NAME, DOCK_TYPEPATH) \
+GLOBAL_DATUM(VARIABLE_NAME##_home, /obj/shuttle_dock) \
+GLOBAL_DATUM(VARIABLE_NAME##_away, /obj/shuttle_dock) \
+GLOBAL_DATUM(VARIABLE_NAME##_controller, /datum/shuttle_controller/ferry) \
+
+#warn impl
+// /obj/shuttle_dock/ferry_pair/escape_shuttle/init_shuttle(datum/shuttle/shuttle)
+// 	. = ..()
+// 	#warn impl
+
+	// var/datum/shuttle_controller/ferry/controller = new(dock_id, ferry_away_id)
+	// shuttle.bind_controller(controller)
+
+	// var/datum/shuttle_controller/ferry/controller = new(dock_id, ferry_away_id)
+	// shuttle.bind_controller(controller)
+
+// /obj/shuttle_dock/ferry_pair/escape_shuttle/init_shuttle_controller(datum/shuttle/shuttle)
+// 	. = ..()
+// 	#warn impl
+
+
+// /obj/shuttle_dock/ferry_pair/supply_shuttle/init_shuttle(datum/shuttle/shuttle)
+// 	. = ..()
+// 	#warn impl
+
+// /obj/shuttle_dock/ferry_pair/supply_shuttle/init_shuttle_controller(datum/shuttle/shuttle)
+// 	. = ..()
+// 	#warn impl
 
 /**
  * Boilerplate for custom shuttle areas.
