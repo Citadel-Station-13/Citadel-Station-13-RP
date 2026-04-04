@@ -32,7 +32,7 @@
 	/// is the dock initialized and ready?
 	var/dock_initialized = FALSE
 
-	//* bounding box *//
+	//* Bounding Box *//
 	/// image used to render our bounding box; attached to self
 	/// * If 'CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES' is defined, this is a pretty render.
 	///   Otherwise, this is just going to be a translucent color or something to
@@ -69,7 +69,7 @@
 	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_y
 
-	//* docking (backend) *//
+	//* Docking - Backend *//
 	/// base area to leave behind when something takes off; null for zlevel default
 	///
 	/// this should be an unique area, like /area/space
@@ -81,7 +81,7 @@
 	/// if zlevel default isn't found, defaults to world.area
 	var/area/base_area
 
-	//* docking (alignment) *//
+	//* Docking - Alignment *//
 	/// how wide this dock's non-airtight region is.
 	///
 	/// the dock is left-aligned to this region,
@@ -104,38 +104,33 @@
 	/// this is tiles like walls that are still considered airtight / sealed
 	var/dock_margin = 1
 
-	//* docking (control) *//
+	//* Docking - Control *//
 	/// docking code, if any
 	var/docking_code
 	/// requires docking code to dock
 	/// * This usually should be FALSE.
 	var/docking_code_required = FALSE
 
-	//* docking (registration) *//
-	/// dock id - must be unique per map instance
-	/// the maploader will handle ID scrambling to ensure it is unique globally, across rounds.
-	/// * if this doesn't exist, stuff that need to hook it won't work.
-	/// * you can have id-less docks, they'll just not be able to be the target of a ferry and certain other things
-	/// * you won't be able to bind an airlock to it either
+	//* Docking - Registration *//
+	/// Dock ID
+	/// * Must be unique per map instance.
+	/// * The maploader will handle ID scrambling to ensure it is unique globally, across rounds.
+	/// * If this doesn't exist, stuff that need to hook it won't work.
+	/// * You can have id-less docks, they'll just not be able to be the target of a ferry and certain other things
 	var/dock_id
 	#warn vv hook
 	/// are we registered?
 	var/registered = FALSE
-	/// do we register by type?
-	///
-	/// if we want to reference this dock by type, we must set this to TRUE.
-	var/register_by_type = FALSE
+	/// Register by type on SSshuttles?
+	/// * if you want to reference this dock by type, this must be set to a typepath.
+	var/register_as_typepath = FALSE
+
+	//* Docking - Hooks *//
 	/// registered shuttle hooks
 	/// * Hooks registered here will only have 'dock' events fired.
 	var/list/datum/shuttle_hook/hooks
-	// TODO: web shuttles
-	/// shuttle web node to initialize on, if applicable; this must be a typepath.
-	/// todo: data-defined web nodes, aka allow strings and de/serialization.
-	// var/web_node_type
-	/// the shuttle web node we belong to, if any
-	// var/datum/shuttle_web_node/web_node
 
-	//* docking (protection) *//
+	//* Docking - Protection *//
 	/**
 	 * Only allow a shuttle of this ID (or these IDs if a list) to dock.
 	 * * These are shuttle IDs, not template IDs. Do not set them to a template ID.
@@ -149,13 +144,13 @@
 	var/docking_restrict_to_starting = FALSE
 	#warn hook
 
-	//* identity *//
+	//* Identity *//
 	/// display name - visible to everyone at all times; if null, we use name.
 	var/display_name
 	/// display desc - visible to everyone at all times; if null, we use desc.
 	var/display_desc
 
-	//* shuttle *//
+	//* Shuttle *//
 	/// the docked shuttle
 	var/datum/shuttle/docked
 	#warn this should be an advisory lock
@@ -190,6 +185,14 @@
 	var/datum/event_args/shuttle/movement/currently_moving
 
 	#warn hook
+
+	//* Web Nodes *//
+	// TODO: web shuttles
+	/// Shuttle web node to initialize on, if applicable; this must be a typepath.
+	/// todo: data-defined web nodes, aka allow strings and de/serialization.
+	// var/web_node_type
+	/// The shuttle web node we belong to, if any
+	// var/datum/shuttle_web_node/web_node
 
 /obj/shuttle_dock/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
