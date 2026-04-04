@@ -22,10 +22,10 @@
 	var/dock_away_id
 
 	/// default transit time for an aligned transit towards home
-	/// null to default to default
+	/// * null to default to default transit time
 	var/transit_time_home
 	/// default transit time for an aligned transit towards away
-	/// null to default to default
+	/// * null to default to default transit time
 	var/transit_time_away
 
 /datum/shuttle_controller/ferry/New(home_id, away_id)

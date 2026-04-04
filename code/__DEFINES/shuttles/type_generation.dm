@@ -49,15 +49,19 @@
 #define DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(MAP_FRAGMENT, TYPEPATH, NAME) DECLARE_SHUTTLE_DOCK_PRESET_CENTERED(/map_specific##MAP_FRAGMENT##TYPEPATH, NAME)
 
 #warn ferry pairs
-#define DECLARE_SHUTTLE_FERRY_DOCK_MAP_PAIR_ALIGNED(MAP_PATH, TYPEPATH, ID, NAME)
-#define DECLARE_SHUTTLE_FERRY_DOCK_MAP_PAIR_CENTERED(MAP_PATH, TYPEPATH, ID, NAME)
+#define DECLARE_SHUTTLE_FERRY_DOCK_PAIR(TYPEPATH, NAME)
 
-#define DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_ALIGNED(TYPEPATH, ID, NAME)
-#define DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_CENTERED(TYPEPATH, ID, NAME)
-#define DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR_BINDINGS(VARIABLE_NAME, DOCK_TYPEPATH) \
-GLOBAL_DATUM(VARIABLE_NAME##_home, /obj/shuttle_dock) \
-GLOBAL_DATUM(VARIABLE_NAME##_away, /obj/shuttle_dock) \
-GLOBAL_DATUM(VARIABLE_NAME##_controller, /datum/shuttle_controller/ferry) \
+#define DECLARE_SHUTTLE_FERRY_DOCK_MAP_PAIR(MAP_PATH, TYPEPATH, NAME) \
+DECLARE_SHUTTLE_FERRY_DOCK_PAIR(/map_specific##MAP_PATH##TYPEPATH, NAME)
+
+/**
+ * Declares a global ferry pair and auto-binds it to a set of generated global variables.
+ */
+#define DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(VARIABLE_SUFFIX, TYPEPATH, NAME) \
+DECLARE_SHUTTLE_FERRY_DOCK_PAIR(/round_global##TYPEPATH, NAME) \
+GLOBAL_DATUM(global_ferry_home_##VARIABLE_SUFFIX, /obj/shuttle_dock) \
+GLOBAL_DATUM(global_ferry_away_##VARIABLE_SUFFIX, /obj/shuttle_dock) \
+GLOBAL_DATUM(global_ferry_controller_##VARIABLE_SUFFIX, /datum/shuttle_controller/ferry) \
 
 #warn impl
 // /obj/shuttle_dock/ferry_pair/escape_shuttle/init_shuttle(datum/shuttle/shuttle)

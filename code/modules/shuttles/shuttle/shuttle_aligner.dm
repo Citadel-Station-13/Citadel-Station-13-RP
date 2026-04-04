@@ -11,6 +11,8 @@
 /obj/shuttle_aligner
 	/// shuttle datum
 	var/tmp/datum/shuttle/shuttle
+	/// allow moves
+	var/tmp/currently_moving = FALSE
 
 /obj/shuttle_aligner/shuttle_aligner/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
 	shuttle = from_shuttle
@@ -537,7 +539,6 @@
 /obj/shuttle_aligner/master/proc/absolute_llx_lly_urx_ury_coords_at(turf/location, direction)
 	var/anchor_x
 	var/anchor_y
-	var/anchor_z
 
 	if(islist(location))
 		anchor_x = location[1]
