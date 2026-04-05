@@ -2,7 +2,6 @@ SUBSYSTEM_DEF(overlays)
 	name = "Overlays"
 	wait = 1
 	priority = FIRE_PRIORITY_OVERLAYS
-	init_order = INIT_ORDER_OVERLAY
 	init_stage = INIT_STAGE_LATE
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 

@@ -2,7 +2,7 @@
  * IPIntel Subsystem
  */
 SUBSYSTEM_DEF(ipintel)
-	name = "IPIntel"
+	name = "XKeyScore"
 	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 
 	/// is ipintel enabled?
