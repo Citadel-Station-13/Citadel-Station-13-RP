@@ -330,7 +330,7 @@
 
 		if(href_list["refund_functions"])
 			var/turf/T = get_turf(H)
-			if(T.z in (LEGACY_MAP_DATUM).player_levels)
+			if(T.z in (LEGACY_MAP_DATUM).station_levels)
 				to_chat(H, "<span class='danger'>You can only refund at your base, it's too late now!</span>")
 				return
 			var/obj/item/technomancer_core/core = null
@@ -347,7 +347,7 @@
 
 /obj/item/technomancer_catalog/attackby(var/atom/movable/AM, var/mob/user)
 	var/turf/T = get_turf(user)
-	if(T.z in (LEGACY_MAP_DATUM).player_levels)
+	if(T.z in (LEGACY_MAP_DATUM).station_levels)
 		to_chat(user, "<span class='danger'>You can only refund at your base, it's too late now!</span>")
 		return
 	for(var/datum/technomancer/equipment/E in equipment_instances + assistance_instances)

@@ -103,7 +103,7 @@
 
 		new_color = rgb(new_r, new_g, new_b)
 
-	update_sun_deferred(new_brightness, new_color)
+	set_sun_lighting(new_brightness, new_color)
 
 /datum/planet/sky_planet/ground
 	weather_holder = /datum/weather_holder/sky_planet/ground
@@ -201,7 +201,7 @@
 
 		new_color = rgb(new_r, new_g, new_b)
 
-	update_sun_deferred(new_brightness, new_color)
+	set_sun_lighting(new_brightness, new_color)
 
 /datum/weather/sky_planet
 	name = "sky_planet base"

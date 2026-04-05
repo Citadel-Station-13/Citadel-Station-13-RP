@@ -545,7 +545,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	stack_type = /obj/item/stack/cable_coil
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
-	stack_type = /obj/item/stack/cable_coil
 
 /obj/item/stack/cable_coil/Initialize(mapload, new_amount, merge, param_color)
 	. = ..()
@@ -560,29 +559,44 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 // General procedures
 ///////////////////////////////////
 
-//you can use wires to heal robotics
-/obj/item/stack/cable_coil/legacy_mob_melee_hook(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(ishuman(target) && user.a_intent == INTENT_HELP)
+/obj/item/stack/cable_coil/using_as_item(atom/target, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(clickchain.using_intent == INTENT_HELP)
+		if(fix_limb_burns(target, clickchain.performer, clickchain.target_zone) >= 0)
+			return CLICKCHAIN_DID_SOMETHING
+
+// you can use wires to heal robots
+// returns the number of cables used, or -1 if we couldn't fix the limb
+/obj/item/stack/cable_coil/proc/fix_limb_burns(mob/target, mob/user, target_zone)
+	. = -1
+	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
-		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
-			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
+		var/obj/item/organ/external/S = H.organs_by_name[target_zone]
+		if(!S)
+			user.visible_message(SPAN_WARNING("That limb is missing!"))
 			return
-
-		var/use_amt = min(src.amount, CEILING(S.burn_dam / 20, 1), 5)
-		if(can_use(use_amt))
+		if(S.robotic < ORGAN_ROBOT)
+			user.visible_message(SPAN_WARNING("That isn't a robotic limb."))
+			return
+		if(S.open == 3) // someone's doing surgery
+			return
+		var/use_amt = min(src.amount, CEILING(S.burn_dam / 5, 1), 5)
+		if(get_amount() >= use_amt)
 			if(S.robo_repair(5*use_amt, DAMAGE_TYPE_BURN, "some damaged wiring", src, user))
 				use(use_amt)
+				return use_amt
 		return
-	if(is_holosphere_shell(target) && user.a_intent == INTENT_HELP)
+	if(is_holosphere_shell(target))
 		var/mob/living/simple_mob/holosphere_shell/shell = target
-		var/use_amt = min(src.amount, CEILING(shell.fireloss / 20, 1), 5)
-		if(can_use(use_amt))
+		var/use_amt = min(src.amount, CEILING(shell.fireloss / 5, 1), 5)
+		if(get_amount() >= use_amt)
 			if(shell.shell_repair(5*use_amt, DAMAGE_TYPE_BURN, "some damaged wiring", src, user))
 				use(use_amt)
+				return use_amt
 		return
-	return ..()
 
 /obj/item/stack/cable_coil/update_icon()
 	if (!color)
@@ -694,7 +708,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	var/end_dir = 0
 	if(istype(F, /turf/simulated/open))
-		if(!can_use(2))
+		if(get_amount() < 2)
 			to_chat(user, "You don't have enough cable to do this!")
 			return
 		end_dir = DOWN

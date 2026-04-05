@@ -14,7 +14,7 @@
 		playsound(ui_host(), SFX_ALIAS_TERMINAL, 50, 1)
 
 	var/turf/T = get_turf(usr)
-	if(!T || !(T.z in (LEGACY_MAP_DATUM).player_levels))
+	if(!T || !(T.z in (LEGACY_MAP_DATUM).station_levels))
 		to_chat(usr, SPAN_WARNING("<b>Unable to establish a connection</b>: You're too far away from the station!"))
 		return FALSE
 

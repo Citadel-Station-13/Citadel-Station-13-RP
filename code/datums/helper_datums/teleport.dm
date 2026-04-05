@@ -164,7 +164,7 @@
 	if(istype(teleatom, /obj/item/storage/backpack/holding))
 		precision = rand(1,100)
 
-	var/list/bagholding = teleatom.search_contents_for(/obj/item/storage/backpack/holding)
+	var/list/bagholding = teleatom.get_all_contents_filtered(cached_typecacheof(/obj/item/storage/backpack/holding))
 	if(bagholding.len)
 		precision = max(rand(1,100)*bagholding.len,100)
 		if(istype(teleatom, /mob/living))
@@ -177,7 +177,7 @@
 		teleatom.visible_message(SPAN_DANGER("\The [teleatom] bounces off of the portal!"))
 		return FALSE
 
-	if(!!length(teleatom.search_contents_for(/obj/item/disk/nuclear)))
+	if(length(teleatom.get_all_contents_filtered(cached_typecacheof(/obj/item/disk/nuclear))))
 		if(istype(teleatom, /mob/living))
 			var/mob/living/MM = teleatom
 			MM.visible_message(SPAN_DANGER("\The [MM] bounces off of the portal!"), SPAN_WARNING("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
@@ -186,7 +186,7 @@
 		return FALSE
 	var/obstructed = 0
 	var/turf/dest_turf = get_turf(destination)
-	if(local && !(dest_turf.z in (LEGACY_MAP_DATUM).player_levels))
+	if(local && !(dest_turf.z in (LEGACY_MAP_DATUM).station_levels))
 		if(istype(teleatom, /mob/living))
 			to_chat(teleatom, SPAN_WARNING("The portal refuses to carry you that far away!"))
 		return FALSE
