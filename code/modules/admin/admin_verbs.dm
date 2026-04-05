@@ -452,7 +452,7 @@ var/list/admin_verbs_event_manager = list(
 	add_verb(src, /client/proc/show_verbs)
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
-	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Hide Most Adminverbs")
 	return
 
 /client/proc/hide_verbs()
@@ -463,7 +463,7 @@ var/list/admin_verbs_event_manager = list(
 	add_verb(src, /client/proc/show_verbs)
 
 	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
-	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Hide All Adminverbs")
 	return
 
 /client/proc/show_verbs()
@@ -474,30 +474,33 @@ var/list/admin_verbs_event_manager = list(
 	add_admin_verbs()
 
 	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
-	feedback_add_details("admin_verb","TAVVS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
+	BLACKBOX_LOG_ADMIN_VERB("Show All Adminverbs")
 
 /client/proc/admin_ghost()
 	set category = "Admin"
 	set name = "Aghost"
 	if(!holder)
 		return
-	if(istype(mob,/mob/observer/dead))
+	if(isobserver(mob))
 		//re-enter
 		var/mob/observer/dead/ghost = mob
-		if(ghost.can_reenter_corpse)
-			ghost.reenter_corpse()
-		else
-			to_chat(ghost, "<font color='red'>Error:  Aghost:  Can't reenter corpse.</font>")
-			return
+		if(!ghost.mind || !ghost.mind.current) //won't do anything if there is no body
+			return FALSE
+		if(!ghost.can_reenter_corpse)
+			log_admin("[key_name(usr)] re-entered corpse")
+			message_admins("[key_name_admin(usr)] re-entered corpse")
+		ghost.can_reenter_corpse = 1 //force re-entering even when otherwise not possible
+		ghost.reenter_corpse()
+		BLACKBOX_LOG_ADMIN_VERB("Admin Reenter")
 
-		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-	else if(istype(mob,/mob/new_player))
-		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
+	else if(isnewplayer(mob))
+		to_chat(usr, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>", confidential = TRUE)
+		return FALSE
 	else
+		log_admin("[key_name(usr)] admin ghosted.")
+		message_admins("[key_name_admin(usr)] admin ghosted.")
 		holder.admin_ghost()
-		feedback_add_details("admin_verb","O") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		BLACKBOX_LOG_ADMIN_VERB("Admin Ghost")
 
 /client/proc/invisimin()
 	set name = "Invisimin"

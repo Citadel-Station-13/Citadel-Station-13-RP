@@ -19,8 +19,7 @@
 	for(var/area/A in GLOB.sortedAreas)
 		A.gravitychange(gravity_is_on,A)
 
-	feedback_inc("admin_secrets_fun_used",1)
-	feedback_add_details("admin_secrets_fun_used","Grav")
+	SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Gravity"))
 	if(gravity_is_on)
 		log_admin("[key_name(user)] toggled gravity on.", 1)
 		message_admins("<span class='notice'>[key_name_admin(user)] toggled gravity on.</span>", 1)

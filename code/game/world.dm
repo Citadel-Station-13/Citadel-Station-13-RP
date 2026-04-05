@@ -161,9 +161,7 @@ GLOBAL_LIST(topic_status_cache)
 	config.update_world_viewsize()	//! Since world.view is immutable, we load it here.
 	Configuration.Initialize()
 
-	// pretend these 2 ssdbcore funcs are InitializeRound()
-	SSdbcore.CheckSchemaVersion()
-	SSdbcore.SetRoundID()
+	SSdbcore.InitializeRound()
 
 	SetupLogs()
 
@@ -375,8 +373,6 @@ GLOBAL_LIST(topic_status_cache)
 		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting World immediately due to host request."))
 	else
 		to_chat(world, SPAN_BOLDANNOUNCE("Rebooting world..."))
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
 		Master.Shutdown() //run SS shutdowns
 
 	#ifdef UNIT_TESTS

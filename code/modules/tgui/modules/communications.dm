@@ -62,26 +62,10 @@
 
 /datum/tgui_module_old/communications/proc/change_security_level(new_level)
 	tmp_alertlevel = new_level
-	var/old_level = GLOB.security_level
 	if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 	if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
 	if(tmp_alertlevel > SEC_LEVEL_ORANGE) tmp_alertlevel = SEC_LEVEL_ORANGE //cannot engage red/delta. this code was never updated with the fact that blue is lower than orange/violet/etc
 	set_security_level(tmp_alertlevel)
-	if(GLOB.security_level != old_level)
-		//Only notify the admins if an actual change happened
-		log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
-		message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-		switch(GLOB.security_level)
-			if(SEC_LEVEL_GREEN)
-				feedback_inc("alert_comms_green",1)
-			if(SEC_LEVEL_YELLOW)
-				feedback_inc("alert_comms_yellow",1)
-			if(SEC_LEVEL_VIOLET)
-				feedback_inc("alert_comms_violet",1)
-			if(SEC_LEVEL_ORANGE)
-				feedback_inc("alert_comms_orange",1)
-			if(SEC_LEVEL_BLUE)
-				feedback_inc("alert_comms_blue",1)
 	tmp_alertlevel = 0
 
 /datum/tgui_module_old/communications/ui_data(mob/user, datum/tgui/ui)
