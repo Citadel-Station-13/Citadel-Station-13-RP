@@ -23,7 +23,8 @@
 	name = "bunny 2, dual-color"
 	id = "ears_bunny_colorable_2"
 	icon_state = "bunny-alt"
-	extra_overlay = "bunny-alt-inner"
+	extra_overlay = "bunny-alt-left"
+	extra_overlay2 = "bunny-alt-inner"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
@@ -31,6 +32,7 @@
 	name = "bunny, colorable"
 	id = "ears_bunny_colorable"
 	icon_state = "bunny"
+	extra_overlay = "bunny-left"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
@@ -38,6 +40,7 @@
 	name = "floppy bunny ears (colorable)"
 	id = "ears_bunny_floppy"
 	icon_state = "floppy_bun"
+	extra_overlay = "floppy_bun_left"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
@@ -46,7 +49,8 @@
 	id = "ears_bunny_tall"
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'
 	icon_state = "bunny-tall"
-	extra_overlay = "bunny-tall-inner"
+	extra_overlay = "bunny-tall-left"
+	extra_overlay2 = "bunny-tall-inner"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
@@ -54,12 +58,14 @@
 	name = "bunny, white"
 	id = "ears_bunny_white"
 	icon_state = "bunny"
+	extra_overlay = "bunny-left"
 
 /datum/sprite_accessory/ears/rabbit_swept
 	name = "Rabbit Ears (swept back)"
 	id = "ears_rabbit_back"
 	icon = 'icons/mob/sprite_accessories/ears_32x64.dmi'
 	icon_state = "rabbit-swept"
+	extra_overlay = "rabbit-swept-left"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
@@ -67,5 +73,6 @@
 	name = "Swooped bunny ears (colorable)"
 	id = "ears_bunny_swoop"
 	icon_state = "swooped_bunny"
+	extra_overlay = "swooped_bunny_left"
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
