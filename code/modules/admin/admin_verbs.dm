@@ -197,7 +197,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/reload_configuration,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/kill_airgroup,
-	/client/proc/debug_controller,
 	/client/proc/debug_antagonist_template,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_admin_delete,
@@ -213,7 +212,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/air_report,
 	/client/proc/reload_admins,
 	/client/proc/reload_eventMs,
-	/client/proc/restart_controller,
 	/datum/admins/proc/restart,
 	/client/proc/print_random_map,
 	/client/proc/create_random_map,
@@ -245,8 +243,7 @@ var/list/admin_verbs_debug = list(
 
 var/list/admin_verbs_paranoid_debug = list(
 	/client/proc/callproc,
-	/client/proc/callproc_datum,
-	/client/proc/debug_controller
+	/client/proc/callproc_datum
 	)
 
 var/list/admin_verbs_possess = list(
@@ -307,7 +304,6 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/toggleAI,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
-	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/callproc,
 	/client/proc/callproc_datum,
@@ -316,7 +312,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/kill_air,
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/kill_airgroup,
-	/client/proc/debug_controller,
 	/client/proc/startSinglo,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_del_all,
@@ -382,7 +377,6 @@ var/list/admin_verbs_event_manager = list(
 	/proc/release,
 	/client/proc/callproc,
 	/client/proc/callproc_datum,
-	/client/proc/debug_controller,
 	/client/proc/show_gm_status,
 	/datum/admins/proc/change_weather,
 	/datum/admins/proc/change_time,
