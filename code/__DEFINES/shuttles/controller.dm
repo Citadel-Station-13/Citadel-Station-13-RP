@@ -1,6 +1,19 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
+//* /datum/shuttle_controller/ferry - ferry_get_docking_state() *//
+
+/// not docking, in transit, etc
+#define SHUTTLE_FERRY_DOCKING_STATE_NOT_AT_DOCK 0
+/// we're at the dock, but not docked
+#define SHUTTLE_FERRY_DOCKING_STATE_UNDOCKED 1
+/// we're undocking
+#define SHUTTLE_FERRY_DOCKING_STATE_UNDOCKING 2
+/// we're docking
+#define SHUTTLE_FERRY_DOCKING_STATE_DOCKING 3
+/// we're docked
+#define SHUTTLE_FERRY_DOCKING_STATE_DOCKED 4
+
 #warn audit file
 //* docking callback status
 

@@ -74,7 +74,10 @@
 
 	return clone
 
-/datum/shuttle_descriptor/merge_from(datum/shuttle_descriptor/other)
+/**
+ * Merges other into self. Overwrites fields from other.
+ */
+/datum/shuttle_descriptor/proc/merge_from(datum/shuttle_descriptor/other)
 	if(!isnull(other.display_name))
 		src.display_name = other.display_name
 
