@@ -49,8 +49,24 @@
 #define DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(MAP_FRAGMENT, TYPEPATH, NAME) DECLARE_SHUTTLE_DOCK_PRESET_CENTERED(/map_specific##MAP_FRAGMENT##TYPEPATH, NAME)
 
 #warn ferry pairs
-#define DECLARE_SHUTTLE_FERRY_DOCK_PAIR(TYPEPATH, NAME)
+#define DECLARE_SHUTTLE_FERRY_DOCK_PAIR_IMPL(TYPEPATH, NAME) \
+/obj/shuttle_dock/ferry_pair##TYPEPATH { \
+	name = "Ferry Dock - " + NAME; \
+}; \
+/obj/shuttle_dock/ferry_pair##TYPEPATH/home { \
+	name = /obj/shuttle_dock/ferry_pair##TYPEPATH::name + " (Home)"; \
+	maptext = MAPTEXT_CENTER_CONST("Shuttle Ferry Dock\n" + "(" + NAME + ") - Home"); \
+} \
+/obj/shuttle_dock/ferry_pair##TYPEPATH/away { \
+	name = /obj/shuttle_dock/ferry_pair##TYPEPATH::name + " (Away)"; \
+	maptext = MAPTEXT_CENTER_CONST("Shuttle Ferry Dock\n" + "(" + NAME + ") - Away"); \
+}
 
+/**
+ * Declares a map-specific instancing of a ferry pair.
+ * * Different maps create different instances of this. The same ferry pair must be on the same map,
+ *   or they won't bind.
+ */
 #define DECLARE_SHUTTLE_FERRY_DOCK_MAP_PAIR(MAP_PATH, TYPEPATH, NAME) \
 DECLARE_SHUTTLE_FERRY_DOCK_PAIR(/map_specific##MAP_PATH##TYPEPATH, NAME)
 
@@ -59,11 +75,17 @@ DECLARE_SHUTTLE_FERRY_DOCK_PAIR(/map_specific##MAP_PATH##TYPEPATH, NAME)
  */
 #define DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(VARIABLE_SUFFIX, TYPEPATH, NAME) \
 DECLARE_SHUTTLE_FERRY_DOCK_PAIR(/round_global##TYPEPATH, NAME) \
+/obj/shuttle_dock/ferry_pair/round_global##TYPEPATH { \
+}; \
+/obj/shuttle_dock/ferry_pair/round_global##TYPEPATH/home { \
+}; \
+/obj/shuttle_dock/ferry_pair/round_global##TYPEPATH/away { \
+}; \
 GLOBAL_DATUM(global_ferry_home_##VARIABLE_SUFFIX, /obj/shuttle_dock) \
 GLOBAL_DATUM(global_ferry_away_##VARIABLE_SUFFIX, /obj/shuttle_dock) \
 GLOBAL_DATUM(global_ferry_controller_##VARIABLE_SUFFIX, /datum/shuttle_controller/ferry) \
 
-#warn impl
+#warn impl autobinds
 // /obj/shuttle_dock/ferry_pair/escape_shuttle/init_shuttle(datum/shuttle/shuttle)
 // 	. = ..()
 // 	#warn impl

@@ -14,8 +14,8 @@
 /// we're docked
 #define SHUTTLE_FERRY_DOCKING_STATE_DOCKED 4
 
-#warn audit file
-//* docking callback status
+//*                   Docking completion callback status            *//
+//* Docking callbacks are fired by the controller, not the shuttle. *//
 
 /// succeeded
 #define SHUTTLE_DOCKING_STATUS_SUCCESS 1
@@ -30,10 +30,16 @@
 /// we're not at somewhere that we can dock to
 #define SHUTTLE_DOCKING_STATUS_INVALID 6
 
-//* docking states
+//*                Current docking state (dock)                      *//
+//* Docking state is stored on the shuttle controller, not the shuttle. *//
 
+/// Set while not at a dock, or an unknown error happened.
 #define SHUTTLE_DOCKING_STATE_UNKNOWN 1
+/// Currently at a dock, and docked.
 #define SHUTTLE_DOCKING_STATE_DOCKED 2
+/// Currently not at a dock, or at a dock and undocked.
 #define SHUTTLE_DOCKING_STATE_UNDOCKED 3
+/// Currently at a dock, and docking.
 #define SHUTTLE_DOCKING_STATE_DOCKING 4
+/// Currently at a dock, and undocking.
 #define SHUTTLE_DOCKING_STATE_UNDOCKING 5

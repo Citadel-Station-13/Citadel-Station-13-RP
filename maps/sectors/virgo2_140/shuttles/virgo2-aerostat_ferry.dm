@@ -3,7 +3,7 @@ DECLARE_SECTOR_SHUTTLE_TEMPLATE(/virgo2_140, /aerostat_ferry)
 	name = "Virgo 2 Aerostat Ferry"
 	display_name = "Virgo 2 Aerostat Ferry"
 
-DECLARE_SHUTTLE_FERRY_DOCK_MAP_PAIR_ALIGNED(/virgo2, /aerostat_ferry, "aerostat_ferry", "Aerostat Ferry")
+DECLARE_SHUTTLE_FERRY_DOCK_MAP_PAIR(/virgo2, /aerostat_ferry, "Aerostat Ferry")
 
 #warn impl
 
