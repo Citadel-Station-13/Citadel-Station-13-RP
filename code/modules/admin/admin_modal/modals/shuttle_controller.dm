@@ -49,7 +49,7 @@
 		if("obliterate")
 
 		if("narrate")
-			admin_holder.open_admin_modal(/datum/admin_modal/narrate, target)
+			admin_holder.open_admin_modal(/datum/admin_modal/admin_narrate, target)
 			return TRUE
 
 #warn impl

@@ -4,6 +4,7 @@
 /datum/shuttle_transit_blocker
 	/**
 	 * The hook blocking the transit, if any
+	 * * Nullable. Not all blockers are associated with hooks.
 	 */
 	var/datum/shuttle_hook/hook
 	/**

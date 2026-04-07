@@ -1,4 +1,4 @@
-GLOBAL_DATUM(legacy_emergency_shuttle_controller, /datum/shuttle_controller/ferry/emergency)
+#warn impl
 
 /datum/shuttle_controller/ferry/emergency
 	var/round_end_armed = FALSE

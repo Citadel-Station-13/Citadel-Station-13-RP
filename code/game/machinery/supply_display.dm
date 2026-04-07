@@ -6,7 +6,7 @@
 		message1 = "CARGO"
 		message2 = ""
 
-		var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
+		var/datum/shuttle_controller/ferry/cargo/controller = GLOB.global_ferry_supply_shuttle_controller
 		if(!controller)
 			message2 = "Error"
 		else if(!!controller.get_transit_stage())

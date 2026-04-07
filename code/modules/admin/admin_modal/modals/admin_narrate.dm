@@ -28,7 +28,6 @@
 	var/const/M_RANGE = "range"
 	var/const/M_DIRECT = "direct"
 	var/const/M_LOBBY = "lobby"
-	#warn shuttle mode
 	var/const/M_SHUTTLE = "shuttle"
 
 	/// text to send (raw html)
@@ -122,6 +121,8 @@
 	else if(istype(resolved, /datum/map))
 		. += /datum/admin_modal/admin_narrate::M_SECTOR
 		// TODO: check for overmap binding & add overmap if it's there
+	else if(istype(resolved, /datum/shuttle))
+		. += /datum/admin_modal/admin_narrate::M_SHUTTLE
 
 /**
  * @return list of mobs, or null if invalid
@@ -211,6 +212,17 @@
 			for(var/client/C as anything in GLOB.clients)
 				if(isnewplayer(C.mob))
 					. += C.mob
+		if(M_SHUTTLE)
+			var/datum/shuttle/resolved = target
+			if(!istype(resolved, /datum/shuttle))
+				return null
+			for(var/client/C as anything in GLOB.clients)
+				var/mob/maybe_viewing = C.mob
+				var/area/their_area = get_area(maybe_viewing)
+				if(istype(their_area, /area/shuttle))
+					var/area/shuttle_area = their_area
+					if(shuttle_area.shuttle == resolved)
+						. += maybe_viewing
 
 /datum/admin_modal/admin_narrate/proc/get_target_data()
 	var/datum/resolved = target
@@ -269,6 +281,8 @@
 		if(M_DIRECT)
 			var/atom/movable/casted = target
 			return istype(casted) && casted.admin_resolve_narrate()
+		if(M_SHUTTLE)
+			#warn impl
 
 /datum/admin_modal/admin_narrate/proc/narrate()
 	if(!length(unsafe_raw_html_to_send))

@@ -65,11 +65,11 @@ SUBSYSTEM_DEF(shuttle)
 		CRASH("what?")
 
 /datum/controller/subsystem/shuttle/proc/register_dock(obj/shuttle_dock/dock)
-	if(dock.register_by_type)
-		if(dock_type_registry[dock.type])
-			stack_trace("type collision between [dock] [COORD(dock)] and [dock_type_registry[dock.type]] [COORD(dock_type_registry[dock.type])] on [dock.type]")
+	if(dock.register_as_typepath)
+		if(dock_type_registry[dock.register_as_typepath])
+			stack_trace("type collision between [dock] [COORD(dock)] and [dock_type_registry[dock.register_as_typepath]] [COORD(dock_type_registry[dock.register_as_typepath])] on [dock.register_as_typepath]")
 		else
-			dock_type_registry[dock.type] = dock
+			dock_type_registry[dock.register_as_typepath] = dock
 	if(dock.dock_id)
 		if(dock_id_registry[dock.dock_id])
 			stack_trace("id collision between [dock] [COORD(dock)] and [dock_id_registry[dock.dock_id]] [COORD(dock_id_registry[dock.dock_id])] on [dock.dock_id]")
@@ -80,11 +80,11 @@ SUBSYSTEM_DEF(shuttle)
 	return TRUE
 
 /datum/controller/subsystem/shuttle/proc/unregister_dock(obj/shuttle_dock/dock)
-	if(dock.register_by_type)
-		if(dock_type_registry[dock.type] != dock)
-			stack_trace("dock type registry mismatch during unregister on [dock] [COORD(dock)] for [dock.type], got [dock_type_registry[dock.type]] [COORD(dock_type_registry[dock.type])]")
+	if(dock.register_as_typepath)
+		if(dock_type_registry[dock.register_as_typepath] != dock)
+			stack_trace("dock type registry mismatch during unregister on [dock] [COORD(dock)] for [dock.register_as_typepath], got [dock_type_registry[dock.register_as_typepath]] [COORD(dock_type_registry[dock.register_as_typepath])]")
 		else
-			dock_type_registry -= dock.type
+			dock_type_registry -= dock.register_as_typepath
 	if(dock.dock_id)
 		if(dock_id_registry[dock.dock_id] != dock)
 			stack_trace("dock id registry mismatch during unregister on [dock] [COORD(dock)] for [dock.dock_id], got [dock_id_registry[dock.dock_id]] [COORD(dock_id_registry[dock.dock_id])]")

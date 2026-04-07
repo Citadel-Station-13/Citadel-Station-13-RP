@@ -108,22 +108,19 @@
 //* Lots of legacy-style ferries, though, like escape/supply shuttle, can      *//
 //* get away with a simplified API.                                            *//
 
-/datum/shuttle_controller/ferry/proc/ferry_is_at_home()
+/datum/shuttle_controller/ferry/proc/is_at_home()
 	return shuttle.docked.dock_id == dock_home_id
 
-/datum/shuttle_controller/ferry/proc/ferry_is_at_away()
+/datum/shuttle_controller/ferry/proc/is_at_away()
 	return shuttle.docked.dock_id == dock_away_id
 
-/datum/shuttle_controller/ferry/proc/ferry_is_at_known_location()
+/datum/shuttle_controller/ferry/proc/is_at_known_location()
 	return ferry_is_at_home() || ferry_is_at_away()
 
-/datum/shuttle_controller/ferry/proc/ferry_is_in_transit()
+/datum/shuttle_controller/ferry/proc/is_in_transit()
 	return !shuttle.docked
 
-/**
- * on_transit_callbacks must be a named argument!
- */
-/datum/shuttle_controller/ferry/proc/ferry_transit_towards_home(time, list/datum/callback/on_transit_callbacks)
+/datum/shuttle_controller/ferry/proc/transit_towards_home(time, list/datum/callback/on_transit_callbacks)
 	var/obj/shuttle_dock/dock = SSshuttles.resolve_dock(dock_home_id)
 	if(!dock)
 		CRASH("invalid home dock for ferry transit: " + dock_home_id)
@@ -133,10 +130,7 @@
 		on_transit_callbacks = on_transit_callbacks,
 	)
 
-/**
- * on_transit_callbacks must be a named argument!
- */
-/datum/shuttle_controller/ferry/proc/ferry_transit_towards_away(time, list/datum/callback/on_transit_callbacks)
+/datum/shuttle_controller/ferry/proc/transit_towards_away(time, list/datum/callback/on_transit_callbacks)
 	var/obj/shuttle_dock/dock = SSshuttles.resolve_dock(dock_away_id)
 	if(!dock)
 		CRASH("invalid away dock for ferry transit: " + dock_away_id)
@@ -146,33 +140,33 @@
 		on_transit_callbacks = on_transit_callbacks,
 	)
 
-/datum/shuttle_controller/ferry/proc/ferry_is_in_transit_towards_home()
+/datum/shuttle_controller/ferry/proc/is_in_transit_towards_home()
 	#warn impl
 
-/datum/shuttle_controller/ferry/proc/ferry_is_in_transit_towards_away()
+/datum/shuttle_controller/ferry/proc/is_in_transit_towards_away()
 	#warn impl
 
 /**
  * @return SHUTTLE_FERRY_DOCKING_STATE_*
  */
-/datum/shuttle_controller/ferry/proc/ferry_get_docking_state()
+/datum/shuttle_controller/ferry/proc/get_docking_state()
 	#warn impl
 
 /**
  * @return TRUE if done, FALSE if failed for any reason (including 'done', 'not docking', 'rejected')
  */
-/datum/shuttle_controller/ferry/proc/ferry_attempt_force_in_progress_docking()
+/datum/shuttle_controller/ferry/proc/attempt_force_in_progress_docking()
 	#warn impl
 
 /**
  * @return TRUE if done, FALSE if failed for any reason (including 'done', 'not docking', 'rejected')
  */
-/datum/shuttle_controller/ferry/proc/ferry_attempt_dangerously_force_in_progress_docking()
+/datum/shuttle_controller/ferry/proc/attempt_dangerously_force_in_progress_docking()
 	#warn impl
 
-/datum/shuttle_controller/ferry/proc/ferry_is_forcing_in_progress_docking()
+/datum/shuttle_controller/ferry/proc/is_forcing_in_progress_docking()
 	#warn impl
 
-/datum/shuttle_controller/ferry/proc/ferry_is_dangerously_forcing_in_progress_docking()
+/datum/shuttle_controller/ferry/proc/is_dangerously_forcing_in_progress_docking()
 	#warn impl
 

@@ -115,18 +115,13 @@
 	sleep(60)
 
 	// Break the shuttle temporarily.
-	GLOB.legacy_belter_shuttle_controller.register_movement_block(
-		SSshuttles,
-		"zone-rebuild",
-	)
+	GLOB.global_ferry_belter_shuttle_controller.belter_start_rebuild()
 
 	// Build and get a new zone.
 	var/datum/rogue/zonemaster/ZM_target = rm_controller.prepare_new_zone()
 
 	// Re-enable shuttle.
-	GLOB.legacy_belter_shuttle_controller.unregister_movement_block(
-		SSshuttles,
-	)
+	GLOB.global_ferry_belter_shuttle_controller.belter_stop_rebuild()
 
 	// Update rm_previous
 	rm_controller.previous_zone = rm_controller.current_zone
@@ -146,12 +141,12 @@
 /obj/machinery/computer/roguezones/proc/failsafe_shuttle_recall()
 	// if(!shuttle_control)
 		// return	// Shuttle computer has been destroyed
-	if(!GLOB.legacy_belter_shuttle_controller.is_at_away())
+	if(!GLOB.global_ferry_belter_shuttle_controller.is_at_away())
 		return	// Usable only when shuttle is away
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
 		return	// Not usable if shuttle is in occupied zone
 	// Okay do it
-	#warn launch it
+	GLOB.global_ferry_belter_shuttle_controller.transit_towards_home()
 
 /obj/item/circuitboard/roguezones
 	name = T_BOARD("asteroid belt scanning computer")

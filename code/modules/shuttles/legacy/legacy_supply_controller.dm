@@ -1,4 +1,4 @@
-GLOBAL_DATUM(legacy_cargo_shuttle_controller, /datum/shuttle_controller/ferry/cargo)
+#warn impl
 
 /datum/shuttle_controller/ferry/cargo
 	transit_time_home = 2 MINUTES
@@ -13,14 +13,6 @@ GLOBAL_DATUM(legacy_cargo_shuttle_controller, /datum/shuttle_controller/ferry/ca
 	var/datum/radio_frequency/F = radio_controller.return_frequency(1435)
 	F.post_signal(src, S)
 
-/datum/shuttle_controller/ferry/cargo/on_begin_transit_to_away(datum/shuttle_transit_cycle/cycle, redirected)
-	. = ..()
-	SSsupply.buy()
-
-/datum/shuttle_controller/ferry/cargo/on_end_transit_to_home(datum/shuttle_transit_cycle/cycle, status)
-	. = ..()
-	if(status == SHUTTLE_TRANSIT_STATUS_SUCCESS)
-		SSsupply.sell()
 
 /datum/shuttle_controller/ferry/cargo/proc/legacy_eta_in_minutes()
 	return (transit_time_left() / (1 MINUTES))

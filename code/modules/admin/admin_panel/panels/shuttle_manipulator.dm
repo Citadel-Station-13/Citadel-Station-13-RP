@@ -27,7 +27,7 @@
 
 	var/datum/admins/admin_holder = usr.client.holder
 	var/shuttle_id = params["shuttleId"]
-	var/datum/shuttle/shuttle = shuttle_id && SSshuttles.shuttle_registry[shuttle_id]
+	var/datum/shuttle/shuttle = shuttle_id && SSshuttles.shuttle_lookup[shuttle_id]
 
 	switch(action)
 		if("openShuttleController")

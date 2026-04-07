@@ -32,21 +32,21 @@ SUBSYSTEM_DEF(emergencyshuttle)
 			stop_launch_countdown()
 
 			if(evac)
-				if(GLOB.legacy_emergency_shuttle_controller.is_at_away())
+				if(GLOB.global_ferry_escape_shuttle_controller.is_at_away())
 					//leaving from the station
 					//launch the pods!
 					launch_escape_pods()
 
 			if (autopilot)
-				if(GLOB.legacy_emergency_shuttle_controller.is_at_home())
-					GLOB.legacy_emergency_shuttle_controller.transit_towards_away(5 MINUTES)
+				if(GLOB.global_ferry_escape_shuttle_controller.is_at_home())
+					GLOB.global_ferry_escape_shuttle_controller.transit_towards_away(5 MINUTES)
 				else
-					GLOB.legacy_emergency_shuttle_controller.transit_towards_home(5 MINUTES)
+					GLOB.global_ferry_escape_shuttle_controller.transit_towards_home(5 MINUTES)
 
 //called when the shuttle has arrived.
 
 /datum/controller/subsystem/emergencyshuttle/proc/shuttle_arrived()
-	if(GLOB.legacy_emergency_shuttle_controller.is_at_away()) //at station
+	if(GLOB.global_ferry_escape_shuttle_controller.is_at_away())
 		if (autopilot)
 			set_launch_countdown(3 MINUTES)	//get ready to return
 			var/estimated_time = round(estimate_launch_time()/60,1)
@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	if (!can_recall()) return
 
 	wait_for_launch = 0
-	GLOB.legacy_emergency_shuttle_controller.transit_towards_home(0)
+	GLOB.global_ferry_escape_shuttle_controller.transit_towards_home(0 SECONDS)
 
 	if (evac)
 		emergency_shuttle_recalled.Announce(
@@ -164,7 +164,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 /datum/controller/subsystem/emergencyshuttle/proc/can_call()
 	if (deny_shuttle)
 		return 0
-	if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage() || !GLOB.legacy_emergency_shuttle_controller.is_at_home())
+	if(!GLOB.global_ferry_escape_shuttle_controller.is_at_home())
+		//already in transit
 		return 0
 	if (wait_for_launch)	//already launching
 		return 0
@@ -174,10 +175,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 //e.g. the shuttle is already at the station or wasn't called to begin with
 //other reasons for the shuttle not being recallable should be handled elsewhere
 /datum/controller/subsystem/emergencyshuttle/proc/can_recall()
-	if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
-		return 0
-	if(!GLOB.legacy_emergency_shuttle_controller.is_at_home())
-		//already at the station.
+	if(!GLOB.global_ferry_escape_shuttle_controller.is_at_home())
+		//already in transit
 		return 0
 	if (!wait_for_launch)	//we weren't going anywhere, anyways...
 		return 0
@@ -201,12 +200,12 @@ SUBSYSTEM_DEF(emergencyshuttle)
 //returns the time left until the shuttle arrives at it's destination, in seconds
 /datum/controller/subsystem/emergencyshuttle/proc/estimate_arrival_time()
 	var/eta
-	if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
+	if(GLOB.global_ferry_escape_shuttle_controller.get_transit_stage())
 		//we are in transition and can get an accurate ETA
-		eta = GLOB.legacy_emergency_shuttle_controller.transit_time_left()
+		eta = GLOB.global_ferry_escape_shuttle_controller.transit_time_left()
 	else
 		//otherwise we need to estimate the arrival time using the scheduled launch time
-		eta = launch_time + GLOB.legacy_emergency_shuttle_controller.default_takeoff_time() + GLOB.legacy_emergency_shuttle_controller.default_transit_time()
+		eta = launch_time + GLOB.global_ferry_escape_shuttle_controller.default_takeoff_time() + GLOB.global_ferry_escape_shuttle_controller.default_transit_time()
 	return (eta - world.time)/10
 
 //returns the time left until the shuttle launches, in seconds
@@ -214,37 +213,37 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	return (launch_time - world.time)/10
 
 /datum/controller/subsystem/emergencyshuttle/proc/has_eta()
-	return (wait_for_launch || GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
+	return (wait_for_launch || GLOB.global_ferry_escape_shuttle_controller.get_transit_stage())
 
 //returns 1 if the shuttle has gone to the station and come back at least once,
 //used for game completion checking purposes
 /datum/controller/subsystem/emergencyshuttle/proc/returned()
-	return (departed && GLOB.legacy_emergency_shuttle_controller.is_at_home())	//we've gone to the station at least once, no longer in transit and are idle back at centcom
+	return (departed && GLOB.global_ferry_escape_shuttle_controller.is_at_home())	//we've gone to the station at least once, no longer in transit and are idle back at centcom
 
 //returns 1 if the shuttle is not idle at centcom
 /datum/controller/subsystem/emergencyshuttle/proc/online()
-	if(!GLOB.legacy_emergency_shuttle_controller.is_at_home())
+	if(!GLOB.global_ferry_escape_shuttle_controller.is_at_home())
 		return TRUE
-	if (wait_for_launch || GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
+	if (wait_for_launch || GLOB.global_ferry_escape_shuttle_controller.get_transit_stage())
 		return TRUE
 	return FALSE
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to the station
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_station()
-	return GLOB.legacy_emergency_shuttle_controller.is_in_transit_towards_away()
+	return GLOB.global_ferry_escape_shuttle_controller.is_in_transit_towards_away()
 
 //returns 1 if the shuttle is currently in transit (or just leaving) to centcom
 /datum/controller/subsystem/emergencyshuttle/proc/going_to_centcom()
-	return GLOB.legacy_emergency_shuttle_controller.is_in_transit_towards_home()
+	return GLOB.global_ferry_escape_shuttle_controller.is_in_transit_towards_home()
 
 /datum/controller/subsystem/emergencyshuttle/proc/get_status_panel_eta()
 	if (online())
-		if(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
+		if(GLOB.global_ferry_escape_shuttle_controller.get_transit_stage())
 			var/timeleft = estimate_arrival_time()
 			return "ETA-[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 
 		if (waiting_to_leave())
-			switch(GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
+			switch(GLOB.global_ferry_escape_shuttle_controller.get_transit_stage())
 				if(SHUTTLE_TRANSIT_STAGE_TAKEOFF, SHUTTLE_TRANSIT_STAGE_UNDOCK)
 					return "Departing..."
 

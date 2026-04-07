@@ -58,7 +58,6 @@
 	var/orders[0]
 	var/receipts[0]
 
-	var/datum/shuttle/shuttle = GLOB.legacy_cargo_shuttle
 	var/datum/shuttle_controller/ferry/cargo/controller = GLOB.legacy_cargo_shuttle_controller
 	if(shuttle)
 		if(!controller.get_transit_stage())
