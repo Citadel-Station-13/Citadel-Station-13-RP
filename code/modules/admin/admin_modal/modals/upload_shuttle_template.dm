@@ -28,6 +28,8 @@
 	/// * never carried over by ref to anything else; this ref will always be owned
 	var/datum/shuttle_descriptor/chosen_descriptor
 
+#warn ui
+
 /datum/admin_modal/upload_shuttle_template/Initialize()
 	// no uploading new shuttle templates while MC is initializing.
 	if(!MC_INITIALIZED())

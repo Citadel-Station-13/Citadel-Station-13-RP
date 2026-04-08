@@ -68,6 +68,11 @@
 	/// tgui interface to load
 	var/tgui_module
 
+/datum/shuttle_controller/New(datum/shuttle/shuttle)
+	ASSERT(istype(shuttle))
+	src.shuttle = shuttle
+	#warn impl?
+
 /datum/shuttle_controller/Destroy()
 	terminate_transit()
 	interrupt_docking()
@@ -351,6 +356,16 @@
  */
 /datum/shuttle_controller/proc/manual_landing_levels()
 	#warn impl
+
+//* Location *//
+
+/**
+ * Get the approximate Z-index our shuttle's on.
+ *
+ * @return z-index or 0 or null
+ */
+/datum/shuttle_controller/proc/get_current_z_index()
+	return shuttle.anchor.z
 
 //* Transit - Configuration *//
 

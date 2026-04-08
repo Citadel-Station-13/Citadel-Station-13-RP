@@ -4,6 +4,8 @@
 /datum/admin_modal/shuttle_controller
 	var/datum/shuttle/target
 
+#warn ui
+
 /datum/admin_modal/shuttle_controller/Initialize(datum/shuttle/target)
 	if(!istype(target))
 		return FALSE

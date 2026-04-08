@@ -1,13 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-/**
- * Declarations for global round docks.
- * * These are technically against 'server design' but like, the server's still unfortunately
- *   round based.
- */
-DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(escape_shuttle, /escape_shuttle, "Escape Shuttle")
-
 DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(supply_shuttle, /supply_shuttle, "Supply Shuttle")
 #warn make sure api didn't change for these two procs
 /obj/shuttle_dock/ferry_pair/round_global/supply_shuttle/home/on_shuttle_departed(datum/shuttle/shuttle, datum/event_args/shuttle/dock/departed/e_args)

@@ -38,4 +38,8 @@
 				continue
 			turf_handler.Invoke(T)
 
-/datum/shuttle/
+/**
+ * Immediately jump to transit, skipping any sort of docking or takeoff process.
+ */
+/datum/shuttle/proc/immediately_jump_to_transit()
+	#warn impl

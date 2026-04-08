@@ -5,6 +5,8 @@
 	var/obj/overmap/entity/target
 	tgui_interface = "OvermapController"
 
+#warn ui
+
 /datum/admin_modal/overmap_controller/Initialize(obj/overmap/entity/target)
 	if(!istype(target))
 		return FALSE

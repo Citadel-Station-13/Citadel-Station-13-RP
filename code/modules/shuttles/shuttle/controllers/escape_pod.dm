@@ -6,10 +6,20 @@
 GLOBAL_LIST_EMPTY(escape_pod_controllers)
 
 /proc/arm_escape_pods(list/z_indices)
-	#warn impl
+	. = 0
+	for(var/datum/shuttle_controller/escape_pod/controller in GLOB.escape_pod_controllers)
+		if(!(controller.get_current_z_index() in z_indices))
+			continue
+		controller.arm()
+		++.
 
 /proc/launch_escape_pods(list/z_indices)
-	#warn impl
+	. = 0
+	for(var/datum/shuttle_controller/escape_pod/controller in GLOB.escape_pod_controllers)
+		if(!(controller.get_current_z_index() in z_indices))
+			continue
+		controller.launch()
+		++.
 
 /datum/shuttle_controller/escape_pod
 	tgui_module = "TGUIShuttleEscapePod"
@@ -19,10 +29,18 @@ GLOBAL_LIST_EMPTY(escape_pod_controllers)
 	/// launched?
 	var/launched = FALSE
 
+/datum/shuttle_controller/escape_pod/New(datum/shuttle/shuttle)
+	..()
+	GLOB.escape_pod_controllers += src
+
+/datum/shuttle_controller/escape_pod/Destroy()
+	GLOB.escape_pod_controllers -= src
+	return ..()
+
 /datum/shuttle_controller/escape_pod/proc/arm()
 	if(!armed)
 		return
-
+	armed = TRUE
 
 /datum/shuttle_controller/escape_pod/proc/launch()
 	arm()
@@ -30,7 +48,6 @@ GLOBAL_LIST_EMPTY(escape_pod_controllers)
 		return
 	launched = TRUE
 
-	// todo: better escape pod behavior
+	// todo: better escape pod behavior; this should start a proper transit cycle with no destination
 	// immediate move to transit as we wait for round-end.
-	shuttle.prepare_transit()
-	shuttle.dock(shuttle.transit_reservation.transit_dock, centered = TRUE)
+	shuttle.immediately_jump_to_transit()

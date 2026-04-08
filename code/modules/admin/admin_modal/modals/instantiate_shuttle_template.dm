@@ -7,7 +7,7 @@
 /datum/admin_modal/instantiate_shuttle_template
 	name = "Instantiate Shuttle Template"
 	tgui_interface = "InstantiateShuttleTemplate"
-	tgui_update = FALSE
+	tgui_autoupdate = FALSE
 
 	/// checks passed?
 	var/checks_passed = FALSE
@@ -24,6 +24,8 @@
 	var/chosen_overmap_unknown
 	/// * never carried over by ref to anything else; this ref will always be owned
 	var/datum/shuttle_descriptor/chosen_descriptor
+
+#warn ui
 
 #warn impl al;l
 

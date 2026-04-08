@@ -15,7 +15,7 @@
 /datum/admin_modal/load_map_sector
 	name = "Load Map Sector"
 	tgui_interface = "LoadMapSector"
-	tgui_update = FALSE
+	tgui_autoupdate = FALSE
 
 	//* buffer *//
 
