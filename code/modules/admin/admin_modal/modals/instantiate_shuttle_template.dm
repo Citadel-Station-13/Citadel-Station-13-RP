@@ -32,6 +32,8 @@
 	if(!MC_INITIALIZED())
 		loud_rejection("Cannot instantiate new shuttle templates while the server is initializing.")
 		return FALSE
+	if(!istype(template))
+		return FALSE
 	return ..()
 
 /datum/admin_modal/instantiate_shuttle_template/Destroy()

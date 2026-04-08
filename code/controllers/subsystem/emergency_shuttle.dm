@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	set_launch_countdown(5 MINUTES)
 	auto_recall_time = rand(world.time + 300, launch_time - 300)
 
-	GLOB.legacy_emergency_shuttle_controller.round_end_armed = TRUE
+	GLOB.global_ferry_escape_shuttle_controller.round_end_armed = TRUE
 
 	//reset the shuttle transit time if we need to
 	var/estimated_time = round(estimate_arrival_time()/60,1)
@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	set_launch_countdown(5 MINUTES)
 	auto_recall_time = rand(world.time + 300, launch_time - 300)
 
-	GLOB.legacy_emergency_shuttle_controller.round_end_armed = TRUE
+	GLOB.global_ferry_escape_shuttle_controller.round_end_armed = TRUE
 
 	//reset the shuttle transit time if we need to
 	var/estimated_time = round(estimate_arrival_time()/60,1)
@@ -189,13 +189,13 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 //returns 1 if the shuttle is docked at the station and waiting to leave
 /datum/controller/subsystem/emergencyshuttle/proc/waiting_to_leave()
-	if(GLOB.legacy_emergency_shuttle_controller.is_at_home())
+	if(GLOB.global_ferry_escape_shuttle_controller.is_at_home())
 		return 0	//not at station
-	return (wait_for_launch || !GLOB.legacy_emergency_shuttle_controller.get_transit_stage())
+	return (wait_for_launch || !GLOB.global_ferry_escape_shuttle_controller.get_transit_stage())
 
 //so we don't have emergencyshuttleshuttle.location everywhere
 /datum/controller/subsystem/emergencyshuttle/proc/location()
-	return GLOB.legacy_emergency_shuttle_controller.is_at_home()
+	return GLOB.global_ferry_escape_shuttle_controller.is_at_home()
 
 //returns the time left until the shuttle arrives at it's destination, in seconds
 /datum/controller/subsystem/emergencyshuttle/proc/estimate_arrival_time()

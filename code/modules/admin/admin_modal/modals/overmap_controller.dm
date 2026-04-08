@@ -9,6 +9,11 @@
 	if(!istype(target))
 		return FALSE
 	src.target = target
+	for(var/datum/admin_modal/overmap_controller/other in owner.admin_modals)
+		if(other == src)
+			continue
+		if(other.target == src.target)
+			return FALSE
 	return TRUE
 
 /datum/admin_modal/overmap_controller/on_ui_open(mob/user, datum/tgui/ui, embedded)
@@ -51,8 +56,11 @@
 	var/datum/admins/admin_holder = usr.client.holder
 
 	if(istype(target.location, /datum/overmap_location/shuttle))
+		var/datum/overmap_location/shuttle/casted_location = target.location
 		switch(action)
 			if("openShuttleController")
+				admin_holder.open_admin_modal(/datum/admin_modal/shuttle_controller, casted_location.shuttle)
+				return TRUE
 
 	switch(action)
 		if("setVel")

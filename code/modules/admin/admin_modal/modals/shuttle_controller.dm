@@ -8,6 +8,11 @@
 	if(!istype(target))
 		return FALSE
 	src.target = target
+	for(var/datum/admin_modal/shuttle_controller/other in owner.admin_modals)
+		if(other == src)
+			continue
+		if(other.target == src.target)
+			return FALSE
 	return TRUE
 
 /datum/admin_modal/shuttle_controller/on_ui_open(mob/user, datum/tgui/ui, embedded)

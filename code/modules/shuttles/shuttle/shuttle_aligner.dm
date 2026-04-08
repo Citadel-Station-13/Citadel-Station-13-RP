@@ -543,11 +543,9 @@
 	if(islist(location))
 		anchor_x = location[1]
 		anchor_y = location[2]
-		anchor_z = location[3]
 	else
 		anchor_x = location.x
 		anchor_y = location.y
-		anchor_z = location.z
 
 	// take a guess as to what these mean (lowerleft/upperright x/y)
 	var/real_llx

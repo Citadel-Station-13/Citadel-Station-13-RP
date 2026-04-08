@@ -15,6 +15,8 @@ VV_PROTECT_READONLY(/datum/admin_panel)
 	var/datum/admins/owner
 	/// TGUI ID; this will always be loaded from `tgui/interfaces/admin_panel` if possible.
 	var/tgui_interface
+	/// Auto update?
+	var/tgui_autoupdate = TRUE
 
 /datum/admin_panel/New(datum/admins/for_owner)
 	owner = for_owner
@@ -29,6 +31,7 @@ VV_PROTECT_READONLY(/datum/admin_panel)
 	if(!ui)
 		ui = new(user, src, "admin_panel/[tgui_interface]")
 		ui.open()
+		ui.set_autoupdate(tgui_autoupdate)
 
 /datum/admin_panel/ui_state()
 	return GLOB.ui_admin_panel_state

@@ -282,7 +282,8 @@
 			var/atom/movable/casted = target
 			return istype(casted) && casted.admin_resolve_narrate()
 		if(M_SHUTTLE)
-			#warn impl
+			var/datum/shuttle/casted = target
+			return istype(casted, /datum/shuttle)
 
 /datum/admin_modal/admin_narrate/proc/narrate()
 	if(!length(unsafe_raw_html_to_send))
