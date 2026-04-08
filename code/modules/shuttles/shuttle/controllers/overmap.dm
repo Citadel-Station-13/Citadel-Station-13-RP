@@ -16,6 +16,7 @@
 	#warn we need to make the entity and initialize_controller on us;
 	#warn we also need to make sure the entity is in the right place after we move to roundstart.
 	#warn alternatively when we finish a translation we immediately move our entity as needed.
+	create_entity()
 
 /datum/shuttle_controller/overmap/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -47,8 +48,39 @@
 	return run_transit_cycle(cycle)
 
 /datum/shuttle_controller/overmap/proc/resolve_freeflight_for_transit(datum/shuttle_transit_cycle/cycle)
+	// so technically, we want to be composition based, but,
+	// in reality, old code dictates we have to be one type
 	ASSERT(istype(entity, /obj/overmap/entity/visitable/ship/landable))
 	var/obj/overmap/entity/visitable/ship/landable/casted = entity
 	return casted.resolve_freeflight_for_transit()
+
+/datum/shuttle_controller/overmap/proc/create_entity()
+	ASSERT(isnull(entity))
+
+	// so technically, we want to be composition based, but,
+	// in reality, old code dictates we have to be one type
+	var/datum/overmap_location/shuttle/assembled_location = new(src)
+	entity = new /obj/overmap/entity/visitable/ship/landable(null, assembled_location)
+
+	descriptor.imprint_on_entity(entity)
+
+	var/atom/detected_location = detect_entity_location()
+
+	// it's fine to not detect *any* location; shuttles in nullspace (transit) are actually valid!
+	if(detected_location)
+		if(isturf(detected_location))
+			// on turf
+			entity.forceMove(detected_location)
+		else if(istype(detected_location, /obj/overmap/entity))
+			// docked inside something
+			entity.forceMove(detected_location)
+
+/**
+ * Attempt to detect where to emplace an entity on the overmap based on our current location.
+ *
+ * @return null, turf, or another overmap entity
+ */
+/datum/shuttle_controller/overmap/proc/detect_entity_location()
+	#warn impl
 
 #warn impl all

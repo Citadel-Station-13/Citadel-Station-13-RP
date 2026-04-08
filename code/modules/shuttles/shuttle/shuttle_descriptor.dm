@@ -109,3 +109,6 @@
 		src.overmap_legacy_scan_name = other.overmap_legacy_scan_name
 	if(!isnull(other.overmap_legacy_scan_desc))
 		src.overmap_legacy_scan_desc = other.overmap_legacy_scan_desc
+
+/datum/shuttle_descriptor/proc/imprint_on_entity(obj/overmap/entity/entity)
+	#warn impl

@@ -1,10 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-/datum/turf_reservation/transit
+/datum/map_reservation/transit
 	var/obj/shuttle_dock/transit/transit_dock
 
-/datum/turf_reservation/transit/proc/prepare_dock(datum/shuttle/shuttle, direction)
+/datum/map_reservation/transit/proc/prepare_dock(datum/shuttle/shuttle, direction)
 	ASSERT(!transit_dock)
 
 	#warn impl / replace
