@@ -143,6 +143,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 	wait_for_launch = 0
 	GLOB.global_ferry_escape_shuttle_controller.transit_towards_home(0 SECONDS)
+	GLOB.global_ferry_escape_shuttle_controller.round_end_armed = FALSE
 
 	if (evac)
 		emergency_shuttle_recalled.Announce(
