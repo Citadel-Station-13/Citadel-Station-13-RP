@@ -1867,7 +1867,6 @@
 #include "code\game\objects\items\circuitboards\computer\computer.dm"
 #include "code\game\objects\items\circuitboards\computer\misc.dm"
 #include "code\game\objects\items\circuitboards\computer\research.dm"
-#include "code\game\objects\items\circuitboards\computer\shuttle.dm"
 #include "code\game\objects\items\circuitboards\computer\supply.dm"
 #include "code\game\objects\items\circuitboards\computer\telecomms.dm"
 #include "code\game\objects\items\circuitboards\machinery\_machine.dm"
