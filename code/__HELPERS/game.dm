@@ -12,8 +12,6 @@
 		max_z = max(z, max_z)
 	for(var/z in (LEGACY_MAP_DATUM).admin_levels)
 		max_z = max(z, max_z)
-	for(var/z in (LEGACY_MAP_DATUM).player_levels)
-		max_z = max(z, max_z)
 	return max_z
 
 /proc/get_area(atom/A)
@@ -89,9 +87,6 @@
 
 /proc/isNotStationLevel(level)
 	return !isStationLevel(level)
-
-/proc/isPlayerLevel(level)
-	return level in (LEGACY_MAP_DATUM).player_levels
 
 /proc/isAdminLevel(level)
 	return level in (LEGACY_MAP_DATUM).admin_levels

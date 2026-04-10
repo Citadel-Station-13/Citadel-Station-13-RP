@@ -6,6 +6,17 @@ SUBSYSTEM_DEF(planets)
 	subsystem_flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
+	/**
+	 * Global mutex used by planet code to ensure no more than one
+	 * is updating sunlight at the same time.
+	 * * Because BYOND is fundamentally single threaded,
+	 *   trying to do sunlight update in parallel would just
+	 *   make it more obvious to the player that it's slow and end up
+	 *   wasting CPU via context switching.
+	 * * This is only checked in the subsystem.
+	 */
+	var/static/sun_lighting_update_mutex = FALSE
+
 	var/static/list/new_outdoor_turfs = list()
 	var/static/list/new_outdoor_walls = list()
 
@@ -14,7 +25,6 @@ SUBSYSTEM_DEF(planets)
 
 	var/static/list/currentrun = list()
 
-	var/static/list/needs_sun_update = list()
 	var/static/list/needs_temp_update = list()
 
 /datum/controller/subsystem/planets/Initialize(timeofday)
@@ -101,7 +111,7 @@ SUBSYSTEM_DEF(planets)
 		return
 	var/list/curr = new_outdoor_turfs
 	while(curr.len)
-		var/turf/simulated/S = curr[curr.len]
+		var/turf/unsimulated/wall/planetary/S = curr[curr.len]
 		S.turf_flags &= ~TURF_PLANET_QUEUED
 		S.turf_flags |= TURF_PLANET_REGISTERED
 		curr.len--
@@ -141,15 +151,6 @@ SUBSYSTEM_DEF(planets)
 	if(!resumed)
 		src.currentrun = planets.Copy()
 
-	var/list/needs_sun_update = src.needs_sun_update
-	while(needs_sun_update.len)
-		var/datum/planet/P = needs_sun_update[needs_sun_update.len]
-		needs_sun_update.len--
-		P.update_sunlight()
-
-		if(MC_TICK_CHECK)
-			return
-
 	var/list/needs_temp_update = src.needs_temp_update
 	while(needs_temp_update.len)
 		var/datum/planet/P = needs_temp_update[needs_temp_update.len]
@@ -164,12 +165,14 @@ SUBSYSTEM_DEF(planets)
 		var/datum/planet/P = currentrun[currentrun.len]
 		currentrun.len--
 
-		P.process(dt, last_fire)
+		// run
+		// this is not very subsystem of me but i don't care man this fixes the
+		// bug where the server lags to a halt because this is
+		// still better than the old behavior
+		if(P.sun_lighting_update_dirty && !sun_lighting_update_mutex)
+			run_sun_update(P)
 
-		//Sun light needs changing
-		if(P.needs_work & PLANET_PROCESS_SUN)
-			P.needs_work &= ~PLANET_PROCESS_SUN
-			needs_sun_update |= P
+		P.process(dt, last_fire)
 
 		//Temperature needs updating
 		if(P.needs_work & PLANET_PROCESS_TEMP)
@@ -184,3 +187,14 @@ SUBSYSTEM_DEF(planets)
 	for(var/turf/T in P.planet_walls)
 		T.sector_set_temperature(P.weather_holder.temperature)
 		CHECK_TICK
+
+/datum/controller/subsystem/planets/proc/run_sun_update(datum/planet/planet)
+	spawn(0)
+		run_sun_update_blocking(planet)
+
+/datum/controller/subsystem/planets/proc/run_sun_update_blocking(datum/planet/planet)
+	if(sun_lighting_update_mutex)
+		return
+	sun_lighting_update_mutex = TRUE
+	planet.update_sun_lighting()
+	sun_lighting_update_mutex = FALSE

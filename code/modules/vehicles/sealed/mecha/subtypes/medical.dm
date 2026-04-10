@@ -20,7 +20,7 @@
 /obj/vehicle/sealed/mecha/medical/Initialize(mapload)
 	. = ..()
 	var/turf/T = get_turf(src)
-	if(isPlayerLevel(T.z))
+	if(isStationLevel(T.z))
 		new /obj/item/vehicle_tracking_beacon(src)
 
 /*	// One horrific bastardization of glorious inheritence dead. A billion to go. ~Mech

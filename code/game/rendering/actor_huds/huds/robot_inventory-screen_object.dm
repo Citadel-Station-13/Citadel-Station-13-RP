@@ -154,6 +154,7 @@
 	name = "drawer"
 	icon = 'icons/screen/hud/styles/common/storage.dmi'
 	icon_state = "block"
+	vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
 	mouse_opacity = MOUSE_OPACITY_ICON
 	var/atom/movable/screen/actor_hud/robot_inventory/robot_drawer_backplate/backplate
 	var/obj/item/masquarading_as

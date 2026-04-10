@@ -12,6 +12,7 @@
 	icon_state = "computer"
 	/// allow clicking through computers because they are often used in a way that blocks a corner tile
 	pass_flags = /obj/machinery::pass_flags | ATOM_PASS_CLICK
+	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -87,7 +88,7 @@
 	add_overlay(to_add_overlays)
 
 /obj/machinery/computer/power_change()
-	..()
+	. = ..()
 	update_icon()
 	if(machine_stat & NOPOWER)
 		set_light(0)
@@ -113,16 +114,4 @@
 /obj/machinery/computer/attackby(obj/item/I, mob/living/user, params, clickchain_flags, damage_multiplier)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
-	else
-		if(istype(I,/obj/item/gripper)) //Behold, Grippers and their horribleness. If ..() is called by any computers' attackby() now or in the future, this should let grippers work with them appropriately.
-			var/obj/item/gripper/B = I	//B, for Borg.
-			if(!B.get_item())
-				to_chat(user, "\The [B] is not holding anything.")
-				return
-			else
-				var/B_held = B.get_item()
-				to_chat(user, "You use \the [B] to use \the [B_held] with \the [src].")
-				playsound(src, "keyboard", 100, 1, 0)
-				attackby(B.get_item(), user, params, clickchain_flags, damage_multiplier)
-			return
-		return ..()
+	return ..()

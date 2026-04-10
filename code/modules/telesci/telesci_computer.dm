@@ -105,8 +105,9 @@
 			data["tempMsg"] = "Telepad undergoing physical maintenance operations."
 
 		data["sectorOptions"] = list()
-		for(var/z in (LEGACY_MAP_DATUM).player_levels)
-			data["sectorOptions"] += z
+		for(var/datum/map_level/m in SSmapping.ordered_levels)
+			if(is_valid_z(m.z_index))
+				data["sectorOptions"] += m.z_index
 
 		if(last_tele_data)
 			data["lastTeleData"] = list()
@@ -289,7 +290,7 @@
 		telefail()
 		temp_msg = "ERROR!<BR>No distance selected!"
 		return
-	if(!(z_co in (LEGACY_MAP_DATUM).player_levels))
+	if(!is_valid_z(z_co))
 		telefail()
 		temp_msg = "ERROR! Sector is outside known time and space!"
 		return
@@ -306,6 +307,9 @@
 		I.forceMove(src.loc)
 		crystals -= I
 	distance = 0
+
+/obj/machinery/computer/telescience/proc/is_valid_z(var/z)
+	return (LEGACY_MAP_DATUM).levels[z] && !SSmapping.level_has_trait(z, ZTRAIT_ADMIN)
 
 /obj/machinery/computer/telescience/Topic(href, href_list)
 	if(..())
@@ -330,7 +334,7 @@
 
 	if(href_list["setz"])
 		var/new_z = text2num(href_list["setz"])
-		if(new_z in (LEGACY_MAP_DATUM).player_levels)
+		if(is_valid_z(new_z))
 			z_co = new_z
 
 	if(href_list["ejectGPS"])
