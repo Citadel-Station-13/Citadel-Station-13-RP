@@ -104,7 +104,7 @@
 	/// lower-left aligned preview overlay; used for shuttle dockers and similar
 	/// the generated preview will be **north** facing
 	/// turn it via transform matrices only!
-	var/mutable_appearance/preview_overlay
+	var/atom/movable/render/shuttle_preview/preview_overlay
 	/// generated preview height (Y axis) in tiles
 	var/preview_height
 	/// generated preview width (X axis) in tiles
@@ -132,7 +132,7 @@
 	/// Shuttle is in transit
 	var/in_transit = FALSE
 	/// Current transit reservation
-	var/datum/turf_reservation/transit/transit_reservation
+	var/datum/map_reservation/transit/transit_reservation
 
 	//* legacy stuff *//
 	// todo: this should be a default, and engine/takeoff type (?) can override
@@ -187,7 +187,7 @@
  *
  * **Extremely dangerous proc. Don't call it unless you know what you're doing.**
  */
-/datum/shuttle/proc/before_bounds_init(datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+/datum/shuttle/proc/before_bounds_init(datum/map_reservation/from_reservation, datum/shuttle_template/from_template)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/list/area/shuttle/area_cache = list()
 	areas = list()
@@ -218,6 +218,7 @@
 			/obj/shuttle_aligner/master,
 			/obj/shuttle_aligner/port,
 		))
+		var/list/found_port_ids = list()
 		for(var/atom/movable/AM as anything in scanning.contents)
 			if(!cared_about_typecache[AM.type])
 				continue
@@ -230,20 +231,22 @@
 				ports += port
 				var/found_primary = FALSE
 				if(port.primary_port)
-					if(!found_primary)
-						port_primary = port
-					else
+					if(found_primary)
 						stack_trace("duplicate primary port during init scan at [COORD(port)] for shuttle([id]) ([template_id])")
+					else
+						found_primary = TRUE
 				if(!port.port_id)
 					var/hex
+					var/safety = 100
 					do
 						hex = num2hex(rand(1, 65535), 4)
+						safety--
+						if(safety <= 0)
+							CRASH("ran out of hexes for port ids during init scan at [COORD(port)] for shuttle([id]) ([template_id])")
 					while(port_lookup[hex])
-				if(port_lookup[port.port_id])
-					stack_trace("id collision on port id [port.port_id] (mangled) at [COORD(port)] for shuttle([id]) ([template_id])")
-					port.port_id = null
-				else
-					port_lookup[port.port_id] = port
+				if(found_port_ids[port.port_id])
+					stack_trace("duplicate port id during init scan at [COORD(port)] for shuttle([id]) ([template_id])")
+				found_port_ids[port.port_id] = TRUE
 
 	// collect areas
 	for(var/area/scanning in area_cache)
@@ -262,7 +265,7 @@
  *
  * **Extremely dangerous proc. Don't call / override it unless you know what you're doing.**
  */
-/datum/shuttle/proc/after_bounds_init(datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+/datum/shuttle/proc/after_bounds_init(datum/map_reservation/from_reservation, datum/shuttle_template/from_template)
 	return
 
 /**
@@ -429,7 +432,7 @@
 
 	// fire premove hook
 	var/datum/event_args/shuttle/translation/pre_move/pre_move_event = new(src, old_anchor_location, new_anchor_location)
-	fire_hooks(pre_move_event)
+	dispatch_event_to_hooks(pre_move_event)
 
 	// move ports and anchors
 	anchor.abstract_move(locate(new_anchor_location[1], new_anchor_location[2], new_anchor_location[3]))
@@ -542,7 +545,7 @@
 
 	// fire postmove hook
 	var/datum/event_args/shuttle/translation/post_move/post_move_event = new(src, old_anchor_location, new_anchor_location)
-	fire_hooks(post_move_event)
+	dispatch_event_to_hooks(post_move_event)
 
 	// -- Finished -- //
 
@@ -552,17 +555,18 @@
  * Fires an event off to all hooks
  * * Does not fire events off to our dock!
  */
-/datum/shuttle/proc/fire_hooks(datum/event_args/shuttle/event)
+/datum/shuttle/proc/dispatch_event_to_hooks(datum/event_args/shuttle/event)
 	SHOULD_NOT_SLEEP(TRUE)
 	for(var/datum/shuttle_hook/hook as anything in hooks)
 		hook.on_event(event)
 	for(var/obj/shuttle_aligner/port/port as anything in ports)
-		port.fire_hooks(event)
+		port.dispatch_event_to_hooks(event)
 
 //* Location *//
 
 /**
  * Gets our overmap entity, if any
+ * * This is just a quick helper to avoid needing to cast the controller by the caller.
  */
 /datum/shuttle/proc/get_overmap_entity()
 	if(!istype(controller, /datum/shuttle_controller/overmap))
@@ -574,14 +578,17 @@
 
 /**
  * Get preview outline for docking and others.
+ *
+ * @return an object that may be used in overlays or vis contents, and should not be modified.
  */
 /datum/shuttle/proc/get_preview(regenerate)
+	#warn center properly
 	if(!isnull(preview_overlay) && !regenerate)
 		return preview_overlay
 
 	preview_generated_at = world.time
 
-	preview_overlay = new /mutable_appearance
+	preview_overlay = new /atom/movable/render
 	preview_overlay.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	preview_overlay.icon = 'icons/system/blank_32x32.dmi'
 	preview_overlay.icon_state = ""

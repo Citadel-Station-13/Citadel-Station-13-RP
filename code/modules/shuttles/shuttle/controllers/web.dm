@@ -20,7 +20,7 @@
 // /datum/shuttle_controller/web/initialize(datum/shuttle/shuttle)
 // 	. = ..()
 // 	if(ispath(map) || istext(map))
-// 		map = SSshuttles.fetch_or_load_shuttle_web_map_type(map)
+// 		map = SSshuttle.fetch_or_load_shuttle_web_map_type(map)
 
 // /datum/shuttle_controller/web/ui_data(mob/user, datum/tgui/ui)
 // 	. = ..()
@@ -102,7 +102,7 @@
 // 	ASSERT(istext(id))
 // 	if(isnull(auto_join_map_type))
 // 		return
-// 	var/datum/shuttle_web_map/map = SSshuttles.fetch_or_load_shuttle_web_map_type(auto_join_map_type)
+// 	var/datum/shuttle_web_map/map = SSshuttle.fetch_or_load_shuttle_web_map_type(auto_join_map_type)
 // 	map.auto_register_node(src)
 
 // /datum/shuttle_web_node/Destroy()

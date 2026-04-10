@@ -84,3 +84,7 @@
 	#warn impl
 
 #warn impl all
+
+/datum/shuttle_controller/overmap/manual_landing_levels()
+	. = ..()
+	#warn impl nearby entities?

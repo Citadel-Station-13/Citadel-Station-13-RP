@@ -75,7 +75,7 @@
 	return isfile(path)? path : file(path)
 
 /**
- * Do not directly use. Use create_shuttle() on SSshuttless!
+ * Do not directly use. Use create_shuttle() on SSshuttles!
  * * Automatically registers the shuttle.
  */
 /datum/shuttle_template/proc/instance(datum/shuttle_descriptor/merge_in_descriptor, list/datum/map_injection/map_injections)
@@ -89,13 +89,13 @@
 
 	var/datum/shuttle/instance = new shuttle_type
 
-	instance.id = SSshuttles.generate_shuttle_id()
+	instance.id = SSshuttle.generate_shuttle_id()
 	instance.descriptor = instance_descriptor()
 	if(merge_in_descriptor)
 		instance.descriptor.merge_from(merge_in_descriptor)
 	instance.template_id = id
 
-	SSshuttles.register_shuttle(instance)
+	SSshuttle.register_shuttle(instance)
 
 	var/width = parsed_map.width
 	var/height = parsed_map.height

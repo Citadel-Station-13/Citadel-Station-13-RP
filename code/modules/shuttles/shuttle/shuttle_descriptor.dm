@@ -32,17 +32,17 @@
 	var/jump_move_time = 5 SECONDS
 
 	//* Overmaps *//
-	#warn impl all
 	var/overmap_icon
 	var/overmap_icon_state
 	var/overmap_icon_color = "#4cad73" //Greyish green
-	#warn impl
+	var/overmap_bound_width = 32
+	var/overmap_bound_height = 32
+
 	// legacy because sensor update will change how this works
 	var/overmap_legacy_start_unknown = TRUE
 	// Legacy because sensor update will get rid of hard-coded names.
 	var/overmap_legacy_name
 	// Legacy because sensor update will get rid of hard-coded scan results.
-	#warn is this desc?
 	var/overmap_legacy_desc
 	// Legacy because sensor update will get rid of hard-coded scan results
 	// * defaults to name
@@ -111,4 +111,28 @@
 		src.overmap_legacy_scan_desc = other.overmap_legacy_scan_desc
 
 /datum/shuttle_descriptor/proc/imprint_on_entity(obj/overmap/entity/entity)
-	#warn impl
+	entity.icon = src.overmap_icon
+	entity.icon_state = src.overmap_icon_state
+	entity.color = src.overmap_icon_color
+
+	entity.bound_width = src.overmap_bound_width
+	entity.bound_height = src.overmap_bound_height
+
+	var/measured_icon_width = entity.icon.Width()
+	var/measured_icon_height = entity.icon.Height()
+
+	if(measured_icon_width != entity.bound_width)
+		entity.icon_w = -(measured_icon_width - entity.bound_width) / 2
+	if(measured_icon_height != entity.bound_height)
+		entity.icon_z = -(measured_icon_height - entity.bound_height) / 2
+
+	entity.name = src.overmap_legacy_name
+	entity.desc = src.overmap_legacy_desc
+
+	if(istype(entity, /obj/overmap/entity/visitable))
+		var/obj/overmap/entity/visitable/visitable = entity
+		visitable.scanner_name = src.overmap_legacy_scan_name
+		visitable.scanner_desc = src.overmap_legacy_scan_desc
+		visitable.unknown_name = src.overmap_legacy_name
+		visitable.unknown_desc = src.overmap_legacy_desc
+		visitable.known = !src.overmap_legacy_start_unknown

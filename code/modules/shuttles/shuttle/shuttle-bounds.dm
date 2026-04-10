@@ -1,6 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
+#warn rework this file, need clearer soft / hard / error out / warning out's
+#warn use max() for _BOUNDING_* returns
+
 /**
  * check bounding boxes
  *
@@ -38,7 +41,7 @@
 		return SHUTTLE_DOCKING_BOUNDING_HARD_FAULT
 	if(hard_checks_only)
 		return SHUTTLE_DOCKING_BOUNDING_CLEAR
-	for(var/obj/shuttle_dock/enemy_dock in SSshuttles.docks_by_level[location.z])
+	for(var/obj/shuttle_dock/enemy_dock in SSshuttle.docks_by_level[location.z])
 		if(enemy_dock == docking_at)
 			continue
 		if(!enemy_dock.should_protect_bounding_box())

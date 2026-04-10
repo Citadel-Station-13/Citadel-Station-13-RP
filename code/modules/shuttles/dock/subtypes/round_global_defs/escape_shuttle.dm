@@ -14,23 +14,22 @@ DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(escape_shuttle, /escape_shuttle, "Escape 
 
 #warn impl
 
-/datum/shuttle_controller/ferry/round_global/escape_shuttle
-	var/round_end_armed = FALSE
-
-/datum/shuttle_controller/ferry/round_global/escape_shuttle/on_transit_begin(obj/shuttle_dock/dock, datum/shuttle_transit_cycle/cycle, redirected)
+/datum/shuttle_controller/ferry/round_global/escape_shuttle/on_begin_transit_to_away(datum/shuttle_transit_cycle/cycle, redirected)
 	. = ..()
-
 	if(!round_end_armed)
 		return
-
 	SSemergencyshuttle.launch_time = world.time
+
+/datum/shuttle_controller/ferry/round_global/escape_shuttle/on_end_transit_to_away(datum/shuttle_transit_cycle/cycle, status)
+	. = ..()
+	if(!round_end_armed)
+		return
+	SSemergencyshuttle.shuttle_arrived()
 
 /datum/shuttle_controller/ferry/round_global/escape_shuttle/on_begin_transit_to_home(datum/shuttle_transit_cycle/cycle, redirected)
 	. = ..()
-
 	if(!round_end_armed)
 		return
-
 	spawn(0)
 		SSemergencyshuttle.departed = 1
 		var/estimated_time = round(SSemergencyshuttle.estimate_arrival_time()/60,1)
@@ -39,14 +38,6 @@ DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(escape_shuttle, /escape_shuttle, "Escape 
 			priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 		else
 			priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
-
-// /datum/shuttle_controller/ferry/round_global/escape_shuttle/on_end_transit_to_away(datum/shuttle_transit_cycle/cycle, status)
-// 	. = ..()
-
-// 	if(!round_end_armed)
-// 		return
-
-// 	SSemergencyshuttle.shuttle_arrived()
 
 // /datum/shuttle_controller/ferry/round_global/escape_shuttle/on_end_transit_to_home(datum/shuttle_transit_cycle/cycle, status)
 // 	. = ..()

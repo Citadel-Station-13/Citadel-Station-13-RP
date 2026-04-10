@@ -70,7 +70,7 @@
 /**
  * @return turf reservation someone's in, or null if they're not in a reservation
  */
-/datum/controller/subsystem/mapping/proc/get_turf_reservation(atom/where)
+/datum/controller/subsystem/mapping/proc/get_map_reservation(atom/where)
 	return reservation_spatial_lookups[get_z(where)]?[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]
 
 /area/reservation_unused

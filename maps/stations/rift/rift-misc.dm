@@ -44,7 +44,7 @@
 	//For landables, we need to see if their shuttle is cloaked
 	if(istype(AM, /obj/overmap/entity/visitable/ship/landable))
 		// var/obj/overmap/entity/visitable/ship/landable/SL = AM //Phew
-		// var/datum/shuttle/autodock/multi/shuttle = SSshuttles.shuttles[SL.shuttle]
+		// var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
 		// if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
 		// 	SSlegacy_atc.msg(message)
 		SSlegacy_atc.msg(message)

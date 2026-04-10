@@ -60,7 +60,7 @@
 
 /obj/machinery/ion_engine/Destroy()
 	QDEL_NULL(controller)
-	. = ..()
+	return ..()
 
 /obj/machinery/ion_engine/proc/link_to_ship()
 	var/obj/overmap/entity/visitable/ship/our_entity = SSovermaps.get_overmap_entity(src)

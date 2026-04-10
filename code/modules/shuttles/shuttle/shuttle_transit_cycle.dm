@@ -10,8 +10,6 @@
 	var/datum/shuttle_transit_stage/stage
 	/// behavior flags
 	var/transit_flags = NONE
-	/// the controller we're executing on
-	var/datum/shuttle_controller/controller
 	/// our shuttle
 	var/datum/shuttle/shuttle
 	/// running?

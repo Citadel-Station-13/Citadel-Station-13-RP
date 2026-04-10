@@ -14,7 +14,7 @@
 	/// allow moves
 	var/tmp/currently_moving = FALSE
 
-/obj/shuttle_aligner/shuttle_aligner/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/turf_reservation/from_reservation, datum/shuttle_template/from_template)
+/obj/shuttle_aligner/shuttle_aligner/proc/before_bounds_initializing(datum/shuttle/from_shuttle, datum/map_reservation/from_reservation, datum/shuttle_template/from_template)
 	shuttle = from_shuttle
 
 /obj/shuttle_aligner/Destroy(force)
@@ -30,11 +30,24 @@
 /obj/shuttle_aligner/proc/aabb_ordered_turfs_here()
 	return aabb_ordered_turfs_at(loc)
 
-#warn can we default these to aligning iwth anchor?
 /**
  * @return turfs in square box, unfiltered
  */
 /obj/shuttle_aligner/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
+	CRASH("base function called")
+
+/**
+ * checks if we'll clip a zlevel edge or another shuttle at a location
+ *
+ * * this is a hard clip check, if this returns null you CANNOT MOVE.
+ *
+ * @params
+ * * location - turf or list(x,y,z)
+ * * direction - which way we should be facing when we're done
+ *
+ * @return null if we will clip, list(ordered turfs) if we won't clip
+ */
+/obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
 	CRASH("base function called")
 
 /**
@@ -49,6 +62,27 @@
  */
 /obj/shuttle_aligner/proc/overall_height(direction)
 	CRASH("base function called")
+
+/**
+ * get rotated coordinates and direction when moved with another location on the shuttle
+ *
+ * @params
+ * * old_coords - list(x,y,z)
+ * * new_coords - list(x,y,z)
+ * * old_dir - old direction
+ * * new_dir - new direction
+ *
+ * @return list(x, y, z, dir)
+ */
+/obj/shuttle_aligner/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
+	return calculate_entity_motion_with_respect_to_moving_point(
+		list(src.x, src.y, src.z),
+		src.dir,
+		old_coords,
+		new_coords,
+		old_dir,
+		new_dir,
+	)
 
 //* Regular Movement *//
 
@@ -783,105 +817,68 @@
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
 
-/obj/shuttle_aligner/port/proc/fire_hooks(datum/event_args/shuttle/event)
+/obj/shuttle_aligner/port/proc/dispatch_event_to_hooks(datum/event_args/shuttle/event)
 	SHOULD_NOT_SLEEP(TRUE)
 	for(var/datum/shuttle_hook/hook as anything in hooks)
 		hook.on_event(event)
 
-// /obj/shuttle_aligner/port/proc/overall_width(direction)
-// 	return shuttle.anchor.overall_width(direction)
+/obj/shuttle_aligner/port/overall_width(direction)
+	var/turn_angle = dir2angle(src.dir) - dir2angle(direction)
+	return shuttle.anchor.overall_width(turn(shuttle.anchor.dir, turn_angle))
 
-// /obj/shuttle_aligner/port/proc/overall_height(direction)
-// 	return shuttle.anchor.overall_height(direction)
+/obj/shuttle_aligner/port/overall_height(direction)
+	var/turn_angle = dir2angle(src.dir) - dir2angle(direction)
+	return shuttle.anchor.overall_height(turn(shuttle.anchor.dir, turn_angle))
 
 #warn below, two functions above
 
-/**
- * get rotated coordinates and direction when moved with another location on the shuttle
- *
- * @params
- * * old_coords - list(x,y,z)
- * * new_coords - list(x,y,z)
- * * old_dir - old direction
- * * new_dir - new direction
- *
- * @return list(x, y, z, dir)
- */
-// /obj/shuttle_aligner/port/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
-// 	return calculate_entity_motion_with_respect_to_moving_point(
-// 		list(src.x, src.y, src.z),
-// 		src.dir,
-// 		old_coords,
-// 		new_coords,
-// 		old_dir,
-// 		new_dir,
-// 	)
+/obj/shuttle_aligner/port/aabb_ordered_turfs_at(turf/location, direction = src.dir)
+	// unpack
+	var/new_x
+	var/new_y
+	var/new_z
 
-/**
- * @params
- * * location - turf or list(x,y,z)
- * * direction - which way we should be facing when we're done
- *
- * @return turfs in square box, unfiltered. turfs that don't exist will be nulls.
- */
-// /obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at(turf/location, direction = src.dir)
-// 	// unpack
-// 	var/new_x
-// 	var/new_y
-// 	var/new_z
+	if(islist(location))
+		new_x = location[1]
+		new_y = location[2]
+		new_z = location[3]
+	else
+		new_x = location.x
+		new_y = location.y
+		new_z = location.z
 
-// 	if(islist(location))
-// 		new_x = location[1]
-// 		new_y = location[2]
-// 		new_z = location[3]
-// 	else
-// 		new_x = location.x
-// 		new_y = location.y
-// 		new_z = location.z
+	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
+		list(src.x, src.y, src.z),
+		list(new_x, new_y, new_z),
+		src.dir,
+		direction,
+	)
 
-// 	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
-// 		list(src.x, src.y, src.z),
-// 		list(new_x, new_y, new_z),
-// 		src.dir,
-// 		direction,
-// 	)
+	return shuttle.anchor.aabb_ordered_turfs_at(anchor_motion, anchor_motion[4])
 
-// 	return shuttle.anchor.aabb_ordered_turfs_at(anchor_motion, anchor_motion[4])
+/obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
+	// unpack
+	var/new_x
+	var/new_y
+	var/new_z
 
-/**
- * checks if we'll clip a zlevel edge or another shuttle at a location
- *
- * * this is a hard clip check, if this returns null you CANNOT MOVE.
- *
- * @params
- * * location - turf or list(x,y,z)
- * * direction - which way we should be facing when we're done
- *
- * @return null if we will clip, list(ordered turfs) if we won't clip
- */
-// /obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
-// 	// unpack
-// 	var/new_x
-// 	var/new_y
-// 	var/new_z
+	if(islist(location))
+		new_x = location[1]
+		new_y = location[2]
+		new_z = location[3]
+	else
+		new_x = location.x
+		new_y = location.y
+		new_z = location.z
 
-// 	if(islist(location))
-// 		new_x = location[1]
-// 		new_y = location[2]
-// 		new_z = location[3]
-// 	else
-// 		new_x = location.x
-// 		new_y = location.y
-// 		new_z = location.z
+	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
+		list(src.x, src.y, src.z),
+		list(new_x, new_y, new_z),
+		src.dir,
+		direction,
+	)
 
-// 	var/list/anchor_motion = shuttle.anchor.calculate_motion_with_respect_to(
-// 		list(src.x, src.y, src.z),
-// 		list(new_x, new_y, new_z),
-// 		src.dir,
-// 		direction,
-// 	)
-
-// 	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
+	return shuttle.anchor.aabb_ordered_turfs_at_and_clip_check(anchor_motion, anchor_motion[4])
 
 /**
  * can we form an airtight seal at a given dock?

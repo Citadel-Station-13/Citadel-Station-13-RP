@@ -40,6 +40,9 @@
 	/// controller ref
 	/// * Nullable
 	var/datum/shuttle_controller/controller
+	/// operation
+	/// * Nullable
+	var/datum/shuttle_operation/operation
 	/// transit stage
 	/// * Nullable
 	var/datum/shuttle_transit_stage/stage
@@ -50,15 +53,17 @@
 	/// * Nullable
 	var/obj/shuttle_aligner/port/port
 
-/datum/event_args/shuttle/dock/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage, obj/shuttle_dock/dock, obj/shuttle_aligner/port/port)
+/datum/event_args/shuttle/dock/New(datum/shuttle/shuttle, datum/shuttle_operation/operation, datum/shuttle_transit_stage/stage, obj/shuttle_dock/dock, obj/shuttle_aligner/port/port)
 	..()
 	src.controller = shuttle.controller
+	src.operation = operation
 	src.dock = dock
 	src.port = port
 	src.stage = stage
 
 /datum/event_args/shuttle/dock/Destroy()
 	controller = null
+	operation = null
 	dock = null
 	port = null
 	stage = null
@@ -129,18 +134,23 @@
  */
 /datum/event_args/shuttle/traversal
 	/// controller ref
+	/// * Nullable
 	var/datum/shuttle_controller/controller
+	/// Operation
 	/// * Nullable
+	var/datum/shuttle_operation/operation
 	/// transit stage
-	var/datum/shuttle_transit_stage/stage
 	/// * Nullable
+	var/datum/shuttle_transit_stage/stage
 
-/datum/event_args/shuttle/traversal/New(datum/shuttle/shuttle, datum/shuttle_transit_stage/stage)
+/datum/event_args/shuttle/traversal/New(datum/shuttle/shuttle, datum/shuttle_operation/operation, datum/shuttle_transit_stage/stage)
 	..()
 	src.controller = shuttle.controller
+	src.operation = operation
 	src.stage = stage
 
 /datum/event_args/shuttle/traversal/Destroy()
+	operation = null
 	controller = null
 	stage = null
 	return ..()

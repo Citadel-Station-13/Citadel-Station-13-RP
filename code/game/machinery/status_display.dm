@@ -213,7 +213,7 @@
 	return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
 
 /obj/machinery/status_display/proc/get_supply_shuttle_timer()
-	var/datum/shuttle_controller/ferry_pair/controller = GLOB.global_ferry_supply_shuttle_controller
+	var/datum/shuttle_controller/ferry/round_global/supply_shuttle/controller = GLOB.global_ferry_supply_shuttle_controller
 	if(!controller)
 		return "Error"
 

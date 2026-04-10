@@ -427,7 +427,7 @@ var/list/civilian_cartridges = list(
 
 	if(mode==47)
 		var/supplyData[0]
-		var/datum/shuttle_controller/ferry/cargo/shuttle = GLOB.legacy_cargo_shuttle_controller
+		var/datum/shuttle_controller/ferry/round_global/supply_shuttle = GLOB.global_ferry_supply_shuttle_controller
 		if (shuttle)
 			supplyData["shuttle_moving"] = !!shuttle.get_transit_stage()
 			supplyData["shuttle_eta"] = shuttle.legacy_eta_in_minutes()

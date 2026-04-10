@@ -220,7 +220,7 @@
 				var/mob/maybe_viewing = C.mob
 				var/area/their_area = get_area(maybe_viewing)
 				if(istype(their_area, /area/shuttle))
-					var/area/shuttle_area = their_area
+					var/area/shuttle/shuttle_area = their_area
 					if(shuttle_area.shuttle == resolved)
 						. += maybe_viewing
 

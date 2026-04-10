@@ -66,6 +66,19 @@
 
 	return TRUE
 
+/datum/shuttle/proc/default_transit_movable_cleaner(atom/movable/AM)
+	var/obliterate = TRUE
+	if(AM.movable_flags & MOVABLE_NO_LOST_IN_SPACE)
+		obliterate = FALSE
+
+	if(obliterate)
+		qdel(AM)
+		return
+
+	// find somewhere to throw them. given this is 'default' transit movable cleaner,
+	// this is already kind of a fail-state.
+	#warn impl
+
 /**
  * Immediately jump to transit, skipping any sort of docking or takeoff process.
  */

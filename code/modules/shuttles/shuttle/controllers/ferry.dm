@@ -72,13 +72,13 @@
  * only called if we're doing a default, non-manual docking with home dock!
  */
 /datum/shuttle_controller/ferry/proc/on_end_transit_to_home(datum/shuttle_transit_cycle/cycle, status)
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * only called if we're doing a default, non-manual docking with away dock!
  */
 /datum/shuttle_controller/ferry/proc/on_end_transit_to_away(datum/shuttle_transit_cycle/cycle, status)
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /datum/shuttle_controller/ferry/on_transit_begin(datum/shuttle_transit_cycle/cycle, redirected)
 	. = ..()
@@ -91,13 +91,13 @@
  * only called if we're doing a default, non-manual docking with home dock!
  */
 /datum/shuttle_controller/ferry/proc/on_begin_transit_to_home(datum/shuttle_transit_cycle/cycle, redirected)
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * only called if we're doing a default, non-manual docking with away dock!
  */
 /datum/shuttle_controller/ferry/proc/on_begin_transit_to_away(datum/shuttle_transit_cycle/cycle, redirected)
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 //*                      Easy Helpers / Simplified API                         *//
 //*                                                                            *//
@@ -121,7 +121,7 @@
 	return !shuttle.docked
 
 /datum/shuttle_controller/ferry/proc/transit_towards_home(time, list/datum/callback/on_transit_callbacks)
-	var/obj/shuttle_dock/dock = SSshuttles.resolve_dock(dock_home_id)
+	var/obj/shuttle_dock/dock = SSshuttle.resolve_dock(dock_home_id)
 	if(!dock)
 		CRASH("invalid home dock for ferry transit: " + dock_home_id)
 	return transit_towards_dock(
@@ -131,7 +131,7 @@
 	)
 
 /datum/shuttle_controller/ferry/proc/transit_towards_away(time, list/datum/callback/on_transit_callbacks)
-	var/obj/shuttle_dock/dock = SSshuttles.resolve_dock(dock_away_id)
+	var/obj/shuttle_dock/dock = SSshuttle.resolve_dock(dock_away_id)
 	if(!dock)
 		CRASH("invalid away dock for ferry transit: " + dock_away_id)
 	return transit_towards_dock(

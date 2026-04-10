@@ -21,6 +21,8 @@
 	/// our status
 	var/flight_status = OVERMAP_FLIGHT_STATUS_UNKNOWN
 
+#warn this crap
+
 /obj/overmap/entity/visitable/ship/landable/proc/initialize_controller(datum/shuttle_controller/overmap/controller)
 	controller.entity = src
 	shuttle_controller = controller

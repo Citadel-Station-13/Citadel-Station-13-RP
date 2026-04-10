@@ -85,8 +85,7 @@
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles()
-	if(SSshuttles.initialized)
-		link_to_ship()
+	link_to_ship()
 
 /obj/machinery/atmospherics/component/unary/engine/Destroy()
 	QDEL_NULL(controller)

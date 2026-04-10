@@ -1,6 +1,36 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
+//*                   Docking completion callback status            *//
+//* Docking callbacks are fired by the controller, not the shuttle. *//
+
+/// succeeded
+#define SHUTTLE_DOCKING_STATUS_SUCCESS 1
+/// cancelled; starting the opposite docking cycle counts as this.
+#define SHUTTLE_DOCKING_STATUS_ABORTED 2
+/// failed
+#define SHUTTLE_DOCKING_STATUS_FAILED 3
+/// timed out
+#define SHUTTLE_DOCKING_STATUS_TIMEOUT 4
+/// the op has already passed!
+#define SHUTTLE_DOCKING_STATUS_EXPIRED 5
+/// we're not at somewhere that we can dock to
+#define SHUTTLE_DOCKING_STATUS_INVALID 6
+
+//*                Current docking state (dock)                         *//
+//* Docking state is stored on the shuttle controller, not the shuttle. *//
+
+/// Set if an unknown error happened.
+#define SHUTTLE_DOCKING_STATE_UNKNOWN 0
+/// Currently not at a dock, or at a dock and undocked.
+#define SHUTTLE_DOCKING_STATE_UNDOCKED 1
+/// Currently at a dock, and docking.
+#define SHUTTLE_DOCKING_STATE_DOCKING 2
+/// Currently at a dock, and undocking.
+#define SHUTTLE_DOCKING_STATE_UNDOCKING 3
+/// Currently at a dock, and docked.
+#define SHUTTLE_DOCKING_STATE_DOCKED 4
+
 #warn audit file
 //* docking codes
 
@@ -16,15 +46,6 @@
 /// completely disallow docking
 #define SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED 2
 
-//* docking bounding check
-
-/// clear
-#define SHUTTLE_DOCKING_BOUNDING_CLEAR 0
-/// hard fault - there's another shuttle / something important in the way that we can't overwrite
-#define SHUTTLE_DOCKING_BOUNDING_HARD_FAULT 1
-/// soft fault - we can trample it, but the shuttle requests that we shouldn't
-#define SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT 2
-
 //* docking seal check
 
 /// no airtight seal
@@ -34,19 +55,6 @@
 /// perfect seal
 #define SHUTTLE_DOCKING_SEAL_NOMINAL 2
 
-//* flags for bounds checks
-
-/// manual landing is involved at all
-#define SHUTTLE_BOUNDS_CHECKING_FOR_MANUAL_LANDING (1<<0)
-/// currently previewing manual landing
-#define SHUTTLE_BOUNDS_CHECKING_FOR_MANUAL_LANDING_PREVIEW (1<<1)
-/// currently performing an aligned / bound-box docking where trample bounding box is true
-#define SHTUTLE_BOUNDS_CHECKING_FOR_PRIVILEGED_DOCKING (1<<2)
-/// currently moving as part of roundstart
-#define SHUTTLE_BOUNDS_CHECKING_FOR_ROUNDSTART (1<<3)
-/// admin movement
-#define SHUTTLE_BOUNDS_CHECKING_FOR_ADMIN (1<<4)
-#warn hook these
 
 //* docking overlap handlers
 

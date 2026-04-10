@@ -31,7 +31,7 @@
 
 	//* Docking - State
 	/// current docking cycle
-	//  todo: docking is currently on a spinlock system. should we put it on SSshuttless instead?
+	//  todo: docking is currently on a spinlock system. should we put it on SSshuttles instead?
 	var/docking_cycle = 0
 	/// list of callbacks to invoke on end of docking cycle
 	///
@@ -69,8 +69,9 @@
 	var/tgui_module
 
 /datum/shuttle_controller/New(datum/shuttle/shuttle)
-	ASSERT(istype(shuttle))
+	ASSERT(istype(shuttle) && !shuttle.controller)
 	src.shuttle = shuttle
+	src.shuttle.bind_controller(src)
 	#warn impl?
 
 /datum/shuttle_controller/Destroy()
@@ -337,7 +338,7 @@
  *
  * @return FALSE on failure
  */
-/datum/shuttle_controller/proc/set_manual_landing(turf/lowerleft, orientation)
+/datum/shuttle_controller/proc/set_manual_landing(turf/anchor_target_location, anchor_target_orientation)
 	if(!isnull(manual_dock))
 		QDEL_NULL(manual_dock)
 	#warn impl
@@ -346,16 +347,17 @@
 /**
  * returns a list of name-to-turf of valid jump points on a given zlevel
  * * these should be centered, ideally
+ * * level center and dock with manual_docking_beacon are included by shuttle docker
+ *   automatically and may be ignored by this proc.
  */
 /datum/shuttle_controller/proc/manual_landing_beacons(zlevel)
 	. = list()
-	.["-- Level Center --"] = locate(floor(world.maxx * 0.5), floor(world.maxy * 0.5), zlevel)
 
 /**
  * returns a list of valid name-to-zlevel-index for manual landing
  */
 /datum/shuttle_controller/proc/manual_landing_levels()
-	#warn impl
+	. = list()
 
 //* Location *//
 
@@ -528,7 +530,7 @@
  * * redirected - this is from us getting another transit_towards_dock while transiting
  */
 /datum/shuttle_controller/proc/on_transit_begin(datum/shuttle_transit_cycle/cycle, redirected)
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * called on transit termination by the cycle
@@ -538,7 +540,7 @@
  * * status - transit status
  */
 /datum/shuttle_controller/proc/on_transit_end(datum/shuttle_transit_cycle/cycle, status)
-	return
+	SHOULD_NOT_SLEEP(TRUE)
 
 /**
  * registers a callback to be fired when transit ends

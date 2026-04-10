@@ -7,7 +7,7 @@
 /datum/admin_modal/upload_shuttle_template
 	name = "Upload Shuttle Template"
 	tgui_interface = "UploadShuttleTemplate"
-	tgui_update = FALSE
+	tgui_autoupdate = FALSE
 
 #warn impl al;l
 

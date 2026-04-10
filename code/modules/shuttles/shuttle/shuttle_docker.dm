@@ -12,14 +12,9 @@
 	/// or an admin panel.
 	var/datum/host
 
-	/// our current turf
-	var/turf/position
-	/// tile offset of position 'into' shuttle bounding box, y (1 = we're on y = 2)
-	var/center_y = 0
-	/// tile offset of position 'into' shuttle bounding box, x (1 = we're on x = 2)
-	var/center_x = 0
-	/// our current orientation
-	var/orientation
+	/// our current eye
+	/// * its dir is our dir
+	var/atom/movable/render/shuttle_docker/eye
 
 	/// the mob using us
 	var/mob/user
@@ -37,6 +32,7 @@
 	src.host = host
 	src.on_target = on_target
 	used_perspective = new
+	setup_perspective()
 	capture_user(user)
 
 /datum/shuttle_docker/Destroy()
@@ -67,10 +63,9 @@
  */
 /datum/shuttle_docker/proc/docking_beacons(zlevel)
 	RETURN_TYPE(/list)
-	. = list(
-		"-- Center --" = locate(world.maxx / 2, world.maxy / 2, zlevel),
-	)
-	for(var/obj/shuttle_dock/dock as anything in SSshuttles.docks_by_level[zlevel])
+	. = list()
+	.["-- Level Center --"] = locate(floor(world.maxx * 0.5), floor(world.maxy * 0.5), zlevel)
+	for(var/obj/shuttle_dock/dock as anything in SSshuttle.docks_by_level[zlevel])
 		var/i = 0
 		if(!dock.manual_docking_beacon)
 			continue
@@ -80,7 +75,9 @@
 			.["[dock.display_name] [++i]"] = dock
 		else
 			.[dock.display_name] = get_turf(dock)
-	#warn shuttle controller
+	var/datum/shuttle_controller/controller = shuttle.controller
+	if(istype(controller))
+		. += controller.manual_landing_beacons(zlevel)
 
 /datum/action/designate_manual_shuttle_landing
 

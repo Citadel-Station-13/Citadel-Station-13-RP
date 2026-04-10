@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-/datum/shuttle_transit_blocker
+/datum/shuttle_operation_blocker
 	/**
 	 * The hook blocking the transit, if any
 	 * * Nullable. Not all blockers are associated with hooks.
@@ -15,11 +15,12 @@
 	/// May be forced
 	var/forceable = FALSE
 	/// Forcing this may be dangerous
-	var/forcing_could_be_dangerous = FALSE
+	/// * If this is set, controller must dangerously force to ignore us by default
+	var/forceable_require_dangerous = FALSE
 
 	var/desc = "Unknown Blocker"
 
-/datum/shuttle_transit_blocker/New(datum/shuttle_hook/hook, datum/shuttle_transit_stage/stage, desc)
+/datum/shuttle_operation_blocker/New(datum/shuttle_hook/hook, datum/shuttle_transit_stage/stage, desc)
 	. = ..()
 	src.hook = hook
 	src.stage = stage
@@ -27,7 +28,7 @@
 	LAZYADD(stage.blockers, src)
 	LAZYADD(hook.blocking, src)
 
-/datum/shuttle_transit_blocker/Destroy()
+/datum/shuttle_operation_blocker/Destroy()
 	hook = null
 	stage = null
 	LAZYREMOVE(stage.blockers, src)
@@ -37,15 +38,15 @@
 /**
  * @return string
  */
-/datum/shuttle_transit_blocker/proc/ui_why()
+/datum/shuttle_operation_blocker/proc/ui_why()
 	return desc
 
-/datum/shuttle_transit_blocker/mandatory
+/datum/shuttle_operation_blocker/mandatory
 	forceable = FALSE
 
-/datum/shuttle_transit_blocker/advisory
+/datum/shuttle_operation_blocker/advisory
 	forceable = TRUE
 
-/datum/shuttle_transit_blocker/safety
+/datum/shuttle_operation_blocker/safety
 	forceable = TRUE
 	forcing_could_be_dangerous = TRUE

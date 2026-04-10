@@ -53,7 +53,7 @@
 	data["updated"] = world.time - rm_controller.last_scan < 200	// Very recently scanned (20 seconds)
 	data["debug"] = debug
 
-	var/datum/shuttle_controller/ferry_pair/shuttle_controller = GLOB.legacy_belter_shuttle?.controller
+	var/datum/shuttle_controller/ferry/shuttle_controller = GLOB.global_ferry_belter_shuttle_controller
 	var/at_home = shuttle_controller?.is_at_home() || FALSE
 	var/at_away = shuttle_controller?.is_at_away() || FALSE
 

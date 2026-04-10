@@ -268,10 +268,10 @@
 	.["time_dilation_avg_fast"] = SStime_track.time_dilation_avg_fast
 
 	/*
-	if(SSshuttles && SSshuttles.emergency)
-		.["shuttle_mode"] = SSshuttles.emergency.mode
+	if(SSshuttle && SSshuttle.emergency)
+		.["shuttle_mode"] = SSshuttle.emergency.mode
 		// Shuttle status, see /__DEFINES/stat.dm
-		.["shuttle_timer"] = SSshuttles.emergency.timeLeft()
+		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
 	*/
 

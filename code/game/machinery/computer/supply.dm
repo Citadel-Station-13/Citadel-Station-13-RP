@@ -58,7 +58,7 @@
 	var/orders[0]
 	var/receipts[0]
 
-	var/datum/shuttle_controller/ferry_pair/controller = GLOB.global_ferry_supply_shuttle_controller
+	var/datum/shuttle_controller/ferry/round_global/supply_shuttle/controller = GLOB.global_ferry_supply_shuttle_controller
 	if(shuttle)
 		if(!controller.get_transit_stage())
 			shuttle_status["location"] = "In transit"
@@ -186,7 +186,7 @@
 	if(!SSsupply)
 		log_world("## ERROR: The supply_controller datum is missing.")
 		return
-	var/datum/shuttle_controller/ferry_pair/controller = GLOB.legacy_cargo_shuttle_controller
+	var/datum/shuttle_controller/ferry/round_global/supply_shuttle/controller = GLOB.legacy_cargo_shuttle_controller
 	if(..())
 		return 1
 

@@ -34,9 +34,8 @@
 
 	//* Bounding Box *//
 	/// image used to render our bounding box; attached to self
-	/// * If 'CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES' is defined, this is a pretty render.
-	///   Otherwise, this is just going to be a translucent color or something to
-	///   visualize the bounding box for manual docking API / UI
+	/// * If 'CF_SHUTTLE_VISUALIZE_BOUNDING_BOXES' is defined, this is always visible.
+	///   Otherwise, this is only visible when using manual docking / admin UI
 	#warn hook
 	var/image/bounding_box_image
 	/// allow docking inside bounding box as long as a shuttle fits, even if the dock doesn't align
@@ -57,16 +56,16 @@
 	/// set the bounding box's area to a given area
 	var/create_bounding_box_area = TRUE
 	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
-	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
+	/// * you generally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/size_x
 	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
-	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
+	/// * you generally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/size_y
 	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
-	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
+	/// * you generally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_x
 	/// see /obj/shuttle_aligner/master for how this works; it works the same as the shuttle variant
-	/// * you genereally want to set this to null for autodetect via /obj/shuttle_dock_corner
+	/// * you generally want to set this to null for autodetect via /obj/shuttle_dock_corner
 	var/offset_y
 
 	//* Docking - Backend *//
@@ -97,7 +96,7 @@
 	/// width 3, offset 2:
 	/// XX^
 	///
-	/// this is needed becausde dock alignment must always be exact,
+	/// this is needed because dock alignment must always be exact,
 	/// so things like power lines and atmos lines can be connected
 	var/dock_offset = 0
 	/// how many tiles of 'safety' extends to both sides of the width
@@ -121,7 +120,7 @@
 	#warn vv hook
 	/// are we registered?
 	var/registered = FALSE
-	/// Register by type on SSshuttles?
+	/// Register by type on SSshuttle?
 	/// * if you want to reference this dock by type, this must be set to a typepath.
 	var/register_as_typepath = FALSE
 
@@ -304,7 +303,7 @@
 			inbound.controller.terminate_transit()
 	// alright bye
 	inbound = null
-	// unregister from SSshuttless
+	// unregister from SSshuttles
 	unregister_dock()
 	if(create_bounding_box_area)
 		// cleanup our area if it's unique; otherwise, we just orphan it
@@ -325,10 +324,10 @@
 	return ..()
 
 /obj/shuttle_dock/proc/register_dock()
-	return SSshuttles.register_dock(src)
+	return SSshuttle.register_dock(src)
 
 /obj/shuttle_dock/proc/unregister_dock()
-	return SSshuttles.unregister_dock(src)
+	return SSshuttle.unregister_dock(src)
 
 /obj/shuttle_dock/Move(...)
 	return FALSE
@@ -344,6 +343,7 @@
 		return
 	register_dock()
 
+#warn below 4 hooks don't make too much sense, audit
 /**
  * called after all hooks finish
  */
@@ -371,7 +371,7 @@
 /**
  * Fire an event off to all hooks
  */
-/obj/shuttle_dock/proc/fire_hooks(datum/event_args/shuttle/event)
+/obj/shuttle_dock/proc/dispatch_event_to_hooks(datum/event_args/shuttle/event)
 	SHOULD_NOT_SLEEP(TRUE)
 	for(var/datum/shuttle_hook/hook as anything in hooks)
 		hook.on_event(event)
@@ -448,10 +448,13 @@
 /obj/shuttle_dock/proc/init_shuttle(datum/shuttle/shuttle)
 	init_shuttle_controller(shuttle)
 
+/**
+ * @return /datum/shuttle_controller or null
+ */
 /obj/shuttle_dock/proc/init_shuttle_controller(datum/shuttle/shuttle)
 	// Default behavior: bind to overmaps
-	var/datum/shuttle_controller/overmap/controller = new()
-	shuttle.bind_controller(controller)
+	var/datum/shuttle_controller/overmap/controller = new(shuttle)
+	return controller
 
 /**
  * called after our initial shuttle is loaded and initialized
@@ -642,12 +645,12 @@
 	// begin intercepts of dock id/registration
 	switch(var_name)
 		if(NAMEOF(src, dock_id))
-			if(SSshuttles.dock_id_registry[var_value] && SSshuttles.dock_id_registry[var_value] != src)
+			if(SSshuttle.dock_id_registry[var_value] && SSshuttle.dock_id_registry[var_value] != src)
 				if(!mass_edit)
 					to_chat(usr, FORMAT_SERVER_ERROR("You cannot edit [src]'s dock id to [var_value] because another dock already has it."))
 				return FALSE
 			unregister_dock()
-		if(NAMEOF(src, register_by_type))
+		if(NAMEOF(src, register_as_typepath))
 			return FALSE // **no.**
 		if(NAMEOF(src, protect_bounding_box))
 			set_bounding_box_protection(var_value, protect_bounding_box_extra_radius)

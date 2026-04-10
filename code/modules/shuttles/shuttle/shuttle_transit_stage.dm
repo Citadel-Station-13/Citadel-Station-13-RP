@@ -12,7 +12,7 @@
 	/**
 	 * List of blockers
 	 */
-	var/list/datum/shuttle_transit_blocker/blockers
+	var/list/datum/shuttle_operation_blocker/blockers
 	/// attempt to ignore blockers
 	var/forcing = FALSE
 	/// attempt to ignore blockers that could be dangerous to ignore (hanger doors, point defense, etc)

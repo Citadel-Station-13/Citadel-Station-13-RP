@@ -9,23 +9,23 @@
 
 	#warn impl / replace
 
-	// var/center_x = floor(world.maxx / 2)
-	// var/center_y = floor(world.maxy / 2)
-	// var/low_x = center_x - floor(width / 2)
-	// var/low_y = center_y - floor(height / 2)
-	// var/high_x = low_x + width - 1
-	// var/high_y = low_y + width - 1
+	var/center_x = floor(world.maxx / 2)
+	var/center_y = floor(world.maxy / 2)
+	var/low_x = center_x - floor(width / 2)
+	var/low_y = center_y - floor(height / 2)
+	var/high_x = low_x + width - 1
+	var/high_y = low_y + width - 1
 
-	// transit_dock = create_shuttle_dock(
-	// 	locate(low_x, low_y, z_index),
-	// 	with_dir = dir,
-	// 	lx_ly_hx_hy = list(
-	// 		low_x,
-	// 		low_y,
-	// 		high_x,
-	// 		high_y,
-	// 	),
-	// )
+	transit_dock = create_shuttle_dock(
+		locate(low_x, low_y, z_index),
+		with_dir = direction,
+		lx_ly_hx_hy = list(
+			low_x,
+			low_y,
+			high_x,
+			high_y,
+		),
+	)
 
 	return TRUE
 

@@ -12,7 +12,7 @@
 	/// Has been emagged, no access restrictions.
 	var/hacked = 0
 
-/// A late init operation called in SSshuttles, used to attach the thing to the right ship.
+/// A late init operation called in SSshuttle, used to attach the thing to the right ship.
 /obj/machinery/computer/ship/proc/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!istype(sector))
 		return

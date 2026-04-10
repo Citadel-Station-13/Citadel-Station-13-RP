@@ -15,63 +15,18 @@
 	var/obfuscated = FALSE
 
 	/// we're currently with these active blockers
-	var/list/datum/shuttle_transit_blocker/blocking
+	var/list/datum/shuttle_operation_blocker/blocking
 
 /datum/shuttle_hook/Destroy()
 	release_all()
 	return ..()
 
-/**
- * called when a translation event comes in
- *
- * * only fired shuttle-side, not dock-side
- * * cannot be blocked.
- */
-/datum/shuttle_hook/proc/on_translation_event(datum/event_args/shuttle/translation/event)
-	SHOULD_NOT_SLEEP(TRUE)
-
-/**
- * called when a traversal event comes in
- *
- * * fired shuttle, and dock-side
- * * can be blocked
- * * only one is fired
- */
-/datum/shuttle_hook/proc/on_traversal(datum/event_args/shuttle/translation/event)
-	SHOULD_NOT_SLEEP(TRUE)
-
-/**
- * called when a docking event comes in
- *
- * * fired shuttle-side and dock-side
- * * some events ('post-xyz') cannot be blocked.
- */
-/datum/shuttle_hook/proc/on_dock_event(datum/event_args/shuttle/dock/event)
+/datum/shuttle_hook/proc/on_event(datum/event_args/shuttle/event)
 	SHOULD_NOT_SLEEP(TRUE)
 
 /datum/shuttle_hook/proc/release_all()
-	for(var/datum/event_args/shuttle/event as anything in blocking)
-		release(event)
-	ASSERT(!length(blocking))
+	QDEL_LIST(blocking)
 	return TRUE
-
-/datum/shuttle_hook/proc/release(datum/event_args/shuttle/event)
-	event.release(src)
-	return TRUE
-
-/datum/shuttle_hook/proc/update_all(list/reason_or_reasons)
-	for(var/datum/event_args/shuttle/event as anything in blocking)
-		update(event, reason_or_reasons)
-	return TRUE
-
-/datum/shuttle_hook/proc/update(datum/event_args/shuttle/event, list/reason_or_reasons)
-	event.update(src, reason_or_reasons)
-	return TRUE
-
-/datum/shuttle_hook/proc/block(datum/event_args/shuttle/event, list/reason_or_reasons, dangerous)
-	return event.block(src, reason_or_reasons, dangerous)
 
 /datum/shuttle_hook/proc/is_blocking_anything()
 	return !isnull(blocking)
-
-#warn forcing
