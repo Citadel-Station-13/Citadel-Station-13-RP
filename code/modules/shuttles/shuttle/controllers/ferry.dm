@@ -4,14 +4,9 @@
 /**
  * point to point shuttle controller
  *
- * we have two destinations, linked directly via shuttle ids
- *
- * please use web shuttles for multi-dock on single destination support.
- *
- * the standard is 'shuttle shuttle load at home', which means:
- * * cargo shuttle starts centcom
- * * emergency shuttle starts centcom
- * * belter shuttle starts station
+ * * Ferries will attempt to use their primary port when docking, falling back to
+ *   centered if not possible, with the direction of the target dock.
+ *   If that still fails, they will be stranded in transit.
  */
 /datum/shuttle_controller/ferry
 	tgui_module = "TGUIShuttleFerry"

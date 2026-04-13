@@ -32,9 +32,6 @@
 	ASSERT(A)
 	myarea = A
 
-	var/obj/shuttle_dock/myshuttle_landmark = locate(/obj/shuttle_dock/hardcoded_legacy/belter/away) in myarea
-	if(!istype(myshuttle_landmark))
-		warning("Zonemaster cannot find a shuttle landmark in its area '[A]'")
 	spawn(10)	// This is called from controller New() and freaks out if this calls back too fast.
 		rm_controller.mark_clean(src)
 

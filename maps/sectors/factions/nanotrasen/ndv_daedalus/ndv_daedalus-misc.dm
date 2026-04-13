@@ -116,12 +116,13 @@
 	name = "Daedalus - Hangar 2"
 	has_gravity = 0
 
+#warn deal with this crap
 /datum/map_template/shuttle/overmap/generic/cruiser
 	name = "OM Ship - Daedalus (New Z)"
 	desc = "A large NT cruiser."
 	suffix = "cruiser.dmm"
 
-/obj/overmap/entity/visitable/ship/cruiser
+/obj/overmap/entity/visitable/ship/ndv_daedalus
 	name = "spacecraft"
 	desc = "Spacefaring vessel. Nanotrasen IFF detected."
 	scanner_name = "NDV Daedalus"
@@ -133,7 +134,8 @@
 	vessel_mass = 15000
 	initial_generic_waypoints = list("cruiser_fore", "cruiser_aft", "cruiser_port", "cruiser_starboard", "ws_port_dock_1", "ws_port_dock_2", "ws_starboard_dock_1", "ws_starboard_dock_2")
 
-	skybox_icon = 'cruiser.dmi' //Art by Gwyvern, see ATTRIBUTIONS.md
+	//Art by Gwyvern, see ATTRIBUTIONS.md
+	skybox_icon = 'maps/sectors/factions/nanotrasen/ndv_daedalus/ndv_daedalus-skybox.dmi'
 	skybox_icon_state = "skybox"
 	skybox_pixel_x = 370
 	skybox_pixel_y = 370

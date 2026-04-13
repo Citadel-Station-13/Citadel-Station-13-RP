@@ -8755,7 +8755,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "EP" = (
-/obj/overmap/entity/visitable/ship/cruiser,
+/obj/overmap/entity/visitable/ship/ndv_daedalus,
 /turf/space,
 /area/space)
 "EQ" = (
