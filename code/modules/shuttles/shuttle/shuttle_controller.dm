@@ -18,8 +18,10 @@
 	var/datum/shuttle_operation/operation
 	/// Operation ID
 	var/operation_id = 0
+	/// Next operation ID
+	var/operation_id_next = 0
 
-	//* Docking - Control
+	//* Docking - Control *//
 	/// stored docking codes
 	var/list/docking_codes
 	/// dock UIDs we always have codes for

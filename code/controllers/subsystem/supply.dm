@@ -69,23 +69,6 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/fire(resumed)
 	points += max(0, ((world.time - last_fire) / 10) * points_per_second)
 
-// To stop things being sent to CentCom which should not be sent to centcom. Recursively checks for these types.
-/datum/controller/subsystem/supply/proc/forbidden_atoms_check(atom/A)
-	if(isliving(A))
-		return 1
-	if(istype(A,/obj/item/disk/nuclear))
-		return 1
-	if(istype(A,/obj/machinery/nuclearbomb))
-		return 1
-	if(istype(A,/obj/item/radio/beacon))
-		return 1
-	if(istype(A,/obj/item/perfect_tele_beacon))
-		return 1
-
-	for(var/atom/B in A.contents)
-		if(.(B))
-			return 1
-
 // Selling
 /datum/controller/subsystem/supply/proc/sell()
 	var/list/turf/region = GLOB.legacy_cargo_shuttle?.shuttle_turfs_here()

@@ -5461,8 +5461,6 @@
 #include "code\modules\shuttles\dock\subtypes\round_global_defs\escape_shuttle.dm"
 #include "code\modules\shuttles\dock\subtypes\round_global_defs\supply_shuttle.dm"
 #include "code\modules\shuttles\effects\shuttle_landing.dm"
-#include "code\modules\shuttles\legacy\legacy.dm"
-#include "code\modules\shuttles\legacy\legacy_supply_controller.dm"
 #include "code\modules\shuttles\machinery\shuttle_control.dm"
 #include "code\modules\shuttles\shuttle\shuttle-bounds.dm"
 #include "code\modules\shuttles\shuttle\shuttle-overlap_handlers.dm"
