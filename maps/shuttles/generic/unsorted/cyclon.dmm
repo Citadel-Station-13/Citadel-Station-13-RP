@@ -821,12 +821,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
-	id_tag = "paperclipper_airlock";
-	name = "Airlock Control";
-	pixel_x = -26;
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/shuttle/paper_clipper)
 "LJ" = (
@@ -1047,7 +1041,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paper_clipper)
 "Uq" = (
-/obj/machinery/computer/shuttle_control/explore/paper_clipper,
+/obj/machinery/computer/shuttle_control/hardcoded,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/paper_clipper)
 "Uz" = (
