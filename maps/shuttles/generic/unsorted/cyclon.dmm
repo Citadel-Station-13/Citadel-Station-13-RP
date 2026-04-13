@@ -278,11 +278,9 @@
 /area/shuttle/auto/one_single_area)
 "ls" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/effect/shuttle_landmark/shuttle_initializer/paper_clipper,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/overmap/entity/visitable/ship/landable/paper_clipper,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/auto/one_single_area)
 "lt" = (

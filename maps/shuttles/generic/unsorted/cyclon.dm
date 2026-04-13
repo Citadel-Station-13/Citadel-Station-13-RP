@@ -11,13 +11,3 @@ DECLARE_SHUTTLE_TEMPLATE(/generic/unsorted/cyclon)
 [b]Notice[/b]: Small private vessel"};
 		overmap_icon_color = "#292636";
 	}
-
-#warn impl
-
-/obj/effect/shuttle_landmark/shuttle_initializer/paper_clipper
-/obj/overmap/entity/visitable/ship/landable/paper_clipper
-/area/shuttle/paper_clipper
-/area/shuttle/paper_clipper/left_wing
-/area/shuttle/paper_clipper/right_wing
-/area/shuttle/paper_clipper/right_wing/shuttle_hanger
-#warn map
