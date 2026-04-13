@@ -1,12 +1,4 @@
-// Used to be tether_jobs.dm and only loaded on tether... Why I do not know - Bloop
-// Make sure to have these z levels defined in whatever map defines you are creating. Tempted to just define them here but thats something to test later
-/*
-///Change the numbers here as appropriate
-#define Z_LEVEL_OFFMAP1					1000
-#define Z_LEVEL_OFFMAP2					1001
-*/
-///////////////////////////////////
-//// Talon Jobs
+#warn enable if talon is active
 
 /* ///On request of Maintainer I am commenting this out for now. Maybe in the future we can find a new purpose for Talon -Bloop 2-17-2022
 
