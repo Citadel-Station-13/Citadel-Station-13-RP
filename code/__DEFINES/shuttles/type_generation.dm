@@ -15,7 +15,7 @@
  */
 #define DECLARE_SECTOR_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/sector##MAP_PATH##TYPEPATH) \
 /datum/shuttle_template/map_specific/sector##MAP_PATH##TYPEPATH { \
-	category = "Map-Specific"; \
+	category = "Sector-Specific"; \
 }; \
 /datum/shuttle_template/map_specific/sector##MAP_PATH##TYPEPATH
 
@@ -24,7 +24,7 @@
  */
 #define DECLARE_STATION_SHUTTLE_TEMPLATE(MAP_PATH, TYPEPATH) GENERATE_SHUTTLE_TEMPLATE_PRELOAD(/map_specific/station##MAP_PATH##TYPEPATH) \
 /datum/shuttle_template/map_specific/station##MAP_PATH##TYPEPATH { \
-	category = "Map-Specific"; \
+	category = "Station-Specific"; \
 }; \
 /datum/shuttle_template/map_specific/station##MAP_PATH##TYPEPATH
 

@@ -2,6 +2,149 @@
 "a" = (
 /turf/space/basic,
 /area/space)
+"f" = (
+/obj/machinery/vending/wallmed1{
+	emagged = 1;
+	pixel_y = 32;
+	shut_up = 0
+	},
+/obj/item/bedsheet,
+/obj/structure/bed/padded,
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_x = 27
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"g" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"j" = (
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/structure/closet/crate/plastic,
+/obj/item/flashlight,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/flashlight/glowstick,
+/obj/item/flashlight/glowstick,
+/obj/item/flashlight/glowstick,
+/obj/item/storage/box/metalfoam,
+/obj/item/survivalcapsule/luxury,
+/obj/machinery/air_alarm/talon/west_mount{
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"k" = (
+/obj/item/paper/talon_lifeboat,
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"m" = (
+/obj/structure/bed/padded,
+/obj/item/bedsheet,
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_x = 27
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"n" = (
+/obj/machinery/computer/shuttle_control{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"y" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass_external,
+/obj/structure/atmospheric_retention_field,
+/obj/shuttle_aligner/port/north,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"z" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"F" = (
+/turf/simulated/wall/rpshull,
+/area/shuttle/auto/one_single_area)
+"H" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"M" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/glass_external,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/atmospheric_retention_field,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Q" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"R" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/machinery/air_alarm/talon{
+	dir = 8;
+	pixel_x = 23
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"U" = (
+/obj/structure/table/steel,
+/obj/structure/closet/hydrant{
+	pixel_x = -32;
+	starts_with = list(/obj/item/clothing/suit/fire/firefighter = 2, /obj/item/clothing/mask/gas = 2, /obj/item/flashlight = 2, /obj/item/tank/oxygen/red = 2, /obj/item/extinguisher = 2, /obj/item/clothing/head/hardhat/red = 2)
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"V" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/powered/pump/filled,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
 
 (1,1,1) = {"
 a
@@ -76,12 +219,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+F
+F
+F
+F
+F
+F
 a
 a
 a
@@ -93,12 +236,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+F
+n
+j
+k
+U
+F
 a
 a
 a
@@ -110,12 +253,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+y
+z
+Q
+g
+H
+M
 a
 a
 a
@@ -127,12 +270,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+F
+f
+R
+V
+m
+F
 a
 a
 a
@@ -144,12 +287,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+F
+F
+F
+F
+F
+F
 a
 a
 a

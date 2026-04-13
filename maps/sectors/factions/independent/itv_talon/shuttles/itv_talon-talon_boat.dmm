@@ -2,6 +2,167 @@
 "a" = (
 /turf/space/basic,
 /area/space)
+"f" = (
+/obj/machinery/air_alarm/talon/east_mount{
+	pixel_x = 24
+	},
+/obj/structure/cable/green,
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"j" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"k" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/flare,
+/turf/simulated/floor/tiled/eris/steel/techfloor,
+/area/shuttle/auto/one_single_area)
+"o" = (
+/obj/machinery/airlock_sensor{
+	dir = 4;
+	pixel_x = -28;
+	req_one_access = list(301)
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/dark/gray_perforated,
+/area/shuttle/auto/one_single_area)
+"p" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"q" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/aux,
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/eris/dark/gray_perforated,
+/area/shuttle/auto/one_single_area)
+"s" = (
+/obj/machinery/atmospherics/portables_connector/aux{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"v" = (
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	dir = 8;
+	id_tag = "talon_boat";
+	pixel_x = 28
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/eris/dark/gray_perforated,
+/area/shuttle/auto/one_single_area)
+"w" = (
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"x" = (
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"y" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"B" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(301)
+	},
+/turf/simulated/floor/tiled/eris/dark/gray_perforated,
+/area/shuttle/auto/one_single_area)
+"G" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(301)
+	},
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor,
+/area/shuttle/auto/one_single_area)
+"H" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"I" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"K" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(301)
+	},
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
+	pixel_x = 28;
+	pixel_y = -4
+	},
+/obj/shuttle_aligner/port/south,
+/turf/simulated/floor/tiled/eris/dark/gray_perforated,
+/area/shuttle/auto/one_single_area)
+"L" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"M" = (
+/obj/structure/table/standard,
+/obj/item/pickaxe/drill,
+/turf/simulated/floor/tiled/eris/steel/techfloor,
+/area/shuttle/auto/one_single_area)
+"N" = (
+/obj/structure/bed/chair/bay/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/eris/steel/techfloor_grid,
+/area/shuttle/auto/one_single_area)
+"Q" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/airlock_sensor{
+	dir = 1;
+	pixel_x = 28;
+	pixel_y = -28;
+	req_one_access = list(301)
+	},
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"S" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/auto/one_single_area)
+"Z" = (
+/turf/simulated/wall/shull,
+/area/shuttle/auto/one_single_area)
 
 (1,1,1) = {"
 a
@@ -74,118 +235,118 @@ a
 (5,1,1) = {"
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+Z
+j
+j
+j
+j
+Z
+Z
+Z
+Z
 a
 a
 a
 "}
 (6,1,1) = {"
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+M
+L
+x
+x
+x
+x
+w
+s
+Z
+Z
+Z
 a
 a
 "}
 (7,1,1) = {"
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+N
+N
+x
+x
+x
+x
+x
+y
+Z
+o
+Z
 a
 a
 "}
 (8,1,1) = {"
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+N
+N
+x
+x
+H
+x
+x
+Q
+B
+q
+K
 a
 a
 "}
 (9,1,1) = {"
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+N
+N
+x
+x
+x
+x
+x
+p
+Z
+v
+Z
 a
 a
 "}
 (10,1,1) = {"
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+k
+I
+x
+x
+S
+f
+x
+x
+Z
+Z
+Z
 a
 a
 "}
 (11,1,1) = {"
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+Z
+Z
+Z
+G
+Z
+Z
+Z
+Z
+Z
 a
 a
 a

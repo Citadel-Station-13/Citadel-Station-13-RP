@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
+
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/strelka, /excursion_hanger, "Excursion Shuttle Hanger")
 	docking_restrict_to_starting = TRUE
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/strelka, /emt_hanger, "EMT Shuttle Hanger")

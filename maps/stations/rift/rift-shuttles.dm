@@ -1,3 +1,6 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
+
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/rift, /excursion_pad, "Exploration Shuttle Pad")
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/rift, /civillian_pad_1, "Civillian Transport Pad - A")
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/rift, /civillian_pad_2, "Civillian Transport Pad - B")

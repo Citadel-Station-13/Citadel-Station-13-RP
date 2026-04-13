@@ -584,10 +584,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
-"fx" = (
-/obj/machinery/holopad/ship/starts_inactive,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "fA" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -640,9 +636,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
-"fZ" = (
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "gb" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -895,13 +888,6 @@
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
-"iu" = (
-/obj/machinery/atmospherics/portables_connector/aux{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/air/airlock,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "ix" = (
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
@@ -938,10 +924,6 @@
 "iM" = (
 /turf/simulated/wall/rshull,
 /area/talon/deckone/starboard_engine)
-"iO" = (
-/obj/structure/table/standard,
-/turf/simulated/floor/tiled/eris/steel/techfloor,
-/area/shuttle/talonboat)
 "iP" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -1038,14 +1020,6 @@
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
-"jx" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating/eris/under,
-/area/shuttle/talonboat)
 "jy" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/hull/airless,
@@ -1346,22 +1320,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_engine)
-"lS" = (
-/obj/machinery/airlock_sensor{
-	dir = 4;
-	pixel_x = -28;
-	req_one_access = list(301)
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/eris/dark/gray_perforated,
-/area/shuttle/talonboat)
 "mr" = (
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled/eris/steel,
@@ -1489,6 +1447,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
+"nj" = (
+/obj/shuttle_dock_corner/bottom_right,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "nu" = (
@@ -1781,18 +1743,6 @@
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
-"pT" = (
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	dir = 8;
-	id_tag = "talon_boat";
-	pixel_x = 28
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/aux{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/eris/dark/gray_perforated,
-/area/shuttle/talonboat)
 "pU" = (
 /turf/simulated/wall,
 /area/talon/deckone/starboard_eng_store)
@@ -2130,6 +2080,10 @@
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/deckone/workroom)
+"sv" = (
+/obj/shuttle_dock_preload/generated/map_specific/sector/itv_talon/talon_boat,
+/turf/simulated/floor/tiled/eris/dark/danger,
+/area/talon/deckone/central_hallway)
 "sD" = (
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/eris/dark/danger,
@@ -2174,24 +2128,6 @@
 	},
 /turf/simulated/wall,
 /area/talon/deckone/central_hallway)
-"ta" = (
-/obj/map_helper/airlock/sensor/int_sensor,
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 10
-	},
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/airlock_sensor{
-	dir = 1;
-	pixel_x = 28;
-	pixel_y = -28;
-	req_one_access = list(301)
-	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
-"ti" = (
-/obj/machinery/computer/shuttle_control,
-/turf/simulated/floor/tiled/eris/steel/techfloor,
-/area/shuttle/talonboat)
 "tq" = (
 /turf/simulated/floor/airless,
 /area/talon/deckone/engine)
@@ -2207,10 +2143,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/deckone/starboard_eng_store)
-"tt" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "tv" = (
 /obj/structure/table/steel,
 /obj/machinery/light{
@@ -2336,14 +2268,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
-"uF" = (
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(301)
-	},
-/turf/simulated/floor/tiled/eris/dark/gray_perforated,
-/area/shuttle/talonboat)
 "uI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2504,16 +2428,6 @@
 /obj/structure/disposalpipe/junction,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
-"vS" = (
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(301)
-	},
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/eris/dark/techfloor,
-/area/shuttle/talonboat)
 "vW" = (
 /obj/structure/stasis_cage,
 /turf/simulated/floor/tiled/eris/steel,
@@ -2942,14 +2856,6 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/talon/deckone/central_hallway)
-"zg" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/aux,
-/obj/effect/floor_decal/industrial/warning,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/eris/dark/gray_perforated,
-/area/shuttle/talonboat)
 "zh" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -3333,11 +3239,6 @@
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/deckone/medical)
-"Ch" = (
-/obj/structure/table/standard,
-/obj/item/pickaxe/drill,
-/turf/simulated/floor/tiled/eris/steel/techfloor,
-/area/shuttle/talonboat)
 "Cm" = (
 /obj/machinery/vending/security{
 	req_access = list(301);
@@ -3526,6 +3427,9 @@
 	},
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
+"Dj" = (
+/turf/space,
+/area/shuttle/auto/one_single_area)
 "Dp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -3578,13 +3482,6 @@
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
-"DE" = (
-/obj/structure/fuel_port{
-	dir = 4;
-	pixel_x = -30
-	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "DG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3598,16 +3495,6 @@
 /obj/machinery/suit_cycler/vintage/tengi,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/engine)
-"DT" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/effect/shuttle_landmark/shuttle_initializer/talonboat,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "DW" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4265,13 +4152,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_engine)
-"Ix" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 4
-	},
-/obj/machinery/light,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "Iz" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4864,11 +4744,6 @@
 	},
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
-"Of" = (
-/obj/structure/table/standard,
-/obj/item/storage/box/flare,
-/turf/simulated/floor/tiled/eris/steel/techfloor,
-/area/shuttle/talonboat)
 "Oi" = (
 /turf/simulated/wall/rshull,
 /area/talon/deckone/engine)
@@ -4969,12 +4844,12 @@
 /obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
-"Px" = (
-/obj/machinery/light{
-	dir = 8
+"Po" = (
+/obj/shuttle_dock/preset/map_specific/itv_talon/ferry{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
+/turf/simulated/floor/tiled/eris/dark/danger,
+/area/talon/deckone/central_hallway)
 "Pz" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -5093,18 +4968,6 @@
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
-"QD" = (
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(301)
-	},
-/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	pixel_x = 28;
-	pixel_y = -4
-	},
-/obj/map_helper/airlock/sensor/ext_sensor,
-/turf/simulated/floor/tiled/eris/dark/gray_perforated,
-/area/shuttle/talonboat)
 "QM" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass/talon,
@@ -5258,6 +5121,10 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
+"RJ" = (
+/obj/shuttle_dock_corner/top_left,
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "RU" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -5268,12 +5135,6 @@
 /obj/landmark/spawnpoint/job/talon_captain,
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
-"Sc" = (
-/obj/structure/bed/chair/bay/chair{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/eris/steel/techfloor_grid,
-/area/shuttle/talonboat)
 "Sf" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/shoes/magboots,
@@ -5322,9 +5183,13 @@
 "Sx" = (
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
+"SG" = (
+/obj/shuttle_dock_corner/bottom_left,
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "SI" = (
-/turf/simulated/wall/shull,
-/area/shuttle/talonboat)
+/turf/space/basic,
+/area/space)
 "SK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -5467,13 +5332,6 @@
 /obj/item/material/knife/machete,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
-"TG" = (
-/obj/machinery/air_alarm/talon/east_mount{
-	pixel_x = 24
-	},
-/obj/structure/cable/green,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "TL" = (
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port_aft_wing)
@@ -5678,12 +5536,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
-"Vv" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
-/area/shuttle/talonboat)
 "Vy" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -5834,11 +5686,6 @@
 /obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
-"WR" = (
-/obj/structure/table/standard,
-/obj/machinery/recharger,
-/turf/simulated/floor/tiled/eris/steel/techfloor,
-/area/shuttle/talonboat)
 "WW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6057,14 +5904,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
-"YX" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating/eris/under,
-/area/shuttle/talonboat)
 "Za" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -6094,6 +5933,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
+"Zj" = (
+/obj/shuttle_dock_corner/top_right,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "Zk" = (
@@ -10413,7 +10256,7 @@ TL
 TL
 TL
 TL
-Nl
+Dj
 Nl
 Nl
 Nl
@@ -12232,19 +12075,19 @@ Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
 Nl
 Nl
 Nl
@@ -12374,19 +12217,19 @@ Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
 Nl
 Nl
 Nl
@@ -12516,19 +12359,19 @@ Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
 Nl
 Nl
 Nl
@@ -12658,19 +12501,19 @@ Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
 Nl
 Nl
 Nl
@@ -12800,19 +12643,19 @@ Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
 Nl
 Nl
 Nl
@@ -12942,19 +12785,19 @@ Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
 Nl
 Nl
 Nl
@@ -13084,19 +12927,19 @@ Nl
 Nl
 Nl
 Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
-Nl
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
+SI
 Nl
 Nl
 Nl
@@ -15385,7 +15228,7 @@ IJ
 IJ
 Aj
 Ya
-Ya
+RJ
 NV
 NV
 NV
@@ -15399,7 +15242,7 @@ NV
 NV
 NV
 NV
-Ya
+SG
 yZ
 zm
 XA
@@ -15529,17 +15372,17 @@ Jl
 Ya
 NV
 NV
-SI
-SI
-SI
-YX
-YX
-YX
-YX
-SI
-SI
-SI
-SI
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
 NV
 NV
 Qx
@@ -15670,19 +15513,19 @@ Sj
 TB
 Ya
 NV
-SI
-SI
-Ch
-Px
-fZ
-fZ
-fZ
-fZ
-DE
-iu
-SI
-SI
-SI
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
 NV
 Qx
 Ya
@@ -15812,19 +15655,19 @@ yK
 co
 Ya
 NV
-jx
-ti
-Sc
-Sc
-fZ
-fZ
-fZ
-fZ
-fZ
-Ix
-SI
-lS
-SI
+NV
+NV
+NV
+NV
+sv
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
 NV
 Qx
 Ya
@@ -15954,19 +15797,19 @@ jJ
 co
 Ya
 NV
-jx
-iO
-Sc
-Sc
-fZ
-fZ
-fx
-fZ
-fZ
-ta
-uF
-zg
-QD
+NV
+NV
+NV
+NV
+NV
+Po
+NV
+NV
+NV
+NV
+NV
+NV
+NV
 NV
 AK
 Ts
@@ -16096,19 +15939,19 @@ yK
 co
 Ya
 NV
-jx
-WR
-Sc
-Sc
-fZ
-fZ
-fZ
-fZ
-fZ
-tt
-SI
-pT
-SI
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
 NV
 Qx
 Ya
@@ -16238,19 +16081,19 @@ kH
 Ei
 Ya
 NV
-SI
-SI
-Of
-Vv
-fZ
-fZ
-DT
-TG
-fZ
-fZ
-SI
-SI
-SI
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
 NV
 CK
 Ya
@@ -16381,17 +16224,17 @@ lc
 Ya
 NV
 NV
-SI
-SI
-SI
-SI
-SI
-vS
-SI
-SI
-SI
-SI
-SI
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
+NV
 NV
 NV
 CK
@@ -16521,7 +16364,7 @@ bz
 bz
 hw
 Ya
-Ya
+Zj
 NV
 NV
 NV
@@ -16535,7 +16378,7 @@ NV
 NV
 NV
 NV
-Ya
+nj
 LO
 GQ
 Ts

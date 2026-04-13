@@ -6103,6 +6103,7 @@
 #include "maps\sectors\factions\independent\itv_manta\shuttles\itv_manta-boarding_craft.dmm"
 #include "maps\sectors\factions\independent\itv_talon\itv_talon-areas.dm"
 #include "maps\sectors\factions\independent\itv_talon\itv_talon-misc.dm"
+#include "maps\sectors\factions\independent\itv_talon\itv_talon-shuttles.dm"
 #include "maps\sectors\factions\independent\itv_talon\itv_talon.dm"
 #include "maps\sectors\factions\independent\itv_talon\shuttles\itv_talon-talon_boat.dm"
 #include "maps\sectors\factions\independent\itv_talon\shuttles\itv_talon-talon_lifeboat.dm"

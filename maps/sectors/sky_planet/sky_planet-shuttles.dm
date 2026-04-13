@@ -1,29 +1,31 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 #warn above
 
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /westrig1, "NT Outpost Hyades - West Rig 1")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /westrig2, "NT Outpost Hyades - West Rig 2")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /southrig1, "NT Outpost Hyades - South Rig 1")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /southrig3, "NT Outpost Hyades - South Rig 3")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /northrig2, "NT Outpost Hyades - North Rig 2")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /northrig2_hammerhead, "NT Outpost Hyades - North Rig 2 - Hammerhead")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /northrig3, "NT Outpost Hyades - North Rig 3")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /eastrig1, "NT Outpost Hyades - East Rig 1")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /eastrig3, "NT Outpost Hyades - East Rig 3")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /westrig1, "NT Outpost Hyades - West Rig 1")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /westrig2, "NT Outpost Hyades - West Rig 2")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /southrig1, "NT Outpost Hyades - South Rig 1")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /southrig3, "NT Outpost Hyades - South Rig 3")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /northrig2, "NT Outpost Hyades - North Rig 2")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /northrig2_hammerhead, "NT Outpost Hyades - North Rig 2 - Hammerhead")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /northrig3, "NT Outpost Hyades - North Rig 3")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /eastrig1, "NT Outpost Hyades - East Rig 1")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /eastrig3, "NT Outpost Hyades - East Rig 3")
 
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/redcomet, "Voidline Rig - Red Comet Pad")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/bonnethead, "Voidline Rig - Bonnethead Pad")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/udang, "Voidline Rig - Udang Pari-pari Pad")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/arrowhead, "Voidline Rig - Arrowhead Pad")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/redcomet, "Voidline Rig - Red Comet Pad")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/bonnethead, "Voidline Rig - Bonnethead Pad")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/udang, "Voidline Rig - Udang Pari-pari Pad")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/arrowhead, "Voidline Rig - Arrowhead Pad")
 
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_1, "Voidline Rig - Pad 1")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_2, "Voidline Rig - Pad 2")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_3, "Voidline Rig - Pad 3")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_4, "Voidline Rig - Pad 4")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_5, "Voidline Rig - Pad 5")
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/pad_6, "Voidline Rig - Pad 6")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/pad_1, "Voidline Rig - Pad 1")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/pad_2, "Voidline Rig - Pad 2")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/pad_3, "Voidline Rig - Pad 3")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/pad_4, "Voidline Rig - Pad 4")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/pad_5, "Voidline Rig - Pad 5")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/pad_6, "Voidline Rig - Pad 6")
 
-DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(sky_planet, /voidline/crescend, "Occulum Rig - Crescend Pad")
+DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/sky_planet, /voidline/crescend, "Occulum Rig - Crescend Pad")
 
 #warn obliterate below
 

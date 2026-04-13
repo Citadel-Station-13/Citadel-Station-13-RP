@@ -907,7 +907,7 @@
 } \
 /obj/shuttle_aligner/port/##PATH
 
-/obj/shuttle_aligner/port/north
+SHUTTLE_PORT_PATH(north)
 	dir = NORTH
 
 SHUTTLE_PORT_PATH(south)
@@ -985,3 +985,5 @@ SHUTTLE_PORT_PATH(three_wide/west)
 	dir = WEST
 	port_offset = 1
 	pixel_y = -32
+
+#undef SHUTTLE_PORT_PATH
