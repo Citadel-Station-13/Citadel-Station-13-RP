@@ -3,6 +3,8 @@
 
 /**
  * Modal to instantiate a new shuttle template
+ * * Instantiated shuttle template will be placed into effectively nullspace
+ *   until an admin moves it to somewhere in the game world.
  */
 /datum/admin_modal/instantiate_shuttle_template
 	name = "Instantiate Shuttle Template"
@@ -71,6 +73,8 @@
 /datum/admin_modal/instantiate_shuttle_template/proc/attempt_parse_and_check_buffer()
 
 /datum/admin_modal/instantiate_shuttle_template/proc/attempt_finalize()
+
+#warn impl; make sure to open shuttle controller after we're done so admin can move it.
 
 // /datum/admin_modal/instantiate_shuttle_template/ui_data(mob/user, datum/tgui/ui)
 // 	. = ..()

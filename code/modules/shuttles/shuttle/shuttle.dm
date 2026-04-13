@@ -579,6 +579,11 @@
 /**
  * Get preview outline for docking and others.
  *
+ * * The returned object will be valid in overlays and vis contents.
+ * * The returned object shall not be modified.
+ * * The returned object is centered on the shuttle anchor.
+ * * The returned object has INHERIT LAYER / PLANE / DIR for vis flags.
+ *
  * @return an object that may be used in overlays or vis contents, and should not be modified.
  */
 /datum/shuttle/proc/get_preview(regenerate)

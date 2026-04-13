@@ -8,9 +8,9 @@
 	 */
 	var/datum/shuttle_hook/hook
 	/**
-	 * The transit stage being stage
+	 * The operation being blocked
 	 */
-	var/datum/shuttle_transit_stage/stage
+	var/datum/shuttle_operation/operation
 
 	/// May be forced
 	var/forceable = FALSE
@@ -20,19 +20,21 @@
 
 	var/desc = "Unknown Blocker"
 
-/datum/shuttle_operation_blocker/New(datum/shuttle_hook/hook, datum/shuttle_transit_stage/stage, desc)
+/datum/shuttle_operation_blocker/New(datum/shuttle_hook/hook, datum/shuttle_operation/operation, desc)
 	. = ..()
-	src.hook = hook
-	src.stage = stage
+	src.operation = operation
 	src.desc = desc
-	LAZYADD(stage.blockers, src)
-	LAZYADD(hook.blocking, src)
+	LAZYADD(operation.blockers, src)
+	if(hook)
+		src.hook = hook
+		LAZYADD(hook.blocking, src)
 
 /datum/shuttle_operation_blocker/Destroy()
-	hook = null
-	stage = null
-	LAZYREMOVE(stage.blockers, src)
-	LAZYREMOVE(hook.blocking, src)
+	operation = null
+	LAZYREMOVE(operation.blockers, src)
+	if(hook)
+		hook = null
+		LAZYREMOVE(hook.blocking, src)
 	return ..()
 
 /**
@@ -49,4 +51,4 @@
 
 /datum/shuttle_operation_blocker/safety
 	forceable = TRUE
-	forcing_could_be_dangerous = TRUE
+	forceable_require_dangerous = TRUE

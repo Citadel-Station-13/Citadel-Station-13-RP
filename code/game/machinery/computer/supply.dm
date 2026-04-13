@@ -63,7 +63,7 @@
 		if(!controller.get_transit_stage())
 			shuttle_status["location"] = "In transit"
 			shuttle_status["mode"] = SUP_SHUTTLE_TRANSIT
-			shuttle_status["time"] = controller.legacy_eta_in_minutes()
+			shuttle_status["time"] = floor(controller.transit_time_left() / (1 MINUTES))
 		else
 			shuttle_status["time"] = 0
 			if(controller.is_at_away())
@@ -379,11 +379,9 @@
 		else if(href_list["add_item"])
 			SSsupply.add_export_item(E, user)
 
-
-
 	switch(href_list["send_shuttle"])
 		if("send_away")
-			if(legacy_supply_forbidden_atoms_check(controller.shuttle))
+			if(controller.shuttle.has_forbidden_atoms())
 				to_chat(usr, "<span class='warning'>For safety reasons the automated supply shuttle cannot transport live organisms, classified nuclear weaponry or homing beacons.</span>")
 			else
 				if(controller.get_transit_stage() || !controller.is_at_away())

@@ -74,7 +74,7 @@
  *
  * @return list(x, y, z, dir)
  */
-/obj/shuttle_aligner/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
+/obj/shuttle_aligner/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
 	return calculate_entity_motion_with_respect_to_moving_point(
 		list(src.x, src.y, src.z),
 		src.dir,
@@ -389,9 +389,9 @@
  * parameters
  *
  * @params
- * * dock - the dock we'd dock at
- * * align_with_port - if we're aligning with a port instead of performing a centered docking
- * * centered - are we doing a centered docking? if not, we're just matching the dock's coordinates
+ * * dock - the dock we'd dock at.
+ * * align_with_port - if we're aligning with a port. overrides `centered` and `direction`
+ * * centered - are we doing a centered docking? if not, we're just matching the dock's coordinates.
  * * direction - the direction we need to be at when we arrive
  *
  * @return list(x, y, z, dir)
@@ -410,27 +410,6 @@
 	else
 		// align us with it
 		return list(dock.x, dock.y, dock.z, direction || dock.dir)
-
-/**
- * get rotated coordinates and direction when moved with another location on the shuttle
- *
- * @params
- * * old_coords - list(x,y,z)
- * * new_coords - list(x,y,z)
- * * old_dir - old direction
- * * new_dir - new direction
- *
- * @return list(x, y, z, dir)
- */
-/obj/shuttle_aligner/master/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
-	return calculate_entity_motion_with_respect_to_moving_point(
-		list(src.x, src.y, src.z),
-		src.dir,
-		old_coords,
-		new_coords,
-		old_dir,
-		new_dir,
-	)
 
 /**
  * checks if we intersect a dock at a given coordinate and direction
@@ -723,10 +702,16 @@
 		1,
 	)
 
-	for(var/turf/T as anything in ordered_turfs_at + one_wide_border)
+	for(var/turf/T as anything in ordered_turfs_at)
 		// do not allow clipping shuttles; that would be bad.
 		if(istype(T.loc, /area/shuttle))
 			return null
+		// do not allow zlevel borders; annihilating them would be bad
+		// also don't cross out of reservations that would be really, really bad.
+		if(T.turf_flags & (TURF_FLAG_LEVEL_BORDER | TURF_FLAG_UNUSED_RESERVATION))
+			return null
+
+	for(var/turf/T as anything in one_wide_border)
 		// do not allow zlevel borders; annihilating them would be bad
 		// also don't cross out of reservations that would be really, really bad.
 		if(T.turf_flags & (TURF_FLAG_LEVEL_BORDER | TURF_FLAG_UNUSED_RESERVATION))
@@ -830,8 +815,6 @@
 	var/turn_angle = dir2angle(src.dir) - dir2angle(direction)
 	return shuttle.anchor.overall_height(turn(shuttle.anchor.dir, turn_angle))
 
-#warn below, two functions above
-
 /obj/shuttle_aligner/port/aabb_ordered_turfs_at(turf/location, direction = src.dir)
 	// unpack
 	var/new_x
@@ -856,7 +839,7 @@
 
 	return shuttle.anchor.aabb_ordered_turfs_at(anchor_motion, anchor_motion[4])
 
-/obj/shuttle_aligner/port/proc/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
+/obj/shuttle_aligner/port/aabb_ordered_turfs_at_and_clip_check(turf/location, direction)
 	// unpack
 	var/new_x
 	var/new_y

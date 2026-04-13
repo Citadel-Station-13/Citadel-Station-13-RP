@@ -118,8 +118,9 @@
 	entity.bound_width = src.overmap_bound_width
 	entity.bound_height = src.overmap_bound_height
 
-	var/measured_icon_width = entity.icon.Width()
-	var/measured_icon_height = entity.icon.Height()
+	var/icon/measuring = icon(entity.icon)
+	var/measured_icon_width = measuring.Width()
+	var/measured_icon_height = measuring.Height()
 
 	if(measured_icon_width != entity.bound_width)
 		entity.icon_w = -(measured_icon_width - entity.bound_width) / 2
@@ -134,5 +135,4 @@
 		visitable.scanner_name = src.overmap_legacy_scan_name
 		visitable.scanner_desc = src.overmap_legacy_scan_desc
 		visitable.unknown_name = src.overmap_legacy_name
-		visitable.unknown_desc = src.overmap_legacy_desc
 		visitable.known = !src.overmap_legacy_start_unknown

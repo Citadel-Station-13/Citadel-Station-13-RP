@@ -1,8 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-#warn rework this file, need clearer soft / hard / error out / warning out's
-#warn use max() for _BOUNDING_* returns
+#warn consider rethinking how dock alignment works
 
 /**
  * check bounding boxes
@@ -12,13 +11,29 @@
  * @params
  * * dock -  dock to dock to
  * * with_port - port to align with dock; if null, we do a centered docking
- * * hard_checks_only - only check for hard faults. this is usually set to TRUE for dock landings, because docks are consdiered protected!
+ * * abort_on_fault - fault level to abort checks on. we will never abort checks if bad_turfs_out is provided.
+ * * bounds_checking_flags - SHUTTLE_BOUNDS_CHECKING_* flags
  * * use_ordered_turfs - pass in ordered turfs to use instead of the normal bounds check
+ * * bad_turfs_out - passes back turfs that block bounds in any way. if this is not provided,
+ *                   checks may short-circuit and abort on the first bad turf.
+ *
+ * @return SHUTTLE_BOUNDING_* define
  */
-/datum/shuttle/proc/check_docking_bounds(obj/shuttle_dock/dock, obj/shuttle_aligner/port/with_port, hard_checks_only, list/turf/use_ordered_turfs)
-	if(isnull(hard_checks_only))
-		hard_checks_only = dock.trample_bounding_box
-	#warn impl
+/datum/shuttle/proc/check_docking_bounds(
+	obj/shuttle_dock/dock,
+	obj/shuttle_aligner/port/with_port,
+	abort_on_fault = SHUTTLE_BOUNDING_HARD_FAULT,
+	bounds_checking_flags,
+	list/turf/use_ordered_turfs,
+	list/bad_turfs_out
+)
+	var/turf/to_loc
+	var/to_dir
+
+	if(with_port)
+		var/list/result = anchor.calculate_resultant_motion_from_docking
+
+	return check_bounding(to_loc, to_dir, abort_on_fault, bounds_checking_flags, use_ordered_turfs, bad_turfs_out, dock)
 
 #warn we're going to need a way to allow crashing into things liek trees..
 
@@ -28,19 +43,30 @@
  * @params
  * * turf/location - location anchor will be at
  * * direction - direction anchor will be at
- * * hard_checks_only - only check for hard faults
- * * use_ordered_turfs - pass in ordered turfs to use instead of the normal bounds check.
- *                       if you do, you are expected to 'clip check' this for other docks already!
- * * docking_at - dock we're going to. used to exclude it from dock boundary checks.
+ * * abort_on_fault - fault level to abort checks on. we will never abort checks if bad_turfs_out is provided.
+ * * bounds_checking_flags - SHUTTLE_BOUNDS_CHECKING_* flags
+ * * use_ordered_turfs - pass in ordered turfs to use instead of the normal bounds check
+ * * bad_turfs_out - passes back turfs that block bounds in any way. if this is not provided,
+ *                   checks may short-circuit and abort on the first bad turf.
+ * * dock_going_to - if specified, ignore this dock for bounds protections
  */
-/datum/shuttle/proc/check_bounding(turf/location, direction, hard_checks_only, list/turf/use_ordered_turfs, obj/shuttle_dock/docking_at)
+/datum/shuttle/proc/check_bounding(
+	turf/location,
+	direction,
+	abort_on_fault = SHUTTLE_BOUNDING_HARD_FAULT,
+	bounds_checking_Flags,
+	list/use_ordered_turfs,
+	list/bad_turfs_out,
+	obj/shuttle_dock/dock_going_to
+)
+#warn below
 	if(isnull(use_ordered_turfs))
 		use_ordered_turfs = anchor.aabb_ordered_turfs_at_and_clip_check(location, direction)
 		SSgrids.filter_ordered_turfs_via_area(areas, use_ordered_turfs)
 	if(isnull(use_ordered_turfs))
-		return SHUTTLE_DOCKING_BOUNDING_HARD_FAULT
+		return SHUTTLE_BOUNDING_HARD_FAULT
 	if(hard_checks_only)
-		return SHUTTLE_DOCKING_BOUNDING_CLEAR
+		return SHUTTLE_BOUNDING_CLEAR
 	for(var/obj/shuttle_dock/enemy_dock in SSshuttle.docks_by_level[location.z])
 		if(enemy_dock == docking_at)
 			continue
@@ -49,10 +75,10 @@
 		if(!anchor.intersects_dock(enemy_dock))
 			continue
 		// we do intersect
-		return SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT
+		return SHUTTLE_BOUNDING_SOFT_FAULT
 	if(!check_bounding_trample_turfs_binary(use_ordered_turfs))
-		return SHUTTLE_DOCKING_BOUNDING_SOFT_FAULT
-	return SHUTTLE_DOCKING_BOUNDING_CLEAR
+		return SHUTTLE_BOUNDING_SOFT_FAULT
+	return SHUTTLE_BOUNDING_CLEAR
 
 /**
  * called binary because we return TRUE / FALse only

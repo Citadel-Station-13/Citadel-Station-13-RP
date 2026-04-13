@@ -2,6 +2,7 @@
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
 DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(belter_shuttle, /belter_shuttle, "Belter Shuttle")
+
 /datum/shuttle_controller/ferry/round_global/belter_shuttle
 	var/belter_rebuilding = FALSE
 
