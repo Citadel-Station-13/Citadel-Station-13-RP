@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(supply)
 
 // Selling
 /datum/controller/subsystem/supply/proc/sell()
-	var/list/turf/region = GLOB.global_ferry_supply_shuttle_controller?.shuttle?.aabb_ordered_turfs_here()
+	var/list/turf/region = GLOB.global_ferry_supply_shuttle_controller?.shuttle?.shuttle_turfs_here()
 	for(var/turf/turf as anything in region)
 		callHook("sell_turf", list(turf));
 		for(var/obj/MA in turf)
@@ -153,7 +153,7 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/proc/get_clear_turfs()
 	var/list/clear_turfs = list()
 
-	var/list/potential = GLOB.global_ferry_supply_shuttle_controller?.shuttle?.aabb_ordered_turfs_here()
+	var/list/potential = GLOB.global_ferry_supply_shuttle_controller?.shuttle?.shuttle_turfs_here()
 
 	for(var/turf/T in potential)
 		if(T.density)

@@ -1,6 +1,34 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
+/**
+ * Returns axis-aligned bounding box ordered turfs at our current location.
+ * * This does not filter by our shuttle's area, so it may return turfs that are not actually inside us.
+ */
+/datum/shuttle/proc/aabb_ordered_turfs_here()
+	return anchor.aabb_ordered_turfs_here()
+
+/**
+ * Returns axis-aligned bounding box ordered turfs at a given location / direction.
+ * * This does not filter by our shuttle's area, so it may return turfs that are not actually inside us.
+ */
+/datum/shuttle/proc/aabb_ordered_turfs_at(turf/anchor, direction)
+	return src.anchor.aabb_ordered_turfs_at(anchor, direction)
+
+/**
+ * Returns turfs at our current location.
+ * * This does filter by our shuttle's area, so it will only return turfs that are actually inside us.
+ */
+/datum/shuttle/proc/shuttle_turfs_here()
+	return SSgrids.filter_ordered_turfs_via_area(areas, aabb_ordered_turfs_here())
+
+/**
+ * Returns turfs at a given location / direction.
+ * * This does filter by our shuttle's area, so it will only return turfs that are actually inside us.
+ */
+/datum/shuttle/proc/shuttle_turfs_at(turf/anchor, direction)
+	return SSgrids.filter_ordered_turfs_via_area(areas, aabb_ordered_turfs_at(anchor, direction))
+
 #warn consider rethinking how dock alignment works
 
 /**

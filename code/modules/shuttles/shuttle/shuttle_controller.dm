@@ -27,7 +27,7 @@
 	/// dock UIDs we always have codes for
 	var/list/docking_always_has_code_to_ids
 
-	//* Docking - State
+	//* Docking - State *//
 	/// current docking cycle
 	//  todo: docking is currently on a spinlock system. should we put it on SSshuttles instead?
 	var/docking_cycle = 0
@@ -45,7 +45,7 @@
 	/// ongoing docking event
 	var/datum/event_args/shuttle/dock/docking_event
 
-	//* Manual Landing
+	//* Manual Landing *//
 	/// current manual landing dock
 	var/obj/shuttle_dock/manual_dock
 	/**
@@ -55,7 +55,7 @@
 	 */
 	var/list/datum/shuttle_docker/docker_by_user
 
-	//* Transit
+	//* Transit *//
 	/// in-progress transit
 	var/datum/shuttle_transit_cycle/transit_cycle
 	/// default transit time
@@ -63,8 +63,9 @@
 	/// default takeoff time
 	var/takeoff_time_default = 5 SECONDS
 
-	//* UI
+	//* UI *//
 	/// tgui interface to load
+	#warn is this for admin uis or
 	var/tgui_module
 
 /datum/shuttle_controller/New(datum/shuttle/shuttle)

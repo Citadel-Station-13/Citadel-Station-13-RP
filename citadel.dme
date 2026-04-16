@@ -6118,7 +6118,7 @@
 #include "maps\sectors\factions\nanotrasen\ndv_von_braun\ndv_von_braun-misc.dm"
 #include "maps\sectors\factions\nanotrasen\ndv_von_braun\ndv_von_braun.dm"
 #include "maps\sectors\factions\nanotrasen\ndv_von_braun\shuttles\ndv_von_braun-nrv_robineau.dm"
-#include "maps\sectors\factions\nanotrasen\ndv_von_braun\shuttles\ndv_von_braun-_robineau.dmm"
+#include "maps\sectors\factions\nanotrasen\ndv_von_braun\shuttles\ndv_von_braun-nrv_robineau.dmm"
 #include "maps\sectors\frozen_192\frozen_192.dm"
 #include "maps\sectors\gaia_192\gaia_192.dm"
 #include "maps\sectors\ice_comet\ice_comet-area.dm"

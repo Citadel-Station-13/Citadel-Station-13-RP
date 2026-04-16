@@ -8,7 +8,7 @@
 	/// the controller we're executing on
 	var/datum/shuttle_controller/controller
 	/// blockers currently active, if any
-	var/list/datum/shuttle_operation_blocker/active_blockers = list()
+	var/list/datum/shuttle_operation_blocker/blockers = list()
 
 	/// is forcing
 	var/forcing = FALSE
@@ -25,8 +25,8 @@
 	src.controller = controller
 
 /datum/shuttle_operation/Destroy()
-	QDEL_LIST(active_blockers)
-	on_finished = null
+	QDEL_LIST(blockers)
+	on_finish = null
 	controller = null
 	return ..()
 
@@ -45,16 +45,22 @@
 /datum/shuttle_operation/proc/finish(status)
 	if(src.status != SHUTTLE_OPERATION_STATUS_RUNNING)
 		return FALSE
+	if(status == SHUTTLE_OPERATION_STATUS_RUNNING)
+		return FALSE
 	src.status = status
 	for(var/datum/callback/on_finish as anything in src.on_finish)
 		on_finish.InvokeAsync(src, status)
 	return TRUE
 
 /**
- * * This may delete ourselvse as if we finish the controller usually deletes us.
+ * * This may delete ourselves as if we finish the controller usually deletes us.
  */
 /datum/shuttle_operation/proc/poll()
-	#warn impl
+	if(length(blockers))
+		var/
+		#warn ok not only do we need to force/whatnot, blockers need to be told they were terminated / forced if needed :|
+		return
+	src.finish(SHUTTLE_OPERATION_STATUS_SUCCESS)
 
 /datum/shuttle_operation/proc/force()
 	#warn impl

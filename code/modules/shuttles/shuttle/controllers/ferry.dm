@@ -110,7 +110,7 @@
 	return shuttle.docked.dock_id == dock_away_id
 
 /datum/shuttle_controller/ferry/proc/is_at_known_location()
-	return ferry_is_at_home() || ferry_is_at_away()
+	return is_at_home() || is_at_away()
 
 /datum/shuttle_controller/ferry/proc/is_in_transit()
 	return !shuttle.docked

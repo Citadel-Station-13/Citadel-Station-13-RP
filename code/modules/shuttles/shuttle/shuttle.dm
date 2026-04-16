@@ -280,23 +280,6 @@
 		CRASH("controller refused to init")
 	return TRUE
 
-//* Bounding Box *//
-
-/**
- * returns with the current direction of the shuttle
- */
-/datum/shuttle/proc/aabb_ordered_turfs_here()
-	return anchor.aabb_ordered_turfs_here()
-
-/datum/shuttle/proc/aabb_ordered_turfs_at(turf/anchor, direction)
-	return src.anchor.aabb_ordered_turfs_at(anchor, direction)
-
-/datum/shuttle/proc/shuttle_turfs_here()
-	return SSgrids.filter_ordered_turfs_via_area(areas, aabb_ordered_turfs_here())
-
-/datum/shuttle/proc/shuttle_turfs_at(turf/anchor, direction)
-	return SSgrids.filter_ordered_turfs_via_area(areas, aabb_ordered_turfs_at(anchor, direction))
-
 //* Docking - Control *//
 
 /**
