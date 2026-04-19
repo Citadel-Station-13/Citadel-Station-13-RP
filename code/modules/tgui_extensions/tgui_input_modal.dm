@@ -4,24 +4,25 @@
 /**
  * @params
  * * type - modal type
- * * actor - actor doing it
+ * * user - the user
  * * validity - (optional) additional validity checks
  * * ... - additional args to pass to initialize()
  *
  * @return modal or null if failed to open
  */
-/proc/open_tgui_actor_modal(type, datum/event_args/actor/actor, datum/callback/validity, ...)
-	var/datum/tgui_actor_modal/modal_type = type
+/proc/open_tgui_input_modal(type, mob/user, datum/callback/validity, ...)
+	#warn rework this logic . all of it. it's just a copy from actor modal.
+	var/datum/tgui_input_modal/modal_type = type
 	if(modal_type.no_type_dupe)
-		var/mob/initiator = actor.initiator
-		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type, initiator, actor.performer)
+		var/mob/initiator = user
+		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type, initiator, user)
 		if(HAS_TRAIT(initiator, trait))
 			return
-	var/datum/tgui_actor_modal/modal = new type(actor, validity)
+	var/datum/tgui_input_modal/modal = new type(user, validity)
 	if(!modal.initialize(arglist(args.Copy(4))))
 		qdel(modal)
 		return
-	modal.ui_interact(actor.initiator)
+	modal.ui_interact(user)
 	return modal
 
 /**
@@ -30,11 +31,11 @@
  *
  * * not to be confused with `/datum/admin_modal`; these have a specific
  *   user and target, usually
- * * these should be in `tgui/interfaces/actor_modal` ideally.
+ * * these should be in `tgui/interfaces/input_modal` ideally.
  */
-/datum/tgui_actor_modal
-	/// actor initiator-performer pair
-	var/datum/event_args/actor/actor
+/datum/tgui_input_modal
+	/// intended user
+	var/mob/user
 	/// check to see if we can still do it; useful if we're remote controlling or something
 	var/datum/callback/validity
 	/// only one type on initiator-performer pair, period
@@ -46,37 +47,40 @@
 	/// we use always_state and initiator-only
 	var/lock_to_initiator = TRUE
 
-/datum/tgui_actor_modal/New(datum/event_args/actor/actor, datum/callback/validity)
-	var/mob/initiator = actor.initiator
-	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
+	var/result
+	var/blocking_on_result = 0
+
+/datum/tgui_input_modal/New(mob/user, datum/callback/validity)
+	var/mob/initiator = user
+	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, user)
 	ADD_TRAIT(initiator, trait, ref(src))
-	src.actor = actor
+	src.user = user
 	src.validity = validity
 
-/datum/tgui_actor_modal/Destroy()
-	var/mob/initiator = actor.initiator
-	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
+/datum/tgui_input_modal/Destroy()
+	var/mob/initiator = user
+	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, user)
 	REMOVE_TRAIT(initiator, trait, ref(src))
-	actor = null
+	user = null
 	validity = null
 	return ..()
 
 /**
  * @return FALSE to reject opening
  */
-/datum/tgui_actor_modal/proc/initialize()
+/datum/tgui_input_modal/proc/initialize()
 	return TRUE
 
-/datum/tgui_actor_modal/ui_state(mob/user)
+/datum/tgui_input_modal/ui_state(mob/user)
 	return GLOB.always_state
 
-/datum/tgui_actor_modal/ui_status(mob/user, datum/ui_state/state)
+/datum/tgui_input_modal/ui_status(mob/user, datum/ui_state/state)
 	if(lock_to_initiator)
-		if(user != actor.initiator)
+		if(user != src.user)
 			return UI_CLOSE
 	return ..()
 
-/datum/tgui_actor_modal/ui_interact(mob/user, datum/tgui/ui)
+/datum/tgui_input_modal/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, tgui_interface)
@@ -87,6 +91,22 @@
 		if(!QDELETED(src) && !length(open_uis))
 			qdel(src)
 
-/datum/tgui_actor_modal/on_ui_close(mob/user, datum/tgui/ui, embedded)
+/datum/tgui_input_modal/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	..()
 	qdel(src)
+
+/datum/tgui_input_modal/proc/submit_result(result)
+	src.result = result
+	qdel(src)
+	if(!blocking_on_result)
+		src.result = null
+
+/datum/tgui_input_modal/proc/block_on_result(timeout = INFINITY)
+	++blocking_on_result
+	var/start_time = world.time
+	UNTIL(result || (world.time > (start_time + timeout)) || QDELETED(src))
+	--blocking_on_result
+	. = result
+	if(!blocking_on_result)
+		// un-reference if nothing else needs it
+		result = null
