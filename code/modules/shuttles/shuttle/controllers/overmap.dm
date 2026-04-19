@@ -62,7 +62,7 @@
 	var/datum/overmap_location/shuttle/assembled_location = new(src)
 	entity = new /obj/overmap/entity/visitable/ship/landable(null, assembled_location)
 
-	descriptor.imprint_on_entity(entity)
+	shuttle.descriptor.imprint_on_entity(entity)
 
 	var/atom/detected_location = detect_entity_location()
 

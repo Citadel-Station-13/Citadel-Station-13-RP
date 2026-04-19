@@ -3,6 +3,7 @@
 
 /**
  * Stores data about the current transit cycle
+ * * Transit cycles are event-driven.
  */
 /datum/shuttle_transit_cycle
 	//* state / processing *//

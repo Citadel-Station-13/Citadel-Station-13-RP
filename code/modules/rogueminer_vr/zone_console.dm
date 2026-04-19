@@ -60,7 +60,7 @@
 	if(at_home)
 		data["shuttle_location"] = "Landed"
 		data["shuttle_at_station"] = 1
-	else if(GLOB.legacy_belter_shuttle?.in_transit)
+	else if(GLOB.global_ferry_belter_shuttle_controller.is_in_transit())
 		data["shuttle_location"] = "In-transit"
 		data["shuttle_at_station"] = 0
 	else if(shuttle_controller?.is_at_away())

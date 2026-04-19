@@ -74,7 +74,7 @@
  *
  * @return list(x, y, z, dir)
  */
-/obj/shuttle_aligner/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
+/obj/shuttle_aligner/proc/calculate_motion_with_respect_to(list/old_coords, list/new_coords, old_dir, new_dir)
 	return calculate_entity_motion_with_respect_to_moving_point(
 		list(src.x, src.y, src.z),
 		src.dir,

@@ -2,28 +2,40 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /datum/admin_modal/overmap_controller
-	var/obj/overmap/entity/target
 	tgui_interface = "OvermapController"
-
-#warn ui
+	var/obj/overmap/entity/target
+	var/datum/secondary_map/target_renderer
 
 /datum/admin_modal/overmap_controller/Initialize(obj/overmap/entity/target)
 	if(!istype(target))
 		return FALSE
 	src.target = target
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(on_target_del))
 	for(var/datum/admin_modal/overmap_controller/other in owner.admin_modals)
 		if(other == src)
 			continue
 		if(other.target == src.target)
 			return FALSE
+	target_renderer = new /datum/secondary_map/follow_entity_with_radius(target, 2)
 	return TRUE
+
+/datum/admin_modal/overmap_controller/Destroy()
+	target = null
+	QDEL_NULL(target_renderer)
+	return ..()
 
 /datum/admin_modal/overmap_controller/on_ui_open(mob/user, datum/tgui/ui, embedded)
 	. = ..()
+	target_renderer?.grant_to_user(user)
 
 /datum/admin_modal/overmap_controller/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
+	target_renderer?.revoke_from_user(user)
 
+/datum/admin_modal/overmap_controller/proc/on_target_del()
+	qdel(src)
+
+#warn ui
 
 /datum/admin_modal/overmap_controller/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -35,8 +47,7 @@
 /datum/admin_modal/overmap_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["name"] = target.name
-	#warn secondary map
-	.["mapRef"] = ""
+	.["mapRef"] = target_renderer?.map_id
 
 	if(target.location)
 		if(istype(target.location, /datum/overmap_location/shuttle))
@@ -66,12 +77,29 @@
 
 	switch(action)
 		if("setVel")
-		if("setPos")
+			var/set_x = params["vx"]
+			var/set_y = params["vy"]
+			if(!isnum(set_x) || !isnum(set_y))
+				return TRUE
+			target.set_velocity(set_x * OVERMAP_DISTANCE_PIXEL, set_y * OVERMAP_DISTANCE_PIXEL)
+			return TRUE
+		if("jumpTo")
+			#warn impl; adminjump?
+			return TRUE
 		if("yankToHere")
+			var/mob/their_mob = admin_holder.owner?.mob
+			if(!their_mob)
+				return TRUE
+			// no yanking off the overmap!
+			if(!istype(their_mob.loc?.loc, /area/overmap))
+				return TRUE
+			var/pixloc/use = their_mob.pixloc
+			if(!use)
+				return TRUE
+			target.force_move_p(use)
+			return TRUE
 		if("narrate")
 			// special behavior; target shuttle specifically
 			// rather than overmap entity if it's a shuttle
-		if("halt")
-		if("unhalt")
-
-#warn impl
+			admin_holder.open_admin_modal(/datum/admin_modal/admin_narrate, target)
+			return TRUE

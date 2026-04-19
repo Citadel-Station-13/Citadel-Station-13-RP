@@ -132,7 +132,7 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/fetch_template(datum/shuttle_template/template_like)
 	if(ispath(template_like, /datum/shuttle_template))
 		if(isnull(templates_by_path[template_like]))
-			templates_by_path[template_like] = load_shuttle_template(new template_like)
+			templates_by_path[template_like] = register_shuttle_template(new template_like)
 		return templates_by_path[template_like]
 	else if(istext(template_like))
 		return templates_by_id[template_like]
@@ -140,7 +140,10 @@ SUBSYSTEM_DEF(shuttle)
 		return template_like
 	CRASH("what?")
 
-/datum/controller/subsystem/shuttle/proc/load_shuttle_template(datum/shuttle_template/template) as /datum/shuttle_template
+/**
+ * Registers a shuttle template.
+ */
+/datum/controller/subsystem/shuttle/proc/register_shuttle_template(datum/shuttle_template/template) as /datum/shuttle_template
 	#warn dupe check
 	templates_by_id[template.id] = template
 	return template

@@ -38,8 +38,11 @@
 	///
 	/// * Hardcoded shuttle templates will be the path from the server's working directory.
 	var/path
+	/// MD-5 for file, if any
+	/// * Grabbed on first file load
+	var/path_md5
 
-	//* Functionality
+	//* Functionality *//
 	/// our shuttle typepath
 	///
 	/// * yeah uh you probably shouldn't mess with this unless you know what you're doing
@@ -54,7 +57,7 @@
 	/// instances will be cloned.
 	var/datum/shuttle_descriptor/descriptor = /datum/shuttle_descriptor
 
-	//* .dmm
+	//* .dmm *//
 	/// should we keep parsed map once first loaded?
 	var/cache_parsed_map = FALSE
 	/// our parsed map
@@ -62,6 +65,12 @@
 	/// direction the shuttle is facing, in the map
 	/// please try to map shuttles in facing north.
 	var/facing_dir = NORTH
+
+	//* Preview *//
+	/// Is preview generated?
+	/// * Previews are stored in a cache directory.
+	/// * Previews are generated on first load.
+	var/preview_generated = FALSE
 
 /datum/shuttle_template/New(map_resource, use_dir)
 	if(map_resource)
@@ -75,18 +84,40 @@
 	return isfile(path)? path : file(path)
 
 /**
+ * Serializes to a standard format in TGUI.
+ */
+#warn bindings in tgui?
+/datum/shuttle_template/proc/ui_serialize() as /list
+	. = list(
+		"id" = id,
+		"name" = name,
+		"desc" = desc,
+		"display_name" = display_name,
+		"fluff" = fluff,
+		"category" = category,
+		"subcategory" = subcategory,
+		"md5" = path_md5 || null,
+	)
+
+/**
  * Do not directly use. Use create_shuttle() on SSshuttles!
  * * Automatically registers the shuttle.
  */
 /datum/shuttle_template/proc/instance(datum/shuttle_descriptor/merge_in_descriptor, list/datum/map_injection/map_injections)
 	RETURN_TYPE(/datum/shuttle)
 
+	// parse map if needed
 	var/datum/dmm_parsed/parsed_map = src.parsed_map
 	if(isnull(parsed_map))
 		parsed_map = new(get_file())
 		if(cache_parsed_map)
 			src.parsed_map = parsed_map
 
+	// generate md5 if needed
+	if(isnull(path_md5))
+		path_md5 = md5asfile(get_file())
+
+	// make shuttle datum
 	var/datum/shuttle/instance = new shuttle_type
 
 	instance.id = SSshuttle.generate_shuttle_id()
@@ -126,10 +157,24 @@
 	instance.before_bounds_init(reservation, src)
 
 	// init the bounds
+	context.fire_map_initializations()
+	context.fire_map_injections()
 	SSatoms.init_map_bounds(loaded_bounds)
 
 	// let shuttle do post-init things
 	instance.after_bounds_init(reservation, src)
+
+	// if preview isn't generated, generate it now
+	// * warning: this makes the first load slow, but this is necessary for ui.
+	// * warning: this means the first load with map injections is 'authoritative'.
+	// TODO: change preview based on map injections used
+	if(!preview_generated)
+		preview_generated = TRUE
+		SSshuttle.generate_preview(instance, path_md5)
+
+	// unload if needed
+	if(!cache_parsed_map)
+		QDEL_NULL(parsed_map)
 
 	return instance
 

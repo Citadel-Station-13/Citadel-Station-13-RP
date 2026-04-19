@@ -31,13 +31,12 @@
 /// Currently at a dock, and docked.
 #define SHUTTLE_DOCKING_STATE_DOCKED 4
 
-#warn audit file
-//* docking codes
+//* Docking Codes *//
 
 /// max docking codes registered with a shuttle
 #define SHUTTLE_DOCKING_CODES_BUFFER_MAXIMUM 10
 
-//* docking authorization (codes, usually) check
+//* Docking authorization (codes, usually) check return values *//
 
 /// codes valid
 #define SHUTTLE_DOCKING_AUTHORIZATION_VALID 0
@@ -46,7 +45,7 @@
 /// completely disallow docking
 #define SHUTTLE_DOCKING_AUTHORIZATION_BLOCKED 2
 
-//* docking seal check
+//* Docking seal check return values *//
 
 /// no airtight seal
 #define SHUTTLE_DOCKING_SEAL_FAULT 0
@@ -55,8 +54,7 @@
 /// perfect seal
 #define SHUTTLE_DOCKING_SEAL_NOMINAL 2
 
-
-//* docking overlap handlers
+//* Docking overlap handlers *//
 
 /// threshold from edge where we're considered able to be run into the side
 #define SHUTTLE_OVERLAP_SIDE_THRESHOLD 2

@@ -80,8 +80,6 @@ Pipelines + Other Objects -> Pipe network
 	qdel(src)
 	return TRUE
 
-#warn grid hooks
-
 // This is used to set up what directions pipes will connect to.  Should be called inside New() and whenever a dir changes.
 /obj/machinery/atmospherics/proc/init_dir()
 	return

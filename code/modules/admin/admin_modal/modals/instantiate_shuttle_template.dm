@@ -17,8 +17,7 @@
 	var/finalized = FALSE
 
 	var/chosen_shuttle_template_id
-	var/chosen_overmap_icon
-	var/chosen_overmap_icon_state
+	var/chosen_overmap_sprite
 	var/chosen_overmap_name
 	var/chosen_overmap_desc
 	var/chosen_overmap_scanner_name

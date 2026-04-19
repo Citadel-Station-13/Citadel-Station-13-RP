@@ -10,7 +10,7 @@
 /datum/shuttle_descriptor
 	//* Identity *//
 	/// The name used on areas and other player-facing things.
-	/// * Defaults to shuttle name if unset.
+	/// * Defaults to shuttle display name if unset.
 	var/display_name
 
 	//* Flight (overmaps / web) *//

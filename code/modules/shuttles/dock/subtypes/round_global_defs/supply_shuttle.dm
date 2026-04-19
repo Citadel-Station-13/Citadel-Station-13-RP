@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-GLOBAL_LIST_INIT(supply_shuttle_forbidden_atom_typecache, cached_typecache_of(list(
+GLOBAL_LIST_INIT(supply_shuttle_forbidden_atom_typecache, cached_typecacheof(list(
 	/obj/item/disk/nuclear,
 	/obj/machinery/nuclearbomb,
 	/obj/item/radio/beacon,

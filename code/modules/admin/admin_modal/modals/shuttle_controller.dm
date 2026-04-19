@@ -3,25 +3,38 @@
 
 /datum/admin_modal/shuttle_controller
 	var/datum/shuttle/target
-
-#warn ui
+	var/datum/secondary_map/render_entire_shuttle/target_renderer
 
 /datum/admin_modal/shuttle_controller/Initialize(datum/shuttle/target)
 	if(!istype(target))
 		return FALSE
+	RegisterSignal(target, COMSIG_QDELETING, PROC_REF(on_target_del))
 	src.target = target
 	for(var/datum/admin_modal/shuttle_controller/other in owner.admin_modals)
 		if(other == src)
 			continue
 		if(other.target == src.target)
 			return FALSE
+	target_renderer = new /datum/secondary_map/render_entire_shuttle(target)
 	return TRUE
+
+/datum/admin_modal/shuttle_controller/Destroy()
+	target = null
+	QDEL_NULL(target_renderer)
+	return ..()
+
+/datum/admin_modal/shuttle_controller/on_target_del()
+	qdel(src)
+
+#warn ui
 
 /datum/admin_modal/shuttle_controller/on_ui_open(mob/user, datum/tgui/ui, embedded)
 	. = ..()
+	target_renderer?.grant_to_user(user)
 
 /datum/admin_modal/shuttle_controller/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	. = ..()
+	target_renderer?.revoke_from_user(user)
 
 /datum/admin_modal/shuttle_controller/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -29,9 +42,7 @@
 /datum/admin_modal/shuttle_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	.["name"] = target.name
-	.["mapRef"] = ""
-
-	#warn map view
+	.["mapRef"] = target_renderer?.map_id
 
 /datum/admin_modal/shuttle_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
