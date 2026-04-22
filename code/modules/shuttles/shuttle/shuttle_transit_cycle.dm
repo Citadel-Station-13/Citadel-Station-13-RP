@@ -68,7 +68,7 @@
 	var/target_resolved = FALSE
 	/// lazy target resolution hint; arbitrarily set by something calling the transit
 	///
-	/// * also useful for UI!
+	/// * also useful for UI! strings, numbers, paths are resolved fine.
 	var/target_resolver_hint
 	/// for lazy docking support - the callback to call for resolving the target
 	///
