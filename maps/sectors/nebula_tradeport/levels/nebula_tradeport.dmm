@@ -2626,13 +2626,6 @@
 	},
 /turf/simulated/wall,
 /area/shuttle/udang/main)
-"ahr" = (
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
-/obj/structure/cable/yellow,
-/turf/simulated/floor/wood,
-/area/tradeport/commons)
 "ahs" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	anchored = 1;
@@ -2658,15 +2651,6 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/trade_ship/general)
-"ahv" = (
-/obj/item/storage/toolbox/mechanical,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
-/obj/structure/cable/cyan,
-/obj/machinery/power/apc/large_cell/tier_3/south_mount,
-/turf/simulated/floor/plating,
-/area/shuttle/udang/main)
 "ahw" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -7545,17 +7529,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
-"auS" = (
-/obj/structure/closet/crate/secure/engineering{
-	req_access = list(160)
-	},
-/obj/random/tool/power,
-/obj/random/tool/power,
-/obj/random/tool/power,
-/obj/item/cell/regen/fractal/weapon,
-/obj/random/tool/alien,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "auT" = (
 /obj/structure/catwalk,
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
@@ -11503,15 +11476,6 @@
 "aFg" = (
 /turf/simulated/floor/reinforced,
 /area/tradeport/engineering)
-"aFh" = (
-/obj/structure/lattice,
-/obj/structure/catwalk,
-/obj/machinery/door/blast/regular{
-	id = "salv3"
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/salvager)
 "aFi" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -11577,16 +11541,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"aFr" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/cell/basic/tier_4/large,
-/obj/item/cell/basic/tier_4/medium,
-/obj/item/cell/basic/tier_4/medium,
-/obj/item/storage/toolbox/syndicate{
-	pixel_y = 11
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aFs" = (
 /turf/simulated/wall/sandstonediamond,
 /area/tradeport/cyndishow)
@@ -16417,28 +16371,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
-"aTz" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/westright{
-	dir = 2;
-	name = "rare item display case";
-	req_access = list(160)
-	},
-/obj/structure/table/marble,
-/obj/item/gun/projectile/energy/gun/sword_buster,
-/obj/effect/floor_decal/spline/plain{
-	dir = 10
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/tradeport/cyndishow)
 "aTA" = (
 /obj/machinery/button/remote/blast_door{
 	id = "tugdoor2";
@@ -18177,14 +18109,6 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/cafeteria)
-"aYr" = (
-/obj/structure/lattice,
-/obj/structure/catwalk,
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/salvager)
 "aYs" = (
 /obj/structure/cable/yellow,
 /obj/structure/cable/yellow{
@@ -19051,6 +18975,13 @@
 	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/scoophead/cockpit)
+"bDh" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "ftu_cargo_transit"
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "bEl" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -21225,6 +21156,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
+"gxJ" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/regular{
+	id = "salv3"
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/salvager)
 "gzZ" = (
 /obj/structure/bed/chair/sofa/red{
 	dir = 4
@@ -21746,6 +21689,15 @@
 	},
 /turf/simulated/floor/carpet/arcadecarpet,
 /area/sector/nebula_tradeport/motel/arcade)
+"hFs" = (
+/obj/machinery/power/apc/large_cell/east_mount,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/orange,
+/turf/simulated/floor/plating,
+/area/shuttle/salvager)
 "hFu" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -22722,19 +22674,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/shuttle/arrowhead)
-"jQf" = (
-/obj/structure/closet/walllocker_double/north,
-/obj/effect/floor_decal/spline/plain{
-	dir = 5
-	},
-/obj/item/cell/basic/tier_1/weapon,
-/obj/item/cell/basic/tier_1/weapon,
-/obj/item/cell/basic/tier_1/weapon,
-/obj/item/cell/basic/tier_1/weapon,
-/obj/item/cell/basic/tier_1/weapon,
-/obj/item/cell/basic/tier_1/weapon,
-/turf/simulated/floor/carpet/patterened/blue,
-/area/shuttle/salvager)
 "jQK" = (
 /obj/structure/handrail,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -23374,6 +23313,13 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/nebula_tradeport/motel/room8)
+"lje" = (
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	req_access = list(160)
+	},
+/obj/structure/cable/yellow,
+/turf/simulated/floor/wood,
+/area/tradeport/commons)
 "ljp" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood,
@@ -23644,6 +23590,19 @@
 /obj/machinery/door/window/westleft,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
+"lOR" = (
+/obj/structure/closet/walllocker_double/north,
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/salvager)
 "lPS" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -24101,6 +24060,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
+"mQg" = (
+/obj/spawner/window/low_wall/nogrille/firelocks,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/cafeteria)
 "mRu" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -24127,6 +24090,15 @@
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
+"mTT" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "ftu_cargo_transit";
+	name = "inbound conveyor";
+	pixel_y = -5;
+	pixel_x = 11
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "mUJ" = (
 /obj/structure/sink{
 	pixel_y = 19
@@ -24499,15 +24471,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"nOM" = (
-/obj/machinery/power/apc/large_cell/east_mount,
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/orange,
-/turf/simulated/floor/plating,
-/area/shuttle/salvager)
 "nOQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24774,6 +24737,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
+"ouc" = (
+/obj/structure/closet/crate/secure/engineering{
+	req_access = list(160)
+	},
+/obj/random/tool/power,
+/obj/random/tool/power,
+/obj/random/tool/power,
+/obj/item/cell/regen/fractal/weapon,
+/obj/random/tool/alien,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "owp" = (
 /obj/machinery/sleeper/survival_pod,
 /obj/item/tank/emergency,
@@ -24870,6 +24844,28 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/sector/nebula_tradeport/medical/public)
+"oLY" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/westright{
+	dir = 2;
+	name = "rare item display case";
+	req_access = list(160)
+	},
+/obj/structure/table/marble,
+/obj/item/gun/projectile/energy/gun/sword_buster,
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/tradeport/cyndishow)
 "oMm" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 8
@@ -25040,6 +25036,10 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/nebula_tradeport/motel/room3)
+"pkV" = (
+/obj/structure/sign/department/cargo,
+/turf/simulated/wall/r_wall,
+/area/tradeport/spine)
 "plo" = (
 /obj/machinery/light{
 	dir = 8
@@ -25107,16 +25107,6 @@
 /obj/structure/flora/pottedplant/thinbush,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room1)
-"pyE" = (
-/obj/structure/cable/yellow,
-/obj/machinery/vending/nifsoft_shop{
-	dir = 8
-	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
-/turf/simulated/floor/tiled/old_tile/blue,
-/area/tradeport/commons)
 "pzD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -25437,16 +25427,12 @@
 /obj/structure/lightpost,
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tradeport/safarizoo)
-"qyZ" = (
+"qzX" = (
 /obj/structure/lattice,
 /obj/structure/catwalk,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
 	},
-/obj/machinery/door/blast/regular{
-	id = "salv3"
-	},
-/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/salvager)
 "qAM" = (
@@ -25873,6 +25859,17 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
+"rqr" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/salvager)
 "rqt" = (
 /obj/structure/bed/chair/bay/chair/padded/yellow{
 	dir = 4
@@ -26177,6 +26174,16 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
+"smv" = (
+/obj/structure/cable/yellow,
+/obj/machinery/vending/nifsoft_shop{
+	dir = 8
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	req_access = list(160)
+	},
+/turf/simulated/floor/tiled/old_tile/blue,
+/area/tradeport/commons)
 "snj" = (
 /obj/structure/bed/chair/sofa/red/corner{
 	dir = 8
@@ -26197,6 +26204,14 @@
 "sqY" = (
 /turf/simulated/wall/wood/hardwood,
 /area/sector/nebula_tradeport/motel/room5)
+"suD" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "ftu_cargo_transit"
+	},
+/obj/machinery/smuggling/input,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "suE" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/flora/pottedplant/decorative,
@@ -26269,6 +26284,10 @@
 /area/shuttle/scoophead/main)
 "sDd" = (
 /obj/structure/inflatable,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
+"sDD" = (
+/obj/structure/cargotransitcrate/ftu,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/spine)
 "sDZ" = (
@@ -26402,17 +26421,6 @@
 	},
 /turf/simulated/wall/wood/hardwood,
 /area/sector/nebula_tradeport/motel/room5)
-"sRq" = (
-/obj/structure/lattice,
-/obj/structure/catwalk,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/salvager)
 "sRG" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -26942,21 +26950,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/sector/nebula_tradeport/motel/room2)
-"ulf" = (
-/obj/machinery/recharge_station,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 6
-	},
-/obj/machinery/power/apc/large_cell/tier_3/west_mount,
-/obj/structure/cable/pink{
-	icon_state = "0-8";
-	dir = 1
-	},
-/obj/structure/cable/pink{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/scoophead/engineering)
 "ulv" = (
 /obj/structure/railing{
 	dir = 1
@@ -27185,6 +27178,16 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/patterened/red,
 /area/shuttle/scoophead/cockpit)
+"uGO" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/cell/basic/tier_4/large,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/cell/basic/tier_4/medium,
+/obj/item/storage/toolbox/syndicate{
+	pixel_y = 11
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/general)
 "uHN" = (
 /obj/machinery/light{
 	dir = 1
@@ -27416,6 +27419,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/vip)
+"vrt" = (
+/obj/machinery/point_redemption_vendor/smuggle/ftu,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "vrJ" = (
 /obj/structure/bed/chair/sofa/red/corner{
 	dir = 8
@@ -27487,6 +27494,15 @@
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
+"vwl" = (
+/obj/item/storage/toolbox/mechanical,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/structure/cable/cyan,
+/obj/machinery/power/apc/large_cell/tier_3/south_mount,
+/turf/simulated/floor/plating,
+/area/shuttle/udang/main)
 "vwB" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power{
 	dir = 8
@@ -27586,12 +27602,22 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/spine)
+"vHj" = (
+/obj/machinery/smuggling/processing_unit_console{
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "vHl" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/room3)
+"vHw" = (
+/obj/machinery/smuggling/processing_unit/ftu,
+/turf/simulated/floor/tiled/old_tile/yellow,
+/area/tradeport/spine)
 "vHZ" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/motel/room5)
@@ -27818,6 +27844,15 @@
 /obj/machinery/camera,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
+"wtV" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/machinery/door/blast/regular{
+	id = "salv3"
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/salvager)
 "wux" = (
 /obj/structure/table/woodentable,
 /obj/machinery/photocopier/faxmachine{
@@ -28335,6 +28370,21 @@
 	},
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
+"xJU" = (
+/obj/machinery/recharge_station,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/machinery/power/apc/large_cell/tier_3/west_mount,
+/obj/structure/cable/pink{
+	icon_state = "0-8";
+	dir = 1
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
 "xKe" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
@@ -45409,7 +45459,7 @@ alB
 aoT
 aJb
 aWR
-aTz
+oLY
 aNp
 avL
 aqW
@@ -52760,7 +52810,7 @@ acd
 acd
 acd
 snu
-sYJ
+sDD
 dYK
 doo
 bro
@@ -52954,7 +53004,7 @@ acd
 acd
 acd
 snu
-sYJ
+sDD
 vGS
 ves
 fbx
@@ -53344,9 +53394,9 @@ acd
 snu
 sYJ
 sYJ
-sYJ
 tQG
-abc
+sYJ
+pkV
 hRT
 aAn
 ajS
@@ -53539,7 +53589,7 @@ abc
 fdo
 sYJ
 sYJ
-sYJ
+mTT
 snu
 tRl
 awc
@@ -53733,7 +53783,7 @@ abc
 sDd
 sYJ
 sYJ
-sYJ
+bDh
 snu
 sXK
 wRk
@@ -53927,7 +53977,7 @@ tSe
 sDd
 sYJ
 sYJ
-sYJ
+bDh
 snu
 iJX
 nPS
@@ -54119,9 +54169,9 @@ acd
 acd
 tSe
 sDd
-fdo
 sYJ
 sYJ
+suD
 snu
 xfE
 aAn
@@ -54313,9 +54363,9 @@ acd
 acd
 abc
 sDd
-fdo
-fdo
-sYJ
+vrt
+vHj
+vHw
 snu
 tRl
 awc
@@ -54507,9 +54557,9 @@ acd
 aDa
 aDa
 aDa
+mQg
 aDa
-aBS
-aBS
+aDa
 aDa
 aBS
 aDa
@@ -55453,7 +55503,7 @@ aYQ
 aOR
 aYQ
 ahb
-ahr
+lje
 atu
 aIX
 aRE
@@ -56400,8 +56450,8 @@ aJv
 aJv
 aIM
 aIM
-aFr
-auS
+uGO
+ouc
 aYc
 aUu
 aCt
@@ -57803,7 +57853,7 @@ wFr
 lIN
 aLr
 bin
-pyE
+smv
 anq
 anq
 nui
@@ -58707,7 +58757,7 @@ acd
 acd
 acd
 qhX
-ulf
+xJU
 qXy
 nlS
 eeA
@@ -59720,7 +59770,7 @@ aQf
 aYH
 aXI
 ahb
-ahr
+lje
 atu
 aTF
 aYQ
@@ -59752,7 +59802,7 @@ acd
 acd
 apm
 aec
-ahv
+vwl
 aRd
 aqT
 aKN
@@ -61120,8 +61170,8 @@ acd
 ilW
 ilW
 dBc
-qyZ
-aFh
+gxJ
+wtV
 dBc
 acd
 acd
@@ -61314,8 +61364,8 @@ acd
 aLQ
 ikl
 uXT
-sRq
-aYr
+rqr
+qzX
 dBc
 acd
 acd
@@ -62865,7 +62915,7 @@ acd
 dBc
 dBc
 dQa
-nOM
+hFs
 lTB
 iWu
 dBc
@@ -63641,7 +63691,7 @@ acd
 acd
 dBc
 dBc
-jQf
+lOR
 xOO
 bjA
 dBc
