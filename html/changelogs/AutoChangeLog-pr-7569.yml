@@ -1,4 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes:
-  - bugfix: "Ghosts can stop spinning after they stop orbiting someone"

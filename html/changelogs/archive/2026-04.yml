@@ -5,3 +5,6 @@
 2026-04-07:
   LetterN:
   - bugfix: fix admin ai interact machine regression
+2026-04-22:
+  TheLordME:
+  - bugfix: Ghosts can stop spinning after they stop orbiting someone
