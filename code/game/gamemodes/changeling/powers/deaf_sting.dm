@@ -23,5 +23,5 @@
 	to_chat(T, "<span class='danger'>Your ears pop and begin ringing loudly!</span>")
 	T.sdisabilities |= SDISABILITY_DEAF
 	spawn(duration)	T.sdisabilities &= ~SDISABILITY_DEAF
-	feedback_add_details("changeling_powers","DS")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Deaf sting"))
 	return 1

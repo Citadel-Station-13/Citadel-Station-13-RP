@@ -51,5 +51,5 @@
 			var/germ_heal = heal_amount * 100
 			G.germ_level = min(0, G.germ_level - germ_heal)
 
-	feedback_add_details("changeling_powers","AP")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Anatomic Panacea"))
 	return 1

@@ -319,5 +319,5 @@
 
 /datum/construction/reversible/mecha/durand/spawn_result()
 	..()
-	feedback_inc("mecha_durand_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Durand")
 	return

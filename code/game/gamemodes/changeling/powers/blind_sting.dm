@@ -23,5 +23,5 @@
 		to_chat(src, "<span class='notice'>They will be deprived of sight for longer.</span>")
 	T.apply_status_effect(/datum/status_effect/sight/blindness, duration)
 	T.eye_blurry = duration * 1.2
-	feedback_add_details("changeling_powers","BS")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Blind sting"))
 	return 1
