@@ -20,7 +20,17 @@
 /datum/tgui_input_modal/shuttle_template_picker/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()
 	var/list/encoded_templates = list()
-	#warn impl
+	for(var/id in src.allowed_shuttle_ids)
+		var/datum/shuttle_template/template = SSshuttle.fetch_template[id]
+		if(!template)
+			continue
+		encoded_templates[id] = list(
+			id = template.id,
+			name = template.name,
+			desc = template.desc,
+			category = template.category,
+				subcategory = template.subcategory,
+			)
 
 /datum/tgui_input_modal/shuttle_template_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state, datum/event_args/actor/actor)
 	. = ..()
@@ -35,7 +45,6 @@
 			if(!target_template)
 				return TRUE
 			submit_result(target_template.id)
-			qdel(src)
 			return TRUE
 
 #warn impl ui?

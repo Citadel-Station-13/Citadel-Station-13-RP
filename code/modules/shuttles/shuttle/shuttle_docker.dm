@@ -30,6 +30,9 @@
 	var/datum/action/shuttle_docker/designate/action_for_designate
 	var/datum/action/shuttle_docker/exit/action_for_exit
 
+	var/designate_in_progress = FALSE
+	var/designate_time = 5 SECONDS
+
 /datum/shuttle_docker/New(datum/shuttle/shuttle, datum/host, mob/user, datum/callback/on_target)
 	src.shuttle = shuttle
 	src.host = host

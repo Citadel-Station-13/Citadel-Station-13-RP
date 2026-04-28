@@ -5,21 +5,21 @@
  * @params
  * * type - modal type
  * * user - the user
- * * validity - (optional) additional validity checks
- * * ... - additional args to pass to initialize()
+ * * status - (optional) override ui status with callback called with (mob/user, datum/tgui_input_modal/modal)
+ * * params - additional args to pass to initialize()
  *
  * @return modal or null if failed to open
  */
-/proc/open_tgui_input_modal(type, mob/user, datum/callback/validity, ...)
-	#warn rework this logic . all of it. it's just a copy from actor modal.
+/proc/open_tgui_input_modal(type, mob/user, datum/callback/status, list/params)
+	#warn rework dedupe logic
 	var/datum/tgui_input_modal/modal_type = type
 	if(modal_type.no_type_dupe)
 		var/mob/initiator = user
 		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type, initiator, user)
 		if(HAS_TRAIT(initiator, trait))
 			return
-	var/datum/tgui_input_modal/modal = new type(user, validity)
-	if(!modal.initialize(arglist(args.Copy(4))))
+	var/datum/tgui_input_modal/modal = new type(user, status)
+	if(!modal.initialize(arglist(params)))
 		qdel(modal)
 		return
 	modal.ui_interact(user)
@@ -37,7 +37,7 @@
 	/// intended user
 	var/mob/user
 	/// check to see if we can still do it; useful if we're remote controlling or something
-	var/datum/callback/validity
+	var/datum/callback/status
 	/// only one type on initiator-performer pair, period
 	/// * only checked for compile time value
 	var/no_type_dupe = FALSE
@@ -50,19 +50,19 @@
 	var/result
 	var/blocking_on_result = 0
 
-/datum/tgui_input_modal/New(mob/user, datum/callback/validity)
+/datum/tgui_input_modal/New(mob/user, datum/callback/status)
 	var/mob/initiator = user
 	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, user)
 	ADD_TRAIT(initiator, trait, ref(src))
 	src.user = user
-	src.validity = validity
+	src.status = status
 
 /datum/tgui_input_modal/Destroy()
 	var/mob/initiator = user
 	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, user)
 	REMOVE_TRAIT(initiator, trait, ref(src))
 	user = null
-	validity = null
+	status = null
 	return ..()
 
 /**
@@ -78,6 +78,9 @@
 	if(lock_to_initiator)
 		if(user != src.user)
 			return UI_CLOSE
+	var/status_override = status?.invoke_no_sleep(user, src)
+	if(!isnull(status_override))
+		return status_override
 	return ..()
 
 /datum/tgui_input_modal/ui_interact(mob/user, datum/tgui/ui)
@@ -110,3 +113,5 @@
 	if(!blocking_on_result)
 		// un-reference if nothing else needs it
 		result = null
+		// qdel self for good measure if nothing is blocking anymore
+		qdel(src)
