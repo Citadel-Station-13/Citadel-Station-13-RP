@@ -48,6 +48,12 @@
 
 	build_icons()
 
+// Obliterate parent and rebuild on move.
+/obj/machinery/atmospherics/component/quaternary/Moved(atom/old_loc, direction, forced, list/old_locs, momentum_change)
+	..()
+	for(var/datum/omni_port/P in ports)
+		QDEL_NULL(P.network)
+
 /obj/machinery/atmospherics/component/quaternary/update_icon()
 	. = ..()
 	if(machine_stat & NOPOWER)

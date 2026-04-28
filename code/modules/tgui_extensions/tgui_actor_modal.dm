@@ -5,20 +5,21 @@
  * @params
  * * type - modal type
  * * actor - actor doing it
- * * validity - (optional) additional validity checks
- * * ... - additional args to pass to initialize()
+ * * status - (optional) override ui status with callback called with (mob/user, datum/tgui_input_modal/modal)
+ * * params - additional args to pass to initialize()
  *
  * @return modal or null if failed to open
  */
-/proc/open_tgui_actor_modal(type, datum/event_args/actor/actor, datum/callback/validity, ...)
+/proc/open_tgui_actor_modal(type, datum/event_args/actor/actor, datum/callback/status, list/params)
 	var/datum/tgui_actor_modal/modal_type = type
+	#warn rework dedupe logic
 	if(modal_type.no_type_dupe)
 		var/mob/initiator = actor.initiator
 		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type, initiator, actor.performer)
 		if(HAS_TRAIT(initiator, trait))
 			return
-	var/datum/tgui_actor_modal/modal = new type(actor, validity)
-	if(!modal.initialize(arglist(args.Copy(4))))
+	var/datum/tgui_actor_modal/modal = new type(actor, status)
+	if(!modal.initialize(arglist(params)))
 		qdel(modal)
 		return
 	modal.ui_interact(actor.initiator)
@@ -36,7 +37,7 @@
 	/// actor initiator-performer pair
 	var/datum/event_args/actor/actor
 	/// check to see if we can still do it; useful if we're remote controlling or something
-	var/datum/callback/validity
+	var/datum/callback/status
 	/// only one type on initiator-performer pair, period
 	/// * only checked for compile time value
 	var/no_type_dupe = FALSE
@@ -46,19 +47,19 @@
 	/// we use always_state and initiator-only
 	var/lock_to_initiator = TRUE
 
-/datum/tgui_actor_modal/New(datum/event_args/actor/actor, datum/callback/validity)
+/datum/tgui_actor_modal/New(datum/event_args/actor/actor, datum/callback/status)
 	var/mob/initiator = actor.initiator
 	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
 	ADD_TRAIT(initiator, trait, ref(src))
 	src.actor = actor
-	src.validity = validity
+	src.status = status
 
 /datum/tgui_actor_modal/Destroy()
 	var/mob/initiator = actor.initiator
 	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
 	REMOVE_TRAIT(initiator, trait, ref(src))
 	actor = null
-	validity = null
+	status = null
 	return ..()
 
 /**
@@ -74,9 +75,12 @@
 	if(lock_to_initiator)
 		if(user != actor.initiator)
 			return UI_CLOSE
+	var/status_override = status?.invoke_no_sleep(user, src)
+	if(!isnull(status_override))
+		return status_override
 	return ..()
 
-/datum/tgui_actor_modal/robot_module_picker/ui_interact(mob/user, datum/tgui/ui)
+/datum/tgui_actor_modal/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, tgui_interface)

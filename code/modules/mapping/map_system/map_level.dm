@@ -459,6 +459,19 @@
 		if(DOWN)
 			return SSmapping.keyed_levels[link_below_id]
 
+/**
+ * Attempts to force a loaded level to self-loop
+ * * Level must be loaded for us to know our own ID
+ * * Level will not have its transition borders be automatically updated
+ */
+/datum/map_level/proc/dangerously_make_selflooping()
+	ASSERT(loaded)
+	ASSERT(id)
+	for(var/dir in global.cardinals)
+		set_level_in_dir(dir, id, FALSE)
+	for(var/dir in list(UP, DOWN))
+		set_level_in_dir(dir, null, FALSE)
+
 //* Traits *//
 
 /datum/map_level/proc/has_trait(trait)

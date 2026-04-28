@@ -2254,7 +2254,7 @@
 /area/shuttle/escape)
 "hb" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/shuttle_control/emergency,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "hc" = (
@@ -8744,7 +8744,6 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Mb" = (
-/obj/effect/shuttle_landmark/rift/deck4/excursion_sky,
 /turf/simulated/fake_sky/lythios43c/moving/west,
 /area/space)
 "Me" = (
@@ -8873,7 +8872,6 @@
 /turf/space,
 /area/space)
 "NL" = (
-/obj/effect/shuttle_landmark/rift/deck4/northeast,
 /turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "NP" = (
@@ -9088,7 +9086,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/cockpit)
 "Qg" = (
-/obj/effect/shuttle_landmark/rift/deck4/north,
 /turf/simulated/fake_sky/lythios43c/moving/south,
 /area/space)
 "Ql" = (
@@ -9862,7 +9859,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "XU" = (
-/obj/machinery/computer/shuttle_control/explore/specops{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,

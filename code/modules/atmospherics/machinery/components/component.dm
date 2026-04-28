@@ -11,6 +11,7 @@
 	default_panel = null
 	tool_panel = null
 
+	//* UI / Interface
 	/// allow multitool "hijacking" even if this is controlled by something else
 	/// set to non-null for delay, 0 for instant.
 	var/default_multitool_hijack = null
@@ -26,9 +27,11 @@
 	/// allowed default ui controls
 	var/atmos_component_ui_flags = NONE
 
+	//* Balancing
 	/// efficiency multiplier
 	var/efficiency_multiplier = 1
 
+	//* Settings & Processing
 	/// are we on?
 	var/on = FALSE
 	/// maximum power limit in watts
@@ -37,6 +40,10 @@
 	var/power_setting
 	/// current power usage in watts
 	var/power_current = 0
+
+	//* Atmospherics
+	/// Volume per side. Subtypes reserve the right to ignore this.
+	var/volume = ATMOS_DEFAULT_VOLUME
 
 	//! legacy below
 	/// legacy power limit in watts

@@ -442,7 +442,6 @@ SUBSYSTEM_DEF(grids)
  */
 /atom/movable/proc/grid_finished(grid_flags, rotation_angle)
 	SHOULD_NOT_SLEEP(TRUE)
-	return
 
 /**
  * called when we get overlapped by a grid

@@ -157,19 +157,9 @@
 	name = T_BOARD("disease splicer")
 	build_path = /obj/machinery/computer/diseasesplicer
 
-/obj/item/circuitboard/mining_shuttle
-	name = T_BOARD("mining shuttle console")
-	build_path = /obj/machinery/computer/shuttle_control/mining
-	origin_tech = list(TECH_DATA = 2)
-
-/obj/item/circuitboard/engineering_shuttle
-	name = T_BOARD("engineering shuttle console")
-	build_path = /obj/machinery/computer/shuttle_control/engineering
-	origin_tech = list(TECH_DATA = 2)
-
-/obj/item/circuitboard/research_shuttle
-	name = T_BOARD("research shuttle console")
-	build_path = /obj/machinery/computer/shuttle_control/research
+/obj/item/circuitboard/shuttle_control
+	name = T_BOARD("shuttle control console")
+	build_path = /obj/machinery/computer/shuttle_control
 	origin_tech = list(TECH_DATA = 2)
 
 /obj/item/circuitboard/aifixer
@@ -200,11 +190,6 @@
 /obj/item/circuitboard/area_atmos
 	name = T_BOARD("area air control console")
 	build_path = /obj/machinery/computer/area_atmos
-	origin_tech = list(TECH_DATA = 2)
-
-/obj/item/circuitboard/prison_shuttle
-	name = T_BOARD("prison shuttle control console")
-	build_path = /obj/machinery/computer/prison_shuttle
 	origin_tech = list(TECH_DATA = 2)
 
 /obj/item/circuitboard/rcon_console

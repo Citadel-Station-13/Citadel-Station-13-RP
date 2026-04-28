@@ -181,7 +181,7 @@
 /datum/map/station/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
 	// Overmap behavior
 	if(use_overmap)
-		var/obj/overmap/entity/visitable/O = get_overmap_sector(srcz)
+		var/obj/overmap/entity/O = SSovermaps.get_enclosing_overmap_entity(srcz)
 		if(!istype(O))
 			return list(srcz)
 
@@ -191,7 +191,7 @@
 
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
-		for(var/obj/overmap/entity/visitable/V in bounds(O, om_range))
+		for(var/obj/overmap/entity/V in bounds(O, om_range))
 			var/list/levels = V.location?.get_z_indices()
 			if(levels)
 				connections |= levels

@@ -132,9 +132,6 @@
 	///   in some very weird things.
 	var/datum/overmap_location/map/overmap_binding
 
-	//! legacy : spawn these shuttle datums on load
-	var/list/legacy_assert_shuttle_datums
-
 /datum/map/New()
 	// resolve overmap initializer
 	if(ispath(overmap_initializer) || IS_ANONYMOUS_TYPEPATH(overmap_initializer))

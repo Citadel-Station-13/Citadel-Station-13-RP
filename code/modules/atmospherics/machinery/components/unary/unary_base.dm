@@ -59,6 +59,11 @@
 	update_icon()
 	update_underlays()
 
+// Obliterate parent and rebuild on move.
+/obj/machinery/atmospherics/component/unary/Moved(atom/old_loc, direction, forced, list/old_locs, momentum_change)
+	..()
+	QDEL_NULL(network)
+
 /obj/machinery/atmospherics/component/unary/build_network()
 	if(!network && node)
 		network = new /datum/pipe_network()

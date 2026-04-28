@@ -52,8 +52,13 @@ DEFINE_BITFIELD(atmos_portable_ui_flags, list(
 // fire sparking
 #define MINIMUM_MOLES_TO_SPARK		0.015
 
+//* Volumes *//
+
 // The flow rate/effectiveness of various atmos devices is limited by their internal volume,
 // so for many atmos devices these will control maximum flow rates in L/s.
+
+/// Default liters of each side of a component
+#define ATMOS_DEFAULT_VOLUME 200
 /// Liters.
 #define ATMOS_DEFAULT_VOLUME_PUMP   200
 /// L.

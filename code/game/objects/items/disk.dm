@@ -7,6 +7,7 @@
 	drop_sound = 'sound/items/drop/disk.ogg'
 	pickup_sound =  'sound/items/pickup/disk.ogg'
 
+GLOBAL_LIST_BOILERPLATE(nuclear_disks, /obj/item/disk/nuclear)
 /obj/item/disk/nuclear
 	name = "nuclear authentication disk"
 	desc = "Better keep this safe."
