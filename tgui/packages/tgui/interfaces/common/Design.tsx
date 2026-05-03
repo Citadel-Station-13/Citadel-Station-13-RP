@@ -9,6 +9,7 @@ import { IngredientsNeeded } from "./Ingredients";
  */
 export interface Design {
   name: string;
+  truncated_name: string;
   desc: string;
   categories: string[];
   subcategories: string[];
