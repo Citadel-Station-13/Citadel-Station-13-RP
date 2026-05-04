@@ -508,6 +508,16 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
+/datum/crafting_recipe/charcoal_stick
+	name = "Charcoal Stick"
+	result = /obj/item/pen/charcoal
+	time = 80
+	reqs = list(/obj/item/stack/material/bone = 1
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+	tools = list(TOOL_WELDER)
+
 /datum/crafting_recipe/stone_dropper
 	name = "Primitive Dropper"
 	result = /obj/item/reagent_containers/dropper/ashlander
