@@ -355,6 +355,8 @@ BLOCK_BYOND_BUG_2072419
 	else if (needs_update == LIGHTING_CHECK_UPDATE)
 		return	// No change.
 
+	ASSERT(light_range < 128)	// This is a BYOND level limit. Failing this assertion is always a bug in your code, not lighting.
+
 	var/list/datum/lighting_corner/corners = list()
 	var/list/turf/turfs                    = list()
 	var/thing
