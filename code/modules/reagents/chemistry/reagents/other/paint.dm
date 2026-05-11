@@ -47,13 +47,6 @@
 	var/old_hex = uppertext(old_data || "#ffffff")
 	var/new_hex = uppertext(new_data || "#ffffff")
 
-	if(isnull(old_data))
-		return rgb(
-			hex2num(copytext(new_hex, 2, 4)),
-			hex2num(copytext(new_hex, 4, 6)),
-			hex2num(copytext(new_hex, 6, 8))
-		)
-
 	return rgb(
 		((hex2num(copytext(old_hex, 2, 4)) * old_volume) + (hex2num(copytext(new_hex, 2, 4)))) / total_volume,
 		((hex2num(copytext(old_hex, 4, 6)) * old_volume) + (hex2num(copytext(new_hex, 4, 6)))) / total_volume,
