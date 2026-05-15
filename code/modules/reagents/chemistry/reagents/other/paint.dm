@@ -46,9 +46,9 @@
 	var/total_volume = old_volume + new_volume
 	var/old_hex = uppertext(old_data || "#ffffff")
 	var/new_hex = uppertext(new_data || "#ffffff")
+
 	return rgb(
 		((hex2num(copytext(old_hex, 2, 4)) * old_volume) + (hex2num(copytext(new_hex, 2, 4)))) / total_volume,
 		((hex2num(copytext(old_hex, 4, 6)) * old_volume) + (hex2num(copytext(new_hex, 4, 6)))) / total_volume,
-		((hex2num(copytext(old_hex, 6, 8)) * old_volume) + (hex2num(copytext(new_hex, 6, 8)))) / total_volume,
-		((hex2num(length(old_hex) > 7 ? copytext(old_hex, 8, 10) : 255) * old_volume) + (hex2num(length(new_hex) > 7 ? copytext(new_hex, 8, 10) : 255))) / total_volume,
+		((hex2num(copytext(old_hex, 6, 8)) * old_volume) + (hex2num(copytext(new_hex, 6, 8)))) / total_volume
 	)

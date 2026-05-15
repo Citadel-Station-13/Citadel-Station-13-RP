@@ -11,9 +11,14 @@
 
 	//materials_base = list("metal" = 50, MAT_GLASS = 50)
 
-
 /obj/item/binoculars/attack_self(mob/user, datum/event_args/actor/actor)
 	. = ..()
 	if(.)
 		return
 	zoom()
+
+// the zoom proc needs taking out back but this fixes binoculars being janky for now
+/obj/item/binoculars/unequipped(mob/user, slot, flags)
+	. = ..()
+	if(zoom)
+		zoom()
