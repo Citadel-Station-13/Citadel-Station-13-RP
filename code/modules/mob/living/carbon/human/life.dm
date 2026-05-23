@@ -1756,13 +1756,10 @@
 
 	if(modifiers && modifiers.len)
 		for(var/datum/modifier/mod in modifiers)
-			if(isnull(modifier_set) && !isnull(mod.pulse_set_level))
+			if(isnull(mod.pulse_set_level))
+				continue
+			if(isnull(modifier_set) || mod.pulse_set_level > modifier_set)
 				modifier_set = round(mod.pulse_set_level)	// Should be a whole number, but let's not take chances.
-			else if(mod.pulse_set_level > modifier_set)
-				modifier_set = round(mod.pulse_set_level)
-
-			modifier_set = max(0, modifier_set)	// No setting to negatives.
-
 			if(mod.pulse_modifier)
 				modifier_shift += mod.pulse_modifier
 

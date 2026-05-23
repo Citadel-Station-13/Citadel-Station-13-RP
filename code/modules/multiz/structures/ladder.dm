@@ -94,6 +94,9 @@
 	if(incapacitated())
 		to_chat(src, "<span class='warning'>You are physically unable to climb \the [ladder].</span>")
 		return FALSE
+	if(is_buckled())
+		to_chat(src, "<spab class='warning'>You can't do this while buckled to \the [buckled]!</span>")
+		return FALSE
 	return TRUE
 
 /mob/observer/ghost/may_climb_ladders(var/ladder)

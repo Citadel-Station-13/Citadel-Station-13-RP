@@ -2,7 +2,7 @@
 	name = "\improper PDA multicaster"
 	desc = "This machine mirrors messages sent to it to specific departments."
 	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "controller"
+	icon_state = "pdamulti"
 	density = 1
 	anchored = 1
 	circuit = /obj/item/circuitboard/telecomms/pda_multicaster
@@ -33,7 +33,7 @@
 	if(on)
 		icon_state = initial(icon_state)
 	else
-		icon_state = "[initial(icon_state)]-p"
+		icon_state = "[initial(icon_state)]_off"
 	return ..()
 
 /obj/machinery/pda_multicaster/attackby(obj/item/I, mob/user)

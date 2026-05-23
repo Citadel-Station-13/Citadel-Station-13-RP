@@ -1,0 +1,13 @@
+2026-05-16:
+  timothyteakettle:
+  - bugfix: fixes the icon for PDA multicaster
+  - bugfix: you can no longer climb ladders while buckled to something
+  - bugfix: you stop looking through binoculars when unequipping them now (i.e. slipping)
+  - rscadd: medical scanner HUDs have been added to medical doctors lockers
+  - bugfix: holospheres no longer throw an exception when get_blood_name is called
+      on them
+  - bugfix: autolathe menu is slightly wider (1100 to 1200)
+  - bugfix: autolathe designs in the queue that are longer than 20 characters get
+      shortened to 18 with ".." at the end to show they have
+  - bugfix: being colourblind no longer stops you having a pulse
+  - bugfix: paint no longer causes things to become invisible
