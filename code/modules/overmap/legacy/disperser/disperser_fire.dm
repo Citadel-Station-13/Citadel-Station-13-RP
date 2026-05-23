@@ -46,6 +46,11 @@
 	handle_overbeam()
 	qdel(atomcharge)
 
+	spawn(rand(20, 100) SECONDS)
+		SSlegacy_atc.msg("This is [(LEGACY_MAP_DATUM).dock_name] Control to all vessels in the [(LEGACY_MAP_DATUM).starsys_name] system. Priority travel advisory follows.")
+		sleep(5 SECONDS)
+		SSlegacy_atc.msg("Use caution for anomalous energy signatures consistent with obstruction disperser beam usage near sector coordinates [linked.x], [linked.y]. Control out.")
+
 	//Some moron disregarded the cooldown warning. Let's blow in their face.
 	if(prob(cool_failchance()))
 		explosion(middle,rand(1,2),rand(2,3),rand(3,4))
