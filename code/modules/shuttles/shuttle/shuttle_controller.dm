@@ -126,7 +126,7 @@
 			return docking_cycle
 	. = docking_cycle
 	INVOKE_ASYNC(src, PROC_REF(synchronously_dock), no_interrupt, on_finish, timeout)
-	// we assume that the interruption / beginning of a new cycle will only increment by 1.
+	// we assume that the interruption / beginning of a new cycle ffwill only increment by 1.
 	if(. != docking_cycle - 1)
 		stack_trace("unexpected behavior - docking cycle incremented by more than 1. a core assumption made when writing this code was violated.")
 	. = docking_cycle
@@ -332,6 +332,14 @@
 //* Docking - Manual Landmarks *//
 
 /**
+ * Creates a manual landing docker UI that captures the user's camera.
+ */
+/datum/shuttle_controller/proc/create_manual_landing_docker_and_capture(datum/event_args/actor/actor, datum/host)
+	new /datum/shuttle_docker(shuttle, host, actor.initiator, CALLBACK(src, PROC_REF(user_set_manual_landing)))
+
+/datum/shuttle_controller/proc/user_set_manual_landing(turf/where, dir, mob/user, datum/shuttle_docker/docker)
+
+/**
  * call to designate a manual landing position
  *
  * this is unchecked / has no safety checks.
@@ -341,6 +349,7 @@
 /datum/shuttle_controller/proc/set_manual_landing(turf/anchor_target_location, anchor_target_orientation)
 	if(!isnull(manual_dock))
 		QDEL_NULL(manual_dock)
+
 	#warn impl
 	#warn interrupt in-progress moves
 

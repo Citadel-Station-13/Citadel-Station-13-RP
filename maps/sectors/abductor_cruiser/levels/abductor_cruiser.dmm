@@ -2,16 +2,16 @@
 "af" = (
 /obj/machinery/porta_turret/alien/abductor/ion,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/exterior)
+/area/sector/abductor_cruiser/exterior)
 "bG" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "bP" = (
 /obj/machinery/resleeving/body_printer/synth_fab,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "cF" = (
 /turf/space,
 /area/space)
@@ -20,7 +20,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "dN" = (
 /obj/structure/closet/alien,
 /obj/item/storage/firstaid/combat,
@@ -36,17 +36,17 @@
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/toxin,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "ed" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 6
 	},
 /turf/simulated/shuttle/wall/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "eu" = (
 /obj/structure/table/alien,
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "eV" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -58,16 +58,16 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "fo" = (
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/exterior)
+/area/sector/abductor_cruiser/exterior)
 "fw" = (
 /obj/structure/table/alien,
 /obj/item/radio_jammer/admin,
 /obj/item/radio_jammer/admin,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "fz" = (
 /obj/structure/table/alien,
 /obj/item/implanter,
@@ -77,7 +77,7 @@
 /obj/item/implant/sizecontrol,
 /obj/item/implant/sizecontrol,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "fQ" = (
 /obj/item/storage/box/flashbangs,
 /obj/item/storage/box/teargas,
@@ -88,17 +88,17 @@
 /obj/item/clothing/mask/gas,
 /obj/structure/closet/alien,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "gA" = (
 /obj/effect/floor_decal/borderfloorwhite/full,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "hj" = (
 /obj/structure/table/alien,
 /obj/item/paicard,
 /obj/item/paicard,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "hq" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -106,44 +106,44 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "hQ" = (
 /obj/machinery/porta_turret/alien/abductor,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "ib" = (
 /obj/structure/table/alien,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "iF" = (
 /obj/machinery/shipsensors{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/exterior)
+/area/sector/abductor_cruiser/exterior)
 "iH" = (
 /obj/item/paper/alien/abductor,
 /obj/structure/table/alien,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "ja" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
 	},
 /turf/simulated/shuttle/wall/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "jI" = (
 /obj/structure/ghost_pod/manual/human{
 	name = "grower pod"
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "kf" = (
 /obj/machinery/turretid/stun{
 	ailock = 1;
 	check_arrest = 0;
 	check_records = 0;
-	control_area = /area/abductor/interior;
+	control_area = /area/sector/abductor_cruiser/interior;
 	desc = "A firewall prevents AIs from interacting with this device.";
 	name = "Ship interior turret control";
 	pixel_x = 32;
@@ -152,20 +152,20 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "kT" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/machinery/porta_turret/alien/abductor,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "mh" = (
 /obj/structure/ghost_pod/manual/human{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "nv" = (
 /obj/structure/table/alien,
 /obj/item/clothing/mask/gas/voice,
@@ -173,13 +173,13 @@
 /obj/item/universal_translator/ear,
 /obj/item/universal_translator/ear,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "nw" = (
 /obj/machinery/chemical_dispenser/ert/specialops/abductor{
 	density = 1
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "nx" = (
 /obj/machinery/button/remote/airlock{
 	id = "abd1";
@@ -189,7 +189,7 @@
 	specialfunctions = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "nA" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -198,20 +198,20 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "pa" = (
 /obj/structure/closet/alien,
 /obj/item/mirrortool,
 /obj/item/flash,
 /obj/item/storage/firstaid/toxin,
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "pc" = (
 /obj/structure/table/alien,
 /obj/item/gun/projectile/energy/netgun,
 /obj/item/gun/projectile/energy/netgun,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "pB" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -219,13 +219,13 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "pC" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "pG" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -234,50 +234,50 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "pV" = (
 /turf/simulated/shuttle/wall/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "qk" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/exterior)
+/area/sector/abductor_cruiser/exterior)
 "qo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 9
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "qu" = (
 /obj/structure/table/alien,
 /obj/item/clothing/shoes/boots/speed,
 /obj/item/clothing/shoes/boots/speed,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "qL" = (
 /obj/structure/prop/alien/power,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "rg" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "rB" = (
 /obj/structure/table/alien,
 /obj/item/perfect_tele,
 /obj/item/perfect_tele,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "rL" = (
 /obj/structure/table/alien,
 /obj/item/storage/belt/utility/alien/full,
 /obj/item/storage/belt/utility/alien/full,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "rP" = (
 /obj/machinery/button/remote/airlock{
 	dir = 1;
@@ -288,7 +288,7 @@
 	specialfunctions = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "sv" = (
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/window/phoronreinforced{
@@ -299,26 +299,26 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "td" = (
 /obj/structure/table/alien,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/handcuffs,
 /obj/item/mirrortool,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "tI" = (
 /obj/structure/table/alien,
 /obj/item/reagent_containers/hypospray,
 /obj/item/reagent_containers/hypospray,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "tQ" = (
 /obj/structure/table/alien,
 /obj/item/clothing/head/helmet/alien,
 /obj/item/clothing/head/helmet/alien,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "uU" = (
 /obj/machinery/button/remote/airlock{
 	dir = 4;
@@ -330,13 +330,13 @@
 	specialfunctions = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "vk" = (
 /obj/structure/prop/alien/computer{
 	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "vm" = (
 /obj/machinery/button/remote/airlock{
 	dir = 1;
@@ -347,7 +347,7 @@
 	specialfunctions = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "vF" = (
 /obj/structure/closet/walllocker/autolok_wall{
 	pixel_y = 32
@@ -356,13 +356,13 @@
 /obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "vS" = (
 /obj/structure/table/alien,
 /obj/item/storage/belt/medical/alien,
 /obj/item/storage/belt/medical/alien,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "wk" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -370,7 +370,7 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "wA" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -378,22 +378,22 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "wZ" = (
 /turf/simulated/shuttle/wall/alien,
-/area/abductor)
+/area/sector/abductor_cruiser)
 "xc" = (
 /obj/structure/prop/alien/dispenser,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "xg" = (
 /obj/machinery/vending/loadout/costume,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "xD" = (
 /obj/structure/prop/alien/computer,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "yr" = (
 /obj/item/clothing/shoes/magboots,
 /obj/structure/closet/walllocker/autolok_wall{
@@ -403,13 +403,13 @@
 /obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "yB" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "zu" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -424,7 +424,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "AZ" = (
 /obj/structure/table/alien,
 /obj/item/gun/projectile/energy/medigun,
@@ -432,7 +432,7 @@
 /obj/item/cell/infinite/weapon,
 /obj/item/cell/infinite/weapon,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Bv" = (
 /obj/structure/table/alien,
 /obj/item/reagent_containers/glass/bottle/adminordrazine,
@@ -440,25 +440,25 @@
 /obj/item/reagent_containers/glass/bottle/adminordrazine,
 /obj/item/reagent_containers/glass/bottle/adminordrazine,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "DG" = (
 /obj/structure/table/alien,
 /obj/item/bluespace_harpoon,
 /obj/item/bluespace_harpoon,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "DI" = (
 /obj/machinery/computer/teleporter{
 	dir = 2
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "EA" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Fh" = (
 /obj/structure/closet/walllocker/autolok_wall{
 	pixel_x = 32
@@ -467,11 +467,11 @@
 /obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Fl" = (
 /obj/machinery/atmospherics/component/binary/pump/fuel,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Fq" = (
 /obj/item/bikehorn,
 /obj/item/toy/bosunwhistle,
@@ -491,7 +491,7 @@
 /obj/item/stamp/chameleon,
 /obj/structure/closet/alien,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Fw" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -499,14 +499,14 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Ge" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 1;
 	icon_state = "map-fuel"
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "GB" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -517,17 +517,17 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "GE" = (
 /obj/structure/table/alien,
 /obj/item/clothing/suit/armor/alien,
 /obj/item/clothing/suit/armor/alien,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Hj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
 /turf/simulated/shuttle/wall/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Hv" = (
 /obj/overmap/entity/visitable/ship/abductor,
 /turf/space,
@@ -545,14 +545,14 @@
 /obj/item/duct_tape_roll,
 /obj/item/duct_tape_roll,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Ji" = (
 /obj/machinery/tele_projector,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "JF" = (
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "JW" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -560,7 +560,7 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Ke" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -569,19 +569,19 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Kx" = (
 /obj/structure/table/alien,
 /obj/item/clothing/glasses/thermal/syndi,
 /obj/item/clothing/glasses/thermal/syndi,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "KD" = (
 /obj/machinery/turretid/stun{
 	ailock = 1;
 	check_arrest = 0;
 	check_records = 0;
-	control_area = /area/abductor/exterior;
+	control_area = /area/sector/abductor_cruiser/exterior;
 	desc = "A firewall prevents AIs from interacting with this device.";
 	name = "Ship exterior turret control";
 	pixel_y = 30;
@@ -589,7 +589,7 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "KJ" = (
 /obj/effect/shuttle_landmark{
 	landmark_tag = "abductor_port";
@@ -602,7 +602,7 @@
 /obj/item/storage/box/beakers,
 /obj/item/reagent_containers/dropper,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Lg" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -612,7 +612,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Ll" = (
 /obj/machinery/button/remote/airlock{
 	id = "abd2";
@@ -622,17 +622,17 @@
 	specialfunctions = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "LH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
 /turf/simulated/shuttle/wall/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "LU" = (
 /obj/machinery/chem_master,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "LW" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -641,17 +641,17 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Nk" = (
 /obj/structure/bed/alien,
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Nq" = (
 /obj/structure/table/alien,
 /obj/item/melee/baton,
 /obj/item/melee/baton,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "ND" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -659,13 +659,13 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Ov" = (
 /obj/structure/table/alien,
 /obj/item/gun/projectile/energy/sickshot,
 /obj/item/gun/projectile/energy/sickshot,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Oz" = (
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/window/phoronreinforced,
@@ -674,7 +674,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "OG" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -685,28 +685,28 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "PJ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "PO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Qe" = (
 /obj/structure/window/phoronreinforced/full,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Qf" = (
 /obj/effect/floor_decal/borderfloorwhite/full{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Qy" = (
 /obj/structure/closet/walllocker/autolok_wall{
 	pixel_x = -32
@@ -715,7 +715,7 @@
 /obj/item/gun/projectile/energy/taser,
 /obj/item/flash,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "QI" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -724,14 +724,14 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "RQ" = (
 /obj/machinery/porta_turret/alien/abductor,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/exterior)
+/area/sector/abductor_cruiser/exterior)
 "SD" = (
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Ti" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -739,7 +739,7 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Ty" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -747,7 +747,7 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "TA" = (
 /obj/machinery/button/remote/airlock{
 	id = "abdex";
@@ -757,7 +757,7 @@
 	specialfunctions = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Ub" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -766,7 +766,7 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Uq" = (
 /obj/effect/shuttle_landmark{
 	landmark_tag = "abductor_starboard";
@@ -777,43 +777,43 @@
 "UJ" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/fuel,
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "UK" = (
 /obj/structure/prop/alien/computer{
 	icon_state = "camera_flipped"
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "UL" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/fuel,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Vh" = (
 /obj/structure/closet/alien,
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "VT" = (
 /obj/machinery/power/shield_generator/charged,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Wl" = (
 /obj/structure/table/alien,
 /obj/item/storage/box/gloves,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "WB" = (
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
 /obj/machinery/power/rtg/abductor,
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "WX" = (
 /turf/simulated/shuttle/wall/alien/hard_corner,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Xp" = (
 /obj/machinery/button/remote/airlock{
 	dir = 8;
@@ -825,7 +825,7 @@
 	specialfunctions = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "XY" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -833,7 +833,7 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "XZ" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
@@ -841,21 +841,21 @@
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "YA" = (
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
 /obj/machinery/power/rtg/abductor,
 /turf/simulated/shuttle/floor/alien,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "YT" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien{
 	req_one_access = list(777)
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "YW" = (
 /obj/item/ammo_casing/microbattery/nt_hydra/stun,
 /obj/item/ammo_casing/microbattery/nt_hydra/stun,
@@ -889,14 +889,14 @@
 /obj/item/gun/projectile/ballistic/microbattery,
 /obj/item/gun/projectile/ballistic/microbattery,
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 "Zk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 8;
 	icon_state = "intact-fuel"
 	},
 /turf/simulated/shuttle/floor/alienplating,
-/area/abductor/interior)
+/area/sector/abductor_cruiser/interior)
 
 (1,1,1) = {"
 cF

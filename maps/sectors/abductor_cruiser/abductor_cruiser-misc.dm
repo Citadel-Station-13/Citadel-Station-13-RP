@@ -1,19 +1,13 @@
-// Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/generic/abductor
-	name = "OM Ship - Abductor Ship (New Z)"
-	desc = "A ship for spooky aliens to kidnap farmers and unfortunate spacemen."
-	suffix = "abductor.dmm"
-
-/area/abductor
+/area/sector/abductor_cruiser
 	name = "Abductor Ship"
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 	requires_power = 0
 	icon_state = "purple"
 
-/area/abductor/interior
+/area/sector/abductor_cruiser/interior
 	name = "Abductor Ship Interior"
 
-/area/abductor/exterior
+/area/sector/abductor_cruiser/exterior
 	name = "Abductor Ship Exterior"
 	has_gravity = 0
 

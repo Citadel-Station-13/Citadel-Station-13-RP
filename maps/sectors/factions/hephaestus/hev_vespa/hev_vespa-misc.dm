@@ -1,117 +1,110 @@
 
-
-// Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/generic/vespa
-	name = "OM Ship - Vespa (New Z)"
-	desc = "The Vespa, a Hephaestus Industries vessel."
-	suffix = "vespa.dmm"
-
 // The shuttle's area(s)
-/area/ship/expe
+/area/sector/hev_vespa
 	name = "\improper Event Ship (Use a Subtype!)"
 	icon_state = "shuttle2"
 	requires_power = 1
 	dynamic_lighting = 1
 
-/area/ship/expe/engineering
+/area/sector/hev_vespa/engineering
 	name = "\improper Exp Ship - Engineering"
-/area/ship/expe/engineeringpower
+/area/sector/hev_vespa/engineeringpower
 	name = "\improper Exp Ship - Engineering Power Station"
-/area/ship/expe/engineeringequipment
+/area/sector/hev_vespa/engineeringequipment
 	name = "\improper Exp Ship - Engineering Equipment Room"
-/area/ship/expe/engineeringstorage
+/area/sector/hev_vespa/engineeringstorage
 	name = "\improper Exp Ship - Engineering Storage Room"
-/area/ship/expe/hangar
+/area/sector/hev_vespa/hangar
 	name = "\improper Exp Ship - Hangar"
-/area/ship/expe/hangarcontrol
+/area/sector/hev_vespa/hangarcontrol
 	name = "\improper Exp Ship - Exploration Equipment Room"
-/area/ship/expe/cabin1
+/area/sector/hev_vespa/cabin1
 	name = "\improper Exp Ship - Cabin 1"
-/area/ship/expe/cabin2
+/area/sector/hev_vespa/cabin2
 	name = "\improper Exp Ship - Cabin 2"
-/area/ship/expe/cabin3
+/area/sector/hev_vespa/cabin3
 	name = "\improper Exp Ship - Cabin 3"
-/area/ship/expe/cabin4
+/area/sector/hev_vespa/cabin4
 	name = "\improper Exp Ship - Cabin 4"
-/area/ship/expe/cabin5
+/area/sector/hev_vespa/cabin5
 	name = "\improper Exp Ship - Cabin 5"
-/area/ship/expe/cabin6
+/area/sector/hev_vespa/cabin6
 	name = "\improper Exp Ship - Cabin 6"
-/area/ship/expe/cabin7
+/area/sector/hev_vespa/cabin7
 	name = "\improper Exp Ship - Cabin 7"
-/area/ship/expe/cabin8
+/area/sector/hev_vespa/cabin8
 	name = "\improper Exp Ship - Cabin 8"
-/area/ship/expe/cabin9
+/area/sector/hev_vespa/cabin9
 	name = "\improper Exp Ship - Cabin 9"
-/area/ship/expe/corridor1
+/area/sector/hev_vespa/corridor1
 	name = "\improper Exp Ship - Corridor"
-/area/ship/expe/corridor2
+/area/sector/hev_vespa/corridor2
 	name = "\improper Exp Ship - Corridor"
-/area/ship/expe/corridor3
+/area/sector/hev_vespa/corridor3
 	name = "\improper Exp Ship - Corridor"
-/area/ship/expe/corridor4
+/area/sector/hev_vespa/corridor4
 	name = "\improper Exp Ship - Corridor"
-/area/ship/expe/corridor5
+/area/sector/hev_vespa/corridor5
 	name = "\improper Exp Ship - Corridor"
-/area/ship/expe/corridor6
+/area/sector/hev_vespa/corridor6
 	name = "\improper Exp Ship - Corridor"
-/area/ship/expe/sm
+/area/sector/hev_vespa/sm
 	name = "\improper Exp Ship - Supermatter"
-/area/ship/expe/smstorage
+/area/sector/hev_vespa/smstorage
 	name = "\improper Exp Ship - Supermatter Storage"
-/area/ship/expe/medical
+/area/sector/hev_vespa/medical
 	name = "\improper Exp Ship - Medical"
-/area/ship/expe/medical1
+/area/sector/hev_vespa/medical1
 	name = "\improper Exp Ship - Medical Pacient Room"
-/area/ship/expe/medicalchem
+/area/sector/hev_vespa/medicalchem
 	name = "\improper Exp Ship - Chemistry"
-/area/ship/expe/medicalmain
+/area/sector/hev_vespa/medicalmain
 	name = "\improper Exp Ship - Medical Main"
-/area/ship/expe/medicaleq
+/area/sector/hev_vespa/medicaleq
 	name = "\improper Exp Ship - Medical Equipment Room"
-/area/ship/expe/medicalsur
+/area/sector/hev_vespa/medicalsur
 	name = "\improper Exp Ship - Medical Surgery"
-/area/ship/expe/armoury
+/area/sector/hev_vespa/armoury
 	name = "\improper Exp Ship - Lightweight Armoury"
-/area/ship/expe/secmain
+/area/sector/hev_vespa/secmain
 	name = "\improper Exp Ship - Security"
-/area/ship/expe/seclobby
+/area/sector/hev_vespa/seclobby
 	name = "\improper Exp Ship - Security Lobby"
-/area/ship/expe/seclobby2
+/area/sector/hev_vespa/seclobby2
 	name = "\improper Exp Ship - Security Lobby"
-/area/ship/expe/seceq
+/area/sector/hev_vespa/seceq
 	name = "\improper Exp Ship - Security Equipment Room"
-/area/ship/expe/sechall
+/area/sector/hev_vespa/sechall
 	name = "\improper Exp Ship - Security Hall"
-/area/ship/expe/seccells
+/area/sector/hev_vespa/seccells
 	name = "\improper Exp Ship - Security Holding Cells"
-/area/ship/expe/cafet
+/area/sector/hev_vespa/cafet
 	name = "\improper Exp Ship - Cafeteria"
-/area/ship/expe/cargo
+/area/sector/hev_vespa/cargo
 	name = "\improper Exp Ship - Storage"
-/area/ship/expe/bridge
+/area/sector/hev_vespa/bridge
 	name = "\improper Exp Ship - Bridge"
-/area/ship/expe/engines
+/area/sector/hev_vespa/engines
 	name = "\improper Exp Ship - Engines Port"
-/area/ship/expe/engines2
+/area/sector/hev_vespa/engines2
 	name = "\improper Exp Ship - Engines Starboard"
-/area/ship/expe/captqua
+/area/sector/hev_vespa/captqua
 	name = "\improper Exp Ship - Captain's Quarters"
-/area/ship/expe/expedition
+/area/sector/hev_vespa/expedition
 	name = "\improper Exp Ship - Expedition Prep"
-/area/ship/expe/atmospherics
+/area/sector/hev_vespa/atmospherics
 	name = "\improper Exp Ship - Atmos"
-/area/ship/expe/northairlock
+/area/sector/hev_vespa/northairlock
 	name = "\improper Exp Ship - Airlock"
-/area/ship/expe/southairlock
+/area/sector/hev_vespa/southairlock
 	name = "\improper Exp Ship - Airlock"
-/area/ship/expe/maintenancerim
+/area/sector/hev_vespa/maintenancerim
 	name = "\improper Exp Ship - Maintenance"
-/area/ship/expe/maintenance1
+/area/sector/hev_vespa/maintenance1
 	name = "\improper Exp Ship - Maintenance"
-/area/ship/expe/maintenance2
+/area/sector/hev_vespa/maintenance2
 	name = "\improper Exp Ship - Maintenance"
-/area/ship/expe/shieldgen
+/area/sector/hev_vespa/shieldgen
 	name = "\improper Exp Ship - Shield Generator"
 
 // The 'ship'
@@ -126,34 +119,3 @@
 	vessel_mass = 10000
 	initial_generic_waypoints = list("hpv_port", "hpv_starboard", "hpv_hangar")
 	fore_dir = 4
-
-// Boat deprecated because hangar was converted into one for the expedition shuttle
-
-// The ship's boat
-// /area/shuttle/vespaboat
-	//name = "\improper Vespa's Ship's Boat"
-	//icon_state = "shuttle"
-
-// The shuttle's 'shuttle' computer
-// /obj/machinery/computer/shuttle_control/vespaboat
-    //name = "Vespa's Shuttle control console"
-    //shuttle_tag = "Vespa's Ship's Boat"
-    //req_one_access = list(ACCESS_GENERAL_PILOT)
-
-// A shuttle lateloader landmark
-// /obj/effect/shuttle_landmark/shuttle_initializer/vespaboat
-    //name = "Vespa's Boat Bay"
-    //base_area = /area/ship/expe/hangar
-    //base_turf = /turf/simulated/floor/tiled/techfloor
-    //landmark_tag = "omship_spawn_vespaboat"
-    //docking_controller = "vespa_boatbay"
-    //shuttle_type = /datum/shuttle/autodock/overmap/vespaboat
-
-// The 'shuttle'
-// /datum/shuttle/autodock/overmap/vespaboat
-    //name = "Vespa's Ship's Boat"
-    //current_location = "omship_spawn_vespaboat"
-    //docking_controller_tag = "vespaboat_docker"
-    //shuttle_area = /area/shuttle/vespaboat
-    //fuel_consumption = 0
-    //defer_initialisation = TRUE

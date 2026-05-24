@@ -23,7 +23,7 @@
 	var/datum/perspective/used_perspective
 
 	/// call with proposed position and ourselves when the user tries to designate a location
-	/// call pattern: (turf/lower_left, mob/user, datum/shuttle_docker/docker)
+	/// call pattern: (turf/lower_left, dir, mob/user, datum/shuttle_docker/docker)
 	/// return FALSE to forbid docking.
 	var/datum/callback/on_target
 
@@ -32,6 +32,8 @@
 
 	var/designate_in_progress = FALSE
 	var/designate_time = 5 SECONDS
+
+	var/image/current_manual_position_render
 
 /datum/shuttle_docker/New(datum/shuttle/shuttle, datum/host, mob/user, datum/callback/on_target)
 	src.shuttle = shuttle
@@ -50,12 +52,24 @@
 	host = null
 	shuttle = null
 	QDEL_NULL(used_perspective)
+	QDEL_NULL(current_manual_position_render)
 	return ..()
 
 /datum/shuttle_docker/proc/create_eye()
 	src.eye = new(shuttle.anchor.loc)
 	src.eye.dir = shuttle.anchor.dir
 	src.eye.vis_contents += shuttle.get_preview()
+
+/datum/shuttle_docker/proc/update_current_manual_position(turf/where, dir)
+	if(current_manual_position_render)
+		used_perspective.remove_image(current_manual_position_render)
+		QDEL_NULL(current_manual_position_render)
+
+	if(!where)
+		return
+
+	current_manual_position_render = image(shuttle.get_preview(), where, dir = dir)
+	used_perspective.add_image(current_manual_position_render)
 
 /datum/shuttle_docker/proc/capture_user(mob/user)
 	#warn impl
@@ -111,6 +125,9 @@
 	if(istype(controller))
 		. += controller.manual_landing_beacons(zlevel)
 
+/datum/shuttle_docker/proc/attempt_designate(turf/target, dir, datum/event_args/actor/actor)
+	#warn impl
+
 /datum/action/shuttle_docker
 	target_type = /datum/shuttle_docker
 
@@ -123,7 +140,11 @@
 	. = ..()
 	if(.)
 		return TRUE
-	#warn impl
+	var/turf/target = get_turf(target.eye)
+	if(!target)
+		return TRUE
+	var/dir = target.eye.dir
+	return target.attempt_designate(target, dir, actor)
 
 /datum/action/shuttle_docker/exit
 

@@ -34,7 +34,7 @@
 			if(!shuttle)
 				return TRUE
 			admin_holder.open_admin_modal(/datum/admin_modal/shuttle_controller, shuttle)
-			return TRUE
+			return TRUEw
 		if("refresh")
 			push_shuttles()
 			return TRUE
