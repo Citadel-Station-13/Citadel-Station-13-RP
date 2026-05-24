@@ -140,8 +140,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/wood,
 /area/security/lobby)
@@ -3634,11 +3633,10 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3aftstrbdmaint/endeavour)
 "cKX" = (
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "cLq" = (
@@ -6662,15 +6660,16 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/sortjunction{
-	name = "HoS Office";
-	sortType = "HoS Office"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
+	},
+/obj/structure/disposalpipe/sortjunction/flipped{
+	dir = 1;
+	sortType = "HoS Office";
+	name = "HoS Office"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
@@ -7045,13 +7044,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "fdf" = (
@@ -7881,11 +7879,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "fLD" = (
@@ -8002,10 +7999,6 @@
 "fOv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/map_helper/access_helper/airlock/station/security/general,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/security/polarized{
@@ -8013,6 +8006,9 @@
 	id_tint = "briefing_room"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "fOO" = (
@@ -8201,12 +8197,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
@@ -9620,7 +9616,6 @@
 "gRQ" = (
 /obj/machinery/holopad,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/lino,
@@ -12151,8 +12146,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
@@ -13751,12 +13745,11 @@
 "jSk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/landmark/spawnpoint/job/security_officer,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "jSw" = (
@@ -16349,13 +16342,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/hallway/d3aftportmaint/endeavour)
-"lGw" = (
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/carpet,
-/area/crew_quarters/heads/hos)
 "lGR" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/old_cargo/gray,
@@ -16367,15 +16353,14 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
@@ -18377,15 +18362,14 @@
 "ndW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/main)
@@ -20002,7 +19986,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -21890,10 +21873,6 @@
 "pKa" = (
 /obj/machinery/papershredder,
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -21907,6 +21886,9 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 5
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/main)
@@ -22765,6 +22747,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/d3fwdhall/endeavour)
+"qsw" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet,
+/area/crew_quarters/heads/hos)
 "qtx" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -26771,11 +26759,10 @@
 "tuv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "tuK" = (
@@ -26932,12 +26919,11 @@
 "tzj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/machinery/holopad,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "tzu" = (
@@ -30165,12 +30151,11 @@
 /turf/space,
 /area/space)
 "vOF" = (
-/obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
@@ -30564,7 +30549,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
@@ -31052,11 +31036,10 @@
 "wtj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "wtm" = (
@@ -32927,7 +32910,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/carpet,
@@ -33260,8 +33242,7 @@
 /area/security/hallwayaux)
 "xNn" = (
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "2-4"
+	icon_state = "1-8"
 	},
 /obj/machinery/light,
 /obj/structure/noticeboard{
@@ -49433,9 +49414,9 @@ xDp
 xao
 hij
 nbJ
-lGw
+qsw
 xEV
-lGw
+qsw
 vmQ
 hUU
 jcj
