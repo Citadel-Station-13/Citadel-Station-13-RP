@@ -2738,7 +2738,7 @@
 	id = "alcsassafras"
 	description = "Doesn't matter if you're drunk when you have a horse to take you home!"
 	taste_description = "bitter vanilla with a sharp burn"
-	proof = 50
+	proof = VODKA/2
 
 	glass_name = "CC's Hard Rootbeer"
 	glass_desc = "You'd better carry two guns if you're gonna keep drinking these!"
