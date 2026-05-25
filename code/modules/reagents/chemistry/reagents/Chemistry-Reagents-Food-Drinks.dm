@@ -2203,7 +2203,7 @@
 	description = "A sweet mix of blood-like additives. Vampiric."
 	taste_description = "an odd blend of metals and sugar"
 	color = "#993c49"
-	blood_content = 1
+	blood_content = 2
 	nutrition=1
 
 	glass_name = "Blud"
@@ -2216,7 +2216,7 @@
 	description = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
 	taste_description = "an awful blend of metals and artificial sweeteners"
 	color = "#793c44"
-	blood_content = 1
+	blood_content = 1.5
 
 	glass_name = "Blud Light"
 	glass_desc = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
@@ -3309,7 +3309,7 @@
 	taste_description = "sweet and salty alcohol"
 	color = "#C73C00"
 	proof = MEAD/2
-	blood_content = 0.5
+	blood_content = 0.8
 
 	glass_name = "Red Mead"
 	glass_desc = "A true Viking's beverage, though its color is strange."
@@ -4187,7 +4187,7 @@
 	description = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
 	taste_description = "lingering regret, gunpowder, and blood"
 	proof = 40
-	blood_content = 0.4
+	blood_content = 0.6
 
 	glass_name = "Blood Meridian"
 	glass_desc = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
@@ -4295,7 +4295,7 @@
 	taste_description = "copper, tomatoes, and heretical sweetness"
 	color = "#B40000"
 	proof = (VODKA/3+VODKA)/5
-	blood_content = 0.2
+	blood_content = 0.4
 
 	glass_name = "Mary On a Cross"
 	glass_desc = "Not just another Bloody Mary. Mary on a cross."
