@@ -55,6 +55,13 @@
 		/obj/item/reagent_containers/food/drinks/bludbox = 5,
 		/obj/item/reagent_containers/food/drinks/bludboxlight = 5,
 	)
+
+	holiday_products = list(
+	  HOLIDAY_CHRISTMAS = list(
+	    /obj/item/reagent_containers/food/snacks/wrapped/candy = 6,
+	  )
+	)
+
 	contraband = list(
 		/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5,
 		/obj/item/reagent_containers/food/snacks/liquid = 6,
@@ -87,6 +94,7 @@
 		/obj/item/reagent_containers/food/snacks/liquid = 8, //SweatMAX LiquidFood costs 15. Making the contraband version cheaper can be rewarding.
 		/obj/item/reagent_containers/food/drinks/cans/dumbjuice = 1,
 		/obj/item/reagent_containers/food/drinks/cans/geometer = 15, //Geometer Energy contains actual blood.
+		/obj/item/reagent_containers/food/snacks/wrapped/candy = 1
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
