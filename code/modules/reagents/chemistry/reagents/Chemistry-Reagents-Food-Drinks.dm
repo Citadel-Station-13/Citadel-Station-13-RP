@@ -5372,3 +5372,14 @@
 	glass_name = "Dr. Gibb Mystery"
 	glass_desc = "A glass of limited-edition Dr. Gibb Mystery."
 	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/ethanol/sourappleschnapps
+	name = "Sour Apple Schnapps"
+	id = "sourappleschnapps"
+	description = "A strong artificially-flavoured liqueur meant for mixing."
+	taste_description = "extremely tart and sweet apple"
+	color = "#009619"
+	proof = SCHNAPPS
+
+	glass_name = "Sour Apple Schnapps"
+	glass_desc = "Something tells you it would be unwise to drink this straight."

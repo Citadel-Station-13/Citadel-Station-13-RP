@@ -147,12 +147,3 @@
 	icon_state = "winebottle"
 	center_of_mass = list("x"=16, "y"=4)
 	start_with_single_reagent = /datum/reagent/ethanol/wine
-
-// Seasonals
-
-/obj/item/reagent_containers/food/drinks/bottle/caramelwhiskey
-	name = "Al-Karamil Whiskey Liqueur"
-	desc = "A limited-edition bottle of decadent caramel-flavored whiskey. It has a Gilthari Exports sticker on it."
-	icon_state = "caramelwhiskeybottle"
-	center_of_mass = list("x"=16, "y"=2)
-	start_with_single_reagent = /datum/reagent/ethanol/caramelwhiskey
