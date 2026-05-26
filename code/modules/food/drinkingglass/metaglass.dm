@@ -95,6 +95,9 @@ Drinks Data
 /datum/reagent/drink/juice/orange
 	glass_icon_state = "glass_orange"
 
+/datum/reagent/drink/juice/pineapple
+	glass_icon_state = "glass_lemonjuice"
+
 /datum/reagent/toxin/poisonberryjuice
 	glass_icon_state = "poisonberryjuice"
 
@@ -989,6 +992,10 @@ Drinks Data
 
 /datum/reagent/ethanol/coquito
 	glass_icon_state = "coconut"
+
+/datum/reagent/ethanol/adiosmotherfucker
+	glass_icon_state = "amf"
+	glass_center_of_mass = list("x"=16, "y"=5)
 
 /datum/reagent/ethanol/bludsfizz
 	glass_icon_state = "blud_orange"

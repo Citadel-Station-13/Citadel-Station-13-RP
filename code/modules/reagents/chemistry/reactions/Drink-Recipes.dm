@@ -1772,6 +1772,13 @@
 	required_reagents = list("rum" = 1, "pineapplejuice" = 1, "coconutmilk" = 1, "ice" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/adiosmotherfucker
+	name = "Adios, Motherfucker"
+	id = "adiosmotherfucker"
+	result = "adiosmotherfucker"
+	required_reagents = list("vodka" = 1, "gin" = 1, "rum" = 1, "tequila" = 1, "bluecuracao" = 1, "lemonjuice" = 1, "space_up" = 2)
+	result_amount = 8
+
 
 //Blud-based Cocktails
 //All of these drinks should contain some level of blood_content in their reagent code

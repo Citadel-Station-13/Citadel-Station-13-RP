@@ -4359,6 +4359,17 @@
 	glass_name = "Mimosa"
 	glass_desc = "A bubbly and tangy refreshment."
 
+/datum/reagent/ethanol/adiosmotherfucker
+	name = "Adios, Motherfucker"
+	id = "adiosmotherfucker"
+	description = "The liquor cabinet, topped with lemon and Space-Up. Dangerously drinkable."
+	taste_description = "fizzy alcoholic lemonade"
+	color = "#00b7ff"
+	proof = (VODKA+GIN+TEQUILA+RUM+CURACAO)/8
+
+	glass_name = "Adios, Motherfucker"
+	glass_desc = "You have a sneaking suspicion the Motherfucker in question is you."
+
 //Never Fade Away
 /datum/reagent/ethanol/silverhand
 	name = "Johnny Silverhand"
