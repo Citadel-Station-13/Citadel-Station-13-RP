@@ -2203,8 +2203,8 @@
 	description = "A sweet mix of blood-like additives. Vampiric."
 	taste_description = "an odd blend of metals and sugar"
 	color = "#993c49"
-	blood_content = 2
-	nutrition=1
+	blood_content = 2 //Regular blood is 4
+	nutrition = 8 //Regular blood is 10
 
 	glass_name = "Blud"
 	glass_desc = "A sweet mix of blood-like additives. Vampiric."
@@ -2216,7 +2216,8 @@
 	description = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
 	taste_description = "an awful blend of metals and artificial sweeteners"
 	color = "#793c44"
-	blood_content = 1.5
+	nutrition = 6
+	blood_content = 2
 
 	glass_name = "Blud Light"
 	glass_desc = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
