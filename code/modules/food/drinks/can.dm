@@ -198,6 +198,16 @@
 	. = ..()
 	reagents.add_reagent("grapejuice", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/pineapple_juice
+	name = "\improper Pineapple Juice"
+	desc = "You can almost hear the waves crashing already! Almost!"
+	icon_state = "pineapple_can"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/pineapple_juice/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("pineapplejuice", 30)
+
 /obj/item/reagent_containers/food/drinks/cans/tonic
 	name = "\improper T-Borg's Tonic Water"
 	desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
