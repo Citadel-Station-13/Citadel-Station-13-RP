@@ -165,8 +165,8 @@
 
 /datum/supply_pack/nanotrasen/hospitality/vampcarepackage
 	name = "Vetalan Care package"
-	contains = list(/obj/item/reagent_containers/food/drinks/bludboxmax = 2,
-					/obj/item/reagent_containers/food/drinks/bludboxmaxlight = 2)
+	contains = list(/obj/item/reagent_containers/food/drinks/bludboxmax = 3,
+					/obj/item/reagent_containers/food/drinks/bludboxmaxlight = 3)
 	worth = 500
 	container_type = /obj/structure/closet/coffin/comfy
 	container_name = "Extra comfortable coffin"

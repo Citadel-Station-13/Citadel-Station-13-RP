@@ -48,7 +48,7 @@
 
 /obj/item/reagent_containers/food/drinks/bludboxmax
 	name = "Bludbox MAX carton"
-	desc = "A vampire's best friend! This Bludbox contains only the most delicious of organic, free-range O-Negatives. For all your dietary needs!"
+	desc = "A vampire's best friend! This Bludbox contains only the most delicious of organic, ethically-sourced O-Negatives. For all your dietary needs!"
 	volume = 30
 	icon_state = "bludboxmax"
 	center_of_mass = list("x"=16, "y"=9)
