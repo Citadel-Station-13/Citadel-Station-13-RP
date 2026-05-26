@@ -1918,3 +1918,20 @@
 	required_reagents = list("unathijuice" = 2, "protein" = 1)
 	result_amount = 3
 	reaction_message_instant = "The mixture turns a deep orange."
+
+//Seasonals
+//Drinks that require seasonal ingredients
+
+/datum/chemical_reaction/drinks/caramel_russian_russian
+	name = "Caramel White Russian"
+	id = "caramelrussian"
+	result = "caramelrussian"
+	required_reagents = list("kahlua" = 1, "caramelwhiskey" = 1, "cream" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/caramel_cider
+	name = "Salted Caramel Cider"
+	id = "caramelcider"
+	result = "caramelcider"
+	required_reagents = list("caramelwhiskey" = 1, "cider" = 2)
+	result_amount = 3

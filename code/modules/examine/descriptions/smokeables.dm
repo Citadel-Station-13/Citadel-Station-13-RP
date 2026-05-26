@@ -33,6 +33,15 @@
 /obj/item/storage/fancy/cigarettes/subrosas
 	description_fluff = "The flagship product of it's namesake Eridanian company, Subrosa cigarettes contain no tobacco or nicotine and are instead made with a selection of dried aromatic herbs and extracts including, presumably, roses. Each sepia-colored roll smells faintly of cloves and cinnamon."
 
+// Seasonals
+
+/obj/item/storage/fancy/cigarettes/vanillas
+	description_fluff = "The Temperamento Tobacco Company is a large cigarette company based on Mars.  They have been around since the very dawn of human colonization and have remained a favorite for those seeking a more numbing cigarette.<br>\
+	<br>\
+	This is a pack of Temperamento Vanillas.  These are only made in limited numbers each year as a holiday seasonal for specific markets.  Hoard them while you can!"
+
+// Cigars
+
 /obj/item/clothing/mask/smokable/cigarette/cigar
 	description_fluff = "While the label does say that this is a 'premium cigar', it really cannot match other types of cigars on the market.  Is it a quality cigarette?  Perhaps.  Was it hand-made with care?  No.  This is what differentiates between quality products that Gilthari puts out and Nanotrasen 'premium' cigars like this one."
 
