@@ -5394,3 +5394,14 @@
 
 	glass_name = "Sour Apple Schnapps"
 	glass_desc = "Something tells you it would be unwise to drink this straight."
+
+/datum/reagent/ethanol/candycornvodka
+	name = "Candy Corn Vodka"
+	id = "candycornvodka"
+	description = "Vodka infused with an assortment of artificial flavourings to mimic the taste of candy corn."
+	taste_description = "strong alcohol with tones of marshmallow and caramel"
+	color = "#ff7b00"
+	proof = VODKA*0.9
+
+	glass_name = "Candy Corn Vodka"
+	glass_desc = "Practically candy in a glass."

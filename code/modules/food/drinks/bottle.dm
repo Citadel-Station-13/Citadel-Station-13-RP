@@ -410,23 +410,3 @@
 /obj/item/reagent_containers/food/drinks/bottle/unathijuice/Initialize()
 	.=..()
 	reagents.add_reagent("unathijuice", 100)
-
-//Seasonal - Xmas
-
-/obj/item/reagent_containers/food/drinks/bottle/caramelwhiskey
-	name = "Al-Karamil Whiskey Liqueur"
-	desc = "A limited-edition bottle of decadent caramel-flavored whiskey.<br>\
-	It has a Gilthari Exports sticker on it."
-	icon_state = "caramelwhiskeybottle"
-	center_of_mass = list("x"=16, "y"=2)
-	start_with_single_reagent = /datum/reagent/ethanol/caramelwhiskey
-
-//Seasonal - Halloween
-
-/obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps
-	name = "Lich King Emerald"
-	desc = "Notice: Unapologetically Evil neon-green liqueur inside. Imbibe at your own risk. Sour apple flavoured Schnapps.<br>\
-	It has a Gilthari Exports sticker on it."
-	icon_state = "sourappleschnapps"
-	center_of_mass = list("x"=17, "y"=3)
-	start_with_single_reagent = /datum/reagent/ethanol/sourappleschnapps

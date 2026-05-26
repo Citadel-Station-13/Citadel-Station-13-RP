@@ -1029,7 +1029,8 @@ Drinks Data
 	glass_icon_state = "mimosa"
 	glass_center_of_mass = list("x"=16, "y"=8)
 
-//Seasonals
+//Seasonals - Xmas
+
 /datum/reagent/ethanol/caramelwhiskey
 	glass_icon_state = "caramelwhiskeyglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
@@ -1040,3 +1041,12 @@ Drinks Data
 
 /datum/reagent/ethanol/caramel_cider
 	glass_icon_state = "caramelciderglass"
+
+//Seasonals - Halloween
+
+/datum/reagent/ethanol/sourappleschnapps
+	glass_icon_state = "sourappleglass"
+	glass_center_of_mass = list("x"=16, "y"=5)
+
+/datum/reagent/ethanol/candycornvodka
+	glass_icon_state = "candycornglass"
