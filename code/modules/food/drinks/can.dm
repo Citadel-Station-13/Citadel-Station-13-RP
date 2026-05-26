@@ -382,7 +382,7 @@
 	. = ..()
 	reagents.add_reagent("water", 40) //Important for Crafting Recipes Also means Colonists don't need station/hotsprings for water.
 
-// Seasonals
+// Seasonals - Xmas
 
 /obj/item/reagent_containers/food/drinks/cans/cola_cinnamon
 	name = "\improper Space Cola Cinnamon"
@@ -413,3 +413,25 @@
 /obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("peppermint_mocha", 30)
+
+// Seasonals - Halloween
+
+/obj/item/reagent_containers/food/drinks/cans/cola_licorice
+	name = "\improper Space Cola Licorice"
+	desc = "The classic taste of Space Cola infused with red and black licorice mix. Happy Halloween!"
+	icon_state = "licoricecola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_licorice/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("licoricecola", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb_mystery
+	name = "\improper Dr. Gibb Mystery"
+	desc = "A mysterious seasonal variant of Dr. Gibb. Happy Halloween!"
+	icon_state = "dr_gibbmystery"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb_mystery/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("dr_gibbmystery", 30)

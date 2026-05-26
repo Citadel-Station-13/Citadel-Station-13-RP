@@ -2204,6 +2204,7 @@
 	taste_description = "an odd blend of metals and sugar"
 	color = "#993c49"
 	blood_content = 2 //Regular blood is 4
+	ingest_met = REM * 10 //Same speed as regular blood
 	nutrition = 1
 
 	glass_name = "Blud"
@@ -2217,6 +2218,7 @@
 	taste_description = "an awful blend of metals and artificial sweeteners"
 	color = "#793c44"
 	blood_content = 2
+	ingest_met = REM * 10
 
 	glass_name = "Blud Light"
 	glass_desc = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
@@ -5284,7 +5286,7 @@
 	taste_mult = 8
 	taste_description = "sweetness"
 
-// Seasonals
+// Seasonals - Xmas
 
 /datum/reagent/ethanol/caramelwhiskey
 	name = "Caramel Whiskey"
@@ -5349,3 +5351,24 @@
 
 	glass_name = "Salted Caramel Cider"
 	glass_desc = "The sweet union of crisp apple and smooth caramel. And alcohol, obviously."
+
+// Seasonals - Halloween
+
+/datum/reagent/drink/soda/licorice
+	name = "Space Cola Licorice"
+	id = "licoricecola"
+	description = "The classic taste of Space Cola infused with black and red licorice mix."
+	taste_description = "fizzy black and red licorice"
+
+	glass_name = "Space Cola Licorice"
+	glass_desc = "A glass of limited-edition Space Cola Licorice."
+
+/datum/reagent/drink/soda/dr_gibb/mystery
+	name = "Dr. Gibb Mystery"
+	id = "dr_gibbmystery"
+	description = "A proudly mysterious halloween-themed variant of Dr. Gibb."
+	taste_description = "assorted fruit candy"
+
+	glass_name = "Dr. Gibb Mystery"
+	glass_desc = "A glass of limited-edition Dr. Gibb Mystery."
+	glass_special = list(DRINK_FIZZ)
