@@ -424,7 +424,7 @@
 //Seasonal - Halloween
 
 /obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps
-	name = "Lich King Sour Apple Schnapps"
+	name = "Lich King's Sour Apple Schnapps"
 	desc = "Notice: Unapologetically Evil neon-green liqueur inside. Imbibe at your own risk.<br>\
 	It has a Gilthari Exports sticker on it."
 	icon_state = "sourappleschnapps"
