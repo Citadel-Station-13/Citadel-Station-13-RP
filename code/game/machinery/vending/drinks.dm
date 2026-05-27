@@ -56,12 +56,6 @@
 		/obj/item/reagent_containers/food/drinks/bludboxlight = 5,
 	)
 
-	holiday_products = list(
-	  HOLIDAY_CHRISTMAS = list(
-	    /obj/item/reagent_containers/food/snacks/wrapped/candy = 6,
-	  )
-	)
-
 	contraband = list(
 		/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 5,
 		/obj/item/reagent_containers/food/snacks/liquid = 6,
