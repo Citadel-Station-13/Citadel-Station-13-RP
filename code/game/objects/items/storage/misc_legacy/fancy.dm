@@ -366,9 +366,16 @@
 
 /obj/item/storage/fancy/cigarettes/vanillas
 	name = "\improper pack of Temperamento Vanillas"
-	desc = "A packet of limited-edition, vanilla flavored Temperamentos. These are outlawed in several territories, but not frontier space!"
+	desc = "A packet of limited-edition, vanilla flavoured Temperamentos. These are outlawed in several territories, but not frontier space!"
 	icon_state = "TVpacket"
 	brand = "\improper Temperamento Vanilla"
+
+/obj/item/storage/fancy/cigarettes/kaijus
+	name = "\improper pack of Kaiju Cherries"
+	desc = "A packet of limited-edition, cherry flavoured Kaiju cigarettes. A favourite of edgy goths across the Frontier."
+	icon_state = "KJpacket"
+	brand = "\improper Kaiju Cherry"
+
 
 // Cigars
 

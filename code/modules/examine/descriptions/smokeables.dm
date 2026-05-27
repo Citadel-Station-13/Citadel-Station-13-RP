@@ -40,6 +40,11 @@
 	<br>\
 	This is a pack of Temperamento Vanillas.  These are only made in limited numbers each year as a holiday seasonal for specific markets.  Hoard them while you can!"
 
+/obj/item/storage/fancy/cigarettes/kaijus
+	description_fluff = "Kaiju Tobacco Incorporated is a recent entrant to the flavoured cigarette market, hailing from from the colony station of Kyoto XII, their business is almost entirely aimed at unregulated frontier markets, with flavours being rotated on a seasonal basis.<br>\
+	<br>\
+	This is a pack of Kaiju Cherries.  It's one of their most popular variants, sold only during October.  Everything from the tobacco, to the paper and filter are scented and laced with sweeteners.
+
 // Cigars
 
 /obj/item/clothing/mask/smokable/cigarette/cigar
