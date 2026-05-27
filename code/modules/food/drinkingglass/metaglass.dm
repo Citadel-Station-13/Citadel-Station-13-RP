@@ -1050,3 +1050,22 @@ Drinks Data
 
 /datum/reagent/ethanol/candycornvodka
 	glass_icon_state = "candycornglass"
+
+/datum/reagent/ethanol/appletini
+	glass_icon_state = "appletini"
+	glass_center_of_mass = list("x"=17, "y"=8)
+
+/datum/reagent/ethanol/sourapplemimosa
+	glass_icon_state = "sourapplemimosa"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/sourapplefizz
+	glass_icon_state = "sourapplefizz"
+	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/ethanol/candycornmartini
+	glass_icon_state = "candycornmartini"
+	glass_center_of_mass = list("x"=17, "y"=8)
+
+/datum/reagent/ethanol/halloweenpunch
+	glass_icon_state = "halloweenpunch"
