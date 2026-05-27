@@ -374,6 +374,7 @@
 	name = "\improper pack of Kaiju Cherries"
 	desc = "A packet of limited-edition, cherry flavoured Kaiju cigarettes. A favourite of edgy goths across the Frontier."
 	icon_state = "KJpacket"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/kaiju = 6)
 	brand = "\improper Kaiju Cherry"
 
 
