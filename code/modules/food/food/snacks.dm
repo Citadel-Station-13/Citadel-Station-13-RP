@@ -7086,7 +7086,7 @@ END CITADEL CHANGE */
 	reagents.add_reagent("protein", 3)
 	reagents.add_reagent("triglyceride", 1)
 
-//Seasonals
+//Seasonals - Xmas
 
 /obj/item/reagent_containers/food/snacks/gingerbreadcookie
 	name = "gingerbread cookie"
@@ -7160,3 +7160,18 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/slice/holidaycake/filled
 	filled = TRUE
+
+//Seasonals - Halloween
+
+/obj/item/reagent_containers/food/snacks/candycornjelloshot
+	name = "Candy Corn Jello Shot"
+	desc = "A luscious milk chocolate piece filled with gooey caramel."
+	icon_state =  "candycornjelloshot"
+	filling_color = "#ff7b00"
+	nutriment_desc = list("candy corn" = 2)
+	bitesize = 1
+
+/obj/item/reagent_containers/food/snacks/candycornjelloshot/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("candycornmartini", 5)
+	bitesize = 1

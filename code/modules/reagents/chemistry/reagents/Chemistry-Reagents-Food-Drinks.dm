@@ -5299,17 +5299,6 @@
 
 // Seasonals - Xmas
 
-/datum/reagent/ethanol/caramelwhiskey
-	name = "Caramel Whiskey"
-	id = "caramelwhiskey"
-	description = "A decadent caramel-flavored whiskey."
-	taste_description = "boozy caramel"
-	color = "#AB5A11"
-	proof = SCHNAPPS
-
-	glass_name = "Caramel Whiskey"
-	glass_desc = "A cloyingly sweet mixture of whiskey and salted caramel."
-
 /datum/reagent/drink/soda/cinnamon
 	name = "Space Cola Cinnamon"
 	id = "cinnamoncola"
@@ -5340,6 +5329,17 @@
 
 	glass_name = "Vanilla Peppermint Mocha"
 	glass_desc = "A nice, tasty beverage for the holiday season."
+
+/datum/reagent/ethanol/caramelwhiskey
+	name = "Caramel Whiskey"
+	id = "caramelwhiskey"
+	description = "A decadent caramel-flavored whiskey."
+	taste_description = "boozy caramel"
+	color = "#AB5A11"
+	proof = SCHNAPPS
+
+	glass_name = "Caramel Whiskey"
+	glass_desc = "A cloyingly sweet mixture of whiskey and salted caramel."
 
 /datum/reagent/ethanol/caramel_russian
 	name = "Caramel White Russian"
@@ -5405,3 +5405,58 @@
 
 	glass_name = "Candy Corn Vodka"
 	glass_desc = "Practically candy in a glass."
+
+/datum/reagent/ethanol/appletini
+	name = "Appletini"
+	id = "appletini"
+	description = "A bright-green cocktail originally designed to not taste like alcohol."
+	taste_description = "green apple candy"
+	color = "#9be720"
+	proof = (2*VODKA+SCHNAPPS)/4
+
+	glass_name = "Appletini"
+	glass_desc = "If it goes in the V-shaped glass, it's a Martini. Simple as."
+
+/datum/reagent/ethanol/sourapplemimosa
+	name = "Sour Apple Mimosa"
+	id = "sourapplemimosa"
+	description = "An green apple-based twist on the Mimosa. Just as refreshing."
+	taste_description = "fizzy apple sourness"
+	color = "#119400"
+	proof = (2*WINE+SCHNAPPS)/3
+
+	glass_name = "Sour Apple Mimosa"
+	glass_desc = "A bubbly and tart refreshment."
+
+/datum/reagent/ethanol/sourapplefizz
+	name = "Sour Apple Fizz"
+	id = "sourapplefizz"
+	description = "A low-proof drink consisting of sour apple schnapps and lime juice diluted into soda water."
+	taste_description = "airy green apple soda"
+	color = "#2bf32b"
+	proof = SCHNAPPS/4
+
+	glass_name = "Sour Apple Fizz"
+	glass_desc = "The Mojito wishes it could be this green."
+
+/datum/reagent/ethanol/candycornmartini
+	name = "Candy Corn Martini"
+	id = "candycornmartini"
+	description = "A classic halloween cocktail, meant to be carefully layered in the glass to look like the candy."
+	taste_description = "creamy vanilla and honey"
+	color = "#ee8b19"
+	proof = (VODKA)/3
+
+	glass_name = "Candy Corn Martini"
+	glass_desc = "If it goes in the V-shaped glass, it's a Martini. This one even has a colored sugar rim."
+
+/datum/reagent/ethanol/halloweenpunch
+	name = "Halloween Punch"
+	id = "halloweenpunch"
+	description = "A neon-orange beverage consisting of fruit juices and flavoured vodka. Commonly made in large quantities for halloween parties."
+	taste_description = "sweet tangy citrus"
+	color = "#ff9c00"
+	proof = (VODKA)/3
+
+	glass_name = "Halloween Punch"
+	glass_desc = "It's staring at you!"
