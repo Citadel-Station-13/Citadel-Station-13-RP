@@ -45,6 +45,5 @@
 /datum/chemical_reaction/stack_synthesis/candycornjelloshot
 	name = "Candy Corn Jello Shot"
 	id = "candycornjelloshot"
-	required_reagents = list("water" = 2, "protein" = 1)
-	catalysts = list("candycornmartini" = 5)
+	required_reagents = list("candycornmartini" = 5, "water" = 2, "protein" = 1)
 	stack_path = /obj/item/reagent_containers/food/snacks/candycornjelloshot
