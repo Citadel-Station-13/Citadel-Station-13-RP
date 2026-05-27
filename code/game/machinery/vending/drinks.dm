@@ -87,8 +87,7 @@
 		/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 8,
 		/obj/item/reagent_containers/food/snacks/liquid = 8, //SweatMAX LiquidFood costs 15. Making the contraband version cheaper can be rewarding.
 		/obj/item/reagent_containers/food/drinks/cans/dumbjuice = 1,
-		/obj/item/reagent_containers/food/drinks/cans/geometer = 15, //Geometer Energy contains actual blood.
-		/obj/item/reagent_containers/food/snacks/wrapped/candy = 1
+		/obj/item/reagent_containers/food/drinks/cans/geometer = 15 //Geometer Energy contains actual blood.
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
