@@ -1963,7 +1963,7 @@
 	name = "Sour Apple Fizz"
 	id = "sourapplefizz"
 	result = "sourapplefizz"
-	required_reagents = list("sourapplechnapps" = 1, "limejuice" = 1, "sodawater" = 2)
+	required_reagents = list("sourappleschnapps" = 1, "limejuice" = 1, "sodawater" = 2)
 	result_amount = 4
 
 /datum/chemical_reaction/drinks/candycornmartini
