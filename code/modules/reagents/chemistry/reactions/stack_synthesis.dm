@@ -40,10 +40,3 @@
 	id = "wax"
 	required_reagents = list("hydrogen" = 1, MAT_CARBON = 1, "tallow" = 2)
 	stack_path = /obj/item/stack/material/wax
-
-//Seasonal drinks - Halloween
-/datum/chemical_reaction/stack_synthesis/candycornjelloshot
-	name = "Candy Corn Jello Shot"
-	id = "candycornjelloshot"
-	required_reagents = list("candycornmartini" = 5, "water" = 2, "protein" = 1)
-	stack_path = /obj/item/reagent_containers/food/snacks/candycornjelloshot
