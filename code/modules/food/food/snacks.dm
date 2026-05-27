@@ -7131,7 +7131,7 @@ END CITADEL CHANGE */
 	filling_color = "#7D5F46"
 	nutriment_amt = 3
 	nutriment_desc = list("wafer" = 2, "caramel" = 1)
-	bitesize = 2
+	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/sliceable/holidaycake
 	name = "Holiday Fruit Cake"
@@ -7147,7 +7147,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("tricordrazine", 15)
 	reagents.add_reagent("paracetamol", 5)
-	bitesize = 2
+	bitesize = 5
 
 /obj/item/reagent_containers/food/snacks/slice/holidaycake
 	name = "Holiday Fruit Cake slice"
@@ -7165,13 +7165,13 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/candycornjelloshot
 	name = "Candy Corn Jello Shot"
-	desc = "A luscious milk chocolate piece filled with gooey caramel."
+	desc = "A layered shot of Candy Corn Martini solidified using gelatin."
 	icon_state =  "candycornjelloshot"
 	filling_color = "#ff7b00"
 	nutriment_desc = list("candy corn" = 2)
-	bitesize = 1
+	bitesize = 5
 
 /obj/item/reagent_containers/food/snacks/candycornjelloshot/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("candycornmartini", 5)
-	bitesize = 1
+	bitesize = 5
