@@ -860,7 +860,7 @@
 	load_chamber()
 	if(!silent)
 		if(!from_fire)
-			playsound(src, chamber_manual_cycle_sound, 75, TRUE)
+			playsound(src, chamber_manual_cycle_sound, 25, TRUE)
 
 /**
  * Loads the chamber from magazine immediately, if it is separated
