@@ -2204,7 +2204,9 @@
 	taste_description = "an odd blend of metals and sugar"
 	color = "#993c49"
 	blood_content = 1
-	nutrition=1
+	nutrition = 1
+	// fast metabolism if ingested
+	ingest_met = /datum/reagent/drink::ingest_met * 5
 
 	glass_name = "Blud"
 	glass_desc = "A sweet mix of blood-like additives. Vampiric."
