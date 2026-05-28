@@ -1,126 +1,117 @@
-#warn impl
-
-
-// Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/generic/ghostship
-	name = "OM Ship - Ghost Ship (New Z)"
-	desc = "The a modified pirate Vespa. The pirates seem long dead."
-	suffix = "ghostship.dmm"
-
 // The shuttle's area(s)
-/area/ship/ghostship
+/area/sector/itv_vespa
 	name = "\improper Event Ship (Use a Subtype!)"
 	icon_state = "shuttle2"
 	requires_power = 1
 	dynamic_lighting = 1
 
-/area/ship/ghostship/engineering
+/area/sector/itv_vespa/engineering
 	name = "\improper Unknown Vessel - Engineering"
-/area/ship/ghostship/engineeringpower
+/area/sector/itv_vespa/engineeringpower
 	name = "\improper Unknown Vessel - Engineering Power Station"
-/area/ship/ghostship/engineeringequipment
+/area/sector/itv_vespa/engineeringequipment
 	name = "\improper Unknown Vessel - Engineering Equipment Room"
-/area/ship/ghostship/engineeringstorage
+/area/sector/itv_vespa/engineeringstorage
 	name = "\improper Unknown Vessel - Engineering Storage Room"
-/area/ship/ghostship/hangar
+/area/sector/itv_vespa/hangar
 	name = "\improper Unknown Vessel - Converted Hangar"
-/area/ship/ghostship/hangarcontrol
+/area/sector/itv_vespa/hangarcontrol
 	name = "\improper Unknown Vessel - EVA Raid Storage"
-/area/ship/ghostship/cabin1
+/area/sector/itv_vespa/cabin1
 	name = "\improper Unknown Vessel - Cabin 1"
-/area/ship/ghostship/cabin2
+/area/sector/itv_vespa/cabin2
 	name = "\improper Unknown Vessel - Cabin 2"
-/area/ship/ghostship/cabin3
+/area/sector/itv_vespa/cabin3
 	name = "\improper Unknown Vessel - Cabin 3"
-/area/ship/ghostship/cabin4
+/area/sector/itv_vespa/cabin4
 	name = "\improper Unknown Vessel - Cabin 4"
-/area/ship/ghostship/cabin5
+/area/sector/itv_vespa/cabin5
 	name = "\improper Unknown Vessel - Cabin 5"
-/area/ship/ghostship/cabin6
+/area/sector/itv_vespa/cabin6
 	name = "\improper Unknown Vessel - Cabin 6"
-/area/ship/ghostship/cabin7
+/area/sector/itv_vespa/cabin7
 	name = "\improper Unknown Vessel - Cabin 7"
-/area/ship/ghostship/cabin8
+/area/sector/itv_vespa/cabin8
 	name = "\improper Unknown Vessel - Cabin 8"
-/area/ship/ghostship/cabin9
+/area/sector/itv_vespa/cabin9
 	name = "\improper Unknown Vessel - Cabin 9"
-/area/ship/ghostship/corridor1
+/area/sector/itv_vespa/corridor1
 	name = "\improper Unknown Vessel - Corridor"
-/area/ship/ghostship/corridor2
+/area/sector/itv_vespa/corridor2
 	name = "\improper Unknown Vessel - Corridor"
-/area/ship/ghostship/corridor3
+/area/sector/itv_vespa/corridor3
 	name = "\improper Unknown Vessel - Corridor"
-/area/ship/ghostship/corridor4
+/area/sector/itv_vespa/corridor4
 	name = "\improper Unknown Vessel - Corridor"
-/area/ship/ghostship/corridor5
+/area/sector/itv_vespa/corridor5
 	name = "\improper Unknown Vessel - Corridor"
-/area/ship/ghostship/corridor6
+/area/sector/itv_vespa/corridor6
 	name = "\improper Unknown Vessel - Corridor"
-/area/ship/ghostship/sm
+/area/sector/itv_vespa/sm
 	name = "\improper Unknown Vessel - Engine Room"
-/area/ship/ghostship/smstorage
+/area/sector/itv_vespa/smstorage
 	name = "\improper Unknown Vessel - Engine Room Storage"
-/area/ship/ghostship/medical
+/area/sector/itv_vespa/medical
 	name = "\improper Unknown Vessel - Medical"
-/area/ship/ghostship/medical1
+/area/sector/itv_vespa/medical1
 	name = "\improper Unknown Vessel - Medical Patient Room"
-/area/ship/ghostship/medicalchem
+/area/sector/itv_vespa/medicalchem
 	name = "\improper Unknown Vessel - Drug Lab"
-/area/ship/ghostship/medicalmain
+/area/sector/itv_vespa/medicalmain
 	name = "\improper Unknown Vessel - Medical Main"
-/area/ship/ghostship/medicaleq
+/area/sector/itv_vespa/medicaleq
 	name = "\improper Unknown Vessel - Medical Equipment Room"
-/area/ship/ghostship/medicalsur
+/area/sector/itv_vespa/medicalsur
 	name = "\improper Unknown Vessel - Surgery Room"
-/area/ship/ghostship/armoury
+/area/sector/itv_vespa/armoury
 	name = "\improper Unknown Vessel - Armoury"
-/area/ship/ghostship/secmain
+/area/sector/itv_vespa/secmain
 	name = "\improper Unknown Vessel - Firing Range"
-/area/ship/ghostship/seclobby
+/area/sector/itv_vespa/seclobby
 	name = "\improper Unknown Vessel - Brig Entrance"
-/area/ship/ghostship/seclobby2
+/area/sector/itv_vespa/seclobby2
 	name = "\improper Unknown Vessel - Security Lobby"
-/area/ship/ghostship/seceq
+/area/sector/itv_vespa/seceq
 	name = "\improper Unknown Vessel - Security Equipment Room"
-/area/ship/ghostship/sechall
+/area/sector/itv_vespa/sechall
 	name = "\improper Unknown Vessel - Security Hall"
-/area/ship/ghostship/seccells
+/area/sector/itv_vespa/seccells
 	name = "\improper Unknown Vessel - Brig"
-/area/ship/ghostship/cafet
+/area/sector/itv_vespa/cafet
 	name = "\improper Unknown Vessel - Cafeteria"
-/area/ship/ghostship/cargo
+/area/sector/itv_vespa/cargo
 	name = "\improper Unknown Vessel - Storage"
-/area/ship/ghostship/bridge
+/area/sector/itv_vespa/bridge
 	name = "\improper Unknown Vessel - Bridge"
-/area/ship/ghostship/engines
+/area/sector/itv_vespa/engines
 	name = "\improper Unknown Vessel - Engines Port"
-/area/ship/ghostship/engines2
+/area/sector/itv_vespa/engines2
 	name = "\improper Unknown Vessel - Engines Starboard"
-/area/ship/ghostship/captqua
+/area/sector/itv_vespa/captqua
 	name = "\improper Unknown Vessel - Captain's Quarters"
-/area/ship/ghostship/expedition
+/area/sector/itv_vespa/expedition
 	name = "\improper Unknown Vessel - Expedition Prep"
-/area/ship/ghostship/atmospherics
+/area/sector/itv_vespa/atmospherics
 	name = "\improper Unknown Vessel - Atmos"
-/area/ship/ghostship/northairlock
+/area/sector/itv_vespa/northairlock
 	name = "\improper Unknown Vessel - Airlock"
-/area/ship/ghostship/southairlock
+/area/sector/itv_vespa/southairlock
 	name = "\improper Unknown Vessel - Airlock"
-/area/ship/ghostship/maintenancerim
+/area/sector/itv_vespa/maintenancerim
 	name = "\improper Unknown Vessel - Maintenance"
-/area/ship/ghostship/maintenance1
+/area/sector/itv_vespa/maintenance1
 	name = "\improper Unknown Vessel - Maintenance"
-/area/ship/ghostship/maintenance2
+/area/sector/itv_vespa/maintenance2
 	name = "\improper Unknown Vessel - Maintenance"
-/area/ship/ghostship/shieldgen
+/area/sector/itv_vespa/shieldgen
 	name = "\improper Unknown Vessel - Shield Generator"
-/area/ship/ghostship/starboardhangar
+/area/sector/itv_vespa/starboardhangar
 	name = "\improper Unknown Vessel - Starboard Hangar"
-/area/ship/ghostship/porthangar
+/area/sector/itv_vespa/porthangar
 	name = "\improper Unknown Vessel - Port Hangar"
 
 // The 'ship'
-/obj/overmap/entity/visitable/ship/ghostship
+/obj/overmap/entity/visitable/ship/itv_vespa
 	desc = "A spacefaring vessel of archaic design. What is it doing out here?"
 	scanner_name = "Unknown Vessel"
 	scanner_desc = @{"[i]Registration[/i]: ERRR [Registration Not Found]

@@ -138,10 +138,10 @@
 	. = ..()
 	// if we're transferring to a new mob, we need to update the trait ownership
 	if(old_mob != new_mob)
-		var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(type, old_mob)
+		var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(type)
 		REMOVE_TRAIT(old_mob, trait, ref(src))
 		ADD_TRAIT(new_mob, trait, ref(src))
 		if(src.no_dupe_for_key)
-			var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(src.no_dupe_for_key, old_mob)
+			var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(src.no_dupe_for_key)
 			REMOVE_TRAIT(old_mob, trait, ref(src))
 			ADD_TRAIT(new_mob, trait, ref(src))

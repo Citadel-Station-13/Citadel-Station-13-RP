@@ -9,7 +9,7 @@
 
 /datum/map_level/sector/itv_dauntless
 	id = "itv_dauntless"
-	name = "ITV Dauntless"
+	name = "Sector - ITV Dauntless"
 	display_name = "ITV Dauntless"
 	path = "maps/sectors/factions/independent/itv_dauntless/levels/itv_dauntless.dmm"
 	base_turf = /turf/space
