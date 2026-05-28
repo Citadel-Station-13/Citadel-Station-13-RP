@@ -8,7 +8,7 @@
 	)
 
 	overmap_initializer = /datum/overmap_initializer/map{
-		legacy_entity_type = /obj/overmap/entity/visitable/ship/abductor,
+		legacy_entity_type = /obj/overmap/entity/visitable/ship/abductor;
 	}
 
 /datum/map_level/sector/abductor_cruiser

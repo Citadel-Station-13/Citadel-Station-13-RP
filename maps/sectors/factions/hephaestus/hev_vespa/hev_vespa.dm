@@ -6,8 +6,9 @@
 	levels = list(
 		/datum/map_level/sector/hev_vespa,
 	)
+
 	overmap_initializer = /datum/overmap_initializer/map{
-		legacy_entity_type = /obj/overmap/entity/visitable/ship/vespa,
+		legacy_entity_type = /obj/overmap/entity/visitable/ship/vespa;
 	}
 
 /datum/map_level/sector/hev_vespa

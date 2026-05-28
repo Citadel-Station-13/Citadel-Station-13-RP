@@ -623,7 +623,7 @@
 /// * Admin panels return the admin holder (/datum/holder) that they belong to / are being called from
 
 /**
- * checks if a user with a given set of flags should be allowed to abort a transit cycle
+ * checks if a user with a given set of flags should be allowed to abort the current transit cycle
  *
  * * you are responsible for checking transit stage
  *
@@ -635,7 +635,7 @@
  * @return TRUE if we are allowed to toss the current transit cycle
  */
 /datum/shuttle_controller/proc/check_auth_abort_transit(authorization, datum/event_args/actor/actor, datum/endpoint)
-	#warn impl
+	return !!(authorization & SHUTTLE_AUTHORIZATION_ABORT)
 
 /**
  * checks if a user with a given set of flags should be allowed to force the shuttle to depart
@@ -648,7 +648,11 @@
  * @return NONE | SHUTTLE_AUTHORIZE_TO_SOFT_FORCE | SHUTTLE_AUTHORIZE_TO_HARD_FORCE
  */
 /datum/shuttle_controller/proc/check_auth_force_launch(authorization, datum/event_args/actor/actor, datum/endpoint)
-	#warn impl
+	. = NONE
+	if(authorization & SHUTTLE_AUTHORIZATION_FORCE)
+		. |= SHUTTLE_AUTHORIZED_TO_SOFT_FORCE
+	if(authorization & SHUTTLE_AUTHORIZATION_DANGEROUSLY_FORCE)
+		. |= SHUTTLE_AUTHORIZED_TO_HARD_FORCE
 
 /**
  * checks if a user with a given set of flags should be allowed to perform manual landing
@@ -666,8 +670,6 @@
  * @return NONE | SHUTTLE_AUTHORIZED_TO_DESIGNATE_MANUAL_LANDING | SHUTTLE_AUTHORIZED_TO_MANUAL_LAND_THERE
  */
 /datum/shuttle_controller/proc/check_auth_manual_landing(authorization, datum/event_args/actor/actor, datum/endpoint)
-	#warn impl
-
-#warn auth for picking a dock
-#warn auth for changing codes
-#warn auth for beginning a launch / transit
+	if(authorization & SHUTTLE_AUTHORIZATION_LAND)
+		return SHUTTLE_AUTHORIZED_TO_DESIGNATE_MANUAL_LANDING | SHUTTLE_AUTHORIZED_TO_MANUAL_LAND_THERE
+	return NONE

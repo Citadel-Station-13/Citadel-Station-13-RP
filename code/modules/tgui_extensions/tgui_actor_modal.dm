@@ -15,13 +15,22 @@
 	#warn rework dedupe logic
 	if(modal_type.no_type_dupe)
 		var/mob/initiator = actor.initiator
-		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type, initiator, actor.performer)
+		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type, actor.performer)
 		if(HAS_TRAIT(initiator, trait))
 			return
+
 	var/datum/tgui_actor_modal/modal = new type(actor, status)
+
+	if(modal.no_dupe_for_key)
+		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type.no_dupe_for_key, actor.performer)
+		if(HAS_TRAIT(initiator, trait))
+			qdel(modal)
+			return
+
 	if(!modal.initialize(arglist(params)))
 		qdel(modal)
 		return
+
 	modal.ui_interact(actor.initiator)
 	return modal
 
@@ -41,6 +50,8 @@
 	/// only one type on initiator-performer pair, period
 	/// * only checked for compile time value
 	var/no_type_dupe = FALSE
+	/// dedupe key; checked on and after New()
+	var/no_dupe_for_key
 	/// which tgui interface to open
 	var/tgui_interface
 	/// only initiator can access this ui; by default,
@@ -49,15 +60,21 @@
 
 /datum/tgui_actor_modal/New(datum/event_args/actor/actor, datum/callback/status)
 	var/mob/initiator = actor.initiator
-	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
+	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, actor.performer)
 	ADD_TRAIT(initiator, trait, ref(src))
+	if(src.no_dupe_for_key)
+		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(src.no_dupe_for_key, actor.performer)
+		ADD_TRAIT(initiator, trait, ref(src))
 	src.actor = actor
 	src.status = status
 
 /datum/tgui_actor_modal/Destroy()
 	var/mob/initiator = actor.initiator
-	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, initiator, actor.performer)
+	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, actor.performer)
 	REMOVE_TRAIT(initiator, trait, ref(src))
+	if(src.no_dupe_for_key)
+		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(src.no_dupe_for_key, actor.performer)
+		REMOVE_TRAIT(initiator, trait, ref(src))
 	actor = null
 	status = null
 	return ..()
@@ -94,3 +111,15 @@
 /datum/tgui_actor_modal/on_ui_close(mob/user, datum/tgui/ui, embedded)
 	..()
 	qdel(src)
+
+/datum/tgui_actor_modal/on_ui_transfer(mob/old_mob, mob/new_mob, datum/tgui/ui, embedded)
+	. = ..()
+	// if we're transferring to a new mob, we need to update the trait ownership
+	if(old_mob != new_mob)
+		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, actor.performer)
+		REMOVE_TRAIT(old_mob, trait, ref(src))
+		ADD_TRAIT(new_mob, trait, ref(src))
+		if(src.no_dupe_for_key)
+			var/dupe_trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(src.no_dupe_for_key, actor.performer)
+			REMOVE_TRAIT(old_mob, dupe_trait, ref(src))
+			ADD_TRAIT(new_mob, dupe_trait, ref(src))

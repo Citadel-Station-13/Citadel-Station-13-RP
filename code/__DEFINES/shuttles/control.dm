@@ -1,16 +1,15 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-#warn audit file
 //* authorization flags
 
 /// can do literally anything; admin panels have this. if you manually vet an input you can have this too.
 ///
 /// * do not under any circumstances allow passing raw input to a shuttle_controller's ui_act() with this flagged!
 #define SHUTTLE_AUTHORIZATION_SUPERUSER (1<<0)
-/// has move, no dock = can only manually land
+/// has land, no dock = can only manually land
 #define SHUTTLE_AUTHORIZATION_LAND (1<<1)
-/// has dock, no move = can only dock without manual landing
+/// has dock, no land = can only dock without manual landing (or use current manual dock)
 #define SHUTTLE_AUTHORIZATION_DOCK (1<<2)
 /// override normal hooks that are blocking the shuttle
 #define SHUTTLE_AUTHORIZATION_FORCE (1<<3)
@@ -19,6 +18,8 @@
 /// modify landing codes
 /// todo: in overmaps update, this should maybe (?) be part of overmaps control systems.
 #define SHUTTLE_AUTHORIZATION_CODES (1<<5)
+/// cancel transit cycles in progress
+#define SHUTTLE_AUTHORIZATION_ABORT (1<<6)
 
 //* returns from [/datum/shuttle_controller/proc/check_auth_force_launch)
 
