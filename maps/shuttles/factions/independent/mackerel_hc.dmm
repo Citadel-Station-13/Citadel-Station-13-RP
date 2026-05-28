@@ -380,7 +380,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 26
 	},
 /obj/machinery/air_alarm/alarms_hidden{

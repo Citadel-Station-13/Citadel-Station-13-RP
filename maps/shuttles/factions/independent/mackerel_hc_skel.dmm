@@ -527,7 +527,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
 "DN" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = -26
 	},
 /obj/item/tank/phoron,

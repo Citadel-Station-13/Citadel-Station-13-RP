@@ -7530,7 +7530,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = 1;
 	pixel_y = 32
 	},

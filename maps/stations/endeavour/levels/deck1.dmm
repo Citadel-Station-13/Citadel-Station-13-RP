@@ -10584,7 +10584,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/meter,
 /obj/structure/catwalk,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -32
 	},
@@ -19108,7 +19108,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -29
 	},
@@ -22070,7 +22070,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -30906,7 +30906,7 @@
 "wgE" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -29
 	},

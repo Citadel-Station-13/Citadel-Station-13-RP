@@ -169,7 +169,7 @@
 	setInternalDamage(MECHA_INT_SHORT_CIRCUIT)
 */
 
-/obj/structure/fuel_port/empty_tank/Initialize(mapload)
+/obj/structure/shuttle_fuel_port/empty_tank/Initialize(mapload)
 	. = ..()
 	var/obj/item/tank/phoron/T = locate() in src
 	if(T)

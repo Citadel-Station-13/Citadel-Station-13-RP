@@ -6232,7 +6232,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "EJ" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = -29
 	},
 /obj/machinery/air_alarm/alarms_hidden{

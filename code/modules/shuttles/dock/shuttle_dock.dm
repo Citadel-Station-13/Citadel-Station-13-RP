@@ -126,8 +126,12 @@
 
 	//* Docking - Hooks *//
 	/// registered shuttle hooks
-	/// * Hooks registered here will only have 'dock' events fired.
-	var/list/datum/shuttle_hook/hooks
+	/// * Hooks registered here will only have 'dock' events fired
+	///   when a shuttle docks or undocks.
+	/// * Hooks registered here will have the relevant 'traversal' events fired
+	///   when it concerns it (e.g. landing / takeoff but only for this dock)
+	#warn audit hook firing
+	var/list/datum/shuttle_hook/dock_hooks
 
 	//* Docking - Protection *//
 	/**
@@ -371,9 +375,9 @@
 /**
  * Fire an event off to all hooks
  */
-/obj/shuttle_dock/proc/dispatch_event_to_hooks(datum/event_args/shuttle/event)
+/obj/shuttle_dock/proc/dispatch_event_to_dock_hooks(datum/event_args/shuttle/event)
 	SHOULD_NOT_SLEEP(TRUE)
-	for(var/datum/shuttle_hook/hook as anything in hooks)
+	for(var/datum/shuttle_hook/hook as anything in dock_hooks)
 		hook.on_event(event)
 
 #warn hook above 4

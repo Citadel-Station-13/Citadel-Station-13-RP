@@ -2791,7 +2791,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/fuel_port,
+/obj/structure/shuttle_fuel_port,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/bespoke/bearcat/maintenance_enginecontrol)

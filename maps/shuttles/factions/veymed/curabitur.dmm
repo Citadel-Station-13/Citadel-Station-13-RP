@@ -1173,7 +1173,7 @@
 	},
 /area/shuttle/curabitur/curashuttle/eng)
 "co" = (
-/obj/structure/fuel_port,
+/obj/structure/shuttle_fuel_port,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 1
 	},

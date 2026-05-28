@@ -788,8 +788,9 @@
 	var/port_id
 
 	/// registered shuttle hooks
-	/// * Hooks registered here will have 'translation', 'traversal', and 'dock' events fired.
-	var/tmp/list/datum/shuttle_hook/hooks
+	/// * Hooks will 'dock', 'undock' fired, only when it's relevant to the port.
+	/// * These will not receive traversal / translation hooks.
+	var/tmp/list/datum/shuttle_hook/port_hooks
 
 	/// is this the primary port?
 	/// if it is, this is what we align with for roundstart loading.
@@ -802,9 +803,9 @@
 	. = ..()
 	port_id = SSmapping.mangled_persistent_id(port_id, with_id)
 
-/obj/shuttle_aligner/port/proc/dispatch_event_to_hooks(datum/event_args/shuttle/event)
+/obj/shuttle_aligner/port/proc/dispatch_event_to_port_hooks(datum/event_args/shuttle/event)
 	SHOULD_NOT_SLEEP(TRUE)
-	for(var/datum/shuttle_hook/hook as anything in hooks)
+	for(var/datum/shuttle_hook/hook as anything in port_hooks)
 		hook.on_event(event)
 
 /obj/shuttle_aligner/port/overall_width(direction)

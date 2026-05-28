@@ -3912,7 +3912,7 @@
 	dir = 4
 	},
 /obj/machinery/power/terminal,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/techfloor/grid,

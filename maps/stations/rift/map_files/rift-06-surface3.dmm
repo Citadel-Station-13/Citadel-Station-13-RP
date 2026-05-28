@@ -7704,7 +7704,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "axX" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 30
 	},
@@ -11535,7 +11535,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/meter,
 /obj/structure/catwalk,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -32
 	},
@@ -11880,7 +11880,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "aKL" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 30
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -19120,7 +19120,7 @@
 /area/exploration/courser_dock)
 "fmA" = (
 /obj/machinery/meter,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -27
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -23536,7 +23536,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "mVu" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 30
 	},

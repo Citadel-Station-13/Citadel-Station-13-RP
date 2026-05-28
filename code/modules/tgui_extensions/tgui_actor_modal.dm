@@ -12,7 +12,6 @@
  */
 /proc/open_tgui_actor_modal(type, datum/event_args/actor/actor, datum/callback/status, list/params)
 	var/datum/tgui_actor_modal/modal_type = type
-	#warn rework dedupe logic
 	if(modal_type.no_type_dupe)
 		var/mob/initiator = actor.initiator
 		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type, actor.performer)
@@ -23,7 +22,8 @@
 
 	if(modal.no_dupe_for_key)
 		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(modal_type.no_dupe_for_key, actor.performer)
-		if(HAS_TRAIT(initiator, trait))
+		var/their_ref = ref(modal)
+		if(HAS_TRAIT_NOT_FROM(initiator, trait, their_ref))
 			qdel(modal)
 			return
 

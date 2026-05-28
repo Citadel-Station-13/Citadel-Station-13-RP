@@ -6206,7 +6206,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 1
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},
@@ -8491,7 +8491,7 @@
 /area/tradeport/commhall)
 "axc" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -32
 	},
@@ -10421,7 +10421,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aCe" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},
@@ -15401,7 +15401,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aQz" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -27
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -15637,7 +15637,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -32
 	},
@@ -16464,7 +16464,7 @@
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "aTD" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},
@@ -17284,7 +17284,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -27
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -23618,7 +23618,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/room1)
 "lLJ" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},
@@ -24953,7 +24953,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "peJ" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 30
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -27237,7 +27237,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
 "uRl" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -26
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{

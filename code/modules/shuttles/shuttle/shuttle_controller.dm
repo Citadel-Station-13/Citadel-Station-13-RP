@@ -589,6 +589,13 @@
 
 /datum/shuttle_controller/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
+	// general output; dynamic output
+	// set in your ui_date().
+	.["dynamicGeneralOutput"] = null
+	// dynamic output for 'why the shuttle cannot go'
+	// this will gray out launch buttons and provide hover text for why you can't launch
+	// this does not actually enforce this, so, make sure you block launch yourself too
+	.["dynamicWhyCannotLaunch"] = null
 
 /datum/shuttle_controller/ui_static_data(mob/user, datum/tgui/ui)
 	. = ..()

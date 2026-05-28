@@ -6626,7 +6626,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/hallway)
 "rC" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -27
 	},
 /obj/machinery/atmospherics/component/binary/pump/high_power{
@@ -7591,7 +7591,7 @@
 	dir = 8;
 	name = "Fuel Line to Thrusters"
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 30
 	},
 /obj/machinery/light{

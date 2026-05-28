@@ -15360,7 +15360,7 @@
 	dir = 8;
 	old_wall = 1
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = 1;
 	pixel_y = 30
 	},

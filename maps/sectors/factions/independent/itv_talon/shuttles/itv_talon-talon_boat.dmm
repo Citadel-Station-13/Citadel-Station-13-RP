@@ -67,7 +67,7 @@
 /turf/simulated/floor/tiled/eris/dark/gray_perforated,
 /area/shuttle/auto/one_single_area)
 "w" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = -30
 	},

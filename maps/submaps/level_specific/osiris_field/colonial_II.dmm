@@ -842,7 +842,7 @@
 /turf/simulated/floor,
 /area/shuttle/osiris/colonial)
 "ws" = (
-/obj/structure/fuel_port/empty_tank{
+/obj/structure/shuttle_fuel_port/empty_tank{
 	pixel_y = -29
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{

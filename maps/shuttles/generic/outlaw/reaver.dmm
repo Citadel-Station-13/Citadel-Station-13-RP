@@ -892,7 +892,7 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/reaver/cockpit)
 "SN" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -27
 	},
 /obj/effect/floor_decal/techfloor{

@@ -4908,7 +4908,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -4984,7 +4984,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
@@ -8474,7 +8474,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},

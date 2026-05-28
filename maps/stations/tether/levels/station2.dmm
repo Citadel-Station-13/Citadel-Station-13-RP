@@ -20775,7 +20775,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/storage)
 "Qr" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},

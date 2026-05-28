@@ -1681,7 +1681,7 @@
 	dir = 8
 	},
 /obj/structure/table/steel,
-/obj/structure/fuel_port/empty{
+/obj/structure/shuttle_fuel_port/empty{
 	pixel_y = 28
 	},
 /obj/machinery/light/flicker{

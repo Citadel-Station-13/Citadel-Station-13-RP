@@ -15,15 +15,16 @@
 
 	if(modal_type.no_type_dupe)
 		var/mob/initiator = user
-		var/trait = TRAIT_MOB_ACTOR_MODAL_INPUT_INITIATOR(modal_type, user)
+		var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(modal_type)
 		if(HAS_TRAIT(initiator, trait))
 			return
 
 	var/datum/tgui_input_modal/modal = new type(user, status)
 
 	if(modal.no_dupe_for_key)
-		var/trait = TRAIT_MOB_ACTOR_MODAL_INPUT_INITIATOR(modal_type.no_dupe_for_key, user)
-		if(HAS_TRAIT(initiator, trait))
+		var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(modal_type.no_dupe_for_key)
+		var/their_ref = ref(modal)
+		if(HAS_TRAIT_NOT_FROM(initiator, trait, their_ref))
 			qdel(modal)
 			return
 
@@ -63,20 +64,20 @@
 
 /datum/tgui_input_modal/New(mob/user, datum/callback/status)
 	var/mob/initiator = user
-	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, user)
+	var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(type)
 	ADD_TRAIT(initiator, trait, ref(src))
 	if(src.no_dupe_for_key)
-		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(src.no_dupe_for_key, user)
+		var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(src.no_dupe_for_key)
 		ADD_TRAIT(initiator, trait, ref(src))
 	src.user = user
 	src.status = status
 
 /datum/tgui_input_modal/Destroy()
 	var/mob/initiator = user
-	var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(type, user)
+	var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(type)
 	REMOVE_TRAIT(initiator, trait, ref(src))
 	if(src.no_dupe_for_key)
-		var/trait = TRAIT_MOB_ACTOR_MODAL_INITIATOR(src.no_dupe_for_key, user)
+		var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(src.no_dupe_for_key)
 		REMOVE_TRAIT(initiator, trait, ref(src))
 	user = null
 	status = null
@@ -137,10 +138,10 @@
 	. = ..()
 	// if we're transferring to a new mob, we need to update the trait ownership
 	if(old_mob != new_mob)
-		var/trait = TRAIT_MOB_ACTOR_MODAL_INPUT_INITIATOR(type, old_mob)
+		var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(type, old_mob)
 		REMOVE_TRAIT(old_mob, trait, ref(src))
 		ADD_TRAIT(new_mob, trait, ref(src))
 		if(src.no_dupe_for_key)
-			var/trait = TRAIT_MOB_ACTOR_MODAL_INPUT_INITIATOR(src.no_dupe_for_key, old_mob)
+			var/trait = TRAIT_MOB_INPUT_MODAL_INITIATOR(src.no_dupe_for_key, old_mob)
 			REMOVE_TRAIT(old_mob, trait, ref(src))
 			ADD_TRAIT(new_mob, trait, ref(src))

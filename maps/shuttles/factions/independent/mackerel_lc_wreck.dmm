@@ -746,7 +746,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/structure/fuel_port/empty{
+/obj/structure/shuttle_fuel_port/empty{
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,

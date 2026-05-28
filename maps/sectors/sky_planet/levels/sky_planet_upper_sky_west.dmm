@@ -162,7 +162,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/station_city/shop)
 "aL" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = -27
 	},
 /obj/machinery/atmospherics/pipe/tank/phoron{
@@ -559,7 +559,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/sky_planet/outpost/office)
 "cy" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -27
 	},
 /obj/machinery/light,
@@ -7158,7 +7158,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "FX" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},
@@ -9326,7 +9326,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paripari)
 "Px" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -27
 	},
 /obj/machinery/air_alarm/alarms_hidden/north_mount,

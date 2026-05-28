@@ -8543,7 +8543,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
@@ -19022,7 +19022,7 @@
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "Nb" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -32
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{

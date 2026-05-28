@@ -257,7 +257,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "EY" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = 32
 	},

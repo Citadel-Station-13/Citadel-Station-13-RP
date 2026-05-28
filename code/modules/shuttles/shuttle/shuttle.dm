@@ -39,11 +39,9 @@
 	var/datum/shuttle_controller/controller
 	/// our physical shuttle object
 	/// * Moved manually, rather than by grid-move.
-	#warn make sure this moves separately
 	var/obj/shuttle_aligner/master/anchor
 	/// our physical shuttle port objects
 	/// * Moved manually, rather than by grid-move.
-	#warn make sure this moves separately
 	var/list/obj/shuttle_aligner/port/ports
 	/// the areas in our shuttle, associated to a truthy value
 	/// * Used for grid-move lookups.
@@ -136,6 +134,7 @@
 
 	//* legacy stuff *//
 	// todo: this should be a default, and engine/takeoff type (?) can override
+	#warn hook all of these
 	var/legacy_sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
 	var/legacy_sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'
 	var/legacy_takeoff_unsecured_knockdown = 2 SECONDS
@@ -144,8 +143,8 @@
 	var/legacy_takeoff_shake_unsecured = 10
 	var/legacy_takeoff_throw_force = THROW_FORCE_DEFAULT
 	var/legacy_takeoff_throw_distance = 3
-	#warn hook these
-	var/list/obj/structure/fuel_port/legacy_fuel_ports = list()
+	// TODO: these are hooked and aren't being used rn
+	var/list/obj/structure/shuttle_fuel_port/legacy_fuel_ports = list()
 
 #warn impl all
 
@@ -153,21 +152,30 @@
 	if(!force)
 		stack_trace("something tried to delete a shuttle")
 		return QDEL_HINT_LETMELIVE
+
+	// obliterate all components
 	QDEL_NULL(descriptor)
 	QDEL_NULL(controller)
 	QDEL_LIST(ports)
 	QDEL_NULL(anchor)
+
+	// de-link all areas and revert to level default if needed
 	#warn areas
+
+	// de-link all registered hooks
 	#warn hooks
+
 	preview_overlay = null
 	preview_width = null
 	preview_height = null
 	#warn de-dock
+
 	// as a result of how our areas work, deleting a shuttle
 	// in normal space leaves the turfs behind on the base areas,
 	// but deleting it in transit will just wipe out the entire
 	// shuttle as the transit turf reservation is destroyed.
-	#warn de-transit
+	teardown_transit()
+
 	#warn de-move
 
 	//! legacy
@@ -536,14 +544,21 @@
 
 /**
  * Fires an event off to all hooks
- * * Does not fire events off to our dock!
+ * * Does not fire events off to our dock or ports!
  */
+#warn call this
 /datum/shuttle/proc/dispatch_event_to_hooks(datum/event_args/shuttle/event)
 	SHOULD_NOT_SLEEP(TRUE)
 	for(var/datum/shuttle_hook/hook as anything in hooks)
 		hook.on_event(event)
-	for(var/obj/shuttle_aligner/port/port as anything in ports)
-		port.dispatch_event_to_hooks(event)
+
+#warn call this
+/datum/shuttle/proc/dispatch_event_to_port_hooks(datum/event_args/shuttle/event, obj/shuttle_aligner/port/port)
+	port.dispatch_event_to_port_hooks(event)
+
+#warn call this
+/datum/shuttle/proc/dispatch_event_to_dock_hooks(datum/event_args/shuttle/event, obj/shuttle_dock/dock)
+	dock.dispatch_event_to_dock_hooks(event)
 
 //* Location *//
 
