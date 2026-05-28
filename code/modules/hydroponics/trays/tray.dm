@@ -71,6 +71,7 @@
 		"diethylamine" =    2,
 		"nutriment" =       1,
 		"adminordrazine" =  1,
+		"fertilizer" =      2,
 		"eznutrient" =      1,
 		"robustharvest" =   1,
 		"left4zed" =        1,
@@ -90,7 +91,8 @@
 	var/global/list/pestkiller_reagents = list(
 		"sugar" =           2,
 		"diethylamine" =   -2,
-		"adminordrazine" = -5
+		"adminordrazine" = -5,
+		"ash" =			   -1
 		)
 	var/global/list/water_reagents = list(
 		"water" =           1,

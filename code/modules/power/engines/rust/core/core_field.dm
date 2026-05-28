@@ -33,8 +33,8 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 	var/light_min_range = 3
 	var/light_min_power = 2
-	var/light_max_range = 12
-	var/light_max_power = 6
+	var/light_max_range = 25
+	var/light_max_power = 10
 
 	var/last_range
 	var/last_power
@@ -126,11 +126,11 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	if(plasma_temperature <= 6000)
 		use_range = light_min_range
 		use_power = light_min_power
-	else if(plasma_temperature >= 25000)
+	else if(plasma_temperature >= 35000)
 		use_range = light_max_range
 		use_power = light_max_power
 	else
-		var/temp_mod = ((plasma_temperature-5000)/20000)
+		var/temp_mod = ((plasma_temperature-5000)/30000)
 		use_range = light_min_range + CEILING((light_max_range-light_min_range)*temp_mod, 1)
 		use_power = light_min_power + CEILING((light_max_power-light_min_power)*temp_mod, 1)
 
@@ -495,40 +495,24 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 //Temperature changes depending on color. Now, the visibility of the field increases with temperature, along with the glow.
 /obj/effect/fusion_em_field/proc/temp_color()
-	for(var/i=1,i < plasma_temperature / 35, i++)
-		alpha = i
-	if(plasma_temperature > 60000) //high ultraviolet - magenta
-		light_color = "#cc005f"
-		light_max_range = alpha / 5
-		light_max_power = alpha / 5
-	else if(plasma_temperature > 12000) //ultraviolet - blue
-		light_color = "#1b00cc"
-		light_max_range = alpha / 15
-		light_max_power = alpha / 15
-	else if(plasma_temperature > 8000) //nearing ultraviolet - cyan
-		light_color = "#00cccc"
-		light_max_range = alpha / 20
-		light_max_power = alpha / 20
-	else if(plasma_temperature > 4000) // green
-		light_color = "#1ab705"
-		light_max_range = alpha / 25
-		light_max_power = alpha / 25
-	else if(plasma_temperature > 2000) //orange
-		light_color = "#cc7700"
-		light_max_range = alpha / 30
-		light_max_power = alpha / 30
-	return
+	alpha=round(plasma_temperature/35)
+	var/h_r = heat2colour_r(plasma_temperature)
+	var/h_g = heat2colour_g(plasma_temperature)
+	var/h_b = heat2colour_b(plasma_temperature)
+	light_color=rgb(h_r,h_g,h_b)
+
 //moved the flare to a proc for various reasons. Called on line 225.
 /obj/effect/fusion_em_field/proc/emflare()
 		radiation += plasma_temperature/2
 		light_color = "#ff0000"
-		light_max_power = alpha
-		light_min_power = alpha
-		light_min_range = alpha
-		light_max_range = alpha
 		visible_message("<span class='danger'>\The [src] flares to eye-searing brightness!</span>")
+		var/orig_light_min_power=light_min_power
+		var/orig_light_min_range=light_min_range
+		light_min_power=light_max_power
+		light_min_range=light_max_range
 		sleep(60)
-		temp_color()
+		light_min_power=orig_light_min_power
+		light_min_range=orig_light_min_range
 		//plasma_temperature -= lost_plasma
 		return
 //Rupture() is no longer the end all be all. Fear the magnetic resonance cascade and quantum flux cascade

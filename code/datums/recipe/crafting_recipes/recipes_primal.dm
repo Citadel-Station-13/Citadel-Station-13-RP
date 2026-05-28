@@ -356,7 +356,8 @@
 	name = "Bronze Wrench"
 	result = /obj/item/tool/wrench/bronze
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 3,
+	reqs = list(/obj/item/stack/material/copper = 3,
+				/obj/item/stack/material/bone = 3,
 				/obj/item/stack/sinew = 1
 				)
 	category = CAT_PRIMAL
@@ -508,6 +509,16 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
+/datum/crafting_recipe/charcoal_stick
+	name = "Charcoal Stick"
+	result = /obj/item/pen/charcoal
+	time = 80
+	reqs = list(/obj/item/stack/material/bone = 1
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+	tools = list(TOOL_WELDER)
+
 /datum/crafting_recipe/stone_dropper
 	name = "Primitive Dropper"
 	result = /obj/item/reagent_containers/dropper/ashlander
@@ -532,6 +543,49 @@
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 5,
 				/obj/item/stack/sinew = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/drying_kiln
+	name = "Bone Drying Kiln"
+	result = /obj/machinery/smartfridge/drying_rack/ashlander
+	time = 60
+	reqs = list(/obj/item/stack/material/bone = 10,
+				/obj/item/stack/material/sandstone = 10,
+				/obj/item/pen/charcoal = 3
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/primitive_press
+	name = "Primitive Press"
+	result = /obj/machinery/seed_extractor/press
+	time = 60
+	reqs = list(/obj/item/stack/material/sandstone = 10,
+				/obj/item/stack/rods = 10
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/brick_press
+	name = "Brick Press"
+	result = /obj/structure/ashlander/production/brickmaker
+	time = 60
+	reqs = list(/obj/item/stack/material/sandstone = 10,
+				/obj/item/stack/rods = 5
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/advanced_alchemy_station
+	name = "Advanced Alchemical Station"
+	result = /obj/machinery/chem_master/ashlander
+	time = 120
+	reqs = list(/obj/item/stack/material/bone = 10,
+				/obj/item/stack/sinew = 5,
+				/obj/item/elderstone = 2,
+				/obj/item/reagent_containers/glass/stone = 4
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE

@@ -11,3 +11,6 @@
       shortened to 18 with ".." at the end to show they have
   - bugfix: being colourblind no longer stops you having a pulse
   - bugfix: paint no longer causes things to become invisible
+2026-05-25:
+  GySgtMurphy:
+  - rscadd: charcoal sticks to the crafting menu
