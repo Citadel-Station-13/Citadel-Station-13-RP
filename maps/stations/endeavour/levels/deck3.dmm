@@ -2555,7 +2555,7 @@
 "bMN" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/shield_diffuser,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
@@ -5996,7 +5996,7 @@
 "epe" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/shield_diffuser,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
@@ -9779,7 +9779,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "hcH" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -18772,7 +18772,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "nRo" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -31178,7 +31178,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "wIy" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -31346,7 +31346,7 @@
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "wQu" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -31646,7 +31646,7 @@
 "wZh" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/shield_diffuser,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/machinery/conveyor{
 	dir = 8;

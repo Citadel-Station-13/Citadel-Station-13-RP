@@ -221,7 +221,7 @@
 	id_tag = "itglightshuttle_docker_hatch";
 	name = "Shuttle Hatch"
 	},
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/structure/cable/pink{
 	icon_state = "4-8"
 	},

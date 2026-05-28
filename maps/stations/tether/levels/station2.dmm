@@ -6854,7 +6854,7 @@
 /area/ai)
 "nX" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 8
@@ -7205,7 +7205,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
@@ -11224,7 +11224,7 @@
 	dir = 4;
 	id = "QMLoad2"
 	},
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
@@ -15481,7 +15481,7 @@
 	dir = 4;
 	id = "QMLoad"
 	},
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
@@ -16808,7 +16808,7 @@
 /area/quartermaster/belterdock/refinery)
 "Ig" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
@@ -19369,7 +19369,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/station/visitorhallway/lounge)
 "Ns" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
@@ -25027,7 +25027,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)

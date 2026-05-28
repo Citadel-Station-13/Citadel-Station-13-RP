@@ -11399,7 +11399,7 @@
 	frequency = 1380;
 	id_tag = "tourbus_right"
 	},
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tourbus/general)
 "gJl" = (

@@ -209,3 +209,10 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller/vacuum_cycle/hardmapped
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
 	hardmapped = TRUE
+
+/obj/machinery/airlock_component/controller/dock_hatch
+	default_program_path = /datum/airlock_program/dock_hatch
+
+/obj/machinery/airlock_component/controller/dock_hatch/hardmapped
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+	hardmapped = TRUE
