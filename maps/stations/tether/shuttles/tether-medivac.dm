@@ -9,12 +9,3 @@ DECLARE_STATION_SHUTTLE_TEMPLATE(/tether, /medivac)
 		overmap_icon_color = "#ff0000";
 	}
 	facing_dir = EAST
-
-#warn impl
-
-/area/shuttle/medivac
-/area/shuttle/medivac/general
-/area/shuttle/medivac/cockpit
-/area/shuttle/medivac/engines
-
-/obj/overmap/entity/visitable/ship/landable/medivac
