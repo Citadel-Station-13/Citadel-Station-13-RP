@@ -6313,6 +6313,7 @@
 #include "maps\stations\tether\misc.dm"
 #include "maps\stations\tether\sectors.dm"
 #include "maps\stations\tether\telecomms.dm"
+#include "maps\stations\tether\tether-shuttles.dm"
 #include "maps\stations\tether\tether.dm"
 #include "maps\stations\tether\shuttles\tether-backup_ferry.dm"
 #include "maps\stations\tether\shuttles\tether-escape_shuttle.dm"
