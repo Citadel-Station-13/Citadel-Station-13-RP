@@ -98,3 +98,11 @@
 	catalysts = list("enzyme" = 5)
 
 	synthesis_product_path = /obj/item/reagent_containers/food/snacks/tofu
+
+//Seasonal drinks - Halloween
+/datum/chemical_reaction/food/synthesis/candycornjelloshot
+	name = "Candy Corn Jello Shot"
+	id = "candycornjelloshot"
+	required_reagents = list("candycornmartini" = 5, "water" = 2, "protein" = 1)
+
+	synthesis_product_path = /obj/item/reagent_containers/food/snacks/candycornjelloshot

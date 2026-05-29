@@ -2203,8 +2203,9 @@
 	description = "A sweet mix of blood-like additives. Vampiric."
 	taste_description = "an odd blend of metals and sugar"
 	color = "#993c49"
-	blood_content = 1
-	nutrition=1
+	blood_content = 2 //Regular blood is 4
+	ingest_met = REM * 10 //Same speed as regular blood
+	nutrition = 1
 
 	glass_name = "Blud"
 	glass_desc = "A sweet mix of blood-like additives. Vampiric."
@@ -2216,7 +2217,8 @@
 	description = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
 	taste_description = "an awful blend of metals and artificial sweeteners"
 	color = "#793c44"
-	blood_content = 1
+	blood_content = 2
+	ingest_met = REM * 10
 
 	glass_name = "Blud Light"
 	glass_desc = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
@@ -2738,7 +2740,7 @@
 	id = "alcsassafras"
 	description = "Doesn't matter if you're drunk when you have a horse to take you home!"
 	taste_description = "bitter vanilla with a sharp burn"
-	proof = 50
+	proof = VODKA/2
 
 	glass_name = "CC's Hard Rootbeer"
 	glass_desc = "You'd better carry two guns if you're gonna keep drinking these!"
@@ -3309,7 +3311,7 @@
 	taste_description = "sweet and salty alcohol"
 	color = "#C73C00"
 	proof = MEAD/2
-	blood_content = 0.5
+	blood_content = 0.8
 
 	glass_name = "Red Mead"
 	glass_desc = "A true Viking's beverage, though its color is strange."
@@ -4187,7 +4189,7 @@
 	description = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
 	taste_description = "lingering regret, gunpowder, and blood"
 	proof = 40
-	blood_content = 0.4
+	blood_content = 0.6
 
 	glass_name = "Blood Meridian"
 	glass_desc = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
@@ -4295,7 +4297,7 @@
 	taste_description = "copper, tomatoes, and heretical sweetness"
 	color = "#B40000"
 	proof = (VODKA/3+VODKA)/5
-	blood_content = 0.2
+	blood_content = 0.4
 
 	glass_name = "Mary On a Cross"
 	glass_desc = "Not just another Bloody Mary. Mary on a cross."
@@ -4356,6 +4358,17 @@
 
 	glass_name = "Mimosa"
 	glass_desc = "A bubbly and tangy refreshment."
+
+/datum/reagent/ethanol/adiosmotherfucker
+	name = "Adios, Motherfucker"
+	id = "adiosmotherfucker"
+	description = "The liquor cabinet, topped with lemon and Space-Up. Dangerously drinkable."
+	taste_description = "fizzy alcoholic lemonade"
+	color = "#00b7ff"
+	proof = (VODKA+GIN+TEQUILA+RUM+CURACAO)/8
+
+	glass_name = "Adios, Motherfucker"
+	glass_desc = "You have a sneaking suspicion the Motherfucker in question is you."
 
 //Never Fade Away
 /datum/reagent/ethanol/silverhand
@@ -5283,3 +5296,167 @@
 	color = COLOR_WHITE // rgb: 255, 255, 255
 	taste_mult = 8
 	taste_description = "sweetness"
+
+// Seasonals - Xmas
+
+/datum/reagent/drink/soda/cinnamon
+	name = "Space Cola Cinnamon"
+	id = "cinnamoncola"
+	description = "The classic taste of Space Cola with a hint of warm cinnamon flavor."
+	taste_description = "cinnamon cola"
+
+	glass_name = "Space Cola Cinnamon"
+	glass_desc = "A glass of limited-edition Space Cola Cinnamon."
+
+/datum/reagent/drink/soda/space_up/cranberry
+	name = "Space-Up Cranberry"
+	id = "space_upcranberry"
+	description = "Space-Up with a cranberry and spice twist."
+	taste_description = "cranberry soda"
+	color = "#c21e26"
+
+	glass_name = "Space-Up Cranberry"
+	glass_desc = "Space-Up Cranberry. Citrus intermingles with tart cranberry and a hint of spice."
+
+/datum/reagent/drink/coffee/peppermint_mocha
+	name = "Vanilla Peppermint Mocha"
+	id = "peppermint_mocha"
+	description = "A nice, tasty beverage for the holiday season."
+	taste_description = "creamy, minty vanilla"
+	color = "#9C714C"
+	adj_temp = 5
+	nutrition = 1
+
+	glass_name = "Vanilla Peppermint Mocha"
+	glass_desc = "A nice, tasty beverage for the holiday season."
+
+/datum/reagent/ethanol/caramelwhiskey
+	name = "Caramel Whiskey"
+	id = "caramelwhiskey"
+	description = "A decadent caramel-flavored whiskey."
+	taste_description = "boozy caramel"
+	color = "#AB5A11"
+	proof = SCHNAPPS
+
+	glass_name = "Caramel Whiskey"
+	glass_desc = "A cloyingly sweet mixture of whiskey and salted caramel."
+
+/datum/reagent/ethanol/caramel_russian
+	name = "Caramel White Russian"
+	id = "caramelrussian"
+	description = "Caramel whiskey, coffee liqueur and a generous serving of cream for good measure."
+	taste_description = "caramel icecream"
+	color = "#A68340"
+	proof = (SCHNAPPS+KAHLUA)/3
+
+	glass_name = "Caramel White Russian"
+	glass_desc = "Who's to say russians can't drink whiskey once in a while?"
+
+/datum/reagent/ethanol/caramel_cider
+	name = "Salted Caramel Cider"
+	id = "caramelcider"
+	description = "Caramel whiskey that has been diluted in hard cider."
+	taste_description = "alcoholic caramel apples"
+	color = "#A68340"
+	proof = (SCHNAPPS+CIDER*2)/3
+
+	glass_name = "Salted Caramel Cider"
+	glass_desc = "The sweet union of crisp apple and smooth caramel. And alcohol, obviously."
+
+// Seasonals - Halloween
+
+/datum/reagent/drink/soda/licorice
+	name = "Space Cola Licorice"
+	id = "licoricecola"
+	description = "The classic taste of Space Cola infused with black and red licorice mix."
+	taste_description = "fizzy black and red licorice"
+
+	glass_name = "Space Cola Licorice"
+	glass_desc = "A glass of limited-edition Space Cola Licorice."
+
+/datum/reagent/drink/soda/dr_gibb/mystery
+	name = "Dr. Gibb Mystery"
+	id = "dr_gibbmystery"
+	description = "A proudly mysterious halloween-themed variant of Dr. Gibb."
+	taste_description = "assorted fruit candy"
+
+	glass_name = "Dr. Gibb Mystery"
+	glass_desc = "A glass of limited-edition Dr. Gibb Mystery."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/ethanol/sourappleschnapps
+	name = "Sour Apple Schnapps"
+	id = "sourappleschnapps"
+	description = "A strong artificially-flavoured liqueur meant for mixing."
+	taste_description = "extremely tart and sweet apple"
+	color = "#009619"
+	proof = SCHNAPPS
+
+	glass_name = "Sour Apple Schnapps"
+	glass_desc = "Something tells you it would be unwise to drink this straight."
+
+/datum/reagent/ethanol/candycornvodka
+	name = "Candy Corn Vodka"
+	id = "candycornvodka"
+	description = "Vodka infused with an assortment of artificial flavourings to mimic the taste of candy corn."
+	taste_description = "strong alcohol with tones of marshmallow and caramel"
+	color = "#ff7b00"
+	proof = VODKA*0.9
+
+	glass_name = "Candy Corn Vodka"
+	glass_desc = "Practically candy in a glass."
+
+/datum/reagent/ethanol/appletini
+	name = "Appletini"
+	id = "appletini"
+	description = "A bright-green cocktail originally designed to not taste like alcohol."
+	taste_description = "green apple candy"
+	color = "#9be720"
+	proof = (2*VODKA+SCHNAPPS)/4
+
+	glass_name = "Appletini"
+	glass_desc = "If it goes in the V-shaped glass, it's a Martini. Simple as."
+
+/datum/reagent/ethanol/sourapplemimosa
+	name = "Sour Apple Mimosa"
+	id = "sourapplemimosa"
+	description = "An green apple-based twist on the Mimosa. Just as refreshing."
+	taste_description = "fizzy apple sourness"
+	color = "#119400"
+	proof = (2*WINE+SCHNAPPS)/3
+
+	glass_name = "Sour Apple Mimosa"
+	glass_desc = "A bubbly and tart refreshment."
+
+/datum/reagent/ethanol/sourapplefizz
+	name = "Sour Apple Fizz"
+	id = "sourapplefizz"
+	description = "A low-proof drink consisting of sour apple schnapps and lime juice diluted into soda water."
+	taste_description = "airy green apple soda"
+	color = "#2bf32b"
+	proof = SCHNAPPS/4
+
+	glass_name = "Sour Apple Fizz"
+	glass_desc = "The Mojito wishes it could be this green."
+
+/datum/reagent/ethanol/candycornmartini
+	name = "Candy Corn Martini"
+	id = "candycornmartini"
+	description = "A classic halloween cocktail, meant to be carefully layered in the glass to look like the candy."
+	taste_description = "creamy vanilla and honey"
+	color = "#ee8b19"
+	proof = (VODKA)/3
+
+	glass_name = "Candy Corn Martini"
+	glass_desc = "If it goes in the V-shaped glass, it's a Martini. This one even has a colored sugar rim."
+
+/datum/reagent/ethanol/halloweenpunch
+	name = "Halloween Punch"
+	id = "halloweenpunch"
+	description = "A neon-orange beverage consisting of fruit juices and flavoured vodka. Commonly made in large quantities for halloween parties."
+	taste_description = "sweet tangy citrus"
+	color = "#ff9c00"
+	proof = (VODKA)/3
+
+	glass_name = "Halloween Punch"
+	glass_desc = "It's staring at you!"

@@ -14,7 +14,7 @@
 	description_fluff = "Stealth Assault Enterprises ex-contractors once decided to make a cigarette that was easy to light and had a waterproof case, specifically tailored for soldiers.  They created Jerichos.  Jerichos are known for their hickory smoke and warm feeling in your lungs.  They are loved by soldiers and people employed in para-military outfits."
 
 /obj/item/storage/fancy/cigarettes/menthols
-	description_fluff = "The Temperamento Menthol Company is a large cigarette company based in Mars.  They have been around since the very dawn of human colonization and have remained a favorite for those seeking a more numbing cigarette.<br>\
+	description_fluff = "The Temperamento Tobacco Company is a large cigarette company based in Mars.  They have been around since the very dawn of human colonization and have remained a favorite for those seeking a more numbing cigarette.<br>\
 	<br>\
 	This is a pack of Temperamento Menthols, the main product of the company.  They taste like menthol, surprisingly enough."
 
@@ -32,6 +32,20 @@
 
 /obj/item/storage/fancy/cigarettes/subrosas
 	description_fluff = "The flagship product of it's namesake Eridanian company, Subrosa cigarettes contain no tobacco or nicotine and are instead made with a selection of dried aromatic herbs and extracts including, presumably, roses. Each sepia-colored roll smells faintly of cloves and cinnamon."
+
+// Seasonals
+
+/obj/item/storage/fancy/cigarettes/vanillas
+	description_fluff = "The Temperamento Tobacco Company is a large cigarette company based on Mars.  They have been around since the very dawn of human colonization and have remained a favorite for those seeking a more numbing cigarette.<br>\
+	<br>\
+	This is a pack of Temperamento Vanillas.  These are only made in limited numbers each year as a holiday seasonal for specific markets.  Hoard them while you can!"
+
+/obj/item/storage/fancy/cigarettes/kaijus
+	description_fluff = "Kaiju Tobacco Incorporated is a recent entrant to the flavoured cigarette market, hailing from from the colony station of Kyoto XII, their business is almost entirely aimed at unregulated frontier markets, with flavours being rotated on a seasonal basis.<br>\
+	<br>\
+	This is a pack of Kaiju Cherries.  It's one of their most popular variants, sold only during October.  Everything from the tobacco, to the paper and filter are scented and laced with sweeteners."
+
+// Cigars
 
 /obj/item/clothing/mask/smokable/cigarette/cigar
 	description_fluff = "While the label does say that this is a 'premium cigar', it really cannot match other types of cigars on the market.  Is it a quality cigarette?  Perhaps.  Was it hand-made with care?  No.  This is what differentiates between quality products that Gilthari puts out and Nanotrasen 'premium' cigars like this one."

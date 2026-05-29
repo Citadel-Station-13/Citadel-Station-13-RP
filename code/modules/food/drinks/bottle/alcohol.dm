@@ -147,3 +147,31 @@
 	icon_state = "winebottle"
 	center_of_mass = list("x"=16, "y"=4)
 	start_with_single_reagent = /datum/reagent/ethanol/wine
+
+//Seasonal - Xmas
+
+/obj/item/reagent_containers/food/drinks/bottle/caramelwhiskey
+	name = "Al-Karamil Whiskey Liqueur"
+	desc = "A limited-edition bottle of decadent caramel-flavored whiskey.<br>\
+	It has a Gilthari Exports sticker on it."
+	icon_state = "caramelwhiskeybottle"
+	center_of_mass = list("x"=16, "y"=2)
+	start_with_single_reagent = /datum/reagent/ethanol/caramelwhiskey
+
+//Seasonal - Halloween
+
+/obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps
+	name = "Lich King Emerald"
+	desc = "Notice: Unapologetically Evil neon-green liqueur inside. Imbibe at your own risk. Sour apple flavoured Schnapps.<br>\
+	It has a Gilthari Exports sticker on it."
+	icon_state = "sourappleschnapps"
+	center_of_mass = list("x"=17, "y"=3)
+	start_with_single_reagent = /datum/reagent/ethanol/sourappleschnapps
+
+/obj/item/reagent_containers/food/drinks/bottle/candycornvodka
+	name = "Goopy's Candy Corn Vodka"
+	desc = "The fruit of some unholy promotional crossover, it has a drawing of a clumsy ghost girl with untied shoelaces on the label.<br>\
+	It has a Gilthari Exports sticker on it."
+	icon_state = "candycornvodka"
+	center_of_mass = list("x"=17, "y"=2)
+	start_with_single_reagent = /datum/reagent/ethanol/candycornvodka
