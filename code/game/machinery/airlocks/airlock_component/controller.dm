@@ -69,7 +69,8 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller/Initialize(mapload, set_dir, obj/item/airlock_component/controller/from_item)
 	. = ..()
 	// todo: we need proper tick bracket machine support & fastmos
-	set_controller_id(src.airlock_id)
+	if(!set_controller_id(src.airlock_id))
+		stack_trace("Failed to set airlock ID [src.airlock_id] for [src] ([COORD(get_turf(src))]). Duplicate ID?")
 	if(from_item)
 		system = from_item.system
 		from_item.system = null

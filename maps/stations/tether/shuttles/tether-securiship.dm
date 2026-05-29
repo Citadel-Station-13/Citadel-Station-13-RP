@@ -8,11 +8,3 @@ DECLARE_STATION_SHUTTLE_TEMPLATE(/tether, /securiship)
 	}
 
 	facing_dir = EAST
-
-#warn impl
-
-/area/shuttle/securiship
-/area/shuttle/securiship/general
-/area/shuttle/securiship/cockpit
-/area/shuttle/securiship/engines
-/obj/overmap/entity/visitable/ship/landable/securiship

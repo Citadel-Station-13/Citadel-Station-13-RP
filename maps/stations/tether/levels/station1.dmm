@@ -457,10 +457,6 @@
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled,
 /area/bridge/secondary)
-"aY" = (
-/obj/shuttle_dock_corner/bottom_right,
-/turf/space,
-/area/space)
 "aZ" = (
 /obj/machinery/light{
 	dir = 8
@@ -846,10 +842,6 @@
 /obj/structure/dispenser,
 /turf/simulated/floor,
 /area/engineering/storage)
-"bO" = (
-/obj/shuttle_dock_preload/generated/map_specific/station/tether/medivac,
-/turf/space/basic,
-/area/space)
 "bR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2266,10 +2258,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_lobby)
-"eH" = (
-/obj/shuttle_dock_corner/top_left,
-/turf/space,
-/area/space)
 "eJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3595,6 +3583,10 @@
 "hJ" = (
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
+"hK" = (
+/obj/shuttle_dock_corner/bottom_right,
+/turf/space,
+/area/space)
 "hL" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -4401,6 +4393,10 @@
 /obj/random/contraband,
 /turf/simulated/floor,
 /area/maintenance/station/spacecommandmaint)
+"jI" = (
+/obj/shuttle_dock_corner/top_left,
+/turf/space,
+/area/space)
 "jJ" = (
 /obj/effect/floor_decal/sign/dock/two,
 /obj/structure/cable/green{
@@ -4636,9 +4632,18 @@
 /turf/simulated/floor,
 /area/maintenance/substation/spacecommand)
 "kc" = (
-/obj/shuttle_dock_corner/top_right,
-/turf/space,
-/area/space)
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled,
+/area/security/customs)
 "kd" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -7465,6 +7470,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
+"qi" = (
+/obj/shuttle_dock_corner/bottom_left,
+/turf/space,
+/area/space)
 "qk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -8423,19 +8432,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
-"sn" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/airlock_interconnect/hardmapped,
-/turf/simulated/floor/tiled,
-/area/security/customs)
 "so" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -19438,10 +19434,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
-"Qs" = (
-/obj/shuttle_dock_corner/bottom_left,
-/turf/space,
-/area/space)
 "Qt" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor{
@@ -20230,6 +20222,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
+"Sl" = (
+/obj/shuttle_dock_preload/generated/map_specific/station/tether/medivac,
+/turf/space/basic,
+/area/space)
 "Sm" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green{
@@ -23863,6 +23859,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/hallway/station/docks)
+"ZN" = (
+/obj/shuttle_dock_corner/top_right,
+/turf/space,
+/area/space)
 "ZO" = (
 /obj/machinery/lapvend{
 	dir = 4
@@ -35845,7 +35845,7 @@ Ey
 Ey
 Ey
 Ey
-eH
+jI
 Ey
 Ey
 Ey
@@ -35868,7 +35868,7 @@ Ey
 Ey
 Ey
 Ey
-Qs
+qi
 Ey
 Ey
 Ey
@@ -38755,7 +38755,7 @@ Ey
 Ey
 Ey
 Ey
-kc
+ZN
 Ey
 Ey
 Ey
@@ -38778,7 +38778,7 @@ sV
 sV
 Ey
 Ey
-aY
+hK
 Ey
 Ey
 Ey
@@ -39346,7 +39346,7 @@ Ey
 Ey
 mY
 uL
-sn
+kc
 Ui
 CT
 ac
@@ -54683,7 +54683,7 @@ xd
 sV
 sV
 sV
-bO
+Sl
 sV
 sV
 sV

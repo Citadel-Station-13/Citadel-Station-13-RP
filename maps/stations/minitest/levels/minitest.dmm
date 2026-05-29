@@ -2909,7 +2909,7 @@
 /area/bridge)
 "il" = (
 /obj/machinery/light,
-/obj/map_helper/airlock_peripheral_linker{
+/obj/map_helper/airlock_linker{
 	set_controller_id = "test-1"
 	},
 /obj/machinery/airlock_peripheral/sensor/interior/hardmapped/south_mount,
@@ -3094,7 +3094,7 @@
 /area/bridge)
 "rq" = (
 /obj/structure/airlock_interconnect/hardmapped,
-/obj/map_helper/airlock_peripheral_linker{
+/obj/map_helper/airlock_linker{
 	set_controller_id = "test-1"
 	},
 /obj/machinery/airlock_peripheral/panel/hardmapped/north_mount,
@@ -3930,7 +3930,7 @@
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
 "Ur" = (
-/obj/map_helper/airlock_peripheral_linker,
+/obj/map_helper/airlock_linker,
 /obj/machinery/airlock_peripheral/sensor/exterior/hardmapped/auto_mount,
 /turf/space,
 /area/space)
