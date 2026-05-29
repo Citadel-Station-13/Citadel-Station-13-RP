@@ -14,3 +14,11 @@
 2026-05-25:
   GySgtMurphy:
   - rscadd: charcoal sticks to the crafting menu
+2026-05-29:
+  Putnam3145:
+  - tweak: R-UST lighting has been made somewhat less eye-blistering
+  - bugfix: R-UST lighting has been made somewhat less server-blistering
+  Shadowtail117:
+  - tweak: Racking a gun's slide is now much quieter.
+  timothyteakettle:
+  - bugfix: fix taking beakers out of grenades
