@@ -3,6 +3,9 @@
 
 DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(escape_shuttle, /escape_shuttle, "Escape Shuttle")
 
+/obj/shuttle_dock/ferry_pair/round_global/escape_shuttle
+	ferry_init_kick_to_home = TRUE
+
 /datum/shuttle_controller/ferry/round_global/escape_shuttle
 	/**
 	 * We end the round when landing if this is TRUE.

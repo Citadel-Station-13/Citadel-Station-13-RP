@@ -3,6 +3,9 @@
 
 DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(belter_shuttle, /belter_shuttle, "Belter Shuttle")
 
+/obj/shuttle_dock/ferry_pair/round_global/belter_shuttle
+	ferry_init_kick_to_home = TRUE
+
 /datum/shuttle_controller/ferry/round_global/belter_shuttle
 	var/belter_rebuilding = FALSE
 

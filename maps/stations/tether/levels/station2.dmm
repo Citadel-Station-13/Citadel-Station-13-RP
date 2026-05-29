@@ -2095,12 +2095,6 @@
 	dir = 1
 	},
 /obj/structure/handrail,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	cycle_to_external_air = 1;
-	frequency = 1380;
-	id_tag = "expshuttle_docker";
-	pixel_y = 28
-	},
 /obj/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -2384,12 +2378,6 @@
 "eS" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "dock_d2l";
-	pixel_x = 28
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -5377,11 +5365,6 @@
 /area/chapel/main)
 "kV" = (
 /obj/machinery/light/small,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "dock_d2a";
-	pixel_y = 28
-	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "dock_d2a_sensor";
@@ -5585,11 +5568,6 @@
 	frequency = 1380;
 	id_tag = "dock_d2b_sensor";
 	pixel_y = -25
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "dock_d2b";
-	pixel_y = 28
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
@@ -6703,17 +6681,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "nI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "expshuttle_dock";
-	pixel_x = 32;
-	req_one_access = list(19,43,67)
+/obj/shuttle_dock/ferry_pair/round_global/supply_shuttle/away{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/tether/exploration)
+/turf/simulated/floor/airless,
+/area/space)
 "nJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -7191,11 +7163,6 @@
 	frequency = 1380;
 	id_tag = "dock_cshutt_sensor";
 	pixel_y = -25
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "dock_cshutt";
-	pixel_y = 28
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
@@ -10141,11 +10108,6 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/mine/explored/upper_level)
 "uC" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth{
-	frequency = 1380;
-	id_tag = "large_escape_pod_1_berth";
-	pixel_y = -28
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
@@ -11224,7 +11186,6 @@
 	dir = 4;
 	id = "QMLoad2"
 	},
-/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
@@ -11298,11 +11259,6 @@
 "wJ" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 8;
-	id_tag = "belter_docking";
-	pixel_x = 26
 	},
 /obj/structure/railing{
 	dir = 1
@@ -14374,11 +14330,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/shuttle_sensor{
-	dir = 5;
-	id_tag = "shuttlesens_exp_int";
-	pixel_y = -24
-	},
 /obj/structure/closet/walllocker/emergsuit_wall{
 	dir = 8;
 	pixel_x = -32
@@ -15377,11 +15328,6 @@
 	id_tag = "dock_d2r_sensor";
 	pixel_y = -25
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "dock_d2r";
-	pixel_y = 28
-	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
@@ -15481,7 +15427,6 @@
 	dir = 4;
 	id = "QMLoad"
 	},
-/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
@@ -16806,15 +16751,6 @@
 /obj/machinery/mineral/output,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
-"Ig" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/map_helper/airlock/door,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
-/turf/simulated/floor/tiled,
-/area/quartermaster/storage)
 "Ih" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -21478,15 +21414,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
-"RP" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "large_escape_pod_1";
-	pixel_x = -28;
-	pixel_y = 28
-	},
-/turf/simulated/shuttle/floor,
-/area/shuttle/large_escape_pod1)
 "RQ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/hatch{
@@ -23344,11 +23271,6 @@
 /turf/simulated/floor/tiled/neutral,
 /area/shuttle/excursion/general)
 "VK" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "cargo_bay";
-	pixel_x = 28
-	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
@@ -24038,11 +23960,6 @@
 /area/hallway/station/starboard)
 "WT" = (
 /obj/structure/bed/chair/shuttle,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 8;
-	id_tag = "mining_docking";
-	pixel_y = 26
-	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/mining_outpost/shuttle)
 "WU" = (
@@ -25027,7 +24944,6 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
-/obj/map_helper/airlock/door,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
@@ -50533,7 +50449,7 @@ iz
 FT
 nX
 Ns
-RP
+HP
 HP
 tn
 HO
@@ -55706,7 +55622,7 @@ wP
 IW
 sz
 ql
-nI
+zU
 MK
 KR
 SQ
@@ -58048,7 +57964,7 @@ Uz
 wB
 Za
 Uz
-Ig
+Za
 Fq
 Uz
 Uz
@@ -58434,9 +58350,9 @@ Ws
 Ws
 MV
 wB
-Ig
+Za
 MV
-Ig
+Za
 Fq
 MV
 cM
@@ -58627,7 +58543,7 @@ gl
 gd
 gd
 gd
-gd
+nI
 gd
 gd
 gd

@@ -3583,10 +3583,6 @@
 "hJ" = (
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
-"hK" = (
-/obj/shuttle_dock_corner/bottom_right,
-/turf/space,
-/area/space)
 "hL" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -35865,10 +35861,10 @@ Ey
 Ey
 Ey
 Ey
-Ey
-Ey
-Ey
 qi
+Ey
+Ey
+Ey
 Ey
 Ey
 Ey
@@ -38775,10 +38771,10 @@ sV
 sV
 sV
 sV
-sV
+mk
 Ey
 Ey
-hK
+Ey
 Ey
 Ey
 Ey

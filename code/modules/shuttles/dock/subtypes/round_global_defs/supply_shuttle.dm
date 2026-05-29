@@ -11,6 +11,9 @@ GLOBAL_LIST_INIT(supply_shuttle_forbidden_atom_typecache, cached_typecacheof(lis
 
 DECLARE_SHUTTLE_FERRY_DOCK_GLOBAL_PAIR(supply_shuttle, /supply_shuttle, "Supply Shuttle")
 
+/obj/shuttle_dock/ferry_pair/round_global/supply_shuttle
+	ferry_init_kick_to_home = TRUE
+
 /datum/shuttle_controller/ferry/round_global/supply_shuttle
 	transit_time_home = 2 MINUTES
 	transit_time_away = 2 MINUTES

@@ -2505,12 +2505,6 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "tether_pad_airlock";
-	pixel_y = 28;
-	tag_door = "tether_pad_hatch"
-	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "tether_pad_sensor";
@@ -8845,7 +8839,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/item/paper/dockingcodes,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "fgp" = (
@@ -16478,12 +16471,6 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "tether_shuttle";
-	pixel_x = 25;
-	tag_door = "tether_shuttle_hatch"
-	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/tether)
 "jTz" = (
@@ -20206,7 +20193,6 @@
 /obj/item/flashlight/lamp/green{
 	pixel_x = -10
 	},
-/obj/item/paper/dockingcodes,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "mqP" = (
@@ -30387,16 +30373,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/breakroom)
-"shm" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/danger,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "tourbus_pad";
-	pixel_y = 24
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/shuttle_pad)
 "shK" = (
 /obj/machinery/air_alarm{
 	dir = 8;
@@ -37794,12 +37770,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "tourbus_docker";
-	pixel_x = 28
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
@@ -67059,7 +67029,7 @@ ezc
 woF
 ioy
 xYd
-shm
+bRe
 dUy
 awl
 pSE
