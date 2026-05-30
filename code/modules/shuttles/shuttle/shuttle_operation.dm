@@ -57,7 +57,7 @@
  */
 /datum/shuttle_operation/proc/poll()
 	if(length(blockers))
-		var/
+		// var/
 		#warn ok not only do we need to force/whatnot, blockers need to be told they were terminated / forced if needed :|
 		return
 	src.finish(SHUTTLE_OPERATION_STATUS_SUCCESS)

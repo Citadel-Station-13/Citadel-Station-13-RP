@@ -2,6 +2,137 @@
 "a" = (
 /turf/space/basic,
 /area/space)
+"e" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/closet/walllocker/emerglocker/south,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"f" = (
+/obj/structure/closet/walllocker/emerglocker/south,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"l" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"m" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"n" = (
+/turf/simulated/shuttle/wall,
+/area/space)
+"t" = (
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"w" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/airless,
+/area/shuttle/auto/one_single_area)
+"y" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"E" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"F" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_r"
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/auto/one_single_area)
+"H" = (
+/obj/machinery/status_display{
+	layer = 4;
+	pixel_y = -32
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"J" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"N" = (
+/obj/machinery/vending/wallmed1{
+	name = "Emergency NanoMed";
+	pixel_x = 28
+	},
+/obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"O" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/auto/one_single_area)
+"S" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"T" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/shuttle/auto/one_single_area)
+"U" = (
+/turf/simulated/shuttle/wall,
+/area/shuttle/auto/one_single_area)
+"W" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_l"
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/auto/one_single_area)
+"X" = (
+/obj/machinery/light,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"Y" = (
+/obj/structure/shuttle/window,
+/obj/effect/shuttle_landmark{
+	base_area = /area/hallway/secondary/escape/medical_escape_pod_hallway;
+	base_turf = /turf/simulated/floor/plating;
+	docking_controller = "large_escape_pod_1_berth";
+	landmark_tag = "escapepod1_station";
+	name = "Tether Station"
+	},
+/turf/simulated/shuttle/plating,
+/area/space)
 
 (1,1,1) = {"
 a
@@ -43,11 +174,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+W
+O
+O
+O
+F
 a
 a
 a
@@ -60,11 +191,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+U
+w
+w
+w
+U
 a
 a
 a
@@ -77,11 +208,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+U
+y
+l
+e
+U
 a
 a
 a
@@ -94,11 +225,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+U
+J
+t
+H
+U
 a
 a
 a
@@ -111,11 +242,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+U
+J
+t
+E
+U
 a
 a
 a
@@ -128,11 +259,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+m
+t
+t
+S
+U
 a
 a
 a
@@ -145,11 +276,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+m
+t
+t
+S
+U
 a
 a
 a
@@ -162,11 +293,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+U
+J
+t
+X
+U
 a
 a
 a
@@ -179,11 +310,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+U
+J
+t
+H
+U
 a
 a
 a
@@ -196,11 +327,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+U
+N
+t
+f
+U
 a
 a
 a
@@ -213,11 +344,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+U
+T
+t
+T
+U
 a
 a
 a
@@ -231,9 +362,9 @@ a
 a
 a
 a
-a
-a
-a
+n
+Y
+n
 a
 a
 a

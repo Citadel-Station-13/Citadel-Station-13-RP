@@ -1383,7 +1383,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "cX" = (
-/obj/shuttle_dock{
+/obj/shuttle_dock/preset/map_specific/tether/securiship{
 	dir = 4;
 	dock_width = 2
 	},
@@ -10531,7 +10531,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "xd" = (
-/obj/shuttle_dock{
+/obj/shuttle_dock/preset/map_specific/tether/medivac{
 	dir = 1;
 	dock_width = 2
 	},

@@ -290,11 +290,11 @@
 	set_bounding_box_protection(protect_bounding_box, protect_bounding_box_extra_radius)
 	var/datum/shuttle/loaded
 	if(starting_shuttle_template)
-		if(!(loaded = load_shuttle()))
+		if(!(loaded = load_starting_shuttle()))
 			stack_trace("shuttle dock at [COORD(src)] failed to load its roundstart shuttle; something is seriously wrong!")
 		else
-			init_shuttle(loaded)
-			ready_shuttle(loaded)
+			init_starting_shuttle(loaded)
+			ready_starting_shuttle(loaded)
 	dock_initialized = TRUE
 
 /obj/shuttle_dock/Destroy()
@@ -442,20 +442,20 @@
  *
  * @return /datum/shuttle
  */
-/obj/shuttle_dock/proc/load_shuttle(datum/shuttle_template/force_template)
+/obj/shuttle_dock/proc/load_starting_shuttle(datum/shuttle_template/force_template)
 	RETURN_TYPE(/datum/shuttle)
 	#warn impl
 
 /**
  * initializes our roundstart shuttle (usually by giving it a controller)
  */
-/obj/shuttle_dock/proc/init_shuttle(datum/shuttle/shuttle)
-	init_shuttle_controller(shuttle)
+/obj/shuttle_dock/proc/init_starting_shuttle(datum/shuttle/shuttle)
+	init_starting_shuttle_controller(shuttle)
 
 /**
  * @return /datum/shuttle_controller or null
  */
-/obj/shuttle_dock/proc/init_shuttle_controller(datum/shuttle/shuttle)
+/obj/shuttle_dock/proc/init_starting_shuttle_controller(datum/shuttle/shuttle)
 	// Default behavior: bind to overmaps
 	var/datum/shuttle_controller/overmap/controller = new(shuttle)
 	return controller
@@ -463,8 +463,11 @@
 /**
  * called after our initial shuttle is loaded and initialized
  */
-/obj/shuttle_dock/proc/ready_shuttle(datum/shuttle/loaded)
-	return
+/obj/shuttle_dock/proc/ready_starting_shuttle(datum/shuttle/loaded)
+	return TRUE
+
+/obj/shuttle_dock/proc/move_starting_shuttle_to_roundstart(datum/shuttle/loaded)
+	#warn impl
 
 //* bounding box *//
 
