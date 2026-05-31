@@ -683,38 +683,6 @@
 	sound_env = SMALL_SOFTFLOOR
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
 
-// Exploration Shuttle stuff //
-
-#warn obliterate; ensure other maps aren't using it too
-/area/shuttle/excursion
-	name = "\improper Excursion Shuttle"
-	icon_state = "shuttle2"
-
-/area/shuttle/excursion/rift
-	name = "\improper Excursion Shuttle - Atlas"
-
-/area/shuttle/excursion/rift_nearby
-	name = "\improper Excursion Shuttle - Atlas Near"
-
-/area/shuttle/excursion/rift_dockarm
-	name = "\improper Excursion Shuttle - Atlas Arm"
-
-/area/shuttle/excursion/space
-	name = "\improper Excursion Shuttle - Space"
-
-/area/shuttle/excursion/space_moving
-	name = "\improper Excursion Shuttle - Space Moving"
-
-/area/shuttle/excursion/bluespace
-	name = "\improper Excursion Shuttle - Bluespace"
-
-/area/shuttle/excursion/sand_moving
-	name = "\improper Excursion Shuttle - Sand Transit"
-
-/area/shuttle/excursion/virgo3b_sky
-	name = "\improper Excursion Shuttle - Lythios-43c Sky"
-
-
 //Adherent Maintenance
 /area/rift/station/adherent_maintenance
 	icon_state = "yellow"

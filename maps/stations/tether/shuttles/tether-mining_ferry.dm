@@ -6,5 +6,3 @@ DECLARE_STATION_SHUTTLE_TEMPLATE(/tether, /mining_ferry)
 	descriptor = /datum/shuttle_descriptor{
 		preferred_orientation = NORTH;
 	}
-
-#warn impl, map

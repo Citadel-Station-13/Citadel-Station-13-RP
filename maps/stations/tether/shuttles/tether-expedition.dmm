@@ -1569,7 +1569,7 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/machinery/turretid{
 	check_access = 0;
-	control_area = /area/shuttle/excursion/general;
+	control_area = /area/shuttle/auto/named/deck;
 	gl_uid = "exploration";
 	pixel_x = -30;
 	req_access = null;

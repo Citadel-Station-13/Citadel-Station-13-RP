@@ -193,20 +193,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Small Cruiser Shuttle - Station"
 	icon_state = "blue2"
 
-// Excursion Shuttle
-/area/shuttle/excursion
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/excursion/general
-	name = "\improper Excursion Shuttle"
-
-/area/shuttle/excursion/cockpit
-	name = "\improper Excursion Shuttle Cockpit"
-
-/area/shuttle/excursion/cargo
-	name = "\improper Excursion Shuttle Cockpit"
-
 //Courser
 /area/shuttle/courser
 	requires_power = 1
@@ -261,20 +247,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle/emt/cockpit
 	name = "\improper EMT Shuttle Cockpit"
-
-// Tourbus
-/area/shuttle/tourbus
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/tourbus/general
-	name = "\improper Tour Bus"
-
-/area/shuttle/tourbus/cockpit
-	name = "\improper Tour Bus Cockpit"
-
-/area/shuttle/tourbus/engines
-	name = "\improper Tour Bus Engines"
 
 // Antag
 /area/antag/antag_base

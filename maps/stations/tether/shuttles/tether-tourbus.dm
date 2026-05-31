@@ -9,12 +9,3 @@ DECLARE_STATION_SHUTTLE_TEMPLATE(/tether, /tourbus)
 	}
 
 	display_name = "Tour Bus"
-
-#warn impl
-
-/area/shuttle/tourbus
-/area/shuttle/tourbus/general
-/area/shuttle/tourbus/cockpit
-/area/shuttle/tourbus/engines
-
-/obj/overmap/entity/visitable/ship/landable/tourbus

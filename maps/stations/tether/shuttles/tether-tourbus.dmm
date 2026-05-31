@@ -153,7 +153,6 @@
 	landmark_tag = "tourbus_dock";
 	name = "Tourbus Pad"
 	},
-/obj/overmap/entity/visitable/ship/landable/tourbus,
 /obj/structure/airlock_interconnect/hardmapped,
 /obj/machinery/airlock_component/interface/shuttle/port/hardmapped,
 /turf/simulated/floor/tiled/dark,

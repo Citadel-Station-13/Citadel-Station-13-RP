@@ -20,4 +20,18 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/nanotrasen/exp_javelot)
 /area/shuttle/excursion/cockpit
 /area/shuttle/excursion/general
 
+// Excursion Shuttle
+/area/shuttle/excursion
+	requires_power = 1
+	icon_state = "shuttle2"
+
+/area/shuttle/excursion/general
+	name = "\improper Excursion Shuttle"
+
+/area/shuttle/excursion/cockpit
+	name = "\improper Excursion Shuttle Cockpit"
+
+/area/shuttle/excursion/cargo
+	name = "\improper Excursion Shuttle Cockpit"
+
 #warn mutable_appearance
