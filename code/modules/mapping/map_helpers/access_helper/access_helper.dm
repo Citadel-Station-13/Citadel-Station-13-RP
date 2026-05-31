@@ -12,6 +12,7 @@
 	return
 
 /obj/map_helper/access_helper/auto
+	icon_state = "auto"
 	/// string key to use when looking up access during a dmm_context load.
 	var/lookup_key
 	/// fallback to default access if lookup_key isn't found.
