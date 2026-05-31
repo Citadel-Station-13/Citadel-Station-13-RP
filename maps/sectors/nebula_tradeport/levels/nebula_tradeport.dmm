@@ -12225,7 +12225,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/spine)
 "aNO" = (
-/obj/shuttle_dock_preload/generated/factions/ftu/beruang,
+/obj/shuttle_dock_preload/generated/factions/ftu/beruang{
+	default_access_mappings = list("staff" = "trader")
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
 "aNQ" = (
