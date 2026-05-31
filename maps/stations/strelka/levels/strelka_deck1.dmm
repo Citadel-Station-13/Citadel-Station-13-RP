@@ -1493,7 +1493,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/fighterbaysec)
 "gi" = (
-/obj/machinery/computer/shuttle_control/explore/personalmicro4{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
@@ -6114,7 +6114,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
 "zE" = (
-/obj/machinery/computer/shuttle_control/explore/personalmicro1{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
@@ -6230,7 +6230,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "As" = (
-/obj/machinery/computer/shuttle_control/explore/civvie_strelka{
+/obj/machinery/computer/shuttle_control
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10433,7 +10433,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "Sx" = (
-/obj/machinery/computer/shuttle_control/explore/personalmicro3{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /turf/simulated/floor/glass/reinforced/indoors,
@@ -10764,7 +10764,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/fighterbaysec)
 "TV" = (
-/obj/machinery/computer/shuttle_control/explore/personalmicro2{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /turf/simulated/floor/glass/reinforced/indoors,

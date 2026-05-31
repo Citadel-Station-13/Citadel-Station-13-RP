@@ -3227,7 +3227,7 @@
 /turf/simulated/floor/tiled,
 /area/security/hangar)
 "ctb" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/machinery/computer/shuttle_control
 	dir = 4
 	},
 /obj/item/gps/internal/base{
@@ -13060,7 +13060,7 @@
 /area/hallway/d3aftportsecmaint/endeavour)
 "jAa" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/shuttle_control/explore/mining{
+/obj/machinery/computer/shuttle_control
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,

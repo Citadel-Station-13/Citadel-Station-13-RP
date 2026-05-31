@@ -2776,7 +2776,7 @@
 /area/security/strelka/detective/lab)
 "hE" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/computer/shuttle_control/explore/emt/strelka{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotechmaint,
@@ -15519,7 +15519,7 @@
 /obj/machinery/computer/ship/helm{
 	dir = 8
 	},
-/obj/machinery/computer/shuttle_control/explore/excursion/strelka{
+/obj/machinery/computer/shuttle_control
 	dir = 8;
 	pixel_y = 30
 	},

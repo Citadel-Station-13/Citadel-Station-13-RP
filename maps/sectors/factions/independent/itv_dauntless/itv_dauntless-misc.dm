@@ -1,73 +1,73 @@
 
 #warn below
 
-/area/itglight
+/area/sector/itv_dauntless
 	requires_power = 1
 	icon_state = "purple"
 
-/area/itglight/cockpit
+/area/sector/itv_dauntless/cockpit
 	name = "Dauntless - Cockpit"
-/area/itglight/captain
+/area/sector/itv_dauntless/captain
 	name = "Dauntless - Captain's Quarters"
-/area/itglight/readyroom
+/area/sector/itv_dauntless/readyroom
 	name = "Dauntless - Ready Room"
-/area/itglight/metingroom
+/area/sector/itv_dauntless/metingroom
 	name = "Dauntless - Meeting Room"
-/area/itglight/forehall
+/area/sector/itv_dauntless/forehall
 	name = "Dauntless - Fore Hall"
 	area_flags = AREA_RAD_SHIELDED
-/area/itglight/starboardcargo
+/area/sector/itv_dauntless/starboardcargo
 	name = "Dauntless - Starboard Cargo Bay"
-/area/itglight/starboardhighsec
+/area/sector/itv_dauntless/starboardhighsec
 	name = "Dauntless - Starboard Secure Cargo"
-/area/itglight/starboarddocking
+/area/sector/itv_dauntless/starboarddocking
 	name = "Dauntless - Starboard Docking Port"
-/area/itglight/portcargo
+/area/sector/itv_dauntless/portcargo
 	name = "Dauntless - Port Cargo Bay"
-/area/itglight/porthighsec
+/area/sector/itv_dauntless/porthighsec
 	name = "Dauntless - Port Secure Cargo"
-/area/itglight/portdocking
+/area/sector/itv_dauntless/portdocking
 	name = "Dauntless - Port Docking Port"
-/area/itglight/common
+/area/sector/itv_dauntless/common
 	name = "Dauntless - Common Area"
-/area/itglight/lockers
+/area/sector/itv_dauntless/lockers
 	name = "Dauntless - Locker Room"
-/area/itglight/passengersleeping
+/area/sector/itv_dauntless/passengersleeping
 	name = "Dauntless - Passenger Sleeping Barracks"
-/area/itglight/showers
+/area/sector/itv_dauntless/showers
 	name = "Dauntless - Showers"
-/area/itglight/restrooms
+/area/sector/itv_dauntless/restrooms
 	name = "Dauntless - Restrooms"
-/area/itglight/afthall
+/area/sector/itv_dauntless/afthall
 	name = "Dauntless - Aft Hall"
 	area_flags = AREA_RAD_SHIELDED
-/area/itglight/medbay
+/area/sector/itv_dauntless/medbay
 	name = "Dauntless - Medbay"
-/area/itglight/kitchen
+/area/sector/itv_dauntless/kitchen
 	name = "Dauntless - Kitchen"
-/area/itglight/crew1
+/area/sector/itv_dauntless/crew1
 	name = "Dauntless - Crew Quarters - 1"
 	area_flags = AREA_RAD_SHIELDED
-/area/itglight/crew2
+/area/sector/itv_dauntless/crew2
 	name = "Dauntless - Crew Quarters - 2"
 	area_flags = AREA_RAD_SHIELDED
-/area/itglight/crew3
+/area/sector/itv_dauntless/crew3
 	name = "Dauntless - Crew Quarters - 3"
 	area_flags = AREA_RAD_SHIELDED
-/area/itglight/crew4
+/area/sector/itv_dauntless/crew4
 	name = "Dauntless - Crew Quarters - 4"
 	area_flags = AREA_RAD_SHIELDED
-/area/itglight/shuttlebay
+/area/sector/itv_dauntless/shuttlebay
 	name = "Dauntless - Shuttle Bay"
-/area/itglight/starboardengi
+/area/sector/itv_dauntless/starboardengi
 	name = "Dauntless - Starboard Engineering"
 	area_flags = AREA_RAD_SHIELDED
-/area/itglight/starboardsolars
+/area/sector/itv_dauntless/starboardsolars
 	name = "Dauntless - Starboard Solars"
-/area/itglight/portengi
+/area/sector/itv_dauntless/portengi
 	name = "Dauntless - Port Engineering"
 	area_flags = AREA_RAD_SHIELDED
-/area/itglight/portsolars
+/area/sector/itv_dauntless/portsolars
 	name = "Dauntless - Port Solars"
 
 // The 'Dauntless'

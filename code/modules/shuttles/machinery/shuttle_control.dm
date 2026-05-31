@@ -19,7 +19,7 @@
 	/// our current shuttle instance
 	var/datum/shuttle/shuttle
 
-/obj/machinery/computer/shuttle_control/Initialize(mapload)
+/obj/machinery/computer/shuttle_control
 	. = ..()
 	if(always_bind_shuttle_id)
 		hardcoded = TRUE
@@ -27,7 +27,7 @@
 		integrity_flags |= INTEGRITY_INDESTRUCTIBLE
 	autodetect_shuttle()
 
-/obj/machinery/computer/shuttle_control/proc/autodetect_shuttle()
+/obj/machinery/computer/shuttle_control
 	if(always_bind_shuttle_id)
 		shuttle = SSshuttle.shuttle_registry[always_bind_shuttle_id]
 		return
@@ -37,11 +37,11 @@
 	else
 		shuttle = null
 
-/obj/machinery/computer/shuttle_control/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+/obj/machinery/computer/shuttle_control
 	. = ..()
 	autodetect_shuttle()
 
-/obj/machinery/computer/shuttle_control/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/shuttle_control
 	. = ..()
 	if(.)
 		return
@@ -60,7 +60,7 @@
 			var/code = params["code"]
 		#warn impl
 
-/obj/machinery/computer/shuttle_control/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/obj/machinery/computer/shuttle_control
 	// TODO: instead of doing this on click, can we redetect when the area under us changes? that's how shuttles are made
 	if(!shuttle)
 		autodetect_shuttle()
@@ -71,10 +71,10 @@
 		ui.register_module(shuttle.controller, "shuttle")
 		ui.open()
 
-/obj/machinery/computer/shuttle_control/ui_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/shuttle_control
 	. = ..()
 
-/obj/machinery/computer/shuttle_control/ui_static_data(mob/user, datum/tgui/ui)
+/obj/machinery/computer/shuttle_control
 	. = ..()
 
 #warn impl all
@@ -85,5 +85,5 @@
  * players to get ahold of remote-control shuttle consoles without wanting them
  * to do so.
  */
-/obj/machinery/computer/shuttle_control/hardcoded
+/obj/machinery/computer/shuttle_control
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE

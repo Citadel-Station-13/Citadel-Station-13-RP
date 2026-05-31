@@ -9,101 +9,101 @@
 	map_path = "maps/templates/admin/kk_mercship.dmm"
 
 // The ship's area(s)
-/area/ship/manta
+/area/sector/itv_manta
 	name = "\improper ERT Ship (Use a Subtype!)"
 	icon_state = "shuttle2"
 	requires_power = 1
 	dynamic_lighting = 1
 
-/area/ship/manta/engine
+/area/sector/itv_manta/engine
 	name = "\improper Mercenary Cruiser - Engine Bay"
 	icon_state = "engine"
 
-/area/ship/manta/engineering
+/area/sector/itv_manta/engineering
 	name = "\improper Mercenary Cruiser - Engineering Control Room"
 	icon_state = "engine_monitoring"
 
-/area/ship/manta/bridge
+/area/sector/itv_manta/bridge
 	name = "\improper Mercenary Cruiser - Bridge"
 	icon_state = "syndie-control"
 
-/area/ship/manta/atmos
+/area/sector/itv_manta/atmos
 	name = "\improper Mercenary Cruiser - Atmospherics"
 	icon_state = "atmos"
 
-/area/ship/manta/mech_bay
+/area/sector/itv_manta/mech_bay
 	name = "\improper Mercenary Cruiser - Mech Bay"
 	icon_state = "mechbay"
 
-/area/ship/manta/armoury_st
+/area/sector/itv_manta/armoury_st
 	name = "\improper Mercenary Cruiser - Standard Armoury"
 	icon_state = "armory"
 
-/area/ship/manta/armoury_as
+/area/sector/itv_manta/armoury_as
 	name = "\improper Mercenary Cruiser - Assault Armoury"
 	icon_state = "Tactical"
 
-/area/ship/manta/hangar
+/area/sector/itv_manta/hangar
 	name = "\improper Mercenary Cruiser - Hangar"
 	icon_state = "hangar"
 
-/area/ship/manta/barracks
+/area/sector/itv_manta/barracks
 	name = "\improper Mercenary Cruiser - Barracks"
 	icon_state = "syndie-elite"
 
-/area/ship/manta/barracks/bed_1
+/area/sector/itv_manta/barracks/bed_1
 	name = "\improper Mercenary Cruiser - Bunkroom 1"
 	icon_state = "syndie-elite"
 
-/area/ship/manta/barracks/bed_2
+/area/sector/itv_manta/barracks/bed_2
 	name = "\improper Mercenary Cruiser - Bunkroom 2"
 	icon_state = "syndie-elite"
 
-/area/ship/manta/med
+/area/sector/itv_manta/med
 	name = "\improper Mercenary Cruiser - Medical"
 	icon_state = "medbay"
 
-/area/ship/manta/hallways_star
+/area/sector/itv_manta/hallways_star
 	name = "\improper Mercenary Cruiser - Starboard Corridors"
 	icon_state = "smaint"
 
-/area/ship/manta/hallways_port
+/area/sector/itv_manta/hallways_port
 	name = "\improper Mercenary Cruiser - Port Corridors"
 	icon_state = "pmaint"
 
-/area/ship/manta/hallways_aft
+/area/sector/itv_manta/hallways_aft
 	name = "\improper Mercenary Cruiser - Aft Corridors"
 	icon_state = "green"
 
-/area/ship/manta/dock_star
+/area/sector/itv_manta/dock_star
 	name = "\improper Mercenary Cruiser - Starboard Airlock"
 	icon_state = "exit"
 
-/area/ship/manta/dock_port
+/area/sector/itv_manta/dock_port
 	name = "\improper Mercenary Cruiser - Port Airlock"
 	icon_state = "exit"
 
-/area/ship/manta/radiator_star
+/area/sector/itv_manta/radiator_star
 	name = "\improper Mercenary Cruiser - Starboard Radiator Array"
 	icon_state = "east"
 
-/area/ship/manta/radiator_port
+/area/sector/itv_manta/radiator_port
 	name = "\improper Mercenary Cruiser - Port Radiator Array"
 	icon_state = "west"
 
-/area/ship/manta/teleporter
+/area/sector/itv_manta/teleporter
 	name = "\improper Mercenary Cruiser - Teleporter"
 	icon_state = "teleporter"
 
-/area/ship/manta/commander
+/area/sector/itv_manta/commander
 	name = "\improper Mercenary Cruiser - Commander's Room"
 	icon_state = "head_quarters"
 
-/area/ship/manta/holding
+/area/sector/itv_manta/holding
 	name = "\improper Mercenary Cruiser - Holding Cells"
 	icon_state = "brig"
 
-/area/ship/manta/recreation
+/area/sector/itv_manta/recreation
 	name = "\improper Mercenary Cruiser - Recreation & Supplies"
 	icon_state = "recreation_area"
 
@@ -118,7 +118,7 @@
 //	warmup_time = 0
 //	current_location = "tether_excursion_hangar"
 //	docking_controller_tag = "expshuttle_docker"
-//	shuttle_area = list(/area/ship/manta/engineering, /area/ship/manta/engineeringcntrl, /area/ship/manta/bridge, /area/ship/manta/atmos, /area/ship/manta/air, /area/ship/manta/engine, /area/ship/manta/engine1, /area/ship/manta/armoury, /area/ship/manta/hangar, /area/ship/manta/barracks, /area/ship/manta/fighter, /area/ship/manta/med, /area/ship/manta/med1, /area/ship/manta/hall1, /area/ship/manta/hall2)
+//	shuttle_area = list(/area/sector/itv_manta/engineering, /area/sector/itv_manta/engineeringcntrl, /area/sector/itv_manta/bridge, /area/sector/itv_manta/atmos, /area/sector/itv_manta/air, /area/sector/itv_manta/engine, /area/sector/itv_manta/engine1, /area/sector/itv_manta/armoury, /area/sector/itv_manta/hangar, /area/sector/itv_manta/barracks, /area/sector/itv_manta/fighter, /area/sector/itv_manta/med, /area/sector/itv_manta/med1, /area/sector/itv_manta/hall1, /area/sector/itv_manta/hall2)
 //	fuel_consumption = 3
 
 // The 'ship'

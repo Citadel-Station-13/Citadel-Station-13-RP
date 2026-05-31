@@ -4849,7 +4849,7 @@
 /obj/machinery/light,
 /obj/structure/catwalk,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/computer/shuttle_control/explore/sdf{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /obj/structure/railing/grey,

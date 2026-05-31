@@ -192,7 +192,7 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/nebula_tradeport/dock2)
 "aaG" = (
-/obj/machinery/computer/shuttle_control/explore/trade{
+/obj/machinery/computer/shuttle_control
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8350,7 +8350,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/computer/shuttle_control/explore/adventurer,
+/obj/machinery/computer/shuttle_control
 /obj/item/gps/internal/base{
 	name = "Adventurer Beacon";
 	gps_tag = "ADVENTURER"
@@ -10130,7 +10130,7 @@
 	icon_state = "0-4";
 	dir = 4
 	},
-/obj/machinery/computer/shuttle_control/explore/trade/udang{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /obj/machinery/power/apc/alarms_hidden/west_mount,
@@ -11249,7 +11249,7 @@
 /area/tradeport/safari)
 "aEC" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/computer/shuttle_control/explore/caravan,
+/obj/machinery/computer/shuttle_control
 /obj/item/gps/internal/base{
 	name = "Caravan Beacon";
 	gps_tag = "CARAVAN"
@@ -14313,7 +14313,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/computer/shuttle_control/explore/runabout{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /obj/item/gps/internal/base{
@@ -20371,7 +20371,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/cafeteria)
 "etX" = (
-/obj/machinery/computer/shuttle_control/explore/arrowhead{
+/obj/machinery/computer/shuttle_control
 	dir = 1
 	},
 /obj/item/gps/internal/base{
@@ -20412,7 +20412,7 @@
 /area/tradeport/safarizoo)
 "eyZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/machinery/computer/shuttle_control/explore/utilitymicro,
+/obj/machinery/computer/shuttle_control
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
 	},
@@ -21160,7 +21160,7 @@
 /obj/structure/panic_button{
 	pixel_y = 32
 	},
-/obj/machinery/computer/shuttle_control/explore/salvager{
+/obj/machinery/computer/shuttle_control
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -23906,7 +23906,7 @@
 /obj/machinery/air_alarm/alarms_hidden/east_mount{
 	req_one_access = null
 	},
-/obj/machinery/computer/shuttle_control/explore/tug{
+/obj/machinery/computer/shuttle_control
 	dir = 8
 	},
 /obj/item/gps/internal/base{
@@ -28270,7 +28270,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 9
 	},
-/obj/machinery/computer/shuttle_control/explore/trade/scoophead,
+/obj/machinery/computer/shuttle_control
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/scoophead/cockpit)
 "xvE" = (

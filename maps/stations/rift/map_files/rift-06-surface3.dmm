@@ -23272,7 +23272,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pilot_prep)
 "mwh" = (
-/obj/machinery/computer/shuttle_control/explore/oldcentury{
+/obj/machinery/computer/shuttle_control
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -25767,7 +25767,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "roh" = (
-/obj/machinery/computer/shuttle_control/explore/emt,
+/obj/machinery/computer/shuttle_control
 /obj/effect/floor_decal/borderfloorwhite/full,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10

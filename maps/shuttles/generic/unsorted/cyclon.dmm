@@ -1021,7 +1021,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/auto/one_single_area)
 "Uq" = (
-/obj/machinery/computer/shuttle_control/hardcoded,
+/obj/machinery/computer/shuttle_control
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/auto/one_single_area)
 "Uz" = (
