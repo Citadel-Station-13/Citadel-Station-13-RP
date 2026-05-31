@@ -17380,7 +17380,7 @@
 	},
 /area/centcom/bathroom)
 "TC" = (
-/obj/machinery/computer/shuttle_control
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,

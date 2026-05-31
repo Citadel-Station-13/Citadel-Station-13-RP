@@ -977,7 +977,7 @@
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "eQ" = (
-/obj/machinery/computer/shuttle_control
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/yellow,
@@ -1701,7 +1701,7 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "hZ" = (
-/obj/machinery/computer/shuttle_control
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/paripari)
 "ia" = (
@@ -2581,7 +2581,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/shuttle/crescend)
 "lQ" = (
-/obj/machinery/computer/shuttle_control
+/obj/machinery/computer/shuttle_control,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -8102,7 +8102,7 @@
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/school)
 "Kj" = (
-/obj/machinery/computer/shuttle_control
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,

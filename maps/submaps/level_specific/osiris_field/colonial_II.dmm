@@ -1982,7 +1982,7 @@
 /area/shuttle/osiris/colonial)
 "ZY" = (
 /obj/effect/floor_decal/borderfloorblack/full,
-/obj/machinery/computer/shuttle_control
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,

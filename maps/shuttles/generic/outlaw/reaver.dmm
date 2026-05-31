@@ -133,7 +133,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/reaver/fore)
 "hx" = (
-/obj/machinery/computer/shuttle_control
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotechmaint,
