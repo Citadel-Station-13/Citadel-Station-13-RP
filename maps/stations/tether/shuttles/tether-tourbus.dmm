@@ -1,260 +1,935 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"ar" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"at" = (
 /turf/space/basic,
 /area/space)
+"ck" = (
+/obj/machinery/computer/ship/engines{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/shuttle/auto/one_single_area)
+"cJ" = (
+/turf/simulated/wall/shull,
+/area/shuttle/auto/one_single_area)
+"dg" = (
+/obj/machinery/door/airlock/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/map_helper/access_helper/airlock/station/flight_crew,
+/turf/simulated/floor/tiled/eris/techmaint_panels,
+/area/shuttle/auto/one_single_area)
+"dq" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "tourbus_windows";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"ei" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"es" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/table/marble,
+/obj/item/flame/candle,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"fg" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/structure/bed/chair/sofa/brown/right,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"fA" = (
+/obj/structure/cable/orange{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"fX" = (
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"gI" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable/orange,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/bed/chair/bay/chair{
+	dir = 8
+	},
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"gK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"hl" = (
+/obj/machinery/computer/ship/helm,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/shuttle/auto/one_single_area)
+"it" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/structure/bed/chair/bay/chair{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"iv" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/binary/pump/fuel{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/binary/pump/aux{
+	dir = 8
+	},
+/obj/effect/shuttle_landmark{
+	base_area = /area/tether/surfacebase/shuttle_pad;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "tourbus_pad";
+	landmark_tag = "tourbus_dock";
+	name = "Tourbus Pad"
+	},
+/obj/overmap/entity/visitable/ship/landable/tourbus,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/machinery/airlock_component/interface/shuttle/port/hardmapped,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"jk" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"jY" = (
+/obj/structure/handrail{
+	dir = 8
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"la" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"lx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"mF" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"nx" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"nD" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"oZ" = (
+/obj/machinery/light/small,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/empty,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/door/window/northright,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"pq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"pJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"rm" = (
+/obj/structure/bed/chair/bay/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"sW" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector/fuel{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/door/window/southright{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"tf" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"ug" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"vI" = (
+/obj/machinery/computer/shuttle_control,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/shuttle/auto/one_single_area)
+"wt" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "tourbus_windows";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"xs" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/item/stool/padded,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"AI" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 1
+	},
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/auto/one_single_area)
+"Cs" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/handrail{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"CH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/structure/table/standard,
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "tourbus_windows";
+	name = "window blast shields"
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_x = 27
+	},
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/shuttle/auto/one_single_area)
+"Ed" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"EF" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/bed/chair/bay/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"FI" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/air_alarm{
+	dir = 8;
+	pixel_x = 22
+	},
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/shuttle/auto/one_single_area)
+"In" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/shuttle/engine/heater,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"IT" = (
+/obj/machinery/shipsensors{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/machinery/light/small,
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"JC" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/bed/chair/sofa/brown/left,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"Kr" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"Lh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/wall/shull,
+/area/shuttle/auto/one_single_area)
+"Ln" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/catering/bar_alc,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"Mc" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector/fuel{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/door/window/southleft{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Mr" = (
+/obj/machinery/power/smes/buildable{
+	charge = 500
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/door/window/southright{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Mw" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"MO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/wall/shull,
+/area/shuttle/auto/one_single_area)
+"Ne" = (
+/obj/machinery/door/window/brigdoor/northleft{
+	dir = 2;
+	name = "Bar";
+	req_access = list(25)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_x = 32
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"Ol" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline,
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Om" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"QR" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/shuttle/auto/one_single_area)
+"QS" = (
+/obj/structure/table/marble,
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"Tn" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/airlock_peripheral/panel/hardmapped/east_mount,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/obj/machinery/airlock_component/controller/dock_hatch/hardmapped,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"TA" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"Uc" = (
+/obj/machinery/vending/boozeomat,
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"Uz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 8
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/handrail{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"UJ" = (
+/obj/machinery/power/apc/south_mount{
+	req_access = list();
+	req_one_access = list(11,67)
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/shuttle/auto/one_single_area)
+"Va" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/wall/shull,
+/area/shuttle/auto/one_single_area)
+"Wh" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/west_mount{
+	req_access = list();
+	req_one_access = list(11,67)
+	},
+/obj/structure/bed/chair/bay/chair{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"Xa" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/shuttle/auto/one_single_area)
+"XF" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"XI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/wall/shull,
+/area/shuttle/auto/one_single_area)
+"XS" = (
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/chair{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"XX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/shuttle_fuel_port{
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/auto/one_single_area)
+"YZ" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/catering/bar_soft,
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"Zv" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/wood,
+/area/shuttle/auto/one_single_area)
+"ZN" = (
+/obj/structure/cable/orange{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass_external/public{
+	frequency = 1380;
+	id_tag = "tourbus_right"
+	},
+/obj/shuttle_aligner/port/east/primary,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
 "}
 (3,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
 "}
 (4,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+jY
+cJ
+dq
+dq
+cJ
+dq
+dq
+dq
+cJ
+XI
+In
+AI
+at
 "}
 (5,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+cJ
+cJ
+Xa
+ck
+cJ
+fg
+es
+Mw
+EF
+Va
+cJ
+cJ
+at
 "}
 (6,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+wt
+hl
+QR
+UJ
+cJ
+JC
+nD
+fX
+rm
+Wh
+Mc
+cJ
+at
 "}
 (7,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+wt
+vI
+CH
+FI
+dg
+jk
+nx
+Cs
+TA
+la
+sW
+cJ
+at
 "}
 (8,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+cJ
+cJ
+cJ
+cJ
+cJ
+ei
+XF
+ug
+XX
+ar
+Ol
+cJ
+at
 "}
 (9,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+wt
+Ln
+Zv
+it
+QS
+xs
+pJ
+Uz
+gK
+tf
+oZ
+cJ
+at
 "}
 (10,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+wt
+YZ
+mF
+Om
+QS
+xs
+pJ
+fA
+XS
+gI
+Mr
+cJ
+at
 "}
 (11,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+cJ
+cJ
+Uc
+pq
+Ne
+Kr
+Tn
+iv
+Ed
+cJ
+cJ
+cJ
+at
 "}
 (12,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+IT
+cJ
+dq
+dq
+cJ
+dq
+cJ
+ZN
+MO
+Lh
+lx
+AI
+at
 "}
 (13,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
 "}
 (14,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
 "}
 (15,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
+at
 "}

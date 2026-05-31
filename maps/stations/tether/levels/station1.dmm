@@ -2020,6 +2020,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
+"eg" = (
+/obj/shuttle_dock/ferry_pair/map_specific/virgo2/aerostat_ferry/away,
+/turf/space/basic,
+/area/space)
 "eh" = (
 /obj/structure/table/reinforced,
 /obj/item/cell/basic/tier_3/medium,
@@ -3583,6 +3587,9 @@
 "hJ" = (
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
+"hK" = (
+/turf/simulated/mineral/vacuum,
+/area/space)
 "hL" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -11388,6 +11395,14 @@
 /obj/map_helper/paint_stripe/babyblue,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
+"yU" = (
+/obj/structure/catwalk,
+/obj/machinery/airlock_peripheral/panel/north_mount,
+/obj/machinery/airlock_component/controller/dock_hatch/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/turf/simulated/floor/plating,
+/area/maintenance/station/eng_lower)
 "yV" = (
 /obj/machinery/power/terminal{
 	dir = 4
@@ -13122,6 +13137,11 @@
 "CJ" = (
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
+"CK" = (
+/obj/structure/catwalk,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/plating,
+/area/maintenance/station/eng_lower)
 "CL" = (
 /obj/item/stool/padded,
 /obj/landmark/spawnpoint/job/field_medic,
@@ -14137,6 +14157,13 @@
 	pixel_x = 30
 	},
 /turf/simulated/floor/tiled,
+/area/hallway/station/atrium)
+"EP" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/shuttle_dock_preload/generated/map_specific/station/tether/mining_ferry,
+/turf/simulated/floor/water/pool,
 /area/hallway/station/atrium)
 "EQ" = (
 /obj/machinery/airlock_component/interface/shuttle/dock/hardmapped,
@@ -15649,6 +15676,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
+"Id" = (
+/obj/machinery/airlock_component/interface/shuttle/dock/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/wall/r_wall/prepainted,
+/area/maintenance/station/eng_lower)
 "Ie" = (
 /obj/structure/table/woodentable,
 /obj/item/paicard,
@@ -20239,6 +20271,12 @@
 /obj/structure/table,
 /turf/simulated/floor/plating,
 /area/maintenance/abandonedlibrary)
+"Sp" = (
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/machinery/door/airlock/external/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/station/eng_lower)
 "Sq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
@@ -21255,6 +21293,10 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
+"Um" = (
+/obj/shuttle_dock_preload/generated/map_specific/station/tether/mining_ferry,
+/turf/simulated/open,
+/area/tether/elevator/two)
 "Uo" = (
 /obj/structure/closet/crate/secure/weapon{
 	name = "Security Lockup";
@@ -48648,7 +48690,7 @@ HS
 HS
 LU
 Fo
-gZ
+EP
 el
 Fo
 ui
@@ -48839,7 +48881,7 @@ LU
 HS
 HS
 HS
-HS
+Um
 LU
 Fo
 xT
@@ -49583,7 +49625,7 @@ xN
 xN
 xN
 xN
-Zw
+hK
 xN
 SB
 ga
@@ -49772,12 +49814,12 @@ Ey
 Ey
 Ey
 Ey
-Vp
-Vp
-Zw
-Zw
-Zw
-Zw
+sV
+kG
+sV
+sV
+sV
+CW
 xN
 SB
 tk
@@ -49967,13 +50009,13 @@ Ey
 Ey
 Ey
 Ey
-Vp
-tE
-tE
-Zw
-Zw
+sV
+sV
+sV
+sV
+sV
 xN
-Df
+yU
 yl
 Ba
 bV
@@ -50161,13 +50203,13 @@ Ey
 Ey
 Ey
 Ey
-Vp
-tE
-tE
-Zw
-Zw
-xN
-Df
+sV
+sV
+sV
+sV
+sV
+Id
+CK
 bi
 Sk
 Df
@@ -50355,12 +50397,12 @@ Ey
 Ey
 Ey
 Ey
-Vp
-tE
-tE
-Zw
-Zw
-xN
+sV
+sV
+sV
+sV
+eg
+Sp
 Df
 Vy
 Df
@@ -50549,11 +50591,11 @@ Ey
 Ey
 Ey
 Ey
-Vp
-tE
-tE
-Zw
-Zw
+sV
+sV
+sV
+sV
+sV
 xN
 xN
 xN
@@ -50743,11 +50785,11 @@ Ey
 Ey
 Ey
 Ey
-Vp
-tE
-tE
-tE
-Zw
+sV
+sV
+sV
+sV
+sV
 Zw
 Zw
 Zw
@@ -50937,11 +50979,11 @@ Ey
 Ey
 Ey
 Ey
+ZN
 Ey
-Ey
-tE
-tE
-tE
+sV
+sV
+mk
 tE
 tE
 Zw
@@ -51133,9 +51175,9 @@ Ey
 Ey
 Ey
 Ey
-tE
-tE
-tE
+sV
+sV
+sV
 tE
 tE
 tE
@@ -51328,8 +51370,8 @@ Ey
 Ey
 Ey
 Ey
-tE
-tE
+sV
+sV
 tE
 tE
 ff

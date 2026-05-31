@@ -4,6 +4,11 @@
 /obj/shuttle_dock/ferry_pair
 	// usually your ferries need to be aligned. usually.
 	centered_landing_only = FALSE
+	// yeah no
+	docking_restrict_to_starting = TRUE
+	// yeah no x2
+	protect_bounding_box = TRUE
+	protect_bounding_box_extra_radius = 1
 
 	/// Are we the home or away dock in this pair? Used for controller init.
 	var/ferry_init_is_home

@@ -56,3 +56,4 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_preloads)
 	GLOB.uninitialized_shuttle_dock_preloads -= src
 
 #warn impl all
+#warn make sure to preload into zones AND if directly on a dock.

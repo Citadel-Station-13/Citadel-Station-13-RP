@@ -2154,6 +2154,14 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
+"beN" = (
+/obj/shuttle_dock_corner/bottom_left,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tether/surfacebase/tram)
+"bfj" = (
+/obj/shuttle_dock_corner/bottom_right,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tether/surfacebase/tram)
 "bfz" = (
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "sci_outpost";
@@ -6834,6 +6842,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep/maintDorm3)
+"dBM" = (
+/obj/shuttle_dock/ferry_pair/round_global/escape_shuttle/away{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tether/surfacebase/tram)
 "dBO" = (
 /obj/structure/plushie/beepsky,
 /obj/item/clothing/shoes/galoshes{
@@ -10730,6 +10744,10 @@
 	outdoors = 0
 	},
 /area/tether/surfacebase/old_tram)
+"fIv" = (
+/obj/shuttle_dock_corner/top_left,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tether/surfacebase/tram)
 "fIK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 4
@@ -12076,6 +12094,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
+"gnW" = (
+/obj/shuttle_dock_preload/generated/map_specific/station/tether/escape,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tether/surfacebase/tram)
 "gnY" = (
 /obj/machinery/computer/security/telescreen/entertainment{
 	desc = "Looks like it's set to history channel, the show is talking about modern aliens.  I wonder what else is on?";
@@ -32304,6 +32326,10 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/tunnel)
+"rqs" = (
+/obj/shuttle_dock_corner/top_right,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tether/surfacebase/tram)
 "rqv" = (
 /obj/machinery/air_alarm{
 	pixel_y = 22
@@ -78270,6 +78296,7 @@ mHr
 mHr
 mHr
 sxt
+fIv
 csJ
 csJ
 csJ
@@ -78278,8 +78305,7 @@ csJ
 csJ
 csJ
 csJ
-csJ
-csJ
+dBM
 csJ
 csJ
 csJ
@@ -78292,7 +78318,7 @@ csJ
 csJ
 csJ
 csJ
-csJ
+beN
 csJ
 csJ
 csJ
@@ -79255,7 +79281,7 @@ csJ
 csJ
 csJ
 csJ
-csJ
+gnW
 csJ
 csJ
 csJ
@@ -80210,6 +80236,7 @@ mHr
 mHr
 mHr
 sxt
+rqs
 csJ
 csJ
 csJ
@@ -80231,8 +80258,7 @@ csJ
 csJ
 csJ
 csJ
-csJ
-csJ
+bfj
 csJ
 csJ
 csJ

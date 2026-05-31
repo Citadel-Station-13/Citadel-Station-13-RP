@@ -186,10 +186,6 @@
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/auto/named/engine)
-"tV" = (
-/obj/shuttle_aligner/port/two_wide/left_aligned/east/primary,
-/turf/space/basic,
-/area/space)
 "yK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
 /turf/simulated/wall/rshull,
@@ -1016,7 +1012,7 @@ WR
 WR
 "}
 (16,1,1) = {"
-tV
+WR
 WR
 WR
 WR

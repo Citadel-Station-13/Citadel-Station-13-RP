@@ -1,260 +1,1841 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"aS" = (
+/obj/effect/floor_decal/borderfloor/shifted{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"bZ" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"ee" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "escape_shuttle_hatch_station";
+	locked = 1;
+	name = "Shuttle Hatch";
+	req_one_access = null
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"ex" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/button/windowtint{
+	id = "Tram_Med";
+	pixel_y = 28
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"eY" = (
+/obj/machinery/airlock_component/controller/dock_hatch/hardmapped,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"fv" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/structure/bed/padded,
+/obj/item/bedsheet/medical,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"fA" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"fH" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/shuttle_landmark{
+	base_area = /area/centcom/simulated/terminal;
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid;
+	landmark_tag = "escape_cc";
+	name = "Escape Centcom"
+	},
+/obj/structure/grille,
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"gw" = (
+/turf/simulated/wall/thull,
+/area/shuttle/auto/one_single_area)
+"hZ" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"ih" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"iJ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/button/windowtint{
+	id = "Tram_Sec";
+	pixel_y = -28
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"iL" = (
+/obj/structure/table/standard,
+/obj/random/toy,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"jP" = (
+/obj/effect/floor_decal/borderfloor/shifted,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"jS" = (
+/obj/machinery/door/airlock/security{
+	name = "Tram Security";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/security/department,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/auto/one_single_area)
+"km" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/red,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"kw" = (
+/obj/structure/table/standard,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/item/material/ashtray/plastic,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"kM" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"lw" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"mc" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"ml" = (
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"mn" = (
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"nt" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"nD" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"or" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"ox" = (
+/obj/structure/window/reinforced,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"oG" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"oP" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"oU" = (
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"pL" = (
 /turf/space/basic,
 /area/space)
+"qB" = (
+/obj/structure/table/standard,
+/obj/item/material/ashtray/plastic,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"rD" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"rE" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"sF" = (
+/obj/effect/floor_decal/borderfloor/shifted{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"sV" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"tc" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"ty" = (
+/obj/structure/table/standard,
+/obj/random/plushie,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"tJ" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/sleep_console{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"vH" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "escape_shuttle_hatch_offsite";
+	locked = 1;
+	name = "Shuttle Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"vI" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "escape_shuttle_hatch_station";
+	locked = 1;
+	name = "Shuttle Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"vN" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"xC" = (
+/obj/structure/closet/walllocker,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"yq" = (
+/obj/structure/table/standard,
+/obj/item/material/ashtray/plastic,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"yr" = (
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"zy" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"zC" = (
+/obj/machinery/door/window/brigdoor/southright{
+	name = "holding cell"
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"AF" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"BR" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "escape_shuttle_hatch_station";
+	locked = 1;
+	name = "Shuttle Hatch";
+	req_one_access = null
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/shuttle_aligner/port/west/primary,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"Cu" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "escape_shuttle_hatch_offsite";
+	locked = 1;
+	name = "Shuttle Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"CN" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/borderfloorwhite/corner,
+/obj/effect/floor_decal/corner/paleblue/bordercorner,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"DL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 8
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"DO" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"Ej" = (
+/obj/machinery/status_display{
+	pixel_y = -30
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 10
+	},
+/obj/machinery/vending/blood,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"EO" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"EZ" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"FE" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized/full{
+	id = "Tram_Med"
+	},
+/turf/simulated/floor,
+/area/shuttle/auto/one_single_area)
+"FW" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/obj/machinery/sleeper{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"Go" = (
+/obj/structure/table/standard,
+/obj/random/action_figure,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Gw" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"GZ" = (
+/obj/structure/window/reinforced,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightorange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"Jp" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized/full{
+	id = "Tram_Med"
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"JG" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/corner/paleblue/diagonal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"KG" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"KK" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"KT" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"La" = (
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"Ld" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/red/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"Li" = (
+/obj/effect/floor_decal/borderfloor/shifted{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"Lq" = (
+/obj/structure/closet/walllocker/emerglocker/east,
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/full{
+	dir = 4
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"LG" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"LM" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/full,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"Mb" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"Ml" = (
+/obj/structure/closet/walllocker/emerglocker/west,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"MX" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/vending/wallmed1{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"Oi" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/grille,
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"PC" = (
+/obj/structure/table/standard,
+/obj/random/carp_plushie,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"PL" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/full{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"QL" = (
+/obj/structure/closet/walllocker,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"QP" = (
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"QX" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"Rf" = (
+/obj/machinery/status_display{
+	pixel_y = -30
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/structure/medical_stand,
+/obj/structure/medical_stand,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"Rw" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized/full{
+	id = "Tram_Sec"
+	},
+/turf/simulated/floor,
+/area/shuttle/auto/one_single_area)
+"Sn" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/full,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"SU" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"Tf" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/full{
+	dir = 1
+	},
+/obj/machinery/airlock_peripheral/panel/hardmapped/east_mount,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"TS" = (
+/obj/machinery/door/airlock/medical{
+	name = "Tram Medical";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/medical/department,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/auto/one_single_area)
+"Vc" = (
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"VR" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/structure/table/standard,
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
+"Xq" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/grille,
+/turf/simulated/floor/plating/eris/under,
+/area/shuttle/auto/one_single_area)
+"YG" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"Za" = (
+/obj/structure/sign/nanotrasen,
+/turf/simulated/wall/thull,
+/area/shuttle/auto/one_single_area)
+"Zk" = (
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/steel,
+/area/shuttle/auto/one_single_area)
+"ZI" = (
+/turf/simulated/floor/tiled,
+/area/shuttle/auto/one_single_area)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (3,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (4,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (5,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (6,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (7,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (8,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (9,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (10,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (11,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+gw
+gw
+BR
+gw
+Za
+vI
+Xq
+fH
+Xq
+vI
+Za
+gw
+ee
+gw
+gw
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (12,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+pL
+gw
+gw
+gw
+gw
+xC
+nt
+rD
+mc
+KK
+ty
+YG
+mc
+rD
+nt
+xC
+gw
+gw
+gw
+gw
+pL
+pL
+pL
+pL
+pL
+pL
 "}
 (13,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+pL
+gw
+Za
+Ld
+LM
+jS
+Zk
+Zk
+eY
+Zk
+kM
+yq
+bZ
+Zk
+Zk
+Zk
+Zk
+TS
+Ml
+Ej
+gw
+gw
+pL
+pL
+pL
+pL
+pL
 "}
 (14,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+gw
+gw
+gw
+Vc
+oP
+gw
+gw
+ih
+oU
+Li
+Li
+Li
+Li
+Li
+oU
+lw
+gw
+gw
+MX
+hZ
+Za
+gw
+gw
+pL
+pL
+pL
+pL
 "}
 (15,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+pL
+pL
+pL
+gw
+mn
+GZ
+LG
+DL
+Sn
+Rw
+ih
+sF
+Gw
+Gw
+EZ
+Gw
+Gw
+jP
+tc
+FE
+EO
+zy
+Mb
+AF
+AF
+Jp
+pL
+pL
+pL
+pL
+"}
+(16,1,1) = {"
+pL
+pL
+pL
+gw
+ml
+zC
+ZI
+QP
+VR
+Rw
+ih
+sF
+Go
+qB
+EZ
+qB
+iL
+jP
+tc
+FE
+tJ
+JG
+fA
+La
+La
+Jp
+pL
+pL
+pL
+pL
+"}
+(17,1,1) = {"
+pL
+pL
+pL
+gw
+yr
+ox
+KG
+km
+PL
+Rw
+ih
+sF
+sV
+sV
+EZ
+sV
+sV
+jP
+tc
+FE
+FW
+KT
+CN
+fv
+fv
+Jp
+pL
+pL
+pL
+pL
+"}
+(18,1,1) = {"
+pL
+pL
+pL
+gw
+gw
+gw
+or
+iJ
+gw
+gw
+ih
+oU
+aS
+aS
+aS
+aS
+aS
+oU
+QX
+gw
+gw
+ex
+hZ
+Za
+gw
+gw
+pL
+pL
+pL
+pL
+"}
+(19,1,1) = {"
+pL
+pL
+pL
+pL
+gw
+Za
+Tf
+Lq
+jS
+Zk
+Zk
+Zk
+Zk
+kM
+PC
+bZ
+Zk
+Zk
+Zk
+Zk
+TS
+rE
+Rf
+gw
+gw
+pL
+pL
+pL
+pL
+pL
+"}
+(20,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+gw
+gw
+gw
+gw
+QL
+DO
+nD
+vN
+SU
+kw
+oG
+vN
+nD
+DO
+QL
+gw
+gw
+gw
+gw
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(21,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+gw
+gw
+vH
+gw
+Za
+vH
+Oi
+Oi
+Oi
+vH
+Za
+gw
+Cu
+gw
+gw
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(22,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(23,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(24,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(25,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(26,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(27,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(28,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(29,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+"}
+(30,1,1) = {"
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
+pL
 "}

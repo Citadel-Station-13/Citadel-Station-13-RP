@@ -2,43 +2,17 @@
 "a" = (
 /turf/space/basic,
 /area/space)
-"e" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/closet/walllocker/emerglocker/south,
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"f" = (
-/obj/structure/closet/walllocker/emerglocker/south,
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"l" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"m" = (
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = null
-	},
-/obj/map_helper/access_helper/airlock/station/external_airlock,
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"n" = (
+"c" = (
 /turf/simulated/shuttle/wall,
-/area/space)
-"t" = (
+/area/shuttle/auto/one_single_area)
+"e" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/machinery/light,
 /turf/simulated/shuttle/floor,
 /area/shuttle/auto/one_single_area)
-"w" = (
+"g" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
@@ -47,43 +21,7 @@
 	},
 /turf/simulated/floor/airless,
 /area/shuttle/auto/one_single_area)
-"y" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/closet/walllocker/emerglocker/north,
-/obj/structure/bed/chair/shuttle,
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"E" = (
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/obj/machinery/light,
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"F" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "propulsion_r"
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/auto/one_single_area)
-"H" = (
-/obj/machinery/status_display{
-	layer = 4;
-	pixel_y = -32
-	},
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"J" = (
-/obj/structure/bed/chair/shuttle,
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"N" = (
+"h" = (
 /obj/machinery/vending/wallmed1{
 	name = "Emergency NanoMed";
 	pixel_x = 28
@@ -92,37 +30,20 @@
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/shuttle/floor,
 /area/shuttle/auto/one_single_area)
-"O" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/auto/one_single_area)
-"S" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/shuttle/floor,
-/area/shuttle/auto/one_single_area)
-"T" = (
-/turf/simulated/shuttle/wall/hard_corner,
-/area/shuttle/auto/one_single_area)
-"U" = (
-/turf/simulated/shuttle/wall,
-/area/shuttle/auto/one_single_area)
-"W" = (
+"j" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8;
 	icon_state = "propulsion_l"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/auto/one_single_area)
-"X" = (
-/obj/machinery/light,
-/obj/structure/bed/chair/shuttle{
-	dir = 1
+"m" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
 	},
-/turf/simulated/shuttle/floor,
+/turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/auto/one_single_area)
-"Y" = (
+"p" = (
 /obj/structure/shuttle/window,
 /obj/effect/shuttle_landmark{
 	base_area = /area/hallway/secondary/escape/medical_escape_pod_hallway;
@@ -132,7 +53,109 @@
 	name = "Tether Station"
 	},
 /turf/simulated/shuttle/plating,
-/area/space)
+/area/shuttle/auto/one_single_area)
+"r" = (
+/obj/structure/bed/chair/shuttle,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/machinery/airlock_peripheral/panel/hardmapped/north_mount,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/obj/machinery/airlock_component/interface/shuttle/port/hardmapped,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"s" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_r"
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/auto/one_single_area)
+"t" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/closet/walllocker/emerglocker/north,
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"u" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"A" = (
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/machinery/airlock_component/controller/dock_hatch/hardmapped,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"C" = (
+/obj/machinery/status_display{
+	layer = 4;
+	pixel_y = -32
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"D" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"E" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/shuttle/auto/one_single_area)
+"G" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"I" = (
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"J" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"K" = (
+/obj/structure/closet/walllocker/emerglocker/south,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"U" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/shuttle_aligner/port/two_wide/left_aligned/north/primary,
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"W" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/closet/walllocker/emerglocker/south,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
+"X" = (
+/obj/machinery/light,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/auto/one_single_area)
 
 (1,1,1) = {"
 a
@@ -174,11 +197,11 @@ a
 a
 a
 a
-W
-O
-O
-O
-F
+j
+m
+m
+m
+s
 a
 a
 a
@@ -191,11 +214,11 @@ a
 a
 a
 a
-U
-w
-w
-w
-U
+c
+g
+g
+g
+c
 a
 a
 a
@@ -208,11 +231,11 @@ a
 a
 a
 a
-U
-y
-l
-e
-U
+c
+t
+G
+W
+c
 a
 a
 a
@@ -225,11 +248,11 @@ a
 a
 a
 a
-U
-J
-t
-H
-U
+c
+D
+I
+C
+c
 a
 a
 a
@@ -242,11 +265,11 @@ a
 a
 a
 a
-U
-J
-t
-E
-U
+c
+r
+I
+e
+c
 a
 a
 a
@@ -259,11 +282,11 @@ a
 a
 a
 a
-m
-t
-t
-S
 U
+A
+I
+u
+c
 a
 a
 a
@@ -276,11 +299,11 @@ a
 a
 a
 a
-m
-t
-t
-S
-U
+J
+I
+I
+u
+c
 a
 a
 a
@@ -293,11 +316,11 @@ a
 a
 a
 a
-U
-J
-t
+c
+D
+I
 X
-U
+c
 a
 a
 a
@@ -310,11 +333,11 @@ a
 a
 a
 a
-U
-J
-t
-H
-U
+c
+D
+I
+C
+c
 a
 a
 a
@@ -327,11 +350,11 @@ a
 a
 a
 a
-U
-N
-t
-f
-U
+c
+h
+I
+K
+c
 a
 a
 a
@@ -344,11 +367,11 @@ a
 a
 a
 a
-U
-T
-t
-T
-U
+c
+E
+I
+E
+c
 a
 a
 a
@@ -362,9 +385,9 @@ a
 a
 a
 a
-n
-Y
-n
+c
+p
+c
 a
 a
 a
