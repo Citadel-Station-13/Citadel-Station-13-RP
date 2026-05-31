@@ -38,11 +38,15 @@
 	var/list/obj/trivial_detections = list()
 
 	for(var/obj/checking in loc)
-		if(istype(checking, /obj/machinery/door/airlock))
+		if(istype(checking, /obj/machinery/door))
 			trivial_detections += checking
 		else if(istype(checking, /obj/machinery/apc))
 			trivial_detections += checking
+		else if(istype(checking, /obj/machinery/air_alarm))
+			trivial_detections += checking
 		else if(istype(checking, /obj/structure/closet))
+			trivial_detections += checking
+		else if(istype(checking, /obj/machinery/button))
 			trivial_detections += checking
 
 	if(!length(trivial_detections))

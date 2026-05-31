@@ -41,6 +41,7 @@
 /obj/item/stack/material/mhydrogen,
 /obj/item/stack/material/mhydrogen,
 /obj/fiftyspawner/plasteel,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "aF" = (
@@ -159,6 +160,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/alarms_hidden/south_mount,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "cL" = (
@@ -206,6 +208,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "dA" = (
@@ -355,6 +358,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "gQ" = (
@@ -453,6 +457,7 @@
 /obj/item/material/knife/machete/hatchet,
 /obj/item/material/knife/machete/hatchet,
 /obj/item/material/twohanded/fireaxe/scythe,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "iK" = (
@@ -564,6 +569,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "ku" = (
@@ -577,6 +583,7 @@
 /obj/random/slimecore,
 /obj/random/slimecore,
 /obj/structure/window/reinforced,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "kK" = (
@@ -643,6 +650,7 @@
 	pixel_y = -22;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "ly" = (
@@ -717,6 +725,7 @@
 /obj/item/reagent_containers/food/snacks/lobster,
 /obj/item/reagent_containers/food/snacks/lobster,
 /obj/structure/closet/crate/freezer,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "mV" = (
@@ -744,6 +753,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "nS" = (
@@ -863,6 +873,7 @@
 	pixel_x = 6
 	},
 /obj/structure/table/steel,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "qr" = (
@@ -896,6 +907,7 @@
 	pixel_x = 22;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/auto/named/deck)
 "qW" = (
@@ -1079,6 +1091,7 @@
 	dir = 8;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "vJ" = (
@@ -1232,6 +1245,7 @@
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/clothing/accessory/holster/leg,
 /obj/structure/closet/crate,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "yI" = (
@@ -1273,6 +1287,7 @@
 	pixel_y = -22;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/cockpit)
 "zS" = (
@@ -1335,6 +1350,7 @@
 /obj/item/reagent_containers/food/snacks/meat/worm,
 /obj/item/reagent_containers/food/snacks/bearmeat,
 /obj/item/reagent_containers/food/snacks/bearmeat,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "Bi" = (
@@ -1378,6 +1394,7 @@
 	dir = 10
 	},
 /obj/structure/closet/crate/solar,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "BY" = (
@@ -1694,6 +1711,7 @@
 /obj/random/tool/power,
 /obj/item/cell/regen/fractal/weapon,
 /obj/random/tool/alien,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "GU" = (
@@ -1715,6 +1733,7 @@
 /obj/item/storage/toolbox/syndicate{
 	pixel_y = 11
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "Hr" = (
@@ -1747,6 +1766,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "JN" = (
@@ -1757,6 +1777,7 @@
 	dir = 8;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/cockpit)
 "Kh" = (
@@ -1964,6 +1985,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/auto/named/deck)
 "NE" = (
@@ -2065,6 +2087,7 @@
 	pixel_y = -22;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "OR" = (
@@ -2088,6 +2111,7 @@
 	pixel_y = -22;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/red,
 /area/shuttle/auto/named/deck)
 "Pe" = (
@@ -2202,6 +2226,7 @@
 	dir = 8;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/cockpit)
 "Ry" = (
@@ -2358,6 +2383,7 @@
 	pixel_x = 22;
 	req_one_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/carpet,
 /area/shuttle/auto/named/deck)
 "Tf" = (
@@ -2412,6 +2438,7 @@
 /obj/item/nif,
 /obj/item/nifrepairer,
 /obj/item/nifrepairer,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "TR" = (
@@ -2475,6 +2502,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/champagne/jericho,
 /obj/item/reagent_containers/food/drinks/bottle/pwine,
 /obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/deck)
 "VE" = (
@@ -2589,6 +2617,7 @@
 /obj/machinery/power/apc/alarms_hidden/south_mount{
 	req_access = list(160)
 	},
+/obj/map_helper/access_helper/auto/generic/staff,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/auto/named/cockpit)
 "Yd" = (
