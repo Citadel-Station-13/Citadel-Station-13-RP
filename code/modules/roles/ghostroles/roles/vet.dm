@@ -7,12 +7,12 @@
 	everyone? Where did they go? What happened to the hospital? And is that <i>smoke</i> you smell? You need to find someone else. Maybe they c	everyone's gone. One of the cats scratched you just a few minutes ago. That's why you were in the pod - to heal the scratch. The scabs are still fresh; an tell you what happened."
 
 //Broken rejuvenation pod: Spawns in animal hospitals in lavaland. Ghosts become disoriented interns and are advised to search for help.
-/obj/structure/ghost_role_spawner/lavaland_vet
+/obj/structure/role_spawner/lavaland_vet
 	name = "broken rejuvenation pod"
 	desc = "A small sleeper typically used to instantly restore minor wounds. This one seems broken, and its occupant is comatose."
 	role_type = /datum/prototype/role/ghostrole/lavaland_vet
 
-/obj/structure/ghost_role_spawner/lavaland_vet/Destroy()
+/obj/structure/role_spawner/lavaland_vet/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
 	S.setDir(dir)
 	return ..()

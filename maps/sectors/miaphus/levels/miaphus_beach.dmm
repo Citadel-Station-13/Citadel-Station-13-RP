@@ -3596,7 +3596,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/structure/ghost_role_spawner/sdf,
+/obj/structure/role_spawner/sdf,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "sf" = (

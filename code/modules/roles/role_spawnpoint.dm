@@ -1,9 +1,13 @@
-GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
+GLOBAL_LIST_EMPTY(role_spawnpoints)
 
 /**
- * Spawnpoint for a ghostrole
+ * A dynamic role spawnpoint component.
+ * * Signals to the game that a role is either able to spawn at a given location,
+ *   or should be made available when this is created / bound.
+ * * Eventually, this will be what static landmarks use internally, as opposed to them
+ *   being their own thing.
  */
-/datum/component/ghostrole_spawnpoint
+/datum/component/role_spawnpoint
 	dupe_mode = COMPONENT_DUPE_ALLOWED
 	can_transfer = TRUE
 	/// allowed spawns
@@ -19,7 +23,7 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 	/// custom HTML spawntext to show, if any
 	var/spawntext
 
-/datum/component/ghostrole_spawnpoint/Initialize(role_type, allowed_spawns = INFINITY, list/params, datum/callback/proc_to_call_or_callback, notify_ghosts = TRUE, spawntext)
+/datum/component/role_spawnpoint/Initialize(role_type, allowed_spawns = INFINITY, list/params, datum/callback/proc_to_call_or_callback, notify_ghosts = TRUE, spawntext)
 	if((. = ..()) == COMPONENT_INCOMPATIBLE)
 		return
 	if(!isatom(parent))
@@ -33,14 +37,14 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 		var/datum/prototype/role/ghostrole/role = get_ghostrole_datum(role_type)
 		if(!role)
 			return
-		notify_ghosts("Ghostrole spawner created: [role.name] - [parent] - [get_area(parent)]", source = parent, ignore_mapload = TRUE, flashwindow = FALSE)
+		notify_ghosts("Role spawner created: [role.name] - [parent] - [get_area(parent)]", source = parent, ignore_mapload = TRUE, flashwindow = FALSE)
 
-/datum/component/ghostrole_spawnpoint/Destroy()
+/datum/component/role_spawnpoint/Destroy()
 	proc_to_call_or_callback = null
 	params = null
 	return ..()
 
-/datum/component/ghostrole_spawnpoint/RegisterWithParent()
+/datum/component/role_spawnpoint/RegisterWithParent()
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
@@ -48,36 +52,36 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(Examine))
 	RegisterGlobal()
 
-/datum/component/ghostrole_spawnpoint/UnregisterFromParent()
+/datum/component/role_spawnpoint/UnregisterFromParent()
 	. = ..()
 	UnregisterGlobal()
 
-/datum/component/ghostrole_spawnpoint/PostTransfer()
+/datum/component/role_spawnpoint/PostTransfer()
 	if(ispath(proc_to_call_or_callback) && !hascall(parent, proc_to_call_or_callback))
 		stack_trace("[src] [parent] had a proc to call, [proc_to_call_or_callback], that is no longer valid after a component transfer. It will be removed. Please fix this!")
 		proc_to_call_or_callback = null
 
-/datum/component/ghostrole_spawnpoint/proc/RegisterGlobal()
-	if(!islist(GLOB.ghostrole_spawnpoints[role_type]))
-		GLOB.ghostrole_spawnpoints[role_type] = list(src)
+/datum/component/role_spawnpoint/proc/RegisterGlobal()
+	if(!islist(GLOB.role_spawnpoints[role_type]))
+		GLOB.role_spawnpoints[role_type] = list(src)
 	else
-		GLOB.ghostrole_spawnpoints[role_type] |= src
+		GLOB.role_spawnpoints[role_type] |= src
 
-/datum/component/ghostrole_spawnpoint/proc/UnregisterGlobal()
-	GLOB.ghostrole_spawnpoints[role_type] -= src
+/datum/component/role_spawnpoint/proc/UnregisterGlobal()
+	GLOB.role_spawnpoints[role_type] -= src
 
-/datum/component/ghostrole_spawnpoint/proc/Atom()
+/datum/component/role_spawnpoint/proc/Atom()
 	RETURN_TYPE(/atom)
 	return parent
 
-/datum/component/ghostrole_spawnpoint/proc/Turf()
+/datum/component/role_spawnpoint/proc/Turf()
 	RETURN_TYPE(/turf)
 	return get_turf(Atom()) //.loc may not be accurate if an object/mob is inside another object
 
-/datum/component/ghostrole_spawnpoint/proc/SpawnsLeft(client/C)
+/datum/component/role_spawnpoint/proc/SpawnsLeft(client/C)
 	return max(0, max_spawns - spawns)
 
-/datum/component/ghostrole_spawnpoint/proc/OnSpawn(mob/created, datum/prototype/role/ghostrole/role)
+/datum/component/role_spawnpoint/proc/OnSpawn(mob/created, datum/prototype/role/ghostrole/role)
 	if(istype(proc_to_call_or_callback))
 		proc_to_call_or_callback.Invoke(created, role, params, src)
 	spawns++
@@ -86,20 +90,20 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 			CRASH("Invalid proc [proc_to_call_or_callback] on [parent]")
 		call(parent, proc_to_call_or_callback)(created, role, params, src)
 
-/datum/component/ghostrole_spawnpoint/vv_edit_var(var_name, var_value, massedit)
+/datum/component/role_spawnpoint/vv_edit_var(var_name, var_value, massedit)
 	if(var_name == NAMEOF(src, proc_to_call_or_callback))
 		if(ispath(var_value) || istext(var_value))
 			return FALSE		// security reasons, unwrapped proccall
 	. = ..()
 
-/datum/component/ghostrole_spawnpoint/proc/Examine(datum/source, list/examine_list)
+/datum/component/role_spawnpoint/proc/Examine(datum/source, list/examine_list)
 	if(isobserver(source))
 		var/datum/prototype/role/ghostrole/role = get_ghostrole_datum(role_type)
 		if(!role)
 			return
 		examine_list += "<b>Click</> this ghostrole spawner to become a [role.name]!"
 
-/datum/component/ghostrole_spawnpoint/proc/GhostInteract(datum/source, mob/user)
+/datum/component/role_spawnpoint/proc/GhostInteract(datum/source, mob/user)
 	var/datum/prototype/role/ghostrole/role = get_ghostrole_datum(role_type)
 	if(!role)
 		to_chat(user, SPAN_DANGER("No ghostrole datum found: [role_type]. Contact a coder!"))
@@ -117,7 +121,7 @@ GLOBAL_LIST_EMPTY(ghostrole_spawnpoints)
 		else
 			role.AttemptSpawn(user.client, src)
 
-/datum/component/ghostrole_spawnpoint/vv_edit_var(var_name, var_value, massedit)
+/datum/component/role_spawnpoint/vv_edit_var(var_name, var_value, massedit)
 	. = ..()
 	if(var_name == NAMEOF(src, proc_to_call_or_callback))
 		if(!istype(proc_to_call_or_callback, /datum/callback))

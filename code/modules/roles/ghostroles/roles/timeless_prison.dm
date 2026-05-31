@@ -5,7 +5,7 @@
 	instantiator = /datum/ghostrole_instantiator/human/random/species/shadow
 	assigned_role = "Exile"
 
-/datum/prototype/role/ghostrole/timeless_prison/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/timeless_prison/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/wish = rand(1,4)
 	switch(wish)
@@ -28,13 +28,13 @@
 	H.real_name = "Wish Granter's Victim ([rand(1,999)])"
 
 //Timeless prisons: Spawns in Wish Granter prisons in lavaland. Ghosts become age-old users of the Wish Granter and are advised to seek repentance for their past.
-/obj/structure/ghost_role_spawner/exile
+/obj/structure/role_spawner/exile
 	name = "timeless prison"
 	desc = "Although this stasis pod looks medicinal, it seems as though it's meant to preserve something for a very long time."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	role_type = /datum/prototype/role/ghostrole/timeless_prison
 
-/obj/structure/ghost_role_spawner/exile/Destroy()
+/obj/structure/role_spawner/exile/Destroy()
 	new/obj/structure/fluff/empty_sleeper(get_turf(src))
 	return ..()

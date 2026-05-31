@@ -1,3 +1,9 @@
+/**
+ * Abstract, non-movable spawnpoint landmarks.
+ * * These eventually will all use different systems to actually function
+ *   and not be too useful themselves outside of maybe allowing bespoke behaviors
+ *   via spawn behaviors.
+ */
 /obj/landmark/spawnpoint
 	name = "unknown spawnpoint"
 	icon = 'icons/mapping/landmarks/spawnpoints.dmi'
@@ -34,7 +40,6 @@
 	. = ..()
 	if(var_name == NAMEOF(src, priority))
 		Register()
-
 
 /obj/landmark/spawnpoint/proc/Register()
 	SHOULD_CALL_PARENT(TRUE)
@@ -247,3 +252,4 @@
 	. = ..()
 	if(var_name == NAMEOF(src, key))
 		Unregister()
+

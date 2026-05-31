@@ -17,7 +17,7 @@
 			params["fluff"] = "professional"
 	return ..()
 
-/datum/prototype/role/ghostrole/pirate/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/pirate/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/flavour_text = "<i>The sound of something dripping on the top of your bunk unit wakes you up. Spears of light shine in through old \
 	bullet holes. The unit's door slides back with the push of a button, letting stale recycled air rush out. A yellowed poster on the wall \
@@ -60,7 +60,7 @@
 			return /datum/outfit/pirate/professional
 	return outfit
 
-/obj/structure/ghost_role_spawner/pirate
+/obj/structure/role_spawner/pirate
 	name = "pirate bunk"
 	desc = "An aged personal bunk unit. Prized in communal living areas for their enclosed nature, units like this can be locked from the inside and outside, allowing the relatively safe storage of personal effects."
 	icon = 'icons/obj/structures.dmi'
@@ -72,7 +72,7 @@
 
 //This is from the original untranslated DM. It still isn't translated, but this is neat and maybe we should use it sometime? It seems worth retaining for now.
 /*
-/obj/structure/ghost_role_spawner/pirate
+/obj/structure/role_spawner/pirate
 	name = "space pirate sleeper"
 	desc = "A cryo sleeper smelling faintly of rum. The sleeper looks unstable. <i>Perhaps the pirate within can be killed with the right tools...</i>"
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -82,7 +82,7 @@
 		"rank" = "Mate"
 	)
 
-/obj/structure/ghost_role_spawner/pirate/on_attack_hand(mob/living/user, act_intent = user.a_intent, unarmed_attack_flags)
+/obj/structure/role_spawner/pirate/on_attack_hand(mob/living/user, act_intent = user.a_intent, unarmed_attack_flags)
 	. = ..()
 	if(.)
 		return
@@ -91,7 +91,7 @@
 	else
 		to_chat(user, "<span class='notice'>If you want to kill the pirate off, something to pry open the sleeper might be the best way to do it.</span>")
 
-/obj/structure/ghost_role_spawner/pirate/attackby(obj/item/W, mob/user, params)
+/obj/structure/role_spawner/pirate/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behavior == TOOL_CROWBAR && user.a_intent != INTENT_HARM)
 		if(user.mind.has_antag_datum(/datum/antagonist/pirate))
 			to_chat(user,"<span class='warning'>Why would you want to do that to your shipmate? That'd kill them.</span>")
@@ -129,16 +129,16 @@
 	mob_name = "Dead Space Pirate Captain"
 	outfit = /datum/outfit/pirate/space/captain
 
-/obj/structure/ghost_role_spawner/pirate/Destroy()
+/obj/structure/role_spawner/pirate/Destroy()
 	new /obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
 
-/obj/structure/ghost_role_spawner/pirate/captain
+/obj/structure/role_spawner/pirate/captain
 	role_params = list(
 		"rank" = "Captain"
 	)
 
-/obj/structure/ghost_role_spawner/pirate/gunner
+/obj/structure/role_spawner/pirate/gunner
 	role_params = list(
 		"rank" = "Gunner"
 	)

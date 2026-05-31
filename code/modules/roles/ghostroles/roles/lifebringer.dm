@@ -26,13 +26,13 @@
 	H.language_holder.selected_language = /datum/prototype/language/sylvan
 
 //Preserved terrarium/seed vault: Spawns in seed vault structures in lavaland. Ghosts become plantpeople and are advised to begin growing plants in the room near them.
-/obj/structure/ghost_role_spawner/seed_vault
+/obj/structure/role_spawner/seed_vault
 	name = "preserved terrarium"
 	desc = "An ancient machine that seems to be used for storing plant matter. The glass is obstructed by a mat of vines."
 	icon = 'icons/obj/lavaland/spawners.dmi'
 	icon_state = "terrarium"
 	role_type = /datum/prototype/role/ghostrole/seed_vault
 
-/obj/structure/ghost_role_spawner/seed_vault/Destroy()
+/obj/structure/role_spawner/seed_vault/Destroy()
 	new/obj/structure/fluff/empty_terrarium(get_turf(src))
 	return ..()

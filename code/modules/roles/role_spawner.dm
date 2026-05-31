@@ -1,7 +1,12 @@
 /**
- * Default implementation for ghost role spawners
+ * A dynamic role spawnpoint structure
+ * * These should be as **lightweight as possible.** The purpose of this
+ *   entity is mostly to make it easier for mappers to place `/datum/component/role_spawnpoint`.
+ *   Do not put too much behavior on them, or we risk fracturing our implementations for spawnpoints!
+ * * The difference between this and 'static landmark spawnpoints' is landmarks are more specialized,
+ *   while these go .. pretty uch where-ever and are expected to auto-bind as needed.
  */
-/obj/structure/ghost_role_spawner
+/obj/structure/role_spawner
 	name = "Ghost Role Spawner"
 	desc = "if you're seeing this a coder fucked up"
 	integrity_flags = INTEGRITY_INDESTRUCTIBLE
@@ -20,7 +25,7 @@
 	/// automatic handling - special spawntext
 	var/special_spawntext
 
-/obj/structure/ghost_role_spawner/Initialize(mapload, params, type, spawns, spawntext)
+/obj/structure/role_spawner/Initialize(mapload, params, type, spawns, spawntext)
 	. = ..()
 	if(type)
 		src.role_type = type
@@ -36,16 +41,16 @@
 		if(mapload)
 			stack_trace("No role type")
 	else
-		AddComponent(/datum/component/ghostrole_spawnpoint, role_type, role_spawns, role_params, TYPE_PROC_REF(/obj/structure/ghost_role_spawner, on_spawn), null, special_spawntext)
+		AddComponent(/datum/component/role_spawnpoint, role_type, role_spawns, role_params, TYPE_PROC_REF(/obj/structure/role_spawner, on_spawn), null, special_spawntext)
 
-/obj/structure/ghost_role_spawner/proc/on_spawn(mob/created, datum/prototype/role/ghostrole/role, list/params, datum/component/ghostrole_spawnpoint/spawnpoint)
+/obj/structure/role_spawner/proc/on_spawn(mob/created, datum/prototype/role/ghostrole/role, list/params, datum/component/role_spawnpoint/spawnpoint)
 	if(qdel_on_deplete && !spawnpoint.SpawnsLeft())
 		qdel(src)
 
 /**
  * for mappers
  */
-/obj/structure/ghost_role_spawner/custom
+/obj/structure/role_spawner/custom
 	/// json to convert to params
 	var/role_params_json
 	/// next id
@@ -57,13 +62,13 @@
 	/// forced instantiator path
 	var/instantiator_path
 
-/obj/structure/ghost_role_spawner/custom/Initialize(mapload, params, type, spawns, spawntext)
+/obj/structure/role_spawner/custom/Initialize(mapload, params, type, spawns, spawntext)
 	role_type = "[forced_id]" || "[++id_next]"
 	GenerateRole(role_type, mob_path)
 	role_params = GenerateParams()
 	return ..()
 
-/obj/structure/ghost_role_spawner/custom/proc/GenerateRole(id = role_type, mob_path = src.mob_path)
+/obj/structure/role_spawner/custom/proc/GenerateRole(id = role_type, mob_path = src.mob_path)
 	var/datum/prototype/role/ghostrole/G = get_ghostrole_datum(id)
 	if(G)
 		return
@@ -74,7 +79,7 @@
 		G.instantiator = ispath(mob_path, /mob/living/carbon/human)? new /datum/ghostrole_instantiator/human/random/species : new /datum/ghostrole_instantiator/simple
 	return G
 
-/obj/structure/ghost_role_spawner/custom/proc/GenerateParams()
+/obj/structure/role_spawner/custom/proc/GenerateParams()
 	. = list()
 	if(istext(role_params_json))
 		var/list/L = safe_json_decode(role_params_json)
@@ -82,14 +87,14 @@
 			. = L
 	.["mob"] = mob_path
 
-/obj/structure/ghost_role_spawner/custom/human
+/obj/structure/role_spawner/custom/human
 	mob_path = /mob/living/carbon/human
 	/// outfit path
 	var/outfit_path = /datum/outfit/job/station/assistant
 	/// species path
 	var/species_path = /datum/species/human
 
-/obj/structure/ghost_role_spawner/custom/human/GenerateParams()
+/obj/structure/role_spawner/custom/human/GenerateParams()
 	. = ..()
 	.["outfit"] = outfit_path
 	.["species"] = species_path

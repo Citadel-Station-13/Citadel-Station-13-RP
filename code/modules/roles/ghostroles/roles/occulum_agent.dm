@@ -11,7 +11,7 @@
 /datum/prototype/role/ghostrole/occulum/Instantiate(client/C, atom/loc, list/params)
 	return ..()
 
-/datum/prototype/role/ghostrole/occulum/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/occulum/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created, "<i> Welcome on the Skyplanet, Lythios 43a. Occulum always had a small presence here. Now that the blockade is lifted, personal can now be send in this small safehouse. You have a ship available, the ORS (Occulum Radio Shuttle) Crescend, if your coworkers didn't move it. (If they did, feel free to take a voidline racing shuttle). </i>")
 
@@ -21,7 +21,7 @@
 /datum/ghostrole_instantiator/human/player_static/occulum/GetOutfit(client/C, mob/M, list/params)
 		return new /datum/outfit/occulum
 
-/obj/structure/ghost_role_spawner/occulum
+/obj/structure/role_spawner/occulum
 	name = "Operator's teleporter"
 	desc = "Arrived from here."
 	role_type = /datum/prototype/role/ghostrole/occulum

@@ -22,18 +22,18 @@
 	equip_outfit = /datum/outfit/hotelstaff/security
 
 //Space Hotel Staff
-/obj/structure/ghost_role_spawner/space_hotel //not free antag u little shits
+/obj/structure/role_spawner/space_hotel //not free antag u little shits
 	name = "staff sleeper"
 	desc = "A sleeper designed for long-term stasis between guest visits."
 	role_type = /datum/prototype/role/ghostrole/space_hotel
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 
-/obj/structure/ghost_role_spawner/space_hotel/Destroy()
+/obj/structure/role_spawner/space_hotel/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
 	return ..()
 
-/obj/structure/ghost_role_spawner/space_hotel/security
+/obj/structure/role_spawner/space_hotel/security
 	name = "hotel security sleeper"
 	role_type = /datum/prototype/role/ghostrole/space_hotel/security
 

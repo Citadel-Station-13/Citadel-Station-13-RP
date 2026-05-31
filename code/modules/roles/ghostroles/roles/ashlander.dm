@@ -25,7 +25,7 @@
 			params["fluff"] = "priest"
 	return ..()
 
-/datum/prototype/role/ghostrole/ashlander/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/ashlander/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/flavour_text = "<i>Fine particles of ash slip past the fluttering Goliath hide covering your doorway to settle on the floor of the yurt. \
 	The hide is patched, and worn from years of use - it was gifted to you many Storms ago. Outside, the baking heat of the planet's surface \
@@ -117,7 +117,7 @@
 	created.mind.teach_crafting_recipe(ashlander_crafting)
 	created.remove_language(/datum/prototype/language/common)
 
-/obj/structure/ghost_role_spawner/ashlander
+/obj/structure/role_spawner/ashlander
 	name = "ashlander yurt"
 	desc = "A coarse leather tent. Squat and vaguely onion shaped, the thick red hide acting as a door covering flaps in the warm breeze. It seems like it could easily be dismantled and moved. A strange red icon shaped out of sinew and leather hangs over the doorway."
 	icon = 'icons/obj/lavaland.dmi'

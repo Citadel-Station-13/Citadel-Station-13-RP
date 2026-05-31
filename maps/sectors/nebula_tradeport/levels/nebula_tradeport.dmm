@@ -21759,7 +21759,7 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/nebula_tradeport/motel)
 "hGV" = (
-/obj/structure/ghost_role_spawner/salvager,
+/obj/structure/role_spawner/salvager,
 /obj/structure/curtain/open/bed,
 /obj/item/bedsheet/orange,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -26360,7 +26360,7 @@
 /area/sector/nebula_tradeport/motel/room8)
 "sKy" = (
 /obj/structure/curtain/open/bed,
-/obj/structure/ghost_role_spawner/salvager,
+/obj/structure/role_spawner/salvager,
 /obj/item/bedsheet/orange,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/salvager)
