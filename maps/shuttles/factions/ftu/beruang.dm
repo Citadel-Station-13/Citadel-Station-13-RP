@@ -12,7 +12,6 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/ftu/beruang)
 	}
 	facing_dir = WEST
 
-#warn impl
-/obj/overmap/entity/visitable/ship/landable/trade
-/area/shuttle/trade_ship/general
-/area/shuttle/trade_ship/cockpit
+	default_access_lookup_keys = list(
+		/obj/map_helper/access_helper/auto/generic/staff::lookup_key,
+	)

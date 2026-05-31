@@ -42,6 +42,13 @@
 	/// are we modified from our prototype?
 	var/tmp/modified = FALSE
 
+	//* Access *//
+	/// Default req_access for anything using auto-access helpers
+	var/list/access_default_require
+	/// Default req_access based on string keys. Things fall back to 'default required' without this.
+	var/list/access_keyed_require
+	#warn propagate via dmm context, use via access helper auto / shuttle dock (preload)
+
 	//* Chainload *//
 	/// dependencies by id or path of other maps - these are critical maps to always load in
 	/// * resolved during ready()

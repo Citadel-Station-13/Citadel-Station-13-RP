@@ -7,6 +7,14 @@
 		/datum/map_level/sector/nebula_tradeport,
 	)
 
+	// let everyone in
+	access_default_require = null
+	access_keyed_require = list(
+		"trader" = list(
+			/datum/access/faction/trader::access_value,
+		),
+	)
+
 /datum/map_level/sector/nebula_tradeport
 	id = "NebulaTradeport"
 	name = "Sector - Nebula Trade Port (192x192)"

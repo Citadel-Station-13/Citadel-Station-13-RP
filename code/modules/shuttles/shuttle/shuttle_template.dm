@@ -43,9 +43,12 @@
 	var/path_md5
 
 	//* Functionality *//
+	/// 'auto' access keys in addition to default access
+	/// * used for reflection purposes.
+	var/list/default_access_lookup_keys
 	/// our shuttle typepath
 	///
-	/// * yeah uh you probably shouldn't mess with this unless you know what you're doing
+	/// * yeah uh you probably shouldn't mess with this unless *really* you know what you're doing
 	var/shuttle_type = /datum/shuttle
 	/// our descriptor, used for cross-interaction with other systems
 	/// this should not be a cached typepath, as opposed to a directly made typepath

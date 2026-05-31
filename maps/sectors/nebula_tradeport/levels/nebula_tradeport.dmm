@@ -4,13 +4,6 @@
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
-"aab" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/briefcase/fission{
-	starts_with = list(/obj/item/coin/supermatter,/obj/item/coin/supermatter,/obj/item/coin/supermatter)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aac" = (
 /obj/item/bedsheet/hos,
 /obj/structure/bed/padded,
@@ -38,10 +31,6 @@
 /obj/machinery/power/solar,
 /turf/simulated/floor/airless,
 /area/space)
-"aah" = (
-/mob/living/simple_mob/animal/passive/dog/tamaskan/Spice,
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aai" = (
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirtlight,
@@ -61,10 +50,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/spine)
-"aao" = (
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aaq" = (
 /obj/structure/cable/pink{
 	icon_state = "4-8"
@@ -141,18 +126,6 @@
 "aaz" = (
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
-"aaA" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade-ship-secure";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/nogrille/firelocks,
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
 "aaB" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -191,24 +164,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/nebula_tradeport/dock2)
-"aaG" = (
-/obj/machinery/computer/shuttle_control{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
-"aaH" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade";
-	name = "Shop Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/nogrille/firelocks,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aaJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -224,19 +179,6 @@
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"aaM" = (
-/obj/machinery/door/airlock/multi_tile/glass/polarized{
-	id_tint = "traderportdoor";
-	req_access = list(160)
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aaN" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/random/multiple/large_corp_crate,
@@ -253,16 +195,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
-"aaP" = (
-/obj/machinery/door/window/southright{
-	name = "Cargo Hold";
-	req_access = list(160)
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aaQ" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 8
@@ -324,27 +256,6 @@
 /obj/landmark/spawnpoint/job/outsider,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
-"aaZ" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	req_access = list(160)
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
-"abb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "abc" = (
 /turf/simulated/wall/r_wall,
 /area/tradeport/spine)
@@ -428,11 +339,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
-"abo" = (
-/obj/random/multiple/voidsuit/vintage,
-/obj/structure/closet,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "abq" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/item/reagent_containers/glass/bucket,
@@ -499,14 +405,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/nebula_tradeport/comroom)
-"abB" = (
-/obj/structure/bed/padded,
-/obj/item/bedsheet/captain,
-/obj/machinery/computer/security/telescreen{
-	pixel_y = -35
-	},
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "abC" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -550,18 +448,6 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
-"abI" = (
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"abJ" = (
-/obj/machinery/sleep_console,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "abK" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -575,13 +461,6 @@
 	},
 /turf/simulated/wall,
 /area/shuttle/udang/main)
-"abM" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 10
-	},
-/obj/structure/closet/crate/solar,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "abO" = (
 /obj/machinery/light,
 /obj/structure/catwalk,
@@ -675,23 +554,6 @@
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
-"acg" = (
-/obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/catering/bar_alc,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
-"ach" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aci" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
@@ -707,12 +569,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
-"ack" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "acl" = (
 /obj/machinery/light{
 	dir = 4
@@ -918,29 +774,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/plating,
 /area/sector/nebula_tradeport/engineering)
-"acP" = (
-/obj/machinery/door/airlock/command{
-	name = "Captain's Quarters";
-	req_access = list(160);
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"acQ" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	id = "tradestarshutters";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
 "acR" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -970,13 +803,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"acV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "acW" = (
 /obj/machinery/suit_storage_unit/syndicate,
 /turf/simulated/floor/tiled/techmaint,
@@ -999,21 +825,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/facility)
-"ada" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "plant-10"
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 6
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "tradeportshutters";
-	name = "remote shutter control";
-	pixel_x = 30;
-	req_access = list(160)
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "adb" = (
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
@@ -1196,19 +1007,6 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor,
 /area/sector/nebula_tradeport/engineering)
-"ady" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/closet,
-/obj/item/clothing/suit/storage/hooded/wintercoat/cosmic,
-/obj/item/clothing/suit/storage/hooded/wintercoat/cosmic,
-/obj/item/clothing/suit/storage/toggle/heated/ronincoat,
-/obj/item/clothing/suit/storage/hooded/wintercoat/ratvar,
-/obj/item/clothing/shoes/fake_brass,
-/obj/item/clothing/suit/storage/hooded/cloak/goliath,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "adz" = (
 /obj/structure/flora/pumpkin/carved/owo,
 /turf/simulated/floor/outdoors/dirt,
@@ -1290,29 +1088,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
-"adN" = (
-/obj/item/reagent_containers/food/snacks/lobster,
-/obj/item/reagent_containers/food/snacks/lobster,
-/obj/item/reagent_containers/food/snacks/lobster,
-/obj/item/reagent_containers/food/snacks/lobster,
-/obj/item/reagent_containers/food/snacks/lobster,
-/obj/item/reagent_containers/food/snacks/lobster,
-/obj/structure/closet/crate/freezer,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "adO" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/tradeport/spine)
-"adQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/universal{
-	dir = 4
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "adS" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -1452,15 +1233,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
-"aek" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/vent{
-	dir = 4
-	},
-/turf/simulated/floor/airless,
-/area/shuttle/trade_ship/general)
 "ael" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/marker_beacon/yellow,
@@ -1485,19 +1257,6 @@
 	},
 /turf/simulated/wall/prepainted,
 /area/shuttle/adventurer)
-"aep" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aeq" = (
-/obj/structure/table/steel_reinforced,
-/obj/structure/window/reinforced,
-/obj/item/hardsuit/internalaffairs,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aer" = (
 /obj/machinery/light{
 	dir = 4
@@ -1527,26 +1286,9 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
-"aev" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "aex" = (
 /turf/simulated/floor/tiled/old_cargo/beige,
 /area/tradeport/atmospherics)
-"aey" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aez" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -1573,19 +1315,6 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/reinforced,
 /area/tradeport/commons)
-"aeF" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump4c";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "aeG" = (
 /obj/structure/flora/pottedplant/subterranean,
 /obj/effect/floor_decal/techfloor{
@@ -1593,20 +1322,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/cafeteria)
-"aeH" = (
-/obj/machinery/access_button{
-	command = "cycle_int";
-	frequency = 8018;
-	master_tag = "trade_space_lock";
-	pixel_x = -25;
-	pixel_y = -5
-	},
-/obj/machinery/door/airlock/glass_external{
-	name = "Ship Hatch"
-	},
-/obj/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aeI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1640,10 +1355,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
-"aeL" = (
-/obj/machinery/gear_painter,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aeM" = (
 /obj/structure/curtain/open/shower/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1672,13 +1383,6 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
-"aeP" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aeQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1688,19 +1392,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"aeR" = (
-/obj/structure/table/standard,
-/obj/item/storage/box/glasses/square,
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
-"aeS" = (
-/obj/structure/table/glass,
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = -24
-	},
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aeT" = (
 /obj/machinery/light{
 	dir = 4
@@ -1727,46 +1418,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
-"aeV" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump3d";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/turf/simulated/floor,
-/area/tradeport/pads)
-"aeW" = (
-/obj/structure/window/reinforced,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade";
-	name = "Shop Shutters";
-	opacity = 0
-	},
-/obj/structure/table/marble,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/obj/item/deskbell{
-	pixel_x = -7;
-	pixel_y = -2
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aeX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -1831,25 +1482,6 @@
 /obj/effect/floor_decal/spline/fancy/wood/three_quarters,
 /turf/simulated/floor/carpet/patterened/red,
 /area/sector/nebula_tradeport/motel/vip)
-"afh" = (
-/obj/item/clothing/gloves/black,
-/obj/item/clothing/gloves/blue,
-/obj/item/clothing/gloves/brown,
-/obj/item/clothing/gloves/captain,
-/obj/item/clothing/gloves/combat,
-/obj/item/clothing/gloves/green,
-/obj/item/clothing/gloves/grey,
-/obj/item/clothing/gloves/light_brown,
-/obj/item/clothing/gloves/purple,
-/obj/item/clothing/gloves/rainbow,
-/obj/item/clothing/gloves/swat,
-/obj/item/clothing/gloves/white,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/closet,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "afi" = (
 /obj/structure/fence/door/locked,
 /turf/simulated/mineral/floor/vacuum,
@@ -1906,17 +1538,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"afo" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 6
-	},
-/mob/living/bot/farmbot{
-	desc = "Stupid bot. You make me look bad.";
-	name = "Eustace";
-	on = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "afp" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -1961,13 +1582,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
-"afw" = (
-/obj/machinery/vending/snack{
-	name = "hacked Getmore Chocolate Corp";
-	prices = list()
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "afy" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -2039,14 +1653,6 @@
 /obj/structure/flora/grass/brown,
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
-"afJ" = (
-/obj/machinery/vending/assist{
-	contraband = null;
-	name = "Old Vending Machine";
-	products = list(/obj/item/assembly/prox_sensor = 5, /obj/item/assembly/signaler = 4, /obj/item/assembly/infra = 4, /obj/item/assembly/prox_sensor = 4, /obj/item/handcuffs = 8, /obj/item/flash = 4, /obj/item/cartridge/signal = 4, /obj/item/clothing/glasses/sunglasses = 4)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "afK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/biogenerator,
@@ -2063,12 +1669,6 @@
 /obj/landmark/spawnpoint/latejoin/outsider,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
-"afS" = (
-/obj/machinery/atmospherics/pipe/tank/phoron,
-/obj/structure/window/reinforced/tinted,
-/obj/effect/floor_decal/industrial/outline/red,
-/turf/simulated/floor/plating,
-/area/shuttle/trade_ship/general)
 "afU" = (
 /obj/machinery/light{
 	dir = 1
@@ -2076,28 +1676,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
-"afV" = (
-/obj/machinery/door/window/westleft{
-	name = "Storefront";
-	req_access = list(160)
-	},
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade";
-	name = "Shop Shutters";
-	opacity = 0
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "afW" = (
 /obj/machinery/door/window/westleft{
 	dir = 2
@@ -2131,15 +1709,6 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
-"agb" = (
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 8018;
-	id_tag = "trade_space_lock";
-	pixel_x = -25
-	},
-/obj/effect/shuttle_landmark/trade/hangar,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "agc" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -2160,22 +1729,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport/commons)
-"age" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
-	},
-/obj/structure/bed/chair/backed_red{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"agf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "agh" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tradeport/pads;
@@ -2186,38 +1739,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"agi" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/handrail{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor/white,
-/area/shuttle/trade_ship/cockpit)
-"agj" = (
-/obj/machinery/door/airlock/glass/medical{
-	name = "Medical Bay";
-	req_access = list(160);
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "agl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -2247,13 +1768,6 @@
 /obj/effect/floor_decal/sign/dock/one,
 /turf/simulated/wall/r_wall,
 /area/tradeport/commons)
-"agr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ags" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/paper_bin{
@@ -2575,12 +2089,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport/commons)
-"ahg" = (
-/obj/machinery/door/airlock/silver{
-	name = "Restroom"
-	},
-/turf/simulated/shuttle/floor/white,
-/area/shuttle/trade_ship/cockpit)
 "ahh" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -2599,21 +2107,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"ahl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/table/rack/shelf/steel,
-/obj/item/card/emag{
-	desc = "It's a card with a magnetic strip attached to some circuitry. Looks really flimsy, like it'll fall apart at any moment.";
-	name = "discount cryptographic sequencer";
-	uses = 1
-	},
-/obj/structure/poster{
-	pixel_x = 32
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ahm" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -2633,31 +2126,6 @@
 /obj/structure/cable/yellow,
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
-"ahs" = (
-/obj/structure/closet/secure_closet/guncabinet{
-	anchored = 1;
-	req_access = list(160);
-	req_one_access = null
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aht" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump4a";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
-"ahu" = (
-/obj/structure/undies_wardrobe,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "ahv" = (
 /obj/item/storage/toolbox/mechanical,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -2709,19 +2177,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/shuttle/udang/main)
-"ahB" = (
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
-"ahC" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump1b";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "ahD" = (
 /obj/structure/cryofeed{
 	dir = 4
@@ -2793,24 +2248,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/plating,
 /area/sector/nebula_tradeport/engineering)
-"ahN" = (
-/obj/structure/closet/crate/freezer{
-	name = "exotic meats freezer"
-	},
-/obj/random/meat/no_sapient,
-/obj/random/meat/no_sapient,
-/obj/random/meat/no_sapient,
-/obj/random/meat/no_sapient,
-/obj/random/meat/no_sapient,
-/obj/random/meat/no_sapient,
-/obj/structure/window/reinforced,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/item/reagent_containers/food/snacks/meat/worm,
-/obj/item/reagent_containers/food/snacks/bearmeat,
-/obj/item/reagent_containers/food/snacks/bearmeat,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ahO" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
@@ -2913,19 +2350,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/tradeport/commons)
-"aic" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aid" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2975,15 +2399,6 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/shuttle/tug)
-"aim" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ain" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3102,41 +2517,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
-"aiE" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade-ship-secure";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "trade-ship-secure";
-	name = "Cargo Bay Shutters";
-	pixel_x = -7;
-	pixel_y = 24;
-	req_access = list(160)
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "trade";
-	name = "Shop Shutters";
-	pixel_x = 6;
-	pixel_y = 24;
-	req_access = list(160)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aiG" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -3183,12 +2563,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/comroom)
-"aiK" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aiL" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/hydro,
@@ -3198,17 +2572,6 @@
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
-"aiN" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	icon_state = "shutter0";
-	id = "tradebridgeshutters";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
 "aiO" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/woodentable,
@@ -3231,16 +2594,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/commons)
-"aiR" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aiS" = (
 /obj/machinery/door/blast/regular{
 	id = "tugdoor3"
@@ -3356,12 +2709,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/safari)
-"ajh" = (
-/obj/item/radio/intercom/trader{
-	pixel_y = -25
-	},
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aji" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -3401,25 +2748,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
-"ajo" = (
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/cockpit)
 "ajr" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/nebula_tradeport/comroom)
-"ajs" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 8;
-	name = "air to distro"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ajt" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/wall/r_wall,
@@ -3494,34 +2828,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
-"ajC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "ajD" = (
 /obj/machinery/door/blast/regular,
 /turf/simulated/floor/plating,
 /area/tradeport/pads)
-"ajE" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/button/remote/blast_door{
-	id = "tradebridgeshutters";
-	name = "remote shutter control";
-	pixel_x = 30;
-	req_access = list(160)
-	},
-/obj/structure/flora/pottedplant{
-	icon_state = "plant-09";
-	name = "Esteban";
-	pixel_y = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "ajF" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -3565,19 +2875,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/tradeport/spine)
-"ajJ" = (
-/obj/structure/filingcabinet/tall,
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
-"ajK" = (
-/obj/machinery/vending/glukoz{
-	prices = list()
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ajL" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light{
@@ -3601,12 +2898,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/simulated/floor/carpet/blucarpet,
 /area/tradeport/cafeteria)
-"ajR" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "ajS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3661,16 +2952,6 @@
 /obj/item/gun/projectile/energy/netgun,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
-"ajX" = (
-/obj/machinery/suit_storage_unit/syndicate,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ajY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3745,13 +3026,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"akl" = (
-/obj/structure/bed/chair/office/dark,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "akm" = (
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 4
@@ -3779,12 +3053,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"akq" = (
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "akr" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/flash,
@@ -3989,15 +3257,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
-"akV" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
 "akX" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -4053,11 +3312,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
-"alf" = (
-/obj/structure/table/standard,
-/obj/machinery/microwave,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "alg" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -4088,13 +3342,6 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
-"all" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/structure/largecrate/animal/corgi,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "alm" = (
 /obj/structure/railing{
 	dir = 4
@@ -4103,17 +3350,6 @@
 /obj/structure/lightpost,
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
-"alo" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "alq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4171,14 +3407,6 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"alz" = (
-/obj/structure/closet/crate,
-/obj/item/bedsheet/cosmos,
-/obj/item/bedsheet/cosmos,
-/obj/item/bee_pack,
-/obj/item/bikehorn,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "alA" = (
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
@@ -4236,17 +3464,6 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
-"alH" = (
-/obj/machinery/vending/medical{
-	density = 0;
-	pixel_y = -32;
-	req_access = null
-	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "alJ" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - External Access"
@@ -4286,13 +3503,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/red,
 /area/sector/nebula_tradeport/motel/vip)
-"alN" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "alO" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -4338,35 +3548,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"alX" = (
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "alY" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
-"alZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/item/storage/secure/briefcase,
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
-"amb" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
-	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "amc" = (
 /obj/structure/bed/chair/bay/chair/padded/teal,
 /turf/simulated/floor/glass/reinforced,
@@ -4416,15 +3602,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
-"amj" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump5b";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "amk" = (
 /obj/effect/floor_decal/corner_oldtile/blue{
 	dir = 9
@@ -4461,27 +3638,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/nebula_tradeport/dock2)
-"amp" = (
-/obj/structure/table/marble,
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade";
-	name = "Shop Shutters";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/obj/machinery/cash_register/trader{
-	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Then have customer swipe their card. ";
-	dir = 4;
-	name = "Trader Register"
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "amq" = (
 /obj/effect/floor_decal/corner/grey/border,
 /obj/structure/cable/yellow{
@@ -4493,16 +3649,6 @@
 /obj/structure/flora/pumpkin/carved/scream,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
-"ams" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "amt" = (
 /obj/structure/closet/walllocker_double/east,
 /obj/machinery/light{
@@ -4566,17 +3712,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/commhall)
-"amD" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/random/paintkit,
-/obj/random/paintkit,
-/obj/random/paintkit,
-/obj/random/paintkit,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "amE" = (
 /obj/machinery/door/firedoor,
 /obj/structure/catwalk,
@@ -4595,33 +3730,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
-"amI" = (
-/obj/machinery/vending/sovietsoda{
-	contraband = list(/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 20);
-	desc = "An old sweet water vending machine. It looks like someone crossed out the D and replaced it with an F.";
-	name = "BOFA";
-	products = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 20)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "amJ" = (
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
-"amK" = (
-/obj/structure/table/woodentable,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/machinery/photocopier/faxmachine{
-	department = "Beruang Trade Shuttle"
-	},
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = 22;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "amL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
@@ -4717,10 +3828,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 27;
-	id_tag = "tradeport_utilitymicro_dock"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -4740,28 +3847,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
-"anc" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump1a";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "ane" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/caravan)
-"anf" = (
-/obj/machinery/atm{
-	pixel_x = -32
-	},
-/obj/effect/floor_decal/industrial/warning/corner,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "anh" = (
 /obj/machinery/vending/loadout/costume,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -4795,18 +3883,6 @@
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
-"anm" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "tradestarshutters";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
 "ann" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -4842,25 +3918,10 @@
 /obj/structure/curtain/open/black,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
-"ant" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "anv" = (
-/obj/map_helper/paint/purple,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
-"anw" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
+/obj/shuttle_dock_corner/bottom_right,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/dock)
 "anx" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/machinery/atmospherics/portables_connector,
@@ -4883,11 +3944,6 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled,
 /area/tradeport/spine)
-"anC" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/structure/largecrate/vehicle/bike,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "anD" = (
 /obj/structure/table/standard,
 /obj/item/soap/deluxe,
@@ -5053,10 +4109,6 @@
 "aoc" = (
 /turf/simulated/wall/r_wall/prepainted/security,
 /area/sector/nebula_tradeport/security)
-"aod" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aoe" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/button/remote/blast_door{
@@ -5133,17 +4185,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"aol" = (
-/obj/machinery/atmospherics/pipe/simple/visible,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/glass_external{
-	name = "Ship Hatch"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aom" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/pizzabox/meat{
@@ -5183,15 +4224,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/cafeteria)
-"aot" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump2b";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "aou" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8;
@@ -5201,28 +4233,6 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"aov" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
-"aow" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
-"aox" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Ship Hatch"
-	},
-/obj/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aoy" = (
 /obj/structure/table/glass,
 /obj/item/radio/intercom/trader{
@@ -5305,20 +4315,6 @@
 "aoJ" = (
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
-"aoK" = (
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/shoes/magboots,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/table/rack/steel,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/northleft,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aoN" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -5339,54 +4335,16 @@
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/spine)
-"aoR" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aoS" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
-	},
-/obj/structure/dogbed{
-	name = "pet bed"
-	},
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aoT" = (
 /obj/machinery/vending/loadout/clothing,
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
-"aoV" = (
-/obj/structure/toilet,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/handrail{
-	dir = 4
-	},
-/obj/structure/handrail{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/white,
-/area/shuttle/trade_ship/cockpit)
 "aoW" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/cafeteria)
-"aoX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aoZ" = (
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/wmarble,
@@ -5557,26 +4515,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/nebula_tradeport/dock2)
-"apC" = (
-/obj/machinery/optable,
-/obj/machinery/oxygen_pump/anesthetic{
-	pixel_x = 30
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "apD" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport/cafeteria)
-"apE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "apF" = (
 /obj/structure/catwalk,
 /obj/structure/cable/yellow{
@@ -5664,8 +4608,6 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/dock)
 "apU" = (
-/obj/overmap/entity/visitable/ship/landable/trade/tug,
-/obj/effect/shuttle_landmark/triumph/trade/tug,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tug)
 "apV" = (
@@ -5697,26 +4639,12 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/tradeport/cafeteria)
-"apZ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aqa" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"aqb" = (
-/obj/structure/bed/chair/comfy/black,
-/obj/machinery/newscaster{
-	pixel_x = 32
-	},
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aqc" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
@@ -5745,19 +4673,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
-"aqi" = (
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/glass_external{
-	name = "Ship Hatch"
-	},
-/obj/machinery/access_button/airlock_interior{
-	frequency = 1380;
-	master_tag = "tradeport_hangar_docker";
-	pixel_x = -25;
-	pixel_y = 5
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aqj" = (
 /obj/structure/sign/warning/docking_area,
 /turf/simulated/wall/r_wall,
@@ -5836,12 +4751,6 @@
 	},
 /turf/simulated/floor/glass/reinforced,
 /area/sector/nebula_tradeport/engineering)
-"aqt" = (
-/obj/structure/handrail{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aqu" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -5874,19 +4783,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
-"aqx" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump3b";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "aqy" = (
 /obj/machinery/door/firedoor{
 	dir = 8;
@@ -6021,11 +4917,6 @@
 /area/shuttle/adventurer)
 "aqT" = (
 /obj/structure/handrail,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "tradeport_udang_docker";
-	pixel_x = 25
-	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
 /obj/machinery/light{
 	dir = 1
@@ -6080,12 +4971,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/carpet/patterened/red,
 /area/sector/nebula_tradeport/motel/vip)
-"aqZ" = (
-/obj/structure/bed/chair/bay/comfy/captain{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/cockpit)
 "ara" = (
 /obj/structure/closet/crate/bin,
 /turf/simulated/floor/reinforced,
@@ -6128,13 +5013,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"ari" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "arj" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/dark,
@@ -6152,21 +5030,9 @@
 /turf/simulated/floor/airless,
 /area/space)
 "arl" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external{
-	name = "Ship Hatch"
-	},
-/obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
-	master_tag = "tradeport_hangar_docker";
-	pixel_x = 25;
-	pixel_y = -5
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/obj/shuttle_dock/preset/map_specific/nebula_tradeport/beruang,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/dock)
 "arm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/neutral,
@@ -6259,34 +5125,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 10
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 27;
-	id_tag = "tradeport_caravan_dock"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"arw" = (
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 8;
-	start_pressure = 740.5
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"ary" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = -24
-	},
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 8;
-	start_pressure = 740.5
-	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "arz" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -6407,12 +5250,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
-"arR" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "arT" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -6697,13 +5534,6 @@
 /turf/simulated/floor/carpet/patterened/red,
 /area/sector/nebula_tradeport/motel/vip)
 "asH" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "tradeport_udang_dock";
-	pixel_x = -26;
-	pixel_y = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -6741,12 +5571,6 @@
 	},
 /turf/simulated/floor,
 /area/tradeport/commons)
-"asN" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "asO" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/flashlight/lamp,
@@ -6764,16 +5588,6 @@
 	},
 /turf/simulated/wall/prepainted/cargo,
 /area/shuttle/caravan)
-"asR" = (
-/obj/machinery/suit_storage_unit/syndicate,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "asS" = (
 /obj/machinery/light{
 	dir = 1
@@ -6947,18 +5761,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/nebula_tradeport/comroom)
-"att" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "atu" = (
 /turf/simulated/wall,
 /area/tradeport/commons)
@@ -7078,18 +5880,6 @@
 	},
 /turf/simulated/floor/wmarble,
 /area/sector/nebula_tradeport/motel/vip)
-"atH" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "atI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -7222,13 +6012,6 @@
 "atW" = (
 /turf/simulated/wall,
 /area/tradeport/cafeteria)
-"atY" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "atZ" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -7257,7 +6040,6 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/floor_decal/rust,
-/obj/effect/shuttle_landmark/triumph/trade/udang,
 /obj/overmap/entity/visitable/ship/landable/trade/udang,
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
@@ -7288,12 +6070,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/cafeteria)
-"aui" = (
-/obj/machinery/bodyscanner{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "auj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -7369,15 +6145,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
-"aux" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "auy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -7396,17 +6163,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
-"auA" = (
-/obj/structure/closet{
-	icon_closed = "cabinet_closed";
-	icon_opened = "cabinet_open";
-	icon_state = "cabinet_closed"
-	},
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/obj/item/spacecash/c1000,
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "auB" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/purple,
 /obj/structure/catwalk,
@@ -7418,11 +6174,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/adventurer)
-"auD" = (
-/obj/structure/window/reinforced/tinted/frosted,
-/obj/machinery/recharge_station,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "auE" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
@@ -7513,19 +6264,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
-"auP" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/suit_storage_unit/syndicate,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "auQ" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -7546,16 +6284,9 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "auS" = (
-/obj/structure/closet/crate/secure/engineering{
-	req_access = list(160)
-	},
-/obj/random/tool/power,
-/obj/random/tool/power,
-/obj/random/tool/power,
-/obj/item/cell/regen/fractal/weapon,
-/obj/random/tool/alien,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
+/obj/shuttle_dock_corner/bottom_left,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/dock)
 "auT" = (
 /obj/structure/catwalk,
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
@@ -7605,11 +6336,6 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
-"avb" = (
-/obj/machinery/light,
-/obj/structure/closet/wardrobe/pjs,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "avc" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
@@ -7622,22 +6348,6 @@
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/commons)
-"ave" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump3c";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/turf/simulated/floor,
-/area/tradeport/pads)
 "avg" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/door/blast/shutters{
@@ -7678,18 +6388,6 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
-"avk" = (
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access = list(160);
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "avl" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -7833,14 +6531,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/atmospherics)
-"avz" = (
-/obj/machinery/vending/cigarette{
-	name = "Cigarette machine";
-	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "avB" = (
 /obj/structure/railing/grey,
 /obj/structure/handrail{
@@ -7886,15 +6576,6 @@
 /obj/item/gun/projectile/energy/gun/fluff/dominator,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
-"avG" = (
-/obj/structure/closet{
-	name = "custodial"
-	},
-/obj/item/reagent_containers/spray/cleaner,
-/obj/item/reagent_containers/glass/bucket,
-/obj/item/mop,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "avH" = (
 /obj/machinery/vending/blood,
 /obj/effect/floor_decal/corner/blue/border,
@@ -7964,10 +6645,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 4
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 27;
-	id_tag = "tradeport_adventurer_dock"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -8026,19 +6703,6 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
-"awb" = (
-/obj/item/storage/fancy/cigar/taj/premium,
-/obj/item/storage/fancy/cigar/havana,
-/obj/item/storage/fancy/cigar/havana,
-/obj/structure/closet/crate/secure{
-	name = "cigars crate";
-	req_access = list(160)
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "awc" = (
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/tradeport/spine)
@@ -8059,38 +6723,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/commons)
-"awg" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
-"awh" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "trade";
-	name = "Shop Shutters";
-	pixel_x = -4;
-	pixel_y = -1;
-	req_access = list(160)
-	},
-/obj/item/radio/intercom/trader{
-	dir = 1;
-	pixel_y = 25
-	},
-/obj/machinery/button/holosign{
-	id = "tradersign";
-	pixel_x = 6
-	},
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "awi" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -8237,7 +6869,6 @@
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
 "awy" = (
-/obj/effect/shuttle_landmark/triumph/trade/adventurer,
 /obj/overmap/entity/visitable/ship/landable/trade/adventurer,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
@@ -8277,56 +6908,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"awD" = (
-/obj/structure/closet/crate/secure{
-	name = "materials crate";
-	req_access = list(160)
-	},
-/obj/item/stack/material/gold,
-/obj/item/stack/material/gold,
-/obj/item/stack/material/gold,
-/obj/item/stack/material/gold,
-/obj/item/stack/material/gold,
-/obj/item/stack/material/silver,
-/obj/item/stack/material/silver,
-/obj/item/stack/material/silver,
-/obj/item/stack/material/silver,
-/obj/item/stack/material/silver,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/phoron,
-/obj/item/stack/material/uranium,
-/obj/item/stack/material/uranium,
-/obj/item/stack/material/uranium,
-/obj/item/stack/material/uranium,
-/obj/item/stack/material/uranium,
-/obj/item/stack/material/diamond,
-/obj/item/stack/material/diamond,
-/obj/item/stack/material/diamond,
-/obj/item/stack/material/diamond,
-/obj/item/stack/material/diamond,
-/obj/item/stack/material/mhydrogen,
-/obj/item/stack/material/mhydrogen,
-/obj/item/stack/material/mhydrogen,
-/obj/item/stack/material/mhydrogen,
-/obj/item/stack/material/mhydrogen,
-/obj/fiftyspawner/plasteel,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"awE" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "tradeportshutters";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
 "awG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -8356,11 +6937,6 @@
 	gps_tag = "ADVENTURER"
 	},
 /obj/structure/table/steel_reinforced,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = 30;
-	pixel_x = -6;
-	id_tag = "tradeport_adventurer_docker"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
@@ -8371,11 +6947,6 @@
 	req_one_access = null
 	},
 /obj/structure/table/steel_reinforced,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = 30;
-	pixel_x = -6;
-	id_tag = "tradeport_caravan_docker"
-	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/shuttle/caravan)
 "awK" = (
@@ -8443,14 +7014,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
-"awR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "awS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/plating,
@@ -8468,12 +7031,6 @@
 "awV" = (
 /turf/simulated/mineral/vacuum,
 /area/tradeport/exterior)
-"awZ" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "axa" = (
 /obj/structure/transit_tube,
 /obj/effect/floor_decal/industrial/warning{
@@ -8502,17 +7059,6 @@
 /obj/item/tank/phoron,
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
-"axd" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/structure/closet/crate/secure/science{
-	name = "NIF crate";
-	req_access = list(160)
-	},
-/obj/item/nif,
-/obj/item/nifrepairer,
-/obj/item/nifrepairer,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "axe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8599,12 +7145,6 @@
 	pixel_y = -24;
 	pixel_x = 6
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = -27;
-	pixel_x = -4;
-	id_tag = "tradeport_scavenging";
-	frequency = 1380
-	},
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
 "axs" = (
@@ -8637,13 +7177,6 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"axy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "axB" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
@@ -8686,12 +7219,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"axG" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "axH" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -8719,23 +7246,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/tug)
-"axK" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"axL" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 2;
-	icon_state = "shutter0";
-	id = "tradebridgeshutters";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
 "axM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -8805,13 +7315,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"ayb" = (
-/obj/structure/bed/chair,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
 "ayc" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -8834,32 +7337,10 @@
 /obj/machinery/vending/loadout/uniform,
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
-"ayf" = (
-/obj/item/storage/secure/safe{
-	pixel_x = 34;
-	pixel_y = 3
-	},
-/obj/machinery/button/windowtint/multitint{
-	id = "traderportdoor";
-	pixel_x = -8;
-	pixel_y = 23
-	},
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "ayg" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
-"ayh" = (
-/obj/machinery/door/window/northright{
-	name = "Cargo Hold";
-	req_access = list(160)
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ayi" = (
 /obj/machinery/computer/security/telescreen,
 /turf/simulated/wall/r_wall,
@@ -8963,12 +7444,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"ayv" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "ayw" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 1
@@ -9030,12 +7505,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/tradeport/commons)
-"ayH" = (
-/obj/structure/mirror{
-	pixel_y = 28
-	},
-/turf/simulated/shuttle/floor/white,
-/area/shuttle/trade_ship/cockpit)
 "ayI" = (
 /obj/item/stool/padded,
 /obj/item/toy/plushie/squid/blue,
@@ -9097,20 +7566,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/nebula_tradeport/dock2)
-"ayQ" = (
-/obj/machinery/button/remote/blast_door{
-	id = "tradestarshutters";
-	name = "remote shutter control";
-	pixel_x = 30;
-	req_access = list(160)
-	},
-/obj/machinery/button/windowtint/multitint{
-	id = "traderstardoor";
-	pixel_x = -8;
-	pixel_y = -23
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "ayR" = (
 /obj/structure/railing/grey,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -9232,12 +7687,6 @@
 /obj/item/instrument/eguitar,
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
-"aze" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "azf" = (
 /obj/machinery/camera{
 	dir = 4
@@ -9427,33 +7876,12 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
-"azE" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade-ship-secure";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "azF" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/tradeport/spine)
-"azG" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "azH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -9517,32 +7945,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
-"azP" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "tradeport_hangar_docker";
-	pixel_x = 25
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "tradeport_hangar_docker_pump"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"azQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "azT" = (
 /obj/spawner/window/borosillicate/full/firelocks,
 /turf/simulated/floor/reinforced,
@@ -9572,10 +7974,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/comroom)
-"azY" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "azZ" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor/monogrid,
@@ -9613,12 +8011,6 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump4d";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "aAf" = (
@@ -9770,23 +8162,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
-"aAw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
-"aAx" = (
-/obj/structure/poster{
-	pixel_y = 32
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aAy" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -9804,11 +8179,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/comroom)
-"aAB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "aAC" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/recharge_station,
@@ -10050,59 +8420,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 27;
-	id_tag = "tradeport_runabout_dock"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"aBl" = (
-/obj/item/storage/firstaid/regular{
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/item/bodybag/cryobag{
-	pixel_x = 5
-	},
-/obj/item/bodybag/cryobag{
-	pixel_x = 5
-	},
-/obj/item/storage/firstaid/o2{
-	layer = 2.8;
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/storage/box/masks,
-/obj/item/storage/box/gloves{
-	pixel_x = 3;
-	pixel_y = 4
-	},
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/fire{
-	layer = 2.9;
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = -2
-	},
-/obj/item/reagent_containers/blood/empty,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/item/reagent_containers/blood/OMinus,
-/obj/structure/closet/medical_wall{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aBm" = (
 /turf/simulated/wall/prepainted,
 /area/shuttle/utilitymicro)
@@ -10168,11 +8490,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
-"aBu" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/integrated_circuit_printer/upgraded,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aBv" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tradeport/pads;
@@ -10199,16 +8516,6 @@
 /obj/structure/lightpost,
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
-"aBy" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
-"aBA" = (
-/obj/structure/table/standard,
-/obj/item/storage/box/donkpockets,
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
 "aBB" = (
 /obj/machinery/light{
 	dir = 8
@@ -10239,17 +8546,6 @@
 "aBF" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/comroom/holo2)
-"aBG" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 1;
-	pixel_y = -22;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aBH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -10263,25 +8559,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
-"aBK" = (
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
-"aBL" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "aBM" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
@@ -10310,24 +8587,11 @@
 	},
 /turf/simulated/wall/wood,
 /area/shuttle/caravan)
-"aBP" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/recharger,
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aBQ" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/cafeteria)
-"aBR" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/structure/largecrate/animal/cat,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aBS" = (
 /obj/spawner/window/low_wall/nogrille/firelocks,
 /turf/simulated/floor/plating,
@@ -10416,20 +8680,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
-"aCd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aCe" = (
-/obj/structure/shuttle_fuel_port{
-	dir = 4;
-	pixel_x = 29
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aCg" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -10452,10 +8702,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/cyndishow)
-"aCh" = (
-/obj/structure/dispenser/oxygen,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aCi" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "spine_outbound";
@@ -10527,15 +8773,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/sector/nebula_tradeport/engineering)
-"aCt" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aCu" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
@@ -10730,9 +8967,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
-"aCW" = (
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aCX" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/corner/grey/border{
@@ -10789,20 +9023,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
-"aDe" = (
-/obj/machinery/light,
-/obj/structure/table/standard,
-/obj/item/soap,
-/obj/item/towel{
-	color = "#0000FF"
-	},
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 1;
-	pixel_y = -22;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "aDf" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -10817,14 +9037,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
-"aDg" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aDi" = (
 /obj/vehicle_old/train/engine,
 /obj/machinery/light,
@@ -10931,16 +9143,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/adventurer)
-"aDA" = (
-/obj/machinery/door/airlock/silver{
-	name = "Sleeping"
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aDB" = (
 /obj/structure/cult/pylon,
 /turf/simulated/floor/outdoors/beach/sand/desert,
@@ -10976,14 +9178,6 @@
 /obj/structure/cult/pylon,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
-"aDG" = (
-/obj/structure/bed/padded,
-/obj/item/bedsheet/hos,
-/obj/structure/poster{
-	pixel_y = -32
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aDL" = (
 /obj/machinery/smartfridge,
 /turf/simulated/floor/grass,
@@ -11044,12 +9238,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
-"aEa" = (
-/obj/machinery/vending/boozeomat{
-	req_access = null
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aEb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11067,15 +9255,6 @@
 "aEd" = (
 /turf/simulated/floor/reinforced,
 /area/sector/nebula_tradeport/dock2)
-"aEe" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 10
-	},
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
 "aEf" = (
 /obj/machinery/light{
 	dir = 4
@@ -11164,14 +9343,6 @@
 	},
 /turf/simulated/floor/wmarble,
 /area/sector/nebula_tradeport/motel/vip)
-"aEq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/airlock/glass_external{
-	name = "Ship Hatch"
-	},
-/obj/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aEr" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -11283,18 +9454,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
-"aEI" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/sign/kiddieplaque{
-	desc = "A plaque commemorating the construction of the cargo ship Beruang.";
-	name = "Beruang";
-	pixel_x = 32
-	},
-/obj/machinery/holopad/ship/starts_inactive,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/cockpit)
 "aEJ" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -11328,13 +9487,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
-"aEM" = (
-/obj/structure/handrail{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aEN" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -11349,17 +9501,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"aEP" = (
-/obj/machinery/computer/ship/helm{
-	dir = 4
-	},
-/obj/item/gps/internal/base{
-	desc = "A tracking beacon embedded in the shuttle systems, to help customers find where the best deals are.";
-	gps_tag = "BERU";
-	name = "trade transport beacon"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "aEQ" = (
 /obj/structure/table/marble,
 /obj/item/storage/box/glasses/meta,
@@ -11447,11 +9588,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "trade_solars";
-	pixel_y = 26
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -11467,14 +9603,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
-"aFd" = (
-/obj/structure/bed/padded,
-/obj/item/bedsheet/rd,
-/obj/machinery/newscaster{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aFe" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -11536,10 +9664,6 @@
 /obj/effect/floor_decal/corner/green/border,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
-"aFl" = (
-/obj/machinery/computer/arcade/battle,
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aFm" = (
 /obj/machinery/gibber,
 /turf/simulated/floor/tiled/freezer,
@@ -11551,15 +9675,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
-"aFo" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "plant-22"
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 5
-	},
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
 "aFp" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -11577,16 +9692,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"aFr" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/cell/basic/tier_4/large,
-/obj/item/cell/basic/tier_4/medium,
-/obj/item/cell/basic/tier_4/medium,
-/obj/item/storage/toolbox/syndicate{
-	pixel_y = 11
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aFs" = (
 /turf/simulated/wall/sandstonediamond,
 /area/tradeport/cyndishow)
@@ -11609,24 +9714,9 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
-"aFv" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aFw" = (
 /turf/simulated/wall/wood/hardwood,
 /area/sector/nebula_tradeport/motel)
-"aFy" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aFz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11634,15 +9724,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
-"aFA" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump6b";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "aFB" = (
 /obj/structure/railing/grey,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -11672,16 +9753,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
-"aFD" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/atmospherics/pipe/tank/phoron{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/trade_ship/general)
 "aFF" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light,
@@ -11700,23 +9771,6 @@
 /obj/machinery/vending/voidsuit,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/tradeport/spine)
-"aFM" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	frequency = 8018;
-	id_tag = "trade_space_lock_pump"
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 8018;
-	id_tag = "trade_space_lock";
-	pixel_x = 25
-	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aFN" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -11730,15 +9784,6 @@
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
-"aFO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aFQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11752,16 +9797,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
-"aFR" = (
-/obj/item/clothing/under/syndicate,
-/obj/item/clothing/under/syndicate,
-/obj/item/clothing/under/syndicate/skirt_pleated,
-/obj/item/clothing/under/syndicate/skirt_pleated,
-/obj/item/clothing/shoes/boots/combat,
-/obj/item/clothing/shoes/boots/combat,
-/obj/structure/closet,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aFS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -11812,9 +9847,6 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/tradeport/safarizoo)
-"aGb" = (
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "aGc" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor{
@@ -11824,21 +9856,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
-"aGd" = (
-/obj/structure/poster{
-	pixel_y = -32
-	},
-/obj/structure/table/standard,
-/obj/item/duct_tape_roll{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/duct_tape_roll{
-	pixel_x = -2;
-	pixel_y = -1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "aGf" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -11944,10 +9961,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
-"aGv" = (
-/obj/machinery/atmospherics/pipe/tank/air,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aGw" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -12080,10 +10093,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor,
 /area/tradeport/pads)
-"aGT" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aGU" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/button/remote/blast_door{
@@ -12115,13 +10124,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
-"aGW" = (
-/obj/machinery/holosign/bar{
-	id = "tradersign"
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
 "aGX" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -12181,15 +10183,6 @@
 	},
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
-"aHf" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
-	},
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
 "aHg" = (
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -12221,12 +10214,6 @@
 /obj/structure/bed/chair/sofa/beige/left,
 /turf/simulated/floor/carpet/patterened/brown,
 /area/shuttle/udang/main)
-"aHn" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aHp" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -12365,17 +10352,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/cafeteria)
-"aHJ" = (
-/obj/machinery/computer/ship/sensors,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
-"aHK" = (
-/obj/machinery/photocopier,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 5
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "aHM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -12408,21 +10384,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
-"aHQ" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/backpack/rig{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/storage/backpack/rig{
-	pixel_x = -7
-	},
-/obj/item/universal_translator/ear/adaptive{
-	pixel_x = 11;
-	pixel_y = -3
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aHR" = (
 /obj/structure/railing/grey,
 /obj/structure/bed/chair/shuttle{
@@ -12434,17 +10395,6 @@
 "aHS" = (
 /turf/simulated/floor/carpet/blucarpet,
 /area/tradeport/cafeteria)
-"aHT" = (
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/working/ripley/mining,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aHU" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aHV" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -12457,19 +10407,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
-"aHX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "aHY" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -12510,39 +10447,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
-"aIf" = (
-/obj/item/clothing/head/bearpelt,
-/obj/item/clothing/head/bowler,
-/obj/item/clothing/head/caphat/cap,
-/obj/item/clothing/head/beaverhat,
-/obj/item/clothing/head/beret/centcom,
-/obj/item/clothing/head/beret/sec,
-/obj/item/clothing/head/collectable/kitty,
-/obj/item/clothing/head/collectable/kitty,
-/obj/item/clothing/head/collectable/kitty,
-/obj/item/clothing/head/collectable/rabbitears,
-/obj/item/clothing/head/collectable/rabbitears,
-/obj/item/clothing/head/collectable/rabbitears,
-/obj/item/clothing/head/collectable/petehat,
-/obj/item/clothing/head/collectable/pirate,
-/obj/item/clothing/head/collectable/wizard,
-/obj/item/clothing/head/collectable/xenom,
-/obj/item/clothing/head/cowboy_hat,
-/obj/item/clothing/head/pin/flower/violet,
-/obj/item/clothing/head/pin/flower/blue,
-/obj/item/clothing/head/pin/flower/orange,
-/obj/item/clothing/head/pin/flower/pink,
-/obj/item/clothing/head/justice,
-/obj/item/clothing/head/justice/blue,
-/obj/item/clothing/head/justice/green,
-/obj/item/clothing/head/justice/pink,
-/obj/item/clothing/head/justice/yellow,
-/obj/item/clothing/head/philosopher_wig,
-/obj/item/clothing/head/plaguedoctorhat,
-/obj/item/clothing/head/xenos,
-/obj/structure/closet,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aIh" = (
 /obj/structure/table/steel,
 /obj/machinery/light/small{
@@ -12621,13 +10525,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/atmospherics)
-"aIu" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "aIv" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/ice,
@@ -12654,12 +10551,6 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
-"aIz" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 8
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/trade_ship/general)
 "aIA" = (
 /obj/effect/mist,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -12668,13 +10559,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"aIC" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aID" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -12705,15 +10589,6 @@
 /obj/machinery/camera,
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
-"aII" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/universal{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aIJ" = (
 /obj/structure/closet/crate/secure/weapon{
 	req_access = list(160)
@@ -12739,36 +10614,11 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/nebula_tradeport/motel/vip)
-"aIM" = (
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
-"aIN" = (
-/obj/structure/table/woodentable,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/obj/item/pen{
-	pixel_y = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "aIO" = (
 /obj/structure/window/reinforced,
 /obj/structure/flora/bush,
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
-"aIP" = (
-/obj/machinery/iv_drip,
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aIQ" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/captaindouble,
@@ -12914,12 +10764,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	cycle_to_external_air = null;
-	frequency = 1380;
-	id_tag = "tradeport_hangar_dock";
-	pixel_x = -25
-	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "aJl" = (
@@ -13006,11 +10850,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/silver,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = 30;
-	pixel_x = 4;
-	id_tag = "tradeport_runabout_docker"
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/runabout)
 "aJz" = (
@@ -13102,20 +10941,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/sector/nebula_tradeport/security)
-"aJN" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/warning,
-/obj/item/kit/paint/honker,
-/obj/random/paintkit/durand,
-/obj/random/paintkit/gygax,
-/obj/random/paintkit/gygax,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aJO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aJP" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -13321,20 +11146,6 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/commons)
-"aKs" = (
-/obj/machinery/lathe/autolathe{
-	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	name = "Unlocked Autolathe"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aKt" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -13479,29 +11290,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
-"aKO" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "aKP" = (
 /turf/simulated/floor/water/indoors,
 /area/tradeport/safarizoo)
-"aKQ" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = -24
-	},
-/obj/structure/table/glass,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/obj/item/pen{
-	pixel_y = 4
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aKR" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
@@ -13551,12 +11342,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"aKY" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aKZ" = (
 /obj/machinery/light{
 	dir = 1
@@ -13777,18 +11562,6 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
-"aLG" = (
-/obj/machinery/suit_cycler/syndicate{
-	req_access = list(160)
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aLH" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -13806,20 +11579,10 @@
 /obj/structure/cable/yellow,
 /turf/simulated/floor/wood,
 /area/tradeport/safarizoo)
-"aLJ" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aLK" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/bookcase,
-/obj/item/gun/projectile/ballistic/shotgun/pump/combat,
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
+/obj/shuttle_dock_corner/top_left,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/dock)
 "aLL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -13938,41 +11701,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
-"aMd" = (
-/obj/structure/table/standard,
-/obj/item/clothing/gloves/sterile/latex,
-/obj/item/clothing/mask/surgical,
-/obj/item/surgical/retractor{
-	pixel_y = 6
-	},
-/obj/item/surgical/scalpel,
-/obj/item/surgical/surgicaldrill,
-/obj/item/surgical/circular_saw,
-/obj/item/stack/nanopaste,
-/obj/item/surgical/hemostat{
-	pixel_y = 4
-	},
-/obj/item/surgical/cautery{
-	pixel_y = 4
-	},
-/obj/item/surgical/FixOVein{
-	pixel_x = -6;
-	pixel_y = 1
-	},
-/obj/item/stack/medical/advanced/bruise_pack,
-/obj/item/surgical/bonesetter,
-/obj/item/surgical/bonegel{
-	pixel_x = 4;
-	pixel_y = 3
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aMe" = (
-/obj/item/radio/intercom/trader{
-	pixel_y = -25
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aMf" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/motel/vip)
@@ -13984,10 +11712,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
-"aMh" = (
-/obj/machinery/body_scanconsole,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aMi" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -14057,13 +11781,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
-"aMq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/media/jukebox{
-	state_base = "darkjuke"
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aMs" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/shield_diffuser,
@@ -14150,20 +11867,6 @@
 /obj/landmark/spawnpoint/job/outsider,
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
-"aMK" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/structure/closet/crate/secure{
-	name = "liquors crate";
-	req_access = list(160)
-	},
-/obj/item/reagent_containers/food/drinks/bottle/redeemersbrew,
-/obj/item/reagent_containers/food/drinks/bottle/champagne/jericho,
-/obj/item/reagent_containers/food/drinks/bottle/pwine,
-/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aML" = (
 /obj/structure/table/alien,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -14449,9 +12152,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/caravan)
-"aNC" = (
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aND" = (
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
@@ -14494,22 +12194,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
-"aNJ" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "tradeportshutters";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
-"aNK" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aNL" = (
 /obj/structure/toilet{
 	dir = 8
@@ -14541,20 +12225,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/spine)
 "aNO" = (
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aNP" = (
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "tradebridgeshutters";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/shuttle/plating,
-/area/shuttle/trade_ship/general)
+/obj/shuttle_dock_preload/generated/factions/ftu/beruang,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/dock)
 "aNQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -14564,19 +12237,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
-"aNR" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/structure/closet/crate/freezer/rations,
-/obj/random/mre,
-/obj/random/mre,
-/obj/random/mre,
-/obj/random/mre,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aNT" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/stasis_cage,
@@ -14652,18 +12312,6 @@
 /obj/item/tank/oxygen,
 /turf/simulated/floor/glass/reinforced,
 /area/sector/nebula_tradeport/engineering)
-"aOi" = (
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aOk" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -14723,15 +12371,6 @@
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/utilitymicro)
-"aOw" = (
-/obj/structure/bed/chair/backed_red{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aOx" = (
 /obj/machinery/light{
 	dir = 1
@@ -14865,13 +12504,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
-"aOV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aOX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -14963,20 +12595,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"aPo" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 8;
-	pixel_x = 22;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
 "aPp" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -15034,18 +12652,6 @@
 /obj/structure/bed/chair/comfy,
 /turf/simulated/floor/carpet/blucarpet,
 /area/tradeport/cafeteria)
-"aPv" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 1;
-	pixel_y = -22;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aPx" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -15063,16 +12669,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
-"aPz" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/item/storage/toolbox/mechanical,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aPB" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/light/small{
@@ -15080,13 +12676,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
-"aPD" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/structure/largecrate/animal/cow,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aPF" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/flora/pottedplant/flower{
@@ -15179,23 +12768,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"aPS" = (
-/obj/structure/table/steel_reinforced,
-/obj/random/plushie,
-/obj/random/plushie,
-/obj/random/plushie,
-/obj/random/plushie,
-/obj/random/plushie,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aPT" = (
-/obj/structure/table/woodentable,
-/obj/item/clipboard,
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "aPU" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -15208,36 +12780,10 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/commons)
-"aPW" = (
-/obj/machinery/access_button{
-	command = "cycle_ext";
-	frequency = 8018;
-	master_tag = "trade_space_lock";
-	pixel_x = 25;
-	pixel_y = 5
-	},
-/obj/machinery/door/airlock/glass_external{
-	name = "Ship Hatch"
-	},
-/obj/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aPX" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"aPZ" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump5a";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "aQa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -15390,16 +12936,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
-"aQx" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aQz" = (
 /obj/structure/shuttle_fuel_port{
 	pixel_x = -27
@@ -15500,16 +13036,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/commons)
-"aQN" = (
-/obj/machinery/door/window/northleft{
-	name = "Cargo Hold";
-	req_access = list(160)
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aQP" = (
 /obj/machinery/camera,
 /obj/effect/floor_decal/spline/plain{
@@ -15568,18 +13094,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
-"aQU" = (
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/item/clothing/gloves/yellow,
-/obj/item/clothing/gloves/yellow,
-/obj/item/clothing/gloves/yellow,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aQV" = (
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 9
@@ -15599,30 +13113,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
-"aQY" = (
-/obj/machinery/power/port_gen/pacman{
-	anchored = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aQZ" = (
 /obj/effect/floor_decal/corner_oldtile/blue{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/engineering)
-"aRa" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/bluespace_radio/commerce,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "aRd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10
@@ -15643,14 +13139,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/runabout)
-"aRf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aRg" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -15668,10 +13156,6 @@
 "aRl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 27;
-	id_tag = "tradeport_tug_dock"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -15841,11 +13325,6 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = 29;
-	pixel_x = 5;
-	id_tag = "tradeport_arrowhead_dock"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
 "aRJ" = (
@@ -15863,19 +13342,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/brown,
 /area/shuttle/udang/main)
-"aRK" = (
-/obj/machinery/camera{
-	dir = 8
-	},
-/obj/structure/catwalk,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump4b";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
-/turf/simulated/floor,
-/area/tradeport/pads)
 "aRL" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -15971,18 +13437,6 @@
 	},
 /turf/simulated/floor,
 /area/tradeport/pads)
-"aSa" = (
-/obj/structure/noticeboard{
-	pixel_y = 32
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "aSb" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -16145,12 +13599,6 @@
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport/commons)
-"aSC" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aSF" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -16210,18 +13658,6 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/facility)
-"aSR" = (
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/smes/buildable{
-	capacity = 1.5e+007;
-	charge = 1.5e+007;
-	cur_coils = 3;
-	input_attempt = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aST" = (
 /obj/structure/transit_tube,
 /obj/effect/floor_decal/industrial/warning{
@@ -16238,21 +13674,7 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/sector/nebula_tradeport/security)
-"aSV" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump3a";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "aSW" = (
-/obj/effect/shuttle_landmark/triumph/trade/runabout,
 /obj/overmap/entity/visitable/ship/landable/trade/runabout,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -16384,18 +13806,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tradeport/commhall)
-"aTu" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump2a";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "aTv" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/engineering)
@@ -16445,11 +13855,6 @@
 	name = "Tug exit door";
 	pixel_y = 26;
 	pixel_x = -10
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = 30;
-	pixel_x = 4;
-	id_tag = "tradeport_tug_docker"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tug)
@@ -16504,28 +13909,6 @@
 "aTI" = (
 /turf/simulated/wall,
 /area/tradeport/engineering)
-"aTJ" = (
-/obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/accessory/holster/armpit,
-/obj/item/clothing/accessory/holster/armpit,
-/obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/accessory/storage/white_vest,
-/obj/item/clothing/accessory/storage/white_vest,
-/obj/item/clothing/accessory/storage/webbing,
-/obj/item/clothing/accessory/storage/webbing,
-/obj/item/clothing/accessory/storage/black_vest,
-/obj/item/clothing/accessory/storage/black_vest,
-/obj/item/clothing/accessory/storage/brown_vest,
-/obj/item/clothing/accessory/storage/brown_vest,
-/obj/item/clothing/accessory/holster/machete,
-/obj/item/clothing/accessory/holster/leg,
-/obj/structure/closet/crate,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aTK" = (
-/obj/machinery/recharge_station,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aTN" = (
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -16579,17 +13962,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/commhall)
-"aTU" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 5
-	},
-/mob/living/bot/cleanbot/roomba/meido{
-	desc = "A small, plate-like cleaning robot. She looks quite dignified. This one has a frilly headband attached to the top.";
-	name = "Madam Dusty";
-	on = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aTV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -16608,39 +13980,6 @@
 "aTY" = (
 /turf/simulated/wall/r_wall,
 /area/sector/nebula_tradeport/comroom/holo1)
-"aTZ" = (
-/obj/machinery/door/airlock/glass/engineering{
-	name = "Engineering";
-	req_access = list(160);
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"aUa" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump6a";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
-/area/tradeport/pads)
 "aUb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/yellow{
@@ -16750,52 +14089,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
-"aUt" = (
-/obj/structure/curtain/open/shower,
-/obj/machinery/shower{
-	pixel_y = 3
-	},
-/obj/structure/handrail{
-	dir = 1
-	},
-/turf/simulated/shuttle/floor/white,
-/area/shuttle/trade_ship/cockpit)
-"aUu" = (
-/obj/structure/closet/crate/trashcart{
-	desc = "A heavy metal bin full of great deals.";
-	name = "bargain bin"
-	},
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/engineering,
-/obj/random/maintenance/engineering,
-/obj/random/maintenance/engineering,
-/obj/random/maintenance/engineering,
-/obj/random/maintenance/medical,
-/obj/random/maintenance/medical,
-/obj/random/maintenance/medical,
-/obj/random/maintenance/medical,
-/obj/random/maintenance/research,
-/obj/random/maintenance/research,
-/obj/random/maintenance/research,
-/obj/random/maintenance/research,
-/obj/random/maintenance/research,
-/obj/random/maintenance/security,
-/obj/random/maintenance/security,
-/obj/random/soap,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/nofail,
-/obj/random/tech_supply/nofail,
-/obj/random/tech_supply/nofail,
-/obj/random/tech_supply/nofail,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aUv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -16876,25 +14169,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/nebula_tradeport/dock2)
-"aUC" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 9
-	},
-/obj/structure/closet/crate/secure/hydrosec{
-	name = "weedkiller crate";
-	req_access = list(160)
-	},
-/obj/item/grenade/simple/chemical/premade/antiweed,
-/obj/item/grenade/simple/chemical/premade/antiweed,
-/obj/item/grenade/simple/chemical/premade/antiweed,
-/obj/item/grenade/simple/chemical/premade/antiweed,
-/obj/item/grenade/simple/chemical/premade/antiweed,
-/obj/item/grenade/simple/chemical/premade/antiweed,
-/obj/item/material/knife/machete/hatchet,
-/obj/item/material/knife/machete/hatchet,
-/obj/item/material/twohanded/fireaxe/scythe,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aUD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -16932,12 +14206,6 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
-"aUH" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aUJ" = (
 /obj/structure/stasis_cage,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -16988,24 +14256,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport/commons)
-"aUQ" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/blast/shutters{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	id = "trade-ship-secure";
-	name = "Blast Shutters";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor{
-	dir = 8;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aUR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/red,
@@ -17043,9 +14293,6 @@
 /obj/item/pinpointer/nukeop,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
-"aUZ" = (
-/turf/simulated/floor/wood,
-/area/shuttle/trade_ship/general)
 "aVc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -17058,13 +14305,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
-"aVd" = (
-/obj/machinery/shipsensors,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/trade_ship/general)
 "aVe" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
@@ -17330,12 +14570,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/shuttle/udang/main)
-"aVQ" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aVR" = (
 /obj/structure/closet/crate,
 /obj/item/storage/daki{
@@ -17368,15 +14602,6 @@
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/runabout)
-"aVX" = (
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aVY" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -17415,19 +14640,6 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
-"aWe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/door/airlock/multi_tile/glass/polarized{
-	id_tint = "traderstardoor";
-	req_access = list(160)
-	},
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/shuttle/trade_ship/general)
 "aWg" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -17582,16 +14794,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/udang/main)
-"aWF" = (
-/obj/machinery/door/window/southleft{
-	name = "Cargo Hold";
-	req_access = list(160)
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aWG" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/closet/crate,
@@ -17682,32 +14884,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/brown,
 /area/shuttle/udang/main)
-"aWT" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/glass,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/structure/table/rack/steel,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/northright,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/obj/machinery/air_alarm/alarms_hidden{
-	dir = 1;
-	pixel_y = -22;
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aWV" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -17893,20 +15069,6 @@
 /obj/effect/floor_decal/corner/green/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/commhall)
-"aXy" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
-"aXz" = (
-/obj/machinery/light,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 10
-	},
-/turf/simulated/floor/carpet/bcarpet,
-/area/shuttle/trade_ship/general)
 "aXA" = (
 /obj/machinery/door/window/westleft{
 	req_access = list(160)
@@ -17943,13 +15105,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
-"aXE" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aXF" = (
 /obj/machinery/air_alarm/alarms_hidden{
 	dir = 8;
@@ -17998,16 +15153,6 @@
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/cafeteria)
-"aXL" = (
-/obj/machinery/computer/ship/engines{
-	dir = 1
-	},
-/obj/item/radio/intercom/trader{
-	dir = 8;
-	pixel_x = -25
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/cockpit)
 "aXM" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -18016,13 +15161,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
-"aXO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
-/obj/machinery/holopad/ship/starts_inactive,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aXQ" = (
 /obj/structure/closet/crate,
 /obj/item/gunbox/donksoft/shotgun,
@@ -18046,25 +15184,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
-"aXV" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/item/radio/intercom/trader{
-	dir = 4;
-	pixel_x = 25
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 6
-	},
-/turf/simulated/floor/carpet,
-/area/shuttle/trade_ship/general)
-"aXW" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aXX" = (
 /obj/machinery/camera{
 	dir = 4
@@ -18081,24 +15200,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/grass/heavy,
 /area/tradeport/spine)
-"aYb" = (
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/cockpit)
-"aYc" = (
-/obj/structure/closet/crate/secure{
-	name = "slime cores crate";
-	req_access = list(160)
-	},
-/obj/random/slimecore,
-/obj/random/slimecore,
-/obj/random/slimecore,
-/obj/random/slimecore,
-/obj/random/slimecore,
-/obj/random/slimecore,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aYd" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/machinery/door/window/brigdoor/eastright,
@@ -18209,16 +15310,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
-"aYx" = (
-/obj/structure/poster{
-	pixel_x = 32
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/table/rack/shelf/steel,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aYy" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Nebula Gas - Atmospherics";
@@ -18285,13 +15376,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/indoors,
 /area/tradeport/safarizoo)
-"aYK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aYL" = (
 /obj/structure/closet/walllocker_double/south,
 /turf/simulated/floor/carpet/patterened/brown,
@@ -18339,15 +15423,6 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/sector/nebula_tradeport/engineering)
-"aYV" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor{
-	req_one_access = list(160)
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "aYX" = (
 /obj/structure/inflatable/door,
 /obj/machinery/door/firedoor{
@@ -18375,12 +15450,9 @@
 /turf/simulated/floor/airless,
 /area/sector/nebula_tradeport/security)
 "aZa" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
+/obj/shuttle_dock_corner/top_right,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/dock)
 "aZc" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -18412,14 +15484,6 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
-"aZe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "aZf" = (
 /obj/machinery/door/blast/regular{
 	id = "tugdoor1"
@@ -18450,7 +15514,6 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = 32
 	},
-/obj/effect/shuttle_landmark/triumph/trade/caravan,
 /obj/overmap/entity/visitable/ship/landable/trade/caravan,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/caravan)
@@ -18660,12 +15723,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/tradeport/pads)
-"aZP" = (
-/obj/machinery/door/airlock/silver{
-	name = "Toilet"
-	},
-/turf/simulated/shuttle/floor/white,
-/area/shuttle/trade_ship/cockpit)
 "aZQ" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -18696,25 +15753,6 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
-"aZW" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
-/obj/map_helper/paint/wallgunmetal,
-/turf/simulated/wall/rshull,
-/area/shuttle/trade_ship/general)
-"aZX" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
-"aZY" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "baB" = (
 /obj/effect/shuttle_landmark{
 	docking_controller = "trade_docks_3";
@@ -19333,7 +16371,6 @@
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/shuttle_landmark/triumph/trade/scoophead,
 /obj/overmap/entity/visitable/ship/landable/trade/scoophead,
 /turf/simulated/floor/plating,
 /area/shuttle/scoophead/main)
@@ -20155,11 +17192,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/tradeport/commons)
 "dXU" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "tradeport_scoophead_docker";
-	pixel_x = 25
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 1
 	},
@@ -20767,11 +17799,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = -27;
-	pixel_x = 4;
-	id_tag = "tradeport_utilitymicro_docker"
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/utilitymicro)
 "fir" = (
@@ -21300,15 +18327,6 @@
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/arrowhead)
-"gGo" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "tradeport_hangar_docker";
-	pixel_x = -25
-	},
-/obj/overmap/entity/visitable/ship/landable/trade,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
 "gLI" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -21776,11 +18794,6 @@
 	pixel_x = 27;
 	id = "salv1"
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = -24;
-	tag = "solar_salvage_docker"
-	},
-/obj/effect/shuttle_landmark/triumph/trade/scavenger,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salvager)
 "hHX" = (
@@ -21877,13 +18890,6 @@
 /turf/simulated/floor/bmarble,
 /area/tradeport/commons)
 "hQE" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "tradeport_scoophead_dock";
-	pixel_x = -26;
-	pixel_y = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -24048,14 +21054,9 @@
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/shuttle/arrowhead)
 "mMt" = (
-/obj/effect/shuttle_landmark/triumph/trade/arrowhead,
 /obj/overmap/entity/visitable/ship/landable/trade/arrowhead,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 25;
-	id_tag = "tradeport_arrowhead_docker"
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/shuttle/arrowhead)
@@ -24467,22 +21468,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/sector/nebula_tradeport/motel/vip)
-"nME" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump3f";
-	name = "Nebula Pump Controller";
-	pixel_x = -25
-	},
-/turf/simulated/floor,
-/area/tradeport/pads)
 "nNt" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -25818,16 +22803,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel)
-"rgD" = (
-/obj/structure/catwalk,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "nebula_pump4f";
-	name = "Nebula Pump Controller";
-	pixel_x = 25
-	},
-/turf/simulated/floor,
-/area/tradeport/pads)
 "rit" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/structure/cable/yellow{
@@ -25928,12 +22903,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/nebula_tradeport/motel/arcade)
-"ryw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/table/steel,
-/obj/item/hand_labeler,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/trade_ship/general)
 "rzb" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -27360,11 +24329,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_x = 27;
-	frequency = 1380;
-	id_tag = "trade_docks_3"
-	},
 /turf/simulated/floor,
 /area/tradeport/pads)
 "vld" = (
@@ -28448,7 +25412,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
 	},
-/obj/effect/shuttle_landmark/triumph/trade/utilitymicro,
 /obj/overmap/entity/visitable/ship/landable/trade/utilitymicro,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -52128,6 +49091,7 @@ awV
 awV
 adA
 aJv
+aLK
 aJv
 aJv
 aJv
@@ -52146,8 +49110,7 @@ aJv
 aJv
 aJv
 aJv
-aJv
-aJv
+auS
 aNQ
 adA
 adA
@@ -52330,10 +49293,10 @@ aJv
 aJv
 aJv
 aJv
-aIM
-aNP
-aNP
-aIM
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -52523,12 +49486,12 @@ aJv
 aJv
 aJv
 aJv
-aIM
-aIM
-aEP
-aaG
-aIM
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -52717,12 +49680,12 @@ aJv
 aJv
 aJv
 aJv
-aiN
-aHJ
-aqZ
-aqZ
-aXL
-axL
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -52911,12 +49874,12 @@ aJv
 aJv
 aJv
 aJv
-aiN
-aGb
-aEI
-ajo
-ajE
-axL
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -53105,12 +50068,12 @@ aJv
 aJv
 aJv
 aJv
-aIM
-aYb
-aYb
-avk
-aYb
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -53299,12 +50262,12 @@ aJv
 aJv
 aJv
 aJv
-aIM
-aoV
-aZP
-aGb
-afJ
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -53488,22 +50451,22 @@ adA
 aJv
 aJv
 aJv
-aIM
-anm
-anm
-aIM
 aJv
-aIM
-aYb
-aYb
-anw
-avG
-aIM
 aJv
-aIM
-aNJ
-aNJ
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aNQ
@@ -53681,24 +50644,24 @@ awV
 adA
 aJv
 aJv
-anv
-aIM
-aVQ
-aKQ
-aIM
 aJv
-aIM
-agi
-aYb
-amb
-aRa
-aIM
 aJv
-aIM
-auA
-aUZ
-aIM
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -53875,24 +50838,24 @@ awV
 adA
 aJv
 aJv
-anv
-ahu
-aCW
-avb
-aIM
 aJv
-aIM
-ayH
-ahg
-ant
-aDe
-aIM
 aJv
-aIM
-aLK
-aah
-abB
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -54069,24 +51032,24 @@ awV
 adA
 aJv
 aJv
-anv
-aFd
-aCW
-aDG
-aIM
-aVd
-aIM
-aUt
-aYb
-aSa
-aGd
-aIM
-aek
-aIM
-aqb
-aUZ
-aeS
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -54263,24 +51226,24 @@ awV
 adA
 aVO
 aJv
-anv
-aIM
-aDA
-aIM
-aIM
-aIM
-aIM
-aYb
-avz
-ajC
-aBK
-aYb
-adQ
-aIM
-aIM
-acP
-aIM
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 agM
 adA
@@ -54457,24 +51420,24 @@ awV
 adA
 aJv
 aJv
-anv
-acg
-aCW
-ahB
-afw
-aIM
-aIM
-aIM
-aIM
-aHX
-aaZ
-aIM
-aZa
-aFl
-aUZ
-aUZ
-ajJ
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -54651,24 +51614,24 @@ awV
 adA
 aJv
 aJv
-anv
-alf
-aCW
-aCW
-arR
-aIM
-aTK
-aeL
-amI
-aim
-aFv
-aEa
-aZa
-aoS
-aUZ
-aUZ
-ajh
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -54845,24 +51808,24 @@ awV
 adA
 aJv
 aJv
-acQ
-aHf
-akV
-aEe
-aod
-aWe
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aNO
-aHU
-ajR
-aCt
-aFv
-aNO
-aaM
-aUH
-aKO
-aIN
-aXz
-awE
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -55039,24 +52002,24 @@ awV
 adA
 aJv
 aJv
-acQ
-ayb
-aBA
-aeR
-aGT
-aoX
-azQ
-aXE
-apZ
-aux
-aov
-azQ
-aQx
-aKY
-akl
-aPT
-aIu
-awE
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -55233,24 +52196,24 @@ awV
 adA
 aVO
 aJv
-acQ
-aFo
-aPo
-aXV
-ayQ
-aIM
-aLJ
-aCt
-aUC
-abM
-awZ
-aMe
-aIM
-ayf
-aHK
-amK
-ada
-awE
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 agM
 adA
@@ -55427,24 +52390,24 @@ awV
 adA
 aJv
 aJv
-aIM
-aIM
-aIM
-aIM
-aIM
-aIM
-aHT
-aCt
-aMK
-axd
-awZ
-aNO
-aIM
-aIM
-aIM
-aIM
-aIM
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -55622,22 +52585,22 @@ adA
 aJv
 aJv
 aJv
-aIM
-aIM
-aab
-awD
-ahN
-aFy
-aCt
-awb
-aNR
-awZ
-azY
-ady
-aFR
-aBu
-aIM
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aNQ
@@ -55817,20 +52780,20 @@ aJv
 aJv
 aJv
 aJv
-acQ
-abo
-aXW
-aWF
-aNO
-aCt
-aPD
-anC
-awZ
-aNO
-aQN
-aSC
-adN
-awE
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -56011,20 +52974,20 @@ aVO
 aJv
 aJv
 aJv
-acQ
-abo
-asN
-aeq
-aNO
-aCt
-all
-aBR
-awZ
-aNO
-aPS
-aao
-aTJ
-awE
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -56205,20 +53168,20 @@ aJv
 aJv
 aJv
 aJv
-acQ
-abo
-aZY
-aaP
-aNO
-aCt
-amD
-aJN
-awZ
-aNO
-ayh
-axG
-alz
-awE
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aJv
@@ -56398,22 +53361,22 @@ adA
 aJv
 aJv
 aJv
-aIM
-aIM
-aFr
-auS
-aYc
-aUu
-aCt
-aTU
-afo
-awZ
-aNO
-afh
-aIf
-aHQ
-aIM
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aQS
@@ -56591,24 +53554,24 @@ aQp
 adA
 aJv
 aJv
-aIM
-aIM
-aIM
-aaA
-aaA
-aaA
-aIM
-aAx
-aNC
-aNC
-aBG
-aIM
-aaA
-aaA
-aaA
-aIM
-aIM
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aFS
 adA
@@ -56661,8 +53624,8 @@ aeT
 aQu
 aZL
 aYn
-ahC
-anc
+akf
+aEf
 aur
 akf
 aDV
@@ -56678,13 +53641,13 @@ aur
 akf
 akf
 aur
-aqx
+ayD
 anp
 akf
 akf
 aur
 aur
-aSV
+ayD
 anp
 akf
 akf
@@ -56699,11 +53662,11 @@ akf
 akf
 akf
 akf
-amj
+akf
 ayD
 anp
 aur
-aPZ
+aEf
 akf
 akf
 akf
@@ -56784,26 +53747,26 @@ asP
 asP
 adA
 aVO
-aGW
-aIM
-aIM
-abI
-aDg
-axK
-axK
-aIM
-aiE
-azE
-azE
-aUQ
-aIM
-age
-aOw
-auD
-anf
-aIM
-aIM
-aGW
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aFS
 adA
 aJk
@@ -56978,26 +53941,26 @@ aYv
 aYv
 amZ
 aJv
-aox
-agb
-aeH
-aep
-awg
-aAw
-aAw
-aYV
-aux
-aow
-atY
-alo
-ach
-ams
-aiR
-aOi
-aao
-aqi
-gGo
-aox
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aqB
 aGD
 aTh
@@ -57066,20 +54029,20 @@ aRm
 adn
 adn
 aRm
-ave
+aRm
 ale
 adn
 adn
 aRm
 aRm
-aeV
+aRm
 ale
 adn
 adn
 aRm
 aro
 aRm
-nME
+aRm
 aRm
 aFN
 awB
@@ -57172,25 +54135,25 @@ orT
 aYv
 amZ
 aJv
-aPW
-aFM
-aEq
-aRf
-awR
-aiK
-ack
-agr
-aCd
-acV
-ari
-aYK
-agr
-aOV
-ari
-aic
-aZe
-aol
-azP
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 arl
 aRX
 aUf
@@ -57260,7 +54223,7 @@ aur
 aur
 aur
 aur
-aRK
+aAe
 aen
 aur
 aur
@@ -57273,7 +54236,7 @@ aur
 aur
 aHr
 aur
-rgD
+aur
 aur
 aur
 axm
@@ -57366,26 +54329,26 @@ pcN
 kPA
 aqj
 aJv
-aIM
-aIM
-aIM
-akq
-aim
-arw
-ary
-aIM
-aaH
-amp
-aeW
-afV
-aGW
-aCh
-aEM
-atH
-aLG
-aIM
-aIM
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aNQ
 aqj
 aSO
@@ -57561,24 +54524,24 @@ lRD
 adA
 aJv
 aJv
-aIM
-aIM
-aIM
-agj
-aIM
-aIM
-aIM
-awh
-aZX
-aNC
-alX
-aIM
-aIM
-aIM
-aTZ
-aXy
-aIM
-aIM
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -57631,8 +54594,8 @@ aKr
 aXZ
 abG
 aHV
-aot
-aTu
+akf
+aLX
 aur
 akf
 aZO
@@ -57648,13 +54611,13 @@ aur
 akf
 akf
 aur
-aeF
+aEm
 aqU
 akf
 akf
 aur
 aur
-aht
+aEm
 aqU
 akf
 akf
@@ -57669,11 +54632,11 @@ akf
 akf
 akf
 akf
-aFA
+akf
 aEm
 aqU
 aur
-aUa
+aLX
 akf
 akf
 akf
@@ -57756,22 +54719,22 @@ adA
 aJv
 aJv
 aJv
-acQ
-aui
-aim
-ajK
-aIM
-afS
-alZ
-aze
-aXO
-ryw
-aFD
-aIM
-asR
-aey
-aoK
-awE
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 aNQ
@@ -57950,22 +54913,22 @@ adA
 aVO
 aJv
 aJv
-acQ
-aMh
-aFO
-aPv
-aIM
-afS
-aMq
-aNK
-aHn
-aJO
-aFD
-aIM
-auP
-aII
-aQU
-awE
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aJv
 agM
@@ -58143,24 +55106,24 @@ aRz
 adA
 aJv
 aJv
-anv
-aIM
-aBl
-ayv
-alH
-aIM
-aIM
-ahs
-ahl
-aYx
-aBP
-aIM
-aIM
-ajX
-ajs
-aWT
-aIM
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aJv
 aNQ
 adA
@@ -58336,26 +55299,26 @@ asP
 aRz
 adA
 aJv
-anv
-aIM
-abJ
-aNO
-aNO
-aNO
-aMd
-apE
-alN
-aBy
-aBy
-alN
-abb
-aGv
-aKs
-att
-aIC
-aSR
-aIM
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aNQ
 anq
 atu
@@ -58530,26 +55493,26 @@ asP
 aRz
 adA
 aJv
-anv
-aIM
-aoR
-azG
-apC
-aqt
-aIP
-aev
-aBL
-aBL
-aBL
-aBL
-aZW
-aeP
-aCe
-aVX
-aPz
-aQY
-aIM
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aNQ
 anq
 adw
@@ -58724,26 +55687,26 @@ asP
 aRz
 adA
 aJv
-anv
-apE
-alN
-alN
-alN
-aAB
-aAB
-agf
-aIz
-aIz
-aIz
-aIz
-axy
-aAB
-aAB
-alN
-alN
-alN
-abb
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 aNQ
 anq
 atu
@@ -58918,26 +55881,26 @@ asP
 asP
 adA
 aVO
-anv
-aBL
-aBL
-aBL
-aBL
-aIM
-aIM
 aJv
 aJv
 aJv
 aJv
 aJv
 aJv
-aIM
-aIM
-aBL
-aBL
-aBL
-aBL
-anv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 agM
 anq
 adw
@@ -59112,12 +56075,7 @@ adD
 asP
 adA
 aJv
-anv
-aIz
-aIz
-aIz
-aIz
-aIM
+aZa
 aJv
 aJv
 aJv
@@ -59126,11 +56084,16 @@ aJv
 aJv
 aJv
 aJv
-aIM
-aIz
-aIz
-aIz
-aIz
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
+aJv
 anv
 aNQ
 anq

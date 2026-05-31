@@ -78,6 +78,38 @@
 	icon_state = "deck"
 	descriptor = "Deck"
 
+/area/shuttle/auto/named/quarters
+	// icon_state = "quarters"
+	descriptor = "Quarters"
+
+/area/shuttle/auto/named/quarters/one
+	// icon_state = "quarters_1"
+	descriptor = "Quarters A"
+
+/area/shuttle/auto/named/quarters/two
+	// icon_state = "quarters_2"
+	descriptor = "Quarters B"
+
+/area/shuttle/auto/named/quarters/three
+	// icon_state = "quarters_3"
+	descriptor = "Quarters C"
+
+/area/shuttle/auto/named/maintenance
+	// icon_state = "maintenance"
+	descriptor = "Maintenance"
+
+/area/shuttle/auto/named/maintenance/one
+	// icon_state = "maintenance_1"
+	descriptor = "Maintenance A"
+
+/area/shuttle/auto/named/maintenance/two
+	// icon_state = "maintenance_2"
+	descriptor = "Maintenance B"
+
+/area/shuttle/auto/named/maintenance/three
+	// icon_state = "maintenance_3"
+	descriptor = "Maintenance C"
+
 /area/shuttle/auto/named/airlock
 	icon_state = "airlock"
 	descriptor = "Airlock"

@@ -31,6 +31,13 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_preloads)
 	/// template typepath to preload
 	var/shuttle_template_path
 
+	/// access remaps; "our key" = "map key to use"
+	/// * e.g. shuttle has /obj/map_helper/access_helper/auto/generic/staff with key "staff",
+	///        and you're on nebula tradeport which instead sets key "trader".
+	///        you specify list("staff"= "trader")
+	var/list/default_access_mappings
+	#warn impl
+
 	// TODO: ID-based instead?
 
 /obj/shuttle_dock_preload/New()
@@ -40,6 +47,7 @@ GLOBAL_LIST_EMPTY(uninitialized_shuttle_dock_preloads)
 /obj/shuttle_dock_preload/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
 	preload_dock_if_possible()
+	qdel(src)
 
 /obj/shuttle_dock_preload/Destroy()
 	GLOB.uninitialized_shuttle_dock_preloads -= src
