@@ -1,63 +1,49 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"bG" = (
-/obj/structure/window/reinforced/tinted,
-/obj/machinery/power/smes/buildable{
-	charge = 15000;
-	cur_coils = 3
+"cF" = (
+/obj/machinery/button/remote/blast_door{
+	id = "tugdoor3";
+	name = "Tug barge door";
+	pixel_y = 26;
+	pixel_x = 7
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 26;
+	id = "Tug1";
+	name = "Tug Refueling port";
+	pixel_x = -7
 	},
 /obj/structure/cable/green{
-	icon_state = "0-4"
+	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/auto/one_single_area)
-"cs" = (
-/obj/structure/closet/crate,
-/obj/item/gunbox/donksoft,
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"eg" = (
-/obj/machinery/button/remote/blast_door{
-	id = "tugdoor2";
-	name = "Tug exit door";
-	pixel_y = 26;
-	pixel_x = -10
+/obj/machinery/power/apc/alarms_hidden/south_mount{
+	req_access = null
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/auto/one_single_area)
-"fY" = (
-/obj/machinery/door/blast/shutters{
-	id = "Tug1"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoorc0";
-	id = "tugdoor2";
-	name = "Tug hauler shuttle Airlock";
-	opacity = 0
-	},
-/obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/tiled/techfloor,
+"dp" = (
+/obj/machinery/sleeper/survival_pod,
+/obj/item/tank/emergency,
+/obj/item/tank/emergency,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/item/clothing/mask/breath/emergency,
+/obj/item/clothing/mask/breath/emergency,
+/obj/item/clothing/suit/space/emergency,
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/auto/one_single_area)
-"gu" = (
-/obj/structure/closet/crate,
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"gy" = (
-/obj/machinery/door/blast/regular{
-	id = "tugdoor3"
+"gk" = (
+/obj/structure/bed/chair/bay/chair/padded/black{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"gI" = (
-/obj/machinery/atmospheric_field_generator/perma,
-/obj/machinery/door/blast/regular{
-	id = "tugdoor1a";
-	dir = 4
+/obj/structure/cable/orange{
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/auto/one_single_area)
-"gJ" = (
+"hQ" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
@@ -66,23 +52,42 @@
 	},
 /turf/simulated/wall/prepainted,
 /area/shuttle/auto/one_single_area)
-"ig" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
+"iq" = (
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1a";
+	dir = 4
 	},
-/obj/machinery/holopad/ship,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
 /area/shuttle/auto/one_single_area)
-"ix" = (
-/obj/machinery/computer/ship/helm/adv{
-	dir = 4;
-	req_one_access = null
+"iE" = (
+/obj/machinery/light,
+/obj/structure/reagent_dispensers/beerkeg,
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 8;
+	pixel_y = -23;
+	dir = 1;
+	id = "tugdoor1b";
+	name = "Tug Barge door"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/shuttle/auto/one_single_area)
-"kI" = (
+"mS" = (
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1"
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"ng" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1a";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"oK" = (
 /obj/structure/closet/crate,
 /obj/item/stack/material/glass{
 	amount = 50
@@ -105,33 +110,19 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plating,
 /area/shuttle/auto/one_single_area)
-"lY" = (
-/obj/machinery/door/blast/regular{
-	id = "tugdoor1a";
-	dir = 4
-	},
-/obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/plating,
+"rw" = (
+/turf/simulated/wall/prepainted,
 /area/shuttle/auto/one_single_area)
-"mh" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 1
+"sa" = (
+/obj/machinery/button/remote/blast_door{
+	id = "tugdoor2";
+	name = "Tug exit door";
+	pixel_y = 26;
+	pixel_x = -10
 	},
-/obj/machinery/portable_atmospherics/canister/empty/phoron,
-/obj/machinery/atmospherics/portables_connector,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
+/turf/simulated/floor/tiled/techfloor,
 /area/shuttle/auto/one_single_area)
-"nn" = (
-/obj/structure/closet/crate,
-/obj/item/gunbox/donksoft/shotgun,
-/obj/item/gunbox/donksoft/shotgun,
-/obj/item/gunbox/donksoft/shotgun,
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"nW" = (
+"sj" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
@@ -139,180 +130,34 @@
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/auto/one_single_area)
-"ou" = (
-/obj/structure/reagent_dispensers/beerkeg,
+"tF" = (
 /turf/simulated/floor/plating,
 /area/shuttle/auto/one_single_area)
-"oR" = (
-/turf/simulated/wall/prepainted,
-/area/shuttle/auto/one_single_area)
-"pp" = (
-/obj/structure/bed/chair/bay/chair/padded/black{
-	dir = 8
-	},
-/obj/item/clothing/head/soft/mbill,
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/auto/one_single_area)
-"pr" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/valve,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/auto/one_single_area)
-"pY" = (
-/obj/structure/window/reinforced/tinted,
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/auto/one_single_area)
-"rb" = (
-/obj/machinery/sleeper/survival_pod,
-/obj/item/tank/emergency,
-/obj/item/tank/emergency,
-/obj/item/clothing/suit/space/emergency,
-/obj/item/clothing/head/helmet/space/emergency,
-/obj/item/clothing/mask/breath/emergency,
-/obj/item/clothing/mask/breath/emergency,
-/obj/item/clothing/suit/space/emergency,
-/obj/item/clothing/head/helmet/space/emergency,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/auto/one_single_area)
-"rr" = (
-/turf/space/basic,
-/area/space)
-"rF" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"rY" = (
-/obj/structure/closet/crate,
-/obj/item/storage/daki{
-	icon_state = "daki_Holo"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"sY" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/turf/simulated/wall/prepainted,
-/area/shuttle/auto/one_single_area)
-"tk" = (
-/obj/machinery/button/remote/blast_door{
-	id = "tugdoor3";
-	name = "Tug barge door";
-	pixel_y = 26;
-	pixel_x = 7
-	},
-/obj/machinery/button/remote/blast_door{
-	pixel_y = 26;
-	id = "Tug1";
-	name = "Tug Refueling port";
-	pixel_x = -7
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc/alarms_hidden/south_mount{
-	req_access = null
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"tD" = (
-/obj/structure/shuttle_fuel_port{
-	pixel_x = -27
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"tL" = (
-/obj/structure/closet/crate,
-/obj/item/gunbox/donksoft/smg,
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"yl" = (
-/obj/structure/cable/orange,
-/obj/machinery/power/terminal,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/auto/one_single_area)
-"yK" = (
+"uz" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/auto/one_single_area)
-"yM" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoorc0";
-	id = "tugdoor2";
-	name = "Tug hauler shuttle Airlock";
-	opacity = 0
+"vH" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/hatch{
-	name = "Tug Airtight Hatch";
-	req_one_access = null
-	},
-/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/auto/one_single_area)
-"yT" = (
-/obj/structure/closet/crate,
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/box/donkpockets,
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"yV" = (
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"zg" = (
-/obj/machinery/door/blast/regular{
-	id = "tugdoor1"
+"wa" = (
+/obj/machinery/computer/ship/engines/adv{
+	dir = 4
 	},
-/obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"zD" = (
-/obj/machinery/telecomms/relay/preset/telecomms,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"zL" = (
-/obj/structure/closet/crate,
-/obj/item/storage/daki{
-	icon_state = "daki_Holo"
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
 	},
-/obj/item/storage/daki{
-	icon_state = "daki_Holo"
-	},
-/obj/item/storage/daki{
-	icon_state = "daki_Holo"
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/auto/one_single_area)
-"AL" = (
+"AM" = (
 /obj/machinery/air_alarm/alarms_hidden/east_mount{
 	req_one_access = null
 	},
@@ -331,15 +176,71 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/auto/one_single_area)
-"Cg" = (
-/obj/machinery/atmospheric_field_generator/perma,
-/obj/machinery/door/blast/regular{
-	id = "tugdoor1b";
-	dir = 4
-	},
+"Bv" = (
+/obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/shuttle/auto/one_single_area)
-"Cn" = (
+"BI" = (
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1"
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Cc" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"De" = (
+/obj/structure/shuttle_fuel_port{
+	pixel_x = -27
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Dz" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/auto/one_single_area)
+"Eu" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Ey" = (
+/obj/machinery/door/blast/regular{
+	id = "tugdoor3"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"GB" = (
+/obj/machinery/computer/ship/sensors/adv{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"Hc" = (
+/obj/machinery/computer/ship/helm/adv{
+	dir = 4;
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"Iw" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"Iz" = (
 /obj/machinery/button/remote/blast_door{
 	pixel_x = 8;
 	pixel_y = -23;
@@ -349,7 +250,59 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/auto/one_single_area)
-"CP" = (
+"Jy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"Kj" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"Km" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Ky" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/empty/phoron,
+/obj/machinery/atmospherics/portables_connector,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"KN" = (
+/obj/machinery/door/blast/shutters{
+	id = "Tug1"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "tugdoor2";
+	name = "Tug hauler shuttle Airlock";
+	opacity = 0
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Md" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -368,11 +321,166 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/auto/one_single_area)
-"Ef" = (
-/obj/machinery/shipsensors,
+"Mp" = (
+/obj/structure/closet/crate,
+/obj/item/storage/daki{
+	icon_state = "daki_Holo"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Nl" = (
+/obj/structure/closet/crate,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"ND" = (
+/obj/machinery/light,
+/obj/structure/closet/crate,
+/obj/item/storage/daki{
+	icon_state = "daki_Holo"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"OO" = (
+/obj/structure/cable/orange,
+/obj/machinery/power/terminal,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"PN" = (
+/obj/item/modular_computer/console/preset/civilian{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/auto/one_single_area)
-"Gu" = (
+"PU" = (
+/obj/structure/closet/crate,
+/obj/item/gunbox/donksoft/shotgun,
+/obj/item/gunbox/donksoft/shotgun,
+/obj/item/gunbox/donksoft/shotgun,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"QE" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/valve,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"SE" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Tt" = (
+/obj/structure/bed/chair/bay/chair/padded/black{
+	dir = 8
+	},
+/obj/item/clothing/head/soft/mbill,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"TY" = (
+/obj/structure/closet/crate,
+/obj/item/storage/daki{
+	icon_state = "daki_Holo"
+	},
+/obj/item/storage/daki{
+	icon_state = "daki_Holo"
+	},
+/obj/item/storage/daki{
+	icon_state = "daki_Holo"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Uj" = (
+/obj/structure/closet/crate,
+/obj/item/gunbox/donksoft/smg,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Uu" = (
+/obj/structure/window/reinforced/tinted,
+/obj/machinery/power/smes/buildable{
+	charge = 15000;
+	cur_coils = 3
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"Vk" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoorc0";
+	id = "tugdoor2";
+	name = "Tug hauler shuttle Airlock";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Tug Airtight Hatch";
+	req_one_access = null
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"VO" = (
+/turf/space/basic,
+/area/space)
+"WG" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Xh" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Xr" = (
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "tugdoor1b";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Xs" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Yn" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 8;
+	pixel_y = 27;
+	id = "tugdoor1a";
+	name = "Tug Barge door"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Yu" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"YN" = (
+/obj/structure/closet/crate,
+/obj/item/gunbox/donksoft,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"ZD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/button/remote/blast_door{
 	pixel_x = 23;
@@ -400,537 +508,429 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/auto/one_single_area)
-"IF" = (
-/obj/item/modular_computer/console/preset/civilian{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"JR" = (
-/obj/machinery/computer/ship/engines/adv{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/auto/one_single_area)
-"KL" = (
-/obj/machinery/computer/ship/sensors/adv{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/auto/one_single_area)
-"KP" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/button/remote/blast_door{
-	pixel_x = 8;
-	pixel_y = 27;
-	id = "tugdoor1a";
-	name = "Tug Barge door"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"PV" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"QG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/auto/one_single_area)
-"RA" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/random/multiple/corp_crate/no_weapons,
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"RD" = (
-/obj/machinery/light,
-/obj/structure/reagent_dispensers/beerkeg,
-/obj/machinery/button/remote/blast_door{
-	pixel_x = 8;
-	pixel_y = -23;
-	dir = 1;
-	id = "tugdoor1b";
-	name = "Tug Barge door"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"UX" = (
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"Vn" = (
-/obj/machinery/light,
-/obj/structure/closet/crate,
-/obj/item/storage/daki{
-	icon_state = "daki_Holo"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"Xp" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 8
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/auto/one_single_area)
-"XZ" = (
-/obj/machinery/door/blast/regular{
-	id = "tugdoor1"
-	},
-/obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/plating,
-/area/shuttle/auto/one_single_area)
-"Yu" = (
-/obj/spawner/window/low_wall/reinforced/firelocks,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/auto/one_single_area)
-"ZO" = (
-/obj/structure/bed/chair/bay/chair/padded/black{
-	dir = 8
-	},
-/obj/structure/cable/orange{
-	icon_state = "1-2"
-	},
-/obj/landmark/spawnpoint/auto_shuttle_start,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/auto/one_single_area)
 
 (1,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
 "}
 (2,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
 "}
 (3,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
 "}
 (4,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
 "}
 (5,1,1) = {"
-rr
-rr
-rr
-rr
-zD
+VO
+VO
+VO
+VO
+WG
 Yu
 Yu
 Yu
 Yu
 Yu
 Yu
-Ef
-rr
-rr
-rr
+Km
+VO
+VO
+VO
 "}
 (6,1,1) = {"
-rr
-rr
-rr
-rr
-yK
-PV
-JR
-ix
-KL
-rb
-PV
-rF
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+uz
+Eu
+wa
+Hc
+GB
+dp
+Eu
+Xh
+VO
+VO
+VO
 "}
 (7,1,1) = {"
-rr
-rr
-rr
-rr
-sY
-mh
-ig
-pp
-ZO
-yl
-bG
-gJ
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+Iw
+Ky
+vH
+Tt
+gk
+OO
+Uu
+hQ
+VO
+VO
+VO
 "}
 (8,1,1) = {"
-rr
-rr
-rr
-rr
-Xp
-nW
-QG
-AL
-Gu
-pr
-pY
-Xp
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+Dz
+sj
+Jy
+AM
+ZD
+QE
+Kj
+Dz
+VO
+VO
+VO
 "}
 (9,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-fY
-CP
-oR
-oR
-yM
-oR
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+KN
+Md
+rw
+rw
+Vk
+rw
+VO
+VO
+VO
+VO
 "}
 (10,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-oR
-tk
-oR
-oR
-eg
-tD
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+rw
+cF
+rw
+rw
+sa
+De
+VO
+VO
+VO
+VO
 "}
 (11,1,1) = {"
-rr
-rr
-rr
-rr
-oR
-oR
-gy
-oR
-oR
-IF
-yV
-oR
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+rw
+rw
+Ey
+rw
+rw
+PN
+Cc
+rw
+VO
+VO
+VO
 "}
 (12,1,1) = {"
-rr
-rr
-rr
-rr
-oR
-UX
-UX
-oR
-oR
-oR
-oR
-oR
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+rw
+tF
+tF
+rw
+rw
+rw
+rw
+rw
+VO
+VO
+VO
 "}
 (13,1,1) = {"
-rr
-rr
-rr
-rr
-oR
-UX
-UX
-UX
-UX
-UX
-UX
-oR
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+rw
+tF
+tF
+tF
+tF
+tF
+tF
+rw
+VO
+VO
+VO
 "}
 (14,1,1) = {"
-rr
-rr
-rr
-rr
-oR
-KP
-UX
-UX
-UX
-UX
-RD
-oR
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+rw
+Yn
+tF
+tF
+tF
+tF
+iE
+rw
+VO
+VO
+VO
 "}
 (15,1,1) = {"
-rr
-rr
-rr
-rr
-lY
-UX
-UX
-UX
-UX
-UX
-UX
-Cg
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+iq
+tF
+tF
+tF
+tF
+tF
+tF
+Xr
+VO
+VO
+VO
 "}
 (16,1,1) = {"
-rr
-rr
-rr
-rr
-gI
-UX
-UX
-UX
-UX
-UX
-kI
-Cg
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+ng
+tF
+tF
+tF
+tF
+tF
+oK
+Xr
+VO
+VO
+VO
 "}
 (17,1,1) = {"
-rr
-rr
-rr
-rr
-gI
-zL
-nn
-UX
-UX
-UX
-rY
-Cg
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+ng
+TY
+PU
+tF
+tF
+tF
+Mp
+Xr
+VO
+VO
+VO
 "}
 (18,1,1) = {"
-rr
-rr
-rr
-rr
-gI
-cs
-gu
-UX
-UX
-UX
-tL
-Cg
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+ng
+YN
+Bv
+tF
+tF
+tF
+Uj
+Xr
+VO
+VO
+VO
 "}
 (19,1,1) = {"
-rr
-rr
-rr
-rr
-oR
-RA
-gu
-ou
-UX
-UX
-Vn
-oR
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+rw
+SE
+Bv
+Xs
+tF
+tF
+ND
+rw
+VO
+VO
+VO
 "}
 (20,1,1) = {"
-rr
-rr
-rr
-rr
-oR
-yT
-gu
-UX
-UX
-UX
-Cn
-oR
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+rw
+Nl
+Bv
+tF
+tF
+tF
+Iz
+rw
+VO
+VO
+VO
 "}
 (21,1,1) = {"
-rr
-rr
-rr
-rr
-oR
-XZ
-XZ
-zg
-zg
-XZ
-XZ
-oR
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+rw
+BI
+BI
+mS
+mS
+BI
+BI
+rw
+VO
+VO
+VO
 "}
 (22,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
 "}
 (23,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
 "}
 (24,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
 "}
 (25,1,1) = {"
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
-rr
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
+VO
 "}

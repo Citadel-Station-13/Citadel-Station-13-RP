@@ -2,6 +2,222 @@
 "a" = (
 /turf/space/basic,
 /area/space)
+"b" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 4;
+	volume = 15000
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"c" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/utilitymicro)
+"d" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/space)
+"e" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"h" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"o" = (
+/obj/machinery/computer/ship/engines,
+/obj/machinery/computer/ship/sensors{
+	pixel_x = -27
+	},
+/obj/machinery/power/apc/alarms_hidden/north_mount{
+	req_access = null
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"p" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
+	},
+/obj/machinery/door/blast/regular{
+	id = "microutility'"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "microutility'";
+	name = "Shuttle Utility Door";
+	pixel_x = 30
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"r" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"s" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"v" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/computer/shuttle_control,
+/obj/machinery/air_alarm/alarms_hidden/north_mount{
+	req_one_access = null
+	},
+/obj/item/gps/internal/base{
+	name = "UtilityMicro beacon";
+	gps_tag = "UTILITY"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"w" = (
+/obj/machinery/door/window/southright,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	dir = 1
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/shuttle_aligner/port/south/primary,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"z" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"B" = (
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"E" = (
+/obj/machinery/computer/ship/helm{
+	dir = 4;
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"G" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"J" = (
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/structure/shuttle_fuel_port{
+	pixel_x = -27
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"L" = (
+/turf/simulated/wall/prepainted,
+/area/shuttle/utilitymicro)
+"N" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/utilitymicro)
+"P" = (
+/obj/machinery/power/smes/buildable{
+	charge = 15000;
+	cur_coils = 3
+	},
+/obj/structure/cable/green,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"Q" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/simulated/wall/prepainted,
+/area/shuttle/utilitymicro)
+"S" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"T" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"V" = (
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/obj/structure/panic_button{
+	pixel_y = -28
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"W" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/overmap/entity/visitable/ship/landable/trade/utilitymicro,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
+"Y" = (
+/obj/machinery/door/window,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12;
+	old_wall = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/utilitymicro)
 
 (1,1,1) = {"
 a
@@ -61,10 +277,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+e
+e
+e
+e
 a
 a
 a
@@ -78,10 +294,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+e
+B
+E
+L
 a
 a
 a
@@ -95,10 +311,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+L
+o
+V
+L
 a
 a
 a
@@ -112,10 +328,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+Q
+v
+W
+p
 a
 a
 a
@@ -129,10 +345,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+c
+e
+S
+L
 a
 a
 a
@@ -146,10 +362,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+J
+r
+G
+Y
 a
 a
 a
@@ -163,10 +379,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+b
+T
+s
+w
 a
 a
 a
@@ -180,10 +396,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+z
+N
+h
+P
 a
 a
 a
@@ -198,7 +414,7 @@ a
 a
 a
 a
-a
+d
 a
 a
 a
