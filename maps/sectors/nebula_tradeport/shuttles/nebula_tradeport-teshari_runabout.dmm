@@ -3,37 +3,6 @@
 /turf/space/basic,
 /area/space)
 "b" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/wall/prepainted/science,
-/area/space)
-"c" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/computer/ship/sensors,
-/obj/structure/railing/grey,
-/obj/machinery/power/apc/alarms_hidden/north_mount{
-	req_access = null
-	},
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/space)
-"d" = (
-/turf/simulated/wall/prepainted/science,
-/area/space)
-"e" = (
-/obj/spawner/window/borosillicate/full/firelocks,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"g" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -45,68 +14,58 @@
 /obj/machinery/holopad/ship,
 /obj/landmark/spawnpoint/auto_shuttle_start,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"h" = (
-/obj/machinery/atmospherics/portables_connector,
-/obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"j" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/wall/rshull,
-/area/space)
-"k" = (
-/obj/overmap/entity/visitable/ship/landable/trade/runabout,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
-"m" = (
-/obj/machinery/telecomms/relay/preset/telecomms,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"o" = (
+/area/shuttle/auto/one_single_area)
+"c" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4
 	},
 /turf/simulated/wall/rshull,
-/area/space)
-"p" = (
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
-/obj/machinery/atmospherics/valve{
-	dir = 4
-	},
-/obj/landmark/spawnpoint/auto_shuttle_start,
+/area/shuttle/auto/one_single_area)
+"d" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"q" = (
+/area/shuttle/auto/one_single_area)
+"e" = (
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"f" = (
+/obj/spawner/window/borosillicate/full/firelocks,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"h" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/auto/one_single_area)
+"i" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/machinery/power/terminal,
+/obj/structure/cable/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"l" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/wall/prepainted/science,
+/area/shuttle/auto/one_single_area)
+"o" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/wall/prepainted/science,
-/area/space)
-"r" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"s" = (
-/obj/spawner/window/borosillicate/full/firelocks,
-/turf/simulated/floor/reinforced,
-/area/space)
-"u" = (
+/area/shuttle/auto/one_single_area)
+"p" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -116,19 +75,52 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/monodark,
-/area/space)
-"w" = (
-/obj/machinery/shipsensors,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"x" = (
+/area/shuttle/auto/one_single_area)
+"q" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/silver,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"r" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/wall/prepainted/science,
-/area/space)
-"y" = (
+/area/shuttle/auto/one_single_area)
+"t" = (
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"u" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"v" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/one_single_area)
+"w" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/wall/prepainted/science,
+/area/shuttle/auto/one_single_area)
+"A" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -144,18 +136,29 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monodark,
-/area/space)
-"z" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
+/area/shuttle/auto/one_single_area)
+"E" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
-/obj/machinery/power/terminal,
-/obj/structure/cable/orange{
-	dir = 8
+/turf/simulated/wall/prepainted/science,
+/area/shuttle/auto/one_single_area)
+"F" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"E" = (
+/area/shuttle/auto/one_single_area)
+"G" = (
+/obj/spawner/window/borosillicate/full/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"H" = (
 /obj/structure/closet/walllocker_double/north,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -168,101 +171,15 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
-"F" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
+/area/shuttle/auto/one_single_area)
+"J" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/wall/prepainted/science,
-/area/space)
-"H" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/air/airlock,
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/machinery/light,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"I" = (
-/obj/spawner/window/borosillicate/full/firelocks,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"K" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/silver,
-/turf/simulated/floor/tiled/techfloor,
-/area/space)
-"L" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/computer/shuttle_control{
-	dir = 1
-	},
-/obj/item/gps/internal/base{
-	name = "Runabout Beacon";
-	gps_tag = "RUNABOUT"
-	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/space)
-"M" = (
-/obj/machinery/power/smes/buildable{
-	charge = 1.5e+007;
-	cur_coils = 3
-	},
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"O" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
+/area/shuttle/auto/one_single_area)
+"N" = (
 /turf/simulated/wall/prepainted/science,
-/area/space)
+/area/shuttle/auto/one_single_area)
 "P" = (
-/turf/simulated/floor/reinforced,
-/area/space)
-"R" = (
-/turf/simulated/wall/rshull,
-/area/space)
-"U" = (
-/obj/machinery/atmospherics/portables_connector,
-/obj/machinery/portable_atmospherics/canister/phoron,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"V" = (
-/obj/effect/floor_decal/rust,
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/space)
-"W" = (
-/obj/machinery/atmospherics/component/unary/engine{
-	dir = 8
-	},
-/turf/simulated/shuttle/plating/airless/carry,
-/area/space)
-"Y" = (
 /obj/machinery/button/remote/blast_door{
 	id = "Runabout'";
 	name = "Runabout Door";
@@ -282,12 +199,93 @@
 	opacity = 0
 	},
 /obj/structure/fans/tiny,
+/obj/shuttle_aligner/port/east/primary,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/shuttle/auto/one_single_area)
+"Q" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/computer/ship/sensors,
+/obj/structure/railing/grey,
+/obj/machinery/power/apc/alarms_hidden/north_mount{
+	req_access = null
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/shuttle/auto/one_single_area)
+"R" = (
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"S" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"T" = (
+/obj/spawner/window/borosillicate/full/firelocks,
+/turf/simulated/floor/reinforced,
+/area/shuttle/auto/one_single_area)
+"U" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/structure/bed/chair/bay/chair/padded/red/smallnest,
+/obj/machinery/atmospherics/valve{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"V" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"W" = (
+/obj/overmap/entity/visitable/ship/landable/trade/runabout,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Y" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/computer/shuttle_control{
+	dir = 1
+	},
+/obj/item/gps/internal/base{
+	name = "Runabout Beacon";
+	gps_tag = "RUNABOUT"
+	},
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/shuttle/auto/one_single_area)
 "Z" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/wall/prepainted/science,
-/area/space)
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/one_single_area)
 
 (1,1,1) = {"
 a
@@ -343,170 +341,170 @@ a
 (4,1,1) = {"
 a
 a
-P
-P
-P
-P
-I
-I
-I
-P
-P
-P
-P
+a
+a
+a
+a
+f
+f
+f
+a
+a
+a
+a
 a
 a
 "}
 (5,1,1) = {"
 a
 a
-P
-P
-P
-I
-I
-r
-I
-s
-P
-P
-P
+a
+a
+a
+f
+f
+S
+f
+T
+a
+a
+a
 a
 a
 "}
 (6,1,1) = {"
 a
 a
-P
-P
-P
-d
-c
-p
-y
-d
-P
-P
-P
+a
+a
+a
+N
+Q
+U
+A
+N
+a
+a
+a
 a
 a
 "}
 (7,1,1) = {"
 a
 a
-P
-P
-P
-d
-u
-g
-L
-d
-P
-P
-P
+a
+a
+a
+N
+p
+b
+Y
+N
+a
+a
+a
 a
 a
 "}
 (8,1,1) = {"
 a
 a
-P
-P
-P
-R
-R
-K
-o
-R
-P
-P
-P
+a
+a
+a
+v
+v
+q
+c
+v
+a
+a
+a
 a
 a
 "}
 (9,1,1) = {"
 a
 a
-d
-d
-P
-P
-I
-k
-e
-P
-P
-d
-d
+N
+N
+a
+a
+f
+W
+G
+a
+a
+N
+N
 a
 a
 "}
 (10,1,1) = {"
 a
 a
-d
-d
+N
+N
+V
+o
+J
+H
+r
 w
-q
-b
-E
-x
-F
-m
 d
-d
+N
+N
 a
 a
 "}
 (11,1,1) = {"
 a
 a
-P
-R
-q
-Z
-U
-V
-H
-O
+a
+v
+o
+l
+t
 F
-R
-P
+u
+E
+w
+v
+a
 a
 a
 "}
 (12,1,1) = {"
 a
 a
-P
-P
-j
-j
-h
-z
-M
-j
-j
-P
-P
+a
+a
+Z
+Z
+R
+i
+e
+Z
+Z
+a
+a
 a
 a
 "}
 (13,1,1) = {"
 a
 a
+a
+a
+h
+h
+v
 P
-P
-W
-W
-R
-Y
-R
-W
-W
-P
-P
+v
+h
+h
+a
+a
 a
 a
 "}
