@@ -9,10 +9,3 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/ftu/scoophead)
 		overmap_legacy_scan_name = "Scoophead trade Shuttle";
 	}
 	facing_dir = WEST
-
-#warn impl
-
-/obj/overmap/entity/visitable/ship/landable/trade/scoophead
-/area/shuttle/scoophead/cockpit
-/area/shuttle/scoophead/main
-/area/shuttle/scoophead/engineering

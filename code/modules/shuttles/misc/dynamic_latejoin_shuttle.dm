@@ -29,5 +29,15 @@ GLOBAL_LIST_INIT(dynamic_latejoin_shuttles, init_dynamic_latejoin_shuttles())
 	/// category
 	var/category
 
+	/// freely joinable?
+	/// * we don't actually know what this does other than stop travelers from picking it.
+	///   it's mostly so people can flag this for their stuff.
+	var/available_to_public = TRUE
+	/// restrict to ckeys?
+	/// * used for custom shuttles
+	/// * we don't actually enforce this on admins or anything else, this is only
+	///   a recommendation lol
+	var/list/restrict_to_ckeys
+
 #warn impl
 

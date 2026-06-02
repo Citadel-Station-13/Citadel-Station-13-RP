@@ -1,260 +1,1741 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"ad" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/obj/machinery/button/windowtint{
+	pixel_x = -19;
+	id = "scoophead_office"
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead/cockpit)
+"ap" = (
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/engineering)
+"au" = (
+/obj/structure/shuttle_fuel_port{
+	pixel_x = -26
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"az" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/brown,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/scoophead/cockpit)
+"aW" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/poster{
+	pixel_x = 32
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead/cockpit)
+"bj" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"cs" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"di" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/scoophead/engineering)
+"dm" = (
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"do" = (
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "0-8";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"dO" = (
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/cockpit)
+"eB" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"fe" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/structure/closet/crate/secure{
+	name = "cigars crate";
+	req_access = list(160)
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"fq" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"fV" = (
+/obj/machinery/holosign/bar{
+	id = "tradersign2"
+	},
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/scoophead/main)
+"gb" = (
+/obj/structure/table/woodentable,
+/obj/structure/flora/pottedplant/tall{
+	pixel_y = 14;
+	pixel_x = 7
+	},
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/scoophead/cockpit)
+"gN" = (
+/obj/structure/panic_button{
+	pixel_x = 32
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/cockpit)
+"hd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/engineering)
+"hf" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"hp" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "scoophead_docker_pump";
+	power_rating = 20000
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/overmap/entity/visitable/ship/landable/trade/scoophead,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"ic" = (
+/obj/structure/table/woodentable,
+/obj/machinery/photocopier/faxmachine{
+	department = "Scoophead Trade Shuttle"
+	},
+/obj/structure/flora/pottedplant/tall{
+	pixel_y = 14;
+	pixel_x = 7
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead/cockpit)
+"id" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"in" = (
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Then have customer swipe their card. ";
+	dir = 8;
+	name = "Trader Register"
+	},
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"jB" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 5
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/binoculars,
+/obj/item/binoculars,
+/obj/item/binoculars/spyglass,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"jG" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/cockpit)
+"jJ" = (
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/engineering)
+"kd" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"lq" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/storage/hooded/carp_costume,
+/obj/item/clothing/suit/storage/hooded/bee_costume,
+/obj/item/clothing/suit/storage/hooded/flash_costume,
+/obj/item/clothing/suit/storage/hooded/ian_costume,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"lx" = (
+/obj/machinery/door/blast/regular{
+	id = "trade2port"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"lR" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"mY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"nl" = (
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"nH" = (
+/turf/space,
+/area/space)
+"od" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/structure/closet/crate/secure{
+	name = "liquors crate";
+	req_access = list(160)
+	},
+/obj/item/reagent_containers/food/drinks/bottle/moonshine,
+/obj/item/reagent_containers/food/drinks/bottle/phobos,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"or" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/cockpit)
+"ov" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"oE" = (
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/scoophead/main)
+"pc" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/engineering)
+"qO" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/engineering)
+"rd" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead/cockpit)
+"rV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"sc" = (
+/obj/machinery/door/window/westleft{
+	name = "Storefront";
+	req_access = list(160);
+	dir = 2
+	},
+/obj/machinery/door/window/westleft{
+	name = "Storefront";
+	req_access = list(160);
+	dir = 1
+	},
+/obj/structure/table/woodentable,
+/obj/machinery/recharger,
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"sk" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/cockpit)
+"sr" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"sT" = (
+/obj/machinery/computer/ship/engines,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/cockpit)
+"sU" = (
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/scoophead/engineering)
+"tf" = (
+/obj/structure/closet/largecardboard,
+/obj/item/storage/toolbox/syndicate/powertools,
+/obj/item/clothing/gloves/yellow,
+/obj/item/clothing/gloves/yellow,
+/obj/item/clothing/gloves/yellow,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"tK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/engineering)
+"uc" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 5
+	},
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"ut" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 9
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/structure/cable/pink{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"uZ" = (
+/turf/simulated/floor/wood,
+/area/shuttle/scoophead/cockpit)
+"vc" = (
+/obj/effect/floor_decal/corner/blue/border,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/closet/largecardboard,
+/obj/item/clothing/accessory/hawaii/random,
+/obj/item/clothing/under/hawaiian,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/pineapple,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"vY" = (
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/item/hand_labeler,
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"wt" = (
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/main)
+"wD" = (
+/obj/structure/table/woodentable,
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/obj/item/pen,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead/cockpit)
+"wZ" = (
+/obj/machinery/door/blast/regular{
+	id = "trade2starboard"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"xd" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/obj/machinery/computer/shuttle_control,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/cockpit)
+"yy" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"yR" = (
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	frequency = 1380;
+	master_tag = "tradeport_scoophead_docker";
+	pixel_y = -22
+	},
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "fire control hatch"
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"yY" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/cockpit)
+"zF" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"AI" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/engineering)
+"AJ" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
+	},
+/obj/item/gps/internal/base{
+	name = "scoophead beacon";
+	gps_tag = "SCOOP"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/cockpit)
+"Ck" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"Cp" = (
+/obj/effect/floor_decal/corner/blue/border,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"DP" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "scoophead_docker_pump";
+	power_rating = 20000
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"En" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"Eu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/scoophead/cockpit)
+"EF" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"Fv" = (
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"FE" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	id = "trade2port"
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"FK" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"Gb" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"Gl" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 6
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/storage/toggle/brown_fancycoat/black,
+/obj/item/clothing/suit/storage/toggle/brown_fancycoat,
+/obj/item/clothing/suit/storage/tajaran/coat/fancycoat/red,
+/obj/item/clothing/suit/storage/tajaran/coat/finecoat,
+/obj/item/clothing/suit/storage/tajaran/coat/fancycoat,
+/obj/item/clothing/suit/storage/toggle/tesharicoat,
+/obj/item/clothing/suit/storage/toggle/tesharicoatwhite,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"Gs" = (
+/obj/machinery/media/jukebox{
+	state_base = "darkjuke"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"GT" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"Hw" = (
+/obj/machinery/computer/ship/helm{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/cockpit)
+"HL" = (
+/obj/structure/table/woodentable,
+/obj/structure/flora/pottedplant/unusual{
+	pixel_y = 9;
+	pixel_x = -7
+	},
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"HS" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead/cockpit)
+"Ib" = (
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/scoophead/cockpit)
+"Ii" = (
+/obj/random/multiple/voidsuit/vintage,
+/obj/structure/closet,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/item/clothing/suit/space/emergency/russian,
+/obj/item/clothing/suit/space/emergency/russian,
+/obj/item/clothing/head/helmet/space/emergency/russian,
+/obj/item/clothing/head/helmet/space/emergency/russian,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"IB" = (
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "fire control hatch"
+	},
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	frequency = 1380;
+	master_tag = "courser_docker";
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"IP" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"Jq" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 10
+	},
+/obj/machinery/button/holosign{
+	id = "tradersign2";
+	pixel_x = -20
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "trade2starboard";
+	name = "Shop Shutters";
+	pixel_x = -29;
+	pixel_y = 6;
+	req_access = list(160)
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "trade2port";
+	name = "Shop Shutters";
+	pixel_x = -29;
+	pixel_y = -4;
+	req_access = list(160)
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"JG" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	volume = 20000;
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"JV" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/sensor/ext_sensor,
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
+	frequency = 1380;
+	id_tag = "scoophead_exterior_sensor";
+	master_tag = "tradeport_scoophead_docker";
+	pixel_x = 24;
+	pixel_y = -8
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"Kh" = (
+/obj/effect/floor_decal/corner/red/border,
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"Kn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/machinery/button/windowtint{
+	pixel_x = 22;
+	id = "scoophead_room"
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/scoophead/cockpit)
+"Kr" = (
+/obj/structure/bed/pod,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/obj/item/bedsheet/cosmos,
+/obj/structure/poster{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/scoophead/cockpit)
+"KA" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"Lv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead/cockpit)
+"LC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"LR" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 9
+	},
+/obj/structure/closet/secure_closet/guncabinet{
+	anchored = 1;
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/item/material/knife/machete/armblade,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"ME" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/item/tank/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"Na" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/scoophead/main)
+"Nb" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"QC" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/cockpit)
+"QO" = (
+/obj/machinery/atmospherics/component/unary/heater{
+	dir = 8
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"SK" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"SQ" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
+/obj/structure/closet/crate/corporate/oculum,
+/obj/item/clothing/suit/storage/vest/press,
+/obj/item/clothing/suit/storage/vest/press,
+/obj/item/clothing/accessory/armor/tag/press,
+/obj/item/clothing/accessory/armor/tag/press,
+/obj/item/camera,
+/obj/item/camera,
+/obj/item/tvcamera,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"TE" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/random/tool/power,
+/obj/random/tool/power,
+/obj/random/tool/power,
+/obj/item/clothing/suit/storage/vest/tactical,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"TP" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atm{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/main)
+"Ui" = (
+/obj/structure/curtain/open/shower,
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/tiled/neutral,
+/area/shuttle/scoophead/cockpit)
+"Uj" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
+/obj/structure/cable/pink{
+	icon_state = "2-4";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"UX" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/poster{
+	pixel_x = 32
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/scoophead/cockpit)
+"Va" = (
+/obj/machinery/recharge_station,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/machinery/power/apc/large_cell/tier_3/west_mount,
+/obj/structure/cable/pink{
+	icon_state = "0-8";
+	dir = 1
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/scoophead/engineering)
+"Vm" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"VF" = (
 /turf/space/basic,
 /area/space)
+"Xe" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/scoophead/cockpit)
+"Xs" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/engineering)
+"Xx" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/blue/border,
+/obj/machinery/light,
+/obj/structure/cable/pink{
+	icon_state = "0-8";
+	dir = 1
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount,
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/cockpit)
+"Yc" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/neutral,
+/area/shuttle/scoophead/cockpit)
+"Yj" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/scoophead/engineering)
+"Yr" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 6
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/scoophead/cockpit)
+"YT" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/engineering)
+"Zl" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/scoophead/main)
+"ZR" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/scoophead/engineering)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (3,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (4,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (5,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+nH
+or
+or
+or
+Ib
+Ib
+Ib
+Ib
+nH
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (6,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+or
+or
+Hw
+AJ
+dO
+Yc
+Ui
+Ib
+Ib
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (7,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+or
+xd
+sk
+Xx
+dO
+az
+uZ
+Kr
+or
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (8,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+or
+sT
+gN
+Yr
+jG
+Kn
+UX
+gb
+or
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (9,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+Ib
+Ib
+dO
+yY
+dO
+Eu
+dO
+or
+or
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (10,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+nH
+QC
+or
+rd
+ad
+ic
+or
+QC
+nH
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (11,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+nH
+QC
+or
+Lv
+HS
+wD
+or
+QC
+nH
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (12,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+nH
+QC
+or
+rd
+Xe
+aW
+or
+QC
+nH
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (13,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+Gb
+oE
+wt
+lR
+wt
+wt
+wt
+oE
+fq
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (14,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+IP
+IP
+ut
+id
+eB
+IB
+Fv
+IP
+IP
+VF
+VF
+VF
+VF
+VF
+VF
 "}
 (15,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+VF
+VF
+VF
+VF
+VF
+oE
+LR
+Kh
+Gs
+wt
+wt
+DP
+hp
+Vm
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(16,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+oE
+cs
+dm
+FK
+Jq
+sc
+EF
+rV
+JV
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(17,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+oE
+uc
+kd
+yy
+sr
+wt
+Na
+yR
+oE
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(18,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+oE
+wt
+Zl
+in
+vY
+HL
+od
+TP
+oE
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(19,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+wZ
+ov
+SK
+Ck
+GT
+GT
+Nb
+Cp
+lx
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(20,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+wZ
+SQ
+dm
+mY
+Nb
+Nb
+tf
+vc
+FE
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(21,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+fV
+jB
+bj
+lq
+Ii
+TE
+fe
+Gl
+fV
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(22,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+sU
+jJ
+YT
+ap
+ap
+ap
+ap
+AI
+sU
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(23,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+sU
+Va
+KA
+LC
+En
+zF
+au
+ME
+sU
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(24,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+sU
+Uj
+QO
+do
+nl
+JG
+JG
+hf
+sU
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(25,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+sU
+tK
+qO
+pc
+Xs
+Xs
+qO
+hd
+sU
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(26,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+nH
+Yj
+Yj
+nH
+nH
+nH
+di
+di
+nH
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(27,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+nH
+ZR
+ZR
+nH
+nH
+nH
+ZR
+ZR
+nH
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(28,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(29,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+"}
+(30,1,1) = {"
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
+VF
 "}

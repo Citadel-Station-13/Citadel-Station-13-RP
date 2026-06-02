@@ -13,7 +13,3 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/ftu/arrowhead)
 [b]Notice[/b]: Racing shuttle, winner of the 2542 Voidline gold trophy"};
 	}
 	facing_dir = WEST
-
-#warn impl
-/obj/overmap/entity/visitable/ship/landable/trade/arrowhead
-/area/shuttle/arrowhead
