@@ -19,6 +19,8 @@ DECLARE_SHUTTLE_DOCK_MAP_PRESET_CENTERED(/nebula_tradeport, /teshari_runabout, "
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_ALIGNED(/nebula_tradeport, /beruang, "Beruang Hanger")
 	docking_restrict_to_starting = TRUE
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_ALIGNED(/nebula_tradeport, /udang, "Udang Dock")
+	// system doesn't support concave shuttles very well just allow trample
+	trample_bounding_box = TRUE
 	docking_restrict_to_starting = TRUE
 DECLARE_SHUTTLE_DOCK_MAP_PRESET_ALIGNED(/nebula_tradeport, /arrowhead, "Arrowhead Dock")
 	docking_restrict_to_starting = TRUE

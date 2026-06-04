@@ -8319,6 +8319,9 @@
 	},
 /obj/machinery/airlock_peripheral/panel/hardmapped/north_mount,
 /obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_linker/preset{
+	set_id = "securiship_dock"
+	},
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "sc" = (
@@ -11400,7 +11403,9 @@
 /obj/machinery/airlock_peripheral/panel/north_mount,
 /obj/machinery/airlock_component/controller/dock_hatch/hardmapped,
 /obj/structure/airlock_interconnect/hardmapped,
-/obj/map_helper/airlock_linker/preset/shuttle_main,
+/obj/map_helper/airlock_linker/preset{
+	set_id = "backup_shuttle_station_dock"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "yV" = (
@@ -22053,6 +22058,9 @@
 	},
 /obj/machinery/airlock_component/controller/dock_hatch/hardmapped,
 /obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_linker/preset{
+	set_id = "securiship_dock"
+	},
 /turf/simulated/floor/tiled,
 /area/security/customs)
 "VO" = (
@@ -22471,6 +22479,9 @@
 /obj/machinery/airlock_component/controller/dock_hatch/hardmapped,
 /obj/structure/airlock_interconnect/hardmapped,
 /obj/machinery/airlock_peripheral/panel/hardmapped/west_mount,
+/obj/map_helper/airlock_linker/preset{
+	set_id = "emt_shuttle_dock"
+	},
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "WI" = (

@@ -1,680 +1,1311 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"al" = (
+/obj/machinery/computer/ship/helm{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"aw" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"bP" = (
+/obj/structure/bed/chair/bay/chair/padded/yellow{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"dL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"ea" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/overmap/entity/visitable/ship/landable/trade/salvager,
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	pixel_x = 27;
+	id = "salv1"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"ew" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/power/port_gen/pacman/mrs,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"fw" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"fN" = (
+/obj/machinery/atmospherics/pipe/tank/air,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"gm" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 16
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 16
+	},
+/obj/item/storage/toolbox/syndicate/powertools,
+/obj/item/rcd/loaded,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"gV" = (
+/obj/item/tank/air,
+/obj/item/tank/air,
+/obj/item/tank/carbon_dioxide,
+/obj/item/tank/carbon_dioxide,
+/obj/structure/closet/walllocker_double/south,
+/obj/item/tank/oxygen,
+/obj/item/tank/carbon_dioxide,
+/obj/item/clothing/head/helmet/space/void/engineering/alt,
+/obj/item/clothing/head/helmet/space/void/engineering/alt,
+/obj/item/clothing/head/helmet/space/void/engineering/alt,
+/obj/item/clothing/suit/space/void/engineering/salvage,
+/obj/item/clothing/suit/space/void/engineering/salvage,
+/obj/item/clothing/suit/space/void/engineering/salvage,
+/obj/item/tank/jetpack,
+/obj/item/tank/jetpack,
+/obj/item/tank/jetpack,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"hS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"iw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"iZ" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 4
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/auto/one_single_area)
+"jm" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stack/cable_coil{
+	amount = 50
+	},
+/obj/item/stack/material/glass/reinforced{
+	amount = 50
+	},
+/obj/item/stack/material/plasteel{
+	amount = 50
+	},
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/steel/full_stack,
+/obj/item/stack/material/uranium{
+	amount = 50
+	},
+/obj/item/stack/material/phoron{
+	amount = 50
+	},
+/obj/item/stack/material/plastic{
+	amount = 50
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"ko" = (
+/obj/structure/bed/chair/bay/chair/padded/yellow{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"kM" = (
 /turf/space/basic,
 /area/space)
+"lp" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/machinery/door/blast/regular{
+	id = "salv3"
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"mI" = (
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"nf" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"nA" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"nD" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"nK" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"nZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"pa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"pg" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"pj" = (
+/turf/space/basic,
+/area/shuttle/auto/one_single_area)
+"pr" = (
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"qc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"qy" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"ss" = (
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"sY" = (
+/obj/structure/closet/walllocker_double/north,
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/obj/item/cell/basic/tier_1/weapon,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"ug" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/obj/structure/closet/secure_closet/guncabinet{
+	req_one_access = null
+	},
+/obj/item/gun/projectile/energy/phasegun/rifle,
+/obj/item/gun/projectile/energy/phasegun/rifle,
+/obj/item/gun/projectile/energy/phasegun/rifle,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -21;
+	pixel_y = 5
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -21;
+	pixel_y = -11
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -21;
+	pixel_y = -3
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"uG" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"vx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"vN" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/vehicle_module/tool/powertool,
+/obj/item/vehicle_module/tool/powertool/cutter,
+/obj/item/vehicle_module/tool/powertool/inflatables,
+/obj/item/vehicle_module/tool/powertool/prybar,
+/obj/item/vehicle_module/tool/powertool/screwdriver,
+/obj/item/vehicle_module/tool/powertool/welding,
+/obj/item/rcd/electric/mounted/mecha,
+/obj/item/vehicle_module/tool/jetpack,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"xm" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/obj/structure/closet/walllocker_double/kitchen/west,
+/obj/item/storage/box/sinpockets,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"ye" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"yG" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"yZ" = (
+/turf/space,
+/area/space)
+"zj" = (
+/obj/machinery/atmospherics/component/binary/pump/high_power{
+	dir = 8
+	},
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"zU" = (
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Ao" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"AB" = (
+/obj/machinery/power/smes/buildable/offmap_spawn,
+/obj/structure/cable/orange{
+	icon_state = "0-2"
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Bb" = (
+/obj/spawner/window/low_wall/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Bs" = (
+/obj/structure/panic_button{
+	pixel_y = 32
+	},
+/obj/machinery/computer/shuttle_control{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"By" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"BH" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Ck" = (
+/obj/structure/table/reinforced,
+/obj/machinery/photocopier/faxmachine{
+	pixel_y = 16;
+	layer = 4;
+	department = "Guardian Salvager"
+	},
+/obj/machinery/microwave,
+/obj/item/paper_bin{
+	pixel_y = 27;
+	pixel_x = 5;
+	layer = 4.1
+	},
+/obj/structure/flora/pottedplant/shoot{
+	pixel_y = 31;
+	pixel_x = -6;
+	layer = 4.3
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"CM" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"CO" = (
+/obj/machinery/computer/ship/engines{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"CW" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"FH" = (
+/obj/machinery/computer/cryopod/travel/salvager{
+	pixel_x = -30
+	},
+/obj/machinery/cryopod/robot/door/travel/salvager,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Gi" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Hs" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Ie" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/machinery/door/blast/regular{
+	id = "salv2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Ix" = (
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"Jw" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/structure/curtain/open/bed,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"Kc" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/regular{
+	id = "salv3"
+	},
+/obj/structure/fans/tiny,
+/obj/shuttle_aligner/port/two_wide/right_aligned/west/primary,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"Km" = (
+/obj/machinery/power/apc/large_cell/east_mount,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/orange,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"LV" = (
+/obj/structure/role_spawner/salvager,
+/obj/structure/curtain/open/bed,
+/obj/item/bedsheet/orange,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"Mf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/vehicle/sealed/mecha/working/ripley/geiger,
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"OG" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/fans/tiny,
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"PN" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 1
+	},
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"QS" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/cable/orange,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"RI" = (
+/obj/spawner/window/low_wall/firelocks,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
+"RW" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall/prepainted,
+/area/shuttle/auto/one_single_area)
+"Sd" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"TR" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 24;
+	id = "salv3"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"Uf" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"Uk" = (
+/obj/machinery/atmospherics/component/unary/heater,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Ux" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"UV" = (
+/obj/structure/shuttle_fuel_port{
+	pixel_y = 30
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Wi" = (
+/obj/structure/curtain/open/bed,
+/obj/structure/role_spawner/salvager,
+/obj/item/bedsheet/orange,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/one_single_area)
+"Xk" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	pixel_x = 27;
+	id = "salv2"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"YA" = (
+/obj/machinery/atmospherics/pipe/tank/phoron,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/one_single_area)
+"Zr" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/auto/one_single_area)
+"Zs" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/curtain/open/bed,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/bay/chair/padded/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/one_single_area)
+"ZS" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/obj/machinery/door/blast/regular{
+	id = "salv1"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/one_single_area)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (3,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (4,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (5,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+pj
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (6,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (7,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+iZ
+iZ
+Ix
+Kc
+lp
+Ix
+yZ
+yZ
+yZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (8,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+nf
+yG
+pa
+CW
+fw
+Ix
+yZ
+yZ
+yZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (9,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+Ix
+Uk
+nD
+ss
+Zr
+Ix
+iZ
+yZ
+yZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (10,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+Ix
+pr
+dL
+TR
+By
+Ix
+RW
+yZ
+yZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (11,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+Ix
+UV
+Hs
+iw
+vx
+jm
+qc
+yZ
+yZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (12,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+fN
+pa
+gm
+zj
+Sd
+zU
+vN
+Ix
+Ix
+yZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (13,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+fN
+nD
+YA
+ye
+Sd
+zU
+BH
+Ix
+Ix
+Ux
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (14,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+Ix
+aw
+Mf
+Gi
+iw
+vx
+ew
+nK
+Ix
+Ix
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (15,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+ZS
+ea
+OG
+nZ
+CM
+vx
+vx
+hS
+Xk
+Ie
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (16,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+Ix
+Ix
+AB
+Km
+QS
+gV
+Ix
+Ix
+Ix
+Ix
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (17,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+Ix
+Ix
+Ix
+pg
+Ix
+Ix
+Bs
+Ix
+Ix
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (18,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+RI
+FH
+xm
+Ao
+ug
+Zs
+bP
+PN
+RI
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (19,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+RI
+Ck
+uG
+mI
+Uf
+Jw
+ko
+CO
+RI
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (20,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+Ix
+Ix
+sY
+nA
+qy
+Ix
+al
+RI
+RI
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (21,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+Ix
+Ix
+LV
+Wi
+LV
+Ix
+RI
+RI
+yZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (22,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+yZ
+yZ
+Ix
+Ix
+Ix
+Ix
+Ix
+Bb
+yZ
+yZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (23,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (24,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}
 (25,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 "}

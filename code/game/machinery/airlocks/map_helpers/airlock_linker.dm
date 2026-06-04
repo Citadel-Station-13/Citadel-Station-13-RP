@@ -5,7 +5,7 @@
 	name = "airlock linker"
 	desc = "Sets airlock ID on airlock controllers and peripherals"
 	icon = 'icons/machinery/airlocks/map_helpers.dmi'
-	icon_state = "linker"
+	icon_state = "linker-purple"
 	maptext = MAPTEXT_CENTER_CONST("Airlock Linker")
 	maptext_y = 32
 
@@ -31,3 +31,22 @@
 
 /obj/map_helper/airlock_linker/preset/shuttle_main
 	set_id = "shuttle_main"
+
+/obj/map_helper/airlock_linker/proximity
+	var/const/link_range = 15
+	var/link_key
+
+/obj/map_helper/airlock_linker/proximity/red
+	icon_state = "linker-red"
+	link_key = "red"
+
+/obj/map_helper/airlock_linker/proximity/green
+	icon_state = "linker-green"
+	link_key = "green"
+
+/obj/map_helper/airlock_linker/proximity/blue
+	icon_state = "linker-blue"
+	link_key = "blue"
+
+
+#warn impl

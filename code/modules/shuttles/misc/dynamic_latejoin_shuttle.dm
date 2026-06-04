@@ -41,3 +41,4 @@ GLOBAL_LIST_INIT(dynamic_latejoin_shuttles, init_dynamic_latejoin_shuttles())
 
 #warn impl
 
+#warn scoophead, udang, promote vevalia_salvager out of nebula
