@@ -129,6 +129,8 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 							hearing_distance = 5,
 						)
 					Console.message_log += "<B><FONT color='red'>High Priority message from <A href='?src=\ref[Console];write=[sender]'>[sender]</A></FONT></B><BR>[authmsg]"
+					if(Console.radio)
+						Console.radio.autosay("High Priority message received from [sender].", Console, "department")
 				else
 					if(!Console.silent)
 						playsound(Console.loc, 'sound/machines/twobeep.ogg', 50, 1)
@@ -137,6 +139,8 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 							hearing_distance = 4,
 						)
 					Console.message_log += "<B>Message from <A href='?src=\ref[Console];write=[sender]'>[sender]</A></B><BR>[authmsg]"
+					if(Console.radio)
+						Console.radio.autosay("Message received from [sender].", Console, "department")
 			Console.set_light(2)
 
 
