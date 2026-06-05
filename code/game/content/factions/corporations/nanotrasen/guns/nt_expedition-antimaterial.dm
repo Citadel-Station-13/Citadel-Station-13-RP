@@ -3,25 +3,25 @@
 
 //* Magazines *//
 
-/obj/item/ammo_magazine/nt_expedition/antimaterial
-	name = "ammo magazine (NT-12.5-antimaterial)"
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
-	icon_state = "magazine"
-	base_icon_state = "magazine"
-	ammo_caliber = /datum/ammo_caliber/nt_expedition/antimaterial
+/obj/item/ammo_magazine/nt_expedition/antimateriel
+	name = "ammo magazine (.50 Arc)"
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimateriel.dmi'
+	icon_state = "antimateriel"
+	base_icon_state = "antimateriel"
+	ammo_caliber = /datum/ammo_caliber/nt_expedition/antimateriel
 	ammo_max = 5
-	ammo_preload = /obj/item/ammo_casing/nt_expedition/antimaterial
+	ammo_preload = /obj/item/ammo_casing/nt_expedition/antimateriel
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	magazine_type = MAGAZINE_TYPE_NORMAL
 
-/obj/item/ammo_magazine/nt_expedition/antimaterial/update_icon(updates)
+/obj/item/ammo_magazine/nt_expedition/antimateriel/update_icon(updates)
 	cut_overlays()
 	. = ..()
 	var/list/overlays_to_add = list()
 	for(var/i in 1 to min(5, get_amount_remaining()))
-		var/obj/item/ammo_casing/nt_expedition/antimaterial/casted_path_of_potential = peek_path_of_position(i)
+		var/obj/item/ammo_casing/nt_expedition/antimateriel/casted_path_of_potential = peek_path_of_position(i)
 		var/append = "basic"
-		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/antimaterial))
+		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/antimateriel))
 			append = initial(casted_path_of_potential.magazine_state)
 		var/image/overlay = image(icon, "magazine-[append]")
 		overlay.pixel_x = (i - 1) * -2
@@ -31,29 +31,29 @@
 
 //* Projectiles *//
 
-/obj/projectile/bullet/nt_expedition/antimaterial
-	name = "antimaterial sabot"
+/obj/projectile/bullet/nt_expedition/antimateriel
+	name = "antimateriel round"
 	damage_force = 55
 	damage_tier = 6
 
-//* Antimaterial Weapons *//
+//* antimateriel Weapons *//
 
-/obj/item/gun/projectile/ballistic/nt_expedition/antimaterial
-	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/antimaterial
-	caliber = /datum/ammo_caliber/nt_expedition/antimaterial
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial.dmi'
+/obj/item/gun/projectile/ballistic/nt_expedition/antimateriel
+	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/antimateriel
+	caliber = /datum/ammo_caliber/nt_expedition/antimateriel
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimateriel.dmi'
 
 // todo: placeholder sprite
-/obj/item/gun/projectile/ballistic/nt_expedition/antimaterial/singleshot
-	name = "anti-material rifle"
-	desc = "The XNR Mk.11 \"Immobilizer\" anti-material rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+/obj/item/gun/projectile/ballistic/nt_expedition/antimateriel/rifle
+	name = "anti-materiel rifle"
+	desc = "The XNR Mk.11 \"Immobilizer\" anti-materiel rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A chemical-propelled knockoff of a prototype Hephaestus Industries anti-armour rifle from the days of the Phoron Wars,
-		the XNR Mk.11 "Immobilizer" is an accurate, long-range weapon intended for use on lighter mecha. Unfortunately, its performance
-		suffers against heavier armor due to the limitations of using traditional ammunition in such a 'portable' package.
-		Regardless, its relative ease of handling (and noted ability to be used by an unaugmented soldier) keeps it in the armories of some
+		A chemically-propelled version of a prototype Hephaestus Industries anti-armour rifle from the days of the Phoron Wars,
+		the XNR Mk.11 "Immobilizer" is an accurate, long-range weapon intended for use on light mechs. Unfortunately, its performance
+		suffers against heavy armor due to the limitations of using traditional ammunition in such a 'portable' package.
+		Regardless, its relative ease of handling (and ability to be used by an unaugmented soldier) keeps it in the armories of some
 		corporate militaries and emergency responders.
 	"} + "<br>"
-	icon_state = "rifle"
+	icon_state = "antimateriel_rifle"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/antimaterial
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/antimateriel
