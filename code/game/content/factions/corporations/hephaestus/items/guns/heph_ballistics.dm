@@ -119,7 +119,7 @@
 /obj/item/ammo_casing/hephaestus/light_sidearm
 	name = "ammo casing (.355 Auto)"
 	desc = "A standardized 9x29mm cartridge produced by Hephaestus Industries."
-	description_fluff = "Hephaestus Industries' definitive handgun cartridge. Highly compact, well-performing, ubiquitous."
+	description_fluff = "Hephaestus Industries' compact handgun cartridge. Lightweight, good performance, ubiquitous."
 	icon_state = "lightsidearm"
 	casing_caliber = /datum/ammo_caliber/hephaestus/light_sidearm
 	projectile_type = /obj/projectile/bullet/hephaestus/light_sidearm
