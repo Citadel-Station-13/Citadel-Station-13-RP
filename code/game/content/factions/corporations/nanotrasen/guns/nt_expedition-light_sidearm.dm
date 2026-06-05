@@ -1,15 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Caliber *//
-
-/datum/ammo_caliber/nt_expedition/light_sidearm
-	name = "NT-9"
-	id = "nt-light-sidearm"
-	caliber = "nt-light-sidearm"
-	diameter = 9
-	length = 29
-
 //* Designs *//
 
 /datum/prototype/design/generated/nt_expedition_ammo/light_sidearm

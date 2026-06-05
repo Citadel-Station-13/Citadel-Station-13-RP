@@ -4,7 +4,7 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/light_rifle
-	name = "NT-7.5"
+	name = "7.5mm LRC"
 	id = "nt-light-rifle"
 	caliber = "nt-light-rifle"
 	diameter = 7.5
@@ -13,8 +13,9 @@
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/light_rifle
-	name = "ammo casing (NT-7.5)"
-	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics. This one seems to be for lightweight automatics."
+	name = "ammo casing (7.5mm LRC)"
+	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics."
+	description_fluff = "The 7.5mm LRC or Light Rifle Cartridge round was designed in-house by Nanotrasen to fulfill their expedition's requirements for a rifle cartridge that weighed significantly less than 7.5mm Ares while still retaining sufficient effectiveness against lightly armored targets."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
 	icon_state = "basic"
 	icon_spent = TRUE

@@ -1,15 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Caliber *//
-
-/datum/ammo_caliber/nt_expedition/heavy_rifle
-	name = "NT-7.5-LR"
-	id = "nt-heavy-rifle"
-	caliber = "nt-heavy-rifle"
-	diameter = 7.5
-	length = 54
-
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/heavy_rifle

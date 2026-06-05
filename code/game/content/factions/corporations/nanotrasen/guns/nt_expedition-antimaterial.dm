@@ -1,15 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Caliber *//
-
-/datum/ammo_caliber/nt_expedition/antimaterial
-	name = "NT-12-AM"
-	id = "nt-antimaterial"
-	caliber = "nt-antimaterial"
-	diameter = 12
-	length = 92
-
 //* Ammo Casings *//
 
 /obj/item/ammo_casing/nt_expedition/antimaterial

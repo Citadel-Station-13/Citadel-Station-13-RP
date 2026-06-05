@@ -1,15 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Caliber *//
-
-/datum/ammo_caliber/nt_expedition/heavy_sidearm
-	name = "NT-9-LR"
-	id = "nt-heavy-sidearm"
-	caliber = "nt-heavy-sidearm"
-	diameter = 9
-	length = 34
-
 //* Designs *//
 
 /datum/prototype/design/generated/nt_expedition_ammo/heavy_sidearm
