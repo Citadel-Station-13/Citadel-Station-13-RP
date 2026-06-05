@@ -68,7 +68,7 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot
 	name = "break-action rifle"
-	desc = "The XNR(S) Mk.12 \"Huntsman\" break-action rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNR Mk.12 \"Huntsman\" break-action rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		A single shot rifle chambered in 7.5mm Ares, equipped with a 2x magnified optic,
 		this is a light, uncomplicated design for low-stakes applications where rapid follow-up shots are not needed.
@@ -83,9 +83,9 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
-	desc = "The XNR Mk.9 \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-D4 \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		Utilizing the Mk.8 \"Scout\" as a baseline, this semi-automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
+		Utilizing the NT-D3 \"Scout\" as a baseline, this semi-automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
 		comes equipped with an enclosed 1x red dot sight.
 		Introduced late into the Phoron Wars as a streamlined, improved version of the Scout, it was Nanotrasen's latest attempt at
 		leveraging the power 7.5mm Ares, as it was capable of taking down most of the Syndicate's armored hardsuits with enough volume of fire.
@@ -98,9 +98,9 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
-	desc = "The XNR Mk.9 Mod I \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-D4 Mod I \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		Building upon the Mk.9's strengths, this automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
+		Building upon the D4's strengths, this automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
 		comes equipped with a wide-FOV 1x reflex sight, heavy muzzle break, vertical grip and lightweight stock.
 		Introduced in the final years of the Phoron Wars as an update to the Mk.9 pattern, this was Nanotrasen's finest attempt at
 		leveraging the power 7.5mm Ares, as it was capable of taking down most of the Syndicate's armored hardsuits with enough volume of fire.
@@ -115,7 +115,7 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
 	name = "light machine gun"
-	desc = "The XNR Mk.10  \"Nemesis\" light machine gun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-G5  \"Nemesis\" light machine gun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 
 	"} + "<br>"
