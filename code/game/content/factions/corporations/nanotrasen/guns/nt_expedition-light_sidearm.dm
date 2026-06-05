@@ -79,13 +79,6 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 		/datum/prototype/material/glass::id = 125,
 	)
 
-//* Projectiles *//
-
-/obj/projectile/bullet/nt_expedition/light_sidearm
-	name = "bullet"
-	damage_force = 30
-	damage_tier = 3
-
 //* Light Sidearms *//
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm

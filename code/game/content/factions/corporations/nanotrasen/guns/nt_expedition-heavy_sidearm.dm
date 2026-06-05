@@ -9,14 +9,14 @@
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm
-	name = "ammo magazine (NT-9-LR)"
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy-ammo.dmi'
+	name = "ammo magazine (.355 Special)"
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy.dmi'
 	rendering_system = GUN_RENDERING_DISABLED
-	ammo_caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
-	ammo_preload = /obj/item/ammo_casing/nt_expedition/heavy_sidearm
+	ammo_caliber = /datum/ammo_caliber/hephaestus/heavy_sidearm
+	ammo_preload = /obj/item/ammo_casing/hephaestus/heavy_sidearm
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader
-	name = "speedloader (NT-9-LR)"
+	name = "speedloader (.355 Special)"
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
@@ -28,9 +28,9 @@
 	. = ..()
 	var/list/overlays_to_add = list()
 	for(var/i in 1 to min(4, get_amount_remaining()))
-		var/obj/item/ammo_casing/nt_expedition/heavy_sidearm/predicted_path = peek_path_of_position(i)
+		var/obj/item/ammo_casing/hephaestus/heavy_sidearm/predicted_path = peek_path_of_position(i)
 		var/append = "basic"
-		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/heavy_sidearm))
+		if(ispath(predicted_path, /obj/item/ammo_casing/hephaestus/heavy_sidearm))
 			append = initial(predicted_path.speedloader_state)
 		var/image/overlay = image(icon, "speedloader-[append]")
 		overlay.pixel_x = (i - 1) * 2 - 1
@@ -39,7 +39,7 @@
 	add_overlay(overlays_to_add)
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/pistol
-	name = "pistol magazine (NT-9-LR)"
+	name = "pistol magazine (.355 Special)"
 	icon_state = "magazine-5"
 	base_icon_state = "magazine"
 	rendering_static_overlay = "magazine-stripe"
@@ -49,7 +49,7 @@
 
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg
-	name = "smg magazine (NT-9-LR)"
+	name = "smg magazine (.355 Special)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
@@ -61,30 +61,20 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		/datum/prototype/material/glass::id = 235,
 	)
 
-//* Projectiles *//
-
-/obj/projectile/bullet/nt_expedition/heavy_sidearm
-	name = "heavy bullet"
-	damage_force = 30
-	damage_tier = 3.75
-
 //* Heavy Sidearms *//
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm
 	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy.dmi'
-	caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
+	caliber = /datum/ammo_caliber/hephaestus/heavy_sidearm
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/pistol
 	name = "heavy pistol"
-	desc = "The XNP Mk.2 \"Angry Moth\" sidearm; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNP Mk.2 \"Ketch\" handgun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		Taking the original XNP Mk.1 to the next level, this time upscaling the frame to accept a
-		magnum 9x34mm cartridge, the “Angry Moth” sidearm is best described
-		as “Shaking hands with danger”. The recoil it imparts will make it hard to forget
-		the experience, but the performance on target leaves little to complain about.
-		Feeding from medium-sized magazines, this full-sized service pistol is seen when
-		fighting is expected and not simply a possibility.
+		A large handgun chambered in .355 Special, the \"Ketch\" features an integrated light module by default, helping to balance the gun
+		at the cost of added weight. It's two-part slide construction is reminiscent of Hephaestus' 10mm handguns, with a long travel length
+		on the rear assembly that gives it a very smooth, if somewhat unusual recoil impulse.
 	"} + "<br>"
 	icon_state = "pistol-map"
 	base_icon_state = "pistol"
@@ -94,13 +84,11 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/revolver
 	name = "heavy revolver"
-	desc = "The XNP Mk.5 \"Roller\" revolver; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNP Mk.4 \"Roller\" revolver; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		Something of a pet project of one member of the XN design team, the “Roller” harkens back
-		to the revolvers of old, but chambered in the magnum 9x34mm cartridge.
-		Sporting a medium-capacity cylinder and an inline barrel design to reduce muzzle flip,
-		this weapon is seen in the hands of those who prefer style over functionality or want
-		the fine trigger control a triple-action revolver provides.
+		A sturdy revolver chambered in .355 Special, it has a six-round capacity and was meticulously designed to minimize muzzle flip.
+		This weapon is usually seen in the hands of those who prefer the unmatched reliability and
+		fine trigger control a double-action revolver provides.
 	"} + "<br>"
 	internal_magazine = TRUE
 	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader::ammo_max
@@ -121,14 +109,11 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg
 	name = "submachine gun"
-	desc = "The XNMP Mk.8 \"Buzzsaw\" submachine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNMP Mk.5 \"Auger\" submachine gun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		Taking design notes from the Mk.3 “Buzzer, the “Buzzsaw” sports a longer barrel,
-		a thicker receiver, and a folding stock typically seen on rifles.
-		Using the magnum 9x34mm round in long-form magazines, the “Buzzsaw”'s high rate of fire and
-		punchy ammunition makes its unique sound hard to mistake when seen clearing rooms or
-		in dense jungle foliage, where the high-velocity rounds batter aside light cover
-		with relative ease.
+		A rugged submachine gun equipped with a 1x holographic sight. The \"Auger\" extracts every last
+		bit of ballistic performance out of .355 Special with it's bullpup configuration, which allows for
+		a relatively long barrel despite the gun's overall short length.
 	"} + "<br>"
 	icon_state = "smg-map"
 	base_icon_state = "smg"

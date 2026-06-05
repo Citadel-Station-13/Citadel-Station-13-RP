@@ -22,9 +22,9 @@
 	. = ..()
 	var/list/overlays_to_add = list()
 	for(var/i in 1 to min(5, get_amount_remaining()))
-		var/obj/item/ammo_casing/nt_expedition/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
+		var/obj/item/ammo_casing/hephaestus/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
 		var/append = "basic"
-		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/heavy_rifle))
+		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/hephaestus/heavy_rifle))
 			append = initial(casted_path_of_potential.stripper_state)
 		var/image/overlay = image(icon, "stripper-[append]")
 		overlay.pixel_x = (i - 1) * -2 - 8
@@ -52,13 +52,6 @@
 	base_icon_state = "mag-drum-basic"
 	ammo_max = 40
 
-//* Projectiles *//
-
-/obj/projectile/bullet/nt_expedition/heavy_rifle
-	name = "rifle bullet"
-	damage_force = 32.5
-	damage_tier = 4.75
-
 //* Heavy Rifles *//
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle
@@ -68,7 +61,7 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot
 	name = "break-action rifle"
-	desc = "The XNR Mk.12 \"Huntsman\" break-action rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNR Mk.3 \"Huntsman\" break-action rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		A single shot rifle chambered in 7.5mm Ares, equipped with a 2x magnified optic,
 		this is a light, uncomplicated design for low-stakes applications where rapid follow-up shots are not needed.
@@ -83,7 +76,7 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
-	desc = "The NT-D4 \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-D9 \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		Utilizing the NT-D3 \"Scout\" as a baseline, this semi-automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
 		comes equipped with an enclosed 1x red dot sight.
@@ -98,16 +91,16 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
-	desc = "The NT-D4 Mod I \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-D9 Mod I \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		Building upon the D4's strengths, this automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
+		Building upon the D9's strengths, this automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
 		comes equipped with a wide-FOV 1x reflex sight, heavy muzzle break, vertical grip and lightweight stock.
 		Introduced in the final years of the Phoron Wars as an update to the Mk.9 pattern, this was Nanotrasen's finest attempt at
 		leveraging the power 7.5mm Ares, as it was capable of taking down most of the Syndicate's armored hardsuits with enough volume of fire.
 		Although the fully automatic setting was still useful in some situations, the Mod I's three-round burst proved to be the most effective
 		way to deliver shots at range.
 	"} + "<br>"
-	icon_state = "auto"
+	icon_state = "auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
@@ -115,7 +108,7 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
 	name = "light machine gun"
-	desc = "The NT-G5  \"Nemesis\" light machine gun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-G7  \"Nemesis\" light machine gun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 
 	"} + "<br>"

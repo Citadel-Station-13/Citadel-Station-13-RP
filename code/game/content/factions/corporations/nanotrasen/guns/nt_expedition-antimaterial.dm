@@ -8,9 +8,9 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimateriel.dmi'
 	icon_state = "antimateriel"
 	base_icon_state = "antimateriel"
-	ammo_caliber = /datum/ammo_caliber/nt_expedition/antimateriel
+	ammo_caliber = /datum/ammo_caliber/hephaestus/antimateriel
 	ammo_max = 5
-	ammo_preload = /obj/item/ammo_casing/nt_expedition/antimateriel
+	ammo_preload = /obj/item/ammo_casing/hephaestus/antimateriel
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	magazine_type = MAGAZINE_TYPE_NORMAL
 
@@ -19,22 +19,15 @@
 	. = ..()
 	var/list/overlays_to_add = list()
 	for(var/i in 1 to min(5, get_amount_remaining()))
-		var/obj/item/ammo_casing/nt_expedition/antimateriel/casted_path_of_potential = peek_path_of_position(i)
+		var/obj/item/ammo_casing/hephaestus/antimateriel/casted_path_of_potential = peek_path_of_position(i)
 		var/append = "basic"
-		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/antimateriel))
+		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/hephaestus/antimateriel))
 			append = initial(casted_path_of_potential.magazine_state)
 		var/image/overlay = image(icon, "magazine-[append]")
 		overlay.pixel_x = (i - 1) * -2
 		overlay.pixel_y = (i - 1) * 2
 		overlays_to_add += overlay
 	add_overlay(overlays_to_add)
-
-//* Projectiles *//
-
-/obj/projectile/bullet/nt_expedition/antimateriel
-	name = "antimateriel round"
-	damage_force = 55
-	damage_tier = 6
 
 //* antimateriel Weapons *//
 
@@ -56,4 +49,4 @@
 	"} + "<br>"
 	icon_state = "antimateriel_rifle"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/antimateriel
+	magazine_restrict = /obj/item/ammo_magazine/hephaestus/antimateriel

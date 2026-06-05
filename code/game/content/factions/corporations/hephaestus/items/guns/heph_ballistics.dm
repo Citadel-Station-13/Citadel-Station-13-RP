@@ -81,12 +81,12 @@
 	/// specifically for /obj/item/ammo_magazine/hephaestus/heavy_rifle's
 	var/stripper_state = "basic"
 
-/obj/item/ammo_casing/nt_expedition/heavy_rifle/piercing
+/obj/item/ammo_casing/hephaestus/heavy_rifle/piercing
 	icon_state = "piercing"
 	stripper_state = "piercing"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/nt_expedition/heavy_rifle/rubber
+/obj/item/ammo_casing/hephaestus/heavy_rifle/rubber
 	icon_state = "rubber"
 	stripper_state = "rubber"
 	// todo: implement casing + magazine
@@ -141,3 +141,24 @@
 // 	icon_state = "rubber"
 // 	speedloader_state = "rubber"
 
+//* Projectiles *//
+
+/obj/projectile/bullet/hephaestus/antimateriel
+	name = "antimateriel bullet"
+	damage_force = 55
+	damage_tier = 6
+
+/obj/projectile/bullet/hephaestus/heavy_rifle
+	name = "rifle bullet"
+	damage_force = 32.5
+	damage_tier = 4.75
+
+/obj/projectile/bullet/hephaestus/heavy_sidearm
+	name = "heavy bullet"
+	damage_force = 30
+	damage_tier = 3.75
+
+/obj/projectile/bullet/hephaestus/light_sidearm
+	name = "bullet"
+	damage_force = 30
+	damage_tier = 3
