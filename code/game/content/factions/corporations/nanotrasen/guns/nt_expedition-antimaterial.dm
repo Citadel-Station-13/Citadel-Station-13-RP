@@ -48,7 +48,7 @@
 	name = "anti-materiel rifle"
 	desc = "The XNR Mk.11 \"Immobilizer\" anti-materiel rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A chemically-propelled version of a prototype Hephaestus Industries anti-armour rifle from the days of the Phoron Wars,
+		A downscaled version of Hephaestus Industries' \"Boltcaster\" anti-armour rifle from the days of the Phoron Wars,
 		the XNR Mk.11 "Immobilizer" is an accurate, long-range weapon intended for use on light mechs. Unfortunately, its performance
 		suffers against heavy armor due to the limitations of using traditional ammunition in such a 'portable' package.
 		Regardless, its relative ease of handling (and ability to be used by an unaugmented soldier) keeps it in the armories of some
