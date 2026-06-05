@@ -1,30 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Ammo Casings *//
-
-/obj/item/ammo_casing/nt_expedition/heavy_rifle
-	name = "ammo casing (NT-7.5-LR)"
-	desc = "A standardized 7.5x54mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy rifles."
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
-	icon_state = "basic"
-	icon_spent = TRUE
-	casing_caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
-	projectile_type = /obj/projectile/bullet/nt_expedition/heavy_rifle
-
-	/// specifically for /obj/item/ammo_magazine/nt_expedition/heavy_rifle's
-	var/stripper_state = "basic"
-
-/obj/item/ammo_casing/nt_expedition/heavy_rifle/piercing
-	icon_state = "piercing"
-	stripper_state = "piercing"
-	// todo: implement casing + magazine
-
-/obj/item/ammo_casing/nt_expedition/heavy_rifle/rubber
-	icon_state = "rubber"
-	stripper_state = "rubber"
-	// todo: implement casing + magazine
-
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/heavy_rifle

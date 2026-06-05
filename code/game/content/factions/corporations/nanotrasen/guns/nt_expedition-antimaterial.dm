@@ -1,38 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Ammo Casings *//
-
-/obj/item/ammo_casing/nt_expedition/antimaterial
-	name = "ammo casing (NT-12.5-antimaterial)"
-	desc = "A standardized 12.5x92mm cartridge for NT Expeditionary kinetics. This one seems ridiculously large, and is probably for a very powerful weapon."
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimaterial-ammo.dmi'
-	icon_state = "basic"
-	icon_spent = TRUE
-	casing_caliber = /datum/ammo_caliber/nt_expedition/antimaterial
-	projectile_type = /obj/projectile/bullet/nt_expedition/antimaterial
-
-	/// specifically for /obj/item/ammo_magazine/nt_expedition/antimaterial's
-	///
-	/// * null to default to "[base_icon_state || initial(icon_state)]"
-	var/magazine_state
-
-/obj/item/ammo_casing/nt_expedition/antimaterial/penetrator
-	icon_state = "penetrator"
-	// todo: implement casing + magazine
-
-/obj/item/ammo_casing/nt_expedition/antimaterial/emp
-	icon_state = "emp"
-	// todo: implement casing + magazine
-
-/obj/item/ammo_casing/nt_expedition/antimaterial/explosive
-	icon_state = "explosive"
-	// todo: implement casing + magazine
-
-/obj/item/ammo_casing/nt_expedition/antimaterial/titanium
-	icon_state = "titanium"
-	// todo: implement casing + magazine
-
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/antimaterial

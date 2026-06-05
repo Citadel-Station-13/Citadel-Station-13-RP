@@ -6,34 +6,6 @@
 /datum/prototype/design/generated/nt_expedition_ammo/heavy_sidearm
 	abstract_type = /datum/prototype/design/generated/nt_expedition_ammo/heavy_sidearm
 
-//* Ammo Casings *//
-
-/obj/item/ammo_casing/nt_expedition/heavy_sidearm
-	name = "ammo casing (NT-9-LR)"
-	desc = "A standardized 9mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy-duty sidearms."
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy-ammo.dmi'
-	icon_state = "basic"
-	icon_spent = TRUE
-	casing_caliber = /datum/ammo_caliber/nt_expedition/heavy_sidearm
-	projectile_type = /obj/projectile/bullet/nt_expedition/heavy_sidearm
-
-	materials_base = list(
-		/datum/prototype/material/steel::id = 85,
-	)
-
-	/// specifically for /obj/item/ammo_magazine/nt_expedition/heavy_rifle's
-	var/speedloader_state = "basic"
-
-// todo: implement projectile + magazine
-// /obj/item/ammo_casing/nt_expedition/heavy_sidearm/piercing
-// 	icon_state = "piercing"
-// 	speedloader_state = "piercing"
-
-// todo: implement projectile + magazine
-// /obj/item/ammo_casing/nt_expedition/heavy_sidearm/rubber
-// 	icon_state = "rubber"
-// 	speedloader_state = "rubber"
-
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm
