@@ -153,7 +153,7 @@
 		mid-length direct impingement gas system.
 		The basic design is fitted with a 1-1.5x variable optic integrally mounted to the carry handle.
 	"} + "<br>"
-	icon_state = "lightrifle_semi-map"
+	icon_state = "semi-map"
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
@@ -168,7 +168,7 @@
 		mid-length direct impingement gas system, it comes with a 1x red dot sight and extended handguard that houses
 		a suppressor-compatible muzzle device.
 	"} + "<br>"
-	icon_state = "lightrifle_auto-map"
+	icon_state = "auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
