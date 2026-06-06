@@ -5477,13 +5477,6 @@
 		if(alien != IS_DIONA)
 			M.adjustToxLoss(-1 * removed * chem_effective)//Keeps some of the medicinal properties, but reduced.
 
-/datum/reagent/ethanol/bentarwine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	var/chem_effective = 1
-		if(alien == IS_SLIME)
-			chem_effective = 0.75
-		if(alien != IS_DIONA)
-			M.adjustToxLoss(-1 * removed * chem_effective)//Keeps some of the medicinal properties, but reduced.
-
 /datum/reagent/cersutsauce
 	name = "Siishma-Cersut"
 	id = "cersutsauce"
