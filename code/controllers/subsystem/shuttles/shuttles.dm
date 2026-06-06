@@ -1,9 +1,6 @@
-//
-// SSshuttle subsystem - Handles initialization and processing of shuttles.
-//
-// Also handles initialization and processing of overmap sectors.	// For... some reason...
-//
-
+/**
+ * Shuttle subsystem; responsible for all shuttle operations.
+ */
 SUBSYSTEM_DEF(shuttle)
 	name = "Shuttles"
 	wait = 1 SECONDS
@@ -13,7 +10,7 @@ SUBSYSTEM_DEF(shuttle)
 	subsystem_flags = SS_NO_FIRE | SS_NO_TICK_CHECK | SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
-	//* Docks
+	//* Docks *//
 	/// shuttle docks by type for non-id registration
 	//  todo: non-static, recover()?
 	var/static/list/obj/shuttle_dock/dock_type_registry = list()
@@ -24,7 +21,7 @@ SUBSYSTEM_DEF(shuttle)
 	//  todo: non-static, recover()?
 	var/static/list/docks_by_level = list()
 
-	//* Controllers & Maps
+	//* Controllers & Maps *//
 	// TODO: recreate web shuttles
 	/// Web maps by path
 	//  todo: non-static, recover()?
@@ -33,16 +30,35 @@ SUBSYSTEM_DEF(shuttle)
 	//  todo: non-static, recover()?
 	// var/static/list/shuttle_web_node_type_registry = list()
 
-	//* Shuttles
+	//* Previews *//
+	/// generation mutex
+	var/static/preview_generation_mutex = FALSE
+
+	//* Shuttles *//
 	/// All shuttles by id
 	//  todo: non-static, recover()?
 	var/static/list/datum/shuttle/shuttle_registry = list()
 
-	//* Templates
+	//* Templates *//
 	/// templates by path
 	var/list/datum/shuttle_template/templates_by_path = list()
 	/// templates by id; hardcoded templates still register in here.
 	var/list/datum/shuttle_template/templates_by_id = list()
+	/// dynamic latejoin template list
+	var/list/datum/dynamic_latejoin_shuttle/dynamic_latejoin_shuttles
+
+/datum/controller/subsystem/shuttle/Initialize()
+	// load all hardcoded templates
+	init_shuttle_templates()
+
+	// create dynamic latejoin shuttles
+	init_dynamic_latejoin_shuttles()
+
+	// preload missing previews if needed
+	if(Configuration.get_entry(/datum/toml_config_entry/backend/shuttles/generate_all_previews_on_startup))
+		generate_previews_for_loaded_templates(TRUE)
+
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/shuttle/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
@@ -147,6 +163,20 @@ SUBSYSTEM_DEF(shuttle)
 	#warn dupe check
 	templates_by_id[template.id] = template
 	return template
+
+/datum/controller/subsystem/shuttle/proc/init_shuttle_templates()
+	for(var/datum/shuttle_template/path as anything in subtypesof(/datum/shuttle_template))
+		if(initial(path.abstract_type) == path)
+			continue
+		fetch_template(path)
+
+/datum/controller/subsystem/shuttle/proc/init_dynamic_latejoin_shuttles()
+	dynamic_latejoin_shuttles = list()
+	for(var/datum/dynamic_latejoin_shuttle/path as anything in subtypesof(/datum/dynamic_latejoin_shuttle))
+		if(initial(path.abstract_type) == path)
+			continue
+		var/datum/dynamic_latejoin_shuttle/instance = new(path)
+		dynamic_latejoin_shuttles += instance
 
 //* Web Shuttles *//
 

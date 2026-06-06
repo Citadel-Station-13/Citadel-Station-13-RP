@@ -1,6 +1,7 @@
 DECLARE_SHUTTLE_TEMPLATE(/factions/ftu/caravan)
 	id = "ftu-caravan"
 	name = "Spacena Caravan Shuttle"
+	path = "maps/sectors/nebula_tradeport/shuttles/nebula_tradeport-caravan.dmm"
 	desc = "A cheap shuttle made for people wanting to live in their shuttle or travel."
 	display_name = "Spacena Caravan Shuttle"
 	descriptor = /datum/shuttle_descriptor{
@@ -13,8 +14,3 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/ftu/caravan)
 [b]Notice[/b]: Caravan shuttle, cheap, comfy, fragile."};
 	}
 	facing_dir = WEST
-
-#warn impl
-
-/obj/overmap/entity/visitable/ship/landable/trade/caravan
-/area/shuttle/caravan

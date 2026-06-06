@@ -1,6 +1,7 @@
-DECLARE_SECTOR_SHUTTLE_TEMPLATE(/nebula_tradeport, /vevalia_salvage)
-	id = "sector-nebula_tradeport-vevalia_salvage"
+DECLARE_SHUTTLE_TEMPLATE(/factions/ftu/vevalia_salvage)
+	id = "ftu-vevalia_salvage"
 	name = "GCSS Vevalia Salvage Shuttle"
+	path = "maps/shuttles/factions/ftu/vevalia_salvage.dmm"
 	desc = "A small shuttle of Skrell design, refitted for salvage work."
 	descriptor = /datum/shuttle_descriptor{
 		mass = 13500;
@@ -12,7 +13,3 @@ DECLARE_SECTOR_SHUTTLE_TEMPLATE(/nebula_tradeport, /vevalia_salvage)
 	[b]Notice[/b]: A vessel part of a bigger fleet arround the Guardian Corporation Mothership. Here in the sector to do legal salvage. the Guardian Corporation is small, and Neutral to NT."};
 	}
 	facing_dir = EAST
-
-#warn impl
-/obj/overmap/entity/visitable/ship/landable/trade/salvager
-/area/shuttle/salvager

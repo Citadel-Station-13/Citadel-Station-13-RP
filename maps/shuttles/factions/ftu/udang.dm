@@ -9,9 +9,3 @@ DECLARE_SHUTTLE_TEMPLATE(/factions/ftu/udang)
 		overmap_legacy_scan_name = "Udang Transport Shuttle";
 	}
 	facing_dir = EAST
-
-#warn impl
-
-/obj/overmap/entity/visitable/ship/landable/trade/udang
-/area/shuttle/udang/cockpit
-/area/shuttle/udang/main

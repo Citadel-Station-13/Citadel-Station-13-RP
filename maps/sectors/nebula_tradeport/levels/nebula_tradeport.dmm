@@ -13575,7 +13575,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "bdZ" = (
-/obj/shuttle_dock_preload/generated/map_specific/sector/nebula_tradeport/vevalia_salvage,
+/obj/shuttle_dock_preload/generated/factions/ftu/vevalia_salvage,
 /turf/space/basic,
 /area/space)
 "bfo" = (

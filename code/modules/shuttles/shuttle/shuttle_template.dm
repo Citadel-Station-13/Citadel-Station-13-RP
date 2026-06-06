@@ -23,6 +23,10 @@
 	/// * may be visible ic
 	/// * defaults to name
 	var/display_name
+	/// display desc for players
+	/// * may be visible ic
+	/// * defaults to desc
+	var/display_desc
 	/// lore fluff
 	/// * may be visible ic
 	var/fluff

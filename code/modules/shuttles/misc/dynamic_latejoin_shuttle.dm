@@ -21,12 +21,16 @@ GLOBAL_LIST_INIT(dynamic_latejoin_shuttles, init_dynamic_latejoin_shuttles())
 	var/shuttle_template_id
 
 	/// name
+	/// * auto-loaded from template `display_name` if available
 	var/name
 	/// *short* description
+	/// * auto-loaded from template `display_desc` if available
 	var/desc
 	/// long fluff
+	/// * auto-loaded from template `fluff` if available
 	var/fluff
 	/// category
+	/// * auto-loaded from template `category` if available
 	var/category
 
 	/// freely joinable?
@@ -39,6 +43,30 @@ GLOBAL_LIST_INIT(dynamic_latejoin_shuttles, init_dynamic_latejoin_shuttles())
 	///   a recommendation lol
 	var/list/restrict_to_ckeys
 
-#warn impl
+/datum/dyanmic_latejoin_shuttle/New()
+	auto_load_from_template()
 
-#warn scoophead, udang, promote vevalia_salvager out of nebula
+/datum/dynamic_latejoin_shuttle/proc/auto_load_from_template()
+	var/datum/shuttle_template/template = SSshuttle.fetch_template(shuttle_template_id)
+	if(!template)
+		return
+	if(!name)
+		name = template.display_name || template.name
+	if(!desc)
+		desc = template.display_desc || template.desc
+	if(!fluff)
+		fluff = template.fluff
+	if(!category)
+		category = template.category
+
+/datum/dynamic_latejoin_shuttle/ftu_vevalia_salvage
+	shuttle_template_id = /datum/shuttle_template/factions/ftu/vevalia_salvage::id
+	available_to_public = TRUE
+
+/datum/dynamic_latejoin_shuttle/ftu_udang
+	shuttle_template_id = /datum/shuttle_template/factions/ftu/udang::id
+	available_to_public = TRUE
+
+/datum/dynamic_latejoin_shuttle/ftu_scoophead
+	shuttle_template_id = /datum/shuttle_template/factions/ftu/scoophead::id
+	available_to_public = TRUE

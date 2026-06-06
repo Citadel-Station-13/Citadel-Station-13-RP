@@ -3,7 +3,22 @@
 
 //* Previews *//
 
+/datum/controller/subsystem/shuttle/proc/generate_all_previews_for_loaded_templates(hardcoded_only = TRUE)
+	UNTIL(!preview_generation_mutex)
+	preview_generation_mutex = TRUE
+
+	#warn impl; notify world for lag
+
+	preview_generation_mutex = FALSE
+
 /datum/controller/subsystem/shuttle/proc/generate_preview(datum/shuttle/instance, for_path_md5)
+	UNTIL(!preview_generation_mutex)
+
+	preview_generation_mutex = TRUE
+	generate_preview_impl(instance, for_path_md5)
+	preview_generation_mutex = FALSE
+
+/datum/controller/subsystem/shuttle/proc/generate_preview_impl(datum/shuttle/instance, for_path_md5)
 	var/preview_path = get_preview_path(for_path_md5)
 	if(fexists(preview_path))
 		return
