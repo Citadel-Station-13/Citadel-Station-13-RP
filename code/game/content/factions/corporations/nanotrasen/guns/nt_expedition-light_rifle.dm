@@ -98,17 +98,14 @@
 	name = "extended magazine (7.5mm LRC)"
 	icon_state = "rifle-ext-1"
 	base_icon_state = "rifle-ext"
-	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	rendering_static_overlay = "rifle-ext-stripe"
 	ammo_max = 24
 
-/obj/item/ammo_magazine/nt_expedition/light_rifle/drum
+/obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack/drum
 	name = "drum magazine (7.5mm LRC)"
 	icon_state = "rifle-drum-1"
 	base_icon_state = "rifle-drum"
-	weight_volume = ITEM_VOLUME_RIFLE_MAG
-	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	rendering_static_overlay = "rifle-drum-stripe"
 	ammo_max = 40
@@ -156,7 +153,7 @@
 	icon_state = "semi-map"
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
@@ -171,40 +168,35 @@
 	icon_state = "auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
-/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/pdw
-	name = "personal defense weapon"
-	desc = "The XNR Mk.4 Mod.2 \"Little Scout\" personal defense weapon; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/carbine
+	name = "semi-automatic carbine"
+	desc = "The XNR Mk.2 Mod II \"Mallet\" light rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		Taking the concept of the original “Scout” and chopping the barrel, this weapon is lighter,
-		more handy, and easier to carry when you need something more than a pistol,
-		but a rifle would interfere with other duties. Sticking to the semi-automatic fire
-		control of the parent, but chopping the barrel and adding the compensator of the Mod.1,
-		this weapon's ability to fold away helps make it easy to package and
-		store inside cramped cockpits and into survival kits with its compact magazines.
+
 	"} + "<br>"
 	icon_state = "pdw-map"
 	base_icon_state = "pdw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/lmg
 	name = "squad automatic weapon"
-	desc = "The XNR Mk.4 Mod.3 \"Machine Scout\" squad automatic weapon; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The XNR Mk.2 Mod III \"Mallet\" squad automatic weapon; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		The final entry of the “Scout” series, the “Machine Scout” makes use of a heavier barrel,
-		a recoil compensating gyro on the bottom of the handguard,
-		and the option to feed from larger box and drum magazines, this gives a heavy punch to
-		recon teams and security units while keeping a common set of parts
-		to reduce the complexities of servicing and maintaining the series as a whole.
+		A light suppport weapon version of the Mk.2 \"Mallet\" pattern, utilizing a completely reworked upper assembly configured to fire from an open bolt, it features a heavier
+		barrel profile,	piston-operated gas system and quick-change barrel mechanism. It accepts both linked belts of ammunition
+		and standard magazines and weighs drastically less than most LMGs due to it's rifle-based architecture
+		being relatively 'fragile' by support weapon standards, deemed acceptable due to the expectation of being operated by a single person with short
+		deployments and regular maintenance cycles.
 	"} + "<br>"
 	icon_state = "saw-map"
 	base_icon_state = "saw"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
 	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN

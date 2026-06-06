@@ -46,12 +46,10 @@
 	base_icon_state = "mag-ext-basic"
 	ammo_max = 24
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/drum
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/drum
 	name = "drum magazine (7.5mm Ares)"
 	icon_state = "mag-drum-basic-0"
 	base_icon_state = "mag-drum-basic"
-	weight_volume = ITEM_VOLUME_RIFLE_MAG
-	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 40
 
 //* Heavy Rifles *//
@@ -88,7 +86,7 @@
 	icon_state = "semi"
 	base_icon_state = "semi"
 	item_renderer = /datum/gun_item_renderer/empty_state
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
@@ -105,7 +103,7 @@
 	icon_state = "auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
@@ -116,7 +114,7 @@
 	"} + "<br>"
 	icon_state = "lmg"
 	// todo: box mag
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick/drum
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/drum
 	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN
 
 	// todo: rendering; how are we going to render both unloaded and open?
