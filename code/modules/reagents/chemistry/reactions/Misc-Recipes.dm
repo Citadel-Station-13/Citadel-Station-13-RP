@@ -434,7 +434,7 @@
 	name = "Release Hydrogen"
 	id = "releasehydrogen"
 	result = "hydrogen"
-	required_reagents = list("hydronite" = 1, "sacid" = 2 "catalyst" = 0.5)
+	required_reagents = list("hydronite" = 1, "sacid" = 2, "catalyst" = 0.5)
 	catalysts = list("catalyst" = 5)
 	result_amount = 1
 
