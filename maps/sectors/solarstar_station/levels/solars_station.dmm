@@ -52,7 +52,7 @@
 /area/sector/solar_station/deck1)
 "aV" = (
 /obj/effect/map_effect/perma_light{
-	light_range = 100;
+	light_range = 64;
 	light_power = 5;
 	light_color = "#FF0000";
 	name = "THE SUN"
