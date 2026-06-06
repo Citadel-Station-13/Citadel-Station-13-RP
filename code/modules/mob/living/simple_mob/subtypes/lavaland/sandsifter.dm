@@ -1,7 +1,7 @@
 /datum/category_item/catalogue/fauna/sandsifter
 	name = "Sand Sifters"
 	desc = "Sand Sifters are a species native to KT-943, known commonly as Surt. \
-	Largely inconsequential to NanoTrasen's interests on the planet, the sand sifter is \
+	Largely inconsequential to Nanotrasen's interests on the planet, the sand sifter is \
 	akin to bottom feeders found within other ecosystems; continuously crawling through the ash \
 	sands that blanket the planet for base nutrients and rotting organic material. \
 	Hence the common name the species is known by."
@@ -15,7 +15,7 @@
 	icon_living = "lavasnail"
 	icon_dead = "lavasnail-dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/sandsifter)
-	
+
 	maxHealth = 20
 	health = 20
 	min_oxy = 0
