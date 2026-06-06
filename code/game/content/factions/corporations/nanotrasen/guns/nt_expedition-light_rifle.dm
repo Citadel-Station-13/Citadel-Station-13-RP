@@ -124,6 +124,9 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 
+// grumble grumble, rifle cartridge revolvers are actually a terrible idea...
+// this also needs a sprite
+
 ///obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/revolver
 //	name = "high-caliber revolver"
 //	desc = "The XNP Mk.13 \"David\" revolver; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -183,20 +186,21 @@
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
-/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/lmg
-	name = "squad automatic weapon"
-	desc = "The XNR Mk.2 Mod III \"Mallet\" squad automatic weapon; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
-	description_fluff = {"
-		A light suppport weapon version of the Mk.2 \"Mallet\" pattern, utilizing a completely reworked upper assembly configured to fire from an open bolt, it features a heavier
-		barrel profile,	piston-operated gas system, quick-change barrel mechanism and aluminum heatsinks. It accepts both linked belts of ammunition
-		and standard magazines and weighs significantly less than most LMGs due to it's rifle-based architecture
-		being relatively 'fragile' by support weapon standards, deemed acceptable due to the expectation of being operated by a single person with short
-		deployments and regular maintenance cycles.
-	"} + "<br>"
-	icon_state = "saw-map"
-	base_icon_state = "saw"
-	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
-	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
-	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN
+// todo: needs sprite
+///obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/lmg
+//	name = "squad automatic weapon"
+//	desc = "The XNR Mk.2 Mod III \"Mallet\" squad automatic weapon; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+//	description_fluff = {"
+//		A light suppport weapon version of the Mk.2 \"Mallet\" pattern, utilizing a completely reworked upper assembly configured to fire from an open bolt, it features a heavier
+//		barrel profile,	piston-operated gas system, quick-change barrel mechanism and aluminum heatsinks. It accepts both linked belts of ammunition
+//		and standard magazines and weighs significantly less than most LMGs due to it's rifle-based architecture
+//		being relatively 'fragile' by support weapon standards, deemed acceptable due to the expectation of being operated by a single person with short
+//		deployments and regular maintenance cycles.
+//	"} + "<br>"
+//	icon_state = "saw-map"
+//	base_icon_state = "saw"
+//	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+//	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
+//	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH
+//	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
+//	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN

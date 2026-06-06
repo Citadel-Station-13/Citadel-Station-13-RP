@@ -48,7 +48,7 @@
 //* Weapons *//
 
 /**
- * Naming scheme:
+ * 2560s XN Program Naming scheme:
  *
  * XN<T> Mk.<V>
  *
@@ -56,9 +56,20 @@
  *
  * e.g. XNS Mk.6 -> T = S for shotgun, prototype 6.
  */
+
+ /**
+ * 2490s NT Arms Initiative Naming scheme:
+ *
+ * NT-<X><#>
+ *
+ * Where 'X' is a pre-determined category (in alphabetical order), and '#' is the model number (by date of introduction).
+ *
+ * e.g. NT-A2 -> X = A for handgun, model 2.
+ */
+
 /obj/item/gun/projectile/ballistic/nt_expedition
 	description_fluff_categorizer = {"
-		This weapon is part of the experimental lineage of chemical-primed kinetic weaponry developed as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division.
+		This weapon is part of the experimental lineage of chemically-propelled kinetic weaponry developed as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division.
 		Created both to enhance compatibility as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an above-average reliability rating
 		in addition to being rather simple to restock out on the Frontier.
 	"}

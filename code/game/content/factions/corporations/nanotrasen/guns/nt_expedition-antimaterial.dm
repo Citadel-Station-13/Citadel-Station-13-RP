@@ -1,4 +1,4 @@
-//* This file is explicitly licensed under the MIT license. *//
+/* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
 //* Magazines *//
@@ -36,17 +36,17 @@
 	caliber = /datum/ammo_caliber/nt_expedition/antimateriel
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimateriel.dmi'
 
-// todo: placeholder sprite
-/obj/item/gun/projectile/ballistic/nt_expedition/antimateriel/rifle
-	name = "anti-materiel rifle"
-	desc = "The NT-F7 \"Immobilizer\" anti-materiel rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
-	description_fluff = {"
-		A downscaled version of Hephaestus Industries' \"Boltcaster\" anti-armour rifle from the days of the Phoron Wars,
-		the NT-F7 \"Immobilizer\" is an accurate, long-range weapon intended for use on light mechs. Unfortunately, its performance
-		suffers against heavy armor due to the limitations of using traditional ammunition in such a 'portable' package.
-		Regardless, its relative ease of handling (and ability to be used by an unaugmented soldier) keeps it in the armories of some
-		corporate militaries and emergency responders.
-	"} + "<br>"
-	icon_state = "antimateriel_rifle"
-	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/hephaestus/antimateriel
+// todo: needs sprite
+///obj/item/gun/projectile/ballistic/nt_expedition/antimateriel/rifle
+//	name = "anti-materiel rifle"
+//	desc = "The NT-F7 \"Immobilizer\" anti-materiel rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+//	description_fluff = {"
+//		A downscaled version of Hephaestus Industries' \"Boltcaster\" anti-armour rifle from the days of the Phoron Wars,
+//		the NT-F7 \"Immobilizer\" is an accurate, long-range weapon intended for use on light mechs. Unfortunately, its performance
+//		suffers against heavy armor due to the limitations of using traditional ammunition in such a 'portable' package.
+//		Regardless, its relative ease of handling (and ability to be used by an unaugmented soldier) keeps it in the armories of some
+//		corporate militaries and emergency responders.
+//	"} + "<br>"
+//	icon_state = "antimateriel_rifle"
+//	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+//	magazine_restrict = /obj/item/ammo_magazine/hephaestus/antimateriel

@@ -106,16 +106,17 @@
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
-/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
-	name = "light machine gun"
-	desc = "The NT-G7  \"Nemesis\" light machine gun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
-	description_fluff = {"
-
-	"} + "<br>"
-	icon_state = "lmg"
-	// todo: box mag
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/drum
-	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN
+// todo: needs sprite
+///obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
+//	name = "light machine gun"
+//	desc = "The NT-G7  \"Nemesis\" light machine gun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+//	description_fluff = {"
+//
+//	"} + "<br>"
+//	icon_state = "lmg"
+//	// todo: box mag
+//	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/drum
+//	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN
 
 	// todo: rendering; how are we going to render both unloaded and open?
 	// todo: rendering; maybe expand the render additional to allow for generation of a list?
