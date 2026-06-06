@@ -5472,10 +5472,10 @@
 
 /datum/reagent/ethanol/bentarwine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	var/chem_effective = 1
-		if(alien == IS_SLIME)
-			chem_effective = 0.75
-		if(alien != IS_DIONA)
-			M.adjustToxLoss(-1 * removed * chem_effective)//Keeps some of the medicinal properties, but reduced.
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.adjustToxLoss(-1 * removed * chem_effective)//Keeps some of the medicinal properties, but reduced.
 
 /datum/reagent/cersutsauce
 	name = "Siishma-Cersut"
@@ -5487,13 +5487,13 @@
 
 /datum/reagent/cersutsauce/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	var/potency = 2
-		if(alien == IS_XENOHYBRID)
+	if(alien == IS_XENOHYBRID)
 	return
-		if(alien != IS_SCORI)
-			potency = 4
-		if(metabolism.total_processed_dose < 5 && (metabolism.cycles_so_far == 1 || prob(5)))
-			to_chat(M,"<span class='danger'>You feel like your insides are going numb!</span>")
-		if(metabolism.total_processed_dose >= 5)
+	if(alien != IS_SCORI)
+		potency = 4
+	if(metabolism.total_processed_dose < 5 && (metabolism.cycles_so_far == 1 || prob(5)))
+		to_chat(M,"<span class='danger'>You feel like your insides are going numb!</span>")
+	if(metabolism.total_processed_dose >= 5)
 			M.apply_effect(potency, AGONY, 0)
-		if(prob(5))
-			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>")
+	if(prob(5))
+		M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>")
