@@ -157,6 +157,10 @@
 /obj/item/holder/mouse
 	w_class = WEIGHT_CLASS_TINY
 
+/obj/item/holder/sandsifter
+	w_class = WEIGHT_CLASS_TINY
+	origin_tech = list(TECH_BIO = 3)
+
 /obj/item/holder/borer
 	origin_tech = list(TECH_BIO = 6)
 
