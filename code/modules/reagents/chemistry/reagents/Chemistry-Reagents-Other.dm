@@ -219,7 +219,7 @@
 /datum/reagent/uraninite/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.apply_effect(5 * removed, IRRADIATE, 0)
 
-datum/reagent/phoronite
+/datum/reagent/phoronite
 	name = "Phoronite"
 	id = "phoronite"
 	description = "Powdered unprocessed phoron. The crystals haven't been forced into their reactive form."
@@ -227,7 +227,7 @@ datum/reagent/phoronite
 	color = "#9D14DB"
 	taste_description = "tingly sand"
 
-datum/reagent/hydronite
+/datum/reagent/hydronite
 	name = "Hydronite"
 	id = "hydronite"
 	description = "Powdered unprocessed metallic hydrogen."
