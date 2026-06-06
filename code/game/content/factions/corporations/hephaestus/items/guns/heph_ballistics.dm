@@ -45,7 +45,7 @@
 	name = "ammo casing (.50 Arc)"
 	desc = "A standardized 12x92mm cartridge produced by Hephaestus Industries."
 	description_fluff = "Undoubtedly humanity's most well-established anti-materiel cartridge, it seems to follow humans anywhere they can be found across the Orion Spur. The name .50 Arcadian was chosen by Hephaestus Industries to represent it's provenance from Mars' Arcadia Planitia, where a large fraction of the cartridges were being produced at the time it was first introduced in the 2440s."
-	icon_state = "antimateriel"
+	icon_state = "antimateriel_cartridge"
 	casing_caliber = /datum/ammo_caliber/hephaestus/antimateriel
 	projectile_type = /obj/projectile/bullet/hephaestus/antimateriel
 
@@ -54,48 +54,48 @@
 	/// * null to default to "[base_icon_state || initial(icon_state)]"
 	var/magazine_state
 
-/obj/item/ammo_casing/hephaestus/antimaterial/penetrator
-	icon_state = "penetrator"
+///obj/item/ammo_casing/hephaestus/antimaterial/penetrator
+//	icon_state = "penetrator_cartridge"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/hephaestus/antimaterial/emp
-	icon_state = "emp"
+///obj/item/ammo_casing/hephaestus/antimaterial/emp
+//	icon_state = "emp_cartridge"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/hephaestus/antimaterial/explosive
-	icon_state = "explosive"
+///obj/item/ammo_casing/hephaestus/antimaterial/explosive
+//	icon_state = "explosive_cartridge"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/hephaestus/antimaterial/titanium
-	icon_state = "titanium"
+///obj/item/ammo_casing/hephaestus/antimaterial/titanium
+//	icon_state = "titanium_cartridge"
 	// todo: implement casing + magazine
 
 /obj/item/ammo_casing/hephaestus/heavy_rifle
 	name = "ammo casing (7.5mm Ares)"
 	desc = "A standardized 7.5x54mm cartridge produced by Hephaestus Industries."
 	description_fluff = "Hephaestus Industries' standard-issue full-powered rifle cartridge, utilized by a tremendous catalog of weaponry where heavy stopping power is required, from general purpose machineguns to bolt-action sniper rifles."
-	icon_state = "heavyrifle"
+	icon_state = "heavyrifle_cartridge"
 	casing_caliber = /datum/ammo_caliber/hephaestus/heavy_rifle
 	projectile_type = /obj/projectile/bullet/hephaestus/heavy_rifle
 
 	/// specifically for /obj/item/ammo_magazine/hephaestus/heavy_rifle's
 	var/stripper_state = "basic"
 
-/obj/item/ammo_casing/hephaestus/heavy_rifle/piercing
-	icon_state = "piercing"
-	stripper_state = "piercing"
+///obj/item/ammo_casing/hephaestus/heavy_rifle/piercing
+//	icon_state = "piercing_cartridge"
+//	stripper_state = "piercing"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/hephaestus/heavy_rifle/rubber
-	icon_state = "rubber"
-	stripper_state = "rubber"
+///obj/item/ammo_casing/hephaestus/heavy_rifle/rubber
+//	icon_state = "rubber_cartridge"
+//	stripper_state = "rubber"
 	// todo: implement casing + magazine
 
 /obj/item/ammo_casing/hephaestus/heavy_sidearm
 	name = "ammo casing (.355 Special)"
 	desc = "A standardized 9x34mm cartridge produced by Hephaestus Industries."
 	description_fluff = "The bigger brother of .355 Auto, Hephaestus Industries' .355 Special was introduced, as the name suggests, for situations where a shorter cartridge would simply not cut it. It's semi-rimmed design allows it to be used in both revolvers and standard magazine-fed weapons alike."
-	icon_state = "heavysidearm"
+	icon_state = "heavysidearm_cartridge"
 	casing_caliber = /datum/ammo_caliber/hephaestus/heavy_sidearm
 	projectile_type = /obj/projectile/bullet/hephaestus/heavy_sidearm
 
@@ -120,7 +120,7 @@
 	name = "ammo casing (.355 Auto)"
 	desc = "A standardized 9x29mm cartridge produced by Hephaestus Industries."
 	description_fluff = "Hephaestus Industries' compact handgun cartridge. Lightweight, good performance, ubiquitous."
-	icon_state = "lightsidearm"
+	icon_state = "lightsidearm_cartridge"
 	casing_caliber = /datum/ammo_caliber/hephaestus/light_sidearm
 	projectile_type = /obj/projectile/bullet/hephaestus/light_sidearm
 
@@ -154,7 +154,7 @@
 	damage_tier = 4.75
 
 /obj/projectile/bullet/hephaestus/heavy_sidearm
-	name = "heavy bullet"
+	name = "bullet"
 	damage_force = 30
 	damage_tier = 3.75
 

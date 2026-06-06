@@ -17,22 +17,22 @@
 	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics."
 	description_fluff = "The 7.5mm LRC or Light Rifle Cartridge round was designed by Nanotrasen in collaboration with Hephaestus Industries to fulfill their exploration department's requirement for a rifle cartridge that weighed significantly less than 7.5mm Ares while still retaining sufficient effectiveness against lightly armored targets."
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
-	icon_state = "basic"
+	icon_state = "lightrifle_cartridge"
 	icon_spent = TRUE
 	casing_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	projectile_type = /obj/projectile/bullet/nt_expedition/light_rifle
 
 	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_rifle's
-	var/speedloader_state = "basic"
+//	var/speedloader_state = "basic"
 
-/obj/item/ammo_casing/nt_expedition/light_rifle/piercing
-	icon_state = "piercing"
-	speedloader_state = "piercing"
+///obj/item/ammo_casing/nt_expedition/light_rifle/piercing
+//	icon_state = "piercing_cartridge"
+//	speedloader_state = "piercing"
 	// todo: implement casing + magazine
 
-/obj/item/ammo_casing/nt_expedition/light_rifle/rubber
-	icon_state = "rubber"
-	speedloader_state = "rubber"
+///obj/item/ammo_casing/nt_expedition/light_rifle/rubber
+//	icon_state = "rubber_cartridge"
+//	speedloader_state = "rubber"
 	// todo: implement casing + magazine
 
 //* Magazines *//
@@ -40,8 +40,8 @@
 /obj/item/ammo_magazine/nt_expedition/light_rifle
 	name = "ammo magazine (7.5mm LRC)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
-	icon_state = "magazine"
-	base_icon_state = "magazine"
+	icon_state = "lightrifle_magazine"
+	base_icon_state = "lightrifle_magazine"
 	weight_volume = ITEM_VOLUME_PISTOL_MAG
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
@@ -96,18 +96,18 @@
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack/extended
 	name = "extended magazine (7.5mm LRC)"
-	icon_state = "rifle-ext-1"
-	base_icon_state = "rifle-ext"
+	icon_state = "lightrifle-ext-1"
+	base_icon_state = "lightrifle-ext"
 	rendering_count = 1
-	rendering_static_overlay = "rifle-ext-stripe"
+	rendering_static_overlay = "lightrifle-ext-stripe"
 	ammo_max = 24
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack/drum
 	name = "drum magazine (7.5mm LRC)"
-	icon_state = "rifle-drum-1"
-	base_icon_state = "rifle-drum"
+	icon_state = "lightrifle-drum-1"
+	base_icon_state = "lightrifle-drum"
 	rendering_count = 1
-	rendering_static_overlay = "rifle-drum-stripe"
+	rendering_static_overlay = "lightrifle-drum-stripe"
 	ammo_max = 40
 
 //* Projectiles *//
@@ -153,7 +153,7 @@
 		mid-length direct impingement gas system.
 		The basic design is fitted with a 1-1.5x variable optic integrally mounted to the carry handle.
 	"} + "<br>"
-	icon_state = "semi-map"
+	icon_state = "lightrifle_semi-map"
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
@@ -168,23 +168,24 @@
 		mid-length direct impingement gas system, it comes with a 1x red dot sight and extended handguard that houses
 		a suppressor-compatible muzzle device.
 	"} + "<br>"
-	icon_state = "auto-map"
+	icon_state = "lightrifle_auto-map"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
-/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/carbine
-	name = "semi-automatic carbine"
-	desc = "The XNR Mk.2 Mod II \"Mallet\" light rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
-	description_fluff = {"
-
-	"} + "<br>"
-	icon_state = "pdw-map"
-	base_icon_state = "pdw"
-	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
-	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
+// todo: needs sprite
+///obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/carbine
+//	name = "semi-automatic carbine"
+//	desc = "The XNR Mk.2 Mod II \"Mallet\" light rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+//	description_fluff = {"
+//
+//	"} + "<br>"
+//	icon_state = "lightrifle_pdw-map"
+//	base_icon_state = "pdw"
+//	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+//	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
+//	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
 
 // todo: needs sprite
 ///obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/lmg
@@ -197,8 +198,8 @@
 //		being relatively 'fragile' by support weapon standards, deemed acceptable due to the expectation of being operated by a single person with short
 //		deployments and regular maintenance cycles.
 //	"} + "<br>"
-//	icon_state = "saw-map"
-//	base_icon_state = "saw"
+//	icon_state = "lightrifle_saw-map"
+//	base_icon_state = "lightrifle_saw"
 //	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 //	render_bolt_overlay = BALLISTIC_RENDER_BOLT_CLOSE
 //	render_break_overlay = BALLISTIC_RENDER_BREAK_BOTH
