@@ -188,8 +188,8 @@
 	desc = "The XNR Mk.2 Mod III \"Mallet\" squad automatic weapon; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		A light suppport weapon version of the Mk.2 \"Mallet\" pattern, utilizing a completely reworked upper assembly configured to fire from an open bolt, it features a heavier
-		barrel profile,	piston-operated gas system and quick-change barrel mechanism. It accepts both linked belts of ammunition
-		and standard magazines and weighs drastically less than most LMGs due to it's rifle-based architecture
+		barrel profile,	piston-operated gas system, quick-change barrel mechanism and aluminum heatsinks. It accepts both linked belts of ammunition
+		and standard magazines and weighs significantly less than most LMGs due to it's rifle-based architecture
 		being relatively 'fragile' by support weapon standards, deemed acceptable due to the expectation of being operated by a single person with short
 		deployments and regular maintenance cycles.
 	"} + "<br>"
