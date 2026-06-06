@@ -320,7 +320,7 @@
 	color = "#684c34"
 	taste_description = "bitterness"
 
-/datum/reagent/pokealeapaste/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+/datum/reagent/pokaleapaste/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_DIONA)
 		return
 	if(M.bodytemperature > 310)
