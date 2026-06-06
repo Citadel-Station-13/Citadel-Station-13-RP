@@ -32,7 +32,7 @@
 		overlays_to_add += overlay
 	add_overlay(overlays_to_add)
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	name = "ammo magazine (7.5mm Ares)"
 	icon_state = "mag-basic-0"
 	base_icon_state = "mag-basic"
@@ -40,7 +40,7 @@
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 16
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/extended
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/extended
 	name = "extended magazine (7.5mm Ares)"
 	icon_state = "mag-ext-basic-0"
 	base_icon_state = "mag-ext-basic"
@@ -50,6 +50,8 @@
 	name = "drum magazine (7.5mm Ares)"
 	icon_state = "mag-drum-basic-0"
 	base_icon_state = "mag-drum-basic"
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
+	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 40
 
 //* Heavy Rifles *//
