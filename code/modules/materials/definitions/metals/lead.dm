@@ -21,3 +21,12 @@
 	nullification = MATERIAL_RESISTANCE_LOW
 
 	material_constraints = MATERIAL_CONSTRAINT_RIGID
+
+/datum/prototype/material/lead/generate_recipes()
+	. = ..()
+	. += create_stack_recipe_datum(
+		name = "metal rod",
+		product = /obj/item/stack/rods,
+		cost = 1,
+		amount = 2
+	)
