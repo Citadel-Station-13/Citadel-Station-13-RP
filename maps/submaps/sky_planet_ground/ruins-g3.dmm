@@ -53,7 +53,6 @@
 /area/submap/skyplanet/poi/ruins2)
 "I" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
 "K" = (

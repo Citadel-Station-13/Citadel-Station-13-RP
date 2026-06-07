@@ -16078,7 +16078,6 @@
 /area/sector/nebula_tradeport/comroom)
 "aSo" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/simulated/floor/airless,
 /area/space)
 "aSp" = (
