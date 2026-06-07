@@ -14,3 +14,38 @@
 2026-05-25:
   GySgtMurphy:
   - rscadd: charcoal sticks to the crafting menu
+2026-05-29:
+  Putnam3145:
+  - tweak: R-UST lighting has been made somewhat less eye-blistering
+  - bugfix: R-UST lighting has been made somewhat less server-blistering
+  Shadowtail117:
+  - tweak: Racking a gun's slide is now much quieter.
+  timothyteakettle:
+  - bugfix: fix taking beakers out of grenades
+2026-05-30:
+  AlphaM01:
+  - rscadd: Added two new brands of seasonal cigarette.
+  - rscadd: Added three new brands of seasonal alcohol.
+  - rscadd: Added four new varieties of seasonal soda.
+  - rscadd: Added seven new varieties of seasonal cocktails.
+  - rscadd: Added one seasonal variety of food synthesis reaction.
+  - rscadd: Added three new varieties of seasonal snack food.
+  - rscadd: Added one seasonal variety of canned coffee.
+  - rscadd: Added one new regular cocktail.
+  - rscadd: Added Pineapple Juice cans to Bar and Cafe vendors.
+  - rscdel: Removed NipponTan drinks from Robust Softdrinks stock.
+  - tweak: Temperamento Menthol Company renamed to Temperamento Tobacco Company.
+  - tweak: Small changes to the Vetalan Outreach Society advertisement.
+  - tweak: Small changes to BludBox MAX description.
+  - tweak: Blud now always nourishes Vetalans regardless of nutrition status.
+  - tweak: Blud now metabolizes at the same rate as Blood when ingested.
+  - tweak: Blud now provides Vetalans with 75% the nutritional value compared to Blood.
+  - tweak: Vetalan Care Package now contains BludBox MAX and BludBox MAX Light cartons
+      instead of AB+ Blood Packs.
+  - tweak: Vetalan Care Package no longer contains a suit.
+  - tweak: BludBox cartons now hold 50u, up from 30u.
+  - tweak: CC's Hard Rootbeer proof now calculated in a more lore-friendly manner.
+  - bugfix: Pineapple juice no longer purple when poured into a metamorphic glass.
+  - imageadd: added sprites for all item additions listed above.
+  Shadowtail117:
+  - balance: Saw traps will no longer immediately sever limbs when stepped on.

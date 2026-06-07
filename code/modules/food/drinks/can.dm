@@ -198,6 +198,16 @@
 	. = ..()
 	reagents.add_reagent("grapejuice", 30)
 
+/obj/item/reagent_containers/food/drinks/cans/pineapple_juice
+	name = "\improper Pineapple Juice"
+	desc = "You can almost hear the waves crashing already! Almost!"
+	icon_state = "pineapple_can"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/pineapple_juice/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("pineapplejuice", 30)
+
 /obj/item/reagent_containers/food/drinks/cans/tonic
 	name = "\improper T-Borg's Tonic Water"
 	desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
@@ -382,3 +392,56 @@
 	. = ..()
 	reagents.add_reagent("water", 40) //Important for Crafting Recipes Also means Colonists don't need station/hotsprings for water.
 
+// Seasonals - Xmas
+
+/obj/item/reagent_containers/food/drinks/cans/cola_cinnamon
+	name = "\improper Space Cola Cinnamon"
+	desc = "The classic taste of Space Cola with a hint of warm cinnamon flavor. Happy Holidays!"
+	icon_state = "cinnamoncola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_cinnamon/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cinnamoncola", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/space_upcranberry
+	name = "\improper Space-Up Cranberry"
+	desc = "Space-Up with a cranberry and spice twist. Happy Holidays!"
+	icon_state = "space-upcranberry"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/space_upcranberry/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("space_upcranberry", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint
+	name = "\improper Robust Express Peppermint Mocha"
+	desc = "Delicious caffeine infused with creamy vanilla and peppermint flavor. It's pleasantly warm to the touch."
+	icon_state = "robustexpresspeppermint"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/robustexpresspeppermint/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("peppermint_mocha", 30)
+
+// Seasonals - Halloween
+
+/obj/item/reagent_containers/food/drinks/cans/cola_licorice
+	name = "\improper Space Cola Licorice"
+	desc = "The classic taste of Space Cola infused with red and black licorice mix. Happy Halloween!"
+	icon_state = "licoricecola"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/cola_licorice/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("licoricecola", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb_mystery
+	name = "\improper Dr. Gibb Mystery"
+	desc = "A mysterious seasonal variant of Dr. Gibb. Happy Halloween!"
+	icon_state = "dr_gibbmystery"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb_mystery/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("dr_gibbmystery", 30)

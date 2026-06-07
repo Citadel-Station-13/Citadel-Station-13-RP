@@ -1772,6 +1772,13 @@
 	required_reagents = list("rum" = 1, "pineapplejuice" = 1, "coconutmilk" = 1, "ice" = 1)
 	result_amount = 3
 
+/datum/chemical_reaction/drinks/adiosmotherfucker
+	name = "Adios, Motherfucker"
+	id = "adiosmotherfucker"
+	result = "adiosmotherfucker"
+	required_reagents = list("vodka" = 1, "gin" = 1, "rum" = 1, "tequila" = 1, "bluecuracao" = 1, "lemonjuice" = 1, "space_up" = 2)
+	result_amount = 8
+
 
 //Blud-based Cocktails
 //All of these drinks should contain some level of blood_content in their reagent code
@@ -1918,3 +1925,57 @@
 	required_reagents = list("unathijuice" = 2, "protein" = 1)
 	result_amount = 3
 	reaction_message_instant = "The mixture turns a deep orange."
+
+//Drinks that require seasonal ingredients
+//Seasonals - Xmas
+
+/datum/chemical_reaction/drinks/caramel_russian_russian
+	name = "Caramel White Russian"
+	id = "caramelrussian"
+	result = "caramelrussian"
+	required_reagents = list("kahlua" = 1, "caramelwhiskey" = 1, "cream" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/caramel_cider
+	name = "Salted Caramel Cider"
+	id = "caramelcider"
+	result = "caramelcider"
+	required_reagents = list("caramelwhiskey" = 1, "cider" = 2)
+	result_amount = 3
+
+//Seasonals - Halloween
+
+/datum/chemical_reaction/drinks/appletini
+	name = "Appletini"
+	id = "appletini"
+	result = "appletini"
+	required_reagents = list("vodka" = 2, "sourappleschnapps" = 1, "lemonjuice" = 1)
+	result_amount = 4
+
+/datum/chemical_reaction/drinks/sourapplemimosa
+	name = "Sour Apple Mimosa"
+	id = "sourapplemimosa"
+	result = "sourapplemimosa"
+	required_reagents = list("sourappleschnapps" = 1, "champagne" = 2)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/sourapplefizz
+	name = "Sour Apple Fizz"
+	id = "sourapplefizz"
+	result = "sourapplefizz"
+	required_reagents = list("sourappleschnapps" = 1, "limejuice" = 1, "sodawater" = 2)
+	result_amount = 4
+
+/datum/chemical_reaction/drinks/candycornmartini
+	name = "Candy Corn Martini"
+	id = "candycornmartini"
+	result = "candycornmartini"
+	required_reagents = list("candycornvodka" = 1, "pineapplejuice" = 1, "cream" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/halloweenpunch
+	name = "Halloween Punch"
+	id = "halloweenpunch"
+	result = "halloweenpunch"
+	required_reagents = list("candycornvodka" = 1, "pineapplejuice" = 1, "orangejuice" = 1)
+	result_amount = 3
