@@ -1,0 +1,5 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - tweak: "Added intercoms to the patient rooms in the NSV Endeavor's medical department."
+  - tweak: "Adjusted the CMO's quarters in the NSV Endeavor."
