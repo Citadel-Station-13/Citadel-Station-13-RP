@@ -199,7 +199,7 @@
 	// TODO: better gravity system
 	structural_area.has_gravity = SSmapping.level_has_trait(
 		translation.dest_lower_left.z,
-		ZTRAIT_HAS_GRAVITY,
+		ZTRAIT_GRAVITY,
 	) || !!length(GLOB.gravity_generators["[translation.dest_lower_left.z]"])
 
 	translation.run_aftereffects(structural_area)
