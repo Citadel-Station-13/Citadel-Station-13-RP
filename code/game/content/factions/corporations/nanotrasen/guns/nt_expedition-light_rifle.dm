@@ -22,9 +22,6 @@
 	casing_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	projectile_type = /obj/projectile/bullet/nt_expedition/light_rifle
 
-	/// specifically for /obj/item/ammo_magazine/nt_expedition/light_rifle's
-//	var/speedloader_state = "basic"
-
 ///obj/item/ammo_casing/nt_expedition/light_rifle/piercing
 //	icon_state = "piercing_cartridge"
 //	speedloader_state = "piercing"
@@ -46,43 +43,6 @@
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 	ammo_preload = /obj/item/ammo_casing/nt_expedition/light_rifle
-
-///obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader
-//	name = "speedloader (7.5mm LRC)"
-//	icon_state = "speedloader"
-//	base_icon_state = "speedloader"
-//	ammo_max = 6
-
-///obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader/update_icon(updates)
-//	cut_overlays()
-//	. = ..()
-//	var/list/overlays_to_add = list()
-//	var/static/list/pos_x = list(
-//		2,
-//		4,
-//		6,
-//		1,
-//		2,
-//		4,
-//	)
-//	var/static/list/pos_y = list(
-//		-2,
-//		-4,
-//		-6,
-//		-1,
-//		-2,
-//		-4
-//	)
-//	for(var/i in 1 to min(6, get_amount_remaining()))
-//		var/obj/item/ammo_casing/nt_expedition/light_rifle/predicted_path = peek_path_of_position(i)
-//		var/append = "basic"
-//		if(ispath(predicted_path, /obj/item/ammo_casing/nt_expedition/light_rifle))
-//			append = initial(predicted_path.speedloader_state)
-//		var/image/overlay = image(icon, "speedloader-[append]")
-//		overlay.pixel_x = pos_x[i]
-//		overlay.pixel_y = pos_y[i]
-//		overlays_to_add += overlay
-//	add_overlay(overlays_to_add)
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	name = "ammo magazine (7.5mm LRC)"
@@ -123,26 +83,6 @@
 	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
-
-// grumble grumble, rifle cartridge revolvers are actually a terrible idea...
-// this also needs a sprite
-
-///obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/revolver
-//	name = "high-caliber revolver"
-//	desc = "The XNP Mk.13 \"David\" revolver; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
-//	description_fluff = {"
-//		An oddball of a revolver, the Mark 13 was made as little more than a proof of concept.
-//		Chambering 7.5x39mm light rifle ammunition, the "David" sidearm is capable of consistently,
-//		and accurately (for its uncanny size) punching above its paygrade.
-//		Unfortunately, the downsides of using such a heavy caliber in a sidearm package limits its
-//		practical use. This is nonetheless seen now and then in the hands of enthusiasts.
-//	"} + "<br>"
-//	internal_magazine = TRUE
-//	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/light_rifle/speedloader::ammo_max
-//	icon_state = "revolver"
-//	base_icon_state = "revolver"
-//	render_break_overlay = BALLISTIC_RENDER_BREAK_OPEN
-//	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/rifle
 	name = "semi-automatic rifle"
