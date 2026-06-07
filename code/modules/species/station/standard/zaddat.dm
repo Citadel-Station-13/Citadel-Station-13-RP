@@ -104,8 +104,7 @@
 		if(for_target.temporarily_remove_from_inventory(existing_mask, INV_OP_FORCE | INV_OP_SILENT))
 			into_inv?.Add(existing_mask)
 			var/obj/item/creating_mask = new mask_type
-			if(for_target.inventory.equip_to_slot_if_possible(creating_mask, /datum/inventory_slot/inventory/mask, INV_OP_SILENT | INV_OP_FLUFFLESS))
-			else
+			if(!for_target.inventory.equip_to_slot_if_possible(creating_mask, /datum/inventory_slot/inventory/mask, INV_OP_SILENT | INV_OP_FLUFFLESS))
 				into_inv?.Add(creating_mask)
 		else
 			into_inv?.Add(mask_type)
@@ -114,15 +113,14 @@
 
 	var/suit_path = /obj/item/clothing/suit/space/void/zaddat
 	if(for_target)
-		var/obj/item/existing_suit_slot = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/suit::id)
-		var/obj/item/creating_suit_slot = new suit_path
-		if(existing_suit_slot)
-			if(for_target.temporarily_remove_from_inventory(existing_suit_slot, INV_OP_FORCE | INV_OP_SILENT))
-				into_inv?.Add(existing_suit_slot)
-				if(!for_target.inventory.equip_to_slot_if_possible(creating_suit_slot, /datum/inventory_slot/inventory/suit, INV_OP_FORCE | INV_OP_SILENT))
-					into_inv?.Add(creating_suit_slot)
-			else
-				into_inv?.Add(creating_suit_slot)
+		var/obj/item/existing_suit = for_target.inventory.get_slot_single(/datum/inventory_slot/inventory/suit::id)
+		if(for_target.temporarily_remove_from_inventory(existing_suit, INV_OP_FORCE | INV_OP_SILENT))
+			into_inv?.Add(existing_suit)
+			var/obj/item/creating_suit = new suit_path
+			if(!for_target.inventory.equip_to_slot_if_possible(creating_suit, /datum/inventory_slot/inventory/suit, INV_OP_SILENT | INV_OP_FLUFFLESS))
+				into_inv?.Add(creating_suit)
+		else
+			into_inv?.Add(suit_path)
 	else
 		into_inv?.Add(suit_path)
 
