@@ -59,11 +59,6 @@
 /obj/machinery/air_alarm/south_mount,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/chief)
-"acp" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled,
-/area/space)
 "add" = (
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
@@ -566,16 +561,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"ayC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/red{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/hydrogen,
-/obj/machinery/door/window/northright{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/space)
 "azA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -3199,13 +3184,6 @@
 /obj/item/flashlight/lamp/green/on,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
-"cLp" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
-/turf/simulated/floor/tiled,
-/area/space)
 "cLC" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -5539,14 +5517,6 @@
 /obj/map_helper/paint/sun,
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
-"eQT" = (
-/obj/structure/window/reinforced,
-/obj/machinery/door/window/northright{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/helium,
-/turf/simulated/floor/tiled,
-/area/space)
 "eRm" = (
 /obj/landmark/spawnpoint/job/botanist,
 /turf/simulated/floor/tiled,
@@ -7363,13 +7333,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
-"gwn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/red{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/hydrogen,
-/turf/simulated/floor/tiled,
-/area/space)
 "gww" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -8277,11 +8240,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/d4afthall/endeavour)
-"hoD" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled,
-/area/space)
 "hpu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 8
@@ -9155,16 +9113,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/portnacelle)
-"hZT" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/window/northright{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
-/turf/simulated/floor/tiled,
-/area/space)
 "ibo" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/structure/disposalpipe/segment{
@@ -13800,11 +13748,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/break_room/lower)
-"mlq" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled,
-/area/space)
 "mlO" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -17649,12 +17592,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/d4starboardforhall/endeavour)
 "pQq" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/structure/window/reinforced,
-/obj/machinery/door/window/northright{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
+/turf/space/basic,
 /area/space)
 "pRw" = (
 /obj/effect/floor_decal/rust,
@@ -18789,14 +18727,6 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/tcommsat/chamber)
-"qRZ" = (
-/obj/machinery/portable_atmospherics/canister/phoron,
-/obj/structure/window/reinforced,
-/obj/machinery/door/window/northright{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/space)
 "qSb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
@@ -19117,14 +19047,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/engineering/substation/deck4forward/endeavour)
-"rmP" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/structure/window/reinforced,
-/obj/machinery/camera/network/engineering{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/space)
 "rni" = (
 /obj/machinery/button/remote/blast_door{
 	id = "hangar_maint";
@@ -19316,14 +19238,6 @@
 "rvq" = (
 /turf/simulated/wall/prepainted/engineering,
 /area/engineering/locker_room)
-"rwh" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/obj/structure/window/reinforced,
-/obj/machinery/door/window/northright{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/space)
 "rwT" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -21312,14 +21226,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/maintenance/security/lower)
-"tBs" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/machinery/portable_atmospherics/canister/helium,
-/turf/simulated/floor/tiled,
-/area/space)
 "tBK" = (
 /obj/machinery/door/airlock/glass/research{
 	name = "Hangar Repair Bay";
@@ -23251,11 +23157,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/hallway/d4starboardforhall/endeavour)
-"vjF" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled,
-/area/space)
 "vjL" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -23769,14 +23670,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
-"vGP" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/machinery/door/window/northright{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor/tiled,
-/area/space)
 "vGV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -25140,14 +25033,6 @@
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/hallway/d4afthall/endeavour)
-"wTf" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/structure/window/reinforced,
-/obj/machinery/door/window/northright{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/space)
 "wTv" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 10
@@ -37297,14 +37182,14 @@ mKs
 jNg
 jNg
 jNg
-qRZ
 pQq
-wTf
-rwh
-vGP
-eQT
-ayC
-hZT
+pQq
+pQq
+pQq
+pQq
+pQq
+pQq
+pQq
 jNg
 jNg
 jNg
@@ -37491,14 +37376,14 @@ jNg
 jNg
 jNg
 jNg
-acp
-mlq
-vjF
-hoD
-rmP
-tBs
-gwn
-cLp
+pQq
+pQq
+pQq
+pQq
+pQq
+pQq
+pQq
+pQq
 jNg
 jNg
 jNg
