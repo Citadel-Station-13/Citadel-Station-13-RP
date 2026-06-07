@@ -196,3 +196,15 @@
 	// spawn at those
 	for(var/obj/map_helper/gear_marker/role/marker in overflow_markers)
 		marker.inject(gear)
+
+/datum/map_starting_gear/role/security
+	role_tag = "security"
+
+/datum/map_starting_gear/role/engineer
+	role_tag = "engineer"
+
+/datum/map_starting_gear/role/captain
+	role_tag = "captain"
+
+/datum/map_starting_gear/role/medical
+	role_tag = "medical"

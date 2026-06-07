@@ -234,3 +234,15 @@ GLOBAL_REAL_LIST(distributed_gear_marker_usage_weights) = list(
 
 /obj/map_helper/gear_marker/role/make_locker/ignite()
 	return new locker_type(loc, locker_appearance)
+
+/obj/map_helper/gear_marker/role/make_locker/security
+	role_tag = "security"
+
+/obj/map_helper/gear_marker/role/make_locker/medical
+	role_tag = "medical"
+
+/obj/map_helper/gear_marker/role/make_locker/engineer
+	role_tag = "engineer"
+
+/obj/map_helper/gear_marker/role/make_locker/captain
+	role_tag = "captain"
