@@ -1,6 +1,16 @@
 /datum/map_template
 	abstract_type = /datum/map_template
 
+	/**
+	 * ID.
+	 * * Map templates that are registered proper have IDs.
+	 * * ID is currently optional, because 'ephemeral' map templates
+	 *   do exist.
+	 * * Please still fill it in when you can.
+	 */
+	var/id
+	#warn impl
+
 	//* description *//
 	/// template name
 	var/name = "Default Template Name"

@@ -51,21 +51,44 @@
 
 #warn impl; do dirs too + icons
 
-/**
- * For /datum/map_injection/fixed_template_seeding.
- *
- * * This allows specific tags to be spawned here.
- * * As of right now, this has no checks on maximum size. Make your tags accordingly.
- */
-/obj/map_helper/template_loader/corner_aligned/fixed_template_seeding_target
-	/**
-	 * Target tags for the template seeding.
-	 * * Optionally associate a tag to a number to weight it.
-	 *   Injection gets final say.
-	 */
-	var/list/allow_tags = list()
+/obj/map_helper/template_loader/corner_aligned/proc/resolve_template()
+	return null
 
-/obj/map_helper/template_loader/corner_aligned/fixed_template_seeding_target/default
-	allow_tags = list(
-		"default" = 1,
-	)
+/obj/map_helper/template_loader/corner_aligned/resolve_aligned_load_target()
+	var/datum/map_template/template = resolve_template()
+	if(!template)
+		return
+
+	#warn impl / measure
+	var/x = get_turf(src).x
+	var/y = get_turf(src).y
+	var/z = get_turf(src).z
+	var/orientation = SOUTH
+
+	// adjust x/y based on orientation and template size
+	var/width = template.width
+	var/height = template.height
+
+	if(orientation == SOUTH)
+		// no adjustment
+		pass
+	else if(orientation == EAST)
+		x -= width - 1
+	else if(orientation == NORTH)
+		x -= width - 1
+		y -= height - 1
+	else if(orientation == WEST)
+		y -= height - 1
+
+	return list(template, x, y, z, orientation)
+	#warn impl
+
+
+/obj/map_helper/template_loader/corner_aligned/static_load
+	/**
+	 * May be an ID, path, or instance.
+	 */
+	var/load_template
+
+/obj/map_helper/template_loader/corner_aligned/resolve_template()
+	#warn impl
