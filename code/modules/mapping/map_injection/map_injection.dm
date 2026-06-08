@@ -25,5 +25,16 @@
  */
 /datum/map_injection
 
-/datum/map_injection/proc/injection(datum/dmm_context/context)
+/**
+ * Called when the entire map is done loading but before atom init.
+ * * This is called with SSatoms in mapload mode.
+ */
+/datum/map_injection/proc/on_map_pre_init(datum/map_context/context)
+	return
+
+/**
+ * Called when the entire map is done loading and atom-initializing.
+ * * This is called with SSatoms in normal mode.
+ */
+/datum/map_injection/proc/on_map_post_init(datum/map_context/context)
 	return

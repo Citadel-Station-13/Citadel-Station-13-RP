@@ -22,20 +22,16 @@
 	var/used = FALSE
 	/// was the loading successful?
 	var/success = FALSE
-	/// were map_initialization() hooks on /obj/map_helpers already fired?
-	var/map_initializations_fired = FALSE
-	/// were /datum/map_injection's fired
-	var/map_injections_fired = FALSE
 
 	//* set these before loading *//
 
-	/// mangling id - if non-null, atoms under this context should
-	/// use this to mangle their obfuscation IDs appropriately
-	/// if they're meant to link to other devices on the same map
-	var/mangling_id
-
-	/// injected middleware
-	var/list/datum/map_injection/injections
+	#warn hook
+	/**
+	 * Our map context.
+	 */
+	var/datum/map_context/map
+	/// set to map_context's value for speed
+	var/map_mangling_id
 
 	//* set by load cycle *//
 
@@ -58,18 +54,6 @@
 	/// * This can be null.
 	var/datum/dmm_parsed/loaded_dmm
 
-	//* injected by things in load cycle *//
-
-	/// collected map_helpers asking to have map_initialization's called
-	var/list/obj/map_helper/map_initialization_hooked = list()
-
-	/// collected gear markers
-	var/list/obj/map_helper/gear_marker/distributed_gear_markers
-	/// collected gear markers
-	var/list/obj/map_helper/gear_marker/stamped_gear_markers_by_role
-	/// collected role markers
-	var/list/obj/map_helper/role_marker/role_markers_by_tag
-
 /datum/dmm_context/proc/mark_used()
 	if(used)
 		stack_trace("a dmm_context was reused; this is not allowed and will result in bugs.")
@@ -85,45 +69,6 @@
 	loaded_bounds[MAP_MAXZ] = 0
 	var/datum/dmm_orientation/orientation_data = GLOB.dmm_orientations["[SOUTH]"]
 	orientation_data.populate_context(src)
-
-/**
- * fire off initializations
- *
- * 1. injections
- * 2. initializations
- *
- * * this is executed
- */
-/datum/dmm_context/proc/execute_postload()
-	fire_map_injections()
-	fire_map_initializations()
-
-/datum/dmm_context/proc/fire_map_initializations()
-	if(map_initializations_fired)
-		CRASH("initializations already were fired")
-	map_initializations_fired = TRUE
-	// so SSatoms doesn't init the atoms we make
-	SSatoms.map_loader_begin("dmm-context")
-	Master.StartLoadingMap()
-	for(var/obj/map_helper/helper in map_initialization_hooked)
-		helper.map_initializations(src)
-	Master.StopLoadingMap()
-	SSatoms.map_loader_stop("dmm-context")
-
-/datum/dmm_context/proc/fire_map_injections()
-	if(map_injections_fired)
-		CRASH("injections already were fired")
-	map_injections_fired = TRUE
-	// so SSatoms doesn't init the atoms we make
-	SSatoms.map_loader_begin("dmm-context")
-	Master.StartLoadingMap()
-	for(var/datum/map_injection/injection in injections)
-		injection.injection(src)
-	Master.StopLoadingMap()
-	SSatoms.map_loader_stop("dmm-context")
-
-/datum/dmm_context/proc/register_injection(datum/map_injection/injection)
-	injections |= injection
 
 /datum/dmm_context/proc/loaded()
 	return success

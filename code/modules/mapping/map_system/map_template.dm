@@ -1,13 +1,13 @@
 /datum/map_template
 	abstract_type = /datum/map_template
 
-	//* description
+	//* description *//
 	/// template name
 	var/name = "Default Template Name"
 	/// template description
 	var/desc = "Some text should go here. Maybe."
 
-	//* file
+	//* file *//
 	/// path to the map
 	var/map_path
 	/// prefix of path including last /
@@ -15,7 +15,7 @@
 	/// suffix of path (usually just the filename)
 	var/suffix
 
-	//* cached data
+	//* cached data *//
 	/// cached map
 	var/datum/dmm_parsed/parsed
 	/// keep cached map
@@ -25,19 +25,25 @@
 	/// cached height
 	var/height = 0
 
-	//* loading
+	//* loading *//
 	/// times loaded this round
 	var/tmp/loaded = 0
 	/// If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
 	var/annihilate = FALSE
 
-	//* loading as its own level
+	//* loading as its own level *//
 	/// traits to have if loaded as standalone level
 	var/list/level_traits
 	/// attributes to have if loaded as standalone level
 	var/list/level_get_attributes
 	/// id to have if loaded as standalone level
 	var/level_id
+
+	//* global state (yes i said global state too bad) *//
+	/**
+	 * Increased every time recursively_load is called. This is used to prevent infinite recursion when templates load other templates.
+	 */
+	var/static/recursive_load_level = 0
 
 	//* legacy below *//
 
@@ -143,8 +149,8 @@
  * loads a map template
  *
  * @params
- * * T - turf. center or lower left, depending on centered param.
- * * centered - is T the center, or lower left?
+ * * where - turf. center or lower left, depending on centered param.
+ * * centered - is 'where' the center, or lower left?
  * * orientation - the orientation to load in. default is SOUTH.
  * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
  * * context - dmm_context to use
@@ -152,10 +158,22 @@
  *
  * @return null if failed, or /datum/dmm_context context
  */
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, datum/dmm_context/context, defer_context)
-	var/ll_x = T.x
-	var/ll_y = T.y
-	var/ll_z = T.z
+#warn audit calls for callbacks?
+/datum/map_template/proc/load(turf/where, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, datum/dmm_context/context, defer_context)
+	if(recursive_load_level >= 10)
+		CRASH("trying to recursively load more than 10 templates deep. this probably \
+		means you have an infinite loop somewhere in your map template / loader logic.")
+
+	recursive_load_level++
+	. = load_impl(where, centered, orientation, deferred_callbacks, context, defer_context)
+	recursive_load_level--
+
+#warn lower left?
+/datum/map_template/proc/load_impl(turf/lower_left, orientation, annihilate_bounds, datum/dmm_context/context)
+
+	var/ll_x = where.x
+	var/ll_y = where.y
+	var/ll_z = where.z
 	var/sideways = orientation & (EAST|WEST)
 	var/real_width = sideways? height : width
 	var/real_height = sideways? width : height
@@ -237,10 +255,10 @@
 			++cleaned
 	SSmapping.subsystem_log("Deleted [cleaned] atoms.")
 
-/datum/map_template/proc/get_affecting_turfs(turf/T, centered = FALSE, orientation = SOUTH)
-	var/ll_x = T.x
-	var/ll_y = T.y
-	var/ll_z = T.z
+/datum/map_template/proc/get_affecting_turfs(turf/where, centered = FALSE, orientation = SOUTH)
+	var/ll_x = where.x
+	var/ll_y = where.y
+	var/ll_z = where.z
 	var/sideways = orientation & (EAST|WEST)
 	var/real_width = sideways? height : width
 	var/real_height = sideways? width : height
@@ -263,20 +281,12 @@
 	SSatoms.init_map_bounds(bounds)
 
 /**
- * called when normally loaded
+ * Called post-load, pre-init.
+ *
+ * * Use the context reference to pass in callbacks as needed to map init pre/post load lists.
  *
  * @params
  * * context - load context
- * * late_generation - callbacks to fire after ruin seeding. if this is being spawned standalone, it fires immediately.
  */
-/datum/map_template/proc/on_normal_load(datum/dmm_context/context, list/datum/callback/late_generation)
-	return
-
-/**
- * called when loaded as a new zlevel
- *
- * @params
- * * z_index - zlevel we loaded onto
- */
-/datum/map_template/proc/on_z_load(z_index)
+/datum/map_template/proc/on_load(datum/dmm_context/context)
 	return

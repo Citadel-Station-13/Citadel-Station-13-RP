@@ -72,7 +72,6 @@
 
 	qdel(src)
 
-
 /obj/map_helper/engine_loader/proc/get_turfs_to_clean(lx, ly, lz, ldir)
 	. = list()
 	if(clean_turfs)
