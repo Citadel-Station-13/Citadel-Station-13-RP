@@ -1,5 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes:
-  - rscadd: "Added a new gas canister storage area to the NSV Endeavor's atmospherics."
-  - bugfix: "Fixed a disconnected disposal chute in the NSV Endeavor's atmospherics."

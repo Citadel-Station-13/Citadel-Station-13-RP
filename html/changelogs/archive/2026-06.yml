@@ -1,3 +1,15 @@
 2026-06-07:
   TheLordME:
   - bugfix: Minor missed tweak
+2026-06-08:
+  Shadowtail117:
+  - tweak: Added intercoms to the patient rooms in the NSV Endeavor's medical department.
+  - tweak: Adjusted the CMO's quarters in the NSV Endeavor.
+  - rscadd: Requests consoles will now transmit via their department's radio when
+      they have received a new message.
+  - rscadd: Added a new gas canister storage area to the NSV Endeavor's atmospherics.
+  - bugfix: Fixed a disconnected disposal chute in the NSV Endeavor's atmospherics.
+  - rscadd: Added another window to the Head of Personnel's office on the NSB Atlas.
+  - bugfix: Bows (and bow variants) no longer have safeties that need to be toggled.
+  timothyteakettle:
+  - bugfix: fixes zaddats not spawning in with the correct survival gear

@@ -1,4 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes:
-  - rscadd: "Requests consoles will now transmit via their department's radio when they have received a new message."
