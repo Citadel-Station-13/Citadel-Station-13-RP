@@ -133,8 +133,8 @@
 		/obj/item/reagent_containers/blood/prelabeled/OPlus = 2,
 		/obj/item/reagent_containers/blood/prelabeled/OMinus = 5,
 		/obj/item/reagent_containers/blood/empty = 5,
-		/obj/item/reagent_containers/food/drinks/bludboxmax = 5,
-		/obj/item/reagent_containers/food/drinks/bludboxmaxlight = 5,
+		/obj/item/reagent_containers/food/drinks/bludboxmax = 10,
+		/obj/item/reagent_containers/food/drinks/bludboxmaxlight = 10,
 	)
 	contraband = list(
 		/obj/item/reagent_containers/glass/bottle/stoxin = 2,
