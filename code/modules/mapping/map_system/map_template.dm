@@ -300,3 +300,10 @@
  */
 /datum/map_template/proc/on_load(datum/dmm_context/context)
 	return
+
+/**
+ * Just used for map specific templates.
+ * * Format: `/datum/map_template/map_specific/[map name]`
+ */
+/datum/map_template/map_specific
+	abstract_type = /datum/map_template/map_specific

@@ -3690,7 +3690,6 @@
 #include "code\modules\mapping\spawner\tcomms_relay.dm"
 #include "code\modules\mapping\spawner\window.dm"
 #include "code\modules\mapping\templates\engine.dm"
-#include "code\modules\mapping\templates\map_specific.dm"
 #include "code\modules\mapping\templates\shuttle.dm"
 #include "code\modules\mapping\templates\submap.dm"
 #include "code\modules\mapping\templates\submaps_legacy.dm"

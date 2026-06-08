@@ -10,3 +10,10 @@
 
 /datum/map_template_random/proc/get_template()
 	return pickweightAllowZero(weighted_templates)
+
+/**
+ * Just used for map specific templates.
+ * * Format: `/datum/map_template_random/map_specific/[map name]`
+ */
+/datum/map_template_random/map_specific
+	abstract_type = /datum/map_template_random/map_specific
