@@ -86,7 +86,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	burst_delay = 1
 	projectile_base_dispersion = 5.75
 
-/datum/firemode/nt_expedition_light_smg/automatic
+/datum/firemode/nt_expedition_light_smg/auto
 	name = "automatic"
 	cycle_cooldown = 1
 	projectile_base_dispersion = 7
