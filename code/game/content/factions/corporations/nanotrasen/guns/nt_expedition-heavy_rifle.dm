@@ -87,7 +87,7 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
-	desc = "The NT-D9 \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-D9 \"Sentinel\" heavy rifle; Designed by the Nanotrasen Defense Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		Utilizing the NT-D3 \"Scout\" as a baseline, this semi-automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
 		comes equipped with an enclosed 1x red dot sight.
@@ -120,7 +120,7 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
-	desc = "The NT-D9 Mod I \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-D9 Mod I \"Sentinel\" heavy rifle; Designed by the Nanotrasen Defense Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		Building upon the D9's strengths, this automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
 		comes equipped with a wide-FOV 1x reflex sight, heavy muzzle break, vertical grip and lightweight stock.

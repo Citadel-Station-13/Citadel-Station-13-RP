@@ -40,7 +40,7 @@
 
 ///obj/item/gun/projectile/ballistic/nt_expedition/antimateriel/rifle
 //	name = "anti-materiel rifle"
-//	desc = "The NT-F7 \"Immobilizer\" anti-materiel rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+//	desc = "The NT-F7 \"Immobilizer\" anti-materiel rifle; Designed by the Nanotrasen Defense Division in conjunction with Hephaestus Industries."
 //	description_fluff = {"
 //		A downscaled version of Hephaestus Industries' \"Boltcaster\" anti-armour rifle from the days of the Phoron Wars,
 //		the NT-F7 \"Immobilizer\" is an accurate, long-range weapon intended for use on light mechs. Unfortunately, its performance
