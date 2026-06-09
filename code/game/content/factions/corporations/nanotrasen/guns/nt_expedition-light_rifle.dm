@@ -117,7 +117,6 @@
 	burst_delay = 0
 	cycle_cooldown = 0.2
 	projectile_base_dispersion = 5.5
-	automatic = 1
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"

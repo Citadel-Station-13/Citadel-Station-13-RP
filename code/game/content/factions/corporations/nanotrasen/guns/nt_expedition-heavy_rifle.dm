@@ -74,6 +74,15 @@
 	internal_magazine = TRUE
 	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
+	chamber_simulation = TRUE
+	chamber_cycle_after_fire = FALSE
+	bolt_simulation = TRUE
+	bolt_auto_eject_on_open = TRUE
+	var/icon_retracted = "singleshot-empty"
+
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot/update_icon_state()
+	icon_state = bolt_closed ? initial(icon_state) : icon_retracted
+	return ..()
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
@@ -108,7 +117,6 @@
 	burst_delay = 0
 	cycle_cooldown = 0.2
 	projectile_base_dispersion = 6.5
-	automatic = 1
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"

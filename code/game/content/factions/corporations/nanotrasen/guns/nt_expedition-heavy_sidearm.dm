@@ -93,9 +93,15 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		fine trigger control a double-action revolver provides.
 	"} + "<br>"
 	internal_magazine = TRUE
+	internal_magazine_revolver_mode = TRUE
+	chamber_cycle_after_fire = FALSE
+	chamber_spin_after_fire = TRUE
 	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader::ammo_max
 	icon_state = "revolver"
 	w_class = WEIGHT_CLASS_FOR_SIDEARM
+	magazine_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
+	magazine_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
+	chamber_manual_cycle_sound = /datum/soundbyte/guns/ballistic/rack_chamber/revolver
 
 /datum/firemode/nt_expedition_heavy_smg
 	abstract_type = /datum/firemode/nt_expedition_heavy_smg
