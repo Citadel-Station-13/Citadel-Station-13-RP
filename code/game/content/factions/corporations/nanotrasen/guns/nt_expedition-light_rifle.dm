@@ -16,7 +16,7 @@
 	name = "ammo casing (7.5mm LRC)"
 	desc = "A standardized 7.5x39mm cartridge for NT Expeditionary kinetics."
 	description_fluff = "The 7.5mm LRC or Light Rifle Cartridge round was designed by Nanotrasen in collaboration with Hephaestus Industries to fulfill their exploration department's requirement for a rifle cartridge that weighed significantly less than 7.5mm Ares while still retaining sufficient effectiveness against lightly armored targets."
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light-ammo.dmi'
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
 	icon_state = "lightrifle_cartridge"
 	icon_spent = TRUE
 	casing_caliber = /datum/ammo_caliber/nt_expedition/light_rifle
@@ -93,11 +93,31 @@
 		mid-length direct impingement gas system.
 		The basic design is fitted with a 1-1.5x variable optic integrally mounted to the carry handle.
 	"} + "<br>"
-	icon_state = "semi-map"
+	icon_state = "semi"
 	base_icon_state = "semi"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
+
+/datum/firemode/nt_expedition_light_autorifle
+	abstract_type = /datum/firemode/nt_expedition_light_autorifle
+
+/datum/firemode/nt_expedition_light_autorifle/semi_auto
+	name = "semi-auto"
+
+/datum/firemode/nt_expedition_light_autorifle/three_burst
+	name = "3-burst"
+	burst_amount = 3
+	burst_delay = 1.5
+	projectile_base_dispersion = 3.5
+
+/datum/firemode/nt_expedition_light_autorifle/automatic
+	name = "automatic"
+	burst_amount = 1
+	burst_delay = 0
+	cycle_cooldown = 0.2
+	projectile_base_dispersion = 5.5
+	automatic = 1
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"
@@ -108,11 +128,16 @@
 		mid-length direct impingement gas system, it comes with a 1x red dot sight and extended handguard that houses
 		a suppressor-compatible muzzle device.
 	"} + "<br>"
-	icon_state = "auto-map"
+	icon_state = "auto"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
+	firemodes = list(
+		/datum/firemode/nt_expedition_light_autorifle/semi_auto,
+		/datum/firemode/nt_expedition_light_autorifle/three_burst,
+		/datum/firemode/nt_expedition_light_autorifle/automatic,
+	)
 
 // todo: needs sprite
 ///obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/carbine

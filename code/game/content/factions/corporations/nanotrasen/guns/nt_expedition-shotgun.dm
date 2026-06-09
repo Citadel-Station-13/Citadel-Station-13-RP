@@ -11,11 +11,10 @@
 	#warn restrict to NT-expeditionary
 
 /obj/item/ammo_magazine/a12g/nt_expedition/slide
-	name = "XNS slide magazine (a12g)"
+	name = "tube magazine (12g)"
 
 /obj/item/ammo_magazine/a12g/nt_expedition/box
-	name = "Box magazine (12g)"
-	name = "ammo magazine (7.5mm LRC)"
+	name = "box magazine (12g)"
 	icon_state = "shotgun-1"
 	base_icon_state = "shotgun"
 	rendering_system = GUN_RENDERING_STATES

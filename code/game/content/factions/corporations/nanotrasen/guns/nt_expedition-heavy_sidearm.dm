@@ -9,14 +9,14 @@
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm
-	name = "ammo magazine (.355 Special)"
+	name = "ammo magazine (.355 special)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-heavy.dmi'
 	rendering_system = GUN_RENDERING_DISABLED
 	ammo_caliber = /datum/ammo_caliber/hephaestus/heavy_sidearm
 	ammo_preload = /obj/item/ammo_casing/hephaestus/heavy_sidearm
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader
-	name = "speedloader (.355 Special)"
+	name = "speedloader (.355 special)"
 	icon_state = "speedloader"
 	base_icon_state = "speedloader"
 	magazine_type = MAGAZINE_TYPE_SPEEDLOADER
@@ -39,7 +39,7 @@
 	add_overlay(overlays_to_add)
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/pistol
-	name = "pistol magazine (.355 Special)"
+	name = "pistol magazine (.355 special)"
 	icon_state = "magazine-10"
 	base_icon_state = "magazine"
 	rendering_static_overlay = "magazine-stripe"
@@ -51,7 +51,7 @@
 
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg
-	name = "smg magazine (.355 Special)"
+	name = "smg magazine (.355 special)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
@@ -78,7 +78,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		at the cost of added weight. It's two-part slide construction is reminiscent of Hephaestus' 10mm handguns, with a long travel length
 		on the rear assembly that gives it a very smooth, if somewhat unusual recoil impulse.
 	"} + "<br>"
-	icon_state = "pistol-map"
+	icon_state = "pistol"
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/pistol
@@ -107,7 +107,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	name = "3-burst"
 	burst_amount = 3
 	burst_delay = 1.5
-	projectile_base_dispersion = 7.5
+	projectile_base_dispersion = 6.5
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg
 	name = "submachine gun"
@@ -117,7 +117,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		bit of ballistic performance out of .355 Special with it's bullpup configuration, which allows for
 		a relatively long barrel despite the gun's overall short length.
 	"} + "<br>"
-	icon_state = "smg-map"
+	icon_state = "smg"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg

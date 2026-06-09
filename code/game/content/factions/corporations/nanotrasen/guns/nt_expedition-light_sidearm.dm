@@ -9,7 +9,7 @@
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/light_sidearm
-	name = "ammo magazine (.355 Auto)"
+	name = "ammo magazine (.355 auto)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light.dmi'
 	icon_state = "magazine"
 	base_icon_state = "magazine"
@@ -17,45 +17,8 @@
 	ammo_caliber = /datum/ammo_caliber/hephaestus/light_sidearm
 	ammo_preload = /obj/item/ammo_casing/hephaestus/light_sidearm
 
-/obj/item/ammo_magazine/nt_expedition/light_sidearm/speedloader
-	icon_state = "speedloader"
-	base_icon_state = "speedloader"
-	ammo_max = 6
-
-/obj/item/ammo_magazine/nt_expedition/light_sidearm/speedloader/update_icon(updates)
-	cut_overlays()
-	. = ..()
-	var/list/overlays_to_add = list()
-	// todo: make this look better, this is the lazy locations.
-	var/static/list/pos_x = list(
-		0,
-		1,
-		2,
-		3,
-		4,
-		5,
-	)
-	var/static/list/pos_y = list(
-		-0,
-		-1,
-		-2,
-		-3,
-		-4,
-		-5,
-	)
-	for(var/i in 1 to min(6, get_amount_remaining()))
-		var/obj/item/ammo_casing/hephaestus/light_sidearm/predicted_path = peek_path_of_position(i)
-		var/append = "basic"
-		if(ispath(predicted_path, /obj/item/ammo_casing/hephaestus/light_sidearm))
-			append = initial(predicted_path.speedloader_state)
-		var/image/overlay = image(icon, "speedloader-[append]")
-		overlay.pixel_x = pos_x[i]
-		overlay.pixel_y = pos_y[i]
-		overlays_to_add += overlay
-	add_overlay(overlays_to_add)
-
 /obj/item/ammo_magazine/nt_expedition/light_sidearm/pistol
-	name = "pistol magazine (.355 Auto)"
+	name = "pistol magazine (.355 auto)"
 	icon_state = "pistol-5"
 	base_icon_state = "pistol"
 	rendering_system = GUN_RENDERING_STATES
@@ -66,7 +29,7 @@
 
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidearm/smg, /nt_expedition_ammo/light_sidearm/smg, "nt-ammo-9mm-smg");
 /obj/item/ammo_magazine/nt_expedition/light_sidearm/smg
-	name = "smg magazine (.355 Auto)"
+	name = "smg magazine (.355 auto)"
 	icon_state = "smg-1"
 	base_icon_state = "smg"
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
@@ -96,7 +59,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 		the failure of Nanotrasen's internal AXHS program left their exploration department without a suitable ballistic handgun. In comparison to it's predecessor,
 		the new design is much streamlined, chambered for Hephaestus' .355 Auto caliber, and devoid of unecessary features, making it exceptionally handy.
 	"} + "<br>"
-	icon_state = "pistol-map"
+	icon_state = "pistol"
 	base_icon_state = "pistol"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_sidearm/pistol
@@ -113,7 +76,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 /datum/firemode/nt_expedition_light_smg/two_burst
 	name = "2-burst"
 	burst_amount = 2
-	burst_delay = 1.5
+	burst_delay = 1
 	projectile_base_dispersion = 5.75
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg
@@ -123,7 +86,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 		A highly-portable machine pistol with a collapsible stock and folding vertical grip, the \"Sawtooth\" is chambered in .355 Auto. The
 		standard exploration model does not feature a fully automatic firemode to prevent excessive ammo consumption due to the very fast cyclic rate.
 	"} + "<br>"
-	icon_state = "smg-map"
+	icon_state = "smg"
 	base_icon_state = "smg"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC | MAGAZINE_CLASS_EXTENDED
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/light_sidearm/smg

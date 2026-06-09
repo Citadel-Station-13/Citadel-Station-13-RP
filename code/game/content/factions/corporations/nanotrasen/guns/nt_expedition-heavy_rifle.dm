@@ -4,51 +4,52 @@
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/heavy_rifle
-	name = "ammo magazine (7.5mm Ares)"
+	name = "ammo magazine (7.5mm ares)"
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy.dmi'
 	ammo_caliber = /datum/ammo_caliber/hephaestus/heavy_rifle
 	ammo_preload = /obj/item/ammo_casing/hephaestus/heavy_rifle
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip
-	name = "stripper clip (7.5mm Ares)"
-	icon_state = "stripper"
-	base_icon_state = "stripper"
-	ammo_max = 6
-	weight_volume = ITEM_VOLUME_PISTOL_MAG
-	magazine_type = MAGAZINE_TYPE_CLIP
+// todo: needs sprites
+///obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip
+//	name = "stripper clip (7.5mm Ares)"
+//	icon_state = "stripper"
+//	base_icon_state = "stripper"
+//	ammo_max = 6
+//	weight_volume = ITEM_VOLUME_PISTOL_MAG
+//	magazine_type = MAGAZINE_TYPE_CLIP
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip/update_icon(updates)
-	cut_overlays()
-	. = ..()
-	var/list/overlays_to_add = list()
-	for(var/i in 1 to min(5, get_amount_remaining()))
-		var/obj/item/ammo_casing/hephaestus/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
-		var/append = "basic"
-		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/hephaestus/heavy_rifle))
-			append = initial(casted_path_of_potential.stripper_state)
-		var/image/overlay = image(icon, "stripper-[append]")
-		overlay.pixel_x = (i - 1) * -2 - 8
-		overlay.pixel_y = (i - 1) * 2 - 8
-		overlays_to_add += overlay
-	add_overlay(overlays_to_add)
+///obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip/update_icon(updates)
+//	cut_overlays()
+//	. = ..()
+//	var/list/overlays_to_add = list()
+//	for(var/i in 1 to min(5, get_amount_remaining()))
+//		var/obj/item/ammo_casing/hephaestus/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
+//		var/append = "basic"
+//		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/hephaestus/heavy_rifle))
+//			append = initial(casted_path_of_potential.stripper_state)
+//		var/image/overlay = image(icon, "stripper-[append]")
+//		overlay.pixel_x = (i - 1) * -2 - 8
+//		overlay.pixel_y = (i - 1) * 2 - 8
+//		overlays_to_add += overlay
+//	add_overlay(overlays_to_add)
 
 /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
-	name = "ammo magazine (7.5mm Ares)"
-	icon_state = "mag-basic-0"
+	name = "ammo magazine (7.5mm ares)"
+	icon_state = "mag-basic-1"
 	base_icon_state = "mag-basic"
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	ammo_max = 16
 
 /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/extended
-	name = "extended magazine (7.5mm Ares)"
-	icon_state = "mag-ext-basic-0"
+	name = "extended magazine (7.5mm ares)"
+	icon_state = "mag-ext-basic-1"
 	base_icon_state = "mag-ext-basic"
 	ammo_max = 24
 
 /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/drum
-	name = "drum magazine (7.5mm Ares)"
-	icon_state = "mag-drum-basic-0"
+	name = "drum magazine (7.5mm ares)"
+	icon_state = "mag-drum-basic-1"
 	base_icon_state = "mag-drum-basic"
 	ammo_max = 40
 
@@ -57,7 +58,7 @@
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle
 	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy.dmi'
-	caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
+	caliber = /datum/ammo_caliber/hephaestus/heavy_rifle
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot
 	name = "break-action rifle"
@@ -89,6 +90,26 @@
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
+/datum/firemode/nt_expedition_heavy_autorifle
+	abstract_type = /datum/firemode/nt_expedition_heavy_autorifle
+
+/datum/firemode/nt_expedition_heavy_autorifle/semi_auto
+	name = "semi-auto"
+
+/datum/firemode/nt_expedition_heavy_autorifle/three_burst
+	name = "3-burst"
+	burst_amount = 3
+	burst_delay = 1.5
+	projectile_base_dispersion = 4.5
+
+/datum/firemode/nt_expedition_heavy_autorifle/automatic
+	name = "automatic"
+	burst_amount = 1
+	burst_delay = 0
+	cycle_cooldown = 0.2
+	projectile_base_dispersion = 6.5
+	automatic = 1
+
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
 	desc = "The NT-D9 Mod I \"Sentinel\" heavy rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -100,11 +121,16 @@
 		Although the fully automatic setting was still useful in some situations, the Mod I's three-round burst proved to be the most effective
 		way to deliver shots at range.
 	"} + "<br>"
-	icon_state = "auto-map"
+	icon_state = "auto"
 	base_icon_state = "auto"
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
+	firemodes = list(
+		/datum/firemode/nt_expedition_heavy_autorifle/semi_auto,
+		/datum/firemode/nt_expedition_heavy_autorifle/three_burst,
+		/datum/firemode/nt_expedition_heavy_autorifle/automatic,
+	)
 
 // todo: needs sprite
 ///obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
