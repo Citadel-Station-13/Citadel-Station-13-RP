@@ -48,6 +48,11 @@
 //		Regardless, its relative ease of handling (and ability to be used by an unaugmented soldier) keeps it in the armories of some
 //		corporate militaries and emergency responders.
 //	"} + "<br>"
+//		description_fluff_categorizer = {"
+//		This weapon is part of the original lineage of ballistic weaponry developed by Hephaestus Industries in the 2490s to address the needs of
+//		Nanotrasen's Research Division during the Phoron Wars in a standardized manner. Many of these weapons remained in service after the end of the war,
+//		although few are still being actively manufactured.
+//	"}
 //	icon_state = "antimateriel_rifle"
 //	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 //	magazine_restrict = /obj/item/ammo_magazine/hephaestus/antimateriel

@@ -94,6 +94,11 @@
 		Introduced late into the Phoron Wars as a streamlined, improved version of the Scout, it was Nanotrasen's latest attempt at
 		leveraging the power 7.5mm Ares, as it was capable of taking down most of the Syndicate's armored hardsuits with enough volume of fire.
 	"} + "<br>"
+	description_fluff_categorizer = {"
+		This weapon is part of the original lineage of ballistic weaponry developed by Hephaestus Industries in the 2490s to address the needs of
+		Nanotrasen's Research Division during the Phoron Wars in a standardized manner. Many of these weapons remained in service after the end of the war,
+		although few are still being actively manufactured.
+	"}
 	icon_state = "semi"
 	base_icon_state = "semi"
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
@@ -129,6 +134,11 @@
 		Although the fully automatic setting was still useful in some situations, the Mod I's three-round burst proved to be the most effective
 		way to deliver shots at range.
 	"} + "<br>"
+	description_fluff_categorizer = {"
+		This weapon is part of the original lineage of ballistic weaponry developed by Hephaestus Industries in the 2490s to address the needs of
+		Nanotrasen's Research Division during the Phoron Wars in a standardized manner. Many of these weapons remained in service after the end of the war,
+		although few are still being actively manufactured.
+	"}
 	icon_state = "auto"
 	base_icon_state = "auto"
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
@@ -146,6 +156,7 @@
 //	description_fluff = {"
 //
 //	"} + "<br>"
+//	description_fluff_categorizer = /datum/description_fluff_categorizer/nt_expedition/nt_arms
 //	icon_state = "lmg"
 //	// todo: box mag
 //	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/drum

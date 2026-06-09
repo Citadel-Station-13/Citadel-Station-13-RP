@@ -69,7 +69,7 @@
 
 /obj/item/gun/projectile/ballistic/nt_expedition
 	description_fluff_categorizer = {"
-		This weapon is part of the experimental lineage of chemically-propelled kinetic weaponry developed as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division.
+		This weapon is part of the experimental lineage of chemically-propelled kinetic weaponry developed in the 2560s as part of a joint effort between Hephaestus Industries and the Nanotrasen Research Division.
 		Created both to enhance compatibility as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an above-average reliability rating
 		in addition to being rather simple to restock out on the Frontier.
 	"}

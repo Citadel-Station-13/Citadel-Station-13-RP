@@ -8,8 +8,6 @@
 /obj/item/ammo_magazine/a12g/nt_expedition
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/shotgun.dmi'
 
-	#warn restrict to NT-expeditionary
-
 ///obj/item/ammo_magazine/a12g/nt_expedition/slide
 //	name = "tube magazine (12g)"
 
