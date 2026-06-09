@@ -121,7 +121,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	name = "3-burst"
 	burst_amount = 3
 	burst_delay = 1.5
-	projectile_base_dispersion = 6.5
+	projectile_base_dispersion = 6
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg
 	name = "submachine gun"

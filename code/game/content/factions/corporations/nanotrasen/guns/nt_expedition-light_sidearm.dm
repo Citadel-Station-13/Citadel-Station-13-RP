@@ -86,12 +86,18 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	burst_delay = 1
 	projectile_base_dispersion = 5.75
 
+/datum/firemode/nt_expedition_light_smg/automatic
+	name = "automatic"
+	cycle_cooldown = 1
+	projectile_base_dispersion = 7
+	automatic = TRUE
+
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg
 	name = "machine pistol"
 	desc = "The XNP Mk.3 \"Sawtooth\" machine pistol; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A highly-portable machine pistol with a collapsible stock and folding vertical grip, the \"Sawtooth\" is chambered in .355 Auto. The
-		standard exploration model does not feature a fully automatic firemode to prevent excessive ammo consumption due to the very fast cyclic rate.
+		A highly-portable machine pistol with a collapsible stock and folding vertical grip, the \"Sawtooth\" is chambered in .355 Auto.
+		Automatic fire is generally not recommended due to the fast cyclic rate leading to poor ammo economy.
 	"} + "<br>"
 	icon_state = "smg"
 	base_icon_state = "smg"
@@ -108,6 +114,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	firemodes = list(
 		/datum/firemode/nt_expedition_light_smg/semi_auto,
 		/datum/firemode/nt_expedition_light_smg/two_burst,
+		/datum/firemode/nt_expedition_light_smg/auto,
 	)
 	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
