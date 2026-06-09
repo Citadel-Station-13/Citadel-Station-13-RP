@@ -56,16 +56,16 @@
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack/extended
 	name = "extended magazine (7.5mm LRC)"
-	icon_state = "lightrifle-ext-1"
-	base_icon_state = "lightrifle-ext"
+	icon_state = "rifle-ext-1"
+	base_icon_state = "rifle-ext"
 	rendering_count = 1
-	rendering_static_overlay = "lightrifle-ext-stripe"
+	rendering_static_overlay = "rifle-ext-stripe"
 	ammo_max = 24
 
 /obj/item/ammo_magazine/nt_expedition/light_rifle/doublestack/drum
 	name = "drum magazine (7.5mm LRC)"
-	icon_state = "lightrifle-drum-1"
-	base_icon_state = "lightrifle-drum"
+	icon_state = "rifle-drum-1"
+	base_icon_state = "rifle-drum"
 	rendering_count = 1
 	rendering_static_overlay = "lightrifle-drum-stripe"
 	ammo_max = 40
