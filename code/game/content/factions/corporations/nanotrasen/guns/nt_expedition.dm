@@ -73,4 +73,4 @@
 		Created both to enhance compatibility as well as to improve security on installations operated by the Triumvirate, the 'NT Expeditionary' line boasts an above-average reliability rating
 		in addition to being rather simple to restock out on the Frontier.
 	"}
-	item_renderer = /datum/gun_item_renderer/nothing
+	item_renderer = /datum/gun_item_renderer/empty_state

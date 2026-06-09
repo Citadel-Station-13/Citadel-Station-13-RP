@@ -1263,6 +1263,7 @@
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-heavy_sidearm.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-light_rifle.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-light_sidearm.dm"
+#include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-shotgun.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_hydra-legacy.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_hydra.dm"

@@ -4,9 +4,9 @@
 //* Caliber *//
 
 /datum/ammo_caliber/nt_expedition/light_rifle
-	name = "7.5mm LRC"
+
 	id = "nt-light-rifle"
-	caliber = "nt-light-rifle"
+	caliber = "7.5mm LRC"
 	diameter = 7.5
 	length = 39
 

@@ -7,30 +7,30 @@
 	abstract_type = /datum/ammo_caliber/hephaestus
 
 /datum/ammo_caliber/hephaestus/antimateriel
-	name = ".50 arcadian"
+
 	id = "heph-antimateriel"
-	caliber = "heph-antimateriel"
+	caliber = ".50 arcadian"
 	diameter = 12
 	length = 92
 
 /datum/ammo_caliber/hephaestus/heavy_rifle
-	name = "7.5mm ares"
+
 	id = "hephaestus-heavy-rifle"
-	caliber = "hephaestus-heavy-rifle"
+	caliber = "7.5mm ares"
 	diameter = 7.5
 	length = 54
 
 /datum/ammo_caliber/hephaestus/heavy_sidearm
-	name = ".355 special"
+
 	id = "hephaestus-heavy-sidearm"
-	caliber = "hephaestus-heavy-sidearm"
+	caliber = ".355 special"
 	diameter = 9
 	length = 34
 
 /datum/ammo_caliber/hephaestus/light_sidearm
-	name = ".355 auto"
+
 	id = "hephaestus-light-sidearm"
-	caliber = "hephaestus-light-sidearm"
+	caliber = ".355 auto"
 	diameter = 9
 	length = 29
 
@@ -79,7 +79,7 @@
 	projectile_type = /obj/projectile/bullet/hephaestus/heavy_rifle
 
 	/// specifically for /obj/item/ammo_magazine/hephaestus/heavy_rifle's
-	var/stripper_state = "basic"
+	//var/stripper_state = "basic"
 
 ///obj/item/ammo_casing/hephaestus/heavy_rifle/piercing
 //	icon_state = "piercing_cartridge"

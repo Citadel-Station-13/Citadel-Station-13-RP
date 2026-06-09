@@ -39,6 +39,8 @@
 	base_icon_state = "mag-basic"
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	magazine_type = MAGAZINE_TYPE_NORMAL
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	ammo_max = 16
 
 /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/extended
@@ -70,7 +72,6 @@
 	"} + "<br>"
 	icon_state = "singleshot"
 	base_icon_state = "singleshot"
-	item_renderer = /datum/gun_item_renderer/empty_state
 	internal_magazine = TRUE
 	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
@@ -95,7 +96,6 @@
 	"} + "<br>"
 	icon_state = "semi"
 	base_icon_state = "semi"
-	item_renderer = /datum/gun_item_renderer/empty_state
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
@@ -131,7 +131,6 @@
 	"} + "<br>"
 	icon_state = "auto"
 	base_icon_state = "auto"
-	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 	firemodes = list(
