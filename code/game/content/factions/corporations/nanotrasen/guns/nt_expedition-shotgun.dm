@@ -14,7 +14,13 @@
 	name = "XNS slide magazine (a12g)"
 
 /obj/item/ammo_magazine/a12g/nt_expedition/box
-	name = "XNS box magazine (12g)"
+	name = "Box magazine (12g)"
+	name = "ammo magazine (7.5mm LRC)"
+	icon_state = "shotgun-1"
+	base_icon_state = "shotgun"
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+	ammo_max = 8
 
 	#warn slide-mag 0 to 5, box-mag 0 to 1
 

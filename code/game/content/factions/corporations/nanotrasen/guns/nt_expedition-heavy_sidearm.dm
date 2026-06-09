@@ -40,11 +40,13 @@
 
 /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/pistol
 	name = "pistol magazine (.355 Special)"
-	icon_state = "magazine-5"
+	icon_state = "magazine-10"
 	base_icon_state = "magazine"
 	rendering_static_overlay = "magazine-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
 	weight_volume = ITEM_VOLUME_PISTOL_MAG
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 10
 	ammo_max = 10
 
 GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidearm/smg, /nt_expedition_ammo/heavy_sidearm/smg, "nt-ammo-9mmLR-smg");
