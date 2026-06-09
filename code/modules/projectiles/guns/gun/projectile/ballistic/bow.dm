@@ -10,7 +10,7 @@
 	slot_flags = SLOT_BACK
 	pin = null
 	no_pin_required = TRUE
-	safety_state = GUN_SAFETY_OFF
+	safety_state = GUN_NO_SAFETY
 	internal_magazine = TRUE
 	internal_magazine_size = 1
 	chamber_manual_cycle_sound = 'sound/weapons/bowdraw.wav'

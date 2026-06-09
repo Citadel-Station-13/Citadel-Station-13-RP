@@ -85,7 +85,6 @@
 	ore_mapping = list(
 		/obj/item/stack/ore/lead = /obj/item/stack/material/lead,
         /obj/item/stack/ore/copper = /obj/item/stack/material/copper,
-		/obj/item/stack/ore/iron = /obj/item/stack/rods,
 		/obj/item/stack/ore/glass = /obj/item/stack/ore/slag
     )
 	insert_msg_override = list(

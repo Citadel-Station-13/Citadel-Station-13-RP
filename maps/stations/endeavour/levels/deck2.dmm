@@ -1082,6 +1082,11 @@
 "aLW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = 23
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "aMv" = (
@@ -10204,6 +10209,10 @@
 "gWI" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
+/obj/item/radio/intercom/department/medbay{
+	pixel_y = -23;
+	pixel_x = 0
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_b)
 "gWJ" = (
@@ -10532,15 +10541,6 @@
 /obj/structure/table/carbon/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/assembly/robotics/surgery)
-"hkW" = (
-/obj/structure/catwalk,
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
-/obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
-/area/station/medical/cmo_dorm/endeavour)
 "hkY" = (
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -11526,12 +11526,12 @@
 /area/medical/psych_ward)
 "hXy" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/medical{
-	name = "Restroom";
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/door/airlock/command{
+	name = "CMO's Quarters";
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/station/medical/department,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/map_helper/access_helper/airlock/station/head_office/chief_medical_officer,
 /turf/simulated/floor/wood,
 /area/station/medical/cmo_dorm/endeavour)
 "hXW" = (
@@ -12256,6 +12256,11 @@
 "iyC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = 23
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "iyI" = (
@@ -18277,6 +18282,10 @@
 "mKO" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
+/obj/item/radio/intercom/department/medbay{
+	pixel_y = -23;
+	pixel_x = 0
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_c)
 "mLh" = (
@@ -19462,6 +19471,10 @@
 "nJs" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
+/obj/item/radio/intercom/department/medbay{
+	pixel_y = -23;
+	pixel_x = 0
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_d)
 "nKi" = (
@@ -23267,6 +23280,10 @@
 "qna" = (
 /obj/item/bedsheet/medical,
 /obj/structure/bed/padded,
+/obj/item/radio/intercom/department/medbay{
+	pixel_y = -23;
+	pixel_x = 0
+	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/medical/patient_a)
 "qnh" = (
@@ -26144,6 +26161,11 @@
 "syJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = 23
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_c)
 "szg" = (
@@ -29033,6 +29055,11 @@
 "uAQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/item/radio/intercom{
+	dir = 8;
+	name = "Station Intercom (General)";
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
 "uBa" = (
@@ -32307,8 +32334,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/medical{
-	name = "CMO Dormitory";
+/obj/machinery/door/airlock/command{
+	name = "CMO's Quarters";
 	req_one_access = null
 	},
 /turf/simulated/floor/wood,
@@ -47695,7 +47722,7 @@ hXy
 snQ
 snQ
 aeC
-hkW
+pOy
 bjs
 bjs
 dcZ
