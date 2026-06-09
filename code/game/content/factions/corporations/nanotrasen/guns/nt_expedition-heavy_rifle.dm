@@ -79,7 +79,6 @@
 	chamber_cycle_after_fire = FALSE
 	bolt_simulation = TRUE
 	bolt_auto_eject_on_open = TRUE
-	item_renderer = /datum/gun_item_renderer/nothing
 	var/icon_retracted = "singleshot-empty"
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot/update_icon_state()
@@ -100,6 +99,13 @@
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
 
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
+
 /datum/firemode/nt_expedition_heavy_autorifle
 	abstract_type = /datum/firemode/nt_expedition_heavy_autorifle
 
@@ -109,15 +115,14 @@
 /datum/firemode/nt_expedition_heavy_autorifle/three_burst
 	name = "3-burst"
 	burst_amount = 3
-	burst_delay = 1.5
+	burst_delay = 1.6
 	projectile_base_dispersion = 4.5
 
 /datum/firemode/nt_expedition_heavy_autorifle/automatic
 	name = "automatic"
-	burst_amount = 1
-	burst_delay = 0
-	cycle_cooldown = 0.2
+	cycle_cooldown = 1.6
 	projectile_base_dispersion = 6.5
+	automatic = FALSE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
@@ -139,6 +144,13 @@
 		/datum/firemode/nt_expedition_heavy_autorifle/three_burst,
 		/datum/firemode/nt_expedition_heavy_autorifle/automatic,
 	)
+
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
 
 // todo: needs sprite
 ///obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg

@@ -66,6 +66,3 @@
  *
  * e.g. NT-A2 -> X = A for handgun, model 2.
  */
-
-/obj/item/gun/projectile/ballistic/nt_expedition
-	item_renderer = /datum/gun_item_renderer/empty_state

@@ -37,6 +37,13 @@
 //	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/antimateriel
 //	caliber = /datum/ammo_caliber/hephaestus/antimateriel
 //	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/antimateriel.dmi'
+//
+///obj/item/gun/projectile/ballistic/nt_expedition/antimateriel/update_icon_state()
+//	. = ..()
+//	if(magazine)
+//		icon_state = initial(icon_state)
+//	else
+//		icon_state = "[initial(icon_state)]-empty"
 
 ///obj/item/gun/projectile/ballistic/nt_expedition/antimateriel/rifle
 //	name = "anti-materiel rifle"

@@ -18,6 +18,9 @@
 	rendering_system = GUN_RENDERING_STATES
 	rendering_count = 1
 	ammo_max = 8
+	weight_volume = ITEM_VOLUME_RIFLE_MAG
+	ammo_caliber = /datum/ammo_caliber/a12g
+	ammo_preload = /obj/item/ammo_casing/a12g/pellet
 
 //* Shotguns *//
 
@@ -40,7 +43,6 @@
 		for a shotgun that could operate safely using experimental ammunition.
 	"} + "<br>"
 	icon_state = "pump"
-	item_renderer = /datum/gun_item_renderer/nothing
 	internal_magazine = TRUE
 	internal_magazine_size = 7
 	chamber_cycle_after_fire = FALSE
@@ -77,3 +79,10 @@
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/a12g/nt_expedition/box
 	w_class = WEIGHT_CLASS_FOR_SHOTGUN
+
+/obj/item/gun/projectile/ballistic/nt_expedition/shotgun/semiauto/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"

@@ -84,6 +84,13 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/pistol
 	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/pistol/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
+
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/revolver
 	name = "heavy revolver"
 	desc = "The XNP Mk.4 \"Roller\" revolver; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -96,6 +103,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	internal_magazine_revolver_mode = TRUE
 	chamber_cycle_after_fire = FALSE
 	chamber_spin_after_fire = TRUE
+	chamber_spin_after_inert = TRUE
 	internal_magazine_size = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/speedloader::ammo_max
 	icon_state = "revolver"
 	w_class = WEIGHT_CLASS_FOR_SIDEARM
@@ -140,6 +148,13 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 		/datum/firemode/nt_expedition_heavy_smg/three_burst,
 	)
 	w_class = WEIGHT_CLASS_FOR_SHORT_RIFLE
+
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg, /nt_expedition/heavy_smg, "nt-expeditionary-heavy_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/smg/no_pin

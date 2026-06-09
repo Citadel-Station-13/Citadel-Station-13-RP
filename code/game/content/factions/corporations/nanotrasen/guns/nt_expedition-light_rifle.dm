@@ -84,6 +84,13 @@
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-light.dmi'
 	caliber = /datum/ammo_caliber/nt_expedition/light_rifle
 
+/obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
+
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/rifle
 	name = "semi-automatic rifle"
 	desc = "The XNR Mk.2 \"Mallet\" light rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -108,15 +115,14 @@
 /datum/firemode/nt_expedition_light_autorifle/three_burst
 	name = "3-burst"
 	burst_amount = 3
-	burst_delay = 1.5
+	burst_delay = 1.3
 	projectile_base_dispersion = 3.5
 
 /datum/firemode/nt_expedition_light_autorifle/automatic
 	name = "automatic"
-	burst_amount = 1
-	burst_delay = 0
-	cycle_cooldown = 0.2
+	cycle_cooldown = 1.3
 	projectile_base_dispersion = 5.5
+	automatic = FALSE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"

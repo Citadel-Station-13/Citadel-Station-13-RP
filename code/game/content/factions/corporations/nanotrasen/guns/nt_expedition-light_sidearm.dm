@@ -49,6 +49,13 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/sidearm-light.dmi'
 	caliber = /datum/ammo_caliber/hephaestus/light_sidearm
 
+/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
+
 //* Pistol *//
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/pistol

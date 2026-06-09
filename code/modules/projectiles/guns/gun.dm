@@ -257,6 +257,15 @@
 	//  todo: remove
 	var/render_use_legacy_by_default = TRUE
 
+	/**
+ 	* Whether or not the gun supports automatic fire.
+ 	* * In the future, this will be modifiable by traits so attachments and similar can mess
+ 	*   with it. For now, it's just a var.
+ 	* * Automatic weapons will support hold-down behavior and fire as fast
+ 	*   as their `firing_cycle` `cycle_cooldown` (NOT `firing_delay`!)
+ 	*/
+	var/automatic = FALSE
+
 /obj/item/gun/Initialize(mapload)
 	. = ..()
 	//* datum component - wielding *//
