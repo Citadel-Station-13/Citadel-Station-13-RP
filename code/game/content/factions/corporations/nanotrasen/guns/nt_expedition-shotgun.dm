@@ -44,10 +44,13 @@
 		for a shotgun that could operate safely using experimental ammunition.
 	"} + "<br>"
 	icon_state = "pump"
-	#warn pump-open
+	internal_magazine = TRUE
+	internal_magazine_size = 7
+	chamber_cycle_after_fire = FALSE
 	w_class = WEIGHT_CLASS_FOR_SHOTGUN
-
-#warn impl
+	chamber_manual_cycle_sound = 'sound/weapons/shotgunpump.ogg'
+	single_load_sound = 'sound/weapons/guns/interaction/shotgun_insert.ogg'
+	one_handed_penalty = 15
 
 /obj/item/gun/projectile/ballistic/nt_expedition/shotgun/pump/short
 	name = "pump shotgun"
@@ -58,17 +61,12 @@
 		the shotgun is not expected act as the primary weapon, but the ability to fire 12 gauge shells is still required.
 	"} + "<br>"
 	icon_state = "shorty"
-	#warn pump-open
-	w_class = WEIGHT_CLASS_FOR_SHOTGUN
-
-#warn impl
+	w_class = WEIGHT_CLASS_FOR_SIDEARM
+	internal_magazine_size = 3
+	one_handed_penalty = 30
 
 //* Semi-Automatic Shotgun *//
 
-/**
- * * Magazine loaded.
- * * Semi-automatic.
- */
 /obj/item/gun/projectile/ballistic/nt_expedition/shotgun/semiauto
 	name = "semi-automatic shotgun"
 	desc = "The XNS Mk.7 \"Peacemaker\" semi-automatic shotgun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
@@ -78,7 +76,7 @@
 		a vertical grip integrated into the handguard to help control the significant recoil.
 	"} + "<br>"
 	icon_state = "semiauto"
-	#warn semiauto-empty (magout)
+	base_icon_state = "semiauto"
+	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
+	magazine_restrict = /obj/item/ammo_magazine/a12g/nt_expedition/box
 	w_class = WEIGHT_CLASS_FOR_SHOTGUN
-
-#warn impl
