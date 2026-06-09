@@ -79,6 +79,7 @@
 	chamber_cycle_after_fire = FALSE
 	bolt_simulation = TRUE
 	bolt_auto_eject_on_open = TRUE
+	item_renderer = /datum/gun_item_renderer/nothing
 	var/icon_retracted = "singleshot-empty"
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot/update_icon_state()

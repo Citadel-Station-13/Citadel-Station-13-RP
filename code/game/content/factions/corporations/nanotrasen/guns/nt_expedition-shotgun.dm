@@ -40,6 +40,7 @@
 		for a shotgun that could operate safely using experimental ammunition.
 	"} + "<br>"
 	icon_state = "pump"
+	item_renderer = /datum/gun_item_renderer/nothing
 	internal_magazine = TRUE
 	internal_magazine_size = 7
 	chamber_cycle_after_fire = FALSE
