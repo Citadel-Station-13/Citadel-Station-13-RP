@@ -1258,7 +1258,7 @@
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-ai_laws.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-faction.dm"
 #include "code\game\content\factions\corporations\nanotrasen\nanotrasen-supply.dm"
-#include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-antimaterial.dm"
+#include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-antimateriel.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-heavy_rifle.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-heavy_sidearm.dm"
 #include "code\game\content\factions\corporations\nanotrasen\guns\nt_expedition-light_rifle.dm"
