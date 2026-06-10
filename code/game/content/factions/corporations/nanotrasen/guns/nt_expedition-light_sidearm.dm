@@ -118,6 +118,12 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	)
 	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
+	attachments = list(
+		/obj/item/gun_attachment/stock/collapsible/integrated,
+	)
+	#warn fol set attachment_alignment ; read the comments on attachment_align and the define for stock!
+	#warn also set the alignment for every other slot if you want to accept them too; one attachment can exist per slot
+
 	one_handed_penalty = 30
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin, /nt_expedition/light_smg, "nt-expeditionary-light_smg")

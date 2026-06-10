@@ -12,7 +12,7 @@
  * * align_x is leftmost pixel of the part extending out of gun
  * * align_y is center pixel (or the bottom pixel of center, if center is 2 wide)
  */
-#define GUN_ATTACHMNET_SLOT_MUZZLE "muzzle"
+#define GUN_ATTACHMENT_SLOT_MUZZLE "muzzle"
 /**
  * * align_x is center pixel (or the left pixel of the 2-wide center, if center is 2 wide)
  * * align_y is bottom pixel extending out of gun
