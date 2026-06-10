@@ -57,7 +57,9 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	rendering_static_overlay = "smg-stripe"
 	magazine_type = MAGAZINE_TYPE_NORMAL
-	ammo_max = 20
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
+	ammo_max = 21
 	materials_base = list(
 		/datum/prototype/material/steel::id = 500,
 		/datum/prototype/material/glass::id = 235,
