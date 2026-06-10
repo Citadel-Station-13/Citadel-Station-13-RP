@@ -118,6 +118,15 @@
 	/// firemode swap action
 	var/datum/action/firemode_swap_action
 
+	/**
+ 	* Whether or not the gun supports automatic fire.
+ 	* * In the future, this will be modifiable by traits so attachments and similar can mess
+ 	*   with it. For now, it's just a var.
+ 	* * Automatic weapons will support hold-down behavior and fire as fast
+ 	*   as their `firing_cycle` `cycle_cooldown` (NOT `firing_delay`!)
+ 	*/
+	var/automatic = FALSE
+
 	//* Firing *//
 
 	/// the current firing cycle
@@ -256,15 +265,6 @@
 	/// use the old render system, if item_renderer and mob_renderer are not set
 	//  todo: remove
 	var/render_use_legacy_by_default = TRUE
-
-	/**
- 	* Whether or not the gun supports automatic fire.
- 	* * In the future, this will be modifiable by traits so attachments and similar can mess
- 	*   with it. For now, it's just a var.
- 	* * Automatic weapons will support hold-down behavior and fire as fast
- 	*   as their `firing_cycle` `cycle_cooldown` (NOT `firing_delay`!)
- 	*/
-	var/automatic = FALSE
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()

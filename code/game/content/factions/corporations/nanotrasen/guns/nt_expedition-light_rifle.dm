@@ -122,7 +122,7 @@
 	name = "automatic"
 	cycle_cooldown = 1.3
 	projectile_base_dispersion = 6
-	automatic = TRUE
+//	automatic = TRUE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_rifle/autorifle
 	name = "automatic rifle"

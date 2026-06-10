@@ -90,7 +90,7 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	name = "automatic"
 	cycle_cooldown = 1
 	projectile_base_dispersion = 7
-	automatic = TRUE
+//	automatic = TRUE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg
 	name = "machine pistol"
