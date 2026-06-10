@@ -1,11 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-/datum/fixed_template_seeding_single
-	/// template-like associated to tag
-	/// * /datum/map_template_random accepted as well.
-	var/list/templates = list()
-
 /**
  * Seeds a specific set of templates into
  * `fixed_template_seeding_target` helpers.
@@ -38,3 +33,13 @@
 /datum/map_injection/fixed_template_seeding/on_map_pre_init(datum/map_context/context)
 	. = ..()
 #warn impl
+
+/datum/fixed_template_seeding_single
+	/// template-like associated to tag
+	/// * /datum/map_template_random accepted as well.
+	var/list/templates = list()
+
+/**
+ * Just to namespace map-specific from polluting types.
+ */
+/datum/fixed_template_seeding_single/map_specific
