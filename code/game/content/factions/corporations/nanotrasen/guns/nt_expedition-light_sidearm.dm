@@ -119,36 +119,6 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/light_sidear
 	w_class = WEIGHT_CLASS_FOR_SIDEARM
 
 	one_handed_penalty = 30
-	var/collapsible = 1
-	var/extended = 0
-
-/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/update_icon_state()
-	. = ..()
-	if(!extended && magazine)
-		icon_state = "smg_f"
-	else if(extended && magazine)
-		icon_state = "smg"
-	else if(extended && !magazine)
-		icon_state = "smg-empty"
-	else
-		icon_state = "smg_f-empty"
-
-/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/attack_self(mob/user, datum/event_args/actor/actor)
-	if(collapsible && !extended)
-		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
-		set_weight_class(WEIGHT_CLASS_FOR_SHORT_RIFLE)
-		one_handed_penalty = 10
-		extended = 1
-		update_icon()
-	else if(!collapsible)
-		to_chat(user, "<span class='danger'>The [src] doesn't have a stock!</span>")
-		return
-	else
-		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
-		set_weight_class(WEIGHT_CLASS_FOR_SIDEARM)
-		one_handed_penalty = 30
-		extended = 0
-		update_icon()
 
 GENERATE_DESIGN_FOR_NT_PROTOLATHE(/obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin, /nt_expedition/light_smg, "nt-expeditionary-light_smg")
 /obj/item/gun/projectile/ballistic/nt_expedition/light_sidearm/smg/no_pin

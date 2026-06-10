@@ -39,7 +39,7 @@
 	desc = "The XNS Mk.3 \"Standby\" pump-action shotgun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
 		Based on the proven pump-action mechanism utilized by the Hephaestus KS-40, the XNS Mk.3 or \"Standby\" is designed around a
-		tube magazine using 12/70 ammunition and features a modified barrel liner and extra design safety margins due to Nanotrasen's request
+		tube magazine using 12/70 shells and features a modified barrel liner and extra design safety margins due to Nanotrasen's request
 		for a shotgun that could operate safely using experimental ammunition.
 	"} + "<br>"
 	icon_state = "pump"

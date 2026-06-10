@@ -5116,6 +5116,7 @@
 #include "code\modules\projectiles\guns\gun_attachment\bayonet.dm"
 #include "code\modules\projectiles\guns\gun_attachment\flashlight.dm"
 #include "code\modules\projectiles\guns\gun_attachment\harness.dm"
+#include "code\modules\projectiles\guns\gun_attachment\stock.dm"
 #include "code\modules\projectiles\guns\gun_component\acceleration_coil.dm"
 #include "code\modules\projectiles\guns\gun_component\active_cooler.dm"
 #include "code\modules\projectiles\guns\gun_component\energy_handler.dm"

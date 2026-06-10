@@ -85,6 +85,9 @@ GENERATE_DESIGN_FOR_AUTOLATHE(/obj/item/ammo_magazine/nt_expedition/heavy_sidear
 	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
 	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_sidearm/pistol
 	w_class = WEIGHT_CLASS_FOR_SIDEARM
+	attachments = list(
+		/obj/item/gun_attachment/flashlight/internal,
+	)
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_sidearm/pistol/update_icon_state()
 	. = ..()

@@ -48,5 +48,7 @@
 #define GUN_ATTACHMENT_TYPE_SCOPE (1<<2)
 /// magharness, lanyard, etc
 #define GUN_ATTACHMENT_TYPE_HARNESS (1<<3)
+/// stocks
+#define GUN_ATTACHMENT_TYPE_STOCK (1<<4)
 
 // todo: DEFINE_BITFIELD
