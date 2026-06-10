@@ -66,8 +66,8 @@
 	name = "break-action rifle"
 	desc = "The XNR Mk.3 \"Huntsman\" break-action rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A single shot rifle chambered in 7.5mm Ares, equipped with a 2x magnified optic,
-		this is a light, uncomplicated design for low-stakes applications where rapid follow-up shots are not needed.
+		A single shot rifle chambered in 7.5mm Ares, this is a light, uncomplicated design for low-stakes applications
+		where rapid follow-up shots are not needed.
 		It's greatest strength is the sheer reliability of the action: There is very little there that can go wrong.
 	"} + "<br>"
 	icon_state = "singleshot"
