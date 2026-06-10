@@ -134,10 +134,10 @@
 			range = MESSAGE_RANGE_INVENTORY_SOFT,
 			visible = SPAN_WARNING("[actor.performer] [extended ? "extend" : "collapse"]s [attached ? "\the [src] on [attached]" : "\the [src]"]."),
 			audible = SPAN_NOTICE("You hear something telescoping."),
-			self = SPAN_NOTICE("You <b>[extended ? "extend" : "collapse"]</b> [attached ? "\the [src] on [attached]" : "\the [src]"]."),
+			otherwise_self = SPAN_NOTICE("You <b>[extended ? "extend" : "collapse"]</b> [attached ? "\the [src] on [attached]" : "\the [src]"]."),
 		)
 	else
-		to_chat(user, SPAN_NOTICE("You <b>[extended ? "extend" : "collapse"]</b> [attached ? "\the [src] on [attached]" : "\the [src]"]."))
+		actor.chat_feedback(SPAN_NOTICE("You <b>[extended ? "extend" : "collapse"]</b> [attached ? "\the [src] on [attached]" : "\the [src]"]."))
 
 	if(!suppressed)
 		if(extended)
