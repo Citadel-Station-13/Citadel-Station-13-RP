@@ -33,6 +33,7 @@
 
 	if(applied)
 		return
+	applied = TRUE
 	do_apply_stats(gun)
 
 /obj/item/gun_attachment/stock/proc/do_apply_stats(obj/item/gun/gun)
@@ -43,6 +44,7 @@
 
 	if(!applied)
 		return
+	applied = FALSE
 	do_remove_stats(gun)
 
 /obj/item/gun_attachment/stock/proc/do_remove_stats(obj/item/gun/gun)
