@@ -114,6 +114,12 @@
 	extended = state
 	update_icon()
 
+	if(attached)
+		if(extended)
+			apply_stats(attached)
+		else
+			remove_stats(attached)
+
 	if(!actor)
 		// no toggle, no cooldown
 		return
@@ -142,21 +148,6 @@
 					collapse_sfx_volume || extend_sfx_volume,
 					collapse_sfx_vary || extend_sfx_vary,
 				)
-
-
-	// todo: silent support?
-	if(extended)
-		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
-		set_weight_class(WEIGHT_CLASS_FOR_SHORT_RIFLE)
-		one_handed_penalty = 10
-		extended = 1
-		update_icon()
-	else
-		to_chat(user, "<span class='notice'>You push the stock back into the [src], making it more compact.</span>")
-		set_weight_class(WEIGHT_CLASS_FOR_SIDEARM)
-		one_handed_penalty = 30
-		extended = 0
-		update_icon()
 
 /obj/item/gun_attachment/stock/collapsible/integrated
 	name = /obj/item/gun_attachment/stock/collapsible::name + " (integrated)"
