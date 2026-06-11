@@ -2204,7 +2204,7 @@
 	taste_description = "an odd blend of metals and sugar"
 	color = "#993c49"
 	blood_content = 2 //Regular blood is 4
-	ingest_met = REM * 10 //Same speed as regular blood
+	ingest_met = /datum/reagent/blood::ingest_met
 	nutrition = 1
 
 	glass_name = "Blud"

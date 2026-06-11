@@ -464,6 +464,8 @@ var/list/ai_verbs_default = list(
 		return ISINRANGE(target_turf.x, ai_turf.x - interaction_range, ai_turf.x + interaction_range) \
 			&& ISINRANGE(target_turf.y, ai_turf.y - interaction_range, ai_turf.y + interaction_range)
 
+	return TRUE
+
 /mob/living/silicon/ai/restrained()
 	return 0
 
