@@ -49,6 +49,7 @@
 #define IS_XENOHYBRID 16
 #define IS_MOTH		17
 #define IS_NARAMADI 18
+#define IS_SCORI 19
 
 /// Inaprovaline
 #define CE_STABLE "stable"
