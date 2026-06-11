@@ -744,48 +744,71 @@
 	icon_state = "rangerponcho_snow"
 	item_state = "rangerponcho_snow"
 
+/obj/item/clothing/accessory/pridepronoun
+	name = "Pronoun name plate"
+	desc = "A plain two coloured Plate with the option to enter the wearer's name and pronouns"
+	icon_state = "pronounpin"
+	item_state = "pronounpin"
+
+/obj/item/clothing/accessory/pridepronoun/attack_self(mob/user, datum/event_args/actor/actor)
+	. = ..()
+	var/wearer_name = input(user,"Name?","Enter name","")
+	var/wearer_pronoun = input(user,"Pronouns?","Enter Pronouns","")
+	if (wearer_name && wearer_pronoun)
+		name = "[wearer_name]'s pronoun plate ([wearer_pronoun])"
+	else
+		name = initial(name)
+
 /obj/item/clothing/accessory/pridepin
-	name = "Sexuality Pin (Gay)"
+	name = "Pride Pin"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "gaypin"
-	item_state = "pridepins"
+	icon_state = "pride"
+	item_state = "pride"
 
 /obj/item/clothing/accessory/pridepin/bi
-	name = "Sexuality Pin (Bisexual)"
+	name = "Pride Pin (Bisexual)"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "bisexualpin"
+	icon_state = "pride_bi"
+	item_state = "pride_bi"
 
 /obj/item/clothing/accessory/pridepin/lesbian
-	name = "Sexuality Pin (Lesbian)"
+	name = "Pride Pin (Lesbian)"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "lesbianpin"
+	icon_state = "pride_lesbian"
+	item_state = "pride_lesbian"
 
 /obj/item/clothing/accessory/pridepin/pan
-	name = "Sexuality Pin (Pansexual)"
+	name = "Pride Pin (Pansexual)"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "pansexualpin"
+	icon_state = "pride_pan"
+	item_state = "pride_pan"
 
 /obj/item/clothing/accessory/pridepin/trans
-	name = "Sexuality Pin (Transgender)"
+	name = "Pride Pin (Transgender)"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "transgenderpin"
+	icon_state = "pride_trans"
+	item_state = "pride_trans"
 
 /obj/item/clothing/accessory/pridepin/nonbinary
-	name = "Sexuality Pin (Nonbinary)"
+	name = "Pride Pin (Nonbinary)"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "nonbinarypin"
+	icon_state = "pride_enby"
+	item_state = "pride_enby"
 
 /obj/item/clothing/accessory/pridepin/asexual
-	name = "Sexuality Pin (Asexual)"
+	name = "Pride Pin (Asexual)"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "asexualpin"
+	icon_state = "pride_ace"
+	item_state = "pride_ace"
 
 /obj/item/clothing/accessory/pridepin/aromantic
-	name = "Sexuality Pin (Aromantic)"
+	name = "Pride Pin (Aromantic)"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "aromanticpin"
+	icon_state = "pride_aro"
+	item_state = "pride_aro"
 
 /obj/item/clothing/accessory/pridepin/intersex
-	name = "Sexuality Pin (Intersex)"
+	name = "Pride Pin (Intersex)"
 	desc = "A colorful pin denoting the wearer's sexual preference."
-	icon_state = "intersexpin"
+	icon_state = "pride_intersex"
+	item_state = "pride_intersex"
