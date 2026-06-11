@@ -38,6 +38,13 @@
 	var/overmap_bound_width = 32
 	var/overmap_bound_height = 32
 
+	/// how far we can jump to things
+	/// * this is computed with bounds_dist() so from our edge to their edge, not centers.
+	var/overmap_jump_lock_range_px = 4
+	/// how far we have to be to continue an interdiction / jump
+	/// * jump range is needed to initiate jump, this is needed to actually finish the jump
+	var/overmap_jump_range_px = 12
+
 	// legacy because sensor update will change how this works
 	var/overmap_legacy_start_unknown = TRUE
 	// Legacy because sensor update will get rid of hard-coded names.

@@ -64,7 +64,7 @@
 
 	shuttle.descriptor.imprint_on_entity(entity)
 
-	var/atom/detected_location = detect_entity_location()
+	var/atom/detected_location = detect_starting_entity_location()
 
 	// it's fine to not detect *any* location; shuttles in nullspace (transit) are actually valid!
 	if(detected_location)
@@ -80,11 +80,29 @@
  *
  * @return null, turf, or another overmap entity
  */
-/datum/shuttle_controller/overmap/proc/detect_entity_location()
-	#warn impl
+/datum/shuttle_controller/overmap/proc/detect_starting_entity_location()
+	var/our_z = get_z(shuttle.anchor)
+	if(!our_z)
+		// nowhere
+		return null
 
-#warn impl all
+	var/obj/overmap/entity/detected_entity = SSovermaps.get_enclosing_overmap_entity(our_z)
+	if(detected_entity)
+		// in someone else
+		return detected_entity
+
+	// detect if we're already on the overmap
+	if(entity?.overmap)
+		// go there; it'll either be a turf or another entity (at time of writing)
+		if(isturf(entity.loc))
+			return entity.loc
+		else if(istype(entity.loc, /obj/overmap/entity))
+			return entity.loc
 
 /datum/shuttle_controller/overmap/manual_landing_levels()
 	. = ..()
-	#warn impl nearby entities?
+
+	for(var/obj/overmap/entity/detected_entity in SSovermaps.entity_pixel_dist_query(entity, shuttle.descriptor.overmap_jump_lock_range_px))
+		if(!detected_entity.location)
+			return
+		. |= detected_entity.location.get_z_indices()
