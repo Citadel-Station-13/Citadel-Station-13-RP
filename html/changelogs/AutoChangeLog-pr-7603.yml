@@ -1,0 +1,4 @@
+author: "Shadowtail117"
+delete-after: True
+changes:
+  - tweak: "Integrated circuits can no longer use their signaling components to communicate with other integrated circuits across maps."
