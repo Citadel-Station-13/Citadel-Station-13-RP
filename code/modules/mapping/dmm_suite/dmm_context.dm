@@ -32,6 +32,8 @@
 	var/datum/map_context/map
 	/// set to map_context's value for speed
 	var/map_mangling_id
+	/// set to map_context's value for speed
+	var/datum/turf_auto_marker_config/auto_marker_config
 
 	//* set by load cycle *//
 

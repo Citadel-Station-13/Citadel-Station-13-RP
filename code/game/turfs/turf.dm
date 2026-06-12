@@ -50,13 +50,17 @@
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
 
-	//* Flags
+	//* Flags *//
 	/// turf flags
 	var/turf_flags = NONE
 	/// turf spawning flags
 	var/turf_spawn_flags = TURF_SPAWN_FLAG_BUILDMODE | TURF_SPAWN_FLAG_FILLABLE | TURF_SPAWN_FLAG_LEVEL_TURF
 	/// multiz flags
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
+
+	//* Map Generation *//
+	/// map generation cycle; used to not allow overwrites
+	var/tmp/map_generation_cycle
 
 	//* Movement / Pathfinding
 	/// How much the turf slows down movement, if any.

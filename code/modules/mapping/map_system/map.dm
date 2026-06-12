@@ -93,6 +93,8 @@
 	/// use map-wide area cache instead of individual level area caches; has no effect on submap loading, only level loading.
 	/// * don't touch this unless you know what you're doing.
 	var/load_shared_area_cache = TRUE
+	/// Default auto-marker options.
+	var/datum/turf_auto_marker_config/load_auto_marker_config = new
 
 	//* Injections *//
 	/**

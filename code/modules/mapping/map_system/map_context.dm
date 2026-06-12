@@ -18,6 +18,12 @@
 	 *   are optionally part of it.
 	 */
 	var/mangling_id
+
+	/**
+	 * Turf auto_marker configuration.
+	 */
+	var/datum/turf_auto_marker_config/auto_marker_config
+
 	/**
 	 * Injections to fire
 	 * * Injections are stateless and generally are not automatically
@@ -65,6 +71,14 @@
 	post_init_callbacks = null
 	loaded_dmm_contexts = null
 	return ..()
+
+/datum/map_context/proc/create_blank_dmm_context()
+	RETURN_TYPE(/datum/dmm_context)
+	var/datum/dmm_context/context = new
+	context.map = src
+	context.map_mangling_id = mangling_id
+	context.auto_marker_config = auto_marker_config
+	return context
 
 /datum/map_context/proc/register_injection(datum/map_injection/injection)
 	if(injection in injections)
