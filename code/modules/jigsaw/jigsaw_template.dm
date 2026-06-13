@@ -63,3 +63,6 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 
 /datum/jigsaw_template/proc/unload_cache()
 	parsed = null
+
+/datum/jigsaw_template/proc/load_cached()
+	parsed = new(path)

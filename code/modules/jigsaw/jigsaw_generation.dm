@@ -4,7 +4,8 @@
 /datum/jigsaw_generation_enqueued_placement
 	var/lower_left_x
 	var/lower_left_y
-	var/orietnation
+	var/lower_left_z
+	var/orientation
 	var/datum/jigsaw_template/template
 
 /**
@@ -28,3 +29,6 @@
 
 
 #warn impl
+
+/datum/jigsaw_generation/proc/cleanup()
+	QDEL_LIST(pending_connectors)

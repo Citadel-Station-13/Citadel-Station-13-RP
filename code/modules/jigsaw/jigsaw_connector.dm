@@ -9,9 +9,12 @@ GLOBAL_LIST(jigsaw_connectors_pending)
 /datum/jigsaw_pending_connector
 	var/x
 	var/y
+	var/z
 	var/width
 	var/margin
 	var/direction
+
+	var/spent = FALSE
 
 /**
  * Denotes a **possible** connection point for jigsaw pieces.
@@ -37,20 +40,40 @@ GLOBAL_LIST(jigsaw_connectors_pending)
 	// * This is the tiles in both left and right directions that are presumed safe / sealed.
 	var/margin = 1
 
+	/// set if we detect another jigsaw connector spawning onto us
+	var/matched = FALSE
+
+	/// our pending connector.
+	/// * we un-reference this on destroy, but when we match, we mark it as 'spent' for disposal.
+	var/datum/jigsaw_pending_connector/pending
+
+
 /obj/jigsaw_connector/New()
 	if(GLOB.jigsaw_connectors_pending)
 		var/datum/jigsaw_pending_connector/pending = new
 		pending.x = src.x
 		pending.y = src.y
+		pending.z = src.z
 		pending.width = src.width
 		pending.margin = src.margin
 		pending.direction = src.dir
 		GLOB.jigsaw_connectors_pending += pending
+		src.pending = pending
+	try_match_other()
 	return ..()
 
 /obj/jigsaw_connector/Initialize()
 	return INITIALIZE_HINT_QDEL
 
+/obj/jigsaw_connector/Destroy()
+	pending = null
+	return ..()
+
+/obj/jigsaw_connector/proc/on_match()
+	matched = TRUE
+	pending?.spent = TRUE
+
+/obj/jigsaw_connector/proc/try_match_other()
 #warn impl
 
 /obj/jigsaw_connector/two_wide
