@@ -15,6 +15,27 @@
 	var/width
 	var/margin
 
+GLOBAL_LIST_EMPTY(jigsaw_template_cache)
+
+/proc/fetch_cached_jigsaw_template(datum/jigsaw_template/path)
+	if(istype(path))
+		return path
+	else if(isnull(path))
+		return null
+
+	if(GLOB.jigsaw_template_cache[path])
+		return GLOB.jigsaw_template_cache[path]
+
+	var/datum/jigsaw_template/template = new path
+	GLOB.jigsaw_template_cache[path] = template
+
+	return template
+
+/proc/unload_cached_jigsaw_templates()
+	for(var/path in GLOB.jigsaw_template_cache)
+		var/datum/jigsaw_template/template = GLOB.jigsaw_template_cache[path]
+		template.unload_cache()
+
 /datum/jigsaw_template
 	/// the name of this template, used for debugging and referencing in other templates.
 	var/name = "Dungeon Fragment"
@@ -39,3 +60,6 @@
 	var/list/datum/jigsaw_template_connector/connectors = list()
 
 #warn impl
+
+/datum/jigsaw_template/proc/unload_cache()
+	parsed = null

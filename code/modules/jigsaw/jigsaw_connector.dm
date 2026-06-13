@@ -6,6 +6,13 @@
  */
 GLOBAL_LIST(jigsaw_connectors_pending)
 
+/datum/jigsaw_pending_connector
+	var/x
+	var/y
+	var/width
+	var/margin
+	var/direction
+
 /**
  * Denotes a **possible** connection point for jigsaw pieces.
  *
@@ -22,8 +29,6 @@ GLOBAL_LIST(jigsaw_connectors_pending)
 	pixel_x = -32
 	pixel_y = -32
 
-	var/is_registered = FALSE
-
 	// Inner width.
 	// * If this is even, the connector is left-biased in its real direction, facing in
 	//   its direction; so if it's NORTH width 2, the connector is its tile and one to the east.
@@ -34,14 +39,17 @@ GLOBAL_LIST(jigsaw_connectors_pending)
 
 /obj/jigsaw_connector/New()
 	if(GLOB.jigsaw_connectors_pending)
-		GLOB.jigsaw_connectors_pending += src
-		is_registered = TRUE
+		var/datum/jigsaw_pending_connector/pending = new
+		pending.x = src.x
+		pending.y = src.y
+		pending.width = src.width
+		pending.margin = src.margin
+		pending.direction = src.dir
+		GLOB.jigsaw_connectors_pending += pending
 	return ..()
 
 /obj/jigsaw_connector/Initialize()
-	if(!is_registered)
-		return INITIALIZE_HINT_QDEL
-	return ..()
+	return INITIALIZE_HINT_QDEL
 
 #warn impl
 
