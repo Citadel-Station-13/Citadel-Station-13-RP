@@ -81,6 +81,7 @@
 	used = TRUE
 
 /datum/dmm_context/proc/set_empty_load()
+	mark_used()
 	loaded_bounds = new /list(MAP_BOUNDS)
 	loaded_bounds[MAP_MINX] = 0
 	loaded_bounds[MAP_MINY] = 0

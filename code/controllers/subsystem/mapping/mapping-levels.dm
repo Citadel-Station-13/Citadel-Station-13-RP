@@ -231,12 +231,7 @@
 	ASSERT(instance.id)
 	ASSERT(instance == allocated_instance)
 
-	if(isnull(use_dmm_context))
-		use_dmm_context = create_dmm_context()
-	if(isnull(use_dmm_context.map_mangling_id))
-		use_dmm_context.map_mangling_id = "level-[instance.mangling_id || instance.id]"
-
-	var/datum/dmm_context/loaded_context
+	var/datum/dmm_context/dmm_context = map_context.create_blank_dmm_context()
 
 	if(instance.base_area)
 		var/area/level_area_type = instance.base_area
@@ -275,16 +270,13 @@
 			place_on_top = FALSE,
 			orientation = instance.load_orientation,
 			area_cache = use_area_cache,
-			context = use_dmm_context,
+			context = dmm_context,
 		)
 
-		ASSERT(loaded_context.success)
 	else
-		// this is not a real map path
-		loaded_context = use_dmm_context
-		loaded_context.mark_used()
-		loaded_context.set_empty_load()
-		loaded_context.success = TRUE
+		dmm_context.set_empty_load()
+
+	ASSERT(dmm_context.success)
 
 	// immediately update munltiz cache
 	rebuild_multiz_lookup(instance.z_index)
