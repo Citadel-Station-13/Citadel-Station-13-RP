@@ -20,10 +20,9 @@
 
 	injections = list(
 		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_noise_ores(
+			null,
+			0.6,
+			0.4,
+		),
 	)
-
-/datum/map_level/sector/mining_192/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-
-	new /datum/random_map/noise/ore/classg(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
-

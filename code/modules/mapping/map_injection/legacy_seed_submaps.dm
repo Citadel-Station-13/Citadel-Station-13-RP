@@ -6,9 +6,12 @@
 /datum/map_injection/legacy_seed_submaps/New(seed, budget, whitelist, desired_map_template_type)
 	..()
 	// TODO: seed?
-	src.budget = budget
-	src.whitelist = whitelist
-	src.desired_map_template_type = desired_map_template_type
+	if(!isnull(budget))
+		src.budget = budget
+	if(!isnull(whitelist))
+		src.whitelist = whitelist
+	if(!isnull(desired_map_template_type))
+		src.desired_map_template_type = desired_map_template_type
 
 /datum/map_injection/legacy_seed_submaps/on_map_pre_init(datum/map_context/map_context, datum/dmm_context/dmm_context)
 	..()
@@ -20,5 +23,9 @@
 
 /datum/map_injection/legacy_seed_submaps/on_dmm_zlevel/collect_zlevels(datum/map_context/map_context, datum/dmm_context/dmm_context)
 	. = list()
+
+	if(!dmm_context)
+		return
+
 	for(var/z in dmm_context.loaded_bounds[MAP_MINZ] to dmm_context.loaded_bounds[MAP_MAXZ])
 		. += z

@@ -59,15 +59,10 @@
 	struct_y = 1
 	struct_z = 0
 
-/datum/map_level/sector/miaphus/desert/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			225,
 			/area/sector/miaphus/beach/desert/unexplored,
 			/datum/map_template/submap/level_specific/class_h,
-		)
+		),
 	)

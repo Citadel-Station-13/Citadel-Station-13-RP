@@ -337,19 +337,14 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/base/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_seed_submaps(
 			75,
 			/area/rift/surfacebase/outside/west_base/submap_seedzone,
 			/datum/map_template/submap/level_specific/rift/west_base,
-		)
+		),
 	)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/deep
 	id = "rift-west-underground-2"
@@ -395,19 +390,14 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/caves/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
-			50,
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_seed_submaps(
+			75,
 			/area/rift/surfacebase/outside/west_caves/submap_seedzone,
 			/datum/map_template/submap/level_specific/rift/west_caves,
-		)
+		),
 	)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/plains
 	id = "rift-west-surface-1"

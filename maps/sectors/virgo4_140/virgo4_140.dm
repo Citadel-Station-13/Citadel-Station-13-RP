@@ -43,11 +43,12 @@
 			/area/tether_away/cave/unexplored/normal,
 			/datum/map_template/submap/level_specific/mountains/normal,
 		),
+		new /datum/map_injection/legacy_noise_ores(
+			null,
+			0.6,
+			0.5,
+		),
 	)
-
-/datum/map_level/sector/virgo4_140/cave/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/noise/ore/beachmine(null, 1, 1, z_index, 64, 64)
 
 /datum/map_level/sector/virgo4_140/desert
 	id = "Virgo4Desert140"

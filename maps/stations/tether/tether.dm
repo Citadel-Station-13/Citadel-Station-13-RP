@@ -285,11 +285,8 @@
 
 	injections = list(
 		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_noise_ores,
 	)
-
-/datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
 /datum/map_level/tether/underdark
 	id = "tether-underdark"
@@ -315,11 +312,8 @@
 			/area/mine/unexplored/underdark,
 			/datum/map_template/submap/level_specific/underdark,
 		),
+		new /datum/map_injection/legacy_noise_ores,
 	)
-
-/datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
 /datum/map_level/tether/plains
 	id = "tether-south-plains"

@@ -33,11 +33,12 @@
 			/area/sector/surt/central/unexplored,
 			/datum/map_template/submap/level_specific/lavaland,
 		),
+		new /datum/map_injection/legacy_noise_ores(
+			null,
+			0.6,
+			0.4,
+		),
 	)
-
-/datum/map_level/sector/surt/base/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
 /datum/map_level/sector/surt/east
 	id = "LavalandEast192"
@@ -55,8 +56,9 @@
 			/area/sector/surt/east/unexplored,
 			/datum/map_template/submap/level_specific/lavaland,
 		),
+		new /datum/map_injection/legacy_noise_ores(
+			null,
+			0.6,
+			0.4,
+		),
 	)
-
-/datum/map_level/sector/surt/east/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z_index, 64, 64)
