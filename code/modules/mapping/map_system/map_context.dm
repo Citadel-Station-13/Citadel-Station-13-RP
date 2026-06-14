@@ -75,7 +75,7 @@
 /datum/map_context/proc/create_blank_dmm_context()
 	RETURN_TYPE(/datum/dmm_context)
 	var/datum/dmm_context/context = new
-	context.map = src
+	context.map_context = src
 	context.map_mangling_id = mangling_id
 	context.auto_marker_config = auto_marker_config
 	return context
