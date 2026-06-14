@@ -101,7 +101,6 @@
 	 * Injections to push into the `map_context` by default.
 	 */
 	var/list/datum/map_injection/injections = list()
-	#warn impl
 
 	//* Simulation *//
 	/// Ceiling heights for levels that don't specify it, as well as the blank space between levels

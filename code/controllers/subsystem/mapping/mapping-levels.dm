@@ -218,12 +218,11 @@
 	)
 	map_system_mutex = FALSE
 
+#warn trace calls for args & old generation / defer usage
 /datum/controller/subsystem/mapping/proc/load_level_impl(
 		datum/map_level/instance,
+		datum/map_context/map_context,
 		list/use_area_cache,
-		datum/dmm_context/use_dmm_context,
-		defer_for_group_load,
-		list/datum/callback/out_generation_callbacks,
 	)
 	PRIVATE_PROC(TRUE)
 
@@ -234,8 +233,8 @@
 
 	if(isnull(use_dmm_context))
 		use_dmm_context = create_dmm_context()
-	if(isnull(use_dmm_context.mangling_id))
-		use_dmm_context.mangling_id = "level-[instance.mangling_id || instance.id]"
+	if(isnull(use_dmm_context.map_mangling_id))
+		use_dmm_context.map_mangling_id = "level-[instance.mangling_id || instance.id]"
 
 	var/datum/dmm_context/loaded_context
 

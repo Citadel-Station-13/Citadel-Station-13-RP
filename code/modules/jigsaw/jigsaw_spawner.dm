@@ -21,7 +21,7 @@
 		auto_marker_config = new(auto_marker_config)
 	..()
 
-/obj/map_helper/jigsaw_spawner/map_initializations(datum/dmm_context/context)
+/obj/map_helper/jigsaw_spawner/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
 	..()
 	generate(context)
 

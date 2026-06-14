@@ -20,15 +20,11 @@
 	planet_path = /datum/planet/classp
 	air_outdoors = /datum/atmosphere/planet/classp
 
-/datum/map_level/sector/frozen_192/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			125,
-			/area/class_p/ruins,
+			/area/class_p/ruins/unexplored,
 			/datum/map_template/submap/level_specific/class_p,
-		)
+		),
 	)
+

@@ -80,6 +80,12 @@
 	context.auto_marker_config = auto_marker_config
 	return context
 
+/datum/map_context/proc/create_and_register_blank_dmm_context()
+	RETURN_TYPE(/datum/dmm_context)
+	var/datum/dmm_context/context = create_blank_dmm_context()
+	loaded_dmm_contexts += context
+	return context
+
 /datum/map_context/proc/register_injection(datum/map_injection/injection)
 	if(injection in injections)
 		CRASH("injection already registered")

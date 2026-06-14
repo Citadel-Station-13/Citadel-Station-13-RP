@@ -3668,6 +3668,8 @@
 #include "code\modules\mapping\map_helpers\network_builder\_network_builder.dm"
 #include "code\modules\mapping\map_helpers\network_builder\power_cable.dm"
 #include "code\modules\mapping\map_injection\fixed_template_seeding.dm"
+#include "code\modules\mapping\map_injection\legacy_automata_caves.dm"
+#include "code\modules\mapping\map_injection\legacy_seed_submaps.dm"
 #include "code\modules\mapping\map_injection\map_injection.dm"
 #include "code\modules\mapping\map_injection\starting_gear.dm"
 #include "code\modules\mapping\map_system\map-legacy-station.dm"

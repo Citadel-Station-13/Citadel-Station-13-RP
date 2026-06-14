@@ -14,8 +14,8 @@
 	/// TODO: a way to pass in map injections and stuff from mapping tools would be nice.
 	var/detach_from_map = FALSE
 
-/obj/map_helper/template_loader/map_initializations(datum/dmm_context/context)
-	. = ..()
+/obj/map_helper/template_loader/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
+	..()
 
 	var/list/resolved = resolve_aligned_load_target()
 	if(!resolved)
@@ -71,7 +71,7 @@
 
 	if(orientation == SOUTH)
 		// no adjustment
-		pass
+		pass()
 	else if(orientation == EAST)
 		x -= width - 1
 	else if(orientation == NORTH)

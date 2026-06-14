@@ -205,8 +205,8 @@
 	// create context
 	if(isnull(context))
 		context = new
-	if(isnull(context.mangling_id))
-		context.mangling_id = generate_mangling_id()
+	if(isnull(context.map_mangling_id))
+		context.map_mangling_id = generate_mangling_id()
 
 	context = parsed.load(ll_x, ll_y, ll_z, orientation = orientation, context = context)
 

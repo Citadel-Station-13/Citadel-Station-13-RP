@@ -26,21 +26,18 @@
 	struct_y = 0
 	struct_z = 0
 
-/datum/map_level/sector/surt/base/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_seed_submaps(
 			80,
 			/area/sector/surt/central/unexplored,
 			/datum/map_template/submap/level_specific/lavaland,
-		)
+		),
 	)
-	// todo: yielding generation
+
+/datum/map_level/sector/surt/base/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
+	. = ..()
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
 
 /datum/map_level/sector/surt/east
 	id = "LavalandEast192"
@@ -51,18 +48,15 @@
 	struct_y = 0
 	struct_z = 0
 
-/datum/map_level/sector/surt/east/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_seed_submaps(
 			40,
 			/area/sector/surt/east/unexplored,
 			/datum/map_template/submap/level_specific/lavaland,
-		)
+		),
 	)
-	// todo: yielding generation
+
+/datum/map_level/sector/surt/east/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
+	. = ..()
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z_index, 64, 64)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx - 4, world.maxy - 4)

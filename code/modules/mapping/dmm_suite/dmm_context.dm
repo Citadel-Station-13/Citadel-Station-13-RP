@@ -1,14 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/proc/create_dmm_context(
-	mangling_id,
-)
-	RETURN_TYPE(/datum/dmm_context)
-	var/datum/dmm_context/context = new
-	context.mangling_id = mangling_id
-	return context
-
 /**
  * something accessible to all atoms during preloading_from_mapload
  *

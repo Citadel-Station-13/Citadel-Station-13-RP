@@ -61,7 +61,7 @@
  */
 /obj/map_helper/proc/hook_map_initializations(datum/dmm_context/context)
 	PRIVATE_PROC(TRUE)
-	context.map_initialization_hooked += src
+	context.map.register_pre_init_callback(CALLBACK(src, PROC_REF(map_initializations), context))
 
 /**
  * called if we're on SSmapping's map_initializations_hooked list.
@@ -69,9 +69,6 @@
  * called before group loading done by /datum/map
  * called before atom init
  * called before level on_loaded_finalize
- *
- * @params
- * * context - the dmm_context of our load
  */
-/obj/map_helper/proc/map_initializations(datum/dmm_context/context)
+/obj/map_helper/proc/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
 	return

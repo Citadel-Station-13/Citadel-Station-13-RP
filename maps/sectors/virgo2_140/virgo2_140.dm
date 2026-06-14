@@ -25,15 +25,10 @@
 	path = "maps/sectors/virgo2_140/levels/virgo2_140_surface.dmm"
 	base_turf = /turf/simulated/floor/outdoors/rocks
 
-/datum/map_level/sector/virgo2_140/ground/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			150,
 			/area/tether_away/aerostat/surface/unexplored,
 			/datum/map_template/submap/level_specific/virgo2,
-		)
+		),
 	)

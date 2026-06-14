@@ -15,7 +15,7 @@
 /obj/map_helper/airlock_peripheral_linker/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	if(set_controller_id)
-		set_controller_id = SSmapping.mangled_round_local_id(set_controller_id, context.mangling_id)
+		set_controller_id = SSmapping.mangled_round_local_id(set_controller_id, context.map_mangling_id)
 
 /obj/map_helper/airlock_peripheral_linker/Initialize(mapload)
 	for(var/obj/machinery/airlock_peripheral/peripheral in loc)

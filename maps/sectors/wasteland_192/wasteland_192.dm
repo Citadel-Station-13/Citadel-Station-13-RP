@@ -15,15 +15,10 @@
 	base_turf = /turf/simulated/mineral/floor/classd
 	planet_path = /datum/planet/classd
 
-/datum/map_level/sector/wasteland_192/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			150,
 			/area/class_d/unexplored,
 			/datum/map_template/submap/level_specific/class_d,
-		)
+		),
 	)

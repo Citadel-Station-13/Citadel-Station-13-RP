@@ -56,8 +56,9 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 
 	/**
 	 * Connectors with locations.
+	 * * Supports auto-detection if nulled.
 	 */
-	var/list/datum/jigsaw_template_connector/connectors = list()
+	var/list/datum/jigsaw_template_connector/connectors = null
 
 #warn impl
 

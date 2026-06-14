@@ -183,7 +183,7 @@ GLOBAL_REAL_LIST(distributed_gear_marker_usage_weights) = list(
 
 
 /obj/map_helper/gear_marker/distributed/preloading_from_mapload(datum/dmm_context/context)
-	context.distributed_gear_markers += src
+	context.map.collected_distributed_gear_markers += src
 	// make everything assoc
 	make_associative_inplace(gear_tags)
 	make_associative_inplace(usage_tags)
@@ -217,8 +217,8 @@ GLOBAL_REAL_LIST(distributed_gear_marker_usage_weights) = list(
 	var/role_allow_overflow = TRUE
 
 /obj/map_helper/gear_marker/role/preloading_from_mapload(datum/dmm_context/context)
-	LAZYINITLIST(context.stamped_gear_markers_by_role[role_tag])
-	context.stamped_gear_markers_by_role[role_tag] += src
+	LAZYINITLIST(context.map.collected_stamped_gear_markers_by_role[role_tag])
+	context.map.collected_stamped_gear_markers_by_role[role_tag] += src
 	return ..()
 
 /**

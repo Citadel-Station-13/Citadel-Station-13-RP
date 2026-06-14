@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 /obj/machinery/bioscan_antenna/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	if(network_key_obfuscated && !network_key)
-		network_key = SSmapping.obfuscated_round_local_id(network_key_obfuscated, context.mangling_id, "bioscan")
+		network_key = SSmapping.obfuscated_round_local_id(network_key_obfuscated, context.map_mangling_id, "bioscan")
 
 /obj/machinery/bioscan_antenna/Initialize(mapload)
 	. = ..()

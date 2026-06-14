@@ -201,9 +201,9 @@
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/station/underground_floor/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+	)
 
 /datum/map_level/rift/station/underground_deep
 	id = "rift-underground-2"
@@ -224,9 +224,9 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/station/underground_deep/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+	)
 
 /datum/map_level/rift/station/underground_shallow
 	id = "rift-underground-1"
@@ -247,9 +247,9 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/station/underground_shallow/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+	)
 
 /datum/map_level/rift/station/surface_low
 	id = "rift-surface-1"
@@ -270,9 +270,9 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/station/surface_low/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+	)
 
 /datum/map_level/rift/station/surface_mid
 	id = "rift-surface-2"
@@ -293,9 +293,9 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/station/surface_mid/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+	)
 
 /datum/map_level/rift/station/surface_high
 	id = "rift-surface-3"
@@ -316,9 +316,9 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/station/surface_high/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+	)
 
 /datum/map_level/rift/base
 	id = "rift-west-underground-3"
@@ -369,19 +369,14 @@
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 
-/datum/map_level/rift/deep/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_seed_submaps(
 			75,
-			/area/rift/surfacebase/outside/west_deep/submap_seedzone,
+			/area/rift/surfacebase/outside/west_deep/unexplored,
 			/datum/map_template/submap/level_specific/rift/west_deep,
-		)
+		),
 	)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/caves
 	id = "rift-west-underground-1"

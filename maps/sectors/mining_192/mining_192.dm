@@ -18,10 +18,12 @@
 	planet_path = /datum/planet/classg
 	air_outdoors = /datum/atmosphere/planet/classg
 
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+	)
+
 /datum/map_level/sector/mining_192/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
 	. = ..()
 
-	// todo: yield invoke generation
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
 	new /datum/random_map/noise/ore/classg(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 

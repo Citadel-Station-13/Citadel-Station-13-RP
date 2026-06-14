@@ -51,10 +51,10 @@
 	packs = collate_map_starting_gear_packs(packs)
 	src.gear_packs = packs
 
-/datum/map_injection/starting_gear/injection(datum/dmm_context/context)
+/datum/map_injection/starting_gear/on_map_pre_init(datum/map_context/map_context, datum/dmm_context/dmm_context)
 	for(var/datum/map_starting_gear/pack as anything in gear_packs)
-		pack.inject(context)
-	return ..()
+		pack.inject(dmm_context)
+	..()
 
 /datum/map_starting_gear
 

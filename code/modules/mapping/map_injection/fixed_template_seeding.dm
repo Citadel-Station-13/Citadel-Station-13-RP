@@ -30,7 +30,7 @@
 
 #warn impl
 
-/datum/map_injection/fixed_template_seeding/on_map_pre_init(datum/map_context/context)
+/datum/map_injection/fixed_template_seeding/on_map_pre_init(datum/map_context/map_context, datum/dmm_context/dmm_context)
 	. = ..()
 #warn impl
 
