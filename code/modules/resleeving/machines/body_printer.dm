@@ -93,7 +93,7 @@
 			/datum/prototype/material/glass::id = materials_limit,
 		))
 	if(bottles_limit)
-		bottles = new()
+		bottles = new/list()
 	update_icon()
 
 /obj/machinery/resleeving/body_printer/Destroy()
@@ -171,7 +171,6 @@
 			target = src
 		)
 		return
-	if(!bottles) bottles = new()
 	if(bottles.len >= bottles_limit)
 		clickchain.chat_feedback(
 			SPAN_NOTICE("\The [src] is full."),
@@ -194,7 +193,7 @@
 	if(bottles)
 		for(var/obj/item/I in bottles)
 			I.forceMove(where)
-		bottles = null
+		bottles = new/list()
 
 /obj/machinery/resleeving/body_printer/Exited(atom/movable/AM, atom/newLoc)
 	..()

@@ -317,7 +317,9 @@
 			)
 			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(do_after(clickchain.performer, 1 SECOND, src))
-			var/mirror = mirrortool.remove_mirror(src)
+			if(!mirrortool.inserted_mirror)
+				return
+			var/obj/item/organ/internal/mirror/mirror = mirrortool.remove_mirror(src)
 			insert_mirror(mirror)
 			clickchain.chat_feedback(
 				SPAN_NOTICE("You line up \the [mirrortool] with \the [src]'s port and inject its mirror."),
