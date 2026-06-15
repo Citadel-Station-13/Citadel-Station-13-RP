@@ -70,6 +70,8 @@
 	icon = 'icons/modules/sectors/air_support/rangefinder.dmi'
 	icon_state = "rangefinder"
 	base_icon_state = "rangefinder"
+	weight_volume = WEIGHT_VOLUME_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 
 	/// can be used as a rangefinder
 	var/is_rangefinder = TRUE

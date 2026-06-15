@@ -223,8 +223,6 @@
 /area/awaymission/listeningpost)
 "fa" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
-/obj/structure/lattice,
 /turf/space,
 /area/space)
 "fb" = (
@@ -718,7 +716,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/listeningpost)
 "rt" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /turf/space,
 /area/space)

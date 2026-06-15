@@ -134,6 +134,14 @@
 	catalysts = list("enzyme" = 5)
 	result_amount = 10
 
+/datum/chemical_reaction/drinks/bentarwine
+	name = "Sirim-Bentar"
+	id = "bentarwine"
+	result = "bentarwine"
+	required_reagents = list("bentarjuice" = 10)
+	catalysts = list("enzyme" = 5)
+	result_amount = 10
+
 /datum/chemical_reaction/drinks/pwine
 	name = "Poison Wine"
 	id = "pwine"

@@ -505,7 +505,6 @@
 /area)
 "cu" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/space,
 /area)
 "cv" = (

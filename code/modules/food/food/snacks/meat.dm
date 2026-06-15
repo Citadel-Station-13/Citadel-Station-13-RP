@@ -60,6 +60,16 @@
 	reagents.remove_reagent("triglyceride", INFINITY)
 	//Chicken is low fat. Less total calories than other meats
 
+/obj/item/reagent_containers/food/snacks/meat/sandsifter
+	icon = 'icons/obj/food.dmi'
+	icon_state = "chickenbreast"
+	cooked_icon = "chickenbreast_cooked"
+	filling_color = "#AE625F"
+
+/obj/item/reagent_containers/food/snacks/meat/sandsifter/Initialize(mapload)
+	. = ..()
+	reagents.remove_reagent("triglyceride", INFINITY)
+
 /obj/item/reagent_containers/food/snacks/meat/chicken/penguin
 	name = "meat"
 	desc = "Tastes like chicken? Or fish? Fishy chicken? Strange."
