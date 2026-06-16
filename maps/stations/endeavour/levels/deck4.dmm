@@ -17591,9 +17591,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/hallway/d4starboardforhall/endeavour)
-"pQq" = (
-/turf/space/basic,
-/area/space)
 "pRw" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -37182,14 +37179,14 @@ mKs
 jNg
 jNg
 jNg
-pQq
-pQq
-pQq
-pQq
-pQq
-pQq
-pQq
-pQq
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
 jNg
 jNg
 jNg
@@ -37376,14 +37373,14 @@ jNg
 jNg
 jNg
 jNg
-pQq
-pQq
-pQq
-pQq
-pQq
-pQq
-pQq
-pQq
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
+jNg
 jNg
 jNg
 jNg
