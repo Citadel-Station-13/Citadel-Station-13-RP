@@ -40,6 +40,8 @@
 /**
  * Called when the entire map is done loading and atom-initializing.
  * * This is called with SSatoms in normal mode.
+ * * These are NOT necessarily fired before atom init. If it's before atom init,
+ *   these behave like pre_init_callbacks other than ordering.
  *
  * @params
  * * map_context - the context for the whole map

@@ -54,7 +54,7 @@
 /datum/map_injection/starting_gear/on_map_pre_init(datum/map_context/map_context, datum/dmm_context/dmm_context)
 	for(var/datum/map_starting_gear/pack as anything in gear_packs)
 		pack.inject(dmm_context)
-	..()
+	return ..()
 
 /datum/map_starting_gear
 
@@ -87,7 +87,7 @@
 	var/list/obj/map_helper/gear_marker/use_markers = list()
 	var/current_matching_weight = 0
 
-	for(var/obj/map_helper/gear_marker/distributed/potential_marker in context.distributed_gear_markers)
+	for(var/obj/map_helper/gear_marker/distributed/potential_marker in context.map_context.collected_distributed_gear_markers)
 		var/match_weight = 0
 		var/gear_match = FALSE
 		var/usage_match = FALSE
@@ -165,7 +165,7 @@
 /datum/map_starting_gear/role/inject(datum/dmm_context/context)
 	// todo: logging if ran out of room
 	// 1. attempt to find proper role
-	var/list/obj/map_helper/gear_marker/role/role_markers = context.role_markers_by_tag[role_tag]
+	var/list/obj/map_helper/gear_marker/role/role_markers = context.map_context.collected_role_markers_by_tag[role_tag]
 	// if found
 	if(length(role_markers))
 		// fill as needed
@@ -185,8 +185,8 @@
 	ASSERT(isnum(slots) && slots > 0)
 	var/list/obj/map_helper/gear_marker/role/overflow_markers = list()
 	var/needed = slots
-	for(var/role in context.role_markers_by_tag)
-		for(var/obj/map_helper/gear_marker/role/potential_marker in context.role_markers_by_tag[role])
+	for(var/role in context.map_context.collected_role_markers_by_tag)
+		for(var/obj/map_helper/gear_marker/role/potential_marker in context.map_context.collected_role_markers_by_tag[role])
 			if(!potential_marker.role_allow_overflow)
 				continue
 			needed--

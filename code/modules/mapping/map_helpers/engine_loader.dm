@@ -6,9 +6,9 @@
 	// override for map, otherwise defaults to loaded station as we have no way of detecting what's being loaded right now
 	var/for_map
 
-/obj/map_helper/engine_loader/map_initializations(datum/dmm_dmm_context/dmm_context, datum/map_context/map_context)
+/obj/map_helper/engine_loader/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
 	. = ..()
-	var/list/bounds = context.loaded_bounds
+	var/list/bounds = dmm_context.loaded_bounds
 	var/lx = bounds[MAP_MINX]
 	var/ly = bounds[MAP_MINY]
 	var/lz = bounds[MAP_MINZ]
@@ -34,7 +34,7 @@
 		if(ispath(their_for_map))
 			var/datum/map/map_path = their_for_map
 			their_for_map = initial(map_path.id)
-		if(their_for_map != src.for_map)
+		if(their_for_map != for_map)
 			continue
 		var/name = lowertext(initial(path.name))
 		potential_filtered[path] = isnum(probabilities[name])? probabilities[name] : 1

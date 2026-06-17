@@ -17,7 +17,7 @@
 /obj/machinery/airlock_peripheral/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	if(controller_autolink_id)
-		controller_autolink_id = SSmapping.mangled_round_local_id(controller_autolink_id, context.map_mangling_id)
+		controller_autolink_id = SSmapping.mangled_round_local_id(controller_autolink_id, context.mangling_id)
 
 /obj/machinery/airlock_peripheral/Initialize(mapload)
 	. = ..()

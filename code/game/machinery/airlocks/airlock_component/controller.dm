@@ -64,7 +64,7 @@ GLOBAL_LIST_EMPTY(airlock_controller_lookup)
 /obj/machinery/airlock_component/controller/preloading_from_mapload(datum/dmm_context/context)
 	. = ..()
 	if(airlock_id)
-		airlock_id = SSmapping.mangled_round_local_id(airlock_id, context.map_mangling_id)
+		airlock_id = SSmapping.mangled_round_local_id(airlock_id, context.mangling_id)
 
 /obj/machinery/airlock_component/controller/Initialize(mapload, set_dir, obj/item/airlock_component/controller/from_item)
 	. = ..()

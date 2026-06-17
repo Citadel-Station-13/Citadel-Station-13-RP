@@ -17,15 +17,23 @@
 
 	//* set these before loading *//
 
-	#warn hook
 	/**
 	 * Our map context.
 	 */
 	var/datum/map_context/map_context
-	/// set to map_context's value for speed
-	var/map_mangling_id
-	/// set to map_context's value for speed
+	/**
+	 * ID used to mangle things like buttons.
+	 */
+	var/mangling_id
+	/**
+	 * Auto marker config to use for this load.
+	 */
 	var/datum/turf_auto_marker_config/auto_marker_config
+	/**
+	 * Set to identify the area we're loading. Used by things like
+	 * automatic area naming.
+	 */
+	var/provide_auto_name
 
 	//* set by load cycle *//
 
@@ -58,6 +66,8 @@
 	/**
 	 * Callbacks to call post-load, post-atom-init. Called with (src).
 	 * * These callbacks are fired with SSatoms in normal mode.
+	 * * These are NOT necessarily fired before atom init. If it's before atom init,
+	 *   these behave like pre_init_callbacks other than ordering.
 	 * * These have priority over injections.
 	 */
 	VAR_PRIVATE/list/datum/callback/post_init_callbacks = list()
@@ -101,30 +111,30 @@
 /datum/dmm_context/proc/dispose_dmm_reference()
 	loaded_dmm = null
 
-/datum/map_context/proc/register_injection(datum/map_injection/injection)
+/datum/dmm_context/proc/register_injection(datum/map_injection/injection)
 	if(injection in injections)
 		CRASH("injection already registered")
 	injections |= injection
 
-/datum/map_context/proc/register_pre_init_callback(datum/callback/cb)
+/datum/dmm_context/proc/register_pre_init_callback(datum/callback/cb)
 	if(pre_init_callbacks_fired)
 		CRASH("pre-init callbacks already were fired")
 	pre_init_callbacks |= cb
 
-/datum/map_context/proc/register_post_init_callback(datum/callback/cb)
+/datum/dmm_context/proc/register_post_init_callback(datum/callback/cb)
 	if(post_init_callbacks_fired)
 		CRASH("post-init callbacks already were fired")
 	post_init_callbacks |= cb
 
-/datum/map_context/proc/execute_pre_init()
+/datum/dmm_context/proc/execute_pre_init()
 	fire_pre_init_callbacks()
 	fire_pre_init_injections()
 
-/datum/map_context/proc/execute_post_init()
+/datum/dmm_context/proc/execute_post_init()
 	fire_post_init_callbacks()
 	fire_post_init_injections()
 
-/datum/map_context/proc/fire_pre_init_callbacks()
+/datum/dmm_context/proc/fire_pre_init_callbacks()
 	if(pre_init_callbacks_fired)
 		CRASH("pre-init callbacks already were fired")
 	pre_init_callbacks_fired = TRUE
@@ -138,7 +148,7 @@
 	Master.StopLoadingMap()
 	SSatoms.map_loader_stop("map-context-callbacks")
 
-/datum/map_context/proc/fire_post_init_callbacks()
+/datum/dmm_context/proc/fire_post_init_callbacks()
 	if(post_init_callbacks_fired)
 		CRASH("post-init callbacks already were fired")
 	post_init_callbacks_fired = TRUE
@@ -146,7 +156,7 @@
 	for(var/datum/callback/callback as anything in post_init_callbacks)
 		callback.invoke_no_sleep(map_context, src)
 
-/datum/map_context/proc/fire_pre_init_injections()
+/datum/dmm_context/proc/fire_pre_init_injections()
 	if(injections_pre_init_fired)
 		CRASH("pre-init injections already were fired")
 	injections_pre_init_fired = TRUE
@@ -160,7 +170,7 @@
 	Master.StopLoadingMap()
 	SSatoms.map_loader_stop("map-context-injections")
 
-/datum/map_context/proc/fire_post_init_injections()
+/datum/dmm_context/proc/fire_post_init_injections()
 	if(injections_post_init_fired)
 		CRASH("post-init injections already were fired")
 	injections_post_init_fired = TRUE

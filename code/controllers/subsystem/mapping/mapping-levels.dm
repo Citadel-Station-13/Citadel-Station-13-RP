@@ -209,21 +209,30 @@
 	)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
-	. = load_level_impl(
+
+	var/datum/dmm_context/dmm_context = load_level_impl(
 		instance,
 		use_area_cache,
 		use_dmm_context,
 		defer_for_group_load,
 		out_generation_callbacks,
 	)
+	if(SSatoms.initialized)
+		SSatoms.init_map_bounds(dmm_context.loaded_bounds)
+	dmm_context.execute_post_init()
+
 	map_system_mutex = FALSE
 
+	return dmm_context
+
 #warn trace calls for args & old generation / defer usage
+
 /datum/controller/subsystem/mapping/proc/load_level_impl(
 		datum/map_level/instance,
 		datum/map_context/map_context,
 		list/use_area_cache,
 	)
+	RETURN_TYPE(/datum/dmm_context)
 	PRIVATE_PROC(TRUE)
 
 	var/datum/map_level/allocated_instance = allocate_level_impl(instance, FALSE)
@@ -232,6 +241,9 @@
 	ASSERT(instance == allocated_instance)
 
 	var/datum/dmm_context/dmm_context = map_context.create_blank_dmm_context()
+
+	for(var/datum/map_injection/injection in instance.injections)
+		dmm_context.register_injection(injection)
 
 	if(instance.base_area)
 		var/area/level_area_type = instance.base_area
@@ -262,7 +274,7 @@
 		if(!instance.load_crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
 			CRASH("tried to load a map that would overrun the world bounds")
 
-		loaded_context = parsed.load(
+		dmm_context = parsed.load(
 			real_x,
 			real_y,
 			real_z,
@@ -281,25 +293,10 @@
 	// immediately update munltiz cache
 	rebuild_multiz_lookup(instance.z_index)
 
-	// fire context immediately
-	loaded_context.execute_postload()
+	// fire pre-init hooks
+	dmm_context.execute_pre_init()
 
-	// fire instance on load hooks
-	var/list/datum/callback/generation_callbacks = list()
-	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
-
-	// fire finalize and generation callbacks if not deferred
-	if(!defer_for_group_load)
-		for(var/datum/callback/generation_callback as anything in generation_callbacks)
-			generation_callback.Invoke()
-		if(!SSatoms.initialized)
-			SSatoms.init_map_bounds(loaded_context.loaded_bounds)
-		instance.on_loaded_finalize(instance.z_index)
-		instance.rebuild_multiz()
-	else
-		out_generation_callbacks += generation_callbacks
-
-	return loaded_context
+	return dmm_context
 
 /**
  * destroys a loaded level and frees it for later usage

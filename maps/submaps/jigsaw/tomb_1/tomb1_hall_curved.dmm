@@ -1,0 +1,136 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/sandstone,
+/area/submap/one_single_area)
+"t" = (
+/turf/simulated/wall/sandstone,
+/area/submap/one_single_area)
+"I" = (
+/turf/template_noop,
+/area/template_noop)
+"O" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/sandstone,
+/area/submap/one_single_area)
+
+(1,1,1) = {"
+I
+I
+I
+t
+t
+t
+t
+t
+t
+t
+"}
+(2,1,1) = {"
+I
+I
+t
+t
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+I
+t
+t
+a
+a
+O
+a
+a
+a
+O
+"}
+(4,1,1) = {"
+t
+t
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+t
+a
+a
+a
+a
+a
+t
+t
+t
+t
+"}
+(6,1,1) = {"
+t
+a
+O
+a
+a
+t
+t
+I
+I
+I
+"}
+(7,1,1) = {"
+t
+a
+a
+a
+t
+t
+I
+I
+I
+I
+"}
+(8,1,1) = {"
+t
+a
+a
+a
+t
+I
+I
+I
+I
+I
+"}
+(9,1,1) = {"
+t
+a
+a
+a
+t
+I
+I
+I
+I
+I
+"}
+(10,1,1) = {"
+t
+a
+O
+a
+t
+I
+I
+I
+I
+I
+"}

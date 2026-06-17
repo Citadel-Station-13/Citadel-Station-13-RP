@@ -98,7 +98,7 @@
 		var/datum/map_context/context = new
 		loaded_contexts += context
 
-		context.map_mangling_id = loading_map.mangling_id || loading_map.id
+		context.mangling_id = loading_map.mangling_id || loading_map.id
 		context.auto_marker_config = loading_map.load_auto_marker_config || new
 
 		for(var/datum/map_injection/injection as anything in loading_map.injections)
@@ -129,25 +129,21 @@
 			SSshuttle.legacy_shuttle_assert(path)
 		//! END
 
-	emit_info_log("load - initializing [length(loaded_lockstep_levels)] levels...")
+	emit_info_log("load - initializing [length(loaded_levels)] levels...")
 
-	// fire generation and atom init after, now that everything has had a chance to load
-	for(var/datum/callback/cb as anything in deferred_generation_callbacks)
-		cb.Invoke()
-	for(var/datum/dmm_context/ctx as anything in loaded_lockstep_contexts)
-		if(SSatoms.initialized)
-			SSatoms.init_map_bounds(ctx.loaded_bounds)
+	// init bounds and fire post-init.
+	for(var/datum/map_context/ctx as anything in loaded_contexts)
+		for(var/datum/dmm_context/dmm_ctx as anything in ctx.loaded_dmm_contexts)
+			if(SSatoms.initialized)
+				SSatoms.init_map_bounds(dmm_ctx.loaded_bounds)
+			dmm_ctx.execute_post_init()
+		ctx.execute_post_init()
 
-	// fire finalize hooks
-	for(var/datum/map_level/level as anything in loaded_lockstep_levels)
-		level.on_loaded_finalize(level.z_index)
-	for(var/datum/map/map as anything in loaded_maps)
-		map.on_loaded_finalize()
-
-	for(var/datum/map_level/loaded_level as anything in loaded_lockstep_levels)
+	// finally rebuild multiz proper
+	for(var/datum/map_level/loaded_level as anything in loaded_levels)
 		rebuild_multiz(loaded_level.z_index)
 
-	emit_info_log("load - initialized [length(loaded_lockstep_levels)] levels")
+	emit_info_log("load - initialized [length(loaded_levels)] levels")
 
 	return TRUE
 

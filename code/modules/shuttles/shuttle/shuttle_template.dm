@@ -91,7 +91,7 @@
 
 	// create context
 	var/datum/map_context/map_context = new
-	map_context.map_mangling_id = generate_mangling_id()
+	map_context.mangling_id = generate_mangling_id()
 	for(var/datum/map_injection/injection as anything in map_injections)
 		map_context.register_injection(injection)
 

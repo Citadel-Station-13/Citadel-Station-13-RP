@@ -45,6 +45,8 @@
 	 * Callbacks to call post-load, post-atom-init. Called with (src).
 	 * * These callbacks are fired with SSatoms in normal mode.
 	 * * These have priority over injections.
+	 * * These are NOT necessarily fired before atom init. If it's before atom init,
+	 *   these behave like pre_init_callbacks other than ordering.
 	 */
 	VAR_PRIVATE/list/datum/callback/post_init_callbacks = list()
 	VAR_PRIVATE/post_init_callbacks_fired = FALSE
@@ -76,7 +78,7 @@
 	RETURN_TYPE(/datum/dmm_context)
 	var/datum/dmm_context/context = new
 	context.map_context = src
-	context.map_mangling_id = mangling_id
+	context.mangling_id = mangling_id
 	context.auto_marker_config = auto_marker_config
 	return context
 
