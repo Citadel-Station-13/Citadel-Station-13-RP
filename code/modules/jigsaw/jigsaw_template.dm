@@ -42,6 +42,11 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	/// path on disk
 	var/path
 
+	/// display name
+	/// * defaults to name
+	/// * appended to the jigsaw generator's name for area names
+	var/display_name
+
 	/// parsed map if held
 	var/datum/dmm_parsed/parsed
 

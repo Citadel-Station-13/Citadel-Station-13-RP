@@ -105,7 +105,7 @@
  * allocates a raw map level using the given datum type.
  *
  * * This does not perform **any** generation or processing on the level, including replacing baseturfs!
- * * This **will** call the level's on_loaded_immediate and on_loaded_finalize.
+ * * This **will** call the level's context pre/post init hooks.
  * * You usually want load_level() instead, this is instead the equivalent of just incrementing world.maxz.
  * * Any level passed in or returned from this belongs to SSmapping; you are not allowed to keep direct references to it
  *   in other datastructures.

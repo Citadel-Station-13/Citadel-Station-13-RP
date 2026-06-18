@@ -135,14 +135,6 @@
 	if(overmap_initializer)
 		SSovermaps.initialize_entity(overmap_initializer, src)
 
-/**
- * anything to do after loading with any dependencies
- *
- * called after level on_loaded_finalize's
- */
-/datum/map/proc/on_loaded_finalize()
-	SHOULD_CALL_PARENT(TRUE)
-
 //* Unloading *//
 
 /**

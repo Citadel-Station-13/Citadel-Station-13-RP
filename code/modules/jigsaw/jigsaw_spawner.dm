@@ -23,9 +23,9 @@
 
 /obj/map_helper/jigsaw_spawner/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
 	..()
-	generate(context)
+	generate()
 
-/obj/map_helper/jigsaw_spawner/proc/generate(datum/dmm_context/context)
+/obj/map_helper/jigsaw_spawner/proc/generate()
 	var/datum/jigsaw_generator/generator = new
 
 	generator.auto_marker_config = auto_marker_config

@@ -64,11 +64,9 @@
 	context.map_context.register_pre_init_callback(CALLBACK(src, PROC_REF(map_initializations), context))
 
 /**
- * called if we're on SSmapping's map_initializations_hooked list.
- * called before level's on_loaded_immediate
- * called before group loading done by /datum/map
- * called before atom init
- * called before level on_loaded_finalize
+ * Called if we're on SSmapping's map_initializations_hooked list.
+ * * Called before atom init always.
+ * * Generally called batched together with either the same .dmm or the same zlevel / map.
  */
 /obj/map_helper/proc/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
 	return

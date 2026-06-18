@@ -119,10 +119,10 @@
 				continue
 			loaded_levels += level
 
-		emit_info_log("load - finished loading '[instance.id]' with [length(loading_map.levels)] levels")
-
-		loading_map.on_loaded_immediate()
 		loaded_maps += loading_map
+		context.execute_pre_init()
+
+		emit_info_log("load - finished loading '[instance.id]' with [length(loading_map.levels)] levels")
 
 		//! LEGACY
 		for(var/path in loading_map.legacy_assert_shuttle_datums)

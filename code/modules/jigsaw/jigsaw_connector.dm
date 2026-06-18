@@ -63,6 +63,7 @@ GLOBAL_LIST(jigsaw_connectors_pending)
 	return ..()
 
 /obj/jigsaw_connector/Initialize()
+	SHOULD_CALL_PARENT(FALSE)
 	return INITIALIZE_HINT_QDEL
 
 /obj/jigsaw_connector/Destroy()
