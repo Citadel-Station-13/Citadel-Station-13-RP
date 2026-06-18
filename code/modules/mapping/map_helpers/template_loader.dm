@@ -35,7 +35,7 @@
 		CRASH("template loader failed to locate turf at specified coordinates ([x], [y], [z])")
 
 	log_game("Chainloading template [template] at ([x], [y], [z]) with orientation [orientation] via [src] ([REF(src)]).")
-	template.load(T, centered = FALSE, orientation = orientation)
+	template.load_standalone(T, orientation = orientation)
 
 /**
  * * This may return null to cancel

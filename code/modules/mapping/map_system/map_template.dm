@@ -39,6 +39,7 @@
 	/// times loaded this round
 	var/tmp/loaded = 0
 	/// If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
+	/// * Deprecated
 	var/annihilate = FALSE
 
 	//* loading as its own level *//
@@ -185,13 +186,21 @@
  *
  * @return loaded dmm_context, or null if failed
  */
-/datum/map_template/proc/load_standalone(turf/lower_left, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds)
+/datum/map_template/proc/load_standalone(turf/lower_left, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds = annihilate)
 	var/datum/dmm_context/context = load_deferred(lower_left, orientation, context, annihilate_bounds)
 	if(!context)
 		return
 
 	context.execute_post_init()
 	return context
+
+/datum/map_template/proc/load_standalone_centered(turf/centered, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds = annihilate)
+	return load_standalone(
+		locate(arglist(compute_lower_left_coords_from_centered_turf(centered, orientation))),
+		orientation,
+		context,
+		annihilate_bounds,
+	)
 
 /**
  * Loads a map template without executing postload for its context.
@@ -204,15 +213,23 @@
  *
  * @return loaded dmm_context, or null if failed
  */
-/datum/map_template/proc/load_deferred(turf/lower_left, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds)
+/datum/map_template/proc/load_deferred(turf/lower_left, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds = annihilate)
 	var/datum/dmm_context/context = load_impl(lower_left, orientation, context, annihilate_bounds)
 	return context
+
+/datum/map_template/proc/load_deferred_centered(turf/centered, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds = annihilate)
+	return load_deferred(
+		locate(arglist(compute_lower_left_coords_from_centered_turf(centered, orientation))),
+		orientation,
+		context,
+		annihilate_bounds,
+	)
 
 /datum/map_template/proc/load_impl(turf/real_turf, orientation, datum/dmm_context/context, annihilate_bounds)
 
 	SSmapping.subsystem_log("Loading template [src] ([type]) at [COORD(real_turf)] size [width]x[height] with annihilate mode [annihilate]")
 
-	if(annihilate)
+	if(annihilate_bounds)
 		annihilate_bounds(real_turf, width, height)
 
 	// ensure the dmm is parsed
@@ -224,7 +241,7 @@
 	if(isnull(context.mangling_id))
 		context.mangling_id = generate_mangling_id()
 
-	context = parsed.load(ll_x, ll_y, ll_z, orientation = orientation, context = context)
+	context = parsed.load(real_turf.x, real_turf.y, real_turf.z, orientation = orientation, context = context)
 
 	if(!context.loaded())
 		CRASH("failed to load")

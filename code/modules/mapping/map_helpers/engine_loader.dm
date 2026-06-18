@@ -68,7 +68,7 @@
 		to_chat(world, SPAN_DANGER("Engine loaded: [chosen.display_name]"))
 
 	annihilate_bounds(lx, ly, lz, ldir)
-	chosen.load(T, orientation = ldir)
+	chosen.load_standalone(T, orientation = ldir)
 
 	qdel(src)
 

@@ -95,7 +95,7 @@
 			log_debug(SPAN_DEBUG("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])[ADMIN_JMP(T)]"))
 
 			// Do loading here.
-			chosen_template.load(T, centered = TRUE, orientation=orientation)	// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
+			chosen_template.load_standalone_centered(T, orientation=orientation)	// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
 
 			CHECK_TICK
 
