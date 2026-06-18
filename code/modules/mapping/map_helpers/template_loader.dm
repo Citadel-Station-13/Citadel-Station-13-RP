@@ -90,5 +90,5 @@
 	 */
 	var/load_template
 
-/obj/map_helper/template_loader/corner_aligned/resolve_template()
+/obj/map_helper/template_loader/corner_aligned/static_load/resolve_template()
 	#warn impl

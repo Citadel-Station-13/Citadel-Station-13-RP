@@ -123,6 +123,7 @@
 /datum/map_template/proc/unload_cache()
 	parsed = null
 
+/// deprecated
 /datum/map_template/proc/load_new_z(centered = FALSE, orientation = SOUTH, list/traits = src.level_traits, list/attributes = src.level_get_attributes)
 	. = FALSE
 
@@ -151,48 +152,63 @@
 
 	SSmapping.subsystem_log("Loaded template [src] ([type]) on z-level [level.z_index]")
 
-	on_z_load(level.z_index)
-
 	return TRUE
 
 /**
- * loads a map template
- *
- * @params
- * * where - turf. center or lower left, depending on centered param.
- * * centered - is 'where' the center, or lower left?
- * * orientation - the orientation to load in. default is SOUTH.
- * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
- * * context - dmm_context to use
- * * defer_context - defer context initializations/injections
- *
- * @return null if failed, or /datum/dmm_context context
+ * Gets lower left tile from a centered position.
+ * @return list(x, y, z)
  */
-#warn audit calls for callbacks?
-/datum/map_template/proc/load(turf/where, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, datum/dmm_context/context, defer_context)
-	if(recursive_load_level >= 10)
-		CRASH("trying to recursively load more than 10 templates deep. this probably \
-		means you have an infinite loop somewhere in your map template / loader logic.")
+/datum/map_template/proc/compute_lower_left_coords_from_centered_turf(turf/centered, orientation)
+	if(!width || !height)
+		CRASH("bounds not preloaded")
 
-	recursive_load_level++
-	. = load_impl(where, centered, orientation, deferred_callbacks, context, defer_context)
-	recursive_load_level--
-
-#warn lower left?
-/datum/map_template/proc/load_impl(turf/lower_left, orientation, annihilate_bounds, datum/dmm_context/context)
-
-	var/ll_x = where.x
-	var/ll_y = where.y
-	var/ll_z = where.z
+	var/ll_x = centered.x
+	var/ll_y = centered.y
+	var/ll_z = centered.z
 	var/sideways = orientation & (EAST|WEST)
 	var/real_width = sideways? height : width
 	var/real_height = sideways? width : height
 
-	if(centered)
-		ll_x -= round(real_width / 2)
-		ll_y -= round(real_height / 2)
+	ll_x -= round(real_width / 2)
+	ll_y -= round(real_height / 2)
 
-	var/turf/real_turf = locate(ll_x, ll_y, ll_z)
+	return list(ll_x, ll_y, ll_z)
+
+/**
+ * Loads a map template and executes postload for its context.
+ *
+ * @params
+ * * lower_left - lower left corner of where to load the template
+ * * orientation - the orientation to load in. default is SOUTH.
+ * * context - dmm_context to use; one will be created if not provided.
+ * * annihilate_bounds - (deprecated) wipe out bounds
+ *
+ * @return loaded dmm_context, or null if failed
+ */
+/datum/map_template/proc/load_standalone(turf/lower_left, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds)
+	var/datum/dmm_context/context = load_deferred(lower_left, orientation, context, annihilate_bounds)
+	if(!context)
+		return
+
+	context.execute_post_init()
+	return context
+
+/**
+ * Loads a map template without executing postload for its context.
+ *
+ * @params
+ * * lower_left - lower left corner of where to load the template
+ * * orientation - the orientation to load in. default is SOUTH.
+ * * context - dmm_context to use; one will be created if not provided.
+ * * annihilate_bounds - (deprecated) wipe out bounds
+ *
+ * @return loaded dmm_context, or null if failed
+ */
+/datum/map_template/proc/load_deferred(turf/lower_left, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds)
+	var/datum/dmm_context/context = load_impl(lower_left, orientation, context, annihilate_bounds)
+	return context
+
+/datum/map_template/proc/load_impl(turf/real_turf, orientation, datum/dmm_context/context, annihilate_bounds)
 
 	SSmapping.subsystem_log("Loading template [src] ([type]) at [COORD(real_turf)] size [width]x[height] with annihilate mode [annihilate]")
 
@@ -205,8 +221,8 @@
 	// create context
 	if(isnull(context))
 		context = new
-	if(isnull(context.map_mangling_id))
-		context.map_mangling_id = generate_mangling_id()
+	if(isnull(context.mangling_id))
+		context.mangling_id = generate_mangling_id()
 
 	context = parsed.load(ll_x, ll_y, ll_z, orientation = orientation, context = context)
 
@@ -217,18 +233,10 @@
 
 	++loaded
 
-	var/list/datum/callback/callbacks = list()
-	on_normal_load(context, callbacks)
-	if(isnull(deferred_callbacks))
-		for(var/datum/callback/cb as anything in callbacks)
-			cb.Invoke()
-	else
-		deferred_callbacks += callbacks
+	context.execute_pre_init()
 
-	if(!defer_context)
-		context.execute_postload()
-
-	init_bounds(loaded_bounds)
+	if(!SSatoms.initialized)
+		init_bounds(loaded_bounds)
 
 	// todo: inefficient as shit
 	if(SSmapping.initialized)
