@@ -51,6 +51,11 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	var/datum/dmm_parsed/parsed
 
 	/**
+	 * Did auto-measure happen yet?
+	 */
+	var/scanned = FALSE
+
+	/**
 	 * Are we fully convex?
 	 * * Fully convex means there are no non-skipover turfs more 'outside'
 	 *   on any side than a connector.
@@ -65,10 +70,39 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	 */
 	var/list/datum/jigsaw_template_connector/connectors = null
 
-#warn impl
+	var/static/scan_ignore_typecache = cached_typecacheof(list(
+		/area/template_noop,
+		/turf/template_noop,
+		/obj/jigsaw_connector,
+	))
+	var/static/scan_interesting_zebra_typecache = zebra_typecacheof(list(
+		/obj/jigsaw_connector = /obj/jigsaw_connector,
+	))
 
 /datum/jigsaw_template/proc/unload_cache()
 	parsed = null
 
 /datum/jigsaw_template/proc/load_cached()
+	if(parsed)
+		return
 	parsed = new(path)
+
+/**
+ * * Implicitly loads cached.
+ */
+/datum/jigsaw_template/proc/scan()
+	if(scanned)
+		return
+	scanned = TRUE
+
+	load_cached()
+
+	var/datum/dmm_scan/scan = new
+	var/datum/dmm_scan_params/scan_params = new
+
+	scan_params.trivial_typecache = scan_ignore_typecache
+	scan_params.zebra_typecache_of_interest = scan_interesting_zebra_typecache
+
+	scan.scan(parsed, scan_params)
+
+	#warn impl

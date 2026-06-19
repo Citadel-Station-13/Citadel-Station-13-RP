@@ -547,6 +547,7 @@
 				world.preloader_setup(members_attributes[index], atype)
 				instance = new atype(null)
 				if(global.dmm_preloader_active)
+					stack_trace("preloader didn't automatically fire off on /area new")
 					world.preloader_load(instance)
 			areaCache[atype] = instance
 		instance.contents.Add(crds)
@@ -593,7 +594,7 @@
 		. = create_atom(path, crds)//first preloader pass
 
 	if(global.dmm_preloader_active) //second preloader pass, for those atoms that don't ..() in New()
-		stack_trace("required a second preloader pass")
+		stack_trace("required a second preloader pass on type [path]")
 		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize

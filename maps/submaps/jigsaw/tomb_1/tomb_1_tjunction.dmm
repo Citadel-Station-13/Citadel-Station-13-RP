@@ -4,15 +4,15 @@
 /area/template_noop)
 "r" = (
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "A" = (
 /turf/simulated/wall/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "J" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 
 (1,1,1) = {"
 A

@@ -2,44 +2,44 @@
 "a" = (
 /obj/structure/boulder,
 /turf/simulated/mineral/floor/ignore_cavegen/inherit_area,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "h" = (
 /obj/item/pickaxe,
 /obj/item/flashlight/lantern,
 /turf/simulated/mineral/floor/ignore_cavegen/inherit_area,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "l" = (
 /obj/random/junk,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "n" = (
 /obj/random/alcohol,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "o" = (
 /turf/simulated/mineral/ignore_cavegen,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "p" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "r" = (
 /obj/structure/bed,
 /obj/spawner/corpse/pirate/melee,
 /obj/effect/debris/cleanable/blood,
 /obj/item/bedsheet,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "v" = (
 /obj/structure/statue/marble/male,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "E" = (
 /obj/structure/table/marble,
 /obj/item/clothing/ears/laurel/silver,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "F" = (
 /turf/simulated/mineral/ignore_cavegen,
 /area/template_noop)
@@ -47,32 +47,32 @@
 /obj/structure/table/marble,
 /obj/item/clothing/ears/earring/dangle/silver,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "I" = (
 /turf/simulated/wall/solidrock,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "J" = (
 /turf/simulated/mineral/floor/ignore_cavegen/inherit_area,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "O" = (
 /turf/template_noop,
 /area/template_noop)
 "P" = (
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "Q" = (
 /turf/simulated/wall/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "V" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "Y" = (
 /obj/structure/table/marble,
 /obj/item/bone/skull,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 
 (1,1,1) = {"
 F

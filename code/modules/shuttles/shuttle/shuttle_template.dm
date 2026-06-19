@@ -109,16 +109,20 @@
 	// set descriptor
 	instance.descriptor = instance_descriptor()
 
-	#warn context pre/post init?
+	// context pre-init
+	loaded_context.execute_pre_init()
 
-	// let shuttle do black magic first
+	// shuttle auto-measure
 	// instance.before_bounds_init(reservation, src)
 
 	// init the bounds
 	SSatoms.init_map_bounds(loaded_bounds)
 
-	// let shuttle do post-init things
+	// shuttle post-init
 	// instance.after_bounds_init(reservation, src)
+
+	// context post-init
+	loaded_context.execute_post_init()
 
 	// set vars on shuttle
 	instance.template_id = id

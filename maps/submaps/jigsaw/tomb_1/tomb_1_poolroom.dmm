@@ -1,34 +1,34 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/wall/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "m" = (
 /turf/simulated/floor/water/deep/indoors,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "u" = (
 /obj/structure/stairs/middle{
 	dir = 4
 	},
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "B" = (
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "C" = (
 /obj/structure/table/sandstone,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "E" = (
 /obj/structure/stairs/middle{
 	dir = 8
 	},
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "H" = (
 /obj/structure/statue/marble/female,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "I" = (
 /turf/template_noop,
 /area/template_noop)

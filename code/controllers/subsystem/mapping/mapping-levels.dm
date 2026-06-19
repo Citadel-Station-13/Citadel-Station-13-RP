@@ -191,38 +191,38 @@
  *
  * if it doesn't have a file, we'll change all the turfs to the given baseturf and set atmos/whatever.
  *
+ * * This will fire initialize and post-initialize on the dmm_context.
+ *
  * @params
  * * instance - level to load
+ * * use_dmm_context - use the given map_context for the loader. This is used to create the dmm_context for the level.
  * * use_area_cache - use the given list as the area cache for the DMM loader. if none is provided, one will be created.
- * * use_dmm_context - use the given dmm_context for the loader. if none is provided, one will be created.
- * * defer_for_group_load - defer things like generation callbacks. should generally only be internally used by SSmapping; the API can change at any time.
- * * out_generation_callbacks - generation callbacks emitted by on_load_immediate are put in here instead of executed, if we are deferring due to group load
  *
  * @return loaded context, or null on fail
  */
 /datum/controller/subsystem/mapping/proc/load_level(
 		datum/map_level/instance,
+		datum/map_context/map_context,
 		list/use_area_cache,
-		datum/dmm_context/use_dmm_context,
-		defer_for_group_load,
-		list/datum/callback/out_generation_callbacks,
 	)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
 
 	var/datum/dmm_context/dmm_context = load_level_impl(
 		instance,
+		map_context,
 		use_area_cache,
-		use_dmm_context,
-		defer_for_group_load,
-		out_generation_callbacks,
 	)
+
+	if(!dmm_context)
+		map_system_mutex = FALSE
+		return
+
 	if(SSatoms.initialized)
 		SSatoms.init_map_bounds(dmm_context.loaded_bounds)
 	dmm_context.execute_post_init()
 
 	map_system_mutex = FALSE
-
 	return dmm_context
 
 #warn trace calls for args & old generation / defer usage

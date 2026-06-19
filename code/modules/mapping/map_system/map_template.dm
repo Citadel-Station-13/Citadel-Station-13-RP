@@ -1,3 +1,4 @@
+// TODO: consider unifying / interoperating with jigsaw_template & shuttle_template
 /datum/map_template
 	abstract_type = /datum/map_template
 
@@ -79,6 +80,15 @@
 		src.map_path = path
 	if(isnull(map_path))
 		map_path = "[prefix][suffix]"
+
+	if(!id)
+		var/static/next_ephemeral_id = 0
+		src.id = "ephemeral-" + next_ephemeral_id++
+
+		if(next_ephemeral_id > SHORT_REAL_LIMIT)
+			stack_trace("ran out of ephemeral map template IDs")
+			next_ephemeral_id = 0
+
 	preload()
 
 /**
@@ -149,7 +159,12 @@
 
 	ASSERT(level.loaded)
 
-	load(locate(ll_x, ll_y, level.z_index), FALSE, orientation)
+	var/turf/lower_left = locate(ll_x, ll_y, level.z_index)
+
+	load_standalone(
+		lower_left,
+		orientation = orientation,
+	)
 
 	SSmapping.subsystem_log("Loaded template [src] ([type]) on z-level [level.z_index]")
 

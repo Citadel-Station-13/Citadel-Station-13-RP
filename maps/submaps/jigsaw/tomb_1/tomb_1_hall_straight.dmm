@@ -5,18 +5,18 @@
 "o" = (
 /obj/structure/statue/marble/male,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "E" = (
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "G" = (
 /turf/simulated/wall/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "L" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 
 (1,1,1) = {"
 a

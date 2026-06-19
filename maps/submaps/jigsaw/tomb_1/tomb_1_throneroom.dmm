@@ -7,41 +7,41 @@
 /obj/item/clothing/head/pharaoh,
 /obj/item/clothing/suit/pharaoh,
 /turf/simulated/floor/gold,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "h" = (
 /turf/simulated/floor/silver,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "k" = (
 /turf/simulated/wall/sandstonediamond,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "m" = (
 /turf/simulated/wall/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "o" = (
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "p" = (
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/silver,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "C" = (
 /obj/machinery/artifact,
 /obj/structure/table/sandstone,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "H" = (
 /obj/structure/table/sandstone,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/sandstone,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "K" = (
 /turf/simulated/floor/gold,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 "V" = (
 /obj/structure/table/gold,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/gold,
-/area/submap/one_single_area)
+/area/submap/auto/one_single_area)
 
 (1,1,1) = {"
 a
