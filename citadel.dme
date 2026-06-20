@@ -3652,6 +3652,7 @@
 #include "code\modules\mapping\dmm_suite\dmm_parsed.dm"
 #include "code\modules\mapping\dmm_suite\dmm_preloader.dm"
 #include "code\modules\mapping\dmm_suite\dmm_report.dm"
+#include "code\modules\mapping\dmm_suite\dmm_scan.dm"
 #include "code\modules\mapping\dmm_suite\utility_types.dm"
 #include "code\modules\mapping\map_helpers\baseturf.dm"
 #include "code\modules\mapping\map_helpers\component_injector.dm"

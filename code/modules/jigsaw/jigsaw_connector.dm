@@ -26,7 +26,6 @@ GLOBAL_LIST(jigsaw_connectors_pending)
  * Section WIP.
  */
 /obj/jigsaw_connector
-	#warn sprite
 	icon = 'icons/modules/jigsaw/jigsaw_connector_3x3.dmi'
 	icon_state = "connector-1-1"
 	pixel_x = -32

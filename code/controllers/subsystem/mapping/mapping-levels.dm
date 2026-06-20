@@ -225,8 +225,6 @@
 	map_system_mutex = FALSE
 	return dmm_context
 
-#warn trace calls for args & old generation / defer usage
-
 /datum/controller/subsystem/mapping/proc/load_level_impl(
 		datum/map_level/instance,
 		datum/map_context/map_context,

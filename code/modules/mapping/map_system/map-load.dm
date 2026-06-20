@@ -11,7 +11,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	on_loaded_setup_struct()
-	on_loaded_init_overmap()
+	on_loaded_setup_overmap()
 
 /datum/map/proc/on_loaded_setup_struct()
 	SHOULD_CALL_PARENT(TRUE)

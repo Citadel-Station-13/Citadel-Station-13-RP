@@ -1,32 +1,44 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-/datum/jigsaw_generation_enqueued_placement
+/datum/jigsaw_generation_template
 	var/lower_left_x
 	var/lower_left_y
 	var/lower_left_z
 	var/orientation
 	var/datum/jigsaw_template/template
 
+/datum/jigsaw_generation_tile
+	var/x
+	var/y
+	var/datum/jigsaw_generation_template/enqueued
+	var/list/north_match
+	var/list/north_exclude
+	var/list/south_match
+	var/list/south_exclude
+	var/list/east_match
+	var/list/east_exclude
+	var/list/west_match
+	var/list/west_exclude
+
 /**
  * Datum used to hold current state for a jigsaw dungeon generation.
  */
 /datum/jigsaw_generation
+	var/width
+	var/height
 	/**
-	 * Broadphase emplacements.
+	 * Grid. This is a flat spatial grid with widthxheight of the intended generation.
 	 */
-	var/list/datum/jigsaw_generation_enqueued_placement/broadphase_enqueued = list()
-	var/broadphase_emplaced = FALSE
+	var/list/grid
 
-	/**
-	 * Yet to be assigned / consumed.
-	 * * This is both pre- and post- convex broadphase. This allows
-	 *   pending connectors to be emplaced even after the broadphase.
-	 * * When the broadphase finishes, all connectors are checked for overlap,
-	 *   and are removed from the list if needed. The rest are used for the 'live run'.
-	 */
-	var/list/datum/jigsaw_pending_connector/pending_connectors = list()
+/datum/jigsaw_generation/New(width, height)
+	src.width = width
+	src.height = height
 
+	src.grid = new /list(src.width * src.height)
+
+// var/idx = ceil(root.x / TURF_CHUNK_RESOLUTION) + grid_width * (ceil(root.y / TURF_CHUNK_RESOLUTION) - 1)
 
 #warn impl
 

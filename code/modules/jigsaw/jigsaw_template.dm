@@ -36,11 +36,50 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 		var/datum/jigsaw_template/template = GLOB.jigsaw_template_cache[path]
 		template.unload_cache()
 
+/datum/jigsaw_template_pattern
+
+#warn emplace
+
+/**
+ * rectangular bounding box over the template. the template is lower-left
+ * aligned to this box.
+ *
+ * * width / height is in alignment multiples
+ * * this is for 'south' facing orientation.
+ */
+/datum/jigsaw_template_pattern/rectangular
+	abstract_type = /datum/jigsaw_template_pattern/rectangular
+	var/width
+	var/height
+
+/datum/jigsaw_template_pattern/rectangular/one_by_one
+	width = 1
+	height = 1
+	var/list/south_match
+	var/list/north_match
+	var/list/east_match
+	var/list/west_match
+
+/datum/jigsaw_template_pattern/rectangular/two_by_two
+	width = 2
+	height = 2
+
+/datum/jigsaw_template_pattern/rectangular/three_by_three
+	width = 3
+	height = 3
+
 /datum/jigsaw_template
 	/// the name of this template, used for debugging and referencing in other templates.
 	var/name = "Dungeon Fragment"
 	/// path on disk
 	var/path
+	/// alignment
+	/// * alignment is the minimum size and must be a multiple of the actual size.
+	/// * generations must only use templates with the same alignment.
+	/// * templates are emplaced with one tile of overlap for their alignment.
+	var/alignment = 8
+	/// pattern
+	var/datum/jigsaw_template_pattern/pattern
 
 	/// display name
 	/// * defaults to name
@@ -54,15 +93,6 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	 * Did auto-measure happen yet?
 	 */
 	var/scanned = FALSE
-
-	/**
-	 * Are we fully convex?
-	 * * Fully convex means there are no non-skipover turfs more 'outside'
-	 *   on any side than a connector.
-	 * * Fully convex templates can be planned out without actually loading,
-	 *   and are the only things allowed in the first phase of jigsaw generation.
-	 */
-	var/convex = FALSE
 
 	/**
 	 * Connectors with locations.
