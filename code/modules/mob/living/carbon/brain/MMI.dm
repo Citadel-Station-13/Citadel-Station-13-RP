@@ -89,7 +89,7 @@
 
 		locked = TRUE
 
-		feedback_inc("cyborg_mmis_filled",1)
+		SSblackbox.record_feedback("amount", "mmis_filled", 1)
 
 		return
 

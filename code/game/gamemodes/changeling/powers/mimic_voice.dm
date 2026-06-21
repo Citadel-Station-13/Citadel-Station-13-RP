@@ -31,7 +31,7 @@
 	to_chat(src, "<span class='notice'>We shape our glands to take the voice of <b>[mimic_voice]</b>, this will stop us from regenerating chemicals while active.</span>")
 	to_chat(src, "<span class='notice'>Use this power again to return to our original voice and reproduce chemicals again.</span>")
 
-	feedback_add_details("changeling_powers","MV")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Mimic Voice"))
 
 	spawn(0)
 		while(src && src.mind && src.mind.changeling && src.mind.changeling.mimicing)

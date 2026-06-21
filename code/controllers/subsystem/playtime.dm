@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(playtime)
 			)
 			LAZYADDASSOC(C.persistent.playtime, roleid, minutes)
 		C.persistent.playtime_queued = list()
-	SSdbcore.MassInsertLegacy(DB_PREFIX_TABLE_NAME("playtime"), built, duplicate_key = "ON DUPLICATE KEY UPDATE minutes = minutes + VALUES(minutes)")
+	SSdbcore.MassInsert(DB_PREFIX_TABLE_NAME("playtime"), built, duplicate_key = "ON DUPLICATE KEY UPDATE minutes = minutes + VALUES(minutes)")
 
 /**
  * returns a list of playtime roles

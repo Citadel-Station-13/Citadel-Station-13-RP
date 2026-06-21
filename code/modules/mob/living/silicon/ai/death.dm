@@ -18,3 +18,4 @@
 
 	. = ..(gibbed,"gives one shrill beep before falling lifeless.")
 	density = 1
+	SSblackbox.ReportDeath(src)

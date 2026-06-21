@@ -321,5 +321,5 @@
 
 /datum/construction/reversible/mecha/reticent/spawn_result()
 	..()
-	feedback_inc("mecha_reticent_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Reticent")
 	return

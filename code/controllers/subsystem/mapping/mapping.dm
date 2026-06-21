@@ -109,6 +109,13 @@ SUBSYSTEM_DEF(mapping)
 	// todo: refactor
 	preloadShelterTemplates()
 
+	if(SSdbcore.Connect())
+		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
+			UPDATE [DB_PREFIX_TABLE_NAME("round")] SET map_name = :map_name WHERE id = :round_id
+		"}, list("map_name" = (LEGACY_MAP_DATUM).name, "round_id" = GLOB.round_id))
+		query_round_map_name.Execute()
+		qdel(query_round_map_name)
+
 	// init obfuscation
 	init_obfuscation_data()
 	// init maps

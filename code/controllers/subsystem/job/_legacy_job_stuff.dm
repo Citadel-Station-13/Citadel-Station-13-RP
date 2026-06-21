@@ -431,35 +431,39 @@
 
 /datum/controller/subsystem/job/proc/HandleFeedbackGathering()
 	for(var/datum/prototype/role/job/job in RSroles.legacy_all_job_datums())
-		var/tmp_str = "|[job.title]|"
 
-		var/level1 = 0 //high
-		var/level2 = 0 //medium
-		var/level3 = 0 //low
-		var/level4 = 0 //never
-		var/level5 = 0 //banned
-		var/level6 = 0 //account too young
+		var/high = 0 //high
+		var/medium = 0 //medium
+		var/low = 0 //low
+		var/never = 0 //never
+		var/banned = 0 //banned
+		var/young = 0 //account too young
 		for(var/mob/new_player/player in GLOB.player_list)
 			if(!(player.ready && player.mind && !player.mind.assigned_role))
 				continue //This player is not ready
 			if(jobban_isbanned(player, job.title))
-				level5++
+				banned++
 				continue
 			if(!job.player_old_enough(player.client))
-				level6++
+				young++
 				continue
 			switch(player.client.prefs.get_job_priority(job))
 				if(JOB_PRIORITY_HIGH)
-					level1++
+					high++
 				if(JOB_PRIORITY_MEDIUM)
-					level2++
+					medium++
 				if(JOB_PRIORITY_LOW)
-					level3++
+					low++
 				else
-					level4++
+					never++
 
-		tmp_str += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
-		feedback_add_details("job_preferences",tmp_str)
+		SSblackbox.record_feedback("nested tally", "job_preferences", high, list("[job.title]", "high"))
+		SSblackbox.record_feedback("nested tally", "job_preferences", medium, list("[job.title]", "medium"))
+		SSblackbox.record_feedback("nested tally", "job_preferences", low, list("[job.title]", "low"))
+		SSblackbox.record_feedback("nested tally", "job_preferences", never, list("[job.title]", "never"))
+		SSblackbox.record_feedback("nested tally", "job_preferences", banned, list("[job.title]", "banned"))
+		SSblackbox.record_feedback("nested tally", "job_preferences", young, list("[job.title]", "young"))
+		// SSblackbox.record_feedback("nested tally", "job_preferences", newbie, list("[job.title]", "newbie"))
 
 /datum/controller/subsystem/job/proc/LateSpawn(client/C, rank)
 

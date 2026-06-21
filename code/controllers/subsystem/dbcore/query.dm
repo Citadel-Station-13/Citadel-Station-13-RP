@@ -39,7 +39,7 @@
 /datum/db_query/proc/warn_execute(async = TRUE)
 	. = Execute(async)
 	if(!.)
-		to_chat(usr, "<span class='danger'>A SQL error occurred during this operation, check the server logs.</span>")
+		to_chat(usr, SPAN_DANGER("A SQL error occurred during this operation, check the server logs."))
 
 /datum/db_query/proc/Execute(async = TRUE, log_error = TRUE)
 	Activity("Execute")
@@ -91,11 +91,11 @@
 			last_error = result["data"]
 			return FALSE
 		if ("offline")
-			last_error = "offline"
+			last_error = "CONNECTION OFFLINE"
 			return FALSE
 
 /datum/db_query/proc/slow_query_check()
-	message_admins("HEY! A database query timed out. Did the server just hang? <a href='?_src_=holder;[HrefToken()];slowquery=yes'>\[YES\]</a>|<a href='?_src_=holder;[HrefToken()];slowquery=no'>\[NO\]</a>")
+	message_admins("HEY! A database query timed out. Did the server just hang? <a href='byond://?_src_=holder;[HrefToken()];slowquery=yes'>\[YES\]</a>|<a href='byond://?_src_=holder;[HrefToken()];slowquery=no'>\[NO\]</a>")
 
 /datum/db_query/proc/NextRow(async = TRUE)
 	Activity("NextRow")

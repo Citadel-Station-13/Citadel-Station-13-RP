@@ -60,7 +60,7 @@
 					weapon_descriptor = "large biological needle",
 				)
 
-		feedback_add_details("changeling_powers","A[stage]")
+		SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Absorb DNA", stage))
 		if(!do_mob(src, T, 150) || G.state != GRAB_KILL)
 			to_chat(src, "<span class='warning'>Our absorption of [T] has been interrupted!</span>")
 			changeling.isabsorbing = 0

@@ -41,7 +41,7 @@
 	if(src.mind.changeling.recursive_enhancement)
 		C.add_modifier(/datum/modifier/unstoppable, 30 SECONDS)
 
-	feedback_add_details("changeling_powers","UNS")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Epinephrine Overdose"))
 	return 1
 
 /datum/reagent/epinephrine

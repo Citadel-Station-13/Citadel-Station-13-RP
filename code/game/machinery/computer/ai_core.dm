@@ -177,7 +177,7 @@
 						A.rename_self("ai")
 						for(var/datum/prototype/language/L in brain.brainmob.languages)
 							A.add_language(L.name)
-				feedback_inc("cyborg_ais_created",1)
+				SSblackbox.record_feedback("amount", "ais_created", 1)
 				qdel(src)
 
 GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactivated)

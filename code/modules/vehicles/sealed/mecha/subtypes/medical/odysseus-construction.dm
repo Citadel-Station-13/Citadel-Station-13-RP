@@ -246,5 +246,5 @@
 
 /datum/construction/reversible/mecha/odysseus/spawn_result()
 	..()
-	feedback_inc("mecha_odysseus_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Odysseus")
 	return

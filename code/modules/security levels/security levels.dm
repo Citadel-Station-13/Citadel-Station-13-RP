@@ -11,7 +11,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 /var/datum/legacy_announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/effects/alert_levels/alert_raise.ogg'))
 /var/datum/legacy_announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
 
-/proc/set_security_level(var/level)
+/proc/set_security_level(level)
 	switch(level)
 		if("green")
 			level = SEC_LEVEL_GREEN
@@ -29,7 +29,10 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 			level = SEC_LEVEL_DELTA
 
 	//Will not be announced if you try to set to the same level as it already is. Also To-Do. Add multi sound support for alerts..
-	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != GLOB.security_level)
+	if (GLOB.security_level == level)
+		return
+
+	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				security_announcement_down.Announce("[CONFIG_GET(string/alert_desc_green)]", "Attention! Alert level lowered to code green.")
@@ -85,6 +88,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 			SSnightshift.check_nightshift()
 
 		admin_chat_message(message = "Security level is now: [uppertext(get_security_level())]", color = "#CC2222")
+	SSblackbox.record_feedback("tally", "security_level_changes", 1, num2seclevel(level))
 
 /proc/get_security_level()
 	switch(GLOB.security_level)

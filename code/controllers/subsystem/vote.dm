@@ -141,12 +141,7 @@ SUBSYSTEM_DEF(vote)
 
 	if(restart)
 		to_chat(world, "World restarting due to vote...")
-		feedback_set_details("end_error", "restart vote")
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-		sleep(50)
-		log_game("Rebooting due to restart vote")
-		world.Reboot()
+		SSticker.declare_completion()
 
 /datum/controller/subsystem/vote/proc/submit_vote(user, ckey, newVote)
 	//if they are a observer or a newplayer(in lobby) use ghost weight, otherwise use 1

@@ -282,5 +282,5 @@
 
 /datum/construction/reversible/mecha/serenity/spawn_result()
 	..()
-	feedback_inc("mecha_serenity_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Serenity")
 	return

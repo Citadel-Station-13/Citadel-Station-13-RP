@@ -97,7 +97,6 @@ var/datum/antagonist/wizard/wizards
 		survivor = 1
 		break
 	if(!survivor)
-		feedback_set_details("round_end_result","loss - wizard killed")
 		to_chat(world, SPAN_ANNOUNCE("The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed by the crew!"))
 
 /**

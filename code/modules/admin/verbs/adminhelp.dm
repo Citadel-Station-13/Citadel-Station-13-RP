@@ -274,9 +274,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	GLOB.ahelp_tickets.resolved_tickets -= src
 	switch(state)
 		if(AHELP_CLOSED)
-			feedback_dec("ahelp_close")
+			SSblackbox.record_feedback("tally", "ahelp_stats", -1, "closed")
 		if(AHELP_RESOLVED)
-			feedback_dec("ahelp_resolve")
+			SSblackbox.record_feedback("tally", "ahelp_stats", -1, "resolved")
 	state = AHELP_ACTIVE
 	closed_at = null
 	if(initiator)
@@ -288,7 +288,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	var/msg = "<span class='adminhelp'>Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].</span>"
 	message_admins(msg)
 	log_admin(msg)
-	feedback_inc("ahelp_reopen")
+	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "reopened")
 	TicketPanel()	//can only be done from here, so refresh it
 
 //private
@@ -312,7 +312,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	if(initiator)
 		to_chat(initiator, "<font color='red'>Ticket [TicketHref("#[id]")] was closed by [key_name(usr,FALSE,FALSE)].</font>")
 	if(!silent)
-		feedback_inc("ahelp_close")
+		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "closed")
 		var/msg = "Ticket [TicketHref("#[id]")] closed by [key_name_admin(usr)]."
 		message_admins(msg)
 		log_admin(msg)
@@ -329,7 +329,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	if(initiator)
 		to_chat(initiator, "<font color='green'>Ticket [TicketHref("#[id]")] was marked resolved by [key_name(usr,FALSE,FALSE)].</font>")
 	if(!silent)
-		feedback_inc("ahelp_resolve")
+		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "resolved")
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name_admin(usr)]"
 		message_admins(msg)
 		log_admin(msg)
@@ -348,7 +348,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b></font>")
 		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.")
 
-	feedback_inc("ahelp_reject")
+	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "rejected")
 	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name_admin(usr)]"
 	message_admins(msg)
 	log_admin(msg)
@@ -367,7 +367,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	if(initiator)
 		to_chat(initiator, msg)
 
-	feedback_inc("ahelp_icissue")
+	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "IC")
 	msg = "Ticket [TicketHref("#[id]")] marked as IC by [key_name_admin(usr)]"
 	message_admins(msg)
 	log_admin(msg)
@@ -384,7 +384,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	if(initiator)
 		to_chat(initiator, msg)
 
-	feedback_inc("ahelp_icissue")
+	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "IC")
 	msg = "Ticket [TicketHref("#[id]")] being handled by [key_name(usr,FALSE,FALSE)]"
 	message_admins(msg)
 	log_admin(msg)
