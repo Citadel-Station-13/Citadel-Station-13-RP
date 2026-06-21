@@ -580,6 +580,18 @@
 	drop_sound = 'sound/items/drop/leather.ogg'
 	pickup_sound = 'sound/items/pickup/leather.ogg'
 
+/obj/item/stack/material/shell
+	name = "shell shards"
+	desc = "Shards of animal shell."
+	singular_name = "shell shard"
+	icon_state = "chitin"
+	material = /datum/prototype/material/bone
+	no_variants = FALSE
+	pass_color = TRUE
+	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
+
 /obj/item/stack/material/glass
 	name = "glass"
 	icon_state = "sheet-glass"

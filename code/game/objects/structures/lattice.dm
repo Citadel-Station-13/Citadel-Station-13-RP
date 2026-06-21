@@ -29,7 +29,7 @@
 	for(var/obj/structure/lattice/LAT in loc)
 		if(LAT == src)
 			continue
-		log_mapping("multiple lattices found in ([loc.x], [loc.y], [loc.z], [get_area(LAT)])")
+		log_mapping("multiple lattices found in ([loc.x], [loc.y], [loc.z], [get_area(LAT)] [z ? SSmapping.level_get_fluff_name(z) : "no-z ????"])")
 		return INITIALIZE_HINT_QDEL
 
 /obj/structure/lattice/legacy_ex_act(severity)

@@ -30,8 +30,21 @@
 		/obj/item/stack/material/snow = list("water"),
 		/obj/item/stack/material/sandstone = list("silicon", "oxygen"),
 		/obj/item/stack/material/glass = list("silicon"),
+		/obj/item/stack/material/lead = list("lead"),
+		/obj/item/stack/material/copper = list("copper"),
 		/obj/item/stack/material/glass/phoronglass = list("platinum", "silicon", "silicon", "silicon"), //5 platinum, 15 silicon,
 		/obj/item/stack/material/silencium = list("nothing"),
+		/obj/item/stack/material/bone = list("bonemeal"),
+		/obj/item/stack/material/shell = list("calciumcarbonate"),
+		/obj/item/stack/ore/gold = list ("gold"), // Native gold means it's pure crystalline gold
+		/obj/item/stack/ore/silver = list ("silver"), // ditto for native silver
+		/obj/item/stack/ore/copper = list ("copper"),
+		/obj/item/stack/ore/lead = list ("galena"),
+		/obj/item/stack/ore/iron = list ("hematite"),
+		/obj/item/stack/ore/coal = list ("carbon", "carbon", "carbon", "carbon", "sulfur"),
+		/obj/item/stack/ore/phoron = list ("phoronite"),
+		/obj/item/stack/ore/hydrogen = list ("hydronite"),
+		/obj/item/stack/ore/uranium = list ("uraninite")
 		)
 	var/static/radial_examine = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
 	var/static/radial_eject = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_eject")

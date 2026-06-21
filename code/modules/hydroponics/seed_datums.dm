@@ -1666,7 +1666,7 @@
 	seed_name = "pyrrhlea"
 	display_name = "pyrrhlea"
 	kitchen_tag = "pyrrhlea"
-	chems = list("nutriment" = list(1,5), "kelotane" = list(1,10), "inaprovaline" = list(1,10))
+	chems = list("nutriment" = list(1,5), "pyrrhleanectar" = list(1,10), "inaprovaline" = list(1,10)) // tried to make the nectar replace both medicines but I don't think reactions can have two outcomes for splitting it later
 
 /datum/seed/flower/pyrrhlea/New()
 	..()
@@ -1687,7 +1687,7 @@
 	seed_name = "bentar"
 	display_name = "bentars"
 	kitchen_tag = "bentars"
-	chems = list("sugar" = list(1,5), "anti_toxin" = list(1,10))
+	chems = list("sugar" = list(1,5), "bentarjuice" = list(1,10))
 
 /datum/seed/bentars/New()
 	..()
@@ -1709,7 +1709,7 @@
 	seed_name = "juhtak"
 	display_name = "juhtak"
 	kitchen_tag = "juhtak"
-	chems = list("nutriment" = list(1,5), "bicaridine" = list(1,10))
+	chems = list("nutriment" = list(1,5), "juhtakpulp" = list(1,10))
 
 /datum/seed/juhtak/New()
 	..()
@@ -1731,7 +1731,7 @@
 	seed_name = "cersut"
 	display_name = "cersut"
 	kitchen_tag = "cersut"
-	chems = list("sacid" = list(5,10))
+	chems = list("cersutpaste" = list(5,10))
 
 /datum/seed/cersut/New()
 	..()
@@ -1753,7 +1753,7 @@
 	seed_name = "shimash"
 	display_name = "shimash"
 	kitchen_tag = "shimash"
-	chems = list("tramadol" = list(5,10))
+	chems = list("shismashpulp" = list(5,10))
 
 /datum/seed/shimash/New()
 	..()
@@ -1775,7 +1775,7 @@
 	seed_name = "pokalea"
 	display_name = "pokalea"
 	kitchen_tag = "pokalea"
-	chems = list("nicotine" = list(5,10), "leporazine" = list(5,10))
+	chems = list("nicotine" = list(5,10), "pokaleapaste" = list(5,10))
 
 /datum/seed/pokalea/New()
 	..()

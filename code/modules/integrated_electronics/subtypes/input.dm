@@ -820,6 +820,8 @@
 		return FALSE
 	if(code != signal.encryption)
 		return FALSE
+	if(!(get_z(src) in GetConnectedZlevels(get_z(signal.source))))
+		return FALSE
 	return TRUE
 
 /obj/item/integrated_circuit/input/signaler/proc/create_signal()
@@ -877,6 +879,7 @@
 /obj/item/integrated_circuit/input/signaler/advanced/create_signal()
 	var/datum/signal/signal = new()
 	signal.transmission_method = 1
+	signal.source = src
 	signal.data["command"] = command
 	signal.encryption = code
 	return signal
