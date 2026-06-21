@@ -309,7 +309,11 @@
 	distance = 0
 
 /obj/machinery/computer/telescience/proc/is_valid_z(var/z)
-	return (LEGACY_MAP_DATUM).levels[z] && !SSmapping.level_has_trait(z, ZTRAIT_ADMIN)
+	if(z < 1 || z > world.maxz)
+		return FALSE
+	if(SSmapping.level_has_trait(z, ZTRAIT_ADMIN))
+		return FALSE
+	return TRUE
 
 /obj/machinery/computer/telescience/Topic(href, href_list)
 	if(..())
