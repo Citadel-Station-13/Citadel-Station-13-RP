@@ -14,18 +14,26 @@
 	 * Configuration for templates.
 	 */
 	var/datum/jigsaw_template_config/template_config
+	/**
+	 * Configuration for spawns
+	 */
+	var/datum/jigsaw_spawn_config/spawn_config
 
 /datum/jigsaw_generator/proc/get_available_templates()
 	return list()
-
 
 #warn impl
 
 /datum/jigsaw_generator/proc/generate_from_initial_piece(datum/jigsaw_template/initial_piece, turf/lower_left, orientation)
 
-/datum/jigsaw_generator/proc/generate_at_turf_centered(turf/target)
+/datum/jigsaw_generator/proc/generate_at_turf_centered(turf/center, radius_horizontal_tiles, radius_vertical_tiles)
+	if(isnull(radius_vertical_tiles))
+		radius_vertical_tiles = radius_horizontal_tiles
 
-/datum/jigsaw_generator/proc/generate_impl(turf/contextual_center, datum/jigsaw_generation/generation = new)
+/datum/jigsaw_generator/proc/generate_at_turf_lower_left(turf/lower_left, width, height)
+
+
+/datum/jigsaw_generator/proc/generate_impl(datum/jigsaw_generation/generation)
 	var/contextual_zlev = get_z(contextual_center)
 	if(!contextual_zlev)
 		CRASH("Invalid contextual center.")
@@ -47,14 +55,11 @@
 	if(!length(generation.broadphase_enqueued))
 		generate_impl_place_initial_piece(generation, templates, contextual_center)
 
-	// perform broadphase
-	generate_impl_convex_broadphase(generation, templates)
+	// seed templates
+	generate_impl_seed_grid(generation, templates)
 
-	// emplace broadphase templates
-	#warn impl
-
-	// perform narrowphase afterwards
-	#warn impl
+	// emplace templates
+	generate_impl_emplace_grid(generation, templates)
 
 	// cleanup
 	generation.cleanup()
@@ -62,21 +67,12 @@
 /datum/jigsaw_generator/proc/generate_impl_place_initial_piece(datum/jigsaw_generation/generation, datum/jigsaw_template_resultant_config/templates, turf/contextual_center)
 	#warn impl
 
-/datum/jigsaw_generator/proc/generate_impl_convex_broadphase(datum/jigsaw_generation/generation, datum/jigsaw_template_resultant_config/templates)
+/datum/jigsaw_generator/proc/generate_impl_seed_grid(datum/jigsaw_generation/generation, datum/jigsaw_template_resultant_config/templates)
 	#warn impl
 
-/datum/jigsaw_generator/proc/generate_impl_emplace_broadphase(datum/jigsaw_generation/generation, datum/jigsaw_template_resultant_config/templates)
-	// get rid of current connectors
-	QDEL_LIST(generation.pending_connectors)
-
-	// add hook for pending connectors.
-	// what this does is allow templates to spawn connectors that bind into this, so narrowphase
-	// can continue to grow the templates.
-	GLOB.jigsaw_connectors_pending = generation.pending_connectors
-
-
+/datum/jigsaw_generator/proc/generate_impl_emplace_grid(datum/jigsaw_generation/generation, datum/jigsaw_template_resultant_config/templates)
 	// place templates down
-	for(var/datum/jigsaw_generation_enqueued_placement/placement in generation.broadphase_enqueued)
+	for(var/datum/jigsaw_generation_enqueued/placement in generation.enqueued)
 		var/datum/jigsaw_template/template = placement.template
 		var/datum/dmm_context/context = new
 		#warn impl context stuff
@@ -89,14 +85,3 @@
 			orientation = placement.orientation,
 			context = context
 		)
-
-	// dedupe connectors so narrowphase can run cleanly
-	var/list/datum/jigsaw_pending_connector/keep_pending_connectors = list()
-	for(var/datum/jigsaw_pending_connector/connector in generation.pending_connectors)
-		if(connector.spent)
-			continue
-		keep_pending_connectors += connector
-	generation.pending_connectors = keep_pending_connectors
-
-/datum/jigsaw_generator/proc/generate_impl_narrowphase(datum/jigsaw_generation/generation, datum/jigsaw_template_resultant_config/templates)
-	#warn impl

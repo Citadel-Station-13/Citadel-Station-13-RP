@@ -11,6 +11,10 @@
 	var/datum/jigsaw_template_config/template_config = /datum/jigsaw_template_config/everything
 	var/datum/turf_auto_marker_config/auto_marker_config
 
+	var/radius_tiles = 48
+	var/radius_horizontal_tiles
+	var/radius_vertical_tiles
+
 	var/datum/jigsaw_template/spawn_template_centered
 	var/spawn_template_centered_orientation = SOUTH
 

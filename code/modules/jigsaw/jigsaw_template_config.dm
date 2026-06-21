@@ -2,20 +2,31 @@
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
 /datum/jigsaw_template_resultant_config
+	/// alignment
+	/// * this is minimum dimensions (width and height); width and height of
+	///   all templates must be in alignment multiples plus one tile of border in each side
+	var/alignment = 8
+
 	/// always start with these templates, if exists
 	/// * may be typepaths or instances
+	/// * this ignores budget and will not take from it.
 	var/list/datum/jigsaw_template/initial_templates = list()
-	/// templates to use, weighted.
-	/// * may be typepaths or instances
-	var/list/datum/jigsaw_template/weighted_templates = list()
 	/// ***attempt*** to place these templates, associate to count
-	/// * these are given priority during broadphase and narrowphase but it still isn't guaranteed
+	/// * this ignores budget and will not take from it.
 	var/list/datum/jigsaw_template/priority_templates = list()
 	/// require placement of these templates, associate to count
 	/// * if any of these fail to place, the generation fails
-	/// * only convex templates are allowed in here because only broadphase can
-	///   actually backtrack here.
+	/// * this ignores budget and will not take from it.
 	var/list/datum/jigsaw_template/required_templates = list()
+
+	/// templates to use, weighted.
+	/// * may be typepaths or instances
+	/// * this are constrained by budgets.
+	var/list/datum/jigsaw_template/weighted_templates = list()
+
+	/// allowed costs
+	/// * only used for weighted templates
+	var/list/budgets = list()
 
 /datum/jigsaw_template_config
 
@@ -23,9 +34,12 @@
 	return new /datum/jigsaw_template_resultant_config
 
 /datum/jigsaw_template_config/everything
+	/// allowed costs
+	var/list/budgets = list()
 
 /datum/jigsaw_template_config/everything/get_resultant_config()
 	var/datum/jigsaw_template_resultant_config/result = new
+	results.budgets = budgets.Copy()
 	for(var/datum/jigsaw_template/path as anything in subtypesof(/datum/jigsaw_template))
 		if(path.abstract_type == path)
 			continue
@@ -36,18 +50,23 @@
 /datum/jigsaw_template_config/specific
 	/// always start with these templates, if exists
 	/// * may be typepaths or instances
+	/// * this ignores budget and will not take from it.
 	var/list/datum/jigsaw_template/initial_templates = list()
-	/// templates to use, weighted.
-	/// * may be typepaths or instances
-	var/list/datum/jigsaw_template/weighted_templates = list()
-	/// ***attempt*** to place these templates, associate to count
-	/// * these are given priority during broadphase and narrowphase but it still isn't guaranteed
+	/// * this ignores budget and will not take from it.
 	var/list/datum/jigsaw_template/priority_templates = list()
 	/// require placement of these templates, associate to count
 	/// * if any of these fail to place, the generation fails
-	/// * only convex templates are allowed in here because only broadphase can
-	///   actually backtrack here.
+	/// * this ignores budget and will not take from it.
 	var/list/datum/jigsaw_template/required_templates = list()
+
+	/// templates to use, weighted.
+	/// * may be typepaths or instances
+	/// * this are constrained by budgets.
+	var/list/datum/jigsaw_template/weighted_templates = list()
+
+	/// allowed costs
+	/// * only used for weighted templates
+	var/list/budgets = list()
 
 /datum/jigsaw_template_config/specific/get_resultant_config()
 	var/datum/jigsaw_template_resultant_config/result = new
@@ -55,4 +74,5 @@
 	result.weighted_templates = weighted_templates.Copy()
 	result.priority_templates = priority_templates.Copy()
 	result.required_templates = required_templates.Copy()
+	results.budgets = budgets.Copy()
 	return result
