@@ -1,8 +1,9 @@
 SUBSYSTEM_DEF(ambient_lighting)
 	name = "Ambient Lighting"
 	wait = 1
-	priority = FIRE_PRIORITY_LIGHTING
-	init_order = INIT_ORDER_AMBIENT_LIGHT
+	dependencies = list(
+		/datum/controller/subsystem/lighting,
+	)
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT // Copied from icon update subsystem.
 	// subsystem_flags = SS_NO_INIT
 

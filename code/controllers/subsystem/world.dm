@@ -8,7 +8,9 @@
  */
 SUBSYSTEM_DEF(game_world)
 	name = "World"
-	init_order = INIT_ORDER_GAME_WORLD
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+	)
 	subsystem_flags = SS_NO_FIRE
 
 	/**

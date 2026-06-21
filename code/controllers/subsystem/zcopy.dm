@@ -29,7 +29,11 @@
 SUBSYSTEM_DEF(zcopy)
 	name = "Z-Copy"
 	wait = 1
-	init_order = INIT_ORDER_ZMIMIC
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+		/datum/controller/subsystem/atoms,
+		/datum/controller/subsystem/air,
+	)
 	priority = FIRE_PRIORITY_ZMIMIC
 	init_stage = INIT_STAGE_WORLD
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY

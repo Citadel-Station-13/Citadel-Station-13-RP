@@ -1,7 +1,6 @@
 SUBSYSTEM_DEF(sounds)
 	name = "Sounds"
 	subsystem_flags = SS_NO_FIRE
-	init_order = INIT_ORDER_SOUNDS
 	init_stage = INIT_STAGE_BACKEND
 
 /datum/controller/subsystem/sounds/Initialize()

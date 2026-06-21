@@ -4,7 +4,9 @@
 //
 SUBSYSTEM_DEF(holomaps)
 	name = "HoloMiniMaps"
-	init_order = INIT_ORDER_HOLOMAPS
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+	)
 	subsystem_flags = SS_NO_FIRE
 	var/static/holomaps_initialized = FALSE
 	var/static/list/holoMiniMaps = list()

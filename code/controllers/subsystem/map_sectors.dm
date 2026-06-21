@@ -3,6 +3,9 @@
 
 SUBSYSTEM_DEF(map_sectors)
 	name = "Map Sectors"
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+	)
 	subsystem_flags = SS_NO_INIT | SS_NO_FIRE
 
 // todo: eventual SSplanets replacement

@@ -4,7 +4,6 @@
 //
 PROCESSING_SUBSYSTEM_DEF(circuit)
 	name = "Circuit"
-	init_order = INIT_ORDER_CIRCUIT
 	subsystem_flags = SS_NO_FIRE
 	stat_tag = "P_CIRCUIT"
 
@@ -22,7 +21,7 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 	subsystem_flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 
 /datum/controller/subsystem/processing/circuit/Initialize(timeofday)
-	SScircuit.cipherkey = uppertext(random_string(2000+rand(0,10), GLOB.alphabet))
+	cipherkey = uppertext(random_string(2000+rand(0,10), GLOB.alphabet))
 	circuits_init()
 	return SS_INIT_SUCCESS
 
