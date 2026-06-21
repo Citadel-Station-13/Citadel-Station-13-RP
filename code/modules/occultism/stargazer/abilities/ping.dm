@@ -8,7 +8,7 @@
 	where they are."
 
 	can_be_cooperated_while_unconscious = TRUE
-	attunement_cooperative_threshold = 10
+	attunement_cooperative_threshold = 20
 	attunement_forced_threshold = 60
 
 	default_do_after = 1 SECONDS

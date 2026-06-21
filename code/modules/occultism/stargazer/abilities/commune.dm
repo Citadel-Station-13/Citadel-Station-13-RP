@@ -35,7 +35,17 @@
 
 /datum/stargazer_mindnet_ability/commune/default_pre_prompt(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, list/blackboard, datum/mind/target, datum/stargazer_mindnet_exec/exec)
 	. = ..()
-	var/unsanitized_user_message = tgui_input_text(actor.initiator, "What do you want to telepathically tell [target_name]?", "Stargazer Commune", "", 8192, TRUE, FALSE, 2 MINUTES)
+	var/their_name = mindnet.get_mind_presence_name(target)
+	var/unsanitized_user_message = tgui_input_text(
+		actor.initiator,
+		"What do you want to telepathically tell [their_name]?",
+		"Stargazer Commune", "",
+		8192,
+		TRUE,
+		FALSE,
+		2 MINUTES,
+	)
+	#warn impl
 
 /datum/stargazer_mindnet_ability/commune/default_post_prompt(datum/event_args/actor/actor, datum/stargazer_mindnet/mindnet, list/blackboard, datum/mind/target, datum/stargazer_mindnet_exec/exec)
 	. = ..()

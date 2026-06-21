@@ -258,7 +258,21 @@
 	return executing?[dedupe_key]
 
 /datum/stargazer_mindnet/proc/get_mind_presence_name(datum/mind/target)
+	var/datum/mind_ref/their_ref = target.get_mind_ref()
+	var/presence_name = named_presences[their_ref]
+	var/link_name = link_lookup[their_ref]?.known_name
+	if(presence_name)
+		if(link_name)
+			return "[presence_name] ([link_name]?)"
+		else
+			return "[presence_name]"
+	return "??? ([get_mind_presence_category(target)])"
+
+/datum/stargazer_mindnet/proc/get_mind_presence_category(datum/mind/target)
 	#warn impl
+	if(!isliving(target.current))
+		return "Unknown"
+	else if(is)
 
 /datum/stargazer_mindnet/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -281,7 +295,12 @@
 				return TRUE
 			#warn impl
 		if("setPresenceName")
+			var/id = params["id"]
+			var/datum/mind_ref/resolved = resolve_mind_ref(id)
+			if(!resolved)
+				return TRUE
 			#warn throttle this, list len wise
+			return TRUE
 
 /datum/stargazer_mindnet/ui_data(mob/user, datum/tgui/ui)
 	. = ..()
@@ -299,6 +318,7 @@
 	.["abilities"] = serialized_abilities
 
 	#warn impl
+
 
 /datum/stargazer_mindnet/proc/push_scan_results()
 	// TODO: im lazy sue me
