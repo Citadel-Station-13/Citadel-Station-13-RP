@@ -149,7 +149,7 @@
 	var/obj/item/reagent_containers/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
 		user.visible_message("<span class='notice'>[user] drains the sac of the [src] using \the [O].</span>")
-		var/transfered = goliath_sac.trans_id_to(G, "gunpowder", rand(15,30))
+		var/transfered = goliath_sac.trans_id_to(G, "phosphorus", rand(15,30))
 		if(G.reagents.total_volume >= G.volume)
 			to_chat(user, "<font color='red'>The [O] is full.</font>")
 		if(!transfered)
@@ -193,7 +193,7 @@
 
 	if(stat != DEAD)
 		if(goliath_sac && prob(5))
-			goliath_sac.add_reagent("gunpowder", rand(5, 10))
+			goliath_sac.add_reagent("phosphorus", rand(5, 10))
 
 /mob/living/simple_mob/animal/goliath/death()
 	STOP_PROCESSING(SSobj, src)

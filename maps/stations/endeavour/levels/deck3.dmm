@@ -12317,7 +12317,6 @@
 /area/security/lobby)
 "iUL" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/space)
@@ -14874,7 +14873,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "kYu" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /obj/structure/grille,
 /turf/simulated/floor/airless/ceiling,

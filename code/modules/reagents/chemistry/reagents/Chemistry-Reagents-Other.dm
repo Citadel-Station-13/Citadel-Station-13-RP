@@ -189,6 +189,52 @@
 	color = "#464650"
 	taste_description = "salt"
 
+/datum/reagent/galena
+	name = "Galena"
+	id = "galena"
+	description = "Powdered unprocessed lead."
+	reagent_state = REAGENT_SOLID
+	color = "#273956"
+	taste_description = "metal"
+
+/datum/reagent/hematite
+	name = "Hematite"
+	id = "hematite"
+	description = "Powdered unprocessed iron. It's mostly iron oxide."
+	reagent_state = REAGENT_SOLID
+	color = "#353535"
+	taste_description = "rust"
+
+/datum/reagent/uraninite
+	name = "Uraninite"
+	id = "uraninite"
+	description = "Powdered unprocessed uranium."
+	reagent_state = REAGENT_SOLID
+	color = "#B8B8C0"
+	taste_description = "metal"
+
+/datum/reagent/uraninite/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	legacy_affect_ingest(M, alien, removed, metabolism)
+
+/datum/reagent/uraninite/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	M.apply_effect(5 * removed, IRRADIATE, 0)
+
+/datum/reagent/phoronite
+	name = "Phoronite"
+	id = "phoronite"
+	description = "Powdered unprocessed phoron. The crystals haven't been forced into their reactive form."
+	reagent_state = REAGENT_SOLID
+	color = "#9D14DB"
+	taste_description = "tingly sand"
+
+/datum/reagent/hydronite
+	name = "Hydronite"
+	id = "hydronite"
+	description = "Powdered unprocessed metallic hydrogen."
+	reagent_state = REAGENT_SOLID
+	color = "#808080"
+	taste_mult = 0
+
 //Ashlander Alchemy!
 /datum/reagent/alchemybase
 	name = "Alchemical Base"
@@ -213,3 +259,114 @@
 	reagent_state = REAGENT_SOLID
 	color = "#302f2f"
 	taste_description = "sour wax and sulphur"
+
+/datum/reagent/bentarjuice
+	name = "Bentar Juice"
+	id = "bentarjuice"
+	description = "The sickly sweet juice of the bentar plant."
+	reagent_state = REAGENT_LIQUID
+	color = "#9d23aa"
+	taste_description = "sweetness with a medicinal aftertaste"
+
+/datum/reagent/bentarjuice/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.adjustToxLoss(-2 * removed * chem_effective)// Herbal Dylovene. Heals less toxin and loses other benefits.
+
+/datum/reagent/cersutpaste
+	name = "Cersut Paste"
+	id = "cersutpaste"
+	description = "Ground up paste of a cersut leaf. It's highly acidic."
+	reagent_state = REAGENT_LIQUID
+	color = "#e0f569"
+	taste_description = "your tongue melting and teeth falling out"
+
+/datum/reagent/cersutpaste/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	if(alien == IS_XENOHYBRID)
+		return
+	if(alien != IS_SCORI)
+		M.take_random_targeted_damage(burn = 0, burn = removed * 4)
+	if(prob(50))
+		M.apply_effect(4, AGONY, 0)
+		if(prob(20))
+			to_chat(M,"<span class='danger'>You feel like your insides are melting!</span>")
+		else if(prob(20))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>")
+
+
+
+/datum/reagent/juhtakpulp
+	name = "Juhtak Pulp"
+	id = "juhtakpulp"
+	description = "Pulp extracted from a juhtak plant."
+	reagent_state = REAGENT_LIQUID
+	color = "#684f32"
+	taste_description = "bitter plant grit"
+
+/datum/reagent/juhtakpulp/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.heal_organ_damage(2 * removed * chem_effective, 0) // Herbal Bicaridine, less effective. Use alchemy to make it better.
+
+/datum/reagent/pokaleapaste
+	name = "Pokalea Paste"
+	id = "pokaleapaste"
+	description = "Ground up pokalea leaves."
+	reagent_state = REAGENT_LIQUID
+	color = "#684c34"
+	taste_description = "bitterness"
+
+/datum/reagent/pokaleapaste/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	if(alien == IS_DIONA)
+		return
+	if(M.bodytemperature > 310)
+		M.bodytemperature = max(310, M.bodytemperature - (10 * TEMPERATURE_DAMAGE_COEFFICIENT)) // Herbal Leporazine, less effective.
+	else if(M.bodytemperature < 311)
+		M.bodytemperature = min(310, M.bodytemperature + (10 * TEMPERATURE_DAMAGE_COEFFICIENT))
+
+/datum/reagent/pyrrhleanectar
+	name = "Pyrrhlea Nectar"
+	id = "pyrrhleanectar"
+	description = "The nectar of a pyrrhlea flower."
+	reagent_state = REAGENT_LIQUID
+	color = "#f0d74c"
+	taste_description = "bitter nectar"
+
+/datum/reagent/pyrrhleanectar/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	if(alien != IS_DIONA)
+		M.add_chemical_effect(CE_STABLE, 7) // Herbal kelotane. Less effective
+		M.heal_organ_damage(0, 2 * removed)
+
+/datum/reagent/shimashpulp
+	name = "Shimash Pulp"
+	id = "shimashpulp"
+	description = "Pulp extracted from a shimash plant."
+	reagent_state = REAGENT_LIQUID
+	color = "#f2f0ef"
+	taste_description = "sour plant grit"
+
+/datum/reagent/shimashpulp/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	M.ceiling_chemical_effect(CE_PAINKILLER, 20 * chem_effective) //Herbal tramadol, much less effective.
+
+/datum/reagent/bonemeal
+	name = "Bonemeal"
+	id = "bonemeal"
+	description = "Ground up bones."
+	reagent_state = REAGENT_SOLID
+	color = "#f2f0ef"
+	taste_description = "gritty sand"
+
+/datum/reagent/catalyst
+	name = "Catalyst"
+	id = "catalyst"
+	description = "Semi-anomalous powder. Properties unknown." // Powdered Elder Stone, for use in more advanced alchemy.
+	reagent_state = REAGENT_SOLID
+	color = "#9D14DB"
+	taste_description = "forever"

@@ -15,6 +15,9 @@ var/jobban_keylist[0]		//to store the keys & ranks
 
 //returns a reason if M is banned from rank, returns 0 otherwise
 /proc/jobban_isbanned(mob/M, rank)
+	// admins can do whatever the fuck they want for now
+	if(M.client?.holder)
+		return FALSE
 	if(M && rank)
 		/*
 		if(_jobban_isbanned(M, rank)) return "Reason Unspecified"	//for old jobban

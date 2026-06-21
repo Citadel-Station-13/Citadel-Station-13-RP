@@ -24,6 +24,7 @@
 #define CAT_PIE	"Pies & Sweets"
 #define CAT_PIZZA	"Pizzas"
 #define CAT_PRIMAL  "Tribal"
+#define CAT_ALCHEMY  "Alchemy"
 #define CAT_ROBOT	"Robots"
 #define CAT_SALAD	"Salads"
 #define CAT_SANDWICH	"Sandwiches"

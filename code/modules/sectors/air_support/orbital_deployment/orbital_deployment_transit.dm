@@ -196,6 +196,12 @@
 		movable_overlap_handler,
 	)
 
+	// TODO: better gravity system
+	structural_area.has_gravity = SSmapping.level_has_trait(
+		translation.dest_lower_left.z,
+		ZTRAIT_GRAVITY,
+	) || !!length(GLOB.gravity_generators["[translation.dest_lower_left.z]"])
+
 	translation.run_aftereffects(structural_area)
 
 /datum/orbital_deployment_transit/proc/get_transit_ordered_turfs()

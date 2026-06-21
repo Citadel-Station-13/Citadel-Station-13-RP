@@ -92,6 +92,8 @@
 			/datum/prototype/material/steel::id = materials_limit,
 			/datum/prototype/material/glass::id = materials_limit,
 		))
+	if(bottles_limit)
+		bottles = new/list()
 	update_icon()
 
 /obj/machinery/resleeving/body_printer/Destroy()
@@ -157,13 +159,41 @@
 		)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
+/obj/machinery/resleeving/body_printer/using_item_on(obj/item/using, datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(!istype(using, /obj/item/reagent_containers/glass))
+		return
+	if(bottles_limit == 0)
+		clickchain.chat_feedback(
+			SPAN_NOTICE("\The [src] does not have any slot to put in a container."),
+			target = src
+		)
+		return
+	if(bottles.len >= bottles_limit)
+		clickchain.chat_feedback(
+			SPAN_NOTICE("\The [src] is full."),
+			target = src
+		)
+		return
+
+	if(!clickchain.performer.attempt_insert_item_for_installation(using, src))
+		return
+	bottles += using
+	clickchain.chat_feedback(
+		SPAN_NOTICE("You put \the [using] into \the [src]."),
+		target = src
+	)
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+
 /obj/machinery/resleeving/body_printer/drop_products(method, atom/where)
 	. = ..()
 	materials.dump_everything(where)
 	if(bottles)
 		for(var/obj/item/I in bottles)
 			I.forceMove(where)
-		bottles = null
+		bottles = new/list()
 
 /obj/machinery/resleeving/body_printer/Exited(atom/movable/AM, atom/newLoc)
 	..()

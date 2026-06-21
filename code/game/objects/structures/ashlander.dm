@@ -295,6 +295,28 @@
 				playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
 				beaker.reagents.add_reagent("ash", 10)
 
+	if(istype(I,/obj/item/stack/material/shell))
+		if(!beaker)
+			return
+		else
+			var/obj/item/stack/material/shell/W = I
+			if(W.get_amount() < 1)
+				return
+			else if(do_after(user, 10))
+				W.use(1)
+				user.visible_message("<span class='notice'>[user] feeds \the [W] into \the [src].</span>","<span class='notice'>You reduce \the [W] using \the [src].</span>")
+				playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
+				beaker.reagents.add_reagent("calcium", 10)
+
+	if(istype(I,/obj/item/elderstone))
+		if(!beaker)
+			return
+		else if(do_after(user, 10))
+			qdel(I)
+			user.visible_message("<span class='notice'>[user] feeds \the [I] into \the [src].</span>","<span class='notice'>You reduce \the [I] using \the [src].</span>")
+			playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
+			beaker.reagents.add_reagent("catalyst", 10)
+
 	src.updateUsrDialog()
 	return 0
 

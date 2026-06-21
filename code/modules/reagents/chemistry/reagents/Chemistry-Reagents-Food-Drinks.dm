@@ -2204,7 +2204,7 @@
 	taste_description = "an odd blend of metals and sugar"
 	color = "#993c49"
 	blood_content = 2 //Regular blood is 4
-	ingest_met = REM * 10 //Same speed as regular blood
+	ingest_met = /datum/reagent/blood::ingest_met
 	nutrition = 1
 
 	glass_name = "Blud"
@@ -5460,3 +5460,40 @@
 
 	glass_name = "Halloween Punch"
 	glass_desc = "It's staring at you!"
+
+/datum/reagent/ethanol/bentarwine
+	name = "Sirim-Bentar"
+	id = "bentarwine"
+	description = "A type of wine made of fermented bentar juice."
+	reagent_state = REAGENT_LIQUID
+	proof = WINE
+	color = "#9d23aa"
+	taste_description = "slightly medicinal wine"
+
+/datum/reagent/ethanol/bentarwine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.adjustToxLoss(-1 * removed * chem_effective)//Keeps some of the medicinal properties, but reduced.
+
+/datum/reagent/cersutsauce
+	name = "Siishma-Cersut"
+	id = "cersutsauce"
+	description = "Acidic cersut paste tempered by some other medium to create a sauce."
+	reagent_state = REAGENT_LIQUID
+	color = "#e0f569"
+	taste_description = "your tongue tingling"
+
+/datum/reagent/cersutsauce/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	var/potency = 2
+	if(alien == IS_XENOHYBRID)
+		return
+	if(alien != IS_SCORI)
+		potency = 4
+	if(metabolism.total_processed_dose < 5 && (metabolism.cycles_so_far == 1 || prob(5)))
+		to_chat(M,"<span class='danger'>You feel like your insides are going numb!</span>")
+	if(metabolism.total_processed_dose >= 5)
+		M.apply_effect(potency, AGONY, 0)
+	if(prob(5))
+		M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>")

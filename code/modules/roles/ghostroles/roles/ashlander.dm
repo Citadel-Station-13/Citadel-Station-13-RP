@@ -89,7 +89,8 @@
 		/datum/crafting_recipe/goliathcowl, /datum/crafting_recipe/primitive_splint, /datum/crafting_recipe/bone_pipe, /datum/crafting_recipe/spark_striker, /datum/crafting_recipe/skull_mask,
 		/datum/crafting_recipe/alchemy_bandolier, /datum/crafting_recipe/saddle_stormdrifter, /datum/crafting_recipe/ashlander_sandals, /datum/crafting_recipe/ashlander_wraps,
 		/datum/crafting_recipe/musket_ashlander, /datum/crafting_recipe/flintlock_ashlander, /datum/crafting_recipe/drying_kiln, /datum/crafting_recipe/primitive_press, /datum/crafting_recipe/advanced_alchemy_station,
-		/datum/crafting_recipe/charcoal_stick, /datum/crafting_recipe/brick_press
+		/datum/crafting_recipe/charcoal_stick, /datum/crafting_recipe/brick_press, /datum/crafting_recipe/primitivesoap, /datum/crafting_recipe/condensedphlogiston, /datum/crafting_recipe/bitterash,
+		/datum/crafting_recipe/ritual_chalk
 		)
 
 /datum/ghostrole_instantiator/human/player_static/ashlander/GetOutfit(client/C, mob/M, list/params)
