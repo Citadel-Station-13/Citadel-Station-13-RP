@@ -24,6 +24,8 @@
 		// just render them
 		var/mutable_appearance/cloning = new(casted_target)
 		cloning.dir = WEST
+		cloning.layer = FLOAT_LAYER
+		cloning.plane = FLOAT_PLANE
 		button_additional_overlay = cloning
 
 /datum/action/robot_pick_resting_variation/invoke_target(mob/living/silicon/robot/target, datum/event_args/actor/actor)
