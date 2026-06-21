@@ -1823,6 +1823,10 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 10
 	},
+/obj/structure/table/woodentable,
+/obj/machinery/photocopier/faxmachine{
+	department = "Pilot Office"
+	},
 /turf/simulated/floor/wood,
 /area/exploration/pilot_Office)
 "bqQ" = (
@@ -23103,9 +23107,7 @@
 /area/hallway/d1portforhall/endeavour)
 "qIc" = (
 /obj/machinery/air_alarm{
-	frequency = 1441;
-	pixel_y = 22;
-	target_temperature = 275.15
+	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
