@@ -110,9 +110,9 @@
 		set_base_pixel_x(-((icon_x_dimension - WORLD_ICON_SIZE) / 2))
 		set_base_pixel_y(-((icon_y_dimension - WORLD_ICON_SIZE) / 2))
 		// reset resting variation if needed
-		if(!iconset.variations?[picked_resting_variation])
+		if(picked_resting_variation && !iconset.variations?[picked_resting_variation])
 			picked_resting_variation = null
-		if(iconset.variations[/datum/robot_iconset_variation/resting::id] && !action_pick_resting_variation)
+		if(iconset.variations?[/datum/robot_iconset_variation/resting::id] && !action_pick_resting_variation)
 			action_pick_resting_variation = new(src)
 			action_pick_resting_variation.grant(src)
 	else
@@ -126,7 +126,7 @@
 		// reset resting variation
 		picked_resting_variation = null
 
-		QDEL(action_pick_resting_variation)
+		QDEL_NULL(action_pick_resting_variation)
 
 	if(!skip_icon_update)
 		update_icon()

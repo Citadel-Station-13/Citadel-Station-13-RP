@@ -7,7 +7,7 @@
  *   This is not an adminhelp feature.
  */
 // TODO: DECLARE_MOB_VERB
-/mob/verb/ping_gms(atom/target as null|obj|mob|turf in world)
+/mob/verb/ping_gms(atom/target as null|obj|mob|turf in oview())
 	set name = "Ping GMs"
 	set category = VERB_CATEGORY_OOC
 	set desc = "Ping staff about something you want them to know about for the IC world. \

@@ -130,7 +130,7 @@
 
 	else if(!condi && istype(I, /obj/item/storage/pill_bottle))
 		if(pill_bottle)
-			to_chat(user, SPAN_WARNING("A pill pill_bottle is already loaded into [src]!"))
+			to_chat(user, SPAN_WARNING("A pill_bottle is already loaded into [src]!"))
 			return
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return

@@ -71,7 +71,7 @@
 
 	//* Actions *//
 	/// Only made if we need it.
-	var/datum/action/robot_pick_resting_variation/
+	var/datum/action/robot_pick_resting_variation/action_pick_resting_variation
 
 	//* Composition *//
 
