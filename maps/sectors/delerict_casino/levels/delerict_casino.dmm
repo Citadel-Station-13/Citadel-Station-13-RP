@@ -846,6 +846,10 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"eh" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor,
+/area/sector/delerictcasino/dock)
 "ej" = (
 /obj/structure/window/reinforced,
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -1818,6 +1822,12 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"ir" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "is" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -2062,6 +2072,12 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/spine)
+"jo" = (
+/obj/machinery/smuggling/processing_unit/casino,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "jp" = (
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 4
@@ -2647,16 +2663,6 @@
 	color = "#677246"
 	},
 /area/sector/delerictcasino/ringforrest)
-"lW" = (
-/obj/machinery/power/apc/east_mount{
-	req_access = null;
-	start_charge = 0
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor,
-/area/sector/delerictcasino/maintenance)
 "lX" = (
 /turf/simulated/floor,
 /area/sector/delerictcasino/maintenance)
@@ -2665,6 +2671,13 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/dance)
+"me" = (
+/obj/effect/floor_decal/rust,
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "mh" = (
 /obj/machinery/door/blast/shutters{
 	id = "casinovault2"
@@ -3507,6 +3520,16 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/sector/delerictcasino/dock)
+"pQ" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "casino_cargo_transit"
+	},
+/obj/machinery/smuggling/input,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "pT" = (
 /mob/living/simple_mob/animal/passive/bird/european_robin{
 	iff_factions = "!bind-map"
@@ -3547,6 +3570,10 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"pY" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/sector/delerictcasino/dock)
 "qa" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -3557,6 +3584,16 @@
 	color = "#b88a3b"
 	},
 /area/sector/delerictcasino/ringforrest)
+"qb" = (
+/obj/machinery/power/apc/east_mount{
+	req_access = null;
+	start_charge = 0
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor,
+/area/sector/delerictcasino/maintenance)
 "qd" = (
 /obj/machinery/light/fairy{
 	coloration = "#ed983d";
@@ -3596,6 +3633,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/cyan,
 /area/sector/delerictcasino/dance)
+"qq" = (
+/obj/machinery/point_redemption_vendor/smuggle/illegal/casino,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "qt" = (
 /obj/structure/flora/fey/large/rock1,
 /turf/simulated/floor/water/river{
@@ -3825,6 +3868,12 @@
 "rF" = (
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/delerictcasino/ringforrest)
+"rG" = (
+/mob/living/simple_mob/humanoid/pirate{
+	name = "Smuggler guard"
+	},
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/sector/delerictcasino/dock)
 "rJ" = (
 /obj/machinery/door/airlock/multi_tile{
 	name = "Casino suites";
@@ -4338,6 +4387,12 @@
 	},
 /turf/simulated/floor,
 /area/sector/delerictcasino/dance)
+"tX" = (
+/obj/structure/cargotransitcrate/illegal/drugs,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "tZ" = (
 /obj/machinery/atm{
 	pixel_y = 27
@@ -5148,6 +5203,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/ringforrest)
+"yl" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "casino_cargo_transit"
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "ym" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -5657,6 +5721,12 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Aj" = (
+/obj/structure/closet/crate/freezer,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "Ak" = (
 /mob/living/simple_mob/vore/aggressive/frog/space,
 /turf/simulated/floor/water/river{
@@ -5799,6 +5869,20 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"AY" = (
+/obj/machinery/power/apc/east_mount{
+	req_access = null;
+	start_charge = 0
+	},
+/obj/structure/table/steel_reinforced,
+/obj/item/tool/wirecutters,
+/obj/item/weedkiller/D24,
+/obj/item/weedkiller/D24,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/delerictcasino/commons)
 "AZ" = (
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/dock)
@@ -5892,6 +5976,17 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/ringforrest)
+"Bu" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "casino_cargo_transit";
+	name = "inbound conveyor";
+	pixel_y = -5;
+	pixel_x = 11
+	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "Bw" = (
 /obj/structure/curtain/open/shower,
 /obj/machinery/shower{
@@ -6378,10 +6473,20 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/sector/delerictcasino/ringforrest)
+"Ei" = (
+/obj/structure/closet/crate,
+/turf/simulated/floor,
+/area/sector/delerictcasino/dock)
 "Ej" = (
 /obj/structure/barricade,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/delerictcasino/exterior)
+"El" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "Eq" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/dark{
@@ -7838,20 +7943,6 @@
 	outdoors = 1
 	},
 /area/sector/delerictcasino/dock)
-"Li" = (
-/obj/machinery/power/apc/east_mount{
-	req_access = null;
-	start_charge = 0
-	},
-/obj/structure/table/steel_reinforced,
-/obj/item/tool/wirecutters,
-/obj/item/weedkiller/D24,
-/obj/item/weedkiller/D24,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/delerictcasino/commons)
 "Ll" = (
 /obj/structure/flora/fey/grass/grass9,
 /turf/simulated/floor/water/river{
@@ -8224,6 +8315,10 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"No" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/sector/delerictcasino/dock)
 "Nq" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -9096,6 +9191,10 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
+"RL" = (
+/obj/structure/table/steel,
+/turf/simulated/floor,
+/area/sector/delerictcasino/dock)
 "RM" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -9132,6 +9231,10 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"RT" = (
+/obj/structure/closet/crate/freezer,
+/turf/simulated/floor/tiled/steel_dirty/silver,
+/area/sector/delerictcasino/dock)
 "RV" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -9218,6 +9321,12 @@
 	color = "#ed983d"
 	},
 /area/sector/delerictcasino/ringforrest)
+"Sm" = (
+/obj/structure/closet/crate,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "Sq" = (
 /obj/structure/curtain/open/shower,
 /obj/machinery/shower{
@@ -9394,9 +9503,6 @@
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/sector/delerictcasino/room/room1)
-"Tb" = (
-/turf/simulated/floor/plating,
-/area/sector/delerictcasino/dock)
 "Tc" = (
 /turf/simulated/floor,
 /area/sector/delerictcasino/room/room1)
@@ -10449,6 +10555,12 @@
 /obj/item/spacecash/c100,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/delerictcasino/vault)
+"XY" = (
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
 "Ya" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/flora/grass/event/heavy_grass3,
@@ -10540,6 +10652,13 @@
 	light_color = "#ed983d";
 	dir = 4
 	},
+/turf/simulated/floor/tiled/steel_dirty/dark{
+	outdoors = 1
+	},
+/area/sector/delerictcasino/dock)
+"YE" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/steel_dirty/dark{
 	outdoors = 1
 	},
@@ -28075,10 +28194,10 @@ HC
 HC
 bM
 bM
-Tb
-Tb
+AD
+AD
 bM
-Tb
+AD
 bM
 dq
 ct
@@ -28462,7 +28581,7 @@ HC
 bM
 bM
 VI
-Od
+me
 fg
 fg
 VI
@@ -28656,10 +28775,10 @@ bM
 bM
 PZ
 Od
-Od
-VI
+YE
+ir
 IG
-VI
+XY
 VI
 VI
 Oc
@@ -28849,9 +28968,9 @@ bM
 bM
 VI
 VI
-IG
-IG
-VI
+Ei
+RL
+El
 PZ
 IG
 VI
@@ -29042,11 +29161,11 @@ gc
 bM
 VI
 VI
-VI
+tX
 IG
-AZ
-AZ
-IG
+pY
+pY
+Ei
 AZ
 IG
 AZ
@@ -29238,8 +29357,8 @@ AZ
 AZ
 CM
 AZ
-AZ
-IG
+No
+eh
 AZ
 AZ
 CM
@@ -30207,7 +30326,7 @@ tZ
 fg
 fg
 CM
-AZ
+rG
 AZ
 AZ
 AZ
@@ -30400,7 +30519,7 @@ gc
 bM
 AZ
 AZ
-AZ
+RT
 IG
 IG
 AZ
@@ -30594,12 +30713,12 @@ HC
 bM
 bM
 VI
-VI
+ir
 IG
-VI
+Bu
 PZ
 VI
-VI
+Sm
 IG
 fg
 VI
@@ -30788,9 +30907,9 @@ HC
 HC
 bM
 bM
-VI
+ir
 IG
-IG
+yl
 VI
 IG
 VI
@@ -30983,11 +31102,11 @@ HC
 HC
 bM
 bM
-VI
+qq
+pQ
 Od
 Od
-Od
-VI
+Aj
 VI
 Qh
 ON
@@ -31178,9 +31297,9 @@ HC
 HC
 bM
 bM
+jo
 VI
-VI
-VI
+Sm
 Od
 VI
 Qh
@@ -31373,10 +31492,10 @@ HC
 HC
 bM
 bM
-Tb
-Tb
+AD
+AD
 bM
-Tb
+AD
 bM
 dq
 ct
@@ -34023,7 +34142,7 @@ jf
 lX
 os
 lX
-lW
+qb
 LZ
 lX
 lX
@@ -35546,7 +35665,7 @@ sC
 jV
 rv
 rP
-Li
+AY
 MJ
 Ma
 Rt

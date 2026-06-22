@@ -114,6 +114,11 @@
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
 /area/class_m/inside/maintenance/winter)
+"aM" = (
+/obj/machinery/light/spot/no_nightshift,
+/obj/machinery/smuggling/processing_unit/gaia,
+/turf/simulated/floor/tiled,
+/area/class_m/inside/entrance)
 "aN" = (
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
@@ -499,6 +504,14 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside/main)
+"ch" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "gaia_cargo_transit"
+	},
+/obj/machinery/smuggling/input,
+/turf/simulated/floor/tiled,
+/area/class_m/inside/entrance)
 "cj" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/water,
@@ -3470,6 +3483,13 @@
 	},
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
+"ox" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "gaia_cargo_transit"
+	},
+/turf/simulated/floor/tiled,
+/area/class_m/inside/entrance)
 "oA" = (
 /obj/machinery/light/flamp/noshade{
 	nightshift_allowed = 0
@@ -7105,6 +7125,15 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/concrete/rng/outdoors,
 /area/class_m/outside)
+"EH" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "gaia_cargo_transit";
+	name = "inbound conveyor";
+	pixel_y = -5;
+	pixel_x = 11
+	},
+/turf/simulated/floor/tiled,
+/area/class_m/inside/entrance)
 "EJ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/leafybush,
@@ -8896,6 +8925,10 @@
 "Mn" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/kafel_full/blue,
+/area/class_m/inside/entrance)
+"Mp" = (
+/obj/structure/sign/department/cargo,
+/turf/simulated/wall,
 /area/class_m/inside/entrance)
 "Mq" = (
 /obj/machinery/light/spot/no_nightshift{
@@ -10807,6 +10840,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/class_m/inside/garage)
+"UN" = (
+/obj/machinery/point_redemption_vendor/smuggle/gaia,
+/turf/simulated/floor/tiled,
+/area/class_m/inside/entrance)
 "UQ" = (
 /obj/machinery/light{
 	dir = 8;
@@ -43720,7 +43757,7 @@ Lu
 Lu
 ED
 jl
-jl
+EH
 QM
 jo
 eP
@@ -43914,7 +43951,7 @@ nu
 ms
 Mn
 jl
-jl
+ox
 QM
 PE
 eP
@@ -44108,7 +44145,7 @@ Df
 Df
 Uw
 jl
-jl
+ch
 QM
 PE
 eP
@@ -44302,7 +44339,7 @@ KP
 KP
 Rg
 jl
-et
+aM
 QM
 PE
 eP
@@ -44496,7 +44533,7 @@ pA
 pA
 gL
 jl
-jl
+Mp
 QM
 PE
 eP
@@ -44690,7 +44727,7 @@ PG
 PG
 As
 jl
-jl
+UN
 QM
 PE
 eP
