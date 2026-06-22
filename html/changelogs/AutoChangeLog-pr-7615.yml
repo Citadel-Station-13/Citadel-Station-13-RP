@@ -1,5 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes:
-  - bugfix: "The air alarm in the NSV Endeavor's tool storage is no longer set to 2 degrees."
-  - tweak: "The NSV Endeavor's pilot office now has a built-in fax machine."

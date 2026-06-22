@@ -1,5 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes:
-  - bugfix: "Fixed grower pods not accepting bottles of biomass."
-  - bugfix: "Fixed being unable to use the mirror tool to directly put mirrors into machines."
