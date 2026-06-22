@@ -1,170 +1,168 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-//* Caliber *//
-
-/datum/ammo_caliber/nt_expedition/heavy_rifle
-	name = "NT-7.5-LR"
-	id = "nt-heavy-rifle"
-	caliber = "nt-heavy-rifle"
-	diameter = 7.5
-	length = 54
-
-//* Ammo Casings *//
-
-/obj/item/ammo_casing/nt_expedition/heavy_rifle
-	name = "ammo casing (NT-7.5-LR)"
-	desc = "A standardized 7.5x54mm cartridge for NT Expeditionary kinetics. This one seems to be for heavy rifles."
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
-	icon_state = "basic"
-	icon_spent = TRUE
-	casing_caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
-	projectile_type = /obj/projectile/bullet/nt_expedition/heavy_rifle
-
-	/// specifically for /obj/item/ammo_magazine/nt_expedition/heavy_rifle's
-	var/stripper_state = "basic"
-
-/obj/item/ammo_casing/nt_expedition/heavy_rifle/piercing
-	icon_state = "piercing"
-	stripper_state = "piercing"
-	// todo: implement casing + magazine
-
-/obj/item/ammo_casing/nt_expedition/heavy_rifle/rubber
-	icon_state = "rubber"
-	stripper_state = "rubber"
-	// todo: implement casing + magazine
-
 //* Magazines *//
 
 /obj/item/ammo_magazine/nt_expedition/heavy_rifle
-	name = "ammo magazine (NT-7.5-LR)"
-	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy-ammo.dmi'
-	ammo_caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
-	ammo_preload = /obj/item/ammo_casing/nt_expedition/heavy_rifle
+	name = "ammo magazine (7.5mm ares)"
+	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy.dmi'
+	ammo_caliber = /datum/ammo_caliber/hephaestus/heavy_rifle
+	ammo_preload = /obj/item/ammo_casing/hephaestus/heavy_rifle
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip
-	name = "stripper clip (NT-7.5-LR)"
-	icon_state = "stripper"
-	base_icon_state = "stripper"
-	ammo_max = 6
-	weight_volume = ITEM_VOLUME_PISTOL_MAG
-	magazine_type = MAGAZINE_TYPE_CLIP
+// todo: needs sprites
+///obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip
+//	name = "stripper clip (7.5mm Ares)"
+//	icon_state = "stripper"
+//	base_icon_state = "stripper"
+//	ammo_max = 6
+//	weight_volume = ITEM_VOLUME_PISTOL_MAG
+//	magazine_type = MAGAZINE_TYPE_CLIP
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip/update_icon(updates)
-	cut_overlays()
-	. = ..()
-	var/list/overlays_to_add = list()
-	for(var/i in 1 to min(5, get_amount_remaining()))
-		var/obj/item/ammo_casing/nt_expedition/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
-		var/append = "basic"
-		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/nt_expedition/heavy_rifle))
-			append = initial(casted_path_of_potential.stripper_state)
-		var/image/overlay = image(icon, "stripper-[append]")
-		overlay.pixel_x = (i - 1) * -2 - 8
-		overlay.pixel_y = (i - 1) * 2 - 8
-		overlays_to_add += overlay
-	add_overlay(overlays_to_add)
+///obj/item/ammo_magazine/nt_expedition/heavy_rifle/stripper_clip/update_icon(updates)
+//	cut_overlays()
+//	. = ..()
+//	var/list/overlays_to_add = list()
+//	for(var/i in 1 to min(5, get_amount_remaining()))
+//		var/obj/item/ammo_casing/hephaestus/heavy_rifle/casted_path_of_potential = peek_path_of_position(i)
+//		var/append = "basic"
+//		if(ispath(casted_path_of_potential, /obj/item/ammo_casing/hephaestus/heavy_rifle))
+//			append = initial(casted_path_of_potential.stripper_state)
+//		var/image/overlay = image(icon, "stripper-[append]")
+//		overlay.pixel_x = (i - 1) * -2 - 8
+//		overlay.pixel_y = (i - 1) * 2 - 8
+//		overlays_to_add += overlay
+//	add_overlay(overlays_to_add)
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
-	name = "ammo magazine (NT-7.5-LR)"
-	icon_state = "mag-basic-0"
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
+	name = "ammo magazine (7.5mm ares)"
+	icon_state = "mag-basic-1"
 	base_icon_state = "mag-basic"
 	weight_volume = ITEM_VOLUME_RIFLE_MAG
 	magazine_type = MAGAZINE_TYPE_NORMAL
+	rendering_system = GUN_RENDERING_STATES
+	rendering_count = 1
 	ammo_max = 16
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick/extended
-	name = "extended magazine (NT-7.5-LR)"
-	icon_state = "mag-ext-basic-0"
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/extended
+	name = "extended magazine (7.5mm ares)"
+	icon_state = "mag-ext-basic-1"
 	base_icon_state = "mag-ext-basic"
 	ammo_max = 24
 
-/obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick/drum
-	name = "drum magazine (NT-7.5-LR)"
-	icon_state = "mag-drum-basic-0"
+/obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/drum
+	name = "drum magazine (7.5mm ares)"
+	icon_state = "mag-drum-basic-1"
 	base_icon_state = "mag-drum-basic"
 	ammo_max = 40
-
-//* Projectiles *//
-
-/obj/projectile/bullet/nt_expedition/heavy_rifle
-	name = "heavy rifle bullet"
-	damage_force = 32.5
-	damage_tier = 4.75
 
 //* Heavy Rifles *//
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle
 	abstract_type = /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle
 	icon = 'icons/content/factions/corporations/nanotrasen/items/guns/expeditionary/rifle-heavy.dmi'
-	caliber = /datum/ammo_caliber/nt_expedition/heavy_rifle
+	caliber = /datum/ammo_caliber/hephaestus/heavy_rifle
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot
-	name = "marksman rifle"
-	desc = "The XNR(S) Mk.10 \"Old Man\" marksman rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	name = "break-action rifle"
+	desc = "The XNR Mk.3 \"Huntsman\" break-action rifle; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		A single shot, break action rifle chambered in 7.5x54mm, and sporting a 2x magnified optic,
-		this is the go-to hunting rifle for long-range patrols.
-		Light, uncomplicated, and rugged, the “Old Man” has nothing fancy about it.
-		But, time and again, it works, day in, and day out.
+		A single shot rifle chambered in 7.5mm Ares, this is a light, uncomplicated design for low-stakes applications
+		where rapid follow-up shots are not needed.
+		It's greatest strength is the sheer reliability of the action: There is very little there that can go wrong.
 	"} + "<br>"
-	icon_state = "single"
-	base_icon_state = "single"
-	item_renderer = /datum/gun_item_renderer/empty_state
+	icon_state = "singleshot"
+	base_icon_state = "singleshot"
 	internal_magazine = TRUE
 	internal_magazine_size = 1
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
+	chamber_simulation = TRUE
+	chamber_cycle_after_fire = FALSE
+	bolt_simulation = TRUE
+	bolt_auto_eject_on_open = TRUE
+	var/icon_retracted = "singleshot-empty"
+
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/singleshot/update_icon_state()
+	icon_state = bolt_closed ? initial(icon_state) : icon_retracted
+	return ..()
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle
 	name = "heavy rifle"
-	desc = "The XNR Mk.9 \"Ranger\" heavy rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-D9 \"Sentinel\" heavy rifle; Designed by the Nanotrasen Defense Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		Using the Mk.4 “Scout” as a baseline, this semiautomatic rifle is akin to holding a monster,
-		disguised in the skin of a dearly beloved friend in your hands.
-		Using full-powered rifle rounds (7.5x54mm), this rifle is broken out when you absolutely
-		positively have to blow a fist-sized hole in something and don't have time to wait.
-		A scaled-up version of the Scout, with box magazines, this long gun is often seen issued
-		to hunters looking to take down game to sustain an expedition.
+		Utilizing the NT-D3 \"Scout\" as a baseline, this semi-automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
+		comes equipped with an enclosed 1x red dot sight.
+		Introduced late into the Phoron Wars as a streamlined, improved version of the Scout, it was Nanotrasen's latest attempt at
+		leveraging the power 7.5mm Ares, as it was capable of taking down most of the Syndicate's armored hardsuits with enough volume of fire.
 	"} + "<br>"
 	icon_state = "semi"
 	base_icon_state = "semi"
-	item_renderer = /datum/gun_item_renderer/empty_state
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
+
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/semirifle/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
+
+/datum/firemode/nt_expedition_heavy_autorifle
+	abstract_type = /datum/firemode/nt_expedition_heavy_autorifle
+
+/datum/firemode/nt_expedition_heavy_autorifle/semi_auto
+	name = "semi-auto"
+
+/datum/firemode/nt_expedition_heavy_autorifle/three_burst
+	name = "3-burst"
+	burst_amount = 3
+	burst_delay = 1.6
+	projectile_base_dispersion = 4.5
+
+/datum/firemode/nt_expedition_heavy_autorifle/automatic
+	name = "automatic"
+	cycle_cooldown = 1.6
+	projectile_base_dispersion = 6.5
+//	automatic = TRUE
 
 /obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle
 	name = "heavy automatic rifle"
-	desc = "The XNR MK.9 Mod.1 \"Auto Ranger\" heavy rifle; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+	desc = "The NT-D9 Mod I \"Sentinel\" heavy rifle; Designed by the Nanotrasen Defense Division in conjunction with Hephaestus Industries."
 	description_fluff = {"
-		“What if we just.. Put a bigger magazine in it and a full auto trigger pack?” is the
-		question that led to the development of the “Auto Ranger”, at first.
-		Then, after an 'eventful' initial test, a gyroscopic stabilizer was added below
-		the handguard and a fixed stock was installed to handle the 'roller coaster' as one test
-		participant described the experience. Limiting the rifle
-		to burst fire keeps the rifle on target through most situations.
+		Building upon the D9's strengths, this automatic rifle is chambered in the full-powered 7.5mm Ares cartridge and
+		comes equipped with a wide-FOV 1x reflex sight, heavy muzzle break, vertical grip and lightweight stock.
+		Introduced in the final years of the Phoron Wars as an update to the Mk.9 pattern, this was Nanotrasen's finest attempt at
+		leveraging the power 7.5mm Ares, as it was capable of taking down most of the Syndicate's armored hardsuits with enough volume of fire.
+		Although the fully automatic setting was still useful in some situations, the Mod I's three-round burst proved to be the most effective
+		way to deliver shots at range.
 	"} + "<br>"
-	icon_state = "auto-map"
+	icon_state = "auto"
 	base_icon_state = "auto"
-	render_magazine_overlay = MAGAZINE_CLASS_GENERIC
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick
+	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack
 	w_class = WEIGHT_CLASS_FOR_LONG_RIFLE
+	firemodes = list(
+		/datum/firemode/nt_expedition_heavy_autorifle/semi_auto,
+		/datum/firemode/nt_expedition_heavy_autorifle/three_burst,
+		/datum/firemode/nt_expedition_heavy_autorifle/automatic,
+	)
 
-/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
-	name = "light machine gun"
-	desc = "The XNR Mk.9 Mod.2 \"Hailmaker\" light machine gun; a refined design output by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
-	description_fluff = {"
-		The tests of the Mod.2 design quickly turned development towards a
-		general purpose machine gun (GPMG) version of the Ranger series, the “Hailmaker.”.
-		Sporting a frame-mounted cryo-stabilized heavy barrel, a feed tray for quickly reloading
-		via an assistant gunner, and a gyroscopic assist system,
-		this weapon is seen in the guard towers of base camps and atop vehicles in addition to
-		dedicated machine gun teams. The patter this weapon makes as it suppresses any hostile
-		force makes this weapon's name a logical choice.
-	"} + "<br>"
-	icon_state = "lmg"
-	// todo: box mag
-	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/stick/drum
-	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN
+/obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/autorifle/update_icon_state()
+	. = ..()
+	if(magazine)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]-empty"
+
+// todo: needs sprite
+///obj/item/gun/projectile/ballistic/nt_expedition/heavy_rifle/lmg
+//	name = "light machine gun"
+//	desc = "The NT-G7  \"Nemesis\" light machine gun; Designed by the Nanotrasen Research Division in conjunction with Hephaestus Industries."
+//	description_fluff = {"
+//
+//	"} + "<br>"
+//	icon_state = "lmg"
+//	// todo: box mag
+//	magazine_restrict = /obj/item/ammo_magazine/nt_expedition/heavy_rifle/doublestack/drum
+//	w_class = WEIGHT_CLASS_FOR_LIGHT_MACHINE_GUN
 
 	// todo: rendering; how are we going to render both unloaded and open?
 	// todo: rendering; maybe expand the render additional to allow for generation of a list?
