@@ -110,8 +110,11 @@
 		set_base_pixel_x(-((icon_x_dimension - WORLD_ICON_SIZE) / 2))
 		set_base_pixel_y(-((icon_y_dimension - WORLD_ICON_SIZE) / 2))
 		// reset resting variation if needed
-		if(!iconset.variations?[picked_resting_variation])
+		if(picked_resting_variation && !iconset.variations?[picked_resting_variation])
 			picked_resting_variation = null
+		if(iconset.variations?[/datum/robot_iconset_variation/resting::id] && !action_pick_resting_variation)
+			action_pick_resting_variation = new(src)
+			action_pick_resting_variation.grant(actions_innate)
 	else
 		zmm_flags &= ~ZMM_WIDE_LOAD
 		base_icon_state = initial(base_icon_state) || initial(icon_state)
@@ -122,6 +125,8 @@
 		set_base_pixel_y(initial(base_pixel_y))
 		// reset resting variation
 		picked_resting_variation = null
+
+		QDEL_NULL(action_pick_resting_variation)
 
 	if(!skip_icon_update)
 		update_icon()

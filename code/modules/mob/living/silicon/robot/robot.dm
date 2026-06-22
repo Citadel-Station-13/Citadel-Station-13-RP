@@ -69,6 +69,10 @@
 
 	can_be_antagged = TRUE
 
+	//* Actions *//
+	/// Only made if we need it.
+	var/datum/action/robot_pick_resting_variation/action_pick_resting_variation
+
 	//* Composition *//
 
 	/// set to instance to init as that instance
