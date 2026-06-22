@@ -49,22 +49,17 @@
  * * clickchain_flags - the clickchain flags given
  * * function - forced function - used in automation
  * * hint - forced hint - used in automation
- * * reachability_check - a callback used for reachability checks. if none, defaults to mob.Reachability when in clickcode, can always reach otherwise.
  */
-/atom/proc/tool_interaction(obj/item/I, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
-	return _tool_interaction_entrypoint(I, e_args, clickchain_flags, function, hint, reachability_check)
+/atom/proc/tool_interaction(obj/item/I, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint)
+	return _tool_interaction_entrypoint(I, e_args, clickchain_flags, function, hint)
 
-/atom/proc/_tool_interaction_entrypoint(obj/item/provided_item, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint, datum/callback/reachability_check)
+/atom/proc/_tool_interaction_entrypoint(obj/item/provided_item, datum/event_args/actor/clickchain/e_args, clickchain_flags, function, hint)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	PRIVATE_PROC(TRUE)
-	if(isnull(reachability_check))
-		if(clickchain_flags & CLICKCHAIN_TOOL_ACT)
-			// provided_item should never be null
-			// we inject our default reachability check if tool act is set by tool attack chain
-			// otherwise we just ignore it if it wasn't specified
-			reachability_check = CALLBACK(e_args.performer, TYPE_PROC_REF(/atom/movable, Reachability), src, null, provided_item.reach, provided_item)
-	if(reachability_check && !reachability_check.Invoke())
-		return NONE
+	// This is probably valid behavior as tool_interaction should not be called before blocking.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
+		return clickchain_flags
+	var/datum/callback/reachability_callback = CALLBACK(e_args, TYPE_PROC_REF(/datum/event_args/actor/clickchain, reachability_check))
 	// from click chain
 	if(provided_item)
 		if(function)
@@ -80,7 +75,7 @@
 			// no dynamic tool functionality, or dynamic functionality disabled, route normally.
 			function = provided_item.tool_behavior()
 			if(!function)
-				return NONE
+				return clickchain_flags
 			return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
 		var/list/functions = provided_item.tool_query(e_args, src)
 		// enumerate
@@ -89,7 +84,7 @@
 			function = functions[1]
 			if(isnull(possibilities[function]))
 				// not found, route normally
-				return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
+				return clickchain_flags | _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
 		else
 			for(var/i in possibilities)
 				if(functions[i])
@@ -99,8 +94,8 @@
 				// none can be used, just go to static tool act if possible
 				function = provided_item.tool_behavior()
 				if(!function)
-					return NONE
-				return _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
+					return clickchain_flags
+				return clickchain_flags | _tool_act(provided_item, e_args, function, TOOL_OP_REAL)
 		// possibilities is now filtered
 		// everything in possibilities is valid for the tool
 		var/list/transformed = list()
@@ -108,7 +103,7 @@
 		if(!function)
 			// we're about to sleep; if we're already breaking from this, maybe like, don't
 			if(INTERACTING_WITH_FOR(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
+				return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE
 			// if we didn't pick function already
 			for(var/potential_function in possibilities)
 				var/list/potential_hints = possibilities[potential_function]
@@ -130,21 +125,21 @@
 			// todo: because there's no semantics for mutexing the performer vs the initator
 			// todo: in the future, we are going to want to get a proper mutex up for tool interactions
 			START_INTERACTING_WITH(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL)
-			function = show_radial_menu(e_args.initiator, src, transformed, custom_check = reachability_check)
+			function = show_radial_menu(e_args.initiator, src, transformed, custom_check = reachability_callback)
 			STOP_INTERACTING_WITH(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL)
-			if(!function || (reachability_check && !reachability_check.Invoke()))
-				return CLICKCHAIN_DO_NOT_PROPAGATE
+			if(!function || !reachability_callback.Invoke())
+				return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE
 		// determine hint
 		var/list/hints = possibilities[function]
 		if(!islist(hints))
 			// is a direct hint or null
-			return dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, hints)
+			return clickchain_flags | dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, hints)
 		else if(length(hints) <= 1)
 			// no hint, or only one hint
-			return dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, length(hints)? hints[1] : null)
+			return clickchain_flags | dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, length(hints)? hints[1] : null)
 		// we're about to sleep; if we're already breaking from this, maybe like, don't
 		if(INTERACTING_WITH_FOR(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL))
-			return CLICKCHAIN_DO_NOT_PROPAGATE
+			return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE
 		transformed.len = 0
 		for(var/i in hints)
 			var/image/radial_render = hints[i] || dyntool_image_neutral(function)
@@ -154,17 +149,17 @@
 			radial_render.maptext_width = 64
 			transformed[i] = radial_render
 		START_INTERACTING_WITH(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL)
-		hint = show_radial_menu(e_args.initiator, src, transformed, custom_check = reachability_check)
+		hint = show_radial_menu(e_args.initiator, src, transformed, custom_check = reachability_callback)
 		STOP_INTERACTING_WITH(e_args.initiator, src, INTERACTING_FOR_DYNAMIC_TOOL)
-		if(!hint || (reachability_check && !reachability_check.Invoke()))
-			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!hint || !reachability_callback.Invoke())
+			return clickchain_flags | CLICKCHAIN_DO_NOT_PROPAGATE
 		// use hint
-		return dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, hint) | CLICKCHAIN_DO_NOT_PROPAGATE
+		return clickchain_flags | dynamic_tool_act_entrypoint(provided_item, e_args, function, TOOL_OP_REAL, hint) | CLICKCHAIN_DO_NOT_PROPAGATE
 	else
 		// in the future, we might have situations where clicking something with an empty hand
 		// yet having organs that server as built-in tools can do something with
 		// the dynamic tool system. for now, this does nothing.
-		return NONE
+		return clickchain_flags
 
 //! Primary Tool API
 /atom/proc/_tool_act(obj/item/I, datum/event_args/actor/clickchain/e_args, function, flags, hint)
@@ -172,7 +167,7 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	// TODO: get rid of this and use something like MELEE_ATTACK_HOOK style arg modification
 	if((. = SEND_SIGNAL(src, COMSIG_ATOM_TOOL_ACT, I, e_args, function, flags, hint)) & CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
-		return . & ~(CLICKCHAIN_COMPONENT_SIGNAL_HANDLED)
+		return clickchain_flags | (. & ~(CLICKCHAIN_COMPONENT_SIGNAL_HANDLED))
 	return tool_act(I, e_args, function, flags, hint)
 
 /**
@@ -240,6 +235,7 @@
 	if(!I.using_as_tool(function, flags, e_args, src, delay, cost, usage))
 		return FALSE
 	I.tool_feedback_start(function, flags, e_args, src, delay, cost, usage, volume)
+	#warn how to do reachability checks here?? what do after flags to use??
 	if(!do_after(
 		e_args.performer,
 		delay,

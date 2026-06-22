@@ -72,6 +72,20 @@
 	///   This is for shieldcalls to inject into to say 'hey, we blocked any contact, not just dampened damage'.
 	var/attack_contact_multiplier = 1
 
+	//* Reachability *//
+
+	/// If set, this overrides default reachability check.
+	/// * Called with (src)
+	/// * Returns non-null to override `reachability_check()` on the clickchain.
+	///
+	/// Note: `clickchain_flags` is usually going to have `CLICKCHAIN_HAS_PROXIMIY` set if
+	/// the target is reachable. This, however, is only reliable for checking
+	/// if the target is default-reachable via Reachability() (or a user-injected flag)
+	/// at the time of the click.
+	///
+	/// This callback allows overriding continual checks, which is useful in do_after()'s.
+	var/datum/callback/reachability_check
+
 	//* Resolved Data *//
 
 	/// Resolved angle from performer
@@ -134,7 +148,8 @@
 		return
 	if(!click_params)
 		return
-	unpack_click_params()
+	if(!click_params_unpacked)
+		unpack_click_params()
 	// target x/y from bottom left of screen
 	var/target_x = click_params_screen_tx * WORLD_ICON_SIZE + click_params_tile_px - WORLD_ICON_SIZE
 	var/target_y = click_params_screen_ty * WORLD_ICON_SIZE + click_params_tile_py - WORLD_ICON_SIZE
@@ -149,8 +164,6 @@
 		resolved_angle_from_performer = .
 
 /datum/event_args/actor/clickchain/proc/unpack_click_params()
-	if(click_params_unpacked)
-		return
 	click_params_unpacked = TRUE
 	if(!click_params)
 		return
@@ -166,3 +179,18 @@
 
 /datum/event_args/actor/clickchain/proc/legacy_get_target_zone()
 	return initiator?.zone_sel?.selecting
+
+/**
+ * * Only makes sense of 'target' exists, otherwise always returns false by default.
+ */
+/datum/event_args/actor/clickchain/proc/reachability_check()
+	// it's invalid behavior to sleep in this
+	. = reachability_check?.invoke_no_sleep(src)
+	if(. == null)
+		. = default_reachability_check()
+
+/**
+ * * Only makes sense of 'target' exists, otherwise always returns false.
+ */
+/datum/event_args/actor/clickchain/proc/default_reachability_check()
+	. = performer.Reachability(target)
