@@ -6626,7 +6626,7 @@
 /area/rift/station/fighter_bay/transport_tunnel)
 "tS" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/ghost_role_spawner/lythios_colonist,
+/obj/structure/role_spawner/lythios_colonist,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "tT" = (

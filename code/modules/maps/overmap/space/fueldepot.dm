@@ -17,16 +17,12 @@
 
 /obj/effect/shuttle_landmark/premade/fueldepot/east
 	name = "Fuel Depot - East Dock"
-	landmark_tag = "fueldepot_east"
 
 /obj/effect/shuttle_landmark/premade/fueldepot/west
 	name = "Fuel Depot - West Dock"
-	landmark_tag = "fueldepot_west"
 
 /obj/effect/shuttle_landmark/premade/fueldepot/north
 	name = "Fuel Depot - North Dock"
-	landmark_tag = "fueldepot_north"
 
 /obj/effect/shuttle_landmark/premade/fueldepot/south
 	name = "Fuel Depot - South Dock"
-	landmark_tag = "fueldepot_south"

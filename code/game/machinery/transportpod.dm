@@ -64,7 +64,7 @@
 	update_appearance()
 	if(alert(O, "Are you sure you're ready to launch?", , "Yes", "No") == "Yes")
 		in_transit = 1
-		playsound(src, HYPERSPACE_WARMUP)
+		playsound(src, /datum/soundbyte/shuttle_hyperspace_enter)
 	else
 		go_out()
 	return 1

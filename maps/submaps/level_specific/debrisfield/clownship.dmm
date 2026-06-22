@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aj" = (
-/obj/machinery/computer/shuttle_control/explore/excursion,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/shuttle/floor/red/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
 "al" = (
@@ -680,7 +680,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
 "Is" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = -29
 	},
@@ -934,7 +934,7 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
 "Wc" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},

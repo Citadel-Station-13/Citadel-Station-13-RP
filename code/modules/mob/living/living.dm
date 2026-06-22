@@ -767,14 +767,14 @@ default behaviour is:
 /mob/living/proc/add_ghostrole(datum/prototype/role/ghostrole/existing/R = /datum/prototype/role/ghostrole/existing/)
 	var/list/L = list()
 	L["mob"] += src
-	return AddComponent(/datum/component/ghostrole_spawnpoint, R, 1, L)
+	return AddComponent(/datum/component/role_spawnpoint, R, 1, L)
 
 /mob/living/proc/get_ghostrole() //! currently not using GetComponent because that seems bugged right now. :^) @silicons
-	. = datum_components?[/datum/component/ghostrole_spawnpoint]
+	. = datum_components?[/datum/component/role_spawnpoint]
 	return . && (length(.) ? .[1] : .)
 
 /mob/living/proc/remove_ghostrole()
-	return DelComponent(/datum/component/ghostrole_spawnpoint)
+	return DelComponent(/datum/component/role_spawnpoint)
 
 /mob/living/vv_get_header()
 	. = ..()

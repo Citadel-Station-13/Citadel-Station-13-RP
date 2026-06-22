@@ -99,13 +99,6 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	icon_state = "doorin"
 	tag_addon = "_inner"
 
-/obj/map_helper/airlock/door/simple
-	name = "simple docking controller hatch"
-	icon_state = "doorsimple"
-	tag_addon = "_hatch"
-	my_controller_type = /obj/machinery/embedded_controller/radio/simple_docking_controller
-
-
 /*
 	Atmos
 */

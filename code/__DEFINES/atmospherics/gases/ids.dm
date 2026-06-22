@@ -1,11 +1,11 @@
 /**
- * !! THESE PREFIXES ARE RESERVED. !!
- * !! No touchies.                 !!
- * !! They're used for randomgen   !!
- * !! and we don't want collisions.!!
- * ?? These can be changed a will, ??
- * ?? as they will probably never  ??
- * ?? be directly mapped in.       ??
+ * !! THESE PREFIXES ARE RESERVED.  !!
+ * !! No touchies.                  !!
+ * !! They're used for randomgen    !!
+ * !! and we don't want collisions. !!
+ * ?? These can be changed at will, ??
+ * ?? as they will probably never   ??
+ * ?? be directly mapped in.        ??
  */
 /// prefix reserved for dynamic chemgas later
 #define GAS_ID_PREFIX_REAGENTS "r_"

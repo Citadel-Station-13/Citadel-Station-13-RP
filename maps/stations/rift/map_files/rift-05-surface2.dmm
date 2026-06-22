@@ -15360,7 +15360,7 @@
 	dir = 8;
 	old_wall = 1
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = 1;
 	pixel_y = 30
 	},
@@ -29357,8 +29357,9 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/computer/shuttle_control/explore/hammerhead{
-	dir = 4
+/obj/machinery/computer/shuttle_control{
+	dir = 4;
+	icon_state = "computer"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)

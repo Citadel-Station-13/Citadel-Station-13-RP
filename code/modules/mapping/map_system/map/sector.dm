@@ -2,7 +2,7 @@
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
 /**
- * standard sector / planet maps
+ * standard sector / ship / planet maps
  */
 /datum/map/sector
 	category = "Sectors"

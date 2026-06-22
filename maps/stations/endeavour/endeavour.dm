@@ -54,17 +54,6 @@
 
 	//* LEGACY BELOW *//
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/excursion/endeavour,
-		/datum/shuttle/autodock/ferry/emergency/escape/endeavour,
-		/datum/shuttle/autodock/ferry/supply/cargo/endeavour,
-		/datum/shuttle/autodock/overmap/emt/endeavour,
-		/datum/shuttle/autodock/overmap/mining/endeavour,
-		/datum/shuttle/autodock/overmap/civvie/endeavour,
-		/datum/shuttle/autodock/overmap/courser/endeavour,
-		/datum/shuttle/autodock/ferry/belter,
-	)
-
 	full_name = "NSV Endeavour"
 
 	use_overmap = TRUE

@@ -438,10 +438,6 @@
 	name = "Archaic Temple"
 	icon_state = "purple"
 
-//Debris field
-/area/shuttle/excursion/debrisfield
-	name = "\improper Excursion Shuttle - Debris Field"
-
 /area/debrisfield
 	name = "Away Mission - Debris Field"
 	icon = 'icons/turf/areas.dmi'
@@ -487,10 +483,6 @@
 /area/space/debrisfield/misc_debris
 	name = "Debris"
 	icon_state = "debrisexplored"
-
-//Pirate base
-/area/shuttle/excursion/piratebase
-	name = "\improper Excursion Shuttle - Pirate Base"
 
 /area/piratebase
 	name = "Pirate Base"
@@ -560,11 +552,6 @@
 // Mining outpost areas
 /area/outpost/mining_main/passage
 	name = "\improper Mining Outpost Passage"
-
-
-//Trade Port areas
-/area/shuttle/excursion/trader
-	name = "\improper Beruang Trade Shuttle"
 
 /area/tradeport
 	name = "Away Mission - Trade Port"
@@ -756,15 +743,6 @@
 	name = "\improper docked with Tether"
 	icon_state = "shuttle"
 	dynamic_lighting = 0
-
-// Lavaland
-/area/shuttle/excursion/lavaland
-	name = "Shuttle Landing Point"
-	area_flags = AREA_RAD_SHIELDED
-
-// Aerostat
-/area/shuttle/excursion/away_aerostat
-	name = "\improper Excursion Shuttle - Aerostat"
 
 // The aerostat shuttle
 /area/shuttle/aerostat/docked

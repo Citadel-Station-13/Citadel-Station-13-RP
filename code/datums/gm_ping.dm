@@ -99,7 +99,7 @@ GLOBAL_VAR_INIT(gm_ping_ghost_allowed, FALSE)
 			)
 		else
 			.["sector"] = null
-		var/obj/overmap/entity/l_overmap = get_overmap_sector(l_turf)
+		var/obj/overmap/entity/l_overmap = SSovermaps.get_enclosing_overmap_entity(l_turf)
 		if(l_overmap)
 			.["overmap"] = list(
 				"entity" = l_overmap.name,

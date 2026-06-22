@@ -135,3 +135,24 @@ GLOBAL_REAL_LIST(all_tgui_themes) = list(
 	TGUI_THEME_SYNDICATE,
 	TGUI_THEME_WIZARD,
 )
+
+//* TGUI <DynamicOutput>. This is more or less for 'to enable people who are  *//
+//* too lazy to do TGUI'.                                                     *//
+
+/**
+ * Output an HTML block.
+ */
+#define TGUI_CONSTRUCT_DYNAMIC_OUTPUT_HTML(dangerously_unsanitized_html) list( \
+"type" = "html", \
+"html" = dangerously_unsanitized_html, \
+)
+
+/**
+ * Output a list of HTML blocks.
+ */
+#define TGUI_CONSTRUCT_DYNAMIC_OUTPUT_HTML_LIST(list_of_dangerously_unsanitized_html) list( \
+"type" = "html_list", \
+"html_list" = list_of_dangerously_unsanitized_html, \
+)
+
+#warn impl above in UI

@@ -20,6 +20,9 @@
 	if(istype(new_partner))
 		partner = new_partner
 		new_partner.partner = src
+	var/min_name_len = 4		// Refuse if shuttle tag is shorter than this.
+	var/max_name_len = 32		// Refuse if shuttle tag is longer than this.
+
 
 /obj/overmap/bluespace_rift/proc/take_this(atom/movable/AM)
 	paused = TRUE

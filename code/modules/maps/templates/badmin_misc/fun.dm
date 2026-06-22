@@ -221,7 +221,6 @@
 [i]Transponder[/i]: REPLACE ME
 [b]Notice[/b]: REPLACE ME"}
 	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_LARGE //Mostly so it's obviously visible on the map.
 	fore_dir = NORTH //You may need to edit this ingame if you want your ship to fly correctly!
 	start_x = 2
 	start_y = 2
@@ -236,15 +235,12 @@
 // Note the names, pick whichever makes the most sense for your map. No need to use them in any particular order or use any/all of them.
 /obj/effect/shuttle_landmark/automatic/admin_use1
 	name = "Landing Zone"
-	landmark_tag = "adminuse_lz_alpha"
 
 /obj/effect/shuttle_landmark/automatic/admin_use2
 	name = "Parking Area"
-	landmark_tag = "adminuse_lz_beta"
 
 /obj/effect/shuttle_landmark/automatic/admin_use3
 	name = "Docking Node"
-	landmark_tag = "adminuse_lz_gamma"
 
 
 //////////////////////////////////////////////////////////////////////////////////////

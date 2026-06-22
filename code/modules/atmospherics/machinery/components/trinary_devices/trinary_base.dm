@@ -28,6 +28,13 @@
 /obj/machinery/atmospherics/component/trinary/init_dir()
 	initialize_directions = get_initialize_directions_trinary(dir, mirrored, tee)
 
+// Obliterate parent and rebuild on move.
+/obj/machinery/atmospherics/component/unary/Moved(atom/old_loc, direction, forced, list/old_locs, momentum_change)
+	..()
+	QDEL_NULL(network1)
+	QDEL_NULL(network2)
+	QDEL_NULL(network3)
+
 /obj/machinery/atmospherics/component/trinary/update_underlays()
 	if(..())
 		underlays.Cut()

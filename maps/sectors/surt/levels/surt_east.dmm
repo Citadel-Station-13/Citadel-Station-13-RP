@@ -164,7 +164,7 @@
 /turf/simulated/lava/indoors,
 /area/sector/surt/east/unexplored)
 "xw" = (
-/obj/structure/ghost_role_spawner/ashlander,
+/obj/structure/role_spawner/ashlander,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/surt/east/ashlander_village)
 "yC" = (

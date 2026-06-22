@@ -15,7 +15,7 @@ VV_PROTECT_READONLY(/datum/admin_modal)
 	/// TGUI ID; this will always be loaded from `tgui/interfaces/admin_modal` if possible.
 	var/tgui_interface
 	/// Do we autoupdate?
-	var/tgui_update = TRUE
+	var/tgui_autoupdate = TRUE
 	/// are we initialized?
 	var/initialized = FALSE
 
@@ -31,7 +31,7 @@ VV_PROTECT_READONLY(/datum/admin_modal)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "admin_modal/[tgui_interface]")
-		ui.set_autoupdate(tgui_update)
+		ui.set_autoupdate(tgui_autoupdate)
 		ui.open()
 
 /datum/admin_modal/ui_state()

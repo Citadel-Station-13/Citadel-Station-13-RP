@@ -496,7 +496,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/dark,
@@ -769,7 +769,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/osiris/battlestar)
 "EP" = (
-/obj/machinery/computer/shuttle_control/explore/battlestar{
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,

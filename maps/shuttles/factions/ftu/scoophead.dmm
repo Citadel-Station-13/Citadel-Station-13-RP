@@ -1,0 +1,1725 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ai" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"al" = (
+/obj/machinery/airlock_component/cycler/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"ar" = (
+/obj/structure/table/woodentable,
+/obj/machinery/photocopier/faxmachine{
+	department = "Scoophead Trade Shuttle"
+	},
+/obj/structure/flora/pottedplant/tall{
+	pixel_y = 14;
+	pixel_x = 7
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/auto/named/cockpit)
+"aL" = (
+/obj/structure/table/woodentable,
+/obj/structure/flora/pottedplant/unusual{
+	pixel_y = 9;
+	pixel_x = -7
+	},
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"aU" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"bH" = (
+/obj/effect/floor_decal/corner/blue/border,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"dd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/cockpit)
+"dM" = (
+/obj/machinery/computer/ship/helm{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/cockpit)
+"ei" = (
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/auto/named/engine)
+"es" = (
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/cockpit)
+"eA" = (
+/obj/machinery/recharge_station,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/machinery/power/apc/large_cell/tier_3/west_mount,
+/obj/structure/cable/pink{
+	icon_state = "0-8";
+	dir = 1
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"eB" = (
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/auto/named/cockpit)
+"eL" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/engine)
+"eT" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/random/tool/power,
+/obj/random/tool/power,
+/obj/random/tool/power,
+/obj/item/clothing/suit/storage/vest/tactical,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"fP" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/engine)
+"ge" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/cockpit)
+"gr" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/blue/border,
+/obj/machinery/light,
+/obj/structure/cable/pink{
+	icon_state = "0-8";
+	dir = 1
+	},
+/obj/machinery/power/apc/alarms_hidden/south_mount,
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/cockpit)
+"gw" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/structure/closet/crate/secure{
+	name = "liquors crate";
+	req_access = list(160)
+	},
+/obj/item/reagent_containers/food/drinks/bottle/moonshine,
+/obj/item/reagent_containers/food/drinks/bottle/phobos,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"hc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/machinery/button/windowtint{
+	pixel_x = 22;
+	id = "scoophead_room"
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/auto/named/cockpit)
+"hf" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"hm" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atm{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"hv" = (
+/obj/structure/bed/pod,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/obj/item/bedsheet/cosmos,
+/obj/structure/poster{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/named/cockpit)
+"hF" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"hJ" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"in" = (
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/obj/machinery/airlock_peripheral/panel/hardmapped/west_mount,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"jo" = (
+/obj/structure/table/woodentable,
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/obj/item/pen,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/auto/named/cockpit)
+"jP" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 6
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/storage/toggle/brown_fancycoat/black,
+/obj/item/clothing/suit/storage/toggle/brown_fancycoat,
+/obj/item/clothing/suit/storage/tajaran/coat/fancycoat/red,
+/obj/item/clothing/suit/storage/tajaran/coat/finecoat,
+/obj/item/clothing/suit/storage/tajaran/coat/fancycoat,
+/obj/item/clothing/suit/storage/toggle/tesharicoat,
+/obj/item/clothing/suit/storage/toggle/tesharicoatwhite,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"kw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/deck)
+"kN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/auto/named/cockpit)
+"kT" = (
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/engine)
+"lo" = (
+/obj/machinery/atmospherics/pipe/tank/phoron{
+	volume = 20000;
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"lx" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/poster{
+	pixel_x = 32
+	},
+/turf/simulated/floor/wood,
+/area/shuttle/auto/named/cockpit)
+"ny" = (
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"nO" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"nS" = (
+/obj/machinery/holosign/bar{
+	id = "tradersign2"
+	},
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/auto/named/deck)
+"oY" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/airlock_component/handler/hardmapped{
+	dir = 4
+	},
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"ph" = (
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"pT" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"pY" = (
+/turf/space,
+/area/space)
+"rk" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"rC" = (
+/obj/machinery/door/blast/regular{
+	id = "trade2port"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"sW" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
+/obj/structure/closet/crate/corporate/oculum,
+/obj/item/clothing/suit/storage/vest/press,
+/obj/item/clothing/suit/storage/vest/press,
+/obj/item/clothing/accessory/armor/tag/press,
+/obj/item/clothing/accessory/armor/tag/press,
+/obj/item/camera,
+/obj/item/camera,
+/obj/item/tvcamera,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"tx" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"tK" = (
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/engine)
+"ua" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"ug" = (
+/obj/machinery/telecomms/relay/preset/telecomms,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"uk" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"uq" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/brown,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/named/cockpit)
+"ut" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 5
+	},
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"vH" = (
+/obj/random/multiple/voidsuit/vintage,
+/obj/structure/closet,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/item/clothing/suit/space/emergency/russian,
+/obj/item/clothing/suit/space/emergency/russian,
+/obj/item/clothing/head/helmet/space/emergency/russian,
+/obj/item/clothing/head/helmet/space/emergency/russian,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"wq" = (
+/obj/structure/closet/largecardboard,
+/obj/item/storage/toolbox/syndicate/powertools,
+/obj/item/clothing/gloves/yellow,
+/obj/item/clothing/gloves/yellow,
+/obj/item/clothing/gloves/yellow,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"wI" = (
+/obj/effect/floor_decal/corner/blue/border,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/closet/largecardboard,
+/obj/item/clothing/accessory/hawaii/random,
+/obj/item/clothing/under/hawaiian,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/pineapple,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"xf" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 10
+	},
+/obj/item/gps/internal/base{
+	name = "scoophead beacon";
+	gps_tag = "SCOOP"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/cockpit)
+"xA" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"xL" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"xO" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"ye" = (
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "fire control hatch"
+	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	frequency = 1380;
+	master_tag = "courser_docker";
+	pixel_x = 24
+	},
+/obj/machinery/airlock_component/door_linker/indoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"zs" = (
+/turf/simulated/floor/wood,
+/area/shuttle/auto/named/cockpit)
+"AN" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"AR" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/auto_shuttle_start,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/cockpit)
+"Bd" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 8
+	},
+/obj/structure/cable/pink{
+	icon_state = "2-4";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"Bo" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 5
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/binoculars,
+/obj/item/binoculars,
+/obj/item/binoculars/spyglass,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"CH" = (
+/obj/machinery/door/blast/regular{
+	id = "trade2starboard"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"CN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/engine)
+"CS" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"De" = (
+/turf/simulated/wall/prepainted/exploration,
+/area/shuttle/auto/named/deck)
+"DA" = (
+/obj/structure/panic_button{
+	pixel_x = 32
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/cockpit)
+"DS" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"EJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"EU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"Fa" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/auto/named/cockpit)
+"FW" = (
+/obj/machinery/airlock_component/interface/shuttle/port/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"Gq" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/auto/named/engine)
+"GC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/item/tank/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"Hb" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/engine)
+"He" = (
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "fire control hatch"
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/airlock_component/door_linker/indoors/hardmapped,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/obj/machinery/airlock_peripheral/sensor/button/interior/hardmapped/south_mount,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"Hv" = (
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/item/hand_labeler,
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"HK" = (
+/turf/space/basic,
+/area/space)
+"IZ" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/cockpit)
+"Jl" = (
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Then have customer swipe their card. ";
+	dir = 8;
+	name = "Trader Register"
+	},
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/obj/structure/curtain/black,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"Jo" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"JQ" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/blast/regular{
+	id = "trade2port"
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"JX" = (
+/obj/structure/curtain/open/shower,
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/tiled/neutral,
+/area/shuttle/auto/named/cockpit)
+"Kk" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"Kp" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/obj/machinery/button/windowtint{
+	pixel_x = -19;
+	id = "scoophead_office"
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/auto/named/cockpit)
+"My" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"Nb" = (
+/obj/machinery/media/jukebox{
+	state_base = "darkjuke"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"Ng" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 6
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/cockpit)
+"Nk" = (
+/obj/structure/table/woodentable,
+/obj/structure/flora/pottedplant/tall{
+	pixel_y = 14;
+	pixel_x = 7
+	},
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/turf/simulated/floor/carpet/patterened/blue,
+/area/shuttle/auto/named/cockpit)
+"Op" = (
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/engine)
+"OA" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/storage/hooded/carp_costume,
+/obj/item/clothing/suit/storage/hooded/bee_costume,
+/obj/item/clothing/suit/storage/hooded/flash_costume,
+/obj/item/clothing/suit/storage/hooded/ian_costume,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"OP" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/poster{
+	pixel_x = 32
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/auto/named/cockpit)
+"OS" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"OT" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/cockpit)
+"OY" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/neutral,
+/area/shuttle/auto/named/cockpit)
+"Pe" = (
+/obj/effect/floor_decal/corner/red/border,
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"Qb" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4
+	},
+/obj/structure/closet/crate/secure{
+	name = "cigars crate";
+	req_access = list(160)
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"Qq" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 9
+	},
+/obj/structure/closet/secure_closet/guncabinet{
+	anchored = 1;
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/item/material/knife/machete/armblade,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"QX" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
+	},
+/obj/structure/cable/pink{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/auto/named/cockpit)
+"RC" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/engine)
+"RU" = (
+/obj/machinery/power/smes/buildable{
+	charge = 1.5e+007;
+	cur_coils = 3
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/pink{
+	icon_state = "0-8";
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"RV" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 10
+	},
+/obj/machinery/button/holosign{
+	id = "tradersign2";
+	pixel_x = -20
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "trade2starboard";
+	name = "Shop Shutters";
+	pixel_x = -29;
+	pixel_y = 6;
+	req_access = list(160)
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "trade2port";
+	name = "Shop Shutters";
+	pixel_x = -29;
+	pixel_y = -4;
+	req_access = list(160)
+	},
+/obj/machinery/airlock_component/controller/vacuum_cycle/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"Su" = (
+/obj/structure/shuttle_fuel_port{
+	pixel_x = -26
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"TL" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"TO" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/cockpit)
+"TS" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/engine)
+"Uf" = (
+/obj/machinery/computer/ship/engines,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/cockpit)
+"Up" = (
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/deck)
+"UM" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"Vq" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
+	},
+/obj/machinery/computer/shuttle_control,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/cockpit)
+"Wy" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet/patterened/red,
+/area/shuttle/auto/named/cockpit)
+"WT" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 9
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/structure/cable/pink{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"XT" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/shuttle_aligner/port/two_wide/left_aligned/south/primary,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_linker/preset/shuttle_main,
+/obj/machinery/airlock_peripheral/sensor/button/exterior/hardmapped/east_mount,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"Zj" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_access = list(160);
+	req_one_access = null
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/engine)
+"Zu" = (
+/obj/machinery/atmospherics/component/unary/heater{
+	dir = 8
+	},
+/obj/structure/cable/pink{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/auto/named/engine)
+"Zw" = (
+/obj/machinery/door/window/westleft{
+	name = "Storefront";
+	req_access = list(160);
+	dir = 2
+	},
+/obj/machinery/door/window/westleft{
+	name = "Storefront";
+	req_access = list(160);
+	dir = 1
+	},
+/obj/structure/table/woodentable,
+/obj/machinery/recharger,
+/obj/structure/curtain/black,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/auto/named/deck)
+"ZO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/wall/prepainted/command,
+/area/shuttle/auto/named/engine)
+
+(1,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(2,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(3,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(4,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(5,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+pY
+ge
+ge
+ge
+eB
+eB
+eB
+eB
+pY
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(6,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+ge
+ge
+dM
+xf
+es
+OY
+JX
+eB
+eB
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(7,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+ge
+Vq
+AR
+gr
+es
+uq
+zs
+hv
+ge
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(8,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+ge
+Uf
+DA
+Ng
+IZ
+hc
+lx
+Nk
+ge
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(9,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+eB
+eB
+es
+OT
+es
+dd
+es
+ge
+ge
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(10,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+pY
+TO
+ge
+QX
+Kp
+ar
+ge
+TO
+pY
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(11,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+pY
+TO
+ge
+kN
+Wy
+jo
+ge
+TO
+pY
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(12,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+pY
+TO
+ge
+QX
+Fa
+OP
+ge
+TO
+pY
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(13,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+hf
+De
+Up
+uk
+Up
+Up
+Up
+De
+ug
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(14,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+aU
+aU
+WT
+My
+Jo
+ye
+in
+aU
+aU
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(15,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+De
+Qq
+Pe
+Nb
+Up
+Up
+al
+FW
+ai
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(16,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+De
+OS
+ny
+hJ
+RV
+Zw
+oY
+xO
+XT
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(17,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+De
+ut
+rk
+hF
+TL
+Up
+kw
+He
+De
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(18,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+De
+Up
+nO
+Jl
+Hv
+aL
+gw
+hm
+De
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(19,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+CH
+pT
+tx
+AN
+xA
+xA
+CS
+bH
+rC
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(20,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+CH
+sW
+ny
+EU
+CS
+CS
+wq
+wI
+JQ
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(21,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+nS
+Bo
+xL
+OA
+vH
+eT
+Qb
+jP
+nS
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(22,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+ei
+Op
+Zj
+tK
+tK
+tK
+tK
+Hb
+ei
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(23,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+ei
+eA
+DS
+EJ
+ua
+UM
+Su
+GC
+ei
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(24,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+ei
+Bd
+Zu
+RU
+ph
+lo
+lo
+Kk
+ei
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(25,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+ei
+CN
+RC
+fP
+kT
+kT
+RC
+ZO
+ei
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(26,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+pY
+TS
+TS
+pY
+pY
+pY
+eL
+eL
+pY
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(27,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+pY
+Gq
+Gq
+pY
+pY
+pY
+Gq
+Gq
+pY
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(28,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(29,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+"}
+(30,1,1) = {"
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+HK
+"}

@@ -11,7 +11,7 @@
 /datum/prototype/role/ghostrole/sdf/Instantiate(client/C, atom/loc, list/params)
 	return ..()
 
-/datum/prototype/role/ghostrole/sdf/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/sdf/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created, "<i> ATTENTION : STANDING ORDERS SOLDIER ! MAKE SURE THE SECTOR IS SAFE ! YOU MAY USE THE INTERRUPTED-THE-SPEECH TO PATROL THE SECTOR ! MAKE SURE YOU RESPECT THE SOP ! AND FOR GOD SAKE, DONT MESS WITH CORPORATIONS AFFAIRS !</i>")
 
@@ -21,7 +21,7 @@
 /datum/ghostrole_instantiator/human/player_static/sdf/GetOutfit(client/C, mob/M, list/params)
 		return new /datum/outfit/sdf
 
-/obj/structure/ghost_role_spawner/sdf
+/obj/structure/role_spawner/sdf
 	name = "SDF Long-range Teleporter"
 	desc = "A teleporter made to link the ship with Miaphus."
 	icon = 'icons/obj/machines/teleporter.dmi'

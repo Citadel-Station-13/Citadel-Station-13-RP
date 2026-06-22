@@ -87,7 +87,7 @@ CREATE_WALL_MOUNTING_TYPES_SHIFTED_AUTOSPRITE(/obj/machinery/orbital_deployment_
 /obj/machinery/orbital_deployment_controller/proc/ui_signal_data()
 	. = list()
 
-	var/obj/overmap/entity/our_overmap_entity = get_overmap_sector(src)
+	var/obj/overmap/entity/our_overmap_entity = SSovermaps.get_enclosing_overmap_entity(src)
 	var/list/assembled_signals = list()
 
 	if(our_overmap_entity && linked_zone)
