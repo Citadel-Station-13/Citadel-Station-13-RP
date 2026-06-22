@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", VERB_CATEGORY_GAME, atom/target as null|obj|mob|turf in world)
+ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", ADMIN_CATEGORY_GAME, atom/target as null|obj|mob|turf in world)
 
 	var/use_global
 	var/datum/weakref/use_viewers
@@ -34,7 +34,7 @@ ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", 
 			target_name_descriptor = "(viewing [target])"
 			target_long_descriptor = "Narrate to everyone who can see '[target]' (currently at \the [get_area(target)])."
 
-	var/emit = tgui_input_text(invoking, target_long_descriptor, "Narrate to [target_name_descriptor]", "", 65535, TRUE, FALSE)
+	var/emit = tgui_input_text(user, target_long_descriptor, "Narrate to [target_name_descriptor]", "", 65535, TRUE, FALSE)
 	if(!emit)
 		return
 
@@ -81,15 +81,15 @@ ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", 
 			"<hr>",
 			"<center><span style='font-weight: bold; color: red;'>^^^ ERROR: The above was not sent; [reject] ^^^</span></center>",
 		)
-		to_chat(invoking, jointext(html, ""))
+		to_chat(user, jointext(html, ""))
 		return
 
 	var/list/view_target_to_list = list()
 	for(var/mob/viewing in targets)
 		view_target_to_list += "[key_name(viewing)]"
 	var/view_target_list = jointext(view_target_to_list, ", ")
-	message_admins("[key_name(invoking)] sent a [SPAN_TOOLTIP("[html_encode(emit)]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
-	log_admin("[key_name(invoking)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
+	message_admins("[key_name(user)] sent a [SPAN_TOOLTIP("[html_encode(emit)]", "global narrate")] to [SPAN_TOOLTIP("[view_target_list]", "[length(targets)] target(s)")].")
+	log_admin("[key_name(user)] sent a global narrate to [length(targets)] targets; VIEWERS: '[view_target_list]'', TEXT: '[emit]'")
 
 	for(var/mob/viewing in targets)
 		to_chat(viewing, emit)

@@ -6,6 +6,7 @@
 var/datum/controller/rogue/rm_controller
 
 /datum/controller/rogue
+	name = "Rogue Mining controller (Legacy)"
 	var/list/datum/rogue/zonemaster/all_zones = list()
 	var/list/datum/rogue/zonemaster/clean_zones = list()
 	var/list/datum/rogue/zonemaster/ready_zones = list()
