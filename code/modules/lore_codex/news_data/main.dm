@@ -104,14 +104,13 @@
 	humanity is put in true danger by the Moghes slaver menace."
 
 /datum/lore/codex/page/vetalans
-	name = "AD: Vetalans Syndrome: You are not alone."
-	data = "You don't know where you got it. You don't know why it had to be you. You wish you could enjoy food like you used to, you wish you didn't have \
-	to go to the doctor to get blood donations so often. You are not alone, Vetalans Syndrome effects more people every day. You may think you are a monster \
+	name = "AD: Vetalan Syndrome: You are not alone."
+	data = "You don't know where you got it. You don't know why it had to be you. You wish you could enjoy food like you used to. You are not alone, Vetalan Syndrome effects more people every day. You may think you are a monster \
 	that the thirst for blood makes you inhuman. Can you no longer stand having the lights on at home? You are not alone, we at the Vetalan Outreach Society know \
-	hard living with Vetalans Syndrome can be since we have been through it too. We know how you feel and we are here to help you live with you.\
+	hard living with Vetalan Syndrome can be since we have been through it too. We know how you feel and we are here to help you live with you.\
 	<br><br>\
-	Call us at 0530.1946.221.650.999 within participating systems to be contacted by one of our representatives. We can arrange free deliveries of bloodpacks, \
-	and complimentary examinations by doctors specialized in treating patients with Vetalans Syndrome. We can also put you in contact with support groups \
+	Call us at 0530.1946.221.650.999 within participating systems to be contacted by one of our representatives. We can arrange examinations by doctors specialized \
+	in treating patients with Vetalan Syndrome. We can also put you in contact with support groups \
 	and other Vetalans in your areas to make sure you are not suffering alone.\
 	<br><br>\
 	Remeber you are not alone, you are not a monster, you are alive, we can help you. Call Today."

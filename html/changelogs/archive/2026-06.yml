@@ -1,0 +1,41 @@
+2026-06-07:
+  TheLordME:
+  - bugfix: Minor missed tweak
+2026-06-08:
+  Shadowtail117:
+  - tweak: Added intercoms to the patient rooms in the NSV Endeavor's medical department.
+  - tweak: Adjusted the CMO's quarters in the NSV Endeavor.
+  - rscadd: Requests consoles will now transmit via their department's radio when
+      they have received a new message.
+  - rscadd: Added a new gas canister storage area to the NSV Endeavor's atmospherics.
+  - bugfix: Fixed a disconnected disposal chute in the NSV Endeavor's atmospherics.
+  - rscadd: Added another window to the Head of Personnel's office on the NSB Atlas.
+  - bugfix: Bows (and bow variants) no longer have safeties that need to be toggled.
+  timothyteakettle:
+  - bugfix: fixes zaddats not spawning in with the correct survival gear
+2026-06-12:
+  GySgtMurphy:
+  - rscdel: most advanced medicines from scorian crops
+  - rscadd: replaced said medicines with safer, less effective "herbal" versions,
+      several of those reagents have other uses in making cloth and food
+  - rscadd: the herbal medicines can be made into the old medicines by combining them
+      with "catalyst" a new reagent made from elder stones
+  - rscadd: adds a new surt mob (spawn points for it are coded in but will need to
+      be added in by mappers)
+  - rscadd: most ores can be ground
+  - code_imp: changed most alchemy recipes that made items into crafts
+  - rscadd: added an alchemy crafting category
+  - bugfix: fixed the soaked hairless hide recipe
+  Shadowtail117:
+  - tweak: Integrated circuits can no longer use their signaling components to communicate
+      with other integrated circuits across maps.
+2026-06-22:
+  Shadowtail117:
+  - bugfix: Fixed grower pods not accepting bottles of biomass.
+  - bugfix: Fixed being unable to use the mirror tool to directly put mirrors into
+      machines.
+  - bugfix: The air alarm in the NSV Endeavor's tool storage is no longer set to 2
+      degrees.
+  - tweak: The NSV Endeavor's pilot office now has a built-in fax machine.
+  TheLordME:
+  - rscadd: Added Pride-Pins

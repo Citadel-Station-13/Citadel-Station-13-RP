@@ -125,7 +125,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
 
   const windowProps: WindowProps = {
     title: data.latheName,
-    width: 1100,
+    width: 1200,
     height: 700,
   };
 
@@ -410,7 +410,7 @@ const LatheQueued = (props: LatheQueuedProps) => {
       color="transparent"
       title={
         <>
-          {`${props.entry.amount}x ${props.design !== undefined ? props.design.name : "Error - Design Unloaded"}`}
+          {`${props.entry.amount}x ${props.design !== undefined ? props.design.truncated_name : "Error - Design Unloaded"}`}
           {progressRender}
         </>
       }

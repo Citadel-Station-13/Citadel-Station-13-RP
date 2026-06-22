@@ -555,8 +555,7 @@ Add those other swinging traps you mentioned above!
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
 		var/obj/item/organ/external/target = M.get_organ(selected)
-		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
-		target.droplimb()
+		target.inflict_bodypart_damage(damage, 0, DAMAGE_MODE_SHARP | DAMAGE_MODE_SHRED, "spinning saw blade")
 		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
 						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
 
@@ -611,8 +610,7 @@ if (istype(AM, /mob/living))
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
 		var/obj/item/organ/external/target = M.get_organ(selected)
-		M.apply_damage(damage, DAMAGE_TYPE_BRUTE)
-		target.droplimb()
+		target.inflict_bodypart_damage(damage, 0, DAMAGE_MODE_SHARP | DAMAGE_MODE_SHRED, "spinning saw blade")
 		M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
 						"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
 

@@ -31,6 +31,9 @@
 
 /// Maximum light_range before forced to always queue instead of using sync updates. Setting this too high will cause server stutter with moving large lights.
 #define LIGHTING_MAXIMUM_INSTANT_RANGE 8
+#define LIGHTING_HARD_MAXIMUM_RANGE 128	//! Light ranges equal to or above this are ignored, we can't render them anyway.
+#define LIGHTING_SOFT_MAXIMUM_RANGE 64	//! Light ranges equal to or above this emit a runtime but are still allowed.
+#define LIGHTING_SOFT_MAXIMUM_POWER 10	//! Light powers equal to or above this emit a runtime but are still allowed.
 
 /**
  * Mostly identical to below, but doesn't make sure T is valid first.

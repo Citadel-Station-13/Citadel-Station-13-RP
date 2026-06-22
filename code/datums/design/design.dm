@@ -143,6 +143,7 @@
 /datum/prototype/design/proc/ui_data_list()
 	return list(
 		"name" = name,
+		"truncated_name" = length(name) <= 18 ? name : copytext(name, 1, 19) + "..",
 		"desc" = desc,
 		"id" = id,
 		"work" = work,

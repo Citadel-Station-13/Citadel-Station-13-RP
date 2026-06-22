@@ -24,6 +24,8 @@
 	base_color = "#373652"
 	blood_color = "#3c6d45"
 
+	reagent_tag = IS_SCORI
+
 	max_age = 200
 
 	galactic_language = FALSE

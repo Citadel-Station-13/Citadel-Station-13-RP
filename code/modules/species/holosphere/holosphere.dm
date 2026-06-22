@@ -163,8 +163,10 @@
 
 // hotfix: they're synthetic without synthetic parts, oops!
 /datum/species/shapeshifter/holosphere/get_blood_colour(mob/living/carbon/human/H)
-	if(H)
-		return blood_color
+	return blood_color
+
+/datum/species/shapeshifter/holosphere/get_blood_name(mob/living/carbon/human/H)
+	return "coolant"
 
 /datum/species/shapeshifter/holosphere/get_valid_shapeshifter_forms()
 	return list(

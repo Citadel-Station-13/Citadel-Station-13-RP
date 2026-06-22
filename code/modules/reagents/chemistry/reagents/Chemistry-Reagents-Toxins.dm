@@ -1067,6 +1067,9 @@
  * Now scannable! Removed with shockchems!
  */
 
+/datum/reagent/nanite
+	abstract_type = /datum/reagent/nanite
+
 /datum/reagent/nanite/shredding
 	name = "Shredding Nanites"
 	id = "shredding_nanites"

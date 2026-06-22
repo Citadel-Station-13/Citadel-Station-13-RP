@@ -356,7 +356,8 @@
 	name = "Bronze Wrench"
 	result = /obj/item/tool/wrench/bronze
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 3,
+	reqs = list(/obj/item/stack/material/copper = 3,
+				/obj/item/stack/material/bone = 3,
 				/obj/item/stack/sinew = 1
 				)
 	category = CAT_PRIMAL
@@ -536,6 +537,49 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
+/datum/crafting_recipe/drying_kiln
+	name = "Bone Drying Kiln"
+	result = /obj/machinery/smartfridge/drying_rack/ashlander
+	time = 60
+	reqs = list(/obj/item/stack/material/bone = 10,
+				/obj/item/stack/material/sandstone = 10,
+				/obj/item/pen/charcoal = 3
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/primitive_press
+	name = "Primitive Press"
+	result = /obj/machinery/seed_extractor/press
+	time = 60
+	reqs = list(/obj/item/stack/material/sandstone = 10,
+				/obj/item/stack/rods = 10
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/brick_press
+	name = "Brick Press"
+	result = /obj/structure/ashlander/production/brickmaker
+	time = 60
+	reqs = list(/obj/item/stack/material/sandstone = 10,
+				/obj/item/stack/rods = 5
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/advanced_alchemy_station
+	name = "Advanced Alchemical Station"
+	result = /obj/machinery/chem_master/ashlander
+	time = 120
+	reqs = list(/obj/item/stack/material/bone = 10,
+				/obj/item/stack/sinew = 5,
+				/obj/item/elderstone = 2,
+				/obj/item/reagent_containers/glass/stone = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
 /datum/crafting_recipe/goliath_mining_satchel
 	name = "Goliath Hide Mining Satchel"
 	result = /obj/item/storage/bag/ore/ashlander
@@ -575,17 +619,18 @@
 	name = "Coarse Tunic"
 	result = /obj/item/clothing/under/tribal_tunic/ashlander
 	time = 60
-	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4
-				)
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2,
+		/datum/reagent/shimashpulp = 30)
 	category = CAT_PRIMAL
 	always_available = FALSE
+	tools = list(TOOL_WIRECUTTER) // todo: add weaving tools
 
 /datum/crafting_recipe/ashlander_tunic_fem
 	name = "Coarse Tunic (female)"
 	result = /obj/item/clothing/under/tribal_tunic_fem/ashlander
 	time = 60
-	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4
-				)
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2,
+		/datum/reagent/shimashpulp = 30)
 	category = CAT_PRIMAL
 	always_available = FALSE
 	tools = list(TOOL_WIRECUTTER)
@@ -651,7 +696,7 @@
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,
 				/obj/item/elderstone = 1)
-	category = CAT_PRIMAL
+	category = CAT_ALCHEMY
 	always_available = FALSE
 
 /datum/crafting_recipe/heaven_shaker_frag
@@ -662,7 +707,7 @@
 				/obj/item/condensedphlogiston = 3,
 				/obj/item/stack/ore/slag = 2,
 				/obj/item/elderstone = 1)
-	category = CAT_PRIMAL
+	category = CAT_ALCHEMY
 	always_available = FALSE
 
 /datum/crafting_recipe/goliathcowl
@@ -735,11 +780,51 @@
 	tools = list(TOOL_WIRECUTTER)
 
 //Make this one cloth once I give Ashies a cloth plant? If I do??
+//Using shimash pulp as standin for cloth
 /datum/crafting_recipe/ashlander_wraps
 	name = "Hide Footwraps"
 	result = /obj/item/clothing/shoes/footwraps
 	time = 10
-	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2)
+	reqs = list(/datum/reagent/shimashpulp = 15)
 	category = CAT_PRIMAL
 	always_available = FALSE
-	tools = list(TOOL_WIRECUTTER)
+
+/datum/crafting_recipe/primitivesoap
+	name = "Primitive Soap"
+	result = /obj/item/soap/primitive
+	time = 10
+	reqs = list(/datum/reagent/nutriment/triglyceride/oil/tallow = 1, /datum/reagent/water = 1, /datum/reagent/ash_powder = 1)
+	category = CAT_ALCHEMY
+	always_available = FALSE
+
+/datum/crafting_recipe/condensedphlogiston
+	name = "Condensed Phlogiston"
+	result = /obj/item/condensedphlogiston
+	time = 10
+	reqs = list(/datum/reagent/phlogiston = 5, /datum/reagent/ash_powder = 5, /datum/reagent/alchemybase = 3)
+	category = CAT_ALCHEMY
+	always_available = FALSE
+
+/datum/crafting_recipe/bitterash
+	name = "Bitter Ash Poultice"
+	result = /obj/item/bitterash
+	time = 10
+	reqs = list(/datum/reagent/nicotine = 5, /datum/reagent/ash_powder = 5, /datum/reagent/alchemybase = 3)
+	category = CAT_ALCHEMY
+	always_available = FALSE
+
+/datum/crafting_recipe/charcoal_stick
+	name = "Charcoal Stick"
+	result = /obj/item/pen/charcoal
+	time = 10
+	reqs = list(/datum/reagent/nutriment/triglyceride/oil/tallow = 1, /datum/reagent/alchemybase = 1, /datum/reagent/ash_powder = 1) // Changing to refliect original recipe better
+	category = CAT_ALCHEMY
+	always_available = FALSE
+
+/datum/crafting_recipe/ritual_chalk
+	name = "Chalk"
+	result = /obj/item/pen/crayon/chalk
+	time = 10
+	reqs = list(/datum/reagent/nutriment/triglyceride/oil/tallow = 1, /datum/reagent/alchemybase = 1, /datum/reagent/calcium = 1)
+	category = CAT_ALCHEMY
+	always_available = FALSE

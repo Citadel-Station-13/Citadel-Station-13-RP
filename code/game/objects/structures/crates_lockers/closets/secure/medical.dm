@@ -44,7 +44,8 @@
 		/obj/item/clothing/under/rank/nursesuit,
 		/obj/item/clothing/head/nursehat,
 		/obj/item/gps/medical,
-		/obj/item/storage/box/freezer = 3)
+		/obj/item/storage/box/freezer = 3,
+		/obj/item/clothing/glasses/hud/health)
 
 /obj/structure/closet/secure_closet/medical3/Initialize(mapload)
 	if(prob(50))
