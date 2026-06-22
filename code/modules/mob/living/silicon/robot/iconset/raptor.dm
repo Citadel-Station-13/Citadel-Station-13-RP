@@ -17,24 +17,20 @@
 	icon_state = "gravekeeper"
 	icon_state_indicator = "indicator"
 
-/datum/prototype/robot_iconset/raptor/gravekeeper
+/datum/prototype/robot_iconset/raptor/lost
 	icon_state = "lost"
 	icon_state_indicator = "indicator"
 
-/datum/prototype/robot_iconset/raptor/lost
+/datum/prototype/robot_iconset/raptor/service
 	icon_state = "service"
 	icon_state_indicator = "indicator"
 
-/datum/prototype/robot_iconset/raptor/service
+/datum/prototype/robot_iconset/raptor/security
 	icon_state = "security"
 	icon_state_indicator = "indicator"
 
-/datum/prototype/robot_iconset/raptor/security
-	icon_state = "mining"
-	icon_state_indicator = "indicator"
-
 /datum/prototype/robot_iconset/raptor/mining
-	icon_state = "medical"
+	icon_state = "mining"
 	icon_state_indicator = "indicator"
 
 /datum/prototype/robot_iconset/raptor/medical
