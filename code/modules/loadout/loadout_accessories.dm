@@ -55,6 +55,22 @@
 		ties[initial(tie_type.name)] = tie_type
 	tweaks += new/datum/loadout_tweak/path(tim_sort(ties, GLOBAL_PROC_REF(cmp_text_asc)))
 
+/datum/loadout_entry/accessory/pronounpin
+	name = "Pronoun plate"
+	path = /obj/item/clothing/accessory/pridepronoun
+
+/datum/loadout_entry/accessory/pride
+	name = "Pride - Selection"
+	path = /obj/item/clothing/accessory/pridepin
+
+/datum/loadout_entry/accessory/pride/New()
+	..()
+	var/list/pins = list()
+	for(var/pin in typesof(/obj/item/clothing/accessory/pridepin))
+		var/obj/item/clothing/accessory/pridepin = pin
+		pins[initial(pridepin.name)] = pridepin
+	tweaks += new/datum/loadout_tweak/path(tim_sort(pins, GLOBAL_PROC_REF(cmp_text_asc)))
+
 /datum/loadout_entry/accessory/scarf
 	name = "Scarf - Selection"
 	path = /obj/item/clothing/accessory/scarf

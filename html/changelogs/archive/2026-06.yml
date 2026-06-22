@@ -29,3 +29,13 @@
   Shadowtail117:
   - tweak: Integrated circuits can no longer use their signaling components to communicate
       with other integrated circuits across maps.
+2026-06-22:
+  Shadowtail117:
+  - bugfix: Fixed grower pods not accepting bottles of biomass.
+  - bugfix: Fixed being unable to use the mirror tool to directly put mirrors into
+      machines.
+  - bugfix: The air alarm in the NSV Endeavor's tool storage is no longer set to 2
+      degrees.
+  - tweak: The NSV Endeavor's pilot office now has a built-in fax machine.
+  TheLordME:
+  - rscadd: Added Pride-Pins

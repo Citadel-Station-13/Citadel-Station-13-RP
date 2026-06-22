@@ -308,6 +308,24 @@
 			clickchain.performer.put_in_hands_or_drop(mirror)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	if(istype(using, /obj/item/mirrortool))
+		var/obj/item/mirrortool/mirrortool = using
+		if(!mirrortool.inserted_mirror)
+			clickchain.chat_feedback(
+				SPAN_WARNING("\The [using] does not have a mirror in it."),
+				target = src
+			)
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		if(do_after(clickchain.performer, 1 SECOND, src))
+			if(!mirrortool.inserted_mirror)
+				return
+			var/obj/item/organ/internal/mirror/mirror = mirrortool.remove_mirror(src)
+			insert_mirror(mirror)
+			clickchain.chat_feedback(
+				SPAN_NOTICE("You line up \the [mirrortool] with \the [src]'s port and inject its mirror."),
+				target = src
+			)
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	if(istype(using, /obj/item/disk/data))
 		if(inserted_disk)
 			clickchain.chat_feedback(
