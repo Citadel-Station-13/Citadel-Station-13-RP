@@ -37,10 +37,10 @@
 	var/world_faction_id = /datum/world_faction/corporation/nanotrasen::id
 
 /datum/map/station/validate(for_load, list/out_errors)
-	if(world_width % TURF_CHUNK_RESOLUTION != 0)
-		out_errors += "[src]: world_width ([world_width]) is not a multiple of TURF_CHUNK_RESOLUTION ([TURF_CHUNK_RESOLUTION])"
+	if(world_width % TURF_ALIGNMENT != 0)
+		out_errors += "[src]: world_width ([world_width]) is not a multiple of TURF_ALIGNMENT ([TURF_ALIGNMENT])"
 		. = FALSE
-	if(world_height % TURF_CHUNK_RESOLUTION != 0)
-		out_errors += "[src]: world_height ([world_height]) is not a multiple of TURF_CHUNK_RESOLUTION ([TURF_CHUNK_RESOLUTION])"
+	if(world_height % TURF_ALIGNMENT != 0)
+		out_errors += "[src]: world_height ([world_height]) is not a multiple of TURF_ALIGNMENT ([TURF_ALIGNMENT])"
 		. = FALSE
 	. = ..() && .

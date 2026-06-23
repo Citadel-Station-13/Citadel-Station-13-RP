@@ -13,13 +13,12 @@
 #define BLANK_TURF_TYPE /turf/space
 #define BLANK_AREA_TYPE /area/space
 
-
 /// Turf chunk resolution
 ///
 /// * this is the most granular a turf reservation alloc can be (e.g. 8x8 for '8')
 /// * this is the resolution of spatial gridmaps. why? this way spatial queries are aligned and super fast.
 /// * World maxx/maxy must be a multiple of this.
-#define TURF_CHUNK_RESOLUTION 8
+#define TURF_ALIGNMENT 8
 
 /// Z-Level border
 ///

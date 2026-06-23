@@ -58,7 +58,7 @@
 /datum/jigsaw_generation/proc/get_tile_height()
 	return src.height * src.alignment
 
-// var/idx = ceil(root.x / TURF_CHUNK_RESOLUTION) + grid_width * (ceil(root.y / TURF_CHUNK_RESOLUTION) - 1)
+// var/idx = ceil(root.x / TURF_ALIGNMENT) + grid_width * (ceil(root.y / TURF_ALIGNMENT) - 1)
 
 #warn impl
 

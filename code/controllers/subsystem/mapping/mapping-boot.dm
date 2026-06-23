@@ -71,12 +71,12 @@
 		init_width = instance.world_width
 		init_height = instance.world_height
 
-	if(init_width % TURF_CHUNK_RESOLUTION != 0 || init_height % TURF_CHUNK_RESOLUTION != 0)
-		stack_trace("Station [instance] ([instance.id]) has world dimensions that are not a multiple of TURF_CHUNK_RESOLUTION ([TURF_CHUNK_RESOLUTION]). \
-		Stations must have world dimensions that are a multiple of TURF_CHUNK_RESOLUTION. Automatically aligning upwards.")
+	if(init_width % TURF_ALIGNMENT != 0 || init_height % TURF_ALIGNMENT != 0)
+		stack_trace("Station [instance] ([instance.id]) has world dimensions that are not a multiple of TURF_ALIGNMENT ([TURF_ALIGNMENT]). \
+		Stations must have world dimensions that are a multiple of TURF_ALIGNMENT. Automatically aligning upwards.")
 
-		init_width = CEILING(init_width, TURF_CHUNK_RESOLUTION)
-		init_height = CEILING(init_height, TURF_CHUNK_RESOLUTION)
+		init_width = CEILING(init_width, TURF_ALIGNMENT)
+		init_height = CEILING(init_height, TURF_ALIGNMENT)
 
 	// bootstrap
 	bootstrap_world(

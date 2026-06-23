@@ -16,7 +16,7 @@
 	initialize_reservation_level(level_struct.z_index)
 	reservation_levels |= level_struct.z_index
 	// make a list with a predetermined size for the lookup
-	reservation_spatial_lookups[level_struct.z_index] = new /list(ceil(world.maxx / TURF_CHUNK_RESOLUTION) * ceil(world.maxy / TURF_CHUNK_RESOLUTION))
+	reservation_spatial_lookups[level_struct.z_index] = new /list(ceil(world.maxx / TURF_ALIGNMENT) * ceil(world.maxy / TURF_ALIGNMENT))
 	return level_struct.z_index
 
 /**
@@ -71,7 +71,7 @@
  * @return turf reservation someone's in, or null if they're not in a reservation
  */
 /datum/controller/subsystem/mapping/proc/get_turf_reservation(atom/where)
-	return reservation_spatial_lookups[get_z(where)]?[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]
+	return reservation_spatial_lookups[get_z(where)]?[ceil(where.x / TURF_ALIGNMENT) + (ceil(where.y / TURF_ALIGNMENT) - 1) * ceil(world.maxx / TURF_ALIGNMENT)]
 
 /area/reservation_unused
 	name = "Unallocated Reservation Area"
