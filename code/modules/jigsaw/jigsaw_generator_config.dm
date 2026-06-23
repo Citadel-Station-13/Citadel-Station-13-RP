@@ -1,6 +1,30 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
+/datum/jigsaw_generator_config
+	var/tile_budget = 0
+	var/list/custom_budgets = list()
+
+	/**
+	 * Set to override auto-marker settings. Otherwise, this uses
+	 * the map's auto-marker config.
+	 */
+	var/datum/turf_auto_marker_config/auto_marker_config
+
+/datum/jigsaw_spawn_resultant_config
+
+/datum/jigsaw_spawn_config
+
+/datum/jigsaw_spawn_config/proc/get_resultant_config() as /datum/jigsaw_spawn_resultant_config
+	return new /datum/jigsaw_spawn_resultant_config
+
+/datum/jigsaw_spawn_config/specific
+
+/datum/jigsaw_spawn_config/specific/get_resultant_config()
+	var/datum/jigsaw_spawn_resultant_config/result = new
+
+	return result
+
 /datum/jigsaw_template_resultant_config
 	/// alignment
 	/// * this is minimum dimensions (width and height); width and height of

@@ -17,6 +17,20 @@
 		"default" = 1,
 	)
 
+	var/emplaced = FALSE
+
+/obj/map_helper/fixed_template_seeding_target/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
+	..()
+	map_context?.collected_fixed_template_seeding_targets += src
+
+/obj/map_helper/fixed_template_seeding_target/proc/emplace_template(datum/map_template/template, datum/dmm_context/context)
+	SHOULD_NOT_OVERRIDE(TRUE)
+
+	emplaced = TRUE
+	do_emplace_template(template, context)
+
+/obj/map_helper/fixed_template_seeding_target/proc/do_emplace_template(datum/map_template/template, datum/dmm_context/context)
+	PROTECTED_PROC(TRUE)
 #warn impl
 
 /obj/map_helper/fixed_template_seeding_target/corner_aligned

@@ -31,13 +31,43 @@
 #warn impl
 
 /datum/map_injection/fixed_template_seeding/on_map_pre_init(datum/map_context/map_context, datum/dmm_context/dmm_context)
-	. = ..()
+	..()
+
+	var/list/obj/map_helper/fixed_template_seeding_target/not_emplaced = map_context?.collected_fixed_template_seeding_targets.Copy()
+	var/list/obj/map_helper/fixed_template_seeding_target/emplace_templates = list()
+
+	for(var/datum/fixed_template_seeding_single/require_single in shuffle(src.require))
+		if(!length(not_emplaced))
+			stack_trace("Failed to assign required template '[require_single]' for injection [src] ([REF(src)]) (no more targets).")
+			break
+
+		var/datum/fixed_template_seeding_single/require_amount = src.require[require_single]
+		for(var/i in 1 to require_amount)
+			if(!require_single.attempt_assign(not_emplaced, emplace_templates))
+				// TODO: better error handling
+				stack_trace("Failed to assign required template '[require_single]' for injection [src] ([REF(src)]) (failed on [i] / [require_amount]).")
+				break
+
+	for(var/datum/fixed_template_seeding_single/push_single in shuffle(src.push))
+		if(!length(not_emplaced))
+			break
+
+		var/datum/fixed_template_seeding_single/push_amount = src.push[push_single]
+		for(var/i in 1 to push_amount)
+			if(!push_single.attempt_assign(not_emplaced, emplace_templates))
+				// TODO: better error handling
+				break
+
+	if(length(not_emplaced))
 #warn impl
 
 /datum/fixed_template_seeding_single
 	/// template-like associated to tag
 	/// * /datum/map_template_random accepted as well.
 	var/list/templates = list()
+
+/datum/fixed_template_seeding_single/proc/attempt_assign(list/obj/map_helper/fixed_template_seeding_target/pull_from, list/obj/map_helper/fixed_template_seeding_target/assign_into)
+	#warn impl
 
 /**
  * Just to namespace map-specific from polluting types.

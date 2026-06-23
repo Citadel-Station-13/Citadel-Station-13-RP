@@ -72,7 +72,7 @@
 
 /datum/jigsaw_generator/proc/generate_impl_emplace_grid(datum/jigsaw_generation/generation, datum/jigsaw_template_resultant_config/templates)
 	// place templates down
-	for(var/datum/jigsaw_generation_enqueued/placement in generation.enqueued)
+	for(var/datum/jigsaw_buffer_enqueued/placement in generation.enqueued)
 		var/datum/jigsaw_template/template = placement.template
 		var/datum/dmm_context/context = new
 		#warn impl context stuff

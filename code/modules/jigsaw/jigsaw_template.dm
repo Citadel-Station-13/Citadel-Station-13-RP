@@ -3,17 +3,20 @@
 
 GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 
-/proc/fetch_cached_jigsaw_template(datum/jigsaw_template/path)
-	if(istype(path))
-		return path
-	else if(isnull(path))
+/proc/fetch_cached_jigsaw_template(datum/jigsaw_template/resolvable)
+	if(istype(resolvable))
+		return resolvable
+	else if(isnull(resolvable))
 		return null
 
-	if(GLOB.jigsaw_template_cache[path])
-		return GLOB.jigsaw_template_cache[path]
+	if(GLOB.jigsaw_template_cache[resolvable])
+		return GLOB.jigsaw_template_cache[resolvable]
 
-	var/datum/jigsaw_template/template = new path
-	GLOB.jigsaw_template_cache[path] = template
+	if(!ispath(resolvable))
+		return null
+
+	var/datum/jigsaw_template/template = new resolvable
+	GLOB.jigsaw_template_cache[resolvable] = template
 
 	return template
 
@@ -56,6 +59,11 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	/// * appended to the jigsaw generator's name for area names
 	var/display_name
 
+	/**
+	 * List of budget entries that must be consuemd to place us.
+	 */
+	var/list/custom_budgets = list()
+
 	/// parsed map if held
 	var/datum/dmm_parsed/parsed
 
@@ -71,16 +79,43 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	parsed = new(path)
 
 /datum/jigsaw_template/override
+	name = null
+	path = null
+	alignment = null
+
+	offset_x = null
+	offset_y = null
+
+	display_name = null
+
+	custom_budgets = null
+
 	/**
 	 * * Can be path, instance, or ID.
 	 * * (ID isn't implemented yet.)
 	 */
 	var/datum/jigsaw_template/template
 
-/datum/jigsaw_template/override/proc/prepare()
+/datum/jigsaw_template/override/prepare()
 	var/datum/jigsaw_template/resolved = fetch_cached_jigsaw_template(template)
 	if(!resolved)
 		CRASH("Invalid template override: [template]")
 	resolved.prepare()
 
-	//
+	if(isnull(src.name))
+		src.name = resolved.name
+	if(isnull(src.path))
+		src.path = resolved.path
+	if(isnull(src.alignment))
+		src.alignment = resolved.alignment
+
+	if(isnull(src.offset_x))
+		src.offset_x = resolved.offset_x
+	if(isnull(src.offset_y))
+		src.offset_y = resolved.offset_y
+
+	if(isnull(src.display_name))
+		src.display_name = resolved.display_name
+
+	if(isnull(src.custom_budgets))
+		src.custom_budgets = resolved.custom_budgets.Copy()
