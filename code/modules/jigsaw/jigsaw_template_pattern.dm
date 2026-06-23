@@ -2,6 +2,7 @@
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
 /datum/jigsaw_template_pattern
+	var/override_tile_cost = null
 
 /datum/jigsaw_template_pattern/proc/get_pattern() as /datum/jigsaw_pattern
 	return new /datum/jigsaw_pattern(0, 0)

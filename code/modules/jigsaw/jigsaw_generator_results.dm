@@ -4,5 +4,7 @@
 /datum/jigsaw_generator_results
 	var/approximate_ms_used = 0
 	var/list/datum/jigsaw_template/placed_counts = list()
+	var/tile_budget_used = 0
+	var/list/custom_budgets_used = list()
 
 #warn impl
