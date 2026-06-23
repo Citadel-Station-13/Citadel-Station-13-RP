@@ -15,6 +15,8 @@
 	)
 	width = 192
 	height = 192
+	world_width = 192
+	world_height = 192
 	dependencies = list(
 		/datum/map/centcom/nts_demeter,
 	)

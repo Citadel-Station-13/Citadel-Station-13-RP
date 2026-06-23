@@ -37,33 +37,63 @@
 	allocate_reserved_level()
 
 /datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance)
+	// pull next map if needed
 	if(isnull(instance))
 		if(isnull(next_station))
 			read_next_map()
 		instance = next_station
+
+	// failed? get a random prod-ready map
 	if(isnull(instance))
 		var/list/datum/map/station/valid = list()
 		for(var/id in keyed_maps)
 			var/datum/map/station/map = keyed_maps[id]
 			if(!istype(map, /datum/map/station))
 				continue
-			if(!map.allow_random_draw)
+			if(!map.production_ready)
 				continue
 			valid += map
 		instance = pick(valid)
+
+	// requires
 	ASSERT(istype(instance))
 	ASSERT(isnull(loaded_station))
 	ASSERT(!initialized)
 	ASSERT(!world_is_loaded)
+
+	// calc size
+	var/init_width = instance.world_width
+	var/init_height = instance.world_height
+
+	if(init_width != instance.world_width || init_height != instance.world_height)
+		stack_trace("Station [instance] ([instance.id]) had mismatch width/height (map [init_width]x[init_height] vs declared world [instance.world_width]x[instance.world_height]). \
+		Stations should have the same width/height as the world.")
+		init_width = instance.world_width
+		init_height = instance.world_height
+
+	if(init_width % TURF_CHUNK_RESOLUTION != 0 || init_height % TURF_CHUNK_RESOLUTION != 0)
+		stack_trace("Station [instance] ([instance.id]) has world dimensions that are not a multiple of TURF_CHUNK_RESOLUTION ([TURF_CHUNK_RESOLUTION]). \
+		Stations must have world dimensions that are a multiple of TURF_CHUNK_RESOLUTION. Automatically aligning upwards.")
+
+		init_width = CEILING(init_width, TURF_CHUNK_RESOLUTION)
+		init_height = CEILING(init_height, TURF_CHUNK_RESOLUTION)
+
 	// bootstrap
-	bootstrap_world(max(instance.world_width, instance.width), max(instance.world_height, instance.height))
+	bootstrap_world(
+		init_width,
+		init_height,
+	)
+
 	// mark
 	world_is_loaded = TRUE
 	loaded_station = instance
+
 	// pick gateway level - this must happen after the station is picked as it's added to the lateload list
 	createRandomGatewayLevel()
+
 	// load
 	load_map(instance, TRUE)
+
 	return TRUE
 
 /datum/controller/subsystem/mapping/proc/write_next_map(datum/map/station/next)
@@ -143,7 +173,7 @@
 		if(!istype(checking))
 			// not a station map
 			continue
-		if(!checking.allow_random_draw)
+		if(!checking.production_ready)
 			continue
 		potential += checking
 	return SAFEPICK(potential)
