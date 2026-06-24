@@ -7,7 +7,21 @@
 	#error jigsaw maps were designed for 8x8 alignment. if you change this, rework .. everything?
 #endif
 
-// Common match / require / exclude tags
+//* Priorities *//
+
+/**
+ * Set this if your templates should yield to other templates.
+ */
+#define JIGSAW_PRIORITY_YIELD_OTHERS -100
+
+#define JIGSAW_PRIORITY_DEFAULT 0
+
+/**
+ * Set this if your templates should trample over other templates.
+ */
+#define JIGSAW_PRIORITY_TRAMPLE_OTHERS 100
+
+//* Common match / require / exclude tags *//
 
 /**
  * This means;

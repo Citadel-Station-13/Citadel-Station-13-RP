@@ -43,8 +43,11 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	/// * generations must only use templates with the same alignment.
 	/// * templates are emplaced with one tile of overlap for their alignment.
 	var/alignment = 8
-
-
+	/// load priority
+	/// * lower loads first, so anything with walls that are meant
+	///   to be joinable via trampling should be lower priority
+	/// * anything trampling over other templates should be higher priority
+	var/priority = JIGSAW_PRIORITY_DEFAULT
 
 	/// pattern
 	var/datum/jigsaw_template_pattern/pattern

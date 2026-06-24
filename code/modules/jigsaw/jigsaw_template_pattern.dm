@@ -57,15 +57,19 @@
 	height = 1
 
 	var/list/south_match
+	var/list/south_require
 	var/list/south_exclude
 
 	var/list/north_match
+	var/list/north_require
 	var/list/north_exclude
 
 	var/list/east_match
+	var/list/east_require
 	var/list/east_exclude
 
 	var/list/west_match
+	var/list/west_require
 	var/list/west_exclude
 
 /datum/jigsaw_template_pattern/rect/s_2x2
@@ -73,31 +77,43 @@
 	height = 2
 
 	var/list/south_match
+	var/list/south_require
 	var/list/south_exclude
 	var/list/south_left_match
+	var/list/south_left_require
 	var/list/south_left_exclude
 	var/list/south_right_match
+	var/list/south_right_require
 	var/list/south_right_exclude
 
 	var/list/north_match
+	var/list/north_require
 	var/list/north_exclude
 	var/list/north_left_match
+	var/list/north_left_require
 	var/list/north_left_exclude
 	var/list/north_right_match
+	var/list/north_right_require
 	var/list/north_right_exclude
 
 	var/list/east_match
+	var/list/east_require
 	var/list/east_exclude
 	var/list/east_top_match
+	var/list/east_top_require
 	var/list/east_top_exclude
 	var/list/east_bottom_match
+	var/list/east_bottom_require
 	var/list/east_bottom_exclude
 
 	var/list/west_match
+	var/list/west_require
 	var/list/west_exclude
 	var/list/west_top_match
+	var/list/west_top_require
 	var/list/west_top_exclude
 	var/list/west_bottom_match
+	var/list/west_bottom_require
 	var/list/west_bottom_exclude
 
 /datum/jigsaw_template_pattern/rect/s_3x3
@@ -105,37 +121,53 @@
 	height = 3
 
 	var/list/south_match
+	var/list/south_require
 	var/list/south_exclude
 	var/list/south_left_match
+	var/list/south_left_require
 	var/list/south_left_exclude
 	var/list/south_middle_match
+	var/list/south_middle_require
 	var/list/south_middle_exclude
 	var/list/south_right_match
+	var/list/south_right_require
 	var/list/south_right_exclude
 
 	var/list/north_match
+	var/list/north_require
 	var/list/north_exclude
 	var/list/north_left_match
+	var/list/north_left_require
 	var/list/north_left_exclude
 	var/list/north_middle_match
+	var/list/north_middle_require
 	var/list/north_middle_exclude
 	var/list/north_right_match
+	var/list/north_right_require
 	var/list/north_right_exclude
 
 	var/list/east_match
+	var/list/east_require
 	var/list/east_exclude
 	var/list/east_top_match
+	var/list/east_top_require
 	var/list/east_top_exclude
 	var/list/east_middle_match
+	var/list/east_middle_require
 	var/list/east_middle_exclude
 	var/list/east_bottom_match
+	var/list/east_bottom_require
 	var/list/east_bottom_exclude
 
 	var/list/west_match
+	var/list/west_require
 	var/list/west_exclude
 	var/list/west_top_match
+	var/list/west_top_require
 	var/list/west_top_exclude
 	var/list/west_middle_match
+	var/list/west_middle_require
 	var/list/west_middle_exclude
 	var/list/west_bottom_match
+	var/list/west_bottom_require
 	var/list/west_bottom_exclude
