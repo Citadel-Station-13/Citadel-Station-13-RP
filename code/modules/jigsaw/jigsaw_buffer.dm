@@ -6,7 +6,7 @@
 	var/lower_left_y
 	var/lower_left_z
 	var/orientation
-	var/datum/jigsaw_template/template
+	var/datum/prototype/jigsaw_template/template
 	var/datum/dmm_context/context
 
 /**

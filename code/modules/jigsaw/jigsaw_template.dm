@@ -1,30 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
-GLOBAL_LIST_EMPTY(jigsaw_template_cache)
-
-/proc/fetch_cached_jigsaw_template(datum/jigsaw_template/resolvable)
-	if(istype(resolvable))
-		return resolvable
-	else if(isnull(resolvable))
-		return null
-
-	if(GLOB.jigsaw_template_cache[resolvable])
-		return GLOB.jigsaw_template_cache[resolvable]
-
-	if(!ispath(resolvable))
-		return null
-
-	var/datum/jigsaw_template/template = new resolvable
-	GLOB.jigsaw_template_cache[resolvable] = template
-
-	return template
-
-/proc/unload_cached_jigsaw_templates()
-	for(var/path in GLOB.jigsaw_template_cache)
-		var/datum/jigsaw_template/template = GLOB.jigsaw_template_cache[path]
-		template.unload_cache()
-
 /**
  * A template for jigsaw generation.
  * * Templates are a multiple of alignment in width/height, plus one for border. This is
@@ -33,7 +9,7 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
  * * Templates are loaded in with their lower left tile (after taking into account any offsets)
  *   aligned relative to the south direction. If it's rotated, the alignment rotates with it.
  */
-/datum/jigsaw_template
+/datum/prototype/jigsaw_template
 	/// the name of this template, used for debugging and referencing in other templates.
 	var/name = "Dungeon Fragment"
 	/// path on disk
@@ -77,18 +53,18 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	/// parsed map if held
 	var/datum/dmm_parsed/parsed
 
-/datum/jigsaw_template/proc/prepare()
+/datum/prototype/jigsaw_template/proc/prepare()
 	return
 
-/datum/jigsaw_template/proc/unload_cache()
+/datum/prototype/jigsaw_template/proc/unload_cache()
 	parsed = null
 
-/datum/jigsaw_template/proc/load_cached()
+/datum/prototype/jigsaw_template/proc/load_cached()
 	if(parsed)
 		return
 	parsed = new(path)
 
-/datum/jigsaw_template/override
+/datum/prototype/jigsaw_template/override
 	name = null
 	path = null
 	alignment = null
@@ -104,10 +80,10 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	 * * Can be path, instance, or ID.
 	 * * (ID isn't implemented yet.)
 	 */
-	var/datum/jigsaw_template/template
+	var/datum/prototype/jigsaw_template/template
 
-/datum/jigsaw_template/override/prepare()
-	var/datum/jigsaw_template/resolved = fetch_cached_jigsaw_template(template)
+/datum/prototype/jigsaw_template/override/prepare()
+	var/datum/prototype/jigsaw_template/resolved = fetch_cached_jigsaw_template(template)
 	if(!resolved)
 		CRASH("Invalid template override: [template]")
 	resolved.prepare()

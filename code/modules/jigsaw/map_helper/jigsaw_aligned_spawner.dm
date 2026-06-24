@@ -15,7 +15,7 @@
 	var/radius_horizontal_tiles
 	var/radius_vertical_tiles
 
-	var/datum/jigsaw_template/spawn_template_centered
+	var/datum/prototype/jigsaw_template/spawn_template_centered
 	var/spawn_template_centered_orientation = SOUTH
 
 /obj/map_helper/jigsaw_aligned_spawner/New()
@@ -38,7 +38,7 @@
 	var/datum/jigsaw_buffer/generation = new
 
 	if(spawn_template_centered)
-		var/datum/jigsaw_template/template = fetch_cached_jigsaw_template(spawn_template_centered)
+		var/datum/prototype/jigsaw_template/template = fetch_cached_jigsaw_template(spawn_template_centered)
 
 		if(!template)
 			CRASH("Invalid initial template detected; skipping generation.")

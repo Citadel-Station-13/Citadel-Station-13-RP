@@ -34,19 +34,19 @@
 	/// always start with these templates, if exists
 	/// * may be typepaths or instances
 	/// * this ignores budget and will not take from it.
-	var/list/datum/jigsaw_template/initial_templates = list()
+	var/list/datum/prototype/jigsaw_template/initial_templates = list()
 	/// ***attempt*** to place these templates, associate to count
 	/// * this ignores budget and will not take from it.
-	var/list/datum/jigsaw_template/priority_templates = list()
+	var/list/datum/prototype/jigsaw_template/priority_templates = list()
 	/// require placement of these templates, associate to count
 	/// * if any of these fail to place, the generation fails
 	/// * this ignores budget and will not take from it.
-	var/list/datum/jigsaw_template/required_templates = list()
+	var/list/datum/prototype/jigsaw_template/required_templates = list()
 
 	/// templates to use, weighted.
 	/// * may be typepaths or instances
 	/// * this are constrained by budgets.
-	var/list/datum/jigsaw_template/weighted_templates = list()
+	var/list/datum/prototype/jigsaw_template/weighted_templates = list()
 
 	/// allowed costs
 	/// * only used for weighted templates
@@ -64,10 +64,10 @@
 /datum/jigsaw_template_config/everything/get_resultant_config()
 	var/datum/jigsaw_template_resultant_config/result = new
 	results.budgets = budgets.Copy()
-	for(var/datum/jigsaw_template/path as anything in subtypesof(/datum/jigsaw_template))
+	for(var/datum/prototype/jigsaw_template/path as anything in subtypesof(/datum/prototype/jigsaw_template))
 		if(path.abstract_type == path)
 			continue
-		var/datum/jigsaw_template/template = fetch_cached_jigsaw_template(path)
+		var/datum/prototype/jigsaw_template/template = fetch_cached_jigsaw_template(path)
 		result.weighted_templates[template] = 1
 	return result
 
@@ -75,18 +75,18 @@
 	/// always start with these templates, if exists
 	/// * may be typepaths or instances
 	/// * this ignores budget and will not take from it.
-	var/list/datum/jigsaw_template/initial_templates = list()
+	var/list/datum/prototype/jigsaw_template/initial_templates = list()
 	/// * this ignores budget and will not take from it.
-	var/list/datum/jigsaw_template/priority_templates = list()
+	var/list/datum/prototype/jigsaw_template/priority_templates = list()
 	/// require placement of these templates, associate to count
 	/// * if any of these fail to place, the generation fails
 	/// * this ignores budget and will not take from it.
-	var/list/datum/jigsaw_template/required_templates = list()
+	var/list/datum/prototype/jigsaw_template/required_templates = list()
 
 	/// templates to use, weighted.
 	/// * may be typepaths or instances
 	/// * this are constrained by budgets.
-	var/list/datum/jigsaw_template/weighted_templates = list()
+	var/list/datum/prototype/jigsaw_template/weighted_templates = list()
 
 	/// allowed costs
 	/// * only used for weighted templates

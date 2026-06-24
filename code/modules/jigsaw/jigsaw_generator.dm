@@ -24,7 +24,7 @@
 
 #warn impl
 
-/datum/jigsaw_generator/proc/generate_from_initial_piece(datum/jigsaw_template/initial_piece, turf/lower_left, orientation)
+/datum/jigsaw_generator/proc/generate_from_initial_piece(datum/prototype/jigsaw_template/initial_piece, turf/lower_left, orientation)
 
 /datum/jigsaw_generator/proc/generate_at_turf_centered(turf/center, radius_horizontal_tiles, radius_vertical_tiles)
 	if(isnull(radius_vertical_tiles))
@@ -73,7 +73,7 @@
 /datum/jigsaw_generator/proc/generate_impl_emplace_grid(datum/jigsaw_generation/generation, datum/jigsaw_template_resultant_config/templates)
 	// place templates down
 	for(var/datum/jigsaw_buffer_enqueued/placement in generation.enqueued)
-		var/datum/jigsaw_template/template = placement.template
+		var/datum/prototype/jigsaw_template/template = placement.template
 		var/datum/dmm_context/context = new
 		#warn impl context stuff
 
