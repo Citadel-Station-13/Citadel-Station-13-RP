@@ -9,22 +9,55 @@
 	var/datum/jigsaw_template/template
 	var/datum/dmm_context/context
 
+/**
+ * * All lists are immutable and potentially (likely) shared for efficiency.
+ */
 /datum/jigsaw_buffer_tile
 	var/x
 	var/y
 	var/datum/jigsaw_buffer_enqueued/enqueued
+
 	var/list/north_match
+	var/list/north_require
 	var/list/north_exclude
+
 	var/list/south_match
+	var/list/south_require
 	var/list/south_exclude
+
 	var/list/east_match
+	var/list/east_require
 	var/list/east_exclude
+
 	var/list/west_match
+	var/list/west_require
 	var/list/west_exclude
 
-/datum/jigsaw_buffer_tile/New(x, y)
+/datum/jigsaw_buffer_tile/New(datum/jigsaw_buffer_enqueued/enqueued, datum/jigsaw_tile/tile, x, y)
+	src.enqueued = enqueued
+
+	src.north_match = tile.north_match
+	src.north_require = tile.north_require
+	src.north_exclude = tile.north_exclude
+
+	src.south_match = tile.south_match
+	src.south_require = tile.south_require
+	src.south_exclude = tile.south_exclude
+
+	src.east_match = tile.east_match
+	src.east_require = tile.east_require
+	src.east_exclude = tile.east_exclude
+
+	src.west_match = tile.west_match
+	src.west_require = tile.west_require
+	src.west_exclude = tile.west_exclude
+
 	src.x = x
 	src.y = y
+
+/datum/jigsaw_buffer_tile/Destroy()
+	src.enqueued = null
+	return ..()
 
 /datum/jigsaw_buffer_tile/block_off
 

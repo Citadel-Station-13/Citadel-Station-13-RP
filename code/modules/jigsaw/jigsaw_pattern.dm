@@ -11,7 +11,7 @@
 	 * * this is as south-rotated. we iterate over this differently
 	 *   if the thing accessing this wants a rotation.
 	 */
-	var/list/pattern
+	var/list/datum/jigsaw_tile/pattern
 
 /datum/jigsaw_pattern/New(width, height, override_tile_cost)
 	src.width = width

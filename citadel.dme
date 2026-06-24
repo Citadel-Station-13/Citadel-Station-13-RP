@@ -3479,6 +3479,7 @@
 #include "code\modules\jigsaw\jigsaw_template.dm"
 #include "code\modules\jigsaw\jigsaw_template_pack.dm"
 #include "code\modules\jigsaw\jigsaw_template_pattern.dm"
+#include "code\modules\jigsaw\jigsaw_tile.dm"
 #include "code\modules\jigsaw\map_helper\jigsaw_aligned_spawner.dm"
 #include "code\modules\keybindings\bindings_atom.dm"
 #include "code\modules\keybindings\bindings_client.dm"

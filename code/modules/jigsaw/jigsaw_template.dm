@@ -43,8 +43,15 @@ GLOBAL_LIST_EMPTY(jigsaw_template_cache)
 	/// * generations must only use templates with the same alignment.
 	/// * templates are emplaced with one tile of overlap for their alignment.
 	var/alignment = 8
+
+
+
 	/// pattern
 	var/datum/jigsaw_template_pattern/pattern
+	#warn impl
+	/// cached resultant pattern
+	var/tmp/datum/jigsaw_pattern/resultant_pattern
+
 	/// Offset the actual load from the lower-left (direction relative) of
 	/// the aligned pattern.
 	/// * This is in tiles, not alignment multiples.
