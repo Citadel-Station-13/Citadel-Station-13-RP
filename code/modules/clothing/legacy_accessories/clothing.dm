@@ -760,55 +760,103 @@
 		name = initial(name)
 
 /obj/item/clothing/accessory/pridepin
-	name = "Pride Pin"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	name = "Pride Pin (LGBT)"
+	desc = "Be gay, do crime."
 	icon_state = "pride"
 	item_state = "pride"
 
 /obj/item/clothing/accessory/pridepin/bi
 	name = "Pride Pin (Bisexual)"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	desc = "Be bi, do crime."
 	icon_state = "pride_bi"
 	item_state = "pride_bi"
 
 /obj/item/clothing/accessory/pridepin/lesbian
 	name = "Pride Pin (Lesbian)"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	desc = "Be lesbian, do crime."
 	icon_state = "pride_lesbian"
 	item_state = "pride_lesbian"
 
 /obj/item/clothing/accessory/pridepin/pan
 	name = "Pride Pin (Pansexual)"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	desc = "Be pan, do crime."
 	icon_state = "pride_pan"
 	item_state = "pride_pan"
 
 /obj/item/clothing/accessory/pridepin/trans
 	name = "Pride Pin (Transgender)"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	desc = "Be trans, do crime."
 	icon_state = "pride_trans"
 	item_state = "pride_trans"
 
 /obj/item/clothing/accessory/pridepin/nonbinary
 	name = "Pride Pin (Nonbinary)"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	desc = "Be enby, do crime."
 	icon_state = "pride_enby"
 	item_state = "pride_enby"
 
 /obj/item/clothing/accessory/pridepin/asexual
 	name = "Pride Pin (Asexual)"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	desc = "Be ace, do crime."
 	icon_state = "pride_ace"
 	item_state = "pride_ace"
 
 /obj/item/clothing/accessory/pridepin/aromantic
 	name = "Pride Pin (Aromantic)"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	desc = "Be aro, do crime."
 	icon_state = "pride_aro"
 	item_state = "pride_aro"
 
 /obj/item/clothing/accessory/pridepin/intersex
 	name = "Pride Pin (Intersex)"
-	desc = "A colorful pin denoting the wearer's sexual preference."
+	desc = "Be intersex, do crime."
 	icon_state = "pride_intersex"
 	item_state = "pride_intersex"
+
+/obj/item/clothing/accessory/pridepin/ally
+	name = "Pride Pin (Ally)"
+	desc = "Be ally, do crime."
+	icon_state = "pride_ally"
+	item_state = "pride_ally"
+
+/obj/item/clothing/accessory/pridepin/aroace
+	name = "Pride Pin (Aroace)"
+	desc = "Be aroace, do crime."
+	icon_state = "pride_aroace"
+	item_state = "pride_aroace"
+
+/obj/item/clothing/accessory/pridepin/autism
+	name = "Pride Pin (Neurodivergent)"
+	desc = "Be neurodivergent, do crime."
+	icon_state = "autism"
+	item_state = "autism"
+
+/obj/item/clothing/accessory/pridepin/fluid
+	name = "Pride Pin (Genderfluid)"
+	desc = "Be gender, be fluid."
+	icon_state = "pride_fluid"
+	item_state = "pride_fluid"
+
+/obj/item/clothing/accessory/pridepin/gay
+	name = "Pride Pin (Gay)"
+	desc = "Be gay~, do crime."
+	icon_state = "pride_gay"
+	item_state = "pride_gay"
+
+/obj/item/clothing/accessory/pridepin/genderq
+	name = "Pride Pin (Genderqueer)"
+	desc = "Be crime, do gender."
+	icon_state = "pride_genderq"
+	item_state = "pride_genderq"
+
+/obj/item/clothing/accessory/pridepin/omni
+	name = "Pride Pin (Omnisexual)"
+	desc = "Be omni, do crime."
+	icon_state = "pride_omni"
+	item_state = "pride_omni"
+
+/obj/item/clothing/accessory/pridepin/plural
+	name = "Pride Pin (Plural)"
+	desc = "Be plural, do crimes."
+	icon_state = "pride_plural"
+	item_state = "pride_plural"
