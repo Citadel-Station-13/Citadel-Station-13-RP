@@ -31,6 +31,9 @@
 	/// cached resultant pattern
 	var/tmp/datum/jigsaw_pattern/resultant_pattern
 
+	/// allow rotation?
+	var/allow_rotation = TRUE
+
 	/// Offset the actual load from the lower-left (direction relative) of
 	/// the aligned pattern.
 	/// * This is in tiles, not alignment multiples.

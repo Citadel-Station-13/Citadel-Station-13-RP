@@ -8,21 +8,18 @@
 
 	early = TRUE
 
-	var/datum/jigsaw_template_config/template_config = /datum/jigsaw_template_config/everything
-	var/datum/turf_auto_marker_config/auto_marker_config
+	var/datum/jigsaw_generator_preset/preset = /datum/prototype/jigsaw_generator_preset/empty
+	var/respect_worldgen_overwrite_flags = TRUE
 
-	var/radius_tiles = 48
-	var/radius_horizontal_tiles
-	var/radius_vertical_tiles
-
-	var/datum/prototype/jigsaw_template/spawn_template_centered
-	var/spawn_template_centered_orientation = SOUTH
+	/**
+	 * Best-effort tile radius.
+	 * * Because this is an aligned spawner, the radius
+	 *   actually determines which aligned tiles we reach into.
+	 */
+	var/tile_radius = 48
 
 /obj/map_helper/jigsaw_aligned_spawner/New()
-	if(ispath(template_config))
-		template_config = new(template_config)
-	if(ispath(auto_marker_config))
-		auto_marker_config = new(auto_marker_config)
+	preset = RSjigsaw_presets.fetch_local_or_throw(preset)
 	..()
 
 /obj/map_helper/jigsaw_aligned_spawner/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
@@ -30,22 +27,45 @@
 	generate()
 
 /obj/map_helper/jigsaw_aligned_spawner/proc/generate()
-	var/datum/jigsaw_generator/generator = new
+	if(!isturf(loc))
+		CRASH("Jigsaw spawner must be placed on a turf.")
 
-	generator.auto_marker_config = auto_marker_config
-	generator.template_config = template_config
+	if(tile_radius <= 0)
+		CRASH("Jigsaw spawner must have a non-negative tile radius.")
 
-	var/datum/jigsaw_buffer/generation = new
+	// check and align location
+	var/x = loc.x
+	var/y = loc.y
+	var/z = loc.z
 
-	if(spawn_template_centered)
-		var/datum/prototype/jigsaw_template/template = fetch_cached_jigsaw_template(spawn_template_centered)
+	// x/y low are aligned towards bottom left
+	var/aligned_x_low = max(floor(((x - tile_radius) + 1) / TURF_ALIGNMENT) * TURF_ALIGNMENT, TURF_ALIGNMENT) + 1
+	var/aligned_y_low = max(floor(((y - tile_radius) + 1) / TURF_ALIGNMENT) * TURF_ALIGNMENT, TURF_ALIGNMENT) + 1
 
-		if(!template)
-			CRASH("Invalid initial template detected; skipping generation.")
+	// x/y high are aligned towards top right
+	var/aligned_x_high = min(ceil(((x + tile_radius) + 0) / TURF_ALIGNMENT) * TURF_ALIGNMENT, world.maxx - TURF_ALIGNMENT) - 0
+	var/aligned_y_high = min(ceil(((y + tile_radius) + 0) / TURF_ALIGNMENT) * TURF_ALIGNMENT, world.maxy - TURF_ALIGNMENT) - 0
 
-		var/datum/jigsaw_buffer_enqueued_placement/initial_placement = new
-		#warn impl
+	if(aligned_x_low >= aligned_x_high || aligned_y_low >= aligned_y_high)
+		CRASH("Jigsaw spawner has no valid area to generate in; the world is too small.")
 
-		generation.broadphase_enqueued += initial_placement
+	var/aligned_width = aligned_x_high - aligned_x_low
+	var/aligned_height = aligned_y_high - aligned_y_low
 
-	generator.generate_at_turf_centered(get_turf(src), generation)
+	var/grid_width = (aligned_width + 1) / TURF_ALIGNMENT
+	var/grid_height = (aligned_height + 1) / TURF_ALIGNMENT
+
+	ASSERT(ISINTEGER(grid_width) && ISINTEGER(grid_height), "Grid width/height must be integer.")
+
+	var/datum/jigsaw_buffer/buffer = new(grid_width, grid_height)
+
+	ASSERT(buffer.fits_in_world_at(aligned_x_low, aligned_y_low), "Buffer must fit in world at aligned coordinates.")
+
+	buffer.block_off_according_to_world_at(aligned_x_low, aligned_y_low, respect_worldgen_overwrite_flags)
+
+	// generate
+	var/datum/jigsaw_generator/generator = new(preset.get_config())
+
+	#warn generate
+
+	#warn apply

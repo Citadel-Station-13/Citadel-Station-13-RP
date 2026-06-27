@@ -18,7 +18,7 @@
 	injections = list(
 		new /datum/map_injection/legacy_seed_submaps(
 			150,
-			/area/class_d/unexplored,
+			/area/sector/class_d/unexplored,
 			/datum/map_template/submap/level_specific/class_d,
 		),
 	)

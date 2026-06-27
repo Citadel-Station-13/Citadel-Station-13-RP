@@ -5,19 +5,10 @@
  * Datum used to generate jigsaw dungeons.
  */
 /datum/jigsaw_generator
-	/**
-	 * Set to override auto-marker settings. Otherwise, this uses
-	 * the map's auto-marker config.
-	 */
-	var/datum/turf_auto_marker_config/auto_marker_config
-	/**
-	 * Configuration for templates.
-	 */
-	var/datum/jigsaw_template_config/template_config
-	/**
-	 * Configuration for spawns
-	 */
-	var/datum/jigsaw_spawn_config/spawn_config
+	var/datum/jigsaw_generator_config/config
+
+/datum/jigsaw_generator/New(datum/jigsaw_generator_config/config)
+	src.config = config
 
 /datum/jigsaw_generator/proc/get_available_templates()
 	return list()

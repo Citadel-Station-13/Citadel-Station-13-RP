@@ -12,7 +12,7 @@
 	name = "Sector - Frozen World"
 	display_name = "Class-P Frozen World"
 	path = "maps/sectors/frozen_192/levels/frozen_192.dmm"
-	base_area = /area/class_p/ruins
+	base_area = /area/sector/class_p/ruins
 	base_turf = /turf/simulated/floor/outdoors/ice
 	traits = list(
 		ZTRAIT_GRAVITY,
@@ -23,7 +23,7 @@
 	injections = list(
 		new /datum/map_injection/legacy_seed_submaps(
 			125,
-			/area/class_p/ruins/unexplored,
+			/area/sector/class_p/ruins/unexplored,
 			/datum/map_template/submap/level_specific/class_p,
 		),
 	)

@@ -13,7 +13,7 @@
 	display_name = "Class-H Desert World"
 	path = "maps/sectors/desert_192/levels/desert_192.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
-	base_area = /area/class_h/unexplored
+	base_area = /area/sector/class_h/unexplored
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
@@ -23,7 +23,7 @@
 	injections = list(
 		new /datum/map_injection/legacy_seed_submaps(
 			150,
-			/area/class_h/unexplored,
+			/area/sector/class_h/unexplored,
 			/datum/map_template/submap/level_specific/class_h,
 		),
 	)
