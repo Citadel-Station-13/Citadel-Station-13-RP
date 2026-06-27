@@ -3477,6 +3477,7 @@
 #include "code\modules\integrated_electronics\~defines\~defines.dm"
 #include "code\modules\jigsaw\jigsaw_buffer.dm"
 #include "code\modules\jigsaw\jigsaw_chain_generator.dm"
+#include "code\modules\jigsaw\jigsaw_chain_generator_config.dm"
 #include "code\modules\jigsaw\jigsaw_chain_generator_results.dm"
 #include "code\modules\jigsaw\jigsaw_generator.dm"
 #include "code\modules\jigsaw\jigsaw_generator_config.dm"

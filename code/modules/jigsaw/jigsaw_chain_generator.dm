@@ -5,9 +5,10 @@
  * Runs multiple generator cycles on a buffer.
  */
 /datum/jigsaw_chain_generator
-	var/prepared = FALSE
-	var/list/datum/jigsaw_generator_config/run_generator_configs = list()
+	var/datum/jigsaw_chain_generator_config/config
 
+/datum/jigsaw_chain_generator/New(datum/jigsaw_chain_generator_config/config)
+	src.config = config
 
 /datum/jigsaw_chain_generator/proc/prepare()
 	SHOULD_NOT_OVERRIDE(TRUE)

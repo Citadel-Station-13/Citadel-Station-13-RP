@@ -9,6 +9,12 @@
 	var/datum/dmm_context/context
 
 /**
+ * * Does not fire off atom init.
+ */
+/datum/jigsaw_buffer_enqueued/proc/load_into_world(lower_left_x, lower_left_y) as /datum/dmm_context
+	#warn impl
+
+/**
  * * All lists are immutable and potentially (likely) shared for efficiency.
  */
 /datum/jigsaw_buffer_tile
@@ -157,10 +163,24 @@
 				src.grid[real_grid_x + src.width * (real_grid_y - 1)] = new /datum/jigsaw_buffer_tile/block_off(real_grid_x, real_grid_y)
 				continue
 
+/datum/jigsaw_buffer/proc/load_into_world(lower_left_x, lower_left_y)
+	ASSERT(!src.loaded, "Buffer already loaded into world.")
+	loaded = TRUE
 
-// var/idx = ceil(root.x / TURF_ALIGNMENT) + grid_width * (ceil(root.y / TURF_ALIGNMENT) - 1)
+	var/list/datum/dmm_context/loaded_contexts = list()
 
-#warn impl
+	for(var/datum/jigsaw_buffer_enqueued/enqueued in src.enqueued)
+		var/datum/dmm_context/loaded_context = context.load_into_world(lower_left_x, lower_left_y)
+		loaded_contexts += loaded_context
+		context.execute_pre_init()
+
+	for(var/datum/dmm_context/loaded_context in loaded_contexts)
+		if(!SSatoms.initialized)
+			SSatoms.init_map_bounds(loaded_context.loaded_bounds)
+		loaded_context.execute_post_init()
+
+	for(var/datum/map_context/context in src.enqueued_contexts)
+		context.execute_post_init()
 
 /datum/jigsaw_buffer/proc/cleanup()
 	for(var/i in 1 to length(grid))
