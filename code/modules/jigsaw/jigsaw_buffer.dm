@@ -46,7 +46,7 @@
 	var/list/west_require
 	var/list/west_exclude
 
-/datum/jigsaw_buffer_tile/New(grid_x, grid_y, datum/jigsaw_buffer_enqueued/enqueued, datum/jigsaw_buffer_tile/tile)
+/datum/jigsaw_buffer_tile/enqueued/New(grid_x, grid_y, datum/jigsaw_buffer_enqueued/enqueued, datum/jigsaw_buffer_tile/tile)
 	..(grid_x, grid_y)
 
 	src.enqueued = enqueued

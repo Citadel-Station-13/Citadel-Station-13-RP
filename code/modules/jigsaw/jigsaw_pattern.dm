@@ -13,6 +13,17 @@
 	 */
 	var/list/datum/jigsaw_tile/pattern
 
+	/**
+	 * Set if we have
+	 * 1. no holes
+	 * 2. no concave spots inside
+	 *
+	 * basically, if we're a rectangle.
+	 * this stops the grid generator from having to fit us over more spts than
+	 * it needs to.
+	 */
+	var/convex_optimizations = FALSE
+
 /datum/jigsaw_pattern/New(width, height, override_tile_cost)
 	src.width = width
 	src.height = height

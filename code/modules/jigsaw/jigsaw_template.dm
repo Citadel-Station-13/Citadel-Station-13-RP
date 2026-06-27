@@ -86,7 +86,7 @@
 	var/datum/prototype/jigsaw_template/template
 
 /datum/prototype/jigsaw_template/override/prepare()
-	var/datum/prototype/jigsaw_template/resolved = fetch_cached_jigsaw_template(template)
+	var/datum/prototype/jigsaw_template/resolved = RSjigsaw_templates.fetch_local_or_throw(template)
 	if(!resolved)
 		CRASH("Invalid template override: [template]")
 	resolved.prepare()

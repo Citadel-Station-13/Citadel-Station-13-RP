@@ -29,9 +29,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	if(prepared)
-		CRASH("double-prepare; not all chain-generators are idempotent for prepare_impl().")
+		return
 	prepared = TRUE
-	#warn impl
+	prepare_impl()
 
 /datum/jigsaw_chain_generator_config/proc/prepare_impl()
 	PROTECTED_PROC(TRUE)

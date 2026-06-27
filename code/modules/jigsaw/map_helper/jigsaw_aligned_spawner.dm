@@ -8,7 +8,7 @@
 
 	early = TRUE
 
-	var/datum/jigsaw_generator_preset/preset = /datum/prototype/jigsaw_generator_preset/empty
+	var/datum/prototype/jigsaw_generator_preset/preset = /datum/prototype/jigsaw_generator_preset/empty
 	var/respect_worldgen_overwrite_flags = TRUE
 
 	/**
@@ -19,7 +19,7 @@
 	var/tile_radius = 48
 
 /obj/map_helper/jigsaw_aligned_spawner/New()
-	preset = RSjigsaw_presets.fetch_local_or_throw(preset)
+	preset = RSjigsaw_generator_presets.fetch_local_or_throw(preset)
 	..()
 
 /obj/map_helper/jigsaw_aligned_spawner/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)

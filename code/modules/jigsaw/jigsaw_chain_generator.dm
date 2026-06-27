@@ -10,16 +10,6 @@
 /datum/jigsaw_chain_generator/New(datum/jigsaw_chain_generator_config/config)
 	src.config = config
 
-/datum/jigsaw_chain_generator/proc/prepare()
-	SHOULD_NOT_OVERRIDE(TRUE)
-
-	if(prepared)
-		CRASH("double-prepare; not all chain-generators are idempotent for prepare_impl().")
-	prepared = TRUE
-	#warn impl
-
-/datum/jigsaw_chain_generator/proc/prepare_impl()
-	PROTECTED_PROC(TRUE)
-
+/datum/jigsaw_chain_generator/proc/
 
 #warn impl

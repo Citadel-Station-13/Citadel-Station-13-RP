@@ -9,14 +9,14 @@
 
 /datum/prototype/jigsaw_template_pack/proc/validate_templates()
 	for(var/resolvable in src.templates)
-		var/datum/prototype/jigsaw_template/template = fetch_cached_jigsaw_template(resolvable)
+		var/datum/prototype/jigsaw_template/template = RSjigsaw_templates.fetch_local_or_throw(resolvable)
 		if(!template)
 			CRASH("Invalid template '[resolvable]' detected in pack.")
 
 /datum/prototype/jigsaw_template_pack/proc/resolve_templates() as /list
 	var/list/datum/prototype/jigsaw_template/resolved = list()
 	for(var/resolvable in src.templates)
-		var/datum/prototype/jigsaw_template/template = fetch_cached_jigsaw_template(resolvable)
+		var/datum/prototype/jigsaw_template/template =  RSjigsaw_templates.fetch_local_or_throw(resolvable)
 		if(!template)
 			continue
 		resolved += template
