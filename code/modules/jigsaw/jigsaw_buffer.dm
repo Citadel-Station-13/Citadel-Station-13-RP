@@ -191,3 +191,126 @@
 
 	QDEL_LIST(enqueued)
 	QDEL_LIST(enqueued_contexts)
+
+/datum/jigsaw_buffer/proc/template_fits_at(datum/prototype/jigsaw_template/template, lower_left_grid_x, lower_left_grid_y, orientation)
+	var/width = template.width
+	var/height = template.height
+
+	var/sideways = orientation & (EAST|WEST)
+	var/real_width = sideways? height : width
+	var/real_height = sideways? width : height
+
+	if(lower_left_grid_x < 1 || lower_left_grid_y < 1)
+		return FALSE
+	if(lower_left_grid_x + real_width - 1 > src.width)
+		return FALSE
+	if(lower_left_grid_y + real_height - 1 > src.height)
+		return FALSE
+
+	// sweep direction is static for the jigsaw pattern,
+	// and dependent on orientation for the buffer
+
+	// since this is a hot loop, it's unrolled for performance
+	// SOUTH is treated as neutral due to BYOND defaulting to SOUTH.
+
+	switch(orientation)
+		if(NORTH)
+			// 180 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (width - x)
+					var/real_y = lower_left_grid_y + (height - y)
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(SOUTH)
+			// 0 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + x - 1
+					var/real_y = lower_left_grid_y + y - 1
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(EAST)
+			// 270 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (height - y)
+					var/real_y = lower_left_grid_y + x - 1
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(WEST)
+			// 90 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (y - 1)
+					var/real_y = lower_left_grid_y + (width - x)
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+	return TRUE
+
+/**
+ * @return TRUE / FALSE
+ */
+/datum/jigsaw_buffer/proc/emplace_template_at(datum/prototype/jigsaw_template/template, lower_left_grid_x, lower_left_grid_y, orientation)
+	if(!template_fits_at(template, lower_left_grid_x, lower_left_grid_y, orientation))
+		return FALSE
+	return unsafe_emplace_template_at(template, lower_left_grid_x, lower_left_grid_y, orientation)
+
+/datum/jigsaw_buffer/proc/unsafe_emplace_template_at(datum/prototype/jigsaw_template/template, lower_left_grid_x, lower_left_grid_y, orientation)
+
+	// sweep direction is static for the jigsaw pattern,
+	// and dependent on orientation for the buffer
+
+	// since this is a hot loop, it's unrolled for performance
+	// SOUTH is treated as neutral due to BYOND defaulting to SOUTH.
+
+	switch(orientation)
+		if(NORTH)
+			// 180 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (width - x)
+					var/real_y = lower_left_grid_y + (height - y)
+					src.grid[real_x + src.width * (real_y - 1)] = new /datum/jigsaw_buffer_tile/enqueued(real_x, real_y, new /datum/jigsaw_buffer_enqueued(template, lower_left_grid_x, lower_left_grid_y, orientation), template.pattern[x + width * (y - 1)])
+					if(tile)
+						return FALSE
+
+		if(SOUTH)
+			// 0 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + x - 1
+					var/real_y = lower_left_grid_y + y - 1
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(EAST)
+			// 270 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (height - y)
+					var/real_y = lower_left_grid_y + x - 1
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(WEST)
+			// 90 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (y - 1)
+					var/real_y = lower_left_grid_y + (width - x)
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+	return TRUE

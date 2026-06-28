@@ -13,7 +13,7 @@
  * Returns a potentially-cached pattern.
  */
 /datum/jigsaw_template_pattern/proc/get_pattern() as /datum/jigsaw_pattern
-	return new /datum/jigsaw_pattern(0, 0)
+	return new /datum/jigsaw_pattern(0, 0, override_tile_cost)
 
 
 #warn emplace

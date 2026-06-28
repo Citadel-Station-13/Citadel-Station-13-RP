@@ -61,7 +61,7 @@
 	/// collected gear markers
 	var/list/obj/map_helper/gear_marker/distributed/collected_distributed_gear_markers
 	/// collected gear markers
-	var/list/obj/map_helper/gear_marker/stamped/collected_stamped_gear_markers_by_role
+	var/list/obj/map_helper/gear_marker/role/collected_role_gear_markers_by_role
 	/// collected role markers
 	var/list/obj/map_helper/role_marker/collected_role_markers_by_tag
 	/// collected fixed template seeding targets

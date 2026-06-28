@@ -55,21 +55,26 @@
 	/// parsed map if held
 	var/datum/dmm_parsed/parsed
 
+/**
+ * Should be called before being used by the generator.
+ */
 /datum/prototype/jigsaw_template/proc/prepare()
 	return
 
 /datum/prototype/jigsaw_template/proc/unload_cache()
 	parsed = null
+	resultant_pattern = null
 
 /datum/prototype/jigsaw_template/proc/load_cached()
-	if(parsed)
-		return
-	parsed = new(path)
+	if(!parsed)
+		parsed = new(path)
+	if(!resultant_pattern)
+		#warn this and more?
+		resultant_pattern = pattern.get_pattern()
 
 /datum/prototype/jigsaw_template/override
 	name = null
 	path = null
-	alignment = null
 
 	offset_x = null
 	offset_y = null
@@ -94,8 +99,6 @@
 		src.name = resolved.name
 	if(isnull(src.path))
 		src.path = resolved.path
-	if(isnull(src.alignment))
-		src.alignment = resolved.alignment
 
 	if(isnull(src.offset_x))
 		src.offset_x = resolved.offset_x
