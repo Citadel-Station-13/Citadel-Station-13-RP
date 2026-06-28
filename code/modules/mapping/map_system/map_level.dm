@@ -164,6 +164,12 @@
 	/// * virtual_z = -1 is the subtracted ceiling height of virtual_z = -1
 	var/tmp/virtual_elevation = 0
 
+	//* Injections *//
+	/**
+	 * Injections to push into the `dmm_context` by default.
+	 */
+	var/list/datum/map_injection/injections = list()
+
 	//* Persistence *//
 	/// loaded persistence metadata, if any
 	var/tmp/datum/map_level_persistence/persistence

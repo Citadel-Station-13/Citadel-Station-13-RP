@@ -75,10 +75,9 @@
 
 	// load maps as needed
 	var/list/datum/map/loaded_maps = list()
-	var/list/datum/map_level/loaded_lockstep_levels = list()
-	var/list/datum/dmm_context/loaded_lockstep_contexts = list()
+	var/list/datum/map_level/loaded_levels = list()
 
-	var/list/datum/callback/deferred_generation_callbacks = list()
+	var/list/datum/map_context/loaded_contexts = list()
 
 	for(var/datum/map/loading_map as anything in maps_to_load)
 		emit_info_log("load - loading '[loading_map.id]' with [length(loading_map.levels)] levels...")
@@ -96,57 +95,55 @@
 			stack_trace("map id '[loading_map.id]' failed construct()ion")
 			continue
 
+		var/datum/map_context/context = new
+		loaded_contexts += context
+
+		context.mangling_id = loading_map.mangling_id || loading_map.id
+		context.auto_marker_config = loading_map.load_auto_marker_config || new
+
+		for(var/datum/map_injection/injection as anything in loading_map.injections)
+			context.register_injection(injection)
+
 		var/list/map_use_area_cache = loading_map.load_shared_area_cache ? list() : null
 
 		for(var/datum/map_level/level as anything in loading_map.get_sorted_levels())
-			var/datum/dmm_context/level_use_dmm_context = create_dmm_context()
-			level_use_dmm_context.mangling_id = loading_map.mangling_id || loading_map.id
-			var/list/datum/callback/level_generation_callbacks = list()
 			var/datum/dmm_context/level_context = load_level_impl(
 				level,
+				context,
 				map_use_area_cache,
-				level_use_dmm_context,
-				TRUE,
-				level_generation_callbacks,
 			)
 			if(isnull(level_context))
 				emit_fatal_log("load - failed to load level '[level.id]' in map '[instance.id]")
 				stack_trace("unable to load level [level] ([level.id])")
 				to_chat(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
 				continue
-			loaded_lockstep_levels += level
-			loaded_lockstep_contexts += level_context
-			deferred_generation_callbacks += level_generation_callbacks
+			loaded_levels += level
+
+		loaded_maps += loading_map
+		context.execute_pre_init()
 
 		emit_info_log("load - finished loading '[instance.id]' with [length(loading_map.levels)] levels")
-
-		loading_map.on_loaded_immediate()
-		loaded_maps += loading_map
 
 		//! LEGACY
 		for(var/path in loading_map.legacy_assert_shuttle_datums)
 			SSshuttle.legacy_shuttle_assert(path)
 		//! END
 
-	emit_info_log("load - initializing [length(loaded_lockstep_levels)] levels...")
+	emit_info_log("load - initializing [length(loaded_levels)] levels...")
 
-	// fire generation and atom init after, now that everything has had a chance to load
-	for(var/datum/callback/cb as anything in deferred_generation_callbacks)
-		cb.Invoke()
-	for(var/datum/dmm_context/ctx as anything in loaded_lockstep_contexts)
-		if(SSatoms.initialized)
-			SSatoms.init_map_bounds(ctx.loaded_bounds)
+	// init bounds and fire post-init.
+	for(var/datum/map_context/ctx as anything in loaded_contexts)
+		for(var/datum/dmm_context/dmm_ctx as anything in ctx.loaded_dmm_contexts)
+			if(SSatoms.initialized)
+				SSatoms.init_map_bounds(dmm_ctx.loaded_bounds)
+			dmm_ctx.execute_post_init()
+		ctx.execute_post_init()
 
-	// fire finalize hooks
-	for(var/datum/map_level/level as anything in loaded_lockstep_levels)
-		level.on_loaded_finalize(level.z_index)
-	for(var/datum/map/map as anything in loaded_maps)
-		map.on_loaded_finalize()
-
-	for(var/datum/map_level/loaded_level as anything in loaded_lockstep_levels)
+	// finally rebuild multiz proper
+	for(var/datum/map_level/loaded_level as anything in loaded_levels)
 		rebuild_multiz(loaded_level.z_index)
 
-	emit_info_log("load - initialized [length(loaded_lockstep_levels)] levels")
+	emit_info_log("load - initialized [length(loaded_levels)] levels")
 
 	return TRUE
 

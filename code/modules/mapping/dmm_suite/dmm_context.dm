@@ -1,14 +1,6 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-/proc/create_dmm_context(
-	mangling_id,
-)
-	RETURN_TYPE(/datum/dmm_context)
-	var/datum/dmm_context/context = new
-	context.mangling_id = mangling_id
-	return context
-
 /**
  * something accessible to all atoms during preloading_from_mapload
  *
@@ -22,20 +14,26 @@
 	var/used = FALSE
 	/// was the loading successful?
 	var/success = FALSE
-	/// were map_initialization() hooks on /obj/map_helpers already fired?
-	var/map_initializations_fired = FALSE
-	/// were /datum/map_injection's fired
-	var/map_injections_fired = FALSE
 
 	//* set these before loading *//
 
-	/// mangling id - if non-null, atoms under this context should
-	/// use this to mangle their obfuscation IDs appropriately
-	/// if they're meant to link to other devices on the same map
+	/**
+	 * Our map context.
+	 */
+	var/datum/map_context/map_context
+	/**
+	 * ID used to mangle things like buttons.
+	 */
 	var/mangling_id
-
-	/// injected middleware
-	var/list/datum/map_injection/injections
+	/**
+	 * Auto marker config to use for this load.
+	 */
+	var/datum/turf_auto_marker_config/auto_marker_config
+	/**
+	 * Set to identify the area we're loading. Used by things like
+	 * automatic area naming.
+	 */
+	var/provide_auto_name
 
 	//* set by load cycle *//
 
@@ -45,6 +43,35 @@
 	///
 	/// * natural orientation is SOUTH
 	var/loaded_orientation
+
+	//* used by loader *//
+
+	/**
+	 * Injections to fire
+	 * * Injections are stateless and generally are not automatically
+	 *   transferred down if a template / shuttle is considered 'not part of the map'.
+	 */
+	VAR_PRIVATE/list/datum/map_injection/injections
+	VAR_PRIVATE/injections_pre_init_fired = FALSE
+	VAR_PRIVATE/injections_post_init_fired = FALSE
+
+	/**
+	 * Callbacks to call post-load but pre-init. Called with (src).
+	 * * These callbacks are fired with SSatoms under 'map_loader_begin'.
+	 * * These have priority over injections.
+	 */
+	VAR_PRIVATE/list/datum/callback/pre_init_callbacks = list()
+	VAR_PRIVATE/pre_init_callbacks_fired = FALSE
+
+	/**
+	 * Callbacks to call post-load, post-atom-init. Called with (src).
+	 * * These callbacks are fired with SSatoms in normal mode.
+	 * * These are NOT necessarily fired before atom init. If it's before atom init,
+	 *   these behave like pre_init_callbacks other than ordering.
+	 * * These have priority over injections.
+	 */
+	VAR_PRIVATE/list/datum/callback/post_init_callbacks = list()
+	VAR_PRIVATE/post_init_callbacks_fired = FALSE
 
 	//* reexports of dmm_orientation variables *//
 	var/loaded_orientation_invert_x
@@ -58,24 +85,13 @@
 	/// * This can be null.
 	var/datum/dmm_parsed/loaded_dmm
 
-	//* injected by things in load cycle *//
-
-	/// collected map_helpers asking to have map_initialization's called
-	var/list/obj/map_helper/map_initialization_hooked = list()
-
-	/// collected gear markers
-	var/list/obj/map_helper/gear_marker/distributed_gear_markers
-	/// collected gear markers
-	var/list/obj/map_helper/gear_marker/stamped_gear_markers_by_role
-	/// collected role markers
-	var/list/obj/map_helper/role_marker/role_markers_by_tag
-
 /datum/dmm_context/proc/mark_used()
 	if(used)
 		stack_trace("a dmm_context was reused; this is not allowed and will result in bugs.")
 	used = TRUE
 
 /datum/dmm_context/proc/set_empty_load()
+	mark_used()
 	loaded_bounds = new /list(MAP_BOUNDS)
 	loaded_bounds[MAP_MINX] = 0
 	loaded_bounds[MAP_MINY] = 0
@@ -86,45 +102,6 @@
 	var/datum/dmm_orientation/orientation_data = GLOB.dmm_orientations["[SOUTH]"]
 	orientation_data.populate_context(src)
 
-/**
- * fire off initializations
- *
- * 1. injections
- * 2. initializations
- *
- * * this is executed
- */
-/datum/dmm_context/proc/execute_postload()
-	fire_map_injections()
-	fire_map_initializations()
-
-/datum/dmm_context/proc/fire_map_initializations()
-	if(map_initializations_fired)
-		CRASH("initializations already were fired")
-	map_initializations_fired = TRUE
-	// so SSatoms doesn't init the atoms we make
-	SSatoms.map_loader_begin("dmm-context")
-	Master.StartLoadingMap()
-	for(var/obj/map_helper/helper in map_initialization_hooked)
-		helper.map_initializations(src)
-	Master.StopLoadingMap()
-	SSatoms.map_loader_stop("dmm-context")
-
-/datum/dmm_context/proc/fire_map_injections()
-	if(map_injections_fired)
-		CRASH("injections already were fired")
-	map_injections_fired = TRUE
-	// so SSatoms doesn't init the atoms we make
-	SSatoms.map_loader_begin("dmm-context")
-	Master.StartLoadingMap()
-	for(var/datum/map_injection/injection in injections)
-		injection.injection(src)
-	Master.StopLoadingMap()
-	SSatoms.map_loader_stop("dmm-context")
-
-/datum/dmm_context/proc/register_injection(datum/map_injection/injection)
-	injections |= injection
-
 /datum/dmm_context/proc/loaded()
 	return success
 
@@ -133,3 +110,70 @@
  */
 /datum/dmm_context/proc/dispose_dmm_reference()
 	loaded_dmm = null
+
+/datum/dmm_context/proc/register_injection(datum/map_injection/injection)
+	if(injection in injections)
+		CRASH("injection already registered")
+	injections |= injection
+
+/datum/dmm_context/proc/register_pre_init_callback(datum/callback/cb)
+	if(pre_init_callbacks_fired)
+		CRASH("pre-init callbacks already were fired")
+	pre_init_callbacks |= cb
+
+/datum/dmm_context/proc/register_post_init_callback(datum/callback/cb)
+	if(post_init_callbacks_fired)
+		CRASH("post-init callbacks already were fired")
+	post_init_callbacks |= cb
+
+/datum/dmm_context/proc/execute_pre_init()
+	fire_pre_init_callbacks()
+	fire_pre_init_injections()
+
+/datum/dmm_context/proc/execute_post_init()
+	fire_post_init_callbacks()
+	fire_post_init_injections()
+
+/datum/dmm_context/proc/fire_pre_init_callbacks()
+	if(pre_init_callbacks_fired)
+		CRASH("pre-init callbacks already were fired")
+	pre_init_callbacks_fired = TRUE
+
+	SSatoms.map_loader_begin("map-context-callbacks")
+	Master.StartLoadingMap()
+
+	for(var/datum/callback/callback as anything in pre_init_callbacks)
+		callback.invoke_no_sleep(map_context, src)
+
+	Master.StopLoadingMap()
+	SSatoms.map_loader_stop("map-context-callbacks")
+
+/datum/dmm_context/proc/fire_post_init_callbacks()
+	if(post_init_callbacks_fired)
+		CRASH("post-init callbacks already were fired")
+	post_init_callbacks_fired = TRUE
+
+	for(var/datum/callback/callback as anything in post_init_callbacks)
+		callback.invoke_no_sleep(map_context, src)
+
+/datum/dmm_context/proc/fire_pre_init_injections()
+	if(injections_pre_init_fired)
+		CRASH("pre-init injections already were fired")
+	injections_pre_init_fired = TRUE
+
+	SSatoms.map_loader_begin("map-context-injections")
+	Master.StartLoadingMap()
+
+	for(var/datum/map_injection/injection in injections)
+		injection.on_map_pre_init(map_context, src)
+
+	Master.StopLoadingMap()
+	SSatoms.map_loader_stop("map-context-injections")
+
+/datum/dmm_context/proc/fire_post_init_injections()
+	if(injections_post_init_fired)
+		CRASH("post-init injections already were fired")
+	injections_post_init_fired = TRUE
+
+	for(var/datum/map_injection/injection in injections)
+		injection.on_map_post_init(map_context, src)

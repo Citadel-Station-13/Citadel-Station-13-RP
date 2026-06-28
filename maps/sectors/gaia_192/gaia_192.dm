@@ -13,7 +13,7 @@
 	display_name = "Gaia Station"
 	path = "maps/sectors/gaia_192/levels/gaia_192.dmm"
 	base_turf = /turf/simulated/floor
-	base_area = /area/class_m/outside
+	base_area = /area/sector/class_m/outside
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)

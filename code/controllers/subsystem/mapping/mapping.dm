@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(mapping)
 	/// * null means that a level isn't a reservation level
 	/// * this also means that we can't zclear / 'free' reserved levels; they're effectively immovable due to this datastructure
 	/// * if it is a reserved level, it returns the spatial grid
-	/// * to get a chunk, do `spatial_lookup[ceil(where.x / TURF_CHUNK_RESOLUTION) + (ceil(where.y / TURF_CHUNK_RESOLUTION) - 1) * ceil(world.maxx / TURF_CHUNK_RESOLUTION)]`
+	/// * to get a chunk, do `spatial_lookup[ceil(where.x / TURF_ALIGNMENT) + (ceil(where.y / TURF_ALIGNMENT) - 1) * ceil(world.maxx / TURF_ALIGNMENT)]`
 	/// * being in border counts as being in the reservation. you won't be soon, though.
 	var/static/list/reservation_spatial_lookups = list()
 

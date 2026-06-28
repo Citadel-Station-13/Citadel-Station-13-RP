@@ -25,8 +25,8 @@ ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a cust
 		tgui_alert(invoking, "Failed to parse map.", "Parse Error")
 		return
 
-	var/max_x = world.maxx - TURF_CHUNK_RESOLUTION * 2
-	var/max_y = world.maxy - TURF_CHUNK_RESOLUTION * 2
+	var/max_x = world.maxx - TURF_ALIGNMENT * 2
+	var/max_y = world.maxy - TURF_ALIGNMENT * 2
 
 	if(parsed_map.width >= max_x || parsed_map.height >= max_y)
 		tgui_alert(invoking, "Your map is too big for the current world size. Yours was [parsed_map.width]x[parsed_map.height], but maximum is: [max_x]x[max_y]", "Improper Dimensions")

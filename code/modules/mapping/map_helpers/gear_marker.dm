@@ -183,7 +183,7 @@ GLOBAL_REAL_LIST(distributed_gear_marker_usage_weights) = list(
 
 
 /obj/map_helper/gear_marker/distributed/preloading_from_mapload(datum/dmm_context/context)
-	context.distributed_gear_markers += src
+	context.map_context.collected_distributed_gear_markers += src
 	// make everything assoc
 	make_associative_inplace(gear_tags)
 	make_associative_inplace(usage_tags)
@@ -217,8 +217,8 @@ GLOBAL_REAL_LIST(distributed_gear_marker_usage_weights) = list(
 	var/role_allow_overflow = TRUE
 
 /obj/map_helper/gear_marker/role/preloading_from_mapload(datum/dmm_context/context)
-	LAZYINITLIST(context.stamped_gear_markers_by_role[role_tag])
-	context.stamped_gear_markers_by_role[role_tag] += src
+	LAZYINITLIST(context.map_context.collected_stamped_gear_markers_by_role[role_tag])
+	context.map_context.collected_stamped_gear_markers_by_role[role_tag] += src
 	return ..()
 
 /**
@@ -234,3 +234,15 @@ GLOBAL_REAL_LIST(distributed_gear_marker_usage_weights) = list(
 
 /obj/map_helper/gear_marker/role/make_locker/ignite()
 	return new locker_type(loc, locker_appearance)
+
+/obj/map_helper/gear_marker/role/make_locker/security
+	role_tag = "security"
+
+/obj/map_helper/gear_marker/role/make_locker/medical
+	role_tag = "medical"
+
+/obj/map_helper/gear_marker/role/make_locker/engineer
+	role_tag = "engineer"
+
+/obj/map_helper/gear_marker/role/make_locker/captain
+	role_tag = "captain"

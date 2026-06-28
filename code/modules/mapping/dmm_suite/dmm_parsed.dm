@@ -289,7 +289,7 @@
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
  * * orientation - orientation to load. the 'natural' orientation is SOUTH. Any other orientation rotates it with respect from SOUTH to it.
  * * area_cache - override area cache and provide your own, used to make sure multiple loadings share the same areas if two areas are the same type.
- * * context - value to push to preloader's maploader context, used by atoms during preloading_from_mapload() to perform various things like mangling their linkage IDs
+ * * context - value to push to preloader's dmm context, used by atoms during preloading_from_mapload() to perform various things like mangling their linkage IDs
  *
  * @return bounds list of load, or null if failed.
  */
@@ -547,6 +547,7 @@
 				world.preloader_setup(members_attributes[index], atype)
 				instance = new atype(null)
 				if(global.dmm_preloader_active)
+					stack_trace("preloader didn't automatically fire off on /area new")
 					world.preloader_load(instance)
 			areaCache[atype] = instance
 		instance.contents.Add(crds)
@@ -593,7 +594,7 @@
 		. = create_atom(path, crds)//first preloader pass
 
 	if(global.dmm_preloader_active) //second preloader pass, for those atoms that don't ..() in New()
-		stack_trace("required a second preloader pass")
+		stack_trace("required a second preloader pass on type [path]")
 		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize

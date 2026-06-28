@@ -3,6 +3,11 @@
 	icon_state = "window_grille_pane"
 	layer = WINDOW_LAYER
 
+	/**
+	 * If set, will erase ourselves if a conflicting window exists
+	 */
+	var/tmp/map_impl_erase_if_another_window_exists = FALSE
+
 	/// found dirs
 	var/found_dirs = NONE
 
@@ -33,6 +38,8 @@
 	/// id tag for electrochromics
 	/// todo: rename to electrochromatic_id
 	var/id
+
+#warn trample?
 
 /obj/spawner/window/Initialize(mapload)
 	if(!full_window)

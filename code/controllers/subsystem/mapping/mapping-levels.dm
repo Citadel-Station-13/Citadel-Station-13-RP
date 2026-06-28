@@ -105,7 +105,7 @@
  * allocates a raw map level using the given datum type.
  *
  * * This does not perform **any** generation or processing on the level, including replacing baseturfs!
- * * This **will** call the level's on_loaded_immediate and on_loaded_finalize.
+ * * This **will** call the level's context pre/post init hooks.
  * * You usually want load_level() instead, this is instead the equivalent of just incrementing world.maxz.
  * * Any level passed in or returned from this belongs to SSmapping; you are not allowed to keep direct references to it
  *   in other datastructures.
@@ -191,40 +191,46 @@
  *
  * if it doesn't have a file, we'll change all the turfs to the given baseturf and set atmos/whatever.
  *
+ * * This will fire initialize and post-initialize on the dmm_context.
+ *
  * @params
  * * instance - level to load
+ * * use_dmm_context - use the given map_context for the loader. This is used to create the dmm_context for the level.
  * * use_area_cache - use the given list as the area cache for the DMM loader. if none is provided, one will be created.
- * * use_dmm_context - use the given dmm_context for the loader. if none is provided, one will be created.
- * * defer_for_group_load - defer things like generation callbacks. should generally only be internally used by SSmapping; the API can change at any time.
- * * out_generation_callbacks - generation callbacks emitted by on_load_immediate are put in here instead of executed, if we are deferring due to group load
  *
  * @return loaded context, or null on fail
  */
 /datum/controller/subsystem/mapping/proc/load_level(
 		datum/map_level/instance,
+		datum/map_context/map_context,
 		list/use_area_cache,
-		datum/dmm_context/use_dmm_context,
-		defer_for_group_load,
-		list/datum/callback/out_generation_callbacks,
 	)
 	UNTIL(!map_system_mutex)
 	map_system_mutex = TRUE
-	. = load_level_impl(
+
+	var/datum/dmm_context/dmm_context = load_level_impl(
 		instance,
+		map_context,
 		use_area_cache,
-		use_dmm_context,
-		defer_for_group_load,
-		out_generation_callbacks,
 	)
+
+	if(!dmm_context)
+		map_system_mutex = FALSE
+		return
+
+	if(SSatoms.initialized)
+		SSatoms.init_map_bounds(dmm_context.loaded_bounds)
+	dmm_context.execute_post_init()
+
 	map_system_mutex = FALSE
+	return dmm_context
 
 /datum/controller/subsystem/mapping/proc/load_level_impl(
 		datum/map_level/instance,
+		datum/map_context/map_context,
 		list/use_area_cache,
-		datum/dmm_context/use_dmm_context,
-		defer_for_group_load,
-		list/datum/callback/out_generation_callbacks,
 	)
+	RETURN_TYPE(/datum/dmm_context)
 	PRIVATE_PROC(TRUE)
 
 	var/datum/map_level/allocated_instance = allocate_level_impl(instance, FALSE)
@@ -232,12 +238,10 @@
 	ASSERT(instance.id)
 	ASSERT(instance == allocated_instance)
 
-	if(isnull(use_dmm_context))
-		use_dmm_context = create_dmm_context()
-	if(isnull(use_dmm_context.mangling_id))
-		use_dmm_context.mangling_id = "level-[instance.mangling_id || instance.id]"
+	var/datum/dmm_context/dmm_context = map_context.create_blank_dmm_context()
 
-	var/datum/dmm_context/loaded_context
+	for(var/datum/map_injection/injection in instance.injections)
+		dmm_context.register_injection(injection)
 
 	if(instance.base_area)
 		var/area/level_area_type = instance.base_area
@@ -268,7 +272,7 @@
 		if(!instance.load_crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
 			CRASH("tried to load a map that would overrun the world bounds")
 
-		loaded_context = parsed.load(
+		dmm_context = parsed.load(
 			real_x,
 			real_y,
 			real_z,
@@ -276,39 +280,21 @@
 			place_on_top = FALSE,
 			orientation = instance.load_orientation,
 			area_cache = use_area_cache,
-			context = use_dmm_context,
+			context = dmm_context,
 		)
 
-		ASSERT(loaded_context.success)
 	else
-		// this is not a real map path
-		loaded_context = use_dmm_context
-		loaded_context.mark_used()
-		loaded_context.set_empty_load()
-		loaded_context.success = TRUE
+		dmm_context.set_empty_load()
+
+	ASSERT(dmm_context.success)
 
 	// immediately update munltiz cache
 	rebuild_multiz_lookup(instance.z_index)
 
-	// fire context immediately
-	loaded_context.execute_postload()
+	// fire pre-init hooks
+	dmm_context.execute_pre_init()
 
-	// fire instance on load hooks
-	var/list/datum/callback/generation_callbacks = list()
-	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
-
-	// fire finalize and generation callbacks if not deferred
-	if(!defer_for_group_load)
-		for(var/datum/callback/generation_callback as anything in generation_callbacks)
-			generation_callback.Invoke()
-		if(!SSatoms.initialized)
-			SSatoms.init_map_bounds(loaded_context.loaded_bounds)
-		instance.on_loaded_finalize(instance.z_index)
-		instance.rebuild_multiz()
-	else
-		out_generation_callbacks += generation_callbacks
-
-	return loaded_context
+	return dmm_context
 
 /**
  * destroys a loaded level and frees it for later usage

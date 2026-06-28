@@ -14,6 +14,8 @@
 	)
 	width = 192
 	height = 192
+	world_width = 192
+	world_height = 192
 	dependencies = list(
 		/datum/map/centcom/virgo_3b_colony,
 	)
@@ -283,10 +285,10 @@
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 	planet_path = /datum/planet/virgo3b
 
-/datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_noise_ores,
+	)
 
 /datum/map_level/tether/underdark
 	id = "tether-underdark"
@@ -305,20 +307,15 @@
 	struct_y = 1
 	struct_z = -1
 
-/datum/map_level/tether/underdark/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_seed_submaps(
 			150,
 			/area/mine/unexplored/underdark,
 			/datum/map_template/submap/level_specific/underdark,
-		)
+		),
+		new /datum/map_injection/legacy_noise_ores,
 	)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
 /datum/map_level/tether/plains
 	id = "tether-south-plains"
@@ -336,15 +333,10 @@
 	struct_y = -1
 	struct_z = 0
 
-/datum/map_level/tether/plains/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			150,
 			/area/tether/outpost/exploration_plains,
 			/datum/map_template/submap/level_specific/plains,
-		)
+		),
 	)

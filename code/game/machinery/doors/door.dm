@@ -25,6 +25,13 @@
 
 	hit_sound_brute = 'sound/weapons/smash.ogg'
 
+	//* Preload *//
+	/**
+	 * If set, erase us on mapload if an airlock is already there.
+	 */
+	var/tmp/map_impl_erase_if_another_door_exists = FALSE
+
+	//* Legacy Below *//
 	var/mineral
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
@@ -48,6 +55,8 @@
 	var/atom/movable/overlay/c_animation = null
 
 	var/reinforcing = 0
+
+#warn mapload trample
 
 /obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()

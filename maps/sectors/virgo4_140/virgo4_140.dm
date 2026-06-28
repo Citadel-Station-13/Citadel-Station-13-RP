@@ -36,21 +36,19 @@
 	struct_y = 1
 	struct_z = 0
 
-/datum/map_level/sector/virgo4_140/cave/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_automata_caves/on_dmm,
+		new /datum/map_injection/legacy_seed_submaps(
 			225,
 			/area/tether_away/cave/unexplored/normal,
 			/datum/map_template/submap/level_specific/mountains/normal,
-		)
+		),
+		new /datum/map_injection/legacy_noise_ores(
+			null,
+			0.6,
+			0.5,
+		),
 	)
-	// todo: yield invoke generation
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 4, world.maxy - 4)
-	new /datum/random_map/noise/ore/beachmine(null, 1, 1, z_index, 64, 64)
 
 /datum/map_level/sector/virgo4_140/desert
 	id = "Virgo4Desert140"
@@ -62,15 +60,10 @@
 	struct_y = 1
 	struct_z = 0
 
-/datum/map_level/sector/virgo4_140/desert/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			225,
 			/area/tether_away/beach/desert/unexplored,
 			/datum/map_template/submap/level_specific/class_h,
-		)
+		),
 	)

@@ -1,0 +1,316 @@
+//* This file is explicitly licensed under the MIT license. *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
+
+/datum/jigsaw_buffer_enqueued
+	var/lower_left_grid_x
+	var/lower_left_grid_y
+	var/orientation
+	var/datum/prototype/jigsaw_template/template
+	var/datum/dmm_context/context
+
+/**
+ * * Does not fire off atom init.
+ */
+/datum/jigsaw_buffer_enqueued/proc/load_into_world(lower_left_x, lower_left_y) as /datum/dmm_context
+	#warn impl
+
+/**
+ * * All lists are immutable and potentially (likely) shared for efficiency.
+ */
+/datum/jigsaw_buffer_tile
+	var/grid_x
+	var/grid_y
+
+	var/blocked_off = FALSE
+
+/datum/jigsaw_buffer_tile/New(grid_x, grid_y)
+	src.grid_x = grid_x
+	src.grid_y = grid_y
+
+/datum/jigsaw_buffer_tile/enqueued
+	var/datum/jigsaw_buffer_enqueued/enqueued
+
+	var/list/north_match
+	var/list/north_require
+	var/list/north_exclude
+
+	var/list/south_match
+	var/list/south_require
+	var/list/south_exclude
+
+	var/list/east_match
+	var/list/east_require
+	var/list/east_exclude
+
+	var/list/west_match
+	var/list/west_require
+	var/list/west_exclude
+
+/datum/jigsaw_buffer_tile/enqueued/New(grid_x, grid_y, datum/jigsaw_buffer_enqueued/enqueued, datum/jigsaw_buffer_tile/tile)
+	..(grid_x, grid_y)
+
+	src.enqueued = enqueued
+
+	src.north_match = tile.north_match
+	src.north_require = tile.north_require
+	src.north_exclude = tile.north_exclude
+
+	src.south_match = tile.south_match
+	src.south_require = tile.south_require
+	src.south_exclude = tile.south_exclude
+
+	src.east_match = tile.east_match
+	src.east_require = tile.east_require
+	src.east_exclude = tile.east_exclude
+
+	src.west_match = tile.west_match
+	src.west_require = tile.west_require
+	src.west_exclude = tile.west_exclude
+
+/datum/jigsaw_buffer_tile/enqueued/Destroy()
+	src.enqueued = null
+	return ..()
+
+/datum/jigsaw_buffer_tile/block_off
+	blocked_off = TRUE
+
+/**
+ * Datum used to hold current state for a jigsaw dungeon generation.
+ */
+/datum/jigsaw_buffer
+	var/width
+	var/height
+	/**
+	 * Grid. This is a flat spatial grid with width x height of the intended generation.
+	 * * This is indexed as [x + width * (y - 1)], starting at 1,1 as lower left.
+	 * * Value is a /datum/jigsaw_buffer_tile or null
+	 */
+	var/list/grid
+
+	/**
+	 * Loaded into world?
+	 */
+	var/loaded = FALSE
+
+	/**
+	 * List of enqueued placements.
+	 */
+	var/list/datum/jigsaw_buffer_enqueued/enqueued = list()
+	/**
+	 * List of map contexts.
+	 */
+	var/list/datum/map_context/enqueued_contexts = list()
+
+/datum/jigsaw_buffer/New(width, height)
+	src.width = width
+	src.height = height
+
+	src.grid = new /list(src.width * src.height)
+
+/datum/jigsaw_buffer/Destroy()
+	cleanup()
+	return ..()
+
+/datum/jigsaw_buffer/proc/get_tile_width()
+	return src.width * TURF_ALIGNMENT
+
+/datum/jigsaw_buffer/proc/get_tile_height()
+	return src.height * TURF_ALIGNMENT
+
+/datum/jigsaw_buffer/proc/fits_in_world_at(lower_left_x, lower_left_y)
+	if(lower_left_x < 1 || lower_left_y < 1)
+		return FALSE
+
+	if(lower_left_x + src.get_tile_width() - 1 > world.maxx)
+		return FALSE
+
+	if(lower_left_y + src.get_tile_height() - 1 > world.maxy)
+		return FALSE
+
+	return TRUE
+
+/datum/jigsaw_buffer/proc/block_off_according_to_world_at(lower_left_x, lower_left_y, respect_worldgen_overwrite_flags)
+	// scan for obstructions
+	var/x_low = lower_left_x
+	var/y_low = lower_left_y
+	var/x_high = lower_left_x + src.get_tile_width() - 1
+	var/y_high = lower_left_y + src.get_tile_height() - 1
+
+	for(var/x_broad in x_low to x_high step TURF_ALIGNMENT)
+		for(var/y_broad in y_low to y_high step TURF_ALIGNMENT)
+			var/real_grid_x = floor((x_broad - x_low) / TURF_ALIGNMENT)
+			var/real_grid_y = floor((y_broad - y_low) / TURF_ALIGNMENT)
+
+			if(src.grid[real_grid_x + src.width * (real_grid_y - 1)])
+				continue
+
+			var/found_obstruction = FALSE
+			for(var/x_narrow in x_broad to x_broad + TURF_ALIGNMENT - 1)
+				if(found_obstruction)
+					break
+				for(var/y_narrow in y_broad to y_broad + TURF_ALIGNMENT - 1)
+					var/turf/T = locate(x_narrow, y_narrow, z)
+					var/area/A = T.loc
+
+					if(A.special)
+						found_obstruction = TRUE
+						break
+					if(!A.allow_worldgen_overwrite && respect_worldgen_overwrite_flags)
+						found_obstruction = TRUE
+						break
+
+			if(found_obstruction)
+				src.grid[real_grid_x + src.width * (real_grid_y - 1)] = new /datum/jigsaw_buffer_tile/block_off(real_grid_x, real_grid_y)
+				continue
+
+/datum/jigsaw_buffer/proc/load_into_world(lower_left_x, lower_left_y)
+	ASSERT(!src.loaded, "Buffer already loaded into world.")
+	loaded = TRUE
+
+	var/list/datum/dmm_context/loaded_contexts = list()
+
+	for(var/datum/jigsaw_buffer_enqueued/enqueued in src.enqueued)
+		var/datum/dmm_context/loaded_context = context.load_into_world(lower_left_x, lower_left_y)
+		loaded_contexts += loaded_context
+		context.execute_pre_init()
+
+	for(var/datum/dmm_context/loaded_context in loaded_contexts)
+		if(!SSatoms.initialized)
+			SSatoms.init_map_bounds(loaded_context.loaded_bounds)
+		loaded_context.execute_post_init()
+
+	for(var/datum/map_context/context in src.enqueued_contexts)
+		context.execute_post_init()
+
+/datum/jigsaw_buffer/proc/cleanup()
+	for(var/i in 1 to length(grid))
+		var/datum/jigsaw_buffer_tile/tile = grid[i]
+		if(tile)
+			qdel(tile)
+	grid = list()
+
+	QDEL_LIST(enqueued)
+	QDEL_LIST(enqueued_contexts)
+
+/datum/jigsaw_buffer/proc/template_fits_at(datum/prototype/jigsaw_template/template, lower_left_grid_x, lower_left_grid_y, orientation)
+	var/width = template.width
+	var/height = template.height
+
+	var/sideways = orientation & (EAST|WEST)
+	var/real_width = sideways? height : width
+	var/real_height = sideways? width : height
+
+	if(lower_left_grid_x < 1 || lower_left_grid_y < 1)
+		return FALSE
+	if(lower_left_grid_x + real_width - 1 > src.width)
+		return FALSE
+	if(lower_left_grid_y + real_height - 1 > src.height)
+		return FALSE
+
+	// sweep direction is static for the jigsaw pattern,
+	// and dependent on orientation for the buffer
+
+	// since this is a hot loop, it's unrolled for performance
+	// SOUTH is treated as neutral due to BYOND defaulting to SOUTH.
+
+	switch(orientation)
+		if(NORTH)
+			// 180 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (width - x)
+					var/real_y = lower_left_grid_y + (height - y)
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(SOUTH)
+			// 0 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + x - 1
+					var/real_y = lower_left_grid_y + y - 1
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(EAST)
+			// 270 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (height - y)
+					var/real_y = lower_left_grid_y + x - 1
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(WEST)
+			// 90 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (y - 1)
+					var/real_y = lower_left_grid_y + (width - x)
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+	return TRUE
+
+/**
+ * @return TRUE / FALSE
+ */
+/datum/jigsaw_buffer/proc/emplace_template_at(datum/prototype/jigsaw_template/template, lower_left_grid_x, lower_left_grid_y, orientation)
+	if(!template_fits_at(template, lower_left_grid_x, lower_left_grid_y, orientation))
+		return FALSE
+	return unsafe_emplace_template_at(template, lower_left_grid_x, lower_left_grid_y, orientation)
+
+/datum/jigsaw_buffer/proc/unsafe_emplace_template_at(datum/prototype/jigsaw_template/template, lower_left_grid_x, lower_left_grid_y, orientation)
+
+	// sweep direction is static for the jigsaw pattern,
+	// and dependent on orientation for the buffer
+
+	// since this is a hot loop, it's unrolled for performance
+	// SOUTH is treated as neutral due to BYOND defaulting to SOUTH.
+
+	switch(orientation)
+		if(NORTH)
+			// 180 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (width - x)
+					var/real_y = lower_left_grid_y + (height - y)
+					src.grid[real_x + src.width * (real_y - 1)] = new /datum/jigsaw_buffer_tile/enqueued(real_x, real_y, new /datum/jigsaw_buffer_enqueued(template, lower_left_grid_x, lower_left_grid_y, orientation), template.pattern[x + width * (y - 1)])
+					if(tile)
+						return FALSE
+
+		if(SOUTH)
+			// 0 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + x - 1
+					var/real_y = lower_left_grid_y + y - 1
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(EAST)
+			// 270 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (height - y)
+					var/real_y = lower_left_grid_y + x - 1
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+		if(WEST)
+			// 90 deg CW
+			for(var/x in 1 to width)
+				for(var/y in 1 to height)
+					var/real_x = lower_left_grid_x + (y - 1)
+					var/real_y = lower_left_grid_y + (width - x)
+					var/datum/jigsaw_buffer_tile/tile = src.grid[real_x + src.width * (real_y - 1)]
+					if(tile)
+						return FALSE
+
+	return TRUE
