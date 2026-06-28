@@ -3,10 +3,6 @@
 
 // --- Defines for 'jigsaw' module, a procedural dungeon / map generator. ---
 
-#if TURF_ALIGNMENT != 8
-	#error jigsaw maps were designed for 8x8 alignment. if you change this, rework .. everything?
-#endif
-
 //* Priorities *//
 
 /**

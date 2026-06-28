@@ -1,6 +1,10 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2026 Citadel Station Developers           *//
 
+#if TURF_ALIGNMENT != 8
+	#error jigsaw maps were designed for 8x8 alignment. if you change this, rework .. everything?
+#endif
+
 /**
  * A template for jigsaw generation.
  * * Templates are a multiple of alignment in width/height, plus one for border. This is
@@ -14,11 +18,6 @@
 	var/name = "Dungeon Fragment"
 	/// path on disk
 	var/path
-	/// alignment
-	/// * alignment is the minimum size and must be a multiple of the actual size.
-	/// * generations must only use templates with the same alignment.
-	/// * templates are emplaced with one tile of overlap for their alignment.
-	var/alignment = 8
 	/// load priority
 	/// * lower loads first, so anything with walls that are meant
 	///   to be joinable via trampling should be lower priority
