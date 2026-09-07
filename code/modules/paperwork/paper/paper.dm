@@ -646,6 +646,26 @@
 	icon_state = "scrap"
 	info = "<I>\[This page appears to have been ripped from a missing journal mid-entry.]</I><BR><I>...he Mayor says we just need to bunker down here and wait for rescue. Alice says the comms net has been down for a week and no one even knows we're in trouble. \nShe left for the other side of the ridge with a few of the miners last night. Mayor says that's the last we'll see of them. \nSELENIUM thinks keeping the curtains closed will be good enou-</I>"
 
+/obj/item/paper/lavaland/hamikit
+	name = "INSTRUCTIONS FOR USE OF HAMI KITS"
+	info = "<center><logo><br>\
+	<b>This is official Nanotrasen policy for the use of HAMI kits please make sure the following points are followed at all times failure to do so may result \
+	in harm to both the crew and the Scori. You may be held liable for failures to obey HAMI policy under Nanotrasen Corporate Regulations. </b><br><br> \
+	1. HAMI kits must only be given to trusted Scori. Exceptionally trusted Scori may vouch for Scori unfamiliar to the crew. Be mindful the Scori are not entitled to \
+	see the station. <br> \
+	2. Scori must relinquish long blades, axes, spears, firearms and pyrotechnic devices before being brought onto station. <br> \
+	3. Scori should not be brought onto the station while it is in alert. Even blue alert, Scori on the station in an emergency should be evacuated to Surt for their \
+	own safety. <br> \
+	4. Scori must consent to vaccination before entering station. Two vaccinations are provided, one is to be applied before boarding, one upon leaving the station. <br> \
+	5. Crew must obtain specific consent from the Scori for vaccination. Injecting Scori without consent may cause unwanted tensions. <br> \
+	6. Crew must escort visiting Scori through the station. Visiting Scori are considered outsider visitors for terms of access and should not be let into secure areas. <br> \
+	7. Crew must make sure the Scori must got interact with the following hazards: Alcoholic Drinks, Tobacco Products, Ambrosia Products, Narcotics, Caustic or Toxic Chemicals, \
+	Nuclear Radiation, Mechs, and Anomalous Artifacts. <br> \
+	8. Crew is to only feed the Scori small portions of station food until we have better understanding of the Scori diet and stomach. Do not give our new friends food poisoning. <br><br> \
+	Remember it is imperative that we put our best food forward with the Scori. Cultural misunderstandings may undo months of work to further the friendship between our peoples. \
+	Be mindful about what you say and do around our new friends. These rules are subject to change as we reach further levels of understanding with the Scorian people. Please \
+	check for updates."
+
 /*
 //These are being phased out of their respective POI maps due to clashes with the updated story, and their habit of appearing multiple times on a Z level due to POI Gen.
 

@@ -368,6 +368,9 @@
 /obj/structure/table/steel,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/multitool,
+/obj/item/storage/box/hami,
+/obj/item/paper/lavaland/hamikit,
+/obj/item/storage/box/hami,
 /turf/simulated/floor/tiled,
 /area/sector/surt/mining_base/common)
 "lX" = (
@@ -1865,6 +1868,9 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/sector/surt/mining_base/common)
+"Rq" = (
+/turf/simulated/floor/outdoors/dirt/indoors,
+/area/sector/surt/central/explored)
 "Ru" = (
 /obj/machinery/door/airlock{
 	id_tag = "mine_orange";
@@ -37654,7 +37660,7 @@ RL
 ZK
 ZK
 ZK
-ZK
+gy
 gy
 gy
 ZK
@@ -38039,7 +38045,7 @@ ZK
 RL
 RL
 ZK
-ZK
+gy
 gy
 gy
 gy
@@ -38232,9 +38238,9 @@ RL
 ZK
 ZK
 ZK
-ZK
-ZK
-ZK
+gy
+gy
+gy
 gy
 ZK
 ZK
@@ -38425,9 +38431,9 @@ ZK
 ZK
 RL
 ZK
-ZK
 gy
-ZK
+gy
+gy
 gy
 gy
 ZK
@@ -38618,7 +38624,7 @@ RX
 ZK
 RL
 ZK
-ZK
+gy
 gy
 gy
 gy
@@ -38811,7 +38817,7 @@ RX
 ZK
 ZK
 ZK
-ZK
+gy
 gy
 gy
 gy
@@ -39004,11 +39010,11 @@ RX
 ZK
 ZK
 ZK
-ZK
 gy
 gy
 gy
-ZK
+gy
+gy
 ZK
 ZK
 ZK
@@ -39197,12 +39203,12 @@ ZK
 ZK
 ZK
 ZK
-ZK
-ZK
-ZK
-ZK
-gy
-ZK
+Wq
+Rq
+Rq
+Rq
+Rq
+Wq
 ZK
 ZK
 ZK
@@ -39391,12 +39397,12 @@ ZK
 ZK
 RL
 ZK
-ZK
-ZK
-ZK
-ZK
-ZK
-ZK
+Wq
+Rq
+Rq
+Rq
+Rq
+Wq
 ZK
 ZK
 ZK
@@ -39585,12 +39591,12 @@ ZK
 ZK
 ZK
 ZK
-ZK
-ZK
-ZK
-ZK
-ZK
-ZK
+Wq
+Rq
+Rq
+Rq
+Rq
+Wq
 ZK
 ZK
 ZK
