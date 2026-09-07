@@ -44,6 +44,7 @@
 	icon_state = "large-silver"
 	desc = "A 5.56mm silver bullet casing."
 	projectile_type = /obj/projectile/bullet/rifle/a556/silver
+	materials_base = list(MAT_STEEL = 120, MAT_SILVER = 80)
 
 //* Magazines
 
