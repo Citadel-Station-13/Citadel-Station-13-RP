@@ -69,57 +69,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // Shuttles only need starting area, movement is handled by landmarks
 // All shuttles should now be under shuttle since we have smooth-wall code.
 
-/area/shuttle
-	requires_power = 0
-	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
-	sound_env = SMALL_ENCLOSED
-	area_limited_icon_smoothing = /area/shuttle
-
-/area/shuttle/arrival
-	name = "\improper Arrival Shuttle"
-	ambience = AMBIENCE_ARRIVALS
-
-/area/shuttle/supply
-	name = "\improper Supply Shuttle"
-	icon_state = "shuttle2"
-
-/area/shuttle/escape
-	name = "\improper Emergency Shuttle"
-	music = "music/escape.ogg"
-	requires_power = 0
-
-/area/shuttle/escape_pod1
-	name = "\improper Escape Pod One"
-	music = "music/escape.ogg"
-
-/area/shuttle/escape_pod2
-	name = "\improper Escape Pod Two"
-	music = "music/escape.ogg"
-
-/area/shuttle/escape_pod3
-	name = "\improper Escape Pod Three"
-	music = "music/escape.ogg"
-
-/area/shuttle/escape_pod4
-	name = "\improper Escape Pod Four"
-	music = "music/escape.ogg"
-
-/area/shuttle/escape_pod5
-	name = "\improper Escape Pod Five"
-	music = "music/escape.ogg"
-
-/area/shuttle/escape_pod6
-	name = "\improper Escape Pod Six"
-	music = "music/escape.ogg"
-
-/area/shuttle/large_escape_pod1
-	name = "\improper Large Escape Pod One"
-	music = "music/escape.ogg"
-
-/area/shuttle/large_escape_pod2
-	name = "\improper Large Escape Pod Two"
-	music = "music/escape.ogg"
-
 /area/cryo
 	name = "\improper Cryogenic Storage"
 
@@ -244,20 +193,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Small Cruiser Shuttle - Station"
 	icon_state = "blue2"
 
-// Excursion Shuttle
-/area/shuttle/excursion
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/excursion/general
-	name = "\improper Excursion Shuttle"
-
-/area/shuttle/excursion/cockpit
-	name = "\improper Excursion Shuttle Cockpit"
-
-/area/shuttle/excursion/cargo
-	name = "\improper Excursion Shuttle Cockpit"
-
 //Courser
 /area/shuttle/courser
 	requires_power = 1
@@ -313,20 +248,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/emt/cockpit
 	name = "\improper EMT Shuttle Cockpit"
 
-// Tourbus
-/area/shuttle/tourbus
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/tourbus/general
-	name = "\improper Tour Bus"
-
-/area/shuttle/tourbus/cockpit
-	name = "\improper Tour Bus Cockpit"
-
-/area/shuttle/tourbus/engines
-	name = "\improper Tour Bus Engines"
-
 // Antag
 /area/antag/antag_base
 	name = "\improper Syndicate Outpost"
@@ -345,11 +266,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Merc shuttle
 /area/shuttle/mercenary
 	name = "\improper Mercenary Shuttle"
-
-//Vox shuttle
-/area/shuttle/skipjack
-	name = "\improper Skipjack"
-	icon_state = "shuttle2"
 
 //Ninja shuttle
 /area/shuttle/ninja
@@ -3420,7 +3336,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	sound_env = SMALL_ENCLOSED
 	forced_ambience = list('sound/music/elevator/elevator1.ogg', 'sound/music/elevator/elevator2.ogg', 'sound/music/elevator/robocop-short.ogg')
 	requires_power = FALSE
-	area_limited_icon_smoothing = /area/turbolift
+	area_icon_smoothing_restrict = AREA_ICON_SMOOTHING_RESTRICT_TURBOLIFT
 
 	var/lift_floor_label = null
 	var/lift_floor_name = null

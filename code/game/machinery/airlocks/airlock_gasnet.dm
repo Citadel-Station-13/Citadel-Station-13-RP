@@ -37,6 +37,11 @@
 	/// * If there is more than one, it is undefined which one will be referenced,
 	///   but 'invalid' and 'invalid reasons' will be set.
 	var/obj/machinery/airlock_component/vent/vent
+	/// interface; there can only be one
+	/// * If there is more than one, it is undefined which one will be referenced,
+	///   but 'invalid' and 'invalid reasons' will be set.
+	var/obj/machinery/airlock_component/interface/interface
+	#warn hook
 
 	/// invalid setup
 	var/invalid = FALSE

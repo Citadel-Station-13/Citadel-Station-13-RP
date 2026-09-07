@@ -123,11 +123,6 @@
 		loading_map.on_loaded_immediate()
 		loaded_maps += loading_map
 
-		//! LEGACY
-		for(var/path in loading_map.legacy_assert_shuttle_datums)
-			SSshuttle.legacy_shuttle_assert(path)
-		//! END
-
 	emit_info_log("load - initializing [length(loaded_lockstep_levels)] levels...")
 
 	// fire generation and atom init after, now that everything has had a chance to load

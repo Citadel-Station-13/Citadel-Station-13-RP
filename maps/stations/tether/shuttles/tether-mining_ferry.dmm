@@ -1,0 +1,374 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/space/basic,
+/area/space)
+"b" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/shuttle/floor/voidcraft/light,
+/area/shuttle/auto/one_single_area)
+"d" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor/voidcraft/light,
+/area/shuttle/auto/one_single_area)
+"j" = (
+/turf/simulated/shuttle/wall/voidcraft/green,
+/area/shuttle/auto/one_single_area)
+"k" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/airless,
+/area/shuttle/auto/one_single_area)
+"n" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/closet/emcloset,
+/turf/simulated/shuttle/floor/voidcraft/light,
+/area/shuttle/auto/one_single_area)
+"o" = (
+/obj/machinery/computer/shuttle_control{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/auto/one_single_area)
+"p" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/voidcraft/light,
+/area/shuttle/auto/one_single_area)
+"q" = (
+/obj/structure/bed/chair/shuttle,
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/shuttle/floor/voidcraft/light,
+/area/shuttle/auto/one_single_area)
+"t" = (
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/auto/one_single_area)
+"u" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/auto/one_single_area)
+"x" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/closet/emcloset,
+/turf/simulated/shuttle/floor/voidcraft/light,
+/area/shuttle/auto/one_single_area)
+"y" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/auto/one_single_area)
+"H" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/voidcraft,
+/area/shuttle/auto/one_single_area)
+"I" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/obj/effect/shuttle_landmark{
+	base_area = /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar;
+	base_turf = /turf/simulated/floor/tiled;
+	landmark_tag = "mining_station";
+	name = "Mining Outpost Shuttle - Station"
+	},
+/turf/simulated/floor/airless,
+/area/shuttle/auto/one_single_area)
+"M" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_r"
+	},
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/auto/one_single_area)
+"T" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8;
+	icon_state = "propulsion_l"
+	},
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/auto/one_single_area)
+"U" = (
+/obj/machinery/door/airlock/voidcraft{
+	frequency = 2020;
+	id_tag = "mining_docking";
+	name = "mining outpost ferry hatch"
+	},
+/obj/map_helper/access_helper/airlock/station/supply/mining,
+/turf/simulated/shuttle/floor/voidcraft/dark,
+/area/shuttle/auto/one_single_area)
+"W" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/shuttle/floor/voidcraft/light,
+/area/shuttle/auto/one_single_area)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+T
+y
+y
+y
+M
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+j
+k
+k
+k
+j
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+j
+x
+W
+n
+j
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+U
+u
+u
+u
+U
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+U
+t
+t
+t
+U
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+j
+q
+t
+p
+j
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+j
+d
+t
+p
+j
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+j
+b
+H
+b
+j
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+j
+j
+o
+j
+j
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+j
+I
+j
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

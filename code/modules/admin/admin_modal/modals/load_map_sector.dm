@@ -4,7 +4,6 @@
 /**
  * Modal supporting arbitrary map loads.
  *
- * * Does not support shuttles yet. You must load shuttles separately!
  * * This will always create full /datum/map's. Uploading singular levels
  *   is no longer natively supported for admin tooling,
  *   as the game's backend orchestration
@@ -16,7 +15,7 @@
 /datum/admin_modal/load_map_sector
 	name = "Load Map Sector"
 	tgui_interface = "LoadMapSector"
-	tgui_update = FALSE
+	tgui_autoupdate = FALSE
 
 	//* buffer *//
 

@@ -7,7 +7,7 @@
 	jobban_role = ROLE_GHOSTCAFE
 	instantiator = /datum/ghostrole_instantiator/human/player_static/ghost_cafe
 
-/obj/structure/ghost_role_spawner/ghost_cafe
+/obj/structure/role_spawner/ghost_cafe
 	name = "Ghost Cafe Sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
@@ -97,7 +97,7 @@
 		H.remove_alt_appearance("ghost_cafe_disguise")
 		currently_disguised = FALSE
 
-/datum/prototype/role/ghostrole/ghost_cafe/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/ghost_cafe/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created,"<span class='boldwarning'>Ghosting is free!</span>")
 

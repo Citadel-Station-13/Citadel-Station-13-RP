@@ -47,7 +47,6 @@ GLOBAL_DATUM_INIT(cultnet, /datum/visualnet/cult, new)
 
 //* Runes
 var/global/list/rune_list = new()
-var/global/list/escape_list = list()
 var/global/list/endgame_exits = list()
 var/global/list/endgame_safespawns = list()
 //* Lavaland

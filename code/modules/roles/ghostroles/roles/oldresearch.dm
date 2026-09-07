@@ -20,24 +20,24 @@
 		if("Scientist")
 			return /datum/outfit/old_research/scientist
 
-/obj/structure/ghost_role_spawner/old_research
+/obj/structure/role_spawner/old_research
 	role_type = /datum/prototype/role/ghostrole/old_research
 	name = "old cryogenics pod"
 	desc = "A humming cryo pod. You can barely recognise a security uniform underneath the built up ice. The machine is attempting to wake up its occupant."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 
-/obj/structure/ghost_role_spawner/old_research/Destroy()
+/obj/structure/role_spawner/old_research/Destroy()
 	new /obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
 
-/obj/structure/ghost_role_spawner/old_research/security
+/obj/structure/role_spawner/old_research/security
 	role_params = list("role" = "Officer")
 
-/obj/structure/ghost_role_spawner/old_research/engineer
+/obj/structure/role_spawner/old_research/engineer
 	role_params = list("role" = "Engineer")
 
-/obj/structure/ghost_role_spawner/old_research/scientist
+/obj/structure/role_spawner/old_research/scientist
 	role_params = list("role" = "Scientist")
 
 /datum/outfit/old_research/security

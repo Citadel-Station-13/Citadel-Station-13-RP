@@ -12,13 +12,6 @@
 		/datum/map_level/sector/sky_planet/ground_east,
 	)
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/voidline/redcomet,
-		/datum/shuttle/autodock/overmap/voidline/bonnethead,
-		/datum/shuttle/autodock/overmap/voidline/paripari,
-		/datum/shuttle/autodock/overmap/voidline/crescend,
-	)
-
 /datum/map_level/sector/sky_planet
 	traits = list(
 		ZTRAIT_GRAVITY,

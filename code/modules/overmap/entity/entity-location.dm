@@ -44,3 +44,6 @@
 /obj/overmap/entity/proc/get_owned_z_indices()
 	RETURN_TYPE(/list)
 	return location ? location.get_owned_z_indices() : list()
+
+/obj/overmap/entity/proc/contains_atom(atom/A)
+	return location ? location.contains_atom(A) : FALSE

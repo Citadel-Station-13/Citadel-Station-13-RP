@@ -9365,7 +9365,7 @@
 /turf/simulated/floor/plating,
 /area/bridge/strelka/deck3)
 "DS" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /obj/item/gps/internal/base{

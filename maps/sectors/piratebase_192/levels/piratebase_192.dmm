@@ -412,7 +412,7 @@
 "dC" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
-/obj/structure/fuel_port/heavy{
+/obj/structure/shuttle_fuel_port/heavy{
 	pixel_x = -32
 	},
 /obj/structure/cable/cyan{
@@ -4891,7 +4891,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/bridge)
 "RB" = (
-/obj/machinery/computer/shuttle_control/explore/pirate{
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,

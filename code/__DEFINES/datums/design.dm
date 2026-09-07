@@ -73,6 +73,9 @@ DEFINE_BITFIELD(design_flags, list(
 //if it scans? it goes here.
 #define DESIGN_SUBCATEGORY_SCANNING "Scanning Equipment"
 
+// For shuttles
+#define DESIGN_SUBCATEGORY_SHUTTLE "Shuttle Equipment"
+
 //AI subcategories
 #define DESIGN_SUBCATEGORY_LAWS "Laws"
 #define DESIGN_SUBCATEGORY_CORE "Cores"

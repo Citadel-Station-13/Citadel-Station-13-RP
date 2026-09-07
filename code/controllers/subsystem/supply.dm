@@ -19,8 +19,6 @@ SUBSYSTEM_DEF(supply)
 	var/list/adm_order_history = list()		// Complete history of all orders, for admin use
 	var/list/adm_export_history = list()	// Complete history of all crates sent back on the shuttle, for admin use
 	// Shuttle Movement
-	var/movetime = 1200
-	var/datum/shuttle/autodock/ferry/supply/shuttle
 
 // TODO - Refactor to use the Supply Subsystem (SSsupply)
 
@@ -71,29 +69,12 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/fire(resumed)
 	points += max(0, ((world.time - last_fire) / 10) * points_per_second)
 
-// To stop things being sent to CentCom which should not be sent to centcom. Recursively checks for these types.
-/datum/controller/subsystem/supply/proc/forbidden_atoms_check(atom/A)
-	if(isliving(A))
-		return 1
-	if(istype(A,/obj/item/disk/nuclear))
-		return 1
-	if(istype(A,/obj/machinery/nuclearbomb))
-		return 1
-	if(istype(A,/obj/item/radio/beacon))
-		return 1
-	if(istype(A,/obj/item/perfect_tele_beacon))
-		return 1
-
-	for(var/atom/B in A.contents)
-		if(.(B))
-			return 1
-
 // Selling
 /datum/controller/subsystem/supply/proc/sell()
-	// Loop over each area in the supply shuttle
-	for(var/area/subarea in shuttle.shuttle_area)
-		callHook("sell_shuttle", list(subarea));
-		for(var/atom/movable/MA in subarea)
+	var/list/turf/region = GLOB.global_ferry_supply_shuttle_controller?.shuttle?.shuttle_turfs_here()
+	for(var/turf/turf as anything in region)
+		callHook("sell_turf", list(turf));
+		for(var/obj/MA in turf)
 			if(MA.anchored)
 				continue
 
@@ -106,7 +87,7 @@ SUBSYSTEM_DEF(supply)
 			// Must be in a crate!
 			if(istype(MA,/obj/structure/closet/crate))
 				var/obj/structure/closet/crate/CR = MA
-				callHook("sell_crate", list(CR, subarea))
+				callHook("sell_crate", list(CR))
 
 				points += points_per_money * CR.get_worth(GET_WORTH_FLAGS_SUPPLY_DETECTION)
 				var/find_slip = 1
@@ -172,18 +153,19 @@ SUBSYSTEM_DEF(supply)
 /datum/controller/subsystem/supply/proc/get_clear_turfs()
 	var/list/clear_turfs = list()
 
-	for(var/area/subarea in shuttle.shuttle_area)
-		for(var/turf/T in subarea)
-			if(T.density)
+	var/list/potential = GLOB.global_ferry_supply_shuttle_controller?.shuttle?.shuttle_turfs_here()
+
+	for(var/turf/T in potential)
+		if(T.density)
+			continue
+		var/occupied = 0
+		for(var/atom/A in T.contents)
+			if((A.atom_flags & ATOM_ABSTRACT))
 				continue
-			var/occupied = 0
-			for(var/atom/A in T.contents)
-				if((A.atom_flags & ATOM_ABSTRACT))
-					continue
-				occupied = 1
-				break
-			if(!occupied)
-				clear_turfs += T
+			occupied = 1
+			break
+		if(!occupied)
+			clear_turfs += T
 
 	return clear_turfs
 

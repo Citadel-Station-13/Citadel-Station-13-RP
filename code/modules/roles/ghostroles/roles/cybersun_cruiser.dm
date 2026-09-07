@@ -42,20 +42,20 @@
 /datum/ghostrole_instantiator/human/random/cybersun/captain
 	equip_outfit = /datum/outfit/syndicate_empty/SBC/assault/captain
 
-/obj/structure/ghost_role_spawner/syndicate
+/obj/structure/role_spawner/syndicate
 	name = "Syndicate Operative"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	qdel_on_deplete = TRUE
 	role_type = null
 
-/obj/structure/ghost_role_spawner/syndicate/battlecruiser
+/obj/structure/role_spawner/syndicate/battlecruiser
 	role_type = /datum/prototype/role/ghostrole/cybersun/ship
 
-/obj/structure/ghost_role_spawner/syndicate/battlecruiser/assault
+/obj/structure/role_spawner/syndicate/battlecruiser/assault
 	role_type = /datum/prototype/role/ghostrole/cybersun/assault
 
-/obj/structure/ghost_role_spawner/syndicate/battlecruiser/captain
+/obj/structure/role_spawner/syndicate/battlecruiser/captain
 	role_type = /datum/prototype/role/ghostrole/cybersun/captain
 
 /datum/outfit/syndicate_empty

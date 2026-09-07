@@ -18,7 +18,7 @@
 			params["fluff"] = "tourist"
 	return ..()
 
-/datum/prototype/role/ghostrole/hermit/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/hermit/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/flavour_text = "Each day you barely scrape by, and between the terrible conditions of your makeshift shelter, \
 	the hostile creatures, and the relentless yawn of the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
@@ -70,7 +70,7 @@
 	return outfit
 
 //Malfunctioning cryostasis sleepers: Spawns in makeshift shelters in lavaland. Ghosts become hermits with knowledge of how they got to where they are now.
-/obj/structure/ghost_role_spawner/hermit
+/obj/structure/role_spawner/hermit
 	name = "malfunctioning cryostasis sleeper"
 	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."
 	icon = 'icons/obj/spawners.dmi'
@@ -78,6 +78,6 @@
 	role_type = /datum/prototype/role/ghostrole/hermit
 	qdel_on_deplete = TRUE
 
-/obj/structure/ghost_role_spawner/hermit/Destroy()
+/obj/structure/role_spawner/hermit/Destroy()
 	// new /obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
 	return ..()

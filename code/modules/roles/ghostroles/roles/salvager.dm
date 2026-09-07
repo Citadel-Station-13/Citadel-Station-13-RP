@@ -11,7 +11,7 @@
 /datum/prototype/role/ghostrole/salvager/Instantiate(client/C, atom/loc, list/params)
 	return ..()
 
-/datum/prototype/role/ghostrole/salvager/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/salvager/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created, "<i> The GCSS Vevalia is ready to roll. We have job guys, we find wreck, and we salvage them, repair them even. Ah, be carefull with larger companies like Nanotrasen, better not antagonise them, however they can make for good clients. Our standing with the FTU is also very good. </i>")
 
@@ -21,7 +21,7 @@
 /datum/ghostrole_instantiator/human/player_static/salvager/GetOutfit(client/C, mob/M, list/params)
 		return new /datum/outfit/salvager
 
-/obj/structure/ghost_role_spawner/salvager
+/obj/structure/role_spawner/salvager
 	name = "Salvager's Telepad"
 	desc = "You arrived from here."
 	role_type = /datum/prototype/role/ghostrole/salvager

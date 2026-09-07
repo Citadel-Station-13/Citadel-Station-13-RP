@@ -1,0 +1,344 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/space/basic,
+/area/space)
+"b" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"c" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"i" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"j" = (
+/obj/machinery/computer/shuttle_control{
+	req_one_access = list()
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"p" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"q" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"t" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/shuttle/plating/carry,
+/area/shuttle/auto/one_single_area)
+"u" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/tether/surfacebase/shuttle_pad;
+	base_turf = /turf/simulated/floor/reinforced;
+	docking_controller = "tether_pad_airlock";
+	landmark_tag = "tether_backup_low";
+	name = "Surface Hangar"
+	},
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"v" = (
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "tether_shuttle_hatch";
+	locked = 1;
+	name = "Shuttle Hatch";
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"x" = (
+/turf/simulated/shuttle/wall,
+/area/shuttle/auto/one_single_area)
+"E" = (
+/obj/structure/shuttle/window,
+/turf/simulated/shuttle/plating/airless,
+/area/shuttle/auto/one_single_area)
+"S" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"U" = (
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/auto/one_single_area)
+"Y" = (
+/obj/structure/shuttle/engine/heater,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/shuttle/plating/airless,
+/area/shuttle/auto/one_single_area)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+x
+x
+x
+v
+x
+x
+x
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+E
+p
+b
+u
+i
+Y
+t
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+E
+j
+U
+U
+q
+Y
+t
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+E
+S
+c
+U
+q
+Y
+t
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+x
+x
+x
+x
+x
+x
+x
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

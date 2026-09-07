@@ -37,19 +37,6 @@
 
 	//* LEGACY BELOW *//
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/excursion/strelka,
-		/datum/shuttle/autodock/ferry/emergency/escape/strelka,
-		/datum/shuttle/autodock/ferry/supply/cargo/strelka,
-		/datum/shuttle/autodock/overmap/emt/strelka,
-		/datum/shuttle/autodock/overmap/civvie/strelka,
-		/datum/shuttle/autodock/overmap/trade/personalmicro1,
-		/datum/shuttle/autodock/overmap/trade/personalmicro2,
-		/datum/shuttle/autodock/overmap/trade/personalmicro3,
-		/datum/shuttle/autodock/overmap/trade/personalmicro4,
-		/datum/shuttle/autodock/ferry/belter,
-	)
-
 	full_name = "NEV Strelka"
 
 	use_overmap = TRUE
@@ -172,7 +159,6 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
-		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/open
 	struct_x = 0

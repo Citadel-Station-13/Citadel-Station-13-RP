@@ -193,6 +193,15 @@
 	return (arctan(vel_y, vel_x) + 360) % 360
 
 /**
+ * move to the outside of another entity
+ */
+/obj/overmap/entity/proc/move_outside(obj/overmap/entity/other, copy_velocity)
+	if(copy_velocity)
+		copy_physics_pos_vel(other)
+	else
+		copy_physics_pos(other)
+
+/**
  * gets our movement (non-angular) speed in overmaps units per second
  */
 /obj/overmap/entity/proc/get_abstracted_speed()

@@ -60,7 +60,7 @@ ADMIN_VERB_DEF(narrate_quick, R_ADMIN, "Narrate (Quick)", "Perform narration.", 
 		else
 			// sigh make this better later
 			for(var/client/C as anything in GLOB.clients)
-				if(get_overmap_sector(C.mob) == resolved)
+				if(SSovermaps.get_enclosing_overmap_entity(C.mob) == resolved)
 					targets += C.mob
 	else if(use_direct)
 		var/atom/movable/resolved = use_viewers.resolve()

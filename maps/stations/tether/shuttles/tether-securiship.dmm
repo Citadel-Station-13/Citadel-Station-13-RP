@@ -1,0 +1,1493 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 8
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/engine)
+"bp" = (
+/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"bJ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_x = 27
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"fr" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/structure/bed/chair/bay/chair/padded/beige,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"fM" = (
+/obj/machinery/shipsensors{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/airless,
+/area/shuttle/auto/named/cockpit)
+"gb" = (
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/west_mount{
+	req_access = list();
+	req_one_access = list(11,67)
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/cockpit)
+"gz" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/bed/chair/bay/chair,
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/area/shuttle/auto/named/deck)
+"hd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/engine)
+"hS" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/bed/chair/bay/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/area/shuttle/auto/named/deck)
+"iw" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/cockpit)
+"ke" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait,
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/eris/techmaint_panels,
+/area/shuttle/auto/named/deck)
+"kj" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 2;
+	icon_state = "pdoor0";
+	id = "securiship blast";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"kD" = (
+/obj/structure/cable/cyan{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/north_mount{
+	alarms_hidden = 1;
+	req_access = list();
+	req_one_access = list(11,67)
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"mo" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"mL" = (
+/obj/machinery/airlock_component/interface/shuttle/port/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/deck)
+"nl" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"nt" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"nx" = (
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/cockpit)
+"nH" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/shuttle_aligner/port/two_wide/left_aligned/east/primary,
+/turf/simulated/floor/tiled/eris/techmaint_panels,
+/area/shuttle/auto/named/deck)
+"oz" = (
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"pN" = (
+/obj/machinery/airlock_peripheral/sensor/button/hardmapped,
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/deck)
+"qr" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"qX" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"rU" = (
+/obj/machinery/computer/ship/engines{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/cockpit)
+"rX" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/engine)
+"yK" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/engine)
+"zm" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/engine)
+"zy" = (
+/obj/structure/bed/chair/bay/chair/padded/beige{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"zU" = (
+/obj/machinery/computer/ship/helm{
+	req_one_access = list(67,58)
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/cockpit)
+"Ba" = (
+/obj/machinery/atmospherics/component/unary/engine{
+	dir = 1
+	},
+/turf/simulated/floor/airless,
+/area/shuttle/auto/named/engine)
+"Ce" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/structure/table/standard,
+/obj/item/tank/phoron,
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"DQ" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/deck)
+"DY" = (
+/obj/machinery/computer/ship/sensors{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/cockpit)
+"Eb" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"En" = (
+/obj/machinery/computer/shuttle_control{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor,
+/area/shuttle/auto/named/deck)
+"EL" = (
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/area/shuttle/auto/named/deck)
+"GT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/engine)
+"Hg" = (
+/obj/structure/bed/chair/bay/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/area/shuttle/auto/named/deck)
+"Hn" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/power/apc/east_mount{
+	req_access = list();
+	req_one_access = list(11,67)
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"HX" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"IL" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/cockpit)
+"KG" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"Nd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"Pa" = (
+/obj/structure/bed/chair/bay/chair/padded/beige{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "securiship blast";
+	name = "Shuttle Blast Doors";
+	pixel_x = -28;
+	pixel_y = 28;
+	req_access = list(67)
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/cockpit)
+"Pz" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/airlock_component/door_linker/outdoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/eris/techmaint_panels,
+/area/shuttle/auto/named/deck)
+"PH" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/tiled/eris/dark/techfloor,
+/area/shuttle/auto/named/deck)
+"PK" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "securiship blast";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/deck)
+"QN" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/table/rack/shelf,
+/obj/machinery/air_alarm{
+	breach_detection = 0;
+	dir = 8;
+	pixel_x = 25;
+	rcon_setting = 3;
+	report_danger_level = 0
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor,
+/area/shuttle/auto/named/deck)
+"QQ" = (
+/obj/structure/bed/chair/bay/chair/padded/beige{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor,
+/area/shuttle/auto/named/deck)
+"SC" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = "securiship_bay";
+	landmark_tag = "tether_securiship_dock";
+	name = "Securiship Dock"
+	},
+/obj/machinery/airlock_component/controller/vacuum_cycle/hardmapped{
+	airlock_id = "main"
+	},
+/obj/machinery/airlock_peripheral/panel/hardmapped/west_mount,
+/obj/structure/airlock_interconnect/hardmapped,
+/obj/map_helper/airlock_linker{
+	set_controller_id = "main"
+	},
+/turf/simulated/floor/tiled/eris/techmaint_cargo,
+/area/shuttle/auto/named/deck)
+"SN" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/eris/techmaint_panels,
+/area/shuttle/auto/named/deck)
+"SU" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"Te" = (
+/obj/machinery/door/window/brigdoor/eastleft,
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/area/shuttle/auto/named/deck)
+"TF" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/atmospherics/portables_connector/aux,
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/floor_decal/industrial/outline/grey,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"TN" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/bay/chair/padded/beige{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"Um" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "securiship blast";
+	name = "Shuttle Blast Doors";
+	opacity = 0
+	},
+/obj/spawner/window/low_wall/reinforced/firelocks,
+/turf/simulated/floor/plating,
+/area/shuttle/auto/named/cockpit)
+"Uo" = (
+/obj/machinery/atmospherics/portables_connector/fuel{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"UF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 8
+	},
+/obj/machinery/airlock_peripheral/sensor/button/hardmapped/north_mount,
+/obj/map_helper/airlock_linker{
+	set_controller_id = "main"
+	},
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/shuttle/auto/named/deck)
+"VI" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/shuttle_fuel_port{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"VR" = (
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/map_helper/access_helper/airlock/station/external_airlock,
+/obj/machinery/airlock_component/handler/hardmapped,
+/obj/machinery/airlock_component/door_linker/indoors/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/eris/techmaint_panels,
+/area/shuttle/auto/named/deck)
+"WR" = (
+/turf/space/basic,
+/area/space)
+"XZ" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"Yc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 5
+	},
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"Yg" = (
+/turf/simulated/wall/rshull,
+/area/shuttle/auto/named/cockpit)
+"YO" = (
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/machinery/airlock_component/vent/hardmapped,
+/turf/simulated/floor/airless,
+/area/shuttle/auto/named/deck)
+"Zp" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/airlock_component/cycler/hardmapped,
+/obj/structure/airlock_interconnect/hardmapped,
+/turf/simulated/floor/tiled/eris/techmaint_cargo,
+/area/shuttle/auto/named/deck)
+"ZN" = (
+/obj/machinery/light,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/component/binary/pump/fuel,
+/turf/simulated/floor/tiled/eris/dark/techfloor_grid,
+/area/shuttle/auto/named/engine)
+"ZS" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/bed/chair/bay/chair,
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/area/shuttle/auto/named/deck)
+
+(1,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(2,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(3,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(4,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(5,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(6,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(7,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(8,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(9,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(10,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(11,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(12,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+fM
+Yg
+Yg
+Yg
+DQ
+PK
+PK
+DQ
+DQ
+DQ
+zm
+zm
+zm
+zm
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(13,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+Yg
+Yg
+rU
+gb
+TN
+zy
+ZS
+EL
+Hg
+DQ
+bp
+Ce
+hd
+Ba
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(14,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+Um
+zU
+Pa
+IL
+oz
+oz
+gz
+Te
+hS
+DQ
+kD
+XZ
+rX
+Ba
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(15,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+Um
+nx
+DY
+iw
+qX
+Eb
+fr
+qX
+qX
+ke
+HX
+VI
+ab
+zm
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(16,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+DQ
+TF
+bJ
+Hn
+KG
+SU
+oz
+nt
+qr
+SN
+Nd
+ZN
+yK
+zm
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(17,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+DQ
+DQ
+DQ
+DQ
+DQ
+UF
+oz
+PH
+QQ
+DQ
+mo
+Yc
+rX
+Ba
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(18,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+DQ
+mL
+SC
+Zp
+VR
+nl
+qr
+QN
+En
+DQ
+Uo
+Uo
+GT
+Ba
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(19,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+YO
+pN
+nH
+Pz
+DQ
+kj
+kj
+DQ
+kj
+DQ
+zm
+zm
+zm
+zm
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(20,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(21,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(22,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(23,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(24,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(25,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(26,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(27,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(28,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(29,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}
+(30,1,1) = {"
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+WR
+"}

@@ -4827,7 +4827,7 @@
 	},
 /area/awaymission/labs/command)
 "nN" = (
-/obj/machinery/computer/shuttle_control/mining,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor{
 	icon_state = "white"
 	},

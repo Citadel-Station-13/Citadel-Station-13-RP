@@ -14,13 +14,6 @@
 
 	//* LEGACY BELOW *//
 
-	legacy_assert_shuttle_datums = list(
-		/datum/shuttle/autodock/overmap/overmapdemo,
-		/datum/shuttle/autodock/ferry/ferrydemo,
-		/datum/shuttle/autodock/multi/multidemo,
-		/datum/shuttle/autodock/web_shuttle/webdemo,
-	)
-
 	full_name = "NSS Citadel Testing Facility"
 
 	use_overmap = TRUE
@@ -87,3 +80,11 @@
 	struct_x = 0
 	struct_y = 0
 	struct_z = 0
+
+/obj/overmap/entity/visitable/sector/citadel_minitest/station
+	name = "Minitest Station"	// Name of the location on the overmap.
+	desc = "The Citadel Minitest Station.  A small base useful for testing and loading quickly!"	// The description of the location on the overmap.
+	start_x = 10	// The X Value of where the Navpoint is on the Overmap
+	start_y = 10	// The Y Value of where the Navpoint is on the Overmap
+	// The waypoints that are avaliable once you are at this Navpoint
+	initial_generic_waypoints = list("nav_shared_space", "nav_station_inside", "nav_station_docking1", "nav_station_docking2")
