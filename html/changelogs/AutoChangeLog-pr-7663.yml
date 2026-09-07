@@ -1,0 +1,4 @@
+author: "GySgtMurphy"
+delete-after: True
+changes:
+  - bugfix: "fixed circuit messaging types so they work exonet nodes and NIF's."
