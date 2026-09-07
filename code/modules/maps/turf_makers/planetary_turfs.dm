@@ -117,6 +117,12 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/outdoors/ash_sand)
 	base_icon_state = "asteroid"
 	baseturfs = /turf/simulated/mineral/floor
 	initial_flooring = /datum/prototype/flooring/outdoors/lavaland
+	var/object_spawn_chance = 3
 
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one
+
+/turf/simulated/floor/outdoors/ash_sand/Initialize(mapload)
+	if(object_spawn_chance && prob(object_spawn_chance) && !check_density())
+		new /obj/random/surt_forage(src)
+	. = ..()

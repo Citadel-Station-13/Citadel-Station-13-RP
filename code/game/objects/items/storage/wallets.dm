@@ -113,7 +113,7 @@
 
 /obj/item/storage/wallet/poly/Initialize(mapload)
 	. = ..()
-	add_atom_color("#"+get_random_colour())
+	add_atom_color(get_random_colour())
 	update_icon()
 
 /obj/item/storage/wallet/poly/verb/change_color()

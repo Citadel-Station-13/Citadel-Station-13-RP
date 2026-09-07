@@ -1,0 +1,22 @@
+2026-08-18:
+  Shadowtail117:
+  - rscadd: Using the obstruction removal ballista will now prompt the local ATC to
+      issue a travel advisory about it.
+  timothyteakettle:
+  - bugfix: fix ghost roles not getting holosphere gear
+  - bugfix: 'fixes dead holospheres showing as alive in the orbit UI
+
+      :cl:'
+  - bugfix: 'fixes holosphere shells not getting real_name set resulting in quirky
+      behaviour
+
+      :cl:'
+2026-08-26:
+  GySgtMurphy:
+  - qol: Instead of writing exonet circuit's addresses to their descriptions which
+      is buggy, unreliable, and requires manual linking writes them to a pin that
+      can output to other circuits
+  - qol: Fixes mispelled datum IDs
+  - qol: removes what seems like a lien of debug code that was left in accidentally
+  - rscadd: add scori visitor care packages to the cargo list
+  - rscdel: removed emergency kit from Scori when spawning

@@ -905,9 +905,10 @@
 	outputs = list(
 		"address received"			= IC_PINTYPE_STRING,
 		"data received"				= IC_PINTYPE_STRING,
-		"secondary text received"	= IC_PINTYPE_STRING
+		"secondary text received"	= IC_PINTYPE_STRING,
+		"self address"				= IC_PINTYPE_STRING
 		)
-	activators = list("send data" = IC_PINTYPE_PULSE_IN, "on data received" = IC_PINTYPE_PULSE_OUT)
+	activators = list("send data" = IC_PINTYPE_PULSE_IN, "on data received" = IC_PINTYPE_PULSE_OUT, "push address" = IC_PINTYPE_PULSE_IN, "on push" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_MAGNET = 2, TECH_BLUESPACE = 2)
 	power_draw_per_use = 50
@@ -917,7 +918,7 @@
 	. = ..()
 	exonet = new(src)
 	exonet.make_address("EPv2_circuit-\ref[src]")
-	desc += "<br>This circuit's EPv2 address is: [exonet.address]"
+	set_pin_data(IC_OUTPUT, 4, exonet.address)
 
 /obj/item/integrated_circuit/input/EPv2/Destroy()
 	if(exonet)
@@ -927,13 +928,18 @@
 	return ..()
 
 /obj/item/integrated_circuit/input/EPv2/do_work(ord)
-	if(ord == 1)
-		var/target_address = get_pin_data(IC_INPUT, 1)
-		var/message = get_pin_data(IC_INPUT, 2)
-		var/text = get_pin_data(IC_INPUT, 3)
+	switch(ord)
+		if(1)
+			var/target_address = get_pin_data(IC_INPUT, 1)
+			var/message = get_pin_data(IC_INPUT, 2)
+			var/text = get_pin_data(IC_INPUT, 3)
 
-		if(target_address && istext(target_address))
-			exonet.send_message(target_address, message, text)
+			if(target_address && istext(target_address))
+				exonet.send_message(target_address, message, text)
+		if(3)
+			set_pin_data(IC_OUTPUT, 4, exonet.address)
+			push_data()
+			activate_pin(4)
 
 /obj/item/integrated_circuit/input/receive_exonet_message(var/atom/origin_atom, var/origin_address, var/message, var/text)
 	set_pin_data(IC_OUTPUT, 1, origin_address)

@@ -54,6 +54,13 @@
 	do_colouration = 1
 	legacy_use_additive_color_matrix = FALSE
 
+/datum/sprite_accessory/ears/bunny_tall/alt
+	name = "Bunny Tall Ears (alt)"
+	id = "ears_bunny_tall_alt"
+	icon_state = "bunny-tall-alt"
+	extra_overlay = "bunny-tall-alt-secondary"
+	extra_overlay2 = "bunny-tall-alt-tertiary"
+
 /datum/sprite_accessory/ears/bunny_white
 	name = "bunny, white"
 	id = "ears_bunny_white"

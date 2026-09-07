@@ -143,6 +143,8 @@
 	if(istype(H, /mob/living/carbon/human/dummy))
 		return
 
+	give_chameleon_gear(H)
+
 	holosphere_shell = new(H, H)
 	transform_component = H.AddComponent(/datum/component/custom_transform, holosphere_shell, null, null, FALSE)
 	holosphere_shell.transform_component = transform_component

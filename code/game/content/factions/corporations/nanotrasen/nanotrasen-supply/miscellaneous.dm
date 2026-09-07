@@ -298,3 +298,10 @@
 		/obj/item/device/walkpod = 3,
 	)
 	worth = 75
+
+/datum/supply_pack/nanotrasen/misc/hami
+	name = "H.A.M.I. Kits"
+	contains = list(
+		/obj/item/storage/box/hami = 2
+	)
+	worth = 500

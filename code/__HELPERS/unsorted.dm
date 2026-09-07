@@ -930,7 +930,7 @@ var/list/WALLITEMS = list(
 			if(length(temp_col )<2)
 				temp_col  = "0[temp_col]"
 			colour += temp_col
-	return colour
+	return "#[colour]"
 
 
 /atom/proc/get_light_and_color(atom/origin)

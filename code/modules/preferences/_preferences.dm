@@ -152,6 +152,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Hair alpha
 	var/hair_alpha = 255
 
+	/// Whether to use a custom runechat color. Uses eye color otherwise.
+	var/custom_floating_chat_color = 0
+	/// Actual runechat colors.
+	var/r_floating_chat = 255
+	var/g_floating_chat = 255
+	var/b_floating_chat = 255
+
 	//* ## Background Preferences
 	///Antag associated faction.
 	var/antag_faction = "None"

@@ -181,6 +181,14 @@
 	color = "#665c56"
 	taste_description = "ash"
 
+/datum/reagent/saltpeter
+	name = "Saltpeter"
+	id = "saltpeter"
+	description = "A chemical precursor often used in explosives and sometimes used in food."
+	reagent_state = REAGENT_SOLID
+	color = "#DDDDDD"
+	taste_description = "salt"
+
 /datum/reagent/gunpowder
 	name = "Gunpowder"
 	id = "gunpowder"

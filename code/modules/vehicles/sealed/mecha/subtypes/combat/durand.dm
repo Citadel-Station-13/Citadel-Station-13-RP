@@ -75,3 +75,18 @@
 	integrity = 25
 	integrity_max = 250	//Just slightly worse.
 	cell.charge = rand(0, (cell.charge/2))
+
+
+/obj/vehicle/sealed/mecha/combat/durand/redstar
+	name = "Red Star"
+	desc = "The Tajaran knock off of an aging exosuit. Though many components differ from the original it is at heart a Durand and its armed with a heavy Machinegun."
+	icon_state = "redstar"
+	initial_icon = "redstar"
+
+	integrity = 250
+	integrity_max = 250
+
+	wreckage = /obj/effect/decal/mecha_wreckage/durand/redstar
+
+	starting_equipment = list(
+		/obj/item/vehicle_module/weapon/ballistic/lmg_heavy)
