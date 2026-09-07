@@ -1,9 +1,9 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2025 Citadel Station Developers           *//
 
-ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a custom overmap.", VERB_CATEGORY_GAME)
+ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a custom overmap.", ADMIN_CATEGORY_GAME)
 	var/are_you_sure = tgui_alert(
-		invoking,
+		user,
 		"Instantiating overmaps is an advanced feature. \
 		The uploaded file is placed and instantiated as an overmap; only overmap tiles, overmap entities, and overmap tile entities \
 		should exist in the file, or you may have funny things happen and the server explode. Furthermore, you will have to link the new \
@@ -15,25 +15,25 @@ ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a cust
 	if(are_you_sure != "Yes")
 		return
 
-	var/map = invoking.prompt_for_file_or_null("Select overmap .dmm", "Instantiate Overmap")
+	var/map = user.prompt_for_file_or_null("Select overmap .dmm", "Instantiate Overmap")
 	if(!map)
 		return
 
 	var/datum/dmm_parsed/parsed_map = parse_map(map)
 
 	if(!parsed_map.parsed)
-		tgui_alert(invoking, "Failed to parse map.", "Parse Error")
+		tgui_alert(user, "Failed to parse map.", "Parse Error")
 		return
 
 	var/max_x = world.maxx - TURF_CHUNK_RESOLUTION * 2
 	var/max_y = world.maxy - TURF_CHUNK_RESOLUTION * 2
 
 	if(parsed_map.width >= max_x || parsed_map.height >= max_y)
-		tgui_alert(invoking, "Your map is too big for the current world size. Yours was [parsed_map.width]x[parsed_map.height], but maximum is: [max_x]x[max_y]", "Improper Dimensions")
+		tgui_alert(user, "Your map is too big for the current world size. Yours was [parsed_map.width]x[parsed_map.height], but maximum is: [max_x]x[max_y]", "Improper Dimensions")
 		return
 
 	var/are_you_really_sure = tgui_alert(
-		invoking,
+		user,
 		"Loading an overmap with size [parsed_map.width]x[parsed_map.height]. Does everything look okay?",
 		"Load Custom Overmap",
 		list("No", "Yes"),
@@ -44,7 +44,7 @@ ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a cust
 	// give the tgui popup time to be removed
 	sleep(5)
 
-	log_and_message_admins("is loading a new overmap with dimensions [parsed_map.width]x[parsed_map.height]", invoking)
+	log_and_message_admins("is loading a new overmap with dimensions [parsed_map.width]x[parsed_map.height]", user)
 	var/start_time = REALTIMEOFDAY
 	// welcome to hell
 	// allocate turf reservation and load at offset
@@ -72,4 +72,4 @@ ADMIN_VERB_DEF(load_custom_overmap, R_ADMIN, "Load Custom Overmap", "Load a cust
 	creating.initialize_inner_turfs()
 	// announce
 	var/end_time = REALTIMEOFDAY
-	log_and_message_admins("has loaded overmap [creating.id] with dimensions [creating.width]x[creating.height] at LL-bounds [llx], [lly], [llz] in [round((end_time - start_time) * 0.1, 0.1)] seconds", invoking)
+	log_and_message_admins("has loaded overmap [creating.id] with dimensions [creating.width]x[creating.height] at LL-bounds [llx], [lly], [llz] in [round((end_time - start_time) * 0.1, 0.1)] seconds", user)
