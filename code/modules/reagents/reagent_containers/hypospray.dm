@@ -555,3 +555,8 @@
 	desc = "A plain brass autoinjector with an esoteric label. ‘Take a day trip to the Field of Reeds.’"
 	icon_state = "ankh"
 	filled_reagents = list("zombiepowder" = 20)
+
+/obj/item/reagent_containers/hypospray/autoinjector/vaccine
+	name = "innoculation autoinjector"
+	desc = "An autoinjector loaded with a cocktail of vaccines and agents designed to minimize the risk of spreading disease."
+	filled_reagents = list("spaceacillin" = 5)

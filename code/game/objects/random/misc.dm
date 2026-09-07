@@ -1311,4 +1311,5 @@
 /obj/random/paintkit/durand/item_to_spawn()
 	return pick(/obj/item/kit/paint/durand,
 				/obj/item/kit/paint/durand/paladin,
-				/obj/item/kit/paint/durand/turtle)
+				/obj/item/kit/paint/durand/turtle,
+				/obj/item/kit/paint/durand/redstar)

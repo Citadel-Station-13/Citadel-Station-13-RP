@@ -239,8 +239,8 @@
 /datum/reagent/dexalin/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 24) //Vox breath phoron, oxygen is rather deadly to them
-	if(alien == IS_ALRAUNE)
-		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
+	if(alien == IS_ALRAUNE || alien == IS_SCORI)
+		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants and scorians
 	else if(alien == IS_SLIME && metabolism.total_processed_dose >= 15)
 		M.ceiling_chemical_effect(CE_PAINKILLER, 15)
 		if(prob(15))
@@ -265,8 +265,8 @@
 /datum/reagent/dexalinp/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	if(alien == IS_VOX)
 		M.adjustToxLoss(removed * 9)//Again, vox dont like O2
-	if(alien == IS_ALRAUNE)
-		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
+	if(alien == IS_ALRAUNE || alien == IS_SCORI)
+		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants and scorians
 	else if(alien == IS_SLIME && metabolism.total_processed_dose >= 10)
 		M.ceiling_chemical_effect(CE_PAINKILLER, 25)
 		if(prob(25))

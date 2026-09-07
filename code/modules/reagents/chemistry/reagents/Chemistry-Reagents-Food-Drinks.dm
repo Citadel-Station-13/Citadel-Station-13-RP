@@ -5485,7 +5485,7 @@
 	color = "#e0f569"
 	taste_description = "your tongue tingling"
 
-/datum/reagent/cersutsauce/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+/datum/reagent/cersutsauce/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	var/potency = 2
 	if(alien == IS_XENOHYBRID)
 		return
@@ -5497,3 +5497,12 @@
 		M.apply_effect(potency, AGONY, 0)
 	if(prob(5))
 		M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>")
+
+/datum/reagent/shimashsauce
+	name = "Siishma-Shimash"
+	id = "shimashsauce"
+	taste_mult = 5
+	description = "A tangy sauce made with shimash."
+	reagent_state = REAGENT_LIQUID
+	color = "#f2f0ef"
+	taste_description = "unbearable sourness"

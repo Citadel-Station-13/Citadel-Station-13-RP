@@ -72,12 +72,15 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		var/mob/mob_poi = mobthing
 		var/number_of_orbiters = length(mob_poi.get_all_orbiters())
 
+		var/datum/component/custom_transform/transform_component = mob_poi.GetComponent(/datum/component/custom_transform)
+		var/is_dead = mob_poi.stat == DEAD || transform_component?.get_current_stat() == DEAD
+
 		// ignore magical objects
 		if (isEye(mob_poi) || isvoice(mob_poi))
 			continue
 
 		var/name = mob_poi.real_name || mob_poi.name
-		if(mob_poi.stat == DEAD)
+		if(is_dead)
 			if(isobserver(mob_poi))
 				name += " \[ghost\]"
 			else
@@ -98,7 +101,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 			ghosts += list(serialized)
 			continue
 
-		if(mob_poi.stat == DEAD)
+		if(is_dead)
 			dead += list(serialized)
 			continue
 

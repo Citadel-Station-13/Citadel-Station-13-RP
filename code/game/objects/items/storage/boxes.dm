@@ -743,3 +743,14 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_single_weight_class = WEIGHT_CLASS_NORMAL
 	starts_with = list(/obj/item/reagent_containers/food/snacks/sliceable/holidaycake)
+
+/obj/item/storage/box/hami
+	name = "H.A.M.I. Kit"
+	desc = "A 'hearts and minds' initiative kit. Contains everything needed to bring a trusted scorian into the facility safely."
+	starts_with = list(
+		/obj/item/card/id/external/id_tribal,
+		/obj/item/clothing/mask/breath,
+		/obj/item/tank/emergency/carbon_dioxide,
+		/obj/item/reagent_containers/hypospray/autoinjector/vaccine,
+		/obj/item/reagent_containers/hypospray/autoinjector/vaccine
+	)

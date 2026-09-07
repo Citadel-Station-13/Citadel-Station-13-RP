@@ -410,8 +410,17 @@
 	name = "\"Sneaky Tortoise\" Durand customisation kit"
 	new_name = "Durand \"Sneaky Tortoise\""
 	new_desc = "A Durand with a deceptively simple, cartoonish paint job."
-	new_fluff = "This cartoonish paint job is based off of a long forgotten Spider Clan propaganda series. The turtle depicted by this paint job, Sneaky, was apparently real party dude."
+	new_fluff = "This cartoonish paint job is based off of a long forgotten Spider Clan propaganda series. The turtle depicted by this paint job, \
+	Sneaky, was apparently real party dude."
 	new_icon = "durand_turtle"
+
+/obj/item/kit/paint/durand/redstar
+	name = "\"Red Star\" Durand customisation kit"
+	new_name = "Durand \"Red Star\""
+	new_desc = "A Durand with the refitted paintjob of the People's Republic of Adhomai."
+	new_fluff = "The Redstar Durand is a variant of the original chassis shamelessly stolen by the People's Republic of Adhomai to modernize their military forces. \
+	The cheap paint used for it means the livery is often appropriated by other military forces often as a joke."
+	new_icon = "redstar"
 
 //H.O.N.K. kits.
 /obj/item/kit/paint/honker

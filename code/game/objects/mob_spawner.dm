@@ -162,7 +162,8 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 /obj/structure/mob_spawner/sandsifter
 	name = "Sand Sifter Colony"
 	desc = "A pile of rocks and other debris sand sifters often nest in."
-	icon_state = "boulder1"
+	icon = 'icons/obj/lavaland/lavaland_flora.dmi'
+	icon_state = "snails"
 	spawn_delay = 5 MINUTES
 	simultaneous_spawns = 8
 	mob_faction = MOB_IFF_FACTION_BIND_TO_MAP

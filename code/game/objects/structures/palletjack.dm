@@ -229,4 +229,4 @@
 
 /obj/structure/palletjack/random/Initialize(mapload)
 	. = ..()
-	overlay_color = "#[get_random_colour(FALSE, 32, 255)]"
+	overlay_color = get_random_colour(FALSE, 32, 255)

@@ -7086,6 +7086,46 @@ END CITADEL CHANGE */
 	reagents.add_reagent("protein", 3)
 	reagents.add_reagent("triglyceride", 1)
 
+/obj/item/reagent_containers/food/snacks/sirim
+	name = "Sirim"
+	desc = "A fungus native to Surt. It's highly effective at facilitating fermentation."
+	icon_state = "sirim"
+	nutriment_amt = 2
+	nutriment_desc = list("alcohol" = 1)
+
+/obj/item/reagent_containers/food/snacks/sirim/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("enzyme", 3)
+
+/obj/item/reagent_containers/food/snacks/rockhead
+	name = "Rockhead"
+	desc = "A hearty mushroom native to Surt."
+	icon_state = "rockhead"
+	nutriment_amt = 4
+	nutriment_desc = list("earthiness" = 1)
+
+/obj/item/reagent_containers/food/snacks/mothershair
+	name = "Mother's Hair"
+	desc = "A fungus native to Surt. It almost resembles crystalline growths."
+	icon_state = "mothershair"
+	nutriment_amt = 0
+	nutriment_desc = list("salt" = 1)
+
+/obj/item/reagent_containers/food/snacks/mothershair/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sodium", 3)
+
+/obj/item/reagent_containers/food/snacks/hangingroot
+	name = "Hanging Root"
+	desc = "A lichen native to Surt."
+	icon_state = "hangingroot"
+	nutriment_amt = 4
+	nutriment_desc = list("moss" = 1)
+
+/obj/item/reagent_containers/food/snacks/hangingroot/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("chlorine", 1)
+
 //Seasonals - Xmas
 
 /obj/item/reagent_containers/food/snacks/gingerbreadcookie

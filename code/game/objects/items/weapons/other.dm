@@ -385,6 +385,13 @@
 	w_class = WEIGHT_CLASS_SMALL
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone)
 
+/obj/item/siftershell
+	name = "sifter shell"
+	desc = "The hollowed out shell of a sand sifter. The process is universally fatal."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "shell"
+	w_class = WEIGHT_CLASS_SMALL
+
 /obj/item/condensedphlogiston
 	name = "condensed phlogiston"
 	desc = "Phlogiston stabilized into a putty-like solid. It is less volatile than raw phlogiston, requiring special circumstances to detonate."

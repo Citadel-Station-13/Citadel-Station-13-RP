@@ -1,6 +1,5 @@
-var/list/floating_chat_colors = list()
-
 /atom/movable
+	var/floating_chat_color = null
 	var/list/stored_chat_text
 
 /atom/movable/proc/animate_chat(message, var/datum/prototype/language/speaking = null, small, list/show_to, duration = 30)
@@ -28,9 +27,9 @@ var/list/floating_chat_colors = list()
 	if(length_char(message) > limit)
 		message = "[copytext_char(message, 1, limit)]..."
 
-	if(!floating_chat_colors[src])
-		floating_chat_colors[src] = get_random_colour(0,160,230)
-	style += "color: [floating_chat_colors[src]];"
+	if(!floating_chat_color)
+		floating_chat_color = get_random_colour(0,160,230)
+	style += "color:[floating_chat_color];"
 
 	// create 2 messages, one that appears if you know the language, and one that appears when you don't know the language
 	var/image/understood = generate_floating_text(src, capitalize(message), style, fontsize, duration, show_to)

@@ -48,8 +48,6 @@
 	cached_loadout_flags = flags
 	cached_loadout_role = role
 
-	give_chameleon_gear(source)
-
 	equip_loadout(source, loadout)
 
 // essentially a copy of the normal loadout behaviour and we then apply it to the chameleon outfit

@@ -4,6 +4,7 @@
 		return
 	if(force || !IS_DEAD(holosphere_shell))
 		holosphere_shell.name = H.name
+		holosphere_shell.real_name = H.name
 		try_exit_recharge_station()
 		if(transform_component.try_transform())
 			H.drop_held_items()

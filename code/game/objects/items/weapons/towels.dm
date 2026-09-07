@@ -39,4 +39,4 @@
 
 /obj/item/towel/random/Initialize(mapload)
 	. = ..()
-	add_atom_color("#"+get_random_colour())
+	add_atom_color(get_random_colour())

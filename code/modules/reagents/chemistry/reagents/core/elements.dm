@@ -57,9 +57,13 @@
 	color = "#d1db77"
 
 /datum/reagent/chlorine/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	if (alien == IS_SCORI)
+		return
 	M.take_random_targeted_damage(brute = 1*REM, brute = 0)
 
 /datum/reagent/chlorine/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
+	if (alien == IS_SCORI)
+		return
 	M.take_random_targeted_damage(brute = 1*REM, brute = 0)
 
 /datum/reagent/copper

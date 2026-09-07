@@ -48,6 +48,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["s_base"]				>> pref.s_base
 	S["body_alpha"]         >> pref.body_alpha
 	S["hair_alpha"]         >> pref.hair_alpha
+	S["Runechat_Color"]		>> pref.custom_floating_chat_color
+	S["Runechat_red"]		>> pref.r_floating_chat
+	S["Runechat_green"]		>> pref.g_floating_chat
+	S["Runechat_blue"]		>> pref.b_floating_chat
 
 /datum/category_item/player_setup_item/general/body/save_character(var/savefile/S)
 	S["hair_red"]			<< pref.r_hair
@@ -63,8 +67,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["skin_red"]			<< pref.r_skin
 	S["skin_green"]			<< pref.g_skin
 	S["skin_blue"]			<< pref.b_skin
-	S["hair_style"]	<< pref.h_style_id
-	S["facial_style"]	<< pref.f_style_id
+	S["hair_style"]			<< pref.h_style_id
+	S["facial_style"]		<< pref.f_style_id
 	S["grad_style_name"]	<< pref.grad_style
 	S["grad_wingstyle_name"]<< pref.grad_wingstyle
 	S["eyes_red"]			<< pref.r_eyes
@@ -86,6 +90,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["s_base"]				<< pref.s_base
 	S["body_alpha"]         << pref.body_alpha
 	S["hair_alpha"]         << pref.hair_alpha
+	S["Runechat_Color"]		<< pref.custom_floating_chat_color
+	S["Runechat_red"]		<< pref.r_floating_chat
+	S["Runechat_green"]		<< pref.g_floating_chat
+	S["Runechat_blue"]		<< pref.b_floating_chat
 
 /datum/category_item/player_setup_item/general/body/sanitize_character(var/savefile/S)
 	pref.r_hair			= sanitize_integer(pref.r_hair, 0, 255, initial(pref.r_hair))
@@ -123,6 +131,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.body_marking_ids &= GLOB.sprite_accessory_markings
 	if(!pref.bgstate || !(pref.bgstate in pref.bgstate_options))
 		pref.bgstate = "000"
+	if(pref.custom_floating_chat_color == null)
+		pref.custom_floating_chat_color = FALSE
+	pref.r_floating_chat	= sanitize_integer(pref.r_floating_chat, 0, 255, initial(pref.r_floating_chat))
+	pref.g_floating_chat 	= sanitize_integer(pref.g_floating_chat, 0, 255, initial(pref.g_floating_chat))
+	pref.b_floating_chat 	= sanitize_integer(pref.b_floating_chat, 0, 255, initial(pref.g_floating_chat))
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/body/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
@@ -254,6 +267,12 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				else
 					pref.body_descriptors[entry] = clamp(last_descriptors[entry], 1, LAZYLEN(descriptor.standalone_value_descriptors))
 
+	if(pref.custom_floating_chat_color)
+		character.floating_chat_color = rgb(pref.r_floating_chat, pref.g_floating_chat, pref.b_floating_chat)
+	else
+		character.floating_chat_color = rgb(pref.r_eyes, pref.g_eyes, pref.b_eyes)
+		if(rgb2hsv(character.floating_chat_color)[3] < 10) // no unreadable runetext for dark eyes
+			character.floating_chat_color = rgb(255, 255, 255)
 	return TRUE
 
 /datum/category_item/player_setup_item/general/body/content(datum/preferences/prefs, mob/user, data)
@@ -427,7 +446,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<b>Allow Synth markings:</b> <a href='?src=\ref[src];synth_markings=1'><b>[pref.synth_markings ? "Yes" : "No"]</b></a><br>"
 	. += "<b>Allow Synth color:</b> <a href='?src=\ref[src];synth_color=1'><b>[pref.synth_color ? "Yes" : "No"]</b></a><br>"
 	if(pref.synth_color)
-		. += "<a href='?src=\ref[src];synth2_color=1'>Change Color</a> [color_square(pref.r_synth, pref.g_synth, pref.b_synth)]"
+		. += "<a href='?src=\ref[src];synth2_color=1'>Change Color</a> [color_square(pref.r_synth, pref.g_synth, pref.b_synth)]<br>"
+	. += "<b>Use Custom Runechat Color:</b> <a href='?src=\ref[src];runechat_color=1'>[pref.custom_floating_chat_color ? "Yes" : "No"]</b></a><br>"
+	if(pref.custom_floating_chat_color)
+		. += "<a href='?src=\ref[src];runechat_color_select=1'>Change Color</a> [color_square(pref.r_floating_chat, pref.g_floating_chat, pref.b_floating_chat)]<br>"
 
 	. = jointext(.,null)
 
@@ -857,6 +879,19 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/new_hair_alpha = input(user, "Choose your character's hair alpha (Min [mob_species.minimum_hair_alpha] - Max [mob_species.maximum_hair_alpha])", "Character Preference", pref.hair_alpha) as num|null
 		pref.hair_alpha = min(max(round(new_hair_alpha),mob_species.minimum_hair_alpha),mob_species.maximum_hair_alpha)
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["runechat_color"])
+		pref.custom_floating_chat_color = !pref.custom_floating_chat_color
+		return PREFERENCES_REFRESH
+
+	else if(href_list["runechat_color_select"])
+		var/new_color = input(user, "Choose your character's floating chat color: ", "Character Preference", rgb(pref.r_floating_chat, pref.g_floating_chat, pref.b_floating_chat)) as color|null
+		if(new_color && CanUseTopic(user))
+			new_color = rgb2num(new_color)
+			pref.r_floating_chat = new_color[1]
+			pref.g_floating_chat = new_color[2]
+			pref.b_floating_chat = new_color[3]
+			return PREFERENCES_REFRESH
 
 	return ..()
 

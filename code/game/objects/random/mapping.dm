@@ -992,3 +992,16 @@
 				prob(1);/obj/structure/snowman/borg,
 				prob(1);/obj/structure/snowman/spider,
 				prob(1);/obj/machinery/crystal/ice)
+
+/obj/random/surt_forage
+	name = "random Surt forageables"
+	desc = "for various random things on Surt"
+	icon = 'icons/obj/lavaland/lavaland_flora.dmi'
+	icon_state = "hangingroot"
+
+/obj/random/surt_forage/item_to_spawn()
+	return pick(prob(20);/obj/structure/flora/lavaland/sirim,
+				prob(30);/obj/structure/flora/lavaland/rockhead,
+				prob(20);/obj/structure/flora/lavaland/mothershair,
+				prob(20);/obj/structure/flora/lavaland/hangingroot,
+				prob(5);/obj/structure/mob_spawner/sandsifter)

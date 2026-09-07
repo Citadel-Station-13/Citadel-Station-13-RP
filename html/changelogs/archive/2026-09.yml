@@ -1,0 +1,15 @@
+2026-09-04:
+  CharlesWedge:
+  - rscadd: A Durand Variant.
+  GySgtMurphy:
+  - rscadd: Added sifters, forageables, etc.
+  - rscdel: old sifter shells, no longer used or needed.
+  - tweak: Made scori immune to chlorine
+  - bugfix: fixed a few things related to scori hotsauce.
+  - imageadd: added some icons and images for sprites involved in sifters and forageables.
+  - code_imp: changed some code about stuff listed above.
+  its-helvi:
+  - rscadd: You can now select custom runechat colors for your blorbos.
+  - bugfix: Runechat colors no longer randomize.
+  timothyteakettle:
+  - rscadd: adds new bunny ears "bunny tall ears (alt)"

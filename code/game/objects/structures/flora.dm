@@ -113,6 +113,68 @@
 		visible_message("[user] pull the tubers clean from the frozen earth", "You finish harvesting the tubers.")
 	qdel(src)
 
+/obj/structure/flora/lavaland
+	name = "generic ashland flora"
+	desc = "You shouldn't be seeing this outlander! Report it to the buried ones at once!"
+	icon = 'icons/obj/lavaland/lavaland_flora.dmi'
+	icon_state = ""
+
+/obj/structure/flora/lavaland/sirim
+	name = "Sirim"
+	desc = "A fungus native to Surt. Its life cycle has very similar biochemical pathways to yeast."
+	icon_state = "sirim"
+
+/obj/structure/flora/lavaland/sirim/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/harvest_amount = rand(1, 4)
+	visible_message("[user] begins to gather sporocarps of the sirim.", "You begin gathering sirim sporocarps.")
+	if(do_after(user, 5 SECONDS))
+		for(var/i in 1 to harvest_amount)
+			new /obj/item/reagent_containers/food/snacks/sirim(src.loc)
+		visible_message("[user] finishes gathering sporocarps", "You finish harvesting the sporocarps.")
+	qdel(src)
+
+/obj/structure/flora/lavaland/rockhead
+	name = "Rockhead"
+	desc = "A fungus native to Surt. This one has been known to feature in scorian cooking."
+	icon_state = "rockhead"
+
+/obj/structure/flora/lavaland/rockhead/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/harvest_amount = rand(3, 6)
+	visible_message("[user] begins to gather sporocarps of the rockhead.", "You begin gathering rockhead sporocarps.")
+	if(do_after(user, 5 SECONDS))
+		for(var/i in 1 to harvest_amount)
+			new /obj/item/reagent_containers/food/snacks/rockhead(src.loc)
+		visible_message("[user] finishes gathering sporocarps", "You finish harvesting the sporocarps.")
+	qdel(src)
+
+/obj/structure/flora/lavaland/mothershair
+	name = "Mother's Hair"
+	desc = "A fungus native to Surt. It has an unusually mineral-like consistency."
+	icon_state = "mothershair"
+
+/obj/structure/flora/lavaland/mothershair/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/harvest_amount = rand(1, 3)
+	visible_message("[user] begins to gather strands of the Mother's hair.", "You begin gathering strands of Mother's hair.")
+	if(do_after(user, 5 SECONDS))
+		for(var/i in 1 to harvest_amount)
+			new /obj/item/reagent_containers/food/snacks/mothershair(src.loc)
+		visible_message("[user] finishes gathering strands", "You finish harvesting the strands.")
+	qdel(src)
+
+/obj/structure/flora/lavaland/hangingroot
+	name = "Hanging Root"
+	desc = "A rock with lichen hanging from it, resembling roots."
+	icon_state = "hangingroot"
+
+/obj/structure/flora/lavaland/hangingroot/attack_hand(mob/user, datum/event_args/actor/clickchain/e_args)
+	var/harvest_amount = rand(1, 5)
+	visible_message("[user] begins to gather strands of lichen.", "You begin gathering strands of lichen.")
+	if(do_after(user, 5 SECONDS))
+		for(var/i in 1 to harvest_amount)
+			new /obj/item/reagent_containers/food/snacks/hangingroot(src.loc)
+		visible_message("[user] finishes gathering lichen", "You finish harvesting the lichen.")
+	qdel(src)
+
 /obj/structure/flora/pottedplant
 	name = "potted plant"
 	desc = "Really ties the room together."

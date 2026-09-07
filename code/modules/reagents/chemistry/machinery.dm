@@ -35,7 +35,6 @@
 		/obj/item/stack/material/glass/phoronglass = list("platinum", "silicon", "silicon", "silicon"), //5 platinum, 15 silicon,
 		/obj/item/stack/material/silencium = list("nothing"),
 		/obj/item/stack/material/bone = list("bonemeal"),
-		/obj/item/stack/material/shell = list("calciumcarbonate"),
 		/obj/item/stack/ore/gold = list ("gold"), // Native gold means it's pure crystalline gold
 		/obj/item/stack/ore/silver = list ("silver"), // ditto for native silver
 		/obj/item/stack/ore/copper = list ("copper"),

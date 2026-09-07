@@ -27,6 +27,7 @@
 
 	mob_size = MOB_MINISCULE
 	pass_flags = ATOM_PASS_TABLE
+	movement_base_speed = 3 / 10
 	can_pull_size = WEIGHT_CLASS_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
@@ -39,10 +40,10 @@
 	mob_class = MOB_CLASS_ANIMAL
 	taser_kill = FALSE
 
-	bone_type = /obj/item/stack/material/shell
+	bone_type = /obj/item/siftershell
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/sandsifter
 	meat_amount = 2
-	bone_amount = 4
+	bone_amount = 1
 	exotic_amount = 0
 
 	holder_type = /obj/item/holder/sandsifter

@@ -186,6 +186,9 @@
 	name = "Durand wreckage"
 	icon_state = "durand-broken"
 
+	icon_scale_x = 1.5
+	icon_scale_y = 1.5
+
 /obj/effect/decal/mecha_wreckage/durand/Initialize(mapload)
 	. = ..()
 	var/list/parts = list(
@@ -201,6 +204,11 @@
 			var/part = pick(parts)
 			welder_salvage += part
 			parts -= part
+
+/obj/effect/decal/mecha_wreckage/durand/redstar
+	name = "Red Star wreckage"
+	icon_state = "redstar-broken"
+
 
 /obj/effect/decal/mecha_wreckage/phazon
 	name = "Phazon wreckage"

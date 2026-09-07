@@ -445,11 +445,11 @@
 	required_reagents = list("cersutpaste" = 1, "sugar" = 1, "pyrrhleanectar" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/gunpowder
-	name = "Gunpowder"
-	id = "gunpowder"
-	result = "gunpowder"
-	required_reagents = list("phosphorus" = 1, "carbon" = 1, "sulfur" = 1)
+/datum/chemical_reaction/shimashsauce
+	name = "Siishma-Shimash"
+	id = "shimashsauce"
+	result = "shimashsauce"
+	required_reagents = list("shimashpulp" = 1, "sugar" = 1, "water" = 1)
 	result_amount = 3
 
 //Slime related
@@ -494,12 +494,19 @@
 			else
 				H.visible_message("<span class='info'>[H] twitches for a moment, but remains still.</span>") // no nutriment
 
+/datum/chemical_reaction/saltpeter
+	name = "Saltpeter"
+	id = "saltpeter"
+	result = "saltpeter"
+	result_amount = 1
+	required_reagents = list("potassium" = 1, "nitrogen" = 1, "oxygen" = 3)
+
 /datum/chemical_reaction/gunpowder
 	name = "Gunpowder"
 	id = "gunpowder"
 	result = "gunpowder"
 	result_amount = 1
-	required_reagents = list("sulfur" = 1, "carbon" = 1, "potassium" = 1)
+	required_reagents = list("sulfur" = 1, "carbon" = 1, "saltpeter" = 1)
 
 /datum/chemical_reaction/asbestos
 	name = "Asbestos"
