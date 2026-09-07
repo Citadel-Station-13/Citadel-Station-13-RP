@@ -32,3 +32,17 @@ GLOBAL_LIST_INIT(clothing_accessory, generate_chameleon_choices(/obj/item/clothi
 GLOBAL_LIST_INIT(clothing_ears, generate_chameleon_choices(/obj/item/clothing/ears))
 
 GLOBAL_LIST_INIT(clothing_headsets, generate_chameleon_choices(/obj/item/radio/headset))
+
+// clothing you shouldn't be able to obtain through normal means (i.e. random loot)
+GLOBAL_LIST_INIT(restricted_clothing, list(
+	// holosphere items which have quirky behaviour
+	/obj/item/clothing/under/chameleon/holosphere,
+	/obj/item/clothing/suit/chameleon/holosphere,
+	/obj/item/clothing/head/chameleon/holosphere,
+	/obj/item/clothing/shoes/chameleon/holosphere,
+	/obj/item/clothing/gloves/chameleon/holosphere,
+	/obj/item/clothing/mask/chameleon/holosphere,
+	// admin-spawn stuff
+	/obj/item/clothing/under/acj,
+
+))

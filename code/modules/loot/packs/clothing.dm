@@ -9,7 +9,7 @@
 
 /datum/prototype/struct/loot_pack/clothing/chaotic/draw(amount = amt)
 	. = list()
-	var/list/paths = subtypesof(/obj/item/clothing)
+	var/list/paths = subtypesof(/obj/item/clothing) - GLOB.restricted_clothing
 	for(var/i in 1 to amt)
 		var/obj/item/clothing/got = pick(paths)
 		if(initial(got.abstract_type) == got)
