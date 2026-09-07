@@ -2,16 +2,12 @@
 	iterations = 5
 	descriptor = "moon caves"
 	var/list/ore_turfs = list()
-	var/make_cracked_turfs = TRUE
 
 /datum/random_map/automata/cave_system/generate_map()
 	. = ..()
 	for(var/i in 1 to map.len)
 		if(map[i] == WALL_CHAR)
 			ore_turfs += i
-
-/datum/random_map/automata/cave_system/no_cracks
-	make_cracked_turfs = FALSE
 
 /datum/random_map/automata/cave_system/get_appropriate_path(var/value)
 	return

@@ -60,17 +60,12 @@
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 	planet_path = /datum/planet/sky_planet/ground
 
-/datum/map_level/sector/sky_planet/ground_west/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			225,
 			/area/sector/sky_planet/ground/unexplored,
 			/datum/map_template/submap/level_specific/sky_planet_ground,
-		)
+		),
 	)
 
 /datum/map_level/sector/sky_planet/sky_upper_east
@@ -85,17 +80,12 @@
 	air_outdoors = /datum/atmosphere/planet/sky_planet
 	planet_path = /datum/planet/sky_planet
 
-/datum/map_level/sector/sky_planet/sky_upper_east/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			225,
 			/area/sector/sky_planet/sky/unexplored,
 			/datum/map_template/submap/level_specific/sky_planet_rigs,
-		)
+		),
 	)
 
 /datum/map_level/sector/sky_planet/sky_east
@@ -122,15 +112,10 @@
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 	planet_path = /datum/planet/sky_planet/ground
 
-/datum/map_level/sector/sky_planet/ground_east/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			225,
 			/area/sector/sky_planet/ground/unexplored,
 			/datum/map_template/submap/level_specific/sky_planet_ground,
-		)
+		),
 	)

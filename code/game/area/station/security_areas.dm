@@ -1,3 +1,5 @@
+// TODO: repath or kill these
+
 //Security
 
 /area/security
@@ -129,7 +131,7 @@
 	ambience = AMBIENCE_HIGHSEC
 	area_flags = AREA_FLAG_BLUE_SHIELDED
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_SENSITIVE
-	
+
 /area/security/hallway
 	name = "\improper Security Hallway"
 	icon_state = "security"

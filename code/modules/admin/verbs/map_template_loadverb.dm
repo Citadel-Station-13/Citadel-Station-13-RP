@@ -30,7 +30,7 @@
 			usr.client.images -= preview
 			return
 
-		if(template.load(T, centered = TRUE, orientation=orientation))
+		if(template.load_standalone_centered(T, orientation=orientation))
 			message_admins("<span class='adminnotice'>[key_name_admin(usr)] has placed a map template ([template.name]).</span>")
 		else
 			to_chat(usr, "Failed to place map")

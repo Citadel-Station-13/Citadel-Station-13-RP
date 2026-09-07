@@ -6,7 +6,9 @@
 	)
 	width = 100
 	height = 100
-	allow_random_draw = FALSE
+	world_width = 120
+	world_height = 120
+	production_ready = FALSE
 	lateload = list(
 		/datum/map/minitest_beach,
 		/datum/map/minitest_carpfarm,

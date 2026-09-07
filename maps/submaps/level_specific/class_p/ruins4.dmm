@@ -1,50 +1,50 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/floor/outdoors/snow,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "e" = (
 /obj/random/triumph/uncertain,
 /turf/simulated/floor/outdoors/snow/no_tree,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "m" = (
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating/outdoors,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "n" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
 /turf/simulated/floor/plating/outdoors,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "s" = (
 /obj/structure/spider/cocoon,
 /obj/random/triumph/uncertain,
 /turf/simulated/floor/plating/outdoors,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "t" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/closet/crate/secure/loot,
 /turf/simulated/floor/outdoors/snow/no_tree,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "w" = (
 /turf/simulated/floor/outdoors/snow/no_tree,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "B" = (
 /turf/simulated/wall,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "F" = (
 /turf/simulated/floor/plating/outdoors,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "I" = (
 /obj/random/mob/sif/hostile{
 	mob_faction = "frozen"
 	},
 /turf/simulated/floor/outdoors/snow/no_tree,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 "S" = (
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/outdoors/snow/no_tree,
-/area/class_p/ruins)
+/area/sector/class_p/ruins)
 
 (1,1,1) = {"
 a

@@ -90,9 +90,14 @@
 	var/load_auto_crop = FALSE
 	/// center us if we're smaller than world size
 	var/load_auto_center = TRUE
-	/// use map-wide area cache instead of individual level area caches; has no effect on submap loading, only level loading.
-	/// * don't touch this unless you know what you're doing.
-	var/load_shared_area_cache = TRUE
+	/// Default auto-marker options.
+	var/datum/auto_marker_config/load_auto_marker_config = new
+
+	//* Injections *//
+	/**
+	 * Injections to push into the `map_context` by default.
+	 */
+	var/list/datum/map_injection/injections = list()
 
 	//* Simulation *//
 	/// Ceiling heights for levels that don't specify it, as well as the blank space between levels
@@ -170,7 +175,6 @@
 	.["load_auto_crop"] = load_auto_crop
 	.["load_auto_center"] = load_auto_center
 	.["load_orientation"] = load_orientation
-	.["load_shared_area_cache"] = load_shared_area_cache
 
 /datum/map/deserialize(list/data)
 	if(loaded)
@@ -202,8 +206,6 @@
 		load_auto_center = data["load_auto_center"]
 	if(!isnull(data["load_orientation"]))
 		load_orientation = data["load_orientation"]
-	if(!isnull(data["load_shared_area_cache"]))
-		load_shared_area_cache = data["load_shared_area_cache"]
 
 // todo: implement clone()
 

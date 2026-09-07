@@ -44,8 +44,10 @@ var/global/list/map_count = list()
 
 	// Get origins for applying the map later.
 	set_origins(tx, ty, tz)
-	if(tlx) limit_x = tlx
-	if(tly) limit_y = tly
+	if(tlx)
+		limit_x = tlx
+	if(tly)
+		limit_y = tly
 
 	if(do_not_apply)
 		auto_apply = null
@@ -61,7 +63,7 @@ var/global/list/map_count = list()
 	// if(seed)
 	//	rand_seed(seed)
 	//	priority_process = 1
-	
+
 	// removed. the problem is that nothing but the master controller should ever be fucking with random seeding ~silicons
 
 	for(var/i = 0;i<max_attempts;i++)

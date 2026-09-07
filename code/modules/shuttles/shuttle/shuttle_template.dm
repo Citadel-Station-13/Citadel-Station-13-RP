@@ -90,31 +90,39 @@
 	)
 
 	// create context
-	var/datum/dmm_context/context = new
-	context.mangling_id = generate_mangling_id()
+	var/datum/map_context/map_context = new
+	map_context.mangling_id = generate_mangling_id()
 	for(var/datum/map_injection/injection as anything in map_injections)
-		context.register_injection(injection)
+		map_context.register_injection(injection)
+
+	var/datum/dmm_context/dmm_context = map_context.create_and_register_blank_dmm_context()
 
 	// load into reservation
 	var/datum/dmm_context/loaded_context = parsed_map.load(
 		reservation.bottom_left_coords[1] + 1,
 		reservation.bottom_left_coords[2] + 1,
 		reservation.bottom_left_coords[3],
-		context = context,
+		context = dmm_context,
 	)
 	var/list/loaded_bounds = loaded_context.loaded_bounds
 
 	// set descriptor
 	instance.descriptor = instance_descriptor()
 
-	// let shuttle do black magic first
+	// context pre-init
+	loaded_context.execute_pre_init()
+
+	// shuttle auto-measure
 	// instance.before_bounds_init(reservation, src)
 
 	// init the bounds
 	SSatoms.init_map_bounds(loaded_bounds)
 
-	// let shuttle do post-init things
+	// shuttle post-init
 	// instance.after_bounds_init(reservation, src)
+
+	// context post-init
+	loaded_context.execute_post_init()
 
 	// set vars on shuttle
 	instance.template_id = id

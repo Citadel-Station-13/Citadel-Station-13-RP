@@ -10,14 +10,14 @@
 	abstract_type = /datum/map/station
 	category = "Stations"
 
-	/// force world to be bigger width
-	var/world_width
-	/// force world to be bigger height
-	var/world_height
+	/// set world width
+	var/world_width = 192
+	/// set world height
+	var/world_height = 192
 
 	/// allow random picking if no map set
 	/// used to exclude indev maps
-	var/allow_random_draw = TRUE
+	var/production_ready = TRUE
 
 	//* Game World *//
 	/// world_location's this is considered
@@ -35,3 +35,12 @@
 	/// * if null, the storyteller system will be inactive.
 	/// * seriously you don't want this to be null.
 	var/world_faction_id = /datum/world_faction/corporation/nanotrasen::id
+
+/datum/map/station/validate(for_load, list/out_errors)
+	if(world_width % TURF_ALIGNMENT != 0)
+		out_errors += "[src]: world_width ([world_width]) is not a multiple of TURF_ALIGNMENT ([TURF_ALIGNMENT])"
+		. = FALSE
+	if(world_height % TURF_ALIGNMENT != 0)
+		out_errors += "[src]: world_height ([world_height]) is not a multiple of TURF_ALIGNMENT ([TURF_ALIGNMENT])"
+		. = FALSE
+	. = ..() && .

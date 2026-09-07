@@ -1,13 +1,24 @@
+// TODO: consider unifying / interoperating with jigsaw_template & shuttle_template
 /datum/map_template
 	abstract_type = /datum/map_template
 
-	//* description
+	/**
+	 * ID.
+	 * * Map templates that are registered proper have IDs.
+	 * * ID is currently optional, because 'ephemeral' map templates
+	 *   do exist.
+	 * * Please still fill it in when you can.
+	 */
+	var/id
+	#warn impl
+
+	//* description *//
 	/// template name
 	var/name = "Default Template Name"
 	/// template description
 	var/desc = "Some text should go here. Maybe."
 
-	//* file
+	//* file *//
 	/// path to the map
 	var/map_path
 	/// prefix of path including last /
@@ -15,7 +26,7 @@
 	/// suffix of path (usually just the filename)
 	var/suffix
 
-	//* cached data
+	//* cached data *//
 	/// cached map
 	var/datum/dmm_parsed/parsed
 	/// keep cached map
@@ -25,19 +36,26 @@
 	/// cached height
 	var/height = 0
 
-	//* loading
+	//* loading *//
 	/// times loaded this round
 	var/tmp/loaded = 0
 	/// If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
+	/// * Deprecated
 	var/annihilate = FALSE
 
-	//* loading as its own level
+	//* loading as its own level *//
 	/// traits to have if loaded as standalone level
 	var/list/level_traits
 	/// attributes to have if loaded as standalone level
 	var/list/level_get_attributes
 	/// id to have if loaded as standalone level
 	var/level_id
+
+	//* global state (yes i said global state too bad) *//
+	/**
+	 * Increased every time recursively_load is called. This is used to prevent infinite recursion when templates load other templates.
+	 */
+	var/static/recursive_load_level = 0
 
 	//* legacy below *//
 
@@ -62,6 +80,15 @@
 		src.map_path = path
 	if(isnull(map_path))
 		map_path = "[prefix][suffix]"
+
+	if(!id)
+		var/static/next_ephemeral_id = 0
+		src.id = "ephemeral-" + next_ephemeral_id++
+
+		if(next_ephemeral_id > SHORT_REAL_LIMIT)
+			stack_trace("ran out of ephemeral map template IDs")
+			next_ephemeral_id = 0
+
 	preload()
 
 /**
@@ -107,6 +134,7 @@
 /datum/map_template/proc/unload_cache()
 	parsed = null
 
+/// deprecated
 /datum/map_template/proc/load_new_z(centered = FALSE, orientation = SOUTH, list/traits = src.level_traits, list/attributes = src.level_get_attributes)
 	. = FALSE
 
@@ -131,44 +159,92 @@
 
 	ASSERT(level.loaded)
 
-	load(locate(ll_x, ll_y, level.z_index), FALSE, orientation)
+	var/turf/lower_left = locate(ll_x, ll_y, level.z_index)
+
+	load_standalone(
+		lower_left,
+		orientation = orientation,
+	)
 
 	SSmapping.subsystem_log("Loaded template [src] ([type]) on z-level [level.z_index]")
-
-	on_z_load(level.z_index)
 
 	return TRUE
 
 /**
- * loads a map template
- *
- * @params
- * * T - turf. center or lower left, depending on centered param.
- * * centered - is T the center, or lower left?
- * * orientation - the orientation to load in. default is SOUTH.
- * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
- * * context - dmm_context to use
- * * defer_context - defer context initializations/injections
- *
- * @return null if failed, or /datum/dmm_context context
+ * Gets lower left tile from a centered position.
+ * @return list(x, y, z)
  */
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks, datum/dmm_context/context, defer_context)
-	var/ll_x = T.x
-	var/ll_y = T.y
-	var/ll_z = T.z
+/datum/map_template/proc/compute_lower_left_coords_from_centered_turf(turf/centered, orientation)
+	if(!width || !height)
+		CRASH("bounds not preloaded")
+
+	var/ll_x = centered.x
+	var/ll_y = centered.y
+	var/ll_z = centered.z
 	var/sideways = orientation & (EAST|WEST)
 	var/real_width = sideways? height : width
 	var/real_height = sideways? width : height
 
-	if(centered)
-		ll_x -= round(real_width / 2)
-		ll_y -= round(real_height / 2)
+	ll_x -= round(real_width / 2)
+	ll_y -= round(real_height / 2)
 
-	var/turf/real_turf = locate(ll_x, ll_y, ll_z)
+	return list(ll_x, ll_y, ll_z)
+
+/**
+ * Loads a map template and executes postload for its context.
+ *
+ * @params
+ * * lower_left - lower left corner of where to load the template
+ * * orientation - the orientation to load in. default is SOUTH.
+ * * context - dmm_context to use; one will be created if not provided.
+ * * annihilate_bounds - (deprecated) wipe out bounds
+ *
+ * @return loaded dmm_context, or null if failed
+ */
+/datum/map_template/proc/load_standalone(turf/lower_left, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds = annihilate)
+	var/datum/dmm_context/context = load_deferred(lower_left, orientation, context, annihilate_bounds)
+	if(!context)
+		return
+
+	context.execute_post_init()
+	return context
+
+/datum/map_template/proc/load_standalone_centered(turf/centered, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds = annihilate)
+	return load_standalone(
+		locate(arglist(compute_lower_left_coords_from_centered_turf(centered, orientation))),
+		orientation,
+		context,
+		annihilate_bounds,
+	)
+
+/**
+ * Loads a map template without executing postload for its context.
+ *
+ * @params
+ * * lower_left - lower left corner of where to load the template
+ * * orientation - the orientation to load in. default is SOUTH.
+ * * context - dmm_context to use; one will be created if not provided.
+ * * annihilate_bounds - (deprecated) wipe out bounds
+ *
+ * @return loaded dmm_context, or null if failed
+ */
+/datum/map_template/proc/load_deferred(turf/lower_left, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds = annihilate)
+	var/datum/dmm_context/context = load_impl(lower_left, orientation, context, annihilate_bounds)
+	return context
+
+/datum/map_template/proc/load_deferred_centered(turf/centered, orientation = SOUTH, datum/dmm_context/context, annihilate_bounds = annihilate)
+	return load_deferred(
+		locate(arglist(compute_lower_left_coords_from_centered_turf(centered, orientation))),
+		orientation,
+		context,
+		annihilate_bounds,
+	)
+
+/datum/map_template/proc/load_impl(turf/real_turf, orientation, datum/dmm_context/context, annihilate_bounds)
 
 	SSmapping.subsystem_log("Loading template [src] ([type]) at [COORD(real_turf)] size [width]x[height] with annihilate mode [annihilate]")
 
-	if(annihilate)
+	if(annihilate_bounds)
 		annihilate_bounds(real_turf, width, height)
 
 	// ensure the dmm is parsed
@@ -180,7 +256,7 @@
 	if(isnull(context.mangling_id))
 		context.mangling_id = generate_mangling_id()
 
-	context = parsed.load(ll_x, ll_y, ll_z, orientation = orientation, context = context)
+	context = parsed.load(real_turf.x, real_turf.y, real_turf.z, orientation = orientation, context = context)
 
 	if(!context.loaded())
 		CRASH("failed to load")
@@ -189,18 +265,10 @@
 
 	++loaded
 
-	var/list/datum/callback/callbacks = list()
-	on_normal_load(context, callbacks)
-	if(isnull(deferred_callbacks))
-		for(var/datum/callback/cb as anything in callbacks)
-			cb.Invoke()
-	else
-		deferred_callbacks += callbacks
+	context.execute_pre_init()
 
-	if(!defer_context)
-		context.execute_postload()
-
-	init_bounds(loaded_bounds)
+	if(!SSatoms.initialized)
+		init_bounds(loaded_bounds)
 
 	// todo: inefficient as shit
 	if(SSmapping.initialized)
@@ -237,10 +305,10 @@
 			++cleaned
 	SSmapping.subsystem_log("Deleted [cleaned] atoms.")
 
-/datum/map_template/proc/get_affecting_turfs(turf/T, centered = FALSE, orientation = SOUTH)
-	var/ll_x = T.x
-	var/ll_y = T.y
-	var/ll_z = T.z
+/datum/map_template/proc/get_affecting_turfs(turf/where, centered = FALSE, orientation = SOUTH)
+	var/ll_x = where.x
+	var/ll_y = where.y
+	var/ll_z = where.z
 	var/sideways = orientation & (EAST|WEST)
 	var/real_width = sideways? height : width
 	var/real_height = sideways? width : height
@@ -263,20 +331,19 @@
 	SSatoms.init_map_bounds(bounds)
 
 /**
- * called when normally loaded
+ * Called post-load, pre-init.
+ *
+ * * Use the context reference to pass in callbacks as needed to map init pre/post load lists.
  *
  * @params
  * * context - load context
- * * late_generation - callbacks to fire after ruin seeding. if this is being spawned standalone, it fires immediately.
  */
-/datum/map_template/proc/on_normal_load(datum/dmm_context/context, list/datum/callback/late_generation)
+/datum/map_template/proc/on_load(datum/dmm_context/context)
 	return
 
 /**
- * called when loaded as a new zlevel
- *
- * @params
- * * z_index - zlevel we loaded onto
+ * Just used for map specific templates.
+ * * Format: `/datum/map_template/map_specific/[map name]`
  */
-/datum/map_template/proc/on_z_load(z_index)
-	return
+/datum/map_template/map_specific
+	abstract_type = /datum/map_template/map_specific

@@ -3,6 +3,14 @@
 	icon_state = "window_grille_pane"
 	layer = WINDOW_LAYER
 
+	//* Preload *//
+	/**
+	 * If set, will erase ourselves if a conflicting window exists on mapload.
+	 * * Useful for templates.
+	 */
+	var/tmp/map_impl_erase_if_another_window_exists = FALSE
+	var/tmp/map_impl_erase_if_another_window_active = FALSE
+
 	/// found dirs
 	var/found_dirs = NONE
 
@@ -34,7 +42,23 @@
 	/// todo: rename to electrochromatic_id
 	var/id
 
+/obj/spawner/window/New()
+	if(map_impl_erase_if_another_window_exists)
+		if(locate(/obj/structure/window) in loc)
+			map_impl_erase_if_another_window_active = TRUE
+		else if(locate(/obj/structure/grille) in loc)
+			map_impl_erase_if_another_window_active = TRUE
+		else
+			for(var/obj/spawner/window/spawner in loc)
+				if(spawner != src)
+					map_impl_erase_if_another_window_active = TRUE
+					break
+	..()
+
 /obj/spawner/window/Initialize(mapload)
+	if(map_impl_erase_if_another_window_active)
+		qdel(src)
+		return INITIALIZE_HINT_QDEL
 	if(!full_window)
 		find_dirs()
 	return ..()
@@ -62,7 +86,8 @@
 			if(!isnull(low_wall_stripe_color))
 				low_wall.stripe_color = low_wall_stripe_color
 
-		var/new_window = new window_full_path(loc)
+		// force full window via diagonal dir
+		var/new_window = new window_full_path(loc, NORTHEAST)
 		if(id && istype(new_window, /obj/structure/window/reinforced/polarized))
 			var/obj/structure/window/reinforced/polarized/P = new_window
 			P.id = id
@@ -266,3 +291,69 @@
 
 /obj/spawner/window/low_wall/nogrille/firelocks/transparent
 	firelocks_use_glass = TRUE
+
+//* Auto Marker Based *//
+
+/obj/spawner/window/auto
+
+/obj/spawner/window/auto/preloading_from_mapload(datum/dmm_context/context)
+	. = ..()
+	load_from_auto_marker_config(context.map_context.auto_marker_config)
+
+/obj/spawner/window/auto/proc/load_from_auto_marker_config(datum/auto_marker_config/auto_marker_config)
+	window_pane_path = auto_marker_config.window_type
+
+#warn below
+
+/obj/spawner/window/auto/firelocks
+	firelocks = TRUE
+
+/obj/spawner/window/auto/firelocks/transparent
+	firelocks_use_glass = TRUE
+
+/obj/spawner/window/auto/reinforced
+
+/obj/spawner/window/auto/reinforced/firelocks
+
+/obj/spawner/window/auto/reinforced/firelocks/transparent
+
+/obj/spawner/window/auto/borosillicate
+
+/obj/spawner/window/auto/borosillicate/firelocks
+
+/obj/spawner/window/auto/borosillicate/firelocks/transparent
+
+/obj/spawner/window/auto/low_wall
+
+/obj/spawner/window/auto/low_wall/load_from_auto_marker_config(datum/turf_auto_marker_config/auto_marker_config)
+
+/obj/spawner/window/auto/low_wall/firelocks
+
+/obj/spawner/window/auto/low_wall/firelocks/transparent
+
+/obj/spawner/window/auto/low_wall/reinforced
+
+/obj/spawner/window/auto/low_wall/reinforced/firelocks
+
+/obj/spawner/window/auto/low_wall/reinforced/firelocks/transparent
+
+/obj/spawner/window/auto/low_wall/borosillicate
+
+/obj/spawner/window/auto/low_wall/borosillicate/firelocks
+
+/obj/spawner/window/auto/low_wall/borosillicate/firelocks/transparent
+
+/obj/spawner/window/auto/full
+
+/obj/spawner/window/auto/full/firelocks
+
+/obj/spawner/window/auto/full/reinforced
+
+/obj/spawner/window/auto/full/reinforced/firelocks
+
+/obj/spawner/window/auto/full/borosillicate
+
+/obj/spawner/window/auto/full/borosillicate/firelocks
+
+
+#warn auto marker config

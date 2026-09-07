@@ -7,13 +7,15 @@
 
 //* Loading *//
 
-/**
- * anything to do immediately on load
- *
- * called after level on_loaded_immediate's
- */
-/datum/map/proc/on_loaded_immediate()
+/datum/map/proc/on_loaded(datum/map_context/context)
 	SHOULD_CALL_PARENT(TRUE)
+
+	on_loaded_setup_struct()
+	on_loaded_setup_overmap()
+
+/datum/map/proc/on_loaded_setup_struct()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE)
 
 	loaded = TRUE
 	loaded_z_indices = list()
@@ -130,16 +132,11 @@
 					CRASH("overshot level somehow?")
 			level.virtual_elevation = total_height
 
+/datum/map/proc/on_loaded_setup_overmap()
+	SHOULD_CALL_PARENT(TRUE)
+
 	if(overmap_initializer)
 		SSovermaps.initialize_entity(overmap_initializer, src)
-
-/**
- * anything to do after loading with any dependencies
- *
- * called after level on_loaded_finalize's
- */
-/datum/map/proc/on_loaded_finalize()
-	SHOULD_CALL_PARENT(TRUE)
 
 //* Unloading *//
 
@@ -149,8 +146,8 @@
  * Fired before zclear fires on the zlevels that consist of us
  * * Levels have their on_unload_pre_zclear called before this.
  */
-/datum/map/proc/on_unload_pre_zclear()
-	SHOULD_CALL_PARENT(TRUE)
+// /datum/map/proc/on_unload_pre_zclear()
+// 	SHOULD_CALL_PARENT(TRUE)
 
 /**
  * TOOD: not hooked in yet
@@ -159,19 +156,19 @@
  * * Levels have their on_unload_finalize called before this.
  * * zlevels and then ourselves are un-referenced and/or garbage collected (if necessary) after.
  */
-/datum/map/proc/on_unload_finalize()
-	SHOULD_CALL_PARENT(TRUE)
+// /datum/map/proc/on_unload_finalize()
+// 	SHOULD_CALL_PARENT(TRUE)
 
-	loaded = FALSE
-	loaded_z_indices = null
-	loaded_z_grid = null
-	loaded_sparse_size_x = null
-	loaded_sparse_size_y = null
-	loaded_sparse_size_z = null
-	loaded_z_planes = null
-	loaded_z_stacks = null
+// 	loaded = FALSE
+// 	loaded_z_indices = null
+// 	loaded_z_grid = null
+// 	loaded_sparse_size_x = null
+// 	loaded_sparse_size_y = null
+// 	loaded_sparse_size_z = null
+// 	loaded_z_planes = null
+// 	loaded_z_stacks = null
 
-	for(var/datum/map_level/level as anything in levels)
-		level.virtual_alignment_x = null
-		level.virtual_alignment_y = null
-		level.virtual_elevation = null
+// 	for(var/datum/map_level/level as anything in levels)
+// 		level.virtual_alignment_x = null
+// 		level.virtual_alignment_y = null
+// 		level.virtual_elevation = null
