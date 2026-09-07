@@ -12,24 +12,10 @@
 	world_width = 192
 	world_height = 192
 	dependencies = list(
-		/datum/map/centcom/ndv_marksman,
+		/datum/map/centcom/ncv_astral,
 	)
 	lateload = list(
 		/datum/map/sector/debrisfield_192,
-		/datum/map/sector/piratebase_192,
-		/datum/map/sector/mining_192,
-		/datum/map/sector/gaia_192,
-		/datum/map/sector/frozen_192,
-		/datum/map/sector/wasteland_192,
-		/datum/map/sector/nebula_tradeport,
-		/datum/map/sector/delerict_casino,
-		/datum/map/sector/surt,
-		/datum/map/sector/miaphus,
-		/datum/map/sector/roguemining_192/one,
-		/datum/map/sector/sky_planet,
-		/datum/map/sector/solars_station,
-		/datum/map/sector/ice_comet,
-		/datum/map/sector/osiris_field,
 	)
 
 	// todo: remove after dev is done
@@ -65,23 +51,23 @@
 
 	station_name	= "NEV Strelka"
 	station_short	= "Strelka"
-	dock_name		= "NDV Marksman"
+	dock_name		= "NCV Astral"
 	dock_type		= "space"
 	boss_name		= "Central Command"
 	boss_short		= "CentCom"
 	company_name	= "Nanotrasen"
 	company_short	= "NT"
-	starsys_name	= "Lythios-43"
+	starsys_name	= "Vacuum Crucis Expanse"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the NEV Strelka. The scheduled NCS Herrera II shuttle flight has docked with the NEV Strelka. Departing crew should board the shuttle within %ETD%."
+	shuttle_docked_message = "This is the %dock_name% calling to the NEV Strelka. The scheduled NCS Helios Junior shuttle has docked with the NEV Strelka. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "This is the %dock_name% calling to the NEV Strelka. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
-	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
-	shuttle_name = "NCS Herrera II"
+	shuttle_called_message = "This is the captain of the %dock_name% calling to the NEV Strelka. We will start schedule maintenance of the Strelka, So we are sending the NCS Helios Junior to get your crew. We should arrive in %ETD%."
+	shuttle_recall_message = "Astral to Strelka. Message received and noted. Shuttle canceled, and on stand-by. Enjoy the rust and old carpet a bit more."
+	shuttle_name =  "NCS Helios Junior"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
-	emergency_shuttle_leaving_dock = "The emergency shuttle has left the ship. Estimate %ETA% until the shuttle arrives at %dock_name%."
-	emergency_shuttle_called_message = "An emergency evacuation has begun, and an off-schedule shuttle has been called. It will arrive at the hanger bay in approximately %ETA%."
-	emergency_shuttle_recall_message = "The evacuation shuttle has been recalled."
+	emergency_shuttle_leaving_dock = "Captain of the Astral to NEV Strelka : The emergency shuttle has left the ship. Estimate %ETA% until the shuttle arrives at %dock_name%. You will be safe in no time."
+	emergency_shuttle_called_message =  "Astral to Strelka. Understood. Sending emergency shuttle. ETA in approximately %ETA%. Hang on a bit."
+	emergency_shuttle_recall_message = "Astral to Strelka, The evacuation shuttle has been recalled, but we are still on standby."
 
 	station_networks = list(
 							NETWORK_CARGO,

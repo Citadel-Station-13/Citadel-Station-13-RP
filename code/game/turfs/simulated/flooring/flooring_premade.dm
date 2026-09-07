@@ -658,6 +658,13 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	icon_state = "church_marble"
 	initial_flooring = /datum/prototype/flooring/roguetown/church_marble
 
+/turf/simulated/floor/roguetown/church_marble/white
+	name = "white marble floor"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "church_marble_white"
+	initial_flooring = /datum/prototype/flooring/roguetown/church_marble
+
+
 /turf/simulated/floor/roguetown/church_brick
 	name = "brick floor"
 	icon = 'icons/turf/flooring/roguetown/castle.dmi'
@@ -809,4 +816,12 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	name = "rocks"
 	icon = 'icons/turf/flooring/roguetown/rock.dmi'
 	icon_state = "rock"
+	initial_flooring = /datum/prototype/flooring/roguetown/rock
+
+//Road stuff yee
+
+/turf/simulated/floor/road
+	name = "road"
+	icon = 'icons/turf/flooring/road.dmi'
+	icon_state = "innermiddle"
 	initial_flooring = /datum/prototype/flooring/roguetown/rock
