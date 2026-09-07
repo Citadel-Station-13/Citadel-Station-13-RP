@@ -191,7 +191,7 @@
 	if(!check_rights(R_SOUNDS))
 		return
 
-	var/web_sound_input = input("Enter content stream URL (must be a direct link)", "Play Internet Sound via direct URL") as text|null
+	var/web_sound_input = tgui_input_text(src.mob, "Enter content stream URL (must be a direct link)", "Play Internet Sound via direct URL", )
 	if(istext(web_sound_input))
 		if(!length(web_sound_input))
 			log_admin("[key_name(src)] stopped web sound")
@@ -215,6 +215,10 @@
 			to_chat(src, "<span class='warning'>The format is not .mp3/.mp4, IE 8 and above can only support the .mp3/.mp4 format, the music might not play.</span>", confidential = TRUE)
 
 		if(length(title) > 50) //kev no.
+			title = "Unknown.mp3"
+
+		title = tgui_input_text(src.mob, "Edit the song title", "Title Editing", title, max_length = 50)
+		if(length(title) <= 0 && length(title) > 50)
 			title = "Unknown.mp3"
 
 		music_extra_data["title"] = title
