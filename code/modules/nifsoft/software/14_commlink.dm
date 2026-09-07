@@ -119,6 +119,10 @@
 		who = comm.owner
 		comm.im_contacts |= src
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
+	else if(istype(candidate, /obj/item/integrated_circuit))
+		var/obj/item/integrated_circuit/CIRC = candidate
+		who = (CIRC.displayed_name)
+		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
 	else return
 
 	im_contacts |= candidate
