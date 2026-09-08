@@ -13,3 +13,6 @@
   - bugfix: Runechat colors no longer randomize.
   timothyteakettle:
   - rscadd: adds new bunny ears "bunny tall ears (alt)"
+2026-09-08:
+  GySgtMurphy:
+  - bugfix: fixed circuit messaging types so they work exonet nodes and NIF's.
