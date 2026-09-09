@@ -1,6 +1,9 @@
 SUBSYSTEM_DEF(atoms)
 	name = "Atoms"
-	init_order = INIT_ORDER_ATOMS
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+		/datum/controller/subsystem/job,
+	)
 	init_stage = INIT_STAGE_WORLD
 	subsystem_flags = SS_NO_FIRE
 

@@ -4,14 +4,11 @@
 /proc/cmp_subsystem_display(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return sorttext(b.name, a.name)
 
-/**
- * Sorts subsystems by init_order and init_stage.
- */
 /proc/cmp_subsystem_init(datum/controller/subsystem/a, datum/controller/subsystem/b)
-	// Uses initial() so it can be used on types.
-	if(a.init_stage != b.init_stage)
-		return initial(a.init_stage) - initial(b.init_stage)
-	return initial(b.init_order) - initial(a.init_order)
+	return a.init_order - b.init_order
+
+/proc/cmp_subsystem_init_stage(datum/controller/subsystem/a, datum/controller/subsystem/b)
+	return initial(a.init_stage) - initial(b.init_stage)
 
 /**
  * Sorts subsystems by priority, from lowest to highest.
@@ -41,22 +38,26 @@
 /datum/controller/subsystem
 	//# Metadata; you should define these.
 
-	/**
-	 * Name of the subsystem
-	 * YOU MUST CHANGE THIS
-	 */
+	/// Name of the subsystem - you must change this
 	name = "fire coderbus"
 
 	//* Initialization & Shutdown *//
 
-	/**
-	 * Order of initialization.
-	 * Higher numbers are initialized first, lower numbers later.
-	 * Use or create defines such as [INIT_ORDER_DEFAULT] so we can see the order in one file.
-	 *
-	 * * This is secondary to [init_stage].
-	 */
-	var/init_order = INIT_ORDER_DEFAULT
+	/// Determines which subsystems this subsystem is dependant on to initialize. Will initialize after all specified subsystems.
+	/// If init_stage is earlier than a dependent subsystem, will throw an error and push the init stage forward to that subsystem.
+	/// Usage: Put the typepaths of the subsystems that need to init before this one in this list.
+	var/list/dependencies = list()
+
+	/// The inverse of the dependencies. Can be set manually, but will also get evaluated at runtime. Turns into a list of instances at runtime.
+	/// Usage: Put the typepaths of the subsystems that need to init after this one in this list.
+	var/list/dependents
+
+	/// ID of the subsystem. Set automatically when the dependency graph is evaluated. Used primarily in determining order.
+	var/ordering_id = 0
+
+	/// Do not modify. Automatically set when the dependency graph is evaluated. Similar to ordering_id, but evaluated after init_stage.
+	var/init_order = 0
+
 	/**
 	 * Which stage does this subsystem init at. Earlier stages can fire while later stages init.
 	 *
@@ -129,6 +130,9 @@
 	/// Running average of the amount of tick usage in percents of a tick it takes the subsystem to complete a run.
 	var/tick_usage = 0
 
+	/// Flat list of usage and time, every odd index is a log time, every even index is a usage
+	var/list/rolling_usage = list()
+
 	/// Running average of the amount of tick usage (in percents of a game tick) the subsystem has spent past its allocated time without pausing.
 	var/tick_overrun = 0
 
@@ -192,10 +196,9 @@
 	/// * this is set by ignite()
 	var/tracked_last_completion = 0
 
-
-	/**
-	 * # Do not blindly add vars here to the bottom, put it where it goes above.
-	 * # If your var only has two values, put it in as a flag.
+	/*
+	 * Do not blindly add vars here to the bottom, put it where it goes above.
+	 * If your var only has two values, put it in as a flag.
 	 */
 
 /**
@@ -476,6 +479,15 @@
 /datum/controller/subsystem/proc/postpone(cycles = 1)
 	if(next_fire - world.time < wait)
 		next_fire += (wait*cycles)
+
+/// Prunes out of date entries in our rolling usage list
+/datum/controller/subsystem/proc/prune_rolling_usage()
+	var/list/rolling_usage = src.rolling_usage
+	var/cut_to = 0
+	while(cut_to + 2 <= length(rolling_usage) && rolling_usage[cut_to + 1] < DS2TICKS(world.time - Master.rolling_usage_length))
+		cut_to += 2
+	if(cut_to)
+		rolling_usage.Cut(1, cut_to + 1)
 
 /datum/controller/subsystem/vv_edit_var(var_name, var_value)
 	switch (var_name)

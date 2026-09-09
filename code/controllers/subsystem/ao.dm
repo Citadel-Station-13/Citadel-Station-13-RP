@@ -1,6 +1,8 @@
 SUBSYSTEM_DEF(ao)
 	name = "Ambient Occlusion"
-	init_order = INIT_ORDER_AMBIENT_OCCLUSION
+	dependencies = list(
+		/datum/controller/subsystem/atoms, // just fire when atoms are done (mapping is done in this stage)
+	)
 	wait = 1
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 

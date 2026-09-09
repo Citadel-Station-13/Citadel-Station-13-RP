@@ -1,6 +1,10 @@
 SUBSYSTEM_DEF(planets)
 	name = "Planets"
-	init_order = INIT_ORDER_PLANETS
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+		/datum/controller/subsystem/atoms,
+		/datum/controller/subsystem/air,
+	)
 	priority = FIRE_PRIORITY_PLANETS
 	wait = 2 SECONDS
 	subsystem_flags = SS_BACKGROUND

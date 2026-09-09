@@ -13,7 +13,6 @@ SUBSYSTEM_DEF(ai_holders)
 	name = "AI Holders"
 	subsystem_flags = NONE
 	priority = FIRE_PRIORITY_AI_HOLDERS
-	init_order = INIT_ORDER_AI_HOLDERS
 	init_stage = INIT_STAGE_EARLY
 	wait = 0
 

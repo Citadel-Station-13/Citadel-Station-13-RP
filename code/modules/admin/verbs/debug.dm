@@ -838,3 +838,47 @@
 
 /proc/cmp_timer_data(list/a, list/b)
 	return b["count"] - a["count"]
+
+/datum/mc_dependency_ui
+
+/datum/mc_dependency_ui/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MCDependencyDebug")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/mc_dependency_ui/ui_state(mob/user)
+	return ADMIN_STATE(R_DEBUG)
+
+/datum/mc_dependency_ui/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/subsystems = Master.subsystems.Copy()
+	tim_sort(subsystems, GLOBAL_PROC_REF(cmp_subsystem_init))
+
+	for(var/datum/controller/subsystem/subsystem as anything in subsystems)
+		var/list/sub_data = list()
+		sub_data["name"] = subsystem.name
+		var/list/dependents = list()
+		for(var/datum/controller/subsystem/dependent as anything in subsystem.dependents)
+			dependents += dependent.name
+		sub_data["dependents"] = dependents
+		data += list(sub_data)
+
+	return list(
+		"subsystems" = data
+	)
+
+/datum/mc_dependency_ui/ui_asset_injection(datum/tgui/ui, list/immediate, list/deferred)
+	immediate += /datum/asset_pack/simple/plane_background
+	return ..()
+
+/client/proc/debug_mc_dependencies()
+	set category = VERB_CATEGORY_DEBUG
+	set name = "Debug MC Dependencies"
+	set desc = "Debug MC dependencies."
+
+	if(!check_rights(R_DEBUG)) return
+	var/datum/mc_dependency_ui/data = new /datum/mc_dependency_ui()
+	data.ui_interact(usr)

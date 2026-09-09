@@ -1,5 +1,8 @@
 SUBSYSTEM_DEF(minimaps)
 	name = "Minimaps"
+	dependencies = list(
+		/datum/controller/subsystem/mapping,
+	)
 	subsystem_flags = SS_NO_FIRE
 	var/list/station_minimaps
 	var/datum/minimap_group/station_minimap
@@ -7,7 +10,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/controller/subsystem/minimaps/Initialize()
 	if(!CONFIG_GET(flag/minimaps_enabled))
 		to_chat(world, "<span class='boldwarning'>Minimaps disabled! Skipping init.</span>")
-		return ..()
+		return SS_INIT_NO_NEED
 	build_minimaps()
 	return SS_INIT_SUCCESS
 

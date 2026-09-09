@@ -3,7 +3,9 @@
 
 SUBSYSTEM_DEF(repository)
 	name = "Repository System"
-	init_order = INIT_ORDER_REPOSITORY
+	dependencies = list(
+		/datum/controller/subsystem/dbcore
+	)
 	init_stage = INIT_STAGE_BACKEND
 	subsystem_flags = SS_NO_FIRE
 
