@@ -321,5 +321,5 @@
 
 /datum/construction/reversible/mecha/gygax/spawn_result()
 	..()
-	feedback_inc("mecha_gygax_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Gygax")
 	return

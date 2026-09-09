@@ -46,5 +46,5 @@
 		add_verb(src, /mob/proc/changeling_revive)
 		to_chat(src, "<span class='notice'><font size='5'>We are ready to rise.  Use the <b>Revive</b> verb when you are ready.</font></span>")
 
-	feedback_add_details("changeling_powers","FD")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Regenerative Stasis"))
 	return 1

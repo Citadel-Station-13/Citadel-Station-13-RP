@@ -27,7 +27,7 @@
 
 	onclose(usr, "admin_attack_log")
 
-	feedback_add_details("admin_verb","PL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Player Attack Log")
 
 /client/proc/cmd_admin_check_dialogue_logs(mob/living/M as mob in GLOB.mob_list)
 	set category = "Admin"
@@ -56,7 +56,5 @@
 
 	onclose(usr, "admin_dialogue_log")
 
-
-	feedback_add_details("admin_verb","PDL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
+	BLACKBOX_LOG_ADMIN_VERB("Player Dialogue Log")
 

@@ -42,5 +42,5 @@
 
 	changeling.next_escape = world.time + escape_cooldown	//And now we set the timer
 
-	feedback_add_details("changeling_powers","ESR")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Escape Restraints"))
 	return 1

@@ -21,7 +21,7 @@
 
 	to_chat(src, "<span class='notice'>We have regenerated.</span>")
 	mind.changeling.purchased_powers -= src // if yo usee me in blame, this wasn't originally my doing and i don't know why this is here ~silicons
-	feedback_add_details("changeling_powers","CR")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Revive"))
 	set_stat(CONSCIOUS)
 	forbid_seeing_deadchat = FALSE
 	timeofdeath = null

@@ -83,7 +83,8 @@
 				var/book_name = sanitize(input(H, "What would you like your holy book to be called? Default is The Holy Book of <religion>", "Holy book name", "The Holy Book of [new_religion]"), MAX_NAME_LEN)
 				B.name = book_name
 				//B.name = "The Holy Book of [new_religion]" -- replaced by the above line
-		feedback_set_details("religion_name","[new_religion]")
+		SSblackbox.record_feedback("text", "religion_name", 1, "[new_religion]", 1)
+
 	spawn(1)
 		var/deity_name = "Hashem"
 		var/new_deity = sanitize(input(H, "Would you like to change your deity? Default is Hashem", "Name change", deity_name), MAX_NAME_LEN)
@@ -160,8 +161,8 @@
 			SSticker.Bible_item_state = B.item_state
 			SSticker.Bible_name = B.name
 			SSticker.Bible_deity_name = B.deity_name
-		feedback_set_details("religion_deity","[new_deity]")
-		feedback_set_details("religion_book","[new_book_style]")
+		SSblackbox.record_feedback("text", "religion_deity", 1, "[new_deity]", 1)
+		SSblackbox.record_feedback("text", "religion_bible", 1, "[new_book_style]", 1)
 	return 1
 
 /datum/outfit/job/station/chaplain

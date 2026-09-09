@@ -43,7 +43,6 @@
 		CRASH("attempted invocation with insufficient rights."); \
 	}; \
 	do { \
-		metric_increment_nested_numerical(/datum/metric/nested_numerical/admin_verb_invocation, #PATH_SUFFIX, 1); \
 		log_admin("[key_name(usr)] invoked admin verb '[#PATH_SUFFIX]'"); \
 	} \
 	while(FALSE); \

@@ -6,22 +6,22 @@
 		return
 
 	if (SSdbcore.IsConnected())
-		if (!check_rights(R_DEBUG,0))
-			alert("The database is already connected! (Only those with +debug can force a reconnection)", "The database is already connected!")
+		if (!usr.client.holder.check_for_rights(R_DEBUG))
+			tgui_alert(usr,"The database is already connected! (Only those with +debug can force a reconnection)", "The database is already connected!")
 			return
 
-		var/reconnect = alert("The database is already connected! If you *KNOW* that this is incorrect, you can force a reconnection", "The database is already connected!", "Force Reconnect", "Cancel")
+		var/reconnect = tgui_alert(usr,"The database is already connected! If you *KNOW* that this is incorrect, you can force a reconnection", "The database is already connected!", list("Force Reconnect", "Cancel"))
 		if (reconnect != "Force Reconnect")
 			return
 
 		SSdbcore.Disconnect()
 		log_admin("[key_name(usr)] has forced the database to disconnect")
 		message_admins("[key_name_admin(usr)] has <b>forced</b> the database to disconnect!")
-		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Force Reestablished Database Connection") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		BLACKBOX_LOG_ADMIN_VERB("Force Reestablished Database Connection")
 
 	log_admin("[key_name(usr)] is attempting to re-established the DB Connection")
 	message_admins("[key_name_admin(usr)] is attempting to re-established the DB Connection")
-	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Reestablished Database Connection") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	BLACKBOX_LOG_ADMIN_VERB("Reestablished Database Connection")
 
 	SSdbcore.failed_connections = 0
 	if(!SSdbcore.Connect())
@@ -31,7 +31,4 @@
 		message_admins("Reloading client database data...")
 		for(var/client/C in GLOB.clients)
 			C.player?.load()
-		message_admins("Asserting round ID set...")
-		if(!isnum(text2num(GLOB.round_id)))
-			SSdbcore.SetRoundID()
-			message_admins("Round ID was not set and has now been re-set. Things might be weird this round.")
+		// assume roundid is all good
