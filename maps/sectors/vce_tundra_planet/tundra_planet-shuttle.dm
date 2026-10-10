@@ -5,6 +5,7 @@
 	base_area = /area/sector/tundra/field
 	base_turf = /turf/simulated/floor/water
 	landmark_tag = "raider_start"
+	docking_controller = "raider_start_docker"
 
 /datum/shuttle/autodock/overmap/maquis/raider
 	name = "DMV Raider"
@@ -23,7 +24,7 @@
 [i]Class[/i]: DSNINE Class
 [i]Transponder[/i]: Transmitting (MIL - DMV), Unregistered. Potentialy-hostile, heavely armed, fighter and mech carrier.
 [b]Notice[/b]: A Dryas Maquisard flagship."}
-	color = "#5e0000"
+	color = "#a00000"
 	fore_dir = WEST
 	vessel_mass = 4500
 	vessel_size = SHIP_SIZE_LARGE
@@ -49,6 +50,7 @@
 	base_area = /area/sector/tundra/field
 	base_turf = /turf/simulated/floor/water
 	landmark_tag = "interceptor_start"
+	docking_controller = "interceptor_start_docker"
 
 /obj/overmap/entity/visitable/ship/landable/maquis/interceptor
 	name = "DMV Interceptor"

@@ -17,6 +17,7 @@
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_trade_1"
+	docking_controller = "fleet_trade_1_docker"
 
 /obj/overmap/entity/visitable/ship/landable/fleet/trade
 	name = "Entdecker Trade Ship"
@@ -57,6 +58,7 @@ Colonial Militia files state that this vessel is the main FTU Vessel in the area
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "tradeport_scoophead"
+	docking_controller = "tradeport_scoophead_docker"
 
 /datum/shuttle/autodock/overmap/fleet/trade/scoophead
 	name = "Scoophead trade Shuttle"
@@ -110,6 +112,7 @@ Colonial Militia files state that this vessel is the main FTU Vessel in the area
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_ani"
+	docking_controller = "fleet_ani_docker"
 
 /datum/shuttle/autodock/overmap/fleet/ani
 	name = "Ani Runabout Shuttle"
@@ -154,6 +157,7 @@ Colonial Militia files state that this vessel is the main FTU Vessel in the area
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_deneb"
+	docking_controller = "fleet_deneb_docker"
 
 /datum/shuttle/autodock/overmap/fleet/deneb
 	name = "Deneb Shuttle"
@@ -199,6 +203,7 @@ Now used a private vessel available to colonist, files do note that the ship als
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_caravan"
+	docking_controller = "fleet_caravan_docker"
 
 
 /datum/shuttle/autodock/overmap/fleet/caravan
@@ -244,6 +249,7 @@ Colonial Militia files state that this shuttle is one of the most popular vessel
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_runabout"
+	docking_controller = "fleet_runabout_docker"
 
 
 /datum/shuttle/autodock/overmap/fleet/runabout
@@ -283,6 +289,7 @@ Colonial Militia files state that this shuttle is one of the most popular vessel
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "occulum_fleet"
+	docking_controller = "occulum_fleet_docker"
 
 /datum/shuttle/autodock/overmap/fleet/starcutter
 	name = "ORS Starcutter Radio Shuttle"
@@ -326,6 +333,7 @@ Colonial Militia files state that this shuttle is one of the most popular vessel
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "cargoravana_start"
+	docking_controller = "cargoravana_start_docker"
 
 /datum/shuttle/autodock/overmap/fleet/cargoravana
 	name = "Spacena Cargoravana Shuttle"
@@ -370,6 +378,7 @@ This class of shuttle is the home of many fammilies."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_adventurer"
+	docking_controller = "fleet_adventurer_docker"
 
 /datum/shuttle/autodock/overmap/fleet/adventurer
 	name = "Spacena Adventurer Shuttle"
@@ -412,6 +421,7 @@ This class of shuttle is the home of many fammilies."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_tug"
+	docking_controller = "fleet_tug_docker"
 
 /datum/shuttle/autodock/overmap/fleet/tug
 	name = "Cargo Tug Hauler Shuttle"
@@ -454,6 +464,7 @@ This class of shuttle is the home of many fammilies."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_utilitymicro"
+	docking_controller = "fleet_utilitymicro_docker"
 
 /datum/shuttle/autodock/overmap/fleet/utilitymicro
 	name = "Utility Micro Shuttle"
@@ -496,6 +507,8 @@ This class of shuttle is the home of many fammilies."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_utilitymicro2"
+	docking_controller = "fleet_utilitymicro2_docker"
+
 
 /datum/shuttle/autodock/overmap/fleet/utilitymicro2
 	name = "Utility Micro Shuttle 2"
@@ -540,6 +553,7 @@ This class of shuttle is the home of many fammilies."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "colonial_start"
+	docking_controller = "colonial_start_docker"
 
 /datum/shuttle/autodock/overmap/fleet/colonial
 	name = "RCV Roseline"
@@ -586,6 +600,7 @@ Colonial Militia files state that this Vessel got all archives and docuement to 
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "battlestar_start"
+	docking_controller = "battlestar_start_docker"
 
 /datum/shuttle/autodock/overmap/fleet/battlestar
 	name = "RCMV Adamant"
@@ -630,6 +645,7 @@ Colonial Militia files state that this Vessel got all archives and docuement to 
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "parabelum_start"
+	docking_controller = "parabelum_start_docker"
 
 /obj/overmap/entity/visitable/ship/landable/fleet/parabellum
 	name = "RCMV Parabellum"
@@ -677,6 +693,7 @@ Colonial Militia files state that this Vessel got all archives and docuement to 
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_providence"
+	docking_controller = "fleet_providence_docker"
 
 /datum/shuttle/autodock/overmap/fleet/providence
 	name = "Providence Shuttle"
@@ -723,6 +740,7 @@ Now used a private vessel available to colonist, it as been repaired."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_biodancy"
+	docking_controller = "fleet_biodancy_docker"
 
 /datum/shuttle/autodock/overmap/fleet/fleet/biodancy
 	name = "Biodancy Shuttle"
@@ -779,7 +797,7 @@ Now used a private vessel available to colonist."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_tour"
-
+	docking_controller = "fleet_tour_docker"
 
 /datum/shuttle/autodock/overmap/fleet/tour
 	name = "Tour Shuttle"
@@ -819,6 +837,7 @@ Now used a private vessel available to colonist."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_passenger"
+	docking_controller = "fleet_passenger_docker"
 
 /datum/shuttle/autodock/overmap/fleet/passenger
 	name = "Passenger Shuttle"
@@ -857,6 +876,7 @@ Now used a private vessel available to colonist."}
 	base_area = /area/space
 	base_turf = /turf/space
 	landmark_tag = "fleet_bolt"
+	docking_controller = "fleet_bolt_docker"
 
 /datum/shuttle/autodock/overmap/fleet/bolt
 	name = "Bolt Transport Shuttle"

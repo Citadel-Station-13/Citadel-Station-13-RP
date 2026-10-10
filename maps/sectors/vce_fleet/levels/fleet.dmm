@@ -8,7 +8,9 @@
 	dir = 4
 	},
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/dock)
 "aaG" = (
@@ -559,7 +561,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/sector/fleet/commons)
 "awp" = (
@@ -732,7 +736,9 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/providence)
 "aDC" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -1216,7 +1222,9 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/fleet/occupied)
 "aXm" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
@@ -2034,7 +2042,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -2047,7 +2057,9 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/providence)
 "bAD" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	master_tag = "deneb_docker";
@@ -2620,7 +2632,9 @@
 /turf/space,
 /area/space)
 "bTQ" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "fleet_deneb_docker";
@@ -3027,7 +3041,9 @@
 	dir = 8
 	},
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -3064,7 +3080,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/parabellum)
 "cmv" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -3176,7 +3194,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/commons)
 "cqw" = (
@@ -3380,7 +3400,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/parabellum)
 "cAA" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
@@ -3585,7 +3607,9 @@
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/fleet/smuggler)
 "cMw" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/yellow{
@@ -3781,7 +3805,9 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/battlestar)
 "cYn" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
@@ -4179,7 +4205,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/starcutter)
 "dsJ" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/parabellum)
@@ -4405,7 +4433,9 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/fleet/battlestar)
 "dCp" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -4786,7 +4816,9 @@
 /area/sector/fleet/room10)
 "dRH" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/bar)
 "dSd" = (
@@ -5410,7 +5442,9 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/fleet/battlestar)
 "eqJ" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
@@ -5653,7 +5687,9 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/providence)
 "eAg" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/sector/fleet/trash)
 "eAh" = (
@@ -5673,7 +5709,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/shuttle/fleet/battlestar)
 "eAx" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
@@ -6630,7 +6668,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/sector/fleet/smuggler)
 "fwI" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "deneb_docker";
@@ -6688,7 +6728,9 @@
 /area/sector/fleet/room14)
 "fzp" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/sector/fleet/commons)
 "fzu" = (
@@ -6965,7 +7007,9 @@
 	dir = 8
 	},
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -8100,7 +8144,9 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/fleet/trade_ship/general)
 "gLW" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 1
@@ -9232,7 +9278,9 @@
 /area/sector/fleet/smuggler)
 "hMb" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -9352,7 +9400,9 @@
 /area/sector/fleet/engineering)
 "hSn" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/sector/fleet/trash)
 "hSp" = (
@@ -9624,7 +9674,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/botany)
 "idq" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
@@ -10183,7 +10235,9 @@
 /turf/simulated/floor/tiled/kafel_full,
 /area/sector/fleet/bar)
 "iBd" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -10219,7 +10273,9 @@
 /turf/simulated/floor/tiled/kafel_full/white,
 /area/shuttle/fleet/cargoravana)
 "iCa" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
@@ -10328,7 +10384,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/tour)
 "iFw" = (
@@ -10555,7 +10613,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -10844,7 +10904,9 @@
 /turf/simulated/floor/plating/indoors,
 /area/sector/fleet/room10)
 "jeD" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -11170,7 +11232,9 @@
 /turf/simulated/floor/wood,
 /area/shuttle/fleet/colonial)
 "jqk" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
@@ -11506,7 +11570,9 @@
 /area/sector/fleet/room1)
 "jCN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
@@ -13180,7 +13246,9 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/fleet/starcutter)
 "lcj" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboarding"
@@ -14048,7 +14116,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/trade_ship/general)
 "lVB" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -14714,7 +14784,9 @@
 /turf/simulated/floor/tiled/kafel_full/beige,
 /area/shuttle/fleet/colonial)
 "mwy" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -14921,7 +14993,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
 "mDj" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
@@ -14940,7 +15014,9 @@
 /turf/simulated/floor/plating/indoors,
 /area/sector/fleet/room6)
 "mDM" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
@@ -16692,7 +16768,9 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/battlestar)
 "ohU" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/fans/tiny,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -17291,7 +17369,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/commons)
 "oDE" = (
@@ -17675,7 +17755,9 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/fleet/botany)
 "oWu" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor,
 /area/shuttle/fleet/deneb)
@@ -17778,7 +17860,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
 "pcM" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
 	},
@@ -18541,7 +18625,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/biodancy)
 "pLt" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	frequency = 1380;
@@ -18635,7 +18721,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/colonial)
 "pOG" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor,
 /area/shuttle/fleet/deneb)
@@ -19267,7 +19355,9 @@
 /turf/simulated/floor/plating,
 /area/shuttle/fleet/scoophead/engineering)
 "qnA" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/bar)
 "qor" = (
@@ -19648,7 +19738,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/botany)
 "qGx" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -20036,7 +20128,9 @@
 /area/shuttle/fleet/colonial)
 "qWC" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "qWG" = (
@@ -20468,7 +20562,9 @@
 /area/shuttle/fleet/battlestar)
 "rsd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
@@ -20784,7 +20880,9 @@
 /turf/simulated/floor/fey/forest_grass,
 /area/sector/fleet/safarizoo)
 "rHq" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
@@ -21730,7 +21828,9 @@
 	dir = 4
 	},
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/commons)
 "sqL" = (
@@ -23569,7 +23669,9 @@
 /turf/simulated/floor/concrete,
 /area/sector/fleet/dock)
 "uah" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/colonial)
@@ -23790,7 +23892,9 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/space)
 "ujF" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
@@ -23926,7 +24030,9 @@
 /turf/simulated/wall/r_wall/prepainted/engineering,
 /area/sector/fleet/room12)
 "usJ" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/bar)
@@ -24290,7 +24396,9 @@
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/fleet/battlestar)
 "uJd" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
@@ -24858,7 +24966,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/providence)
 "vib" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
@@ -25239,7 +25349,9 @@
 /turf/simulated/wall/silver,
 /area/shuttle/fleet/ani)
 "vtJ" = (
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
 	frequency = 1380;
@@ -26465,7 +26577,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/dock)
 "wBP" = (
@@ -27726,7 +27840,9 @@
 /area/shuttle/fleet/tour)
 "xGq" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = null
+	},
 /turf/simulated/floor/tiled/dark,
 /area/sector/fleet/botany)
 "xGH" = (

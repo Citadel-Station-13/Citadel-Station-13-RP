@@ -1251,7 +1251,7 @@
 /area/space)
 "fi" = (
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/civ)
 "fp" = (
 /obj/structure/bed/chair/shuttle{
@@ -5437,7 +5437,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/civ)
 "xh" = (
 /obj/machinery/shipsensors,
@@ -8809,7 +8809,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "Lf" = (
-/turf/simulated/floor/airless,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/civ)
 "Ln" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -10265,7 +10265,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/civ)
 "RM" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -10330,7 +10330,7 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/civ)
 "Sf" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -10705,6 +10705,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/civ)
 "TF" = (

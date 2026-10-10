@@ -20,10 +20,6 @@
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/simulated/floor/plating,
 /area/sector/tundra/shuttle4)
-"al" = (
-/obj/spawner/corpse/vintage/pilot,
-/turf/simulated/wall/r_wall/prepainted,
-/area/shuttle/maquis/raider)
 "am" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/cell/basic/tier_1,
@@ -40830,7 +40826,7 @@ Do
 Zm
 Do
 Do
-al
+Do
 xw
 Do
 Do
@@ -41218,7 +41214,7 @@ lx
 gY
 Ls
 CZ
-al
+Do
 yX
 nK
 pJ
@@ -41606,7 +41602,7 @@ Nx
 OK
 jG
 tw
-al
+Do
 ox
 nK
 OK

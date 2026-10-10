@@ -600,7 +600,7 @@
 /area/engineering/atmos/strelka/engineering/atmos)
 "bB" = (
 /obj/structure/loot_pile/maint/boxfort,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "bC" = (
 /obj/machinery/mech_recharger,
@@ -2961,7 +2961,7 @@
 "hG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "hH" = (
 /obj/structure/table/reinforced,
@@ -2976,7 +2976,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "hJ" = (
 /obj/landmark/spawnpoint/job/chief_engineer,
@@ -3414,7 +3414,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "iV" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -3545,7 +3545,7 @@
 	req_access = null;
 	req_one_access = list(10,24,11)
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "jm" = (
 /obj/structure/bed/chair/office/dark{
@@ -5330,6 +5330,9 @@
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
+/obj/structure/cable{
+	icon_state = "6-9"
+	},
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/coms)
 "nV" = (
@@ -5525,7 +5528,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "or" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -8502,7 +8505,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "vP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10164,7 +10167,7 @@
 "zK" = (
 /obj/structure/loot_pile/maint/boxfort,
 /obj/machinery/air_alarm/east_mount,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "zL" = (
 /obj/structure/cable/blue{
@@ -10481,7 +10484,7 @@
 	name = "Powernet Sensor - Bride / IAA";
 	name_tag = "Deck2 - Bridge / IAA"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "Ax" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
@@ -10496,7 +10499,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "Az" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11151,7 +11154,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "BR" = (
 /obj/structure/cable/yellow{
@@ -12489,7 +12492,7 @@
 	dir = 4
 	},
 /obj/structure/loot_pile/maint/boxfort,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "FH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -14641,7 +14644,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "LC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14673,7 +14676,7 @@
 /obj/structure/cable/white{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "LG" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -15154,7 +15157,7 @@
 /obj/structure/cable{
 	icon_state = "6-9"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "MP" = (
 /obj/structure/cable/white{
@@ -15941,7 +15944,7 @@
 /obj/structure/cable{
 	icon_state = "2-9"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "OV" = (
 /obj/machinery/door/airlock/security{
@@ -16553,7 +16556,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "Qh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16877,7 +16880,7 @@
 /obj/structure/cable{
 	icon_state = "1-6"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "QM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -17621,6 +17624,9 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/air_alarm/west_mount,
+/obj/structure/cable{
+	icon_state = "1-6"
+	},
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/coms)
 "SG" = (
@@ -18258,7 +18264,7 @@
 	req_one_access = list(10,24,11);
 	req_access = null
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "Uy" = (
 /obj/effect/floor_decal/corner/navblue/border,
@@ -18298,7 +18304,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "UE" = (
 /obj/map_helper/paint_stripe/sun,
