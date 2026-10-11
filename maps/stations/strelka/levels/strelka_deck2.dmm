@@ -1475,6 +1475,9 @@
 /obj/structure/cable{
 	icon_state = "2-5"
 	},
+/obj/machinery/computer/telecomms/server{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/coms)
 "dN" = (
@@ -6365,7 +6368,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/computer/telecomms/monitor,
+/obj/machinery/computer/telecomms/monitor{
+	dir = 8
+	},
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/coms)
 "qu" = (
@@ -19430,11 +19435,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/computer/telecomms/server,
-/obj/structure/cable/orange{
-	icon_state = "0-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/orange{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/reinforced,
 /area/engineering/strelka/coms)
 "Xm" = (

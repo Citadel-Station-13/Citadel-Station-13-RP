@@ -8,6 +8,7 @@
 	id = "blockade_runner"
 	var/sealed = FALSE
 	var/last_used = 0
+	color = "#415df7"
 
 
 /obj/machinery/door/blast/strelka/blockade
@@ -43,6 +44,51 @@
 
 /obj/machinery/button/remote/blast_door/strelka/blockade/proc/switch_blastdoors()
 	for(var/obj/machinery/door/blast/strelka/blockade/M in GLOB.machines)
+		if(M.id == id)
+			if(sealed)
+				spawn(0)
+					M.force_close()
+			else
+				spawn(0)
+					M.force_open()
+
+
+/*
+	Blast door remote control
+*/
+/obj/machinery/button/remote/blast_door/strelka/bunker
+	icon = 'icons/obj/stationobjs.dmi'
+	name = "EMERGENCY Deck 4 Bunker protocol button"
+	desc = "A button in red that much be pressed in a emergency only. Locks most of the civilians area away from danger."
+	id = "bunkerprotocol"
+	var/sealed = FALSE
+	color = '#ca0000'
+
+
+/obj/machinery/door/blast/strelka/bunker
+	name = "Bunker blast door"
+	desc = "An old blastdoor, designed for handleing one or two hits of anti ship weaponry."
+	id = "bunkerprotocol"
+	density = 0
+	opacity = 1
+	integrity = 500
+	integrity_max = 500
+
+/obj/machinery/door/blast/strelka/bunker/Initialize(mapload)
+	. = ..()
+	opacity = 0
+
+
+/obj/machinery/button/remote/blast_door/strelka/bunker/trigger()
+	sealed = !sealed
+	if(sealed)
+		command_announcement.Announce("Deck 4 is entering Bunker mode. Protect the crew, protect the civilians. Closing blastdoor.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=50))
+	else
+		command_announcement.Announce("Deck 4 is now exiting Bunker mode. Opening blastdoor.", "Blockade Runner mode", new_sound = sound('sound/effects/meteor_strike.ogg', volume=30))
+	switch_blastdoors()
+
+/obj/machinery/button/remote/blast_door/strelka/bunker/proc/switch_blastdoors()
+	for(var/obj/machinery/door/blast/strelka/bunker/M in GLOB.machines)
 		if(M.id == id)
 			if(sealed)
 				spawn(0)

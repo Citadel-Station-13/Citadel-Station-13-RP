@@ -36,3 +36,16 @@
 	struct_x = 0
 	struct_y = 0
 	struct_z = 0
+
+/datum/map_level/sector/tundra_planet/west/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
+	. = ..()
+	out_generation_callbacks?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			225,
+			/area/sector/tundra/field/unexplored,
+			/datum/map_template/submap/level_specific/tundra_planet,
+		)
+	)

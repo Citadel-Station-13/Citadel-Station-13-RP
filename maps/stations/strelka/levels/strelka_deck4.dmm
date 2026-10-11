@@ -988,6 +988,10 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/crew_quarters/kitchen/strelka)
+"dB" = (
+/obj/machinery/cryopod/robot/door/shuttle,
+/turf/simulated/floor/plating,
+/area/hallway/strelka/deck4)
 "dD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -2350,6 +2354,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
+/area/crew_quarters/bar/strelka)
+"jk" = (
+/obj/machinery/door/airlock/multi_tile/glass/civilian/alt{
+	name = "Bar and crew quarters"
+	},
+/turf/simulated/floor/roguetown/church_marble,
 /area/crew_quarters/bar/strelka)
 "jo" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -4361,9 +4371,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass{
-	name = "Bar"
-	},
 /turf/simulated/floor/roguetown/church_marble,
 /area/crew_quarters/bar/strelka)
 "qS" = (
@@ -4415,6 +4422,12 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/dormhallway/pool)
+"rf" = (
+/obj/machinery/door/airlock{
+	name = "Emergency evacuation Airlock"
+	},
+/turf/simulated/floor/plating,
+/area/hallway/strelka/deck4)
 "rg" = (
 /obj/machinery/computer/ship/engines/adv{
 	dir = 1
@@ -6330,6 +6343,9 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/wood/indoors,
+/area/hallway/strelka/deck4)
+"yj" = (
+/turf/simulated/floor/plating,
 /area/hallway/strelka/deck4)
 "yn" = (
 /obj/structure/table/hardwoodtable,
@@ -28088,7 +28104,7 @@ eg
 xq
 DK
 Qg
-Qg
+dB
 Qg
 Mt
 Mt
@@ -28281,8 +28297,8 @@ oh
 Ue
 Um
 DK
-Qg
-Qg
+rf
+yj
 Qg
 bh
 VL
@@ -34490,7 +34506,7 @@ Gs
 lE
 Sw
 Ln
-tj
+jk
 PZ
 nH
 wA

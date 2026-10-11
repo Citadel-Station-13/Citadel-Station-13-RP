@@ -159,7 +159,7 @@
 	Okay, so : <br>\
 	<br>\
 	<hr>\
-	<b> EXPLORATION / SCIENCE / SECURITY MISSION </b> : Alright, this one is a hard one, so prepare well.<u> We wish to recover the most of archives the civilisation on the drifting planet left behind.</u><br>\
+	<b> SPECIAL MISSION </b> : Alright, this one is a hard one, so prepare well.<u> We wish to recover the most of archives the civilisation on the drifting planet left behind.</u><br>\
 	<hr>\
 	<b> CARGO / CIVIL MISSION </b> : We have a VIP on the Astral. And I tell you, they are picky. <u> We request arround 10 different meal. </u><br>\
 	<hr>\
@@ -189,6 +189,48 @@
 	<b> MEDICAL / SCIENCE MISSION </b> : We wish to study the lifeform of the area. <u> We request that at least 4 animals be captured. </u><br>\
 	<hr>\
 	<b> CARGO / CIVIL MISSION </b> : Expedition teams from the NCS Astral lost a few crates in a lot of POIs arround the sector. <u> We need to recover at least 4. </u><br>\
+	<hr>\
+	We wish you luck, <hr>\
+	<i>Acting Centcom NCS Astral Command</i>."
+
+
+
+/obj/item/paper/strelkaobjective/seven
+	info = "<center><logo><br>\
+	<center><h1> STRELKA EXPEDITION ORDERS </h1><br>\
+	<br>\
+	<hr>\
+	<br> </center>\
+	Greetings Strelka Command, we hope you a good shift.<br>\
+	Here are your objectives. They are optional of course, but we will gain alot if you assist with them.<br>\
+	They are departement based, and command is tasked to communicate them to the crew, while also helping to achieve them.<br>\
+	Okay, so : <br>\
+	<br>\
+	<hr>\
+	<b> SPECIAL MISSION </b> : The astral got in trouble last shift. Due to this, Internal Affairs is doing a lengthy review of the vessel's crew.<u> The Crew Strelka is asked to relax </u><br>\
+	<hr>\
+	We wish you luck, <hr>\
+	<i>Acting Centcom NCS Astral Command</i>."
+
+/obj/item/paper/strelkaobjective/eight
+	info = "<center><logo><br>\
+	<center><h1> STRELKA EXPEDITION ORDERS </h1><br>\
+	<br>\
+	<hr>\
+	<br> </center>\
+	Greetings Strelka Command, we hope you a good shift.<br>\
+	Here are your objectives. They are optional of course, but we will gain alot if you assist with them.<br>\
+	They are departement based, and command is tasked to communicate them to the crew, while also helping to achieve them.<br>\
+	Okay, so : <br>\
+	<br>\
+	<hr>\
+	<b> CIVIL MISSION </b> : We got a odd one for you today. The RCV Skullcrack, the bar of the Roseline colonist fleet is paying us to find a crew to play this shift... We... I mean we have good musicians on board, but huh... Yeah... <u> We wish that your crew create a band or makes a show of somekind.</u><br>\
+	<hr>\
+	<b> MEDICAL / CARGO MISSION </b> : The last rescue operation the Astral intervene has consumned a lot of our medical supplies. <u> We request that you send at least 4 crates of medical supplies made on board. </u><br>\
+	<hr>\
+	<b> SCIENCE MISSION </b> : The FTU made a good offer to buy a few combat mech from us. <u> We request 2 be made. </u><br>\
+	<hr>\
+	<b> SECURITY MISSION </b> : We have a lot of reports of boarders arround. We need your sec team to be ready if there is a boarding attempt on the Strelka. <u> We request that your perform anti boarding exercices. </u><br>\
 	<hr>\
 	We wish you luck, <hr>\
 	<i>Acting Centcom NCS Astral Command</i>."

@@ -9,6 +9,13 @@
 	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 	initial_outdoors = TRUE
 
+/area/sector/tundra/field/unexplored
+	name = "\improper Away Mission - Tundra planet : Unexplored Fields"
+	icon_state = "away"
+	ambience = list('sound/ambience/thundra.ogg')
+	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
+	initial_outdoors = TRUE
+
 /area/sector/tundra/base
 	name = "\improper Away Mission - Tundra planet : Settlement Maquis base"
 	icon_state = "blue"

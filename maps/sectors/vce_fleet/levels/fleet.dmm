@@ -35,6 +35,11 @@
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/fleet/colonial)
+"acn" = (
+/obj/landmark/spawnpoint/job/scientist,
+/obj/structure/bed/chair/office/dark,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "acM" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -780,6 +785,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/occupied)
+"aEq" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chem_master{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "aER" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -1474,20 +1486,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/parabellum)
-"bfe" = (
-/obj/machinery/light/small/old{
-	dir = 1
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "deneb1";
-	name = "Runabout Door";
-	pixel_y = 29
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/fleet/deneb)
 "bfg" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
 	frequency = 8018;
@@ -8026,6 +8024,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/smuggler)
+"gEm" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chemical_dispenser/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "gEr" = (
 /obj/machinery/door/airlock/derelict{
 	dir = 4
@@ -8094,6 +8099,11 @@
 /mob/living/bot/medibot/vce_doctor,
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/sector/fleet/commons)
+"gHW" = (
+/obj/machinery/air_alarm/west_mount,
+/obj/machinery/computer/resleeving,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "gIv" = (
 /obj/structure/cable/pink{
 	icon_state = "4-8"
@@ -13684,6 +13694,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/fleet/providence)
+"lAp" = (
+/obj/machinery/camera/network/security{
+	network = list("Balista");
+	dir = 4
+	},
+/obj/machinery/light/small/old{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "lAG" = (
 /obj/machinery/light_switch{
 	dir = 1;
@@ -15950,6 +15970,10 @@
 	},
 /turf/simulated/floor/event/derelict_floor6,
 /area/sector/fleet/engineering)
+"nwa" = (
+/obj/machinery/resleeving/body_printer/synth_fab,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "nwr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -16050,6 +16074,21 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/commons)
+"nzU" = (
+/obj/structure/table/carbon/reinforced,
+/obj/item/storage/box/masks,
+/obj/item/defib_kit/loaded,
+/obj/item/storage/box/gloves{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/firstaid/surgery,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 6
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "nAt" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/fey/forest_grass,
@@ -16223,13 +16262,6 @@
 	},
 /turf/simulated/floor/tiled/old_cargo/white,
 /area/shuttle/fleet/trade_ship/cockpit)
-"nHA" = (
-/obj/machinery/door/blast/regular{
-	id = "deneb1"
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/reinforced,
-/area/shuttle/fleet/deneb)
 "nHD" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -16634,6 +16666,10 @@
 	},
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/sector/fleet/commons)
+"odN" = (
+/obj/structure/closet/crate/biohazard,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "odS" = (
 /obj/structure/bed/chair/sofa/red/left{
 	dir = 8
@@ -17459,6 +17495,18 @@
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/fleet/trade_ship/general)
+"oFH" = (
+/obj/machinery/reagentgrinder,
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
+	},
+/obj/structure/table/carbon/reinforced,
+/obj/machinery/light/small/old{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "oGq" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -17678,6 +17726,10 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/fleet/room7)
+"oRh" = (
+/obj/machinery/resleeving/resleeving_pod,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "oSk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -22611,6 +22663,10 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/fleet/battlestar)
+"sZN" = (
+/obj/machinery/light/small/old,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "taN" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -24739,12 +24795,6 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/shuttle/fleet/trade_ship/general)
-"uYR" = (
-/obj/vehicle/sealed/mecha/combat/fighter/cludge{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/shuttle/fleet/deneb)
 "uYU" = (
 /obj/machinery/door/airlock/silver,
 /turf/simulated/floor/tiled/kafel_full/beige,
@@ -25473,6 +25523,15 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/fleet/room11)
+"vAc" = (
+/obj/machinery/optable{
+	name = "Robotics Operating Table"
+	},
+/obj/machinery/oxygen_pump/anesthetic{
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "vAl" = (
 /obj/structure/table/marble,
 /obj/machinery/light{
@@ -26629,13 +26688,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/sector/fleet/occupied)
-"wDf" = (
-/obj/machinery/door/airlock/hatch{
-	req_one_access = null
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/fleet/deneb)
 "wEt" = (
 /turf/simulated/floor/wood,
 /area/shuttle/fleet/colonial)
@@ -26697,6 +26749,20 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/shuttle/fleet/providence)
+"wHp" = (
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -12
+	},
+/obj/item/reagent_scanner{
+	pixel_y = 11
+	},
+/obj/item/storage/box/syringes,
+/obj/structure/table/carbon/reinforced,
+/obj/structure/sign/periodic{
+	pixel_x = 30
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/fleet/deneb)
 "wHJ" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -27997,6 +28063,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
 "xMT" = (
+/obj/item/storage/box/beakers,
+/obj/item/storage/fancy/vials,
+/obj/item/clothing/glasses/science,
+/obj/structure/table/carbon/reinforced,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/deneb)
@@ -28525,10 +28595,6 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/commons)
-"ykr" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/reinforced,
-/area/shuttle/fleet/deneb)
 "ykB" = (
 /obj/structure/railing/grey,
 /turf/simulated/floor/reinforced,
@@ -44913,10 +44979,10 @@ aeS
 aeS
 aeS
 aeS
-nHA
-eFU
-tfj
-eFU
+viV
+slE
+slE
+rtT
 mvY
 hDf
 mPx
@@ -45107,10 +45173,10 @@ aeS
 aeS
 aeS
 aeS
-nHA
-eFU
-uYR
-eFU
+tDE
+dzy
+dzy
+uyu
 mvY
 rYy
 mOK
@@ -45301,10 +45367,10 @@ aeS
 aeS
 aeS
 aeS
-nHA
-eFU
-sjj
-ykr
+viV
+slE
+slE
+rtT
 oFo
 pTc
 aUv
@@ -45496,11 +45562,11 @@ aeS
 aeS
 aeS
 rYy
-mvY
-mvY
-mvY
+bRX
+rtT
+bcg
 rYy
-bfe
+rHz
 myi
 svZ
 rYy
@@ -45690,8 +45756,8 @@ aeS
 aeS
 aeS
 viV
-slE
-slE
+mcD
+rtT
 rtT
 mvY
 gAd
@@ -45884,8 +45950,8 @@ aeS
 aeS
 aeS
 tDE
-dzy
-dzy
+ueh
+rtT
 uyu
 oFo
 crD
@@ -46078,9 +46144,9 @@ aeS
 aeS
 aeS
 viV
-slE
-slE
-rtT
+sKC
+pqk
+pqk
 mvY
 gAd
 myi
@@ -46272,9 +46338,9 @@ aeS
 aeS
 aeS
 rYy
-bRX
-rtT
-bcg
+mvY
+mvY
+mvY
 rYy
 rHz
 myi
@@ -46466,10 +46532,10 @@ aeS
 aeS
 aeS
 viV
-mcD
-rtT
-rtT
-mvY
+gHW
+lAp
+vAc
+bEa
 gAd
 myi
 eSs
@@ -46660,10 +46726,10 @@ aeS
 aeS
 aeS
 tDE
-ueh
-rtT
-uyu
-oFo
+oRh
+yfM
+nzU
+pvD
 crD
 xgd
 hiB
@@ -46854,10 +46920,10 @@ aeS
 aeS
 aeS
 viV
-sKC
-pqk
-pqk
-mvY
+nwa
+yfM
+yfM
+bEa
 gAd
 myi
 eSs
@@ -47048,9 +47114,9 @@ aeS
 aeS
 aeS
 rYy
-mvY
-mvY
-mvY
+odN
+yfM
+sZN
 rYy
 rHz
 myi
@@ -47245,7 +47311,7 @@ viV
 yfM
 yfM
 yfM
-mvY
+bEa
 gAd
 myi
 eSs
@@ -47436,10 +47502,10 @@ aeS
 aeS
 aeS
 tDE
-yfM
-yfM
+gEm
+acn
 xMT
-wDf
+pvD
 crD
 xgd
 hiB
@@ -47630,10 +47696,10 @@ aeS
 aeS
 aeS
 viV
-yfM
-yfM
-yfM
-mvY
+aEq
+oFH
+wHp
+bEa
 gAd
 sGP
 eSs

@@ -9478,10 +9478,6 @@
 "Oo" = (
 /obj/effect/floor_decal/corner/black/full,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -22
-	},
 /obj/item/clothing/accessory/armor/armorplate/heavy{
 	pixel_x = -4;
 	pixel_y = -3
@@ -9531,6 +9527,11 @@
 	pixel_y = -3
 	},
 /obj/structure/table/rack/shelf/steel,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24;
+	pixel_y = 6
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory3)
 "Op" = (
@@ -10754,6 +10755,13 @@
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge/strelka/balista)
+"TQ" = (
+/obj/machinery/air_alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/security/strelka/armory3)
 "TS" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -35152,7 +35160,7 @@ el
 ta
 Fv
 Oo
-CL
+TQ
 CL
 Uy
 Io
