@@ -137,7 +137,6 @@
 	l_ear = /obj/item/radio/headset/trader/outsider
 	shoes = /obj/item/clothing/shoes/galoshes/black
 	back = /obj/item/storage/backpack/industrial
-	id_type = /obj/item/card/id/assistant
 	pda_type = /obj/item/pda/engineering
 	belt = /obj/item/storage/belt/utility/full
 	id_slot = SLOT_ID_WORN_ID
@@ -150,7 +149,6 @@
 	l_ear = /obj/item/radio/headset/trader/outsider
 	shoes = /obj/item/clothing/shoes/galoshes/black
 	back = /obj/item/storage/backpack
-	id_type = /obj/item/card/id/assistant
 	pda_type = /obj/item/pda
 	belt = /obj/item/storage/belt/utility/full
 	id_slot = SLOT_ID_WORN_ID

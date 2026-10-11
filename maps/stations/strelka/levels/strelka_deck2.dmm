@@ -2102,9 +2102,6 @@
 /turf/simulated/floor/wood/indoors,
 /area/hallway/strelka/deck2)
 "fB" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
 /obj/structure/flora/grass/event/purple_flowers1,
 /obj/structure/window/phoronreinforced,
 /obj/structure/window/phoronreinforced{
@@ -6785,9 +6782,6 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/strelka/engineering)
 "rw" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
 /obj/structure/flora/grass/event/purple_flowers1,
 /obj/structure/window/phoronreinforced,
 /obj/structure/window/phoronreinforced{
@@ -15539,9 +15533,6 @@
 /turf/simulated/floor/roguetown/church_marble,
 /area/hallway/strelka/deck2)
 "NV" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 4
-	},
 /obj/structure/flora/grass/event/purple_flowers1,
 /obj/structure/window/phoronreinforced,
 /obj/structure/window/phoronreinforced{

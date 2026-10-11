@@ -2691,7 +2691,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/cargoravana)
 "bVf" = (
-/obj/overmap/entity/visitable/ship/landable/fleet/parabellum,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	id_tag = "parabelum_docker"
@@ -3332,6 +3331,12 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/commons)
+"cxe" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/floor_decal/rust,
+/obj/structure/lightpost/urban,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/commons)
 "cxg" = (
@@ -7769,8 +7774,10 @@
 /area/shuttle/fleet/battlestar)
 "gqL" = (
 /obj/effect/floor_decal/borderfloorblack/full,
-/obj/structure/table/bench/standard,
-/mob/living/simple_mob/humanoid/vce_people/old,
+/mob/living/simple_mob/humanoid/vce_people/old{
+	buckled = 1
+	},
+/obj/structure/bed/chair,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/commons)
 "grw" = (
@@ -9832,6 +9839,7 @@
 /obj/vehicle/ridden/quadbike/nokey{
 	dir = 8
 	},
+/obj/structure/lightpost/urban,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/commons)
 "ifZ" = (
@@ -15682,6 +15690,15 @@
 /obj/machinery/door/blast/regular,
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/sector/fleet/room6)
+"nhp" = (
+/obj/machinery/turretid{
+	control_area = /area/shuttle/fleet/battlestar;
+	pixel_x = -30;
+	req_access = list(310);
+	pixel_y = -30
+	},
+/turf/space,
+/area/space)
 "nhv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/voidcraft/vertical,
@@ -23077,6 +23094,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/providence)
+"tnJ" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/structure/bed/chair,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/commons)
 "tnP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -29213,7 +29235,7 @@ aeS
 aeS
 aeS
 aeS
-aeS
+nhp
 aeS
 aeS
 aeS
@@ -39161,11 +39183,11 @@ mmD
 mmD
 gZa
 aiW
-yee
+lBE
 eJk
 yjX
 kco
-kgJ
+cxe
 baq
 pdX
 rTs
@@ -42653,7 +42675,7 @@ sPF
 sPF
 rPq
 ajD
-acM
+lBE
 gTV
 yjX
 kco
@@ -45175,7 +45197,7 @@ dVH
 dVH
 qvW
 gyi
-acM
+tnJ
 gTV
 yjX
 kco
@@ -45563,7 +45585,7 @@ pCu
 pCu
 pCu
 pCu
-pkS
+tnJ
 gTV
 yjX
 kco
@@ -46145,11 +46167,11 @@ qjt
 qjt
 aTK
 cwt
-acM
+lBE
 gTV
 yjX
 kco
-pkS
+lBE
 oyl
 pFM
 jMq
@@ -46343,7 +46365,7 @@ kgJ
 gTV
 yjX
 kco
-voh
+pkS
 cII
 fzm
 nJb
@@ -46537,7 +46559,7 @@ kgJ
 gTV
 yjX
 kco
-pkS
+voh
 wkB
 wkB
 wkB
@@ -46731,7 +46753,7 @@ kgJ
 gTV
 yjX
 kco
-acM
+pkS
 gjD
 gjD
 gjD
@@ -49249,7 +49271,7 @@ mTh
 mTh
 mTh
 mTh
-acM
+hRA
 tNz
 yjX
 kco
@@ -49637,11 +49659,11 @@ pVP
 pVP
 dAd
 dSd
-hRA
+lBE
 gTV
 yjX
 kco
-kgJ
+cxe
 ltK
 ltK
 ltK
@@ -56625,7 +56647,7 @@ kgJ
 gTV
 yjX
 kco
-kgJ
+cxe
 ltK
 fMo
 bfg

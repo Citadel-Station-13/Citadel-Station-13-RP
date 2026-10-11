@@ -295,6 +295,10 @@
 	outdoors = 1
 	},
 /area/sector/tundra/field)
+"cg" = (
+/obj/structure/closet/secure_closet/medical1,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/tundra/shuttle4)
 "ci" = (
 /obj/machinery/light,
 /obj/structure/cable/orange,
@@ -753,6 +757,15 @@
 /obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/tundra/shop)
+"fa" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/item/storage/toolbox/fishing,
+/turf/simulated/floor/fey/snow_grass{
+	outdoors = 1
+	},
+/area/sector/tundra/field)
 "fg" = (
 /obj/structure/bonfire/permanent,
 /turf/simulated/floor/snow{
@@ -833,9 +846,6 @@
 	},
 /area/sector/tundra/field)
 "fS" = (
-/obj/structure/bed/chair/sofa/brown/left{
-	dir = 1
-	},
 /obj/effect/floor_decal/carpet,
 /obj/effect/floor_decal/carpet{
 	dir = 8
@@ -910,9 +920,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/tundra/shop)
 "gA" = (
-/obj/structure/bed/chair/sofa/brown{
-	dir = 1
-	},
 /obj/effect/floor_decal/carpet,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/tundra/shuttle4)
@@ -958,9 +965,6 @@
 "gU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
-	},
-/obj/structure/bed/chair/sofa/brown/right{
-	dir = 1
 	},
 /obj/effect/floor_decal/carpet,
 /obj/effect/floor_decal/carpet{
@@ -1285,9 +1289,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/structure/bed/chair/sofa/brown/right{
-	dir = 8
-	},
+/obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/tundra/shuttle4)
 "iW" = (
@@ -1550,6 +1552,10 @@
 /obj/structure/metal_edge,
 /turf/simulated/floor/concrete/tile/outdoors,
 /area/sector/tundra/field)
+"kX" = (
+/obj/structure/lightpost/festive,
+/turf/simulated/floor/concrete/tile/outdoors,
+/area/sector/tundra/field)
 "kZ" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 8
@@ -1615,7 +1621,8 @@
 /obj/machinery/newscaster{
 	pixel_y = -28
 	},
-/obj/structure/table/bench/steel,
+/obj/structure/table/rack,
+/obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/tundra/shuttle4)
 "lx" = (
@@ -2106,6 +2113,7 @@
 /obj/effect/floor_decal/carpet{
 	dir = 5
 	},
+/obj/structure/bed,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/tundra/shuttle4)
 "oO" = (
@@ -2244,9 +2252,6 @@
 	desc = "Looks like it's set to ree-Anur-ntertanment, I wonder what else is on?";
 	icon_state = "frame";
 	pixel_y = 9
-	},
-/obj/structure/bookcase/lore{
-	icon_state = "book-5"
 	},
 /turf/simulated/floor/wood,
 /area/sector/tundra/shuttle4)
@@ -3094,6 +3099,7 @@
 /obj/effect/floor_decal/carpet{
 	dir = 9
 	},
+/obj/structure/bed,
 /turf/simulated/floor/carpet/patterened,
 /area/sector/tundra/shuttle4)
 "vi" = (
@@ -4286,6 +4292,7 @@
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = 30
 	},
+/obj/structure/closet/crate/medical/blood,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/tundra/shuttle4)
 "Dg" = (
@@ -4370,6 +4377,12 @@
 /obj/machinery/door/window/northleft,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
+"DF" = (
+/obj/item/storage/toolbox/fishing,
+/turf/simulated/floor/fey/snow_grass{
+	outdoors = 1
+	},
+/area/sector/tundra/field)
 "DG" = (
 /obj/structure/bed/chair/bay/chair/padded/black{
 	dir = 8
@@ -4436,13 +4449,6 @@
 /obj/machinery/coffeemaker,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/tundra/base)
-"El" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/mob/living/simple_mob/animal/monster/wolf,
-/turf/simulated/floor/wood/sif/outdoors,
-/area/sector/tundra/field)
 "Em" = (
 /obj/structure/bed/chair/sofa/beige/left{
 	dir = 1
@@ -4579,9 +4585,6 @@
 "Fi" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -33
-	},
-/obj/structure/bed/chair/sofa/brown/right{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/tundra/shuttle4)
@@ -4984,6 +4987,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/tundra/shuttle4)
 "Ii" = (
@@ -5189,6 +5193,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/tundra/shuttle4)
 "JC" = (
@@ -5324,6 +5329,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/tundra/shuttle5)
+"Kn" = (
+/obj/structure/lightpost/festive,
+/turf/simulated/floor/snow{
+	outdoors = 1
+	},
+/area/sector/tundra/field)
 "Ko" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -5398,9 +5409,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/bed/chair/sofa/brown/left{
-	dir = 4
-	},
+/obj/structure/medical_stand/anesthetic,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/tundra/shuttle4)
 "Li" = (
@@ -5926,6 +5935,10 @@
 	outdoors = 1
 	},
 /area/sector/tundra/field)
+"OR" = (
+/obj/structure/closet/secure_closet/medical1,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/sector/tundra/shuttle4)
 "OV" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/machinery/atmospherics/portables_connector,
@@ -6506,6 +6519,12 @@
 	},
 /turf/simulated/floor/wood/sif/outdoors,
 /area/sector/tundra/field)
+"TB" = (
+/obj/structure/lightpost/festive,
+/turf/simulated/floor/fey/snow_grass{
+	outdoors = 1
+	},
+/area/sector/tundra/field)
 "TE" = (
 /obj/structure/flora/tree/fey/small_tree/tree5,
 /turf/simulated/floor/fey/forest_grass,
@@ -6723,6 +6742,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/tundra/bar)
+"UI" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/walllocker_double/east,
+/obj/item/roller_holder,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/tundra/shuttle4)
+"UJ" = (
+/obj/machinery/vending/fishing,
+/turf/simulated/floor/fey/snow_grass{
+	outdoors = 1
+	},
+/area/sector/tundra/field)
 "UM" = (
 /obj/machinery/disperser/back{
 	dir = 8
@@ -7285,7 +7316,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/table/bench/steel,
+/obj/machinery/optable,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/tundra/shuttle4)
 "YB" = (
@@ -7482,7 +7513,6 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/fans/tiny,
-/obj/map_helper/access_helper/airlock/disconnected,
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/sector/tundra/shuttle4)
 "ZE" = (
@@ -7503,10 +7533,10 @@
 	},
 /area/sector/tundra/field)
 "ZI" = (
-/obj/structure/bed/chair/sofa/brown/left{
-	dir = 8
-	},
 /obj/machinery/light/small,
+/obj/machinery/oxygen_pump/anesthetic{
+	pixel_y = -31
+	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/tundra/shuttle4)
 "ZJ" = (
@@ -24333,7 +24363,7 @@ Zu
 Zu
 nZ
 nZ
-Yv
+TB
 aU
 sM
 Yv
@@ -24666,7 +24696,7 @@ Lq
 nk
 fy
 XB
-Yv
+TB
 zz
 Yv
 Yv
@@ -24720,7 +24750,7 @@ Zu
 Zu
 Zu
 nZ
-xG
+Yv
 WZ
 aU
 sM
@@ -26412,7 +26442,7 @@ Yv
 Yv
 fy
 XB
-Yv
+TB
 Nj
 uZ
 uZ
@@ -26657,7 +26687,7 @@ Zu
 Zu
 nZ
 nZ
-Yv
+TB
 sM
 aU
 Yv
@@ -27436,7 +27466,7 @@ aU
 aU
 sM
 Yv
-Yv
+DF
 DD
 mQ
 lq
@@ -27621,7 +27651,7 @@ Lz
 Ba
 Ba
 Ba
-El
+Ba
 Ba
 Ba
 Ba
@@ -27794,7 +27824,7 @@ aU
 aU
 aU
 aU
-fy
+Kn
 fy
 fy
 fy
@@ -27806,7 +27836,7 @@ Yv
 Yv
 Yv
 Yv
-Yv
+TB
 Yv
 Yv
 Yv
@@ -28206,7 +28236,7 @@ Zu
 Zu
 nZ
 nZ
-xG
+Yv
 aU
 nl
 aU
@@ -28352,7 +28382,7 @@ LS
 ka
 fy
 Vw
-Yv
+TB
 Yv
 Yv
 Yv
@@ -28370,7 +28400,7 @@ nZ
 nZ
 aU
 aU
-fy
+Kn
 fy
 uA
 NQ
@@ -28593,7 +28623,7 @@ Zu
 Zu
 nZ
 nZ
-Yv
+TB
 en
 Sn
 lt
@@ -29126,7 +29156,7 @@ CH
 lA
 oa
 AX
-ck
+fa
 WS
 Yv
 Yv
@@ -29320,7 +29350,7 @@ CH
 Vq
 Qu
 CH
-Yv
+UJ
 fy
 Yv
 Yv
@@ -30883,7 +30913,7 @@ nZ
 nZ
 AS
 AS
-CM
+OR
 CM
 YA
 lv
@@ -31474,7 +31504,7 @@ kR
 ZB
 aU
 sM
-Yv
+TB
 Yv
 Yv
 Yv
@@ -31657,7 +31687,7 @@ Zu
 Zu
 nZ
 Bg
-pq
+cg
 pq
 hY
 CM
@@ -32051,8 +32081,8 @@ Uz
 Xq
 Bg
 rP
-rP
-rP
+UI
+UI
 FA
 aU
 sM
@@ -33608,7 +33638,7 @@ Yv
 WZ
 aU
 sM
-Yv
+TB
 Cd
 eW
 Cd
@@ -33812,7 +33842,7 @@ Cd
 nZ
 Zu
 Zu
-aU
+kX
 jy
 Aa
 Aa
@@ -36131,7 +36161,7 @@ zb
 kW
 sM
 aU
-Yv
+TB
 Mt
 tU
 PL
@@ -38071,7 +38101,7 @@ zb
 kW
 aU
 aU
-Yv
+TB
 nZ
 nZ
 Zu

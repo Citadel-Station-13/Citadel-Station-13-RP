@@ -2284,6 +2284,9 @@
 /obj/effect/floor_decal/corner/red/full{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/security/strelka/armory2)
 "js" = (
@@ -6047,9 +6050,6 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/hangardeck)
 "zD" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/machinery/fire_alarm/east_mount,
 /obj/machinery/button/remote/blast_door{
 	id = "armorytactical";

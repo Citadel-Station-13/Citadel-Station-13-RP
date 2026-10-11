@@ -73,6 +73,13 @@
 	icon_state = "doctor"
 	vocal = FALSE
 
+/mob/living/bot/medibot/vce_doctor/tundra
+	name = "Colonist Doctor"
+	desc = "That old guy is in complete automatic mode, partially senile, yet still giving first aid."
+	icon = 'icons/obj/vce_asset/vce_humanoid.dmi'
+	icon_state = "civ3"
+	vocal = FALSE
+
 /mob/living/simple_mob/humanoid/vce_people/mechanic
 	name = "Fleet Mechanic"
 	desc = "Well things break often here, he must be important."

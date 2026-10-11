@@ -16,7 +16,7 @@
 [b]Controlling Goverment[/b]: Roseline Colonist Fleet Republic
 [b]Relationship with NT[/b]: Allied
 [b]Relevant Contacts[/b]: Civilian. Free trade union presence confirmed. Smuggler possibly arround.
-[b]Notes[/b]: A fleet of independant colonist flying in deepspace to find new places to settle before bigger corporations takes over. It was created in 2570.
+[b]Notes[/b]: A fleet of independant colonist flying in deepspace to find new places to settle before bigger corporations takes over. It was created in 2560.
 Initialy, colonisation were separated ventures. But with the multiplication of attacks,
 all colonist vessels decided to form into a single fleet big enough to repel pirate attacks and perform trade.
 The fleet itself is self gouverning, gouverned by a council made of the most influent captains in the fleet.
