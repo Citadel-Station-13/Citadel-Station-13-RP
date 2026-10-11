@@ -1680,10 +1680,7 @@
 /area/medical/strelka/main)
 "fO" = (
 /obj/structure/closet/secure_closet/medical2,
-/obj/machinery/air_alarm{
-	desc = null;
-	pixel_y = 24
-	},
+/obj/machinery/air_alarm/north_mount,
 /turf/simulated/floor/wood/sif,
 /area/medical/strelka/surgery)
 "fQ" = (
@@ -2715,6 +2712,7 @@
 	pixel_y = 32
 	},
 /obj/structure/table/carbon/reinforced,
+/obj/machinery/air_alarm/west_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/strelka/servers)
 "jf" = (
@@ -3732,10 +3730,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/air_alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/machinery/atmospherics/component/unary/freezer{
 	dir = 4;
 	icon_state = "freezer_1";
@@ -8261,10 +8255,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
-	},
-/obj/machinery/air_alarm{
-	dir = 1;
-	pixel_y = -25
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/strelka/medical)

@@ -1893,12 +1893,6 @@
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/runabout)
-"bwn" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/fleet/battlestar)
 "bwK" = (
 /obj/structure/bed/chair/bay/chair{
 	dir = 1
@@ -2696,6 +2690,15 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/cargoravana)
+"bVf" = (
+/obj/overmap/entity/visitable/ship/landable/fleet/parabellum,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	id_tag = "parabelum_docker"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/fleet/parabellum)
 "bVy" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 1
@@ -3676,11 +3679,14 @@
 /turf/simulated/floor/plating/indoors,
 /area/sector/fleet/room5)
 "cQD" = (
-/obj/structure/bed/chair/bay/chair/padded/red{
-	dir = 8
+/obj/machinery/computer/ship/engines{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 8
+/obj/machinery/turretid{
+	control_area = /area/shuttle/fleet/battlestar;
+	pixel_x = -30;
+	req_access = list(310);
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/parabellum)
@@ -7110,12 +7116,6 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/fleet/botany)
-"fOq" = (
-/obj/machinery/computer/ship/engines{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/fleet/parabellum)
 "fOw" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -10272,6 +10272,10 @@
 "izM" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/sector/fleet/trash)
+"iAi" = (
+/obj/machinery/porta_turret/crescent,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/fleet/parabellum)
 "iAV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -14441,6 +14445,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
+/obj/machinery/turretid{
+	control_area = /area/shuttle/maquis/raider;
+	pixel_x = 30;
+	req_access = list(311)
+	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/battlestar)
 "meT" = (
@@ -15969,6 +15978,9 @@
 /mob/living/simple_mob/humanoid/vce_people/colonist/tree,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/commons)
+"nuo" = (
+/turf/space/basic,
+/area/space)
 "nuT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -19720,6 +19732,15 @@
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/sector/fleet/trash)
+"qAE" = (
+/obj/machinery/turretid{
+	control_area = /area/shuttle/fleet/battlestar;
+	pixel_x = -30;
+	req_access = list(310);
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/fleet/battlestar)
 "qBN" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /obj/structure/cable/green{
@@ -20187,6 +20208,21 @@
 	},
 /turf/simulated/shuttle/plating/airless/carry,
 /area/sector/fleet/occupied)
+"qUH" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/obj/machinery/turretid{
+	control_area = /area/shuttle/fleet/parabellum;
+	pixel_x = 30;
+	req_access = list(310);
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/fleet/parabellum)
 "qUL" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack{
@@ -20767,6 +20803,10 @@
 /obj/machinery/atmospherics/component/unary/engine/biggest,
 /turf/space,
 /area/space)
+"rvX" = (
+/obj/machinery/porta_turret/crescent,
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/fleet/battlestar)
 "rwA" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
@@ -25435,11 +25475,6 @@
 /area/sector/fleet/trash)
 "vqP" = (
 /obj/overmap/entity/visitable/ship/landable/fleet/parabellum,
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	id_tag = "parabelum_docker"
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/shuttle_landmark/fleet/parabellum,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/parabellum)
@@ -26557,18 +26592,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/providence)
-"wpp" = (
-/obj/structure/bed/chair/bay/chair/padded/red{
-	dir = 8
-	},
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/fleet/battlestar)
 "wpI" = (
 /obj/item/trash/bugsnacks,
 /turf/simulated/floor/plating,
@@ -27096,6 +27119,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/occupied)
+"wSe" = (
+/obj/structure/bed/chair/bay/chair/padded/red{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/shuttle/fleet/battlestar)
 "wSu" = (
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
@@ -28091,12 +28120,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/sector/fleet/occupied)
-"xJZ" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/shuttle/fleet/battlestar)
 "xKl" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -30956,14 +30979,14 @@ aeS
 aeS
 aeS
 gfp
-aeS
-aeS
-aeS
-aeS
-aeS
-aeS
-aeS
-aeS
+rvX
+ufX
+ufX
+ufX
+ufX
+ufX
+ufX
+rvX
 gfp
 aeS
 aeS
@@ -31148,18 +31171,18 @@ aeS
 aeS
 aeS
 aeS
-kZr
 gfp
 gfp
-ufX
-ufX
-ufX
-ufX
-ufX
-ufX
+gfp
+hnE
+hnE
+hnE
+hnE
+hnE
+hnE
 gfp
 gfp
-kZr
+gfp
 aeS
 aeS
 aeS
@@ -31344,14 +31367,14 @@ aeS
 gfp
 gfp
 gfp
-gfp
-hnE
-hnE
-hnE
-hnE
-hnE
-hnE
-gfp
+hth
+tgq
+lhD
+wcN
+quV
+opo
+ohC
+hth
 gfp
 gfp
 gfp
@@ -31538,14 +31561,14 @@ gfp
 gfp
 gfp
 hth
-hth
-tgq
-lhD
-wcN
-quV
-opo
-ohC
-hth
+gqc
+jcd
+wSe
+jcd
+jcd
+wSe
+qAE
+rqV
 hth
 gfp
 gfp
@@ -31727,24 +31750,24 @@ aeS
 aeS
 aeS
 aeS
-gfp
+rvX
 gfp
 gfp
 kWN
 hth
-gqc
-xJZ
-wpp
+cXB
+jcd
 vnA
 vnA
-wpp
-bwn
-rqV
+vnA
+vnA
+jcd
+qoL
 hth
 gfp
 gfp
 gfp
-gfp
+rvX
 aeS
 aeS
 aeS
@@ -32683,14 +32706,14 @@ aeS
 aeS
 aeS
 aeS
-aeS
-aeS
+iAi
 rUd
 rUd
 rUd
+iAi
 aeS
 aeS
-aeS
+nuo
 aeS
 aeS
 aeS
@@ -32877,7 +32900,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 rYY
 xCL
@@ -32885,6 +32907,7 @@ rYY
 rUd
 aeS
 aeS
+nuo
 aeS
 aeS
 aeS
@@ -33070,7 +33093,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 rUd
 mTC
@@ -33079,6 +33101,7 @@ mTC
 rUd
 rUd
 aeS
+nuo
 aeS
 aeS
 aeS
@@ -33263,7 +33286,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 ldr
 eqj
 tbI
@@ -33273,6 +33295,7 @@ tbI
 bCj
 aWR
 ldr
+nuo
 aeS
 aeS
 aeS
@@ -33457,7 +33480,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 ldr
 eqj
 tbI
@@ -33467,6 +33489,7 @@ jbY
 tbI
 aWR
 ldr
+nuo
 aeS
 aeS
 aeS
@@ -33652,7 +33675,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 nfP
 mTC
@@ -33661,6 +33683,7 @@ mTC
 onC
 rUd
 aeS
+nuo
 aeS
 aeS
 aeS
@@ -33846,7 +33869,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 bcU
 mTC
@@ -33855,6 +33877,7 @@ mTC
 hUq
 rUd
 aeS
+nuo
 aeS
 aeS
 aeS
@@ -34039,7 +34062,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 ldr
 cUW
 tbI
@@ -34049,12 +34071,13 @@ tbI
 tbI
 gex
 ldr
+nuo
 aeS
 gfp
 mna
 caL
 gfp
-kZr
+rvX
 aeS
 aeS
 aeS
@@ -34073,7 +34096,7 @@ gfp
 gfp
 aeS
 aeS
-kZr
+rvX
 ccV
 gfp
 mSg
@@ -34233,7 +34256,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 ldr
 cUW
 tbI
@@ -34243,7 +34265,8 @@ jbY
 tbI
 gex
 ldr
-kZr
+nuo
+rvX
 gfp
 vRL
 gvQ
@@ -34272,7 +34295,7 @@ tWh
 gfp
 mSg
 gvQ
-kZr
+rvX
 aeS
 aeS
 fqk
@@ -34428,7 +34451,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 nfP
 mTC
@@ -34437,6 +34459,7 @@ mTC
 onC
 rUd
 aeS
+nuo
 gfp
 gfp
 dZK
@@ -34622,7 +34645,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 bcU
 mTC
@@ -34631,6 +34653,7 @@ mTC
 hUq
 rUd
 aeS
+nuo
 gfp
 gfp
 uJk
@@ -34815,7 +34838,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 xcX
 rUd
 rYY
@@ -34825,6 +34847,7 @@ rYY
 rYY
 rUd
 qOj
+nuo
 gfp
 gfp
 bOv
@@ -35008,8 +35031,7 @@ aeS
 aeS
 aeS
 aeS
-aeS
-aeS
+iAi
 rUd
 rYY
 beV
@@ -35019,6 +35041,7 @@ wdW
 beV
 rYY
 rUd
+iAi
 gfp
 rKB
 uJk
@@ -35203,7 +35226,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 bcU
 mTC
@@ -35213,6 +35235,7 @@ mTC
 mTC
 hUq
 rUd
+nuo
 gfp
 nqr
 uJk
@@ -35397,7 +35420,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 bcU
 rYY
@@ -35407,6 +35429,7 @@ iCG
 rYY
 hUq
 rUd
+nuo
 gfp
 bLc
 uJk
@@ -35591,7 +35614,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 bcU
 iCG
@@ -35601,6 +35623,7 @@ gyB
 iCG
 hUq
 rUd
+nuo
 gfp
 dss
 ttT
@@ -35785,16 +35808,16 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 bcU
 iCG
 vho
+qUH
 cQD
-fOq
 iCG
 hUq
 rUd
+nuo
 gfp
 vXY
 oVd
@@ -35978,8 +36001,7 @@ aeS
 aeS
 aeS
 aeS
-aeS
-aeS
+iAi
 rUd
 bcU
 rUd
@@ -35989,6 +36011,7 @@ rYY
 rUd
 hUq
 rUd
+iAi
 gfp
 bLc
 uJk
@@ -36173,7 +36196,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 xWL
 sHV
@@ -36183,6 +36205,7 @@ sHV
 sHV
 mLh
 rUd
+nuo
 gfp
 dss
 ttT
@@ -36367,7 +36390,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 rYY
 rYY
@@ -36377,6 +36399,7 @@ rUd
 rYY
 rYY
 rUd
+nuo
 gfp
 vXY
 oVd
@@ -36561,7 +36584,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 srg
 gKh
@@ -36571,6 +36593,7 @@ rUd
 mTC
 fyM
 rUd
+nuo
 gfp
 yhv
 uJk
@@ -36754,8 +36777,7 @@ aeS
 aeS
 aeS
 aeS
-aeS
-aeS
+iAi
 rUd
 mTC
 mTC
@@ -36765,6 +36787,7 @@ rUd
 mTC
 xRc
 rUd
+iAi
 gfp
 dss
 mbu
@@ -36949,7 +36972,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 anu
 fzd
@@ -36959,6 +36981,7 @@ aDR
 fzd
 mUE
 rUd
+nuo
 gfp
 vXY
 oVd
@@ -37142,14 +37165,14 @@ aeS
 aeS
 aeS
 aeS
-aeS
-aeS
 rUd
+rYY
 rYY
 rYY
 rUd
 uwC
 rUd
+rYY
 rYY
 rYY
 rUd
@@ -37336,15 +37359,15 @@ aeS
 aeS
 aeS
 aeS
-aeS
-aeS
 dsJ
+mTC
 pAd
 dsJ
 pkn
 ltL
 hgY
 qGx
+msu
 msu
 iBd
 lcj
@@ -37530,15 +37553,15 @@ aeS
 aeS
 aeS
 aeS
-aeS
-aeS
 idq
+mTC
 cRt
 mDj
 iPo
 hBy
 dFy
 ujF
+bVf
 vqP
 cYn
 eqJ
@@ -37724,15 +37747,15 @@ aeS
 aeS
 aeS
 aeS
-aeS
-aeS
 rUd
+rYY
 rYY
 rYY
 kuo
 uiK
 rZD
 haD
+rYY
 rYY
 rUd
 gfp
@@ -37919,7 +37942,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 cFN
 dwf
@@ -37929,7 +37951,8 @@ kfB
 sob
 xDW
 rUd
-kZr
+nuo
+rvX
 gfp
 gfp
 iWF
@@ -37958,7 +37981,7 @@ bfl
 iWF
 gfp
 gfp
-kZr
+rvX
 aeS
 aeS
 aeS
@@ -38113,7 +38136,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 rUd
 rUd
 jBy
@@ -38123,6 +38145,7 @@ mSr
 tUp
 rUd
 rUd
+nuo
 aeS
 gfp
 gfp
@@ -38307,8 +38330,7 @@ aeS
 aeS
 aeS
 aeS
-aeS
-mTC
+iAi
 rUd
 rUd
 hFd
@@ -38316,7 +38338,8 @@ xbc
 nBi
 rUd
 rUd
-mTC
+iAi
+nuo
 aeS
 aeS
 gfp
@@ -38503,7 +38526,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 fvq
 pRo
 ktD
@@ -38511,6 +38533,7 @@ pRo
 vaE
 aeS
 aeS
+nuo
 aeS
 aeS
 aeS
@@ -38697,7 +38720,6 @@ aeS
 aeS
 aeS
 aeS
-aeS
 ptI
 ptI
 ptI
@@ -38705,6 +38727,7 @@ ptI
 ptI
 aeS
 aeS
+nuo
 aeS
 aeS
 aeS
@@ -39099,7 +39122,7 @@ aeS
 aeS
 aeS
 aeS
-kZr
+rvX
 gfp
 gfp
 gfp
@@ -39116,7 +39139,7 @@ gfp
 gfp
 gfp
 gfp
-kZr
+rvX
 aeS
 aeS
 aeS

@@ -232,5 +232,7 @@
 	<hr>\
 	<b> SECURITY MISSION </b> : We have a lot of reports of boarders arround. We need your sec team to be ready if there is a boarding attempt on the Strelka. <u> We request that your perform anti boarding exercices. </u><br>\
 	<hr>\
+	<b> EXPLORATION MISSION </b> : NT wish to update their data base. <u> We require that you scan at least 20 lifeforms of all types. </u><br>\
+	<hr>\
 	We wish you luck, <hr>\
 	<i>Acting Centcom NCS Astral Command</i>."
