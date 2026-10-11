@@ -18,7 +18,6 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/asteroid/rogue/zone4;
 	base_turf = /turf/space;
-	landmark_tag = "belter_zone4";
 	name = "Belter Shuttle - Zone 4"
 	},
 /turf/space,

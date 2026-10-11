@@ -1638,11 +1638,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/raider)
 "lA" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	pixel_y = 30;
-	pixel_x = 4;
-	id_tag = "tradeport_tug_docker"
-	},
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
@@ -3746,9 +3741,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/tundra/shuttle5)
 "zD" = (
-/obj/structure/stairs/bottom{
-	dir = 1
-	},
+/obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/concrete/tile/outdoors,
 /area/sector/tundra/field)
 "zF" = (

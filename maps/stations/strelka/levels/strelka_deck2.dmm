@@ -599,7 +599,6 @@
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos/strelka/engineering/atmos)
 "bB" = (
-/obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "bC" = (
@@ -968,7 +967,6 @@
 /turf/simulated/floor/airless,
 /area/space)
 "cy" = (
-/obj/structure/lattice,
 /obj/structure/grille,
 /obj/structure/lattice,
 /turf/simulated/wall/r_wall/prepainted,
@@ -1131,7 +1129,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/hallway/strelka/engineering)
@@ -2471,6 +2468,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/strelka/main)
+"gv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/maintenance/strelka/bridge)
 "gx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -2963,7 +2967,9 @@
 /area/engineering/strelka/coms)
 "hG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
 "hH" = (
@@ -2978,6 +2984,9 @@
 "hI" = (
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
@@ -10170,7 +10179,6 @@
 /turf/simulated/open,
 /area/security/strelka/storage)
 "zK" = (
-/obj/structure/loot_pile/maint/boxfort,
 /obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
@@ -12492,13 +12500,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/space)
-"FG" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/loot_pile/maint/boxfort,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/maintenance/strelka/bridge)
 "FH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -15948,6 +15949,9 @@
 "OU" = (
 /obj/structure/cable{
 	icon_state = "2-9"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/strelka/bridge)
@@ -43456,7 +43460,7 @@ WF
 LF
 iU
 Ay
-hG
+gv
 hG
 vO
 bB
@@ -43844,7 +43848,7 @@ og
 EQ
 Kd
 WF
-FG
+Qg
 zK
 Qg
 VF

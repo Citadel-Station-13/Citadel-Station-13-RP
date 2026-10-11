@@ -988,10 +988,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/crew_quarters/kitchen/strelka)
-"dB" = (
-/obj/machinery/cryopod/robot/door/shuttle,
-/turf/simulated/floor/plating,
-/area/hallway/strelka/deck4)
 "dD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -4422,12 +4418,6 @@
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/strelka/dormhallway/pool)
-"rf" = (
-/obj/machinery/door/airlock{
-	name = "Emergency evacuation Airlock"
-	},
-/turf/simulated/floor/plating,
-/area/hallway/strelka/deck4)
 "rg" = (
 /obj/machinery/computer/ship/engines/adv{
 	dir = 1
@@ -6343,9 +6333,6 @@
 	},
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/wood/indoors,
-/area/hallway/strelka/deck4)
-"yj" = (
-/turf/simulated/floor/plating,
 /area/hallway/strelka/deck4)
 "yn" = (
 /obj/structure/table/hardwoodtable,
@@ -28104,7 +28091,7 @@ eg
 xq
 DK
 Qg
-dB
+Qg
 Qg
 Mt
 Mt
@@ -28297,8 +28284,8 @@ oh
 Ue
 Um
 DK
-rf
-yj
+Qg
+Qg
 Qg
 bh
 VL
