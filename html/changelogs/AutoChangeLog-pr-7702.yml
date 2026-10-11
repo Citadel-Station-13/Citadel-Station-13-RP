@@ -1,4 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes:
-  - bugfix: "The RUST engine will now properly have side effects if instability gets too high."

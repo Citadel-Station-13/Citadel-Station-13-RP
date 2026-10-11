@@ -1,4 +1,0 @@
-author: "Shadowtail117"
-delete-after: True
-changes:
-  - bugfix: "In-game links now point to citadel-station.dev instead of citadel-station.net."
