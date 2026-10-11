@@ -35,9 +35,6 @@
 /obj/effect/step_trigger/teleporter/asteroid_field1_loop/north,
 /turf/space,
 /area/asteroid/rogue/zone1)
-"R" = (
-/turf/space/basic,
-/area/asteroid/rogue/zone1)
 "Z" = (
 /obj/effect/step_trigger/teleporter/asteroid_field1_loop/east,
 /turf/space,
@@ -18781,7 +18778,7 @@ o
 o
 o
 o
-R
+o
 o
 o
 o
