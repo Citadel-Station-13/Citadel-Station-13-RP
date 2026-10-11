@@ -3995,20 +3995,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/strelka_mining)
-"nl" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/cable/orange{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/glass/reinforced/indoors,
-/area/hallway/strelka/deck3)
 "nn" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
@@ -6436,17 +6422,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/strelka/resleeve)
-"vb" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/turf/simulated/floor/glass/reinforced/indoors,
-/area/hallway/strelka/deck3)
 "vc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9286,19 +9261,6 @@
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/wood,
 /area/bridge/strelka/md)
-"DN" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/glass/reinforced/indoors,
-/area/hallway/strelka/deck3)
 "DO" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -15070,22 +15032,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/strelka)
-"Wc" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/orange{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/glass/reinforced/indoors,
-/area/hallway/strelka/deck3)
 "Wd" = (
 /obj/structure/table/carbon/reinforced,
 /obj/machinery/door/window/brigdoor/southleft{
@@ -33736,7 +33682,7 @@ yq
 uD
 uD
 xN
-Wc
+CQ
 pk
 uD
 uD
@@ -33930,7 +33876,7 @@ Pe
 uD
 uD
 SE
-nl
+mp
 GR
 uD
 uD
@@ -37228,7 +37174,7 @@ dt
 uD
 uD
 SE
-vb
+Zx
 GR
 uD
 uD
@@ -37422,7 +37368,7 @@ CL
 uD
 uD
 pk
-DN
+jM
 rw
 uD
 uD
