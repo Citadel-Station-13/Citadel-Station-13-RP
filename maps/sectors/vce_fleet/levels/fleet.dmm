@@ -1452,6 +1452,7 @@
 	id = "SDFantiboardingphasearmory"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/wall/r_lead,
 /area/shuttle/fleet/battlestar)
 "beJ" = (
@@ -6777,13 +6778,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/battlestar)
 "fzE" = (
-/obj/structure/closet/walllocker_double/medical/east,
 /obj/item/storage/box/bodybags,
 /obj/item/storage/box/bodybags,
 /obj/item/bodybag/cryobag,
 /obj/item/bodybag/cryobag,
 /obj/item/bodybag,
 /obj/item/bodybag,
+/obj/structure/closet,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
 "fAm" = (
@@ -11709,6 +11710,7 @@
 /obj/item/bedsheet/brown,
 /obj/item/clothing/under/vce_militia,
 /obj/structure/ghost_role_spawner/militia,
+/obj/item/clothing/head/utility/fleet,
 /turf/simulated/floor/lino,
 /area/shuttle/fleet/battlestar)
 "jFb" = (
@@ -14471,8 +14473,9 @@
 	},
 /obj/machinery/turretid{
 	control_area = /area/shuttle/maquis/raider;
-	pixel_x = 30;
-	req_access = list(311)
+	pixel_x = -1;
+	req_access = list(310);
+	pixel_y = 27
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/battlestar)
@@ -15113,6 +15116,8 @@
 /obj/machinery/air_alarm/alarms_hidden/north_mount{
 	req_one_access = null
 	},
+/obj/item/clothing/head/dress/fleet,
+/obj/item/clothing/glasses/sunglasses/aviator,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
@@ -15248,11 +15253,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/utilitymicro2)
-"mHe" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/sealed/mecha/combat/fighter/duke/loaded,
-/turf/simulated/floor/reinforced,
-/area/shuttle/fleet/parabellum)
 "mHn" = (
 /obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/steel_dirty/red,
@@ -15379,12 +15379,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/starcutter)
 "mNS" = (
-/obj/structure/closet/walllocker_double/south,
 /obj/item/gps/medical,
 /obj/item/clothing/under/vce_militia/lieutenant,
 /obj/item/clothing/head/beretg,
 /obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
 /obj/item/clothing/suit/storage/toggle/labcoat/cmo,
+/obj/structure/closet,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
 "mOr" = (
@@ -16012,9 +16012,6 @@
 /mob/living/simple_mob/humanoid/vce_people/colonist/tree,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/commons)
-"nuo" = (
-/turf/space/basic,
-/area/space)
 "nuT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -17735,6 +17732,7 @@
 /obj/structure/closet/walllocker_double/north,
 /obj/item/bedsheet/hos,
 /obj/item/clothing/under/vce_militia/sergent,
+/obj/item/clothing/head/utility/fleet,
 /turf/simulated/floor/lino,
 /area/shuttle/fleet/battlestar)
 "oLA" = (
@@ -20202,6 +20200,7 @@
 /obj/structure/closet/walllocker_double/south,
 /obj/item/bedsheet/hos,
 /obj/item/clothing/under/vce_militia/sergent,
+/obj/item/clothing/head/utility/fleet,
 /turf/simulated/floor/lino,
 /area/shuttle/fleet/battlestar)
 "qSU" = (
@@ -23786,6 +23785,11 @@
 /obj/structure/bedsheetbin{
 	pixel_y = 14
 	},
+/obj/item/clothing/head/utility/fleet,
+/obj/item/clothing/head/utility/fleet,
+/obj/item/clothing/head/utility/fleet,
+/obj/item/clothing/head/fluff/headbando,
+/obj/item/clothing/head/fluff/headbando,
 /turf/simulated/floor/lino,
 /area/shuttle/fleet/battlestar)
 "tTg" = (
@@ -26668,6 +26672,7 @@
 /obj/item/bedsheet/brown,
 /obj/item/clothing/under/vce_militia,
 /obj/structure/ghost_role_spawner/militia,
+/obj/item/clothing/head/utility/fleet,
 /turf/simulated/floor/lino,
 /area/shuttle/fleet/battlestar)
 "wrh" = (
@@ -26710,6 +26715,7 @@
 	},
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/battlestar)
 "wuh" = (
@@ -28173,7 +28179,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/vehicle/sealed/mecha/combat/fighter/baron/loaded,
 /turf/simulated/floor/reinforced,
 /area/shuttle/fleet/battlestar)
 "xKn" = (
@@ -32761,7 +32766,7 @@ rUd
 iAi
 aeS
 aeS
-nuo
+aeS
 aeS
 aeS
 aeS
@@ -32955,7 +32960,7 @@ rYY
 rUd
 aeS
 aeS
-nuo
+aeS
 aeS
 aeS
 aeS
@@ -33149,7 +33154,7 @@ oVc
 rUd
 rUd
 aeS
-nuo
+aeS
 aeS
 aeS
 aeS
@@ -33343,7 +33348,7 @@ tbI
 bCj
 aWR
 ldr
-nuo
+aeS
 aeS
 aeS
 aeS
@@ -33537,7 +33542,7 @@ jbY
 tbI
 aWR
 ldr
-nuo
+aeS
 aeS
 aeS
 aeS
@@ -33731,7 +33736,7 @@ mTC
 onC
 rUd
 aeS
-nuo
+aeS
 aeS
 aeS
 aeS
@@ -33925,7 +33930,7 @@ mTC
 qmJ
 rUd
 aeS
-nuo
+aeS
 aeS
 aeS
 aeS
@@ -34113,13 +34118,13 @@ aeS
 ldr
 cUW
 tbI
-mHe
+tbI
 uTM
 tbI
 tbI
 gex
 ldr
-nuo
+aeS
 aeS
 gfp
 mna
@@ -34313,7 +34318,7 @@ jbY
 tbI
 gex
 ldr
-nuo
+aeS
 rvX
 gfp
 vRL
@@ -34507,7 +34512,7 @@ mTC
 onC
 rUd
 aeS
-nuo
+aeS
 gfp
 gfp
 dZK
@@ -34701,7 +34706,7 @@ mTC
 hUq
 rUd
 aeS
-nuo
+aeS
 gfp
 gfp
 uJk
@@ -34895,7 +34900,7 @@ rYY
 rYY
 rUd
 qOj
-nuo
+aeS
 gfp
 gfp
 bOv
@@ -35283,7 +35288,7 @@ mTC
 mTC
 hUq
 rUd
-nuo
+aeS
 gfp
 nqr
 uJk
@@ -35477,7 +35482,7 @@ iCG
 rYY
 hUq
 rUd
-nuo
+aeS
 gfp
 bLc
 uJk
@@ -35671,7 +35676,7 @@ gyB
 iCG
 hUq
 rUd
-nuo
+aeS
 gfp
 dss
 ttT
@@ -35865,7 +35870,7 @@ cQD
 iCG
 hUq
 rUd
-nuo
+aeS
 gfp
 vXY
 oVd
@@ -36253,10 +36258,10 @@ sHV
 sHV
 mLh
 rUd
-nuo
+aeS
 gfp
 dss
-ttT
+mbu
 uJk
 tbb
 aqK
@@ -36447,7 +36452,7 @@ rUd
 rYY
 rYY
 rUd
-nuo
+aeS
 gfp
 vXY
 oVd
@@ -36641,7 +36646,7 @@ rUd
 mTC
 fyM
 rUd
-nuo
+aeS
 gfp
 yhv
 uJk
@@ -37029,7 +37034,7 @@ aDR
 fzd
 mUE
 rUd
-nuo
+aeS
 gfp
 vXY
 oVd
@@ -37999,7 +38004,7 @@ kfB
 sob
 xDW
 rUd
-nuo
+aeS
 rvX
 gfp
 gfp
@@ -38193,7 +38198,7 @@ mSr
 tUp
 rUd
 rUd
-nuo
+aeS
 aeS
 gfp
 gfp
@@ -38387,7 +38392,7 @@ nBi
 rUd
 rUd
 iAi
-nuo
+aeS
 aeS
 aeS
 gfp
@@ -38581,7 +38586,7 @@ pRo
 vaE
 aeS
 aeS
-nuo
+aeS
 aeS
 aeS
 aeS
@@ -38775,7 +38780,7 @@ ptI
 ptI
 aeS
 aeS
-nuo
+aeS
 aeS
 aeS
 aeS
