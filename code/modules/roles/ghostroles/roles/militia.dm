@@ -22,44 +22,6 @@
 		return new /datum/outfit/militia
 
 
-/datum/prototype/role/ghostrole/militia/assault
-	name = "Roselin Fleet Assault Militian"
-	assigned_role = "Roselin Fleet Assault Militian"
-	desc = "You are a assault militian of the Roselin Fleet."
-	spawntext = "You are a soldier tasked to protect the fleet. Hunt Pirates, fine smugglers, protect the sector. Make sure to read your SOP ! You however are geared with better armor, and trained for boarding !"
-
-	important_info = "Read, the SOP ! You are not antags and you have no authority on NT ships."
-
-	instantiator = /datum/ghostrole_instantiator/human/player_static/militia/assault
-
-/datum/prototype/role/ghostrole/militia/assault/Instantiate(client/C, atom/loc, list/params)
-	return ..()
-
-/datum/ghostrole_instantiator/human/player_static/militia/assault
-	equip_loadout = TRUE
-
-/datum/ghostrole_instantiator/human/player_static/militia/assault/GetOutfit(client/C, mob/M, list/params)
-		return new /datum/outfit/militia/assault
-
-/datum/prototype/role/ghostrole/militia/commander
-	name = "Roselin Fleet Militian Commander"
-	assigned_role = "Roselin Fleet Militian Commander"
-	desc = "You are a commander of the Roselin Fleet militia."
-	spawntext = "You are one of the commander tasked to protect the fleet. Hunt Pirates, fine smugglers, protect the sector. Make sure to read your SOP ! Lead your mens to victory !"
-
-	important_info = "Read, the SOP ! You are not antags and you have no authority on NT ships."
-
-	instantiator = /datum/ghostrole_instantiator/human/player_static/militia/commander
-
-/datum/prototype/role/ghostrole/militia/commander/Instantiate(client/C, atom/loc, list/params)
-	return ..()
-
-/datum/ghostrole_instantiator/human/player_static/militia/commander
-	equip_loadout = TRUE
-
-/datum/ghostrole_instantiator/human/player_static/militia/commander/GetOutfit(client/C, mob/M, list/params)
-		return new /datum/outfit/militia/commander
-
 /obj/structure/ghost_role_spawner/militia
 	name = "Regular guy bed"
 	desc = "Here sleeps the grunts."
@@ -69,24 +31,6 @@
 	role_type = /datum/prototype/role/ghostrole/militia
 	role_spawns = 1
 	density = 0
-
-/obj/structure/ghost_role_spawner/militia/assault
-	name = "Assault guy bed"
-	desc = "Here sleeps the HEAVY GUY."
-	icon = 'icons/obj/furniture.dmi'
-	icon_state = "bed"
-	anchored = TRUE
-	role_type = /datum/prototype/role/ghostrole/militia/assault
-	role_spawns = 1
-
-/obj/structure/ghost_role_spawner/militia/commander
-	name = "Officer commander guy bed"
-	desc = "Here sleeps the COMMANDER GUY."
-	icon = 'icons/obj/furniture.dmi'
-	icon_state = "bed"
-	anchored = TRUE
-	role_type = /datum/prototype/role/ghostrole/militia/commander
-	role_spawns = 1
 
 //militia CRYO
 /obj/machinery/cryopod/robot/door/travel/militia
@@ -113,4 +57,4 @@
 	allow_items = TRUE
 
 /obj/machinery/telecomms/allinone/militia
-	freq_listening = list(FREQ_COMMON, FREQ_SDF)
+	freq_listening = list(FREQ_COMMON, FREQ_MILITIA)

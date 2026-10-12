@@ -166,29 +166,6 @@
 	l_pocket = /obj/item/flame/lighter/zippo
 	r_pocket = /obj/item/spacecash/c500
 
-/datum/outfit/militia/assault
-	name = "Militia Assault class"
-	uniform = /obj/item/clothing/under/vce_militia/sergent
-	shoes = /obj/item/clothing/shoes/boots/jackboots
-	l_ear = /obj/item/radio/headset/militia
-	back = /obj/item/storage/backpack/satchel/militia
-	id_slot = SLOT_ID_WORN_ID
-	id_type = /obj/item/card/id/external/id_militia
-	l_pocket = /obj/item/flame/lighter/zippo
-	r_pocket = /obj/item/spacecash/c500
-
-/datum/outfit/militia/commander
-	name = "Militia Commander"
-	uniform = /obj/item/clothing/under/vce_militia/commander
-	shoes = /obj/item/clothing/shoes/boots/jackboots
-	l_ear = /obj/item/radio/headset/militia
-	back = /obj/item/storage/backpack/satchel/militia
-	id_slot = SLOT_ID_WORN_ID
-	id_type = /obj/item/card/id/external/id_militia
-	l_pocket = /obj/item/flame/lighter/zippo
-	r_pocket = /obj/item/spacecash/c500
-	head = /obj/item/clothing/head/caphat/formal
-
 //Maquisard
 
 /datum/outfit/maquisard
@@ -202,24 +179,3 @@
 	l_pocket = /obj/item/flame/lighter/zippo
 	r_pocket = /obj/item/spacecash/c500
 
-/datum/outfit/maquisard/assault
-	name = "Dryas Assault Maquisard"
-	uniform = /obj/item/clothing/under/vce_maquis
-	shoes = /obj/item/clothing/shoes/boots/jackboots
-	l_ear = /obj/item/radio/headset/maquis
-	back = /obj/item/storage/backpack/satchel
-	id_slot = SLOT_ID_WORN_ID
-	id_type = /obj/item/card/id/external/id_maquis
-	l_pocket = /obj/item/flame/lighter/zippo
-	r_pocket = /obj/item/spacecash/c500
-
-/datum/outfit/maquisard/commander
-	name = "Dryas Maquisard Officer"
-	uniform = /obj/item/clothing/under/vce_maquis/officer
-	shoes = /obj/item/clothing/shoes/boots/jackboots
-	l_ear = /obj/item/radio/headset/maquis
-	back = /obj/item/storage/backpack/satchel/militia
-	id_slot = SLOT_ID_WORN_ID
-	id_type = /obj/item/card/id/external/id_maquis
-	l_pocket = /obj/item/flame/lighter/zippo
-	r_pocket = /obj/item/spacecash/c500

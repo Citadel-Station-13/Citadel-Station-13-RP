@@ -56,9 +56,3 @@
 
 /obj/machinery/telecomms/allinone/sdf
 	freq_listening = list(FREQ_COMMON, FREQ_SDF)
-
-/obj/machinery/telecomms/allinone/militia
-	freq_listening = list(FREQ_COMMON, FREQ_MILITIA)
-
-/obj/machinery/telecomms/allinone/maquis
-	freq_listening = list(FREQ_COMMON, FREQ_MAQUIS)

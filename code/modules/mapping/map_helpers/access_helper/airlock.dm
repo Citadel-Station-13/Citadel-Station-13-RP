@@ -712,3 +712,18 @@
 	req_access = list(
 		ACCESS_FACTION_SDF,
 	)
+
+/obj/map_helper/access_helper/airlock/disconnected/militia
+	req_access = list(
+		ACCESS_FACTION_MILITIA,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/maquis
+	req_access = list(
+		ACCESS_FACTION_MAQUIS,
+	)
+
+/obj/map_helper/access_helper/airlock/disconnected/smuggler
+	req_access = list(
+		ACCESS_FACTION_SMUGGLER,
+	)

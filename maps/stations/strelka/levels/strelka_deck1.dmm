@@ -113,7 +113,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "aL" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -175,7 +175,7 @@
 /area/strelka/pilot_EVA)
 "ba" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "bb" = (
 /obj/structure/cable/blue{
@@ -475,7 +475,7 @@
 /area/strelka/hangardeck)
 "ca" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "cd" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -1208,7 +1208,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "fa" = (
 /obj/effect/floor_decal/grass_edge{
@@ -1252,7 +1252,7 @@
 /area/space)
 "fi" = (
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "fp" = (
 /obj/structure/bed/chair/shuttle{
@@ -1515,8 +1515,10 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/light,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "gz" = (
 /turf/simulated/wall/r_wall/prepainted/command,
@@ -2079,7 +2081,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "iI" = (
 /obj/machinery/nuclearbomb{
@@ -3504,7 +3509,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "od" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4150,7 +4155,7 @@
 /obj/structure/cable/blue{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "ro" = (
 /obj/structure/window/reinforced{
@@ -4717,7 +4722,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "tB" = (
 /obj/machinery/door/airlock/glass_external{
@@ -5068,7 +5073,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "vr" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -5437,7 +5442,7 @@
 /area/strelka/hangardeck)
 "xd" = (
 /obj/machinery/air_alarm/north_mount,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "xh" = (
 /obj/machinery/shipsensors,
@@ -5731,7 +5736,7 @@
 /area/shuttle/civvie/strelka)
 "yC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "yD" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -6527,7 +6532,7 @@
 	req_one_access = list(10,24,11);
 	req_access = null
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "BX" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -6869,7 +6874,7 @@
 	name = "blobstart"
 	},
 /obj/machinery/power/apc/west_mount,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "Do" = (
 /obj/effect/floor_decal/grass_edge{
@@ -7551,15 +7556,6 @@
 	},
 /turf/space,
 /area/space)
-"Gb" = (
-/obj/machinery/camera/network/security{
-	dir = 1
-	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/maintenance/strelka/civ)
 "Gf" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -7800,7 +7796,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "Hb" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -8819,7 +8815,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "Lf" = (
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "Ln" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -8902,7 +8898,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "LB" = (
 /turf/simulated/wall/r_wall,
@@ -9072,7 +9068,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "Mv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -9624,7 +9620,7 @@
 "OC" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/rnd/research/testingrange)
 "OD" = (
 /obj/machinery/door/firedoor/glass{
@@ -10282,7 +10278,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "RM" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -10714,7 +10710,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/civ)
 "TF" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -35346,7 +35342,7 @@ xs
 EH
 zu
 TB
-Gb
+Zx
 Zx
 XR
 XR
@@ -35541,7 +35537,7 @@ EH
 zu
 Zx
 Zx
-Zx
+XR
 XR
 XR
 XR

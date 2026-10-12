@@ -2,7 +2,7 @@
 	name = "Dryas maquisard"
 	assigned_role = "Dryas maquisard"
 	desc = "You are a maquisard in the Dryas maquis."
-	spawntext = "You are a maquisard in the Dryas maquis, a splinter group of the Roselin colony fleet Militia that wish for the instauration of a democratie and the loss of power of the militia and council of captains. By all means necesary, even piracy."
+	spawntext = "You are a maquisard in the Dryas maquis, a splinter group of the Roselin colony fleet that wish for the instauration of a true democratie alligned with Oricon, proper planetary colonisation, and the loss of power of the militia and council of captains. By all means necesary, even piracy."
 
 	important_info = "You are a semi-Antagonist. Smuggle, do piracy, attack militia controled area... But avoid direct confrontation with NT, they can sell us gear for our cause."
 
@@ -21,45 +21,6 @@
 /datum/ghostrole_instantiator/human/player_static/maquis/GetOutfit(client/C, mob/M, list/params)
 		return new /datum/outfit/maquisard
 
-
-/datum/prototype/role/ghostrole/maquis/assault
-	name = "Dryas Assault Maquisard"
-	assigned_role = "Dryas Assault Maquisard"
-	desc = "You are Dryas heavy Assault Maquisard"
-	spawntext = "You are a maquisard in the Dryas maquis, a splinter group of the Roselin colony fleet Militia that wish for the instauration of a democratie and the loss of power of the militia and council of captains. By all means necesary, even piracy. You are heavely armed to board other ships."
-
-	important_info = "You are a semi-Antagonist. Smuggle, do piracy, attack militia controled area... But avoid direct confrontation with NT, they can sell us gear for our cause."
-
-	instantiator = /datum/ghostrole_instantiator/human/player_static/maquis/assault
-
-/datum/prototype/role/ghostrole/maquis/assault/Instantiate(client/C, atom/loc, list/params)
-	return ..()
-
-/datum/ghostrole_instantiator/human/player_static/maquis/assault
-	equip_loadout = TRUE
-
-/datum/ghostrole_instantiator/human/player_static/maquis/assault/GetOutfit(client/C, mob/M, list/params)
-		return new /datum/outfit/maquisard/assault
-
-/datum/prototype/role/ghostrole/maquis/commander
-	name = "Dryas Maquisard Commander"
-	assigned_role = "Dryas Maquisard Commander"
-	desc = "You are a commander of the Dryas Maquisard."
-	spawntext = "You are one of the commanders of the maquisard in the Dryas maquis, a splinter group of the Roselin colony fleet Militia that wish for the instauration of a democratie and the loss of power of the militia and council of captains. By all means necesary, even piracy."
-
-	important_info = "You are a semi-Antagonist. Smuggle, do piracy, attack militia controled area... But avoid direct confrontation with NT, they can sell us gear for our cause."
-
-	instantiator = /datum/ghostrole_instantiator/human/player_static/maquis/commander
-
-/datum/prototype/role/ghostrole/maquis/commander/Instantiate(client/C, atom/loc, list/params)
-	return ..()
-
-/datum/ghostrole_instantiator/human/player_static/maquis/commander
-	equip_loadout = TRUE
-
-/datum/ghostrole_instantiator/human/player_static/maquis/commander/GetOutfit(client/C, mob/M, list/params)
-		return new /datum/outfit/maquisard/commander
-
 /obj/structure/ghost_role_spawner/maquis
 	name = "Regular guy bed"
 	desc = "Here sleeps the grunts."
@@ -69,24 +30,6 @@
 	role_type = /datum/prototype/role/ghostrole/maquis
 	role_spawns = 1
 	density = 0
-
-/obj/structure/ghost_role_spawner/maquis/assault
-	name = "Assault guy bed"
-	desc = "Here sleeps the HEAVY GUY."
-	icon = 'icons/obj/furniture.dmi'
-	icon_state = "bed"
-	anchored = TRUE
-	role_type = /datum/prototype/role/ghostrole/maquis/assault
-	role_spawns = 1
-
-/obj/structure/ghost_role_spawner/maquis/commander
-	name = "Officer commander guy bed"
-	desc = "Here sleeps the COMMANDER GUY."
-	icon = 'icons/obj/furniture.dmi'
-	icon_state = "bed"
-	anchored = TRUE
-	role_type = /datum/prototype/role/ghostrole/maquis/commander
-	role_spawns = 1
 
 //maquis CRYO
 /obj/machinery/cryopod/robot/door/travel/maquis
@@ -113,4 +56,5 @@
 	allow_items = TRUE
 
 /obj/machinery/telecomms/allinone/maquis
-	freq_listening = list(FREQ_COMMON, FREQ_SDF)
+	freq_listening = list(FREQ_COMMON, FREQ_MAQUIS)
+

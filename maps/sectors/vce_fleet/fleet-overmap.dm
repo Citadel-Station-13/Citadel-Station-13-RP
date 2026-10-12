@@ -10,7 +10,7 @@
 - RCV Terrafirma (Botanical - Terraformation vessel)
 - Arround 23 vessel and shuttle of varying size.
 [i]Transponder[/i]: Transmitting (RCV)
-[b]Notice[/b]: A fleet of colonist, only civil settlement in the expense.
+[b]Notice[/b]: A fleet of colonist, only proper civil settlement in the expense.
 [b]Habitability[/b]: Possible, due to multiple ships.
 [b]Population[/b]: Arround 800 souls.
 [b]Controlling Goverment[/b]: Roseline Colonist Fleet Republic

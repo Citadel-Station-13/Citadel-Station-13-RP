@@ -753,10 +753,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/bar)
 "aDR" = (
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/parabellum)
 "aDV" = (
@@ -988,9 +987,9 @@
 	},
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/door/airlock/multi_tile{
-	dir = 4;
-	req_one_access = list(310)
+	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/battlestar)
 "aPe" = (
@@ -1448,9 +1447,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/fleet/battlestar)
 "beF" = (
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboardingphasearmory"
 	},
@@ -8038,9 +8035,8 @@
 /turf/simulated/floor,
 /area/shuttle/fleet/battlestar)
 "gDg" = (
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/old_cargo,
 /area/shuttle/fleet/battlestar)
 "gDs" = (
@@ -8065,6 +8061,7 @@
 /obj/machinery/door/airlock/vault{
 	req_one_access = list(312)
 	},
+/obj/map_helper/access_helper/airlock/disconnected/smuggler,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/smuggler)
 "gEm" = (
@@ -9095,12 +9092,12 @@
 	id = "SDFantiboardingphase2"
 	},
 /obj/machinery/door/airlock/multi_tile{
-	dir = 1;
-	req_one_access = list(310)
+	dir = 1
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
 "hyu" = (
@@ -9516,6 +9513,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/battlestar)
+"hTI" = (
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 23;
+	id = "parabellum2";
+	req_access = "310"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/fleet/parabellum)
 "hUf" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -12812,6 +12817,17 @@
 	},
 /turf/simulated/floor/carpet/lythios43c,
 /area/sector/fleet/bar)
+"kBS" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 23;
+	id = "parabellum4";
+	req_access = "310"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/fleet/parabellum)
 "kBV" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/int_door,
@@ -13031,9 +13047,9 @@
 	id = "SDFantiboardingphase2"
 	},
 /obj/machinery/door/airlock/multi_tile{
-	dir = 1;
-	req_one_access = list(310)
+	dir = 1
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/battlestar)
 "kOx" = (
@@ -14839,6 +14855,7 @@
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/fleet/battlestar)
 "mvt" = (
@@ -15730,9 +15747,9 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/multi_tile{
-	dir = 4;
-	req_one_access = list(310)
+	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor,
 /area/shuttle/fleet/battlestar)
 "nif" = (
@@ -15840,9 +15857,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/multi_tile{
-	dir = 1;
-	req_one_access = list(310)
+	dir = 1
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
 "nlM" = (
@@ -16587,6 +16604,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/map_helper/access_helper/airlock/disconnected/smuggler,
 /turf/simulated/floor/roguetown/dark_wood,
 /area/sector/fleet/bar)
 "nSK" = (
@@ -17487,9 +17505,8 @@
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboardingphase3"
 	},
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
 "oDo" = (
@@ -17535,9 +17552,8 @@
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboardingphase4"
 	},
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/battlestar)
 "oEt" = (
@@ -17717,7 +17733,6 @@
 	},
 /obj/structure/curtain/open/bed,
 /obj/structure/closet/walllocker_double/north,
-/obj/structure/ghost_role_spawner/militia/assault,
 /obj/item/bedsheet/hos,
 /obj/item/clothing/under/vce_militia/sergent,
 /turf/simulated/floor/lino,
@@ -17766,9 +17781,9 @@
 	id = "SDFantiboardingphase4"
 	},
 /obj/machinery/door/airlock/multi_tile{
-	dir = 4;
-	req_one_access = list(310)
+	dir = 4
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor,
 /area/shuttle/fleet/battlestar)
 "oNY" = (
@@ -17881,6 +17896,15 @@
 "oUU" = (
 /turf/simulated/wall/wood/hardwood,
 /area/sector/fleet/smuggler)
+"oVc" = (
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "parabellum1";
+	req_access = "310";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/fleet/parabellum)
 "oVd" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -19228,7 +19252,6 @@
 	dir = 6
 	},
 /obj/item/bedsheet/captain,
-/obj/structure/ghost_role_spawner/militia/commander,
 /turf/simulated/floor/carpet/lythios43c,
 /area/shuttle/fleet/battlestar)
 "qbN" = (
@@ -19268,12 +19291,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/botany)
 "qdp" = (
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/parabellum)
 "qdO" = (
@@ -19498,6 +19520,16 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/starcutter)
+"qmJ" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -23;
+	id = "parabellum3";
+	req_access = "310";
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/shuttle/fleet/parabellum)
 "qnj" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -20168,7 +20200,6 @@
 /obj/effect/floor_decal/corner/black/border,
 /obj/structure/curtain/open/bed,
 /obj/structure/closet/walllocker_double/south,
-/obj/structure/ghost_role_spawner/militia/assault,
 /obj/item/bedsheet/hos,
 /obj/item/clothing/under/vce_militia/sergent,
 /turf/simulated/floor/lino,
@@ -21637,9 +21668,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/battlestar)
 "scL" = (
@@ -22529,9 +22559,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/adventurer)
 "sMh" = (
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor,
 /area/shuttle/fleet/battlestar)
 "sNl" = (
@@ -23748,9 +23777,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/battlestar)
 "tSY" = (
@@ -26680,9 +26708,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "SDFantiboardingphase3"
 	},
-/obj/machinery/door/airlock/hatch{
-	req_one_access = list(310)
-	},
+/obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/battlestar)
@@ -28795,9 +28821,9 @@
 	id = "SDFantiboardingphase3"
 	},
 /obj/machinery/door/airlock/multi_tile{
-	dir = 1;
-	req_one_access = list(310)
+	dir = 1
 	},
+/obj/map_helper/access_helper/airlock/disconnected/militia,
 /turf/simulated/floor/lino,
 /area/shuttle/fleet/battlestar)
 
@@ -33117,9 +33143,9 @@ aeS
 aeS
 rUd
 rUd
+hTI
 mTC
-mTC
-mTC
+oVc
 rUd
 rUd
 aeS
@@ -33892,11 +33918,11 @@ aeS
 aeS
 aeS
 rUd
-bcU
+kBS
 mTC
 uTM
 mTC
-hUq
+qmJ
 rUd
 aeS
 nuo
