@@ -5,7 +5,7 @@
 	base_area = /area/sector/tundra/field
 	base_turf = /turf/simulated/floor/water
 	landmark_tag = "raider_start"
-	docking_controller = "raider_start_docker"
+	docking_controller = "raider_start_dock"
 
 /datum/shuttle/autodock/overmap/maquis/raider
 	name = "DMV Raider"
@@ -50,7 +50,7 @@
 	base_area = /area/sector/tundra/field
 	base_turf = /turf/simulated/floor/water
 	landmark_tag = "interceptor_start"
-	docking_controller = "interceptor_start_docker"
+	docking_controller = "interceptor_start_dock"
 
 /obj/overmap/entity/visitable/ship/landable/maquis/interceptor
 	name = "DMV Interceptor"

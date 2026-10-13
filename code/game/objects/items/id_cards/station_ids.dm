@@ -828,14 +828,14 @@
 /obj/item/card/id/external/id_militia
 	name = "RCF Militia ID"
 	desc = "An ID issued to workers of the Militian of Roseline Colony Fleet It looks generic and cheap."
-	access = list(310)
+	access = list(156)
 	icon_state = "guest"
 	job_access_type = null
 
 /obj/item/card/id/external/id_maquis
 	name = "Dryas Maquis ID"
 	desc = "An ID issued to workers of the Dryas Maquis. It looks generic and cheap."
-	access = list(311)
+	access = list(157)
 	icon_state = "generic"
 	job_access_type = null
 
@@ -843,7 +843,7 @@
 	name = "ID"
 	desc = "An generic and cheap ID."
 	icon_state = "generic"
-	access = list(312)
+	access = list(158)
 	job_access_type = null
 
 /obj/item/card/id/external/id_tribal

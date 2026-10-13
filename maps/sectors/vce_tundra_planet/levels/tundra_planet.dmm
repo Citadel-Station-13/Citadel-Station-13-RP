@@ -409,7 +409,7 @@
 /obj/machinery/turretid{
 	control_area = /area/shuttle/maquis/raider;
 	pixel_x = 30;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/structure/bed/chair/bay/comfy/captain{
 	dir = 1
@@ -735,6 +735,13 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "raider_dock";
+	pixel_x = -26;
+	pixel_y = 1
+	},
 /turf/simulated/floor/concrete/tile/outdoors,
 /area/sector/tundra/field)
 "eO" = (
@@ -879,6 +886,22 @@
 /obj/machinery/air_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/raider)
+"gd" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "interceptor_dock";
+	pixel_x = -26;
+	pixel_y = 1
+	},
+/turf/simulated/floor/concrete/tile/outdoors,
+/area/sector/tundra/field)
 "ge" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 1
@@ -1210,11 +1233,6 @@
 	outdoors = 1
 	},
 /area/sector/tundra/field)
-"is" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/window/northright,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/maquis/raider)
 "it" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/wall/dshull,
@@ -1643,6 +1661,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/item/clothing/head/hgpiratecap{
+	name = "Maquis commander hat"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/raider)
 "lA" = (
@@ -1696,7 +1717,6 @@
 /area/shuttle/maquis/interceptor)
 "lX" = (
 /obj/item/gun/projectile/ballistic/shotgun/pump,
-/obj/structure/closet/crate,
 /obj/item/gun/projectile/ballistic/pistol,
 /obj/item/gun/projectile/ballistic/garand,
 /obj/effect/floor_decal/industrial/warning{
@@ -1708,6 +1728,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/crate/secure/corporate/oricon,
+/obj/item/clothing/suit/storage/vest/oricon/heavy/maquis,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
 "lY" = (
@@ -2661,7 +2683,7 @@
 "sn" = (
 /obj/effect/floor_decal/borderfloorblack/shifted,
 /obj/machinery/door/window/brigdoor/westleft{
-	req_one_access = list(311);
+	req_one_access = list(157);
 	req_access = null
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2703,11 +2725,11 @@
 	id_tag = "pirate_docker";
 	pixel_x = -24;
 	pixel_y = -10;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/door/airlock/external/glass{
-	req_access = list(311)
+	req_access = list(157)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/interceptor)
@@ -2791,12 +2813,12 @@
 	id_tag = "interceptor_docker";
 	pixel_x = -24;
 	pixel_y = -10;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/door/airlock/external/glass{
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2839,14 +2861,14 @@
 	pixel_x = 7;
 	dir = 1;
 	pixel_y = -25;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "maquis5";
 	pixel_x = -6;
 	dir = 1;
 	pixel_y = -25;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /turf/simulated/floor/concrete/tile/outdoors,
 /area/sector/tundra/base)
@@ -3208,7 +3230,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external/glass{
-	req_access = list(311)
+	req_access = list(157)
 	},
 /turf/simulated/floor,
 /area/shuttle/maquis/interceptor)
@@ -3451,7 +3473,6 @@
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/disconnected/maquis,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/raider)
 "xy" = (
@@ -3493,9 +3514,10 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/guncabinet{
-	req_one_access = list(311)
+	req_one_access = list(157)
 	},
 /obj/item/gun/projectile/ballistic/automatic/pdw,
+/obj/item/gun/projectile/energy/frontier,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
 "xK" = (
@@ -3585,11 +3607,10 @@
 /obj/item/radio,
 /obj/item/storage/backpack/rebel,
 /obj/structure/closet/secure_closet{
-	req_one_access = list(311)
+	req_one_access = list(157)
 	},
 /obj/effect/floor_decal/rust,
-/obj/item/clothing/suit/space/traveler/black,
-/obj/item/clothing/head/helmet/space/traveler/black,
+/obj/item/clothing/suit/storage/vest/oricon/command/maquis,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
 "yF" = (
@@ -3666,7 +3687,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/external/glass{
-	req_access = list(311)
+	req_access = list(157)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/interceptor)
@@ -3709,14 +3730,14 @@
 	pixel_x = 7;
 	dir = 1;
 	pixel_y = -25;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "maquis5";
 	pixel_x = -6;
 	dir = 1;
 	pixel_y = -25;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /turf/simulated/floor/concrete/tile/outdoors,
 /area/sector/tundra/base)
@@ -4209,9 +4230,10 @@
 /area/shuttle/maquis/interceptor)
 "Cy" = (
 /obj/structure/closet/secure_closet/guncabinet{
-	req_one_access = list(311)
+	req_one_access = list(157)
 	},
 /obj/item/gun/projectile/ballistic/automatic/pdw,
+/obj/item/gun/projectile/energy/frontier,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
 "Cz" = (
@@ -4297,19 +4319,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/sector/tundra/shuttle4)
 "Dg" = (
-/obj/item/radio/headset/maquis,
-/obj/item/gps/security,
-/obj/item/radio,
-/obj/item/storage/backpack/rebel,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/window/basic{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet{
-	req_one_access = list(311)
-	},
-/obj/item/clothing/suit/space/traveler/black,
-/obj/item/clothing/head/helmet/space/traveler/black,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
 "Dh" = (
@@ -4372,12 +4385,6 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/sector/tundra/shuttle2)
-"DE" = (
-/obj/structure/table/bench/wooden,
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/window/northleft,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/maquis/raider)
 "DF" = (
 /obj/item/storage/toolbox/fishing,
 /turf/simulated/floor/fey/snow_grass{
@@ -4599,17 +4606,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/sector/tundra/shuttle4)
-"Fl" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/structure/window/basic{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/guncabinet{
-	req_one_access = list(311)
-	},
-/obj/item/gun/projectile/ballistic/automatic/lmg,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/maquis/raider)
 "Fn" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4672,7 +4668,6 @@
 /obj/machinery/door/airlock/hatch{
 	req_one_access = null
 	},
-/obj/map_helper/access_helper/airlock/disconnected/maquis,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
 "FP" = (
@@ -5042,6 +5037,13 @@
 /obj/overmap/entity/visitable/ship/landable/fleet/caravan,
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/tundra/shuttle2)
+"IC" = (
+/obj/item/clothing/suit/space/void/pirate,
+/obj/item/clothing/head/helmet/space/void/pirate/scrapper,
+/obj/structure/table/rack/shelf,
+/obj/item/tank/jetpack/oxygen,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/maquis/raider)
 "IE" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/item/reagent_containers/food/drinks/soymilk,
@@ -5218,10 +5220,10 @@
 /obj/item/radio,
 /obj/item/storage/backpack/rebel,
 /obj/structure/closet/secure_closet{
-	req_one_access = list(311)
+	req_one_access = list(157)
 	},
-/obj/item/clothing/suit/space/traveler/black,
-/obj/item/clothing/head/helmet/space/traveler/black,
+/obj/item/clothing/suit/storage/vest/oricon/maquis,
+/obj/item/clothing/head/helmet/pirate,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
 "JL" = (
@@ -5361,15 +5363,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/tundra/shuttle5)
-"KG" = (
-/obj/machinery/light,
-/obj/structure/closet/secure_closet/guncabinet{
-	req_one_access = list(311)
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/item/gun/projectile/ballistic/automatic/lmg,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/maquis/raider)
 "KH" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -5631,7 +5624,6 @@
 /area/sector/tundra/field)
 "MB" = (
 /obj/machinery/light,
-/obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
@@ -5779,11 +5771,11 @@
 	id_tag = "interceptor_docker";
 	pixel_x = -24;
 	pixel_y = 10;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/door/airlock/external/glass{
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -6064,9 +6056,8 @@
 	},
 /obj/machinery/door/airlock/glass{
 	name = "Secure Glass Airlock";
-	req_one_access = list(311)
+	req_one_access = list(157)
 	},
-/obj/map_helper/access_helper/airlock/disconnected/maquis,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/raider)
 "PF" = (
@@ -6646,12 +6637,6 @@
 	},
 /turf/simulated/wall/dshull,
 /area/sector/tundra/bar)
-"Uj" = (
-/obj/machinery/lathe/autolathe,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/glass,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/maquis/raider)
 "Ul" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -6684,7 +6669,7 @@
 	control_area = /area/shuttle/maquis/interceptor;
 	pixel_x = 30;
 	pixel_y = -32;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/interceptor)
@@ -7121,7 +7106,7 @@
 	name = "Deck Shutters";
 	pixel_x = 26;
 	pixel_y = -26;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -7129,7 +7114,7 @@
 	name = "Deck Shutters";
 	pixel_x = 26;
 	pixel_y = 27;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -7298,19 +7283,6 @@
 /obj/machinery/air_alarm/alarms_hidden/south_mount,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
-"Yy" = (
-/obj/item/radio/headset/maquis,
-/obj/item/gps/security,
-/obj/item/radio,
-/obj/item/storage/backpack/rebel,
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/structure/closet/secure_closet{
-	req_one_access = list(311)
-	},
-/obj/item/clothing/suit/space/traveler/black,
-/obj/item/clothing/head/helmet/space/traveler/black,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/maquis/raider)
 "Yz" = (
 /obj/structure/target_stake,
 /obj/item/target/humanoid,
@@ -7344,6 +7316,13 @@
 "YH" = (
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/reinforced,
+/area/shuttle/maquis/raider)
+"YN" = (
+/obj/machinery/lathe/autolathe,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/maquis/raider)
 "YO" = (
 /obj/structure/bed/chair/comfy/red{
@@ -7435,10 +7414,10 @@
 	id_tag = "interceptor2_docker";
 	pixel_x = -24;
 	pixel_y = 10;
-	req_access = list(311)
+	req_access = list(157)
 	},
 /obj/machinery/door/airlock/external/glass{
-	req_access = list(311)
+	req_access = list(157)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/interceptor)
@@ -7467,7 +7446,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/map_helper/access_helper/airlock/disconnected/maquis,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/maquis/raider)
 "Zp" = (
@@ -39882,8 +39860,8 @@ Do
 Do
 Do
 jn
-OK
-OK
+IC
+IC
 OK
 zF
 Do
@@ -40076,8 +40054,8 @@ nK
 Ts
 OK
 OK
-OK
-OK
+IC
+IC
 OK
 qM
 zS
@@ -40257,10 +40235,10 @@ Kz
 na
 Nn
 Kz
-Zu
+RN
 Bn
 nV
-Ry
+RN
 Do
 Do
 AD
@@ -40451,7 +40429,7 @@ NC
 Zf
 Jb
 tl
-eN
+gd
 jJ
 ry
 eN
@@ -41057,7 +41035,7 @@ JF
 JF
 JF
 Dg
-Yy
+bi
 Do
 Zu
 Zu
@@ -41250,7 +41228,7 @@ nK
 pJ
 pJ
 OK
-DE
+bi
 MB
 Do
 Zu
@@ -41444,8 +41422,8 @@ OK
 OK
 OK
 OK
-is
 bi
+YN
 Do
 Zu
 Zu
@@ -41638,8 +41616,8 @@ nK
 OK
 OK
 OK
-Fl
-KG
+Dg
+bi
 Do
 Zu
 Zu
@@ -41827,7 +41805,7 @@ vH
 fl
 vH
 WD
-Uj
+OK
 Cy
 Cy
 xH
