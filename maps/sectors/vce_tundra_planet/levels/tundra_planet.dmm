@@ -944,6 +944,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/tundra/shop)
+"gy" = (
+/obj/structure/bed/chair/office/dark,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/tundra/base)
 "gA" = (
 /obj/effect/floor_decal/carpet,
 /turf/simulated/floor/carpet/patterened,
@@ -1525,6 +1529,7 @@
 	dir = 1;
 	pixel_y = -25
 	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/tundra/base)
 "kK" = (
@@ -2089,6 +2094,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/sector/tundra/shuttle4)
+"ov" = (
+/obj/structure/lightpost/festive,
+/turf/simulated/floor/fey/snow_grass{
+	outdoors = 1
+	},
+/area/sector/tundra/base)
 "ox" = (
 /obj/machinery/light{
 	dir = 1
@@ -6729,6 +6740,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/tundra/bar)
+"UB" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/tundra/base)
 "UI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/walllocker_double/east,
@@ -29000,7 +29017,7 @@ jy
 PF
 ca
 HN
-Aa
+UB
 kJ
 jy
 Bx
@@ -30159,7 +30176,7 @@ ca
 ca
 Vi
 ca
-me
+ov
 me
 de
 me
@@ -32090,7 +32107,7 @@ ca
 Vi
 ca
 ca
-me
+ov
 Nc
 me
 GL
@@ -34023,7 +34040,7 @@ Zu
 Zu
 aU
 vS
-Aa
+HN
 Aa
 vS
 PF
@@ -34217,7 +34234,7 @@ Zu
 Zu
 aU
 vS
-Aa
+gy
 Aa
 vS
 PF
@@ -35388,7 +35405,7 @@ pY
 SS
 AO
 ca
-me
+ov
 jy
 nZ
 nZ

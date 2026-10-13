@@ -5,10 +5,6 @@
 "b" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/submap/skyplanet/poi/nest)
-"j" = (
-/obj/item/reagent_containers/food/snacks/egg,
-/turf/simulated/floor/tiled/techmaint,
-/area/submap/skyplanet/poi/nest)
 "s" = (
 /turf/simulated/wall,
 /area/submap/skyplanet/poi/nest)
@@ -19,10 +15,6 @@
 "M" = (
 /turf/simulated/wall/r_wall,
 /area/template_noop)
-"W" = (
-/mob/living/simple_mob/animal/passive/bird/parrot/white_cockatoo,
-/turf/simulated/floor/tiled/techmaint,
-/area/submap/skyplanet/poi/nest)
 "Z" = (
 /obj/structure/lattice,
 /turf/template_noop,
@@ -236,7 +228,7 @@ Z
 b
 b
 I
-j
+b
 b
 b
 b
@@ -256,10 +248,10 @@ Z
 Z
 Z
 b
-I
-j
-W
-I
+b
+b
+b
+b
 b
 b
 Z
@@ -280,8 +272,8 @@ Z
 b
 b
 I
-I
-j
+b
+b
 b
 b
 Z
