@@ -2988,6 +2988,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/machinery/air_alarm/east_mount,
 /turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/bridge)
 "hJ" = (
@@ -5447,6 +5448,9 @@
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
+/obj/machinery/status_display{
+	pixel_x = -32
+	},
 /turf/simulated/floor/wood,
 /area/bridge/strelka/ce)
 "oh" = (
@@ -5542,6 +5546,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/bridge)
@@ -10179,10 +10186,6 @@
 	},
 /turf/simulated/open,
 /area/security/strelka/storage)
-"zK" = (
-/obj/machinery/air_alarm/east_mount,
-/turf/simulated/floor/plating/indoors,
-/area/maintenance/strelka/bridge)
 "zL" = (
 /obj/structure/cable/blue{
 	icon_state = "1-2"
@@ -12218,9 +12221,6 @@
 /turf/simulated/floor/airless,
 /area/space)
 "EQ" = (
-/obj/machinery/status_display{
-	pixel_x = -32
-	},
 /obj/machinery/holopad/ship,
 /obj/structure/cable/white{
 	icon_state = "1-8"
@@ -15946,6 +15946,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/plating/indoors,
 /area/maintenance/strelka/bridge)
 "OV" = (
@@ -16554,12 +16557,6 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/strelka/engine)
-"Qg" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/plating/indoors,
-/area/maintenance/strelka/bridge)
 "Qh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -18248,6 +18245,15 @@
 /obj/effect/floor_decal/borderfloorblack/full,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/explo/pathfy)
+"Uv" = (
+/obj/structure/cable/white{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/airless,
+/area/space)
 "Ux" = (
 /obj/structure/cable/blue{
 	icon_state = "0-8"
@@ -43464,9 +43470,9 @@ hG
 vO
 bB
 VF
+VF
 Za
-hO
-Lv
+Uv
 FB
 KP
 KP
@@ -43658,9 +43664,9 @@ hI
 op
 dl
 VF
+VF
 sx
 po
-FB
 FB
 KP
 KP
@@ -43847,14 +43853,14 @@ og
 EQ
 Kd
 WF
-Qg
-zK
-Qg
+VF
+VF
+VF
+VF
 VF
 VF
 Za
 po
-FB
 FB
 KP
 KP
@@ -44045,10 +44051,10 @@ VF
 VF
 VF
 VF
+VF
 Za
 hO
 IW
-FB
 FB
 KP
 KP
@@ -44240,8 +44246,8 @@ br
 cx
 cx
 cx
+cx
 Lv
-KP
 KP
 KP
 KP

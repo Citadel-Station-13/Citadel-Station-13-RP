@@ -66,6 +66,13 @@
 "au" = (
 /turf/simulated/wall/r_wall/prepainted/command,
 /area/security/strelka/armory3)
+"av" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/fighterbay)
 "ay" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -522,6 +529,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/binary/passive_gate/on,
+/obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "ck" = (
@@ -3770,7 +3778,6 @@
 /obj/structure/cable/blue{
 	icon_state = "4-8"
 	},
-/obj/structure/railing,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "pB" = (
@@ -3997,9 +4004,6 @@
 /turf/simulated/floor/reinforced,
 /area/bridge/strelka/balista)
 "qO" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 10
-	},
 /obj/machinery/button/remote/blast_door{
 	id = "fighterhandar6";
 	pixel_x = -22;
@@ -4103,13 +4107,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/hallway/strelka/deck1)
-"rf" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/monogrid,
-/area/strelka/fighterbay)
 "ri" = (
 /obj/machinery/computer/communications,
 /obj/machinery/requests_console/preset/bridge{
@@ -5194,7 +5191,6 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/east_mount,
-/obj/structure/railing,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "wh" = (
@@ -6469,10 +6465,11 @@
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbaysec)
 "BB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/monodark,
+/obj/effect/floor_decal/borderfloorblack,
+/turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/fighterbay)
 "BC" = (
 /obj/machinery/holopad/ship,
@@ -6976,6 +6973,9 @@
 "DM" = (
 /turf/simulated/floor/wood/indoors,
 /area/rnd/research/testingrange)
+"DN" = (
+/turf/simulated/floor/tiled/techfloor/monogrid,
+/area/strelka/fighterbay)
 "DQ" = (
 /obj/structure/table/carbon/reinforced,
 /obj/random/toolbox,
@@ -9699,7 +9699,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/railing,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "Pf" = (
@@ -10407,7 +10406,8 @@
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/strelka/fighterbaysec)
 "So" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -10904,7 +10904,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/holopad,
-/obj/structure/railing,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "Uq" = (
@@ -11276,9 +11275,7 @@
 /turf/simulated/floor/reinforced,
 /area/strelka/hangardeck)
 "Wm" = (
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/monodark,
 /area/strelka/fighterbay)
 "Wn" = (
@@ -31077,16 +31074,16 @@ aU
 Be
 jS
 os
+DN
 ZK
 kP
 Yd
 OV
-kP
 So
-rf
+Yd
 BB
 Wm
-is
+pf
 is
 ky
 ky
@@ -31270,6 +31267,7 @@ rk
 rk
 HP
 Pc
+av
 JK
 ch
 If
@@ -31282,7 +31280,6 @@ cI
 pf
 is
 is
-ky
 ky
 XR
 XR
@@ -31464,6 +31461,7 @@ rk
 rk
 gL
 Up
+av
 Jw
 mv
 If
@@ -31476,7 +31474,6 @@ Os
 is
 is
 is
-ky
 ky
 XR
 XR
@@ -31658,6 +31655,7 @@ JV
 TO
 jF
 pz
+av
 Jw
 mv
 If
@@ -31670,7 +31668,6 @@ hz
 is
 is
 is
-XR
 XR
 XR
 XR
@@ -31852,6 +31849,7 @@ JV
 TO
 cR
 wg
+av
 Jw
 mv
 ML
@@ -31863,7 +31861,6 @@ mv
 Rs
 is
 is
-XR
 XR
 XR
 XR
@@ -32046,6 +32043,7 @@ FO
 TO
 fi
 ol
+is
 nd
 Jm
 is
@@ -32057,7 +32055,6 @@ qH
 is
 is
 is
-XR
 XR
 XR
 XR
@@ -32240,8 +32237,6 @@ ec
 TO
 Lf
 ol
-yD
-eU
 is
 yD
 eU
@@ -32249,8 +32244,10 @@ is
 yD
 eU
 is
+yD
+eU
 is
-XR
+is
 XR
 XR
 XR
@@ -32434,6 +32431,7 @@ Ek
 TO
 Lf
 ol
+ol
 fd
 fd
 is
@@ -32444,7 +32442,6 @@ fd
 fd
 is
 is
-XR
 XR
 XR
 XR
@@ -32628,6 +32625,7 @@ Ig
 TO
 Lf
 ol
+ol
 lc
 lc
 is
@@ -32638,7 +32636,6 @@ lc
 lc
 is
 is
-XR
 XR
 XR
 XR
@@ -32822,6 +32819,7 @@ ec
 TO
 xd
 ol
+ol
 lc
 lc
 is
@@ -32832,7 +32830,6 @@ lc
 lc
 is
 is
-XR
 XR
 XR
 XR
@@ -33016,6 +33013,7 @@ nF
 TO
 ca
 ol
+ol
 lc
 lc
 Te
@@ -33027,7 +33025,6 @@ lc
 ph
 iw
 lc
-XR
 XR
 XR
 XR
@@ -33210,6 +33207,7 @@ DM
 OC
 Lf
 ol
+ol
 lc
 lc
 YQ
@@ -33220,7 +33218,6 @@ lc
 lc
 iw
 lc
-XR
 XR
 XR
 XR
@@ -33404,6 +33401,7 @@ IV
 TO
 Lf
 ol
+ol
 zT
 zT
 Qs
@@ -33413,7 +33411,6 @@ Te
 zT
 zT
 rY
-XR
 XR
 XR
 XR
@@ -33598,6 +33595,7 @@ JV
 TO
 Lf
 ol
+ol
 lc
 lc
 lc
@@ -33607,7 +33605,6 @@ lc
 lc
 lc
 Kb
-XR
 XR
 XR
 XR
@@ -33792,6 +33789,7 @@ BV
 Dn
 RI
 ol
+ol
 ft
 XR
 XR
@@ -33801,7 +33799,6 @@ XR
 XR
 XR
 mC
-XR
 XR
 XR
 XR
@@ -33986,7 +33983,7 @@ aG
 eX
 Mt
 ol
-XR
+ol
 XR
 XR
 XR
@@ -34180,7 +34177,7 @@ ol
 Lf
 GZ
 ol
-XR
+ol
 XR
 XR
 XR
@@ -34374,7 +34371,7 @@ zu
 yC
 vq
 ol
-XR
+ol
 XR
 XR
 XR
@@ -34568,7 +34565,7 @@ zu
 Lf
 GZ
 Zx
-XR
+Zx
 XR
 XR
 XR
@@ -34762,7 +34759,7 @@ zu
 ba
 iH
 Zx
-XR
+Zx
 XR
 XR
 XR
@@ -34956,7 +34953,7 @@ zu
 xd
 GZ
 Zx
-XR
+Zx
 XR
 XR
 XR
@@ -35150,7 +35147,7 @@ zu
 oc
 gv
 Zx
-XR
+Zx
 XR
 XR
 XR
@@ -35344,7 +35341,7 @@ zu
 TB
 Zx
 Zx
-XR
+Zx
 XR
 XR
 XR
@@ -35537,7 +35534,7 @@ EH
 zu
 Zx
 Zx
-XR
+Zx
 XR
 XR
 XR
@@ -35729,8 +35726,8 @@ rA
 zu
 qI
 zu
-XR
-XR
+Zx
+Zx
 XR
 XR
 XR

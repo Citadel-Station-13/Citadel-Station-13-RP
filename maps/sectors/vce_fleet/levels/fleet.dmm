@@ -340,6 +340,13 @@
 	},
 /turf/simulated/floor/tiled/monotechmaint,
 /area/sector/fleet/dock)
+"amV" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/fleet/dock)
 "ani" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1286,6 +1293,9 @@
 	},
 /obj/structure/cable/white{
 	icon_state = "1-4"
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/fleet/trade_ship/general)
@@ -3087,6 +3097,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/safarizoo)
+"cma" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/sector/fleet/dock)
 "cmb" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/storage/box/glasses/meta,
@@ -3980,18 +3993,6 @@
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
 /area/shuttle/fleet/tug)
-"ddK" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
-	},
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/white{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/monotechmaint,
-/area/shuttle/fleet/trade_ship/general)
 "deO" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/structure/cable/yellow{
@@ -4868,6 +4869,10 @@
 /obj/structure/bed/chair/comfy/blue{
 	dir = 1
 	},
+/obj/machinery/power/apc/alarms_hidden/no_cell/south_mount,
+/obj/structure/cable/white{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/fleet/trade_ship/cockpit)
 "dQd" = (
@@ -5009,6 +5014,9 @@
 	},
 /obj/structure/bed/chair/comfy/blue{
 	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/shuttle/fleet/trade_ship/cockpit)
@@ -5435,6 +5443,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/sector/fleet/safarizoo)
+"emu" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/dock)
 "emO" = (
 /obj/structure/bed/chair/bay/comfy/blue{
 	dir = 4
@@ -5684,6 +5699,10 @@
 	},
 /turf/simulated/floor/plating/indoors,
 /area/sector/fleet/room11)
+"exS" = (
+/obj/machinery/cryopod/robot/trade,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/dock)
 "exV" = (
 /obj/item/trash/snacktray,
 /turf/simulated/floor/plating,
@@ -6099,6 +6118,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/scoophead/main)
+"eLx" = (
+/obj/machinery/cryopod/trade{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/dock)
 "eLz" = (
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/shuttle/fleet/scoophead/engineering)
@@ -6404,6 +6429,10 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor,
 /area/shuttle/fleet/deneb)
+"far" = (
+/obj/effect/floor_decal/borderfloorblack/full,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/fleet/dock)
 "fbf" = (
 /obj/structure/panic_button{
 	pixel_x = 32
@@ -7830,9 +7859,7 @@
 /area/shuttle/fleet/battlestar)
 "gqL" = (
 /obj/effect/floor_decal/borderfloorblack/full,
-/mob/living/simple_mob/humanoid/vce_people/old{
-	buckled = 1
-	},
+/mob/living/simple_mob/humanoid/vce_people/old,
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/commons)
@@ -11407,6 +11434,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/ani)
+"jqm" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/latejoin/tradeport,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/fleet/dock)
 "jqt" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -11829,6 +11863,10 @@
 /obj/item/clothing/head/helmet/space/traveler/blue,
 /turf/simulated/floor,
 /area/shuttle/fleet/battlestar)
+"jGs" = (
+/obj/landmark/spawnpoint/latejoin/tradeport,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/dock)
 "jGv" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 4
@@ -17240,6 +17278,13 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/shuttle/fleet/trade_ship/general)
+"opR" = (
+/obj/machinery/door/airlock/vault{
+	req_access = list(160);
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/sector/fleet/dock)
 "opS" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/door/airlock/vault,
@@ -18117,6 +18162,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
+"pcI" = (
+/obj/landmark/spawnpoint/latejoin/tradeport,
+/obj/machinery/computer/cryopod/robot{
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/dock)
 "pcM" = (
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
@@ -20533,6 +20585,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/fleet/starcutter)
+"rau" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/landmark/spawnpoint/latejoin/tradeport,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/fleet/dock)
 "raw" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 1
@@ -23614,9 +23671,8 @@
 	dir = 4
 	},
 /obj/structure/cable/white{
-	icon_state = "0-4"
+	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/alarms_hidden/no_cell/south_mount,
 /turf/simulated/floor/tiled/monotechmaint,
 /area/shuttle/fleet/trade_ship/cockpit)
 "tHg" = (
@@ -24009,6 +24065,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/event/derelict_floor6,
 /area/sector/fleet/engineering)
+"tXE" = (
+/obj/landmark/spawnpoint/latejoin/tradeport,
+/obj/machinery/computer/cryopod{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/dock)
 "tXF" = (
 /obj/structure/table/sifwooden_reinforced,
 /turf/simulated/floor/roguetown/dark_wood,
@@ -24411,12 +24474,6 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/sector/fleet/bar)
-"utj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/white,
-/obj/machinery/power/apc/alarms_hidden/no_cell/west_mount,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/shuttle/fleet/trade_ship/general)
 "utt" = (
 /obj/structure/cable/white{
 	icon_state = "1-2"
@@ -24442,6 +24499,15 @@
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/reinforced,
 /area/shuttle/fleet/battlestar)
+"uux" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/monotechmaint,
+/area/shuttle/fleet/trade_ship/cockpit)
 "uuW" = (
 /obj/machinery/iv_drip,
 /obj/machinery/light,
@@ -27800,6 +27866,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/machinery/power/apc/alarms_hidden/no_cell/west_mount,
+/obj/structure/cable/white{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/fleet/trade_ship/general)
 "xlY" = (
@@ -28659,6 +28729,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/shuttle/fleet/biodancy)
+"xWq" = (
+/obj/structure/cryofeed{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/fleet/dock)
 "xWG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -28818,6 +28894,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/fleet/battlestar)
+"yed" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/syndicate,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techmaint,
+/area/sector/fleet/dock)
 "yee" = (
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/structure/flora/pottedplant/hedge,
@@ -54353,7 +54435,7 @@ nuW
 vFo
 nuW
 nuW
-epY
+uux
 bfz
 nHv
 jqB
@@ -57069,8 +57151,8 @@ tBq
 opl
 fNF
 rKm
-ddK
-utj
+mEf
+bXy
 bXy
 kkR
 rKm
@@ -59168,7 +59250,7 @@ mZq
 mZq
 cRx
 ocG
-cfb
+emu
 xbU
 nSK
 tVd
@@ -59557,9 +59639,9 @@ vxY
 mZq
 mZq
 oQM
-cTq
+jqm
 nSK
-jmZ
+rau
 oQM
 ocG
 hCg
@@ -59944,7 +60026,7 @@ efh
 vxY
 cRx
 ocG
-cfb
+amV
 cTq
 nSK
 jmZ
@@ -60138,11 +60220,11 @@ ocG
 ocG
 ocG
 ocG
-cfb
-xbU
-nSK
-tVd
-cfb
+far
+cTq
+swo
+swo
+swo
 ocG
 hCg
 hdO
@@ -60332,11 +60414,11 @@ swo
 swo
 swo
 swo
+far
+cTq
 swo
-swo
-swo
-swo
-swo
+xWq
+exS
 swo
 swo
 swo
@@ -60526,12 +60608,12 @@ oKt
 oKt
 oKt
 oKt
-oKt
-oKt
-oKt
-oKt
-oKt
-oKt
+far
+cTq
+swo
+eLx
+pcI
+swo
 oKt
 oKt
 oKt
@@ -60720,12 +60802,12 @@ oKt
 oKt
 oKt
 oKt
-oKt
-oKt
-oKt
-oKt
-oKt
-oKt
+far
+cTq
+swo
+jGs
+tXE
+swo
 oKt
 oKt
 oKt
@@ -60914,12 +60996,12 @@ oKt
 oKt
 oKt
 oKt
-oKt
-oKt
-oKt
-oKt
-oKt
-oKt
+amV
+cTq
+opR
+cma
+yed
+swo
 oKt
 oKt
 oKt
