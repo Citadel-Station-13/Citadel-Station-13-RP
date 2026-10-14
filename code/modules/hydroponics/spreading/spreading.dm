@@ -178,15 +178,14 @@
 			max_growth--
 	max_growth = max(1,max_growth)
 	if(growth_type > 0)
-		switch(percent_integrity())
-			if(0.5 to 1)
-				icon_state = "vines-[growth]"
-			if(0.35 to 0.5)
-				icon_state = "mass-[growth]"
-			if(0.15 to 0.35)
-				icon_state = "worms"
-			else
-				icon_state = "mold-[growth]"
+		var/growth_for_icon_state_selection = clamp(growth, 1, 5)
+		icon_state = "vines-[growth_for_icon_state_selection]"
+		// current vines dont vary to warrant this code
+		// TODO: implement way of vines sometimes picking different iconstates:
+		// Options are:
+			// "mass-[growth_for_icon_state_selection]"
+			// "worms"
+			// "mold-[growth_for_icon_state_selection]"
 	else
 		icon_state = "[seed.get_trait(TRAIT_PLANT_ICON)]-[growth]"
 
