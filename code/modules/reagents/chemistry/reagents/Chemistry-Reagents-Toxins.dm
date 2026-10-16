@@ -1245,58 +1245,6 @@
 /datum/reagent/lessershock/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.electrocute(0, 5 * removed, 0, ELECTROCUTE_ACT_FLAG_INTERNAL, null)
 
-/* Removed for now as it has no practical use and causes extreme performance issues because of the way the smoke is handled.
-
-/datum/reagent/asbestos //asbestos removal handled in under datum/reagent/respirodaxon
-	name = "Asbestos"
-	id = "asbestos"
-	description = "A silicate made of packed fibrils. Renowned for its insulative properties and for getting permanently stuck in the lungs when inhaled as a powder."
-	taste_description = "sharp dust"
-	reagent_state = REAGENT_SOLID
-	color = "#d8d6d6"
-	metabolism_rate = 0.01 // Does not leave your system easily
-	mrate_static = TRUE
-	reagent_filter_flags = REAGENT_FILTER_NO_COMMON_BIOANALYSIS
-	overdose = 10
-
-/datum/reagent/asbestos/legacy_affect_blood(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	M.ingested.add_reagent(/datum/reagent/asbestos, 0.02) //No idea what to do with injected asbestos I will simply say it goes to your lungs faster.
-
-/datum/reagent/asbestos/legacy_affect_ingest(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	var/mob/living/carbon/human/H = M
-	if(prob(2))
-		M.emote("cough")
-		M.adjustOxyLoss(5)
-	if(istype(H))
-		if(prob(1))
-			H.asbestos_lung()
-
-/datum/reagent/asbestos/legacy_affect_overdose(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
-	. = ..()
-	var/mob/living/carbon/human/H = M
-	if(prob(4))
-		M.emote("cough")
-		M.adjustOxyLoss(10)
-	if(istype(H))
-		if(prob(1))
-			H.asbestos_lung()
-
-/datum/reagent/asbestos/on_touch_turf(turf/target, remaining, allocated, data)
-	. = ..()
-	var/turf/T = target
-	if(allocated >= 20)
-		var/location = T
-		var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
-		S.attach(location)
-		var/datum/reagent_holder/copy_holder = new
-		copy_holder.add_reagent(id, allocated)
-		S.set_up(copy_holder, allocated * 0.05, 0, location) //This ghetto smoke solution is 1/8th as effecient as chemsmoke
-		playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
-		spawn(0)
-			S.start()
-
-*/
-
 /datum/reagent/polonium
 	name = "Polonium-210"
 	id = "polonium"
