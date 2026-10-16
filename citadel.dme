@@ -1302,6 +1302,7 @@
 #include "code\game\content\factions\derelict\derelict.dm\derelict_structures.dm"
 #include "code\game\content\factions\derelict\derelict.dm\overmap.dm"
 #include "code\game\content\factions\derelict\derelict.dm\automatons\broodmother.dm"
+#include "code\game\content\factions\derelict\derelict.dm\automatons\interloper.dm"
 #include "code\game\content\factions\derelict\derelict.dm\automatons\sentinel.dm"
 #include "code\game\content\factions\derelict\derelict.dm\automatons\minutemen\minutemen.dm"
 #include "code\game\content\factions\derelict\derelict.dm\automatons\minutemen\dragonfly_variations\flame.dm"

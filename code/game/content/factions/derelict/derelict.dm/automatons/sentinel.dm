@@ -44,7 +44,7 @@
 	..(null,"suddenly crashes to the ground, translucent blue blood leaking from a broken thruster.")
 
 
-/mob/living/simple_mob/mechanical/derelict/sentinel/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/mechanical/derelict/Process_Spacemove(var/check_drift = 0)
 	return TRUE
 
 /obj/item/shield_projector/rectangle/automatic/advanced

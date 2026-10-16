@@ -99,6 +99,8 @@
 	shields = new /obj/item/shield_projector/rectangle/automatic/advanced(src)
 	return ..()
 
+
+
 /mob/living/simple_mob/mechanical/derelict/broodmother/Destroy()
 	QDEL_NULL(shields)
 	return ..()
