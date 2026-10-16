@@ -23,7 +23,7 @@
 	integrating into other cultures and cities, as well as some Shadekin leaving their tribe to
 	travel alone. Nanotrasen is one of the biggest employers of Shadekin.
 	"}
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Race:_Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 
 	max_additional_languages = 3

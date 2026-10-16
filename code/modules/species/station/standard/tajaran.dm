@@ -57,7 +57,7 @@
 
 	Recent discoveries have jump started the progression of highly advanced cybernetic technology, causing a culture shock within Tajaran society.
 	 "}
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Tajara"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Race:_Tajara"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/tajaran)
 
 	body_temperature = 320.15 //Even more cold resistant, even more flammable

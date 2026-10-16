@@ -30,7 +30,7 @@
 	all else, frequently even their own lives. They prefer warmer temperatures than most species and their native tongue
 	is a heavy hissing laungage called Sinta'Unathi.
 	"}
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Unathi"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Species/Unathi"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
 	max_additional_languages = 3

@@ -82,7 +82,7 @@
 /datum/item_mount/robot_item_mount/reagent_erase_amount(obj/item/item, key, datum/reagent/reagent, amount)
 	var/datum/robot_resource/resource = store.provisioned_reagent_store[reagent.id]
 	if(resource)
-		. = max(amount, resource.amount)
+		. = min(amount, resource.amount)
 		resource.amount -= .
 
 /datum/item_mount/robot_item_mount/reagent_spawn_amount(obj/item/item, key, datum/reagent/reagent, amount, force)

@@ -26,3 +26,9 @@
 2026-10-06:
   Athena148:
   - bugfix: darkspace abduction now loads its zlevel
+2026-10-09:
+  Shadowtail117:
+  - bugfix: In-game links now point to citadel-station.dev instead of citadel-station.net.
+  - bugfix: Cyborgs can now properly use their material holders again.
+  - bugfix: The RUST engine will now properly have side effects if instability gets
+      too high.
