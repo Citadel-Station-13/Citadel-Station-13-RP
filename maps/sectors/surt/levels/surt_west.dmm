@@ -506,6 +506,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/sector/surt/mining_base/common)
+"ph" = (
+/obj/machinery/doorbell_chime{
+	name = "mining outpost doorbell chime";
+	id_tag = "miningoutpost";
+	desc = "A small, wall-mounted chime used to notify of someone outside the Surt mining outpost."
+	},
+/turf/simulated/wall/r_wall,
+/area/sector/surt/mining_base/common)
 "pi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -1325,6 +1333,16 @@
 	},
 /turf/simulated/lava,
 /area/sector/surt/central/explored)
+"Dt" = (
+/obj/machinery/button/doorbell{
+	pixel_x = 5;
+	pixel_y = -5;
+	name = "mining outpost doorbell";
+	id = "miningoutpost";
+	desc = "A small doorbell used to notify others of your presence."
+	},
+/turf/simulated/wall/r_wall,
+/area/sector/surt/mining_base/common)
 "Du" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -12297,7 +12315,7 @@ HA
 Mw
 ew
 lT
-AO
+ph
 AO
 AO
 sV
@@ -13460,7 +13478,7 @@ AO
 AO
 RE
 RE
-AO
+Dt
 AO
 AO
 AO
