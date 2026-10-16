@@ -23,8 +23,8 @@
 	icon_living = "wasp"
 
 
-	health = 120
-	maxHealth = 120
+	health = 70
+	maxHealth = 70
 	movement_base_speed = 10 / 2
 	density = 0
 	hovering = TRUE
@@ -35,6 +35,12 @@
 	legacy_melee_damage_lower = 15
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/event
+
+
+/mob/living/simple_mob/mechanical/derelict/minuteman/wasp/Initialize(mapload)
+	. = ..()
+	pixel_x = rand(-8, 8)
+	pixel_y = rand(-8, 8)
 
 
 /mob/living/simple_mob/mechanical/derelict/minuteman/hornet
