@@ -1245,6 +1245,8 @@
 /datum/reagent/lessershock/legacy_affect_touch(mob/living/carbon/M, alien, removed, datum/reagent_metabolism/metabolism)
 	M.electrocute(0, 5 * removed, 0, ELECTROCUTE_ACT_FLAG_INTERNAL, null)
 
+/* Removed for now as it has no practical use and causes extreme performance issues because of the way the smoke is handled.
+
 /datum/reagent/asbestos //asbestos removal handled in under datum/reagent/respirodaxon
 	name = "Asbestos"
 	id = "asbestos"
@@ -1292,6 +1294,8 @@
 		playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
 		spawn(0)
 			S.start()
+
+*/
 
 /datum/reagent/polonium
 	name = "Polonium-210"
