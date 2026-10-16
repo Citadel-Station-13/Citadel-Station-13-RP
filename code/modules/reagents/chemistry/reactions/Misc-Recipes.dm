@@ -508,13 +508,6 @@
 	result_amount = 1
 	required_reagents = list("sulfur" = 1, "carbon" = 1, "saltpeter" = 1)
 
-/datum/chemical_reaction/asbestos
-	name = "Asbestos"
-	id = "asbestos"
-	result = "asbestos"
-	result_amount = 3
-	required_reagents = list("iron" = 1, "silicon" = 1, "oxygen" = 1)
-
 /datum/chemical_reaction/depolo //Or De-Polonium swaps unremovable polonium for removeable nuclear waste
 	name = "Polonium Removal"
 	id = "polremove"
