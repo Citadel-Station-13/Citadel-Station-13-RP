@@ -247,7 +247,7 @@
 	name = "Motov'arna Garrison (level 1)"
 	lift_floor_label = "Surface Level"
 	lift_floor_name = "Ground Level"
-	lift_announce_str = "Arriving at Ground Level. The Hadii Revolution is Eternal!"
+	lift_announce_str = "Arriving at Ground Level. The Hadii Revolution is eternal!"
 
 /area/turbolift/skyplanet_military/upper
 	name = "Motov'arna Garrison (level 2)"
