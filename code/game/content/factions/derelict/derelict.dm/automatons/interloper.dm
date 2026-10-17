@@ -6,6 +6,7 @@
 	icon_state = "interloper"
 	icon_living = "interloper"
 	icon_dead = "interloper_dead"
+	color = "#808080"
 
 	iff_factions = MOB_IFF_FACTION_DERELICT_AUTOMATONS
 	health = 300
@@ -15,23 +16,19 @@
 	hovering = TRUE
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/inert
-	var/obj/item/shield_projector/shields = null
 
-/obj/item/shield_projector/rectangle/automatic/impenetrable
-	shield_health = 99999
-	max_shield_health = 99999
-	shield_regen_delay = 1 SECONDS
-	shield_regen_amount = 1000
-	color = "#3f3f3f"
-	high_color = "#3f3f3f"
-	low_color = "#3f3f3f"
-	light_color = "#3f3f3f"
+/mob/living/simple_mob/mechanical/derelict/interloper/on_bullet_act(obj/projectile/proj, impact_flags, list/bullet_act_args)
+	visible_message("<span class='warning'>The [proj.name] reflects off of [src]'s shell!</span>", \
+					"<span class='warning'>The [proj.name] reflects off of [src]'s shell!</span>")
+
+	var/turf/curloc = get_turf(src)
+	var/start_x = proj.starting ? proj.starting.x : curloc.x
+	var/start_y = proj.starting ? proj.starting.y : curloc.y
+	var/new_x = start_x + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
+	var/new_y = start_y + pick(0, 0, -1, 1, -2, 2, -2, 2, -2, 2, -3, 3, -3, 3)
 
 
-/mob/living/simple_mob/mechanical/derelict/interloper/Initialize(mapload)
-	shields = new /obj/item/shield_projector/rectangle/automatic/impenetrable(src)
-	return ..()
+	proj.legacy_redirect(new_x, new_y, curloc, src)
+	proj.reflected = TRUE
 
-/mob/living/simple_mob/mechanical/derelict/interloper/Destroy()
-	QDEL_NULL(shields)
-	return ..()
+	return PROJECTILE_IMPACT_REFLECT
