@@ -253,4 +253,4 @@
 	name = "Motov'arna Garrison (level 2)"
 	lift_floor_label = "Sky Level"
 	lift_floor_name = "Upper Level"
-	lift_announce_str = "Arriving at Sky Level. Report Treasonous Behavoir to your Commissar!"
+	lift_announce_str = "Arriving at Sky Level. Report treasonous behavior to your Commissar!"
