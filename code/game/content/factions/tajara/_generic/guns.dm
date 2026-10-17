@@ -51,9 +51,9 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/taj
 	name = "Adhomai double-barrel"
-	desc = "Shotguns were not widely adopted on Adhomai til after the civil wars. Adhomai's militaries directed the development of homemade automatics \
-	and submachineguns as a solution to close quarter fighting. More recently civilian manufacturers have begun making double barrels like these to sell \
-	to wealthier hunters and merchants. With its limited capacity shotguns like these can be found even in some of the more high security states of Adhomai."
+	desc = "Shotguns were not widely adopted on Adhomai until after the civil wars. Adhomai's militaries directed the development of homemade automatics \
+	and submachine guns as a solution to close quarters fighting. More recently, civilian manufacturers have begun making double barrels like these to sell \
+	to wealthier hunters and merchants. With its limited capacity, shotguns like these can be found even in some of the more high-security states of Adhomai."
 	icon = 'icons/content/factions/tajara/items/guns/taj_doublebarrel.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_doublebarrel.dmi'
 	icon_state = "shotgun"
