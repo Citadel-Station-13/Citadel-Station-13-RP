@@ -235,7 +235,7 @@
 	name = "Motov'arna Industrial (level 1)"
 	lift_floor_label = "Surface Level"
 	lift_floor_name = "Industrial District"
-	lift_announce_str = "Arriving at Ground Level. Glory to the Workers!"
+	lift_announce_str = "Arriving at Ground Level. Glory to the workers!"
 
 /area/turbolift/skyplanet_city/upper
 	name = "Motov'arna Residential (level 2)"
