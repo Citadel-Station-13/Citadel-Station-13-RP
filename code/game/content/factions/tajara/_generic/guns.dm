@@ -85,9 +85,9 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/taj
 	name = "Adhomai sawn-off shotgun"
-	desc = "The moment Tajaran criminals and bandits got their hands on shotguns, their first instincts was to cute them down like they had done for their \
-	obrez rifles. They quickly earned a reputation among Tajaran authorities and a result its illegal to own shotguns under a certain length almost everywhere \
-	on Adhomai, an impressive feat considering how diverse in idealogy its nation states are."
+	desc = "The moment Tajaran criminals and bandits got their hands on shotguns, their first instincts were to cut them down like they had done for their \
+	obrez rifles. They quickly earned a reputation among Tajaran authorities, and a result, it's illegal to own shotguns under a certain length almost everywhere \
+	on Adhomai, an impressive feat considering how diverse in ideology its nation states are."
 	icon = 'icons/content/factions/tajara/items/guns/taj_doublebarrel.dmi'
 	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_doublebarrel.dmi'
 	icon_state = "sawnshotgun"
