@@ -32,3 +32,6 @@
   - bugfix: Cyborgs can now properly use their material holders again.
   - bugfix: The RUST engine will now properly have side effects if instability gets
       too high.
+2026-10-17:
+  Shadowtail117:
+  - rscdel: Removed asbestos.
