@@ -713,6 +713,8 @@
 	. = ..()
 	if(.)
 		return
+	if(!in_range(src, e_args.performer))
+		return
 	switch(key)
 		if("remove-attachment")
 			// todo: e_args support

@@ -201,12 +201,8 @@
 /obj/item/toy/sword
 	name = "toy sword"
 	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up. It can be recolored via Alt-Click."
-	icon = 'icons/obj/weapons.dmi'
+	icon = 'icons/items/melee/transforming.dmi'
 	icon_state = "esword"
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
-		)
 	var/active = 0
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("attacked", "struck", "hit")

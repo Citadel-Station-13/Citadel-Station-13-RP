@@ -728,6 +728,8 @@
 // New emotes in here are no longer allowed.
 /mob/living/carbon/human/proc/handle_emote_vr(var/act,var/m_type=1,var/message = null)
 
+	var/made_sound
+
 	switch(act)
 		if ("vwag")
 			if(toggle_tail_vr(message = 1))
@@ -754,6 +756,7 @@
 			if(!spam_flag)
 				var/list/catlaugh = list('sound/voice/catpeople/nyaha.ogg', 'sound/voice/catpeople/nyahaha1.ogg', 'sound/voice/catpeople/nyahaha2.ogg', 'sound/voice/catpeople/nyahehe.ogg')
 				playsound(loc, pick(catlaugh), 50, 1, -1)
+				made_sound = TRUE
 				spam_flag = TRUE
 				addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 			var/list/laughs = list("laughs deviously.", "lets out a catty laugh.", "nya ha ha's.")
@@ -762,39 +765,48 @@
 		if("chirp")
 			message = "chirps!"
 			playsound(src.loc, 'sound/misc/nymphchirp.ogg', 50, 0)
+			made_sound = TRUE
 			m_type = 2
 		if("prbt")
 			message = "prbts."
 			playsound(src.loc, 'sound/misc/prbt.ogg', 50, 1, -1)
+			made_sound = TRUE
 			m_type = 2
 		if ("mrrp")
 			message = "mrrps."
 			m_type = 2
 			playsound(src.loc, "sound/voice/mrrp.ogg", 50, 1, -1)
+			made_sound = TRUE
 		if ("weh")
 			message = "lets out a weh."
 			m_type = 2
 			playsound(loc, 'sound/voice/weh.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("merp")
 			message = "lets out a merp."
 			m_type = 2
 			playsound(loc, 'sound/voice/merp.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("bleat")
 			message = "bleats!"
 			m_type = 2
 			playsound(loc, pick(list('sound/voice/baa.ogg','sound/voice/baa2.ogg')), 50, 1, -1)
+			made_sound = TRUE
 		if ("bark")
 			message = "lets out a bark."
 			m_type = 2
 			playsound(loc, 'sound/voice/bark2.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("hiss")
 			message = "lets out a hiss."
 			m_type = 2
 			playsound(loc, 'sound/voice/hiss.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if("mar")
 			message = "lets out a mar."
 			m_type = 2
 			playsound(loc, 'sound/voice/mar.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("nsay")
 			nsay()
 			return TRUE
@@ -805,18 +817,22 @@
 			message = "chitters."
 			m_type = 2
 			playsound(loc, 'sound/voice/moth/mothchitter.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("mlaugh")
 			message = "laughs."
 			m_type = 2
 			playsound(loc, 'sound/voice/moth/mothlaugh.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("mscream")
 			message = "screams!"
 			m_type = 2
 			playsound(loc, 'sound/voice/moth/scream_moth.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("msqueak")
 			message = "lets out a squeak."
 			m_type = 2
 			playsound(loc, 'sound/voice/moth/mothsqueak.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("flip")
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			//Check if they are physically capable
@@ -849,24 +865,29 @@
 			message = "purrs softly."
 			m_type = 2
 			playsound(loc, 'sound/voice/purr.ogg', 50, 1, -1)
+			made_sound = TRUE
 		if ("ycackle")
 			message = "cackles maniacally!"
 			m_type = 2
 			playsound(loc, pick(list('sound/voice/YeenCackle.ogg','sound/voice/YeenCackle2.ogg','sound/voice/YeenCackle3.ogg')), 50, 1, -1)
+			made_sound = TRUE
 		if ("growl")
 			message = "growls!"
 			m_type = 2
 			playsound(loc, pick(list('sound/voice/growl1.ogg','sound/voice/growl2.ogg','sound/voice/growl3.ogg')), 10, 1, -1)
+			made_sound = TRUE
 		if ("howl")
 			message = "howls!"
 			m_type = 2
 			playsound(loc, pick(list('sound/voice/howl1.ogg','sound/voice/howl2.ogg','sound/voice/howl3.ogg')), 30, 1, -1)
+			made_sound = TRUE
 			spam_flag = TRUE
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 		if ("echoping")
 			message = "emits a strange noise that echos throughout the place..."
 			m_type = 2
 			playsound(loc, pick(list('sound/voice/echoping1.ogg','sound/voice/echoping2.ogg','sound/voice/echoping3.ogg')), 40, 1, -1)
+			made_sound = TRUE
 			spam_flag = TRUE
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 		if ("airhorn")
@@ -877,11 +898,12 @@
 			message = "blares a horn!"
 			m_type = 2
 			playsound(loc, 'sound/items/airhorn2.ogg', 20, 1, 1)
+			made_sound = TRUE
 			spam_flag = TRUE
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 18)
 
 	if (message)
-		custom_emote(m_type,message)
+		custom_emote(m_type,message,!made_sound)
 		return 1
 
 	return 0

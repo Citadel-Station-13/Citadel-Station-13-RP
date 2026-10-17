@@ -9,7 +9,7 @@
 		if(get_dist(src, observer) <= range)
 			. += observer
 
-/mob/observer/dead/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type, datum/event_args/actor/actor, with_overhead)
+/mob/observer/dead/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type, datum/event_args/actor/actor, with_overhead, play_talksound)
 	// Now watch, as I violate a codebase best practice for shits and giggles.
 	if(!usr)
 		return FALSE
@@ -42,7 +42,7 @@
 	var/raw_html = process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead)
 	if(!raw_html)
 		return
-	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, actor)
+	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, actor, play_talksound)
 
 /mob/observer/dead/process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
 	. = emote_text
@@ -50,5 +50,5 @@
 	. = say_emphasis(.)
 	. = SPAN_DEADSAY(emoji_parse(.))
 
-/mob/observer/dead/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
+/mob/observer/dead/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor, play_talksound)
 	say_dead_direct(raw_html, src)

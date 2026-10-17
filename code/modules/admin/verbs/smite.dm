@@ -199,8 +199,11 @@
 	if(!darkspace_abduction_z)
 		darkspace_abduction_z = -1
 		to_chat(user,"<span class='warning'>This is the first use of the verb this shift, it will take a minute to configure the abduction z-level. It will be z[world.maxz+1].</span>")
-		var/datum/map_level/level = SSmapping.allocate_level()
-		var/z = level.z_index
+		var/datum/map_level/level = SSmapping.allocate_level(/datum/map_level/dynamic)
+		var/z = level ? level.z_index : null
+		if(!z)
+			to_chat(user,"<span class='warning'>Mapping allocation failed.</span>")
+			return
 		var/area/areaInstance = new /area/darkspace_abduction(null)
 		areaInstance.addSorted()
 		for(var/x = 1 to world.maxx)
@@ -218,7 +221,7 @@
 	var/size_of_square = 26
 	var/halfbox = round(size_of_square*0.5)
 	target.transforming = TRUE
-	to_chat(target,"<span class='danger'>You feel a strange tug, deep inside. You're frozen in momentarily...</span>")
+	to_chat(target,"<span class='hypnophrase'>A sudden wave of disorienation hits you without warning. You struggle to maintain your bearings.</span>")
 	to_chat(user,"<span class='notice'>Beginning vis_contents copy to abduction site, player mob is frozen.</span>")
 	sleep(1 SECOND)
 	//Lower left corner of a working box
@@ -270,7 +273,7 @@
 				T.vis_contents.Cut()
 
 	target.forceMove(locate(target.x,target.y,darkspace_abduction_z))
-	to_chat(target,"<span class='danger'>The tug relaxes, but everything around you looks... slightly off.</span>")
+	to_chat(target,"<span class='hypnophrase'>The feeling fades but something doesn't seem right.</span>")
 	to_chat(user,"<span class='notice'>The mob has been moved. ([admin_jump_link(target,usr.client.holder)])</span>")
 
 	target.transforming = FALSE

@@ -26,13 +26,13 @@
 	run_custom_emote(act_desc, saycode_type = SAYCODE_TYPE_VISIBLE)
 
 /// Deprecated.
-/mob/proc/audible_emote(var/act_desc)
-	run_custom_emote(act_desc, saycode_type = SAYCODE_TYPE_AUDIBLE)
+/mob/proc/audible_emote(var/act_desc, play_talk_sound = TRUE)
+	run_custom_emote(act_desc, saycode_type = SAYCODE_TYPE_AUDIBLE, play_talksound = play_talk_sound)
 
 /// Deprecated
-/mob/proc/custom_emote(m_type, message)
+/mob/proc/custom_emote(m_type, message, play_talk_sound = TRUE)
 	switch(m_type)
 		if(2)
-			audible_emote(message)
+			audible_emote(message, play_talk_sound)
 		else
 			visible_emote(message)

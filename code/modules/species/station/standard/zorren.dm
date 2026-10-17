@@ -31,7 +31,7 @@
 	have adjusted better to their new lives. Though similar fox-like beings have been seen they are different than the Zorren.
 	"}
 
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Zorren"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Zorren"
 	catalogue_data = list(
 		/datum/category_item/catalogue/fauna/zorren,
 		/datum/category_item/catalogue/fauna/highzorren,
@@ -102,7 +102,7 @@
 	to their new lives. Though similar fox-like beings have been seen they are different than the Zorren.
 	"}
 
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Zorren"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Zorren"
 	catalogue_data = list(
 		/datum/category_item/catalogue/fauna/zorren,
 		/datum/category_item/catalogue/fauna/flatzorren,
