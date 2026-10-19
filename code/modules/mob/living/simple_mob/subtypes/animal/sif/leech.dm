@@ -72,7 +72,7 @@
 
 	holder_type = /obj/item/holder/leech
 
-	movement_base_speed = 6.66
+	movement_base_speed = 7
 	aquatic_movement = -2
 
 	legacy_melee_damage_lower = 1
