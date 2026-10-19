@@ -8,6 +8,7 @@
 	output_level = 0
 	input_level_max = 0
 	output_level_max = 0
+	icon = 'icons/obj/power.dmi'
 	icon_state = "gsmes"
 	circuit = /obj/item/circuitboard/batteryrack
 	should_be_mapped = TRUE

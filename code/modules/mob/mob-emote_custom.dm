@@ -16,7 +16,7 @@
  * * Logging happens here.
  * * THE INPUT EMOTE TEXT IS NOT SANITIZED AT THIS STAGE.
  */
-/mob/proc/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type = SAYCODE_TYPE_VISIBLE, datum/event_args/actor/actor, with_overhead)
+/mob/proc/run_custom_emote(emote_text, subtle, anti_ghost, saycode_type = SAYCODE_TYPE_VISIBLE, datum/event_args/actor/actor, with_overhead, play_talksound = TRUE)
 	if(stat)
 		// TODO: tooltip with copy link.
 		to_chat(src, SPAN_WARNING("You are unable to emote."))
@@ -43,7 +43,7 @@
 	var/raw_html = process_custom_emote(emote_text, subtle, anti_ghost, saycode_type, with_overhead, actor)
 	if(!raw_html)
 		return
-	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, actor)
+	emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, actor, play_talksound)
 
 /**
  * Perform special preprocessing on an incoming custom emote
@@ -71,7 +71,7 @@
 /**
  * Emit a custom emote
  */
-/mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor)
+/mob/proc/emit_custom_emote(raw_html, subtle, anti_ghost, saycode_type, with_overhead, datum/event_args/actor/actor, play_talksound = TRUE)
 	// TODO: can we please have a better way to determine this?
 	var/never_show_ghosts = !actor?.initiator?.ckey
 	var/list/atom/movable/heard = saycode_view_query(subtle ? 1 : GLOB.game_view_radius, TRUE, anti_ghost || never_show_ghosts)
@@ -93,12 +93,13 @@
 		else if(isobj(hearing))
 			var/obj/hearing_obj = hearing
 			hearing_obj.see_emote(src, raw_html, 2)
-	var/turf/our_loc = get_turf(src)
-	var/use_sfx = subtle ? /datum/soundbyte/talksound/generic_subtle_emote_1 : /datum/soundbyte/talksound/generic_emote_1
-	// todo: cache this or maybe just have a distinction between regular hear and 'observer heard us from far away'?
-	var/max_vocal_cue_dist = world_view_max_number()
-	for(var/mob/M as anything in filtered_mobs)
-		if(M.get_preference_toggle(/datum/game_preference_toggle/game/vocal_cues) && get_dist(M, src) <= max_vocal_cue_dist)
-			M.playsound_local(our_loc, use_sfx, 50, TRUE)
+	if(play_talksound)
+		var/turf/our_loc = get_turf(src)
+		var/use_sfx = subtle ? /datum/soundbyte/talksound/generic_subtle_emote_1 : /datum/soundbyte/talksound/generic_emote_1
+		// todo: cache this or maybe just have a distinction between regular hear and 'observer heard us from far away'?
+		var/max_vocal_cue_dist = world_view_max_number()
+		for(var/mob/M as anything in filtered_mobs)
+			if(M.get_preference_toggle(/datum/game_preference_toggle/game/vocal_cues) && get_dist(M, src) <= max_vocal_cue_dist)
+				M.playsound_local(our_loc, use_sfx, 50, TRUE)
 	if(with_overhead)
 		say_overhead(raw_html, FALSE, GLOB.game_view_radius, passed_hearing_list = filtered_mobs)

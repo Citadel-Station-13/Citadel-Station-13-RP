@@ -34,7 +34,7 @@
 	but can still be dangerous to the host. Their chitinous exoskeleton allows them to endure low pressure and freezing cold \
 	quite well, but leaves them vurnerable to fire and heat."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Species/Xenohybrid"
 
 	intrinsic_languages = LANGUAGE_ID_XENOMORPH
 	name_language = LANGUAGE_ID_XENOMORPH

@@ -724,3 +724,13 @@
 		"white ranger poncho" = /obj/item/clothing/accessory/poncho/roles/ranger/snow
 	)
 	tweaks += new/datum/loadout_tweak/path(tim_sort(ranger_ponchos, GLOBAL_PROC_REF(cmp_text_asc)))
+
+//Shibari rope
+
+/datum/loadout_entry/suit/shibari
+	name = "Shibari Ropes - Torso (Colorable)"
+	path = /obj/item/clothing/suit/shibari
+
+/datum/loadout_entry/suit/shibari/sleeved
+	name = "Shibari Ropes - Torso & Arms (Colorable)"
+	path = /obj/item/clothing/suit/shibari/sleeved

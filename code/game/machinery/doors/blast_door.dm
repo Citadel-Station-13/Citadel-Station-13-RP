@@ -143,6 +143,18 @@
 			else
 				to_chat(user, "<span class='notice'>[src]'s motors resist your effort.</span>")
 			return
+	else if(istype(I, /mob/living/carbon/human))
+		if (I == user)
+			if(user.a_intent == INTENT_HELP)
+				visible_message(SPAN_NOTICE("\The [user] rests their head against \the [src]."))
+			else if((user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
+				visible_message(SPAN_WARNING("\The [user] punches \the [src] in frustration."))
+		else
+			if(user.a_intent == INTENT_HELP)
+				visible_message(SPAN_NOTICE("\The [user] pins [I] against \the [src]."))
+			else if((user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
+				visible_message(SPAN_WARNING("\The [user] shoves [I] against \the [src]."))
+		return
 	else if(I.is_material_stack_of(/datum/prototype/material/plasteel)) // Repairing.
 		var/amt = CEILING((integrity_max - integrity)/150, 1)
 		if(!amt)

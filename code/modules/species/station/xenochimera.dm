@@ -36,7 +36,7 @@
 	Widely known for their voracious nature and violent tendencies when stressed or left unfed for long periods of time.  Most, if not
 	all chimeras possess the ability to undergo some type of regeneration process, at the cost of energy.
 	"}
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Xenochimera"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Race:_The_Xenochimera"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
 
 	movement_base_speed = 5.5

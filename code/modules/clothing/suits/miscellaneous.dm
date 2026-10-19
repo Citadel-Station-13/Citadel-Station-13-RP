@@ -1595,3 +1595,15 @@
 	name = "caparison"
 	desc = "A fancy name for what is almost just a big sheet designed to cover a quadruped body. For anyone else, it can still work as an awkward to wear poncho."
 	icon_state = "caparison"
+
+//Shibari
+/obj/item/clothing/suit/shibari
+	name = "shibari ropes"
+	icon = 'icons/clothing/suit/misc/shibari.dmi'
+	icon_state = "shibari"
+	desc = "A set of rope restraints for... Wearing?"
+	w_class = WEIGHT_CLASS_NORMAL
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/shibari/sleeved
+	icon_state = "shibari_sleeved"

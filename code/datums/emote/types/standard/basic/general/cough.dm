@@ -18,7 +18,7 @@
 	var/mob/casted_mob = actor.performer
 	if(iscarbon(casted_mob))
 		var/mob/living/carbon/casted_carbon = casted_mob
-		var/obj/item/organ/internal/maybe_lungs = casted_carbon.organs_by_name[O_LUNGS]
+		var/obj/item/organ/internal/maybe_lungs = casted_carbon.internal_organs_by_name[O_LUNGS]
 		if(maybe_lungs.robotic >= ORGAN_ROBOT)
 			robotic = TRUE
 	else

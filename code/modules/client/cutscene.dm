@@ -150,7 +150,7 @@
 	// just in case
 	spawn(2 SECONDS)
 		// no QDELETED check because we'll already be deleted
-		if(winget(C, "[SKIN_BROWSER_ID_CUTSCENE]", "is-visible") == "true")
+		if(C && winget(C, "[SKIN_BROWSER_ID_CUTSCENE]", "is-visible") == "true")
 			winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
 
 /datum/cutscene/browser/proc/push_build(client/C, raw_html = build_inner_html())

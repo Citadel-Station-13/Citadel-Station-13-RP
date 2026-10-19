@@ -19,7 +19,7 @@
 	they rarely reveal the secrets of their empire to their allies.
 	"}
 
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Skrell"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Skrell"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
 
 	max_additional_languages = 3

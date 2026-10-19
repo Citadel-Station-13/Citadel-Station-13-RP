@@ -18,7 +18,7 @@
 	desc = "Designed in response to the H.O.N.K., Reticent models are close combat powerhouses designed to rapidly and quietly ambush slower foes."
 	catalogue_data = list(/datum/category_item/catalogue/technology/reticent)
 	icon_state = "reticent"
-	movement_base_speed = 10 / 0.5
+	movement_base_speed = 2.5
 	movement_sound = 'sound/effects/suitstep1.ogg'
 	turn_sound = 'sound/effects/suitstep2.ogg'
 	melee_attack_delay = 2

@@ -27,3 +27,8 @@
   - tweak: Christmas and Halloween items have been added to the holiday vending machine
       rotations.
   - tweak: Booze-O-Mat now stocks one bottle of Patron and Goldschlager each.
+2026-09-29:
+  timothyteakettle:
+  - bugfix: exclude specific clothing from the loot pack that picks from all clothing
+  - tweak: modify bunny tall alt sprite so that the back colour and inner colour are
+      separate
