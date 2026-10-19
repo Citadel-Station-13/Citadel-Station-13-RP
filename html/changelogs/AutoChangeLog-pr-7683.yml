@@ -1,0 +1,4 @@
+author: "anon841-afk"
+delete-after: True
+changes:
+  - rscadd: "Seed extractor ic chip now functions."
