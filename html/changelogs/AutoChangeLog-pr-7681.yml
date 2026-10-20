@@ -1,6 +1,0 @@
-author: "AlphaM01"
-delete-after: True
-changes:
-  - tweak: "simplemob mech movespeed reduced"
-  - tweak: "tweaked a handful of mob movespeed variables"
-  - bugfix: "fixed movespeed for a few mobs that were incorrectly set"

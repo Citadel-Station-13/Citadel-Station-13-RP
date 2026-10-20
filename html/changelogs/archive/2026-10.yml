@@ -38,3 +38,10 @@
 2026-10-18:
   timothyteakettle:
   - bugfix: fixes toy sword, xenoarch guns and battery rack missing icons
+2026-10-20:
+  AlphaM01:
+  - tweak: simplemob mech movespeed reduced
+  - tweak: tweaked a handful of mob movespeed variables
+  - bugfix: fixed movespeed for a few mobs that were incorrectly set
+  anon841-afk:
+  - rscadd: Seed extractor ic chip now functions.
