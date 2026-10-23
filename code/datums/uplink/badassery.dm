@@ -46,7 +46,7 @@
 	return bought_items
 
 /datum/uplink_item/item/badassery/random_many/purchase_log(obj/item/uplink/U)
-	feedback_add_details("traitor_uplink_items_bought", "[src]")
+	SSblackbox.record_feedback("nested tally", "traitor_uplink_items_bought", 1, list("[initial(src.name)]", "[src.item_cost]"))
 	log_and_message_admins("used \the [U.loc] to buy \a [src]")
 
 /****************

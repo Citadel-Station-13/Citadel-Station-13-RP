@@ -324,5 +324,5 @@
 
 /datum/construction/reversible/mecha/phazon/spawn_result()
 	..()
-	feedback_inc("mecha_phazon_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Phazon")
 	return

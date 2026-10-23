@@ -223,5 +223,5 @@
 
 /datum/construction/reversible/mecha/firefighter/spawn_result()
 	..()
-	feedback_inc("mecha_firefighter_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Firefighter")
 	return

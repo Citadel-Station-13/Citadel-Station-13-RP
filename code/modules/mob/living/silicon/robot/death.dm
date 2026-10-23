@@ -19,5 +19,6 @@
 	if(S)
 		S.go_out()
 	remove_robot_verbs()
-	sql_report_cyborg_death(src)
+	unbuckle_all_mobs(TRUE)
+	SSblackbox.ReportDeath(src)
 	return ..(gibbed, "shudders violently for a moment, then becomes motionless, its eyes slowly darkening.")

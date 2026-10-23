@@ -42,5 +42,5 @@
 			type_to_give = /datum/modifier/enfeeble/strong
 			to_chat(src, "<span class='notice'>We make them extremely weak.</span>")
 		H.add_modifier(type_to_give, 2 MINUTES)
-	feedback_add_details("changeling_powers","ES")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Enfeebling Sting"))
 	return 1

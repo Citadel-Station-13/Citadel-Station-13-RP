@@ -36,6 +36,5 @@
 
 	T.add_modifier(type_to_give, 2 MINUTES)
 
-
-	feedback_add_details("changeling_powers","DTS")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Delayed Toxic Sting"))
 	return 1

@@ -82,7 +82,7 @@
 	changeling.last_shriek = world.time
 
 	add_attack_logs(src,affected,"Used resonant shriek")
-	feedback_add_details("changeling_powers","RS")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Resonant Shriek"))
 	return 1
 
 //EMP version

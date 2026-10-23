@@ -309,5 +309,5 @@
 
 /datum/construction/reversible/mecha/weasel/spawn_result()
 	..()
-	feedback_inc("mecha_weasel_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Weasel")
 	return

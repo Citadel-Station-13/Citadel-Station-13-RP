@@ -314,5 +314,5 @@
 
 /datum/construction/reversible/mecha/polecat/spawn_result()
 	..()
-	feedback_inc("mecha_polecat_created",1)
+	SSblackbox.record_feedback("tally", "mechas_created", 1, "Polecat")
 	return

@@ -47,7 +47,7 @@ var/list/datum/dna/hivemind_bank = list()
 	changeling.chem_charges -= 10
 	hivemind_bank += chosen_dna
 	to_chat(src, "<span class='notice'>We channel the DNA of [S] to the air.</span>")
-	feedback_add_details("changeling_powers","HU")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Hive Channel"))
 	return 1
 
 /mob/proc/changeling_hivedownload()
@@ -76,5 +76,5 @@ var/list/datum/dna/hivemind_bank = list()
 	changeling.chem_charges -= 20
 	absorbDNA(chosen_dna)
 	to_chat(src, "<span class='notice'>We absorb the DNA of [S] from the air.</span>")
-	feedback_add_details("changeling_powers","HD")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Hive Absorb"))
 	return 1

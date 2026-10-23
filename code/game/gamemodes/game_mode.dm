@@ -232,11 +232,6 @@ var/global/list/additional_antag_types = list()
 	if(SSemergencyshuttle && auto_recall_shuttle)
 		SSemergencyshuttle.auto_recall = 1
 
-	// yikes! this should be NOW()
-	feedback_set_details("round_start","[time2text(world.realtime)]")
-	if(SSticker && SSticker.mode)
-		feedback_set_details("game_mode","[SSticker.mode]")
-	feedback_set_details("server_ip","[world.internet_address]:[world.port]")
 	return 1
 
 /datum/game_mode/proc/fail_setup()
@@ -317,13 +312,10 @@ var/global/list/additional_antag_types = list()
 		CHECK_TICK
 		print_ownerless_uplinks()
 
-	var/clients = 0
-	var/surviving_humans = 0
 	var/surviving_total = 0
 	var/ghosts = 0
-	var/escaped_humans = 0
 	var/escaped_total = 0
-	var/escaped_on_shuttle = 0
+	// var/escaped_on_shuttle = 0 // will use this later
 
 	var/list/area/escape_locations = list(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom,
 		/area/shuttle/escape_pod2/centcom, /area/shuttle/escape_pod3/centcom, /area/shuttle/escape_pod5/centcom,
@@ -331,19 +323,13 @@ var/global/list/additional_antag_types = list()
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.client)
-			clients++
-			if(ishuman(M))
-				if(M.stat != DEAD)
-					surviving_humans++
-					if(M.loc && M.loc.loc && (M.loc.loc.type in escape_locations))
-						escaped_humans++
 			if(M.stat != DEAD)
 				surviving_total++
 				if(M.loc && M.loc.loc && (M.loc.loc.type in escape_locations))
 					escaped_total++
 
-				if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape/centcom)
-					escaped_on_shuttle++
+				// if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape/centcom)
+				// 	escaped_on_shuttle++
 
 			if(isobserver(M))
 				ghosts++
@@ -356,23 +342,12 @@ var/global/list/additional_antag_types = list()
 		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
 	to_chat(world, text)
 
-	if(clients > 0)
-		feedback_set("round_end_clients",clients)
-	if(ghosts > 0)
-		feedback_set("round_end_ghosts",ghosts)
-	if(surviving_humans > 0)
-		feedback_set("survived_human",surviving_humans)
-	if(surviving_total > 0)
-		feedback_set("survived_total",surviving_total)
-	if(escaped_humans > 0)
-		feedback_set("escaped_human",escaped_humans)
-	if(escaped_total > 0)
-		feedback_set("escaped_total",escaped_total)
-	if(escaped_on_shuttle > 0)
-		feedback_set("escaped_on_shuttle",escaped_on_shuttle)
-
-
 	send2irc("ROUND END", "A round of [src.name] has ended - [surviving_total] survivors, [ghosts] ghosts.")
+
+	SSblackbox.record_feedback("nested tally", "round_end_stats", surviving_total, list("survivors", "total"))
+	SSblackbox.record_feedback("nested tally", "round_end_stats", escaped_total, list("escapees", "total"))
+	// SSblackbox.record_feedback("nested tally", "round_end_stats", GLOB.joined_player_list.len, list("players", "total"))
+	// SSblackbox.record_feedback("nested tally", "round_end_stats", GLOB.joined_player_list.len - num_survivors, list("players", "dead"))
 
 	return 0
 

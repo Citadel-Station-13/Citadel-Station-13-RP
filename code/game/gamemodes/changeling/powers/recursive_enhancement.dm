@@ -20,5 +20,5 @@
 		return 0
 	to_chat(src, "<span class='notice'>We empower ourselves. Our abilities will now be extra potent.</span>")
 	src.mind.changeling.recursive_enhancement = 1
-	feedback_add_details("changeling_powers","RE")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Recursive Enhancement"))
 	return 1
