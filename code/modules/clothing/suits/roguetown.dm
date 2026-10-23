@@ -130,3 +130,15 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+
+
+/obj/item/clothing/suit/roguetown/watchman_coat
+	name = "ashened leather coat"
+	desc = "A smokey leather coat which draped around one's form to provide protection and concealment. It reeks of ash and smoke."
+	icon = 'icons/clothing/suit/roguetown/watchman_coat.dmi'
+	icon_state = "watchman_coat"
+	armor_type = /datum/armor/station/padded
+	slot_flags = SLOT_OCLOTHING
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS

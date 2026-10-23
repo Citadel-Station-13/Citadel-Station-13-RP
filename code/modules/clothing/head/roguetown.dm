@@ -29,6 +29,20 @@
 	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	inv_hide_flags = HIDEEARS
 
+
+/obj/item/clothing/head/roguetown/watchman
+	name = "ashened tricorn"
+	desc = "A tricorn styled hat fashioned out of leather. It reeks of ash and smoke."
+	icon = 'icons/clothing/head/roguetown/watchman_hat.dmi'
+	icon_state = "watchman_hat"
+	icon_mob_y_align = 1
+	armor_type = /datum/armor/station/padded
+	slot_flags = SLOT_HEAD
+	body_cover_flags = HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
+
 // Hoods
 
 /obj/item/clothing/hood/roguetown/hide

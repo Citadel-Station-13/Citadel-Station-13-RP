@@ -1,28 +1,3 @@
-/obj/item/eldritch/prop/codex
-	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
-	icon_state = "book"
-	name = "bound book"
-	desc = "A heavy book that has been crafted out of purple leather and bound with a chain made of metal you don't recognize. A variety of runes have been etched into the cover."
-	anchored = 0
-	density = 0
-	suit_storage_class = SUIT_STORAGE_CLASS_HARDWEAR | SUIT_STORAGE_CLASS_SOFTWEAR
-
-/obj/item/eldritch/prop/medallion
-	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
-	icon_state = "eye_medalion"
-	name = "medallion"
-	desc = "A medallion that appears to resemble an eye."
-	anchored = 0
-	density = 0
-
-/obj/item/eldritch/prop/flask
-	icon = 'code/game/content/factions/eldritch/eldritch.dmi/objects.dmi'
-	icon_state = "eldritch_flask"
-	name = "strange flask"
-	desc = "A flask made of some type of green glass. A variety of runes have been etched into the material, but it seems empty."
-
-
-//Blades
 /obj/item/eldritch/blade/cursed
 	name = "Odd Blade"
 	desc = "An odd blade, shaped like a crescent. It has a gem embeded into its handle that pulses eerily."

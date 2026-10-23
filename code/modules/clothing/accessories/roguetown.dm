@@ -39,6 +39,16 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	accessory_render_legacy = FALSE
 
+/obj/item/clothing/accessory/roguetown/leather_tunic
+	name = "leather tunic"
+	desc = "A tunic made of fine and hardy leathers, hand-sewn."
+	icon = 'icons/clothing/accessories/roguetown/shirts/tunic_alt.dmi'
+	icon_state = "leathertunic"
+	slot_flags = SLOT_OCLOTHING | SLOT_ICLOTHING
+	inv_hide_flags = BLOCKHAIR
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	accessory_render_legacy = FALSE
+
 /obj/item/clothing/accessory/roguetown/fancy_shirt
 	name = "tailored shirt"
 	desc = "A elegant shirt, tailored with precision."
@@ -98,3 +108,13 @@
 	slot_flags = SLOT_GLOVES
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	accessory_render_legacy = FALSE
+
+
+/obj/item/clothing/accessory/roguetown/neck/watchman
+	name = "ashened neck covering"
+	desc = "A hardened leather neck covering, made to protect a place of vital importance. It reeks of ash and smoke."
+	icon = 'icons/clothing/accessories/roguetown/watchman_neck.dmi'
+	icon_state = "watchman_neck"
+	armor_type = /datum/armor/station/light
+	slot_flags = SLOT_MASK | SLOT_HEAD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT

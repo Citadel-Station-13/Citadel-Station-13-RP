@@ -32,7 +32,7 @@
 	response_disarm = "forces aside"
 	response_harm = "smashes into"
 
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/inert
 	special_attack_min_range = 1
 	special_attack_max_range = 7
 	special_attack_cooldown = 1 SECONDS
@@ -99,6 +99,8 @@
 	shields = new /obj/item/shield_projector/rectangle/automatic/advanced(src)
 	return ..()
 
+
+
 /mob/living/simple_mob/mechanical/derelict/broodmother/Destroy()
 	QDEL_NULL(shields)
 	return ..()
@@ -155,8 +157,7 @@
 /obj/projectile/arc/broodmother/deployment/dragonfly/on_impact(atom/target, impact_flags, def_zone, efficiency)
 	. = ..()
 	..()
-	var/dragonfly_type = pick(/mob/living/simple_mob/mechanical/derelict/minuteman/hornet,
-	/mob/living/simple_mob/mechanical/derelict/minuteman/dragonfly,
+	var/dragonfly_type = pick(/mob/living/simple_mob/mechanical/derelict/minuteman/dragonfly,
 	/mob/living/simple_mob/mechanical/derelict/minuteman/dragonfly/flame,
 	/mob/living/simple_mob/mechanical/derelict/minuteman/dragonfly/ion,
 	/mob/living/simple_mob/mechanical/derelict/minuteman/dragonfly/sniper)

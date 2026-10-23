@@ -12,7 +12,7 @@
 	evasion = 20
 
 
-	base_attack_cooldown = 20
+	base_attack_cooldown = 40
 	projectiletype = /obj/projectile/beam/darkmatter/sentinel
 	legacy_melee_damage_upper = 5
 	legacy_melee_damage_lower = 5

@@ -9,6 +9,13 @@
 	icon_state = "leatherboots"
 	armor_type = /datum/armor/station/padded
 
+/obj/item/clothing/shoes/boots/roguetown/dark_leather
+	name = "darkenedleather boots"
+	desc = "A pair of hardy, darkened leather boots."
+	icon = 'icons/clothing/shoes/roguetown/dark_leather_boots.dmi'
+	icon_state = "dark_leather"
+	armor_type = /datum/armor/station/padded
+
 /obj/item/clothing/shoes/boots/roguetown/fur
 	name = "fur boots"
 	desc = "A well padded pair of fur lined boots."

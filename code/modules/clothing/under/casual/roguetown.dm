@@ -16,6 +16,14 @@
 	armor_type = /datum/armor/station/padded
 	icon_mob_y_align = -1
 
+/obj/item/clothing/under/roguetown/leather_pants
+	name = "hardened leather trousers"
+	desc = "A pair of sturdy, hardened leather trousers."
+	icon = 'icons/clothing/uniform/casual/roguetown/pants/leather_pants.dmi'
+	icon_state = "leather_pants"
+	armor_type = /datum/armor/station/padded
+	icon_mob_y_align = -1
+
 /obj/item/clothing/under/roguetown/belted
 	name = "belted pants"
 	desc = "A pair of black pants that have had a few belts fastened to them."

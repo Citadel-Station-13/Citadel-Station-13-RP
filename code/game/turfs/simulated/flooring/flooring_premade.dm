@@ -594,6 +594,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 
 
 // Roguetown Floors
+
+
 /turf/simulated/floor/roguetown/wood
 	name = "wooden floorboards"
 	icon = 'icons/turf/flooring/roguetown/wood.dmi'
@@ -606,6 +608,19 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	icon = 'icons/turf/flooring/roguetown/wood.dmi'
 	icon_state = "wooden_floor2"
 	initial_flooring = /datum/prototype/flooring/roguetown/dark_wood
+
+
+/turf/simulated/floor/roguetown/slanted_wood
+	name = "slanted wooden floorboards"
+	icon = 'icons/turf/flooring/roguetown/weird.dmi'
+	icon_state = "weird1"
+	initial_flooring = /datum/prototype/flooring/roguetown/slanted_wood
+
+/turf/simulated/floor/roguetown/herring_bone_wood
+	name = "herring bone wooden floorboards"
+	icon = 'icons/turf/flooring/roguetown/wood.dmi'
+	icon_state = "herringbonewood"
+	initial_flooring = /datum/prototype/flooring/roguetown/herring_bone_wood
 
 
 /turf/simulated/floor/roguetown/cobblestone
@@ -669,6 +684,18 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	icon = 'icons/turf/flooring/roguetown/castle.dmi'
 	icon_state = "church"
 	initial_flooring = /datum/prototype/flooring/roguetown/church
+
+/turf/simulated/floor/roguetown/church_rough
+	name = "rough marble flooring"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "church_rough"
+	initial_flooring = /datum/prototype/flooring/roguetown/church_rough
+
+/turf/simulated/floor/roguetown/hexstone
+	name = "hexstone floor"
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_state = "hexstone"
+	initial_flooring = /datum/prototype/flooring/roguetown/hexstone
 
 /turf/simulated/floor/roguetown/blocks
 	name = "stone blocks"
@@ -776,6 +803,11 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	icon_state = "grass_odd"
 	initial_flooring = /datum/prototype/flooring/roguetown/grass_odd
 
+/turf/simulated/floor/roguetown/ash
+	name = "ashened ground"
+	icon = 'icons/turf/flooring/roguetown/ash.dmi'
+	icon_state = "ash"
+	initial_flooring = /datum/prototype/flooring/roguetown/ash
 
 /turf/simulated/floor/roguetown/mud
 	name = "mud"

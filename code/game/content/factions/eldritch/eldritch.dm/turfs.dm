@@ -129,3 +129,95 @@
 	name = "Darkness"
 	desc = "Darkness. Pure, unyielding darkness. It calls for you."
 	icon_state = "dark"
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/turf.dmi/darkness.dmi'
+
+
+// standalone walls
+
+/turf/simulated/flooring/eldritch/wall
+	density = 1
+	opacity = 1
+	blocks_air = TRUE
+
+
+// wood
+
+/turf/simulated/flooring/eldritch/wall/wood
+	name = "wooden wall"
+	desc = "A wall carved from some sort of hardwood."
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/turf.dmi/walls/wood.dmi'
+	icon_state = "wood1"
+
+
+/turf/simulated/flooring/eldritch/wall/wood/variant2
+	icon_state = "wood2"
+
+/turf/simulated/flooring/eldritch/wall/wood/variant3
+	icon_state = "wood3"
+
+/turf/simulated/flooring/eldritch/wall/wood/variant4
+	icon_state = "wood4"
+
+/turf/simulated/flooring/eldritch/wall/wood/variant5
+	icon_state = "wood5"
+
+/turf/simulated/flooring/eldritch/wall/wood/variant6
+	icon_state = "wood6"
+
+
+// tent
+
+/turf/simulated/flooring/eldritch/wall/tent
+	name = "tent wall"
+	desc = "A frame draped with some sort of hide that forms a wall."
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/turf.dmi/walls/tent.dmi'
+	icon_state = "tent"
+
+/turf/simulated/flooring/eldritch/wall/tent/door
+	name = "closed tent door"
+	desc = "A tent door that is draped closed. No matter how hard you try, it refuses to open."
+	icon_state = "tent_door_closed"
+
+/turf/simulated/flooring/eldritch/wall/tent/door2
+	name = "open tent door"
+	desc = "A tent door that is draped open."
+	icon_state = "tent_door_open"
+	density = 0
+	opacity = 0
+	blocks_air = FALSE
+
+
+// window
+
+/obj/structure/window/eldritch
+	name = "window"
+	desc = "An old style of window paned with glass and framed with wood."
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/turf.dmi/walls/window.dmi'
+	icon_state = "window"
+	opacity = 0
+	integrity_enabled = 0
+
+/obj/structure/window/eldritch/fancy
+	name = "fancy window"
+	desc = "An elegant window that's evidently had some care put into it."
+	icon_state = "window_fancy"
+
+/obj/structure/window/eldritch/wood
+	name = "wooden viewport"
+	desc = "A crude wooden wall that's been carved to have a view to the other side."
+	icon_state = "wood_window"
+
+/obj/structure/window/eldritch/stone
+	name = "stone viewport"
+	desc = "A crude stone wall that's been carved to have a view to the other side."
+	icon_state = "stone_window"
+
+/obj/structure/window/eldritch/broken
+	name = "broken window"
+	desc = "An old style of window paned with glass and framed with wood. This one is broken beyond repair."
+	icon_state = "window_broken"
+
+/obj/structure/window/eldritch/broken_fancy
+	name = "broken window"
+	desc = "An elegant window that's evidently had some care put into it. This one is broken beyond repair."
+	icon_state = "window_fancy_broken"

@@ -1,7 +1,7 @@
 /obj/structure/eldritch
 	name = "eldritch placeholder"
 	desc = "You shouldn't be seeing this. Contact a coder pronto."
-	icon = 'code/game/content/factions/eldritch/eldritch.dmi/structures.dmi'
+	icon = 'code/game/content/factions/eldritch/eldritch.dmi/structures/structures.dmi'
 	density = 1
 	anchored = 1
 	allow_unanchor = 0

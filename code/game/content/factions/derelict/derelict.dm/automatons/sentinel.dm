@@ -1,6 +1,3 @@
-/mob/living/simple_mob/mechanical/derelict
-	var/self_rejuvination = FALSE
-
 /mob/living/simple_mob/mechanical/derelict/sentinel
 	name = "Sentinel"
 	desc = "A large, bulky machine that has some type of grey energy shield hovering around it. Thrusters flank its side, constantly emitting powerful bursts of energy that keep the automaton upwards and mobile."
@@ -25,7 +22,7 @@
 	response_disarm = "forces aside"
 	response_harm = "smashes into"
 
-	ai_holder_type = /datum/ai_holder/polaris/simple_mob/intentional/adv_dark_gygax
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged
 	special_attack_min_range = 1
 	special_attack_max_range = 7
 	special_attack_cooldown = 1 SECONDS
@@ -44,9 +41,6 @@
 	..(null,"suddenly crashes to the ground, translucent blue blood leaking from a broken thruster.")
 
 
-/mob/living/simple_mob/mechanical/derelict/sentinel/Process_Spacemove(var/check_drift = 0)
-	return TRUE
-
 /obj/item/shield_projector/rectangle/automatic/advanced
 	shield_health = 300
 	max_shield_health = 300
@@ -58,15 +52,6 @@
 	high_color = "#808080"
 	low_color = "#808080"
 	light_color = "#2e0808"
-
-/mob/living/simple_mob/mechanical/derelict/handle_special()
-	if(self_rejuvination)
-		adjustBruteLoss(-2)
-		adjustFireLoss(-2)
-		adjustToxLoss(-2)
-		adjustOxyLoss(-2)
-		adjustCloneLoss(-2)
-	..()
 
 
 /mob/living/simple_mob/mechanical/derelict/sentinel/do_special_attack(atom/A)
@@ -152,7 +137,7 @@
 /obj/effect/gravity_sphere/sentinel/Destroy()
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
-			to_chat(A,"<span class='notice'>You are free of the gravity sphere!</span>")
+			to_chat(A,"<span class='boldwarning'>You are free of the gravity sphere!</span>")
 			unbuckle_mob(A)
 
 	STOP_PROCESSING(SSobj, src)

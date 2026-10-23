@@ -675,6 +675,32 @@
 		'sound/effects/footstep/wood5.ogg'))
 
 
+/datum/prototype/flooring/roguetown/slanted_wood
+	name = "slanted wooden floorboards"
+	desc = "Old and slanted wooden floorboards."
+	icon = 'icons/turf/flooring/roguetown/wood.dmi'
+	icon_base = "weird1"
+	descriptor = "planks"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/wood1.ogg',
+		'sound/effects/footstep/wood2.ogg',
+		'sound/effects/footstep/wood3.ogg',
+		'sound/effects/footstep/wood4.ogg',
+		'sound/effects/footstep/wood5.ogg'))
+
+/datum/prototype/flooring/roguetown/herring_bone_wood
+	name = "herring bone wooden floorboards"
+	desc = "Fancy wooden floorboards."
+	icon = 'icons/turf/flooring/roguetown/wood.dmi'
+	icon_base = "herringbonewood"
+	descriptor = "planks"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/wood1.ogg',
+		'sound/effects/footstep/wood2.ogg',
+		'sound/effects/footstep/wood3.ogg',
+		'sound/effects/footstep/wood4.ogg',
+		'sound/effects/footstep/wood5.ogg'))
+
 /datum/prototype/flooring/roguetown/cobblestone
 	name = "cobblestone"
 	desc = "Hard and cold cobblestone flooring."
@@ -767,6 +793,30 @@
 	desc = "Fine marble flooring, tainted by endless time."
 	icon = 'icons/turf/flooring/roguetown/castle.dmi'
 	icon_base = "church_marble"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/church_rough
+	name = "rough marble flooring"
+	desc = "Rough marble flooring, tainted by endless time."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "church_rough"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/datum/prototype/flooring/roguetown/hexstone
+	name = "hexstone flooring"
+	desc = "Fine stone flooring arranged in a hexagon pattern."
+	icon = 'icons/turf/flooring/roguetown/castle.dmi'
+	icon_base = "hexstone"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/floor1.ogg',
 		'sound/effects/footstep/floor2.ogg',
@@ -1007,6 +1057,17 @@
 	desc = "A mix of soft and hardened mud."
 	icon = 'icons/turf/flooring/roguetown/mud.dmi'
 	icon_base = "mud1"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/datum/prototype/flooring/roguetown/ash
+	name = "ash"
+	desc = "Thick ash that's coated the ground below."
+	icon = 'icons/turf/flooring/roguetown/ash.dmi'
+	icon_base = "ash"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
