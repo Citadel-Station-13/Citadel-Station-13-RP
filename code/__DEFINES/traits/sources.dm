@@ -1,9 +1,11 @@
-//? Generic sources - use extremely sparingly.
+//* Generic Sources - Use Sparingly! *//
 
 /// generic trait source
 #define GENERIC_TRAIT "generic"
 /// Trait is from ourselves (src)
 #define INNATE_TRAIT "innate"
+/// for lazy BS
+#define TRAIT_SOURCE_LAZY_REF(DATUM, PREFIX) "[PREFIX]-[REF(DATUM)]"
 
 //? Automata / AoE effect sources
 
@@ -22,10 +24,14 @@
 /// cryotube
 #define CRYO_TUBE_TRAIT "cryotube"
 /// resleeving body grower
-#define TRAIT_SOURCE_MACHINE_BODY_GROWER "machine-body-grower"
+#define TRAIT_SOURCE_MACHINE_BODY_GROWER "machine_body_grower"
 
 //? Mob Sources
 
+/// From the fact that we have a client
+#define TRAIT_SOURCE_MOB_HAS_CLIENT "mob_has_client"
+/// From the fact that we have a mind
+#define TRAIT_SOURCE_MOB_HAS_MIND "mob_has_mind"
 /// From species
 #define SPECIES_TRAIT "species"
 /// From species quirks

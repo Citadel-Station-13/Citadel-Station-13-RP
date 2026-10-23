@@ -57,6 +57,12 @@
 	CRASH("unimplemented proc called")
 
 /**
+ * Checks if we own an atom.
+ */
+/datum/overmap_location/proc/contains_atom(atom/A)
+	CRASH("unimplemented proc called")
+
+/**
  * get our z-level indices
  *
  * * entities that are on z's like shuttles instead of owning them use the z level they're on

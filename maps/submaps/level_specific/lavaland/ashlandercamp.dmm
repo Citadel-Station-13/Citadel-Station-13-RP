@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/obj/structure/ghost_role_spawner/ashlander,
+/obj/structure/role_spawner/ashlander,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/surt/ashlander_camp)
 "c" = (

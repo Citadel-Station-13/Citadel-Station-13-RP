@@ -2,6 +2,8 @@
 	MERCENARY ROUNDTYPE
 */
 
+// todo: this is just disabled lmao i don't think this'll be necessary
+
 var/list/nuke_disks = list()
 
 /datum/game_mode/nuclear

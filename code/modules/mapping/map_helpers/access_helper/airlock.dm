@@ -3,16 +3,13 @@
 
 /obj/map_helper/access_helper/airlock
 
-/obj/map_helper/access_helper/airlock/apply(obj/machinery/door/airlock/to_what)
-	// our lists aren't cached, luckily
-	// if's are just shameless and unnecessary memory optimizing for like 5 bytes each lmao
-	if(to_what.req_access != src.req_access)
-		to_what.req_access = src.req_access
-	if(to_what.req_one_access != req_one_access)
-		to_what.req_one_access = src.req_one_access
+/obj/map_helper/access_helper/airlock/run_access_mod()
+	var/obj/machinery/door/airlock/found = locate(/obj/machinery/door/airlock) in loc
 
-/obj/map_helper/access_helper/airlock/detect()
-	return locate(/obj/machinery/door/airlock) in loc
+	// our lists aren't cached, luckily, so referencing is fine as we should
+	// only hit one airlock before being deleted anyways
+	to_what.req_access = src.req_access
+	to_what.req_one_access = src.req_one_access
 
 /obj/map_helper/access_helper/airlock/station
 	icon_state = "station"
@@ -712,3 +709,4 @@
 	req_access = list(
 		ACCESS_FACTION_SDF,
 	)
+

@@ -1,5 +1,5 @@
 //* This file is explicitly licensed under the MIT license. *//
-//* Copyright (c) 2024 Citadel Station Developers           *//
+//* Copyright (c) 2026 Citadel Station Developers           *//
 
 // todo: maybe orchestrate this with lists and timers on shuttle_transit_cycle?
 /obj/effect/temporary_effect/shuttle_landing

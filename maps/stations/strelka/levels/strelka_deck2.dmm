@@ -2776,7 +2776,7 @@
 /area/security/strelka/detective/lab)
 "hE" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/computer/shuttle_control/explore/emt/strelka{
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotechmaint,
@@ -6626,7 +6626,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/strelka/hallway)
 "rC" = (
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = -27
 	},
 /obj/machinery/atmospherics/component/binary/pump/high_power{
@@ -7591,7 +7591,7 @@
 	dir = 8;
 	name = "Fuel Line to Thrusters"
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 30
 	},
 /obj/machinery/light{
@@ -15519,7 +15519,7 @@
 /obj/machinery/computer/ship/helm{
 	dir = 8
 	},
-/obj/machinery/computer/shuttle_control/explore/excursion/strelka{
+/obj/machinery/computer/shuttle_control{
 	dir = 8;
 	pixel_y = 30
 	},

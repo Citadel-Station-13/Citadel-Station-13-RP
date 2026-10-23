@@ -22,6 +22,9 @@ whisper = true
 [backend.repository]
 persistence = true
 
+[backend.shuttles]
+generate_all_previews_on_startup = false
+
 [game]
 
 [game.movement]

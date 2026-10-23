@@ -6,13 +6,15 @@
 /// reserved area type
 #define RESERVED_AREA_TYPE /area/space
 
+/// minimum turfs from edge where we are considered to be on our own zlevel rather than another / about to clip a transition
+#define LEVEL_TRANSITION_CLEARANCE 1
+
 /// allocated, but non-blank turf
 /// * this exists because /turf/space/basic is assumed **unallocated**;
 ///   that doesn't just mean that it has nothing on it but means it never had
 ///   things like state initialized. levels that get wiped clean are not unallocated.
 #define BLANK_TURF_TYPE /turf/space
 #define BLANK_AREA_TYPE /area/space
-
 
 /// Turf chunk resolution
 ///

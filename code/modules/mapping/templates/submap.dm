@@ -1,3 +1,5 @@
+// todo: completely redo
+
 /datum/map_template/submap
 	abstract_type = /datum/map_template/submap
 

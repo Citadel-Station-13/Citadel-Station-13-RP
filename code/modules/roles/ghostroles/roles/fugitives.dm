@@ -3,7 +3,7 @@
 	desc = "Independent bounty hunters sent after fugitives"
 	instantiator = /datum/ghostrole_instantiator/human/random/fugitive_hunter
 
-/datum/prototype/role/ghostrole/fugitive_hunter/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/fugitive_hunter/PostInstantiate(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	var/datum/antagonist/fugitive_hunter/fughunter = new
 	fughunter.backstory = params["bcakstory"]
@@ -30,18 +30,18 @@
 			return new /datum/outfit/bountysynth
 	return ..()
 
-/obj/structure/ghost_role_spawner/fugitive_hunter
+/obj/structure/role_spawner/fugitive_hunter
 	role_type = /datum/prototype/role/ghostrole/fugitive_hunter
 	var/backstory
 	var/outfit
 
-/obj/structure/ghost_role_spawner/fugitive_hunter/Initialize(mapload, params, spawns)
+/obj/structure/role_spawner/fugitive_hunter/Initialize(mapload, params, spawns)
 	return ..(mapload, list(
 		"backstory" = backstory,
 		"outfit" = outfit
 	))
 
-/obj/structure/ghost_role_spawner/fugitive_hunter/spacepol
+/obj/structure/role_spawner/fugitive_hunter/spacepol
 	name = "police pod"
 	desc = "A small sleeper typically used to put people to sleep for briefing on the mission."
 	backstory = "space cop"
@@ -49,7 +49,7 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 
-/obj/structure/ghost_role_spawner/fugitive_hunter/russian
+/obj/structure/role_spawner/fugitive_hunter/russian
 	name = "russian pod"
 	desc = "A small sleeper typically used to make long distance travel a bit more bearable."
 	backstory = "russian"
@@ -57,7 +57,7 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 
-/obj/structure/ghost_role_spawner/fugitive_hunter/bounty
+/obj/structure/role_spawner/fugitive_hunter/bounty
 	name = "bounty hunter pod"
 	desc = "A small sleeper typically used to make long distance travel a bit more bearable."
 	backstory = "bounty hunters"
@@ -65,16 +65,16 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 
-/obj/structure/ghost_role_spawner/fugitive_hunter/bounty/Destroy()
+/obj/structure/role_spawner/fugitive_hunter/bounty/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
 	S.setDir(dir)
 	return ..()
 
-/obj/structure/ghost_role_spawner/fugitive_hunter/bounty/armor
+/obj/structure/role_spawner/fugitive_hunter/bounty/armor
 	outfit = "bountyarmor"
 
-/obj/structure/ghost_role_spawner/fugitive_hunter/bounty/hook
+/obj/structure/role_spawner/fugitive_hunter/bounty/hook
 	outfit = "bountyhook"
 
-/obj/structure/ghost_role_spawner/fugitive_hunter/bounty/synth
+/obj/structure/role_spawner/fugitive_hunter/bounty/synth
 	outfit = "bountysynth"

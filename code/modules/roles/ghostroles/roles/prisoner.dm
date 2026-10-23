@@ -4,7 +4,7 @@
 	instantiator = /datum/ghostrole_instantiator/human/random/lavaland_prisoner
 	assigned_role = "Escaped Prisoner"
 
-/datum/prototype/role/ghostrole/lavaland_prisoner/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint)
+/datum/prototype/role/ghostrole/lavaland_prisoner/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint)
 	. = ..()
 	var/list/crimes = list("murder", "larceny", "embezzlement", "unionization", "dereliction of duty", "kidnapping", "gross incompetence", "grand theft", "collaboration with the Syndicate", \
 	"worship of a forbidden deity", "interspecies relations", "mutiny")
@@ -20,7 +20,7 @@
 	H.name = H.real_name
 
 //Prisoner containment sleeper: Spawns in crashed prison ships in lavaland. Ghosts become escaped prisoners and are advised to find a way out of the mess they've gotten themselves into.
-/obj/structure/ghost_role_spawner/prisoner_transport
+/obj/structure/role_spawner/prisoner_transport
 	name = "prisoner containment sleeper"
 	desc = "A sleeper designed to put its occupant into a deep coma, unbreakable until the sleeper turns off. This one's glass is cracked and you can see a pale, sleeping face staring out."
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -34,6 +34,6 @@
 	shoes = /obj/item/clothing/shoes/sneakers/orange
 	r_pocket = /obj/item/tank/internals/emergency_oxygen
 
-/obj/structure/ghost_role_spawner/prisoner_transport/Destroy()
+/obj/structure/role_spawner/prisoner_transport/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
 	return ..()

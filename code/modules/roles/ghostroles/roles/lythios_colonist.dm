@@ -19,7 +19,7 @@
 /datum/prototype/role/ghostrole/lythios_colonist/Instantiate(client/C, atom/loc, list/params)
 	return ..()
 
-/datum/prototype/role/ghostrole/lythios_colonist/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/lythios_colonist/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	to_chat(created, "<i> The metal clanks beneath you as you step through the final old door entering the grounds of NSB Atlas. You travelled \
 	around five kilometers through the snow to get here. Compared to that the few hundred meter tunnel wasn't bad at all, even if the climb through \
@@ -42,7 +42,7 @@
 	. = ..()
 	created.mind.teach_crafting_recipe(lythios_colonist_crafting)
 
-/obj/structure/ghost_role_spawner/lythios_colonist
+/obj/structure/role_spawner/lythios_colonist
 	name = "maintenance hatch"
 	desc = "A old ladder connecting to the old People's Republic of Adhomai maintnance tunnels. A good way to get around Lythios."
 	icon = 'icons/obj/structures.dmi'

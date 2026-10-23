@@ -21,10 +21,8 @@
 	shuttle = null
 
 /datum/overmap_location/shuttle/get_z_indices()
-	. = list()
-	for(var/area/A in shuttle.shuttle_area)
-		// we don't support multiz shuttles so this is fine for now
-		. |= A.z
+	. = shuttle?.anchor?.z
+	return . ? list(.) : list()
 
 /datum/overmap_location/shuttle/get_owned_z_indices()
 	. = list()
@@ -41,3 +39,9 @@
 	ASSERT(freeflight)
 	refresh_level_locks()
 	return freeflight
+
+/datum/overmap_location/shuttle/contains_atom(atom/A)
+	var/area/their_area = get_area(A)
+	if(!their_area)
+		return FALSE
+	return shuttle.areas[their_area]

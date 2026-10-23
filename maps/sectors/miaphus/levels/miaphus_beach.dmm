@@ -3596,7 +3596,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/structure/ghost_role_spawner/sdf,
+/obj/structure/role_spawner/sdf,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/miaphus/sdf)
 "sf" = (
@@ -3912,7 +3912,7 @@
 	dir = 4
 	},
 /obj/machinery/power/terminal,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -4849,7 +4849,7 @@
 /obj/machinery/light,
 /obj/structure/catwalk,
 /obj/structure/table/steel_reinforced,
-/obj/machinery/computer/shuttle_control/explore/sdf{
+/obj/machinery/computer/shuttle_control{
 	dir = 1
 	},
 /obj/structure/railing/grey,

@@ -22,8 +22,6 @@
 
 	/// Tonnes, arbitrary number, affects acceleration provided by engines.
 	var/vessel_mass = 10000
-	/// Arbitrary number, affects how likely are we to evade meteors.
-	var/vessel_size = SHIP_SIZE_LARGE
 
 	/// Worldtime when ship last acceleated.
 	var/last_burn = 0
@@ -38,8 +36,6 @@
 	var/engines_state = 0
 	/// Global thrust limit for all engines, 0..1
 	var/thrust_limit = 1
-	/// Admin halt or other stop.
-	var/halted = 0
 	/// Skill needed to steer it without going in random dir.
 	var/skill_needed = SKILL_NONE //We don't like skills.
 	var/operator_skill
@@ -49,10 +45,10 @@
 	// rotation support
 	if(dir != NORTH)
 		fore_dir = turn(fore_dir, -dir2angle(dir))
-	SSshuttle.ships += src
+	SSovermaps.legacy_ships += src
 
 /obj/overmap/entity/visitable/ship/Destroy()
-	SSshuttle.ships -= src
+	SSovermaps.legacy_ships -= src
 	. = ..()
 
 //? todo why tf is this relaymove
@@ -192,6 +188,7 @@
 		. += E.get_thrust() * SSovermaps.global_thrust_multiplier
 
 /obj/overmap/entity/visitable/ship/proc/can_burn()
+	#warn halted
 	if(halted)
 		return 0
 	if (world.time < last_burn + burn_delay)
@@ -209,22 +206,6 @@
 		var/offset = step_y
 		. = min(., OVERMAP_PIXEL_TO_DIST(vel_y > 0? WORLD_ICON_SIZE - offset : offset) / vel_y * 10)
 	. = max(., 0)
-
-/obj/overmap/entity/visitable/ship/proc/halt()
-	initialize_physics()
-	halted = 1
-
-/obj/overmap/entity/visitable/ship/proc/unhalt()
-	if(!SSshuttle.overmap_halted)
-		halted = 0
-
-/obj/overmap/entity/visitable/ship/populate_sector_objects()
-	..()
-	for(var/obj/machinery/computer/ship/S in GLOB.machines)
-		S.attempt_hook_up(src)
-	for(var/datum/ship_engine/E in ship_engines)
-		if(check_ownership(E.holder))
-			engines |= E
 
 /obj/overmap/entity/visitable/ship/proc/get_landed_info()
 	return "This ship cannot land."

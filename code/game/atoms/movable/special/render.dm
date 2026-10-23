@@ -3,7 +3,7 @@
  */
 /atom/movable/render
 	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
-	atom_flags = ATOM_ABSTRACT
+	atom_flags = ATOM_ABSTRACT | ATOM_NONWORLD
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = NONE
 

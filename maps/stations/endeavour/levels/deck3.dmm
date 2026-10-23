@@ -2540,7 +2540,7 @@
 "bMN" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/shield_diffuser,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
@@ -3261,7 +3261,7 @@
 /turf/simulated/floor/tiled,
 /area/security/hangar)
 "ctb" = (
-/obj/machinery/computer/shuttle_control/belter{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /obj/item/gps/internal/base{
@@ -5794,7 +5794,7 @@
 "epe" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/shield_diffuser,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
 	},
@@ -9899,7 +9899,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "hcH" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -13336,7 +13336,7 @@
 /area/quartermaster/warehouse)
 "jAa" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/shuttle_control/explore/mining{
+/obj/machinery/computer/shuttle_control{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -19441,7 +19441,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "nRo" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -31430,7 +31430,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "wIy" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -31588,7 +31588,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3amidportmaint/endeavour)
 "wQu" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
@@ -31915,7 +31915,7 @@
 "wZh" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/shield_diffuser,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/map_helper/access_helper/airlock/station/external_airlock,
 /obj/machinery/conveyor{
 	dir = 8;

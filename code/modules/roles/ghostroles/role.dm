@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 		instantiator = new instantiator
 	id = _id || type
 
-/datum/prototype/role/ghostrole/proc/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/proc/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	if(show_standard_greeting)
 		to_chat(created, "<blockquote class='info'>You have spawned as a ghostrole. These roles should be taken seriously. Be sure to follow the directives in your spawntext (if any), as well as the server rules. Beyond that, roleplay your character however you see fit! Spawntext as follows;</blockquote>")
 	if(spawntext)
@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	if(spawnpoint.spawntext)
 		to_chat(created, "<blockquote class='info'>[spawntext]</blockquote>")
 
-/datum/prototype/role/ghostrole/proc/ImportantInfo(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/proc/ImportantInfo(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	if(important_info)
 		to_chat(created, "<blockquote class='info'>[important_info]</blockquote>")
 
@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  *
  * Return TRUe on success, or a string of why it failed.
  */
-/datum/prototype/role/ghostrole/proc/AttemptSpawn(client/C, datum/component/ghostrole_spawnpoint/chosen_spawnpoint)
+/datum/prototype/role/ghostrole/proc/AttemptSpawn(client/C, datum/component/role_spawnpoint/chosen_spawnpoint)
 	if(C.persistent.ligma)
 		log_shadowban("[key_name(C)] ghostrole join as [id] ([type]) blocked.")
 		return "BUG: No instantiator for [src][(id !=type) && ":[id]"] ([type])"
@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 		return "You can't spawn as this role; Try refreshing the ghostrole/join menu."
 	if(!PreInstantiate(C))
 		return "PreInstantiate() failed."
-	var/datum/component/ghostrole_spawnpoint/spawnpoint = spawnerless? null : (chosen_spawnpoint || GetSpawnpoint(C))
+	var/datum/component/role_spawnpoint/spawnpoint = spawnerless? null : (chosen_spawnpoint || GetSpawnpoint(C))
 	var/list/params = islist(spawnpoint?.params)? spawnpoint.params.Copy() : list()		// clone/new, because procs CAN MODIFY THIS.
 	if(inject_params)
 		params |= inject_params
@@ -147,9 +147,9 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	return min(max(0, slots - spawns), TallySpawnpointSlots(C))
 
 /datum/prototype/role/ghostrole/proc/TallySpawnpointSlots(client/C)
-	var/list/datum/component/ghostrole_spawnpoint/spawnpoints = GLOB.ghostrole_spawnpoints[id]
+	var/list/datum/component/role_spawnpoint/spawnpoints = GLOB.role_spawnpoints[id]
 	. = 0
-	for(var/datum/component/ghostrole_spawnpoint/S as anything in spawnpoints)
+	for(var/datum/component/role_spawnpoint/S as anything in spawnpoints)
 		. += S.SpawnsLeft(C)
 
 /**
@@ -159,10 +159,10 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  */
 /datum/prototype/role/ghostrole/proc/GetSpawnpoint(client/C)
 	if(!allow_pick_spawner)
-		return SAFEPICK(GLOB.ghostrole_spawnpoints[id])
-	var/list/datum/component/ghostrole_spawnpoint/spawnpoints = GLOB.ghostrole_spawnpoints[id]
+		return SAFEPICK(GLOB.role_spawnpoints[id])
+	var/list/datum/component/role_spawnpoint/spawnpoints = GLOB.role_spawnpoints[id]
 	var/list/inputlist = list()
-	for(var/datum/component/ghostrole_spawnpoint/spawnpoint as anything in spawnpoints)
+	for(var/datum/component/role_spawnpoint/spawnpoint as anything in spawnpoints)
 		var/atom/A = spawnpoint.Atom()
 		inputlist["[A] - [get_area(A)]"] = spawnpoint
 	var/picked = tgui_input_list(C.mob, "Spawner Selection", inputlist)
@@ -173,13 +173,13 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  *
  * spawnpoint can be null for spawnerless ghostroles.
  */
-/datum/prototype/role/ghostrole/proc/GetSpawnLoc(client/C, datum/component/ghostrole_spawnpoint/spawnpoint)
+/datum/prototype/role/ghostrole/proc/GetSpawnLoc(client/C, datum/component/role_spawnpoint/spawnpoint)
 	return spawnpoint?.Turf()
 
 /**
  * Spawnpoint can be null here, if we're not using a spawnpoint
  */
-/datum/prototype/role/ghostrole/proc/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/proc/PostInstantiate(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	Greet(created, spawnpoint, params)
 	ImportantInfo(created, spawnpoint, params)
 	if(automatic_objective)

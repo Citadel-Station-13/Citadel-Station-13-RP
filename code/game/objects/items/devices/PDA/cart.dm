@@ -427,11 +427,11 @@ var/list/civilian_cartridges = list(
 
 	if(mode==47)
 		var/supplyData[0]
-		var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
-		if (shuttle)
-			supplyData["shuttle_moving"] = shuttle.has_arrive_time()
-			supplyData["shuttle_eta"] = shuttle.eta_minutes()
-			supplyData["shuttle_loc"] = shuttle.at_station() ? "Station" : "Dock"
+		var/datum/shuttle_controller/ferry/round_global/supply_shuttle/controller = GLOB.global_ferry_supply_shuttle_controller
+		if (controller)
+			supplyData["shuttle_moving"] = !!controller.get_transit_stage()
+			supplyData["shuttle_eta"] = floor(controller.transit_time_left() / (1 MINUTES))
+			supplyData["shuttle_loc"] = controller.is_at_away() ? "Station" : "Dock"
 		var/supplyOrderCount = 0
 		var/supplyOrderData[0]
 		for(var/S in SSsupply.shoppinglist)

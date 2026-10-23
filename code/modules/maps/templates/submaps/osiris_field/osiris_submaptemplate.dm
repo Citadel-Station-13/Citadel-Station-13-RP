@@ -248,3 +248,5 @@
 	suffix = "mobilehome.dmm"
 	cost = 10
 	allow_duplicates = FALSE
+
+#warn good test for submaps being able eto instance shuttles

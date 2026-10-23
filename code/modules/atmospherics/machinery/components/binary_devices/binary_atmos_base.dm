@@ -16,6 +16,12 @@
 
 	return ..()
 
+// Obliterate parent and rebuild on move.
+/obj/machinery/atmospherics/component/binary/Moved(atom/old_loc, direction, forced, list/old_locs, momentum_change)
+	..()
+	QDEL_NULL(network1)
+	QDEL_NULL(network2)
+
 /obj/machinery/atmospherics/component/binary/init_dir()
 	switch(dir)
 		if(NORTH)

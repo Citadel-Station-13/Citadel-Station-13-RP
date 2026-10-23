@@ -17380,7 +17380,7 @@
 	},
 /area/centcom/bathroom)
 "TC" = (
-/obj/machinery/computer/shuttle_control/explore/specops{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
@@ -19555,7 +19555,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_x = 29
 	},

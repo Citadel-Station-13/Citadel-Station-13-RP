@@ -21,7 +21,7 @@
 	//Shared!
 	var/static/mission_mode
 	var/static/list/teleport_friends
-	var/static/area/shuttle/excursion/away_alienship/area_friend
+	// var/static/area/shuttle/excursion/away_alienship/area_friend
 
 	//Unique!
 	var/door_on_mode
@@ -32,9 +32,9 @@
 
 	if(!mission_mode) //WE ARE NUMBER ONE
 		mission_mode = pick("n2s","s2n","e2w","w2e")
-		area_friend = locate(/area/shuttle/excursion/away_alienship)
+		// area_friend = locate(/area/shuttle/excursion/away_alienship)
 		teleport_friends = list()
-		area_friend.teleport_to = teleport_friends
+		// area_friend.teleport_to = teleport_friends
 
 	//I'm supposed to place a door and remove a wall
 	if(mission_mode == door_on_mode)
@@ -105,16 +105,16 @@
 
 // -- Areas -- //
 
-/area/shuttle/excursion/away_alienship
-	name = "\improper Excursion Shuttle - Alien Ship"
-	var/did_entry = FALSE
-	var/list/teleport_to
-	var/area/dump_area
-	var/obj/shuttle_connector/shuttle_friend
+// /area/shuttle/excursion/away_alienship
+// 	name = "\improper Excursion Shuttle - Alien Ship"
+// 	var/did_entry = FALSE
+// 	var/list/teleport_to
+// 	var/area/dump_area
+// 	var/obj/shuttle_connector/shuttle_friend
 
-/area/shuttle/excursion/away_alienship/Initialize(mapload)
-	. = ..()
-	dump_area = locate(/area/tether_away/alienship/equip_dump)
+// /area/shuttle/excursion/away_alienship/Initialize(mapload)
+// 	. = ..()
+// 	dump_area = locate(/area/tether_away/alienship/equip_dump)
 
 // /area/shuttle/excursion/away_alienship/shuttle_arrived()
 // 	. = ..()

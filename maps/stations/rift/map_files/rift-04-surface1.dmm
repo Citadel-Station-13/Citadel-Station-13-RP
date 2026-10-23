@@ -40458,7 +40458,7 @@
 /area/rift/surfacebase/outside/outside1)
 "xXS" = (
 /obj/structure/fans/tiny,
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Cargo Airlock";
 	req_one_access = null
@@ -40611,7 +40611,7 @@
 /turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "yec" = (
-/obj/map_helper/airlock/door/simple,
+/obj/map_helper/airlock/door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Cargo Airlock";
 	req_one_access = null

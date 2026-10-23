@@ -15,19 +15,8 @@
 	icon_state = "globe"
 	color = "#ffd300" //Sandy
 	in_space = 0
-	initial_generic_waypoints = list("beach_e", "beach_c", "beach_nw")
-	initial_restricted_waypoints = list(
-		"Pirate Skiff" = list("pirate_hideout"),
-		"SDF Interrupted-The-Speech" = list ("sdf_outpost"),
-	)
-
 	start_x	= 35
 	start_y	= 40
-
-/obj/effect/shuttle_landmark/premade/miaphus/piratehideout
-	name = "Pirate Hideout"
-	landmark_tag = "pirate_hideout"
-
 
 //This is a special subtype of the thing that generates ores on a map
 //It will generate more rich ores because of the lower numbers than the normal one

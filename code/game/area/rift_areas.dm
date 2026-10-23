@@ -204,7 +204,7 @@
 	name = "\improper Primary Surface EVA"
 	sound_env = SMALL_ENCLOSED
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
-	
+
 /area/rift/surfaceeva/airlock/main
 	name = "\improper Primary Surface Airlock"
 
@@ -223,7 +223,7 @@
 
 /area/rift/surfaceeva/aa/surface_north
 	name = "\improper Surface One - North Anti-Air Battery"
-	
+
 /area/rift/surfaceeva/aa/surface_south
 	name = "\improper Surface One - South Anti-Air Battery"
 
@@ -568,7 +568,7 @@
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
 	nightshift_level = NIGHTSHIFT_LEVEL_DEPARTMENT_FACILITIES
-	
+
 /area/medical/virologymorgue
 	name = "\improper Virology Morgue"
 	icon_state = "virology"
@@ -682,37 +682,6 @@
 	icon_state = "blue"
 	sound_env = SMALL_SOFTFLOOR
 	nightshift_level = NIGHTSHIFT_LEVEL_PUBLIC_FACILITIES
-
-// Exploration Shuttle stuff //
-
-/area/shuttle/excursion
-	name = "\improper Excursion Shuttle"
-	icon_state = "shuttle2"
-
-/area/shuttle/excursion/rift
-	name = "\improper Excursion Shuttle - Atlas"
-
-/area/shuttle/excursion/rift_nearby
-	name = "\improper Excursion Shuttle - Atlas Near"
-
-/area/shuttle/excursion/rift_dockarm
-	name = "\improper Excursion Shuttle - Atlas Arm"
-
-/area/shuttle/excursion/space
-	name = "\improper Excursion Shuttle - Space"
-
-/area/shuttle/excursion/space_moving
-	name = "\improper Excursion Shuttle - Space Moving"
-
-/area/shuttle/excursion/bluespace
-	name = "\improper Excursion Shuttle - Bluespace"
-
-/area/shuttle/excursion/sand_moving
-	name = "\improper Excursion Shuttle - Sand Transit"
-
-/area/shuttle/excursion/virgo3b_sky
-	name = "\improper Excursion Shuttle - Lythios-43c Sky"
-
 
 //Adherent Maintenance
 /area/rift/station/adherent_maintenance

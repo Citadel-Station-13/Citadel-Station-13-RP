@@ -147,7 +147,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/space)
 "L" = (
-/obj/machinery/computer/shuttle_control/explore/gecko_cr,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/plating,
 /area/space)
 "M" = (

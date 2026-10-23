@@ -17,6 +17,7 @@
  * @return flat icon
  */
 /proc/get_compound_icon(atom/A, no_anim)
+	SHOULD_NOT_SLEEP(TRUE)
 	var/mutable_appearance/N = new
 	N.appearance = A
 	N.dir = NORTH
@@ -56,6 +57,7 @@
  * @return list(flat icon, offset x, offset y) where x/y offsets are centering pixel offsets
  */
 /proc/get_compound_icon_with_offsets(atom/A, no_anim, datum/callback/preprocess)
+	SHOULD_NOT_SLEEP(TRUE)
 	var/mutable_appearance/N = new
 	N.appearance = A
 
@@ -127,6 +129,7 @@
  * grabs flat icon with no care for alignment / basically just grabs a png
  */
 /proc/get_flat_icon(appearance/appearancelike, dir, no_anim)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
 	. = _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
@@ -141,6 +144,7 @@
  * It's not a 'true' semantic centering offset - the icon system doesn't handle that.
  */
 /proc/get_flat_icon_with_offsets(appearance/appearancelike, dir, no_anim)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!dir && isloc(appearancelike))
 		dir = appearancelike.dir
 	return _get_flat_icon(appearancelike, dir, no_anim, null, TRUE)
@@ -157,6 +161,7 @@
  */
 /proc/_get_flat_icon(image/A, defdir, no_anim, deficon, start)
 	RETURN_TYPE(/list)
+	SHOULD_NOT_SLEEP(TRUE)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
 
@@ -414,3 +419,65 @@
 	#undef INDEX_Y_HIGH
 
 	#undef BLANK
+
+/**
+ * SLOW. VERY. SLOW. Will block.
+ * @return icon
+ */
+/proc/get_flat_icon_of_map_bounds(x_low, y_low, x_high, y_high, z_lev)
+	. = _get_flat_icon_of_map_bounds(x_low, y_low, x_high, y_high, z_lev)
+	return .[1]
+
+/**
+ * SLOW. VERY. SLOW. Will block.
+ * @return list(icon, tiles processed as num, entities processed as num, milliseconds as num), or null on fail
+ */
+/proc/_get_flat_icon_of_map_bounds(x_low, y_low, x_high, y_high, z_lev)
+	var/tick_usage_total = 0
+	var/tiles_processed = 0
+	var/entities_processed = 0
+
+	var/tick_usage_start
+	var/tick_usage_end
+
+	tick_usage_start = world.tick_usage
+
+	if(x_low < 1 || x_high > world.maxx)
+		CRASH("bad x-low x-high [x_low]-[x_high]")
+	if(y_low < 1 || y_high > world.maxx)
+		CRASH("bad x-low x-high [y_low]-[y_high]")
+
+	var/icon/backplate = icon('icons/system/blank_32x32.dmi', "")
+	backplate.Scale((x_high - x_low + 1) * 32, (y_high - y_low + 1) * 32)
+
+	tick_usage_end = world.tick_usage
+	tick_usage_total += (tick_usage_end - tick_usage_start)
+
+	for(var/x in x_low to x_high)
+		for(var/y in y_low to y_high)
+			CHECK_TICK
+
+			tick_usage_start = world.tick_usage
+
+			var/turf/T = locate(x, y, z_lev)
+			var/stencil_offset_x = 1 + (x - x_low) * 32
+			var/stencil_offset_y = 1 + (y - y_low) * 32
+			++tiles_processed
+			for(var/atom/movable/entity as anything in T.contents)
+				if(entity.atom_flags & (ATOM_ABSTRACT | ATOM_NONWORLD))
+					continue
+				entities_processed++
+				var/icon/entity_icon = get_flat_icon(entity, entity.dir, TRUE)
+
+				// TODO: proper offset for multitile? this is weird.
+				backplate.Blend(
+					entity_icon,
+					ICON_OVERLAY,
+					stencil_offset_x + entity.step_x + entity.pixel_x,
+					stencil_offset_y + entity.step_y + entity.pixel_y,
+				)
+
+			tick_usage_end = world.tick_usage
+			tick_usage_total += (tick_usage_end - tick_usage_start)
+
+	return list(blackplate, tiles_processed, entities_processed, TICK_USAGE_TO_MS(tick_usage_total))

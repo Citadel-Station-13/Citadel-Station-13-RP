@@ -931,7 +931,7 @@
 	pixel_y = 6;
 	pixel_x = -38
 	},
-/obj/machinery/computer/shuttle_control/explore/excursion{
+/obj/machinery/computer/shuttle_control{
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
@@ -10588,7 +10588,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/meter,
 /obj/structure/catwalk,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -32
 	},
@@ -19112,7 +19112,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -29
 	},
@@ -22074,7 +22074,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	pixel_y = 32
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -26615,7 +26615,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/machinery/computer/shuttle_control/explore/courser,
+/obj/machinery/computer/shuttle_control,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "tjy" = (
@@ -28544,7 +28544,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/showers)
 "uwu" = (
-/obj/machinery/computer/shuttle_control/explore/emt{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -30863,7 +30863,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/hallway)
 "wfu" = (
-/obj/machinery/computer/shuttle_control/explore/civvie{
+/obj/machinery/computer/shuttle_control{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/green,
@@ -30908,7 +30908,7 @@
 "wgE" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/fuel_port{
+/obj/structure/shuttle_fuel_port{
 	dir = 4;
 	pixel_y = -29
 	},

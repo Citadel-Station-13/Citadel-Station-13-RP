@@ -591,6 +591,9 @@
 	if(player_is_antag(mind))
 		add_verb(client, /client/proc/aooc)
 
+	// no more getting lost in space; mobs with minds are usually important.
+	add_movable_recursive_freeflight_permeance(TRAIT_SOURCE_MOB_HAS_MIND)
+
 //HUMAN
 /mob/living/carbon/human/mind_initialize()
 	..()

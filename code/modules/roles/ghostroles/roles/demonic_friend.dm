@@ -4,7 +4,7 @@
 	instantiator = /datum/ghostrole_instantiator/human/random/demonic_friend
 	assigned_role = "SuperFriend"
 
-/datum/prototype/role/ghostrole/demonic_friend/PostInstantiate(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/demonic_friend/PostInstantiate(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	if(params["spell"])
 		var/obj/effect/proc_holder/spell/targeted/summon_friend/S = spawnpoint?.params["spell"]
@@ -23,7 +23,7 @@
 	else
 		addtimer(CALLBACK(created, TYPE_PROC_REF(/mob, dust)), 15 SECONDS)
 
-/datum/prototype/role/ghostrole/demonic_friend/Greet(mob/created, datum/component/ghostrole_spawnpoint/spawnpoint, list/params)
+/datum/prototype/role/ghostrole/demonic_friend/Greet(mob/created, datum/component/role_spawnpoint/spawnpoint, list/params)
 	. = ..()
 	if(params["owner"])
 		var/datum/mind/owner = spawnpoint?.params["owner"]
@@ -50,7 +50,7 @@
 		ID.registered_name = "[_M.name]'s best friend"
 		ID.update_label()
 
-/obj/structure/ghost_role_spawner/demonic_friend
+/obj/structure/role_spawner/demonic_friend
 	name = "Essence of friendship"
 	desc = "Oh boy! Oh boy! A friend!"
 	icon = 'icons/obj/cardboard_cutout.dmi'
