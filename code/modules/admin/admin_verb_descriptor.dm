@@ -1,7 +1,7 @@
 //* This file is explicitly licensed under the MIT license. *//
 //* Copyright (c) 2024 Citadel Station Developers           *//
 
-GLOBAL_REAL_PROTECT(admin_verbs)
+VV_PROTECT(/datum/admin_verb_descriptor)
 GLOBAL_REAL_LIST(admin_verb_descriptors) = zz__prepare_admin_verb_descriptors()
 
 /proc/zz__prepare_admin_verb_descriptors()
