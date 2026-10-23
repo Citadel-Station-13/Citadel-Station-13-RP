@@ -880,6 +880,20 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"KZ" = (
+/obj/structure/grille,
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "SupermatterPort";
+	name = "Reactor Blast Door"
+	},
+/obj/structure/window/phoronreinforced/full{
+	icon_state = "phoronwindow0"
+	},
+/turf/simulated/floor/reinforced/nitrogen{
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
+	},
+/area/engineering/engine_room)
 "LK" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 1
@@ -1503,9 +1517,9 @@ tm
 Mr
 Mr
 tm
-tm
+KZ
 Xc
-tm
+KZ
 tm
 Mr
 Mr
