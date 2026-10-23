@@ -1,3 +1,5 @@
+// TODO: repath or kill these
+
 ///Civilian Century Shuttle
 /area/shuttle/oldcentury
 	requires_power = 1

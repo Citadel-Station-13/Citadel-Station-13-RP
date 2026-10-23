@@ -1,0 +1,331 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/boulder,
+/turf/simulated/mineral/floor/ignore_cavegen/inherit_area,
+/area/submap/auto/one_single_area)
+"h" = (
+/obj/item/pickaxe,
+/obj/item/flashlight/lantern,
+/turf/simulated/mineral/floor/ignore_cavegen/inherit_area,
+/area/submap/auto/one_single_area)
+"l" = (
+/obj/random/junk,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"n" = (
+/obj/random/alcohol,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"o" = (
+/turf/simulated/mineral/ignore_cavegen,
+/area/submap/auto/one_single_area)
+"p" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"r" = (
+/obj/structure/bed,
+/obj/spawner/corpse/pirate/melee,
+/obj/effect/debris/cleanable/blood,
+/obj/item/bedsheet,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"v" = (
+/obj/structure/statue/marble/male,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"E" = (
+/obj/structure/table/marble,
+/obj/item/clothing/ears/laurel/silver,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"F" = (
+/turf/simulated/mineral/ignore_cavegen,
+/area/template_noop)
+"G" = (
+/obj/structure/table/marble,
+/obj/item/clothing/ears/earring/dangle/silver,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"I" = (
+/turf/simulated/wall/solidrock,
+/area/submap/auto/one_single_area)
+"J" = (
+/turf/simulated/mineral/floor/ignore_cavegen/inherit_area,
+/area/submap/auto/one_single_area)
+"O" = (
+/turf/template_noop,
+/area/template_noop)
+"P" = (
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"Q" = (
+/turf/simulated/wall/sandstone,
+/area/submap/auto/one_single_area)
+"V" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"Y" = (
+/obj/structure/table/marble,
+/obj/item/bone/skull,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+
+(1,1,1) = {"
+F
+F
+F
+F
+F
+F
+F
+F
+F
+F
+F
+F
+O
+O
+O
+"}
+(2,1,1) = {"
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+F
+F
+O
+O
+"}
+(3,1,1) = {"
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+o
+F
+F
+F
+O
+"}
+(4,1,1) = {"
+o
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+I
+o
+F
+F
+F
+O
+"}
+(5,1,1) = {"
+o
+Q
+r
+n
+p
+P
+l
+E
+Q
+I
+o
+o
+o
+o
+O
+"}
+(6,1,1) = {"
+Q
+Q
+P
+l
+P
+P
+P
+v
+Q
+Q
+Q
+o
+o
+a
+O
+"}
+(7,1,1) = {"
+P
+P
+P
+P
+V
+P
+P
+P
+P
+P
+P
+a
+o
+J
+O
+"}
+(8,1,1) = {"
+P
+P
+P
+P
+Y
+P
+P
+P
+P
+P
+P
+J
+J
+J
+O
+"}
+(9,1,1) = {"
+P
+P
+P
+P
+V
+P
+P
+P
+l
+P
+P
+J
+o
+h
+O
+"}
+(10,1,1) = {"
+Q
+Q
+P
+P
+P
+l
+P
+v
+Q
+Q
+Q
+o
+o
+o
+O
+"}
+(11,1,1) = {"
+o
+Q
+P
+P
+l
+P
+l
+G
+Q
+I
+o
+o
+o
+o
+O
+"}
+(12,1,1) = {"
+o
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+I
+o
+F
+F
+F
+O
+"}
+(13,1,1) = {"
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+o
+F
+F
+F
+O
+"}
+(14,1,1) = {"
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+F
+F
+O
+O
+"}
+(15,1,1) = {"
+F
+F
+F
+F
+F
+F
+F
+F
+F
+F
+F
+F
+O
+O
+O
+"}

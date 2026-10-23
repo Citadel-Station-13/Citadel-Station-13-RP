@@ -1,5 +1,5 @@
 /**
- *
+ * Shuffle by returning a new list.
  */
 /proc/shuffle(list/L)
 	if(!L)
@@ -12,7 +12,7 @@
 	return L
 
 /**
- * Randomize: Returns nothing and acts on list in place.
+ * Shuffle a list in-place.
  */
 /proc/shuffle_inplace(list/L)
 	if(!L)

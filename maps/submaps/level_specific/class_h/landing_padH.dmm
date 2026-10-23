@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/simulated/wall,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ab" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
@@ -9,21 +9,21 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ad" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external/public,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ae" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "af" = (
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ag" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -33,7 +33,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ah" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/standard{
@@ -43,7 +43,7 @@
 	pixel_y = 6
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ai" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/loot_pile/surface/medicine_cabinet/fresh{
@@ -53,16 +53,16 @@
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/kafel_full,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ak" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/toolcloset,
 /turf/simulated/floor/plating,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "am" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "an" = (
 /turf/template_noop,
 /area/template_noop)
@@ -70,16 +70,16 @@
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ap" = (
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "as" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/door/airlock,
 /turf/simulated/floor/wood,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "at" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/rack,
@@ -88,39 +88,39 @@
 /obj/item/tank/oxygen,
 /obj/item/tank/oxygen,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "av" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/kafel_full,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aw" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ax" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "ay" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "az" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aA" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aB" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -129,23 +129,23 @@
 	id_tag = "rnd_s_airlock_pump"
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aC" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/plating,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aD" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aF" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/wall,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aG" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/closet/cabinet,
@@ -160,19 +160,19 @@
 /obj/item/ammo_magazine/a7_62mm/clip,
 /obj/item/ammo_magazine/a7_62mm/clip,
 /turf/simulated/floor/wood,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aI" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/suit_cycler/vintage,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aJ" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aK" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/curtain/open/shower,
@@ -183,49 +183,49 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/kafel_full,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aL" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aN" = (
 /obj/machinery/door/airlock/glass_external/public,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aO" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aP" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aQ" = (
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aS" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aT" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aV" = (
 /obj/machinery/light/spot{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aW" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/atmospherics/portables_connector{
@@ -233,7 +233,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aX" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/standard{
@@ -244,7 +244,7 @@
 	name = "Dusty Flier"
 	},
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aY" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/table/rack,
@@ -253,7 +253,7 @@
 /obj/item/clothing/head/helmet/space,
 /obj/item/clothing/suit/space,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "aZ" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/bed/double,
@@ -262,19 +262,19 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "mM" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "vN" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "Hg" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/structure/closet/crate/freezer/rations,
@@ -282,19 +282,19 @@
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
 /turf/simulated/floor/tiled,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "NC" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 "Tb" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/outdoors,
-/area/class_h/POIs/landing_pad)
+/area/sector/class_h/POIs/landing_pad)
 
 (1,1,1) = {"
 an

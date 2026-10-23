@@ -25,6 +25,7 @@
 
 	hit_sound_brute = 'sound/weapons/smash.ogg'
 
+	//* Legacy Below *//
 	var/mineral
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER

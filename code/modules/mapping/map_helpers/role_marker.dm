@@ -12,6 +12,6 @@
 	var/role_tag
 
 /obj/map_helper/role_marker/preloading_from_mapload(datum/dmm_context/context)
-	LAZYINITLIST(context.role_markers_by_tag[role_tag])
-	context.role_markers_by_tag[role_tag] += src
+	LAZYINITLIST(context.map_context.collected_role_markers_by_tag[role_tag])
+	context.map_context.collected_role_markers_by_tag[role_tag] += src
 	return ..()

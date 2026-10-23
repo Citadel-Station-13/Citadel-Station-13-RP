@@ -4,18 +4,18 @@
 /area/template_noop)
 "b" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "c" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/class_h/explored)
+/area/sector/class_h/explored)
 "d" = (
 /obj/random/mob/spider/nurse,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "e" = (
 /turf/simulated/wall/sandstone,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "k" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -25,7 +25,7 @@
 /obj/item/clothing/ears/earring/dangle/glass,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "m" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -34,20 +34,20 @@
 	},
 /obj/item/clothing/accessory/necklace,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "n" = (
 /turf/simulated/mineral,
-/area/class_h/explored)
+/area/sector/class_h/explored)
 "o" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/class_h/explored)
+/area/sector/class_h/explored)
 "p" = (
 /obj/random/mob/spider,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "q" = (
 /turf/simulated/wall/sandstone,
-/area/class_h/explored)
+/area/sector/class_h/explored)
 "w" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -57,7 +57,7 @@
 /obj/item/clothing/gloves/ring/material/iron,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "H" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -66,23 +66,23 @@
 	},
 /obj/item/clothing/ears/earring/stud/steel,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "K" = (
 /mob/living/simple_mob/animal/giant_spider,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "L" = (
 /turf/simulated/wall/sandstonediamond,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "N" = (
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "O" = (
 /obj/structure/table/marble,
 /obj/effect/decal/remains/mummy2,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "S" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -92,12 +92,12 @@
 /obj/item/clothing/ears/skrell/chain,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "T" = (
 /obj/structure/table/marble,
 /obj/effect/decal/remains/mummy1,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "U" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -106,25 +106,25 @@
 	},
 /obj/item/clothing/gloves/ring/material/silver,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "W" = (
 /turf/simulated/wall/sandstone{
 	can_open = 1
 	},
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "X" = (
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "Y" = (
 /obj/random/mob/spider/mutant,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 "Z" = (
 /obj/effect/decal/remains/mummy1,
 /obj/random/multiple/treasure,
 /turf/simulated/floor/wmarble,
-/area/class_h/POIs/tomb)
+/area/sector/class_h/POIs/tomb)
 
 (1,1,1) = {"
 a

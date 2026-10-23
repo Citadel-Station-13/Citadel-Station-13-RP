@@ -33,7 +33,7 @@
 	)
 
 	// todo: remove after dev is done
-	allow_random_draw = FALSE
+	production_ready = FALSE
 
 	//* LEGACY BELOW *//
 

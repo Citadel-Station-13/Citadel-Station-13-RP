@@ -12,7 +12,7 @@
 	density = FALSE
 	alpha = 255
 
-	//* Atmospherics
+	//* Atmospherics *//
 	/**
 	 * the gas we start out as
 	 * can be:
@@ -25,11 +25,11 @@
 	 */
 	var/temperature_for_heat_exchangers
 
-	//* Automata
+	//* Automata *//
 	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
 	var/list/acting_automata
 
-	//* Baseturfs / Turf Changing
+	//* Baseturfs / Turf Changing *//
 	/**
 	 * Baseturfs
 	 *
@@ -50,7 +50,7 @@
 	/// are we mid changeturf?
 	var/changing_turf = FALSE
 
-	//* Flags
+	//* Flags *//
 	/// turf flags
 	var/turf_flags = NONE
 	/// turf spawning flags
@@ -58,7 +58,11 @@
 	/// multiz flags
 	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
-	//* Movement / Pathfinding
+	//* Map Generation *//
+	/// map generation cycle; used to not allow overwrites
+	var/tmp/map_generation_cycle
+
+	//* Movement / Pathfinding *//
 	/// How much the turf slows down movement, if any.
 	var/slowdown = 0
 	/// Pathfinding cost
@@ -68,7 +72,7 @@
 	/// pathfinding id - used to avoid needing a big closed list to iterate through every cycle of jps
 	var/tmp/pathfinding_cycle
 
-	//* Outdoors
+	//* Outdoors *//
 	/**
 	 * are we considered outdoors for things like weather effects?
 	 * todo: single var doing this is inefficient & bad, flags maybe?
@@ -81,7 +85,7 @@
 	 */
 	var/outdoors = null
 
-	//* Radiation
+	//* Radiation *//
 	/// cached rad insulation of contents
 	var/rad_insulation_contents = 1
 

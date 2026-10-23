@@ -1,0 +1,290 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/sandstone,
+/area/submap/auto/one_single_area)
+"m" = (
+/turf/simulated/floor/water/deep/indoors,
+/area/submap/auto/one_single_area)
+"u" = (
+/obj/structure/stairs/middle{
+	dir = 4
+	},
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"B" = (
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"C" = (
+/obj/structure/table/sandstone,
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"E" = (
+/obj/structure/stairs/middle{
+	dir = 8
+	},
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"H" = (
+/obj/structure/statue/marble/female,
+/turf/simulated/floor/sandstone,
+/area/submap/auto/one_single_area)
+"I" = (
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+"}
+(2,1,1) = {"
+I
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+I
+"}
+(3,1,1) = {"
+I
+a
+H
+C
+C
+C
+H
+C
+H
+C
+C
+C
+H
+a
+I
+"}
+(4,1,1) = {"
+I
+a
+C
+m
+m
+m
+m
+m
+m
+m
+m
+m
+C
+a
+I
+"}
+(5,1,1) = {"
+I
+a
+C
+m
+m
+m
+m
+m
+m
+m
+m
+m
+C
+a
+I
+"}
+(6,1,1) = {"
+I
+a
+C
+m
+m
+m
+m
+m
+m
+m
+m
+m
+H
+a
+a
+"}
+(7,1,1) = {"
+I
+a
+H
+m
+m
+m
+H
+u
+u
+u
+u
+u
+B
+B
+B
+"}
+(8,1,1) = {"
+I
+a
+C
+m
+m
+m
+C
+B
+B
+B
+B
+B
+B
+B
+B
+"}
+(9,1,1) = {"
+I
+a
+H
+m
+m
+m
+H
+E
+E
+E
+E
+E
+B
+B
+B
+"}
+(10,1,1) = {"
+I
+a
+C
+m
+m
+m
+m
+m
+m
+m
+m
+m
+H
+a
+a
+"}
+(11,1,1) = {"
+I
+a
+C
+m
+m
+m
+m
+m
+m
+m
+m
+m
+C
+a
+I
+"}
+(12,1,1) = {"
+I
+a
+C
+m
+m
+m
+m
+m
+m
+m
+m
+m
+C
+a
+I
+"}
+(13,1,1) = {"
+I
+a
+H
+C
+C
+C
+H
+C
+H
+C
+C
+C
+H
+a
+I
+"}
+(14,1,1) = {"
+I
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+I
+"}
+(15,1,1) = {"
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+"}

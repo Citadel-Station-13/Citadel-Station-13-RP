@@ -56,6 +56,12 @@
 	 *   overwriting areas with this enabled.
 	 */
 	var/special = FALSE
+	/**
+	 * Allow worldgen to write over this area?
+	 * * The 'default' area of the world and most maps / outdoors areas should
+	 *   be flagged as TRUE.
+	 */
+	var/allow_worldgen_overwrite = FALSE
 
 	//* Defaults - Turfs *//
 	/// outdoors by default?

@@ -81,7 +81,7 @@
 		if(above_location)
 			template.add_roof(above_location)
 		template.annihilate_plants(deploy_location)
-		template.load(deploy_location, centered = TRUE)
+		template.load_standalone_centered(deploy_location)
 		template.update_lighting(deploy_location)
 		qdel(src)
 

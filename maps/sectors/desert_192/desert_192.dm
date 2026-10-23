@@ -13,22 +13,17 @@
 	display_name = "Class-H Desert World"
 	path = "maps/sectors/desert_192/levels/desert_192.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
-	base_area = /area/class_h/unexplored
+	base_area = /area/sector/class_h/unexplored
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
 	planet_path = /datum/planet/classh
 	air_outdoors = /datum/atmosphere/planet/classh
 
-/datum/map_level/sector/desert_192/on_loaded_immediate(z_index, list/datum/callback/out_generation_callbacks)
-	. = ..()
-	out_generation_callbacks?.Add(
-		CALLBACK(
-			GLOBAL_PROC,
-			GLOBAL_PROC_REF(seed_submaps),
-			list(z_index),
+	injections = list(
+		new /datum/map_injection/legacy_seed_submaps(
 			150,
-			/area/class_h/unexplored,
+			/area/sector/class_h/unexplored,
 			/datum/map_template/submap/level_specific/class_h,
-		)
+		),
 	)

@@ -6,13 +6,13 @@
 	// override for map, otherwise defaults to loaded station as we have no way of detecting what's being loaded right now
 	var/for_map
 
-/obj/map_helper/engine_loader/map_initializations(datum/dmm_context/context)
+/obj/map_helper/engine_loader/map_initializations(datum/dmm_context/dmm_context, datum/map_context/map_context)
 	. = ..()
-	var/list/bounds = context.loaded_bounds
+	var/list/bounds = dmm_context.loaded_bounds
 	var/lx = bounds[MAP_MINX]
 	var/ly = bounds[MAP_MINY]
 	var/lz = bounds[MAP_MINZ]
-	var/ldir = context.loaded_orientation
+	var/ldir = dmm_context.loaded_orientation
 	if(istext(clean_turfs))
 		clean_turfs = safe_json_decode(clean_turfs)
 	if(ispath(for_map))
@@ -34,7 +34,7 @@
 		if(ispath(their_for_map))
 			var/datum/map/map_path = their_for_map
 			their_for_map = initial(map_path.id)
-		if(their_for_map != src.for_map)
+		if(their_for_map != for_map)
 			continue
 		var/name = lowertext(initial(path.name))
 		potential_filtered[path] = isnum(probabilities[name])? probabilities[name] : 1
@@ -68,10 +68,9 @@
 		to_chat(world, SPAN_DANGER("Engine loaded: [chosen.display_name]"))
 
 	annihilate_bounds(lx, ly, lz, ldir)
-	chosen.load(T, orientation = ldir)
+	chosen.load_standalone(T, orientation = ldir)
 
 	qdel(src)
-
 
 /obj/map_helper/engine_loader/proc/get_turfs_to_clean(lx, ly, lz, ldir)
 	. = list()

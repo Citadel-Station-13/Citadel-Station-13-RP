@@ -59,31 +59,31 @@
 
 	//* Flags *//
 	/// Item flags.
-	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	/// These flags are listed in [code/__DEFINES/_flags/item_flags.dm].
 	var/item_flags = ITEM_ENCUMBERS_WHILE_HELD
 	/// Miscellaneous flags pertaining to equippable objects.
-	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	/// These flags are listed in [code/__DEFINES/_flags/item_flags.dm].
 	var/clothing_flags = NONE
 	/// Flags for items (or in some cases mutant parts) hidden by this item when worn.
 	/// As of right now, some flags only work in some slots.
-	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	/// These flags are listed in [code/__DEFINES/_flags/item_flags.dm].
 	var/inv_hide_flags = NONE
 	/// Flags for the bodyparts this item covers when worn.
-	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	/// These flags are listed in [code/__DEFINES/_flags/item_flags.dm].
 	///
 	/// * Do not set these directly, use set_body_cover_flags()!
 	var/body_cover_flags = NONE
 	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	/// These flags are listed in [code/__DEFINES/_flags/item_flags.dm].
 	var/heat_protection_cover = NONE
 	/// Flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	/// These flags are listed in [code/__DEFINES/_flags/item_flags.dm].
 	var/cold_protection_cover = NONE
 	/// This is used to determine on which slots an item can fit, for inventory slots that use flags to determine this.
 	/// These flags are listed in [code/__DEFINES/inventory/slots.dm].
 	var/slot_flags = NONE
 	/// This is used to determine how we persist, in addition to potentially atom_persist_flags and obj_persist_flags (not yet made)
-	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
+	/// These flags are listed in [code/__DEFINES/_flags/item_flags.dm].
 	var/item_persist_flags = NONE
 	/// This is used to determine how default item-level interaction hooks are handled.
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]

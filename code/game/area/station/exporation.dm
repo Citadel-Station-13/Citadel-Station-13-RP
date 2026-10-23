@@ -1,3 +1,5 @@
+// TODO: repath or kill these
+
 //Exploration areas
 /area/exploration
 	name = "\improper Exploration Foyer"
