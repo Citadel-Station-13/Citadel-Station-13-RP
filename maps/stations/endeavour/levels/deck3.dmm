@@ -17050,6 +17050,10 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
+/obj/machinery/doorbell_chime{
+	pixel_y = -31;
+	id_tag = surt
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
 "mhO" = (
