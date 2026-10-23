@@ -28,6 +28,11 @@
 	id = "rack_chamber-4"
 	path = 'sound/soundbytes/guns/ballistic/rack-4.ogg'
 
+/datum/soundbyte/guns/ballistic/rack_chamber/revolver
+	name = "Rack Chamber - Revolver"
+	id = "rack_chamber-revolver"
+	path = 'sound/soundbytes/guns/ballistic/rack-revolver.ogg'
+
 /datum/soundbyte/guns/ballistic/rack_chamber/shotgun_1
 	name = "Rack Chamber - Shotgun A"
 	id = "rack_chamber-shotgun-1"
