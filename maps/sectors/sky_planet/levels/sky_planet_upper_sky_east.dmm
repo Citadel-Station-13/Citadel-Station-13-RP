@@ -1,12 +1,29 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/range)
 "ae" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"aj" = (
+/obj/structure/table/woodentable,
+/obj/structure/salvageable/personal,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "ao" = (
 /obj/item/coin/gold,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"at" = (
+/obj/machinery/light/small/poi{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
 "aw" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/eris/cafe,
@@ -15,28 +32,68 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/officers)
+"aE" = (
+/turf/simulated/wall,
+/area/sector/sky_planet/sky)
 "aN" = (
 /turf/simulated/floor/carpet/patterened/orange,
 /area/sector/sky_planet/rock)
+"aR" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/oxygen,
+/obj/random/tank,
+/obj/random/tank,
+/obj/random/tank,
+/obj/random/tank,
+/obj/random/tank,
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
+"ba" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "bd" = (
 /obj/item/spacecash/c500,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"bk" = (
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/garrison)
 "bl" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"bo" = (
+/obj/effect/decal/mecha_wreckage/baron,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"by" = (
+/obj/structure/table/standard,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
 "bB" = (
-/obj/machinery/door/blast/regular{
-	id = "syndimousebase"
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"bU" = (
+/obj/effect/floor_decal/rust/mono_rusted3{
+	color = "#b88a3b"
 	},
-/turf/simulated/floor/holofloor/reinforced,
-/area/sector/sky_planet/rock)
-"bD" = (
-/turf/simulated/floor/holofloor/reinforced,
-/area/sector/sky_planet/rock)
+/obj/structure/table/bench/wooden,
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
 "bV" = (
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
@@ -49,6 +106,12 @@
 "cf" = (
 /turf/simulated/wall/solidrock,
 /area/sector/sky_planet/rock)
+"cr" = (
+/obj/machinery/door/airlock{
+	name = "Toilet"
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
 "cA" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/tiled/monodark,
@@ -57,6 +120,12 @@
 /mob/living/simple_mob/aggressive/dragoon,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"cD" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "cN" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -73,14 +142,41 @@
 	},
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
-"dg" = (
-/obj/structure/catwalk,
-/turf/simulated/open/lythios43c/indoors,
-/area/sector/sky_planet/rock)
+"dc" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "dh" = (
 /obj/random/multiple/large_corp_crate,
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/sky_planet/rock)
+"dj" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 2
+	},
+/obj/structure/curtain/open/shower/security,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/station_city/enlisted)
+"dk" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/east,
+/obj/item/flame/lighter/zippo/taj,
+/obj/item/storage/fancy/cigar/taj,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
 "dq" = (
 /turf/simulated/mineral/cave,
 /area/sector/sky_planet/rock)
@@ -92,10 +188,14 @@
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/plating,
 /area/sector/sky_planet/sky)
+"dE" = (
+/obj/structure/lattice,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/station_city/commander)
 "dJ" = (
 /obj/structure/bed/chair/sofa/purp/right,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/officers)
 "dT" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -122,13 +222,36 @@
 /obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"em" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
+"eo" = (
+/obj/structure/table/bench/wooden,
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
+"es" = (
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "ev" = (
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
-"ez" = (
-/mob/living/simple_mob/mechanical/mecha/mouse_tank/manned,
+"ey" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/east,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/obj/item/storage/fancy/cigar/taj,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/enlisted)
+"ez" = (
+/obj/structure/bed/chair/backed_red,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "eC" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/tiled/techfloor/monogrid{
@@ -164,12 +287,48 @@
 /obj/effect/decal/remains/mummy1,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"fz" = (
+/obj/effect/decal/mecha_wreckage/shuttlecraft,
+/obj/effect/floor_decal/industrial/hatch,
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
+"fD" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/monogrid{
+	outdoors = 1
+	},
+/area/sector/sky_planet/sky)
+"fG" = (
+/obj/machinery/door/blast/regular/open,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"fH" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/toolbox,
+/obj/random/toolbox,
+/obj/random/toolbox,
+/obj/random/toolbox,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "fI" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
 /area/sector/sky_planet/rock)
+"fQ" = (
+/obj/structure/toilet{
+	pixel_y = 9
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
 "ge" = (
 /obj/structure/table/rack/shelf,
 /turf/simulated/floor/tiled/eris/cafe,
@@ -181,6 +340,13 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"gm" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/grille,
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
 "gr" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -189,17 +355,27 @@
 /obj/structure/railing,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"gE" = (
+/obj/structure/event/prop/water_tank,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "gL" = (
 /turf/simulated/floor/holofloor/reinforced{
 	outdoors = 1
 	},
-/area/sector/sky_planet/sky)
+/area/sector/sky_planet/station_city/commander)
 "gN" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/beige/border,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
+"gP" = (
+/obj/effect/floor_decal/industrial/hatch,
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
 "gY" = (
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/sif/broken,
@@ -220,37 +396,131 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
-"hv" = (
-/turf/simulated/open/lythios43c,
+"hl" = (
+/obj/structure/table/standard,
+/obj/item/clothing/gloves/yellow,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small/poi{
+	dir = 1
+	},
+/turf/simulated/floor,
 /area/sector/sky_planet/sky)
+"hA" = (
+/obj/structure/table/woodentable,
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
+"hG" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/south,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/obj/item/flame/lighter/zippo/taj,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
 "hK" = (
 /obj/structure/table/steel,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/garrison)
+"hO" = (
+/obj/item/stool,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
 "hW" = (
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/sky)
+"hY" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/range)
+"if" = (
+/obj/structure/salvageable/data,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"ig" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/garrison)
 "ij" = (
 /obj/structure/bed/chair/pew/right{
 	dir = 1
 	},
 /turf/simulated/floor/wood/sif/broken,
 /area/sector/sky_planet/sky)
+"ix" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
 "iy" = (
 /obj/structure/bed/pod,
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/sky_planet/rock)
+"ja" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/closet/crate/solar,
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"jj" = (
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/garrison)
 "jr" = (
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"js" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/rock)
+"jt" = (
+/obj/structure/reagent_dispensers/fueltank/high,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"jz" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"jL" = (
+/obj/machinery/door/airlock/lift{
+	req_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/skyplanet_military/upper)
+"jM" = (
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Power - Solar Array";
+	cur_coils = 3;
+	output_attempt = 0;
+	outputting = 0
+	},
+/obj/structure/cable/heavyduty,
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"jO" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/south,
+/obj/item/clothing/under/tajaran/ala/black/officer,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
 "jT" = (
 /obj/item/clothing/accessory/collar/fluff/goldenstring,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
 "kg" = (
 /obj/structure/table/bench/wooden,
-/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
 "ki" = (
@@ -261,6 +531,43 @@
 /obj/random/multiple/treasure,
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/sky_planet/rock)
+"kn" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"kq" = (
+/obj/machinery/light/small/poi,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
+"kr" = (
+/obj/structure/table/woodentable,
+/obj/item/pen/blade/fountain,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
+"ky" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/south,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
+"kA" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait,
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
 "kB" = (
 /obj/effect/blocker,
 /turf/simulated/open/skyplanet,
@@ -268,6 +575,12 @@
 "kC" = (
 /mob/living/simple_mob/aggressive/dragoon/yellow,
 /turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"kP" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/sky)
 "kX" = (
 /obj/effect/floor_decal/industrial/halfstair,
@@ -284,10 +597,21 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"lp" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/east,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
 "lt" = (
 /obj/item/clothing/gloves/ring/material/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"lw" = (
+/obj/machinery/fitness/heavy/lifter,
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/garrison)
 "lD" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -318,22 +642,16 @@
 	},
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/sky)
-"mD" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/structure/railing/grey{
+"mB" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/decal/mecha_wreckage/baron{
 	dir = 1
 	},
-/turf/simulated/open/lythios43c/indoors,
-/area/sector/sky_planet/rock)
-"mG" = (
-/obj/machinery/button/remote/airlock{
-	pixel_x = 23;
-	id = "syndimousebase"
-	},
-/turf/simulated/floor/holofloor/reinforced,
-/area/sector/sky_planet/rock)
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"mU" = (
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "na" = (
 /obj/structure/closet/largecardboard,
 /obj/random/tool/powermaint,
@@ -342,6 +660,32 @@
 /obj/random/unidentified_medicine,
 /turf/simulated/floor/plating/indoors,
 /area/sector/sky_planet/sky)
+"no" = (
+/obj/structure/grille,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"nq" = (
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/station_city/garrison)
+"nT" = (
+/obj/structure/closet/crate,
+/obj/item/target/basic,
+/obj/item/target/basic,
+/obj/item/target/basic,
+/obj/item/target/basic,
+/obj/item/target/humanoid,
+/obj/item/target/humanoid,
+/obj/item/target/humanoid,
+/obj/item/target/humanoid,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/range)
 "nW" = (
 /obj/item/digestion_remains/ribcage,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -360,6 +704,19 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"oH" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"oJ" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "oK" = (
 /obj/item/toy/plushie/carp/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -368,6 +725,26 @@
 /obj/structure/bed/holobed,
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/rock)
+"oO" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/clean,
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
 "oW" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/sky)
@@ -380,10 +757,20 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"pc" = (
+/obj/effect/decal/mecha_wreckage/baron{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "pe" = (
 /obj/effect/decal/remains/tajaran,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"pf" = (
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/station_city/officers)
 "pr" = (
 /obj/effect/decal/remains/ribcage,
 /turf/simulated/floor/outdoors/rocks,
@@ -411,16 +798,48 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/rock)
+"pP" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/east,
+/obj/item/clothing/under/tajaran/ala/black,
+/obj/item/flame/lighter/zippo/taj,
+/obj/item/clothing/head/beret/tajaran/dpra/alt,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
+"pR" = (
+/obj/map_helper/network_builder/power_cable/yellow/auto,
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "pU" = (
 /obj/structure/closet,
 /obj/item/clothing/under/brandjumpsuit/mbill,
 /obj/item/clothing/head/soft/mbill,
 /turf/simulated/floor/plating/indoors,
 /area/sector/sky_planet/sky)
+"pV" = (
+/obj/structure/salvageable/console_os{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
+"qa" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/tajaran/cosmonaut/commissar,
+/obj/item/clothing/head/tajaran/cosmonaut_commissar,
+/obj/item/gun/projectile/ballistic/deagle/taj,
+/obj/item/ammo_magazine/a44,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "qb" = (
 /obj/random/cash,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"qk" = (
+/obj/machinery/light/small/poi,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/station_city/commander)
 "ql" = (
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
@@ -428,10 +847,64 @@
 /obj/machinery/door/airlock/silencium,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"qw" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
+"qI" = (
+/obj/effect/decal/mecha_wreckage/baron{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"qJ" = (
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/garrison)
+"qP" = (
+/obj/machinery/light/small/emergency/flicker,
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
+"qV" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/garrison)
+"rc" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
 "rd" = (
 /obj/structure/table/rack/steel,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/sky)
+"rl" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "rn" = (
 /obj/machinery/light/small/old{
 	dir = 4
@@ -440,6 +913,23 @@
 /area/sector/sky_planet/sky)
 "rp" = (
 /turf/simulated/wall/r_wall/prepainted/command,
+/area/sector/sky_planet/sky)
+"rr" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/officers)
+"rw" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor,
 /area/sector/sky_planet/sky)
 "rz" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
@@ -451,6 +941,13 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"rC" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/grille,
+/turf/simulated/floor,
+/area/sector/sky_planet/rock)
 "rF" = (
 /mob/living/simple_mob/aggressive/dragoon/yellow,
 /turf/simulated/floor/outdoors/rocks,
@@ -480,6 +977,57 @@
 /obj/structure/bonfire/permanent,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"sh" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"sw" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
+"sx" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/west,
+/obj/item/clothing/under/tajaran/ala,
+/obj/item/clothing/head/beret/tajaran/dpra/alt,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/obj/item/storage/fancy/cigar/taj,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
+"sF" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/west,
+/obj/item/clothing/under/tajaran/ala/black,
+/obj/item/flame/lighter/zippo/taj,
+/obj/item/clothing/head/beret/tajaran/dpra/alt,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
+"sK" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/west,
+/obj/item/clothing/under/tajaran/ala,
+/obj/item/flame/lighter/zippo/taj,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
+"sW" = (
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/station_city/commander)
 "sX" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -490,6 +1038,12 @@
 /obj/structure/lattice,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"sZ" = (
+/obj/machinery/door/airlock{
+	name = "Showers"
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
 "ta" = (
 /obj/random/multiple/treasure,
 /turf/simulated/floor/carpet/patterened/blue,
@@ -497,11 +1051,37 @@
 "tf" = (
 /obj/structure/closet/syndicate,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/garrison)
+"tl" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper,
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
 "tn" = (
 /obj/machinery/light/small/emergency/flicker,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/garrison)
+"tq" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"tJ" = (
+/obj/structure/loot_pile/surface/medicine_cabinet/fresh{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
+"tN" = (
+/obj/effect/floor_decal/corner/red/border,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/garrison)
+"tV" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "uf" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/beige/border,
@@ -515,6 +1095,10 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
+"ut" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/shotgun,
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/garrison)
 "uv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -530,7 +1114,18 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/garrison)
+"uz" = (
+/obj/structure/target_stake,
+/obj/item/target/humanoid,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/range)
+"uE" = (
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
 "uF" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/beige/border,
@@ -550,10 +1145,6 @@
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
-"uZ" = (
-/obj/spawner/corpse/syndicatesoldier,
-/turf/simulated/floor/holofloor/reinforced,
-/area/sector/sky_planet/rock)
 "vf" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -569,6 +1160,15 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
+"vx" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
 "vJ" = (
 /obj/structure/bed/chair/pew/left{
 	dir = 1
@@ -578,6 +1178,16 @@
 "vK" = (
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"vM" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced/outdoors,
+/area/sector/sky_planet/sky)
+"vV" = (
+/obj/structure/salvageable/computer_os,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "wa" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/borderfloorblack{
@@ -604,10 +1214,25 @@
 	},
 /turf/simulated/floor/wood/sif,
 /area/sector/sky_planet/sky)
+"wB" = (
+/obj/structure/sandbag,
+/obj/structure/sandbag,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"wZ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
 "xo" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"xq" = (
+/obj/structure/bed/chair/sofa/purp/left,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
 "xr" = (
 /turf/simulated/floor/wood/sif,
 /area/sector/sky_planet/sky)
@@ -616,6 +1241,20 @@
 /obj/random/multiple/miningdrills,
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/rock)
+"xF" = (
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/range)
+"xK" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/range)
+"xL" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/officers)
 "xM" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/techfloor/monogrid{
@@ -634,7 +1273,7 @@
 "xX" = (
 /obj/item/target/syndicate,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/garrison)
 "yg" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/carpet/patterened/green,
@@ -649,6 +1288,25 @@
 /obj/item/clothing/ears/laurel/gold,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"yS" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"yV" = (
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/officers)
+"yZ" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/south,
+/obj/item/clothing/under/tajaran/ala/black/officer,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/obj/item/storage/fancy/cigar/taj,
+/obj/item/flame/lighter/zippo/taj,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
 "zf" = (
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky/unexplored)
@@ -656,19 +1314,47 @@
 /obj/effect/debris/cleanable/blood/gibs/robot,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
-"zB" = (
-/obj/structure/railing/grey{
+"zH" = (
+/obj/effect/floor_decal/corner/red/border{
 	dir = 1
 	},
-/turf/simulated/open/lythios43c/indoors,
-/area/sector/sky_planet/rock)
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/garrison)
+"zL" = (
+/obj/machinery/door/airlock/multi_tile/metal,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "zM" = (
 /obj/item/stack/material/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"zN" = (
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "zP" = (
 /turf/simulated/floor/plating/indoors,
 /area/sector/sky_planet/sky)
+"zR" = (
+/obj/machinery/light/small/poi{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
+"zV" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"zX" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "Ac" = (
 /turf/simulated/floor/carpet/patterened/blue,
 /area/sector/sky_planet/rock)
@@ -682,6 +1368,12 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"Av" = (
+/obj/machinery/door/airlock/multi_tile{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "AF" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -702,6 +1394,20 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"Bl" = (
+/obj/structure/bed/chair/wood/wings,
+/obj/machinery/light/small/poi{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
+"Bt" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "BE" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -718,6 +1424,23 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/rock)
+"BO" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"BR" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/structure/curtain/open/shower/security,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/sector/sky_planet/station_city/enlisted)
 "BW" = (
 /obj/structure/barricade/miaphus/tentleatheredge{
 	dir = 1
@@ -730,12 +1453,19 @@
 /obj/item/coin/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"Cg" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "0-4"
+	},
+/obj/structure/salvageable/server_os,
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
 "Cj" = (
-/obj/machinery/light/small/emergency/flicker{
+/obj/machinery/light/poi{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/garrison)
 "Cp" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -745,33 +1475,141 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
+"Cs" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c,
+/area/sector/sky_planet/sky)
+"Cx" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "CP" = (
 /obj/structure/closet/largecardboard,
 /obj/random/multiple/voidsuit/vintage,
 /obj/random/multiple/voidsuit/vintage,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
 /area/sector/sky_planet/sky)
+"CU" = (
+/obj/machinery/light/poi,
+/obj/structure/sandbag,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"CW" = (
+/obj/structure/fitness/weightlifter,
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/garrison)
+"CX" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/backpack/parachute,
+/obj/item/clothing/suit/space/void/explorer,
+/obj/item/clothing/head/helmet/space/void/explorer,
+/obj/item/gps/survival,
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
+"Dd" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
 "Df" = (
 /obj/structure/palletjack/random,
 /turf/simulated/floor/reinforced,
 /area/sector/sky_planet/sky)
+"Dp" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/engineering,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"Ds" = (
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
 "DE" = (
 /obj/item/storage/toolbox/gold_fake,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"DF" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/structure/closet/crate/solar,
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"DJ" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
 "DT" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/garrison)
+"DU" = (
+/obj/map_helper/network_builder/power_cable/yellow/auto,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/sector/sky_planet/sky)
+"DW" = (
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"Ea" = (
+/obj/machinery/light/small/poi{
+	dir = 1
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/station_city/commander)
 "Ef" = (
 /obj/vehicle/ridden/quadbike/random,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"Ej" = (
+/turf/simulated/wall,
+/area/sector/sky_planet/rock)
 "El" = (
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"Eo" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/south,
+/obj/item/clothing/under/tajaran/ala/black/officer,
+/obj/item/storage/fancy/cigar/taj,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
+"Es" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
 "EG" = (
 /turf/simulated/floor/carpet/patterened/brown,
 /area/sector/sky_planet/rock)
@@ -780,6 +1618,12 @@
 /obj/item/spacecash/c10,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"Fa" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
 "Fj" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/techfloor/monogrid{
@@ -789,10 +1633,27 @@
 "FB" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/officers)
 "FH" = (
 /obj/structure/closet/crate/miningcar,
 /turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"FJ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"FO" = (
+/obj/machinery/power/solar,
+/obj/map_helper/network_builder/power_cable/yellow/auto,
+/turf/simulated/floor/tiled/steel_grid,
+/area/sector/sky_planet/sky)
+"FS" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor,
 /area/sector/sky_planet/sky)
 "FT" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
@@ -802,9 +1663,11 @@
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
 "FV" = (
-/obj/machinery/door/airlock,
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/obj/machinery/door/airlock{
+	name = "Toilet"
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/officers)
 "FY" = (
 /turf/simulated/floor/carpet/turcarpet,
 /area/sector/sky_planet/rock)
@@ -812,40 +1675,90 @@
 /obj/structure/flora/pottedplant/hedge,
 /turf/simulated/floor/wood/sif,
 /area/sector/sky_planet/sky)
-"Gl" = (
-/obj/structure/railing/grey{
-	dir = 4
+"Gb" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/enlisted)
+"Ge" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
 	},
-/turf/simulated/open/lythios43c/indoors,
-/area/sector/sky_planet/rock)
+/obj/structure/railing,
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"Gf" = (
+/obj/structure/flora/pottedplant/largebush,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
+"Gl" = (
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/turbolift/skyplanet_military/upper)
 "Go" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/snacks/full_goss,
 /turf/simulated/floor/tiled/eris/cafe,
+/area/sector/sky_planet/sky)
+"Gv" = (
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/range)
+"GC" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'HIGH VOLTAGE'";
+	icon_state = "shock";
+	name = "HIGH VOLTAGE"
+	},
+/turf/simulated/wall,
 /area/sector/sky_planet/sky)
 "GH" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/wood/sif,
 /area/sector/sky_planet/sky)
+"GJ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/grille,
+/turf/simulated/floor,
+/area/sector/sky_planet/rock)
 "GK" = (
 /obj/spawner/window/full/firelocks,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"GM" = (
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/enlisted)
 "GR" = (
 /obj/structure/bed/pod,
 /obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/south,
+/obj/item/clothing/under/tajaran/ala/black/officer,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/obj/item/storage/fancy/cigar/taj,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/officers)
 "Hp" = (
 /turf/simulated/floor/carpet/patterened/blue/alt,
 /area/sector/sky_planet/rock)
+"Hy" = (
+/obj/structure/event/prop/tank,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "HG" = (
 /obj/spawner/window/full/firelocks,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
 /area/sector/sky_planet/sky)
+"HH" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/rock)
 "HM" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
@@ -856,6 +1769,26 @@
 	},
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"HQ" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"HZ" = (
+/obj/structure/sink{
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
+"Ie" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"Ik" = (
+/obj/machinery/door/airlock/command,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "Ip" = (
 /obj/effect/decal/remains/tajaran,
 /turf/simulated/floor/outdoors/rocks,
@@ -863,7 +1796,24 @@
 "Iq" = (
 /obj/structure/bed/chair/sofa/purp/corner,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/officers)
+"Ir" = (
+/obj/structure/bed/chair/sofa/purp/right{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
+"Iv" = (
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/station_city/range)
+"Jf" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"Jm" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "Jn" = (
 /obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/tiled/monodark,
@@ -872,10 +1822,20 @@
 /obj/effect/decal/remains/mummy2,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"Ju" = (
+/obj/structure/salvageable/autolathe,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "Jy" = (
 /obj/structure/bonfire/permanent,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"JC" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "JM" = (
 /obj/machinery/light/small/old{
 	dir = 8
@@ -900,9 +1860,8 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
 "Kb" = (
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/holofloor/reinforced,
-/area/sector/sky_planet/rock)
+/turf/simulated/shuttle/floor/voidcraft/dark,
+/area/turbolift/skyplanet_military/upper)
 "Kk" = (
 /obj/item/storage/single_use/mre/menu6,
 /obj/item/storage/single_use/mre/menu6,
@@ -915,6 +1874,24 @@
 /obj/effect/debris/cleanable/blood/gibs/robot,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
+"Kr" = (
+/obj/machinery/door/airlock/security,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
+"Ky" = (
+/obj/structure/salvageable/implant_container_os,
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
+"KD" = (
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/range)
+"KQ" = (
+/obj/machinery/door/airlock/security,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/station_city/garrison)
 "KY" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/techfloor/monogrid{
@@ -939,8 +1916,11 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
 "Ll" = (
-/turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/obj/machinery/light/small/poi{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "Lo" = (
 /obj/structure/bed/psych,
 /turf/simulated/floor/carpet/patterened/green,
@@ -948,16 +1928,33 @@
 "Lq" = (
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"LF" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat,
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/garrison)
+"LH" = (
+/obj/structure/event/prop/welding_tank,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"LL" = (
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/station_city/commander)
 "LV" = (
 /obj/item/spacecash/c500,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"LW" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"Me" = (
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
 "Mn" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
 	},
 /obj/structure/table/bench/wooden,
-/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/sky)
 "Mt" = (
@@ -972,19 +1969,48 @@
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
+"My" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/rock)
 "MM" = (
 /obj/machinery/light/small/old{
 	dir = 8
 	},
 /turf/simulated/floor/wood/sif/broken,
 /area/sector/sky_planet/sky)
-"MV" = (
-/obj/structure/railing/grey{
-	dir = 4
+"MQ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
 	},
-/obj/structure/railing/grey,
-/turf/simulated/open/lythios43c/indoors,
-/area/sector/sky_planet/rock)
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"MZ" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"Ni" = (
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"Nk" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
 "Nu" = (
 /obj/item/reagent_containers/food/drinks/golden_cup,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -996,6 +2022,11 @@
 /mob/living/simple_mob/aggressive/dragoon/blue,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
+"Of" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet,
+/turf/simulated/floor/wood,
+/area/sector/sky_planet/station_city/commander)
 "Oh" = (
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
@@ -1025,13 +2056,23 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/officers)
+"OD" = (
+/obj/structure/bed/chair/backed_red{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "OS" = (
 /obj/structure/barricade/miaphus/tentleathercorner,
 /turf/simulated/floor/tiled/techfloor/monogrid{
 	outdoors = 1
 	},
 /area/sector/sky_planet/rock)
+"Pe" = (
+/obj/machinery/fitness/heavy/lifter,
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/enlisted)
 "Ph" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4;
@@ -1039,6 +2080,17 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"Pk" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"Pt" = (
+/obj/structure/cable/yellow,
+/obj/machinery/computer{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
 "PB" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/tiled/techfloor/monogrid{
@@ -1054,6 +2106,12 @@
 /obj/random/drinkbottle,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
+"PU" = (
+/obj/structure/salvageable/console_os{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "PY" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/carpet/patterened/blue/alt,
@@ -1116,6 +2174,24 @@
 /obj/item/trash/rust_can,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/sector/sky_planet/sky)
+"QT" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"QV" = (
+/obj/structure/bed/chair/sofa/purp/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/officers)
 "QY" = (
 /obj/structure/table/rack/shelf,
 /obj/item/reagent_containers/food/snacks/fuegoburrito,
@@ -1126,14 +2202,45 @@
 /obj/random/curseditem,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/sky)
+"Rq" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "Rz" = (
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"RI" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/rock)
+"RU" = (
+/obj/machinery/door/airlock/security,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/range)
+"RV" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/shotgun,
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
 "RX" = (
 /obj/effect/decal/remains/ribcage,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"RY" = (
+/obj/structure/salvageable/server,
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
 "Sb" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -1142,33 +2249,66 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/rock)
-"So" = (
-/turf/simulated/open/lythios43c/indoors,
-/area/sector/sky_planet/rock)
+"Sr" = (
+/obj/machinery/door/airlock/security,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "Sz" = (
 /obj/structure/lattice,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
 "SG" = (
-/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
-/turf/simulated/floor/tiled/monodark,
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/carpet/turcarpet,
 /area/sector/sky_planet/rock)
+"SJ" = (
+/obj/structure/table/standard,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/item/stack/cable_coil/yellow,
+/obj/machinery/cell_charger,
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"SU" = (
+/obj/map_helper/network_builder/power_cable/yellow/auto,
+/turf/simulated/floor/tiled/monodark,
+/area/sector/sky_planet/sky)
+"Ta" = (
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
 "Tr" = (
 /obj/structure/lattice,
 /obj/structure/railing,
 /turf/simulated/open/skyplanet,
 /area/sector/sky_planet/sky)
-"TJ" = (
-/obj/structure/railing/grey,
-/turf/simulated/open/lythios43c/indoors,
-/area/sector/sky_planet/rock)
+"TI" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/west,
+/obj/item/clothing/head/beret/tajaran/dpra/alt,
+/obj/item/clothing/shoes/tajara/workboots/adhomian_boots,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
 "TX" = (
 /turf/simulated/wall/r_wall,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/fighters)
 "Ub" = (
 /obj/random/cash,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"Uj" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"Um" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
 "Uo" = (
 /obj/item/clothing/ears/earring/stud/gold,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -1177,14 +2317,36 @@
 /obj/item/spacecash/c1000,
 /turf/simulated/floor/outdoors/rocks,
 /area/sector/sky_planet/rock)
+"Ut" = (
+/obj/machinery/door/airlock/maintenance/engi,
+/turf/simulated/floor,
+/area/sector/sky_planet/station_city/garrison)
 "UH" = (
 /obj/structure/bed/pod,
 /turf/simulated/floor/carpet/patterened/green,
 /area/sector/sky_planet/rock)
+"UI" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "UL" = (
 /obj/item/trash/rust_can,
 /turf/simulated/floor/plating/indoors,
 /area/sector/sky_planet/sky)
+"UP" = (
+/obj/structure/railing,
+/turf/simulated/open/skyplanet,
+/area/sector/sky_planet/sky)
+"UW" = (
+/obj/machinery/light/small/poi,
+/turf/simulated/floor,
+/area/sector/sky_planet/sky)
+"Vs" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/range)
 "Vv" = (
 /obj/random/multiple/large_corp_crate,
 /turf/simulated/floor/carpet/patterened/brown,
@@ -1195,10 +2357,29 @@
 	},
 /turf/simulated/floor/wood/sif/broken,
 /area/sector/sky_planet/sky)
+"VX" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/west,
+/obj/item/clothing/under/tajaran/ala/black,
+/obj/item/flame/lighter/zippo/taj,
+/obj/item/clothing/head/beret/tajaran/dpra,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
 "Wg" = (
 /obj/structure/bed/holobed,
 /turf/simulated/floor/carpet/patterened/orange,
 /area/sector/sky_planet/rock)
+"Wl" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
+"Ws" = (
+/obj/machinery/fitness/punching_bag,
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/garrison)
 "Wt" = (
 /obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/reinforced,
@@ -1216,11 +2397,34 @@
 	outdoors = 1
 	},
 /area/sector/sky_planet/rock)
-"WF" = (
-/obj/machinery/mech_recharger,
-/obj/vehicle/sealed/mecha/combat/fighter/gunpod/recon,
-/turf/simulated/floor/holofloor/reinforced,
-/area/sector/sky_planet/rock)
+"WG" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
+/turf/simulated/floor/carpet,
+/area/sector/sky_planet/station_city/enlisted)
+"WH" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
+"Xc" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/old_tile,
+/area/sector/sky_planet/station_city/enlisted)
+"Xg" = (
+/obj/structure/bed/chair/backed_red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
+"Xi" = (
+/obj/machinery/light/small/poi,
+/turf/simulated/floor/holofloor/reinforced{
+	outdoors = 1
+	},
+/area/sector/sky_planet/station_city/commander)
 "Xm" = (
 /obj/effect/floor_decal/rust/mono_rusted3{
 	color = "#b88a3b"
@@ -1228,6 +2432,13 @@
 /obj/structure/sandbag,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"Xw" = (
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/station_city/enlisted)
+"XC" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
 "XO" = (
 /obj/vehicle/ridden/quadbike/random,
 /turf/simulated/floor/tiled/monodark,
@@ -1236,10 +2447,20 @@
 /obj/structure/bonfire/permanent,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"XT" = (
+/obj/structure/event/prop/welding_tank,
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"Ya" = (
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/range)
 "Yb" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/techfloor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/garrison)
 "Yk" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/reinforced/outdoors,
@@ -1252,9 +2473,18 @@
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/carpet/patterened/orange,
 /area/sector/sky_planet/rock)
+"YH" = (
+/turf/simulated/shuttle/wall/voidcraft/red/hard_corner,
+/area/turbolift/skyplanet_military/upper)
 "YW" = (
 /turf/simulated/floor/reinforced/outdoors,
 /area/sector/sky_planet/rock)
+"Zg" = (
+/obj/structure/bed/chair/backed_red{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/garrison)
 "Zq" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/beige/border,
@@ -1267,6 +2497,33 @@
 /obj/random/multiple/corp_crate,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/rock)
+"ZG" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/fighters)
+"ZL" = (
+/obj/structure/bed/pod,
+/obj/structure/curtain/open/bed,
+/obj/structure/closet/walllocker_double/east,
+/obj/item/clothing/head/beret/tajaran/dpra,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/enlisted)
+"ZN" = (
+/obj/structure/closet/crate,
+/obj/item/storage/box/practiceshells/large,
+/obj/item/storage/box/practiceshells/large,
+/obj/item/ammo_magazine/a45/singlestack/practice,
+/obj/item/ammo_magazine/a45/singlestack/practice,
+/obj/item/ammo_magazine/a45/singlestack/practice,
+/obj/item/ammo_magazine/a45/singlestack/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/obj/item/ammo_magazine/a7_62mm/clip/practice,
+/turf/simulated/floor/reinforced,
+/area/sector/sky_planet/station_city/range)
 "ZZ" = (
 /obj/structure/simple_door/iron,
 /turf/simulated/floor/outdoors/rocks,
@@ -1435,6 +2692,11 @@ cf
 cf
 cf
 cf
+nq
+zH
+jj
+tN
+nq
 cf
 cf
 cf
@@ -1454,15 +2716,10 @@ cf
 cf
 cf
 cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
-cf
+nq
+LW
+LW
+nq
 cf
 cf
 "}
@@ -1629,34 +2886,34 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+Xw
+Iv
+Iv
+Iv
+Iv
+Iv
+Iv
+Iv
+LW
+zN
+nq
 dq
 cf
 "}
@@ -1811,46 +3068,46 @@ Oh
 Oh
 Oh
 Oh
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+dj
+dj
+dj
+Xw
+sK
+Xw
+VX
+Xw
+sx
+Xw
+VX
+Xw
+TI
+Iv
+hY
+uz
+Ya
+uz
+hY
+Iv
+LW
+LW
+nq
 dq
 cf
 "}
@@ -2005,46 +3262,46 @@ Oh
 Oh
 Oh
 Oh
+fG
+zX
+es
+bB
+Dp
+Dp
+Dp
+es
+Cx
+qI
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+qV
+jj
+tN
+nq
+uE
+Ta
+Ta
+sZ
+ix
+Wl
+ix
+ix
+XC
+ix
+ix
+ix
+em
+Iv
+hY
+Ya
+Ya
+Ya
+hY
+Iv
+LW
+LW
+nq
 dq
 cf
 "}
@@ -2199,46 +3456,46 @@ Oh
 Oh
 Oh
 Oh
+fG
+zX
+bB
+bB
+tV
+tV
+tV
+bB
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+by
+Ta
+Ta
+Xw
+lp
+Xw
+pP
+Xw
+ix
+Xw
+ey
+Xw
+ix
+Iv
+hY
+Ya
+Ya
+Ya
+hY
+Iv
+LW
+LW
+nq
 dq
 cf
 "}
@@ -2393,46 +3650,46 @@ Oh
 Oh
 Oh
 Oh
+fG
+zX
+BO
+bB
+tV
+tV
+tV
+bB
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+by
+Ta
+Ta
+Xw
+Xw
+Xw
+Xw
+Xw
+Es
+Xw
+Xw
+Xw
+ix
+Iv
+KD
+Ya
+Ya
+Ya
+xF
+Iv
+LW
+zN
+nq
 dq
 cf
 "}
@@ -2587,46 +3844,46 @@ Oh
 Oh
 Oh
 Oh
+fG
+zX
+bB
+bB
+tV
+tV
+tV
+bB
+ZG
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+by
+Ta
+Ta
+Xw
+sF
+Xw
+sK
+Xw
+ix
+Xw
+sF
+Xw
+ix
+Iv
+hY
+Ya
+Ya
+Ya
+hY
+Iv
+LW
+LW
+nq
 dq
 cf
 "}
@@ -2781,46 +4038,46 @@ Oh
 Oh
 Oh
 Oh
+fG
+zX
+bB
+bB
+Hy
+LH
+gE
+bB
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+uE
+Ta
+Ta
+sZ
+ix
+qw
+ix
+ix
+ix
+GM
+GM
+GM
+Gb
+Iv
+hY
+Ya
+Ya
+Ya
+hY
+Iv
+LW
+LW
+nq
 dq
 cf
 "}
@@ -2975,46 +4232,46 @@ Oh
 Oh
 Oh
 Oh
+TX
+zX
+zX
+CU
+TX
+TX
+TX
+Ni
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+BR
+BR
+BR
+Xw
+ZL
+Xw
+dk
+Xw
+ix
+WG
+GM
+Pe
+GM
+Iv
+hY
+Vs
+Vs
+Vs
+hY
+Iv
+LW
+LW
+nq
 dq
 cf
 "}
@@ -3169,46 +4426,46 @@ Oh
 Oh
 Oh
 Oh
+Nk
+bB
+bB
+bB
+Dp
+Dp
+Dp
+bB
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+nq
+nq
+nq
+pf
+pf
+pf
+pf
+pf
+pf
+GM
+GM
+GM
+GM
+RU
+Ya
+xK
+Ya
+aa
+Ya
+RU
+LW
+zN
+nq
 dq
 cf
 "}
@@ -3363,46 +4620,46 @@ Oh
 Oh
 Oh
 Oh
+Nk
+bB
+bB
+bB
+tV
+tV
+tV
+bB
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+dc
+Cj
+Jm
+pf
+rr
+pf
+rc
+pf
+pf
+Xw
+Xw
+cr
+Xw
+Iv
+hY
+nT
+Gv
+ZN
+hY
+Iv
+LW
+LW
+nq
 dq
 cf
 "}
@@ -3557,46 +4814,46 @@ Oh
 Oh
 Oh
 Oh
+Nk
+bB
+bB
+bB
+tV
+tV
+tV
+bB
+bB
+bo
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+MZ
+LW
+Jm
+pf
+xL
+FV
+DJ
+GR
+pf
+fQ
+cr
+Ta
+HZ
+YH
+Gl
+Gl
+Gl
+Gl
+Gl
+YH
+LW
+LW
+nq
 dq
 cf
 "}
@@ -3751,46 +5008,46 @@ Oh
 Oh
 Oh
 Oh
+Nk
+bB
+bB
+bB
+tV
+tV
+tV
+bB
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+qV
+jj
+tN
+nq
+zV
+LW
+rl
+pf
+pf
+pf
+DJ
+pf
+pf
+Xw
+Xw
+tJ
+HZ
+Gl
+Kb
+Kb
+Kb
+Kb
+Kb
+Gl
+LW
+LW
+nq
 dq
 cf
 "}
@@ -3945,46 +5202,46 @@ Oh
 Oh
 Oh
 Oh
+Nk
+bB
+bB
+bB
+Hy
+XT
+gE
+bB
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+Rq
+Ie
+zV
+pf
+QV
+Ir
+DJ
+hG
+pf
+fQ
+cr
+Ta
+Xc
+Gl
+Kb
+Kb
+Kb
+Kb
+Kb
+Gl
+LW
+zN
+nq
 dq
 cf
 "}
@@ -4139,46 +5396,46 @@ Oh
 Oh
 Oh
 Oh
+TX
+zX
+zX
+CU
+TX
+TX
+TX
+Ni
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+QT
+LW
+zV
+pf
+xq
+eo
+rc
+pf
+pf
+Xw
+Xw
+tJ
+HZ
+Gl
+Kb
+Kb
+Kb
+Kb
+Kb
+Gl
+LW
+LW
+nq
 dq
 cf
 "}
@@ -4333,46 +5590,46 @@ Oh
 Oh
 Oh
 Oh
+fG
+zX
+bB
+bB
+Dp
+sh
+Dp
+bB
+bB
+bB
+TX
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+zH
+jj
+tN
+nq
+zV
+LW
+Jf
+pf
+DJ
+DJ
+DJ
+jO
+pf
+fQ
+cr
+Ta
+HZ
+Gl
+Kb
+Kb
+Kb
+Kb
+Kb
+Gl
+LW
+LW
+nq
 dq
 cf
 "}
@@ -4527,46 +5784,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-TX
-TX
-dq
-TX
-dq
-TX
-TX
-TX
-dq
-TX
-TX
-dq
-dq
-TX
-TX
-TX
-TX
-TX
-TX
-TX
-TX
-TX
-TX
-TX
-TX
+fG
+zX
+BO
+bB
+tV
+tV
+tV
+bB
+bB
+bB
+nq
+nq
+nq
+nq
+KQ
+nq
+nq
+nq
+Sr
+nq
+pf
+pf
+Kr
+pf
+pf
+pf
+Xw
+Xw
+cr
+Xw
+YH
+Gl
+jL
+jL
+jL
+Gl
+YH
+LW
+LW
+nq
 dq
 cf
 "}
@@ -4721,46 +5978,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-ez
-Ll
+fG
+zX
+bB
+bB
+pc
+tV
+tV
+bB
+bB
+bB
+zL
+LW
 Cj
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
+LW
+LW
+LW
 Cj
-Ll
-Ll
-Ll
-Ll
+LW
+LW
+LW
 Cj
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
+LW
+LW
+LW
+LW
 Cj
-Ll
-TX
+bk
+bk
+bk
+bk
+qJ
+bk
+bk
+LW
+LW
+LW
+Cj
+LW
+LW
+nq
 dq
 cf
 "}
@@ -4915,46 +6172,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-TX
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-Ll
-TX
+fG
+zX
+bB
+bB
+tV
+tV
+tV
+bB
+bB
+bB
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+LW
+bk
+CW
+bk
+CW
+bk
+lw
+bk
+LW
+LW
+LW
+LW
+LW
+LW
+nq
 dq
 cf
 "}
@@ -5109,46 +6366,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-TX
-dq
-FV
-FV
-dq
-dq
-dq
-Ll
-dq
-dq
-dq
-Ll
-Ll
-zB
-So
-So
-So
-So
-So
-So
-So
-So
-So
-So
-TX
+fG
+zX
+bB
+bB
+Hy
+LH
+gE
+bB
+bB
+bB
+nq
+nq
+Ut
+nq
+nq
+nq
+nq
+LW
+Av
+nq
+pf
+pf
+Kr
+pf
+pf
+pf
+bk
+bk
+bk
+bk
+bk
+LF
+bk
+LW
+Pk
+LW
+LW
+LW
+LW
+nq
 dq
 cf
 "}
@@ -5303,46 +6560,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+TX
+zX
+wB
+CU
+TX
+TX
+TX
+Ni
+bB
+bB
+nq
+Ky
+Ds
+nq
 tf
-Ll
-Ll
-Ll
-Ll
-Ll
-TX
-Ll
-Ll
-Ll
-GR
-TX
-Ll
-Ll
-zB
-So
-So
-So
-So
-So
-So
-So
-So
-So
-So
-TX
+LW
+Ie
+LW
+LW
+LW
+pf
+DJ
+DJ
+DJ
+Eo
+pf
+bk
+Ws
+bk
+Ws
+bk
+Ws
+ut
+LW
+ba
+LW
+LW
+LW
+ba
+nq
 dq
 cf
 "}
@@ -5497,46 +6754,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-TX
+Nk
+bB
+bB
+bB
+Dp
+Dp
+Dp
+bB
+bB
+bB
+nq
+Ky
+Ds
+nq
 uw
-Ll
-Ll
-Ll
-Ll
+LW
+Xg
+Xg
+LW
 tn
-TX
+pf
 dJ
 FB
-tn
-TX
-TX
-Ll
-Ll
-zB
-So
-So
-So
-So
-So
-So
-So
-So
-So
-So
-TX
+qP
+pf
+pf
+bk
+bk
+ig
+bk
+bk
+ig
+bk
+LW
+nq
+nq
+LW
+UI
+nq
+nq
 dq
 cf
 "}
@@ -5691,46 +6948,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Ll
-Ll
+Nk
+bB
+bB
+bB
+tV
+tV
+mB
+bB
+bB
+bB
+nq
+RY
+Ds
+nq
+LW
+ez
 Yb
 Yb
-Ll
-Ll
-TX
+OD
+LW
+pf
 Iq
 Ot
-Ll
-GR
-TX
-Ll
-Ll
-zB
-So
-Gl
-Gl
-Gl
-Gl
-Gl
-Gl
-Gl
-So
-So
-TX
+DJ
+yZ
+sW
+sW
+Ik
+sW
+sW
+sW
+sW
+sW
+sW
+sW
+Ju
+LW
+LW
+if
+nq
 dq
 cf
 "}
@@ -5885,46 +7142,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-TX
-Ll
-Ll
+Nk
+bB
+bB
+bB
+tV
+tV
+tV
+bB
+ZG
+bB
+nq
+Cg
+Ds
+nq
+LW
+ez
 hK
 Yb
+OD
+LW
+pf
+pf
+pf
+DJ
+pf
+sW
 Ll
-Ll
-TX
-TX
-TX
-Ll
-TX
-TX
-Ll
-Ll
-zB
-TJ
-Kb
-WF
-bD
-bD
-bD
-Kb
-Kb
-zB
-So
-TX
+mU
+Gf
+sW
+gP
+fz
+gL
+CX
+sW
+DW
+LW
+LW
+PU
+nq
 dq
 cf
 "}
@@ -6079,46 +7336,46 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-TX
-Ll
-Ll
+Nk
+bB
+bB
+bB
+tV
+tV
+tV
+bB
+bB
+bB
+nq
+oO
+Ds
+nq
+LW
+ez
 Yb
 Yb
-Ll
-Ll
-TX
-Ll
+OD
+LW
+pf
+yV
 FV
-Ll
-GR
-dq
-Ll
-Ll
-mD
-MV
-bD
-bD
-bD
-bD
-bD
-bD
-bD
-zB
-So
-TX
+DJ
+ky
+sW
+mU
+cD
+mU
+sW
+gP
+gP
+gL
+aR
+sW
+Ju
+LW
+LW
+fH
+nq
 dq
 cf
 "}
@@ -6272,47 +7529,47 @@ Oh
 Oh
 Oh
 Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-TX
+Oh
+Nk
+bB
+JC
+bB
+Hy
+LH
+gE
+bB
+JC
+bB
+nq
+sw
+Ds
+nq
 uw
-Ll
-Ll
-Ll
-Ll
+LW
+Zg
+Zg
+LW
 tn
-TX
+pf
 aA
-TX
-tn
-TX
-TX
-Ll
-Ll
-dg
-dg
-bD
-bD
-uZ
-bD
-bD
-bD
-bD
-zB
-So
-TX
+pf
+rc
+pf
+sW
+mU
+aj
+hA
+sW
+at
+gL
+gL
+kq
+sW
+vV
+LW
+LW
+jt
+nq
 dq
 cf
 "}
@@ -6467,46 +7724,46 @@ Oh
 Oh
 Oh
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
 TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+nq
+sw
+pV
+nq
 xX
 DT
 DT
 DT
 DT
-Ll
-TX
-dq
-TX
-TX
-TX
-TX
-Ll
-Ll
-dg
-dg
-bD
-mG
-bD
-bD
-bD
-bD
-bD
-zB
-So
-TX
+LW
+pf
+pf
+pf
+pf
+pf
+sW
+mU
+Bt
+mU
+Ik
+gL
+gL
+gL
+gL
+Ik
+LW
+jz
+ba
+if
+nq
 dq
 cf
 "}
@@ -6671,36 +7928,36 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-TX
-TX
-TX
-TX
-TX
-TX
-dq
-dq
-dq
-dq
-dq
-dq
+nq
+gm
+nq
+nq
+nq
+nq
+nq
+nq
+nq
+nq
+nq
 dq
 dq
 dq
 dq
-dq
-TX
-TX
-bB
-bB
-bB
-TX
-TX
-TX
-TX
-TX
+sW
+mU
+zR
+oJ
+sW
+WH
+WH
+WH
+sW
+sW
+nq
+nq
+nq
+nq
+nq
 dq
 cf
 "}
@@ -6865,31 +8122,31 @@ dq
 dq
 dq
 dq
+Ej
+My
+Ej
+dq
+dq
+dq
+dq
+nq
+nq
 dq
 dq
 dq
 dq
 dq
 dq
-dq
-TX
-TX
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+sW
+Ik
+sW
+sW
+sW
 gL
 gL
 gL
+sW
+dq
 dq
 dq
 dq
@@ -7059,6 +8316,9 @@ dq
 dq
 dq
 dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -7071,19 +8331,16 @@ dq
 dq
 dq
 dq
+sW
+mU
+mU
+Of
+sW
+at
+tl
+Xi
+sW
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-gL
-gL
-gL
 dq
 dq
 dq
@@ -7253,6 +8510,9 @@ dq
 dq
 dq
 dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -7265,19 +8525,16 @@ dq
 dq
 dq
 dq
+sW
+qa
+Bl
+kr
+sW
+Dd
+Dd
+Dd
+sW
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-gL
-gL
-gL
 dq
 dq
 dq
@@ -7447,6 +8704,9 @@ dq
 dq
 dq
 dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -7459,19 +8719,16 @@ dq
 dq
 dq
 dq
+sW
+sW
+sW
+sW
+sW
+dE
+dE
+dE
+sW
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-Sz
-Sz
-Sz
-Sz
 dq
 dq
 dq
@@ -7641,6 +8898,9 @@ dq
 dq
 dq
 dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -7657,15 +8917,12 @@ dq
 dq
 dq
 dq
+sW
+dE
+dE
+dE
+sW
 dq
-dq
-dq
-dq
-Sz
-Sz
-Oh
-Oh
-Sz
 dq
 dq
 dq
@@ -7835,6 +9092,9 @@ dq
 dq
 dq
 dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -7851,15 +9111,12 @@ dq
 dq
 dq
 dq
+sW
+dE
+LL
+dE
+sW
 dq
-dq
-dq
-dq
-Sz
-Oh
-Oh
-Oh
-Oh
 dq
 dq
 dq
@@ -8029,6 +9286,9 @@ dq
 dq
 dq
 dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -8045,15 +9305,12 @@ dq
 dq
 dq
 dq
+sW
+LL
+LL
+LL
+sW
 dq
-dq
-dq
-dq
-Oh
-Oh
-Oh
-Oh
-Oh
 dq
 dq
 dq
@@ -8223,6 +9480,9 @@ dq
 dq
 dq
 dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -8239,14 +9499,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-Oh
-Oh
-Oh
-Oh
+sW
+Ea
+LL
+qk
+sW
 dq
 dq
 dq
@@ -8417,9 +9674,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -8611,9 +9868,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -8805,9 +10062,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -8999,9 +10256,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -9193,9 +10450,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -9387,9 +10644,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -9566,24 +10823,24 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -9760,24 +11017,24 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+HH
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+js
+Ej
 dq
 dq
 dq
@@ -9954,24 +11211,24 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+My
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
 dq
 dq
 dq
@@ -10148,9 +11405,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -10342,9 +11599,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -10536,9 +11793,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -10730,9 +11987,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -10924,9 +12181,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -11118,9 +12375,9 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -11312,9 +12569,9 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -11506,9 +12763,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -11700,9 +12957,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -11894,9 +13151,9 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -12088,9 +13345,9 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -12282,9 +13539,9 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -12476,9 +13733,9 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -12670,9 +13927,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -12864,9 +14121,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -13058,9 +14315,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -13252,9 +14509,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -13446,9 +14703,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -13640,9 +14897,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -13834,9 +15091,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -14028,9 +15285,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -14222,9 +15479,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -14416,9 +15673,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -14610,9 +15867,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -14804,9 +16061,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -14998,9 +16255,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -15192,9 +16449,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -15386,9 +16643,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -15580,9 +16837,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -15774,9 +17031,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -15968,9 +17225,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -16162,9 +17419,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -16356,9 +17613,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -16550,9 +17807,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 Oh
 Oh
 Oh
@@ -16744,9 +18001,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 Oh
 Oh
 Oh
@@ -16938,9 +18195,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
+Ej
+My
+HQ
 Oh
 Oh
 Oh
@@ -17132,9 +18389,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
+Ej
+My
+HQ
 Oh
 Oh
 Oh
@@ -17326,9 +18583,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
+Ej
+My
+HQ
 Oh
 Oh
 Oh
@@ -17520,9 +18777,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
+Ej
+My
+HQ
 Oh
 Oh
 Oh
@@ -17714,9 +18971,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
+Ej
+My
+HQ
 Oh
 Oh
 Oh
@@ -17908,9 +19165,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
+Ej
+My
+HQ
 Oh
 Oh
 Oh
@@ -18102,9 +19359,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
+Ej
+My
+HQ
 Oh
 Oh
 Oh
@@ -18296,9 +19553,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 Oh
 Oh
 Oh
@@ -18490,9 +19747,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 Oh
 Oh
 Oh
@@ -18684,9 +19941,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -18878,9 +20135,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -19072,9 +20329,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -19266,9 +20523,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -19460,9 +20717,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -19654,9 +20911,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -19848,9 +21105,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -20042,9 +21299,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -20236,9 +21493,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -20430,9 +21687,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -20624,9 +21881,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -20715,7 +21972,7 @@ dq
 dq
 aN
 FY
-FY
+SG
 Ac
 aN
 Wv
@@ -20818,9 +22075,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -21012,9 +22269,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -21206,9 +22463,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -21400,9 +22657,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -21560,43 +22817,43 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -21754,43 +23011,43 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+HH
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+js
+Ej
 dq
 dq
 dq
@@ -21885,7 +23142,7 @@ Lf
 px
 jr
 jr
-SG
+jr
 eC
 Oh
 Oh
@@ -21948,43 +23205,43 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+My
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
 dq
 dq
 dq
@@ -22142,9 +23399,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -22336,9 +23593,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -22530,9 +23787,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -22724,9 +23981,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -22918,9 +24175,9 @@ Oh
 Oh
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -23047,7 +24304,7 @@ dq
 cY
 cY
 OS
-SG
+jr
 jr
 El
 eC
@@ -23112,9 +24369,9 @@ Oh
 Oh
 Oh
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -23306,9 +24563,9 @@ Oh
 Oh
 Oh
 dq
-dq
-dq
-dq
+Ej
+rC
+Ej
 dq
 dq
 Oh
@@ -23500,8 +24757,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -23694,8 +24951,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -23888,8 +25145,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -24082,8 +25339,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -24276,8 +25533,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -24470,8 +25727,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -24601,7 +25858,7 @@ Oh
 ev
 BE
 BE
-gi
+bU
 Yk
 Oh
 Oh
@@ -24664,8 +25921,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -24792,7 +26049,7 @@ Oh
 Oh
 Oh
 Oh
-Yk
+ev
 BE
 BE
 gi
@@ -24858,8 +26115,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -24986,7 +26243,7 @@ Oh
 Oh
 Oh
 Oh
-Yk
+ev
 xo
 El
 El
@@ -25052,8 +26309,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -25180,8 +26437,8 @@ Oh
 Oh
 Oh
 Oh
-Yk
-Mn
+ev
+gi
 BE
 BE
 Yk
@@ -25246,8 +26503,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -25374,10 +26631,10 @@ Oh
 Oh
 Oh
 Oh
-Yk
-cA
+ev
 El
 El
+El
 Yk
 Oh
 Oh
@@ -25440,8 +26697,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -25634,8 +26891,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -25765,7 +27022,7 @@ Oh
 ev
 BE
 BE
-Mn
+gi
 Yk
 Oh
 Oh
@@ -25828,8 +27085,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -25959,7 +27216,7 @@ Oh
 ev
 BE
 BE
-FT
+BE
 Yk
 Oh
 Oh
@@ -26022,8 +27279,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -26140,29 +27397,29 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 bV
 bV
 ev
 El
 El
 El
-ev
+Yk
 Sz
 Sz
-bV
-bV
-bV
-bV
-bV
-bV
+eC
+eC
+eC
+eC
+eC
+eC
 Oh
 Oh
 Oh
@@ -26216,8 +27473,8 @@ Oh
 Oh
 Oh
 Oh
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -26340,7 +27597,7 @@ xU
 xU
 xU
 xU
-xU
+DU
 xU
 xU
 bV
@@ -26348,16 +27605,16 @@ ev
 BE
 BE
 BE
-ev
+Yk
 Oh
-bV
-bV
+eC
+eC
 ev
 ev
 ev
 ev
-bV
-bV
+eC
+eC
 Oh
 Oh
 Oh
@@ -26410,8 +27667,8 @@ dq
 dq
 dq
 dq
-Oh
-Oh
+UP
+Ge
 Oh
 Oh
 Oh
@@ -26529,30 +27786,30 @@ dq
 dq
 dq
 mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 ev
 El
 El
 El
-ev
-bV
-bV
-ev
-ev
+Yk
+eC
+eC
 ev
 ev
 ev
 ev
-bV
-bV
+ev
+ev
+eC
+eC
 Oh
 Oh
 Oh
@@ -26604,9 +27861,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-Oh
+Ej
+rC
+aE
 Oh
 Oh
 Oh
@@ -26728,7 +27985,7 @@ xU
 xU
 xU
 xU
-xU
+DU
 xU
 xU
 xU
@@ -26741,12 +27998,12 @@ bV
 ev
 ev
 ev
+Cs
 ev
 ev
 ev
 ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -26798,9 +28055,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 Oh
 Oh
@@ -26916,31 +28173,31 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-ev
-El
-El
-El
-ev
-ev
-ev
-ev
-ev
-ev
-ev
-ev
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+pR
+SU
+SU
+SU
+pR
+pR
+pR
+pR
+pR
+pR
 ev
 ev
-bV
+ev
+ev
+eC
 Oh
 Oh
 Oh
@@ -26992,9 +28249,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -27116,7 +28373,7 @@ xU
 xU
 xU
 xU
-xU
+DU
 xU
 xU
 xU
@@ -27128,13 +28385,13 @@ ev
 ev
 ev
 ev
+aE
+no
+aE
+aE
+aE
 ev
-ev
-ev
-ev
-ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -27183,12 +28440,12 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+Ej
+Ej
+Ej
+My
+Ej
 dq
 dq
 Oh
@@ -27304,16 +28561,16 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 ev
 BE
 BE
@@ -27322,13 +28579,13 @@ ev
 bV
 ev
 ev
+aE
+DF
+hO
+Pt
+aE
 ev
-ev
-ev
-ev
-ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -27377,12 +28634,12 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+HH
+RI
+RI
+js
+Ej
 dq
 dq
 Oh
@@ -27504,7 +28761,7 @@ xU
 xU
 xU
 xU
-xU
+DU
 xU
 xU
 xU
@@ -27516,13 +28773,13 @@ ev
 bV
 ev
 ev
+aE
+ja
+Me
+Me
+aE
 ev
-ev
-ev
-ev
-ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -27571,12 +28828,12 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+My
+Ej
+Ej
+Ej
+Ej
 dq
 dq
 dq
@@ -27692,16 +28949,16 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-bV
-bV
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 ev
 BE
 BE
@@ -27710,13 +28967,13 @@ ev
 ev
 ev
 ev
+aE
+hl
+Me
+Me
+aE
 ev
-ev
-ev
-ev
-ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -27765,9 +29022,9 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -27892,10 +29149,10 @@ xU
 xU
 xU
 xU
+DU
 xU
 xU
-bV
-hv
+xU
 ev
 El
 El
@@ -27904,13 +29161,13 @@ ev
 ev
 ev
 ev
+aE
+SJ
+Me
+Me
+aE
 ev
-ev
-ev
-ev
-ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -27959,9 +29216,9 @@ Oh
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -28080,16 +29337,16 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-bV
-hv
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 ev
 El
 El
@@ -28098,13 +29355,13 @@ ev
 ev
 ev
 ev
+kA
+Uj
+RV
+UW
+aE
 ev
-ev
-ev
-ev
-ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -28153,9 +29410,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -28280,10 +29537,10 @@ xU
 xU
 xU
 xU
+DU
 xU
 xU
-bV
-bV
+xU
 ev
 BE
 BE
@@ -28292,13 +29549,13 @@ ev
 ev
 ev
 ev
+Me
+FS
+Um
+Fa
+aE
 ev
-ev
-ev
-ev
-ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -28347,9 +29604,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -28468,16 +29725,16 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 ev
 BE
 BE
@@ -28486,13 +29743,13 @@ ev
 bV
 ev
 ev
+aE
+FJ
+jM
+kn
+aE
 ev
-ev
-ev
-ev
-ev
-ev
-bV
+eC
 Oh
 Oh
 Oh
@@ -28538,12 +29795,12 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+Ej
+Ej
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -28668,7 +29925,7 @@ xU
 xU
 xU
 xU
-xU
+DU
 xU
 xU
 xU
@@ -28680,13 +29937,13 @@ ev
 bV
 ev
 ev
-ev
-ev
-ev
-ev
-ev
-ev
-bV
+aE
+rw
+aE
+aE
+GC
+Yk
+eC
 Oh
 Oh
 Oh
@@ -28732,12 +29989,12 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+HH
+RI
+RI
+js
+Ej
 dq
 dq
 dq
@@ -28855,17 +30112,17 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 ev
 BE
 BE
@@ -28873,10 +30130,10 @@ BE
 ev
 ev
 ev
+Yk
 ev
-ev
-ev
-ev
+oH
+vM
 ev
 ev
 ev
@@ -28926,12 +30183,12 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
+Ej
+My
+Ej
+Ej
+Ej
+Ej
 dq
 dq
 Oh
@@ -29056,7 +30313,7 @@ xU
 xU
 xU
 xU
-xU
+DU
 xU
 xU
 xU
@@ -29067,10 +30324,10 @@ El
 ev
 ev
 ev
+Yk
 ev
-ev
-ev
-ev
+oH
+vM
 ev
 ev
 ev
@@ -29120,9 +30377,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -29242,18 +30499,18 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 ev
 El
 El
@@ -29261,10 +30518,10 @@ El
 ev
 bV
 ev
+Yk
 ev
-ev
-ev
-ev
+oH
+vM
 ev
 ev
 ev
@@ -29314,9 +30571,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -29444,7 +30701,7 @@ xU
 xU
 xU
 xU
-xU
+DU
 xU
 xU
 xU
@@ -29454,14 +30711,14 @@ El
 El
 ev
 bV
+eC
+Yk
+ev
+oH
+vM
+ev
+ev
 bV
-ev
-ev
-ev
-ev
-ev
-ev
-bV
 bV
 Oh
 Oh
@@ -29508,9 +30765,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -29630,81 +30887,81 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 bV
 ev
 BE
 BE
 BE
-ev
+Yk
 Oh
 bV
 bV
 ev
-ev
-ev
-ev
-bV
-bV
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+oH
+vx
+kP
+fD
+fD
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+yS
+aE
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+My
+Ej
 dq
 dq
 dq
@@ -29832,73 +31089,73 @@ xU
 xU
 xU
 xU
-xU
+DU
 xU
 bV
 bV
-ev
+Yk
 BE
 BE
 BE
-ev
+Yk
 Sz
 Sz
 bV
 bV
-bV
-bV
-bV
-bV
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+MQ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+wZ
+GJ
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+RI
+js
+Ej
 dq
 dq
 dq
@@ -30017,82 +31274,82 @@ dq
 dq
 dq
 dq
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
-mb
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+FO
 bV
 bV
 Oh
-ev
+Yk
+cA
 El
-El
-El
-ev
+cA
+Yk
 Oh
 Oh
 Oh
 Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-Oh
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+tq
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
+Ej
 dq
 dq
 dq

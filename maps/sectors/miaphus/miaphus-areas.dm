@@ -256,3 +256,9 @@
 
 /area/sector/miaphus/beach/desert/poi/piratehideout
 	name = "Miaphus'irra - Pirate Hideout"
+
+/area/sector/miaphus/beach/desert/poi/bandit_mines
+	name = "Miaphus'irra - Abandoned Mining Facility"
+
+/area/sector/miaphus/beach/desert/poi/guerilla_mountains
+	name = "Miaphus'irra - Isolated Mountains"

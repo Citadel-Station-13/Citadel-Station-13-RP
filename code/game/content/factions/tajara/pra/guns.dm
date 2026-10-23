@@ -7,7 +7,7 @@ The creation of the PRA was a result of the rapid social changes on Adhomai brou
 Despite the successes of the counter revolutions they are still the largest and most advanced Tajara nation. Though they are
 signifcantly behind human nations when it comes to energy weapons they aren't far behind in terms of ballistics.
 They also share idealogical and economic connections to the Interplanetary Worker's League one of the most powerful
-members of the Orion Confederation, who have greatly influenced their weaposn development. PRA weapons therefore
+members of the Orion Confederation, who have greatly influenced their weapons development. PRA weapons therefore
 are heavily influenced by Soviet futurism and other depictions of future soviet/socialist states.*/
 
 ///////////////////
@@ -55,3 +55,46 @@ are heavily influenced by Soviet futurism and other depictions of future soviet/
 	wielded_item_state = "k25-wielded"
 	render_use_legacy_by_default = FALSE
 
+///////////////////
+//Energy
+///////////////////
+
+/obj/item/gun/projectile/energy/frontier/taj
+	name = "Adhomai crank laser"
+	desc = "The \"Icelance\" crank charged laser rifle, produced by the Hadii-Wrack group for the People's Republic of Adhomai's Grand People's Army."
+	icon = 'icons/content/factions/tajara/items/guns/taj_frontier.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_frontier.dmi'
+	icon_state = "phaser"
+	item_state = "phaser"
+	wielded_item_state = "phaser-taj"
+	charge_cost = POWER_CELL_CAPACITY_WEAPON / 3
+	phase_power = POWER_CELL_CAPACITY_WEAPON / 3
+
+	projectile_type = /obj/projectile/beam/midlaser
+
+
+	firemodes = list()
+
+/obj/item/gun/projectile/energy/frontier/taj/on_attack_hand(datum/event_args/actor/clickchain/clickchain, clickchain_flags)
+	. = ..()
+	if(. & CLICKCHAIN_FLAGS_INTERACT_ABORT)
+		return
+	if(!clickchain.performer.inventory.count_empty_hands())
+		return
+	var/mob/user = clickchain.performer
+	if(recharging)
+		return
+	. |= CLICKCHAIN_DID_SOMETHING
+	recharging = 1
+	update_icon()
+	user.visible_message("<span class='notice'>[user] begins to turn the crank of \the [src].</span>", \
+						"<span class='notice'>You begins to turn the crank of \the [src].</span>")
+	while(recharging)
+		if(!do_after(user, 10, src))
+			break
+		playsound(get_turf(src),'sound/items/change_drill.ogg',25,1)
+		if(obj_cell_slot?.cell?.give(phase_power) < phase_power)
+			break
+
+	recharging = 0
+	update_icon()

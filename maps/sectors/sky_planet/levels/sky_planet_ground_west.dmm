@@ -1,8 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ad" = (
-/obj/structure/metal_edge,
-/turf/simulated/floor/water/acid/outdoors,
-/area/sector/sky_planet/rock)
+"ae" = (
+/obj/machinery/vending/wallmed1/public,
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/outpost)
 "ai" = (
 /turf/simulated/floor/water/blood,
 /area/sector/sky_planet/rock)
@@ -27,23 +27,17 @@
 	},
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
-"aR" = (
-/mob/living/simple_mob/mechanical/hivebot,
-/turf/simulated/floor/cult,
-/area/sector/sky_planet/outpost)
 "aT" = (
 /obj/structure/salvageable/data_os,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
-"aZ" = (
-/obj/structure/railing/grey{
+/area/sector/sky_planet/station_city/power)
+"bj" = (
+/obj/machinery/light/flicker{
 	dir = 4
 	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
 "br" = (
 /turf/simulated/floor/water/acid/outdoors,
 /area/sector/sky_planet/rock)
@@ -54,7 +48,7 @@
 "bt" = (
 /obj/structure/flora/rock/rock2,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "cg" = (
 /obj/structure/cult/talisman,
 /obj/item/gps/internal/poi{
@@ -71,7 +65,7 @@
 /area/sector/sky_planet/ground)
 "cj" = (
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "co" = (
 /obj/spawner/corpse/clown/clownop/space/alt,
 /turf/simulated/floor,
@@ -98,29 +92,28 @@
 /obj/structure/fence/wooden/post,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
+"dp" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
 "dr" = (
 /obj/effect/decal/remains/human,
 /obj/item/clothing/under/rank/engineer/turtleneck,
 /obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn,
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"dL" = (
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
+"dK" = (
+/obj/machinery/light/no_nightshift{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "dR" = (
 /obj/structure/fence/wooden{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
-"eb" = (
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/structure/event/prop/excavation_drill,
-/turf/simulated/floor/cult,
-/area/sector/sky_planet/outpost)
 "ei" = (
 /obj/structure/event/prop/white_barrel,
 /obj/structure/event/prop/white_barrel{
@@ -129,9 +122,15 @@
 	},
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
-"eX" = (
-/obj/structure/stairs/spawner/west,
-/turf/simulated/floor/cult,
+"eJ" = (
+/turf/simulated/shuttle/wall/voidcraft/green,
+/area/turbolift/skyplanet_outpost/lower)
+"eN" = (
+/obj/structure/table/standard,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
+/turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost)
 "fe" = (
 /turf/simulated/wall/solidrock,
@@ -140,32 +139,10 @@
 /mob/living/simple_mob/mechanical/hivebot/ranged_damage,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
-"fn" = (
-/obj/structure/catwalk,
-/obj/structure/stairs/spawner/north,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
-"fu" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
 "fy" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/ground)
-"fD" = (
-/mob/living/simple_mob/mechanical/hivebot/support/commander,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
-"fJ" = (
-/obj/structure/prop/alien/power,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
 "gi" = (
 /obj/structure/flora/rock/rock2,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -180,12 +157,6 @@
 	},
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
-"gN" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
 "gV" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/outpost)
@@ -193,32 +164,6 @@
 /obj/structure/fence/wooden{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
-"hm" = (
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
-"hn" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/dirt/outdoors,
-/area/sector/sky_planet/ground)
-"hx" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
-"hy" = (
-/obj/spawner/corpse/tajara/dra_soldier,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "hB" = (
@@ -242,25 +187,28 @@
 /area/sector/sky_planet/ground)
 "id" = (
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "if" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"iB" = (
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
+"in" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper,
+/turf/simulated/floor/tiled/old_tile/gray,
+/area/sector/sky_planet/station_city/power)
 "iH" = (
 /obj/structure/event/prop/light3,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
-"iJ" = (
-/obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
+/area/sector/sky_planet/station_city/power)
+"jp" = (
+/obj/machinery/door/airlock/lift{
+	req_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/skyplanet_outpost/lower)
 "jq" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -271,7 +219,11 @@
 "jx" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
+"jz" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "jR" = (
 /obj/structure/flora/rock/rock1,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
@@ -284,18 +236,21 @@
 /obj/structure/flora/rock/rock1,
 /turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/ground)
+"jZ" = (
+/turf/simulated/floor/concrete/indoors,
+/area/sector/sky_planet/station_city/power)
+"kx" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
 "kP" = (
 /obj/structure/flora/rock/rock4,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
-"ld" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/backline,
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
 "ls" = (
 /obj/structure/railing/grey,
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
 "lt" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
@@ -306,10 +261,6 @@
 /mob/living/simple_mob/aggressive/dragoon/blue,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
-"lO" = (
-/obj/structure/prop/alien/computer/camera/flipped,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
 "mc" = (
 /obj/structure/event/prop/excavation_drill,
 /turf/simulated/floor/cult,
@@ -320,16 +271,19 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
 /area/sector/sky_planet/outpost)
-"mj" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/outpost)
+"ml" = (
+/turf/simulated/shuttle/floor/voidcraft/dark,
+/area/turbolift/skyplanet_city/lower)
 "mu" = (
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/sector/sky_planet/ground)
 "mx" = (
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/rock)
+"mz" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
 "mC" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -361,6 +315,18 @@
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
+"nA" = (
+/obj/machinery/light/no_nightshift{
+	dir = 4
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/outpost)
 "nF" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/dirt/outdoors,
@@ -373,6 +339,9 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
+"ol" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/skyplanet_outpost/lower)
 "on" = (
 /obj/machinery/light/spot/flicker{
 	dir = 1
@@ -380,10 +349,15 @@
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
 "oG" = (
-/obj/machinery/door/airlock/multi_tile{
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	frequency = 1379;
+	on = 1;
+	scrub_id = "central_airlock_scrubber"
+	},
+/obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/cult,
+/turf/simulated/floor,
 /area/sector/sky_planet/outpost)
 "oR" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power/on,
@@ -396,10 +370,12 @@
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/rock)
-"pQ" = (
-/obj/machinery/porta_turret/alien/destroyed,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
+"px" = (
+/obj/machinery/vending/wallmed1/public{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/outpost)
 "pW" = (
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
@@ -419,27 +395,16 @@
 /obj/item/clothing/under/overalls_fem,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
-"qh" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
-"qj" = (
-/turf/simulated/lava,
-/area/sector/sky_planet/rock)
 "qm" = (
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/ground)
 "qv" = (
 /turf/simulated/shuttle/wall/voidcraft/survival,
 /area/sector/sky_planet/ground)
-"qz" = (
-/mob/living/simple_mob/mechanical/hivebot,
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
 "qD" = (
 /obj/spawner/window/full,
 /turf/simulated/floor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "qH" = (
 /obj/machinery/atmospherics/pipe/cap/hidden,
 /turf/simulated/wall/r_wall,
@@ -459,32 +424,45 @@
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
 "rF" = (
-/obj/structure/catwalk,
-/obj/structure/railing/grey,
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
 "rJ" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
+"rO" = (
+/turf/simulated/floor/tiled/old_tile/gray,
+/area/sector/sky_planet/station_city/power)
 "sa" = (
 /obj/machinery/light/small/flicker{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "sb" = (
 /obj/structure/table/survival_pod,
 /obj/random/cash,
 /obj/random/cash,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/ground)
+"si" = (
+/obj/structure/sandbag,
+/obj/machinery/light/flicker,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
+"sx" = (
+/turf/simulated/wall/r_wall,
+/area/sector/sky_planet/station_city/power)
 "sB" = (
 /obj/structure/flora/rock,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
+"sD" = (
+/obj/turbolift_map_holder/skyplanet_city,
+/turf/simulated/shuttle/floor/voidcraft/dark,
+/area/turbolift/skyplanet_city/lower)
 "sM" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 1
@@ -499,22 +477,9 @@
 /obj/structure/cult/tome,
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/rock)
-"ty" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
-"ue" = (
-/obj/structure/railing/grey,
-/obj/structure/catwalk,
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
-"um" = (
-/obj/structure/flora/rock/rock3,
-/obj/structure/event/prop/light3,
-/turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+"tI" = (
+/turf/simulated/shuttle/wall/voidcraft/red/hard_corner,
+/area/turbolift/skyplanet_city/lower)
 "uC" = (
 /obj/machinery/atmospherics/pipe/cap/hidden{
 	dir = 1
@@ -529,16 +494,6 @@
 /mob/living/simple_mob/aggressive/dragoon/red,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
-"uT" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/outpost)
-"vg" = (
-/obj/structure/table/alien,
-/obj/item/clothing/suit/armor/alien,
-/obj/item/clothing/head/helmet/alien,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
 "vi" = (
 /obj/machinery/mining/brace{
 	dir = 4
@@ -551,11 +506,6 @@
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"vo" = (
-/obj/structure/metal_edge,
-/mob/living/simple_mob/mechanical/hivebot/miner,
-/turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
 "vw" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -565,12 +515,6 @@
 "vG" = (
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/outpost)
-"vM" = (
-/obj/structure/railing/grey,
-/obj/structure/catwalk,
-/mob/living/simple_mob/mechanical/hivebot/miner,
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
 "vO" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/machinery/light_construct,
@@ -579,21 +523,21 @@
 "we" = (
 /obj/structure/salvageable/console_broken_os,
 /turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
-"wk" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
-"wT" = (
-/obj/structure/flora/rock/rock3,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
+/area/sector/sky_planet/station_city/power)
+"ws" = (
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
+"wU" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols,
+/turf/simulated/floor/outdoors/dirt/indoors,
+/area/sector/sky_planet/station_city/power)
 "wW" = (
 /obj/structure/salvageable/console_broken_os{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "xy" = (
 /obj/effect/debris/cleanable/blood/gibs/robot,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -632,10 +576,6 @@
 /obj/structure/sandbag,
 /turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/ground)
-"yf" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/cult,
-/area/sector/sky_planet/outpost)
 "yo" = (
 /obj/structure/fence/wooden/end{
 	dir = 4
@@ -661,10 +601,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/outpost)
-"yS" = (
-/obj/machinery/porta_turret/alien/abductor,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
 "yY" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/matriarch,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -678,6 +614,12 @@
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
+"zc" = (
+/obj/machinery/light/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "zh" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -690,22 +632,11 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/water/acid/outdoors,
 /area/sector/sky_planet/ground)
-"zJ" = (
-/obj/structure/flora/rock/rock3,
-/turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
 "Am" = (
 /obj/structure/table/reinforced,
 /obj/random/multiple/treasure,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
-"Ao" = (
-/turf/simulated/shuttle/floor/alien,
-/area/sector/sky_planet/rock)
-"As" = (
-/mob/living/simple_mob/mechanical/hivebot/support/logistics,
-/turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Au" = (
 /obj/machinery/floodlight{
 	on = 1
@@ -736,24 +667,28 @@
 /obj/structure/metal_edge,
 /obj/structure/event/prop/light3,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "AS" = (
 /obj/structure/flora/rock/alternative_1,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
-"BJ" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser,
-/turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+"BK" = (
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "BV" = (
 /obj/machinery/atmospherics/portables_connector,
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"BX" = (
-/obj/effect/floor_decal/industrial/halfstair{
+"BZ" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/multi_tile/metal{
 	dir = 1
 	},
-/turf/simulated/floor/cult,
+/turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost)
 "Cb" = (
 /obj/structure/table/steel,
@@ -766,10 +701,6 @@
 /obj/item/pickaxe/drill,
 /obj/random/multiple/miningdrills,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
-/area/sector/sky_planet/rock)
-"Cy" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/backline,
-/turf/simulated/floor/outdoors/dirt/indoors,
 /area/sector/sky_planet/rock)
 "CA" = (
 /obj/structure/bed/chair/pew/right{
@@ -794,14 +725,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/indoors,
 /area/sector/sky_planet/outpost)
-"Dp" = (
-/obj/structure/bed/alien,
-/turf/simulated/shuttle/floor/alien,
-/area/sector/sky_planet/rock)
 "DG" = (
 /obj/machinery/power/rtg/advanced,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "DK" = (
 /obj/effect/water{
 	color = "#8DAF6A";
@@ -809,6 +736,10 @@
 	},
 /turf/simulated/floor/water/acid/outdoors,
 /area/sector/sky_planet/ground)
+"DX" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "Eo" = (
 /obj/structure/flora/rock/rock2,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -841,11 +772,6 @@
 "ET" = (
 /turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/rock)
-"Fg" = (
-/obj/structure/railing/grey,
-/obj/structure/event/prop/excavation_drill,
-/turf/simulated/floor/cult,
-/area/sector/sky_planet/outpost)
 "Fl" = (
 /obj/spawner/window/full/firelocks,
 /turf/simulated/floor,
@@ -856,12 +782,6 @@
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/rock)
-"Fu" = (
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
 "Fy" = (
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
@@ -886,21 +806,19 @@
 "Gb" = (
 /obj/structure/salvageable/console_broken_os,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Gs" = (
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
 /obj/structure/salvageable/server_os,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Gt" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light/small/flicker{
-	dir = 8
-	},
+/obj/machinery/light/flicker,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "GK" = (
 /obj/structure/flora/rock/rock1,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -913,19 +831,14 @@
 /mob/living/simple_mob/mechanical/corrupt_maint_drone,
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"GV" = (
-/obj/structure/table/alien,
-/obj/item/gun/projectile/energy/alien,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
-"Hm" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
+"Hc" = (
+/obj/structure/dispenser/oxygen,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "Hz" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "HC" = (
 /obj/effect/debris/cleanable/blood/gibs/core,
 /turf/simulated/floor/cult,
@@ -933,7 +846,7 @@
 "HF" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "HH" = (
 /obj/structure/fence/wooden/end{
 	dir = 1
@@ -952,19 +865,15 @@
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
 "HT" = (
-/turf/simulated/floor/tiled/techfloor/virgo2,
+/turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost)
 "Ih" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
 /turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Il" = (
 /obj/structure/flora/rock/alternative_1,
 /turf/simulated/floor/outdoors/dirt/outdoors,
-/area/sector/sky_planet/ground)
-"Iw" = (
-/obj/structure/flora/rock/rock3,
-/obj/structure/flora/rock/rock1,
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "IG" = (
 /obj/structure/flora/rock/alternative_1,
@@ -976,7 +885,7 @@
 /area/sector/sky_planet/ground)
 "IW" = (
 /obj/structure/ore_box,
-/turf/simulated/floor/cult,
+/turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost)
 "IY" = (
 /obj/structure/loot_pile/surface/bones,
@@ -1011,17 +920,13 @@
 "Jv" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/projectile/energy/phasegun/cannon,
-/obj/item/gun/projectile/ballistic/automatic/tommygun,
 /obj/item/gun/projectile/ballistic/deagle/taj,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Jz" = (
 /obj/machinery/smartfridge/survival_pod/empty,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/sector/sky_planet/ground)
-"JA" = (
-/turf/simulated/shuttle/wall/alien,
-/area/sector/sky_planet/rock)
 "JE" = (
 /turf/simulated/wall/r_wall,
 /area/sector/sky_planet/ground)
@@ -1029,7 +934,7 @@
 /obj/structure/flora/rock/rock1,
 /obj/structure/metal_edge,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "JU" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
@@ -1042,6 +947,10 @@
 /obj/effect/debris/cleanable/blood/oil/streak,
 /turf/simulated/floor/outdoors/dirt/outdoors,
 /area/sector/sky_planet/ground)
+"Kr" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "KI" = (
 /obj/structure/closet/crate/corporate/nanotrasen,
 /obj/item/towel/random,
@@ -1057,16 +966,14 @@
 	},
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/rock)
-"KP" = (
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
 "KS" = (
 /obj/effect/debris/cleanable/blood/gibs,
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/rock)
+"Ld" = (
+/obj/spawner/window/low_wall/firelocks,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "Ll" = (
 /obj/machinery/light_construct,
 /turf/simulated/floor,
@@ -1076,6 +983,10 @@
 /obj/random/weapon/guarenteed,
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
+"LM" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sawn_rifle,
+/turf/simulated/floor/outdoors/dirt/indoors,
+/area/sector/sky_planet/station_city/power)
 "LR" = (
 /obj/structure/fence/wooden/end,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -1086,14 +997,6 @@
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"LW" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
-"LY" = (
-/obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
 "Mh" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -1104,10 +1007,6 @@
 /obj/structure/loot_pile/mecha/honker,
 /turf/simulated/floor,
 /area/sector/sky_planet/rock)
-"Ml" = (
-/obj/structure/flora/rock/rock3,
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
-/area/sector/sky_planet/ground)
 "Mw" = (
 /obj/structure/flora/rock/rock2,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
@@ -1118,10 +1017,14 @@
 	},
 /obj/structure/salvageable/data_os,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
+"ML" = (
+/turf/simulated/mineral/cave,
+/area/sector/sky_planet/station_city/power)
 "MM" = (
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "MO" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 5
@@ -1134,10 +1037,6 @@
 	},
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"Nf" = (
-/obj/structure/prop/alien/computer/camera,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
 "Nh" = (
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
@@ -1149,22 +1048,16 @@
 /obj/machinery/mining/drill,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
-"NA" = (
-/obj/structure/prop/alien/computer,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
+"NC" = (
+/obj/machinery/door/airlock/glass/civilian,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "NJ" = (
 /mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "NU" = (
 /turf/simulated/floor,
-/area/sector/sky_planet/ground)
-"NV" = (
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "Of" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -1191,19 +1084,24 @@
 	},
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
-"OF" = (
-/mob/living/simple_mob/mechanical/hivebot/sword,
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/sector/sky_planet/rock)
 "ON" = (
 /mob/living/simple_mob/mechanical/combat_drone/lesser,
 /turf/simulated/floor,
 /area/sector/sky_planet/outpost)
-"Pu" = (
-/obj/structure/flora/rock/rock2,
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
+"Pd" = (
+/obj/structure/event/prop/excavation_drill,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
+"Pi" = (
+/obj/machinery/light/flicker,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
+"Pl" = (
+/obj/machinery/light/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/station_city/power)
 "PH" = (
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 4
@@ -1213,12 +1111,11 @@
 "PI" = (
 /obj/structure/salvageable/machine_os,
 /turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/rock)
-"PM" = (
-/obj/effect/debris/cleanable/blood,
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
+"PO" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat,
+/turf/simulated/floor/outdoors/dirt/indoors,
+/area/sector/sky_planet/station_city/power)
 "Qm" = (
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
@@ -1226,23 +1123,23 @@
 /obj/spawner/corpse/clown/clownop/space,
 /turf/simulated/floor,
 /area/sector/sky_planet/rock)
+"Qq" = (
+/obj/turbolift_map_holder/skyplanet_outpost,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/skyplanet_outpost/lower)
 "Qr" = (
 /obj/structure/salvageable/implant_container_os,
 /turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Qs" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
-"QD" = (
-/obj/structure/railing/grey,
-/turf/simulated/floor/water/acid/outdoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "QE" = (
 /obj/machinery/door/airlock/multi_tile{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/virgo2,
+/turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost)
 "QG" = (
 /turf/simulated/floor/water/acid/outdoors,
@@ -1284,19 +1181,13 @@
 "Rm" = (
 /obj/structure/flora/rock/rock1,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Rn" = (
 /turf/simulated/floor/outdoors/ash_sand/indoors,
 /area/sector/sky_planet/rock)
 "Rp" = (
 /obj/structure/flora/rock/rock4,
 /turf/simulated/floor/outdoors/dirt/outdoors,
-/area/sector/sky_planet/ground)
-"Rq" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
 "Rs" = (
 /obj/structure/fence/wooden/post{
@@ -1308,6 +1199,18 @@
 /obj/structure/loot_pile/surface/bones,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/ground)
+"RD" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols/merc_faction,
+/turf/simulated/floor/tiled/monotechmaint,
+/area/sector/sky_planet/station_city/power)
+"RZ" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
+"Sb" = (
+/obj/machinery/suit_storage_unit,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "Sg" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor,
@@ -1315,7 +1218,7 @@
 "Si" = (
 /obj/structure/flora/rock/rock4,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Su" = (
 /obj/structure/event/prop/yellow_barrel{
 	pixel_x = 9
@@ -1333,7 +1236,7 @@
 "SH" = (
 /obj/structure/metal_edge,
 /turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "SR" = (
 /mob/living/simple_mob/construct/wraith,
 /turf/simulated/floor/cult,
@@ -1349,11 +1252,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
-"Tv" = (
-/mob/living/simple_mob/mechanical/hivebot/ranged_damage/scorcher,
-/turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "Tw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/virusdish/random,
@@ -1384,7 +1283,7 @@
 "TR" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/old_tile/gray,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "TS" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor,
@@ -1393,13 +1292,22 @@
 /obj/structure/loot_pile/mecha/ripley,
 /turf/simulated/floor/outdoors/rocks/outdoors,
 /area/sector/sky_planet/rock)
+"TX" = (
+/obj/machinery/light/small/emergency{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "Ub" = (
-/obj/structure/prop/alien/pod,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
+/obj/machinery/door/airlock/lift{
+	req_access = null
+	},
+/obj/map_helper/access_helper/airlock/station/engineering/department,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/skyplanet_city/lower)
 "Ud" = (
-/turf/simulated/shuttle/wall/alien/hard_corner,
-/area/sector/sky_planet/rock)
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/turbolift/skyplanet_city/lower)
 "Ul" = (
 /obj/item/gps/survival/on,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -1432,6 +1340,13 @@
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_dirty/indoors,
 /area/sector/sky_planet/outpost)
+"Ve" = (
+/obj/machinery/power/thermoregulator,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/sector/sky_planet/outpost)
 "Vr" = (
 /obj/effect/debris/cleanable/blood/oil/streak,
 /turf/simulated/floor/outdoors/rocks/outdoors,
@@ -1441,16 +1356,15 @@
 /obj/random/multiple/miningdrills,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
-"VB" = (
-/obj/structure/flora/rock/rock3,
-/turf/simulated/floor/outdoors/dirt/outdoors,
-/area/sector/sky_planet/ground)
-"VE" = (
-/obj/structure/alien/egg,
-/turf/simulated/shuttle/floor/alienplating,
-/area/sector/sky_planet/rock)
 "VG" = (
-/turf/simulated/floor/cult,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
+"VI" = (
+/obj/machinery/light/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/sector/sky_planet/outpost)
 "Wc" = (
 /obj/machinery/mining/brace{
@@ -1462,7 +1376,7 @@
 /obj/spawner/window/full,
 /obj/structure/table/reinforced,
 /turf/simulated/floor,
-/area/sector/sky_planet/rock)
+/area/sector/sky_planet/station_city/power)
 "WE" = (
 /obj/structure/closet/crate/corporate/nanotrasen,
 /obj/random/mre,
@@ -1479,6 +1393,13 @@
 /obj/spawner/window/low_wall/borosillicate/reinforced/firelocks,
 /turf/simulated/floor,
 /area/sector/sky_planet/rock)
+"WS" = (
+/obj/structure/table/standard,
+/obj/random/toolbox,
+/obj/random/toolbox,
+/obj/random/toolbox,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "WX" = (
 /obj/item/paper{
 	info = "Congratulation on the purchase of your new Car ! :D Drive carefully c:";
@@ -1486,6 +1407,9 @@
 	},
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
+"Xb" = (
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/turbolift/skyplanet_outpost/lower)
 "Xd" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/cash,
@@ -1493,14 +1417,16 @@
 /area/sector/sky_planet/rock)
 "Xh" = (
 /obj/structure/fans/tiny,
-/turf/simulated/floor/cult,
-/area/sector/sky_planet/outpost)
-"Xi" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
+/obj/machinery/door/airlock/multi_tile/metal{
+	dir = 8
 	},
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
+"Xj" = (
+/obj/structure/table/standard,
+/obj/machinery/cell_charger,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "Xm" = (
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/matriarch,
 /turf/simulated/floor,
@@ -1509,6 +1435,10 @@
 /obj/structure/event/prop/mining_truck,
 /turf/simulated/floor/outdoors/ash_sand/outdoors,
 /area/sector/sky_planet/ground)
+"Xy" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/outdoors/dirt/indoors,
+/area/sector/sky_planet/station_city/power)
 "XK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -1522,14 +1452,11 @@
 /obj/structure/simple_door/cult,
 /turf/simulated/floor/cult,
 /area/sector/sky_planet/rock)
-"Yt" = (
-/mob/living/simple_mob/mechanical/hivebot/miner,
-/turf/simulated/floor/outdoors/dirt/indoors,
-/area/sector/sky_planet/rock)
-"Yu" = (
-/obj/spawner/corpse/tajara/dra_soldier,
-/turf/simulated/floor/outdoors/rocks/outdoors,
-/area/sector/sky_planet/ground)
+"Yv" = (
+/obj/machinery/light/no_nightshift,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/tiled/techfloor,
+/area/sector/sky_planet/outpost)
 "YD" = (
 /obj/structure/fence/wooden/post{
 	dir = 4
@@ -1559,10 +1486,6 @@
 "Zw" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/outdoors/ash_sand/indoors,
-/area/sector/sky_planet/rock)
-"Zx" = (
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor,
 /area/sector/sky_planet/rock)
 
 (1,1,1) = {"
@@ -9591,9 +9514,9 @@ XN
 Qm
 Qm
 XN
-hn
-ty
-NV
+jr
+jr
+jr
 Qm
 Qm
 Qm
@@ -9784,10 +9707,10 @@ Qm
 Qm
 Qm
 jr
-JE
-fn
-qh
-qh
+jr
+jr
+jr
+jr
 yC
 Qm
 Qm
@@ -9810,7 +9733,7 @@ Qm
 Qm
 Qm
 Qm
-Ml
+Qm
 Qm
 jr
 gV
@@ -9977,12 +9900,12 @@ Qm
 jr
 Qm
 Qm
-Qm
-JE
-fn
-qh
-qh
-fu
+jr
+jr
+jr
+jr
+jr
+jr
 Qm
 Qm
 jr
@@ -10000,7 +9923,7 @@ Mw
 Qm
 Qm
 Qm
-wT
+jr
 Qm
 Qm
 Qm
@@ -10172,12 +10095,12 @@ Qm
 Qm
 Qm
 Qm
-JE
+jr
 gV
-qh
-qh
-Hm
-aZ
+jr
+jr
+jr
+jr
 Qm
 Au
 Qm
@@ -10361,7 +10284,7 @@ XN
 XN
 jr
 Qm
-Ml
+Qm
 Qm
 Qm
 Qm
@@ -10369,10 +10292,10 @@ Qm
 gV
 gV
 gV
-qh
-Hm
-Hm
-aZ
+jr
+jr
+jr
+jr
 Qm
 Qm
 TB
@@ -10395,13 +10318,13 @@ Qm
 gV
 gV
 gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
+Sb
+HT
+WS
+eN
+Xj
+HT
+Kr
 gV
 gV
 gV
@@ -10564,10 +10487,10 @@ gV
 gV
 gV
 gV
-qh
-Hm
-Hm
-aZ
+jr
+jr
+jr
+jr
 Vz
 Qm
 Qm
@@ -10589,13 +10512,13 @@ gV
 gV
 gV
 gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
+BK
+HT
+HT
+HT
+HT
+HT
+Yv
 gV
 gV
 gV
@@ -10759,10 +10682,10 @@ gV
 gV
 gV
 gV
-qh
-Hm
-Hm
-aZ
+jr
+jr
+jr
+jr
 Qm
 Qm
 XN
@@ -10778,23 +10701,23 @@ Qm
 Qm
 Qm
 jr
+ws
 gV
 gV
 gV
 gV
+Sb
+HT
+HT
+HT
+HT
+HT
+Hc
 gV
 gV
 gV
 gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
+TX
 Qm
 jr
 Qm
@@ -10954,10 +10877,10 @@ gV
 gV
 gV
 gV
-qh
-Hm
-qh
-Fu
+jr
+jr
+jr
+jr
 Qm
 Qm
 XN
@@ -10974,19 +10897,19 @@ Qm
 jr
 gV
 gV
+oG
+oG
 gV
 gV
+NC
+Ld
+Ld
+Ld
+NC
 gV
 gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
+oG
+oG
 gV
 gV
 Qm
@@ -11149,9 +11072,9 @@ gV
 gV
 gV
 gV
-Hm
-qh
-iJ
+jr
+jr
+jr
 Qm
 Qm
 Qm
@@ -11166,23 +11089,23 @@ jr
 jr
 Qm
 jr
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
+HT
+BZ
+HT
+HT
+BZ
+dK
+HT
+HT
+HT
+HT
+HT
+dK
+BZ
+HT
+HT
+BZ
+HT
 Qm
 Qm
 Qm
@@ -11343,9 +11266,9 @@ gV
 gV
 gV
 gV
-Hm
-qh
-LY
+jr
+jr
+jr
 XN
 Qm
 Qm
@@ -11357,32 +11280,32 @@ jr
 jr
 jr
 jr
-Ml
 Qm
 Qm
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
+Qm
+HT
+VG
+HT
+HT
+VG
+HT
+HT
+HT
+HT
+HT
+HT
+HT
+VG
+HT
+HT
+VG
+HT
 Qm
 Qm
 jr
 jr
-wT
-wT
+jr
+jr
 jr
 jr
 jr
@@ -11536,10 +11459,10 @@ gV
 gV
 gV
 gV
-Hm
-Hm
-Hm
-Fu
+jr
+jr
+jr
+jr
 Qm
 Qm
 Qm
@@ -11556,26 +11479,26 @@ jr
 Qm
 gV
 gV
+Ve
+nA
 gV
 gV
+ae
+HT
+HT
+HT
+HT
+px
 gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
+nA
+Ve
 gV
 gV
 Qm
 Qm
 jr
 jr
-wT
+jr
 jr
 jr
 jr
@@ -11719,9 +11642,9 @@ Qm
 Qm
 XN
 Qm
-Ml
 Qm
 Qm
+Qm
 gV
 gV
 gV
@@ -11729,11 +11652,11 @@ gV
 gV
 gV
 gV
-Hm
-Hm
-Hm
-hx
-Ml
+jr
+jr
+jr
+jr
+Qm
 Qm
 XN
 Qm
@@ -11741,30 +11664,30 @@ Qm
 Su
 jr
 CB
-wT
 jr
 jr
+jr
 Qm
 Qm
 jr
 Qm
+ws
 gV
 gV
 gV
 gV
 gV
+Xb
+eJ
+jp
+eJ
+Xb
 gV
 gV
 gV
 gV
 gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
+TX
 Qm
 Qm
 jr
@@ -11922,10 +11845,10 @@ gV
 gV
 gV
 gV
-Hm
-Hm
-Hm
-hx
+jr
+jr
+jr
+jr
 Qm
 Qm
 XN
@@ -11948,11 +11871,11 @@ gV
 gV
 gV
 gV
-gV
-gV
-gV
-gV
-gV
+eJ
+ol
+ol
+Qq
+eJ
 gV
 gV
 gV
@@ -12115,10 +12038,10 @@ Qm
 gV
 gV
 gV
-Hm
-Hm
-Hm
-hx
+jr
+jr
+jr
+jr
 Qm
 Qm
 Qm
@@ -12142,11 +12065,11 @@ gV
 gV
 gV
 gV
-gV
-gV
-gV
-gV
-gV
+eJ
+ol
+ol
+ol
+eJ
 gV
 gV
 gV
@@ -12308,11 +12231,11 @@ Qm
 Qm
 Qm
 gV
-uT
-qh
-Hm
-hx
-Ml
+jr
+jr
+jr
+jr
+Qm
 Qm
 sS
 Qm
@@ -12336,11 +12259,11 @@ Qm
 gV
 gV
 gV
-gV
-gV
-gV
-gV
-gV
+eJ
+ol
+ol
+ol
+eJ
 gV
 gV
 gV
@@ -12501,11 +12424,11 @@ Qm
 Qm
 Qm
 Qm
-Rq
-uT
-Hm
-hx
-Qm
+jr
+jr
+jr
+jr
+jr
 Qm
 Qm
 Qm
@@ -12530,11 +12453,11 @@ Qm
 jr
 gV
 gV
-gV
-gV
-gV
-gV
-gV
+Xb
+eJ
+eJ
+eJ
+Xb
 gV
 gV
 Qm
@@ -12695,9 +12618,9 @@ jr
 Qm
 Qm
 jr
-Xi
-mj
-hx
+jr
+jr
+jr
 Qm
 Qm
 XN
@@ -12889,8 +12812,8 @@ jr
 Qm
 Qm
 Qm
-KP
-gN
+jr
+jr
 Qm
 Qm
 Qm
@@ -13096,7 +13019,7 @@ Qm
 Qm
 Qm
 Qm
-Ml
+Qm
 Qm
 Qm
 XN
@@ -13285,7 +13208,7 @@ jr
 XN
 Qm
 Qm
-Ml
+Qm
 Qm
 Qm
 Qm
@@ -14447,7 +14370,7 @@ Qm
 jr
 Qm
 Qm
-Ml
+Qm
 Qm
 jr
 jr
@@ -14641,7 +14564,7 @@ jr
 Qm
 XN
 XN
-Ml
+Qm
 XN
 jr
 jr
@@ -16447,7 +16370,7 @@ QG
 QG
 jr
 jr
-wT
+jr
 jr
 jr
 jr
@@ -17027,7 +16950,7 @@ QG
 jr
 jr
 jr
-wT
+jr
 jr
 jr
 jr
@@ -17485,7 +17408,7 @@ EK
 FV
 SB
 QP
-Zx
+QP
 EK
 EK
 EK
@@ -17608,7 +17531,7 @@ jr
 jr
 jr
 jr
-wT
+jr
 jr
 jr
 jr
@@ -17678,8 +17601,8 @@ EK
 EK
 FV
 EK
-Zx
-Zx
+QP
+QP
 EK
 EK
 EK
@@ -17872,7 +17795,7 @@ EK
 EK
 EK
 SB
-Zx
+QP
 FV
 FV
 EK
@@ -18066,7 +17989,7 @@ EK
 EK
 EK
 QP
-Zx
+QP
 FV
 FV
 EK
@@ -18209,7 +18132,7 @@ XN
 QG
 QG
 QG
-wT
+jr
 jr
 jr
 xU
@@ -18388,8 +18311,8 @@ jr
 jr
 gi
 jr
-wT
-wT
+jr
+jr
 jr
 jr
 jr
@@ -18454,7 +18377,7 @@ EK
 EK
 EK
 EK
-Zx
+QP
 EK
 EK
 EK
@@ -18601,14 +18524,14 @@ jr
 jr
 jr
 jr
-iB
 jr
 jr
 jr
 jr
 jr
-iB
-iB
+jr
+jr
+jr
 jr
 jr
 jr
@@ -18794,8 +18717,8 @@ jr
 jr
 jr
 jr
-wT
-iB
+jr
+jr
 jr
 jr
 jr
@@ -18994,7 +18917,7 @@ jr
 Qm
 Qm
 Qm
-iB
+jr
 jr
 jr
 jr
@@ -19034,7 +18957,7 @@ EK
 EK
 EK
 FV
-Zx
+QP
 QP
 Mj
 QP
@@ -19179,11 +19102,11 @@ jr
 Qm
 XN
 XN
-iB
 jr
 jr
 jr
-iB
+jr
+jr
 jr
 pW
 Qm
@@ -19191,9 +19114,9 @@ Qm
 Qm
 jr
 jr
-iB
 jr
-hm
+jr
+Qm
 Qm
 Qm
 jr
@@ -19230,8 +19153,8 @@ EK
 FV
 uG
 QP
-PM
-Zx
+uG
+QP
 EK
 EK
 EK
@@ -19328,7 +19251,7 @@ EK
 EK
 EK
 EK
-QN
+jr
 jr
 jr
 jr
@@ -19385,9 +19308,9 @@ Qm
 Qm
 jr
 jr
-iB
 jr
-Ml
+jr
+Qm
 Qm
 Qm
 Qm
@@ -19566,17 +19489,17 @@ jr
 jr
 jr
 Qm
-hm
+Qm
 XN
 nM
 jr
 jr
 Qm
-hy
+Qm
 pW
 Qm
-Ml
-Ml
+Qm
+Qm
 jr
 Qm
 Qm
@@ -19771,7 +19694,7 @@ pW
 Qm
 Qm
 jr
-iB
+jr
 jr
 Qm
 Qm
@@ -19952,13 +19875,13 @@ jr
 jr
 jr
 jr
-iB
+jr
 jr
 jR
 Qm
 Qm
 Qm
-iB
+jr
 jr
 jr
 pW
@@ -19968,7 +19891,7 @@ jr
 jr
 jr
 jr
-hm
+Qm
 Qm
 gV
 gV
@@ -20147,7 +20070,7 @@ jr
 jr
 jr
 jr
-Yu
+jr
 jr
 rn
 Qm
@@ -20158,7 +20081,7 @@ xW
 xW
 XN
 XN
-iB
+jr
 jr
 jr
 fi
@@ -20339,7 +20262,7 @@ jr
 jr
 jr
 jr
-iB
+jr
 rn
 rn
 rn
@@ -20349,11 +20272,11 @@ Qm
 Qm
 Qm
 NJ
-hm
+Qm
 XN
 XN
 Qm
-Ml
+Qm
 Qm
 Qm
 jr
@@ -20539,18 +20462,18 @@ jr
 jr
 Qm
 Qm
-hm
 Qm
 Qm
-hm
-hm
-XN
-XN
+Qm
+Qm
 Qm
 XN
+XN
 Qm
-hy
-hm
+XN
+Qm
+Qm
+Qm
 Qm
 gV
 gV
@@ -20723,7 +20646,7 @@ XN
 jr
 jr
 jr
-iB
+jr
 jr
 jr
 rn
@@ -20738,7 +20661,7 @@ Qm
 Qm
 jr
 Qm
-hm
+Qm
 Qm
 XN
 xW
@@ -20756,7 +20679,7 @@ gV
 gV
 Qm
 Qm
-Ml
+Qm
 jr
 jr
 jr
@@ -20781,8 +20704,8 @@ EK
 EK
 FV
 EK
-Zx
-Zx
+QP
+QP
 QP
 EK
 FV
@@ -20919,7 +20842,7 @@ jr
 jr
 jr
 jr
-iB
+jr
 rn
 jr
 jr
@@ -20929,7 +20852,7 @@ Qm
 Qm
 Qm
 Qm
-Ml
+Qm
 Qm
 jr
 pW
@@ -20976,7 +20899,7 @@ EK
 FV
 EK
 co
-Zx
+QP
 QP
 EK
 FV
@@ -21116,12 +21039,12 @@ jr
 jr
 rn
 jr
-Pu
+gi
 jr
 jr
 jr
 NJ
-hm
+Qm
 Qm
 jr
 Qm
@@ -21312,7 +21235,7 @@ rn
 jr
 jr
 jr
-iB
+jr
 jr
 Qm
 Qm
@@ -21322,12 +21245,12 @@ rn
 rn
 rn
 nM
-hm
+Qm
 Qm
 Qm
 jr
 jr
-hm
+Qm
 gV
 gV
 gV
@@ -21499,8 +21422,8 @@ XN
 XN
 jr
 jr
-iB
-iB
+jr
+jr
 jr
 rn
 jr
@@ -21520,7 +21443,7 @@ Qm
 Qm
 Qm
 Qm
-Ml
+Qm
 Qm
 gV
 gV
@@ -21700,8 +21623,8 @@ rn
 jr
 jr
 jr
-iB
-iB
+jr
+jr
 jr
 jr
 jr
@@ -21753,7 +21676,7 @@ FV
 EK
 QP
 QP
-Zx
+QP
 EK
 JE
 Qm
@@ -21782,7 +21705,7 @@ gV
 Qm
 Qm
 Qm
-Ml
+Qm
 Qm
 Qm
 jr
@@ -21910,7 +21833,7 @@ qm
 nM
 jr
 Qm
-hm
+Qm
 jr
 Qm
 Qm
@@ -22351,7 +22274,7 @@ QG
 QG
 jr
 jr
-Ml
+Qm
 Qm
 gV
 gV
@@ -23259,7 +23182,7 @@ jr
 jr
 rn
 jr
-iB
+jr
 jr
 jr
 XN
@@ -23320,7 +23243,7 @@ jr
 jr
 jr
 jr
-VB
+XN
 Qm
 Qm
 gV
@@ -23453,8 +23376,8 @@ jr
 jr
 rn
 jr
-iB
-iB
+jr
+jr
 jr
 XN
 Qm
@@ -23649,11 +23572,11 @@ rn
 jr
 jr
 jr
-Yu
+jr
 pW
 Qm
-Ml
-iB
+Qm
+jr
 jr
 jr
 jr
@@ -23845,10 +23768,10 @@ rn
 rn
 pW
 pW
-hm
+Qm
 XN
 jr
-iB
+jr
 jr
 jr
 jr
@@ -24029,7 +23952,7 @@ jr
 jr
 jr
 jr
-wT
+jr
 jr
 jr
 jr
@@ -24039,7 +23962,7 @@ Qm
 Qm
 Qm
 Qm
-hm
+Qm
 XN
 Qm
 jr
@@ -24232,7 +24155,7 @@ Qm
 jr
 nM
 Qm
-Ml
+Qm
 Qm
 pW
 pW
@@ -24413,7 +24336,7 @@ Qm
 jr
 jr
 jr
-wT
+jr
 jr
 jr
 jr
@@ -24621,8 +24544,8 @@ Qm
 jr
 gV
 gV
-VG
-oG
+HT
+HT
 gV
 gV
 gV
@@ -24695,7 +24618,7 @@ gV
 gV
 gV
 IG
-Ml
+Qm
 Qm
 QG
 QG
@@ -24815,7 +24738,7 @@ Qm
 gV
 gV
 gV
-Xh
+VG
 Xh
 gV
 gV
@@ -25002,15 +24925,15 @@ jr
 jr
 jr
 Qm
-Ml
+Qm
 Qm
 jr
 gV
 gV
 gV
-VG
-VG
-VG
+zc
+HT
+HT
 IW
 IW
 gV
@@ -25202,12 +25125,12 @@ Qm
 gV
 gV
 mc
-VG
-VG
-aR
+HT
+HT
+HT
 IW
 IW
-IW
+Pd
 gV
 gV
 Qm
@@ -25250,7 +25173,7 @@ Qm
 jr
 jr
 jr
-wT
+jr
 jr
 QG
 QG
@@ -25396,12 +25319,12 @@ Qm
 gV
 gV
 mc
-VG
-VG
-VG
-Fg
-gV
-gV
+HT
+HT
+HT
+HT
+DX
+Pd
 gV
 gV
 Qm
@@ -25590,12 +25513,12 @@ Qm
 gV
 gV
 mc
-aR
-VG
-VG
-Fg
-eX
-eX
+MM
+MM
+MM
+MM
+HT
+Pd
 gV
 gV
 Qm
@@ -25784,12 +25707,12 @@ Qm
 gV
 gV
 mc
-VG
-VG
-VG
-eb
-yf
-yf
+RZ
+HT
+jz
+MM
+HT
+Pd
 gV
 gV
 jr
@@ -25975,15 +25898,15 @@ jr
 jr
 Qm
 Qm
-vG
+gV
 gV
 mc
-VG
-VG
-BX
-yf
-yf
-yf
+HT
+HT
+HT
+MM
+HT
+Pd
 gV
 gV
 EK
@@ -26036,9 +25959,9 @@ jr
 jr
 Qm
 Qm
-Iw
+jR
 Qm
-Ml
+Qm
 gV
 gV
 Fy
@@ -26168,15 +26091,15 @@ jr
 jr
 jr
 Qm
-Ml
-vG
+Qm
 gV
 gV
-VG
-VG
-BX
-yf
-yf
+gV
+HT
+HT
+HT
+VI
+HT
 gV
 gV
 gV
@@ -26229,7 +26152,7 @@ jr
 jr
 jr
 jr
-Ml
+Qm
 Qm
 Qm
 IG
@@ -26366,14 +26289,14 @@ jr
 Qm
 gV
 gV
-Xh
-Xh
+HT
+HT
 gV
 gV
 gV
 gV
 gV
-jr
+EK
 EK
 EK
 EK
@@ -26566,8 +26489,8 @@ gV
 gV
 gV
 gV
-jr
-jr
+EK
+EK
 EK
 EK
 EK
@@ -26753,15 +26676,15 @@ jr
 jr
 jr
 Qm
-gV
-HT
-HT
-gV
-Qm
-Qm
-Qm
-Qm
-jr
+sx
+rF
+rF
+sx
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 EK
@@ -26800,7 +26723,7 @@ Qm
 jr
 Qm
 Qm
-wT
+jr
 QG
 QG
 QG
@@ -26947,13 +26870,13 @@ jr
 jr
 EK
 EK
-gV
-HT
-HT
-gV
-Qm
-jr
-jr
+sx
+rF
+rF
+sx
+EK
+EK
+EK
 EK
 EK
 EK
@@ -27141,13 +27064,13 @@ jr
 jr
 EK
 EK
-gV
-HT
-HT
-gV
-jr
-jr
-jr
+sx
+rF
+Pi
+sx
+EK
+EK
+EK
 EK
 EK
 EK
@@ -27326,7 +27249,7 @@ jr
 jr
 jr
 jr
-wT
+jr
 jr
 jr
 jr
@@ -27335,10 +27258,10 @@ jr
 EK
 EK
 EK
-FV
-dL
-dL
-FV
+sx
+rF
+rF
+sx
 EK
 EK
 EK
@@ -27529,10 +27452,10 @@ EK
 EK
 EK
 EK
-FV
-dL
-qz
-FV
+sx
+rF
+rF
+sx
 EK
 EK
 EK
@@ -27723,10 +27646,10 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
-FV
+sx
+rF
+rF
+sx
 EK
 EK
 EK
@@ -27797,38 +27720,6 @@ Qm
 Qm
 Qm
 jr
-wT
-AS
-jr
-QG
-QG
-QG
-QG
-QG
-QG
-QG
-jr
-jr
-jr
-jr
-jr
-jr
-Qm
-jr
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-gV
-Qm
-Qm
-Qm
-Qm
-jr
-jr
 jr
 AS
 jr
@@ -27839,6 +27730,38 @@ QG
 QG
 QG
 QG
+jr
+jr
+jr
+jr
+jr
+jr
+Qm
+jr
+gV
+gV
+gV
+gV
+gV
+gV
+gV
+gV
+Qm
+Qm
+Qm
+Qm
+jr
+jr
+jr
+AS
+jr
+QG
+QG
+QG
+QG
+QG
+QG
+QG
 QG
 QG
 QG
@@ -27917,10 +27840,10 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
-FV
+sx
+rF
+rF
+sx
 EK
 EK
 EK
@@ -27982,7 +27905,7 @@ jr
 jr
 jr
 nF
-VB
+XN
 XN
 XN
 Qm
@@ -28111,10 +28034,10 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
-FV
+sx
+rF
+Pi
+sx
 EK
 EK
 EK
@@ -28305,35 +28228,35 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-br
-br
-br
-br
-br
-br
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
+sx
+rF
+rF
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
 EK
 fe
 "}
@@ -28499,23 +28422,23 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
+sx
+rF
+rF
 WA
 Gb
-Ih
+rO
 wW
-FV
+sx
 SH
 id
 id
-br
-br
-br
-br
-br
-br
+id
+id
+id
+id
+id
+id
 id
 id
 id
@@ -28524,10 +28447,10 @@ id
 bt
 id
 id
-EK
-EK
-EK
-EK
+ML
+ML
+ML
+ML
 EK
 fe
 "}
@@ -28693,35 +28616,35 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
+sx
+rF
+rF
 TR
-wk
-Ih
-Ih
+rO
+rO
+rO
 qD
 JH
 id
-br
-br
-br
-br
-br
+id
+id
+id
+id
+id
 id
 id
 Si
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
-EK
-EK
-EK
+ML
+ML
+ML
 EK
 fe
 "}
@@ -28887,18 +28810,18 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
+sx
+rF
+rF
 WA
 Gb
-Ih
+rO
 wW
-FV
+sx
 SH
-br
-br
-br
+id
+id
+id
 id
 id
 id
@@ -28915,7 +28838,7 @@ id
 id
 id
 id
-EK
+ML
 EK
 fe
 "}
@@ -28928,7 +28851,7 @@ EK
 jr
 jr
 jr
-wT
+jr
 jr
 jr
 jr
@@ -29081,35 +29004,35 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
+sx
+rF
+rF
 Hz
 cj
 cj
 aT
 qD
-ad
-br
-br
-id
-DG
-DG
-DG
-DG
-DG
-DG
-id
-DG
-DG
-DG
-DG
-DG
-DG
+SH
 id
 id
-zJ
-EK
+id
+sx
+DG
+DG
+DG
+DG
+sx
+LM
+sx
+DG
+DG
+DG
+DG
+sx
+id
+id
+id
+ML
 EK
 fe
 "}
@@ -29122,7 +29045,7 @@ EK
 jr
 jr
 jr
-wT
+jr
 jr
 jr
 QG
@@ -29275,17 +29198,15 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
-FV
-qD
-FV
-FV
-FV
-ad
-br
-br
+sx
+rF
+rF
+sx
+sx
+sx
+sx
+sx
+SH
 id
 id
 id
@@ -29293,7 +29214,9 @@ id
 id
 id
 id
-Cy
+id
+id
+id
 id
 id
 id
@@ -29469,31 +29392,31 @@ EK
 EK
 EK
 EK
-FV
-LW
-vM
-br
-br
-br
-br
-br
-br
-br
+sx
+rF
+Pi
+sx
+sx
+sx
+LM
 id
 id
-DG
-DG
-DG
-DG
-DG
-DG
 id
+id
+id
+sx
 DG
 DG
 DG
 DG
+sx
+id
+sx
 DG
 DG
+DG
+DG
+sx
 id
 Si
 id
@@ -29663,18 +29586,17 @@ EK
 EK
 EK
 EK
-QD
-LW
-ue
-br
-br
-br
-br
-br
-br
+sx
+rF
+rF
+sx
+sx
+sx
+wU
+id
+id
 id
 Rm
-Yt
 id
 id
 id
@@ -29685,7 +29607,8 @@ id
 id
 id
 id
-Yt
+id
+id
 id
 id
 id
@@ -29855,33 +29778,33 @@ EK
 EK
 EK
 EK
-br
-br
-QD
-LW
-ue
+EK
+EK
+sx
+rF
+ls
 SH
 id
-br
-br
-br
+id
+id
+id
 id
 iH
-zJ
 id
-DG
-DG
-DG
-DG
-DG
-DG
 id
+sx
 DG
 DG
 DG
 DG
+sx
+id
+sx
 DG
 DG
+DG
+DG
+sx
 id
 id
 id
@@ -29895,7 +29818,7 @@ EK
 EK
 EK
 jr
-wT
+jr
 jr
 jr
 jr
@@ -30047,13 +29970,13 @@ EK
 EK
 EK
 EK
-br
-br
-br
-br
-FV
-dL
-dL
+EK
+EK
+EK
+EK
+sx
+rF
+rF
 Qs
 id
 id
@@ -30066,7 +29989,6 @@ id
 id
 id
 id
-zJ
 id
 id
 id
@@ -30079,7 +30001,8 @@ id
 id
 id
 id
-EK
+id
+ML
 EK
 fe
 "}
@@ -30240,40 +30163,40 @@ EK
 EK
 EK
 EK
-br
-br
-br
-br
 EK
-FV
-dL
-dL
+EK
+EK
+EK
+EK
+sx
+rF
+rF
 Qs
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
-zJ
+LM
 id
-EK
+ML
 EK
 fe
 "}
@@ -30434,13 +30357,13 @@ EK
 EK
 EK
 EK
-br
 EK
 EK
 EK
 EK
-FV
-dL
+EK
+sx
+rF
 ls
 SH
 id
@@ -30457,7 +30380,6 @@ id
 id
 id
 id
-zJ
 id
 id
 id
@@ -30467,7 +30389,8 @@ id
 id
 id
 id
-EK
+id
+ML
 EK
 fe
 "}
@@ -30627,41 +30550,41 @@ EK
 EK
 EK
 EK
-br
-br
 EK
 EK
 EK
 EK
-FV
-dL
+EK
+EK
+sx
+rF
 ls
 SH
 Si
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
+sx
 DG
 DG
 DG
 DG
+sx
+LM
+sx
 DG
 DG
+DG
+DG
+sx
 id
-DG
-DG
-DG
-DG
-DG
-DG
 id
-id
-EK
-EK
+ML
+ML
 EK
 fe
 "}
@@ -30821,14 +30744,14 @@ EK
 EK
 EK
 EK
-br
-br
 EK
 EK
 EK
 EK
-FV
-dL
+EK
+EK
+sx
+rF
 ls
 SH
 id
@@ -30836,7 +30759,6 @@ id
 id
 id
 id
-Yt
 id
 id
 id
@@ -30854,8 +30776,9 @@ id
 id
 id
 id
-EK
-EK
+id
+ML
+ML
 EK
 fe
 "}
@@ -31015,23 +30938,23 @@ EK
 EK
 EK
 EK
-br
-br
 EK
 EK
 EK
 EK
-FV
-dL
-dL
+EK
+EK
+sx
+rF
+rF
 Qs
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
 id
 id
@@ -31040,16 +30963,16 @@ id
 bt
 id
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
-EK
-EK
-EK
+ML
+ML
+ML
 EK
 fe
 "}
@@ -31209,15 +31132,15 @@ EK
 EK
 EK
 EK
-br
-br
-br
 EK
 EK
 EK
-FV
-dL
-dL
+EK
+EK
+EK
+sx
+rF
+rF
 Qs
 id
 id
@@ -31228,22 +31151,22 @@ id
 id
 bt
 id
-br
-br
-br
-id
-um
 id
 id
+id
+id
+iH
 id
 id
 id
 id
 id
 id
-EK
-EK
-EK
+id
+id
+ML
+ML
+ML
 EK
 fe
 "}
@@ -31404,40 +31327,40 @@ EK
 EK
 EK
 EK
-br
-br
-br
 EK
 EK
-FV
-dL
+EK
+EK
+EK
+sx
+rF
 ls
 AP
-zJ
-id
-br
-br
-br
-br
-br
-id
-br
-br
-br
-br
-br
 id
 id
-DG
-DG
-DG
-DG
-DG
-DG
 id
-EK
-EK
-EK
+id
+id
+id
+id
+id
+sx
+jZ
+jZ
+jZ
+sx
+id
+id
+sx
+DG
+DG
+DG
+DG
+sx
+id
+ML
+ML
+ML
 EK
 fe
 "}
@@ -31600,38 +31523,38 @@ EK
 EK
 EK
 EK
-br
-br
-br
-QD
-LW
-ue
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-id
-id
-id
-id
-id
-zJ
-id
-id
 EK
 EK
 EK
+sx
+rF
+rF
+sx
+sx
+sx
+id
+id
+id
+id
+id
+id
+jZ
+jZ
+jZ
+jZ
+jZ
+id
+id
+id
+id
+id
+id
+id
+id
+id
+ML
+ML
+ML
 EK
 fe
 "}
@@ -31794,38 +31717,38 @@ EK
 EK
 EK
 EK
-br
-br
-br
-QD
-LW
-rF
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
+EK
+EK
+EK
+sx
+kx
+si
+sx
+sx
+sx
 id
-DG
-DG
-DG
-DG
-DG
-DG
 id
-EK
-EK
-EK
+id
+id
+id
+id
+jZ
+jZ
+jZ
+jZ
+jZ
+id
+id
+sx
+DG
+DG
+DG
+DG
+sx
+LM
+ML
+ML
+ML
 EK
 fe
 "}
@@ -31991,24 +31914,23 @@ EK
 EK
 EK
 EK
-FV
-LW
-ue
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
-br
+sx
+dp
+dp
+sx
+sx
+sx
+id
+id
+id
+id
+id
+id
+jZ
+jZ
+jZ
+jZ
+jZ
 id
 id
 id
@@ -32017,9 +31939,10 @@ id
 id
 id
 id
-zJ
-EK
-EK
+id
+id
+ML
+ML
 EK
 fe
 "}
@@ -32185,8 +32108,8 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 SH
 id
@@ -32194,26 +32117,26 @@ id
 id
 iH
 id
-br
-br
-br
-br
-br
-br
-br
-br
 id
 id
-DG
-DG
-DG
-DG
-DG
-DG
+id
+sx
+jZ
+jZ
+jZ
+sx
 id
 id
-EK
-EK
+sx
+DG
+DG
+DG
+DG
+sx
+id
+id
+id
+ML
 EK
 fe
 "}
@@ -32379,22 +32302,22 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
+sx
+rF
+rF
 Qs
 id
+sx
 DG
 DG
 DG
-bt
+DG
+sx
 id
 id
-br
-br
-br
-br
-br
+id
+id
+id
 iH
 Si
 id
@@ -32405,9 +32328,9 @@ id
 id
 iH
 id
-br
-br
-br
+id
+id
+ML
 EK
 fe
 "}
@@ -32573,9 +32496,9 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
+sx
+rF
+rF
 Qs
 id
 id
@@ -32586,23 +32509,23 @@ id
 id
 id
 id
-br
-br
-br
-br
-id
-id
-zJ
-id
-BJ
 id
 id
 id
-br
-br
-br
-br
-br
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+ML
+EK
 fe
 "}
 (161,1,1) = {"
@@ -32767,35 +32690,35 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 AP
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
-id
-id
-id
-br
-br
-br
-br
+sx
 id
 id
 id
 id
 id
-br
-br
-br
-br
-br
-br
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+ML
 EK
 fe
 "}
@@ -32961,8 +32884,8 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 SH
 id
@@ -32976,20 +32899,20 @@ id
 id
 bt
 id
-dL
-LW
-LW
-LW
-dL
 id
 id
-br
-br
-br
-br
-EK
-EK
-EK
+id
+id
+id
+id
+id
+id
+id
+id
+id
+ML
+ML
+ML
 EK
 fe
 "}
@@ -33155,35 +33078,35 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
-vo
+SH
 Rm
+sx
 DG
 DG
 DG
 DG
-DG
-DG
-id
-Yt
+sx
 id
 id
-dL
-LW
-LW
-LW
-dL
 id
-br
-br
-br
-br
-EK
-EK
-EK
-EK
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+id
+ML
+ML
+ML
 EK
 fe
 "}
@@ -33349,14 +33272,14 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 SH
 id
 id
 id
-id
+LM
 id
 id
 id
@@ -33367,17 +33290,17 @@ iH
 id
 id
 id
-br
-br
-br
-br
-br
-br
-EK
-EK
-EK
-EK
-EK
+id
+id
+id
+id
+id
+id
+ML
+ML
+ML
+ML
+ML
 EK
 fe
 "}
@@ -33543,34 +33466,34 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 SH
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 Rm
-id
-FV
-FV
+Xy
 qD
 qD
-FV
-FV
-ad
-br
-br
-br
-EK
-EK
-EK
-EK
-EK
+qD
+qD
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
 EK
 EK
 fe
@@ -33737,8 +33660,8 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 SH
 id
@@ -33749,15 +33672,15 @@ id
 id
 id
 id
-id
-FV
-Gt
+PO
+qD
+HF
 Am
 Jv
-Gt
-FV
-ad
-br
+HF
+sx
+EK
+EK
 EK
 EK
 EK
@@ -33931,27 +33854,25 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 SH
-id
+LM
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
 iH
 qD
 HF
-Ih
-Ih
-HF
-qD
-ad
-br
+in
+rO
+Gt
+sx
 EK
 EK
 EK
@@ -33960,7 +33881,9 @@ EK
 EK
 EK
 EK
-qj
+EK
+EK
+EK
 fe
 "}
 (168,1,1) = {"
@@ -34125,27 +34048,25 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 SH
 id
 id
 id
 id
-Yt
+id
 id
 id
 id
 id
 qD
-we
-fD
-Ih
-Tp
-qD
-ad
-br
+HF
+rO
+rO
+HF
+sx
 EK
 EK
 EK
@@ -34153,8 +34074,10 @@ EK
 EK
 EK
 EK
-qj
-qj
+EK
+EK
+EK
+EK
 fe
 "}
 (169,1,1) = {"
@@ -34319,36 +34242,36 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 SH
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
 id
-FV
-Ih
-Ih
-As
+sx
+PI
+rO
+rO
 Qr
-FV
-ad
-br
+sx
 EK
 EK
 EK
 EK
 EK
-qj
-qj
-qj
-qj
+EK
+EK
+EK
+EK
+EK
+EK
 fe
 "}
 (170,1,1) = {"
@@ -34513,9 +34436,9 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
+sx
+rF
+rF
 Qs
 id
 id
@@ -34526,22 +34449,22 @@ id
 id
 id
 id
-FV
-cj
+sx
+we
+rO
 Ih
-Ih
-PI
-FV
-ad
-br
+Tp
+sx
 EK
 EK
 EK
-qj
-qj
-qj
-qj
-qj
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -34707,34 +34630,34 @@ EK
 EK
 EK
 EK
-FV
-ld
-dL
+sx
+rF
+rF
 Qs
 id
+sx
 DG
 DG
 DG
 DG
-DG
-DG
+sx
 id
 id
-FV
+sx
 Mz
 cj
 cj
 Gs
-FV
-ad
-br
+sx
 EK
 EK
 EK
-qj
-qj
-qj
-qj
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 fe
@@ -34901,8 +34824,8 @@ EK
 EK
 EK
 EK
-FV
-dL
+sx
+rF
 ls
 AP
 id
@@ -34914,20 +34837,20 @@ id
 id
 id
 id
-FV
-FV
+sx
+sx
 jx
-FV
-FV
-FV
-ad
-br
+sx
+sx
+sx
 EK
-qj
-qj
-qj
-qj
-qj
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 EK
@@ -35095,32 +35018,32 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
-EK
-EK
+sx
+rF
+rF
+sx
+ML
+sx
 DG
 DG
 DG
 DG
-DG
-DG
-Yt
+sx
 id
-FV
+id
+sx
 sa
-Ih
-FV
-ad
-br
-br
-br
-id
-qj
-qj
-qj
-qj
+rO
+sx
+sx
+sx
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 EK
@@ -35289,11 +35212,11 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
-EK
-EK
+sx
+rF
+rF
+sx
+ML
 id
 id
 id
@@ -35302,18 +35225,18 @@ id
 id
 id
 id
-FV
+sx
 cj
 Ih
-FV
-ad
-br
-br
-id
-id
-qj
-qj
-qj
+sx
+sx
+sx
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 EK
@@ -35483,12 +35406,12 @@ EK
 EK
 EK
 EK
-FV
-dL
-dL
-EK
-EK
-EK
+sx
+rF
+rF
+sx
+sx
+sx
 id
 id
 id
@@ -35496,17 +35419,17 @@ id
 Rm
 id
 id
-FV
-cj
-Ih
-FV
-ad
-br
-br
-id
-id
-qj
-qj
+sx
+RD
+rO
+sx
+sx
+sx
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 EK
@@ -35672,36 +35595,36 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-FV
-dL
-dL
-EK
-EK
-EK
-EK
-EK
+tI
+Ud
+Ud
+Ud
+Ud
+tI
+rF
+rF
+sx
+sx
+sx
+id
+id
 id
 iH
 id
 id
-EK
-FV
+id
+sx
 sa
-Ih
-FV
-ad
-br
-br
-id
-id
-id
-qj
-qj
+rO
+sx
+sx
+sx
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 EK
@@ -35866,36 +35789,36 @@ EK
 EK
 EK
 EK
-EK
-EK
-EK
-EK
-EK
-FV
-dL
-dL
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-FV
-FV
+Ud
+ml
+ml
+ml
+sD
+Ud
+rF
+rF
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
 jx
-FV
+sx
+sx
+sx
 EK
-br
-br
-id
-id
-id
-qj
-qj
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 EK
@@ -36060,39 +35983,39 @@ EK
 EK
 EK
 EK
+Ud
+ml
+ml
+ml
+ml
+Ub
+rF
+rF
+rF
+rF
+rF
+mz
+rF
+rF
+rF
+rF
+rF
+rF
+rF
+rF
+rF
+rF
+rF
+sx
 EK
 EK
 EK
 EK
 EK
-FV
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-LW
-LW
-LW
-dL
-OF
-LW
-LW
-LW
-LW
-dL
+EK
+EK
+EK
+EK
 EK
 EK
 fe
@@ -36254,40 +36177,40 @@ EK
 EK
 EK
 EK
+Ud
+ml
+ml
+ml
+ml
+Ub
+rF
+rF
+rF
+rF
+Pl
+rF
+rF
+rF
+rF
+Pl
+rF
+rF
+rF
+rF
+rF
+bj
+rF
+sx
 EK
-fe
-fe
-fe
-fe
-FV
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-dL
-LW
-LW
-LW
-dL
-dL
-LW
-LW
-LW
-LW
-dL
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -36448,40 +36371,40 @@ EK
 EK
 EK
 EK
-fe
-fe
+Ud
+ml
+ml
+ml
+ml
+Ub
+rF
+rF
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
+sx
 EK
 EK
 EK
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-FV
-br
-br
-br
-id
-id
-qj
-qj
 EK
-id
-id
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -36642,23 +36565,15 @@ EK
 EK
 EK
 EK
-fe
-EK
-EK
-EK
-EK
-fe
-fe
-fe
-EK
-fe
-fe
-fe
-fe
-fe
-fe
-fe
-fe
+Ud
+ml
+ml
+ml
+ml
+Ud
+rF
+rF
+sx
 EK
 EK
 EK
@@ -36666,16 +36581,24 @@ EK
 EK
 EK
 EK
-br
-br
-br
 EK
 EK
 EK
-qj
-qj
-id
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -36835,41 +36758,41 @@ EK
 EK
 EK
 EK
-fe
-fe
 EK
-EK
-EK
-EK
+tI
 Ud
 Ud
-EK
-id
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-EK
-fe
-fe
+Ud
+Ud
+tI
+sx
+sx
+sx
 EK
 EK
 EK
 EK
 EK
 EK
-br
-br
 EK
 EK
 EK
-qj
-qj
-id
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -37029,41 +36952,41 @@ EK
 EK
 EK
 EK
-fe
 EK
 EK
 EK
 EK
-Ud
-Nf
-yS
-Ud
-Ud
-id
-id
-JA
-Ud
-Ud
-Ud
-Ud
-Ud
-JA
-fe
-fe
-fe
-fe
-fe
 EK
 EK
 EK
-br
-br
 EK
 EK
-qj
-qj
-qj
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -37223,41 +37146,41 @@ EK
 EK
 EK
 EK
-fe
 EK
 EK
 EK
 EK
-Ud
-MM
-MM
-MM
-Ud
-Ud
-Ud
-Ud
-Ud
-Ub
-Ub
-MM
-fJ
-Ud
-Ud
 EK
 EK
 EK
-fe
-EK
-EK
-br
-br
-br
 EK
 EK
 EK
-qj
-qj
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -37417,41 +37340,41 @@ EK
 EK
 EK
 EK
-fe
-EK
-EK
-EK
-Ud
-Ud
-MM
-VE
-Ao
-Dp
-Ao
-Dp
-Ao
-Dp
-Ao
-Dp
-Ao
-Dp
-Ao
-Ud
-yS
-id
 EK
 EK
 EK
 EK
-br
-br
-br
 EK
 EK
 EK
-qj
-qj
-Tv
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -37611,41 +37534,41 @@ EK
 EK
 EK
 EK
-fe
 EK
 EK
 EK
-Ud
-NA
-MM
-vg
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-id
-id
-id
-id
 EK
 EK
 EK
-br
-br
 EK
 EK
 EK
-qj
-qj
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -37805,41 +37728,41 @@ EK
 EK
 EK
 EK
-fe
 EK
 EK
 EK
-Ud
-NA
-MM
-GV
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-MM
-id
-id
-id
-id
-id
 EK
 EK
-br
-br
 EK
 EK
-qj
-qj
-id
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 fe
 "}
@@ -37999,40 +37922,40 @@ EK
 EK
 EK
 EK
-fe
-fe
 EK
 EK
-Ud
-Ud
-MM
-VE
-Ao
-Dp
-Ao
-Dp
-Ao
-Dp
-Ao
-Dp
-Ao
-Dp
-Ao
-Ud
-pQ
-id
-id
-id
-id
 EK
 EK
-br
-br
 EK
 EK
-qj
-id
-Tv
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 fe
@@ -38194,39 +38117,39 @@ EK
 EK
 EK
 EK
-fe
 EK
 EK
 EK
-Ud
-MM
-MM
-MM
-Ud
-Ud
-Ud
-Ud
-Ud
-Ub
-Ub
-MM
-fJ
-Ud
-Ud
 EK
-id
-id
-id
-id
-dL
-LW
-LW
-LW
-LW
-LW
-LW
-dL
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 fe
@@ -38388,39 +38311,39 @@ EK
 EK
 EK
 EK
-fe
-fe
-EK
-EK
-Ud
-lO
-yS
-Ud
-Ud
-id
-id
-JA
-Ud
-Ud
-Ud
-Ud
-Ud
-JA
 EK
 EK
 EK
 EK
-id
-id
-dL
-LW
-LW
-LW
-LW
-LW
-LW
-dL
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 fe
@@ -38583,15 +38506,15 @@ EK
 EK
 EK
 EK
-fe
-EK
-fe
-EK
-Ud
-Ud
 EK
 EK
-id
+EK
+EK
+EK
+EK
+EK
+EK
+EK
 EK
 EK
 EK

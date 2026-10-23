@@ -16,14 +16,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
-"ax" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/item/ammo_casing/a45,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "aE" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/storage/toggle/labcoat,
@@ -34,11 +26,6 @@
 /obj/machinery/door/airlock/multi_tile{
 	dir = 4
 	},
-/turf/simulated/floor/wood/indoors,
-/area/sector/sky_planet/station_city/street)
-"aL" = (
-/obj/item/stool/padded,
-/obj/item/ammo_casing/a45,
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
 "aM" = (
@@ -343,10 +330,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
-"gq" = (
-/obj/item/ammo_casing/a45,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
 "gD" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/simulated/floor/wood/indoors,
@@ -413,10 +396,6 @@
 /obj/structure/sandbag,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"hI" = (
-/obj/item/ammo_casing/a45,
-/turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
 "hK" = (
 /obj/machinery/door/airlock/maintenance,
@@ -738,10 +717,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
-"nV" = (
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/tiled/monotechmaint,
-/area/sector/sky_planet/station_city/street)
 "oa" = (
 /obj/machinery/appliance/cooker/oven,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
@@ -927,17 +902,7 @@
 /area/sector/sky_planet/station_city/street)
 "rr" = (
 /obj/item/material/shard/phoron,
-/obj/item/ammo_casing/a5_56mm,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/station_city/street)
-"rt" = (
-/obj/effect/floor_decal/industrial/hatch,
-/obj/item/ammo_casing/a45,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"ry" = (
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "rE" = (
 /obj/machinery/light/spot{
@@ -1113,7 +1078,6 @@
 /area/sector/sky_planet/station_city/street)
 "vh" = (
 /obj/effect/decal/remains/robot,
-/obj/item/ammo_casing/a5_56mm,
 /obj/machinery/light/spot{
 	dir = 4
 	},
@@ -1298,12 +1262,6 @@
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/tiled/techfloor/monogrid,
 /area/sector/sky_planet/station_city/street)
-"zw" = (
-/obj/effect/floor_decal/industrial/hatch,
-/obj/item/ammo_casing/a45,
-/mob/living/simple_mob/mechanical/hivebot,
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "zx" = (
 /turf/simulated/open/lythios43c,
 /area/sector/sky_planet/ground/sky)
@@ -1331,11 +1289,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"Ao" = (
-/obj/structure/closet/crate/robotics,
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "Ay" = (
 /obj/structure/flora/tree/fey/small_tree/tree2,
@@ -1434,11 +1387,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
-"CK" = (
-/obj/item/ammo_casing/a5_56mm,
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/tiled/monotechmaint,
 /area/sector/sky_planet/station_city/street)
 "CR" = (
 /obj/structure/table/hardwoodtable,
@@ -1700,7 +1648,6 @@
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "Ij" = (
-/obj/item/ammo_casing/a45,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -2004,10 +1951,6 @@
 	},
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/carpet/patterened,
-/area/sector/sky_planet/station_city/street)
-"NS" = (
-/obj/item/ammo_casing/a5_56mm,
-/turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "NX" = (
 /obj/machinery/power/geothermal_collector{
@@ -2395,14 +2338,6 @@
 	},
 /turf/simulated/floor/wood/indoors,
 /area/sector/sky_planet/station_city/street)
-"Um" = (
-/obj/structure/sandbag,
-/obj/item/ammo_casing/a5_56mm,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "Ur" = (
 /obj/structure/table/carbon,
 /turf/simulated/floor/wood/indoors,
@@ -2455,13 +2390,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
-"UZ" = (
-/obj/item/ammo_casing/a5_56mm,
-/obj/machinery/light/spot{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/station_city/street)
 "Vi" = (
 /turf/simulated/wall/wood/hardwood,
 /area/sector/sky_planet/station_city/street)
@@ -2472,13 +2400,6 @@
 "VD" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/station_city/street)
-"VE" = (
-/obj/item/ammo_casing/a45,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
 "VT" = (
 /obj/item/tank/oxygen/onetankbomb,
@@ -2558,13 +2479,6 @@
 /obj/spawner/window/full,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
-"XL" = (
-/obj/item/ammo_casing/a5_56mm,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "XO" = (
 /obj/structure/fence/wooden/corner,
 /obj/structure/fence/wooden/corner{
@@ -2616,7 +2530,6 @@
 /area/sector/sky_planet/station_city/street)
 "Ym" = (
 /obj/item/robot_parts/robot_component/camera,
-/obj/item/ammo_casing/a5_56mm,
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
 "Yo" = (
@@ -2690,23 +2603,9 @@
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/monodark,
 /area/sector/sky_planet/station_city/street)
-"Zy" = (
-/obj/item/ammo_casing/a5_56mm,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/monodark,
-/area/sector/sky_planet/station_city/street)
 "ZQ" = (
 /obj/machinery/light/spot{
 	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/sector/sky_planet/station_city/street)
-"ZU" = (
-/obj/item/ammo_casing/a5_56mm,
-/obj/machinery/light/spot{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/lythios43c,
 /area/sector/sky_planet/station_city/street)
@@ -30043,7 +29942,7 @@ gg
 re
 fE
 ah
-aL
+YD
 iq
 qV
 cI
@@ -30241,7 +30140,7 @@ YD
 fY
 iq
 iq
-hI
+iq
 gg
 KA
 KA
@@ -30429,7 +30328,7 @@ YL
 Rc
 gg
 Uf
-hI
+iq
 ah
 YD
 GO
@@ -30820,7 +30719,7 @@ vr
 fY
 ah
 YD
-hI
+iq
 iq
 fY
 iq
@@ -31016,10 +30915,10 @@ ah
 YD
 iq
 GO
-hI
+iq
 GO
 Jf
-gq
+KA
 KA
 JE
 iq
@@ -31207,7 +31106,7 @@ gg
 HO
 fY
 iq
-hI
+iq
 iq
 fY
 iq
@@ -31408,7 +31307,7 @@ Hz
 Bt
 gg
 KA
-gq
+KA
 JE
 iq
 iq
@@ -31764,10 +31663,10 @@ KA
 KA
 Jl
 KA
-gq
 KA
 KA
-CK
+KA
+UN
 KA
 KA
 KA
@@ -31959,13 +31858,13 @@ Re
 CF
 SH
 Re
-VE
+Re
 Re
 hs
-XL
 Re
 Re
-XL
+Re
+Re
 Re
 Re
 Re
@@ -32157,7 +32056,7 @@ Wn
 VZ
 SH
 ie
-ax
+ie
 ie
 ie
 ie
@@ -32349,7 +32248,7 @@ XZ
 Wn
 Wn
 Wn
-rt
+SH
 OO
 OO
 OO
@@ -32540,14 +32439,14 @@ KA
 KA
 KA
 KA
-zw
+hs
 SH
 SH
 UN
 KA
-gq
 KA
-nV
+KA
+KA
 KA
 KA
 KA
@@ -35824,7 +35723,7 @@ cx
 Yd
 cx
 Si
-NS
+cx
 cx
 tE
 Rc
@@ -36211,9 +36110,9 @@ MR
 Ih
 cx
 rr
-NS
 cx
-Ao
+cx
+RG
 tE
 Rc
 Rc
@@ -36399,13 +36298,13 @@ tE
 tE
 cx
 cx
-ZU
+UR
 cx
 cx
 vh
 cx
 cx
-NS
+cx
 UR
 RG
 tE
@@ -36618,7 +36517,7 @@ nb
 JI
 Zw
 UN
-nV
+KA
 bn
 bn
 bn
@@ -36795,7 +36694,7 @@ tE
 fB
 cx
 Ym
-NS
+cx
 tE
 Rc
 tE
@@ -36810,7 +36709,7 @@ XE
 KA
 nb
 JI
-ry
+Wn
 rH
 KA
 KA
@@ -37005,7 +36904,7 @@ KA
 EU
 JI
 Wn
-ry
+Wn
 rH
 KA
 KA
@@ -37181,9 +37080,9 @@ cx
 cx
 jm
 cx
-NS
+cx
 LQ
-NS
+cx
 tE
 Rc
 tE
@@ -37201,8 +37100,8 @@ rk
 Wn
 Wn
 Wn
-Zy
-nV
+rH
+KA
 KA
 bn
 bn
@@ -37374,9 +37273,9 @@ tE
 pX
 cx
 tE
-UZ
-NS
-NS
+ds
+cx
+cx
 cx
 tE
 Rc
@@ -37392,7 +37291,7 @@ tE
 Rc
 KA
 Jl
-Um
+rk
 Wn
 Wn
 Wn
@@ -37571,7 +37470,7 @@ tE
 nI
 cx
 cx
-NS
+cx
 Lp
 rf
 Rc
@@ -37588,7 +37487,7 @@ Nv
 KA
 KA
 EU
-ry
+Wn
 Wn
 Wn
 rH

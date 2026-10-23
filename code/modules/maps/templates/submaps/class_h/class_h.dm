@@ -102,11 +102,13 @@
 	suffix = "springcaveH.dmm"
 	cost = 5
 
+/*
 /datum/map_template/submap/level_specific/class_h/AuxiliaryResearchFacility
 	name = "Research Facility"
 	suffix = "AuxiliaryResearchFacility.dmm"
 	cost = 25
 	allow_duplicates = FALSE
+*/
 
 /datum/map_template/submap/level_specific/class_h/saloon
 	name = "Desert Saloon"
@@ -158,6 +160,7 @@
 	name = "Sniper Nest"
 	suffix = "snipernest.dmm"
 	cost = 20
+	allow_duplicates = FALSE
 
 /datum/map_template/submap/level_specific/class_h/miningcamp
 	name = "Mining Camp"
@@ -167,5 +170,17 @@
 /datum/map_template/submap/level_specific/class_h/piratehideout
 	name = "Pirate Hideout"
 	suffix = "piratehideout.dmm"
+	cost = 25
+	allow_duplicates = FALSE
+
+/datum/map_template/submap/level_specific/class_h/banditmines
+	name = "Bandit Mines"
+	suffix = "banditmines.dmm"
+	cost = 25
+	allow_duplicates = FALSE
+
+/datum/map_template/submap/level_specific/class_h/guerillamountains
+	name = "Guerilla Mountain Camp"
+	suffix = "guerillamountains.dmm"
 	cost = 25
 	allow_duplicates = FALSE

@@ -125,3 +125,43 @@
 		/area/turbolift/cargo/EutheniaDeck3,
 		/area/turbolift/cargo/EutheniaDeck4
 		)
+
+/*
+  Sky Planet Lifts
+ */
+
+/obj/turbolift_map_holder/skyplanet_city
+	name = "Motov'arna Elevator"
+	dir = SOUTH
+	depth = 2
+	lift_size_x = 4
+	lift_size_y = 3
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+	floor_type = /turf/simulated/floor/holofloor/tiled/dark
+	areas_to_use = list(/area/turbolift/skyplanet_city/lower,
+	/area/turbolift/skyplanet_city/upper)
+
+/obj/turbolift_map_holder/skyplanet_outpost
+	name = "Haydes Outpost Elevator"
+	dir = WEST
+	depth = 2
+	lift_size_x = 2
+	lift_size_y = 2
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+	floor_type = /turf/simulated/floor/holofloor/tiled/dark
+	areas_to_use = list(/area/turbolift/skyplanet_outpost/lower,
+	/area/turbolift/skyplanet_outpost/upper)
+
+/obj/turbolift_map_holder/skyplanet_garrison
+	name = "Motov'arna Elevator"
+	dir = EAST
+	depth = 2
+	lift_size_x = 3
+	lift_size_y = 4
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+	floor_type = /turf/simulated/floor/holofloor/tiled/dark
+	areas_to_use = list(/area/turbolift/skyplanet_military/lower,
+	/area/turbolift/skyplanet_military/upper)

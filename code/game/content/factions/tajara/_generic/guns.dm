@@ -3,7 +3,7 @@
 ///////////////////////////////////////////
 /* Notes on Tajara Firearms:
 The Tajara history is more or less that a fuedal society with early 19th century technology was contacted by aliens with all their new dangerous ideas and cased \
-munition firearm technology (way better then mnuskets). The resulting civil war was extremely devastating and no one won, as a result Tajara weapons technology is
+munition firearm technology (way better then muskets). The resulting civil war was extremely devastating and no one won, as a result Tajara weapons technology is
 extremely varied ranging from 19th century crude to modern and post modern automatics. */
 
 
@@ -47,3 +47,49 @@ extremely varied ranging from 19th century crude to modern and post modern autom
 	item_state = "musket"
 	wielded_item_state = "musket-wielded"
 	render_use_legacy_by_default = FALSE
+
+
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/taj
+	name = "Adhomai double-barrel"
+	desc = "Shotguns were not widely adopted on Adhomai until after the civil wars. Adhomai's militaries directed the development of homemade automatics \
+	and submachine guns as a solution to close quarters fighting. More recently, civilian manufacturers have begun making double barrels like these to sell \
+	to wealthier hunters and merchants. With its limited capacity, shotguns like these can be found even in some of the more high-security states of Adhomai."
+	icon = 'icons/content/factions/tajara/items/guns/taj_doublebarrel.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_doublebarrel.dmi'
+	icon_state = "shotgun"
+	item_state = "shotgun"
+	wielded_item_state = "shotgun-wielded"
+
+	internal_magazine_preload_ammo = /obj/item/ammo_casing/a12g
+
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/taj/attackby(var/obj/item/A as obj, mob/user as mob)
+	if(istype(A, /obj/item/surgical/circular_saw) || istype(A, /obj/item/melee/transforming/energy) || istype(A, /obj/item/pickaxe/plasmacutter))
+		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
+		if(get_ammo_remaining())
+			// todo: what happens if it's inside a container?
+			user.visible_message("<span class='danger'>The shotgun goes off!</span>", "<span class='danger'>The shotgun goes off in your face!</span>")
+			start_firing_cycle_async(src, rand(0, 360), firemode = firemodes[2])
+			return
+		if(do_after(user, 30))	//SHIT IS STEALTHY EYYYYY
+			icon_state = "sawnshotgun"
+			item_state = "sawnshotgun"
+			set_weight_class(WEIGHT_CLASS_NORMAL)
+			damage_force = 5
+			slot_flags &= ~SLOT_BACK	//you can't sling it on your back
+			slot_flags |= (SLOT_BELT|SLOT_HOLSTER) //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally) - or in a holster, why not.
+			name = "Adhomai sawn-off shotgun"
+			desc = "Omarrr's coming!"
+			to_chat(user, "<span class='warning'>You shorten the barrel of \the [src]!</span>")
+	else
+		..()
+
+/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/sawn/taj
+	name = "Adhomai sawn-off shotgun"
+	desc = "The moment Tajaran criminals and bandits got their hands on shotguns, their first instincts were to cut them down like they had done for their \
+	obrez rifles. They quickly earned a reputation among Tajaran authorities, and a result, it's illegal to own shotguns under a certain length almost everywhere \
+	on Adhomai, an impressive feat considering how diverse in ideology its nation states are."
+	icon = 'icons/content/factions/tajara/items/guns/taj_doublebarrel.dmi'
+	inhand_icon = 'icons/content/factions/tajara/items/guns/taj_doublebarrel.dmi'
+	icon_state = "sawnshotgun"
+	item_state = "sawnshotgun"
+

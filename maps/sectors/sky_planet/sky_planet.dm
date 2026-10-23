@@ -5,10 +5,10 @@
 	height = 192
 	levels = list(
 		/datum/map_level/sector/sky_planet/sky_upper_west,
-		/datum/map_level/sector/sky_planet/sky_west,
+		//datum/map_level/sector/sky_planet/sky_west,
 		/datum/map_level/sector/sky_planet/ground_west,
 		/datum/map_level/sector/sky_planet/sky_upper_east,
-		/datum/map_level/sector/sky_planet/sky_east,
+		//datum/map_level/sector/sky_planet/sky_east,
 		/datum/map_level/sector/sky_planet/ground_east,
 	)
 
@@ -32,10 +32,11 @@
 	base_turf = /turf/simulated/open/skyplanet
 	struct_x = 0
 	struct_y = 0
-	struct_z = 2
+	struct_z = 1
 	air_outdoors = /datum/atmosphere/planet/sky_planet
 	planet_path = /datum/planet/sky_planet
 
+/*
 /datum/map_level/sector/sky_planet/sky_west
 	id = "Skyplanetskywest"
 	name = "Sector - Lythios43a : Sky West"
@@ -47,6 +48,7 @@
 	struct_z = 1
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 	planet_path = /datum/planet/sky_planet
+*/
 
 /datum/map_level/sector/sky_planet/ground_west
 	id = "Skyplanetgroundwest"
@@ -81,7 +83,7 @@
 	base_turf = /turf/simulated/open/skyplanet
 	struct_x = 1
 	struct_y = 0
-	struct_z = 2
+	struct_z = 1
 	air_outdoors = /datum/atmosphere/planet/sky_planet
 	planet_path = /datum/planet/sky_planet
 
@@ -98,6 +100,7 @@
 		)
 	)
 
+/*
 /datum/map_level/sector/sky_planet/sky_east
 	id = "Skyplanetskyeast"
 	name = "Sector - Lythios43a : Sky east"
@@ -109,6 +112,7 @@
 	struct_z = 1
 	air_outdoors = /datum/atmosphere/planet/sky_planet/ground
 	base_turf = /turf/simulated/fake_sky
+*/
 
 /datum/map_level/sector/sky_planet/ground_east
 	id = "Skyplanetgroundeast"

@@ -1,0 +1,3710 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"aq" = (
+/obj/structure/closet,
+/obj/item/clothing/under/rank/miner,
+/obj/item/clothing/head/hardhat,
+/obj/item/clothing/shoes/tajara/workboots,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/item/flame/lighter/zippo/taj,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"aB" = (
+/obj/structure/fence,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"aI" = (
+/turf/simulated/floor/water/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"aP" = (
+/obj/structure/closet/crate/trashcart,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"be" = (
+/obj/random/obstruction,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"bV" = (
+/obj/structure/boulder,
+/obj/effect/floor_decal/tracks{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"cm" = (
+/obj/effect/floor_decal/tracks,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"cx" = (
+/obj/structure/boulder,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"cA" = (
+/obj/structure/table/woodentable,
+/obj/item/gun/projectile/ballistic/revolver/mateba/taj/knife,
+/turf/simulated/floor/wood,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"dz" = (
+/obj/random/crate,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"em" = (
+/obj/structure/closet,
+/obj/item/clothing/under/rank/miner,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"en" = (
+/obj/effect/floor_decal/tracks{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"fe" = (
+/obj/effect/floor_decal/tracks{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"fO" = (
+/obj/effect/floor_decal/tracks{
+	dir = 1
+	},
+/obj/structure/window/wooden,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"gj" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"gq" = (
+/obj/structure/boulder,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"gu" = (
+/obj/effect/floor_decal/tracks{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"gP" = (
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"gU" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/water/deep/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"hl" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/wood/broken,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"hu" = (
+/obj/random/mob/spider,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"hF" = (
+/obj/structure/table/standard,
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/obj/item/reagent_containers/glass/venomgland/spider/psilocybin,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ib" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"iv" = (
+/obj/effect/floor_decal/tracks/t_south{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ji" = (
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"jr" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/machinery/mineral/output,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"jF" = (
+/obj/effect/floor_decal/tracks,
+/obj/structure/closet/crate/miningcar,
+/obj/random/multiple/underdark/ores,
+/obj/random/multiple/underdark/ores,
+/obj/random/multiple/underdark/ores,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"jQ" = (
+/obj/effect/floor_decal/tracks{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"kf" = (
+/turf/simulated/floor/water/deep/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"kr" = (
+/obj/random/crate,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/obj/random/cargopod,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ky" = (
+/obj/structure/sign/directions/evac,
+/turf/simulated/wall/sandstone,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"lx" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"lR" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver,
+/obj/machinery/light/poi{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"mb" = (
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ml" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+/obj/item/material/knife,
+/turf/simulated/floor/wood/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"mo" = (
+/obj/structure/table/rack,
+/obj/random/multiple/underdark/miningdrills,
+/obj/random/multiple/underdark/miningdrills,
+/obj/random/multiple/underdark/miningdrills,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"mv" = (
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"my" = (
+/obj/structure/table/standard,
+/obj/random/trash,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"nf" = (
+/obj/structure/fence{
+	dir = 8
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"nj" = (
+/obj/structure/fence/door/locked{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"nM" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/structure/fence/door/opened{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"oA" = (
+/obj/structure/railing/grey,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"oR" = (
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"pv" = (
+/obj/structure/fence,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"py" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"qj" = (
+/obj/structure/table/rack,
+/obj/random/multiple/underdark/miningdrills,
+/obj/random/multiple/underdark/miningdrills,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"qU" = (
+/obj/structure/table/rack,
+/obj/random/multiple/underdark/miningdrills,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"qV" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/random/obstruction,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"rD" = (
+/obj/machinery/door/blast/regular{
+	id = "banditmines_end";
+	desc = "That looks like it doesn't open easily. Why are they in a mineshaft?"
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"rE" = (
+/obj/random/humanoidremains,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"rT" = (
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"rU" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/assault_rifle,
+/turf/simulated/floor/wood,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"rY" = (
+/obj/structure/fence,
+/obj/machinery/mineral/unloading_machine,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"sp" = (
+/obj/structure/closet/cabinet,
+/obj/item/reagent_containers/food/drinks/bottle/messa_mead,
+/obj/item/reagent_containers/food/drinks/bottle/messa_mead,
+/obj/item/reagent_containers/food/drinks/bottle/messa_mead,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/item/storage/fancy/cigar/taj,
+/obj/item/flame/lighter/zippo/taj,
+/turf/simulated/floor/wood/broken,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ta" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"tg" = (
+/obj/structure/closet,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"tj" = (
+/obj/effect/floor_decal/tracks/t_west,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ty" = (
+/obj/effect/floor_decal/tracks{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"tV" = (
+/obj/effect/floor_decal/tracks{
+	dir = 1
+	},
+/obj/structure/fence/door,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"tW" = (
+/obj/spawner/corpse/tajara/nka_soldier,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"us" = (
+/obj/random/mob/spider/mutant,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"vx" = (
+/obj/structure/table/rack/shelf,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"we" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"wD" = (
+/obj/machinery/light/small/emergency,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"wF" = (
+/obj/structure/barricade/miaphus/tentleatheredge,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"wJ" = (
+/obj/structure/fence{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"xC" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"xG" = (
+/obj/effect/floor_decal/tracks/t_south{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ys" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/obj/machinery/mineral/input,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"yC" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_x = -10
+	},
+/obj/spawner/corpse/tajara,
+/obj/item/clothing/under/tajaran,
+/obj/effect/debris/cleanable/blood,
+/obj/item/clothing/shoes/tajara/footwraps,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"yL" = (
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"zf" = (
+/obj/random/crate,
+/obj/item/grenade/simple/explosive/ied/tyrmalin/large,
+/obj/item/grenade/simple/explosive/ied/tyrmalin/large,
+/obj/item/grenade/simple/explosive/ied/tyrmalin/large,
+/obj/item/grenade/simple/explosive/ied/tyrmalin/large,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"zr" = (
+/obj/effect/floor_decal/tracks,
+/obj/structure/window/wooden,
+/obj/structure/closet/crate/miningcar,
+/obj/random/multiple/underdark/ores,
+/obj/random/multiple/underdark/ores,
+/obj/random/multiple/underdark/ores,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"zB" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/assault_rifle,
+/obj/random/unidentified_medicine/drug_den,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"zL" = (
+/obj/machinery/mineral/processing_unit,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"zY" = (
+/turf/simulated/wall/sandstone,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ax" = (
+/obj/effect/floor_decal/tracks{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"AD" = (
+/obj/random/crate,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"AR" = (
+/obj/machinery/door/blast/regular{
+	id = "banditmines_mid";
+	desc = "That looks like it doesn't open easily. Why are they in a mineshaft?"
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"BI" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"CY" = (
+/obj/effect/floor_decal/tracks,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	name = "Garage Door"
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Da" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ds" = (
+/obj/structure/closet,
+/obj/item/clothing/shoes/tajara/workboots,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/mre,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Dw" = (
+/obj/structure/closet,
+/obj/item/clothing/shoes/tajara/workboots,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/item/storage/fancy/cigar/taj,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ep" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/outdoors/beach/sand,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ev" = (
+/turf/template_noop,
+/area/template_noop)
+"EH" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ES" = (
+/obj/structure/table/glass,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"EZ" = (
+/obj/structure/fence{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Fg" = (
+/obj/effect/floor_decal/tracks,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Fn" = (
+/obj/structure/bed/double,
+/obj/random/bedsheet/double,
+/turf/simulated/floor/wood,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"FA" = (
+/obj/item/fishing_rod,
+/obj/item/storage/box/wormcan/sickly,
+/turf/simulated/floor/wood/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Gz" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	pixel_x = 32;
+	name = "mine emergency exit release";
+	id = "banditmines_end"
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"GK" = (
+/obj/structure/table/standard,
+/obj/item/reagent_containers/hypospray/autoinjector/venominjector/psilocybin,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"GL" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"GU" = (
+/obj/effect/floor_decal/tracks{
+	dir = 1
+	},
+/obj/structure/window/wooden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"GW" = (
+/obj/structure/table/rack/shelf,
+/obj/random/toolbox,
+/obj/random/toolbox,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Hy" = (
+/obj/effect/floor_decal/tracks{
+	dir = 1
+	},
+/obj/random/multiple/miningdrills,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"HK" = (
+/obj/effect/floor_decal/tracks{
+	dir = 8
+	},
+/obj/machinery/mineral/input,
+/obj/structure/closet/crate/miningcar,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ii" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"IA" = (
+/turf/simulated/mineral/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"IE" = (
+/obj/random/crate,
+/obj/random/alcohol,
+/obj/random/alcohol,
+/obj/random/alcohol,
+/obj/random/alcohol,
+/obj/random/alcohol,
+/obj/random/alcohol,
+/obj/item/storage/fancy/cigar/taj,
+/obj/item/storage/fancy/cigar/taj,
+/obj/item/storage/fancy/cigar/taj,
+/obj/item/storage/fancy/cigar/taj,
+/obj/item/storage/fancy/cigar/taj,
+/obj/item/storage/fancy/cigar/taj,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"IN" = (
+/obj/effect/floor_decal/tracks{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"IS" = (
+/obj/effect/floor_decal/tracks{
+	dir = 4
+	},
+/obj/structure/window/wooden{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar,
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"IT" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"JA" = (
+/obj/structure/railing/grey,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"JM" = (
+/obj/random/crate,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/projectile/random,
+/obj/random/projectile/random,
+/obj/random/projectile,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Kg" = (
+/obj/machinery/conveyor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"KX" = (
+/obj/effect/floor_decal/tracks{
+	dir = 1
+	},
+/obj/machinery/door/blast/regular{
+	id = "banditmines_mid";
+	desc = "That looks like it doesn't open easily. Why are they in a mineshaft?"
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Lw" = (
+/obj/machinery/light/small/emergency,
+/obj/machinery/iv_drip,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"LC" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"LE" = (
+/obj/structure/closet,
+/obj/item/clothing/head/hardhat,
+/obj/item/clothing/shoes/tajara/workboots,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/mre,
+/obj/item/flame/lighter/zippo/taj,
+/obj/item/storage/fancy/cigar/taj,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"LM" = (
+/obj/effect/floor_decal/tracks/t_north{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Mq" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Mz" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"MA" = (
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"MD" = (
+/obj/structure/table/rack/shelf,
+/obj/random/firstaid,
+/obj/random/firstaid,
+/obj/random/firstaid,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/random/medical/lite,
+/obj/random/medical/lite,
+/obj/random/medical/lite,
+/obj/random/medical/lite,
+/obj/random/medical/pillbottle,
+/obj/random/medical/pillbottle,
+/obj/random/medical/pillbottle,
+/obj/random/medical/pillbottle,
+/obj/random/medical,
+/obj/random/medical,
+/obj/random/medical,
+/obj/random/medical,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ni" = (
+/obj/structure/fence/door/locked{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"NU" = (
+/obj/machinery/portable_atmospherics/powered/pump/huge/stationary{
+	name = "Stationary Water Pump";
+	desc = "It looks like it hasn't run in a while."
+	},
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"OO" = (
+/obj/structure/sign/directions/evac{
+	dir = 4
+	},
+/turf/simulated/wall/sandstone,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Pa" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Pm" = (
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	name = "Garage Door"
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"PG" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	pixel_x = -32;
+	name = "mine lockdown controls";
+	id = "banditmines_mid"
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"QD" = (
+/obj/structure/sign/graffiti/pisoff,
+/turf/simulated/wall/sandstone,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"QE" = (
+/turf/simulated/wall/solidrock,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"QL" = (
+/obj/structure/metal_edge,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/water/deep/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"QS" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/rifle,
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ro" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ru" = (
+/obj/structure/bed,
+/obj/random/bedsheet,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"RB" = (
+/obj/structure/fence,
+/turf/simulated/floor/outdoors/beach/sand,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"So" = (
+/obj/item/stool,
+/turf/simulated/floor/wood/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ss" = (
+/obj/machinery/light/small/emergency,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Su" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Sy" = (
+/obj/structure/metal_edge,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"SF" = (
+/obj/structure/railing/grey,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"SS" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Te" = (
+/turf/simulated/floor/wood/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"TE" = (
+/obj/spawner/window/low_wall/nogrille,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"TX" = (
+/obj/machinery/light/poi{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Uk" = (
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Um" = (
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"UL" = (
+/obj/effect/floor_decal/tracks{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Vi" = (
+/obj/structure/bed/chair/backed_grey{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Vk" = (
+/obj/structure/closet,
+/obj/item/clothing/head/hardhat,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/item/flame/lighter/zippo/taj,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Vs" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_x = -10
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"VI" = (
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Wk" = (
+/obj/structure/table/standard,
+/obj/machinery/light/poi,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Wu" = (
+/obj/structure/railing/grey,
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/sword/revolver,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Ww" = (
+/obj/effect/floor_decal/tracks{
+	dir = 9
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"WB" = (
+/turf/simulated/floor/outdoors/beach/sand,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"WR" = (
+/obj/structure/metal_edge,
+/obj/machinery/light/poi{
+	dir = 1
+	},
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"WZ" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/mob/living/simple_mob/humanoid/taj_guerilla/bandit/rifle,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Xe" = (
+/obj/random/mob/spider/nurse,
+/turf/simulated/mineral/floor/cave,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"XP" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood/broken,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"XU" = (
+/obj/structure/fence,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Yw" = (
+/obj/structure/closet,
+/obj/item/clothing/under/rank/miner,
+/obj/item/clothing/head/hardhat,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"Zc" = (
+/obj/structure/table/rack/shelf,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/obj/item/grenade/simple/explosive/ied/tyrmalin,
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+"ZJ" = (
+/obj/structure/metal_edge,
+/turf/simulated/floor/water/deep/indoors,
+/area/sector/miaphus/beach/desert/poi/bandit_mines)
+
+(1,1,1) = {"
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(2,1,1) = {"
+Mz
+Mz
+IA
+IA
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(3,1,1) = {"
+Mz
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(4,1,1) = {"
+Mz
+IA
+IA
+IA
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+IA
+IA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(5,1,1) = {"
+Mz
+IA
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(6,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+zY
+ta
+mb
+IA
+IA
+IA
+IA
+QE
+QE
+QE
+QE
+QE
+QE
+IA
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(7,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+IA
+IA
+gq
+gq
+gq
+rE
+mb
+Xe
+mb
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+Mz
+Mz
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(8,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+IA
+gq
+bV
+Hy
+UL
+gu
+mb
+mb
+mb
+mb
+tW
+mb
+mb
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(9,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+IA
+gq
+gq
+rE
+mb
+py
+mb
+mb
+hu
+us
+mb
+Xe
+mb
+IA
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(10,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+IA
+IA
+IA
+zY
+cx
+py
+mb
+mb
+mb
+mb
+mb
+mb
+tW
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+QE
+QE
+QE
+IA
+IA
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(11,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+gq
+py
+mb
+IA
+mb
+mb
+mb
+mb
+IA
+IA
+QE
+IA
+IA
+mb
+mb
+mb
+IA
+IA
+IA
+IA
+mb
+mb
+mb
+IA
+IA
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(12,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+mb
+py
+mb
+IA
+IA
+mb
+IA
+IA
+IA
+IA
+QE
+IA
+mb
+mb
+mb
+mb
+mb
+mb
+IA
+IA
+mb
+IS
+mb
+IA
+IA
+IA
+IA
+QE
+QE
+QE
+QE
+IA
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(13,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+IA
+mb
+mb
+hu
+mb
+mb
+py
+mb
+IA
+IA
+mb
+mb
+IA
+IA
+IA
+QE
+IA
+mb
+mb
+IA
+IA
+IA
+mb
+be
+IA
+mb
+ty
+mb
+zY
+QL
+kf
+IA
+IA
+IA
+IA
+QE
+IA
+IA
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+"}
+(14,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+IA
+mb
+en
+UL
+UL
+UL
+fe
+mb
+IA
+IA
+mb
+mb
+us
+IA
+IA
+IA
+IA
+mb
+hu
+IA
+IA
+IA
+be
+be
+be
+mb
+ty
+mb
+oA
+ZJ
+kf
+kf
+kf
+Te
+IA
+QE
+QE
+IA
+IA
+IA
+Mz
+Mz
+Mz
+Ev
+Ev
+"}
+(15,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+IA
+mb
+py
+mb
+mb
+mb
+hu
+IA
+IA
+IA
+IA
+mb
+us
+mb
+IA
+IA
+IA
+mb
+hu
+IA
+IA
+IA
+IA
+be
+IA
+mb
+ty
+mb
+NU
+ZJ
+kf
+kf
+kf
+Te
+IA
+IA
+QE
+QE
+QE
+IA
+Mz
+Mz
+Mz
+Mz
+Ev
+"}
+(16,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+be
+qV
+be
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+mb
+mb
+hu
+mb
+IA
+mb
+mb
+IA
+IA
+IA
+IA
+IA
+IA
+mb
+ty
+mb
+SF
+ZJ
+kf
+kf
+kf
+Te
+Te
+IA
+IA
+IA
+QE
+IA
+Mz
+Mz
+Mz
+Mz
+Ev
+"}
+(17,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+be
+qV
+be
+IA
+QE
+QE
+QE
+QE
+QE
+QE
+IA
+IA
+mb
+mb
+mb
+mb
+mb
+mb
+IA
+IA
+IA
+IA
+QE
+IA
+mb
+ty
+mb
+SF
+ZJ
+kf
+kf
+kf
+kf
+FA
+ml
+IA
+IA
+QE
+IA
+IA
+IA
+Mz
+Mz
+Ev
+"}
+(18,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+be
+qV
+be
+IA
+IA
+IA
+IA
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+mb
+us
+mb
+IA
+IA
+IA
+IA
+IA
+QE
+IA
+mb
+ty
+mb
+NU
+ZJ
+kf
+kf
+kf
+kf
+So
+Te
+IA
+IA
+QE
+IA
+IA
+IA
+Mz
+Mz
+Ev
+"}
+(19,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+mb
+py
+mb
+mb
+mb
+Ww
+mb
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+QE
+IA
+mb
+ty
+mb
+JA
+ZJ
+kf
+kf
+kf
+gU
+Te
+Te
+IA
+IA
+QE
+IA
+IA
+IA
+Mz
+Mz
+Ev
+"}
+(20,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+mb
+jQ
+UL
+UL
+UL
+gu
+mb
+IA
+IA
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+IA
+mb
+ty
+mb
+zY
+BI
+IT
+IT
+xC
+zY
+mb
+mb
+zY
+IA
+QE
+IA
+IA
+Mz
+Mz
+Mz
+Ev
+"}
+(21,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+IA
+mb
+mb
+mb
+mb
+mb
+py
+mb
+IA
+IA
+IA
+IA
+IA
+zY
+zY
+zY
+zY
+zY
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+mb
+ty
+mb
+nf
+mb
+Mq
+mb
+mb
+mb
+mb
+mb
+mb
+IA
+QE
+IA
+IA
+Mz
+Mz
+Ev
+Ev
+"}
+(22,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+IA
+mb
+mb
+mb
+mb
+GL
+py
+mb
+IA
+IA
+IA
+IA
+IA
+zY
+qj
+lR
+SS
+zY
+QE
+IA
+mb
+mb
+Mq
+EZ
+Sy
+mb
+xG
+UL
+tV
+UL
+UL
+UL
+UL
+UL
+UL
+fO
+mb
+IA
+QE
+IA
+IA
+Mz
+Mz
+Ev
+Ev
+"}
+(23,1,1) = {"
+Mz
+IA
+IA
+IA
+QE
+zY
+QS
+IT
+IT
+WZ
+zY
+py
+mb
+IA
+zY
+zY
+zY
+zY
+zY
+qU
+yL
+Zc
+zY
+QE
+IA
+mb
+en
+UL
+tV
+UL
+UL
+oR
+mb
+nf
+mb
+mb
+mb
+mb
+mb
+gj
+mb
+mb
+IA
+QE
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+"}
+(24,1,1) = {"
+Mz
+IA
+IA
+IA
+QE
+IA
+yL
+yL
+yL
+yL
+mb
+py
+mb
+GW
+zY
+Vs
+zY
+Vs
+zY
+mo
+yL
+vx
+zY
+QE
+IA
+mb
+py
+mb
+EZ
+Sy
+mb
+py
+mb
+zY
+zY
+yL
+wF
+yL
+yL
+zY
+IA
+IA
+IA
+QE
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+"}
+(25,1,1) = {"
+Mz
+IA
+IA
+IA
+QE
+IA
+yL
+yL
+yL
+yL
+mb
+py
+mb
+GW
+zY
+lx
+zY
+lx
+zY
+zY
+lx
+zY
+zY
+QE
+IA
+mb
+py
+mb
+zY
+Sy
+mb
+py
+mb
+mb
+ae
+VI
+wF
+gP
+gP
+zY
+IA
+IA
+IA
+QE
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+"}
+(26,1,1) = {"
+Mz
+IA
+IA
+IA
+QE
+zY
+zY
+lx
+zY
+zY
+Sy
+py
+mb
+mb
+mb
+mb
+mb
+mb
+ji
+mb
+mb
+mb
+PG
+AR
+mb
+mb
+py
+mb
+SF
+Sy
+mb
+py
+mb
+mb
+ae
+yL
+wF
+Ru
+Ru
+zY
+IA
+IA
+QE
+QE
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+"}
+(27,1,1) = {"
+Mz
+IA
+IA
+IA
+QE
+zY
+yL
+yL
+yL
+TE
+Sy
+xG
+UL
+UL
+UL
+UL
+UL
+UL
+UL
+UL
+UL
+UL
+UL
+KX
+UL
+UL
+fe
+mb
+SF
+Sy
+mb
+py
+mb
+mb
+zY
+IA
+IA
+IA
+IA
+zY
+QE
+QE
+QE
+IA
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+"}
+(28,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+zY
+hF
+GK
+yL
+TE
+Sy
+py
+mb
+mb
+mb
+mb
+mb
+GL
+mb
+mb
+mb
+mb
+mb
+AR
+mb
+mb
+mb
+mb
+Wu
+Sy
+mb
+py
+mb
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+QE
+IA
+IA
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(29,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+zY
+we
+EH
+yL
+TE
+Sy
+py
+mb
+zY
+zY
+lx
+zY
+zY
+zY
+lx
+zY
+zY
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+mb
+py
+mb
+IA
+IA
+IA
+QE
+QE
+QE
+QE
+QE
+IA
+IA
+IA
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(30,1,1) = {"
+Mz
+Mz
+IA
+IA
+QE
+zY
+zY
+hl
+zY
+zY
+WR
+py
+mb
+zY
+em
+yL
+Ru
+zY
+Ru
+yL
+LE
+zY
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+mb
+ib
+mb
+IA
+IA
+QE
+QE
+zY
+zY
+zY
+IA
+IA
+zY
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(31,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+zY
+Vi
+rU
+sp
+zY
+Sy
+py
+mb
+zY
+Vk
+yL
+Ru
+zY
+Ru
+zB
+tg
+zY
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QD
+RB
+nM
+RB
+zY
+QE
+QE
+IA
+zY
+yC
+zY
+Mz
+Mz
+wJ
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(32,1,1) = {"
+Mz
+Mz
+Mz
+IA
+QE
+zY
+cA
+XP
+Fn
+zY
+Sy
+py
+mb
+zY
+Dw
+yL
+Ru
+zY
+Ru
+yL
+aq
+zY
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+WB
+py
+Ep
+IA
+IA
+IA
+IA
+zY
+lx
+zY
+Mz
+Mz
+wJ
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(33,1,1) = {"
+Ev
+Mz
+Mz
+IA
+QE
+zY
+zY
+zY
+zY
+zY
+Sy
+py
+mb
+zY
+Yw
+TX
+Ru
+zY
+Ru
+TX
+Ds
+zY
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+WB
+ib
+WB
+rT
+Mz
+rT
+Mz
+Mz
+rT
+Mz
+Mz
+Mz
+wJ
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(34,1,1) = {"
+Ev
+Mz
+Mz
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+mb
+py
+mb
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+QE
+IA
+IA
+IA
+IA
+IA
+aP
+Mz
+WB
+py
+WB
+Mz
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+Mz
+wJ
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(35,1,1) = {"
+Ev
+Mz
+Mz
+IA
+QE
+IA
+IA
+kf
+aI
+mb
+mb
+py
+mb
+IA
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+IA
+zY
+zY
+zY
+zY
+zY
+Ii
+WB
+py
+WB
+Ep
+Pm
+yL
+Da
+yL
+yL
+Da
+lx
+Mz
+wJ
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(36,1,1) = {"
+Ev
+Ev
+Mz
+IA
+QE
+IA
+kf
+aI
+aI
+mb
+mb
+py
+mb
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+zY
+yL
+yL
+yL
+yL
+WB
+WB
+iv
+cm
+cm
+CY
+Fg
+Fg
+zr
+Da
+Wk
+zY
+Mz
+wJ
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(37,1,1) = {"
+Ev
+Ev
+Mz
+IA
+QE
+IA
+aI
+aI
+mb
+mb
+mb
+py
+Ss
+ky
+QE
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+IA
+zY
+MA
+Ax
+IN
+IN
+UL
+UL
+LM
+WB
+WB
+Pm
+Da
+yL
+TX
+Da
+my
+zY
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(38,1,1) = {"
+Ev
+Ev
+Mz
+IA
+QE
+IA
+mb
+mb
+mb
+mb
+mb
+py
+mb
+yL
+rD
+yL
+yL
+LC
+yL
+yL
+LC
+yL
+zY
+IA
+zY
+yL
+HK
+yL
+yL
+WB
+WB
+py
+WB
+dz
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(39,1,1) = {"
+Ev
+Ev
+Mz
+IA
+QE
+IA
+zf
+mb
+mb
+GU
+UL
+fe
+mb
+Gz
+rD
+yL
+yL
+yL
+yL
+yL
+yL
+yL
+zY
+IA
+zY
+aB
+rY
+Um
+zY
+dz
+mv
+py
+mv
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(40,1,1) = {"
+Ev
+Ev
+Mz
+IA
+QE
+IA
+IA
+IE
+mb
+mb
+mb
+mb
+Lw
+zY
+QE
+zY
+zY
+zY
+zY
+OO
+yL
+yL
+zY
+Mz
+zY
+yL
+jr
+yL
+zY
+Mz
+mv
+py
+mv
+Mz
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(41,1,1) = {"
+Ev
+Ev
+Mz
+IA
+QE
+IA
+IA
+IA
+kr
+AD
+JM
+MD
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+zY
+yL
+wD
+zY
+Mz
+zY
+yL
+ys
+yL
+zY
+Mz
+mv
+py
+mv
+mv
+lx
+yL
+yL
+yL
+lx
+Uk
+zY
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(42,1,1) = {"
+Ev
+Ev
+Mz
+IA
+QE
+QE
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+zY
+yL
+yL
+zY
+Mz
+zY
+MA
+zL
+yL
+lx
+mv
+mv
+ty
+mv
+Mz
+zY
+yL
+yL
+Su
+zY
+zY
+zY
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(43,1,1) = {"
+Ev
+Ev
+Mz
+IA
+IA
+IA
+QE
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+QE
+IA
+IA
+zY
+IA
+zY
+yL
+yL
+lx
+Mz
+zY
+yL
+jr
+yL
+zY
+Mz
+mv
+ty
+mv
+dz
+zY
+Su
+yL
+yL
+yL
+yL
+zY
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(44,1,1) = {"
+Ev
+Ev
+Mz
+Mz
+IA
+IA
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+IA
+Mz
+wJ
+Mz
+zY
+yL
+yL
+zY
+Mz
+zY
+yL
+Kg
+yL
+zY
+Mz
+mv
+ty
+mv
+Mz
+zY
+Pa
+ES
+Ro
+Su
+Pa
+zY
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(45,1,1) = {"
+Ev
+Ev
+Mz
+Mz
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+IA
+Mz
+wJ
+Mz
+zY
+zY
+zY
+zY
+Mz
+zY
+jF
+UL
+UL
+UL
+UL
+UL
+tj
+cm
+cm
+zY
+zY
+zY
+zY
+zY
+zY
+zY
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(46,1,1) = {"
+Ev
+Ev
+Ev
+Mz
+Mz
+Mz
+Mz
+Mz
+IA
+IA
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+wJ
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+mv
+mv
+mv
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+wJ
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+"}
+(47,1,1) = {"
+Ev
+Ev
+Ev
+Ev
+Mz
+Mz
+Mz
+Mz
+IA
+IA
+IA
+IA
+IA
+IA
+Mz
+Mz
+Mz
+zY
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+zY
+Ni
+pv
+nj
+zY
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+zY
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(48,1,1) = {"
+Ev
+Ev
+Ev
+Ev
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(49,1,1) = {"
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}
+(50,1,1) = {"
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Mz
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+Ev
+"}

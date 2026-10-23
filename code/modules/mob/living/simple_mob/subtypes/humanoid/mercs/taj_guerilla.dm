@@ -299,7 +299,7 @@
 
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/dual_pistols
 	name = "Tajara Insurgent Gunslinger"
-	desc = "A masked insurgent duel weilding pistols. What he lacks in accurayc he may make up for in volume of fire."
+	desc = "A masked insurgent duel weilding pistols. What he lacks in accuracy he may make up for in volume of fire."
 	icon_state = "pra_gunslinger"
 	icon_living = "pra_gunslinger"
 
@@ -332,6 +332,42 @@
 
 	loot_list = list(/obj/item/gun/projectile/ballistic/automatic/automat/taj = 100)
 
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/shotgun
+	name = "Tajara Insurgent Robber"
+	desc = "A masked insurgent with a doublebarrel shotgun. Even simple weapons can be powerful in the hands of the right people."
+	icon_state = "pra_shotgun"
+	icon_living = "pra_shotgun"
+
+	projectiletype = /obj/projectile/bullet/shotgun
+	projectilesound = 'sound/weapons/Gunshot_generic_rifle.ogg'
+	base_attack_cooldown = 6 //May get nerfed, these guys do more damage then 762 rifles
+	reload_time = 2 SECONDS
+
+	needs_reload = TRUE
+	reload_max = 2
+
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/merc/ranged
+
+	loot_list = list(/obj/item/gun/projectile/ballistic/shotgun/doublebarrel/taj = 100)
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper
+	name = "Tajara Insurgent Marksman"
+	desc = "A masked insurgent with a laser rifle. A volley of lasers may make up for a lack of stopping power."
+	icon_state = "pra_sniper"
+	icon_living = "pra_sniper"
+
+	projectiletype = /obj/projectile/beam/midlaser
+	projectilesound = 'sound/weapons/Gunshot_generic_rifle.ogg'
+	base_attack_cooldown = 6
+	reload_time = 5 SECONDS
+
+	needs_reload = TRUE
+	reload_max = 3
+
+	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/sniper
+
+	loot_list = list(/obj/item/gun/projectile/energy/frontier/taj = 100)
+
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup
 	name = "Tajara Insurgent Revolutionary"
 	desc = "A masked insurgent with a bullpup rifle. The revolution demands superior firepower and someone delivered."
@@ -339,7 +375,7 @@
 	icon_living = "pra_revolutionary"
 
 	projectiletype = /obj/projectile/bullet/rifle/a95
-	projectilesound = 'sound/weapons/Gunshot_generic_rifle.ogg'
+	projectilesound = 'sound/weapons/gunshot_shotgun.ogg'
 	base_attack_cooldown = 6 //May get nerfed, these guys do more damage then 762 rifles
 
 	needs_reload = TRUE
@@ -357,7 +393,7 @@
 
 /mob/living/simple_mob/humanoid/taj_guerilla/bandit/rifle/neutral
 	name = "New Kingdom Rifleman"
-	desc = "A rifleman from the New Kingdom of Adhomai. Hard to believe they still send solider into battle with such dated equipment."
+	desc = "A rifleman from the New Kingdom of Adhomai. Hard to believe they still send soldiers into battle with such dated equipment."
 	catalogue_data = list()
 	iff_factions = MOB_IFF_FACTION_NEUTRAL
 
@@ -403,8 +439,14 @@
 	catalogue_data = list()
 	iff_factions = MOB_IFF_FACTION_NEUTRAL
 
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper/neutral
+	name = "PVSM Marksman"
+	desc = "A member of the People's Republic of Adhomai Volunteer Space Militia, armed with a crank powered laser rifle."
+	catalogue_data = list()
+	iff_factions = MOB_IFF_FACTION_NEUTRAL
+
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup/neutral
-	name = "PVSM Infatryman"
+	name = "PVSM Infantryman"
 	desc = "A member of the People's Republic of Adhomai Volunteer Space Militia, armed with fancy bullpup."
 	catalogue_data = list()
 	iff_factions = MOB_IFF_FACTION_NEUTRAL
@@ -442,6 +484,12 @@
 	iff_factions = MOB_IFF_FACTION_MERCENARY
 
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/automat/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/shotgun/merc_faction
+	iff_factions = MOB_IFF_FACTION_MERCENARY
+
+/mob/living/simple_mob/humanoid/taj_guerilla/insurgent/sniper/merc_faction
 	iff_factions = MOB_IFF_FACTION_MERCENARY
 
 /mob/living/simple_mob/humanoid/taj_guerilla/insurgent/bullpup/merc_faction
