@@ -17,10 +17,8 @@
 SUBSYSTEM_DEF(timer)
 	name = "Timer"
 	wait = 1 // SS_TICKER subsystem, so wait is in ticks
-	init_order = INIT_ORDER_TIMER
-	init_stage = INIT_STAGE_BACKEND
-	runlevels = RUNLEVELS_ALL
 	priority = FIRE_PRIORITY_TIMER
+	init_stage = INIT_STAGE_BACKEND // already being fired even before the game starts :(
 	subsystem_flags = SS_TICKER|SS_NO_INIT
 
 	/// Queue used for storing timers that do not fit into the current buckets
