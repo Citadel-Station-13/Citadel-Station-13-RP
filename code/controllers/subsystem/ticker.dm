@@ -161,11 +161,14 @@ SUBSYSTEM_DEF(ticker)
 			return
 
 /datum/controller/subsystem/ticker/proc/how_many_players_have_readied_up()
-	var/ready = FALSE
+	var/ready = 0
+	var/waiting = 0
 	for(var/client/C in GLOB.clients)
 		if(istype(C.mob, /mob/new_player))
 			var/mob/new_player/p = C.mob
-			ready += p.ready
+			if(p.ready && !p.waiting) ready += p.ready
+			else if(p.waiting) waiting += p.waiting
+	if (waiting + ready >= config_legacy.players_waiting_required) ready += waiting
 	return ready
 
 /datum/controller/subsystem/ticker/proc/handle_no_players_ready()
@@ -238,12 +241,34 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
 	var/init_start = world.timeofday
+	var/playerC = 0		// Player ready
+	var/playerW = 0 	// Player waiting
+	var/playerCW = 0 	// Player ready + waiting
+
+	for(var/mob/new_player/player in GLOB.player_list)
+		if((player.client)&&(player.ready)&&(!player.waiting))
+			playerC++
+		if((player.client)&&(!player.ready)&&(player.waiting))
+			playerW++
+		if((player.client)&&(player.ready)&&(player.waiting))
+			playerCW++
+	if(playerC)
+		playerC += playerCW
+		playerCW = 0
+
+	if(playerW + playerC + playerCW >= config_legacy.players_waiting_required)	// Calculates the grand total of players in some kind of ready state for checking against total needed. Any who are waiting are set to ready in prep for roundstart.
+		playerC += playerCW
+		for(var/mob/new_player/player in GLOB.player_list)
+			if((player.waiting)&&(!player.ready))
+				player.ready = 1
+				playerC++
 
 	//Create and announce mode
 	if(master_mode=="secret")
 		src.hide_mode = 1
-
-	var/list/runnable_modes = config_legacy.get_runnable_modes()
+	to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("somethign happened"))
+	var/list/runnable_modes = config_legacy.get_runnable_modes(playerC)
+	to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("runnable_modes happened"))
 	if((master_mode=="random") || (master_mode=="secret"))
 		if(!runnable_modes.len)
 			current_state = GAME_STATE_PREGAME
@@ -271,7 +296,7 @@ SUBSYSTEM_DEF(ticker)
 	src.mode.pre_setup()
 	SSjob.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
-	if(!src.mode.can_start())
+	if(!src.mode.can_start(playerC))
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players readied, [config_legacy.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby.")
 		current_state = GAME_STATE_PREGAME
 		Master.SetRunLevel(RUNLEVEL_LOBBY)

@@ -1,8 +1,10 @@
 INITIALIZE_IMMEDIATE(/mob/new_player)
 /mob/new_player
 	var/ready = 0
+	var/waiting = 0
 	var/spawning = 0			// Referenced when you want to delete the new_player later on in the code.
 	var/totalPlayers = 0		// Player counts for the Lobby tab
+	var/totalPlayersWaiting = 0	// Players waiting for ready threshold to fill
 	var/totalPlayersReady = 0
 	var/datum/browser/panel
 	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
@@ -49,6 +51,10 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
 		else
 			output += "<p>\[ <a href='byond://?src=\ref[src];ready=1'>Ready</a> | <span class='linkOn'><b>Not Ready</b></span> \]</p>"
+		if(waiting && config_legacy.players_waiting_required)
+			output += "<p>\[ <span class='linkOn'><b>Waiting</b></span> | <a href='byond://?src=\ref[src];waiting=0'><b>Not Waiting</a></b> \]</p>"
+		else if(config_legacy.players_waiting_required)
+			output += "<p>\[ <a href='byond://?src=\ref[src];waiting=1'>Waiting</a> | <span class='linkOn'><b>Not Waiting</b></span> \]</p>"
 
 	else
 		output += "<a href='byond://?src=\ref[src];manifest=1'>View the Crew Manifest</A><br><br>"
@@ -105,13 +111,17 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 				INJECT_STATPANEL_DATA_LINE(., "Time To Start: DELAYED")
 			else
 				INJECT_STATPANEL_DATA_LINE(., "Time To Start: SOON")
-			INJECT_STATPANEL_DATA_ENTRY(., "Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+			INJECT_STATPANEL_DATA_ENTRY(., "Players: [totalPlayers]", "Minimum Waiting Threshold:[config_legacy.players_waiting_required]")
+			INJECT_STATPANEL_DATA_ENTRY(., "Players Ready: [totalPlayersReady]", "Players Waiting: [totalPlayersWaiting]")
 			totalPlayers = 0
 			totalPlayersReady = 0
+			totalPlayersWaiting = 0
 			for(var/mob/new_player/player in GLOB.player_list)
-				INJECT_STATPANEL_DATA_ENTRY(., "[player.key]", (player.ready)?("(Playing)"):(""))
+				var/player_status = (player.ready?player.waiting?"(Ready and Waiting)":"(Ready)":player.waiting?"(Waiting)":"")
+				INJECT_STATPANEL_DATA_ENTRY(., "[player.key]", player_status)
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
+				if(player.waiting)totalPlayersWaiting++
 
 /mob/new_player/update_mobility()
 	return
@@ -159,8 +169,19 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 						return
 
 			ready = want_to_be_ready
+			if (waiting == 1 && config_legacy.players_waiting_required)
+				to_chat(src, "You will now wait until <font color='blue'><b>[config_legacy.players_waiting_required]</b></font> players are ready. If the round starts before this threshold is met, you [ready?("<font color='green'><b>will</b></font> "):("<font color='red'><b>will not</b></font> ")]join this round.")
 		else
 			ready = 0
+			if (waiting == 1 && config_legacy.players_waiting_required)
+				to_chat(src, "You will now wait until <font color='blue'><b>[config_legacy.players_waiting_required]</b></font> players are ready. If the round starts before this threshold is met, you [ready?("<font color='green'><b>will</b></font> "):("<font color='red'><b>will not</b></font> ")]join this round.")
+	if(href_list["waiting"])
+		if (waiting == 0)
+			to_chat(src, "You will now wait until <font color='blue'><b>[config_legacy.players_waiting_required]</b></font> players are ready. If the round starts before this threshold is met, you [ready?("<font color='green'><b>will</b></font> "):("<font color='red'><b>will not</b></font> ")]join this round.")
+			waiting = 1
+		else
+			to_chat(src, "You are <font color='red'><b>no longer waiting</b></font>  and [ready?("<font color='green'><b>will</b></font> "):("<font color='red'><b>will not</b></font> ")]join this round.")
+			waiting = 0
 
 	if(href_list["refresh"])
 		//src << browse(null, "window=playersetup")	// Closes the player setup window

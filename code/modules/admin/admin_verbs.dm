@@ -187,6 +187,7 @@ var/list/admin_verbs_server = list(
 	/client/proc/paranoia_logging,
 	/client/proc/reestablish_db_connection,
 	/client/proc/change_next_map,
+	/client/proc/set_player_wait_thresh,
 	)
 
 var/list/admin_verbs_debug = list(
@@ -302,6 +303,7 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/delay_start,
 	/datum/admins/proc/delay_end,
 	/datum/admins/proc/toggleaban,
+	/client/proc/set_player_wait_thresh,
 	/client/proc/everyone_random,
 	/client/proc/reload_configuration,
 	/datum/admins/proc/toggleAI,

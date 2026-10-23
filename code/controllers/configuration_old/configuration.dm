@@ -35,6 +35,7 @@
 	var/list/probabilities = list()		// relative probability of each mode
 	var/list/player_requirements = list() // Overrides for how many players readied up a gamemode needs to start.
 	var/list/player_requirements_secret = list() // Same as above, but for the secret gamemode.
+	var/players_waiting_required = 0	// Total 'waiting' and 'ready' players needed for 'waiting' status to be counted as 'ready'. Readied players will bypass this depending on gamemode, e.g. Extended requires 0 readied players, therefore a single ready player + 2 waiting and not ready = ready player starting a round alone while the 2 waiting players are left in the lobby.
 	var/humans_need_surnames = 0
 	var/allow_random_events = 0			// enables random events mid-round when set to 1
 	var/enable_game_master = 0			// enables the 'smart' event system.
@@ -378,6 +379,9 @@
 					else
 						log_misc("Incorrect player requirement configuration definition: [req_name]  [req_value].")
 
+				if("players_waiting_required")
+					config_legacy.players_waiting_required = text2num(value)
+
 				if("allow_random_events")
 					config_legacy.allow_random_events = 1
 
@@ -550,10 +554,10 @@
 			return M
 	return gamemode_cache["extended"]
 
-/datum/configuration_legacy/proc/get_runnable_modes()
+/datum/configuration_legacy/proc/get_runnable_modes(var/playerC = 0)
 	var/list/runnable_modes = list()
 	for(var/game_mode in gamemode_cache)
 		var/datum/game_mode/M = gamemode_cache[game_mode]
-		if(M && M.can_start() && !isnull(config_legacy.probabilities[M.config_tag]) && config_legacy.probabilities[M.config_tag] > 0)
+		if(M && M.can_start(playerC) && !isnull(config_legacy.probabilities[M.config_tag]) && config_legacy.probabilities[M.config_tag] > 0)
 			runnable_modes |= M
 	return runnable_modes

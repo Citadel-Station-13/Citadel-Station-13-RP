@@ -127,6 +127,9 @@ PROBABILITY VISITORS 1
 ## By default, this overrides the voted gamemode requirement. To override the requirement for Secret, append '_SECRET' to the end of the first word.
 ## The format to use is REQUIRED_PLAYERS[_SECRET] [gamemode tag] [number of readies needed], for example, "REQUIRED_PLAYERS TRAITOR 1", or "REQUIRED_PLAYERS_SECRET MERCENARY 10".
 
+## Total 'waiting' and 'ready' players needed for 'waiting' status to be counted as 'ready'. Readied players will bypass this depending on gamemode, e.g. Extended requires 0 readied players, therefore a single ready player + 2 waiting and not ready = ready player starting a round alone while the 2 waiting players are left in the lobby. Setting to 0 will disable this feature.
+PLAYERS_WAITING_REQUIRED 4
+
 ## Hash out to disable random events during the round.
 ALLOW_RANDOM_EVENTS
 
