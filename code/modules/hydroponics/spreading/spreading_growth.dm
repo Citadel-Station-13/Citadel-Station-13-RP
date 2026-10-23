@@ -8,10 +8,32 @@
 			cardinal_neighbors |= T
 	return cardinal_neighbors
 
+// Update our list of valid neighboring turfs.
 /obj/structure/plant/proc/update_neighbors()
-	// Update our list of valid neighboring turfs.
-	neighbors = list()
+	// this is to prevent the plant from permanently growing up stairs, stacking death stacks on top
+	var/potential_neighbours = list()
 	for(var/turf/simulated/floor in get_cardinal_neighbors())
+		var/stairs_used = FALSE
+		for(var/obj/structure/stairs/middle/stairs in floor.contents)
+			var/turf/simulated/upstairs = get_step_multiz(floor, UP)
+
+			//hacky option to allow vines to grow up stairs, since the rest of this function otherwise disables that
+			var/plant_there = FALSE
+			for(var/obj/structure/plant/other in upstairs.contents)
+				plant_there = TRUE
+				break
+			if (!plant_there)
+				LAZYADD(potential_neighbours, floor)
+
+			LAZYADD(potential_neighbours, upstairs)
+			stairs_used = TRUE
+			break
+		if(stairs_used)
+			continue
+		LAZYADD(potential_neighbours, floor)
+
+	neighbors = list()
+	for(var/turf/simulated/floor in potential_neighbours)
 		if(get_dist(parent, floor) > spread_distance)
 			continue
 
