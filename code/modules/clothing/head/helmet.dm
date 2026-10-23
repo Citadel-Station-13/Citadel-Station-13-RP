@@ -58,6 +58,12 @@
 	icon_state = "helmet_tac"
 	armor_type = /datum/armor/station/tactical
 
+/obj/item/clothing/head/helmet/militia
+	starting_accessories = "/obj/item/clothing/accessory/armor/helmcover/navy"
+
+/obj/item/clothing/head/helmet/riot/militia
+	starting_accessories = "/obj/item/clothing/accessory/armor/helmcover/navy"
+
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
 	desc = "It's a helmet specifically designed to protect against close range attacks."

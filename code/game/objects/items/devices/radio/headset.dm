@@ -590,3 +590,17 @@
 	adhoc_fallback = TRUE
 	icon_state = "pilot_headset"
 	ks2type = /obj/item/encryptionkey/sdf
+
+/obj/item/radio/headset/militia
+	name = "militia headset"
+	desc = "A headset for communication for the militia."
+	adhoc_fallback = TRUE
+	icon_state = "pilot_headset"
+	ks2type = /obj/item/encryptionkey/militia
+
+/obj/item/radio/headset/maquis
+	name = "maquisard headset"
+	desc = "A headset for communication for the Dryas Maquis."
+	adhoc_fallback = TRUE
+	icon_state = "pilot_headset"
+	ks2type = /obj/item/encryptionkey/maquis

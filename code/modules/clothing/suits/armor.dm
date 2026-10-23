@@ -701,6 +701,13 @@
 	desc = "A lightweight navy blue plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_navy"
 
+/obj/item/clothing/suit/armor/pcarrier/navy/militia
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/armor/tag/militia, /obj/item/clothing/accessory/storage/pouches/navy)
+
+/obj/item/clothing/suit/armor/pcarrier/navy/militia/assault
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/mediumtreated, /obj/item/clothing/accessory/storage/pouches/large/navy, /obj/item/clothing/accessory/armor/tag/militia, /obj/item/clothing/accessory/armor/armguards, /obj/item/clothing/accessory/armor/legguards)
+
+
 /obj/item/clothing/suit/armor/pcarrier/tan
 	name = "tan plate carrier"
 	desc = "A lightweight tan plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
@@ -803,9 +810,17 @@
 	name = "\improper Orion Confederation Government armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation Group."
 
+/obj/item/clothing/suit/storage/vest/oricon/maquis
+	name = "\improper Dryas Maquisard armored vest"
+	desc = "A synthetic armor vest. This is reporposed for a new cause."
+
 /obj/item/clothing/suit/storage/vest/oricon/heavy
-	name = "\improper Orion Confederation Government heavy armored vest"
+	name = "\improper Dryas Confederation Government heavy armored vest"
 	desc = "A synthetic armor vest with SECURITY printed in distinctive blue lettering on the chest. This one has added webbing and ballistic plates." // JSDF does peacekeeping, not these guys.
+
+/obj/item/clothing/suit/storage/vest/oricon/heavy/maquis
+	name = "\improper Dryas Maquisard heavy armored vest"
+	desc = "A synthetic armor vest. This is reporposed for a new cause."
 
 /obj/item/clothing/suit/storage/vest/oricon/security
 	name = "master at arms heavy armored vest"
@@ -814,6 +829,11 @@
 /obj/item/clothing/suit/storage/vest/oricon/command
 	name = "command heavy armored vest"
 	desc = "A synthetic armor vest with Orion Confederation Government printed in detailed gold lettering on the chest. This one has added webbing and ballistic plates."
+
+/obj/item/clothing/suit/storage/vest/oricon/command/maquis
+	name = "\improper Dryas Maquisard heavy armored vest"
+	desc = "A synthetic armor vest. This is reporposed for a new cause."
+
 
 /obj/item/clothing/suit/armor/combat/JSDF
 	name = "marine body armor"

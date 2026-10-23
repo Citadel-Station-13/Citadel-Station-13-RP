@@ -102,3 +102,72 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	inhand_icon = 'icons/clothing/uniform/workwear/basic_colored_jumpsuit.dmi'
 	inhand_state = "grey"
+
+/obj/item/clothing/under/vce_militia
+	name = "militia coverall"
+	desc = "The official uniform of the roselin fleet militia."
+	icon = 'icons/clothing/uniform/workwear/oricon/utility/navy_officer.dmi'
+	icon_state = "navy_officer"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	accessories = "/obj/item/clothing/accessory/oricon/specialty/enlisted"
+
+/obj/item/clothing/under/vce_militia/sergent
+	name = "sergeant militia coverall"
+	desc = "The official uniform of the roselin fleet militia."
+	icon = 'icons/clothing/uniform/workwear/oricon/utility/navy_officer.dmi'
+	icon_state = "navy_officer"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	accessories = "/obj/item/clothing/accessory/oricon/specialty/officer"
+
+/obj/item/clothing/under/vce_militia/lieutenant
+	name = "lieutenant militia coverall"
+	desc = "The official uniform of the roselin fleet militia."
+	icon = 'icons/clothing/uniform/workwear/oricon/utility/navy_officer.dmi'
+	icon_state = "navy_officer"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	accessories = "/obj/item/clothing/accessory/oricon/rank/ec/officer/o3"
+
+/obj/item/clothing/under/vce_militia/commander
+	name = "commander militia coverall"
+	desc = "The official uniform of the roselin fleet militia."
+	icon = 'icons/clothing/uniform/workwear/oricon/utility/navy_officer.dmi'
+	icon_state = "navy_officer"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rolldown_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_rollsleeve_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	accessories = "/obj/item/clothing/accessory/oricon/rank/ec/officer/o5"
+
+
+/obj/item/clothing/under/vce_maquis
+	name = "maquisard fatigues"
+	desc = "The official uniform of the Dryas maquisard. Based on the Society of Universal Cartographers uniform, it is now a statement for freedom."
+	icon = 'icons/clothing/uniform/workwear/oricon/dress/grey.dmi'
+	icon_state = "grey"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	starting_accessories = list(/obj/item/clothing/accessory/armband/maquis)
+
+/obj/item/clothing/under/vce_maquis/officer
+	name = "maquisard officer fatigues"
+	desc = "The official uniform of the Dryas maquisard officer. Based on the Society of Universal Cartographers uniform, in gold trim."
+	icon = 'icons/clothing/uniform/workwear/oricon/dress/grey_command.dmi'
+	icon_state = "grey_command"
+	worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	starting_accessories = list(/obj/item/clothing/accessory/armband/maquis)
+
+
+/obj/item/clothing/accessory/armband/maquis
+	name = "Dryas Maquis Armband"
+	desc = "An Armband that maquisard of the Dryas maquis wears proudly."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_state = "med"
+	color = "#1100ff"

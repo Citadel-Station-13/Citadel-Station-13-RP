@@ -817,11 +817,34 @@
 	name = "Occulum Operator ID"
 	desc = "An ID issued to operators of Occulum. Radio host, reporter, journalist, contacts, technician, spies... All get one. It also counts as a Press document, valid in this system."
 	icon_state = "occulum"
+	job_access_type = null
 
 /obj/item/card/id/external/id_slavager
 	name = "Guardian Salvaging Inc ID"
 	desc = "An ID issued to workers of the Guardian Salvaging Inc. It looks generic and cheap."
 	icon_state = "generic"
+	job_access_type = null
+
+/obj/item/card/id/external/id_militia
+	name = "RCF Militia ID"
+	desc = "An ID issued to workers of the Militian of Roseline Colony Fleet It looks generic and cheap."
+	access = list(156)
+	icon_state = "guest"
+	job_access_type = null
+
+/obj/item/card/id/external/id_maquis
+	name = "Dryas Maquis ID"
+	desc = "An ID issued to workers of the Dryas Maquis. It looks generic and cheap."
+	access = list(157)
+	icon_state = "generic"
+	job_access_type = null
+
+/obj/item/card/id/external/id_smuggler
+	name = "ID"
+	desc = "An generic and cheap ID."
+	icon_state = "generic"
+	access = list(158)
+	job_access_type = null
 
 /obj/item/card/id/external/id_tribal
 	name = "H.A.M.I. Guest Pass"

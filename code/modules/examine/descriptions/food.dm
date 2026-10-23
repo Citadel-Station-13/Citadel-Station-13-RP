@@ -48,3 +48,6 @@
 
 /obj/item/reagent_containers/food/snacks/boxed/unajerky
   description_fluff = "Removed from Getmore vendors following ethical questions about the source of the meat, Sissalik Jerky remains a popular snack for Unathi immigrants and daredevils looking for a meaty, spicy treat that makes Scaredy's look like tofu."
+
+/obj/item/reagent_containers/food/snacks/wrapped/algae
+  description_fluff = "A bar of salty compressed comestible algae. Used as emergency food, usualy."

@@ -102,6 +102,18 @@
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
 
+/turf/simulated/floor/fey/snow_grass
+	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_flora.dmi'
+	icon_state = "ice_grass"
+	name = "Icey Grass"
+	desc = "A patch of grass frozen in place."
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/snow1.ogg',
+		'sound/effects/footstep/snow2.ogg',
+		'sound/effects/footstep/snow3.ogg',
+		'sound/effects/footstep/snow4.ogg',
+		'sound/effects/footstep/snow5.ogg'))
+
 
 /obj/structure/flora/rock/fey
 	icon = 'code/game/content/factions/fey_forest/fey_forest.dmi/fey_flora.dmi'

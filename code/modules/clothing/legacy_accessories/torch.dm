@@ -247,6 +247,9 @@ armbands
 	desc = "An armlet, worn by the crew to display which department they're assigned to. This one is white with 'MA' in navy blue."
 	icon_state = "maband"
 
+/obj/item/clothing/accessory/armband/oricon/maquis
+	name = "Maquis brassard"
+	desc = "An armlet, worn by the maquisard."
 /*****************
 armour attachments
 *****************/

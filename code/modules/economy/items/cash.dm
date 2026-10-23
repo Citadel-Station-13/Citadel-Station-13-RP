@@ -173,6 +173,17 @@
 	desc = "It's worth 1000 Thalers."
 	worth = 1000
 
+/obj/random/spacecash
+	name = "Random Thaler"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "spacecash1000"
+
+/obj/random/spacecash/random/item_to_spawn()
+	return pick(prob(2);/obj/item/spacecash/c1000,
+				prob(5);/obj/item/spacecash/c100,
+				prob(5);/obj/item/spacecash/c200,
+				prob(4);/obj/item/spacecash/c500)
+
 /proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user)
 	var/obj/item/spacecash/SC = new (spawnloc)
 

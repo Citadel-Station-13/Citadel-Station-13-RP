@@ -335,6 +335,44 @@
 	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
 	sound_env = SMALL_ENCLOSED
 
+//Mining Shuttle
+
+/datum/shuttle/autodock/overmap/trade/strelka_mining
+	name = "Mining shuttle"
+	warmup_time = 8
+	shuttle_area = list(/area/shuttle/strelka_mining)
+	current_location = "strelka_mining"
+	docking_controller_tag = "strelka_mining_docker"
+	fuel_consumption = 1
+	move_time = 10
+
+/obj/overmap/entity/visitable/ship/landable/trade/strelka_mining
+	name = "Mining shuttle"
+	desc = "A Shuttle linked to the NEV Strelka."
+	color = "#835b11"
+	fore_dir = WEST
+	vessel_mass = 1000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Mining shuttle"
+	scanner_name = "Mining shuttle"
+	scanner_desc = @{"[i]Registration[/i]: ---
+[i]Class[/i]: 2550 Mining Civilian Shuttle
+[i]Transponder[/i]: Transmitting (CIV), Registered with NT.
+[b]Notice[/b]: The shuttle is assigned to the NEV Strelka"}
+
+
+/obj/machinery/computer/shuttle_control/explore/strelka_mining
+	name = "short jump console"
+	shuttle_tag = "Mining shuttle"
+
+/area/shuttle/strelka_mining
+	name = "Mining shuttle"
+	requires_power = 1
+	icon_state = "shuttle2"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_ERODING
+	sound_env = SMALL_ENCLOSED
+
 
 //Landmarks
 
@@ -386,5 +424,12 @@
 	name = "NEV strelka - Civilian Personal Dock 4"
 	landmark_tag = "strelka_personalmicro4"
 	docking_controller = "strelka_personalmicro4_dock"
+	base_turf = /turf/space
+	base_area = /area/space
+
+/obj/effect/shuttle_landmark/strelka/deck3
+	name = "NEV strelka - Mining"
+	landmark_tag = "strelka_mining"
+	docking_controller = "strelka_mining_dock"
 	base_turf = /turf/space
 	base_area = /area/space

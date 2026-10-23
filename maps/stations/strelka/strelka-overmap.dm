@@ -1,6 +1,6 @@
 /obj/overmap/entity/visitable/ship/strelka
 	name = "NEV Strelka"	// Name of the location on the overmap.
-	desc = "The Strelka is one of the many ships that is a part of the NDV Marksman's fleet in this sector"
+	desc = "The Strelka is one of the 3 vessel of the Crucis exploratory fleet."
 
 	color = "#2c7bac"
 

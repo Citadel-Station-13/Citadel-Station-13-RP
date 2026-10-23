@@ -7086,6 +7086,18 @@ END CITADEL CHANGE */
 	reagents.add_reagent("protein", 3)
 	reagents.add_reagent("triglyceride", 1)
 
+/obj/item/reagent_containers/food/snacks/algae
+	name = "Algae Bar"
+	desc = "A bar of salty compressed comestible algae. Used as emergency food, usualy. Somehow, it smell like sea water."
+	icon_state = "proteinbar"
+	nutriment_amt = 4
+	nutriment_desc = list("dry meat" = 1)
+
+/obj/item/reagent_containers/food/snacks/algae/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("salt", 3)
+	reagents.add_reagent("protein", 2)
+
 /obj/item/reagent_containers/food/snacks/sirim
 	name = "Sirim"
 	desc = "A fungus native to Surt. It's highly effective at facilitating fermentation."

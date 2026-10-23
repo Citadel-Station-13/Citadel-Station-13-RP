@@ -4,10 +4,11 @@
 /obj/machinery/button/remote/blast_door/strelka/blockade
 	icon = 'icons/obj/stationobjs.dmi'
 	name = "Blockade Runner mode button"
-	desc = "Makes the ship enter a mode that closes all external windows of the shuttles. Can add a small level of protection."
+	desc = "Makes the ship enter a mode that closes all external windows of the vessel. Can add a small level of protection in combat situation."
 	id = "blockade_runner"
 	var/sealed = FALSE
 	var/last_used = 0
+	color = "#415df7"
 
 
 /obj/machinery/door/blast/strelka/blockade
@@ -50,6 +51,9 @@
 			else
 				spawn(0)
 					M.force_open()
+
+
+
 
 // Cargo shuttle Pilot
 // Yep, the strelka is a biiiiiiiiiiiiiiiiiiiit old in some aspect..
@@ -152,3 +156,43 @@
 	desc = "Its Fake snow. Well. Actually it is kinda real, still made with water, but with added additive to prevent it to melt until march and april."
 	slowdown = 0
 	outdoors = FALSE
+
+/obj/random/stelkaobjective
+	name = "random strelka objective"
+	desc = "This put a crew objective on the strelka."
+	icon = 'icons/obj/library.dmi'
+	icon_state = "book16"
+
+/obj/random/stelkaobjective/item_to_spawn()
+	var/list/stelka_objective = subtypesof(/obj/item/paper/strelkaobjective)
+	return pick(stelka_objective)
+
+
+/obj/item/gps/nt_lost
+	name = "global positioning system"
+	desc = "Triangulates the approximate co-ordinates using a nearby satellite network."
+	icon = 'icons/obj/gps.dmi'
+	icon_state = "gps-gen"
+	gps_tag = "NT-LOST"
+	on = TRUE
+
+/obj/structure/closet/crate/secure/corporate/nanotrasen/lost
+	name = "Lost NT Crate"
+	desc = "A crate emblazoned with the standard Nanotrasen livery. This one is from a lost package. NT will surely want it back."
+	icon_state = "nt"
+	starts_with = list(
+		/obj/random/projectile/random = 2,
+		/obj/random/spacecash,
+		/obj/random/single,
+		/obj/item/gps/nt_lost)
+	req_access = "list(12)"
+
+/obj/random/ntcrate
+	name = "Random crate"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "gift"
+	spawn_nothing_percentage = 50
+
+/obj/random/ntcrate/item_to_spawn()
+	return pick(/obj/structure/closet/crate/secure/corporate/nanotrasen/lost)
+

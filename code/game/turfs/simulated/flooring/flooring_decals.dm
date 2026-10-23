@@ -1196,6 +1196,13 @@ var/list/floor_decals = list()
 	name = "grass edge"
 	icon_state = "grass_edge_corner"
 
+
+//ash
+
+/obj/effect/floor_decal/ash_edge
+	name = "Ash edge"
+	icon_state = "ash_edge"
+
 // Victory colour decals
 
 /obj/effect/floor_decal/corner/navblue

@@ -243,3 +243,18 @@
 		/obj/item/storage/single_use/mre/menu12 = 1,
 	)
 	price_default = 20 //You have to pay for it, as to prevent chef players from raging :)
+
+/obj/machinery/vending/snack/fleet
+	name = "Fleet algae base Fodd vendor"
+	desc = "Here in the fleet, there is fortunatly food, comming from farming ships, traders, and even settled colonist. But the fleet still has to provide food reserves in case of any issue, and for poorer people, Hence... the use of algae."
+	product_slogans = "algae : Youll get use to it !"
+	product_ads = "Please ration your food correctly !"
+	icon_state = "mre"
+	icon_deny = "mre-deny"
+	products = list(
+		/obj/item/reagent_containers/food/snacks/wrapped/algae = 25,
+	)
+	prices = list(
+		/obj/item/reagent_containers/food/snacks/wrapped/algae = 1,
+
+	)

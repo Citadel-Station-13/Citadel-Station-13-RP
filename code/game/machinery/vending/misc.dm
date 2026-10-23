@@ -490,3 +490,153 @@
 		/obj/item/card/id/external/nebula/room8 = 15,
 		/obj/item/card/id/external/nebula/room9 = 80,
 	)
+
+/obj/machinery/vending/vce_bartender
+	name = "Fleet Bartender"
+	desc = "A sad looking bartender, just serving drinks."
+	icon = 'icons/obj/vce_asset/vce_humanoid.dmi'
+	icon_state = "bartender"
+	product_slogans = "Hey. Don't get too drunk now."
+	product_ads = "Our ale ? Eh. Its drinkable."
+
+	products = list(
+		/obj/item/reagent_containers/food/snacks/algae = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/beer = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/cider = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps = 2,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/gin = 3,
+		/obj/item/reagent_containers/food/drinks/bottle/wine = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/whitewine = 5,
+		/obj/item/reagent_containers/food/drinks/cans/cola = 15,
+		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 15,
+		/obj/item/reagent_containers/food/drinks/cans/iced_tea = 15,
+		/obj/item/reagent_containers/food/drinks/cans/robustexpress = 15,
+		/obj/item/reagent_containers/food/drinks/cans/sodawater = 15,
+		/obj/item/reagent_containers/food/drinks/cans/space_up = 15,
+
+	)
+
+	prices = list(
+		/obj/item/reagent_containers/food/snacks/algae = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/small/beer = 8,
+		/obj/item/reagent_containers/food/drinks/bottle/small/cider = 8,
+		/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps = 40,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/gin = 30,
+		/obj/item/reagent_containers/food/drinks/bottle/wine = 25,
+		/obj/item/reagent_containers/food/drinks/bottle/whitewine = 28,
+		/obj/item/reagent_containers/food/drinks/cans/cola = 5,
+		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 5,
+		/obj/item/reagent_containers/food/drinks/cans/iced_tea = 5,
+		/obj/item/reagent_containers/food/drinks/cans/robustexpress = 5,
+		/obj/item/reagent_containers/food/drinks/cans/sodawater = 2,
+		/obj/item/reagent_containers/food/drinks/cans/space_up = 5,
+	)
+
+/obj/machinery/vending/vce_bartender_thundra
+	name = "Thundra Bartender"
+	desc = "A bartender with a fancy hat and looking paranoid."
+	icon = 'icons/obj/vce_asset/vce_humanoid.dmi'
+	icon_state = "homesteader_shotgunner"
+	product_slogans = "The vox ? You saw them ? Huh.  Buy a drink."
+	product_ads = "Our ale ? Better than those of the Vox !"
+
+	products = list(
+		/obj/item/reagent_containers/food/snacks/algae = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/beer = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/cider = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps = 2,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/gin = 3,
+		/obj/item/reagent_containers/food/drinks/bottle/wine = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/whitewine = 5,
+		/obj/item/reagent_containers/food/drinks/cans/cola = 15,
+		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 15,
+		/obj/item/reagent_containers/food/drinks/cans/iced_tea = 15,
+		/obj/item/reagent_containers/food/drinks/cans/robustexpress = 15,
+		/obj/item/reagent_containers/food/drinks/cans/sodawater = 15,
+		/obj/item/reagent_containers/food/drinks/cans/space_up = 15,
+
+	)
+
+	prices = list(
+		/obj/item/reagent_containers/food/snacks/algae = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/small/beer = 8,
+		/obj/item/reagent_containers/food/drinks/bottle/small/cider = 8,
+		/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps = 40,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sarsaparilla = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/small/sassafras = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/small/alcsassafras = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/gin = 30,
+		/obj/item/reagent_containers/food/drinks/bottle/wine = 25,
+		/obj/item/reagent_containers/food/drinks/bottle/whitewine = 28,
+		/obj/item/reagent_containers/food/drinks/cans/cola = 5,
+		/obj/item/reagent_containers/food/drinks/cans/cola_cherry = 5,
+		/obj/item/reagent_containers/food/drinks/cans/iced_tea = 5,
+		/obj/item/reagent_containers/food/drinks/cans/robustexpress = 5,
+		/obj/item/reagent_containers/food/drinks/cans/sodawater = 2,
+		/obj/item/reagent_containers/food/drinks/cans/space_up = 5,
+	)
+
+/obj/machinery/vending/vce_thundra_vendor
+	name = "Aluna Crucis Independant Trader"
+	desc = "A tired, but jolly skrell vending a lot of things, from liquor to oricon reliques."
+	icon = 'icons/obj/vce_asset/vce_humanoid.dmi'
+	icon_state = "trader"
+	product_slogans = "Welcome ! Buy me stuff !"
+	product_ads = "Can I recommand you a good gun ? Place is great to hunt !; Not a lot of new customers, so buy anything you need !; I sell alot of things !"
+
+	products = list(
+		/obj/item/cell/basic/tier_1/weapon = 10,
+		/obj/item/cell/basic/tier_1/small = 10,
+		/obj/item/storage/single_use/mre/menu2 = 15,
+		/obj/item/reagent_containers/food/snacks/algae = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/beer = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/cider = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat = 8,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/bar = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/janitor = 2,
+		/obj/item/clothing/suit/storage/vest = 2,
+		/obj/item/clothing/head/helmet/oricon = 2,
+		/obj/item/clothing/mask/warmer = 20,
+		/obj/item/gun/projectile/ballistic/p92x = 4,
+		/obj/item/gun/projectile/ballistic/shotgun/doublebarrel = 2,
+		/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/vintage = 2,
+		/obj/item/gun/projectile/energy/phasegun/pistol = 5,
+
+
+	)
+
+	prices = list(
+		/obj/item/cell/basic/tier_1/weapon = 10,
+		/obj/item/cell/basic/tier_1/small = 10,
+		/obj/item/storage/single_use/mre/menu2 = 15,
+		/obj/item/reagent_containers/food/snacks/algae = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/beer = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/small/cider = 20,
+		/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
+		/obj/item/reagent_containers/food/drinks/bottle/sourappleschnapps = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat = 8,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/bar = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/janitor = 2,
+		/obj/item/clothing/suit/storage/vest = 250,
+		/obj/item/clothing/head/helmet/oricon = 250,
+		/obj/item/clothing/mask/warmer = 15,
+		/obj/item/gun/projectile/ballistic/p92x = 300,
+		/obj/item/gun/projectile/ballistic/shotgun/doublebarrel = 350,
+		/obj/item/gun/projectile/ballistic/shotgun/pump/rifle/lever/vintage = 400,
+		/obj/item/gun/projectile/energy/phasegun/pistol = 280,
+	)

@@ -230,3 +230,22 @@
 	say_threaten = list("You think you can stop us?!", "This is a frree terrrritorry! Scrram!")
 	say_stand_down = list("Grrreat now we gotta move camp.")
 	say_escalate = list("You'll neverrr stop us all!", "Forr Adhomai!")
+
+/datum/say_list/vce/civi
+	speak = list("Hello !",
+				"Must admit, I miss life on land.",
+				"At one point, you get used to the algae bars.",
+				"Glad corporation are back, but I hope it wont result in trouble.",
+				"Stay safe !")
+	emote_see = list("sniffs.", "coughs.", "looks around.", "looks focused.", "doesnt notice you.")
+	say_maybe_target = list("Eh ? Hello ?")
+	threaten_sound = 'sound/weapons/TargetOn.ogg'
+	stand_down_sound = 'sound/weapons/TargetOff.ogg'
+
+/datum/say_list/vce/civi/militia
+	say_understood = list("So say we all!")
+	say_cannot = list("Nope, can't do that !")
+	say_got_target = list("Target locked!")
+	say_threaten = list("Dont make me shoot !")
+	say_stand_down = list("Stand down.")
+	say_escalate = list("Open fire !")

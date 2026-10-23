@@ -359,6 +359,20 @@
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
+//Militia Tactical
+/obj/item/storage/backpack/militia
+	name = "Militia Tactical backpack"
+	desc = "A spacious backpack with lots of pockets, used by members of the Fleet Militia assault team."
+	icon_state = "blueshieldpack"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securitypack", SLOT_ID_LEFT_HAND = "securitypack")
+
+//Militia Tactical
+/obj/item/storage/backpack/satchel/militia
+	name = "Militia Tactical satchel"
+	desc = "A satchel used by members of the Fleet Militia."
+	icon_state = "satchel-blueshield"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "briefcase", SLOT_ID_LEFT_HAND = "briefcase")
+
 //ERT backpacks.
 /obj/item/storage/backpack/ert
 	name = "emergency response team backpack"

@@ -372,6 +372,11 @@
 	desc = "An embroidered patch bearing the PMD's half-lidded eye Icon."
 	icon_state = "pmdtag"
 
+/obj/item/clothing/accessory/armor/tag/militia
+	name = "\improper Militia tag"
+	desc = "An armor tag with the RCMV Adamant blason."
+	icon_state = "ntctag"
+
 //Other
 /obj/item/clothing/accessory/armor/tag/sifguard
 	name = "\improper Sif Defense Force crest"

@@ -179,6 +179,15 @@
 /obj/structure/flora/tree/dead/choose_icon_state()
 	return "[base_icon_state]_[rand(1, 6)]"
 
+/obj/structure/flora/tree/dead/dry
+	icon = 'icons/obj/flora/deadtree_dry.dmi'
+	icon_state = "deadtree_1"
+	base_icon_state = "deadtree_1"
+	product = /obj/item/stack/material/log
+	product_amount = 10
+	integrity = 200
+	integrity_max = 200
+
 // Small jungle trees
 
 /obj/structure/flora/tree/jungle_small

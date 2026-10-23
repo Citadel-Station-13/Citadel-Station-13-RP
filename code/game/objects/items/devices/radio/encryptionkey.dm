@@ -197,3 +197,9 @@
 
 /obj/item/encryptionkey/sdf
 	channels = list("SDF" = 1, "Entertainment" = 1)
+
+/obj/item/encryptionkey/militia
+	channels = list("Militia" = 1, "Entertainment" = 1)
+
+/obj/item/encryptionkey/maquis
+	channels = list("Maquis" = 1, "Entertainment" = 1)
