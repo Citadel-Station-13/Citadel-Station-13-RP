@@ -17052,7 +17052,7 @@
 /obj/effect/floor_decal/corner/brown/border,
 /obj/machinery/doorbell_chime{
 	pixel_y = -31;
-	id_tag = surt
+	id_tag = 4
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
