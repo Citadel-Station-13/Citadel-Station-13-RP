@@ -810,3 +810,45 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 	icon = 'icons/turf/flooring/roguetown/rock.dmi'
 	icon_state = "rock"
 	initial_flooring = /datum/prototype/flooring/roguetown/rock
+
+/turf/simulated/floor/roguetown/carpet
+	name = "carpet"
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_state = "carpet"
+	initial_flooring = /datum/prototype/flooring/roguetown/carpet
+
+/turf/simulated/floor/roguetown/grass/zero
+	name = "grass"
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_state = "grass_0"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass/zero
+
+/turf/simulated/floor/roguetown/grass/one
+	name = "grass"
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_state = "grass_1"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass/one
+
+/turf/simulated/floor/roguetown/grass/two
+	name = "grass"
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_state = "grass_2"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass/two
+
+/turf/simulated/floor/roguetown/grass/three
+	name = "grass"
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_state = "grass_3"
+	initial_flooring = /datum/prototype/flooring/roguetown/grass/three
+
+/turf/simulated/floor/roguetown/herringbone
+	name = "herringbone parquet"
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_state = "herringbone"
+	initial_flooring = /datum/prototype/flooring/roguetown/herringbone
+
+/turf/simulated/floor/roguetown/hex
+	name = "stone"
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_state = "hex"
+	initial_flooring = /datum/prototype/flooring/roguetown/hex

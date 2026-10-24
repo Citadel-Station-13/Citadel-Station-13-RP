@@ -1470,6 +1470,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
+"bds" = (
+/obj/structure/flora/pumpkin{
+	pixel_y = 5;
+	pixel_x = 7
+	},
+/turf/simulated/floor/roguetown/grass/zero,
+/area/hallway/d2afthall/endeavour)
 "bdJ" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -2044,8 +2051,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/flora/grass/event/full_grass2,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "bzj" = (
 /obj/structure/catwalk,
@@ -2323,7 +2329,7 @@
 /area/hallway/d2aftmaint/endeavour)
 "bFI" = (
 /obj/machinery/computer/arcade/clawmachine,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "bGt" = (
 /obj/structure/cable/green{
@@ -4137,7 +4143,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "cKy" = (
 /turf/simulated/floor/tiled/dark,
@@ -4655,7 +4661,7 @@
 "dec" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/glasses/meta,
-/obj/item/clothing/gloves/black,
+/obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood,
 /area/hallway/d2fwdportmaint/endeavour)
 "deu" = (
@@ -5250,8 +5256,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/full_grass2,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/pumpkin{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/public_meeting_room/endeavour)
 "dyU" = (
 /turf/simulated/wall/r_wall/prepainted/medical,
@@ -6363,13 +6372,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
-"ekC" = (
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/sleeper)
 "ekI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6476,9 +6478,12 @@
 /turf/simulated/floor/plating,
 /area/hallway/d2amidportmaint/endeavour)
 "eoQ" = (
-/obj/structure/flora/grass/event/lavender_grass1,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/pumpkin/carved/owo{
+	pixel_y = 1;
+	pixel_x = 5
+	},
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/public_meeting_room/endeavour)
 "eoT" = (
 /obj/structure/disposalpipe/segment,
@@ -6546,8 +6551,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/flora/grass/event/sunny_bush1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/public_meeting_room/endeavour)
 "eqB" = (
 /obj/effect/floor_decal/borderfloor{
@@ -6635,7 +6639,7 @@
 "etO" = (
 /obj/item/stool/padded,
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "evH" = (
 /obj/machinery/light{
@@ -6722,7 +6726,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "eyZ" = (
 /obj/machinery/air_alarm{
@@ -6845,7 +6849,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "eCw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7194,11 +7198,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "eSf" = (
-/obj/structure/flora/grass/event/leafy_bush2,
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "eSM" = (
 /obj/effect/floor_decal/borderfloor,
@@ -7496,11 +7499,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/medical/virology_fore_access/endeavour)
 "eZX" = (
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/structure/disposalpipe/junction/flipped{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "fby" = (
@@ -8586,11 +8588,10 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/flora/grass/event/lavender_grass1,
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "fMh" = (
 /obj/effect/floor_decal/spline/plain{
@@ -9608,8 +9609,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/d2fwdhall/endeavour)
 "gzO" = (
-/obj/structure/flora/grass/event/purple_flowers1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/rock/rock2{
+	dir = 1;
+	pixel_x = -3
+	},
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "gAn" = (
 /obj/structure/closet/crate/biohazard,
@@ -9960,9 +9964,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "gMR" = (
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
+/obj/structure/disposalpipe/junction/flipped{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/d2fwdhall/endeavour)
@@ -10086,8 +10089,14 @@
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "gQJ" = (
-/obj/structure/flora/grass/event/sparse_grass2,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/pumpkin{
+	pixel_x = -5
+	},
+/obj/structure/flora/pumpkin{
+	pixel_x = -12;
+	pixel_y = -15
+	},
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "gQO" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -11063,8 +11072,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/obj/structure/flora/grass/event/stalky_bush1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/public_meeting_room/endeavour)
 "hDc" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -11197,8 +11205,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/leafy_bush1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/public_meeting_room/endeavour)
 "hGE" = (
 /obj/structure/railing{
@@ -11962,7 +11969,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/hallway/d2afthall/endeavour)
 "ikZ" = (
 /obj/structure/cable/green{
@@ -12109,8 +12116,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/sunny_bush1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "itq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12209,8 +12215,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "ivV" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass,
+/obj/structure/flora/pumpkin/carved{
+	pixel_x = -9;
+	pixel_y = -5
+	},
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/d2afthall/endeavour)
 "iwg" = (
 /obj/structure/disposalpipe/segment{
@@ -12302,7 +12311,7 @@
 /obj/machinery/computer/arcade/battle{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "izS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12338,8 +12347,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "iAd" = (
-/obj/structure/flora/grass/event/yellow_flowers1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/public_meeting_room/endeavour)
 "iAl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12495,6 +12503,13 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/chemistry_lab)
+"iEW" = (
+/obj/structure/flora/rock/rock1{
+	dir = 9;
+	pixel_y = -7
+	},
+/turf/simulated/floor/roguetown/grass/one,
+/area/hallway/d2afthall/endeavour)
 "iFi" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -12691,7 +12706,7 @@
 /obj/machinery/computer/arcade/orion_trail{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "iMe" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -12824,8 +12839,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/medbreak)
 "iRZ" = (
-/obj/structure/flora/grass/event/grassy_bush1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "iSa" = (
 /obj/machinery/camera/network/research{
@@ -12904,8 +12918,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/flora/grass/event/sparse_grass2,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/public_meeting_room/endeavour)
 "iVM" = (
 /obj/structure/toilet{
@@ -12969,8 +12982,7 @@
 /turf/simulated/floor/plating,
 /area/medical/patient_b)
 "iZN" = (
-/obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/d2afthall/endeavour)
 "iZQ" = (
 /mob/living/bot/secbot/slime/slimesky,
@@ -14136,8 +14148,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/obj/structure/flora/grass/event/grassy_bush1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hallway/public_meeting_room/endeavour)
 "jRb" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -14833,8 +14844,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/full_grass1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "ktj" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -15673,7 +15683,9 @@
 /area/hallway/d2fwdhall/endeavour)
 "kYT" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/catering/bar_coffee,
+/obj/machinery/chemical_dispenser/catering/bar_coffee{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/hallway/d2fwdportmaint/endeavour)
 "kZh" = (
@@ -15732,12 +15744,9 @@
 /turf/simulated/floor/tiled,
 /area/hallway/d2afthall/endeavour)
 "laO" = (
-/obj/structure/flora/grass/event/ferny_bush1,
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/turf/simulated/floor/grass/indoors,
-/area/hallway/public_meeting_room/endeavour)
+/obj/structure/barricade/cutout/shadowling,
+/turf/simulated/floor/plating,
+/area/hallway/d2amidportmaint/endeavour)
 "lbt" = (
 /obj/structure/table/reinforced,
 /obj/random/toy,
@@ -20567,11 +20576,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/surgeryprep)
 "oFh" = (
-/obj/structure/flora/grass/event/sparse_grass2,
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hallway/public_meeting_room/endeavour)
 "oFo" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -22036,9 +22044,8 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "pzn" = (
-/obj/structure/flora/grass/event/sparse_grass1,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "pzO" = (
 /obj/structure/cable/green{
@@ -22414,7 +22421,9 @@
 /area/hallway/forward_stairs_two/endeavour)
 "pLW" = (
 /obj/structure/table/woodentable,
-/obj/item/storage/fancy/heartbox,
+/obj/item/book/manual/halloween{
+	pixel_y = -4
+	},
 /turf/simulated/floor/carpet,
 /area/hallway/d2fwdportmaint/endeavour)
 "pMc" = (
@@ -22730,9 +22739,8 @@
 "pVI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
+/obj/structure/disposalpipe/junction/flipped{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
@@ -22970,7 +22978,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "pZS" = (
 /obj/structure/table/steel_reinforced,
@@ -24204,8 +24212,12 @@
 /turf/simulated/floor/plating,
 /area/hallway/d2aftmaint/endeavour)
 "qTZ" = (
-/obj/structure/flora/grass/event/lavender_grass1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/rock/rock2{
+	dir = 5;
+	pixel_y = 4;
+	pixel_x = -9
+	},
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "qUX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -24668,7 +24680,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "roh" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -25555,7 +25567,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "rZj" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "rZr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -25937,8 +25949,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/obj/structure/flora/grass/event/yellow_flowers1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hallway/public_meeting_room/endeavour)
 "spw" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
@@ -26658,6 +26669,14 @@
 	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled,
+/area/hallway/d2afthall/endeavour)
+"sUb" = (
+/obj/structure/flora/rock/rock1{
+	dir = 6;
+	pixel_y = 13;
+	pixel_x = 11
+	},
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/d2afthall/endeavour)
 "sUx" = (
 /obj/structure/disposalpipe/segment,
@@ -27483,6 +27502,13 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
+"trP" = (
+/obj/structure/flora/pumpkin{
+	pixel_y = 4;
+	pixel_x = 3
+	},
+/turf/simulated/floor/roguetown/grass/zero,
+/area/hallway/d2afthall/endeavour)
 "trY" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 6
@@ -29766,8 +29792,7 @@
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
 "vdU" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/d2afthall/endeavour)
 "vem" = (
 /obj/structure/table/steel_reinforced,
@@ -29818,7 +29843,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "vhp" = (
 /obj/structure/cable/green{
@@ -29921,9 +29946,8 @@
 /area/medical/medbay_primary_storage)
 "vmL" = (
 /obj/machinery/light,
-/obj/structure/flora/grass/event/stalky_bush1,
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "vnp" = (
 /obj/structure/cable/green{
@@ -30024,8 +30048,12 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/obj/structure/flora/grass/event/purple_flowers1,
-/turf/simulated/floor/grass/indoors,
+/obj/structure/flora/rock/rock1{
+	dir = 8;
+	pixel_x = -9;
+	pixel_y = -12
+	},
+/turf/simulated/floor/roguetown/grass/one,
 /area/hallway/public_meeting_room/endeavour)
 "vrg" = (
 /obj/spawner/window/low_wall/reinforced,
@@ -30131,7 +30159,7 @@
 "vvG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "vvK" = (
 /obj/structure/cable/green{
@@ -30654,7 +30682,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "vOA" = (
 /obj/machinery/air_alarm/west_mount,
@@ -31082,8 +31110,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "wbV" = (
-/obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass,
+/obj/structure/flora/pumpkin{
+	pixel_y = -3;
+	pixel_x = -17
+	},
+/turf/simulated/floor/roguetown/grass/two,
 /area/hallway/d2afthall/endeavour)
 "wcx" = (
 /obj/machinery/door/airlock/maintenance/medical{
@@ -31601,7 +31632,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "wtw" = (
 /obj/machinery/recharge_station,
@@ -31961,7 +31992,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "wDR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -32051,10 +32082,6 @@
 /obj/machinery/door/window/southleft,
 /turf/simulated/floor/tiled,
 /area/station/medical/virology_aft_access/endeavour)
-"wGZ" = (
-/obj/structure/flora/grass/event/full_grass2,
-/turf/simulated/floor/grass/indoors,
-/area/hallway/public_meeting_room/endeavour)
 "wHh" = (
 /obj/structure/closet/secure_closet/medical1,
 /obj/item/storage/box/pillbottles,
@@ -32065,10 +32092,6 @@
 /obj/item/storage/fancy/vials,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
-"wHi" = (
-/obj/machinery/light/flamp,
-/turf/simulated/floor/wood,
-/area/hallway/d2fwdportmaint/endeavour)
 "wHl" = (
 /obj/structure/morgue,
 /obj/machinery/light{
@@ -32159,8 +32182,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/flora/grass/event/ferny_bush1,
-/turf/simulated/floor/grass/indoors,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hallway/public_meeting_room/endeavour)
 "wKx" = (
 /obj/machinery/fire_alarm/south_mount{
@@ -32185,7 +32207,7 @@
 /area/rnd/anomaly_lab)
 "wMn" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/hallway/d2afthall/endeavour)
 "wMB" = (
 /obj/structure/cable/green{
@@ -34172,7 +34194,7 @@
 /area/hallway/d2amidportmaint/endeavour)
 "ybY" = (
 /obj/structure/table/woodentable,
-/obj/item/storage/box/matches,
+/obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood,
 /area/hallway/d2fwdportmaint/endeavour)
 "ycn" = (
@@ -34331,9 +34353,16 @@
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/folder/white_cmo,
-/obj/item/stamp/cmo,
 /obj/structure/disposalpipe/segment{
 	dir = 1
+	},
+/obj/item/stamp/denied{
+	pixel_x = 15;
+	pixel_y = 5
+	},
+/obj/item/stamp/cmo{
+	pixel_x = 15;
+	pixel_y = -2
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
@@ -43034,11 +43063,11 @@ dro
 tLC
 nql
 keN
-ivV
-wbV
 iZN
 vdU
+bds
 iZN
+sUb
 cjj
 aCS
 aqP
@@ -43229,10 +43258,10 @@ sTH
 xen
 cjj
 vdU
-vdU
+iEW
 ivV
-ivV
 vdU
+iZN
 cjj
 xYv
 bKi
@@ -43422,7 +43451,7 @@ ggW
 tLC
 nql
 keN
-wbV
+trP
 iZN
 vdU
 iZN
@@ -48089,7 +48118,7 @@ piY
 rPP
 ihi
 fIS
-ekC
+lWJ
 qHA
 lfj
 lfj
@@ -49592,7 +49621,7 @@ mDp
 mDp
 fik
 hEw
-tQr
+laO
 mNb
 tQr
 rvw
@@ -58735,7 +58764,7 @@ bKn
 ybY
 lWE
 blx
-wHi
+blx
 egx
 qjz
 sUV
@@ -59119,7 +59148,7 @@ qjz
 qjz
 ruN
 vJM
-wHi
+blx
 blx
 hDT
 pLW
@@ -59511,7 +59540,7 @@ dec
 kYT
 ryc
 blx
-wHi
+blx
 egx
 jak
 qjz
@@ -62433,7 +62462,7 @@ tOU
 jQR
 fLZ
 iVA
-laO
+iVA
 vha
 spv
 pLA
@@ -62626,7 +62655,7 @@ moe
 tOU
 byX
 gzO
-wGZ
+iAd
 iAd
 dyS
 pzn
@@ -62820,7 +62849,7 @@ moe
 tOU
 eqy
 gQJ
-qTZ
+iAd
 iRZ
 hGi
 vmL
@@ -63014,8 +63043,8 @@ qjz
 tOU
 hCR
 iAd
-wGZ
-gzO
+iAd
+qTZ
 itb
 eoQ
 pLA

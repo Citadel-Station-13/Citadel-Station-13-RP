@@ -1,6 +1,8 @@
 //Todo: add leather and cloth for arbitrary coloured stools.
 var/global/list/stool_cache = list() //haha stool
 
+
+
 /obj/item/stool
 	name = "stool"
 	desc = "Apply butt."
@@ -175,3 +177,9 @@ var/global/list/stool_cache = list() //haha stool
 	icon_state = "stool_padded_preview" //set for the map
 	material_base = /datum/prototype/material/steel
 	material_padding = /datum/prototype/material/carpet
+
+/obj/item/stool/halloween
+	icon_state = "hstool1"
+
+/obj/item/stool/halloween/two
+	icon_state = "hstool2"

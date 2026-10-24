@@ -179,6 +179,34 @@
 /obj/structure/flora/tree/dead/choose_icon_state()
 	return "[base_icon_state]_[rand(1, 6)]"
 
+// Halloween
+/obj/structure/flora/tree/halloween
+	icon = 'icons/obj/flora/deadtrees.dmi'
+	icon_state = "htree_1"
+	desc = "A dead tree."
+	base_icon_state = "htree"
+	indestructable = TRUE
+
+/obj/structure/flora/tree/halloween/two
+	icon_state = "htree_2"
+
+/obj/structure/flora/tree/halloween/three
+	icon_state = "htree_3"
+
+/obj/structure/flora/tree/halloween/four
+	icon_state = "htree_4"
+
+/obj/structure/flora/tree/halloween/five
+	icon_state = "htree_5"
+
+/obj/structure/flora/tree/halloween/six
+	icon_state = "htree_6"
+
+/obj/structure/flora/tree/halloween/special
+	icon_state = "specialtree"
+	name = "special tree"
+	desc = null
+
 // Small jungle trees
 
 /obj/structure/flora/tree/jungle_small

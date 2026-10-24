@@ -164,7 +164,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "ahq" = (
 /obj/machinery/power/apc/south_mount,
@@ -476,11 +476,11 @@
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
 "atS" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "atT" = (
 /obj/structure/cable/green{
@@ -709,11 +709,19 @@
 /turf/simulated/floor/tiled,
 /area/security/hangar)
 "aAM" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 5
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/simulated/floor/grass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "aAS" = (
 /obj/machinery/air_alarm{
@@ -752,7 +760,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "aBU" = (
 /obj/structure/cable/green{
@@ -909,15 +917,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "aGu" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 6
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/grass,
+/obj/structure/lightpost/alternate,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "aGx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1069,7 +1073,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "aKj" = (
 /obj/structure/closet/walllocker/emerglocker/north,
@@ -1231,7 +1235,7 @@
 /area/security/breakroom)
 "aOy" = (
 /obj/structure/bed/chair/wood,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "aOG" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -1332,7 +1336,8 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 27
 	},
-/turf/simulated/floor/wood,
+/obj/item/flame/candle/everburn/black,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "aTk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1443,7 +1448,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "aXI" = (
 /obj/structure/table/reinforced,
@@ -1610,7 +1615,7 @@
 /area/quartermaster/foyer)
 "bfd" = (
 /obj/machinery/fire_alarm/east_mount,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "bfz" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -1741,16 +1746,15 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ywflowers,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/quartermaster/foyer)
 "bkP" = (
 /obj/machinery/air_alarm/east_mount,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "blj" = (
 /obj/structure/sign/directions/medical{
@@ -1778,8 +1782,9 @@
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
 "bmF" = (
-/obj/structure/flora/pottedplant/minitree,
-/turf/simulated/floor/wood,
+/obj/structure/flora/pottedplant/stoutbush,
+/obj/effect/debris/cleanable/cobweb2,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "bnk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1798,7 +1803,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "bog" = (
 /obj/map_helper/paint/darkred,
@@ -1874,10 +1879,7 @@
 	pixel_y = 7
 	},
 /obj/item/clothing/gloves/boxing/blue,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "bpu" = (
 /obj/structure/disposalpipe/segment,
@@ -1902,10 +1904,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/d3fwdhall/endeavour)
-"bqn" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "bqo" = (
 /obj/structure/table,
 /obj/structure/railing,
@@ -2226,11 +2224,10 @@
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock)
 "bAn" = (
-/obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "bBF" = (
 /obj/effect/shuttle_landmark/automatic{
@@ -2258,8 +2255,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass,
+/obj/structure/flora/rock/rock1{
+	dir = 10;
+	pixel_y = 8
+	},
+/turf/simulated/floor/roguetown/grass/one,
 /area/quartermaster/foyer)
 "bCs" = (
 /obj/structure/table/wooden_reinforced,
@@ -2359,15 +2359,11 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 9
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/grass,
+/obj/structure/lightpost/alternate,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "bFp" = (
 /obj/structure/table/standard,
@@ -2620,7 +2616,7 @@
 /obj/effect/floor_decal/spline/fancy,
 /obj/structure/railing,
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "bQu" = (
 /obj/structure/table/steel_reinforced,
@@ -2743,7 +2739,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "bUE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2768,14 +2764,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "bUU" = (
-/obj/effect/floor_decal/grass_edge,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "bUW" = (
 /turf/simulated/floor/tiled,
@@ -2823,7 +2818,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "bWR" = (
 /obj/random/trash_pile,
@@ -2859,13 +2854,6 @@
 "bXH" = (
 /turf/simulated/floor/tiled,
 /area/security/prison)
-"bYk" = (
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 1
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "bYP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -2952,7 +2940,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/hydroponics/garden)
 "ceU" = (
 /obj/structure/cable{
@@ -3003,8 +2991,11 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "ciC" = (
-/obj/machinery/appliance/cooker/grill/stand,
-/turf/simulated/floor/grass,
+/obj/item/flame/candle/everburn/black{
+	pixel_x = -11;
+	pixel_y = -11
+	},
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "ciU" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -3170,12 +3161,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/security)
 "coa" = (
-/obj/effect/floor_decal/grass_edge,
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween/four{
+	pixel_y = 10
+	},
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "coF" = (
 /obj/structure/flora/pottedplant/subterranean,
@@ -3227,7 +3219,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "cqZ" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "crj" = (
 /obj/structure/bed/chair/wood{
@@ -3236,7 +3228,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "csb" = (
 /turf/simulated/floor/airless/ceiling,
@@ -3282,15 +3274,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
 /obj/structure/reagent_dispensers/water_cooler/full,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "cua" = (
 /obj/structure/cable/green{
@@ -3340,7 +3329,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "czo" = (
 /obj/machinery/air_alarm{
@@ -3363,7 +3352,7 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "cAC" = (
 /obj/machinery/cryopod{
@@ -3553,7 +3542,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "cJA" = (
 /obj/machinery/light{
@@ -3802,7 +3791,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "cTm" = (
 /obj/structure/bed/chair,
@@ -4300,7 +4289,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "dlG" = (
 /obj/structure/cable{
@@ -4605,7 +4594,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "dyG" = (
 /obj/structure/table/rack/shelf/steel,
@@ -4704,7 +4693,7 @@
 /area/security/forensics)
 "dBL" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "dCO" = (
 /obj/structure/railing{
@@ -4744,7 +4733,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "dGe" = (
 /obj/structure/catwalk,
@@ -4830,9 +4819,7 @@
 /turf/simulated/floor/wood,
 /area/quartermaster/office)
 "dHM" = (
-/obj/effect/floor_decal/grass_edge,
 /obj/structure/closet/crate/hydroponics,
-/obj/structure/flora/ausbushes/brflowers,
 /obj/item/material/minihoe,
 /obj/item/material/minihoe,
 /obj/item/shovel/spade,
@@ -4840,7 +4827,7 @@
 /obj/item/plant_analyzer,
 /obj/item/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "dIB" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -4985,10 +4972,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "dMA" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "dME" = (
 /obj/machinery/station_map{
@@ -5131,14 +5116,11 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "dSc" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "dSm" = (
 /obj/machinery/light{
@@ -5244,7 +5226,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = -26
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "dTZ" = (
 /obj/structure/cable/green{
@@ -5505,14 +5487,23 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "edb" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/fitness)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/roguetown/cobblestone3,
+/area/hydroponics/garden)
 "edd" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -5542,7 +5533,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "eek" = (
 /obj/machinery/light_switch{
@@ -5562,11 +5553,10 @@
 /turf/simulated/floor,
 /area/hallway/d3amidstarbdmaint/endeavour)
 "eeI" = (
-/obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "eeJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5636,7 +5626,7 @@
 	dir = 8
 	},
 /obj/machinery/biogenerator,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "egw" = (
 /obj/landmark/spawnpoint/job/janitor,
@@ -5806,12 +5796,8 @@
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "eqa" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 10
-	},
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/grass,
+/obj/structure/lightpost/alternate,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hydroponics/garden)
 "eqo" = (
 /obj/structure/extinguisher_cabinet{
@@ -6228,8 +6214,7 @@
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
 "eDJ" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hydroponics/garden)
 "eEa" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
@@ -6376,7 +6361,7 @@
 "eGL" = (
 /obj/machinery/light,
 /obj/structure/fitness/punchingbag,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "eGX" = (
 /obj/machinery/door/blast/regular{
@@ -6748,7 +6733,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "eTv" = (
 /obj/machinery/door/firedoor,
@@ -6763,7 +6748,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "eUL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6781,7 +6766,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "eVd" = (
 /obj/machinery/air_alarm/south_mount,
@@ -6856,13 +6841,10 @@
 /turf/simulated/wall/prepainted,
 /area/hallway/d3aftportmaint/endeavour)
 "eYc" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "eYn" = (
 /obj/random/action_figure,
@@ -7143,7 +7125,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "ffc" = (
 /obj/structure/extinguisher_cabinet{
@@ -7464,7 +7446,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "fvb" = (
 /obj/structure/table/hardwoodtable,
@@ -7926,7 +7908,7 @@
 /area/security/hallwayaux)
 "fNf" = (
 /obj/machinery/light,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "fNj" = (
 /obj/structure/table/reinforced,
@@ -8065,7 +8047,7 @@
 "fRa" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/camera/network/civilian,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "fRk" = (
 /obj/structure/disposalpipe/segment,
@@ -8086,7 +8068,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "fRx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8302,17 +8284,14 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "fYk" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hydroponics/garden)
 "fYz" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -8370,10 +8349,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/d3aftportsecmaint/endeavour)
-"gak" = (
-/obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "gal" = (
 /obj/machinery/requests_console/preset/cargo{
 	pixel_x = -31;
@@ -8550,13 +8525,10 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3fwdportmaint/endeavour)
 "glt" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "glG" = (
 /obj/map_helper/paint/darkred,
@@ -9000,7 +8972,8 @@
 /turf/simulated/wall/prepainted,
 /area/hallway/d3afthall/endeavour)
 "gvm" = (
-/turf/simulated/floor/grass,
+/obj/item/flame/candle/everburn/black,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "gvA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9313,11 +9286,11 @@
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "gII" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 5
+/obj/structure/railing{
+	dir = 4
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "gJn" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -9339,7 +9312,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "gKB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9392,7 +9365,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "gLw" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -9406,7 +9379,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "gLK" = (
 /obj/structure/disposalpipe/junction/flipped{
@@ -9593,7 +9566,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "gRs" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -9642,7 +9615,7 @@
 "gSZ" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/reagentgrinder,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "gTl" = (
 /obj/machinery/door/firedoor/glass{
@@ -9803,11 +9776,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3fwdstrbdmaint/endeavour)
 "gYb" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "gZF" = (
 /obj/random/junk,
@@ -9846,7 +9815,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -28
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "hbK" = (
 /obj/effect/floor_decal/industrial/danger{
@@ -9869,7 +9838,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "hcf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9923,7 +9892,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "heb" = (
 /obj/effect/floor_decal/industrial/warning/full,
@@ -10179,7 +10148,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "hlx" = (
 /obj/machinery/disposal,
@@ -10252,8 +10221,8 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool/changing_room)
 "hnK" = (
-/obj/structure/table/wooden_reinforced,
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "hoi" = (
 /obj/structure/stairs/spawner/north{
@@ -10565,7 +10534,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "hAl" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -10755,10 +10724,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallwayaux)
 "hGu" = (
-/obj/effect/floor_decal/grass_edge,
 /obj/item/reagent_containers/glass/bucket/wood,
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "hGv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -11213,13 +11180,14 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "hXO" = (
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "hYs" = (
 /obj/structure/cable/green{
@@ -11556,7 +11524,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "inw" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11570,13 +11538,7 @@
 /area/quartermaster/warehouse)
 "inx" = (
 /obj/machinery/scale,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "inA" = (
 /turf/simulated/wall/r_wall/prepainted/engineering,
@@ -11619,7 +11581,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "ipU" = (
 /obj/structure/table/gamblingtable,
@@ -11652,7 +11614,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "iqj" = (
 /obj/machinery/power/port_gen/pacman/mrs{
@@ -11845,11 +11807,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3fwdportmaint/endeavour)
 "itY" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "iua" = (
 /obj/structure/closet/secure_closet/brig,
@@ -11919,10 +11877,7 @@
 /area/hallway/d3fwdhall/endeavour)
 "iwU" = (
 /obj/machinery/vending/fitness,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "izf" = (
 /obj/structure/cable/green{
@@ -11945,12 +11900,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "iAO" = (
-/obj/structure/table/wooden_reinforced,
-/obj/item/flame/candle/candelabra/everburn,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "iBG" = (
 /turf/simulated/wall/r_wall/prepainted/security,
@@ -11962,7 +11916,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "iCu" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -12028,7 +11982,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "iDZ" = (
 /obj/structure/table/rack/shelf/steel,
@@ -12161,7 +12115,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/security/security_processing)
 "iIc" = (
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "iIq" = (
 /obj/structure/catwalk,
@@ -12350,7 +12304,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "iQa" = (
 /obj/machinery/door/airlock/glass/security{
@@ -12419,7 +12373,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "iTn" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -12528,13 +12482,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "iWx" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "iWE" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -12546,6 +12498,11 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
+"iXF" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/roguetown/carpet,
+/area/crew_quarters/game_room)
 "iXU" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -12557,7 +12514,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "iYS" = (
 /obj/structure/catwalk,
@@ -12718,11 +12675,10 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/stalkybush,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/quartermaster/foyer)
 "jdI" = (
 /obj/random/trash_pile,
@@ -12782,7 +12738,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "jga" = (
 /obj/structure/table/steel_reinforced,
@@ -12834,10 +12790,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "jhS" = (
 /obj/structure/cable/green{
@@ -12929,7 +12882,7 @@
 /turf/simulated/wall/prepainted,
 /area/hallway/amidships_stairs_three/endeavour)
 "jmL" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "jmV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12999,7 +12952,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "jqk" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -13187,7 +13140,7 @@
 /area/security/security_lockerroom)
 "jwK" = (
 /obj/machinery/fitness/punching_bag/clown,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "jwQ" = (
 /obj/structure/table/rack/shelf,
@@ -13475,7 +13428,8 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "jHQ" = (
 /obj/effect/floor_decal/corner/red{
@@ -13495,7 +13449,7 @@
 "jJn" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/fancy,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "jKI" = (
 /obj/machinery/door/airlock/glass,
@@ -13681,7 +13635,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "jQy" = (
 /obj/structure/window/reinforced{
@@ -14040,8 +13994,10 @@
 /turf/simulated/floor/tiled,
 /area/hallway/d3afthall/endeavour)
 "jYc" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween/six{
+	pixel_y = 10
+	},
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "jYd" = (
 /obj/structure/table/rack/shelf/steel,
@@ -14232,7 +14188,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "kdY" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -14383,13 +14339,13 @@
 "khg" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass/civilian,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/dark,
 /area/hydroponics/garden)
 "khC" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "kio" = (
 /obj/structure/cable/green{
@@ -14506,14 +14462,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallwayaux)
 "klp" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/obj/structure/flora/ausbushes/fullgrass,
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "klT" = (
 /obj/structure/table/steel,
@@ -14671,7 +14623,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "kur" = (
 /obj/machinery/door/airlock/maintenance,
@@ -14799,7 +14751,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "kBH" = (
 /obj/machinery/light{
@@ -15311,7 +15263,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "kTt" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -15334,7 +15286,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "kUM" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -15353,8 +15305,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "kWu" = (
 /obj/effect/floor_decal/rust,
@@ -15372,17 +15323,12 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "kXP" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
-"kYu" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/simulated/floor/airless/ceiling,
-/area/space)
 "kYZ" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -15401,7 +15347,7 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "kZP" = (
 /obj/machinery/computer/secure_data{
@@ -15489,11 +15435,8 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3aftportmaint/endeavour)
 "lci" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 9
-	},
-/turf/simulated/floor/grass,
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "ldo" = (
 /obj/structure/cable/green{
@@ -15761,11 +15704,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/hallway/d3amidstarbdmaint/endeavour)
-"lot" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "loE" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/machinery/air_alarm/east_mount,
@@ -16112,7 +16050,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "lxe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16405,13 +16343,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/quartermaster/qm)
 "lIQ" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "lJg" = (
 /obj/structure/cable/green{
@@ -16581,7 +16513,7 @@
 "lNU" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/cards,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "lOf" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -16758,7 +16690,7 @@
 	dir = 4
 	},
 /obj/machinery/vending/nifsoft_shop,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "lUH" = (
 /obj/structure/window/reinforced{
@@ -16767,14 +16699,13 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ppflowers,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/quartermaster/foyer)
 "lVj" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -16831,20 +16762,13 @@
 "lWf" = (
 /turf/simulated/floor/glass/reinforced,
 /area/hydroponics/garden)
-"lWH" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "lXa" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "lXn" = (
 /obj/structure/table/steel,
@@ -16985,7 +16909,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "mbJ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -17011,7 +16935,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "mcn" = (
 /obj/machinery/light,
@@ -17062,10 +16986,10 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3aftportmaint/endeavour)
 "mfy" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
+/obj/structure/flora/tree/halloween/five{
+	pixel_y = 10
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "mfU" = (
 /obj/machinery/power/apc/south_mount,
@@ -17126,6 +17050,10 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/brown/border,
+/obj/machinery/doorbell_chime{
+	pixel_y = -31;
+	id_tag = 4
+	},
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/foyer)
 "mhO" = (
@@ -17190,7 +17118,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "mjy" = (
 /obj/structure/closet/firecloset,
@@ -17200,11 +17128,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/security/strelka/interogation)
-"mkn" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "mkK" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -17259,8 +17182,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallway)
 "mlv" = (
-/obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "mlH" = (
 /obj/structure/fitness/weightlifter,
@@ -17270,7 +17192,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "mlK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -17367,15 +17289,14 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "mnA" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "moz" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -17562,7 +17483,8 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/turf/simulated/floor/wood,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "mBo" = (
 /obj/structure/closet/crate,
@@ -17595,7 +17517,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "mCk" = (
 /turf/simulated/open,
@@ -17616,18 +17539,14 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "mDp" = (
 /turf/space,
 /area/space)
 "mDz" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/grass,
+/obj/structure/lightpost/alternate,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "mDJ" = (
 /obj/structure/window/reinforced{
@@ -17851,7 +17770,7 @@
 /area/quartermaster/miningdock)
 "mLm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "mLY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18035,7 +17954,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "mVg" = (
 /obj/effect/floor_decal/corner/blue{
@@ -18419,7 +18338,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "nfp" = (
 /obj/machinery/air_alarm/north_mount,
@@ -18559,18 +18478,11 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3aftportmaint/endeavour)
 "nkY" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
 /obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = 24
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "nlg" = (
 /obj/machinery/door/firedoor/glass,
@@ -18587,7 +18499,7 @@
 /area/security/interrogation)
 "nlw" = (
 /obj/item/radio/intercom/north_mount,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "nlO" = (
 /obj/machinery/fire_alarm/south_mount,
@@ -18644,7 +18556,10 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween/three{
+	pixel_y = 10
+	},
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "nnI" = (
 /obj/structure/toilet{
@@ -18665,7 +18580,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "npi" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -18747,13 +18662,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/wood,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "nsq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "nsH" = (
 /obj/structure/table/wooden_reinforced,
@@ -18808,7 +18724,7 @@
 /area/security/warden)
 "nuP" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "nvd" = (
 /obj/structure/catwalk,
@@ -19074,7 +18990,7 @@
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "nFY" = (
 /turf/simulated/floor/tiled/dark,
@@ -19268,7 +19184,7 @@
 /area/crew_quarters/recreation_area)
 "nKS" = (
 /obj/machinery/seed_extractor,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "nLb" = (
 /obj/machinery/light{
@@ -19304,7 +19220,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "nNv" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central5,
@@ -19388,7 +19304,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "nQm" = (
 /obj/structure/cable/green{
@@ -19471,7 +19387,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "nRR" = (
 /turf/simulated/wall/prepainted,
@@ -19711,8 +19627,20 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/recreation_area)
 "obw" = (
-/turf/simulated/floor/tiled,
-/area/crew_quarters/fitness)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/roguetown/cobblestone2,
+/area/hydroponics/garden)
 "ocy" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 8
@@ -19769,8 +19697,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hydroponics/garden)
 "oeY" = (
 /obj/structure/railing,
@@ -19780,7 +19707,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "ofc" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -19818,9 +19745,9 @@
 /turf/simulated/wall/r_wall/prepainted/cargo,
 /area/quartermaster/foyer)
 "ogU" = (
-/obj/structure/flora/pottedplant/minitree,
 /obj/machinery/camera/network/civilian,
-/turf/simulated/floor/wood,
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "ohc" = (
 /obj/machinery/door/airlock/engineering{
@@ -19893,14 +19820,11 @@
 /obj/machinery/fire_alarm/west_mount{
 	pixel_x = -24
 	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 9
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "ole" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -20043,8 +19967,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/vacant/vacant_shop)
 "orm" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/grass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "orr" = (
 /obj/structure/disposalpipe/segment{
@@ -20102,10 +20027,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
 "osx" = (
-/obj/effect/floor_decal/grass_edge{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "oth" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20119,13 +20047,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/hallwayaux)
 "otU" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 6
-	},
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "ouO" = (
 /obj/structure/disposalpipe/segment{
@@ -20159,13 +20084,11 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3amidstarbdmaint/endeavour)
 "owt" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge/corner,
-/obj/structure/lightpost/urban,
 /obj/structure/closet/hydrant{
 	pixel_x = 32
 	},
-/turf/simulated/floor/grass,
+/obj/structure/lightpost/alternate,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "owz" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -20254,9 +20177,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/d3fwdhall/endeavour)
 "ozn" = (
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "ozy" = (
 /turf/simulated/wall/prepainted,
@@ -20519,14 +20440,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "oGo" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 5
-	},
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween/two{
+	pixel_y = 10
+	},
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "oGr" = (
 /obj/fiftyspawner/wood,
@@ -20648,7 +20568,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "oOo" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -20675,7 +20595,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "oOV" = (
 /obj/effect/floor_decal/industrial/outline{
@@ -20690,7 +20610,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "oQR" = (
 /obj/structure/table/woodentable,
@@ -20707,7 +20627,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "oRF" = (
 /obj/map_helper/paint/darkred,
@@ -20956,15 +20876,12 @@
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_8)
 "oZI" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 5
-	},
 /obj/structure/table/woodentable,
 /obj/item/storage/box/cups,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "oZS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -21017,11 +20934,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hop)
 "paU" = (
-/obj/structure/flora/ausbushes/sunnybush,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "pbc" = (
 /obj/effect/floor_decal/corner/brown/diagonal,
@@ -21066,7 +20980,7 @@
 /turf/simulated/floor/tiled,
 /area/security/prison)
 "pcx" = (
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "pcH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -21189,7 +21103,7 @@
 /area/hallway/d3portamidhall/endeavour)
 "pfs" = (
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled/dark,
 /area/hydroponics/garden)
 "pfu" = (
 /obj/structure/table/steel_reinforced,
@@ -21283,7 +21197,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "pjr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21295,7 +21209,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "pjt" = (
 /obj/machinery/light,
@@ -21426,10 +21340,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/vacant/vacant_shop)
-"pmY" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "pne" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -21454,9 +21364,8 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/grass,
+/obj/structure/lightpost/alternate,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "poa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21482,7 +21391,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "ppc" = (
 /obj/structure/cable/green{
@@ -21617,7 +21526,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "pwJ" = (
 /obj/machinery/media/jukebox,
@@ -21667,14 +21576,13 @@
 /turf/simulated/floor/grass,
 /area/security/prison)
 "pzo" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 5
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween/four{
+	pixel_y = 10
+	},
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "pzs" = (
 /obj/structure/disposalpipe/segment,
@@ -21734,7 +21642,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "pDN" = (
 /obj/machinery/door/firedoor/glass,
@@ -21953,17 +21861,26 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "pPN" = (
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "pQh" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 9
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/simulated/floor/grass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "pQv" = (
 /obj/machinery/door/firedoor,
@@ -22250,7 +22167,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "qbG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22366,11 +22283,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/d3portamidhall/endeavour)
-"qhD" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "qhM" = (
 /obj/machinery/light{
 	dir = 8
@@ -22390,13 +22302,10 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/quartermaster/qm)
 "qiu" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 6
-	},
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "qiz" = (
 /obj/structure/table/borosilicate,
@@ -22480,7 +22389,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "qlO" = (
 /obj/machinery/camera/network/civilian{
@@ -22916,7 +22825,7 @@
 /area/crew_quarters/heads/hop)
 "qBQ" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "qBR" = (
 /obj/structure/cable{
@@ -22949,7 +22858,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "qDa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -23248,11 +23157,7 @@
 /obj/effect/floor_decal/grass_edge/corner{
 	dir = 10
 	},
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "qPz" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -23346,7 +23251,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "qVm" = (
 /obj/structure/sink{
@@ -23357,7 +23262,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "qVv" = (
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "qWp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23399,14 +23304,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/d3afthall/endeavour)
-"qXh" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 6
-	},
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "qXF" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -23573,7 +23470,7 @@
 /area/hallway/d3aftportsecmaint/endeavour)
 "rfb" = (
 /obj/machinery/media/jukebox,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "rfg" = (
 /turf/simulated/floor/water/pool,
@@ -23883,6 +23780,11 @@
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/wood,
 /area/station/mining/breakroom/endeavour)
+"rpG" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/debris/cleanable/cobweb,
+/turf/simulated/floor/roguetown/cobblestone,
+/area/hydroponics/garden)
 "rpS" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -23948,6 +23850,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/hallway/d3afthall/endeavour)
+"rtf" = (
+/obj/effect/debris/cleanable/cobweb2,
+/turf/simulated/floor/roguetown/cobblestone2,
+/area/hydroponics/garden)
 "rtp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -24060,11 +23966,10 @@
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "rxj" = (
-/obj/effect/floor_decal/grass_edge,
 /obj/structure/sink/puddle{
 	pixel_y = 6
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hydroponics/garden)
 "rxl" = (
 /obj/machinery/newscaster{
@@ -24146,7 +24051,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "rCg" = (
 /obj/random/maintenance,
@@ -24291,11 +24196,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/trash_pit)
 "rFG" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "rFN" = (
 /obj/machinery/light/small{
@@ -24311,13 +24213,10 @@
 /area/crew_quarters/pool/changing_room)
 "rGx" = (
 /obj/machinery/scale,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 10
-	},
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "rGF" = (
 /obj/structure/table/standard,
@@ -24461,7 +24360,7 @@
 /area/quartermaster/warehouse)
 "rOP" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "rOR" = (
 /obj/machinery/power/apc/north_mount,
@@ -24902,6 +24801,10 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
+"scE" = (
+/obj/effect/debris/cleanable/cobweb,
+/turf/simulated/floor/roguetown/grass/one,
+/area/hydroponics/garden)
 "scZ" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -24949,7 +24852,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "seb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -25188,7 +25091,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "sjD" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -25354,7 +25257,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "spp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -25398,7 +25301,7 @@
 "sqO" = (
 /obj/machinery/door/airlock,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/hydroponics/garden)
 "sqV" = (
 /obj/effect/floor_decal/corner/blue{
@@ -25559,11 +25462,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "swv" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
-/obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "swy" = (
 /turf/simulated/wall/prepainted,
@@ -25665,7 +25567,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "sBr" = (
 /obj/machinery/mech_recharger,
@@ -25832,11 +25734,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "sHT" = (
-/obj/structure/flora/ausbushes/brflowers,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "sIo" = (
 /obj/structure/table/steel,
@@ -26040,6 +25941,11 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
+"sPk" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/debris/cleanable/cobweb2,
+/turf/simulated/floor/roguetown/cobblestone3,
+/area/hydroponics/garden)
 "sPv" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/white,
@@ -26293,14 +26199,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "tbH" = (
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 6
-	},
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "tbK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -26517,10 +26420,7 @@
 /area/security/briefing_room)
 "tjX" = (
 /obj/machinery/air_alarm/east_mount,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "tkb" = (
 /obj/structure/cable/green{
@@ -27159,7 +27059,7 @@
 "tHM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "tHN" = (
 /obj/structure/catwalk,
@@ -27388,7 +27288,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "tTk" = (
 /obj/structure/catwalk,
@@ -27442,11 +27342,11 @@
 /turf/simulated/wall/prepainted,
 /area/hallway/d3fwdportmaint/endeavour)
 "tTP" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 10
+/obj/item/flame/candle/everburn/black{
+	pixel_x = 11;
+	pixel_y = -11
 	},
-/obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "tTY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27511,7 +27411,7 @@
 /area/crew_quarters/recreation_area)
 "tUQ" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "tVl" = (
 /obj/structure/catwalk,
@@ -28017,22 +27917,14 @@
 	},
 /turf/simulated/floor,
 /area/hallway/d3amidstarbdmaint/endeavour)
-"und" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "uni" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween/four{
+	pixel_y = 10
+	},
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "uny" = (
 /obj/machinery/meter,
@@ -28056,7 +27948,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "uoa" = (
 /obj/machinery/light/small{
@@ -28549,7 +28441,7 @@
 "uIh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "uIG" = (
 /obj/structure/cable/green{
@@ -28622,14 +28514,13 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3aftportsecmaint/endeavour)
 "uMe" = (
-/obj/structure/flora/ausbushes/genericbush,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween/five{
+	pixel_y = 10
+	},
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "uMm" = (
 /turf/simulated/wall/r_wall/prepainted,
@@ -28723,13 +28614,10 @@
 /obj/item/plant_analyzer,
 /obj/item/plant_analyzer,
 /obj/item/tool/wirecutters/clippers/trimmers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 6
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "uPU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -28805,26 +28693,12 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/warehouse)
-"uUJ" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "uUM" = (
 /obj/machinery/air_alarm{
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "uVc" = (
 /obj/structure/janitorialcart,
@@ -28857,13 +28731,7 @@
 "uVT" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner_steel_grid{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "uWh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -28903,9 +28771,10 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "uXI" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge,
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween{
+	pixel_y = 10
+	},
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "uXJ" = (
 /obj/structure/cable/green{
@@ -28995,7 +28864,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "vdC" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -29044,7 +28913,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "veK" = (
 /obj/machinery/door/blast/regular{
@@ -29074,7 +28943,8 @@
 /area/maintenance/starboardsolar)
 "vfr" = (
 /obj/machinery/vending/hydroseeds,
-/turf/simulated/floor/wood,
+/obj/effect/debris/cleanable/cobweb2,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "vfE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -29095,8 +28965,8 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/lobby)
 "vge" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "vgk" = (
 /obj/structure/bed,
@@ -29110,15 +28980,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/foyer)
 "vhc" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 5
-	},
-/obj/effect/floor_decal/grass_edge,
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/tree/halloween/special{
+	pixel_y = 1
+	},
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hydroponics/garden)
 "vhx" = (
 /obj/random/trash_pile,
@@ -29195,11 +29063,6 @@
 	},
 /turf/simulated/floor/tiled/monodark,
 /area/quartermaster/delivery)
-"vjg" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/simulated/floor/plating,
-/area/space)
 "vjk" = (
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
@@ -29315,15 +29178,13 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "vom" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 10
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/structure/lightpost/urban,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/cobblestone3,
 /area/hydroponics/garden)
 "voq" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -29794,7 +29655,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3aftportmaint/endeavour)
 "vBZ" = (
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/security/breakroom)
 "vCc" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -29908,7 +29769,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/indoors,
 /area/hydroponics/garden)
 "vEP" = (
 /obj/machinery/camera/network/outside{
@@ -30030,7 +29891,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "vKa" = (
 /obj/structure/cable/green{
@@ -30139,10 +30000,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/warehouse)
 "vNN" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 5
+/obj/structure/flora/tree/halloween/four{
+	pixel_y = 10
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "vOp" = (
 /obj/structure/grille,
@@ -30271,14 +30132,10 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/security_processing)
 "vSu" = (
-/obj/structure/flora/ausbushes/palebush,
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "vSG" = (
 /turf/simulated/wall/prepainted/security,
@@ -30376,7 +30233,7 @@
 /area/quartermaster/foyer)
 "vVx" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/herringbone,
 /area/crew_quarters/game_room)
 "vVA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -30394,11 +30251,10 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "vWK" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
+/obj/structure/flora/tree/halloween/two{
+	pixel_y = 10
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "vWL" = (
 /obj/effect/floor_decal/corner/red{
@@ -30860,15 +30716,11 @@
 /turf/simulated/floor/tiled/white,
 /area/quartermaster/belterdock/gear)
 "wmR" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/obj/structure/flora/ausbushes/fullgrass,
 /obj/machinery/power/apc/west_mount,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/two,
 /area/hydroponics/garden)
 "wmU" = (
 /obj/structure/table/steel_reinforced,
@@ -31130,7 +30982,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 "wxD" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -31468,7 +31320,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/grassybush,
 /obj/machinery/door/firedoor{
 	dir = 1
 	},
@@ -31476,7 +31327,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/grass,
+/obj/structure/flora/rock/rock2{
+	dir = 8;
+	pixel_y = 10;
+	pixel_x = -3
+	},
+/turf/simulated/floor/roguetown/grass/one,
 /area/quartermaster/foyer)
 "wKM" = (
 /obj/structure/cable/yellow{
@@ -31531,14 +31387,6 @@
 "wNH" = (
 /turf/simulated/wall/prepainted/security,
 /area/security/security_lockerroom)
-"wOA" = (
-/obj/effect/floor_decal/grass_edge,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/floor_decal/grass_edge/corner{
-	dir = 9
-	},
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "wPy" = (
 /obj/map_helper/paint/darkred,
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -31952,7 +31800,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "wZX" = (
 /obj/structure/catwalk,
@@ -32106,14 +31954,10 @@
 /turf/simulated/floor/plating,
 /area/hallway/d3amidportmaint/endeavour)
 "xdU" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
-	},
-/obj/structure/flora/ausbushes/fullgrass,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "xdV" = (
 /obj/structure/table/woodentable,
@@ -32307,7 +32151,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "xkG" = (
 /obj/structure/cable{
@@ -32757,10 +32601,10 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/flora/pottedplant/orientaltree,
 /obj/machinery/camera/network/civilian{
 	dir = 8
 	},
+/obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/glass/reinforced,
 /area/hydroponics/garden)
 "xCL" = (
@@ -32875,9 +32719,10 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/structure/table/wooden_reinforced,
 /obj/item/deck/tarot,
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/table/hardwoodtable,
+/obj/effect/debris/cleanable/cobweb,
+/turf/simulated/floor/roguetown/carpet,
 /area/crew_quarters/game_room)
 "xEC" = (
 /turf/simulated/floor/tiled/dark,
@@ -33199,7 +33044,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "xMf" = (
 /obj/effect/floor_decal/spline/plain{
@@ -33259,13 +33104,10 @@
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
 "xNr" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "xPu" = (
 /obj/structure/disposalpipe/trunk{
@@ -33340,11 +33182,10 @@
 /turf/simulated/floor/grass,
 /area/security/prison)
 "xSE" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 8
+/obj/structure/halloween/cauldron{
+	pixel_y = 5
 	},
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/zero,
 /area/hydroponics/garden)
 "xSF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -33477,11 +33318,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "xXs" = (
-/obj/effect/floor_decal/grass_edge{
-	dir = 6
+/obj/structure/flora/tree/halloween/three{
+	pixel_y = 10
 	},
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/three,
 /area/hydroponics/garden)
 "xXF" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -33524,7 +33364,7 @@
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/grass/one,
 /area/hydroponics/garden)
 "xYM" = (
 /obj/effect/mist,
@@ -33595,7 +33435,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/roguetown/cobblestone,
 /area/hydroponics/garden)
 "ydB" = (
 /obj/spawner/window/low_wall/reinforced/firelocks,
@@ -33606,12 +33446,10 @@
 /turf/simulated/floor/plating,
 /area/hydroponics/garden)
 "ydO" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/lightpost/urban,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/grass,
+/turf/simulated/floor/roguetown/cobblestone2,
 /area/hydroponics/garden)
 "yer" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -33733,13 +33571,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/d3afthall/endeavour)
-"yhH" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/turf/simulated/floor/grass,
-/area/hydroponics/garden)
 "yhW" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/evidence,
@@ -33794,7 +33625,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/carpet/tealcarpet,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/fitness)
 
 (1,1,1) = {"
@@ -42582,7 +42413,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 mDp
 xBj
 gDV
@@ -42970,7 +42801,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 nNX
 xBj
 gmZ
@@ -43164,7 +42995,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 mDp
 xBj
 gDV
@@ -45492,7 +45323,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 mDp
 xBj
 msb
@@ -45686,7 +45517,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 mDp
 nOa
 nOa
@@ -47044,7 +46875,7 @@ mDp
 mDp
 mDp
 mDp
-kYu
+jON
 fDw
 nOa
 nOa
@@ -48014,7 +47845,7 @@ mDp
 mDp
 mDp
 mDp
-kYu
+jON
 fDw
 ofl
 lKH
@@ -49566,7 +49397,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 mDp
 noy
 lea
@@ -49760,7 +49591,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 mDp
 noy
 mJv
@@ -50148,7 +49979,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 jRe
 noy
 bgH
@@ -50342,7 +50173,7 @@ mDp
 mDp
 mDp
 mDp
-vjg
+iUL
 mDp
 noy
 lwA
@@ -50924,7 +50755,7 @@ mDp
 mDp
 mDp
 mDp
-kYu
+jON
 fDw
 ofl
 grA
@@ -51147,10 +50978,10 @@ goy
 eyy
 fLj
 ozQ
-gvm
-rFG
+scE
+gYb
 uni
-jYc
+mlv
 hJb
 dSn
 woX
@@ -51344,7 +51175,7 @@ ozQ
 xXs
 nuP
 nuP
-mfy
+gYb
 hJb
 lZu
 xuu
@@ -51535,10 +51366,10 @@ ofW
 ndP
 fLj
 ozQ
-nuP
-cqZ
-cqZ
-yhH
+lci
+ozn
+itY
+xXs
 hJb
 sda
 woX
@@ -51729,7 +51560,7 @@ goy
 hDi
 upo
 ozQ
-nuP
+vge
 cqZ
 cqZ
 mDz
@@ -51923,20 +51754,20 @@ goy
 fLj
 eyy
 ozQ
-nuP
+lci
 cqZ
-cqZ
-und
+dMA
+gYb
 hJb
-gJI
-cJi
+osx
+ydO
 eTr
 bFo
 uUM
 wmR
 xdU
 klp
-xSE
+mlv
 eqa
 hJb
 pDS
@@ -52118,18 +51949,18 @@ upo
 eyy
 ozQ
 kZu
-cqZ
-cqZ
-aAM
+ozn
+ozn
+uXI
 qiu
-gJI
-cJi
+osx
+mnA
 iYd
 vNN
-lWH
+gYb
 uMe
-gII
-qhD
+gYb
+xXs
 eeI
 bUU
 wZX
@@ -52311,7 +52142,7 @@ eyy
 hJb
 hJb
 hJb
-cqZ
+ozn
 cqZ
 dyn
 ksW
@@ -52320,9 +52151,9 @@ gJI
 cJi
 mbG
 vog
-vog
+swv
 npd
-uUJ
+bUU
 sHT
 bAn
 vhc
@@ -52503,23 +52334,23 @@ hDR
 fLj
 eyy
 hJb
-nuP
+rpG
 hXO
-cqZ
+itY
 cqZ
 mUU
 jHr
-uIh
+orm
 dFI
 lXa
 sea
 ahd
 kTr
 nsm
-mfy
-vge
+eDJ
+xXs
 vBZ
-ozn
+mlv
 blM
 uVT
 okS
@@ -52698,22 +52529,22 @@ fLj
 eyy
 hJb
 aSy
-nuP
+vge
+itY
 cqZ
-cqZ
-lci
+mDz
 gYb
-vWK
+uXI
 qPw
 vWK
-vWK
-vom
+gYb
+mDz
 oRw
 nfc
-ydO
-pmY
-bqn
-wOA
+mDz
+gYb
+uXI
+mlv
 blM
 iwU
 inp
@@ -52892,11 +52723,11 @@ fWO
 dGe
 hJb
 fRa
+ozn
 cqZ
-cqZ
-pQh
-ciC
-bqn
+xXs
+tTP
+gvm
 qaZ
 cAj
 eUA
@@ -52905,9 +52736,9 @@ oeY
 nPX
 nfc
 mfy
-gvm
+gYb
 mlv
-gak
+gYb
 blM
 iwU
 inp
@@ -53086,21 +52917,21 @@ ndP
 fLj
 hJb
 nlw
+ozn
 cqZ
-cqZ
-mfy
-mkn
-jYc
+gYb
+mlv
+xSE
 mch
 iIc
 tUQ
 iIc
 jJn
 nPX
-nfc
-mfy
-vge
-vge
+obw
+gYb
+jYc
+gYb
 coa
 blM
 bpe
@@ -53279,10 +53110,10 @@ eyy
 eyy
 fLj
 hJb
-nuP
+lci
 cqZ
-cqZ
-aAM
+paU
+mlv
 ciC
 gvm
 mch
@@ -53293,7 +53124,7 @@ bQp
 aKb
 sjs
 dSc
-mnA
+iWx
 nnh
 iWx
 vdD
@@ -53474,11 +53305,11 @@ eyy
 fLj
 hJb
 aSy
-nuP
+lci
 cqZ
 cqZ
-vNN
-rFG
+xXs
+gYb
 edp
 vEC
 vEC
@@ -53667,9 +53498,9 @@ eyy
 eyy
 fLj
 hJb
-nuP
+sPk
 pDx
-cqZ
+itY
 cqZ
 cqZ
 iPO
@@ -53679,16 +53510,16 @@ eLv
 eLv
 eLv
 yck
-fub
+edb
 eaJ
 eaJ
 eaJ
 eaJ
 blM
-obw
+lIQ
 xMc
 qCY
-edb
+eYc
 pjr
 eYc
 fFr
@@ -53863,16 +53694,16 @@ upo
 hJb
 hJb
 hJb
+ozn
 cqZ
+ozn
 cqZ
-cqZ
-cqZ
 lWf
 lWf
 lWf
 lWf
 lWf
-cJi
+mnA
 fub
 lWf
 lWf
@@ -54060,13 +53891,13 @@ hJb
 cqZ
 cqZ
 pPi
-pPi
+gII
 lWf
 lWf
 lWf
 lWf
 lWf
-cJi
+vom
 ecM
 lWf
 lWf
@@ -54251,7 +54082,7 @@ xtw
 eyy
 eyy
 hJb
-cqZ
+rtf
 cqZ
 emK
 emK
@@ -54450,10 +54281,10 @@ hJb
 hJb
 hJb
 hJb
-atS
-vWK
-dMA
-tTP
+mfy
+gYb
+xXs
+gYb
 oOj
 fRt
 nFL
@@ -54645,13 +54476,13 @@ eyy
 bjW
 hJb
 glt
-bqn
-gvm
+mlv
+gYb
 uXI
-cJi
-hbS
+ydO
+aAM
 xYm
-bqn
+mlv
 eDJ
 dHM
 bXD
@@ -54838,19 +54669,19 @@ wPU
 eyy
 eyy
 hJb
-swv
+gYb
 jYc
-gvm
-lot
+mlv
+gYb
 cJi
-hbS
+pQh
 xYm
-jYc
-gvm
+eDJ
+eDJ
 rxj
 bXD
 qVv
-hnK
+iXF
 kdU
 czc
 gRi
@@ -55033,14 +54864,14 @@ aPN
 eyy
 hJb
 oGo
-paU
-osx
-qXh
-cJi
+gYb
+eDJ
+mDz
+ydO
 hbS
-xYm
-gvm
-orm
+fYk
+mlv
+eDJ
 hGu
 rMg
 mCZ
@@ -55228,13 +55059,13 @@ tOa
 hJb
 gSZ
 cqZ
-cqZ
-cqZ
+rFG
+itY
 cJi
 hbS
 fYk
-rFG
-itY
+eDJ
+mlv
 uPo
 hJb
 kUz
@@ -55420,14 +55251,14 @@ aof
 twA
 hUv
 kur
-cqZ
+ozn
 rOP
 wZP
 uIh
 oQP
 hXn
 jpX
-jpX
+atS
 dlb
 poU
 hJb
@@ -55617,7 +55448,7 @@ hJb
 xkC
 dBL
 bUz
-cqZ
+itY
 lxd
 mCj
 ipa
@@ -55812,7 +55643,7 @@ vfr
 mBj
 efB
 nKS
-bYk
+vNN
 nkY
 owt
 qUX

@@ -2124,6 +2124,11 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/button/doorbell{
+	pixel_x = -27;
+	pixel_y = -5;
+	id = 4
+	},
 /turf/simulated/floor/outdoors/ash_sand,
 /area/sector/surt/mining_base/common)
 "Wd" = (

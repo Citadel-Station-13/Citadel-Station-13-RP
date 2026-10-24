@@ -52,3 +52,15 @@
 	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
+
+/obj/structure/lightpost/alternate
+	desc = "A tall lamp post. Despite the looks, it runs on electricity."
+	festive = TRUE
+	name = "lamp post"
+	icon = 'icons/obj/32x64.dmi'
+	icon_state = "lamppost"
+	plane = MOB_PLANE
+	layer = ABOVE_MOB_LAYER
+	anchored = TRUE
+	density = FALSE
+	opacity = FALSE

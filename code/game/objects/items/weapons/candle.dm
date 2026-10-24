@@ -135,3 +135,16 @@
 /obj/item/flame/candle/candelabra/everburn/Initialize(mapload)
 	. = ..()
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")
+
+/obj/item/flame/candle/candelabra/black
+	name = "candelabra"
+	desc = "a small silver candelabra. The cups that hold the candles save some of the wax from dripping off, allowing the candles to burn longer."
+	icon = 'icons/obj/candle.dmi'
+	icon_state = "candelabra_black"
+	icon_type = "candelabra_black"
+	w_class = WEIGHT_CLASS_SMALL
+	wax = 99999
+
+/obj/item/flame/candle/candelabra/black/Initialize(mapload)
+	. = ..()
+	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")

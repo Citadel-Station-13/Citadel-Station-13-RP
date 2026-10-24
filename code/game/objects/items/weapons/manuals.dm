@@ -3910,4 +3910,20 @@
 			</html>
 			"}
 
+/obj/item/book/manual/halloween
+	name = "The King In Yellow"
+	icon_state = "thekinginyellow"
+	author = "Unknown"
+	title = "The King In Yellow"
 
+/obj/item/book/manual/halloween/Initialize(mapload)
+	. = ..()
+	dat = {"<html>
+				<body>
+					<object type="text/html"
+        			data="https://www.gutenberg.org/cache/epub/8492/pg8492-images.html"
+        			style="width:100%; height:90dvh;">
+					</object>
+				</body>
+		</html>
+		"}

@@ -1057,4 +1057,71 @@
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
 
+/datum/prototype/flooring/roguetown/grass/zero
+	name = "grass"
+	desc = "Soft, earthy grass."
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_base = "grass_0"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
 
+/datum/prototype/flooring/roguetown/grass/one
+	name = "grass"
+	desc = "Soft, earthy grass."
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	desc = "Soft grass. Has some fallen leaves on it."
+	icon_base = "grass_1"
+
+/datum/prototype/flooring/roguetown/grass/two
+	name = "grass"
+	desc = "Soft, earthy grass."
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	desc = "Soft grass. Has fallen leaves on it."
+	icon_base = "grass_2"
+
+/datum/prototype/flooring/roguetown/grass/three
+	name = "grass"
+	desc = "Soft, earthy grass."
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	desc = "Soft grass. Has lots of fallen leaves on it."
+	icon_base = "grass_3"
+
+/datum/prototype/flooring/roguetown/carpet
+	name = "carpet"
+	desc = "Unusual carpet with a tiling pattern."
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_base = "carpet"
+	damage_temperature = T0C+200
+	flooring_flags = TURF_CAN_BURN
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/carpet1.ogg',
+		'sound/effects/footstep/carpet2.ogg',
+		'sound/effects/footstep/carpet3.ogg',
+		'sound/effects/footstep/carpet4.ogg',
+		'sound/effects/footstep/carpet5.ogg'))
+
+/datum/prototype/flooring/roguetown/herringbone
+	name = "herringbone parquet"
+	desc = "Fancy wooden parquet, polished to a shine."
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_base = "herringbone"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/wood1.ogg',
+		'sound/effects/footstep/wood2.ogg',
+		'sound/effects/footstep/wood3.ogg',
+		'sound/effects/footstep/wood4.ogg',
+		'sound/effects/footstep/wood5.ogg'))
+
+/datum/prototype/flooring/roguetown/hex
+	name = "hexagonal rock"
+	desc = "Hardened hexagonal rock with a rough hewn surface."
+	icon = 'icons/turf/flooring/roguetown/misc.dmi'
+	icon_base = "hex"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
