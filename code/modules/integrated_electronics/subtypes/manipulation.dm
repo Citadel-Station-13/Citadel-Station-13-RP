@@ -205,16 +205,16 @@
 	activators = list("pulse in" = IC_PINTYPE_PULSE_IN,"pulse out" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 50
-/* TBI:	Move seed extrac proc to root
+
 /obj/item/integrated_circuit/manipulation/seed_extractor/do_work()
 	..()
 	var/obj/O = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
-	if(!check_target(O))
+	if(!check_target(O) || istype(O, /obj/item/reagent_containers/food/snacks/grown) == istype(O, /obj/item/grown))
 		push_data()
 		activate_pin(2)
 		return
 
-	var/list/seed_output = seedify(O, -1)
+	var/list/seed_output = get_seed_from_produce(O)
 	for(var/i in 1 to length(seed_output))
 		seed_output[i] = WEAKREF(seed_output[i])
 
@@ -222,7 +222,7 @@
 		set_pin_data(IC_OUTPUT, 1, seed_output)
 		push_data()
 	activate_pin(2)
-*/
+
 /obj/item/integrated_circuit/manipulation/grabber
 	name = "grabber"
 	desc = "A circuit with its own inventory for items.  Used to grab and store things."

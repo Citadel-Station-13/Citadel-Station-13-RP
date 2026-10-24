@@ -35,7 +35,7 @@
 
 	projectiletype = /obj/projectile/bullet/pistol/medium
 
-	movement_base_speed = 10 / 2
+	movement_base_speed = 1
 	base_attack_cooldown = 8
 
 	ai_holder_type = /datum/ai_holder/polaris/simple_mob/ranged/kiting

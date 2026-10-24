@@ -50,7 +50,7 @@
 	slow to react, and they have difficulty understanding even the simplest concepts of other minds. Their alien
 	physiology allows them survive happily off a diet of nothing but light, water and other radiation.
 	"}
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Race:_Dionea"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dionaea)
 	//rarity_value   = 3
 

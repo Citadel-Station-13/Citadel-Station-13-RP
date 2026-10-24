@@ -27,7 +27,7 @@
 	technology to aid them.
 	"}
 
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Akula"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Akula"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/akula)
 
 	max_additional_languages = 3

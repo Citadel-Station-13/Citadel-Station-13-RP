@@ -12,7 +12,7 @@
 	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
 	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
 	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something more fitting for black-eyes	//CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why we have shadekin on a ship
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Race:_Shadekin"
 
 	language = LANGUAGE_SHADEKIN
 	name_language = LANGUAGE_SHADEKIN

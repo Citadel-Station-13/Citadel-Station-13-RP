@@ -71,7 +71,7 @@
 	color_mult = 1
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
-	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Humanity"
+	wikilink = "https://citadel-station.dev/wikiRP/index.php?title=Race:_Humanity"
 
 /datum/category_item/catalogue/fauna/humans
 	name = "Sapients - Humans"

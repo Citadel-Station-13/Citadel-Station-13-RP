@@ -166,19 +166,19 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 				var/flare
 				var/fuel_loss
 				var/rupture
-				if(percent_unstable > 0.2)
-					visible_message("<span class='danger'>\The [src] ripples uneasily, like a disturbed pond.</span>")
-					flare = prob(25)
+				if(percent_unstable > 0.8)
+					visible_message("<span class='danger'>\The [src] is wracked by a series of horrendous distortions, buckling and twisting like a living thing!</span>")
+					flare = 1
+					fuel_loss = prob(50)
+					rupture = prob(25)
 				else if(percent_unstable > 0.5)
 					visible_message("<span class='danger'>\The [src] undulates violently, shedding plumes of plasma!</span>")
 					flare = prob(50)
 					fuel_loss = prob(20)
 					rupture = prob(5)
-				else if(percent_unstable > 0.8)
-					visible_message("<span class='danger'>\The [src] is wracked by a series of horrendous distortions, buckling and twisting like a living thing!</span>")
-					flare = 1
-					fuel_loss = prob(50)
-					rupture = prob(25)
+				else if(percent_unstable > 0.2)
+					visible_message("<span class='danger'>\The [src] ripples uneasily, like a disturbed pond.</span>")
+					flare = prob(25)
 
 				if(rupture)
 					if(prob(80))

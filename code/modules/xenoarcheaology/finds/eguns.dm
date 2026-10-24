@@ -4,16 +4,16 @@
 // todo: refactor archeology
 
 /obj/item/gun/projectile/energy/laser/xenoarch
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 
 /obj/item/gun/projectile/energy/laser/practice/xenoarch
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 
 /obj/item/gun/projectile/energy/laser/practice/xenoarch
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 
 /obj/item/gun/projectile/energy/xray/xenoarch
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
 
 /obj/item/gun/projectile/energy/captain/xenoarch
-	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon = 'icons/obj/gun/energy.dmi'
