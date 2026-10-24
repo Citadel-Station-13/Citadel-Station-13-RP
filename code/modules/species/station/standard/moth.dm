@@ -146,7 +146,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	)
 	color_mult = 1
 	// todo: replace with proper name
-	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dnin-Nepids"
+	wikilink="https://citadel-station.dev/wikiRP/index.php?title=Race:_Dnin-Nepids"
 
 // todo: cataloguer rework when
 /datum/category_item/catalogue/fauna/mothpeople

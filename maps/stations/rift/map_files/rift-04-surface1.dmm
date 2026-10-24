@@ -19460,6 +19460,10 @@
 	},
 /obj/item/toy/figure/clown,
 /obj/item/reagent_containers/food/snacks/clownstears,
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_x = 34
+	},
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "mhK" = (
@@ -20721,6 +20725,10 @@
 /obj/structure/table/rack/shelf,
 /obj/machinery/holoposter{
 	pixel_y = 32
+	},
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_x = 20
 	},
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
@@ -38703,10 +38711,6 @@
 	dir = 1;
 	pixel_x = 12
 	},
-/obj/machinery/light/small{
-	dir = 1;
-	pixel_x = 2
-	},
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "xaw" = (
@@ -38778,10 +38782,6 @@
 	pixel_y = -4
 	},
 /obj/item/lipstick/white,
-/obj/machinery/light/small{
-	dir = 1;
-	pixel_x = -12
-	},
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_x = -2
